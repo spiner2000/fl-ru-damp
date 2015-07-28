@@ -11,7 +11,7 @@ class OpauthHelper {
     
     const SECURITY_SALT = 'lnuVaEvtWzMZ12OWNIVh';
     
-    const MESSAGE_ERROR = "Произошла ошибка авторизации";
+    const MESSAGE_ERROR = "РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° Р°РІС‚РѕСЂРёР·Р°С†РёРё";
     
     public static function getError($is_valid, $response) {
         return (!$is_valid || self::isInvalidResponse($response)) ? self::MESSAGE_ERROR : '';
@@ -125,7 +125,7 @@ class OpauthHelper {
 
 
     /**
-     * Проверяет наличие ключей в запросе
+     * РџСЂРѕРІРµСЂСЏРµС‚ РЅР°Р»РёС‡РёРµ РєР»СЋС‡РµР№ РІ Р·Р°РїСЂРѕСЃРµ
      * @param type $response
      * @return boolean
      */

@@ -6,9 +6,9 @@
         <div class="ov-l">
             <div class="ov-in">
                 <div class="nr-arb-full-info">
-                    <h3>Этап &laquo;<a href="?site=Stage&id=<?=$stage->id?>"><?=reformat($stage->name,33, 0, 1)?></a>&raquo; отправлен на рассмотрение в арбитражную комиссию Free-lance.ru</h3>
+                    <h3>Р­С‚Р°Рї &laquo;<a href="?site=Stage&id=<?=$stage->id?>"><?=reformat($stage->name,33, 0, 1)?></a>&raquo; РѕС‚РїСЂР°РІР»РµРЅ РЅР° СЂР°СЃСЃРјРѕС‚СЂРµРЅРёРµ РІ Р°СЂР±РёС‚СЂР°Р¶РЅСѓСЋ РєРѕРјРёСЃСЃРёСЋ Free-lance.ru</h3>
                     <p><?=date('j '.strtolower($GLOBALS['MONTHA'][date('n', strtotime($stage->arbitrage['requested']))]).' Y, H:i', strtotime($stage->arbitrage['requested']))?></p>
-                    <p><a href="/users/<?=$stage->arbitrage['login']?>/" class="<?=is_emp($stage->arbitrage['role']) ? 'employer' : 'freelancer'?>-name"><?=$stage->arbitrage['uname']?> <?=$stage->arbitrage['usurname']?> [<?=$stage->arbitrage['login']?>]</a> обратился с причиной:</p>
+                    <p><a href="/users/<?=$stage->arbitrage['login']?>/" class="<?=is_emp($stage->arbitrage['role']) ? 'employer' : 'freelancer'?>-name"><?=$stage->arbitrage['uname']?> <?=$stage->arbitrage['usurname']?> [<?=$stage->arbitrage['login']?>]</a> РѕР±СЂР°С‚РёР»СЃСЏ СЃ РїСЂРёС‡РёРЅРѕР№:</p>
                     <div class="form fs-dg nr-form-cause">
                         <b class="b1"></b>
                         <b class="b2"></b>
@@ -25,10 +25,10 @@
                         <b class="b2"></b>
                         <b class="b1"></b>
                     </div>
-                    <p class="nr-arb-imp"><strong>Арбитражая Комиссия свяжется с вами в ближайшее время.</strong></p>
-                    <p>Если у вас есть вопросы &mdash; обратитесь, пожалуйста, к <a href="/users/norisk/">Менеджеру «Безопасной Сделки»</a> или в <a href="/help/?all">Службу поддержки</a></p>
+                    <p class="nr-arb-imp"><strong>РђСЂР±РёС‚СЂР°Р¶Р°СЏ РљРѕРјРёСЃСЃРёСЏ СЃРІСЏР¶РµС‚СЃСЏ СЃ РІР°РјРё РІ Р±Р»РёР¶Р°Р№С€РµРµ РІСЂРµРјСЏ.</strong></p>
+                    <p>Р•СЃР»Рё Сѓ РІР°СЃ РµСЃС‚СЊ РІРѕРїСЂРѕСЃС‹ &mdash; РѕР±СЂР°С‚РёС‚РµСЃСЊ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, Рє <a href="/users/norisk/">РњРµРЅРµРґР¶РµСЂСѓ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ»</a> РёР»Рё РІ <a href="/help/?all">РЎР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a></p>
                     <div class="nr-arb-fi-close">
-                        <a href="javascript:void(0);" class="btn btn-grey" onclick="$(this).getParent('div.overlay').setStyle('display', 'none'); if(SBR.bx_arb_descr)SBR.bx_arb_descr.style.display='none'; return false;"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Закрыть</span></span></span></a>
+                        <a href="javascript:void(0);" class="btn btn-grey" onclick="$(this).getParent('div.overlay').setStyle('display', 'none'); if(SBR.bx_arb_descr)SBR.bx_arb_descr.style.display='none'; return false;"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Р—Р°РєСЂС‹С‚СЊ</span></span></span></a>
                     </div>
                 </div>
             </div>

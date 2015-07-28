@@ -11,10 +11,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/smail.php");
 /*
 ?>
 <p>
-Автоматически делает окончание ПРО через 3 дня beta.free-lance.ru/test/test-payed.php?update_pro=login&day=3 <br/>
+РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё РґРµР»Р°РµС‚ РѕРєРѕРЅС‡Р°РЅРёРµ РџР Рћ С‡РµСЂРµР· 3 РґРЅСЏ beta.free-lance.ru/test/test-payed.php?update_pro=login&day=3 <br/>
 <pre>
-update_pro   - Логин пользователя которому необходимо Уменшить ПРО
-    day      - 3 или 1
+update_pro   - Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕС‚РѕСЂРѕРјСѓ РЅРµРѕР±С…РѕРґРёРјРѕ РЈРјРµРЅС€РёС‚СЊ РџР Рћ
+    day      - 3 РёР»Рё 1
 </pre>
 </p>
 <hr>
@@ -36,10 +36,10 @@ if($_GET['update_pro']) {
 ?>
 
 <p>
-Чтобы имитировать окончание ПРО используйте такую ссылку beta.free-lance.ru/test/test-payed.php?login=login&attempt=1<br/>
+Р§С‚РѕР±С‹ РёРјРёС‚РёСЂРѕРІР°С‚СЊ РѕРєРѕРЅС‡Р°РЅРёРµ РџР Рћ РёСЃРїРѕР»СЊР·СѓР№С‚Рµ С‚Р°РєСѓСЋ СЃСЃС‹Р»РєСѓ beta.free-lance.ru/test/test-payed.php?login=login&attempt=1<br/>
 <pre>
-login   - Логин пользователя которому необходимо автопродление
-attempt - Попытка автопродления (1 или 2)
+login   - Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕС‚РѕСЂРѕРјСѓ РЅРµРѕР±С…РѕРґРёРјРѕ Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёРµ
+attempt - РџРѕРїС‹С‚РєР° Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёСЏ (1 РёР»Рё 2)
 </pre>
 
 </p><?
@@ -49,25 +49,25 @@ if ($_GET['login']) {
 ?>
 <hr>
 <p>
-Чтобы получить уведомление за <b>days</b> дней до окончания услуги beta.free-lance.ru/test/test-payed.php?user=login&service=pro&auto=1<br/>
+Р§С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ СѓРІРµРґРѕРјР»РµРЅРёРµ Р·Р° <b>days</b> РґРЅРµР№ РґРѕ РѕРєРѕРЅС‡Р°РЅРёСЏ СѓСЃР»СѓРіРё beta.free-lance.ru/test/test-payed.php?user=login&service=pro&auto=1<br/>
 <pre>
-user    - Логин пользователя которому необходимо автопродление
-service - По какому сервису уведомление (pro, firstpage) (если не задано по умолчанию pro)
-auto    - если установлено в 1 значит автопродление включено, иначе 0 - выключено  (если не задано по умолчанию 0)
-days    - Дополнительный праметр дней, может принимать значение 1 или 3 (если не задано, по умолчанию 3)
-P.S: не может быть одновременно days = 1 и auto = 1
+user    - Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕС‚РѕСЂРѕРјСѓ РЅРµРѕР±С…РѕРґРёРјРѕ Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёРµ
+service - РџРѕ РєР°РєРѕРјСѓ СЃРµСЂРІРёСЃСѓ СѓРІРµРґРѕРјР»РµРЅРёРµ (pro, firstpage) (РµСЃР»Рё РЅРµ Р·Р°РґР°РЅРѕ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ pro)
+auto    - РµСЃР»Рё СѓСЃС‚Р°РЅРѕРІР»РµРЅРѕ РІ 1 Р·РЅР°С‡РёС‚ Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёРµ РІРєР»СЋС‡РµРЅРѕ, РёРЅР°С‡Рµ 0 - РІС‹РєР»СЋС‡РµРЅРѕ  (РµСЃР»Рё РЅРµ Р·Р°РґР°РЅРѕ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ 0)
+days    - Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ РїСЂР°РјРµС‚СЂ РґРЅРµР№, РјРѕР¶РµС‚ РїСЂРёРЅРёРјР°С‚СЊ Р·РЅР°С‡РµРЅРёРµ 1 РёР»Рё 3 (РµСЃР»Рё РЅРµ Р·Р°РґР°РЅРѕ, РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ 3)
+P.S: РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ days = 1 Рё auto = 1
 </pre>
 
 <form method="GET">
     <select name="service">
-        <option value="pro" <?= $_GET['service'] == 'pro' ? 'selected' : ''?>>Аккаунт ПРО</option>
-        <option value="firstpage" <?= $_GET['service'] == 'firstpage' ? 'selected' : ''?>>Платное рамещение</option>
+        <option value="pro" <?= $_GET['service'] == 'pro' ? 'selected' : ''?>>РђРєРєР°СѓРЅС‚ РџР Рћ</option>
+        <option value="firstpage" <?= $_GET['service'] == 'firstpage' ? 'selected' : ''?>>РџР»Р°С‚РЅРѕРµ СЂР°РјРµС‰РµРЅРёРµ</option>
     </select><br/>
-    Пользователь <input type="text" value="<?= htmlspecialchars($_GET['user'])?>" name="user"/><br/>
-    За <input type="text" value="<?= isset($_GET['days']) ? htmlspecialchars($_GET['days']) : 3?>" name="days"/> дня(день)<br/>
+    РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ <input type="text" value="<?= htmlspecialchars($_GET['user'])?>" name="user"/><br/>
+    Р—Р° <input type="text" value="<?= isset($_GET['days']) ? htmlspecialchars($_GET['days']) : 3?>" name="days"/> РґРЅСЏ(РґРµРЅСЊ)<br/>
 
-    Включено автопродление <input type="checkbox" name="auto" value="1" <?= isset($_GET['auto']) ? "checked" : ""?>/> <br/>
-    <input type="submit" value="запрос">
+    Р’РєР»СЋС‡РµРЅРѕ Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёРµ <input type="checkbox" name="auto" value="1" <?= isset($_GET['auto']) ? "checked" : ""?>/> <br/>
+    <input type="submit" value="Р·Р°РїСЂРѕСЃ">
 </form>
 </p>
 <hr>
@@ -78,11 +78,11 @@ if($_GET['user']) {
     if(!isset($_GET['auto'])) $_GET['auto'] = 0;
 
     if($_GET['days'] != 1 && $_GET['days'] != 3) {
-        echo "<strong style='color:red'>День может принимать значение 1 или 3</strong>";
+        echo "<strong style='color:red'>Р”РµРЅСЊ РјРѕР¶РµС‚ РїСЂРёРЅРёРјР°С‚СЊ Р·РЅР°С‡РµРЅРёРµ 1 РёР»Рё 3</strong>";
         return;
     }
     if($_GET['days'] == 1 && $_GET['auto'] == 1) {
-        echo "<strong style='color:red'>Не может быть одновременно days = 1 и auto = 1</strong>";
+        echo "<strong style='color:red'>РќРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕ days = 1 Рё auto = 1</strong>";
         return;
     }
 
@@ -105,15 +105,15 @@ if($_GET['user']) {
         }
     }
 
-    echo "<strong style='color:green'>Уведомления посланы</strong>";
+    echo "<strong style='color:green'>РЈРІРµРґРѕРјР»РµРЅРёСЏ РїРѕСЃР»Р°РЅС‹</strong>";
 }
 
 ?>
 <p>
-Чтобы имитировать окончание Платного размещения используйте такую ссылку beta.free-lance.ru/test/test-payed.php?fflogin=login&attempt=1<br/>
+Р§С‚РѕР±С‹ РёРјРёС‚РёСЂРѕРІР°С‚СЊ РѕРєРѕРЅС‡Р°РЅРёРµ РџР»Р°С‚РЅРѕРіРѕ СЂР°Р·РјРµС‰РµРЅРёСЏ РёСЃРїРѕР»СЊР·СѓР№С‚Рµ С‚Р°РєСѓСЋ СЃСЃС‹Р»РєСѓ beta.free-lance.ru/test/test-payed.php?fflogin=login&attempt=1<br/>
 <pre>
-fflogin - Логин пользователя которому необходимо автопродление
-attempt - Попытка автопродления (1 или 2)
+fflogin - Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕС‚РѕСЂРѕРјСѓ РЅРµРѕР±С…РѕРґРёРјРѕ Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёРµ
+attempt - РџРѕРїС‹С‚РєР° Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёСЏ (1 РёР»Рё 2)
 </pre>
 </p>
 <hr>
@@ -125,7 +125,7 @@ if ($_GET['fflogin']) {
         firstpage::autoPayedReminder(1, 'hour', $_GET['fflogin']);
     }
 
-    echo "<strong style='color:green'>Имитация окончания Платного размещения</strong>";
+    echo "<strong style='color:green'>РРјРёС‚Р°С†РёСЏ РѕРєРѕРЅС‡Р°РЅРёСЏ РџР»Р°С‚РЅРѕРіРѕ СЂР°Р·РјРµС‰РµРЅРёСЏ</strong>";
 }
 
 //if ($_GET['firstpage'] == 1) {
@@ -136,10 +136,10 @@ if ($_GET['fflogin']) {
 //    firstpage::autoPayedReminder($_GET['firstpage'], 'hour', true);
 //}
 
-//?><!--<p>Чтобы проверить резервы вручную используйте ссылку beta.free-lance.ru/test/test-payed.php?check_reserve=1</p>--><?//
+//?><!--<p>Р§С‚РѕР±С‹ РїСЂРѕРІРµСЂРёС‚СЊ СЂРµР·РµСЂРІС‹ РІСЂСѓС‡РЅСѓСЋ РёСЃРїРѕР»СЊР·СѓР№С‚Рµ СЃСЃС‹Р»РєСѓ beta.free-lance.ru/test/test-payed.php?check_reserve=1</p>--><?//
 //if ($_GET['check_reserve']) {
 //    billing::checkOldReserve();
-//    echo '<p><strong>Проверка резерва</strong> - ОК</p>';
+//    echo '<p><strong>РџСЂРѕРІРµСЂРєР° СЂРµР·РµСЂРІР°</strong> - РћРљ</p>';
 //}
 
 //$pmail = new pmail;
@@ -153,7 +153,7 @@ $allProfsID = array();
 foreach($allProfs as $prof) {
     $allProfsID[$prof['id']] = $prof['profname'];
 }
-?><p>Айдишники профессий [в квадратных скобках]</p>
+?><p>РђР№РґРёС€РЅРёРєРё РїСЂРѕС„РµСЃСЃРёР№ [РІ РєРІР°РґСЂР°С‚РЅС‹С… СЃРєРѕР±РєР°С…]</p>
 <pre><?= var_dump ($allProfsID); ?></pre>
 
 

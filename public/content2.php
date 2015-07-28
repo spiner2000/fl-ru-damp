@@ -35,7 +35,7 @@
 
   require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/project_exrates.php");
   $project_exRates = project_exrates::GetAll();
-  $exch = array(1=>'FM', 'USD','Euro','Руб');
+  $exch = array(1=>'FM', 'USD','Euro','Р СѓР±');
   $translate_exRates = array
   (
   0 => 2,
@@ -102,7 +102,7 @@ function addtop(_th,tsdef) {
 }
 function adlogo() {
   if(el=ge('logoBox'))el.style.display='none';
-  if(el=ge('logoPrvw'))el.innerHTML = '<img src="/images/yourlogo.png" alt="Ваш логотип и ссылка на сайт" />';
+  if(el=ge('logoPrvw'))el.innerHTML = '<img src="/images/yourlogo.png" alt="Р’Р°С€ Р»РѕРіРѕС‚РёРї Рё СЃСЃС‹Р»РєР° РЅР° СЃР°Р№С‚" />';
   if(el=ge('logoInp'))el.style.display='block';
   if(el=ge('linkInp'))el.style.display='block';
   if(el=ge('logoCbx'))el.disabled=false;
@@ -137,7 +137,7 @@ function recalc(s) {
 
     <? if(!$project['payed'] && !$tmpPrj->isKonkurs() && $project['kind']!=4) { ?>
       if((pt=ge('ptype')))
-        pt.innerHTML=(S>0?'Платное':'Бесплатное')+' объявление';
+        pt.innerHTML=(S>0?'РџР»Р°С‚РЅРѕРµ':'Р‘РµСЃРїР»Р°С‚РЅРѕРµ')+' РѕР±СЉСЏРІР»РµРЅРёРµ';
     <? } ?>
     ge('payedBox').style.display=S>0?'block':'none';
     ge('noPayedBox').style.display=S>0?'none':'block';
@@ -148,12 +148,12 @@ function recalc(s) {
 }
 
 function recalcPRO(s) {
-    var nothing = 'не будут вам стоить ничего';
+    var nothing = 'РЅРµ Р±СѓРґСѓС‚ РІР°Рј СЃС‚РѕРёС‚СЊ РЅРёС‡РµРіРѕ';
     PS = String(PS).replace(nothing, '');
     PS = Number(PS) + s;
     if(el=ge('sum_fm_pro')) {
-        var prefix = 'будут стоить всего ';
-        var postfix = ' рублей';
+        var prefix = 'Р±СѓРґСѓС‚ СЃС‚РѕРёС‚СЊ РІСЃРµРіРѕ ';
+        var postfix = ' СЂСѓР±Р»РµР№';
         if ( parseInt(PS) == 0 ) {
         	prefix = '';
         	postfix = '';
@@ -181,23 +181,23 @@ function cibywheel(obj,low,up,dir) {
   else obj.value=cv+(dlt>0?dir:-dir);
 }
 </script>
-<h1 class="b-page__title">Предпросмотр</h1>
+<h1 class="b-page__title">РџСЂРµРґРїСЂРѕСЃРјРѕС‚СЂ</h1>
 <div class="add-project-preview">
 <form action="/public/" method="POST" enctype="multipart/form-data" id="publicForm" onsubmit="ge('freeBtn').disabled=true;ge('payBtn').disabled=true">
-  <h3 id="ptype"><?=(($project['payed']||$tmpPrj->isKonkurs()||$price||$project['kind']==4) ? 'Платное' : 'Бесплатное')?> объявление<?=($tmpPrj->isKonkurs() ? ' (конкурс)' : '')?></h3>
+  <h3 id="ptype"><?=(($project['payed']||$tmpPrj->isKonkurs()||$price||$project['kind']==4) ? 'РџР»Р°С‚РЅРѕРµ' : 'Р‘РµСЃРїР»Р°С‚РЅРѕРµ')?> РѕР±СЉСЏРІР»РµРЅРёРµ<?=($tmpPrj->isKonkurs() ? ' (РєРѕРЅРєСѓСЂСЃ)' : '')?></h3>
   <div class="app-left">
-    <p>У платных объявлений на порядок <br />больше просмотров и ответов.<br /> Обычно фрилансеры воспринимают <br />платное объявление более серьезно.</p>
+    <p>РЈ РїР»Р°С‚РЅС‹С… РѕР±СЉСЏРІР»РµРЅРёР№ РЅР° РїРѕСЂСЏРґРѕРє <br />Р±РѕР»СЊС€Рµ РїСЂРѕСЃРјРѕС‚СЂРѕРІ Рё РѕС‚РІРµС‚РѕРІ.<br /> РћР±С‹С‡РЅРѕ С„СЂРёР»Р°РЅСЃРµСЂС‹ РІРѕСЃРїСЂРёРЅРёРјР°СЋС‚ <br />РїР»Р°С‚РЅРѕРµ РѕР±СЉСЏРІР»РµРЅРёРµ Р±РѕР»РµРµ СЃРµСЂСЊРµР·РЅРѕ.</p>
     <ul class="apf-list app-list">
-        <li <?=(($project['kind'] == 7 || ($project['kind'] == 4 && is_pro() == false)) ? '' : 'style="display: none;"')?>><input type="checkbox" name="public" value="1" id="public" disabled="disabled" checked="checked" /> <label for="public">Публикация проекта &mdash; <?= round($project['kind'] == 4 ? new_projects::getProjectInOfficePrice() : new_projects::getKonkursPrice()); ?> руб.</label></li>
+        <li <?=(($project['kind'] == 7 || ($project['kind'] == 4 && is_pro() == false)) ? '' : 'style="display: none;"')?>><input type="checkbox" name="public" value="1" id="public" disabled="disabled" checked="checked" /> <label for="public">РџСѓР±Р»РёРєР°С†РёСЏ РїСЂРѕРµРєС‚Р° &mdash; <?= round($project['kind'] == 4 ? new_projects::getProjectInOfficePrice() : new_projects::getKonkursPrice()); ?> СЂСѓР±.</label></li>
         <li>
           <input type="checkbox" id="f4" name="top_ok" value="1" onchange="oktop(this)"<?=($remTPeriod||$addedTD ? ' checked' : '').($remTPeriod ? ' disabled' : '')?>/>
-          <label for="f4" class="clip">Закрепить наверху ленты</label>
+          <label for="f4" class="clip">Р—Р°РєСЂРµРїРёС‚СЊ РЅР°РІРµСЂС…Сѓ Р»РµРЅС‚С‹</label>
           <p class="app-dayes">
             <? if(!$remTPeriod) { ?>
-              на <input type="text" size="2" onmousewheel="cibywheel(this,0,365);addtop(this,<?=($addedTD ? $addedTD : 1)?>);" onchange="addtop(this,<?=($addedTD ? $addedTD : 1)?>)" id="topAInp" name="top_days" value="<?=($addedTD ? $addedTD : 1)?>"<?=(!$addedTD ? ' disabled' : '')?> />
-              дней = <span id="topSum"><?=round(($addedTD ? $addedTD : 1) * $nTopPrice)?></span> руб.
+              РЅР° <input type="text" size="2" onmousewheel="cibywheel(this,0,365);addtop(this,<?=($addedTD ? $addedTD : 1)?>);" onchange="addtop(this,<?=($addedTD ? $addedTD : 1)?>)" id="topAInp" name="top_days" value="<?=($addedTD ? $addedTD : 1)?>"<?=(!$addedTD ? ' disabled' : '')?> />
+              РґРЅРµР№ = <span id="topSum"><?=round(($addedTD ? $addedTD : 1) * $nTopPrice)?></span> СЂСѓР±.
             <? } else { ?>
-              Вы закрепили объявление на <?=$topDays.' '.getSymbolicName($topDays,'day')?>.
+              Р’С‹ Р·Р°РєСЂРµРїРёР»Рё РѕР±СЉСЏРІР»РµРЅРёРµ РЅР° <?=$topDays.' '.getSymbolicName($topDays,'day')?>.
               <?=$remtverb.' '.$remTPeriod?>
             <? } ?>
           </p>
@@ -205,40 +205,40 @@ function cibywheel(obj,low,up,dir) {
         <? if($remTPeriod) { ?>
           <li>
             <input type="checkbox" id="f5" name="top_ok" value="1" onchange="oktop(this)"<?=($addedTD ? ' checked' : '')?>/>
-            <label for="f5">Продлить на</label>
+            <label for="f5">РџСЂРѕРґР»РёС‚СЊ РЅР°</label>
             <input type="text" size="2" onmousewheel="cibywheel(this,0,365);addtop(this,<?=($addedTD ? $addedTD : 0)?>);" onchange="addtop(this,<?=($addedTD ? $addedTD : 0)?>)" id="topAInp" name="top_days" value="<?=$addedTD?>" <?=(!$addedTD ? ' disabled' : '')?>/>
-            дней = <span id="topSum"><?= round( ($addedTD ? $addedTD : 0) * $nTopPrice)?></span> руб.
+            РґРЅРµР№ = <span id="topSum"><?= round( ($addedTD ? $addedTD : 0) * $nTopPrice)?></span> СЂСѓР±.
           </li>
         <? } ?>
-        <li><input type="checkbox" name="is_color" value="1" id="f1" onchange="setcolor(this)"<?=($project['is_color']=='t' ? ' checked' : '')?>/> <label for="f1">Выделить цветом<?=($colorPrc ? " &ndash; " . round($colorPrc) . " руб." : '')?></label></li>
-        <li><input type="checkbox" name="is_bold" value="1" id="f3" onchange="setbold(this)"<?=($project['is_bold']=='t' ? ' checked' : '')?>/> <label for="f3">Выделить жирным<?=($boldPrc ? " &ndash; " . round($boldPrc) . " руб." : '')?></label></li>
+        <li><input type="checkbox" name="is_color" value="1" id="f1" onchange="setcolor(this)"<?=($project['is_color']=='t' ? ' checked' : '')?>/> <label for="f1">Р’С‹РґРµР»РёС‚СЊ С†РІРµС‚РѕРј<?=($colorPrc ? " &ndash; " . round($colorPrc) . " СЂСѓР±." : '')?></label></li>
+        <li><input type="checkbox" name="is_bold" value="1" id="f3" onchange="setbold(this)"<?=($project['is_bold']=='t' ? ' checked' : '')?>/> <label for="f3">Р’С‹РґРµР»РёС‚СЊ Р¶РёСЂРЅС‹Рј<?=($boldPrc ? " &ndash; " . round($boldPrc) . " СЂСѓР±." : '')?></label></li>
 
-      <li><input type="checkbox" name="logo_ok" id="logoCbx" onchange="setlogo(this)"<?=($logo||$error['logo'] ? ' checked' : '')?><?=($logo ? ' disabled' : '')?>/> <label for="logoCbx">Загрузить логотип со ссылкой<?=($logoPrc ? " &ndash; " . round($logoPrc) . " руб." : '')?></label>
+      <li><input type="checkbox" name="logo_ok" id="logoCbx" onchange="setlogo(this)"<?=($logo||$error['logo'] ? ' checked' : '')?><?=($logo ? ' disabled' : '')?>/> <label for="logoCbx">Р—Р°РіСЂСѓР·РёС‚СЊ Р»РѕРіРѕС‚РёРї СЃРѕ СЃСЃС‹Р»РєРѕР№<?=($logoPrc ? " &ndash; " . round($logoPrc) . " СЂСѓР±." : '')?></label>
         <p class="app-logo" style="margin:10px 0 0 5px<?=($error['logo'] ? '' : ';display:none')?>" id="logoInp">
-            <strong>Логотип:</strong><br />
+            <strong>Р›РѕРіРѕС‚РёРї:</strong><br />
             <input type="file" name="logo" size="17" /><br />
-            Не более <?=(new_projects::LOGO_SIZE/1024)?> Кб.<br/><?=new_projects::LOGO_WIDTH?> пикселей в ширину, до <?=new_projects::LOGO_HEIGHT?> в высоту (gif, jpeg, png).<br/>
+            РќРµ Р±РѕР»РµРµ <?=(new_projects::LOGO_SIZE/1024)?> РљР±.<br/><?=new_projects::LOGO_WIDTH?> РїРёРєСЃРµР»РµР№ РІ С€РёСЂРёРЅСѓ, РґРѕ <?=new_projects::LOGO_HEIGHT?> РІ РІС‹СЃРѕС‚Сѓ (gif, jpeg, png).<br/>
             <?=($error['logo'] ? '<span id="logoErr"><br/><img src="/images/ico_error.gif" alt="" width="22" height="18" border="0"/>&nbsp;'.$error['logo'].'<br/></span>' : '')?>
-            <br/><input onclick="document.getElementById('publicForm').action.value='reload'"type="submit" value=" Загрузить " />
+            <br/><input onclick="document.getElementById('publicForm').action.value='reload'"type="submit" value=" Р—Р°РіСЂСѓР·РёС‚СЊ " />
         </p>
         <? if($logo) { ?>
           <p id="logoBox" class="app-logo" style="margin-left:5px">
-            <strong>Загруженный логотип:</strong><br/>
-            <a href="<?=WDCPREFIX?>/<?=$logo['path'].$logo['name']?>" target="_blank">Посмотреть</a> (<?=$logo['ftype']?>; <?=ConvertBtoMB($logo['size'])?>)
-            <span class="lnk-del"><a href="javascript:;" onclick="xajax_DelLogo('<?=$key?>')">удалить</a>
+            <strong>Р—Р°РіСЂСѓР¶РµРЅРЅС‹Р№ Р»РѕРіРѕС‚РёРї:</strong><br/>
+            <a href="<?=WDCPREFIX?>/<?=$logo['path'].$logo['name']?>" target="_blank">РџРѕСЃРјРѕС‚СЂРµС‚СЊ</a> (<?=$logo['ftype']?>; <?=ConvertBtoMB($logo['size'])?>)
+            <span class="lnk-del"><a href="javascript:;" onclick="xajax_DelLogo('<?=$key?>')">СѓРґР°Р»РёС‚СЊ</a>
           </p>
         <? } ?>
         <p class="app-logo" style="margin:10px 0 0 5px<?=($logo||$error['logo'] ? '' : ';display:none')?>" id="linkInp">
 
 
-          <strong>Ссылка:</strong><br />
+          <strong>РЎСЃС‹Р»РєР°:</strong><br />
           <input type="text" name="link" size="27" value="<?=$project['link']?>"/>
         </p>
       </li>
     </ul>
     <div class="apf-payed-info" id="payedBox"<?=(!$price ? ' style="display:none"' : '')?>>
       <div class="app-sum">
-        <strong>Итого: <SPAN id="sum_fm"><?= round($price)?></SPAN> рублей</strong>
+        <strong>РС‚РѕРіРѕ: <SPAN id="sum_fm"><?= round($price)?></SPAN> СЂСѓР±Р»РµР№</strong>
 			
 				<?/*<div class="i-shadow i-shadow_inline-block">
 					<span class="b-shadow__icon b-shadow__icon_quest"></span>
@@ -248,7 +248,7 @@ function cibywheel(obj,low,up,dir) {
 								<div class="b-shadow__top">
 									<div class="b-shadow__bottom">
 										<div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_15">
-											<div class="b-shadow__txt">Free-Money (FM) - условная валюта сайта Free-lance.ru <a class="b-shadow__link" href="/bill/">Ваш личный счет на сайте</a></div>
+											<div class="b-shadow__txt">Free-Money (FM) - СѓСЃР»РѕРІРЅР°СЏ РІР°Р»СЋС‚Р° СЃР°Р№С‚Р° Free-lance.ru <a class="b-shadow__link" href="/bill/">Р’Р°С€ Р»РёС‡РЅС‹Р№ СЃС‡РµС‚ РЅР° СЃР°Р№С‚Рµ</a></div>
 										</div>
 									</div>
 								</div>
@@ -263,26 +263,26 @@ function cibywheel(obj,low,up,dir) {
 					</div>
 				</div>*/?>	
 						
-        <br />Это $<SPAN id="sum_usd"><?=round(($price*$pex[project_exrates::FM.project_exrates::USD]), 2)?></SPAN>
+        <br />Р­С‚Рѕ $<SPAN id="sum_usd"><?=round(($price*$pex[project_exrates::FM.project_exrates::USD]), 2)?></SPAN>
       </div>
         
 			<div class="b-promo b-promo_marg_20_0">
 				<?php if ( !is_pro() ) {?>
                 <div class="b-promo__note">
 						<div class="b-promo__note-inner">
-								<h3 class="b-promo__h3 b-promo__h3_padbot_5">С <span class="b-promo__pro b-promo__pro_emp"></span>&#160;дешевле</h3>
+								<h3 class="b-promo__h3 b-promo__h3_padbot_5">РЎ <span class="b-promo__pro b-promo__pro_emp"></span>&#160;РґРµС€РµРІР»Рµ</h3>
 								<p class="b-promo__p b-promo__p_fontsize_13">
-									<a href="/payed-emp/" class="b-promo__link">Купите профессиональный аккаунт</a> и выбранные услуги <?php
+									<a href="/payed-emp/" class="b-promo__link">РљСѓРїРёС‚Рµ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚</a> Рё РІС‹Р±СЂР°РЅРЅС‹Рµ СѓСЃР»СѓРіРё <?php
                                      if ( $PROprice > 0 ) {
-                                     ?><span id="sum_fm_pro_prefix">будут стоить всего</span> 
+                                     ?><span id="sum_fm_pro_prefix">Р±СѓРґСѓС‚ СЃС‚РѕРёС‚СЊ РІСЃРµРіРѕ</span> 
                                        <span class="b-promo__txt b-promo__txt_bold b-promo__txt_color_fd6c30">
                                            <span id="sum_fm_pro"><?= round($PROprice) ?></span> 
-                                           <span id="sum_fm_pro_postfix">рублей</span>
+                                           <span id="sum_fm_pro_postfix">СЂСѓР±Р»РµР№</span>
                                        </span><?php } else 
                                        {
                                        ?><span id="sum_fm_pro_prefix"></span>
                                        <span class="b-promo__txt b-promo__txt_bold b-promo__txt_color_fd6c30" >
-                                           <span id="sum_fm_pro"> не будут вам стоить ничего</span>
+                                           <span id="sum_fm_pro"> РЅРµ Р±СѓРґСѓС‚ РІР°Рј СЃС‚РѕРёС‚СЊ РЅРёС‡РµРіРѕ</span>
                                        </span><span id="sum_fm_pro_postfix"></span><?
                                        } ?>.</p>
                         </div>
@@ -292,18 +292,18 @@ function cibywheel(obj,low,up,dir) {
         
 
 			
-      <p class="add-btn"><input id="payBtn" type="image"<?=($account->sum < $price && $account->bonus_sum < $price ? ' disabled' : '')?> src="<?=($tmpPrj->isEdit() ? '/images/save-payed.png' : '/images/add-payed.png')?>" width="157" height="52" alt="Оплатить и сохранить" /></p>
+      <p class="add-btn"><input id="payBtn" type="image"<?=($account->sum < $price && $account->bonus_sum < $price ? ' disabled' : '')?> src="<?=($tmpPrj->isEdit() ? '/images/save-payed.png' : '/images/add-payed.png')?>" width="157" height="52" alt="РћРїР»Р°С‚РёС‚СЊ Рё СЃРѕС…СЂР°РЅРёС‚СЊ" /></p>
       <?=($error['buy'] ? view_error($error['buy']) : '')?>
 
       <div<?=($account->sum >= $price||$account->bonus_sum >= $price ? ' style="display:none"' : '')?> id="nomnyBox">
-        <p class="error-color"><strong>У вас на счету не хватает <span id="nomnySum"><?= round($price - $account->sum)?></span> руб.</strong></p>
-        <p class="add-btn"><input onclick="document.getElementById('publicForm').action.value='bill'"type="image" src="/images/add-payed2.png" width="150" height="24" alt="Пополнить счет" /></p>
+        <p class="error-color"><strong>РЈ РІР°СЃ РЅР° СЃС‡РµС‚Сѓ РЅРµ С…РІР°С‚Р°РµС‚ <span id="nomnySum"><?= round($price - $account->sum)?></span> СЂСѓР±.</strong></p>
+        <p class="add-btn"><input onclick="document.getElementById('publicForm').action.value='bill'"type="image" src="/images/add-payed2.png" width="150" height="24" alt="РџРѕРїРѕР»РЅРёС‚СЊ СЃС‡РµС‚" /></p>
       </div>
     </div>
     <div>
       <br/>
-      <p class="add-btn"><input onclick="document.getElementById('publicForm').action.value='prev'"type="image"  src="/images/edit-project.png" width="150" height="24" alt="Редактировать" /></p>
-      <p class="add-btn" id="noPayedBox"<?=($price ? ' style="display:none"' : '')?>><input id="freeBtn" type="image" src="/images/save-project.png" width="150" height="24" alt="Сохранить" /></p>
+      <p class="add-btn"><input onclick="document.getElementById('publicForm').action.value='prev'"type="image"  src="/images/edit-project.png" width="150" height="24" alt="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" /></p>
+      <p class="add-btn" id="noPayedBox"<?=($price ? ' style="display:none"' : '')?>><input id="freeBtn" type="image" src="/images/save-project.png" width="150" height="24" alt="РЎРѕС…СЂР°РЅРёС‚СЊ" /></p>
     </div>
   </div>
   <div class="app-right app-free">
@@ -316,9 +316,9 @@ function cibywheel(obj,low,up,dir) {
                   <?php if ($project['cost']) { ?>
                   <var class="bujet"><?=CurToChar($project['cost'], $project['currency'])?><?=$priceby_str?></var>
                   <? } else { ?>
-                  <var class="bujet-dogovor">По договоренности</var>
+                  <var class="bujet-dogovor">РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</var>
                   <? } ?>
-                  <? // ЛОГО ?>
+                  <? // Р›РћР“Рћ ?>
                   <?php if ($logo) { ?>
                       <?php if ( trim(formatLink($project['link'])) ) {?>
                         <a id="logoPrvw" href="http://<?= formatLink($project['link']) ?>" target="_blank">
@@ -331,10 +331,10 @@ function cibywheel(obj,low,up,dir) {
                       <? } ?>
                       
                   <? } else { ?>
-                  <img id="logoPrvw"<?=($error['logo'] ? '' : ' style="display:none"')?> src="/images/yourlogo.png" alt="Ваш логотип и ссылка на сайт" class="prj-clogo" />
+                  <img id="logoPrvw"<?=($error['logo'] ? '' : ' style="display:none"')?> src="/images/yourlogo.png" alt="Р’Р°С€ Р»РѕРіРѕС‚РёРї Рё СЃСЃС‹Р»РєР° РЅР° СЃР°Р№С‚" class="prj-clogo" />
                   <? } ?>
                       
-                  <? // ЗАГОЛОВОК ?>
+                  <? // Р—РђР“РћР›РћР’РћРљ ?>
                   <h3>
                       <img  id="istop"<?=(($remTPeriod || $addedTD) ? '' : ' style="display:none"')?> src="/images/tp<?= $project['is_color'] == 't' ? '2' : '' ?>.gif" alt="" title="<?=$topDays?>"/>
                       <?php $sName = $project['kind'] != 4 && !is_pro() ? $stop_words->replace($project['name']) : $project['name'] ?>
@@ -347,7 +347,7 @@ function cibywheel(obj,low,up,dir) {
                       <?php } //else?>
                   </h3>
                   
-            <?// ТЕКСТ ПРОЕКТА ?>
+            <?// РўР•РљРЎРў РџР РћР•РљРўРђ ?>
             <div class="prj-full-display">
                 <div class="utxt">
                     <p id="boldPrvw">
@@ -359,20 +359,20 @@ function cibywheel(obj,low,up,dir) {
                         <div class="flw_offer_attach">
 
                             <? if ( $a['virus'] & 1 == 1 ) { ?>
-                            <a href="" onclick="alert('Обнаружен вирус. Файл удален.');return false;" target="_blank">Загрузить</a>
+                            <a href="" onclick="alert('РћР±РЅР°СЂСѓР¶РµРЅ РІРёСЂСѓСЃ. Р¤Р°Р№Р» СѓРґР°Р»РµРЅ.');return false;" target="_blank">Р—Р°РіСЂСѓР·РёС‚СЊ</a>
                             <? } else { ?>
-                            <a href="<?= WDCPREFIX ?>/<?= $a['path'].$a['name'] ?>" target="_blank">Загрузить</a> (<?= CFile::getext($a['name']) ?>; <?= ConvertBtoMB($a['size']) ?> )
+                            <a href="<?= WDCPREFIX ?>/<?= $a['path'].$a['name'] ?>" target="_blank">Р—Р°РіСЂСѓР·РёС‚СЊ</a> (<?= CFile::getext($a['name']) ?>; <?= ConvertBtoMB($a['size']) ?> )
                             <? } ?>
 
                             <? if ( $a['virus'] & 1 == 1 ) { ?>(<?= CFile::getext($a['name']) ?>; <?= ConvertBtoMB($a['size']) ?> )
-                            <span class="avs-err"><span>Обнаружен вирус.</span> Файл удален с сервера.</span>
+                            <span class="avs-err"><span>РћР±РЅР°СЂСѓР¶РµРЅ РІРёСЂСѓСЃ.</span> Р¤Р°Р№Р» СѓРґР°Р»РµРЅ СЃ СЃРµСЂРІРµСЂР°.</span>
                             <? } else if ( $a['virus'] === 0 ) { ?>
-                            <span class="avs-ok">Проверено антивирусом.</span>
+                            <span class="avs-ok">РџСЂРѕРІРµСЂРµРЅРѕ Р°РЅС‚РёРІРёСЂСѓСЃРѕРј.</span>
                             <? } else if ( $a['virus'] == 2 ) { ?>
-                            <span class="avs-errcheck">Невозможно проверить.</span>
+                            <span class="avs-errcheck">РќРµРІРѕР·РјРѕР¶РЅРѕ РїСЂРѕРІРµСЂРёС‚СЊ.</span>
                             <? } else if ( $a['virus'] == 8 ) { ?>
                             <? } else { ?>
-                            <span class="avs-nocheck">Файл не проверен.</span>
+                            <span class="avs-nocheck">Р¤Р°Р№Р» РЅРµ РїСЂРѕРІРµСЂРµРЅ.</span>
                             <? } ?>
 
                         </div>
@@ -386,12 +386,12 @@ function cibywheel(obj,low,up,dir) {
             <div class="prj-full-display">
                 <? if ($project['pro_only'] == 't' || $project['verify_only'] == 't') { ?>
                 <ul class="project-info">
-                    <li>Только для 
+                    <li>РўРѕР»СЊРєРѕ РґР»СЏ 
                         <? if ($project['pro_only'] == 't') { ?>
                             <a href="/payed/"><img src="/images/icons/f-pro.png" alt="PRO" /></a>
                         <? } ?>
                         <? if ($project['verify_only'] == 't') { ?>
-                            <?= view_verify('Паспортные данные подтверждены')?>
+                            <?= view_verify('РџР°СЃРїРѕСЂС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ РїРѕРґС‚РІРµСЂР¶РґРµРЅС‹')?>
                         <? } ?>
                     </li>
                 </ul>
@@ -402,27 +402,27 @@ function cibywheel(obj,low,up,dir) {
                         <a href="/projects/?pid=<?= $project['id'] ?>">
                         <? if (!is_emp()) { ?>
                             <? if (!$project['offer_id']) { ?>
-                            Ответить на проект
+                            РћС‚РІРµС‚РёС‚СЊ РЅР° РїСЂРѕРµРєС‚
                             <? } else { ?>
-                            Вы уже ответили на этот проект
+                            Р’С‹ СѓР¶Рµ РѕС‚РІРµС‚РёР»Рё РЅР° СЌС‚РѕС‚ РїСЂРѕРµРєС‚
                             <? } ?>
                         <? } else { ?>
-                            Предложения
+                            РџСЂРµРґР»РѕР¶РµРЅРёСЏ
                         <? } ?>
                         </a> (<?= intval($project['offers_count']) ?>) 
                         <? if (hasPermissions('projects') && $project['unread']) { ?>
-                        <strong style='color:#6BB24B'>(<?= $project['unread'] . ' ' . ending($project['unread'], 'новое', 'новых', 'новых') ?>)</strong>
+                        <strong style='color:#6BB24B'>(<?= $project['unread'] . ' ' . ending($project['unread'], 'РЅРѕРІРѕРµ', 'РЅРѕРІС‹С…', 'РЅРѕРІС‹С…') ?>)</strong>
                         <? } ?>
                     </li>
                     <? if ($project['payed']  && $project['kind'] != 2 && $project['kind'] != 7) { ?>
-                    <li class="pi-payed"><strong>Платный проект</strong></li>
+                    <li class="pi-payed"><strong>РџР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚</strong></li>
                     <? } ?>
 
                     <? if ($project['kind'] == 2 || $project['kind'] == 7) { ?>
-                    <li class="pi-red">Конкурс</li>
+                    <li class="pi-red">РљРѕРЅРєСѓСЂСЃ</li>
                     <? } else if ($project['kind'] == 4) { ?>
                     <li class="pi-office">
-                        В офис
+                        Р’ РѕС„РёСЃ
                     </li>
                     <? } ?>
                     <li class="pi-time"><?= ago_pub_x($project['post_date']?strtotime($project['post_date']) : time()) ?></li>

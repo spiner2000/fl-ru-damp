@@ -4,7 +4,7 @@ require_once ABS_PATH."/classes/projects.php";
 require_once ABS_PATH . "/classes/projects_offers.php";
 
 /**
-* Êëàññ ìîäåëü äëÿ ğàáîòû ñ àâòîîòâåòàìè íà ïğîåêòû
+* ĞšĞ»Ğ°ÑÑ Ğ¼Ğ¾Ğ´ĞµĞ»ÑŒ Ğ´Ğ»Ñ Ñ€Ğ°Ğ±Ğ¾Ñ‚Ñ‹ Ñ Ğ°Ğ²Ñ‚Ğ¾Ğ¾Ñ‚Ğ²ĞµÑ‚Ğ°Ğ¼Ğ¸ Ğ½Ğ° Ğ¿Ñ€Ğ¾ĞµĞºÑ‚Ñ‹
 */
 
 class autoresponse
@@ -12,10 +12,10 @@ class autoresponse
     static $table = 'autoresponse';
     static $db = null;
 
-    // Íàñòğîéêè
+    // ĞĞ°ÑÑ‚Ñ€Ğ¾Ğ¹ĞºĞ¸
     static $config = array(
-        'price' => 10, // öåíà çà îäèí àâòîîòâåò (ğóá.)
-        'default_quantity' => 10, // êîëè÷åñòâî àâòîîòâåòîâ ïî óìîë÷àíèş äëÿ çàêàçà
+        'price' => 10, // Ñ†ĞµĞ½Ğ° Ğ·Ğ° Ğ¾Ğ´Ğ¸Ğ½ Ğ°Ğ²Ñ‚Ğ¾Ğ¾Ñ‚Ğ²ĞµÑ‚ (Ñ€ÑƒĞ±.)
+        'default_quantity' => 10, // ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ°Ğ²Ñ‚Ğ¾Ğ¾Ñ‚Ğ²ĞµÑ‚Ğ¾Ğ² Ğ¿Ğ¾ ÑƒĞ¼Ğ¾Ğ»Ñ‡Ğ°Ğ½Ğ¸Ñ Ğ´Ğ»Ñ Ğ·Ğ°ĞºĞ°Ğ·Ğ°
     );
 
     public $data = array();
@@ -36,7 +36,7 @@ class autoresponse
     }
 
     /**
-    * Àêòèâàöèÿ òåêóùåãî àâòîîòâåòà
+    * ĞĞºÑ‚Ğ¸Ğ²Ğ°Ñ†Ğ¸Ñ Ñ‚ĞµĞºÑƒÑ‰ĞµĞ³Ğ¾ Ğ°Ğ²Ñ‚Ğ¾Ğ¾Ñ‚Ğ²ĞµÑ‚Ğ°
     */
     public function activate()
     {
@@ -52,7 +52,7 @@ class autoresponse
     }
 
     /**
-    * Óìåíüøàåì êîëè÷åñòâî àâòîîòâåòîâ íà åäèíèöó è çàïèñûâàåì â ëîã äîáàâëåíèå àâòîîòâåòà
+    * Ğ£Ğ¼ĞµĞ½ÑŒÑˆĞ°ĞµĞ¼ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ°Ğ²Ñ‚Ğ¾Ğ¾Ñ‚Ğ²ĞµÑ‚Ğ¾Ğ² Ğ½Ğ° ĞµĞ´Ğ¸Ğ½Ğ¸Ñ†Ñƒ Ğ¸ Ğ·Ğ°Ğ¿Ğ¸ÑÑ‹Ğ²Ğ°ĞµĞ¼ Ğ² Ğ»Ğ¾Ğ³ Ğ´Ğ¾Ğ±Ğ°Ğ²Ğ»ĞµĞ½Ğ¸Ğµ Ğ°Ğ²Ñ‚Ğ¾Ğ¾Ñ‚Ğ²ĞµÑ‚Ğ°
     */
     public function reduce($user, $offer, $project_id)
     {
@@ -76,11 +76,11 @@ class autoresponse
     }
     
     /**
-     * Óâåëè÷èâàåì êîëè÷åñòâî àâòîîòâåòîâ íà åäèíèöó
+     * Ğ£Ğ²ĞµĞ»Ğ¸Ñ‡Ğ¸Ğ²Ğ°ĞµĞ¼ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ°Ğ²Ñ‚Ğ¾Ğ¾Ñ‚Ğ²ĞµÑ‚Ğ¾Ğ² Ğ½Ğ° ĞµĞ´Ğ¸Ğ½Ğ¸Ñ†Ñƒ
      * 
      * @global type $DB
-     * @param type $id ÈÄ àâòîîòâåòîâ
-     * @return bool TRUE, åñëè óñïåøíî
+     * @param type $id Ğ˜Ğ” Ğ°Ğ²Ñ‚Ğ¾Ğ¾Ñ‚Ğ²ĞµÑ‚Ğ¾Ğ²
+     * @return bool TRUE, ĞµÑĞ»Ğ¸ ÑƒÑĞ¿ĞµÑˆĞ½Ğ¾
      */    
     public function increase($id)
     {
@@ -96,7 +96,7 @@ class autoresponse
     }
     
     /**
-     * Óìåíüùàåò êîëè÷åñòâî àâòîîòâåòîâ äëÿ âñåõ ïğåäëîæåíèé ïğîåêòà
+     * Ğ£Ğ¼ĞµĞ½ÑŒÑ‰Ğ°ĞµÑ‚ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ°Ğ²Ñ‚Ğ¾Ğ¾Ñ‚Ğ²ĞµÑ‚Ğ¾Ğ² Ğ´Ğ»Ñ Ğ²ÑĞµÑ… Ğ¿Ñ€ĞµĞ´Ğ»Ğ¾Ğ¶ĞµĞ½Ğ¸Ğ¹ Ğ¿Ñ€Ğ¾ĞµĞºÑ‚Ğ°
      * @param type $project_id
      * @return type
      */
@@ -121,7 +121,7 @@ class autoresponse
     }
     
     /**
-     * Óâåëè÷èâàåò êîëè÷åñòâî àâòîîòâåòîâ äëÿ âñåõ ïğåäëîæåíèé ïğîåêòà
+     * Ğ£Ğ²ĞµĞ»Ğ¸Ñ‡Ğ¸Ğ²Ğ°ĞµÑ‚ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ°Ğ²Ñ‚Ğ¾Ğ¾Ñ‚Ğ²ĞµÑ‚Ğ¾Ğ² Ğ´Ğ»Ñ Ğ²ÑĞµÑ… Ğ¿Ñ€ĞµĞ´Ğ»Ğ¾Ğ¶ĞµĞ½Ğ¸Ğ¹ Ğ¿Ñ€Ğ¾ĞµĞºÑ‚Ğ°
      * @param type $project_id
      * @return type
      */
@@ -142,8 +142,8 @@ class autoresponse
     }
     
     /**
-    * Ñîçäàíèå íîâîãî àâòîîòâåòà íà ïğîåêò
-    * @param array $data Ìàññèâ ñ ïàğàìåòğàìè äëÿ ñîçäàíèÿ àâòîîòâåòà
+    * Ğ¡Ğ¾Ğ·Ğ´Ğ°Ğ½Ğ¸Ğµ Ğ½Ğ¾Ğ²Ğ¾Ğ³Ğ¾ Ğ°Ğ²Ñ‚Ğ¾Ğ¾Ñ‚Ğ²ĞµÑ‚Ğ° Ğ½Ğ° Ğ¿Ñ€Ğ¾ĞµĞºÑ‚
+    * @param array $data ĞœĞ°ÑÑĞ¸Ğ² Ñ Ğ¿Ğ°Ñ€Ğ°Ğ¼ĞµÑ‚Ñ€Ğ°Ğ¼Ğ¸ Ğ´Ğ»Ñ ÑĞ¾Ğ·Ğ´Ğ°Ğ½Ğ¸Ñ Ğ°Ğ²Ñ‚Ğ¾Ğ¾Ñ‚Ğ²ĞµÑ‚Ğ°
     */
     static function create($data)
     {
@@ -185,9 +185,9 @@ class autoresponse
     }
 
     /**
-    * Èçâëå÷åíèå îäíîãî àâòîîòâåòà
+    * Ğ˜Ğ·Ğ²Ğ»ĞµÑ‡ĞµĞ½Ğ¸Ğµ Ğ¾Ğ´Ğ½Ğ¾Ğ³Ğ¾ Ğ°Ğ²Ñ‚Ğ¾Ğ¾Ñ‚Ğ²ĞµÑ‚Ğ°
     *
-    * @param int $id Èäåíòèôèêàòîğ àâòîîòâåòà
+    * @param int $id Ğ˜Ğ´ĞµĞ½Ñ‚Ğ¸Ñ„Ğ¸ĞºĞ°Ñ‚Ğ¾Ñ€ Ğ°Ğ²Ñ‚Ğ¾Ğ¾Ñ‚Ğ²ĞµÑ‚Ğ°
     * @return Object autoresponse
     */
     static function get($id)
@@ -204,9 +204,9 @@ class autoresponse
     }
 
     /**
-    * Èçâëå÷åíèå êóïëåíûõ àâòîîòâåòîâ äëÿ ïîëüçîâàòåëÿ
+    * Ğ˜Ğ·Ğ²Ğ»ĞµÑ‡ĞµĞ½Ğ¸Ğµ ĞºÑƒĞ¿Ğ»ĞµĞ½Ñ‹Ñ… Ğ°Ğ²Ñ‚Ğ¾Ğ¾Ñ‚Ğ²ĞµÑ‚Ğ¾Ğ² Ğ´Ğ»Ñ Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»Ñ
     *
-    * @param int $user_id Èäåíòèôèêàòîğ ïîëüçîâàòåëÿ
+    * @param int $user_id Ğ˜Ğ´ĞµĞ½Ñ‚Ğ¸Ñ„Ğ¸ĞºĞ°Ñ‚Ğ¾Ñ€ Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»Ñ
     * @return array(autoresponse a1, ... autoresponse an)|array()
     */
     static function findForUser($user_id)
@@ -228,9 +228,9 @@ class autoresponse
     }
 
     /**
-    * Èçâëå÷åíèå àâòîîòâåòîâ êîòîğûå ñîîòâåòñâóşò êğèòåğèÿì ïğîåêòà
+    * Ğ˜Ğ·Ğ²Ğ»ĞµÑ‡ĞµĞ½Ğ¸Ğµ Ğ°Ğ²Ñ‚Ğ¾Ğ¾Ñ‚Ğ²ĞµÑ‚Ğ¾Ğ² ĞºĞ¾Ñ‚Ğ¾Ñ€Ñ‹Ğµ ÑĞ¾Ğ¾Ñ‚Ğ²ĞµÑ‚ÑĞ²ÑƒÑÑ‚ ĞºÑ€Ğ¸Ñ‚ĞµÑ€Ğ¸ÑĞ¼ Ğ¿Ñ€Ğ¾ĞµĞºÑ‚Ğ°
     *
-    * @param project $project Ïğîåêò (îáúåêò êëàññà project)
+    * @param project $project ĞŸÑ€Ğ¾ĞµĞºÑ‚ (Ğ¾Ğ±ÑŠĞµĞºÑ‚ ĞºĞ»Ğ°ÑÑĞ° project)
     * @return array (autoresponse a1, autoresponse a2, ... autoresponse a1)
     */
     static function getListForProject($project)
@@ -238,7 +238,7 @@ class autoresponse
         global $DB;
         $list = array();
 
-        // Ñïåöèàëèçàöèÿ ïğîåêòà
+        // Ğ¡Ğ¿ĞµÑ†Ğ¸Ğ°Ğ»Ğ¸Ğ·Ğ°Ñ†Ğ¸Ñ Ğ¿Ñ€Ğ¾ĞµĞºÑ‚Ğ°
         $sql_spec = '';
         $specs = projects::getProjectCategories($project['id']);
         foreach ($specs as $spec) {
@@ -253,7 +253,7 @@ class autoresponse
             );
         }
 
-        // Çàïğîñ íà èçâëå÷åíèå àâòîîòâåòîâ, ïîäõîäÿùèõ ê âûáğàííîìó ïğîåêòó
+        // Ğ—Ğ°Ğ¿Ñ€Ğ¾Ñ Ğ½Ğ° Ğ¸Ğ·Ğ²Ğ»ĞµÑ‡ĞµĞ½Ğ¸Ğµ Ğ°Ğ²Ñ‚Ğ¾Ğ¾Ñ‚Ğ²ĞµÑ‚Ğ¾Ğ², Ğ¿Ğ¾Ğ´Ñ…Ğ¾Ğ´ÑÑ‰Ğ¸Ñ… Ğº Ğ²Ñ‹Ğ±Ñ€Ğ°Ğ½Ğ½Ğ¾Ğ¼Ñƒ Ğ¿Ñ€Ğ¾ĞµĞºÑ‚Ñƒ
         $sql = sprintf("SELECT DISTINCT ON (user_id) user_id, id, post_date, descr, only_4_cust 
                 FROM autoresponse 
                 WHERE 
@@ -278,11 +278,11 @@ class autoresponse
                 $data['freelancer'] = $freelancer;
                 $data['contacts_freelancer'] = array(
                     'phone' => array(
-                        'name' => 'Òåëåôîí',
+                        'name' => 'Ğ¢ĞµĞ»ĞµÑ„Ğ¾Ğ½',
                         'value' => $freelancer->phone
                     ),
                     'site' => array(
-                        'name' => 'Ñàéò',
+                        'name' => 'Ğ¡Ğ°Ğ¹Ñ‚',
                         'value' => $freelancer->site
                     ),
                     'icq' => array(

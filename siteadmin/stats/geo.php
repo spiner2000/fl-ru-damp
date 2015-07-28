@@ -15,18 +15,18 @@ $content = "../content.php";
 $inner_page = trim($_GET['page']);
 if (!$inner_page) $inner_page = "geo";
 
-$aMonthes[1] = 'январь';
-$aMonthes[2] = 'февраль';
-$aMonthes[3] = 'март';
-$aMonthes[4] = 'апрель';
-$aMonthes[5] = 'май';
-$aMonthes[6] = 'июнь';
-$aMonthes[7] = 'июль';
-$aMonthes[8] = 'август';
-$aMonthes[9] = 'сентябрь';
-$aMonthes[10] = 'октябрь';
-$aMonthes[11] = 'ноябрь';
-$aMonthes[12] = 'декабрь';
+$aMonthes[1] = 'СЏРЅРІР°СЂСЊ';
+$aMonthes[2] = 'С„РµРІСЂР°Р»СЊ';
+$aMonthes[3] = 'РјР°СЂС‚';
+$aMonthes[4] = 'Р°РїСЂРµР»СЊ';
+$aMonthes[5] = 'РјР°Р№';
+$aMonthes[6] = 'РёСЋРЅСЊ';
+$aMonthes[7] = 'РёСЋР»СЊ';
+$aMonthes[8] = 'Р°РІРіСѓСЃС‚';
+$aMonthes[9] = 'СЃРµРЅС‚СЏР±СЂСЊ';
+$aMonthes[10] = 'РѕРєС‚СЏР±СЂСЊ';
+$aMonthes[11] = 'РЅРѕСЏР±СЂСЊ';
+$aMonthes[12] = 'РґРµРєР°Р±СЂСЊ';
 
 $inner_page = "inner_".$inner_page.".php";
 

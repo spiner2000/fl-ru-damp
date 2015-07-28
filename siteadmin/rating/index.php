@@ -23,12 +23,12 @@ switch($action)
         if($error = $user->GetUser($login))
           break;
         if(!$user->uid) {
-          $error = "Ошибка, пользователь не найден.";
+          $error = "РћС€РёР±РєР°, РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РЅР°Р№РґРµРЅ.";
           break;
         }
         
         if ( !is_numeric($o_oth_plus) ) {
-            $error = "Ошибка, рейтинг должен быть числом.";
+            $error = "РћС€РёР±РєР°, СЂРµР№С‚РёРЅРі РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ С‡РёСЃР»РѕРј.";
             break;
         }
         
@@ -38,12 +38,12 @@ switch($action)
         );
         
         if(rating::Update($user->uid, $upd)) {
-            // пишем лог админских действий: манипуляции с рейтингом
+            // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№: РјР°РЅРёРїСѓР»СЏС†РёРё СЃ СЂРµР№С‚РёРЅРіРѕРј
             require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/admin_log.php' );
             
             $sObjName = $user->uname. ' ' . $user->usurname . ' [' . $user->login . ']';
             $sObjLink = '/users/' . $user->login;
-            $sReason  = 'Рейтинг ' . ( floatval($o_oth_plus) < 0 ? 'уменьшен' : 'увеличен' ) . ' на ' . abs( $o_oth_plus );
+            $sReason  = 'Р РµР№С‚РёРЅРі ' . ( floatval($o_oth_plus) < 0 ? 'СѓРјРµРЅСЊС€РµРЅ' : 'СѓРІРµР»РёС‡РµРЅ' ) . ' РЅР° ' . abs( $o_oth_plus );
             
             admin_log::addLog( 
         	   admin_log::OBJ_CODE_USER, admin_log::ACT_ID_USR_CH_RATING, 
@@ -55,7 +55,7 @@ switch($action)
             exit;
         }
         
-        $error = "Ошибка.";
+        $error = "РћС€РёР±РєР°.";
     break;
     case "setpwd":
         $login = __paramInit('string', NULL, 'login');
@@ -70,7 +70,7 @@ switch($action)
 	    $err = $user->Update($uid,$res);
 	    $codes->DelByUT($uid, 1);
         
-        // Пишем в лог смены паролей
+        // РџРёС€РµРј РІ Р»РѕРі СЃРјРµРЅС‹ РїР°СЂРѕР»РµР№
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/restorepass_log.php");
         restorepass_log::SaveToLog($uid, getRemoteIP(), 4, get_uid(false));   
         
@@ -101,11 +101,11 @@ switch($action)
                 header ( 'Location: /siteadmin/rating/?result=success' );
             }
             else {
-                $sError = 'Ошибка, Кол-во дней должно быть целым числом.';
+                $sError = 'РћС€РёР±РєР°, РљРѕР»-РІРѕ РґРЅРµР№ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ С†РµР»С‹Рј С‡РёСЃР»РѕРј.';
             }
         }
         else {
-            $sError = 'Ошибка, пользователь не найден.';
+            $sError = 'РћС€РёР±РєР°, РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РЅР°Р№РґРµРЅ.';
         }
     break;
 }

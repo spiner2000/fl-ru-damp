@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/xajax_core/xajax.inc.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/config.php");
 $xajax = new xajax("/xajax/freelancers.server.php");
 //$xajax->debugOn();
-$xajax->configure('waitCursor', true); // Äëÿ Fp íóæåí...
+$xajax->configure('waitCursor', true); // Ð”Ð»Ñ Fp Ð½ÑƒÐ¶ÐµÐ½...
 $xajax->configure('decodeUTF8Input',true);
 $xajax->configure('scriptLoadTimeout', XAJAX_LOAD_TIMEOUT);
 $xajax->register(XAJAX_FUNCTION, "ChangeCity");
@@ -19,12 +19,12 @@ $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPaymentProcess", $_
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("checkPromoCode", $_SERVER['DOCUMENT_ROOT'] . "/xajax/promo_codes.server.php"));
 
 
-//Àÿêñ îáðàáîò÷èêè ïîïàïà ïîêóïêè ÏÐÎ
+//ÐÑÐºÑ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚Ñ‡Ð¸ÐºÐ¸ Ð¿Ð¾Ð¿Ð°Ð¿Ð° Ð¿Ð¾ÐºÑƒÐ¿ÐºÐ¸ ÐŸÐ Ðž
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROPayAccount", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROGetYandexKassaLink", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROGetPlatipotomLink", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));
 
 
-//Îáðàáîòêà ïåðåêëþ÷åíèÿ ñòðàíèö â ïîïàïå ðåäàêòèðîâàíèÿ ðàáîò â êàòàëîãå ôðèëàíñåðîâ
+//ÐžÐ±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ° Ð¿ÐµÑ€ÐµÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ñ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ† Ð² Ð¿Ð¾Ð¿Ð°Ð¿Ðµ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ñ€Ð°Ð±Ð¾Ñ‚ Ð² ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ðµ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð²
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("FPEP_getTab", $_SERVER['DOCUMENT_ROOT'] . "/xajax/freelancers_preview_editor_popup.server.php"));
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("FPEP_saveProcess", $_SERVER['DOCUMENT_ROOT'] . "/xajax/freelancers_preview_editor_popup.server.php"));

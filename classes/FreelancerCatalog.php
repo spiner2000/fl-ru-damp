@@ -11,7 +11,7 @@ class FreelancerCatalog {
     const CATALOG_PORTFOLIO_MEM_LIFE    = 600;
 
     const CATALOG_PROFI_MEM_TAG         = 'freelancer_getProfiCatalog';
-    const CATALOG_PROFI_MEM_LIFE        = 3600;//1 час
+    const CATALOG_PROFI_MEM_LIFE        = 3600;//1 С‡Р°СЃ
     
     private $TABLE_COUNTERS = 'freelancer_catalog_counters';
     
@@ -22,19 +22,19 @@ class FreelancerCatalog {
             ";
     const ORDER_BASE = "f.is_pro DESC, f.rating_displayed DESC";
     
-    //Экземпляр БД 
+    //Р­РєР·РµРјРїР»СЏСЂ Р‘Р” 
     private $db;
     
-    // Код сортировки
+    // РљРѕРґ СЃРѕСЂС‚РёСЂРѕРІРєРё
     private $order;
     
-    //Направление сортировки
+    //РќР°РїСЂР°РІР»РµРЅРёРµ СЃРѕСЂС‚РёСЂРѕРІРєРё
     private $direction;
 
-    //Массив uid закрепленных юзеров
+    //РњР°СЃСЃРёРІ uid Р·Р°РєСЂРµРїР»РµРЅРЅС‹С… СЋР·РµСЂРѕРІ
     private $bind_ids;
     
-    //Массив uid юзеров для отображения
+    //РњР°СЃСЃРёРІ uid СЋР·РµСЂРѕРІ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ
     private $uids;
     
     private $prof_group_id;
@@ -53,11 +53,11 @@ class FreelancerCatalog {
     }
     
     /**
-     * Инициализирует переменные класса
-     * @param int prof_group_id ИД Раздела
-     * @param int prof_id ИД Подраздела
-     * @param int $page Страница
-     * @param string $order Сортировка. Допустимы: "sbr", "ops", "pph", "ppp", "pp1", "ppm", "gnr"
+     * РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РїРµСЂРµРјРµРЅРЅС‹Рµ РєР»Р°СЃСЃР°
+     * @param int prof_group_id РР” Р Р°Р·РґРµР»Р°
+     * @param int prof_id РР” РџРѕРґСЂР°Р·РґРµР»Р°
+     * @param int $page РЎС‚СЂР°РЅРёС†Р°
+     * @param string $order РЎРѕСЂС‚РёСЂРѕРІРєР°. Р”РѕРїСѓСЃС‚РёРјС‹: "sbr", "ops", "pph", "ppp", "pp1", "ppm", "gnr"
      * @param type $direction
      */
     public function initSearch($prof_group_id, $prof_id, $page = 1, $order = "gnr", $direction = 0)
@@ -76,7 +76,7 @@ class FreelancerCatalog {
     
     
     /**
-     * Проверяет, удалось ли заполнить данные
+     * РџСЂРѕРІРµСЂСЏРµС‚, СѓРґР°Р»РѕСЃСЊ Р»Рё Р·Р°РїРѕР»РЅРёС‚СЊ РґР°РЅРЅС‹Рµ
      * @return bool
      */
     public function isFound()
@@ -93,7 +93,7 @@ class FreelancerCatalog {
     }
     
     /**
-     * Формирует строку сортировки
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ СЃС‚СЂРѕРєСѓ СЃРѕСЂС‚РёСЂРѕРІРєРё
      */
     private function getSorting()
     {
@@ -104,13 +104,13 @@ class FreelancerCatalog {
         switch($this->order)
         {
             case "ops":
-                //Это запишем сразу в таблицу freelancer и замутим индекс
+                //Р­С‚Рѕ Р·Р°РїРёС€РµРј СЃСЂР°Р·Сѓ РІ С‚Р°Р±Р»РёС†Сѓ freelancer Рё Р·Р°РјСѓС‚РёРј РёРЅРґРµРєСЃ
                 //zin(uc.ops_emp_plus)-zin(uc.ops_emp_minus) as osum,
                 $order .= "f.osum {$dir_sql}, s.rating_displayed {$dir_sql}";
                 $this->order_fields = 'f.osum';
                 break;
             case "sbr":
-                //Это запишем сразу в таблицу freelancer и замутим индекс
+                //Р­С‚Рѕ Р·Р°РїРёС€РµРј СЃСЂР°Р·Сѓ РІ С‚Р°Р±Р»РёС†Сѓ freelancer Рё Р·Р°РјСѓС‚РёРј РёРЅРґРµРєСЃ
                 //zin(uc.sbr_opi_plus + uc.tu_orders_plus + uc.projects_fb_plus)-zin(uc.sbr_opi_minus + uc.tu_orders_minus + uc.projects_fb_minus) as ssum, 
                 $order .= "f.ssum {$dir_sql}, s.rating_displayed {$dir_sql}";
                 $this->order_fields = 'f.ssum';
@@ -149,7 +149,7 @@ class FreelancerCatalog {
         $where = self::WHERE_BASE;
         
         if ($this->prof_group_id) {
-            //Раздел
+            //Р Р°Р·РґРµР»
             $profs = professions::getProfIdForGroups($this->prof_group_id, true);
             if ($profs) {
                 $this->prof_list = $profs;
@@ -165,8 +165,8 @@ class FreelancerCatalog {
     }
     
     /**
-     * Получить закрепленные в текущей категории
-     * @todo Профессия должна быть также указана у пользователя (он мог ее сменить)
+     * РџРѕР»СѓС‡РёС‚СЊ Р·Р°РєСЂРµРїР»РµРЅРЅС‹Рµ РІ С‚РµРєСѓС‰РµР№ РєР°С‚РµРіРѕСЂРёРё
+     * @todo РџСЂРѕС„РµСЃСЃРёСЏ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ С‚Р°РєР¶Рµ СѓРєР°Р·Р°РЅР° Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (РѕРЅ РјРѕРі РµРµ СЃРјРµРЅРёС‚СЊ)
      */
     private function getBindIds()
     {
@@ -196,7 +196,7 @@ class FreelancerCatalog {
     }
 
     /**
-     * Ищет uid пользователей по условию и сохраняет результат в поле $this->uids
+     * РС‰РµС‚ uid РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РїРѕ СѓСЃР»РѕРІРёСЋ Рё СЃРѕС…СЂР°РЅСЏРµС‚ СЂРµР·СѓР»СЊС‚Р°С‚ РІ РїРѕР»Рµ $this->uids
      * @param type $page
      */
     public function initList($page = 1) {
@@ -262,7 +262,7 @@ class FreelancerCatalog {
     }
     
     /**
-     * Получает все необходимые данные по массиву uids
+     * РџРѕР»СѓС‡Р°РµС‚ РІСЃРµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РґР°РЅРЅС‹Рµ РїРѕ РјР°СЃСЃРёРІСѓ uids
      * @return array
      */
     public function getUsers()
@@ -304,7 +304,7 @@ class FreelancerCatalog {
     }
     
     /**
-     * Получение данных для отображения портфолио
+     * РџРѕР»СѓС‡РµРЅРёРµ РґР°РЅРЅС‹С… РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РїРѕСЂС‚С„РѕР»РёРѕ
      * @return type
      */
     public function getWorks()
@@ -336,8 +336,8 @@ class FreelancerCatalog {
     }
     
     /**
-     * Общее количество найденных элементов. Необходимо для постраничной навигации
-     * @todo Добовить реализацию метода
+     * РћР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РЅР°Р№РґРµРЅРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ. РќРµРѕР±С…РѕРґРёРјРѕ РґР»СЏ РїРѕСЃС‚СЂР°РЅРёС‡РЅРѕР№ РЅР°РІРёРіР°С†РёРё
+     * @todo Р”РѕР±РѕРІРёС‚СЊ СЂРµР°Р»РёР·Р°С†РёСЋ РјРµС‚РѕРґР°
      * @return int
      */
     public function getPages($count = null)
@@ -349,7 +349,7 @@ class FreelancerCatalog {
     }
     
     /**
-     * Получить массив тегов для подписи к кешу
+     * РџРѕР»СѓС‡РёС‚СЊ РјР°СЃСЃРёРІ С‚РµРіРѕРІ РґР»СЏ РїРѕРґРїРёСЃРё Рє РєРµС€Сѓ
      * 
      * @param type $prof_id
      * @param type $is_spec

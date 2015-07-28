@@ -12,11 +12,11 @@
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Проект</th>
+                            <th>РџСЂРѕРµРєС‚</th>
                             <th></th>
-                            <th>Исполнитель</th>
-                            <th>Бюджет</th>
-                            <th>Срок</th>
+                            <th>РСЃРїРѕР»РЅРёС‚РµР»СЊ</th>
+                            <th>Р‘СЋРґР¶РµС‚</th>
+                            <th>РЎСЂРѕРє</th>
                         </tr>
                     </thead>
                 </table>
@@ -37,21 +37,21 @@
                             <tr<?=(++$i==$sbr_count ? ' class="last"' : '')?>>
                                 <th><input type="checkbox" name="id[]" value="<?=$id?>" onclick="SBR.selectDraft(this, <?=(int)$curr_sbr->checkSendReady()?>)" /></th>
                                 <td><a href="?site=edit&id=<?=$id?>"><?=reformat($curr_sbr->data['name'],38,0,1)?></a></td>
-                                <td>Задачи: <?=$curr_sbr->data['stages_cnt']?></td>
+                                <td>Р—Р°РґР°С‡Рё: <?=$curr_sbr->data['stages_cnt']?></td>
                                 <td>
                                   <? if($curr_sbr->data['frl_login']) { ?>
                                     <a href="/users/<?=$curr_sbr->data['frl_login']?>/" class="nr-draft-user"><?=($curr_sbr->data['frl_uname'].' '.$curr_sbr->data['frl_usurname'].' ['.$curr_sbr->data['frl_login'].']')?></a>
-                                  <? } else { ?>Не выбран<? } ?>
+                                  <? } else { ?>РќРµ РІС‹Р±СЂР°РЅ<? } ?>
                                 </td>
                                 <td>
                                   <? if($curr_sbr->data['cost']) { ?>
                                     <?=sbr_meta::view_cost($curr_sbr->data['cost'], $curr_sbr->cost_sys)?>
-                                  <? } else { echo ($curr_sbr->data['cost'] ? 'Не определен' : 'Не задан'); } ?>
+                                  <? } else { echo ($curr_sbr->data['cost'] ? 'РќРµ РѕРїСЂРµРґРµР»РµРЅ' : 'РќРµ Р·Р°РґР°РЅ'); } ?>
                                 </td>
                                 <td>
                                   <? if($curr_sbr->data['work_days']) { ?>
-                                    <?=$curr_sbr->data['work_days'].'&nbsp;'.ending($curr_sbr->data['work_days'], 'день', 'дня', 'дней')?>
-                                  <? } else { echo ($curr_sbr->data['work_days'] ? 'Не определен' : 'Не указан'); } ?>
+                                    <?=$curr_sbr->data['work_days'].'&nbsp;'.ending($curr_sbr->data['work_days'], 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№')?>
+                                  <? } else { echo ($curr_sbr->data['work_days'] ? 'РќРµ РѕРїСЂРµРґРµР»РµРЅ' : 'РќРµ СѓРєР°Р·Р°РЅ'); } ?>
                                 </td>
                             </tr>
                             <? } ?>
@@ -66,15 +66,15 @@
             <b class="b1"></b>
             <b class="b2"></b>
             <div class="form-in">
-                Чтобы отправить проект на утверждение необходимо определить исполнителя, техническое задание, а также сроки и бюджет во всех задачах проекта.
+                Р§С‚РѕР±С‹ РѕС‚РїСЂР°РІРёС‚СЊ РїСЂРѕРµРєС‚ РЅР° СѓС‚РІРµСЂР¶РґРµРЅРёРµ РЅРµРѕР±С…РѕРґРёРјРѕ РѕРїСЂРµРґРµР»РёС‚СЊ РёСЃРїРѕР»РЅРёС‚РµР»СЏ, С‚РµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ, Р° С‚Р°РєР¶Рµ СЃСЂРѕРєРё Рё Р±СЋРґР¶РµС‚ РІРѕ РІСЃРµС… Р·Р°РґР°С‡Р°С… РїСЂРѕРµРєС‚Р°.
             </div>
             <b class="b2"></b>
             <b class="b1"></b>
         </div>
         <div class="nr-drafts-btns">
-            Отмеченные 
-            <input type="submit" name="send" value="Отправить исполнителю на утверждение" class="i-btn nr-draft-send" disabled="true" />
-            <input type="submit" name="delete" value="Удалить" class="i-btn nr-draft-del" disabled="true" onclick="return window.confirm('Вы действительно хотите удалить проект?')" />
+            РћС‚РјРµС‡РµРЅРЅС‹Рµ 
+            <input type="submit" name="send" value="РћС‚РїСЂР°РІРёС‚СЊ РёСЃРїРѕР»РЅРёС‚РµР»СЋ РЅР° СѓС‚РІРµСЂР¶РґРµРЅРёРµ" class="i-btn nr-draft-send" disabled="true" />
+            <input type="submit" name="delete" value="РЈРґР°Р»РёС‚СЊ" class="i-btn nr-draft-del" disabled="true" onclick="return window.confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РїСЂРѕРµРєС‚?')" />
         </div>
         <input type="hidden" name="site" value="<?=$site?>" />
         <input type="hidden" name="action" value="multiset" />

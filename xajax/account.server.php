@@ -10,9 +10,9 @@ get_uid(false);
 
 
 /**
- * Отправить повторно код для 
- * подтверждения сохранения финансов
- * на текущий номер
+ * РћС‚РїСЂР°РІРёС‚СЊ РїРѕРІС‚РѕСЂРЅРѕ РєРѕРґ РґР»СЏ 
+ * РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ С„РёРЅР°РЅСЃРѕРІ
+ * РЅР° С‚РµРєСѓС‰РёР№ РЅРѕРјРµСЂ
  * 
  * @return \xajaxResponse
  */
@@ -39,13 +39,13 @@ function resendAcceptCode()
                 $objResponse->script("$('sms_accept_code').set('value', '{$_SESSION['sms_accept_code']}')");
             }
             
-            $objResponse->alert("Код выслан повторно.");
+            $objResponse->alert("РљРѕРґ РІС‹СЃР»Р°РЅ РїРѕРІС‚РѕСЂРЅРѕ.");
             
         } else {
             $timer = $sms_gate->next_time_send - time();
             $objResponse->alert("
-                Следующее сообщение можно будет послать через {$timer} ". 
-                ending($timer, 'секунду', 'секунды', 'секунд'));
+                РЎР»РµРґСѓСЋС‰РµРµ СЃРѕРѕР±С‰РµРЅРёРµ РјРѕР¶РЅРѕ Р±СѓРґРµС‚ РїРѕСЃР»Р°С‚СЊ С‡РµСЂРµР· {$timer} ". 
+                ending($timer, 'СЃРµРєСѓРЅРґСѓ', 'СЃРµРєСѓРЅРґС‹', 'СЃРµРєСѓРЅРґ'));
         }
         
         $objResponse->script("$('sms_accept_error').addClass('b-layout__txt_hide'); $('sms_accept_code').getParent().removeClass('b-combo__input_error');");
@@ -56,7 +56,7 @@ function resendAcceptCode()
 
 
 /**
- * Проверка СМС кода для сохранения финансов
+ * РџСЂРѕРІРµСЂРєР° РЎРњРЎ РєРѕРґР° РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ С„РёРЅР°РЅСЃРѕРІ
  * 
  * @param type $code
  * @return \xajaxResponse
@@ -75,7 +75,7 @@ function checkAcceptCode($code)
         
         if ($_SESSION['sms_accept_try'] >= $MAX_ACCEPT_TRY) {
 
-            $error = 'Превышен лимит попыток ввода. Получите код повторно.';
+            $error = 'РџСЂРµРІС‹С€РµРЅ Р»РёРјРёС‚ РїРѕРїС‹С‚РѕРє РІРІРѕРґР°. РџРѕР»СѓС‡РёС‚Рµ РєРѕРґ РїРѕРІС‚РѕСЂРЅРѕ.';
             
         } elseif($code == $_SESSION['sms_accept_code']) {
 
@@ -87,9 +87,9 @@ function checkAcceptCode($code)
             $_SESSION['sms_accept_try'] = !isset($_SESSION['sms_accept_try'])?1:++$_SESSION['sms_accept_try'];
             $cnt = $MAX_ACCEPT_TRY - $_SESSION['sms_accept_try'];
             if ($cnt > 0) {
-                $error = "Неправильный код. Осталось попыток: {$cnt}.";
+                $error = "РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ РєРѕРґ. РћСЃС‚Р°Р»РѕСЃСЊ РїРѕРїС‹С‚РѕРє: {$cnt}.";
             } else {
-                $error = 'Превышен лимит попыток ввода. Получите код повторно.';
+                $error = 'РџСЂРµРІС‹С€РµРЅ Р»РёРјРёС‚ РїРѕРїС‹С‚РѕРє РІРІРѕРґР°. РџРѕР»СѓС‡РёС‚Рµ РєРѕРґ РїРѕРІС‚РѕСЂРЅРѕ.';
             }
         }
         
@@ -115,9 +115,9 @@ function delAttach($id, $login){
         $account = new account();
         $account->GetInfo($user->uid);
     }
-    if(!$account->id) $err = 'Ошибка';
+    if(!$account->id) $err = 'РћС€РёР±РєР°';
     //if(!sbr::isFileInReqvHistory($user->uid,$id)) {
-        if(!$account->delAttach($id)) $err = 'Ошибка';
+        if(!$account->delAttach($id)) $err = 'РћС€РёР±РєР°';
     //}
     $objResponse->call('delFinAttach', $id, $login, 1, $err);
     return $objResponse;
@@ -125,7 +125,7 @@ function delAttach($id, $login){
 
 
 /**
- * Восстановить удаленные финансовые данные
+ * Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ СѓРґР°Р»РµРЅРЅС‹Рµ С„РёРЅР°РЅСЃРѕРІС‹Рµ РґР°РЅРЅС‹Рµ
  * 
  * @param type $uid
  * @return \xajaxResponse

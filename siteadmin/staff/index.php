@@ -30,9 +30,9 @@ if($action) {
                 if($error) $error_login = $error;    
             } else {
                 if($users->ignore_in_stats == 't') {
-                    $error_login = "Пользователь с логином ".$users->login." уже находится в списке";
+                    $error_login = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ Р»РѕРіРёРЅРѕРј ".$users->login." СѓР¶Рµ РЅР°С…РѕРґРёС‚СЃСЏ РІ СЃРїРёСЃРєРµ";
                 } else {
-                    $error_login = "Пользователя с логином ".$_POST['login']." не существует";
+                    $error_login = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ Р»РѕРіРёРЅРѕРј ".$_POST['login']." РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚";
                 }
             }
             break;
@@ -48,9 +48,9 @@ if($action) {
                 if($error) $error_login = $error;    
             } else {
                 if($users->ignore_in_stats == 'f') {
-                    $error_login = "Пользователя с логином ".$_POST['login']." нет в списке";
+                    $error_login = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ Р»РѕРіРёРЅРѕРј ".$_POST['login']." РЅРµС‚ РІ СЃРїРёСЃРєРµ";
                 } else {
-                    $error_login = "Пользователя с логином ".$_POST['login']." не существует";
+                    $error_login = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ Р»РѕРіРёРЅРѕРј ".$_POST['login']." РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚";
                 }
             }
             

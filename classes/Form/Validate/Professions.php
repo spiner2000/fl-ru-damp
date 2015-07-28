@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/professions.php");
 /**
  * Class Form_Validate_Professions
  * 
- * Валидатор наличия раздела и/или специализации
+ * Р’Р°Р»РёРґР°С‚РѕСЂ РЅР°Р»РёС‡РёСЏ СЂР°Р·РґРµР»Р° Рё/РёР»Рё СЃРїРµС†РёР°Р»РёР·Р°С†РёРё
  */
 class Form_Validate_Professions extends Zend_Validate_Abstract  
 {
@@ -13,8 +13,8 @@ class Form_Validate_Professions extends Zend_Validate_Abstract
     const SPEC_INVALID  = 'specInvalid';
     
     protected $_messageTemplates = array(
-        self::GROUP_INVALID => 'Указанный раздел не найден',
-        self::SPEC_INVALID => 'Указанная специализация не найдена'
+        self::GROUP_INVALID => 'РЈРєР°Р·Р°РЅРЅС‹Р№ СЂР°Р·РґРµР» РЅРµ РЅР°Р№РґРµРЅ',
+        self::SPEC_INVALID => 'РЈРєР°Р·Р°РЅРЅР°СЏ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏ РЅРµ РЅР°Р№РґРµРЅР°'
     );
     
     protected $group_idx;

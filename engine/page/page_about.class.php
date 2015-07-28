@@ -1,25 +1,25 @@
 <?php
 /**
- * Класс обрабатывающий все действия на странице /about/
+ * РљР»Р°СЃСЃ РѕР±СЂР°Р±Р°С‚С‹РІР°СЋС‰РёР№ РІСЃРµ РґРµР№СЃС‚РІРёСЏ РЅР° СЃС‚СЂР°РЅРёС†Рµ /about/
  *
  */
 ob_start();
 class page_about extends page_base { 
 	/**
-	 * Название страницы, необходимо для правильных ссылок в шаблонах.
+	 * РќР°Р·РІР°РЅРёРµ СЃС‚СЂР°РЅРёС†С‹, РЅРµРѕР±С…РѕРґРёРјРѕ РґР»СЏ РїСЂР°РІРёР»СЊРЅС‹С… СЃСЃС‹Р»РѕРє РІ С€Р°Р±Р»РѕРЅР°С….
 	 *
 	 * @var string
 	 */
 	public $name_page = "about";
 	/**
-	 * Переменная необходимая для баннеров (определяет какой тип баннеров выводить на данной странице)
+	 * РџРµСЂРµРјРµРЅРЅР°СЏ РЅРµРѕР±С…РѕРґРёРјР°СЏ РґР»СЏ Р±Р°РЅРЅРµСЂРѕРІ (РѕРїСЂРµРґРµР»СЏРµС‚ РєР°РєРѕР№ С‚РёРї Р±Р°РЅРЅРµСЂРѕРІ РІС‹РІРѕРґРёС‚СЊ РЅР° РґР°РЅРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ)
 	 *
 	 * @var string
 	 */
 	public $b_page    = "0|2";
 	
 	/**
-	 * Конструктор класса
+	 * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
 	 *
 	 */
 	function __construct() {
@@ -28,7 +28,7 @@ class page_about extends page_base {
             front::og("tpl")->page = 'about';
 	}
 	/**
-	 * Обработчик событий главной страницы /about/
+	 * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹ /about/
 	 *
 	 */
     function indexAction() {
@@ -48,7 +48,7 @@ class page_about extends page_base {
     }
     
     /**
-     * Обработчик событий страницы /about/logos/ (Логотипы)
+     * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ СЃС‚СЂР°РЅРёС†С‹ /about/logos/ (Р›РѕРіРѕС‚РёРїС‹)
      */
     function logosAction() {
         front::og("tpl")->text = static_pages::get("about_logos");
@@ -56,7 +56,7 @@ class page_about extends page_base {
     }
     
     /**
-     * Обработчик событий страницы /about/documents/ (Официальные документы)
+     * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ СЃС‚СЂР°РЅРёС†С‹ /about/documents/ (РћС„РёС†РёР°Р»СЊРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹)
      */
     function documentsAction() {
         front::og("tpl")->text = static_pages::get("about_documents");
@@ -64,7 +64,7 @@ class page_about extends page_base {
     }
     
     /**
-     * Обработчик событий страницы /about/history/ (История)
+     * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ СЃС‚СЂР°РЅРёС†С‹ /about/history/ (РСЃС‚РѕСЂРёСЏ)
      *
      */
     /*function historyAction() {
@@ -72,7 +72,7 @@ class page_about extends page_base {
         front::og("tpl")->display("about/about_history.tpl");
     }*/
     /**
-     * Обработчик событий страницы /about/rules/ (Правила сайта)
+     * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ СЃС‚СЂР°РЅРёС†С‹ /about/rules/ (РџСЂР°РІРёР»Р° СЃР°Р№С‚Р°)
      *
      */
     function rulesAction() {
@@ -80,7 +80,7 @@ class page_about extends page_base {
         front::og("tpl")->display("about/about_rules.tpl");
     }
 	/**
-     * Обработчик событий страницы /about/offer/ (Пользовательское соглашение)
+     * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ СЃС‚СЂР°РЅРёС†С‹ /about/offer/ (РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ СЃРѕРіР»Р°С€РµРЅРёРµ)
      *
      */
     function offerAction() {
@@ -88,7 +88,7 @@ class page_about extends page_base {
         front::og("tpl")->display("about/about_offer.tpl");
     }
 	/**
-     * Обработчик событий страницы /about/tpo/ (Требования к ПО)
+     * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ СЃС‚СЂР°РЅРёС†С‹ /about/tpo/ (РўСЂРµР±РѕРІР°РЅРёСЏ Рє РџРћ)
      *
      */
     function tpoAction() {
@@ -96,7 +96,7 @@ class page_about extends page_base {
         front::og("tpl")->display("about/about_tpo.tpl");
     }
     /**
-     * Обработчик событий страницы /about/team/ (Команда)
+     * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ СЃС‚СЂР°РЅРёС†С‹ /about/team/ (РљРѕРјР°РЅРґР°)
      *
      */
     function teamAction() {
@@ -113,16 +113,16 @@ class page_about extends page_base {
                 $error = 0;
                 if(empty($name)) {
                     $error = 1;
-                    $error_msgs[1] = 'Поле "Название" заполнено некорректно';
+                    $error_msgs[1] = 'РџРѕР»Рµ "РќР°Р·РІР°РЅРёРµ" Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                 }
                 if(!is_numeric($position)) {
                     $error = 1;
-                    $error_msgs[2] = 'Поле "Порядок" заполнено некорректно';
+                    $error_msgs[2] = 'РџРѕР»Рµ "РџРѕСЂСЏРґРѕРє" Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                 } else {
                     $position = (int) $position;
                     if($position<=0) {
                         $error = 1;
-                        $error_msgs[2] = 'Поле "Порядок" заполнено некорректно';
+                        $error_msgs[2] = 'РџРѕР»Рµ "РџРѕСЂСЏРґРѕРє" Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                     }
                 }
                 $name = change_q($name);
@@ -150,15 +150,15 @@ class page_about extends page_base {
                 $error = 0;
                 if(empty($p_name)) {
                     $error = 1;
-                    $error_msgs[1] = 'Поле "Имя, фамилия" заполнено некорректно';
+                    $error_msgs[1] = 'РџРѕР»Рµ "РРјСЏ, С„Р°РјРёР»РёСЏ" Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                 }
                 if(empty($p_occupation)) {
                     $error = 1;
-                    $error_msgs[2] = 'Поле "Должность" заполнено некорректно';
+                    $error_msgs[2] = 'РџРѕР»Рµ "Р”РѕР»Р¶РЅРѕСЃС‚СЊ" Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                 }
                 if(!is_numeric($p_position) && $p_position!='') {
                     $error = 1;
-                    $error_msgs[3] = 'Поле "Порядок" заполнено некорректно';
+                    $error_msgs[3] = 'РџРѕР»Рµ "РџРѕСЂСЏРґРѕРє" Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                 } else {
                     $p_position = (int) $p_position;
                 }
@@ -167,7 +167,7 @@ class page_about extends page_base {
                     $u = new users();
                     if(!$u->GetUid($ee,$p_login)) {
                         $error = 1;
-                        $error_msgs[4] = 'Поле "Логин" заполнено некорректно';
+                        $error_msgs[4] = 'РџРѕР»Рµ "Р›РѕРіРёРЅ" Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                     }
                 }
                 $p_name = change_q($p_name);
@@ -188,16 +188,16 @@ class page_about extends page_base {
                        		$e = team::UpdateFoto($p_userpic);
                        		if ($e['error']=='1') {
                                    $error = 1;
-                                   $error_msgs[5] = 'Файл не удовлетворяет условиям загрузки';
+                                   $error_msgs[5] = 'Р¤Р°Р№Р» РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё';
                                    $p_foto = $e['foto'];
                             } else {
                                 $p_foto = $e['foto'];
-                                $error_msgs[5] = 'Файл не удовлетворяет условиям загрузки';
+                                $error_msgs[5] = 'Р¤Р°Р№Р» РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё';
                             }
                         }
                     } else {
                         $error = 1;
-                        $error_msgs[5] = 'Файл не удовлетворяет условиям загрузки';
+                        $error_msgs[5] = 'Р¤Р°Р№Р» РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё';
                     }
                 }
 
@@ -237,20 +237,20 @@ class page_about extends page_base {
                 $error = 0;
                 if(empty($p_name)) {
                     $error = 1;
-                    $error_msgs[1] = 'Поле "Имя, фамилия" заполнено некорректно';
+                    $error_msgs[1] = 'РџРѕР»Рµ "РРјСЏ, С„Р°РјРёР»РёСЏ" Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                 }
                 if(empty($p_occupation)) {
                     $error = 1;
-                    $error_msgs[2] = 'Поле "Должность" заполнено некорректно';
+                    $error_msgs[2] = 'РџРѕР»Рµ "Р”РѕР»Р¶РЅРѕСЃС‚СЊ" Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                 }
                 if(!is_numeric($p_position)) {
                     $error = 1;
-                    $error_msgs[3] = 'Поле "Порядок" заполнено некорректно';
+                    $error_msgs[3] = 'РџРѕР»Рµ "РџРѕСЂСЏРґРѕРє" Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                 } else {
                     $p_position = (int) $p_position;
                     if($p_position<=0) {
                         $error = 1;
-                        $error_msgs[3] = 'Поле "Порядок" заполнено некорректно';
+                        $error_msgs[3] = 'РџРѕР»Рµ "РџРѕСЂСЏРґРѕРє" Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                     }
                 }
                 if(!empty($p_login)) {
@@ -258,7 +258,7 @@ class page_about extends page_base {
                     $u = new users();
                     if(!$u->GetUid($ee,$p_login)) {
                         $error = 1;
-                        $error_msgs[4] = 'Поле "Логин" заполнено некорректно';
+                        $error_msgs[4] = 'РџРѕР»Рµ "Р›РѕРіРёРЅ" Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                     }
                 }
                 $p_name = change_q($p_name);
@@ -279,16 +279,16 @@ class page_about extends page_base {
                        		$e = team::UpdateFoto($p_userpic);
                        		if ($e['error']=='1') {
                                    $error = 1;
-                                   $error_msgs[5] = 'Файл не удовлетворяет условиям загрузки';
+                                   $error_msgs[5] = 'Р¤Р°Р№Р» РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё';
                                    $p_foto = $e['foto'];
                             } else {
                                 $p_foto = $e['foto'];
-                                $error_msgs[5] = 'Файл не удовлетворяет условиям загрузки';
+                                $error_msgs[5] = 'Р¤Р°Р№Р» РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё';
                             }
                         }
                     } else {
                         $error = 1;
-                        $error_msgs[5] = 'Файл не удовлетворяет условиям загрузки';
+                        $error_msgs[5] = 'Р¤Р°Р№Р» РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё';
                     }
                 }
 
@@ -321,16 +321,16 @@ class page_about extends page_base {
                 $error = 0;
                 if(empty($name)) {
                     $error = 1;
-                    $error_msgs[1] = 'Поле "Название" заполнено некорректно';
+                    $error_msgs[1] = 'РџРѕР»Рµ "РќР°Р·РІР°РЅРёРµ" Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                 }
                 if(!is_numeric($position)) {
                     $error = 1;
-                    $error_msgs[2] = 'Поле "Порядок" заполнено некорректно';
+                    $error_msgs[2] = 'РџРѕР»Рµ "РџРѕСЂСЏРґРѕРє" Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                 } else {
                     $position = (int) $position;
                     if($position<=0) {
                         $error = 1;
-                        $error_msgs[2] = 'Поле "Порядок" заполнено некорректно';
+                        $error_msgs[2] = 'РџРѕР»Рµ "РџРѕСЂСЏРґРѕРє" Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                     }
                 }
                 $name = change_q($name);
@@ -361,7 +361,7 @@ class page_about extends page_base {
                 break;
         }
 
-    	// Берем команду для вывода
+    	// Р‘РµСЂРµРј РєРѕРјР°РЅРґСѓ РґР»СЏ РІС‹РІРѕРґР°
         front::og("tpl")->groups = team::GetAllGroups();
         foreach(front::og("tpl")->groups as $group) {
             $sql = "SELECT team_people.*, team_groups.id as groups_id,team_groups.title as groups_title, team_groups.position as groups_position FROM team_people LEFT JOIN team_groups ON team_groups.id = team_people.groupid WHERE team_people.groupid=?i ORDER BY team_groups.position, team_people.position, team_people.id ASC";
@@ -379,7 +379,7 @@ class page_about extends page_base {
         front::og("tpl")->display("about/about_team.tpl");
     }
     /**
-     * Обработчик событий страницы /about/services/ (Сервисы)
+     * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ СЃС‚СЂР°РЅРёС†С‹ /about/services/ (РЎРµСЂРІРёСЃС‹)
      *
      */
     function servicesAction() {
@@ -387,7 +387,7 @@ class page_about extends page_base {
         front::og("tpl")->display("about/about_services.tpl");
     }
     /**
-     * Обработчик событий страницы /about/faq/ 
+     * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ СЃС‚СЂР°РЅРёС†С‹ /about/faq/ 
      *
      */
     function faqAction() {
@@ -409,11 +409,11 @@ class page_about extends page_base {
         front::og("tpl")->display("about/about_faq.tpl");
     }
     /**
-     * Обработчик событий страницы /about/coprorative/ (Корпоративный блог)
+     * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ СЃС‚СЂР°РЅРёС†С‹ /about/coprorative/ (РљРѕСЂРїРѕСЂР°С‚РёРІРЅС‹Р№ Р±Р»РѕРі)
      *
      */
     function corporativeAction() {
-    	global $session; // Переменная сессии
+    	global $session; // РџРµСЂРµРјРµРЅРЅР°СЏ СЃРµСЃСЃРёРё
     	
     	front::og("tpl")->css       = "/css/press-center.css";
     	front::og("tpl")->session   = $session;
@@ -422,7 +422,7 @@ class page_about extends page_base {
     	if($this->uri[0]) {
     		if($this->uri[0] == "post") {
 	    		/**
-		    	 * Подключаем файлы для работы с XAJAX на данной странице
+		    	 * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р»С‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ XAJAX РЅР° РґР°РЅРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ
 		    	 */
 		    	require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/banned.common.php");
 		    	require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/banned.server.php");
@@ -430,7 +430,7 @@ class page_about extends page_base {
 		    	front::og("tpl")->xajax     = $xajax; 
     		} else {
     			/**
-		    	 * Подключаем файлы для работы с XAJAX на данной странице
+		    	 * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р»С‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ XAJAX РЅР° РґР°РЅРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ
 		    	 */
     			require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/blogs.common.php");
 			    require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/blogs.server.php");
@@ -438,26 +438,26 @@ class page_about extends page_base {
 			    front::og("tpl")->xajax     = $xajax; 
     		}
     		/**
-    		 * Обработка событий на странице
+    		 * РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёР№ РЅР° СЃС‚СЂР°РЅРёС†Рµ
     		 */
     		switch($this->uri[0]) {
-    			// Страница просмотра определенного Сообщения.
+    			// РЎС‚СЂР°РЅРёС†Р° РїСЂРѕСЃРјРѕС‚СЂР° РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ РЎРѕРѕР±С‰РµРЅРёСЏ.
     			case 'post':
     				$action = @$_POST['action'];
     				
     				
     				switch($action) {
-    					// Добавить коментарий
+    					// Р”РѕР±Р°РІРёС‚СЊ РєРѕРјРµРЅС‚Р°СЂРёР№
     					case "addcmt": 
     						if(!get_uid()) header("Location: /{$this->name_page}/corporative/post/{$_POST['blogID']}/");
     						if(($_SESSION['last_comment_add']+5) > time()) break;
     						list($e, $e1, $idCom) = self::addComment();
-    						// Осли есть ошибка перенаправление на страницу не делать
+    						// РћСЃР»Рё РµСЃС‚СЊ РѕС€РёР±РєР° РїРµСЂРµРЅР°РїСЂР°РІР»РµРЅРёРµ РЅР° СЃС‚СЂР°РЅРёС†Сѓ РЅРµ РґРµР»Р°С‚СЊ
     						if(!$e) {
     						    header("Location: /{$this->name_page}/corporative/post/{$_POST['blogID']}/link/{$idCom}/?new={$idCom}#new");
     						}
     						break;
-    					// Редктировать комментарий
+    					// Р РµРґРєС‚РёСЂРѕРІР°С‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№
     					case "editcmt":
     						$idCom = intval($this->uri[3]);
     						if(!get_uid()) header("Location: /{$this->name_page}/corporative/post/{$_POST['blogID']}/?new={$idCom}");	
@@ -519,7 +519,7 @@ class page_about extends page_base {
 		    		$action2 = $this->uri[2];
 		    		
 		    		switch($action2) {
-		    			// Редактирование комментария
+		    			// Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
 		    			case "edit":
 		    				$IDEdit = intval($this->uri[3]);
 		    				
@@ -528,7 +528,7 @@ class page_about extends page_base {
 		    				front::og("tpl")->edit_flag = 1;
 		    				front::og("tpl")->IDEdit    = $IDEdit;
 		    				break;
-		    			// Редактирование комментариев (только для админов и модераторов)	
+		    			// Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ (С‚РѕР»СЊРєРѕ РґР»СЏ Р°РґРјРёРЅРѕРІ Рё РјРѕРґРµСЂР°С‚РѕСЂРѕРІ)	
 		    			case "adminedit":
 		    				if(!hasPermissions('about')) header("Location: /{$this->name_page}/corporative/post/$id/");
 				    		
@@ -540,7 +540,7 @@ class page_about extends page_base {
 		    				front::og("tpl")->IDEditAdm = $id;
 		    				
 		    				break;	
-		    			// Редактирование сообщения
+		    			// Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ
 		    			case "renew":
 		    				$IDEdit = intval($this->uri[3]);
 		    				if(!hasPermissions('about')) header("Location: /{$this->name_page}/corporative/post/{$comments[$IDEdit]['id_blog']}/");
@@ -549,7 +549,7 @@ class page_about extends page_base {
 		    				front::og("db")->update("UPDATE corporative_blog SET ?s WHERE (id = ?n)", $save, $IDEdit);
 		    				header("Location: /{$this->name_page}/corporative/post/{$comments[$IDEdit]['id_blog']}/#c".$IDEdit);
 		    				break;
-		    			// Ссылка на какой либо комментарий на странице.	
+		    			// РЎСЃС‹Р»РєР° РЅР° РєР°РєРѕР№ Р»РёР±Рѕ РєРѕРјРјРµРЅС‚Р°СЂРёР№ РЅР° СЃС‚СЂР°РЅРёС†Рµ.	
 		    			case "link":
 		    				front::og("tpl")->linked = intval($this->uri[3]);
 		    				break;		
@@ -561,7 +561,7 @@ class page_about extends page_base {
 		    		front::og("tpl")->script = array( 'mAttach.js', 'banned.js' );
 		        	front::og("tpl")->display("about/about_corporative_post.tpl");	 
     				break;
-    			// Пагинация	
+    			// РџР°РіРёРЅР°С†РёСЏ	
     			case 'page': 
     				$page = intval($this->uri[1]);
     				
@@ -583,7 +583,7 @@ class page_about extends page_base {
     				front::og("tpl")->script = array( 'mAttach.js' );
     				front::og("tpl")->display("about/about_corporative.tpl");
     				break;
-    			// Удаление комментария	
+    			// РЈРґР°Р»РµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ	
     			case 'delete':
     				if($_SESSION["uid"]) {
 	    				$id  = intval($this->uri[1]);
@@ -593,7 +593,7 @@ class page_about extends page_base {
 	    				if($_SESSION["uid"] == $del['id_user'] || hasPermissions('about')) {
 		    				$save = array(
 						            "id_deleted"   => get_uid(), 
-						            //"msg"          => hasPermissions('about')?"":"Комментарий удален автором",
+						            //"msg"          => hasPermissions('about')?"":"РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ Р°РІС‚РѕСЂРѕРј",
 						            "date_deleted" => date("Y-m-d H:i:s"),  
 						        );
 		    				front::og("db")->update("UPDATE corporative_blog SET ?s WHERE (id = ?n)", $save, $id);
@@ -603,7 +603,7 @@ class page_about extends page_base {
     				}
     				
     				break;
-    			// Удаление сообщения (только для админов и модераторов)	
+    			// РЈРґР°Р»РµРЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ (С‚РѕР»СЊРєРѕ РґР»СЏ Р°РґРјРёРЅРѕРІ Рё РјРѕРґРµСЂР°С‚РѕСЂРѕРІ)	
     			case 'deleted':
     				if(hasPermissions('about')) {
 	    				$id  = intval($this->uri[1]);
@@ -612,7 +612,7 @@ class page_about extends page_base {
 	    				if($_SESSION["uid"] == $del['id_user'] || hasPermissions('about')) {
 		    				$save = array(
 						            "id_deleted"   => get_uid(), 
-						            //"msg"          => hasPermissions('about')?"":"Комментарий удален автором",
+						            //"msg"          => hasPermissions('about')?"":"РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ Р°РІС‚РѕСЂРѕРј",
 						            "date_deleted" => date("Y-m-d H:i:s"),  
 						        );
 		    				front::og("db")->update("UPDATE corporative_blog SET ?s WHERE (id = ?n)", $save, $id);
@@ -623,7 +623,7 @@ class page_about extends page_base {
     				header("Location: /{$this->name_page}/corporative/");
     				
     				break;	
-    			// Редактирование сообщения (только для админов и модераторов)	
+    			// Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ (С‚РѕР»СЊРєРѕ РґР»СЏ Р°РґРјРёРЅРѕРІ Рё РјРѕРґРµСЂР°С‚РѕСЂРѕРІ)	
     			case "edit":
     				if(!hasPermissions('about')) header("Location: /{$this->name_page}/corporative/");
     				
@@ -697,7 +697,7 @@ class page_about extends page_base {
     	}
     }
     /**
-     * Обработчик событий страницы /about/feedback/ (Обратная связь)
+     * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ СЃС‚СЂР°РЅРёС†С‹ /about/feedback/ (РћР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ)
      *
      */
     function feedbackAction() {
@@ -709,7 +709,7 @@ class page_about extends page_base {
 	function evaluateAction() {
             $GLOBALS['mem_buff'] = new memBuff();
 		$error = '';
-		// откуда пришел пользователь
+		// РѕС‚РєСѓРґР° РїСЂРёС€РµР» РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ
 		if (preg_match("/\/([A-Za-z0-9]{14,32})\/$/", front::$_req['pg'], $o)) {
 			$from = 'feedback';
 		} else if (preg_match("/\/([0-9]+)_([0-9\.]+)\/$/", front::$_req['pg'], $o))  {
@@ -717,7 +717,7 @@ class page_about extends page_base {
 		}
 		front::og("tpl")->page = front::$_req['pg'];
 		if ($from == 'webim') {
-			// консультант
+			// РєРѕРЅСЃСѓР»СЊС‚Р°РЅС‚
 			front::og("tpl")->evtype = 'webim';
 			$thread  = $o[1];
             $visitor = $o[2];
@@ -727,20 +727,20 @@ class page_about extends page_base {
 				front::og("tpl")->operator = $webim->operator;
 			} else {
 			    if (front::$_req['evaluate'] ) {
-			        $alert = 'Указанного обращения не существует или вы уже оставили отзыв.';
+			        $alert = 'РЈРєР°Р·Р°РЅРЅРѕРіРѕ РѕР±СЂР°С‰РµРЅРёСЏ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ РёР»Рё РІС‹ СѓР¶Рµ РѕСЃС‚Р°РІРёР»Рё РѕС‚Р·С‹РІ.';
 			        echo "Error:" . $alert;
         			exit;
 			    }
 			    else {
-                    front::og("tpl")->error = $error = 'Указанного обращения не существует или вы уже оставили отзыв.';
+                    front::og("tpl")->error = $error = 'РЈРєР°Р·Р°РЅРЅРѕРіРѕ РѕР±СЂР°С‰РµРЅРёСЏ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ РёР»Рё РІС‹ СѓР¶Рµ РѕСЃС‚Р°РІРёР»Рё РѕС‚Р·С‹РІ.';
 			    }
 			}
 		} else {
-			// обратная связь
+			// РѕР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ
 			front::og("tpl")->evtype = 'feedback';
 			$feedback = new feedback;
 			if (!($code = $feedback->DecodeUCode($o[1])) || !$feedback->Check($code['uc'], $code['id'])) {
-				front::og("tpl")->error = $error = 'Указанного обращения не существует или вы уже оставили отзыв.';
+				front::og("tpl")->error = $error = 'РЈРєР°Р·Р°РЅРЅРѕРіРѕ РѕР±СЂР°С‰РµРЅРёСЏ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ РёР»Рё РІС‹ СѓР¶Рµ РѕСЃС‚Р°РІРёР»Рё РѕС‚Р·С‹РІ.';
 			} else {
 				front::og("tpl")->code = $code;
 			}
@@ -753,16 +753,16 @@ class page_about extends page_base {
 			$wish = change_q(front::$_req['wish'], TRUE, 0, FALSE);
 			$alert = '';
 			if (!$alert && !in_array($e1, array(0, 1, 2, 3, 4, 5))) {
-				$alert = 'Ошибка в оценке "Ожидание ответа".';
+				$alert = 'РћС€РёР±РєР° РІ РѕС†РµРЅРєРµ "РћР¶РёРґР°РЅРёРµ РѕС‚РІРµС‚Р°".';
 			}
 			if (!$alert && !in_array($e2, array(0, 1, 2, 3, 4, 5))) {
-				$alert = 'Ошибка в оценке "Доступное содержание".';
+				$alert = 'РћС€РёР±РєР° РІ РѕС†РµРЅРєРµ "Р”РѕСЃС‚СѓРїРЅРѕРµ СЃРѕРґРµСЂР¶Р°РЅРёРµ".';
 			}
 			if (!$alert && !in_array($e3, array(0, 1, 2, 3, 4, 5))) {
-				$alert = 'Ошибка в оценке "Общее впечатление".';
+				$alert = 'РћС€РёР±РєР° РІ РѕС†РµРЅРєРµ "РћР±С‰РµРµ РІРїРµС‡Р°С‚Р»РµРЅРёРµ".';
 			}
 			if (!$alert && !$e1 && !$e2 && !$e3 && !$wish) {
-				$alert = 'Пожалуйста, поставте хотя бы одну оценку или напишите пожелание.';
+				$alert = 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕСЃС‚Р°РІС‚Рµ С…РѕС‚СЏ Р±С‹ РѕРґРЅСѓ РѕС†РµРЅРєСѓ РёР»Рё РЅР°РїРёС€РёС‚Рµ РїРѕР¶РµР»Р°РЅРёРµ.';
 			}
 			if (!$alert) {
 				$wish = substr(iconv('UTF-8', 'CP1251', $wish), 0, feedback::MAX_WISH_CHARS-1);
@@ -780,10 +780,10 @@ class page_about extends page_base {
 	}
 	
     /**
-     * Выборка блогов из таблицы
+     * Р’С‹Р±РѕСЂРєР° Р±Р»РѕРіРѕРІ РёР· С‚Р°Р±Р»РёС†С‹
      *
-     * @param int $page Страница
-     * @param int $count Количество на странице
+     * @param int $page РЎС‚СЂР°РЅРёС†Р°
+     * @param int $count РљРѕР»РёС‡РµСЃС‚РІРѕ РЅР° СЃС‚СЂР°РЅРёС†Рµ
      */
     function getCorporateBlog($page=1, $count=10, $tags=false) {
     	if(!$tags) {
@@ -850,22 +850,22 @@ class page_about extends page_base {
     }
     
     /**
-     * Сортировка дерева комментарие
+     * РЎРѕСЂС‚РёСЂРѕРІРєР° РґРµСЂРµРІР° РєРѕРјРјРµРЅС‚Р°СЂРёРµ
      *
-     * @param mixed $comments Массив комментариев. 
-     * @return array Возвращает массив с отсортированными идишниками комментариев
+     * @param mixed $comments РњР°СЃСЃРёРІ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ. 
+     * @return array Р’РѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ СЃ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹РјРё РёРґРёС€РЅРёРєР°РјРё РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
      */
     function sortTreeComment(&$comments) {
-    	// Создаем два вспомогательных массива, для сортировки
+    	// РЎРѕР·РґР°РµРј РґРІР° РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹С… РјР°СЃСЃРёРІР°, РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё
     	foreach($comments as $k=>$v) {
-			$tree[$v['id']] = $v; // Такой же массив $comments, только ключи данного массива это ИД комментария
-			$lvl[$v['id_reply']][$v['id']] = $v['id']; // Двумерный массив, для определения уровня вложенности комментария
+			$tree[$v['id']] = $v; // РўР°РєРѕР№ Р¶Рµ РјР°СЃСЃРёРІ $comments, С‚РѕР»СЊРєРѕ РєР»СЋС‡Рё РґР°РЅРЅРѕРіРѕ РјР°СЃСЃРёРІР° СЌС‚Рѕ РР” РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+			$lvl[$v['id_reply']][$v['id']] = $v['id']; // Р”РІСѓРјРµСЂРЅС‹Р№ РјР°СЃСЃРёРІ, РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ СѓСЂРѕРІРЅСЏ РІР»РѕР¶РµРЅРЅРѕСЃС‚Рё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
 		}
 		
-		$comments = $tree; // Перезаписываем $comments.
+		$comments = $tree; // РџРµСЂРµР·Р°РїРёСЃС‹РІР°РµРј $comments.
 		$sort     = array();
 		$level    = $last_id = 0;
-		// Сортируем. Укомлектовываем массив $sort пока он не будет равен размеру исходного массива $tree
+		// РЎРѕСЂС‚РёСЂСѓРµРј. РЈРєРѕРјР»РµРєС‚РѕРІС‹РІР°РµРј РјР°СЃСЃРёРІ $sort РїРѕРєР° РѕРЅ РЅРµ Р±СѓРґРµС‚ СЂР°РІРµРЅ СЂР°Р·РјРµСЂСѓ РёСЃС…РѕРґРЅРѕРіРѕ РјР°СЃСЃРёРІР° $tree
 		while(count($sort) < count($tree)) {
 			$i++;
 			if(array_key_exists((int)$last_id, $lvl)) {
@@ -887,7 +887,7 @@ class page_about extends page_base {
 				$last_id = $id;
 			}
 			
-			if($i>10000) break; // Защита от зацикливания (на всякий случай)
+			if($i>10000) break; // Р—Р°С‰РёС‚Р° РѕС‚ Р·Р°С†РёРєР»РёРІР°РЅРёСЏ (РЅР° РІСЃСЏРєРёР№ СЃР»СѓС‡Р°Р№)
 		}
 		
 		return $sort;
@@ -895,21 +895,21 @@ class page_about extends page_base {
     
     
     /**
-     * Добавление Комментария/Сообщения
+     * Р”РѕР±Р°РІР»РµРЅРёРµ РљРѕРјРјРµРЅС‚Р°СЂРёСЏ/РЎРѕРѕР±С‰РµРЅРёСЏ
      *
      */
     function addComment() {
     	$DB = new DB('master'); 
     	if(($_SESSION['last_comment_add']+5) > time()) return false;
     	$_SESSION['last_comment_add'] = time();
-    	/* Данные комментария */
+    	/* Р”Р°РЅРЅС‹Рµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ */
     	$blog   = $_POST['blogID'];
     	$user   = get_uid();
     	$parent = $_POST['parent'];
         $alert = array();
     	if (strlen($_POST['msg']) > blogs::MAX_DESC_CHARS) {
             $error_flag = 1;
-            $alert[2] = "Максимальный размер сообщения ".blogs::MAX_DESC_CHARS." символов!";
+            $alert[2] = "РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ СЃРѕРѕР±С‰РµРЅРёСЏ ".blogs::MAX_DESC_CHARS." СЃРёРјРІРѕР»РѕРІ!";
             $msg =& $_POST['msg'];
         } else {
             $msg = $_POST['msg'];
@@ -929,12 +929,12 @@ class page_about extends page_base {
             if ((strpos($yt_link, 'http://ru.youtube.com/v/') !== 0)
             && (strpos($yt_link, 'http://youtube.com/v/') !== 0)
             && (strpos($yt_link, 'http://www.youtube.com/v/') !== 0)) {
-                $error_flag = 1; $alert[4] = "Неверная ссылка.";
+                $error_flag = 1; $alert[4] = "РќРµРІРµСЂРЅР°СЏ СЃСЃС‹Р»РєР°.";
             }
         }
         if(is_empty_html($msg)) $msg='';
         
-        // загрузка файлов
+        // Р·Р°РіСЂСѓР·РєР° С„Р°Р№Р»РѕРІ
         $attach = $_FILES['attach'];
         
         if(is_array($attach) && sizeof($attach) <= 10) {
@@ -962,12 +962,12 @@ class page_about extends page_base {
             if(is_array($alert_)) $alert = array_merge($alert, $alert_);
         } else {
             if (is_array($attach) && !empty($attach['name'])) {
-                $error_flag = 1; $alert[2] = "Файлов не должно быть больше 10";
+                $error_flag = 1; $alert[2] = "Р¤Р°Р№Р»РѕРІ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 10";
             }
         }
         
         
-        if (!$msg && !count($files)) {$error_flag = 1; $alert[2] = "Поле заполнено некорректно";}
+        if (!$msg && !count($files)) {$error_flag = 1; $alert[2] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";}
         
         if (($msg || $files['f_name'][0]) && get_uid() && !$error_flag) {
         	//if($files['f_name'][0])
@@ -1014,7 +1014,7 @@ class page_about extends page_base {
 	        }
 	        
 	        
-	        //Уведомление о комментарии
+	        //РЈРІРµРґРѕРјР»РµРЅРёРµ Рѕ РєРѕРјРјРµРЅС‚Р°СЂРёРё
 	        
 	        
 	        
@@ -1102,12 +1102,12 @@ class page_about extends page_base {
     }
     
     /**
-     * Закачать файл
+     * Р—Р°РєР°С‡Р°С‚СЊ С„Р°Р№Р»
      *
-     * @param mixed $attach Массив закаченных файлов
-     * @param array $max_image_size Максимально разрешенные размеры файла [width=длинна,height=ширина]
-     * @param string $login Логин того кто закачивает файл
-     * @return array [файлы, ошибки(если есть), коды ошибок(если есть)]
+     * @param mixed $attach РњР°СЃСЃРёРІ Р·Р°РєР°С‡РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ
+     * @param array $max_image_size РњР°РєСЃРёРјР°Р»СЊРЅРѕ СЂР°Р·СЂРµС€РµРЅРЅС‹Рµ СЂР°Р·РјРµСЂС‹ С„Р°Р№Р»Р° [width=РґР»РёРЅРЅР°,height=С€РёСЂРёРЅР°]
+     * @param string $login Р›РѕРіРёРЅ С‚РѕРіРѕ РєС‚Рѕ Р·Р°РєР°С‡РёРІР°РµС‚ С„Р°Р№Р»
+     * @return array [С„Р°Р№Р»С‹, РѕС€РёР±РєРё(РµСЃР»Рё РµСЃС‚СЊ), РєРѕРґС‹ РѕС€РёР±РѕРє(РµСЃР»Рё РµСЃС‚СЊ)]
      */
     function uploadFile($attach, $max_image_size, $login = '') {
     	if ($login == '') $login = $_SESSION['login'];
@@ -1126,19 +1126,19 @@ class page_about extends page_base {
                 $p_name = '';
                 if (! isNulArray($file->error)) {
                     $error_flag = 1;
-                    $alert[3] = "Один или несколько файлов не удовлетворяют условиям загрузки.";
+                    $alert[3] = "РћРґРёРЅ РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ С„Р°Р№Р»РѕРІ РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё.";
                     break;
                 } else {
                     if ($is_image && $ext != 'swf' && $ext != 'flv') {
                         if (! $file->image_size['width'] || ! $file->image_size['height']) {
                             $error_flag = 1;
-                            $alert[3] = 'Невозможно уменьшить картинку';
+                            $alert[3] = 'РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ';
                             break;
                         }
                         if (! $error_flag && ($file->image_size['width'] > $max_image_size['width'] || $file->image_size['height'] > $max_image_size['height'])) {
                             if (! $file->img_to_small("sm_" . $f_name, $max_image_size)) {
                                 $error_flag = 1;
-                                $alert[3] = 'Невозможно уменьшить картинку.';
+                                $alert[3] = 'РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ.';
                                 break;
                             } else {
                                 $tn = 2;
@@ -1161,10 +1161,10 @@ class page_about extends page_base {
         return array($files, $alert, $error_flag);
     }
     /**
-     * Редактировать комментарий
+     * Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№
      *
-     * @param integer $id ИД редактируемого комментария
-     * @return array  [коды ошибок, описание ошибок] (по умолчанию оба занчения null)
+     * @param integer $id РР” СЂРµРґР°РєС‚РёСЂСѓРµРјРѕРіРѕ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+     * @return array  [РєРѕРґС‹ РѕС€РёР±РѕРє, РѕРїРёСЃР°РЅРёРµ РѕС€РёР±РѕРє] (РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РѕР±Р° Р·Р°РЅС‡РµРЅРёСЏ null)
      */
     function editComment($id) {
         $DB = new DB('master'); 
@@ -1184,7 +1184,7 @@ class page_about extends page_base {
     	
     	if (strlen($_POST['msg']) > blogs::MAX_DESC_CHARS) {
             $error_flag = 1;
-            $alert[2] = "Максимальный размер сообщения ".blogs::MAX_DESC_CHARS." символов!";
+            $alert[2] = "РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ СЃРѕРѕР±С‰РµРЅРёСЏ ".blogs::MAX_DESC_CHARS." СЃРёРјРІРѕР»РѕРІ!";
             $msg =& $_POST['msg'];
         } else {
             $msg = $_POST['msg'];
@@ -1200,13 +1200,13 @@ class page_about extends page_base {
             if ((strpos($yt_link, 'http://ru.youtube.com/v/') !== 0)
             && (strpos($yt_link, 'http://youtube.com/v/') !== 0)
             && (strpos($yt_link, 'http://www.youtube.com/v/') !== 0)) {
-                $error_flag = 1; $alert[4] = "Неверная ссылка.";
+                $error_flag = 1; $alert[4] = "РќРµРІРµСЂРЅР°СЏ СЃСЃС‹Р»РєР°.";
             }
         }
         
         if(is_empty_html($msg)) $msg='';
         
-         // загрузка файлов
+         // Р·Р°РіСЂСѓР·РєР° С„Р°Р№Р»РѕРІ
         $attach = $_FILES['attach'];
         
         if(is_array($attach) && sizeof($attach) <= 10) {
@@ -1237,11 +1237,11 @@ class page_about extends page_base {
         
         } else {
             if (is_array($attach) && !empty($attach['name'])) {
-                $error_flag = 1; $alert[2] = "Файлов не должно быть больше 10";
+                $error_flag = 1; $alert[2] = "Р¤Р°Р№Р»РѕРІ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 10";
             }
         }
         
-        if (!$msg && !count($files)) {$error_flag = 1; $alert[2] = "Поле заполнено некорректно";}
+        if (!$msg && !count($files)) {$error_flag = 1; $alert[2] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";}
         
         if (($msg || $files['f_name'][0]) && get_uid() && !$error_flag) {
         	$upd = array(
@@ -1284,11 +1284,11 @@ class page_about extends page_base {
         return array($error_flag, $error);
     }
     /**
-     * Обновить посты которые юзер посмотрел, для того чтобы в след раз когда он зашел он видел есть ли новые комментарии к посту
+     * РћР±РЅРѕРІРёС‚СЊ РїРѕСЃС‚С‹ РєРѕС‚РѕСЂС‹Рµ СЋР·РµСЂ РїРѕСЃРјРѕС‚СЂРµР», РґР»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ РІ СЃР»РµРґ СЂР°Р· РєРѕРіРґР° РѕРЅ Р·Р°С€РµР» РѕРЅ РІРёРґРµР» РµСЃС‚СЊ Р»Рё РЅРѕРІС‹Рµ РєРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїРѕСЃС‚Сѓ
      *
-     * @param integer $bid ИД поста
-     * @param unknown_type $date дата последнего просмотра (UNIX_TIME)
-     * @return array [дата, ИД]
+     * @param integer $bid РР” РїРѕСЃС‚Р°
+     * @param unknown_type $date РґР°С‚Р° РїРѕСЃР»РµРґРЅРµРіРѕ РїСЂРѕСЃРјРѕС‚СЂР° (UNIX_TIME)
+     * @return array [РґР°С‚Р°, РР”]
      */
     function updViewPost($bid, $date=false, $count=0) {
     	if(!$date) $date = date('c');
@@ -1309,11 +1309,11 @@ class page_about extends page_base {
         return array($date, $id);
     }
     /**
-     * Берем последнюю дату просмотра
+     * Р‘РµСЂРµРј РїРѕСЃР»РµРґРЅСЋСЋ РґР°С‚Сѓ РїСЂРѕСЃРјРѕС‚СЂР°
      *
-     * @param integer $uid ID юзера который смотрит
-     * @param integer $bid ID блога который он смотрит
-     * @return array [дата, ИД]
+     * @param integer $uid ID СЋР·РµСЂР° РєРѕС‚РѕСЂС‹Р№ СЃРјРѕС‚СЂРёС‚
+     * @param integer $bid ID Р±Р»РѕРіР° РєРѕС‚РѕСЂС‹Р№ РѕРЅ СЃРјРѕС‚СЂРёС‚
+     * @return array [РґР°С‚Р°, РР”]
      */
     function getViewPost($uid, $bid) {
     	$date = front::og("db")->select("SELECT date_view, id FROM corporative_blog_update WHERE uid = ? AND blog_id = ?", $uid, $bid)->fetchRow();
@@ -1321,10 +1321,10 @@ class page_about extends page_base {
     	return array(strtotime($date['date_view']), intval($date['id']));
     }
     /**
-     * Берем разом все даты блогов (для первой страницы, чтобы выяснить есть ли блоги в которых новые коменты)
+     * Р‘РµСЂРµРј СЂР°Р·РѕРј РІСЃРµ РґР°С‚С‹ Р±Р»РѕРіРѕРІ (РґР»СЏ РїРµСЂРІРѕР№ СЃС‚СЂР°РЅРёС†С‹, С‡С‚РѕР±С‹ РІС‹СЏСЃРЅРёС‚СЊ РµСЃС‚СЊ Р»Рё Р±Р»РѕРіРё РІ РєРѕС‚РѕСЂС‹С… РЅРѕРІС‹Рµ РєРѕРјРµРЅС‚С‹)
      *
-     * @param array $bids Массив идишников блогов
-     * @return array [[массив последних просмотров], [массив даты создания]]
+     * @param array $bids РњР°СЃСЃРёРІ РёРґРёС€РЅРёРєРѕРІ Р±Р»РѕРіРѕРІ
+     * @return array [[РјР°СЃСЃРёРІ РїРѕСЃР»РµРґРЅРёС… РїСЂРѕСЃРјРѕС‚СЂРѕРІ], [РјР°СЃСЃРёРІ РґР°С‚С‹ СЃРѕР·РґР°РЅРёСЏ]]
      */
     function getViewPostsDate($bids) {
     	$res = front::og("db")->select("SELECT date_view, blog_id, v_count, id FROM corporative_blog_update WHERE uid = ? AND blog_id IN (?a)", get_uid(), $bids)->fetchAll();

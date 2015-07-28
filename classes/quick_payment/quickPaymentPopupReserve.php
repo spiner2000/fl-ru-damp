@@ -8,17 +8,17 @@ class quickPaymentPopupReserve extends quickPaymentPopup
 {
     protected $UNIC_NAME = 'reserve';
     
-    //@todo: #28021 Вебмани не позволяет сейчас зачислять суммы свыше 15000р.
+    //@todo: #28021 Р’РµР±РјР°РЅРё РЅРµ РїРѕР·РІРѕР»СЏРµС‚ СЃРµР№С‡Р°СЃ Р·Р°С‡РёСЃР»СЏС‚СЊ СЃСѓРјРјС‹ СЃРІС‹С€Рµ 15000СЂ.
     const MAX_PAYMEN_WM = 15000;
 
 
-    //Исключаем способы оплаты в зависимости
-    //от типа физика или юрика
+    //РСЃРєР»СЋС‡Р°РµРј СЃРїРѕСЃРѕР±С‹ РѕРїР»Р°С‚С‹ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё
+    //РѕС‚ С‚РёРїР° С„РёР·РёРєР° РёР»Рё СЋСЂРёРєР°
     protected $payments_exclude = array(
         sbr::FT_PHYS => array(
             self::PAYMENT_TYPE_BANK,
-            //@todo: ЯД неумеет возвращать платежи способами ниже
-            //поэтому временно исключаем их из способов резервирования для всех
+            //@todo: РЇР” РЅРµСѓРјРµРµС‚ РІРѕР·РІСЂР°С‰Р°С‚СЊ РїР»Р°С‚РµР¶Рё СЃРїРѕСЃРѕР±Р°РјРё РЅРёР¶Рµ
+            //РїРѕСЌС‚РѕРјСѓ РІСЂРµРјРµРЅРЅРѕ РёСЃРєР»СЋС‡Р°РµРј РёС… РёР· СЃРїРѕСЃРѕР±РѕРІ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ РґР»СЏ РІСЃРµС…
             self::PAYMENT_TYPE_ALFACLICK,
             self::PAYMENT_TYPE_SBERBANK
         ),
@@ -31,18 +31,18 @@ class quickPaymentPopupReserve extends quickPaymentPopup
     );
 
     /**
-     * Обьект резерва в зависимости от его типа
-     * но все наследники ReservesModel
-     * @example может быть обьект типа ReservesTServiceOrderModel
+     * РћР±СЊРµРєС‚ СЂРµР·РµСЂРІР° РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РµРіРѕ С‚РёРїР°
+     * РЅРѕ РІСЃРµ РЅР°СЃР»РµРґРЅРёРєРё ReservesModel
+     * @example РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕР±СЊРµРєС‚ С‚РёРїР° ReservesTServiceOrderModel
      * 
-     * @todo: плохой подход только из-за цены передавать целый обьект, 
-     * достаточно было цену передать в init параметром
+     * @todo: РїР»РѕС…РѕР№ РїРѕРґС…РѕРґ С‚РѕР»СЊРєРѕ РёР·-Р·Р° С†РµРЅС‹ РїРµСЂРµРґР°РІР°С‚СЊ С†РµР»С‹Р№ РѕР±СЊРµРєС‚, 
+     * РґРѕСЃС‚Р°С‚РѕС‡РЅРѕ Р±С‹Р»Рѕ С†РµРЅСѓ РїРµСЂРµРґР°С‚СЊ РІ init РїР°СЂР°РјРµС‚СЂРѕРј
      * 
      * @var ReservesModel 
      */
     public $reserveInstance;
     
-    //@todo: современем заменить на данные из обьекта выше
+    //@todo: СЃРѕРІСЂРµРјРµРЅРµРј Р·Р°РјРµРЅРёС‚СЊ РЅР° РґР°РЅРЅС‹Рµ РёР· РѕР±СЊРµРєС‚Р° РІС‹С€Рµ
     public $opt = array();
     public $uid;
     public $reserve_id;
@@ -61,17 +61,17 @@ class quickPaymentPopupReserve extends quickPaymentPopup
         $form_id = $this->ID . '_form';
         $rez_id  = $this->ID . '_rez';
         
-        $form_name = $form_type == sbr::FT_PHYS ? 'физическое лицо' : 'юридическое лицо';
-        //$rez_name = $rez_type == sbr::RT_RU ? 'резидент РФ' : 'нерезидент РФ';
+        $form_name = $form_type == sbr::FT_PHYS ? 'С„РёР·РёС‡РµСЃРєРѕРµ Р»РёС†Рѕ' : 'СЋСЂРёРґРёС‡РµСЃРєРѕРµ Р»РёС†Рѕ';
+        //$rez_name = $rez_type == sbr::RT_RU ? 'СЂРµР·РёРґРµРЅС‚ Р Р¤' : 'РЅРµСЂРµР·РёРґРµРЅС‚ Р Р¤';
         $rez_name = sbr::getRezTypeText($rez_type);
 
         
         $options = array(
             'popup_title_class_bg'      => 'b-fon_bg_po',
             'popup_title_class_icon'    => 'b-icon__po',
-            'popup_title'               => 'Резервирование бюджета',
+            'popup_title'               => 'Р РµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ Р±СЋРґР¶РµС‚Р°',
             'popup_subtitle'            => '',
-            'items_title'               => 'Сумма оплаты',
+            'items_title'               => 'РЎСѓРјРјР° РѕРїР»Р°С‚С‹',
             'popup_id'                  => $this->ID,
             'unic_name'                 => $this->UNIC_NAME,
             'form_name'                 => $form_name,
@@ -86,7 +86,7 @@ class quickPaymentPopupReserve extends quickPaymentPopup
                     'name' => $rez_id
                 )
             ),
-            'payments_title'            => 'Способ резервирования', 
+            'payments_title'            => 'РЎРїРѕСЃРѕР± СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ', 
             'payments_exclude'          => $this->payments_exclude[$form_type]
         );
         
@@ -115,7 +115,7 @@ class quickPaymentPopupReserve extends quickPaymentPopup
     
     
     /**
-     * Метод для поддержки интерфейса виджета в архитектуре Yii
+     * РњРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РёРЅС‚РµСЂС„РµР№СЃР° РІРёРґР¶РµС‚Р° РІ Р°СЂС…РёС‚РµРєС‚СѓСЂРµ Yii
      */
     public function run()
     {

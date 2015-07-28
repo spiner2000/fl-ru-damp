@@ -10,11 +10,11 @@ if ( empty($_SESSION['masssending_total_filesize']) ) $_SESSION['masssending_tot
 if ( empty($_SESSION['masssending']['files']) )       $_SESSION['masssending']['files'] = array();
 
 if ( count($_SESSION['masssending']['files']) >= masssending::MAX_FILES ) {
-	$error = 'Ìàêñèìàëüíîå êîë-âî ïðèêðåïëåííûõ ôàéëîâ - ' . masssending::MAX_FILES;
+	$error = 'ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ ÐºÐ¾Ð»-Ð²Ð¾ Ð¿Ñ€Ð¸ÐºÑ€ÐµÐ¿Ð»ÐµÐ½Ð½Ñ‹Ñ… Ñ„Ð°Ð¹Ð»Ð¾Ð² - ' . masssending::MAX_FILES;
 }
 else {
     if ( $_SESSION['masssending_total_filesize'] + $_FILES['attach']['size'] > masssending::MAX_FILE_SIZE ) {
-    	$error = 'Ìàêñèìàëüíûé îáúåì ïðèêðåïëåííûõ ôàéëîâ - ' . (masssending::MAX_FILE_SIZE / (1024*1024)).' Má';
+    	$error = 'ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð¾Ð±ÑŠÐµÐ¼ Ð¿Ñ€Ð¸ÐºÑ€ÐµÐ¿Ð»ÐµÐ½Ð½Ñ‹Ñ… Ñ„Ð°Ð¹Ð»Ð¾Ð² - ' . (masssending::MAX_FILE_SIZE / (1024*1024)).' MÐ±';
     }
     else {
         if ($uid = get_uid(FALSE)) {
@@ -26,11 +26,11 @@ else {
             $filetype = $file->getext();
         	$error = $file->error;
         } else {
-        	$error = 'Âû íå àâòîðèçîâàíû';
+        	$error = 'Ð’Ñ‹ Ð½Ðµ Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð¾Ð²Ð°Ð½Ñ‹';
         }
         
         if (!$file->id && !$error) {
-        	$error = 'Îøèáêà ïðè çàãðóçêå ôàéëà. Ïîæàëóéñòà, ïîïðîáóéòå åùå ðàç.';
+        	$error = 'ÐžÑˆÐ¸Ð±ÐºÐ° Ð¿Ñ€Ð¸ Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÐµ Ñ„Ð°Ð¹Ð»Ð°. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð¿Ð¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ ÐµÑ‰Ðµ Ñ€Ð°Ð·.';
         }
         
         $masssending->AddFile($file->id, session_id());

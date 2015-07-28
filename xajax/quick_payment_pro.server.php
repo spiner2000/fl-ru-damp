@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Покупка ПРО. Оплата услуги.
+ * РџРѕРєСѓРїРєР° РџР Рћ. РћРїР»Р°С‚Р° СѓСЃР»СѓРіРё.
  */
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/billing.php');
@@ -14,7 +14,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/quick_payment/forms/ProForm.p
 
 
 /**
- * Это методы для разных видов оплаты но сгруппированные в яндекс кассе
+ * Р­С‚Рѕ РјРµС‚РѕРґС‹ РґР»СЏ СЂР°Р·РЅС‹С… РІРёРґРѕРІ РѕРїР»Р°С‚С‹ РЅРѕ СЃРіСЂСѓРїРїРёСЂРѕРІР°РЅРЅС‹Рµ РІ СЏРЅРґРµРєСЃ РєР°СЃСЃРµ
  * 
  * @param type $type
  * @param type $data
@@ -46,7 +46,7 @@ function quickPaymentProSberbank($type, $data)
 
 
 /**
- * Оплата карусели через яндекс кассу
+ * РћРїР»Р°С‚Р° РєР°СЂСѓСЃРµР»Рё С‡РµСЂРµР· СЏРЅРґРµРєСЃ РєР°СЃСЃСѓ
  * 
  * @param type $type
  * @param type $data
@@ -77,7 +77,7 @@ function quickPaymentProYandexKassa($type, $data)
     if (!$form->isValid($data)) {
         $objResponse->script("
             var qp = window.quick_ext_payment_factory.getQuickPayment('pro');
-            if(qp) qp.show_error('К сожалению, в процессе оплаты произошла ошибка, и платеж не был завершен. Попробуйте провести оплату еще раз.');
+            if(qp) qp.show_error('Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, РІ РїСЂРѕС†РµСЃСЃРµ РѕРїР»Р°С‚С‹ РїСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°, Рё РїР»Р°С‚РµР¶ РЅРµ Р±С‹Р» Р·Р°РІРµСЂС€РµРЅ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РїСЂРѕРІРµСЃС‚Рё РѕРїР»Р°С‚Сѓ РµС‰Рµ СЂР°Р·.');
         ");
         
         return $objResponse;
@@ -91,10 +91,10 @@ function quickPaymentProYandexKassa($type, $data)
     
     $bill = new billing($uid);
 
-    //Допустимо использование промокодов
+    //Р”РѕРїСѓСЃС‚РёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РїСЂРѕРјРѕРєРѕРґРѕРІ
     $bill->setPromoCodes('SERVICE_PRO', $promo_code);        
     
-    //Формируем заказ
+    //Р¤РѕСЂРјРёСЂСѓРµРј Р·Р°РєР°Р·
     $billReserveId = $bill->addServiceAndCheckout($opcode);
     $sum = $bill->getRealPayedSum();
       
@@ -112,11 +112,11 @@ function quickPaymentProYandexKassa($type, $data)
             if (qp) qp.sendPaymentForm('{$html_form}');
         ");
             
-        //сохранаем в сессию куда перейти при успешной покупке        
+        //СЃРѕС…СЂР°РЅР°РµРј РІ СЃРµСЃСЃРёСЋ РєСѓРґР° РїРµСЂРµР№С‚Рё РїСЂРё СѓСЃРїРµС€РЅРѕР№ РїРѕРєСѓРїРєРµ        
         $_SESSION[quickPaymentPopup::QPP_REDIRECT] = urldecode($_SESSION['ref_uri']); 
         
         $payed_sum = $bill->getOrderPayedSum(); 
-        //@todo: функционал из старого попапа оплаты нужен рефакторинг
+        //@todo: С„СѓРЅРєС†РёРѕРЅР°Р» РёР· СЃС‚Р°СЂРѕРіРѕ РїРѕРїР°РїР° РѕРїР»Р°С‚С‹ РЅСѓР¶РµРЅ СЂРµС„Р°РєС‚РѕСЂРёРЅРі
         $_SESSION['quickbuypro_is_begin'] = 1;
         $_SESSION['quickbuypro_success_opcode'] = $payed_sum;
         $_SESSION['quickbuypro_success_opcode2'] = $opcode;
@@ -128,7 +128,7 @@ function quickPaymentProYandexKassa($type, $data)
 
 
 /**
- * Оплата с личного счета
+ * РћРїР»Р°С‚Р° СЃ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р°
  * 
  * @param type $type
  * @param array $data
@@ -152,7 +152,7 @@ function quickPaymentProAccount($type, $data)
     if (!$form->isValid($data)) {
         $objResponse->script("
             var qp = window.quick_ext_payment_factory.getQuickPayment('pro');
-            if(qp) qp.show_error('К сожалению, в процессе оплаты произошла ошибка, и платеж не был завершен. Попробуйте провести оплату еще раз.');
+            if(qp) qp.show_error('Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, РІ РїСЂРѕС†РµСЃСЃРµ РѕРїР»Р°С‚С‹ РїСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°, Рё РїР»Р°С‚РµР¶ РЅРµ Р±С‹Р» Р·Р°РІРµСЂС€РµРЅ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РїСЂРѕРІРµСЃС‚Рё РѕРїР»Р°С‚Сѓ РµС‰Рµ СЂР°Р·.');
         ");
         
         return $objResponse;
@@ -164,7 +164,7 @@ function quickPaymentProAccount($type, $data)
     
     $bill = new billing($uid);
     
-    //Допустимо использование промокодов
+    //Р”РѕРїСѓСЃС‚РёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РїСЂРѕРјРѕРєРѕРґРѕРІ
     $bill->setPromoCodes('SERVICE_PRO', $promo_code);     
     
     $complete = $bill->addServiceAndPayFromAccount($opcode);
@@ -177,7 +177,7 @@ function quickPaymentProAccount($type, $data)
         $uri = isset($_SESSION['quickbuypro_redirect'])? $_SESSION['quickbuypro_redirect']: '';
         $uri .= '?quickpro_ok=1';
         
-        //@todo: ПРОФИ пока игнорируем
+        //@todo: РџР РћР¤Р РїРѕРєР° РёРіРЅРѕСЂРёСЂСѓРµРј
         /*
         if ($opcode == 164) {
             $uri = '/profi/?quickprofi_ok=1';
@@ -192,7 +192,7 @@ function quickPaymentProAccount($type, $data)
 
 
 /**
- * Оплата карусели через Плати потом
+ * РћРїР»Р°С‚Р° РєР°СЂСѓСЃРµР»Рё С‡РµСЂРµР· РџР»Р°С‚Рё РїРѕС‚РѕРј
  * 
  * @param type $type
  * @param type $data
@@ -216,7 +216,7 @@ function quickPaymentProPlatipotom($type, $data)
     if (!$form->isValid($data)) {
         $objResponse->script("
             var qp = window.quick_ext_payment_factory.getQuickPayment('pro');
-            if(qp) qp.show_error('К сожалению, в процессе оплаты произошла ошибка, и платеж не был завершен. Попробуйте провести оплату еще раз.');
+            if(qp) qp.show_error('Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, РІ РїСЂРѕС†РµСЃСЃРµ РѕРїР»Р°С‚С‹ РїСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°, Рё РїР»Р°С‚РµР¶ РЅРµ Р±С‹Р» Р·Р°РІРµСЂС€РµРЅ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РїСЂРѕРІРµСЃС‚Рё РѕРїР»Р°С‚Сѓ РµС‰Рµ СЂР°Р·.');
         ");
         
         return $objResponse;
@@ -229,10 +229,10 @@ function quickPaymentProPlatipotom($type, $data)
     
     $bill = new billing($uid);
         
-    //Допустимо использование промокодов
+    //Р”РѕРїСѓСЃС‚РёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РїСЂРѕРјРѕРєРѕРґРѕРІ
     $bill->setPromoCodes('SERVICE_PRO', $promo_code);     
     
-    //Формируем заказ
+    //Р¤РѕСЂРјРёСЂСѓРµРј Р·Р°РєР°Р·
     $billReserveId = $bill->addServiceAndCheckout($opcode);
     $sum = $bill->getRealPayedSum();
     
@@ -251,11 +251,11 @@ function quickPaymentProPlatipotom($type, $data)
                 if (qp) qp.sendPaymentForm('{$html_form}');
             ");
 
-            //сохранаем в сессию куда перейти при успешной покупке        
+            //СЃРѕС…СЂР°РЅР°РµРј РІ СЃРµСЃСЃРёСЋ РєСѓРґР° РїРµСЂРµР№С‚Рё РїСЂРё СѓСЃРїРµС€РЅРѕР№ РїРѕРєСѓРїРєРµ        
             $_SESSION[quickPaymentPopup::QPP_REDIRECT] = urldecode($_SESSION['ref_uri']);
             
             $payed_sum = $bill->getRealPayedSum();
-            //@todo: функционал из старого попапа оплаты нужен рефакторинг
+            //@todo: С„СѓРЅРєС†РёРѕРЅР°Р» РёР· СЃС‚Р°СЂРѕРіРѕ РїРѕРїР°РїР° РѕРїР»Р°С‚С‹ РЅСѓР¶РµРЅ СЂРµС„Р°РєС‚РѕСЂРёРЅРі
             $_SESSION['quickbuypro_is_begin'] = 1;
             $_SESSION['quickbuypro_success_opcode'] = $payed_sum;
             $_SESSION['quickbuypro_success_opcode2'] = $opcode;

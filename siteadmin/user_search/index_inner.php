@@ -4,7 +4,7 @@ $xajax->printJavascript( '/xajax/' );
 
 $sZeroClipboard = '';
 
-// права админа
+// РїСЂР°РІР° Р°РґРјРёРЅР°
 $bHasAll      = hasPermissions( 'all' );
 $bHasPayments = hasPermissions( 'payments' );
 ?>
@@ -12,14 +12,14 @@ $bHasPayments = hasPermissions( 'payments' );
 banned.addContext( 'admin_user_search', -1, '', '' );
 banned.zero = true;
 </script>
-<h3>IP-адреса / Поиск пользователей</h3>
-<!-- Фильтр старт -->
+<h3>IP-Р°РґСЂРµСЃР° / РџРѕРёСЃРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</h3>
+<!-- Р¤РёР»СЊС‚СЂ СЃС‚Р°СЂС‚ -->
 <a name="a_user_search_filter" id="a_user_search_filter"></a>
 <div class="form form-acnew">
 	<b class="b1"></b>
 	<b class="b2"></b>
 	<div class="form-in">
-        <h4 class="toggle"><a href="javascript:void(0);" onclick="var mySlide = new Fx.Slide('slideBlock').toggle();" class="lnk-dot-666">Фильтр</a></h4>
+        <h4 class="toggle"><a href="javascript:void(0);" onclick="var mySlide = new Fx.Slide('slideBlock').toggle();" class="lnk-dot-666">Р¤РёР»СЊС‚СЂ</a></h4>
         <div id="slideBlock" class="slideBlock">
             <form name="frm_user_search_filter" id="frm_user_search_filter" method="GET" onsubmit="return user_search.submitFilter();">
             <input type="hidden" id="cmd" name="cmd" value="filter">
@@ -34,56 +34,56 @@ banned.zero = true;
                     </div>
                 </div>
                 <div class="form-el">
-                    <label class="form-l">Роль:</label>
+                    <label class="form-l">Р РѕР»СЊ:</label>
                     <div class="form-value fvs">
                         <input type="hidden" name="who" id="role" value="<?=$who?>">
                         <ul class="ulradio" id="ulrole">
                             <li <?=($who == '' ? 'class="active"' : '')?>>
-    							<a rel="" onclick="user_search.setUlradio(this,'role');" href="javascript:void(0);" class="lnk-dot-red">Все</a>
+    							<a rel="" onclick="user_search.setUlradio(this,'role');" href="javascript:void(0);" class="lnk-dot-red">Р’СЃРµ</a>
     						</li>
     						<li <?=($who == 'frl' ? 'class="active"' : '')?>>
-    							<a rel="frl" onclick="user_search.setUlradio(this,'role');" href="javascript:void(0);" class="lnk-dot-666">Фрилансеры</a>
+    							<a rel="frl" onclick="user_search.setUlradio(this,'role');" href="javascript:void(0);" class="lnk-dot-666">Р¤СЂРёР»Р°РЅСЃРµСЂС‹</a>
     						</li>
     						<li <?=($who == 'emp' ? 'class="active"' : '')?>>
-    							<a rel="emp" onclick="user_search.setUlradio(this,'role');" href="javascript:void(0);" class="lnk-dot-green">Работодатели</a>
+    							<a rel="emp" onclick="user_search.setUlradio(this,'role');" href="javascript:void(0);" class="lnk-dot-green">Р Р°Р±РѕС‚РѕРґР°С‚РµР»Рё</a>
     						</li>
                         </ul>
                     </div>
                 </div>
                 <div class="form-el">
-                    <label class="form-l">Статус:</label>
+                    <label class="form-l">РЎС‚Р°С‚СѓСЃ:</label>
                     <div class="form-value fvs usrstatus">
                         <input type="hidden" name="status" id="status" value="<?=$status?>">
                         <ul class="ulradio" id="ulstatus">
                             <li <?=($status == 0 ? 'class="active"' : '')?>>
-                                <a rel="0" onclick="user_search.setUlradio(this,'status');" href="javascript:void(0);" class="lnk-dot-666">Все</a>
+                                <a rel="0" onclick="user_search.setUlradio(this,'status');" href="javascript:void(0);" class="lnk-dot-666">Р’СЃРµ</a>
                             </li>
                             <li <?=($status == 1 ? 'class="active"' : '')?>>
-                                <a rel="1" onclick="user_search.setUlradio(this,'status');" href="javascript:void(0);" class="lnk-dot-red">Забаненные</a>
+                                <a rel="1" onclick="user_search.setUlradio(this,'status');" href="javascript:void(0);" class="lnk-dot-red">Р—Р°Р±Р°РЅРµРЅРЅС‹Рµ</a>
                             </li>
                             <li <?=($status == 5 ? 'class="active"' : '')?>>
-                                <a rel="5" onclick="user_search.setUlradio(this,'status');" href="javascript:void(0);" class="lnk-dot-666">Незабаненные</a>
+                                <a rel="5" onclick="user_search.setUlradio(this,'status');" href="javascript:void(0);" class="lnk-dot-666">РќРµР·Р°Р±Р°РЅРµРЅРЅС‹Рµ</a>
                             </li>
                             <li <?=($status == 2 ? 'class="active"' : '')?>>
-                                <a rel="2" onclick="user_search.setUlradio(this,'status');" href="javascript:void(0);" class="lnk-dot-666">Не активированные</a>
+                                <a rel="2" onclick="user_search.setUlradio(this,'status');" href="javascript:void(0);" class="lnk-dot-666">РќРµ Р°РєС‚РёРІРёСЂРѕРІР°РЅРЅС‹Рµ</a>
                             </li>
                             <li class="color-e37101<?=($status == 3 ? ' active' : '')?>">
-                                <a rel="3" onclick="user_search.setUlradio(this,'status');" href="javascript:void(0);">С предупреждениями</a>
+                                <a rel="3" onclick="user_search.setUlradio(this,'status');" href="javascript:void(0);">РЎ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏРјРё</a>
                             </li>
                             <li class="color-e37101<?=($status == 4 ? ' active' : '')?>">
-                                <a rel="4" onclick="user_search.setUlradio(this,'status');" href="javascript:void(0);">Удаленные самостоятельно</a>
+                                <a rel="4" onclick="user_search.setUlradio(this,'status');" href="javascript:void(0);">РЈРґР°Р»РµРЅРЅС‹Рµ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ</a>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <?php /* // #0016722 Совместить поля "Телефон" и "Поиск"
+                <?php /* // #0016722 РЎРѕРІРјРµСЃС‚РёС‚СЊ РїРѕР»СЏ "РўРµР»РµС„РѕРЅ" Рё "РџРѕРёСЃРє"
                 <div class="form-el">
-                    <label class="form-l">Телефон:</label>
+                    <label class="form-l">РўРµР»РµС„РѕРЅ:</label>
                     <div class="form-value fvs">
                         <input value="<?=$search_phone?>" name="search_phone" id="search_phone" type="text" class="i-txt fvsi" /><br/>
 						<div class="b-check">
 							<input id="search_phone_exact" class="b-check__input" name="search_phone_exact" type="checkbox" value="1" <?=($search_phone_exact ? ' checked="checked"' : '')?> />
-							<label for="search_phone_exact" class="b-check__label b-check__label_fontsize_13">точное совпадение</label>
+							<label for="search_phone_exact" class="b-check__label b-check__label_fontsize_13">С‚РѕС‡РЅРѕРµ СЃРѕРІРїР°РґРµРЅРёРµ</label>
 						</div>
                     </div>
                 </div>
@@ -95,20 +95,20 @@ banned.zero = true;
                     </div>
                 </div>
                 <div class="form-el">
-                    <label class="form-l">Поиск:</label>
+                    <label class="form-l">РџРѕРёСЃРє:</label>
                     <div class="form-value fvs">
                         <input value="<?=$search_name?>" name="search_name" id="search_name" type="text" class="i-txt fvsi" /><br/>
                         <div class="b-check">
 							<input id="search_name_exact" class="b-check__input" name="search_name_exact" type="checkbox" value="1" <?=($search_name_exact ? ' checked="checked"' : '')?> />
-							<label for="search_name_exact" class="b-check__label b-check__label_fontsize_13">точное совпадение</label>
+							<label for="search_name_exact" class="b-check__label b-check__label_fontsize_13">С‚РѕС‡РЅРѕРµ СЃРѕРІРїР°РґРµРЅРёРµ</label>
 						</div>
                     </div>
                 </div>
             </div>
             <div class="form-block last">
                 <div class="form-el form-btns">
-                    <button type="submit">Отфильтровать</button>
-                    <a href="javascript:void(0);" onclick="user_search.clearFilter();" class="lnk-dot-grey">Очистить</a>
+                    <button type="submit">РћС‚С„РёР»СЊС‚СЂРѕРІР°С‚СЊ</button>
+                    <a href="javascript:void(0);" onclick="user_search.clearFilter();" class="lnk-dot-grey">РћС‡РёСЃС‚РёС‚СЊ</a>
                 </div>
             </div>
             </form>
@@ -117,9 +117,9 @@ banned.zero = true;
 	<b class="b2"></b>
 	<b class="b1"></b>
 </div>
-<!-- Фильтр стоп -->
+<!-- Р¤РёР»СЊС‚СЂ СЃС‚РѕРї -->
 
-<!-- Массовые действия старт -->
+<!-- РњР°СЃСЃРѕРІС‹Рµ РґРµР№СЃС‚РІРёСЏ СЃС‚Р°СЂС‚ -->
 <div class="form form-check">
 	<b class="b1"></b>
 	<b class="b2"></b>
@@ -130,18 +130,18 @@ banned.zero = true;
             			<input id="chk_all" class="b-check__input" onchange="adminLogCheckUsers(this.checked);" name="chk_all" type="checkbox" value="1" />
 								</div>
                 </div>
-                <button onclick="getMassBanUser('admin_user_search')" type="button">Блокировка/Разблок.</button>
-                <button onclick="getMassWarnUser()" type="button" <?=($status == '1' ? 'style="display:none;"' : '' )?>>Сделать предупреждение</button>
+                <button onclick="getMassBanUser('admin_user_search')" type="button">Р‘Р»РѕРєРёСЂРѕРІРєР°/Р Р°Р·Р±Р»РѕРє.</button>
+                <button onclick="getMassWarnUser()" type="button" <?=($status == '1' ? 'style="display:none;"' : '' )?>>РЎРґРµР»Р°С‚СЊ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ</button>
                 <?php /*if ( $bHasPayments ) { ?>
-                <button onclick="adminLogMassMoneyBlock('block');" type="button">Заблокировать деньги</button>
+                <button onclick="adminLogMassMoneyBlock('block');" type="button">Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё</button>
                 <?php }*/ ?>
-                <button onclick="adminLogMassActivate(<?=($status == '2' ? 1 : 0)?>);" type="button">Активировать</button>
+                <button onclick="adminLogMassActivate(<?=($status == '2' ? 1 : 0)?>);" type="button">РђРєС‚РёРІРёСЂРѕРІР°С‚СЊ</button>
             </div>
 	</div>
 	<b class="b2"></b>
 	<b class="b1"></b>
 </div>
-<!-- Массовые действия стоп -->
+<!-- РњР°СЃСЃРѕРІС‹Рµ РґРµР№СЃС‚РІРёСЏ СЃС‚РѕРї -->
 <style type="text/css">.search-item img{ float:none;}</style>
 <div class="search-lenta">
 
@@ -160,13 +160,13 @@ banned.zero = true;
         <div class="search-item-info">
         	<div class="search-right" id="search_right_<?=$aOne['uid']?>"> 
                 <?php if ( $bHasAll || $bHasPayments ) { ?>
-            	<span><a target="_blank" href="/siteadmin/bill/?login=<?=$aOne['login']?>" class="color-45a300">Счет пользователя</a></span>
+            	<span><a target="_blank" href="/siteadmin/bill/?login=<?=$aOne['login']?>" class="color-45a300">РЎС‡РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</a></span>
             	<?php } ?>
             	<?php $sOnclick = ' onclick="xajax_getUserWarns(' . $aOne['uid'] . ',\'admin_user_search\',\'user_search\');" href="javascript:void(0);"'; ?>
             	<?php if ( $aOne['warn'] > 0 ): ?>
-            	<span class="color-e37101"><a <?=$sOnclick?>>Предупреждений: <div id="warn_<?=$aOne['uid']?>" class="warncount-<?=$aOne['uid']?>"><?=$aOne['warn']?></div></a></span>
+            	<span class="color-e37101"><a <?=$sOnclick?>>РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№: <div id="warn_<?=$aOne['uid']?>" class="warncount-<?=$aOne['uid']?>"><?=$aOne['warn']?></div></a></span>
             	<?php else: ?>
-            	<span><a <?=$sOnclick?> class="lnk-dot-666">Нет предупреждений</a></span>
+            	<span><a <?=$sOnclick?> class="lnk-dot-666">РќРµС‚ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№</a></span>
             	<?php endif; ?>
             </div>
             <h4 id="user<?=$aOne['uid']?>"><a target="_blank" href="<?=$sObjLink?>" class="<?=(is_emp($aOne['role']) ? 'employer' : 'freelancer')?>-name user-name"><?=$sObjName?></a> <?=view_mark_user(array(
@@ -178,8 +178,8 @@ banned.zero = true;
             ?></h4>
             
             <?php
-            // редактирование отношения пользователей старт
-            if ( !$aOne['role'][0] ) { // только для фрилансеров
+            // СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РѕС‚РЅРѕС€РµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃС‚Р°СЂС‚
+            if ( !$aOne['role'][0] ) { // С‚РѕР»СЊРєРѕ РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
                 $sClass = $aOne['pop'] < 0  ? 'b-voting__link_dot_red' : 'b-voting__link_dot_green';
                 $sPop   = $aOne['pop'] != 0 ? $aOne['pop'] : '0';
             ?>
@@ -190,12 +190,12 @@ banned.zero = true;
             </div>
             <div id="pop_edit<?=$aOne['uid']?>" class="b-input b-input_float_right b-input_width_90" style="display: none;">
                 <input class="b-input__text" name="pop_input_<?=$aOne['uid']?>" id="pop_input_<?=$aOne['uid']?>" type="text" size="80" value="<?=$sPop?>">
-                <a href="javascript:void(0);" onclick="updatePop(<?=$aOne['uid']?>)" class="lnk-dot-999">Да</a>&nbsp;
-                <a href="javascript:void(0);" onclick="unsetPopForm(<?=$aOne['uid']?>)" class="lnk-dot-999">Нет</a>
+                <a href="javascript:void(0);" onclick="updatePop(<?=$aOne['uid']?>)" class="lnk-dot-999">Р”Р°</a>&nbsp;
+                <a href="javascript:void(0);" onclick="unsetPopForm(<?=$aOne['uid']?>)" class="lnk-dot-999">РќРµС‚</a>
             </div>
             <?php
             }
-            // редактирование отношения пользователей стоп
+            // СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РѕС‚РЅРѕС€РµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃС‚РѕРї
             ?>
             
             <? if (!(hasGroupPermissions('administrator', $aOne['uid']) || hasGroupPermissions('moderator', $aOne['uid']))) { ?>
@@ -204,26 +204,26 @@ banned.zero = true;
                   <b class="b2"></b>
                   <div class="form-in">
                       <ul class="c">
-                          <?php $sBanTitle = (!$aOne['is_banned'] && !$aOne['ban_where']) ? 'Заблокировать' : 'Разблокировать'; ?>
+                          <?php $sBanTitle = (!$aOne['is_banned'] && !$aOne['ban_where']) ? 'Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ' : 'Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ'; ?>
                           <li class="color-a30000 comm-ban-<?=$aOne['uid']?>"><a href="javascript:void(0);" onclick="banned.userBan(<?=$aOne['uid']?>, 'admin_user_search',0)"><?=$sBanTitle?></a></li>
                           
                           <li class="color-a30000 warnbutton-<?= $aOne['uid'] ?>" id="warn-<?=$aOne['uid']?>" <?php if ( $aOne['is_banned'] ) { ?>style="display: none;"<?php } ?>>
                           <?php if ( $aOne['warn'] < 3 ): ?>
-                          <a onclick="banned.warnUser(<?=$aOne['uid']?>, 0, 'user_search', 'admin_user_search', 0); return false;" href="javascript:void(0);">Сделать предупреждение</a>
+                          <a onclick="banned.warnUser(<?=$aOne['uid']?>, 0, 'user_search', 'admin_user_search', 0); return false;" href="javascript:void(0);">РЎРґРµР»Р°С‚СЊ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ</a>
                           <?php else: ?>
-                          <a onclick="adminLogWarnMax()" href="javascript:void(0);">Сделать предупреждение</a>
+                          <a onclick="adminLogWarnMax()" href="javascript:void(0);">РЎРґРµР»Р°С‚СЊ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ</a>
                           <?php endif; ?>
                           </li>
                           
                           <?php /*if ( $bHasPayments ) { ?>
                           <?php 
-                          $sTitle  = ( $aOne['is_block_money'] != 't' ) ? 'Заблокировать деньги' : 'Разблокировать деньги'; 
+                          $sTitle  = ( $aOne['is_block_money'] != 't' ) ? 'Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё' : 'Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё'; 
                           $sAction = ( $aOne['is_block_money'] != 't' ) ? 'block'                : 'unblock'; 
                           ?>
-                          <li id="money_<?=$aOne['uid']?>" class="color-a30000"><a onclick="if (confirm('Вы уверены что хотите <?=mb_strtolower($sTitle)?>?')) xajax_updateMoneyBlock(JSON.encode([<?=$aOne['uid']?>]),'<?=$sAction?>')" href="javascript:void(0);"><?=$sTitle?></a></li>
+                          <li id="money_<?=$aOne['uid']?>" class="color-a30000"><a onclick="if (confirm('Р’С‹ СѓРІРµСЂРµРЅС‹ С‡С‚Рѕ С…РѕС‚РёС‚Рµ <?=mb_strtolower($sTitle)?>?')) xajax_updateMoneyBlock(JSON.encode([<?=$aOne['uid']?>]),'<?=$sAction?>')" href="javascript:void(0);"><?=$sTitle?></a></li>
                           <?php }*/ ?>
                           <?php if ( $aOne['active'] == 'f' ) { ?>
-                          <li id="activate_<?=$aOne['uid']?>" class="color-a30000"><a onclick="if (confirm('Вы уверены, что хотите активировать пользователя?')) xajax_activateUser(JSON.encode([<?=$aOne['uid']?>]),<?=($status == '2' ? 1 : 0)?>)" href="javascript:void(0);">Активировать</a></li>
+                          <li id="activate_<?=$aOne['uid']?>" class="color-a30000"><a onclick="if (confirm('Р’С‹ СѓРІРµСЂРµРЅС‹, С‡С‚Рѕ С…РѕС‚РёС‚Рµ Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ?')) xajax_activateUser(JSON.encode([<?=$aOne['uid']?>]),<?=($status == '2' ? 1 : 0)?>)" href="javascript:void(0);">РђРєС‚РёРІРёСЂРѕРІР°С‚СЊ</a></li>
                           <?php } ?>
                       </ul>
                   </div>
@@ -235,12 +235,12 @@ banned.zero = true;
              <div id="warnreason-<?=$aOne['uid']?>" style="margin-bottom: 15px; display: none">&nbsp;</div>
              
              <div style="height: 25px; overflow:hidden;">
-            <div id="email_show<?=$aOne['uid']?>" class="safety"><b>Email:</b> <span id="email_value<?=$aOne['uid']?>" class="safetyvalue"><?=$aOne['email']?></span>&#160;<a href="javascript:void(0);" onclick="setEmailForm(<?=$aOne['uid']?>)" class="lnk-dot-999">Изменить</a>&#160;&#160;&#160;<a onclick="xajax_getLastEmails(<?=$aOne['uid']?>);" href="javascript:void(0);" class="lnk-dot-999">Последние 10 e-mail</a></div>
+            <div id="email_show<?=$aOne['uid']?>" class="safety"><b>Email:</b> <span id="email_value<?=$aOne['uid']?>" class="safetyvalue"><?=$aOne['email']?></span>&#160;<a href="javascript:void(0);" onclick="setEmailForm(<?=$aOne['uid']?>)" class="lnk-dot-999">РР·РјРµРЅРёС‚СЊ</a>&#160;&#160;&#160;<a onclick="xajax_getLastEmails(<?=$aOne['uid']?>);" href="javascript:void(0);" class="lnk-dot-999">РџРѕСЃР»РµРґРЅРёРµ 10 e-mail</a></div>
             <div id="email_edit<?=$aOne['uid']?>" class="safety" style="display: none;">
             <b>Email:</b> <input type="text" name="email<?=$aOne['uid']?>" id="email<?=$aOne['uid']?>" value="<?=$aOne['email']?>">&nbsp;
-            <a href="javascript:void(0);" onclick="updateEmail(<?=$aOne['uid']?>)" class="lnk-dot-999">Да</a>&nbsp;
-            <a href="javascript:void(0);" onclick="unsetEmailForm(<?=$aOne['uid']?>)" class="lnk-dot-999">Нет</a>
-            &#160;&#160;&#160;<a onclick="xajax_getLastEmails(<?=$aOne['uid']?>);" href="javascript:void(0);" class="lnk-dot-999">Последние 10 e-mail</a>
+            <a href="javascript:void(0);" onclick="updateEmail(<?=$aOne['uid']?>)" class="lnk-dot-999">Р”Р°</a>&nbsp;
+            <a href="javascript:void(0);" onclick="unsetEmailForm(<?=$aOne['uid']?>)" class="lnk-dot-999">РќРµС‚</a>
+            &#160;&#160;&#160;<a onclick="xajax_getLastEmails(<?=$aOne['uid']?>);" href="javascript:void(0);" class="lnk-dot-999">РџРѕСЃР»РµРґРЅРёРµ 10 e-mail</a>
             </div>
             </div>
             
@@ -259,34 +259,34 @@ banned.zero = true;
             	}
             ?>
             <div class="safety">
-            <b>Телефон:</b> <?=implode(', ', $aPhone)?>
+            <b>РўРµР»РµС„РѕРЅ:</b> <?=implode(', ', $aPhone)?>
             </div>
             <?php } ?>
             
             <?php if ( $aOne['safety_phone'] ): ?>
             <input type="hidden" name="safety_phone_hidden<?=$aOne['uid']?>" id="safety_phone_hidden<?=$aOne['uid']?>" value="<?=$aOne['safety_phone']?>">
             <div id="safety_phone_show<?=$aOne['uid']?>" class="safety">
-            <b>Привязка к телефону:</b> <span id="safety_phone_value<?=$aOne['uid']?>" class="safetyvalue"><?=$aOne['safety_phone']?></span><span id="safety_only_phone_show<?=$aOne['uid']?>" style="display: <?=( $aOne['safety_only_phone'] == 't' ? 'inline' : 'none' )?>">&nbsp;Только по SMS</span> <span id="is_safety_mob_show<?=$aOne['uid']?>" style="display: <?=( $aOne['is_safety_mob'] == 't' ? 'inline' : 'none' )?>">&nbsp;Вход в финансы</span> <a href="javascript:void(0);" onclick="setSafetyPhoneForm(<?=$aOne['uid']?>)" class="lnk-dot-999">Изменить</a>
+            <b>РџСЂРёРІСЏР·РєР° Рє С‚РµР»РµС„РѕРЅСѓ:</b> <span id="safety_phone_value<?=$aOne['uid']?>" class="safetyvalue"><?=$aOne['safety_phone']?></span><span id="safety_only_phone_show<?=$aOne['uid']?>" style="display: <?=( $aOne['safety_only_phone'] == 't' ? 'inline' : 'none' )?>">&nbsp;РўРѕР»СЊРєРѕ РїРѕ SMS</span> <span id="is_safety_mob_show<?=$aOne['uid']?>" style="display: <?=( $aOne['is_safety_mob'] == 't' ? 'inline' : 'none' )?>">&nbsp;Р’С…РѕРґ РІ С„РёРЅР°РЅСЃС‹</span> <a href="javascript:void(0);" onclick="setSafetyPhoneForm(<?=$aOne['uid']?>)" class="lnk-dot-999">РР·РјРµРЅРёС‚СЊ</a>
             </div>
             <div  id="safety_phone_edit<?=$aOne['uid']?>" class="safety" style="display: none;">
-            <b>Привязка к телефону:</b> 
+            <b>РџСЂРёРІСЏР·РєР° Рє С‚РµР»РµС„РѕРЅСѓ:</b> 
             <input type="text" name="safety_phone<?=$aOne['uid']?>" id="safety_phone<?=$aOne['uid']?>" value="<?=$aOne['safety_phone']?>" disabled="disabled">  
-            <input type="checkbox" name="safety_only_phone<?=$aOne['uid']?>" id="safety_only_phone<?=$aOne['uid']?>" value="1" <?=( $aOne['safety_only_phone'] == 't' ? ' checked' : '' )?>><span>Только по SMS</span>
-            <input type="checkbox" name="safety_mob_phone<?=$aOne['uid']?>" id="safety_mob_phone<?=$aOne['uid']?>" value="1" <?=( $aOne['is_safety_mob'] == 't' ? ' checked' : '' )?>><span>Вход в финансы</span>
+            <input type="checkbox" name="safety_only_phone<?=$aOne['uid']?>" id="safety_only_phone<?=$aOne['uid']?>" value="1" <?=( $aOne['safety_only_phone'] == 't' ? ' checked' : '' )?>><span>РўРѕР»СЊРєРѕ РїРѕ SMS</span>
+            <input type="checkbox" name="safety_mob_phone<?=$aOne['uid']?>" id="safety_mob_phone<?=$aOne['uid']?>" value="1" <?=( $aOne['is_safety_mob'] == 't' ? ' checked' : '' )?>><span>Р’С…РѕРґ РІ С„РёРЅР°РЅСЃС‹</span>
             &nbsp;
-            <a href="javascript:void(0);" onclick="updateSafetyPhone(<?=$aOne['uid']?>)" class="lnk-dot-999">Да</a>&nbsp;
-            <a href="javascript:void(0);" onclick="unsetSafetyPhoneForm(<?=$aOne['uid']?>)" class="lnk-dot-999">Нет</a>
+            <a href="javascript:void(0);" onclick="updateSafetyPhone(<?=$aOne['uid']?>)" class="lnk-dot-999">Р”Р°</a>&nbsp;
+            <a href="javascript:void(0);" onclick="unsetSafetyPhoneForm(<?=$aOne['uid']?>)" class="lnk-dot-999">РќРµС‚</a>
             </div>
             <?php endif; ?>
             
-            <p><a href="javascript:void(0);" onclick="user_search.setIpFilter('reg_ip_<?=$aOne['uid']?>');" class="lnk-dot-666" title="Добавить IP в фильтр"><b>IP при регистрации:</b></a>  <span id="reg_ip_<?=$aOne['uid']?>" style="display: inline; padding-bottom:15px;"><?=$aOne['reg_ip']?></span> &#160;&#160;&#160;   <a href="javascript:void(0);" onclick="user_search.setIpFilter('last_ip_<?=$aOne['uid']?>');" class="lnk-dot-666" title="Добавить IP в фильтр"><b>Последний IP:</b></a> <span id="last_ip_<?=$aOne['uid']?>" style="display: inline; padding-bottom:15px;"><?=$aOne['last_ip']?></span> &#160;&#160;&#160; <a onclick="xajax_getLastIps(<?=$aOne['uid']?>);" href="javascript:void(0);" class="lnk-dot-999">Последние 10 IP</a></p>
+            <p><a href="javascript:void(0);" onclick="user_search.setIpFilter('reg_ip_<?=$aOne['uid']?>');" class="lnk-dot-666" title="Р”РѕР±Р°РІРёС‚СЊ IP РІ С„РёР»СЊС‚СЂ"><b>IP РїСЂРё СЂРµРіРёСЃС‚СЂР°С†РёРё:</b></a>  <span id="reg_ip_<?=$aOne['uid']?>" style="display: inline; padding-bottom:15px;"><?=$aOne['reg_ip']?></span> &#160;&#160;&#160;   <a href="javascript:void(0);" onclick="user_search.setIpFilter('last_ip_<?=$aOne['uid']?>');" class="lnk-dot-666" title="Р”РѕР±Р°РІРёС‚СЊ IP РІ С„РёР»СЊС‚СЂ"><b>РџРѕСЃР»РµРґРЅРёР№ IP:</b></a> <span id="last_ip_<?=$aOne['uid']?>" style="display: inline; padding-bottom:15px;"><?=$aOne['last_ip']?></span> &#160;&#160;&#160; <a onclick="xajax_getLastIps(<?=$aOne['uid']?>);" href="javascript:void(0);" class="lnk-dot-999">РџРѕСЃР»РµРґРЅРёРµ 10 IP</a></p>
             
-            <p><a href="javascript:void(0);" onclick="user_search.stopNotifications(<?=$aOne['uid']?>, '<?=(is_emp($aOne['role']) ? 'emp' : 'flr')?>');" class="lnk-dot-666" title="Отключить все уведомления"><b>Отключить все уведомления</b></a></p>
+            <p><a href="javascript:void(0);" onclick="user_search.stopNotifications(<?=$aOne['uid']?>, '<?=(is_emp($aOne['role']) ? 'emp' : 'flr')?>');" class="lnk-dot-666" title="РћС‚РєР»СЋС‡РёС‚СЊ РІСЃРµ СѓРІРµРґРѕРјР»РµРЅРёСЏ"><b>РћС‚РєР»СЋС‡РёС‚СЊ РІСЃРµ СѓРІРµРґРѕРјР»РµРЅРёСЏ</b></a></p>
             <p id="verify<?=$aOne['uid']?>">
                 <?php if($aOne['is_verify'] == 't') { ?>
-                    <a href="javascript:void(0);" onclick="user_search.setVerification(<?=$aOne['uid']?>, false);" class="lnk-dot-666" title="Снять верификацию"><b>Снять верификацию</b></a>
+                    <a href="javascript:void(0);" onclick="user_search.setVerification(<?=$aOne['uid']?>, false);" class="lnk-dot-666" title="РЎРЅСЏС‚СЊ РІРµСЂРёС„РёРєР°С†РёСЋ"><b>РЎРЅСЏС‚СЊ РІРµСЂРёС„РёРєР°С†РёСЋ</b></a>
                 <?php } else {//if ?>
-                    <a href="javascript:void(0);" onclick="user_search.setVerification(<?=$aOne['uid']?>, true);" class="lnk-dot-666" title="Дать верификацию"><b>Дать верификацию</b></a>
+                    <a href="javascript:void(0);" onclick="user_search.setVerification(<?=$aOne['uid']?>, true);" class="lnk-dot-666" title="Р”Р°С‚СЊ РІРµСЂРёС„РёРєР°С†РёСЋ"><b>Р”Р°С‚СЊ РІРµСЂРёС„РёРєР°С†РёСЋ</b></a>
                 <?php }//else?>
             </p>
             
@@ -306,46 +306,46 @@ banned.zero = true;
             
             <ul class="admin-links">
                 <li style="padding: 0 0 10px;">
-                    <a href="/siteadmin/admin_log/?site=user&uid=<?=$aOne['uid']?>" class="lnk-dot-666">История</a>
+                    <a href="/siteadmin/admin_log/?site=user&uid=<?=$aOne['uid']?>" class="lnk-dot-666">РСЃС‚РѕСЂРёСЏ</a>
                 </li>
             </ul>
             
             <?php /*
-            // !!! пока редактирование данных юзера не будем реализовывать
-            // !!! если будем - эту форму нужно показывать user_search.js + аякс, 
-            // !!! чтобы она под каждым юзером не торчала
-            <p class="toggle"><a href="#" class="lnk-dot-999">Редактировать данные</a></p>
+            // !!! РїРѕРєР° СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РґР°РЅРЅС‹С… СЋР·РµСЂР° РЅРµ Р±СѓРґРµРј СЂРµР°Р»РёР·РѕРІС‹РІР°С‚СЊ
+            // !!! РµСЃР»Рё Р±СѓРґРµРј - СЌС‚Сѓ С„РѕСЂРјСѓ РЅСѓР¶РЅРѕ РїРѕРєР°Р·С‹РІР°С‚СЊ user_search.js + Р°СЏРєСЃ, 
+            // !!! С‡С‚РѕР±С‹ РѕРЅР° РїРѕРґ РєР°Р¶РґС‹Рј СЋР·РµСЂРѕРј РЅРµ С‚РѕСЂС‡Р°Р»Р°
+            <p class="toggle"><a href="#" class="lnk-dot-999">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РґР°РЅРЅС‹Рµ</a></p>
             <fieldset class="edit-data form-hide">
             	<div class="form-el">
-                	<label class="form-l" for="r1">Права:</label>
+                	<label class="form-l" for="r1">РџСЂР°РІР°:</label>
                     <div class="form-value">
-                    	<select name="" id="r1"><option>Пользователь</option></select>
+                    	<select name="" id="r1"><option>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ</option></select>
                     </div>
                 </div>
             	<div class="form-el">
-                	<label class="form-l" for="r2">Эл.почта:</label>
+                	<label class="form-l" for="r2">Р­Р».РїРѕС‡С‚Р°:</label>
                     <div class="form-value">
                     	<input name="" id="r2" type="text" value="konstantin@conctantinopolsky.co.uk " class="i-txt" />
                     </div>
                 </div>
             	<div class="form-el">
-                	<label class="form-l" for="r3">Телефон:</label>
+                	<label class="form-l" for="r3">РўРµР»РµС„РѕРЅ:</label>
                     <div class="form-value">
                     	<input name="" type="text" id="r3" value="+7 (098) 765-43-21" class="i-txt" />
                     </div>
                     <div class="form-value form-check">
                     	<input id="r4" name="" type="checkbox" value="" />
-                        <label for="r4">Только по SMS</label>
+                        <label for="r4">РўРѕР»СЊРєРѕ РїРѕ SMS</label>
                     </div>
                 </div>
             	<div class="form-el">
-                	<label class="form-l" for="r5">IP адрес:</label>
+                	<label class="form-l" for="r5">IP Р°РґСЂРµСЃ:</label>
                     <div class="form-value">
                     	<input name="" type="text" id="r5" value="255.255.255.25, 10.10.10.1, 10.10.10.2-10.10.10.5" class="i-txt" />
                     </div>
                 </div>
                 <div class="form-btn">
-                	<button>Сохранить</button>
+                	<button>РЎРѕС…СЂР°РЅРёС‚СЊ</button>
                 </div>
             </fieldset>
             */ ?>
@@ -366,7 +366,7 @@ banned.zero = true;
     echo printPerPageSelect( $log_pp );
     
 ?>
-    <!-- массовые предупреждения старт -->
+    <!-- РјР°СЃСЃРѕРІС‹Рµ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ СЃС‚Р°СЂС‚ -->
     <div id="ov-notice6" class="overlay ov-out" style="display: none;">
         <b class="c1"></b>
         <b class="c2"></b>
@@ -375,12 +375,12 @@ banned.zero = true;
             <div class="ov-l">
                 <div class="ov-in">
                     <a class="close" style="float: right;" href="javascript:void(0);" onclick="adminLogOverlayClose();return false;"><img height="21" width="21" alt="" src="/images/btn-close.png"></a>
-                    <h4>Предупреждение для выбранных пользователей!!!</h4>
+                    <h4>РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РґР»СЏ РІС‹Р±СЂР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№!!!</h4>
                     <div class="form-el">
-                        <label class="form-l">Причина:</label>
+                        <label class="form-l">РџСЂРёС‡РёРЅР°:</label>
                         <div class="form-value reason">
                             <select name="reason_id" id="bfrm_sel_0" onchange="banned.setReason(0);">
-                                <option value="">Указать вручную</option>
+                                <option value="">РЈРєР°Р·Р°С‚СЊ РІСЂСѓС‡РЅСѓСЋ</option>
                                 <?php if ( $aReasons ) {
                                 	foreach ( $aReasons as $aOne ) { 
                                         $sBold = $aOne['is_bold'] == 't' ? ' style="background-color: #cdcdcd;"' : ' style="color: #777;"';
@@ -394,8 +394,8 @@ banned.zero = true;
                         </div>
                     </div>
                     <div class="ov-btns" id="ov_notice_btns">
-                        <input type="button" id="adminLogSetUserWarn" onclick="setMassWarnUser();" class="i-btn i-bold" value="Сохранить" />
-                        <a href="javascript:void(0);" onclick="adminLogOverlayClose();" class="lnk-dot-grey">Отмена</a>
+                        <input type="button" id="adminLogSetUserWarn" onclick="setMassWarnUser();" class="i-btn i-bold" value="РЎРѕС…СЂР°РЅРёС‚СЊ" />
+                        <a href="javascript:void(0);" onclick="adminLogOverlayClose();" class="lnk-dot-grey">РћС‚РјРµРЅР°</a>
                     </div>
                 </div>
             </div>
@@ -404,37 +404,37 @@ banned.zero = true;
         <b class="c3"></b>
         <b class="c4"></b>
     </div>
-    <!-- массовые предупреждения стоп -->
+    <!-- РјР°СЃСЃРѕРІС‹Рµ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ СЃС‚РѕРї -->
     
-    <!-- редактирование предупреждения старт -->
+    <!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ СЃС‚Р°СЂС‚ -->
     <?php
     include_once( $_SERVER['DOCUMENT_ROOT'] . '/user/warn_overlay.php' );
     ?>
-    <!-- редактирование предупреждения стоп -->
+    <!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ СЃС‚РѕРї -->
     
-    <!-- редактирование бана старт -->
+    <!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±Р°РЅР° СЃС‚Р°СЂС‚ -->
     <?php
     include_once( $_SERVER['DOCUMENT_ROOT'] . '/user/ban_overlay.php' );
     ?>
-    <!-- редактирование бана стоп -->
+    <!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±Р°РЅР° СЃС‚РѕРї -->
     
-    <!-- список предупреждений пользователя старт -->
+    <!-- СЃРїРёСЃРѕРє РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃС‚Р°СЂС‚ -->
     <?php
     include_once( $_SERVER['DOCUMENT_ROOT'] . '/siteadmin/admin_log/warn_overlay.php' );
     ?>
-    <!-- список предупреждений пользователя стоп -->
+    <!-- СЃРїРёСЃРѕРє РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃС‚РѕРї -->
     
-    <!-- список последних 10 IP/email пользователя старт -->
+    <!-- СЃРїРёСЃРѕРє РїРѕСЃР»РµРґРЅРёС… 10 IP/email РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃС‚Р°СЂС‚ -->
     <?php
     include_once( $_SERVER['DOCUMENT_ROOT'] . '/siteadmin/admin_log/last10_overlay.php' );
     ?>
-    <!-- список последних 10 IP/email пользователя стоп -->
+    <!-- СЃРїРёСЃРѕРє РїРѕСЃР»РµРґРЅРёС… 10 IP/email РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃС‚РѕРї -->
 <?php
     
 }
 elseif ( $cmd == 'filter' ) {
 ?>
-    Нет пользователей, удовлетворяющих условиям выборки
+    РќРµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё
 <?php
 }
 

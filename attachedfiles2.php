@@ -69,7 +69,7 @@ switch($action) {
                     $max_files_size = sbr::MAX_FILE_SIZE;
                     break;
                 
-                //Çàãğóçêà ñêàíîâ âî âêëàäêå ôèíàíñîâîé èíôîğìàöèè
+                //Ğ—Ğ°Ğ³Ñ€ÑƒĞ·ĞºĞ° ÑĞºĞ°Ğ½Ğ¾Ğ² Ğ²Ğ¾ Ğ²ĞºĞ»Ğ°Ğ´ĞºĞµ Ñ„Ğ¸Ğ½Ğ°Ğ½ÑĞ¾Ğ²Ğ¾Ğ¹ Ğ¸Ğ½Ñ„Ğ¾Ñ€Ğ¼Ğ°Ñ†Ğ¸Ğ¸
                 case 'finance_doc':
                     require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
                     $max_files = account::MAX_FILE_COUNT;
@@ -77,9 +77,9 @@ switch($action) {
                     $imageTypes = array(2, 3);//jpg,png
                     $maxImageHeight = 3000;
                     $maxImageWidth = 3000;
-                    $default_error = 'Ôàéë íå ñîîòâåòñòâóåò òğåáîâàíèÿì.';
+                    $default_error = 'Ğ¤Ğ°Ğ¹Ğ» Ğ½Ğµ ÑĞ¾Ğ¾Ñ‚Ğ²ĞµÑ‚ÑÑ‚Ğ²ÑƒĞµÑ‚ Ñ‚Ñ€ĞµĞ±Ğ¾Ğ²Ğ°Ğ½Ğ¸ÑĞ¼.';
                     
-                    //Àäìèí ìîæåò çàãğóçèòü ñêàíû â äèğåêòîğèş ïîëüçîâàòåëÿ
+                    //ĞĞ´Ğ¼Ğ¸Ğ½ Ğ¼Ğ¾Ğ¶ĞµÑ‚ Ğ·Ğ°Ğ³Ñ€ÑƒĞ·Ğ¸Ñ‚ÑŒ ÑĞºĞ°Ğ½Ñ‹ Ğ² Ğ´Ğ¸Ñ€ĞµĞºÑ‚Ğ¾Ñ€Ğ¸Ñ Ğ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ĞµĞ»Ñ
                     if (hasPermissions('users')) {
                         $user_uid = __paramInit('striptrim', NULL, 'attachedfiles_uid');
                         $hash = __paramInit('striptrim', NULL, 'attachedfiles_hash');
@@ -96,7 +96,7 @@ switch($action) {
                     $dir = sprintf(account::DOC_UPLOAD_PATH, $login);
                     break;
                 
-                //@todo: äàííûé âèä çàãğóçêè ñåé÷àñ âğîäå íå èñïîëüçóåòñÿ, íî áûë â ñòàğîé ÑÁĞ
+                //@todo: Ğ´Ğ°Ğ½Ğ½Ñ‹Ğ¹ Ğ²Ğ¸Ğ´ Ğ·Ğ°Ğ³Ñ€ÑƒĞ·ĞºĞ¸ ÑĞµĞ¹Ñ‡Ğ°Ñ Ğ²Ñ€Ğ¾Ğ´Ğµ Ğ½Ğµ Ğ¸ÑĞ¿Ğ¾Ğ»ÑŒĞ·ÑƒĞµÑ‚ÑÑ, Ğ½Ğ¾ Ğ±Ñ‹Ğ» Ğ² ÑÑ‚Ğ°Ñ€Ğ¾Ğ¹ Ğ¡Ğ‘Ğ 
                 case 'finance_other':
                     require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
                     $max_files = account::MAX_FILE_COUNT;
@@ -106,7 +106,7 @@ switch($action) {
                 
                 case 'carusellogo':
                     require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/pay_place.php");
-                    $max_files_size = 1024 * 1024; // 1 ìá
+                    $max_files_size = 1024 * 1024; // 1 Ğ¼Ğ±
                     $max_files = 1;
                     $imageTypes = array(2, 3);
                     $cFile->max_image_size = array('width' => 50, 'height' => 50, 'less' => 0);
@@ -116,7 +116,7 @@ switch($action) {
                     $dir = $login . '/foto';
                     break;
                 case 'userpic':
-                    // òàê êàê äëÿ şçåğïèêà íóæåí òîëüêî îäèí ôàéë, òî óäàëÿåì âñå ôàéëû òåêóùåé ñåññèè êğîìå ïîñëåäíåãî, íà ñëó÷àé åñëè ôàéë ïî êàêîé-òî ïğè÷èíå íå ïîäîéäåò èëè íå çàãğóçèòñÿ
+                    // Ñ‚Ğ°Ğº ĞºĞ°Ğº Ğ´Ğ»Ñ ÑĞ·ĞµÑ€Ğ¿Ğ¸ĞºĞ° Ğ½ÑƒĞ¶ĞµĞ½ Ñ‚Ğ¾Ğ»ÑŒĞºĞ¾ Ğ¾Ğ´Ğ¸Ğ½ Ñ„Ğ°Ğ¹Ğ», Ñ‚Ğ¾ ÑƒĞ´Ğ°Ğ»ÑĞµĞ¼ Ğ²ÑĞµ Ñ„Ğ°Ğ¹Ğ»Ñ‹ Ñ‚ĞµĞºÑƒÑ‰ĞµĞ¹ ÑĞµÑÑĞ¸Ğ¸ ĞºÑ€Ğ¾Ğ¼Ğµ Ğ¿Ğ¾ÑĞ»ĞµĞ´Ğ½ĞµĞ³Ğ¾, Ğ½Ğ° ÑĞ»ÑƒÑ‡Ğ°Ğ¹ ĞµÑĞ»Ğ¸ Ñ„Ğ°Ğ¹Ğ» Ğ¿Ğ¾ ĞºĞ°ĞºĞ¾Ğ¹-Ñ‚Ğ¾ Ğ¿Ñ€Ğ¸Ñ‡Ğ¸Ğ½Ğµ Ğ½Ğµ Ğ¿Ğ¾Ğ´Ğ¾Ğ¹Ğ´ĞµÑ‚ Ğ¸Ğ»Ğ¸ Ğ½Ğµ Ğ·Ğ°Ğ³Ñ€ÑƒĞ·Ğ¸Ñ‚ÑÑ
                     $aFiles = new attachedfiles($sess);
                     $userpics = $aFiles->getFiles(array(1));
                     if (is_array($userpics)) {
@@ -125,7 +125,7 @@ switch($action) {
                             $aFiles->delete($userpic['id']);
                         }
                     }                    
-                    $max_files_size = 1024 * 1024; // 1 ìá
+                    $max_files_size = 1024 * 1024; // 1 Ğ¼Ğ±
                     $max_files = 10;
                     $imageTypes = array(2, 3);
                     $maxImageHeight = 100;
@@ -138,7 +138,7 @@ switch($action) {
                     $dir = 'users/' . substr($login, 0, 2) . '/' . $login . "/tmpproj/";
                     $cFile->table = 'file_projects';
                     $cFile->disable_animate = true;
-                    // òàê êàê äëÿ ëîãîòèïà íóæåí òîëüêî îäèí ôàéë, òî óäàëÿåì âñå ôàéëû òåêóùåé ñåññèè êğîìå ïîñëåäíåãî, íà ñëó÷àé åñëè ôàéë ïî êàêîé-òî ïğè÷èíå íå ïîäîéäåò èëè íå çàãğóçèòñÿ
+                    // Ñ‚Ğ°Ğº ĞºĞ°Ğº Ğ´Ğ»Ñ Ğ»Ğ¾Ğ³Ğ¾Ñ‚Ğ¸Ğ¿Ğ° Ğ½ÑƒĞ¶ĞµĞ½ Ñ‚Ğ¾Ğ»ÑŒĞºĞ¾ Ğ¾Ğ´Ğ¸Ğ½ Ñ„Ğ°Ğ¹Ğ», Ñ‚Ğ¾ ÑƒĞ´Ğ°Ğ»ÑĞµĞ¼ Ğ²ÑĞµ Ñ„Ğ°Ğ¹Ğ»Ñ‹ Ñ‚ĞµĞºÑƒÑ‰ĞµĞ¹ ÑĞµÑÑĞ¸Ğ¸ ĞºÑ€Ğ¾Ğ¼Ğµ Ğ¿Ğ¾ÑĞ»ĞµĞ´Ğ½ĞµĞ³Ğ¾, Ğ½Ğ° ÑĞ»ÑƒÑ‡Ğ°Ğ¹ ĞµÑĞ»Ğ¸ Ñ„Ğ°Ğ¹Ğ» Ğ¿Ğ¾ ĞºĞ°ĞºĞ¾Ğ¹-Ñ‚Ğ¾ Ğ¿Ñ€Ğ¸Ñ‡Ğ¸Ğ½Ğµ Ğ½Ğµ Ğ¿Ğ¾Ğ´Ğ¾Ğ¹Ğ´ĞµÑ‚ Ğ¸Ğ»Ğ¸ Ğ½Ğµ Ğ·Ğ°Ğ³Ñ€ÑƒĞ·Ğ¸Ñ‚ÑÑ
                     $aFiles = new attachedfiles($sess);
                     $logos = $aFiles->getFiles(array(1));
                     if (is_array($logos)) {
@@ -157,7 +157,7 @@ switch($action) {
 
                     break;
                 default:
-                    $file['error'] = 'Îøèáêà çàãğóçêè ôàéëà';
+                    $file['error'] = 'ĞÑˆĞ¸Ğ±ĞºĞ° Ğ·Ğ°Ğ³Ñ€ÑƒĞ·ĞºĞ¸ Ñ„Ğ°Ğ¹Ğ»Ğ°';
                     break;
             }
 
@@ -171,38 +171,38 @@ switch($action) {
             $files_size = $files_info['size'];
 
             if(($files_count+1)>$max_files) {
-                $file['error'] = "Ìàêñèìàëüíîå êîëè÷åñòâî ôàéëîâ: {$max_files}";
+                $file['error'] = "ĞœĞ°ĞºÑĞ¸Ğ¼Ğ°Ğ»ÑŒĞ½Ğ¾Ğµ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ñ„Ğ°Ğ¹Ğ»Ğ¾Ğ²: {$max_files}";
             }
             if(($files_size+$cFile->size)>$max_files_size) {
-                $file['error'] = "Ìàêñèìàëüíûé îáúåì ôàéëîâ: ".ConvertBtoMB($max_files_size);
+                $file['error'] = "ĞœĞ°ĞºÑĞ¸Ğ¼Ğ°Ğ»ÑŒĞ½Ñ‹Ğ¹ Ğ¾Ğ±ÑŠĞµĞ¼ Ñ„Ğ°Ğ¹Ğ»Ğ¾Ğ²: ".ConvertBtoMB($max_files_size);
             }
             if( in_array($cFile->getext(), $GLOBALS['disallowed_array']) || 
                 ($type=='wd' && (!in_array($cFile->image_size['type'], array(IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG)) || $cFile->image_size['width']>2000 || $cFile->image_size['height']>2000) ) || 
                 ($type=='help_video' && $cFile->getext()!='flv')
               ) {
-                $file['error'] = "Íåäîïóñòèìûé ôîğìàò ôàéëà";
+                $file['error'] = "ĞĞµĞ´Ğ¾Ğ¿ÑƒÑÑ‚Ğ¸Ğ¼Ñ‹Ğ¹ Ñ„Ğ¾Ñ€Ğ¼Ğ°Ñ‚ Ñ„Ğ°Ğ¹Ğ»Ğ°";
             }
-            // åñëè çàäàíû òèïû ãğàôè÷åñêèõ ôàéëîâ
+            // ĞµÑĞ»Ğ¸ Ğ·Ğ°Ğ´Ğ°Ğ½Ñ‹ Ñ‚Ğ¸Ğ¿Ñ‹ Ğ³Ñ€Ğ°Ñ„Ğ¸Ñ‡ĞµÑĞºĞ¸Ñ… Ñ„Ğ°Ğ¹Ğ»Ğ¾Ğ²
             if ($imageTypes) {
-                // òî ôàéë äîëæåí áûòü ãğàôè÷åñêèì
+                // Ñ‚Ğ¾ Ñ„Ğ°Ğ¹Ğ» Ğ´Ğ¾Ğ»Ğ¶ĞµĞ½ Ğ±Ñ‹Ñ‚ÑŒ Ğ³Ñ€Ğ°Ñ„Ğ¸Ñ‡ĞµÑĞºĞ¸Ğ¼
                 if (!$cFile->image_size['type'] || !in_array($cFile->image_size['type'], $imageTypes)) {
-                    $file['error'] = "Íåäîïóñòèìûé ôîğìàò ôàéëà";
+                    $file['error'] = "ĞĞµĞ´Ğ¾Ğ¿ÑƒÑÑ‚Ğ¸Ğ¼Ñ‹Ğ¹ Ñ„Ğ¾Ñ€Ğ¼Ğ°Ñ‚ Ñ„Ğ°Ğ¹Ğ»Ğ°";
                 }                    
             }
-            // åñëè çàäàíà ìàêñèìàëüíàÿ âûñîòà
+            // ĞµÑĞ»Ğ¸ Ğ·Ğ°Ğ´Ğ°Ğ½Ğ° Ğ¼Ğ°ĞºÑĞ¸Ğ¼Ğ°Ğ»ÑŒĞ½Ğ°Ñ Ğ²Ñ‹ÑĞ¾Ñ‚Ğ°
             if ($maxImageHeight && $cFile->image_size['height'] > $maxImageHeight) {
-                $file['error'] = "Ïğåâûøåíà ìàêñèìàëüíàÿ âûñîòà èçîáğàæåíèÿ";
+                $file['error'] = "ĞŸÑ€ĞµĞ²Ñ‹ÑˆĞµĞ½Ğ° Ğ¼Ğ°ĞºÑĞ¸Ğ¼Ğ°Ğ»ÑŒĞ½Ğ°Ñ Ğ²Ñ‹ÑĞ¾Ñ‚Ğ° Ğ¸Ğ·Ğ¾Ğ±Ñ€Ğ°Ğ¶ĞµĞ½Ğ¸Ñ";
             }
-            // åñëè çàäàíà ìàêñèìàëüíàÿ øèğèíà
+            // ĞµÑĞ»Ğ¸ Ğ·Ğ°Ğ´Ğ°Ğ½Ğ° Ğ¼Ğ°ĞºÑĞ¸Ğ¼Ğ°Ğ»ÑŒĞ½Ğ°Ñ ÑˆĞ¸Ñ€Ğ¸Ğ½Ğ°
             if ($maxImageWidth && $cFile->image_size['width'] > $maxImageWidth) {
-                $file['error'] = "Ïğåâûøåíà ìàêñèìàëüíàÿ øèğèíà èçîáğàæåíèÿ";
+                $file['error'] = "ĞŸÑ€ĞµĞ²Ñ‹ÑˆĞµĞ½Ğ° Ğ¼Ğ°ĞºÑĞ¸Ğ¼Ğ°Ğ»ÑŒĞ½Ğ°Ñ ÑˆĞ¸Ñ€Ğ¸Ğ½Ğ° Ğ¸Ğ·Ğ¾Ğ±Ñ€Ğ°Ğ¶ĞµĞ½Ğ¸Ñ";
             }
-            // åñëè çàäàíà îïğåäåëåííàÿ øèğèíà èçîáğàæåíèÿ
+            // ĞµÑĞ»Ğ¸ Ğ·Ğ°Ğ´Ğ°Ğ½Ğ° Ğ¾Ğ¿Ñ€ĞµĞ´ĞµĞ»ĞµĞ½Ğ½Ğ°Ñ ÑˆĞ¸Ñ€Ğ¸Ğ½Ğ° Ğ¸Ğ·Ğ¾Ğ±Ñ€Ğ°Ğ¶ĞµĞ½Ğ¸Ñ
             if ($sharpImageWidth && $cFile->image_size['width'] != $sharpImageWidth) {
-                $file['error'] = "Øèğèíà èçîáğàæåíèÿ íå ñîîòâåòñòâóåò òğåáóåìîé";
+                $file['error'] = "Ğ¨Ğ¸Ñ€Ğ¸Ğ½Ğ° Ğ¸Ğ·Ğ¾Ğ±Ñ€Ğ°Ğ¶ĞµĞ½Ğ¸Ñ Ğ½Ğµ ÑĞ¾Ğ¾Ñ‚Ğ²ĞµÑ‚ÑÑ‚Ğ²ÑƒĞµÑ‚ Ñ‚Ñ€ĞµĞ±ÑƒĞµĞ¼Ğ¾Ğ¹";
             }
             if ( $cFile->size == 0) {
-                $file['error'] = "Ïóñòîé ôàéë";
+                $file['error'] = "ĞŸÑƒÑÑ‚Ğ¾Ğ¹ Ñ„Ğ°Ğ¹Ğ»";
             }
             if(!$file['error']) {
                 $cFile->MoveUploadedFile($dir);
@@ -222,7 +222,7 @@ switch($action) {
                     }
                 } else {
                     if($_FILES['attachedfiles_file']['size']>$max_files_size) {
-                        $file['error'] = "Ìàêñèìàëüíûé îáúåì ôàéëîâ: ".ConvertBtoMB($max_files_size);
+                        $file['error'] = "ĞœĞ°ĞºÑĞ¸Ğ¼Ğ°Ğ»ÑŒĞ½Ñ‹Ğ¹ Ğ¾Ğ±ÑŠĞµĞ¼ Ñ„Ğ°Ğ¹Ğ»Ğ¾Ğ²: ".ConvertBtoMB($max_files_size);
                     } else {
                         $file['error'] = $cFile->error;
                     }
@@ -233,10 +233,10 @@ switch($action) {
             switch($_FILES['attachedfiles_file']['error']) {
                 case UPLOAD_ERR_FORM_SIZE:
                 case UPLOAD_ERR_INI_SIZE:
-                    $file['error'] = "Ìàêñèìàëüíûé îáúåì ôàéëîâ: ".ConvertBtoMB($max_files_size);
+                    $file['error'] = "ĞœĞ°ĞºÑĞ¸Ğ¼Ğ°Ğ»ÑŒĞ½Ñ‹Ğ¹ Ğ¾Ğ±ÑŠĞµĞ¼ Ñ„Ğ°Ğ¹Ğ»Ğ¾Ğ²: ".ConvertBtoMB($max_files_size);
                     break;
                 default:
-                    $file['error'] = (isset($default_error))?$default_error:"Îøèáêà çàãğóçêè ôàéëà.";
+                    $file['error'] = (isset($default_error))?$default_error:"ĞÑˆĞ¸Ğ±ĞºĞ° Ğ·Ğ°Ğ³Ñ€ÑƒĞ·ĞºĞ¸ Ñ„Ğ°Ğ¹Ğ»Ğ°.";
                     break;
             }
         }
@@ -244,7 +244,7 @@ switch($action) {
     case 'delete':
         $attachedfiles->delete($_POST['attachedfiles_delete']);
         break;
-    case 'real_delete': // Ïîëíîñòüş óäàëÿåò ôàéë
+    case 'real_delete': // ĞŸĞ¾Ğ»Ğ½Ğ¾ÑÑ‚ÑŒÑ ÑƒĞ´Ğ°Ğ»ÑĞµÑ‚ Ñ„Ğ°Ğ¹Ğ»
         $attachedfiles->delete($_POST['attachedfiles_delete']);
         $delete_files = $attachedfiles->getFiles(array(2,4));
         $cfile = new CFile();
@@ -252,7 +252,7 @@ switch($action) {
             $cfile->Delete($delete['id']);
         }
         break;
-    case 'delete_file_stage': // Ìåòîä äëÿ óäàëåíèÿ ôàéëîâ èç ıòàïà ñäåëêè ÑÁĞ ÷òî áû íå ìóäğèòü ñ ñèñòåìîé ôàéëîâ - òóò íåëüçÿ óäàëÿòü ôàéëû, íå çàïèøåòñÿ èñòîğèÿ èçìåíåíèé ÒÇ
+    case 'delete_file_stage': // ĞœĞµÑ‚Ğ¾Ğ´ Ğ´Ğ»Ñ ÑƒĞ´Ğ°Ğ»ĞµĞ½Ğ¸Ñ Ñ„Ğ°Ğ¹Ğ»Ğ¾Ğ² Ğ¸Ğ· ÑÑ‚Ğ°Ğ¿Ğ° ÑĞ´ĞµĞ»ĞºĞ¸ Ğ¡Ğ‘Ğ  Ñ‡Ñ‚Ğ¾ Ğ±Ñ‹ Ğ½Ğµ Ğ¼ÑƒĞ´Ñ€Ğ¸Ñ‚ÑŒ Ñ ÑĞ¸ÑÑ‚ĞµĞ¼Ğ¾Ğ¹ Ñ„Ğ°Ğ¹Ğ»Ğ¾Ğ² - Ñ‚ÑƒÑ‚ Ğ½ĞµĞ»ÑŒĞ·Ñ ÑƒĞ´Ğ°Ğ»ÑÑ‚ÑŒ Ñ„Ğ°Ğ¹Ğ»Ñ‹, Ğ½Ğµ Ğ·Ğ°Ğ¿Ğ¸ÑˆĞµÑ‚ÑÑ Ğ¸ÑÑ‚Ğ¾Ñ€Ğ¸Ñ Ğ¸Ğ·Ğ¼ĞµĞ½ĞµĞ½Ğ¸Ğ¹ Ğ¢Ğ—
         //require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/sbr_stages.php");
         $attachedfiles->delete($_POST['attachedfiles_delete']);
         //$delete_files = $attachedfiles->getFiles(array(2,4));

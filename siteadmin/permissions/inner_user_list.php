@@ -5,26 +5,26 @@ if(!(hasPermissions('adm') && hasPermissions('permissions'))) {
 }
 ?>
 
-<strong>Права доступа. Список пользователей</strong>
+<strong>РџСЂР°РІР° РґРѕСЃС‚СѓРїР°. РЎРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</strong>
 
 <br><br>
 
 <form action="index.php">
 <input type="hidden" name="action" value="user_list">
-Группа: 
+Р“СЂСѓРїРїР°: 
 <select name="group_id">
-    <option value="-3" <?=($group_id==-3?'selected':'')?>>* Все пользователи</option>
-    <option value="-4" <?=($group_id==-4?'selected':'')?>>* Пользователи без прав</option>
-    <option value="-2" <?=($group_id==-2?'selected':'')?>>* Без группы</option>
-    <option value="-1" <?=($group_id==-1?'selected':'')?>>* Все группы</option>
+    <option value="-3" <?=($group_id==-3?'selected':'')?>>* Р’СЃРµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё</option>
+    <option value="-4" <?=($group_id==-4?'selected':'')?>>* РџРѕР»СЊР·РѕРІР°С‚РµР»Рё Р±РµР· РїСЂР°РІ</option>
+    <option value="-2" <?=($group_id==-2?'selected':'')?>>* Р‘РµР· РіСЂСѓРїРїС‹</option>
+    <option value="-1" <?=($group_id==-1?'selected':'')?>>* Р’СЃРµ РіСЂСѓРїРїС‹</option>
     <? foreach($groups as $group) { ?>
         <option value="<?=$group['id']?>" <?=(($group['id']==$group_id)?'selected':'')?>><?=$group['name']?></option>
     <? } ?>
 </select>
 &nbsp;&nbsp;&nbsp;&nbsp;
-Логин:
+Р›РѕРіРёРЅ:
 <input type="text" name="login" value="<?=change_q_new($login)?>"> 
-<input type="submit" value=" Показать ">
+<input type="submit" value=" РџРѕРєР°Р·Р°С‚СЊ ">
 </form>
 
 <br><br>
@@ -45,7 +45,7 @@ if(!(hasPermissions('adm') && hasPermissions('permissions'))) {
                         <td>
                             <?=$session->view_online_status($user['login'])?> <a href="/users/<?=$user['login']?>" class="<?=$utype?>name11"><?=($user['usurname']." ".$user['uname'])?></a> [<a href="/users/<?=$user['login']?>" class="<?=$utype?>name11"><?=$user['login']?></a>] <a href="mailto:<?=$user['email']?>"><?=$user['email']?></a>
                             <br/><br/>
-                            <b>Группы:</b> 
+                            <b>Р“СЂСѓРїРїС‹:</b> 
                             <? if($user_groups) { ?>
                                 <?
                                 $groups_str = "";
@@ -59,7 +59,7 @@ if(!(hasPermissions('adm') && hasPermissions('permissions'))) {
                                 -
                             <? } ?>
                             <br/><br/>
-                            <b>Дополнительные права:</b> 
+                            <b>Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїСЂР°РІР°:</b> 
                             <? if($user_rights) { ?>
                                 <?
                                 $rights_str = "";
@@ -78,7 +78,7 @@ if(!(hasPermissions('adm') && hasPermissions('permissions'))) {
                                 -
                             <? } ?>
                             <br/><br/>
-                            <? if($user_rights || $user_groups) { ?>[<a id="uid_del_<?=$user['uid']?>" href="?action=user_delete&uid=<?=$user['uid']?>" onClick="return addTokenToLink('uid_del_<?=$user['uid']?>', 'Вы действительно хотите удалить все права пользователя?')">удалить все права</a>] <? } ?>[<a href="?action=user_edit&uid=<?=$user['uid']?>">редактировать</a>]
+                            <? if($user_rights || $user_groups) { ?>[<a id="uid_del_<?=$user['uid']?>" href="?action=user_delete&uid=<?=$user['uid']?>" onClick="return addTokenToLink('uid_del_<?=$user['uid']?>', 'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РІСЃРµ РїСЂР°РІР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ?')">СѓРґР°Р»РёС‚СЊ РІСЃРµ РїСЂР°РІР°</a>] <? } ?>[<a href="?action=user_edit&uid=<?=$user['uid']?>">СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>]
                             <br/><hr>
                         </td>
                     </tr>
@@ -87,6 +87,6 @@ if(!(hasPermissions('adm') && hasPermissions('permissions'))) {
         </tr>
     <? } ?>
 <? } else { ?>
-    <tr><td>Пользователей не найдено</td></tr>
+    <tr><td>РџРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РЅРµ РЅР°Р№РґРµРЅРѕ</td></tr>
 <? } ?>
 </table>

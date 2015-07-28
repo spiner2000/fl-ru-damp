@@ -3,7 +3,7 @@ if(!isset($_SERVER['REQUEST_METHOD'])) {
     ini_set('error_log', '/var/log/php.log');
 }
 
-define('HTTP_PREFIX', isset($_SERVER['HTTP_NGINX_HTTPS']) ? 'https://' : 'http://'); // !!! ��� �����, pgq � ��. �� ��������� �� ���� ������ ���� https.
+define('HTTP_PREFIX', isset($_SERVER['HTTP_NGINX_HTTPS']) ? 'https://' : 'http://'); // !!! для крона, pgq и пр. по умолчанию по идее должен быть https.
 $host = HTTP_PREFIX . "beta.fl.ru";
 //$host = HTTP_PREFIX . "beta.fl.ru";
 $GLOBALS['neo_host'] = 'https://beta.fl.ru';
@@ -14,7 +14,7 @@ if (!$_SERVER['DOCUMENT_ROOT']) $_SERVER['DOCUMENT_ROOT'] = $abs_path;
 define("ABS_PATH", $_SERVER['DOCUMENT_ROOT']);
 define('FTS_PROJECTS', false);
 
-// ��� �������� Google Analytics
+// Код счетчика Google Analytics
 define('GA_COUNTER_CODE', 'UA-49313708-3');
 
 $pg_db['master']['name'] = "beta";
@@ -23,7 +23,7 @@ $pg_db['master']['host'] = "localhost";
 $pg_db['master']['pwd'] = "LKUdkjas832lkjsj";
 $pg_db['master']['port'] = '5435';//"6432";
 $pg_db['master_standby'] = $pg_db['master'];
-$pg_db['master_standby']['port'] = 5435;//6433; // !!! ��������
+$pg_db['master_standby']['port'] = 5435;//6433; // !!! починить
 
 $pg_db['slave1']['name'] = "beta_data1";
 $pg_db['slave1']['user'] = "beta";
@@ -38,7 +38,7 @@ $pg_db['slave2']['pwd'] = "LKUdkjas832lkjsj";
 $pg_db['slave2']['port'] = '5435';//"6432";
 
 $pg_db['banner']['name'] = "beta";
-$pg_db['banner']['user'] = "beta"; // !!! ������� ��������� ����.
+$pg_db['banner']['user'] = "beta"; // !!! завести отдельную базу.
 $pg_db['banner']['host'] = "localhost";
 $pg_db['banner']['pwd'] = "LKUdkjas832lkjsj";
 $pg_db['banner']['port'] = '5435';//"6432";
@@ -88,7 +88,7 @@ $memcachedBannersServers = array('localhost');
 define ("USE_MEMCACHED", true);
 
 
-// ������ WebDav
+// Конфиг WebDav
 $WDCS = array (
   1 => array (
     'server'=>'localhost', 
@@ -100,7 +100,7 @@ $WDCS = array (
 );
 $_wdc = $WDCS[rand(1, count($WDCS))];
 define('WDCPREFIX', $_wdc['prefix']);
-define('WDCPREFIX_LOCAL', 'http://' . $_wdc['server'].':'.$_wdc['port']); // ��� ���� ������ "http".
+define('WDCPREFIX_LOCAL', 'http://' . $_wdc['server'].':'.$_wdc['port']); // тут пока только "http".
 unset($_wdc);
 
 
@@ -115,23 +115,23 @@ define('DRWEB_HOST', '127.0.0.1');
 define('DRWEB_PORT', '3000');
 define('DRWEB_STORE', '/var/www/_beta/webdav');
 
-// ������ ������� FLTray.
+// Версия клиента FLTray.
 define('FLTRAY_VERSION', '3.0.0');
 define('FLTRAY_WIN_VERSION',   FLTRAY_VERSION);
 define('FLTRAY_MAC_VERSION',   FLTRAY_VERSION);
 define('FLTRAY_LINUX_VERSION', FLTRAY_VERSION);
 
 /*
- * �?мя сервака. 
- * Для локального разработчиков - local,
- * альфа - alpha,
- * бета - beta,
- * релиз - release (все серваки релиза с этим именем!)
+ * Р?РјСЏ СЃРµСЂРІР°РєР°. 
+ * Р”Р»СЏ Р»РѕРєР°Р»СЊРЅРѕРіРѕ СЂР°Р·СЂР°Р±РѕС‚С‡РёРєРѕРІ - local,
+ * Р°Р»СЊС„Р° - alpha,
+ * Р±РµС‚Р° - beta,
+ * СЂРµР»РёР· - release (РІСЃРµ СЃРµСЂРІР°РєРё СЂРµР»РёР·Р° СЃ СЌС‚РёРј РёРјРµРЅРµРј!)
  */
 define("SERVER", 'beta');
 define('BASIC_AUTH', "freelance:mRfLjovLToupZM0");
 
-// ������� � ���, ��� webdav ����� �� nginx � ������� create_full_put_path. � ����� ������ ������������� ��������� ������������ ���������� ��� PUT.
+// Говорит о том, что webdav сидит на nginx и включен create_full_put_path. В таком случае необязательно создавать родительские директории для PUT.
 define('WD_CREATE_FULL_PUT_PATH', true);
 
 
@@ -139,8 +139,8 @@ define('COOKIE_PWD_SALT', 'beta*S)oQ2R]@7ZEb!wfv\gy-(ch?7_(Be8[asulw3ht876f1');
 define('PRIVATE_PWD_SALT', 'beta7KLjds2093uijsadkjncvs 90--12kJHUSDx.p');
 
 
-// ����� ��� �������� (���������� ������������ �� ����).
-// ������������ � ���� define('SERVER', 'beta');
+// Ящики для тестеров (безопасное тестирование на бете).
+// Используется в паре define('SERVER', 'beta');
 $TESTERS_MAIL = array (
 /*
  // emails for feedback test
@@ -204,7 +204,7 @@ $TESTERS_MAIL = array (
 // 'onyanov@fl.ru'
 );
 
-// 0 -- ���� ������ ��� ����. ����� ���� ������ � ����� ������� ����. ���, ������� ������������ ��� ������� �� ����.
+// 0 -- сайт открыт для всех. Иначе сайт закрыт и здесь пишется спец. код, который используется для доступа на сайт.
 $__IS_CLOSED = 0;//'asdjfiowe939393930002002';
 if( !$__IS_CLOSED && (SERVER==='beta' || SERVER==='alpha' || IS_LOCAL===true) && isset($_GET['IS_CLOSED']) ) {
     $__IS_CLOSED = $_GET['IS_CLOSED'];
@@ -215,23 +215,23 @@ define('IS_CLOSED_UNTIL', '2:46');
 define("COMPRESS_STATIC", true);
 define('PSKB_TEST_MODE', true);
 
-// ����� ��� ������� � MixPanel
+// Токен для доступа к MixPanel
 define('MIXPANEL_PROJECT_TOKEN', 'ac88c8fcd72b9a0d6deefab083252a99');
 
 
 
 //------------------------------------------------------------------------------
-// Настройки сервиса бекапа файлов в облачное зранилище
+// РќР°СЃС‚СЂРѕР№РєРё СЃРµСЂРІРёСЃР° Р±РµРєР°РїР° С„Р°Р№Р»РѕРІ РІ РѕР±Р»Р°С‡РЅРѕРµ Р·СЂР°РЅРёР»РёС‰Рµ
 
 /*
 $BACKUP_SERVICE = array(
     'active' => true,
     'type' => 'AzureBlob',
     'options' => array(
-	//перфикс полного пути откуда брать файл
-        'FilePrefix' => realpath(ABS_PATH . '/../webdav'),//для беты и альфы указанное значение норм
+	//РїРµСЂС„РёРєСЃ РїРѕР»РЅРѕРіРѕ РїСѓС‚Рё РѕС‚РєСѓРґР° Р±СЂР°С‚СЊ С„Р°Р№Р»
+        'FilePrefix' => realpath(ABS_PATH . '/../webdav'),//РґР»СЏ Р±РµС‚С‹ Рё Р°Р»СЊС„С‹ СѓРєР°Р·Р°РЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РЅРѕСЂРј
             
-        //настройки для хранилища
+        //РЅР°СЃС‚СЂРѕР№РєРё РґР»СЏ С…СЂР°РЅРёР»РёС‰Р°
         'DefaultEndpointsProtocol' => 'https',
         'AccountName' => 'portalvhdscs9w1rhddm7rf',
         'AccountKey' => 'O7zHtOhoGGLxpoZbgQ01bEiQvrFQwoefrwCBHTYnGv9pqNYOIN4636VygfCU9aRaXWO388R9Vuhj1yKYA/GNMg=='
@@ -240,7 +240,7 @@ $BACKUP_SERVICE = array(
 */
                                                                  
 //------------------------------------------------------------------------------
-//Список адрессов для рассылке предупреждения о возможном Фроде по БС
+//РЎРїРёСЃРѕРє Р°РґСЂРµСЃСЃРѕРІ РґР»СЏ СЂР°СЃСЃС‹Р»РєРµ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ Рѕ РІРѕР·РјРѕР¶РЅРѕРј Р¤СЂРѕРґРµ РїРѕ Р‘РЎ
 
 $NOTIFY_FROD_EMAILS = array(
     'kazakov@fl.ru',
@@ -251,32 +251,32 @@ $NOTIFY_FROD_EMAILS = array(
     
     
 //------------------------------------------------------------------------------
-// ЯД сервис выплат
+// РЇР” СЃРµСЂРІРёСЃ РІС‹РїР»Р°С‚
 
-// Только для боя
+// РўРѕР»СЊРєРѕ РґР»СЏ Р±РѕСЏ
 //define('YM_PAYOUT_ENCRYPT_CERT_FILE', __DIR__ . '/reserves/data/certnew_Vaan.cer');
 //define('YM_PAYOUT_DECRYPT_CERT_FILE', __DIR__ . '/reserves/data/depositresponsegenerator.cer');
 //define('YM_PAYOUT_PRIVATE_KEY_FILE',  __DIR__ . '/reserves/data/private.key');
 //define('YM_PAYOUT_PASSPHRASE', 'tkaevient2014');
 
 
-//Только для бета/альфа/локала
+//РўРѕР»СЊРєРѕ РґР»СЏ Р±РµС‚Р°/Р°Р»СЊС„Р°/Р»РѕРєР°Р»Р°
 define('YM_PAYOUT_TEST_URL', 'https://freelance:mRfLjovLToupZM0@' . str_replace(HTTP_PREFIX, '', $host) . '/bill/test/ym.php?m=%s');
 
 //------------------------------------------------------------------------------
       
 /**
-* Ключ API для USERECHO
+* РљР»СЋС‡ API РґР»СЏ USERECHO
 */
 define('USERECHO_API_KEY', 'cda5420ca9a94382bae2736392827c98');
         
 /**
-* API-токен для USERECHO
+* API-С‚РѕРєРµРЅ РґР»СЏ USERECHO
 */
 define('USERECHO_API_TOKEN', '02d5b17f81f768983bf5f5f12731f52ebd81f173');
           
 /**
-* PROJECT_KEY для USERECHO
+* PROJECT_KEY РґР»СЏ USERECHO
 * */
 define('USERECHO_PROJECT_KEY', 'fl');
             
@@ -305,7 +305,7 @@ define('BANNER_ADRIVER_SID', 204428);
 
 //------------------------------------------------------------------------------
 
-//Верификация через WebMoney
+//Р’РµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· WebMoney
 define('WM_VERIFY_URL_UD', 'E8A544F8-CE44-4292-AC23-A49E010FF699');
 define('WM_VERIFY_AUTHCHECK_WMID', '284917267100');
 define('WM_VERIFY_WMID', '362345269260');

@@ -1,7 +1,7 @@
 <div class="b-layout b-layout_padtop_40 g-txt_center">
   
     <h1 class="b-layout__title b-layout__title_lh_1 b-layout__title_fs24 b-layout__title_color_333 b-layout__title_padbot_25">
-        Быстрый вход
+        Р‘С‹СЃС‚СЂС‹Р№ РІС…РѕРґ
     </h1>
 
     <div class="b-layout__txt b-layout__txt_padbot_75">
@@ -21,7 +21,7 @@
     </div>
 
     <h2 class="b-layout__title b-layout__title_lh_1 b-layout__title_fs24 b-layout__title_color_333 b-layout__title_padbot_25">
-        Войти
+        Р’РѕР№С‚Рё
     </h2>
     
     <div class="b-layout b-layout_inline-block b-layout_width_330 b-layout_padbot_20 b-layout_width_full_iphone">
@@ -29,9 +29,9 @@
     </div>
     
     <div class="b-layout__txt">
-        <a href="/remind/" class="b-layout__link b-layout__link_fontsize_18 b-layout__link_no-decorat">Восстановить забытый пароль</a>
+        <a href="/remind/" class="b-layout__link b-layout__link_fontsize_18 b-layout__link_no-decorat">Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ Р·Р°Р±С‹С‚С‹Р№ РїР°СЂРѕР»СЊ</a>
         <br/>
-        <a href="/registration/" class="b-layout__link b-layout__link_fontsize_18 b-layout__link_no-decorat">Регистрация</a>
+        <a href="/registration/" class="b-layout__link b-layout__link_fontsize_18 b-layout__link_no-decorat">Р РµРіРёСЃС‚СЂР°С†РёСЏ</a>
     </div>
 
 </div>    

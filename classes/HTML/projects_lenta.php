@@ -7,92 +7,92 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/payed.php");
 
 
 /*
- * Класс для отображения проектов на главной
+ * РљР»Р°СЃСЃ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РїСЂРѕРµРєС‚РѕРІ РЅР° РіР»Р°РІРЅРѕР№
  *
  */
 
 class HTMLProjects{
 
     /**
-    * id пользователя
+    * id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     *
     * @var integer
     */
 	private $uid;
 
     /**
-    * права доступа пользователя
+    * РїСЂР°РІР° РґРѕСЃС‚СѓРїР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     *
     * @var numeric
     */
 	private $user_role;
 
     /**
-    * Флаг PRO
+    * Р¤Р»Р°Рі PRO
     *
     * @var boolean
     */
 	private $pro_last;
 	
 	/**
-	 * Проверка на PRO
+	 * РџСЂРѕРІРµСЂРєР° РЅР° PRO
 	 * 
 	 * @var boolean
 	 */
     private $is_pro; 
 	   
     /**
-    * Флаг админа или модератора
+    * Р¤Р»Р°Рі Р°РґРјРёРЅР° РёР»Рё РјРѕРґРµСЂР°С‚РѕСЂР°
     *
     * @var boolean
     */
 	private $edit_mode;
 
     /**
-    * что показывать пользователю -- всю информацию 1 или не всю информацию 0
+    * С‡С‚Рѕ РїРѕРєР°Р·С‹РІР°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ -- РІСЃСЋ РёРЅС„РѕСЂРјР°С†РёСЋ 1 РёР»Рё РЅРµ РІСЃСЋ РёРЅС„РѕСЂРјР°С†РёСЋ 0
     *
     * @var integer
     */
 	private $show_data;
 
     /**
-    * кол-во проектов на странице
+    * РєРѕР»-РІРѕ РїСЂРѕРµРєС‚РѕРІ РЅР° СЃС‚СЂР°РЅРёС†Рµ
     *
     * @var integer
     */
 	private $num_prjs;
 
     /**
-    * массив проектов (результат работы projects::GetProjects())
+    * РјР°СЃСЃРёРІ РїСЂРѕРµРєС‚РѕРІ (СЂРµР·СѓР»СЊС‚Р°С‚ СЂР°Р±РѕС‚С‹ projects::GetProjects())
     *
     * @var array
     */
 	private $projects;
 
     /**
-    * массив информации о проекте
+    * РјР°СЃСЃРёРІ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїСЂРѕРµРєС‚Рµ
     *
     * @var array
     */
 	private $project;
 	
     /**
-    * ID закладки(тип проекта)
+    * ID Р·Р°РєР»Р°РґРєРё(С‚РёРї РїСЂРѕРµРєС‚Р°)
     *
     * @var integer
     */
 	private $kind;
 
     /**
-    * номер страницы
+    * РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹
     *
     * @var integer
     */
 	private $page;
 
     /**
-    * Флаг фильтра проектов.
-	* TRUE - разрешить использование, FALSE - не использовать.
+    * Р¤Р»Р°Рі С„РёР»СЊС‚СЂР° РїСЂРѕРµРєС‚РѕРІ.
+	* TRUE - СЂР°Р·СЂРµС€РёС‚СЊ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ, FALSE - РЅРµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ.
     *
     * @var integer
     */
@@ -110,13 +110,13 @@ class HTMLProjects{
 
 
     /**
-	 * Функция генерации ленты проектов
+	 * Р¤СѓРЅРєС†РёСЏ РіРµРЅРµСЂР°С†РёРё Р»РµРЅС‚С‹ РїСЂРѕРµРєС‚РѕРІ
 	 *
-	 * @param integer $num_prjs	проектов на странице
-	 * @param array   $projects	массив проектов (результат работы projects::GetProjects())
-	 * @param integer $kind		закладка
-	 * @param integer $page		номер страницы
-	 * @param inetger $is_ajax    если функция вызвана через ajax @see JS seo_print();
+	 * @param integer $num_prjs	РїСЂРѕРµРєС‚РѕРІ РЅР° СЃС‚СЂР°РЅРёС†Рµ
+	 * @param array   $projects	РјР°СЃСЃРёРІ РїСЂРѕРµРєС‚РѕРІ (СЂРµР·СѓР»СЊС‚Р°С‚ СЂР°Р±РѕС‚С‹ projects::GetProjects())
+	 * @param integer $kind		Р·Р°РєР»Р°РґРєР°
+	 * @param integer $page		РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹
+	 * @param inetger $is_ajax    РµСЃР»Рё С„СѓРЅРєС†РёСЏ РІС‹Р·РІР°РЅР° С‡РµСЂРµР· ajax @see JS seo_print();
 	 * @return HTML
 	 *
 	 */
@@ -197,7 +197,7 @@ class HTMLProjects{
 
             }
         } elseif ($page == 1) {
-            $outHTML .= "<div class=\"project-preview\">Ничего не найдено</div>";
+            $outHTML .= "<div class=\"project-preview\">РќРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ</div>";
         }
         
         
@@ -228,7 +228,7 @@ class HTMLProjects{
     
 
 	/*
-	 * Функция генерации HTML кода подключения JS
+	 * Р¤СѓРЅРєС†РёСЏ РіРµРЅРµСЂР°С†РёРё HTML РєРѕРґР° РїРѕРґРєР»СЋС‡РµРЅРёСЏ JS
 	 *
 	 * @return HTML
 	 *
@@ -241,38 +241,38 @@ class HTMLProjects{
 	}
 
 	/*
-	 * Функция генерация постраничного вывода(пейджера)
+	 * Р¤СѓРЅРєС†РёСЏ РіРµРЅРµСЂР°С†РёСЏ РїРѕСЃС‚СЂР°РЅРёС‡РЅРѕРіРѕ РІС‹РІРѕРґР°(РїРµР№РґР¶РµСЂР°)
 	 *
-	 * @return HTML     HTML-код пейджера
+	 * @return HTML     HTML-РєРѕРґ РїРµР№РґР¶РµСЂР°
 	 */
 	private function ShowPages()
 	{
-		// Страницы
+		// РЎС‚СЂР°РЅРёС†С‹
 		$pages = ceil($this->num_prjs / new_projects::PAGE_SIZE);
 		if ($pages > 1){
 		    $sBox = "
 		    <div class=\"pager\">";
 		    if ($this->page == $pages){
-				;//$sBox .= "<span class=\"page-next\">следующая&nbsp;&nbsp;&rarr;</span>";
+				;//$sBox .= "<span class=\"page-next\">СЃР»РµРґСѓСЋС‰Р°СЏ&nbsp;&nbsp;&rarr;</span>";
 			}else {
 				$sBox .= "
-				<input id=\"next_navigation_link\" type=\"hidden\" value=\"?kind=".$this->kind."&amp;page=".($this->page+1)."\" /><span class=\"page-next\"><a href=\"?kind=".$this->kind."&amp;page=".($this->page+1)."\">следующая</a>&nbsp;&nbsp;&rarr;</span>";
+				<input id=\"next_navigation_link\" type=\"hidden\" value=\"?kind=".$this->kind."&amp;page=".($this->page+1)."\" /><span class=\"page-next\"><a href=\"?kind=".$this->kind."&amp;page=".($this->page+1)."\">СЃР»РµРґСѓСЋС‰Р°СЏ</a>&nbsp;&nbsp;&rarr;</span>";
 			}
 			if ($this->page == 1){
-				;//$sBox .= "<span class=\"page-back\">&larr;&nbsp;&nbsp;предыдущая</span>";
+				;//$sBox .= "<span class=\"page-back\">&larr;&nbsp;&nbsp;РїСЂРµРґС‹РґСѓС‰Р°СЏ</span>";
 			}else {
 				$sBox .= "
-				<input id=\"pre_navigation_link\" type=\"hidden\" value=\"?kind=".$this->kind."&amp;page=".($this->page-1)."\" /><span class=\"page-back\">&larr;&nbsp;&nbsp;<a href=\"?kind=".$this->kind."&amp;page=".($this->page-1)."\">предыдущая</a></span>";
+				<input id=\"pre_navigation_link\" type=\"hidden\" value=\"?kind=".$this->kind."&amp;page=".($this->page-1)."\" /><span class=\"page-back\">&larr;&nbsp;&nbsp;<a href=\"?kind=".$this->kind."&amp;page=".($this->page-1)."\">РїСЂРµРґС‹РґСѓС‰Р°СЏ</a></span>";
 			}
 	
-			//в начале
+			//РІ РЅР°С‡Р°Р»Рµ
 			if ($this->page <= 10) {
 				$sBox .= $this->BuildNavigation($this->page, 1, ($pages>10)?($this->page+4):$pages, "?kind=".$this->kind."&amp;page=");
 				if ($pages > 15) {
 					$sBox .= '...';
 				}
 			}
-			//в конце
+			//РІ РєРѕРЅС†Рµ
 			elseif ($this->page >= $pages-10) {
 				$sBox .= '...';
 				$sBox .= $this->BuildNavigation($this->page, $this->page-5, $pages, "?kind=".$this->kind."&amp;page=");
@@ -282,23 +282,23 @@ class HTMLProjects{
 				$sBox .= '...';
 			}
             $sBox .= "</div>";
-		} // Страницы закончились
+		} // РЎС‚СЂР°РЅРёС†С‹ Р·Р°РєРѕРЅС‡РёР»РёСЃСЊ
 
 		return $sBox;
 	}
 
 	/**
-	 * Функция генерации ссылок на RSS
+	 * Р¤СѓРЅРєС†РёСЏ РіРµРЅРµСЂР°С†РёРё СЃСЃС‹Р»РѕРє РЅР° RSS
 	 *
-	 * @return HTML     HTML-код с ссылками на RSS
+	 * @return HTML     HTML-РєРѕРґ СЃ СЃСЃС‹Р»РєР°РјРё РЅР° RSS
 	 */
 	private function ShowRSSLink() {
 		$sBox = "<br/><div class=\"rss\">";
 		switch ($this->kind) {
-			case 0: case 1: $sBox .= "<a href=\"javascript:void(0)\" onClick=\"showRSS(); return false;\" class=\"ico_rss\"><img src=\"/images/ico_rss.gif\" alt=\"RSS\" /></a> "; break; //<a href=\"/rss/projects.xml\">Фриланс</a>";
-			case 2: $sBox .= "<a href=\"javascript:void(0)\" onClick=\"showRSS(); return false;\" class=\"ico_rss\"><img src=\"/images/ico_rss.gif\" alt=\"RSS\" /></a> "; break; //<a href=\"/rss/competition.xml\">Конкурсы</a>";
-			case 4: $sBox .= "<a href=\"javascript:void(0)\" onClick=\"showRSS(); return false;\" class=\"ico_rss\"><img src=\"/images/ico_rss.gif\" alt=\"RSS\" /></a> "; break; //<a href=\"/rss/office.xml\">В офис</a>"; break;
-			case 6: $sBox .= "<a href=\"javascript:void(0)\" onClick=\"showRSS(); return false;\" class=\"ico_rss\"><img src=\"/images/ico_rss.gif\" alt=\"RSS\" /></a> "; break; //<a href=\"/rss/pro.xml\">Проекты для PRO</a>"; break;
+			case 0: case 1: $sBox .= "<a href=\"javascript:void(0)\" onClick=\"showRSS(); return false;\" class=\"ico_rss\"><img src=\"/images/ico_rss.gif\" alt=\"RSS\" /></a> "; break; //<a href=\"/rss/projects.xml\">Р¤СЂРёР»Р°РЅСЃ</a>";
+			case 2: $sBox .= "<a href=\"javascript:void(0)\" onClick=\"showRSS(); return false;\" class=\"ico_rss\"><img src=\"/images/ico_rss.gif\" alt=\"RSS\" /></a> "; break; //<a href=\"/rss/competition.xml\">РљРѕРЅРєСѓСЂСЃС‹</a>";
+			case 4: $sBox .= "<a href=\"javascript:void(0)\" onClick=\"showRSS(); return false;\" class=\"ico_rss\"><img src=\"/images/ico_rss.gif\" alt=\"RSS\" /></a> "; break; //<a href=\"/rss/office.xml\">Р’ РѕС„РёСЃ</a>"; break;
+			case 6: $sBox .= "<a href=\"javascript:void(0)\" onClick=\"showRSS(); return false;\" class=\"ico_rss\"><img src=\"/images/ico_rss.gif\" alt=\"RSS\" /></a> "; break; //<a href=\"/rss/pro.xml\">РџСЂРѕРµРєС‚С‹ РґР»СЏ PRO</a>"; break;
 			case 5: $sBox .= "<a href=\"javascript:void(0)\" onClick=\"showRSS(); return false;\" class=\"ico_rss\"><img src=\"/images/ico_rss.gif\" alt=\"RSS\" /></a>"; break;
 		}
 		
@@ -308,9 +308,9 @@ class HTMLProjects{
 	}
 
 	/*
-	 * Вспомогательная функция генерации активной/не активной ссылкок на страницы для пейджера
+	 * Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РіРµРЅРµСЂР°С†РёРё Р°РєС‚РёРІРЅРѕР№/РЅРµ Р°РєС‚РёРІРЅРѕР№ СЃСЃС‹Р»РєРѕРє РЅР° СЃС‚СЂР°РЅРёС†С‹ РґР»СЏ РїРµР№РґР¶РµСЂР°
 	 *
-	 * @return HTML     HTML-код ссылки на страницу
+	 * @return HTML     HTML-РєРѕРґ СЃСЃС‹Р»РєРё РЅР° СЃС‚СЂР°РЅРёС†Сѓ
 	 */
 	private function BuildNavigation($iCurrent, $iStart, $iAll, $sHref)
 	{
@@ -327,9 +327,9 @@ class HTMLProjects{
 
 
 	/*
-	 * Функция генерации ссылки на просмотр проекта в зависимости от типа проекта(только для PRO/для всех)
+	 * Р¤СѓРЅРєС†РёСЏ РіРµРЅРµСЂР°С†РёРё СЃСЃС‹Р»РєРё РЅР° РїСЂРѕСЃРјРѕС‚СЂ РїСЂРѕРµРєС‚Р° РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ С‚РёРїР° РїСЂРѕРµРєС‚Р°(С‚РѕР»СЊРєРѕ РґР»СЏ PRO/РґР»СЏ РІСЃРµС…)
 	 *
-	 * @return HTML     HTML-код с ссылкой /proonly.php, если проект только для PRO, иначе ссылка для просмотра проекта
+	 * @return HTML     HTML-РєРѕРґ СЃ СЃСЃС‹Р»РєРѕР№ /proonly.php, РµСЃР»Рё РїСЂРѕРµРєС‚ С‚РѕР»СЊРєРѕ РґР»СЏ PRO, РёРЅР°С‡Рµ СЃСЃС‹Р»РєР° РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° РїСЂРѕРµРєС‚Р°
 	 */
 	function GetProjectLink()
 	{
@@ -343,12 +343,12 @@ class HTMLProjects{
     }
 
 	/**
-	 * Красный прямоугольник для заблокированных проектов
+	 * РљСЂР°СЃРЅС‹Р№ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє РґР»СЏ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹С… РїСЂРѕРµРєС‚РѕРІ
 	 *
-	 * @param string  $reason	      причина блокировки
-	 * @param date    $date	          дата блокироки
-	 * @param string  $moder_login    логин модератора (оставить пустым, если показывать не нужно)
-	 * @param string  $moder_name     uname и usurname модератора (оставить пустым, если показывать не нужно)
+	 * @param string  $reason	      РїСЂРёС‡РёРЅР° Р±Р»РѕРєРёСЂРѕРІРєРё
+	 * @param date    $date	          РґР°С‚Р° Р±Р»РѕРєРёСЂРѕРєРё
+	 * @param string  $moder_login    Р»РѕРіРёРЅ РјРѕРґРµСЂР°С‚РѕСЂР° (РѕСЃС‚Р°РІРёС‚СЊ РїСѓСЃС‚С‹Рј, РµСЃР»Рё РїРѕРєР°Р·С‹РІР°С‚СЊ РЅРµ РЅСѓР¶РЅРѕ)
+	 * @param string  $moder_name     uname Рё usurname РјРѕРґРµСЂР°С‚РѕСЂР° (РѕСЃС‚Р°РІРёС‚СЊ РїСѓСЃС‚С‹Рј, РµСЃР»Рё РїРѕРєР°Р·С‹РІР°С‚СЊ РЅРµ РЅСѓР¶РЅРѕ)
 	 *
 	 * @return HTML
 	 */
@@ -358,8 +358,8 @@ class HTMLProjects{
         
         $html = "
             <div class='br-moderation-options'>
-                <a href='http://feedback.fl.ru/' class='lnk-feedback' style='color: #fff;'>Служба поддержки</a>
-                <div class='br-mo-status'><strong>Проект заблокирован.</strong> Причина: $reason</div>";
+                <a href='http://feedback.fl.ru/' class='lnk-feedback' style='color: #fff;'>РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё</a>
+                <div class='br-mo-status'><strong>РџСЂРѕРµРєС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ.</strong> РџСЂРёС‡РёРЅР°: $reason</div>";
         if ($moder_login) {
             require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/users.php';
             $users = new users();
@@ -367,12 +367,12 @@ class HTMLProjects{
             $link = "/siteadmin/admin_log/?cmd=filter&to_d=" . dateFormat('d', $date) . "&to_m=" . dateFormat('m', $date) . "&to_y=" . dateFormat('Y', $date) . "&adm=" . $admUid . "&act=9";
             $html .=   '<div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_float_right">
                             <img class="b-layout__pic b-layout__pic_valign_middle" src="/images/comm.gif" alt="" width="15" height="14"> 
-                            <a class="b-layout__link b-layout__link_fontsize_11" href="' . $link . '">Комментарии по проекту</a>
+                            <a class="b-layout__link b-layout__link_fontsize_11" href="' . $link . '">РљРѕРјРјРµРЅС‚Р°СЂРёРё РїРѕ РїСЂРѕРµРєС‚Сѓ</a>
                         </div>';
         }
         $html .= "<p class='br-mo-info'>".
-                ($moder_login? "Заблокировал: <a href='/users/$moder_login' style='color: #FF6B3D'>$moder_name [$moder_login]</a><br />": '').
-                "Дата блокировки: ".dateFormat('d.m.Y H:i', $date)."</p>
+                ($moder_login? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°Р»: <a href='/users/$moder_login' style='color: #FF6B3D'>$moder_name [$moder_login]</a><br />": '').
+                "Р”Р°С‚Р° Р±Р»РѕРєРёСЂРѕРІРєРё: ".dateFormat('d.m.Y H:i', $date)."</p>
             </div>
         ";
         
@@ -380,7 +380,7 @@ class HTMLProjects{
     }
 
     /**
-     * Генерирует попап для выбора раздела в RSS
+     * Р“РµРЅРµСЂРёСЂСѓРµС‚ РїРѕРїР°Рї РґР»СЏ РІС‹Р±РѕСЂР° СЂР°Р·РґРµР»Р° РІ RSS
      *
      */
     function ShowRSSPopup($kind) {
@@ -462,10 +462,10 @@ class HTMLProjects{
 
             function showRSS(){
                 clearSelect('rss_sub');
-                // var newoption = new Option('Весь раздел', '');
+                // var newoption = new Option('Р’РµСЃСЊ СЂР°Р·РґРµР»', '');
                 var newoption = document.createElement('option');
                 newoption.value = '';
-                newoption.innerHTML = 'Весь раздел';
+                newoption.innerHTML = 'Р’РµСЃСЊ СЂР°Р·РґРµР»';
                 document.getElementById('rss_sub').appendChild(newoption);
                 document.getElementById('rss_cat').value = '';
                 document.getElementById('rsso').style.display='block';
@@ -477,7 +477,7 @@ class HTMLProjects{
                 var objSel = $('rss_sub');
                 objSel.options.length = 0;
                 objSel.disabled = 'disabled';
-                objSel.options[objSel.options.length] = new Option('Весь раздел', 0);
+                objSel.options[objSel.options.length] = new Option('Р’РµСЃСЊ СЂР°Р·РґРµР»', 0);
                 if(category == 0) {
                     objSel.set('disabled', true);
                 } else {
@@ -496,7 +496,7 @@ class HTMLProjects{
             </script>
         ";
         // $subcategories = professions::Get
-        $select = "<select style=\"width:340px\"  onchange=\"FilterSubCategoryRSS(this.value);\" name=\"rss_cat\" id=\"rss_cat\">><option value=\"\">Все разделы</option>";
+        $select = "<select style=\"width:340px\"  onchange=\"FilterSubCategoryRSS(this.value);\" name=\"rss_cat\" id=\"rss_cat\">><option value=\"\">Р’СЃРµ СЂР°Р·РґРµР»С‹</option>";
         foreach($categories as $cat) {
             if(!$cat['id']) continue;
             $select .= "<option value=\"{$cat['id']}\">{$cat['name']}</option>";    
@@ -513,13 +513,13 @@ class HTMLProjects{
             <div class=\"ov-r\">
                <div class=\"ov-l\">
                        <div class=\"ov-in\" style=\"height:110px\">
-                            <label for=\"rss\">Укажите разделы:</label>&nbsp;&nbsp;<br/>{$select}<br/>
-                            <label for=\"rss_sub\">Укажите подразделы:</label>&nbsp;&nbsp;<br/><select style=\"width:340px\" name=\"rss_sub\" id=\"rss_sub\">
-                            <option value=\"\">Весь раздел</option>
+                            <label for=\"rss\">РЈРєР°Р¶РёС‚Рµ СЂР°Р·РґРµР»С‹:</label>&nbsp;&nbsp;<br/>{$select}<br/>
+                            <label for=\"rss_sub\">РЈРєР°Р¶РёС‚Рµ РїРѕРґСЂР°Р·РґРµР»С‹:</label>&nbsp;&nbsp;<br/><select style=\"width:340px\" name=\"rss_sub\" id=\"rss_sub\">
+                            <option value=\"\">Р’РµСЃСЊ СЂР°Р·РґРµР»</option>
                             </select>
                             <div class=\"ov-btns\">
-                                <input value=\"Подписаться\" class=\"i-btn i-bold\" type=\"button\" onClick=\"gotoRSS(); document.getElementById('rsso').style.display='none'; return false;\">
-                                <input value=\"Отменить\" class=\"i-btn\" onclick=\"$(this).getParent('div.overlay').setStyle('display', 'none'); return false;\" type=\"button\">
+                                <input value=\"РџРѕРґРїРёСЃР°С‚СЊСЃСЏ\" class=\"i-btn i-bold\" type=\"button\" onClick=\"gotoRSS(); document.getElementById('rsso').style.display='none'; return false;\">
+                                <input value=\"РћС‚РјРµРЅРёС‚СЊ\" class=\"i-btn\" onclick=\"$(this).getParent('div.overlay').setStyle('display', 'none'); return false;\" type=\"button\">
                            </div>
                        </div>
                     </div>

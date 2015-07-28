@@ -72,7 +72,7 @@ try
         throw new Exception('No types param');
     }
     
-    //óñïåøíûå ñäåëêè
+    //ÑƒÑÐ¿ÐµÑˆÐ½Ñ‹Ðµ ÑÐ´ÐµÐ»ÐºÐ¸
     $rows = $DB->rows("
         SELECT 
             fro.src_id,

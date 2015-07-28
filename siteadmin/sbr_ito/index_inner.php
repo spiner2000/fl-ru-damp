@@ -2,8 +2,8 @@
 require_once( $_SERVER['DOCUMENT_ROOT'] . '/xajax/sbr.common.php' );
 $xajax->printJavascript( '/xajax/' );
 ?>
-<h3>Документы ИТО</h3>
-<!-- Фильтр старт -->
+<h3>Р”РѕРєСѓРјРµРЅС‚С‹ РРўРћ</h3>
+<!-- Р¤РёР»СЊС‚СЂ СЃС‚Р°СЂС‚ -->
 <div class="form form-acnew form-payd_advice">
     <b class="b1"></b>
     <b class="b2"></b>
@@ -14,7 +14,7 @@ $xajax->printJavascript( '/xajax/' );
                 
                 <div class="form-block first">
                     <div class="form-el">
-                        <label class="form-l"><b>Период</b></label>
+                        <label class="form-l"><b>РџРµСЂРёРѕРґ</b></label>
                         <div class="form-value fvs">
                             <select name="month">
                             <? foreach($months as $n=>$m) { ?>
@@ -29,13 +29,13 @@ $xajax->printJavascript( '/xajax/' );
                         </div>
                     </div>
                     <div class="form-el">
-                        <label class="form-l"><b>Формат документа</b></label>
+                        <label class="form-l"><b>Р¤РѕСЂРјР°С‚ РґРѕРєСѓРјРµРЅС‚Р°</b></label>
                         <div class="form-value fvs">ODT <input type="radio" name="doc" value="odt" />&nbsp;&nbsp;XLSX <input type="radio" name="doc" value="xlsx" checked/></div>
                     </div>
                 </div>
                 <div class="form-block last">
                     <div class="form-el form-btns">
-                       <button type="submit">Сгенерировать</button>
+                       <button type="submit">РЎРіРµРЅРµСЂРёСЂРѕРІР°С‚СЊ</button>
                     </div>
                 </div>
             </form>
@@ -44,7 +44,7 @@ $xajax->printJavascript( '/xajax/' );
     <b class="b2"></b>
     <b class="b1"></b>
 </div>
-<!-- Фильтр стоп -->
+<!-- Р¤РёР»СЊС‚СЂ СЃС‚РѕРї -->
 
 <div class="search-lenta">
 
@@ -53,16 +53,16 @@ $xajax->printJavascript( '/xajax/' );
     
     <div class="search-item c">
         <span style="display:inline-block;text-align:center;width:100px;">
-            <b>Месяц</b>
+            <b>РњРµСЃСЏС†</b>
         </span>
         <span style="display:inline-block;text-align:center;width:150px;">
-            <b>Дата создания</b>
+            <b>Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ</b>
         </span>
         <span style="display:inline-block;text-align:center;width:200px;">
-            <b>Документ</b>
+            <b>Р”РѕРєСѓРјРµРЅС‚</b>
         </span>
         <span style="display:inline-block;text-align:center;width:250px;">
-            <b>Действия</b>
+            <b>Р”РµР№СЃС‚РІРёСЏ</b>
         </span>
     </div>
     
@@ -75,10 +75,10 @@ $xajax->printJavascript( '/xajax/' );
                 <?= date("d.m.Y H:i", strtotime($doc['date_create']));?>
             </span>
             <span style="display:inline-block;text-align:left;width:200px;">
-                <a href="<?= WDCPREFIX?>/<?=$doc['path'].$doc['fname']?>" target="_blank" id="file_name_<?=date('Yn', strtotime($doc['date_period']));?>">Скачать ИТО за <?= $months[date('n', strtotime($doc['date_period']))]?> <?= date('Y', strtotime($doc['date_period']))?>.<?= $ext;?></a>
+                <a href="<?= WDCPREFIX?>/<?=$doc['path'].$doc['fname']?>" target="_blank" id="file_name_<?=date('Yn', strtotime($doc['date_period']));?>">РЎРєР°С‡Р°С‚СЊ РРўРћ Р·Р° <?= $months[date('n', strtotime($doc['date_period']))]?> <?= date('Y', strtotime($doc['date_period']))?>.<?= $ext;?></a>
             </span>
             <span style="display:inline-block;text-align:center;width:100px;padding-bottom:5px;">
-                <input type="button" value="переформировать" onclick="xajax_aCreateDocITO('<?=$doc['date_period']?>', '<?=$ext;?>')"/>
+                <input type="button" value="РїРµСЂРµС„РѕСЂРјРёСЂРѕРІР°С‚СЊ" onclick="xajax_aCreateDocITO('<?=$doc['date_period']?>', '<?=$ext;?>')"/>
             </span>
             <span style="display:inline-block;text-align:center;width:150px;">
                 <form action="" method="POST" enctype="multipart/form-data" target="formframe" id="upload_form_<?=$doc['id']?>">
@@ -86,7 +86,7 @@ $xajax->printJavascript( '/xajax/' );
                     <input type="hidden" id="cmd" name="cmd" value="upload">
                     <span class="b-post__txt b-post__txt_relative b-post__txt_overflow_hidden b-post__txt_zoom_1">
                         <input class='b-file__input b-file__input_size_auto' type='file' id='attachedfiles_file_<?=$doc['id']?>' name='attachedfiles_file' onchange="$('upload_form_<?=$doc['id']?>').submit(); window.document.body.style.cursor = 'wait';">
-                        <label for="attachedfiles_file_<?=$doc['id']?>" id="upload_link_<?=$doc['id']?>"><input type="button" value="загрузить"/></label>
+                        <label for="attachedfiles_file_<?=$doc['id']?>" id="upload_link_<?=$doc['id']?>"><input type="button" value="Р·Р°РіСЂСѓР·РёС‚СЊ"/></label>
                     </span>
                 </form>
             </span>
@@ -94,7 +94,7 @@ $xajax->printJavascript( '/xajax/' );
     <? } ?>
     
 <? } else {?>
-    Документов ИТО нет.
+    Р”РѕРєСѓРјРµРЅС‚РѕРІ РРўРћ РЅРµС‚.
 <? } ?>
 
 </div>

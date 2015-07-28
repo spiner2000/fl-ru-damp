@@ -1,13 +1,13 @@
 <? 
-  // Фильтр проектов. Вставляется в разные места. На входе:
+  // Р¤РёР»СЊС‚СЂ РїСЂРѕРµРєС‚РѕРІ. Р’СЃС‚Р°РІР»СЏРµС‚СЃСЏ РІ СЂР°Р·РЅС‹Рµ РјРµСЃС‚Р°. РќР° РІС…РѕРґРµ:
   // $uid -- get_uid().
-  // $filter -- массив с параметрами фильтра.
-  // $filter_page -- код страницы (см. таблицу projects_filters).
-  // $filter_show -- 1: фильтр развернут, 0: свернут. /Параметр больше не используется - Эдуард, 8.10.2009/
-  // $filter_inputs -- дополнительные INPUT-ы в форму.
-  // $kind -- ид. закладки (если фильтр на главной странице).
-  // $page -- номер страницы (если фильтр на главной странице).
-  // Плюс должны быть включены заранее все xajax функции, которые тут используются.
+  // $filter -- РјР°СЃСЃРёРІ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё С„РёР»СЊС‚СЂР°.
+  // $filter_page -- РєРѕРґ СЃС‚СЂР°РЅРёС†С‹ (СЃРј. С‚Р°Р±Р»РёС†Сѓ projects_filters).
+  // $filter_show -- 1: С„РёР»СЊС‚СЂ СЂР°Р·РІРµСЂРЅСѓС‚, 0: СЃРІРµСЂРЅСѓС‚. /РџР°СЂР°РјРµС‚СЂ Р±РѕР»СЊС€Рµ РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ - Р­РґСѓР°СЂРґ, 8.10.2009/
+  // $filter_inputs -- РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ INPUT-С‹ РІ С„РѕСЂРјСѓ.
+  // $kind -- РёРґ. Р·Р°РєР»Р°РґРєРё (РµСЃР»Рё С„РёР»СЊС‚СЂ РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ).
+  // $page -- РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹ (РµСЃР»Рё С„РёР»СЊС‚СЂ РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ).
+  // РџР»СЋСЃ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РІРєР»СЋС‡РµРЅС‹ Р·Р°СЂР°РЅРµРµ РІСЃРµ xajax С„СѓРЅРєС†РёРё, РєРѕС‚РѕСЂС‹Рµ С‚СѓС‚ РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ.
 
   if (!$uid || is_emp())
     return 0;
@@ -28,7 +28,7 @@
       $location_value    = city::GetCountryName($filter['city']).": ".city::getCityName($filter['city']);
   } elseif($filter['country']) {
       $location_selector = "drop_down_default_{$filter['country']} multi_drop_down_default_column_0";
-      $location_value    = country::getCountryName($filter['country']) . ": Все города";
+      $location_value    = country::getCountryName($filter['country']) . ": Р’СЃРµ РіРѕСЂРѕРґР°";
   }
   
   
@@ -44,7 +44,7 @@
   }
 
   if(!$_SESSION['ph'] && !$_SESSION['top_payed']) {
-      $has_hidd = false; // скрываем блок если нечего скрывать
+      $has_hidd = false; // СЃРєСЂС‹РІР°РµРј Р±Р»РѕРє РµСЃР»Рё РЅРµС‡РµРіРѕ СЃРєСЂС‹РІР°С‚СЊ
   }
   
   if(!$filter) {
@@ -80,14 +80,14 @@
 
   $_SESSION['ph_categories'] = $filter['categories'];
 
-  //создаем массив специализаций (для фильтра на главной он уже есть в $prfs, для фильтра в проектах фрилансера его нет, поэтому делаем проверку на существование
+  //СЃРѕР·РґР°РµРј РјР°СЃСЃРёРІ СЃРїРµС†РёР°Р»РёР·Р°С†РёР№ (РґР»СЏ С„РёР»СЊС‚СЂР° РЅР° РіР»Р°РІРЅРѕР№ РѕРЅ СѓР¶Рµ РµСЃС‚СЊ РІ $prfs, РґР»СЏ С„РёР»СЊС‚СЂР° РІ РїСЂРѕРµРєС‚Р°С… С„СЂРёР»Р°РЅСЃРµСЂР° РµРіРѕ РЅРµС‚, РїРѕСЌС‚РѕРјСѓ РґРµР»Р°РµРј РїСЂРѕРІРµСЂРєСѓ РЅР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ
   if (!sizeof($profs)) {$all_specs = professions::GetAllProfessions("", 0, 1);}
   else                 {$all_specs = $profs;}
 
 ?>
 <script type="text/javascript">
-//1 = фильтр проектов
-//2 = фильтр фрилансеров
+//1 = С„РёР»СЊС‚СЂ РїСЂРѕРµРєС‚РѕРІ
+//2 = С„РёР»СЊС‚СЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
 var curFBulletsBox = 1;
 
 var filter_user_specs={<?
@@ -182,32 +182,32 @@ filter_bullets[<?=$fvalue?>][<?=$fkey?>]['parentid'] = '<?=(!($fvalue)?0:$prof_g
             d.setMonth(d.getMonth() + 1);
                             if(!$('filtrToggle').hasClass('b-layout_hide')) {
                               $('filtrToggle').addClass('b-layout_hide');
-                              r.set('text', 'Развернуть');
+                              r.set('text', 'Р Р°Р·РІРµСЂРЅСѓС‚СЊ');
                               $('mainFrmFltr').addClass('b-frm-filtr__item_reset');
                               
               document.cookie='new_pf'+$('b_ext_filter').get('page')+'='+''+'; expires='+d.toGMTString() + '; path=/';
                             } else {
                               $('filtrToggle').removeClass('b-layout_hide');
-                              r.set('text', 'Cвернуть');
+                              r.set('text', 'CРІРµСЂРЅСѓС‚СЊ');
                               $('mainFrmFltr').removeClass('b-frm-filtr__item_reset');
               document.cookie='new_pf'+$('b_ext_filter').get('page')+'='+'1'+'; expires='+d.toGMTString() + '; path=/';
                               }
                           }
 function FilterCatalogAddCategoryType() {
     if ($('comboe_column_id').value == 0) {
-        //добавляем категорию
+        //РґРѕР±Р°РІР»СЏРµРј РєР°С‚РµРіРѕСЂРёСЋ
         if(Number($('comboe_db_id').value) > 0) {
             tl = $('comboe').get("value");
-            /*tl = tl.replace(/: ?/, ''); а зачем это было???*/ 
+            /*tl = tl.replace(/: ?/, ''); Р° Р·Р°С‡РµРј СЌС‚Рѕ Р±С‹Р»Рѕ???*/ 
             tlf = tl;
             if (tl.length > 28) {
                 tl = tl.substr(0, 28) + '...';
             }
             FilterAddBulletNew(0, $('comboe_db_id').value, tl, undefined, tlf);
-            ComboboxManager.setDefaultValue('comboe', 'Все специализации', 0);            
+            ComboboxManager.setDefaultValue('comboe', 'Р’СЃРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё', 0);            
         }
     } else {
-        //добавляем подкатегорию
+        //РґРѕР±Р°РІР»СЏРµРј РїРѕРґРєР°С‚РµРіРѕСЂРёСЋ
         //if(Number($('comboe_db_id').value) > 0) {
             tl = $('comboe').get("value");
             tlf = tl;
@@ -228,19 +228,19 @@ function FilterCatalogAddCategoryType() {
                 value = parseInt(combo.breadCrumbs[0]);
             }
             FilterAddBulletNew(type, value, tl, category_id, tlf);
-            ComboboxManager.setDefaultValue('comboe', 'Все специализации', 0);            
+            ComboboxManager.setDefaultValue('comboe', 'Р’СЃРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё', 0);            
         //}
     }
 }
 
   </script>
   <div id="mainFrmFltr" class="b-frm-filtr__item <?=(($filter_show)?"":"b-frm-filtr__item_reset")?>">
-     <div class="b-layout__txt b-layout__txt_float_right b-layout__txt_relative"><a onClick="togF(this);" class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-filter-toggle-link" href="javascript:void(0)"><?=(($filter_show)?"Свернуть":"Развернуть")?></a></div>
+     <div class="b-layout__txt b-layout__txt_float_right b-layout__txt_relative"><a onClick="togF(this);" class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-filter-toggle-link" href="javascript:void(0)"><?=(($filter_show)?"РЎРІРµСЂРЅСѓС‚СЊ":"Р Р°Р·РІРµСЂРЅСѓС‚СЊ")?></a></div>
      <div class="b-layout__txt">
       <? if ($filter_apply) { ?>
-         <a class="b-layout__link b-layout__link_color_55b12e b-layout__link_bold b-layout__link_no-decorat" href="/projects<?=$frm_action?><?=$prmd?>action=deletefilter<?=$filter_query?>"><span class="b-icon b-icon__filtr b-icon__filtr_on"></span> Фильтр включен</a>
+         <a class="b-layout__link b-layout__link_color_55b12e b-layout__link_bold b-layout__link_no-decorat" href="/projects<?=$frm_action?><?=$prmd?>action=deletefilter<?=$filter_query?>"><span class="b-icon b-icon__filtr b-icon__filtr_on"></span> Р¤РёР»СЊС‚СЂ РІРєР»СЋС‡РµРЅ</a>
       <? } else { ?>
-         <a class="b-layout__link b-layout__link_color_969696 b-layout__link_no-decorat" href="/projects<?=$frm_action?><?=$prmd?>action=activatefilter<?=$filter_query?>"><span class="b-icon b-icon__filtr b-icon__filtr_off"></span> Фильтр отключен</a>
+         <a class="b-layout__link b-layout__link_color_969696 b-layout__link_no-decorat" href="/projects<?=$frm_action?><?=$prmd?>action=activatefilter<?=$filter_query?>"><span class="b-icon b-icon__filtr b-icon__filtr_off"></span> Р¤РёР»СЊС‚СЂ РѕС‚РєР»СЋС‡РµРЅ</a>
       <? } ?>
       </div>
   </div>
@@ -257,7 +257,7 @@ function FilterCatalogAddCategoryType() {
            <table class="b-layout__table b-layout__table_width_full">
                 <tr class="b-layout__tr">
                    <td class="b-layout__td b-layout__td_width_70">
-                      <div class="b-layout__txt b-layout__txt_padtop_5">Бюджет от</div>
+                      <div class="b-layout__txt b-layout__txt_padtop_5">Р‘СЋРґР¶РµС‚ РѕС‚</div>
                    </td>
                    <td class="b-layout__td b-layout__td_padright_10">
                       <div class="b-combo">
@@ -268,7 +268,7 @@ function FilterCatalogAddCategoryType() {
                       </div>
                    </td>
                    <td class="b-layout__td b-layout__td_width_60">
-                                                                                              <script type="text/javascript"> var currencyList = {0:"USD", 1:"Евро", 2:"Руб"}</script><div
+                                                                                              <script type="text/javascript"> var currencyList = {0:"USD", 1:"Р•РІСЂРѕ", 2:"Р СѓР±"}</script><div
                        class="b-combo b-combo_inline-block b-combo_zindex_4 b-combo_valign_mid">
                           <div class="b-combo__input b-combo__input_width_65 	b-combo__input_multi_dropdown b-combo__input_min-width_40 b-combo__input_arrow_yes b-combo__input_init_currencyList drop_down_default_2 reverse_list" >
                               <input id="pf_currency" type="hidden" name="pf_currency" value="<?= $filter['currency'] === null ? 2 : (int)$filter['currency'] ?>" />
@@ -281,7 +281,7 @@ function FilterCatalogAddCategoryType() {
            <? if ($kind != 2) {?>
            <div class="b-check b-check_padtop_15">
                   <input id="pf_wo_budjet" class="b-check__input" type="checkbox" name="pf_wo_budjet" value="1" <?= ($filter['wo_cost'] == 't' || $_SESSION['wo_cost_check'])? 'checked="checked"' : '' ?>/>
-                  <label for="pf_wo_budjet" class="b-check__label b-check__label_fontsize_13">Бюджет &laquo;по договорённости&raquo;</label>
+                  <label for="pf_wo_budjet" class="b-check__label b-check__label_fontsize_13">Р‘СЋРґР¶РµС‚ &laquo;РїРѕ РґРѕРіРѕРІРѕСЂС‘РЅРЅРѕСЃС‚Рё&raquo;</label>
             </div>
 			<? $_SESSION['wo_cost_check'] = false;} else {$_SESSION['wo_cost_check'] = ($filter['wo_cost'] == 't');}?>
           </div>
@@ -289,20 +289,20 @@ function FilterCatalogAddCategoryType() {
           <div class="b-frm-filtr__item">
                 <input id="pf_category" name="pf_category" type="hidden" />
                 <input id="pf_subcategory" name="pf_subcategory" type="hidden" />
-                <div class="b-frm-fltr__title">Специализации <a onclick="this.getParent('.b-frm-fltr__title').getNext('.b-layout').toggleClass('b-layout_hide'); return false;" class="b-button b-button_content_plus" href="#"></a></div>
+                <div class="b-frm-fltr__title">РЎРїРµС†РёР°Р»РёР·Р°С†РёРё <a onclick="this.getParent('.b-frm-fltr__title').getNext('.b-layout').toggleClass('b-layout_hide'); return false;" class="b-button b-button_content_plus" href="#"></a></div>
                <div class="b-layout b-layout_hide">
                    <table class="b-layout__table b-layout__table_margbot_10 b-layout__table_width_full">
                       <tbody><tr class="b-layout__tr">
                          <td class="b-layout__td">
                               <div class="b-combo b-combo_margright_5 b-combo_zindex_3">
                                   <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_resize b-combo__input_max-width_450 b-combo__input_visible_height_200 b-combo__input_arrow_yes b-combo__input_init_professionsList sort_cnt drop_down_default_0 multi_drop_down_default_column_0 exclude_value_0_0">
-                                      <input id="comboe" class="b-combo__input-text" name="" type="text" size="80" value="Все специализации" />
+                                      <input id="comboe" class="b-combo__input-text" name="" type="text" size="80" value="Р’СЃРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё" />
                                       <span class="b-combo__arrow"></span>
                                   </div>
                               </div>
                          </td>
                          <td class="b-layout__td">
-                             <a class="b-button b-button_flat b-button_flat_grey" href="javascript:void(0)" onclick="FilterCatalogAddCategoryType();">Добавить</a>
+                             <a class="b-button b-button_flat b-button_flat_grey" href="javascript:void(0)" onclick="FilterCatalogAddCategoryType();">Р”РѕР±Р°РІРёС‚СЊ</a>
                          </td>
                       </tr>
                    </tbody></table>
@@ -317,13 +317,13 @@ function FilterCatalogAddCategoryType() {
                                 </td> 
                                 <td class="b-layout__td"> 
                                   <? if ($kind == 2 || $kind == 7) {
-                                        $kindTitle = 'Конкурсы';
+                                        $kindTitle = 'РљРѕРЅРєСѓСЂСЃС‹';
                                     } elseif ($kind == 4) {
-                                        $kindTitle = 'Вакансии';
+                                        $kindTitle = 'Р’Р°РєР°РЅСЃРёРё';
                                     } else {
-                                        $kindTitle = 'Проекты';
+                                        $kindTitle = 'РџСЂРѕРµРєС‚С‹';
                                     } ?>
-                                    <label for="pf_my_specs" class="b-check__label b-check__label_fontsize_13"> <?= $kindTitle ?> только по моей специализации</label> 	
+                                    <label for="pf_my_specs" class="b-check__label b-check__label_fontsize_13"> <?= $kindTitle ?> С‚РѕР»СЊРєРѕ РїРѕ РјРѕРµР№ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё</label> 	
                                 </td> 	 	 
                             </tr> 		 
                         </table>   	 
@@ -331,51 +331,51 @@ function FilterCatalogAddCategoryType() {
                       
                      <?php /* <div class="b-layout__txt"><span class="i-shadow">
                     <div id="choose-my-spec" class="b-shadow b-shadow_hide b-shadow_width_400 b-shadow_pad_20 b-shadow_zindex_3 b-shadow_right_20 b-shadow_top_-5">
-                       <h2 class="b-layout__title">Выбрать специализации</h2>
-                       <div class="b-layout__txt b-layout__txt_padbot_10">Укажите специализации, по которым вы хотите<br>просматривать проекты и получать заказы</div>
+                       <h2 class="b-layout__title">Р’С‹Р±СЂР°С‚СЊ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё</h2>
+                       <div class="b-layout__txt b-layout__txt_padbot_10">РЈРєР°Р¶РёС‚Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё, РїРѕ РєРѕС‚РѕСЂС‹Рј РІС‹ С…РѕС‚РёС‚Рµ<br>РїСЂРѕСЃРјР°С‚СЂРёРІР°С‚СЊ РїСЂРѕРµРєС‚С‹ Рё РїРѕР»СѓС‡Р°С‚СЊ Р·Р°РєР°Р·С‹</div>
                        <table class="b-layout__table">
                           <tbody><tr class="b-layout__tr">
                              <td class="b-layout__td">
                                   <div class="b-combo b-combo_margright_5 b-combo_zindex_3">
                                       <div class="b-combo__input b-combo__input_width_240">
-                                          <input  class="b-combo__input-text" name="" type="text" size="80" value="Все специализации" />
+                                          <input  class="b-combo__input-text" name="" type="text" size="80" value="Р’СЃРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё" />
                                           <span class="b-combo__arrow"></span>
                                       </div>
                                   </div>
                              </td>
                              <td class="b-layout__td">
-                                 <a class="b-button b-button_flat b-button_flat_grey" href="javascript:void(0)">Добавить</a>
+                                 <a class="b-button b-button_flat b-button_flat_grey" href="javascript:void(0)">Р”РѕР±Р°РІРёС‚СЊ</a>
                              </td>
                           </tr>
                        </tbody></table>
                        <ul class="b-ext-filter__list"></ul>
                        
-                       <div class="b-layout__txt b-layout__txt_padtb_10">Первая выбранная специализация будет сохранена<br>основной в вашем профиле.</div>
+                       <div class="b-layout__txt b-layout__txt_padtb_10">РџРµСЂРІР°СЏ РІС‹Р±СЂР°РЅРЅР°СЏ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏ Р±СѓРґРµС‚ СЃРѕС…СЂР°РЅРµРЅР°<br>РѕСЃРЅРѕРІРЅРѕР№ РІ РІР°С€РµРј РїСЂРѕС„РёР»Рµ.</div>
                        <div class="b-buttons">
-                          <a class="b-button b-button_flat b-button_flat_green" href="javascript:void(0)">Сохранить</a>
-                          &#160;&#160;&#160;<span class="b-layout__txt b-layout__txt_fontsize_11"><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)"  onClick="$('choose-my-spec').addClass('b-shadow_hide');">или закрыть, не сохраняя</a></span>
+                          <a class="b-button b-button_flat b-button_flat_green" href="javascript:void(0)">РЎРѕС…СЂР°РЅРёС‚СЊ</a>
+                          &#160;&#160;&#160;<span class="b-layout__txt b-layout__txt_fontsize_11"><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)"  onClick="$('choose-my-spec').addClass('b-shadow_hide');">РёР»Рё Р·Р°РєСЂС‹С‚СЊ, РЅРµ СЃРѕС…СЂР°РЅСЏСЏ</a></span>
                        </div>
                        
                        
                        <span class="b-shadow__icon b-shadow__icon_close"></span>
                        <span class="b-shadow__icon b-shadow__icon_nosik-right b-shadow__icon_top_10"></span>
                     </div>
-                </span><a id="only-my-spec" class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onClick="$('choose-my-spec').toggleClass('b-shadow_hide');"> <?= $kindTitle ?> по моим специализациям</a></div> */ ?>
+                </span><a id="only-my-spec" class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onClick="$('choose-my-spec').toggleClass('b-shadow_hide');"> <?= $kindTitle ?> РїРѕ РјРѕРёРј СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏРј</a></div> */ ?>
                 <? } ?>
                 <ul id="pf_specs" class="b-ext-filter__list"></ul>
             </div>
             
           <? if($kind != 1 && $kind != 2) { ?>
             <div class="b-frm-filtr__item">
-                 <div class="b-layout__txt b-layout__txt_padbot_5">Месторасположение:</div>
+                 <div class="b-layout__txt b-layout__txt_padbot_5">РњРµСЃС‚РѕСЂР°СЃРїРѕР»РѕР¶РµРЅРёРµ:</div>
                  
                  
                  
                  
                  
                 <div class="b-combo  b-combo_zindex_2">
-                    <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_orientation_left b-combo__input_arrow_yes b-combo__input_init_citiesList b-combo__input_on_click_request_id_getcities <?=$location_selector?> override_value_id_0_0_Все+страны override_value_id_1_0_Все+города">
-                        <input id="location" class="b-combo__input-text" name="" type="text" size="80" value="<?= ($location_value ? $location_value : "Все страны")?>" />
+                    <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_orientation_left b-combo__input_arrow_yes b-combo__input_init_citiesList b-combo__input_on_click_request_id_getcities <?=$location_selector?> override_value_id_0_0_Р’СЃРµ+СЃС‚СЂР°РЅС‹ override_value_id_1_0_Р’СЃРµ+РіРѕСЂРѕРґР°">
+                        <input id="location" class="b-combo__input-text" name="" type="text" size="80" value="<?= ($location_value ? $location_value : "Р’СЃРµ СЃС‚СЂР°РЅС‹")?>" />
                         <label class="b-combo__label" for="location"></label>
                         <span class="b-combo__arrow"></span>
                     </div>
@@ -387,7 +387,7 @@ function FilterCatalogAddCategoryType() {
                  
                  <div class="b-select b-select_padbot_10">
                    <select class="b-select__select" id="pf_country" name="pf_country" onChange="FilterCityUpd(this.value)">
-                     <option value="0">Все страны</option>
+                     <option value="0">Р’СЃРµ СЃС‚СЂР°РЅС‹</option>
                      <?foreach ($filter_countries as $countid => $country) { ?>
                      <option value="<?=$countid?>"<? if ($countid == $filter['country']) echo(" selected") ?>><?=$country?></option>
                      <?}?>
@@ -395,7 +395,7 @@ function FilterCatalogAddCategoryType() {
                  </div>
                  <div id="frm_city" class="b-select">
                    <select class="b-select__select" name="pf_city">
-                     <option value="0">Все города</option>
+                     <option value="0">Р’СЃРµ РіРѕСЂРѕРґР°</option>
                      <?if (sizeof($filter_cities)) foreach ($filter_cities as $cityid => $city) { ?>
                      <option value="<?=$cityid?>"<? if ($cityid == $filter['city']) echo(" selected") ?>><?=$city?></option>
                      <? } ?>
@@ -409,14 +409,14 @@ function FilterCatalogAddCategoryType() {
             <div class="b-frm-filtr__item">
                         <div class="b-combo b-combo_static">
                                 <div class="b-combo__input b-combo__input_static">
-                                    <input id="pf_keywords" class="b-combo__input-text" placeholder="Ключевые слова" type="text" name="pf_keywords" value="<?=htmlspecialchars($filter['keywords'], ENT_QUOTES, 'cp1251')?>" maxlength="255" />
+                                    <input id="pf_keywords" class="b-combo__input-text" placeholder="РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°" type="text" name="pf_keywords" value="<?=htmlspecialchars($filter['keywords'], ENT_QUOTES, 'cp1251')?>" maxlength="255" />
                                 </div>
                         </div>
 
             </div>
             
             
-            <button class="b-button b-button_flat b-button_flat_green" type="button" onclick="submit();">Применить</button>&nbsp;&nbsp;&nbsp;<a href="javascript: void(0);" onclick="FilterClearForm()" class="b-buttons__link b-buttons__link_margleft_10 b-buttons__link_dot_0f71c8">Очистить</a>
+            <button class="b-button b-button_flat b-button_flat_green" type="button" onclick="submit();">РџСЂРёРјРµРЅРёС‚СЊ</button>&nbsp;&nbsp;&nbsp;<a href="javascript: void(0);" onclick="FilterClearForm()" class="b-buttons__link b-buttons__link_margleft_10 b-buttons__link_dot_0f71c8">РћС‡РёСЃС‚РёС‚СЊ</a>
       </div>
       </form>
       
@@ -438,8 +438,8 @@ if ($has_hidd)
     <b class="b1"></b>
     <b class="b2"></b>
      <div class="flt-bar">
-          <a href="javascript: void(0);" class="flt-tgl-lnk"><?=(($filter2_show)?"Свернуть":"Развернуть")?></a>
-          <h3>Скрытые платные проекты <span id="flt-hide-cnt"><?=((sizeof($_SESSION['ph']) && $_SESSION['uid'])?" (".sizeof($_SESSION['ph']).")":"")?></span></h3>
+          <a href="javascript: void(0);" class="flt-tgl-lnk"><?=(($filter2_show)?"РЎРІРµСЂРЅСѓС‚СЊ":"Р Р°Р·РІРµСЂРЅСѓС‚СЊ")?></a>
+          <h3>РЎРєСЂС‹С‚С‹Рµ РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹ <span id="flt-hide-cnt"><?=((sizeof($_SESSION['ph']) && $_SESSION['uid'])?" (".sizeof($_SESSION['ph']).")":"")?></span></h3>
      </div>
      <div class="flt-cnt" id="flt-hide-content" <?=(($filter2_show)?"style='display:block;'":"")?>>
       <?=projects_filters::ShowClosedProjects($kind, $page, (int)($filter['active']=='t'))?>

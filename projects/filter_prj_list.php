@@ -1,13 +1,13 @@
 <? 
-  // Фильтр проектов. Вставляется в разные места. На входе:
+  // Р¤РёР»СЊС‚СЂ РїСЂРѕРµРєС‚РѕРІ. Р’СЃС‚Р°РІР»СЏРµС‚СЃСЏ РІ СЂР°Р·РЅС‹Рµ РјРµСЃС‚Р°. РќР° РІС…РѕРґРµ:
   // $uid -- get_uid().
-  // $filter -- массив с параметрами фильтра.
-  // $filter_page -- код страницы (см. таблицу projects_filters).
-  // $filter_show -- 1: фильтр развернут, 0: свернут. /Параметр больше не используется - Эдуард, 8.10.2009/
-  // $filter_inputs -- дополнительные INPUT-ы в форму.
-  // $kind -- ид. закладки (если фильтр на главной странице).
-  // $page -- номер страницы (если фильтр на главной странице).
-  // Плюс должны быть включены заранее все xajax функции, которые тут используются.
+  // $filter -- РјР°СЃСЃРёРІ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё С„РёР»СЊС‚СЂР°.
+  // $filter_page -- РєРѕРґ СЃС‚СЂР°РЅРёС†С‹ (СЃРј. С‚Р°Р±Р»РёС†Сѓ projects_filters).
+  // $filter_show -- 1: С„РёР»СЊС‚СЂ СЂР°Р·РІРµСЂРЅСѓС‚, 0: СЃРІРµСЂРЅСѓС‚. /РџР°СЂР°РјРµС‚СЂ Р±РѕР»СЊС€Рµ РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ - Р­РґСѓР°СЂРґ, 8.10.2009/
+  // $filter_inputs -- РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ INPUT-С‹ РІ С„РѕСЂРјСѓ.
+  // $kind -- РёРґ. Р·Р°РєР»Р°РґРєРё (РµСЃР»Рё С„РёР»СЊС‚СЂ РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ).
+  // $page -- РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹ (РµСЃР»Рё С„РёР»СЊС‚СЂ РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ).
+  // РџР»СЋСЃ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РІРєР»СЋС‡РµРЅС‹ Р·Р°СЂР°РЅРµРµ РІСЃРµ xajax С„СѓРЅРєС†РёРё, РєРѕС‚РѕСЂС‹Рµ С‚СѓС‚ РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ.
 
   if (!$uid)
     return 0;
@@ -67,7 +67,7 @@
 
   $_SESSION['ph_categories'] = $filter['categories'];
 
-  //создаем массив специализаций (для фильтра на главной он уже есть в $prfs, для фильтра в проектах фрилансера его нет, поэтому делаем проверку на существование
+  //СЃРѕР·РґР°РµРј РјР°СЃСЃРёРІ СЃРїРµС†РёР°Р»РёР·Р°С†РёР№ (РґР»СЏ С„РёР»СЊС‚СЂР° РЅР° РіР»Р°РІРЅРѕР№ РѕРЅ СѓР¶Рµ РµСЃС‚СЊ РІ $prfs, РґР»СЏ С„РёР»СЊС‚СЂР° РІ РїСЂРѕРµРєС‚Р°С… С„СЂРёР»Р°РЅСЃРµСЂР° РµРіРѕ РЅРµС‚, РїРѕСЌС‚РѕРјСѓ РґРµР»Р°РµРј РїСЂРѕРІРµСЂРєСѓ РЅР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ
   if (!sizeof($profs)) {$all_specs = professions::GetAllProfessions("", 0, 1);}
   else                 {$all_specs = $profs;}
 
@@ -80,8 +80,8 @@
 
 ?>
 <script type="text/javascript">
-//1 = фильтр проектов
-//2 = фильтр фрилансеров
+//1 = С„РёР»СЊС‚СЂ РїСЂРѕРµРєС‚РѕРІ
+//2 = С„РёР»СЊС‚СЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
 var curFBulletsBox = 1;
 
 var filter_user_specs={<?
@@ -180,12 +180,12 @@ filter_bullets[<?=$fvalue?>][<?=$fkey?>]['parentid'] = '<?=(!($fvalue)?0:$prof_g
 										<div class="c">
 											<div class="pf-r">
 												<div class="form-el">
-													<label class="form-label2">Местоположение:</label>
+													<label class="form-label2">РњРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёРµ:</label>
 													<div class="flt-b-in" style="overflow:visible;">
 														<div class="flt-b-row">
                                                            <span class="flt-prm">
                                                              <select class="flt-p-sel" id="pf_country" name="pf_country" onChange="FilterCityUpd(this.value)">
-                                                                   <option value="0">Все страны</option>
+                                                                   <option value="0">Р’СЃРµ СЃС‚СЂР°РЅС‹</option>
                                                                    <?foreach ($filter_countries as $countid => $country) { ?>
                                                                    <option value="<?=$countid?>"<? if ($countid == $filter['country']) echo(" selected") ?>><?=$country?></option>
                                                                    <?}?>
@@ -195,7 +195,7 @@ filter_bullets[<?=$fvalue?>][<?=$fkey?>]['parentid'] = '<?=(!($fvalue)?0:$prof_g
 														<div class="flt-b-row flt-b-lc">
                                                            <span class="flt-prm" id="frm_city">
                                                              <select class="flt-p-sel" name="pf_city">
-                                                               <option value="0">Все города</option>
+                                                               <option value="0">Р’СЃРµ РіРѕСЂРѕРґР°</option>
                                                                <?if (sizeof($filter_cities)) foreach ($filter_cities as $cityid => $city) { ?>
                                                                <option value="<?=$cityid?>"<? if ($cityid == $filter['city']) echo(" selected") ?>><?=$city?></option>
                                                                <? } ?>
@@ -205,7 +205,7 @@ filter_bullets[<?=$fvalue?>][<?=$fkey?>]['parentid'] = '<?=(!($fvalue)?0:$prof_g
 													</div>
 												</div>
 												<div class="form-el">
-													<label class="form-label2">Ключевые слова:</label>
+													<label class="form-label2">РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°:</label>
 													<div class="flt-b-in">
                                                         <input type="text" id="pf_keywords" name="pf_keywords" value="<?=htmlspecialchars($filter['keywords'], ENT_QUOTES, 'cp1251')?>" class="flt-p-keys" maxlength="255" />
 													</div>
@@ -213,45 +213,45 @@ filter_bullets[<?=$fvalue?>][<?=$fkey?>]['parentid'] = '<?=(!($fvalue)?0:$prof_g
 											</div>
 											<div class="pf-l">
 												<div class="form-el">
-													<label class="form-label">Бюджет:</label>
+													<label class="form-label">Р‘СЋРґР¶РµС‚:</label>
 													<div class="form-input">
                                                         <input type="text" size="10" id="pf_cost_from" name="pf_cost_from" value="<?=$filter['cost_from']?>" maxlength="6" /> &mdash;
 	                                                    <input type="text" size="10" id="pf_cost_to" name="pf_cost_to" value="<?=$filter['cost_to']?>" maxlength="6" />&nbsp;&nbsp;
                                                         <select name="pf_currency">
                                                            <option value="0" <?=($filter['currency'] == 0 ? "selected=\"selected\"" : "")?>>USD</option>
                                                            <option value="1" <?=($filter['currency'] == 1 ? "selected=\"selected\"" : "")?>>Euro</option>
-                                                           <option value="2" <?=($filter['currency'] == 2 ? "selected=\"selected\"" : "")?>>Руб</option>
+                                                           <option value="2" <?=($filter['currency'] == 2 ? "selected=\"selected\"" : "")?>>Р СѓР±</option>
                                                         </select>
 														<div class="c">
-															<label><span class="i-chk"><input type="checkbox" id="pf_wo_budjet" name="pf_wo_budjet" value="1" <? if ($filter['wo_cost'] == 't') {?> checked="checked" <? } ?> /></span> Смотреть проекты с неуказанным бюджетом</label>
+															<label><span class="i-chk"><input type="checkbox" id="pf_wo_budjet" name="pf_wo_budjet" value="1" <? if ($filter['wo_cost'] == 't') {?> checked="checked" <? } ?> /></span> РЎРјРѕС‚СЂРµС‚СЊ РїСЂРѕРµРєС‚С‹ СЃ РЅРµСѓРєР°Р·Р°РЅРЅС‹Рј Р±СЋРґР¶РµС‚РѕРј</label>
 														</div>
 														<div class="c">
-															<label><span class="i-chk"><input type="checkbox" id="pf_only_sbr" name="pf_only_sbr" value="1" <? if ($filter['only_sbr'] == 't') {?> checked="checked" <? } ?> /></span> Только проекты, предусматривающие «<a href="/promo/<?= sbr::NEW_TEMPLATE_SBR?>/" target="_blank">Безопасную Сделку</a>»</label>
+															<label><span class="i-chk"><input type="checkbox" id="pf_only_sbr" name="pf_only_sbr" value="1" <? if ($filter['only_sbr'] == 't') {?> checked="checked" <? } ?> /></span> РўРѕР»СЊРєРѕ РїСЂРѕРµРєС‚С‹, РїСЂРµРґСѓСЃРјР°С‚СЂРёРІР°СЋС‰РёРµ В«<a href="/promo/<?= sbr::NEW_TEMPLATE_SBR?>/" target="_blank">Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ</a>В»</label>
 														</div>
 													</div>
 												</div>
 												<div class="form-el">
-													<label class="form-label">Категория:</label>
+													<label class="form-label">РљР°С‚РµРіРѕСЂРёСЏ:</label>
 													<div class="form-input">
 														<div class="flt-b-row">
                                                             <span class="flt-prm">
                                                                 <select class="flt-p-sel" name="pf_category" id="pf_category" onChange="FilterSubCategory(this.value)">
-                                                                    <option value="0">Выберите раздел</option>
+                                                                    <option value="0">Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»</option>
                                                                     <? foreach($filter_categories as $cat) { if($cat['id']<=0) continue; ?>
                                                                     <option value="<?=$cat['id']?>"><?=$cat['name']?></option>
                                                                     <? } ?>
                                                                 </select>
-                                                            </span><a href="javascript: void(0);" onclick="if($('pf_category').value != 0) FilterAddBullet(0, $('pf_category').value, $('pf_category').options[$('pf_category').selectedIndex].text, 0);" class="lnk-dot-blue">Добавить</a>
+                                                            </span><a href="javascript: void(0);" onclick="if($('pf_category').value != 0) FilterAddBullet(0, $('pf_category').value, $('pf_category').options[$('pf_category').selectedIndex].text, 0);" class="lnk-dot-blue">Р”РѕР±Р°РІРёС‚СЊ</a>
 														</div>
 														<div class="flt-b-row">
                                                             <span class="flt-prm" id="frm_subcategory">
                                                                 <select class="flt-p-sel" name="pf_subcategory" id="pf_subcategory">
-                                                                    <option value="0">Выберите подраздел</option>
+                                                                    <option value="0">Р’С‹Р±РµСЂРёС‚Рµ РїРѕРґСЂР°Р·РґРµР»</option>
                                                                 </select>
-                                                                </span><a href="javascript: void(0);" onclick="if($('pf_subcategory').value != 0) FilterAddBullet(1, $('pf_subcategory').value, $('pf_subcategory').options[$('pf_subcategory').selectedIndex].text, $('pf_category').value);" class="lnk-dot-blue">Добавить</a>
+                                                                </span><a href="javascript: void(0);" onclick="if($('pf_subcategory').value != 0) FilterAddBullet(1, $('pf_subcategory').value, $('pf_subcategory').options[$('pf_subcategory').selectedIndex].text, $('pf_category').value);" class="lnk-dot-blue">Р”РѕР±Р°РІРёС‚СЊ</a>
 														</div>
 														<div class="flt-b-row2" style="display: none;">
-															<label><span class="i-chk"><input type="checkbox" id="pf_my_specs" name="pf_my_specs" value="1" <? if ($filter['my_specs']=='t' && 1==2) {?> checked="checked" <? } ?> /></span> Смотреть только мои специализаци</label>
+															<label><span class="i-chk"><input type="checkbox" id="pf_my_specs" name="pf_my_specs" value="1" <? if ($filter['my_specs']=='t' && 1==2) {?> checked="checked" <? } ?> /></span> РЎРјРѕС‚СЂРµС‚СЊ С‚РѕР»СЊРєРѕ РјРѕРё СЃРїРµС†РёР°Р»РёР·Р°С†Рё</label>
 														</div>
 													</div>
 												</div>
@@ -261,7 +261,7 @@ filter_bullets[<?=$fvalue?>][<?=$fkey?>]['parentid'] = '<?=(!($fvalue)?0:$prof_g
 									</div>
 									<div class="form-block last">
 										<div class="form-el form-btns">
-                                            <input type="submit" class="i-btn i-bold" value="Применить фильтр" onclick="submit();"/>&nbsp;&nbsp; <a href="javascript: void(0);" onclick="FilterClearForm('flt-pl-usr')" class="lnk-dot-666k">Очистить форму</a>
+                                            <input type="submit" class="i-btn i-bold" value="РџСЂРёРјРµРЅРёС‚СЊ С„РёР»СЊС‚СЂ" onclick="submit();"/>&nbsp;&nbsp; <a href="javascript: void(0);" onclick="FilterClearForm('flt-pl-usr')" class="lnk-dot-666k">РћС‡РёСЃС‚РёС‚СЊ С„РѕСЂРјСѓ</a>
 										</div>
 									</div>
 								</div>

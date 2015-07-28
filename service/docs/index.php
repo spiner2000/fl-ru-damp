@@ -15,22 +15,22 @@ $uid = get_uid();
 $login = $_SESSION['login'];
 $role = $_SESSION['role'];
 
-//==========Разбор запроса====================
+//==========Р Р°Р·Р±РѕСЂ Р·Р°РїСЂРѕСЃР°====================
 $request = getServiceRequest();
 
-$page_title = "Шаблоны документов - фриланс, удаленная работа на FL.ru";
+$page_title = "РЁР°Р±Р»РѕРЅС‹ РґРѕРєСѓРјРµРЅС‚РѕРІ - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
 
 $css_file = "help.css";
 $content = "content.php";
 $header = "../../header.php";
 $footer = "../../footer.html";
 
-//===========Доступные страницы===============
+//===========Р”РѕСЃС‚СѓРїРЅС‹Рµ СЃС‚СЂР°РЅРёС†С‹===============
 switch ($request['action']) {
     case 'index':
         $content = "content.php";
         $categories = docs_sections::getSections();
-        // Разбиваем на блоки по 4 категории в блоке
+        // Р Р°Р·Р±РёРІР°РµРј РЅР° Р±Р»РѕРєРё РїРѕ 4 РєР°С‚РµРіРѕСЂРёРё РІ Р±Р»РѕРєРµ
         if (( $is_category = ( is_array($categories) && count($categories) ) )) {
             $block = $i = 0;
             foreach($categories as $cat) {
@@ -82,7 +82,7 @@ switch ($request['action']) {
         $error_add_file = false;
         if ($request['is_post']) {
             
-            // загрузка файлов, сначала грузим файлы
+            // Р·Р°РіСЂСѓР·РєР° С„Р°Р№Р»РѕРІ, СЃРЅР°С‡Р°Р»Р° РіСЂСѓР·РёРј С„Р°Р№Р»С‹
             if ($_FILES['attach']) {
                 $attach = $_FILES['attach'];
                 $files = array();
@@ -122,7 +122,7 @@ switch ($request['action']) {
             switch($_POST['action_form']) {
                 case "add":
                     if(count($files_attache) == 0) {
-                        $error_add_file = "Необходимо загрузить хотя бы один файл";
+                        $error_add_file = "РќРµРѕР±С…РѕРґРёРјРѕ Р·Р°РіСЂСѓР·РёС‚СЊ С…РѕС‚СЏ Р±С‹ РѕРґРёРЅ С„Р°Р№Р»";
                         $error = true;
                     }
                     
@@ -146,12 +146,12 @@ switch ($request['action']) {
                     $files = docs_files::getDocsFiles(intval($_POST['dosc_id_f']));
                     
                     if(count($files) == 0 && count($files_attache) == 0) {
-                        $error_add_file = "Необходимо загрузить хотя бы один файл";
+                        $error_add_file = "РќРµРѕР±С…РѕРґРёРјРѕ Р·Р°РіСЂСѓР·РёС‚СЊ С…РѕС‚СЏ Р±С‹ РѕРґРёРЅ С„Р°Р№Р»";
                         $error = true;
                     }
                     
                     if(intval($_POST['dosc_id_f']) == 0) {
-                        $error_add_file = "Ошибка";
+                        $error_add_file = "РћС€РёР±РєР°";
                         $error = true;
                     }
                     
@@ -183,8 +183,8 @@ switch ($request['action']) {
          exit();
         break;
 }
-//===========Доступные страницы===============
-//===========Выводим контент==================
+//===========Р”РѕСЃС‚СѓРїРЅС‹Рµ СЃС‚СЂР°РЅРёС†С‹===============
+//===========Р’С‹РІРѕРґРёРј РєРѕРЅС‚РµРЅС‚==================
 include ($rpath . "template2.php");
 
 //===========EXT_FUNCTIONS====================

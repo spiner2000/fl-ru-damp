@@ -3,7 +3,7 @@
         <tr>
             <td  bgcolor="#ffffff" width="20"></td>
             <td  width="20"></td>
-            <td ><font color="#444444" size="3" face="arial,sans-serif"><b><a href="<?= $this->host; ?>/projects/?kind=1" style=" color:#0F71C8" target="_blank">Топ 3 проектов</a> с наиболее высоким бюджетом за неделю</b></font></td>
+            <td ><font color="#444444" size="3" face="arial,sans-serif"><b><a href="<?= $this->host; ?>/projects/?kind=1" style=" color:#0F71C8" target="_blank">РўРѕРї 3 РїСЂРѕРµРєС‚РѕРІ</a> СЃ РЅР°РёР±РѕР»РµРµ РІС‹СЃРѕРєРёРј Р±СЋРґР¶РµС‚РѕРј Р·Р° РЅРµРґРµР»СЋ</b></font></td>
             <td  width="20"></td>
             <td  bgcolor="#ffffff" width="20"></td>
         </tr>

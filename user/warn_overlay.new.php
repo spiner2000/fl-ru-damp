@@ -4,16 +4,16 @@
 		<div class="b-popup__l">
 			<div class="b-popup__body"> 
 				<a class="close" style="float: right;" href="javascript:void(0);" onclick="banned.commit(banned.banUid,(banned.buffer[banned.banUid].action='close'));return false;"><img height="21" width="21" alt="" src="/images/btn-close.png"></a>
-				<h4 class="b-popup__h4">Предупреждение для <a id="warn_name" class="b-popup__link b-popup__link_color_000" target="_blank" href="#"></a></h4>
+				<h4 class="b-popup__h4">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РґР»СЏ <a id="warn_name" class="b-popup__link b-popup__link_color_000" target="_blank" href="#"></a></h4>
 				<div class="b-form b-form_padbot_10">
-					<label class="b-form__name b-form__name_width_70 b-form__name_fontsize_13">Действие:</label>
-					<div id="warn_label" class="b-form__txt b-form__txt_inline-block">Снять</div>
+					<label class="b-form__name b-form__name_width_70 b-form__name_fontsize_13">Р”РµР№СЃС‚РІРёРµ:</label>
+					<div id="warn_label" class="b-form__txt b-form__txt_inline-block">РЎРЅСЏС‚СЊ</div>
 				</div>
 				<div class="b-form b-form_padbot_10">
-					<label class="b-form__name b-form__name_width_70 b-form__name_fontsize_13">Причина:</label>
+					<label class="b-form__name b-form__name_width_70 b-form__name_fontsize_13">РџСЂРёС‡РёРЅР°:</label>
 					<div id="warn_div" class="b-select b-select_inline-block">
 						<select class="b-select__select b-select__select_width_full" disabled="disabled">
-							<option>Подождите...</option>
+							<option>РџРѕРґРѕР¶РґРёС‚Рµ...</option>
 						</select>
 					</div>
 				</div>
@@ -24,8 +24,8 @@
 				</div>
 				<div class="b-popup__foot">
 						<div class="b-buttons">
-							<input type="button" id="warn_btn" onclick="banned.commit(banned.banUid,$('bfrm_'+banned.banUid).get('value'));" class="i-btn i-bold" value="Сохранить" />
-							<a id="warn_close" href="javascript:void(0);" onclick="banned.commit(banned.banUid,(banned.buffer[banned.banUid].action='close'));return false;" class="b-buttons__link b-buttons__link_dot_666">Отмена</a> 
+							<input type="button" id="warn_btn" onclick="banned.commit(banned.banUid,$('bfrm_'+banned.banUid).get('value'));" class="i-btn i-bold" value="РЎРѕС…СЂР°РЅРёС‚СЊ" />
+							<a id="warn_close" href="javascript:void(0);" onclick="banned.commit(banned.banUid,(banned.buffer[banned.banUid].action='close'));return false;" class="b-buttons__link b-buttons__link_dot_666">РћС‚РјРµРЅР°</a> 
 						</div>
 				</div>
 			</div>

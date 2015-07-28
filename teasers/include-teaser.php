@@ -8,27 +8,27 @@ if (!defined("IN_STDF")){
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/payed.php");
 
-/** ìàññèâ øàáëîíîâ òèçåðîâ
- * êëþ÷ file - îáÿçàòåëüíî
- * íåîáÿçàòåëüíî: exclude - òèçåðû ñ ýòèìè ïàðàìåòðàìè èñêëþ÷èòü
+/** Ð¼Ð°ÑÑÐ¸Ð² ÑˆÐ°Ð±Ð»Ð¾Ð½Ð¾Ð² Ñ‚Ð¸Ð·ÐµÑ€Ð¾Ð²
+ * ÐºÐ»ÑŽÑ‡ file - Ð¾Ð±ÑÐ·Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾
+ * Ð½ÐµÐ¾Ð±ÑÐ·Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾: exclude - Ñ‚Ð¸Ð·ÐµÑ€Ñ‹ Ñ ÑÑ‚Ð¸Ð¼Ð¸ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð°Ð¼Ð¸ Ð¸ÑÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ
  */ 
 $teasersEmp = array (
-    array('file' => 'tpl.teaser-masssending.php',   'exclude' => array('no-public', 'masssending')), // ìàññîâàÿ ðàññûëêà
-    array('file' => 'tpl.teaser-pro-emp.php',       'exclude' => array('no-public', 'pro')), // ïðî àêêàóíò
-    array('file' => 'tpl.teaser-public.php',        'exclude' => array('project')), // ïóáëèêàöèÿ êîíêóðñà
-    array('file' => 'tpl.teaser-sbr-emp.php',       'exclude' => array('no-public')), // ÑÁÐ
-    array('file' => 'tpl.teaser-top.php',           'exclude' => array('public', 'top')), // çàêðåïèòü íà âåðõó
-    //array('file' => 'tpl.teaser-up.php',            'exclude' => array('public', 'project')), // ïîäíÿòü ïðîåêò
-    //array('file' => 'tpl.teaser-up-conk.php',       'exclude' => array('public', 'contest')), // ïîäíÿòü êîíêóðñ
-    //array('file' => 'tpl.teaser-up-top.php',        'exclude' => array('public', 'project')), // ïîäíÿòü çàêðåïëåííûé ïðîåêò
+    array('file' => 'tpl.teaser-masssending.php',   'exclude' => array('no-public', 'masssending')), // Ð¼Ð°ÑÑÐ¾Ð²Ð°Ñ Ñ€Ð°ÑÑÑ‹Ð»ÐºÐ°
+    array('file' => 'tpl.teaser-pro-emp.php',       'exclude' => array('no-public', 'pro')), // Ð¿Ñ€Ð¾ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚
+    array('file' => 'tpl.teaser-public.php',        'exclude' => array('project')), // Ð¿ÑƒÐ±Ð»Ð¸ÐºÐ°Ñ†Ð¸Ñ ÐºÐ¾Ð½ÐºÑƒÑ€ÑÐ°
+    array('file' => 'tpl.teaser-sbr-emp.php',       'exclude' => array('no-public')), // Ð¡Ð‘Ð 
+    array('file' => 'tpl.teaser-top.php',           'exclude' => array('public', 'top')), // Ð·Ð°ÐºÑ€ÐµÐ¿Ð¸Ñ‚ÑŒ Ð½Ð° Ð²ÐµÑ€Ñ…Ñƒ
+    //array('file' => 'tpl.teaser-up.php',            'exclude' => array('public', 'project')), // Ð¿Ð¾Ð´Ð½ÑÑ‚ÑŒ Ð¿Ñ€Ð¾ÐµÐºÑ‚
+    //array('file' => 'tpl.teaser-up-conk.php',       'exclude' => array('public', 'contest')), // Ð¿Ð¾Ð´Ð½ÑÑ‚ÑŒ ÐºÐ¾Ð½ÐºÑƒÑ€Ñ
+    //array('file' => 'tpl.teaser-up-top.php',        'exclude' => array('public', 'project')), // Ð¿Ð¾Ð´Ð½ÑÑ‚ÑŒ Ð·Ð°ÐºÑ€ÐµÐ¿Ð»ÐµÐ½Ð½Ñ‹Ð¹ Ð¿Ñ€Ð¾ÐµÐºÑ‚
 );
 $teasersFrl = array (
-    array('file' => 'tpl.teaser-sbr-frl.php',       'exclude' => array()), // ÑÁÐ
-    //array('file' => 'tpl.teaser-main-carusel.php',  'exclude' => array('car-main')), // ìåñòî â êàðóñåëè íà ãëàâíîé
-    //array('file' =>'tpl.teaser-catalog-carusel.php','exclude' => array('car-cat')), // ìåñòî â êàðóñåëè êàòàëîãà
-    array('file' => 'tpl.teaser-pro-frl.php',       'exclude' => array('pro')), // ÏÐÎ àêêàóíò
-    array('file' => 'tpl.teaser-test-pro-frl.php',  'exclude' => array('pro', 'test-pro')), // òåñòîâûé ÏÐÎ
-    //array('file' => 'tpl.teaser-offers.php',        'exclude' => array('offers')), // ïëàòíûå îòâåòû
+    array('file' => 'tpl.teaser-sbr-frl.php',       'exclude' => array()), // Ð¡Ð‘Ð 
+    //array('file' => 'tpl.teaser-main-carusel.php',  'exclude' => array('car-main')), // Ð¼ÐµÑÑ‚Ð¾ Ð² ÐºÐ°Ñ€ÑƒÑÐµÐ»Ð¸ Ð½Ð° Ð³Ð»Ð°Ð²Ð½Ð¾Ð¹
+    //array('file' =>'tpl.teaser-catalog-carusel.php','exclude' => array('car-cat')), // Ð¼ÐµÑÑ‚Ð¾ Ð² ÐºÐ°Ñ€ÑƒÑÐµÐ»Ð¸ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð°
+    array('file' => 'tpl.teaser-pro-frl.php',       'exclude' => array('pro')), // ÐŸÐ Ðž Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚
+    array('file' => 'tpl.teaser-test-pro-frl.php',  'exclude' => array('pro', 'test-pro')), // Ñ‚ÐµÑÑ‚Ð¾Ð²Ñ‹Ð¹ ÐŸÐ Ðž
+    //array('file' => 'tpl.teaser-offers.php',        'exclude' => array('offers')), // Ð¿Ð»Ð°Ñ‚Ð½Ñ‹Ðµ Ð¾Ñ‚Ð²ÐµÑ‚Ñ‹
 );
 $filteredTeasers = array();
 
@@ -36,7 +36,7 @@ $filteredTeasers = array();
 if (!$teasersExclude) {
     $teasersExclude = array();
 }
-// òèçåðû ðàçíûå äëÿ ôðèëàíñåðîâ è ðàáîòîäàòåëåé
+// Ñ‚Ð¸Ð·ÐµÑ€Ñ‹ Ñ€Ð°Ð·Ð½Ñ‹Ðµ Ð´Ð»Ñ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð² Ð¸ Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»ÐµÐ¹
 $uid = get_uid(0);
 if ($uid) {
     if (is_emp()) {
@@ -47,9 +47,9 @@ if ($uid) {
 } else {
     $teasers = $teasersEmp;
 }
-// äëÿ ïðî ïîëüçîâàòåëåé íå ïîêàçâûàåì ðåêëàìó ÏÐÎ àêêàóíòà
+// Ð´Ð»Ñ Ð¿Ñ€Ð¾ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÐµÐ¹ Ð½Ðµ Ð¿Ð¾ÐºÐ°Ð·Ð²Ñ‹Ð°ÐµÐ¼ Ñ€ÐµÐºÐ»Ð°Ð¼Ñƒ ÐŸÐ Ðž Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð°
 if (is_pro()) {
-    if ($_SESSION['pro_test'] === 'f') { // òèçåð ÏÐÎ ïîêàçûâàåì åñëè êóïëåí òåñòîâûé ÏÐÎ
+    if ($_SESSION['pro_test'] === 'f') { // Ñ‚Ð¸Ð·ÐµÑ€ ÐŸÐ Ðž Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÐ¼ ÐµÑÐ»Ð¸ ÐºÑƒÐ¿Ð»ÐµÐ½ Ñ‚ÐµÑÑ‚Ð¾Ð²Ñ‹Ð¹ ÐŸÐ Ðž
         $teasersExclude[] = 'pro';
     }
     $teasersExclude[] = 'test-pro';
@@ -60,7 +60,7 @@ if (is_pro()) {
 
 
 
-// ôîðìèðóåì ìàññèâ èç ïðîøåäøèõ ôèëüòðàöèþ òèçåðîâ
+// Ñ„Ð¾Ñ€Ð¼Ð¸Ñ€ÑƒÐµÐ¼ Ð¼Ð°ÑÑÐ¸Ð² Ð¸Ð· Ð¿Ñ€Ð¾ÑˆÐµÐ´ÑˆÐ¸Ñ… Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð°Ñ†Ð¸ÑŽ Ñ‚Ð¸Ð·ÐµÑ€Ð¾Ð²
 foreach ($teasers as $key => $teaser) {
     $ok = true;
     
@@ -76,17 +76,17 @@ foreach ($teasers as $key => $teaser) {
     }
 }
 
-// êîëè÷åñòâî òèçåðîâ
+// ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ‚Ð¸Ð·ÐµÑ€Ð¾Ð²
 $teasersCount = count($filteredTeasers);
 if (!$teasersCount) {
     return;
 }
 
-// ñëó÷àéíûé òèçåð
+// ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ð¹ Ñ‚Ð¸Ð·ÐµÑ€
 $teaserKey = mt_rand(0, $teasersCount - 1);
 $teaser = $filteredTeasers[$teaserKey]['file'];
 
-// äëÿ "ïîäíÿòü ïðîåêò"
+// Ð´Ð»Ñ "Ð¿Ð¾Ð´Ð½ÑÑ‚ÑŒ Ð¿Ñ€Ð¾ÐµÐºÑ‚"
 if ($teaser === 'tpl.teaser-up.php' || $teaser === 'tpl.teaser-up-conk.php' || $teaser === 'tpl.teaser-up-top.php') {
     $account = new account();
     $account->GetInfo(get_uid());

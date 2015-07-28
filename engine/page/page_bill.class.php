@@ -3,33 +3,33 @@
 //error_reporting(E_ALL);
 
 /**
- * Класс для обработки страниц оплаты услуг и пополнения счета (/bill/) 
+ * РљР»Р°СЃСЃ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё СЃС‚СЂР°РЅРёС† РѕРїР»Р°С‚С‹ СѓСЃР»СѓРі Рё РїРѕРїРѕР»РЅРµРЅРёСЏ СЃС‡РµС‚Р° (/bill/) 
  *
  */
 class page_bill extends page_base {
 	/**
-	 * Название страницы в URL
+	 * РќР°Р·РІР°РЅРёРµ СЃС‚СЂР°РЅРёС†С‹ РІ URL
 	 *
 	 * @var string
 	 */
 	public $name_page = "bill";
 	
 	/**
-	 * Конструктор класса, инициализируем аккаунт пользователя и так же данные необходимые для работы страницы
+	 * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°, РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј Р°РєРєР°СѓРЅС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Рё С‚Р°Рє Р¶Рµ РґР°РЅРЅС‹Рµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃС‚СЂР°РЅРёС†С‹
 	 *
 	 */
 	function __construct() {
 		session_start();
 		$uid = get_uid();
 		
-		// закрываем доступ на страницу для теста, доступ только админам
+		// Р·Р°РєСЂС‹РІР°РµРј РґРѕСЃС‚СѓРї РЅР° СЃС‚СЂР°РЅРёС†Сѓ РґР»СЏ С‚РµСЃС‚Р°, РґРѕСЃС‚СѓРї С‚РѕР»СЊРєРѕ Р°РґРјРёРЅР°Рј
 		if(!hasPermissions('users')) {
-		    //header("Location: /bill/"); // Если пользователь не админ
+		    //header("Location: /bill/"); // Р•СЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ Р°РґРјРёРЅ
 		    //exit;
 		}
 		
 		if(!$uid && $_GET['pg'] != '/bill/alphabank/') {
-			header("Location: /fbd.php"); // Если пользователь не авторизован, то посылаем на данную страницу
+			header("Location: /fbd.php"); // Р•СЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ Р°РІС‚РѕСЂРёР·РѕРІР°РЅ, С‚Рѕ РїРѕСЃС‹Р»Р°РµРј РЅР° РґР°РЅРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ
 			exit;
 		}
 		
@@ -49,9 +49,9 @@ class page_bill extends page_base {
 		$this->uid = $uid;
 		front::og("tpl")->footer_bill = true;
 		front::og("tpl")->main_css  = "/css/bill.css";
-		front::og("tpl")->uid       = $uid; // ИД пользователя
-		front::og("tpl")->account   = $account;   // Аккаунт для биллинга
-		front::og("tpl")->month_name   = array(1=>"Январь", 2=>"Февраль", 3=>"Март", 4=>"Апрель", 5=>"Май", 6=>"Июнь", 7=>"Июль", 8=>"Август", 9=>"Сентябрь", 10=>"Октябрь", 11=>"Ноябрь", 12=>"Декабрь");
+		front::og("tpl")->uid       = $uid; // РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+		front::og("tpl")->account   = $account;   // РђРєРєР°СѓРЅС‚ РґР»СЏ Р±РёР»Р»РёРЅРіР°
+		front::og("tpl")->month_name   = array(1=>"РЇРЅРІР°СЂСЊ", 2=>"Р¤РµРІСЂР°Р»СЊ", 3=>"РњР°СЂС‚", 4=>"РђРїСЂРµР»СЊ", 5=>"РњР°Р№", 6=>"РСЋРЅСЊ", 7=>"РСЋР»СЊ", 8=>"РђРІРіСѓСЃС‚", 9=>"РЎРµРЅС‚СЏР±СЂСЊ", 10=>"РћРєС‚СЏР±СЂСЊ", 11=>"РќРѕСЏР±СЂСЊ", 12=>"Р”РµРєР°Р±СЂСЊ");
 		front::og("tpl")->name_page = $this->name_page;	
 		front::og("tpl")->no_banner = !!is_pro();
 		front::og("tpl")->g_page_id = "0|27";
@@ -59,8 +59,8 @@ class page_bill extends page_base {
 	
 	
 	/**
-	 * Вывод главной страницы 
-	 * Выводит главную страницу. По умолчанию Пополнить счет
+	 * Р’С‹РІРѕРґ РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹ 
+	 * Р’С‹РІРѕРґРёС‚ РіР»Р°РІРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ. РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РџРѕРїРѕР»РЅРёС‚СЊ СЃС‡РµС‚
 	 */
 	function indexAction() {
         require_once($_SERVER['DOCUMENT_ROOT']."/classes/wizard/wizard_billing.php");
@@ -120,14 +120,14 @@ class page_bill extends page_base {
     }
     
     /**
-     * Вывод страницы /bill/alphabank/
+     * Р’С‹РІРѕРґ СЃС‚СЂР°РЅРёС†С‹ /bill/alphabank/
      */
     function alphabankAction() {
         front::og("tpl")->display("bill/bill_alphabank.tpl");
     }
     
     /**
-     * Вывод страницы /buy/ "Оплатить услуги"
+     * Р’С‹РІРѕРґ СЃС‚СЂР°РЅРёС†С‹ /buy/ "РћРїР»Р°С‚РёС‚СЊ СѓСЃР»СѓРіРё"
      * 
      */
     function buyAction() {
@@ -138,14 +138,14 @@ class page_bill extends page_base {
     	front::og("tpl")->display("bill/bill_buy.tpl");
     }
     /**
-     * Вывод страницы /gift/ "Подарок"
+     * Р’С‹РІРѕРґ СЃС‚СЂР°РЅРёС†С‹ /gift/ "РџРѕРґР°СЂРѕРє"
      *
      */
     function giftAction() {
         include $_SERVER['DOCUMENT_ROOT']."/404.php";
         exit;
         /**
-         * @deprecated Все что ниже пока не используется
+         * @deprecated Р’СЃРµ С‡С‚Рѕ РЅРёР¶Рµ РїРѕРєР° РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
          */
     	front::og("tpl")->page = "gift";
     	
@@ -153,32 +153,32 @@ class page_bill extends page_base {
     	
     	
     	/**
-    	 * Подключаем AJAX для страницы
+    	 * РџРѕРґРєР»СЋС‡Р°РµРј AJAX РґР»СЏ СЃС‚СЂР°РЅРёС†С‹
     	 */
     	require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/bill.common.php");
 		front::og("tpl")->script    = "/scripts/bill2.js"; 
     	front::og("tpl")->xajax     = $xajax; 
-		front::og("tpl")->mnth      = 1;  // Месяцев оплаты по умолчанию
+		front::og("tpl")->mnth      = 1;  // РњРµСЃСЏС†РµРІ РѕРїР»Р°С‚С‹ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
     	$val = $this->uri[0];
     	switch($val) {
-    		case "pro": // Вывод подстраницы "Аккаунт «PRO»"
+    		case "pro": // Р’С‹РІРѕРґ РїРѕРґСЃС‚СЂР°РЅРёС†С‹ "РђРєРєР°СѓРЅС‚ В«PROВ»"
     			/**
-    			 * Обработка события "Подарить"
+    			 * РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ "РџРѕРґР°СЂРёС‚СЊ"
     			 */
     			if($_POST['act']) {
-    				$mnth = intval(trim($_POST['mnth'])); // месяцев
-					$login = trim(strip_tags($_POST['login'])); // логин пользователя
+    				$mnth = intval(trim($_POST['mnth'])); // РјРµСЃСЏС†РµРІ
+					$login = trim(strip_tags($_POST['login'])); // Р»РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 					$msg =  change_q_x(__paramInit('string', NULL, 'msg', NULL, 300));
 					$usertype = trim(strip_tags($_POST['usertype']));
 					
 					/**
-					 * Подключаем класс для оплаты подарка
+					 * РџРѕРґРєР»СЋС‡Р°РµРј РєР»Р°СЃСЃ РґР»СЏ РѕРїР»Р°С‚С‹ РїРѕРґР°СЂРєР°
 					 */
 					require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/payed.php");
 					$prof = new payed();
 					$tr_id = $_REQUEST['transaction_id'];
 					if (!$tr_id) {
-						$this->account->view_error("Невозможно завершить транзакцию. Попробуйте повторить операцию с самого начала.");
+						$this->account->view_error("РќРµРІРѕР·РјРѕР¶РЅРѕ Р·Р°РІРµСЂС€РёС‚СЊ С‚СЂР°РЅР·Р°РєС†РёСЋ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РїРѕРІС‚РѕСЂРёС‚СЊ РѕРїРµСЂР°С†РёСЋ СЃ СЃР°РјРѕРіРѕ РЅР°С‡Р°Р»Р°.");
 					}
 					
 					front::og("tpl")->tr_id = $tr_id;
@@ -187,22 +187,22 @@ class page_bill extends page_base {
 					front::og("tpl")->mnth  = $mnth;
 					
 					/**
-					 * Если нет ошибок выводим
+					 * Р•СЃР»Рё РЅРµС‚ РѕС€РёР±РѕРє РІС‹РІРѕРґРёРј
 					 */
 					if ($mnth > 0 && $login) {
-						// Класс для работы с пользователем
+						// РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 						require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/users.php");
 						$user = new users();
 						$gid = $user->GetUid($error, $login);
 						$user->GetUser($login);
-						if (!$gid ) $alert['login'] = "Нет такого пользователя";
-						if ($gid == get_uid()) $alert['login'] = "Вы не можете сделать подарок самому себе";
-						if(defined('SPEC_USER') && get_uid()==SPEC_USER) {$alert['login'] = "Использование этой услуги запрещено для вашего аккаунта";}
+						if (!$gid ) $alert['login'] = "РќРµС‚ С‚Р°РєРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ";
+						if ($gid == get_uid()) $alert['login'] = "Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ СЃРґРµР»Р°С‚СЊ РїРѕРґР°СЂРѕРє СЃР°РјРѕРјСѓ СЃРµР±Рµ";
+						if(defined('SPEC_USER') && get_uid()==SPEC_USER) {$alert['login'] = "РСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ СЌС‚РѕР№ СѓСЃР»СѓРіРё Р·Р°РїСЂРµС‰РµРЅРѕ РґР»СЏ РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р°";}
 
 						if (!$alert) {
 							$role = $user->GetRole($login, $error);
 							/**
-							 * Высчитываем тариф для обработки. Тариф зависит от количества месяцев (Действуют специальные скидки)
+							 * Р’С‹СЃС‡РёС‚С‹РІР°РµРј С‚Р°СЂРёС„ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё. РўР°СЂРёС„ Р·Р°РІРёСЃРёС‚ РѕС‚ РєРѕР»РёС‡РµСЃС‚РІР° РјРµСЃСЏС†РµРІ (Р”РµР№СЃС‚РІСѓСЋС‚ СЃРїРµС†РёР°Р»СЊРЅС‹Рµ СЃРєРёРґРєРё)
 							 */
 							if (substr($role, 0, 1)  != '0') {$tarif = 16;}
 							else {
@@ -212,10 +212,10 @@ class page_bill extends page_base {
 								if($mnth==12) $tarif = 68;
 							}
 							
-								$ok = $prof->GiftOrderedTarif($bill_id, $gift_id, $gid, get_uid(), $tr_id, $mnth, $msg, $tarif); // Оплата подарка
+								$ok = $prof->GiftOrderedTarif($bill_id, $gift_id, $gid, get_uid(), $tr_id, $mnth, $msg, $tarif); // РћРїР»Р°С‚Р° РїРѕРґР°СЂРєР°
 								
 								if ($ok) {
-									// Посылаем уведомление о подарке и переносим на страницу успешной оплаты
+									// РџРѕСЃС‹Р»Р°РµРј СѓРІРµРґРѕРјР»РµРЅРёРµ Рѕ РїРѕРґР°СЂРєРµ Рё РїРµСЂРµРЅРѕСЃРёРј РЅР° СЃС‚СЂР°РЅРёС†Сѓ СѓСЃРїРµС€РЅРѕР№ РѕРїР»Р°С‚С‹
 									$sm = new smail();
 									$sm->NewGift($_SESSION['login'], $login, $msg, $gift_id);
 									$_SESSION['success_aid'] = $bill_id;
@@ -226,7 +226,7 @@ class page_bill extends page_base {
 						} 
 						
 					} else {
-						$alert['login'] = "Данное поле является обязательным";	
+						$alert['login'] = "Р”Р°РЅРЅРѕРµ РїРѕР»Рµ СЏРІР»СЏРµС‚СЃСЏ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рј";	
 					}
 					
 					front::og("tpl")->error = $alert;
@@ -234,24 +234,24 @@ class page_bill extends page_base {
     			
     			front::og("tpl")->display("bill/bill_gift_pro.tpl");
     			break;
-    		case "main": // Вывод подстраницы "Платное размещение в разделе"
-    			front::og("tpl")->type  = 1; // Типа размещения = неделя
+    		case "main": // Р’С‹РІРѕРґ РїРѕРґСЃС‚СЂР°РЅРёС†С‹ "РџР»Р°С‚РЅРѕРµ СЂР°Р·РјРµС‰РµРЅРёРµ РІ СЂР°Р·РґРµР»Рµ"
+    			front::og("tpl")->type  = 1; // РўРёРїР° СЂР°Р·РјРµС‰РµРЅРёСЏ = РЅРµРґРµР»СЏ
     			/**
-    			 * Обработка события "Подарить" - при нажатии кнопки подарить
+    			 * РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ "РџРѕРґР°СЂРёС‚СЊ" - РїСЂРё РЅР°Р¶Р°С‚РёРё РєРЅРѕРїРєРё РїРѕРґР°СЂРёС‚СЊ
     			 */
     			if($_POST['act']) {
-    				$type  = intval(trim($_POST['type'])); // Сколько недель
+    				$type  = intval(trim($_POST['type'])); // РЎРєРѕР»СЊРєРѕ РЅРµРґРµР»СЊ
 					$login = trim(strip_tags($_POST['login']));
 					$msg =  change_q_x(__paramInit('string', NULL, 'msg', NULL, 300));
 					
 					/**
-					 * Класс для обработки оплаты и взаимодействия механизма вывода
+					 * РљР»Р°СЃСЃ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё РѕРїР»Р°С‚С‹ Рё РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ РјРµС…Р°РЅРёР·РјР° РІС‹РІРѕРґР°
 					 */
 					require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/firstpage.php");
 					$prof = new firstpage();
 					$tr_id = $_REQUEST['transaction_id'];
 					if (!$tr_id) {
-						$this->account->view_error("Невозможно завершить транзакцию. Попробуйте повторить операцию с самого начала.");
+						$this->account->view_error("РќРµРІРѕР·РјРѕР¶РЅРѕ Р·Р°РІРµСЂС€РёС‚СЊ С‚СЂР°РЅР·Р°РєС†РёСЋ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РїРѕРІС‚РѕСЂРёС‚СЊ РѕРїРµСЂР°С†РёСЋ СЃ СЃР°РјРѕРіРѕ РЅР°С‡Р°Р»Р°.");
 					}
 					
 					front::og("tpl")->tr_id = $tr_id;
@@ -260,9 +260,9 @@ class page_bill extends page_base {
 					front::og("tpl")->type  = $type;
 					
 					if(!$type) {
-					  $alert['type'] = "Не выбрано количество недель.";
+					  $alert['type'] = "РќРµ РІС‹Р±СЂР°РЅРѕ РєРѕР»РёС‡РµСЃС‚РІРѕ РЅРµРґРµР»СЊ.";
 					} else {
-			   			$d_time = "{$type} неделя";
+			   			$d_time = "{$type} РЅРµРґРµР»СЏ";
 			   			$intv   = "{$type} weeks";
 			  			
 			  			if ($login) {
@@ -270,27 +270,27 @@ class page_bill extends page_base {
 			  				$user = new users();
 			  				$gid = $user->GetUid($error, $login);
 			  				$user->GetUser($login);
-			  				if (!$gid) $alert['login'] = "Нет такого пользователя";
-			  				if (is_emp($user->role)) $alert['login'] = "Пользователь не является фрилансером";
-			  				if ($gid == get_uid()) $alert['login'] = "Вы не можете сделать подарок самому себе";
-    						if(defined('SPEC_USER') && get_uid()==SPEC_USER) {$alert['login'] = "Использование этой услуги запрещено для вашего аккаунта";}
+			  				if (!$gid) $alert['login'] = "РќРµС‚ С‚Р°РєРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ";
+			  				if (is_emp($user->role)) $alert['login'] = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ СЏРІР»СЏРµС‚СЃСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРј";
+			  				if ($gid == get_uid()) $alert['login'] = "Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ СЃРґРµР»Р°С‚СЊ РїРѕРґР°СЂРѕРє СЃР°РјРѕРјСѓ СЃРµР±Рµ";
+    						if(defined('SPEC_USER') && get_uid()==SPEC_USER) {$alert['login'] = "РСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ СЌС‚РѕР№ СѓСЃР»СѓРіРё Р·Р°РїСЂРµС‰РµРЅРѕ РґР»СЏ РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р°";}
 			  				
 			  				if (!$alert) {
 			  					$order_id = $prof->Gift($bill_id, $gift_id, $gid, get_uid(), $tr_id, $intv, 17, $msg, $type);
 			  					if (!$order_id) {
-			  					    header("Location: /bill/fail/"); // Если оплата не прошла
+			  					    header("Location: /bill/fail/"); // Р•СЃР»Рё РѕРїР»Р°С‚Р° РЅРµ РїСЂРѕС€Р»Р°
 			  					    exit;
 			  					}
-			  					else { // Уведомление на почту
+			  					else { // РЈРІРµРґРѕРјР»РµРЅРёРµ РЅР° РїРѕС‡С‚Сѓ
 			  						$sm = new smail();
 			  						$sm->NewGift($_SESSION['login'], $login, $msg, $gift_id);
 			  						$_SESSION['success_aid'] = $bill_id;
-			  						header("Location: /{$this->name_page}/success/"); // Если все прошло успешно переносим на страницу - Успешно
+			  						header("Location: /{$this->name_page}/success/"); // Р•СЃР»Рё РІСЃРµ РїСЂРѕС€Р»Рѕ СѓСЃРїРµС€РЅРѕ РїРµСЂРµРЅРѕСЃРёРј РЅР° СЃС‚СЂР°РЅРёС†Сѓ - РЈСЃРїРµС€РЅРѕ
 			  						exit;
 			  					}
 			  				}
 			  			} else {
-			  				$alert['login'] = "Данное поле является обязательным";	
+			  				$alert['login'] = "Р”Р°РЅРЅРѕРµ РїРѕР»Рµ СЏРІР»СЏРµС‚СЃСЏ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рј";	
 			  			}
 					}
 					
@@ -298,15 +298,15 @@ class page_bill extends page_base {
     			}
     			front::og("tpl")->display("bill/bill_gift_main.tpl");
     			break;
-                    case "fronttop": // Обработка подстраницы "Платные места наверху главной страницы"
-    			// Событие нажатия кнопки "Подарить"
+                    case "fronttop": // РћР±СЂР°Р±РѕС‚РєР° РїРѕРґСЃС‚СЂР°РЅРёС†С‹ "РџР»Р°С‚РЅС‹Рµ РјРµСЃС‚Р° РЅР°РІРµСЂС…Сѓ РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹"
+    			// РЎРѕР±С‹С‚РёРµ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё "РџРѕРґР°СЂРёС‚СЊ"
     			if($_POST['act']) {
-    				$login = trim(strip_tags($_POST['login'])); // Логин 
+    				$login = trim(strip_tags($_POST['login'])); // Р›РѕРіРёРЅ 
 					$msg =  change_q_x(__paramInit('string', NULL, 'msg', NULL, 300));
 					
 					$tr_id = $_REQUEST['transaction_id'];
 					if (!$tr_id) {
-						$this->account->view_error("Невозможно завершить транзакцию. Попробуйте повторить операцию с самого начала.");
+						$this->account->view_error("РќРµРІРѕР·РјРѕР¶РЅРѕ Р·Р°РІРµСЂС€РёС‚СЊ С‚СЂР°РЅР·Р°РєС†РёСЋ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РїРѕРІС‚РѕСЂРёС‚СЊ РѕРїРµСЂР°С†РёСЋ СЃ СЃР°РјРѕРіРѕ РЅР°С‡Р°Р»Р°.");
 					}
 					
 					front::og("tpl")->tr_id = $tr_id;
@@ -319,45 +319,45 @@ class page_bill extends page_base {
 			  			$gid = $user->GetUid($error, $login);
 			  			$user->GetUser($login);
 
-                        if (is_emp($user->role)) $alert['login'] = "Пользователь не является фрилансером";
-			  			if ($gid == get_uid()) $alert['login'] = "Вы не можете сделать подарок самому себе";	
-   						if(defined('SPEC_USER') && get_uid()==SPEC_USER) {$alert['login'] = "Использование этой услуги запрещено для вашего аккаунта";}
-   						if (!$gid) $alert['login'] = "Нет такого пользователя";
+                        if (is_emp($user->role)) $alert['login'] = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ СЏРІР»СЏРµС‚СЃСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРј";
+			  			if ($gid == get_uid()) $alert['login'] = "Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ СЃРґРµР»Р°С‚СЊ РїРѕРґР°СЂРѕРє СЃР°РјРѕРјСѓ СЃРµР±Рµ";	
+   						if(defined('SPEC_USER') && get_uid()==SPEC_USER) {$alert['login'] = "РСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ СЌС‚РѕР№ СѓСЃР»СѓРіРё Р·Р°РїСЂРµС‰РµРЅРѕ РґР»СЏ РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р°";}
+   						if (!$gid) $alert['login'] = "РќРµС‚ С‚Р°РєРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ";
 			  			
 			  			if (!$alert) {
 			  				/**
-			  				 * Класс для работы с оплатой подарка.
+			  				 * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РѕРїР»Р°С‚РѕР№ РїРѕРґР°СЂРєР°.
 			  				 */
 			  				require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/pay_place.php");
 			  				$place = new pay_place();
 			  				$tarif = 69; 
-			  				$profs = $place->gift($bill_id, $gift_id, $tr_id, $gid, get_uid(), $msg, $tarif); // Оплачиваем подарок
+			  				$profs = $place->gift($bill_id, $gift_id, $tr_id, $gid, get_uid(), $msg, $tarif); // РћРїР»Р°С‡РёРІР°РµРј РїРѕРґР°СЂРѕРє
 			  				
 			  				if($profs) {
 			  				    $_SESSION['success_aid'] = $bill_id;
-			  					header("Location: /{$this->name_page}/success/"); // Все прошло успешно
+			  					header("Location: /{$this->name_page}/success/"); // Р’СЃРµ РїСЂРѕС€Р»Рѕ СѓСЃРїРµС€РЅРѕ
 			  					exit;
 			  				}
 			  			}
 					} else {
-						$alert['login'] = "Данное поле является обязательным";	
+						$alert['login'] = "Р”Р°РЅРЅРѕРµ РїРѕР»Рµ СЏРІР»СЏРµС‚СЃСЏ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рј";	
 					}
 					
-					front::og("tpl")->error = @$alert; // Переменная ошибок
+					front::og("tpl")->error = @$alert; // РџРµСЂРµРјРµРЅРЅР°СЏ РѕС€РёР±РѕРє
     			}
     			front::og("tpl")->display("bill/bill_gift_fronttop.tpl");
     			break;
 
 
-                        case "cattop": // Обработка подстраницы "Платные места наверху каталога"
-    			// Событие нажатия кнопки "Подарить"
+                        case "cattop": // РћР±СЂР°Р±РѕС‚РєР° РїРѕРґСЃС‚СЂР°РЅРёС†С‹ "РџР»Р°С‚РЅС‹Рµ РјРµСЃС‚Р° РЅР°РІРµСЂС…Сѓ РєР°С‚Р°Р»РѕРіР°"
+    			// РЎРѕР±С‹С‚РёРµ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё "РџРѕРґР°СЂРёС‚СЊ"
     			if($_POST['act']) {
-    				$login = trim(strip_tags($_POST['login'])); // Логин
+    				$login = trim(strip_tags($_POST['login'])); // Р›РѕРіРёРЅ
 					$msg =  change_q_x(__paramInit('string', NULL, 'msg', NULL, 300));
 
 					$tr_id = $_REQUEST['transaction_id'];
 					if (!$tr_id) {
-						$this->account->view_error("Невозможно завершить транзакцию. Попробуйте повторить операцию с самого начала.");
+						$this->account->view_error("РќРµРІРѕР·РјРѕР¶РЅРѕ Р·Р°РІРµСЂС€РёС‚СЊ С‚СЂР°РЅР·Р°РєС†РёСЋ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РїРѕРІС‚РѕСЂРёС‚СЊ РѕРїРµСЂР°С†РёСЋ СЃ СЃР°РјРѕРіРѕ РЅР°С‡Р°Р»Р°.");
 					}
 
 					front::og("tpl")->tr_id = $tr_id;
@@ -369,39 +369,39 @@ class page_bill extends page_base {
 			  			$user = new users();
 			  			$gid = $user->GetUid($error, $login);
 			  			$user->GetUser($login);
-                        if (!$gid)   $alert['login'] = "Нет такого пользователя";
-			  			if (is_emp($user->role)) $alert['login'] = "Пользователь не является фрилансером";
-			  			if ($gid == get_uid()) $alert['login'] = "Вы не можете сделать подарок самому себе";
-   						if(defined('SPEC_USER') && get_uid()==SPEC_USER) {$alert['login'] = "Использование этой услуги запрещено для вашего аккаунта";}
+                        if (!$gid)   $alert['login'] = "РќРµС‚ С‚Р°РєРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ";
+			  			if (is_emp($user->role)) $alert['login'] = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ СЏРІР»СЏРµС‚СЃСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРј";
+			  			if ($gid == get_uid()) $alert['login'] = "Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ СЃРґРµР»Р°С‚СЊ РїРѕРґР°СЂРѕРє СЃР°РјРѕРјСѓ СЃРµР±Рµ";
+   						if(defined('SPEC_USER') && get_uid()==SPEC_USER) {$alert['login'] = "РСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ СЌС‚РѕР№ СѓСЃР»СѓРіРё Р·Р°РїСЂРµС‰РµРЅРѕ РґР»СЏ РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р°";}
 
 			  			if (!$alert) {
 			  				/**
-			  				 * Класс для работы с оплатой подарка.
+			  				 * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РѕРїР»Р°С‚РѕР№ РїРѕРґР°СЂРєР°.
 			  				 */
 			  				require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/pay_place.php");
 			  				$place = new pay_place(1);
 			  				$tarif = 83;
-			  				$profs = $place->gift($bill_id, $gift_id, $tr_id, $gid, get_uid(), $msg, $tarif); // Оплачиваем подарок
+			  				$profs = $place->gift($bill_id, $gift_id, $tr_id, $gid, get_uid(), $msg, $tarif); // РћРїР»Р°С‡РёРІР°РµРј РїРѕРґР°СЂРѕРє
 
 			  				if($profs) {
 			  				    $_SESSION['success_aid'] = $bill_id;
-			  					header("Location: /{$this->name_page}/success/"); // Все прошло успешно
+			  					header("Location: /{$this->name_page}/success/"); // Р’СЃРµ РїСЂРѕС€Р»Рѕ СѓСЃРїРµС€РЅРѕ
 			  					exit;
 			  				}
 
                                                 }
 					} else {
-						$alert['login'] = "Данное поле является обязательным";
+						$alert['login'] = "Р”Р°РЅРЅРѕРµ РїРѕР»Рµ СЏРІР»СЏРµС‚СЃСЏ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рј";
 					}
 
-					front::og("tpl")->error = @$alert; // Переменная ошибок
+					front::og("tpl")->error = @$alert; // РџРµСЂРµРјРµРЅРЅР°СЏ РѕС€РёР±РѕРє
     			}
     			front::og("tpl")->display("bill/bill_gift_cattop.tpl");
     			break;
 
 
-                        case "catalog": // Обработка подстраницы "Платные места в каталоге в подарок"
-    			// Событие нажатия кнопки "Подарить"
+                        case "catalog": // РћР±СЂР°Р±РѕС‚РєР° РїРѕРґСЃС‚СЂР°РЅРёС†С‹ "РџР»Р°С‚РЅС‹Рµ РјРµСЃС‚Р° РІ РєР°С‚Р°Р»РѕРіРµ РІ РїРѕРґР°СЂРѕРє"
+    			// РЎРѕР±С‹С‚РёРµ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё "РџРѕРґР°СЂРёС‚СЊ"
                         front::og("tpl")->filter_categories = professions::GetAllGroupsLite(TRUE);
                         front::og("tpl")->filter_subcategories = professions::GetAllProfessions(1);
                         $x = new op_codes();
@@ -412,14 +412,14 @@ class page_bill extends page_base {
                         front::og("tpl")->price_top = $top_p;
                         front::og("tpl")->price_inside = $inside_p;
     			if($_POST['act']) {
-    				$login = trim(strip_tags($_POST['login'])); // Логин
+    				$login = trim(strip_tags($_POST['login'])); // Р›РѕРіРёРЅ
 					$msg =  change_q_x(__paramInit('string', NULL, 'msg', NULL, 300));
                                         $pf_category=  __paramInit('int', NULL, 'pf_category', 0);
                                         $pf_subcategory=  __paramInit('int', NULL, 'pf_subcategory', 0);
 //echo '<pre>'; print_r($_POST); exit('</pre>');
 					$tr_id = $_REQUEST['transaction_id'];
 					if (!$tr_id) {
-						$this->account->view_error("Невозможно завершить транзакцию. Попробуйте повторить операцию с самого начала.");
+						$this->account->view_error("РќРµРІРѕР·РјРѕР¶РЅРѕ Р·Р°РІРµСЂС€РёС‚СЊ С‚СЂР°РЅР·Р°РєС†РёСЋ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РїРѕРІС‚РѕСЂРёС‚СЊ РѕРїРµСЂР°С†РёСЋ СЃ СЃР°РјРѕРіРѕ РЅР°С‡Р°Р»Р°.");
 					}
 
 					front::og("tpl")->tr_id = $tr_id;
@@ -433,13 +433,13 @@ class page_bill extends page_base {
 			  			$user = new users();
 			  			$gid = $user->GetUid($error, $login);
 			  			$user->GetUser($login);
-                        if (!$gid)   $alert['login'] = "Нет такого пользователя";
-			  			if (is_emp($user->role)) $alert['login'] = "Пользователь не является фрилансером";
-			  			if ($gid == get_uid()) $alert['login'] = "Вы не можете сделать подарок самому себе";
-   						if(defined('SPEC_USER') && get_uid()==SPEC_USER) {$alert['login'] = "Использование этой услуги запрещено для вашего аккаунта";}
+                        if (!$gid)   $alert['login'] = "РќРµС‚ С‚Р°РєРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ";
+			  			if (is_emp($user->role)) $alert['login'] = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ СЏРІР»СЏРµС‚СЃСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРј";
+			  			if ($gid == get_uid()) $alert['login'] = "Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ СЃРґРµР»Р°С‚СЊ РїРѕРґР°СЂРѕРє СЃР°РјРѕРјСѓ СЃРµР±Рµ";
+   						if(defined('SPEC_USER') && get_uid()==SPEC_USER) {$alert['login'] = "РСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ СЌС‚РѕР№ СѓСЃР»СѓРіРё Р·Р°РїСЂРµС‰РµРЅРѕ РґР»СЏ РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р°";}
 
         $weeks = (int)$_POST['weeks'];
-        if(!$weeks) $alert['week'] = 'Данное поле является обязательным';
+        if(!$weeks) $alert['week'] = 'Р”Р°РЅРЅРѕРµ РїРѕР»Рµ СЏРІР»СЏРµС‚СЃСЏ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рј';
 
 			  			if (!$alert) {
                                                     
@@ -453,34 +453,34 @@ class page_bill extends page_base {
                                                                         
 //                                                                               require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
 //                                                                                $account = new account();
-//                                                                                $account ->/ view_error("Невозможно завершить транзакцию. Попробуйте повторить операцию с самого начала.");
+//                                                                                $account ->/ view_error("РќРµРІРѕР·РјРѕР¶РЅРѕ Р·Р°РІРµСЂС€РёС‚СЊ С‚СЂР°РЅР·Р°РєС†РёСЋ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РїРѕРІС‚РѕСЂРёС‚СЊ РѕРїРµСЂР°С†РёСЋ СЃ СЃР°РјРѕРіРѕ РЅР°С‡Р°Р»Р°.");
                                                                         $account = new account();
                                                                         
                                                                         if($prof->GiftOrderedCat($bill_id, $gift_id, $gid, get_uid(), $tr_id, $page, (int)$weeks, $op_code, $msg)) {
                                                                             $_SESSION['success_aid'] = $bill_id;
-                                                                                header("Location: /{$this->name_page}/success/"); // Все прошло успешно
+                                                                                header("Location: /{$this->name_page}/success/"); // Р’СЃРµ РїСЂРѕС€Р»Рѕ СѓСЃРїРµС€РЅРѕ
                                                                                 exit;
                                                                         }
 
                                                 }
 					} else {
-						$alert['login'] = "Данное поле является обязательным";
+						$alert['login'] = "Р”Р°РЅРЅРѕРµ РїРѕР»Рµ СЏРІР»СЏРµС‚СЃСЏ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рј";
 					}
 
-					front::og("tpl")->error = @$alert; // Переменная ошибок
+					front::og("tpl")->error = @$alert; // РџРµСЂРµРјРµРЅРЅР°СЏ РѕС€РёР±РѕРє
     			}
     			front::og("tpl")->display("bill/bill_gift_catalog.tpl");
     			break;
     		default: 
     			/**
-    			 * По умолчанию выводим главную страницу раздела "Подарки"
+    			 * РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РІС‹РІРѕРґРёРј РіР»Р°РІРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ СЂР°Р·РґРµР»Р° "РџРѕРґР°СЂРєРё"
     			 */
     			front::og("tpl")->display("bill/bill_gift.tpl");
     			break;	
     	}
     }
     /**
-     * Обработчик вывода страницы /send/ - "Передать деньги"
+     * РћР±СЂР°Р±РѕС‚С‡РёРє РІС‹РІРѕРґР° СЃС‚СЂР°РЅРёС†С‹ /send/ - "РџРµСЂРµРґР°С‚СЊ РґРµРЅСЊРіРё"
      *
      */
     function sendAction() {
@@ -494,7 +494,7 @@ class page_bill extends page_base {
     	self::isBlockMoney();
     	
     	/**
-    	 * Подключаем AJAX для страницы
+    	 * РџРѕРґРєР»СЋС‡Р°РµРј AJAX РґР»СЏ СЃС‚СЂР°РЅРёС†С‹
     	 */
     	require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/bill.common.php");
 		front::og("tpl")->xajax     = $xajax; 
@@ -503,10 +503,10 @@ class page_bill extends page_base {
 		$canTransfer = account::checkDepositByNotCard(get_uid(false));
 		front::og("tpl")->canTransfer = $canTransfer;
 
-		// Обработка события подтверждения перевода
+		// РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ РїРµСЂРµРІРѕРґР°
     	if($_POST['action'] == 'sendm' && !$_POST['last_action'] && $canTransfer) {
                 $trs_sum = round(floatval($_POST['sum']), 2);
-    		$sum = round(floatval(str_replace(",",".",trim($_POST['sum'])))); // сумма перевода
+    		$sum = round(floatval(str_replace(",",".",trim($_POST['sum'])))); // СЃСѓРјРјР° РїРµСЂРµРІРѕРґР°
 			$login = trim(strip_tags($_POST['login']));
 			$msg =  __paramInit('string', NULL, 'msg', NULL, 300);
 			$tr_id = $_REQUEST['transaction_id'];
@@ -518,11 +518,11 @@ class page_bill extends page_base {
 			
 			$user = new users();
 			$gid = $user->GetUid($error, $login);
-			if (!$gid) {$error = 1; $alert['login'] = "Пользователь не найден";}
-			if ($sum > 0 && $this->account->sum < $sum) {$error = 1; $alert['sum'] = "Недостаточно средств";}
-			if ($sum <= 0) {$error = 1; $alert['sum'] = "Значение должно быть больше нуля";}
+			if (!$gid) {$error = 1; $alert['login'] = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РЅР°Р№РґРµРЅ";}
+			if ($sum > 0 && $this->account->sum < $sum) {$error = 1; $alert['sum'] = "РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ";}
+			if ($sum <= 0) {$error = 1; $alert['sum'] = "Р—РЅР°С‡РµРЅРёРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РЅСѓР»СЏ";}
 			if (!$error) {
-				// Ошибок нет все круто
+				// РћС€РёР±РѕРє РЅРµС‚ РІСЃРµ РєСЂСѓС‚Рѕ
 				$order_id = $this->account->transfer(get_uid(), $gid, $sum, $tr_id, $msg, true, $trs_sum);
 				if (!$order_id) {
 				    header("Location: /bill/fail/");
@@ -532,7 +532,7 @@ class page_bill extends page_base {
 					die();
 			     }
 			} else {
-				// Если есть ошибки выводим ту же страницу но с другой капчей
+				// Р•СЃР»Рё РµСЃС‚СЊ РѕС€РёР±РєРё РІС‹РІРѕРґРёРј С‚Сѓ Р¶Рµ СЃС‚СЂР°РЅРёС†Сѓ РЅРѕ СЃ РґСЂСѓРіРѕР№ РєР°РїС‡РµР№
 				$inner = "send2.php";
 				$user->GetUser($login);
 				$transaction_id = $tr_id;
@@ -564,7 +564,7 @@ class page_bill extends page_base {
     }
     
     /**
-     * Вывод страницы по терминалам /bill/qiwi/
+     * Р’С‹РІРѕРґ СЃС‚СЂР°РЅРёС†С‹ РїРѕ С‚РµСЂРјРёРЅР°Р»Р°Рј /bill/qiwi/
      *
      */
     function qiwiAction() {
@@ -575,7 +575,7 @@ class page_bill extends page_base {
 
     
     /**
-     * Вывод страницы по терминалам /bill/svyasnoy/
+     * Р’С‹РІРѕРґ СЃС‚СЂР°РЅРёС†С‹ РїРѕ С‚РµСЂРјРёРЅР°Р»Р°Рј /bill/svyasnoy/
      *
      */
     function svyasnoyAction() {
@@ -586,7 +586,7 @@ class page_bill extends page_base {
 
 
     /**
-     * Вывод страницы по терминалам /bill/euroset/
+     * Р’С‹РІРѕРґ СЃС‚СЂР°РЅРёС†С‹ РїРѕ С‚РµСЂРјРёРЅР°Р»Р°Рј /bill/euroset/
      *
      */
     function eurosetAction() {
@@ -597,7 +597,7 @@ class page_bill extends page_base {
 
     
     /**
-     * Вывод страницы по терминалам /bill/elecsnet/
+     * Р’С‹РІРѕРґ СЃС‚СЂР°РЅРёС†С‹ РїРѕ С‚РµСЂРјРёРЅР°Р»Р°Рј /bill/elecsnet/
      *
      */
     function elecsnetAction() {
@@ -645,7 +645,7 @@ class page_bill extends page_base {
     }
     
     /**
-     * Вывод страницы по платежным системам WebMoney /bill/webmoney/
+     * Р’С‹РІРѕРґ СЃС‚СЂР°РЅРёС†С‹ РїРѕ РїР»Р°С‚РµР¶РЅС‹Рј СЃРёСЃС‚РµРјР°Рј WebMoney /bill/webmoney/
      *
      */
     function webmoneyAction() {
@@ -689,7 +689,7 @@ class page_bill extends page_base {
     }
     
    	/**
-     * Вывод страницы по платежным системам Yandex Money
+     * Р’С‹РІРѕРґ СЃС‚СЂР°РЅРёС†С‹ РїРѕ РїР»Р°С‚РµР¶РЅС‹Рј СЃРёСЃС‚РµРјР°Рј Yandex Money
      *
      */
     function yandexAction() {
@@ -699,7 +699,7 @@ class page_bill extends page_base {
     }
 
    	/**
-     * Вывод страницы веб-кошелька ПСКБ
+     * Р’С‹РІРѕРґ СЃС‚СЂР°РЅРёС†С‹ РІРµР±-РєРѕС€РµР»СЊРєР° РџРЎРљР‘
      *
      */
     function webpayAction() {
@@ -709,7 +709,7 @@ class page_bill extends page_base {
     }
     
     /**
-     * Вывод страницы печати квитанции по оплате через Сбербанк
+     * Р’С‹РІРѕРґ СЃС‚СЂР°РЅРёС†С‹ РїРµС‡Р°С‚Рё РєРІРёС‚Р°РЅС†РёРё РїРѕ РѕРїР»Р°С‚Рµ С‡РµСЂРµР· РЎР±РµСЂР±Р°РЅРє
      *
      */
     function printAction() {
@@ -736,7 +736,7 @@ class page_bill extends page_base {
     }
     
     /**
-     * Вывод страницы по сбербанку - "Квитанция сбербанка"
+     * Р’С‹РІРѕРґ СЃС‚СЂР°РЅРёС†С‹ РїРѕ СЃР±РµСЂР±Р°РЅРєСѓ - "РљРІРёС‚Р°РЅС†РёСЏ СЃР±РµСЂР±Р°РЅРєР°"
      *
      */
     function sberAction() {
@@ -746,15 +746,15 @@ class page_bill extends page_base {
     	$fm_val = '';
         
     	/**
-    	 * Берем данные по предыдущему переводу, если он есть
+    	 * Р‘РµСЂРµРј РґР°РЅРЅС‹Рµ РїРѕ РїСЂРµРґС‹РґСѓС‰РµРјСѓ РїРµСЂРµРІРѕРґСѓ, РµСЃР»Рё РѕРЅ РµСЃС‚СЊ
     	 */
 	    $bp = new bank_payments();
-	  	if($id = __paramInit('int',NULL,'id')) {   // редактируется.
+	  	if($id = __paramInit('int',NULL,'id')) {   // СЂРµРґР°РєС‚РёСЂСѓРµС‚СЃСЏ.
 	  		front::og("tpl")->edit = 1;
 	  		$bp->GetRow($id, " AND user_id = {$this->uid}");
                         $fm_val = $bp->sum / EXCH_TR;
 	    	if(!$bp->id) exit;
-	  	} else { // если нет, новый счет.
+	  	} else { // РµСЃР»Рё РЅРµС‚, РЅРѕРІС‹Р№ СЃС‡РµС‚.
 	  	  	$bp->bank_code = __paramInit('int',NULL,'bc', bank_payments::BC_SB);
 	  	  	$bp->sum = __paramInit('float',NULL,'Sum');
 	  	  	$bp_reqv = bank_payments::GetLastReqv($bp->bank_code, $this->uid);
@@ -766,7 +766,7 @@ class page_bill extends page_base {
 	
 		$bank = bank_payments::GetBank($bp->bank_code);
 	
-	 	if($bp->accepted_time) exit; // подтверженные счета (уже перевели деньги) нельзя изменять.
+	 	if($bp->accepted_time) exit; // РїРѕРґС‚РІРµСЂР¶РµРЅРЅС‹Рµ СЃС‡РµС‚Р° (СѓР¶Рµ РїРµСЂРµРІРµР»Рё РґРµРЅСЊРіРё) РЅРµР»СЊР·СЏ РёР·РјРµРЅСЏС‚СЊ.
     	
     	if($_POST['act']) {
     		$bp = new bank_payments();
@@ -775,15 +775,15 @@ class page_bill extends page_base {
 	  	  	$bp->address = substr(__paramInit('string',NULL,'address'),0,255);
 		    $bp->bank_code = __paramInit('int',NULL,'bc');
 	  	  	$bp->sum     = __paramInit('float',NULL,'sum');
-	      	setlocale(LC_ALL, 'en_US.UTF-8'); // гребанная бета! (это не мое)
+	      	setlocale(LC_ALL, 'en_US.UTF-8'); // РіСЂРµР±Р°РЅРЅР°СЏ Р±РµС‚Р°! (СЌС‚Рѕ РЅРµ РјРѕРµ)
 	  	  	$bp->fm_sum  = $bp->sum / EXCH_TR;
 	  	  	$id          = __paramInit('int',NULL,'id');
 			/**
-			 * Проверка ошибок
+			 * РџСЂРѕРІРµСЂРєР° РѕС€РёР±РѕРє
 			 */
-	  	  	if(!$bp->fio) $alert['fio'] = 'Поле заполнено некорректно.';
-	  	  	if(!$bp->address) $alert['address'] = 'Поле заполнено некорректно.';
-	  	  	if(!$bp->sum || $bp->sum < 0.01) $alert['sum'] = 'Поле заполнено некорректно.';
+	  	  	if(!$bp->fio) $alert['fio'] = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ.';
+	  	  	if(!$bp->address) $alert['address'] = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ.';
+	  	  	if(!$bp->sum || $bp->sum < 0.01) $alert['sum'] = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ.';
 	
 	  	  	//if($alert) break;
 			
@@ -813,7 +813,7 @@ class page_bill extends page_base {
     }
     
     /**
-     * Перевод для юр лиц - "Банковский перевод для юридических лиц (рубли)"
+     * РџРµСЂРµРІРѕРґ РґР»СЏ СЋСЂ Р»РёС† - "Р‘Р°РЅРєРѕРІСЃРєРёР№ РїРµСЂРµРІРѕРґ РґР»СЏ СЋСЂРёРґРёС‡РµСЃРєРёС… Р»РёС† (СЂСѓР±Р»Рё)"
      *
      */
     function bankAction() {
@@ -845,10 +845,10 @@ class page_bill extends page_base {
     	
     	
     	
-    	// Обработка подстраницы редактирования данных для перевода
+    	// РћР±СЂР°Р±РѕС‚РєР° РїРѕРґСЃС‚СЂР°РЅРёС†С‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РґР°РЅРЅС‹С… РґР»СЏ РїРµСЂРµРІРѕРґР°
     	if($act == 'edit') {
     		/**
-    		 * Подключение всех необходимых классов для вывода данной страницы
+    		 * РџРѕРґРєР»СЋС‡РµРЅРёРµ РІСЃРµС… РЅРµРѕР±С…РѕРґРёРјС‹С… РєР»Р°СЃСЃРѕРІ РґР»СЏ РІС‹РІРѕРґР° РґР°РЅРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹
     		 */
     		require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/reqv.php");
     		require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/country.php");
@@ -890,7 +890,7 @@ class page_bill extends page_base {
 			front::og("tpl")->edit_mode  = $edit_mode = 1;
 			front::og("tpl")->eid        = $eid = intval($this->uri[1]);
 			
-			// Событие нажатия кнопки - Обновить
+			// РЎРѕР±С‹С‚РёРµ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё - РћР±РЅРѕРІРёС‚СЊ
 			if(!$_POST['update']) {
 				foreach ($reqvByUid as $ikey => $value) {
 					$reqvs->BindRequest($value);
@@ -910,7 +910,7 @@ class page_bill extends page_base {
 				
 	    	front::og("tpl")->display("bill/bill_bank_step2.tpl");
 	    	exit;	
-    	} else { // Иначе выводим главную страницу, где необходимо заполнять поля
+    	} else { // РРЅР°С‡Рµ РІС‹РІРѕРґРёРј РіР»Р°РІРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ, РіРґРµ РЅРµРѕР±С…РѕРґРёРјРѕ Р·Р°РїРѕР»РЅСЏС‚СЊ РїРѕР»СЏ
 	    	require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/reqv.php");
 			require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/city.php");
 			require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/reqv_ordered.php");
@@ -935,7 +935,7 @@ class page_bill extends page_base {
 			front::og("tpl")->reqv  = $reqv;
 				
 			/**
-	    	 * Переход на следующую страницу для того чтобы подтвердить введенные данные
+	    	 * РџРµСЂРµС…РѕРґ РЅР° СЃР»РµРґСѓСЋС‰СѓСЋ СЃС‚СЂР°РЅРёС†Сѓ РґР»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ РїРѕРґС‚РІРµСЂРґРёС‚СЊ РІРІРµРґРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ
 	    	 */
 	    	if($_POST['send']) {
 				$reqv = new reqv();
@@ -956,14 +956,14 @@ class page_bill extends page_base {
 				front::og("tpl")->sum = !$_POST['sum']?$_SESSION['sum']:floatval($_POST['sum']);
 				//front::og("tpl")->sum = $_POST['sum'];
 				front::og("tpl")->reqv  = $reqv;
-				front::og("tpl")->error = $error;//array("firm"=>"Введите название");
+				front::og("tpl")->error = $error;//array("firm"=>"Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ");
 				//front::og("tpl")->display("bill/bill_bank_step2.tpl");
 	    		//exit;
 				
 	    	}
 	    	
 	    	/**
-	    	 * Поддветрждение данных и выписка счета.
+	    	 * РџРѕРґРґРІРµС‚СЂР¶РґРµРЅРёРµ РґР°РЅРЅС‹С… Рё РІС‹РїРёСЃРєР° СЃС‡РµС‚Р°.
 	    	 */
 	    	if($_POST['next']) {
 	    		$reqv = new reqv();
@@ -989,7 +989,7 @@ class page_bill extends page_base {
     }
     
     /**
-     * Вывод страницы для оплаты пластиковыми картами
+     * Р’С‹РІРѕРґ СЃС‚СЂР°РЅРёС†С‹ РґР»СЏ РѕРїР»Р°С‚С‹ РїР»Р°СЃС‚РёРєРѕРІС‹РјРё РєР°СЂС‚Р°РјРё
      *
      */
     function cardAction() {
@@ -1031,10 +1031,10 @@ class page_bill extends page_base {
     }
     
     /**
-     * Вывод страницы  /sms/ - "Оплата по СМС"
+     * Р’С‹РІРѕРґ СЃС‚СЂР°РЅРёС†С‹  /sms/ - "РћРїР»Р°С‚Р° РїРѕ РЎРњРЎ"
      *
      */
-    // временно отключено #0019358
+    // РІСЂРµРјРµРЅРЅРѕ РѕС‚РєР»СЋС‡РµРЅРѕ #0019358
     /*function smsAction() {
     	require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/sms_services.php");
     	
@@ -1043,29 +1043,29 @@ class page_bill extends page_base {
     }*/
     
     /**
-     * Вывод страницы /history/ - "история счета"
+     * Р’С‹РІРѕРґ СЃС‚СЂР°РЅРёС†С‹ /history/ - "РёСЃС‚РѕСЂРёСЏ СЃС‡РµС‚Р°"
      *
      */
     function historyAction() {
     	front::og("tpl")->page = "history";
     	front::og("tpl")->my_uid  = get_uid();
-    	front::og("tpl")->caltype = 2; // Типа нажатия кнопки календаря (Дата=1, Интервал дат=2) 
+    	front::og("tpl")->caltype = 2; // РўРёРїР° РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё РєР°Р»РµРЅРґР°СЂСЏ (Р”Р°С‚Р°=1, РРЅС‚РµСЂРІР°Р» РґР°С‚=2) 
     	
     	require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/sbr.php");
     	
     	/**
-    	 * Подгружаем класс для работы с AJAX
+    	 * РџРѕРґРіСЂСѓР¶Р°РµРј РєР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ AJAX
     	 */
     	require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/bill.common.php");
 		front::og("tpl")->xajax     = $xajax; 
 		
 		
-		// переменные для фильтров
-		$v0 = intval($this->uri[0]); // страница
-    	$v1 = intval($this->uri[1]); // Переменная для сортировки по столбцам
-    	$v2 = (string)$this->uri[2]; // Сортировка по дате
-    	$v3 = (string)$this->uri[3]; // Прочие сортировки
-        // сброс страницы при смене сортировки
+		// РїРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ С„РёР»СЊС‚СЂРѕРІ
+		$v0 = intval($this->uri[0]); // СЃС‚СЂР°РЅРёС†Р°
+    	$v1 = intval($this->uri[1]); // РџРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё РїРѕ СЃС‚РѕР»Р±С†Р°Рј
+    	$v2 = (string)$this->uri[2]; // РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РґР°С‚Рµ
+    	$v3 = (string)$this->uri[3]; // РџСЂРѕС‡РёРµ СЃРѕСЂС‚РёСЂРѕРІРєРё
+        // СЃР±СЂРѕСЃ СЃС‚СЂР°РЅРёС†С‹ РїСЂРё СЃРјРµРЅРµ СЃРѕСЂС‚РёСЂРѕРІРєРё
          if(!isset($_SESSION['v3_sorting_key']) || $_SESSION['v3_sorting_key'] != $v3){
                 $_SESSION['v3_sorting_key'] = $v3;
                 $v0 = 1;
@@ -1075,13 +1075,13 @@ class page_bill extends page_base {
     	front::og("tpl")->v2 = htmlspecialchars($v2);
     	front::og("tpl")->v3 = htmlspecialchars($v3);
     	
-    	$month = date('m'); // текущий месяц
+    	$month = date('m'); // С‚РµРєСѓС‰РёР№ РјРµСЃСЏС†
     	
     	$sday = mktime(0,0,0,date('m'), 1, date('Y'));
     	$eday = mktime(23,59,59,date('m'), date('t'), date('Y'));
     	front::og("tpl")->date_input = "01.".date('m.y')." - ".date('t').".".date('m.y');
     	
-    	// Обработка фильтров
+    	// РћР±СЂР°Р±РѕС‚РєР° С„РёР»СЊС‚СЂРѕРІ
     	if($v2 != '') {
     		if(strlen($v2)==8) {
     			front::og("tpl")->is_calendar = true;
@@ -1164,22 +1164,22 @@ class page_bill extends page_base {
     	
     	
     	
-    	$type = false; // Дополнительная переменная для фильтровки результатов
+    	$type = false; // Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ С„РёР»СЊС‚СЂРѕРІРєРё СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ
     	if($v3 != '') {
     		$case = substr($v3, 0, 1);
     		switch($case) {
-    			case "p": // Ввод средств
+    			case "p": // Р’РІРѕРґ СЃСЂРµРґСЃС‚РІ
     				$type = ' AND ammount > 0';
     				break;
-    			case "m": // Вывод средств
+    			case "m": // Р’С‹РІРѕРґ СЃСЂРµРґСЃС‚РІ
     				$type = ' AND ammount < 0';
     				break;
-    			case "f": // Определенные значения ввода вывода средств
+    			case "f": // РћРїСЂРµРґРµР»РµРЅРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РІРІРѕРґР° РІС‹РІРѕРґР° СЃСЂРµРґСЃС‚РІ
     				$ammount = round(substr($v3, 1, strlen($v3)-1), 2);
     				$type    = ' AND ammount = '.($ammount);
     				front::og("tpl")->f = $ammount;
     				break;
-    			case "e": // Фильтр по событиям
+    			case "e": // Р¤РёР»СЊС‚СЂ РїРѕ СЃРѕР±С‹С‚РёСЏРј
     				$op_code = intval(substr($v3, 1, strlen($v3)-1));
         $opcode = $op_code;
     				if($op_code == 0) break;
@@ -1192,7 +1192,7 @@ class page_bill extends page_base {
     			/*case "i":
     				$page = intval(substr($v3, 1, strlen($v3)-1));
     				break;	*/
-    			case "a": // По умолчанию
+    			case "a": // РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
     			default: 
     				$type = false; 
     				break;
@@ -1203,19 +1203,19 @@ class page_bill extends page_base {
     	if($page<=0) $page = 1;
     	if(strlen($page) > 6) { header("Location: /404.php"); exit; }
 
-    	front::og("tpl")->sort = $v1==0?$v1+1:$v1; // Сортировка по столбцам
+    	front::og("tpl")->sort = $v1==0?$v1+1:$v1; // РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ СЃС‚РѕР»Р±С†Р°Рј
         if(!isset($_COOKIE['bill_history_pp'])){
             setcookie ('bill_history_pp', 20, time() + 24*60*60*1000,'/');
             $perpage = 20;
         }else{
             $perpage = (int)$_COOKIE['bill_history_pp'];
         }
-    	$history = $this->account->searchBillHistory($sday, $eday, $v1, $type, $page, $pages, $total, $perpage); // Берем историю по конкретному промежутку времени
-            //Идентификаторы СБР для получения признака новая или старая
+    	$history = $this->account->searchBillHistory($sday, $eday, $v1, $type, $page, $pages, $total, $perpage); // Р‘РµСЂРµРј РёСЃС‚РѕСЂРёСЋ РїРѕ РєРѕРЅРєСЂРµС‚РЅРѕРјСѓ РїСЂРѕРјРµР¶СѓС‚РєСѓ РІСЂРµРјРµРЅРё
+            //РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РЎР‘Р  РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РїСЂРёР·РЅР°РєР° РЅРѕРІР°СЏ РёР»Рё СЃС‚Р°СЂР°СЏ
         $sbrIds = array(); $nSbr = 0;
         foreach ($history as $key=>$val) {
             if(in_array($val['op_code'], array(sbr::OP_RESERVE, sbr::OP_DEBIT, sbr::OP_CREDIT))) {
-                if (preg_match('~СБР-(\d+)-[ТАПБ]/О~', $val['comments'], $m)) {
+                if (preg_match('~РЎР‘Р -(\d+)-[РўРђРџР‘]/Рћ~', $val['comments'], $m)) {
                     if ((int)$m[1]) {
                         $sbrIds[] = (int)$m[1];
                         $history[$key]['sbrId'] = (int)$m[1]; 
@@ -1242,27 +1242,27 @@ class page_bill extends page_base {
     	front::og("tpl")->total_h = $total;
 //    	echo $pages." - ".$total;
     	/**
-    	 * Тестовый функционал.
+    	 * РўРµСЃС‚РѕРІС‹Р№ С„СѓРЅРєС†РёРѕРЅР°Р».
     	 */
     	if($history) {
             $acc = null;
 	    	foreach($history as $k=>&$v) {
 	    		if($v['op_code'] == 23) $exec[$v['id']] = $v['id'];
             if($v['op_code'] == 12 && !trim($v['comments'])) {
-                $v['comments'] = 'Пополнение счета через '.account::GetPSName($v['payment_sys']);
+                $v['comments'] = 'РџРѕРїРѕР»РЅРµРЅРёРµ СЃС‡РµС‚Р° С‡РµСЂРµР· '.account::GetPSName($v['payment_sys']);
             }
 	    	}
     	}
         front::og("tpl")->total_fm  = $this->account->getSumAmmountSpentService(get_uid(false));//$o_mny;
     	front::og("tpl")->history  = $history;
     	front::og("tpl")->exec     = @$exec;
-    	front::og("tpl")->event    = $this->account->searchBillEvent($sday, $eday); // Имена событий использующие в данном промежутке времени
+    	front::og("tpl")->event    = $this->account->searchBillEvent($sday, $eday); // РРјРµРЅР° СЃРѕР±С‹С‚РёР№ РёСЃРїРѕР»СЊР·СѓСЋС‰РёРµ РІ РґР°РЅРЅРѕРј РїСЂРѕРјРµР¶СѓС‚РєРµ РІСЂРµРјРµРЅРё
     	front::og("tpl")->calendar = $this->account->getDateBillOperation($month, false, false, $year);
     	front::og("tpl")->display("bill/bill_history.tpl");	
     }
     
     /**
-     * Вывод страницы /success/ - "история счета"
+     * Р’С‹РІРѕРґ СЃС‚СЂР°РЅРёС†С‹ /success/ - "РёСЃС‚РѕСЂРёСЏ СЃС‡РµС‚Р°"
      *
      */
     function successAction() {
@@ -1286,7 +1286,7 @@ class page_bill extends page_base {
    	            
    	        default :
    	        
-                $gift =  array(39, 40, 54, 18, 24, 25, 34, 16, 35); // Если нужно будет определенную инфу подарка, исключаем Ид подарка из этого массива, и дополняем определенный метод класса подарка
+                $gift =  array(39, 40, 54, 18, 24, 25, 34, 16, 35); // Р•СЃР»Рё РЅСѓР¶РЅРѕ Р±СѓРґРµС‚ РѕРїСЂРµРґРµР»РµРЅРЅСѓСЋ РёРЅС„Сѓ РїРѕРґР°СЂРєР°, РёСЃРєР»СЋС‡Р°РµРј РРґ РїРѕРґР°СЂРєР° РёР· СЌС‚РѕРіРѕ РјР°СЃСЃРёРІР°, Рё РґРѕРїРѕР»РЅСЏРµРј РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РјРµС‚РѕРґ РєР»Р°СЃСЃР° РїРѕРґР°СЂРєР°
                 if($rows = $this->account->getLastOperations($uid)) {
              	    foreach($rows as $ret) {
                       if (isset($ret['is_pending'])) {
@@ -1294,7 +1294,7 @@ class page_bill extends page_base {
                       }
                  	    $class_name = $this->account->GetOperationClassName($ret['id'], $ret['op_code']);
                  	    if($class_name) {
-                 	        require_once $_SERVER['DOCUMENT_ROOT']."/classes/".$class_name.".php"; // account уже подключен вверху поэтому require_once
+                 	        require_once $_SERVER['DOCUMENT_ROOT']."/classes/".$class_name.".php"; // account СѓР¶Рµ РїРѕРґРєР»СЋС‡РµРЅ РІРІРµСЂС…Сѓ РїРѕСЌС‚РѕРјСѓ require_once
                  	    }
                  	    if(method_exists($class_name, "getSuccessInfo") && array_search($ret['op_code'], $gift) === false) {
                  	        $cls = new $class_name();
@@ -1339,11 +1339,11 @@ class page_bill extends page_base {
     }
     
     /**
-     * Вывод страницы /cardsuccess/
+     * Р’С‹РІРѕРґ СЃС‚СЂР°РЅРёС†С‹ /cardsuccess/
      *
      */
     function cardsuccessAction() {
-        $_SESSION['bill.GET']['addinfo'] = '<a href="/bill/" class="blue">Вернуться</a> на &laquo;Пополнение счета&raquo;';
+        $_SESSION['bill.GET']['addinfo'] = '<a href="/bill/" class="blue">Р’РµСЂРЅСѓС‚СЊСЃСЏ</a> РЅР° &laquo;РџРѕРїРѕР»РЅРµРЅРёРµ СЃС‡РµС‚Р°&raquo;';
         header('Location: /bill/success/card/');
         exit;
     }
@@ -1357,34 +1357,34 @@ class page_bill extends page_base {
 	}
 	
     /**
-     * Функция определения типа операции
+     * Р¤СѓРЅРєС†РёСЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ С‚РёРїР° РѕРїРµСЂР°С†РёРё
      *
-     * @deprecated не используется
-     * @param integer $type Тип операции
-     * @return array|boolean Типы, если тип не найден false
+     * @deprecated РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
+     * @param integer $type РўРёРї РѕРїРµСЂР°С†РёРё
+     * @return array|boolean РўРёРїС‹, РµСЃР»Рё С‚РёРї РЅРµ РЅР°Р№РґРµРЅ false
      */
     function getTypeBillOperation($type) {
     	switch($type) {
-    		case 1: # Зачисления
+    		case 1: # Р—Р°С‡РёСЃР»РµРЅРёСЏ
     			$t = array(12);
     			break;	
-    		case 2: # Переводы "От"
+    		case 2: # РџРµСЂРµРІРѕРґС‹ "РћС‚"
     			$t = array(23);
     			break;
-    		case 3: # Подарки
+    		case 3: # РџРѕРґР°СЂРєРё
     			$t = array(16, 17, 18, 24, 25, 26, 27, 34, 35, 39, 42, 52, 66, 67, 68);	
     			break;
-    		case 4: # Бонусы
-    			$t = array(); // требуется уточнение
+    		case 4: # Р‘РѕРЅСѓСЃС‹
+    			$t = array(); // С‚СЂРµР±СѓРµС‚СЃСЏ СѓС‚РѕС‡РЅРµРЅРёРµ
     			break;
-    		case 5: # Списания
+    		case 5: # РЎРїРёСЃР°РЅРёСЏ
     			$t = array(37, 41,54);
     			break;
-    		case 6: # Переводы "Для"
-    			$t = array(23); // требуется уточнение
+    		case 6: # РџРµСЂРµРІРѕРґС‹ "Р”Р»СЏ"
+    			$t = array(23); // С‚СЂРµР±СѓРµС‚СЃСЏ СѓС‚РѕС‡РЅРµРЅРёРµ
     			break;
-    		case 7: # Вывод средств  
-    			$t = array(13); //  требуется уточнение
+    		case 7: # Р’С‹РІРѕРґ СЃСЂРµРґСЃС‚РІ  
+    			$t = array(13); //  С‚СЂРµР±СѓРµС‚СЃСЏ СѓС‚РѕС‡РЅРµРЅРёРµ
     			break;
     		default: 
     			$t = false; 

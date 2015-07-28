@@ -2,19 +2,19 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
- * Êëàññ ðàáîòû ñ ïëàòíûìè èåñòàìè íà ãëàâíîé ñòðàíèöå
+ * ÐšÐ»Ð°ÑÑ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ Ð¿Ð»Ð°Ñ‚Ð½Ñ‹Ð¼Ð¸ Ð¸ÐµÑÑ‚Ð°Ð¼Ð¸ Ð½Ð° Ð³Ð»Ð°Ð²Ð½Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ
  *
  */
 class firstpagepos{
 
 	
     /**
-     * Èçìåíåíèå ïîçèöèè ïîëüçîâàòåëÿ
-     * @param integer $user               uid ïîëüçîâàòåëÿ
-     * @param integer $transaction_id     id òðàíçàêöèè
-     * @param array $bids                 ìàññèâ, â êîòîðîì èíäåêñ ýëåìåíòîâ - id ìåñòà ðàçìåùåíèÿ, çíà÷åíèÿ - ñóììà äëÿ ïîäíÿòèÿ ïîçèöèè
+     * Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ðµ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
+     * @param integer $user               uid Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
+     * @param integer $transaction_id     id Ñ‚Ñ€Ð°Ð½Ð·Ð°ÐºÑ†Ð¸Ð¸
+     * @param array $bids                 Ð¼Ð°ÑÑÐ¸Ð², Ð² ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¼ Ð¸Ð½Ð´ÐµÐºÑ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² - id Ð¼ÐµÑÑ‚Ð° Ñ€Ð°Ð·Ð¼ÐµÑ‰ÐµÐ½Ð¸Ñ, Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ - ÑÑƒÐ¼Ð¼Ð° Ð´Ð»Ñ Ð¿Ð¾Ð´Ð½ÑÑ‚Ð¸Ñ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸Ð¸
      *
-     * @return integer                    id îïåðàöèè òðàíçàêöèè
+     * @return integer                    id Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¸ Ñ‚Ñ€Ð°Ð½Ð·Ð°ÐºÑ†Ð¸Ð¸
      */
     function BidPlaces($user, $transaction_id, $bids, &$error){
         $bill_id = 0;
@@ -44,11 +44,11 @@ class firstpagepos{
 	
 	
     /**
-     * Óäàëåíèå çàêàçà ïî id â account_operations
+     * Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ Ð·Ð°ÐºÐ°Ð·Ð° Ð¿Ð¾ id Ð² account_operations
      * @see account::DelByOpid()
      *
-     * @param integer $uid               uid ïîëüçîâàòåëÿ
-     * @param integer $opid              id îïåðàöèè â áèëëèíãå
+     * @param integer $uid               uid Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
+     * @param integer $opid              id Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¸ Ð² Ð±Ð¸Ð»Ð»Ð¸Ð½Ð³Ðµ
      *
      * @return integer                   0
      */
@@ -56,7 +56,7 @@ class firstpagepos{
         global $DB;
         $sql = "SELECT ammount, descr FROM account_operations WHERE id=? AND billing_id=(SELECT id FROM account WHERE uid = ?)";
         $row = $DB->row( $sql, $opid, $uid );
-        if (!$row || !($sum = $row['ammount']) || ($prof_id = $row['descr']) === "" || !$uid) die("+°øñúð!");
+        if (!$row || !($sum = $row['ammount']) || ($prof_id = $row['descr']) === "" || !$uid) die("+Â°ÑˆÑÑŠÑ€!");
         
         $sql = "UPDATE users_first_page SET psum=psum$sum WHERE id IN (SELECT id FROM users_first_page 
                 WHERE user_id = ? AND from_date+to_date >= now() AND payed=true

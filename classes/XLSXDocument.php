@@ -1,103 +1,103 @@
 <?php
 
 /**
- * Класс для генерации отчетности документов ИТО в формате XLSX
+ * РљР»Р°СЃСЃ РґР»СЏ РіРµРЅРµСЂР°С†РёРё РѕС‚С‡РµС‚РЅРѕСЃС‚Рё РґРѕРєСѓРјРµРЅС‚РѕРІ РРўРћ РІ С„РѕСЂРјР°С‚Рµ XLSX
  */
 class XLSXDocument_ITO extends odt2pdf {
     
     /**
-     * Название файла с текстовыми данными
+     * РќР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р° СЃ С‚РµРєСЃС‚РѕРІС‹РјРё РґР°РЅРЅС‹РјРё
      * 
      * @var string
      */
     private $_sharedStrings = 'xl/sharedStrings.xml';
     
     /**
-     * Название файла с данными рабочего листа
+     * РќР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р° СЃ РґР°РЅРЅС‹РјРё СЂР°Р±РѕС‡РµРіРѕ Р»РёСЃС‚Р°
      * 
      * @var string
      */
     private $_workSheet     = 'xl/worksheets/sheet1.xml';
     
     /**
-     * Название файла с данными о формалах используемых в документе
+     * РќР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р° СЃ РґР°РЅРЅС‹РјРё Рѕ С„РѕСЂРјР°Р»Р°С… РёСЃРїРѕР»СЊР·СѓРµРјС‹С… РІ РґРѕРєСѓРјРµРЅС‚Рµ
      * 
      * @var string
      */
     private $_calcChain     = 'xl/calcChain.xml';
     
     /**
-     * Стили отображения
+     * РЎС‚РёР»Рё РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ
      * 
      * @var string
      */
     private $_styles        = 'xl/styles.xml';
     
     /**
-     * Шаблон документа
+     * РЁР°Р±Р»РѕРЅ РґРѕРєСѓРјРµРЅС‚Р°
      * 
      * @var string
      */
     private $_template;
     
     /**
-     * Путь к шаблонам ODT
+     * РџСѓС‚СЊ Рє С€Р°Р±Р»РѕРЅР°Рј ODT
      * 
      * @var string 
      */
     protected $_folder = SBR_FOLDER_DOCS;
     
     /**
-     * Путь к временной папке
+     * РџСѓС‚СЊ Рє РІСЂРµРјРµРЅРЅРѕР№ РїР°РїРєРµ
      * 
      * @var string
      */
     protected $_tmp    = SBR_FOLDER_TMP;
     
     /**
-     * Индекс файла текстов в архиве
+     * РРЅРґРµРєСЃ С„Р°Р№Р»Р° С‚РµРєСЃС‚РѕРІ РІ Р°СЂС…РёРІРµ
      * 
      * @var integer
      */
     protected $_sharedIndex;
     
     /**
-     * Индекс файла каркаса в архиве
+     * РРЅРґРµРєСЃ С„Р°Р№Р»Р° РєР°СЂРєР°СЃР° РІ Р°СЂС…РёРІРµ
      * 
      * @var integer
      */
     protected $_sheetIndex;
     
     /**
-     * Индекс файла формул в архиве
+     * РРЅРґРµРєСЃ С„Р°Р№Р»Р° С„РѕСЂРјСѓР» РІ Р°СЂС…РёРІРµ
      * 
      * @var integer
      */
     protected $_calcIndex;
     
     /**
-     * Индекс файла стилей в архиве
+     * РРЅРґРµРєСЃ С„Р°Р№Р»Р° СЃС‚РёР»РµР№ РІ Р°СЂС…РёРІРµ
      * 
      * @var integer
      */
     protected $_styleIndex;
     
     /**
-     * Номер строки с которой начинаем вставлять данные
+     * РќРѕРјРµСЂ СЃС‚СЂРѕРєРё СЃ РєРѕС‚РѕСЂРѕР№ РЅР°С‡РёРЅР°РµРј РІСЃС‚Р°РІР»СЏС‚СЊ РґР°РЅРЅС‹Рµ
      * 
      * @var integer
      */
-    protected $_startPosition = 25; // Строка с которой начинаем вставлять данные
+    protected $_startPosition = 25; // РЎС‚СЂРѕРєР° СЃ РєРѕС‚РѕСЂРѕР№ РЅР°С‡РёРЅР°РµРј РІСЃС‚Р°РІР»СЏС‚СЊ РґР°РЅРЅС‹Рµ
     
     /**
-     * Хранятся инициализированные DOMDocument
+     * РҐСЂР°РЅСЏС‚СЃСЏ РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅРЅС‹Рµ DOMDocument
      * 
      * @var array
      */
     public $dom = array();
     
     /**
-     * Хранятся инициализированные DOMXPath
+     * РҐСЂР°РЅСЏС‚СЃСЏ РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅРЅС‹Рµ DOMXPath
      * 
      * @var array
      */
@@ -106,18 +106,18 @@ class XLSXDocument_ITO extends odt2pdf {
     public $debug = false;
     
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      * 
-     * @param string $template      Название шаблона ск оторым будем работать  
+     * @param string $template      РќР°Р·РІР°РЅРёРµ С€Р°Р±Р»РѕРЅР° СЃРє РѕС‚РѕСЂС‹Рј Р±СѓРґРµРј СЂР°Р±РѕС‚Р°С‚СЊ  
      */
     public function __construct($template = 'tpl_ito.xlsx') {
         $this->setTemplate($template);
     }
     
     /**
-     * Задаем шаблон документа
+     * Р—Р°РґР°РµРј С€Р°Р±Р»РѕРЅ РґРѕРєСѓРјРµРЅС‚Р°
      * 
-     * @param string $template  Название шаблона ск оторым будем работать  
+     * @param string $template  РќР°Р·РІР°РЅРёРµ С€Р°Р±Р»РѕРЅР° СЃРє РѕС‚РѕСЂС‹Рј Р±СѓРґРµРј СЂР°Р±РѕС‚Р°С‚СЊ  
      * @throws Exception
      */
     public function setTemplate($template) {
@@ -132,7 +132,7 @@ class XLSXDocument_ITO extends odt2pdf {
     }
     
     /**
-     * Возвращает название шаблона
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РЅР°Р·РІР°РЅРёРµ С€Р°Р±Р»РѕРЅР°
      * 
      * @return string
      */
@@ -141,9 +141,9 @@ class XLSXDocument_ITO extends odt2pdf {
     }
     
     /**
-     * Кодируем текст в UTF8
+     * РљРѕРґРёСЂСѓРµРј С‚РµРєСЃС‚ РІ UTF8
      * 
-     * @param string $val   Текст для кодирования
+     * @param string $val   РўРµРєСЃС‚ РґР»СЏ РєРѕРґРёСЂРѕРІР°РЅРёСЏ
      * @return type
      */
     private function _enc($val) {
@@ -151,8 +151,8 @@ class XLSXDocument_ITO extends odt2pdf {
     }
     
     /**
-     * Подготовка к обработке файла шаблона
-     * Создаем новый фыйл посредством копирования шаблона
+     * РџРѕРґРіРѕС‚РѕРІРєР° Рє РѕР±СЂР°Р±РѕС‚РєРµ С„Р°Р№Р»Р° С€Р°Р±Р»РѕРЅР°
+     * РЎРѕР·РґР°РµРј РЅРѕРІС‹Р№ С„С‹Р№Р» РїРѕСЃСЂРµРґСЃС‚РІРѕРј РєРѕРїРёСЂРѕРІР°РЅРёСЏ С€Р°Р±Р»РѕРЅР°
      * 
      * @return boolean 
      */
@@ -165,10 +165,10 @@ class XLSXDocument_ITO extends odt2pdf {
     }
     
     /**
-     * Вносим изменения данных в шаблон
+     * Р’РЅРѕСЃРёРј РёР·РјРµРЅРµРЅРёСЏ РґР°РЅРЅС‹С… РІ С€Р°Р±Р»РѕРЅ
      * 
-     * @param string $file_path   Путь файла в архиве который меняем
-     * @param string $content     Измененные данные
+     * @param string $file_path   РџСѓС‚СЊ С„Р°Р№Р»Р° РІ Р°СЂС…РёРІРµ РєРѕС‚РѕСЂС‹Р№ РјРµРЅСЏРµРј
+     * @param string $content     РР·РјРµРЅРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ
      * @return boolean 
      */
     public function setContentFile($file_path, $content) {
@@ -180,7 +180,7 @@ class XLSXDocument_ITO extends odt2pdf {
     }
     
     /**
-     * Задаем период поиска данных для генерации документа
+     * Р—Р°РґР°РµРј РїРµСЂРёРѕРґ РїРѕРёСЃРєР° РґР°РЅРЅС‹С… РґР»СЏ РіРµРЅРµСЂР°С†РёРё РґРѕРєСѓРјРµРЅС‚Р°
      * 
      * @param array $period (01-01-2012,30-01-2012)
      */
@@ -189,9 +189,9 @@ class XLSXDocument_ITO extends odt2pdf {
     }
     
     /**
-     * Генерируем новый документ
+     * Р“РµРЅРµСЂРёСЂСѓРµРј РЅРѕРІС‹Р№ РґРѕРєСѓРјРµРЅС‚
      * 
-     * @param boolean $save    Сохарнить документ на сайте или нет
+     * @param boolean $save    РЎРѕС…Р°СЂРЅРёС‚СЊ РґРѕРєСѓРјРµРЅС‚ РЅР° СЃР°Р№С‚Рµ РёР»Рё РЅРµС‚
      * @return boolean
      */
     public function generateDocument($save = false) {
@@ -209,7 +209,7 @@ class XLSXDocument_ITO extends odt2pdf {
     }
     
     /**
-     * Возвращает данные обработканного файла
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ РѕР±СЂР°Р±РѕС‚РєР°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°
      * 
      * @return string
      */
@@ -219,7 +219,7 @@ class XLSXDocument_ITO extends odt2pdf {
     }
     
     /**
-     * Сохраняем обработанный файл в системе
+     * РЎРѕС…СЂР°РЅСЏРµРј РѕР±СЂР°Р±РѕС‚Р°РЅРЅС‹Р№ С„Р°Р№Р» РІ СЃРёСЃС‚РµРјРµ
      * 
      * @return \CFile
      */
@@ -237,7 +237,7 @@ class XLSXDocument_ITO extends odt2pdf {
     }
     
     /**
-     * Обрабатываем данные документа и изменяем их если нужно
+     * РћР±СЂР°Р±Р°С‚С‹РІР°РµРј РґР°РЅРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚Р° Рё РёР·РјРµРЅСЏРµРј РёС… РµСЃР»Рё РЅСѓР¶РЅРѕ
      * 
      */
     public function parseContent() {
@@ -250,7 +250,7 @@ class XLSXDocument_ITO extends odt2pdf {
             $this->initDOMDocument('shared', $this->_sharedIndex);
             $this->initDOMDocument('sheet',  $this->_sheetIndex);
 //            $this->initDOMDocument('style',  $this->_styleIndex);
-            $this->initDOMDocument('calc',  null); // По формулам создадим новый документ
+            $this->initDOMDocument('calc',  null); // РџРѕ С„РѕСЂРјСѓР»Р°Рј СЃРѕР·РґР°РґРёРј РЅРѕРІС‹Р№ РґРѕРєСѓРјРµРЅС‚
            
             $pskb = sbr_meta::getReservedSbr($this->period);
             $count_rows = count($pskb);
@@ -258,7 +258,7 @@ class XLSXDocument_ITO extends odt2pdf {
             $from_date = date('d.m.Y', strtotime($this->period[0]));
             $to_date   = date('d.m.Y', strtotime($this->period[1]));
             
-            $period = "за период с {$from_date} по {$to_date}";
+            $period = "Р·Р° РїРµСЂРёРѕРґ СЃ {$from_date} РїРѕ {$to_date}";
             $this->replaceSharedString(4, $period);
             $this->moveFooter($count_rows);
             foreach($pskb as $i=>$data) {
@@ -270,24 +270,24 @@ class XLSXDocument_ITO extends odt2pdf {
             $this->setContentFile($this->_workSheet, $this->dom['sheet']->saveXML());
             $this->setContentFile($this->_calcChain, $this->dom['calc']->saveXML());
             
-            // Все гуд закрываемся
+            // Р’СЃРµ РіСѓРґ Р·Р°РєСЂС‹РІР°РµРјСЃСЏ
             $this->zip->close();
         }
     }
     
     /**
-     * Сдвигает футер на определенное количество строк
+     * РЎРґРІРёРіР°РµС‚ С„СѓС‚РµСЂ РЅР° РѕРїСЂРµРґРµР»РµРЅРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕРє
      * 
-     * @param integer $rows Количество строк
+     * @param integer $rows РљРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂРѕРє
      */
     public function moveFooter($rows = 1) {
-        // Позиция от которой пойдут отсупы (строка ИТОГО)
+        // РџРѕР·РёС†РёСЏ РѕС‚ РєРѕС‚РѕСЂРѕР№ РїРѕР№РґСѓС‚ РѕС‚СЃСѓРїС‹ (СЃС‚СЂРѕРєР° РРўРћР“Рћ)
         $position = $this->_startPosition;
         $row = $this->xpath['sheet']->query('//p:row[@r= "' . $position . '"]', $this->dom['sheet']->documentElement)->item(0);
         
         do {
             $now_position = (int) $row->getAttribute('r');
-            $replace[$now_position] = ($now_position + $rows); // Заменяем позицию
+            $replace[$now_position] = ($now_position + $rows); // Р—Р°РјРµРЅСЏРµРј РїРѕР·РёС†РёСЋ
 
             $row->setAttribute('r', $replace[$now_position]);
             for ($i = 0; $i < $row->childNodes->length; $i++) {
@@ -304,7 +304,7 @@ class XLSXDocument_ITO extends odt2pdf {
             }
         } while ( ($row = $row->nextSibling) );
         
-        // Смещаем позиции в объединениях
+        // РЎРјРµС‰Р°РµРј РїРѕР·РёС†РёРё РІ РѕР±СЉРµРґРёРЅРµРЅРёСЏС…
         $mergeCells   = $this->dom['sheet']->getElementsByTagName('mergeCells')->item(0);
         $find_replace = array_keys($replace);
 
@@ -321,17 +321,17 @@ class XLSXDocument_ITO extends odt2pdf {
     }
     
     /**
-     * Добавляем строку в таблицу
+     * Р”РѕР±Р°РІР»СЏРµРј СЃС‚СЂРѕРєСѓ РІ С‚Р°Р±Р»РёС†Сѓ
      * 
-     * @param integer $n       Номер строки
-     * @param array   $data    Данные добавления
+     * @param integer $n       РќРѕРјРµСЂ СЃС‚СЂРѕРєРё
+     * @param array   $data    Р”Р°РЅРЅС‹Рµ РґРѕР±Р°РІР»РµРЅРёСЏ
      */
     public function setOneRowTable($n, $data) {
         $pos = $this->_startPosition + $n;
-        // Ищем предыдущий элемент
+        // РС‰РµРј РїСЂРµРґС‹РґСѓС‰РёР№ СЌР»РµРјРµРЅС‚
         if(!$this->prevRow) {
             $this->prevRow   = $this->xpath['sheet']->query('//p:row[@r= "' . ($pos - 1) . '"]', $this->dom['sheet']->documentElement)->item(0);
-            // Стили таблицы
+            // РЎС‚РёР»Рё С‚Р°Р±Р»РёС†С‹
             for($i = 0;$i<$this->prevRow->childNodes->length;$i++) {
                 $snode = $this->prevRow->childNodes->item($i);
                 $this->style_table[str_replace($pos - 1, '', $snode->getAttribute('r'))] = $snode->getAttribute('s');
@@ -345,18 +345,18 @@ class XLSXDocument_ITO extends odt2pdf {
         
         $c = $this->dom['sheet']->createElement('c');
         $v = $this->dom['sheet']->createElement('v');
-        $f = $this->dom['sheet']->createElement('f'); // формула
+        $f = $this->dom['sheet']->createElement('f'); // С„РѕСЂРјСѓР»Р°
         
         $name_emp = $this->_enc($data['nameCust']);
-        $sbr_id   = $this->_enc("№ {$data['sbr_id']}, ".date('d.m.Y H:i', strtotime($data['covered'])));
-        $lc_id    = $this->_enc("№ {$data['lc_id']}");
+        $sbr_id   = $this->_enc("в„– {$data['sbr_id']}, ".date('d.m.Y H:i', strtotime($data['covered'])));
+        $lc_id    = $this->_enc("в„– {$data['lc_id']}");
         $cost     = $this->_enc($data['cost']);
         
         $len_name = strlen($data['nameCust']);
         $height   = ceil($len_name / 33) * 18;
         $row->setAttribute('ht', $height);
         
-        // Столбец "п/п"
+        // РЎС‚РѕР»Р±РµС† "Рї/Рї"
         if($pos == $this->_startPosition) {
             $cell['A'] = $this->createOneCell($c, $v, array('r' => "A{$pos}", 's' => $this->style_table['A']), "1");
         } else {
@@ -364,19 +364,19 @@ class XLSXDocument_ITO extends odt2pdf {
             $cell['A'] = $this->createOneCell($c, $f, array('r' => "A{$pos}", 's' => $this->style_table['A']), "A{$R}+1");
         }
         
-        // Столбец "Наименование заказчика"
+        // РЎС‚РѕР»Р±РµС† "РќР°РёРјРµРЅРѕРІР°РЅРёРµ Р·Р°РєР°Р·С‡РёРєР°"
         $cell['B'] = $this->createOneCell($c, $v, array('r' => "B{$pos}", 's' => $this->style_table['B'], 't' => 's'), $this->createSharedTextItem($name_emp));
         $cell['C'] = $this->createOneCell($c, $v, array('r' => "C{$pos}", 's' => $this->style_table['C']));
         
-        // Столбец "Соглашение № дата"
+        // РЎС‚РѕР»Р±РµС† "РЎРѕРіР»Р°С€РµРЅРёРµ в„– РґР°С‚Р°"
         $cell['D'] = $this->createOneCell($c, $v, array('r' => "D{$pos}", 's' => $this->style_table['D'], 't' => 's'), $this->createSharedTextItem($sbr_id));
         $cell['E'] = $this->createOneCell($c, $v, array('r' => "E{$pos}", 's' => $this->style_table['E']));
         
-        // Столбец "Идентификатор аккредитива"
+        // РЎС‚РѕР»Р±РµС† "РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р°РєРєСЂРµРґРёС‚РёРІР°"
         $cell['F'] = $this->createOneCell($c, $v, array('r' => "F{$pos}", 's' => $this->style_table['F'], 't' => 's'), $this->createSharedTextItem($lc_id));
         $cell['G'] = $this->createOneCell($c, $v, array('r' => "G{$pos}", 's' => $this->style_table['G']));
         
-        // Столбец "Сумма перевода денежных средств"
+        // РЎС‚РѕР»Р±РµС† "РЎСѓРјРјР° РїРµСЂРµРІРѕРґР° РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ"
         $cell['H'] = $this->createOneCell($c, $v, array('r' => "H{$pos}", 's' => $this->style_table['H']), $cost);
         $cell['I'] = $this->createOneCell($c, $v, array('r' => "I{$pos}", 's' => $this->style_table['I']));
         
@@ -389,12 +389,12 @@ class XLSXDocument_ITO extends odt2pdf {
     }
     
     /**
-     * Генерирует ячейку, вставляет данные
+     * Р“РµРЅРµСЂРёСЂСѓРµС‚ СЏС‡РµР№РєСѓ, РІСЃС‚Р°РІР»СЏРµС‚ РґР°РЅРЅС‹Рµ
      * 
-     * @param DOMElement $c     Ячейка таблицы
-     * @param DOMElement $v     Данные ячейки (может быть как просто данные так и формула)
-     * @param array $attributes Аттрибуты ячейки
-     * @param string $value     Значение ячейки    
+     * @param DOMElement $c     РЇС‡РµР№РєР° С‚Р°Р±Р»РёС†С‹
+     * @param DOMElement $v     Р”Р°РЅРЅС‹Рµ СЏС‡РµР№РєРё (РјРѕР¶РµС‚ Р±С‹С‚СЊ РєР°Рє РїСЂРѕСЃС‚Рѕ РґР°РЅРЅС‹Рµ С‚Р°Рє Рё С„РѕСЂРјСѓР»Р°)
+     * @param array $attributes РђС‚С‚СЂРёР±СѓС‚С‹ СЏС‡РµР№РєРё
+     * @param string $value     Р—РЅР°С‡РµРЅРёРµ СЏС‡РµР№РєРё    
      * @return DOMNode
      */
     public function createOneCell($c, $v, $attributes, $value = null) {
@@ -413,10 +413,10 @@ class XLSXDocument_ITO extends odt2pdf {
     }
     
     /**
-     * Создает переменную текста в таблице, весь текст в каркасе помечается номерами позиций данных элементов
+     * РЎРѕР·РґР°РµС‚ РїРµСЂРµРјРµРЅРЅСѓСЋ С‚РµРєСЃС‚Р° РІ С‚Р°Р±Р»РёС†Рµ, РІРµСЃСЊ С‚РµРєСЃС‚ РІ РєР°СЂРєР°СЃРµ РїРѕРјРµС‡Р°РµС‚СЃСЏ РЅРѕРјРµСЂР°РјРё РїРѕР·РёС†РёР№ РґР°РЅРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ
      * 
-     * @param string $text    Текст
-     * @return integer  Номер позиции сгенерированного элемента
+     * @param string $text    РўРµРєСЃС‚
+     * @return integer  РќРѕРјРµСЂ РїРѕР·РёС†РёРё СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
      */
     public function createSharedTextItem($text) {
         $si = $this->dom['shared']->createElement('si');
@@ -430,11 +430,11 @@ class XLSXDocument_ITO extends odt2pdf {
         
         $sst->setAttribute('count', $position);
         $sst->setAttribute('uniqueCount', $position-2);
-        return ($position - 1); // Начинается с нуля
+        return ($position - 1); // РќР°С‡РёРЅР°РµС‚СЃСЏ СЃ РЅСѓР»СЏ
     }
     
     /**
-     * Генерируем данные для формул (данные о формулах храняться в отдельном файле)
+     * Р“РµРЅРµСЂРёСЂСѓРµРј РґР°РЅРЅС‹Рµ РґР»СЏ С„РѕСЂРјСѓР» (РґР°РЅРЅС‹Рµ Рѕ С„РѕСЂРјСѓР»Р°С… С…СЂР°РЅСЏС‚СЊСЃСЏ РІ РѕС‚РґРµР»СЊРЅРѕРј С„Р°Р№Р»Рµ)
      */
     public function generateFormulaData() {
         $formula = $this->xpath['sheet']->query('//p:f', $this->dom['sheet']->documentElement);
@@ -457,10 +457,10 @@ class XLSXDocument_ITO extends odt2pdf {
     }
     
     /**
-     * Заменяем текст в определенной переменной
+     * Р—Р°РјРµРЅСЏРµРј С‚РµРєСЃС‚ РІ РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№
      * 
-     * @param integer $index   Индекс текста (позиция элемента)
-     * @param string  $text    Заменяемый текст    
+     * @param integer $index   РРЅРґРµРєСЃ С‚РµРєСЃС‚Р° (РїРѕР·РёС†РёСЏ СЌР»РµРјРµРЅС‚Р°)
+     * @param string  $text    Р—Р°РјРµРЅСЏРµРјС‹Р№ С‚РµРєСЃС‚    
      */
     public function replaceSharedString($index, $text) {
         $period = $this->xpath['shared']->query('//p:si[' . $index . ']/p:t', $this->dom['shared']->documentElement)->item(0);
@@ -468,9 +468,9 @@ class XLSXDocument_ITO extends odt2pdf {
     }
     
     /**
-     * Генерируем данные объединений ячеек (для таблицы)
+     * Р“РµРЅРµСЂРёСЂСѓРµРј РґР°РЅРЅС‹Рµ РѕР±СЉРµРґРёРЅРµРЅРёР№ СЏС‡РµРµРє (РґР»СЏ С‚Р°Р±Р»РёС†С‹)
      * 
-     * @param integer $new_position    Позиция строки которую вставили
+     * @param integer $new_position    РџРѕР·РёС†РёСЏ СЃС‚СЂРѕРєРё РєРѕС‚РѕСЂСѓСЋ РІСЃС‚Р°РІРёР»Рё
      */
     public function generateMergeForNewRow($new_position) {
         $m0 = $this->dom['sheet']->createElement('mergeCell');
@@ -491,10 +491,10 @@ class XLSXDocument_ITO extends odt2pdf {
     }
     
     /**
-     * Инициализация DOMDocument для работы с файлами
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ DOMDocument РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ С„Р°Р№Р»Р°РјРё
      * 
-     * @param string  $name     Название ключа
-     * @param integer $index    Индекс документа в архиве 
+     * @param string  $name     РќР°Р·РІР°РЅРёРµ РєР»СЋС‡Р°
+     * @param integer $index    РРЅРґРµРєСЃ РґРѕРєСѓРјРµРЅС‚Р° РІ Р°СЂС…РёРІРµ 
      * @return type
      */
     public function initDOMDocument($name, $index = null) {

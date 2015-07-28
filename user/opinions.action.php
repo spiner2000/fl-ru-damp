@@ -9,19 +9,19 @@ switch(__paramInit('string', 'from', 'from', 'total')) {
     case "emp":
         $ops_type = "emp";
         $tbl_type = "employer";
-        $filter_type_user = "работодателей";
+        $filter_type_user = "СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№";
         $author = 2;
         break;
     case "frl":
         $ops_type = "frl";
         $tbl_type = "freelancer";
-        $filter_type_user = "фрилансеров";
+        $filter_type_user = "С„СЂРёР»Р°РЅСЃРµСЂРѕРІ";
         $author = 1;
         break;    
     case "users":
         $ops_type = "users";
         $tbl_type = "users";
-        $filter_type_user = "всех пользователей";
+        $filter_type_user = "РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№";
         $author = 0;
         break;
     case "norisk":
@@ -36,27 +36,27 @@ switch(__paramInit('string', 'from', 'from', 'total')) {
 
 switch($period) {
     case 1:
-        $filter_string = "За последний год";
+        $filter_string = "Р—Р° РїРѕСЃР»РµРґРЅРёР№ РіРѕРґ";
         break;
     case 2:
-        $filter_string = "За последние полгода";
+        $filter_string = "Р—Р° РїРѕСЃР»РµРґРЅРёРµ РїРѕР»РіРѕРґР°";
         break;
     case 3:
-        $filter_string = "За последний месяц";
+        $filter_string = "Р—Р° РїРѕСЃР»РµРґРЅРёР№ РјРµСЃСЏС†";
         break;
     default:
-        $filter_string = "За всё время";
+        $filter_string = "Р—Р° РІСЃС‘ РІСЂРµРјСЏ";
         break;
 }
 switch($author) {
     case 1:
-        $author_filter_string = "От фрилансеров";
+        $author_filter_string = "РћС‚ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ";
         break;
     case 2:
-        $author_filter_string = "От работодателей";
+        $author_filter_string = "РћС‚ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№";
         break;
     default:
-        $author_filter_string = "От всех пользователей";
+        $author_filter_string = "РћС‚ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№";
         break;
 }
 $html_query[] = "from={$ops_type}";
@@ -70,8 +70,8 @@ $html_query[] = "period=".$period;
 $html_query_string = implode("&", $html_query);
 $html_query_string = $html_query_string==""?"":"?".$html_query_string;
 
-//Не используем __paramInit, т.к. значения по умолчанию
-// могут реально прийти, а это уже другой адрес
+//РќРµ РёСЃРїРѕР»СЊР·СѓРµРј __paramInit, С‚.Рє. Р·РЅР°С‡РµРЅРёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+// РјРѕРіСѓС‚ СЂРµР°Р»СЊРЅРѕ РїСЂРёР№С‚Рё, Р° СЌС‚Рѕ СѓР¶Рµ РґСЂСѓРіРѕР№ Р°РґСЂРµСЃ
 if(isset($_GET['sort']) || isset($_GET['period']) || isset($_GET['from'])) {
     $additional_header .= '
 <meta name="robots" content="noindex"/>
@@ -108,12 +108,12 @@ switch ($action) {
 
         if (!$theme) {
             $error_flag = 1;
-            $alert[2] = "Поле заполнено некорректно";
+            $alert[2] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
         }
 
         if ($_POST['rating'] == '') {
             $error_flag = 1;
-            $alert[3] = "Укажите характер мнения";
+            $alert[3] = "РЈРєР°Р¶РёС‚Рµ С…Р°СЂР°РєС‚РµСЂ РјРЅРµРЅРёСЏ";
         }
 
         if (!$error_flag && 0 == opinions::CheckUserCanPost($uid, $user->uid)) {
@@ -148,12 +148,12 @@ switch ($action) {
         }
         if (!$theme) {
             $com_error_flag = 1;
-            $com_alert[2] = "Поле заполнено некорректно";
+            $com_alert[2] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
         }
 
         if (strlen($_POST['comment']) > 3000) {
             $com_error_flag = 1;
-            $com_alert[2] = "Слишком большой комментарий. Допускается не более 3000 знаков";
+            $com_alert[2] = "РЎР»РёС€РєРѕРј Р±РѕР»СЊС€РѕР№ РєРѕРјРјРµРЅС‚Р°СЂРёР№. Р”РѕРїСѓСЃРєР°РµС‚СЃСЏ РЅРµ Р±РѕР»РµРµ 3000 Р·РЅР°РєРѕРІ";
         }
         $com_msg = $theme;
 
@@ -190,12 +190,12 @@ switch ($action) {
 
         if (!$theme) {
             $ecom_error_flag = 1;
-            $com_alert[2] = "Поле заполнено некорректно";
+            $com_alert[2] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
         }
 
         if (strlen($_POST['comment']) > 3000) {
             $ecom_error_flag = 1;
-            $com_alert[2] = "Слишком большой комментарий. Допускается не более 3000 знаков";
+            $com_alert[2] = "РЎР»РёС€РєРѕРј Р±РѕР»СЊС€РѕР№ РєРѕРјРјРµРЅС‚Р°СЂРёР№. Р”РѕРїСѓСЃРєР°РµС‚СЃСЏ РЅРµ Р±РѕР»РµРµ 3000 Р·РЅР°РєРѕРІ";
         }
 
         if (!$ecom_error_flag) {
@@ -219,7 +219,7 @@ switch ($action) {
                 $error = opinions::Edit($_SESSION['uid'], $msgid, $theme, $rating, getRemoteIP(), hasPermissions('users'));
             } elseif (!$theme) {
                 $error_flag = 1;
-                $alert[2] = "Поле заполнено некорректно";
+                $alert[2] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
             }
             if ($error || $error_flag) {
                 $action = "edit";
@@ -243,7 +243,7 @@ if (!$ppage) {
 
 $to_id = $user->uid;
 
-// Мнения в кучу #0017304
+// РњРЅРµРЅРёСЏ РІ РєСѓС‡Сѓ #0017304
 if ($ops_type == 'total') {
     require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/sbr.php");
     require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/paid_advices.php");
@@ -256,12 +256,12 @@ if ($ops_type == 'total') {
     $exrates = new exrates();
     $EXR     = $exrates->GetAll();
     
-    // если в фильтре отзывов у фрилансера задано "от фрилансеров", и также с работодателем - то рекомендаций и платных рекомендаций не будет
+    // РµСЃР»Рё РІ С„РёР»СЊС‚СЂРµ РѕС‚Р·С‹РІРѕРІ Сѓ С„СЂРёР»Р°РЅСЃРµСЂР° Р·Р°РґР°РЅРѕ "РѕС‚ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ", Рё С‚Р°РєР¶Рµ СЃ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµРј - С‚Рѕ СЂРµРєРѕРјРµРЅРґР°С†РёР№ Рё РїР»Р°С‚РЅС‹С… СЂРµРєРѕРјРµРЅРґР°С†РёР№ РЅРµ Р±СѓРґРµС‚
     $sameRole = (is_emp($user->role) && $author == 2) || (!is_emp($user->role) && $author == 1);
     if (!$sameRole) {
-        $msgs = sbr::getUserFeedbacks($to_id, is_emp($user->role), $sort > 0 ? $sort : false, $period, true, false); // рекомендации
+        $msgs = sbr::getUserFeedbacks($to_id, is_emp($user->role), $sort > 0 ? $sort : false, $period, true, false); // СЂРµРєРѕРјРµРЅРґР°С†РёРё
     }
-    $msgs2  = opinions::GetMsgs($to_id, $msg_cntr, $ppage, $num_msgs, $error, $tbl_type, $sort > 0 ? $sort : false, $period, $author); // мнения
+    $msgs2  = opinions::GetMsgs($to_id, $msg_cntr, $ppage, $num_msgs, $error, $tbl_type, $sort > 0 ? $sort : false, $period, $author); // РјРЅРµРЅРёСЏ
     $opCount = ($msgs ? count($msgs) : 0) + ($msgs2 ? count($msgs2) : 0);
 } elseif ($ops_type != 'norisk') {
     $msgs  = opinions::GetMsgs($to_id, $msg_cntr, $ppage, $num_msgs, $error, $tbl_type, $sort > 0 ? $sort : false, $period, $author);
@@ -309,7 +309,7 @@ if ($ops_type == 'norisk') {
     $is_upload_error = ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST) && empty($_FILES));
     if($is_upload_error) {
         $error['files'] = 1;
-        $error['files_text'] = 'Размер файла не должен превышать 30 Мб';
+        $error['files_text'] = 'Р Р°Р·РјРµСЂ С„Р°Р№Р»Р° РЅРµ РґРѕР»Р¶РµРЅ РїСЂРµРІС‹С€Р°С‚СЊ 30 РњР±';
     }
     
     $is_transfer = false;
@@ -329,7 +329,7 @@ if ($ops_type == 'norisk') {
                 $edit = $paid_advice->add($advice['user_to'], $advice['msgtext'], $advice['user_from'], $advice['create_date'], $opinion);
                 $_POST['paid_advice_id']  = $edit;
             } else {
-                $error['save'] = 'Не удалось записать рекомендацию';
+                $error['save'] = 'РќРµ СѓРґР°Р»РѕСЃСЊ Р·Р°РїРёСЃР°С‚СЊ СЂРµРєРѕРјРµРЅРґР°С†РёСЋ';
             }
         }
     }
@@ -375,7 +375,7 @@ if ($ops_type == 'norisk') {
         if(!$isReqvsFilled) {
             $bitDisabled = $bitDisabled | '00001';    
         }
-        // Проверяем все обязательные поля на заполненность + заполненность вкладки Финансы
+        // РџСЂРѕРІРµСЂСЏРµРј РІСЃРµ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ РЅР° Р·Р°РїРѕР»РЅРµРЅРЅРѕСЃС‚СЊ + Р·Р°РїРѕР»РЅРµРЅРЅРѕСЃС‚СЊ РІРєР»Р°РґРєРё Р¤РёРЅР°РЅСЃС‹
         $isBtnDisabled = !(($bitDisabled & $bitEnabled) == $bitEnabled);
 
         if(isset($_POST['save'])) {
@@ -416,7 +416,7 @@ if ($ops_type == 'norisk') {
             }
 
             //if(!isset($error['files'])) {
-                // Загружаем файлы
+                // Р—Р°РіСЂСѓР¶Р°РµРј С„Р°Р№Р»С‹
                 if($attached) {
                     $dir = $_SESSION['login']."/upload";
                     foreach($attached['name'] as $key=>$fname) {
@@ -427,7 +427,7 @@ if ($ops_type == 'norisk') {
                                 $error['doc_tz'] = 1;
                                 $error['doc_result'] = 1;
                                 $error['files'] = 1;
-                                $error['files_text'] = 'Общий объем файлов не должен превышать 30 Мб';
+                                $error['files_text'] = 'РћР±С‰РёР№ РѕР±СЉРµРј С„Р°Р№Р»РѕРІ РЅРµ РґРѕР»Р¶РµРЅ РїСЂРµРІС‹С€Р°С‚СЊ 30 РњР±';
                                 break;
                             }
                             $file[$key] = new CFile(array('tmp_name' => $attached['tmp_name'][$key],
@@ -442,7 +442,7 @@ if ($ops_type == 'norisk') {
                                 if($key == 2) $error['doc_tz'] = 1;
                                 if($key == 3) $error['doc_result'] = 1;
                                 $error['files'] = 1;
-                                $error['files_text'] = 'Размер файла не должен превышать 30 Мб';
+                                $error['files_text'] = 'Р Р°Р·РјРµСЂ С„Р°Р№Р»Р° РЅРµ РґРѕР»Р¶РµРЅ РїСЂРµРІС‹С€Р°С‚СЊ 30 РњР±';
                                 continue;
                             }
                             if(!$file[$key]->error) {
@@ -452,7 +452,7 @@ if ($ops_type == 'norisk') {
                                     set_loaded_attach($key, $file[$key]->id, $fname, $path_file);
                                 } else {
                                     $error['files'] = 1;
-                                    $error['files_text'] = "Недопустимый тип файла";
+                                    $error['files_text'] = "РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ С‚РёРї С„Р°Р№Р»Р°";
                                 }
                             }
                         }

@@ -1,5 +1,5 @@
 <?
-/* @deprecated Íå èñïîëüçóåòñÿ â ñèñòåìå, è ôàéëà /nycompetition07/xajax/xajaxExtend.php óæå íå ñóùåñòâóåò*/
+/* @deprecated ÐÐµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð² ÑÐ¸ÑÑ‚ÐµÐ¼Ðµ, Ð¸ Ñ„Ð°Ð¹Ð»Ð° /nycompetition07/xajax/xajaxExtend.php ÑƒÐ¶Ðµ Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚*/
 exit;
 $rpath = "../";
 require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/nycomp07.common.php");

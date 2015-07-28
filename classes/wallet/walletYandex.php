@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Подключаем файл для работы с ключами оплаты
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РєР»СЋС‡Р°РјРё РѕРїР»Р°С‚С‹
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/wallet/wallet.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/wallet/API_OAuth.php");
@@ -9,35 +9,35 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/ydpay.php");
 
 
 /**
- * Класс для работы с кошельком Яндекс.Деньги для автоматической оплаты услуг
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РєРѕС€РµР»СЊРєРѕРј РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё РґР»СЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕР№ РѕРїР»Р°С‚С‹ СѓСЃР»СѓРі
  *
  *
  */
 class walletYandex extends Wallet
 {
     /**
-     * Задаем тип платежного метода
+     * Р—Р°РґР°РµРј С‚РёРї РїР»Р°С‚РµР¶РЅРѕРіРѕ РјРµС‚РѕРґР°
      *
      * @var int
      */
     protected $_type = WalletTypes::WALLET_YANDEX;
 
     /**
-     * Содержит объект класса через который пишем логи
+     * РЎРѕРґРµСЂР¶РёС‚ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° С‡РµСЂРµР· РєРѕС‚РѕСЂС‹Р№ РїРёС€РµРј Р»РѕРіРё
      *
      * @var log
      */
     public $log;
 
     /**
-     * Конструктор класса необходимо задать ИД пользователя
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° РЅРµРѕР±С…РѕРґРёРјРѕ Р·Р°РґР°С‚СЊ РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      *
-     * @param integer $uid ИД пользователя
+     * @param integer $uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      */
     public function __construct($uid = null) {
         parent::__construct($uid);
 
-        // Если есть код авторизации все гуд
+        // Р•СЃР»Рё РµСЃС‚СЊ РєРѕРґ Р°РІС‚РѕСЂРёР·Р°С†РёРё РІСЃРµ РіСѓРґ
         if($this->getAccessToken() !== false) {
             $this->api = new API_Yandex(null, $this->getAccessToken());
         } else {
@@ -48,38 +48,38 @@ class walletYandex extends Wallet
     }
 
     /**
-     * Оплачиваем услуг
+     * РћРїР»Р°С‡РёРІР°РµРј СѓСЃР»СѓРі
      *
-     * @param float   $sum          Сумма услуги
+     * @param float   $sum          РЎСѓРјРјР° СѓСЃР»СѓРіРё
      * @return bool|mixed|null
      */
     public function payment($sum) {
-        // На бете альфе включаем дебаг режим
+        // РќР° Р±РµС‚Рµ Р°Р»СЊС„Рµ РІРєР»СЋС‡Р°РµРј РґРµР±Р°Рі СЂРµР¶РёРј
         if(!is_release())  {
             $this->api->setDebug(true);
         }
         $result = $this->api->requestPayment(round((float)$sum,2), $this->account->id);
 
         if($result['status'] == API_Yandex::STATUS_SUCCESS) {
-            // не откуда взять csc
+            // РЅРµ РѕС‚РєСѓРґР° РІР·СЏС‚СЊ csc
 //            foreach($result['money_source'] as $name=>$value) {
-//                // Первый доступный метод оплаты
+//                // РџРµСЂРІС‹Р№ РґРѕСЃС‚СѓРїРЅС‹Р№ РјРµС‚РѕРґ РѕРїР»Р°С‚С‹
 //                if($value['allowed'] == true) {
 //                    $money_source = $name;
 //                    break;
 //                }
 //            }
-            // Для беты сумму баланса не проверяем
+            // Р”Р»СЏ Р±РµС‚С‹ СЃСѓРјРјСѓ Р±Р°Р»Р°РЅСЃР° РЅРµ РїСЂРѕРІРµСЂСЏРµРј
             if(($result['balance'] > $sum || !is_release()) && $result['request_id'] != '') {
                 $process = $this->api->processPayment($result['request_id']);
 
                 switch($process['status']) {
                     case API_Yandex::STATUS_SUCCESS:
-                        // Зачисляем деньги на бете/альфе
+                        // Р—Р°С‡РёСЃР»СЏРµРј РґРµРЅСЊРіРё РЅР° Р±РµС‚Рµ/Р°Р»СЊС„Рµ
                         if(!is_release()) {
                             $paymentDateTime = date('d.m.Y H:i');
                             $orderNumber     = rand(1, 99999999);
-                            $descr = "ЯД с кошелька {$this->data['wallet']} сумма - {$sum}, обработан {$paymentDateTime}, номер покупки - $orderNumber";
+                            $descr = "РЇР” СЃ РєРѕС€РµР»СЊРєР° {$this->data['wallet']} СЃСѓРјРјР° - {$sum}, РѕР±СЂР°Р±РѕС‚Р°РЅ {$paymentDateTime}, РЅРѕРјРµСЂ РїРѕРєСѓРїРєРё - $orderNumber";
 
                             $this->account->deposit($op_id, $this->account->id, $sum, $descr, 3, $sum, 12);
                         }
@@ -96,8 +96,8 @@ class walletYandex extends Wallet
                         $this->log->write("Result:\n {$content}");
                         return false;
                         break;
-                    // Отложить платеж на пол часа
-                    // @todo придумать как отложить запрос на потом
+                    // РћС‚Р»РѕР¶РёС‚СЊ РїР»Р°С‚РµР¶ РЅР° РїРѕР» С‡Р°СЃР°
+                    // @todo РїСЂРёРґСѓРјР°С‚СЊ РєР°Рє РѕС‚Р»РѕР¶РёС‚СЊ Р·Р°РїСЂРѕСЃ РЅР° РїРѕС‚РѕРј
                     case API_Yandex::STATUS_PROCESS:
                     default:
                         return null;
@@ -127,84 +127,84 @@ class walletYandex extends Wallet
 }
 
 /**
- * Класс для работы с API Яндекс.деньги
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ API РЇРЅРґРµРєСЃ.РґРµРЅСЊРіРё
  *
  * @link http://api.yandex.ru/money/doc/dg/concepts/About.xml
  */
 class API_Yandex extends API_OAuth
 {
     /**
-     * Адрес где мы получаем авторизацию для дальнейшей работы с АПИ
+     * РђРґСЂРµСЃ РіРґРµ РјС‹ РїРѕР»СѓС‡Р°РµРј Р°РІС‚РѕСЂРёР·Р°С†РёСЋ РґР»СЏ РґР°Р»СЊРЅРµР№С€РµР№ СЂР°Р±РѕС‚С‹ СЃ РђРџР
      */
     const AUTH_URI = 'https://sp-money.yandex.ru';
 
     /**
-     * Адрес API с которым взаимодействуем после авторизации
+     * РђРґСЂРµСЃ API СЃ РєРѕС‚РѕСЂС‹Рј РІР·Р°РёРјРѕРґРµР№СЃС‚РІСѓРµРј РїРѕСЃР»Рµ Р°РІС‚РѕСЂРёР·Р°С†РёРё
      */
     const API_URI  = 'https://money.yandex.ru';
 
     /**
-     * Адрес, где необходима авторизация OAUTH
+     * РђРґСЂРµСЃ, РіРґРµ РЅРµРѕР±С…РѕРґРёРјР° Р°РІС‚РѕСЂРёР·Р°С†РёСЏ OAUTH
      */
     const OAUTH_URI = 'money.yandex.ru';
 
     /**
-     * Тестовые данные (используется для тестирования на бете, альфе)
+     * РўРµСЃС‚РѕРІС‹Рµ РґР°РЅРЅС‹Рµ (РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ РЅР° Р±РµС‚Рµ, Р°Р»СЊС„Рµ)
      */
     const CLIENT_BETA_ID     = 'F9B4F15E7B0BF0E11DAE3324AB73E8211ABEAF197B927578AA043407767DF1D7';
     const CLIENT_BETA_SECRET = 'F77A2F9EA9E51C849F85B9BADEA2C6AF5E30FB1BB446CDECBCBBE814ABF9E63537F693CC0805EC5BF8B1D93B9FC98B6D51331C1A03A4FB9AB52EE2DD144EFEDE';
     const REDIRECT_BETA_URI  = 'https://beta.free-lance.ru/income/auto-yd.php';
 
     /**
-     * Боевые данные @see classes/payment_keys.php
+     * Р‘РѕРµРІС‹Рµ РґР°РЅРЅС‹Рµ @see classes/payment_keys.php
      */
     const CLIENT_ID     = YANDEX_CLIENT_ID;
     const CLIENT_SECRET = YANDEX_CLIENT_SECRET;
     const REDIRECT_URI  = 'https://www.fl.ru/income/auto-yd.php';
 
     /**
-     * Наш ид для покупки услуг
+     * РќР°С€ РёРґ РґР»СЏ РїРѕРєСѓРїРєРё СѓСЃР»СѓРі
      */
     const PATTERN_ID = '2200';
 
     /**
-     * ИД покупки в магазине (пополнение счета)
+     * РР” РїРѕРєСѓРїРєРё РІ РјР°РіР°Р·РёРЅРµ (РїРѕРїРѕР»РЅРµРЅРёРµ СЃС‡РµС‚Р°)
      */
     const SHOP_ID = ydpay::SHOP_DEPOSIT;
 
     /**
-     * Кодировки используемые в системе
+     * РљРѕРґРёСЂРѕРІРєРё РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ РІ СЃРёСЃС‚РµРјРµ
      */
     const SERVER_ENCODING = 'CP1251';
 
     /**
-     * Кодировка используемая в Яндекс.Деньги
+     * РљРѕРґРёСЂРѕРІРєР° РёСЃРїРѕР»СЊР·СѓРµРјР°СЏ РІ РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё
      */
     const SEND_ENCODING   = 'UTF-8';
 
     /**
-     * Статус API Яндекс.Денег
-     * Успешное выполнение.
+     * РЎС‚Р°С‚СѓСЃ API РЇРЅРґРµРєСЃ.Р”РµРЅРµРі
+     * РЈСЃРїРµС€РЅРѕРµ РІС‹РїРѕР»РЅРµРЅРёРµ.
      */
     const STATUS_SUCCESS = 'success';
 
     /**
-     * Статус API Яндекс.Денег
-     * Отказ в проведении платежа, объяснение причины отказа содержится в поле error. Это конечное состояние платежа.
+     * РЎС‚Р°С‚СѓСЃ API РЇРЅРґРµРєСЃ.Р”РµРЅРµРі
+     * РћС‚РєР°Р· РІ РїСЂРѕРІРµРґРµРЅРёРё РїР»Р°С‚РµР¶Р°, РѕР±СЉСЏСЃРЅРµРЅРёРµ РїСЂРёС‡РёРЅС‹ РѕС‚РєР°Р·Р° СЃРѕРґРµСЂР¶РёС‚СЃСЏ РІ РїРѕР»Рµ error. Р­С‚Рѕ РєРѕРЅРµС‡РЅРѕРµ СЃРѕСЃС‚РѕСЏРЅРёРµ РїР»Р°С‚РµР¶Р°.
      */
     const STATUS_FAIL    = 'refused';
 
     /**
-     * Статус API Яндекс.Денег
-     * Авторизация платежа не завершена. Приложению следует повторить запрос с теми же параметрами спустя некоторое время.
+     * РЎС‚Р°С‚СѓСЃ API РЇРЅРґРµРєСЃ.Р”РµРЅРµРі
+     * РђРІС‚РѕСЂРёР·Р°С†РёСЏ РїР»Р°С‚РµР¶Р° РЅРµ Р·Р°РІРµСЂС€РµРЅР°. РџСЂРёР»РѕР¶РµРЅРёСЋ СЃР»РµРґСѓРµС‚ РїРѕРІС‚РѕСЂРёС‚СЊ Р·Р°РїСЂРѕСЃ СЃ С‚РµРјРё Р¶Рµ РїР°СЂР°РјРµС‚СЂР°РјРё СЃРїСѓСЃС‚СЏ РЅРµРєРѕС‚РѕСЂРѕРµ РІСЂРµРјСЏ.
      */
     const STATUS_PROCESS = 'in_progress';
 
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      *
-     * @param string $code            Временный ключ
-     * @param string $accessToken     Ключ доступа
+     * @param string $code            Р’СЂРµРјРµРЅРЅС‹Р№ РєР»СЋС‡
+     * @param string $accessToken     РљР»СЋС‡ РґРѕСЃС‚СѓРїР°
      */
     public function __construct($code = null, $accessToken = null) {
         $this->setAuthCode($code);
@@ -213,10 +213,10 @@ class API_Yandex extends API_OAuth
     }
 
     /**
-     * Определяем по адресу нужна ли нам авторизация OAuth в запросе
+     * РћРїСЂРµРґРµР»СЏРµРј РїРѕ Р°РґСЂРµСЃСѓ РЅСѓР¶РЅР° Р»Рё РЅР°Рј Р°РІС‚РѕСЂРёР·Р°С†РёСЏ OAuth РІ Р·Р°РїСЂРѕСЃРµ
      *
-     * @param $uri      Адрес запроса
-     * @return bool     true - Нужна, false - Не нужна
+     * @param $uri      РђРґСЂРµСЃ Р·Р°РїСЂРѕСЃР°
+     * @return bool     true - РќСѓР¶РЅР°, false - РќРµ РЅСѓР¶РЅР°
      */
     public function isOAuth($uri) {
         $result = parse_url($uri);
@@ -224,7 +224,7 @@ class API_Yandex extends API_OAuth
     }
 
     /**
-     * Возвращает ИД приложения
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РР” РїСЂРёР»РѕР¶РµРЅРёСЏ
      *
      * @return string
      */
@@ -234,7 +234,7 @@ class API_Yandex extends API_OAuth
 
 
     /**
-     * Возвращает секретый код приложения
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРµРєСЂРµС‚С‹Р№ РєРѕРґ РїСЂРёР»РѕР¶РµРЅРёСЏ
      *
      * @return string
      */
@@ -243,7 +243,7 @@ class API_Yandex extends API_OAuth
     }
 
     /**
-     * Возвращает адрес редиректа приложения
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р°РґСЂРµСЃ СЂРµРґРёСЂРµРєС‚Р° РїСЂРёР»РѕР¶РµРЅРёСЏ
      *
      * @return string
      */
@@ -252,9 +252,9 @@ class API_Yandex extends API_OAuth
     }
 
     /**
-     * Получаем данные от Яндекса в форме массива
+     * РџРѕР»СѓС‡Р°РµРј РґР°РЅРЅС‹Рµ РѕС‚ РЇРЅРґРµРєСЃР° РІ С„РѕСЂРјРµ РјР°СЃСЃРёРІР°
      *
-     * @param HTTP_Request2 $resp     Объект запроса
+     * @param HTTP_Request2 $resp     РћР±СЉРµРєС‚ Р·Р°РїСЂРѕСЃР°
      * @return array
      */
     public function getBodyArray($resp) {
@@ -264,10 +264,10 @@ class API_Yandex extends API_OAuth
     }
 
     /**
-     * Генерирует адрес авторизации
+     * Р“РµРЅРµСЂРёСЂСѓРµС‚ Р°РґСЂРµСЃ Р°РІС‚РѕСЂРёР·Р°С†РёРё
      * @see http://api.yandex.ru/money/doc/dg/reference/request-access-token.xml
      *
-     * @param string $scope   Список запрашиваемых прав. Разделитель элементов списка - пробел. Элементы списка чувствительны к регистру.
+     * @param string $scope   РЎРїРёСЃРѕРє Р·Р°РїСЂР°С€РёРІР°РµРјС‹С… РїСЂР°РІ. Р Р°Р·РґРµР»РёС‚РµР»СЊ СЌР»РµРјРµРЅС‚РѕРІ СЃРїРёСЃРєР° - РїСЂРѕР±РµР». Р­Р»РµРјРµРЅС‚С‹ СЃРїРёСЃРєР° С‡СѓРІСЃС‚РІРёС‚РµР»СЊРЅС‹ Рє СЂРµРіРёСЃС‚СЂСѓ.
      * @return string
      */
     static public function getAuthorizeUri( $scope = null ) {
@@ -287,7 +287,7 @@ class API_Yandex extends API_OAuth
     }
 
     /**
-     * Получение ключа доступа
+     * РџРѕР»СѓС‡РµРЅРёРµ РєР»СЋС‡Р° РґРѕСЃС‚СѓРїР°
      * @see http://api.yandex.ru/money/doc/dg/reference/obtain-access-token.xml
      *
      */
@@ -309,12 +309,12 @@ class API_Yandex extends API_OAuth
     }
 
     /**
-     * Запрос создания платежа
+     * Р—Р°РїСЂРѕСЃ СЃРѕР·РґР°РЅРёСЏ РїР»Р°С‚РµР¶Р°
      * @see http://api.yandex.ru/money/doc/dg/reference/request-payment.xml
      *
      *
-     * @param $sum          Сумма платежа
-     * @param $accountId    ИД аккаунта на сайте @see account.id
+     * @param $sum          РЎСѓРјРјР° РїР»Р°С‚РµР¶Р°
+     * @param $accountId    РР” Р°РєРєР°СѓРЅС‚Р° РЅР° СЃР°Р№С‚Рµ @see account.id
      * @return array
      */
     public function requestPayment($sum, $accountId) {
@@ -338,10 +338,10 @@ class API_Yandex extends API_OAuth
     }
 
     /**
-     * Подтверждение платежа
+     * РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РїР»Р°С‚РµР¶Р°
      * @see http://api.yandex.ru/money/doc/dg/reference/process-payment.xml
      *
-     * @param $request_id   Идентификатор запроса, полученный из ответа метода self::requestPayment()
+     * @param $request_id   РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїСЂРѕСЃР°, РїРѕР»СѓС‡РµРЅРЅС‹Р№ РёР· РѕС‚РІРµС‚Р° РјРµС‚РѕРґР° self::requestPayment()
      * @return array
      */
     public function processPayment($request_id, $money_source = 'wallet') {
@@ -361,7 +361,7 @@ class API_Yandex extends API_OAuth
     }
 
     /**
-     * Отзыв ключа доступа
+     * РћС‚Р·С‹РІ РєР»СЋС‡Р° РґРѕСЃС‚СѓРїР°
      * @see http://api.yandex.ru/money/doc/dg/reference/revoke-access-token.xml
      *
      */
@@ -372,7 +372,7 @@ class API_Yandex extends API_OAuth
     }
 
     /**
-     * Проверяем действует ли выданный токен
+     * РџСЂРѕРІРµСЂСЏРµРј РґРµР№СЃС‚РІСѓРµС‚ Р»Рё РІС‹РґР°РЅРЅС‹Р№ С‚РѕРєРµРЅ
      *
      * @return bool|mixed
      */
@@ -382,7 +382,7 @@ class API_Yandex extends API_OAuth
     }
 
     /**
-     * Информация об аккаунте
+     * РРЅС„РѕСЂРјР°С†РёСЏ РѕР± Р°РєРєР°СѓРЅС‚Рµ
      *
      * @return array
      */

@@ -11,7 +11,7 @@ if($data['author_is_banned']) {
     if($data['is_permission']) {
         $show_banned_text = true; 
     } else {
-        $data['msgtext'] = 'Ответ от заблокированного пользователя';
+        $data['msgtext'] = 'РћС‚РІРµС‚ РѕС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ';
     }
 }
 
@@ -33,20 +33,20 @@ if($this->enableAutoModeration && !$this->auto_mod->isImmunity($data['author_uid
 <div class="b-post <?php if($data['level']){if($data['level']<15) {print("b-post_padleft_" . ( $data['level'] * 35 ));}else{ print('b-post_padleft_490');}}?> b-fon b-fon_padbot_10">
     <div class="b-post__body b-post__body_relative b-post__body_pad_10_10_15  b-post__body_marglr_-10 <?= ( $data['is_new'] ? 'b-fon__body_bg_f0ffdf' : '');?>">
         <div class="b-post__time b-post__time_float_right b-post__time_float_none_iphone">
-                <a href="#c_<?=$data['id']?>" title="Ссылка на этот комментарий" id="link_anchor_<?=$data['id']?>" class="b-post__anchor b-post__anchor_margright_10" onclick="setDisplayAnchor(this)"></a>
+                <a href="#c_<?=$data['id']?>" title="РЎСЃС‹Р»РєР° РЅР° СЌС‚РѕС‚ РєРѕРјРјРµРЅС‚Р°СЂРёР№" id="link_anchor_<?=$data['id']?>" class="b-post__anchor b-post__anchor_margright_10" onclick="setDisplayAnchor(this)"></a>
                 <? if($data['modified'] && $data['modified'] == $data['author']) { ?>
-                    <img src="/images/ico-e-u.png" alt="Отредактировано пользователем" title="Внесены изменения <?=date('d.m.Y в H:i', strtotime($data['modified_time']))?>" />
+                    <img src="/images/ico-e-u.png" alt="РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј" title="Р’РЅРµСЃРµРЅС‹ РёР·РјРµРЅРµРЅРёСЏ <?=date('d.m.Y РІ H:i', strtotime($data['modified_time']))?>" />
                     <? } ?>
                 <? if($data['modified'] && $data['modified'] != $data['author'] ) {
                     $moduser = ($data['is_permission']) ? " ({$data['mod_login']} : {$data['mod_uname']} {$data['mod_usurname']})" : "";
                     ?>
-                    <img src="/images/ico-e-a.png" alt="<?=$data['access']['update']?>" title="<?=$data['access']['update']?> <?=$moduser?>: <?=date('d.m.Y в H:i', strtotime($data['modified_time']))?>" />
+                    <img src="/images/ico-e-a.png" alt="<?=$data['access']['update']?>" title="<?=$data['access']['update']?> <?=$moduser?>: <?=date('d.m.Y РІ H:i', strtotime($data['modified_time']))?>" />
                 <? } //if ?>
-                <?=date('d.m.Y в H:i', strtotime($data['created_time']))?>
+                <?=date('d.m.Y РІ H:i', strtotime($data['created_time']))?>
         </div>
         <div class="b-post__avatar b-post__avatar_margright_10"> <a href="/users/<?=$data['author_login']?>" class="b-post__link"><?=view_avatar_info($data['author_login'], $data['author_photo'], 1)?></a> </div>
         <div class="b-post__content b-post__content_margleft_60">
-            <div class="b-username b-username_bold b-username_padbot_10"> <?=view_user3($author_user)?> <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_weight_normal b-layout__txt_lowercase b-layout__txt_padright_10">на сайте <?=ElapsedMnths(strtotime($data['author_reg_date']))?></span></div>
+            <div class="b-username b-username_bold b-username_padbot_10"> <?=view_user3($author_user)?> <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_weight_normal b-layout__txt_lowercase b-layout__txt_padright_10">РЅР° СЃР°Р№С‚Рµ <?=ElapsedMnths(strtotime($data['author_reg_date']))?></span></div>
             <?php if($this->enableRating && $data['deleted'] === NULL && $author_user['is_team']!='t') { $rating_class = $msg['rating'] < 0 ? 'b-voting__mid_color_red' : ($msg['rating'] >= 1 ? 'b-voting__mid_color_green' : '') ;?>
             <div class="b-voting b-voting_float_right" id="rate_<?= $data['id'] ?>"> 
                 <?php if($data['author'] == get_uid(false) || $this->_options['readonly'] || $this->_options['deny_vote']) { ?>
@@ -60,7 +60,7 @@ if($this->enableAutoModeration && !$this->auto_mod->isImmunity($data['author_uid
             </div>
             <?php }//if?>
             <?php if($actionRating == 'hide') { ?>
-                <div class="b-post__txt b-post__txt_padbot_20 b-post__txt_color_a7a7a6">Комментарий скрыт. <a class="b-post__link b-post__link_dot_a7a7a6" href="javascript:void(0)" onClick="showComment(this)">Показать</a></div>
+                <div class="b-post__txt b-post__txt_padbot_20 b-post__txt_color_a7a7a6">РљРѕРјРјРµРЅС‚Р°СЂРёР№ СЃРєСЂС‹С‚. <a class="b-post__link b-post__link_dot_a7a7a6" href="javascript:void(0)" onClick="showComment(this)">РџРѕРєР°Р·Р°С‚СЊ</a></div>
             <?php } ?>
             <div class="b-post__txt <?= ( ( $data['deleted'] !== NULL && $data['is_permission'] ) || $actionRating == 'blur' || $actionRating == 'hide' ? "b-post__txt_color_a7a7a6" : "" )?> <?= $msg['hiddenRating'] || $actionRating == 'hide' ?"b-post__txt_hide":""?> <?=$data['deleted'] !== NULL?"b-post__txt_color_b1":""?>">
                 <?
@@ -78,7 +78,7 @@ if($this->enableAutoModeration && !$this->auto_mod->isImmunity($data['author_uid
                     <?= $sMsgText?>
                     <? if ($sTiser) {?><br/>
                     <div>
-                        <div><a href="javascript:void(0)" class="commentspoiler">Развернуть</a></div>
+                        <div><a href="javascript:void(0)" class="commentspoiler">Р Р°Р·РІРµСЂРЅСѓС‚СЊ</a></div>
                         <div style="border: solid 1px #000;background-color: #FCFCFC; padding:5px;display:none" class="cat">
                             <?=$sTiser ?>
                         </div>
@@ -96,62 +96,62 @@ if($this->enableAutoModeration && !$this->auto_mod->isImmunity($data['author_uid
                         if(isset($data['attach']['id'])) $data['attach'] = array($data['attach']);
                         foreach ( $data['attach'] as $attach ) {
                         $maxwidth = $this->_options['maxwidth']?$this->_options['maxwidth']-($data['level']*$this->_options['minus_level_width']):600;
-                        echo '<div class = "flw_offer_attach b-page__desktop b-page__ipad">', viewattachLeft(null, $attach['fname'], $attach['path'], $file, 1000, $maxwidth, 307200, 0, $attach['small'] == 't' || $attach['small'] === null?1:0, 0, 0, "{$foto_alt} фото {$attach['fname']}"), '</div>';
+                        echo '<div class = "flw_offer_attach b-page__desktop b-page__ipad">', viewattachLeft(null, $attach['fname'], $attach['path'], $file, 1000, $maxwidth, 307200, 0, $attach['small'] == 't' || $attach['small'] === null?1:0, 0, 0, "{$foto_alt} С„РѕС‚Рѕ {$attach['fname']}"), '</div>';
                         echo '<div class = "b-page__iphone"><a class="b-layout__link" target="_blank" href="',WDCPREFIX,'/',$attach['path'],$attach['fname'],'">',$attach['fname'],'</a></div>';
                         }
                         ?>
                     <? } ?>
                     <? } elseif($data['is_permission']) {?>
-                    <span class="b-post__txt b-post__txt_color_c10601">Удалено:</span> <?=$sMsgText?>
+                    <span class="b-post__txt b-post__txt_color_c10601">РЈРґР°Р»РµРЅРѕ:</span> <?=$sMsgText?>
                         <?php if(get_uid(false) != $data['author']){ ?>
-                            <br/>Удалил <?=$data['mod_login_del'] ?>: (<?=$data['mod_uname_del'] ?> <?=$data['mod_usurname_del'] ?>)
+                            <br/>РЈРґР°Р»РёР» <?=$data['mod_login_del'] ?>: (<?=$data['mod_uname_del'] ?> <?=$data['mod_usurname_del'] ?>)
                         <?php }?>
                         <?php if (trim($data['reason'])) {?>
-                            <div style="color:#ff0000">Причина: <?=$data['reason'] ?></div>
+                            <div style="color:#ff0000">РџСЂРёС‡РёРЅР°: <?=$data['reason'] ?></div>
                         <?php }?>
                     <? } else { ?>
-                        <?= ($data['deleted'] == $data['author'])?'Комментарий удален автором':$data['access']['delete'];?> <?=date('[d.m.Y в H:i]', strtotime($data['deleted_time']));?>
+                        <?= ($data['deleted'] == $data['author'])?'РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ Р°РІС‚РѕСЂРѕРј':$data['access']['delete'];?> <?=date('[d.m.Y РІ H:i]', strtotime($data['deleted_time']));?>
                         <?php if (trim($data['reason']) && ( $data['is_permission'] || get_uid(false) == $data['author'])) {?>
-                            <div style="color:#ff0000">Причина: <?=$data['reason'] ?></div>
+                            <div style="color:#ff0000">РџСЂРёС‡РёРЅР°: <?=$data['reason'] ?></div>
                         <?php }?>
                     <? } ?>
             </div>
             <?php if($msg['hiddenRating']) { ?>
-            <div class="b-post__txt b-post__txt_color_a7a7a6">Комментарий скрыт</div>
+            <div class="b-post__txt b-post__txt_color_a7a7a6">РљРѕРјРјРµРЅС‚Р°СЂРёР№ СЃРєСЂС‹С‚</div>
             <?php } ?>
             <?php if($uid && $data['deleted'] === NULL && (!$data['author_is_banned'] || $data['is_permission'])) { ?>
             <div class="b-post__foot b-post__foot_clear_both">
                 <ul class="b-post__links b-post__links_padtop_5">
                     <?php if($msg['hiddenRating']) { ?>
-                    <li class="b-post__links-item b-post__links-item_padright_10"><a class="b-post__link b-post__link_dot_0f71c8 b-post__link_toggler" href="javascript:void(0)" onClick="showHiddenComment(this)">Показать</a></li>
+                    <li class="b-post__links-item b-post__links-item_padright_10"><a class="b-post__link b-post__link_dot_0f71c8 b-post__link_toggler" href="javascript:void(0)" onClick="showHiddenComment(this)">РџРѕРєР°Р·Р°С‚СЊ</a></li>
                     <?php }//if?>
                     <? if (!$this->_options['readonly']) {?>
-                    <li class="b-post__links-item b-post__links-item_padright_10 <?= $msg['hiddenRating']?"b-post__links-item_hide":""?>"><a class="b-post__link b-post__link_dot_0f71c8" href="javascript:void(0)" onclick="commentAddNew(this, SNAME)">Ответить</a></li>
+                    <li class="b-post__links-item b-post__links-item_padright_10 <?= $msg['hiddenRating']?"b-post__links-item_hide":""?>"><a class="b-post__link b-post__link_dot_0f71c8" href="javascript:void(0)" onclick="commentAddNew(this, SNAME)">РћС‚РІРµС‚РёС‚СЊ</a></li>
                     <?} ?>
                     <?php if(!$this->_options['readonly'] && ($uid == $data['author'] || $data['is_permission'])) { ?>
                         <?php if(($data['is_permission'] >= 1 && $data['is_permission'] < 4) || $data['author'] == get_uid(false)){?>
-                        <li class="b-post__links-item b-post__links-item_padright_10 <?= $msg['hiddenRating']?"b-post__links-item_hide":""?>"><a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" onclick="commentEditNew(this, SNAME, <?=$data['id']?>)">Редактировать</a></li>
+                        <li class="b-post__links-item b-post__links-item_padright_10 <?= $msg['hiddenRating']?"b-post__links-item_hide":""?>"><a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" onclick="commentEditNew(this, SNAME, <?=$data['id']?>)">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></li>
                         <?php }?>
-                        <li class="b-post__links-item b-post__links-item_padright_10 <?= $msg['hiddenRating']?"b-post__links-item_hide":""?>"><a class="b-post__link b-post__link_dot_c10601" href="?<?= url($_GET, array('cmtask' => 'delete', 'cmid' => $data['id'], 'token'=> $_SESSION['rand']))?>" onclick="return (confirm('Вы уверены?'));">Удалить</a></li>
+                        <li class="b-post__links-item b-post__links-item_padright_10 <?= $msg['hiddenRating']?"b-post__links-item_hide":""?>"><a class="b-post__link b-post__link_dot_c10601" href="?<?= url($_GET, array('cmtask' => 'delete', 'cmid' => $data['id'], 'token'=> $_SESSION['rand']))?>" onclick="return (confirm('Р’С‹ СѓРІРµСЂРµРЅС‹?'));">РЈРґР°Р»РёС‚СЊ</a></li>
                     <?php }//if?>
-                    <?/* <li class="b-post__links-item b-post__links-item_padright_10"><a class="b-post__link b-post__link_dot_c10601" href="#2">Сделать предупреждение</a> — 21</li> */?>
-                    <li class="b-post__links-item b-post__links-item_padright_10 <?= $msg['hiddenRating']?"b-post__links-item_hide":""?>"><a href="javascript:void(0)" class="cl-thread-toggle b-post__link b-post__link_dot_0f71c8" style="display:none;"><?=$is_hidden ? 'Развернуть ' : 'Свернуть '?> ветвь</a></li>
+                    <?/* <li class="b-post__links-item b-post__links-item_padright_10"><a class="b-post__link b-post__link_dot_c10601" href="#2">РЎРґРµР»Р°С‚СЊ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ</a> вЂ” 21</li> */?>
+                    <li class="b-post__links-item b-post__links-item_padright_10 <?= $msg['hiddenRating']?"b-post__links-item_hide":""?>"><a href="javascript:void(0)" class="cl-thread-toggle b-post__link b-post__link_dot_0f71c8" style="display:none;"><?=$is_hidden ? 'Р Р°Р·РІРµСЂРЅСѓС‚СЊ ' : 'РЎРІРµСЂРЅСѓС‚СЊ '?> РІРµС‚РІСЊ</a></li>
                 </ul>
             </div>
             <?php } elseif ( $data['is_permission'] && (!$data['mod_access'] || $data['is_permission'] <= $data['mod_access']) ) {
-                // дополнительное условие для возможности восстановления комментария
-                // если комментарий удалил автор комментария, то никто больше не может его восстановить
+                // РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕРµ СѓСЃР»РѕРІРёРµ РґР»СЏ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+                // РµСЃР»Рё РєРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РёР» Р°РІС‚РѕСЂ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ, С‚Рѕ РЅРёРєС‚Рѕ Р±РѕР»СЊС€Рµ РЅРµ РјРѕР¶РµС‚ РµРіРѕ РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ
                 if ($data['author'] != $data['mod_uid_del']) { ?>
                     <div class="b-post__foot">
                         <ul class="b-post__links b-post__links_padtop_5">
-                            <li class="b-post__links-item b-post__links-item_padright_10"><a class="b-post__link b-post__link_dot_c10601" href="?<?= url($_GET, array('cmtask' => 'restore', 'cmid' => $data['id'], 'token'=> $_SESSION['rand']))?>" onclick="return (confirm('Вы уверены?'));">Восстановить</a></li>
+                            <li class="b-post__links-item b-post__links-item_padright_10"><a class="b-post__link b-post__link_dot_c10601" href="?<?= url($_GET, array('cmtask' => 'restore', 'cmid' => $data['id'], 'token'=> $_SESSION['rand']))?>" onclick="return (confirm('Р’С‹ СѓРІРµСЂРµРЅС‹?'));">Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ</a></li>
                         </ul>
                     </div>
                 <? } ?>
             <?php } else {//elseif?>
             <div class="b-post__foot">
                 <ul class="b-post__links b-post__links_padtop_5">
-                    <li class="b-post__links-item b-post__links-item_padright_10 <?= $msg['hiddenRating']?"b-post__links-item_hide":""?>"><a href="javascript:void(0)" class="cl-thread-toggle b-post__link b-post__link_dot_0f71c8" style="display:none;"><?=$is_hidden ? 'Развернуть ' : 'Свернуть '?> ветвь</a></li>
+                    <li class="b-post__links-item b-post__links-item_padright_10 <?= $msg['hiddenRating']?"b-post__links-item_hide":""?>"><a href="javascript:void(0)" class="cl-thread-toggle b-post__link b-post__link_dot_0f71c8" style="display:none;"><?=$is_hidden ? 'Р Р°Р·РІРµСЂРЅСѓС‚СЊ ' : 'РЎРІРµСЂРЅСѓС‚СЊ '?> РІРµС‚РІСЊ</a></li>
                 </ul>
             </div>
             <?php }?>

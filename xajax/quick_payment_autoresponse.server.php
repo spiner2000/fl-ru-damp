@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Автоответы. Оплата услуги.
+ * РђРІС‚РѕРѕС‚РІРµС‚С‹. РћРїР»Р°С‚Р° СѓСЃР»СѓРіРё.
  */
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/billing.php');
@@ -15,7 +15,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/autoresponse.php");
 //------------------------------------------------------------------------------
 
 /**
- * Оплата с личного счета
+ * РћРїР»Р°С‚Р° СЃ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р°
  * @param type $type
  * @param type $data
  * @return type
@@ -32,7 +32,7 @@ function quickPaymentAutoresponseAccount($type, $data)
     $id = isset($data['id'])?intval($data['id']):0;
     $promo_code = @$data['promo'];
 
-    // БД с данными
+    // Р‘Р” СЃ РґР°РЅРЅС‹РјРё
     autoresponse::$db = $GLOBALS['DB'];
     
     $autoresponse = autoresponse::get($id);
@@ -40,16 +40,16 @@ function quickPaymentAutoresponseAccount($type, $data)
         if ($autoresponse->data['user_id'] == $uid && intval($autoresponse->data['price'])) {
             $is_error = false;
             
-            //Нужно получить стоимость услуги по данным о услуги из $data
+            //РќСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ СЃС‚РѕРёРјРѕСЃС‚СЊ СѓСЃР»СѓРіРё РїРѕ РґР°РЅРЅС‹Рј Рѕ СѓСЃР»СѓРіРё РёР· $data
             $sum = (int) $autoresponse->data['price'];
             
             $bill = new billing($uid);
-            //Допустимо использование промокодов
+            //Р”РѕРїСѓСЃС‚РёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РїСЂРѕРјРѕРєРѕРґРѕРІ
             $bill->setPromoCodes('SERVICE_AUTORESPONSE', $promo_code, array(
                 'is_original_price' => true
             ));
             
-            //разные опции бывают
+            //СЂР°Р·РЅС‹Рµ РѕРїС†РёРё Р±С‹РІР°СЋС‚
             $option = array(
                 'acc_sum' => $sum,
                 'autoresponse_id' => $autoresponse->data['id'],
@@ -61,11 +61,11 @@ function quickPaymentAutoresponseAccount($type, $data)
         }
     }
 
-    // Показываем предупреждение в случае ошибки
+    // РџРѕРєР°Р·С‹РІР°РµРј РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
     if ($is_error) {
         $objResponse->script("
             var qpa = window.quick_payment_factory.getQuickPayment('autoresponse');
-            if(qpa) qpa.show_error('Возникла ошибка при добавлении автоответа!');
+            if(qpa) qpa.show_error('Р’РѕР·РЅРёРєР»Р° РѕС€РёР±РєР° РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё Р°РІС‚РѕРѕС‚РІРµС‚Р°!');
         ");
     }
     */
@@ -76,7 +76,7 @@ function quickPaymentAutoresponseAccount($type, $data)
 //------------------------------------------------------------------------------
 
 /**
- * Это методы для разных видов оплаты но сгруппированные в яндекс кассе
+ * Р­С‚Рѕ РјРµС‚РѕРґС‹ РґР»СЏ СЂР°Р·РЅС‹С… РІРёРґРѕРІ РѕРїР»Р°С‚С‹ РЅРѕ СЃРіСЂСѓРїРїРёСЂРѕРІР°РЅРЅС‹Рµ РІ СЏРЅРґРµРєСЃ РєР°СЃСЃРµ
  * 
  * @param type $type
  * @param type $data
@@ -109,10 +109,10 @@ function quickPaymentAutoresponseSberbank($type, $data)
 //------------------------------------------------------------------------------
 
 /**
- * Оплата автоответов через яндекс кассу
+ * РћРїР»Р°С‚Р° Р°РІС‚РѕРѕС‚РІРµС‚РѕРІ С‡РµСЂРµР· СЏРЅРґРµРєСЃ РєР°СЃСЃСѓ
  * 
- * @param type $type - тип оплаты
- * @param type $data - данные по параметрам покупаемой услуги
+ * @param type $type - С‚РёРї РѕРїР»Р°С‚С‹
+ * @param type $data - РґР°РЅРЅС‹Рµ РїРѕ РїР°СЂР°РјРµС‚СЂР°Рј РїРѕРєСѓРїР°РµРјРѕР№ СѓСЃР»СѓРіРё
  * @return \xajaxResponse
  */
 function quickPaymentAutoresponseYandexKassa($type, $data)
@@ -137,7 +137,7 @@ function quickPaymentAutoresponseYandexKassa($type, $data)
     $id = isset($data['id'])?intval($data['id']):0;
     $promo_code = @$data['promo'];
     
-    // БД с данными
+    // Р‘Р” СЃ РґР°РЅРЅС‹РјРё
     autoresponse::$db = $GLOBALS['DB'];
     
     $autoresponse = autoresponse::get($id);
@@ -147,22 +147,22 @@ function quickPaymentAutoresponseYandexKassa($type, $data)
             
             $is_error = false;
 
-            //Нужно получить стоимость услуги по данным о услуги из $data
+            //РќСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ СЃС‚РѕРёРјРѕСЃС‚СЊ СѓСЃР»СѓРіРё РїРѕ РґР°РЅРЅС‹Рј Рѕ СѓСЃР»СѓРіРё РёР· $data
             $sum = (int) $autoresponse->data['price'];
             
             $bill = new billing($uid);
-            //Допустимо использование промокодов
+            //Р”РѕРїСѓСЃС‚РёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РїСЂРѕРјРѕРєРѕРґРѕРІ
             $bill->setPromoCodes('SERVICE_AUTORESPONSE', $promo_code, array(
                 'is_original_price' => true
             ));
             
-            //разные опции бывают
+            //СЂР°Р·РЅС‹Рµ РѕРїС†РёРё Р±С‹РІР°СЋС‚
             $option = array(
                 'acc_sum' => $sum,
                 'autoresponse_id' => $autoresponse->data['id'],
             );   
 
-            //Формируем заказ
+            //Р¤РѕСЂРјРёСЂСѓРµРј Р·Р°РєР°Р·
             $billReserveId = $bill->addServiceAndCheckout(137, $option);
             $payed_sum = $bill->getRealPayedSum();
 
@@ -182,16 +182,16 @@ function quickPaymentAutoresponseYandexKassa($type, $data)
                 }
             ");
             
-            //сохранаем в сессию куда перейти при успешной покупке        
+            //СЃРѕС…СЂР°РЅР°РµРј РІ СЃРµСЃСЃРёСЋ РєСѓРґР° РїРµСЂРµР№С‚Рё РїСЂРё СѓСЃРїРµС€РЅРѕР№ РїРѕРєСѓРїРєРµ        
             $_SESSION[quickPaymentPopup::QPP_REDIRECT] = '/autoresponse/';            
         }
     }
 
-    // Показываем предупреждение в случае ошибки
+    // РџРѕРєР°Р·С‹РІР°РµРј РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
     if ($is_error) {
         $objResponse->script("
             var qpa = window.quick_payment_factory.getQuickPayment('autoresponse');
-            if(qpa) qpa.show_error('Возникла ошибка при добавлении автоответа!');
+            if(qpa) qpa.show_error('Р’РѕР·РЅРёРєР»Р° РѕС€РёР±РєР° РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё Р°РІС‚РѕРѕС‚РІРµС‚Р°!');
         ");
     }
      */   
@@ -204,10 +204,10 @@ function quickPaymentAutoresponseYandexKassa($type, $data)
 
 
 /**
- * Оплата автоответов через Плати потом
+ * РћРїР»Р°С‚Р° Р°РІС‚РѕРѕС‚РІРµС‚РѕРІ С‡РµСЂРµР· РџР»Р°С‚Рё РїРѕС‚РѕРј
  * 
- * @param type $type - тип оплаты
- * @param type $data - данные по параметрам покупаемой услуги
+ * @param type $type - С‚РёРї РѕРїР»Р°С‚С‹
+ * @param type $data - РґР°РЅРЅС‹Рµ РїРѕ РїР°СЂР°РјРµС‚СЂР°Рј РїРѕРєСѓРїР°РµРјРѕР№ СѓСЃР»СѓРіРё
  * @return \xajaxResponse
  */
 function quickPaymentAutoresponsePlatipotom($type, $data)
@@ -222,7 +222,7 @@ function quickPaymentAutoresponsePlatipotom($type, $data)
     $id = isset($data['id'])?intval($data['id']):0;
     $promo_code = @$data['promo'];
 
-    // БД с данными
+    // Р‘Р” СЃ РґР°РЅРЅС‹РјРё
     autoresponse::$db = $GLOBALS['DB'];
     
     $autoresponse = autoresponse::get($id);
@@ -232,24 +232,24 @@ function quickPaymentAutoresponsePlatipotom($type, $data)
             
             $is_error = false;
 
-            //Нужно получить стоимость услуги по данным о услуги из $data
+            //РќСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ СЃС‚РѕРёРјРѕСЃС‚СЊ СѓСЃР»СѓРіРё РїРѕ РґР°РЅРЅС‹Рј Рѕ СѓСЃР»СѓРіРё РёР· $data
             $sum = (int) $autoresponse->data['price'];
             
 
             $bill = new billing($uid);
             
-            //Допустимо использование промокодов
+            //Р”РѕРїСѓСЃС‚РёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РїСЂРѕРјРѕРєРѕРґРѕРІ
             $bill->setPromoCodes('SERVICE_AUTORESPONSE', $promo_code, array(
                 'is_original_price' => true
             ));
             
-            //разные опции бывают
+            //СЂР°Р·РЅС‹Рµ РѕРїС†РёРё Р±С‹РІР°СЋС‚
             $option = array(
                 'acc_sum' => $sum,
                 'autoresponse_id' => $autoresponse->data['id'],
             );              
             
-            //Формируем заказ
+            //Р¤РѕСЂРјРёСЂСѓРµРј Р·Р°РєР°Р·
             $billReserveId = $bill->addServiceAndCheckout(137, $option);
             $payed_sum = $bill->getRealPayedSum();            
             
@@ -268,17 +268,17 @@ function quickPaymentAutoresponsePlatipotom($type, $data)
                     }
                 ");
 
-                //сохранаем в сессию куда перейти при успешной покупке        
+                //СЃРѕС…СЂР°РЅР°РµРј РІ СЃРµСЃСЃРёСЋ РєСѓРґР° РїРµСЂРµР№С‚Рё РїСЂРё СѓСЃРїРµС€РЅРѕР№ РїРѕРєСѓРїРєРµ        
                 $_SESSION[quickPaymentPopup::QPP_REDIRECT] = '/autoresponse/';  
             }
         }
     }
 
-    // Показываем предупреждение в случае ошибки
+    // РџРѕРєР°Р·С‹РІР°РµРј РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
     if ($is_error) {
         $objResponse->script("
             var qpa = window.quick_payment_factory.getQuickPayment('autoresponse');
-            if(qpa) qpa.show_error('Возникла ошибка при добавлении автоответа!');
+            if(qpa) qpa.show_error('Р’РѕР·РЅРёРєР»Р° РѕС€РёР±РєР° РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё Р°РІС‚РѕРѕС‚РІРµС‚Р°!');
         ");
     }
     */

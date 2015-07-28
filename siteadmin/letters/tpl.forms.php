@@ -3,7 +3,7 @@ $statuses = letters::getStatuses();
 ?>
 <script type="text/javascript">
 	var statuses_list = new Array();
-	statuses_list[0] = 'Добавить статус';
+	statuses_list[0] = 'Р”РѕР±Р°РІРёС‚СЊ СЃС‚Р°С‚СѓСЃ';
 	<?php foreach($statuses as $status) { ?>
 		statuses_list[<?=$status['id']?>] = '<?=$status['title']?>';
 	<?php } ?>
@@ -21,9 +21,9 @@ $statuses = letters::getStatuses();
 								<textarea id="letters_form_comment_field_data" class="b-textarea__textarea" cols="" rows=""></textarea>
 							</div>
 							<div class="b-buttons b-buttons_padtop_15">
-								<a class="b-button b-button_flat b-button_flat_green" href="javascript:void()" onClick="letters.formCommentUpdate(); return false;">Сохранить</a>
-								<span class="b-buttons__txt b-buttons__txt_padleft_10">или&nbsp;</span>
-								<a class="b-buttons__link b-buttons__link_dot_c10601" href="#" onClick="letters.formCommentHide(); return false;">закрыть, не сохраняя</a>
+								<a class="b-button b-button_flat b-button_flat_green" href="javascript:void()" onClick="letters.formCommentUpdate(); return false;">РЎРѕС…СЂР°РЅРёС‚СЊ</a>
+								<span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё&nbsp;</span>
+								<a class="b-buttons__link b-buttons__link_dot_c10601" href="#" onClick="letters.formCommentHide(); return false;">Р·Р°РєСЂС‹С‚СЊ, РЅРµ СЃРѕС…СЂР°РЅСЏСЏ</a>
 							</div>
 						</div>
 					</div>
@@ -51,7 +51,7 @@ $statuses = letters::getStatuses();
 								<form id="letters_form_delivery_form">
 									<div class="b-radio__item b-radio__item_padbot_10">
 										<input id="letters_form_delivery_field_data_0" name="letters_form_delivery_field_data" type="radio" class="b-radio__input" value="0">
-										<label class="b-radio__label  b-radio__label_fontsize_13" for="letters_form_delivery_field_data_0">Не выбрано</label>
+										<label class="b-radio__label  b-radio__label_fontsize_13" for="letters_form_delivery_field_data_0">РќРµ РІС‹Р±СЂР°РЅРѕ</label>
 									</div>
 								<?php
 								$f_deliveries = letters::getDeliveries();
@@ -67,9 +67,9 @@ $statuses = letters::getStatuses();
 								</form>
 							</div>
 							<div class="b-buttons b-buttons_padleft_20">
-								<a class="b-button b-button_flat b-button_flat_green" href="javascript:void()" onClick="letters.formDeliveryUpdate(); return false;">Сохранить</a>
-								<span class="b-buttons__txt b-buttons__txt_padleft_10">или&nbsp;</span>
-								<a class="b-buttons__link b-buttons__link_dot_c10601" href="#" onClick="letters.formDeliveryHide(); return false;">закрыть, не сохраняя</a>
+								<a class="b-button b-button_flat b-button_flat_green" href="javascript:void()" onClick="letters.formDeliveryUpdate(); return false;">РЎРѕС…СЂР°РЅРёС‚СЊ</a>
+								<span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё&nbsp;</span>
+								<a class="b-buttons__link b-buttons__link_dot_c10601" href="#" onClick="letters.formDeliveryHide(); return false;">Р·Р°РєСЂС‹С‚СЊ, РЅРµ СЃРѕС…СЂР°РЅСЏСЏ</a>
 							</div>
 						</div>
 					</div>
@@ -99,9 +99,9 @@ $statuses = letters::getStatuses();
 								</div>
 							</div>
 							<div class="b-buttons b-buttons_padtop_15">
-								<a class="b-button b-button_flat b-button_flat_green" href="javascript:void()" onClick="letters.formDeliveryCostUpdate(); return false;">Сохранить</a>
-								<span class="b-buttons__txt b-buttons__txt_padleft_10">или&nbsp;</span>
-								<a class="b-buttons__link b-buttons__link_dot_c10601" href="#" onClick="letters.formDeliveryCostHide(); return false;">закрыть, не сохраняя</a>
+								<a class="b-button b-button_flat b-button_flat_green" href="javascript:void()" onClick="letters.formDeliveryCostUpdate(); return false;">РЎРѕС…СЂР°РЅРёС‚СЊ</a>
+								<span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё&nbsp;</span>
+								<a class="b-buttons__link b-buttons__link_dot_c10601" href="#" onClick="letters.formDeliveryCostHide(); return false;">Р·Р°РєСЂС‹С‚СЊ, РЅРµ СЃРѕС…СЂР°РЅСЏСЏ</a>
 							</div>
 						</div>
 					</div>
@@ -133,9 +133,9 @@ $statuses = letters::getStatuses();
 									</div>
 
 							<div class="b-buttons b-buttons_padtop_15">
-								<a class="b-button b-button_flat b-button_flat_green" href="javascript:void()" onClick="letters.formDateAddUpdate(); return false;">Сохранить</a>
-								<span class="b-buttons__txt b-buttons__txt_padleft_10">или&nbsp;</span>
-								<a class="b-buttons__link b-buttons__link_dot_c10601" href="#" onClick="letters.formDateAddHide(); return false;">закрыть, не сохраняя</a>
+								<a class="b-button b-button_flat b-button_flat_green" href="javascript:void()" onClick="letters.formDateAddUpdate(); return false;">РЎРѕС…СЂР°РЅРёС‚СЊ</a>
+								<span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё&nbsp;</span>
+								<a class="b-buttons__link b-buttons__link_dot_c10601" href="#" onClick="letters.formDateAddHide(); return false;">Р·Р°РєСЂС‹С‚СЊ, РЅРµ СЃРѕС…СЂР°РЅСЏСЏ</a>
 							</div>
 						</div>
 					</div>
@@ -167,9 +167,9 @@ $statuses = letters::getStatuses();
 									</div>
 
 							<div class="b-buttons b-buttons_padtop_15">
-								<a class="b-button b-button_flat b-button_flat_green" href="javascript:void()" onClick="letters.formDateChangeUpdate(); return false;">Сохранить</a>
-								<span class="b-buttons__txt b-buttons__txt_padleft_10">или&nbsp;</span>
-								<a class="b-buttons__link b-buttons__link_dot_c10601" href="#" onClick="letters.formDateChangeHide(); return false;">закрыть, не сохраняя</a>
+								<a class="b-button b-button_flat b-button_flat_green" href="javascript:void()" onClick="letters.formDateChangeUpdate(); return false;">РЎРѕС…СЂР°РЅРёС‚СЊ</a>
+								<span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё&nbsp;</span>
+								<a class="b-buttons__link b-buttons__link_dot_c10601" href="#" onClick="letters.formDateChangeHide(); return false;">Р·Р°РєСЂС‹С‚СЊ, РЅРµ СЃРѕС…СЂР°РЅСЏСЏ</a>
 							</div>
 						</div>
 					</div>
@@ -218,9 +218,9 @@ $statuses = letters::getStatuses();
 								</form>
 							</div>
 							<div class="b-buttons b-buttons_padleft_20">
-								<a class="b-button b-button_flat b-button_flat_green" href="javascript:void()" onClick="letters.formStatusUpdate(); return false;">Сохранить</a>
-								<span class="b-buttons__txt b-buttons__txt_padleft_10">или&nbsp;</span>
-								<a class="b-buttons__link b-buttons__link_dot_c10601" href="#" onClick="letters.formStatusHide(); return false;">закрыть, не сохраняя</a>
+								<a class="b-button b-button_flat b-button_flat_green" href="javascript:void()" onClick="letters.formStatusUpdate(); return false;">РЎРѕС…СЂР°РЅРёС‚СЊ</a>
+								<span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё&nbsp;</span>
+								<a class="b-buttons__link b-buttons__link_dot_c10601" href="#" onClick="letters.formStatusHide(); return false;">Р·Р°РєСЂС‹С‚СЊ, РЅРµ СЃРѕС…СЂР°РЅСЏСЏ</a>
 							</div>
 						</div>
 					</div>
@@ -246,7 +246,7 @@ $statuses = letters::getStatuses();
 							<div class="b-radio b-radio_layout_vertical b-radio_inline-block">
 								<div class="b-radio__item b-radio__item_padbot_10">
 									<input id="letters_doc_frm_div_statuses_st_0" type="radio" name="letters_doc_frm_div_statuses_st" value="0" class="b-radio__input" checked onClick="letters.changeStatus('newpopup', 0);">
-									<label for="letters_doc_frm_div_statuses_st_0" class="b-radio__label  b-radio__label_fontsize_13">Не выбрано</label>
+									<label for="letters_doc_frm_div_statuses_st_0" class="b-radio__label  b-radio__label_fontsize_13">РќРµ РІС‹Р±СЂР°РЅРѕ</label>
 								</div>
 								<?php
 								foreach($statuses as $status) {
@@ -267,9 +267,9 @@ $statuses = letters::getStatuses();
 								?>
 							</div>
 							<div class="b-buttons b-buttons_padleft_20">
-								<a id="letters_doc_frm_div_statuses_btn_submit" class="b-button b-button_flat b-button_flat_green" href="javascript:void()" onClick="letters.statusesSet(); return false;">Выбрать</a>
-								<span class="b-buttons__txt b-buttons__txt_padleft_10">или&nbsp;</span>
-								<a class="b-buttons__link b-buttons__link_dot_c10601" href="#" onClick="letters.statusesHide(); return false;">закрыть, не выбирая</a>
+								<a id="letters_doc_frm_div_statuses_btn_submit" class="b-button b-button_flat b-button_flat_green" href="javascript:void()" onClick="letters.statusesSet(); return false;">Р’С‹Р±СЂР°С‚СЊ</a>
+								<span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё&nbsp;</span>
+								<a class="b-buttons__link b-buttons__link_dot_c10601" href="#" onClick="letters.statusesHide(); return false;">Р·Р°РєСЂС‹С‚СЊ, РЅРµ РІС‹Р±РёСЂР°СЏ</a>
 							</div>
 						</div>
 					</div>

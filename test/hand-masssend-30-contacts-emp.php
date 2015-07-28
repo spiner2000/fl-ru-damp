@@ -1,6 +1,6 @@
 <?php
 /**
- * Уведомление работодателям
+ * РЈРІРµРґРѕРјР»РµРЅРёРµ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏРј
  * */
 ini_set('max_execution_time', '0');
 ini_set('memory_limit', '512M');
@@ -11,7 +11,7 @@ require_once '../classes/smtp2.php';
 
 
 /**
- * Логин пользователя от кого осуществляется рассылка
+ * Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РѕС‚ РєРѕРіРѕ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ СЂР°СЃСЃС‹Р»РєР°
  * 
  */
 //$sender = 'jb_admin';
@@ -24,28 +24,28 @@ $sql = "SELECT uid, email, login, uname, usurname, subscr FROM employer WHERE su
 
 $pHost = str_replace("http://", "", $GLOBALS['host']);
 if ( defined('HTTP_PREFIX') ) {
-    $pHttp = str_replace("://", "", HTTP_PREFIX); // Введено с учетом того планируется включение HTTPS на серверах (для писем в ЛС)
+    $pHttp = str_replace("://", "", HTTP_PREFIX); // Р’РІРµРґРµРЅРѕ СЃ СѓС‡РµС‚РѕРј С‚РѕРіРѕ РїР»Р°РЅРёСЂСѓРµС‚СЃСЏ РІРєР»СЋС‡РµРЅРёРµ HTTPS РЅР° СЃРµСЂРІРµСЂР°С… (РґР»СЏ РїРёСЃРµРј РІ Р›РЎ)
 } else {
     $pHttp = 'http';
 }
 $eHost = $GLOBALS['host'];
 
 $pMessage = "
-Здравствуйте!
+Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!
 
-Многие наши пользователи просили вернуть возможность обмениваться контактами на сайте. Ваше мнение важно для нас, и мы прислушались к нему. С сегодняшнего дня работодатели с http:/{аккаунтом PRO}/{$pHost}/payed/?utm_source=newsletter4&utm_medium=email&utm_campaign=new_pro_employer могут видеть контакты других пользователей на сайте, а также оставлять контактную информацию (телефон, e-mail, icq, Skype и т.д.) в своем профиле, сообщениях, опубликованных проектах и конкурсах.
+РњРЅРѕРіРёРµ РЅР°С€Рё РїРѕР»СЊР·РѕРІР°С‚РµР»Рё РїСЂРѕСЃРёР»Рё РІРµСЂРЅСѓС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РѕР±РјРµРЅРёРІР°С‚СЊСЃСЏ РєРѕРЅС‚Р°РєС‚Р°РјРё РЅР° СЃР°Р№С‚Рµ. Р’Р°С€Рµ РјРЅРµРЅРёРµ РІР°Р¶РЅРѕ РґР»СЏ РЅР°СЃ, Рё РјС‹ РїСЂРёСЃР»СѓС€Р°Р»РёСЃСЊ Рє РЅРµРјСѓ. РЎ СЃРµРіРѕРґРЅСЏС€РЅРµРіРѕ РґРЅСЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»Рё СЃ http:/{Р°РєРєР°СѓРЅС‚РѕРј PRO}/{$pHost}/payed/?utm_source=newsletter4&utm_medium=email&utm_campaign=new_pro_employer РјРѕРіСѓС‚ РІРёРґРµС‚СЊ РєРѕРЅС‚Р°РєС‚С‹ РґСЂСѓРіРёС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РЅР° СЃР°Р№С‚Рµ, Р° С‚Р°РєР¶Рµ РѕСЃС‚Р°РІР»СЏС‚СЊ РєРѕРЅС‚Р°РєС‚РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ (С‚РµР»РµС„РѕРЅ, e-mail, icq, Skype Рё С‚.Рґ.) РІ СЃРІРѕРµРј РїСЂРѕС„РёР»Рµ, СЃРѕРѕР±С‰РµРЅРёСЏС…, РѕРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹С… РїСЂРѕРµРєС‚Р°С… Рё РєРѕРЅРєСѓСЂСЃР°С….
 
-Другие преимущества PRO:
+Р”СЂСѓРіРёРµ РїСЂРµРёРјСѓС‰РµСЃС‚РІР° PRO:
 
-<ul><li>скидки на все платные услуги сайта,</li><li>бесплатное выделение проектов общей ленте,</li><li>возможность указать дополнительную информацию о себе и своей компании,</li><li>больший интерес к проектам PRO со стороны опытных и талантливых фрилансеров.</li></ul>Хотим обратить ваше внимание, что прямые контакты позволяют вам быстрее договориться с фрилансером, но увеличивают риск мошенничества с его стороны. Чтобы быть уверенными в том, исполнитель не исчезнет после получения предоплаты, не сдав выполненную работу, рекомендуем проводить проекты через «http:/{Сделку Без Риска}/{$pHost}/sbr/?utm_source=newsletter4&utm_medium=email&utm_campaign=new_pro_employer<span>»</span>. 
+<ul><li>СЃРєРёРґРєРё РЅР° РІСЃРµ РїР»Р°С‚РЅС‹Рµ СѓСЃР»СѓРіРё СЃР°Р№С‚Р°,</li><li>Р±РµСЃРїР»Р°С‚РЅРѕРµ РІС‹РґРµР»РµРЅРёРµ РїСЂРѕРµРєС‚РѕРІ РѕР±С‰РµР№ Р»РµРЅС‚Рµ,</li><li>РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ СѓРєР°Р·Р°С‚СЊ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃРµР±Рµ Рё СЃРІРѕРµР№ РєРѕРјРїР°РЅРёРё,</li><li>Р±РѕР»СЊС€РёР№ РёРЅС‚РµСЂРµСЃ Рє РїСЂРѕРµРєС‚Р°Рј PRO СЃРѕ СЃС‚РѕСЂРѕРЅС‹ РѕРїС‹С‚РЅС‹С… Рё С‚Р°Р»Р°РЅС‚Р»РёРІС‹С… С„СЂРёР»Р°РЅСЃРµСЂРѕРІ.</li></ul>РҐРѕС‚РёРј РѕР±СЂР°С‚РёС‚СЊ РІР°С€Рµ РІРЅРёРјР°РЅРёРµ, С‡С‚Рѕ РїСЂСЏРјС‹Рµ РєРѕРЅС‚Р°РєС‚С‹ РїРѕР·РІРѕР»СЏСЋС‚ РІР°Рј Р±С‹СЃС‚СЂРµРµ РґРѕРіРѕРІРѕСЂРёС‚СЊСЃСЏ СЃ С„СЂРёР»Р°РЅСЃРµСЂРѕРј, РЅРѕ СѓРІРµР»РёС‡РёРІР°СЋС‚ СЂРёСЃРє РјРѕС€РµРЅРЅРёС‡РµСЃС‚РІР° СЃ РµРіРѕ СЃС‚РѕСЂРѕРЅС‹. Р§С‚РѕР±С‹ Р±С‹С‚СЊ СѓРІРµСЂРµРЅРЅС‹РјРё РІ С‚РѕРј, РёСЃРїРѕР»РЅРёС‚РµР»СЊ РЅРµ РёСЃС‡РµР·РЅРµС‚ РїРѕСЃР»Рµ РїРѕР»СѓС‡РµРЅРёСЏ РїСЂРµРґРѕРїР»Р°С‚С‹, РЅРµ СЃРґР°РІ РІС‹РїРѕР»РЅРµРЅРЅСѓСЋ СЂР°Р±РѕС‚Сѓ, СЂРµРєРѕРјРµРЅРґСѓРµРј РїСЂРѕРІРѕРґРёС‚СЊ РїСЂРѕРµРєС‚С‹ С‡РµСЂРµР· В«http:/{РЎРґРµР»РєСѓ Р‘РµР· Р РёСЃРєР°}/{$pHost}/sbr/?utm_source=newsletter4&utm_medium=email&utm_campaign=new_pro_employer<span>В»</span>. 
 
-Более подробно о нововведениях читайте в «http:/{Блогах}/{$pHost}/blogs/?utm_source=newsletter4&utm_medium=email&utm_campaign=new_pro_employer<span>»</span>, а о PRO &ndash; в разделе «http:/{Помощи}/{$pHost}/help/?q=789&utm_source=newsletter4&utm_medium=email&utm_campaign=new_pro_employer<span>»</span>. 
+Р‘РѕР»РµРµ РїРѕРґСЂРѕР±РЅРѕ Рѕ РЅРѕРІРѕРІРІРµРґРµРЅРёСЏС… С‡РёС‚Р°Р№С‚Рµ РІ В«http:/{Р‘Р»РѕРіР°С…}/{$pHost}/blogs/?utm_source=newsletter4&utm_medium=email&utm_campaign=new_pro_employer<span>В»</span>, Р° Рѕ PRO &ndash; РІ СЂР°Р·РґРµР»Рµ В«http:/{РџРѕРјРѕС‰Рё}/{$pHost}/help/?q=789&utm_source=newsletter4&utm_medium=email&utm_campaign=new_pro_employer<span>В»</span>. 
 
-По всем возникающим вопросам вы можете обращаться в нашу http:/{службу поддержки}/{$pHost}/help/?all<i>.</i>
-Вы можете отключить уведомления на http:/{странице &laquo;Уведомления/Рассылка&raquo;}/{$pHost}/users/%USER_LOGIN%/setup/mailer/<span> вашего</span> аккаунта.
+РџРѕ РІСЃРµРј РІРѕР·РЅРёРєР°СЋС‰РёРј РІРѕРїСЂРѕСЃР°Рј РІС‹ РјРѕР¶РµС‚Рµ РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РІ РЅР°С€Сѓ http:/{СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё}/{$pHost}/help/?all<i>.</i>
+Р’С‹ РјРѕР¶РµС‚Рµ РѕС‚РєР»СЋС‡РёС‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ РЅР°В http:/{СЃС‚СЂР°РЅРёС†Рµ &laquo;РЈРІРµРґРѕРјР»РµРЅРёСЏ/Р Р°СЃСЃС‹Р»РєР°&raquo;}/{$pHost}/users/%USER_LOGIN%/setup/mailer/<span> РІР°С€РµРіРѕ</span> Р°РєРєР°СѓРЅС‚Р°.
 
-Приятной работы,
-Команда http:/{Free-lance.ru}/{$pHost}/
+РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹,
+РљРѕРјР°РЅРґР° http:/{Free-lance.ru}/{$pHost}/
 ";
 
 
@@ -76,7 +76,7 @@ $mail->attach(ABS_PATH . '/images/mailer/30/9.png', $cid9);
 $mail->attach(ABS_PATH . '/images/mailer/30/10.png', $cid10);
 //$mail->attach(ABS_PATH . '/images/mailer/30/11.gif', $cid11);
 
-$eSubject = "Просматривайте контакты фрилансеров и связывайтесь с ними напрямую";
+$eSubject = "РџСЂРѕСЃРјР°С‚СЂРёРІР°Р№С‚Рµ РєРѕРЅС‚Р°РєС‚С‹ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ Рё СЃРІСЏР·С‹РІР°Р№С‚РµСЃСЊ СЃ РЅРёРјРё РЅР°РїСЂСЏРјСѓСЋ";
 
 $eMessage = '
 <html>
@@ -103,7 +103,7 @@ $eMessage = '
     <tbody><tr>
         <td bgcolor="#ffffff" width="20"></td>
         <td width="20"></td>
-        <td ><font color="#000000" size="6" face="tahoma,sans-serif">Хорошая новость!</font></td>
+        <td ><font color="#000000" size="6" face="tahoma,sans-serif">РҐРѕСЂРѕС€Р°СЏ РЅРѕРІРѕСЃС‚СЊ!</font></td>
         <td></td>
         <tdwidth="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
@@ -126,7 +126,7 @@ $eMessage = '
             <table border=0 cellpadding=0 cellspacing=0 width="100%">
             <tr valign=middle>
                 <td><a href="https://free-lance.ru" target="_blank"><img src="cid:'.$cid1.'" width="197" height="27" style="margin-bottom: 5px" alt="Free-lance.ru" title="Free-lance.ru" border="0"></a></td>
-                <td>&#160;<font color="#5e5e5e" size="5" face="tahoma,sans-serif" style="white-space:nowrap;">возвращает контакты для</font>&#160;</td>
+                <td>&#160;<font color="#5e5e5e" size="5" face="tahoma,sans-serif" style="white-space:nowrap;">РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕРЅС‚Р°РєС‚С‹ РґР»СЏ</font>&#160;</td>
                 <td><img src="cid:'.$cid2.'" width="104" height="45" alt="PRO" title="PRO"></td>
             </tr>
             </table>
@@ -172,8 +172,8 @@ $eMessage = '
             	<tr>
                     <td width="60"></td>
                     <td>
-                        <font color="#444444" size="3" face="tahoma,sans-serif">С сегодняшнего дня работодатели с <a href="'.$eHost.'/payed/?utm_source=newsletter4&utm_medium=email&utm_campaign=new_pro_employer" style="color:#0f71c8" target="_blank">аккаунтом</a>  <img src="cid:'.$cid3.'" width="26" height="11" border="0" alt="PRO" title="PRO"> могут видеть контакты других пользователей на сайте.</font><br>
-                        <font color="#444444" size="1" face="tahoma,sans-serif">А также оставлять контактную информацию (телефон, e-mail, icq, Skype) в своем профиле, опубликованных проектах и конкурсах.</font>
+                        <font color="#444444" size="3" face="tahoma,sans-serif">РЎ СЃРµРіРѕРґРЅСЏС€РЅРµРіРѕ РґРЅСЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»Рё СЃ <a href="'.$eHost.'/payed/?utm_source=newsletter4&utm_medium=email&utm_campaign=new_pro_employer" style="color:#0f71c8" target="_blank">Р°РєРєР°СѓРЅС‚РѕРј</a>  <img src="cid:'.$cid3.'" width="26" height="11" border="0" alt="PRO" title="PRO"> РјРѕРіСѓС‚ РІРёРґРµС‚СЊ РєРѕРЅС‚Р°РєС‚С‹ РґСЂСѓРіРёС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РЅР° СЃР°Р№С‚Рµ.</font><br>
+                        <font color="#444444" size="1" face="tahoma,sans-serif">Рђ С‚Р°РєР¶Рµ РѕСЃС‚Р°РІР»СЏС‚СЊ РєРѕРЅС‚Р°РєС‚РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ (С‚РµР»РµС„РѕРЅ, e-mail, icq, Skype) РІ СЃРІРѕРµРј РїСЂРѕС„РёР»Рµ, РѕРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹С… РїСЂРѕРµРєС‚Р°С… Рё РєРѕРЅРєСѓСЂСЃР°С….</font>
                     </td>
                     <td  width="60"></td>
           		</tr>
@@ -201,7 +201,7 @@ $eMessage = '
                               </tr>
                               <tr>
                                   <td align="center">
-                                  	<font color="#444444" size="1" face="tahoma,sans-serif">Телефон</font>
+                                  	<font color="#444444" size="1" face="tahoma,sans-serif">РўРµР»РµС„РѕРЅ</font>
                                   </td>
                                   <td ></td>
                                   <td align="center">
@@ -217,7 +217,7 @@ $eMessage = '
                                   </td>
                                   <td ></td>
                                   <td align="center">
-                                  	<font color="#444444" size="1" face="tahoma,sans-serif">И все остальное</font>
+                                  	<font color="#444444" size="1" face="tahoma,sans-serif">Р РІСЃРµ РѕСЃС‚Р°Р»СЊРЅРѕРµ</font>
                                   </td>
                                   <td ></td>
                               </tr>
@@ -260,7 +260,7 @@ $eMessage = '
     <tr>
         <td bgcolor="#ffffff" width="20"></td>
         <td width="20"></td>
-        <td><font color="#444444" size="2" face="tahoma,sans-serif">Другие преимущества PRO:</font></td>
+        <td><font color="#444444" size="2" face="tahoma,sans-serif">Р”СЂСѓРіРёРµ РїСЂРµРёРјСѓС‰РµСЃС‚РІР° PRO:</font></td>
         <td width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
   </tr>
@@ -279,7 +279,7 @@ $eMessage = '
         <td bgcolor="#ffffff" width="20"></td>
         <td width="80"></td>
         <td width="20" valign="top"><img src="cid:'.$cid9.'" width="15" height="15" style="margin-top:3px;" border="0" alt="+" title="+"></td>
-        <td><font color="#444444" size="3" face="tahoma,sans-serif">Скидки на все платные услуги сайта.</font></td>
+        <td><font color="#444444" size="3" face="tahoma,sans-serif">РЎРєРёРґРєРё РЅР° РІСЃРµ РїР»Р°С‚РЅС‹Рµ СѓСЃР»СѓРіРё СЃР°Р№С‚Р°.</font></td>
         <td width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
   </tr>
@@ -295,7 +295,7 @@ $eMessage = '
         <td bgcolor="#ffffff" width="20"></td>
         <td width="80"></td>
         <td width="20" valign="top"><img src="cid:'.$cid9.'" width="15" height="15" style="margin-top:3px;" border="0" alt="+" title="+"></td>
-        <td valign="top"><font color="#444444" size="3" face="tahoma,sans-serif">Бесплатное выделение проектов в общей ленте.</font></td>
+        <td valign="top"><font color="#444444" size="3" face="tahoma,sans-serif">Р‘РµСЃРїР»Р°С‚РЅРѕРµ РІС‹РґРµР»РµРЅРёРµ РїСЂРѕРµРєС‚РѕРІ РІ РѕР±С‰РµР№ Р»РµРЅС‚Рµ.</font></td>
         <td width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
   </tr>
@@ -311,7 +311,7 @@ $eMessage = '
         <td bgcolor="#ffffff" width="20"></td>
         <td width="80"></td>
         <td width="20" valign="top"><img src="cid:'.$cid9.'" width="15" height="15" style="margin-top:3px;" border="0" alt="+" title="+"></td>
-        <td valign="top"><font color="#444444" size="3" face="tahoma,sans-serif">Возможность указать дополнительную информацию о себе и своей компании.</font></td>
+        <td valign="top"><font color="#444444" size="3" face="tahoma,sans-serif">Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ СѓРєР°Р·Р°С‚СЊ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃРµР±Рµ Рё СЃРІРѕРµР№ РєРѕРјРїР°РЅРёРё.</font></td>
         <td width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
   </tr>
@@ -327,7 +327,7 @@ $eMessage = '
         <td bgcolor="#ffffff" width="20"></td>
         <td width="80"></td>
         <td width="20" valign="top"><img src="cid:'.$cid9.'" width="15" height="15" style="margin-top:3px;" border="0" alt="+" title="+"></td>
-        <td valign="top"><font color="#444444" size="3" face="tahoma,sans-serif">Больший интерес к проектам PRO со стороны опытных и талантливых фрилансеров.</font></td>
+        <td valign="top"><font color="#444444" size="3" face="tahoma,sans-serif">Р‘РѕР»СЊС€РёР№ РёРЅС‚РµСЂРµСЃ Рє РїСЂРѕРµРєС‚Р°Рј PRO СЃРѕ СЃС‚РѕСЂРѕРЅС‹ РѕРїС‹С‚РЅС‹С… Рё С‚Р°Р»Р°РЅС‚Р»РёРІС‹С… С„СЂРёР»Р°РЅСЃРµСЂРѕРІ.</font></td>
         <td width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
   </tr>
@@ -350,7 +350,7 @@ $eMessage = '
     <tr>
         <td bgcolor="#ffffff" width="20" ></td>
         <td width="80"></td>
-        <td colspan="2"><a href="'.$eHost.'/payed/?utm_source=newsletter4&utm_medium=email&utm_campaign=new_pro_employer" target="_blank"><img src="cid:'.$cid10.'" width="231" height="36" border="0" alt="Подробнее об аккаунте PRO" title="Подробнее об аккаунте PRO"></a></td>
+        <td colspan="2"><a href="'.$eHost.'/payed/?utm_source=newsletter4&utm_medium=email&utm_campaign=new_pro_employer" target="_blank"><img src="cid:'.$cid10.'" width="231" height="36" border="0" alt="РџРѕРґСЂРѕР±РЅРµРµ РѕР± Р°РєРєР°СѓРЅС‚Рµ PRO" title="РџРѕРґСЂРѕР±РЅРµРµ РѕР± Р°РєРєР°СѓРЅС‚Рµ PRO"></a></td>
         <td width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
   </tr>
@@ -370,7 +370,7 @@ $eMessage = '
     <tr>
         <td bgcolor="#ffffff" width="20"></td>
         <td width="20"></td>
-        <td><font color="#444444" size="2" face="tahoma,sans-serif">	Хотим обратить ваше внимание на то, что прямые контакты позволяют вам быстрее договориться с фрилансером, но увеличивают риск мошенничества с его стороны. Чтобы быть уверенными в том, что исполнитель не исчезнет после получения предоплаты, не сдав выполненную работу, рекомендуем проводить проекты через «<a target="_blank" style="color:#0f71c8" href="'.$eHost.'/sbr/?utm_source=newsletter4&utm_medium=email&utm_campaign=new_pro_employer">Сделку Без Риска</a>».</font></td>
+        <td><font color="#444444" size="2" face="tahoma,sans-serif">	РҐРѕС‚РёРј РѕР±СЂР°С‚РёС‚СЊ РІР°С€Рµ РІРЅРёРјР°РЅРёРµ РЅР° С‚Рѕ, С‡С‚Рѕ РїСЂСЏРјС‹Рµ РєРѕРЅС‚Р°РєС‚С‹ РїРѕР·РІРѕР»СЏСЋС‚ РІР°Рј Р±С‹СЃС‚СЂРµРµ РґРѕРіРѕРІРѕСЂРёС‚СЊСЃСЏ СЃ С„СЂРёР»Р°РЅСЃРµСЂРѕРј, РЅРѕ СѓРІРµР»РёС‡РёРІР°СЋС‚ СЂРёСЃРє РјРѕС€РµРЅРЅРёС‡РµСЃС‚РІР° СЃ РµРіРѕ СЃС‚РѕСЂРѕРЅС‹. Р§С‚РѕР±С‹ Р±С‹С‚СЊ СѓРІРµСЂРµРЅРЅС‹РјРё РІ С‚РѕРј, С‡С‚Рѕ РёСЃРїРѕР»РЅРёС‚РµР»СЊ РЅРµ РёСЃС‡РµР·РЅРµС‚ РїРѕСЃР»Рµ РїРѕР»СѓС‡РµРЅРёСЏ РїСЂРµРґРѕРїР»Р°С‚С‹, РЅРµ СЃРґР°РІ РІС‹РїРѕР»РЅРµРЅРЅСѓСЋ СЂР°Р±РѕС‚Сѓ, СЂРµРєРѕРјРµРЅРґСѓРµРј РїСЂРѕРІРѕРґРёС‚СЊ РїСЂРѕРµРєС‚С‹ С‡РµСЂРµР· В«<a target="_blank" style="color:#0f71c8" href="'.$eHost.'/sbr/?utm_source=newsletter4&utm_medium=email&utm_campaign=new_pro_employer">РЎРґРµР»РєСѓ Р‘РµР· Р РёСЃРєР°</a>В».</font></td>
         <td width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
   </tr>
@@ -384,7 +384,7 @@ $eMessage = '
     <tr>
         <td bgcolor="#ffffff" width="20"></td>
         <td width="20"></td>
-        <td><font color="#444444" size="2" face="tahoma,sans-serif">Более подробно о нововведениях читайте в «<a target="_blank" style="color:#0f71c8" href="'.$eHost.'/blogs/free-lanceru/719815/ostavlyayte-svoi-pryamyie-kontaktyi.html?utm_source=newsletter4&utm_medium=email&utm_campaign=new_pro_employer">Блогах</a>», а о PRO – в разделе «<a target="_blank" style="color:#0f71c8" href="'.$eHost.'/help/?q=789&utm_source=newsletter4&utm_medium=email&utm_campaign=new_pro_employer">Помощи</a>».</font></td>
+        <td><font color="#444444" size="2" face="tahoma,sans-serif">Р‘РѕР»РµРµ РїРѕРґСЂРѕР±РЅРѕ Рѕ РЅРѕРІРѕРІРІРµРґРµРЅРёСЏС… С‡РёС‚Р°Р№С‚Рµ РІ В«<a target="_blank" style="color:#0f71c8" href="'.$eHost.'/blogs/free-lanceru/719815/ostavlyayte-svoi-pryamyie-kontaktyi.html?utm_source=newsletter4&utm_medium=email&utm_campaign=new_pro_employer">Р‘Р»РѕРіР°С…</a>В», Р° Рѕ PRO вЂ“ РІ СЂР°Р·РґРµР»Рµ В«<a target="_blank" style="color:#0f71c8" href="'.$eHost.'/help/?q=789&utm_source=newsletter4&utm_medium=email&utm_campaign=new_pro_employer">РџРѕРјРѕС‰Рё</a>В».</font></td>
         <td width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
   </tr>
@@ -404,8 +404,8 @@ $eMessage = '
         <td bgcolor="#ffffff" width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
         <td bgcolor="#ffffff">
-            <font color="#4d4d4d" size="1" face="tahoma,sans-serif">По всем возникающим вопросам вы можете обращаться в нашу <a target="_blank" style="color:#0f71c8;" href="'.$eHost.'/help/?all">службу поддержки</a>.<br>
-Вы можете отключить уведомления на странице «<a target="_blank" style="color:#0f71c8;" href="'.$eHost.'/users/%%%USER_LOGIN%%%/setup/mailer/">Уведомления/Рассылка</a>» вашего аккаунта.</font>
+            <font color="#4d4d4d" size="1" face="tahoma,sans-serif">РџРѕ РІСЃРµРј РІРѕР·РЅРёРєР°СЋС‰РёРј РІРѕРїСЂРѕСЃР°Рј РІС‹ РјРѕР¶РµС‚Рµ РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РІ РЅР°С€Сѓ <a target="_blank" style="color:#0f71c8;" href="'.$eHost.'/help/?all">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.<br>
+Р’С‹ РјРѕР¶РµС‚Рµ РѕС‚РєР»СЋС‡РёС‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ РЅР° СЃС‚СЂР°РЅРёС†Рµ В«<a target="_blank" style="color:#0f71c8;" href="'.$eHost.'/users/%%%USER_LOGIN%%%/setup/mailer/">РЈРІРµРґРѕРјР»РµРЅРёСЏ/Р Р°СЃСЃС‹Р»РєР°</a>В» РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р°.</font>
         </td>
         <td bgcolor="#ffffff" width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
@@ -421,7 +421,7 @@ $eMessage = '
         <td bgcolor="#ffffff" width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
         <td bgcolor="#ffffff">
-            <font color="#4d4d4d" size="1" face="tahoma,sans-serif">Приятной работы!<br>Команда <a target="_blank" style="color:#0f71c8;" href="'.$eHost.'">Free-lance.ru</a></font>
+            <font color="#4d4d4d" size="1" face="tahoma,sans-serif">РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹!<br>РљРѕРјР°РЅРґР° <a target="_blank" style="color:#0f71c8;" href="'.$eHost.'">Free-lance.ru</a></font>
         </td>
         <td bgcolor="#ffffff" width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
@@ -446,7 +446,7 @@ $eMessage = '
 ';
 
 // ----------------------------------------------------------------------------------------------------------------
-// -- Рассылка ----------------------------------------------------------------------------------------------------
+// -- Р Р°СЃСЃС‹Р»РєР° ----------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------
 $DB = new DB('plproxy');
 $master = new DB('master');
@@ -460,28 +460,28 @@ if (empty($sender)) {
 
 echo "Send personal messages\n";
 
-// подготавливаем рассылку
+// РїРѕРґРіРѕС‚Р°РІР»РёРІР°РµРј СЂР°СЃСЃС‹Р»РєСѓ
 $msgid = $DB->val("SELECT masssend(?, ?, '{}', '')", $sender['uid'], $pMessage);
 if (!$msgid) die('Failed!');
 
-// допустим, мы получаем адресатов с какого-то запроса
+// РґРѕРїСѓСЃС‚РёРј, РјС‹ РїРѕР»СѓС‡Р°РµРј Р°РґСЂРµСЃР°С‚РѕРІ СЃ РєР°РєРѕРіРѕ-С‚Рѕ Р·Р°РїСЂРѕСЃР°
 $i = 0;
 while ($users = $master->col("{$sql} LIMIT 30000 OFFSET ?", $i)) {
     $DB->query("SELECT masssend_bind(?, {$sender['uid']}, ?a)", $msgid, $users);
     $i = $i + 30000;
 }
-// Стартуем рассылку в личку
+// РЎС‚Р°СЂС‚СѓРµРј СЂР°СЃСЃС‹Р»РєСѓ РІ Р»РёС‡РєСѓ
 $DB->query("SELECT masssend_commit(?, ?)", $msgid, $sender['uid']); 
 echo "Send email messages\n";
 
 
-$mail->subject = $eSubject;  // заголовок письма
-$mail->message = $eMessage; // текст письма
-$mail->recipient = ''; // свойство 'получатель' оставляем пустым
+$mail->subject = $eSubject;  // Р·Р°РіРѕР»РѕРІРѕРє РїРёСЃСЊРјР°
+$mail->message = $eMessage; // С‚РµРєСЃС‚ РїРёСЃСЊРјР°
+$mail->recipient = ''; // СЃРІРѕР№СЃС‚РІРѕ 'РїРѕР»СѓС‡Р°С‚РµР»СЊ' РѕСЃС‚Р°РІР»СЏРµРј РїСѓСЃС‚С‹Рј
 $spamid = $mail->masssend();
 if (!$spamid) die('Failed!');
-// с этого момента рассылка создана, но еще никому не отправлена!
-// допустим нам нужно получить список получателей с какого-либо запроса
+// СЃ СЌС‚РѕРіРѕ РјРѕРјРµРЅС‚Р° СЂР°СЃСЃС‹Р»РєР° СЃРѕР·РґР°РЅР°, РЅРѕ РµС‰Рµ РЅРёРєРѕРјСѓ РЅРµ РѕС‚РїСЂР°РІР»РµРЅР°!
+// РґРѕРїСѓСЃС‚РёРј РЅР°Рј РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РїРѕР»СѓС‡Р°С‚РµР»РµР№ СЃ РєР°РєРѕРіРѕ-Р»РёР±Рѕ Р·Р°РїСЂРѕСЃР°
 $i = 0;
 $mail->recipient = array();
 $res = $master->query($sql);

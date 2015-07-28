@@ -5,7 +5,7 @@ class pending_operations
 {
     
     /**
-     * Список отложенных операций
+     * РЎРїРёСЃРѕРє РѕС‚Р»РѕР¶РµРЅРЅС‹С… РѕРїРµСЂР°С†РёР№
      * 
      * @global type $DB
      * @param type $uid
@@ -31,7 +31,7 @@ class pending_operations
             case "project":
                 $project = $DB->row("SELECT id, payed_info FROM projects WHERE id = ?i", $operation['parent']);
                 if(!$project['id']) {
-                    return "Ошибка обработки операции.";
+                    return "РћС€РёР±РєР° РѕР±СЂР°Р±РѕС‚РєРё РѕРїРµСЂР°С†РёРё.";
                 }
                  
                 if ($account->sum >= $operation['ammount']) {
@@ -40,7 +40,7 @@ class pending_operations
                     }
                 }
                 if(!$bill_id) {
-                    return 'Не хватает денег.';
+                    return 'РќРµ С…РІР°С‚Р°РµС‚ РґРµРЅРµРі.';
                 }
                 $update = array();
                 switch($operation['option']) {
@@ -69,7 +69,7 @@ class pending_operations
                 exit; 
                 break;
             case "contest":
-                // Публикация конкурса
+                // РџСѓР±Р»РёРєР°С†РёСЏ РєРѕРЅРєСѓСЂСЃР°
                 if ($account->sum >= $operation['ammount']) {
                     if ($error = $account->Buy($bill_id, $this->_transactionId, $operation['op_code'], $_SESSION['uid'], trim($operations['descr'], '/'), trim($operations['comments'], '/'), 1, true)) {
                         return $error;
@@ -77,7 +77,7 @@ class pending_operations
                 }
                 
                 if(!$bill_id) {
-                    return 'Не хватает денег.';
+                    return 'РќРµ С…РІР°С‚Р°РµС‚ РґРµРЅРµРі.';
                 }
                 $key = md5(microtime());
                 $prj = new tmp_project($key);
@@ -129,7 +129,7 @@ class pending_operations
                     $categories[0] = array('category_id' => intval($cat[0]), 'subcategory_id' => intval($cat[1]));
                 }
                 
-                $create = $prj->addPrj($insert, $attachedfiles_draft_files, $categories); // Добавляем проект
+                $create = $prj->addPrj($insert, $attachedfiles_draft_files, $categories); // Р”РѕР±Р°РІР»СЏРµРј РїСЂРѕРµРєС‚
                 if($create) {
                     $drafts->DeleteDraft($draft_id, $uid, 1);
                     header("Location: /bill/success/");
@@ -138,7 +138,7 @@ class pending_operations
                 
                 break;
             case "account":
-                // Покупка ПРО
+                // РџРѕРєСѓРїРєР° РџР Рћ
                 break;
         }
     }

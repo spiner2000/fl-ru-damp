@@ -1,6 +1,6 @@
 <?php
 /**
- * Уведомление у которых еще не было никогда про, даже тестового
+ * РЈРІРµРґРѕРјР»РµРЅРёРµ Сѓ РєРѕС‚РѕСЂС‹С… РµС‰Рµ РЅРµ Р±С‹Р»Рѕ РЅРёРєРѕРіРґР° РїСЂРѕ, РґР°Р¶Рµ С‚РµСЃС‚РѕРІРѕРіРѕ
  * */
 ini_set('max_execution_time', '0');
 ini_set('memory_limit', '512M');
@@ -10,19 +10,19 @@ require_once '../classes/memBuff.php';
 require_once '../classes/smtp2.php';
 
 /**
- * Логин пользователя от кого осуществляется рассылка
+ * Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РѕС‚ РєРѕРіРѕ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ СЂР°СЃСЃС‹Р»РєР°
  * 
  */
 $sender = 'admin';
 
-// Работодателям
+// Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЏРј
 $sql = "SELECT uid, email, login, uname, usurname, subscr FROM employer WHERE substring(subscr from 8 for 1)::integer = 1 AND is_banned = B'0' AND ( NOW() - last_time ) > '1 year'";
 
 //$sql = "SELECT uid, email, login, uname, usurname, subscr FROM users WHERE login = 'land_f'"; // TEST!!
 
 $eHost = $GLOBALS['host'];
 
-$eSubject = "Free-lance: мы дарим вам профессиональный аккаунт";
+$eSubject = "Free-lance: РјС‹ РґР°СЂРёРј РІР°Рј РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚";
 
 $mail = new smtp2;
 
@@ -60,7 +60,7 @@ ob_start(); ?><html>
     <tr>
         <td bgcolor="#ffffff" width="20"></td>
         <td width="20"></td>
-        <td ><font color="#000000" size="6" face="tahoma,sans-serif">Здравствуйте!</font></td>
+        <td ><font color="#000000" size="6" face="tahoma,sans-serif">Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!</font></td>
         <td></td>
         <td width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
@@ -81,7 +81,7 @@ ob_start(); ?><html>
     <tr>
         <td bgcolor="#ffffff" width="20"></td>
         <td width="20"></td>
-        <td ><font color="#000000" size="2" face="tahoma,sans-serif">Мы заметили, что вы давно не заходили на Free-lance.ru. Тем временем наш сайт растет и обновляется. Аудитория ресурса превышает 1,3 млн. зарегистрированных пользователей, а количество публикуемых проектов в месяц достигло 36 000.</font></td>
+        <td ><font color="#000000" size="2" face="tahoma,sans-serif">РњС‹ Р·Р°РјРµС‚РёР»Рё, С‡С‚Рѕ РІС‹ РґР°РІРЅРѕ РЅРµ Р·Р°С…РѕРґРёР»Рё РЅР° Free-lance.ru. РўРµРј РІСЂРµРјРµРЅРµРј РЅР°С€ СЃР°Р№С‚ СЂР°СЃС‚РµС‚ Рё РѕР±РЅРѕРІР»СЏРµС‚СЃСЏ. РђСѓРґРёС‚РѕСЂРёСЏ СЂРµСЃСѓСЂСЃР° РїСЂРµРІС‹С€Р°РµС‚ 1,3 РјР»РЅ. Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, Р° РєРѕР»РёС‡РµСЃС‚РІРѕ РїСѓР±Р»РёРєСѓРµРјС‹С… РїСЂРѕРµРєС‚РѕРІ РІ РјРµСЃСЏС† РґРѕСЃС‚РёРіР»Рѕ 36 000.</font></td>
         <td></td>
         <td width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
@@ -97,7 +97,7 @@ ob_start(); ?><html>
     <tr>
         <td bgcolor="#ffffff" width="20"></td>
         <td width="20"></td>
-        <td ><font color="#000000" size="2" face="tahoma,sans-serif">Воспользуйтесь нашим подарком &mdash; аккаунтом PRO на месяц.</font></td>
+        <td ><font color="#000000" size="2" face="tahoma,sans-serif">Р’РѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ РЅР°С€РёРј РїРѕРґР°СЂРєРѕРј &mdash; Р°РєРєР°СѓРЅС‚РѕРј PRO РЅР° РјРµСЃСЏС†.</font></td>
         <td></td>
         <td width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
@@ -125,7 +125,7 @@ ob_start(); ?><html>
         <td bgcolor="#ffffff" width="20"></td>
         <td width="20"></td>
         <td valign="middle" width="370"><a href="<?=$link ?>" target="_blank"><img src="cid:<?= $img17; ?>" width="312" height="132" align="middle" border="0"></a></td>
-        <td valign="middle"><font color="#65ac2b" size="6" face="tahoma,sans-serif">Бесплатно</font><br> <font color="#000000" size="6" face="tahoma,sans-serif">&#160;на месяц</font></td>
+        <td valign="middle"><font color="#65ac2b" size="6" face="tahoma,sans-serif">Р‘РµСЃРїР»Р°С‚РЅРѕ</font><br> <font color="#000000" size="6" face="tahoma,sans-serif">&#160;РЅР° РјРµСЃСЏС†</font></td>
         <td width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
   </tr>
@@ -145,7 +145,7 @@ ob_start(); ?><html>
     <tr>
         <td bgcolor="#ffffff" width="20"></td>
         <td width="20"></td>
-        <td><font color="#000000" size="2" face="tahoma,sans-serif">Чтобы получить подарок, перейдите по <a href="<?=$link ?>" target="_blank" style="color:#0f71c8">этой ссылке</a>. Срок активации &mdash; 7 дней. Срок действия подарка &mdash; <br>месяц.</font></td>
+        <td><font color="#000000" size="2" face="tahoma,sans-serif">Р§С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ РїРѕРґР°СЂРѕРє, РїРµСЂРµР№РґРёС‚Рµ РїРѕ <a href="<?=$link ?>" target="_blank" style="color:#0f71c8">СЌС‚РѕР№ СЃСЃС‹Р»РєРµ</a>. РЎСЂРѕРє Р°РєС‚РёРІР°С†РёРё &mdash; 7 РґРЅРµР№. РЎСЂРѕРє РґРµР№СЃС‚РІРёСЏ РїРѕРґР°СЂРєР° &mdash; <br>РјРµСЃСЏС†.</font></td>
         <td></td>
         <td width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
@@ -161,7 +161,7 @@ ob_start(); ?><html>
     <tr>
         <td bgcolor="#ffffff" width="20"></td>
         <td width="20"></td>
-        <td ><b><font color="#000000" size="3" face="tahoma,sans-serif">Профессиональный аккаунт для работодателя позволяет:</font></b></td>
+        <td ><b><font color="#000000" size="3" face="tahoma,sans-serif">РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚ РґР»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ РїРѕР·РІРѕР»СЏРµС‚:</font></b></td>
         <td></td>
         <td width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
@@ -182,7 +182,7 @@ ob_start(); ?><html>
     <tr>
         <td width="40" bgcolor="#ffffff"></td>
         <td width="25" valign="middle"><img width="15" height="15" border="0" src="cid:<?=$img6 ?>"></td>
-        <td valign="top"><font size="2" face="tahoma,sans-serif" color="#000000">Напрямую связаться с интересующими исполнителями.</font></td>
+        <td valign="top"><font size="2" face="tahoma,sans-serif" color="#000000">РќР°РїСЂСЏРјСѓСЋ СЃРІСЏР·Р°С‚СЊСЃСЏ СЃ РёРЅС‚РµСЂРµСЃСѓСЋС‰РёРјРё РёСЃРїРѕР»РЅРёС‚РµР»СЏРјРё.</font></td>
         <td width="20"></td>
         <td width="20" bgcolor="#ffffff"></td>
   </tr>
@@ -196,7 +196,7 @@ ob_start(); ?><html>
     <tr>
         <td width="40" bgcolor="#ffffff"></td>
         <td width="25" valign="middle"><img width="15" height="15" border="0" src="cid:<?=$img6 ?>"></td>
-        <td valign="top"><font size="2" face="tahoma,sans-serif" color="#000000">Публиковать развернутую информацию о компании.</font></td>
+        <td valign="top"><font size="2" face="tahoma,sans-serif" color="#000000">РџСѓР±Р»РёРєРѕРІР°С‚СЊ СЂР°Р·РІРµСЂРЅСѓС‚СѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РєРѕРјРїР°РЅРёРё.</font></td>
         <td width="20"></td>
         <td width="20" bgcolor="#ffffff"></td>
   </tr>
@@ -210,7 +210,7 @@ ob_start(); ?><html>
     <tr>
         <td width="40" bgcolor="#ffffff"></td>
         <td width="25" valign="middle"><img width="15" height="15" border="0" src="cid:<?=$img6 ?>"></td>
-        <td valign="top"><font size="2" face="tahoma,sans-serif" color="#000000">Размещать рекламу и конкурсы на льготных условиях.</font></td>
+        <td valign="top"><font size="2" face="tahoma,sans-serif" color="#000000">Р Р°Р·РјРµС‰Р°С‚СЊ СЂРµРєР»Р°РјСѓ Рё РєРѕРЅРєСѓСЂСЃС‹ РЅР° Р»СЊРіРѕС‚РЅС‹С… СѓСЃР»РѕРІРёСЏС….</font></td>
         <td width="20"></td>
         <td width="20" bgcolor="#ffffff"></td>
   </tr>
@@ -224,7 +224,7 @@ ob_start(); ?><html>
     <tr>
         <td width="40" bgcolor="#ffffff"></td>
         <td width="25" valign="middle">&#160;</td>
-        <td valign="top"><font size="2" face="tahoma,sans-serif" color="#000000">И многое другое.</font></td>
+        <td valign="top"><font size="2" face="tahoma,sans-serif" color="#000000">Р РјРЅРѕРіРѕРµ РґСЂСѓРіРѕРµ.</font></td>
         <td width="20"></td>
         <td width="20" bgcolor="#ffffff"></td>
   </tr>
@@ -244,7 +244,7 @@ ob_start(); ?><html>
     <tr>
         <td bgcolor="#ffffff" width="20"></td>
         <td width="20"></td>
-        <td ><font color="#000000" size="2" face="tahoma,sans-serif">Воспользуйтесь бесплатно возможностями профессионального аккаунта. Более 15 000 работодателей уже используют аккаунт PRO.</font></td>
+        <td ><font color="#000000" size="2" face="tahoma,sans-serif">Р’РѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ Р±РµСЃРїР»Р°С‚РЅРѕ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЏРјРё РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°. Р‘РѕР»РµРµ 15 000 СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ СѓР¶Рµ РёСЃРїРѕР»СЊР·СѓСЋС‚ Р°РєРєР°СѓРЅС‚ PRO.</font></td>
         <td></td>
         <td width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
@@ -281,8 +281,8 @@ ob_start(); ?><html>
         <td bgcolor="#ffffff" width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
         <td bgcolor="#ffffff">
-            <font color="#4d4d4d" size="1" face="tahoma,sans-serif">По всем возникающим вопросам вы можете обращаться в нашу <a target="_blank" style="color:#0f71c8;" href="<?= $eHost ?>/about/feedback/?utm_source=newsletter4&utm_medium=email&utm_campaign=podarok_emp">службу поддержки</a>.<br>
-Вы можете отключить уведомления на странице «<a target="_blank" style="color:#0f71c8;" href="<?= $eHost ?>/users/%%%USER_LOGIN%%%/setup/mailer/?utm_source=newsletter4&utm_medium=email&utm_campaign=podarok_emp">Уведомления/Рассылка</a>» вашего аккаунта.</font>
+            <font color="#4d4d4d" size="1" face="tahoma,sans-serif">РџРѕ РІСЃРµРј РІРѕР·РЅРёРєР°СЋС‰РёРј РІРѕРїСЂРѕСЃР°Рј РІС‹ РјРѕР¶РµС‚Рµ РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РІ РЅР°С€Сѓ <a target="_blank" style="color:#0f71c8;" href="<?= $eHost ?>/about/feedback/?utm_source=newsletter4&utm_medium=email&utm_campaign=podarok_emp">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.<br>
+Р’С‹ РјРѕР¶РµС‚Рµ РѕС‚РєР»СЋС‡РёС‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ РЅР° СЃС‚СЂР°РЅРёС†Рµ В«<a target="_blank" style="color:#0f71c8;" href="<?= $eHost ?>/users/%%%USER_LOGIN%%%/setup/mailer/?utm_source=newsletter4&utm_medium=email&utm_campaign=podarok_emp">РЈРІРµРґРѕРјР»РµРЅРёСЏ/Р Р°СЃСЃС‹Р»РєР°</a>В» РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р°.</font>
         </td>
         <td bgcolor="#ffffff" width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
@@ -298,7 +298,7 @@ ob_start(); ?><html>
         <td bgcolor="#ffffff" width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
         <td bgcolor="#ffffff">
-            <font color="#4d4d4d" size="1" face="tahoma,sans-serif">Приятной работы!<br>Команда <a target="_blank" style="color:#0f71c8;" href="<?= $eHost ?>/?utm_source=newsletter4&utm_medium=email&utm_campaign=podarok_emp">Free-lance.ru</a></font>
+            <font color="#4d4d4d" size="1" face="tahoma,sans-serif">РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹!<br>РљРѕРјР°РЅРґР° <a target="_blank" style="color:#0f71c8;" href="<?= $eHost ?>/?utm_source=newsletter4&utm_medium=email&utm_campaign=podarok_emp">Free-lance.ru</a></font>
         </td>
         <td bgcolor="#ffffff" width="20"></td>
         <td bgcolor="#ffffff" width="20"></td>
@@ -321,7 +321,7 @@ ob_start(); ?><html>
 </html>
 <? $eMessage = ob_get_clean();
 // ----------------------------------------------------------------------------------------------------------------
-// -- Рассылка ----------------------------------------------------------------------------------------------------
+// -- Р Р°СЃСЃС‹Р»РєР° ----------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------
 $master = new DB('master');
 $cnt = 0;
@@ -333,16 +333,16 @@ if (empty($sender)) {
 
 echo "Send email messages\n";
 
-$mail->subject = $eSubject;  // заголовок письма
-$mail->message = $eMessage; // текст письма
-$mail->recipient = ''; // свойство 'получатель' оставляем пустым
+$mail->subject = $eSubject;  // Р·Р°РіРѕР»РѕРІРѕРє РїРёСЃСЊРјР°
+$mail->message = $eMessage; // С‚РµРєСЃС‚ РїРёСЃСЊРјР°
+$mail->recipient = ''; // СЃРІРѕР№СЃС‚РІРѕ 'РїРѕР»СѓС‡Р°С‚РµР»СЊ' РѕСЃС‚Р°РІР»СЏРµРј РїСѓСЃС‚С‹Рј
 $spamid = $mail->masssend();
 //if (!$spamid) die('Failed!');
-// с этого момента рассылка создана, но еще никому не отправлена!
-// допустим нам нужно получить список получателей с какого-либо запроса
+// СЃ СЌС‚РѕРіРѕ РјРѕРјРµРЅС‚Р° СЂР°СЃСЃС‹Р»РєР° СЃРѕР·РґР°РЅР°, РЅРѕ РµС‰Рµ РЅРёРєРѕРјСѓ РЅРµ РѕС‚РїСЂР°РІР»РµРЅР°!
+// РґРѕРїСѓСЃС‚РёРј РЅР°Рј РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РїРѕР»СѓС‡Р°С‚РµР»РµР№ СЃ РєР°РєРѕРіРѕ-Р»РёР±Рѕ Р·Р°РїСЂРѕСЃР°
 $i = 0;
 $mail->recipient = array();
-$master->query("DELETE FROM week_pro_action WHERE is_emp = 't'"); //очистить таблицу логирования обращений за подарком (по идее только на бете нужно, но кто его знает)
+$master->query("DELETE FROM week_pro_action WHERE is_emp = 't'"); //РѕС‡РёСЃС‚РёС‚СЊ С‚Р°Р±Р»РёС†Сѓ Р»РѕРіРёСЂРѕРІР°РЅРёСЏ РѕР±СЂР°С‰РµРЅРёР№ Р·Р° РїРѕРґР°СЂРєРѕРј (РїРѕ РёРґРµРµ С‚РѕР»СЊРєРѕ РЅР° Р±РµС‚Рµ РЅСѓР¶РЅРѕ, РЅРѕ РєС‚Рѕ РµРіРѕ Р·РЅР°РµС‚)
 $res = $master->query($sql);
 while ($row = pg_fetch_assoc($res)) {
     $mail->recipient[] = array(

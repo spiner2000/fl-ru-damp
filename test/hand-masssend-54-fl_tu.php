@@ -10,14 +10,14 @@ require_once '../classes/users.php';
 
 
 /**
- * Логин пользователя от кого осуществляется рассылка
+ * Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РѕС‚ РєРѕРіРѕ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ СЂР°СЃСЃС‹Р»РєР°
  * 
  */
 $sender = 'admin';
 
 $eHost = $GLOBALS['host'];
 
-$eSubject = "Представляем новый сервис на сайте fl.ru";
+$eSubject = "РџСЂРµРґСЃС‚Р°РІР»СЏРµРј РЅРѕРІС‹Р№ СЃРµСЂРІРёСЃ РЅР° СЃР°Р№С‚Рµ fl.ru";
 
 $eMessage = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -25,7 +25,7 @@ $eMessage = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://ww
         <!-- NAME: 1:2 COLUMN - BANDED -->
         <meta http-equiv="Content-Type" content="text/html; charset=WINDOWS-1251">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Представляем вам новый сервис на сайте fl.ru</title>
+        <title>РџСЂРµРґСЃС‚Р°РІР»СЏРµРј РІР°Рј РЅРѕРІС‹Р№ СЃРµСЂРІРёСЃ РЅР° СЃР°Р№С‚Рµ fl.ru</title>
         
         <!--[if gte mso 6]>
         <style>
@@ -484,7 +484,7 @@ $eMessage = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://ww
                         
                         <td valign="top" class="mcnTextContent" style="padding: 9px 0px 15px 18px;color: #666666;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">
                         
-                            С наступившими вас Новым годом и Рождеством!
+                            РЎ РЅР°СЃС‚СѓРїРёРІС€РёРјРё РІР°СЃ РќРѕРІС‹Рј РіРѕРґРѕРј Рё Р РѕР¶РґРµСЃС‚РІРѕРј!
                         </td>
                     </tr>
                 </tbody></table>
@@ -555,9 +555,9 @@ $eMessage = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://ww
                         
                         <td valign="top" class="mcnTextContent" style="padding: 9px 18px;color: #666666;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
                         
-                            <span style="color:#696969;font-size:12px;font-family:arial,sans-serif;">Здравствуйте!<br>
+                            <span style="color:#696969;font-size:12px;font-family:arial,sans-serif;">Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!<br>
 <br>
-Возможно вы еще не знаете, но совсем недавно на нашем сайте был запущен новый сервис Типовые услуги, с помощью которого вы сможете подробно и в доступной форме рассказать заказчикам о своих услугах и условиях их предоставления.</span>
+Р’РѕР·РјРѕР¶РЅРѕ РІС‹ РµС‰Рµ РЅРµ Р·РЅР°РµС‚Рµ, РЅРѕ СЃРѕРІСЃРµРј РЅРµРґР°РІРЅРѕ РЅР° РЅР°С€РµРј СЃР°Р№С‚Рµ Р±С‹Р» Р·Р°РїСѓС‰РµРЅ РЅРѕРІС‹Р№ СЃРµСЂРІРёСЃ РўРёРїРѕРІС‹Рµ СѓСЃР»СѓРіРё, СЃ РїРѕРјРѕС‰СЊСЋ РєРѕС‚РѕСЂРѕРіРѕ РІС‹ СЃРјРѕР¶РµС‚Рµ РїРѕРґСЂРѕР±РЅРѕ Рё РІ РґРѕСЃС‚СѓРїРЅРѕР№ С„РѕСЂРјРµ СЂР°СЃСЃРєР°Р·Р°С‚СЊ Р·Р°РєР°Р·С‡РёРєР°Рј Рѕ СЃРІРѕРёС… СѓСЃР»СѓРіР°С… Рё СѓСЃР»РѕРІРёСЏС… РёС… РїСЂРµРґРѕСЃС‚Р°РІР»РµРЅРёСЏ.</span>
                         </td>
                     </tr>
                 </tbody></table>
@@ -605,7 +605,7 @@ $eMessage = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://ww
                         
                         <td valign="top" class="mcnTextContent" style="padding: 15px 18px 9px;color: #666666;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
                         
-                            <h2 class="null" style="margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -.75px;text-align: left;color:#009900;">Типовые услуги:</h2>
+                            <h2 class="null" style="margin: 0;padding: 0;display: block;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: -.75px;text-align: left;color:#009900;">РўРёРїРѕРІС‹Рµ СѓСЃР»СѓРіРё:</h2>
 
                         </td>
                     </tr>
@@ -627,8 +627,8 @@ $eMessage = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://ww
                             <table bgcolor="#EBFFD7" border="0" cellpadding="18" cellspacing="0" class="mcnTextContentContainer" width="100%" style="background-color: #EBFFD7;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
                                 <tbody><tr>
                                     <td valign="top" class="mcnTextContent" style="border:0; font-family: Arial, \'Helvetica Neue\', Helvetica, sans-serif;font-size: 12px;text-align: left;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #606060;line-height: 150%;">
-                                        <span style="font-family:arial,sans-serif;font-size:12px;"><b>1.&nbsp;Максимум информации</b><br>
-<span style="font-size:11px;font-family:arial,sans-serif;">В удобной единой форме карточек мы соединили отзывы, работы, описания, брифы, сроки и расценки по каждой вашей услуге. Теперь всё наглядно и просто!</span></span>
+                                        <span style="font-family:arial,sans-serif;font-size:12px;"><b>1.&nbsp;РњР°РєСЃРёРјСѓРј РёРЅС„РѕСЂРјР°С†РёРё</b><br>
+<span style="font-size:11px;font-family:arial,sans-serif;">Р’ СѓРґРѕР±РЅРѕР№ РµРґРёРЅРѕР№ С„РѕСЂРјРµ РєР°СЂС‚РѕС‡РµРє РјС‹ СЃРѕРµРґРёРЅРёР»Рё РѕС‚Р·С‹РІС‹, СЂР°Р±РѕС‚С‹, РѕРїРёСЃР°РЅРёСЏ, Р±СЂРёС„С‹, СЃСЂРѕРєРё Рё СЂР°СЃС†РµРЅРєРё РїРѕ РєР°Р¶РґРѕР№ РІР°С€РµР№ СѓСЃР»СѓРіРµ. РўРµРїРµСЂСЊ РІСЃС‘ РЅР°РіР»СЏРґРЅРѕ Рё РїСЂРѕСЃС‚Рѕ!</span></span>
                                     </td>
                                 </tr>
                             </tbody></table>
@@ -652,8 +652,8 @@ $eMessage = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://ww
                             <table  bgcolor="#EBFFD7" border="0" cellpadding="18" cellspacing="0" class="mcnTextContentContainer" width="100%" style="background-color: #EBFFD7;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
                                 <tbody><tr>
                                     <td valign="top" class="mcnTextContent" style="font-family: Arial, \'Helvetica Neue\', Helvetica, sans-serif;font-size: 12px;text-align: left;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #606060;line-height: 150%;">
-                                        <span style="font-family:arial,sans-serif;font-size:12px;"><b>2. Экономия времени</span></b><br>
-<span style="font-family: arial, sans-serif; font-size: 11px;">Не тратьте время на переговоры с каждым новым заказчиком. Все детали можно указать в своих Типовых услугах – и при их заказе сразу переходить к работе.</span>
+                                        <span style="font-family:arial,sans-serif;font-size:12px;"><b>2. Р­РєРѕРЅРѕРјРёСЏ РІСЂРµРјРµРЅРё</span></b><br>
+<span style="font-family: arial, sans-serif; font-size: 11px;">РќРµ С‚СЂР°С‚СЊС‚Рµ РІСЂРµРјСЏ РЅР° РїРµСЂРµРіРѕРІРѕСЂС‹ СЃ РєР°Р¶РґС‹Рј РЅРѕРІС‹Рј Р·Р°РєР°Р·С‡РёРєРѕРј. Р’СЃРµ РґРµС‚Р°Р»Рё РјРѕР¶РЅРѕ СѓРєР°Р·Р°С‚СЊ РІ СЃРІРѕРёС… РўРёРїРѕРІС‹С… СѓСЃР»СѓРіР°С… вЂ“ Рё РїСЂРё РёС… Р·Р°РєР°Р·Рµ СЃСЂР°Р·Сѓ РїРµСЂРµС…РѕРґРёС‚СЊ Рє СЂР°Р±РѕС‚Рµ.</span>
                                     </td>
                                 </tr>
                             </tbody></table>
@@ -677,8 +677,8 @@ $eMessage = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://ww
                             <table bgcolor="#EBFFD7" border="0" cellpadding="18" cellspacing="0" class="mcnTextContentContainer" width="100%" style="background-color: #EBFFD7;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
                                 <tbody><tr>
                                     <td valign="top" class="mcnTextContent" style="font-family: Arial, sans-serif;font-size: 12px;text-align: left;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #606060;line-height: 150%;">
-                                        <span style="font-family:arial,sans-serif;font-size:12px;"><b>3. Больше заказов</span></b><br>
-<span style="font-family: arial, sans-serif; font-size: 11px;">Покажите, какие и в каком качестве услуги вы оказываете. Эффектно заполненные Типовые услуги привлекают внимание еще большего числа заказчиков, а с ними и новые выгодные предложения.</span>
+                                        <span style="font-family:arial,sans-serif;font-size:12px;"><b>3. Р‘РѕР»СЊС€Рµ Р·Р°РєР°Р·РѕРІ</span></b><br>
+<span style="font-family: arial, sans-serif; font-size: 11px;">РџРѕРєР°Р¶РёС‚Рµ, РєР°РєРёРµ Рё РІ РєР°РєРѕРј РєР°С‡РµСЃС‚РІРµ СѓСЃР»СѓРіРё РІС‹ РѕРєР°Р·С‹РІР°РµС‚Рµ. Р­С„С„РµРєС‚РЅРѕ Р·Р°РїРѕР»РЅРµРЅРЅС‹Рµ РўРёРїРѕРІС‹Рµ СѓСЃР»СѓРіРё РїСЂРёРІР»РµРєР°СЋС‚ РІРЅРёРјР°РЅРёРµ РµС‰Рµ Р±РѕР»СЊС€РµРіРѕ С‡РёСЃР»Р° Р·Р°РєР°Р·С‡РёРєРѕРІ, Р° СЃ РЅРёРјРё Рё РЅРѕРІС‹Рµ РІС‹РіРѕРґРЅС‹Рµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ.</span>
                                     </td>
                                 </tr>
                             </tbody></table>
@@ -772,10 +772,10 @@ $eMessage = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://ww
                         <td valign="top" class="mcnTextContent" style="padding: 15px 18px 9px;color: #666666;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
                         
                             <span style="color:#696969;font-size:12px;font-family:arial,sans-serif;">
-Ознакомиться с функционалом сервиса и добавить услуги вы можете в своем профиле на вкладке «Типовые услуги». Подробное описание всех функций доступно в <a href="https://feedback.fl.ru/knowledgebase/category/id/885" target="_self" style="word-wrap: break-word;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #6DC6DD;font-weight: normal;text-decoration: underline;"><u>Базе знаний</u></a>.<br>
-Также приглашаем вас в <a href="https://www.fl.ru/commune/drugoe/5100/free-lanceru/8535645/zapuskaem-tipovyie-uslugi.html" target="_self" style="word-wrap: break-word;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #6DC6DD;font-weight: normal;text-decoration: underline;"><u>наше корпоративное сообщество</u></a>, будем рады предложениям, идеям и замечаниям.<br><br>
-Надеемся, что новый сервис будет полезным и удобным для вас.<br>
-С уважением, команда fl.ru<br></span>
+РћР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ С„СѓРЅРєС†РёРѕРЅР°Р»РѕРј СЃРµСЂРІРёСЃР° Рё РґРѕР±Р°РІРёС‚СЊ СѓСЃР»СѓРіРё РІС‹ РјРѕР¶РµС‚Рµ РІ СЃРІРѕРµРј РїСЂРѕС„РёР»Рµ РЅР° РІРєР»Р°РґРєРµ В«РўРёРїРѕРІС‹Рµ СѓСЃР»СѓРіРёВ». РџРѕРґСЂРѕР±РЅРѕРµ РѕРїРёСЃР°РЅРёРµ РІСЃРµС… С„СѓРЅРєС†РёР№ РґРѕСЃС‚СѓРїРЅРѕ РІ <a href="https://feedback.fl.ru/knowledgebase/category/id/885" target="_self" style="word-wrap: break-word;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #6DC6DD;font-weight: normal;text-decoration: underline;"><u>Р‘Р°Р·Рµ Р·РЅР°РЅРёР№</u></a>.<br>
+РўР°РєР¶Рµ РїСЂРёРіР»Р°С€Р°РµРј РІР°СЃ РІ <a href="https://www.fl.ru/commune/drugoe/5100/free-lanceru/8535645/zapuskaem-tipovyie-uslugi.html" target="_self" style="word-wrap: break-word;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #6DC6DD;font-weight: normal;text-decoration: underline;"><u>РЅР°С€Рµ РєРѕСЂРїРѕСЂР°С‚РёРІРЅРѕРµ СЃРѕРѕР±С‰РµСЃС‚РІРѕ</u></a>, Р±СѓРґРµРј СЂР°РґС‹ РїСЂРµРґР»РѕР¶РµРЅРёСЏРј, РёРґРµСЏРј Рё Р·Р°РјРµС‡Р°РЅРёСЏРј.<br><br>
+РќР°РґРµРµРјСЃСЏ, С‡С‚Рѕ РЅРѕРІС‹Р№ СЃРµСЂРІРёСЃ Р±СѓРґРµС‚ РїРѕР»РµР·РЅС‹Рј Рё СѓРґРѕР±РЅС‹Рј РґР»СЏ РІР°СЃ.<br>
+РЎ СѓРІР°Р¶РµРЅРёРµРј, РєРѕРјР°РЅРґР° fl.ru<br></span>
                         </td></tr>
                 </tbody></table>
                 
@@ -808,9 +808,9 @@ $eMessage = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://ww
                         
                         <td valign="top" class="mcnTextContent" style="padding-top: 9px;padding-left: 18px;padding-bottom: 9px;padding-right: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #606060;font-family: Helvetica;font-size: 15px;line-height: 150%;text-align: left;">
                         
-                            <span style="color: #696969;font-size: 11px;line-height: 22px;font-family: arial, sans-serif;"><i>PS: Кстати, уже доступны примеры заполненных Типовых услуг:<br>
-- в нашем&nbsp;</i></span><i style="color: #696969;font-family: Helvetica;font-size: 11px;line-height: 22px;"><a href="https://www.fl.ru/users/fl-test/tu/" style="word-wrap: break-word;color: #6DC6DD;font-family: arial, sans-serif;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-weight: normal;text-decoration: underline;" target="_self">тестовом аккаунте</a>;<br>
-<span style="font-family: arial, sans-serif;">- или в&nbsp;<a href="https://www.fl.ru/freelancers/" style="word-wrap: break-word;color: #6DC6DD;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-weight: normal;text-decoration: underline;" target="_self">профилях фрилансеров</a> (для просмотра профилей сначала настройте фильтр каталога, как показано справа).</span></i>
+                            <span style="color: #696969;font-size: 11px;line-height: 22px;font-family: arial, sans-serif;"><i>PS: РљСЃС‚Р°С‚Рё, СѓР¶Рµ РґРѕСЃС‚СѓРїРЅС‹ РїСЂРёРјРµСЂС‹ Р·Р°РїРѕР»РЅРµРЅРЅС‹С… РўРёРїРѕРІС‹С… СѓСЃР»СѓРі:<br>
+- РІ РЅР°С€РµРј&nbsp;</i></span><i style="color: #696969;font-family: Helvetica;font-size: 11px;line-height: 22px;"><a href="https://www.fl.ru/users/fl-test/tu/" style="word-wrap: break-word;color: #6DC6DD;font-family: arial, sans-serif;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-weight: normal;text-decoration: underline;" target="_self">С‚РµСЃС‚РѕРІРѕРј Р°РєРєР°СѓРЅС‚Рµ</a>;<br>
+<span style="font-family: arial, sans-serif;">- РёР»Рё РІ&nbsp;<a href="https://www.fl.ru/freelancers/" style="word-wrap: break-word;color: #6DC6DD;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-weight: normal;text-decoration: underline;" target="_self">РїСЂРѕС„РёР»СЏС… С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</a> (РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° РїСЂРѕС„РёР»РµР№ СЃРЅР°С‡Р°Р»Р° РЅР°СЃС‚СЂРѕР№С‚Рµ С„РёР»СЊС‚СЂ РєР°С‚Р°Р»РѕРіР°, РєР°Рє РїРѕРєР°Р·Р°РЅРѕ СЃРїСЂР°РІР°).</span></i>
                         </td>
                     </tr>
                 </tbody></table>
@@ -872,8 +872,8 @@ $eMessage = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://ww
                     <tbody><tr>
                         
                         <td valign="top" class="mcnTextContent" style="padding-top: 27px;padding-right: 18px;padding-bottom: 9px;padding-left: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #606060;font-family: Helvetica;font-size: 11px;line-height: 125%;text-align: left;">
-                        <span style="font-family:arial,sans-serif;"><em>Copyright © 2014, Все права защищены.</em><br>
-<a href="'."{$eHost}/unsubscribe?ukey=%UNSUBSCRIBE_KEY%".'" target="_self" style="word-wrap: break-word;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #606060;font-weight: normal;text-decoration: underline;">Отписаться от рассылки</a></span>
+                        <span style="font-family:arial,sans-serif;"><em>Copyright В© 2014, Р’СЃРµ РїСЂР°РІР° Р·Р°С‰РёС‰РµРЅС‹.</em><br>
+<a href="'."{$eHost}/unsubscribe?ukey=%UNSUBSCRIBE_KEY%".'" target="_self" style="word-wrap: break-word;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #606060;font-weight: normal;text-decoration: underline;">РћС‚РїРёСЃР°С‚СЊСЃСЏ РѕС‚ СЂР°СЃСЃС‹Р»РєРё</a></span>
                         
                           
                         </td>
@@ -899,7 +899,7 @@ $eMessage = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://ww
 </html>';
 
 // ----------------------------------------------------------------------------------------------------------------
-// -- Рассылка ----------------------------------------------------------------------------------------------------
+// -- Р Р°СЃСЃС‹Р»РєР° ----------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------
 $DB = new DB('master');
 $cnt = 0;
@@ -921,13 +921,13 @@ if (empty($sender)) {
 }
 
 $mail = new smtp;
-$mail->subject = $eSubject;  // заголовок письма
-$mail->message = $eMessage; // текст письма
-$mail->recipient = ''; // свойство 'получатель' оставляем пустым
+$mail->subject = $eSubject;  // Р·Р°РіРѕР»РѕРІРѕРє РїРёСЃСЊРјР°
+$mail->message = $eMessage; // С‚РµРєСЃС‚ РїРёСЃСЊРјР°
+$mail->recipient = ''; // СЃРІРѕР№СЃС‚РІРѕ 'РїРѕР»СѓС‡Р°С‚РµР»СЊ' РѕСЃС‚Р°РІР»СЏРµРј РїСѓСЃС‚С‹Рј
 $spamid = $mail->send('text/html');
 if (!$spamid) die('Failed!');
-// с этого момента рассылка создана, но еще никому не отправлена!
-// допустим нам нужно получить список получателей с какого-либо запроса
+// СЃ СЌС‚РѕРіРѕ РјРѕРјРµРЅС‚Р° СЂР°СЃСЃС‹Р»РєР° СЃРѕР·РґР°РЅР°, РЅРѕ РµС‰Рµ РЅРёРєРѕРјСѓ РЅРµ РѕС‚РїСЂР°РІР»РµРЅР°!
+// РґРѕРїСѓСЃС‚РёРј РЅР°Рј РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РїРѕР»СѓС‡Р°С‚РµР»РµР№ СЃ РєР°РєРѕРіРѕ-Р»РёР±Рѕ Р·Р°РїСЂРѕСЃР°
 $i = 0;
 $mail->recipient = array();
 $res = $DB->query($sql);

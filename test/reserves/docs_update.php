@@ -72,7 +72,7 @@ try
         throw new Exception('No types param');
     }
 
-    //óñïåøíûå ñäåëêè
+    //ÑƒÑÐ¿ÐµÑˆÐ½Ñ‹Ðµ ÑÐ´ÐµÐ»ÐºÐ¸
     $rows = $DB->rows("
         SELECT 
             fro.src_id,
@@ -126,7 +126,7 @@ try
                             array(20,30,40,50,60,70);
                 }
 
-                //Åñëè ðåçåðâ ïî áåçíàëó òî åùå íóæåí è ñ÷åò
+                //Ð•ÑÐ»Ð¸ Ñ€ÐµÐ·ÐµÑ€Ð² Ð¿Ð¾ Ð±ÐµÐ·Ð½Ð°Ð»Ñƒ Ñ‚Ð¾ ÐµÑ‰Ðµ Ð½ÑƒÐ¶ÐµÐ½ Ð¸ ÑÑ‡ÐµÑ‚
                 if (!$reserveInstance->isReserveByService()) {
                     $base_doc_types[] = 5;
                 }

@@ -3,7 +3,7 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/tservices/atservices_model.php");
 
 /**
- * Категории ТУ
+ * РљР°С‚РµРіРѕСЂРёРё РўРЈ
  *
  */
 class tservices_categories extends atservices_model
@@ -17,7 +17,7 @@ class tservices_categories extends atservices_model
 
     
     /**
-     * Получить ID категории ТУ по связной из каталога фрилансеров
+     * РџРѕР»СѓС‡РёС‚СЊ ID РєР°С‚РµРіРѕСЂРёРё РўРЈ РїРѕ СЃРІСЏР·РЅРѕР№ РёР· РєР°С‚Р°Р»РѕРіР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
      * 
      * @param type $prof_group_id
      * @param type $prof_id
@@ -45,7 +45,7 @@ class tservices_categories extends atservices_model
 
 
     /**
-    * Вернуть ID родителя категории
+    * Р’РµСЂРЅСѓС‚СЊ ID СЂРѕРґРёС‚РµР»СЏ РєР°С‚РµРіРѕСЂРёРё
     * 
     * @param type $category_id
     * @return boolean / int
@@ -70,7 +70,7 @@ class tservices_categories extends atservices_model
     
     
     /**
-     * Получаем заголовок категории и его родителя если есть.
+     * РџРѕР»СѓС‡Р°РµРј Р·Р°РіРѕР»РѕРІРѕРє РєР°С‚РµРіРѕСЂРёРё Рё РµРіРѕ СЂРѕРґРёС‚РµР»СЏ РµСЃР»Рё РµСЃС‚СЊ.
      * 
      * @param int $category_id
      * @return row
@@ -96,10 +96,10 @@ class tservices_categories extends atservices_model
     
     
     /**
-     * @deprecated не использовать дубликат getCategoriesByParent(0) 
+     * @deprecated РЅРµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РґСѓР±Р»РёРєР°С‚ getCategoriesByParent(0) 
      * 
-     * Список только родительских категорий
-     * кешируется на 15 минут
+     * РЎРїРёСЃРѕРє С‚РѕР»СЊРєРѕ СЂРѕРґРёС‚РµР»СЊСЃРєРёС… РєР°С‚РµРіРѕСЂРёР№
+     * РєРµС€РёСЂСѓРµС‚СЃСЏ РЅР° 15 РјРёРЅСѓС‚
      * 
      * @return array
      */
@@ -123,10 +123,10 @@ class tservices_categories extends atservices_model
 
 
     /**
-	 * Возвращает список всех категорий
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РІСЃРµС… РєР°С‚РµРіРѕСЂРёР№
 	 *
-	 * @param bool $collectParentChild false = вернуть плоский список категорий, true = вернуть дерево категорий с учётом отношений parent/child
-	 * @param bool $nocache false = прямой запрос в БД, true = кэширование результата
+	 * @param bool $collectParentChild false = РІРµСЂРЅСѓС‚СЊ РїР»РѕСЃРєРёР№ СЃРїРёСЃРѕРє РєР°С‚РµРіРѕСЂРёР№, true = РІРµСЂРЅСѓС‚СЊ РґРµСЂРµРІРѕ РєР°С‚РµРіРѕСЂРёР№ СЃ СѓС‡С‘С‚РѕРј РѕС‚РЅРѕС€РµРЅРёР№ parent/child
+	 * @param bool $nocache false = РїСЂСЏРјРѕР№ Р·Р°РїСЂРѕСЃ РІ Р‘Р”, true = РєСЌС€РёСЂРѕРІР°РЅРёРµ СЂРµР·СѓР»СЊС‚Р°С‚Р°
 	 * @return array
 	 */
 	public function getAllCategories($collectParentChild = false, $nocache = false)
@@ -181,8 +181,8 @@ SQL;
     
     
     /**
-     * Список вложенных подкатегорий
-     * кешируется на 15 минут
+     * РЎРїРёСЃРѕРє РІР»РѕР¶РµРЅРЅС‹С… РїРѕРґРєР°С‚РµРіРѕСЂРёР№
+     * РєРµС€РёСЂСѓРµС‚СЃСЏ РЅР° 15 РјРёРЅСѓС‚
      * 
      * @return array
      */
@@ -204,7 +204,7 @@ SQL;
     
     
 	/**
-	 * Получаем информацию о категории по её ID
+	 * РџРѕР»СѓС‡Р°РµРј РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РєР°С‚РµРіРѕСЂРёРё РїРѕ РµС‘ ID
 	 *
 	 * @param int $category_id
 	 * @return row
@@ -229,7 +229,7 @@ SQL
     
     
 	/**
-	 * Получаем информацию о категории по её символьному алиасу (link)
+	 * РџРѕР»СѓС‡Р°РµРј РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РєР°С‚РµРіРѕСЂРёРё РїРѕ РµС‘ СЃРёРјРІРѕР»СЊРЅРѕРјСѓ Р°Р»РёР°СЃСѓ (link)
 	 *
 	 * @param string $category_link
 	 * @return row
@@ -246,7 +246,7 @@ SQL
 	}
         
         /**
-        * Вернуть ID категории по группе
+        * Р’РµСЂРЅСѓС‚СЊ ID РєР°С‚РµРіРѕСЂРёРё РїРѕ РіСЂСѓРїРїРµ
         * 
         * @param type $gid
         * @return boolean / int
@@ -263,7 +263,7 @@ SQL
         }
         
         /**
-        * Вернуть ID категории по pid 
+        * Р’РµСЂРЅСѓС‚СЊ ID РєР°С‚РµРіРѕСЂРёРё РїРѕ pid 
         * 
         * @param type $pid
         * @return boolean / int
@@ -281,7 +281,7 @@ SQL
         
         
         /**
-         * Пересчет количества пользователей ТУ в данной категории
+         * РџРµСЂРµСЃС‡РµС‚ РєРѕР»РёС‡РµСЃС‚РІР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РўРЈ РІ РґР°РЅРЅРѕР№ РєР°С‚РµРіРѕСЂРёРё
          * 
          * @global type $DB
          * @return type

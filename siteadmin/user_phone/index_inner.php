@@ -1,29 +1,29 @@
-<h3>Пользователи / Мобильные телефоны</h3>
-<!-- Фильтр старт -->
+<h3>РџРѕР»СЊР·РѕРІР°С‚РµР»Рё / РњРѕР±РёР»СЊРЅС‹Рµ С‚РµР»РµС„РѕРЅС‹</h3>
+<!-- Р¤РёР»СЊС‚СЂ СЃС‚Р°СЂС‚ -->
 <a name="a_user_search_filter" id="a_user_search_filter"></a>
 <div class="form form-acnew">
 	<b class="b1"></b>
 	<b class="b2"></b>
 	<div class="form-in">
-        <h4 class="toggle"><a href="javascript:void(0);" onclick="var mySlide = new Fx.Slide('slideBlock').toggle();" class="lnk-dot-666">Фильтр</a></h4>
+        <h4 class="toggle"><a href="javascript:void(0);" onclick="var mySlide = new Fx.Slide('slideBlock').toggle();" class="lnk-dot-666">Р¤РёР»СЊС‚СЂ</a></h4>
         <div id="slideBlock" class="slideBlock">
             <form name="frm_user_phone_filter" id="frm_user_search_filter" method="GET">
                 <input type="hidden" id="cmd" name="cmd" value="filter">
             <div class="form-block first">
                 <div class="form-el">
-                    <label class="form-l">Телефон:</label>
+                    <label class="form-l">РўРµР»РµС„РѕРЅ:</label>
                     <div class="form-value fvs">
                         <input value="<?=$search_phone?>" name="search_phone" id="search_phone" type="text" class="i-txt fvsi" /><br/>
 						<div class="b-check">
 							<input id="search_phone_exact" class="b-check__input" name="search_phone_exact" type="checkbox" value="1" <?=($search_phone_exact ? ' checked="checked"' : '')?> />
-							<label for="search_phone_exact" class="b-check__label b-check__label_fontsize_13">точное совпадение</label>
+							<label for="search_phone_exact" class="b-check__label b-check__label_fontsize_13">С‚РѕС‡РЅРѕРµ СЃРѕРІРїР°РґРµРЅРёРµ</label>
 						</div>
                     </div>
                 </div>
             </div>
             <div class="form-block last">
                 <div class="form-el form-btns">
-                    <button type="submit">Найти</button>
+                    <button type="submit">РќР°Р№С‚Рё</button>
                 </div>
             </div>
             </form>
@@ -32,7 +32,7 @@
 	<b class="b2"></b>
 	<b class="b1"></b>
 </div>
-<!-- Фильтр стоп -->
+<!-- Р¤РёР»СЊС‚СЂ СЃС‚РѕРї -->
 
 <div class="search-lenta">
 
@@ -56,11 +56,11 @@ if ( $users ) {
 									"role"        => $aOne['role']), '', true, '');
             ?><?=$session->view_online_status($aOne['login'], false, '')?><a target="_blank" href="<?=$sObjLink?>" class="<?=(is_emp($aOne['role']) ? 'employer' : 'freelancer')?>-name"><?=$sObjName?></a></h4>
             <div class="safety">
-                <b>Телефон (юр. лицо):</b> <span id="email_value<?=$aOne['uid']?>" class="safetyvalue"><?=$aOne['_2_mob_phone']?></span><br/>
-                <b>Телефон (физ. лицо):</b> <span id="email_value<?=$aOne['uid']?>" class="safetyvalue"><?=$aOne['_1_mob_phone']?></span>
+                <b>РўРµР»РµС„РѕРЅ (СЋСЂ. Р»РёС†Рѕ):</b> <span id="email_value<?=$aOne['uid']?>" class="safetyvalue"><?=$aOne['_2_mob_phone']?></span><br/>
+                <b>РўРµР»РµС„РѕРЅ (С„РёР·. Р»РёС†Рѕ):</b> <span id="email_value<?=$aOne['uid']?>" class="safetyvalue"><?=$aOne['_1_mob_phone']?></span>
             </div>
             <div class="safety">
-                <a href="<?=$sObjLink?>/setup/finance/" target="_blank" class="lnk-dot-999">Изменить</a>
+                <a href="<?=$sObjLink?>/setup/finance/" target="_blank" class="lnk-dot-999">РР·РјРµРЅРёС‚СЊ</a>
             </div>
         </div>
     </div>
@@ -73,7 +73,7 @@ if ( $users ) {
         echo get_pager2( $pages, $page, $sHref );
     }
 } elseif ( $cmd == 'filter' ) { ?>
-    Нет пользователей, удовлетворяющих условиям выборки
+    РќРµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё
 <?php } //elseif?>
 
 </div>

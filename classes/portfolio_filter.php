@@ -1,22 +1,22 @@
 <?
 /**
- * Подключаем файл с основными функциями
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» СЃ РѕСЃРЅРѕРІРЅС‹РјРё С„СѓРЅРєС†РёСЏРјРё
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
- * Управление фильтрами работ (портфолио).
+ * РЈРїСЂР°РІР»РµРЅРёРµ С„РёР»СЊС‚СЂР°РјРё СЂР°Р±РѕС‚ (РїРѕСЂС‚С„РѕР»РёРѕ).
  */
 class portfolio_filters
 {
 	
 	/**
-	 * Сохранение фильтра пользователя.
+	 * РЎРѕС…СЂР°РЅРµРЅРёРµ С„РёР»СЊС‚СЂР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 	 *
-	 * @param integer $user_id код пользорвателя
-	 * @param real $cost_from минимальная стоимость
-	 * @param real $cost_to максимальная стоимость
-	 * @param integer $cost_type тип валюты
+	 * @param integer $user_id РєРѕРґ РїРѕР»СЊР·РѕСЂРІР°С‚РµР»СЏ
+	 * @param real $cost_from РјРёРЅРёРјР°Р»СЊРЅР°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ
+	 * @param real $cost_to РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ
+	 * @param integer $cost_type С‚РёРї РІР°Р»СЋС‚С‹
 	 * @param string $rerror
 	 * @param string $error
 	 * @param integer $force
@@ -30,18 +30,18 @@ class portfolio_filters
 	}
 
 	/**
-	 * Добавление фильтра конкретного пользователя.
+	 * Р”РѕР±Р°РІР»РµРЅРёРµ С„РёР»СЊС‚СЂР° РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 	 *
-	 * @todo Значние $force, не используется в функции
+	 * @todo Р—РЅР°С‡РЅРёРµ $force, РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ С„СѓРЅРєС†РёРё
 	 * 
-	 * @global array $session Сессия пользователя
+	 * @global array $session РЎРµСЃСЃРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	 * 
-	 * @param integer $user_id код пользорвателя
-	 * @param real $cost_from минимальная стоимость
-	 * @param real $cost_to максимальная стоимость
-	 * @param integer $cost_type тип валюты
-	 * @param integer $force  Не применяется в функции 
-	 * @return string сообщение об ошибке или пустая строка
+	 * @param integer $user_id РєРѕРґ РїРѕР»СЊР·РѕСЂРІР°С‚РµР»СЏ
+	 * @param real $cost_from РјРёРЅРёРјР°Р»СЊРЅР°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ
+	 * @param real $cost_to РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ
+	 * @param integer $cost_type С‚РёРї РІР°Р»СЋС‚С‹
+	 * @param integer $force  РќРµ РїСЂРёРјРµРЅСЏРµС‚СЃСЏ РІ С„СѓРЅРєС†РёРё 
+	 * @return string СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°
 	 */
 	function Add($user_id, $cost_from, $cost_to, $cost_type, $force=0) {
 		global $session;
@@ -69,18 +69,18 @@ class portfolio_filters
 	}
 
 	/**
-	 * Сохранение существующего фильтра конкретного пользвателя.
+	 * РЎРѕС…СЂР°РЅРµРЅРёРµ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРіРѕ С„РёР»СЊС‚СЂР° РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РїРѕР»СЊР·РІР°С‚РµР»СЏ.
 	 *
-	 * @todo Значние $force, не используется в функции
+	 * @todo Р—РЅР°С‡РЅРёРµ $force, РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ С„СѓРЅРєС†РёРё
 	 * 
-	 * @global array $session Сессия пользователя
+	 * @global array $session РЎРµСЃСЃРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	 * 
-	 * @param integer $user_id код пользорвателя
-	 * @param real $cost_from минимальная стоимость
-	 * @param real $cost_to максимальная стоимость
-	 * @param integer $cost_type тип валюты
+	 * @param integer $user_id РєРѕРґ РїРѕР»СЊР·РѕСЂРІР°С‚РµР»СЏ
+	 * @param real $cost_from РјРёРЅРёРјР°Р»СЊРЅР°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ
+	 * @param real $cost_to РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ
+	 * @param integer $cost_type С‚РёРї РІР°Р»СЋС‚С‹
 	 * @param integer $force
-	 * @return string сообщение об ошибке или пустая строка
+	 * @return string СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°
 	 */
 	function Update($user_id, $cost_from, $cost_to, $cost_type, $force=0) {
 	    $cost_from = intval(str_replace(" ", "", $cost_from) * 100) / 100;
@@ -107,9 +107,9 @@ class portfolio_filters
 	}
 	
 	/**
-	 * Активируем фильтр
+	 * РђРєС‚РёРІРёСЂСѓРµРј С„РёР»СЊС‚СЂ
 	 *
-	 * @param integer $user_id ИД Пользователя
+	 * @param integer $user_id РР” РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	 */
 	function setActive($user_id) {
 	   global $session; 
@@ -123,13 +123,13 @@ class portfolio_filters
 	}
 
   /**
-   * Получение фильтра конкретного юзера.
+   * РџРѕР»СѓС‡РµРЅРёРµ С„РёР»СЊС‚СЂР° РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ СЋР·РµСЂР°.
    *
-   * @global array $session Сессия пользователя
+   * @global array $session РЎРµСЃСЃРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
    * 
-   * @param integer $user_id код юзера
-   * @param string $error Возвращает сообщение об ошибке или пустая строка
-   * @return array фильтр
+   * @param integer $user_id РєРѕРґ СЋР·РµСЂР°
+   * @param string $error Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°
+   * @return array С„РёР»СЊС‚СЂ
    */
 	function GetFilter($user_id, &$error) {
 		if ($user_id > 0) {
@@ -167,12 +167,12 @@ class portfolio_filters
 	}
 	
   /**
-   * Удаление фильтра конкретного юзера
+   * РЈРґР°Р»РµРЅРёРµ С„РёР»СЊС‚СЂР° РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ СЋР·РµСЂР°
    *
-   * @global array $session Сессия пользователя
+   * @global array $session РЎРµСЃСЃРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
    * 
-   * @param integer $user_id ИД пользователя
-   * @return string сообщение об ошибке или пустая строка
+   * @param integer $user_id РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+   * @return string СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°
    */
 	function DeleteFilter($user_id)
 	{
@@ -192,12 +192,12 @@ class portfolio_filters
 	}
 
   /**
-   * Проверка существования фильтра конкретного юзера
+   * РџСЂРѕРІРµСЂРєР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ С„РёР»СЊС‚СЂР° РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ СЋР·РµСЂР°
    *
-   * @global array $session Сессия пользователя
+   * @global array $session РЎРµСЃСЃРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
    * 
-   * @param integer $user_id ИД ПОльзователя
-   * @return boolean true, если фмльтр существует, false, если нет
+   * @param integer $user_id РР” РџРћР»СЊР·РѕРІР°С‚РµР»СЏ
+   * @return boolean true, РµСЃР»Рё С„РјР»СЊС‚СЂ СЃСѓС‰РµСЃС‚РІСѓРµС‚, false, РµСЃР»Рё РЅРµС‚
    */
 	function IsFilter($user_id)
 	{
@@ -213,11 +213,11 @@ class portfolio_filters
 	}
 
 	/**
-	 * Формирование текстового пояснения к фильтру.
+	 * Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ С‚РµРєСЃС‚РѕРІРѕРіРѕ РїРѕСЏСЃРЅРµРЅРёСЏ Рє С„РёР»СЊС‚СЂСѓ.
 	 *
-	 * @param array $filter фильтр
-	 * @param boolean $filter_apply применен фильтр или нет
-	 * @return string текстовое пояснение к фильтру
+	 * @param array $filter С„РёР»СЊС‚СЂ
+	 * @param boolean $filter_apply РїСЂРёРјРµРЅРµРЅ С„РёР»СЊС‚СЂ РёР»Рё РЅРµС‚
+	 * @return string С‚РµРєСЃС‚РѕРІРѕРµ РїРѕСЏСЃРЅРµРЅРёРµ Рє С„РёР»СЊС‚СЂСѓ
 	 */
 	function GetDescription($filter, $filter_apply)
 	{
@@ -226,24 +226,24 @@ class portfolio_filters
 	  {
 	    if ((isset($filter['cost_from']) && !empty($filter['cost_from'])) || (isset($filter['cost_to']) && !empty($filter['cost_to'])))
 	    {
- 	      $ret .= (($ret =='') ? '' : ' ') . 'стоимость работы ';
+ 	      $ret .= (($ret =='') ? '' : ' ') . 'СЃС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹ ';
 
 	      $ret .= view_range_cost2($filter['cost_from'], $filter['cost_to'], '', '', false, $filter['cost_type']);
 /*
   	    if (isset($filter['cost_from']) && !empty($filter['cost_from']))
   	    {
-  	      $ret .= (($ret =='') ? '' : ' ') . 'от $' . $filter['cost_from'];
+  	      $ret .= (($ret =='') ? '' : ' ') . 'РѕС‚ $' . $filter['cost_from'];
   	    }
   	    if (isset($filter['cost_to']) && !empty($filter['cost_to']))
   	    {
-  	      $ret .= (($ret =='') ? '' : ' ') . 'до $' . $filter['cost_to'];
+  	      $ret .= (($ret =='') ? '' : ' ') . 'РґРѕ $' . $filter['cost_to'];
   	    }
 */
 	    }
 	  }
 	  else
 	  {
-	    $ret = 'отключен';
+	    $ret = 'РѕС‚РєР»СЋС‡РµРЅ';
 	  }
 	  return $ret;
 	}

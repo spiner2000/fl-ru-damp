@@ -4,80 +4,80 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/tservices/tservices_helper.ph
 define('SITEMAP_PUBLIC_HOST', 'https://www.fl.ru');
 
 /**
- * Класс для создания карты сайта
+ * РљР»Р°СЃСЃ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РєР°СЂС‚С‹ СЃР°Р№С‚Р°
  *
  */
 class sitemap
 {
 
     /**
-     * Адрес всех генерируемых ссылок
+     * РђРґСЂРµСЃ РІСЃРµС… РіРµРЅРµСЂРёСЂСѓРµРјС‹С… СЃСЃС‹Р»РѕРє
      *
      */
     const PUBLIC_HOST = SITEMAP_PUBLIC_HOST;
     /**
-     * Начало файла карты сайта
+     * РќР°С‡Р°Р»Рѕ С„Р°Р№Р»Р° РєР°СЂС‚С‹ СЃР°Р№С‚Р°
      *
      */
     const SITEMAP_HEADER = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">";
     /**
-     * Конец файла карты сайта
+     * РљРѕРЅРµС† С„Р°Р№Р»Р° РєР°СЂС‚С‹ СЃР°Р№С‚Р°
      *
      */
     const SITEMAP_FOOTER = "</urlset>";
     /**
-     * Начало файла индекса
+     * РќР°С‡Р°Р»Рѕ С„Р°Р№Р»Р° РёРЅРґРµРєСЃР°
      *
      */
     const SITEINDEX_HEADER = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">"; 
 
     /**
-     * Конец файла индекса
+     * РљРѕРЅРµС† С„Р°Р№Р»Р° РёРЅРґРµРєСЃР°
      *
      */
     const SITEINDEX_FOOTER = "</sitemapindex>";
     
     /**
-     * Максимальный размер одного файла
+     * РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°
      *
      */
     const MAX_SIZE_FILE  = 10485760;
     
     /**
-     * Максимальное количество ссылок в одном файле
+     * РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃСЃС‹Р»РѕРє РІ РѕРґРЅРѕРј С„Р°Р№Р»Рµ
      *
      */
     const MAX_SIZE_COUNT = 50000;
     
     /**
-     * Папка где будут находится файлы карты сайта
+     * РџР°РїРєР° РіРґРµ Р±СѓРґСѓС‚ РЅР°С…РѕРґРёС‚СЃСЏ С„Р°Р№Р»С‹ РєР°СЂС‚С‹ СЃР°Р№С‚Р°
      *
      * @var unknown_type
      */
     public $folder_name = "/sitemap/";
     public $folder_name2 = "/flru/sitemap/";
     /**
-     * Шаблон названия файла карты
+     * РЁР°Р±Р»РѕРЅ РЅР°Р·РІР°РЅРёСЏ С„Р°Р№Р»Р° РєР°СЂС‚С‹
      *
      * @var string
      */
     public $fname_sitemap   = '%s%s.xml';
     /**
-     * Шаблон названия файла индекса карты 
+     * РЁР°Р±Р»РѕРЅ РЅР°Р·РІР°РЅРёСЏ С„Р°Р№Р»Р° РёРЅРґРµРєСЃР° РєР°СЂС‚С‹ 
      *
      * @var string
      */
     public $fname_siteindex = '%s_index.xml';
     
     /**
-     * Имя индексного файла.
+     * РРјСЏ РёРЅРґРµРєСЃРЅРѕРіРѕ С„Р°Р№Р»Р°.
      * @var string
      */
     public $index_name;
     
     public $limit_one_operation = 1000;
     /**
-     * Проверка окончания генерации карты 
+     * РџСЂРѕРІРµСЂРєР° РѕРєРѕРЅС‡Р°РЅРёСЏ РіРµРЅРµСЂР°С†РёРё РєР°СЂС‚С‹ 
      *
      * @var boolean
      */
@@ -87,7 +87,7 @@ class sitemap
     public $siteindex_lngth;
     
 
-    // Типы карт. 
+    // РўРёРїС‹ РєР°СЂС‚. 
     const TYPE_BLOGS     = 'blogs';
     const TYPE_PROJECTS  = 'projects';
     const TYPE_COMMUNE   = 'commune';
@@ -101,7 +101,7 @@ class sitemap
     const TYPE_TSERVICES = 'tservices';
     
     
-    // Параметры типов карт.
+    // РџР°СЂР°РјРµС‚СЂС‹ С‚РёРїРѕРІ РєР°СЂС‚.
     static $types = array (
        self::TYPE_BLOGS     => array('priority'=> 0.8),
        self::TYPE_PROJECTS  => array('priority'=> 0.9),
@@ -118,8 +118,8 @@ class sitemap
 
     
     /**
-     * Конструктор карты.
-     * @param string $type   тип. карты.
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР°СЂС‚С‹.
+     * @param string $type   С‚РёРї. РєР°СЂС‚С‹.
      */
     function __construct($type) {
         $this->type = $type;
@@ -136,7 +136,7 @@ class sitemap
             mkdir($this->folder);
         }
         
-        // Для отладки.
+        // Р”Р»СЏ РѕС‚Р»Р°РґРєРё.
         if($this->limit_one_operation > self::MAX_SIZE_COUNT) {
             $this->limit_one_operation = self::MAX_SIZE_COUNT;
         }
@@ -144,10 +144,10 @@ class sitemap
     
     
     /**
-     * Создает карту нужного типа с нуля.
+     * РЎРѕР·РґР°РµС‚ РєР°СЂС‚Сѓ РЅСѓР¶РЅРѕРіРѕ С‚РёРїР° СЃ РЅСѓР»СЏ.
      *
-     * @param string $type   тип. карты.
-     * @param boolean $send   отправлять ли в гугул индекс.
+     * @param string $type   С‚РёРї. РєР°СЂС‚С‹.
+     * @param boolean $send   РѕС‚РїСЂР°РІР»СЏС‚СЊ Р»Рё РІ РіСѓРіСѓР» РёРЅРґРµРєСЃ.
      */
     static function create($type, $send = true) {
        $smap = new sitemap($type);
@@ -155,10 +155,10 @@ class sitemap
     }
     
     /**
-     * Обновляет (дописывает новыми данными) карту нужного типа.
+     * РћР±РЅРѕРІР»СЏРµС‚ (РґРѕРїРёСЃС‹РІР°РµС‚ РЅРѕРІС‹РјРё РґР°РЅРЅС‹РјРё) РєР°СЂС‚Сѓ РЅСѓР¶РЅРѕРіРѕ С‚РёРїР°.
      *
-     * @param string $type   тип. карты.
-     * @param boolean $send   отправлять ли в гугул индекс.
+     * @param string $type   С‚РёРї. РєР°СЂС‚С‹.
+     * @param boolean $send   РѕС‚РїСЂР°РІР»СЏС‚СЊ Р»Рё РІ РіСѓРіСѓР» РёРЅРґРµРєСЃ.
      */
     static function update($type, $send = true) {
        $smap = new sitemap($type);
@@ -166,8 +166,8 @@ class sitemap
     }
     
     /**
-     * Создает с нуля карту
-     * @param boolean $send   отправлять ли в гугул индекс.
+     * РЎРѕР·РґР°РµС‚ СЃ РЅСѓР»СЏ РєР°СЂС‚Сѓ
+     * @param boolean $send   РѕС‚РїСЂР°РІР»СЏС‚СЊ Р»Рё РІ РіСѓРіСѓР» РёРЅРґРµРєСЃ.
      */
     function _create($send = true) {
         echo "creating {$this->type} sitemap...\r\n";
@@ -182,8 +182,8 @@ class sitemap
 
     
     /**
-     * Проверка на новые ссылки и обновление файлов карты сайта
-     * @param boolean $send   отправлять ли в гугул индекс.
+     * РџСЂРѕРІРµСЂРєР° РЅР° РЅРѕРІС‹Рµ СЃСЃС‹Р»РєРё Рё РѕР±РЅРѕРІР»РµРЅРёРµ С„Р°Р№Р»РѕРІ РєР°СЂС‚С‹ СЃР°Р№С‚Р°
+     * @param boolean $send   РѕС‚РїСЂР°РІР»СЏС‚СЊ Р»Рё РІ РіСѓРіСѓР» РёРЅРґРµРєСЃ.
      */
     public function _update($send = true) {
         global $DB;
@@ -196,7 +196,7 @@ class sitemap
     
     
     /**
-     * Отправляет файл индекса в гугл.
+     * РћС‚РїСЂР°РІР»СЏРµС‚ С„Р°Р№Р» РёРЅРґРµРєСЃР° РІ РіСѓРіР».
      */
     function send() {
         if(!is_release()) return;
@@ -209,7 +209,7 @@ class sitemap
     
     
     /**
-     * Создание файла индексов
+     * РЎРѕР·РґР°РЅРёРµ С„Р°Р№Р»Р° РёРЅРґРµРєСЃРѕРІ
      *
      */
     function createFilesSiteindex() {
@@ -219,9 +219,9 @@ class sitemap
     }
     
     /**
-     * Создание xml индексов
+     * РЎРѕР·РґР°РЅРёРµ xml РёРЅРґРµРєСЃРѕРІ
      *
-     * @param array $idx Данные по файлам
+     * @param array $idx Р”Р°РЅРЅС‹Рµ РїРѕ С„Р°Р№Р»Р°Рј
      * @return string
      */
     function getSiteindexXml($idx) {
@@ -232,9 +232,9 @@ class sitemap
     }
     
     /**
-     * Создание xml карты сайта
+     * РЎРѕР·РґР°РЅРёРµ xml РєР°СЂС‚С‹ СЃР°Р№С‚Р°
      *
-     * @param array $url Данные по ссылки
+     * @param array $url Р”Р°РЅРЅС‹Рµ РїРѕ СЃСЃС‹Р»РєРё
      * @return string
      */
     function getSitemapXml($url) {
@@ -245,9 +245,9 @@ class sitemap
     }
     
     /**
-     * Создать файлы карты сайта и индексов
+     * РЎРѕР·РґР°С‚СЊ С„Р°Р№Р»С‹ РєР°СЂС‚С‹ СЃР°Р№С‚Р° Рё РёРЅРґРµРєСЃРѕРІ
      *
-     * @param array $urls    Ссылки для создания
+     * @param array $urls    РЎСЃС‹Р»РєРё РґР»СЏ СЃРѕР·РґР°РЅРёСЏ
      * @return array
      */
     function createFilesSitemap($urls=false) {
@@ -274,12 +274,12 @@ class sitemap
     }
     
     /**
-     * Создание одного файла карты сайта
+     * РЎРѕР·РґР°РЅРёРµ РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р° РєР°СЂС‚С‹ СЃР°Р№С‚Р°
      *  
-     * @param integer $x   Стартовая позиция
-     * @param integer $key Номер файла
-     * @param integer $end Условие конца работы создания
-     * @return integer Возвращает следующую стартовую позицию
+     * @param integer $x   РЎС‚Р°СЂС‚РѕРІР°СЏ РїРѕР·РёС†РёСЏ
+     * @param integer $key РќРѕРјРµСЂ С„Р°Р№Р»Р°
+     * @param integer $end РЈСЃР»РѕРІРёРµ РєРѕРЅС†Р° СЂР°Р±РѕС‚С‹ СЃРѕР·РґР°РЅРёСЏ
+     * @return integer Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃР»РµРґСѓСЋС‰СѓСЋ СЃС‚Р°СЂС‚РѕРІСѓСЋ РїРѕР·РёС†РёСЋ
      */
     function createOneFilesSitemap($x=0, &$key=0, $end=false) {
         if($this->end) return false;
@@ -293,7 +293,7 @@ class sitemap
             $ret = $this->getSitemapUrls($key);
             if(is_array($ret[$key])) $url = array_merge($url, $ret[$key]);
             if(count($ret[$key]) < $this->limit_one_operation || $offset > 20000000) {
-                // Больше в базе данных нет
+                // Р‘РѕР»СЊС€Рµ РІ Р±Р°Р·Рµ РґР°РЅРЅС‹С… РЅРµС‚
                 $this->end = true;
                 $this->new = true;
                 break; 
@@ -307,9 +307,9 @@ class sitemap
     }
     
     /**
-     * Генерирует данные для карты сайта
+     * Р“РµРЅРµСЂРёСЂСѓРµС‚ РґР°РЅРЅС‹Рµ РґР»СЏ РєР°СЂС‚С‹ СЃР°Р№С‚Р°
      *
-     * @param inetger $key Номер файла
+     * @param inetger $key РќРѕРјРµСЂ С„Р°Р№Р»Р°
      * @return array
      */
     function getSitemapUrls($key=0) {
@@ -406,7 +406,7 @@ class sitemap
             }            
             $strlen = $strlen+strlen($x);
             
-            // Максимальный вес файла
+            // РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РІРµСЃ С„Р°Р№Р»Р°
             if($strlen >= sitemap::MAX_SIZE_FILE) {
                 $strlen = $this->sitemap_lngth;
                 $key = $key+1;
@@ -414,7 +414,7 @@ class sitemap
             
             $ret[$key][] = $x;
             
-            // Максимальное количество ссылок
+            // РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃСЃС‹Р»РѕРє
             if(count($ret[$key]) >= (sitemap::MAX_SIZE_COUNT/($this->type=='userpages' ? 5 : 1)) ) {
                 $strlen = $this->sitemap_lngth;
                 $key = $key+1;        
@@ -427,7 +427,7 @@ class sitemap
     }
     
     /**
-     * Очищаем данные счетчик
+     * РћС‡РёС‰Р°РµРј РґР°РЅРЅС‹Рµ СЃС‡РµС‚С‡РёРє
      *
      */
     public function clear_count() {
@@ -436,11 +436,11 @@ class sitemap
     }
     
     /**
-     * Сохраняем данные счетчика
+     * РЎРѕС…СЂР°РЅСЏРµРј РґР°РЅРЅС‹Рµ СЃС‡РµС‚С‡РёРєР°
      *
-     * @param integer $count    Количество ссылок в файле
-     * @param integer $end_date Последняя дата
-     * @param integer $n        Количество файлов    
+     * @param integer $count    РљРѕР»РёС‡РµСЃС‚РІРѕ СЃСЃС‹Р»РѕРє РІ С„Р°Р№Р»Рµ
+     * @param integer $end_date РџРѕСЃР»РµРґРЅСЏСЏ РґР°С‚Р°
+     * @param integer $n        РљРѕР»РёС‡РµСЃС‚РІРѕ С„Р°Р№Р»РѕРІ    
      */
     public function saveCount($count, $end_date, $n) {
         global $DB;
@@ -461,9 +461,9 @@ class sitemap
 
     
     /**
-     * Обновляем сами файлы
+     * РћР±РЅРѕРІР»СЏРµРј СЃР°РјРё С„Р°Р№Р»С‹
      *  
-     * @param array   $data    Данные для обновления
+     * @param array   $data    Р”Р°РЅРЅС‹Рµ РґР»СЏ РѕР±РЅРѕРІР»РµРЅРёСЏ
      * @return bolean
      */
     public function update_file($data) {
@@ -475,11 +475,11 @@ class sitemap
         if($new_count >= sitemap::MAX_SIZE_COUNT / ($this->type=='userpages' ? 5 : 1)) {
             $new_file_count = $new_count - sitemap::MAX_SIZE_COUNT / ($this->type=='userpages' ? 5 : 1);
             
-            // Эти данные дозапишут _new файл который после записи переименуем в N+1
+            // Р­С‚Рё РґР°РЅРЅС‹Рµ РґРѕР·Р°РїРёС€СѓС‚ _new С„Р°Р№Р» РєРѕС‚РѕСЂС‹Р№ РїРѕСЃР»Рµ Р·Р°РїРёСЃРё РїРµСЂРµРёРјРµРЅСѓРµРј РІ N+1
             for($i=0;$i<$sizeof-$new_file_count;$i++) {
                 $old_file_data[] = $result[0][$i];
             }
-            // Эти данные пойдут в новый _new файл
+            // Р­С‚Рё РґР°РЅРЅС‹Рµ РїРѕР№РґСѓС‚ РІ РЅРѕРІС‹Р№ _new С„Р°Р№Р»
             for($i=$sizeof-$new_file_count;$i<$sizeof;$i++) {
                 $new_file_data[] = $result[0][$i];
             }
@@ -537,10 +537,10 @@ class sitemap
     }
     
     /**
-     * Дописываем данные в файл типа _new
+     * Р”РѕРїРёСЃС‹РІР°РµРј РґР°РЅРЅС‹Рµ РІ С„Р°Р№Р» С‚РёРїР° _new
      *
-     * @param string $filename    Имя файла
-     * @param string $xml         Данные которые необходимо дописать
+     * @param string $filename    РРјСЏ С„Р°Р№Р»Р°
+     * @param string $xml         Р”Р°РЅРЅС‹Рµ РєРѕС‚РѕСЂС‹Рµ РЅРµРѕР±С…РѕРґРёРјРѕ РґРѕРїРёСЃР°С‚СЊ
      */
     function save_new_file($filename, $xml) {
         $filesize = filesize($filename);
@@ -551,10 +551,10 @@ class sitemap
     }
     
     /**
-     * Обновление данных в файле индекса
+     * РћР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… РІ С„Р°Р№Р»Рµ РёРЅРґРµРєСЃР°
      *
-     * @param string  $loc         Ссылка на карту сайта    
-     * @param boolean $delete      Удалять или нет последний индекс (для перезаписи)  
+     * @param string  $loc         РЎСЃС‹Р»РєР° РЅР° РєР°СЂС‚Сѓ СЃР°Р№С‚Р°    
+     * @param boolean $delete      РЈРґР°Р»СЏС‚СЊ РёР»Рё РЅРµС‚ РїРѕСЃР»РµРґРЅРёР№ РёРЅРґРµРєСЃ (РґР»СЏ РїРµСЂРµР·Р°РїРёСЃРё)  
      */
     function update_index_file($loc, $delete=false) {
         libxml_disable_entity_loader();
@@ -581,7 +581,7 @@ class sitemap
     }
 
     /**
-     * Генерация главного файла sitemap.xml
+     * Р“РµРЅРµСЂР°С†РёСЏ РіР»Р°РІРЅРѕРіРѕ С„Р°Р№Р»Р° sitemap.xml
      *
      */
     function generateMainSitemap() {

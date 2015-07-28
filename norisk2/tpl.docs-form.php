@@ -1,4 +1,4 @@
-<h3><?=($is_edit ? 'Редактировать документ' : 'Новый документ')?></h3>
+<h3><?=($is_edit ? 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РґРѕРєСѓРјРµРЅС‚' : 'РќРѕРІС‹Р№ РґРѕРєСѓРјРµРЅС‚')?></h3>
 <div class="form form-nr-docs-add<?=($is_edit ? ' form-nr-docs-edit' : '')?>">
 	<b class="b1"></b>
 	<b class="b2"></b>
@@ -6,18 +6,18 @@
           <form action="." method="post" enctype="multipart/form-data" id="<?=($is_edit ? 'docsEditFrm' : 'docsAddFrm')?>">
               <div class="form-block first">
                   <div class="form-el">
-                      <label class="form-label3">Название документа:</label>
+                      <label class="form-label3">РќР°Р·РІР°РЅРёРµ РґРѕРєСѓРјРµРЅС‚Р°:</label>
                       <span class="nra-doc-title">
                           <input type="text" name="name" value="<?=html_attr($doc['name'])?>" maxlength="40" />
                       </span>
                       <div class="tip" style="left:585px"></div>
-                      <span class="form-hint">Максимум 40 символов</span>
+                      <span class="form-hint">РњР°РєСЃРёРјСѓРј 40 СЃРёРјРІРѕР»РѕРІ</span>
                   </div>
                   <div class="form-el">
-                      <label class="form-label3">Этап проекта:</label>
+                      <label class="form-label3">Р­С‚Р°Рї РїСЂРѕРµРєС‚Р°:</label>
                       <span class="nra-doc-sel">
                           <select name="stage_id">
-                              <option value="0">Весь проект</option>
+                              <option value="0">Р’РµСЃСЊ РїСЂРѕРµРєС‚</option>
                               <? foreach($sbr->stages as $stg) { ?>
                               <option value="<?=$stg->id?>"<?=($stg->id==$stage_id ? ' selected="true"' : '')?>><?=$stg->getOuterNum().': '.$stg->name?></option>
                               <? } ?>
@@ -25,7 +25,7 @@
                       </span>
                   </div>
                   <div class="form-el">
-                      <label class="form-label3">Тип документа:</label>
+                      <label class="form-label3">РўРёРї РґРѕРєСѓРјРµРЅС‚Р°:</label>
                       <span class="nra-doc-sel">
                           <select name="type">
                               <?
@@ -38,27 +38,27 @@
                       </span>
                   </div>
                   <div class="form-el">
-                      <label class="form-label3">Выберите файл:</label>
+                      <label class="form-label3">Р’С‹Р±РµСЂРёС‚Рµ С„Р°Р№Р»:</label>
                       <span class="nra-docs-file">
                           <? if($is_edit) { ?>
                             <ul class="form-files-added">
                                 <li>
-                                    <? /* <a href="javascript:;" title="Удалить" onclick=""><img src="/images/btn-remove2.png" alt="Удалить" /></a> */ ?><a href="<?=WDCPREFIX.'/'.$doc['file_path'].$doc['file_name']?>" target="_blank" class="mime <?=CFile::getext($doc['file_name'])?>"><?=$doc['file_name']?></a>
+                                    <? /* <a href="javascript:;" title="РЈРґР°Р»РёС‚СЊ" onclick=""><img src="/images/btn-remove2.png" alt="РЈРґР°Р»РёС‚СЊ" /></a> */ ?><a href="<?=WDCPREFIX.'/'.$doc['file_path'].$doc['file_name']?>" target="_blank" class="mime <?=CFile::getext($doc['file_name'])?>"><?=$doc['file_name']?></a>
                                 </li>
                             </ul>
                           <? } ?>
                           <span class="form-hint">
-                              2 МБ: DOC, DOCX, ZIP, RAR, PDF и др.
+                              2 РњР‘: DOC, DOCX, ZIP, RAR, PDF Рё РґСЂ.
                           </span>
                           <input type="file" name="attach" size="23" />
                       </span>
                       <? if($doc['file_id']) { ?>
-                        <span class="form-hint">Существующий файл будет заменен новым</span>
+                        <span class="form-hint">РЎСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ С„Р°Р№Р» Р±СѓРґРµС‚ Р·Р°РјРµРЅРµРЅ РЅРѕРІС‹Рј</span>
                       <? } ?>
                   </div>
                   <? if($sbr->isAdmin()) { ?>
                     <div class="form-el">
-                        <label class="form-label3">Статус документа:</label>
+                        <label class="form-label3">РЎС‚Р°С‚СѓСЃ РґРѕРєСѓРјРµРЅС‚Р°:</label>
                         <span class="nra-doc-sel">
                             <select name="status">
                                 <? foreach(sbr::$docs_ss as $id=>$val) { ?>
@@ -68,7 +68,7 @@
                         </span>
                     </div>
                     <div class="form-el">
-                        <label class="form-label3">Доступ просмотра:</label>
+                        <label class="form-label3">Р”РѕСЃС‚СѓРї РїСЂРѕСЃРјРѕС‚СЂР°:</label>
                         <span class="nra-doc-sel">
                             <select name="access_role">
                                 <? foreach(sbr::$docs_access as $id=>$val) { ?>
@@ -81,7 +81,7 @@
               </div>
               <div class="form-block last">
                   <div class="form-btn">
-                      <input type="submit" value="<?=($is_edit ? 'Редактировать' : 'Загрузить документ')?>" class="i-bold i-btn" />
+                      <input type="submit" value="<?=($is_edit ? 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ' : 'Р—Р°РіСЂСѓР·РёС‚СЊ РґРѕРєСѓРјРµРЅС‚')?>" class="i-bold i-btn" />
                   </div>
               </div>
               <input type="hidden" name="site" value="docs" />

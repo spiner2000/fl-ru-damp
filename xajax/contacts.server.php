@@ -11,10 +11,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/memBuff.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/users.php");
 
 /**
- * Возвращает автоматические папки для массовых рассылок личных менеджеров.
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРёРµ РїР°РїРєРё РґР»СЏ РјР°СЃСЃРѕРІС‹С… СЂР°СЃСЃС‹Р»РѕРє Р»РёС‡РЅС‹С… РјРµРЅРµРґР¶РµСЂРѕРІ.
  *
- * @param  string $sUid UID пользователя
- * @param  string $sYear год создания папки
+ * @param  string $sUid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param  string $sYear РіРѕРґ СЃРѕР·РґР°РЅРёСЏ РїР°РїРєРё
  * @param  string $sOffset SQL OFFSET
  * @return object xajaxResponse
  */
@@ -35,7 +35,7 @@ function PmFolders( $sUid = 0, $sYear = 0, $sOffset = 0 ) {
             $bNext     = ( ($nNext = $nOffset + messages::PM_AUTOFOLDERS_PP) + 1 <= $nFolders );
             $bPrev     = ( ($nPrev = $nOffset - messages::PM_AUTOFOLDERS_PP) >= 0 );
             
-            $sHtml = '<h3>Ответы на платные рассылки</h3><ul class="archive-year c">';
+            $sHtml = '<h3>РћС‚РІРµС‚С‹ РЅР° РїР»Р°С‚РЅС‹Рµ СЂР°СЃСЃС‹Р»РєРё</h3><ul class="archive-year c">';
             
             sort( $aYears );
             $aYears = array_reverse( $aYears );
@@ -63,9 +63,9 @@ function PmFolders( $sUid = 0, $sYear = 0, $sOffset = 0 ) {
             
             if ($nNext || $bPrev ) {
             $sHtml .= '<p class="archive-prev">
-                '. ($bPrev ? '<a onclick="xajax_PmFolders('. $sUid .', '. $sCurrYear .', '. $nPrev .');" href="javascript:void(0);" class="lnk-dot-grey">&laquo;Следующие</a>' : '') .'
+                '. ($bPrev ? '<a onclick="xajax_PmFolders('. $sUid .', '. $sCurrYear .', '. $nPrev .');" href="javascript:void(0);" class="lnk-dot-grey">&laquo;РЎР»РµРґСѓСЋС‰РёРµ</a>' : '') .'
                 '. ( $bNext && $bPrev ? '&nbsp;|&nbsp;' : '' ) .'
-                '. ($bNext ? '<a onclick="xajax_PmFolders('. $sUid .', '. $sCurrYear .', '. $nNext .');" href="javascript:void(0);" class="lnk-dot-grey">Предыдущие&raquo;</a>' : '' ) .'
+                '. ($bNext ? '<a onclick="xajax_PmFolders('. $sUid .', '. $sCurrYear .', '. $nNext .');" href="javascript:void(0);" class="lnk-dot-grey">РџСЂРµРґС‹РґСѓС‰РёРµ&raquo;</a>' : '' ) .'
             </p>';
             }
         }
@@ -82,14 +82,14 @@ function PmFolders( $sUid = 0, $sYear = 0, $sOffset = 0 ) {
 }
 
 /**
- * Переименовывает автоматические папки для массовых рассылок личных менеджеров.
+ * РџРµСЂРµРёРјРµРЅРѕРІС‹РІР°РµС‚ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРёРµ РїР°РїРєРё РґР»СЏ РјР°СЃСЃРѕРІС‹С… СЂР°СЃСЃС‹Р»РѕРє Р»РёС‡РЅС‹С… РјРµРЅРµРґР¶РµСЂРѕРІ.
  *
- * @param  string $sUid UID пользователя
- * @param  string $sFolderId ID папки
- * @param  string $sYear год создания папки
+ * @param  string $sUid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param  string $sFolderId ID РїР°РїРєРё
+ * @param  string $sYear РіРѕРґ СЃРѕР·РґР°РЅРёСЏ РїР°РїРєРё
  * @param  string $sOffset SQL OFFSET
- * @param  string $sAction действие
- * @param  string $sName новое название папки
+ * @param  string $sAction РґРµР№СЃС‚РІРёРµ
+ * @param  string $sName РЅРѕРІРѕРµ РЅР°Р·РІР°РЅРёРµ РїР°РїРєРё
  * @return object xajaxResponse
  */
 function PmFolderEdit( $sUid = 0, $sFolderId = '', $sYear = 0, $sOffset = 0, $sAction = 'edit', $sName = '' ) {
@@ -97,9 +97,9 @@ function PmFolderEdit( $sUid = 0, $sFolderId = '', $sYear = 0, $sOffset = 0, $sA
 	$objResponse = new xajaxResponse();
 	
 	if ( 
-        $_SESSION['uid'] == $sUid // спрашивает тот кто залогинен
-        && $sFolderId // спрашивает папку
-        && $aFolder = messages::pmAutoFolderGetById( $sUid, $sFolderId ) // папка того кто спрашивает
+        $_SESSION['uid'] == $sUid // СЃРїСЂР°С€РёРІР°РµС‚ С‚РѕС‚ РєС‚Рѕ Р·Р°Р»РѕРіРёРЅРµРЅ
+        && $sFolderId // СЃРїСЂР°С€РёРІР°РµС‚ РїР°РїРєСѓ
+        && $aFolder = messages::pmAutoFolderGetById( $sUid, $sFolderId ) // РїР°РїРєР° С‚РѕРіРѕ РєС‚Рѕ СЃРїСЂР°С€РёРІР°РµС‚
     ) {
         if ( $sAction == 'update' ) {
             if ( $sName = trim($sName) ) {
@@ -109,11 +109,11 @@ function PmFolderEdit( $sUid = 0, $sFolderId = '', $sYear = 0, $sOffset = 0, $sA
                     return PmFolders( $sUid, $sYear, $sOffset );
                 }
                 else {
-        		    $objResponse->alert('Ошибка изменения папки');
+        		    $objResponse->alert('РћС€РёР±РєР° РёР·РјРµРЅРµРЅРёСЏ РїР°РїРєРё');
         		}
             }
             else {
-                $objResponse->alert('Укажите название папки');
+                $objResponse->alert('РЈРєР°Р¶РёС‚Рµ РЅР°Р·РІР°РЅРёРµ РїР°РїРєРё');
             }
         }
         elseif ( $sAction == 'edit' || $sAction == 'cancel' ) {
@@ -128,8 +128,8 @@ function PmFolderEdit( $sUid = 0, $sFolderId = '', $sYear = 0, $sOffset = 0, $sA
                         </div>
                     </div>
                     <div class="form-btn">
-                    	<input onclick="pmFolderEdit('. $sUid .', '. $sFolderId .', '. $sYear .', '. (int)$nOffset .');" type="button" value="Сохранить">
-                        <a onclick="xajax_PmFolderEdit('. $sUid .', '. $sFolderId .', '. $sYear .', '. (int)$nOffset .', \'cancel\');" href="javascript:void(0);" class="lnk-dot-grey">Отменить</a>
+                    	<input onclick="pmFolderEdit('. $sUid .', '. $sFolderId .', '. $sYear .', '. (int)$nOffset .');" type="button" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
+                        <a onclick="xajax_PmFolderEdit('. $sUid .', '. $sFolderId .', '. $sYear .', '. (int)$nOffset .', \'cancel\');" href="javascript:void(0);" class="lnk-dot-grey">РћС‚РјРµРЅРёС‚СЊ</a>
                     </div>
                 </div>';
             }
@@ -150,11 +150,11 @@ function PmFolderEdit( $sUid = 0, $sFolderId = '', $sYear = 0, $sOffset = 0, $sA
 }
 
 /**
- * Удаляет автоматические папки для массовых рассылок личных менеджеров.
+ * РЈРґР°Р»СЏРµС‚ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРёРµ РїР°РїРєРё РґР»СЏ РјР°СЃСЃРѕРІС‹С… СЂР°СЃСЃС‹Р»РѕРє Р»РёС‡РЅС‹С… РјРµРЅРµРґР¶РµСЂРѕРІ.
  *
- * @param  string $sUid UID пользователя
- * @param  string $sFolderId ID папки
- * @param  string $sYear год создания папки
+ * @param  string $sUid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param  string $sFolderId ID РїР°РїРєРё
+ * @param  string $sYear РіРѕРґ СЃРѕР·РґР°РЅРёСЏ РїР°РїРєРё
  * @param  string $sOffset SQL OFFSET
  * @return object xajaxResponse
  */
@@ -163,15 +163,15 @@ function PmFolderDel( $sUid = 0, $sFolderId = '', $sYear = 0, $sOffset = 0 ) {
 	$objResponse = new xajaxResponse();
 	
 	if ( 
-        $_SESSION['uid'] == $sUid // спрашивает тот кто залогинен
-        && $sFolderId // спрашивает папку
-        && $aFolder = messages::pmAutoFolderGetById( $sUid, $sFolderId ) // папка того кто спрашивает
+        $_SESSION['uid'] == $sUid // СЃРїСЂР°С€РёРІР°РµС‚ С‚РѕС‚ РєС‚Рѕ Р·Р°Р»РѕРіРёРЅРµРЅ
+        && $sFolderId // СЃРїСЂР°С€РёРІР°РµС‚ РїР°РїРєСѓ
+        && $aFolder = messages::pmAutoFolderGetById( $sUid, $sFolderId ) // РїР°РїРєР° С‚РѕРіРѕ РєС‚Рѕ СЃРїСЂР°С€РёРІР°РµС‚
     ) {
         if ( !$sError = messages::pmAutoFolderDelete($sUid, $sFolderId) ) {
             return PmFolders( $sUid, $sYear, $sOffset );
         }
         else {
-		    $objResponse->alert('Ошибка удаления папки');
+		    $objResponse->alert('РћС€РёР±РєР° СѓРґР°Р»РµРЅРёСЏ РїР°РїРєРё');
 		}
     }
 	
@@ -184,7 +184,7 @@ function FormSave($login, $text, $action, $rl, $num){
 	$objResponse = new xajaxResponse();
 	$action = trim($action);
  
-    // Режем тег <script>
+    // Р РµР¶РµРј С‚РµРі <script>
 	$text = strip_only(trim($text),'<script>');
 	//$text = stripslashes($text);
 	$text = change_q_x($text, FALSE, TRUE, "", false, false);
@@ -208,7 +208,7 @@ function FormSave($login, $text, $action, $rl, $num){
     $text = stripslashes($text);
 	$text = reformat($text, 24, 0, 0, 1, 24);
 
-	if ($s_role == "") $text = "Вы можете оставить заметку о&nbsp;пользователе. Видеть написанное будете только вы и никто другой.";
+	if ($s_role == "") $text = "Р’С‹ РјРѕР¶РµС‚Рµ РѕСЃС‚Р°РІРёС‚СЊ Р·Р°РјРµС‚РєСѓ Рѕ&nbsp;РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ. Р’РёРґРµС‚СЊ РЅР°РїРёСЃР°РЅРЅРѕРµ Р±СѓРґРµС‚Рµ С‚РѕР»СЊРєРѕ РІС‹ Рё РЅРёРєС‚Рѕ РґСЂСѓРіРѕР№.";
 	if (!$noassign){
 		$GLOBALS['xajax']->setCharEncoding("windows-1251");
 		$objResponse->assign("notetext".$num,"innerHTML", $text);
@@ -365,7 +365,7 @@ function RnFolder($form_values){
 
 	if (!isset($form_values['id']))
 	{
-		$objResponse->alert("Не выбрана папка.");
+		$objResponse->alert("РќРµ РІС‹Р±СЂР°РЅР° РїР°РїРєР°.");
 		$bError = true;
 	}
 	else
@@ -377,13 +377,13 @@ function RnFolder($form_values){
     $arr_logins = split('~', $logins);
   	if ($folder_id <= 0)
   	{
-  		$objResponse->alert("Не выбрана папка.");
+  		$objResponse->alert("РќРµ РІС‹Р±СЂР°РЅР° РїР°РїРєР°.");
   	}
   	else
   	{
     	if (!isset($form_values['new_name']))
     	{
-    		$objResponse->alert("Не указано новое имя папки.");
+    		$objResponse->alert("РќРµ СѓРєР°Р·Р°РЅРѕ РЅРѕРІРѕРµ РёРјСЏ РїР°РїРєРё.");
     	}
     	else
     	{
@@ -395,7 +395,7 @@ function RnFolder($form_values){
     		
       	if (empty($folder_name) || ($folder_name==''))
       	{
-      		$objResponse->alert("Не указано новое имя папки.");
+      		$objResponse->alert("РќРµ СѓРєР°Р·Р°РЅРѕ РЅРѕРІРѕРµ РёРјСЏ РїР°РїРєРё.");
           $objResponse->assign("savebtn","disabled",false);
       	}
       	else
@@ -412,7 +412,7 @@ function RnFolder($form_values){
           		if ($cur_folder == $folder_id)
             	{
             	  	$folder_html = "<img class=\"li\" src=\"/images/ico_dir.gif\" />" . reformat($request_folder_name,15,0,1);
-              		$folder_header = 'Сообщения / ' . reformat($folder_name,15,0,1);
+              		$folder_header = 'РЎРѕРѕР±С‰РµРЅРёСЏ / ' . reformat($folder_name,15,0,1);
                 	$objResponse->assign("cht","innerHTML",$folder_header);
             	}
             	else
@@ -425,7 +425,7 @@ function RnFolder($form_values){
                 	$objResponse->assign("vfolder".$folder_id."u".$login,"innerHTML",reformat($folder_name,25,0,1));
             	}
             		$folder_html .= " (<span id=\"fldcount" . $folder_id . "\">" . $cont . "</span>)";
-            		$folder_html .= "<div style=\"margin-top: 17px; text-align:right\"><a href=\"/contacts/?action=delfolder&id=" . $folder_id . "\" onClick=\"return warning(9)\" title=\"Удалится только папка. Контакты переместятся в&nbsp;папку &laquo;Все&raquo;.\">Удалить</a> | <a href='javascript:rename(\"" . $folder_id . "\",\"" . $cur_folder . "\",\"" . str_replace("\\", "\\\\", htmlspecialchars($request_folder_name)) . "\",\"" . $cont . "\",\"" . $logins . "\");'>Переименовать</a></div>";
+            		$folder_html .= "<div style=\"margin-top: 17px; text-align:right\"><a href=\"/contacts/?action=delfolder&id=" . $folder_id . "\" onClick=\"return warning(9)\" title=\"РЈРґР°Р»РёС‚СЃСЏ С‚РѕР»СЊРєРѕ РїР°РїРєР°. РљРѕРЅС‚Р°РєС‚С‹ РїРµСЂРµРјРµСЃС‚СЏС‚СЃСЏ РІ&nbsp;РїР°РїРєСѓ &laquo;Р’СЃРµ&raquo;.\">РЈРґР°Р»РёС‚СЊ</a> | <a href='javascript:rename(\"" . $folder_id . "\",\"" . $cur_folder . "\",\"" . str_replace("\\", "\\\\", htmlspecialchars($request_folder_name)) . "\",\"" . $cont . "\",\"" . $logins . "\");'>РџРµСЂРµРёРјРµРЅРѕРІР°С‚СЊ</a></div>";
               		$objResponse->assign("li_folder".$folder_id,"innerHTML",$folder_html);
 			  
 			   } else {
@@ -440,13 +440,13 @@ function RnFolder($form_values){
 }
 
 /**
- * Возвращает список жалоб на спам для личного сообщения в админке.
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє Р¶Р°Р»РѕР± РЅР° СЃРїР°Рј РґР»СЏ Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ РІ Р°РґРјРёРЅРєРµ.
  * 
- * с xajax не работает
+ * СЃ xajax РЅРµ СЂР°Р±РѕС‚Р°РµС‚
  * 
- * @param  int $nSpamId ID записи из messages_spam
- * @param  string $sMsgMd5 MD5 хэш текста сообщения
- * @return string json_encode данные
+ * @param  int $nSpamId ID Р·Р°РїРёСЃРё РёР· messages_spam
+ * @param  string $sMsgMd5 MD5 С…СЌС€ С‚РµРєСЃС‚Р° СЃРѕРѕР±С‰РµРЅРёСЏ
+ * @return string json_encode РґР°РЅРЅС‹Рµ
  */
 function getSpamComplaints( $nSpamerId = 0, $sMsgMd5 = '' ) {
     session_start();
@@ -483,11 +483,11 @@ function getSpamComplaints( $nSpamerId = 0, $sMsgMd5 = '' ) {
 }
 
 /**
- * Сохраняет жалобу на спам в личных сообщениях
+ * РЎРѕС…СЂР°РЅСЏРµС‚ Р¶Р°Р»РѕР±Сѓ РЅР° СЃРїР°Рј РІ Р»РёС‡РЅС‹С… СЃРѕРѕР±С‰РµРЅРёСЏС…
  * 
- * @param  string $sSpamerId UID спамера
- * @param  string $sUserId UID пожаловавшегося пользователя
- * @param  string $sParams JSON строка с массивом параметров жалобы на спам
+ * @param  string $sSpamerId UID СЃРїР°РјРµСЂР°
+ * @param  string $sUserId UID РїРѕР¶Р°Р»РѕРІР°РІС€РµРіРѕСЃСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param  string $sParams JSON СЃС‚СЂРѕРєР° СЃ РјР°СЃСЃРёРІРѕРј РїР°СЂР°РјРµС‚СЂРѕРІ Р¶Р°Р»РѕР±С‹ РЅР° СЃРїР°Рј
  * @return object xajaxResponse
  */
 function sendSpamComplaint( $sSpamerId = '', $sUserId = '', $sParams = '' ) {
@@ -505,7 +505,7 @@ function sendSpamComplaint( $sSpamerId = '', $sUserId = '', $sParams = '' ) {
             $objResponse->assign( 'mess_spam_'.$aParams['num'], 'innerHTML', messages_spam::COMPLAINT_PENDING_TXT );
     	}
     	else {
-    	    $objResponse->alert('Ошибка сохранения жалобы');
+    	    $objResponse->alert('РћС€РёР±РєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ Р¶Р°Р»РѕР±С‹');
     	}
     	
     	$objResponse->script("$('spam_complaint_popup').setStyle('display','none');");

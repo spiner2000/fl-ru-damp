@@ -1,4 +1,4 @@
-<? $size_ln_descr = substr_count(reformat($stage->data['descr'], 70, 0, 0, 1), "<br") + 1 + ( $stage->data['attach'] ? (count($stage->data['attach']) + 2) : 0 ); // Количество переносов строк?>
+<? $size_ln_descr = substr_count(reformat($stage->data['descr'], 70, 0, 0, 1), "<br") + 1 + ( $stage->data['attach'] ? (count($stage->data['attach']) + 2) : 0 ); // РљРѕР»РёС‡РµСЃС‚РІРѕ РїРµСЂРµРЅРѕСЃРѕРІ СЃС‚СЂРѕРє?>
 <div>
 <table class="b-layout__table b-layout__table_width_full" cellpadding="0" cellspacing="0" border="0">
     <tr class="b-layout__tr">
@@ -7,11 +7,11 @@
                 <h2 class="b-post__title b-post__title_padbot_15">
                     
                     <? if($stage->isNewVersionTZ() && ($stage_changed || $stage_changed_for_frl)) { ?>
-                    <span class="sbr-tz">Новое техническое задание от <?= date('d.m.Y', $stage->data['date_version_tz'][1])?> &#160;&#160;&#160;&#160;&#160;</span>
-                    <span class="sbr-old-tz b-post__txt_hide">Техническое задание от <?= date('d.m.Y', $stage->data['date_version_tz'][0])?> &#160;&#160;&#160;&#160;&#160;</span>
-                    <span class="b-post__txt"><a class="b-post__link b-post__link_dot_0f71c8" id="toggle-tz-link" href="javascript:void(0)" onclick="toggle_tz();">Посмотреть старое</a></span>
+                    <span class="sbr-tz">РќРѕРІРѕРµ С‚РµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ РѕС‚ <?= date('d.m.Y', $stage->data['date_version_tz'][1])?> &#160;&#160;&#160;&#160;&#160;</span>
+                    <span class="sbr-old-tz b-post__txt_hide">РўРµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ РѕС‚ <?= date('d.m.Y', $stage->data['date_version_tz'][0])?> &#160;&#160;&#160;&#160;&#160;</span>
+                    <span class="b-post__txt"><a class="b-post__link b-post__link_dot_0f71c8" id="toggle-tz-link" href="javascript:void(0)" onclick="toggle_tz();">РџРѕСЃРјРѕС‚СЂРµС‚СЊ СЃС‚Р°СЂРѕРµ</a></span>
                     <? } else {//if?>
-                    Техническое задание
+                    РўРµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ
                     <? }?>
                 </h2>
                 <div class="b-post__body b-post__body_relative b-post__body_overflow_hidden <?= $size_ln_descr > 5 && !($stage->isNewVersionTZ() && ($stage_changed || $stage_changed_for_frl))? "b-post__body_height_100" : ""?>">
@@ -24,7 +24,7 @@
                     </div>
                     <? if($attached) {?>
                     <span id="new_attach">
-                        <div class="b-post__txt b-post__txt_padbot_10 b-post__txt_fontsize_15 b-post__txt_bold">Вложения</div>
+                        <div class="b-post__txt b-post__txt_padbot_10 b-post__txt_fontsize_15 b-post__txt_bold">Р’Р»РѕР¶РµРЅРёСЏ</div>
                         <table class="b-layout__table" border="0" cellpadding="0" cellspacing="0">
                             <tbody>
                                 <? foreach($attached as $id=>$a) {  
@@ -40,7 +40,7 @@
                                         </div>
                                     </td>
                                     <td class="b-layout__right b-layout__right_padleft_20 b-layout__right_padbot_5">
-                                        <div class="b-layout__txt"><a href="<?=WDCPREFIX.'/'.$a['path'].$a['name']?>" class="b-layout__link" target="_blank">Скачать</a></div>
+                                        <div class="b-layout__txt"><a href="<?=WDCPREFIX.'/'.$a['path'].$a['name']?>" class="b-layout__link" target="_blank">РЎРєР°С‡Р°С‚СЊ</a></div>
                                     </td>
                                 </tr>
                                 <? }//foreach?>
@@ -55,7 +55,7 @@
                     </div>
                         <? if($stage->v_data['attach']) {?>
                         <span id="old_attach" style="display:none">
-                            <div class="b-post__txt b-post__txt_padbot_10 b-post__txt_fontsize_15 b-post__txt_bold">Вложения</div>
+                            <div class="b-post__txt b-post__txt_padbot_10 b-post__txt_fontsize_15 b-post__txt_bold">Р’Р»РѕР¶РµРЅРёСЏ</div>
                             <table class="b-layout__table" border="0" cellpadding="0" cellspacing="0">
                                 <tbody>
                                     <? foreach($stage->v_data['attach'] as $id=>$a) {  
@@ -71,7 +71,7 @@
                                             </div>
                                         </td>
                                         <td class="b-layout__right b-layout__right_padleft_20 b-layout__right_padbot_5">
-                                            <div class="b-layout__txt"><a href="<?=WDCPREFIX.'/'.$a['path'].$a['name']?>" class="b-layout__link" target="_blank">Скачать</a></div>
+                                            <div class="b-layout__txt"><a href="<?=WDCPREFIX.'/'.$a['path'].$a['name']?>" class="b-layout__link" target="_blank">РЎРєР°С‡Р°С‚СЊ</a></div>
                                         </td>
                                     </tr>
                                     <? }//foreach?>
@@ -85,7 +85,7 @@
                     <? } //if?>
                 </div>
                 <? if($size_ln_descr > 5 && !($stage->isNewVersionTZ() && ($stage_changed || $stage_changed_for_frl))) { ?>
-                <div class="b-post__txt b-post__txt_padtop_20"><a id="toggler-tz" class="b-post__link b-post__link_dot_0f71c8" href="javascript:void(0)">Развернуть задание</a></div>
+                <div class="b-post__txt b-post__txt_padtop_20"><a id="toggler-tz" class="b-post__link b-post__link_dot_0f71c8" href="javascript:void(0)">Р Р°Р·РІРµСЂРЅСѓС‚СЊ Р·Р°РґР°РЅРёРµ</a></div>
                 <? }//if?>
             </div>
         </td>

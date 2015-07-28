@@ -38,7 +38,7 @@ class ReservesReestrForm extends Form_View
     {
         $this->addElement(
             new Zend_Form_Element_Date('date_start', array(
-                'label' => 'Íà÷àëî',
+                'label' => 'ÐÐ°Ñ‡Ð°Ð»Ð¾',
                 'unit' => true,
                 'width' => 110,
                 'filters' => $this->filters,
@@ -64,7 +64,7 @@ class ReservesReestrForm extends Form_View
         )));
         $this->addElement(
             new Zend_Form_Element_Date('date_end', array(
-               'label' => 'Íà÷àëî',
+               'label' => 'ÐÐ°Ñ‡Ð°Ð»Ð¾',
                'unit' => true,
                 'width' => 110,
                'filters' => $this->filters,
@@ -77,7 +77,7 @@ class ReservesReestrForm extends Form_View
         )));
         $this->addElement(
            new Zend_Form_Element_Text('time_end', array(
-               'label' => '¹ äîã.',
+               'label' => 'â„– Ð´Ð¾Ð³.',
                'hide_label' => true,
                'unit' => true,
                'width' => 50,

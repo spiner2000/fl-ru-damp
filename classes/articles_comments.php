@@ -3,7 +3,7 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/blogs_proto.php");
 
 /**
- * Класс для работы с комментариями к статьям
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РєРѕРјРјРµРЅС‚Р°СЂРёСЏРјРё Рє СЃС‚Р°С‚СЊСЏРј
  *
  */
 class articles_comments extends blogs_proto {
@@ -12,18 +12,18 @@ class articles_comments extends blogs_proto {
     
     const MAX_FILE_COUNT = 10;
     /**
-     * Добавить сообщение(комментарий)
+     * Р”РѕР±Р°РІРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ(РєРѕРјРјРµРЅС‚Р°СЂРёР№)
      *
      * @param integer $fid    UID
-     * @param integer $reply  Идентификатор сообщения ответом на которое является данное сообщение
-     * @param integer $thread Тема
-     * @param string  $msg    Сообщение
-     * @param string  $yt_link  ССылка на ютюб
-     * @param mixed   $files  Вложения файлов
-     * @param char    $ip     ИП отправителя
-     * @param mixed   $error  Возвращает сообщение об ошибке
-     * @param mixed   $small  Тип Вида
-     * @return integer  ID нового сообщения
+     * @param integer $reply  РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃРѕРѕР±С‰РµРЅРёСЏ РѕС‚РІРµС‚РѕРј РЅР° РєРѕС‚РѕСЂРѕРµ СЏРІР»СЏРµС‚СЃСЏ РґР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ
+     * @param integer $thread РўРµРјР°
+     * @param string  $msg    РЎРѕРѕР±С‰РµРЅРёРµ
+     * @param string  $yt_link  РЎРЎС‹Р»РєР° РЅР° СЋС‚СЋР±
+     * @param mixed   $files  Р’Р»РѕР¶РµРЅРёСЏ С„Р°Р№Р»РѕРІ
+     * @param char    $ip     РРџ РѕС‚РїСЂР°РІРёС‚РµР»СЏ
+     * @param mixed   $error  Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
+     * @param mixed   $small  РўРёРї Р’РёРґР°
+     * @return integer  ID РЅРѕРІРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
      */
     function Add($fid, $reply, $thread, $msg, $yt_link, $files, $ip, &$error, $small) {
         global $DB;
@@ -59,16 +59,16 @@ class articles_comments extends blogs_proto {
     }
 
     /**
-     * Обновить комментарий
+     * РћР±РЅРѕРІРёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№
      *
-     * @param integer $id    id коммента
+     * @param integer $id    id РєРѕРјРјРµРЅС‚Р°
      * @param integer $fid   UID
-     * @param string  $msg   Сообщение
-     * @param string  $yt_link  ССылка на ютюб
-     * @param mixed   $files  Вложения файлов
-     * @param mixed   $error  Возвращает сообщение об ошибке
-     * @param mixed   $small  Тип Вида
-     * @return integer  ID нового сообщения
+     * @param string  $msg   РЎРѕРѕР±С‰РµРЅРёРµ
+     * @param string  $yt_link  РЎРЎС‹Р»РєР° РЅР° СЋС‚СЋР±
+     * @param mixed   $files  Р’Р»РѕР¶РµРЅРёСЏ С„Р°Р№Р»РѕРІ
+     * @param mixed   $error  Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
+     * @param mixed   $small  РўРёРї Р’РёРґР°
+     * @return integer  ID РЅРѕРІРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
      */
     function Update($id, $fid, $msg, $yt_link, $files, $files_cnt = 0, &$error, $small) {
         global $DB;
@@ -106,11 +106,11 @@ class articles_comments extends blogs_proto {
     }
 
     /**
-     * Удалить комментарий
+     * РЈРґР°Р»РёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№
      * 
-     * @param  int $id ID комментария
-     * @param  int $uid UID того кто удаляет
-     * @return bool true - успех, false - провал
+     * @param  int $id ID РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+     * @param  int $uid UID С‚РѕРіРѕ РєС‚Рѕ СѓРґР°Р»СЏРµС‚
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function DeleteComment($id, $uid) {
         global $DB;
@@ -124,11 +124,11 @@ class articles_comments extends blogs_proto {
     }
     
     /**
-     * Восстановить комментарий
+     * Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№
      * 
-     * @param  int $id ID комментария
-     * @param  int $uid UID того кто восстанавливает
-     * @return bool true - успех, false - провал
+     * @param  int $id ID РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+     * @param  int $uid UID С‚РѕРіРѕ РєС‚Рѕ РІРѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµС‚
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function RestoreComment($id, $uid) {
         global $DB;
@@ -142,10 +142,10 @@ class articles_comments extends blogs_proto {
     }
 
     /**
-     * Выборка тем сообщений
+     * Р’С‹Р±РѕСЂРєР° С‚РµРј СЃРѕРѕР±С‰РµРЅРёР№
      *
-     * @param integer $item_id  ИД треда
-     * @param string  $error    Возвращает сообщения об ошибке
+     * @param integer $item_id  РР” С‚СЂРµРґР°
+     * @param string  $error    Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕС€РёР±РєРµ
      */
     function GetThreads($item_id, &$error) {
         global $DB;
@@ -174,9 +174,9 @@ class articles_comments extends blogs_proto {
     }
 
     /**
-     * Формирует массив в аттачами к выбранным комментариям
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ РјР°СЃСЃРёРІ РІ Р°С‚С‚Р°С‡Р°РјРё Рє РІС‹Р±СЂР°РЅРЅС‹Рј РєРѕРјРјРµРЅС‚Р°СЂРёСЏРј
      *
-     * @param array|int $ids Массив идентификаторов комментариев или ид одного комментария
+     * @param array|int $ids РњР°СЃСЃРёРІ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРІ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ РёР»Рё РёРґ РѕРґРЅРѕРіРѕ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
      */
     function getAttaches($ids, $autoindex = false) {
         global $DB;
@@ -217,10 +217,10 @@ class articles_comments extends blogs_proto {
     }
 
     /**
-     * Удаляет вложения по их id
+     * РЈРґР°Р»СЏРµС‚ РІР»РѕР¶РµРЅРёСЏ РїРѕ РёС… id
      *
-     * @param integer $comment_id ID комментария, из которого удаляются вложения
-     * @param array $attaches Массив с идентификаторами файлов, которые нужно удалить
+     * @param integer $comment_id ID РєРѕРјРјРµРЅС‚Р°СЂРёСЏ, РёР· РєРѕС‚РѕСЂРѕРіРѕ СѓРґР°Р»СЏСЋС‚СЃСЏ РІР»РѕР¶РµРЅРёСЏ
+     * @param array $attaches РњР°СЃСЃРёРІ СЃ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂР°РјРё С„Р°Р№Р»РѕРІ, РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ СѓРґР°Р»РёС‚СЊ
      */
     function removeAttaches($comment_id, $attaches) {
         $comment_attaches = $this->getAttaches($comment_id);
@@ -234,12 +234,12 @@ class articles_comments extends blogs_proto {
 
 
     /**
-     * Подгрузка аттачей
+     * РџРѕРґРіСЂСѓР·РєР° Р°С‚С‚Р°С‡РµР№
      *
-     * @param array $attach			массив с элементами типа CFile
-     * @param array $max_image_size	массив с максимальными размерами картинки (см. CFile). Один для всех элементов attach
-     * @param string $login			логин юзера, которому загрузить картинку. По умолчанию - юзер из $_SESSION['login']
-     * @return array				массив ($files, $alert, $error_flag)
+     * @param array $attach			РјР°СЃСЃРёРІ СЃ СЌР»РµРјРµРЅС‚Р°РјРё С‚РёРїР° CFile
+     * @param array $max_image_size	РјР°СЃСЃРёРІ СЃ РјР°РєСЃРёРјР°Р»СЊРЅС‹РјРё СЂР°Р·РјРµСЂР°РјРё РєР°СЂС‚РёРЅРєРё (СЃРј. CFile). РћРґРёРЅ РґР»СЏ РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ attach
+     * @param string $login			Р»РѕРіРёРЅ СЋР·РµСЂР°, РєРѕС‚РѕСЂРѕРјСѓ Р·Р°РіСЂСѓР·РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ. РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - СЋР·РµСЂ РёР· $_SESSION['login']
+     * @return array				РјР°СЃСЃРёРІ ($files, $alert, $error_flag)
      */
     function UploadFiles($attach, $max_image_size, $login = '') {
         $alert = null;
@@ -262,19 +262,19 @@ class articles_comments extends blogs_proto {
                 $p_id = '';
                 if (! isNulArray($file->error)) {
                     $error_flag = 1;
-                    $alert = "Один или несколько файлов не удовлетворяют условиям загрузки.";
+                    $alert = "РћРґРёРЅ РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ С„Р°Р№Р»РѕРІ РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё.";
                     break;
                 } else {
                     if ($is_image && $ext != 'swf' && $ext != 'flv') {
                         if (! $file->image_size['width'] || ! $file->image_size['height']) {
                             $error_flag = 1;
-                            $alert = 'Невозможно уменьшить картинку';
+                            $alert = 'РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ';
                             break;
                         }
                         if (! $error_flag && ($file->image_size['width'] > $max_image_size['width'] || $file->image_size['height'] > $max_image_size['height'])) {
                             if (! $file->img_to_small("sm_" . $f_name, $max_image_size)) {
                                 $error_flag = 1;
-                                $alert = 'Невозможно уменьшить картинку.';
+                                $alert = 'РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ.';
                                 break;
                             } else {
                                 $tn = 2;
@@ -302,9 +302,9 @@ class articles_comments extends blogs_proto {
 
 
     /**
-     * Получить комментарий по ID
+     * РџРѕР»СѓС‡РёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№ РїРѕ ID
      *
-     * @param integer $id ид комментария
+     * @param integer $id РёРґ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
      */
     function getComment($id) {
         global $DB;
@@ -329,9 +329,9 @@ class articles_comments extends blogs_proto {
 
 
     /**
-     * Получить комментарии по ID, для рассылки
+     * РџРѕР»СѓС‡РёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёРё РїРѕ ID, РґР»СЏ СЂР°СЃСЃС‹Р»РєРё
      *
-     * @param integer $id ид комментария
+     * @param integer $id РёРґ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
      */
     function getComments4Sending($message_ids, $connect = NULL) {
         global $DB;
@@ -362,7 +362,7 @@ class articles_comments extends blogs_proto {
     }
 
     /**
-     * Изменить порядок
+     * РР·РјРµРЅРёС‚СЊ РїРѕСЂСЏРґРѕРє
      *
      * @deprecated
      * @param <type> $id

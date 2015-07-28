@@ -6,11 +6,11 @@
                         <form method="get" action="/service/docs/search/">
                         <div class="form-el">
                             <input name="text" type="text" value="<?= $text_for_search;?>" id="docs_search_inp" class="help-search-str">
-                            <input type="submit" value="Найти" class="i-btn">
+                            <input type="submit" value="РќР°Р№С‚Рё" class="i-btn">
                         </div>
                         </form>
                         <div class="form-el form-el-small">
-												Например, <a href="#" onclick="$('docs_search_inp').set('value',this.innerHTML);return false;">Договор на разработку сайта</a>
+												РќР°РїСЂРёРјРµСЂ, <a href="#" onclick="$('docs_search_inp').set('value',this.innerHTML);return false;">Р”РѕРіРѕРІРѕСЂ РЅР° СЂР°Р·СЂР°Р±РѕС‚РєСѓ СЃР°Р№С‚Р°</a>
                         </div>
                     </div>
                 </div>

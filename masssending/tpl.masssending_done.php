@@ -5,39 +5,39 @@
             </td>
             <td class="b-layout__td b-layout__td_width_72ps b-layout__td_width_full_ipad">
 
-                <h1 class="b-page__title">Рассылка принята к рассмотрению</h1>
+                <h1 class="b-page__title">Р Р°СЃСЃС‹Р»РєР° РїСЂРёРЅСЏС‚Р° Рє СЂР°СЃСЃРјРѕС‚СЂРµРЅРёСЋ</h1>
 
                 <div class="b-fon b-fon_padbot_30">
                 <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-                    <div class="b-fon__txt b-fon__txt_padbot_5"><span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Ваша заявка на рассылку была отправлена на модерацию. По окончании проверки вам будет выслано уведомление.</div>
-                    <div class="b-fon__txt">Если у вас возникнут вопросы, обращайтесь в <a class="b-fon__link" href="https://feedback.fl.ru/">службу поддержки</a>.</div>
+                    <div class="b-fon__txt b-fon__txt_padbot_5"><span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Р’Р°С€Р° Р·Р°СЏРІРєР° РЅР° СЂР°СЃСЃС‹Р»РєСѓ Р±С‹Р»Р° РѕС‚РїСЂР°РІР»РµРЅР° РЅР° РјРѕРґРµСЂР°С†РёСЋ. РџРѕ РѕРєРѕРЅС‡Р°РЅРёРё РїСЂРѕРІРµСЂРєРё РІР°Рј Р±СѓРґРµС‚ РІС‹СЃР»Р°РЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ.</div>
+                    <div class="b-fon__txt">Р•СЃР»Рё Сѓ РІР°СЃ РІРѕР·РЅРёРєРЅСѓС‚ РІРѕРїСЂРѕСЃС‹, РѕР±СЂР°С‰Р°Р№С‚РµСЃСЊ РІ <a class="b-fon__link" href="https://feedback.fl.ru/">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.</div>
                 </div>
                 </div>                          
 <?php 
 $count = strval($count);
-$lex = 'получат';
-$measure = 'человека';
+$lex = 'РїРѕР»СѓС‡Р°С‚';
+$measure = 'С‡РµР»РѕРІРµРєР°';
 if ($count == 1 || (($count > 4) && ($count < 21))) {
-    $lex = 'получит';
-    $measure = 'человек';
+    $lex = 'РїРѕР»СѓС‡РёС‚';
+    $measure = 'С‡РµР»РѕРІРµРє';
 }
 if (strlen($count) > 1) {
 	$cn = $count[strlen($count) - 2];
 	$cm = $count[strlen($count) - 1];	
 	if ( ($cm == 1) || ($cm == 0) ) {
-        $lex = 'получит';
-        $measure = 'человек';
+        $lex = 'РїРѕР»СѓС‡РёС‚';
+        $measure = 'С‡РµР»РѕРІРµРє';
     }
     if (($cn == 1) || ($cm > 4)) {
-        $lex = 'получит';
-        $measure = 'человек';
+        $lex = 'РїРѕР»СѓС‡РёС‚';
+        $measure = 'С‡РµР»РѕРІРµРє';
     } 
 }
 
 
 ?>
-                <div class="b-layout__txt b-layout__txt_padbot_5">Вашу рассылку <?=$lex ?> <span class="b-layout__txt b-layout__txt_bold"><?= $count ?> <?=$measure ?></span></div>
-                <div class="b-layout__txt">Это будет стоить <span class="b-layout__txt b-layout__txt_bold b-layout__txt_color_fd6c30"><?= round($cost, 2) ?> руб.</span></div>
+                <div class="b-layout__txt b-layout__txt_padbot_5">Р’Р°С€Сѓ СЂР°СЃСЃС‹Р»РєСѓ <?=$lex ?> <span class="b-layout__txt b-layout__txt_bold"><?= $count ?> <?=$measure ?></span></div>
+                <div class="b-layout__txt">Р­С‚Рѕ Р±СѓРґРµС‚ СЃС‚РѕРёС‚СЊ <span class="b-layout__txt b-layout__txt_bold b-layout__txt_color_fd6c30"><?= round($cost, 2) ?> СЂСѓР±.</span></div>
 
 
             </td>							

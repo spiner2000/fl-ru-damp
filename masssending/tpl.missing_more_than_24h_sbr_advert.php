@@ -9,7 +9,7 @@
                       <tr>
                           <td  bgcolor="#ffffff" width="20"></td>
                           <td  bgcolor="#ffffff" width="100"><img src="<?=WDCPREFIX ?>/images/letter/170720131.gif" width="85" height="91"></td>
-                      <td  align="left" ><font size="3" face="arial,sans-serif" color="#000000">Предлагаем вам надежное сотрудничество через <a href="<?=$pHost ?>/promo/bezopasnaya-sdelka/?utm_source=newsletter4&utm_medium=email&utm_campaign=notif_ed_bs" target="_blank" style="color:#0f71c8">Безопасную сделку</a>. Гонорар резервируется заказчиком на счете в банке и выплачивается исполнителю после выполнения задания. Никакого риска и работы впустую!</font></td>
+                      <td  align="left" ><font size="3" face="arial,sans-serif" color="#000000">РџСЂРµРґР»Р°РіР°РµРј РІР°Рј РЅР°РґРµР¶РЅРѕРµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ С‡РµСЂРµР· <a href="<?=$pHost ?>/promo/bezopasnaya-sdelka/?utm_source=newsletter4&utm_medium=email&utm_campaign=notif_ed_bs" target="_blank" style="color:#0f71c8">Р‘РµР·РѕРїР°СЃРЅСѓСЋ СЃРґРµР»РєСѓ</a>. Р“РѕРЅРѕСЂР°СЂ СЂРµР·РµСЂРІРёСЂСѓРµС‚СЃСЏ Р·Р°РєР°Р·С‡РёРєРѕРј РЅР° СЃС‡РµС‚Рµ РІ Р±Р°РЅРєРµ Рё РІС‹РїР»Р°С‡РёРІР°РµС‚СЃСЏ РёСЃРїРѕР»РЅРёС‚РµР»СЋ РїРѕСЃР»Рµ РІС‹РїРѕР»РЅРµРЅРёСЏ Р·Р°РґР°РЅРёСЏ. РќРёРєР°РєРѕРіРѕ СЂРёСЃРєР° Рё СЂР°Р±РѕС‚С‹ РІРїСѓСЃС‚СѓСЋ!</font></td>
                           <td  bgcolor="#ffffff" width="20"></td>
                       </tr>
                       <tr>
@@ -20,7 +20,7 @@
                       </tr>
                       <tr>
                           <td  bgcolor="#ffffff" width="20"></td>
-                          <td colspan="2"  align="left" ><i><font size="3" face="arial,sans-serif" color="808080">Приятной работы с FL.ru!</font></i></td>
+                          <td colspan="2"  align="left" ><i><font size="3" face="arial,sans-serif" color="808080">РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹ СЃ FL.ru!</font></i></td>
                           <td  bgcolor="#ffffff" width="20"></td>
                       </tr>
                       <tr>

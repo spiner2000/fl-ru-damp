@@ -5,9 +5,9 @@ $xajax->printJavascript( '/xajax/' );
 $sym = letters::getCompaniesSymbols();
 ?>
 
-<a href="/siteadmin/letters/?mode=add" class="b-button b-button_flat b-button_flat_green b-button_float_right">Добавить сторону</a>
+<a href="/siteadmin/letters/?mode=add" class="b-button b-button_flat b-button_flat_green b-button_float_right">Р”РѕР±Р°РІРёС‚СЊ СЃС‚РѕСЂРѕРЅСѓ</a>
 
-<h2 class="b-layout__title">Стороны</h2>
+<h2 class="b-layout__title">РЎС‚РѕСЂРѕРЅС‹</h2>
 
 
 <div class="b-fon b-fon_width_full b-fon_padbot_10 last-gift-block b-layout__txt_padtop_20" id="letters_msg" <?=($msgstr ? '' : 'style="display: none;"')?>>
@@ -15,7 +15,7 @@ $sym = letters::getCompaniesSymbols();
     	<div class="b-fon__txt b-fon__txt_center b-username">
             <span class="b-fon__txt b-fon__txt_bold"><?=$msgstr?></span>
             <br/>
-            <a class="b-fon__link b-fon__link_bordbot_dot_0f71c8 b-fon__link_fontsize_11" href="javascript:void(0)" onclick="$('letters_msg').setStyle('display', 'none'); return false;">Скрыть</a>
+            <a class="b-fon__link b-fon__link_bordbot_dot_0f71c8 b-fon__link_fontsize_11" href="javascript:void(0)" onclick="$('letters_msg').setStyle('display', 'none'); return false;">РЎРєСЂС‹С‚СЊ</a>
         </div> 
     </div>
 </div>

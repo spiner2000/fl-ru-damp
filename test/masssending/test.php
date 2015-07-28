@@ -67,7 +67,7 @@ function Masssending_test($user_id, $masssending_id, $text, $posted_time, $skip_
 		
         //print_r($msgid);exit;
         
-        // TODO: îòäåëüíûì òèêåòîì
+        // TODO: Ð¾Ñ‚Ð´ÐµÐ»ÑŒÐ½Ñ‹Ð¼ Ñ‚Ð¸ÐºÐµÑ‚Ð¾Ð¼
 		//$master->query("DELETE FROM mass_sending_users WHERE mid = ?", $masssending_id);
         return empty( $plproxy->error );
 }

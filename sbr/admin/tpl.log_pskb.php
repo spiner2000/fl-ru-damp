@@ -1,4 +1,4 @@
-<h3>Логи PSKB</h3>
+<h3>Р›РѕРіРё PSKB</h3>
 <br/>
 <div class="form form-vigruzka">
     <b class="b1"></b>
@@ -7,16 +7,16 @@
         <div>
             <div class="form-block first">
                 <div class="form-el">
-                    <label class="form-label">Поиск</label>
+                    <label class="form-label">РџРѕРёСЃРє</label>
                     <span class="form-input">
-                        <input type="text" name="query" id="log_query" value="" title="Ищет по логу -- log LIKE '%value%'"/>
+                        <input type="text" name="query" id="log_query" value="" title="РС‰РµС‚ РїРѕ Р»РѕРіСѓ -- log LIKE '%value%'"/>
                     </span>
                 </div>
                 <div class="form-el">
-                    <label class="form-label">Тип группы</label>
+                    <label class="form-label">РўРёРї РіСЂСѓРїРїС‹</label>
                     <span class="form-input">
                         <select name="logname" id="log_name">
-                            <option value="">-- Не важно --</option>
+                            <option value="">-- РќРµ РІР°Р¶РЅРѕ --</option>
                             <? foreach ($log_pskb->getNameGroupLog($lc_id) as $v) { ?>
                                 <option value="<?= $v ?>"><?= $v ?></option>
                             <? } ?>
@@ -26,7 +26,7 @@
             </div>
             <div class="form-block last">
                 <div class="form-el form-btn">
-                    <input type="button" class="i-btn" value="Посмотреть" onClick="xajax_aFindLogPSKB('<?=$lc_id?>', $('log_query').get('value'), $('log_name').get('value'))"/>
+                    <input type="button" class="i-btn" value="РџРѕСЃРјРѕС‚СЂРµС‚СЊ" onClick="xajax_aFindLogPSKB('<?=$lc_id?>', $('log_query').get('value'), $('log_name').get('value'))"/>
                 </div>
             </div>
         </div>

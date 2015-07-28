@@ -12,17 +12,17 @@ window.addEvent('domready',
 ); 
 </script>
 <div class="b-layout__right b-layout__right_width_72ps b-layout__right_float_right  b-layout__right_padbot_20">
-    <div class="b-layout__txt b-layout__txt_padbot_10">Этот мастер поможет вам сделать все, чтобы увеличить свои шансы найти достойную работу. Пожалуйста, внимательно изучите информацию, представленную ниже, и пройдите все шаги мастера. Нам очень важно, чтобы вы получили на нашем сайте интересную и хорошо оплачиваемую работу.</div>
-    <div class="b-layout__txt b-layout__txt_padbot_10">Самый быстрый и простой способ найти работу – ответить на проект. Проекты – это объявления, размещаемые заказчиками. В них описывается задача, которую необходимо выполнить, указываются условия работы и размер оплаты.</div>
-    <div class="b-layout__txt b-layout__txt_padbot_10">Вам нужно отвечать на те проекты, которые вы сможете выполнить. Если вы подойдете работодателю, он выберет вас исполнителем и начнет с вами сотрудничество.</div>
-    <div class="b-layout__txt b-layout__txt_padbot_40">Для начала мы расскажем, как найти интересующий вас проект.</div>
-    <h2 class=" b-layout__title">Актуальные проекты</h2>
+    <div class="b-layout__txt b-layout__txt_padbot_10">Р­С‚РѕС‚ РјР°СЃС‚РµСЂ РїРѕРјРѕР¶РµС‚ РІР°Рј СЃРґРµР»Р°С‚СЊ РІСЃРµ, С‡С‚РѕР±С‹ СѓРІРµР»РёС‡РёС‚СЊ СЃРІРѕРё С€Р°РЅСЃС‹ РЅР°Р№С‚Рё РґРѕСЃС‚РѕР№РЅСѓСЋ СЂР°Р±РѕС‚Сѓ. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРЅРёРјР°С‚РµР»СЊРЅРѕ РёР·СѓС‡РёС‚Рµ РёРЅС„РѕСЂРјР°С†РёСЋ, РїСЂРµРґСЃС‚Р°РІР»РµРЅРЅСѓСЋ РЅРёР¶Рµ, Рё РїСЂРѕР№РґРёС‚Рµ РІСЃРµ С€Р°РіРё РјР°СЃС‚РµСЂР°. РќР°Рј РѕС‡РµРЅСЊ РІР°Р¶РЅРѕ, С‡С‚РѕР±С‹ РІС‹ РїРѕР»СѓС‡РёР»Рё РЅР° РЅР°С€РµРј СЃР°Р№С‚Рµ РёРЅС‚РµСЂРµСЃРЅСѓСЋ Рё С…РѕСЂРѕС€Рѕ РѕРїР»Р°С‡РёРІР°РµРјСѓСЋ СЂР°Р±РѕС‚Сѓ.</div>
+    <div class="b-layout__txt b-layout__txt_padbot_10">РЎР°РјС‹Р№ Р±С‹СЃС‚СЂС‹Р№ Рё РїСЂРѕСЃС‚РѕР№ СЃРїРѕСЃРѕР± РЅР°Р№С‚Рё СЂР°Р±РѕС‚Сѓ вЂ“ РѕС‚РІРµС‚РёС‚СЊ РЅР° РїСЂРѕРµРєС‚. РџСЂРѕРµРєС‚С‹ вЂ“ СЌС‚Рѕ РѕР±СЉСЏРІР»РµРЅРёСЏ, СЂР°Р·РјРµС‰Р°РµРјС‹Рµ Р·Р°РєР°Р·С‡РёРєР°РјРё. Р’ РЅРёС… РѕРїРёСЃС‹РІР°РµС‚СЃСЏ Р·Р°РґР°С‡Р°, РєРѕС‚РѕСЂСѓСЋ РЅРµРѕР±С…РѕРґРёРјРѕ РІС‹РїРѕР»РЅРёС‚СЊ, СѓРєР°Р·С‹РІР°СЋС‚СЃСЏ СѓСЃР»РѕРІРёСЏ СЂР°Р±РѕС‚С‹ Рё СЂР°Р·РјРµСЂ РѕРїР»Р°С‚С‹.</div>
+    <div class="b-layout__txt b-layout__txt_padbot_10">Р’Р°Рј РЅСѓР¶РЅРѕ РѕС‚РІРµС‡Р°С‚СЊ РЅР° С‚Рµ РїСЂРѕРµРєС‚С‹, РєРѕС‚РѕСЂС‹Рµ РІС‹ СЃРјРѕР¶РµС‚Рµ РІС‹РїРѕР»РЅРёС‚СЊ. Р•СЃР»Рё РІС‹ РїРѕРґРѕР№РґРµС‚Рµ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЋ, РѕРЅ РІС‹Р±РµСЂРµС‚ РІР°СЃ РёСЃРїРѕР»РЅРёС‚РµР»РµРј Рё РЅР°С‡РЅРµС‚ СЃ РІР°РјРё СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ.</div>
+    <div class="b-layout__txt b-layout__txt_padbot_40">Р”Р»СЏ РЅР°С‡Р°Р»Р° РјС‹ СЂР°СЃСЃРєР°Р¶РµРј, РєР°Рє РЅР°Р№С‚Рё РёРЅС‚РµСЂРµСЃСѓСЋС‰РёР№ РІР°СЃ РїСЂРѕРµРєС‚.</div>
+    <h2 class=" b-layout__title">РђРєС‚СѓР°Р»СЊРЅС‹Рµ РїСЂРѕРµРєС‚С‹</h2>
 
     <div class="b-ext-filter b-ext-filter_margbot_15">
         <div class="b-ext-filter__inner b-ext-filter__inner_pad_5 b-layout">
             <div class="i-prompt">
                 <div class="b-prompt b-prompt_left_-270 b-prompt_top_-55 b-prompt_width_200">
-                    <div class="b-prompt__txt b-prompt__txt_color_fd6c30 b-prompt__txt_italic">Укажите свою специализацию, и мы покажем только подходящие для вас проекты.</div>
+                    <div class="b-prompt__txt b-prompt__txt_color_fd6c30 b-prompt__txt_italic">РЈРєР°Р¶РёС‚Рµ СЃРІРѕСЋ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ, Рё РјС‹ РїРѕРєР°Р¶РµРј С‚РѕР»СЊРєРѕ РїРѕРґС…РѕРґСЏС‰РёРµ РґР»СЏ РІР°СЃ РїСЂРѕРµРєС‚С‹.</div>
                     <div class="b-prompt__arrow b-prompt__arrow_3 b-prompt__arrow_left_80"></div>
                 </div>
             </div>
@@ -33,7 +33,7 @@ window.addEvent('domready',
                         <td class="b-layout__left b-layout__left_padright_10 b-layout__left_width_140">
                             <div class="b-combo b-combo_inline-block">
                                 <div class="b-combo__input b-combo__input_width_125 b-combo__input_multi_dropdown b-combo__input_resize b-combo__input_arrow_yes b-combo__input_init_professionsList drop_down_default_<?= $subcategory ? (int)$subcategory : (int)$category?> multi_drop_down_default_column_<?= $subcategory ? "1" : "0"?>">
-                                    <input type="text" value="<?= $category_name ? $category_name : "Выберите раздел";?>" size="80" name="category" class="b-combo__input-text b-combo__input-text_fontsize_15" id="category" onchange="search_project($('search-request').get('value'));">
+                                    <input type="text" value="<?= $category_name ? $category_name : "Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»";?>" size="80" name="category" class="b-combo__input-text b-combo__input-text_fontsize_15" id="category" onchange="search_project($('search-request').get('value'));">
                                     <label for="category" class="b-combo__label b-combo__label_fontsize_15"></label>
                                     <span id="category_arrow" class="b-combo__arrow"></span>
                                 </div>
@@ -41,7 +41,7 @@ window.addEvent('domready',
                         </td>
                         <td class="b-layout__right">
                             <div class="b-combo b-input-hint b-search">
-                                <label class="b-input-hint__label b-input-hint__label_overflow_hidden" id="hint" for="search-request">Фильтр по ключевым словам</label>
+                                <label class="b-input-hint__label b-input-hint__label_overflow_hidden" id="hint" for="search-request">Р¤РёР»СЊС‚СЂ РїРѕ РєР»СЋС‡РµРІС‹Рј СЃР»РѕРІР°Рј</label>
                                 <div class="b-combo__input">
                                     <input id="search-request" class="b-combo__input-text" name="" size="80" type="text" onkeyup="search_project(this.value);" onblur="if(this.value.length == 0) $('hint').removeClass('b-input-hint__label_hide')">
                                 </div>
@@ -61,7 +61,7 @@ window.addEvent('domready',
     <div class="b-fon b-fon_bg_8fd15f" id="project_search_hint">
         <div class="i-prompt">
             <div class="b-prompt b-prompt_width_470 b-prompt_center b-prompt_padbot_50">
-                <div class="b-prompt__txt  b-prompt__txt_color_fd6c30 b-prompt__txt_italic">Если ни один проект вам не подошел, нажмите на кнопку</div>
+                <div class="b-prompt__txt  b-prompt__txt_color_fd6c30 b-prompt__txt_italic">Р•СЃР»Рё РЅРё РѕРґРёРЅ РїСЂРѕРµРєС‚ РІР°Рј РЅРµ РїРѕРґРѕС€РµР», РЅР°Р¶РјРёС‚Рµ РЅР° РєРЅРѕРїРєСѓ</div>
                 <div class="b-prompt__arrow b-prompt__arrow_5 b-prompt__arrow_right_70 b-prompt_top_35"></div>
             </div>
         </div>
@@ -70,7 +70,7 @@ window.addEvent('domready',
             <a href="javascript:void(0)" onclick="loading_projects($('page-search').get('value'))" class="b-button b-button_rectangle_color_transparent <?= ($count <= 3 ? "b-button_disabled" : "")?>">
                 <span class="b-button__b1">
                     <span class="b-button__b2">
-                        <span class="b-button__txt">Загрузить еще 10 проектов</span>
+                        <span class="b-button__txt">Р—Р°РіСЂСѓР·РёС‚СЊ РµС‰Рµ 10 РїСЂРѕРµРєС‚РѕРІ</span>
                     </span>
                 </span>
             </a>									
@@ -81,13 +81,13 @@ window.addEvent('domready',
         <a href="/wizard/registration/?action=next&complited=1" class="b-button b-button_rectangle_color_green">
             <span class="b-button__b1">
                 <span class="b-button__b2 b-button__b2_padlr_15">
-                    <span class="b-button__txt">Продолжить</span>
+                    <span class="b-button__txt">РџСЂРѕРґРѕР»Р¶РёС‚СЊ</span>
                 </span>
             </span>
         </a>&#160;&#160;
-        <a href="/wizard/registration/?action=next&complited=1" class="b-buttons__link">пропустить этот шаг</a>
-        <span class="b-buttons__txt">&#160;или&#160;</span>
-        <a href="/wizard/registration/?action=exit" class="b-buttons__link b-buttons__link_color_c10601">выйти из мастера</a>
+        <a href="/wizard/registration/?action=next&complited=1" class="b-buttons__link">РїСЂРѕРїСѓСЃС‚РёС‚СЊ СЌС‚РѕС‚ С€Р°Рі</a>
+        <span class="b-buttons__txt">&#160;РёР»Рё&#160;</span>
+        <a href="/wizard/registration/?action=exit" class="b-buttons__link b-buttons__link_color_c10601">РІС‹Р№С‚Рё РёР· РјР°СЃС‚РµСЂР°</a>
     </div>
     
 </div>

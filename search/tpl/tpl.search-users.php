@@ -30,9 +30,9 @@ $work = $element->works[$result['id']];
     <tr>
         <th></th>
         <th></th>
-        <th>Статус:</th>
-        <th>Отзывы:</th>
-        <th class="last">Стоимость работ:</th>
+        <th>РЎС‚Р°С‚СѓСЃ:</th>
+        <th>РћС‚Р·С‹РІС‹:</th>
+        <th class="last">РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚:</th>
     </tr>
     <?php }//if?>
     <tr class="search-cls"><td colspan="5"></td></tr>
@@ -43,8 +43,8 @@ $work = $element->works[$result['id']];
         </td>
         <td class="search-user-info">
            <div class="b-layout__txt b-layout__txt_float_right b-page__desktop">
-            <?php if(!get_uid(false)||is_emp()) { ?><a href="/new-personal-order/<?=$result['login']?>/" class="b-button b-button_flat b-button_flat_green b-button_margbot_10" >Предложить заказ</a><?php } ?>
-            <div class="b-layout__txt b-layout__txt_right"><a class="b-layout__link" href="/users/<?=$result['login']?>/">Перейти в портфолио</a></div>
+            <?php if(!get_uid(false)||is_emp()) { ?><a href="/new-personal-order/<?=$result['login']?>/" class="b-button b-button_flat b-button_flat_green b-button_margbot_10" >РџСЂРµРґР»РѕР¶РёС‚СЊ Р·Р°РєР°Р·</a><?php } ?>
+            <div class="b-layout__txt b-layout__txt_right"><a class="b-layout__link" href="/users/<?=$result['login']?>/">РџРµСЂРµР№С‚Рё РІ РїРѕСЂС‚С„РѕР»РёРѕ</a></div>
            </div>
             <span class="b-page__iphone"><?=view_avatar($result['login'], $result['photo'])?></span>
             <div class="user-info">
@@ -52,16 +52,16 @@ $work = $element->works[$result['id']];
                 <?=$session->view_online_status($result['login'])?><span style="font-size:13px"><span class="<?= $cls?>"><a title="<?=$result['uname'].' '.$result['usurname']?>" class="<?= $cls?>" href="/users/<?=$result['login']?>/?f=<?=stat_collector::REFID_SEARCH?>&stamp=<?=$_SESSION['stamp']?>"><?= "{$uname} {$usurname} [{$login}]";?></a></span>&#160;<?= view_mark_user($result);?></span>
                 
                 
-                <?php if($result['name_prof']) {?><span class="spec">Специализация: <?= ($result['name_prof']?$name_prof:"Нет специализации")?></span><?php }//if?>
-                <?php if($result['additional_spec']) {?><span class="spec">Дополнительные специализации: <?=$result['additional_spec']?></span><?php }//if?>
+                <?php if($result['name_prof']) {?><span class="spec">РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ: <?= ($result['name_prof']?$name_prof:"РќРµС‚ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё")?></span><?php }//if?>
+                <?php if($result['additional_spec']) {?><span class="spec">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё: <?=$result['additional_spec']?></span><?php }//if?>
                 <span class="country_name"><?=$country_name?$country_name:""?><?=$country_name&&$city_name?", ":""?><?= $city_name?$city_name:""?></span>
-                <span class="user-opyt">Опыт работы: <?= view_exp($result['exp'])?><?php if($result['in_office']=='t'){ ?><br/><span class="run-men">Ищу работу в офисе</span><?php }//if?></span>
+                <span class="user-opyt">РћРїС‹С‚ СЂР°Р±РѕС‚С‹: <?= view_exp($result['exp'])?><?php if($result['in_office']=='t'){ ?><br/><span class="run-men">РС‰Сѓ СЂР°Р±РѕС‚Сѓ РІ РѕС„РёСЃРµ</span><?php }//if?></span>
                 <? if ($spec_text) { ?>
                 <span class=""><br/>&laquo;<?= $spec_text ?>&raquo;</span>
                 <? } ?>
             </div>
-            <?php if(!get_uid(false)||is_emp()) { ?><a href="/new-personal-order/<?=$result['login']?>/" class="b-button b-button_flat b-button_flat_green b-button_float_right b-page__iphone b-page__ipad" >Предложить заказ</a><?php }//if?>
-            <span class="b-layout__txt b-page__iphone b-page__ipad"><a class="b-layout__link" href="/users/<?=$result['login']?>/">Перейти в портфолио</a></span>
+            <?php if(!get_uid(false)||is_emp()) { ?><a href="/new-personal-order/<?=$result['login']?>/" class="b-button b-button_flat b-button_flat_green b-button_float_right b-page__iphone b-page__ipad" >РџСЂРµРґР»РѕР¶РёС‚СЊ Р·Р°РєР°Р·</a><?php }//if?>
+            <span class="b-layout__txt b-page__iphone b-page__ipad"><a class="b-layout__link" href="/users/<?=$result['login']?>/">РџРµСЂРµР№С‚Рё РІ РїРѕСЂС‚С„РѕР»РёРѕ</a></span>
         </td>
                         	<?php if(!is_emp($result['role'])) { ?>
                         	<td class="search-user-stat">
@@ -79,7 +79,7 @@ $work = $element->works[$result['id']];
                         	       <table>
                         	        <?php if((int)$result['cost_hour'] > 0) {?>  
 									<tr>
-										<td>За час: <span class="b-page__iphone"><br></span><b><?= view_cost2($result['cost_hour'], '', '', false, $result['cost_type_hour'])?></b></td>
+										<td>Р—Р° С‡Р°СЃ: <span class="b-page__iphone"><br></span><b><?= view_cost2($result['cost_hour'], '', '', false, $result['cost_type_hour'])?></b></td>
 									</tr>
 									<?php }//if?>
 									<?php if((int)$result['cost_1000'] > 0) {?>
@@ -87,7 +87,7 @@ $work = $element->works[$result['id']];
 										<td class="prstvk"></td>
 									</tr>
 									<tr>
-										<td>За 1000 зн.: <span class="b-page__iphone"><br></span><b><?= view_cost2($result['cost_1000'], '', '', false, $result['cost_type'])?></b></td>
+										<td>Р—Р° 1000 Р·РЅ.: <span class="b-page__iphone"><br></span><b><?= view_cost2($result['cost_1000'], '', '', false, $result['cost_type'])?></b></td>
 									</tr>
 									<?php }//if?>
 									<?php if((int)$result['cost_from'] > 0 || (int)$result['cost_from'] > 0){ ?>
@@ -95,7 +95,7 @@ $work = $element->works[$result['id']];
 										<td class="prstvk"></td>
 									</tr>
 									<tr>
-										<td>За проект: <span class="b-page__iphone"><br></span><b><?= view_range_cost($result['cost_from'], $result['cost_to'], '', '', false, $result['cost_type'])?></b></td>
+										<td>Р—Р° РїСЂРѕРµРєС‚: <span class="b-page__iphone"><br></span><b><?= view_range_cost($result['cost_from'], $result['cost_to'], '', '', false, $result['cost_type'])?></b></td>
 									</tr>
 									<?php }//if?>
 									<?php if((int)$result['cost_month'] > 0) { ?>
@@ -103,7 +103,7 @@ $work = $element->works[$result['id']];
 										<td class="prstvk"></td>
 									</tr>
 									<tr>
-										<td>За месяц: <span class="b-page__iphone"><br></span><b><?= view_cost2($result['cost_month'], '', '', false, $result['cost_type_month'])?></b></td>
+										<td>Р—Р° РјРµСЃСЏС†: <span class="b-page__iphone"><br></span><b><?= view_cost2($result['cost_month'], '', '', false, $result['cost_type_month'])?></b></td>
 									</tr>
 									<?php }//if?>
 								</table>

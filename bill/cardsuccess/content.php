@@ -9,13 +9,13 @@ $xajax->printJavascript('/xajax/');
             <div class="b-layout b-layout__page">
                 <div class="b-menu b-menu_crumbs">
                     <ul class="b-menu__list">
-                        <li class="b-menu__item"><a class="b-menu__link" href="/bill/">Мои услуги</a>&nbsp;&rarr;&nbsp;</li>
+                        <li class="b-menu__item"><a class="b-menu__link" href="/bill/">РњРѕРё СѓСЃР»СѓРіРё</a>&nbsp;&rarr;&nbsp;</li>
                     </ul>
                 </div>
-                <h1 class="b-page__title">Операция прошла успешно!</h1>
+                <h1 class="b-page__title">РћРїРµСЂР°С†РёСЏ РїСЂРѕС€Р»Р° СѓСЃРїРµС€РЅРѕ!</h1>
                 <div class="b-fon">
                     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffebbf">
-                        <span class="b-icon b-icon_sbr_oattent b-icon_margleft_-25"></span>Внимание: Пополнение счета с помощью пластиковой карты может занять определенное время. 
+                        <span class="b-icon b-icon_sbr_oattent b-icon_margleft_-25"></span>Р’РЅРёРјР°РЅРёРµ: РџРѕРїРѕР»РЅРµРЅРёРµ СЃС‡РµС‚Р° СЃ РїРѕРјРѕС‰СЊСЋ РїР»Р°СЃС‚РёРєРѕРІРѕР№ РєР°СЂС‚С‹ РјРѕР¶РµС‚ Р·Р°РЅСЏС‚СЊ РѕРїСЂРµРґРµР»РµРЅРЅРѕРµ РІСЂРµРјСЏ. 
                     </div>
                 </div>
                 

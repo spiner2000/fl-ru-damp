@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Обрабатываем смену статуса проекта по ссылке
+ * РћР±СЂР°Р±Р°С‚С‹РІР°РµРј СЃРјРµРЅСѓ СЃС‚Р°С‚СѓСЃР° РїСЂРѕРµРєС‚Р° РїРѕ СЃСЃС‹Р»РєРµ
  */
 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
@@ -14,7 +14,7 @@ session_start();
 
 $uid = get_uid();
 
-//Нужна авторизация
+//РќСѓР¶РЅР° Р°РІС‚РѕСЂРёР·Р°С†РёСЏ
 if($uid <= 0)
 {
     header("Location: /registration/");
@@ -33,7 +33,7 @@ $current_hash = projects_helper::getStatusHash(array(
 
 
 
-//Проверка корректности входных параметров по хешу
+//РџСЂРѕРІРµСЂРєР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚Рё РІС…РѕРґРЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ РїРѕ С…РµС€Сѓ
 if($hash !== $current_hash)
 {
     header("Location: /404.php");
@@ -43,7 +43,7 @@ if($hash !== $current_hash)
 $obj_project = new projects();
 $project = $obj_project->GetPrjCust($project_id);
 
-//Если нет такого проекта или юзер непричастен к нему то 404
+//Р•СЃР»Рё РЅРµС‚ С‚Р°РєРѕРіРѕ РїСЂРѕРµРєС‚Р° РёР»Рё СЋР·РµСЂ РЅРµРїСЂРёС‡Р°СЃС‚РµРЅ Рє РЅРµРјСѓ С‚Рѕ 404
 if(!$project || (($project['user_id'] != $uid) && ($project['exec_id'] != $uid)))
 {
     header("Location: /404.php");

@@ -7,11 +7,11 @@
 #table_form td {padding: 5px;}
 </style>
 
-<h3>Альфа-банк: Зачисление средств</h3>
+<h3>РђР»СЊС„Р°-Р±Р°РЅРє: Р—Р°С‡РёСЃР»РµРЅРёРµ СЃСЂРµРґСЃС‚РІ</h3>
 
 <?php
 if ( $_SESSION['success'] == 'ok' ) {
-	?><span style="color:green;">Действие выполнено успешно</span><?php
+	?><span style="color:green;">Р”РµР№СЃС‚РІРёРµ РІС‹РїРѕР»РЅРµРЅРѕ СѓСЃРїРµС€РЅРѕ</span><?php
 }
 
 $_SESSION['success'] = '';
@@ -23,15 +23,15 @@ $_SESSION['success'] = '';
 <input type="hidden" name="action" value="add">
 <table id="table_form" width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr>
-    <td>Логин:&nbsp;</td>
+    <td>Р›РѕРіРёРЅ:&nbsp;</td>
     <td><input type="text" name="login" id="login" value="<?=(isset($sLogin)?$sLogin:'')?>"/></td>
 </tr>
 <tr>    
-    <td>Сумма (рублей):&nbsp;</td>
+    <td>РЎСѓРјРјР° (СЂСѓР±Р»РµР№):&nbsp;</td>
     <td><input type="text" name="summ" id="summ" value="<?=(isset($_POST['summ'])?htmlspecialchars($_POST['summ']):'')?>"/></td>
 </tr>
 <tr>
-    <td>Дата:&nbsp;</td>
+    <td>Р”Р°С‚Р°:&nbsp;</td>
     <td valign="top">
     <div class="form-el">
         <div class="form-value">
@@ -44,7 +44,7 @@ $_SESSION['success'] = '';
 </tr>
 <tr>
     <td colspan="2" style="padding: 10px 0 15px;">
-        <input type="submit" value=" Зачислить ">
+        <input type="submit" value=" Р—Р°С‡РёСЃР»РёС‚СЊ ">
     </td>
 </tr>
 </table>
@@ -54,8 +54,8 @@ $_SESSION['success'] = '';
 <table cellpadding="0" cellspacing="0" border="0" style="margin-top: 15px;">
 <tr>
     <td>
-        с: <input class="plain" name="ds" value="<?=date("d-m-Y",strtotime($ds))?>" size="12" style="border: 1px solid #DFDFDF; height: 21px"><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fStartPop(document.daterange.ds,document.daterange.de);return false;"><img class="PopcalTrigger" align="absmiddle" src="/scripts/DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a>
-        по: <input class="plain" name="de" value="<?=date("d-m-Y",strtotime($de))?>" size="12" style="border: 1px solid #DFDFDF; height: 21px"><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fEndPop(document.daterange.ds,document.daterange.de);return false;"><img class="PopcalTrigger" align="absmiddle" src="/scripts/DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a>
+        СЃ: <input class="plain" name="ds" value="<?=date("d-m-Y",strtotime($ds))?>" size="12" style="border: 1px solid #DFDFDF; height: 21px"><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fStartPop(document.daterange.ds,document.daterange.de);return false;"><img class="PopcalTrigger" align="absmiddle" src="/scripts/DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a>
+        РїРѕ: <input class="plain" name="de" value="<?=date("d-m-Y",strtotime($de))?>" size="12" style="border: 1px solid #DFDFDF; height: 21px"><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fEndPop(document.daterange.ds,document.daterange.de);return false;"><img class="PopcalTrigger" align="absmiddle" src="/scripts/DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a>
     </td>
     <td style="padding-left:15px;"><input type="submit" value="OK" style="height: 21px"></td>
 </tr>
@@ -67,10 +67,10 @@ $_SESSION['success'] = '';
 
 <table id="table_list" width="100%" cellpadding="0" cellspacing="0">
 <tr>
-    <th><strong>Дата</strong></th>
-    <th><strong>Логин</strong></th>
-    <?/* <th><strong>Сумма, FM</strong></th> */?>
-    <th><strong>Сумма, рубли</strong></th>
+    <th><strong>Р”Р°С‚Р°</strong></th>
+    <th><strong>Р›РѕРіРёРЅ</strong></th>
+    <?/* <th><strong>РЎСѓРјРјР°, FM</strong></th> */?>
+    <th><strong>РЎСѓРјРјР°, СЂСѓР±Р»Рё</strong></th>
     <th>&nbsp;</th>
 </tr>
 <?php
@@ -84,7 +84,7 @@ if ( count($aData) ) {
     <td><?=$aOne['uname']?> <?=$aOne['usurname']?> [<?=$aOne['login']?>]</td>
     <?/* <td><?=$aOne['ammount']?></td> */?>
     <td><?=$aOne['trs_sum']?></td>
-    <td><a id="del_alpha_pay_id_<?=$aOne['id']?>" href="/siteadmin/alpha/?ds=<?=date("d-m-Y",strtotime($ds))?>&de=<?=date("d-m-Y",strtotime($de))?>&action=del&id=<?=$aOne['id']?>&uid=<?=$aOne['uid']?>" onClick="return addTokenToLink('del_alpha_pay_id_<?=$aOne['id']?>', 'Вы действительно хотите отменить зачисление средств?')" title="Удалить"><strong>X</strong></a></td>
+    <td><a id="del_alpha_pay_id_<?=$aOne['id']?>" href="/siteadmin/alpha/?ds=<?=date("d-m-Y",strtotime($ds))?>&de=<?=date("d-m-Y",strtotime($de))?>&action=del&id=<?=$aOne['id']?>&uid=<?=$aOne['uid']?>" onClick="return addTokenToLink('del_alpha_pay_id_<?=$aOne['id']?>', 'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ РѕС‚РјРµРЅРёС‚СЊ Р·Р°С‡РёСЃР»РµРЅРёРµ СЃСЂРµРґСЃС‚РІ?')" title="РЈРґР°Р»РёС‚СЊ"><strong>X</strong></a></td>
 </tr>
 <?php
         $nSummR  += $aOne['trs_sum'];
@@ -92,7 +92,7 @@ if ( count($aData) ) {
 	}
 ?>
 <tr>
-    <td colspan="2"><strong>Итого</strong></td>
+    <td colspan="2"><strong>РС‚РѕРіРѕ</strong></td>
     <?/*<td><strong><?=sprintf('%01.2f', $nSummFM)?></strong></td>*/?>
     <td><strong><?=sprintf('%01.2f', $nSummR)?></strong></td>
     <td>&nbsp;</td>
@@ -102,7 +102,7 @@ if ( count($aData) ) {
 else {
 ?>
 <tr>
-    <td colspan="5">Нет данных за указанный период</td>
+    <td colspan="5">РќРµС‚ РґР°РЅРЅС‹С… Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ</td>
 </tr>
 <?php
 }
@@ -111,7 +111,7 @@ else {
 
 <script type="text/javascript">
 <?php if ( isset($bAskForce) && $bAskForce ): ?>
-if (confirm('Отмена зачисление средств приведет к отрицательному балансу на счету пользователя.\nВсе равно отменить?')) {
+if (confirm('РћС‚РјРµРЅР° Р·Р°С‡РёСЃР»РµРЅРёРµ СЃСЂРµРґСЃС‚РІ РїСЂРёРІРµРґРµС‚ Рє РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРјСѓ Р±Р°Р»Р°РЅСЃСѓ РЅР° СЃС‡РµС‚Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.\nР’СЃРµ СЂР°РІРЅРѕ РѕС‚РјРµРЅРёС‚СЊ?')) {
     window.location = '/siteadmin/alpha/?ds=<?=date("d-m-Y",strtotime($ds))?>&de=<?=date("d-m-Y",strtotime($de))?>&action=del&id=<?=$sId?>&uid=<?=$sUid?>&force=1';
 }
 <?php endif; ?>

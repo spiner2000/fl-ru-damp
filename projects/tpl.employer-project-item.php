@@ -32,9 +32,9 @@
             <div class="hr"></div>
             <div class="fl2_offer bordered">
                 <div class="fl2_offer_logo">
-                    <div>Платный проект</div>
+                    <div>РџР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚</div>
                     <? if ($row['cost']) { $priceby_str = getPricebyProject($row['priceby']);?>
-                    <div class="fl2_offer_budget">Бюджет:
+                    <div class="fl2_offer_budget">Р‘СЋРґР¶РµС‚:
                     <? if (hasPermissions('projects') && $user->login!=$_SESSION["login"]) {
                             ?><a id="prj_budget_lnk_<?=$row['id']?>" class="b-post__link  b-post__link_dot_6db335" href="#" onClick="popupShowChangeBudget(<?=$row['id']?>, '<?=$row['cost']?>', '<?=$row['currency']?>', '<?=$row['priceby']?>', false, <?=$row['id']?>, 1, 2); return false;"><?=CurToChar($row['cost'], $row['currency']) ?><?=$priceby_str?></a>
                      <?} else {
@@ -43,10 +43,10 @@
                     </div>
                     <? } else { 
                         if (hasPermissions('projects') && $user->login!=$_SESSION["login"]) {
-                                ?><var class="bujet-dogovor"><a id="prj_budget_lnk_<?=$row['id']?>" class="b-post__link b-post__link_dot_6db335" href="#" onClick="popupShowChangeBudget(<?=$row['id']?>, '', 0, 1, true, <?=$row['id']?>, 1, 2); return false;">По договоренности</a></var><?
+                                ?><var class="bujet-dogovor"><a id="prj_budget_lnk_<?=$row['id']?>" class="b-post__link b-post__link_dot_6db335" href="#" onClick="popupShowChangeBudget(<?=$row['id']?>, '', 0, 1, true, <?=$row['id']?>, 1, 2); return false;">РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</a></var><?
                         } 
                         else {
-                                ?><var class="bujet-dogovor">По договоренности</var> <?
+                                ?><var class="bujet-dogovor">РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</var> <?
                         } ?>
                     <? } ?>
                     <? if ($row['logo_name']) {?>
@@ -56,10 +56,10 @@
                     <? }?> 
                 </div>
                 <div class="fl2_offer_header"> 
-                    <? /* #0019741 if ($row['prefer_sbr']=='t') {?><img src="/images/sbr_p.gif" class="sbr_p" title="Работодатель&nbsp;хочет&nbsp;работать&nbsp;через&nbsp;Cделку&nbsp;без&nbsp;риска" alt="Работодатель хочет работать через Cделку без риска"><? } */?>
+                    <? /* #0019741 if ($row['prefer_sbr']=='t') {?><img src="/images/sbr_p.gif" class="sbr_p" title="Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ&nbsp;С…РѕС‡РµС‚&nbsp;СЂР°Р±РѕС‚Р°С‚СЊ&nbsp;С‡РµСЂРµР·&nbsp;CРґРµР»РєСѓ&nbsp;Р±РµР·&nbsp;СЂРёСЃРєР°" alt="Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ С…РѕС‡РµС‚ СЂР°Р±РѕС‚Р°С‚СЊ С‡РµСЂРµР· CРґРµР»РєСѓ Р±РµР· СЂРёСЃРєР°"><? } */?>
                     <? if ($row['sbr_id'] && (hasPermissions('projects') || $row['sbr_emp_id']==$_SESSION['uid']||$row['sbr_frl_id']==$_SESSION['uid'])) { ?>
                         <a href="/<?= sbr::NEW_TEMPLATE_SBR?>/<?=($row['sbr_emp_id']==$_SESSION['uid']||$row['sbr_frl_id']==$_SESSION['uid']||hasPermissions('projects') ? "?id={$row['sbr_id']}" : '').(hasPermissions('projects') ? "&access=A&E={$user->login}" : '')?>"><img src="/images/shield_sm.gif" alt="" /></a><? } ?>
-                    <? if ($row['closed']=='t') {?><img src="/images/ico_closed.gif" alt="Проект закрыт" /><? }?>
+                    <? if ($row['closed']=='t') {?><img src="/images/ico_closed.gif" alt="РџСЂРѕРµРєС‚ Р·Р°РєСЂС‹С‚" /><? }?>
                         <?php $sTitle = $row['moderator_status'] === '0' && $row['kind'] != 4 && $user->is_pro != 't' ? $stop_words->replace($row['name']) : $row['name']; ?>
                         <a id="prj_name_<?=$row["id"] ?>" name="/proonly.php" href="<?=$blink?>" class="fl2_offer_header" title=""><?=reformat($sTitle, 100, 0, 1)?></a>
                  </div>
@@ -70,22 +70,22 @@
                  ?>
                  <div class="fl2_offer_content"><?=ereg_replace("\r","",ereg_replace("\n","",reformat($sDescr, 60)))?></div>
                  <? if (is_new_prj($row['post_date'])) { ?>
-                        <br /><?=((!$row["comm_count"] || $row["comm_count"] % 10==0 || $row["comm_count"] % 10 >4 || ($row["comm_count"] >4 &&  $row["comm_count"]<21)) ?  '<a class="public_blue" href="'.getFriendlyURL("blog", $row['thread_id']).'">'.$row["comm_count"].' предложений</a>' : (($row["comm_count"] % 10 == 1 || $row["comm_count"]==1) ?  '<a class="public_blue" href="'.getFriendlyURL("blog", $row['thread_id']).'">'.$row["comm_count"].' предложение</a>' : '<a class="public_blue" href="'.getFriendlyURL("blog", $row['thread_id']).'">'.$row["comm_count"].' предложения</a>'  )   )?><br /><br />
+                        <br /><?=((!$row["comm_count"] || $row["comm_count"] % 10==0 || $row["comm_count"] % 10 >4 || ($row["comm_count"] >4 &&  $row["comm_count"]<21)) ?  '<a class="public_blue" href="'.getFriendlyURL("blog", $row['thread_id']).'">'.$row["comm_count"].' РїСЂРµРґР»РѕР¶РµРЅРёР№</a>' : (($row["comm_count"] % 10 == 1 || $row["comm_count"]==1) ?  '<a class="public_blue" href="'.getFriendlyURL("blog", $row['thread_id']).'">'.$row["comm_count"].' РїСЂРµРґР»РѕР¶РµРЅРёРµ</a>' : '<a class="public_blue" href="'.getFriendlyURL("blog", $row['thread_id']).'">'.$row["comm_count"].' РїСЂРµРґР»РѕР¶РµРЅРёСЏ</a>'  )   )?><br /><br />
 <?
             }
             else {
 ?>
-            <br /><?=((!$row["offers_count"] || $row["offers_count"] % 10==0 || $row["offers_count"] % 10 >4 || ($row["offers_count"] >4 &&  $row["offers_count"]<21)) ?  '<a class="public_blue" href="'.$blink.'">'.$row["offers_count"].' предложений</a>' : (($row["offers_count"] % 10 == 1 || $row["comm_count"]==1) ?  '<a class="public_blue" href="'.$blink.'">'.$row["offers_count"].' предложение</a>' : '<a class="public_blue" href="'.$blink.'">'.$row["offers_count"].' предложения</a>'  )   )?><br /><br />
+            <br /><?=((!$row["offers_count"] || $row["offers_count"] % 10==0 || $row["offers_count"] % 10 >4 || ($row["offers_count"] >4 &&  $row["offers_count"]<21)) ?  '<a class="public_blue" href="'.$blink.'">'.$row["offers_count"].' РїСЂРµРґР»РѕР¶РµРЅРёР№</a>' : (($row["offers_count"] % 10 == 1 || $row["comm_count"]==1) ?  '<a class="public_blue" href="'.$blink.'">'.$row["offers_count"].' РїСЂРµРґР»РѕР¶РµРЅРёРµ</a>' : '<a class="public_blue" href="'.$blink.'">'.$row["offers_count"].' РїСЂРµРґР»РѕР¶РµРЅРёСЏ</a>'  )   )?><br /><br />
 <?
             }
             ?>
             <br />
-            <div class="fl2_offer_meta">Прошло времени с момента публикации: 
+            <div class="fl2_offer_meta">РџСЂРѕС€Р»Рѕ РІСЂРµРјРµРЅРё СЃ РјРѕРјРµРЅС‚Р° РїСѓР±Р»РёРєР°С†РёРё: 
                 <?=ago_pub_x(strtotimeEx($row['create_date']))?><br />
-                Автор: <a href="/users/<?=$user->login?>"><? print $user->uname." "; print $user->usurname; ?> [<?=$user->login?>]</a><br />
-                Раздел: <?=projects::getSpecsStr($row['id'],' / ', ', ');?><? /* $category=$proj_groups_by_id[$row['category']]; print $category; */?>
+                РђРІС‚РѕСЂ: <a href="/users/<?=$user->login?>"><? print $user->uname." "; print $user->usurname; ?> [<?=$user->login?>]</a><br />
+                Р Р°Р·РґРµР»: <?=projects::getSpecsStr($row['id'],' / ', ', ');?><? /* $category=$proj_groups_by_id[$row['category']]; print $category; */?>
                 <? if ($row['pro_only']=='t') {?>
-                    <br /><span  class="fl2_offer_meta2" style="background-color:#fff7ee;">Отвечать на проект могут только пользователи с аккаунтом <a href="/payed/"><img style="background:none" src="/images/icons/f-pro.png" alt="" class="pro" /></a></span>
+                    <br /><span  class="fl2_offer_meta2" style="background-color:#fff7ee;">РћС‚РІРµС‡Р°С‚СЊ РЅР° РїСЂРѕРµРєС‚ РјРѕРіСѓС‚ С‚РѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ Р°РєРєР°СѓРЅС‚РѕРј <a href="/payed/"><img style="background:none" src="/images/icons/f-pro.png" alt="" class="pro" /></a></span>
                 <? }?>
             </div>
             <div class="fl2_comments_link">
@@ -98,12 +98,12 @@
                     <b class="b-fon__b1"></b>
                     <b class="b-fon__b2"></b>
                     <div class="b-fon__body b-fon__body_pad_10">
-                        <span class="b-fon__txt b-fon__txt_float_right b-fon__txt_fontsize_11">Рейтинг: <?= round($row['exec_rating'],1)?></span>
+                        <span class="b-fon__txt b-fon__txt_float_right b-fon__txt_fontsize_11">Р РµР№С‚РёРЅРі: <?= round($row['exec_rating'],1)?></span>
                         <span class="b-fon__txt b-fon__txt_bold b-fon__txt_fontsize_13">
                             <?php if($row['kind']==2 || $row['kind']==7) { ?>
-                                Победитель определен:
+                                РџРѕР±РµРґРёС‚РµР»СЊ РѕРїСЂРµРґРµР»РµРЅ:
                             <?php } else { ?>
-                                Исполнитель определен:
+                                РСЃРїРѕР»РЅРёС‚РµР»СЊ РѕРїСЂРµРґРµР»РµРЅ:
                             <?php } ?>
                         </span>
                         <div class="b-username b-username_bold b-username_inline">
@@ -111,7 +111,7 @@
                         </div>
                         <div class="i-opinion i-opinion_padtop_10">
                             <span class="b-opinion">
-                                <span class="b-opinion__txt"><a class="b-opinion__link  b-opinion__link_color_4e" href="/users/<?=$row['exec_login']?>/opinions/">Отзывы пользователей</a></span>
+                                <span class="b-opinion__txt"><a class="b-opinion__link  b-opinion__link_color_4e" href="/users/<?=$row['exec_login']?>/opinions/">РћС‚Р·С‹РІС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</a></span>
                                 <span class="b-opinion__txt b-opinion__txt_color_6db335"><? if(($row['sbr_opi_plus'] + $row['ops_all_plus']) > 0) { ?><a class="b-opinion__link b-opinion__link_decoration_no b-opinion__link_color_6db335" href="/users/<?=$row['exec_login']?>/opinions/?sort=1#op_head">+</a><? } ?><a class="b-opinion__link b-opinion__link_color_6db335" href="/users/<?=$row['exec_login']?>/opinions/?sort=1#op_head"><?= (int) ($row['sbr_opi_plus'] + $row['ops_all_plus'])?></a></span>
                                 <span class="b-opinion__txt b-opinion__txt_color_4e"><a class="b-opinion__link b-opinion__link_color_4e" href="/users/<?=$exec_info['login']?>/opinions/?sort=2#op_head"><?=(int) ($row['sbr_opi_null'] + $row['ops_all_null']) ?></a></span>
                                 <span class="b-opinion__txt b-opinion__txt_color_c10600"><? if(($row['sbr_opi_minus'] + $row['ops_all_minus']) > 0) { ?><a class="b-opinion__link b-opinion__link_decoration_no b-opinion__link_color_c10600" href="/users/<?=$row['exec_login']?>/opinions/?sort=3#op_head">&minus;</a><? } //if?><a class="b-opinion__link b-opinion__link_color_c10600" href="/users/<?=$row['exec_login']?>/opinions/?sort=3#op_head"><?=(int) ($row['sbr_opi_minus'] + $row['ops_all_minus']) ?></a></span>
@@ -160,7 +160,7 @@
             <? }?>
             <?if ($row['cost']) {
                  $priceby_str = getPricebyProject($row['priceby']);?>
-                 <div class="fl2_offer_budget">Бюджет: <?php 
+                 <div class="fl2_offer_budget">Р‘СЋРґР¶РµС‚: <?php 
                      if (hasPermissions('projects') && $user->login!=$_SESSION["login"]) {
                             ?><a id="prj_budget_lnk_<?=$row['id']?>" class="b-post__link  b-post__link_dot_6db335" href="#" onClick="popupShowChangeBudget(<?=$row['id']?>, '<?=$row['cost']?>', '<?=$row['currency']?>', '<?=$row['priceby']?>', false, <?=$row['id']?>, 1, 2); return false;"><?=CurToChar($row['cost'], $row['currency']) ?><?=$priceby_str?></a>
                      <?} else {
@@ -169,16 +169,16 @@
                  </div>
             <? } else { 
                         if (hasPermissions('projects') && $user->login!=$_SESSION["login"]) {
-                                ?><var class="bujet-dogovor"><a id="prj_budget_lnk_<?=$row['id']?>" class="b-post__link b-post__link_dot_6db335" href="#" onClick="popupShowChangeBudget(<?=$row['id']?>, '', 0, 1, true, <?=$row['id']?>, 1, 2); return false;">По договоренности</a></var><?
+                                ?><var class="bujet-dogovor"><a id="prj_budget_lnk_<?=$row['id']?>" class="b-post__link b-post__link_dot_6db335" href="#" onClick="popupShowChangeBudget(<?=$row['id']?>, '', 0, 1, true, <?=$row['id']?>, 1, 2); return false;">РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</a></var><?
                         } 
                         else {
-                                ?><var class="bujet-dogovor">По договоренности</var> <?
+                                ?><var class="bujet-dogovor">РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</var> <?
                         } ?>
             <? } ?>
             <div class="fl2_offer_header"> 
-                <? /* #0019741 if ($row['prefer_sbr']=='t') {?><img src="/images/sbr_p.gif" class="sbr_p" title="Работодатель&nbsp;хочет&nbsp;работать&nbsp;через&nbsp;Cделку&nbsp;без&nbsp;риска" alt="Работодатель хочет работать через Cделку без риска"><? } */?>
+                <? /* #0019741 if ($row['prefer_sbr']=='t') {?><img src="/images/sbr_p.gif" class="sbr_p" title="Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ&nbsp;С…РѕС‡РµС‚&nbsp;СЂР°Р±РѕС‚Р°С‚СЊ&nbsp;С‡РµСЂРµР·&nbsp;CРґРµР»РєСѓ&nbsp;Р±РµР·&nbsp;СЂРёСЃРєР°" alt="Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ С…РѕС‡РµС‚ СЂР°Р±РѕС‚Р°С‚СЊ С‡РµСЂРµР· CРґРµР»РєСѓ Р±РµР· СЂРёСЃРєР°"><? } */?>
                 <? if ($row['sbr_id'] && (hasPermissions('projects') || $row['sbr_emp_id']==$_SESSION['uid']||$row['sbr_frl_id']==$_SESSION['uid'])) { ?><a href="/<?= sbr::NEW_TEMPLATE_SBR?>/<?=($row['sbr_emp_id']==$_SESSION['uid']||$row['sbr_frl_id']==$_SESSION['uid']||hasPermissions('projects') ? "?id={$row['sbr_id']}" : '').(hasPermissions('projects') ? "&access=A&E={$user->login}" : '')?>"><img src="/images/shield_sm.gif" alt="" /></a><? } ?>
-                <?if ($row['closed']=='t') {?><img src="/images/ico_closed.gif" alt="Проект закрыт" /><?}?>
+                <?if ($row['closed']=='t') {?><img src="/images/ico_closed.gif" alt="РџСЂРѕРµРєС‚ Р·Р°РєСЂС‹С‚" /><?}?>
                 <?php $sTitle = $row['moderator_status'] === '0' && $row['kind'] != 4 && $user->is_pro != 't' ? $stop_words->replace($row['name']) : $row['name']; ?>
                 <a href="<?=$blink?>" id="prj_name_<?=$row["id"] ?>"><?=reformat($sTitle, 20, 0, 1)?></a>
             </div>
@@ -190,26 +190,26 @@
             <div class="fl2_offer_content"><?=ereg_replace("\r","",ereg_replace("\n","",reformat($sDescr, 65)))?></div><?
             if (is_new_prj($row['post_date'])) {
 ?>
-            <br /><?=((!$row["comm_count"] || $row["comm_count"] % 10==0 || $row["comm_count"] % 10 >4 || ($row["comm_count"] >4 &&  $row["comm_count"]<21)) ?  '<a class="public_blue" href="'.getFriendlyURL("blog", $row['thread_id']).'">'.$row["comm_count"].' предложений</a>' : (($row["comm_count"] % 10 == 1 || $row["comm_count"]==1) ?  '<a class="public_blue" href="'.getFriendlyURL("blog", $row['thread_id']).'">'.$row["comm_count"].' предложение</a>' : '<a class="public_blue" href="'.getFriendlyURL("blog", $row['thread_id']).'">'.$row["comm_count"].' предложения</a>'  )   )?><br /><br />
+            <br /><?=((!$row["comm_count"] || $row["comm_count"] % 10==0 || $row["comm_count"] % 10 >4 || ($row["comm_count"] >4 &&  $row["comm_count"]<21)) ?  '<a class="public_blue" href="'.getFriendlyURL("blog", $row['thread_id']).'">'.$row["comm_count"].' РїСЂРµРґР»РѕР¶РµРЅРёР№</a>' : (($row["comm_count"] % 10 == 1 || $row["comm_count"]==1) ?  '<a class="public_blue" href="'.getFriendlyURL("blog", $row['thread_id']).'">'.$row["comm_count"].' РїСЂРµРґР»РѕР¶РµРЅРёРµ</a>' : '<a class="public_blue" href="'.getFriendlyURL("blog", $row['thread_id']).'">'.$row["comm_count"].' РїСЂРµРґР»РѕР¶РµРЅРёСЏ</a>'  )   )?><br /><br />
 <?
             }
             else {
 ?>
-            <br /><?=((!$row["offers_count"] || $row["offers_count"] % 10==0 || $row["offers_count"] % 10 >4 || ($row["offers_count"] >4 &&  $row["offers_count"]<21)) ?  '<a class="public_blue" href="'.$blink.'">'.$row["offers_count"].' предложений</a>' : (($row["offers_count"] % 10 == 1 || $row["comm_count"]==1) ?  '<a class="public_blue" href="'.$blink.'">'.$row["offers_count"].' предложение</a>' : '<a class="public_blue" href="'.$blink.'">'.$row["offers_count"].' предложения</a>'  )   )?><br /><br />
+            <br /><?=((!$row["offers_count"] || $row["offers_count"] % 10==0 || $row["offers_count"] % 10 >4 || ($row["offers_count"] >4 &&  $row["offers_count"]<21)) ?  '<a class="public_blue" href="'.$blink.'">'.$row["offers_count"].' РїСЂРµРґР»РѕР¶РµРЅРёР№</a>' : (($row["offers_count"] % 10 == 1 || $row["comm_count"]==1) ?  '<a class="public_blue" href="'.$blink.'">'.$row["offers_count"].' РїСЂРµРґР»РѕР¶РµРЅРёРµ</a>' : '<a class="public_blue" href="'.$blink.'">'.$row["offers_count"].' РїСЂРµРґР»РѕР¶РµРЅРёСЏ</a>'  )   )?><br /><br />
 <?
             }
             
             
             ?>
             <br />
-            <div class="fl2_offer_meta">Прошло времени с момента публикации: 
+            <div class="fl2_offer_meta">РџСЂРѕС€Р»Рѕ РІСЂРµРјРµРЅРё СЃ РјРѕРјРµРЅС‚Р° РїСѓР±Р»РёРєР°С†РёРё: 
                 <?=ago_pub_x(strtotimeEx($row['create_date']))?><br />
-                Автор: <a href="/users/<?=$user->login?>"><? print $user->uname." "; print $user->usurname; ?> [<?=$user->login?>]</a><br />
-                Раздел: <?=projects::getSpecsStr($row['id'],' / ', ', ');?>
+                РђРІС‚РѕСЂ: <a href="/users/<?=$user->login?>"><? print $user->uname." "; print $user->usurname; ?> [<?=$user->login?>]</a><br />
+                Р Р°Р·РґРµР»: <?=projects::getSpecsStr($row['id'],' / ', ', ');?>
                 <? /* $category=$proj_groups_by_id[$row['category']]; print $category;*/ ?>
             </div>
             <? if ($row['pro_only']=='t') {?><br />
-                <span  class="fl2_offer_meta2" style="background-color:#fff7ee;">Отвечать на проект могут только пользователи с аккаунтом <a href="/payed/"><img style="background:none" src="/images/icons/f-pro.png" alt="" class="pro" /></a></span>
+                <span  class="fl2_offer_meta2" style="background-color:#fff7ee;">РћС‚РІРµС‡Р°С‚СЊ РЅР° РїСЂРѕРµРєС‚ РјРѕРіСѓС‚ С‚РѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ Р°РєРєР°СѓРЅС‚РѕРј <a href="/payed/"><img style="background:none" src="/images/icons/f-pro.png" alt="" class="pro" /></a></span>
                 <? }?>
                 <div class="fl2_comments_link">
                     <div style="padding:12px 0px 0px 0px;"></div>
@@ -222,12 +222,12 @@
                     <b class="b-fon__b1"></b>
                     <b class="b-fon__b2"></b>
                     <div class="b-fon__body b-fon__body_pad_10">
-                        <span class="b-fon__txt b-fon__txt_float_right b-fon__txt_fontsize_11">Рейтинг: <?= round($row['exec_rating'],1)?></span>
+                        <span class="b-fon__txt b-fon__txt_float_right b-fon__txt_fontsize_11">Р РµР№С‚РёРЅРі: <?= round($row['exec_rating'],1)?></span>
                         <span class="b-fon__txt b-fon__txt_bold b-fon__txt_fontsize_13">
                             <?php if($row['kind']==2 || $row['kind']==7) { ?>
-                                Победитель определен:
+                                РџРѕР±РµРґРёС‚РµР»СЊ РѕРїСЂРµРґРµР»РµРЅ:
                             <?php } else { ?>
-                                Исполнитель определен:
+                                РСЃРїРѕР»РЅРёС‚РµР»СЊ РѕРїСЂРµРґРµР»РµРЅ:
                             <?php } ?>
                         </span>
                         <div class="b-username b-username_bold b-username_inline">
@@ -235,7 +235,7 @@
                         </div>
                         <div class="i-opinion i-opinion_padtop_10">
                             <span class="b-opinion">
-                                <span class="b-opinion__txt"><a class="b-opinion__link  b-opinion__link_color_4e" href="/users/<?=$row['exec_login']?>/opinions/">Отзывы пользователей</a></span>
+                                <span class="b-opinion__txt"><a class="b-opinion__link  b-opinion__link_color_4e" href="/users/<?=$row['exec_login']?>/opinions/">РћС‚Р·С‹РІС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</a></span>
                                 <span class="b-opinion__txt b-opinion__txt_color_6db335"><? if(($row['sbr_opi_plus'] + $row['ops_all_plus']) > 0) { ?><a class="b-opinion__link b-opinion__link_decoration_no b-opinion__link_color_6db335" href="/users/<?=$row['exec_login']?>/opinions/?sort=1#op_head">+</a><? } ?><a class="b-opinion__link b-opinion__link_color_6db335" href="/users/<?=$row['exec_login']?>/opinions/?sort=1#op_head"><?= (int) ($row['sbr_opi_plus'] + $row['ops_all_plus'])?></a></span>
                                 <span class="b-opinion__txt b-opinion__txt_color_4e"><a class="b-opinion__link b-opinion__link_color_4e" href="/users/<?=$exec_info['login']?>/opinions/?sort=2#op_head"><?=(int) ($row['sbr_opi_null'] + $row['ops_all_null']) ?></a></span>
                                 <span class="b-opinion__txt b-opinion__txt_color_c10600"><? if(($row['sbr_opi_minus'] + $row['ops_all_minus']) > 0) { ?><a class="b-opinion__link b-opinion__link_decoration_no b-opinion__link_color_c10600" href="/users/<?=$row['exec_login']?>/opinions/?sort=3#op_head">&minus;</a><? } //if?><a class="b-opinion__link b-opinion__link_color_c10600" href="/users/<?=$row['exec_login']?>/opinions/?sort=3#op_head"><?=(int) ($row['sbr_opi_minus'] + $row['ops_all_minus']) ?></a></span>

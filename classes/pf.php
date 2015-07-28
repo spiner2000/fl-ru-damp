@@ -1,35 +1,35 @@
 <?php
 
 /**
- * Класс для работы с документами по безналу в сервисе "Подбор фрилансеров"  
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РґРѕРєСѓРјРµРЅС‚Р°РјРё РїРѕ Р±РµР·РЅР°Р»Сѓ РІ СЃРµСЂРІРёСЃРµ "РџРѕРґР±РѕСЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ"  
  */
 class pf
 {
     /**
-     * Название таблицы куда будем писать все данные
+     * РќР°Р·РІР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ РєСѓРґР° Р±СѓРґРµРј РїРёСЃР°С‚СЊ РІСЃРµ РґР°РЅРЅС‹Рµ
      * 
      * @var string 
      */
     private $tbl_name = "pf_docs";
     
     /**
-     * Название поля primary key в таблице
+     * РќР°Р·РІР°РЅРёРµ РїРѕР»СЏ primary key РІ С‚Р°Р±Р»РёС†Рµ
      * 
      * @var string 
      */
     private $pr_key = "id";
     
     /**
-     * Обработанные данные для записи
+     * РћР±СЂР°Р±РѕС‚Р°РЅРЅС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ Р·Р°РїРёСЃРё
      * 
      * @var array
      */
     private $post_data = array();
     /**
-     * Добавляем новый платеж по сервису 
+     * Р”РѕР±Р°РІР»СЏРµРј РЅРѕРІС‹Р№ РїР»Р°С‚РµР¶ РїРѕ СЃРµСЂРІРёСЃСѓ 
      * 
-     * @global object $DB  Подключение к БД @see DB.php
-     * @param array $post  Записываемые данные    
+     * @global object $DB  РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р” @see DB.php
+     * @param array $post  Р—Р°РїРёСЃС‹РІР°РµРјС‹Рµ РґР°РЅРЅС‹Рµ    
      */
     public function insert() {
         global $DB;
@@ -38,11 +38,11 @@ class pf
     } 
     
     /**
-     * Обновление платежа
+     * РћР±РЅРѕРІР»РµРЅРёРµ РїР»Р°С‚РµР¶Р°
      * 
-     * @global object $DB          Подключение к БД
-     * @param integer $id          ИД платежа
-     * @param array   $post_data   Даные для обновления
+     * @global object $DB          РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”
+     * @param integer $id          РР” РїР»Р°С‚РµР¶Р°
+     * @param array   $post_data   Р”Р°РЅС‹Рµ РґР»СЏ РѕР±РЅРѕРІР»РµРЅРёСЏ
      * @return boolean
      */
     public function update($id, $post_data) {
@@ -52,10 +52,10 @@ class pf
     }
     
     /**
-     * Выборка платежей 
+     * Р’С‹Р±РѕСЂРєР° РїР»Р°С‚РµР¶РµР№ 
      * 
      * @global object $DB
-     * @param array $filter  Фильтр выборки
+     * @param array $filter  Р¤РёР»СЊС‚СЂ РІС‹Р±РѕСЂРєРё
      * @return array 
      */
     public function select($filter=false) {
@@ -79,9 +79,9 @@ class pf
     }
     
     /**
-     * Фильтр
+     * Р¤РёР»СЊС‚СЂ
      * 
-     * @param type $filter Фильтр
+     * @param type $filter Р¤РёР»СЊС‚СЂ
      * @return string 
      */
     public function getFilterSQL($filter) {
@@ -129,7 +129,7 @@ class pf
     }
     
     /**
-     * Проверка есть ли ошибки при записи платежа
+     * РџСЂРѕРІРµСЂРєР° РµСЃС‚СЊ Р»Рё РѕС€РёР±РєРё РїСЂРё Р·Р°РїРёСЃРё РїР»Р°С‚РµР¶Р°
      * 
      * @return boolean
      */
@@ -138,7 +138,7 @@ class pf
     }
     
     /**
-     * Выводим все ошибки возникшие при записи платежа
+     * Р’С‹РІРѕРґРёРј РІСЃРµ РѕС€РёР±РєРё РІРѕР·РЅРёРєС€РёРµ РїСЂРё Р·Р°РїРёСЃРё РїР»Р°С‚РµР¶Р°
      * 
      * @return array
      */
@@ -147,31 +147,31 @@ class pf
     }
     
     /**
-     * Обработка данных при записии платежа
+     * РћР±СЂР°Р±РѕС‚РєР° РґР°РЅРЅС‹С… РїСЂРё Р·Р°РїРёСЃРёРё РїР»Р°С‚РµР¶Р°
      * 
-     * @param array $post Данные для обработки
+     * @param array $post Р”Р°РЅРЅС‹Рµ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё
      */
     public function setPostData($post) {
         if( is_empty_html($post['company']) ) {
-            $this->error['company'] = 'Введите название компании';
+            $this->error['company'] = 'Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РєРѕРјРїР°РЅРёРё';
         }
         
         if((int) $post['sum'] <= 0) {
-            $this->error['sum'] = 'Сумма должна быть больше нуля';
+            $this->error['sum'] = 'РЎСѓРјРјР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РЅСѓР»СЏ';
         } 
         
         if(is_empty_html($post['bill_num'])) {
-            $this->error['bill_num'] = 'Введите номер счета';
+            $this->error['bill_num'] = 'Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ СЃС‡РµС‚Р°';
         }
         
         if(is_empty_html($post['invoiced_time'])) {
-            $this->error['invoiced_time'] = 'Заполните дату выписки счета';
+            $this->error['invoiced_time'] = 'Р—Р°РїРѕР»РЅРёС‚Рµ РґР°С‚Сѓ РІС‹РїРёСЃРєРё СЃС‡РµС‚Р°';
         }
         
         $post['sum'] = (float) round($post['sum'], 2);
         
-        $post['invoiced_hour'] = $this->checkHour($post['invoiced_hour'], 'invoiced_hour', 'выписки счета');
-        $post['accepted_hour']  = $this->checkHour($post['accepted_hour'], 'accepted_hour', 'прихода денег');
+        $post['invoiced_hour'] = $this->checkHour($post['invoiced_hour'], 'invoiced_hour', 'РІС‹РїРёСЃРєРё СЃС‡РµС‚Р°');
+        $post['accepted_hour']  = $this->checkHour($post['accepted_hour'], 'accepted_hour', 'РїСЂРёС…РѕРґР° РґРµРЅРµРі');
         
         if($post['invoiced_time'] != '') {
             if($post['invoiced_hour'] != '') $post['invoiced_time'] .= " {$post['invoiced_hour']}";
@@ -209,11 +209,11 @@ class pf
     }
     
     /**
-     * Проверка правильности введения данных в поле времени 
+     * РџСЂРѕРІРµСЂРєР° РїСЂР°РІРёР»СЊРЅРѕСЃС‚Рё РІРІРµРґРµРЅРёСЏ РґР°РЅРЅС‹С… РІ РїРѕР»Рµ РІСЂРµРјРµРЅРё 
      * 
-     * @param string $time    Введенное время
-     * @param string $name    Название поля
-     * @param string $title   Описание поля
+     * @param string $time    Р’РІРµРґРµРЅРЅРѕРµ РІСЂРµРјСЏ
+     * @param string $name    РќР°Р·РІР°РЅРёРµ РїРѕР»СЏ
+     * @param string $title   РћРїРёСЃР°РЅРёРµ РїРѕР»СЏ
      * @return string 
      */
     public function checkHour($time, $name, $title = '') {
@@ -222,16 +222,16 @@ class pf
             
             if(count($ex) !== 2) {
                 $time = "";
-                $this->error[$name] = "Время {$title} введено не корректно";
+                $this->error[$name] = "Р’СЂРµРјСЏ {$title} РІРІРµРґРµРЅРѕ РЅРµ РєРѕСЂСЂРµРєС‚РЅРѕ";
             } else {
                 $h = (int) $ex[0];
                 $m = (int) $ex[1];
                 if($h > 24 || $h < 0) {
-                    $this->error[$name] = "Время {$title} введено не корректно";
+                    $this->error[$name] = "Р’СЂРµРјСЏ {$title} РІРІРµРґРµРЅРѕ РЅРµ РєРѕСЂСЂРµРєС‚РЅРѕ";
                 }
                 
                 if($m > 60 || $m < 0) {
-                    $this->error[$name] = "Время {$title} введено не корректно";
+                    $this->error[$name] = "Р’СЂРµРјСЏ {$title} РІРІРµРґРµРЅРѕ РЅРµ РєРѕСЂСЂРµРєС‚РЅРѕ";
                 }
                 
                 if(!$this->error[$name]) {
@@ -246,11 +246,11 @@ class pf
     }
     
     /**
-     * Взять данные по конкретному платежу
+     * Р’Р·СЏС‚СЊ РґР°РЅРЅС‹Рµ РїРѕ РєРѕРЅРєСЂРµС‚РЅРѕРјСѓ РїР»Р°С‚РµР¶Сѓ
      * 
-     * @global object $DB   Подключение к БД
-     * @param integer $id      Ид платежа
-     * @return array Данные по платежу 
+     * @global object $DB   РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”
+     * @param integer $id      РРґ РїР»Р°С‚РµР¶Р°
+     * @return array Р”Р°РЅРЅС‹Рµ РїРѕ РїР»Р°С‚РµР¶Сѓ 
      */
     public function getOrderer($id) {
         global $DB;
@@ -262,12 +262,12 @@ class pf
     }
     
     /**
-     * Статистика операций по датам (операция считается завершенной если accepted = true)
-     * Сортируем по дате выписки счета
+     * РЎС‚Р°С‚РёСЃС‚РёРєР° РѕРїРµСЂР°С†РёР№ РїРѕ РґР°С‚Р°Рј (РѕРїРµСЂР°С†РёСЏ СЃС‡РёС‚Р°РµС‚СЃСЏ Р·Р°РІРµСЂС€РµРЅРЅРѕР№ РµСЃР»Рё accepted = true)
+     * РЎРѕСЂС‚РёСЂСѓРµРј РїРѕ РґР°С‚Рµ РІС‹РїРёСЃРєРё СЃС‡РµС‚Р°
      * 
-     * @global object $DB   Подключение к БД
-     * @param string $from_date   С даты
-     * @param string $to_date     По дату
+     * @global object $DB   РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”
+     * @param string $from_date   РЎ РґР°С‚С‹
+     * @param string $to_date     РџРѕ РґР°С‚Сѓ
      * @return array 
      */
     public function getStatOp($from_date = '2000-01-01', $to_date = 'now()') {
@@ -282,13 +282,13 @@ class pf
     }
     
     /**
-     * Статистика по дням для графика (месяц, год, все года)
+     * РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РґРЅСЏРј РґР»СЏ РіСЂР°С„РёРєР° (РјРµСЃСЏС†, РіРѕРґ, РІСЃРµ РіРѕРґР°)
      * 
-     * @global object $DB   Подключение к БД
-     * @param string  $from_date    С даты
-     * @param string  $to_date      По дату
-     * @param boolean $bYear        За определенный год
-     * @param boolean $bYearAll     За все года
+     * @global object $DB   РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”
+     * @param string  $from_date    РЎ РґР°С‚С‹
+     * @param string  $to_date      РџРѕ РґР°С‚Сѓ
+     * @param boolean $bYear        Р—Р° РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РіРѕРґ
+     * @param boolean $bYearAll     Р—Р° РІСЃРµ РіРѕРґР°
      * @return array 
      */
     public function getOp($from_date, $to_date, $bYear = false, $bYearAll = false) {
@@ -316,11 +316,11 @@ class pf
     }
     
     /**
-     * Проверка даты в формате d-m-Y на валидность 
+     * РџСЂРѕРІРµСЂРєР° РґР°С‚С‹ РІ С„РѕСЂРјР°С‚Рµ d-m-Y РЅР° РІР°Р»РёРґРЅРѕСЃС‚СЊ 
      * 
-     * @param  string $sDate дата 
-     * @param  string $sErrMsg сообщение об оштбке 
-     * @return string сообщение об оштбке или пустую строку 
+     * @param  string $sDate РґР°С‚Р° 
+     * @param  string $sErrMsg СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€С‚Р±РєРµ 
+     * @return string СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€С‚Р±РєРµ РёР»Рё РїСѓСЃС‚СѓСЋ СЃС‚СЂРѕРєСѓ 
      */
     public function validateDate( $sDate = '', $sErrMsg = '' ) {
         if ( $sDate ) {

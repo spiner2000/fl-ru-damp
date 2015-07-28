@@ -15,7 +15,7 @@
         var sid = $('section_id').get('value');
         var sname = $('new_section_name').get('value');
         if(!sname){
-            alert('Вы должны указать имя раздела');
+            alert('Р’С‹ РґРѕР»Р¶РЅС‹ СѓРєР°Р·Р°С‚СЊ РёРјСЏ СЂР°Р·РґРµР»Р°');
             return false;
         }
         if(!sid) xajax_AddSection(sname);
@@ -44,7 +44,7 @@
             $('frm_desc').set('value','');
             $('frm_section').set('value','');
             $('form_files_added').set('html','');
-            $('doc_save_btn').set('value','Добавить');
+            $('doc_save_btn').set('value','Р”РѕР±Р°РІРёС‚СЊ');
         }
         if(!edit) {
             $('docs_admin').toggleClass('docs-admin-add-show').removeClass('docs-admin-groups-show'); 
@@ -59,19 +59,19 @@
         $('section_id').set('value',sid)
         $('docs-group-new').removeClass('dgn-hide');
         if(mode == 'new'){
-            $('add_section_btn').set('value','Добавить');
+            $('add_section_btn').set('value','Р”РѕР±Р°РІРёС‚СЊ');
         }else{
             var name = trim($('section_name_'+sid).get('value'));
             name = name.split('&shy;').join('');
             $('new_section_name').set('value',htmldecode(name));
-            $('add_section_btn').set('value','Изменить');
+            $('add_section_btn').set('value','РР·РјРµРЅРёС‚СЊ');
         }
     }
 
     function hideSectionEdit(){
         $('section_id').set('value','');
         $('docs-group-new').addClass('dgn-hide');
-        $('add_section_btn').set('value','Добавить');
+        $('add_section_btn').set('value','Р”РѕР±Р°РІРёС‚СЊ');
         $('new_section_name').set('value','');
     }
 
@@ -94,7 +94,7 @@
             }
         }
         ids = trim(ids,'|');
-        if(confirm('Вы действительно хотите удалить выбранные элементы?')){
+        if(confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РІС‹Р±СЂР°РЅРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹?')){
             xajax_DeleteDoc(ids);
         }
     }
@@ -108,7 +108,7 @@
             }
         }
         ids = trim(ids,'|');
-        if(confirm('Вы действительно хотите переместить выбранные элементы?')){
+        if(confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ РїРµСЂРµРјРµСЃС‚РёС‚СЊ РІС‹Р±СЂР°РЅРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹?')){
             xajax_MoveDocs(ids, section);
         }
     }
@@ -128,7 +128,7 @@
     function deleteSections(){
         var list = getSelectedSectionsCB();
         if(list.length < 1) return false;
-        if(!confirm("Удалить выбранные разделы?")) return false;
+        if(!confirm("РЈРґР°Р»РёС‚СЊ РІС‹Р±СЂР°РЅРЅС‹Рµ СЂР°Р·РґРµР»С‹?")) return false;
         var ids = '';
         for(var i = 0; i < list.length; i++){
             ids += list[i].value+':';
@@ -173,16 +173,16 @@
     document.window.onload = function() {
         showAddDocsForm(false);  
         <?php if($_POST['action_form'] == 'edit') {?>  
-        $('doc_save_btn').set('value','Сохранить');
+        $('doc_save_btn').set('value','РЎРѕС…СЂР°РЅРёС‚СЊ');
         <?php } //if?>
     }
     <?php }?>
 </script>
-<h2>Услуги</h2>
+<h2>РЈСЃР»СѓРіРё</h2>
 <div class="docs-block c">
     <div class="docs-content c">
         <div class="docs-cnt">
-            <h3>Администрирование / Шаблоны документов</h3>
+            <h3>РђРґРјРёРЅРёСЃС‚СЂРёСЂРѕРІР°РЅРёРµ / РЁР°Р±Р»РѕРЅС‹ РґРѕРєСѓРјРµРЅС‚РѕРІ</h3>
 
             <? include('search_form.php'); ?>
 
@@ -190,11 +190,11 @@
                 <b class="b1"></b>
                 <b class="b2"></b>
                 <div class="docs-admin-h">
-                    <a href="javascript:void(0);" onclick="showAddDocsForm(); $('action_form').set('value', 'add'); return false;" class="lnk-dot-green">Добавить документ</a>&nbsp;&nbsp;
-                    <a href="javascript:void(0);" onclick="$(this).getParent('div.docs-admin').removeClass('docs-admin-add-show').toggleClass('docs-admin-groups-show');" class="lnk-dot-grey">Управление разделами</a>
+                    <a href="javascript:void(0);" onclick="showAddDocsForm(); $('action_form').set('value', 'add'); return false;" class="lnk-dot-green">Р”РѕР±Р°РІРёС‚СЊ РґРѕРєСѓРјРµРЅС‚</a>&nbsp;&nbsp;
+                    <a href="javascript:void(0);" onclick="$(this).getParent('div.docs-admin').removeClass('docs-admin-add-show').toggleClass('docs-admin-groups-show');" class="lnk-dot-grey">РЈРїСЂР°РІР»РµРЅРёРµ СЂР°Р·РґРµР»Р°РјРё</a>
                 </div>
                 <div class="docs-add">
-                    <form id="docs_form" action="/service/docs/admin/" method="post" enctype="multipart/form-data" onsubmit="if(!document.getElementById('frm_name').value) {alert('Вы должны указать имя файла');return false;}">
+                    <form id="docs_form" action="/service/docs/admin/" method="post" enctype="multipart/form-data" onsubmit="if(!document.getElementById('frm_name').value) {alert('Р’С‹ РґРѕР»Р¶РЅС‹ СѓРєР°Р·Р°С‚СЊ РёРјСЏ С„Р°Р№Р»Р°');return false;}">
                         <input type="hidden" name="action_form" id="action_form" value="<?= ($_POST['action_form']?htmlspecialchars($_POST['action_form']):"add")?>">
                         <input type="hidden" name="dosc_id_f" id="dosc_id_f" value="<?=intval($_POST['dosc_id_f'])?>"/>
                         <?php if($error_add_file !== false && count($files_attache) > 0) {?>
@@ -206,11 +206,11 @@
                         <?php }// if?>
                         <div class="form-block first">
                             <div class="form-el">
-                                <label>Название:</label>
+                                <label>РќР°Р·РІР°РЅРёРµ:</label>
                                 <input type="text" name="name" value="<?=htmlspecialchars((stripslashes($_POST['name'])), ENT_QUOTES)?>" class="docs-add-title"  id="frm_name">
                             </div>
                             <div class="form-el">
-                                <label>Раздел:</label>
+                                <label>Р Р°Р·РґРµР»:</label>
                                 <select name="section" class="docs-add-group" id="frm_section">
                                     <?php foreach ($sections as $section) {
                                     ?>
@@ -219,7 +219,7 @@
                                 </select>
                             </div>
                             <div class="form-el">
-                                <label>Описание:</label>
+                                <label>РћРїРёСЃР°РЅРёРµ:</label>
                                 <textarea name="desc" rows="10" cols="20" class="docs-add-txt" style="width:664px" id="frm_desc"><?= htmlspecialchars(stripslashes($_POST['desc']));?></textarea>
                             </div>
                             <div class="form-files" style="float:none">
@@ -233,9 +233,9 @@
                                         <li  id="files_block" class="c"><input name="attach[]" type="file" size="23" class="i-file"></li>
                                     </ul>
                                     <div class="form-files-inf">
-                                        <strong class="form-files-max">Максимальный размер файла: 10 Мб.</strong>
-														<!--Картинка: gif, jpg, png. 600x1000 пикселей, 300 Кб.<br>
-														Файл: swf, zip, rar, xls, doc, rtf, pdf, psd, mp3.-->
+                                        <strong class="form-files-max">РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°: 10 РњР±.</strong>
+														<!--РљР°СЂС‚РёРЅРєР°: gif, jpg, png. 600x1000 РїРёРєСЃРµР»РµР№, 300 РљР±.<br>
+														Р¤Р°Р№Р»: swf, zip, rar, xls, doc, rtf, pdf, psd, mp3.-->
                                     </div>
                                     <?php if ($error_add_file !== false) print("<div id='docs_files_error'>".view_error($error_add_file)."</div>")?>
                                 </div>
@@ -243,22 +243,22 @@
 
                         </div>
                         <div class="form-btns">
-                            <input type="submit" id="doc_save_btn" value="Добавить" class="i-btn i-bold">&nbsp; <a href="javascript:void(0);" onclick="$(this).getParent('div.docs-admin').toggleClass('docs-admin-add-show');" class="lnk-dot-666">Отменить</a>
+                            <input type="submit" id="doc_save_btn" value="Р”РѕР±Р°РІРёС‚СЊ" class="i-btn i-bold">&nbsp; <a href="javascript:void(0);" onclick="$(this).getParent('div.docs-admin').toggleClass('docs-admin-add-show');" class="lnk-dot-666">РћС‚РјРµРЅРёС‚СЊ</a>
                         </div>
                     </form>
                 </div>
                 <div class="docs-groups">
                     <div id="docs-group-new" class="docs-group-new dgn-hide">
-                        <a href="javascript:void(0);" onclick="showSectionEdit('new'); return false;" class="lnk-dot-666 lnk-group-new">Новый раздел</a>
+                        <a href="javascript:void(0);" onclick="showSectionEdit('new'); return false;" class="lnk-dot-666 lnk-group-new">РќРѕРІС‹Р№ СЂР°Р·РґРµР»</a>
                         <div class="dgn">
                             <input type="hidden" name="section_id" id="section_id" value=""/>
-                            <input id="new_section_name" type="text" value="" class="i-txt"> <input id="add_section_btn" onclick="updateSection(); return false;" type="button" value="Добавить" class="i-btn i-bold">&nbsp; <a href="javascript:void(0);" onclick="hideSectionEdit(); return false;" class="lnk-dot-666">Отменить</a>
+                            <input id="new_section_name" type="text" value="" class="i-txt"> <input id="add_section_btn" onclick="updateSection(); return false;" type="button" value="Р”РѕР±Р°РІРёС‚СЊ" class="i-btn i-bold">&nbsp; <a href="javascript:void(0);" onclick="hideSectionEdit(); return false;" class="lnk-dot-666">РћС‚РјРµРЅРёС‚СЊ</a>
                         </div>
                     </div>
                     <div id="admin_sections">
                         <? include('admin_sections.php'); ?>
                     </div>
-                                <div class="dg-btns"><input type="button" onclick="deleteSections()" value="Удалить" class="i-btn"/></div>
+                                <div class="dg-btns"><input type="button" onclick="deleteSections()" value="РЈРґР°Р»РёС‚СЊ" class="i-btn"/></div>
                             </div>
                             <b class="b2"></b>
                             <b class="b1"></b>

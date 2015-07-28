@@ -2,7 +2,7 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
- * Кеширование произвольной информации через MemCache
+ * РљРµС€РёСЂРѕРІР°РЅРёРµ РїСЂРѕРёР·РІРѕР»СЊРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё С‡РµСЂРµР· MemCache
  *
  */
 class memBuff extends Memcache
@@ -10,29 +10,29 @@ class memBuff extends Memcache
     const SERVERS_VARKEY = 'MEMCACHED_SERVERS_VARKEY';
 	
 	/**
-	 * Есть ли соединение с сервером мем-кеша
+	 * Р•СЃС‚СЊ Р»Рё СЃРѕРµРґРёРЅРµРЅРёРµ СЃ СЃРµСЂРІРµСЂРѕРј РјРµРј-РєРµС€Р°
 	 *
 	 * @var boolean
 	 */
 	private $bIsConnected = false;
 	
 	/**
-	 * Имя сервера. Задается в config.php как SERVER
+	 * РРјСЏ СЃРµСЂРІРµСЂР°. Р—Р°РґР°РµС‚СЃСЏ РІ config.php РєР°Рє SERVER
 	 * 
 	 * @var string
 	 */
 	private $server = '';
 	
 	/**
-	 * Данные пришли из кеша или из базы. Только для ф-ции getSql()
-	 * true - из кеша
+	 * Р”Р°РЅРЅС‹Рµ РїСЂРёС€Р»Рё РёР· РєРµС€Р° РёР»Рё РёР· Р±Р°Р·С‹. РўРѕР»СЊРєРѕ РґР»СЏ С„-С†РёРё getSql()
+	 * true - РёР· РєРµС€Р°
 	 *
 	 * @var boolean
 	 */
 	private $bWasMqUsed = true;
 	
 	/**
-	 * Конструктор. Подключается к серваку мемкэша
+	 * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ. РџРѕРґРєР»СЋС‡Р°РµС‚СЃСЏ Рє СЃРµСЂРІР°РєСѓ РјРµРјРєСЌС€Р°
 	 */
 	function __construct() {
 		if (sizeof($GLOBALS['memcachedServers']) == 1){
@@ -42,32 +42,32 @@ class memBuff extends Memcache
 	            $this->bIsConnected = $this->addServer($server);
 	        }
 	    }
-	    else die("Не найдены сервера Memcache");
+	    else die("РќРµ РЅР°Р№РґРµРЅС‹ СЃРµСЂРІРµСЂР° Memcache");
 	    $this->server = (defined('SERVER')?SERVER:'');
         $this->setOption(Memcached::OPT_COMPRESSION, false);
 	}
 	
 	/**
-	 * Деструктор. Отключается от сервака мемкэша
+	 * Р”РµСЃС‚СЂСѓРєС‚РѕСЂ. РћС‚РєР»СЋС‡Р°РµС‚СЃСЏ РѕС‚ СЃРµСЂРІР°РєР° РјРµРјРєСЌС€Р°
 	 */
 	function __destruct() {
 		if ($this->bIsConnected) $this->close();
 	}
 	
 	/**
-	 * Возвращает false если данные пришли из базы
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ false РµСЃР»Рё РґР°РЅРЅС‹Рµ РїСЂРёС€Р»Рё РёР· Р±Р°Р·С‹
 	 * 
-	 * @return boolean		false - из базы, true - из кеша
+	 * @return boolean		false - РёР· Р±Р°Р·С‹, true - РёР· РєРµС€Р°
 	 */
 	public function getBWasMqUsed() {
 		return $this->bWasMqUsed;
 	}
 	
 	/**
-	 * Запрашивает данные из мемкеша.
+	 * Р—Р°РїСЂР°С€РёРІР°РµС‚ РґР°РЅРЅС‹Рµ РёР· РјРµРјРєРµС€Р°.
 	 *
-	 * @param string $key			ключ для поиска
-	 * @return array			результат. false, если не найдено
+	 * @param string $key			РєР»СЋС‡ РґР»СЏ РїРѕРёСЃРєР°
+	 * @return array			СЂРµР·СѓР»СЊС‚Р°С‚. false, РµСЃР»Рё РЅРµ РЅР°Р№РґРµРЅРѕ
 	 */
 	function get($key){
 		if ($this->bIsConnected)
@@ -76,15 +76,15 @@ class memBuff extends Memcache
 	}
 	
 	/**
-	 * Запрашивает данные из мемкеша. Если не находит ключ, то кеширует результат запроса в
-	 * формате pg_fetch_all()
+	 * Р—Р°РїСЂР°С€РёРІР°РµС‚ РґР°РЅРЅС‹Рµ РёР· РјРµРјРєРµС€Р°. Р•СЃР»Рё РЅРµ РЅР°С…РѕРґРёС‚ РєР»СЋС‡, С‚Рѕ РєРµС€РёСЂСѓРµС‚ СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР° РІ
+	 * С„РѕСЂРјР°С‚Рµ pg_fetch_all()
 	 *
-	 * @param string $error			возвращает сообщение об ошибке при запросе к Постгресу
-	 * @param string $sql			запрос к Постгресу
-	 * @param integer $expire		время жизни кэша (в секундах)
-	 * @param boolean $read_only	запрос только на чтение?
-	 * @param mixed $group			имя группы, false если без группы
-	 * @return array			результат запроса из кэша или базы в формате массива pg_fetch_all()
+	 * @param string $error			РІРѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РїСЂРё Р·Р°РїСЂРѕСЃРµ Рє РџРѕСЃС‚РіСЂРµСЃСѓ
+	 * @param string $sql			Р·Р°РїСЂРѕСЃ Рє РџРѕСЃС‚РіСЂРµСЃСѓ
+	 * @param integer $expire		РІСЂРµРјСЏ Р¶РёР·РЅРё РєСЌС€Р° (РІ СЃРµРєСѓРЅРґР°С…)
+	 * @param boolean $read_only	Р·Р°РїСЂРѕСЃ С‚РѕР»СЊРєРѕ РЅР° С‡С‚РµРЅРёРµ?
+	 * @param mixed $group			РёРјСЏ РіСЂСѓРїРїС‹, false РµСЃР»Рё Р±РµР· РіСЂСѓРїРїС‹
+	 * @return array			СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР° РёР· РєСЌС€Р° РёР»Рё Р±Р°Р·С‹ РІ С„РѕСЂРјР°С‚Рµ РјР°СЃСЃРёРІР° pg_fetch_all()
 	 */
 	function getSql(&$error, $sql, $expire = 600, $read_only = false, $group = false){
 		$output = $this->get(md5($sql));
@@ -103,13 +103,13 @@ class memBuff extends Memcache
 	}
 	
 	/**
-	 * Пихает данные в мемкеш.
+	 * РџРёС…Р°РµС‚ РґР°РЅРЅС‹Рµ РІ РјРµРјРєРµС€.
 	 *
-	 * @param string $key			ключ для кеширования
-	 * @param string $data			данные
-	 * @param integer $data			время жизни данных
-	 * @param string $data			группа для данных (false - не заморачиваться)
-	 * @return boolean				true - если все ок			
+	 * @param string $key			РєР»СЋС‡ РґР»СЏ РєРµС€РёСЂРѕРІР°РЅРёСЏ
+	 * @param string $data			РґР°РЅРЅС‹Рµ
+	 * @param integer $data			РІСЂРµРјСЏ Р¶РёР·РЅРё РґР°РЅРЅС‹С…
+	 * @param string $data			РіСЂСѓРїРїР° РґР»СЏ РґР°РЅРЅС‹С… (false - РЅРµ Р·Р°РјРѕСЂР°С‡РёРІР°С‚СЊСЃСЏ)
+	 * @return boolean				true - РµСЃР»Рё РІСЃРµ РѕРє			
 	 */
 	function set($key, $data, $expire = 600, $group = false){
 //print "Buffer_SET!";
@@ -124,10 +124,10 @@ class memBuff extends Memcache
 	}
 	
 	/**
-	 * Удаляет запись из кеша по ее коду
+	 * РЈРґР°Р»СЏРµС‚ Р·Р°РїРёСЃСЊ РёР· РєРµС€Р° РїРѕ РµРµ РєРѕРґСѓ
 	 *
-	 * @param string $key	ключ записи
-	 * @return boolean				true - если все ок	
+	 * @param string $key	РєР»СЋС‡ Р·Р°РїРёСЃРё
+	 * @return boolean				true - РµСЃР»Рё РІСЃРµ РѕРє	
 	 */
 	function delete($key) {
 		if ($this->bIsConnected)
@@ -136,10 +136,10 @@ class memBuff extends Memcache
 	}
 	
 	/**
-	 * Удаляет группу записей из мемкеша
+	 * РЈРґР°Р»СЏРµС‚ РіСЂСѓРїРїСѓ Р·Р°РїРёСЃРµР№ РёР· РјРµРјРєРµС€Р°
 	 *
-	 * @param string $group		группа записей
-	 * @return boolean			true - если все ок	
+	 * @param string $group		РіСЂСѓРїРїР° Р·Р°РїРёСЃРµР№
+	 * @return boolean			true - РµСЃР»Рё РІСЃРµ РѕРє	
 	 */
 	function flushGroup($group){
 		$items = $this->get($group);
@@ -153,7 +153,7 @@ class memBuff extends Memcache
 	function touchTag() {}
 	
 	/**
-	 * Вычищает весь кеш
+	 * Р’С‹С‡РёС‰Р°РµС‚ РІРµСЃСЊ РєРµС€
 	 *
 	 */
 	function flush(){

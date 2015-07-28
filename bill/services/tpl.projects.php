@@ -1,11 +1,11 @@
 <div class="b-layout b-layout_pad_10 b-layout_bord_e6 b-layout_relative b-layout_margbot_10 b-promo__servis b-promo__servis_prj service" data-name="projects">
-    <span class="b-layout__txt b-layout__txt_float_right b-layout__txt_fontsize_11 b-page__desktop b-page__ipad"><a href="http://feedback.fl.ru/topic/397524-platnyie-proektyi-opisanie/" class="b-layout__link">Подробнее об услуге</a></span>
-    <h3 class="b-layout__h3 b-layout__h3_padleft_70 b-layout__txt_padleft_null_iphone">Публикация платного проекта</h3>
+    <span class="b-layout__txt b-layout__txt_float_right b-layout__txt_fontsize_11 b-page__desktop b-page__ipad"><a href="http://feedback.fl.ru/topic/397524-platnyie-proektyi-opisanie/" class="b-layout__link">РџРѕРґСЂРѕР±РЅРµРµ РѕР± СѓСЃР»СѓРіРµ</a></span>
+    <h3 class="b-layout__h3 b-layout__h3_padleft_70 b-layout__txt_padleft_null_iphone">РџСѓР±Р»РёРєР°С†РёСЏ РїР»Р°С‚РЅРѕРіРѕ РїСЂРѕРµРєС‚Р°</h3>
     <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_20 b-layout__txt_padleft_70 b-layout__txt_padleft_null_iphone">
-        Наиболее эффективный способ найти исполнителя на конкретный вид работ – это публикация вашего проекта в общей ленте проектов с закреплением на главной странице и возможностью вставить логотип и ссылку на сайт компании.
+        РќР°РёР±РѕР»РµРµ СЌС„С„РµРєС‚РёРІРЅС‹Р№ СЃРїРѕСЃРѕР± РЅР°Р№С‚Рё РёСЃРїРѕР»РЅРёС‚РµР»СЏ РЅР° РєРѕРЅРєСЂРµС‚РЅС‹Р№ РІРёРґ СЂР°Р±РѕС‚ вЂ“ СЌС‚Рѕ РїСѓР±Р»РёРєР°С†РёСЏ РІР°С€РµРіРѕ РїСЂРѕРµРєС‚Р° РІ РѕР±С‰РµР№ Р»РµРЅС‚Рµ РїСЂРѕРµРєС‚РѕРІ СЃ Р·Р°РєСЂРµРїР»РµРЅРёРµРј РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ Рё РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊСЋ РІСЃС‚Р°РІРёС‚СЊ Р»РѕРіРѕС‚РёРї Рё СЃСЃС‹Р»РєСѓ РЅР° СЃР°Р№С‚ РєРѕРјРїР°РЅРёРё.
     </div>
     <div class="b-buttons b-buttons_padleft_70 b-buttons_padbot_10 b-layout__txt_padleft_null_iphone">
         <a href="/public/?step=1&kind=1" class="b-button b-button_flat b-button_flat_green"><?= billing::$btn_name_for_type[$service['type']] ?></a>
     </div>
-    <span class="b-layout__txt b-layout__txt_padtop_10 b-layout__txt_fontsize_11 b-page__iphone"><a href="http://feedback.fl.ru/topic/397524-platnyie-proektyi-opisanie/" class="b-layout__link">Подробнее об услуге</a></span>
+    <span class="b-layout__txt b-layout__txt_padtop_10 b-layout__txt_fontsize_11 b-page__iphone"><a href="http://feedback.fl.ru/topic/397524-platnyie-proektyi-opisanie/" class="b-layout__link">РџРѕРґСЂРѕР±РЅРµРµ РѕР± СѓСЃР»СѓРіРµ</a></span>
 </div>

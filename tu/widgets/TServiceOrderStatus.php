@@ -17,7 +17,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/sbr_meta.php');
 /**
  * Class TServiceOrderStatus
  *
- * Âèäæåò - Áëîê èíôîðìàöèè î ôðèëàíñåðå â êàðòî÷êå çàêàçà
+ * Ð’Ð¸Ð´Ð¶ÐµÑ‚ - Ð‘Ð»Ð¾Ðº Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¸ Ð¾ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ðµ Ð² ÐºÐ°Ñ€Ñ‚Ð¾Ñ‡ÐºÐµ Ð·Ð°ÐºÐ°Ð·Ð°
  */
 class TServiceOrderStatus extends CWidget 
 {
@@ -25,8 +25,8 @@ class TServiceOrderStatus extends CWidget
         protected $is_emp;
         protected $is_owner = TRUE;
         
-        //Ñòàòóñ âûâîäèòñÿ â ñïèñêå 
-        //èëè êàðòî÷êå
+        //Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð²Ñ‹Ð²Ð¾Ð´Ð¸Ñ‚ÑÑ Ð² ÑÐ¿Ð¸ÑÐºÐµ 
+        //Ð¸Ð»Ð¸ ÐºÐ°Ñ€Ñ‚Ð¾Ñ‡ÐºÐµ
         public $is_list = FALSE;
 
         public function run() 
@@ -38,7 +38,7 @@ class TServiceOrderStatus extends CWidget
             $date_feedback = ($this->order['close_date'] ? strtotime($this->order['close_date']) : time()) + TServiceOrderFeedbackModel::LIFETIME;
             $date_feedback_formatted = date("d.m.Y H:i", $date_feedback);
         
-            //ñîáèðàåì øàáëîí
+            //ÑÐ¾Ð±Ð¸Ñ€Ð°ÐµÐ¼ ÑˆÐ°Ð±Ð»Ð¾Ð½
             $this->render('t-service-order-status', array(
                 'is_adm' => !$this->is_owner,
                 

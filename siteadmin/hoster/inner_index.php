@@ -12,7 +12,7 @@
 	
 	$users = hoster::GetAll();
 ?>
-<strong>Пользователи</strong><br><br>
+<strong>РџРѕР»СЊР·РѕРІР°С‚РµР»Рё</strong><br><br>
 <table width="100%" border="0" cellspacing="2" cellpadding="2">
 <?
 $i = 0;
@@ -23,7 +23,7 @@ $i = 0;
 		<tr valign="top" class="n_qpr">
 			<td>
 			<?=($i.". ".$user['name']." ".$user['surname'])?> <a href="mailto:<?=$user['email']?>"><?=$user['email']?></a>
-			<a href="/siteadmin/hoster/?action=delete&amp;id=<?=$user['id']?>" onclick="return warning(20);">удалить</a><br><br>
+			<a href="/siteadmin/hoster/?action=delete&amp;id=<?=$user['id']?>" onclick="return warning(20);">СѓРґР°Р»РёС‚СЊ</a><br><br>
 			</td>
 		</tr>
 		</table>

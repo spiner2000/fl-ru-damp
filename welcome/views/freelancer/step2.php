@@ -3,15 +3,15 @@
 
 ?>
     <h1 class="b-layout__title b-layout__title_fs30 b-layout__title_color_333 b-layout__title_padbot_37">
-        Чем выше доверие заказчиков, <strong>тем больше шансы</strong><br/>
-        получить в работу <strong>высокооплачиваемый проект</strong>
+        Р§РµРј РІС‹С€Рµ РґРѕРІРµСЂРёРµ Р·Р°РєР°Р·С‡РёРєРѕРІ, <strong>С‚РµРј Р±РѕР»СЊС€Рµ С€Р°РЅСЃС‹</strong><br/>
+        РїРѕР»СѓС‡РёС‚СЊ РІ СЂР°Р±РѕС‚Сѓ <strong>РІС‹СЃРѕРєРѕРѕРїР»Р°С‡РёРІР°РµРјС‹Р№ РїСЂРѕРµРєС‚</strong>
     </h1>
     <img class="b-pic i-pic_padbot_35 b-pic_resize" src="<?=WDCPREFIX?>/images/welcome/fs2.png" /> 
     <h2 class="b-layout__title b-layout__title_fs20 b-layout__title_color_333 b-layout__title_padbot_37">
-        Выполняя проекты, ты получаешь работы в портфолио,<br/>
-        деньги, рейтинг и повышаешь доверие заказчиков
+        Р’С‹РїРѕР»РЅСЏСЏ РїСЂРѕРµРєС‚С‹, С‚С‹ РїРѕР»СѓС‡Р°РµС€СЊ СЂР°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ,<br/>
+        РґРµРЅСЊРіРё, СЂРµР№С‚РёРЅРі Рё РїРѕРІС‹С€Р°РµС€СЊ РґРѕРІРµСЂРёРµ Р·Р°РєР°Р·С‡РёРєРѕРІ
     </h2>
     <a href="/registration/" 
        class="b-button b-button_flat b-button_flat_green b-button_flat_med">
-        Понятно, хочу получить проект <span class="b-icon b-icon__rarr b-icon_margleft_20 b-icon_top_2"></span>
+        РџРѕРЅСЏС‚РЅРѕ, С…РѕС‡Сѓ РїРѕР»СѓС‡РёС‚СЊ РїСЂРѕРµРєС‚ <span class="b-icon b-icon__rarr b-icon_margleft_20 b-icon_top_2"></span>
     </a>

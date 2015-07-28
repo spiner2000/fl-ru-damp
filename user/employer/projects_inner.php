@@ -31,11 +31,11 @@ $trash = __paramInit('int', 'trash', 'trash', 0);
 
 if ($trash) {
     
-    //Отображаем и открытые, и закрытые
+    //РћС‚РѕР±СЂР°Р¶Р°РµРј Рё РѕС‚РєСЂС‹С‚С‹Рµ, Рё Р·Р°РєСЂС‹С‚С‹Рµ
     $closed = '';
     
     if (!($is_owner || $is_adm)) {
-        //Корзина доступна только владельцу или админу
+        //РљРѕСЂР·РёРЅР° РґРѕСЃС‚СѓРїРЅР° С‚РѕР»СЊРєРѕ РІР»Р°РґРµР»СЊС†Сѓ РёР»Рё Р°РґРјРёРЅСѓ
         $trash = 0;
     }
     
@@ -46,7 +46,7 @@ $prjs = $projects->GetCurPrjs($uid, $closed, ($uid == get_uid()), hasPermissions
 
 
 /*
- * @todo: Функционал не используетсяю. Пока скрываю.
+ * @todo: Р¤СѓРЅРєС†РёРѕРЅР°Р» РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏСЋ. РџРѕРєР° СЃРєСЂС‹РІР°СЋ.
 $proj_groups = professions::GetAllGroupsLite();
 $proj_groups_by_id = array();
 foreach($proj_groups as $key => $wrk_prjgroup)
@@ -55,7 +55,7 @@ foreach($proj_groups as $key => $wrk_prjgroup)
 }
 */
 
-$daysOfWeek = array(1=>'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье');
+$daysOfWeek = array(1=>'РџРѕРЅРµРґРµР»СЊРЅРёРє', 'Р’С‚РѕСЂРЅРёРє', 'РЎСЂРµРґР°', 'Р§РµС‚РІРµСЂРі', 'РџСЏС‚РЅРёС†Р°', 'РЎСѓР±Р±РѕС‚Р°', 'Р’РѕСЃРєСЂРµСЃРµРЅСЊРµ');
 $conted_prj=$projects->CountMyProjects($uid, ($uid == get_uid() || hasPermissions('projects')), false, $kind);
 ?>
 <style type="text/css">
@@ -97,8 +97,8 @@ $conted_prj=$projects->CountMyProjects($uid, ($uid == get_uid() || hasPermission
 require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/projects.common.php");
 $xajax->printJavascript('/xajax/'); 
 
-//быстрое редактирование проекта
-//только админу или владельцу
+//Р±С‹СЃС‚СЂРѕРµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРѕРµРєС‚Р°
+//С‚РѕР»СЊРєРѕ Р°РґРјРёРЅСѓ РёР»Рё РІР»Р°РґРµР»СЊС†Сѓ
 if ($is_owner || $is_adm) {
     $quickEditPoputType = 4; 
     include_once $_SERVER["DOCUMENT_ROOT"]."/projects/tpl.prj-quickedit.php";
@@ -110,7 +110,7 @@ if ($is_owner || $is_adm) {
                                 <div class="b-shadow__top">
                                     <div class="b-shadow__bottom">
                                         <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20" style="width:268px; padding-right:23px;">
-                                            <div class="b-shadow__title b-shadow__title_padbot_15">Редактирование бюджета</div>
+                                            <div class="b-shadow__title b-shadow__title_padbot_15">Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±СЋРґР¶РµС‚Р°</div>
                                             <div id="popup_budget_prj_name" class="b-layout__txt b-layout__txt_padbot_15"></div>
 
                                             <div class="b-form b-form_padbot_20">
@@ -135,23 +135,23 @@ if ($is_owner || $is_adm) {
 
                                             <div class="b-check b-check_padbot_10 b-check_clear_both">
                                                 <input id="popup_budget_prj_agreement" class="b-check__input" name="agreement" type="checkbox" value="1">
-                                                <label class="b-check__label b-check__label_fontsize_13" for="popup_budget_prj_agreement">по договорённости</label>
+                                                <label class="b-check__label b-check__label_fontsize_13" for="popup_budget_prj_agreement">РїРѕ РґРѕРіРѕРІРѕСЂС‘РЅРЅРѕСЃС‚Рё</label>
                                             </div>
 
                                             <div id="popup_budget_prj_price_error" class="b-fon b-fon_bg_ff6d2d b-fon_padtop_10" style="display: none; ">
                                                 <b class="b-fon__b1"></b>
                                                 <b class="b-fon__b2"></b>
                                                 <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13 ">
-                                                    <span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20">Бюджет заполнен не верно</div>
+                                                    <span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20">Р‘СЋРґР¶РµС‚ Р·Р°РїРѕР»РЅРµРЅ РЅРµ РІРµСЂРЅРѕ</div>
                                                 </div>
                                                 <b class="b-fon__b2"></b>
                                                 <b class="b-fon__b1"></b>
                                             </div>
 
                                             <div class="b-buttons b-buttons_padtop_15">
-                                                <a id="popupBtnSaveBudget" href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green">Сохранить</a>                            
-                                                <span class="b-buttons__txt">&nbsp;или&nbsp;</span>
-                                                <a class="b-buttons__link b-buttons__link_dot_c10601 b-shadow__close" href="javascript:void(0)" onclick="popupHideChangeBudget(); return false;" >закрыть без изменений</a>
+                                                <a id="popupBtnSaveBudget" href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green">РЎРѕС…СЂР°РЅРёС‚СЊ</a>                            
+                                                <span class="b-buttons__txt">&nbsp;РёР»Рё&nbsp;</span>
+                                                <a class="b-buttons__link b-buttons__link_dot_c10601 b-shadow__close" href="javascript:void(0)" onclick="popupHideChangeBudget(); return false;" >Р·Р°РєСЂС‹С‚СЊ Р±РµР· РёР·РјРµРЅРµРЅРёР№</a>
                                             </div>
                                         </div>
                                     </div>
@@ -163,7 +163,7 @@ if ($is_owner || $is_adm) {
                         <div class="b-shadow__bl"></div>
                         <div class="b-shadow__br"></div>
                     </div>
-<?php //конец быстрое редактирование проекта?>
+<?php //РєРѕРЅРµС† Р±С‹СЃС‚СЂРѕРµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРѕРµРєС‚Р°?>
 <? include('tpl.filter-prj.php')?>
 <?
 
@@ -188,7 +188,7 @@ if ($prjs) {
                 
         $project = new_projects::initData($prj);
 
-        //@todo: Лишний запрос. Применение в код ненайдено. Пока скрываю.
+        //@todo: Р›РёС€РЅРёР№ Р·Р°РїСЂРѕСЃ. РџСЂРёРјРµРЅРµРЅРёРµ РІ РєРѕРґ РЅРµРЅР°Р№РґРµРЅРѕ. РџРѕРєР° СЃРєСЂС‹РІР°СЋ.
         //$spec = projects::getPrimarySpec($prj['id']);
         //$prj['category'] = $spec['category_id'];
         
@@ -200,10 +200,10 @@ if ($prjs) {
         $plink = "/users/".$prj['login']."/project/?prjid=".$prj['id'];
         
         $executorExists = false;
-        if ($prj['exec_id']) { // если исполнитель выбран
-            if ($prj['offer_id']) { // если исполнитель отвечал на проект
+        if ($prj['exec_id']) { // РµСЃР»Рё РёСЃРїРѕР»РЅРёС‚РµР»СЊ РІС‹Р±СЂР°РЅ
+            if ($prj['offer_id']) { // РµСЃР»Рё РёСЃРїРѕР»РЅРёС‚РµР»СЊ РѕС‚РІРµС‡Р°Р» РЅР° РїСЂРѕРµРєС‚
                 $executorExists = true;
-            } elseif ($prj['sbr_id'] && $prj['sbr_status'] >= sbr::STATUS_CHANGED) { // если не отвечал на проект, но выбран исполнителем сделки
+            } elseif ($prj['sbr_id'] && $prj['sbr_status'] >= sbr::STATUS_CHANGED) { // РµСЃР»Рё РЅРµ РѕС‚РІРµС‡Р°Р» РЅР° РїСЂРѕРµРєС‚, РЅРѕ РІС‹Р±СЂР°РЅ РёСЃРїРѕР»РЅРёС‚РµР»РµРј СЃРґРµР»РєРё
                 $executorExists = true;
             }
         }
@@ -225,9 +225,9 @@ if ($prjs) {
 			</div>
             <div class="fl2_offer bordered">
             	<div class="fl2_offer_logo">
-                    <div>Платный проект</div>
+                    <div>РџР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚</div>
                     <? if ($prj['cost']) { $priceby_str = getPricebyProject($prj['priceby']);?>
-                    <div class="fl2_offer_budget">Бюджет:
+                    <div class="fl2_offer_budget">Р‘СЋРґР¶РµС‚:
                     <? if (hasPermissions('projects') && $user->login!=$_SESSION["login"]) {
                             ?><a id="prj_budget_lnk_<?=$prj['id']?>" class="b-post__link  b-post__link_dot_6db335" href="#" onClick="popupShowChangeBudget(<?=$prj['id']?>, '<?=$prj['cost']?>', '<?=$prj['currency']?>', '<?=$prj['priceby']?>', false, <?=$prj['id']?>, 1, 2); return false;"><?=CurToChar($prj['cost'], $prj['currency']) ?><?=$priceby_str?></a>
                      <?} else {
@@ -236,18 +236,18 @@ if ($prjs) {
                     </div>
                     <? } else { 
                         if (hasPermissions('projects') && $user->login!=$_SESSION["login"]) {
-                                ?><var class="bujet-dogovor"><a id="prj_budget_lnk_<?=$prj['id']?>" class="b-post__link b-post__link_dot_6db335" href="#" onClick="popupShowChangeBudget(<?=$prj['id']?>, '', 0, 1, true, <?=$prj['id']?>, 1, 2); return false;">По договоренности</a></var><?
+                                ?><var class="bujet-dogovor"><a id="prj_budget_lnk_<?=$prj['id']?>" class="b-post__link b-post__link_dot_6db335" href="#" onClick="popupShowChangeBudget(<?=$prj['id']?>, '', 0, 1, true, <?=$prj['id']?>, 1, 2); return false;">РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</a></var><?
                         } 
                         else {
-                                ?><var class="bujet-dogovor">По договоренности</var> <?
+                                ?><var class="bujet-dogovor">РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</var> <?
                         } ?>
                     <? } ?>
 
                     <div class="b-layout__txt b-layout__txt_float_right b-layout__txt_padbot_5 b-layout_clear_both b-layout__txt_right">
                         <?php $count = (int)(is_new_prj($prj['post_date']) ? $prj["comm_count"] : $prj["offers_count"]); ?>
-                        <a class="b-layout__link b-layout__link_color_000" href="<?=$blink?>"><?=$count?> <?=ending($count, 'предложение', 'предложения', 'предложений')?></a>
+                        <a class="b-layout__link b-layout__link_color_000" href="<?=$blink?>"><?=$count?> <?=ending($count, 'РїСЂРµРґР»РѕР¶РµРЅРёРµ', 'РїСЂРµРґР»РѕР¶РµРЅРёСЏ', 'РїСЂРµРґР»РѕР¶РµРЅРёР№')?></a>
                         <?php if ($prj['new_messages_cnt'] && ($is_owner || $is_adm)): ?>
-                            <br>(<a class="b-layout__link b-layout__link_color_6db335" href="<?=$blink?>"><?=$prj['new_messages_cnt']?> <?=ending($prj['new_messages_cnt'], 'новое сообщение', 'новых сообщения', 'новых сообщений')?></a>)
+                            <br>(<a class="b-layout__link b-layout__link_color_6db335" href="<?=$blink?>"><?=$prj['new_messages_cnt']?> <?=ending($prj['new_messages_cnt'], 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№')?></a>)
                         <?php endif; ?>
                     </div>
                     
@@ -258,10 +258,10 @@ if ($prjs) {
                     <? }?> 
                 </div>
                 <div class="fl2_offer_header"> 
-                    <? /* #0019741 if ($prj['prefer_sbr']=='t') {?><img src="/images/sbr_p.gif" class="sbr_p" title="Работодатель&nbsp;хочет&nbsp;работать&nbsp;через&nbsp;Cделку&nbsp;без&nbsp;риска" alt="Работодатель хочет работать через Cделку без риска"><? } */?>
+                    <? /* #0019741 if ($prj['prefer_sbr']=='t') {?><img src="/images/sbr_p.gif" class="sbr_p" title="Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ&nbsp;С…РѕС‡РµС‚&nbsp;СЂР°Р±РѕС‚Р°С‚СЊ&nbsp;С‡РµСЂРµР·&nbsp;CРґРµР»РєСѓ&nbsp;Р±РµР·&nbsp;СЂРёСЃРєР°" alt="Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ С…РѕС‡РµС‚ СЂР°Р±РѕС‚Р°С‚СЊ С‡РµСЂРµР· CРґРµР»РєСѓ Р±РµР· СЂРёСЃРєР°"><? } */?>
                 	<? if ($prj['sbr_id'] && (hasPermissions('projects') || $prj['sbr_emp_id']==$_SESSION['uid']||$prj['sbr_frl_id']==$_SESSION['uid'])) { ?>
                     	<a href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/<?=($prj['sbr_emp_id']==$_SESSION['uid']||$prj['sbr_frl_id']==$_SESSION['uid']||hasPermissions('projects') ? "?id={$prj['sbr_id']}" : '').(hasPermissions('projects') ? "&access=A&E={$user->login}" : '')?>"><img src="/images/shield_sm.gif" alt="" /></a><? } ?>
-                    <? if ($prj['ico_closed']=='t') {?><img src="/images/ico_closed.gif" alt="Проект закрыт" /><? }?>
+                    <? if ($prj['ico_closed']=='t') {?><img src="/images/ico_closed.gif" alt="РџСЂРѕРµРєС‚ Р·Р°РєСЂС‹С‚" /><? }?>
                         <?php $sTitle = $prj['moderator_status'] === '0' && $prj['kind'] != 4 && $user->is_pro != 't' ? $stop_words->replace($prj['name']) : $prj['name']; ?>
                         <a id="prj_name_<?=$prj["id"] ?>" name="/proonly.php" href="<?=$blink?>" class="fl2_offer_header" title=""><?=reformat($sTitle, 100, 0, 1)?></a>
                  </div>
@@ -272,16 +272,16 @@ if ($prjs) {
                  ?>
                  <div class="fl2_offer_content"><?=ereg_replace("\r","",ereg_replace("\n","",reformat($sDescr, 60)))?></div>
 <?php 
-            //@todo: Список приатаченный файлов для заказчика. Лишняя нагрузка на БД. Пока скрываю.
+            //@todo: РЎРїРёСЃРѕРє РїСЂРёР°С‚Р°С‡РµРЅРЅС‹Р№ С„Р°Р№Р»РѕРІ РґР»СЏ Р·Р°РєР°Р·С‡РёРєР°. Р›РёС€РЅСЏСЏ РЅР°РіСЂСѓР·РєР° РЅР° Р‘Р”. РџРѕРєР° СЃРєСЂС‹РІР°СЋ.
 			//if(get_uid(false)) include dirname(__FILE__)."/attachlist.tpl.php";
 ?>
             <br />
-            <div class="fl2_offer_meta">Прошло времени с момента публикации: 
+            <div class="fl2_offer_meta">РџСЂРѕС€Р»Рѕ РІСЂРµРјРµРЅРё СЃ РјРѕРјРµРЅС‚Р° РїСѓР±Р»РёРєР°С†РёРё: 
 				<?=ago_pub_x($project->getCreateDateEx())?><br />
-                Автор: <a href="/users/<?=$user->login?>"><? print $user->uname." "; print $user->usurname; ?> [<?=$user->login?>]</a><br />
-                Раздел: <?=projects::getSpecsStr($prj['id'],' / ', ', ');?><? /* $category=$proj_groups_by_id[$prj['category']]; print $category; */?>
+                РђРІС‚РѕСЂ: <a href="/users/<?=$user->login?>"><? print $user->uname." "; print $user->usurname; ?> [<?=$user->login?>]</a><br />
+                Р Р°Р·РґРµР»: <?=projects::getSpecsStr($prj['id'],' / ', ', ');?><? /* $category=$proj_groups_by_id[$prj['category']]; print $category; */?>
 				<? if ($prj['pro_only']=='t') {?>
-            		<br /><span  class="fl2_offer_meta2" style="background-color:#fff7ee;">Отвечать на проект могут только пользователи с аккаунтом <a class="b-layout__link" href="/payed/"><span class="b-icon b-icon__pro b-icon__pro_f" alt="платным аккаунтом" title="платным аккаунтом"></span></a></span>
+            		<br /><span  class="fl2_offer_meta2" style="background-color:#fff7ee;">РћС‚РІРµС‡Р°С‚СЊ РЅР° РїСЂРѕРµРєС‚ РјРѕРіСѓС‚ С‚РѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ Р°РєРєР°СѓРЅС‚РѕРј <a class="b-layout__link" href="/payed/"><span class="b-icon b-icon__pro b-icon__pro_f" alt="РїР»Р°С‚РЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј" title="РїР»Р°С‚РЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј"></span></a></span>
             	<? }?>
             </div>
             <div class="fl2_comments_link">
@@ -293,26 +293,26 @@ if ($prjs) {
                 <?php if ($prj['closed']=='t'): ?>
                     <a class="b-buttons__link" 
                        href="javascript:void(0);" 
-                       onclick="closeProject(<?=$prj["id"]?>, <?=$kind?>, 0);">Публиковать еще раз</a> &#160;
+                       onclick="closeProject(<?=$prj["id"]?>, <?=$kind?>, 0);">РџСѓР±Р»РёРєРѕРІР°С‚СЊ РµС‰Рµ СЂР°Р·</a> &#160;
                 <?php else: ?>
-                    <a title="Получить больше предложений" 
+                    <a title="РџРѕР»СѓС‡РёС‚СЊ Р±РѕР»СЊС€Рµ РїСЂРµРґР»РѕР¶РµРЅРёР№" 
                        data-scrollto="pay_services"
                        data-url="/public/?step=1&public=<?=$prj["id"]?>"
                        href="javascript:void(0);" 
-                       class="b-button b-button_flat b-button_flat_green b-button_nowrap ">Получить больше предложений</a> &#160;
+                       class="b-button b-button_flat b-button_flat_green b-button_nowrap ">РџРѕР»СѓС‡РёС‚СЊ Р±РѕР»СЊС€Рµ РїСЂРµРґР»РѕР¶РµРЅРёР№</a> &#160;
                     <a class="b-buttons__link" 
                           href="javascript:void(0);" 
-                          onclick="closeProject(<?=$prj["id"]?>, <?=$kind?>, 1);">Снять с публикации</a> &#160;
+                          onclick="closeProject(<?=$prj["id"]?>, <?=$kind?>, 1);">РЎРЅСЏС‚СЊ СЃ РїСѓР±Р»РёРєР°С†РёРё</a> &#160;
                 <?php endif; ?>
                 <a class="b-buttons__link" 
-                   href="/public/?step=1&public=<?=$prj["id"]?>">Редактировать</a> &#160;
+                   href="/public/?step=1&public=<?=$prj["id"]?>">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> &#160;
                 <a class="b-buttons__link" 
                    href="javascript:void(0);" 
                    onclick="moveTrashProject(<?=$prj["id"]?>, <?= $prj['trash']=='t' ? 0 : 1 ?>);">
                 <?php if ($prj['trash']=='t'): ?>
-                    Восстановить из корзины
+                    Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РёР· РєРѕСЂР·РёРЅС‹
                 <?php else: ?>
-                    Переместить в корзину
+                    РџРµСЂРµРјРµСЃС‚РёС‚СЊ РІ РєРѕСЂР·РёРЅСѓ
                 <?php endif; ?>
                 </a>
             </div>
@@ -323,12 +323,12 @@ if ($prjs) {
             		<b class="b-fon__b1"></b>
             		<b class="b-fon__b2"></b>
             		<div class="b-fon__body b-fon__body_pad_10">
-            			<span class="b-fon__txt b-fon__txt_float_right b-fon__txt_fontsize_11">Рейтинг: <?= round($prj['exec_rating'],1)?></span>
+            			<span class="b-fon__txt b-fon__txt_float_right b-fon__txt_fontsize_11">Р РµР№С‚РёРЅРі: <?= round($prj['exec_rating'],1)?></span>
             			<span class="b-fon__txt b-fon__txt_bold b-fon__txt_fontsize_13">
                             <?php if($prj['kind']==2 || $prj['kind']==7) { ?>
-                                Победитель определен:
+                                РџРѕР±РµРґРёС‚РµР»СЊ РѕРїСЂРµРґРµР»РµРЅ:
                             <?php } else { ?>
-                                Исполнитель определен:
+                                РСЃРїРѕР»РЅРёС‚РµР»СЊ РѕРїСЂРµРґРµР»РµРЅ:
                             <?php } ?>
                         </span>
             			<div class="b-username b-username_bold b-username_inline">
@@ -337,7 +337,7 @@ if ($prjs) {
             			<div class="i-opinion i-opinion_padtop_10">
             				<span class="b-opinion">
             					<span class="b-opinion__txt">
-                                    <a class="b-opinion__link  b-opinion__link_color_4e" href="/users/<?=$prj['exec_login']?>/opinions/?author=0">Отзывы пользователей</a>
+                                    <a class="b-opinion__link  b-opinion__link_color_4e" href="/users/<?=$prj['exec_login']?>/opinions/?author=0">РћС‚Р·С‹РІС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</a>
                                     &nbsp;<?= getOpinionLinks($prj['exec_login'], $prj); ?>
                                 </span>
                             </span>
@@ -392,7 +392,7 @@ if ($prjs) {
             <div class="fl2_offer">
             <?if ($prj['cost']) {
                  $priceby_str = getPricebyProject($prj['priceby']);?>
-                 <div class="fl2_offer_budget">Бюджет: <?php 
+                 <div class="fl2_offer_budget">Р‘СЋРґР¶РµС‚: <?php 
                      if (hasPermissions('projects') && $user->login!=$_SESSION["login"]) {
                             ?><a id="prj_budget_lnk_<?=$prj['id']?>" class="b-post__link  b-post__link_dot_6db335" href="#" onClick="popupShowChangeBudget(<?=$prj['id']?>, '<?=$prj['cost']?>', '<?=$prj['currency']?>', '<?=$prj['priceby']?>', false, <?=$prj['id']?>, 1, 2); return false;"><?=CurToChar($prj['cost'], $prj['currency']) ?><?=$priceby_str?></a>
                      <?} else {
@@ -401,19 +401,19 @@ if ($prjs) {
                  </div>
             <? } else { 
                         if (hasPermissions('projects') && $user->login!=$_SESSION["login"]) {
-                                ?><var class="bujet-dogovor"><a id="prj_budget_lnk_<?=$prj['id']?>" class="b-post__link b-post__link_dot_6db335" href="#" onClick="popupShowChangeBudget(<?=$prj['id']?>, '', 0, 1, true, <?=$prj['id']?>, 1, 2); return false;">По договоренности</a></var><?
+                                ?><var class="bujet-dogovor"><a id="prj_budget_lnk_<?=$prj['id']?>" class="b-post__link b-post__link_dot_6db335" href="#" onClick="popupShowChangeBudget(<?=$prj['id']?>, '', 0, 1, true, <?=$prj['id']?>, 1, 2); return false;">РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</a></var><?
                         } 
                         else {
-                                ?><var class="bujet-dogovor">По договоренности</var> <?
+                                ?><var class="bujet-dogovor">РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</var> <?
                         } ?>
             <? } ?>
 
             <?php if (!$is_personal): ?>
             <div class="b-layout__txt b-layout__txt_float_right b-layout__txt_padbot_5 b-layout_clear_both b-layout__txt_right">
                 <?php $count = (int)(is_new_prj($prj['post_date']) ? $prj["comm_count"] : $prj["offers_count"]); ?>
-                <a class="b-layout__link b-layout__link_color_000" href="<?=$blink?>"><?=$count?> <?=ending($count, 'предложение', 'предложения', 'предложений')?></a>
+                <a class="b-layout__link b-layout__link_color_000" href="<?=$blink?>"><?=$count?> <?=ending($count, 'РїСЂРµРґР»РѕР¶РµРЅРёРµ', 'РїСЂРµРґР»РѕР¶РµРЅРёСЏ', 'РїСЂРµРґР»РѕР¶РµРЅРёР№')?></a>
                 <?php if ($prj['new_messages_cnt'] && ($is_owner || $is_adm)): ?>
-                    <br>(<a class="b-layout__link b-layout__link_color_6db335" href="<?=$blink?>"><?=$prj['new_messages_cnt']?> <?=ending($prj['new_messages_cnt'], 'новое сообщение', 'новых сообщения', 'новых сообщений')?></a>)
+                    <br>(<a class="b-layout__link b-layout__link_color_6db335" href="<?=$blink?>"><?=$prj['new_messages_cnt']?> <?=ending($prj['new_messages_cnt'], 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№')?></a>)
                 <?php endif; ?>
             </div>
             <?php endif; ?>
@@ -424,16 +424,16 @@ if ($prjs) {
             </div>
             <? }?>
             <div class="fl2_offer_header"> 
-                <? /* #0019741 if ($prj['prefer_sbr']=='t') {?><img src="/images/sbr_p.gif" class="sbr_p" title="Работодатель&nbsp;хочет&nbsp;работать&nbsp;через&nbsp;Cделку&nbsp;без&nbsp;риска" alt="Работодатель хочет работать через Cделку без риска"><? } */?>
+                <? /* #0019741 if ($prj['prefer_sbr']=='t') {?><img src="/images/sbr_p.gif" class="sbr_p" title="Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ&nbsp;С…РѕС‡РµС‚&nbsp;СЂР°Р±РѕС‚Р°С‚СЊ&nbsp;С‡РµСЂРµР·&nbsp;CРґРµР»РєСѓ&nbsp;Р±РµР·&nbsp;СЂРёСЃРєР°" alt="Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ С…РѕС‡РµС‚ СЂР°Р±РѕС‚Р°С‚СЊ С‡РµСЂРµР· CРґРµР»РєСѓ Р±РµР· СЂРёСЃРєР°"><? } */?>
                 <? if ($prj['sbr_id'] && (hasPermissions('projects') || $prj['sbr_emp_id']==$_SESSION['uid']||$prj['sbr_frl_id']==$_SESSION['uid'])) { ?><a href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/<?=($prj['sbr_emp_id']==$_SESSION['uid']||$prj['sbr_frl_id']==$_SESSION['uid']||hasPermissions('projects') ? "?id={$prj['sbr_id']}" : '').(hasPermissions('projects') ? "&access=A&E={$user->login}" : '')?>"><img src="/images/shield_sm.gif" alt="" /></a><? } ?>
-                <?if ($prj['ico_closed']=='t') {?><img src="/images/ico_closed.gif" alt="Проект закрыт" /><?}?>
+                <?if ($prj['ico_closed']=='t') {?><img src="/images/ico_closed.gif" alt="РџСЂРѕРµРєС‚ Р·Р°РєСЂС‹С‚" /><?}?>
                 <?php $sTitle = $prj['moderator_status'] === '0' && $prj['kind'] != 4 && $user->is_pro != 't' ? $stop_words->replace($prj['name']) : $prj['name']; ?>
                 <a href="<?=$blink?>" id="prj_name_<?=$prj["id"] ?>"><?=reformat($sTitle, 20, 0, 1)?></a>
-                <? /* if($prj['prefer_sbr']=='t') { ?><a class="b-txt__lnk b-txt__lnk_fs_11 b-txt__lnk_lh_1" href="/promo/bezopasnaya-sdelka/" title="Предпочитаю работать через Безопасную Сделку"><span class="b-icon b-icon_top_5 b-icon__shield"></span></a><? } */ ?>
+                <? /* if($prj['prefer_sbr']=='t') { ?><a class="b-txt__lnk b-txt__lnk_fs_11 b-txt__lnk_lh_1" href="/promo/bezopasnaya-sdelka/" title="РџСЂРµРґРїРѕС‡РёС‚Р°СЋ СЂР°Р±РѕС‚Р°С‚СЊ С‡РµСЂРµР· Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ"><span class="b-icon b-icon_top_5 b-icon__shield"></span></a><? } */ ?>
                 
                 <?php if($is_personal): ?>
                 <div class="b-layout__txt b-layout__txt_bold b-layout__txt_fontsize_11">
-                    Персональный проект для <?=$prj['personal_fullname']?>
+                    РџРµСЂСЃРѕРЅР°Р»СЊРЅС‹Р№ РїСЂРѕРµРєС‚ РґР»СЏ <?=$prj['personal_fullname']?>
                 </div>
                 <?php endif; ?>
             </div>
@@ -442,7 +442,7 @@ if ($prjs) {
                 <div class="b-fon b-fon_padtop_10 b-fon_clear_both">
                     <div class="b-fon__body b-fon__body_padtop_10 b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffebbf">
                         <span class="b-icon b-icon_sbr_oattent b-icon_margleft_-25"></span>
-                        Ваш проект перенесен в раздел Вакансии. Пожалуйста, оплатите его размещение, чтобы видеть отклики фрилансеров и иметь возможность выбрать Исполнителя.
+                        Р’Р°С€ РїСЂРѕРµРєС‚ РїРµСЂРµРЅРµСЃРµРЅ РІ СЂР°Р·РґРµР» Р’Р°РєР°РЅСЃРёРё. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕРїР»Р°С‚РёС‚Рµ РµРіРѕ СЂР°Р·РјРµС‰РµРЅРёРµ, С‡С‚РѕР±С‹ РІРёРґРµС‚СЊ РѕС‚РєР»РёРєРё С„СЂРёР»Р°РЅСЃРµСЂРѕРІ Рё РёРјРµС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РІС‹Р±СЂР°С‚СЊ РСЃРїРѕР»РЅРёС‚РµР»СЏ.
                     </div>
                 </div>
             <?php endif; ?>
@@ -455,23 +455,23 @@ if ($prjs) {
             <div class="fl2_offer_content"><?=ereg_replace("\r","",ereg_replace("\n","",reformat($sDescr, 65)))?></div>
 
 <?php 
-            //@todo: Список приатаченный файлов для заказчика. Лишняя нагрузка на БД. Пока скрываю.
+            //@todo: РЎРїРёСЃРѕРє РїСЂРёР°С‚Р°С‡РµРЅРЅС‹Р№ С„Р°Р№Р»РѕРІ РґР»СЏ Р·Р°РєР°Р·С‡РёРєР°. Р›РёС€РЅСЏСЏ РЅР°РіСЂСѓР·РєР° РЅР° Р‘Р”. РџРѕРєР° СЃРєСЂС‹РІР°СЋ.
             /*if(get_uid(false)) include dirname(__FILE__)."/attachlist.tpl.php";*/ 
 ?>
             <br />
-            <div class="fl2_offer_meta">Прошло времени с момента публикации: 
+            <div class="fl2_offer_meta">РџСЂРѕС€Р»Рѕ РІСЂРµРјРµРЅРё СЃ РјРѕРјРµРЅС‚Р° РїСѓР±Р»РёРєР°С†РёРё: 
 		<?=ago_pub_x($project->getCreateDateEx())?>
                 <br />
-            	Автор: <a href="/users/<?=$user->login?>"><? print $user->uname." "; print $user->usurname; ?> [<?=$user->login?>]</a>
+            	РђРІС‚РѕСЂ: <a href="/users/<?=$user->login?>"><? print $user->uname." "; print $user->usurname; ?> [<?=$user->login?>]</a>
                 <?php if(!$is_personal): ?>
                 <br />
-                Раздел: <?=projects::getSpecsStr($prj['id'],' / ', ', ');?>
+                Р Р°Р·РґРµР»: <?=projects::getSpecsStr($prj['id'],' / ', ', ');?>
                 <?php endif; ?>
 		<? /* $category=$proj_groups_by_id[$prj['category']]; print $category;*/ ?>
             </div>
             <? if ($prj['pro_only']=='t' || $prj['verify_only']=='t' || $prj['prefer_sbr']=='t') {?><br />
                 <span  class="fl2_offer_meta2" style="background-color:#fff7ee;">
-                <? if ($prj['pro_only']=='t' || $prj['verify_only']=='t') {?>Отвечать на проект могут только пользователи с аккаунтом <? if($prj['pro_only']=='t') {?><a class="b-layout__link" href="/payed/"><span class="b-icon b-icon__pro b-icon__pro_f" alt="платным аккаунтом" title="платным аккаунтом"></span></a> <?} if($prj['verify_only']=='t'){?><span class="b-icon b-icon__ver " alt="верифицированным аккаунтом" title="верифицированным аккаунтом"></span><?}?> <? } ?>
+                <? if ($prj['pro_only']=='t' || $prj['verify_only']=='t') {?>РћС‚РІРµС‡Р°С‚СЊ РЅР° РїСЂРѕРµРєС‚ РјРѕРіСѓС‚ С‚РѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ Р°РєРєР°СѓРЅС‚РѕРј <? if($prj['pro_only']=='t') {?><a class="b-layout__link" href="/payed/"><span class="b-icon b-icon__pro b-icon__pro_f" alt="РїР»Р°С‚РЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј" title="РїР»Р°С‚РЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј"></span></a> <?} if($prj['verify_only']=='t'){?><span class="b-icon b-icon__ver " alt="РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј" title="РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј"></span><?}?> <? } ?>
                 
                 </span>
                 <? }?>
@@ -485,16 +485,16 @@ if ($prjs) {
                     
                         <?php if($project->isNotPayedVacancy() && !$project->isClosed()): ?>
                             <?php if($prj['trash'] != 't'):?>
-                            <a title="Опубликовать вакансию за <?=$project->getProjectInOfficePrice($user->is_pro == 't')?> руб."
+                            <a title="РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ РІР°РєР°РЅСЃРёСЋ Р·Р° <?=$project->getProjectInOfficePrice($user->is_pro == 't')?> СЂСѓР±."
                                    href="/public/?step=1&public=<?=$prj["id"]?>&popup=1" 
                                    class="b-button b-button_flat b-button_flat_green b-button_nowrap">
-                                        Оплатить размещение за <?=$project->getProjectInOfficePrice($user->is_pro == 't')?> руб.
+                                        РћРїР»Р°С‚РёС‚СЊ СЂР°Р·РјРµС‰РµРЅРёРµ Р·Р° <?=$project->getProjectInOfficePrice($user->is_pro == 't')?> СЂСѓР±.
                             </a> &#160; 
                             
                             <?php if ($prj['kind'] != 7): ?>
                             <a class="b-buttons__link" 
                                href="javascript:void(0);" 
-                               onclick="closeProject(<?=$prj["id"]?>, <?=$kind?>, 1);">Снять с публикации</a> &#160;
+                               onclick="closeProject(<?=$prj["id"]?>, <?=$kind?>, 1);">РЎРЅСЏС‚СЊ СЃ РїСѓР±Р»РёРєР°С†РёРё</a> &#160;
                             <?php endif; ?> 
                             
                             <?php endif; ?>
@@ -502,22 +502,22 @@ if ($prjs) {
                             <?php if ($project->isClosed() && $prj['kind'] != 7): ?>
                                 <a class="b-buttons__link" 
                                    href="javascript:void(0);" 
-                                   onclick="closeProject(<?=$prj["id"]?>, <?=$kind?>, 0);">Публиковать еще раз</a> &#160;
+                                   onclick="closeProject(<?=$prj["id"]?>, <?=$kind?>, 0);">РџСѓР±Р»РёРєРѕРІР°С‚СЊ РµС‰Рµ СЂР°Р·</a> &#160;
                             <?php else: ?>
-                                <a title="Получить больше предложений" 
+                                <a title="РџРѕР»СѓС‡РёС‚СЊ Р±РѕР»СЊС€Рµ РїСЂРµРґР»РѕР¶РµРЅРёР№" 
                                    data-scrollto="pay_services"
                                    data-url="/public/?step=1&public=<?=$prj["id"]?>"
                                    href="javascript:void(0);" 
-                                   class="b-button b-button_flat b-button_flat_green b-button_nowrap ">Получить больше предложений</a> &#160;
+                                   class="b-button b-button_flat b-button_flat_green b-button_nowrap ">РџРѕР»СѓС‡РёС‚СЊ Р±РѕР»СЊС€Рµ РїСЂРµРґР»РѕР¶РµРЅРёР№</a> &#160;
                                    
                                    <?php if ($prj['kind'] != 7): ?>
                                    <a class="b-buttons__link" 
                                       href="javascript:void(0);" 
-                                      onclick="closeProject(<?=$prj["id"]?>, <?=$kind?>, 1);">Снять с публикации</a> &#160;
+                                      onclick="closeProject(<?=$prj["id"]?>, <?=$kind?>, 1);">РЎРЅСЏС‚СЊ СЃ РїСѓР±Р»РёРєР°С†РёРё</a> &#160;
                                    <?php endif; ?> 
                                       
                                    <?php if($prj['trash'] != 't'):?>
-                                    <a class="b-buttons__link" href="/public/?step=1&public=<?=$prj["id"]?>">Редактировать</a> &#160;
+                                    <a class="b-buttons__link" href="/public/?step=1&public=<?=$prj["id"]?>">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> &#160;
                                    <?php endif; ?>
 
                            <?php endif; ?>
@@ -526,7 +526,7 @@ if ($prjs) {
                     <?php endif; ?>
                     <a class="b-buttons__link" href="javascript:void(0);" 
                        onclick="moveTrashProject(<?=$prj["id"]?>, <?= $prj['trash']=='t' ? 0 : 1 ?>);">
-                    <?php if ($prj['trash']=='t'): ?>Восстановить из корзины<?php else: ?>Переместить в корзину<?php endif; ?>
+                    <?php if ($prj['trash']=='t'): ?>Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РёР· РєРѕСЂР·РёРЅС‹<?php else: ?>РџРµСЂРµРјРµСЃС‚РёС‚СЊ РІ РєРѕСЂР·РёРЅСѓ<?php endif; ?>
                     </a>
                 </div>
                 <?php endif; ?>
@@ -538,12 +538,12 @@ if ($prjs) {
             		<b class="b-fon__b1"></b>
             		<b class="b-fon__b2"></b>
             		<div class="b-fon__body b-fon__body_pad_10">
-            			<span class="b-fon__txt b-fon__txt_float_right b-fon__txt_fontsize_11">Рейтинг: <?= round($prj['exec_rating'],1)?></span>
+            			<span class="b-fon__txt b-fon__txt_float_right b-fon__txt_fontsize_11">Р РµР№С‚РёРЅРі: <?= round($prj['exec_rating'],1)?></span>
             			<span class="b-fon__txt b-fon__txt_bold b-fon__txt_fontsize_13">
                             <?php if($prj['kind']==2 || $prj['kind']==7) { ?>
-                                Победитель определен:
+                                РџРѕР±РµРґРёС‚РµР»СЊ РѕРїСЂРµРґРµР»РµРЅ:
                             <?php } else { ?>
-                                Исполнитель определен:
+                                РСЃРїРѕР»РЅРёС‚РµР»СЊ РѕРїСЂРµРґРµР»РµРЅ:
                             <?php } ?>
                         </span>
             			<div class="b-username b-username_bold b-username_inline">
@@ -552,7 +552,7 @@ if ($prjs) {
             			<div class="i-opinion i-opinion_padtop_10">
             				<span class="b-opinion">
             					<span class="b-opinion__txt">
-                                    <a class="b-opinion__link  b-opinion__link_color_4e" href="/users/<?=$prj['exec_login']?>/opinions/">Отзывы пользователей</a>
+                                    <a class="b-opinion__link  b-opinion__link_color_4e" href="/users/<?=$prj['exec_login']?>/opinions/">РћС‚Р·С‹РІС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</a>
                                     &nbsp;<?= getOpinionLinks($prj['exec_login'], $prj); ?>
                                 </span>
                             </span>
@@ -598,21 +598,21 @@ if ($prjs) {
                 if (hasPermissions('projects') && $user->login!=$_SESSION["login"]) {
                     
                     if($project->isNotPayedVacancy()):
-                        $sBox .= '<b style="color:#ff0000; white-space:nowrap">Вакансия еще не оплачена</b> | ';
+                        $sBox .= '<b style="color:#ff0000; white-space:nowrap">Р’Р°РєР°РЅСЃРёСЏ РµС‰Рµ РЅРµ РѕРїР»Р°С‡РµРЅР°</b> | ';
                     endif;
 
                 	if ( $user->warn < 3 && !$user->is_banned && !$user->ban_where ) {
-                		$sBox .= '<span class="warnlink-'.$user->uid.'"><a style="color:Red;" href="javascript: void(0);" onclick="banned.warnUser('.$user->uid.', 0, \'projects\', \'p'.$prj['id'].'\', 0); return false;">Сделать предупреждение (<span class="warncount-'.$user->uid.'">'.($user->warn ? $user->warn : 0).'</span>)</a></span> | ';
+                		$sBox .= '<span class="warnlink-'.$user->uid.'"><a style="color:Red;" href="javascript: void(0);" onclick="banned.warnUser('.$user->uid.', 0, \'projects\', \'p'.$prj['id'].'\', 0); return false;">РЎРґРµР»Р°С‚СЊ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ (<span class="warncount-'.$user->uid.'">'.($user->warn ? $user->warn : 0).'</span>)</a></span> | ';
                 	}
                 	else {
-                	    $sBanTitle = (!$user->is_banned && !$user->ban_where) ? 'Забанить!' : 'Разбанить';
+                	    $sBanTitle = (!$user->is_banned && !$user->ban_where) ? 'Р—Р°Р±Р°РЅРёС‚СЊ!' : 'Р Р°Р·Р±Р°РЅРёС‚СЊ';
                 		$sBox .= '<span class="warnlink-'.$user->uid.'"><a style="color:Red;" href="javascript:void(0);" onclick="banned.userBan('.$user->uid.', \'p'.$prj['id'].'\', 0);">'.$sBanTitle.'</a></span> | ';
                 	}
                 }
                 if (hasPermissions('projects') && $user->login!=$_SESSION["login"]) {
-                	$sBox.="<a href=\"/public/?step=1&public=".$prj['id']."&red=".rawurlencode($_SERVER['REQUEST_URI'])."\" onclick=\"popupQEditPrjShow(".$prj['id'].", event); return false;\">Редактировать</a> ";
-                	$sBox.=" | <span id='project-button-{$prj['id']}'><a style='color: red' href='.' onclick='banned.".($prj['is_blocked']? 'unblockedProject': 'blockedProject')."({$prj['id']}); return false;'>".($prj['is_blocked']? 'Разблокировать': 'Заблокировать')."</a></span>";
-					$sBox.=" | <a id=\"prj_{$prj['id']}\" style=\"color:Red;\" href=\"?action=prj_delete&prjid=".$prj['id'].($_GET['closed']==1?'&closed=1':($_GET['open']==1?'&open=1':''))."\" onClick=\"return addTokenToLink('prj_{$prj['id']}', 'Вы уверены?')\">Удалить</a>";
+                	$sBox.="<a href=\"/public/?step=1&public=".$prj['id']."&red=".rawurlencode($_SERVER['REQUEST_URI'])."\" onclick=\"popupQEditPrjShow(".$prj['id'].", event); return false;\">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> ";
+                	$sBox.=" | <span id='project-button-{$prj['id']}'><a style='color: red' href='.' onclick='banned.".($prj['is_blocked']? 'unblockedProject': 'blockedProject')."({$prj['id']}); return false;'>".($prj['is_blocked']? 'Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ': 'Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ')."</a></span>";
+					$sBox.=" | <a id=\"prj_{$prj['id']}\" style=\"color:Red;\" href=\"?action=prj_delete&prjid=".$prj['id'].($_GET['closed']==1?'&closed=1':($_GET['open']==1?'&open=1':''))."\" onClick=\"return addTokenToLink('prj_{$prj['id']}', 'Р’С‹ СѓРІРµСЂРµРЅС‹?')\">РЈРґР°Р»РёС‚СЊ</a>";
                 }
                 if ($sBox != '') {
                         ?>
@@ -623,7 +623,7 @@ banned.addContext( 'p<?=$prj['id']?>', 3, '<?=$GLOBALS['host']?><?= getFriendlyU
 <?php } ?>
                         
                             <div style="text-align:right;font-size:11px; margin:3px 10px 5px 0px;">
-                            <?if(hasPermissions('projects') && $prj['payed']):?><b style="color:#ff0000; white-space:nowrap"><?php if ($prj['kind']!=2 && $prj['kind']!=7) {?>Внимание! Это платный проект!<?php } else {?>Конкурс<?php } ?></b> | <?endif;?>
+                            <?if(hasPermissions('projects') && $prj['payed']):?><b style="color:#ff0000; white-space:nowrap"><?php if ($prj['kind']!=2 && $prj['kind']!=7) {?>Р’РЅРёРјР°РЅРёРµ! Р­С‚Рѕ РїР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚!<?php } else {?>РљРѕРЅРєСѓСЂСЃ<?php } ?></b> | <?endif;?>
                             <?=$sBox?></div>
                             
                             <div id="warnreason-p<?=$prj['id']?>" style="display:none; margin-bottom: 5px;">&nbsp;</div>
@@ -651,7 +651,7 @@ banned.addContext( 'p<?=$prj['id']?>', 3, '<?=$GLOBALS['host']?><?= getFriendlyU
                             
 <?php                            
 }else {	
-    $entity = "пользователя";
+    $entity = "РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ";
     $style = "padding-left:50px; padding-top:5px; padding-bottom:20px;";
     $viewProfileLogin = '';
     $urlData = explode("/", $_SERVER["REQUEST_URI"]);
@@ -667,7 +667,7 @@ banned.addContext( 'p<?=$prj['id']?>', 3, '<?=$GLOBALS['host']?><?= getFriendlyU
         }
     }
     if ($_SESSION["uid"]&&($_SESSION["login"] == $viewProfileLogin)) {
-        $entity = "вас";
+        $entity = "РІР°СЃ";
         $style = "padding-left:50px; padding-top:5px;padding-bottom:15px;";
     }
     require_once dirname(__FILE__)."/tpl.noprojects.php";

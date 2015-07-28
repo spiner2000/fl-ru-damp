@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Класс для регистрации пользователей
+ * РљР»Р°СЃСЃ РґР»СЏ СЂРµРіРёСЃС‚СЂР°С†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
  *  
  */
 class registration
 {
     /**
-     * Название действия регистрации 
+     * РќР°Р·РІР°РЅРёРµ РґРµР№СЃС‚РІРёСЏ СЂРµРіРёСЃС‚СЂР°С†РёРё 
      */
     const ACTION_REGISTRATION = 'registration';
     
@@ -30,39 +30,39 @@ class registration
     public $errno = array();
     
     /**
-     * Роль фрилансера 
+     * Р РѕР»СЊ С„СЂРёР»Р°РЅСЃРµСЂР° 
      */
     const ROLE_FREELANCER = 1;
     /**
-     * Роль работодателя 
+     * Р РѕР»СЊ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ 
      */
     const ROLE_EMPLOYER   = 2;
     
     
     public $access_action_page = array (
-        //'public' => array('confirm' => 'Чтобы создать проект, укажите личную информацию.',
-        //                  'confirm_frl' => 'Чтобы опубликовать предложение, укажите личную информацию.'),
-        'norisk2_create' => array('confirm' => 'Чтобы работать через Безопасную Сделку, укажите личную информацию.',
-                          'confirm_frl' => 'Чтобы работать через Безопасную Сделку, укажите личную информацию.')
+        //'public' => array('confirm' => 'Р§С‚РѕР±С‹ СЃРѕР·РґР°С‚СЊ РїСЂРѕРµРєС‚, СѓРєР°Р¶РёС‚Рµ Р»РёС‡РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ.',
+        //                  'confirm_frl' => 'Р§С‚РѕР±С‹ РѕРїСѓР±Р»РёРєРѕРІР°С‚СЊ РїСЂРµРґР»РѕР¶РµРЅРёРµ, СѓРєР°Р¶РёС‚Рµ Р»РёС‡РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ.'),
+        'norisk2_create' => array('confirm' => 'Р§С‚РѕР±С‹ СЂР°Р±РѕС‚Р°С‚СЊ С‡РµСЂРµР· Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ, СѓРєР°Р¶РёС‚Рµ Р»РёС‡РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ.',
+                          'confirm_frl' => 'Р§С‚РѕР±С‹ СЂР°Р±РѕС‚Р°С‚СЊ С‡РµСЂРµР· Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ, СѓРєР°Р¶РёС‚Рµ Р»РёС‡РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ.')
     );
     
     public $access_action = array (
         //'action'         => array('page'    => 'public', 
-        //                          'confirm' => 'Чтобы создать проект, укажите личную информацию.'),
+        //                          'confirm' => 'Р§С‚РѕР±С‹ СЃРѕР·РґР°С‚СЊ РїСЂРѕРµРєС‚, СѓРєР°Р¶РёС‚Рµ Р»РёС‡РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ.'),
         //'new_tr'         => array('page'    => 'blogs',
-        //                          'confirm' => 'Чтобы написать сообщение в блогах, укажите личную информацию.'),
+        //                          'confirm' => 'Р§С‚РѕР±С‹ РЅР°РїРёСЃР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ РІ Р±Р»РѕРіР°С…, СѓРєР°Р¶РёС‚Рµ Р»РёС‡РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ.'),
         //'post_msg'       => array('page'    => 'blogs',
-        //                          'confirm' => 'Чтобы написать сообщение в блогах, укажите личную информацию.'),
+        //                          'confirm' => 'Р§С‚РѕР±С‹ РЅР°РїРёСЃР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ РІ Р±Р»РѕРіР°С…, СѓРєР°Р¶РёС‚Рµ Р»РёС‡РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ.'),
         //'add'            => array('page'    => 'projects',
-        //                          'confirm' => 'Чтобы ответить на проект, укажите личную информацию.'),
+        //                          'confirm' => 'Р§С‚РѕР±С‹ РѕС‚РІРµС‚РёС‚СЊ РЅР° РїСЂРѕРµРєС‚, СѓРєР°Р¶РёС‚Рµ Р»РёС‡РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ.'),
         //'do.Create.post' => array('page'    => 'commune',
-        //                          'confirm' => 'Чтобы написать сообщение в сообществах, укажите личную информацию.'),
+        //                          'confirm' => 'Р§С‚РѕР±С‹ РЅР°РїРёСЃР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ РІ СЃРѕРѕР±С‰РµСЃС‚РІР°С…, СѓРєР°Р¶РёС‚Рµ Р»РёС‡РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ.'),
         //'add_comment'    => array('page'    => true,
-        //                          'confirm' => 'Чтобы написать комментарий, укажите личную информацию.'),
+        //                          'confirm' => 'Р§С‚РѕР±С‹ РЅР°РїРёСЃР°С‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№, СѓРєР°Р¶РёС‚Рµ Р»РёС‡РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ.'),
         'agree'          => array('page'    => 'norisk2',
-                                  'confirm' => 'Чтобы работать через Безопасную Сделку, укажите личную информацию.'),
+                                  'confirm' => 'Р§С‚РѕР±С‹ СЂР°Р±РѕС‚Р°С‚СЊ С‡РµСЂРµР· Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ, СѓРєР°Р¶РёС‚Рµ Р»РёС‡РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ.'),
         //'look-contacts'  => array('page'    => 'contacts',
-        //                          'confirm' => 'Чтобы просматривать сообщения, заполните личную информацию.'),
+        //                          'confirm' => 'Р§С‚РѕР±С‹ РїСЂРѕСЃРјР°С‚СЂРёРІР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёСЏ, Р·Р°РїРѕР»РЅРёС‚Рµ Р»РёС‡РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ.'),
     );
     
     
@@ -71,7 +71,7 @@ class registration
     
     
     /**
-     * Следующий шаг регистрации
+     * РЎР»РµРґСѓСЋС‰РёР№ С€Р°Рі СЂРµРіРёСЃС‚СЂР°С†РёРё
      * 
      * @var type 
      */
@@ -80,8 +80,8 @@ class registration
 
     
     /**
-     * Редиректить на страницу если емыло уже используется
-     * иначе выводим сообщение об этом.
+     * Р РµРґРёСЂРµРєС‚РёС‚СЊ РЅР° СЃС‚СЂР°РЅРёС†Сѓ РµСЃР»Рё РµРјС‹Р»Рѕ СѓР¶Рµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
+     * РёРЅР°С‡Рµ РІС‹РІРѕРґРёРј СЃРѕРѕР±С‰РµРЅРёРµ РѕР± СЌС‚РѕРј.
      * 
      * @var type 
      */
@@ -140,10 +140,10 @@ class registration
     }
 
         /**
-     * Метод доступа к переменным 
+     * РњРµС‚РѕРґ РґРѕСЃС‚СѓРїР° Рє РїРµСЂРµРјРµРЅРЅС‹Рј 
      *  
-     * @param string $name    Имя переменной
-     * @return mixed Данные переменной 
+     * @param string $name    РРјСЏ РїРµСЂРµРјРµРЅРЅРѕР№
+     * @return mixed Р”Р°РЅРЅС‹Рµ РїРµСЂРµРјРµРЅРЅРѕР№ 
      */
     public function __get($name) {
         if(!isset($this->_fields)) return $this->{$name};
@@ -192,7 +192,7 @@ class registration
     
     
     /**
-     * Подготовка и сохранение данных для последующей регистрации
+     * РџРѕРґРіРѕС‚РѕРІРєР° Рё СЃРѕС…СЂР°РЅРµРЅРёРµ РґР°РЅРЅС‹С… РґР»СЏ РїРѕСЃР»РµРґСѓСЋС‰РµР№ СЂРµРіРёСЃС‚СЂР°С†РёРё
      */
     public function actionStep1()
     {
@@ -211,23 +211,23 @@ class registration
         
         $this->setFieldInfo('email', $email);
         $this->setFieldInfo('subscr_news', trim(__paramInit('bool', null, 'subscribe')));
-        // пароль берем напрямую из $_POST, а то __paramInit режет спецсимволы (пароль хешируется - SQL инъекция невозможна)
+        // РїР°СЂРѕР»СЊ Р±РµСЂРµРј РЅР°РїСЂСЏРјСѓСЋ РёР· $_POST, Р° С‚Рѕ __paramInit СЂРµР¶РµС‚ СЃРїРµС†СЃРёРјРІРѕР»С‹ (РїР°СЂРѕР»СЊ С…РµС€РёСЂСѓРµС‚СЃСЏ - SQL РёРЅСЉРµРєС†РёСЏ РЅРµРІРѕР·РјРѕР¶РЅР°)
         $this->setFieldInfo('password', stripslashes($_POST['password']));
         
-        //Выключаем редирект если мыло уже существует
+        //Р’С‹РєР»СЋС‡Р°РµРј СЂРµРґРёСЂРµРєС‚ РµСЃР»Рё РјС‹Р»Рѕ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
         $this->setDisableEmailRedirect(true);
         
-        //Проверка полей
+        //РџСЂРѕРІРµСЂРєР° РїРѕР»РµР№
         $this->checkedFields();
 
-        //Проверка каптчи
+        //РџСЂРѕРІРµСЂРєР° РєР°РїС‚С‡Рё
         $this->setFieldInfo('captchanum', __paramInit('string', null, 'captchanum'));
         $num = __paramInit('string', null, 'rndnum');
         if ( !$_SESSION["regform_captcha_entered"] ) {
             $_SESSION['reg_captcha_num'] = $this->captchanum;
             $captcha = new captcha($this->captchanum);
             if (!$captcha->checkNumber($num)) {
-                $this->error['captcha'] = 'Неверный код. Попробуйте еще раз';
+                $this->error['captcha'] = 'РќРµРІРµСЂРЅС‹Р№ РєРѕРґ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·';
                 $this->is_validate = false;            
                 unset($_SESSION['reg_captcha_num']);
             }
@@ -291,7 +291,7 @@ class registration
             }
             
             $_SESSION['link_back'] = "/registration/wellcome/" . (is_emp() ? "employer.php" : "freelancer.php");
-            // факт того, что пользователь только что зарегестрировался (сбрасывается на страницах wellcome)
+            // С„Р°РєС‚ С‚РѕРіРѕ, С‡С‚Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ С‚РѕР»СЊРєРѕ С‡С‚Рѕ Р·Р°СЂРµРіРµСЃС‚СЂРёСЂРѕРІР°Р»СЃСЏ (СЃР±СЂР°СЃС‹РІР°РµС‚СЃСЏ РЅР° СЃС‚СЂР°РЅРёС†Р°С… wellcome)
             $_SESSION['is_new_user'] = 1;
             unset($_SESSION['activate_resend_attempts']);
             
@@ -304,16 +304,16 @@ class registration
             header("Location: ".$redirect);
             exit();
         } else {
-            $this->error['rndnum'] = 'Ошибка активации. Попробуйте еще раз';
+            $this->error['rndnum'] = 'РћС€РёР±РєР° Р°РєС‚РёРІР°С†РёРё. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·';
         }
 
     }
     
     /**
-     * Заполнение обязательных полей после регистрации через API мобильного приложения.
+     * Р—Р°РїРѕР»РЅРµРЅРёРµ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹С… РїРѕР»РµР№ РїРѕСЃР»Рµ СЂРµРіРёСЃС‚СЂР°С†РёРё С‡РµСЂРµР· API РјРѕР±РёР»СЊРЅРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ.
      * 
-     * @param  array $aParams массив входящих данных
-     * @return bool true - успех, false - провал
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     public function actionSaveInfoMobile( $aParams = array() ) {
         $this->setFieldInfo( 'uname', __paramValue('string', iconv('utf-8', 'cp1251', $aParams['first_name'])) );
@@ -327,7 +327,7 @@ class registration
         $this->checkedFields();
         
         if ( date('Y-m-d', strtotime($aParams['birthday'])) != $aParams['birthday'] ) {
-            $this->error['birthday'] = 'Укажите некорректную дату дня рождения'; 
+            $this->error['birthday'] = 'РЈРєР°Р¶РёС‚Рµ РЅРµРєРѕСЂСЂРµРєС‚РЅСѓСЋ РґР°С‚Сѓ РґРЅСЏ СЂРѕР¶РґРµРЅРёСЏ'; 
             $this->errno['birthday'] = 2;
         }
         
@@ -358,7 +358,7 @@ class registration
                     $spec_mod = professions::getLastModifiedSpec( $_SESSION['uid'] );
                     
                     if ( !is_pro() &&  $spec_mod['days'] > 0 ) {
-                        $this->error['spec'] = 'Не прошло 30 дней с момента последней смены специализации';
+                        $this->error['spec'] = 'РќРµ РїСЂРѕС€Р»Рѕ 30 РґРЅРµР№ СЃ РјРѕРјРµРЅС‚Р° РїРѕСЃР»РµРґРЅРµР№ СЃРјРµРЅС‹ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё';
                         $this->errno['spec'] = 2;
                     }
                     else {
@@ -369,7 +369,7 @@ class registration
                     }
                 }
                 else {
-                    $this->error['spec'] = 'Не указан параметр ID профессии';
+                    $this->error['spec'] = 'РќРµ СѓРєР°Р·Р°РЅ РїР°СЂР°РјРµС‚СЂ ID РїСЂРѕС„РµСЃСЃРёРё';
                     $this->errno['spec'] = 1;
                 }
             }
@@ -394,7 +394,7 @@ class registration
     }
     
     /*
-	 *Вызывается при сохранении данных со страницы registration/info.php
+	 *Р’С‹Р·С‹РІР°РµС‚СЃСЏ РїСЂРё СЃРѕС…СЂР°РЅРµРЅРёРё РґР°РЅРЅС‹С… СЃРѕ СЃС‚СЂР°РЅРёС†С‹ registration/info.php
 	 * 
 	 * */
     public function actionSaveInfo() {
@@ -405,7 +405,7 @@ class registration
 
         if($bday != null && $byear != null) {
             if (!is_numeric($bday) || !is_numeric($byear) || !checkdate($bmonth, $bday, $byear) || $byear < 1945 || $byear > date('Y')) {
-                $this->error['birthday'] = "Поле заполнено некорректно";
+                $this->error['birthday'] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
             } else {
                 $birthday = dateFormat("Y-m-d", $byear."-".$bmonth."-".$bday);
             }
@@ -422,7 +422,7 @@ class registration
         $this->setFieldInfo('country_name', __paramInit('string', null, 'country'));
         $this->setFieldInfo('city', __paramInit('string', null, 'city_db_id'));
         $this->setFieldInfo('city_name', __paramInit('string', null, 'city'));
-        $this->setFieldInfo('sex', __paramInit('string', null, 'sex', 1)); // по умолчанию мужской пол
+        $this->setFieldInfo('sex', __paramInit('string', null, 'sex', 1)); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РјСѓР¶СЃРєРѕР№ РїРѕР»
         $this->setFieldInfo('info_for_reg', $info_for_reg);
         $this->checkedFields();
         
@@ -471,7 +471,7 @@ class registration
         }
     }
     /**
-     * Отправить пользователю код для подтверждения телефона
+     * РћС‚РїСЂР°РІРёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ РєРѕРґ РґР»СЏ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ С‚РµР»РµС„РѕРЅР°
     */
     public function actionSendSms( $echo = true, $fields_are_set = false ) {
         if($_SESSION['send_sms_time'] > time()) {
@@ -486,7 +486,7 @@ class registration
         if (!$captcha->checkNumber($num)) {
             unset($_SESSION['reg_captcha_num']);
             unset($_SESSION["regform_captcha_entered"]);
-            echo json_encode(array("err_msg" => iconv("WINDOWS-1251", "UTF-8//IGNORE", "Вы ввели неверный код."), "target"=>"captchanum"));
+            echo json_encode(array("err_msg" => iconv("WINDOWS-1251", "UTF-8//IGNORE", "Р’С‹ РІРІРµР»Рё РЅРµРІРµСЂРЅС‹Р№ РєРѕРґ."), "target"=>"captchanum"));
             exit;
         } else {
              $_SESSION["regform_captcha_entered"] = true;
@@ -502,15 +502,15 @@ class registration
         
         if ( (is_release() || $phone != 71111112222) && sbr_meta::findSafetyPhone($phone, $sRole) ) {
             if ( $echo ) {
-                echo json_encode(array("err_msg" => iconv("WINDOWS-1251", "UTF-8//IGNORE", "Пользователь с таким номером уже зарегистрирован")));
+                echo json_encode(array("err_msg" => iconv("WINDOWS-1251", "UTF-8//IGNORE", "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ С‚Р°РєРёРј РЅРѕРјРµСЂРѕРј СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ")));
                 exit;
             }
             else {
-                $this->error['phone'] = 'Пользователь с таким номером уже зарегистрирован';
+                $this->error['phone'] = 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ С‚Р°РєРёРј РЅРѕРјРµСЂРѕРј СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ';
                 $this->errno['phone'] = 3;
             }
         }
-        $msg = "Ваш код активации на free-lance.ru \n{$code}";
+        $msg = "Р’Р°С€ РєРѕРґ Р°РєС‚РёРІР°С†РёРё РЅР° free-lance.ru \n{$code}";
         $count = "5";
         if (is_release() || $phone != 71111112222) {
             $id = $sms->sendSMS($msg, "text", null, true); //$code = 7777; // !!
@@ -532,7 +532,7 @@ class registration
                 exit;
             }
         } else {
-        	$error_text = "Не удалось отправить сообщение. Попробуйте через несколько минут.";
+        	$error_text = "РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РїСЂР°РІРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ. РџРѕРїСЂРѕР±СѓР№С‚Рµ С‡РµСЂРµР· РЅРµСЃРєРѕР»СЊРєРѕ РјРёРЅСѓС‚.";
         	$target = "";
         	if ( $sms->limitIsExceed() ) {
                 $error_text = sms_gate::LIMIT_EXCEED_LINK_TEXT;
@@ -550,9 +550,9 @@ class registration
     }
     
     /**
-     * Генерируем форму для отправки
+     * Р“РµРЅРµСЂРёСЂСѓРµРј С„РѕСЂРјСѓ РґР»СЏ РѕС‚РїСЂР°РІРєРё
      * 
-     * @param string $ukey    Ключ данных @see self::genUkeyPost();
+     * @param string $ukey    РљР»СЋС‡ РґР°РЅРЅС‹С… @see self::genUkeyPost();
      * @return string 
      */
     public function generateFormPost($ukey) {
@@ -566,10 +566,10 @@ class registration
     }
     
     /**
-     * Генерируем инпуты
+     * Р“РµРЅРµСЂРёСЂСѓРµРј РёРЅРїСѓС‚С‹
      * 
-     * @param type $name    Название
-     * @param type $value   Значение
+     * @param type $name    РќР°Р·РІР°РЅРёРµ
+     * @param type $value   Р—РЅР°С‡РµРЅРёРµ
      * @return type 
      */
     public function generateInput($name, $value) {
@@ -590,9 +590,9 @@ class registration
     }
     
     /**
-     * Очищаем данные которые будем посылать
+     * РћС‡РёС‰Р°РµРј РґР°РЅРЅС‹Рµ РєРѕС‚РѕСЂС‹Рµ Р±СѓРґРµРј РїРѕСЃС‹Р»Р°С‚СЊ
      * 
-     * @param type $ukey ключ данных
+     * @param type $ukey РєР»СЋС‡ РґР°РЅРЅС‹С…
      */
     public function clearPostForm($ukey) {
         unset($_SESSION['post_cache'][$ukey], $_SESSION['files_cache'][$ukey], $_SESSION['action_form'][$ukey]);
@@ -632,10 +632,10 @@ class registration
     }
     
     /**
-     * Регистрация через API мобильного приложения. Выслать SMS еще раз.
+     * Р РµРіРёСЃС‚СЂР°С†РёСЏ С‡РµСЂРµР· API РјРѕР±РёР»СЊРЅРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ. Р’С‹СЃР»Р°С‚СЊ SMS РµС‰Рµ СЂР°Р·.
      * 
-     * @param  array $aParams массив входящих данных
-     * @return bool true - успех, false - провал
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     public function actionResendSmsMobile( $aParams = array() ) {
         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/sbr_meta.php' );
@@ -645,12 +645,12 @@ class registration
         $this->checkedFields( true );
         
         if ( (is_release() || $this->phone != 71111112222) && sbr_meta::findSafetyPhone($this->phone, $this->role == 2 ? 'emp' : 'frl') ) {
-            $this->error['phone'] = 'Пользователь с таким номером уже зарегистрирован';
+            $this->error['phone'] = 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ С‚Р°РєРёРј РЅРѕРјРµСЂРѕРј СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ';
             $this->errno['phone'] = 3;
         }
         
         if ( $this->login != $_SESSION['api_reg_login'] ) {
-            $this->error['login'] = 'Вы указали не этот логин при регистрации';
+            $this->error['login'] = 'Р’С‹ СѓРєР°Р·Р°Р»Рё РЅРµ СЌС‚РѕС‚ Р»РѕРіРёРЅ РїСЂРё СЂРµРіРёСЃС‚СЂР°С†РёРё';
             $this->errno['login'] = 6;
         }
         
@@ -665,10 +665,10 @@ class registration
     }
     
     /**
-     * Регистрация через API мобильного приложения. Начало.
+     * Р РµРіРёСЃС‚СЂР°С†РёСЏ С‡РµСЂРµР· API РјРѕР±РёР»СЊРЅРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ. РќР°С‡Р°Р»Рѕ.
      * 
-     * @param  array $aParams массив входящих данных
-     * @return bool true - успех, false - провал
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     public function actionRegistrationMobile( $aParams = array() ) {
         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/sbr_meta.php' );
@@ -681,16 +681,16 @@ class registration
         $this->checkedFields( true );
         
         if ( !$this->role ) {
-            $this->error['role'] = 'Не указан параметр - Роль пользователя';
+            $this->error['role'] = 'РќРµ СѓРєР°Р·Р°РЅ РїР°СЂР°РјРµС‚СЂ - Р РѕР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ';
             $this->errno['role'] = 1;
         }
         elseif ( $this->role > 2 ) {
-            $this->error['role'] = 'Ошибочный параметр - Роль пользователя';
+            $this->error['role'] = 'РћС€РёР±РѕС‡РЅС‹Р№ РїР°СЂР°РјРµС‚СЂ - Р РѕР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ';
             $this->errno['role'] = 2;
         }
         
         if ( (is_release() || $this->phone != 71111112222) && sbr_meta::findSafetyPhone($this->phone, $this->role == 2 ? 'emp' : 'frl') ) {
-            $this->error['phone'] = 'Пользователь с таким номером уже зарегистрирован';
+            $this->error['phone'] = 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ С‚Р°РєРёРј РЅРѕРјРµСЂРѕРј СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ';
             $this->errno['phone'] = 3;
         }
         
@@ -701,7 +701,7 @@ class registration
             $_SESSION['api_reg_passwd'] = substr($this->password, 0, 24);
             $_SESSION['api_reg_phone']  = $this->phone;
             
-            // отправляем смс для подтверждения телефона
+            // РѕС‚РїСЂР°РІР»СЏРµРј СЃРјСЃ РґР»СЏ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ С‚РµР»РµС„РѕРЅР°
             $_SESSION['send_sms_time'] = 0;
             $_SESSION['regform_captcha_entered'] = true;
 
@@ -711,10 +711,10 @@ class registration
         return ( empty($this->error) && !empty($nCode) );
     }
     
-    /* Регистрация через API мобильного приложения. Подтверждение.
+    /* Р РµРіРёСЃС‚СЂР°С†РёСЏ С‡РµСЂРµР· API РјРѕР±РёР»СЊРЅРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ. РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ.
      * 
-     * @param  array $aParams массив входящих данных
-     * @return users объект или null в случае провала
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return users РѕР±СЉРµРєС‚ РёР»Рё null РІ СЃР»СѓС‡Р°Рµ РїСЂРѕРІР°Р»Р°
      */
     public function actionRegistrationMobileComplete( $aParams = array() ) {
         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/wizard/wizard.php' );
@@ -729,7 +729,7 @@ class registration
         $this->checkedFields( false );
         
         if ( $this->login != $_SESSION['api_reg_login'] ) {
-            $this->error['login'] = 'Вы указали не этот логин при регистрации';
+            $this->error['login'] = 'Р’С‹ СѓРєР°Р·Р°Р»Рё РЅРµ СЌС‚РѕС‚ Р»РѕРіРёРЅ РїСЂРё СЂРµРіРёСЃС‚СЂР°С†РёРё';
             $this->errno['login'] = 6;
         }
         
@@ -757,20 +757,20 @@ class registration
                 sms_gate::saveSmsInfo($phone, $_SESSION["reg_sms_isnn"], $_SESSION["smsCode"], $_SESION["reg_sms_date_send"], $newuser->uid);
                 $_SESSION['email'] = $newuser->email;
                 $_SESSION['rrole'] = $_SESSION['api_reg_role'];
-                // Если пришли сюда регистрироватся то после нажатия кнопки регистрации удаляем куки регистрации иначе после активации нас перекинет на мастер
+                // Р•СЃР»Рё РїСЂРёС€Р»Рё СЃСЋРґР° СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЃСЏ С‚Рѕ РїРѕСЃР»Рµ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё СЂРµРіРёСЃС‚СЂР°С†РёРё СѓРґР°Р»СЏРµРј РєСѓРєРё СЂРµРіРёСЃС‚СЂР°С†РёРё РёРЅР°С‡Рµ РїРѕСЃР»Рµ Р°РєС‚РёРІР°С†РёРё РЅР°СЃ РїРµСЂРµРєРёРЅРµС‚ РЅР° РјР°СЃС‚РµСЂ
                 $wizard = new wizard();
-                $wizard->clearCookiesById($newuser->role == 1 ? 1 : 2); // В зависимоти от того кого регистрируем
-                // На всякий случай при новой регистрации удаляем переменную проверки
+                $wizard->clearCookiesById($newuser->role == 1 ? 1 : 2); // Р’ Р·Р°РІРёСЃРёРјРѕС‚Рё РѕС‚ С‚РѕРіРѕ РєРѕРіРѕ СЂРµРіРёСЃС‚СЂРёСЂСѓРµРј
+                // РќР° РІСЃСЏРєРёР№ СЃР»СѓС‡Р°Р№ РїСЂРё РЅРѕРІРѕР№ СЂРµРіРёСЃС‚СЂР°С†РёРё СѓРґР°Р»СЏРµРј РїРµСЂРµРјРµРЅРЅСѓСЋ РїСЂРѕРІРµСЂРєРё
                 self::resetCheckAccess();
 
-                //Обработать действия по событию успешной регистрации
+                //РћР±СЂР°Р±РѕС‚Р°С‚СЊ РґРµР№СЃС‚РІРёСЏ РїРѕ СЃРѕР±С‹С‚РёСЋ СѓСЃРїРµС€РЅРѕР№ СЂРµРіРёСЃС‚СЂР°С†РёРё
                 $this->afterSuccessRegistation($newuser);
                 
                 return $newuser;
             }
             else {
                 if ( $error['exceed_max_reg_ip'] == 1 ) {
-                    $this->error['exceed_max_reg_ip'] = 'Превышено количество регистраций с одного IP';
+                    $this->error['exceed_max_reg_ip'] = 'РџСЂРµРІС‹С€РµРЅРѕ РєРѕР»РёС‡РµСЃС‚РІРѕ СЂРµРіРёСЃС‚СЂР°С†РёР№ СЃ РѕРґРЅРѕРіРѕ IP';
                 }
             }
         }
@@ -784,25 +784,25 @@ class registration
         $this->setFieldInfo('login', trim($data['login']));
         $this->setFieldInfo('email', trim($data['email']));
         
-        //Кастомная валидация для этого способа регистрации
+        //РљР°СЃС‚РѕРјРЅР°СЏ РІР°Р»РёРґР°С†РёСЏ РґР»СЏ СЌС‚РѕРіРѕ СЃРїРѕСЃРѕР±Р° СЂРµРіРёСЃС‚СЂР°С†РёРё
         $this->is_validate = true;
         
         $users = new users();
         $users->GetUser($data['email'], true, true);
         
         if ($users->uid) {
-            $this->error['email'] = "Пользователь с таким email-адресом существует.";
+            $this->error['email'] = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ С‚Р°РєРёРј email-Р°РґСЂРµСЃРѕРј СЃСѓС‰РµСЃС‚РІСѓРµС‚.";
             $this->is_validate = false;
         }
         
         $users = new users();
         $users->GetUser($data['login'], true, false);
         if ($users->uid) {
-            $this->error['login'] = "Логин {$data['login']} занят. Введите другой логин для регистрации на сайте.";
+            $this->error['login'] = "Р›РѕРіРёРЅ {$data['login']} Р·Р°РЅСЏС‚. Р’РІРµРґРёС‚Рµ РґСЂСѓРіРѕР№ Р»РѕРіРёРЅ РґР»СЏ СЂРµРіРёСЃС‚СЂР°С†РёРё РЅР° СЃР°Р№С‚Рµ.";
             $this->is_validate = false;
         }
         
-        //Если кастомную прошли, проводим стандартную
+        //Р•СЃР»Рё РєР°СЃС‚РѕРјРЅСѓСЋ РїСЂРѕС€Р»Рё, РїСЂРѕРІРѕРґРёРј СЃС‚Р°РЅРґР°СЂС‚РЅСѓСЋ
         if ($this->is_validate) {
             $this->checkedFields();
         }
@@ -816,8 +816,8 @@ class registration
     }
     
     /**
-     * Основной метод регистрации пользователей
-     * @param bool $is_preset Флаг, показывающий наличие подготовленных данных
+     * РћСЃРЅРѕРІРЅРѕР№ РјРµС‚РѕРґ СЂРµРіРёСЃС‚СЂР°С†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
+     * @param bool $is_preset Р¤Р»Р°Рі, РїРѕРєР°Р·С‹РІР°СЋС‰РёР№ РЅР°Р»РёС‡РёРµ РїРѕРґРіРѕС‚РѕРІР»РµРЅРЅС‹С… РґР°РЅРЅС‹С…
      * @return type
      */
     public function actionRegistration($is_preset = false) {
@@ -830,7 +830,7 @@ class registration
             $this->setFieldInfo('subscr_news', trim(__paramInit('bool', null, 'subscribe')));
             //$this->setFieldInfo('smscode', trim(__paramInit('string', null, 'smscode')));
             //$this->setFieldInfo('phone', $_SESSION["reg_phone"]);
-            // пароль берем напрямую из $_POST, а то __paramInit режет спецсимволы (пароль хешируется - SQL инъекция невозможна)
+            // РїР°СЂРѕР»СЊ Р±РµСЂРµРј РЅР°РїСЂСЏРјСѓСЋ РёР· $_POST, Р° С‚Рѕ __paramInit СЂРµР¶РµС‚ СЃРїРµС†СЃРёРјРІРѕР»С‹ (РїР°СЂРѕР»СЊ С…РµС€РёСЂСѓРµС‚СЃСЏ - SQL РёРЅСЉРµРєС†РёСЏ РЅРµРІРѕР·РјРѕР¶РЅР°)
             $this->setFieldInfo('password', stripslashes($_POST['password']));
             $this->checkedFields();
 
@@ -841,14 +841,14 @@ class registration
                 $_SESSION['reg_captcha_num'] = $this->captchanum;
                 $captcha = new captcha($this->captchanum);
                 if (!$captcha->checkNumber($num)) {
-                    $this->error['captcha'] = 'Неверный код. Попробуйте еще раз';
+                    $this->error['captcha'] = 'РќРµРІРµСЂРЅС‹Р№ РєРѕРґ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·';
                     $this->is_validate = false;            
                     unset($_SESSION['reg_captcha_num']);
                 }
             }
         }
         //if ( (is_release() || $_SESSION["reg_phone"] != 71111112222) && sbr_meta::findSafetyPhone($_SESSION["reg_phone"], __paramInit('string', null, 'role') == 2 ? 'emp' : 'frl') ) {
-        //    $this->error['phone'] = 'Пользователь с таким номером уже зарегистрирован';
+        //    $this->error['phone'] = 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ С‚Р°РєРёРј РЅРѕРјРµСЂРѕРј СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ';
         //    $this->is_validate = false;
         //    unset($_SESSION['reg_captcha_num']);
         //}
@@ -885,10 +885,10 @@ class registration
                     $_SESSION['email'] = $newuser->email;
                     $_SESSION['rrole'] = $this->role;
 
-                    // Если пришли сюда регистрироватся то после нажатия кнопки регистрации удаляем куки регистрации иначе после активации нас перекинет на мастер
+                    // Р•СЃР»Рё РїСЂРёС€Р»Рё СЃСЋРґР° СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЃСЏ С‚Рѕ РїРѕСЃР»Рµ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё СЂРµРіРёСЃС‚СЂР°С†РёРё СѓРґР°Р»СЏРµРј РєСѓРєРё СЂРµРіРёСЃС‚СЂР°С†РёРё РёРЅР°С‡Рµ РїРѕСЃР»Рµ Р°РєС‚РёРІР°С†РёРё РЅР°СЃ РїРµСЂРµРєРёРЅРµС‚ РЅР° РјР°СЃС‚РµСЂ
                     $wizard = new wizard();
-                    $wizard->clearCookiesById($newuser->role == 1 ? 1 : 2); // В зависимоти от того кого регистрируем
-                    // На всякий случай при новой регистрации удаляем переменную проверки
+                    $wizard->clearCookiesById($newuser->role == 1 ? 1 : 2); // Р’ Р·Р°РІРёСЃРёРјРѕС‚Рё РѕС‚ С‚РѕРіРѕ РєРѕРіРѕ СЂРµРіРёСЃС‚СЂРёСЂСѓРµРј
+                    // РќР° РІСЃСЏРєРёР№ СЃР»СѓС‡Р°Р№ РїСЂРё РЅРѕРІРѕР№ СЂРµРіРёСЃС‚СЂР°С†РёРё СѓРґР°Р»СЏРµРј РїРµСЂРµРјРµРЅРЅСѓСЋ РїСЂРѕРІРµСЂРєРё
                     self::resetCheckAccess();
                     
 					$_user_action = (isset($_REQUEST['user_action']) && $_REQUEST['user_action'])?substr(htmlspecialchars($_REQUEST['user_action']), 0, 25):'';
@@ -905,7 +905,7 @@ class registration
                         
                         $redirect_to = $ref_uri?$ref_uri:'/public/?step=1&kind=1';
                         
-                        //По умолчанию, при регистрации заказчика, перенаправляем его на публикацию проекта
+                        //РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ, РїСЂРё СЂРµРіРёСЃС‚СЂР°С†РёРё Р·Р°РєР°Р·С‡РёРєР°, РїРµСЂРµРЅР°РїСЂР°РІР»СЏРµРј РµРіРѕ РЅР° РїСѓР±Р»РёРєР°С†РёСЋ РїСЂРѕРµРєС‚Р°
 						if (strpos($_user_action, 'project_to_')) {
 							$login = str_replace('add_project_to_', '', $_user_action);
 							$redirect_to = '/public/?step=1&kind=9&exec='.$login;
@@ -922,8 +922,8 @@ class registration
                         $redirect_to = //"/registration/wellcome/freelancer.php";
                         $redirect_to = "/registration/profession.php" . (!empty($user_action)?"?user_action={$user_action}":'');
                         
-                        //Очищаем чтобы далее небыло редиректа
-                        //@todo: согласно https://beta.free-lance.ru/mantis/view.php?id=28862
+                        //РћС‡РёС‰Р°РµРј С‡С‚РѕР±С‹ РґР°Р»РµРµ РЅРµР±С‹Р»Рѕ СЂРµРґРёСЂРµРєС‚Р°
+                        //@todo: СЃРѕРіР»Р°СЃРЅРѕ https://beta.free-lance.ru/mantis/view.php?id=28862
                         $_user_action = '';
                     }
 					
@@ -958,14 +958,14 @@ class registration
                         $_SESSION['activate_password'] = $newuser->passwd;
                         $_SESSION['subscr_news'] = (int)$this->subscr_news;
 
-                        //Создаем новый экземпляр, т.к. нужно обновить только подписки
-                        //Отписываем от всего, кроме личных сообщений
+                        //РЎРѕР·РґР°РµРј РЅРѕРІС‹Р№ СЌРєР·РµРјРїР»СЏСЂ, С‚.Рє. РЅСѓР¶РЅРѕ РѕР±РЅРѕРІРёС‚СЊ С‚РѕР»СЊРєРѕ РїРѕРґРїРёСЃРєРё
+                        //РћС‚РїРёСЃС‹РІР°РµРј РѕС‚ РІСЃРµРіРѕ, РєСЂРѕРјРµ Р»РёС‡РЅС‹С… СЃРѕРѕР±С‰РµРЅРёР№
                         $freelancer = new freelancer();
                         $freelancer->UpdateSubscr($newuser->uid, 1, array(), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, false, 0);
                     }
                     
                     
-                    //Обработать действия по событию успешной регистрации
+                    //РћР±СЂР°Р±РѕС‚Р°С‚СЊ РґРµР№СЃС‚РІРёСЏ РїРѕ СЃРѕР±С‹С‚РёСЋ СѓСЃРїРµС€РЅРѕР№ СЂРµРіРёСЃС‚СЂР°С†РёРё
                     $this->afterSuccessRegistation($newuser);
                    
                     
@@ -992,31 +992,31 @@ class registration
 
         $smail    = new smail();
         $bSuspect = users::isSuspiciousUser($user->uid, $user->login, '', $user->uname, '', $user->usurname, '');
-        $sPasswd  = ( $bSuspect ) ? $user->passwd : ''; // чтобы из админки можно было выслать $smail->NewUser
+        $sPasswd  = ( $bSuspect ) ? $user->passwd : ''; // С‡С‚РѕР±С‹ РёР· Р°РґРјРёРЅРєРё РјРѕР¶РЅРѕ Р±С‹Р»Рѕ РІС‹СЃР»Р°С‚СЊ $smail->NewUser
         $code     = activate_code::Create($user->uid, $user->login, $sPasswd, $error);
 
         if (!$bSuspect) {
-            // юзер не подозрительный - сразу отпавляем юзеру письмо с кодом активации
+            // СЋР·РµСЂ РЅРµ РїРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹Р№ - СЃСЂР°Р·Сѓ РѕС‚РїР°РІР»СЏРµРј СЋР·РµСЂСѓ РїРёСЃСЊРјРѕ СЃ РєРѕРґРѕРј Р°РєС‚РёРІР°С†РёРё
             $_SESSION['suspect'] = false;
             $smail->NewUser($user->login, $this->_fields['password'], $code);
         } else {
-            // отправляем уведомление админу о том, что зарегистрировался подозрительный юзер
-            // если админ его одобрит - то письмо с кодом активации уйдет из админки
+            // РѕС‚РїСЂР°РІР»СЏРµРј СѓРІРµРґРѕРјР»РµРЅРёРµ Р°РґРјРёРЅСѓ Рѕ С‚РѕРј, С‡С‚Рѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°Р»СЃСЏ РїРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹Р№ СЋР·РµСЂ
+            // РµСЃР»Рё Р°РґРјРёРЅ РµРіРѕ РѕРґРѕР±СЂРёС‚ - С‚Рѕ РїРёСЃСЊРјРѕ СЃ РєРѕРґРѕРј Р°РєС‚РёРІР°С†РёРё СѓР№РґРµС‚ РёР· Р°РґРјРёРЅРєРё
             $_SESSION['suspect'] = true;
             $smail->adminNewSuspectUser($user->login, $user->uname, $user->usurname);
         }
         
-        // Серый список IP
+        // РЎРµСЂС‹Р№ СЃРїРёСЃРѕРє IP
         $this->checkGrayIp( $user );
         
-        // Фиксация трафика, учет статистики 
+        // Р¤РёРєСЃР°С†РёСЏ С‚СЂР°С„РёРєР°, СѓС‡РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєРё 
         $GLOBALS['traffic_stat']->checkRegistration( $user->uid, $user->role );
         
         return true;
     }
     
     /**
-     * Серый список IP
+     * РЎРµСЂС‹Р№ СЃРїРёСЃРѕРє IP
      * 
      * @param users $user
      */
@@ -1024,7 +1024,7 @@ class registration
         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/gray_ip.php' );
 
         $aGrayList = gray_ip::getGrayListByRegIp(getRemoteIP());
-        if ($aGrayList) { // есть записи в списке первичных IP
+        if ($aGrayList) { // РµСЃС‚СЊ Р·Р°РїРёСЃРё РІ СЃРїРёСЃРєРµ РїРµСЂРІРёС‡РЅС‹С… IP
             gray_ip::addSecondaryIp($user->uid, $user->login, $user->role, $aGrayList);
         }
     }
@@ -1045,76 +1045,76 @@ class registration
         switch($name) {
             case 'agree':
                 if($value!=1) {
-                    $this->error[$name] = 'Прочтите и согласитесь с правилами';
+                    $this->error[$name] = 'РџСЂРѕС‡С‚РёС‚Рµ Рё СЃРѕРіР»Р°СЃРёС‚РµСЃСЊ СЃ РїСЂР°РІРёР»Р°РјРё';
                 }
                 break;
             case 'country':
                 if($value <= 0) {
-                    $this->error[$name] = 'Выберите страну';
+                    $this->error[$name] = 'Р’С‹Р±РµСЂРёС‚Рµ СЃС‚СЂР°РЅСѓ';
                 }
                 break;
             case 'city':
                 if($value <= 0) {
-                    $this->error[$name] = 'Выберите город';
+                    $this->error[$name] = 'Р’С‹Р±РµСЂРёС‚Рµ РіРѕСЂРѕРґ';
                 }
                 break;
             case 'birthday':
                 if(!$value) {
-                    $this->error[$name] = "Заполните дату дня рождения"; 
+                    $this->error[$name] = "Р—Р°РїРѕР»РЅРёС‚Рµ РґР°С‚Сѓ РґРЅСЏ СЂРѕР¶РґРµРЅРёСЏ"; 
                     $this->errno[$name] = 1;
                 }
                 break;
             case 'sex':
                 if($value === null) {
-                   // $this->error[$name] = 'Выберите пол';
+                   // $this->error[$name] = 'Р’С‹Р±РµСЂРёС‚Рµ РїРѕР»';
                 }
                 break;
             case 'uname':
             case 'usurname':
                 if(!$value) {
-                    $this->error[$name] = "Поле заполнено некорректно"; 
+                    $this->error[$name] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; 
                     $this->errno[$name] = 1;
                 }
-                if (!preg_match("/^[-a-zA-Zа-яёА-ЯЁ]+$/i", $value)) {
-                    $this->error[$name] = "Поле заполнено некорректно";
+                if (!preg_match("/^[-a-zA-ZР°-СЏС‘Рђ-РЇРЃ]+$/i", $value)) {
+                    $this->error[$name] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
                     $this->errno[$name] = 2;
                 }
                 break;
             case 'password':
                 if($value == '') {
-                    $this->error[$name] = 'Введите пароль';
+                    $this->error[$name] = 'Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ';
                     $this->errno[$name] = 1;
                 }else if ( strlen($value) > 24) {
-                    $this->error[$name] = 'Максимальная длина пароля 24 символа';
+                    $this->error[$name] = 'РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° РїР°СЂРѕР»СЏ 24 СЃРёРјРІРѕР»Р°';
                     $this->errno[$name] = 2;
                 }else if ( strlen($value) < 6) {
-                    $this->error[$name] = 'Минимальная длина пароля 6 символов';
+                    $this->error[$name] = 'РњРёРЅРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° РїР°СЂРѕР»СЏ 6 СЃРёРјРІРѕР»РѕРІ';
                     $this->errno[$name] = 3;
                 }else if ( strlen( preg_replace("#[a-zA-Z\d\!\@\#\$\%\^\&\*\(\)\_\+\-\=\;\,\.\/\?\[\]\{\}]#", "", $value) ) != 0) {
-                    $this->error[$name] = 'Поле заполнено некорректно';
+                    $this->error[$name] = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                     $this->errno[$name] = 4;
                 }
                 break;
             case 'login':
                 if (!preg_match("/^[a-zA-Z0-9]+[-a-zA-Z0-9_]{2,}$/", $value)) {
-                    $this->error[$name] = 'От 3 до 15 символов. Может содержать латинские буквы, цифры, подчёркивание (_) и дефис (-)';
+                    $this->error[$name] = 'РћС‚ 3 РґРѕ 15 СЃРёРјРІРѕР»РѕРІ. РњРѕР¶РµС‚ СЃРѕРґРµСЂР¶Р°С‚СЊ Р»Р°С‚РёРЅСЃРєРёРµ Р±СѓРєРІС‹, С†РёС„СЂС‹, РїРѕРґС‡С‘СЂРєРёРІР°РЅРёРµ (_) Рё РґРµС„РёСЃ (-)';
                     $this->errno[$name] = 1;
                 }
                 if (in_array(strtolower($value), $GLOBALS['disallowUserLogins'])) {
-                    $this->error[$name] = 'Извините, такой логин использовать нельзя';
+                    $this->error[$name] = 'РР·РІРёРЅРёС‚Рµ, С‚Р°РєРѕР№ Р»РѕРіРёРЅ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РЅРµР»СЊР·СЏ';
                     $this->errno[$name] = 2;
                 }
                 if ( empty($this->error[$name]) ) {
                     $sql = "SELECT uid FROM users WHERE lower(login) = ?";
                     if ($DB->val($sql, strtolower($value))) {
-                        $this->error[$name] = 'Извините, этот логин занят. Придумайте другой.';
+                        $this->error[$name] = 'РР·РІРёРЅРёС‚Рµ, СЌС‚РѕС‚ Р»РѕРіРёРЅ Р·Р°РЅСЏС‚. РџСЂРёРґСѓРјР°Р№С‚Рµ РґСЂСѓРіРѕР№.';
                         $this->errno[$name] = 3;
                     }
                 }
                 break;
             case 'email':
                 if (!is_email($value)) {
-                    $this->error[$name] = 'Поле заполнено некорректно';
+                    $this->error[$name] = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                     $this->errno[$name] = 1;
                 }
                 
@@ -1122,12 +1122,12 @@ class registration
                     require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/temp_email.php");
 
                     if (temp_email::isTempEmail($value)) {
-                        $this->error[$name] = 'К сожалению, регистрация аккаунта на указанный адрес электронной почты невозможна. Пожалуйста, для регистрации воспользуйтесь почтовым адресом другого домена';
+                        $this->error[$name] = 'Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, СЂРµРіРёСЃС‚СЂР°С†РёСЏ Р°РєРєР°СѓРЅС‚Р° РЅР° СѓРєР°Р·Р°РЅРЅС‹Р№ Р°РґСЂРµСЃ СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ РїРѕС‡С‚С‹ РЅРµРІРѕР·РјРѕР¶РЅР°. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РґР»СЏ СЂРµРіРёСЃС‚СЂР°С†РёРё РІРѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ РїРѕС‡С‚РѕРІС‹Рј Р°РґСЂРµСЃРѕРј РґСЂСѓРіРѕРіРѕ РґРѕРјРµРЅР°';
                         $this->errno[$name] = 2;
                     } else {
                         if ($DB->val("SELECT uid FROM users WHERE lower(email) = ?", strtolower($value))) {
                             if ($this->_disable_email_redirect) {
-                                $this->error[$name] = 'Email занят';
+                                $this->error[$name] = 'Email Р·Р°РЅСЏС‚';
                                 $this->errno[$name] = 3;
                             } else {
                                 require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/smail.php";
@@ -1144,19 +1144,19 @@ class registration
                 break;
             case 'smscode':
                 if ( $_SESSION['smsCode'] != $value  && !($value == 7777 && $_SESSION["reg_phone"] == 71111112222 && !is_release()) ) {
-                    $this->error[$name] = 'Неверный код';
+                    $this->error[$name] = 'РќРµРІРµСЂРЅС‹Р№ РєРѕРґ';
                 }
                 break;
             case 'phone':
                 if ( !$phone_is_set && $_SESSION["reg_phone"] != $value ) {
-                    $this->error[$name] = 'Вы подтвердили не этот номер';
+                    $this->error[$name] = 'Р’С‹ РїРѕРґС‚РІРµСЂРґРёР»Рё РЅРµ СЌС‚РѕС‚ РЅРѕРјРµСЂ';
                     $this->errno[$name] = 1;
                 }
                 
                 $sPhone = $phone_is_set ? $value : $_SESSION['reg_phone'];
                 
                 if ( trim( preg_replace("#[\D]#", "", $sPhone) ) == '' ) {
-                    $this->error[$name] = 'Необходимо ввести номер';
+                    $this->error[$name] = 'РќРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё РЅРѕРјРµСЂ';
                     $this->errno[$name] = 2;
                 }
                 break;
@@ -1176,7 +1176,7 @@ class registration
     }
     
     /**
-     * Вставлять в любое дествие в котором необходима заполненность данных со страницы registration/info.php
+     * Р’СЃС‚Р°РІР»СЏС‚СЊ РІ Р»СЋР±РѕРµ РґРµСЃС‚РІРёРµ РІ РєРѕС‚РѕСЂРѕРј РЅРµРѕР±С…РѕРґРёРјР° Р·Р°РїРѕР»РЅРµРЅРЅРѕСЃС‚СЊ РґР°РЅРЅС‹С… СЃРѕ СЃС‚СЂР°РЅРёС†С‹ registration/info.php
      * @example registration::access_action_site(); 
      */
     public function access_action_site($confirm = '') {
@@ -1204,7 +1204,7 @@ class registration
     }
     
     /**
-     * Генерирует ключ для записи данных
+     * Р“РµРЅРµСЂРёСЂСѓРµС‚ РєР»СЋС‡ РґР»СЏ Р·Р°РїРёСЃРё РґР°РЅРЅС‹С…
      * @return type 
      */
     public function genUKeyPost() {
@@ -1212,7 +1212,7 @@ class registration
     }
     
     /**
-     * Будем проверять заполнил ли пользователь фамилию и имя 
+     * Р‘СѓРґРµРј РїСЂРѕРІРµСЂСЏС‚СЊ Р·Р°РїРѕР»РЅРёР» Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ С„Р°РјРёР»РёСЋ Рё РёРјСЏ 
      */
     public function checkUserAccess($uid = false, $force = false) {
         if(isset($_SESSION['check_user_access']) && !$force) {
@@ -1221,7 +1221,7 @@ class registration
         
         $this->getInformationUser($uid);
         $this->checkedFields();
-        $this->error = array(); // Ошибки убираем они нас не интересуют тут
+        $this->error = array(); // РћС€РёР±РєРё СѓР±РёСЂР°РµРј РѕРЅРё РЅР°СЃ РЅРµ РёРЅС‚РµСЂРµСЃСѓСЋС‚ С‚СѓС‚
 
         $_SESSION['check_user_access'] = $this->is_validate;
         return $_SESSION['check_user_access'];
@@ -1268,7 +1268,7 @@ class registration
                 $this->access_action_site($this->access_action[$action]['confirm']);
             }
         } elseif($uri != '') {
-            // учитываем параметры в адресной строке
+            // СѓС‡РёС‚С‹РІР°РµРј РїР°СЂР°РјРµС‚СЂС‹ РІ Р°РґСЂРµСЃРЅРѕР№ СЃС‚СЂРѕРєРµ
             switch ($uri) {
                 case 'norisk2':
                     if ($_GET['site'] === 'create') {
@@ -1278,7 +1278,7 @@ class registration
                 default:
                     break;
             }
-            // Данную страницу мы проверяем на заполненность данных
+            // Р”Р°РЅРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ РјС‹ РїСЂРѕРІРµСЂСЏРµРј РЅР° Р·Р°РїРѕР»РЅРµРЅРЅРѕСЃС‚СЊ РґР°РЅРЅС‹С…
             if(isset($this->access_action_page[$uri])) {
                 $_SESSION['link_back'] = $_SERVER['REQUEST_URI'];
                 $confirm = $this->access_action_page[$uri]['confirm'];
@@ -1297,17 +1297,17 @@ class registration
     {
         $newuser = $this->fillData($data);
         
-        //Пробуем создавать
+        //РџСЂРѕР±СѓРµРј СЃРѕР·РґР°РІР°С‚СЊ
         $rerror = 0;
         $error = array(); 
         $newuser->uid = $newuser->Create($rerror, $error);
         if(!$newuser->uid) return FALSE;
 
-        //Высылаем приглашение без активации но с паролем
+        //Р’С‹СЃС‹Р»Р°РµРј РїСЂРёРіР»Р°С€РµРЅРёРµ Р±РµР· Р°РєС‚РёРІР°С†РёРё РЅРѕ СЃ РїР°СЂРѕР»РµРј
         $smail = new smail();
         $smail->NewUser($newuser->login, $this->_fields['password']);
         
-        //Обработать действия по событию успешной регистрации
+        //РћР±СЂР°Р±РѕС‚Р°С‚СЊ РґРµР№СЃС‚РІРёСЏ РїРѕ СЃРѕР±С‹С‚РёСЋ СѓСЃРїРµС€РЅРѕР№ СЂРµРіРёСЃС‚СЂР°С†РёРё
         $this->afterSuccessRegistation($newuser);
         
         return $newuser;   
@@ -1345,41 +1345,41 @@ class registration
     }
     
     /**
-     * Наполняем пользователя параметрами
+     * РќР°РїРѕР»РЅСЏРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїР°СЂР°РјРµС‚СЂР°РјРё
      * 
-     * @param array $data Параметры
-     * @return type Получившийся юзер
+     * @param array $data РџР°СЂР°РјРµС‚СЂС‹
+     * @return type РџРѕР»СѓС‡РёРІС€РёР№СЃСЏ СЋР·РµСЂ
      */
     public function fillData($data = array(), $only_generate = false) 
     {
-        //Мыло обязательно должно быть не свое же нам втыкать
+        //РњС‹Р»Рѕ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РЅРµ СЃРІРѕРµ Р¶Рµ РЅР°Рј РІС‚С‹РєР°С‚СЊ
         if(empty($data) || !isset($data['email']) || !strlen($data['email'])) return FALSE;
-        //Идем в обход меcтного свойства email так как оно при проверке редиректит
+        //РРґРµРј РІ РѕР±С…РѕРґ РјРµcС‚РЅРѕРіРѕ СЃРІРѕР№СЃС‚РІР° email С‚Р°Рє РєР°Рє РѕРЅРѕ РїСЂРё РїСЂРѕРІРµСЂРєРµ СЂРµРґРёСЂРµРєС‚РёС‚
         $email = $data['tmp_email'] = $data['email'];
         unset($data['email']);
-        //Обязательные поля которые можно сгенерировать
+        //РћР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ РєРѕС‚РѕСЂС‹Рµ РјРѕР¶РЅРѕ СЃРіРµРЅРµСЂРёСЂРѕРІР°С‚СЊ
         $_requred = array('login' => '', 'password' => '');
         $data = array_merge($_requred,$data);
         
         foreach($data as $key => &$value)
         {
-            //Генерируем пустые поля
+            //Р“РµРЅРµСЂРёСЂСѓРµРј РїСѓСЃС‚С‹Рµ РїРѕР»СЏ
             if(empty($value))
             {
                 switch($key)
                 {
                     case 'login':
-                        //По умолчанию логин генерируем из мыла
+                        //РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ Р»РѕРіРёРЅ РіРµРЅРµСЂРёСЂСѓРµРј РёР· РјС‹Р»Р°
                         $value = @current(explode("@",$email));
                         $value = preg_replace('/[^-a-zA-Z0-9_]/', '', $value);
-                        //Если совсем все плохо то генерируем случайно
+                        //Р•СЃР»Рё СЃРѕРІСЃРµРј РІСЃРµ РїР»РѕС…Рѕ С‚Рѕ РіРµРЅРµСЂРёСЂСѓРµРј СЃР»СѓС‡Р°Р№РЅРѕ
                         if(!strlen($value)) $value = substr(md5(uniqid(mt_rand(), true)), 12, 8);
                         break;
                 
                     case 'password':
                         $value = substr(md5(uniqid(mt_rand(), true)), 10, 10);
                         break;
-                    //Тут много еще чего можно генерировать но мне лень :)
+                    //РўСѓС‚ РјРЅРѕРіРѕ РµС‰Рµ С‡РµРіРѕ РјРѕР¶РЅРѕ РіРµРЅРµСЂРёСЂРѕРІР°С‚СЊ РЅРѕ РјРЅРµ Р»РµРЅСЊ :)
                 }
             }
             
@@ -1391,18 +1391,18 @@ class registration
 
         do
         {
-            //Проверяем поля
+            //РџСЂРѕРІРµСЂСЏРµРј РїРѕР»СЏ
             $this->error = array();
             $this->checkedFields();
             
             foreach($data as $key => $value)
             {
-                //Если у поля нет ошибки то збс
+                //Р•СЃР»Рё Сѓ РїРѕР»СЏ РЅРµС‚ РѕС€РёР±РєРё С‚Рѕ Р·Р±СЃ
                 if(!isset($this->error[$key])) continue;
-                //Иначе пробуем исправить
+                //РРЅР°С‡Рµ РїСЂРѕР±СѓРµРј РёСЃРїСЂР°РІРёС‚СЊ
                 switch($key)
                 {
-                    //Пробуем добавлять дату и верямя в конец
+                    //РџСЂРѕР±СѓРµРј РґРѕР±Р°РІР»СЏС‚СЊ РґР°С‚Сѓ Рё РІРµСЂСЏРјСЏ РІ РєРѕРЅРµС†
                     /*
                     case 'login':
                         $len = 8;
@@ -1420,7 +1420,7 @@ class registration
                         break;
                     */
                     
-                    //Добавляем циферки попорядку
+                    //Р”РѕР±Р°РІР»СЏРµРј С†РёС„РµСЂРєРё РїРѕРїРѕСЂСЏРґРєСѓ
                     case 'login':
                         $suffix = $try_cnt <=15 ? rand(1, 999) : rand(1000, 99999);
                         $len = 15 - strlen($suffix);
@@ -1429,7 +1429,7 @@ class registration
                         $this->setFieldInfo($key, $new_login);
                         break;
                     
-                    //Если ошибки в именах то убиваем поля и без них прокатит
+                    //Р•СЃР»Рё РѕС€РёР±РєРё РІ РёРјРµРЅР°С… С‚Рѕ СѓР±РёРІР°РµРј РїРѕР»СЏ Рё Р±РµР· РЅРёС… РїСЂРѕРєР°С‚РёС‚
                     case 'uname':
                     case 'usurname':
                         $this->unsetField($key);
@@ -1441,21 +1441,21 @@ class registration
         }
         while(!$this->is_validate && $try_cnt < 20);
         
-        //Мы перепробывали все аж столько раз 
-        //ничего не помогат, это не исправить, выходим)
+        //РњС‹ РїРµСЂРµРїСЂРѕР±С‹РІР°Р»Рё РІСЃРµ Р°Р¶ СЃС‚РѕР»СЊРєРѕ СЂР°Р· 
+        //РЅРёС‡РµРіРѕ РЅРµ РїРѕРјРѕРіР°С‚, СЌС‚Рѕ РЅРµ РёСЃРїСЂР°РІРёС‚СЊ, РІС‹С…РѕРґРёРј)
         if ($try_cnt >= 20 || $only_generate) {
             return FALSE;
         }
         
         
         
-        //@todo: здесь некорректно понимается параметр роли в этом классе значения 1/2 а в users уже 0/1
-        //@todo: поэтому необходимо внести правки начиная с функции анонимной публикации чего-либо
+        //@todo: Р·РґРµСЃСЊ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ РїРѕРЅРёРјР°РµС‚СЃСЏ РїР°СЂР°РјРµС‚СЂ СЂРѕР»Рё РІ СЌС‚РѕРј РєР»Р°СЃСЃРµ Р·РЅР°С‡РµРЅРёСЏ 1/2 Р° РІ users СѓР¶Рµ 0/1
+        //@todo: РїРѕСЌС‚РѕРјСѓ РЅРµРѕР±С…РѕРґРёРјРѕ РІРЅРµСЃС‚Рё РїСЂР°РІРєРё РЅР°С‡РёРЅР°СЏ СЃ С„СѓРЅРєС†РёРё Р°РЅРѕРЅРёРјРЅРѕР№ РїСѓР±Р»РёРєР°С†РёРё С‡РµРіРѕ-Р»РёР±Рѕ
         $class_name = (isset($this->role) && $this->role == 0)?'freelancer':'employer';
         $newuser = new $class_name();
         $keys = array_keys($data);
         
-        //Последнии приготовления
+        //РџРѕСЃР»РµРґРЅРёРё РїСЂРёРіРѕС‚РѕРІР»РµРЅРёСЏ
         foreach($keys as $key)
         {
             $class_prop = $key;
@@ -1469,7 +1469,7 @@ class registration
                 case 'password':
                     $class_prop = 'passwd';
                     break;
-                //email проходит без проверок до самого класса юзера
+                //email РїСЂРѕС…РѕРґРёС‚ Р±РµР· РїСЂРѕРІРµСЂРѕРє РґРѕ СЃР°РјРѕРіРѕ РєР»Р°СЃСЃР° СЋР·РµСЂР°
                 case 'tmp_email':
                     $class_prop = 'email';
                     break;
@@ -1484,7 +1484,7 @@ class registration
     
     
     /**
-     * Метод вызывается после успешной регистации
+     * РњРµС‚РѕРґ РІС‹Р·С‹РІР°РµС‚СЃСЏ РїРѕСЃР»Рµ СѓСЃРїРµС€РЅРѕР№ СЂРµРіРёСЃС‚Р°С†РёРё
      */
     protected function afterSuccessRegistation($newuser)
     {
@@ -1494,7 +1494,7 @@ class registration
 
         $_SESSION['reg_role'] = (is_emp($newuser->role))?'customer':'freelancer';
         
-        //Отправить в очередь события регистрации для GA
+        //РћС‚РїСЂР°РІРёС‚СЊ РІ РѕС‡РµСЂРµРґСЊ СЃРѕР±С‹С‚РёСЏ СЂРµРіРёСЃС‚СЂР°С†РёРё РґР»СЏ GA
         require_once(ABS_PATH . '/classes/statistic/StatisticFactory.php');
         require_once(ABS_PATH . '/classes/users.php');
         

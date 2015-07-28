@@ -1,4 +1,4 @@
-<? // !!! объединить в шаблоны ?>
+<? // !!! РѕР±СЉРµРґРёРЅРёС‚СЊ РІ С€Р°Р±Р»РѕРЅС‹ ?>
 <?php $anchor_unread = 0; ?>
 <script type="text/javascript">
 var SBR = new Sbr();
@@ -17,11 +17,11 @@ var SBR = new Sbr();
     ?>
         <div class="nr-list-items" id="<?=$sbrss_classes[$status][0]?>">
             <div class="flt-bar">
-                <a href="javascript:void(0);" class="flt-tgl-lnk" id="sssw<?=$status?>" onclick="SBR.hideStatusBox(this,<?=$status?>)"><?=($is_hidden ? 'Показать' : 'Скрыть')?></a>
+                <a href="javascript:void(0);" class="flt-tgl-lnk" id="sssw<?=$status?>" onclick="SBR.hideStatusBox(this,<?=$status?>)"><?=($is_hidden ? 'РџРѕРєР°Р·Р°С‚СЊ' : 'РЎРєСЂС‹С‚СЊ')?></a>
                 <h3><?=$sbrss_classes[$status][1]?> (<?=count($sbrs)?>)</h3>
             </div>
             <div id="ssbox<?=$status?>"<?=($is_hidden ? ' style="display:none"' : '')?>>
-                <!-- Проект -->
+                <!-- РџСЂРѕРµРєС‚ -->
                 <? foreach($sbrs as $id=>$curr_sbr) { ?>
                     <a name="s<?=$id?>" id="s<?=$id?>"></a>
                     <div class="form nr-prj">
@@ -38,7 +38,7 @@ var SBR = new Sbr();
                                                 
                                                 <a href="/users/<?=$curr_sbr->data[$curr_sbr->apfx.'login']?>/" class="freelancer-name"><?=($curr_sbr->data[$curr_sbr->apfx.'uname'].' '.$curr_sbr->data[$curr_sbr->apfx.'usurname'].' ['.$curr_sbr->data[$curr_sbr->apfx.'login'].']')?></a><?=view_mark_user($curr_sbr->data, $curr_sbr->apfx)?>&nbsp;<?=$session->view_online_status($curr_sbr->data[$curr_sbr->apfx.'login'], false, '&nbsp;', $activity)?>
                                                 <?/*<div class="nr-prj-u-s">
-                                                    <?=($activity ? ' Сейчас на сайте' : 'Нет на сайте')?>
+                                                    <?=($activity ? ' РЎРµР№С‡Р°СЃ РЅР° СЃР°Р№С‚Рµ' : 'РќРµС‚ РЅР° СЃР°Р№С‚Рµ')?>
                                                 </div>*/ ?>
                                             </div>
                                         </div>
@@ -48,7 +48,7 @@ var SBR = new Sbr();
                                     <h4 class="nr-prj-title"><a href="?id=<?=$id?>" class="inherit"><?=reformat($curr_sbr->data['name'], 35, 0, 1)?></a></h4>
                                 </div>
                                 <div class="nr-prj-created">
-                                    <strong>#<?=$id?></strong> Проект создан: <?=$MONTHS[date('n', $t = strtotime($curr_sbr->data['posted']))].date(' j, Y', $t)?>
+                                    <strong>#<?=$id?></strong> РџСЂРѕРµРєС‚ СЃРѕР·РґР°РЅ: <?=$MONTHS[date('n', $t = strtotime($curr_sbr->data['posted']))].date(' j, Y', $t)?>
                                 </div>
                                 <div class="nr-tbl-inf nr-tbl-inf-list">
                                     <b class="b1"></b>
@@ -69,7 +69,7 @@ var SBR = new Sbr();
                                                     <?php if ($stage->data['unread_msgs_count']): ?>
                                                     <?php $anchor_unread = ( $anchor_unread ) ? $anchor_unread : $stage->sbr->data['id'] ?>
                                                     <div class="nr-mn">
-														<a href="/norisk2/?site=Stage&id=<?=$stage->data['id']?>#c_<?=$stage->data['unread_first_id']?>" class="lnk-green"><?=$stage->data['unread_msgs_count']?> <?=ending($stage->data['unread_msgs_count'], 'новый комментарий', 'новых комментария', 'новых комментариев')?></a>
+														<a href="/norisk2/?site=Stage&id=<?=$stage->data['id']?>#c_<?=$stage->data['unread_first_id']?>" class="lnk-green"><?=$stage->data['unread_msgs_count']?> <?=ending($stage->data['unread_msgs_count'], 'РЅРѕРІС‹Р№ РєРѕРјРјРµРЅС‚Р°СЂРёР№', 'РЅРѕРІС‹С… РєРѕРјРјРµРЅС‚Р°СЂРёСЏ', 'РЅРѕРІС‹С… РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ')?></a>
 													</div>
                                                     <?php endif; ?>
                                                 </td>
@@ -77,21 +77,21 @@ var SBR = new Sbr();
                                                 <td colspan="3" class="nr-ch">
                                                     <div class="nr-ch-info">
                                                         <div>
-                                                            Исполнитель отказался от новых условий<?=(trim($stage->data['frl_refuse_reason']) ? ' (причина в задаче)' : ' без указания причины')?>.
+                                                            РСЃРїРѕР»РЅРёС‚РµР»СЊ РѕС‚РєР°Р·Р°Р»СЃСЏ РѕС‚ РЅРѕРІС‹С… СѓСЃР»РѕРІРёР№<?=(trim($stage->data['frl_refuse_reason']) ? ' (РїСЂРёС‡РёРЅР° РІ Р·Р°РґР°С‡Рµ)' : ' Р±РµР· СѓРєР°Р·Р°РЅРёСЏ РїСЂРёС‡РёРЅС‹')?>.
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <? } else { ?>
                                                     <td class="nr-td-budjet" title="<?=$EXRATE_CODES[$curr_sbr->cost_sys][0]?>"><b class="rd24 rd24-<?=($curr_sbr->data['reserved_id'] ? 'grn' : 'red')?>"><b class="btn-lc"><b class="btn-m"><b class="btn-txt"><?=sbr_meta::view_cost($stage->data['cost'], $curr_sbr->cost_sys)?></b></b></b></b></td>
                                                     <? if($stage->status == sbr_stages::STATUS_COMPLETED || $stage->status == sbr_stages::STATUS_ARBITRAGED) { ?>
-                                                      <td><?=$stage->data['work_days']?> <?=ending(abs($stage->data['work_days']), 'день', 'дня', 'дней')?></td>
+                                                      <td><?=$stage->data['work_days']?> <?=ending(abs($stage->data['work_days']), 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№')?></td>
                                                     <? } else { ?>
-                                                      <td<?=($stage->data['work_rem'] < 0 ? ' class="nr-day-red"' : '')?>><?=$stage->data['work_rem']?> <?=ending(abs($stage->data['work_rem']), 'день', 'дня', 'дней')?></td>
+                                                      <td<?=($stage->data['work_rem'] < 0 ? ' class="nr-day-red"' : '')?>><?=$stage->data['work_rem']?> <?=ending(abs($stage->data['work_rem']), 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№')?></td>
                                                     <? } ?>
                                                     <td class="last">
                                                         <b class="rd24 rd24-<?=sbr_stages::$ss_classes[$stage->data['status']][0]?>"><b class="btn-lc"><b class="btn-m"><b class="btn-txt"><?=sbr_stages::$ss_classes[$stage->data['status']][1]?></b></b></b></b>
                                                         <? if(($ain=$stage->status == sbr_stages::STATUS_INARBITRAGE) || $stage->status == sbr_stages::STATUS_ARBITRAGED) { ?>
-                                                          <span class="lnk-arb"><a href="javascript:;" onclick="SBR.getArbDescr(<?=$curr_sbr->id?>, <?=$stage->id?>)"><?=$ain ? 'Информация' : 'Решение Арбитража'?></a></span>
+                                                          <span class="lnk-arb"><a href="javascript:;" onclick="SBR.getArbDescr(<?=$curr_sbr->id?>, <?=$stage->id?>)"><?=$ain ? 'РРЅС„РѕСЂРјР°С†РёСЏ' : 'Р РµС€РµРЅРёРµ РђСЂР±РёС‚СЂР°Р¶Р°'?></a></span>
                                                         <? } ?>
                                                     </td>
                                                 <? } ?>
@@ -105,20 +105,20 @@ var SBR = new Sbr();
                                 <form action="?id=<?=$id?>" method="post" id="currentsFrm<?=$id?>">
                                     <? if(!$curr_sbr->reserved_id && ($curr_sbr->status == sbr::STATUS_PROCESS || $curr_sbr->status == sbr::STATUS_CHANGED)) { ?>
                                         <div class="nr-cancel-reason c" style="background: #FFCCCC">
-                                            <p>Исполнитель приступит к работе только <b>после резервирования денежных средств</b>. Пожалуйста, перейдите в задачу и произведите резервирование денежных средств.</p>
+                                            <p>РСЃРїРѕР»РЅРёС‚РµР»СЊ РїСЂРёСЃС‚СѓРїРёС‚ Рє СЂР°Р±РѕС‚Рµ С‚РѕР»СЊРєРѕ <b>РїРѕСЃР»Рµ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ</b>. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРµСЂРµР№РґРёС‚Рµ РІ Р·Р°РґР°С‡Сѓ Рё РїСЂРѕРёР·РІРµРґРёС‚Рµ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ.</p>
                                         </div>
                                     <? } ?>
 
                                     <? /* if($sbr->error[$curr_sbr->data['id']]['canceled']) { ?>
                                         <div class="nr-cancel-reason c">
-                                            <p>К сожалению вы не можете отменить проект, исполнитель только что принял условия и ожидает резервирования денег.<br />Для резерваци перейдите в задачу проекта, если вы настаиваете на отказе от проекта, обратитесь в Арбитраж (зайдите в задачу).</p>
+                                            <p>Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ РІС‹ РЅРµ РјРѕР¶РµС‚Рµ РѕС‚РјРµРЅРёС‚СЊ РїСЂРѕРµРєС‚, РёСЃРїРѕР»РЅРёС‚РµР»СЊ С‚РѕР»СЊРєРѕ С‡С‚Рѕ РїСЂРёРЅСЏР» СѓСЃР»РѕРІРёСЏ Рё РѕР¶РёРґР°РµС‚ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ РґРµРЅРµРі.<br />Р”Р»СЏ СЂРµР·РµСЂРІР°С†Рё РїРµСЂРµР№РґРёС‚Рµ РІ Р·Р°РґР°С‡Сѓ РїСЂРѕРµРєС‚Р°, РµСЃР»Рё РІС‹ РЅР°СЃС‚Р°РёРІР°РµС‚Рµ РЅР° РѕС‚РєР°Р·Рµ РѕС‚ РїСЂРѕРµРєС‚Р°, РѕР±СЂР°С‚РёС‚РµСЃСЊ РІ РђСЂР±РёС‚СЂР°Р¶ (Р·Р°Р№РґРёС‚Рµ РІ Р·Р°РґР°С‡Сѓ).</p>
                                         </div>
                                     <? } */ ?>
                                     <? if($status == sbr::STATUS_NEW || (!$curr_sbr->reserved_id && $status != sbr::STATUS_CANCELED && $status != sbr::STATUS_REFUSED && $status != sbr::STATUS_COMPLETED)) { ?>
                                                 <div class="nr-prj-btns c">
                                                     <div class="btn-margin">
                                                         <span class="btn-o-red">
-                                                            <a href="javascript:;" onclick="SBR.submitLock(document.getElementById('currentsFrm<?=$id?>'),{cancel:1})" class="btnr btnr-red"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Отменить</span></span></span></a>
+                                                            <a href="javascript:;" onclick="SBR.submitLock(document.getElementById('currentsFrm<?=$id?>'),{cancel:1})" class="btnr btnr-red"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РћС‚РјРµРЅРёС‚СЊ</span></span></span></a>
                                                             <input type="hidden" name="cancel" value="" />
                                                         </span>
                                                     </div>
@@ -127,13 +127,13 @@ var SBR = new Sbr();
                                     <? if($status == sbr::STATUS_REFUSED || $status == sbr::STATUS_CANCELED) { ?>
                                         <div class="nr-cancel-reason c">
                                             <strong>
-                                                <?=($status == sbr::STATUS_CANCELED ? 'Вы отменили сделку' : ($curr_sbr->data['frl_refuse_reason'] ? reformat($curr_sbr->data['frl_refuse_reason'], 79, 0, 1, 1) : 'Причина отказа не указана.'))?>
+                                                <?=($status == sbr::STATUS_CANCELED ? 'Р’С‹ РѕС‚РјРµРЅРёР»Рё СЃРґРµР»РєСѓ' : ($curr_sbr->data['frl_refuse_reason'] ? reformat($curr_sbr->data['frl_refuse_reason'], 79, 0, 1, 1) : 'РџСЂРёС‡РёРЅР° РѕС‚РєР°Р·Р° РЅРµ СѓРєР°Р·Р°РЅР°.'))?>
                                             </strong>
                                         </div>
                                         <div class="nr-prj-btns c">
                                             <div class="btn-margin">
                                                 <span class="btn-o-green">
-                                                    <a href="/norisk2/?site=edit&id=<?=$id?>" class="btnr btnr-green2"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Изменить условия</span></span></span></a>
+                                                    <a href="/norisk2/?site=edit&id=<?=$id?>" class="btnr btnr-green2"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РР·РјРµРЅРёС‚СЊ СѓСЃР»РѕРІРёСЏ</span></span></span></a>
                                                     <input type="hidden" name="resend" value="" />
                                                 </span>
                                             </div>
@@ -148,7 +148,7 @@ var SBR = new Sbr();
                         <b class="b1"></b>
                     </div>
                     <div id="arb_descr_box<?=$curr_sbr->id?>" class="arb_descr_box"></div>
-                    <!-- конец Проект -->
+                    <!-- РєРѕРЅРµС† РџСЂРѕРµРєС‚ -->
                 <? } ?>
             </div>
         </div>

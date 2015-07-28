@@ -64,15 +64,15 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
 	$xajax->printJavascript('/xajax/');
 
 
-    // такая же есть в view_cnt.php, user/journal_inner.php и xajax/banned.server.php
+    // С‚Р°РєР°СЏ Р¶Рµ РµСЃС‚СЊ РІ view_cnt.php, user/journal_inner.php Рё xajax/banned.server.php
     function BlockedThreadHTML($reason, $date, $moder_login='', $moder_name='') {
         return "
             <div class='br-moderation-options'>
-                <a href='/help/?all' class='lnk-feedback' style='color: #fff;'>Служба поддержки</a>
-                <div class='br-mo-status'><strong>Топик заблокирован.</strong> Причина: ".str_replace("\n", "<br />", $reason)."</div>
+                <a href='/help/?all' class='lnk-feedback' style='color: #fff;'>РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё</a>
+                <div class='br-mo-status'><strong>РўРѕРїРёРє Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ.</strong> РџСЂРёС‡РёРЅР°: ".str_replace("\n", "<br />", $reason)."</div>
                 <p class='br-mo-info'>".
-                ($moder_login? "Заблокировал: <a href='/users/$moder_login' style='color: #FF6B3D'>$moder_name [$moder_login]</a><br />": '').
-                "Дата блокировки: ".dateFormat('d.m.Y H:i', $date)."</p>
+                ($moder_login? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°Р»: <a href='/users/$moder_login' style='color: #FF6B3D'>$moder_name [$moder_login]</a><br />": '').
+                "Р”Р°С‚Р° Р±Р»РѕРєРёСЂРѕРІРєРё: ".dateFormat('d.m.Y H:i', $date)."</p>
             </div>
         ";
     }
@@ -85,9 +85,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
     <td align="left"><?php
             $crumbs = array();
             if(!$gr) {
-                $crumbs[] = array("title"=>"Блоги", "url"=>"");
+                $crumbs[] = array("title"=>"Р‘Р»РѕРіРё", "url"=>"");
             } else {
-                $crumbs[] = array("title"=>"Блоги", "url"=>"/blogs/");
+                $crumbs[] = array("title"=>"Р‘Р»РѕРіРё", "url"=>"/blogs/");
                 $crumbs[] = array("title"=>$gr_name, "url"=>"");
             }
             ?>
@@ -95,19 +95,19 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
         <?=getCrumbs($crumbs)?>
       </div></td>
     <td align="right"><? seo_start();?>
-      <a class="b-button b-button_round_green b-button_float_right" onclick="return resetBlogForm()" href="<?=($_SESSION['login']? '#bottom': '/fbd.php')?>"><span class="b-button__b1"><span class="b-button__b2"><span class="b-button__txt">Написать сообщение</span></span></span></a>
+      <a class="b-button b-button_round_green b-button_float_right" onclick="return resetBlogForm()" href="<?=($_SESSION['login']? '#bottom': '/fbd.php')?>"><span class="b-button__b1"><span class="b-button__b2"><span class="b-button__txt">РќР°РїРёСЃР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ</span></span></span></a>
       <?= seo_end();?></td>
   </tr>
 </table>
 <div class="b-menu b-menu_tabs">
   <ul class="b-menu__list b-menu__list_overflow_hidden b-menu__list_padleft_28ps">
-    <li class="b-menu__item <?php  ($ord != "best" && $ord != "my" && $ord != "relevant" && $ord != "favs") ? print 'b-menu__item_active': print '';?>"> <a class="b-menu__link" href="<?php print $href. ($sHref ? '&' : '?').'ord=new' ?>" title="Новые"> <span class="b-menu__b1">Новые</span> </a> </li>
+    <li class="b-menu__item <?php  ($ord != "best" && $ord != "my" && $ord != "relevant" && $ord != "favs") ? print 'b-menu__item_active': print '';?>"> <a class="b-menu__link" href="<?php print $href. ($sHref ? '&' : '?').'ord=new' ?>" title="РќРѕРІС‹Рµ"> <span class="b-menu__b1">РќРѕРІС‹Рµ</span> </a> </li>
     <? seo_start();?>
-    <li class="b-menu__item <?php  ($ord == "best") ? print 'b-menu__item_active': print '';?>"> <a class="b-menu__link" href="<?php print  $href.($sHref ? '&' : '?').'ord=best' ?>" title="Популярные"> <span class="b-menu__b1">Популярные</span> </a> </li>
-    <li class="b-menu__item <?php  ($ord == "relevant") ? print 'b-menu__item_active': print '';?>"> <a class="b-menu__link" href="<?php print  $href.($sHref ? '&' : '?').'ord=relevant' ?>" title="Актуальные"> <span class="b-menu__b1">Актуальные</span> </a> </li>
+    <li class="b-menu__item <?php  ($ord == "best") ? print 'b-menu__item_active': print '';?>"> <a class="b-menu__link" href="<?php print  $href.($sHref ? '&' : '?').'ord=best' ?>" title="РџРѕРїСѓР»СЏСЂРЅС‹Рµ"> <span class="b-menu__b1">РџРѕРїСѓР»СЏСЂРЅС‹Рµ</span> </a> </li>
+    <li class="b-menu__item <?php  ($ord == "relevant") ? print 'b-menu__item_active': print '';?>"> <a class="b-menu__link" href="<?php print  $href.($sHref ? '&' : '?').'ord=relevant' ?>" title="РђРєС‚СѓР°Р»СЊРЅС‹Рµ"> <span class="b-menu__b1">РђРєС‚СѓР°Р»СЊРЅС‹Рµ</span> </a> </li>
     <? if (get_uid(0)) { ?>
-    <li class="b-menu__item <?php  ($ord == "my") ? print 'b-menu__item_active': print '';?>"> <a class="b-menu__link" href="<?php print  $href.($sHref ? '&' : '?').'ord=my' ?>" title="Мои"> <span class="b-menu__b1">Мои</span> </a> </li>
-    <li class="b-menu__item b-menu__item_last <?php  ($ord == "favs") ? print 'b-menu__item_active': print '';?>"> <a class="b-menu__link" href="<?php print  $href.($sHref ? '&' : '?').'ord=favs' ?>" title="Закладки"> <span class="b-menu__b1">Закладки</span> </a> </li>
+    <li class="b-menu__item <?php  ($ord == "my") ? print 'b-menu__item_active': print '';?>"> <a class="b-menu__link" href="<?php print  $href.($sHref ? '&' : '?').'ord=my' ?>" title="РњРѕРё"> <span class="b-menu__b1">РњРѕРё</span> </a> </li>
+    <li class="b-menu__item b-menu__item_last <?php  ($ord == "favs") ? print 'b-menu__item_active': print '';?>"> <a class="b-menu__link" href="<?php print  $href.($sHref ? '&' : '?').'ord=favs' ?>" title="Р—Р°РєР»Р°РґРєРё"> <span class="b-menu__b1">Р—Р°РєР»Р°РґРєРё</span> </a> </li>
     <? } ?>
     <?= seo_end();?>
   </ul>
@@ -120,30 +120,30 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
     <?php $href   = getFriendlyURL("blog_group", $gr).'?'.($base ? "&t=prof" : "").'&ord=my';?>
     <ul class="tabs-sort-nav">
       <?php if ( $sub_ord == 'my_all' ): ?>
-      <li class="active">Все</li>
+      <li class="active">Р’СЃРµ</li>
       <?php else: ?>
-      <li><a href="<?=$href?>&sub_ord=my_all" class="lnk-dot-666">Все</a></li>
+      <li><a href="<?=$href?>&sub_ord=my_all" class="lnk-dot-666">Р’СЃРµ</a></li>
       <?php endif; ?>
       <?php if ( $sub_ord == 'my_posts' ): ?>
-      <li class="active">Посты</li>
+      <li class="active">РџРѕСЃС‚С‹</li>
       <?php else: ?>
-      <li><a href="<?=$href?>&sub_ord=my_posts" class="lnk-dot-666">Посты</a></li>
+      <li><a href="<?=$href?>&sub_ord=my_posts" class="lnk-dot-666">РџРѕСЃС‚С‹</a></li>
       <?php endif; ?>
       <?php if ( $sub_ord == 'my_comments' ): ?>
-      <li class="active">Комментарии</li>
+      <li class="active">РљРѕРјРјРµРЅС‚Р°СЂРёРё</li>
       <?php else: ?>
-      <li><a href="<?=$href?>&sub_ord=my_comments" class="lnk-dot-666">Комментарии</a></li>
+      <li><a href="<?=$href?>&sub_ord=my_comments" class="lnk-dot-666">РљРѕРјРјРµРЅС‚Р°СЂРёРё</a></li>
       <?php endif; ?>
     </ul>
     <?php elseif ( $ord == 'favs' ): ?>
     <?php /*$href = getFriendlyURL("blog_group", $gr).'?'.($base ? "&t=prof" : "").'&ord=favs';*/ ?>
         <div class="b-layout__txt b-layout__txt_float_right b-layout__txt_width_225">
-        	<span class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_2">Упорядочить:</span>
+        	<span class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_2">РЈРїРѕСЂСЏРґРѕС‡РёС‚СЊ:</span>
          <div class="b-select b-select_width_140 b-select_float_right">
       <select id="sel_blogs_favs_sort" class="b-select__select" name="sel_blogs_favs_sort" onchange="window.location='/blogs/viewgroup.php/?ord=<?=$ord?>&order='+this.value+'&grname=<?=strtolower(translit($gr_name)) ?>';">
-        <option value="date" <?php echo (! $order || $order == 'date') ? ' selected="selected"' : ''?>>по дате добавления</option>
-        <option value="priority" <?php echo ($order == 'priority') ? ' selected="selected"' : ''?>>по важности</option>
-        <option value="abc" <?php echo ($order == 'abc') ? ' selected="selected"' : ''?>>по алфавиту</option>
+        <option value="date" <?php echo (! $order || $order == 'date') ? ' selected="selected"' : ''?>>РїРѕ РґР°С‚Рµ РґРѕР±Р°РІР»РµРЅРёСЏ</option>
+        <option value="priority" <?php echo ($order == 'priority') ? ' selected="selected"' : ''?>>РїРѕ РІР°Р¶РЅРѕСЃС‚Рё</option>
+        <option value="abc" <?php echo ($order == 'abc') ? ' selected="selected"' : ''?>>РїРѕ Р°Р»С„Р°РІРёС‚Сѓ</option>
       </select>
       </div>
     </div>
@@ -154,14 +154,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
             ?>
     <ul class="tabs-sort-nav">
       <?php if ( $sub_ord == 'favs_std' ): ?>
-      <li class="active">Стандартный</li>
+      <li class="active">РЎС‚Р°РЅРґР°СЂС‚РЅС‹Р№</li>
       <?php else: ?>
-      <li><a href="<?=$href?>&sub_ord=favs_std" class="lnk-dot-666">Стандартный</a></li>
+      <li><a href="<?=$href?>&sub_ord=favs_std" class="lnk-dot-666">РЎС‚Р°РЅРґР°СЂС‚РЅС‹Р№</a></li>
       <?php endif; ?>
       <?php if ( $sub_ord == 'favs_list' ): ?>
-      <li class="active">Списком</li>
+      <li class="active">РЎРїРёСЃРєРѕРј</li>
       <?php else: ?>
-      <li><a href="<?=$href?>&sub_ord=favs_list" class="lnk-dot-666">Списком</a></li>
+      <li><a href="<?=$href?>&sub_ord=favs_list" class="lnk-dot-666">РЎРїРёСЃРєРѕРј</a></li>
       <?php endif; ?>
     </ul>
     <?php endif; ?>
@@ -222,12 +222,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
                         if ($theme['deluser_id'] == $theme['fromuser_id']) { 
                             if (!hasPermissions('blogs')) echo "<br /><br />"; 
                         ?>
-          Комментарий удален автором
+          РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ Р°РІС‚РѕСЂРѕРј
           <?=date("[d.m.Y | H:i]",strtotimeEx($theme['deleted'])); 
                         }
                         else { 
                             if (!hasPermissions('blogs')) echo "<br /><br />"; ?>
-          Комментарий удален модератором
+          РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ РјРѕРґРµСЂР°С‚РѕСЂРѕРј
           <? 
                             if (!$mod) { ?>
           (
@@ -244,10 +244,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
           &nbsp; &nbsp;
           <?
                             if (!$theme['modified_id'] || $theme['modified_id'] == $theme['fromuser_id']) { ?>
-          [внесены изменения:
+          [РІРЅРµСЃРµРЅС‹ РёР·РјРµРЅРµРЅРёСЏ:
           <?=date("d.m.Y | H:i]",strtotimeEx($theme['modified'])); }
                             else {?>
-          Отредактировано модератором
+          РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј
           <? if (!$mod) { ?>
           (
           <? $mod_user = $user->GetName($theme['modified_id'], $err); print($mod_user['login'] . ' : ' . $mod_user['usurname'] . ' ' . $mod_user['uname']); ?>
@@ -260,7 +260,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
                         
                         if ($theme['is_banned']  && hasPermissions('blogs')) {
                             ?>
-          <font color="#000000"><b>Пользователь забанен.</b></font>
+          <font color="#000000"><b>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°Р±Р°РЅРµРЅ.</b></font>
           <?
                         }
                     }
@@ -276,7 +276,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
                 
                 if ($theme['is_banned']  && !hasPermissions('blogs')) {
                     ?>
-        Ответ от заблокированного пользователя
+        РћС‚РІРµС‚ РѕС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
         <?
                 }
                 else {
@@ -320,40 +320,40 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
                             if ((!$theme['deleted'] && !$theme['is_banned']) && !$theme['is_blocked']) {	//|| hasPermissions('blogs')
                                 $del_allow = $gr_base == 101 ? ($theme['login'] == $_SESSION['login'] || hasPermissions('blogs')) : $allow_del;
                                 if (($theme['login'] == $_SESSION['login'] || $del_allow || !$mod) && (!$post_only || !$mod)) { ?>
-              <a href="<?=htmlspecialchars($_SERVER['PHP_SELF']."?".$clearQueryStrOpen)?>&amp;id=<?=$theme['id']?>&amp;action=delete&ord=<?=htmlspecialchars($_GET["ord"])?>&u_token_key=<?=$_SESSION['rand']?>&r=1" style="color: #D75A29;" onclick="return warning(1);">Удалить</a> |
+              <a href="<?=htmlspecialchars($_SERVER['PHP_SELF']."?".$clearQueryStrOpen)?>&amp;id=<?=$theme['id']?>&amp;action=delete&ord=<?=htmlspecialchars($_GET["ord"])?>&u_token_key=<?=$_SESSION['rand']?>&r=1" style="color: #D75A29;" onclick="return warning(1);">РЈРґР°Р»РёС‚СЊ</a> |
               <? } if (($theme['login'] == $_SESSION['login'] || !$mod || hasPermissions('blogs')) && (!$post_only || !$mod)) {?>
-              <a href="<?=getFriendlyURL('blog_group', $gr)?>?action=edit&amp;tr=<?=$theme['id']?><?=($page>1?'&amp;page='.$page:'')?>&amp;t=<?=$t?>&ord=<?=$ord?>#edit" style="color: #D75A29;">Редактировать</a> | 
+              <a href="<?=getFriendlyURL('blog_group', $gr)?>?action=edit&amp;tr=<?=$theme['id']?><?=($page>1?'&amp;page='.$page:'')?>&amp;t=<?=$t?>&ord=<?=$ord?>#edit" style="color: #D75A29;">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> | 
               <!--
-                                <a href="<?=($gr_base == 101 ? $form_uri.'&' : '?')?>gr=<?=$gr?>&tr=<?=$theme['id']?>&amp;action=edit&page=<?=htmlspecialchars($_GET["page"])?>&ord=<?=htmlspecialchars($_GET["ord"])?>" style="color: #D75A29;">Редактировать</a> |
+                                <a href="<?=($gr_base == 101 ? $form_uri.'&' : '?')?>gr=<?=$gr?>&tr=<?=$theme['id']?>&amp;action=edit&page=<?=htmlspecialchars($_GET["page"])?>&ord=<?=htmlspecialchars($_GET["ord"])?>" style="color: #D75A29;">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> |
                                 -->
               
               <? } ?>
               <? if ($form_uri != "/payed/") { ?>
               <?/*if (!$theme['closed_comments'] && !$theme['is_blocked']){ ?>
-                                <a <?if ($_SESSION["login"]){?> href="javascript: void(0);" onclick="javascript:answer(<?=$theme['id']?>,'', '<?=get_login($uid)?>'); document.getElementById('frm').olduser.value = '<?=$uid?>'; document.getElementById('frm').scrollIntoView(true);" <?}else{?>href="/fbd.php"<?}?> style="color: #D75A29">Комментировать</a> |
+                                <a <?if ($_SESSION["login"]){?> href="javascript: void(0);" onclick="javascript:answer(<?=$theme['id']?>,'', '<?=get_login($uid)?>'); document.getElementById('frm').olduser.value = '<?=$uid?>'; document.getElementById('frm').scrollIntoView(true);" <?}else{?>href="/fbd.php"<?}?> style="color: #D75A29">РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ</a> |
                                 <? }*/ ?>
               <? } ?>
-              <a href="<?=getFriendlyURL("blog", $theme['thread_id'])."?openlevel=".$theme['id'].$ord_get_part."#o".$theme['id']?>" style="color: #D75A29">Ссылка</a>
+              <a href="<?=getFriendlyURL("blog", $theme['thread_id'])."?openlevel=".$theme['id'].$ord_get_part."#o".$theme['id']?>" style="color: #D75A29">РЎСЃС‹Р»РєР°</a>
               <?
                             }
                             else if ($theme['deleted']) {	 ?>
-              <a href="<?=htmlspecialchars($_SERVER['PHP_SELF'])."?".htmlspecialchars($clearQueryStrOpen)?>&amp;id=<?=$theme['id']?>&amp;action=restore&ord=<?=htmlspecialchars($_GET["ord"])?>&r=1" style="color: #D75A29;" onclick="return warning(1);">Вернуть</a>
+              <a href="<?=htmlspecialchars($_SERVER['PHP_SELF'])."?".htmlspecialchars($clearQueryStrOpen)?>&amp;id=<?=$theme['id']?>&amp;action=restore&ord=<?=htmlspecialchars($_GET["ord"])?>&r=1" style="color: #D75A29;" onclick="return warning(1);">Р’РµСЂРЅСѓС‚СЊ</a>
               <? } ?></td>
             <td nowrap><?if (hasPermissions('blogs') && $theme['login']!=$_SESSION["login"] && $theme['login']['login']!="admin") {
                             ?>
               <script type="text/javascript">
-                            banned.addContext( 'blog_msg_<?=$theme['id']?>', 2, '<?="{$GLOBALS['host']}".getFriendlyURL("blog", $theme['thread_id'])."?openlevel=".$theme['id'].$ord_get_part."#o".$theme['id']?>', "<?=($theme['title']!==''? $theme['title'] : '<без темы>')?>" );
+                            banned.addContext( 'blog_msg_<?=$theme['id']?>', 2, '<?="{$GLOBALS['host']}".getFriendlyURL("blog", $theme['thread_id'])."?openlevel=".$theme['id'].$ord_get_part."#o".$theme['id']?>', "<?=($theme['title']!==''? $theme['title'] : '<Р±РµР· С‚РµРјС‹>')?>" );
                             </script>
               <?php
                             if ( $theme['warn']<3 && !$theme['is_banned'] && !$theme['ban_where'] ) {
                             ?>
-              <span class="warnlink-<?=$theme['fromuser_id']?>"><a style="color: #D75A29; font-size:9px;" href="javascript: void(0);" onclick="banned.warnUser(<?=$theme['fromuser_id']?>, 0, 'blogs', 'blog_msg_<?=$theme['id']?>', 0); return false;">Предупредить (<span class="warncount-<?=$theme['fromuser_id']?>">
+              <span class="warnlink-<?=$theme['fromuser_id']?>"><a style="color: #D75A29; font-size:9px;" href="javascript: void(0);" onclick="banned.warnUser(<?=$theme['fromuser_id']?>, 0, 'blogs', 'blog_msg_<?=$theme['id']?>', 0); return false;">РџСЂРµРґСѓРїСЂРµРґРёС‚СЊ (<span class="warncount-<?=$theme['fromuser_id']?>">
               <?=($theme['warn'] ? $theme['warn'] : 0)?>
               </span>)</a></span>
               <?
                             }
                             else {
-                                $sBanTitle = (!$theme['is_banned'] && !$theme['ban_where']) ? 'Забанить!' : 'Разбанить';
+                                $sBanTitle = (!$theme['is_banned'] && !$theme['ban_where']) ? 'Р—Р°Р±Р°РЅРёС‚СЊ!' : 'Р Р°Р·Р±Р°РЅРёС‚СЊ';
                             ?>
               <span class="warnlink-<?=$theme['fromuser_id']?>"><a href="javascript:void(0);" onclick="banned.userBan(<?=$theme['fromuser_id']?>, 'blog_msg_<?=$theme['id']?>',0)" style="color: Red;font-size:9px;">
               <?=$sBanTitle?>
@@ -434,10 +434,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
           <?
 
                                         if ($theme['modified_id'] == $theme['fromuser_id']) { ?>
-          [внесены изменения:
+          [РІРЅРµСЃРµРЅС‹ РёР·РјРµРЅРµРЅРёСЏ:
           <?=date("d.m.Y | H:i]",strtotimeEx($theme['modified'])); }
                                         else { ?>
-          [Отредактировано модератором
+          [РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј
           <? if (!$mod) { ?>
           (
           <? $user = new users; $mod_user = $user->GetName($theme['modified_id'], $err); print($mod_user['login'] . ' : ' . $mod_user['usurname'] . ' ' . $mod_user['uname']); ?>
@@ -450,10 +450,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
           &nbsp; &nbsp;
           <?
 			if (!$theme['deluser_id'] || $theme['deluser_id'] == $theme['fromuser_id']) { ?>
-          [блог удален :
+          [Р±Р»РѕРі СѓРґР°Р»РµРЅ :
           <?=date("d.m.Y | H:i]",strtotimeEx($theme['deleted'])); }
      			 else { ?>
-          <span style="color:#FF0000">Удалено модератором
+          <span style="color:#FF0000">РЈРґР°Р»РµРЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј
           <? if (!$mod) { ?>
           (
           <? if (!$user) $user = new user(); $mod_user = $user->GetName($theme['deluser_id'], $err); print($mod_user['login'] . ' : ' . $mod_user['usurname'] . ' ' . $mod_user['uname']); ?>
@@ -466,13 +466,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
           <?}
 
                                         if ($theme['is_banned']) {?>
-          <span style="color:#FF0000"><b>Пользователь забанен.</b></span>
+          <span style="color:#FF0000"><b>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°Р±Р°РЅРµРЅ.</b></span>
           <?}
                                			?>
           </span>
           <? if ($theme['deleted']  && (hasPermissions('blogs') || $theme['fromuser_id'] == get_uid(false))) {?>
           <? if($theme['deleted_reason']) { ?>
-          <div style="padding-left:28px"> <span style="color:#777777;font-weight:bold">Причина:</span> <span style="color:#FF0000">
+          <div style="padding-left:28px"> <span style="color:#777777;font-weight:bold">РџСЂРёС‡РёРЅР°:</span> <span style="color:#FF0000">
             <?=$theme['deleted_reason'] ?>
             </span> </div>
           <?php } ?>
@@ -484,7 +484,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
           <img src="/images/tp-w.gif" alt="" />
           <? } ?>
           <? if($theme['is_private']=='t') { ?>
-          <img src="/images/icons/eye-hidden.png" alt="Скрытый пост" />&nbsp;
+          <img src="/images/icons/eye-hidden.png" alt="РЎРєСЂС‹С‚С‹Р№ РїРѕСЃС‚" />&nbsp;
           <? } ?>
           <?php 
                                             $sTitle  = /*($theme['moderator_status'] === '0' && $theme['payed'] != 't') ? $stop_words->replace($theme['title']) :*/ $theme['title']; 
@@ -495,7 +495,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
           </a> </div>
         <? } else { ?>
         <?if($theme['is_private']=='t'){?>
-        <div class="header header-margin-bottom"><img src="/images/icons/eye-hidden.png" alt="Скрытый пост" />&nbsp;</div>
+        <div class="header header-margin-bottom"><img src="/images/icons/eye-hidden.png" alt="РЎРєСЂС‹С‚С‹Р№ РїРѕСЃС‚" />&nbsp;</div>
         <? } ?>
         <? } ?>
         <div>
@@ -508,7 +508,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
                 </div>
                 <br />
                 <? 
-										// опросы
+										// РѕРїСЂРѕСЃС‹
 										$i = 0;
 										if ($theme['has_poll']) { 
 											$max = 0;
@@ -579,14 +579,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
                   </div>
                   <div class="poll-options">
                     <? if (!$theme['poll_votes'] && $_SESSION['uid'] && $theme['poll_closed'] != 't' && $ban_where != 1 && !$theme['is_blocked'] && !$theme['deleted']) { ?>
-                    <div class="b-buttons b-buttons_inline-block"> <span id="poll-btn-vote-<?=$theme['thread_id']?>"> <a class="b-button b-button_rectangle_color_transparent" href="javascript: return false;" onclick="poll.vote('Blogs', <?=$theme['thread_id']?>); return false;"><span class="b-button__b1"><span class="b-button__b2"><span class="b-button__txt">Ответить</span></span></span></a>&nbsp;&nbsp;&nbsp; </span> <span id="poll-btn-result-<?=$theme['thread_id']?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showResult('Blogs', <?=$theme['thread_id']?>); return false;">Посмотреть результаты</a>&nbsp;&nbsp;&nbsp;</span> </div>
+                    <div class="b-buttons b-buttons_inline-block"> <span id="poll-btn-vote-<?=$theme['thread_id']?>"> <a class="b-button b-button_rectangle_color_transparent" href="javascript: return false;" onclick="poll.vote('Blogs', <?=$theme['thread_id']?>); return false;"><span class="b-button__b1"><span class="b-button__b2"><span class="b-button__txt">РћС‚РІРµС‚РёС‚СЊ</span></span></span></a>&nbsp;&nbsp;&nbsp; </span> <span id="poll-btn-result-<?=$theme['thread_id']?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showResult('Blogs', <?=$theme['thread_id']?>); return false;">РџРѕСЃРјРѕС‚СЂРµС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹</a>&nbsp;&nbsp;&nbsp;</span> </div>
                     <? } else { ?>
                     <span id="poll-btn-vote-<?=$theme['thread_id']?>"></span> <span id="poll-btn-result-<?=$theme['thread_id']?>"></span>
                     <? } ?>
                     <? if (($theme['fromuser_id'] == $_SESSION['uid'] && $ban_where != 1 && !$theme['is_blocked'] && !$theme['deleted']) || hasPermissions('blogs')) { ?>
                     <span id="poll-btn-close-<?=$theme['thread_id']?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.close('Blogs', <?=$theme['thread_id']?>); return false;">
-                    <?=(($theme['poll_closed'] == 't')? 'Открыть': 'Закрыть')?>
-                    опрос</a>&nbsp;&nbsp;&nbsp;</span> <span id="poll-btn-remove-<?=$theme['thread_id']?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.remove('Blogs', <?=$theme['thread_id']?>); return false;">Удалить опрос</a></span>
+                    <?=(($theme['poll_closed'] == 't')? 'РћС‚РєСЂС‹С‚СЊ': 'Р—Р°РєСЂС‹С‚СЊ')?>
+                    РѕРїСЂРѕСЃ</a>&nbsp;&nbsp;&nbsp;</span> <span id="poll-btn-remove-<?=$theme['thread_id']?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.remove('Blogs', <?=$theme['thread_id']?>); return false;">РЈРґР°Р»РёС‚СЊ РѕРїСЂРѕСЃ</a></span>
                     <? } ?>
                   </div>
                 </div>
@@ -614,7 +614,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
                                         }?>
                 <?= seo_end()?>
                 <?if ($theme['yt_link']) {
-                                                // Не понял зачем это надо, всеравно ничего здесь не выводится
+                                                // РќРµ РїРѕРЅСЏР» Р·Р°С‡РµРј СЌС‚Рѕ РЅР°РґРѕ, РІСЃРµСЂР°РІРЅРѕ РЅРёС‡РµРіРѕ Р·РґРµСЃСЊ РЅРµ РІС‹РІРѕРґРёС‚СЃСЏ
                                                 show_video($theme['id'], $theme['yt_link']);
                                             }
 
@@ -623,8 +623,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
                                               ?>
                 <table align="right" border="0" cellpadding="0" cellspacing="0" width="100%">
                   <tr>
-                    <td class="lastime" align="right">Последний комментарий был
-                      <?=( (time() - strtotimeEx($theme['last_activity']))<60 ? "только что" : ago_pub(strtotimeEx($theme['last_activity']))." назад")?></td>
+                    <td class="lastime" align="right">РџРѕСЃР»РµРґРЅРёР№ РєРѕРјРјРµРЅС‚Р°СЂРёР№ Р±С‹Р»
+                      <?=( (time() - strtotimeEx($theme['last_activity']))<60 ? "С‚РѕР»СЊРєРѕ С‡С‚Рѕ" : ago_pub(strtotimeEx($theme['last_activity']))." РЅР°Р·Р°Рґ")?></td>
                   </tr>
                 </table>
                 <?
@@ -633,7 +633,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
                                         	else
                                         	{
                                         	?>
-                                        	Комментариев еще не было
+                                        	РљРѕРјРјРµРЅС‚Р°СЂРёРµРІ РµС‰Рµ РЅРµ Р±С‹Р»Рѕ
                                         	<?
                                         	}
                                         	*/
@@ -666,7 +666,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
 		if ($uid)
 		{
 ?>
-        <div class="star-outer"><img src="/images/bookmarks/<?=(!isset($favs[$theme['thread_id']]))?'bsw.png':blogs::$priority_img[$favs[$theme['thread_id']]['priority']]?>" alt="Добавить в закладки" title="Добавить в закладки" class="star" id="favstar<?=$theme['thread_id']?>" onclick="ShowFavFloat(<?=$theme['thread_id']?>)" />
+        <div class="star-outer"><img src="/images/bookmarks/<?=(!isset($favs[$theme['thread_id']]))?'bsw.png':blogs::$priority_img[$favs[$theme['thread_id']]['priority']]?>" alt="Р”РѕР±Р°РІРёС‚СЊ РІ Р·Р°РєР»Р°РґРєРё" title="Р”РѕР±Р°РІРёС‚СЊ РІ Р·Р°РєР»Р°РґРєРё" class="star" id="favstar<?=$theme['thread_id']?>" onclick="ShowFavFloat(<?=$theme['thread_id']?>)" />
           <div id="FavFloat<?=$theme['thread_id']?>" style="postiton:absolute; margin-left:-11px; margin-top:-16px;"></div>
         </div>
         <div id="favcnt<?=$theme['thread_id']?>" class="favor-number"><span>
@@ -684,7 +684,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
 		}
 ?>
         <div class="section-blog">
-          <div class="section">Раздел:</div>
+          <div class="section">Р Р°Р·РґРµР»:</div>
           <? seo_start();?>
           <div class="small"> <a href="<?=getFriendlyURL("blog_group", $theme['id_gr'])?><?=((($theme['t'])?"?t=prof":""))?>">
             <?=getGroupName($theme['id_gr'],$theme['t'])?>
@@ -693,25 +693,25 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
         <?= seo_end();?>
         <div class="commline">
           <? if(!$mod && $theme['deleted']) { ?>
-          <a href="/blogs/viewgroup.php?id=<?=$theme['id']?>&amp;action=restore&page=<?=$page?>&ord=<?=$ord?>&r=1" onclick="return warning(14);">Восстановить</a> |
+          <a href="/blogs/viewgroup.php?id=<?=$theme['id']?>&amp;action=restore&page=<?=$page?>&ord=<?=$ord?>&r=1" onclick="return warning(14);">Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ</a> |
           <? } else { ?>
           <?
 							if (hasPermissions('blogs') && $theme['login']!=$_SESSION["login"] && $theme['login']!="admin") {
 							    ?>
           <script type="text/javascript">
-                                banned.addContext( 'blog_<?=$theme['thread_id']?>', 2, '<?=$GLOBALS['host']?><?=getFriendlyURL("blog", $theme['thread_id'])?>', "<?=($theme['title']!==''? $theme['title'] : '<без темы>')?>" );
+                                banned.addContext( 'blog_<?=$theme['thread_id']?>', 2, '<?=$GLOBALS['host']?><?=getFriendlyURL("blog", $theme['thread_id'])?>', "<?=($theme['title']!==''? $theme['title'] : '<Р±РµР· С‚РµРјС‹>')?>" );
                                 </script>
           <?php
                                 if(hasPermissions('users')) {
 								if ( $theme['warn'] < 3 && !$theme['is_banned'] && !$theme['ban_where'] ) {
 									?>
-          <span class="admin-top-link"><span class="warnlink-<?=$theme['uid']?>"><a style="color: #D75A29; font-size:9px;" href="javascript: void(0);" onclick="banned.warnUser(<?=$theme['uid']?>, 0, 'blogs', 'blog_<?=$theme['thread_id']?>', 0); return false;">Предупредить (<span class="warncount-<?=$theme['uid']?>">
+          <span class="admin-top-link"><span class="warnlink-<?=$theme['uid']?>"><a style="color: #D75A29; font-size:9px;" href="javascript: void(0);" onclick="banned.warnUser(<?=$theme['uid']?>, 0, 'blogs', 'blog_<?=$theme['thread_id']?>', 0); return false;">РџСЂРµРґСѓРїСЂРµРґРёС‚СЊ (<span class="warncount-<?=$theme['uid']?>">
           <?=($theme['warn'] ? $theme['warn'] : 0)?>
           </span>)</a></span> |
           <?
 								}
 								else /*if (!$theme['is_banned'])*/ {
-								    $sBanTitle = (!$theme['is_banned'] && !$theme['ban_where']) ? 'Забанить!' : 'Разбанить';
+								    $sBanTitle = (!$theme['is_banned'] && !$theme['ban_where']) ? 'Р—Р°Р±Р°РЅРёС‚СЊ!' : 'Р Р°Р·Р±Р°РЅРёС‚СЊ';
 									?>
           <span class="admin-top-link"><span class="warnlink-<?=$theme['uid']?>"><a href="javascript:void(0);" onclick="banned.userBan(<?=$theme['fromuser_id']?>, 'blog_<?=$theme['thread_id']?>',0)" style="color: Red;font-size:9px;">
           <?=$sBanTitle?>
@@ -721,7 +721,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
                                 }
                                 ?>
           <span id="thread-button-<?=$theme['thread_id']?>"><a style="color: Red; font-size:9px;" href="javascript: void(0);" onclick="banned.<?=($theme['is_blocked']? 'unblockedThread': 'blockedThread')?>(<?=$theme['thread_id']?>); return false;">
-          <?=($theme['is_blocked']? 'Разблокировать': 'Блокировать')?>
+          <?=($theme['is_blocked']? 'Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ': 'Р‘Р»РѕРєРёСЂРѕРІР°С‚СЊ')?>
           </a></span></span>
           <?
 							}
@@ -730,8 +730,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
                                    if (($theme['uid'] == $_SESSION['uid'] && !$theme['is_blocked'] && !$theme['deleted']) || !$mod) {
                                    $can_edit = true;
                                 ?>
-          <a href="/blogs/viewgroup.php?id=<?=$theme['id']?>&amp;action=delete&page=<?=$page?>&ord=<?=$ord?>&u_token_key=<?=$_SESSION['rand']?>&r=1" onclick="return warning(1);">Удалить</a> | 
-          <a href="<?=getFriendlyURL('blog_group', $gr)?>?action=edit&amp;tr=<?=$theme['id']?><?=($page>1?'&amp;page='.$page:'')?>&amp;t=<?=$t?>&ord=<?=$ord?>#edit" onclick="return restoreBlogForm(this);">Редактировать</a>
+          <a href="/blogs/viewgroup.php?id=<?=$theme['id']?>&amp;action=delete&page=<?=$page?>&ord=<?=$ord?>&u_token_key=<?=$_SESSION['rand']?>&r=1" onclick="return warning(1);">РЈРґР°Р»РёС‚СЊ</a> | 
+          <a href="<?=getFriendlyURL('blog_group', $gr)?>?action=edit&amp;tr=<?=$theme['id']?><?=($page>1?'&amp;page='.$page:'')?>&amp;t=<?=$t?>&ord=<?=$ord?>#edit" onclick="return restoreBlogForm(this);">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
           <? }
                                       if ($can_edit) echo "|";
                                       $new_comments_str = "";
@@ -746,7 +746,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stat_collector.php");
                                           elseif ($theme['num'] > 1 && $theme['status'] < $theme['num']-1 && $theme['status'] != -100)
                                           {
                                               $new_comments_num = $theme['num'] - $theme['status'] - 1;
-                                              $new_comments_str = "<a href=\"".getFriendlyURL("blog", $theme['thread_id'])."#unread\" style=\"color:#6BA813; font-weight:bold;\">(".$new_comments_num." ".(($new_comments_num==1)?"новый":"новых").")</a>";
+                                              $new_comments_str = "<a href=\"".getFriendlyURL("blog", $theme['thread_id'])."#unread\" style=\"color:#6BA813; font-weight:bold;\">(".$new_comments_num." ".(($new_comments_num==1)?"РЅРѕРІС‹Р№":"РЅРѕРІС‹С…").")</a>";
                                           }
                                       }
                                ?>
@@ -762,7 +762,7 @@ if ( hasPermissions('blogs') || !$theme['deleted'] ) {
 ?>
           <?php if($theme['title']!='') { seo_start(); }?>
           <a href="<?=getFriendlyURL("blog", $theme['thread_id']).$sScrollTo?>"<?=$new_comments_style?>>
-          <?=((($theme['close_comments']=="t"))?"Комментирование закрыто":"Комментарии (".($theme['num']-1).")")?>
+          <?=((($theme['close_comments']=="t"))?"РљРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ Р·Р°РєСЂС‹С‚Рѕ":"РљРѕРјРјРµРЅС‚Р°СЂРёРё (".($theme['num']-1).")")?>
           </a>
           <?=$new_comments_str?>
           <?php if($theme['title']!='') { ?>
@@ -774,7 +774,7 @@ if ( hasPermissions('blogs') || !$theme['deleted'] ) {
     <? } 
             }
         } while ($theme = next($themes));}
-                else print "<div style='width: 100%; text-align: center;clear:left;'><h2>Сообщений нет</h2></div>"?>
+                else print "<div style='width: 100%; text-align: center;clear:left;'><h2>РЎРѕРѕР±С‰РµРЅРёР№ РЅРµС‚</h2></div>"?>
     <table cellpadding="0" cellspacing="0" border="0" width="100%">
       <tr>
         <td align="left" width="100%" ><?php
@@ -789,7 +789,7 @@ function buildNavigation($iCurrent, $iStart, $iAll, $sHref) {
 	}
 	return $sNavigation;
 }
-// массив с параметрими для url
+// РјР°СЃСЃРёРІ СЃ РїР°СЂР°РјРµС‚СЂРёРјРё РґР»СЏ url
 $url_params = array();
 if ($ord && $ord != 'new') {
     $url_params[] = 'ord='.$ord;
@@ -797,7 +797,7 @@ if ($ord && $ord != 'new') {
 if ($base) {
     $url_params[] = 't=prof';
 }
-//               параметры                   последний амперсанд
+//               РїР°СЂР°РјРµС‚СЂС‹                   РїРѕСЃР»РµРґРЅРёР№ Р°РјРїРµСЂСЃР°РЅРґ
 $sHref = '%s?' . implode('&', $url_params) . (count($url_params) ? '&' : '') . 'page=%d%s';
 //$sHref = '%s?'.($base ? '&amp;t=prof' : '').(($ord&&($ord != "new")) ? $ord_get_part."&amp;" : '').'page=%d%s';
 print(new_paginator2($page, $pages, 4, $sHref, true));
@@ -805,7 +805,7 @@ print(new_paginator2($page, $pages, 4, $sHref, true));
       </tr>
       <tr>
         <td class="blog-rss" align="left" style="padding-top: 15px; padding-bottom: 10px"><? seo_start();?>
-          <a href="/rss/blogs.php?gr=<?=$gr?>" ><img src="/images/ico_rss.gif" alt="" /></a>&nbsp;&nbsp;<a href="/rss/blogs.php?gr=<?=$gr?>">Фри-ланс</a>
+          <a href="/rss/blogs.php?gr=<?=$gr?>" ><img src="/images/ico_rss.gif" alt="" /></a>&nbsp;&nbsp;<a href="/rss/blogs.php?gr=<?=$gr?>">Р¤СЂРё-Р»Р°РЅСЃ</a>
           <?= seo_end();?></td>
       </tr>
     </table>
@@ -829,7 +829,7 @@ print(new_paginator2($page, $pages, 4, $sHref, true));
               <a id="fl2_search_submit" onclick="$('search_frm').submit();" class="b-button b-button_rectangle_color_transparent" href="#" >
                   <span class="b-button__b1">
                       <span class="b-button__b2">
-                          <span class="b-button__txt">Найти</span>
+                          <span class="b-button__txt">РќР°Р№С‚Рё</span>
                       </span>
                   </span>
               </a>
@@ -850,7 +850,7 @@ print(new_paginator2($page, $pages, 4, $sHref, true));
         </div>
       </form>
     <? $ban_cat = 3; include ($_SERVER['DOCUMENT_ROOT'] . "/banner_under_cat.php")?>
-      <h2>Раздел</h2>
+      <h2>Р Р°Р·РґРµР»</h2>
       <ul class="group">
         <?
             $size = sizeof($groups);
@@ -860,7 +860,7 @@ print(new_paginator2($page, $pages, 4, $sHref, true));
                 $theme = $groups[$i];
                 if( in_array($theme['id'], blogs::$copiny_group) ) {
                     $feedback_copiny[] = $theme;
-                    continue; // Перенесли в архив #0023264
+                    continue; // РџРµСЂРµРЅРµСЃР»Рё РІ Р°СЂС…РёРІ #0023264
                 }
                 $love = (int)$theme['id'] == 55;
                 
@@ -876,9 +876,9 @@ print(new_paginator2($page, $pages, 4, $sHref, true));
             ?>
         <li>
           <? if ($gr || (!$gr && $page > 1)) {?>
-          <a <?=((!$gr && $page > 1) ? ' style="font-weight: bolder; color: #666;"' : '')?> href="/blogs/<?=($ord)?"?ord=$ord":""?>" title="Все вместе">
+          <a <?=((!$gr && $page > 1) ? ' style="font-weight: bolder; color: #666;"' : '')?> href="/blogs/<?=($ord)?"?ord=$ord":""?>" title="Р’СЃРµ РІРјРµСЃС‚Рµ">
           <? } ?>
-          <strong>Все вместе</strong> (<?=$sum?>)
+          <strong>Р’СЃРµ РІРјРµСЃС‚Рµ</strong> (<?=$sum?>)
           <? if ($gr || (!$gr && $page > 1)) {?>
           </a>
           <? } ?>
@@ -887,7 +887,7 @@ print(new_paginator2($page, $pages, 4, $sHref, true));
       </ul>
       <? if(!empty($feedback_copiny)) { ?>
       <div class="group_copini">
-        <div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_padbot_5 b-layout__txt_padleft_5 b-layout__txt_fontsize_11 b-layout__txt_bold">Сообщество поддержки</div>
+        <div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_padbot_5 b-layout__txt_padleft_5 b-layout__txt_fontsize_11 b-layout__txt_bold">РЎРѕРѕР±С‰РµСЃС‚РІРѕ РїРѕРґРґРµСЂР¶РєРё</div>
         <ul class="group">
             <?php foreach($feedback_copiny as $theme) { ?>
                 <li><a href="https://feedback.fl.ru/" target="_blank"><?= $theme['t_name']; ?></a></li>

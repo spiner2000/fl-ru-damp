@@ -4,8 +4,8 @@
     <!-- end of Banner 240x400 -->
 </div>
 <div class="b-layout__left b-layout__left_margright_270">
-<h1 class="b-page__title">Активация</h1>
-<div class="b-layout__txt b-layout__txt_padbot_20"><? if ($activated == 1) { ?>E-mail активирован!<? } elseif ($activated == -1) { ?>E-mail не найден!<? } 
-elseif (!$code) {?> Не введен код<? } else { ?>Произошла ошибка! Ваш e-mail уже активирован, либо введенный код не найден.<br>
-Если у вас не получается сменить e-mail, <a class="b-layout__link" href="/about/feedback/">обратитесь</a> к администрации.<? } ?></div>
+<h1 class="b-page__title">РђРєС‚РёРІР°С†РёСЏ</h1>
+<div class="b-layout__txt b-layout__txt_padbot_20"><? if ($activated == 1) { ?>E-mail Р°РєС‚РёРІРёСЂРѕРІР°РЅ!<? } elseif ($activated == -1) { ?>E-mail РЅРµ РЅР°Р№РґРµРЅ!<? } 
+elseif (!$code) {?> РќРµ РІРІРµРґРµРЅ РєРѕРґ<? } else { ?>РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°! Р’Р°С€ e-mail СѓР¶Рµ Р°РєС‚РёРІРёСЂРѕРІР°РЅ, Р»РёР±Рѕ РІРІРµРґРµРЅРЅС‹Р№ РєРѕРґ РЅРµ РЅР°Р№РґРµРЅ.<br>
+Р•СЃР»Рё Сѓ РІР°СЃ РЅРµ РїРѕР»СѓС‡Р°РµС‚СЃСЏ СЃРјРµРЅРёС‚СЊ e-mail, <a class="b-layout__link" href="/about/feedback/">РѕР±СЂР°С‚РёС‚РµСЃСЊ</a> Рє Р°РґРјРёРЅРёСЃС‚СЂР°С†РёРё.<? } ?></div>
 </div>

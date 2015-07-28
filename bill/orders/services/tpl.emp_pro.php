@@ -5,9 +5,9 @@ $type = $pro_type[$service['op_code']];
     <input type="hidden" name="opcode" value="<?= $service['op_code']; ?>" />
     <a href="javascript:void(0)" class="b-button b-button_admin_del b-button_float_right service-remove"></a>
     <span class="b-page__desktop b-page__ipad"><span class="b-icon b-icon__spro b-icon__spro_e b-icon_absolute b-icon_left_10 " title="PRO" style=" left:10px;"></span></span>
-    <h3 class="b-layout__h3 b-layout__h3_padleft_70">Профессиональный аккаунт  на 
+    <h3 class="b-layout__h3 b-layout__h3_padleft_70">РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚  РЅР° 
         <span class="i-shadow">
-            <a class="b-layout__link b-layout__link_inline-block b-layout__link_bold b-layout__link_fontsize_15 b-layout__link_ygol popup-top-mini-open upd-auto-period-data" href="javascript:void(0)"><?= ($type['month'] . ' ' . ending($type['month'], 'месяц', 'месяца', 'месяцев'))?></a>
+            <a class="b-layout__link b-layout__link_inline-block b-layout__link_bold b-layout__link_fontsize_15 b-layout__link_ygol popup-top-mini-open upd-auto-period-data" href="javascript:void(0)"><?= ($type['month'] . ' ' . ending($type['month'], 'РјРµСЃСЏС†', 'РјРµСЃСЏС†Р°', 'РјРµСЃСЏС†РµРІ'))?></a>
             <div class="b-shadow b-shadow_m b-shadow_left_-11 b-shadow_top_25 b-shadow_hide b-shadow_width_335 popup-mini body-shadow-close change-select-period">
                 <div class="b-shadow__right">
                     <div class="b-shadow__left">
@@ -19,13 +19,13 @@ $type = $pro_type[$service['op_code']];
                                     <a class="b-layout__link b-layout__link_no-decorat select-auto-type" href="javascript:void(0)"
                                        data-opcode="<?= $data['opcode']?>"
                                        data-cost="<?= $data['cost']?>" 
-                                       data-period="<?= $data['month'] . " " . ending($data['month'], 'месяц', 'месяца', 'месяцев')?>">
+                                       data-period="<?= $data['month'] . " " . ending($data['month'], 'РјРµСЃСЏС†', 'РјРµСЃСЏС†Р°', 'РјРµСЃСЏС†РµРІ')?>">
                                         <span class="b-layout__txt b-layout__txt_inline-block b-layout__txt_width_90 <?= $opcode == $service['op_code'] ? "b-layout__txt_color_808080" : ""?> b-layout__txt_fontsize_15 select-name">
-                                            <?= $data['month'] . " " . ending($data['month'], 'месяц', 'месяца', 'месяцев')?>
+                                            <?= $data['month'] . " " . ending($data['month'], 'РјРµСЃСЏС†', 'РјРµСЃСЏС†Р°', 'РјРµСЃСЏС†РµРІ')?>
                                         </span>
-                                        <span class="b-layout__txt b-layout__txt_inline-block b-layout__txt_width_90 b-layout__txt_fontsize_15 b-layout__txt_color_fd6c30 b-layout__txt_nowrap"><?= to_money($data['cost'])?> рублей</span>
+                                        <span class="b-layout__txt b-layout__txt_inline-block b-layout__txt_width_90 b-layout__txt_fontsize_15 b-layout__txt_color_fd6c30 b-layout__txt_nowrap"><?= to_money($data['cost'])?> СЂСѓР±Р»РµР№</span>
                                         <? if($eco > 0) { ?>
-                                        <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_6db335 b-layout__txt_nowrap">&#160;<?= to_money($eco);?> руб. экономии</span>
+                                        <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_6db335 b-layout__txt_nowrap">&#160;<?= to_money($eco);?> СЂСѓР±. СЌРєРѕРЅРѕРјРёРё</span>
                                         <? }//if?>
                                     </a>
                                 </div>
@@ -38,8 +38,8 @@ $type = $pro_type[$service['op_code']];
                 <span class="b-shadow__icon b-shadow__icon_nosik b-shadow__icon_left_30"></span>
             </div>
         </span>                     
-        &nbsp;&nbsp;&nbsp;&nbsp; <span class="b-layout__txt b-layout__txt_fontsize_11 b-layouyt__txt_weight_normal"><a href="/payed-emp/" class="b-layout__link promo-link">Подробнее об услуге</a></span></h3>
-    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_20 b-layout__txt_padleft_70">Аккаунт PRO дает своим обладателям бонусы на сайте: скидки на все платные услуги, бесплатную публикацию вакансий, возможность просматривать контакты всех пользователей, расширенные возможности при создании проектов и многое другое.</div>
+        &nbsp;&nbsp;&nbsp;&nbsp; <span class="b-layout__txt b-layout__txt_fontsize_11 b-layouyt__txt_weight_normal"><a href="/payed-emp/" class="b-layout__link promo-link">РџРѕРґСЂРѕР±РЅРµРµ РѕР± СѓСЃР»СѓРіРµ</a></span></h3>
+    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_20 b-layout__txt_padleft_70">РђРєРєР°СѓРЅС‚ PRO РґР°РµС‚ СЃРІРѕРёРј РѕР±Р»Р°РґР°С‚РµР»СЏРј Р±РѕРЅСѓСЃС‹ РЅР° СЃР°Р№С‚Рµ: СЃРєРёРґРєРё РЅР° РІСЃРµ РїР»Р°С‚РЅС‹Рµ СѓСЃР»СѓРіРё, Р±РµСЃРїР»Р°С‚РЅСѓСЋ РїСѓР±Р»РёРєР°С†РёСЋ РІР°РєР°РЅСЃРёР№, РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїСЂРѕСЃРјР°С‚СЂРёРІР°С‚СЊ РєРѕРЅС‚Р°РєС‚С‹ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, СЂР°СЃС€РёСЂРµРЅРЅС‹Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РїСЂРё СЃРѕР·РґР°РЅРёРё РїСЂРѕРµРєС‚РѕРІ Рё РјРЅРѕРіРѕРµ РґСЂСѓРіРѕРµ.</div>
     <span class="walletInfo">
     <?php
 //        if($bill->wallet != false) {
@@ -49,5 +49,5 @@ $type = $pro_type[$service['op_code']];
         ?>
     </span>
 
-    <div class="b-layout__txt b-layout__txt_padleft_70 b-layout__txt_fontsize_22 b-layout__txt_color_fd6c30"><span class="upd-cost-sum"><?= to_money($type['cost']) ?></span> руб.</div>
+    <div class="b-layout__txt b-layout__txt_padleft_70 b-layout__txt_fontsize_22 b-layout__txt_color_fd6c30"><span class="upd-cost-sum"><?= to_money($type['cost']) ?></span> СЂСѓР±.</div>
 </div>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Ïîäêëþ÷àåì ôàéë ñ îñíîâíûìè ôóíêöèÿìè
+ * ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼ Ñ„Ð°Ð¹Ð» Ñ Ð¾ÑÐ½Ð¾Ð²Ð½Ñ‹Ð¼Ð¸ Ñ„ÑƒÐ½ÐºÑ†Ð¸ÑÐ¼Ð¸
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
@@ -20,10 +20,10 @@ class splash_screens
     const SPLASH_DIR = '/templates/splash/';
     
     /**
-     * ïîêàçûâàåò ñïëýøñêðèí, ïðåäâàðèòåëüíî ñäåëàâ ïðîâåðêó: íóæíî ëè åãî ïîêàçûâàòü
-     * @param type $type êîä ñïëýøà
-     * @param type $debug - ïðèíóäèòåëüíî ïîêàçàòü ñïëýø, äàæå åñëè íå ïðîøåë ïðîâåðêó
-     * @param type $setViewed åñëè true - îòìåòèòü êàê ïðîñìîòðåííûé
+     * Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ ÑÐ¿Ð»ÑÑˆÑÐºÑ€Ð¸Ð½, Ð¿Ñ€ÐµÐ´Ð²Ð°Ñ€Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ ÑÐ´ÐµÐ»Ð°Ð² Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÑƒ: Ð½ÑƒÐ¶Ð½Ð¾ Ð»Ð¸ ÐµÐ³Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ
+     * @param type $type ÐºÐ¾Ð´ ÑÐ¿Ð»ÑÑˆÐ°
+     * @param type $debug - Ð¿Ñ€Ð¸Ð½ÑƒÐ´Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ ÑÐ¿Ð»ÑÑˆ, Ð´Ð°Ð¶Ðµ ÐµÑÐ»Ð¸ Ð½Ðµ Ð¿Ñ€Ð¾ÑˆÐµÐ» Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÑƒ
+     * @param type $setViewed ÐµÑÐ»Ð¸ true - Ð¾Ñ‚Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ ÐºÐ°Ðº Ð¿Ñ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÐ½Ð½Ñ‹Ð¹
      * @return boolean
      */
     function show($type, $debug = false, $setViewed = true) {
@@ -70,13 +70,13 @@ class splash_screens
             }
         }
 
-        // Ïðîâåðÿåì íå ïîêàçûâàëè óæå ýòîò òèï
+        // ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð½Ðµ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ð»Ð¸ ÑƒÐ¶Ðµ ÑÑ‚Ð¾Ñ‚ Ñ‚Ð¸Ð¿
         if( $need_show || $debug || self::SPLASH_KONKURS == $type) {
             $tpl_splash = $_SERVER['DOCUMENT_ROOT'] . self::SPLASH_DIR . self::getTemplateSplash($type);
             if($tpl_splash != '') {
                 include $tpl_splash;
                 if($debug) return true;
-                // Îòìå÷àåì êàê ïðîñìîòðåííûé
+                // ÐžÑ‚Ð¼ÐµÑ‡Ð°ÐµÐ¼ ÐºÐ°Ðº Ð¿Ñ€Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÐ½Ð½Ñ‹Ð¹
                 if($type!=self::SPLASH_MESSAGES && $setViewed) {
                     self::setViewed($type);
                 }
@@ -86,7 +86,7 @@ class splash_screens
     }
 
     /** 
-     * îïðåäåëÿåò íàäî ëè ïîêàçûâàòü ñïëåø â ëè÷êå
+     * Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÑÐµÑ‚ Ð½Ð°Ð´Ð¾ Ð»Ð¸ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¿Ð»ÐµÑˆ Ð² Ð»Ð¸Ñ‡ÐºÐµ
      */
     function checkContactsSplashShow() {
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/users.php");
@@ -99,16 +99,16 @@ class splash_screens
     }
     
     /**
-     * îïðåäåëÿåò íàäî ëè ïîêàçûâàòü ñïëýø (SPLASH_EMPLOYER èëè SPLASH_FREELANCER)
-     * åñëè ïîëüçîâàòåëü íå PRO - òî ïîêàçûâàåì îäèí ðàç â 2 íåäåëè
+     * Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÑÐµÑ‚ Ð½Ð°Ð´Ð¾ Ð»Ð¸ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÐ¿Ð»ÑÑˆ (SPLASH_EMPLOYER Ð¸Ð»Ð¸ SPLASH_FREELANCER)
+     * ÐµÑÐ»Ð¸ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð½Ðµ PRO - Ñ‚Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÐ¼ Ð¾Ð´Ð¸Ð½ Ñ€Ð°Ð· Ð² 2 Ð½ÐµÐ´ÐµÐ»Ð¸
      */
     function checkEmpFrlSplashShow ($splashType) {
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/sbr_emp.php");
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/sbr_frl.php");
         
-        // äëÿ òåñòîâ *************************************************
-        // ìîæíî çàäàòü äàòó ïîñëåäíåãî ïîêàçà ñïëýøà ÷åðåç ðàïàìåòð ?splash_date=2012-10-15
-        // åñëè îñòàâèòü ïàðàìåòð ïóñòûì (?splash_date=), òî äàòà â ñåññèè îáíóëÿåòñÿ è äàííûå áåðóòñÿ èç áàçû
+        // Ð´Ð»Ñ Ñ‚ÐµÑÑ‚Ð¾Ð² *************************************************
+        // Ð¼Ð¾Ð¶Ð½Ð¾ Ð·Ð°Ð´Ð°Ñ‚ÑŒ Ð´Ð°Ñ‚Ñƒ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐ³Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ð° ÑÐ¿Ð»ÑÑˆÐ° Ñ‡ÐµÑ€ÐµÐ· Ñ€Ð°Ð¿Ð°Ð¼ÐµÑ‚Ñ€ ?splash_date=2012-10-15
+        // ÐµÑÐ»Ð¸ Ð¾ÑÑ‚Ð°Ð²Ð¸Ñ‚ÑŒ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€ Ð¿ÑƒÑÑ‚Ñ‹Ð¼ (?splash_date=), Ñ‚Ð¾ Ð´Ð°Ñ‚Ð° Ð² ÑÐµÑÑÐ¸Ð¸ Ð¾Ð±Ð½ÑƒÐ»ÑÐµÑ‚ÑÑ Ð¸ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð±ÐµÑ€ÑƒÑ‚ÑÑ Ð¸Ð· Ð±Ð°Ð·Ñ‹
         if (defined('SERVER') && (SERVER === 'beta' || SERVER === 'alpha') && isset($_GET['splash_date'])) {
             if ($_GET['splash_date']) {
                 $_SESSION['splash_last_date'] = strtotime($_GET['splash_date']);
@@ -121,12 +121,12 @@ class splash_screens
         $currentTime = time();
         $show_for_pro = false;
 
-        // êîãäà ïîñëåäíèé ðàç ïîêàçûâàëñÿ ñïëýø
+        // ÐºÐ¾Ð³Ð´Ð° Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ð¸Ð¹ Ñ€Ð°Ð· Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ð»ÑÑ ÑÐ¿Ð»ÑÑˆ
         if (isset($_SESSION['splash_last_date'])) {
             $lastTime = $_SESSION['splash_last_date'];
         } else {
             $lastDate = self::getSplashLastDate();
-            // åñëè â áàçå íå ñîõðàíåíà äàòà ïîñëåäíåãî ïîêàçà, çíà÷èò íà÷íåì ñòàâèì äàòó èç ïðîøëîãî ÷òîáû ïîêàçàòü ñïëåø
+            // ÐµÑÐ»Ð¸ Ð² Ð±Ð°Ð·Ðµ Ð½Ðµ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ð° Ð´Ð°Ñ‚Ð° Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐ³Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ð°, Ð·Ð½Ð°Ñ‡Ð¸Ñ‚ Ð½Ð°Ñ‡Ð½ÐµÐ¼ ÑÑ‚Ð°Ð²Ð¸Ð¼ Ð´Ð°Ñ‚Ñƒ Ð¸Ð· Ð¿Ñ€Ð¾ÑˆÐ»Ð¾Ð³Ð¾ Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ ÑÐ¿Ð»ÐµÑˆ
             if (!$lastDate) {
                 $show_for_pro = true;
                 $lastDate = '1970-01-01 00:00:01';
@@ -135,19 +135,19 @@ class splash_screens
             $lastTime = strtotime($lastDate);
         }
 
-        $pastTime = $currentTime - $lastTime; // ñêîëüêî âðåìåíè ïðîøëî
+        $pastTime = $currentTime - $lastTime; // ÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð¸ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾
         $weekTime = 3600 * 24 * 7;
         $monthTime = 3600 * 24 * 30;
         
-        // åñëè ïðîøëî ìåíüøå äâóõ íåäåëü ñ ïîñëåäíåãî ïîêàçà ñïëýøà? òî ñïëýø íå ïîêàçûâàåì
+        // ÐµÑÐ»Ð¸ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾ Ð¼ÐµÐ½ÑŒÑˆÐµ Ð´Ð²ÑƒÑ… Ð½ÐµÐ´ÐµÐ»ÑŒ Ñ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐ³Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ð° ÑÐ¿Ð»ÑÑˆÐ°? Ñ‚Ð¾ ÑÐ¿Ð»ÑÑˆ Ð½Ðµ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÐ¼
         if ($pastTime < $weekTime*2) {
             return false;
         }
         
-        // åñëè äîøëè äî ñþäà, çíà÷èò ïðîøëî áîëüøå äâóõ íåäåëü
+        // ÐµÑÐ»Ð¸ Ð´Ð¾ÑˆÐ»Ð¸ Ð´Ð¾ ÑÑŽÐ´Ð°, Ð·Ð½Ð°Ñ‡Ð¸Ñ‚ Ð¿Ñ€Ð¾ÑˆÐ»Ð¾ Ð±Ð¾Ð»ÑŒÑˆÐµ Ð´Ð²ÑƒÑ… Ð½ÐµÐ´ÐµÐ»ÑŒ
         
        
-        // åñëè íå PRO ïîëó÷àé ñïëýø
+        // ÐµÑÐ»Ð¸ Ð½Ðµ PRO Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ð¹ ÑÐ¿Ð»ÑÑˆ
         if (!is_pro() || $show_for_pro) {
             $_SESSION['splash_show'] = $_SESSION['splash_show'] ^ $splashType;
             self::saveSplashLastDate($currentTime);
@@ -156,8 +156,8 @@ class splash_screens
     }
     
     /**
-     * ïîëó÷àåì äàòó ïîñëåäíåãî ïîêàçà ñïëýøà èç òàáëèöû users
-     * @return string $lastDate â ôîðìàòå YYYY-MM-DD HH:MM:SS
+     * Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ð´Ð°Ñ‚Ñƒ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐ³Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ð° ÑÐ¿Ð»ÑÑˆÐ° Ð¸Ð· Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ‹ users
+     * @return string $lastDate Ð² Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ðµ YYYY-MM-DD HH:MM:SS
      */
     function getSplashLastDate () {
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/users.php");
@@ -168,8 +168,8 @@ class splash_screens
     }
     
     /**
-     * ñîõðàíÿåì äàòó ïîñëåäíåãî ïîêàçà ñïëýøà
-     * @param integer $unixTime â ôîðìàòå UnixTime
+     * ÑÐ¾Ñ…Ñ€Ð°Ð½ÑÐµÐ¼ Ð´Ð°Ñ‚Ñƒ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐ³Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ð° ÑÐ¿Ð»ÑÑˆÐ°
+     * @param integer $unixTime Ð² Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚Ðµ UnixTime
      */
     function saveSplashLastDate ($unixTime) {
         $_SESSION['splash_last_date'] = $unixTime;

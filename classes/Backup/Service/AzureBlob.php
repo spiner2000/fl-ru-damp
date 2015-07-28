@@ -12,29 +12,29 @@ class Backup_Service_AzureBlob extends Backup_Service_Abstract
 {
     const DELETED_CONTAINER = 'deleted';
     
-    //Ïàðàìåòðû ñîåäèíåíèÿ
+    //ÐŸÐ°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹ ÑÐ¾ÐµÐ´Ð¸Ð½ÐµÐ½Ð¸Ñ
     protected $connectionString;
     
-    //òåêóùèé êîíòåéíåð
+    //Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€
     protected $containerName;
-    //òåêóøåå èìÿ äàííûõ
+    //Ñ‚ÐµÐºÑƒÑˆÐµÐµ Ð¸Ð¼Ñ Ð´Ð°Ð½Ð½Ñ‹Ñ…
     protected $blobName;
     
-    //ïðîâåðÿòü è ñîçäâàòü êîíòåéíåð
+    //Ð¿Ñ€Ð¾Ð²ÐµÑ€ÑÑ‚ÑŒ Ð¸ ÑÐ¾Ð·Ð´Ð²Ð°Ñ‚ÑŒ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€
     protected $createContainerName = true;
 
-    //ñïèñîê êîíòåéíåðîâ êîòîðûå óæå áûëè ñîçäàíû è ñóùåñòâóþò
+    //ÑÐ¿Ð¸ÑÐ¾Ðº ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð¾Ð² ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ ÑƒÐ¶Ðµ Ð±Ñ‹Ð»Ð¸ ÑÐ¾Ð·Ð´Ð°Ð½Ñ‹ Ð¸ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‚
     protected $existContainers = array();
 
-    //ïðåôèêñ ïóòè èëè url ê ôàéëó
+    //Ð¿Ñ€ÐµÑ„Ð¸ÐºÑ Ð¿ÑƒÑ‚Ð¸ Ð¸Ð»Ð¸ url Ðº Ñ„Ð°Ð¹Ð»Ñƒ
     protected $filePrefix;
 
 
-    //îáüåêò âçàèìîäåéñòâèÿ ñ ñåðâèñîì
+    //Ð¾Ð±ÑŒÐµÐºÑ‚ Ð²Ð·Ð°Ð¸Ð¼Ð¾Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ Ñ ÑÐµÑ€Ð²Ð¸ÑÐ¾Ð¼
     protected $blobRestProxy;
     
     /**
-     * Êîíñòðóêòîð îáüåêòà
+     * ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ Ð¾Ð±ÑŒÐµÐºÑ‚Ð°
      * 
      * @param type $options
      * @throws Exception
@@ -43,8 +43,8 @@ class Backup_Service_AzureBlob extends Backup_Service_Abstract
     {
         $connectionOption = array();
         
-        if(isset($options['ÑreateContainerName'])) {
-            $this->createContainerName = $options['ÑreateContainerName'] === true;
+        if(isset($options['Ð¡reateContainerName'])) {
+            $this->createContainerName = $options['Ð¡reateContainerName'] === true;
         }
         
         if(!isset($options['FilePrefix'])){
@@ -85,8 +85,8 @@ class Backup_Service_AzureBlob extends Backup_Service_Abstract
     
 
     /**
-     * Óñòàíîâèòü îòíîñèòåëüíûé ïóòü ê ôàéëó
-     * ïåðâàÿ êîìïîíåíòà ïóòè ÿâëÿåòñÿ êîíòåéíåðîì Blob õðàíèëèùà
+     * Ð£ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð¾Ñ‚Ð½Ð¾ÑÐ¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¹ Ð¿ÑƒÑ‚ÑŒ Ðº Ñ„Ð°Ð¹Ð»Ñƒ
+     * Ð¿ÐµÑ€Ð²Ð°Ñ ÐºÐ¾Ð¼Ð¿Ð¾Ð½ÐµÐ½Ñ‚Ð° Ð¿ÑƒÑ‚Ð¸ ÑÐ²Ð»ÑÐµÑ‚ÑÑ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð¾Ð¼ Blob Ñ…Ñ€Ð°Ð½Ð¸Ð»Ð¸Ñ‰Ð°
      * 
      * @param type $filepath
      */
@@ -110,7 +110,7 @@ class Backup_Service_AzureBlob extends Backup_Service_Abstract
 
     
     /**
-     * Ñîçäàòü ïðîèçâîëüíûé êîíòåéíåð
+     * Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ Ð¿Ñ€Ð¾Ð¸Ð·Ð²Ð¾Ð»ÑŒÐ½Ñ‹Ð¹ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€
      * 
      * @param type $name
      * @throws \WindowsAzure\Common\ServiceException
@@ -122,15 +122,15 @@ class Backup_Service_AzureBlob extends Backup_Service_Abstract
         
         try
         {
-            // Ñîçäàíèå êîíòåéíåðà.
+            // Ð¡Ð¾Ð·Ð´Ð°Ð½Ð¸Ðµ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð°.
             $this->blobRestProxy->createContainer($name, $createContainerOptions);
         }
         catch(ServiceException $e)
         {
-            //@todo: íè÷åãî íå äåëàåì åñëè âäðóã êîíòåéíåð óæå ñîçäàí
+            //@todo: Ð½Ð¸Ñ‡ÐµÐ³Ð¾ Ð½Ðµ Ð´ÐµÐ»Ð°ÐµÐ¼ ÐµÑÐ»Ð¸ Ð²Ð´Ñ€ÑƒÐ³ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€ ÑƒÐ¶Ðµ ÑÐ¾Ð·Ð´Ð°Ð½
             //http://msdn.microsoft.com/ru-ru/library/windowsazure/dd179439.aspx
             if($e->getCode() != 409) {
-                //Çíà÷èò äðóãàÿ îøèáêà è ïîñåìó áðîñàåì ýêñåïøåí
+                //Ð—Ð½Ð°Ñ‡Ð¸Ñ‚ Ð´Ñ€ÑƒÐ³Ð°Ñ Ð¾ÑˆÐ¸Ð±ÐºÐ° Ð¸ Ð¿Ð¾ÑÐµÐ¼Ñƒ Ð±Ñ€Ð¾ÑÐ°ÐµÐ¼ ÑÐºÑÐµÐ¿ÑˆÐµÐ½
                 throw $e;
             }
         }        
@@ -138,15 +138,15 @@ class Backup_Service_AzureBlob extends Backup_Service_Abstract
     
    
     /**
-     * Ñîçäàåì êîíòåéíåð åñëè åñòü âîçìîæíîñòü
+     * Ð¡Ð¾Ð·Ð´Ð°ÐµÐ¼ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€ ÐµÑÐ»Ð¸ ÐµÑÑ‚ÑŒ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÑŒ
      * 
      * @return boolean
      * @throws \WindowsAzure\Common\ServiceException
      */
     public function createContainerIfPossible()
     {
-        //Åñëè êîíòåéíåð óæå ñîçäàâàëñÿ 
-        //èëè óñòàíîâëåíà îïöèÿ íå ïðîâåðÿòü íàëè÷èå òî âûõîäèì
+        //Ð•ÑÐ»Ð¸ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€ ÑƒÐ¶Ðµ ÑÐ¾Ð·Ð´Ð°Ð²Ð°Ð»ÑÑ 
+        //Ð¸Ð»Ð¸ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð° Ð¾Ð¿Ñ†Ð¸Ñ Ð½Ðµ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÑÑ‚ÑŒ Ð½Ð°Ð»Ð¸Ñ‡Ð¸Ðµ Ñ‚Ð¾ Ð²Ñ‹Ñ…Ð¾Ð´Ð¸Ð¼
         if(in_array($this->containerName, $this->existContainers) || 
            !$this->createContainerName) {
             return false;
@@ -154,7 +154,7 @@ class Backup_Service_AzureBlob extends Backup_Service_Abstract
 
         $this->createContainer($this->containerName);
         
-        //êîëëåêöèîíèðóåì ñîçäàííûå êîíòåéíåðû
+        //ÐºÐ¾Ð»Ð»ÐµÐºÑ†Ð¸Ð¾Ð½Ð¸Ñ€ÑƒÐµÐ¼ ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ñ‹Ðµ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ñ‹
         $this->existContainers[] = $this->containerName;
         return true;
     }
@@ -162,7 +162,7 @@ class Backup_Service_AzureBlob extends Backup_Service_Abstract
 
 
     /**
-     * Çàãðóçêà Blob â êîíòåéíåð
+     * Ð—Ð°Ð³Ñ€ÑƒÐ·ÐºÐ° Blob Ð² ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€
      * 
      * @param type $filepath
      * @return boolean
@@ -175,7 +175,7 @@ class Backup_Service_AzureBlob extends Backup_Service_Abstract
 
         $fullpath = "{$this->filePrefix}/{$this->filepath}";
         
-        // âîçâðàùàåò mime-òèï
+        // Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ mime-Ñ‚Ð¸Ð¿
         $finfo = finfo_open(FILEINFO_MIME_TYPE); 
         $mime = finfo_file($finfo, $fullpath);
         finfo_close($finfo);
@@ -193,7 +193,7 @@ class Backup_Service_AzureBlob extends Backup_Service_Abstract
         $options = new CreateBlobOptions();
         $options->setBlobContentType($mime);
         
-        //Ïåðåäà÷à blob-îáúåêòà
+        //ÐŸÐµÑ€ÐµÐ´Ð°Ñ‡Ð° blob-Ð¾Ð±ÑŠÐµÐºÑ‚Ð°
         $this->blobRestProxy->createBlockBlob(
                $this->containerName, 
                $this->blobName, 
@@ -205,7 +205,7 @@ class Backup_Service_AzureBlob extends Backup_Service_Abstract
     
     
     /**
-     * Óäàëåíèå Blob èç êîíòåéíåðà
+     * Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ Blob Ð¸Ð· ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð°
      * 
      * @param type $filepath
      * @return boolean
@@ -214,14 +214,14 @@ class Backup_Service_AzureBlob extends Backup_Service_Abstract
     {
         $this->setFilePath($filepath);
         
-        //Êîïèðóåì â óäàëåííûå
+        //ÐšÐ¾Ð¿Ð¸Ñ€ÑƒÐµÐ¼ Ð² ÑƒÐ´Ð°Ð»ÐµÐ½Ð½Ñ‹Ðµ
         $this->blobRestProxy->copyBlob(
                 self::DELETED_CONTAINER, 
                 $this->filepath, 
                 $this->containerName, 
                 $this->blobName);
         
-        //Óäàëåíèå Blob
+        //Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ Blob
         $this->blobRestProxy->deleteBlob(
                 $this->containerName, 
                 $this->blobName);
@@ -231,26 +231,26 @@ class Backup_Service_AzureBlob extends Backup_Service_Abstract
     
     
     /**
-     * Êîïèðîâàíèå Blob
+     * ÐšÐ¾Ð¿Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Blob
      * 
      * @param type $from
      * @param type $to
      */
     public function copy($from, $to)
     {
-        //ïîëó÷àåì èñòî÷íèê
+        //Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ð¸ÑÑ‚Ð¾Ñ‡Ð½Ð¸Ðº
         $this->setFilePath($from);
         $fromContainerName = $this->containerName;
         $fromBlobName = $this->blobName;
         
-        //ïîëó÷àåì ïîëó÷àòåëü
+        //Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ñ‚ÐµÐ»ÑŒ
         $this->setFilePath($to);
         $toContainerName = $this->containerName;
         $toBlobName = $this->blobName; 
-        //ïðîáóåì ñîçäàòü êîíòåéíåð ïîëó÷àòåëü
+        //Ð¿Ñ€Ð¾Ð±ÑƒÐµÐ¼ ÑÐ¾Ð·Ð´Ð°Ñ‚ÑŒ ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€ Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ñ‚ÐµÐ»ÑŒ
         $this->createContainerIfPossible();
         
-        //Êîïèðóåì
+        //ÐšÐ¾Ð¿Ð¸Ñ€ÑƒÐµÐ¼
         $this->blobRestProxy->copyBlob(
                 $toContainerName, 
                 $toBlobName, 

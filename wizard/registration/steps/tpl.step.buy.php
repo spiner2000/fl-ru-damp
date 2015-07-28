@@ -8,12 +8,12 @@ window.addEvent('domready',
 
 <div class="b-layout__right b-layout__right_width_72ps b-layout__right_float_right">
     <?php if($payed) { ?>
-    <div class="b-layout__txt b-layout__txt_padbot_40">Для того чтобы приобрести выбранные вами услуги, необходимо <a class="b-layout__link" href="/bill/" target="_blank">пополнить личный счет</a> на сайте.</div>				
-        <h2 class="b-layout__title b-layout__title_padbot_20">Вы заказали услуги:</h2>
+    <div class="b-layout__txt b-layout__txt_padbot_40">Р”Р»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ РїСЂРёРѕР±СЂРµСЃС‚Рё РІС‹Р±СЂР°РЅРЅС‹Рµ РІР°РјРё СѓСЃР»СѓРіРё, РЅРµРѕР±С…РѕРґРёРјРѕ <a class="b-layout__link" href="/bill/" target="_blank">РїРѕРїРѕР»РЅРёС‚СЊ Р»РёС‡РЅС‹Р№ СЃС‡РµС‚</a> РЅР° СЃР°Р№С‚Рµ.</div>				
+        <h2 class="b-layout__title b-layout__title_padbot_20">Р’С‹ Р·Р°РєР°Р·Р°Р»Рё СѓСЃР»СѓРіРё:</h2>
         <form method="POST" name="frm" id="frm">
             <input type="hidden" name="action" value="upd_pay_options">
             <?php 
-            // был ли заказан или куплен ПРО акк.
+            // Р±С‹Р» Р»Рё Р·Р°РєР°Р·Р°РЅ РёР»Рё РєСѓРїР»РµРЅ РџР Рћ Р°РєРє.
             $is_pro = is_pro();
             foreach($payed as $k=>$pay) { ?>
                 <input type="hidden" name="options[<?=$pay['id']?>]" value="1">
@@ -22,13 +22,13 @@ window.addEvent('domready',
                 }
             }
 
-            // бонусная сумма (для ПРО = 10, для неПРО = 0)
+            // Р±РѕРЅСѓСЃРЅР°СЏ СЃСѓРјРјР° (РґР»СЏ РџР Рћ = 10, РґР»СЏ РЅРµРџР Рћ = 0)
             $proBonus = $is_pro ? new_projects::PRICE_ADDED : 0;
             ?>
             <input type="hidden" name="pro_bonus" value="<?= $proBonus; ?>">
             <input type="hidden" name="is_pro" value="<?= is_pro() ? 1 : 0 ?>">
         <?php foreach($payed as $k=>$pay) {
-            // если уже куплен ПРО, то выделение цветом - бесплатно
+            // РµСЃР»Рё СѓР¶Рµ РєСѓРїР»РµРЅ РџР Рћ, С‚Рѕ РІС‹РґРµР»РµРЅРёРµ С†РІРµС‚РѕРј - Р±РµСЃРїР»Р°С‚РЅРѕ
             if (is_pro() && $pay['op_code'] == 53 && $pay['option'] == 2) {
                 if (!is_array($disabled)) {
                     $disabled = array(0);
@@ -36,13 +36,13 @@ window.addEvent('domready',
                 $disabled[$pay['id']] = true;                    
             }
             if (!$disabled[$pay['id']]) {
-                // учитываем количество дней для "Закрепления проекта на верху"
+                // СѓС‡РёС‚С‹РІР°РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ РґРЅРµР№ РґР»СЏ "Р—Р°РєСЂРµРїР»РµРЅРёСЏ РїСЂРѕРµРєС‚Р° РЅР° РІРµСЂС…Сѓ"
                 if ((int)$pay['option'] === 1) {
                     $days = $pay['top_count'];
                 } else {
                     $days = 1;
                 }
-                // определяем стоимость позиции учитывая бонус для ПРО
+                // РѕРїСЂРµРґРµР»СЏРµРј СЃС‚РѕРёРјРѕСЃС‚СЊ РїРѕР·РёС†РёРё СѓС‡РёС‚С‹РІР°СЏ Р±РѕРЅСѓСЃ РґР»СЏ РџР Рћ
                 $ammount = $pay['ammount'] - ($pay['op_code'] != 15 ? $proBonus * $days : 0);
                 $sum += $ammount;
             } ?>
@@ -54,48 +54,48 @@ window.addEvent('domready',
                 <label class="b-check__label b-check__label_fontsize_13" >
                     <?php switch($pay['op_code']) {
                         case 15:
-                            ?>Аккаунт  <span class="b-icon b-icon__pro b-icon__pro_e"></span> на <?= ($pay['ammount']/10)?> <?= ending($pay['ammount']/10, "месяц", "месяца", "месяцев");?><?
+                            ?>РђРєРєР°СѓРЅС‚  <span class="b-icon b-icon__pro b-icon__pro_e"></span> РЅР° <?= ($pay['ammount']/10)?> <?= ending($pay['ammount']/10, "РјРµСЃСЏС†", "РјРµСЃСЏС†Р°", "РјРµСЃСЏС†РµРІ");?><?
                             break;
                         case 53:
                             switch($pay['option']) {
                                 case 1:
-                                    ?>Закрепление <?=$pay['type'] == 1?"конкурса":"проекта"?> «<?=$pay['project_name']?>» наверху ленты<?
+                                    ?>Р—Р°РєСЂРµРїР»РµРЅРёРµ <?=$pay['type'] == 1?"РєРѕРЅРєСѓСЂСЃР°":"РїСЂРѕРµРєС‚Р°"?> В«<?=$pay['project_name']?>В» РЅР°РІРµСЂС…Сѓ Р»РµРЅС‚С‹<?
                                     break;
                                 case 2:
-                                    ?>Выделение цветом <?=$pay['type'] == 1?"конкурса":"проекта"?> «<?=$pay['project_name']?>»<?
+                                    ?>Р’С‹РґРµР»РµРЅРёРµ С†РІРµС‚РѕРј <?=$pay['type'] == 1?"РєРѕРЅРєСѓСЂСЃР°":"РїСЂРѕРµРєС‚Р°"?> В«<?=$pay['project_name']?>В»<?
                                     break;
                                 case 3:
-                                    ?>Выделение жирным <?=$pay['type'] == 1?"конкурса":"проекта"?> «<?=$pay['project_name']?>»<?
+                                    ?>Р’С‹РґРµР»РµРЅРёРµ Р¶РёСЂРЅС‹Рј <?=$pay['type'] == 1?"РєРѕРЅРєСѓСЂСЃР°":"РїСЂРѕРµРєС‚Р°"?> В«<?=$pay['project_name']?>В»<?
                                     break;
                                 case 4:
-                                    ?>Логотип для <?=$pay['type'] == 1?"конкурса":"проекта"?> «<?=$pay['project_name']?>»<?
+                                    ?>Р›РѕРіРѕС‚РёРї РґР»СЏ <?=$pay['type'] == 1?"РєРѕРЅРєСѓСЂСЃР°":"РїСЂРѕРµРєС‚Р°"?> В«<?=$pay['project_name']?>В»<?
                                     break;
                                 default:
-                                    ?>Платный <?=$pay['type'] == 1?"конкурс":"проект"?> «<?=$pay['project_name']?>»<?
+                                    ?>РџР»Р°С‚РЅС‹Р№ <?=$pay['type'] == 1?"РєРѕРЅРєСѓСЂСЃ":"РїСЂРѕРµРєС‚"?> В«<?=$pay['project_name']?>В»<?
                                     break;
                             }
                             break;
                         case 61:
-                            ?><?=$pay['option']?> <?=ending($pay['option'], 'платный','платных','платных')?> <?=ending($pay['option'], 'ответ', 'ответа', 'ответов')?> на <?= ending($pay['option'], 'проект', 'проекты', 'проекты')?><?
+                            ?><?=$pay['option']?> <?=ending($pay['option'], 'РїР»Р°С‚РЅС‹Р№','РїР»Р°С‚РЅС‹С…','РїР»Р°С‚РЅС‹С…')?> <?=ending($pay['option'], 'РѕС‚РІРµС‚', 'РѕС‚РІРµС‚Р°', 'РѕС‚РІРµС‚РѕРІ')?> РЅР° <?= ending($pay['option'], 'РїСЂРѕРµРєС‚', 'РїСЂРѕРµРєС‚С‹', 'РїСЂРѕРµРєС‚С‹')?><?
                             break;
                         case 76:
-                            ?>Аккаунт  <span class="b-icon b-icon__pro b-icon__pro_f"></span> на 1 неделю<?
+                            ?>РђРєРєР°СѓРЅС‚  <span class="b-icon b-icon__pro b-icon__pro_f"></span> РЅР° 1 РЅРµРґРµР»СЋ<?
                             break;
                         case 48:
-                            ?>Аккаунт  <span class="b-icon b-icon__pro b-icon__pro_f"></span> на 1 месяц<?
+                            ?>РђРєРєР°СѓРЅС‚  <span class="b-icon b-icon__pro b-icon__pro_f"></span> РЅР° 1 РјРµСЃСЏС†<?
                             break;
                         case 49:
-                            ?>Аккаунт  <span class="b-icon b-icon__pro b-icon__pro_f"></span> на 3 месяца<?
+                            ?>РђРєРєР°СѓРЅС‚  <span class="b-icon b-icon__pro b-icon__pro_f"></span> РЅР° 3 РјРµСЃСЏС†Р°<?
                             break;
                         case 50:
-                            ?>Аккаунт  <span class="b-icon b-icon__pro b-icon__pro_f"></span> на 6 месяцев<?
+                            ?>РђРєРєР°СѓРЅС‚  <span class="b-icon b-icon__pro b-icon__pro_f"></span> РЅР° 6 РјРµСЃСЏС†РµРІ<?
                             break;
                         case 51:
-                            ?>Аккаунт  <span class="b-icon b-icon__pro b-icon__pro_f"></span> на 1 год<?
+                            ?>РђРєРєР°СѓРЅС‚  <span class="b-icon b-icon__pro b-icon__pro_f"></span> РЅР° 1 РіРѕРґ<?
                             break;
                         case 9:
                         case 106:
-                            ?>Публикация конкурса «<?=$pay['project_name']?>»<?
+                            ?>РџСѓР±Р»РёРєР°С†РёСЏ РєРѕРЅРєСѓСЂСЃР° В«<?=$pay['project_name']?>В»<?
                             break;
                         default:
                             break;
@@ -107,27 +107,27 @@ window.addEvent('domready',
         
             <div class="b-check b-check_padbot_10">
                 <input type="checkbox" value="" name="" class="b-check__input" />
-                <label class="b-check__label b-check__label_fontsize_13" >Аккаунт  <span class="b-icon b-icon__pro b-icon__pro_e"></span> на 1 неделю</label>
+                <label class="b-check__label b-check__label_fontsize_13" >РђРєРєР°СѓРЅС‚  <span class="b-icon b-icon__pro b-icon__pro_e"></span> РЅР° 1 РЅРµРґРµР»СЋ</label>
             </div>		
             <div class="b-check b-check_padbot_10">
                 <input type="checkbox" value="" name="" class="b-check__input" />
-                <label class="b-check__label b-check__label_fontsize_13" >Публикация конкурса «Требуется дизайн визитки»</label>
+                <label class="b-check__label b-check__label_fontsize_13" >РџСѓР±Р»РёРєР°С†РёСЏ РєРѕРЅРєСѓСЂСЃР° В«РўСЂРµР±СѓРµС‚СЃСЏ РґРёР·Р°Р№РЅ РІРёР·РёС‚РєРёВ»</label>
             </div>		
             <div class="b-check b-check_padbot_10">
                 <input type="checkbox" value="" name="" class="b-check__input" />
-                <label class="b-check__label b-check__label_fontsize_13" >Выделение конкурса «Требуется дизайн визитки»</label>
+                <label class="b-check__label b-check__label_fontsize_13" >Р’С‹РґРµР»РµРЅРёРµ РєРѕРЅРєСѓСЂСЃР° В«РўСЂРµР±СѓРµС‚СЃСЏ РґРёР·Р°Р№РЅ РІРёР·РёС‚РєРёВ»</label>
             </div>		
             <div class="b-check">
                 <input type="checkbox" value="" name="" class="b-check__input" />
-                <label class="b-check__label b-check__label_fontsize_13" >Выделение проекта «Креативный дизайнер в офис. Москва»</label>
+                <label class="b-check__label b-check__label_fontsize_13" >Р’С‹РґРµР»РµРЅРёРµ РїСЂРѕРµРєС‚Р° В«РљСЂРµР°С‚РёРІРЅС‹Р№ РґРёР·Р°Р№РЅРµСЂ РІ РѕС„РёСЃ. РњРѕСЃРєРІР°В»</label>
             </div>	*/?>	
         </form>
-        <h2 class="b-layout__title b-layout__title_padtop_30">Это стоит <span class="b-layout__txt b-layout__txt_fontsize_22 b-layout__txt_color_fd6c30"><span id="scalc_result"><?= round($sum,2)?></span> <?= ending(round($sum), 'рубль', 'рубля', 'рублей');?></span></h2>
-       <?/* <div class="b-layout__txt b-layout__txt_fontsize_11">FM &ndash; это внутренняя валюта сайта. 1 FM = 30 российских рублей.</div> */?>
+        <h2 class="b-layout__title b-layout__title_padtop_30">Р­С‚Рѕ СЃС‚РѕРёС‚ <span class="b-layout__txt b-layout__txt_fontsize_22 b-layout__txt_color_fd6c30"><span id="scalc_result"><?= round($sum,2)?></span> <?= ending(round($sum), 'СЂСѓР±Р»СЊ', 'СЂСѓР±Р»СЏ', 'СЂСѓР±Р»РµР№');?></span></h2>
+       <?/* <div class="b-layout__txt b-layout__txt_fontsize_11">FM &ndash; СЌС‚Рѕ РІРЅСѓС‚СЂРµРЅРЅСЏСЏ РІР°Р»СЋС‚Р° СЃР°Р№С‚Р°. 1 FM = 30 СЂРѕСЃСЃРёР№СЃРєРёС… СЂСѓР±Р»РµР№.</div> */?>
     <?php } else {//if?>
-        <h2 class="b-layout__title">Вы не заказали ни одной услуги</h2>
-        <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_fontsize_11">На сайте есть большое количество дополнительных услуг, которые сделают вашу работу проще и комфортнее. Если вы захотите воспользоваться ими, вам потребуется <a class="b-layout__link" href="/bill/" target="_blank">пополнить личный счет</a>.</div>
-        <?/* <div class="b-layout__txt b-layout__txt_padbot_40 b-layout__txt_fontsize_11">FM &ndash; это внутренняя валюта сайта. 1 FM = 30 российских рублей.</div> */?>
+        <h2 class="b-layout__title">Р’С‹ РЅРµ Р·Р°РєР°Р·Р°Р»Рё РЅРё РѕРґРЅРѕР№ СѓСЃР»СѓРіРё</h2>
+        <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_fontsize_11">РќР° СЃР°Р№С‚Рµ РµСЃС‚СЊ Р±РѕР»СЊС€РѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… СѓСЃР»СѓРі, РєРѕС‚РѕСЂС‹Рµ СЃРґРµР»Р°СЋС‚ РІР°С€Сѓ СЂР°Р±РѕС‚Сѓ РїСЂРѕС‰Рµ Рё РєРѕРјС„РѕСЂС‚РЅРµРµ. Р•СЃР»Рё РІС‹ Р·Р°С…РѕС‚РёС‚Рµ РІРѕСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ РёРјРё, РІР°Рј РїРѕС‚СЂРµР±СѓРµС‚СЃСЏ <a class="b-layout__link" href="/bill/" target="_blank">РїРѕРїРѕР»РЅРёС‚СЊ Р»РёС‡РЅС‹Р№ СЃС‡РµС‚</a>.</div>
+        <?/* <div class="b-layout__txt b-layout__txt_padbot_40 b-layout__txt_fontsize_11">FM &ndash; СЌС‚Рѕ РІРЅСѓС‚СЂРµРЅРЅСЏСЏ РІР°Р»СЋС‚Р° СЃР°Р№С‚Р°. 1 FM = 30 СЂРѕСЃСЃРёР№СЃРєРёС… СЂСѓР±Р»РµР№.</div> */?>
     <?php }//else?>
     <form method="POST" name="frm" id="frm">
         <input type="hidden" name="action" value="upd_pay_options">
@@ -136,15 +136,15 @@ window.addEvent('domready',
             <a href="javascript:void(0)" onclick="$('frm').submit();" class="b-button b-button_rectangle_color_green">
                 <span class="b-button__b1">
                     <span class="b-button__b2 b-button__b2_padlr_15">
-                        <span class="b-button__txt">Завершить мастер</span>
+                        <span class="b-button__txt">Р—Р°РІРµСЂС€РёС‚СЊ РјР°СЃС‚РµСЂ</span>
                     </span>
                 </span>
             </a>&#160;&#160;
-            <span class="b-buttons__txt">&#160;или&#160;</span>
-            <a href="/wizard/registration/?action=exit" class="b-buttons__link b-buttons__link_color_c10601">выйти из мастера</a><span class="b-buttons__txt b-buttons__txt_color_ee1d16">&nbsp;—&nbsp;выбранные вами платные услуги не будут активированы</span> 
+            <span class="b-buttons__txt">&#160;РёР»Рё&#160;</span>
+            <a href="/wizard/registration/?action=exit" class="b-buttons__link b-buttons__link_color_c10601">РІС‹Р№С‚Рё РёР· РјР°СЃС‚РµСЂР°</a><span class="b-buttons__txt b-buttons__txt_color_ee1d16">&nbsp;вЂ”&nbsp;РІС‹Р±СЂР°РЅРЅС‹Рµ РІР°РјРё РїР»Р°С‚РЅС‹Рµ СѓСЃР»СѓРіРё РЅРµ Р±СѓРґСѓС‚ Р°РєС‚РёРІРёСЂРѕРІР°РЅС‹</span> 
         </div>
     </form>
     
-    <div class="b-layout__txt ">Вы можете не пополнять счет сейчас, но в этом случае, все заказанные вами услуги пропадут. Вы сможете их выбрать в любое удобное для вас время на странице &laquo;<a class="b-layout__link" href="/service/">Услуги</a>&raquo;.</div>		
+    <div class="b-layout__txt ">Р’С‹ РјРѕР¶РµС‚Рµ РЅРµ РїРѕРїРѕР»РЅСЏС‚СЊ СЃС‡РµС‚ СЃРµР№С‡Р°СЃ, РЅРѕ РІ СЌС‚РѕРј СЃР»СѓС‡Р°Рµ, РІСЃРµ Р·Р°РєР°Р·Р°РЅРЅС‹Рµ РІР°РјРё СѓСЃР»СѓРіРё РїСЂРѕРїР°РґСѓС‚. Р’С‹ СЃРјРѕР¶РµС‚Рµ РёС… РІС‹Р±СЂР°С‚СЊ РІ Р»СЋР±РѕРµ СѓРґРѕР±РЅРѕРµ РґР»СЏ РІР°СЃ РІСЂРµРјСЏ РЅР° СЃС‚СЂР°РЅРёС†Рµ &laquo;<a class="b-layout__link" href="/service/">РЈСЃР»СѓРіРё</a>&raquo;.</div>		
     
 </div>

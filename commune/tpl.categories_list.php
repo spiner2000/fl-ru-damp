@@ -1,11 +1,11 @@
 <li class="b-menu__item b-menu__item_padbot_10">
     <div class="b-menu__b1">
-        <div id="categories_themes_count_all" class="b-menu__number b-menu__number_fontsize_11"><?= $themes_count . ending($themes_count, ' пост', ' поста', ' постов') ?></div>
+        <div id="categories_themes_count_all" class="b-menu__number b-menu__number_fontsize_11"><?= $themes_count . ending($themes_count, ' РїРѕСЃС‚', ' РїРѕСЃС‚Р°', ' РїРѕСЃС‚РѕРІ') ?></div>
     </div>
     <? if ($curr_cat == 0) { ?>
-        <a class="b-menu__link b-menu__link_color_000" href="<?= getFriendlyUrl('commune_commune', $comm['id']) . '?om=' . $om ?>">Все вместе</a>
+        <a class="b-menu__link b-menu__link_color_000" href="<?= getFriendlyUrl('commune_commune', $comm['id']) . '?om=' . $om ?>">Р’СЃРµ РІРјРµСЃС‚Рµ</a>
     <? } else { ?>
-        <a class="b-menu__link" href="<?= getFriendlyUrl('commune_commune', $comm['id']) . '?om=' . $om ?>">Все разделы</a>
+        <a class="b-menu__link" href="<?= getFriendlyUrl('commune_commune', $comm['id']) . '?om=' . $om ?>">Р’СЃРµ СЂР°Р·РґРµР»С‹</a>
     <? } ?>
 </li>
 <? if($categories) {
@@ -39,9 +39,9 @@
                                                 </div>
                                                 <div class="b-check b-check_padbot_10">
                                                     <input id="commune_fld_add_category_only_for_admin" name="commune_fld_edit_category_only_for_admin" class="b-check__input" type="checkbox" value="1" <?= $category["is_only_for_admin"] === 't' ? ' checked' : '' ?> />
-                                                    <label for="b-check1" class="b-check__label b-check__label_fontsize_13">Публикации только<br>администрации</label>
+                                                    <label for="b-check1" class="b-check__label b-check__label_fontsize_13">РџСѓР±Р»РёРєР°С†РёРё С‚РѕР»СЊРєРѕ<br>Р°РґРјРёРЅРёСЃС‚СЂР°С†РёРё</label>
                                                 </div>
-                                                <a id="category_edit_submit<?= $category['id'] ?>" href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green b-button_block">Изменить название</a>
+                                                <a id="category_edit_submit<?= $category['id'] ?>" href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green b-button_block">РР·РјРµРЅРёС‚СЊ РЅР°Р·РІР°РЅРёРµ</a>
                                             </form>
                                         </div>
                                     </div>
@@ -54,7 +54,7 @@
                 </div>
             <? } ?>
             <div class="b-menu__b1">
-                <div id="categories_themes_count<?= $category['id'] ?>" class="b-menu__number b-menu__number_fontsize_11"><?= $categoryThemes . ending($categoryThemes, ' пост', ' поста', ' постов') ?></div>
+                <div id="categories_themes_count<?= $category['id'] ?>" class="b-menu__number b-menu__number_fontsize_11"><?= $categoryThemes . ending($categoryThemes, ' РїРѕСЃС‚', ' РїРѕСЃС‚Р°', ' РїРѕСЃС‚РѕРІ') ?></div>
             </div>
             <? if ( $category['id'] == $curr_cat && $page == 1 ) { ?>
                 <?= hyphen_words($category['name']) ?>
@@ -65,7 +65,7 @@
         </li>
         <li id="category_deleted<?= $category['id'] ?>" class="b-menu__item b-menu__item_padbot_10 i-button" style="display:none">
             <div class="b-fon b-fon_width_full">
-                <div class="b-fon__body b-fon__body_pad_5 b-fon__body_fontsize_11 b-fon__body_bg_ffeeeb">Удален. <a id="category_recover<?= $category['id'] ?>" class="b-fon__link" href="javascript:void(0)">Восстановить</a></div>
+                <div class="b-fon__body b-fon__body_pad_5 b-fon__body_fontsize_11 b-fon__body_bg_ffeeeb">РЈРґР°Р»РµРЅ. <a id="category_recover<?= $category['id'] ?>" class="b-fon__link" href="javascript:void(0)">Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ</a></div>
             </div>
         </li>
     <? }

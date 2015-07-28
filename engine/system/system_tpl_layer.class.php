@@ -1,33 +1,33 @@
 <?php
 /**
- * Êëàññ äëÿ îáðàáîòêè â âûïîëíåíèÿ øàáëîíîâ
+ * ÐšÐ»Ð°ÑÑ Ð´Ð»Ñ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ¸ Ð² Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð¾Ð²
  */
 class system_tpl_layer {
 	/**
-	 * Àäðåñ øàáëîíîâ
+	 * ÐÐ´Ñ€ÐµÑ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð¾Ð²
 	 * @var string
 	 */
 	private $templates_dir = "";
 	/**
-	 * Àäðåñ äëÿ îòêîìïèëèðîâàííûõ ôàéëîâ
+	 * ÐÐ´Ñ€ÐµÑ Ð´Ð»Ñ Ð¾Ñ‚ÐºÐ¾Ð¼Ð¿Ð¸Ð»Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ñ… Ñ„Ð°Ð¹Ð»Ð¾Ð²
 	 * @var string
 	 */  
 	private $cache_dir = "";
 	/**
-	 * Ïðèíóäèòåëüíî êîìïèëèðîâàòü êàæäûé ðàç
+	 * ÐŸÑ€Ð¸Ð½ÑƒÐ´Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ ÐºÐ¾Ð¼Ð¿Ð¸Ð»Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÐºÐ°Ð¶Ð´Ñ‹Ð¹ Ñ€Ð°Ð·
 	 * @var bool
 	 */  
 	private $force_compile = 0; 
     private $template_data = false;
 	/**
-	 * Êîìïèëèðîâàòü êàæäûå - ñåêóíä
+	 * ÐšÐ¾Ð¼Ð¿Ð¸Ð»Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÐºÐ°Ð¶Ð´Ñ‹Ðµ - ÑÐµÐºÑƒÐ½Ð´
 	 * @var integer
 	 */   
 	private $cache_time = 20; 
 	private $ti = false; 
 	/**
-	 * Êîíñòðóêòîð
-	 * @param object $template [optional] Àäðåñ äî øàáëîíà
+	 * ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€
+	 * @param object $template [optional] ÐÐ´Ñ€ÐµÑ Ð´Ð¾ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð°
 	 * @return 
 	 */
     function __construct($template=false) {
@@ -39,26 +39,26 @@ class system_tpl_layer {
         $this->ti = new Tpl_inst();
     }
 	/**
-	 * Âîçâðàùàåò àäðåñ ïàïêè øàáëîíîâ
+	 * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð°Ð´Ñ€ÐµÑ Ð¿Ð°Ð¿ÐºÐ¸ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð¾Ð²
 	 * @return 
 	 */
     function getTemplatesDir() {return $this->templates_dir; }
 	/**
-	 * Âîçâðàùàåò àäðåñ ïàïêè êýøà
+	 * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð°Ð´Ñ€ÐµÑ Ð¿Ð°Ð¿ÐºÐ¸ ÐºÑÑˆÐ°
 	 * @return 
 	 */
     function getCacheDir() {return $this->cache_dir; }
 	/**
-	 * Âîçâðàùàåò ïåðåìåííóþ èç øàáëîíà
-	 * @param object $name Èìÿ
-	 * @return Çíà÷åíèå
+	 * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ Ð¸Ð· ÑˆÐ°Ð±Ð»Ð¾Ð½Ð°
+	 * @param object $name Ð˜Ð¼Ñ
+	 * @return Ð—Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ
 	 */
 	function &get($name) {
 		return $this->ti->{$name};
 	}
 	/**
-	 * Óñòàíàâëèâàåò ïåðåìåííûå â ïåðåìåííûå øàáëîí ÷åðåç ìàññèâ
-	 * @param object $arr Ìàññèâ ïåðåìåííûõ
+	 * Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÑ‚ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ðµ Ð² Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ðµ ÑˆÐ°Ð±Ð»Ð¾Ð½ Ñ‡ÐµÑ€ÐµÐ· Ð¼Ð°ÑÑÐ¸Ð²
+	 * @param object $arr ÐœÐ°ÑÑÐ¸Ð² Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ñ…
 	 * @return 
 	 */
     function sets($arr) {
@@ -71,33 +71,33 @@ class system_tpl_layer {
         return get_object_vars($this->ti);
     }
 	/**
-	 * Óñòàíàâëèâàåò ïåðåìåííóþ â øàáëîíå
-	 * @param object $name Èìÿ
-	 * @param object $val Çíà÷åíèå
+	 * Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÑ‚ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ Ð² ÑˆÐ°Ð±Ð»Ð¾Ð½Ðµ
+	 * @param object $name Ð˜Ð¼Ñ
+	 * @param object $val Ð—Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ
 	 * @return 
 	 */
     function set($name, $val) {
 		$this->ti->{$name} = $val;
 	}
 	/**
-	 * Óñòàíàâëèâàåò ïåðåìåííóþ â øàáëîíå
-	 * @param object $name Èìÿ
-	 * @param object $val Çíà÷åíèå
+	 * Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÑ‚ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ Ð² ÑˆÐ°Ð±Ð»Ð¾Ð½Ðµ
+	 * @param object $name Ð˜Ð¼Ñ
+	 * @param object $val Ð—Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ
 	 * @return 
 	 */
     public function __set($name, $val) {
         $this->set($name, $val);
     }
     /**
-	 * Âîçâðàùàåò ïåðåìåííóþ èç ïåðåìåííûõ øàáëîíà
-	 * @param object $name Èìÿ
-	 * @return Çíà÷åíèå
+	 * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ Ð¸Ð· Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ñ… ÑˆÐ°Ð±Ð»Ð¾Ð½Ð°
+	 * @param object $name Ð˜Ð¼Ñ
+	 * @return Ð—Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ
 	 */
     public function &__get($name) {
         return $this->get($name);
     }
 	/**
-	 * Óäàëÿåò ïåðåìåííóþ èç ïåðåìåííûõ øàáëîíà
+	 * Ð£Ð´Ð°Ð»ÑÐµÑ‚ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ Ð¸Ð· Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ñ… ÑˆÐ°Ð±Ð»Ð¾Ð½Ð°
 	 * @param object $name
 	 * @return 
 	 */
@@ -108,8 +108,8 @@ class system_tpl_layer {
         
     }
 	/**
-	 * Âíóòðåííÿÿ ôóíêöèÿ âçÿòèÿ øàáëîíà
-	 * @param object $template Ïóòü â øàáëîíó
+	 * Ð’Ð½ÑƒÑ‚Ñ€ÐµÐ½Ð½ÑÑ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ð²Ð·ÑÑ‚Ð¸Ñ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð°
+	 * @param object $template ÐŸÑƒÑ‚ÑŒ Ð² ÑˆÐ°Ð±Ð»Ð¾Ð½Ñƒ
 	 * @return 
 	 */
 	private function parse_template($template) {
@@ -120,7 +120,7 @@ class system_tpl_layer {
         $this->template_data = true;
 	}
 	/**
-	 * Ïîäãîòîâêà èìåí øàáëîííûõ ïåðåìåííûõ
+	 * ÐŸÐ¾Ð´Ð³Ð¾Ñ‚Ð¾Ð²ÐºÐ° Ð¸Ð¼ÐµÐ½ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð½Ñ‹Ñ… Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ñ…
 	 * @param object $matches
 	 * @return 
 	 */
@@ -130,8 +130,8 @@ class system_tpl_layer {
         return $matches[0]; 
     }
 	/**
-	 * Ïàðñåð øàáëîíà
-	 * @param object $file Ôàéë
+	 * ÐŸÐ°Ñ€ÑÐµÑ€ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð°
+	 * @param object $file Ð¤Ð°Ð¹Ð»
 	 * @return 
 	 */
     private function get_template($file) {
@@ -145,26 +145,26 @@ class system_tpl_layer {
         return $file;
     }
     /**
-     * Óñòàíîâêà ïîäãîòîâëåííîãî øàáëîíà â êýø
-     * @param object $file Ôàéë
-     * @param object $data Äàííûå
+     * Ð£ÑÑ‚Ð°Ð½Ð¾Ð²ÐºÐ° Ð¿Ð¾Ð´Ð³Ð¾Ñ‚Ð¾Ð²Ð»ÐµÐ½Ð½Ð¾Ð³Ð¾ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð° Ð² ÐºÑÑˆ
+     * @param object $file Ð¤Ð°Ð¹Ð»
+     * @param object $data Ð”Ð°Ð½Ð½Ñ‹Ðµ
      * @return 
      */
     private function set_cache_template($file,$data) {        
         return file_put_contents($this->get_path_cache_template($file), $data);
     }
     /**
-     * Èçâëåêàåò ïóòü øàáëîíà èç êýøà
-     * @param object $file Ôàéë
-     * @return Ïóòü äî êýø ôàéëà
+     * Ð˜Ð·Ð²Ð»ÐµÐºÐ°ÐµÑ‚ Ð¿ÑƒÑ‚ÑŒ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð° Ð¸Ð· ÐºÑÑˆÐ°
+     * @param object $file Ð¤Ð°Ð¹Ð»
+     * @return ÐŸÑƒÑ‚ÑŒ Ð´Ð¾ ÐºÑÑˆ Ñ„Ð°Ð¹Ð»Ð°
      */
     private function get_path_cache_template($file) {
         $file = str_replace("/", "__", $file);
         return $this->cache_dir.'%tpl_complied_'.$file.'%.tmp';
     }
 	/**
-	 * Âîçâðàøàåò äàííûå øàáëîíà èç êýøà
-	 * @param object $template Ïóòü
+	 * Ð’Ð¾Ð·Ð²Ñ€Ð°ÑˆÐ°ÐµÑ‚ Ð´Ð°Ð½Ð½Ñ‹Ðµ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð° Ð¸Ð· ÐºÑÑˆÐ°
+	 * @param object $template ÐŸÑƒÑ‚ÑŒ
 	 * @return 
 	 */
     private function get_cache_template($template) {
@@ -189,7 +189,7 @@ class system_tpl_layer {
     }
     
 	/**
-	 * Ïðîöåññ âëîæåííûõ ôàéëîâ.
+	 * ÐŸÑ€Ð¾Ñ†ÐµÑÑ Ð²Ð»Ð¾Ð¶ÐµÐ½Ð½Ñ‹Ñ… Ñ„Ð°Ð¹Ð»Ð¾Ð².
 	 * @param object $matches
 	 * @return 
 	 */
@@ -198,7 +198,7 @@ class system_tpl_layer {
         return $file;
     }
 	/**
-	 * Âûâîä øàáëîíà íà ýêðàí
+	 * Ð’Ñ‹Ð²Ð¾Ð´ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð° Ð½Ð° ÑÐºÑ€Ð°Ð½
 	 * @param object $template
 	 * @return 
 	 */
@@ -207,8 +207,8 @@ class system_tpl_layer {
 	}
 	
 	/**
-	 * Âûâîä øàáëîíà íà ýêðàí, î÷èñòêà ïåðåìåííûõ
-	 * @param string $template Ïóòü äî øàáëîíà
+	 * Ð’Ñ‹Ð²Ð¾Ð´ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð° Ð½Ð° ÑÐºÑ€Ð°Ð½, Ð¾Ñ‡Ð¸ÑÑ‚ÐºÐ° Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ñ…
+	 * @param string $template ÐŸÑƒÑ‚ÑŒ Ð´Ð¾ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð°
 	 * @return 
 	 */
 	function display($template) {
@@ -218,8 +218,8 @@ class system_tpl_layer {
 	}
 	
 	/**
-	 * Âûâîä øàáëîíà â ïåðåìåííóþ
-	 * @param string $template Ïóòü äî øàáëîíà
+	 * Ð’Ñ‹Ð²Ð¾Ð´ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð° Ð² Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ
+	 * @param string $template ÐŸÑƒÑ‚ÑŒ Ð´Ð¾ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð°
 	 * @return 
 	 */
 	function fetch($template) {
@@ -230,26 +230,26 @@ class system_tpl_layer {
 	}
 }
 /**
- * Êëàññ øàáëîíà
+ * ÐšÐ»Ð°ÑÑ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð°
  */
 class Tpl_inst {	
     /**
-     * Ïåðåìåííàÿ øàáëîííûõ ôóíêöèé
+     * ÐŸÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ð°Ñ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð½Ñ‹Ñ… Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¹
      * @var
      */
 	private $misc_class = false; 
 	/**
-	 * Îòîáðàùàåò øàáëîí íà ýêðàíå
-	 * @param object $file Èìÿ øàáëîíà
+	 * ÐžÑ‚Ð¾Ð±Ñ€Ð°Ñ‰Ð°ÐµÑ‚ ÑˆÐ°Ð±Ð»Ð¾Ð½ Ð½Ð° ÑÐºÑ€Ð°Ð½Ðµ
+	 * @param object $file Ð˜Ð¼Ñ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð°
 	 * @return 
 	 */
 	function display($file) {
 		include($file);
 	}
 	/**
-	 * Âûïîëíÿåò øàáëîí â ïåðåìåííóþ
-	 * @param object $file Èìÿ ôàéëà
-	 * @return Âûïîëíåííûé øàáëîí
+	 * Ð’Ñ‹Ð¿Ð¾Ð»Ð½ÑÐµÑ‚ ÑˆÐ°Ð±Ð»Ð¾Ð½ Ð² Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ
+	 * @param object $file Ð˜Ð¼Ñ Ñ„Ð°Ð¹Ð»Ð°
+	 * @return Ð’Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð½Ñ‹Ð¹ ÑˆÐ°Ð±Ð»Ð¾Ð½
 	 */
 	function fetch($file) {
 		ob_start();
@@ -259,8 +259,8 @@ class Tpl_inst {
 		return $data;
 	}
 	/**
-	 * Çàäàåò è âîçâðàùàåò êëàññ øàáëîííûõ ôóíêöèé
-	 * @return Êëàññ
+	 * Ð—Ð°Ð´Ð°ÐµÑ‚ Ð¸ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ ÐºÐ»Ð°ÑÑ ÑˆÐ°Ð±Ð»Ð¾Ð½Ð½Ñ‹Ñ… Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¹
+	 * @return ÐšÐ»Ð°ÑÑ
 	 */
     public function misc() {
         if(!$this->misc_class) {

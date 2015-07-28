@@ -19,7 +19,7 @@
 	color: #039 !important;
 	}
 </style>
-<h2 class="fl2_header" style="margin-bottom:5px">Каталог</h2>
+<h2 class="fl2_header" style="margin-bottom:5px">РљР°С‚Р°Р»РѕРі</h2>
 <?php 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/firstpage.php");
 $pUStat = firstpage::ShowStats(); 
@@ -27,15 +27,15 @@ $pUStat = firstpage::ShowStats();
 <span style="color: #333; font-family: Tahoma, sans-serif;"> <b style="color:#6BB24B"><?=$pUStat['u']['count']?></b> <?=$pUStat['u']['phrase']?><br/></span>
 <? if(!$_SESSION['uid'] || (is_emp() && !$_SESSION['anti_uid'])) { ?>
   <div class="fl2_register_to_do">
-    <a href="/registration/?type=frl" class="org">Зарегистрироваться</a> как фрилансер
+    <a href="/registration/?type=frl" class="org">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</a> РєР°Рє С„СЂРёР»Р°РЅСЃРµСЂ
   </div>
 <? } ?>
 <div id="fl2_sidemenu">
 	<div class="all_freelancers" style="background-color: #6BB24B; ">
-		<span><?=$gr_count['-1']?></span><a href="<?=($_SERVER['PHP_SELF'] == '/search/index.php') ? "/employers/" : "/employers/"?>" class="menu_link">Работодатели</a>
+		<span><?=$gr_count['-1']?></span><a href="<?=($_SERVER['PHP_SELF'] == '/search/index.php') ? "/employers/" : "/employers/"?>" class="menu_link">Р Р°Р±РѕС‚РѕРґР°С‚РµР»Рё</a>
 	</div>
 	<div class="all_freelancers" style="background-color: #6BB24B; ">
-		<span><?=$gr_count['-1']?></span><a href="<?=($_SERVER['PHP_SELF'] == '/search/index.php' ) ? "/freelancers/" : "/freelancers/"?>" class="menu_link">Все фрилансеры</a>
+		<span><?=$gr_count['-1']?></span><a href="<?=($_SERVER['PHP_SELF'] == '/search/index.php' ) ? "/freelancers/" : "/freelancers/"?>" class="menu_link">Р’СЃРµ С„СЂРёР»Р°РЅСЃРµСЂС‹</a>
 	</div>
 <?
 	require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/professions.php");
@@ -63,7 +63,7 @@ $pUStat = firstpage::ShowStats();
 		</div><div class="menu_content">
 				<? do {
 				    $in_spec = ($uid && ((is_array($specs) && in_array($prof['id'], $specs)))); ?>
-			<div><a href="/freelancers/<?=$prof['link']?>/" title="<?=htmlspecialchars($prof['profname'])?>" <? if ($prof['id'] == $prof_id) { ?>id="menu_active"<? } ?>><span><?=$prof['count']?></span><?=$prof['profname']?><? if ($in_spec) { ?>&nbsp;<span class="prf-this">&larr;&nbsp;<span>Вы&nbsp;здесь</span></span><? } ?></a></div>
+			<div><a href="/freelancers/<?=$prof['link']?>/" title="<?=htmlspecialchars($prof['profname'])?>" <? if ($prof['id'] == $prof_id) { ?>id="menu_active"<? } ?>><span><?=$prof['count']?></span><?=$prof['profname']?><? if ($in_spec) { ?>&nbsp;<span class="prf-this">&larr;&nbsp;<span>Р’С‹&nbsp;Р·РґРµСЃСЊ</span></span><? } ?></a></div>
 				<?
 					if ($prof['id'] == $prof_id) {
 					  $cur_prof = $prof;

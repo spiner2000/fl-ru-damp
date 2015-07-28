@@ -8,7 +8,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/classes/sms_services.php');
 	var LIMIT_SMS_TO_NUMBER = '<?=sms_gate::SMS_ON_NUMBER_PER_24_HOURS ?>';
 
 	<?php
-	$linkText     = ( $_SESSION['send_sms_time'] > time() && !$_SESSION["unbind_phone_action"] ? "Получить код повторно" : "Получить смс с кодом" );
+	$linkText     = ( $_SESSION['send_sms_time'] > time() && !$_SESSION["unbind_phone_action"] ? "РџРѕР»СѓС‡РёС‚СЊ РєРѕРґ РїРѕРІС‚РѕСЂРЅРѕ" : "РџРѕР»СѓС‡РёС‚СЊ СЃРјСЃ СЃ РєРѕРґРѕРј" );
 	$smsLinkEnable  = sms_gate_a1::$enable_link_css;
 	$smsLinkDisable = sms_gate_a1::$disable_link_css;
 	$smsLinkStyle = $_SESSION['send_sms_time'] > time() ? $smsLinkDisable : $smsLinkEnable;
@@ -33,37 +33,37 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/classes/sms_services.php');
 	<form method="POST" id='main_phone_form'>
 	<input type="hidden" name="type" id="type" value="bind" />
 	<input type="hidden" name="action" value="save_phone" />
-    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20">Привязка мобильного телефона к аккаунту &mdash; <span id="safety_status" class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_fontsize_15">выключена</span></div>
-    <div class="b-layout__txt b-layout__txt_inline-block">Телефон</div>
+    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20">РџСЂРёРІСЏР·РєР° РјРѕР±РёР»СЊРЅРѕРіРѕ С‚РµР»РµС„РѕРЅР° Рє Р°РєРєР°СѓРЅС‚Сѓ &mdash; <span id="safety_status" class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_fontsize_15">РІС‹РєР»СЋС‡РµРЅР°</span></div>
+    <div class="b-layout__txt b-layout__txt_inline-block">РўРµР»РµС„РѕРЅ</div>
     <div class="b-combo b-combo_inline-block b-combo_valign_mid ">
         <div class="b-combo__input b-combo__input_tel b-combo__input_width_170   b-combo__input_phone_countries_dropdown b-combo__input_visible_items_5 use_scroll show_all_records b-combo__input_init_countryPhoneCodes">
             <input type="text"  value="7" maxlength="15" size="12" id="mob_phone" name="mob_phone" class="b-combo__input-text " onfocus="if($('phone_error')) $('phone_error').addClass('b-layout__txt_hide'); if($('phone_bind')) $('phone_bind').removeClass('b-layout__txt_hide')"><label class="b-combo__label" for="mob_phone"></label>
             <span class="b-combo__tel"><span style="background-position:0 -660px" class="b-combo__flag"></span></span> 
         </div>
     </div>
-    <div id="mob_phone_text" class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block">без пробелов и дефиса</div>
-    <div id="sms_sent_ok" class="b-layout__txt b-layout__txt_padtop_20 b-layout__txt_hide">На номер <span></span> было отправлено СМС с кодом.<br />Введите его, чтобы отвязать телефон от аккаунта.</div>
+    <div id="mob_phone_text" class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block">Р±РµР· РїСЂРѕР±РµР»РѕРІ Рё РґРµС„РёСЃР°</div>
+    <div id="sms_sent_ok" class="b-layout__txt b-layout__txt_padtop_20 b-layout__txt_hide">РќР° РЅРѕРјРµСЂ <span></span> Р±С‹Р»Рѕ РѕС‚РїСЂР°РІР»РµРЅРѕ РЎРњРЎ СЃ РєРѕРґРѕРј.<br />Р’РІРµРґРёС‚Рµ РµРіРѕ, С‡С‚РѕР±С‹ РѕС‚РІСЏР·Р°С‚СЊ С‚РµР»РµС„РѕРЅ РѕС‚ Р°РєРєР°СѓРЅС‚Р°.</div>
 	<div class="b-layout__txt b-layout__txt_padtop_20">
         <div id="mob_code_block" class="b-layout__txt b-layout__txt_padbot_15">
-            <div class="b-layout__txt b-layout__txt_inline-block">Код подтверждения&#160;</div>
+            <div class="b-layout__txt b-layout__txt_inline-block">РљРѕРґ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ&#160;</div>
             <div class="b-combo b-combo_inline-block b-combo_valign_mid">
                 <div class="b-combo__input b-combo__input_width_45">
                     <input type="text" name="smscode" id="smscode" class="b-combo__input-text" onfocus="if (this.value=='' && !$('getsms').hasClass('sent_by_focus')) {$('getsms').fireEvent('click');$('getsms').addClass('sent_by_focus')}"><label class="b-combo__label" for="smscode"></label>              
                 </div>
             </div>
-            <div class="b-layout__txt b-layout__txt_inline-block">&#160;<a href="javascript:void(0)" data-field="mob_phone" data-code="smscode" data-form="main_phone_form" id="getsms" class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_bold">Получить смс с кодом</a></div>
-			<div id="sms_error" class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_padtop_10 b-layout__txt_hide">Неправильный код</div>
+            <div class="b-layout__txt b-layout__txt_inline-block">&#160;<a href="javascript:void(0)" data-field="mob_phone" data-code="smscode" data-form="main_phone_form" id="getsms" class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_bold">РџРѕР»СѓС‡РёС‚СЊ СЃРјСЃ СЃ РєРѕРґРѕРј</a></div>
+			<div id="sms_error" class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_padtop_10 b-layout__txt_hide">РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ РєРѕРґ</div>
         </div>
         <div class="b-buttons" id="buttons_step1">
-			<a onclick="User_Phone.savePhone(true);" class="b-button b-button_flat b-button_flat_green" href="javascript:void(0)">Привязать</a>
-           <span class="b-buttons__txt">&#160; <a class="b-buttons__link" href="#" onClick="this.getParent('.b-shadow').addClass('b-shadow_hide');return false;">пока не привязывать</a></span>
+			<a onclick="User_Phone.savePhone(true);" class="b-button b-button_flat b-button_flat_green" href="javascript:void(0)">РџСЂРёРІСЏР·Р°С‚СЊ</a>
+           <span class="b-buttons__txt">&#160; <a class="b-buttons__link" href="#" onClick="this.getParent('.b-shadow').addClass('b-shadow_hide');return false;">РїРѕРєР° РЅРµ РїСЂРёРІСЏР·С‹РІР°С‚СЊ</a></span>
         </div>
 		<div class="b-buttons b-layout__txt_hide" id="buttons_step2">
-           <a class="b-button b-button_flat b-button_flat_green" href="javascript:void(0)" onClick="this.getParent('.b-shadow').addClass('b-shadow_hide');return false;">Закрыть</a>
+           <a class="b-button b-button_flat b-button_flat_green" href="javascript:void(0)" onClick="this.getParent('.b-shadow').addClass('b-shadow_hide');return false;">Р—Р°РєСЂС‹С‚СЊ</a>
         </div>
 		<div class="b-buttons b-layout__txt_hide" id="buttons_step3">
-			<a onclick="User_Phone.savePhone(false);" class="b-button b-button_flat b-button_flat_green" href="javascript:void(0)">Отвязать</a>
-           <span class="b-buttons__txt">&#160; <a class="b-buttons__link" href="#" onClick="this.getParent('.b-shadow').addClass('b-shadow_hide');return false;">пока не отвязывать</a></span>
+			<a onclick="User_Phone.savePhone(false);" class="b-button b-button_flat b-button_flat_green" href="javascript:void(0)">РћС‚РІСЏР·Р°С‚СЊ</a>
+           <span class="b-buttons__txt">&#160; <a class="b-buttons__link" href="#" onClick="this.getParent('.b-shadow').addClass('b-shadow_hide');return false;">РїРѕРєР° РЅРµ РѕС‚РІСЏР·С‹РІР°С‚СЊ</a></span>
         </div>
     </div>
 	</form>

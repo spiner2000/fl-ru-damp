@@ -1,5 +1,5 @@
 <?php 
-// кэшируем версии сделок
+// РєСЌС€РёСЂСѓРµРј РІРµСЂСЃРёРё СЃРґРµР»РѕРє
 $stageVersionsCache = array();
 
 foreach($history as $key=>$event) {
@@ -9,7 +9,7 @@ foreach($history as $key=>$event) {
     switch($event['abbr']) {
         case 'sbr_stages.PAUSE_OVER':
             ?>
-            <div class="b-post__txt b-post__txt_color_a0763b">Этап на паузе &rarr; Этап в работе</div>
+            <div class="b-post__txt b-post__txt_color_a0763b">Р­С‚Р°Рї РЅР° РїР°СѓР·Рµ &rarr; Р­С‚Р°Рї РІ СЂР°Р±РѕС‚Рµ</div>
             <?
             if( ($event['estatus'] != 't' && $sbr->isEmp()) || ($event['fstatus'] != 't' && !$sbr->isEmp()) ) {
                 $update_event[$event['abbr']] = $event['abbr'];
@@ -30,7 +30,7 @@ foreach($history as $key=>$event) {
                     $data['ps_frl'] = pskb::WW;
                 }
                 if ($data['ps_frl'] == pskb::WW) { ?>
-                    <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">C информацией о «Веб-кошельке» и доступных вам возможностях вы можете ознакомиться <noindex><a rel="nofollow" class="b-post__link" href="https://feedback.fl.ru/topic/397421-veb-koshelek-obschaya-informatsiya/">здесь</a></noindex>.</div>
+                    <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">C РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ В«Р’РµР±-РєРѕС€РµР»СЊРєРµВ» Рё РґРѕСЃС‚СѓРїРЅС‹С… РІР°Рј РІРѕР·РјРѕР¶РЅРѕСЃС‚СЏС… РІС‹ РјРѕР¶РµС‚Рµ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ <noindex><a rel="nofollow" class="b-post__link" href="https://feedback.fl.ru/topic/397421-veb-koshelek-obschaya-informatsiya/">Р·РґРµСЃСЊ</a></noindex>.</div>
                 <? } else {
                     $reqv = pskb::getPayedReqvs($data, 'frl');
                     foreach($reqv as $name=>$acc) {
@@ -39,7 +39,7 @@ foreach($history as $key=>$event) {
                         } ?>
                         <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b"><?= $name; ?>&nbsp;&nbsp;&nbsp;&nbsp;<?= $acc; ?></div>
                     <? } ?>
-                    <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">Дополнительно вам доступен <a class="b-post__link" href="https://webpay.pscb.ru/login/auth">«Веб-кошелек»</a> (№ <?= $sbr->data['numPerf'] ?>), который в дальнейшем может быть использован для получения денежных средств. С информацией о «Веб-кошельке» и доступных вам возможностях вы можете ознакомиться <noindex><a rel="nofollow" class="b-post__link" href="https://feedback.fl.ru/topic/397421-veb-koshelek-obschaya-informatsiya/">здесь</a></noindex>.</div>
+                    <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ РІР°Рј РґРѕСЃС‚СѓРїРµРЅ <a class="b-post__link" href="https://webpay.pscb.ru/login/auth">В«Р’РµР±-РєРѕС€РµР»РµРєВ»</a> (в„– <?= $sbr->data['numPerf'] ?>), РєРѕС‚РѕСЂС‹Р№ РІ РґР°Р»СЊРЅРµР№С€РµРј РјРѕР¶РµС‚ Р±С‹С‚СЊ РёСЃРїРѕР»СЊР·РѕРІР°РЅ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ. РЎ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ В«Р’РµР±-РєРѕС€РµР»СЊРєРµВ» Рё РґРѕСЃС‚СѓРїРЅС‹С… РІР°Рј РІРѕР·РјРѕР¶РЅРѕСЃС‚СЏС… РІС‹ РјРѕР¶РµС‚Рµ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ <noindex><a rel="nofollow" class="b-post__link" href="https://feedback.fl.ru/topic/397421-veb-koshelek-obschaya-informatsiya/">Р·РґРµСЃСЊ</a></noindex>.</div>
                 <? }
             }
             if( ($event['estatus'] != 't' && $sbr->isEmp())) {
@@ -53,7 +53,7 @@ foreach($history as $key=>$event) {
                     ?><div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b"><?= $name; ?>&nbsp;&nbsp;&nbsp;&nbsp;<?= $acc; ?></div><?
                 } ?>
                 <? if ($sbr->data['ps_emp'] != pskb::WW && $sbr->data['ps_emp'] != onlinedengi::BANK_YL) { ?>
-                <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">Дополнительно вам доступен <a class="b-post__link" href="https://webpay.pscb.ru/login/auth">«Веб-кошелек»</a> (№ <?= $sbr->data['numCust'] ?>), который в дальнейшем может быть использован в случае возврата средств. С информацией о «Веб-кошельке» и доступных вам возможностях вы можете ознакомиться <noindex><a rel="nofollow" class="b-post__link" href="https://feedback.fl.ru/topic/397421-veb-koshelek-obschaya-informatsiya/">здесь</a></noindex>.</div>
+                <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ РІР°Рј РґРѕСЃС‚СѓРїРµРЅ <a class="b-post__link" href="https://webpay.pscb.ru/login/auth">В«Р’РµР±-РєРѕС€РµР»РµРєВ»</a> (в„– <?= $sbr->data['numCust'] ?>), РєРѕС‚РѕСЂС‹Р№ РІ РґР°Р»СЊРЅРµР№С€РµРј РјРѕР¶РµС‚ Р±С‹С‚СЊ РёСЃРїРѕР»СЊР·РѕРІР°РЅ РІ СЃР»СѓС‡Р°Рµ РІРѕР·РІСЂР°С‚Р° СЃСЂРµРґСЃС‚РІ. РЎ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ В«Р’РµР±-РєРѕС€РµР»СЊРєРµВ» Рё РґРѕСЃС‚СѓРїРЅС‹С… РІР°Рј РІРѕР·РјРѕР¶РЅРѕСЃС‚СЏС… РІС‹ РјРѕР¶РµС‚Рµ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ <noindex><a rel="nofollow" class="b-post__link" href="https://feedback.fl.ru/topic/397421-veb-koshelek-obschaya-informatsiya/">Р·РґРµСЃСЊ</a></noindex>.</div>
                 <? } ?>
             <? }
             if( ($event['estatus'] != 't' && $sbr->isEmp()) || ($event['fstatus'] != 't' && !$sbr->isEmp()) ) {
@@ -74,11 +74,11 @@ foreach($history as $key=>$event) {
             <div class="b-post__txt b-post__txt_padbot_10 b-post__txt_fontsize_15">
                 <?= reformat($event['history_descr'], 30);?>
             </div>
-            <div class="b-post__txt b-post__txt_color_a0763b">Этап в работе &rarr; Этап в арбитраже</div>
+            <div class="b-post__txt b-post__txt_color_a0763b">Р­С‚Р°Рї РІ СЂР°Р±РѕС‚Рµ &rarr; Р­С‚Р°Рї РІ Р°СЂР±РёС‚СЂР°Р¶Рµ</div>
             <div class="b-post__txt b-post__txt_color_a0763b">
-                Старт работ <?= date('d.m.Y', strtotime($stage->data['first_time']))?>, <?= $stage->stageWorkTimeLeft(abs($work_time), array(strtotime($stage->data['first_time']), strtotime($event['xtime'])));?>
+                РЎС‚Р°СЂС‚ СЂР°Р±РѕС‚ <?= date('d.m.Y', strtotime($stage->data['first_time']))?>, <?= $stage->stageWorkTimeLeft(abs($work_time), array(strtotime($stage->data['first_time']), strtotime($event['xtime'])));?>
                  &rarr; 
-                Заморожен  <?= date('d.m.Y', strtotime($event['xtime']))?>
+                Р—Р°РјРѕСЂРѕР¶РµРЅ  <?= date('d.m.Y', strtotime($event['xtime']))?>
             </div>
             <?
             if($sbr->isEmp() && $event['estatus'] != 't') {
@@ -89,9 +89,9 @@ foreach($history as $key=>$event) {
             $completed_time = $event['xtime'];
             ?>
             <div class="b-post__txt b-post__txt_color_a0763b">
-            Старт работ <?= date('d.m.Y', strtotime($stage->data['start_time'] ? $stage->data['start_time'] : $stage->data['first_time'] ))?>
+            РЎС‚Р°СЂС‚ СЂР°Р±РѕС‚ <?= date('d.m.Y', strtotime($stage->data['start_time'] ? $stage->data['start_time'] : $stage->data['first_time'] ))?>
             &rarr;
-            Завершен <?= date('d.m.Y', strtotime($event['xtime']))?>
+            Р—Р°РІРµСЂС€РµРЅ <?= date('d.m.Y', strtotime($event['xtime']))?>
             </div>
             <?
             break;
@@ -103,9 +103,9 @@ foreach($history as $key=>$event) {
             $started_work = 1;
             ?>
             <div class="b-post__txt b-post__txt_color_a0763b">
-            <?= abs($work_time); ?> <?= ending(abs($work_time), 'день', 'дня', 'дней')?> на этап 
+            <?= abs($work_time); ?> <?= ending(abs($work_time), 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№')?> РЅР° СЌС‚Р°Рї 
                 &rarr; 
-            Старт работ <span class="b-layout__bold"><?= date('d.m.Y', strtotime($event['xtime']))?></span><?/*, <?= $stage->stageWorkTimeLeft(abs($work_time), array(strtotime($event['xtime']), strtotime($event['xtime'])), '<span class="b-layout__bold">%s</span>');?>*/?>
+            РЎС‚Р°СЂС‚ СЂР°Р±РѕС‚ <span class="b-layout__bold"><?= date('d.m.Y', strtotime($event['xtime']))?></span><?/*, <?= $stage->stageWorkTimeLeft(abs($work_time), array(strtotime($event['xtime']), strtotime($event['xtime'])), '<span class="b-layout__bold">%s</span>');?>*/?>
             </div>    
             <?
             if($sbr->isEmp() && $event['estatus'] != 't') {
@@ -126,8 +126,8 @@ foreach($history as $key=>$event) {
                 <?= reformat(stripslashes($event['new_val']), 45)?>
             </div>  
             <? }//if?>
-            <div class="b-post__txt b-post__txt_color_a0763b">Этап не начат &rarr; Этап отменен</div>
-            <div class="b-post__txt b-post__txt_color_a0763b"><?=$work_time?> <?= ending($work_time, 'день', 'дня', 'дней');?> на этап &rarr; Отменен <?=date('d.m.Y', strtotime($event['xtime']));?></div>
+            <div class="b-post__txt b-post__txt_color_a0763b">Р­С‚Р°Рї РЅРµ РЅР°С‡Р°С‚ &rarr; Р­С‚Р°Рї РѕС‚РјРµРЅРµРЅ</div>
+            <div class="b-post__txt b-post__txt_color_a0763b"><?=$work_time?> <?= ending($work_time, 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№');?> РЅР° СЌС‚Р°Рї &rarr; РћС‚РјРµРЅРµРЅ <?=date('d.m.Y', strtotime($event['xtime']));?></div>
             <?
             if($sbr->isEmp() && $event['abbr'] == 'sbr.REFUSE' && $event['estatus'] != 't') {
                 $update_event_sbr[$event['abbr']] = $event['abbr'];
@@ -135,7 +135,7 @@ foreach($history as $key=>$event) {
             break;
         case 'sbr.SCHEME_MODIFIED':
             ?>
-            <div class="b-post__txt b-post__txt_color_a0763b">Тип договора «<strong><?= sbr_meta::getNameScheme($event['old_val']);?></strong>» &rarr; Тип договора «<strong><?= sbr_meta::getNameScheme($event['new_val']);?></strong>»</div> 
+            <div class="b-post__txt b-post__txt_color_a0763b">РўРёРї РґРѕРіРѕРІРѕСЂР° В«<strong><?= sbr_meta::getNameScheme($event['old_val']);?></strong>В» &rarr; РўРёРї РґРѕРіРѕРІРѕСЂР° В«<strong><?= sbr_meta::getNameScheme($event['new_val']);?></strong>В»</div> 
             <?
             if($sbr->isEmp() && $event['estatus'] != 't') {
                 $update_event_sbr[$event['abbr']] = $event['abbr'];
@@ -147,12 +147,12 @@ foreach($history as $key=>$event) {
         case 'sbr.COST_SYS_MODIFIED': 
             $cost_sys = $event['new_val'];
             ?>
-            <div class="b-post__txt b-post__txt_color_a0763b">Валюта проекта <?= $GLOBALS['EXRATE_CODES'][$event['old_val']][1]?> &rarr; Валюта проекта <?= $GLOBALS['EXRATE_CODES'][$event['new_val']][1]?></div>   
+            <div class="b-post__txt b-post__txt_color_a0763b">Р’Р°Р»СЋС‚Р° РїСЂРѕРµРєС‚Р° <?= $GLOBALS['EXRATE_CODES'][$event['old_val']][1]?> &rarr; Р’Р°Р»СЋС‚Р° РїСЂРѕРµРєС‚Р° <?= $GLOBALS['EXRATE_CODES'][$event['new_val']][1]?></div>   
             <?
             break;
         case 'sbr_stages.COST_MODIFIED':
             ?>
-            <div class="b-post__txt b-post__txt_color_a0763b">Бюджет этапа <?= sbr_meta::view_cost($event['old_val'], $cost_sys)?> &rarr; Бюджет этапа <?= sbr_meta::view_cost($event['new_val'], $cost_sys)?></div>   
+            <div class="b-post__txt b-post__txt_color_a0763b">Р‘СЋРґР¶РµС‚ СЌС‚Р°РїР° <?= sbr_meta::view_cost($event['old_val'], $cost_sys)?> &rarr; Р‘СЋРґР¶РµС‚ СЌС‚Р°РїР° <?= sbr_meta::view_cost($event['new_val'], $cost_sys)?></div>   
             <?
             break;
         //case 'sbr_stages.REFUSE':
@@ -169,7 +169,7 @@ foreach($history as $key=>$event) {
                             $grp = $changedData[23];
                             $start_work_date = strtotime($grp['xtime']) + 86400 * $grp['new_val'];
                             ?>
-                            <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">Пауза на <?= $grp['new_val']?> <?= ending($grp['new_val'], 'день', 'дня', 'дней')?> &rarr;&nbsp;Возобновление работ <?= date("d.m.Y", $start_work_date);?></div>
+                            <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">РџР°СѓР·Р° РЅР° <?= $grp['new_val']?> <?= ending($grp['new_val'], 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№')?> &rarr;&nbsp;Р’РѕР·РѕР±РЅРѕРІР»РµРЅРёРµ СЂР°Р±РѕС‚ <?= date("d.m.Y", $start_work_date);?></div>
                             <?
                         }
                         
@@ -191,14 +191,14 @@ foreach($history as $key=>$event) {
                             $work_time = (int) $newData['work_days'];
                             ?>
                             <div class="b-post__txt b-post__txt_color_a0763b">
-                                <?= abs($work_time) . ' ' . ending(abs($work_time), 'день', 'дня', 'дней') ?> на этап &rarr; Возобновление работ <?= date('d.m.Y', strtotime($grp['new_val'])); ?>
+                                <?= abs($work_time) . ' ' . ending(abs($work_time), 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№') ?> РЅР° СЌС‚Р°Рї &rarr; Р’РѕР·РѕР±РЅРѕРІР»РµРЅРёРµ СЂР°Р±РѕС‚ <?= date('d.m.Y', strtotime($grp['new_val'])); ?>
                             </div>
                             <?
                         }
                         break;
                     case 9: // sbr_stages.WORKTIME_MODIFIED
                         ?>
-                        <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b"><?= (int)$cdata['old_val']. ' ' . ending((int)$cdata['old_val'], 'день', 'дня', 'дней')?> на этап &rarr; <?= (int)$cdata['new_val']. ' ' . ending((int)$cdata['new_val'], 'день', 'дня', 'дней')?> на этап</div>
+                        <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b"><?= (int)$cdata['old_val']. ' ' . ending((int)$cdata['old_val'], 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№')?> РЅР° СЌС‚Р°Рї &rarr; <?= (int)$cdata['new_val']. ' ' . ending((int)$cdata['new_val'], 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№')?> РЅР° СЌС‚Р°Рї</div>
                         <?
                         break;
                         break;
@@ -217,7 +217,7 @@ foreach($history as $key=>$event) {
                             $stageVersionsCache[$newVersion] = $newData;
                         }
                         ?>
-                        <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">Техническое задание от <a class="b-post__link b-post__link_color_a0763b" href="javascript:void(0)" onclick="$('popup_old_tz_<?= $cdata['id']; ?>').toggleClass('b-shadow_hide');"><?= date('d.m.Y', $newData['date_version_tz'][0])?></a> &rarr; Техническое задание от <a class="b-post__link b-post__link_color_a0763b" href="javascript:void(0)" onclick="$('popup_new_tz_<?= $cdata['id']; ?>').toggleClass('b-shadow_hide');"><?= date('d.m.Y', $newData['date_version_tz'][1])?></a></div>    
+                        <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">РўРµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ РѕС‚ <a class="b-post__link b-post__link_color_a0763b" href="javascript:void(0)" onclick="$('popup_old_tz_<?= $cdata['id']; ?>').toggleClass('b-shadow_hide');"><?= date('d.m.Y', $newData['date_version_tz'][0])?></a> &rarr; РўРµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ РѕС‚ <a class="b-post__link b-post__link_color_a0763b" href="javascript:void(0)" onclick="$('popup_new_tz_<?= $cdata['id']; ?>').toggleClass('b-shadow_hide');"><?= date('d.m.Y', $newData['date_version_tz'][1])?></a></div>    
                         <?
                         break;
                 }
@@ -226,8 +226,8 @@ foreach($history as $key=>$event) {
             break;
         case 'sbr_stages.TZ_MODIFIED':
             
-            // находим данные для новой версии ТЗ
-            // возможно нужная версия ТЗ уже где-то есть, и в базу лезть не надо
+            // РЅР°С…РѕРґРёРј РґР°РЅРЅС‹Рµ РґР»СЏ РЅРѕРІРѕР№ РІРµСЂСЃРёРё РўР—
+            // РІРѕР·РјРѕР¶РЅРѕ РЅСѓР¶РЅР°СЏ РІРµСЂСЃРёСЏ РўР— СѓР¶Рµ РіРґРµ-С‚Рѕ РµСЃС‚СЊ, Рё РІ Р±Р°Р·Сѓ Р»РµР·С‚СЊ РЅРµ РЅР°РґРѕ
             $newVersion = $event['version'];
             if ($newVersion == $stage->data['version']) {
                 $newData = $stage->data;
@@ -241,7 +241,7 @@ foreach($history as $key=>$event) {
             }
             $newAttach = $newData['attach'];
             
-            // находим данные для старой версии ТЗ
+            // РЅР°С…РѕРґРёРј РґР°РЅРЅС‹Рµ РґР»СЏ СЃС‚Р°СЂРѕР№ РІРµСЂСЃРёРё РўР—
             $oldVersion = $newVersion - 1;
             if ($oldVersion == $stage->v_data['frl_version']) {
                 $oldData = $stage->v_data;
@@ -260,13 +260,13 @@ foreach($history as $key=>$event) {
                             <div class="b-shadow__bottom">
                                 <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20">
 
-                                    <h2 class="b-layout__title">Техническое задание от <?= date('d.m.Y [H:i]', strtotime($event['xtime']))?></h2>
+                                    <h2 class="b-layout__title">РўРµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ РѕС‚ <?= date('d.m.Y [H:i]', strtotime($event['xtime']))?></h2>
                                     <div class="b-layout__txt b-layout__txt_overflow_auto b-layout__txt_max-height_250 h_400 overflow_auto">
                                         <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_fontsize_15">
                                             <?= reformat($newData['descr'], 70, 0, 0, 1)?>
                                         </div>
                                         <?php if (is_array($newAttach) && $newAttach && $newAttach = array_filter($newAttach, create_function('$a', 'return $a["is_deleted"] === "f";'))) { ?>
-                                        <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_fontsize_15 b-layout__txt_bold">Вложения</div>
+                                        <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_fontsize_15 b-layout__txt_bold">Р’Р»РѕР¶РµРЅРёСЏ</div>
                                         <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table">
                                             <tbody>
                                                 <? foreach ($newAttach as $doc) { ?>
@@ -281,7 +281,7 @@ foreach($history as $key=>$event) {
                                                         </td>
                                                         <td class="b-layout__right b-layout__right_padleft_20 b-layout__right_padbot_5">
                                                             <div class="b-layout__txt">
-                                                                <a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?=$doc['path'] . $doc['name']?>" target="_blank">Скачать</a>
+                                                                <a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?=$doc['path'] . $doc['name']?>" target="_blank">РЎРєР°С‡Р°С‚СЊ</a>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -298,7 +298,7 @@ foreach($history as $key=>$event) {
                                                         </td>
                                                         <td class="b-layout__right b-layout__right_padleft_20 b-layout__right_padbot_5">
                                                             <div class="b-layout__txt">
-                                                                <a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?=$doc['path'] . $doc['name']?>" target="_blank">Скачать</a>
+                                                                <a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?=$doc['path'] . $doc['name']?>" target="_blank">РЎРєР°С‡Р°С‚СЊ</a>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -326,12 +326,12 @@ foreach($history as $key=>$event) {
                             <div class="b-shadow__bottom">
                                 <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20">
 
-                                    <h2 class="b-layout__title">Техническое задание от <?= date('d.m.Y [H:i]', $tz_time)?></h2>
+                                    <h2 class="b-layout__title">РўРµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ РѕС‚ <?= date('d.m.Y [H:i]', $tz_time)?></h2>
                                     <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_fontsize_15 b-layout__txt_overflow_auto b-layout__txt_max-height_250">
                                         <?= reformat($oldData['descr'], 70, 0, 0, 1); ?>
                                     </div>
                                     <?php if (is_array($oldAttach) && $oldAttach && $oldAttach = array_filter($oldAttach, create_function('$a', 'return $a["is_deleted"] === "f";'))) { ?>
-                                    <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_fontsize_15 b-layout__txt_bold">Вложения</div>
+                                    <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_fontsize_15 b-layout__txt_bold">Р’Р»РѕР¶РµРЅРёСЏ</div>
                                     <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table">
                                         <tbody>
                                             <? foreach ($oldAttach as $doc) { ?>
@@ -346,7 +346,7 @@ foreach($history as $key=>$event) {
                                                     </td>
                                                     <td class="b-layout__right b-layout__right_padleft_20 b-layout__right_padbot_5">
                                                         <div class="b-layout__txt">
-                                                            <a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?=$doc['path'] . $doc['name']?>" target="_blank">Скачать</a>
+                                                            <a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?=$doc['path'] . $doc['name']?>" target="_blank">РЎРєР°С‡Р°С‚СЊ</a>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -363,7 +363,7 @@ foreach($history as $key=>$event) {
                                                     </td>
                                                     <td class="b-layout__right b-layout__right_padleft_20 b-layout__right_padbot_5">
                                                         <div class="b-layout__txt">
-                                                            <a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?=$doc['path'] . $doc['name']?>" target="_blank">Скачать</a>
+                                                            <a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?=$doc['path'] . $doc['name']?>" target="_blank">РЎРєР°С‡Р°С‚СЊ</a>
                                                         </div>
                                                     </td>
                                                 </tr> 
@@ -383,7 +383,7 @@ foreach($history as $key=>$event) {
                 <span class="b-shadow__icon b-shadow__icon_close"></span>
             </div>
             
-            <div class="b-post__txt b-post__txt_color_a0763b">Техническое задание от <a class="b-post__link b-post__link_color_a0763b" href="javascript:void(0)" onclick="$('popup_old_tz_<?= $event['id']; ?>').toggleClass('b-shadow_hide');"><?= date('d.m.Y', $tz_time)?></a> &rarr; Техническое задание от <a class="b-post__link b-post__link_color_a0763b" href="javascript:void(0)" onclick="$('popup_new_tz_<?= $event['id']; ?>').toggleClass('b-shadow_hide');"><?= date('d.m.Y', strtotime($event['xtime']))?></a></div>
+            <div class="b-post__txt b-post__txt_color_a0763b">РўРµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ РѕС‚ <a class="b-post__link b-post__link_color_a0763b" href="javascript:void(0)" onclick="$('popup_old_tz_<?= $event['id']; ?>').toggleClass('b-shadow_hide');"><?= date('d.m.Y', $tz_time)?></a> &rarr; РўРµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ РѕС‚ <a class="b-post__link b-post__link_color_a0763b" href="javascript:void(0)" onclick="$('popup_new_tz_<?= $event['id']; ?>').toggleClass('b-shadow_hide');"><?= date('d.m.Y', strtotime($event['xtime']))?></a></div>
             <?
             $tz_time = strtotime($event['xtime']); 
             break;
@@ -410,7 +410,7 @@ foreach($history as $key=>$event) {
                     if($grp['col'] == 'days_pause' && $grp['new_val'] > 0) {
                         $start_work_date = strtotime($event['xtime']) + ( $grp['new_val']*24*60*60 );
                         ?>
-                        <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">Пауза на <?= $grp['new_val']?> <?= ending($grp['new_val'], 'день', 'дня', 'дней')?> &rarr;&nbsp;Возобновление работ <?= date("d.m.Y", $start_work_date);?></div>    
+                        <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">РџР°СѓР·Р° РЅР° <?= $grp['new_val']?> <?= ending($grp['new_val'], 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№')?> &rarr;&nbsp;Р’РѕР·РѕР±РЅРѕРІР»РµРЅРёРµ СЂР°Р±РѕС‚ <?= date("d.m.Y", $start_work_date);?></div>    
                         <?
                     }
                 }
@@ -420,14 +420,14 @@ foreach($history as $key=>$event) {
             ?>
             <? if($event['col'] == 'start_time' && $event['new_val'] != NULL) { ?>
             <div class="b-post__txt b-post__txt_color_a0763b">
-                <?= abs($work_time). ' ' . ending(abs($work_time), 'день', 'дня', 'дней')?> на этап &rarr; Возобновление работ <?= date('d.m.Y', strtotime($event['new_val']));?><?/*, <?= $stage->stageWorkTimeLeft(abs($work_time), array(strtotime($event['new_val']), strtotime($event['xtime'])));?>*/?>
+                <?= abs($work_time). ' ' . ending(abs($work_time), 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№')?> РЅР° СЌС‚Р°Рї &rarr; Р’РѕР·РѕР±РЅРѕРІР»РµРЅРёРµ СЂР°Р±РѕС‚ <?= date('d.m.Y', strtotime($event['new_val']));?><?/*, <?= $stage->stageWorkTimeLeft(abs($work_time), array(strtotime($event['new_val']), strtotime($event['xtime'])));?>*/?>
             </div>
             <? } elseif($event['col'] == 'work_time') { //if
                 $old_time = $stage->getStageWorkTime($event['old_val']); 
                 $work_time = $stage->getStageWorkTime($event['new_val']);
                 $work_modified = true;
             ?>
-            <div class="b-post__txt b-post__txt_color_a0763b"><?= $old_time. ' ' . ending($old_time, 'день', 'дня', 'дней')?> на этап &rarr; <?= $work_time. ' ' . ending($work_time, 'день', 'дня', 'дней')?> на этап</div>
+            <div class="b-post__txt b-post__txt_color_a0763b"><?= $old_time. ' ' . ending($old_time, 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№')?> РЅР° СЌС‚Р°Рї &rarr; <?= $work_time. ' ' . ending($work_time, 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№')?> РЅР° СЌС‚Р°Рї</div>
             <? }//else?>
             <?
             break;
@@ -453,7 +453,7 @@ foreach($history as $key=>$event) {
             <?php foreach($files as $file) { ?>
                 <tr class="b-layout__tr">
                     <td class="b-layout__middle b-layout__middle_padbot_5"><div class="b-layout__txt"><i class="b-icon b-icon_attach_<?=getICOFile($file->getext())?>"></i> <a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?=$file->path . $file->name?>" target="_blank"><?= $file->original_name?></a>, <?= ConvertBtoMB($file->size)?></div></td>
-                    <td class="b-layout__right b-layout__right_padleft_20 b-layout__right_padbot_5"><div class="b-layout__txt"><a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?=$file->path . $file->name?>" target="_blank">Скачать</a></div></td>
+                    <td class="b-layout__right b-layout__right_padleft_20 b-layout__right_padbot_5"><div class="b-layout__txt"><a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?=$file->path . $file->name?>" target="_blank">РЎРєР°С‡Р°С‚СЊ</a></div></td>
                 </tr>
             <?php } //if?>
             </table>
@@ -462,8 +462,8 @@ foreach($history as $key=>$event) {
         case 'sbr_stages.ARB_CANCELED':
             $i_work_time = $work_time < 0 ? 0 : $work_time;
             ?>
-            <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">Этап в арбитраже &rarr; Этап в работе</div>
-            <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b"><?= $i_work_time. ' ' . ending($i_work_time, 'день', 'дня', 'дней')?> на этап &rarr; Cтарт работ <span class="b-layout__bold"><?= date('d.m.Y', strtotime($stage->data['start_time']))?></span>, <?= $stage->stageWorkTimeLeft($i_work_time, array(strtotime($stage->data['start_time']), strtotime($event['xtime'])), '<span class="b-layout__bold">%s</span>');?></div> 
+            <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">Р­С‚Р°Рї РІ Р°СЂР±РёС‚СЂР°Р¶Рµ &rarr; Р­С‚Р°Рї РІ СЂР°Р±РѕС‚Рµ</div>
+            <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b"><?= $i_work_time. ' ' . ending($i_work_time, 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№')?> РЅР° СЌС‚Р°Рї &rarr; CС‚Р°СЂС‚ СЂР°Р±РѕС‚ <span class="b-layout__bold"><?= date('d.m.Y', strtotime($stage->data['start_time']))?></span>, <?= $stage->stageWorkTimeLeft($i_work_time, array(strtotime($stage->data['start_time']), strtotime($event['xtime'])), '<span class="b-layout__bold">%s</span>');?></div> 
             <?
             $update_event[$event['abbr']] = $event['abbr'];
             break;
@@ -471,10 +471,10 @@ foreach($history as $key=>$event) {
             $stage->tmp_doc_arb = $stage->sbr->getLastPublishedDocByType(sbr::DOCS_TYPE_ARB_REP, $stage->id);
             ?>
             <div class="b-post__txt b-post__txt_padbot_10 b-post__txt_fontsize_15"><?= reformat($stage->arbitrage['descr_arb'], 40, 0, 0, 1)?></div>
-            <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b"><span class="b-post__bold">Заказчику вернуть <?=100*(1-$stage->arbitrage['frl_percent'])?>%</span> бюджета проекта, <?=sbr_meta::view_cost($stage->getPayoutSum(sbr::EMP), $stage->sbr->cost_sys)?></div>
-            <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b"><span class="b-post__bold">Исполнителю заплатить <?=100*$stage->arbitrage['frl_percent']?>%</span> бюджета проекта, <?=sbr_meta::view_cost($stage->getPayoutSum(sbr::FRL), $stage->sbr->cost_sys)?></div>
-            <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">Решение: <?= $stage->arbitrage['result'] == '' ? 'Расторжение договора' : reformat(str_replace(array('e%', 'f%'), array((100 * (1 - $stage->arbitrage['frl_percent'])) . "%", ( 100 * $stage->arbitrage['frl_percent']) . "%" ), $stage->arbitrage['result']), 40, 0, 0, 1)?></div>
-            <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">Этап в арбитраже &rarr; Этап завершен арбитражем</div>
+            <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b"><span class="b-post__bold">Р—Р°РєР°Р·С‡РёРєСѓ РІРµСЂРЅСѓС‚СЊ <?=100*(1-$stage->arbitrage['frl_percent'])?>%</span> Р±СЋРґР¶РµС‚Р° РїСЂРѕРµРєС‚Р°, <?=sbr_meta::view_cost($stage->getPayoutSum(sbr::EMP), $stage->sbr->cost_sys)?></div>
+            <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b"><span class="b-post__bold">РСЃРїРѕР»РЅРёС‚РµР»СЋ Р·Р°РїР»Р°С‚РёС‚СЊ <?=100*$stage->arbitrage['frl_percent']?>%</span> Р±СЋРґР¶РµС‚Р° РїСЂРѕРµРєС‚Р°, <?=sbr_meta::view_cost($stage->getPayoutSum(sbr::FRL), $stage->sbr->cost_sys)?></div>
+            <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">Р РµС€РµРЅРёРµ: <?= $stage->arbitrage['result'] == '' ? 'Р Р°СЃС‚РѕСЂР¶РµРЅРёРµ РґРѕРіРѕРІРѕСЂР°' : reformat(str_replace(array('e%', 'f%'), array((100 * (1 - $stage->arbitrage['frl_percent'])) . "%", ( 100 * $stage->arbitrage['frl_percent']) . "%" ), $stage->arbitrage['result']), 40, 0, 0, 1)?></div>
+            <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">Р­С‚Р°Рї РІ Р°СЂР±РёС‚СЂР°Р¶Рµ &rarr; Р­С‚Р°Рї Р·Р°РІРµСЂС€РµРЅ Р°СЂР±РёС‚СЂР°Р¶РµРј</div>
             <?
             if( ($event['estatus'] != 't' && $sbr->isEmp()) || ($event['fstatus'] != 't' && !$sbr->isEmp()) ) {
                 $update_event[$event['abbr']] = $event['abbr'];
@@ -495,9 +495,9 @@ foreach($history as $key=>$event) {
             break;
         case 'sbr_stages.MONEY_PAID':
             if($stage->status == sbr_stages::STATUS_ARBITRAGED) {
-                ?><div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">Сожалеем, что пришлось обращаться в арбитраж. Надеемся, следующая ваша сделка будет удачнее.</div><?
+                ?><div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">РЎРѕР¶Р°Р»РµРµРј, С‡С‚Рѕ РїСЂРёС€Р»РѕСЃСЊ РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РІ Р°СЂР±РёС‚СЂР°Р¶. РќР°РґРµРµРјСЃСЏ, СЃР»РµРґСѓСЋС‰Р°СЏ РІР°С€Р° СЃРґРµР»РєР° Р±СѓРґРµС‚ СѓРґР°С‡РЅРµРµ.</div><?
             } else {
-                ?><div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">Спасибо, что воспользовались «Безопасной Сделкой»!</div><?
+                ?><div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">РЎРїР°СЃРёР±Рѕ, С‡С‚Рѕ РІРѕСЃРїРѕР»СЊР·РѕРІР°Р»РёСЃСЊ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРѕР№В»!</div><?
             }
             if(!$sbr->isEmp() && $event['fstatus'] != 't') {
                 $update_event[$event['abbr']] = $event['abbr'];
@@ -505,7 +505,7 @@ foreach($history as $key=>$event) {
             break;
         case 'sbr_stages.EMP_MONEY_REFUNDED':
             ?>
-            <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">Сожалеем, что пришлось обращаться в арбитраж. Надеемся, следующая ваша сделка будет удачнее.</div>    
+            <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_color_a0763b">РЎРѕР¶Р°Р»РµРµРј, С‡С‚Рѕ РїСЂРёС€Р»РѕСЃСЊ РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РІ Р°СЂР±РёС‚СЂР°Р¶. РќР°РґРµРµРјСЃСЏ, СЃР»РµРґСѓСЋС‰Р°СЏ РІР°С€Р° СЃРґРµР»РєР° Р±СѓРґРµС‚ СѓРґР°С‡РЅРµРµ.</div>    
             <?
             if($sbr->isEmp() && $event['estatus'] != 't') {
                 $update_event[$event['abbr']] = $event['abbr'];
@@ -522,21 +522,21 @@ foreach($history as $key=>$event) {
             $str_overtime = date('d', $overtime). " " . monthtostr(date('n', $overtime), true) . " " . date('Y', $overtime);
             if($sbr->isEmp()) {
                 ?>
-                <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_padleft_10 b-post__txt_indent_-10 b-post__txt_color_a0763b">&bull; Если вы довольны выполненной работой, примите ее, нажав &laquo;Принять работу&raquo; наверху страницы.</div>
-                <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_padleft_10 b-post__txt_indent_-10 b-post__txt_color_a0763b">&bull; Если исполнитель еще не закончил, добавьте время на работу.</div>
+                <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_padleft_10 b-post__txt_indent_-10 b-post__txt_color_a0763b">&bull; Р•СЃР»Рё РІС‹ РґРѕРІРѕР»СЊРЅС‹ РІС‹РїРѕР»РЅРµРЅРЅРѕР№ СЂР°Р±РѕС‚РѕР№, РїСЂРёРјРёС‚Рµ РµРµ, РЅР°Р¶Р°РІ &laquo;РџСЂРёРЅСЏС‚СЊ СЂР°Р±РѕС‚Сѓ&raquo; РЅР°РІРµСЂС…Сѓ СЃС‚СЂР°РЅРёС†С‹.</div>
+                <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_padleft_10 b-post__txt_indent_-10 b-post__txt_color_a0763b">&bull; Р•СЃР»Рё РёСЃРїРѕР»РЅРёС‚РµР»СЊ РµС‰Рµ РЅРµ Р·Р°РєРѕРЅС‡РёР», РґРѕР±Р°РІСЊС‚Рµ РІСЂРµРјСЏ РЅР° СЂР°Р±РѕС‚Сѓ.</div>
                 <?php if(time() <= $overtime) { ?>
-                <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_padleft_10 b-post__txt_indent_-10 b-post__txt_color_a0763b">&bull; Если вы не довольны работой с исполнителем и нет возможности увеличить время на работу, <a class="b-layout__link" href="javascript:void(0)" onclick="toggle_arb();" >обратитесь в арбитраж</a>.</div>
+                <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_padleft_10 b-post__txt_indent_-10 b-post__txt_color_a0763b">&bull; Р•СЃР»Рё РІС‹ РЅРµ РґРѕРІРѕР»СЊРЅС‹ СЂР°Р±РѕС‚РѕР№ СЃ РёСЃРїРѕР»РЅРёС‚РµР»РµРј Рё РЅРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё СѓРІРµР»РёС‡РёС‚СЊ РІСЂРµРјСЏ РЅР° СЂР°Р±РѕС‚Сѓ, <a class="b-layout__link" href="javascript:void(0)" onclick="toggle_arb();" >РѕР±СЂР°С‚РёС‚РµСЃСЊ РІ Р°СЂР±РёС‚СЂР°Р¶</a>.</div>
                 <?php }//if?>
-                <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_padleft_10 b-post__txt_indent_-10 b-post__txt_color_a0763b">Если до <?= $str_overtime;?> вы не решите, как поступить, деньги будут возвращены вам, а исполнитель не получит гонорар.</div>
+                <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_padleft_10 b-post__txt_indent_-10 b-post__txt_color_a0763b">Р•СЃР»Рё РґРѕ <?= $str_overtime;?> РІС‹ РЅРµ СЂРµС€РёС‚Рµ, РєР°Рє РїРѕСЃС‚СѓРїРёС‚СЊ, РґРµРЅСЊРіРё Р±СѓРґСѓС‚ РІРѕР·РІСЂР°С‰РµРЅС‹ РІР°Рј, Р° РёСЃРїРѕР»РЅРёС‚РµР»СЊ РЅРµ РїРѕР»СѓС‡РёС‚ РіРѕРЅРѕСЂР°СЂ.</div>
                 <?
             } else {
                 $contractDocLink = $sbr->getDocumentLink('contract');
                 ?>
-                <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_padleft_10 b-post__txt_indent_-10 b-post__txt_color_a0763b">&bull; Если вы выполнили работу, свяжитесь с заказчиком, чтобы он принял проект.</div>
+                <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_padleft_10 b-post__txt_indent_-10 b-post__txt_color_a0763b">&bull; Р•СЃР»Рё РІС‹ РІС‹РїРѕР»РЅРёР»Рё СЂР°Р±РѕС‚Сѓ, СЃРІСЏР¶РёС‚РµСЃСЊ СЃ Р·Р°РєР°Р·С‡РёРєРѕРј, С‡С‚РѕР±С‹ РѕРЅ РїСЂРёРЅСЏР» РїСЂРѕРµРєС‚.</div>
                 <?php if(time() <= $overtime) { ?>
-                <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_padleft_10 b-post__txt_indent_-10 b-post__txt_color_a0763b">&bull; Если заказчик не выходит на связь, <a class="b-layout__link" href="javascript:void(0)" onclick="toggle_arb();">обратитесь в арбитраж</a>.</div>
+                <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_padleft_10 b-post__txt_indent_-10 b-post__txt_color_a0763b">&bull; Р•СЃР»Рё Р·Р°РєР°Р·С‡РёРє РЅРµ РІС‹С…РѕРґРёС‚ РЅР° СЃРІСЏР·СЊ, <a class="b-layout__link" href="javascript:void(0)" onclick="toggle_arb();">РѕР±СЂР°С‚РёС‚РµСЃСЊ РІ Р°СЂР±РёС‚СЂР°Р¶</a>.</div>
                 <?php }//if?>
-                <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_padleft_10 b-post__txt_indent_-10 b-post__txt_color_a0763b">&bull; Если до <?= $str_overtime;?>, заказчик не примет работу (и ни одна из сторон не обратится в Арбитраж), то согласно пункту 9.2 <a class="b-layout__link" href="<?= $contractDocLink ?>">Договора</a> ему будут возвращены деньги, и вы не получите гонорар.</div>
+                <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_padleft_10 b-post__txt_indent_-10 b-post__txt_color_a0763b">&bull; Р•СЃР»Рё РґРѕ <?= $str_overtime;?>, Р·Р°РєР°Р·С‡РёРє РЅРµ РїСЂРёРјРµС‚ СЂР°Р±РѕС‚Сѓ (Рё РЅРё РѕРґРЅР° РёР· СЃС‚РѕСЂРѕРЅ РЅРµ РѕР±СЂР°С‚РёС‚СЃСЏ РІ РђСЂР±РёС‚СЂР°Р¶), С‚Рѕ СЃРѕРіР»Р°СЃРЅРѕ РїСѓРЅРєС‚Сѓ 9.2 <a class="b-layout__link" href="<?= $contractDocLink ?>">Р”РѕРіРѕРІРѕСЂР°</a> РµРјСѓ Р±СѓРґСѓС‚ РІРѕР·РІСЂР°С‰РµРЅС‹ РґРµРЅСЊРіРё, Рё РІС‹ РЅРµ РїРѕР»СѓС‡РёС‚Рµ РіРѕРЅРѕСЂР°СЂ.</div>
                 <?
             }
             if( ($event['estatus'] != 't' && $sbr->isEmp()) || ($event['fstatus'] != 't' && !$sbr->isEmp()) ) {
@@ -546,10 +546,10 @@ foreach($history as $key=>$event) {
         case 'sbr_stages.DOCS_NOTE':
             ?>
             <div class="b-post__txt b-post__txt_color_a0763b" style="margin-top: -8px;">
-                Закрывающие документы (Акт, счет-фактура) формируются и загружаются в сделку в начале следующего месяца.
-                Для получения закрывающих документов укажите, пожалуйста, почтовый адрес компании на вкладке <a class="b-layout__link" href="/users/<?= $_SESSION['login'] ?>/setup/finance/">Финансы</a> вашего аккаунта.
-                На указанный адрес вам будут высланы закрывающие документы на сумму вознаграждения Общества (ООО "Ваан").
-                Для того чтобы получить оригинал Акта на полную сумму сделки, обратитесь ко второму участнику сделки.
+                Р—Р°РєСЂС‹РІР°СЋС‰РёРµ РґРѕРєСѓРјРµРЅС‚С‹ (РђРєС‚, СЃС‡РµС‚-С„Р°РєС‚СѓСЂР°) С„РѕСЂРјРёСЂСѓСЋС‚СЃСЏ Рё Р·Р°РіСЂСѓР¶Р°СЋС‚СЃСЏ РІ СЃРґРµР»РєСѓ РІ РЅР°С‡Р°Р»Рµ СЃР»РµРґСѓСЋС‰РµРіРѕ РјРµСЃСЏС†Р°.
+                Р”Р»СЏ РїРѕР»СѓС‡РµРЅРёСЏ Р·Р°РєСЂС‹РІР°СЋС‰РёС… РґРѕРєСѓРјРµРЅС‚РѕРІ СѓРєР°Р¶РёС‚Рµ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕС‡С‚РѕРІС‹Р№ Р°РґСЂРµСЃ РєРѕРјРїР°РЅРёРё РЅР° РІРєР»Р°РґРєРµ <a class="b-layout__link" href="/users/<?= $_SESSION['login'] ?>/setup/finance/">Р¤РёРЅР°РЅСЃС‹</a> РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р°.
+                РќР° СѓРєР°Р·Р°РЅРЅС‹Р№ Р°РґСЂРµСЃ РІР°Рј Р±СѓРґСѓС‚ РІС‹СЃР»Р°РЅС‹ Р·Р°РєСЂС‹РІР°СЋС‰РёРµ РґРѕРєСѓРјРµРЅС‚С‹ РЅР° СЃСѓРјРјСѓ РІРѕР·РЅР°РіСЂР°Р¶РґРµРЅРёСЏ РћР±С‰РµСЃС‚РІР° (РћРћРћ "Р’Р°Р°РЅ").
+                Р”Р»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ РѕСЂРёРіРёРЅР°Р» РђРєС‚Р° РЅР° РїРѕР»РЅСѓСЋ СЃСѓРјРјСѓ СЃРґРµР»РєРё, РѕР±СЂР°С‚РёС‚РµСЃСЊ РєРѕ РІС‚РѕСЂРѕРјСѓ СѓС‡Р°СЃС‚РЅРёРєСѓ СЃРґРµР»РєРё.
             </div>
             <?
             break;

@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  Пополнение ЛС
+ *  РџРѕРїРѕР»РЅРµРЅРёРµ Р›РЎ
  */
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/billing.php');
@@ -12,7 +12,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/sbr_meta.php');
 //------------------------------------------------------------------------------
 
 /**
- * Это методы для разных видов оплаты но сгруппированные в яндекс кассе
+ * Р­С‚Рѕ РјРµС‚РѕРґС‹ РґР»СЏ СЂР°Р·РЅС‹С… РІРёРґРѕРІ РѕРїР»Р°С‚С‹ РЅРѕ СЃРіСЂСѓРїРїРёСЂРѕРІР°РЅРЅС‹Рµ РІ СЏРЅРґРµРєСЃ РєР°СЃСЃРµ
  * 
  * @param type $type
  * @param type $data
@@ -43,10 +43,10 @@ function quickPaymentAccountSberbank($type, $data)
 }
 
 /**
- * Пополнение счета через яндекс кассу
+ * РџРѕРїРѕР»РЅРµРЅРёРµ СЃС‡РµС‚Р° С‡РµСЂРµР· СЏРЅРґРµРєСЃ РєР°СЃСЃСѓ
  * 
- * @param type $type - тип оплаты
- * @param type $data - данные по параметрам покупаемой услуги
+ * @param type $type - С‚РёРї РѕРїР»Р°С‚С‹
+ * @param type $data - РґР°РЅРЅС‹Рµ РїРѕ РїР°СЂР°РјРµС‚СЂР°Рј РїРѕРєСѓРїР°РµРјРѕР№ СѓСЃР»СѓРіРё
  * @return \xajaxResponse
  */
 function quickPaymentAccountYandexKassa($type, $data)
@@ -86,7 +86,7 @@ function quickPaymentAccountYandexKassa($type, $data)
            if ($price >= $minPrice) {
                
                 $option = array('acc_sum' => $minPrice);
-                //Автоматическая покупка услуги погашения задолженности
+                //РђРІС‚РѕРјР°С‚РёС‡РµСЃРєР°СЏ РїРѕРєСѓРїРєР° СѓСЃР»СѓРіРё РїРѕРіР°С€РµРЅРёСЏ Р·Р°РґРѕР»Р¶РµРЅРЅРѕСЃС‚Рё
                 $billReserveId = $bill->addServiceAndCheckout(135, $option);
                 
            }
@@ -119,16 +119,16 @@ function quickPaymentAccountYandexKassa($type, $data)
                 }
             ");
             $link = '/bill/history/?period=3';
-            //сохраняем в сессию куда перейти при успешной покупке
+            //СЃРѕС…СЂР°РЅСЏРµРј РІ СЃРµСЃСЃРёСЋ РєСѓРґР° РїРµСЂРµР№С‚Рё РїСЂРё СѓСЃРїРµС€РЅРѕР№ РїРѕРєСѓРїРєРµ
             $_SESSION[quickPaymentPopup::QPP_REDIRECT] = $link;
         }
     }
     
-    // Показываем предупреждение в случае ошибки
+    // РџРѕРєР°Р·С‹РІР°РµРј РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
     if ($is_error) {
         $objResponse->script("
             var qp = window.quick_payment_factory.getQuickPayment('account');
-            if(qp) qp.show_error('Возникла ошибка при пополнении счета!');
+            if(qp) qp.show_error('Р’РѕР·РЅРёРєР»Р° РѕС€РёР±РєР° РїСЂРё РїРѕРїРѕР»РЅРµРЅРёРё СЃС‡РµС‚Р°!');
         ");
     }
 

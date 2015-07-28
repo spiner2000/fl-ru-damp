@@ -9,22 +9,22 @@ $xajax->printJavascript('/xajax/');
         </td>
         <td class="b-layout__td b-layout__td_width_72ps b-layout__td_width_full_ipad">
 
-            <h1 class="b-page__title">Рассылка одобрена</h1>
+            <h1 class="b-page__title">Р Р°СЃСЃС‹Р»РєР° РѕРґРѕР±СЂРµРЅР°</h1>
 
             <div class="b-fon b-fon_padbot_30">
                 <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
                     <div class="b-fon__txt b-fon__txt_padbot_5">
                         <span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>
-                        Ваша заявка на рассылку была рассмотрена и одобрена модераторами сайта.
+                        Р’Р°С€Р° Р·Р°СЏРІРєР° РЅР° СЂР°СЃСЃС‹Р»РєСѓ Р±С‹Р»Р° СЂР°СЃСЃРјРѕС‚СЂРµРЅР° Рё РѕРґРѕР±СЂРµРЅР° РјРѕРґРµСЂР°С‚РѕСЂР°РјРё СЃР°Р№С‚Р°.
                     </div>
                     <div class="b-fon__txt">
-                        Если у вас возникнут вопросы, обращайтесь в <a class="b-fon__link" href="https://feedback.fl.ru/">службу поддержки</a>.
+                        Р•СЃР»Рё Сѓ РІР°СЃ РІРѕР·РЅРёРєРЅСѓС‚ РІРѕРїСЂРѕСЃС‹, РѕР±СЂР°С‰Р°Р№С‚РµСЃСЊ РІ <a class="b-fon__link" href="https://feedback.fl.ru/">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.
                     </div>
                 </div>
             </div>                       
 
             <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bold">
-                Текст рассылки                
+                РўРµРєСЃС‚ СЂР°СЃСЃС‹Р»РєРё                
             </div>
             
             <div class="b-layout__txt b-layout__txt_padbot_20"><?= $text ?></div>
@@ -32,7 +32,7 @@ $xajax->printJavascript('/xajax/');
             <a href="javascript:void(0);"
                class="b-button b-button_flat b-button_flat_green"
                data-popup="quick_payment_masssending">
-                Оплатить
+                РћРїР»Р°С‚РёС‚СЊ
             </a>
             <?php echo quickPaymentPopupMasssending::getInstance()->render() ?>
         </td>							

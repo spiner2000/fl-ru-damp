@@ -10,16 +10,16 @@
 				<div class="b-layout__txt b-layout__txt_padbot_5">ID</div>
 			</td>
 			<td class="b-layout__one b-layout__one_padright_10 b-layout__one_bordbot_double_ccc">
-				<div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11 b-layout__txt_lineheight_20">Название документа</div>
+				<div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11 b-layout__txt_lineheight_20">РќР°Р·РІР°РЅРёРµ РґРѕРєСѓРјРµРЅС‚Р°</div>
 			</td>
 			<td class="b-layout__one b-layout__one_padright_10 b-layout__one_width_150 b-layout__one_bordbot_double_ccc">
-				<div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11 b-layout__txt_lineheight_20">Стороны</div>
+				<div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11 b-layout__txt_lineheight_20">РЎС‚РѕСЂРѕРЅС‹</div>
 			</td>
 			<td class="b-layout__one b-layout__one_padright_10 b-layout__one_width_100 b-layout__one_bordbot_double_ccc">
-				<div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11 b-layout__txt_lineheight_20">Статус</div>
+				<div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11 b-layout__txt_lineheight_20">РЎС‚Р°С‚СѓСЃ</div>
 			</td>
 			<td class="b-layout__one b-layout__one_width_110 b-layout__one_bordbot_double_ccc">
-				<div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11 b-layout__txt_lineheight_20">Изменение статуса</div>
+				<div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11 b-layout__txt_lineheight_20">РР·РјРµРЅРµРЅРёРµ СЃС‚Р°С‚СѓСЃР°</div>
 			</td>
 		</tr>
 	</tbody>

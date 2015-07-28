@@ -20,12 +20,12 @@ $category_stitle = null;
         <?php if(false){ ?>
         <li class="b-menu__item">  
             <a class="b-menu__link" href="/users/<?=$user_obj->login ?>/">
-                Профиль</a>&nbsp;&RightArrow;&nbsp;
+                РџСЂРѕС„РёР»СЊ</a>&nbsp;&RightArrow;&nbsp;
         </li>    
         <?php } ?>
         <li class="b-menu__item">
             <a class="b-menu__link" href="/users/<?=$user_obj->login ?>/tu/">
-                <?=$is_owner?'Мои услуги':'Все услуги фрилансера'?>
+                <?=$is_owner?'РњРѕРё СѓСЃР»СѓРіРё':'Р’СЃРµ СѓСЃР»СѓРіРё С„СЂРёР»Р°РЅСЃРµСЂР°'?>
             </a>
             &nbsp;/&nbsp;
             <?php if ($category_group_title): ?>
@@ -87,7 +87,7 @@ $category_stitle = null;
             <li class="b-gallery__item <?php if($hide_img){ ?>b-gallery__item_display_none<?php } ?>">
                 <a data-type="image" data-source="<?php echo tservices_helper::image_src($image['fname'], $user_obj->login) ?>" class="b-gallery__link" href="javascript:void(0)">
                     <img alt="<?=$key==0?reformat($data['title'], 30, 0, 1):''?>" 
-                         title="<?=$key==0?sprintf('Услуги фрилансера %s: %s', $user_obj->login, reformat($data['title'], 30, 0, 1)):''?>" 
+                         title="<?=$key==0?sprintf('РЈСЃР»СѓРіРё С„СЂРёР»Р°РЅСЃРµСЂР° %s: %s', $user_obj->login, reformat($data['title'], 30, 0, 1)):''?>" 
                          class="b-gallery__thumb" 
                          src="<?php echo tservices_helper::image_src($image['fname'], $user_obj->login,'thumb_') ?>"
                          <?php if(!$hide_img)echo ' itemprop="contentUrl"'?> />
@@ -99,21 +99,21 @@ $category_stitle = null;
     <?php } ?>
     
     
-    <h2 class="b-txt__title b-txt__title_padnull b-txt_lh_1">Что вы получите</h2>
+    <h2 class="b-txt__title b-txt__title_padnull b-txt_lh_1">Р§С‚Рѕ РІС‹ РїРѕР»СѓС‡РёС‚Рµ</h2>
     <div class="b-txt b-txt_padbot_30">
         <?=reformat($data['description'], 60, 0, 0, 1)?>
     </div> 
     
     <div class="b-txt b-txt_padbot_30">
-        <strong>Способ выполнения работы: </strong>
+        <strong>РЎРїРѕСЃРѕР± РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹: </strong>
         <?php if($data['is_meet'] == 't'){ ?>
-            с возможной личной встречей в <?php echo $data['location'] ?>
+            СЃ РІРѕР·РјРѕР¶РЅРѕР№ Р»РёС‡РЅРѕР№ РІСЃС‚СЂРµС‡РµР№ РІ <?php echo $data['location'] ?>
         <?php }else{ ?>
-            онлайн удаленно
+            РѕРЅР»Р°Р№РЅ СѓРґР°Р»РµРЅРЅРѕ
         <?php } ?>
     </div>
     
-    <h2 class="b-txt__title b-txt__title_padnull b-txt_lh_1 b-txt__title_padnull">Что нужно, чтобы начать</h2>
+    <h2 class="b-txt__title b-txt__title_padnull b-txt_lh_1 b-txt__title_padnull">Р§С‚Рѕ РЅСѓР¶РЅРѕ, С‡С‚РѕР±С‹ РЅР°С‡Р°С‚СЊ</h2>
     <div class="b-txt b-txt_padbot_40">
         <?=reformat($data['requirement'], 60, 0, 0, 1)?>
     </div>  
@@ -121,7 +121,7 @@ $category_stitle = null;
     <form action="<?php echo tservices_helper::getOrderUrl($data['id']) ?>" id="__form_tservice" method="post" enctype="multipart/form-data">
         
     <?php if($data['extra']){ ?>    
-    <h2 class="b-txt__title b-txt_lh_1 b-txt__title_padnull">Дополнительно</h2>
+    <h2 class="b-txt__title b-txt_lh_1 b-txt__title_padnull">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ</h2>
     <table class="b-layout__table_margbot_40 b-layout__table">
             <?php 
                 $cnt = count($data['extra']);
@@ -137,9 +137,9 @@ $category_stitle = null;
                        <?php echo reformat($el['title'], 30, 0, 1); ?>
                        <div class="b-txt b-txt_fs_11 b-txt_padtop_5 b-txt_lh_1">
                            <?php if(!$el['days']){ ?>
-                           В тот же срок
+                           Р’ С‚РѕС‚ Р¶Рµ СЃСЂРѕРє
                            <?php }else{ ?>
-                           Дополнительно <?php echo $el['days'] ?> <?php echo ending($el['days'], 'день', 'дня', 'дней'); ?>
+                           Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ <?php echo $el['days'] ?> <?php echo ending($el['days'], 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№'); ?>
                            <?php } ?>
                        </div>
                    </label>
@@ -153,7 +153,7 @@ $category_stitle = null;
     <?php } ?>
     
     <?php if($data['is_express'] == 't'){ ?>
-    <h2 class="b-txt__title b-txt_lh_1 b-txt__title_padnull">Срочность</h2>
+    <h2 class="b-txt__title b-txt_lh_1 b-txt__title_padnull">РЎСЂРѕС‡РЅРѕСЃС‚СЊ</h2>
     <table class="b-txt b-txt_margbot_40 b-layout__table">    
            <tr class="b-layout__tr">
                <td class="b-layout__td b-layout__td_padtb_15 b-layout__td_line-height_1">
@@ -161,7 +161,7 @@ $category_stitle = null;
                </td>
                <td class="b-layout__td b-layout__td_padleft_15 b-layout__td_padtb_15 b-layout__td_width_full b-layout__td_line-height_1">
                    <label class="b-check__label b-check__label_ptsans" for="is_express">
-                       Могу выполнить срочно за <strong><?php echo $data['express_days']; ?> <?php echo ending($data['express_days'], 'день', 'дня', 'дней'); ?></strong>
+                       РњРѕРіСѓ РІС‹РїРѕР»РЅРёС‚СЊ СЃСЂРѕС‡РЅРѕ Р·Р° <strong><?php echo $data['express_days']; ?> <?php echo ending($data['express_days'], 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№'); ?></strong>
                    </label>
                </td>
                <td class="b-layout__td b-layout__td_padleft_15 b-layout__td_padright_35 b-layout__td_padtb_15 b-layout__td_nowrap b-layout__td_right b-layout__td_line-height_1 b-post__price_ptsans">

@@ -6,8 +6,8 @@ $project_url = 'https://www.fl.ru/projects/2174791/marketpleys-na-wordpress.html
 
 $project = array(
     'id' => '174',
-    'name' => 'Òåñòîâûé ïðîåêò',
-    'price_display' => '12000 ðóáëåé / ïðîåêò',
+    'name' => 'Ð¢ÐµÑÑ‚Ð¾Ð²Ñ‹Ð¹ Ð¿Ñ€Ð¾ÐµÐºÑ‚',
+    'price_display' => '12000 Ñ€ÑƒÐ±Ð»ÐµÐ¹ / Ð¿Ñ€Ð¾ÐµÐºÑ‚',
     //'url' => $project_url
 );
 

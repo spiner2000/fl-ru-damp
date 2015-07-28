@@ -20,25 +20,25 @@
 			$error = $account->prepare($result, $_GET['account'], $_GET['txn_id'], $_GET['sum']);
 		else {
 			$result = 300;
-			$error = "Неполный запрос";
+			$error = "РќРµРїРѕР»РЅС‹Р№ Р·Р°РїСЂРѕСЃ";
 		}
-		$comment = ($error)?$error:"Аккаунт найден";
+		$comment = ($error)?$error:"РђРєРєР°СѓРЅС‚ РЅР°Р№РґРµРЅ";
 	} elseif ($_GET['command'] === "pay") {
 		$sum = $_GET['sum'];
 		if($sum && $_GET['account'] && $_GET['txn_id'] && $_GET['txn_date']) {
 			$error = $account->checkdeposit($op_id, $result, $sum, $_GET['account'], $_GET['txn_id'], $_GET['txn_date']);
 			if ($error) {
 				$result = 300;
-				$error = "Неполный запрос";
+				$error = "РќРµРїРѕР»РЅС‹Р№ Р·Р°РїСЂРѕСЃ";
 			}
         } else {
 			$result = 300;
-			$error = "Неполный запрос";
+			$error = "РќРµРїРѕР»РЅС‹Р№ Р·Р°РїСЂРѕСЃ";
 		}
-		$comment = ($error)?$error:"Пополнение счета успешно завершено";
+		$comment = ($error)?$error:"РџРѕРїРѕР»РЅРµРЅРёРµ СЃС‡РµС‚Р° СѓСЃРїРµС€РЅРѕ Р·Р°РІРµСЂС€РµРЅРѕ";
 	} else {
 		$result = 300;
-		$comment = "Введите запрос";
+		$comment = "Р’РІРµРґРёС‚Рµ Р·Р°РїСЂРѕСЃ";
 	}
 	$log = new log('osmp/%d%m%Y.log');
 	$log->writeln('----- ' . date('d.m.Y H:i:s'));

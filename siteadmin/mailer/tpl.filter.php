@@ -8,25 +8,25 @@
                 <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_15" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                         <td class="b-layout__left b-layout__left_width_90">
-                            <div class="b-layout__txt b-layout__txt_padtop_2 b-layout__txt_fontsize_11">Получатели</div>
+                            <div class="b-layout__txt b-layout__txt_padtop_2 b-layout__txt_fontsize_11">РџРѕР»СѓС‡Р°С‚РµР»Рё</div>
                         </td>
                         <td class="b-layout__one b-layout__one_width_130">
                             <div class="b-check b-check_padtop_3">
                                 <input id="b-check1" class="b-check__input" name="frl" type="checkbox" value="1" <?= $filter['frl']?"checked":""?>/>
-                                <label for="b-check1" class="b-check__label">Фрилансеры</label>
+                                <label for="b-check1" class="b-check__label">Р¤СЂРёР»Р°РЅСЃРµСЂС‹</label>
                             </div>
                         </td>
                         <td class="b-layout__one b-layout__one_width_170">
                             <div class="b-check b-check_padtop_3">
                                 <input id="b-check2" class="b-check__input" name="emp" type="checkbox" value="1" <?= $filter['emp']?"checked":""?>/>
-                                <label for="b-check2" class="b-check__label">Работодатели</label>
+                                <label for="b-check2" class="b-check__label">Р Р°Р±РѕС‚РѕРґР°С‚РµР»Рё</label>
                             </div>
                         </td>
                         <td class="b-layout__right">
                             <div class="b-select">
-                                <label class="b-select__label b-select__label_fontsize_11" for="b-select__select">Отправитель&#160;&#160;</label>
+                                <label class="b-select__label b-select__label_fontsize_11" for="b-select__select">РћС‚РїСЂР°РІРёС‚РµР»СЊ&#160;&#160;</label>
                                 <select id="b-select__select" name="users" class="b-select__select b-select__select_width_140">
-                                    <option value="0">Любой</option>
+                                    <option value="0">Р›СЋР±РѕР№</option>
                                     <?php if($usersSender) {?>
                                         <?php foreach($usersSender as $user) { ?>
                                         <option value="<?=$user['uid']?>" <?= ($filter['users'] == $user['uid']?'selected="selected"':'');?>><?= "{$user['uname']} {$user['usurname']} [{$user['login']}]"?></option>
@@ -41,7 +41,7 @@
                 <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_15" border="0" cellpadding="0" cellspacing="0">
                     <tr class="b-layout__tr">
                         <td class="b-layout__left b-layout__left_width_90">
-                            <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">Дата</div>
+                            <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">Р”Р°С‚Р°</div>
                         </td>
                         <td class="b-layout__right">
                             <div class="b-combo b-combo_inline-block">
@@ -63,7 +63,7 @@
                 <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_15" border="0" cellpadding="0" cellspacing="0">
                     <tr class="b-layout__tr">
                         <td class="b-layout__left b-layout__left_width_90">
-                            <label class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_13">Ключевые<br />слова</label>
+                            <label class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_13">РљР»СЋС‡РµРІС‹Рµ<br />СЃР»РѕРІР°</label>
                         </td>
                         <td class="b-layout__right">
                             <div class="b-combo">
@@ -77,30 +77,30 @@
                 <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_15" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                         <td class="b-layout__left b-layout__left_width_90">
-                            <div class="b-layout__txt b-layout__txt_padtop_2 b-layout__txt_fontsize_11">Тип</div>
+                            <div class="b-layout__txt b-layout__txt_padtop_2 b-layout__txt_fontsize_11">РўРёРї</div>
                         </td>
                         <td class="b-layout__one b-layout__one_width_130">
                             <div class="b-check b-check_padtop_3">
                                 <input id="b-check3" class="b-check__input" name="sending" type="checkbox" value="1" <?= $filter['sending']?"checked":""?>/>
-                                <label for="b-check3" class="b-check__label">Разосланные</label>
+                                <label for="b-check3" class="b-check__label">Р Р°Р·РѕСЃР»Р°РЅРЅС‹Рµ</label>
                             </div>
                         </td>
                         <td class="b-layout__one b-layout__one_width_130">
                             <div class="b-check b-check_padtop_3">
                                 <input id="b-check4" class="b-check__input" name="draft" type="checkbox" value="1" <?= $filter['draft']?"checked":""?>/>
-                                <label for="b-check4" class="b-check__label">Черновики</label>
+                                <label for="b-check4" class="b-check__label">Р§РµСЂРЅРѕРІРёРєРё</label>
                             </div>
                         </td>
                         <td class="b-layout__one b-layout__one_width_170">
                             <div class="b-check b-check_padtop_3">
                                 <input id="b-check5" class="b-check__input" name="regular" type="checkbox" value="1" <?= $filter['regular']?"checked":""?>/>
-                                <label for="b-check5" class="b-check__label">Регулярные: рассылаемые</label>
+                                <label for="b-check5" class="b-check__label">Р РµРіСѓР»СЏСЂРЅС‹Рµ: СЂР°СЃСЃС‹Р»Р°РµРјС‹Рµ</label>
                             </div>
                         </td>
                         <td class="b-layout__one">
                             <div class="b-check b-check_padtop_3">
                                 <input id="b-check6" class="b-check__input" name="pause" type="checkbox" value="1" <?= $filter['pause']?"checked":""?>/>
-                                <label for="b-check6" class="b-check__label">Регулярные: на паузе</label>
+                                <label for="b-check6" class="b-check__label">Р РµРіСѓР»СЏСЂРЅС‹Рµ: РЅР° РїР°СѓР·Рµ</label>
                             </div>
                         </td>
                     </tr>
@@ -111,21 +111,21 @@
                         <td class="b-layout__one">
                             <div class="b-check b-check_padtop_3">
                                 <input id="digest-check6" class="b-check__input" name="digest" type="checkbox" value="1" <?= $filter['digest']?"checked":""?>/>
-                                <label for="digest-check6" class="b-check__label">Дайджест</label>
+                                <label for="digest-check6" class="b-check__label">Р”Р°Р№РґР¶РµСЃС‚</label>
                             </div>
                         </td>
                         <td class="b-layout__one" colspan="3">
                             <div class="b-check b-check_padtop_3">
                                 <input id="mailer-check6" class="b-check__input" name="mailer" type="checkbox" value="1" <?= $filter['mailer']?"checked":""?>/>
-                                <label for="mailer-check6" class="b-check__label">Рассылка</label>
+                                <label for="mailer-check6" class="b-check__label">Р Р°СЃСЃС‹Р»РєР°</label>
                             </div>
                         </td>
                     </tr>
                 </table>
             </div>
             <div class="b-buttons b-buttons_padleft_87 b-buttons_padbot_20">
-                <a class="b-button b-button_flat b-button_flat_grey"  href="javascript:void(0)" onclick="$('filter_form').submit();">Отфильтровать рассылки</a>
-                <a href="javascript:void(0)" class="b-layout__link b-layout__link_italic b-layout__link_bordbot_dot_41" onclick="clearMainFilter();">Сбросить фильтр</a>
+                <a class="b-button b-button_flat b-button_flat_grey"  href="javascript:void(0)" onclick="$('filter_form').submit();">РћС‚С„РёР»СЊС‚СЂРѕРІР°С‚СЊ СЂР°СЃСЃС‹Р»РєРё</a>
+                <a href="javascript:void(0)" class="b-layout__link b-layout__link_italic b-layout__link_bordbot_dot_41" onclick="clearMainFilter();">РЎР±СЂРѕСЃРёС‚СЊ С„РёР»СЊС‚СЂ</a>
             </div>
         </div><!-- b-ext-filter__body -->
     </div><!-- b-ext-filter -->

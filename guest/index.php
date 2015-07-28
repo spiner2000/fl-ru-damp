@@ -13,10 +13,10 @@ $action = __paramInit('string', 'action', 'action', 'index');
 $module = new CModule('guest');
 $module->setBasePath(dirname(__FILE__));
 $controller = new GuestController('guest', $module);
-$controller->init($action); // инициализация контролера
+$controller->init($action); // РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєРѕРЅС‚СЂРѕР»РµСЂР°
 $controller->run($action);
 
-//@todo: Отключает лишнюю обертку в template3
+//@todo: РћС‚РєР»СЋС‡Р°РµС‚ Р»РёС€РЅСЋСЋ РѕР±РµСЂС‚РєСѓ РІ template3
 $stretch_page = true;
 $hide_banner_top = true;
 

@@ -22,7 +22,7 @@ if(($no_banner!=1 || $no_banner!=true) && $date>=date('Ymd', strtotime($ban_prom
     }
 }
 
-// Типовые услуги - главная страница для неавторизованных и заказчиков
+// РўРёРїРѕРІС‹Рµ СѓСЃР»СѓРіРё - РіР»Р°РІРЅР°СЏ СЃС‚СЂР°РЅРёС†Р° РґР»СЏ РЅРµР°РІС‚РѕСЂРёР·РѕРІР°РЅРЅС‹С… Рё Р·Р°РєР°Р·С‡РёРєРѕРІ
 if (get_uid(false) == 0 || is_emp()) {
     $projects_url = '/projects/';
     $projects_active = $grey_main && $kind != 8 && $kind != 2;
@@ -50,13 +50,13 @@ function writeClickStat(id){
 function onBLinkSuccess() {}
 function onBLinkFail() {}
 
-// обработка нажатия клавиши Enter в поле ввода поискового запроса (зеленый поиск и поиск на странице /search/)
+// РѕР±СЂР°Р±РѕС‚РєР° РЅР°Р¶Р°С‚РёСЏ РєР»Р°РІРёС€Рё Enter РІ РїРѕР»Рµ РІРІРѕРґР° РїРѕРёСЃРєРѕРІРѕРіРѕ Р·Р°РїСЂРѕСЃР° (Р·РµР»РµРЅС‹Р№ РїРѕРёСЃРє Рё РїРѕРёСЃРє РЅР° СЃС‚СЂР°РЅРёС†Рµ /search/)
 window.addEvent('domready', 
 function() {
     var searchInput;
     searchInput = $('search_across');
     if (!searchInput) {
-        // для страницы /search/
+        // РґР»СЏ СЃС‚СЂР°РЅРёС†С‹ /search/
         searchInput = $('search_request');
     }
     if (searchInput) {
@@ -104,79 +104,79 @@ function() {
                         <? $bhtml = clearTextForJS(ob_get_clean());?><script type="text/javascript">document.write('<?=$bhtml?>');</script>
                     <? } ?>
                     <li class="b-menu__item b-menu__item_first <?php if ($tservice_active) {?>b-menu__item_active<?php }?>">
-                        <a class="b-menu__link" href="<?php echo $tservice_url ?>">Услуги</a>
+                        <a class="b-menu__link" href="<?php echo $tservice_url ?>">РЈСЃР»СѓРіРё</a>
                     </li>
                     <li
                      class="b-menu__item <?= $projects_active ? "b-menu__item_active":""?>">
                         <?php if($projects_active) {?>
-                        <a class="b-menu__link" href="<?php echo $projects_url ?>">Работа</a>
+                        <a class="b-menu__link" href="<?php echo $projects_url ?>">Р Р°Р±РѕС‚Р°</a>
                         <?php } else { //if?>
-                        <a class="b-menu__link" href="<?php echo $projects_url ?>">Работа</a>
+                        <a class="b-menu__link" href="<?php echo $projects_url ?>">Р Р°Р±РѕС‚Р°</a>
                         <?php }//else?>
                     </li><li
                      class="b-menu__item <?= $konkurs_active ? "b-menu__item_active":""?>">
                         <?php if($konkurs_active) {?>
-                        <a class="b-menu__link" href="/konkurs/">Конкурсы</a>
+                        <a class="b-menu__link" href="/konkurs/">РљРѕРЅРєСѓСЂСЃС‹</a>
                         <?php } else { //if?>
-                        <a class="b-menu__link" href="/konkurs/">Конкурсы</a>
+                        <a class="b-menu__link" href="/konkurs/">РљРѕРЅРєСѓСЂСЃС‹</a>
                         <?php }//else?>
                     </li><li
                      class="b-menu__item <?= $grey_catalog ? "b-menu__item_active":""?>">
                         <?php if($grey_catalog) {?>
-                        <a class="b-menu__link" href="/freelancers/">Фрилансеры</a>
+                        <a class="b-menu__link" href="/freelancers/">Р¤СЂРёР»Р°РЅСЃРµСЂС‹</a>
                         <?php } else { //if?>
-                        <a class="b-menu__link" href="/freelancers/">Фрилансеры</a>
+                        <a class="b-menu__link" href="/freelancers/">Р¤СЂРёР»Р°РЅСЃРµСЂС‹</a>
                         <?php }//else?>
                     </li>
                         <? if(BLOGS_CLOSED == false) { ?>
                     <li class="b-menu__item <?= $grey_commune?"b-menu__item_active":""?>">
                             <?php if($grey_blogs) {?>
-                            <span class="b-menu__b1"><span class="b-menu__b2"><a class="b-menu__link" href="/blogs/">Блоги</a></span></span>
+                            <span class="b-menu__b1"><span class="b-menu__b2"><a class="b-menu__link" href="/blogs/">Р‘Р»РѕРіРё</a></span></span>
                             <?php } else { //if?>
-                            <a class="b-menu__link" href="/blogs/">Блоги</a>
+                            <a class="b-menu__link" href="/blogs/">Р‘Р»РѕРіРё</a>
                             <?php }//else?>
                     </li>
                         <? }?>
 <?php /*
                        <li class="b-menu__item <?php if (preg_match("#/promo/bezopasnaya-sdelka/?$#", $_SERVER["REQUEST_URI"], $m)) {?>b-menu__item_active<?php }?>">
                           <?php if (preg_match("#/promo/bezopasnaya-sdelka/?$#", $_SERVER["REQUEST_URI"], $m)) {?>
-                          <a  class="b-menu__link" href="/promo/bezopasnaya-sdelka/">Безопасная Сделка</a>
+                          <a  class="b-menu__link" href="/promo/bezopasnaya-sdelka/">Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°</a>
                           <? } else {//if?>
-                          <a  class="b-menu__link" href="/promo/bezopasnaya-sdelka/">Безопасная Сделка</a>
+                          <a  class="b-menu__link" href="/promo/bezopasnaya-sdelka/">Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°</a>
                           <? }//else?>
                        </li>
 																				
                        <li class="b-menu__item <?php if (preg_match("#/promo/verification/?$#", $_SERVER["REQUEST_URI"], $m)) {?>b-menu__item_active<?php }?>">
 																							<?php if (preg_match("#/promo/verification/?$#", $_SERVER["REQUEST_URI"], $m)) {?>
-                          <a  class="b-menu__link" href="/promo/verification/">Верификация</a>
+                          <a  class="b-menu__link" href="/promo/verification/">Р’РµСЂРёС„РёРєР°С†РёСЏ</a>
                           <? } else {//if?>
-                          <a  class="b-menu__link" href="/promo/verification/">Верификация</a>
+                          <a  class="b-menu__link" href="/promo/verification/">Р’РµСЂРёС„РёРєР°С†РёСЏ</a>
                           <? }//else?>
                        </li>
 */ ?>                       
                         <li class="b-menu__item <?php if (preg_match("#/commune/?$#", $_SERVER["REQUEST_URI"], $m)) {?>b-menu__item_active<?php }?>">
                             <?php if (preg_match("#/commune/?$#", $_SERVER["REQUEST_URI"], $m)): ?>
-                                <a  class="b-menu__link" href="/commune/">Сообщества</a>
+                                <a  class="b-menu__link" href="/commune/">РЎРѕРѕР±С‰РµСЃС‚РІР°</a>
                             <?php else: //if?>
-                                <a  class="b-menu__link" href="/commune/">Сообщества</a>
+                                <a  class="b-menu__link" href="/commune/">РЎРѕРѕР±С‰РµСЃС‚РІР°</a>
                             <?php endif; //else?>
                        </li>
 
                        <li class="b-menu__item">
-                          <a  class="b-menu__link" target="_blank" href="https://feedback.fl.ru/">Помощь</a>
+                          <a  class="b-menu__link" target="_blank" href="https://feedback.fl.ru/">РџРѕРјРѕС‰СЊ</a>
                        </li>
                         
 <?php /*
                       <li class="b-menu__item <?php if (preg_match("#/partners/?$#", $_SERVER["REQUEST_URI"], $m)) {?>b-menu__item_active<?php }?>">
                             <?php if (preg_match("#/partners/?$#", $_SERVER["REQUEST_URI"], $m)): ?>
-                                <a  class="b-menu__link" href="/partners/">Партнерская программа</a>
+                                <a  class="b-menu__link" href="/partners/">РџР°СЂС‚РЅРµСЂСЃРєР°СЏ РїСЂРѕРіСЂР°РјРјР°</a>
                             <?php else: //if?>
-                                <a  class="b-menu__link" href="/partners/">Партнерская программа</a>
+                                <a  class="b-menu__link" href="/partners/">РџР°СЂС‚РЅРµСЂСЃРєР°СЏ РїСЂРѕРіСЂР°РјРјР°</a>
                             <?php endif; //else?>
                       </li>                       
 */ ?>                       
                        <li class="b-menu__item b-page__ipad b-page__iphone">
-                          <a  class="b-menu__link" href="/?full_site_version=1">Полная версия сайта</a>
+                          <a  class="b-menu__link" href="/?full_site_version=1">РџРѕР»РЅР°СЏ РІРµСЂСЃРёСЏ СЃР°Р№С‚Р°</a>
                        </li>
                 </ul>
             </div><!--b-menu-->
@@ -200,14 +200,14 @@ function() {
                                   <tr class="b-search__tr">
                                       <td class="b-search__input">
                                               <div id="body_search_across" class="b-input b-input_height_23 b-input_border_none">
-                                                  <input id="search_across" class="b-input__text" type="text" name="search_string" placeholder="Поиск<?= is_emp() ? " исполнителя" : (get_uid(false)? " проекта" : " исполнителя")?>. Например, <?=kwords::getRandomSearchHint( (get_uid(false) ? 'users' : (is_emp(get_uid(false)) ? 'projects' : 'users')) )?>" autocomplete="off" />
+                                                  <input id="search_across" class="b-input__text" type="text" name="search_string" placeholder="РџРѕРёСЃРє<?= is_emp() ? " РёСЃРїРѕР»РЅРёС‚РµР»СЏ" : (get_uid(false)? " РїСЂРѕРµРєС‚Р°" : " РёСЃРїРѕР»РЅРёС‚РµР»СЏ")?>. РќР°РїСЂРёРјРµСЂ, <?=kwords::getRandomSearchHint( (get_uid(false) ? 'users' : (is_emp(get_uid(false)) ? 'projects' : 'users')) )?>" autocomplete="off" />
                                               </div>
                                       </td>
                                       <td class="b-search__button">
                                           <a class="b-button b-button_rectangle_color_transparent" href="/search/" onclick="<? if(is_emp()) {?>_gaq.push(['_trackEvent', 'User', 'Employer', 'button_search']); ga('send', 'event', 'Employer', 'button_search');<? } else { ?>_gaq.push(['_trackEvent', 'User', 'Freelance', 'button_search']); ga('send', 'event', 'Freelance', 'button_search');<? } ?> $('form-search').submit(); return false;">
                                               <span class="b-button__b1">
                                                   <span class="b-button__b2">
-                                                      <span class="b-button__txt">Найти</span>
+                                                      <span class="b-button__txt">РќР°Р№С‚Рё</span>
                                                   </span>
                                               </span>
                                           </a>
@@ -221,7 +221,7 @@ function() {
               </div><!--b-fon -->	
             
             <?php } else { //if?>
-            <h1 class="b-page__title b-page__title_padnull">Поиск по сайту</h1>
+            <h1 class="b-page__title b-page__title_padnull">РџРѕРёСЃРє РїРѕ СЃР°Р№С‚Сѓ</h1>
             <?php } //else?>
           </td>
        </tr>

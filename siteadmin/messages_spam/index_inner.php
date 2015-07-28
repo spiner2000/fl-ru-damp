@@ -11,7 +11,7 @@ banned.addContext( 'admin_messages_spam', -1, '', '' );
 banned.reload = 1;
 </script>
 
-<!-- Скрытые поля календаря старт -->
+<!-- РЎРєСЂС‹С‚С‹Рµ РїРѕР»СЏ РєР°Р»РµРЅРґР°СЂСЏ СЃС‚Р°СЂС‚ -->
 <div id="fake_div" style="position: relative; top: -999px; left: -999px;">
     <form name="fake_frm" id="fake_frm">
         <input type="text" name="fake_s_from" id="fake_s_from" value="<?=((!$error && $fromDs && $fromMs && $fromYs) ? $fromDs.'-'.$fromMs.'-'.$fromYs : '')?>">
@@ -20,41 +20,41 @@ banned.reload = 1;
         <input type="text" name="fake_c_to" id="fake_c_to" value="<?=$toDc?>-<?=$toMc?>-<?=$toYc?>">
     </form>
 </div>
-<!-- Скрытые поля календаря стоп -->
+<!-- РЎРєСЂС‹С‚С‹Рµ РїРѕР»СЏ РєР°Р»РµРЅРґР°СЂСЏ СЃС‚РѕРї -->
 
-<h3>Жалобы / Жалобы на спам</h3>
+<h3>Р–Р°Р»РѕР±С‹ / Р–Р°Р»РѕР±С‹ РЅР° СЃРїР°Рј</h3>
 
-<!-- Фильтр старт -->
+<!-- Р¤РёР»СЊС‚СЂ СЃС‚Р°СЂС‚ -->
 <div class="admin-compliant">
     <div class="form form-acnew">
         <b class="b1"></b>
         <b class="b2"></b>
         <div class="form-in">
-            <h4 class="toggle"><a href="javascript:void(0);" onclick="var mySlide = new Fx.Slide('slideBlock').toggle();" class="lnk-dot-666">Фильтр</a></h4>
+            <h4 class="toggle"><a href="javascript:void(0);" onclick="var mySlide = new Fx.Slide('slideBlock').toggle();" class="lnk-dot-666">Р¤РёР»СЊС‚СЂ</a></h4>
             <div id="slideBlock" class="slideBlock">
                 <form name="frm_filter" id="frm_filter" method="GET" onsubmit="return messages_spam.checkDateFilter();">
                 <input type="hidden" id="cmd" name="cmd" value="go">
                 <input type="hidden" id="log_pp" name="log_pp" value="<?=$log_pp?>">
                 <div class="form-block first">
                     <div class="form-el">
-                        <label class="form-l" for="spamer"><b>Логин спамера:</b></label>
+                        <label class="form-l" for="spamer"><b>Р›РѕРіРёРЅ СЃРїР°РјРµСЂР°:</b></label>
                         <div class="form-value fvs">
                             <input type="text" name="spamer" id="spamer" value="<?=$spamer?>" class="i-txt" />
 														<div class="b-check b-check_inline-block b-check_valign_bottom">
-                            	<input id="spamer_ex" class="b-check__input" type="checkbox" name="spamer_ex" value="1" <?=($spamer_ex ? ' checked' : '')?>><label class="b-check__label b-check__label_fontsize_13" for="spamer_ex">точное совпадение</label>
+                            	<input id="spamer_ex" class="b-check__input" type="checkbox" name="spamer_ex" value="1" <?=($spamer_ex ? ' checked' : '')?>><label class="b-check__label b-check__label_fontsize_13" for="spamer_ex">С‚РѕС‡РЅРѕРµ СЃРѕРІРїР°РґРµРЅРёРµ</label>
 														</div>
                         </div>
                     </div>
                     <div class="form-el">
-                        <label class="form-l" for="kwd"><b>Ключевые слова:</b></label>
+                        <label class="form-l" for="kwd"><b>РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°:</b></label>
                         <div class="form-value fvs">
                             <input type="text" name="kwd" id="kwd" value="<?=$kwd?>" class="i-txt fvsi" />
                         </div>
                     </div>
                     <div class="form-el">
-                        <label class="form-l"><b>Дата спама:</b></label>
+                        <label class="form-l"><b>Р”Р°С‚Р° СЃРїР°РјР°:</b></label>
                         <div class="form-value form-date">
-                            <span>с:&#160;&#160;</span>
+                            <span>СЃ:&#160;&#160;</span>
                             
                             <select name="s_from_d" id="s_from_d" class="sel-year" onchange="messages_spam.onSelectSetDate('s_from');">
                                 <option value=""></option>
@@ -81,7 +81,7 @@ banned.reload = 1;
                                 <?php } ?>
                             </select>
                             
-                            <a id="a_from_s" onclick="if(self.gfPop)gfPop.fStartPop(event, document, document.fake_frm.fake_s_from,document.fake_frm.fake_s_to,$('a_from_s'));return false;" href="javascript:void(0)"><img class="PopcalTrigger" src="/images/calendar.png" alt="" width="23" height="20" /></a>&#160;&#160;по:&#160;&#160;
+                            <a id="a_from_s" onclick="if(self.gfPop)gfPop.fStartPop(event, document, document.fake_frm.fake_s_from,document.fake_frm.fake_s_to,$('a_from_s'));return false;" href="javascript:void(0)"><img class="PopcalTrigger" src="/images/calendar.png" alt="" width="23" height="20" /></a>&#160;&#160;РїРѕ:&#160;&#160;
                         </div>
                         <div class="form-value">
                             
@@ -114,18 +114,18 @@ banned.reload = 1;
     			
                 <div class="form-block">
                     <div class="form-el">
-                        <label class="form-l" for="user">Пожаловался:</label>
+                        <label class="form-l" for="user">РџРѕР¶Р°Р»РѕРІР°Р»СЃСЏ:</label>
                         <div class="form-value fvs">
                             	<input id="user"  type="text" name="user" value="<?=$user?>" class="i-txt" />
 														<div class="b-check b-check_inline-block b-check_valign_bottom">
-                            	<input id="user_ex" class="b-check__input" type="checkbox" name="user_ex" value="1" <?=($user_ex ? ' checked' : '')?>><label class="b-check__label b-check__label_fontsize_13" for="user_ex">точное совпадение</label>
+                            	<input id="user_ex" class="b-check__input" type="checkbox" name="user_ex" value="1" <?=($user_ex ? ' checked' : '')?>><label class="b-check__label b-check__label_fontsize_13" for="user_ex">С‚РѕС‡РЅРѕРµ СЃРѕРІРїР°РґРµРЅРёРµ</label>
 														</div>
                         </div>
                     </div>
                     <div class="form-el">
-                        <label class="form-l">Дата жалобы:</label>
+                        <label class="form-l">Р”Р°С‚Р° Р¶Р°Р»РѕР±С‹:</label>
                         <div class="form-value form-date">
-                            <span>с:&#160;&#160;</span>
+                            <span>СЃ:&#160;&#160;</span>
                             
                             <select name="c_from_d" id="c_from_d" class="sel-year" onchange="messages_spam.onSelectSetDate('c_from');">
                                 <option value=""></option>
@@ -152,7 +152,7 @@ banned.reload = 1;
                                 <?php } ?>
                             </select>
                             
-                            <a id="a_from_c" onclick="if(self.gfPop)gfPop.fStartPop(event, document, document.fake_frm.fake_c_from,document.fake_frm.fake_c_to,$('a_from_c'));return false;" href="javascript:void(0)"><img class="PopcalTrigger" src="/images/calendar.png" alt="" width="23" height="20" /></a>&#160;&#160;по:&#160;&#160;
+                            <a id="a_from_c" onclick="if(self.gfPop)gfPop.fStartPop(event, document, document.fake_frm.fake_c_from,document.fake_frm.fake_c_to,$('a_from_c'));return false;" href="javascript:void(0)"><img class="PopcalTrigger" src="/images/calendar.png" alt="" width="23" height="20" /></a>&#160;&#160;РїРѕ:&#160;&#160;
                         </div>
                         <div class="form-value">
                             <select name="c_to_d" id="c_to_d" class="sel-year" onchange="messages_spam.onSelectSetDate('c_to');">
@@ -184,8 +184,8 @@ banned.reload = 1;
                 
                 <div class="form-block last">
                     <div class="form-el form-btns">
-                        <button type="submit">Отфильтровать</button>
-                        <a href="javascript:void(0);" onclick="messages_spam.clearFilter('<?=date('j')?>', '<?=date('m')?>', '<?=date('Y')?>');" class="lnk-dot-grey">Очистить</a>
+                        <button type="submit">РћС‚С„РёР»СЊС‚СЂРѕРІР°С‚СЊ</button>
+                        <a href="javascript:void(0);" onclick="messages_spam.clearFilter('<?=date('j')?>', '<?=date('m')?>', '<?=date('Y')?>');" class="lnk-dot-grey">РћС‡РёСЃС‚РёС‚СЊ</a>
                     </div>
                 </div>
                 </form>
@@ -195,13 +195,13 @@ banned.reload = 1;
         <b class="b1"></b>
     </div>
 </div>
-<!-- Фильтр стоп -->
+<!-- Р¤РёР»СЊС‚СЂ СЃС‚РѕРї -->
 
 <?php if ( $spam ) { ?>
 <table class="compliant-table">
 <tr>
-    <th>Дата жалобы</th>
-    <th>Сообщение</th>
+    <th>Р”Р°С‚Р° Р¶Р°Р»РѕР±С‹</th>
+    <th>РЎРѕРѕР±С‰РµРЅРёРµ</th>
     <th></th>
 </tr>
 <?php foreach ( $spam as $aOne ) { ?>
@@ -213,7 +213,7 @@ banned.reload = 1;
         <div class="compliant-item">
             <span class="compliant-autor"><a href="/users/<?=$aOne['spamer_login']?>"><?=$aOne['spamer_uname']?> <?=$aOne['spamer_usurname']?> [<?=$aOne['spamer_login']?>]</a>&nbsp;
             
-            <?=date('d.m.Y', strtotime($aOne['post_time']))?> в <?=date('H:i', strtotime($aOne['post_time']))?>&nbsp;
+            <?=date('d.m.Y', strtotime($aOne['post_time']))?> РІ <?=date('H:i', strtotime($aOne['post_time']))?>&nbsp;
             <?php 
             if ( !$aWarn[$aOne['spamer_id']] ) {
             	$aWarn[$aOne['spamer_id']]  = $oUser->GetField( $aOne['spamer_id'], $err, 'warn' );
@@ -225,22 +225,22 @@ banned.reload = 1;
             
             if ( $nWarn ) { 
             ?>
-            <span class="color-a30000"><?=$nWarn?> <?=ending($nWarn, 'предупреждение', 'предупреждения', 'предупреждений')?></span>
+            <span class="color-a30000"><?=$nWarn?> <?=ending($nWarn, 'РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ', 'РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ', 'РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№')?></span>
             <?php 
             }
             else {
-            ?>нет предупреждений<?php
+            ?>РЅРµС‚ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№<?php
             }
             ?>
             
             <?php if ( $aOne['spam_cnt'] > 1 && !$spamer && !$spamer_ex ) { ?>
-            <span class="color-a30000"><a href="/siteadmin/messages_spam/?cmd=go&spamer=<?=$aOne['spamer_login']?>&spamer_ex=1">и еще <?=$aOne['spam_cnt']?> <?=ending($aOne['spam_cnt'], 'жалоба', 'жалобы', 'жалоб')?> на этого пользователя</a></span>
+            <span class="color-a30000"><a href="/siteadmin/messages_spam/?cmd=go&spamer=<?=$aOne['spamer_login']?>&spamer_ex=1">Рё РµС‰Рµ <?=$aOne['spam_cnt']?> <?=ending($aOne['spam_cnt'], 'Р¶Р°Р»РѕР±Р°', 'Р¶Р°Р»РѕР±С‹', 'Р¶Р°Р»РѕР±')?> РЅР° СЌС‚РѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</a></span>
             <?php } ?>
             </span>
             
             <p><?=reformat($aOne['msg_text'], 45)?></p>
             
-            <? // прикрепленные файлы ------------------
+            <? // РїСЂРёРєСЂРµРїР»РµРЅРЅС‹Рµ С„Р°Р№Р»С‹ ------------------
             if ( $aOne['files'] ) {
 		    $nn = 1;
 		    ?>
@@ -276,8 +276,8 @@ banned.reload = 1;
                     <b class="b1"></b>
                     <b class="b2"></b>
                     <div class="form-in">
-                        <span class="compliant-autor"><?=( $aOne['complaint_text'] ? 'Комментарий от' : 'Пожаловался' )?>&nbsp;
-                        <a href="/users/<?=$aOne['user_login']?>"><?=$aOne['user_name']?> <?=$aOne['user_surname']?> [<?=$aOne['user_login']?>]</a> <?=date('d.m.Y', strtotime($aOne['complaint_time']))?> в <?=date('H:i', strtotime($aOne['complaint_time']))?></span>
+                        <span class="compliant-autor"><?=( $aOne['complaint_text'] ? 'РљРѕРјРјРµРЅС‚Р°СЂРёР№ РѕС‚' : 'РџРѕР¶Р°Р»РѕРІР°Р»СЃСЏ' )?>&nbsp;
+                        <a href="/users/<?=$aOne['user_login']?>"><?=$aOne['user_name']?> <?=$aOne['user_surname']?> [<?=$aOne['user_login']?>]</a> <?=date('d.m.Y', strtotime($aOne['complaint_time']))?> РІ <?=date('H:i', strtotime($aOne['complaint_time']))?></span>
                         <?php if ( $aOne['complaint_text'] ) { ?>
                         <p><?=reformat($aOne['complaint_text'], 45)?></p>
                         <?php } ?>
@@ -292,42 +292,42 @@ banned.reload = 1;
         </div>
         
         <?php if ( $aOne['complaint_cnt'] > 1 ) { ?>
-        <span id="span_compliants" class="all-compliant"><a onclick="messages_spam.getSpamComplaints(<?=$aOne['spamer_id']?>, '<?=$aOne['msg_md5']?>');" href="javascript:void(0);">Показать все <?=$aOne['complaint_cnt']?> <?=ending($aOne['complaint_cnt'], 'жалобу', 'жалобы', 'жалоб')?></a></span>
+        <span id="span_compliants" class="all-compliant"><a onclick="messages_spam.getSpamComplaints(<?=$aOne['spamer_id']?>, '<?=$aOne['msg_md5']?>');" href="javascript:void(0);">РџРѕРєР°Р·Р°С‚СЊ РІСЃРµ <?=$aOne['complaint_cnt']?> <?=ending($aOne['complaint_cnt'], 'Р¶Р°Р»РѕР±Сѓ', 'Р¶Р°Р»РѕР±С‹', 'Р¶Р°Р»РѕР±')?></a></span>
         <?php } ?>
     </td>
     <td class="last">
-        <a onclick="if (confirm('Вы уверены, что это не спам?')) {window.location.href='/siteadmin/messages_spam/?task=del&sid=<?=$aOne['spamer_id']?>&md5=<?=$aOne['msg_md5']?>'}" class="btnr-mb" href="javascript:void(0);"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Это не спам</span></span></span></a>
+        <a onclick="if (confirm('Р’С‹ СѓРІРµСЂРµРЅС‹, С‡С‚Рѕ СЌС‚Рѕ РЅРµ СЃРїР°Рј?')) {window.location.href='/siteadmin/messages_spam/?task=del&sid=<?=$aOne['spamer_id']?>&md5=<?=$aOne['msg_md5']?>'}" class="btnr-mb" href="javascript:void(0);"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Р­С‚Рѕ РЅРµ СЃРїР°Рј</span></span></span></a>
         <?php $sEdit = $bWhere ? '1' : '0'; ?>
-        <a onclick="banned.userBan(<?=$aOne['spamer_id']?>, 'admin_messages_spam',<?=$sEdit?>)" class="btnr-mb" href="javascript:void(0);"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Заблокировать</span></span></span></a>
+        <a onclick="banned.userBan(<?=$aOne['spamer_id']?>, 'admin_messages_spam',<?=$sEdit?>)" class="btnr-mb" href="javascript:void(0);"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ</span></span></span></a>
         <?php if ( $nWarn < 3 ) {
             $sOnCLick = "banned.warnUser({$aOne['spamer_id']}, 0, 'admin_messages_spam', 'admin_messages_spam', 0); return false;";
         } 
         else {
             $sOnCLick = "adminLogWarnMax()";
         } ?>
-        <a onclick="<?=$sOnCLick?>" class="btnr-mb" href="javascript:void(0);"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Предупредить</span></span></span></a>
+        <a onclick="<?=$sOnCLick?>" class="btnr-mb" href="javascript:void(0);"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РџСЂРµРґСѓРїСЂРµРґРёС‚СЊ</span></span></span></a>
     </td>
 </tr>
 <?php } ?>
 </table>
 
-<!-- редактирование предупреждения старт -->
+<!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ СЃС‚Р°СЂС‚ -->
 <?php
 include_once( $_SERVER['DOCUMENT_ROOT'] . '/user/warn_overlay.php' );
 ?>
-<!-- редактирование предупреждения стоп -->
+<!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ СЃС‚РѕРї -->
 
-<!-- редактирование бана старт -->
+<!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±Р°РЅР° СЃС‚Р°СЂС‚ -->
 <?php
 include_once( $_SERVER['DOCUMENT_ROOT'] . '/user/ban_overlay.php' );
 ?>
-<!-- редактирование бана стоп -->
+<!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±Р°РЅР° СЃС‚РѕРї -->
 
-<!-- список предупреждений пользователя старт -->
+<!-- СЃРїРёСЃРѕРє РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃС‚Р°СЂС‚ -->
 <?php
 include_once( $_SERVER['DOCUMENT_ROOT'] . '/siteadmin/admin_log/warn_overlay.php' );
 ?>
-<!-- список предупреждений пользователя стоп -->
+<!-- СЃРїРёСЃРѕРє РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃС‚РѕРї -->
 
 <?php 
     if ( $pages > 1 ) {
@@ -340,7 +340,7 @@ include_once( $_SERVER['DOCUMENT_ROOT'] . '/siteadmin/admin_log/warn_overlay.php
 }
 else {
 ?>
-<div style="margin-top: 15px;">Нет сообщений, удовлетворяющих условиям выборки</div>
+<div style="margin-top: 15px;">РќРµС‚ СЃРѕРѕР±С‰РµРЅРёР№, СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё</div>
 <?php
 }
 ?>

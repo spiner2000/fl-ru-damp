@@ -3,7 +3,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/search/search_element_users.php";
 
 /**
- * Êëàññ äëÿ ïîèñêà ïî ïîëüçîâàòåëÿì
+ * ÐšÐ»Ð°ÑÑ Ð´Ð»Ñ Ð¿Ð¾Ð¸ÑÐºÐ° Ð¿Ð¾ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑÐ¼
  *
  */
 class searchElementUsers_ext extends searchElementUsers
@@ -125,7 +125,7 @@ class searchElementUsers_ext extends searchElementUsers
                       (uc.sbr_opi_null) AS total_opi_null,
                       (uc.sbr_opi_minus + uc.tu_orders_minus + uc.projects_fb_minus) AS total_opi_minus,
                       
-                      COALESCE(smeta.completed_cnt, 0) + COALESCE(uc.reserves_completed_cnt, 0) AS completed_cnt -- ñòàðûå ÁÑ + íîâûå ÁÑ
+                      COALESCE(smeta.completed_cnt, 0) + COALESCE(uc.reserves_completed_cnt, 0) AS completed_cnt -- ÑÑ‚Ð°Ñ€Ñ‹Ðµ Ð‘Ð¡ + Ð½Ð¾Ð²Ñ‹Ðµ Ð‘Ð¡
                       
                     FROM users u
                     LEFT JOIN freelancer s ON s.uid = u.uid
@@ -134,7 +134,7 @@ class searchElementUsers_ext extends searchElementUsers
                     LEFT JOIN users_counters uc ON uc.user_id = u.uid
                     LEFT JOIN country ctr ON ctr.id = s.country AND ctr.id > 0
                     LEFT JOIN city ct ON ct.id = s.city AND ct.id > 0
-                    LEFT JOIN sbr_meta AS smeta ON smeta.user_id = u.uid -- ñòàðûå ÁÑ
+                    LEFT JOIN sbr_meta AS smeta ON smeta.user_id = u.uid -- ÑÑ‚Ð°Ñ€Ñ‹Ðµ Ð‘Ð¡
                     LEFT JOIN 
                     ( 
                         SELECT 
@@ -178,7 +178,7 @@ class searchElementUsers_ext extends searchElementUsers
                 $frl_ids[] = $row['uid'];
                 $frl_ids_map[$row['uid']] = $key;
                 
-                //Åñëè âêëàäêà ÒÓ âûêëþ÷åíà òî ñðàçó èñêëþ÷àåì òàêèå UID
+                //Ð•ÑÐ»Ð¸ Ð²ÐºÐ»Ð°Ð´ÐºÐ° Ð¢Ð£ Ð²Ñ‹ÐºÐ»ÑŽÑ‡ÐµÐ½Ð° Ñ‚Ð¾ ÑÑ€Ð°Ð·Ñƒ Ð¸ÑÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼ Ñ‚Ð°ÐºÐ¸Ðµ UID
                 if (substr($row['tabs'], 7, 1) == 1) {
                     $tu_frl_ids[$key] = $row['uid'];
                 }                
@@ -198,7 +198,7 @@ class searchElementUsers_ext extends searchElementUsers
             //exit;
             
             
-            //Ïîëó÷åíèå ïîëüçîâàòåëüñêèé ïðåâüþ ðàáîò/óñëóã
+            //ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ðµ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÑÐºÐ¸Ð¹ Ð¿Ñ€ÐµÐ²ÑŒÑŽ Ñ€Ð°Ð±Ð¾Ñ‚/ÑƒÑÐ»ÑƒÐ³
             require_once(ABS_PATH . '/freelancers/widgets/FreelancersPreviewWidget.php');
             require_once(ABS_PATH . '/freelancers/models/FreelancersPreviewModel.php');
 
@@ -210,25 +210,25 @@ class searchElementUsers_ext extends searchElementUsers
 
             $tmp_tu_uids = $tu_frl_ids;
             foreach ($list as $item) {
-                //Åñëè îòêëþ÷åíà âêëàäêà ÒÓ òî èõ èñêëþ÷àåì
+                //Ð•ÑÐ»Ð¸ Ð¾Ñ‚ÐºÐ»ÑŽÑ‡ÐµÐ½Ð° Ð²ÐºÐ»Ð°Ð´ÐºÐ° Ð¢Ð£ Ñ‚Ð¾ Ð¸Ñ… Ð¸ÑÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼
                 if (!$item || ($item->type == FreelancersPreviewModel::TYPE_TU && 
                     !in_array($item->user_id, $tmp_tu_uids))) {
                         continue;
                 }
 
-                //Èíèöèàëèçèðóåì äàííûå þçåðà â ðàáîòå/óñëóãå ïîêà òîëüêî ëîãèí íóæåí
+                //Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€ÑƒÐµÐ¼ Ð´Ð°Ð½Ð½Ñ‹Ðµ ÑŽÐ·ÐµÑ€Ð° Ð² Ñ€Ð°Ð±Ð¾Ñ‚Ðµ/ÑƒÑÐ»ÑƒÐ³Ðµ Ð¿Ð¾ÐºÐ° Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð»Ð¾Ð³Ð¸Ð½ Ð½ÑƒÐ¶ÐµÐ½
                 $key = $frl_ids_map[$item->user_id];
                 $item->setUser(array('login' => $this->results[$key]['login']));
 
-                //Èíèòèì âèäæåò åñëè åãî íåò
+                //Ð˜Ð½Ð¸Ñ‚Ð¸Ð¼ Ð²Ð¸Ð´Ð¶ÐµÑ‚ ÐµÑÐ»Ð¸ ÐµÐ³Ð¾ Ð½ÐµÑ‚
                 if (!isset($this->results[$key]['preview'])) {
                     $this->results[$key]['preview'] = new FreelancersPreviewWidget();
                 }
 
-                //Äîáàâëÿåì ðàáîòó â âèäæåò
+                //Ð”Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ Ð² Ð²Ð¸Ð´Ð¶ÐµÑ‚
                 $this->results[$key]['preview']->addItem($item);
 
-                //Èñêëþ÷àåì èç äàëüíåéøåé îáðàáîòêè
+                //Ð˜ÑÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼ Ð¸Ð· Ð´Ð°Ð»ÑŒÐ½ÐµÐ¹ÑˆÐµÐ¹ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ¸
                 unset($frl_ids[$key], $tu_frl_ids[$key]);
             }            
             
@@ -245,8 +245,8 @@ class searchElementUsers_ext extends searchElementUsers
             //------------------------------------------------------------------
         
             
-            //Åñëè ó ïîëüçîâàòåëÿ íå îòîáðàæàòñÿ ïîðòôîëèî 
-            //òî ìîæíî ïîêàçàòü 3 ïîñëåäíèè ÒÓ
+            //Ð•ÑÐ»Ð¸ Ñƒ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ Ð½Ðµ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶Ð°Ñ‚ÑÑ Ð¿Ð¾Ñ€Ñ‚Ñ„Ð¾Ð»Ð¸Ð¾ 
+            //Ñ‚Ð¾ Ð¼Ð¾Ð¶Ð½Ð¾ Ð¿Ð¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ 3 Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ð¸Ð¸ Ð¢Ð£
             $exist_uids = ($this->works)? array_keys($this->works) : array();
             $tu_uids = array_diff($frl_ids, $exist_uids);
 

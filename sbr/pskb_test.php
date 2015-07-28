@@ -29,7 +29,7 @@ class pskb_test extends pskb {
         
         $this->_frl = new pskb_user(array(
             1 => array(
-                'fio' => 'Èâàíîâ Èâàí Èâàíîâè÷',
+                'fio' => 'Ð˜Ð²Ð°Ð½Ð¾Ð² Ð˜Ð²Ð°Ð½ Ð˜Ð²Ð°Ð½Ð¾Ð²Ð¸Ñ‡',
                 'phone' => '+79216130051',
                 'el_yd' => '410011423430810',
                 'el_wmr' => 'R487826911004',
@@ -39,7 +39,7 @@ class pskb_test extends pskb {
 //                'bank_bik' => '333333333',
             ),
             2 => array(
-                'org_name' => 'ÎÎÎ Òåñò11',
+                'org_name' => 'ÐžÐžÐž Ð¢ÐµÑÑ‚11',
                 'phone' => '+79216130051',
                 'kpp' => '771401001',
                 'inn' => '7704138706',
@@ -51,7 +51,7 @@ class pskb_test extends pskb {
         
         $this->_emp = new pskb_user(array(
             1 => array(
-                'fio' => 'Ïåòðîâ Ïåòð Èâàíîâè÷',
+                'fio' => 'ÐŸÐµÑ‚Ñ€Ð¾Ð² ÐŸÐµÑ‚Ñ€ Ð˜Ð²Ð°Ð½Ð¾Ð²Ð¸Ñ‡',
                 'phone' => '+79216103498',
                 'el_yd' => '410011423430820',
                 'el_wmr' => 'R487826911005',
@@ -61,7 +61,7 @@ class pskb_test extends pskb {
 //                'bank_bik' => '777777777',
             ),
             2 => array(
-                'org_name' => 'ÎÎÎ Òåñò',
+                'org_name' => 'ÐžÐžÐž Ð¢ÐµÑÑ‚',
                 'phone' => '+79216103498',
                 'kpp' => '771001001',
                 'inn' => '7710434132',

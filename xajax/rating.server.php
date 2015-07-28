@@ -49,16 +49,16 @@ function GetMorePrj($uid) {
             else $html .= "<a href='".getFriendlyURL("project", $p['project_id'])."'>{$p['project_name']}</a>";
             
             if($p['position']>0 && $p['is_executor']=='t') { 
-                //$html .= " ({$p['position']}-е место)";
+                //$html .= " ({$p['position']}-Рµ РјРµСЃС‚Рѕ)";
             } 
             if($p['refused']=='t') {
-                $html .= "<p>Отказ: <span class='ops-minus'>".$p['rating']."</span></p>";
+                $html .= "<p>РћС‚РєР°Р·: <span class='ops-minus'>".$p['rating']."</span></p>";
             } if($p['selected']=='t') {
-                $html .= "<p><span>Кандидат: <span class='ops-plus'>+".$p['rating']."</span></p>";
+                $html .= "<p><span>РљР°РЅРґРёРґР°С‚: <span class='ops-plus'>+".$p['rating']."</span></p>";
             } if($p['is_executor']=='t' && $p['position'] <= 0) {
-                $html .= "<p><span>Исполнитель: <span class='ops-plus'>+".$p['rating']."</span></p>";
+                $html .= "<p><span>РСЃРїРѕР»РЅРёС‚РµР»СЊ: <span class='ops-plus'>+".$p['rating']."</span></p>";
             } if($p['position'] > 0) {  
-                $html .= "<p>{$p['position']}-е место: <span class='ops-plus'>+{$p['rating']}</span></p>";
+                $html .= "<p>{$p['position']}-Рµ РјРµСЃС‚Рѕ: <span class='ops-plus'>+{$p['rating']}</span></p>";
             }
             $html .= "</li>";
         }
@@ -419,7 +419,7 @@ function GetRating($type, $login = null, $width = null) {
             }
             
             
-            // сегодняшний рейтинг берем из $user - тут он актуальный и не зависит от кэша
+            // СЃРµРіРѕРґРЅСЏС€РЅРёР№ СЂРµР№С‚РёРЅРі Р±РµСЂРµРј РёР· $user - С‚СѓС‚ РѕРЅ Р°РєС‚СѓР°Р»СЊРЅС‹Р№ Рё РЅРµ Р·Р°РІРёСЃРёС‚ РѕС‚ РєСЌС€Р°
             if ($type === 'month') {
                 array_pop($new_data);
                 $new_data[] = floatval($user->rating);

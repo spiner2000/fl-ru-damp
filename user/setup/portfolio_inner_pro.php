@@ -1,11 +1,11 @@
 <?
 
-//@todo: похоже шаблон не используется, но пока не трогаю
-//@todo: shop уже везде выпилин! а здесь связь магазина с портфолио что на сайте уже давно нет
+//@todo: РїРѕС…РѕР¶Рµ С€Р°Р±Р»РѕРЅ РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ, РЅРѕ РїРѕРєР° РЅРµ С‚СЂРѕРіР°СЋ
+//@todo: shop СѓР¶Рµ РІРµР·РґРµ РІС‹РїРёР»РёРЅ! Р° Р·РґРµСЃСЊ СЃРІСЏР·СЊ РјР°РіР°Р·РёРЅР° СЃ РїРѕСЂС‚С„РѕР»РёРѕ С‡С‚Рѕ РЅР° СЃР°Р№С‚Рµ СѓР¶Рµ РґР°РІРЅРѕ РЅРµС‚
 
 
 if (!$_in_setup) {header ("HTTP/1.0 403 Forbidden"); exit;}
-unset($_SESSION['w_select']);	//сбрасываем переменную сессии отмеченных работ (для удаления работ и перетаскивания их из одного раздела в другие)
+unset($_SESSION['w_select']);	//СЃР±СЂР°СЃС‹РІР°РµРј РїРµСЂРµРјРµРЅРЅСѓСЋ СЃРµСЃСЃРёРё РѕС‚РјРµС‡РµРЅРЅС‹С… СЂР°Р±РѕС‚ (РґР»СЏ СѓРґР°Р»РµРЅРёСЏ СЂР°Р±РѕС‚ Рё РїРµСЂРµС‚Р°СЃРєРёРІР°РЅРёСЏ РёС… РёР· РѕРґРЅРѕРіРѕ СЂР°Р·РґРµР»Р° РІ РґСЂСѓРіРёРµ)
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/portfolio.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/professions.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/shop.php");
@@ -33,7 +33,7 @@ if (!$prjs) include("portfolio_in_setup.php");
     $lprj_id = 0;
 
     /**
-     * Выбираем список профессий и считаем количество работ в каждом разделе.
+     * Р’С‹Р±РёСЂР°РµРј СЃРїРёСЃРѕРє РїСЂРѕС„РµСЃСЃРёР№ Рё СЃС‡РёС‚Р°РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ СЂР°Р±РѕС‚ РІ РєР°Р¶РґРѕРј СЂР°Р·РґРµР»Рµ.
      */
     $lastprof = -1;
     $num_prjs = count($prjs);
@@ -52,7 +52,7 @@ if (!$prjs) include("portfolio_in_setup.php");
 			}
     }
     /**
-     * Начальная и конечная профессия (для сортировки).
+     * РќР°С‡Р°Р»СЊРЅР°СЏ Рё РєРѕРЅРµС‡РЅР°СЏ РїСЂРѕС„РµСЃСЃРёСЏ (РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё).
      */
     reset($wrk_profs);
     $prjs[current($wrk_profs)]['wrk_pos_start'] = true;
@@ -64,14 +64,14 @@ if (!$prjs) include("portfolio_in_setup.php");
     foreach ($wrk_profs as $key)
     {
       /**
-       * Последняя работа в профессии.
+       * РџРѕСЃР»РµРґРЅСЏСЏ СЂР°Р±РѕС‚Р° РІ РїСЂРѕС„РµСЃСЃРёРё.
        */
 		  if (($key > 0) && !is_null($prjs[$key - 1]['name']))
 		  {
   			$prjs[$key -1]['prj_pos_end'] = true;
 		  }
       /**
-       * Первая работа в профессии.
+       * РџРµСЂРІР°СЏ СЂР°Р±РѕС‚Р° РІ РїСЂРѕС„РµСЃСЃРёРё.
        */
 		  if (($key < $num_prjs) && !is_null($prjs[$key]['name']))
 		  {
@@ -79,7 +79,7 @@ if (!$prjs) include("portfolio_in_setup.php");
 		  }
     }
     /**
-     * Последняя работа.
+     * РџРѕСЃР»РµРґРЅСЏСЏ СЂР°Р±РѕС‚Р°.
      */
     $prjs[$num_prjs - 1]['prj_pos_end'] = true;
     
@@ -225,11 +225,11 @@ function tags_count() {
 		}
 		if (wc > 10) {
 			document.getElementById('co-warn').style.display = '';
-			document.getElementById('co-warn-text').innerHTML = 'Вы превысили количество допустимых тегов';
+			document.getElementById('co-warn-text').innerHTML = 'Р’С‹ РїСЂРµРІС‹СЃРёР»Рё РєРѕР»РёС‡РµСЃС‚РІРѕ РґРѕРїСѓСЃС‚РёРјС‹С… С‚РµРіРѕРІ';
 			document.getElementById('shop_tags').value = document.getElementById('shop_tags').value.substr(0, c - 1);
 		} else if (sc !== false) {
 			document.getElementById('co-warn').style.display = '';
-			document.getElementById('co-warn-text').innerHTML = 'Вы превысили количество допустимых символов в теге';
+			document.getElementById('co-warn-text').innerHTML = 'Р’С‹ РїСЂРµРІС‹СЃРёР»Рё РєРѕР»РёС‡РµСЃС‚РІРѕ РґРѕРїСѓСЃС‚РёРјС‹С… СЃРёРјРІРѕР»РѕРІ РІ С‚РµРіРµ';
 			var str = '';
 			var car = 0;
 			var p = true;
@@ -253,7 +253,7 @@ function tags_count() {
 
 
 function setform(){
-edfrm = "<form action=\".\" method=\"post\" name=\"frm\" id=\"frm\" enctype=\"multipart/form-data\" onSubmit=\"if (!allowedExt(this['img'].value)) return false; if(this.checkValidate && !this.checkValidate()) { this.btn.value='Подождите'; this.btn.disabled=true; this.btn1.value='Подождите'; this.btn1.disabled=true; this.btn_cancel.value='Подождите'; this.btn_cancel.disabled=true; }\" style='display:block;'>\
+edfrm = "<form action=\".\" method=\"post\" name=\"frm\" id=\"frm\" enctype=\"multipart/form-data\" onSubmit=\"if (!allowedExt(this['img'].value)) return false; if(this.checkValidate && !this.checkValidate()) { this.btn.value='РџРѕРґРѕР¶РґРёС‚Рµ'; this.btn.disabled=true; this.btn1.value='РџРѕРґРѕР¶РґРёС‚Рµ'; this.btn1.disabled=true; this.btn_cancel.value='РџРѕРґРѕР¶РґРёС‚Рµ'; this.btn_cancel.disabled=true; }\" style='display:block;'>\
 <input type=\"hidden\" name=\"action\" id=\"action\" value=\"portf_change\">\
 <input type=\"hidden\" name=\"u_token_key\" value=\"<?=$_SESSION['rand']?>\">\
 <input type=\"hidden\" name=\"prof\" value=\"\">\
@@ -261,7 +261,7 @@ edfrm = "<form action=\".\" method=\"post\" name=\"frm\" id=\"frm\" enctype=\"mu
 <table  style='width:100%' border='0' cellspacing='0' cellpadding='0' class='edit'>\
 <tr>\
 	<td rowspan='13'  style='width:19px'>&nbsp;<\/td>\
-	<td  style='height:25px' colspan='2' id='ff'><div style='padding-top:5px'><strong>Изменить работу<\/strong><\/div><\/td>\
+	<td  style='height:25px' colspan='2' id='ff'><div style='padding-top:5px'><strong>РР·РјРµРЅРёС‚СЊ СЂР°Р±РѕС‚Сѓ<\/strong><\/div><\/td>\
 	<td rowspan='10' style='width:19px'  >&nbsp;<\/td>\
 <\/tr>\
 <tr>\
@@ -279,51 +279,51 @@ foreach ($wrk_profs_names as $key => $cname)
 	<\/td>\
 <\/tr>\
 <tr>\
-	<td height='45' valign='middle' colspan='2'><div class='b-layout__txt b-layout__txt_inline-block b-layout__txt_fontsize_11 b-layout__txt_color_71'>Размещение в разделе:<\/div> <div class='b-radio b-radio_top_-1 b-radio_inline-block'><input id='make_position_first' class='b-radio__input' type='radio' name='make_position' value='first'  \/><label class='b-radio__label b-radio__label_color_71 b-radio__label_fontsize_11' for=\"make_position_first\">поставить первой<\/label><\/div>\
-	  <div class='b-radio b-radio_top_-1 b-radio_inline-block'><input class='b-radio__input' type='radio' id='make_position_last' name='make_position' value='last' \/><label class='b-radio__label b-radio__label_color_71 b-radio__label_fontsize_11' for=\"make_position_last\">поставить последней<\/label><\/div>\
-	  <div class='b-radio b-radio_top_-1 b-radio_inline-block'><input class='b-radio__input' type='radio' id='make_position_num' name='make_position' value='num' \/><label class='b-radio__label b-radio__label_color_71 b-radio__label_fontsize_11' for=\"make_position_num\">сделать<\/label><\/div>\
-	  <div class='b-input b-input_margtop_-2 b-input_inline-block b-input_width_45'><input class='b-input__text b-input__text_align_center' type='text' id='_make_position_num' name='make_position_num' value='' onChange=\"document.getElementById('make_position_num').checked=true;\" \/><\/div> <div class='b-layout__txt b-layout__txt_inline-block b-layout__txt_fontsize_11 b-layout__txt_color_71'>в разделе<\/div>\
+	<td height='45' valign='middle' colspan='2'><div class='b-layout__txt b-layout__txt_inline-block b-layout__txt_fontsize_11 b-layout__txt_color_71'>Р Р°Р·РјРµС‰РµРЅРёРµ РІ СЂР°Р·РґРµР»Рµ:<\/div> <div class='b-radio b-radio_top_-1 b-radio_inline-block'><input id='make_position_first' class='b-radio__input' type='radio' name='make_position' value='first'  \/><label class='b-radio__label b-radio__label_color_71 b-radio__label_fontsize_11' for=\"make_position_first\">РїРѕСЃС‚Р°РІРёС‚СЊ РїРµСЂРІРѕР№<\/label><\/div>\
+	  <div class='b-radio b-radio_top_-1 b-radio_inline-block'><input class='b-radio__input' type='radio' id='make_position_last' name='make_position' value='last' \/><label class='b-radio__label b-radio__label_color_71 b-radio__label_fontsize_11' for=\"make_position_last\">РїРѕСЃС‚Р°РІРёС‚СЊ РїРѕСЃР»РµРґРЅРµР№<\/label><\/div>\
+	  <div class='b-radio b-radio_top_-1 b-radio_inline-block'><input class='b-radio__input' type='radio' id='make_position_num' name='make_position' value='num' \/><label class='b-radio__label b-radio__label_color_71 b-radio__label_fontsize_11' for=\"make_position_num\">СЃРґРµР»Р°С‚СЊ<\/label><\/div>\
+	  <div class='b-input b-input_margtop_-2 b-input_inline-block b-input_width_45'><input class='b-input__text b-input__text_align_center' type='text' id='_make_position_num' name='make_position_num' value='' onChange=\"document.getElementById('make_position_num').checked=true;\" \/><\/div> <div class='b-layout__txt b-layout__txt_inline-block b-layout__txt_fontsize_11 b-layout__txt_color_71'>РІ СЂР°Р·РґРµР»Рµ<\/div>\
 	<\/td>\
 <\/tr>\
 <tr>\
-	<td height='20' valign='bottom' colspan='2'>Название<span style='font-weight:bold; color:#f00'>*</span>:<\/td>\
+	<td height='20' valign='bottom' colspan='2'>РќР°Р·РІР°РЅРёРµ<span style='font-weight:bold; color:#f00'>*</span>:<\/td>\
 <\/tr>\
 <tr>\
 	<td width='790' height='25'><div class='b-input'><input type='text' name='pname' id='pname' value='' maxlength='80' class='b-input__text' onkeydown='if (this.value.length > 80) this.value=this.value.slice(0, 80)'><\/div><br>"+errmsg1+"<\/td>\
-	<td align='right' style='padding-left:10px;'>Максимум<br /> 80 символов<\/td>\
+	<td align='right' style='padding-left:10px;'>РњР°РєСЃРёРјСѓРј<br /> 80 СЃРёРјРІРѕР»РѕРІ<\/td>\
 <\/tr>\
 <tr>\
 	<td style='height:25px; vertical-align:middle;padding-top:20px;padding-bottom:12px;'>\
-	Укажите стоимость разработки \
-	<select name='pcosttype' id='pcosttype'><option value='0'>USD<\/option><option value='1'>Euro<\/option><option value='2'>Руб<\/option><\/select>\
-	<input type='text' name='pcost' id='pcost' maxlength='10' style='width:65px;margin-right:16px;'> и временные затраты <input type='text' name='ptime' id='ptime' maxlength='3' style='width:50px;'> <select name='ptimeei' id='ptimeei'><option value='0'>в часах</option><option value='1'>в днях</option><option value='2'>в месяцах</option><option value='3'>в минутах</option></select>"+errmsg4+errmsg5+"\
+	РЈРєР°Р¶РёС‚Рµ СЃС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р·СЂР°Р±РѕС‚РєРё \
+	<select name='pcosttype' id='pcosttype'><option value='0'>USD<\/option><option value='1'>Euro<\/option><option value='2'>Р СѓР±<\/option><\/select>\
+	<input type='text' name='pcost' id='pcost' maxlength='10' style='width:65px;margin-right:16px;'> Рё РІСЂРµРјРµРЅРЅС‹Рµ Р·Р°С‚СЂР°С‚С‹ <input type='text' name='ptime' id='ptime' maxlength='3' style='width:50px;'> <select name='ptimeei' id='ptimeei'><option value='0'>РІ С‡Р°СЃР°С…</option><option value='1'>РІ РґРЅСЏС…</option><option value='2'>РІ РјРµСЃСЏС†Р°С…</option><option value='3'>РІ РјРёРЅСѓС‚Р°С…</option></select>"+errmsg4+errmsg5+"\
 	<\/td>\
 	<td width='80' align='right'><\/td>\
 <\/tr>\
 <tr>\
-  <td height='20' valign='bottom' colspan='2'>Загрузить работу:<\/td>\
+  <td height='20' valign='bottom' colspan='2'>Р—Р°РіСЂСѓР·РёС‚СЊ СЂР°Р±РѕС‚Сѓ:<\/td>\
 <\/tr>\
 <tr>\
   <td height='auto' colspan='2'><input type='hidden' id='mfsz' name='MAX_FILE_SIZE' value='10485760'><input type='file' id='img' name='img' size='111'<? if ($is_pro) {?> onChange='add_preview(this);'<? } ?>>"+errmsg3+"\
-  <span id='renew-prev' class='renew-prew' style='visibility:hidden'><label><input name='upd_prev' value='1' type='checkbox'> Обновить превью?</label></span>\
-  <span id='sdpict1' style='display:none;'>&nbsp;&nbsp;<a href='javascript:showpict(1)' class='blue'>Посмотреть загруженный файл</a>&nbsp;&nbsp;<a href='javascript:delpict(1)' title='Удалить'>[x]</a></span>\
-  <br />С помощью этого поля возможно загрузить:<br />\
-	Файл размером до 10 Мб. Флеш-файлы и картинки весом более 1 Мб открываются в новом окне.<br>\
-	Файлы следующих форматов запрещены к загрузке: <?=implode(', ', $GLOBALS['disallowed_array'])?>
+  <span id='renew-prev' class='renew-prew' style='visibility:hidden'><label><input name='upd_prev' value='1' type='checkbox'> РћР±РЅРѕРІРёС‚СЊ РїСЂРµРІСЊСЋ?</label></span>\
+  <span id='sdpict1' style='display:none;'>&nbsp;&nbsp;<a href='javascript:showpict(1)' class='blue'>РџРѕСЃРјРѕС‚СЂРµС‚СЊ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Р№ С„Р°Р№Р»</a>&nbsp;&nbsp;<a href='javascript:delpict(1)' title='РЈРґР°Р»РёС‚СЊ'>[x]</a></span>\
+  <br />РЎ РїРѕРјРѕС‰СЊСЋ СЌС‚РѕРіРѕ РїРѕР»СЏ РІРѕР·РјРѕР¶РЅРѕ Р·Р°РіСЂСѓР·РёС‚СЊ:<br />\
+	Р¤Р°Р№Р» СЂР°Р·РјРµСЂРѕРј РґРѕ 10 РњР±. Р¤Р»РµС€-С„Р°Р№Р»С‹ Рё РєР°СЂС‚РёРЅРєРё РІРµСЃРѕРј Р±РѕР»РµРµ 1 РњР± РѕС‚РєСЂС‹РІР°СЋС‚СЃСЏ РІ РЅРѕРІРѕРј РѕРєРЅРµ.<br>\
+	Р¤Р°Р№Р»С‹ СЃР»РµРґСѓСЋС‰РёС… С„РѕСЂРјР°С‚РѕРІ Р·Р°РїСЂРµС‰РµРЅС‹ Рє Р·Р°РіСЂСѓР·РєРµ: <?=implode(', ', $GLOBALS['disallowed_array'])?>
   <div id='preview' style='padding-top:10px;'>\
-    Загрузить превью:<br />\
+    Р—Р°РіСЂСѓР·РёС‚СЊ РїСЂРµРІСЊСЋ:<br />\
     <input type='file' id='sm_img' name='sm_img' size='111'>\
-  <span id='sdpict2' style='visibility:hidden'>&nbsp;&nbsp;<a href='javascript:showpict(2)' class='blue'>Посмотреть загруженный файл</a>&nbsp;&nbsp;<a href='javascript:delpict(2)' title='Удалить'>[x]</a></span>\
-    <br />С помощью этого поля возможно загрузить превью для закачиваемого файла.<br />\
-<? if(!$is_pro) { ?>    <strong>Превью отображается только у пользователей с аккаунтом <a href='/payed/' class='b-layout__link'><span title='Платный аккаунт' class='b-icon b-icon__pro b-icon__pro_f'></span></a></strong><br>\<? } ?>
-  	Формат: <?=implode(', ', $aAllowedExt )?>.<br />\
-  	Максимальный размер файла: 100 Кб.\
+  <span id='sdpict2' style='visibility:hidden'>&nbsp;&nbsp;<a href='javascript:showpict(2)' class='blue'>РџРѕСЃРјРѕС‚СЂРµС‚СЊ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Р№ С„Р°Р№Р»</a>&nbsp;&nbsp;<a href='javascript:delpict(2)' title='РЈРґР°Р»РёС‚СЊ'>[x]</a></span>\
+    <br />РЎ РїРѕРјРѕС‰СЊСЋ СЌС‚РѕРіРѕ РїРѕР»СЏ РІРѕР·РјРѕР¶РЅРѕ Р·Р°РіСЂСѓР·РёС‚СЊ РїСЂРµРІСЊСЋ РґР»СЏ Р·Р°РєР°С‡РёРІР°РµРјРѕРіРѕ С„Р°Р№Р»Р°.<br />\
+<? if(!$is_pro) { ?>    <strong>РџСЂРµРІСЊСЋ РѕС‚РѕР±СЂР°Р¶Р°РµС‚СЃСЏ С‚РѕР»СЊРєРѕ Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ Р°РєРєР°СѓРЅС‚РѕРј <a href='/payed/' class='b-layout__link'><span title='РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚' class='b-icon b-icon__pro b-icon__pro_f'></span></a></strong><br>\<? } ?>
+  	Р¤РѕСЂРјР°С‚: <?=implode(', ', $aAllowedExt )?>.<br />\
+  	РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°: 100 РљР±.\
   <\/div>\
   <? if ($alert[7]) { ?>"+errmsg7+"<? } ?>
 	<\/td>\
 <\/tr>\
 <tr>\
-	<td height='20' valign='bottom' colspan='2'>Ссылка:<\/td>\
+	<td height='20' valign='bottom' colspan='2'>РЎСЃС‹Р»РєР°:<\/td>\
 <\/tr>\
 <tr>\
 	<td height='25'>\
@@ -334,46 +334,46 @@ foreach ($wrk_profs_names as $key => $cname)
 	<td>&nbsp;<\/td>\
 <\/tr>\
 <tr>\
-	<td height='20' valign='bottom' colspan='2'>Описание<span style='font-weight:bold; color:#f00'>**</span> (для организации более удобного поиска вашей работы по сайту рекомендуем добавлять осмысленное описание не менее 300 символов):<\/td>\
+	<td height='20' valign='bottom' colspan='2'>РћРїРёСЃР°РЅРёРµ<span style='font-weight:bold; color:#f00'>**</span> (РґР»СЏ РѕСЂРіР°РЅРёР·Р°С†РёРё Р±РѕР»РµРµ СѓРґРѕР±РЅРѕРіРѕ РїРѕРёСЃРєР° РІР°С€РµР№ СЂР°Р±РѕС‚С‹ РїРѕ СЃР°Р№С‚Сѓ СЂРµРєРѕРјРµРЅРґСѓРµРј РґРѕР±Р°РІР»СЏС‚СЊ РѕСЃРјС‹СЃР»РµРЅРЅРѕРµ РѕРїРёСЃР°РЅРёРµ РЅРµ РјРµРЅРµРµ 300 СЃРёРјРІРѕР»РѕРІ):<\/td>\
 <\/tr>\
 <tr>\
-	<td height='110' valign='top'><div class='b-textarea'><textarea cols='74' rows='7' name='descr' id='descr' class='b-textarea__textarea' onkeydown='if (this.value.length > 1500) this.value=this.value.slice(0, 1500)'><\/textarea><\/div>Можно использовать &lt;b&gt;&lt;i&gt;&lt;p&gt;&lt;ul&gt;&lt;li&gt;"+errmsg2+"<\/td>\
-	<td align='right' style='padding-left:10px; padding-top:10px;'>Максимум<br /> 1500 символов<\/td>\
+	<td height='110' valign='top'><div class='b-textarea'><textarea cols='74' rows='7' name='descr' id='descr' class='b-textarea__textarea' onkeydown='if (this.value.length > 1500) this.value=this.value.slice(0, 1500)'><\/textarea><\/div>РњРѕР¶РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ &lt;b&gt;&lt;i&gt;&lt;p&gt;&lt;ul&gt;&lt;li&gt;"+errmsg2+"<\/td>\
+	<td align='right' style='padding-left:10px; padding-top:10px;'>РњР°РєСЃРёРјСѓРј<br /> 1500 СЃРёРјРІРѕР»РѕРІ<\/td>\
 <\/tr>\
 <tr>\
 	<td colspan='2' style=padding-top:10px;>\
-		<div class='b-radio b-radio_inline-block'><INPUT class='b-radio__input' checked='checked' name='prev_type' type='radio' value='0' id='prev_type1'><LABEL  class='b-radio__label b-radio__label_color_71 b-radio__label_fontsize_11' for='prev_type1'>Графическое превью<\/LABEL><\/div>&nbsp; &nbsp;\
-		<div class='b-radio b-radio_inline-block'><INPUT class='b-radio__input' name='prev_type' type='radio' value='1' id='prev_type2'><LABEL  class='b-radio__label b-radio__label_color_71 b-radio__label_fontsize_11' for='prev_type2'>Текстовое превью</LABEL><\/div> &nbsp; &nbsp; \
-		<div class='b-check b-check_ff_top_2 b-check_inline-block b-check_valign_top'><INPUT class='b-check__input' type='checkbox' name='in_shop' id='in_shop' value='1' onChange='toggle_shop();'><LABEL  class='b-check__label b-check__label_color_71 b-check__label_fontsize_11'>Добавить работу в магазин&#160;(<a class='b-layout__link' href='<?=WDCPREFIX?>/about/documents/appendix_2_regulations.pdf' target='_blank'>правила размещения работ в магазине<\/a>)<\/LABEL><\/div><\/td>\
+		<div class='b-radio b-radio_inline-block'><INPUT class='b-radio__input' checked='checked' name='prev_type' type='radio' value='0' id='prev_type1'><LABEL  class='b-radio__label b-radio__label_color_71 b-radio__label_fontsize_11' for='prev_type1'>Р“СЂР°С„РёС‡РµСЃРєРѕРµ РїСЂРµРІСЊСЋ<\/LABEL><\/div>&nbsp; &nbsp;\
+		<div class='b-radio b-radio_inline-block'><INPUT class='b-radio__input' name='prev_type' type='radio' value='1' id='prev_type2'><LABEL  class='b-radio__label b-radio__label_color_71 b-radio__label_fontsize_11' for='prev_type2'>РўРµРєСЃС‚РѕРІРѕРµ РїСЂРµРІСЊСЋ</LABEL><\/div> &nbsp; &nbsp; \
+		<div class='b-check b-check_ff_top_2 b-check_inline-block b-check_valign_top'><INPUT class='b-check__input' type='checkbox' name='in_shop' id='in_shop' value='1' onChange='toggle_shop();'><LABEL  class='b-check__label b-check__label_color_71 b-check__label_fontsize_11'>Р”РѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚Сѓ РІ РјР°РіР°Р·РёРЅ&#160;(<a class='b-layout__link' href='<?=WDCPREFIX?>/about/documents/appendix_2_regulations.pdf' target='_blank'>РїСЂР°РІРёР»Р° СЂР°Р·РјРµС‰РµРЅРёСЏ СЂР°Р±РѕС‚ РІ РјР°РіР°Р·РёРЅРµ<\/a>)<\/LABEL><\/div><\/td>\
 <\/tr>\
 <tr>\
 	<td colspan='2'><table style='font-size:100%; margin: 10px 0 0 20px;'><tr>\
-    <td style='width: 145px; padding: 0 0 10px;'>Раздел<span style='font-weight:bold; color:#f00'>**</span>: </td><td style='padding: 0 0 10px;'>\
-        <select style='width: 300px;' name='shop_category' id='shop_category' disabled='true'><option value='0'>Выберите раздел</option>\
+    <td style='width: 145px; padding: 0 0 10px;'>Р Р°Р·РґРµР»<span style='font-weight:bold; color:#f00'>**</span>: </td><td style='padding: 0 0 10px;'>\
+        <select style='width: 300px;' name='shop_category' id='shop_category' disabled='true'><option value='0'>Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»</option>\
 				<? foreach ($shop_categories as $ikey=>$cat) { ?>
 				<option value='<?=$cat['id']?>'><?=$cat['name']?></option>\
 				<? } ?>\
-</select>"+errmsg208+"</td></tr><tr><td style='width: 145px; padding: 0 0 10px;'>Стоимость для продажи<span style='font-weight:bold; color:#f00'>**</span>:</td><td style='padding: 0 0 10px;'><select name='shop_cost_type' id='shop_cost_type' disabled='true'><option value='0'>USD<\/option><option value='1'>Euro<\/option><option value='2'>Руб<\/option></select> <input type='text' name='shop_cost' id='shop_cost' maxlength='6' disabled='true'/>"+errmsg100+"</td></tr><tr><td style='width: 145px; padding: 2px 0 10px; vertical-align:top;'>Теги (через запятую):</td><td style='padding: 0 0 10px;'>\
+</select>"+errmsg208+"</td></tr><tr><td style='width: 145px; padding: 0 0 10px;'>РЎС‚РѕРёРјРѕСЃС‚СЊ РґР»СЏ РїСЂРѕРґР°Р¶Рё<span style='font-weight:bold; color:#f00'>**</span>:</td><td style='padding: 0 0 10px;'><select name='shop_cost_type' id='shop_cost_type' disabled='true'><option value='0'>USD<\/option><option value='1'>Euro<\/option><option value='2'>Р СѓР±<\/option></select> <input type='text' name='shop_cost' id='shop_cost' maxlength='6' disabled='true'/>"+errmsg100+"</td></tr><tr><td style='width: 145px; padding: 2px 0 10px; vertical-align:top;'>РўРµРіРё (С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ):</td><td style='padding: 0 0 10px;'>\
 <textarea rows='2' cols='20' style='height: 32px; width: 670px;' name='shop_tags' id='shop_tags' disabled='true' onkeyup='if (!(event.ctrlKey || event.shiftKey)) tags_count()'></textarea>\
-<div>Максимум 10 тегов по 20 символов в каждом</div>\
+<div>РњР°РєСЃРёРјСѓРј 10 С‚РµРіРѕРІ РїРѕ 20 СЃРёРјРІРѕР»РѕРІ РІ РєР°Р¶РґРѕРј</div>\
 <div id='co-warn' class='errorBox' style='display: none'><img src='/images/ico_error.gif' alt='' height='18' width='22'>&nbsp;<span id='co-warn-text'>&nbsp;</span></div>\
 </td></tr>\
 <tr>\
-	<td colspan='2'><span style='font-weight:bold; color:#f00'>*</span> Поля, обязательные для заполнения<br><span style='font-weight:bold; color:#f00'>**</span> Поля, обязательные для заполнения, при условии добавления работы в магазин<\/td>\
+	<td colspan='2'><span style='font-weight:bold; color:#f00'>*</span> РџРѕР»СЏ, РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ<br><span style='font-weight:bold; color:#f00'>**</span> РџРѕР»СЏ, РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ, РїСЂРё СѓСЃР»РѕРІРёРё РґРѕР±Р°РІР»РµРЅРёСЏ СЂР°Р±РѕС‚С‹ РІ РјР°РіР°Р·РёРЅ<\/td>\
 <\/tr>\
 </table><\/td>\
 <\/tr>\
 <tr>\
 	<td colspan='4' align='right' style='padding-top:8px;padding-bottom:8px;text-align:right;padding-right:120px;'>\
-		<input type='button' name='btn' id='btn' class='btn' value='Удалить' onClick='if (warning(5)) {frm.action.value=\"portf_del\"; frm.submit();} else return(false);'>\
-		<input type='button' name='btn_cancel' id='btn_canсel' class='btn' value='Отменить' onClick='cancelprj();'>\
-		<input type='submit' name='btn1' id='btn1' class='btn' value='Сохранить'><\/td>\
+		<input type='button' name='btn' id='btn' class='btn' value='РЈРґР°Р»РёС‚СЊ' onClick='if (warning(5)) {frm.action.value=\"portf_del\"; frm.submit();} else return(false);'>\
+		<input type='button' name='btn_cancel' id='btn_canСЃel' class='btn' value='РћС‚РјРµРЅРёС‚СЊ' onClick='cancelprj();'>\
+		<input type='submit' name='btn1' id='btn1' class='btn' value='РЎРѕС…СЂР°РЅРёС‚СЊ'><\/td>\
 <\/tr>\
 <\/table>\
 <\/form>\
 \
 \
-<form action=\".\" method=\"post\" name=\"frm2\" id=\"frm2\" enctype=\"multipart/form-data\" onSubmit=\"this.btn2.value='Подождите'; this.btn2.disabled=true; this.btn12.value='Подождите'; this.btn12.disabled=true; this.btn_cancel2.value='Подождите'; this.btn_cancel2.disabled=true;\" style='display:none;'>\
+<form action=\".\" method=\"post\" name=\"frm2\" id=\"frm2\" enctype=\"multipart/form-data\" onSubmit=\"this.btn2.value='РџРѕРґРѕР¶РґРёС‚Рµ'; this.btn2.disabled=true; this.btn12.value='РџРѕРґРѕР¶РґРёС‚Рµ'; this.btn12.disabled=true; this.btn_cancel2.value='РџРѕРґРѕР¶РґРёС‚Рµ'; this.btn_cancel2.disabled=true;\" style='display:none;'>\
 <input type=\"hidden\" name=\"action\" id=\"action\" value=\"portf_change\">\
 <input type=\"hidden\" name=\"u_token_key\" value=\"<?=$_SESSION['rand']?>\">\
 <input type=\"hidden\" name=\"v_prof\" value=\"\">\
@@ -382,7 +382,7 @@ foreach ($wrk_profs_names as $key => $cname)
 <table width='100%' border='0' cellspacing='0' cellpadding='0' class='edit'>\
 <tr>\
 	<td rowspan='12' width='19'>&nbsp;<\/td>\
-	<td height='25' colspan='2' id='ff2'><div style='padding-top:5px'><strong>Изменить работу<\/strong><\/div><\/td>\
+	<td height='25' colspan='2' id='ff2'><div style='padding-top:5px'><strong>РР·РјРµРЅРёС‚СЊ СЂР°Р±РѕС‚Сѓ<\/strong><\/div><\/td>\
 	<td rowspan='10' width='19'>&nbsp;<\/td>\
 <\/tr>\
 <tr>\
@@ -400,29 +400,29 @@ foreach ($wrk_profs_names as $key => $cname)
 	<\/td>\
 <\/tr>\
 <tr>\
-	<td height='45' valign='middle' colspan='2'><div class='b-layout__txt b-layout__txt_inline-block b-layout__txt_fontsize_11 b-layout__txt_color_71'>Размещение в разделе:<\/div>\
-    <div class='b-radio b-radio_top_-1 b-radio_inline-block'><input class='b-radio__input' type='radio' id='v_make_position_first' name='v_make_position' value='first' /><label class='b-radio__label b-radio__label_color_71 b-radio__label_fontsize_11' for=\"v_make_position_first\">поставить первой</label><\/div>\
-    <div class='b-radio b-radio_top_-1 b-radio_inline-block'><input class='b-radio__input' type='radio' id='v_make_position_last' name='v_make_position' value='last' style='margin-left:16px' /><label class='b-radio__label b-radio__label_color_71 b-radio__label_fontsize_11' for=\"v_make_position_last\">поставить последней</label><\/div>\
-    <div class='b-radio b-radio_top_-1 b-radio_inline-block'><input class='b-radio__input' type='radio' id='v_make_position_num' name='v_make_position' value='num' style='margin-left:16px' /><label class='b-radio__label b-radio__label_color_71 b-radio__label_fontsize_11' for=\"v_make_position_num\">сделать</label><\/div> <div class='b-input b-input_margtop_-2 b-input_inline-block b-input_width_45'><input class='b-input__text b-input__text_align_center' type='text' id='v_make_position_num' name='v_make_position_num' value='' onChange=\"document.getElementById('v_make_position_num').checked=true;\" /><\/div> <div class='b-layout__txt b-layout__txt_inline-block b-layout__txt_fontsize_11 b-layout__txt_color_71'>в разделе<\/div>\
+	<td height='45' valign='middle' colspan='2'><div class='b-layout__txt b-layout__txt_inline-block b-layout__txt_fontsize_11 b-layout__txt_color_71'>Р Р°Р·РјРµС‰РµРЅРёРµ РІ СЂР°Р·РґРµР»Рµ:<\/div>\
+    <div class='b-radio b-radio_top_-1 b-radio_inline-block'><input class='b-radio__input' type='radio' id='v_make_position_first' name='v_make_position' value='first' /><label class='b-radio__label b-radio__label_color_71 b-radio__label_fontsize_11' for=\"v_make_position_first\">РїРѕСЃС‚Р°РІРёС‚СЊ РїРµСЂРІРѕР№</label><\/div>\
+    <div class='b-radio b-radio_top_-1 b-radio_inline-block'><input class='b-radio__input' type='radio' id='v_make_position_last' name='v_make_position' value='last' style='margin-left:16px' /><label class='b-radio__label b-radio__label_color_71 b-radio__label_fontsize_11' for=\"v_make_position_last\">РїРѕСЃС‚Р°РІРёС‚СЊ РїРѕСЃР»РµРґРЅРµР№</label><\/div>\
+    <div class='b-radio b-radio_top_-1 b-radio_inline-block'><input class='b-radio__input' type='radio' id='v_make_position_num' name='v_make_position' value='num' style='margin-left:16px' /><label class='b-radio__label b-radio__label_color_71 b-radio__label_fontsize_11' for=\"v_make_position_num\">СЃРґРµР»Р°С‚СЊ</label><\/div> <div class='b-input b-input_margtop_-2 b-input_inline-block b-input_width_45'><input class='b-input__text b-input__text_align_center' type='text' id='v_make_position_num' name='v_make_position_num' value='' onChange=\"document.getElementById('v_make_position_num').checked=true;\" /><\/div> <div class='b-layout__txt b-layout__txt_inline-block b-layout__txt_fontsize_11 b-layout__txt_color_71'>РІ СЂР°Р·РґРµР»Рµ<\/div>\
 	<\/td>\
 <\/tr>\
 <tr>\
-	<td height='20' valign='bottom' colspan='2'>Название<span style='font-weight:bold; color:#f00'>*</span>:<\/td>\
+	<td height='20' valign='bottom' colspan='2'>РќР°Р·РІР°РЅРёРµ<span style='font-weight:bold; color:#f00'>*</span>:<\/td>\
 <\/tr>\
 <tr>\
 	<td width='790' height='25'><input type='text' name='v_pname' id='v_pname' value='' maxlength='40' class='wdh100' onkeydown='if (this.value.length > 40) this.value=this.value.slice(0, 40)'>"+errmsg201+"<\/td>\
-	<td align='right' style='padding-left:10px;'>Максимум<br /> 40 символов<\/td>\
+	<td align='right' style='padding-left:10px;'>РњР°РєСЃРёРјСѓРј<br /> 40 СЃРёРјРІРѕР»РѕРІ<\/td>\
 <\/tr>\
 <tr>\
 	<td style='height:25px; vertical-align:middle;padding-top:20px;padding-bottom:12px;'>\
-	Укажите стоимость разработки \
-	<select name='v_pcosttype' id='v_pcosttype'><option value='0'>USD<\/option><option value='1'>Euro<\/option><option value='2'>Руб<\/option><\/select>\
-	<input type='text' name='v_pcost' id='v_pcost' maxlength='10' style='width:65px;margin-right:16px;'> и временные затраты <input type='text' name='v_ptime' id='v_ptime' maxlength='3' style='width:50px;'> <select name='v_ptimeei' id='v_ptimeei'><option value='0'>в часах</option><option value='1'>в днях</option><option value='2'>в месяцах</option><option value='3'>в минутах</option></select>"+errmsg204+errmsg205+"\
+	РЈРєР°Р¶РёС‚Рµ СЃС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р·СЂР°Р±РѕС‚РєРё \
+	<select name='v_pcosttype' id='v_pcosttype'><option value='0'>USD<\/option><option value='1'>Euro<\/option><option value='2'>Р СѓР±<\/option><\/select>\
+	<input type='text' name='v_pcost' id='v_pcost' maxlength='10' style='width:65px;margin-right:16px;'> Рё РІСЂРµРјРµРЅРЅС‹Рµ Р·Р°С‚СЂР°С‚С‹ <input type='text' name='v_ptime' id='v_ptime' maxlength='3' style='width:50px;'> <select name='v_ptimeei' id='v_ptimeei'><option value='0'>РІ С‡Р°СЃР°С…</option><option value='1'>РІ РґРЅСЏС…</option><option value='2'>РІ РјРµСЃСЏС†Р°С…</option><option value='3'>РІ РјРёРЅСѓС‚Р°С…</option></select>"+errmsg204+errmsg205+"\
 	<\/td>\
 	<td width='80' align='right'><\/td>\
 <\/tr>\
 <tr>\
-	<td height='20' valign='bottom' colspan='2'>Вставьте в поле ниже ссылку, которую вы получили на видео хостинге YouTube, RuTube или Vimeo:<\/td>\
+	<td height='20' valign='bottom' colspan='2'>Р’СЃС‚Р°РІСЊС‚Рµ РІ РїРѕР»Рµ РЅРёР¶Рµ СЃСЃС‹Р»РєСѓ, РєРѕС‚РѕСЂСѓСЋ РІС‹ РїРѕР»СѓС‡РёР»Рё РЅР° РІРёРґРµРѕ С…РѕСЃС‚РёРЅРіРµ YouTube, RuTube РёР»Рё Vimeo:<\/td>\
 <\/tr>\
 <tr>\
 	<td height='25'>\
@@ -430,37 +430,37 @@ foreach ($wrk_profs_names as $key => $cname)
 		<tr><td width='40'>http://<span style='font-weight:bold; color:#f00'>*</span>&nbsp;<\/td>\
 		<td><input type='text' id='v_video_link' maxlength='80' name='v_video_link' class='wdh100'><\/td><\/tr>\
 		<tr><td width='40'>&nbsp;<\/td>\
-		<td><div style='padding-bottom:10px;'>Внимание! Не используйте html код в поле ввода ссылки.<\/div><\/td><\/tr>\
+		<td><div style='padding-bottom:10px;'>Р’РЅРёРјР°РЅРёРµ! РќРµ РёСЃРїРѕР»СЊР·СѓР№С‚Рµ html РєРѕРґ РІ РїРѕР»Рµ РІРІРѕРґР° СЃСЃС‹Р»РєРё.<\/div><\/td><\/tr>\
 		<\/table>\
   "+errmsg206+"<\/td>\
 	<td>&nbsp;<\/td>\
 <\/tr>\
 <tr>\
-	<td height='20' valign='bottom' colspan='2'>Описание:<\/td>\
+	<td height='20' valign='bottom' colspan='2'>РћРїРёСЃР°РЅРёРµ:<\/td>\
 <\/tr>\
 <tr>\
-	<td height='110' valign='top' ><textarea cols='74' rows='7' name='v_descr' id='v_descr' class='wdh100' onkeydown='if (this.value.length > 1500) this.value=this.value.slice(0, 1500)'><\/textarea>Можно использовать &lt;b&gt;&lt;i&gt;&lt;p&gt;&lt;ul&gt;&lt;li&gt;"+errmsg202+"<\/td>\
-	<td align='right' style='padding-left:10px; padding-top:10px;'>Максимум<br /> 1500 символов<\/td>\
+	<td height='110' valign='top' ><textarea cols='74' rows='7' name='v_descr' id='v_descr' class='wdh100' onkeydown='if (this.value.length > 1500) this.value=this.value.slice(0, 1500)'><\/textarea>РњРѕР¶РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ &lt;b&gt;&lt;i&gt;&lt;p&gt;&lt;ul&gt;&lt;li&gt;"+errmsg202+"<\/td>\
+	<td align='right' style='padding-left:10px; padding-top:10px;'>РњР°РєСЃРёРјСѓРј<br /> 1500 СЃРёРјРІРѕР»РѕРІ<\/td>\
 <\/tr>\
 <tr>\
   <td height='auto' colspan='2'>\
   <div id='v_preview' style='padding-top:10px;'>\
-    Загрузить превью:<br />\
+    Р—Р°РіСЂСѓР·РёС‚СЊ РїСЂРµРІСЊСЋ:<br />\
     <input type='file' id='v_sm_img' name='v_sm_img' size='111'>\
-  <span id='v_sdpict2' style='visibility:hidden'><a href='javascript:showpict(2)' class='blue'>Посмотреть загруженный файл</a>&nbsp;&nbsp;<a href='javascript:v_delpict(2)' title='Удалить'>[x]</a></span>\
-    <br />С помощью этого поля возможно загрузить превью для закачиваемого файла.<br />\
-<? if(!$is_pro) { ?>    <strong>Превью отображается только у пользователей с аккаунтом <a href='/payed/' class='b-layout__link'><span title='Платный аккаунт' class='b-icon b-icon__pro b-icon__pro_f'></span></a></strong><br />\<? } ?>
-  	Формат: <?=implode(', ', $aAllowedExt )?>.<br />\
-  	Максимальный размер файла: 100 Кб.\
+  <span id='v_sdpict2' style='visibility:hidden'><a href='javascript:showpict(2)' class='blue'>РџРѕСЃРјРѕС‚СЂРµС‚СЊ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Р№ С„Р°Р№Р»</a>&nbsp;&nbsp;<a href='javascript:v_delpict(2)' title='РЈРґР°Р»РёС‚СЊ'>[x]</a></span>\
+    <br />РЎ РїРѕРјРѕС‰СЊСЋ СЌС‚РѕРіРѕ РїРѕР»СЏ РІРѕР·РјРѕР¶РЅРѕ Р·Р°РіСЂСѓР·РёС‚СЊ РїСЂРµРІСЊСЋ РґР»СЏ Р·Р°РєР°С‡РёРІР°РµРјРѕРіРѕ С„Р°Р№Р»Р°.<br />\
+<? if(!$is_pro) { ?>    <strong>РџСЂРµРІСЊСЋ РѕС‚РѕР±СЂР°Р¶Р°РµС‚СЃСЏ С‚РѕР»СЊРєРѕ Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ Р°РєРєР°СѓРЅС‚РѕРј <a href='/payed/' class='b-layout__link'><span title='РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚' class='b-icon b-icon__pro b-icon__pro_f'></span></a></strong><br />\<? } ?>
+  	Р¤РѕСЂРјР°С‚: <?=implode(', ', $aAllowedExt )?>.<br />\
+  	РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°: 100 РљР±.\
   <\/div>\
   <? if ($alert[207]) { ?>"+errmsg207+"<? } ?>
 	<\/td>\
 <\/tr>\
 <tr>\
 	<td colspan='4'  style='padding-top:8px;padding-bottom:8px;text-align:right;padding-right:120px;'>\
-		<input type='button' name='btn2' id='btn2' class='btn' value='Удалить' onClick='if (warning(5)) {frm2.action.value=\"portf_del\"; frm2.submit();} else return(false);'>\
-		<input type='button' name='btn_cancel2' id='btn_canсel2' class='btn' value='Отменить' onClick='cancelprj();'>\
-		<input type='submit' name='btn12' id='btn12' class='btn' value='Сохранить'><\/td>\
+		<input type='button' name='btn2' id='btn2' class='btn' value='РЈРґР°Р»РёС‚СЊ' onClick='if (warning(5)) {frm2.action.value=\"portf_del\"; frm2.submit();} else return(false);'>\
+		<input type='button' name='btn_cancel2' id='btn_canСЃel2' class='btn' value='РћС‚РјРµРЅРёС‚СЊ' onClick='cancelprj();'>\
+		<input type='submit' name='btn12' id='btn12' class='btn' value='РЎРѕС…СЂР°РЅРёС‚СЊ'><\/td>\
 <\/tr>\
 <\/table>\
 </form>";
@@ -613,7 +613,7 @@ var lastobj = 0;
     lastobj = 'editform'+profid;
 
 		if (document.getElementById('ff'))
-			document.getElementById('ff').innerHTML = "<div style='padding-top:5px'><strong>Изменить работу<\/strong><\/div>";
+			document.getElementById('ff').innerHTML = "<div style='padding-top:5px'><strong>РР·РјРµРЅРёС‚СЊ СЂР°Р±РѕС‚Сѓ<\/strong><\/div>";
 
     var best_cnt = <?=intval($portf_cnt[professions::BEST_PROF_ID])?>;
     var best_cnt_max = <?=portfolio::MAX_BEST_WORKS?>;
@@ -700,7 +700,7 @@ var lastobj = 0;
 
         toggle_form('video');
 		if (document.getElementById('ff2'))
-			document.getElementById('ff2').innerHTML = "<strong>Изменить видео<\/strong>";
+			document.getElementById('ff2').innerHTML = "<strong>РР·РјРµРЅРёС‚СЊ РІРёРґРµРѕ<\/strong>";
 
     }
 <? if ($is_pro) {?>
@@ -730,12 +730,12 @@ var lastobj = 0;
     function toggle_form(form) {
         switch(form) {
             case 'video':
-                document.getElementById('ff2').innerHTML = "<div style='padding-top:5px;'><strong><a href='' style='color:#003399;' onClick='toggle_form(\"work\"); return false;'>Добавить работу</a><\/strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Добавить видео</strong></div>";
+                document.getElementById('ff2').innerHTML = "<div style='padding-top:5px;'><strong><a href='' style='color:#003399;' onClick='toggle_form(\"work\"); return false;'>Р”РѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚Сѓ</a><\/strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Р”РѕР±Р°РІРёС‚СЊ РІРёРґРµРѕ</strong></div>";
                 document.getElementById('frm').style.display = 'none';
                 document.getElementById('frm2').style.display = 'block';
                 break;
             case 'work':
-		        document.getElementById('ff').innerHTML = "<div style='padding-top:5px;'><strong>Добавить работу<\/strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong><a href='' style='color:#003399;' onClick='toggle_form(\"video\"); return false;'>Добавить видео</a></strong></div>";
+		        document.getElementById('ff').innerHTML = "<div style='padding-top:5px;'><strong>Р”РѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚Сѓ<\/strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong><a href='' style='color:#003399;' onClick='toggle_form(\"video\"); return false;'>Р”РѕР±Р°РІРёС‚СЊ РІРёРґРµРѕ</a></strong></div>";
                 document.getElementById('frm2').style.display = 'none';
                 document.getElementById('frm').style.display = 'block';
                 break;
@@ -748,7 +748,7 @@ var lastobj = 0;
 		ed=document.getElementById('editform'+profid);
     ed.innerHTML = getEdFrm(profid);
 		ed.style.backgroundColor="#FFF7DD";
-		document.getElementById('ff').innerHTML = "<div style='padding-top:5px;'><strong>Добавить работу<\/strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong><a href='' style='color:#003399;' onClick='toggle_form(\"video\"); return false;'>Добавить видео</a></strong></div>";
+		document.getElementById('ff').innerHTML = "<div style='padding-top:5px;'><strong>Р”РѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚Сѓ<\/strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong><a href='' style='color:#003399;' onClick='toggle_form(\"video\"); return false;'>Р”РѕР±Р°РІРёС‚СЊ РІРёРґРµРѕ</a></strong></div>";
 		ed.style.visibility='visible';
     var _frm = document.getElementById('frm');
     var _frm2 = document.getElementById('frm2');
@@ -914,7 +914,7 @@ else
 </div>
 </form>
 
-<form action="." method="post" enctype="multipart/form-data" name="frm_serv" id="frm_serv" onSubmit="if(tawlFormValidation(this)){this.btn.value='Подождите'; this.btn.disabled=true;}else{return false;}">
+<form action="." method="post" enctype="multipart/form-data" name="frm_serv" id="frm_serv" onSubmit="if(tawlFormValidation(this)){this.btn.value='РџРѕРґРѕР¶РґРёС‚Рµ'; this.btn.disabled=true;}else{return false;}">
 <div>
 <input type="hidden" name="action" value="serv_change" />
 <input type="hidden" name="prjid" value="" />
@@ -924,19 +924,19 @@ else
 <tr>
 	<td style="width:100%;height:60px;padding-left:32px;padding-top:10px">
     <div class="b-select b-select_inline-block">
-        <label class="b-select__label" for="b-select__select">Выберите название закладки:</label>
+        <label class="b-select__label" for="b-select__select">Р’С‹Р±РµСЂРёС‚Рµ РЅР°Р·РІР°РЅРёРµ Р·Р°РєР»Р°РґРєРё:</label>
         <select id="tab_name_id" class="b-select__select b-select__select_inline-block b-select__select_width_110" name="tab_name_id">
-          <option value="0"<? if ($frm_serv_val['tab_name_id'] == 0) { ?> selected='selected'<? } ?>>Портфолио</option>
-          <option value="1"<? if ($frm_serv_val['tab_name_id'] == 1) { ?> selected='selected'<? } ?>>Услуги</option>
+          <option value="0"<? if ($frm_serv_val['tab_name_id'] == 0) { ?> selected='selected'<? } ?>>РџРѕСЂС‚С„РѕР»РёРѕ</option>
+          <option value="1"<? if ($frm_serv_val['tab_name_id'] == 1) { ?> selected='selected'<? } ?>>РЈСЃР»СѓРіРё</option>
         </select>
     </div>
 	</td>
-	<td style="white-space:nowrap;padding-right:16px;padding-top:10px"><img src="/images/ico_setup.gif" alt="" width="6" height="9" />&nbsp;&nbsp;<a class="blue" href="/users/<?=$user->login?>/setup/portfsetup/">Изменить разделы</a></td>
+	<td style="white-space:nowrap;padding-right:16px;padding-top:10px"><img src="/images/ico_setup.gif" alt="" width="6" height="9" />&nbsp;&nbsp;<a class="blue" href="/users/<?=$user->login?>/setup/portfsetup/">РР·РјРµРЅРёС‚СЊ СЂР°Р·РґРµР»С‹</a></td>
 
 </tr>
 <tr>
 	<td colspan="2" style="width:100%;padding-left:32px;padding-right:32px;">
-        <a class="blue" href="/users/<?=$user->login?>/setup/specsetup/" id="ap11">Специализация:</a>&nbsp;&nbsp;<?=professions::GetProfNameWP($user->spec, ' / ', 'Нет специализации')?>
+        <a class="blue" href="/users/<?=$user->login?>/setup/specsetup/" id="ap11">РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ:</a>&nbsp;&nbsp;<?=professions::GetProfNameWP($user->spec, ' / ', 'РќРµС‚ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё')?>
     </td>
 </tr>
 <?php
@@ -955,12 +955,12 @@ if (!empty($specs_add)) {
 
     $specs_add_string = join(", ", $specs_add_array);
 } else {
-    $specs_add_string = "Нет";
+    $specs_add_string = "РќРµС‚";
 }
 
 ?>
 <tr>
-	<td colspan="2" style="width:100%;padding-left:32px;padding-right:32px; padding-top:12px;"><a class="blue" href="/users/<?=$user->login?>/setup/specaddsetup/" id="ap11">Дополнительные специализации:</a>&nbsp;&nbsp;<?=$specs_add_string?></td>
+	<td colspan="2" style="width:100%;padding-left:32px;padding-right:32px; padding-top:12px;"><a class="blue" href="/users/<?=$user->login?>/setup/specaddsetup/" id="ap11">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё:</a>&nbsp;&nbsp;<?=$specs_add_string?></td>
 </tr>
 <tr>
 
@@ -968,7 +968,7 @@ if (!empty($specs_add)) {
             <?php //var_dump($user);?>
   <div class="b-check">         
 		<input name="cat_show" class="b-check__input" type="checkbox" value="1" <?= !is_pro() ? 'disabled="disabled"' : '' ?> <?= $user->cat_show == 't' || !is_pro() ? 'checked="checked"' : '' ?> id="cat_showl" /> 
-  <label class="b-check__label b-check__label_color_71" for="cat_showl"><strong class="b-layout__txt_bold">Разрешить размещение в каталоге</strong> <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_71 b-layout__txt_lineheight_1">(только для <span title="владельцев платного аккаунта" class="b-icon b-icon__pro b-icon__pro_f b-icon_valign_bas"></span>)</span></label>
+  <label class="b-check__label b-check__label_color_71" for="cat_showl"><strong class="b-layout__txt_bold">Р Р°Р·СЂРµС€РёС‚СЊ СЂР°Р·РјРµС‰РµРЅРёРµ РІ РєР°С‚Р°Р»РѕРіРµ</strong> <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_71 b-layout__txt_lineheight_1">(С‚РѕР»СЊРєРѕ РґР»СЏ <span title="РІР»Р°РґРµР»СЊС†РµРІ РїР»Р°С‚РЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°" class="b-icon b-icon__pro b-icon__pro_f b-icon_valign_bas"></span>)</span></label>
   </div>
 	</td>
 
@@ -986,34 +986,34 @@ if (!empty($specs_add)) {
 <table  cellspacing="0" cellpadding="0" style="margin-top:4px;width:100%">
 <tr>
 
-  <td style="height:30px;padding-left:32px;white-space:nowrap;">Опыт работы (в годах)</td>
+  <td style="height:30px;padding-left:32px;white-space:nowrap;">РћРїС‹С‚ СЂР°Р±РѕС‚С‹ (РІ РіРѕРґР°С…)</td>
 	<td style="padding-left:6px;"></td>
 	<td style="padding-left:6px;padding-right:6px;"><input type="text" name="exp" value="<?=$frm_serv_val['exp']?>" maxlength="2" style="width:60px;" /></td>
 	<td style="padding-right:32px;"></td>
 </tr>
 <tr>
-	<td style="height:30px;padding-left:32px;white-space:nowrap;">Укажите стоимость часа вашей работы</td>
+	<td style="height:30px;padding-left:32px;white-space:nowrap;">РЈРєР°Р¶РёС‚Рµ СЃС‚РѕРёРјРѕСЃС‚СЊ С‡Р°СЃР° РІР°С€РµР№ СЂР°Р±РѕС‚С‹</td>
 	<td style="padding-left:6px;">
 	                    <div class="b-select">
                         <select id="cost_type_hour" class="b-select__select" name="cost_type_hour">
                             <option value="0" <?=($frm_serv_val['cost_type_hour'] == 0 ? "selected='selected'" : "")?> >USD</option>
                             <option value="1" <?=($frm_serv_val['cost_type_hour'] == 1 ? "selected='selected'" : "")?>>Euro</option>
-                            <option value="2" <?=($frm_serv_val['cost_type_hour'] == 2 ? "selected='selected'" : "")?>>Руб</option>
+                            <option value="2" <?=($frm_serv_val['cost_type_hour'] == 2 ? "selected='selected'" : "")?>>Р СѓР±</option>
                         </select>
 	                    </div>
 	</td>
 	<td style="padding-left:6px;padding-right:6px;"><input type="text" id="cost_hour" name="cost_hour" value="<?=floatval($frm_serv_val['cost_hour'])?>" maxlength="6" style="width:60px;" /></td>
-	<td rowspan="2" style="padding-right:32px;"> &mdash; данные цены будут выводиться на вашей странице и в общем каталоге</td>
+	<td rowspan="2" style="padding-right:32px;"> &mdash; РґР°РЅРЅС‹Рµ С†РµРЅС‹ Р±СѓРґСѓС‚ РІС‹РІРѕРґРёС‚СЊСЃСЏ РЅР° РІР°С€РµР№ СЃС‚СЂР°РЅРёС†Рµ Рё РІ РѕР±С‰РµРј РєР°С‚Р°Р»РѕРіРµ</td>
 </tr>
 <tr>
-	<td style="padding-left:32px;white-space:nowrap;">Укажите стоимость месяца вашей работы</td>
+	<td style="padding-left:32px;white-space:nowrap;">РЈРєР°Р¶РёС‚Рµ СЃС‚РѕРёРјРѕСЃС‚СЊ РјРµСЃСЏС†Р° РІР°С€РµР№ СЂР°Р±РѕС‚С‹</td>
 	<td style="padding-left:6px; height:22px;">
 	
 	                    <div class="b-select">
                         <select id="cost_type_month" class="b-select__select" name="cost_type_month">
                             <option value="0" <?=($frm_serv_val['cost_type_month'] == 0 ? "selected='selected'" : "")?> >USD</option>
                             <option value="1" <?=($frm_serv_val['cost_type_month'] == 1 ? "selected='selected'" : "")?>>Euro</option>
-                            <option value="2" <?=($frm_serv_val['cost_type_month'] == 2 ? "selected='selected'" : "")?>>Руб</option>
+                            <option value="2" <?=($frm_serv_val['cost_type_month'] == 2 ? "selected='selected'" : "")?>>Р СѓР±</option>
                         </select>
 	                    </div>
 	
@@ -1024,7 +1024,7 @@ if (!empty($specs_add)) {
 	<td style="height: 30px; padding-left: 32px; white-space: nowrap;">
     <div class="b-check">
       <input type="checkbox" id="in_officel" name="in_office" value="1" <?=$frm_serv_val['in_office']=="t"?" checked='checked'":""?> class="b-check__input" />
-      <label class="b-check__label b-check__label_bold b-check__label_color_71" for="in_officel">Ищу долгосрочную работу <span style="display:inline-block; vertical-align: baseline; line-height:1; padding: 0 0 0 15px; background: url(/images/icons-sprite.png) no-repeat -100px -337px;">в офисе</span> </label>
+      <label class="b-check__label b-check__label_bold b-check__label_color_71" for="in_officel">РС‰Сѓ РґРѕР»РіРѕСЃСЂРѕС‡РЅСѓСЋ СЂР°Р±РѕС‚Сѓ <span style="display:inline-block; vertical-align: baseline; line-height:1; padding: 0 0 0 15px; background: url(/images/icons-sprite.png) no-repeat -100px -337px;">РІ РѕС„РёСЃРµ</span> </label>
     </div>
  </td>
 	<td colspan="3" style="padding-left: 6px;">
@@ -1044,7 +1044,7 @@ if (!empty($specs_add)) {
 </tr>
 <?/* #0019741
 <tr>
-	<td style="padding-left: 32px; white-space: nowrap;"><label for="prefer_sbr"><strong><input type="checkbox" id="prefer_sbr" name="prefer_sbr" value="1" <?=$frm_serv_val['prefer_sbr']=="t"?"checked='checked'":""?> class="i-chk" style="position:relative; top:-1px;" /> Предпочитаю работать через сервис <span class="sbr-ic">Сделка без риска</span></strong></label></td>
+	<td style="padding-left: 32px; white-space: nowrap;"><label for="prefer_sbr"><strong><input type="checkbox" id="prefer_sbr" name="prefer_sbr" value="1" <?=$frm_serv_val['prefer_sbr']=="t"?"checked='checked'":""?> class="i-chk" style="position:relative; top:-1px;" /> РџСЂРµРґРїРѕС‡РёС‚Р°СЋ СЂР°Р±РѕС‚Р°С‚СЊ С‡РµСЂРµР· СЃРµСЂРІРёСЃ <span class="sbr-ic">РЎРґРµР»РєР° Р±РµР· СЂРёСЃРєР°</span></strong></label></td>
 	<td colspan="3" style="padding-left: 6px;"></td>
 </tr>
  */ ?>
@@ -1052,12 +1052,12 @@ if (!empty($specs_add)) {
 
 <table  cellspacing="0" cellpadding="0" style="margin-top:20px; width:100%">
 <tr>
-	<td style="width:890px;height:60px;padding-left:32px;padding-right:32px;">Уточнения к услугам в портфолио:<br />
+	<td style="width:890px;height:60px;padding-left:32px;padding-right:32px;">РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СѓСЃР»СѓРіР°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ:<br />
     <textarea class="tawl" rel="<?=$ab_text_max_length?>" cols="60" rows="7" id="ab_text" name="ab_text" style="width:890px; height:100px;"><?=input_ref($frm_serv_val['text'])?></textarea>
 	</td>
 </tr>
 <tr>
-	<td style="width:100%;height:60px;padding-right:32px;text-align:right;"><input id="btn" name="btn" type="submit" value="Изменить" />
+	<td style="width:100%;height:60px;padding-right:32px;text-align:right;"><input id="btn" name="btn" type="submit" value="РР·РјРµРЅРёС‚СЊ" />
 	</td>
 </tr>
 </table>
@@ -1071,7 +1071,7 @@ if (!empty($specs_add)) {
   	<form action="." method="post" name="frmdiz" id="frmdiz">
     <div>
     <input type="hidden" name="action" id="action" value="diz_ch" />
-    <input type="checkbox" class="checkbox" id="design" name="stddiz" value="0" onClick="submit_diz(this.value);" <? if (!$user->design) print "checked='checked'"?> /> Стандартный дизайн портфолио
+    <input type="checkbox" class="checkbox" id="design" name="stddiz" value="0" onClick="submit_diz(this.value);" <? if (!$user->design) print "checked='checked'"?> /> РЎС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РґРёР·Р°Р№РЅ РїРѕСЂС‚С„РѕР»РёРѕ
     </div>
     </form>
   </td><? } ?>
@@ -1138,7 +1138,7 @@ if (!empty($specs_add)) {
 				?>
 <div id="sprof<?=$prj['prof_id']?>">
 <a name="prof<?=$curprof?>" id="prof<?=$curprof?>"></a>
-<form action="#prof<?=$curprof?>" method="post" enctype="multipart/form-data" name="frm_prof_<?=$prj['prof_id']?>" id="frm_prof_<?=$prj['prof_id']?>" onSubmit="this['btn_prof_<?=$prj['prof_id']?>'].value='Подождите'; this['btn_prof_<?=$prj['prof_id']?>'].disabled=true;">
+<form action="#prof<?=$curprof?>" method="post" enctype="multipart/form-data" name="frm_prof_<?=$prj['prof_id']?>" id="frm_prof_<?=$prj['prof_id']?>" onSubmit="this['btn_prof_<?=$prj['prof_id']?>'].value='РџРѕРґРѕР¶РґРёС‚Рµ'; this['btn_prof_<?=$prj['prof_id']?>'].disabled=true;">
 <div>
 <input type="hidden" name="action" value="prof_change" />
 <input type="hidden" name="prof_id" value="<?=$prj['prof_id']?>" />
@@ -1170,14 +1170,14 @@ if (!empty($specs_add)) {
         <tr>
 
         	<td style="width:100%;"></td>
-        	<td style="padding-top:4px;white-space:nowrap;">Стоимость тысячи знаков</td>
+        	<td style="padding-top:4px;white-space:nowrap;">РЎС‚РѕРёРјРѕСЃС‚СЊ С‚С‹СЃСЏС‡Рё Р·РЅР°РєРѕРІ</td>
         	<td style="padding-left:6px;padding-top:4px;">
         	
 
                         <select name="prof_cost_type" id="prof_cost_type">
                             <option value="0" <?=($prj['cost_type'] == 0 ? "selected='selected'" : "")?> >USD</option>
                             <option value="1" <?=($prj['cost_type'] == 1 ? "selected='selected'" : "")?>>Euro</option>
-                            <option value="2" <?=($prj['cost_type'] == 2 ? "selected='selected'" : "")?>>Руб</option>
+                            <option value="2" <?=($prj['cost_type'] == 2 ? "selected='selected'" : "")?>>Р СѓР±</option>
                         </select>
 
         	</td>
@@ -1185,13 +1185,13 @@ if (!empty($specs_add)) {
         </tr>
          <tr>
             <td style="width:100%;"></td>
-            <td style="padding-top:4px;white-space:nowrap;">Оценка часа работы</td>
+            <td style="padding-top:4px;white-space:nowrap;">РћС†РµРЅРєР° С‡Р°СЃР° СЂР°Р±РѕС‚С‹</td>
         	<td style="padding-left:6px;padding-top:4px;">
         	             <div class="b-select">
                         <select id="prof_cost_type_hour" class="b-select__select" name="prof_cost_type_hour">
                             <option value="0" <?=($prj['cost_type_hour'] == 0 ? "selected='selected'" : "")?> >USD</option>
                             <option value="1" <?=($prj['cost_type_hour'] == 1 ? "selected='selected'" : "")?>>Euro</option>
-                            <option value="2" <?=($prj['cost_type_hour'] == 2 ? "selected='selected'" : "")?>>Руб</option>
+                            <option value="2" <?=($prj['cost_type_hour'] == 2 ? "selected='selected'" : "")?>>Р СѓР±</option>
                         </select>
         	             </div>
         	</td>
@@ -1199,35 +1199,35 @@ if (!empty($specs_add)) {
         </tr>
 <? } else { ?>
         <tr>
-        	<td style="border-bottom:1px #f0f4ff solid;padding:6px 0 6px 0;white-space:nowrap;">Стоимость работ
+        	<td style="border-bottom:1px #f0f4ff solid;padding:6px 0 6px 0;white-space:nowrap;">РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚
         	             <div class="b-select">
                         <select id="prof_cost_type" class="b-select__select" name="prof_cost_type">
                             <option value="0" <?=($prj['cost_type'] == 0 ? "selected='selected'" : "")?> >USD</option>
                             <option value="1" <?=($prj['cost_type'] == 1 ? "selected='selected'" : "")?>>Euro</option>
-                            <option value="2" <?=($prj['cost_type'] == 2 ? "selected='selected'" : "")?>>Руб</option>
+                            <option value="2" <?=($prj['cost_type'] == 2 ? "selected='selected'" : "")?>>Р СѓР±</option>
                         </select>
                       </div>
         	</td>
-        	<td style="border-bottom:1px #f0f4ff solid;padding:6px 0 6px 6px;text-align:right;white-space:nowrap;">от </td>
+        	<td style="border-bottom:1px #f0f4ff solid;padding:6px 0 6px 6px;text-align:right;white-space:nowrap;">РѕС‚ </td>
         	<td style="border-bottom:1px #f0f4ff solid;padding:6px 4px 6px 6px;"><input type="text" id="prof_cost_from" name="prof_cost_from" value="<?=$prj['cost_from']?>" maxlength="10" style="width:60px"/></td>
-        	<td style="border-bottom:1px #f0f4ff solid;padding:6px 0 6px 6px;text-align:right;white-space:nowrap;">до </td>
+        	<td style="border-bottom:1px #f0f4ff solid;padding:6px 0 6px 6px;text-align:right;white-space:nowrap;">РґРѕ </td>
         	<td style="border-bottom:1px #f0f4ff solid;padding:6px 0px 6px 6px;"><input type="text" id="prof_cost_from" name="prof_cost_to" value="<?=$prj['cost_to']?>" maxlength="10" style="width:60px"/></td>
         </tr>
         <tr>
-        	<td style="border-bottom:1px #f0f4ff solid;padding:6px 0 6px 0;white-space:nowrap;">Сроки &nbsp;&nbsp;&nbsp;<select id="prof_time_type" name="prof_time_type"><option value='0'<? if ($prj['time_type']==0) { ?> selected="selected"<? } ?>>в часах</option><option value='1'<? if ($prj['time_type']==1) { ?> selected="selected"<? } ?>>в днях</option><option value='2'<? if ($prj['time_type']==2) { ?>  selected="selected"<? } ?>>в месяцах</option><option value='3'<? if ($prj['time_type']==3) { ?> selected="selected"<? } ?>>в минутах</option></select></td>
-        	<td style="border-bottom:1px #f0f4ff solid;padding:6px 0 6px 6px;text-align:right;">от</td>
+        	<td style="border-bottom:1px #f0f4ff solid;padding:6px 0 6px 0;white-space:nowrap;">РЎСЂРѕРєРё &nbsp;&nbsp;&nbsp;<select id="prof_time_type" name="prof_time_type"><option value='0'<? if ($prj['time_type']==0) { ?> selected="selected"<? } ?>>РІ С‡Р°СЃР°С…</option><option value='1'<? if ($prj['time_type']==1) { ?> selected="selected"<? } ?>>РІ РґРЅСЏС…</option><option value='2'<? if ($prj['time_type']==2) { ?>  selected="selected"<? } ?>>РІ РјРµСЃСЏС†Р°С…</option><option value='3'<? if ($prj['time_type']==3) { ?> selected="selected"<? } ?>>РІ РјРёРЅСѓС‚Р°С…</option></select></td>
+        	<td style="border-bottom:1px #f0f4ff solid;padding:6px 0 6px 6px;text-align:right;">РѕС‚</td>
         	<td style="border-bottom:1px #f0f4ff solid;padding:6px 6px 6px 6px;"><input type="text" id="prof_time_from" name="prof_time_from" value="<?=$prj['time_from']?>" maxlength="2" style="width:60px" /></td>
-        	<td style="border-bottom:1px #f0f4ff solid;padding:6px 0 6px 6px;text-align:right;">до</td>
+        	<td style="border-bottom:1px #f0f4ff solid;padding:6px 0 6px 6px;text-align:right;">РґРѕ</td>
         	<td style="border-bottom:1px #f0f4ff solid;padding:6px 0px 6px 6px;"><input type="text" id="prof_time_to" name="prof_time_to" value="<?=$prj['time_to']?>" maxlength="2" style="width:60px" /></td>
         </tr>
         <tr>
-        	<td style="padding:6px 0 6px 0;white-space:nowrap;" colspan="2">Оценка часа работы
+        	<td style="padding:6px 0 6px 0;white-space:nowrap;" colspan="2">РћС†РµРЅРєР° С‡Р°СЃР° СЂР°Р±РѕС‚С‹
         	
         	             <div class="b-select">
                         <select class="b-select__select" name="prof_cost_type_hour" id="prof_cost_type_hour">
                             <option value="0" <?=($prj['cost_type_hour'] == 0 ? "selected='selected'" : "")?>  >USD</option>
                             <option value="1" <?=($prj['cost_type_hour'] == 1 ? "selected='selected'" : "")?>>Euro</option>
-                            <option value="2" <?=($prj['cost_type_hour'] == 2 ? "selected='selected'" : "")?>>Руб</option>
+                            <option value="2" <?=($prj['cost_type_hour'] == 2 ? "selected='selected'" : "")?>>Р СѓР±</option>
                         </select>
                       </div>
         	
@@ -1242,30 +1242,30 @@ if (!empty($specs_add)) {
       </td>
     </tr>
     <tr>
-      <td>Уточнения к разделу:</td>
+      <td>РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Сѓ:</td>
     </tr>
     <tr>
     <? $profText = ($errorProfText && $saved_prof_id == $prj['prof_id']) ? $errorProfText : $prj['portf_text']; ?>
-      <td style="padding-top:0px;padding-right:12px;vertical-align:right; padding-bottom:10px;"><textarea cols="20" rows="4" id="prof_text" name="prof_text" style="width:90%;height:56px;" onkeyup="if (this.value.length > 300) this.value=this.value.slice(0, 300)"><?=input_ref($profText)?></textarea><br />Можно использовать &lt;b&gt;&lt;i&gt;&lt;p&gt;&lt;ul&gt;&lt;li&gt;</td>
+      <td style="padding-top:0px;padding-right:12px;vertical-align:right; padding-bottom:10px;"><textarea cols="20" rows="4" id="prof_text" name="prof_text" style="width:90%;height:56px;" onkeyup="if (this.value.length > 300) this.value=this.value.slice(0, 300)"><?=input_ref($profText)?></textarea><br />РњРѕР¶РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ &lt;b&gt;&lt;i&gt;&lt;p&gt;&lt;ul&gt;&lt;li&gt;</td>
     </tr>
     <? if($prj['prof_id'] > 0): ?>
     <tr>
-      <td style="padding: 0 0 5px 0;"><br />Ключевые слова:</td>
+      <td style="padding: 0 0 5px 0;"><br />РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°:</td>
     </tr>
     <tr>
       <td style="padding-top:0px;padding-right:12px;vertical-align:right;">
             <div style="position:   relative;" id="body_<?=$prj['prof_id']?>"> 
 			     <textarea  cols="20" rows="2" name="prof_keys[<?=$prj['prof_id']?>]" id="user_keys_<?=$prj['prof_id']?>" style="width:90%; height:36px;"><?=stripcslashes(implode(", ", $user_keys))?></textarea>
 	        </div>
-	        Ключевые слова вводятся через запятую.
+	        РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР° РІРІРѕРґСЏС‚СЃСЏ С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ.
       </td>
     </tr>
     <? endif; ?>
     <tr>
       <td>
-        <? if ($is_pro) { ?> <span style="margin-right:32px;"><div class="b-check"><input id="grprev<?=$curprof?>" class="b-check__input" type="checkbox"  value="1" onClick="changeGrPrev(<?=$curprof?>, this.checked);" <? if ($prj['gr_prevs'] == 't') print "checked='checked'" ?> <? if (!$is_pro) print " disabled='disabled'" ?> /><label class="b-check__label b-check__label_bold" for="grprev<?=$curprof?>">Включить в разделе превью</label><? if (!$is_pro) { ?> <div style="padding:2px 2px 2px 4px;background-color:#FFE4C4;">Только для <a class="b-layout__link" href="/payed/"><span title="владельцев платного аккаунта" class="b-icon b-icon__pro b-icon__pro_f"></span></a></div> <? } } ?></div></span>
+        <? if ($is_pro) { ?> <span style="margin-right:32px;"><div class="b-check"><input id="grprev<?=$curprof?>" class="b-check__input" type="checkbox"  value="1" onClick="changeGrPrev(<?=$curprof?>, this.checked);" <? if ($prj['gr_prevs'] == 't') print "checked='checked'" ?> <? if (!$is_pro) print " disabled='disabled'" ?> /><label class="b-check__label b-check__label_bold" for="grprev<?=$curprof?>">Р’РєР»СЋС‡РёС‚СЊ РІ СЂР°Р·РґРµР»Рµ РїСЂРµРІСЊСЋ</label><? if (!$is_pro) { ?> <div style="padding:2px 2px 2px 4px;background-color:#FFE4C4;">РўРѕР»СЊРєРѕ РґР»СЏ <a class="b-layout__link" href="/payed/"><span title="РІР»Р°РґРµР»СЊС†РµРІ РїР»Р°С‚РЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°" class="b-icon b-icon__pro b-icon__pro_f"></span></a></div> <? } } ?></div></span>
       </td>
-      <td style="padding:8px 0px 12px 0px;text-align:right;"><input type="submit" id="btn_prof_<?=$prj['prof_id']?>" name="btn_prof_<?=$prj['prof_id']?>" value="Сохранить" /></td>
+      <td style="padding:8px 0px 12px 0px;text-align:right;"><input type="submit" id="btn_prof_<?=$prj['prof_id']?>" name="btn_prof_<?=$prj['prof_id']?>" value="РЎРѕС…СЂР°РЅРёС‚СЊ" /></td>
     </tr>
     </table>
   </td>
@@ -1281,10 +1281,10 @@ if (!empty($specs_add)) {
     </td>
     <td style="padding:6px 4px 6px 6px;text-align:right;vertical-align:middle;">
       <? if($portf_cnt[professions::BEST_PROF_ID] >= portfolio::MAX_BEST_WORKS && $prj['prof_id']==professions::BEST_PROF_ID) { ?>
-        Вы не можете добавить больше <?=portfolio::MAX_BEST_WORKS?> работ в этот раздел.
+        Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ РґРѕР±Р°РІРёС‚СЊ Р±РѕР»СЊС€Рµ <?=portfolio::MAX_BEST_WORKS?> СЂР°Р±РѕС‚ РІ СЌС‚РѕС‚ СЂР°Р·РґРµР».
       <? } else { ?>
         <a href="#prof<?=$curprof?>" onClick="addprj('<?=$curprof?>');">
-          <img src="/images/btnadd.gif" alt="Добавить работу" width="169" height="28" />
+          <img src="/images/btnadd.gif" alt="Р”РѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚Сѓ" width="169" height="28" />
         </a>
       <? } ?>
     </td>
@@ -1293,7 +1293,7 @@ if (!empty($specs_add)) {
 	<td colspan="2">
     <table   cellspacing="0" cellpadding="0" style="background:#F8F8F8; width:100%">
 	  <tr>
-	  	<td style="width:100%"><div id="w_count_selected_<?=$curprof?>" style="font-weight:bold; padding:21px 30px 21px 30px;">Выделено 0 работ</div></td>
+	  	<td style="width:100%"><div id="w_count_selected_<?=$curprof?>" style="font-weight:bold; padding:21px 30px 21px 30px;">Р’С‹РґРµР»РµРЅРѕ 0 СЂР°Р±РѕС‚</div></td>
 
 <?
 		if (sizeof($wrk_profs_names) > 1)
@@ -1305,10 +1305,10 @@ if (!empty($specs_add)) {
 	  		<div style="background:#E4E4E4; height:28px; padding:3px 5px 0px 5px;">
 			  <table  style="width:100%"  cellspacing="0" cellpadding="2">
 			  <tr>
-			  	<td style="white-space:nowrap; vertical-align:middle;">Переместить в&#160;</td>
+			  	<td style="white-space:nowrap; vertical-align:middle;">РџРµСЂРµРјРµСЃС‚РёС‚СЊ РІ&#160;</td>
 			  	<td>
 			  		<select  disabled="disabled" id="w_move_<?=$curprof?>_select">
-			  		<option value="0">Выберите раздел...</option>
+			  		<option value="0">Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»...</option>
 
 			  		<?
 			  		
@@ -1331,7 +1331,7 @@ if (!empty($specs_add)) {
 
 			  		</select>
 			  	</td>
-			  	<td><input type="button"  disabled="disabled" id="w_move_<?=$curprof?>_btn" value=" OK " onClick="moveRubricWorks(<?=$curprof?>)" /><div style="display:none;" id="w_move_<?=$curprof?>">Удалить все выделенные работы?</div></td>
+			  	<td><input type="button"  disabled="disabled" id="w_move_<?=$curprof?>_btn" value=" OK " onClick="moveRubricWorks(<?=$curprof?>)" /><div style="display:none;" id="w_move_<?=$curprof?>">РЈРґР°Р»РёС‚СЊ РІСЃРµ РІС‹РґРµР»РµРЅРЅС‹Рµ СЂР°Р±РѕС‚С‹?</div></td>
 			  </tr>
 			  </table>
 			</div>
@@ -1341,7 +1341,7 @@ if (!empty($specs_add)) {
 		}
 
 ?>
-	  	<td><div style="background:#E4E4E4; height:30px; padding:5px 0px 0px 0px; margin:0px 5px 0px 10px;"><input type="button" disabled="disabled"  id="w_delete_<?=$curprof?>_btn" value="Удалить все выделенные работы" onClick="deleteRubricWorks(<?=$curprof?>)" /><div style="display:none;" id="w_delete_<?=$curprof?>">Удалить все выделенные работы?</div></div></td>
+	  	<td><div style="background:#E4E4E4; height:30px; padding:5px 0px 0px 0px; margin:0px 5px 0px 10px;"><input type="button" disabled="disabled"  id="w_delete_<?=$curprof?>_btn" value="РЈРґР°Р»РёС‚СЊ РІСЃРµ РІС‹РґРµР»РµРЅРЅС‹Рµ СЂР°Р±РѕС‚С‹" onClick="deleteRubricWorks(<?=$curprof?>)" /><div style="display:none;" id="w_delete_<?=$curprof?>">РЈРґР°Р»РёС‚СЊ РІСЃРµ РІС‹РґРµР»РµРЅРЅС‹Рµ СЂР°Р±РѕС‚С‹?</div></div></td>
 	  </tr>
 	  </table>
 	</td>
@@ -1350,7 +1350,7 @@ if (!empty($specs_add)) {
 	<tr>
 	<td width="19" height="20" class="brdtop">&nbsp;</td>
 	<td width="19" height="20" class="brdtop">&nbsp;</td>
-	<td align="right" class="brdtop"><img src="/images/ico_plus.gif" alt="" width="9" height="9" />&nbsp;&nbsp;<a href="#prof<?=$curprof?>" onClick="addprj('<?=$curprof?>');">Добавить работу</a></td>
+	<td align="right" class="brdtop"><img src="/images/ico_plus.gif" alt="" width="9" height="9" />&nbsp;&nbsp;<a href="#prof<?=$curprof?>" onClick="addprj('<?=$curprof?>');">Р”РѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚Сѓ</a></td>
 </tr>
 -->
 </table>
@@ -1363,7 +1363,7 @@ if (!empty($specs_add)) {
 <? if ($prj['id']) { ?>
 <?	} else { ?>
 <tr>
-	<td style="text-align:center; height:20px">В этом разделе нет работ</td>
+	<td style="text-align:center; height:20px">Р’ СЌС‚РѕРј СЂР°Р·РґРµР»Рµ РЅРµС‚ СЂР°Р±РѕС‚</td>
 </tr>
 <? }
         $end_table='</table>';
@@ -1411,7 +1411,7 @@ if (!empty($specs_add)) {
           else
           {
       ?>
-				<div  style="width:200px;height:200px;text-align:left;vertical-align:top;"><a href="/users/<?=$user->login?>/viewproj.php?prjid=<?=$prj['id']?>" target="_blank" class="blue"><img src="/images/unimaged.gif" width="200" height="124" alt="Изображение автором не загружено"  /></a></div>
+				<div  style="width:200px;height:200px;text-align:left;vertical-align:top;"><a href="/users/<?=$user->login?>/viewproj.php?prjid=<?=$prj['id']?>" target="_blank" class="blue"><img src="/images/unimaged.gif" width="200" height="124" alt="РР·РѕР±СЂР°Р¶РµРЅРёРµ Р°РІС‚РѕСЂРѕРј РЅРµ Р·Р°РіСЂСѓР¶РµРЅРѕ"  /></a></div>
 			<?
           }
        } else {
@@ -1427,24 +1427,24 @@ if (!empty($specs_add)) {
         <input type="hidden" name="prj_id" value="<?=$prj['id']?>" />
     		<table cellspacing="0" cellpadding="2" >
     		<tr valign="top">
-    			<td style="white-space:nowrap; padding-bottom:10px">Стоимость разработки&#160;</td>
+    			<td style="white-space:nowrap; padding-bottom:10px">РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р·СЂР°Р±РѕС‚РєРё&#160;</td>
     			<td style="padding-bottom:10px;" align="left"><input type='text' id='prj_cost_<?=$prj['id']?>' name='prj_cost' maxlength="10" value="<?=$prj['prj_cost']?>" style='width:47px;margin-right:1px;' onchange="document.getElementById('btn_prj_<?=$prj['id']?>').disabled=false" onkeydown="document.getElementById('btn_prj_<?=$prj['id']?>').disabled=false;document.getElementById('prj_msg_<?=$prj['id']?>').innerHTML='&nbsp;';" />
     			
     			
                         <select name="prj_cost_type" id="prj_cost_type_<?=$prj['id']?>">
                             <option value="0" <?=($prj['prj_cost_type'] == 0 ? "selected='selected'" : "")?> >USD</option>
                             <option value="1" <?=($prj['prj_cost_type'] == 1 ? "selected='selected'" : "")?>>Euro</option>
-                            <option value="2" <?=($prj['prj_cost_type'] == 2 ? "selected='selected'" : "")?>>Руб</option>
+                            <option value="2" <?=($prj['prj_cost_type'] == 2 ? "selected='selected'" : "")?>>Р СѓР±</option>
                         </select>
     			</td>
     		</tr>
      		<tr valign="top">
-      		<td style="padding-bottom:10px;">Временные затраты</td>
-      		<td style="padding-bottom:10px;"><input type='text' id='prj_time_value_<?=$prj['id']?>' name='prj_time_value' maxlength="6" value="<?=$prj['prj_time_value']?>" style='width:47px;' onchange="document.getElementById('btn_prj_<?=$prj['id']?>').disabled=false" onkeydown="document.getElementById('btn_prj_<?=$prj['id']?>').disabled=false;document.getElementById('prj_msg_<?=$prj['id']?>').innerHTML='&nbsp;';" /> <select id='prj_time_type_<?=$prj['id']?>' name='prj_time_type' onchange="document.getElementById('btn_prj_<?=$prj['id']?>').disabled=false" onkeydown="document.getElementById('btn_prj_<?=$prj['id']?>').disabled=false;document.getElementById('prj_msg_<?=$prj['id']?>').innerHTML='&nbsp;';"><option value='0'<? if ($prj['prj_time_type'] == 0) { ?> selected='selected'<? } ?>>в часах</option><option value='1'<? if ($prj['prj_time_type'] == 1) { ?> selected='selected'<? } ?>>в днях</option><option value='2'<? if ($prj['prj_time_type'] == 2) { ?> selected='selected'<? } ?>>в месяцах</option><option value='3'<? if ($prj['prj_time_type'] == 3) { ?> selected='selected'<? } ?>>в минутах</option></select></td>
+      		<td style="padding-bottom:10px;">Р’СЂРµРјРµРЅРЅС‹Рµ Р·Р°С‚СЂР°С‚С‹</td>
+      		<td style="padding-bottom:10px;"><input type='text' id='prj_time_value_<?=$prj['id']?>' name='prj_time_value' maxlength="6" value="<?=$prj['prj_time_value']?>" style='width:47px;' onchange="document.getElementById('btn_prj_<?=$prj['id']?>').disabled=false" onkeydown="document.getElementById('btn_prj_<?=$prj['id']?>').disabled=false;document.getElementById('prj_msg_<?=$prj['id']?>').innerHTML='&nbsp;';" /> <select id='prj_time_type_<?=$prj['id']?>' name='prj_time_type' onchange="document.getElementById('btn_prj_<?=$prj['id']?>').disabled=false" onkeydown="document.getElementById('btn_prj_<?=$prj['id']?>').disabled=false;document.getElementById('prj_msg_<?=$prj['id']?>').innerHTML='&nbsp;';"><option value='0'<? if ($prj['prj_time_type'] == 0) { ?> selected='selected'<? } ?>>РІ С‡Р°СЃР°С…</option><option value='1'<? if ($prj['prj_time_type'] == 1) { ?> selected='selected'<? } ?>>РІ РґРЅСЏС…</option><option value='2'<? if ($prj['prj_time_type'] == 2) { ?> selected='selected'<? } ?>>РІ РјРµСЃСЏС†Р°С…</option><option value='3'<? if ($prj['prj_time_type'] == 3) { ?> selected='selected'<? } ?>>РІ РјРёРЅСѓС‚Р°С…</option></select></td>
     		</tr>
      		<tr valign="top">
       		<td style="padding-bottom:10px;"></td>
-      		<td><input id="btn_prj_<?=$prj['id']?>" name="btn_prj_<?=$prj['id']?>" type="submit" value="Применить" /></td>
+      		<td><input id="btn_prj_<?=$prj['id']?>" name="btn_prj_<?=$prj['id']?>" type="submit" value="РџСЂРёРјРµРЅРёС‚СЊ" /></td>
     		</tr>
 	        </table>
 
@@ -1465,9 +1465,9 @@ if (!empty($specs_add)) {
                         <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13">
                             <span class="b-fon__attent"></span>
                             <div class="b-fon__txt b-fon__txt_margleft_20">
-                                    <span class="b-fon__txt_bold">Работа заблокирована</span>. <?= reformat($prj['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>Служба поддержки</a>
-                                    <div class='b-fon__txt'><?php if ( hasPermissions('users') ) { ?><?= ($prj['admin_login'] ? "Заблокировал: <a class='b-fon__link' href='/users/{$prj['admin_login']}'>{$prj['admin_uname']} {$prj['admin_usurname']} [{$prj['admin_login']}]</a><br />": '') ?><?php } ?>
-                                    Дата блокировки: <?= dateFormat('d.m.Y H:i', $prj['blocked_time']) ?></div>
+                                    <span class="b-fon__txt_bold">Р Р°Р±РѕС‚Р° Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅР°</span>. <?= reformat($prj['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё</a>
+                                    <div class='b-fon__txt'><?php if ( hasPermissions('users') ) { ?><?= ($prj['admin_login'] ? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°Р»: <a class='b-fon__link' href='/users/{$prj['admin_login']}'>{$prj['admin_uname']} {$prj['admin_usurname']} [{$prj['admin_login']}]</a><br />": '') ?><?php } ?>
+                                    Р”Р°С‚Р° Р±Р»РѕРєРёСЂРѕРІРєРё: <?= dateFormat('d.m.Y H:i', $prj['blocked_time']) ?></div>
                             </div>
                         </div>
                         <b class="b-fon__b2"></b>
@@ -1480,19 +1480,19 @@ if (!empty($specs_add)) {
         <?php } ?>
 <? /*
 		<tr>
-			<td id="comments<?=$prj['id']?>"><? if ($prj['show_comms'] == 't') {?><a href="/users/<?=$user->login?>/comments/?tr=<?=$prj['id']?>" class="blue">Комментарии (<?=zin($prj['comms'])?>)</a><? } ?></td>
+			<td id="comments<?=$prj['id']?>"><? if ($prj['show_comms'] == 't') {?><a href="/users/<?=$user->login?>/comments/?tr=<?=$prj['id']?>" class="blue">РљРѕРјРјРµРЅС‚Р°СЂРёРё (<?=zin($prj['comms'])?>)</a><? } ?></td>
 		</tr>
 */ ?>
 		<? /* if (!$is_pro) { ?>
 		<tr valign="bottom">
-			<td><a href="#prof<?=$curprof?>" name="ap1<?=$j?>" id="ap1<?=$j?>" title="Изменить" onClick="editprj(<?=$j?>,<?=$curprof?>);">Изменить</a> | <a href="#" onClick="if (warning(5)) {frm.action.value='portf_del';document.getElementById('frm').prjid.value=<?=$prj['id']?>; delprj();} else return(false);">Удалить</a></td>
+			<td><a href="#prof<?=$curprof?>" name="ap1<?=$j?>" id="ap1<?=$j?>" title="РР·РјРµРЅРёС‚СЊ" onClick="editprj(<?=$j?>,<?=$curprof?>);">РР·РјРµРЅРёС‚СЊ</a> | <a href="#" onClick="if (warning(5)) {frm.action.value='portf_del';document.getElementById('frm').prjid.value=<?=$prj['id']?>; delprj();} else return(false);">РЈРґР°Р»РёС‚СЊ</a></td>
 		</tr>
 		<? } */?>
 		</table>
 	</td>
 
 	<? if ($is_pro) { ?>
-  <td class="box5fill" id="sproj<?=$prj['id']?>d" style="padding:0px 5px 0px 45px; text-align:center; vertical-align:middle"><input type="button" name="ap1<?=$j?>" id="ap1<?=$j?>" value="Изменить" onClick="editprj(<?=$j?>,<?=$curprof?>);window.location='#prof<?=$curprof?>';" /></td>
+  <td class="box5fill" id="sproj<?=$prj['id']?>d" style="padding:0px 5px 0px 45px; text-align:center; vertical-align:middle"><input type="button" name="ap1<?=$j?>" id="ap1<?=$j?>" value="РР·РјРµРЅРёС‚СЊ" onClick="editprj(<?=$j?>,<?=$curprof?>);window.location='#prof<?=$curprof?>';" /></td>
 	<td  class="boxbtfill" id="sproj<?=$prj['id']?>e" style="padding:0px 20px 0px 0px; text-align:center; vertical-align:middle">
   	<form action="." method="post" name="frmdel<?=$prj['id']?>" id="frmdel<?=$prj['id']?>">
     <div>
@@ -1500,10 +1500,10 @@ if (!empty($specs_add)) {
     <input type="hidden" name="prjid" id="prjid" value="<?=$prj['id']?>" />
     </div>
     </form>
-	<input type="button" value="x Удалить" onClick="if (warning(5)) {delprj(<?=$prj['id']?>);} else return(false);" />
+	<input type="button" value="x РЈРґР°Р»РёС‚СЊ" onClick="if (warning(5)) {delprj(<?=$prj['id']?>);} else return(false);" />
   </td>
 	<? } else { ?>
-	<td class="box5fill" id="sproj<?=$prj['id']?>d" style="padding:0px 5px 0px 45px; text-align:center; vertical-align:middle"><input type="button" name="ap1<?=$j?>" id="ap1<?=$j?>" value="Изменить" onClick="window.location='#prof<?=$curprof?>';editprj(<?=$j?>,<?=$curprof?>);" /></td>
+	<td class="box5fill" id="sproj<?=$prj['id']?>d" style="padding:0px 5px 0px 45px; text-align:center; vertical-align:middle"><input type="button" name="ap1<?=$j?>" id="ap1<?=$j?>" value="РР·РјРµРЅРёС‚СЊ" onClick="window.location='#prof<?=$curprof?>';editprj(<?=$j?>,<?=$curprof?>);" /></td>
 	<td  class="boxbtfill" id="sproj<?=$prj['id']?>e" style="padding:0px 20px 0px 0px; text-align:center; vertical-align:middle">
   	<form action="." method="post" name="frmdel<?=$prj['id']?>" id="frmdel<?=$prj['id']?>">
     <div>
@@ -1511,7 +1511,7 @@ if (!empty($specs_add)) {
     <input type="hidden" name="prjid" id="prjid" value="<?=$prj['id']?>" />
     </div>
     </form>
-	<input type="button" value="x Удалить" onClick="if (warning(5)) {delprj(<?=$prj['id']?>);} else return(false);" />
+	<input type="button" value="x РЈРґР°Р»РёС‚СЊ" onClick="if (warning(5)) {delprj(<?=$prj['id']?>);} else return(false);" />
   </td>
 	<? } ?>
 </tr>

@@ -57,14 +57,14 @@ out = "<form action=\"javascript:void(null);\" method=\"post\" name=\"rnfrm\" id
 <input type=\"hidden\" id=\"id\" name=\"id\" value=\""+num+"\">\
 <table width=\"218\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\
 <tr>\
-	<td colspan=\"2\" style=\"padding-bottom:4px;\">Новое имя:</td>\
+	<td colspan=\"2\" style=\"padding-bottom:4px;\">РќРѕРІРѕРµ РёРјСЏ:</td>\
 <\/tr>\
 <tr>\
 	<td colspan=\"2\" style=\"padding-bottom:4px;\"><input maxlength=\"63\" type=\"text\" id=\"new_name\" name=\"new_name\" value=\""+htmlspecialchars(name)+"\" style=\"width: 218px;\" onblur=\"if(this.value=='') this.value='<?=$fld_name?>';\">\</td>\
 <\/tr>\
 <tr>\
-	<td><input type=\"button\" name=\"resetbtn\" id=\"resetbtn\" value=\"Отменить\" onClick='resetfld(\""+num+"\",\""+cur+"\",\""+htmlspecialchars(htmlEscape(src_name)) +"\",\""+cont+"\",\""+logins+"\");'></td>\
-	<td align=\"right\"><input type=\"submit\" name=\"savebtn\" id=\"savebtn\" value=\"Сохранить\"></td>\
+	<td><input type=\"button\" name=\"resetbtn\" id=\"resetbtn\" value=\"РћС‚РјРµРЅРёС‚СЊ\" onClick='resetfld(\""+num+"\",\""+cur+"\",\""+htmlspecialchars(htmlEscape(src_name)) +"\",\""+cont+"\",\""+logins+"\");'></td>\
+	<td align=\"right\"><input type=\"submit\" name=\"savebtn\" id=\"savebtn\" value=\"РЎРѕС…СЂР°РЅРёС‚СЊ\"></td>\
 <\/tr>\
 <\/table>\
 <\/div>\
@@ -101,7 +101,7 @@ function resetfld(num,cur,name,cont,logins){
   	  folder_html = '<a href="/contacts/?folder='+num+'"><span style="float:left;"><img class="li" src="/images/ico_dir.gif" /></span></a><a href="/contacts/?folder='+num+'" class="blue">'+name+'</a>';
   	}
   	folder_html = folder_html+" (<span id=\"fldcount"+num+"\">"+cont+"<\/span>)";
-  	folder_html = folder_html+"<div style=\"margin-top: 7px;\" align=\"right\"><a href=\"\/contacts\/?action=delfolder&id="+num+"\" onClick=\"return warning(9)\" title=\"Удалится только папка. Контакты переместятся в&nbsp;папку &laquo;Все&raquo;.\">Удалить</a> | <a href=\"javascript:rename('"+num+"','"+cur+"','"+htmlspecialchars(htmlEscape(name))+"','"+cont+"','"+logins+"');\">Переименовать<\/a><\/div><div style=\"clear:both;\"></div>";
+  	folder_html = folder_html+"<div style=\"margin-top: 7px;\" align=\"right\"><a href=\"\/contacts\/?action=delfolder&id="+num+"\" onClick=\"return warning(9)\" title=\"РЈРґР°Р»РёС‚СЃСЏ С‚РѕР»СЊРєРѕ РїР°РїРєР°. РљРѕРЅС‚Р°РєС‚С‹ РїРµСЂРµРјРµСЃС‚СЏС‚СЃСЏ РІ&nbsp;РїР°РїРєСѓ &laquo;Р’СЃРµ&raquo;.\">РЈРґР°Р»РёС‚СЊ</a> | <a href=\"javascript:rename('"+num+"','"+cur+"','"+htmlspecialchars(htmlEscape(name))+"','"+cont+"','"+logins+"');\">РџРµСЂРµРёРјРµРЅРѕРІР°С‚СЊ<\/a><\/div><div style=\"clear:both;\"></div>";
 	li.set("html", folder_html);
 	var ls = li.getElements("a");
 	if (ls.length > 1) {
@@ -122,7 +122,7 @@ function resetfld(num,cur,name,cont,logins){
 function submitRnFolderForm()
 {
 	xajax.$('savebtn').disabled=true;
-//	xajax.$('savebtn').value="Подождите";
+//	xajax.$('savebtn').value="РџРѕРґРѕР¶РґРёС‚Рµ";
 	xajax_RnFolder(xajax.getFormValues("rnfrm"));
 	return false;
 }
@@ -158,7 +158,7 @@ $cf = new mess_folders();
 $cf->from_id = get_uid();
 $folders = $cf->GetAll();
 
-// Определяю название текущей папки. Лучше вынести в метод или функцию.
+// РћРїСЂРµРґРµР»СЏСЋ РЅР°Р·РІР°РЅРёРµ С‚РµРєСѓС‰РµР№ РїР°РїРєРё. Р›СѓС‡С€Рµ РІС‹РЅРµСЃС‚Рё РІ РјРµС‚РѕРґ РёР»Рё С„СѓРЅРєС†РёСЋ.
 if ( !$pm_folder ) {
     if ($cur_folder > 0)
     {
@@ -175,35 +175,35 @@ if ( !$pm_folder ) {
         switch ($cur_folder)
         {
           case -1:
-            $cur_folder_name = 'Избранные';
+            $cur_folder_name = 'РР·Р±СЂР°РЅРЅС‹Рµ';
             $sSuff = 'team/';
             break;
           case -2:
-            $cur_folder_name = 'Игнорирую';
+            $cur_folder_name = 'РРіРЅРѕСЂРёСЂСѓСЋ';
             $sSuff = 'ignor/';
             break;
           case -3:
-            $cur_folder_name = 'Удаленные';
+            $cur_folder_name = 'РЈРґР°Р»РµРЅРЅС‹Рµ';
             $sSuff = 'del/';
             break;
           case -4:
-            $cur_folder_name = 'Пользователи с моими заметками (в сообщениях)';
+            $cur_folder_name = 'РџРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ РјРѕРёРјРё Р·Р°РјРµС‚РєР°РјРё (РІ СЃРѕРѕР±С‰РµРЅРёСЏС…)';
             $sSuff = 'notes/';
             break;
           case -5:
-            $cur_folder_name = 'Пользователи с моими заметками (на всем сайте)';
+            $cur_folder_name = 'РџРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ РјРѕРёРјРё Р·Р°РјРµС‚РєР°РјРё (РЅР° РІСЃРµРј СЃР°Р№С‚Рµ)';
             $sSuff = 'allnotes/';
             break;
           case -6:
-            $cur_folder_name = 'Платные рассылки';
+            $cur_folder_name = 'РџР»Р°С‚РЅС‹Рµ СЂР°СЃСЃС‹Р»РєРё';
             $sSuff = 'mass/';
             break;
           case -7:
-            $cur_folder_name = 'Непрочитанные';
+            $cur_folder_name = 'РќРµРїСЂРѕС‡РёС‚Р°РЅРЅС‹Рµ';
             $sSuff = 'unread/';
             break;
           default:
-            $cur_folder_name = 'Все';
+            $cur_folder_name = 'Р’СЃРµ';
             $sSuff = '';
             break;
         }
@@ -214,7 +214,7 @@ else {
     $aMassSend       = masssending::Get( $aCurrFolder['mass_send_id'] );
     $cur_folder_name = $aCurrFolder['name'];
 }
-// \ Определение названия текущей папки.
+// \ РћРїСЂРµРґРµР»РµРЅРёРµ РЅР°Р·РІР°РЅРёСЏ С‚РµРєСѓС‰РµР№ РїР°РїРєРё.
 
 $arr_logins = array();
 
@@ -233,14 +233,14 @@ if($contacts) {
 }
 ?>
 
-<h1 class="b-page__title">Сообщения /
+<h1 class="b-page__title">РЎРѕРѕР±С‰РµРЅРёСЏ /
    <?=reformat($cur_folder_name, 15, 0, 1)?>
 </h1>
 
 <div id="rightCol" class="b-layout__one b-layout__one_width_25ps b-layout__right_float_right b-layout__one_width_full_ipad">
   <div id="content">
     <div class="box">
-      <?$fld_txt = "Новая папка"?>
+      <?$fld_txt = "РќРѕРІР°СЏ РїР°РїРєР°"?>
       <form action="/contacts/" method="post" name="crfrm" id="crfrm" onSubmit="if($('fldname').get('value')=='<?=$fld_txt?>') { $('fldname').set('value', ''); }">
         <div>
           
@@ -250,14 +250,14 @@ if($contacts) {
    <input id="fldname" class="b-input__text" name="name" type="text"  placeholder="<?=$fld_txt?>" />
    </div>
  </td><td class="b-search__button">
- <a class="b-button b-button_flat b-button_flat_grey b-button_margleft_5" href="#" onclick="$('crfrm').submit(); return false;" >Создать</a>
+ <a class="b-button b-button_flat b-button_flat_grey b-button_margleft_5" href="#" onclick="$('crfrm').submit(); return false;" >РЎРѕР·РґР°С‚СЊ</a>
  </td></tr></table>
 </div>
           
           
           <!--
           <input type="text" maxlength="63" id="fldname" name="name" value="<?=$fld_txt?>" style="width: 135px;" onblur="if(this.value=='') this.value='<?=$fld_txt?>';" onfocus="if(this.value=='<?=$fld_txt?>') this.value='';" />
-          <input type="submit" class="btn" value="Создать" style="vertical-align: middle;" />
+          <input type="submit" class="btn" value="РЎРѕР·РґР°С‚СЊ" style="vertical-align: middle;" />
           -->
           <input type="hidden" name="action" value="addfolder" />
         </div>
@@ -271,16 +271,16 @@ if($contacts) {
     <ul>
       <li class="last">
         <? if (!$pm_folder && $cur_folder == 0) { ?>
-        <img class="li" src="/images/ico_dir_nd.gif" />Все
+        <img class="li" src="/images/ico_dir_nd.gif" />Р’СЃРµ
         <? } else { ?>
-        <a href="/contacts/"><img class="li" src="/images/ico_dir_nd.gif" alt="" /></a><a href="/contacts/" class="blue">Все</a>
+        <a href="/contacts/"><img class="li" src="/images/ico_dir_nd.gif" alt="" /></a><a href="/contacts/" class="blue">Р’СЃРµ</a>
         <? } ?>
       </li>
       <li class="last">
         <? if ($cur_folder == -7) { ?>
-        <img class="li" src="/images/icon_unread.gif" alt="" />Непрочитанные
+        <img class="li" src="/images/icon_unread.gif" alt="" />РќРµРїСЂРѕС‡РёС‚Р°РЅРЅС‹Рµ
         <? } else { ?>
-        <a href="/contacts/unread/"><img class="li" src="/images/icon_unread.gif" alt="" /></a><a href="/contacts/unread/" class="blue">Непрочитанные</a>
+        <a href="/contacts/unread/"><img class="li" src="/images/icon_unread.gif" alt="" /></a><a href="/contacts/unread/" class="blue">РќРµРїСЂРѕС‡РёС‚Р°РЅРЅС‹Рµ</a>
         <? } ?>
       </li>
     </ul>
@@ -292,7 +292,7 @@ if($contacts) {
   <ul class="custom">
   <? foreach ($folders as $ikey => $folder) { ?>
   <li id="li_folder<?=$folder['id']?>" <? if ($ikey+1 == $folder_count) { ?>class="last"<? } ?>><? if ($cur_folder == $folder['id']) { ?><img class="li" src="/images/ico_dir.gif" /><?=$folder['fname']?><? } else { ?><a href="/contacts/?folder=<?=$folder['id']?>"><img class="li" src="/images/ico_dir.gif" /></a><a href="/contacts/?folder=<?=$folder['id']?>" class="blue"><span id="fldname<?=$folder['id']?>"><?=reformat($folder['fname'], 15, 0, 1)?></span></a><? } ?> (<span id="fldcount<?=$folder['id']?>"><?=$folder['users_count']?></span>)
-  <div align="right"><a href="/contacts/?action=delfolder&id=<?=$folder['id']?>" onClick="return warning(9)" title="Удалится только папка. Контакты переместятся в&nbsp;папку &laquo;Все&raquo;.">Удалить</a> | <a href='javascript: rename("<?=$folder['id']?>","<?=$cur_folder?>", "<?=str_replace(array("\\", "&quot;", "&#039;"), array("\\\\", "\\&quot;", "\\&#039;"), $folder['fname']);?>","<?=$folder['users_count']?>","<?=$mess_logins?>");'>Переименовать</a></div></li>
+  <div align="right"><a href="/contacts/?action=delfolder&id=<?=$folder['id']?>" onClick="return warning(9)" title="РЈРґР°Р»РёС‚СЃСЏ С‚РѕР»СЊРєРѕ РїР°РїРєР°. РљРѕРЅС‚Р°РєС‚С‹ РїРµСЂРµРјРµСЃС‚СЏС‚СЃСЏ РІ&nbsp;РїР°РїРєСѓ &laquo;Р’СЃРµ&raquo;.">РЈРґР°Р»РёС‚СЊ</a> | <a href='javascript: rename("<?=$folder['id']?>","<?=$cur_folder?>", "<?=str_replace(array("\\", "&quot;", "&#039;"), array("\\\\", "\\&quot;", "\\&#039;"), $folder['fname']);?>","<?=$folder['users_count']?>","<?=$mess_logins?>");'>РџРµСЂРµРёРјРµРЅРѕРІР°С‚СЊ</a></div></li>
   <? } ?>
   </ul>
   <? 
@@ -312,7 +312,7 @@ if($contacts) {
         (<span id="fldcount<?=$folder['id']?>">
         <?=$folder['users_count']?>
         </span>)
-        <div style="margin-top: 7px; text-align:right"><a href="/contacts/?action=delfolder&id=<?=$folder['id']?>&token_key=<?=$_SESSION['rand']?>" onClick="return warning(9)" title="Удалится только папка. Контакты переместятся в&nbsp;папку &laquo;Все&raquo;.">Удалить</a> | <a href='javascript: rename("<?=$folder['id']?>","<?=$cur_folder?>", "<?=str_replace("\\", "\\\\", htmlspecialchars($folder['fname']));?>","<?=$folder['users_count']?>","<?=$mess_logins?>");'>Переименовать</a></div>
+        <div style="margin-top: 7px; text-align:right"><a href="/contacts/?action=delfolder&id=<?=$folder['id']?>&token_key=<?=$_SESSION['rand']?>" onClick="return warning(9)" title="РЈРґР°Р»РёС‚СЃСЏ С‚РѕР»СЊРєРѕ РїР°РїРєР°. РљРѕРЅС‚Р°РєС‚С‹ РїРµСЂРµРјРµСЃС‚СЏС‚СЃСЏ РІ&nbsp;РїР°РїРєСѓ &laquo;Р’СЃРµ&raquo;.">РЈРґР°Р»РёС‚СЊ</a> | <a href='javascript: rename("<?=$folder['id']?>","<?=$cur_folder?>", "<?=str_replace("\\", "\\\\", htmlspecialchars($folder['fname']));?>","<?=$folder['users_count']?>","<?=$mess_logins?>");'>РџРµСЂРµРёРјРµРЅРѕРІР°С‚СЊ</a></div>
         <div style="clear:both;"></div>
       </li>
       <?php } ?>
@@ -323,23 +323,23 @@ if($contacts) {
     <ul>
       <li>
         <? if ($cur_folder == -1) { ?>
-        <img class="li" src="/images/ico_dir_nd.gif" alt="" />Избранные
+        <img class="li" src="/images/ico_dir_nd.gif" alt="" />РР·Р±СЂР°РЅРЅС‹Рµ
         <? } else { ?>
-        <a href="/contacts/team/"><img class="li" src="/images/ico_dir_nd.gif" alt="" /></a><a href="/contacts/team/" class="blue">Избранные</a>
+        <a href="/contacts/team/"><img class="li" src="/images/ico_dir_nd.gif" alt="" /></a><a href="/contacts/team/" class="blue">РР·Р±СЂР°РЅРЅС‹Рµ</a>
         <? } ?>
       </li>
       <li>
         <? if ($cur_folder == -2) { ?>
-        <img class="li" src="/images/ico_dir_nd.gif" alt="" />Игнорирую
+        <img class="li" src="/images/ico_dir_nd.gif" alt="" />РРіРЅРѕСЂРёСЂСѓСЋ
         <? } else { ?>
-        <a href="/contacts/ignor/"><img class="li" src="/images/ico_dir_nd.gif" alt="" /></a><a href="/contacts/ignor/" class="blue">Игнорирую</a>
+        <a href="/contacts/ignor/"><img class="li" src="/images/ico_dir_nd.gif" alt="" /></a><a href="/contacts/ignor/" class="blue">РРіРЅРѕСЂРёСЂСѓСЋ</a>
         <? } ?>
       </li>
       <li class="last">
         <? if ($cur_folder == -6) { ?>
-        <img class="li" src="/images/ico_dir_gr.gif" alt="" />Платные рассылки
+        <img class="li" src="/images/ico_dir_gr.gif" alt="" />РџР»Р°С‚РЅС‹Рµ СЂР°СЃСЃС‹Р»РєРё
         <? } else { ?>
-        <a href="/contacts/mass/"><img class="li" src="/images/ico_dir_gr.gif" alt="" /></a><a href="/contacts/mass/" class="blue">Платные рассылки</a>
+        <a href="/contacts/mass/"><img class="li" src="/images/ico_dir_gr.gif" alt="" /></a><a href="/contacts/mass/" class="blue">РџР»Р°С‚РЅС‹Рµ СЂР°СЃСЃС‹Р»РєРё</a>
         <? } ?>
       </li>
     </ul>
@@ -347,18 +347,18 @@ if($contacts) {
       <li class="last">
         <? if ($cur_folder == -4 || $cur_folder==-5) { ?>
         <div style="float:left; margin:2px 0px 30px 0px;"><img class="li" src="/images/ico_dir_notes.gif" alt="" /></div>
-        Смотреть всех пользователей с моими заметками
+        РЎРјРѕС‚СЂРµС‚СЊ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ РјРѕРёРјРё Р·Р°РјРµС‚РєР°РјРё
         <? } else { ?>
         <a href="/contacts/notes/">
         <div style="float:left; margin:2px 0px 30px 0px;"><img class="li" src="/images/ico_dir_notes.gif" alt="" /></div>
-        </a><a href="/contacts/notes/" class="blue">Смотреть всех пользователей с моими заметками</a>
+        </a><a href="/contacts/notes/" class="blue">РЎРјРѕС‚СЂРµС‚СЊ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ РјРѕРёРјРё Р·Р°РјРµС‚РєР°РјРё</a>
         <? } ?>
       </li>
     </ul>
     
     <?/*
   <ul class="del">
-  <li><? if ($cur_folder == -3) { ?><img class="li" src="/images/ico_trash.gif" alt="" />Удаленные<? } else { ?><a href="/contacts/del/"><img class="li" src="/images/ico_trash.gif" alt="" /></a><a href="/contacts/del/" class="blue">Удаленные</a><? } ?></li>
+  <li><? if ($cur_folder == -3) { ?><img class="li" src="/images/ico_trash.gif" alt="" />РЈРґР°Р»РµРЅРЅС‹Рµ<? } else { ?><a href="/contacts/del/"><img class="li" src="/images/ico_trash.gif" alt="" /></a><a href="/contacts/del/" class="blue">РЈРґР°Р»РµРЅРЅС‹Рµ</a><? } ?></li>
   </ul>
   */?>
   </div>
@@ -369,11 +369,11 @@ if($contacts) {
     <span class="b-chat__icon b-chat__icon_main"></span>
             </div>
     </div><div 
-     class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_5 b-layout__txt_lineheight_15  b-layout__txt_valign_top">Быстрочат <span id="qchat_link_wrapper"><?php if (!(int)$_SESSION["chat"] ) {?>отключен<?} else {?>включен<?} ?></span><br /><a class="b-layout__link" href="javascript:void(0);" onclick="<?if (!(int)$_SESSION["chat"] ) {?>quickchat_on();<?} else {?>quickchat_off();<?} ?> return false;" id="qchat_swicth"><?if (!(int)$_SESSION["chat"] ) {?>Включить<?} else { ?>Отключить<?} ?></a></div>
-    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5 b-layout__txt_padbot_20">Быстрочат позволяет быстро отвечать на сообщения прямо на той странице, где вы находитесь. <a class="b-layout__link" href="https://feedback.fl.ru">Подробнее о быстрочате</a></div>
+     class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_5 b-layout__txt_lineheight_15  b-layout__txt_valign_top">Р‘С‹СЃС‚СЂРѕС‡Р°С‚ <span id="qchat_link_wrapper"><?php if (!(int)$_SESSION["chat"] ) {?>РѕС‚РєР»СЋС‡РµРЅ<?} else {?>РІРєР»СЋС‡РµРЅ<?} ?></span><br /><a class="b-layout__link" href="javascript:void(0);" onclick="<?if (!(int)$_SESSION["chat"] ) {?>quickchat_on();<?} else {?>quickchat_off();<?} ?> return false;" id="qchat_swicth"><?if (!(int)$_SESSION["chat"] ) {?>Р’РєР»СЋС‡РёС‚СЊ<?} else { ?>РћС‚РєР»СЋС‡РёС‚СЊ<?} ?></a></div>
+    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5 b-layout__txt_padbot_20">Р‘С‹СЃС‚СЂРѕС‡Р°С‚ РїРѕР·РІРѕР»СЏРµС‚ Р±С‹СЃС‚СЂРѕ РѕС‚РІРµС‡Р°С‚СЊ РЅР° СЃРѕРѕР±С‰РµРЅРёСЏ РїСЂСЏРјРѕ РЅР° С‚РѕР№ СЃС‚СЂР°РЅРёС†Рµ, РіРґРµ РІС‹ РЅР°С…РѕРґРёС‚РµСЃСЊ. <a class="b-layout__link" href="https://feedback.fl.ru">РџРѕРґСЂРѕР±РЅРµРµ Рѕ Р±С‹СЃС‚СЂРѕС‡Р°С‚Рµ</a></div>
   </div>   
   */ ?>
-  <?php /* Автоматические папки для массовых рассылок личных менеджеров */ ?>
+  <?php /* РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРёРµ РїР°РїРєРё РґР»СЏ РјР°СЃСЃРѕРІС‹С… СЂР°СЃСЃС‹Р»РѕРє Р»РёС‡РЅС‹С… РјРµРЅРµРґР¶РµСЂРѕРІ */ ?>
   <?php 
 $sUid = $_SESSION['uid'];
 if ( 
@@ -390,7 +390,7 @@ if (
         $bPrev     = ( ($nPrev = $nOffset - messages::PM_AUTOFOLDERS_PP) > 0 );
     ?>
   <div id="block-archives">
-    <h3>Ответы на платные рассылки</h3>
+    <h3>РћС‚РІРµС‚С‹ РЅР° РїР»Р°С‚РЅС‹Рµ СЂР°СЃСЃС‹Р»РєРё</h3>
     <ul class="archive-year c">
       <?php
         foreach ( $aYears as $sOne ) { 
@@ -416,13 +416,13 @@ if (
     <?php if ($nNext || $bPrev ) { ?>
     <p class="archive-prev">
       <?php if ($bPrev) { ?>
-      <a onclick="xajax_PmFolders(<?=$sUid?>, <?=$sCurrYear?>, <?=$nPrev?>);" href="javascript:void(0);" class="lnk-dot-grey">&laquo;Следующие</a>
+      <a onclick="xajax_PmFolders(<?=$sUid?>, <?=$sCurrYear?>, <?=$nPrev?>);" href="javascript:void(0);" class="lnk-dot-grey">&laquo;РЎР»РµРґСѓСЋС‰РёРµ</a>
       <?php } ?>
       <?php if ($bNext && $bPrev ) { ?>
       &nbsp;|&nbsp;
       <?php } ?>
       <?php if ($bNext) { ?>
-      <a onclick="xajax_PmFolders(<?=$sUid?>, <?=$sCurrYear?>, <?=$nNext?>);" href="javascript:void(0);" class="lnk-dot-grey">Предыдущие&raquo;</a>
+      <a onclick="xajax_PmFolders(<?=$sUid?>, <?=$sCurrYear?>, <?=$nNext?>);" href="javascript:void(0);" class="lnk-dot-grey">РџСЂРµРґС‹РґСѓС‰РёРµ&raquo;</a>
       <?php } ?>
     </p>
     <?php } ?>
@@ -433,7 +433,7 @@ function pmFolderGo( year, folder, offset ) {
 }
 
 function pmFolderDel( uid, folder, year, offset ) {
-    if ( confirm('Удалить папку?') ) {
+    if ( confirm('РЈРґР°Р»РёС‚СЊ РїР°РїРєСѓ?') ) {
         xajax_PmFolderDel(uid, folder, year, offset);
     }
 }
@@ -442,7 +442,7 @@ function pmFolderEdit( uid, folder, year, offset ) {
     var name = $('pm_fname'+folder).get('value').replace(/(^\s+)|(\s+$)/g, "");
     
     if ( name.length < 1 ) {
-        alert('Укажите название папки');
+        alert('РЈРєР°Р¶РёС‚Рµ РЅР°Р·РІР°РЅРёРµ РїР°РїРєРё');
         return false;
     }
     
@@ -453,7 +453,7 @@ function pmFolderEdit( uid, folder, year, offset ) {
     }
 }
 ?>
-  <?php /* Автоматические папки для массовых рассылок личных менеджеров */ ?>
+  <?php /* РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРёРµ РїР°РїРєРё РґР»СЏ РјР°СЃСЃРѕРІС‹С… СЂР°СЃСЃС‹Р»РѕРє Р»РёС‡РЅС‹С… РјРµРЅРµРґР¶РµСЂРѕРІ */ ?>
   <?= printBanner240(is_pro()); ?>
 </div>
 <div id="leftCol" class="b-layout__one b-layout__one_float_left b-layout__one_width_72ps b-layout__one_width_full_ipad">
@@ -481,7 +481,7 @@ function pmFolderEdit( uid, folder, year, offset ) {
    <input id="fl2_search_input2" class="b-input__text" name="find" type="text" placeholder="<?=$tag?>" />
    </div>
  </td><td class="b-search__button">
- <a id="fl2_search_submit" class="b-button b-button_flat b-button_flat_grey b-button_margleft_5" href="#"  onclick="if(document.getElementById('fl2_search_input2').value.length > 3) $('srfrm').submit(); return false;">Найти</a>
+ <a id="fl2_search_submit" class="b-button b-button_flat b-button_flat_grey b-button_margleft_5" href="#"  onclick="if(document.getElementById('fl2_search_input2').value.length > 3) $('srfrm').submit(); return false;">РќР°Р№С‚Рё</a>
  </td></tr></table>
 </div>
     
@@ -490,11 +490,11 @@ function pmFolderEdit( uid, folder, year, offset ) {
       </form>
       <? if($cur_folder==-4 || $cur_folder==-5) { ?>
       <br/>
-      [<a href="/contacts/notes/">В сообщениях</a>]&nbsp;&nbsp;[<a href="/contacts/allnotes/">На всём сайте</a>]
+      [<a href="/contacts/notes/">Р’ СЃРѕРѕР±С‰РµРЅРёСЏС…</a>]&nbsp;&nbsp;[<a href="/contacts/allnotes/">РќР° РІСЃС‘Рј СЃР°Р№С‚Рµ</a>]
       <? } ?>
       <div class="clear"></div>
     </div>
-    <?php /* массовая рассылка */ 
+    <?php /* РјР°СЃСЃРѕРІР°СЏ СЂР°СЃСЃС‹Р»РєР° */ 
   if ( $pm_folder ) {
   ?>
     <div style="padding: 5px 15px 15px;border-bottom: 1px solid #C6C6C6;">
@@ -503,7 +503,7 @@ function pmFolderEdit( uid, folder, year, offset ) {
           <?=$_SESSION['name'].' '.$_SESSION['surname'].' ['.$_SESSION['login'].']'?>
           </strong>
           <?=date('d.m.Y', strtotime($aCurrFolder['post_date']))?>
-          в
+          РІ
           <?=date('H:i:s', strtotime($aCurrFolder['post_date']))?>
           <br />
           <br />
@@ -514,45 +514,45 @@ function pmFolderEdit( uid, folder, year, offset ) {
           <?php 
    $aCond = array();
    
-   if ( $aMassSend[0]['to_pro'] == 't' ) $aCond[] = 'Только с PRO аккаунтом';
+   if ( $aMassSend[0]['to_pro'] == 't' ) $aCond[] = 'РўРѕР»СЊРєРѕ СЃ PRO Р°РєРєР°СѓРЅС‚РѕРј';
    
             if ( $aMassSend[0]['prof_names'] && ($prof_names = explode(',', $aMassSend[0]['prof_names']))) {
                 foreach($prof_names as $name) $aCond[] = $name;
             }
             else {
-                $aCond[] = 'Общий каталог';
+                $aCond[] = 'РћР±С‰РёР№ РєР°С‚Р°Р»РѕРі';
             }
             
-            if ($aMassSend[0]['positive'] == 't') $aCond[] = 'С положительными отзывами';
+            if ($aMassSend[0]['positive'] == 't') $aCond[] = 'РЎ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹РјРё РѕС‚Р·С‹РІР°РјРё';
    
-   if ($aMassSend[0]['no_negative'] == 't') $aCond[] = 'Без отрицательных отзывов';
+   if ($aMassSend[0]['no_negative'] == 't') $aCond[] = 'Р‘РµР· РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹С… РѕС‚Р·С‹РІРѕРІ';
    
-   if ($aMassSend[0]['free'] == 't') $aCond[] = 'Только свободные';
+   if ($aMassSend[0]['free'] == 't') $aCond[] = 'РўРѕР»СЊРєРѕ СЃРІРѕР±РѕРґРЅС‹Рµ';
    
-   if ($aMassSend[0]['favorites'] == 't') $aCond[] = 'У меня в избранных';
+   if ($aMassSend[0]['favorites'] == 't') $aCond[] = 'РЈ РјРµРЅСЏ РІ РёР·Р±СЂР°РЅРЅС‹С…';
    
-   if ($aMassSend[0]['portfolio'] == 't') $aCond[] = 'Только с примерами работ';
+   if ($aMassSend[0]['portfolio'] == 't') $aCond[] = 'РўРѕР»СЊРєРѕ СЃ РїСЂРёРјРµСЂР°РјРё СЂР°Р±РѕС‚';
    
-   if ($aMassSend[0]['sbr'] == 't') $aCond[] = 'С успешными «Безопасными Сделками»';
+   if ($aMassSend[0]['sbr'] == 't') $aCond[] = 'РЎ СѓСЃРїРµС€РЅС‹РјРё В«Р‘РµР·РѕРїР°СЃРЅС‹РјРё РЎРґРµР»РєР°РјРёВ»';
    
-   if ($aMassSend[0]['office' == 't']) $aCond[] = 'Ищет работу в офисе';
+   if ($aMassSend[0]['office' == 't']) $aCond[] = 'РС‰РµС‚ СЂР°Р±РѕС‚Сѓ РІ РѕС„РёСЃРµ';
    
-   //if ($aMassSend[0]['rank']) $aCond[] = 'Фрилансер '. $aMassSend[0]['rank'] .'-го разряда';
+   //if ($aMassSend[0]['rank']) $aCond[] = 'Р¤СЂРёР»Р°РЅСЃРµСЂ '. $aMassSend[0]['rank'] .'-РіРѕ СЂР°Р·СЂСЏРґР°';
    
    if ($aMassSend[0]['exp_from'] || $aMassSend[0]['exp_to'] ) { 
-       $sExp = 'Опыт работы: ';
+       $sExp = 'РћРїС‹С‚ СЂР°Р±РѕС‚С‹: ';
        
        if ( $aMassSend[0]['exp_from'] && $aMassSend[0]['exp_to'] ) {
         $sExp .= $aMassSend[0]['exp_from'] .'-'. $aMassSend[0]['exp_to'];
        }
        elseif ( $aMassSend[0]['exp_from'] ) {
-           $sExp .= 'от '. $aMassSend[0]['exp_from'];
+           $sExp .= 'РѕС‚ '. $aMassSend[0]['exp_from'];
        }
        else {
-           $sExp .= 'до '. $aMassSend[0]['exp_to'];
+           $sExp .= 'РґРѕ '. $aMassSend[0]['exp_to'];
        }
        
-       $sExp   .= ' лет';
+       $sExp   .= ' Р»РµС‚';
        $aCond[] = $sExp;
     }
     
@@ -564,7 +564,7 @@ function pmFolderEdit( uid, folder, year, offset ) {
       </div>
     </div>
     <?php }
-    /* массовая рассылка */ ?>
+    /* РјР°СЃСЃРѕРІР°СЏ СЂР°СЃСЃС‹Р»РєР° */ ?>
     
     <!-- WARNING -->
     <? include($_SERVER['DOCUMENT_ROOT']. '/contacts/tpl.warning.php'); ?>
@@ -579,7 +579,7 @@ function pmFolderEdit( uid, folder, year, offset ) {
           <?
       if($contacts)
       {
-         //Получаем is_profi флаг пользователей
+         //РџРѕР»СѓС‡Р°РµРј is_profi С„Р»Р°Рі РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
          $ids = array();
          foreach($contacts as $contact) {
              if(is_emp($contact['role'])) {
@@ -622,52 +622,52 @@ function pmFolderEdit( uid, folder, year, offset ) {
                       ?></a>]</span><?= view_mark_user($contact);?>
                     </div>
                     <?php /*if(is_emp() && !is_emp($contact['role'])) {?>
-                    <a href="/sbr/?site=create&fid=<?=$contact['uid']?>" class="b-button b-button_flat b-button_flat_grey b-button_float_right">Начать «Безопасную Сделку»</a>
+                    <a href="/sbr/?site=create&fid=<?=$contact['uid']?>" class="b-button b-button_flat b-button_flat_grey b-button_float_right">РќР°С‡Р°С‚СЊ В«Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓВ»</a>
                     <?php }//if */?>
-                    <?=($contact['is_banned']==1 ? "<br /><span style='color: #FF500B;'><strong>Пользователь&nbsp;заблокирован</strong></span>" : "")?>
+                    <?=($contact['is_banned']==1 ? "<br /><span style='color: #FF500B;'><strong>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ&nbsp;Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ</strong></span>" : "")?>
                     <br />
                     <? if($cur_folder!=-5) { ?>
-                    <div class="b-layout__txt b-layout__txt_padtb_5" style="clear:right"><a href="/contacts/?from=<?=$contact['login']?>" class="b-layout__link">Сообщений</a> (<?=($contact['msg_count'])?>)</div>
+                    <div class="b-layout__txt b-layout__txt_padtb_5" style="clear:right"><a href="/contacts/?from=<?=$contact['login']?>" class="b-layout__link">РЎРѕРѕР±С‰РµРЅРёР№</a> (<?=($contact['msg_count'])?>)</div>
                     <div class="folders">
                       <?
-                     $ihim = $contact['my_last_post']; // Когда я ему последний раз писал.
-                     $heme = $contact['his_last_post']; // Когда он мне последний раз писал.
-                     $i_am_last = 0; // 1, если последний раз писал я.
+                     $ihim = $contact['my_last_post']; // РљРѕРіРґР° СЏ РµРјСѓ РїРѕСЃР»РµРґРЅРёР№ СЂР°Р· РїРёСЃР°Р».
+                     $heme = $contact['his_last_post']; // РљРѕРіРґР° РѕРЅ РјРЅРµ РїРѕСЃР»РµРґРЅРёР№ СЂР°Р· РїРёСЃР°Р».
+                     $i_am_last = 0; // 1, РµСЃР»Рё РїРѕСЃР»РµРґРЅРёР№ СЂР°Р· РїРёСЃР°Р» СЏ.
                      if ($heme && (!$contact['i_last_read'] || strtotime($heme) > strtotime($contact['i_last_read']))) {
                        ?>
-                      <span class="newmess"><a href="/contacts/?from=<?=$contact['login']?>"><img class="i_newmess" src="/images/ico_newmail.gif" alt="" width="11" height="9" style="border:0;" /></a> <a href="/contacts/?from=<?=$contact['login']?>" class="white">Новые сообщения</a></span>
+                      <span class="newmess"><a href="/contacts/?from=<?=$contact['login']?>"><img class="i_newmess" src="/images/ico_newmail.gif" alt="" width="11" height="9" style="border:0;" /></a> <a href="/contacts/?from=<?=$contact['login']?>" class="white">РќРѕРІС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ</a></span>
                       <? }
                      else
                      {
-                       if($heme) { // Он мне писал.
-                         if($ihim) { // Я ему тоже писал.
-                           if(strtotimeEx($heme) > strtotimeEx($ihim)) { // Последний раз писал он. Я прочел, так как это не новое сообщение.
+                       if($heme) { // РћРЅ РјРЅРµ РїРёСЃР°Р».
+                         if($ihim) { // РЇ РµРјСѓ С‚РѕР¶Рµ РїРёСЃР°Р».
+                           if(strtotimeEx($heme) > strtotimeEx($ihim)) { // РџРѕСЃР»РµРґРЅРёР№ СЂР°Р· РїРёСЃР°Р» РѕРЅ. РЇ РїСЂРѕС‡РµР», С‚Р°Рє РєР°Рє СЌС‚Рѕ РЅРµ РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ.
                              ?>
-                      Вы предпочли промолчать<br />
+                      Р’С‹ РїСЂРµРґРїРѕС‡Р»Рё РїСЂРѕРјРѕР»С‡Р°С‚СЊ<br />
                       <?
                            }
-                           else // Последний раз писал я.
+                           else // РџРѕСЃР»РµРґРЅРёР№ СЂР°Р· РїРёСЃР°Р» СЏ.
                              $i_am_last = 1;
                          }
-                         else { // Я ему никогда не писал.
+                         else { // РЇ РµРјСѓ РЅРёРєРѕРіРґР° РЅРµ РїРёСЃР°Р».
                            ?>
-                      Вы не ответили
+                      Р’С‹ РЅРµ РѕС‚РІРµС‚РёР»Рё
                       <?
                          }
                        }
-                       else // Он никогда мне не писал, а я писал.
+                       else // РћРЅ РЅРёРєРѕРіРґР° РјРЅРµ РЅРµ РїРёСЃР°Р», Р° СЏ РїРёСЃР°Р».
                          $i_am_last = 1;
 
                        if($i_am_last) {
-                         if(strtotimeEx($contact['he_last_read']) > strtotimeEx($ihim)) { // Он читал сообщения после того как я ему написал. То есть, он прочел.
+                         if(strtotimeEx($contact['he_last_read']) > strtotimeEx($ihim)) { // РћРЅ С‡РёС‚Р°Р» СЃРѕРѕР±С‰РµРЅРёСЏ РїРѕСЃР»Рµ С‚РѕРіРѕ РєР°Рє СЏ РµРјСѓ РЅР°РїРёСЃР°Р». РўРѕ РµСЃС‚СЊ, РѕРЅ РїСЂРѕС‡РµР».
                            ?>
-                      <img src="/images/ico_envelop_op.gif" alt="" width="10" height="12" style="border:0;" />&nbsp;Ваше сообщение прочитано
-                      <?=date("d.m в H:i",strtotimeEx($contact['he_last_read']))?>
+                      <img src="/images/ico_envelop_op.gif" alt="" width="10" height="12" style="border:0;" />&nbsp;Р’Р°С€Рµ СЃРѕРѕР±С‰РµРЅРёРµ РїСЂРѕС‡РёС‚Р°РЅРѕ
+                      <?=date("d.m РІ H:i",strtotimeEx($contact['he_last_read']))?>
                       <?
                          }
                          else {
                            ?>
-                      Ваше сообщение не прочитано
+                      Р’Р°С€Рµ СЃРѕРѕР±С‰РµРЅРёРµ РЅРµ РїСЂРѕС‡РёС‚Р°РЅРѕ
                       <?
                          }
                        }
@@ -680,10 +680,10 @@ function pmFolderEdit( uid, folder, year, offset ) {
                         <?=reformat($folder['fname'],25,0,1)?>
                       </div>
                       <? } ?>
-                      <div id="vfolder-1<?="u".$contact['login']?>" class="<? if (($users_folders[$contact['uid']] && in_array(-1, $users_folders[$contact['uid']]))) { ?>active<? } else { ?>passive<? } ?>">Избранные</div>
-                      <div id="vfolder-2<?="u".$contact['login']?>" class="<? if ($users_folders[$contact['uid']] && in_array(-2, $users_folders[$contact['uid']])) { ?>active<? } else { ?>passive<? } ?>">Игнорирую </div>
+                      <div id="vfolder-1<?="u".$contact['login']?>" class="<? if (($users_folders[$contact['uid']] && in_array(-1, $users_folders[$contact['uid']]))) { ?>active<? } else { ?>passive<? } ?>">РР·Р±СЂР°РЅРЅС‹Рµ</div>
+                      <div id="vfolder-2<?="u".$contact['login']?>" class="<? if ($users_folders[$contact['uid']] && in_array(-2, $users_folders[$contact['uid']])) { ?>active<? } else { ?>passive<? } ?>">РРіРЅРѕСЂРёСЂСѓСЋ </div>
                       <?php if ($users_folders[$contact['uid']] && in_array(-6, $users_folders[$contact['uid']])) { ?>
-                      <div class="active delivery">Платные рассылки</div>
+                      <div class="active delivery">РџР»Р°С‚РЅС‹Рµ СЂР°СЃСЃС‹Р»РєРё</div>
                       <?php } ?>
                     </div>
                     <? if($contact['is_banned']!=1) { ?>
@@ -707,13 +707,13 @@ function pmFolderEdit( uid, folder, year, offset ) {
                         <? } ?>
                         <br />
                         <? } ?>
-                        <div onMouseOver="inner=true;" onMouseOut="inner=false;" id="folder-1<?="u".$contact['login']?>" <? if ($users_folders[$contact['uid']] && in_array(-1, $users_folders[$contact['uid']])) { ?>class="active"<? } else { ?>class="passive"<? } ?> onClick="xajax_ChFolder(-1,<?=$cur_folder?>,'<?=$contact['login']?>');">Избранные</div>
+                        <div onMouseOver="inner=true;" onMouseOut="inner=false;" id="folder-1<?="u".$contact['login']?>" <? if ($users_folders[$contact['uid']] && in_array(-1, $users_folders[$contact['uid']])) { ?>class="active"<? } else { ?>class="passive"<? } ?> onClick="xajax_ChFolder(-1,<?=$cur_folder?>,'<?=$contact['login']?>');">РР·Р±СЂР°РЅРЅС‹Рµ</div>
                         <br />
                         <? if(!in_array($u->login, $usersNotBeIgnored)) { ?>
-                        <div onMouseOver="inner=true;" onMouseOut="inner=false;" id="folder-2<?="u".$contact['login']?>" <? if ($users_folders[$contact['uid']] && in_array(-2, $users_folders[$contact['uid']])) { ?>class="active"<? } else { ?>class="passive"<? } ?> onClick="xajax_ChFolder(-2,<?=$cur_folder?>,'<?=$contact['login']?>');">Игнорирую</div>
+                        <div onMouseOver="inner=true;" onMouseOut="inner=false;" id="folder-2<?="u".$contact['login']?>" <? if ($users_folders[$contact['uid']] && in_array(-2, $users_folders[$contact['uid']])) { ?>class="active"<? } else { ?>class="passive"<? } ?> onClick="xajax_ChFolder(-2,<?=$cur_folder?>,'<?=$contact['login']?>');">РРіРЅРѕСЂРёСЂСѓСЋ</div>
                         <br />
                         <? } ?>
-                        <div onMouseOver="inner=true;" onMouseOut="inner=false;" class="blue" onClick="if (warning(3)) {document.getElementById('sel').value=<?=$contact['uid']?>;frm.action.value='delete'; frm.submit();} else return(false);">Удалить</div>
+                        <div onMouseOver="inner=true;" onMouseOut="inner=false;" class="blue" onClick="if (warning(3)) {document.getElementById('sel').value=<?=$contact['uid']?>;frm.action.value='delete'; frm.submit();} else return(false);">РЈРґР°Р»РёС‚СЊ</div>
                       </div>
                     </div>
                     <? } ?>
@@ -725,7 +725,7 @@ function pmFolderEdit( uid, folder, year, offset ) {
             <? $name=$contact['login']; $t_role = $contact['role']; include ("../user/note.php") ?>
           </tr>
           <? } // foreach($contacts as $contact)
-  // Страницы 
+  // РЎС‚СЂР°РЅРёС†С‹ 
  $pages = ceil($count / $blogspp);
     if ($pages > 1){ ?>
           <tr>
@@ -738,18 +738,18 @@ function pmFolderEdit( uid, folder, year, offset ) {
                 $url_pager = '%s?page=%d%s';
             }*/
             
-            // В постраничности используется sprintf, поэтому недопустимы символы процента,
-            // Их тут обычно и не должно быть
+            // Р’ РїРѕСЃС‚СЂР°РЅРёС‡РЅРѕСЃС‚Рё РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ sprintf, РїРѕСЌС‚РѕРјСѓ РЅРµРґРѕРїСѓСЃС‚РёРјС‹ СЃРёРјРІРѕР»С‹ РїСЂРѕС†РµРЅС‚Р°,
+            // РС… С‚СѓС‚ РѕР±С‹С‡РЅРѕ Рё РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ
             $uri = str_replace('%', '', $sHref);
             $url_pager = '%s'.e_url( 'page', '', $uri ).'%d%s';
             echo new_paginator($page, $pages, 4, $url_pager);
             //echo get_pager2($pages,$page,$url_pager);
             ?></td>
           </tr>
-          <? } // Страницы закончились
+          <? } // РЎС‚СЂР°РЅРёС†С‹ Р·Р°РєРѕРЅС‡РёР»РёСЃСЊ
    } else { ?>
           <tr class="qpr">
-            <td style="text-align:center" colspan="2"> Ничего не найдено </td>
+            <td style="text-align:center" colspan="2"> РќРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ </td>
           </tr>
           <? } ?>
         </table>

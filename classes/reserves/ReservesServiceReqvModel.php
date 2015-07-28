@@ -15,7 +15,7 @@ class ReservesServiceReqvModel extends BaseModel
     }
     
     /**
-     * Сохраняет слепок реквизитов заказчика, если они не были сохранены ранее 
+     * РЎРѕС…СЂР°РЅСЏРµС‚ СЃР»РµРїРѕРє СЂРµРєРІРёР·РёС‚РѕРІ Р·Р°РєР°Р·С‡РёРєР°, РµСЃР»Рё РѕРЅРё РЅРµ Р±С‹Р»Рё СЃРѕС…СЂР°РЅРµРЅС‹ СЂР°РЅРµРµ 
      * @return boolean
      */
     public function captureEmpReqv($emp_id)
@@ -48,7 +48,7 @@ class ReservesServiceReqvModel extends BaseModel
     }
     
     /**
-     * Возвращает реквизиты заказчика из слепков
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЂРµРєРІРёР·РёС‚С‹ Р·Р°РєР°Р·С‡РёРєР° РёР· СЃР»РµРїРєРѕРІ
      * @return type
      */
     public function getReqv($emp_id = 0)

@@ -1,7 +1,7 @@
 <?php
 
 /**
-* Шаблон окошка редактирования бюджета и сроков заказа ТУ c учетом возможности выбрать тип оплаты
+* РЁР°Р±Р»РѕРЅ РѕРєРѕС€РєР° СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ Р±СЋРґР¶РµС‚Р° Рё СЃСЂРѕРєРѕРІ Р·Р°РєР°Р·Р° РўРЈ c СѓС‡РµС‚РѕРј РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РІС‹Р±СЂР°С‚СЊ С‚РёРї РѕРїР»Р°С‚С‹
 */
 
 $is_show = __paramInit('bool','tu_edit_budjet','tu_edit_budjet',false);
@@ -15,14 +15,14 @@ if ($is_paytype) {
 ?>
 <div id="tu_edit_budjet" class="b-shadow<?php if(!$is_show): ?> b-shadow_hide<?php endif; ?> b-shadow_pad_20 b-shadow_center b-shadow_width_500 b-shadow_zindex_4">
     <h2 class="b-layout__txt b-layout__txt_fontsize_18">
-        Изменение заказа
+        РР·РјРµРЅРµРЅРёРµ Р·Р°РєР°Р·Р°
     </h2>
-    <div class="b-layout__txt b-layout__txt_padbot_20">Заказ "<span class="b-layout__bold"><?= $title ?></span>"</div>
+    <div class="b-layout__txt b-layout__txt_padbot_20">Р—Р°РєР°Р· "<span class="b-layout__bold"><?= $title ?></span>"</div>
     <table class="b-layout__table b-layout__table_width_full">
         <tr class="b-layout__tr">
             <td class="b-layout__td b-layout__td_width_70 b-layout__td_padbot_10">
                 <div class="b-layout__txt b-layout__txt_padtop_5">
-                    Бюджет
+                    Р‘СЋРґР¶РµС‚
                 </div>
             </td>
             <td class="b-layout__td b-layout__td_width_100 b-layout__td_padbot_10">
@@ -34,19 +34,19 @@ if ($is_paytype) {
             </td>
             <td class="b-layout__td b-layout__td_padbot_10 b-layout__td_padleft_10">
                 <div class="b-layout__txt b-layout__txt_padtop_5">
-                    руб.
+                    СЂСѓР±.
                 </div>
             </td>
             <td class="b-layout__td">
                 <div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_fontsize_11">
-                    Не менее 300 руб.
+                    РќРµ РјРµРЅРµРµ 300 СЂСѓР±.
                 </div>
             </td>
         </tr>
         <tr class="b-layout__tr">
             <td class="b-layout__td b-layout__td_width_70 b-layout__td_padbot_10">
                 <div class="b-layout__txt b-layout__txt_padtop_5">
-                    Срок
+                    РЎСЂРѕРє
                 </div>
             </td>
             <td class="b-layout__td b-layout__td_width_100 b-layout__td_padbot_10">
@@ -58,12 +58,12 @@ if ($is_paytype) {
             </td>
             <td class="b-layout__td b-layout__td_padbot_10 b-layout__td_padleft_10">
                 <div class="b-layout__txt b-layout__txt_padtop_5">
-                    дн.
+                    РґРЅ.
                 </div>
             </td>
             <td class="b-layout__td">
                 <div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_fontsize_11">
-                    Не менее 1 дня.
+                    РќРµ РјРµРЅРµРµ 1 РґРЅСЏ.
                 </div>
             </td>
         </tr>
@@ -73,19 +73,19 @@ if ($is_paytype) {
                     <div class="b-radio__item b-radio__item_padbot_10">
                         <input tabindex="3"<?php if($order['pay_type'] == TServiceOrderModel::PAYTYPE_RESERVE): ?> checked="checked"<?php endif; ?> type="radio" value="1" name="paytype" class="b-radio__input" id="paytype1"/>
                         <label for="paytype1" class="b-radio__label b-radio__label_bold b-radio__label_fontsize_13 b-radio__label_margtop_-1">
-                            Безопасная сделка (с резервированием бюджета) &#160;<a class="b-layout__link" href="/promo/bezopasnaya-sdelka/" target="_blank"><span class="b-shadow__icon b-shadow__icon_quest2 b-icon_top_2"></span></a>
+                            Р‘РµР·РѕРїР°СЃРЅР°СЏ СЃРґРµР»РєР° (СЃ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРµРј Р±СЋРґР¶РµС‚Р°) &#160;<a class="b-layout__link" href="/promo/bezopasnaya-sdelka/" target="_blank"><span class="b-shadow__icon b-shadow__icon_quest2 b-icon_top_2"></span></a>
                         </label>
                         <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_20">
-                            Безопасное сотрудничество с гарантией возврата средств. Вы резервируете бюджет заказа на сайте FL.ru - а мы гарантируем вам возврат суммы, если работа будет выполнена Исполнителем некачественно или не в срок.
+                            Р‘РµР·РѕРїР°СЃРЅРѕРµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ СЃ РіР°СЂР°РЅС‚РёРµР№ РІРѕР·РІСЂР°С‚Р° СЃСЂРµРґСЃС‚РІ. Р’С‹ СЂРµР·РµСЂРІРёСЂСѓРµС‚Рµ Р±СЋРґР¶РµС‚ Р·Р°РєР°Р·Р° РЅР° СЃР°Р№С‚Рµ FL.ru - Р° РјС‹ РіР°СЂР°РЅС‚РёСЂСѓРµРј РІР°Рј РІРѕР·РІСЂР°С‚ СЃСѓРјРјС‹, РµСЃР»Рё СЂР°Р±РѕС‚Р° Р±СѓРґРµС‚ РІС‹РїРѕР»РЅРµРЅР° РСЃРїРѕР»РЅРёС‚РµР»РµРј РЅРµРєР°С‡РµСЃС‚РІРµРЅРЅРѕ РёР»Рё РЅРµ РІ СЃСЂРѕРє.
                         </div>
                     </div>
                     <div class="b-radio__item b-radio__item_padbot_20">
                         <input tabindex="4"<?php if($order['pay_type'] == TServiceOrderModel::PAYTYPE_DEFAULT): ?> checked="checked"<?php endif; ?> type="radio" value="0" name="paytype" class="b-radio__input" id="paytype0">
                         <label for="paytype0" class="b-radio__label b-radio__label_bold b-radio__label_fontsize_13 b-radio__label_margtop_-1">
-                            Прямая оплата Исполнителю на его кошелек/счет
+                            РџСЂСЏРјР°СЏ РѕРїР»Р°С‚Р° РСЃРїРѕР»РЅРёС‚РµР»СЋ РЅР° РµРіРѕ РєРѕС€РµР»РµРє/СЃС‡РµС‚
                         </label>
                         <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_20">
-                            Сотрудничество без участия сайта в процессе оплаты. Вы сами договариваетесь с Исполнителем о способе и порядке оплаты. И самостоятельно регулируете все претензии, связанные с качеством и сроками выполнения работы.
+                            РЎРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ Р±РµР· СѓС‡Р°СЃС‚РёСЏ СЃР°Р№С‚Р° РІ РїСЂРѕС†РµСЃСЃРµ РѕРїР»Р°С‚С‹. Р’С‹ СЃР°РјРё РґРѕРіРѕРІР°СЂРёРІР°РµС‚РµСЃСЊ СЃ РСЃРїРѕР»РЅРёС‚РµР»РµРј Рѕ СЃРїРѕСЃРѕР±Рµ Рё РїРѕСЂСЏРґРєРµ РѕРїР»Р°С‚С‹. Р СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ СЂРµРіСѓР»РёСЂСѓРµС‚Рµ РІСЃРµ РїСЂРµС‚РµРЅР·РёРё, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ РєР°С‡РµСЃС‚РІРѕРј Рё СЃСЂРѕРєР°РјРё РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹.
                         </div>
                     </div>
                 </div>
@@ -96,12 +96,12 @@ if ($is_paytype) {
         <a class="b-button b-button_flat b-button_flat_green" 
            onclick="yaCounter6051055.reachGoal('zakaz_change_ok');TServices_Order.changePriceAndDays(<?= $order['id'] ?>);" 
            href="javascript:void(0);">
-            Сохранить
+            РЎРѕС…СЂР°РЅРёС‚СЊ
         </a>
         &#160;&#160;
-        <span class="b-buttons__txt">или 
+        <span class="b-buttons__txt">РёР»Рё 
             <a data-popup-ok="true" class="b-layout__link b-layout__link_bordbot_dot_ee1d16" href="javascript:void(0);">
-                закрыть без изменений
+                Р·Р°РєСЂС‹С‚СЊ Р±РµР· РёР·РјРµРЅРµРЅРёР№
             </a>
         </span>
     </div>

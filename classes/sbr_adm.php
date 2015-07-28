@@ -4,179 +4,179 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/classes/sbr.php';
 
 
 /**
- * Класс для работы с СБР со стороны админа.
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РЎР‘Р  СЃРѕ СЃС‚РѕСЂРѕРЅС‹ Р°РґРјРёРЅР°.
  */
 class sbr_adm extends sbr
 {
-    const PAGE_SIZE = 20; // кол-во элементов на странице админки СБР.
-    const PAGE_SA_SIZE = 20; // кол-во элементов на странице админки СБР (siteadmin).
-    const INVOICES_PAGE_SIZE = 20; // количество позиций на странице "Автозагрузка актов и с/ф"
+    const PAGE_SIZE = 20; // РєРѕР»-РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РЅР° СЃС‚СЂР°РЅРёС†Рµ Р°РґРјРёРЅРєРё РЎР‘Р .
+    const PAGE_SA_SIZE = 20; // РєРѕР»-РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РЅР° СЃС‚СЂР°РЅРёС†Рµ Р°РґРјРёРЅРєРё РЎР‘Р  (siteadmin).
+    const INVOICES_PAGE_SIZE = 20; // РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР·РёС†РёР№ РЅР° СЃС‚СЂР°РЅРёС†Рµ "РђРІС‚РѕР·Р°РіСЂСѓР·РєР° Р°РєС‚РѕРІ Рё СЃ/С„"
 
-    const STATUS_RESERVED = -2; // код псевдо-статуса "зарезервировано".
+    const STATUS_RESERVED = -2; // РєРѕРґ РїСЃРµРІРґРѕ-СЃС‚Р°С‚СѓСЃР° "Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРѕ".
 
     /**
-     * Параметры колонок таблиц админки.
+     * РџР°СЂР°РјРµС‚СЂС‹ РєРѕР»РѕРЅРѕРє С‚Р°Р±Р»РёС† Р°РґРјРёРЅРєРё.
      * @var array
      */
     public $form_cols = array (
         'refunds' => array (
-            array('№ дог.', 's.id'),
-            array('Заказчик', array('ASC'=>'login', 'DESC'=>'login DESC')),
-            array('Проект', array('ASC' => 's.name', 'DESC' => 's.name DESC')),
-            array('Бюджет', array('ASC' => 's.cost', 'DESC' => 's.cost DESC')),
-            array('Действие/выполнен', array('ASC'=>"COALESCE(pp.is_refund, 'epoch')", 'DESC'=>"COALESCE(pp.is_refund, 'epoch') DESC"))
+            array('в„– РґРѕРі.', 's.id'),
+            array('Р—Р°РєР°Р·С‡РёРє', array('ASC'=>'login', 'DESC'=>'login DESC')),
+            array('РџСЂРѕРµРєС‚', array('ASC' => 's.name', 'DESC' => 's.name DESC')),
+            array('Р‘СЋРґР¶РµС‚', array('ASC' => 's.cost', 'DESC' => 's.cost DESC')),
+            array('Р”РµР№СЃС‚РІРёРµ/РІС‹РїРѕР»РЅРµРЅ', array('ASC'=>"COALESCE(pp.is_refund, 'epoch')", 'DESC'=>"COALESCE(pp.is_refund, 'epoch') DESC"))
         ),
         'all' => array (
-            array('Начало', "COALESCE(ss.start_time, 'epoch')"),
-            array('№ дог.', 's.id'),
-            array('Проект', 'ss.id'),
-            array('Бюджет', 'ss.cost', 2),
-            array('Срок',   "COALESCE(ss.start_time, 'epoch') + ss.work_time"),
-            array('Статус', 'ss.status')
+            array('РќР°С‡Р°Р»Рѕ', "COALESCE(ss.start_time, 'epoch')"),
+            array('в„– РґРѕРі.', 's.id'),
+            array('РџСЂРѕРµРєС‚', 'ss.id'),
+            array('Р‘СЋРґР¶РµС‚', 'ss.cost', 2),
+            array('РЎСЂРѕРє',   "COALESCE(ss.start_time, 'epoch') + ss.work_time"),
+            array('РЎС‚Р°С‚СѓСЃ', 'ss.status')
         ),
         'payouts' => array (
-            array('Дата заявки', array('ASC'=>"(sp.completed IS NOT NULL), sp.requested", 'DESC'=>'(sp.completed IS NOT NULL), sp.requested DESC')),
-            array('№ дог.', array('ASC'=>"sp.sbr_id", 'DESC'=>"sp.sbr_id DESC")),
-            array('Проект',     array('ASC'=>"sp.stage_id, sp.requested", 'DESC'=>'sp.stage_id DESC, sp.requested')),
-            array('Получатель', array('ASC'=>'login', 'DESC'=>'login DESC')),
-            array('Сумма',      array('ASC'=>'sp.credit_sum', 'DESC'=>'sp.credit_sum DESC'), 2),
-            array('№ кошелька/счета',   array('ASC'=>"account_num", 'DESC'=>"account_num DESC")),
-            array('Действие/выполнен', array('ASC'=>"COALESCE(sp.completed, 'epoch'), sp.requested", 'DESC'=>"COALESCE(sp.completed, 'epoch') DESC, sp.requested"))
+            array('Р”Р°С‚Р° Р·Р°СЏРІРєРё', array('ASC'=>"(sp.completed IS NOT NULL), sp.requested", 'DESC'=>'(sp.completed IS NOT NULL), sp.requested DESC')),
+            array('в„– РґРѕРі.', array('ASC'=>"sp.sbr_id", 'DESC'=>"sp.sbr_id DESC")),
+            array('РџСЂРѕРµРєС‚',     array('ASC'=>"sp.stage_id, sp.requested", 'DESC'=>'sp.stage_id DESC, sp.requested')),
+            array('РџРѕР»СѓС‡Р°С‚РµР»СЊ', array('ASC'=>'login', 'DESC'=>'login DESC')),
+            array('РЎСѓРјРјР°',      array('ASC'=>'sp.credit_sum', 'DESC'=>'sp.credit_sum DESC'), 2),
+            array('в„– РєРѕС€РµР»СЊРєР°/СЃС‡РµС‚Р°',   array('ASC'=>"account_num", 'DESC'=>"account_num DESC")),
+            array('Р”РµР№СЃС‚РІРёРµ/РІС‹РїРѕР»РЅРµРЅ', array('ASC'=>"COALESCE(sp.completed, 'epoch'), sp.requested", 'DESC'=>"COALESCE(sp.completed, 'epoch') DESC, sp.requested"))
         ),
         'docsflow' => array (
-            array('Дате формирования акта', array('ASC'=>"act_upload_time", 'DESC'=>'act_upload_time DESC')),
-            array('Дате завершения', array('ASC'=>"ss.arch_closed_time", 'DESC'=>'ss.arch_closed_time DESC')),
-            array('Номеру «Безопасной Сделки»', array('ASC'=>"ss.sbr_id", 'DESC'=>"ss.sbr_id DESC"))
+            array('Р”Р°С‚Рµ С„РѕСЂРјРёСЂРѕРІР°РЅРёСЏ Р°РєС‚Р°', array('ASC'=>"act_upload_time", 'DESC'=>'act_upload_time DESC')),
+            array('Р”Р°С‚Рµ Р·Р°РІРµСЂС€РµРЅРёСЏ', array('ASC'=>"ss.arch_closed_time", 'DESC'=>'ss.arch_closed_time DESC')),
+            array('РќРѕРјРµСЂСѓ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ»', array('ASC'=>"ss.sbr_id", 'DESC'=>"ss.sbr_id DESC"))
         )
     );
 
     /**
-     * Параметры графиков.
+     * РџР°СЂР°РјРµС‚СЂС‹ РіСЂР°С„РёРєРѕРІ.
      * @var array
      */
     static $stat_graphs = array (
-      0 => 'Резерв заключенных',
-      1 => 'Выплачено всего по завершению',
-      2 => 'Выплачено с Арбитража в пользу фрилансеров',
-      3 => 'Выплачено с Арбитража в пользу работодателей',
-      4 => 'Комиссия с фрилансеров',
-      5 => 'Комиссия с работодателей'
+      0 => 'Р РµР·РµСЂРІ Р·Р°РєР»СЋС‡РµРЅРЅС‹С…',
+      1 => 'Р’С‹РїР»Р°С‡РµРЅРѕ РІСЃРµРіРѕ РїРѕ Р·Р°РІРµСЂС€РµРЅРёСЋ',
+      2 => 'Р’С‹РїР»Р°С‡РµРЅРѕ СЃ РђСЂР±РёС‚СЂР°Р¶Р° РІ РїРѕР»СЊР·Сѓ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ',
+      3 => 'Р’С‹РїР»Р°С‡РµРЅРѕ СЃ РђСЂР±РёС‚СЂР°Р¶Р° РІ РїРѕР»СЊР·Сѓ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№',
+      4 => 'РљРѕРјРёСЃСЃРёСЏ СЃ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ',
+      5 => 'РљРѕРјРёСЃСЃРёСЏ СЃ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№'
     );
 
     /**
-     * Параметры отчетов по приходам СБР.
+     * РџР°СЂР°РјРµС‚СЂС‹ РѕС‚С‡РµС‚РѕРІ РїРѕ РїСЂРёС…РѕРґР°Рј РЎР‘Р .
      * @var array
      */
     static $reports_ss = array
     (
         exrates::BANK => array (
-            'name'=>'Приход денежных средств на р/счет по «Безопасной Сделке»',
+            'name'=>'РџСЂРёС…РѕРґ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ РЅР° СЂ/СЃС‡РµС‚ РїРѕ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµВ»',
             'note'=>NULL,
             'columns'=>array(
-                'contract_num'=>array('№ договора', array(15,'left')), // array(название колонки, array(ширина колонки, горизонтальное выравнивание))
-                'emp_name'=>array('Наименование работодателя', array(65,'left')),
-                'sum_deal'=>array('Сумма сделки, руб.коп', array(15,'right')),
-                'sum_commision' => array('Вознаграждение, руб.коп', array(15,'right')),
-                'sum'=>array('Сумма, руб.', array(15,'right')),
-                'date'=>array('Дата', array(15,'center')),
-                'frl_name'=>array('Справочно: исполнитель', array(60,'left'))
+                'contract_num'=>array('в„– РґРѕРіРѕРІРѕСЂР°', array(15,'left')), // array(РЅР°Р·РІР°РЅРёРµ РєРѕР»РѕРЅРєРё, array(С€РёСЂРёРЅР° РєРѕР»РѕРЅРєРё, РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕРµ РІС‹СЂР°РІРЅРёРІР°РЅРёРµ))
+                'emp_name'=>array('РќР°РёРјРµРЅРѕРІР°РЅРёРµ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ', array(65,'left')),
+                'sum_deal'=>array('РЎСѓРјРјР° СЃРґРµР»РєРё, СЂСѓР±.РєРѕРї', array(15,'right')),
+                'sum_commision' => array('Р’РѕР·РЅР°РіСЂР°Р¶РґРµРЅРёРµ, СЂСѓР±.РєРѕРї', array(15,'right')),
+                'sum'=>array('РЎСѓРјРјР°, СЂСѓР±.', array(15,'right')),
+                'date'=>array('Р”Р°С‚Р°', array(15,'center')),
+                'frl_name'=>array('РЎРїСЂР°РІРѕС‡РЅРѕ: РёСЃРїРѕР»РЅРёС‚РµР»СЊ', array(60,'left'))
             )
         ),
 
         exrates::YM => array (
-            'name'=>'Приложение к отчету ООО "ПС Яндекс.Деньги" Договору № Эк.11111.01 от 03/05/2007',
+            'name'=>'РџСЂРёР»РѕР¶РµРЅРёРµ Рє РѕС‚С‡РµС‚Сѓ РћРћРћ "РџРЎ РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё" Р”РѕРіРѕРІРѕСЂСѓ в„– Р­Рє.11111.01 РѕС‚ 03/05/2007',
             'note'=>NULL,
             'columns'=>array(
-                'contract_num'=>array('№ договора', array(15,'left')),
-                'ydorder_id'=>array('Номер транзакции, ID', array(24,'left')),
-                'emp_name'=>array('Наименование работодателя', array(40,'left')),
-                'sum_deal'=>array('Сумма сделки, руб.коп', array(15,'right')),
-                'sum_commision' => array('Вознаграждение, руб.коп', array(15,'right')),
-                'sum' => array('Сумма всего, руб.коп', array(15,'right')),
-                'date'=>array('Дата', array(15,'center')),
-                'ympurse'=>array('Номер кошелька', array(25,'center')),
-                'frl_name'=>array('Справочно: исполнитель', array(40,'left'))
+                'contract_num'=>array('в„– РґРѕРіРѕРІРѕСЂР°', array(15,'left')),
+                'ydorder_id'=>array('РќРѕРјРµСЂ С‚СЂР°РЅР·Р°РєС†РёРё, ID', array(24,'left')),
+                'emp_name'=>array('РќР°РёРјРµРЅРѕРІР°РЅРёРµ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ', array(40,'left')),
+                'sum_deal'=>array('РЎСѓРјРјР° СЃРґРµР»РєРё, СЂСѓР±.РєРѕРї', array(15,'right')),
+                'sum_commision' => array('Р’РѕР·РЅР°РіСЂР°Р¶РґРµРЅРёРµ, СЂСѓР±.РєРѕРї', array(15,'right')),
+                'sum' => array('РЎСѓРјРјР° РІСЃРµРіРѕ, СЂСѓР±.РєРѕРї', array(15,'right')),
+                'date'=>array('Р”Р°С‚Р°', array(15,'center')),
+                'ympurse'=>array('РќРѕРјРµСЂ РєРѕС€РµР»СЊРєР°', array(25,'center')),
+                'frl_name'=>array('РЎРїСЂР°РІРѕС‡РЅРѕ: РёСЃРїРѕР»РЅРёС‚РµР»СЊ', array(40,'left'))
 
             )
         ),
         exrates::WMR => array (
-            'name'=>'Приложение к отчету ОАО "Консервативный Коммерческий Банк" Договору № ДМ-295 от 04.10.11',
+            'name'=>'РџСЂРёР»РѕР¶РµРЅРёРµ Рє РѕС‚С‡РµС‚Сѓ РћРђРћ "РљРѕРЅСЃРµСЂРІР°С‚РёРІРЅС‹Р№ РљРѕРјРјРµСЂС‡РµСЃРєРёР№ Р‘Р°РЅРє" Р”РѕРіРѕРІРѕСЂСѓ в„– Р”Рњ-295 РѕС‚ 04.10.11',
             'note'=>NULL,
             'columns'=>array(
-                'contract_num'=>array('№ договора', array(15,'left')),
-                'emp_name'=>array('Наименование работодателя', array(40,'left')),
+                'contract_num'=>array('в„– РґРѕРіРѕРІРѕСЂР°', array(15,'left')),
+                'emp_name'=>array('РќР°РёРјРµРЅРѕРІР°РЅРёРµ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ', array(40,'left')),
                 'wmorder_id'=>array('Order ID', array(12,'left')),
-                'wmpaymaster_id'=>array('Номер платежа(Paymaster)', array(15,'left')),
-                'wmpayment_id'=>array('Номер платежа', array(15,'left')),
+                'wmpaymaster_id'=>array('РќРѕРјРµСЂ РїР»Р°С‚РµР¶Р°(Paymaster)', array(15,'left')),
+                'wmpayment_id'=>array('РќРѕРјРµСЂ РїР»Р°С‚РµР¶Р°', array(15,'left')),
                 'wmid'=>array('WMID', array(17,'left')),
-                'sum_deal'=>array('Сумма сделки, руб.коп', array(15,'right')),
-                'sum_commision' => array('Вознаграждение, руб.коп', array(15,'right')),
-                'sum'=>array('Сумма всего, руб.', array(15,'right')),
-                'date'=>array('Дата', array(15,'center')),
-                'wmpurse'=>array('Номер кошелька', array(20,'center')),
-                'frl_name'=>array('Справочно: исполнитель', array(40,'left'))
+                'sum_deal'=>array('РЎСѓРјРјР° СЃРґРµР»РєРё, СЂСѓР±.РєРѕРї', array(15,'right')),
+                'sum_commision' => array('Р’РѕР·РЅР°РіСЂР°Р¶РґРµРЅРёРµ, СЂСѓР±.РєРѕРї', array(15,'right')),
+                'sum'=>array('РЎСѓРјРјР° РІСЃРµРіРѕ, СЂСѓР±.', array(15,'right')),
+                'date'=>array('Р”Р°С‚Р°', array(15,'center')),
+                'wmpurse'=>array('РќРѕРјРµСЂ РєРѕС€РµР»СЊРєР°', array(20,'center')),
+                'frl_name'=>array('РЎРїСЂР°РІРѕС‡РЅРѕ: РёСЃРїРѕР»РЅРёС‚РµР»СЊ', array(40,'left'))
             )
         ),
         'NDFL' => array (
-            'name'=>'Наименование организации: Общество с ограниченной отвественностью "Ваан" (ООО "Ваан")',
+            'name'=>'РќР°РёРјРµРЅРѕРІР°РЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё: РћР±С‰РµСЃС‚РІРѕ СЃ РѕРіСЂР°РЅРёС‡РµРЅРЅРѕР№ РѕС‚РІРµСЃС‚РІРµРЅРЅРѕСЃС‚СЊСЋ "Р’Р°Р°РЅ" (РћРћРћ "Р’Р°Р°РЅ")',
             'columns'=>array(
-                'num'=>array('№', array(5,'center')),
-                'fio'=>array('ФИО', array(40,'left')),
-                'profit'=>array('Доход', array(12,'right')),
-                'ndfl'=>array('НДФЛ', array(12,'right')),
-                'payout_sum'=>array('Сумма выплаты', array(15,'right')),
-                'date'=>array('Дата', array(14,'center')),
-                'contract_num'=>array('№ договора «Безопасной Сделки»', array(17,'center')),
-                'payout_sys'=>array('Оплата', array(11,'center')),
-                'inn'=>array('ИНН', array(17,'center')),
-                'address'=>array('Адрес', array(24,'left')),
-                'idcard'=>array('Паспортные данные', array(24,'left')),
-                'birthday'=>array('Дата рождения', array(14,'center')),
-                'pss'=>array('Номер ПФ', array(22,'left')),
+                'num'=>array('в„–', array(5,'center')),
+                'fio'=>array('Р¤РРћ', array(40,'left')),
+                'profit'=>array('Р”РѕС…РѕРґ', array(12,'right')),
+                'ndfl'=>array('РќР”Р¤Р›', array(12,'right')),
+                'payout_sum'=>array('РЎСѓРјРјР° РІС‹РїР»Р°С‚С‹', array(15,'right')),
+                'date'=>array('Р”Р°С‚Р°', array(14,'center')),
+                'contract_num'=>array('в„– РґРѕРіРѕРІРѕСЂР° В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ»', array(17,'center')),
+                'payout_sys'=>array('РћРїР»Р°С‚Р°', array(11,'center')),
+                'inn'=>array('РРќРќ', array(17,'center')),
+                'address'=>array('РђРґСЂРµСЃ', array(24,'left')),
+                'idcard'=>array('РџР°СЃРїРѕСЂС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ', array(24,'left')),
+                'birthday'=>array('Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ', array(14,'center')),
+                'pss'=>array('РќРѕРјРµСЂ РџР¤', array(22,'left')),
             )
         ),
         'REV' => array(
-            'name' => 'ООО "Ваан"',
+            'name' => 'РћРћРћ "Р’Р°Р°РЅ"',
             'columns' => array(
-                'num'           => array('№ п/п', array(5,'center')),
-                'contract_num'  => array('Номер «Безопасной Сделки»', array(7, 'center')),
-                'fio'           => array('ФИО (название) работодателя', array(40,'left')),
-                'sum_deal'      => array('Сумма сделки, руб.коп', array(15,'right')),
-                'sum_commision' => array('Вознаграждение ООО "Ваан", руб.коп', array(15,'right')),
-                'sum_dept'      => array('Остаток кредиторской  задолженности всего, руб.коп', array(15,'right'))
+                'num'           => array('в„– Рї/Рї', array(5,'center')),
+                'contract_num'  => array('РќРѕРјРµСЂ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ»', array(7, 'center')),
+                'fio'           => array('Р¤РРћ (РЅР°Р·РІР°РЅРёРµ) СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ', array(40,'left')),
+                'sum_deal'      => array('РЎСѓРјРјР° СЃРґРµР»РєРё, СЂСѓР±.РєРѕРї', array(15,'right')),
+                'sum_commision' => array('Р’РѕР·РЅР°РіСЂР°Р¶РґРµРЅРёРµ РћРћРћ "Р’Р°Р°РЅ", СЂСѓР±.РєРѕРї', array(15,'right')),
+                'sum_dept'      => array('РћСЃС‚Р°С‚РѕРє РєСЂРµРґРёС‚РѕСЂСЃРєРѕР№  Р·Р°РґРѕР»Р¶РµРЅРЅРѕСЃС‚Рё РІСЃРµРіРѕ, СЂСѓР±.РєРѕРї', array(15,'right'))
             )   
         ),
         'YD_REPORT' => array(
-            'name' => 'Выплаты ЯД',
+            'name' => 'Р’С‹РїР»Р°С‚С‹ РЇР”',
             'columns' => array(
-                'num'           => array('№ п/п', array(7,'center')),
-                'pdate'         => array('Дата', array(20,'left')),
-                'summ'          => array('Расход', array(15,'right')),
-                'recp'          => array('Корреспондент', array(25,'left')),
-                'descr'         => array('Назначение', array(55,'left')),
-                'type'          => array('Ч/Б', array(10,'center')),
+                'num'           => array('в„– Рї/Рї', array(7,'center')),
+                'pdate'         => array('Р”Р°С‚Р°', array(20,'left')),
+                'summ'          => array('Р Р°СЃС…РѕРґ', array(15,'right')),
+                'recp'          => array('РљРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС‚', array(25,'left')),
+                'descr'         => array('РќР°Р·РЅР°С‡РµРЅРёРµ', array(55,'left')),
+                'type'          => array('Р§/Р‘', array(10,'center')),
             )
         )
     );
     
     /**
-     * Статусы формируемых закрывающих документов
+     * РЎС‚Р°С‚СѓСЃС‹ С„РѕСЂРјРёСЂСѓРµРјС‹С… Р·Р°РєСЂС‹РІР°СЋС‰РёС… РґРѕРєСѓРјРµРЅС‚РѕРІ
      * @var array 
      */
     public static $invoice_state = array(
-        0 => 'В очереди',
-        99 => 'В обработке',
-        1 => 'Обработано',
-        2 => 'Ошибка',
+        0 => 'Р’ РѕС‡РµСЂРµРґРё',
+        99 => 'Р’ РѕР±СЂР°Р±РѕС‚РєРµ',
+        1 => 'РћР±СЂР°Р±РѕС‚Р°РЅРѕ',
+        2 => 'РћС€РёР±РєР°',
     );
 
     /**
-     * Редактировать документ по данным пользовательского запроса.
+     * Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РґРѕРєСѓРјРµРЅС‚ РїРѕ РґР°РЅРЅС‹Рј РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ Р·Р°РїСЂРѕСЃР°.
      * 
-     * @param array $request   данные запроса (гет, пост).
-     * @param array $files   массив $_FILES
+     * @param array $request   РґР°РЅРЅС‹Рµ Р·Р°РїСЂРѕСЃР° (РіРµС‚, РїРѕСЃС‚).
+     * @param array $files   РјР°СЃСЃРёРІ $_FILES
 
-     * @return boolean   успешно?
+     * @return boolean   СѓСЃРїРµС€РЅРѕ?
      */
     function editDocR($request, $files) {
         if(!($old_doc = $this->getDocs((int)$request['id']))) return false;
@@ -194,11 +194,11 @@ class sbr_adm extends sbr
     }
 
     /**
-     * Редактировать документ
+     * Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РґРѕРєСѓРјРµРЅС‚
      * 
-     * @param array $doc   новые данные по документу.
-     * @param array $old_doc   старые данные по документу.
-     * @return boolean   успешно?
+     * @param array $doc   РЅРѕРІС‹Рµ РґР°РЅРЅС‹Рµ РїРѕ РґРѕРєСѓРјРµРЅС‚Сѓ.
+     * @param array $old_doc   СЃС‚Р°СЂС‹Рµ РґР°РЅРЅС‹Рµ РїРѕ РґРѕРєСѓРјРµРЅС‚Сѓ.
+     * @return boolean   СѓСЃРїРµС€РЅРѕ?
      */
     function editDoc($doc, $old_doc) {
         $sql_data = $doc;
@@ -226,10 +226,10 @@ class sbr_adm extends sbr
     }
 
     /**
-     * Удаляет документы.
+     * РЈРґР°Р»СЏРµС‚ РґРѕРєСѓРјРµРЅС‚С‹.
      * 
-     * @param array|integer $ids   один или несколько ид. документов.
-     * @return boolean   успешно?
+     * @param array|integer $ids   РѕРґРёРЅ РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ РёРґ. РґРѕРєСѓРјРµРЅС‚РѕРІ.
+     * @return boolean   СѓСЃРїРµС€РЅРѕ?
      */
     function delDocs($ids) {
         $ids = implode(',', intarrPgSql($ids));
@@ -238,7 +238,7 @@ class sbr_adm extends sbr
     }
     
     /**
-     * Восстанавливает удаленный документ
+     * Р’РѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ СѓРґР°Р»РµРЅРЅС‹Р№ РґРѕРєСѓРјРµРЅС‚
      * 
      * @param type $ids
      * @return type
@@ -250,11 +250,11 @@ class sbr_adm extends sbr
     }
 
     /**
-     * Уснаваливает доступ просмотра документа.
+     * РЈСЃРЅР°РІР°Р»РёРІР°РµС‚ РґРѕСЃС‚СѓРї РїСЂРѕСЃРјРѕС‚СЂР° РґРѕРєСѓРјРµРЅС‚Р°.
      * 
-     * @param array|integer $ids   один или несколько ид. документов.
-     * @param integer $mode   флаг доступа (0:скрыт, 1:фрилансер, 2:работодатель, 3:всем)
-     * @return boolean   успешно?
+     * @param array|integer $ids   РѕРґРёРЅ РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ РёРґ. РґРѕРєСѓРјРµРЅС‚РѕРІ.
+     * @param integer $mode   С„Р»Р°Рі РґРѕСЃС‚СѓРїР° (0:СЃРєСЂС‹С‚, 1:С„СЂРёР»Р°РЅСЃРµСЂ, 2:СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ, 3:РІСЃРµРј)
+     * @return boolean   СѓСЃРїРµС€РЅРѕ?
      */
     function setDocAccess($ids, $mode) {
         $ids = implode(',', intarrPgSql($ids));
@@ -263,12 +263,12 @@ class sbr_adm extends sbr
     }
 
     /**
-     * Уснаваливает статус документа.
+     * РЈСЃРЅР°РІР°Р»РёРІР°РµС‚ СЃС‚Р°С‚СѓСЃ РґРѕРєСѓРјРµРЅС‚Р°.
 
      * 
-     * @param array|integer $ids   один или несколько ид. документов.
-     * @param integer $mode   статус (1:отправлен, 2:получен, 3:подписан, 4:опубликовано)
-     * @return boolean   успешно?
+     * @param array|integer $ids   РѕРґРёРЅ РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ РёРґ. РґРѕРєСѓРјРµРЅС‚РѕРІ.
+     * @param integer $mode   СЃС‚Р°С‚СѓСЃ (1:РѕС‚РїСЂР°РІР»РµРЅ, 2:РїРѕР»СѓС‡РµРЅ, 3:РїРѕРґРїРёСЃР°РЅ, 4:РѕРїСѓР±Р»РёРєРѕРІР°РЅРѕ)
+     * @return boolean   СѓСЃРїРµС€РЅРѕ?
      */
     function setDocStatus($ids, $mode) {
         $ids = implode(',', intarrPgSql($ids));
@@ -278,11 +278,11 @@ class sbr_adm extends sbr
     }
 
     /**
-     * Устанавливает статус "Документы пришли" на юзеров в определенных этапах.
+     * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ СЃС‚Р°С‚СѓСЃ "Р”РѕРєСѓРјРµРЅС‚С‹ РїСЂРёС€Р»Рё" РЅР° СЋР·РµСЂРѕРІ РІ РѕРїСЂРµРґРµР»РµРЅРЅС‹С… СЌС‚Р°РїР°С….
      *
-     * @param array $suids   массив ключей этап_юзер.
-     * @param boolean  $mode   если NULL, то развернуть противоположно, иначе жестко установить в заданное значение.
-     * @return array   данные по первой записи sbr_stages_users с флагом docs_ready -- документы на месте, можно отправлять в "Выплаты".
+     * @param array $suids   РјР°СЃСЃРёРІ РєР»СЋС‡РµР№ СЌС‚Р°Рї_СЋР·РµСЂ.
+     * @param boolean  $mode   РµСЃР»Рё NULL, С‚Рѕ СЂР°Р·РІРµСЂРЅСѓС‚СЊ РїСЂРѕС‚РёРІРѕРїРѕР»РѕР¶РЅРѕ, РёРЅР°С‡Рµ Р¶РµСЃС‚РєРѕ СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РІ Р·Р°РґР°РЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ.
+     * @return array   РґР°РЅРЅС‹Рµ РїРѕ РїРµСЂРІРѕР№ Р·Р°РїРёСЃРё sbr_stages_users СЃ С„Р»Р°РіРѕРј docs_ready -- РґРѕРєСѓРјРµРЅС‚С‹ РЅР° РјРµСЃС‚Рµ, РјРѕР¶РЅРѕ РѕС‚РїСЂР°РІР»СЏС‚СЊ РІ "Р’С‹РїР»Р°С‚С‹".
      */
     function setDocsReceived($suids, $mode = NULL) {
         if(!is_array($suids)) $suids = array($suids);
@@ -301,14 +301,14 @@ class sbr_adm extends sbr
 
 
     /**
-     * Печатает блок документа в админке (либо форму с загрузкой, либо ссылку на готовый док).
+     * РџРµС‡Р°С‚Р°РµС‚ Р±Р»РѕРє РґРѕРєСѓРјРµРЅС‚Р° РІ Р°РґРјРёРЅРєРµ (Р»РёР±Рѕ С„РѕСЂРјСѓ СЃ Р·Р°РіСЂСѓР·РєРѕР№, Р»РёР±Рѕ СЃСЃС‹Р»РєСѓ РЅР° РіРѕС‚РѕРІС‹Р№ РґРѕРє).
      *
-     * @param array $doc   документ. Если задан, то остальные параметры не нужны, выдаем ссылку.
-     * @param string $anc   якорь на блок сделки (чтоб вернуть туда после загрузки).
-     * @param integer  $stage_id   ид. этапа СБР, к которому принадлежит док.
-     * @param integer  $doc_type   тип документа.
-     * @param integer  $doc_access   доступ к документу.
-     * @param boolean  $action_access полный доступ к функциям или нет / если нет только просмотр
+     * @param array $doc   РґРѕРєСѓРјРµРЅС‚. Р•СЃР»Рё Р·Р°РґР°РЅ, С‚Рѕ РѕСЃС‚Р°Р»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ РЅРµ РЅСѓР¶РЅС‹, РІС‹РґР°РµРј СЃСЃС‹Р»РєСѓ.
+     * @param string $anc   СЏРєРѕСЂСЊ РЅР° Р±Р»РѕРє СЃРґРµР»РєРё (С‡С‚РѕР± РІРµСЂРЅСѓС‚СЊ С‚СѓРґР° РїРѕСЃР»Рµ Р·Р°РіСЂСѓР·РєРё).
+     * @param integer  $stage_id   РёРґ. СЌС‚Р°РїР° РЎР‘Р , Рє РєРѕС‚РѕСЂРѕРјСѓ РїСЂРёРЅР°РґР»РµР¶РёС‚ РґРѕРє.
+     * @param integer  $doc_type   С‚РёРї РґРѕРєСѓРјРµРЅС‚Р°.
+     * @param integer  $doc_access   РґРѕСЃС‚СѓРї Рє РґРѕРєСѓРјРµРЅС‚Сѓ.
+     * @param boolean  $action_access РїРѕР»РЅС‹Р№ РґРѕСЃС‚СѓРї Рє С„СѓРЅРєС†РёСЏРј РёР»Рё РЅРµС‚ / РµСЃР»Рё РЅРµС‚ С‚РѕР»СЊРєРѕ РїСЂРѕСЃРјРѕС‚СЂ
      * 
      * @return string
      */
@@ -317,24 +317,24 @@ class sbr_adm extends sbr
 
         $doc_nm = sbr::$docs_types[$doc_tp][2] ? sbr::$docs_types[$doc_tp][2] : sbr::$docs_types[$doc_tp][0];
         if(!$doc) {
-            $word = $doc_type==sbr::DOCS_TYPE_ACT || $doc_type==sbr::DOCS_TYPE_FACTURA ? ' Word' : ($doc_type==sbr::DOCS_TYPE_COPY_ACT || $doc_type==sbr::DOCS_TYPE_COPY_FACTURA ? ' скан' : '');
+            $word = $doc_type==sbr::DOCS_TYPE_ACT || $doc_type==sbr::DOCS_TYPE_FACTURA ? ' Word' : ($doc_type==sbr::DOCS_TYPE_COPY_ACT || $doc_type==sbr::DOCS_TYPE_COPY_FACTURA ? ' СЃРєР°РЅ' : '');
             return '<span>' . $doc_nm
                  . ($action_access ? ', <a href="javascript:;" class="lnk-dot-666" ' . 'onclick="SBR.openDocLoader(this, ' . $stage_id . ', \'' . $anc . '\', ' . $doc_type . ', ' . sbr::DOCS_STATUS_PUBL . ', ' . $doc_access . ')">':'')
-                 . ($action_access ? "загрузить {$word}</a>&nbsp;":"")
+                 . ($action_access ? "Р·Р°РіСЂСѓР·РёС‚СЊ {$word}</a>&nbsp;":"")
                  . ($action_access ? '</span>':'');
         }
         return '<a href="'.WDCPREFIX.'/'.$doc['file_path'].$doc['file_name'].'" target="_blank">'.$doc_nm.'</a> <a href="javascript:;" onclick="SBR.delDoc(this, '.$doc['sbr_id'].','.$doc['id']. ',\'' . $anc . '\');">'
-               . ($action_access ? '<img src="/images/btn-remove2.png" alt="Удалить" />':'')
+               . ($action_access ? '<img src="/images/btn-remove2.png" alt="РЈРґР°Р»РёС‚СЊ" />':'')
                . '</a>';
     }
 
     /**
 
-     * Формирует SQL-условие по фильтру, заданному в на вкладках "Все" и "В Арбитраже" в админке СБР.
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ SQL-СѓСЃР»РѕРІРёРµ РїРѕ С„РёР»СЊС‚СЂСѓ, Р·Р°РґР°РЅРЅРѕРјСѓ РІ РЅР° РІРєР»Р°РґРєР°С… "Р’СЃРµ" Рё "Р’ РђСЂР±РёС‚СЂР°Р¶Рµ" РІ Р°РґРјРёРЅРєРµ РЎР‘Р .
      * @see sbr_adm::getAll()
      *
-     * @param array $filter   фильтр по дате, этапу, бюджету и т.д.
-     * @return string   sql-текст
+     * @param array $filter   С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ, СЌС‚Р°РїСѓ, Р±СЋРґР¶РµС‚Сѓ Рё С‚.Рґ.
+     * @return string   sql-С‚РµРєСЃС‚
      */
     private function _buildAllFilter($filter) {
         global $DB;
@@ -370,12 +370,12 @@ class sbr_adm extends sbr
     }
 
     /**
-     * Формирует SQL-условие по фильтру, заданному в на вкладке "Выплаты" в админке СБР.
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ SQL-СѓСЃР»РѕРІРёРµ РїРѕ С„РёР»СЊС‚СЂСѓ, Р·Р°РґР°РЅРЅРѕРјСѓ РІ РЅР° РІРєР»Р°РґРєРµ "Р’С‹РїР»Р°С‚С‹" РІ Р°РґРјРёРЅРєРµ РЎР‘Р .
      * @see sbr_adm::getAllPayouts()
      *
 
-     * @param array $filter   фильтр по дате заявке, этапу, сумме, юзеру и т.д.
-     * @return string   sql-текст
+     * @param array $filter   С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ Р·Р°СЏРІРєРµ, СЌС‚Р°РїСѓ, СЃСѓРјРјРµ, СЋР·РµСЂСѓ Рё С‚.Рґ.
+     * @return string   sql-С‚РµРєСЃС‚
      */
     private function _buildPayoutFilter($filter) {
         if($fv = trim($filter['requested'])) {
@@ -413,35 +413,35 @@ class sbr_adm extends sbr
     
     /**
 
-     * Формирует SQL-условие по фильтру, заданному в на вкладках "В Арбитраже" в админке СБР.
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ SQL-СѓСЃР»РѕРІРёРµ РїРѕ С„РёР»СЊС‚СЂСѓ, Р·Р°РґР°РЅРЅРѕРјСѓ РІ РЅР° РІРєР»Р°РґРєР°С… "Р’ РђСЂР±РёС‚СЂР°Р¶Рµ" РІ Р°РґРјРёРЅРєРµ РЎР‘Р .
      * @see sbr_adm::getAll()
      *
      * @param array $filter
-     * @return string   sql-текст
+     * @return string   sql-С‚РµРєСЃС‚
      */
     private function _buildArbFilter($filter) {
         global $DB;
-        // номер сделки
+        // РЅРѕРјРµСЂ СЃРґРµР»РєРё
         if ($fv = (int)$filter['sbr']) {
             $where[] = "s.id = {$fv}";
         }
-        // номер этапа
+        // РЅРѕРјРµСЂ СЌС‚Р°РїР°
         //if($fv = pg_escape_string(trim($filter['stage']))) {
         if($fv = trim($filter['stage'])) {
             $fv_int = (int)($fv[0] == '#' ? substr($fv,1) : $fv);
             $fv_like = '%' . $fv . '%';
             $where[] = $DB->parse("(ss.name ILIKE ? OR ss.id = ?i)", $fv_like, $fv_int);
         }
-        // время ожидания ответа/дата окончания срока арбитража
+        // РІСЂРµРјСЏ РѕР¶РёРґР°РЅРёСЏ РѕС‚РІРµС‚Р°/РґР°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ СЃСЂРѕРєР° Р°СЂР±РёС‚СЂР°Р¶Р°
         if($fv = trim($filter['date_to_answer'])) {
             $fv = date('Y-m-d', strtotime($fv));
             $where[] = "GREATEST(add_work_days(ssa.requested, " . sbr_stages::MAX_ARBITRAGE_DAYS . "), ssa.date_to_answer)::date = '$fv'::date";
         }
-        // имя арбитра
+        // РёРјСЏ Р°СЂР±РёС‚СЂР°
         if($fv = trim($filter['arbitr_name'])) {
             $where[] = $DB->parse("ssar.name = ?", $fv);
         }
-        // срок арбитража
+        // СЃСЂРѕРє Р°СЂР±РёС‚СЂР°Р¶Р°
         if ($fv = (int)$filter['days_left']) {
             $where[] = "GREATEST(ssa.date_to_answer::date - now()::date + 1, add_work_days(ssa.requested, " . sbr_stages::MAX_ARBITRAGE_DAYS . ")::date - now()::date + 1) = $fv";
         }
@@ -453,13 +453,13 @@ class sbr_adm extends sbr
     }
 
     /**
-     * Выборка всех сделок в админке СБР.
+     * Р’С‹Р±РѕСЂРєР° РІСЃРµС… СЃРґРµР»РѕРє РІ Р°РґРјРёРЅРєРµ РЎР‘Р .
      *
-     * @param string $mode   all:взять все, arbitrage:взять все с обращение в Арбитраж.
-     * @param integer $page   номер страницы.
-     * @param string $dir   сортировка ASC|DESC
-     * @param integer $dir_col   номер колонки, по которой соритруем (см. $this->form_cols['all']).
-     * @param array $filter   фильтр по дате, этапу, бюджету и т.д.
+     * @param string $mode   all:РІР·СЏС‚СЊ РІСЃРµ, arbitrage:РІР·СЏС‚СЊ РІСЃРµ СЃ РѕР±СЂР°С‰РµРЅРёРµ РІ РђСЂР±РёС‚СЂР°Р¶.
+     * @param integer $page   РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹.
+     * @param string $dir   СЃРѕСЂС‚РёСЂРѕРІРєР° ASC|DESC
+     * @param integer $dir_col   РЅРѕРјРµСЂ РєРѕР»РѕРЅРєРё, РїРѕ РєРѕС‚РѕСЂРѕР№ СЃРѕСЂРёС‚СЂСѓРµРј (СЃРј. $this->form_cols['all']).
+     * @param array $filter   С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ, СЌС‚Р°РїСѓ, Р±СЋРґР¶РµС‚Сѓ Рё С‚.Рґ.
      * @return array
      */
     function getAll($mode = 'all', $page = 1, $dir='DESC', $dir_col=0, $filter = NULL) {
@@ -498,12 +498,12 @@ class sbr_adm extends sbr
     }
     
     /**
-     * Выборка всех сделок в админке СБР которые находятся в арбитраже.
+     * Р’С‹Р±РѕСЂРєР° РІСЃРµС… СЃРґРµР»РѕРє РІ Р°РґРјРёРЅРєРµ РЎР‘Р  РєРѕС‚РѕСЂС‹Рµ РЅР°С…РѕРґСЏС‚СЃСЏ РІ Р°СЂР±РёС‚СЂР°Р¶Рµ.
      *
-     * @param integer $page   номер страницы.
-     * @param string $dir   сортировка ASC|DESC
-     * @param integer $dir_col   номер колонки, по которой соритруем
-     * @param array $filter   фильтр
+     * @param integer $page   РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹.
+     * @param string $dir   СЃРѕСЂС‚РёСЂРѕРІРєР° ASC|DESC
+     * @param integer $dir_col   РЅРѕРјРµСЂ РєРѕР»РѕРЅРєРё, РїРѕ РєРѕС‚РѕСЂРѕР№ СЃРѕСЂРёС‚СЂСѓРµРј
+     * @param array $filter   С„РёР»СЊС‚СЂ
      * @return array
      */
     function getArb($page = 1, $dir='DESC', $dir_col=0, $filter = NULL) {
@@ -519,33 +519,33 @@ class sbr_adm extends sbr
         }
         
         $columnsOrder = array (
-            '(COALESCE(ssa.date_to_answer < now(), FALSE) OR get_work_days_count(now()::timestamp without time zone , add_work_days(ssa.requested, ' . sbr_stages::MAX_ARBITRAGE_DAYS . ')) <= 1)', // восклицательный знак (alert)
-            's.id', // номер договора
-            'ss.id', // проект
-            'ssm.post_date', // время последнего ответа
-            'GREATEST(add_work_days(ssa.requested, ' . sbr_stages::MAX_ARBITRAGE_DAYS . '), ssa.date_to_answer)', // ожидаем до
-            'ssar.name', // имя арбитра
-            'GREATEST(ssa.date_to_answer::date - now()::date + 1, add_work_days(ssa.requested, ' . sbr_stages::MAX_ARBITRAGE_DAYS . ')::date - now()::date + 1)', // срок арбитража
+            '(COALESCE(ssa.date_to_answer < now(), FALSE) OR get_work_days_count(now()::timestamp without time zone , add_work_days(ssa.requested, ' . sbr_stages::MAX_ARBITRAGE_DAYS . ')) <= 1)', // РІРѕСЃРєР»РёС†Р°С‚РµР»СЊРЅС‹Р№ Р·РЅР°Рє (alert)
+            's.id', // РЅРѕРјРµСЂ РґРѕРіРѕРІРѕСЂР°
+            'ss.id', // РїСЂРѕРµРєС‚
+            'ssm.post_date', // РІСЂРµРјСЏ РїРѕСЃР»РµРґРЅРµРіРѕ РѕС‚РІРµС‚Р°
+            'GREATEST(add_work_days(ssa.requested, ' . sbr_stages::MAX_ARBITRAGE_DAYS . '), ssa.date_to_answer)', // РѕР¶РёРґР°РµРј РґРѕ
+            'ssar.name', // РёРјСЏ Р°СЂР±РёС‚СЂР°
+            'GREATEST(ssa.date_to_answer::date - now()::date + 1, add_work_days(ssa.requested, ' . sbr_stages::MAX_ARBITRAGE_DAYS . ')::date - now()::date + 1)', // СЃСЂРѕРє Р°СЂР±РёС‚СЂР°Р¶Р°
         );
 
         $sql = "
             SELECT
                 ss.*, ss.id as stage_id, s.scheme_type, s.reserved_id, s.scheme_id, s.cost_sys, s.posted, extract(day from ss.work_time) as work_days, ss.start_time + ss.work_time as dead_time,
-                ssa.last_msg_id_users, ssa.last_msg_id_arbitr, ssa.date_to_answer, -- данные по арбитражу
-                ssm.post_date as last_msg_post_date, -- дата последнего комментария арбитра
-                ssar.name as arbitr_name, -- имя арбитра
-                --add_work_days(ssa.requested::date, " . sbr_stages::MAX_ARBITRAGE_DAYS . ") as arbitrage_overdate, -- последняя дата арбитража
-                -- наибольшее из даты до которой ждем ответ и последнего дня арбитража
+                ssa.last_msg_id_users, ssa.last_msg_id_arbitr, ssa.date_to_answer, -- РґР°РЅРЅС‹Рµ РїРѕ Р°СЂР±РёС‚СЂР°Р¶Сѓ
+                ssm.post_date as last_msg_post_date, -- РґР°С‚Р° РїРѕСЃР»РµРґРЅРµРіРѕ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ Р°СЂР±РёС‚СЂР°
+                ssar.name as arbitr_name, -- РёРјСЏ Р°СЂР±РёС‚СЂР°
+                --add_work_days(ssa.requested::date, " . sbr_stages::MAX_ARBITRAGE_DAYS . ") as arbitrage_overdate, -- РїРѕСЃР»РµРґРЅСЏСЏ РґР°С‚Р° Р°СЂР±РёС‚СЂР°Р¶Р°
+                -- РЅР°РёР±РѕР»СЊС€РµРµ РёР· РґР°С‚С‹ РґРѕ РєРѕС‚РѕСЂРѕР№ Р¶РґРµРј РѕС‚РІРµС‚ Рё РїРѕСЃР»РµРґРЅРµРіРѕ РґРЅСЏ Р°СЂР±РёС‚СЂР°Р¶Р°
                 COALESCE(ssa.date_to_answer, add_work_days(ssa.requested, " . sbr_stages::MAX_ARBITRAGE_DAYS . ")) as date_to_answer_,
-                -- TRUE если истек срок ожидания ответа или остался один день до окончания срока арбитража
+                -- TRUE РµСЃР»Рё РёСЃС‚РµРє СЃСЂРѕРє РѕР¶РёРґР°РЅРёСЏ РѕС‚РІРµС‚Р° РёР»Рё РѕСЃС‚Р°Р»СЃСЏ РѕРґРёРЅ РґРµРЅСЊ РґРѕ РѕРєРѕРЅС‡Р°РЅРёСЏ СЃСЂРѕРєР° Р°СЂР±РёС‚СЂР°Р¶Р°
                 (COALESCE(ssa.date_to_answer < now(), FALSE) OR get_work_days_count(now()::timestamp without time zone , add_work_days(ssa.requested, " . sbr_stages::MAX_ARBITRAGE_DAYS . ")) <= 1) as arbitrage_alert,
-                -- сколько календарных дней осталось до конца срока арбитража или до окончания срока ожидания ответа, берется большее
+                -- СЃРєРѕР»СЊРєРѕ РєР°Р»РµРЅРґР°СЂРЅС‹С… РґРЅРµР№ РѕСЃС‚Р°Р»РѕСЃСЊ РґРѕ РєРѕРЅС†Р° СЃСЂРѕРєР° Р°СЂР±РёС‚СЂР°Р¶Р° РёР»Рё РґРѕ РѕРєРѕРЅС‡Р°РЅРёСЏ СЃСЂРѕРєР° РѕР¶РёРґР°РЅРёСЏ РѕС‚РІРµС‚Р°, Р±РµСЂРµС‚СЃСЏ Р±РѕР»СЊС€РµРµ
                 GREATEST(ssa.date_to_answer::date - now()::date + 1, add_work_days(ssa.requested, " . sbr_stages::MAX_ARBITRAGE_DAYS . ")::date - now()::date + 1) as days_to_end
             FROM sbr s
             INNER JOIN sbr_stages ss
                 ON ss.sbr_id = s.id
             INNER JOIN sbr_stages_arbitrage ssa ON ssa.stage_id = ss.id
-            -- последний коммент от арбитра
+            -- РїРѕСЃР»РµРґРЅРёР№ РєРѕРјРјРµРЅС‚ РѕС‚ Р°СЂР±РёС‚СЂР°
             LEFT JOIN sbr_stages_msgs ssm
                 ON ssm.id = GREATEST(ssa.last_msg_id_arbitr, ssa.last_msg_id_users)
             LEFT JOIN sbr_stages_arbitrs ssar
@@ -563,9 +563,9 @@ class sbr_adm extends sbr
     }
 
     /**
-     * Выборка всех отзывов сервису в админке СБР. 
+     * Р’С‹Р±РѕСЂРєР° РІСЃРµС… РѕС‚Р·С‹РІРѕРІ СЃРµСЂРІРёСЃСѓ РІ Р°РґРјРёРЅРєРµ РЎР‘Р . 
      *
-     * @param integer $page   номер страницы.
+     * @param integer $page   РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹.
      * @return array
      */
     function getAllFeedbacks($page = 1) {
@@ -596,12 +596,12 @@ class sbr_adm extends sbr
     }
     
     /**
-     * Выборка всех выплат в админке СБР для возврата
+     * Р’С‹Р±РѕСЂРєР° РІСЃРµС… РІС‹РїР»Р°С‚ РІ Р°РґРјРёРЅРєРµ РЎР‘Р  РґР»СЏ РІРѕР·РІСЂР°С‚Р°
      *
-     * @param integer $page   номер страницы.
-     * @param string $dir   сортировка ASC|DESC
-     * @param integer $dir_col   номер колонки, по которой соритруем (см. $this->form_cols['all']).
-     * @param array $filter   фильтр по дате заявке, этапу, сумме, юзеру и т.д.
+     * @param integer $page   РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹.
+     * @param string $dir   СЃРѕСЂС‚РёСЂРѕРІРєР° ASC|DESC
+     * @param integer $dir_col   РЅРѕРјРµСЂ РєРѕР»РѕРЅРєРё, РїРѕ РєРѕС‚РѕСЂРѕР№ СЃРѕСЂРёС‚СЂСѓРµРј (СЃРј. $this->form_cols['all']).
+     * @param array $filter   С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ Р·Р°СЏРІРєРµ, СЌС‚Р°РїСѓ, СЃСѓРјРјРµ, СЋР·РµСЂСѓ Рё С‚.Рґ.
      * @return array
      */
     function getAllRefunds($page = 1, $dir='DESC', $dir_col=0, $filter=NULL) {
@@ -634,12 +634,12 @@ class sbr_adm extends sbr
     }
 
     /**
-     * Выборка всех выплат в админке СБР
+     * Р’С‹Р±РѕСЂРєР° РІСЃРµС… РІС‹РїР»Р°С‚ РІ Р°РґРјРёРЅРєРµ РЎР‘Р 
      *
-     * @param integer $page   номер страницы.
-     * @param string $dir   сортировка ASC|DESC
-     * @param integer $dir_col   номер колонки, по которой соритруем (см. $this->form_cols['all']).
-     * @param array $filter   фильтр по дате заявке, этапу, сумме, юзеру и т.д.
+     * @param integer $page   РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹.
+     * @param string $dir   СЃРѕСЂС‚РёСЂРѕРІРєР° ASC|DESC
+     * @param integer $dir_col   РЅРѕРјРµСЂ РєРѕР»РѕРЅРєРё, РїРѕ РєРѕС‚РѕСЂРѕР№ СЃРѕСЂРёС‚СЂСѓРµРј (СЃРј. $this->form_cols['all']).
+     * @param array $filter   С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ Р·Р°СЏРІРєРµ, СЌС‚Р°РїСѓ, СЃСѓРјРјРµ, СЋР·РµСЂСѓ Рё С‚.Рґ.
      * @return array
      */
     function getAllPayouts($page = 1, $dir='DESC', $dir_col=0, $filter = NULL) {
@@ -717,7 +717,7 @@ class sbr_adm extends sbr
     }
 
     /**
-     * Возвращает количество всех отзывов сервису.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РІСЃРµС… РѕС‚Р·С‹РІРѕРІ СЃРµСЂРІРёСЃСѓ.
      * @return integer
      */
     function countFeedbacks() {
@@ -729,9 +729,9 @@ class sbr_adm extends sbr
     }
 
     /**
-     * Возвращает количество всех выплат.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РІСЃРµС… РІС‹РїР»Р°С‚.
      *
-     * @param array $filter   фильтр по дате заявке, этапу, сумме, юзеру и т.д.
+     * @param array $filter   С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ Р·Р°СЏРІРєРµ, СЌС‚Р°РїСѓ, СЃСѓРјРјРµ, СЋР·РµСЂСѓ Рё С‚.Рґ.
      * @return integer
      */
     function countPayouts($filter = NULL) {
@@ -765,7 +765,7 @@ class sbr_adm extends sbr
     }
     
     /**
-     * Количество зарезервированных денег для возврата
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРЅС‹С… РґРµРЅРµРі РґР»СЏ РІРѕР·РІСЂР°С‚Р°
      * 
      * @return int 
      */
@@ -781,9 +781,9 @@ class sbr_adm extends sbr
     }
 
     /**
-     * Возвращает количество всех этапов СБР.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РІСЃРµС… СЌС‚Р°РїРѕРІ РЎР‘Р .
      *
-     * @param array $filter   фильтр по дате, этапу, бюджету и т.д.
+     * @param array $filter   С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ, СЌС‚Р°РїСѓ, Р±СЋРґР¶РµС‚Сѓ Рё С‚.Рґ.
      * @return integer
      */
     function countAll($filter = NULL) {
@@ -802,9 +802,9 @@ class sbr_adm extends sbr
     }
 
     /**
-     * Возвращает количество всех этапов с обращение в Арбитраж.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РІСЃРµС… СЌС‚Р°РїРѕРІ СЃ РѕР±СЂР°С‰РµРЅРёРµ РІ РђСЂР±РёС‚СЂР°Р¶.
      *
-     * @param array $filter   фильтр по дате, этапу, бюджету и т.д.
+     * @param array $filter   С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ, СЌС‚Р°РїСѓ, Р±СЋРґР¶РµС‚Сѓ Рё С‚.Рґ.
 
      * @return integer
      */
@@ -819,7 +819,7 @@ class sbr_adm extends sbr
             INNER JOIN sbr_stages ss
                 ON ss.sbr_id = s.id
             INNER JOIN sbr_stages_arbitrage ssa ON ssa.stage_id = ss.id
-            -- последний коммент от арбитра
+            -- РїРѕСЃР»РµРґРЅРёР№ РєРѕРјРјРµРЅС‚ РѕС‚ Р°СЂР±РёС‚СЂР°
             LEFT JOIN sbr_stages_msgs ssm
                 ON ssm.id = ssa.last_msg_id_arbitr AND ssm.is_admin = TRUE
             LEFT JOIN sbr_stages_arbitrs ssar
@@ -836,8 +836,8 @@ class sbr_adm extends sbr
 
 
     /**
-     * Берет массив с количествами элементов для каждой закладки в админке СБР.
-     * @return array   массив, индексированный именами закладок.
+     * Р‘РµСЂРµС‚ РјР°СЃСЃРёРІ СЃ РєРѕР»РёС‡РµСЃС‚РІР°РјРё СЌР»РµРјРµРЅС‚РѕРІ РґР»СЏ РєР°Р¶РґРѕР№ Р·Р°РєР»Р°РґРєРё РІ Р°РґРјРёРЅРєРµ РЎР‘Р .
+     * @return array   РјР°СЃСЃРёРІ, РёРЅРґРµРєСЃРёСЂРѕРІР°РЅРЅС‹Р№ РёРјРµРЅР°РјРё Р·Р°РєР»Р°РґРѕРє.
      */
     function getCount() {
         return array( 'all'=>$this->countAll(), 'arbitrage'=>$this->countArbitrage(), 'feedbacks'=>$this->countFeedbacks(), 'payouts'=>$this->countPayouts(), 'refunds' => $this->countRefunds() );
@@ -847,14 +847,14 @@ class sbr_adm extends sbr
     // siteadmin
 
     /**
-     * Информацию по документообороту СБР для админки.
+     * РРЅС„РѕСЂРјР°С†РёСЋ РїРѕ РґРѕРєСѓРјРµРЅС‚РѕРѕР±РѕСЂРѕС‚Сѓ РЎР‘Р  РґР»СЏ Р°РґРјРёРЅРєРё.
      *
-     * @param integer $scheme   тип схем сделок.
-     * @param array $filter   фильтр
-     * @param integer $page   номер страницы
-     * @param string $dir   сортировка ASC|DESC
-     * @param integer $dir_col   поле сортировки.
-     * @param integer $page_count   вернет всего кол-во строк.
+     * @param integer $scheme   С‚РёРї СЃС…РµРј СЃРґРµР»РѕРє.
+     * @param array $filter   С„РёР»СЊС‚СЂ
+     * @param integer $page   РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹
+     * @param string $dir   СЃРѕСЂС‚РёСЂРѕРІРєР° ASC|DESC
+     * @param integer $dir_col   РїРѕР»Рµ СЃРѕСЂС‚РёСЂРѕРІРєРё.
+     * @param integer $page_count   РІРµСЂРЅРµС‚ РІСЃРµРіРѕ РєРѕР»-РІРѕ СЃС‚СЂРѕРє.
      * @return array
      */
     function getDocsFlow($scheme = sbr::SCHEME_AGNT, $filter = NULL, $page = 1, $dir = 'DESC', $dir_col = 0, &$page_count = NULL) {
@@ -864,7 +864,7 @@ class sbr_adm extends sbr
         $offset = ($page-1)*$limit;
         $where = $this->_buildFilterPeriod('ss.arch_closed_time', $filter);
         $page_count = 1;
-        $emp_upload_docs_cond = sbr::DOCS_TYPE_ACT | sbr::DOCS_TYPE_ARB_REP; // документы, после загрузки которых выводим работодателя в док-те.
+        $emp_upload_docs_cond = sbr::DOCS_TYPE_ACT | sbr::DOCS_TYPE_ARB_REP; // РґРѕРєСѓРјРµРЅС‚С‹, РїРѕСЃР»Рµ Р·Р°РіСЂСѓР·РєРё РєРѕС‚РѕСЂС‹С… РІС‹РІРѕРґРёРј СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ РІ РґРѕРє-С‚Рµ.
         $frl_upload_docs_cond = sbr::DOCS_TYPE_ACT;
         if($scheme) {
             if($scheme != -1) {
@@ -881,7 +881,7 @@ class sbr_adm extends sbr
         }
 
         if($fv = pg_escape_string(trim($filter['contract_num']))) {
-            $where[] = "'СБР-'||ss.sbr_id||'-'||ss.num ILIKE '%{$fv}%'";
+            $where[] = "'РЎР‘Р -'||ss.sbr_id||'-'||ss.num ILIKE '%{$fv}%'";
         }
         if($fv = pg_escape_string(trim($filter['user'])))
             $where[] = "(u.login ILIKE '%{$fv}%' OR u.uname ILIKE '%{$fv}%' OR u.usurname ILIKE '%{$fv}%')";
@@ -902,7 +902,7 @@ class sbr_adm extends sbr
         if($fv = $filter['is_removed']) 
             $where[] = "su.is_removed = '{$fv}'";
         if($scheme == 0) {
-            $where[] = " ( ss.scheme_type <> " . sbr::SCHEME_LC . " ) "; // исключаем Аккредитив
+            $where[] = " ( ss.scheme_type <> " . sbr::SCHEME_LC . " ) "; // РёСЃРєР»СЋС‡Р°РµРј РђРєРєСЂРµРґРёС‚РёРІ
         }
         if($where)
             $where = 'WHERE ' . implode(' AND ', $where);
@@ -1020,7 +1020,7 @@ class sbr_adm extends sbr
                                 $row['uploaded_docs_a'][$doc['type']] = $doc;
                         }
                     }
-                    // это потом переделать
+                    // СЌС‚Рѕ РїРѕС‚РѕРј РїРµСЂРµРґРµР»Р°С‚СЊ
                     $account->GetInfo($row['user_id']);
                     $row['attaches'] = $account->getAllAttach();
                 }
@@ -1035,10 +1035,10 @@ class sbr_adm extends sbr
     }
 
     /**
-     * Строит фильтр для SQL запроса
+     * РЎС‚СЂРѕРёС‚ С„РёР»СЊС‚СЂ РґР»СЏ SQL Р·Р°РїСЂРѕСЃР°
      *
-     * @param  array $dcol имя поля
-     * @param  array $filter фильтр по периоду
+     * @param  array $dcol РёРјСЏ РїРѕР»СЏ
+     * @param  array $filter С„РёР»СЊС‚СЂ РїРѕ РїРµСЂРёРѕРґСѓ
      * @return array
      */
     function _buildFilterPeriod($dcol, $filter) {
@@ -1056,9 +1056,9 @@ class sbr_adm extends sbr
 
 
     /**
-     * Возвращает график для статистики СБР в админке.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РіСЂР°С„РёРє РґР»СЏ СЃС‚Р°С‚РёСЃС‚РёРєРё РЎР‘Р  РІ Р°РґРјРёРЅРєРµ.
      *
-     * @param array $filter   можно фильтровать по периоду.
+     * @param array $filter   РјРѕР¶РЅРѕ С„РёР»СЊС‚СЂРѕРІР°С‚СЊ РїРѕ РїРµСЂРёРѕРґСѓ.
      * @return array   
      */
     function getStats($filter = NULL, $ignore_staff = FALSE) {
@@ -1116,7 +1116,7 @@ class sbr_adm extends sbr
                  WHERE sp.completed IS NOT NULL
                    AND sp.is_arbitrage = true
                 UNION ALL
-                -- комиссия с фрилансеров (агент: 5% от суммы бюджета, но если по арбитражу 0, то не берется; подряд: 5%, если арбитраж, то пропорционально проценту арбитража)
+                -- РєРѕРјРёСЃСЃРёСЏ СЃ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ (Р°РіРµРЅС‚: 5% РѕС‚ СЃСѓРјРјС‹ Р±СЋРґР¶РµС‚Р°, РЅРѕ РµСЃР»Рё РїРѕ Р°СЂР±РёС‚СЂР°Р¶Сѓ 0, С‚Рѕ РЅРµ Р±РµСЂРµС‚СЃСЏ; РїРѕРґСЂСЏРґ: 5%, РµСЃР»Рё Р°СЂР±РёС‚СЂР°Р¶, С‚Рѕ РїСЂРѕРїРѕСЂС†РёРѕРЅР°Р»СЊРЅРѕ РїСЂРѕС†РµРЅС‚Сѓ Р°СЂР±РёС‚СЂР°Р¶Р°)
                 SELECT 4, sp.credit_sys, sp.completed, su.act_lcomm, sp.user_id as user_id
                   FROM sbr s
                 INNER JOIN
@@ -1131,7 +1131,7 @@ class sbr_adm extends sbr
                    AND su.user_id = sp.user_id
                  WHERE s.norisk_id IS NULL
                 UNION ALL
-                -- комиссия с работодателя (агент: всегда 5% от суммы бюджета; подряд: 5%, если арбитраж, то пропорционально проценту арбитража).
+                -- РєРѕРјРёСЃСЃРёСЏ СЃ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ (Р°РіРµРЅС‚: РІСЃРµРіРґР° 5% РѕС‚ СЃСѓРјРјС‹ Р±СЋРґР¶РµС‚Р°; РїРѕРґСЂСЏРґ: 5%, РµСЃР»Рё Р°СЂР±РёС‚СЂР°Р¶, С‚Рѕ РїСЂРѕРїРѕСЂС†РёРѕРЅР°Р»СЊРЅРѕ РїСЂРѕС†РµРЅС‚Сѓ Р°СЂР±РёС‚СЂР°Р¶Р°).
                 SELECT 5, s.cost_sys, s.reserved_time, su.act_lcomm, s.emp_id as user_id
                   FROM sbr s
                 INNER JOIN
@@ -1184,7 +1184,7 @@ class sbr_adm extends sbr
                 $ret[$gt]['graphs'][$sys]['total']['sum'] += $row['sum'];
                 $ret[$gt]['graphs'][$sys]['total']['ldate'] = $mt;
 
-                if($row['sum'] > $ret[$gt]['graphs'][$sys]['total']['max']) // !!! убрать.
+                if($row['sum'] > $ret[$gt]['graphs'][$sys]['total']['max']) // !!! СѓР±СЂР°С‚СЊ.
                     $ret[$gt]['graphs'][$sys]['total']['max'] = $row['sum'];
                 if($row['fm_sum'] > $ret[$gt]['total']['fm_max'])
                     $ret[$gt]['total']['fm_max'] = $row['fm_sum'];
@@ -1195,10 +1195,10 @@ class sbr_adm extends sbr
 
             foreach($ret as &$st) {
                 foreach($st['graphs'] as &$graph) {
-                    // если начало и конец можно задать индивидуально.
+                    // РµСЃР»Рё РЅР°С‡Р°Р»Рѕ Рё РєРѕРЅРµС† РјРѕР¶РЅРѕ Р·Р°РґР°С‚СЊ РёРЅРґРёРІРёРґСѓР°Р»СЊРЅРѕ.
                     $ft = $graph['total']['fdate'];
                     $lt = $graph['total']['ldate'];
-                    // если начало -- самый первый месяц в любом из графиков, конец -- аналогично.
+                    // РµСЃР»Рё РЅР°С‡Р°Р»Рѕ -- СЃР°РјС‹Р№ РїРµСЂРІС‹Р№ РјРµСЃСЏС† РІ Р»СЋР±РѕРј РёР· РіСЂР°С„РёРєРѕРІ, РєРѕРЅРµС† -- Р°РЅР°Р»РѕРіРёС‡РЅРѕ.
                     $ft = $fft;
                     $lt = $llt;
 
@@ -1229,9 +1229,9 @@ class sbr_adm extends sbr
     }
 
     /**
-     * Возвращает график для статистики СБР в админке.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РіСЂР°С„РёРє РґР»СЏ СЃС‚Р°С‚РёСЃС‚РёРєРё РЎР‘Р  РІ Р°РґРјРёРЅРєРµ.
      *
-     * @param array $filter   можно фильтровать по периоду.
+     * @param array $filter   РјРѕР¶РЅРѕ С„РёР»СЊС‚СЂРѕРІР°С‚СЊ РїРѕ РїРµСЂРёРѕРґСѓ.
      * @return array   
      */
     function getStatsByDay($filter = NULL, $ignore_staff = false, $trunc = 'day') {
@@ -1248,7 +1248,7 @@ class sbr_adm extends sbr
           SELECT s.graph_type, s.sys, date_trunc('{$trunc}', s.date) as day, SUM(s.sum) as sum, COUNT(*) as cnt
             FROM (
 
-                -- комиссия с фрилансеров (агент: 5% от суммы бюджета, но если по арбитражу 0, то не берется; подряд: 5%, если арбитраж, то пропорционально проценту арбитража)
+                -- РєРѕРјРёСЃСЃРёСЏ СЃ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ (Р°РіРµРЅС‚: 5% РѕС‚ СЃСѓРјРјС‹ Р±СЋРґР¶РµС‚Р°, РЅРѕ РµСЃР»Рё РїРѕ Р°СЂР±РёС‚СЂР°Р¶Сѓ 0, С‚Рѕ РЅРµ Р±РµСЂРµС‚СЃСЏ; РїРѕРґСЂСЏРґ: 5%, РµСЃР»Рё Р°СЂР±РёС‚СЂР°Р¶, С‚Рѕ РїСЂРѕРїРѕСЂС†РёРѕРЅР°Р»СЊРЅРѕ РїСЂРѕС†РµРЅС‚Сѓ Р°СЂР±РёС‚СЂР°Р¶Р°)
                 SELECT 4 as graph_type, su.user_id, sp.credit_sys as sys, sp.completed as date, su.act_lcomm as sum
                   FROM sbr s
                 INNER JOIN
@@ -1275,7 +1275,7 @@ class sbr_adm extends sbr
                  WHERE s.norisk_id IS NULL
                 UNION ALL
                 
-                -- комиссия с работодателя (агент: всегда 5% от суммы бюджета; подряд: 5%, если арбитраж, то пропорционально проценту арбитража).
+                -- РєРѕРјРёСЃСЃРёСЏ СЃ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ (Р°РіРµРЅС‚: РІСЃРµРіРґР° 5% РѕС‚ СЃСѓРјРјС‹ Р±СЋРґР¶РµС‚Р°; РїРѕРґСЂСЏРґ: 5%, РµСЃР»Рё Р°СЂР±РёС‚СЂР°Р¶, С‚Рѕ РїСЂРѕРїРѕСЂС†РёРѕРЅР°Р»СЊРЅРѕ РїСЂРѕС†РµРЅС‚Сѓ Р°СЂР±РёС‚СЂР°Р¶Р°).
                 SELECT 5, su.user_id, s.cost_sys, s.reserved_time, su.act_lcomm
                   FROM sbr s
                 INNER JOIN
@@ -1328,7 +1328,7 @@ class sbr_adm extends sbr
                 $ret[$gt]['graphs'][$sys]['total']['cnt'] += $row['cnt'];
                 $ret[$gt]['graphs'][$sys]['total']['sum'] += $row['sum'];
                 $ret[$gt]['graphs'][$sys]['total']['ldate'] = $mt;
-                if($row['sum'] > $ret[$gt]['graphs'][$sys]['total']['max']) // !!! убрать.
+                if($row['sum'] > $ret[$gt]['graphs'][$sys]['total']['max']) // !!! СѓР±СЂР°С‚СЊ.
                     $ret[$gt]['graphs'][$sys]['total']['max'] = $row['sum'];
                 if($row['fm_sum'] > $ret[$gt]['total']['fm_max'])
                     $ret[$gt]['total']['fm_max'] = $row['fm_sum'];
@@ -1395,8 +1395,8 @@ class sbr_adm extends sbr
     }
 
     /**
-     * Возвращает отчеты по приходам СБР за указанный период.
-     * @param array $filter   фильтр по дате и валюте резервирования.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕС‚С‡РµС‚С‹ РїРѕ РїСЂРёС…РѕРґР°Рј РЎР‘Р  Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ.
+     * @param array $filter   С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ Рё РІР°Р»СЋС‚Рµ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ.
      */
     function getReports($filter = NULL) {
         $ret = array();
@@ -1412,7 +1412,7 @@ class sbr_adm extends sbr
                 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/pmpay.php';
                 $wmpay = new wmpay();
                 $pmpay = new pmpay();
-                $where .= " AND (s.cost_sys <> ".exrates::WMR." OR ao.descr ILIKE '%на кошелек {$wmpay->wmzr[2]}%'OR ao.descr ILIKE '%на кошелек {$pmpay->merchants[1]}%')"; // только белый WMR
+                $where .= " AND (s.cost_sys <> ".exrates::WMR." OR ao.descr ILIKE '%РЅР° РєРѕС€РµР»РµРє {$wmpay->wmzr[2]}%'OR ao.descr ILIKE '%РЅР° РєРѕС€РµР»РµРє {$pmpay->merchants[1]}%')"; // С‚РѕР»СЊРєРѕ Р±РµР»С‹Р№ WMR
             }
         }
 
@@ -1423,8 +1423,8 @@ class sbr_adm extends sbr
                    replace(substring(ao.descr from E'wmid:\\\\d+'),'wmid:','') as wmid,
                    replace(substring(ao.descr from E'#\\\\d+'),'#','') as wmorder_id,
                    replace(substring(ao.descr from 'pmnum: \\\\d+'), 'pmnum: ', '') as wmpaymaster_id,
-                   replace(substring(ao.descr from E'номер платежа - \\\\d+'),'номер платежа - ','') as wmpayment_id,
-                   replace(substring(ao.descr from E'номер покупки - \\\\d+'),'номер покупки - ','') as ydorder_id,
+                   replace(substring(ao.descr from E'РЅРѕРјРµСЂ РїР»Р°С‚РµР¶Р° - \\\\d+'),'РЅРѕРјРµСЂ РїР»Р°С‚РµР¶Р° - ','') as wmpayment_id,
+                   replace(substring(ao.descr from E'РЅРѕРјРµСЂ РїРѕРєСѓРїРєРё - \\\\d+'),'РЅРѕРјРµСЂ РїРѕРєСѓРїРєРё - ','') as ydorder_id,
                    ao.trs_sum as sum,
                    (CASE WHEN p.id IS NOT NULL THEN 
 			ao.trs_sum - sbr_calctax ( sbr_taxes_id( sbr_exrates_map(p.ps_emp), 1, null), s.scheme_id, s.cost, (p.\"tagPerf\" + 1), 1, 1, sbr_exrates_map(p.ps_emp), null, null  )
@@ -1438,8 +1438,8 @@ class sbr_adm extends sbr
 			( ao.trs_sum - ao.trs_sum / (1 + 0.05) )
 			END )  as sum_commision,
                    ao.op_date as date,
-                   replace(substring(ao.descr from E'с кошелька R\\\\d+'),'с кошелька ','') as wmpurse,
-                   replace(substring(ao.descr from E'с кошелька \\\\d+'),'с кошелька ','') as ympurse,
+                   replace(substring(ao.descr from E'СЃ РєРѕС€РµР»СЊРєР° R\\\\d+'),'СЃ РєРѕС€РµР»СЊРєР° ','') as wmpurse,
+                   replace(substring(ao.descr from E'СЃ РєРѕС€РµР»СЊРєР° \\\\d+'),'СЃ РєРѕС€РµР»СЊРєР° ','') as ympurse,
                    replace(CASE WHEN sr.form_type = 1 OR s.cost_sys = " . exrates::YM . " THEN sr._1_fio ELSE COALESCE(sr._2_full_name,sr._2_org_name) END, '&quot;', '\"') as emp_name,
                    replace(CASE WHEN sf.form_type = 1 THEN sf._1_fio ELSE COALESCE(sf._2_full_name,sf._2_org_name) END, '&quot;', '\"') as frl_name
               FROM account_operations ao
@@ -1468,9 +1468,9 @@ class sbr_adm extends sbr
     }
 
     /**
-     * Формирует строки периода времени
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ СЃС‚СЂРѕРєРё РїРµСЂРёРѕРґР° РІСЂРµРјРµРЅРё
      *
-     * @param  array $filter фильтр по дате и валюте резервирования.
+     * @param  array $filter С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ Рё РІР°Р»СЋС‚Рµ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ.
      * @return array
      */
     function _createPeriodStr($filter) {
@@ -1479,19 +1479,19 @@ class sbr_adm extends sbr
             $to_time = strtotime($filter['to']['day'].'.'.$filter['to']['month'].'.'.$filter['to']['year']);
         if($filter['from'])
             $from_time = strtotime($filter['from']['day'].'.'.$filter['from']['month'].'.'.$filter['from']['year']);
-        $period[0] = 'Период'.($from_time ? ' с '.date('d.m.Y', $from_time) : '').' по '.date('d.m.Y', $to_time);
+        $period[0] = 'РџРµСЂРёРѕРґ'.($from_time ? ' СЃ '.date('d.m.Y', $from_time) : '').' РїРѕ '.date('d.m.Y', $to_time);
         if($filter['from']['month'] == $filter['to']['month']
            && $filter['from']['year'] == $filter['to']['year']
            && $filter['from']['day']==1 && $filter['to']['day']==date('t', $from_time))
         {
-            $period[1] = $filter['to']['day'].' '.$GLOBALS['MONTHA'][$filter['to']['month']].' '.$filter['to']['year'] .' года';
+            $period[1] = $filter['to']['day'].' '.$GLOBALS['MONTHA'][$filter['to']['month']].' '.$filter['to']['year'] .' РіРѕРґР°';
         }
         return $period;
     }
 
     /**
-     * Формирует .xls отчеты по приходам СБР за указанный период.
-     * @param array $filter   фильтр по дате и валюте резервирования.
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ .xls РѕС‚С‡РµС‚С‹ РїРѕ РїСЂРёС…РѕРґР°Рј РЎР‘Р  Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ.
+     * @param array $filter   С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ Рё РІР°Р»СЋС‚Рµ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ.
      */
     function printReports($filter = NULL) {
         if(!$filter['to'])
@@ -1509,7 +1509,7 @@ class sbr_adm extends sbr
 
         require_once 'Spreadsheet/Excel/Writer.php';
         $workbook = new Spreadsheet_Excel_Writer();
-        $workbook->send('СБР_'.str_replace('.', '_', $period[0]).'.xls');
+        $workbook->send('РЎР‘Р _'.str_replace('.', '_', $period[0]).'.xls');
         $main_sty = array(
           'FontFamily'=>'Calibri Bold',
           'VAlign'=>'top',
@@ -1537,33 +1537,33 @@ class sbr_adm extends sbr
             $worksheet = $workbook->addWorksheet($GLOBALS['EXRATE_CODES'][$sys][3]);
             $worksheet->setInputEncoding('windows-1251');
 
-            // Заголовок
+            // Р—Р°РіРѕР»РѕРІРѕРє
             if($sys == exrates::YM){
                 $from_time =  mktime (0,0,0,(int)$filter['from']['month'],(int)$filter['from']['day'], (int)$filter['from']['year']);
                 //$to_time = mktime (59,59,59,(int)$filter['to']['month'],(int)$filter['to']['day'], (int)$filter['to']['year']);
                 $event_time = mktime(0,0,0,5,1,2011);
                 if($from_time >= $event_time){
-                    $rpss['name'] = strtr($rpss['name'],array('11111.01 от 03/05/2007' => '11111.04 от 9 марта 2011 г.'));
+                    $rpss['name'] = strtr($rpss['name'],array('11111.01 РѕС‚ 03/05/2007' => '11111.04 РѕС‚ 9 РјР°СЂС‚Р° 2011 Рі.'));
                 }
             }
             $worksheet->write($ROW_NAME, 0, $rpss['name'], $fmtH);
             $worksheet->setRow($ROW_NAME, 30);
             $worksheet->mergeCells($ROW_NAME, 0, $ROW_NAME, $col_cnt-1);
             
-            // Примечание.
+            // РџСЂРёРјРµС‡Р°РЅРёРµ.
             if($rpss['note']) {
                 $worksheet->write($ROW_NOTE, 0, $rpss['note'], $fmtS);
                 $worksheet->setRow($ROW_NOTE, 20);
                 $worksheet->mergeCells($ROW_NOTE, 0, $ROW_NOTE, $col_cnt-1);
             }
 
-            // Период.
+            // РџРµСЂРёРѕРґ.
             if($period[0])
                 $worksheet->write($ROW_PERIOD, 1, $period[0], $fmtS);
             if($period[1])
                 $worksheet->write($ROW_PERIOD, $col_cnt-1, $period[1], $fmtS);
 
-            // Шапка таблицы.
+            // РЁР°РїРєР° С‚Р°Р±Р»РёС†С‹.
             $i=0;
             foreach($rpss['columns'] as $f=>$col) {
                 $worksheet->setColumn($i, $i, $col[1][0]);
@@ -1577,7 +1577,7 @@ class sbr_adm extends sbr
                 $i++;
             }
 
-            // Таблица.
+            // РўР°Р±Р»РёС†Р°.
             $i=$ROW_TBL_FST;
             foreach($rep as $row) {
                 $j=0;
@@ -1589,8 +1589,8 @@ class sbr_adm extends sbr
 
             }
             
-            // Дно таблицы (итого).
-            $worksheet->write($i, 0, 'Итого с учетом НДС ', $fmtSR);
+            // Р”РЅРѕ С‚Р°Р±Р»РёС†С‹ (РёС‚РѕРіРѕ).
+            $worksheet->write($i, 0, 'РС‚РѕРіРѕ СЃ СѓС‡РµС‚РѕРј РќР”РЎ ', $fmtSR);
             $worksheet->mergeCells($i, 0, $i, ($sys == exrates::YM || $sys == exrates::WMR || $sys == exrates::WMZ || $sys == exrates::BANK ?$sum_deal_idx-1:$sum_idx-1));
             if($i>$ROW_TBL_FST) {
             	if($sum_deal_idx) {
@@ -1610,36 +1610,36 @@ class sbr_adm extends sbr
                 $worksheet->writeFormula($i, $sum_idx, "=SUM({$c1}:{$c2})", $fmtSR);
             }
 
-            // Дно листа.
+            // Р”РЅРѕ Р»РёСЃС‚Р°.
             $i+=2;
-            $worksheet->write($i, 1,  '        Генеральный директор ООО "ВААН"', $fmtSL);
+            $worksheet->write($i, 1,  '        Р“РµРЅРµСЂР°Р»СЊРЅС‹Р№ РґРёСЂРµРєС‚РѕСЂ РћРћРћ "Р’РђРђРќ"', $fmtSL);
             $worksheet->write($i, 3,  '', $fmtU);
-            $worksheet->write($i, 4,  'Тарханов В.О.', $fmtSL);
+            $worksheet->write($i, 4,  'РўР°СЂС…Р°РЅРѕРІ Р’.Рћ.', $fmtSL);
             $i+=2;
-            $worksheet->write($i, 1,  '        Главный бухгалтер ООО "ВААН"', $fmtSL);
+            $worksheet->write($i, 1,  '        Р“Р»Р°РІРЅС‹Р№ Р±СѓС…РіР°Р»С‚РµСЂ РћРћРћ "Р’РђРђРќ"', $fmtSL);
             $worksheet->write($i, 3,  '', $fmtU);
-            $worksheet->write($i, 4,  'Яцук Е.Г.', $fmtSL);
+            $worksheet->write($i, 4,  'РЇС†СѓРє Р•.Р“.', $fmtSL);
         }
 
         $workbook->close();
     }
     
     /**
-     * Формирует отчет по арбитражу за определенный период.
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ РѕС‚С‡РµС‚ РїРѕ Р°СЂР±РёС‚СЂР°Р¶Сѓ Р·Р° РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РїРµСЂРёРѕРґ.
      *
-     * @param string $sStartDate дата начала периода
-     * @param string $sEndDate дата конца периода
+     * @param string $sStartDate РґР°С‚Р° РЅР°С‡Р°Р»Р° РїРµСЂРёРѕРґР°
+     * @param string $sEndDate РґР°С‚Р° РєРѕРЅС†Р° РїРµСЂРёРѕРґР°
      */
     function printArbitrageReport( $sStartDate = null, $sEndDate = null ) {
         global $EXRATE_CODES;
         
-        // имя итогового файла
+        // РёРјСЏ РёС‚РѕРіРѕРІРѕРіРѕ С„Р°Р№Р»Р°
         $sWorkTitle  = 'Arbitrage report';
         $sWorkTitle .= ( $sStartDate ) ? ' '.$sStartDate : '';
         $sWorkTitle .= ( $sEndDate ) ? ' - '.$sEndDate : '';
         $sWorkTitle .= '.xls';
         
-        // выбираем все этапы которые закрыты арбитражом
+        // РІС‹Р±РёСЂР°РµРј РІСЃРµ СЌС‚Р°РїС‹ РєРѕС‚РѕСЂС‹Рµ Р·Р°РєСЂС‹С‚С‹ Р°СЂР±РёС‚СЂР°Р¶РѕРј
         global $DB;
         $sQuery  = 'SELECT ss.id, sd.num FROM sbr_stages ss 
             LEFT JOIN sbr_docs sd ON ss.sbr_id = sd.sbr_id AND sd.type = 8 
@@ -1648,20 +1648,20 @@ class sbr_adm extends sbr
         $sQuery .= ( $sEndDate ) ? " AND ss.closed_time <= '$sEndDate'" : '';
         $aRows   = $DB->rows( $sQuery. ' ORDER BY ss.closed_time' );
         
-        // подключаем pear
+        // РїРѕРґРєР»СЋС‡Р°РµРј pear
         require_once( 'Spreadsheet/Excel/Writer.php' );
         
-        // создаем документ
+        // СЃРѕР·РґР°РµРј РґРѕРєСѓРјРµРЅС‚
         $workbook = new Spreadsheet_Excel_Writer();
         $workbook->setVersion( 8 );
         
-        // создаем лист
+        // СЃРѕР·РґР°РµРј Р»РёСЃС‚
         $worksheet =& $workbook->addWorksheet( '1' );
         $worksheet->setInputEncoding( 'CP1251' );
         
-        // заголовок листа
-        $worksheet->write( 0, 0, 'ООО "Ваан"' );
-        $worksheet->write( 2, 1, 'Таблица по актам арбитража' );
+        // Р·Р°РіРѕР»РѕРІРѕРє Р»РёСЃС‚Р°
+        $worksheet->write( 0, 0, 'РћРћРћ "Р’Р°Р°РЅ"' );
+        $worksheet->write( 2, 1, 'РўР°Р±Р»РёС†Р° РїРѕ Р°РєС‚Р°Рј Р°СЂР±РёС‚СЂР°Р¶Р°' );
         
         $m_sty    = array('NumFormat' => '### ### ##0.00', 'Align'=>'right' );
         $d_sty    = array('NumFormat' => 'DD MMM, YYYY HH:MM:SS' );
@@ -1675,13 +1675,13 @@ class sbr_adm extends sbr
         
         $format_top->setTextWrap( 1 );
         
-        $aHeader = array('№ п/п', 'Номер акта', 'Дата', 'Номер «Безопасной Сделки»', "Наименование Работодателя", 'Наименование Исполнителя', 'Сумма к выплате Работодателю, руб.коп.', 'Сумма к выплате Исполнителю, руб.коп.', 'Способ выплаты' );
+        $aHeader = array('в„– Рї/Рї', 'РќРѕРјРµСЂ Р°РєС‚Р°', 'Р”Р°С‚Р°', 'РќРѕРјРµСЂ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ»', "РќР°РёРјРµРЅРѕРІР°РЅРёРµ Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЏ", 'РќР°РёРјРµРЅРѕРІР°РЅРёРµ РСЃРїРѕР»РЅРёС‚РµР»СЏ', 'РЎСѓРјРјР° Рє РІС‹РїР»Р°С‚Рµ Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЋ, СЂСѓР±.РєРѕРї.', 'РЎСѓРјРјР° Рє РІС‹РїР»Р°С‚Рµ РСЃРїРѕР»РЅРёС‚РµР»СЋ, СЂСѓР±.РєРѕРї.', 'РЎРїРѕСЃРѕР± РІС‹РїР»Р°С‚С‹' );
         
         for ( $i = 0; $i<count($aHeader); $i++ ) {
             $worksheet->write( 3, $i, $aHeader[$i], $format_top );
         }
         
-        // данные
+        // РґР°РЅРЅС‹Рµ
         if ( $aRows ) {
 
             $nCnt = 1;
@@ -1692,20 +1692,20 @@ class sbr_adm extends sbr
         		$stage = $sbr->initFromStage( $aOne['id'], false );
         		$stage->getArbitrage( true );
         		
-        		// № п/п
+        		// в„– Рї/Рї
         		$worksheet->write( $nCnt+3, 0, $nCnt, $format_td );
         		
-        		// Номер акта
+        		// РќРѕРјРµСЂ Р°РєС‚Р°
         		$worksheet->write( $nCnt+3, 1, $aOne['num'], $format_td );
         		
-        		// Дата
+        		// Р”Р°С‚Р°
         		$sDate = date('Y-m-d H:i:s', strtotime($stage->arbitrage['resolved']));
         		$worksheet->write( $nCnt+3, 2, $sDate, $format_date );
         		
-        		// Номер СБР
+        		// РќРѕРјРµСЂ РЎР‘Р 
         		$worksheet->write( $nCnt+3, 3, $stage->sbr->getContractNum(), $format_td );
         		
-        		// Наименование Работодателя
+        		// РќР°РёРјРµРЅРѕРІР°РЅРёРµ Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЏ
                 $stage->sbr->getEmpReqvs();
         		$sEmpFio = sbr_meta::getFioFromReqvs( $stage->sbr->emp_reqvs );
         		
@@ -1717,7 +1717,7 @@ class sbr_adm extends sbr
         		
         		$worksheet->write( $nCnt+3, 4, $sEmpFio, $format_td );
         		
-        		// Наименование Исполнителя
+        		// РќР°РёРјРµРЅРѕРІР°РЅРёРµ РСЃРїРѕР»РЅРёС‚РµР»СЏ
         		$stage->sbr->getFrlReqvs();
                 $sFrlFio = sbr_meta::getFioFromReqvs( $stage->sbr->frl_reqvs );
                 
@@ -1729,31 +1729,31 @@ class sbr_adm extends sbr
                 
                 $worksheet->write( $nCnt+3, 5, $sFrlFio, $format_td );
                 
-                // Сумма к выплате Работодателю, руб.коп.
+                // РЎСѓРјРјР° Рє РІС‹РїР»Р°С‚Рµ Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЋ, СЂСѓР±.РєРѕРї.
                 $nSumm  = $stage->getPayoutSum( sbr::EMP, exrates::BANK );
                 $worksheet->write( $nCnt+3, 6, $nSumm, $format_money );
                 
-                // Сумма к выплате Исполнителю, руб.коп.
+                // РЎСѓРјРјР° Рє РІС‹РїР»Р°С‚Рµ РСЃРїРѕР»РЅРёС‚РµР»СЋ, СЂСѓР±.РєРѕРї.
                 $nSumm  = $stage->getPayoutSum( sbr::FRL, exrates::BANK );
                 $worksheet->write( $nCnt+3, 7, $nSumm, $format_money );
                 
-                // Способ выплаты
+                // РЎРїРѕСЃРѕР± РІС‹РїР»Р°С‚С‹
                 $worksheet->write( $nCnt+3, 8, $EXRATE_CODES[$stage->sbr->cost_sys][1], $format_td );
         		
         		$nCnt++;
         	}
         }
         
-        // отправляем на скачивание
+        // РѕС‚РїСЂР°РІР»СЏРµРј РЅР° СЃРєР°С‡РёРІР°РЅРёРµ
         $workbook->send( $sWorkTitle );
         
-        // закрываем документ
+        // Р·Р°РєСЂС‹РІР°РµРј РґРѕРєСѓРјРµРЅС‚
         $workbook->close();
     }
 
     /**
-     * Выдает данные по НДФЛ в СБР за указанный период.
-     * @param array $filter   фильтр по дате.
+     * Р’С‹РґР°РµС‚ РґР°РЅРЅС‹Рµ РїРѕ РќР”Р¤Р› РІ РЎР‘Р  Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ.
+     * @param array $filter   С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ.
      */
     function getNdflReport($filter = NULL) {
         $ret = array();
@@ -1777,7 +1777,7 @@ class sbr_adm extends sbr
 				 (CASE WHEN srh.id > 0 THEN srh._1_idcard_from ELSE sr._1_idcard_from END) as idcard_from,
 				 (CASE WHEN srh.id > 0 THEN srh._1_birthday ELSE sr._1_birthday END) as birthday,
 				 (CASE WHEN srh.id > 0 THEN srh._1_pss ELSE sr._1_pss END) as pss,
-                 s.cost / s.cost_fm as fm_rate -- если будет возможность резервировать не в рублевых валютах, то такой способ не подойдет (например, резерв в USD, а выплата в RUR).
+                 s.cost / s.cost_fm as fm_rate -- РµСЃР»Рё Р±СѓРґРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЂРµР·РµСЂРІРёСЂРѕРІР°С‚СЊ РЅРµ РІ СЂСѓР±Р»РµРІС‹С… РІР°Р»СЋС‚Р°С…, С‚Рѕ С‚Р°РєРѕР№ СЃРїРѕСЃРѕР± РЅРµ РїРѕРґРѕР№РґРµС‚ (РЅР°РїСЂРёРјРµСЂ, СЂРµР·РµСЂРІ РІ USD, Р° РІС‹РїР»Р°С‚Р° РІ RUR).
             FROM sbr_stages_payouts sp
           INNER JOIN 
             sbr_stages_users su
@@ -1811,12 +1811,12 @@ class sbr_adm extends sbr
                 $exr = $row['credit_sys'] == exrates::FM ? $row['fm_rate'] : 1;
                 $row['num'] = $i;
                 $row['profit'] = round($exr * $row['credit_sum'] + $row['act_lndfl'], 2);
-                $row['ndfl'] = round($row['act_lndfl'], 2); // НДФЛ в базу пишется в рублях.
+                $row['ndfl'] = round($row['act_lndfl'], 2); // РќР”Р¤Р› РІ Р±Р°Р·Сѓ РїРёС€РµС‚СЃСЏ РІ СЂСѓР±Р»СЏС….
                 $row['payout_sum'] = round($exr * $row['credit_sum'], 2);
-                $row['payout_sys'] = $row['credit_sys'] == exrates::BANK ? 'р/счет' : 'эл. чеки';
+                $row['payout_sys'] = $row['credit_sys'] == exrates::BANK ? 'СЂ/СЃС‡РµС‚' : 'СЌР». С‡РµРєРё';
                 $row['date'] = date('d.m.Y', strtotime($row['completed']));
                 $row['contract_num'] = $this->getContractNum($row['sbr_id'], $row['scheme_type']);
-                $row['idcard'] = $row['idcard_name'].' № '.$row['idcard'].' '.$row['idcard_from'].' '.$row['idcard_by'];
+                $row['idcard'] = $row['idcard_name'].' в„– '.$row['idcard'].' '.$row['idcard_from'].' '.$row['idcard_by'];
                 $row['birthday'] = date('d.m.Y', strtotime($row['birthday']));
                 $row['address'] = ($row['indx']?"{$row['indx']}, ":"")."{$row['country']}, {$row['city']}, {$row['address']}";
                 $ret[] = $row;
@@ -1827,8 +1827,8 @@ class sbr_adm extends sbr
     }
 
     /**
-     * Формирует .xls отчет по НДФЛ в СБР за указанный период.
-     * @param array $filter   фильтр по дате.
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ .xls РѕС‚С‡РµС‚ РїРѕ РќР”Р¤Р› РІ РЎР‘Р  Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ.
+     * @param array $filter   С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ.
      */
     function printNdflReport($filter = NULL) {
         if(!$filter['to'])
@@ -1844,7 +1844,7 @@ class sbr_adm extends sbr
 
         require_once 'Spreadsheet/Excel/Writer.php';
         $workbook = new Spreadsheet_Excel_Writer();
-        $workbook->send('СБР_НДФЛ_'.str_replace('.', '_', $period[0]).'.xls');
+        $workbook->send('РЎР‘Р _РќР”Р¤Р›_'.str_replace('.', '_', $period[0]).'.xls');
         
         $body_sty = array('FontFamily'=>'Arial', 'Size'=>10, 'Bold'=>1);
         $td_sty = array('FontFamily'=>'Calibri', 'VAlign'=>'vequal_space', 'Align'=>'center', 'Size'=>11, 'Border'=>1, 'BorderColor'=>'black', 'NumFormat'=>'#');
@@ -1859,17 +1859,17 @@ class sbr_adm extends sbr
         $fmtTDL = &$workbook->addFormat($l_sty + $td_sty);
         $fmtTDR = &$workbook->addFormat($r_sty + $td_sty);
 
-        $worksheet = $workbook->addWorksheet('НДФЛ');
+        $worksheet = $workbook->addWorksheet('РќР”Р¤Р›');
         $worksheet->setInputEncoding('windows-1251');
         $worksheet->setZoom(75);
         $worksheet->setColumn(0,0, 2);
 
-        // Заголовок
+        // Р—Р°РіРѕР»РѕРІРѕРє
         $worksheet->write(0, $COL_START, $rpss['name'], $fmtBODY);
         $worksheet->mergeCells(0, $COL_START, 0, 6);
 
 
-        // Шапка таблицы.
+        // РЁР°РїРєР° С‚Р°Р±Р»РёС†С‹.
         $i=$COL_START;
         foreach($rpss['columns'] as $f=>$col) {
             $worksheet->setColumn($i, $i, $col[1][0]);
@@ -1877,7 +1877,7 @@ class sbr_adm extends sbr
             $i++;
         }
         
-        // Таблица.
+        // РўР°Р±Р»РёС†Р°.
         $i=3;
         foreach($rep as $row) {
             $j=$COL_START;
@@ -1892,9 +1892,9 @@ class sbr_adm extends sbr
     }
     
     /**
-     * Данные о деньгах работодателей по текущим незакрытым сделкам за указанный период.
+     * Р”Р°РЅРЅС‹Рµ Рѕ РґРµРЅСЊРіР°С… СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ РїРѕ С‚РµРєСѓС‰РёРј РЅРµР·Р°РєСЂС‹С‚С‹Рј СЃРґРµР»РєР°Рј Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ.
      *
-     * @param array $filter   фильтр по дате.
+     * @param array $filter   С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ.
      * @return array
      */
     function getRevisionReport($filter) {
@@ -1906,7 +1906,7 @@ class sbr_adm extends sbr
         $sql = "SELECT ss.sbr_id, ss.id as stage_id, ss.cost, su.act_lcomm, s.scheme_id, s.scheme_type, sa.id as is_arb, sa.resolved, srh.form_type, ss.num+1 as stage_num,
                     COALESCE(COALESCE (bp.fio, srh._1_fio), sr._1_fio) as fio, s.cost_sys, 
 				    replace(
-				    CASE WHEN srh.form_type = 1 OR s.cost_sys = 4  THEN COALESCE (COALESCE (bp.fio, srh._1_fio), sr._1_fio)  -- физ
+				    CASE WHEN srh.form_type = 1 OR s.cost_sys = 4  THEN COALESCE (COALESCE (bp.fio, srh._1_fio), sr._1_fio)  -- С„РёР·
 				    ELSE 
 				        COALESCE ( 
 				            COALESCE (ro.full_name, COALESCE (srh._2_full_name, sr._2_full_name)), 
@@ -1940,7 +1940,7 @@ class sbr_adm extends sbr
                 $row['num'] = $i;
                 $row['contract_num'] = $this->getContractNum($row['sbr_id'], $row['scheme_type'])."-({$row['stage_num']})";
                 if(trim($row['fio']) == "" || $row['form_type'] == 2) $row['fio'] = $row['emp_name'];
-                if(trim($row['fio']) == "" && ($row['cost_sys'] == exrates::YM || $row['cost_sys'] == exrates::WMR)) $row['fio'] = 'Физическое лицо';
+                if(trim($row['fio']) == "" && ($row['cost_sys'] == exrates::YM || $row['cost_sys'] == exrates::WMR)) $row['fio'] = 'Р¤РёР·РёС‡РµСЃРєРѕРµ Р»РёС†Рѕ';
                 if($row['tax'] > 0) {
                     $row['sum_commision'] = $row['tax'];
                     $row['sum_deal']      = $row['is_arb'] > 0 ? $row['cost'] : ($row['cost'] - $row['tax']);
@@ -1960,8 +1960,8 @@ class sbr_adm extends sbr
     }
     
     /**
-     * Формирует .xls данные о деньгах работодателей по текущим незакрытым сделкам за указанный период.
-     * @param array $filter   фильтр по дате.
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ .xls РґР°РЅРЅС‹Рµ Рѕ РґРµРЅСЊРіР°С… СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ РїРѕ С‚РµРєСѓС‰РёРј РЅРµР·Р°РєСЂС‹С‚С‹Рј СЃРґРµР»РєР°Рј Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ.
+     * @param array $filter   С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ.
      */
     function printRevisionReport($filter = NULL) {
         if(!$filter['to'])
@@ -1977,7 +1977,7 @@ class sbr_adm extends sbr
 
         require_once 'Spreadsheet/Excel/Writer.php';
         $workbook = new Spreadsheet_Excel_Writer();
-        $workbook->send('СБР_сверка_'.str_replace('.', '_', $period[0]).'.xls');
+        $workbook->send('РЎР‘Р _СЃРІРµСЂРєР°_'.str_replace('.', '_', $period[0]).'.xls');
         
         $body_sty = array('FontFamily'=>'Arial', 'Size'=>10, 'Bold'=>1);
         $td_sty = array('FontFamily'=>'Calibri', 'VAlign'=>'vequal_space', 'Align'=>'center', 'Size'=>11, 'Border'=>1, 'BorderColor'=>'black', 'NumFormat'=>'#');
@@ -1994,20 +1994,20 @@ class sbr_adm extends sbr
         $fmtTDL = &$workbook->addFormat($l_sty + $td_sty);
         $fmtTDR = &$workbook->addFormat($r_sty + $td_sty);
 
-        $worksheet = $workbook->addWorksheet('Сверка');
+        $worksheet = $workbook->addWorksheet('РЎРІРµСЂРєР°');
         $worksheet->setInputEncoding('windows-1251');
         $worksheet->setZoom(75);
         $worksheet->setColumn(0,0, 2);
 
-        // Заголовок
+        // Р—Р°РіРѕР»РѕРІРѕРє
         $worksheet->write(0, $COL_START, $rpss['name'], $fmtBODY);
-        $worksheet->write(1, $COL_START, "Остатки кредиторской задолженности по сервису «Безопасная Сделка»", $fmtBODY);
+        $worksheet->write(1, $COL_START, "РћСЃС‚Р°С‚РєРё РєСЂРµРґРёС‚РѕСЂСЃРєРѕР№ Р·Р°РґРѕР»Р¶РµРЅРЅРѕСЃС‚Рё РїРѕ СЃРµСЂРІРёСЃСѓ В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В»", $fmtBODY);
         $worksheet->write(2, $COL_START, $period[0], $fmtBODY);
-        $worksheet->write(2, 5, "Дата ".date('d.m.Y H:i'), $fmtBODY);
+        $worksheet->write(2, 5, "Р”Р°С‚Р° ".date('d.m.Y H:i'), $fmtBODY);
         $worksheet->mergeCells(0, $COL_START, 0, 6);
 
 
-        // Шапка таблицы.
+        // РЁР°РїРєР° С‚Р°Р±Р»РёС†С‹.
         $i=$COL_START;
         foreach($rpss['columns'] as $f=>$col) {
             $worksheet->setColumn($i, $i, $col[1][0]);
@@ -2015,7 +2015,7 @@ class sbr_adm extends sbr
             $i++;
         }
         
-        // Таблица.
+        // РўР°Р±Р»РёС†Р°.
         $i=5;
         $sum_all = 0;
         foreach($rep as $row) {
@@ -2028,8 +2028,8 @@ class sbr_adm extends sbr
             $i++;
         }
         
-        // Дно таблицы (итого).
-        $worksheet->write($i, 0, 'ИТОГО', $fmtBODYR);
+        // Р”РЅРѕ С‚Р°Р±Р»РёС†С‹ (РёС‚РѕРіРѕ).
+        $worksheet->write($i, 0, 'РРўРћР“Рћ', $fmtBODYR);
         $worksheet->mergeCells($i, 0, $i, 2);
         $c1 = Spreadsheet_Excel_Writer::rowcolToCell(5, 3);
 	    $c2 = Spreadsheet_Excel_Writer::rowcolToCell($i-1, 3);
@@ -2045,16 +2045,16 @@ class sbr_adm extends sbr
 	    
 	    $i += 3;
 	    $r = explode("." , (string)$sum_all);
-	    $worksheet->write($i, 0, "На {$filter['to']['day']}.".($filter['to']['month']<10?"0".$filter['to']['month']:$filter['to']['month']).".{$filter['to']['year']} задолженность ООО \"Ваан\" в пользу Работодателей  по сервису «Безопасная Сделка»", $fmtBODY);
-	    $worksheet->write($i+1, 0, "Cоставляет ".intval($r[0])." руб. ".intval($r[1])." коп.", $fmtBODY);
+	    $worksheet->write($i, 0, "РќР° {$filter['to']['day']}.".($filter['to']['month']<10?"0".$filter['to']['month']:$filter['to']['month']).".{$filter['to']['year']} Р·Р°РґРѕР»Р¶РµРЅРЅРѕСЃС‚СЊ РћРћРћ \"Р’Р°Р°РЅ\" РІ РїРѕР»СЊР·Сѓ Р Р°Р±РѕС‚РѕРґР°С‚РµР»РµР№  РїРѕ СЃРµСЂРІРёСЃСѓ В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В»", $fmtBODY);
+	    $worksheet->write($i+1, 0, "CРѕСЃС‚Р°РІР»СЏРµС‚ ".intval($r[0])." СЂСѓР±. ".intval($r[1])." РєРѕРї.", $fmtBODY);
 	    
         $workbook->close();
     }
     /**
-     * Устанавливает удалена или нет запись
+     * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ СѓРґР°Р»РµРЅР° РёР»Рё РЅРµС‚ Р·Р°РїРёСЃСЊ
      * 
      * @param  string $suid stage_id . '_'  .user_id
-     * @return bool новое состояние флага
+     * @return bool РЅРѕРІРѕРµ СЃРѕСЃС‚РѕСЏРЅРёРµ С„Р»Р°РіР°
      */
     function setRemoved($suid) {
         $sql = "UPDATE sbr_stages_users SET is_removed = CASE WHEN is_removed = FALSE THEN TRUE ELSE FALSE END  WHERE stage_id||'_'||user_id IN ('{$suid}') RETURNING is_removed";
@@ -2066,8 +2066,8 @@ class sbr_adm extends sbr
     
     
     /**
-     * Формирует .xls отчет по выплатам ЯД за указанный период.
-     * @param array $filter   фильтр по дате.
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ .xls РѕС‚С‡РµС‚ РїРѕ РІС‹РїР»Р°С‚Р°Рј РЇР” Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ.
+     * @param array $filter   С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ.
      */
     function printYdReport($filter = NULL) {
         if(!$filter['to'])
@@ -2096,7 +2096,7 @@ class sbr_adm extends sbr
         require_once 'Spreadsheet/Excel/Writer.php';
         $workbook = new Spreadsheet_Excel_Writer();
         $workbook->setVersion(8);
-        $workbook->send("СБР_Выплаты_ЯД_{$period1}.xls");
+        $workbook->send("РЎР‘Р _Р’С‹РїР»Р°С‚С‹_РЇР”_{$period1}.xls");
         
         $body_sty = array('FontFamily'=>'Arial', 'Size'=>10, 'Bold'=>1);
         $td_sty = array('FontFamily'=>'Calibri', 'VAlign'=>'vequal_space', 'Align'=>'center', 'Size'=>11, 'Border'=>1, 'BorderColor'=>'black', 'NumFormat'=>'#');
@@ -2111,17 +2111,17 @@ class sbr_adm extends sbr
         $fmtTDL = &$workbook->addFormat($l_sty + $td_sty);
         $fmtTDR = &$workbook->addFormat($r_sty + $td_sty);
 
-        $worksheet = $workbook->addWorksheet('Выплаты ЯД');
+        $worksheet = $workbook->addWorksheet('Р’С‹РїР»Р°С‚С‹ РЇР”');
         $worksheet->setInputEncoding('windows-1251');
         $worksheet->setZoom(75);
         $worksheet->setColumn(0,0, 2);
 
-        // Заголовок
+        // Р—Р°РіРѕР»РѕРІРѕРє
         $worksheet->write(0, $COL_START, $rpss['name'] . ' ' . $period[0] , $fmtBODY);
         $worksheet->mergeCells(0, $COL_START, 0, 5);
 
 
-        // Шапка таблицы.
+        // РЁР°РїРєР° С‚Р°Р±Р»РёС†С‹.
         $i=$COL_START;
         foreach($rpss['columns'] as $f=>$col) {
             $worksheet->setColumn($i, $i, $col[1][0]);
@@ -2129,7 +2129,7 @@ class sbr_adm extends sbr
             $i++;
         }
         
-        // Таблица.
+        // РўР°Р±Р»РёС†Р°.
         $i=3;
         foreach($rep as $k => $row) {
             $row['num'] = $k+1;
@@ -2150,9 +2150,9 @@ class sbr_adm extends sbr
 
     
     /**
-     * Данные для отчета по выплатам ЯД
+     * Р”Р°РЅРЅС‹Рµ РґР»СЏ РѕС‚С‡РµС‚Р° РїРѕ РІС‹РїР»Р°С‚Р°Рј РЇР”
      *
-     * @param array $filter   фильтр по дате.
+     * @param array $filter   С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ.
      * @return array
      */
     function getYdReport($filter) {
@@ -2161,8 +2161,8 @@ class sbr_adm extends sbr
         $sql = "select sp.completed as pdate, 
                         sp.credit_sum as summ, 
                         coalesce(yt.dstacnt_nr, sr._1_el_yd) as recp,
-                'Выплата по договору СБР-'||s.id||'-'||CASE s.scheme_type WHEN 1 THEN 'А' WHEN 4 THEN 'Б' ELSE 'П' END||'/О '||sr._1_fio||' ['||u.login||']' as descr,
-                CASE WHEN yp.id IS NULL THEN 'Ч' ELSE 'Б' END as type
+                'Р’С‹РїР»Р°С‚Р° РїРѕ РґРѕРіРѕРІРѕСЂСѓ РЎР‘Р -'||s.id||'-'||CASE s.scheme_type WHEN 1 THEN 'Рђ' WHEN 4 THEN 'Р‘' ELSE 'Рџ' END||'/Рћ '||sr._1_fio||' ['||u.login||']' as descr,
+                CASE WHEN yp.id IS NULL THEN 'Р§' ELSE 'Р‘' END as type
                 from sbr_stages_payouts sp
                 inner join sbr_stages ss on ss.id = sp.stage_id
                 inner join sbr s on s.id = ss.sbr_id
@@ -2183,10 +2183,10 @@ class sbr_adm extends sbr
     }
     
     /**
-     * Возврат денежных средств 
+     * Р’РѕР·РІСЂР°С‚ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ 
      * 
      * @global type $DB
-     * @param type $payment_id  ИД операции в paymaster
+     * @param type $payment_id  РР” РѕРїРµСЂР°С†РёРё РІ paymaster
      * @return boolean 
      */
     public function refund($payment_id = null, $stage = null, $debug = false) {
@@ -2199,9 +2199,9 @@ class sbr_adm extends sbr
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/exrates.php';
         $pmpay = new pmpay();
         
-        // Возврат осуществляется только при резервировании через WMR
+        // Р’РѕР·РІСЂР°С‚ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ С‚РѕР»СЊРєРѕ РїСЂРё СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРё С‡РµСЂРµР· WMR
         $sql = "SELECT * FROM sbr_stages_payouts WHERE stage_id = ?i AND user_id = ?i AND is_refund IS NULL;";
-        $row = $DB->row($sql, $stage->id, $stage->sbr->emp_id); // Возврат осуществляется только для работодателей
+        $row = $DB->row($sql, $stage->id, $stage->sbr->emp_id); // Р’РѕР·РІСЂР°С‚ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ С‚РѕР»СЊРєРѕ РґР»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№
         if($row) {
             if(DEBUG) {
                 $log->writeln("debug_mode = ON");
@@ -2222,26 +2222,26 @@ class sbr_adm extends sbr
             }
         } else {
             $log = new log('pmpay/refundPayments-%d%m%Y.log', 'a', '%d.%m.%Y %H:%M:%S : ');
-            $log->writeln("Ошибка выдачи SQL -- [{$DB->sql}].");
+            $log->writeln("РћС€РёР±РєР° РІС‹РґР°С‡Рё SQL -- [{$DB->sql}].");
         }
     }
     
     /**
-     * Обновляем статус возврата денег
+     * РћР±РЅРѕРІР»СЏРµРј СЃС‚Р°С‚СѓСЃ РІРѕР·РІСЂР°С‚Р° РґРµРЅРµРі
      * 
      * @global type $DB
-     * @param type $update  Данные для обновления
-     * @param type $id      ИД операции
+     * @param type $update  Р”Р°РЅРЅС‹Рµ РґР»СЏ РѕР±РЅРѕРІР»РµРЅРёСЏ
+     * @param type $id      РР” РѕРїРµСЂР°С†РёРё
      * @return type 
      */
     public function refundStatusUpdate($update, $id) {
         global $DB;
-        return $DB->update('sbr_stages_payouts', $update, 'id = ?i', $id); // Обновляем плату
+        return $DB->update('sbr_stages_payouts', $update, 'id = ?i', $id); // РћР±РЅРѕРІР»СЏРµРј РїР»Р°С‚Сѓ
     }
     
     
     /**
-     * Выбирает список всех записей, загруженных из 1с
+     * Р’С‹Р±РёСЂР°РµС‚ СЃРїРёСЃРѕРє РІСЃРµС… Р·Р°РїРёСЃРµР№, Р·Р°РіСЂСѓР¶РµРЅРЅС‹С… РёР· 1СЃ
      * 
      * @param type $filter
      * @return type
@@ -2285,8 +2285,8 @@ class sbr_adm extends sbr
     }
     
     /**
-     * возвращает количество страниц в разделе /siteadmin/norisk2/?site=invoices
-     * учитывается фильтр (такой же как в getInvoices())
+     * РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂР°РЅРёС† РІ СЂР°Р·РґРµР»Рµ /siteadmin/norisk2/?site=invoices
+     * СѓС‡РёС‚С‹РІР°РµС‚СЃСЏ С„РёР»СЊС‚СЂ (С‚Р°РєРѕР№ Р¶Рµ РєР°Рє РІ getInvoices())
      * @global type $DB
      * @param type $filter
      * @return type
@@ -2318,7 +2318,7 @@ class sbr_adm extends sbr
     }
     
     /**
-     * Обработка данных, загруженных из 1С
+     * РћР±СЂР°Р±РѕС‚РєР° РґР°РЅРЅС‹С…, Р·Р°РіСЂСѓР¶РµРЅРЅС‹С… РёР· 1РЎ
      */
     public static function processInvoiceData() {
         $db = new DB('master');
@@ -2354,10 +2354,10 @@ class sbr_adm extends sbr
     }
     
     /**
-     * Формирование актов и счет-фактур по данным из pskb_invoice_raw
-     * Загрузка документов в сделку
+     * Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ Р°РєС‚РѕРІ Рё СЃС‡РµС‚-С„Р°РєС‚СѓСЂ РїРѕ РґР°РЅРЅС‹Рј РёР· pskb_invoice_raw
+     * Р—Р°РіСЂСѓР·РєР° РґРѕРєСѓРјРµРЅС‚РѕРІ РІ СЃРґРµР»РєСѓ
      * 
-     * @param type $data        массив с данными - строка результата запроса из sbr_adm::processInvoiceData
+     * @param type $data        РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё - СЃС‚СЂРѕРєР° СЂРµР·СѓР»СЊС‚Р°С‚Р° Р·Р°РїСЂРѕСЃР° РёР· sbr_adm::processInvoiceData
      * @param type $error
      * @return boolean
      */
@@ -2365,12 +2365,12 @@ class sbr_adm extends sbr
         $row = $data;
         
         if (!$row) {
-            $error = 'Не найден аккредитив';
+            $error = 'РќРµ РЅР°Р№РґРµРЅ Р°РєРєСЂРµРґРёС‚РёРІ';
             return false;
         }
         
         if (!trim($row['addr'])) {
-            $error = 'Не указан юрадрес';
+            $error = 'РќРµ СѓРєР°Р·Р°РЅ СЋСЂР°РґСЂРµСЃ';
 //            return false;
         }
         
@@ -2382,7 +2382,7 @@ class sbr_adm extends sbr
         require_once (dirname(__FILE__).'/num_to_word.php');
         
         /**
-         * Акт на сумму комиссии ВААН
+         * РђРєС‚ РЅР° СЃСѓРјРјСѓ РєРѕРјРёСЃСЃРёРё Р’РђРђРќ
          */
         $replace = array(
             'USER_NAME' => $row['name'],
@@ -2398,7 +2398,7 @@ class sbr_adm extends sbr
         $pdf = new odt2pdf($tpl);
         $pdf->convert($replace);
         if(!($file = $sbr->_saveDocFile($pdf->Output(NULL, 'S')))) {
-            $error = 'Ошибка при формировании Акта';
+            $error = 'РћС€РёР±РєР° РїСЂРё С„РѕСЂРјРёСЂРѕРІР°РЅРёРё РђРєС‚Р°';
             return false;
         }
         
@@ -2411,7 +2411,7 @@ class sbr_adm extends sbr
         );
         
         /**
-         * Счет-фактура
+         * РЎС‡РµС‚-С„Р°РєС‚СѓСЂР°
          */
         $replace = array(
             'USER_NAME' => $row['name'],
@@ -2428,7 +2428,7 @@ class sbr_adm extends sbr
         $pdf = new odt2pdf($tpl);
         $pdf->convert($replace);
         if(!($file = $sbr->_saveDocFile($pdf->Output(NULL, 'S')))) {
-            $error = 'Ошибка при формировании счета-фактуры';
+            $error = 'РћС€РёР±РєР° РїСЂРё С„РѕСЂРјРёСЂРѕРІР°РЅРёРё СЃС‡РµС‚Р°-С„Р°РєС‚СѓСЂС‹';
             return false;
         }
         
@@ -2448,7 +2448,7 @@ class sbr_adm extends sbr
     }
     
     /**
-     * Парсит файл выгрузки из 1С, для последующей загрузки документов
+     * РџР°СЂСЃРёС‚ С„Р°Р№Р» РІС‹РіСЂСѓР·РєРё РёР· 1РЎ, РґР»СЏ РїРѕСЃР»РµРґСѓСЋС‰РµР№ Р·Р°РіСЂСѓР·РєРё РґРѕРєСѓРјРµРЅС‚РѕРІ
      * 
      * @param type $file
      * @return boolean
@@ -2519,7 +2519,7 @@ class sbr_adm extends sbr
                     continue;
                 }
                 $params['status'] = 2;
-                $params['err'] = 'Не найден аккредитив';
+                $params['err'] = 'РќРµ РЅР°Р№РґРµРЅ Р°РєРєСЂРµРґРёС‚РёРІ';
                 $res = $db->insert('pskb_invoice_raw', $params);
                 continue;
             }
@@ -2539,16 +2539,16 @@ class sbr_adm extends sbr
 }
 
 /**
- * Класс для работы с СБР со стороны админа СБР (только просмотр данных).
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РЎР‘Р  СЃРѕ СЃС‚РѕСЂРѕРЅС‹ Р°РґРјРёРЅР° РЎР‘Р  (С‚РѕР»СЊРєРѕ РїСЂРѕСЃРјРѕС‚СЂ РґР°РЅРЅС‹С…).
  */
 class sbr_adm_finance extends sbr_adm {
 
     /**
-     * Возвращает данные о комиссиях и сторонах СБР в CSV
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ Рѕ РєРѕРјРёСЃСЃРёСЏС… Рё СЃС‚РѕСЂРѕРЅР°С… РЎР‘Р  РІ CSV
      *
-     * @param     string    $date_s    Дата начала периода
-     * @param     string    $date_e    Дата окончания периода
-     * @return    string               Файл с данными в CSV
+     * @param     string    $date_s    Р”Р°С‚Р° РЅР°С‡Р°Р»Р° РїРµСЂРёРѕРґР°
+     * @param     string    $date_e    Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РїРµСЂРёРѕРґР°
+     * @return    string               Р¤Р°Р№Р» СЃ РґР°РЅРЅС‹РјРё РІ CSV
      */
     function exportSBRDataToCSV($date_s, $date_e) {
         global $DB;
@@ -2698,13 +2698,13 @@ class sbr_adm_finance extends sbr_adm {
                     $ps_sys = $item['ps'];
                     switch($item['u_type']) {
                         case 'emp':
-                            $f_type = ($item['tagCust']==1 ? 'Юридическое лицо' : 'Физическое лицо');
+                            $f_type = ($item['tagCust']==1 ? 'Р®СЂРёРґРёС‡РµСЃРєРѕРµ Р»РёС†Рѕ' : 'Р¤РёР·РёС‡РµСЃРєРѕРµ Р»РёС†Рѕ');
                             $f_name = htmlspecialchars_decode($item['nameCust']);
                             $f_inn = $item['innCust'];
                             $item['form_type'] = ($item['tagCust']==1 ? 2 : 1);
                             break;
                         case 'frl':
-                            $f_type = ($item['tagPerf']==1 ? 'Юридическое лицо' : 'Физическое лицо');
+                            $f_type = ($item['tagPerf']==1 ? 'Р®СЂРёРґРёС‡РµСЃРєРѕРµ Р»РёС†Рѕ' : 'Р¤РёР·РёС‡РµСЃРєРѕРµ Р»РёС†Рѕ');
                             $f_name = htmlspecialchars_decode($item['namePerf']);
                             $f_inn = $item['innPerf'];
                             $item['form_type'] = ($item['tagPerf']==1 ? 2 : 1);
@@ -2722,8 +2722,8 @@ class sbr_adm_finance extends sbr_adm {
                                     :
                                    "{$item['_2_index']}, {$item['_2_country']}, {$item['_2_city']}, {$item['_2_address']}"
                                  ));
-                    //$f_type = ($item['form_type']==1 ? 'Физическое лицо' : 'Юридическое лицо');
-                    $f_u_type = ($item['u_type']=='emp' ? 'Работодатель' : 'Исполнитель');
+                    //$f_type = ($item['form_type']==1 ? 'Р¤РёР·РёС‡РµСЃРєРѕРµ Р»РёС†Рѕ' : 'Р®СЂРёРґРёС‡РµСЃРєРѕРµ Р»РёС†Рѕ');
+                    $f_u_type = ($item['u_type']=='emp' ? 'Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ' : 'РСЃРїРѕР»РЅРёС‚РµР»СЊ');
                     $f_commission_our = 0;
                     $f_commission_bank = 0;
                     if ( $item['u_type'] == 'emp' ) {
@@ -2779,7 +2779,7 @@ class sbr_adm_finance extends sbr_adm {
                                 }
                                 break;
                             case exrates::YM:
-                                $f_ps = 'ЯндексДеньги';
+                                $f_ps = 'РЇРЅРґРµРєСЃР”РµРЅСЊРіРё';
                                 switch($item['u_type']) {
                                     case 'emp':
                                         $f_tax = $taxes[1][26]['percent'] + $taxes[1][27]['percent'];
@@ -2801,7 +2801,7 @@ class sbr_adm_finance extends sbr_adm {
                                 }
                                 break;
                             case exrates::CARD:
-                                $f_ps = 'Пластиковая карта';
+                                $f_ps = 'РџР»Р°СЃС‚РёРєРѕРІР°СЏ РєР°СЂС‚Р°';
                                 switch($item['u_type']) {
                                     case 'emp':
                                         $f_tax = $taxes[1][32]['percent'] + $taxes[1][33]['percent'];
@@ -2819,7 +2819,7 @@ class sbr_adm_finance extends sbr_adm {
                                 }
                                 break;
                             case exrates::BANK:
-                                $f_ps = 'Безнал';
+                                $f_ps = 'Р‘РµР·РЅР°Р»';
                                 switch($item['u_type']) {
                                     case 'emp':
                                         $f_tax = $taxes[1][30]['percent'] + $taxes[1][31]['percent'];
@@ -2841,7 +2841,7 @@ class sbr_adm_finance extends sbr_adm {
                                 }
                                 break;
                             case exrates::WEBM:
-                                $f_ps = 'Веб кошелек';
+                                $f_ps = 'Р’РµР± РєРѕС€РµР»РµРє';
                                 switch($item['u_type']) {
                                     case 'emp':
                                         $f_tax = $taxes[1][34]['percent'] + $taxes[1][35]['percent'];

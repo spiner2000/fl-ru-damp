@@ -26,7 +26,7 @@ $captcha2->setNumber();
     <div class="g-txt_center" id="email_remind">
 
         <h1 class="b-layout__title b-layout__title_lh_1 b-layout__title_fs24 b-layout__title_color_333 b-layout__title_padbot_25">
-            Для восстановления доступа к аккаунту заполните форму ниже
+            Р”Р»СЏ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ РґРѕСЃС‚СѓРїР° Рє Р°РєРєР°СѓРЅС‚Сѓ Р·Р°РїРѕР»РЅРёС‚Рµ С„РѕСЂРјСѓ РЅРёР¶Рµ
         </h1>
 
         <div class="b-layout b-layout_inline-block b-layout_width_330 b-layout_width_full_iphone">
@@ -42,7 +42,7 @@ $captcha2->setNumber();
                                            id="remind_email" 
                                            name="remind_email" 
                                            class="b-combo__input-text"
-                                           placeholder="Email, логин или телефон"/>
+                                           placeholder="Email, Р»РѕРіРёРЅ РёР»Рё С‚РµР»РµС„РѕРЅ"/>
                                     <label class="b-combo__label" for="remind_email"></label>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@ $captcha2->setNumber();
                                  b-shadow_hide"
                                  id="remind_email_error">
                                  <span class="b-icon b-icon_sbr_rattent"></span>
-                                 <span id="remind_email_error_txt">Ошибка</span>
+                                 <span id="remind_email_error_txt">РћС€РёР±РєР°</span>
                             </div>
                         </td>
                     </tr>
@@ -96,7 +96,7 @@ $captcha2->setNumber();
                                 <div class="b-captcha__txt b-captcha__txt_padtop_5">
                                     <a onClick="$('image_rnd').set('src','/image.php?num='+$('captchanum').get('value')+'&r='+Math.random());" 
                                        href="javascript:void(0)" 
-                                       class="b-captcha__link">Обновить картинку</a>
+                                       class="b-captcha__link">РћР±РЅРѕРІРёС‚СЊ РєР°СЂС‚РёРЅРєСѓ</a>
                                 </div>
                             </div>
 
@@ -110,7 +110,7 @@ $captcha2->setNumber();
                                  b-shadow_hide" 
                                  id="remind_captcha_error">
                                  <span class="b-icon b-icon_sbr_rattent"></span>
-                                 <span id="remind_captcha_error_txt">Ошибка</span>
+                                 <span id="remind_captcha_error_txt">РћС€РёР±РєР°</span>
                             </div>
                         </td>
                     </tr>
@@ -132,7 +132,7 @@ $captcha2->setNumber();
                                            name="role" 
                                            type="text" 
                                            size="80" 
-                                           placeholder="Тип аккаунта"
+                                           placeholder="РўРёРї Р°РєРєР°СѓРЅС‚Р°"
                                            readonly="readonly"/>
                                     <label for="role" class="b-combo__label"></label>
                                     <span class="b-combo__arrow"></span>
@@ -146,7 +146,7 @@ $captcha2->setNumber();
                                 <button class="b-button b-button_flat b-button_flat_green b-button_flat_large b-button_flat_width_full b-button_disabled" 
                                         id="remind_button_email" 
                                         onclick="yaCounter6051055.reachGoal('get_remind_frl'); RemindByEmail();">
-                                    Восстановить доступ
+                                    Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РґРѕСЃС‚СѓРї
                                 </button>
                             </div>
                         </td>
@@ -161,11 +161,11 @@ $captcha2->setNumber();
     <div id="remind_ok_email" style="display:none;">
         <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_padleft_20">
             <span class="b-icon b-icon_sbr_gattent b-icon_margleft_-20"></span>
-            На регистрационный e-mail (<span id="remind_ok_email_txt">al*****23@m**l.ru</span>) аккаунта отправлено письмо<br>с дальнейшими инструкциями по восстановлению доступа.
+            РќР° СЂРµРіРёСЃС‚СЂР°С†РёРѕРЅРЅС‹Р№ e-mail (<span id="remind_ok_email_txt">al*****23@m**l.ru</span>) Р°РєРєР°СѓРЅС‚Р° РѕС‚РїСЂР°РІР»РµРЅРѕ РїРёСЃСЊРјРѕ<br>СЃ РґР°Р»СЊРЅРµР№С€РёРјРё РёРЅСЃС‚СЂСѓРєС†РёСЏРјРё РїРѕ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЋ РґРѕСЃС‚СѓРїР°.
         </div>
-        <div class="b-layout__txt b-layout__txt_padbot_20">Если письмо не будет получено в течении 10 минут - пожалуйста, проверьте папку СПАМ<br>в указанном почтовом ящике или повторите процедуру восстановления доступа.</div>
+        <div class="b-layout__txt b-layout__txt_padbot_20">Р•СЃР»Рё РїРёСЃСЊРјРѕ РЅРµ Р±СѓРґРµС‚ РїРѕР»СѓС‡РµРЅРѕ РІ С‚РµС‡РµРЅРёРё 10 РјРёРЅСѓС‚ - РїРѕР¶Р°Р»СѓР№СЃС‚Р°, РїСЂРѕРІРµСЂСЊС‚Рµ РїР°РїРєСѓ РЎРџРђРњ<br>РІ СѓРєР°Р·Р°РЅРЅРѕРј РїРѕС‡С‚РѕРІРѕРј СЏС‰РёРєРµ РёР»Рё РїРѕРІС‚РѕСЂРёС‚Рµ РїСЂРѕС†РµРґСѓСЂСѓ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ РґРѕСЃС‚СѓРїР°.</div>
         <div class="b-buttons b-buttons_padbot_20">
-            <a class="b-button b-button_flat b-button_flat_green" href="/login/">Авторизоваться</a>
+            <a class="b-button b-button_flat b-button_flat_green" href="/login/">РђРІС‚РѕСЂРёР·РѕРІР°С‚СЊСЃСЏ</a>
             
         </div>
     </div>
@@ -173,11 +173,11 @@ $captcha2->setNumber();
     <div id="remind_ok_phone" style="display:none;">
         <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_padleft_20">
             <span class="b-icon b-icon_sbr_gattent b-icon_margleft_-20"></span>
-            На привязанный к аккаунту телефон (<span id="remind_ok_phone_txt">?+7960****123</span>) отправлено СМС-сообщение с логином<br>и новым паролем, с помощью которых вы сможете авторизоваться и продолжить работу на сайте.
+            РќР° РїСЂРёРІСЏР·Р°РЅРЅС‹Р№ Рє Р°РєРєР°СѓРЅС‚Сѓ С‚РµР»РµС„РѕРЅ (<span id="remind_ok_phone_txt">?+7960****123</span>) РѕС‚РїСЂР°РІР»РµРЅРѕ РЎРњРЎ-СЃРѕРѕР±С‰РµРЅРёРµ СЃ Р»РѕРіРёРЅРѕРј<br>Рё РЅРѕРІС‹Рј РїР°СЂРѕР»РµРј, СЃ РїРѕРјРѕС‰СЊСЋ РєРѕС‚РѕСЂС‹С… РІС‹ СЃРјРѕР¶РµС‚Рµ Р°РІС‚РѕСЂРёР·РѕРІР°С‚СЊСЃСЏ Рё РїСЂРѕРґРѕР»Р¶РёС‚СЊ СЂР°Р±РѕС‚Сѓ РЅР° СЃР°Р№С‚Рµ.
         </div>
-        <div class="b-layout__txt b-layout__txt_padbot_20">Если сообщение не будет получено в течении 10 минут - рекомендуем повторить <br>процедуру восстановления доступа.</div>
+        <div class="b-layout__txt b-layout__txt_padbot_20">Р•СЃР»Рё СЃРѕРѕР±С‰РµРЅРёРµ РЅРµ Р±СѓРґРµС‚ РїРѕР»СѓС‡РµРЅРѕ РІ С‚РµС‡РµРЅРёРё 10 РјРёРЅСѓС‚ - СЂРµРєРѕРјРµРЅРґСѓРµРј РїРѕРІС‚РѕСЂРёС‚СЊ <br>РїСЂРѕС†РµРґСѓСЂСѓ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ РґРѕСЃС‚СѓРїР°.</div>
         <div class="b-buttons b-buttons_padbot_20">
-            <a class="b-button b-button_flat b-button_flat_green" href="/login/">Авторизоваться</a>
+            <a class="b-button b-button_flat b-button_flat_green" href="/login/">РђРІС‚РѕСЂРёР·РѕРІР°С‚СЊСЃСЏ</a>
             
         </div>
     </div>    

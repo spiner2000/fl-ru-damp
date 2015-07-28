@@ -1,6 +1,6 @@
 <? if (!$_SESSION['F'] && !$_SESSION['E'] && $sbr->isAdmin() && $stage->status == sbr_stages::STATUS_INARBITRAGE) { ?>
 <div class="b-layout b-layout_float_right b-layout_pad_10 b-layout_margtop_20">
-    <div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_inline-block">Арбитр</div>&nbsp;
+    <div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_inline-block">РђСЂР±РёС‚СЂ</div>&nbsp;
     <div class="b-combo b-combo_inline-block" id="arbitr_combo_div">
         <script>
             arbitrsList = {};
@@ -18,34 +18,34 @@
 <? } ?>
 <div class="nr-h c">
 	<div class="nr-start">
-      <a href="?site=admin">Администрирование</a>
+      <a href="?site=admin">РђРґРјРёРЅРёСЃС‚СЂРёСЂРѕРІР°РЅРёРµ</a>
 	</div>
     <div class="nr-docs" style="width:300px;padding:10px;background:<?=($_SESSION['E'] ? '#E6F5C6' : ($_SESSION['F'] ? '#E6E6E5' : '#FFCECE'))?>">
         <ul>
-            <li>Вы зашли как
+            <li>Р’С‹ Р·Р°С€Р»Рё РєР°Рє
               <? if($_SESSION['E']) { ?>
-                <a href="/users/<?=$_SESSION['E']?>/" class="employer-name">ЗАКАЗЧИК [<?=$_SESSION['E']?>]</a>
+                <a href="/users/<?=$_SESSION['E']?>/" class="employer-name">Р—РђРљРђР—Р§РРљ [<?=$_SESSION['E']?>]</a>
               <? } else if($_SESSION['F']) { ?>
-                <a href="/users/<?=$_SESSION['F']?>/" class="freelancer-name">ИСПОЛНИТЕЛЬ [<?=$_SESSION['F']?>]</a>
+                <a href="/users/<?=$_SESSION['F']?>/" class="freelancer-name">РРЎРџРћР›РќРРўР•Р›Р¬ [<?=$_SESSION['F']?>]</a>
               <? } else { ?>
-                <a href="/users/<?=$_SESSION['login']?>/" class="arbitrage-name">АДМИНИСТРАТОР</a>
+                <a href="/users/<?=$_SESSION['login']?>/" class="arbitrage-name">РђР”РњРРќРРЎРўР РђРўРћР </a>
               <? } ?>
             </li>
             <li id="admin_access_sw">
                 <?php if(hasPermissions('sbr')) {?>
-                <a href="javascript:;" class="lnk-dot-blue" onclick="document.getElementById('admin_access_bx').style.display='block';this.parentNode.style.display='none'">Сменить уровень доступа</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="javascript:;" class="lnk-dot-blue" onclick="document.getElementById('admin_access_bx').style.display='block';this.parentNode.style.display='none'">РЎРјРµРЅРёС‚СЊ СѓСЂРѕРІРµРЅСЊ РґРѕСЃС‚СѓРїР°</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <?php }//else?>
-                <a href="<?=($site_uri ? $site_uri.'&' : '?')?>access=U">Выйти</a>
+                <a href="<?=($site_uri ? $site_uri.'&' : '?')?>access=U">Р’С‹Р№С‚Рё</a>
             </li>
             <li id="admin_access_bx" style="display:none">
               <? if(!$_SESSION['E'] && $sbr->emp_login) { ?>
-              <a href="<?=($site_uri ? $site_uri.'&' : '?')?>access=A&E=<?=$sbr->emp_login?>">Заказчик</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="<?=($site_uri ? $site_uri.'&' : '?')?>access=A&E=<?=$sbr->emp_login?>">Р—Р°РєР°Р·С‡РёРє</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <? } if(!$_SESSION['F'] && $sbr->frl_login) { ?>
-              <a href="<?=($site_uri ? $site_uri.'&' : '?')?>access=A&F=<?=$sbr->frl_login?>">Исполнитель</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="<?=($site_uri ? $site_uri.'&' : '?')?>access=A&F=<?=$sbr->frl_login?>">РСЃРїРѕР»РЅРёС‚РµР»СЊ</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <? } if($_SESSION['E'] || $_SESSION['F']) { ?>
-              <a href="<?=($site_uri ? $site_uri.'&' : '?')?>access=A">Администратор</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="<?=($site_uri ? $site_uri.'&' : '?')?>access=A">РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <? } ?>
-              <a href="javascript:;" class="lnk-dot-blue" onclick="document.getElementById('admin_access_sw').style.display='block';this.parentNode.style.display='none'">Отмена</a>
+              <a href="javascript:;" class="lnk-dot-blue" onclick="document.getElementById('admin_access_sw').style.display='block';this.parentNode.style.display='none'">РћС‚РјРµРЅР°</a>
             </li>
 		</ul>
 	</div>

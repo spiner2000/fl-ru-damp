@@ -89,7 +89,7 @@ function checkexts() {
                 if (!ok) {
                     var fname = grp[i].value.split(/[\/|\\]/);
                     fname = fname[fname.length - 1];
-                    alert("Формат файла "+fname+" недопустим к загрузке.");
+                    alert("Р¤РѕСЂРјР°С‚ С„Р°Р№Р»Р° "+fname+" РЅРµРґРѕРїСѓСЃС‚РёРј Рє Р·Р°РіСЂСѓР·РєРµ.");
                     return false;
                 }
             }
@@ -105,7 +105,7 @@ function checkexts() {
             if (!ok) {
                 var fname = grp.value.split(/[\/|\\]/);
                 fname = fname[fname.length - 1];
-                alert("Формат файла "+fname+" недопустим к загрузке.");
+                alert("Р¤РѕСЂРјР°С‚ С„Р°Р№Р»Р° "+fname+" РЅРµРґРѕРїСѓСЃС‚РёРј Рє Р·Р°РіСЂСѓР·РєРµ.");
                 return false;
             }
         }
@@ -121,7 +121,7 @@ function sendMessage() {
     }
     if ( checkexts() && !is_sending ) { 
         is_sending = 1;
-        $('btn_text').set('html','Подождите');
+        $('btn_text').set('html','РџРѕРґРѕР¶РґРёС‚Рµ');
         $('btn_text').set('disabled',true); 
         // for Opera
         sending_interval = setTimeout( function() { 
@@ -134,7 +134,7 @@ function sendMessage() {
     }
 }
 
-// прокрутка к диалогу при загрузке страницы
+// РїСЂРѕРєСЂСѓС‚РєР° Рє РґРёР°Р»РѕРіСѓ РїСЂРё Р·Р°РіСЂСѓР·РєРµ СЃС‚СЂР°РЅРёС†С‹
 window.addEvent('domready', function(){
     JSScroll($('user_info_table'));
 });
@@ -157,7 +157,7 @@ window.addEvent('domready', function(){
     }
 <? } ?>
 
-<?php // жалобы на спам-------------------------- ?>
+<?php // Р¶Р°Р»РѕР±С‹ РЅР° СЃРїР°Рј-------------------------- ?>
 var sSpamComplaintSid = '<?=$user->uid?>';
 var sSpamComplaintUid = '<?=$_SESSION['uid']?>';
 var aSpamComplaintMsg = new Array();
@@ -193,7 +193,7 @@ function sendSpamComplaint() {
     </div>
 </form>
 
-<h1 class="b-page__title">Сообщения</h1>
+<h1 class="b-page__title">РЎРѕРѕР±С‰РµРЅРёСЏ</h1>
 
 <table class="b-layout__table b-layout__table_width_full">
    <tr class="b-layout__tr">
@@ -220,19 +220,19 @@ function sendSpamComplaint() {
                           'is_profi'=>$user->is_profi
                       ));?>
                       
-                      <?=($user->is_banned && !$alert[3] ? "<br /><span style='color: #FF500B'>Пользователь&nbsp;заблокирован</span>" : "")?>
+                      <?=($user->is_banned && !$alert[3] ? "<br /><span style='color: #FF500B'>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ&nbsp;Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ</span>" : "")?>
                       <br />
-                      <span class="cl9">Всего сообщений: <?=$num_msgs_from?></span><br />
+                      <span class="cl9">Р’СЃРµРіРѕ СЃРѕРѕР±С‰РµРЅРёР№: <?=$num_msgs_from?></span><br />
                       <?/* if(!$post_denied) { ?>
-                        <a href="/contacts/?from=<?=$user->login?>#form" class="blue">Написать новое сообщение</a><br/>
+                        <a href="/contacts/?from=<?=$user->login?>#form" class="blue">РќР°РїРёСЃР°С‚СЊ РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ</a><br/>
                       <? } */?>
                       <div class="vfolders"><? if ($folders)
                       foreach ($folders as $ikey => $folder) {
                           ?><div id="vfolder<?=$folder['id']?>" class="<? if ($users_folders[$dlg_user] && in_array($folder['id'], $users_folders[$dlg_user])) { ?>active<? } else { ?>passive<? } ?>"><?=$folder['fname']?></div> <?
-                       } ?><div id="vfolder-1" class="<? if ( ($users_folders[$dlg_user] && in_array(-1, $users_folders[$dlg_user]))) { ?>active<? } else { ?>passive<? } ?>">Избранные</div> <div id="vfolder-2" class="<? if ($users_folders[$dlg_user] && in_array(-2, $users_folders[$dlg_user])) { ?>active<? } else { ?>passive<? } ?>">Игнорирую </div>
+                       } ?><div id="vfolder-1" class="<? if ( ($users_folders[$dlg_user] && in_array(-1, $users_folders[$dlg_user]))) { ?>active<? } else { ?>passive<? } ?>">РР·Р±СЂР°РЅРЅС‹Рµ</div> <div id="vfolder-2" class="<? if ($users_folders[$dlg_user] && in_array(-2, $users_folders[$dlg_user])) { ?>active<? } else { ?>passive<? } ?>">РРіРЅРѕСЂРёСЂСѓСЋ </div>
           
                        <?php if ($users_folders[$dlg_user] && in_array(-6, $users_folders[$dlg_user])) { ?>
-                       <div class="active delivery">Платные рассылки</div>
+                       <div class="active delivery">РџР»Р°С‚РЅС‹Рµ СЂР°СЃСЃС‹Р»РєРё</div>
                        <?php } ?>
                       </div>
           
@@ -246,8 +246,8 @@ function sendSpamComplaint() {
                        <? } ?>
                        <br />
                        <? } ?>
-                      <div onMouseOver="inner=true;" onMouseOut="inner=false;" id="folder-1" <? if ($users_folders[$dlg_user] && in_array(-1, $users_folders[$dlg_user])) { ?>class="active"<? } else { ?>class="passive"<? } ?> onClick="xajax_ChFolderInner(-1, '<?=$dlg_user_login?>');">Избранные</div><br />
-                      <? if(!in_array($user->login, $usersNotBeIgnored)) { ?><div onMouseOver="inner=true;" onMouseOut="inner=false;" id="folder-2" <? if ($users_folders[$dlg_user] && in_array(-2, $users_folders[$dlg_user])) { ?>class="active"<? } else { ?>class="passive"<? } ?> onClick="xajax_ChFolderInner(-2, '<?=$dlg_user_login?>');">Игнорирую</div><br /><?}?> <div onMouseOver="inner=true;" onMouseOut="inner=false;" class="blue" onClick="if (warning(3)) {document.getElementById('sel').value=<?=$dlg_user?>;frm.action.value='delete'; frm.submit();} else return(false);">Удалить</div></div>
+                      <div onMouseOver="inner=true;" onMouseOut="inner=false;" id="folder-1" <? if ($users_folders[$dlg_user] && in_array(-1, $users_folders[$dlg_user])) { ?>class="active"<? } else { ?>class="passive"<? } ?> onClick="xajax_ChFolderInner(-1, '<?=$dlg_user_login?>');">РР·Р±СЂР°РЅРЅС‹Рµ</div><br />
+                      <? if(!in_array($user->login, $usersNotBeIgnored)) { ?><div onMouseOver="inner=true;" onMouseOut="inner=false;" id="folder-2" <? if ($users_folders[$dlg_user] && in_array(-2, $users_folders[$dlg_user])) { ?>class="active"<? } else { ?>class="passive"<? } ?> onClick="xajax_ChFolderInner(-2, '<?=$dlg_user_login?>');">РРіРЅРѕСЂРёСЂСѓСЋ</div><br /><?}?> <div onMouseOver="inner=true;" onMouseOut="inner=false;" class="blue" onClick="if (warning(3)) {document.getElementById('sel').value=<?=$dlg_user?>;frm.action.value='delete'; frm.submit();} else return(false);">РЈРґР°Р»РёС‚СЊ</div></div>
                       </div>
                       <? } ?>
           
@@ -283,7 +283,7 @@ function sendSpamComplaint() {
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                  <tr>
                   <td style="padding-top:10px; text-align:left">
-                   Новое сообщение:
+                   РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ:
                   </td>
                  </tr>
                  <tr>
@@ -297,9 +297,9 @@ function sendSpamComplaint() {
                    <? if ($prjname) { ?>
                    <input type="hidden" name="prjname" value="<?=$prjname?>" /> <? } } ?>
                   <div class="b-textarea">
-                   <textarea <?php echo ( $alert[3] ) ? 'disabled="disabled"' : '';?> cols="10" rows="14" name="msg" class="b-textarea__textarea b-textarea__textarea_fontsize_11" id="msg"><? if ($prjname && !$msg) print("&gt;  Проект/Предложение &laquo;$prjname&raquo;\n"); else if ($msg) print stripslashes($msg); ?></textarea>
+                   <textarea <?php echo ( $alert[3] ) ? 'disabled="disabled"' : '';?> cols="10" rows="14" name="msg" class="b-textarea__textarea b-textarea__textarea_fontsize_11" id="msg"><? if ($prjname && !$msg) print("&gt;  РџСЂРѕРµРєС‚/РџСЂРµРґР»РѕР¶РµРЅРёРµ &laquo;$prjname&raquo;\n"); else if ($msg) print stripslashes($msg); ?></textarea>
                   </div>
-                          Можно использовать &lt;b&gt;&lt;i&gt;&lt;p&gt;&lt;ul&gt;&lt;li&gt;&lt;h&gt;
+                          РњРѕР¶РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ &lt;b&gt;&lt;i&gt;&lt;p&gt;&lt;ul&gt;&lt;li&gt;&lt;h&gt;
                    <? if ($alert[2]) print(view_error($alert[2])) ?>
                   </td>
                  </tr>
@@ -320,13 +320,13 @@ function sendSpamComplaint() {
                             <b class="b-fon__b2"></b>
                             <div class="b-fon__body">
                              <div class="b-captcha b-captcha_pad_5_10">
-                              <span class="b-captcha__descr">Вы отправили более 3 сообщений за 1 минуту.<br>Чтобы отправить это сообщение, введите код с картинки:</span>
+                              <span class="b-captcha__descr">Р’С‹ РѕС‚РїСЂР°РІРёР»Рё Р±РѕР»РµРµ 3 СЃРѕРѕР±С‰РµРЅРёР№ Р·Р° 1 РјРёРЅСѓС‚Сѓ.<br>Р§С‚РѕР±С‹ РѕС‚РїСЂР°РІРёС‚СЊ СЌС‚Рѕ СЃРѕРѕР±С‰РµРЅРёРµ, РІРІРµРґРёС‚Рµ РєРѕРґ СЃ РєР°СЂС‚РёРЅРєРё:</span>
                                           <img id="capcha" class="b-captcha__img b-captcha__img_bord_b2b2b2" src="/image.php?num=<?=$captchanum?>" alt="" onClick="$('capcha').set('src','/image.php?num='+$('captchanum').get('value')+'&r='+Math.random());" width="130" height="60" />
                               <div class="b-input b-input_width_120 b-input_height_60 b-input_inline-block">
                                               <input id="captchanum" name="captchanum" type="hidden" value="<?=$captchanum?>" />
                                               <input id="rndnum" class="b-input__text"  name="rndnum" type="text" value="" maxlength="5" />
                               </div>
-                                          <a class="b-captcha__link b-captcha__link_color_333 b-captcha__link_margtop_20" href="#" onClick="$('capcha').set('src','/image.php?num='+$('captchanum').get('value')+'&r='+Math.random()); return false;" >Обновить картинку</a>
+                                          <a class="b-captcha__link b-captcha__link_color_333 b-captcha__link_margtop_20" href="#" onClick="$('capcha').set('src','/image.php?num='+$('captchanum').get('value')+'&r='+Math.random()); return false;" >РћР±РЅРѕРІРёС‚СЊ РєР°СЂС‚РёРЅРєСѓ</a>
                              </div>
                             </div>
                             <b class="b-fon__b2"></b>
@@ -341,7 +341,7 @@ function sendSpamComplaint() {
                  <tr style="vertical-align:top">
                  <td>
                  
-                 <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="#" onClick="this.getParent().hide();$('attachedfiles').removeClass('b-layout_hide');return false;"><span class="b-icon b-icon__ref"></span></a><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="#" onClick="this.getParent().hide();$('attachedfiles').removeClass('b-layout_hide');return false;">Добавить файлы в сообщение</a></div>
+                 <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="#" onClick="this.getParent().hide();$('attachedfiles').removeClass('b-layout_hide');return false;"><span class="b-icon b-icon__ref"></span></a><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="#" onClick="this.getParent().hide();$('attachedfiles').removeClass('b-layout_hide');return false;">Р”РѕР±Р°РІРёС‚СЊ С„Р°Р№Р»С‹ РІ СЃРѕРѕР±С‰РµРЅРёРµ</a></div>
               
                           <!-- Attaches -->
                           <div id="attachedfiles" class="b-fon b-fon_padbot_10 b-layout_hide"></div>
@@ -388,15 +388,15 @@ function sendSpamComplaint() {
               
                   <input type="hidden" name="msg_to" value="<?=$chat_with?>" />
               <!--
-                  <input <?php echo ( $alert[3] ) ? 'onclick="return false" disabled="disabled"' : '';?> style="margin-top: 42px !important;" type="submit" name="btn" class="btn" value="Отправить">
+                  <input <?php echo ( $alert[3] ) ? 'onclick="return false" disabled="disabled"' : '';?> style="margin-top: 42px !important;" type="submit" name="btn" class="btn" value="РћС‚РїСЂР°РІРёС‚СЊ">
               -->
               
                   <div>
                    <span class="todrafts">
-                    <span class="time-save" id="draft_time_save" style="display:none;"></span> <a href="javascript:DraftSave();" onclick="this.blur();" class="btnr-mb"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">В черновики</span></span></span></a>
+                    <span class="time-save" id="draft_time_save" style="display:none;"></span> <a href="javascript:DraftSave();" onclick="this.blur();" class="btnr-mb"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Р’ С‡РµСЂРЅРѕРІРёРєРё</span></span></span></a>
                 </span>
                    <!-- DRAFTS NEW BLOCK -->
-                   <button type="button" id="btn" class="b-button b-button_flat b-button_flat_green"  href="javascript: void(0)" onmousedown="return false" onmouseup="return sendMessage()"><span id="btn_text">Отправить сообщение</span></button>
+                   <button type="button" id="btn" class="b-button b-button_flat b-button_flat_green"  href="javascript: void(0)" onmousedown="return false" onmouseup="return sendMessage()"><span id="btn_text">РћС‚РїСЂР°РІРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ</span></button>
                    <!-- DRAFTS NEW BLOCK -->
                </div>
               
@@ -435,11 +435,11 @@ function sendSpamComplaint() {
                       <td<?=($is_my ? '' : ' class="d_him"')?> style="text-align:left;">
                          
                       
-                      <?php // жалобы на спам
+                      <?php // Р¶Р°Р»РѕР±С‹ РЅР° СЃРїР°Рј
                       if ( !$frase['deleted'] && !$is_my && !$user->is_banned && $frase['to_id'] && !in_array($user->login, $userNotBeSpam) && $frase['is_spam'] != 't' && $user->is_team != 't' ) { 
-                          // не удалено модератором, не свои, не от забаненного, не платные, не от админа и мы на это еще не жаловались
+                          // РЅРµ СѓРґР°Р»РµРЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј, РЅРµ СЃРІРѕРё, РЅРµ РѕС‚ Р·Р°Р±Р°РЅРµРЅРЅРѕРіРѕ, РЅРµ РїР»Р°С‚РЅС‹Рµ, РЅРµ РѕС‚ Р°РґРјРёРЅР° Рё РјС‹ РЅР° СЌС‚Рѕ РµС‰Рµ РЅРµ Р¶Р°Р»РѕРІР°Р»РёСЃСЊ
                       ?>
-                      <div id="mess_spam_<?=$nSpamComplaintCnt?>" class="mess-spam"><a onclick="popupSpamComplaint(<?=$nSpamComplaintCnt?>);" href="javascript:void(0);">Это спам!</a></div>
+                      <div id="mess_spam_<?=$nSpamComplaintCnt?>" class="mess-spam"><a onclick="popupSpamComplaint(<?=$nSpamComplaintCnt?>);" href="javascript:void(0);">Р­С‚Рѕ СЃРїР°Рј!</a></div>
                       <script type="text/javascript">
                       aSpamComplaintMsg[<?=$nSpamComplaintCnt?>]      = new Object();
                       aSpamComplaintMsg[<?=$nSpamComplaintCnt?>].id   = '<?=$frase['id']?>';
@@ -452,10 +452,10 @@ function sendSpamComplaint() {
                       
                       <div class="utxt <?=($is_my?'':' utxt_contacts')?>" style=" <?=($is_my ? '' : 'color: #A34747 !important')?>">
                          <img class="b-page__ipad" src="/images/triangle_<?=($is_my ? 'grey' : 'red')?>.gif" alt="" width="4" height="11" style="border:0;" />
-                      <strong><?=$uname?> <?=$usurname?> [<?=$login?>]</strong> <?=date("d.m.y в H:i",strtotimeEx($frase['post_time']))?>:
+                      <strong><?=$uname?> <?=$usurname?> [<?=$login?>]</strong> <?=date("d.m.y РІ H:i",strtotimeEx($frase['post_time']))?>:
                       <? if ( $frase['modified'] && !$frase['deleted'] ) {?>&nbsp; &nbsp;<?
-                          if ( !$frase['modified_id'] || $frase['modified_id'] == $frase['from_id'] ) { ?>[внесены изменения: <?=date("d.m.Y | H:i]",strtotimeEx($frase['modified'])); }
-                          else { ?>Отредактировано модератором <?=date("[d.m.Y | H:i]",strtotimeEx($frase['modified']));?><?}
+                          if ( !$frase['modified_id'] || $frase['modified_id'] == $frase['from_id'] ) { ?>[РІРЅРµСЃРµРЅС‹ РёР·РјРµРЅРµРЅРёСЏ: <?=date("d.m.Y | H:i]",strtotimeEx($frase['modified'])); }
+                          else { ?>РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј <?=date("[d.m.Y | H:i]",strtotimeEx($frase['modified']));?><?}
                           }?><br />
                       <?php
                       
@@ -466,9 +466,9 @@ function sendSpamComplaint() {
                               $msg_text = $stop_words->replace( $frase['msg_text'] );
                           }
                           elseif ( $frase['deleted'] ) {
-                              $msg_text = '[Сообщение удалено модератором]';
+                              $msg_text = '[РЎРѕРѕР±С‰РµРЅРёРµ СѓРґР°Р»РµРЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј]';
                               if ($frase['from_id'] == get_uid(false) && strlen($frase['reason'])) {
-                                  $msg_text .= '<br/>Причина: '. $frase['reason'];
+                                  $msg_text .= '<br/>РџСЂРёС‡РёРЅР°: '. $frase['reason'];
                               }
                           }
                           else {
@@ -540,7 +540,7 @@ function sendSpamComplaint() {
                   <?
                   }
                   ?>
-              <? // Страницы
+              <? // РЎС‚СЂР°РЅРёС†С‹
               
                   $pages = ceil($num_msgs_from / $page_size);
                   $sHref = "%s?from={$user->login}&curpage=%d%s";
@@ -554,11 +554,11 @@ function sendSpamComplaint() {
                           ?>
                       </td>
                   </tr>
-                  <? } // Страницы закончились?>
+                  <? } // РЎС‚СЂР°РЅРёС†С‹ Р·Р°РєРѕРЅС‡РёР»РёСЃСЊ?>
               </table>
               
               <?php
-              // жалоба на спам
+              // Р¶Р°Р»РѕР±Р° РЅР° СЃРїР°Рј
               include_once( $_SERVER['DOCUMENT_ROOT'] . '/contacts/spam_complaint_popup.php' );
               ?>
               

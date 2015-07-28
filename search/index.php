@@ -13,7 +13,7 @@ session_start();
 stat_collector::setStamp(); // stamp
 $uid    = get_uid();
 $type   = __paramInit('string', 'type', NULL);
-// для фрилансеров по-умолчанию - поиск проектов
+// РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РїРѕ-СѓРјРѕР»С‡Р°РЅРёСЋ - РїРѕРёСЃРє РїСЂРѕРµРєС‚РѕРІ
 if ($type === null) {
     $type = (is_emp() || !get_uid(0))? 'users': 'projects';
 }
@@ -39,8 +39,8 @@ $query_string = stripslashes(http_build_query($build));
 unset($build['type']);
 $query_string_menu = stripslashes(http_build_query($build));
 $userLimit = intval(isset($_COOKIE['seUserLimit'])?$_COOKIE['seUserLimit']:0);
-// $_SESSION['search_elms'] -- ассоциирован с базовыми индексами (ключами) элементов поиска.
-// Элементы принимают значения количества найденных документов в предыдущем поиске, либо пустая строка '' -- категория отключена пользователем.
+// $_SESSION['search_elms'] -- Р°СЃСЃРѕС†РёРёСЂРѕРІР°РЅ СЃ Р±Р°Р·РѕРІС‹РјРё РёРЅРґРµРєСЃР°РјРё (РєР»СЋС‡Р°РјРё) СЌР»РµРјРµРЅС‚РѕРІ РїРѕРёСЃРєР°.
+// Р­Р»РµРјРµРЅС‚С‹ РїСЂРёРЅРёРјР°СЋС‚ Р·РЅР°С‡РµРЅРёСЏ РєРѕР»РёС‡РµСЃС‚РІР° РЅР°Р№РґРµРЅРЅС‹С… РґРѕРєСѓРјРµРЅС‚РѕРІ РІ РїСЂРµРґС‹РґСѓС‰РµРј РїРѕРёСЃРєРµ, Р»РёР±Рѕ РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР° '' -- РєР°С‚РµРіРѕСЂРёСЏ РѕС‚РєР»СЋС‡РµРЅР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј.
 /*if(!isset($_SESSION['search_elms']))
     $_SESSION['search_elms'] = array('projects'=>0, 'users'=>0, 'works'=>0, 'messages'=>0, 'commune'=>0, 'blogs'=>0, 'articles'=>0, 'notes'=>0);*/
 if(!isset($_SESSION['search_elms'][$type])) {
@@ -52,13 +52,13 @@ if($_GET['action'] != 'search_advanced') {
 if(isset($_GET['search_string'])) {
     $_SESSION['search_string'] = base64_encode($_GET['search_string']);
 }
-$search_tabs = array('works'    => array("name" => "Работы", "search" => "works"),
-                     'messages' => array("name" => "Личные сообщения", "search" => "messages"),  
-                     'commune'  => array("name" => "Сообщества", "search" => "commune"),
-                     'blogs'    => array("name" => "Блоги", "search" => "blogs"),
-                  //   'articles' => array("name" => "Статьи и интервью", "search" => "articles"),
-                     'notes'    => array("name" => "Личные заметки", "search" => "notes"));
-//#0026462 Убираем поиск по статьям и магазинам
+$search_tabs = array('works'    => array("name" => "Р Р°Р±РѕС‚С‹", "search" => "works"),
+                     'messages' => array("name" => "Р›РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ", "search" => "messages"),  
+                     'commune'  => array("name" => "РЎРѕРѕР±С‰РµСЃС‚РІР°", "search" => "commune"),
+                     'blogs'    => array("name" => "Р‘Р»РѕРіРё", "search" => "blogs"),
+                  //   'articles' => array("name" => "РЎС‚Р°С‚СЊРё Рё РёРЅС‚РµСЂРІСЊСЋ", "search" => "articles"),
+                     'notes'    => array("name" => "Р›РёС‡РЅС‹Рµ Р·Р°РјРµС‚РєРё", "search" => "notes"));
+//#0026462 РЈР±РёСЂР°РµРј РїРѕРёСЃРє РїРѕ СЃС‚Р°С‚СЊСЏРј Рё РјР°РіР°Р·РёРЅР°Рј
 if (in_array($type, array('articles'))) {
     header_location_exit('/404.php');
 }
@@ -322,7 +322,7 @@ switch($type) {
             unset($_SESSION['search_advanced'][$type]);
         }
         
-        // вывод по-умолчанию последних N (в зависимости от выбранного значения) проектов #0019045
+        // РІС‹РІРѕРґ РїРѕ-СѓРјРѕР»С‡Р°РЅРёСЋ РїРѕСЃР»РµРґРЅРёС… N (РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РІС‹Р±СЂР°РЅРЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ) РїСЂРѕРµРєС‚РѕРІ #0019045
         $top_projects = null;
         $top_projects_cnt = null;
         if (get_uid(0) && !is_emp() && !isset($_POST['search_string'])) {
@@ -422,7 +422,7 @@ switch ($action) {
         break;
 }
 $elements = $search->getElements();
-// Заполняем сессию количеством найденных документов.
+// Р—Р°РїРѕР»РЅСЏРµРј СЃРµСЃСЃРёСЋ РєРѕР»РёС‡РµСЃС‚РІРѕРј РЅР°Р№РґРµРЅРЅС‹С… РґРѕРєСѓРјРµРЅС‚РѕРІ.
 foreach ($elements as $key=>$elm) {
     $_SESSION['search_elms'][$key]  = ($elm->isActive() ? $elm->total : $_SESSION['search_elms'][$key]);
     $_SESSION['search_limit'][$key] = ($elm->isActive() ? $elm->getProperty('limit') : $_SESSION['search_limit'][$key]);
@@ -448,7 +448,7 @@ if($search_string) {
     $search_input_hint = kwords::getRandomSearchHint($type);
 }
 
-$page_title = "Поиск - фриланс, удаленная работа на FL.ru";
+$page_title = "РџРѕРёСЃРє - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
 $is_use_new_mootools = true;
 $content = "content.php";
 $css_file = array('search.css', 'nav.css','/css/block/b-menu/_tabs/b-menu_tabs.css','/css/block/b-search/b-search.css','/css/block/b-input-hint/b-input-hint.css' );

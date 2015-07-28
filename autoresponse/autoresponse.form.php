@@ -13,23 +13,23 @@ class AutoresponseForm extends Form_View
     {
         $this->addElement(
             new Zend_Form_Element_Textarea('descr', array(
-                    'label' => 'Текст ответа',
+                    'label' => 'РўРµРєСЃС‚ РѕС‚РІРµС‚Р°',
                     'required' => true,
-                    'placeholder' => 'Кратко опишите суть вашего предложения, условия сотрудничества, вопросы и необходимые требования к заказчику перед началом работы.',
-                    'padbot' => 0, // отступ снизу
+                    'placeholder' => 'РљСЂР°С‚РєРѕ РѕРїРёС€РёС‚Рµ СЃСѓС‚СЊ РІР°С€РµРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЏ, СѓСЃР»РѕРІРёСЏ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР°, РІРѕРїСЂРѕСЃС‹ Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ С‚СЂРµР±РѕРІР°РЅРёСЏ Рє Р·Р°РєР°Р·С‡РёРєСѓ РїРµСЂРµРґ РЅР°С‡Р°Р»РѕРј СЂР°Р±РѕС‚С‹.',
+                    'padbot' => 0, // РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ
                     'maxlength' => 1000,
                     'filters' => $this->filters,
                     'validators' => array(
                         array(new Zend_Validate_StringLength(array('max' => 1000)), true),
                     ),
-                    'suffix' => 'Не более 1000 символов.'
+                    'suffix' => 'РќРµ Р±РѕР»РµРµ 1000 СЃРёРјРІРѕР»РѕРІ.'
                 )
             )
         );
 
         $this->addElement(
             new Zend_Form_Element_Checkbox('only_4_cust', array(
-                    'label'      => 'Скрыть ответ, сделав его видимым только работодателю (автору проекта)',
+                    'label'      => 'РЎРєСЂС‹С‚СЊ РѕС‚РІРµС‚, СЃРґРµР»Р°РІ РµРіРѕ РІРёРґРёРјС‹Рј С‚РѕР»СЊРєРѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЋ (Р°РІС‚РѕСЂСѓ РїСЂРѕРµРєС‚Р°)',
                     'required' => false,
                 )
             )
@@ -37,7 +37,7 @@ class AutoresponseForm extends Form_View
 
         $this->addElement(
             new Zend_Form_Element_Text('total', array(
-                    'label' => 'Количество<br>автоответов',
+                    'label' => 'РљРѕР»РёС‡РµСЃС‚РІРѕ<br>Р°РІС‚РѕРѕС‚РІРµС‚РѕРІ',
                     'width' => 80,
                     'required' => false,
                     'validators' => array(
@@ -50,7 +50,7 @@ class AutoresponseForm extends Form_View
 
         $this->addElement(
             new Form_Element_Budget('filter_budget', array(
-                    'label' => 'Бюджет от',
+                    'label' => 'Р‘СЋРґР¶РµС‚ РѕС‚',
                     'width' => 80,
                     'required' => false,
                 )

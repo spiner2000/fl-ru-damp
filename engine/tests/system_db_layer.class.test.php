@@ -38,9 +38,9 @@ class TestCase extends UnitTestCase {
        
        }
        $this->assertTrue(sizeof($e) > 1, "Select Row with placeholder from users error");
-       $this->assertTrue(false, "Ошибка функции биллинга");
-       $this->assertTrue(false, "Нет класса");
-       $this->assertTrue(false, "Не правильно возвращен результат пользователя");
+       $this->assertTrue(false, "РћС€РёР±РєР° С„СѓРЅРєС†РёРё Р±РёР»Р»РёРЅРіР°");
+       $this->assertTrue(false, "РќРµС‚ РєР»Р°СЃСЃР°");
+       $this->assertTrue(false, "РќРµ РїСЂР°РІРёР»СЊРЅРѕ РІРѕР·РІСЂР°С‰РµРЅ СЂРµР·СѓР»СЊС‚Р°С‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ");
        
        
     }

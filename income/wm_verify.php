@@ -6,18 +6,18 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/stdf.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/Verification.php';
 
 $uid    = get_uid();
-$sCode  = __paramInit( 'string', 'code', null, '' );  // временный токен Яндекс.Денег
-$sError = __paramInit( 'string', 'error', null, '' ); // код ошибки ответа Яндекс.Денег
-$sType  = __paramInit( 'string', 'type', null, '' );  // тип возврата
-$sId    = __paramInit( 'string', 'id', null, '' );    // id проекта
-$sfName    = __paramInit( 'string', 'fname', null, '' );    // Имя
-$slName    = __paramInit( 'string', 'lname', null, '' );    // Фамилия
+$sCode  = __paramInit( 'string', 'code', null, '' );  // РІСЂРµРјРµРЅРЅС‹Р№ С‚РѕРєРµРЅ РЇРЅРґРµРєСЃ.Р”РµРЅРµРі
+$sError = __paramInit( 'string', 'error', null, '' ); // РєРѕРґ РѕС€РёР±РєРё РѕС‚РІРµС‚Р° РЇРЅРґРµРєСЃ.Р”РµРЅРµРі
+$sType  = __paramInit( 'string', 'type', null, '' );  // С‚РёРї РІРѕР·РІСЂР°С‚Р°
+$sId    = __paramInit( 'string', 'id', null, '' );    // id РїСЂРѕРµРєС‚Р°
+$sfName    = __paramInit( 'string', 'fname', null, '' );    // РРјСЏ
+$slName    = __paramInit( 'string', 'lname', null, '' );    // Р¤Р°РјРёР»РёСЏ
 $error  = '';
 $exterr = '';
 
 if ( $uid ) {
     if ( $sError || !$sCode ) {
-        $error = 'Произошла ошибка во время верификации.';
+        $error = 'РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° РІРѕ РІСЂРµРјСЏ РІРµСЂРёС„РёРєР°С†РёРё.';
     }
     else {
         $verification = new Verification;

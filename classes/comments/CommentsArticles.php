@@ -13,22 +13,22 @@ class CommentsArticles extends TComments {
     public $enableRating = false;
     
     /**
-     * Øàáëîí àäðåñà ñòðàíèöû ñ êîììåíòàðèÿìè
+     * Ð¨Ð°Ð±Ð»Ð¾Ð½ Ð°Ð´Ñ€ÐµÑÐ° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ Ñ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÑÐ¼Ð¸
      * 
      * @var string
      */
     public $urlTemplate = 'http://{host}/articles/{resource}/#c_{id}';
     
     /**
-     * Îòïðàâëÿòü óâåäîìëåíèÿ îá óäàëåíèè êîììåíòàðèÿ.
-     * â óâåäîìëåíèè èñïîëüçóåòñÿ urlTemplate
+     * ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ Ð¾Ð± ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ð¸ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ñ.
+     * Ð² ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ð¸ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ urlTemplate
      * 
      * @var bool
      */
     public $sendDeleteWarn = true;
     
     /**
-     * Ïåðåêëþ÷àåìñÿ íà íîâûé âèçèâèã èëè íåò
+     * ÐŸÐµÑ€ÐµÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼ÑÑ Ð½Ð° Ð½Ð¾Ð²Ñ‹Ð¹ Ð²Ð¸Ð·Ð¸Ð²Ð¸Ð³ Ð¸Ð»Ð¸ Ð½ÐµÑ‚
      * @var type 
      */
     public $enableNewWysiwyg = true;
@@ -36,14 +36,14 @@ class CommentsArticles extends TComments {
     public $configNewWywiwyg = '/scripts/ckedit/config_nocut.js';
     
     /**
-     * Êîíôèã äàííûõ äëÿ êîììåíòàðèåâ ñåðâèñà.
-     * Ïðèìåð äëÿ ñòàòåé.
+     * ÐšÐ¾Ð½Ñ„Ð¸Ð³ Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð´Ð»Ñ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÐµÐ² ÑÐµÑ€Ð²Ð¸ÑÐ°.
+     * ÐŸÑ€Ð¸Ð¼ÐµÑ€ Ð´Ð»Ñ ÑÑ‚Ð°Ñ‚ÐµÐ¹.
      *
      * @return array
      */
     public function model() {
         return array(
-            // êîììåíòàðèè
+            // ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¸
             'comments' => array(
                 'table' => 'articles_comments',
                 'fields' => array(
@@ -63,7 +63,7 @@ class CommentsArticles extends TComments {
                     'moderator_status' => 'moderator_status'
                 )
             ),
-            // ôàéëû, åñëè àòòà÷è â îòäåëüíîé òàáëèöå
+            // Ñ„Ð°Ð¹Ð»Ñ‹, ÐµÑÐ»Ð¸ Ð°Ñ‚Ñ‚Ð°Ñ‡Ð¸ Ð² Ð¾Ñ‚Ð´ÐµÐ»ÑŒÐ½Ð¾Ð¹ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ðµ
             'attaches' => array(
                 'file_table' => 'file',
                 'table' => 'articles_comments_files',

@@ -4,72 +4,72 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 
 /**
- * Класс для работы нового загрузчика
- * Все основные функции работают статически вызвать можно так uploader::s{nameMethod}()
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ РЅРѕРІРѕРіРѕ Р·Р°РіСЂСѓР·С‡РёРєР°
+ * Р’СЃРµ РѕСЃРЅРѕРІРЅС‹Рµ С„СѓРЅРєС†РёРё СЂР°Р±РѕС‚Р°СЋС‚ СЃС‚Р°С‚РёС‡РµСЃРєРё РІС‹Р·РІР°С‚СЊ РјРѕР¶РЅРѕ С‚Р°Рє uploader::s{nameMethod}()
  * 
  */
 class uploader {
     
     /**
-     * Статус файла, только что добавленный новый
+     * РЎС‚Р°С‚СѓСЃ С„Р°Р№Р»Р°, С‚РѕР»СЊРєРѕ С‡С‚Рѕ РґРѕР±Р°РІР»РµРЅРЅС‹Р№ РЅРѕРІС‹Р№
      */
     const STATUS_CREATE = 1;
     
     /**
-     * Статус файла, удаленный из статуса STATUS_CREATE
+     * РЎС‚Р°С‚СѓСЃ С„Р°Р№Р»Р°, СѓРґР°Р»РµРЅРЅС‹Р№ РёР· СЃС‚Р°С‚СѓСЃР° STATUS_CREATE
      */
     const STATUS_REMOVE = 2;
     
     /**
-     * Добавленный ранее в систему
+     * Р”РѕР±Р°РІР»РµРЅРЅС‹Р№ СЂР°РЅРµРµ РІ СЃРёСЃС‚РµРјСѓ
      */
     const STATUS_ADDED  = 3;
     
     /**
-     * Удаленный из статуса STATUS_ADDED 
+     * РЈРґР°Р»РµРЅРЅС‹Р№ РёР· СЃС‚Р°С‚СѓСЃР° STATUS_ADDED 
      */
     const STATUS_DELETE = 4;
     
     /**
-     * Маска уникального ИД для сессии загрузки файлов не более 32 символов
+     * РњР°СЃРєР° СѓРЅРёРєР°Р»СЊРЅРѕРіРѕ РР” РґР»СЏ СЃРµСЃСЃРёРё Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»РѕРІ РЅРµ Р±РѕР»РµРµ 32 СЃРёРјРІРѕР»РѕРІ
      */
     const UMASK   = '00400-00600-1001001';
     
     /**
-     * Максимальное количество загружаемых файлов
+     * РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РіСЂСѓР¶Р°РµРјС‹С… С„Р°Р№Р»РѕРІ
      * 
      */
     const MAX_FILES = 6;
     
     /**
-     * Максимальный размер файла (10 МБ)
+     * РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р° (10 РњР‘)
      * 
      */
     const MAX_FILE_SIZE = 10485760; 
     
     /**
-     * Папка загрузки по умолчанию
+     * РџР°РїРєР° Р·Р°РіСЂСѓР·РєРё РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
      */
     const DEFAULT_TEMPLATE = 'uploader/';
     
     /**
-     * Учитывать общий объем загружаемых файлов или только одного файла
+     * РЈС‡РёС‚С‹РІР°С‚СЊ РѕР±С‰РёР№ РѕР±СЉРµРј Р·Р°РіСЂСѓР¶Р°РµРјС‹С… С„Р°Р№Р»РѕРІ РёР»Рё С‚РѕР»СЊРєРѕ РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р°
      */
     const IS_TOTAL_SIZE = false;
     
     /**
-     * Конструктору класса передаем идентификатор конкретного загрузчика
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂСѓ РєР»Р°СЃСЃР° РїРµСЂРµРґР°РµРј РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ Р·Р°РіСЂСѓР·С‡РёРєР°
      * 
-     * @param type $resource    Идентификатор загрузчика
+     * @param type $resource    РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РіСЂСѓР·С‡РёРєР°
      */
     function __construct($resource = null) {
         $this->resource = $resource;
     }
     
     /**
-     * Создаем Ид сессии
+     * РЎРѕР·РґР°РµРј РРґ СЃРµСЃСЃРёРё
      * 
-     * @param type $type    тип сессии
+     * @param type $type    С‚РёРї СЃРµСЃСЃРёРё
      * @return type
      */
     static function createResource($type = null) {
@@ -77,7 +77,7 @@ class uploader {
     }
     
     /**
-     * Функция генерирует уникальный код
+     * Р¤СѓРЅРєС†РёСЏ РіРµРЅРµСЂРёСЂСѓРµС‚ СѓРЅРёРєР°Р»СЊРЅС‹Р№ РєРѕРґ
      * 
      * @param string $code  
      * @return hex
@@ -88,9 +88,9 @@ class uploader {
     }
     
     /**
-     * Возвращает маску для генерации идентификатора
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃРєСѓ РґР»СЏ РіРµРЅРµСЂР°С†РёРё РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂР°
      * 
-     * @param string $type  Тип загрузчика @see self::validate
+     * @param string $type  РўРёРї Р·Р°РіСЂСѓР·С‡РёРєР° @see self::validate
      * @return string
      */
     static function umask($type = null) {
@@ -98,9 +98,9 @@ class uploader {
     }
     
     /**
-     * Генерирует уникальный код ресурса загрузчика
+     * Р“РµРЅРµСЂРёСЂСѓРµС‚ СѓРЅРёРєР°Р»СЊРЅС‹Р№ РєРѕРґ СЂРµСЃСѓСЂСЃР° Р·Р°РіСЂСѓР·С‡РёРєР°
      * 
-     * @param string $mask    Маска для генерации 
+     * @param string $mask    РњР°СЃРєР° РґР»СЏ РіРµРЅРµСЂР°С†РёРё 
      * @return string
      */
     static function resource($mask = null) {
@@ -109,9 +109,9 @@ class uploader {
     }
     
     /**
-     * Возвращает количественные данные сессии загрузчика
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ СЃРµСЃСЃРёРё Р·Р°РіСЂСѓР·С‡РёРєР°
      * 
-     * @param array $status Статусы файлов
+     * @param array $status РЎС‚Р°С‚СѓСЃС‹ С„Р°Р№Р»РѕРІ
      * @return type
      */
     public function getCountResource($status = array(uploader::STATUS_CREATE, uploader::STATUS_ADDED)) {
@@ -119,11 +119,11 @@ class uploader {
     }
     
     /**
-     * Возвращает количественные данные сессии загрузчика
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ СЃРµСЃСЃРёРё Р·Р°РіСЂСѓР·С‡РёРєР°
      * 
-     * @global object $DB         Подключение к БД
-     * @param string $resource    Сессия загрузчика
-     * @param array  $status      Статусы файлов
+     * @global object $DB         РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”
+     * @param string $resource    РЎРµСЃСЃРёСЏ Р·Р°РіСЂСѓР·С‡РёРєР°
+     * @param array  $status      РЎС‚Р°С‚СѓСЃС‹ С„Р°Р№Р»РѕРІ
      * @return array
      */
     static function sgetCountResource($resource, $status = array(uploader::STATUS_CREATE, uploader::STATUS_ADDED)) {
@@ -133,10 +133,10 @@ class uploader {
     }
     
     /**
-     * Задаем файлу определенный статус
+     * Р—Р°РґР°РµРј С„Р°Р№Р»Сѓ РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ СЃС‚Р°С‚СѓСЃ
      * 
-     * @param integer $status_before   Статус до
-     * @param integer $status_after    Статус после
+     * @param integer $status_before   РЎС‚Р°С‚СѓСЃ РґРѕ
+     * @param integer $status_after    РЎС‚Р°С‚СѓСЃ РїРѕСЃР»Рµ
      * @return bolean
      */
     public function setStatusFiles($status_before, $status_after) {
@@ -144,12 +144,12 @@ class uploader {
     }
     
     /**
-     * Задаем файлу определенный статус
+     * Р—Р°РґР°РµРј С„Р°Р№Р»Сѓ РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ СЃС‚Р°С‚СѓСЃ
      * 
-     * @global object $DB   Подключение к БД
-     * @param string  $resource    Сессия загрузчика
-     * @param integer $status_before   Статус до
-     * @param integer $status_after    Статус после
+     * @global object $DB   РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”
+     * @param string  $resource    РЎРµСЃСЃРёСЏ Р·Р°РіСЂСѓР·С‡РёРєР°
+     * @param integer $status_before   РЎС‚Р°С‚СѓСЃ РґРѕ
+     * @param integer $status_after    РЎС‚Р°С‚СѓСЃ РїРѕСЃР»Рµ
      * @return boolean
      */
     static function ssetStatusFiles($resource, $status_before, $status_after) {
@@ -159,9 +159,9 @@ class uploader {
     }
     
     /**
-     * Количество файлов в текущей сессии
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ С„Р°Р№Р»РѕРІ РІ С‚РµРєСѓС‰РµР№ СЃРµСЃСЃРёРё
      * 
-     * @param array $status  Статусы файлов
+     * @param array $status  РЎС‚Р°С‚СѓСЃС‹ С„Р°Р№Р»РѕРІ
      * @return integer
      */
     public function getCountFiles($status = array(uploader::STATUS_CREATE, uploader::STATUS_ADDED)) {
@@ -169,11 +169,11 @@ class uploader {
     }
     
     /**
-     * Количество файлов в текущей сессии
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ С„Р°Р№Р»РѕРІ РІ С‚РµРєСѓС‰РµР№ СЃРµСЃСЃРёРё
      * 
-     * @global object $DB   Подключение к БД
-     * @param string  $resource    Сессия загрузчика
-     * @param array   $status      Статусы файлов
+     * @global object $DB   РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”
+     * @param string  $resource    РЎРµСЃСЃРёСЏ Р·Р°РіСЂСѓР·С‡РёРєР°
+     * @param array   $status      РЎС‚Р°С‚СѓСЃС‹ С„Р°Р№Р»РѕРІ
      * @return integer
      */
     static function sgetCountFiles($resource, $status = array(uploader::STATUS_CREATE, uploader::STATUS_ADDED)) {
@@ -183,9 +183,9 @@ class uploader {
     }
     
     /**
-     * Возвращает файлы текущей сессии по определенным параметрам
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ С„Р°Р№Р»С‹ С‚РµРєСѓС‰РµР№ СЃРµСЃСЃРёРё РїРѕ РѕРїСЂРµРґРµР»РµРЅРЅС‹Рј РїР°СЂР°РјРµС‚СЂР°Рј
      * 
-     * @param array   $status      Статусы файлов
+     * @param array   $status      РЎС‚Р°С‚СѓСЃС‹ С„Р°Р№Р»РѕРІ
      * @return array
      */
     public function getFiles($status = array(uploader::STATUS_CREATE, uploader::STATUS_ADDED)) {
@@ -193,11 +193,11 @@ class uploader {
     }
      
     /**
-     * Возвращает файлы текущей сессии по определенным параметрам
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ С„Р°Р№Р»С‹ С‚РµРєСѓС‰РµР№ СЃРµСЃСЃРёРё РїРѕ РѕРїСЂРµРґРµР»РµРЅРЅС‹Рј РїР°СЂР°РјРµС‚СЂР°Рј
      * 
-     * @global object $DB   Подключение к БД
-     * @param string  $resource    Сессия загрузчика
-     * @param array   $status      Статусы файлов
+     * @global object $DB   РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”
+     * @param string  $resource    РЎРµСЃСЃРёСЏ Р·Р°РіСЂСѓР·С‡РёРєР°
+     * @param array   $status      РЎС‚Р°С‚СѓСЃС‹ С„Р°Р№Р»РѕРІ
      * @return array
      */
     static function sgetFiles($resource, $status = array(uploader::STATUS_CREATE, uploader::STATUS_ADDED)) {
@@ -213,7 +213,7 @@ class uploader {
     }
     
     /**
-     * Возвращает опции текущей сессии необходимые для инициализации загрузчка на стороне клиента
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕРїС†РёРё С‚РµРєСѓС‰РµР№ СЃРµСЃСЃРёРё РЅРµРѕР±С…РѕРґРёРјС‹Рµ РґР»СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё Р·Р°РіСЂСѓР·С‡РєР° РЅР° СЃС‚РѕСЂРѕРЅРµ РєР»РёРµРЅС‚Р°
      * 
      * @return array
      */
@@ -222,9 +222,9 @@ class uploader {
     } 
     
     /**
-     * Возвращает опции текущей сессии необходимые для инициализации загрузчка на стороне клиента
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕРїС†РёРё С‚РµРєСѓС‰РµР№ СЃРµСЃСЃРёРё РЅРµРѕР±С…РѕРґРёРјС‹Рµ РґР»СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё Р·Р°РіСЂСѓР·С‡РєР° РЅР° СЃС‚РѕСЂРѕРЅРµ РєР»РёРµРЅС‚Р°
      * 
-     * @param string  $resource    Сессия загрузчика
+     * @param string  $resource    РЎРµСЃСЃРёСЏ Р·Р°РіСЂСѓР·С‡РёРєР°
      * @return array
      */
     static function sgetLoaderOptions($resource) {
@@ -241,7 +241,7 @@ class uploader {
                 $setting = array(
                     'showGraph' => false,
                     'text' => array(
-                        'uploadButton' => self::encodeCharset('+ Добавить файл'),
+                        'uploadButton' => self::encodeCharset('+ Р”РѕР±Р°РІРёС‚СЊ С„Р°Р№Р»'),
                         'sufSize'      => ''
                     ),
                     'validation' => array(
@@ -260,10 +260,10 @@ class uploader {
     }
     
     /**
-     * Сохраняет файлы в сессию
+     * РЎРѕС…СЂР°РЅСЏРµС‚ С„Р°Р№Р»С‹ РІ СЃРµСЃСЃРёСЋ
      * 
-     * @param array $files   Список файлов
-     * @param integer $status  Статус файлов
+     * @param array $files   РЎРїРёСЃРѕРє С„Р°Р№Р»РѕРІ
+     * @param integer $status  РЎС‚Р°С‚СѓСЃ С„Р°Р№Р»РѕРІ
      * @return boolean
      */
     public function setFiles($files, $status = uploader::STATUS_CREATE) {
@@ -271,12 +271,12 @@ class uploader {
     }
     
     /**
-     * Сохраняет(подгружает) файлы в сессию
+     * РЎРѕС…СЂР°РЅСЏРµС‚(РїРѕРґРіСЂСѓР¶Р°РµС‚) С„Р°Р№Р»С‹ РІ СЃРµСЃСЃРёСЋ
      * 
-     * @global object $DB           Подключение к БД
-     * @param array   $files        Список файлов
-     * @param string  $resource     Сессия загрузчика
-     * @param integer $status       Статус файлов
+     * @global object $DB           РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”
+     * @param array   $files        РЎРїРёСЃРѕРє С„Р°Р№Р»РѕРІ
+     * @param string  $resource     РЎРµСЃСЃРёСЏ Р·Р°РіСЂСѓР·С‡РёРєР°
+     * @param integer $status       РЎС‚Р°С‚СѓСЃ С„Р°Р№Р»РѕРІ
      * @return boolean
      */
     static function ssetFiles($files, $resource, $status = uploader::STATUS_CREATE) {
@@ -300,23 +300,23 @@ class uploader {
     }
     
     /**
-     * Создает файл в текущей сессии
+     * РЎРѕР·РґР°РµС‚ С„Р°Р№Р» РІ С‚РµРєСѓС‰РµР№ СЃРµСЃСЃРёРё
      * 
-     * @param object $CFile Данные файла
-     * @return array    Возвращает массив необходимый для передачи клиентскому скрипту
+     * @param object $CFile Р”Р°РЅРЅС‹Рµ С„Р°Р№Р»Р°
+     * @return array    Р’РѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ РЅРµРѕР±С…РѕРґРёРјС‹Р№ РґР»СЏ РїРµСЂРµРґР°С‡Рё РєР»РёРµРЅС‚СЃРєРѕРјСѓ СЃРєСЂРёРїС‚Сѓ
      */
     public function createFile($CFile) {
         return self::screateFile($CFile, $this->resource);
     }
     
     /**
-     * Создает файл в текущей сессии
+     * РЎРѕР·РґР°РµС‚ С„Р°Р№Р» РІ С‚РµРєСѓС‰РµР№ СЃРµСЃСЃРёРё
      * 
      * @global object $DB
-     * @param CFile $CFile Данные файла
-     * @param string  $resource     Сессия загрузчика
-     * @param integer $status       Статус создаваемых файлов
-     * @return array    Возвращает массив необходимый для передачи клиентскому скрипту
+     * @param CFile $CFile Р”Р°РЅРЅС‹Рµ С„Р°Р№Р»Р°
+     * @param string  $resource     РЎРµСЃСЃРёСЏ Р·Р°РіСЂСѓР·С‡РёРєР°
+     * @param integer $status       РЎС‚Р°С‚СѓСЃ СЃРѕР·РґР°РІР°РµРјС‹С… С„Р°Р№Р»РѕРІ
+     * @return array    Р’РѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ РЅРµРѕР±С…РѕРґРёРјС‹Р№ РґР»СЏ РїРµСЂРµРґР°С‡Рё РєР»РёРµРЅС‚СЃРєРѕРјСѓ СЃРєСЂРёРїС‚Сѓ
      */
     static function screateFile(CFile $CFile, $resource, $status = uploader::STATUS_CREATE) {
         global $DB;
@@ -335,7 +335,7 @@ class uploader {
     }
     
     /**
-     * Очищает текущую сессию от загруженных в нее файлов
+     * РћС‡РёС‰Р°РµС‚ С‚РµРєСѓС‰СѓСЋ СЃРµСЃСЃРёСЋ РѕС‚ Р·Р°РіСЂСѓР¶РµРЅРЅС‹С… РІ РЅРµРµ С„Р°Р№Р»РѕРІ
      * 
      * @return boolean
      */
@@ -344,10 +344,10 @@ class uploader {
     }
     
     /**
-     * Очищает текущую сессию от загруженных в нее файлов
+     * РћС‡РёС‰Р°РµС‚ С‚РµРєСѓС‰СѓСЋ СЃРµСЃСЃРёСЋ РѕС‚ Р·Р°РіСЂСѓР¶РµРЅРЅС‹С… РІ РЅРµРµ С„Р°Р№Р»РѕРІ
      * 
      * @global object $DB
-     * @param string $resource        Сессия загрзчика
+     * @param string $resource        РЎРµСЃСЃРёСЏ Р·Р°РіСЂР·С‡РёРєР°
      * @return boolean
      */
     static function sclear($resource) {
@@ -368,9 +368,9 @@ class uploader {
     }
     
     /**
-     * Перевод статусов в удаленноу состояние в зависимости от текущего статуса
+     * РџРµСЂРµРІРѕРґ СЃС‚Р°С‚СѓСЃРѕРІ РІ СѓРґР°Р»РµРЅРЅРѕСѓ СЃРѕСЃС‚РѕСЏРЅРёРµ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ С‚РµРєСѓС‰РµРіРѕ СЃС‚Р°С‚СѓСЃР°
      *  
-     * @param integer $status  текущий статус
+     * @param integer $status  С‚РµРєСѓС‰РёР№ СЃС‚Р°С‚СѓСЃ
      * @return int  
      */
     static function transStatus($status) {
@@ -388,9 +388,9 @@ class uploader {
     }
     
     /**
-     * Удаляет определенные файлы из сессии
+     * РЈРґР°Р»СЏРµС‚ РѕРїСЂРµРґРµР»РµРЅРЅС‹Рµ С„Р°Р№Р»С‹ РёР· СЃРµСЃСЃРёРё
      * 
-     * @param array $files   Список файлов (1,2,3)
+     * @param array $files   РЎРїРёСЃРѕРє С„Р°Р№Р»РѕРІ (1,2,3)
      * @return boolean
      */
     public function removeFiles($files) {
@@ -398,10 +398,10 @@ class uploader {
     }
     
     /**
-     * Удаляет определенные файлы из сессии
+     * РЈРґР°Р»СЏРµС‚ РѕРїСЂРµРґРµР»РµРЅРЅС‹Рµ С„Р°Р№Р»С‹ РёР· СЃРµСЃСЃРёРё
      * @global object $DB
-     * @param string $resource    Сессия загрузчика    
-     * @param array  $files_id   Список файлов (1,2,3)
+     * @param string $resource    РЎРµСЃСЃРёСЏ Р·Р°РіСЂСѓР·С‡РёРєР°    
+     * @param array  $files_id   РЎРїРёСЃРѕРє С„Р°Р№Р»РѕРІ (1,2,3)
      * @return boolean
      */
     static function sremoveFiles($resource, $files_id) {
@@ -419,9 +419,9 @@ class uploader {
     }
     
     /**
-     * Возвращает шаблоны загрузчика
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ С€Р°Р±Р»РѕРЅС‹ Р·Р°РіСЂСѓР·С‡РёРєР°
      * 
-     * @param string $name    Имя шаблона
+     * @param string $name    РРјСЏ С€Р°Р±Р»РѕРЅР°
      * @return type
      */
     static function getTemplate($name, $tpl = '') {
@@ -432,10 +432,10 @@ class uploader {
     }
     
     /**
-     * Стандартная инициализация клиентовского скприта для загрузчика
+     * РЎС‚Р°РЅРґР°СЂС‚РЅР°СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєР»РёРµРЅС‚РѕРІСЃРєРѕРіРѕ СЃРєРїСЂРёС‚Р° РґР»СЏ Р·Р°РіСЂСѓР·С‡РёРєР°
      * 
-     * @param string|array $uploader    Название элемента(ов) куда нужно инициализировать загрузчик
-     * @param array $templates  Шаблоны для загрузчика (должен быть массив состоящий из 3-х шаблонов)
+     * @param string|array $uploader    РќР°Р·РІР°РЅРёРµ СЌР»РµРјРµРЅС‚Р°(РѕРІ) РєСѓРґР° РЅСѓР¶РЅРѕ РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ Р·Р°РіСЂСѓР·С‡РёРє
+     * @param array $templates  РЁР°Р±Р»РѕРЅС‹ РґР»СЏ Р·Р°РіСЂСѓР·С‡РёРєР° (РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РјР°СЃСЃРёРІ СЃРѕСЃС‚РѕСЏС‰РёР№ РёР· 3-С… С€Р°Р±Р»РѕРЅРѕРІ)
      */
     static function init($uploader, $templates = null, $type = '') {
         if($templates === null) {
@@ -475,7 +475,7 @@ class uploader {
     }
     
     /**
-     * Выдает тип загружаемого контента по его сессии
+     * Р’С‹РґР°РµС‚ С‚РёРї Р·Р°РіСЂСѓР¶Р°РµРјРѕРіРѕ РєРѕРЅС‚РµРЅС‚Р° РїРѕ РµРіРѕ СЃРµСЃСЃРёРё
      * 
      * @return string
      */
@@ -484,9 +484,9 @@ class uploader {
     }
     
     /**
-     * Выдает тип загружаемого контента по его сессии
+     * Р’С‹РґР°РµС‚ С‚РёРї Р·Р°РіСЂСѓР¶Р°РµРјРѕРіРѕ РєРѕРЅС‚РµРЅС‚Р° РїРѕ РµРіРѕ СЃРµСЃСЃРёРё
      * 
-     * @param string $resource    Сессия загрузчика
+     * @param string $resource    РЎРµСЃСЃРёСЏ Р·Р°РіСЂСѓР·С‡РёРєР°
      * @return string
      */
     static function sgetTypeUpload($resource) {
@@ -494,10 +494,10 @@ class uploader {
     }
     
     /**
-     * Кодируем все элементы массив в определенную кодировку
+     * РљРѕРґРёСЂСѓРµРј РІСЃРµ СЌР»РµРјРµРЅС‚С‹ РјР°СЃСЃРёРІ РІ РѕРїСЂРµРґРµР»РµРЅРЅСѓСЋ РєРѕРґРёСЂРѕРІРєСѓ
      * 
-     * @param mixed $object      Элемент в котором будем кодировать
-     * @param array $charset     Кодировка (0 - текущая, 1 - которую надо получить)
+     * @param mixed $object      Р­Р»РµРјРµРЅС‚ РІ РєРѕС‚РѕСЂРѕРј Р±СѓРґРµРј РєРѕРґРёСЂРѕРІР°С‚СЊ
+     * @param array $charset     РљРѕРґРёСЂРѕРІРєР° (0 - С‚РµРєСѓС‰Р°СЏ, 1 - РєРѕС‚РѕСЂСѓСЋ РЅР°РґРѕ РїРѕР»СѓС‡РёС‚СЊ)
      * @return mixed
      */
     static function encodeCharset($object, $charset = array('cp1251', 'utf-8')) {
@@ -518,13 +518,13 @@ class uploader {
         $callback = '';
         switch($type) {
             case 'portfolio':
-                $button_text = 'Загрузить файл';
+                $button_text = 'Р—Р°РіСЂСѓР·РёС‚СЊ С„Р°Р№Р»';
                 $callback  = "if($('work_image')) $('work_image').dispose(); $('preview_overlay').hide();";
                 $callback .= "$('file_upload_block_portf').removeClass('b-file_hover');";
                 $callback .= "$$('#file_upload_block_portf .qq-upload-button .b-button__txt').set('text', '{$button_text}');";
                 break;
             case 'pf_preview':
-                $button_text = 'Загрузить картинку';
+                $button_text = 'Р—Р°РіСЂСѓР·РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ';
                 $callback = "
                      if($('preview_image')) $('preview_image').dispose();
                      $('file_upload_block_preview').removeClass('b-file_hover');
@@ -539,8 +539,8 @@ class uploader {
         $callback = '';
         switch($type) {
             case 'portfolio':
-                $button_text = 'Заменить файл';
-                if($CFile->image_size['type'] && $CFile->image_size['type'] != 13 && $CFile->image_size['type'] != 4) { // SWF сюда не входит
+                $button_text = 'Р—Р°РјРµРЅРёС‚СЊ С„Р°Р№Р»';
+                if($CFile->image_size['type'] && $CFile->image_size['type'] != 13 && $CFile->image_size['type'] != 4) { // SWF СЃСЋРґР° РЅРµ РІС…РѕРґРёС‚
                     require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/portfolio.php";
                     
                     if($CFile->image_size['height'] > portfolio::PREVIEW_MAX_HEIGHT || $CFile->image_size['width'] > portfolio::PREVIEW_MAX_WIDTH) {
@@ -585,7 +585,7 @@ class uploader {
                 }
                 break;
             case 'pf_preview':
-                $button_text = 'Заменить картинку';
+                $button_text = 'Р—Р°РјРµРЅРёС‚СЊ РєР°СЂС‚РёРЅРєСѓ';
                 $callback = "
                     if($('remove_preview_file')) $('remove_preview_file').dispose();
                     $('preview_overlay').hide();
@@ -619,9 +619,9 @@ class uploader {
     }
     
     /**
-     * Возвращает валидационные данные по конкретным типам загрузки
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РІР°Р»РёРґР°С†РёРѕРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ РїРѕ РєРѕРЅРєСЂРµС‚РЅС‹Рј С‚РёРїР°Рј Р·Р°РіСЂСѓР·РєРё
      * 
-     * @param string $type    Тип загрузки
+     * @param string $type    РўРёРї Р·Р°РіСЂСѓР·РєРё
      * @return array
      */
     static function getValidationInfo($type) {
@@ -652,14 +652,14 @@ class uploader {
                         'max_files'      => 1,
                         'max_file_size'  => uploader::MAX_FILE_SIZE,
                         'is_total_size'  => uploader::IS_TOTAL_SIZE,
-                        'is_replace'     => true, // При очередной загрузке старый файл удалится новый заменит его доступно только для max_files == 1
+                        'is_replace'     => true, // РџСЂРё РѕС‡РµСЂРµРґРЅРѕР№ Р·Р°РіСЂСѓР·РєРµ СЃС‚Р°СЂС‹Р№ С„Р°Р№Р» СѓРґР°Р»РёС‚СЃСЏ РЅРѕРІС‹Р№ Р·Р°РјРµРЅРёС‚ РµРіРѕ РґРѕСЃС‚СѓРїРЅРѕ С‚РѕР»СЊРєРѕ РґР»СЏ max_files == 1
 //                        'maxImageHeight' => portfolio::PREVIEW_MAX_HEIGHT,
 //                        'maxImageWidth'  => portfolio::PREVIEW_MAX_WIDTH,
-                        'resize'         => true, // Изменяем размер изображения или нет
-                        'imageWidth'     => portfolio::PREVIEW_MAX_WIDTH, // Размер конечного изображения которое должно получится
-                        'imageHeight'    => portfolio::PREVIEW_MAX_HEIGHT, // Размер конечного изображения которое должно получится
+                        'resize'         => true, // РР·РјРµРЅСЏРµРј СЂР°Р·РјРµСЂ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РёР»Рё РЅРµС‚
+                        'imageWidth'     => portfolio::PREVIEW_MAX_WIDTH, // Р Р°Р·РјРµСЂ РєРѕРЅРµС‡РЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ РїРѕР»СѓС‡РёС‚СЃСЏ
+                        'imageHeight'    => portfolio::PREVIEW_MAX_HEIGHT, // Р Р°Р·РјРµСЂ РєРѕРЅРµС‡РЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РєРѕС‚РѕСЂРѕРµ РґРѕР»Р¶РЅРѕ РїРѕР»СѓС‡РёС‚СЃСЏ
                         'imageTypes'     => array(IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_BMP, IMAGETYPE_ICO, IMAGETYPE_JPEG2000),
-                        'imageOnly'      => true, // Загружать можно только картинки
+                        'imageOnly'      => true, // Р—Р°РіСЂСѓР¶Р°С‚СЊ РјРѕР¶РЅРѕ С‚РѕР»СЊРєРѕ РєР°СЂС‚РёРЅРєРё
                     )
                 );
                 break;
@@ -674,9 +674,9 @@ class uploader {
                         'maxImageHeight' => 2700,
                         'maxImageWidth'  => 840,
                         'imageTypes'     => array(IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_BMP, IMAGETYPE_ICO, IMAGETYPE_JPEG2000),
-                        'imageOnly'      => true, // Загружать можно только картинки
-                        'is_admin'       => true, // Загрузка доступна только админам
-                        'copy_table'     => 'file_mailer'  // Загрузить сразу на сервер
+                        'imageOnly'      => true, // Р—Р°РіСЂСѓР¶Р°С‚СЊ РјРѕР¶РЅРѕ С‚РѕР»СЊРєРѕ РєР°СЂС‚РёРЅРєРё
+                        'is_admin'       => true, // Р—Р°РіСЂСѓР·РєР° РґРѕСЃС‚СѓРїРЅР° С‚РѕР»СЊРєРѕ Р°РґРјРёРЅР°Рј
+                        'copy_table'     => 'file_mailer'  // Р—Р°РіСЂСѓР·РёС‚СЊ СЃСЂР°Р·Сѓ РЅР° СЃРµСЂРІРµСЂ
                     )
                 );    
                 break;
@@ -708,7 +708,7 @@ class uploader {
                         'max_files'     => tmp_project::MAX_FILE_COUNT,
                         'max_file_size' => tmp_project::MAX_FILE_SIZE,
                         'fname_length'  => 18,
-                        'imageOnly'     => true, // Загружать можно только картинки
+                        'imageOnly'     => true, // Р—Р°РіСЂСѓР¶Р°С‚СЊ РјРѕР¶РЅРѕ С‚РѕР»СЊРєРѕ РєР°СЂС‚РёРЅРєРё
                         'is_total_size' => true,
                     )
                 );
@@ -815,29 +815,29 @@ class uploader {
     }
     
     /**
-     * Слушатель который обрабатывает на серверной стороне поступление файла
+     * РЎР»СѓС€Р°С‚РµР»СЊ РєРѕС‚РѕСЂС‹Р№ РѕР±СЂР°Р±Р°С‚С‹РІР°РµС‚ РЅР° СЃРµСЂРІРµСЂРЅРѕР№ СЃС‚РѕСЂРѕРЅРµ РїРѕСЃС‚СѓРїР»РµРЅРёРµ С„Р°Р№Р»Р°
      * 
-     * @param string $resource  Сессия загрузчика
+     * @param string $resource  РЎРµСЃСЃРёСЏ Р·Р°РіСЂСѓР·С‡РёРєР°
      * @return boolean
      */
     static function listener($resource) {
         $browser = '';
         $version = array();
         browserCompat($browser, $version);
-        // Скрипт посылает в той кодировке в которой страница в IE, в остальных браузерах в UTF-8
+        // РЎРєСЂРёРїС‚ РїРѕСЃС‹Р»Р°РµС‚ РІ С‚РѕР№ РєРѕРґРёСЂРѕРІРєРµ РІ РєРѕС‚РѕСЂРѕР№ СЃС‚СЂР°РЅРёС†Р° РІ IE, РІ РѕСЃС‚Р°Р»СЊРЅС‹С… Р±СЂР°СѓР·РµСЂР°С… РІ UTF-8
         if($browser != 'msie' && ( (int) $version[1] != 8 || (int) $version[1] != 10) ) { 
             $_FILES   = self::encodeCharset($_FILES, array('utf-8' , 'cp1251'));
         }
         $validate = self::getValidationInfo(self::sgetTypeUpload($resource));
         
         if($validate['is_auth'] && !get_uid(false)) {
-            return array('success' => false, 'error' => 'Ошибка загрузки файлов');
+            return array('success' => false, 'error' => 'РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»РѕРІ');
         }
         if($validate['is_admin'] && !hasPermissions('adm')) {
-            return array('success' => false, 'error' => 'Ошибка загрузки файлов');
+            return array('success' => false, 'error' => 'РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»РѕРІ');
         }
         
-        if($validate['max_files'] == 1 && $validate['is_replace']) { // Удаляем старые файлы для замены на новые
+        if($validate['max_files'] == 1 && $validate['is_replace']) { // РЈРґР°Р»СЏРµРј СЃС‚Р°СЂС‹Рµ С„Р°Р№Р»С‹ РґР»СЏ Р·Р°РјРµРЅС‹ РЅР° РЅРѕРІС‹Рµ
             self::sclear($resource);
         }
         
@@ -852,19 +852,19 @@ class uploader {
         $resourceInfo  = $uploader->getCountResource();
         
         if($validate['imageOnly'] && strpos($_FILES['qqfile']['type'], 'image') === false) {
-            $file['error'] = "Недопустимый формат файла";
+            $file['error'] = "РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ С„РѕСЂРјР°С‚ С„Р°Р№Р»Р°";
         }
         
         if( ($resourceInfo['count']+1) > $validate['max_files'] ) {
-            $file['error'] = "Максимальное количество файлов: {$validate['max_files']}";
+            $file['error'] = "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ С„Р°Р№Р»РѕРІ: {$validate['max_files']}";
         }
         
         if( ($resourceInfo['size'] + $CFile->size) > $validate['max_file_size'] && $validate['is_total_size']) {
-            $file['error'] = "Максимальный объем файлов: ".ConvertBtoMB($validate['max_file_size']);
+            $file['error'] = "РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РѕР±СЉРµРј С„Р°Р№Р»РѕРІ: ".ConvertBtoMB($validate['max_file_size']);
         }
 
         if( in_array($CFile->getext(), $GLOBALS['disallowed_array']) ) {
-            $file['error'] = "Недопустимый формат файла";
+            $file['error'] = "РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ С„РѕСЂРјР°С‚ С„Р°Р№Р»Р°";
         }
         
         if($file['error']) {
@@ -879,18 +879,18 @@ class uploader {
         }
         $skipEncoding = false;
         if($CFile->id) {
-            // если заданы типы графических файлов
+            // РµСЃР»Рё Р·Р°РґР°РЅС‹ С‚РёРїС‹ РіСЂР°С„РёС‡РµСЃРєРёС… С„Р°Р№Р»РѕРІ
             if ($validate['imageTypes'] && ( !$CFile->image_size['type'] || !in_array($CFile->image_size['type'], $validate['imageTypes']) ) ) {
-                $file['error'] = "Недопустимый формат файла";
+                $file['error'] = "РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ С„РѕСЂРјР°С‚ С„Р°Р№Р»Р°";
             }                    
 
-            // если задана максимальная высота
+            // РµСЃР»Рё Р·Р°РґР°РЅР° РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ РІС‹СЃРѕС‚Р°
             if ($validate['maxImageHeight'] && $CFile->image_size['height'] > $validate['maxImageHeight']) {
-                $file['error'] = "Превышена максимальная высота изображения";
+                $file['error'] = "РџСЂРµРІС‹С€РµРЅР° РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ РІС‹СЃРѕС‚Р° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ";
             }
-            // если задана максимальная ширина
+            // РµСЃР»Рё Р·Р°РґР°РЅР° РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ С€РёСЂРёРЅР°
             if ($validate['maxImageWidth'] && $CFile->imae_size['width'] > $validate['maxImageWidth']) {
-                $file['error'] = "Превышена максимальная ширина изображения";
+                $file['error'] = "РџСЂРµРІС‹С€РµРЅР° РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ С€РёСЂРёРЅР° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ";
             }
 
             if($file['error']) {
@@ -911,7 +911,7 @@ class uploader {
             $file['success'] = false;
             $file['error']   = $CFile->error;
             if ( is_array($file['error']) && count( $file['error'] ) == 0 && $CFile->size == 0) {
-                $file['error'] = "Пустой файл";
+                $file['error'] = "РџСѓСЃС‚РѕР№ С„Р°Р№Р»";
                 $skipEncoding = true;
             }
         }
@@ -926,10 +926,10 @@ class uploader {
     }
     
     /**
-     * Обрезаем название файла
+     * РћР±СЂРµР·Р°РµРј РЅР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р°
      * 
-     * @param string  $name    Название файла
-     * @param integer $length  Размер который должен быть.
+     * @param string  $name    РќР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р°
+     * @param integer $length  Р Р°Р·РјРµСЂ РєРѕС‚РѕСЂС‹Р№ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ.
      * @return string
      */
     static public function cutNameFile($name, $length = 0) {
@@ -948,11 +948,11 @@ class uploader {
     }
             
     /**
-     * Перемещаем файл куда надо
+     * РџРµСЂРµРјРµС‰Р°РµРј С„Р°Р№Р» РєСѓРґР° РЅР°РґРѕ
      * 
-     * @param integer $id_file     ИД файла который нужно переместить
-     * @param string  $copy_table  Таблица в которую перемещаем
-     * @param string  $dir         Директория в которую копируем
+     * @param integer $id_file     РР” С„Р°Р№Р»Р° РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ РїРµСЂРµРјРµСЃС‚РёС‚СЊ
+     * @param string  $copy_table  РўР°Р±Р»РёС†Р° РІ РєРѕС‚РѕСЂСѓСЋ РїРµСЂРµРјРµС‰Р°РµРј
+     * @param string  $dir         Р”РёСЂРµРєС‚РѕСЂРёСЏ РІ РєРѕС‚РѕСЂСѓСЋ РєРѕРїРёСЂСѓРµРј
      * @return \CFile
      */
     function remoteCopy($id_file, $copy_table, $dir, $new_name = true, $prefix = 'f_') {

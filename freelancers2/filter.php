@@ -29,7 +29,7 @@
       else $prmd = "{$prof_link}/".($f_country_lnk ? $f_country_lnk.'/' : '').($f_city_lnk ? $f_city_lnk.'/' : '')."?";
     }
     
-    //создаем массив специализаций (для фильтра на главной он уже есть в $prfs, для фильтра в проектах фрилансера его нет, поэтому делаем проверку на существование
+    //СЃРѕР·РґР°РµРј РјР°СЃСЃРёРІ СЃРїРµС†РёР°Р»РёР·Р°С†РёР№ (РґР»СЏ С„РёР»СЊС‚СЂР° РЅР° РіР»Р°РІРЅРѕР№ РѕРЅ СѓР¶Рµ РµСЃС‚СЊ РІ $prfs, РґР»СЏ С„РёР»СЊС‚СЂР° РІ РїСЂРѕРµРєС‚Р°С… С„СЂРёР»Р°РЅСЃРµСЂР° РµРіРѕ РЅРµС‚, РїРѕСЌС‚РѕРјСѓ РґРµР»Р°РµРј РїСЂРѕРІРµСЂРєСѓ РЅР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ
     if (!sizeof($profs)) {$all_specs = professions::GetAllProfessions("", 0, 1);}
     else                 {$all_specs = $profs;}
     
@@ -56,17 +56,17 @@ var vsbr = 0;
 function FilterCatalogAddCategoryType()
 {
   if ($('pf_subcategory').value == 0) {
-    //добавляем категорию
+    //РґРѕР±Р°РІР»СЏРµРј РєР°С‚РµРіРѕСЂРёСЋ
    if(Number($('pf_category').value) > 0) FilterAddBullet(0, $('pf_category').value, $('pf_category').options[$('pf_category').selectedIndex].text, 0);
   }
   else {
-    //добавляем подкатегорию
+    //РґРѕР±Р°РІР»СЏРµРј РїРѕРґРєР°С‚РµРіРѕСЂРёСЋ
     if(Number($('pf_category').value) > 0) FilterAddBullet(1, $('pf_subcategory').value, $('pf_subcategory').options[$('pf_subcategory').selectedIndex].text, $('pf_category').value);
   }
 }
 
-//1 = фильтр проектов
-//2 = фильтр фрилансеров
+//1 = С„РёР»СЊС‚СЂ РїСЂРѕРµРєС‚РѕРІ
+//2 = С„РёР»СЊС‚СЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
 var curFBulletsBox = 2;
 
 var maxCostBlock = 12;
@@ -104,10 +104,10 @@ for ($i=0; $i<sizeof($all_specs); $i++)
   else {echo ",";}
 }
 
-$cost_type = array(1 => "За месяц", 2 => "За 1000 знаков", 3 => "За Проект", 4 => "За час");
-//$curr_type = array("Руб", "USD", "Euro");
+$cost_type = array(1 => "Р—Р° РјРµСЃСЏС†", 2 => "Р—Р° 1000 Р·РЅР°РєРѕРІ", 3 => "Р—Р° РџСЂРѕРµРєС‚", 4 => "Р—Р° С‡Р°СЃ");
+//$curr_type = array("Р СѓР±", "USD", "Euro");
 $curr_type = array(
-    array('name' => 'Руб', 'value' => 2),
+    array('name' => 'Р СѓР±', 'value' => 2),
     array('name' => 'USD', 'value' => 0),
     array('name' => 'Euro', 'value' => 1),
 );
@@ -177,7 +177,7 @@ function FilterCatalogClearForm()
         $('pf_specs').innerHTML = "";
     }
     $('cost_box').getElements("select").each(function(e){
-        if (e.get('name') == 'curr_type[]') { // сбрасываем валюту в рубли
+        if (e.get('name') == 'curr_type[]') { // СЃР±СЂР°СЃС‹РІР°РµРј РІР°Р»СЋС‚Сѓ РІ СЂСѓР±Р»Рё
             e.options[2].selected = true;
         } else {
             e.options[0].selected = true;
@@ -211,11 +211,11 @@ function addCost(o, inp, def) {
     if(cost_count < maxCostBlock && def == 0) {
         bSpan.className = "flt-add";
         bSpan.onclick=addCost;
-        bSpan.innerHTML = '<span class="flt-spec"><span class="flt-s-in"><a href="javascript: void(0);"><img src="/images/flt-add.png" alt="" width="15" height="15" /><span>Добавить еще</span></a></span></span>';
+        bSpan.innerHTML = '<span class="flt-spec"><span class="flt-s-in"><a href="javascript: void(0);"><img src="/images/flt-add.png" alt="" width="15" height="15" /><span>Р”РѕР±Р°РІРёС‚СЊ РµС‰Рµ</span></a></span></span>';
     } else {
         bSpan.className = "flt-remove";
         bSpan.onclick=delCost;
-        bSpan.innerHTML = '<span class="flt-spec"><span class="flt-s-in"><a href="javascript: void(0);"><img src="/images/flt-close.png" alt="" width="15" height="15" /><span>Убрать</span></a></span></span>';
+        bSpan.innerHTML = '<span class="flt-spec"><span class="flt-s-in"><a href="javascript: void(0);"><img src="/images/flt-close.png" alt="" width="15" height="15" /><span>РЈР±СЂР°С‚СЊ</span></a></span></span>';
     }
     
     var mSpan = document.createElement("span");
@@ -262,22 +262,22 @@ function delCost(o) {
 }
 
 function add2del(o) {
-    var a = o.childNodes[0].childNodes[0].childNodes[0]; // Ссылка
-    var i = a.childNodes[0]; // Картинка
-    var t = a.childNodes[1]; // Текст
+    var a = o.childNodes[0].childNodes[0].childNodes[0]; // РЎСЃС‹Р»РєР°
+    var i = a.childNodes[0]; // РљР°СЂС‚РёРЅРєР°
+    var t = a.childNodes[1]; // РўРµРєСЃС‚
     
     if(o.className == "flt-add") { 
         o.onclick = delCost;
         o.className = "flt-remove";
         a.href = "javascript: void(1)";
         i.src = "/images/flt-close.png";
-        t.innerHTML = "Убрать";
+        t.innerHTML = "РЈР±СЂР°С‚СЊ";
     } else {
         o.onclick = addCost;
         o.className = "flt-add";
         a.href = "javascript: void(0)";
         i.src = "/images/flt-add.png";
-        t.innerHTML = "Добавить еще";
+        t.innerHTML = "Р”РѕР±Р°РІРёС‚СЊ РµС‰Рµ";
     }                        
 }
 var IE='\v'=='v';
@@ -306,27 +306,27 @@ if ($show_all_freelancers) {
             <b class="b1"></b>
             <b class="b2"></b>
             <div class="flt-bar">
-                 <a href="javascript: void(0);" class="flt-tgl-lnk"><?=(($filter_show)?"Свернуть":"Развернуть")?></a>
-                 <h3>Фильтр 
+                 <a href="javascript: void(0);" class="flt-tgl-lnk"><?=(($filter_show)?"РЎРІРµСЂРЅСѓС‚СЊ":"Р Р°Р·РІРµСЂРЅСѓС‚СЊ")?></a>
+                 <h3>Р¤РёР»СЊС‚СЂ 
                  <? if($filter_apply): ?>
-                    <span class="flt-stat flt-on">включен&nbsp;&nbsp;&nbsp;<a href="<?=$frm_action?><?=$prmd?>action=deletefilter<?=$filter_query?>" onClick="_gaq.push(['_trackEvent', 'User', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_delete_catalog']); ga('send', 'event', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_delete_catalog');" class="flt-lnk">отключить</a></span>
+                    <span class="flt-stat flt-on">РІРєР»СЋС‡РµРЅ&nbsp;&nbsp;&nbsp;<a href="<?=$frm_action?><?=$prmd?>action=deletefilter<?=$filter_query?>" onClick="_gaq.push(['_trackEvent', 'User', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_delete_catalog']); ga('send', 'event', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_delete_catalog');" class="flt-lnk">РѕС‚РєР»СЋС‡РёС‚СЊ</a></span>
                  <? else: ?>
-                    <span class="flt-stat flt-off">отключен&nbsp;&nbsp;&nbsp;<a href="<?=$frm_action?><?=$prmd?>action=activatefilter<?=$filter_query?>" onClick="_gaq.push(['_trackEvent', 'User', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_include_catalog']); ga('send', 'event', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_include_catalog');" class="flt-lnk">включить</a></span>
+                    <span class="flt-stat flt-off">РѕС‚РєР»СЋС‡РµРЅ&nbsp;&nbsp;&nbsp;<a href="<?=$frm_action?><?=$prmd?>action=activatefilter<?=$filter_query?>" onClick="_gaq.push(['_trackEvent', 'User', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_include_catalog']); ga('send', 'event', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_include_catalog');" class="flt-lnk">РІРєР»СЋС‡РёС‚СЊ</a></span>
                  <? endif; ?>
 								 </h3>
-                 <?/* <span class="flt-stat flt-off">отключен&nbsp;&nbsp;&nbsp;<a href="" class="flt-lnk">включить</a></span> <!-- <span class="flt-stat flt-on">включен&nbsp;&nbsp;&nbsp;<a href="" class="flt-lnk">отключить</a></span> --> */ ?>
+                 <?/* <span class="flt-stat flt-off">РѕС‚РєР»СЋС‡РµРЅ&nbsp;&nbsp;&nbsp;<a href="" class="flt-lnk">РІРєР»СЋС‡РёС‚СЊ</a></span> <!-- <span class="flt-stat flt-on">РІРєР»СЋС‡РµРЅ&nbsp;&nbsp;&nbsp;<a href="" class="flt-lnk">РѕС‚РєР»СЋС‡РёС‚СЊ</a></span> --> */ ?>
             </div>
             <div class="flt-cnt">
 
 <? if (!$prof_id &&!$prof_group_id): ?>
                <div class="flt-block flt-b-fc">
-                    <label class="flt-lbl">Специализации:</label>
+                    <label class="flt-lbl">РЎРїРµС†РёР°Р»РёР·Р°С†РёРё:</label>
                     <div class="flt-b-in">
-                         <span class="flt-add" ><span class="flt-spec"><span class="flt-s-in"><a href="javascript: void(0);" onclick="FilterCatalogAddCategoryType();"><img src="/images/flt-add.png" alt="" width="15" height="15" />Добавить еще</a></span></span></span>
+                         <span class="flt-add" ><span class="flt-spec"><span class="flt-s-in"><a href="javascript: void(0);" onclick="FilterCatalogAddCategoryType();"><img src="/images/flt-add.png" alt="" width="15" height="15" />Р”РѕР±Р°РІРёС‚СЊ РµС‰Рµ</a></span></span></span>
                          <div class="flt-b-row">
                              <span class="flt-prm">
                                <select class="flt-p-sel" name="pf_category" id="pf_category" onChange="FilterSubCategory(this.value)">
-                                   <option value="0">Все разделы</option>
+                                   <option value="0">Р’СЃРµ СЂР°Р·РґРµР»С‹</option>
                                  <? foreach($filter_categories as $cat) { if($cat['id']<=0) continue; ?>
                                  <option value="<?=$cat['id']?>"><?=$cat['name']?></option>
                                  <? } ?>
@@ -334,7 +334,7 @@ if ($show_all_freelancers) {
                              </span>
                              <span class="flt-prm" id="frm_subcategory">
                                <select class="flt-p-sel" name="pf_subcategory" id="pf_subcategory" disabled="disabled">
-                                 <option value="0">Все подкатегории</option>
+                                 <option value="0">Р’СЃРµ РїРѕРґРєР°С‚РµРіРѕСЂРёРё</option>
                                  <? if(false) for ($i=0; $i<sizeof($filter_subcategories); $i++) { ?>
                                  <option value="<?=$filter_subcategories[$i]['id']?>"><?=$filter_subcategories[$i]['profname']?></option>
                                  <? } ?>
@@ -348,7 +348,7 @@ if ($show_all_freelancers) {
 <div class="flt-spec-list " id="pf_specs" style="display:none"></div>
 <? endif; ?>
                   <div class="flt-block<?=(!$prof_id ? '' : ' flt-b-fc')?>">
-                       <label class="flt-lbl">Ключевые слова:</label>
+                       <label class="flt-lbl">РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°:</label>
                        <div class="flt-b-in">
                             <div class="flt-prm6">
 															<div class="b-input-hint">
@@ -360,14 +360,14 @@ if ($show_all_freelancers) {
                                 
                             </div>
                            
-                            <a href="https://feedback.fl.ru" class="lnk-dot-blue">Помощь</a>
-                            <div style="clear:both">Ключевые слова вводятся через запятую.</div>
+                            <a href="https://feedback.fl.ru" class="lnk-dot-blue">РџРѕРјРѕС‰СЊ</a>
+                            <div style="clear:both">РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР° РІРІРѕРґСЏС‚СЃСЏ С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ.</div>
                        </div>
                         
                   </div>
                   <div class="flt-block flt-block-btmp">
                         
-                       <label class="flt-lbl">Стоимость:</label>
+                       <label class="flt-lbl">РЎС‚РѕРёРјРѕСЃС‚СЊ:</label>
                        <div class="flt-b-in" id="cost_box"></div>
                        
                        <script type="text/javascript"> 
@@ -386,27 +386,27 @@ if ($show_all_freelancers) {
                        </script>
                   </div>
                   <div class="flt-block">
-                        <label class="flt-lbl">Опыт работы:</label>
+                        <label class="flt-lbl">РћРїС‹С‚ СЂР°Р±РѕС‚С‹:</label>
                         <div class="flt-b-in">
-                            <span class="flt-prm"><input class="flt-prm3" type="text" size="10" name="exp[]" value="<?=$mFilter['exp_from']==0?'':$mFilter['exp_from']?>" maxlength="3" /> &mdash; <input class="flt-prm3" type="text" size="10" maxlength="3" name="exp[]" value="<?=$mFilter['exp_to']==0?'':$mFilter['exp_to']?>" />&nbsp; лет</span>
+                            <span class="flt-prm"><input class="flt-prm3" type="text" size="10" name="exp[]" value="<?=$mFilter['exp_from']==0?'':$mFilter['exp_from']?>" maxlength="3" /> &mdash; <input class="flt-prm3" type="text" size="10" maxlength="3" name="exp[]" value="<?=$mFilter['exp_to']==0?'':$mFilter['exp_to']?>" />&nbsp; Р»РµС‚</span>
                        </div>
                   </div>
                   <div class="flt-block">
-                        <label class="flt-lbl">Имя или логин:</label>
+                        <label class="flt-lbl">РРјСЏ РёР»Рё Р»РѕРіРёРЅ:</label>
                         <div class="flt-b-in">
                             <span class="flt-prm11">
-                                <span class="flt-prm">Возраст: <input type="text" size="10" maxlength="3" name="age[]" value="<?=$mFilter['age_from']==0?'':$mFilter['age_from']?>" class="flt-prm3" /> &mdash; <input type="text" size="10" maxlength="3" name="age[]" value="<?=$mFilter['age_to']==0?'':$mFilter['age_to']?>" class="flt-prm3" />&nbsp; лет</span>
+                                <span class="flt-prm">Р’РѕР·СЂР°СЃС‚: <input type="text" size="10" maxlength="3" name="age[]" value="<?=$mFilter['age_from']==0?'':$mFilter['age_from']?>" class="flt-prm3" /> &mdash; <input type="text" size="10" maxlength="3" name="age[]" value="<?=$mFilter['age_to']==0?'':$mFilter['age_to']?>" class="flt-prm3" />&nbsp; Р»РµС‚</span>
                                 <input class="flt-prm4" type="text" size="10" name="login" value="<?=htmlspecialchars(stripslashes($mFilter['login']))?>" />
                             </span>
                         </div>
                   </div>
                   <div class="flt-block flt-block-occurrence">
-                       <label class="flt-lbl">Месторасположение:</label>
+                       <label class="flt-lbl">РњРµСЃС‚РѕСЂР°СЃРїРѕР»РѕР¶РµРЅРёРµ:</label>
                        <div class="flt-b-in">
                             <div class="flt-b-row">
                                  <span class="flt-prm">
                                     <div class="b-combo">
-                                        <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_150 b-combo__input_resize b-combo__input_arrow_yes  b-combo__input_init_citiesList b-combo__input_on_click_request_id_getcities b-combo__input_max-width_450 all_value_id_0_0_Все+страны all_value_id_1_0_Все+города <?=$locationId ?>">
+                                        <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_150 b-combo__input_resize b-combo__input_arrow_yes  b-combo__input_init_citiesList b-combo__input_on_click_request_id_getcities b-combo__input_max-width_450 all_value_id_0_0_Р’СЃРµ+СЃС‚СЂР°РЅС‹ all_value_id_1_0_Р’СЃРµ+РіРѕСЂРѕРґР° <?=$locationId ?>">
                                             <input id="pf_country" class="b-combo__input-text" type="text"  size="80" value="<?=$location ?>"/>
                                             <span class="b-combo__arrow"></span>
                                         </div>
@@ -414,26 +414,26 @@ if ($show_all_freelancers) {
                                  </span>
                             </div>
                             <div class="flt-b-row flt-b-row-mb">
-                                <label><input class="i-chk" type="checkbox" name="in_office" value="1" <?=($mFilter['in_office']=='t'?'checked="checked"':'')?>/> Ищет работу в офисе</label>
+                                <label><input class="i-chk" type="checkbox" name="in_office" value="1" <?=($mFilter['in_office']=='t'?'checked="checked"':'')?>/> РС‰РµС‚ СЂР°Р±РѕС‚Сѓ РІ РѕС„РёСЃРµ</label>
                             </div>
                        </div>
                   </div>
                   <div class="flt-block">
-                       <label class="flt-lbl">Дополнительно:</label>
+                       <label class="flt-lbl">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ:</label>
                        <div class="flt-b-in">
                             <ul class="flt-more c">
-                                <li><div class="b-check"><input class="b-check__input" type="checkbox" name="only_tu" value="1" <?=($mFilter['only_tu']=="t"?'checked="checked"':'')?>/> <label class="b-check__label b-check__label_bold">С Типовыми услугами</label></div></li>
+                                <li><div class="b-check"><input class="b-check__input" type="checkbox" name="only_tu" value="1" <?=($mFilter['only_tu']=="t"?'checked="checked"':'')?>/> <label class="b-check__label b-check__label_bold">РЎ РўРёРїРѕРІС‹РјРё СѓСЃР»СѓРіР°РјРё</label></div></li>
                                  <? if(get_uid(false)) { ?>
-                                 <li><div class="b-check"><input class="b-check__input" type="checkbox" name="in_fav" value="1" <?=($mFilter['in_fav']=="t"?'checked="checked"':'')?>/> <label class="b-check__label">У меня в избранных</label></div></li>
+                                 <li><div class="b-check"><input class="b-check__input" type="checkbox" name="in_fav" value="1" <?=($mFilter['in_fav']=="t"?'checked="checked"':'')?>/> <label class="b-check__label">РЈ РјРµРЅСЏ РІ РёР·Р±СЂР°РЅРЅС‹С…</label></div></li>
                                  <? } ?>
-                                 <li><div class="b-check"><input class="b-check__input" type="checkbox" name="only_free" value="1" <?=($mFilter['only_free']=="t"?'checked="checked"':'')?>/> <label class="b-check__label">Только свободные</label></div></li>
-                                 <li><div class="b-check"><input class="b-check__input" type="checkbox" name="is_pro" value="1" <?=($mFilter['is_pro']=="t"?'checked="checked"':'')?>/> <label class="b-check__label">С <?= view_pro('', false, true, 'платным аккаунтом')?> аккаунтом</label></div></li>
-                                 <?/*<li class="flt-more-b"><div class="b-check"><input class="b-check__input" type="checkbox" name="only_online" value="1" <?=($mFilter['only_online']=="t"?'checked="checked"':'')?>/> <label class="b-check__label">Сейчас на сайте</label></div></li> */?>
-                                 <li><div class="b-check"><input class="b-check__input" type="checkbox" name="is_preview" value="1" <?=($mFilter['is_preview']=="t"?'checked="checked"':'')?>/> <label class="b-check__label">Только с примерами работ</label></div></li>
-                                 <li><div class="b-check"><input class="b-check__input" type="checkbox" name="is_verify" value="1" <?=($mFilter['is_verify']=="t"?'checked="checked"':'')?> /> <label class="b-check__label">С <?= view_verify('подтвержденными паспортными данными', '')?> аккаунтом</label></div></li>
+                                 <li><div class="b-check"><input class="b-check__input" type="checkbox" name="only_free" value="1" <?=($mFilter['only_free']=="t"?'checked="checked"':'')?>/> <label class="b-check__label">РўРѕР»СЊРєРѕ СЃРІРѕР±РѕРґРЅС‹Рµ</label></div></li>
+                                 <li><div class="b-check"><input class="b-check__input" type="checkbox" name="is_pro" value="1" <?=($mFilter['is_pro']=="t"?'checked="checked"':'')?>/> <label class="b-check__label">РЎ <?= view_pro('', false, true, 'РїР»Р°С‚РЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј')?> Р°РєРєР°СѓРЅС‚РѕРј</label></div></li>
+                                 <?/*<li class="flt-more-b"><div class="b-check"><input class="b-check__input" type="checkbox" name="only_online" value="1" <?=($mFilter['only_online']=="t"?'checked="checked"':'')?>/> <label class="b-check__label">РЎРµР№С‡Р°СЃ РЅР° СЃР°Р№С‚Рµ</label></div></li> */?>
+                                 <li><div class="b-check"><input class="b-check__input" type="checkbox" name="is_preview" value="1" <?=($mFilter['is_preview']=="t"?'checked="checked"':'')?>/> <label class="b-check__label">РўРѕР»СЊРєРѕ СЃ РїСЂРёРјРµСЂР°РјРё СЂР°Р±РѕС‚</label></div></li>
+                                 <li><div class="b-check"><input class="b-check__input" type="checkbox" name="is_verify" value="1" <?=($mFilter['is_verify']=="t"?'checked="checked"':'')?> /> <label class="b-check__label">РЎ <?= view_verify('РїРѕРґС‚РІРµСЂР¶РґРµРЅРЅС‹РјРё РїР°СЃРїРѕСЂС‚РЅС‹РјРё РґР°РЅРЅС‹РјРё', '')?> Р°РєРєР°СѓРЅС‚РѕРј</label></div></li>
                                  
-                                 <li><div class="b-check"><input class="b-check__input" type="checkbox" name="sbr_is_positive" value="1" <?=($mFilter['sbr_is_positive']=="t"?'checked="checked"':'')?>/> <label class="b-check__label">С положительными рекомендациями</label></div></li>
-                                <li><div class="b-check"><input class="b-check__input" type="checkbox" name="sbr_not_negative" value="1" <?=($mFilter['sbr_not_negative']=="t"?'checked="checked"':'')?>/> <label class="b-check__label">Без отрицательных рекомендаций</label></div></li>
+                                 <li><div class="b-check"><input class="b-check__input" type="checkbox" name="sbr_is_positive" value="1" <?=($mFilter['sbr_is_positive']=="t"?'checked="checked"':'')?>/> <label class="b-check__label">РЎ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹РјРё СЂРµРєРѕРјРµРЅРґР°С†РёСЏРјРё</label></div></li>
+                                <li><div class="b-check"><input class="b-check__input" type="checkbox" name="sbr_not_negative" value="1" <?=($mFilter['sbr_not_negative']=="t"?'checked="checked"':'')?>/> <label class="b-check__label">Р‘РµР· РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹С… СЂРµРєРѕРјРµРЅРґР°С†РёР№</label></div></li>
                             </ul>
                            
                        </div>
@@ -441,7 +441,7 @@ if ($show_all_freelancers) {
                   <div class="flt-block flt-b-lc">
                        <label class="flt-lbl">&nbsp;</label>
                        <div class="flt-b-in">
-                            <input class="i-btn" type="button" name="enable_filter" value="Применить фильтр" onclick="_gaq.push(['_trackEvent', 'User', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_apply_catalog']); ga('send', 'event', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_apply_catalog'); $('frm').submit()"/>&nbsp;&nbsp;&nbsp;<a href="javascript: void(0);" onclick="FilterCatalogClearForm()" class="flt-lnk">Очистить форму</a>
+                            <input class="i-btn" type="button" name="enable_filter" value="РџСЂРёРјРµРЅРёС‚СЊ С„РёР»СЊС‚СЂ" onclick="_gaq.push(['_trackEvent', 'User', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_apply_catalog']); ga('send', 'event', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_apply_catalog'); $('frm').submit()"/>&nbsp;&nbsp;&nbsp;<a href="javascript: void(0);" onclick="FilterCatalogClearForm()" class="flt-lnk">РћС‡РёСЃС‚РёС‚СЊ С„РѕСЂРјСѓ</a>
                        </div>
                   </div>
              </div>
@@ -449,18 +449,18 @@ if ($show_all_freelancers) {
               <b class="b1"></b>
         </div>
      </form>   
-     <!-- Фильтр по ключевому слову --> 
+     <!-- Р¤РёР»СЊС‚СЂ РїРѕ РєР»СЋС‡РµРІРѕРјСѓ СЃР»РѕРІСѓ --> 
      <? if($key_word) { ?>
 	 <div class="cat-flt-key"> 
-	    Просмотр результатов по ключевому слову: <strong><?=stripslashes(htmlspecialchars($key_word))?></strong><br /> 
-	    <a href="/freelancers_new" class="lnk-dot-blue">Сбросить фильтр по ключевому слову</a> 
+	    РџСЂРѕСЃРјРѕС‚СЂ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РїРѕ РєР»СЋС‡РµРІРѕРјСѓ СЃР»РѕРІСѓ: <strong><?=stripslashes(htmlspecialchars($key_word))?></strong><br /> 
+	    <a href="/freelancers_new" class="lnk-dot-blue">РЎР±СЂРѕСЃРёС‚СЊ С„РёР»СЊС‚СЂ РїРѕ РєР»СЋС‡РµРІРѕРјСѓ СЃР»РѕРІСѓ</a> 
 	 </div>
 	 <? } ?> 
-	 <!-- Конец фильтра по ключевому слову --> 
+	 <!-- РљРѕРЅРµС† С„РёР»СЊС‚СЂР° РїРѕ РєР»СЋС‡РµРІРѕРјСѓ СЃР»РѕРІСѓ --> 
      <? if($hhf) { ?>
 	 <div class="cat-flt-key"> 
-	    Просмотр результатов по параметрам поиска HH.RU<br /> 
-	    <a href="/freelancers_new" class="lnk-dot-blue">Сбросить</a> 
+	    РџСЂРѕСЃРјРѕС‚СЂ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РїРѕ РїР°СЂР°РјРµС‚СЂР°Рј РїРѕРёСЃРєР° HH.RU<br /> 
+	    <a href="/freelancers_new" class="lnk-dot-blue">РЎР±СЂРѕСЃРёС‚СЊ</a> 
 	 </div>
 	 <? } ?> 
 <script language="javascript">

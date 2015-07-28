@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Êëàññ projects_feedback
- * Ìîäåëü äëÿ ðàáîòû ñ îòçûâàìè ïî ïðîåêòó 
+ * ÐšÐ»Ð°ÑÑ projects_feedback
+ * ÐœÐ¾Ð´ÐµÐ»ÑŒ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ Ð¾Ñ‚Ð·Ñ‹Ð²Ð°Ð¼Ð¸ Ð¿Ð¾ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ 
  */
 class projects_feedback 
 {
@@ -36,7 +36,7 @@ class projects_feedback
         
         
         /**
-         * Ïðîâåðêà àòðèáóòîâ êëàññà
+         * ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð°Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ð¾Ð² ÐºÐ»Ð°ÑÑÐ°
          * 
          * @param string $key
          * @param mixed $value
@@ -74,7 +74,7 @@ class projects_feedback
         
         
         /**
-         * Ôèëüòð àòðèáóòîâ êëàññà
+         * Ð¤Ð¸Ð»ÑŒÑ‚Ñ€ Ð°Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ð¾Ð² ÐºÐ»Ð°ÑÑÐ°
          * 
          * @param string $key
          * @param mixed $value
@@ -104,7 +104,7 @@ class projects_feedback
 
 
         /**
-         * Èíèöèàëèçàöèÿ èëè ïîëó÷åíèå àòòðèáóòîâ êëàññà
+         * Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ Ð¸Ð»Ð¸ Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ðµ Ð°Ñ‚Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ð¾Ð² ÐºÐ»Ð°ÑÑÐ°
          * 
          * @param array $attributes
          * @return type
@@ -140,7 +140,7 @@ class projects_feedback
         
         
         /**
-         * Ïîìå÷àåì îòçû êàê óäàëåííûé
+         * ÐŸÐ¾Ð¼ÐµÑ‡Ð°ÐµÐ¼ Ð¾Ñ‚Ð·Ñ‹ ÐºÐ°Ðº ÑƒÐ´Ð°Ð»ÐµÐ½Ð½Ñ‹Ð¹
          * 
          * @param int $feedback_id
          * @return boolean
@@ -159,7 +159,7 @@ class projects_feedback
         
         
         /**
-         * Îáíîâëåíèå îòçûâà
+         * ÐžÐ±Ð½Ð¾Ð²Ð»ÐµÐ½Ð¸Ðµ Ð¾Ñ‚Ð·Ñ‹Ð²Ð°
          * 
          * @param int $feedback_id
          * @return boolean
@@ -184,7 +184,7 @@ class projects_feedback
         
 
         /**
-         * Äîáàâëåíèå îòçûâà
+         * Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð¾Ñ‚Ð·Ñ‹Ð²Ð°
          * 
          * @param int $project_id
          * @return int ID
@@ -258,7 +258,7 @@ class projects_feedback
         
         
         /**
-         * Ïðîâåðêà ðàçðåøåíî ëè åùå äîáàâëÿòü ðåäàêòèðîâàòü îòçûâû
+         * ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ñ€Ð°Ð·Ñ€ÐµÑˆÐµÐ½Ð¾ Ð»Ð¸ ÐµÑ‰Ðµ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÑ‚ÑŒ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¾Ñ‚Ð·Ñ‹Ð²Ñ‹
          * 
          * @param string $close_date
          * @return boolean

@@ -23,7 +23,7 @@ endif;
 
                 ?>
                 <span class="walletInfo">
-                    <div class="b-layout__h3 b-layout__h3_padbot_5">Автопродление</div>
+                    <div class="b-layout__h3 b-layout__h3_padbot_5">РђРІС‚РѕРїСЂРѕРґР»РµРЅРёРµ</div>
 
                 </span>
                 <span id="wallet">
@@ -36,15 +36,15 @@ endif;
             } ?>
             <div class="b-layout__txt b-layout__txt_fontsize_11">
                 <a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green b-button_flat-size_medium b-button_float_right auto_prolong auto_prolong_btn" data-check="<?= $u_is_pro_auto_prolong?>">
-                    <?= $u_is_pro_auto_prolong == 't' ? 'Выключить' : 'Включить'?>   
+                    <?= $u_is_pro_auto_prolong == 't' ? 'Р’С‹РєР»СЋС‡РёС‚СЊ' : 'Р’РєР»СЋС‡РёС‚СЊ'?>   
                 </a>
-                Вы можете автоматически продлевать действие аккаунта PRO каждый месяц при наличии <?= payed::PRICE_FRL_PRO?> рублей на личном счёте.
+                Р’С‹ РјРѕР¶РµС‚Рµ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РїСЂРѕРґР»РµРІР°С‚СЊ РґРµР№СЃС‚РІРёРµ Р°РєРєР°СѓРЅС‚Р° PRO РєР°Р¶РґС‹Р№ РјРµСЃСЏС† РїСЂРё РЅР°Р»РёС‡РёРё <?= payed::PRICE_FRL_PRO?> СЂСѓР±Р»РµР№ РЅР° Р»РёС‡РЅРѕРј СЃС‡С‘С‚Рµ.
             </div>
 <? } else {
             ?>
             <?php if(false && !is_emp() && (isWasPlatipotom() || isAllowTestPro())) { ?>
                <div class="b-fon b-fon_pad_10 b-fon_bg_d3f2c0 b-fon__nosik_bot">
-                  Теперь можно приобрести аккаунт, оплатив его потом (через сервис <a class="b-layout__link" href="http://PlatiPotom.ru" target="_blank">PlatiPotom.ru</a>).<br>Вы станете PRO сразу, а оплатите его с отсрочкой до 30 дней.
+                  РўРµРїРµСЂСЊ РјРѕР¶РЅРѕ РїСЂРёРѕР±СЂРµСЃС‚Рё Р°РєРєР°СѓРЅС‚, РѕРїР»Р°С‚РёРІ РµРіРѕ РїРѕС‚РѕРј (С‡РµСЂРµР· СЃРµСЂРІРёСЃ <a class="b-layout__link" href="http://PlatiPotom.ru" target="_blank">PlatiPotom.ru</a>).<br>Р’С‹ СЃС‚Р°РЅРµС‚Рµ PRO СЃСЂР°Р·Сѓ, Р° РѕРїР»Р°С‚РёС‚Рµ РµРіРѕ СЃ РѕС‚СЃСЂРѕС‡РєРѕР№ РґРѕ 30 РґРЅРµР№.
                </div>
             <?php } ?>
 <?php } ?>
@@ -54,32 +54,32 @@ endif;
   <? if( (strtotime($pro_last)-time())/86400 > 1 || $_SESSION['is_freezed'] || $freeze_set || $freezed_now ) { ?>
               <?php if( $freeze_set || $freezed_now ): ?>
               <div class="b-layout__h3_padbot_5">
-                  <span class="b-layout__h3">Заморозка</span> 
+                  <span class="b-layout__h3">Р—Р°РјРѕСЂРѕР·РєР°</span> 
                   <div class="i-shadow i-shadow_inline-block b-layout__txt b-layout__txt_padleft_20">
 						
 						<div class="b-shadow b-shadow_width_380 b-shadow_top_15 b-shadow_margleft_-175 b-shadow_zindex_3 b-shadow_hide b-shadow_width_300_ipad b-shadow_left_100_ipad">
                             <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_15">
                                                 <div class="b-shadow__txt" style="line-height:100%;">
 													<span class="b-layout__txt b-layout__txt_fontsize_11">
-														Четыре раза в год вы можете приостановить действие вашего PRO-аккаунта. Воспользуйтесь этой функцией, если собираетесь в отпуск или будете оффлайн определенный период времени.
-														<span class="block padtop_5">Заморозка доступна 4 раза в год (4 периода по 7 дней).</span>
-														При досрочной разморозке неиспользованные дни от выбранного периода сгорают. 
+														Р§РµС‚С‹СЂРµ СЂР°Р·Р° РІ РіРѕРґ РІС‹ РјРѕР¶РµС‚Рµ РїСЂРёРѕСЃС‚Р°РЅРѕРІРёС‚СЊ РґРµР№СЃС‚РІРёРµ РІР°С€РµРіРѕ PRO-Р°РєРєР°СѓРЅС‚Р°. Р’РѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ СЌС‚РѕР№ С„СѓРЅРєС†РёРµР№, РµСЃР»Рё СЃРѕР±РёСЂР°РµС‚РµСЃСЊ РІ РѕС‚РїСѓСЃРє РёР»Рё Р±СѓРґРµС‚Рµ РѕС„С„Р»Р°Р№РЅ РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РїРµСЂРёРѕРґ РІСЂРµРјРµРЅРё.
+														<span class="block padtop_5">Р—Р°РјРѕСЂРѕР·РєР° РґРѕСЃС‚СѓРїРЅР° 4 СЂР°Р·Р° РІ РіРѕРґ (4 РїРµСЂРёРѕРґР° РїРѕ 7 РґРЅРµР№).</span>
+														РџСЂРё РґРѕСЃСЂРѕС‡РЅРѕР№ СЂР°Р·РјРѕСЂРѕР·РєРµ РЅРµРёСЃРїРѕР»СЊР·РѕРІР°РЅРЅС‹Рµ РґРЅРё РѕС‚ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РїРµСЂРёРѕРґР° СЃРіРѕСЂР°СЋС‚. 
                                                         <?php if(!$freeze_disabled && $last_freeze['freezed_cnt'] < 4) { $cnt = (4 - $last_freeze['freezed_cnt']);?>
                             <?
                             $cnt = 7;
-                            $ending_1 = 'осталось 7 дней заморозки';
+                            $ending_1 = 'РѕСЃС‚Р°Р»РѕСЃСЊ 7 РґРЅРµР№ Р·Р°РјРѕСЂРѕР·РєРё';
                             if (floor((28-$last_freeze['freezed_days'])/7) == 4 && !$_SESSION['is_freezed']) {
                               $cnt=28;
-                              $ending_1 = 'осталось 28 дней заморозки';
+                              $ending_1 = 'РѕСЃС‚Р°Р»РѕСЃСЊ 28 РґРЅРµР№ Р·Р°РјРѕСЂРѕР·РєРё';
                             } elseif ( (floor((28-$last_freeze['freezed_days'])/7) >= 3 && !$_SESSION['is_freezed']) ) {
                               $cnt=21;
-                              $ending_1 = 'остался 21 день заморозки';
+                              $ending_1 = 'РѕСЃС‚Р°Р»СЃСЏ 21 РґРµРЅСЊ Р·Р°РјРѕСЂРѕР·РєРё';
                             } elseif (floor((28-$last_freeze['freezed_days'])/7) >= 2 && !$_SESSION['is_freezed']) {
                               $cnt=14;
-                              $ending_1 = 'осталось 14 дней заморозки';
+                              $ending_1 = 'РѕСЃС‚Р°Р»РѕСЃСЊ 14 РґРЅРµР№ Р·Р°РјРѕСЂРѕР·РєРё';
                             }
                             ?>
-														<span class="block padtop_10"><b>У вас <?=$ending_1 ?></b></span>
+														<span class="block padtop_10"><b>РЈ РІР°СЃ <?=$ending_1 ?></b></span>
                                                         <?php }//if?>
 													</span>
 												</div>
@@ -88,34 +88,34 @@ endif;
 						    <span class="b-shadow__icon b-shadow__icon_nosik b-shadow__icon_nosik_left_110_ipad"></span>
 						</div>
 						
-	              		<a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_41 b-layout__link_inline-block b-layout__link_lineheight_1 terms_btn" href="javascript:void(0)">Условия</a>
+	              		<a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_41 b-layout__link_inline-block b-layout__link_lineheight_1 terms_btn" href="javascript:void(0)">РЈСЃР»РѕРІРёСЏ</a>
 					</div>
               </div>
               <div id="freeze_disable" class="b-layout__txt <?= ($freeze_disabled?'':"b-layout__txt_hide");?> b-layout__txt_fontsize_11">
-                  Заморозка доступна 4 раза в год (4 периода по 7 дней). Вы уже использовали эту функцию.
+                  Р—Р°РјРѕСЂРѕР·РєР° РґРѕСЃС‚СѓРїРЅР° 4 СЂР°Р·Р° РІ РіРѕРґ (4 РїРµСЂРёРѕРґР° РїРѕ 7 РґРЅРµР№). Р’С‹ СѓР¶Рµ РёСЃРїРѕР»СЊР·РѕРІР°Р»Рё СЌС‚Сѓ С„СѓРЅРєС†РёСЋ.
               </div>
               <div class="b-layout__txt <?= ( ( $freeze_set || $freezed_now ) ? '' : "b-layout__txt_hide"); ?>" id="freeze_on">
                     <span class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_inline-block b-layout__txt_fontsize_11 freeze_info" id="freeze_info">
                         <? if ($_SESSION['is_freezed']) { ?>
-                            Ваш аккаунт заморожен с <b><?= date('d.m.Y', strtotime($_SESSION['freeze_from'])) ?> </b> на <b> <?= (strtotime($last_freeze['to_time'])-strtotime($last_freeze['from_time']))/60/60/24 ?> <?= getSymbolicName((strtotime($last_freeze['to_time'])-strtotime($last_freeze['from_time']))/60/60/24, 'day') ?></b>
+                            Р’Р°С€ Р°РєРєР°СѓРЅС‚ Р·Р°РјРѕСЂРѕР¶РµРЅ СЃ <b><?= date('d.m.Y', strtotime($_SESSION['freeze_from'])) ?> </b> РЅР° <b> <?= (strtotime($last_freeze['to_time'])-strtotime($last_freeze['from_time']))/60/60/24 ?> <?= getSymbolicName((strtotime($last_freeze['to_time'])-strtotime($last_freeze['from_time']))/60/60/24, 'day') ?></b>
                         <? } else if (( $freeze_set || $freezed_now)) { //if?>
-                            Ваш аккаунт будет заморожен с <b><?= date('d.m.Y', strtotime($from_time)) ?> </b> на <b> <?= (strtotime($last_freeze['to_time'])-strtotime($last_freeze['from_time']))/60/60/24 ?> <?= getSymbolicName((strtotime($last_freeze['to_time'])-strtotime($last_freeze['from_time']))/60/60/24, 'day') ?></b>
+                            Р’Р°С€ Р°РєРєР°СѓРЅС‚ Р±СѓРґРµС‚ Р·Р°РјРѕСЂРѕР¶РµРЅ СЃ <b><?= date('d.m.Y', strtotime($from_time)) ?> </b> РЅР° <b> <?= (strtotime($last_freeze['to_time'])-strtotime($last_freeze['from_time']))/60/60/24 ?> <?= getSymbolicName((strtotime($last_freeze['to_time'])-strtotime($last_freeze['from_time']))/60/60/24, 'day') ?></b>
                         <? }//if?>
 
                     </span>
                     <a href="javascript:void(0)" class="b-button b-button_margtop_-4 b-button_flat b-button_flat_blue b-button_flat-size_medium margleft_10 freezed_btn">
                         <?php if ($_SESSION['is_freezed']) { ?>
-                            Разморозить
+                            Р Р°Р·РјРѕСЂРѕР·РёС‚СЊ
                         <?php } else if ($_SESSION['freeze_from']) {//if?>
-                            Отменить
+                            РћС‚РјРµРЅРёС‚СЊ
                         <?php } else { //else if?>
-                            Заморозить
+                            Р—Р°РјРѕСЂРѕР·РёС‚СЊ
                         <?php } //else?>
                     </a>
               </div>
               <div class="b-layout__txt <?= ( !($freeze_set || $freezed_now) ?'':"b-layout__txt_hide");?> <?= $freeze_disabled?'b-layout__txt_hide':''?>" id="freeze_enable">
                        
-                  Заморозка отключена.
+                  Р—Р°РјРѕСЂРѕР·РєР° РѕС‚РєР»СЋС‡РµРЅР°.
                   
                   <div class="g-hidden">
                   
@@ -128,28 +128,28 @@ endif;
                             </div>
                         </div>
                         <input type="hidden" name="freez_type" id="freez_type" value="1">
-                        <span class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_padbot_10 b-layout__txt_inline-block freeze_info">&nbsp;на
+                        <span class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_padbot_10 b-layout__txt_inline-block freeze_info">&nbsp;РЅР°
                             <span class="b-layout__text-selected freeze_type" id="ftype1">7</span><? if (floor((28-$last_freeze['freezed_days'])/7) >= 2 && !$_SESSION['is_freezed']) { ?>, 
                             <span class="b-layout__text-noselected b-post__label freeze_type" id="ftype2">14</span><? } ?><? if (floor((28-$last_freeze['freezed_days'])/7) >= 3 && !$_SESSION['is_freezed']) { ?>, 
                             <span class="b-layout__text-noselected b-post__label freeze_type" id="ftype3">21</span><? } ?><? if (floor((28-$last_freeze['freezed_days'])/7) == 4 && !$_SESSION['is_freezed']) { ?>, 
                             <span class="b-layout__text-noselected b-post__label freeze_type" id="ftype4">28</span><? } ?>
                             <!--
                             <? if (ceil($last_freeze['freezed_days']/7) < 1 || ceil($last_freeze['freezed_days']/7) == 2 && !$_SESSION['is_freezed']) { ?>
-                            или <span class="b-layout__text-noselected b-post__label freeze_type" id="ftype2">14</span>
+                            РёР»Рё <span class="b-layout__text-noselected b-post__label freeze_type" id="ftype2">14</span>
                             <? }//if?>
                             -->
-                            дней
+                            РґРЅРµР№
                         </span>
 
                         <input type="hidden" name="action_freeze" id="action_freeze" value="<?= $freeze_act; ?>" />
 
                         <a href="javascript:void(0)" class="b-button b-button_margtop_-4 b-button_flat b-button_flat_blue b-button_flat-size_medium margleft_10 freezed_btn">
                             <?php if($_SESSION['is_freezed']) {?>
-                            Разморозить
+                            Р Р°Р·РјРѕСЂРѕР·РёС‚СЊ
                             <?php } else if($_SESSION['freeze_from']) {//if?>
-                            Отменить
+                            РћС‚РјРµРЅРёС‚СЊ
                             <?php } else { //else if?>
-                            Заморозить
+                            Р—Р°РјРѕСЂРѕР·РёС‚СЊ
                             <?php } //else?>
                         </a>
                   

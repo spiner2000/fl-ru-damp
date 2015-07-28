@@ -6,11 +6,11 @@
 		<div class="cpv-budjet">
 		<table>
 		<tr class="cpv-budjet-main">
-			<th>Бюджет:</th>
+			<th>Р‘СЋРґР¶РµС‚:</th>
 			<td><?=CurToChar($project['cost'], $project['currency'])?></td>
 		</tr>
 		<tr>
-			<th rowspan="3">Это:</th>
+			<th rowspan="3">Р­С‚Рѕ:</th>
 			<td>
 				<?=(($project['currency'] != 0)? CurToChar(preg_replace('/.00$/', '', sprintf("%.2f", round($project['cost'] * $project_exRates[trim($translate_exRates[$project['currency']]) . '2'], 2))), 0).'<br />': "")?>
 				<?=(($project['currency'] != 1)? CurToChar(preg_replace('/.00$/', '', sprintf("%.2f", round($project['cost'] * $project_exRates[trim($translate_exRates[$project['currency']]) . '3'], 2))), 1).'<br />': "")?>
@@ -29,20 +29,20 @@
     <?php $can_change_prj = hasPermissions("projects"); ?>
 
     <? if ($project['cost'] != 0) { ?>
-  <div id="budget_block" class="b-layout__txt b-layout__txt_float_right b-layout__txt_fontsize_18 b-layout__txt_fontsize_13_iphone">Бюджет: 
+  <div id="budget_block" class="b-layout__txt b-layout__txt_float_right b-layout__txt_fontsize_18 b-layout__txt_fontsize_13_iphone">Р‘СЋРґР¶РµС‚: 
                   <?php
                   switch ($project['priceby']) {
                       case '1':
-                          $priceby_str = "/час";
+                          $priceby_str = "/С‡Р°СЃ";
                           break;
                       case '2':
-                          $priceby_str = "/день";
+                          $priceby_str = "/РґРµРЅСЊ";
                           break;
                       case '3':
-                          $priceby_str = "/месяц";
+                          $priceby_str = "/РјРµСЃСЏС†";
                           break;
                       case '4':
-                          $priceby_str = "/проект";
+                          $priceby_str = "/РїСЂРѕРµРєС‚";
                           break;
                       default:
                           $priceby_str = "";
@@ -61,23 +61,23 @@
   </div>
   <? } else { ?>
   <?php if ($project['pro_only'] == 't' && $_SESSION["uid"]) {?>
-      <div class="b-layout__txt b-layout__txt_padbot_20">Только для <span class="b-icon b-icon__pro b-icon__pro_f" alt="Платный аккаунт" title="Платный аккаунт"></span></div>
+      <div class="b-layout__txt b-layout__txt_padbot_20">РўРѕР»СЊРєРѕ РґР»СЏ <span class="b-icon b-icon__pro b-icon__pro_f" alt="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" title="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚"></span></div>
   <? }?>
- <div id="budget_block" class="b-layout__txt b-layout__txt_float_right b-layout__txt_fontsize_18 b-layout__txt_fontsize_13_iphone">Бюджет 
+ <div id="budget_block" class="b-layout__txt b-layout__txt_float_right b-layout__txt_fontsize_18 b-layout__txt_fontsize_13_iphone">Р‘СЋРґР¶РµС‚ 
                          <? if($can_change_prj) { ?>
-                             <a id="prj_budget_lnk_<?=$project['id']?>" class="b-layout__link b-layout__link_bordbot_dot_000 b-layout__link_bold" href="#" onClick="popupShowChangeBudget(<?=$project['id']?>, '', 0, 1, true, <?=$project['id']?>, 2); return false;">по договоренности</a>
+                             <a id="prj_budget_lnk_<?=$project['id']?>" class="b-layout__link b-layout__link_bordbot_dot_000 b-layout__link_bold" href="#" onClick="popupShowChangeBudget(<?=$project['id']?>, '', 0, 1, true, <?=$project['id']?>, 2); return false;">РїРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</a>
                          <? } else { ?>
-                             <span class="b-layout__bold">по договоренности</span>
+                             <span class="b-layout__bold">РїРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</span>
                          <? } ?>
  </div>
   <? } ?>
 			<div class="contest-e">
-                <span style="color: #6BB24B; font-weight: bold;"><a href="/users/<?=$project['login']?>" class="employer-name" title="<?=($project['uname']." ".$project['usurname'])?>"><?=($project['uname']." ".$project['usurname'])?></a> [<a href="/users/<?=$project['login']?>" class="employer-name" title="<?=$project['login']?>"><?=$project['login']?></a>] <?= view_mark_user($project)?> <?=($project['completed_cnt'] > 0 ?'<a class="b-layout__link" href="/promo/bezopasnaya-sdelka/" title="Пользователь работал через Безопасную Сделку" target="_blank"><span class="b-icon b-icon__shield"></span></a>':'' ) ?></span>
+                <span style="color: #6BB24B; font-weight: bold;"><a href="/users/<?=$project['login']?>" class="employer-name" title="<?=($project['uname']." ".$project['usurname'])?>"><?=($project['uname']." ".$project['usurname'])?></a> [<a href="/users/<?=$project['login']?>" class="employer-name" title="<?=$project['login']?>"><?=$project['login']?></a>] <?= view_mark_user($project)?> <?=($project['completed_cnt'] > 0 ?'<a class="b-layout__link" href="/promo/bezopasnaya-sdelka/" title="РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЂР°Р±РѕС‚Р°Р» С‡РµСЂРµР· Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ" target="_blank"><span class="b-icon b-icon__shield"></span></a>':'' ) ?></span>
                 <?=dateFormat("[d.m.Y | H:i]", $project['create_date'])?>
-                <?=($project['post_date'] !== $project['create_date']) ? dateFormat("[поднят: d.m.Y | H:i]", $project['post_date']) : ""?>
-                <?=(($project['edit_date'])?dateFormat("[внесены изменения: d.m.Y | H:i]", $project['edit_date']):"")?>
+                <?=($project['post_date'] !== $project['create_date']) ? dateFormat("[РїРѕРґРЅСЏС‚: d.m.Y | H:i]", $project['post_date']) : ""?>
+                <?=(($project['edit_date'])?dateFormat("[РІРЅРµСЃРµРЅС‹ РёР·РјРµРЅРµРЅРёСЏ: d.m.Y | H:i]", $project['edit_date']):"")?>
                 
-                <? if(hasPermissions('projects')): ?><b style="color:#ff0000"><nobr>Конкурс</nobr></b><? endif; ?>
+                <? if(hasPermissions('projects')): ?><b style="color:#ff0000"><nobr>РљРѕРЅРєСѓСЂСЃ</nobr></b><? endif; ?>
 			</div>
             <? if (get_uid(false) && $project['user_id'] != get_uid(0)) {
                 include_once($_SERVER['DOCUMENT_ROOT'].'/projects/tpl.note.php');
@@ -88,18 +88,18 @@
         $registered    = strtolower(ElapsedMnths(strtotime($project['reg_date'])));
         setlocale(LC_ALL, 'en_US.UTF-8');
         ?>
-		    <div class="margtop_5"><b>Зарегистрирован<?= $user->sex === 'f' ? 'а' : '' ?> на сайте <?=$registered?></b></div>
-		    <div class="margtop_5"><span class="margright_39">Безопасных сделок:</span><?=(int)$project['completed_cnt']?></div>
+		    <div class="margtop_5"><b>Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ<?= $user->sex === 'f' ? 'Р°' : '' ?> РЅР° СЃР°Р№С‚Рµ <?=$registered?></b></div>
+		    <div class="margtop_5"><span class="margright_39">Р‘РµР·РѕРїР°СЃРЅС‹С… СЃРґРµР»РѕРє:</span><?=(int)$project['completed_cnt']?></div>
 		    <?php if(get_uid() && $show_info) { ?>
             <div class="margtop_2">
-            	<span class="first margright_20">Отзывы фрилансеров:</span>
+            	<span class="first margright_20">РћС‚Р·С‹РІС‹ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ:</span>
                 <span class="r_positive"><a href="/users/<?=$project['login']?>/opinions/?sort=1#op_head">+&nbsp;<?= (int)($op_data['frl_total']['p'])?></a></span>
                 <span class="r_neutral"><a href="/users/<?=$project['login']?>/opinions/?sort=2#op_head"><?= (int)($op_data['frl_total']['n'])?></a></span>
                 <span class="r_negative"><a href="/users/<?=$project['login']?>/opinions/?sort=3#op_head">-&nbsp;<?= (int)($op_data['frl_total']['m'])?></a></span>
             </div>
             <?php } else {?>
             <div class="margtop_2">
-            	<span class="first margright_20">Отзывы фрилансеров:</span>
+            	<span class="first margright_20">РћС‚Р·С‹РІС‹ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ:</span>
                 <span class="r_positive">+&nbsp;<?= (int)($op_data['frl_total']['p'])?></span>
                 <span class="r_neutral"><?= (int)($op_data['frl_total']['n'])?></span>
                 <span class="r_negative">-&nbsp;<?= (int)($op_data['frl_total']['m'])?></span>
@@ -134,7 +134,7 @@
 <div class="b-layout__txt b-layout__txt_padbot_20">
 			<?php $sTitle = $project['moderator_status'] === '0' && $project['is_pro'] != 't' ? $stop_words->replace($project['name']) : $project['name']; ?>
             <?
-            // Сохраняем форматирование пробелами
+            // РЎРѕС…СЂР°РЅСЏРµРј С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ РїСЂРѕР±РµР»Р°РјРё
             $descr = $project['moderator_status'] === '0' && $project['is_pro'] != 't' ? $stop_words->replace($project['descr']) : $project['descr'];
             $descr = preg_replace("/^ /","\x07",$descr);
             $descr = preg_replace("/(\n) /","$1\x07",$descr);
@@ -143,16 +143,16 @@
             echo $descr;
             ?>
 </div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold">Разделы:</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold">Р Р°Р·РґРµР»С‹:</div>
                         <div class="b-layout__txt b-layout__txt_fontsize_11 "><?=$isPreview ? $project['spec_txt'] : projects::_getSpecsStr($project_specs,' / ', ', ', true);?></div>
-                        <?php if ($project['ico_payed']=='t' || $project['is_upped'] == 't'){?><div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_20">Конкурс</div><?php } //if?>
+                        <?php if ($project['ico_payed']=='t' || $project['is_upped'] == 't'){?><div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_20">РљРѕРЅРєСѓСЂСЃ</div><?php } //if?>
                         
                         
                         <?php if( get_uid(false) && ( is_pro() || $project['user_id'] == get_uid(false) || $project['is_pro'] == 't' || $isPreview) && trim($project['contacts']) != '' && !$is_contacts_employer_empty) {?>
                         <div class="b-layout <?= $isPreview ? "" : ""?> b-layout_padbot_20 b-layout_padtop_15">
                             <table class="b-layout__table b-layout__table_width_full b-project-contacts-collection  ">
                                <tr class="b-layout__tr">
-                                  <td class="b-layout__one b-layout__one_padbot_10 b-layout__one_bordbot_ccc b-layout__one_width_130"><div class="b-layout__txt ">Контакты:</div></td>
+                                  <td class="b-layout__one b-layout__one_padbot_10 b-layout__one_bordbot_ccc b-layout__one_width_130"><div class="b-layout__txt ">РљРѕРЅС‚Р°РєС‚С‹:</div></td>
                                   <td class="b-layout__one b-layout__one_padbot_10 b-layout__one_bordbot_ccc"></td>
                                </tr>
                                <?php foreach($contacts_employer as $name=>$contact) { if(trim($contact['value']) == '') continue;?>
@@ -175,16 +175,16 @@
                         </div>
                         <?php }//if?>
 
-                        <?php if ($project['kind'] == 4) { ?><span class="place">В офис <?= (($project['country'])?" (".$project['country_name'].(($project['city'])?", ".$project['city_name']:"").")":"") ?></span><?php } //if?>
+                        <?php if ($project['kind'] == 4) { ?><span class="place">Р’ РѕС„РёСЃ <?= (($project['country'])?" (".$project['country_name'].(($project['city'])?", ".$project['city_name']:"").")":"") ?></span><?php } //if?>
                         <? if ($project['prefer_sbr'] === 't') { ?>
-						<div class="b-layout__txt <? if (!((hasPermissions('projects')||$contest->is_owner)&&($project["closed"] != "t"))) { ?>b-layout__txt_padbot_30<? } ?> b-layout__txt_fontsize_11">Выплата вознаграждения через сервис <a href="/promo/bezopasnaya-sdelka/" target="_blank" class="b-layout__link">Безопасная Сделка</a> <?= view_sbr_shield('', 'b-icon_top_2') ?></div>
+						<div class="b-layout__txt <? if (!((hasPermissions('projects')||$contest->is_owner)&&($project["closed"] != "t"))) { ?>b-layout__txt_padbot_30<? } ?> b-layout__txt_fontsize_11">Р’С‹РїР»Р°С‚Р° РІРѕР·РЅР°РіСЂР°Р¶РґРµРЅРёСЏ С‡РµСЂРµР· СЃРµСЂРІРёСЃ <a href="/promo/bezopasnaya-sdelka/" target="_blank" class="b-layout__link">Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°</a> <?= view_sbr_shield('', 'b-icon_top_2') ?></div>
                         <? } ?>
 
 		<? if ((hasPermissions('projects')||$contest->is_owner)&&($project["closed"] != "t")) { ?>
 		<div class="b-layout__txt b-layout__txt_padbot_30">
          <div class="b-layout__txt b-layout__txt_fontsize_11">
-            Статистика: закладка "<?=GetKind($project["kind"])?>" 
-            <a class="b-layout__link" href="#" id="pos_link_<?=$project['id']?>" onclick="xajax_getStatProject(<?=$project['id']?>, '<?=$project['payed_to']?>', '<?=$project['now']?>', '<?=$project['payed']?>', '<?=$project['post_date']?>', '<?=$project['kind']?>', '<?=$project['comm_count']?>', '<?= $offcnt?>'); return false;">Подробнее…</a>
+            РЎС‚Р°С‚РёСЃС‚РёРєР°: Р·Р°РєР»Р°РґРєР° "<?=GetKind($project["kind"])?>" 
+            <a class="b-layout__link" href="#" id="pos_link_<?=$project['id']?>" onclick="xajax_getStatProject(<?=$project['id']?>, '<?=$project['payed_to']?>', '<?=$project['now']?>', '<?=$project['payed']?>', '<?=$project['post_date']?>', '<?=$project['kind']?>', '<?=$project['comm_count']?>', '<?= $offcnt?>'); return false;">РџРѕРґСЂРѕР±РЅРµРµвЂ¦</a>
          </div>
 			<span class="b-layout__txt b-layout__txt_fontsize_11" id="prj_pos_<?=$project['id']?>"></span>
 		</div>
@@ -192,7 +192,7 @@
 
 
 			<?
-			// аттачи
+			// Р°С‚С‚Р°С‡Рё
 			if ($project['attach']) {
 				echo '<table cellpadding="2" cellspacing="0" border="0">';
 				$str = viewattachLeft($project['login'], $project['attach'], "upload", $file, 1000, 600, 307200, $project['attach'], 0, 0);
@@ -228,11 +228,11 @@
       
 <div class="b-buttons">      
 <?php if (is_emp()): ?>
-    <a id="contest-add-button" class="b-button b-button_flat b-button_flat_green" href="<?="/public/?step=1&kind=".$project['kind']."&red="?>">Разместить аналогичный конкурс</a>
+    <a id="contest-add-button" class="b-button b-button_flat b-button_flat_green" href="<?="/public/?step=1&kind=".$project['kind']."&red="?>">Р Р°Р·РјРµСЃС‚РёС‚СЊ Р°РЅР°Р»РѕРіРёС‡РЅС‹Р№ РєРѕРЅРєСѓСЂСЃ</a>
 <?php else: ?>
-    <a id="contest-add-button" class="b-button b-button_flat b-button_flat_green" style="display: <?=(($project['user_id'] != $_SESSION['uid'] && !$contest->has_offer && !$project['contest_end'] && $project['closed'] != 't' && !$contest->is_banned) ? 'inline-block': 'none')?>;" <? if($href=="#offer-edit") { ?>onclick="$('contest-comments').setStyle('display', 'block'); <?= (!$contest->offers || $all_offers_count==0)?"ShowHide('contest-comments');":"";?> ShowHide('add-offer'); var textarea = new resizableTextarea($$('div.rtextarea'), { handler: '.handler', modifiers: {x: false, y: true}, size: {y:[170, 1000]}});" <? } //if ?> href="<?=$href?>">Принять участие в конкурсе</a>
+    <a id="contest-add-button" class="b-button b-button_flat b-button_flat_green" style="display: <?=(($project['user_id'] != $_SESSION['uid'] && !$contest->has_offer && !$project['contest_end'] && $project['closed'] != 't' && !$contest->is_banned) ? 'inline-block': 'none')?>;" <? if($href=="#offer-edit") { ?>onclick="$('contest-comments').setStyle('display', 'block'); <?= (!$contest->offers || $all_offers_count==0)?"ShowHide('contest-comments');":"";?> ShowHide('add-offer'); var textarea = new resizableTextarea($$('div.rtextarea'), { handler: '.handler', modifiers: {x: false, y: true}, size: {y:[170, 1000]}});" <? } //if ?> href="<?=$href?>">РџСЂРёРЅСЏС‚СЊ СѓС‡Р°СЃС‚РёРµ РІ РєРѕРЅРєСѓСЂСЃРµ</a>
 <?php endif; ?>
-&#160;&#160;<span class="b-buttons__txt"><a class="b-layout__link b-layout__link_no-decorat b-layout__link_fontsize_13" href="/konkurs/">Посмотреть другие конкурсы</a></span>
+&#160;&#160;<span class="b-buttons__txt"><a class="b-layout__link b-layout__link_no-decorat b-layout__link_fontsize_13" href="/konkurs/">РџРѕСЃРјРѕС‚СЂРµС‚СЊ РґСЂСѓРіРёРµ РєРѕРЅРєСѓСЂСЃС‹</a></span>
 </div>     
       
       
@@ -256,7 +256,7 @@
 		<table cellpadding="2" cellspacing="0" border="0" style="margin: 12px 0px 16px 0px">
 		<tr valign="middle">
 			<td style="padding:0 4px"><img src="/images/ico_setup.gif" border="0"></td>
-			<td><a class="public_blue" href="/public/?step=1&amp;public=<?=$project["id"]?>&amp;red=<?=rawurlencode(getFriendlyURL("project", $project['id']))?>">Редактировать</a></td>
+			<td><a class="public_blue" href="/public/?step=1&amp;public=<?=$project["id"]?>&amp;red=<?=rawurlencode(getFriendlyURL("project", $project['id']))?>">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></td>
 			<td></td>
             <td></td>
 		</tr>
@@ -270,16 +270,16 @@
         ?>
             <?php /*
 												  <td style="padding: 30px 4px 4px 4px">
-                <a href="/public/?step=2&public=<?=$project['id']?>&red=<?=rawurlencode($_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING']); ?>" class="btn btn-orng"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Купить платный конкурс</span></span></span></a>
+                <a href="/public/?step=2&public=<?=$project['id']?>&red=<?=rawurlencode($_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING']); ?>" class="btn btn-orng"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РљСѓРїРёС‚СЊ РїР»Р°С‚РЅС‹Р№ РєРѕРЅРєСѓСЂСЃ</span></span></span></a>
                 <div style="margin-top: 4px; color: #AC9999;font-size: 10px">
-                    Вы можете <a href="/public/?step=2&public=<?=$project['id']?>&red=<?=rawurlencode($_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING'])?>"  class="public_blue">закрепить ваш конкурс вверху<br />и выделить его среди остальных</a>
+                    Р’С‹ РјРѕР¶РµС‚Рµ <a href="/public/?step=2&public=<?=$project['id']?>&red=<?=rawurlencode($_SERVER['PHP_SELF'] . "?" . $_SERVER['QUERY_STRING'])?>"  class="public_blue">Р·Р°РєСЂРµРїРёС‚СЊ РІР°С€ РєРѕРЅРєСѓСЂСЃ РІРІРµСЂС…Сѓ<br />Рё РІС‹РґРµР»РёС‚СЊ РµРіРѕ СЃСЂРµРґРё РѕСЃС‚Р°Р»СЊРЅС‹С…</a>
                 </div>
               </td>
 												*/ ?>
               <td style="padding: 30px 4px 4px 4px">
-                <a href="/public/?step=1&public=<?= $project['id'] ?>" class="b-button b-button_flat b-button_flat_green">Купить платный конкурс</a>
+                <a href="/public/?step=1&public=<?= $project['id'] ?>" class="b-button b-button_flat b-button_flat_green">РљСѓРїРёС‚СЊ РїР»Р°С‚РЅС‹Р№ РєРѕРЅРєСѓСЂСЃ</a>
                 <div style="margin-top: 4px; color: #AC9999;font-size: 10px">
-                    Вы можете <a href="/public/?step=1&public=<?= $project['id'] ?>"  class="public_blue">закрепить ваш конкурс наверху ленты</a>
+                    Р’С‹ РјРѕР¶РµС‚Рµ <a href="/public/?step=1&public=<?= $project['id'] ?>"  class="public_blue">Р·Р°РєСЂРµРїРёС‚СЊ РІР°С€ РєРѕРЅРєСѓСЂСЃ РЅР°РІРµСЂС…Сѓ Р»РµРЅС‚С‹</a>
                 </div>
               </td>
                <td width="20">&nbsp;</td>
@@ -303,12 +303,12 @@
 		<br clear="all">
 		<div style="margin: 10px 0 0 60px">
  
-      <a href="/public/?step=1&amp;public=<?=$project['id']?>&amp;red=%2Fprojects%2Findex.php%3Fpid%3D<?=$project['id']?>" onClick="popupQEditPrjShow(<?=$project['id']?>, event); return false;">Редактировать</a> | 
-			<span id="project-button-<?=$project['id']?>"><a style="color: red" href="." onclick="banned.<?=($project['is_blocked']? 'unblockedProject': 'blockedProject')?>(<?=$project['id']?>); return false;"><?=($project['is_blocked']? 'Разблокировать': 'Заблокировать')?></a></span> | 
+      <a href="/public/?step=1&amp;public=<?=$project['id']?>&amp;red=%2Fprojects%2Findex.php%3Fpid%3D<?=$project['id']?>" onClick="popupQEditPrjShow(<?=$project['id']?>, event); return false;">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> | 
+			<span id="project-button-<?=$project['id']?>"><a style="color: red" href="." onclick="banned.<?=($project['is_blocked']? 'unblockedProject': 'blockedProject')?>(<?=$project['id']?>); return false;"><?=($project['is_blocked']? 'Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ': 'Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ')?></a></span> | 
 			<? if ( $project['warn']<3 && !$project['is_banned'] && !$project['ban_where'] ) { ?>
-			<span class="warnlink-<?=$project['user_id']?>"><a style="color: red" href="." onclick='banned.warnUser(<?=$project['user_id']?>, 0, "projects", "p<?= $project['id']?>", 0); return false;'>Сделать предупреждение</a> (<span class='warncount-<?=$project['user_id']?>'><?=($project['warn'] ? $project['warn'] : 0)?></span>)</span>
+			<span class="warnlink-<?=$project['user_id']?>"><a style="color: red" href="." onclick='banned.warnUser(<?=$project['user_id']?>, 0, "projects", "p<?= $project['id']?>", 0); return false;'>РЎРґРµР»Р°С‚СЊ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ</a> (<span class='warncount-<?=$project['user_id']?>'><?=($project['warn'] ? $project['warn'] : 0)?></span>)</span>
 			<? } else { 
-			    $sBanTitle = (!$project['is_banned'] && !$project['ban_where']) ? 'Забанить!' : 'Разбанить';
+			    $sBanTitle = (!$project['is_banned'] && !$project['ban_where']) ? 'Р—Р°Р±Р°РЅРёС‚СЊ!' : 'Р Р°Р·Р±Р°РЅРёС‚СЊ';
 			    ?>
 			<span class="warnlink-<?=$project['user_id']?>"><a style="color:red;" href="javascript:void(0);" onclick="banned.userBan(<?=$project['user_id']?>, 'p<?= $project['id']?>',0)"><?=$sBanTitle?></a></span>
 			<? } ?>
@@ -326,7 +326,7 @@
 
                     <? if(hasPermissions('projects') && $project_history) { ?>
                         <div class="prjh">
-					    	<a href="#" class="lnk-dot-grey toggle-history" onClick="$('prjh_content').toggleClass('prjh_visible'); return false;">Сохраненная первоначальная версия проекта (<?=dateFormat("d.m.Y H:i", $project['create_date'])?>)</a>
+					    	<a href="#" class="lnk-dot-grey toggle-history" onClick="$('prjh_content').toggleClass('prjh_visible'); return false;">РЎРѕС…СЂР°РЅРµРЅРЅР°СЏ РїРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅР°СЏ РІРµСЂСЃРёСЏ РїСЂРѕРµРєС‚Р° (<?=dateFormat("d.m.Y H:i", $project['create_date'])?>)</a>
 					    	<div id="prjh_content" class="prjh_content ">
 					    		<div class="clear"></div>
 
@@ -334,23 +334,23 @@
                                     <?
                                     switch ($project_history['priceby']) {
                                         case '1':
-                                            $priceby_str = "/час";
+                                            $priceby_str = "/С‡Р°СЃ";
                                             break;
                                         case '2':
-                                            $priceby_str = "/день";
+                                            $priceby_str = "/РґРµРЅСЊ";
                                             break;
                                         case '3':
-                                            $priceby_str = "/месяц";
+                                            $priceby_str = "/РјРµСЃСЏС†";
                                             break;
                                         case '4':
-                                            $priceby_str = "/проект";
+                                            $priceby_str = "/РїСЂРѕРµРєС‚";
                                             break;
                                         default:
                                             $priceby_str = "";
                                             break;
                                     }
                                     ?>
-                                    <div class="prj_cost">Бюджет: <?=CurToChar($project_history['cost'], $project_history['currency'])?><?=$priceby_str?></div>
+                                    <div class="prj_cost">Р‘СЋРґР¶РµС‚: <?=CurToChar($project_history['cost'], $project_history['currency'])?><?=$priceby_str?></div>
                                 <? } else { ?>
                                    <div class="prj_cost prj-dogovor" style="margin-top:-14px">
                                         <table cellspacing="0" cellpadding="0">
@@ -359,7 +359,7 @@
                                                    <div class="form">
                                                    <b class="b1"></b>
                                                    <b class="b2"></b>
-                                                   <div class="form-in">Бюджет по договоренности</div>
+                                                   <div class="form-in">Р‘СЋРґР¶РµС‚ РїРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</div>
                                                    <b class="b2"></b>
                                                    <b class="b1"></b>
                                                    </div>
@@ -389,12 +389,12 @@
                                     <table border="0" width="100%">
                                     <tr valign="top">
                                     <td align="left">
-                                    <? if($project_history['pro_only']=='t') { ?><div class="prj-pro">Только для <img src="/images/icons/f-pro.png"></div><br clear="all"/><? } ?>
+                                    <? if($project_history['pro_only']=='t') { ?><div class="prj-pro">РўРѕР»СЊРєРѕ РґР»СЏ <img src="/images/icons/f-pro.png"></div><br clear="all"/><? } ?>
                                     </td>
                                     <td style="text-align:right !important;">
-                                    Разделы: <?=$project_history['spec_txt']?>
-                                    <p>Конкурс длится с <?=dateFormat("d.m.Y", $project['create_date'])?><? if ($project_history['end_date']) { ?> до <?=dateFormat("d.m.Y", $project_history['end_date'])?><? } ?></p>
-                                    <p>Победитель будет объявлен <?=(((int) dateFormat("N", $project_history['win_date']))==2?'во':'в')?> <?=$daysOfWeek[(int) dateFormat("N", $project_history['win_date'])]?>, <?=dateFormat("d.m.Y", $project_history['win_date'])?></p>
+                                    Р Р°Р·РґРµР»С‹: <?=$project_history['spec_txt']?>
+                                    <p>РљРѕРЅРєСѓСЂСЃ РґР»РёС‚СЃСЏ СЃ <?=dateFormat("d.m.Y", $project['create_date'])?><? if ($project_history['end_date']) { ?> РґРѕ <?=dateFormat("d.m.Y", $project_history['end_date'])?><? } ?></p>
+                                    <p>РџРѕР±РµРґРёС‚РµР»СЊ Р±СѓРґРµС‚ РѕР±СЉСЏРІР»РµРЅ <?=(((int) dateFormat("N", $project_history['win_date']))==2?'РІРѕ':'РІ')?> <?=$daysOfWeek[(int) dateFormat("N", $project_history['win_date'])]?>, <?=dateFormat("d.m.Y", $project_history['win_date'])?></p>
                                     </td>
                                     </tr>
                                     </table>
@@ -415,19 +415,19 @@
         	<tr class="b-layout__tr">
             	<td class="b-layout__td b-layout__td_width_33ps b-layout__td_width_full_ipad">
 		<div class="contest-ib contest-party">
-			<h4>Участники</h4>
+			<h4>РЈС‡Р°СЃС‚РЅРёРєРё</h4>
 			<ul>
-				<li class="c-p1"><? if ($_GET['filter']) { ?><a href="<?=getFriendlyURL("project", $project['id'])?>">Всего участников</a><? } else { ?><b>Всего участников</b><? } ?>: <span id="stat-freelancers"><?=(int) $contest->stat['offers']?></span></li>
-				<li class="c-p2"><? if ($_GET['filter'] != 'candidates') { ?><a href="<?=getFriendlyURL("project", $project['id'])?>?filter=candidates">Кандидатов</a><? } else { ?><b>Кандидатов</b><? } ?>: <span id="stat-candidates"><?=(int) $contest->stat['candidates']?></span></li>
-				<li class="c-p3"><? if ($_GET['filter'] != 'banned') { ?><a href="<?=getFriendlyURL("project", $project['id'])?>?filter=banned">Забаненных</a><? } else { ?><b>Забаненных</b><? } ?>: <span id="stat-banned"><?=(int) $contest->stat['banned']?></span></li>
+				<li class="c-p1"><? if ($_GET['filter']) { ?><a href="<?=getFriendlyURL("project", $project['id'])?>">Р’СЃРµРіРѕ СѓС‡Р°СЃС‚РЅРёРєРѕРІ</a><? } else { ?><b>Р’СЃРµРіРѕ СѓС‡Р°СЃС‚РЅРёРєРѕРІ</b><? } ?>: <span id="stat-freelancers"><?=(int) $contest->stat['offers']?></span></li>
+				<li class="c-p2"><? if ($_GET['filter'] != 'candidates') { ?><a href="<?=getFriendlyURL("project", $project['id'])?>?filter=candidates">РљР°РЅРґРёРґР°С‚РѕРІ</a><? } else { ?><b>РљР°РЅРґРёРґР°С‚РѕРІ</b><? } ?>: <span id="stat-candidates"><?=(int) $contest->stat['candidates']?></span></li>
+				<li class="c-p3"><? if ($_GET['filter'] != 'banned') { ?><a href="<?=getFriendlyURL("project", $project['id'])?>?filter=banned">Р—Р°Р±Р°РЅРµРЅРЅС‹С…</a><? } else { ?><b>Р—Р°Р±Р°РЅРµРЅРЅС‹С…</b><? } ?>: <span id="stat-banned"><?=(int) $contest->stat['banned']?></span></li>
 			</ul>
 		</div>
         		</td>
             	<td class="b-layout__td b-layout__td_width_33ps b-layout__td_width_full_ipad">
 		<div class="contest-ib contest-stat">
-			<h4>Статистика по конкурсу</h4>
+			<h4>РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РєРѕРЅРєСѓСЂСЃСѓ</h4>
 			<ul>
-				<li>Сегодня <?=ending($contest->stat['offers_today'], 'опубликована', 'опубликовано', 'опубликовано')?> <?=intval($contest->stat['offers_today'])?> <?=ending($contest->stat['offers_today'], 'работа', 'работы', 'работ')?> и <?=intval($contest->stat['comments_today'])?> <?=ending($contest->stat['comments_today'], 'комментарий', 'комментария', 'комментариев')?></li>
+				<li>РЎРµРіРѕРґРЅСЏ <?=ending($contest->stat['offers_today'], 'РѕРїСѓР±Р»РёРєРѕРІР°РЅР°', 'РѕРїСѓР±Р»РёРєРѕРІР°РЅРѕ', 'РѕРїСѓР±Р»РёРєРѕРІР°РЅРѕ')?> <?=intval($contest->stat['offers_today'])?> <?=ending($contest->stat['offers_today'], 'СЂР°Р±РѕС‚Р°', 'СЂР°Р±РѕС‚С‹', 'СЂР°Р±РѕС‚')?> Рё <?=intval($contest->stat['comments_today'])?> <?=ending($contest->stat['comments_today'], 'РєРѕРјРјРµРЅС‚Р°СЂРёР№', 'РєРѕРјРјРµРЅС‚Р°СЂРёСЏ', 'РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ')?></li>
 			</ul>
 		</div>
         		</td>
@@ -435,19 +435,19 @@
 		<? if (strtotime($project['end_date']) < mktime()) { ?>
 		<div class="contest-ib contest-period">
 			<div class="contest-period-in">
-				<h4><img src="/images/ico_closed.gif" alt="Проект закрыт" width="21" height="21" class="ico-closed" />&nbsp;Конкурс окончен <?=dateFormat("d.m.Y", $project['end_date'])?></h4>
-				<p class="contest-end">Конкурс длился с <?=dateFormat("d.m.Y", $project['create_date'])?><? if ($project['end_date']) { ?> до <?=dateFormat("d.m.Y", $project['end_date'])?><? } ?></p>
+				<h4><img src="/images/ico_closed.gif" alt="РџСЂРѕРµРєС‚ Р·Р°РєСЂС‹С‚" width="21" height="21" class="ico-closed" />&nbsp;РљРѕРЅРєСѓСЂСЃ РѕРєРѕРЅС‡РµРЅ <?=dateFormat("d.m.Y", $project['end_date'])?></h4>
+				<p class="contest-end">РљРѕРЅРєСѓСЂСЃ РґР»РёР»СЃСЏ СЃ <?=dateFormat("d.m.Y", $project['create_date'])?><? if ($project['end_date']) { ?> РґРѕ <?=dateFormat("d.m.Y", $project['end_date'])?><? } ?></p>
 				<? if (empty($contest->positions) ) { ?>
-					<p class="contest-end">Определение победителей &mdash; <?=dateFormat("d.m.Y", $project['win_date']) ?> г.</p>
+					<p class="contest-end">РћРїСЂРµРґРµР»РµРЅРёРµ РїРѕР±РµРґРёС‚РµР»РµР№ &mdash; <?=dateFormat("d.m.Y", $project['win_date']) ?> Рі.</p>
 				<? } else { ?>
-					<p class="contest-end">Победители объявлены</p>
+					<p class="contest-end">РџРѕР±РµРґРёС‚РµР»Рё РѕР±СЉСЏРІР»РµРЅС‹</p>
 				<? } ?>
-				<? if ((($contest->is_owner && !$project['is_blocked']) || hasPermissions('projects')) && empty($contest->positions)) { ?><p><a href="javascript:void(0)" onclick="setWinners(candidates); return false;">Определить победителей</a></p><? } ?>
+				<? if ((($contest->is_owner && !$project['is_blocked']) || hasPermissions('projects')) && empty($contest->positions)) { ?><p><a href="javascript:void(0)" onclick="setWinners(candidates); return false;">РћРїСЂРµРґРµР»РёС‚СЊ РїРѕР±РµРґРёС‚РµР»РµР№</a></p><? } ?>
 			</div>
 		</div>
 		<? } else if ($project['closed'] == 't') { ?>
 		<div class="contest-ib">
-			<h4><img src="/images/ico_closed.gif" alt="Проект закрыт" width="21" height="21" class="ico-closed" />&nbsp;Конкурс снят с публикации</h4>
+			<h4><img src="/images/ico_closed.gif" alt="РџСЂРѕРµРєС‚ Р·Р°РєСЂС‹С‚" width="21" height="21" class="ico-closed" />&nbsp;РљРѕРЅРєСѓСЂСЃ СЃРЅСЏС‚ СЃ РїСѓР±Р»РёРєР°С†РёРё</h4>
 		</div>
 		<? } else if (($_GET['action'] == 'change-dates' || $dateAlert) && (($contest->is_owner && !$project['is_blocked']) || hasPermissions('projects'))) { ?>
 			
@@ -457,13 +457,13 @@
 					<div class="contest-period-in">
 						<input type="hidden" name="action" value="change-dates">
 						<div class="set-date-line">
-							<label for="f1" class="label-set-date">Окончание конкурса</label> <div class="sel-set-date"><span><input id="ds" name="ds" value="<?=($_POST['ds']? dateFormat('d-m-Y', $_POST['ds']): ($project['end_date']? dateFormat('d-m-Y', $project['end_date']): ''))?>" style="width: 70px; border: 0 none"></span> <a href="." class="set-date-arrow" id="end_date_btn2"></a></div>
+							<label for="f1" class="label-set-date">РћРєРѕРЅС‡Р°РЅРёРµ РєРѕРЅРєСѓСЂСЃР°</label> <div class="sel-set-date"><span><input id="ds" name="ds" value="<?=($_POST['ds']? dateFormat('d-m-Y', $_POST['ds']): ($project['end_date']? dateFormat('d-m-Y', $project['end_date']): ''))?>" style="width: 70px; border: 0 none"></span> <a href="." class="set-date-arrow" id="end_date_btn2"></a></div>
 						</div>
 						<div class="set-date-line">
-							<label for="f2" class="label-set-date">Объявление победителей</label> <div class="sel-set-date"><span><input id="de" name="de" value="<?=($_POST['de']? dateFormat('d-m-Y', $_POST['de']): ($project['win_date']? dateFormat('d-m-Y', $project['win_date']): ''))?>" style="width: 70px; border: 0 none"></span> <a href="." class="set-date-arrow"  id="win_date_btn2"></a></div>
+							<label for="f2" class="label-set-date">РћР±СЉСЏРІР»РµРЅРёРµ РїРѕР±РµРґРёС‚РµР»РµР№</label> <div class="sel-set-date"><span><input id="de" name="de" value="<?=($_POST['de']? dateFormat('d-m-Y', $_POST['de']): ($project['win_date']? dateFormat('d-m-Y', $project['win_date']): ''))?>" style="width: 70px; border: 0 none"></span> <a href="." class="set-date-arrow"  id="win_date_btn2"></a></div>
 						</div>
 						
-						<input type="submit" id="editDateButton" value="Сохранить" style="margin-top: 20px" onclick="return $('ds').blur()">
+						<input type="submit" id="editDateButton" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="margin-top: 20px" onclick="return $('ds').blur()">
 					</div>
 					</form>
 				</div>
@@ -476,14 +476,14 @@
 		<? } else { ?>
 		<div class="contest-ib contest-period">
 			<div class="contest-period-in">
-				<h4>Сроки проведения конкурса</h4>
-				<p>Конкурс длится с <?=dateFormat("d.m.Y", $project['create_date'])?><? if ($project['end_date']) { ?> до <?=dateFormat("d.m.Y", $project['end_date'])?><? } ?></p>
+				<h4>РЎСЂРѕРєРё РїСЂРѕРІРµРґРµРЅРёСЏ РєРѕРЅРєСѓСЂСЃР°</h4>
+				<p>РљРѕРЅРєСѓСЂСЃ РґР»РёС‚СЃСЏ СЃ <?=dateFormat("d.m.Y", $project['create_date'])?><? if ($project['end_date']) { ?> РґРѕ <?=dateFormat("d.m.Y", $project['end_date'])?><? } ?></p>
 				<? if ($project['end_date'] && $project['win_date']) { ?>
-					<p>Победитель будет объявлен <?=(((int) dateFormat("N", $project['win_date']))==2?'во':'в')?> <?=$daysOfWeek[(int) dateFormat("N", $project['win_date'])]?>, <?=dateFormat("d.m.Y", $project['win_date'])?></p>
+					<p>РџРѕР±РµРґРёС‚РµР»СЊ Р±СѓРґРµС‚ РѕР±СЉСЏРІР»РµРЅ <?=(((int) dateFormat("N", $project['win_date']))==2?'РІРѕ':'РІ')?> <?=$daysOfWeek[(int) dateFormat("N", $project['win_date'])]?>, <?=dateFormat("d.m.Y", $project['win_date'])?></p>
 					<? $lDays = floor((strtotime($project['end_date']) - mktime()) / 86400); ?>
-					<p class="contest-end">До завершения конкурса остается <b><?=($lDays? $lDays: '')?> <?=($lDays? ending($lDays, 'день', 'дня', 'дней'): 'менее суток')?></b></p>
+					<p class="contest-end">Р”Рѕ Р·Р°РІРµСЂС€РµРЅРёСЏ РєРѕРЅРєСѓСЂСЃР° РѕСЃС‚Р°РµС‚СЃСЏ <b><?=($lDays? $lDays: '')?> <?=($lDays? ending($lDays, 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№'): 'РјРµРЅРµРµ СЃСѓС‚РѕРє')?></b></p>
 				<? } ?>
-				<? if (hasPermissions('projects') || ($contest->is_owner && !$project['is_blocked'])) { ?><p class="lnk-cp-edit"><a href="/projects/index.php?pid=<?=$project['id']?>&action=change-dates#contest-view">Редактировать сроки</a></p><? } ?>
+				<? if (hasPermissions('projects') || ($contest->is_owner && !$project['is_blocked'])) { ?><p class="lnk-cp-edit"><a href="/projects/index.php?pid=<?=$project['id']?>&action=change-dates#contest-view">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СЃСЂРѕРєРё</a></p><? } ?>
 			</div>
 		</div>
 		<? } ?>

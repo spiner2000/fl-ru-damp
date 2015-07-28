@@ -63,25 +63,25 @@ $params = array(
             'docType' => "21",
             'docNumber' => "4004 123987",
             'issueDate' => "1976-01-01",
-            'authorityName' => "25 î/ì Ïðèìîðñêîãî ð-íà ã. Ñàíêò-Ïåòåðáóðãà",
+            'authorityName' => "25 Ð¾/Ð¼ ÐŸÑ€Ð¸Ð¼Ð¾Ñ€ÑÐºÐ¾Ð³Ð¾ Ñ€-Ð½Ð° Ð³. Ð¡Ð°Ð½ÐºÑ‚-ÐŸÐµÑ‚ÐµÑ€Ð±ÑƒÑ€Ð³Ð°",
             'authorityCode' => "780-025",
-            'residence' => "ã.Ñàíêò-Ïåòåðáóðã, 3-ÿ óëèöà Ñòðîèòåëåé, ä.25, êâ.12"
+            'residence' => "Ð³.Ð¡Ð°Ð½ÐºÑ‚-ÐŸÐµÑ‚ÐµÑ€Ð±ÑƒÑ€Ð³, 3-Ñ ÑƒÐ»Ð¸Ñ†Ð° Ð¡Ñ‚Ñ€Ð¾Ð¸Ñ‚ÐµÐ»ÐµÐ¹, Ð´.25, ÐºÐ².12"
         )
     )
     ,
     'paymentParams' => array(
         'skr_destinationCardSynonim' => '79052075556',
-        'pdr_firstName' => 'Âëàäèìèð',
+        'pdr_firstName' => 'Ð’Ð»Ð°Ð´Ð¸Ð¼Ð¸Ñ€',
         'pof_offerAccepted' => 1,
-        'pdr_secondName' => 'Âëàäèìèðîâè÷',
-        'pdr_lastName' => 'Âëàäèìèðîâ',
+        'pdr_secondName' => 'Ð’Ð»Ð°Ð´Ð¸Ð¼Ð¸Ñ€Ð¾Ð²Ð¸Ñ‡',
+        'pdr_lastName' => 'Ð’Ð»Ð°Ð´Ð¸Ð¼Ð¸Ñ€Ð¾Ð²',
         'cps_phoneNumber' => 79052075556,
         'pdr_docType' => 21,
         'pdr_docNum' => 4002109067,
         'pdr_postcode' => 194044,
-        'pdr_country' => 'Ñàíêò-Ïåòåðáóðã',
+        'pdr_country' => 'Ð¡Ð°Ð½ÐºÑ‚-ÐŸÐµÑ‚ÐµÑ€Ð±ÑƒÑ€Ð³',
         'pdr_city' => '',
-        'pdr_address' => 'Áîëüøîé ïð, ÏÑ, ä.12'
+        'pdr_address' => 'Ð‘Ð¾Ð»ÑŒÑˆÐ¾Ð¹ Ð¿Ñ€, ÐŸÐ¡, Ð´.12'
     )
 );
 

@@ -6,11 +6,11 @@
             </td>
             <td class="b-layout__td b-layout__td_padleft_10">
                 <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_15">
-                    Для выбора лучшего<br/>
-                    результата из нескольких
+                    Р”Р»СЏ РІС‹Р±РѕСЂР° Р»СѓС‡С€РµРіРѕ<br/>
+                    СЂРµР·СѓР»СЊС‚Р°С‚Р° РёР· РЅРµСЃРєРѕР»СЊРєРёС…
                 </div>
                 <a href="/public/?step=1&kind=7" class="b-button b-button_flat b-button_flat_green b-button_nowrap">
-                    Устройте конкурс
+                    РЈСЃС‚СЂРѕР№С‚Рµ РєРѕРЅРєСѓСЂСЃ
                 </a>
             </td>
         </tr>
@@ -25,11 +25,11 @@
                 </td>
                 <td class="b-layout__td b-layout__td_padleft_10">
                     <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_15">
-                        Для найма Исполнителя<br/>
-                        на регулярную работу
+                        Р”Р»СЏ РЅР°Р№РјР° РСЃРїРѕР»РЅРёС‚РµР»СЏ<br/>
+                        РЅР° СЂРµРіСѓР»СЏСЂРЅСѓСЋ СЂР°Р±РѕС‚Сѓ
                     </div>
                     <a href="/guest/new/vacancy/" class="b-button b-button_flat b-button_flat_green b-button_nowrap">
-                        Разместите вакансию
+                        Р Р°Р·РјРµСЃС‚РёС‚Рµ РІР°РєР°РЅСЃРёСЋ
                     </a>
                 </td>
             </tr>
@@ -45,10 +45,10 @@
                 </td>
                 <td class="b-layout__td b-layout__td_padleft_10">
                     <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_15">
-                        Для поиска онлайн-исполнителя на разовую работу
+                        Р”Р»СЏ РїРѕРёСЃРєР° РѕРЅР»Р°Р№РЅ-РёСЃРїРѕР»РЅРёС‚РµР»СЏ РЅР° СЂР°Р·РѕРІСѓСЋ СЂР°Р±РѕС‚Сѓ
                     </div>
                     <a href="/guest/new/project/" class="b-button b-button_flat b-button_flat_green b-button_nowrap">
-                        Добавить проект
+                        Р”РѕР±Р°РІРёС‚СЊ РїСЂРѕРµРєС‚
                     </a>
                 </td>
             </tr>

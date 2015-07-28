@@ -7,26 +7,26 @@ if(!defined('IN_STDF')) {
 		<div class="b-header__tel">
 			<div class="b-header__tel-ic <?= (NY2012TIME?"b-header__tel-ic_red":"b-header__tel-ic_green")?>"></div>
 			<big class="b-header__tel-number">8-800-555-33-14</big>
-			<div class="b-header__txt"><?= (NY2012TIME?"31.12—09.01 — каникулы":"Служба поддержки")?></div> 
+			<div class="b-header__txt"><?= (NY2012TIME?"31.12вЂ”09.01 вЂ” РєР°РЅРёРєСѓР»С‹":"РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё")?></div> 
 		</div>
 		<!--
 		<div class="b-header__tel">
 			<div class="b-header__tel-ic b-header__tel-ic_green"></div>
 			<big class="b-header__tel-number">8-800-555-33-14</big>
-			<div class="b-header__txt">бесплатно для России</div> 
+			<div class="b-header__txt">Р±РµСЃРїР»Р°С‚РЅРѕ РґР»СЏ Р РѕСЃСЃРёРё</div> 
 		</div>
 		-->
     <?php if (get_uid(false) <= 0) { ?>
         <? seo_start(); ?>
 					<div class="b-header__links">
             <?php if(isJSPromlebBrowser()) {?>
-            <a href="/login/" class="b-header__link b-header__link_bordbot_dot_333 b-header__link_margright_16">Вход</a><span id="floginToggle"></span>	 
+            <a href="/login/" class="b-header__link b-header__link_bordbot_dot_333 b-header__link_margright_16">Р’С…РѕРґ</a><span id="floginToggle"></span>	 
             <?php } else {?>	 
-            <a  id="floginToggle" class="b-header__link b-header__link_bordbot_dot_333 b-header__link_margright_16" href="javascript:void(0)">Вход</a>	 
+            <a  id="floginToggle" class="b-header__link b-header__link_bordbot_dot_333 b-header__link_margright_16" href="javascript:void(0)">Р’С…РѕРґ</a>	 
             <?php }?>	 
             <?php $sHideA = preg_match('~/registration/~i', $_SERVER['REQUEST_URI']); ?>	 
-            <? if ( !$sHideA ) { ?><a class="b-header__link b-header__link_color_ff4800 b-header__link_bold" href="/registration/">Регистрация</a><? } ?>	 
-            <? if ( $sHideA ) { ?><span class="b-header__txt b-header__txt_fontsize_12 b-header__txt_color_ff4800 b-header__txt_bold b-header__float_left">Регистрация</span><? } ?>	 
+            <? if ( !$sHideA ) { ?><a class="b-header__link b-header__link_color_ff4800 b-header__link_bold" href="/registration/">Р РµРіРёСЃС‚СЂР°С†РёСЏ</a><? } ?>	 
+            <? if ( $sHideA ) { ?><span class="b-header__txt b-header__txt_fontsize_12 b-header__txt_color_ff4800 b-header__txt_bold b-header__float_left">Р РµРіРёСЃС‚СЂР°С†РёСЏ</span><? } ?>	 
         </div>
         <?= seo_end(); ?>
 		
@@ -39,22 +39,22 @@ if(!defined('IN_STDF')) {
 	<div class="b-login__top">
 		<div class="b-login__bot">
 			<ul class="b-login__list">
-				<li class="b-login__item"><a class="b-login__entry" onclick="return false" href="#">Вход</a></li>
+				<li class="b-login__item"><a class="b-login__entry" onclick="return false" href="#">Р’С…РѕРґ</a></li>
 				<?php $sHideA = preg_match('~/registration/~i', $_SERVER['REQUEST_URI']); ?>	 
-				<? if ( !$sHideA )  print '<li class="b-login__item"><a class="b-login__reg" href="/registration/">Регистрация</a></li>'; ?>
-				<? if ( $sHideA )  print '<li class="b-login__item"><span class="b-login__reg">Регистрация</span></li>'; ?>
+				<? if ( !$sHideA )  print '<li class="b-login__item"><a class="b-login__reg" href="/registration/">Р РµРіРёСЃС‚СЂР°С†РёСЏ</a></li>'; ?>
+				<? if ( $sHideA )  print '<li class="b-login__item"><span class="b-login__reg">Р РµРіРёСЃС‚СЂР°С†РёСЏ</span></li>'; ?>
 			</ul>
 			<form id="lfrm" class="b-login__body" method="post" action="/">
 				<div class="b-form">
                 	<input type="hidden" name="action" value="login" />
                     <? if ( !empty($_GET['subdomain']) ) { ?><input type="hidden" name="subdomain" value="<?=htmlspecialchars($_GET['subdomain'])?>" /><? } ?>
-					<label class="b-form__name" for="b-login__text">Логин</label>
+					<label class="b-form__name" for="b-login__text">Р›РѕРіРёРЅ</label>
 					<div class="b-input b-input_inline-block b-input_width_195">
 						<input id="b-login__text" class="b-input__text" name="login" type="text" />
 					</div>
 				</div>
 				<div class="b-form">
-					<label class="b-form__name" for="b-login__password">Пароль</label>
+					<label class="b-form__name" for="b-login__password">РџР°СЂРѕР»СЊ</label>
 					<div class="b-input b-input_inline-block b-input_width_195">
 						<input id="b-login__password" class="b-input__text" name="passwd" type="password" />
 					</div>
@@ -62,7 +62,7 @@ if(!defined('IN_STDF')) {
 				<div class="b-form b-form_padbot_5">
 					<div class="b-check">
 						<input id="b-check2" class="b-check__input" type="checkbox" name="autologin" value="1" />
-						<label for="b-check2" class="b-check__label b-check__label_fontsize_13">Запомнить меня</label>
+						<label for="b-check2" class="b-check__label b-check__label_fontsize_13">Р—Р°РїРѕРјРЅРёС‚СЊ РјРµРЅСЏ</label>
 					</div>
 				</div>
 				<div class="b-form b-form_padbot_null">
@@ -70,14 +70,14 @@ if(!defined('IN_STDF')) {
 						<a class="b-button b-button_rectangle_transparent" onclick="document.getElementById('lfrm').submit(); return false;" href="#">
 							<span class="b-button__b1">
 								<span class="b-button__b2 b-button__b2_padlr_5">
-									<span class="b-button__txt">Войти</span>
+									<span class="b-button__txt">Р’РѕР№С‚Рё</span>
 								</span>
 							</span>
 						</a>
 						<?php if ( strpos( $_SERVER['REQUEST_URI'], 'remind' ) === false ){ ?>
-						<a class="b-buttons__link  b-buttons__link_margleft_5" href="/remind/">Напомнить пароль</a>
+						<a class="b-buttons__link  b-buttons__link_margleft_5" href="/remind/">РќР°РїРѕРјРЅРёС‚СЊ РїР°СЂРѕР»СЊ</a>
 						<?php } else { ?>
-						<span class="b-buttons__link">Напомнить пароль</span>
+						<span class="b-buttons__link">РќР°РїРѕРјРЅРёС‚СЊ РїР°СЂРѕР»СЊ</span>
 						<?php } ?>
 					</div>
                 	<input class="b-login_submit" type="submit" value="" />
@@ -114,17 +114,17 @@ if ($_SESSION['uid'] && !$no_personal) {
 	<b class="b-fon__b2"></b>
 	<div class="b-fon__body">
 		<a class="b-last-gift__link" href="/present/?id=<?= $last_gift['id'] ?>">
-			<?= ($last_gift['op_code'] == 23) ? "Перевод" : "Подарок" ?><span class="b-last-gift__<?= $last_gift['op_code'] == 23 ? 'fm': 'gift' ?>"></span>
+			<?= ($last_gift['op_code'] == 23) ? "РџРµСЂРµРІРѕРґ" : "РџРѕРґР°СЂРѕРє" ?><span class="b-last-gift__<?= $last_gift['op_code'] == 23 ? 'fm': 'gift' ?>"></span>
 		</a>
 		<a class="b-last-gift__close" onclick="SetGiftResv(<?= $last_gift['id'] ?>)" href="javascript://"></a>
 		<a class="b-last-gift__name b-last-gift__name_color_<?= is_emp($last_gift['role']) ? '6BB24B' : '666' ?>" href="/users/<?= $last_gift['login'] ?>"><?= $last_gift['uname'] ?> <?= $last_gift['usurname'] ?> [<?= $last_gift['login'] ?>]</a> 
 		<? if($last_gift['op_code'] == 23) { ?>
-		 перевел<?= $last_gift['sex'] == 'f' ? 'а' : '' ?> на ваш счет <a class="b-last-gift__present" href="/present/?id=<?= $last_gift['id'] ?>">денежные средства</a>.
+		 РїРµСЂРµРІРµР»<?= $last_gift['sex'] == 'f' ? 'Р°' : '' ?> РЅР° РІР°С€ СЃС‡РµС‚ <a class="b-last-gift__present" href="/present/?id=<?= $last_gift['id'] ?>">РґРµРЅРµР¶РЅС‹Рµ СЃСЂРµРґСЃС‚РІР°</a>.
 		<? } elseif ($last_gift['op_code'] == 52 || $last_gift['op_code'] == 16) { ?>
-		<a class="b-last-gift__present" href="/present/?id=<?= $last_gift['id'] ?>">подарил<?= $last_gift['sex'] == 'f' ? 'а' : '' ?> вам</a> 
-		<a class="b-last-gift__linkpro" href="/payed<?= is_emp() ? '-emp' : '' ?>/"><img class="b-last-gift__pro" src="/images/icons/<?= is_emp() ? 'e' : 'f' ?>-pro.png" alt="PRO" /></a> аккаунт.
+		<a class="b-last-gift__present" href="/present/?id=<?= $last_gift['id'] ?>">РїРѕРґР°СЂРёР»<?= $last_gift['sex'] == 'f' ? 'Р°' : '' ?> РІР°Рј</a> 
+		<a class="b-last-gift__linkpro" href="/payed<?= is_emp() ? '-emp' : '' ?>/"><img class="b-last-gift__pro" src="/images/icons/<?= is_emp() ? 'e' : 'f' ?>-pro.png" alt="PRO" /></a> Р°РєРєР°СѓРЅС‚.
 		<? } else { ?>
-		 сделал<?= $last_gift['sex'] == 'f' ? 'а' : '' ?> вам <a href="/present/?id=<?= $last_gift['id'] ?>"  class="b-last-gift__present">подарок</a>
+		 СЃРґРµР»Р°Р»<?= $last_gift['sex'] == 'f' ? 'Р°' : '' ?> РІР°Рј <a href="/present/?id=<?= $last_gift['id'] ?>"  class="b-last-gift__present">РїРѕРґР°СЂРѕРє</a>
 		<? } ?>
 	</div>
 	<b class="b-fon__b2"></b>

@@ -39,8 +39,8 @@ $DataSet->AddPoint(array_keys($data1),"S3");
 $DataSet->AddSerie("S1");
 $DataSet->AddSerie("S2");
 $DataSet->SetAbsciseLabelSerie("S3");
-$DataSet->SetSerieName("Всего","S1");
-$DataSet->SetSerieName("Живых","S2");
+$DataSet->SetSerieName("Р’СЃРµРіРѕ","S1");
+$DataSet->SetSerieName("Р–РёРІС‹С…","S2");
 
 
 // Initialise the graph
@@ -64,7 +64,7 @@ $Test->drawCubicCurve($DataSet->GetData(),$DataSet->GetDataDescription());
 $Test->setFontProperties("Fonts/tahoma.ttf",8);
 $Test->drawLegend(600,30,$DataSet->GetDataDescription(),255,255,255);
 $Test->setFontProperties("Fonts/tahoma.ttf",10);
-$Test->drawTitle(50,22,"Основная специализация",50,50,50,585);
+$Test->drawTitle(50,22,"РћСЃРЅРѕРІРЅР°СЏ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏ",50,50,50,585);
 $Test->Stroke();
 ?>
 

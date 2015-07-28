@@ -2,13 +2,13 @@
 <div class="b-menu b-menu_tabs">
     <ul class="b-menu__list b-menu__list_overflow_hidden b-menu__list_padleft_20">
         <li class="b-menu__item <?php $tab != 'unpublished' ? print 'b-menu__item_active' : ''?>">
-			<a class="b-menu__link" href="/articles/" title="Статьи"><span class="b-menu__b1">Статьи</span></a>
+			<a class="b-menu__link" href="/articles/" title="РЎС‚Р°С‚СЊРё"><span class="b-menu__b1">РЎС‚Р°С‚СЊРё</span></a>
 		</li>
         <? if($articles_unpub) { ?>
         <li class="b-menu__item <?php $tab == 'unpublished' ? print 'b-menu__item_active' : ''?>">
-			<a class="b-menu__link" href="/articles/?page=unpublished" title="На модерации"><span class="b-menu__b1">На модерации</span></a>
+			<a class="b-menu__link" href="/articles/?page=unpublished" title="РќР° РјРѕРґРµСЂР°С†РёРё"><span class="b-menu__b1">РќР° РјРѕРґРµСЂР°С†РёРё</span></a>
 		</li>
         <? } ?>
-        <li class="b-menu__item b-menu__item_last"><a class="b-menu__link" href="/interview/" title="Интервью"><span class="b-menu__b1">Интервью</span></a></li>
+        <li class="b-menu__item b-menu__item_last"><a class="b-menu__link" href="/interview/" title="РРЅС‚РµСЂРІСЊСЋ"><span class="b-menu__b1">РРЅС‚РµСЂРІСЊСЋ</span></a></li>
     </ul>
 </div>

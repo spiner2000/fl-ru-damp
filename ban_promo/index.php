@@ -9,7 +9,7 @@ if(!get_uid(false)) {
     exit;
 }
 
-//просмотр информации о статистике баннера
+//РїСЂРѕСЃРјРѕС‚СЂ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃС‚Р°С‚РёСЃС‚РёРєРµ Р±Р°РЅРЅРµСЂР°
 if(isset($_GET['type'])) {
     $type = __paramInit('int', 'type');
     $bpromo = new banner_promo();

@@ -3,14 +3,14 @@
 require_once 'DigestBlockText.php';
 
 /**
- * Класс для работы с блоком "Реклама"
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р»РѕРєРѕРј "Р РµРєР»Р°РјР°"
  */
 class DigestBlockTextAdv extends DigestBlockText {
     
     /**
      * @see parent::$title
      */
-    public $title   = 'Рекламный блок';
+    public $title   = 'Р РµРєР»Р°РјРЅС‹Р№ Р±Р»РѕРє';
     
     /**
      * @see parent::$created
@@ -18,7 +18,7 @@ class DigestBlockTextAdv extends DigestBlockText {
     const IS_CREATED = false;
     
     /**
-     * Инициализация блока
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ Р±Р»РѕРєР°
      * 
      * @param array $data
      */

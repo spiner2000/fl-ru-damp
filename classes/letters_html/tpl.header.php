@@ -23,7 +23,7 @@
     <tbody><tr>
         <td  bgcolor="#ffffff" width="20"></td>
         <td  width="20"></td>
-        <td  align="left" ><font color="#000000" size="6" face="tahoma,sans-serif">Здравствуйте!</font></td>
+        <td  align="left" ><font color="#000000" size="6" face="tahoma,sans-serif">Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!</font></td>
         <td ></td>
         <td width="20"></td>
         <td  bgcolor="#ffffff" width="20"></td>

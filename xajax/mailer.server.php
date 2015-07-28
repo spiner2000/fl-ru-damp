@@ -58,7 +58,7 @@ function recalcRecipients($post) {
         
         $sum = $mailer->calcSumRecipientsCount($filter, $cnt);
         
-        $text = number_format($sum, 0, ",", " "). " ".ending($sum, "человек", "человека", "человек");
+        $text = number_format($sum, 0, ",", " "). " ".ending($sum, "С‡РµР»РѕРІРµРє", "С‡РµР»РѕРІРµРєР°", "С‡РµР»РѕРІРµРє");
         $objResponse->assign("all_recipients_count", "innerHTML", $text);
         $objResponse->assign("emp_recipients_count", "innerHTML", number_format($cnt[0], 0, ",", " "));
         $objResponse->assign("frl_recipients_count", "innerHTML", number_format($cnt[1], 0, ",", " "));
@@ -96,7 +96,7 @@ function setAutoComplete($block, $check = false) {
         $objResponse->call('initNaviButton', $block . $digestBlock->getNum());
         $objResponse->call('initCheckSelect', $block . $digestBlock->getNum());
     } else {
-        $objResponse->call('alert', 'Нет данных для автозаполнения');
+        $objResponse->call('alert', 'РќРµС‚ РґР°РЅРЅС‹С… РґР»СЏ Р°РІС‚РѕР·Р°РїРѕР»РЅРµРЅРёСЏ');
         return $objResponse;
     }
     

@@ -18,17 +18,17 @@ $stc = new static_compress;
 <html> 
 <head> 
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" /> 
-	<title>Последние 10 IP</title> 
+	<title>РџРѕСЃР»РµРґРЅРёРµ 10 IP</title> 
 	<?php $stc->Send(); ?>
 	</head> 
  
 <body bgcolor="#FFFFFF" text="#000000"> 
-<strong>Последние 10 e-mail: <?=htmlspecialchars($_GET['usurname'])?> <?=htmlspecialchars($_GET['uname'])?> [<?=htmlspecialchars($_GET['login'])?>]</strong>
+<strong>РџРѕСЃР»РµРґРЅРёРµ 10 e-mail: <?=htmlspecialchars($_GET['usurname'])?> <?=htmlspecialchars($_GET['uname'])?> [<?=htmlspecialchars($_GET['login'])?>]</strong>
 <br/><br/>
 <table width="100%" cellpadding="5" cellspacing="5">
     <tr bgcolor="#eeeeee">
         <td><strong>E-mail</strong></td>
-        <td><strong>Дата</strong></td>
+        <td><strong>Р”Р°С‚Р°</strong></td>
     </tr>
 <?
 $sql = "SELECT * FROM users_change_emails_log WHERE uid=?i ORDER BY date desc";
@@ -46,7 +46,7 @@ if($res) {
 } else {
 ?>
     <tr>
-        <td colspan="2" align="center">Данных не найдено</td>
+        <td colspan="2" align="center">Р”Р°РЅРЅС‹С… РЅРµ РЅР°Р№РґРµРЅРѕ</td>
     </tr>
 <?
 }

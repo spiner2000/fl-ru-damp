@@ -53,13 +53,13 @@ WHERE (file_name, dir) NOT IN (SELECT fname, path FROM file)
 
 $res = pg_query(DBConnect(), $sql);
 $all = pg_num_rows($res);
-print "Всего строк = ".$all."\n";
+print "Р’СЃРµРіРѕ СЃС‚СЂРѕРє = ".$all."\n";
 $i = 0;
 if ($all) while ($row = pg_fetch_assoc($res)){
     $i++;
-    if ($row['file_name'] && !$cfile->DBImport($row['dir'].$row['file_name'])){ //файл не существует, но в базе есть ссылка
+    if ($row['file_name'] && !$cfile->DBImport($row['dir'].$row['file_name'])){ //С„Р°Р№Р» РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚, РЅРѕ РІ Р±Р°Р·Рµ РµСЃС‚СЊ СЃСЃС‹Р»РєР°
         $sql = "UPDATE ".$row['tbl']." SET ".$row['rw']." = NULL WHERE ".$row['idstr']."=".$row['id'];
         pg_query(DBConnect(), $sql);
     }
-if ($i % 1000 == 0) print "Строка = ". $i."\n";        
+if ($i % 1000 == 0) print "РЎС‚СЂРѕРєР° = ". $i."\n";        
 }

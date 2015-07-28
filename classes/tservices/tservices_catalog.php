@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/tservices/functions.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/search/sphinxapi.php");
 
 /**
- * Ìîäåëü êàòàëîãà òèïîâûõ óñëóã
+ * ĞœĞ¾Ğ´ĞµĞ»ÑŒ ĞºĞ°Ñ‚Ğ°Ğ»Ğ¾Ğ³Ğ° Ñ‚Ğ¸Ğ¿Ğ¾Ğ²Ñ‹Ñ… ÑƒÑĞ»ÑƒĞ³
  */
 class tservices_catalog extends atservices_model
 {
@@ -34,40 +34,40 @@ class tservices_catalog extends atservices_model
     private $_ttl;
 
 	/**
-	 * ID äèàïàçîíà, îõâàòûâàşùåãî âñå öåíû
+	 * ID Ğ´Ğ¸Ğ°Ğ¿Ğ°Ğ·Ğ¾Ğ½Ğ°, Ğ¾Ñ…Ğ²Ğ°Ñ‚Ñ‹Ğ²Ğ°ÑÑ‰ĞµĞ³Ğ¾ Ğ²ÑĞµ Ñ†ĞµĞ½Ñ‹
 	 */
 	const ANY_PRICE_RANGE = 1;
 
 	public static function getPriceRanges() {
 		return array(
 			self::ANY_PRICE_RANGE => array(
-				'title' => 'ëşáàÿ',
+				'title' => 'Ğ»ÑĞ±Ğ°Ñ',
 				'max' => null,
 				'min' => null,
 			),
 			2 => array(
-				'title' => 'äåøåâëå 1 000 ğ.',
+				'title' => 'Ğ´ĞµÑˆĞµĞ²Ğ»Ğµ 1 000 Ñ€.',
 				'max' => 1000,
 				'min' => null,
 			),
 			3 => array(
-				'title' => '1 000 — 3 000 ğ.',
+				'title' => '1 000 â€” 3 000 Ñ€.',
 				'max' => 3000,
 				'min' => 1000,
 			),
 			4 => array(
-				'title' => '3 000 — 4 500 ğ.',
+				'title' => '3 000 â€” 4 500 Ñ€.',
 				'max' => 4500,
 				'min' => 3000,
 			),
 			5 => array(
-				'title' => '4 500 — 6 000 ğ.',
+				'title' => '4 500 â€” 6 000 Ñ€.',
 				'max' => 6000,
 				'min' => 4500,
 			),
 			6 => array(
 				'value' => 6,
-				'title' => 'äîğîæå 6 000 ğ.',
+				'title' => 'Ğ´Ğ¾Ñ€Ğ¾Ğ¶Ğµ 6 000 Ñ€.',
 				'max' => null,
 				'min' => 6000,
 			),
@@ -75,7 +75,7 @@ class tservices_catalog extends atservices_model
 	}
 
 	/**
-	 * Óñòàíîâèòü ïàğàìåòğû ïàãèíàöèè
+	 * Ğ£ÑÑ‚Ğ°Ğ½Ğ¾Ğ²Ğ¸Ñ‚ÑŒ Ğ¿Ğ°Ñ€Ğ°Ğ¼ĞµÑ‚Ñ€Ñ‹ Ğ¿Ğ°Ğ³Ğ¸Ğ½Ğ°Ñ†Ğ¸Ğ¸
 	 *
 	 * @param int $limit
 	 * @param int $page
@@ -87,8 +87,8 @@ class tservices_catalog extends atservices_model
 		$this->page = +$page - floor($count_bind / $limit);
 		$this->limit = +$limit;
         
-        //Åñëè òèçåğ îòêğûò, òî ïîñëåäíşş óñëóãó ñ ïåğâîé ñòğàíèöû äóáëèğóåì íà ñëåäóşùåé
-        //ñîîòâåòñòâåííî, áóäåò ñäâèã âñåãî êàòàëîãà
+        //Ğ•ÑĞ»Ğ¸ Ñ‚Ğ¸Ğ·ĞµÑ€ Ğ¾Ñ‚ĞºÑ€Ñ‹Ñ‚, Ñ‚Ğ¾ Ğ¿Ğ¾ÑĞ»ĞµĞ´Ğ½ÑÑ ÑƒÑĞ»ÑƒĞ³Ñƒ Ñ Ğ¿ĞµÑ€Ğ²Ğ¾Ğ¹ ÑÑ‚Ñ€Ğ°Ğ½Ğ¸Ñ†Ñ‹ Ğ´ÑƒĞ±Ğ»Ğ¸Ñ€ÑƒĞµĞ¼ Ğ½Ğ° ÑĞ»ĞµĞ´ÑƒÑÑ‰ĞµĞ¹
+        //ÑĞ¾Ğ¾Ñ‚Ğ²ĞµÑ‚ÑÑ‚Ğ²ĞµĞ½Ğ½Ğ¾, Ğ±ÑƒĞ´ĞµÑ‚ ÑĞ´Ğ²Ğ¸Ğ³ Ğ²ÑĞµĞ³Ğ¾ ĞºĞ°Ñ‚Ğ°Ğ»Ğ¾Ğ³Ğ°
         $repeat_hidden = get_uid(false) && !is_emp() && !isset($_COOKIE['hide_tservices_teaser']) && $page > 1 
                 ? 1 
                 : 0;
@@ -105,7 +105,7 @@ class tservices_catalog extends atservices_model
 	}
 
 	/**
-	 * Âîçâğàùàåò ñïèñîê ïóáëè÷íûõ òèïîâûõ óñëóã ïî çàäàííûì óñëîâèÿì è ïàãèíàöèåé
+	 * Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ĞµÑ‚ ÑĞ¿Ğ¸ÑĞ¾Ğº Ğ¿ÑƒĞ±Ğ»Ğ¸Ñ‡Ğ½Ñ‹Ñ… Ñ‚Ğ¸Ğ¿Ğ¾Ğ²Ñ‹Ñ… ÑƒÑĞ»ÑƒĞ³ Ğ¿Ğ¾ Ğ·Ğ°Ğ´Ğ°Ğ½Ğ½Ñ‹Ğ¼ ÑƒÑĞ»Ğ¾Ğ²Ğ¸ÑĞ¼ Ğ¸ Ğ¿Ğ°Ğ³Ğ¸Ğ½Ğ°Ñ†Ğ¸ĞµĞ¹
 	 * 
 	 * @return array
 	 */
@@ -143,7 +143,7 @@ class tservices_catalog extends atservices_model
                 $sphinxClient->SetFieldWeights(array('title' => 2, 'extra_title' => 1));
                 //$sphinxClient->SetRankingMode(SPH_RANK_PROXIMITY_BM25);
                 
-		$selectExpression = '*'; // âñå êîëîíêè
+		$selectExpression = '*'; // Ğ²ÑĞµ ĞºĞ¾Ğ»Ğ¾Ğ½ĞºĞ¸
                 
         
         if ($this->user_id) {
@@ -275,7 +275,7 @@ class tservices_catalog extends atservices_model
         private function GetSphinxKeyword($sQuery) 
         {
             $cnt = count(preg_split('/[\s,-]+/', $sQuery, 5));
-            //Õîòÿáû ìèíèìóì 2 ñîâïàäåíèÿ ñëîâ
+            //Ğ¥Ğ¾Ñ‚ÑĞ±Ñ‹ Ğ¼Ğ¸Ğ½Ğ¸Ğ¼ÑƒĞ¼ 2 ÑĞ¾Ğ²Ğ¿Ğ°Ğ´ĞµĞ½Ğ¸Ñ ÑĞ»Ğ¾Ğ²
             $sQuery = ($cnt > 1)?"\"{$sQuery}\"/2":$sQuery;
             return $sQuery;
             
@@ -304,7 +304,7 @@ class tservices_catalog extends atservices_model
         }
         
     /**
-     * Âîçâğàùàåò ñïèñîê çàêğåïëåííûõ óñëóã
+     * Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ĞµÑ‚ ÑĞ¿Ğ¸ÑĞ¾Ğº Ğ·Ğ°ĞºÑ€ĞµĞ¿Ğ»ĞµĞ½Ğ½Ñ‹Ñ… ÑƒÑĞ»ÑƒĞ³
      * @return type
      */
     public function getBindedList($kind)
@@ -342,7 +342,7 @@ class tservices_catalog extends atservices_model
     }
     
     /**
-     * Âîçâğàùàåò ñïèñîê ÈÄ çàêğåïëåííûõ óñëóã áåç ó÷åòà ïîñòğàíè÷íîñòè
+     * Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ĞµÑ‚ ÑĞ¿Ğ¸ÑĞ¾Ğº Ğ˜Ğ” Ğ·Ğ°ĞºÑ€ĞµĞ¿Ğ»ĞµĞ½Ğ½Ñ‹Ñ… ÑƒÑĞ»ÑƒĞ³ Ğ±ĞµĞ· ÑƒÑ‡ĞµÑ‚Ğ° Ğ¿Ğ¾ÑÑ‚Ñ€Ğ°Ğ½Ğ¸Ñ‡Ğ½Ğ¾ÑÑ‚Ğ¸
      * @return type
      */
     public function getBindedIds($kind)
@@ -369,7 +369,7 @@ class tservices_catalog extends atservices_model
     public function getBindedCount($kind)
     {
         /**
-         * @todo Äîáàâèòü êåøèğîâàíèå è ñáğîñ êåøà ïğè ïğîäëåíèè
+         * @todo Ğ”Ğ¾Ğ±Ğ°Ğ²Ğ¸Ñ‚ÑŒ ĞºĞµÑˆĞ¸Ñ€Ğ¾Ğ²Ğ°Ğ½Ğ¸Ğµ Ğ¸ ÑĞ±Ñ€Ğ¾Ñ ĞºĞµÑˆĞ° Ğ¿Ñ€Ğ¸ Ğ¿Ñ€Ğ¾Ğ´Ğ»ĞµĞ½Ğ¸Ğ¸
          */
         
         $sql = $this->db()->parse("

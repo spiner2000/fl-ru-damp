@@ -3,29 +3,29 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/buttons/buttons.php");
 
 /**
- * Класс для работы с набором кнопок
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РЅР°Р±РѕСЂРѕРј РєРЅРѕРїРѕРє
  */
 class multi_buttons extends buttons 
 {
      /**
-     * Шаблон набора кнопок
+     * РЁР°Р±Р»РѕРЅ РЅР°Р±РѕСЂР° РєРЅРѕРїРѕРє
      * 
      * @var string 
      */
     public $TEMPLATE = 'tpl.button-multi.php';
     
     /**
-     * Набор кнопок
+     * РќР°Р±РѕСЂ РєРЅРѕРїРѕРє
      * @var array 
      */
     public $buttons  = array();
     
     /**
-     * Отрисовка кнопок, если кнопка 1 то выводим как одну, 
-     * иначе определяем главную кнопку (первую в списке), 
-     * и выводим как мульти кнопку
+     * РћС‚СЂРёСЃРѕРІРєР° РєРЅРѕРїРѕРє, РµСЃР»Рё РєРЅРѕРїРєР° 1 С‚Рѕ РІС‹РІРѕРґРёРј РєР°Рє РѕРґРЅСѓ, 
+     * РёРЅР°С‡Рµ РѕРїСЂРµРґРµР»СЏРµРј РіР»Р°РІРЅСѓСЋ РєРЅРѕРїРєСѓ (РїРµСЂРІСѓСЋ РІ СЃРїРёСЃРєРµ), 
+     * Рё РІС‹РІРѕРґРёРј РєР°Рє РјСѓР»СЊС‚Рё РєРЅРѕРїРєСѓ
      * 
-     * @return string HTML-код 
+     * @return string HTML-РєРѕРґ 
      */
     public function draw() {
         if(count($this->buttons) == 0) return;
@@ -40,25 +40,25 @@ class multi_buttons extends buttons
     }
     
     /**
-     * Инициируем главную кнопку 
+     * РРЅРёС†РёРёСЂСѓРµРј РіР»Р°РІРЅСѓСЋ РєРЅРѕРїРєСѓ 
      */
     public function setMainButton() {
         $this->main = array_shift($this->buttons);
     }
     
     /**
-     * Добавление кнопок в набор
+     * Р”РѕР±Р°РІР»РµРЅРёРµ РєРЅРѕРїРѕРє РІ РЅР°Р±РѕСЂ
      * 
-     * @param buttons $button кнопка
+     * @param buttons $button РєРЅРѕРїРєР°
      */
     public function addButton(buttons $button) {
         array_push($this->buttons, $button);
     }
     
     /**
-     * Возвращает класс для кнопки по названию цвета кнопки
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєР»Р°СЃСЃ РґР»СЏ РєРЅРѕРїРєРё РїРѕ РЅР°Р·РІР°РЅРёСЋ С†РІРµС‚Р° РєРЅРѕРїРєРё
      * 
-     * @param string $color   Цвет кнопки
+     * @param string $color   Р¦РІРµС‚ РєРЅРѕРїРєРё
      * @return string 
      */
     public function getColorMain($color = null) {
@@ -75,9 +75,9 @@ class multi_buttons extends buttons
     }
     
     /**
-     * Возвращает класс для доп кнопок по названию цвета кнопки (кнопки в выпадающем меню)
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєР»Р°СЃСЃ РґР»СЏ РґРѕРї РєРЅРѕРїРѕРє РїРѕ РЅР°Р·РІР°РЅРёСЋ С†РІРµС‚Р° РєРЅРѕРїРєРё (РєРЅРѕРїРєРё РІ РІС‹РїР°РґР°СЋС‰РµРј РјРµРЅСЋ)
      * 
-     * @param string $color   Цвет кнопки
+     * @param string $color   Р¦РІРµС‚ РєРЅРѕРїРєРё
      * @return string 
      */
     public function getColorLink($color = null) {
@@ -93,7 +93,7 @@ class multi_buttons extends buttons
     }
     
     /**
-     * Определяем есть ли в наборе кнопка с абревиатурой
+     * РћРїСЂРµРґРµР»СЏРµРј РµСЃС‚СЊ Р»Рё РІ РЅР°Р±РѕСЂРµ РєРЅРѕРїРєР° СЃ Р°Р±СЂРµРІРёР°С‚СѓСЂРѕР№
      * 
      * @param string $abbr 
      */

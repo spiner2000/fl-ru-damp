@@ -20,9 +20,9 @@ if ($_GET['cache'] == 'clear') {
     $memBuff->touchTag("msgsCnt");
 }
 
-$FROM = 'admin'; // логин, от кого отправлять рассылку
+$FROM = 'admin'; // Р»РѕРіРёРЅ, РѕС‚ РєРѕРіРѕ РѕС‚РїСЂР°РІР»СЏС‚СЊ СЂР°СЃСЃС‹Р»РєСѓ
 $DB = new DB('master');
-// отправляем от админа
+// РѕС‚РїСЂР°РІР»СЏРµРј РѕС‚ Р°РґРјРёРЅР°
 $sql = "SELECT uid FROM users WHERE login = ?";
 $row = $DB->val($sql, $FROM);
 if ($row) {
@@ -67,7 +67,7 @@ switch ($action) {
 			$selectedProfs = $_POST['prof'];
 
 
-		// загрузка файлов
+		// Р·Р°РіСЂСѓР·РєР° С„Р°Р№Р»РѕРІ
 		$files = array();
 		$attach = $_FILES['attach'];
 		if (is_array($attach) && !empty($attach['name'])) {
@@ -87,12 +87,12 @@ switch ($action) {
 					if ($files[$i]->size > 0) {
 						$name = $files[$i]->MoveUploadedFile("{$FROM}/contacts");
 						if (!isNulArray($files[$i]->error)) {
-							$alert[1] = "Один или несколько файлов не удовлетворяют условиям загрузки";
+							$alert[1] = "РћРґРёРЅ РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ С„Р°Р№Р»РѕРІ РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё";
 							$error_flag = 1;
 						}
 					}
 				} else {
-					$alert[1] = "Один или несколько файлов имеют неправильный формат.";
+					$alert[1] = "РћРґРёРЅ РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ С„Р°Р№Р»РѕРІ РёРјРµСЋС‚ РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ С„РѕСЂРјР°С‚.";
 					$error_flag = 1;
 				}
 				$i++;
@@ -104,7 +104,7 @@ switch ($action) {
 		$error = 0;
 		if (!$msg && !$name) {
 			$error_flag = 1;
-			$alert[2] = "Поле заполнено некорректно";
+			$alert[2] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
 		}
 		if (!$error_flag) {
 			if ($toFrl) {
@@ -130,16 +130,16 @@ switch ($action) {
 				$message_id = $messages->masssendToFreelancers(stripslashes($msg), $tp, $aProfs, $toEmail, $files);
 			} else if ($toWrk) {
 				if (!($message_id = $messages->masssendToEmployers(stripslashes($msg), NULL, $toEmail, $files))) {
-					$error = "Внутренняя ошибка";
+					$error = "Р’РЅСѓС‚СЂРµРЅРЅСЏСЏ РѕС€РёР±РєР°";
 				}
             } else if ($toLogins) {
                 $recipients = array_map('trim', explode(',', $_POST['logins']));
 				if (!($message_id = $messages->masssendTo(stripslashes($msg), $recipients, $toEmail, $files))) {
-					$error = "Внутренняя ошибка";
+					$error = "Р’РЅСѓС‚СЂРµРЅРЅСЏСЏ РѕС€РёР±РєР°";
 				}
 			} else {
 				if (!($message_id = $messages->masssendToAll(stripslashes($msg), NULL, $toEmail, $files))) {
-					$error = "Внутренняя ошибка";
+					$error = "Р’РЅСѓС‚СЂРµРЅРЅСЏСЏ РѕС€РёР±РєР°";
 				}
 			}
 		}

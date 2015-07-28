@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Абтрактный класс адаптера
+ * РђР±С‚СЂР°РєС‚РЅС‹Р№ РєР»Р°СЃСЃ Р°РґР°РїС‚РµСЂР°
  */
 abstract class AbstractStatisticAdapter 
 {
@@ -13,7 +13,7 @@ abstract class AbstractStatisticAdapter
     
     
     /**
-     * Конструктор конфигурирует адаптер
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРЅС„РёРіСѓСЂРёСЂСѓРµС‚ Р°РґР°РїС‚РµСЂ
      * 
      * @param array $options
      * @param object $config
@@ -33,13 +33,13 @@ abstract class AbstractStatisticAdapter
             $this->setOptions($options);
         }
         
-        //Вызов метода для инициализации сервиса статистики
+        //Р’С‹Р·РѕРІ РјРµС‚РѕРґР° РґР»СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё СЃРµСЂРІРёСЃР° СЃС‚Р°С‚РёСЃС‚РёРєРё
         $this->initService();
     }
     
     
     /**
-     * Указать обьект конфигурации
+     * РЈРєР°Р·Р°С‚СЊ РѕР±СЊРµРєС‚ РєРѕРЅС„РёРіСѓСЂР°С†РёРё
      * 
      * @param object $config
      */
@@ -50,7 +50,7 @@ abstract class AbstractStatisticAdapter
     
     
     /**
-     * Указать настройки
+     * РЈРєР°Р·Р°С‚СЊ РЅР°СЃС‚СЂРѕР№РєРё
      * 
      * @param array $options
      */
@@ -61,7 +61,7 @@ abstract class AbstractStatisticAdapter
 
     
     /**
-     * Вернуть настройки
+     * Р’РµСЂРЅСѓС‚СЊ РЅР°СЃС‚СЂРѕР№РєРё
      * 
      * @return array
      */
@@ -72,15 +72,15 @@ abstract class AbstractStatisticAdapter
     
     
     /**
-     * Инициализация сервиса статистики
-     * метод должен быть описан в реализации класса
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃРµСЂРІРёСЃР° СЃС‚Р°С‚РёСЃС‚РёРєРё
+     * РјРµС‚РѕРґ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РѕРїРёСЃР°РЅ РІ СЂРµР°Р»РёР·Р°С†РёРё РєР»Р°СЃСЃР°
      */
     protected abstract function initService();
     
     
     
     /**
-     * Постановка события в очередь
+     * РџРѕСЃС‚Р°РЅРѕРІРєР° СЃРѕР±С‹С‚РёСЏ РІ РѕС‡РµСЂРµРґСЊ
      */
     public function queue($type, Array $data)
     {
@@ -91,7 +91,7 @@ abstract class AbstractStatisticAdapter
     
     
     /**
-     * Вызов метода сервиса
+     * Р’С‹Р·РѕРІ РјРµС‚РѕРґР° СЃРµСЂРІРёСЃР°
      */
     public function call($type, Array $data)
     {

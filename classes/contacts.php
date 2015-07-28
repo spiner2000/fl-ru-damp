@@ -1,19 +1,19 @@
 <?php
 /**
- * Подключаем файл с основными функциями системы
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» СЃ РѕСЃРЅРѕРІРЅС‹РјРё С„СѓРЅРєС†РёСЏРјРё СЃРёСЃС‚РµРјС‹
  */
 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/stdf.php';
 /**
- * Класс для работы с базой контактов в админке
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р°Р·РѕР№ РєРѕРЅС‚Р°РєС‚РѕРІ РІ Р°РґРјРёРЅРєРµ
  */
 class contacts {
 
     const CONTACTS_PER_PAGE = 10; 
 
     /**
-    * Получить список групп контактов
+    * РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РіСЂСѓРїРї РєРѕРЅС‚Р°РєС‚РѕРІ
     *
-    * @return   array   список групп контактов
+    * @return   array   СЃРїРёСЃРѕРє РіСЂСѓРїРї РєРѕРЅС‚Р°РєС‚РѕРІ
     */
     function getGroups() {
         global $DB;
@@ -23,9 +23,9 @@ class contacts {
     }
 
     /**
-    * Удаление контакта
+    * РЈРґР°Р»РµРЅРёРµ РєРѕРЅС‚Р°РєС‚Р°
     *
-    * @param    integer $contact_id     идентификатор контакта
+    * @param    integer $contact_id     РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РєРѕРЅС‚Р°РєС‚Р°
     */
     function deleteContact($contact_id) {
         global $DB;
@@ -36,11 +36,11 @@ class contacts {
     }
     
     /**
-    * Получить список контактов
+    * РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РєРѕРЅС‚Р°РєС‚РѕРІ
     *
-    * @param    array   $filter     Данные фильтра
-    * @param    integer $page       Номер страницы
-    * @return   array               список контактов
+    * @param    array   $filter     Р”Р°РЅРЅС‹Рµ С„РёР»СЊС‚СЂР°
+    * @param    integer $page       РќРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹
+    * @return   array               СЃРїРёСЃРѕРє РєРѕРЅС‚Р°РєС‚РѕРІ
     */
     function getListContacts($filter=false, $page=0) {
         global $DB;
@@ -165,7 +165,7 @@ class contacts {
                                 array_push($contacts[$key]['emails'], $field['value']);
                                 break;
                             case 2:
-                                // Телефон
+                                // РўРµР»РµС„РѕРЅ
                                 array_push($contacts[$key]['phones'], $field['value']);
                                 break;
                             case 3:
@@ -177,7 +177,7 @@ class contacts {
                                 array_push($contacts[$key]['icqs'], $field['value']);
                                 break;
                             case 5:
-                                // Другое
+                                // Р”СЂСѓРіРѕРµ
                                 array_push($contacts[$key]['others'], $field['value']);
                                 break;
                         }
@@ -189,11 +189,11 @@ class contacts {
     }
 
     /**
-    * Поиск в массиве контактов
+    * РџРѕРёСЃРє РІ РјР°СЃСЃРёРІРµ РєРѕРЅС‚Р°РєС‚РѕРІ
     *
-    * @param    integer $id     идентификатор контакто который ищем
-    * @param    array   $source массив в котором надо искать
-    * @return   array           массив с информацией о контакте
+    * @param    integer $id     РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РєРѕРЅС‚Р°РєС‚Рѕ РєРѕС‚РѕСЂС‹Р№ РёС‰РµРј
+    * @param    array   $source РјР°СЃСЃРёРІ РІ РєРѕС‚РѕСЂРѕРј РЅР°РґРѕ РёСЃРєР°С‚СЊ
+    * @return   array           РјР°СЃСЃРёРІ СЃ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ РєРѕРЅС‚Р°РєС‚Рµ
     */
     function search_in_array($id, &$source) {
         foreach($source as $k=>$v) {
@@ -206,10 +206,10 @@ class contacts {
     }
 
     /**
-    * Получить информацию о контакте
+    * РџРѕР»СѓС‡РёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РєРѕРЅС‚Р°РєС‚Рµ
     *
-    * @param    integer $id         ID контакта
-    * @return   array               список контактов
+    * @param    integer $id         ID РєРѕРЅС‚Р°РєС‚Р°
+    * @return   array               СЃРїРёСЃРѕРє РєРѕРЅС‚Р°РєС‚РѕРІ
     */
     function getContactInfo($id) {
         global $DB;
@@ -231,7 +231,7 @@ class contacts {
                        array_push($contact['emails'], $field['value']);
                        break;
                     case 2:
-                       // Телефон
+                       // РўРµР»РµС„РѕРЅ
                        array_push($contact['phones'], $field['value']);
                        break;
                     case 3:
@@ -243,7 +243,7 @@ class contacts {
                        array_push($contact['icqs'], $field['value']);
                        break;
                     case 5:
-                       // Другое
+                       // Р”СЂСѓРіРѕРµ
                        array_push($contact['others'], $field['value']);
                        break;
                 }
@@ -253,9 +253,9 @@ class contacts {
     }
 
     /**
-    * Добавить контакт
+    * Р”РѕР±Р°РІРёС‚СЊ РєРѕРЅС‚Р°РєС‚
     *
-    * @param   array   $contact данные контакта
+    * @param   array   $contact РґР°РЅРЅС‹Рµ РєРѕРЅС‚Р°РєС‚Р°
     */
     function addContact($contact) {
         global $DB;
@@ -284,9 +284,9 @@ class contacts {
     }
 
     /**
-    * Редактирование контакта
+    * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РєРѕРЅС‚Р°РєС‚Р°
     *
-    * @param   array   $contact данные контакта
+    * @param   array   $contact РґР°РЅРЅС‹Рµ РєРѕРЅС‚Р°РєС‚Р°
     */
     function editContact($contact) {
         global $DB;
@@ -316,10 +316,10 @@ class contacts {
     }
 
     /**
-    * Получить список контактов в группе
+    * РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РєРѕРЅС‚Р°РєС‚РѕРІ РІ РіСЂСѓРїРїРµ
     *
-    * @param    ineger  $group_id   ID группы
-    * @return   array               список контактов
+    * @param    ineger  $group_id   ID РіСЂСѓРїРїС‹
+    * @return   array               СЃРїРёСЃРѕРє РєРѕРЅС‚Р°РєС‚РѕРІ
     */
     function getContacts($group_id=0) {
         global $DB;
@@ -332,9 +332,9 @@ class contacts {
     }
 
     /**
-    * Удаление группы
+    * РЈРґР°Р»РµРЅРёРµ РіСЂСѓРїРїС‹
     *
-    * @param    integer $group_id   идентификатор группы
+    * @param    integer $group_id   РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РіСЂСѓРїРїС‹
     */
     function deleteGroup($group_id) {
         global $DB;
@@ -343,9 +343,9 @@ class contacts {
     }
 
     /**
-    * Добавление группы
+    * Р”РѕР±Р°РІР»РµРЅРёРµ РіСЂСѓРїРїС‹
     *
-    * @param    string $title   название группы
+    * @param    string $title   РЅР°Р·РІР°РЅРёРµ РіСЂСѓРїРїС‹
     */
     function addGroup($title) {
         global $DB;
@@ -354,9 +354,9 @@ class contacts {
     }
 
     /**
-    * Получить информацию о группе
+    * РџРѕР»СѓС‡РёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РіСЂСѓРїРїРµ
     *
-    * @param    integer $group_id   идентификатор группы
+    * @param    integer $group_id   РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РіСЂСѓРїРїС‹
     */
     function getGroup($group_id) {
         global $DB;
@@ -365,12 +365,12 @@ class contacts {
     }
 
     /**
-    * Добавить новую рассылку
+    * Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІСѓСЋ СЂР°СЃСЃС‹Р»РєСѓ
     *
-    * @param    string  $subject        тема email
-    * @param    string  $message        текст email
-    * @param    array   $attaches       прикрепленные файлы
-    * @param    string  $contact_ids    идентификаторы получателей
+    * @param    string  $subject        С‚РµРјР° email
+    * @param    string  $message        С‚РµРєСЃС‚ email
+    * @param    array   $attaches       РїСЂРёРєСЂРµРїР»РµРЅРЅС‹Рµ С„Р°Р№Р»С‹
+    * @param    string  $contact_ids    РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РїРѕР»СѓС‡Р°С‚РµР»РµР№
     */
     function AddMail($subject, $message, $attaches, $contact_ids) {
         global $DB;
@@ -403,9 +403,9 @@ class contacts {
     }
 
     /**
-    * Получает списоок рассылок
+    * РџРѕР»СѓС‡Р°РµС‚ СЃРїРёСЃРѕРѕРє СЂР°СЃСЃС‹Р»РѕРє
     *
-    * @return   array   список рассылок
+    * @return   array   СЃРїРёСЃРѕРє СЂР°СЃСЃС‹Р»РѕРє
     */
     function GetMails() {
         global $DB;
@@ -415,9 +415,9 @@ class contacts {
     }
 
     /**
-    * Удаление рассылки
+    * РЈРґР°Р»РµРЅРёРµ СЂР°СЃСЃС‹Р»РєРё
     *
-    * @param    integer $id идентификатор рассылки
+    * @param    integer $id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЂР°СЃСЃС‹Р»РєРё
     */
     function DeleteMail($id) {
         global $DB;
@@ -437,10 +437,10 @@ class contacts {
     }
 
     /**
-    * Изменение группы
+    * РР·РјРµРЅРµРЅРёРµ РіСЂСѓРїРїС‹
     *
-    * @param    integer $id      идентификатор группы
-    * @param    string  $title   название группы
+    * @param    integer $id      РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РіСЂСѓРїРїС‹
+    * @param    string  $title   РЅР°Р·РІР°РЅРёРµ РіСЂСѓРїРїС‹
     */
     function updateGroup($id,$title) {
         global $DB;

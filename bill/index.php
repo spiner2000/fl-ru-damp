@@ -12,7 +12,7 @@ if(!get_uid()) {
     exit;
 }
 
-//Ðåäèðåêòèì íà èñòîðèþ çàêàçîâ
+//Ð ÐµÐ´Ð¸Ñ€ÐµÐºÑ‚Ð¸Ð¼ Ð½Ð° Ð¸ÑÑ‚Ð¾Ñ€Ð¸ÑŽ Ð·Ð°ÐºÐ°Ð·Ð¾Ð²
 header('Location: /bill/history/?period=3'); 
 exit;
 
@@ -33,7 +33,7 @@ if ($ammount && (int)$bill->acc['sum'] > (int)$ammount) {
 
 $bill->setPage();
 
-// äåëàåì óâåäîìëåíèÿ ïðî÷èòàííûìè
+// Ð´ÐµÐ»Ð°ÐµÐ¼ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ Ð¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð½Ñ‹Ð¼Ð¸
 $barNotify = new bar_notify($_SESSION['uid']);
 $barNotify->delNotifies( array('page'=>'bill') );
 

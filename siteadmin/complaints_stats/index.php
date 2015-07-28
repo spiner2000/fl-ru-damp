@@ -1,10 +1,10 @@
 <?
 /**
- * Ñòàòèñòèêà æàëîá íà ïðîåêòû
+ * Ð¡Ñ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ° Ð¶Ð°Ð»Ð¾Ð± Ð½Ð° Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñ‹
  * 
  */
 
-// Ãðàíèöû äåëåíèÿ ïî áþäæåòó
+// Ð“Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ Ð´ÐµÐ»ÐµÐ½Ð¸Ñ Ð¿Ð¾ Ð±ÑŽÐ´Ð¶ÐµÑ‚Ñƒ
 $bounds = array(500, 2000, 5000, 10000, 20000, 50000);
 
 define('IS_SITE_ADMIN', 1);
@@ -14,7 +14,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/projects_complains.php");
 hasPermissions('stats') || hasPermissions('users') || header_location_exit('/404.php');
 $rpath = "../../";
 
-$menu_item   = 24; // Íîìåð ïóíêòà ìåíþ - ïîäñâåòêà.
+$menu_item   = 24; // ÐÐ¾Ð¼ÐµÑ€ Ð¿ÑƒÐ½ÐºÑ‚Ð° Ð¼ÐµÐ½ÑŽ - Ð¿Ð¾Ð´ÑÐ²ÐµÑ‚ÐºÐ°.
 $header      = $rpath.'header.new.php';
 $inner_page  = "index_inner.php";
 $content     = '../content.php';
@@ -22,14 +22,14 @@ $footer      = $rpath.'footer.new.html';
 $template    = 'template3.php';
 $css_file    = array( 'moderation.css', 'new-admin.css', 'nav.css' );
 
-// Îáùåå êîëè÷åñòâî ñ äåëåíèåì "îò ïðî / íå ïðî"
+// ÐžÐ±Ñ‰ÐµÐµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ Ð´ÐµÐ»ÐµÐ½Ð¸ÐµÐ¼ "Ð¾Ñ‚ Ð¿Ñ€Ð¾ / Ð½Ðµ Ð¿Ñ€Ð¾"
 $complains_all = projects_complains::GetComplainsStats('from');
 
-// Äåëåíèå ïî áþäæåòó
+// Ð”ÐµÐ»ÐµÐ½Ð¸Ðµ Ð¿Ð¾ Ð±ÑŽÐ´Ð¶ÐµÑ‚Ñƒ
 $bcnt = count($bounds);
 $complains_by_cost = projects_complains::GetComplainsStats('cost', $bounds);
 
-// Ïî êàòåãîðèÿì
+// ÐŸÐ¾ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸ÑÐ¼
 $complains_categ = projects_complains::GetComplainsStats('category');
 
 include($rpath . $template);

@@ -12,8 +12,8 @@ class FreelancersPreviewEditorPopup extends CPopup
         self::TAB_TU);
 
     protected $tabs = array(
-        self::TAB_PF => 'Ïîðòôîëèî',
-        self::TAB_TU => 'Òèïîâûå óñëóãè'
+        self::TAB_PF => 'ÐŸÐ¾Ñ€Ñ‚Ñ„Ð¾Ð»Ð¸Ð¾',
+        self::TAB_TU => 'Ð¢Ð¸Ð¿Ð¾Ð²Ñ‹Ðµ ÑƒÑÐ»ÑƒÐ³Ð¸'
     );
     
     protected $limit = 6;
@@ -108,7 +108,7 @@ class FreelancersPreviewEditorPopup extends CPopup
         );
         
         $options = array(
-            'popup_title' => 'Âûáåðèòå ïðåâüþ äëÿ îòîáðàæåíèÿ â êàòàëîãå',
+            'popup_title' => 'Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð¿Ñ€ÐµÐ²ÑŒÑŽ Ð´Ð»Ñ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ð² ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ðµ',
             'popup_width' => 720
         );        
 
@@ -141,7 +141,7 @@ class FreelancersPreviewEditorPopup extends CPopup
                 }
             }
 
-            //Åñëè òàáîâ àêòèâíûõ ïîóìîë÷àíèþ íåò òî âêëþ÷àåì ïåðâóþ ñóùåñòâóþùóþ
+            //Ð•ÑÐ»Ð¸ Ñ‚Ð°Ð±Ð¾Ð² Ð°ÐºÑ‚Ð¸Ð²Ð½Ñ‹Ñ… Ð¿Ð¾ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ Ð½ÐµÑ‚ Ñ‚Ð¾ Ð²ÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼ Ð¿ÐµÑ€Ð²ÑƒÑŽ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‰ÑƒÑŽ
             if (!isset($tabs[$this->current_tab]['active']) && $first_exist_tab) {
                 $tabs[$first_exist_tab]['active'] = true;
             }

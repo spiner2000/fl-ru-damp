@@ -1,14 +1,14 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/search/search_element.php";
 /**
- * Класс для работы с поиском в Сообществах
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РїРѕРёСЃРєРѕРј РІ РЎРѕРѕР±С‰РµСЃС‚РІР°С…
  *
  */
 class searchElementCommune extends searchElement
 {
-    public $name = 'Сообщества';
-    //@todo: временно используем индекс commune2
-    //после перегенерации на бое переключить на commune
+    public $name = 'РЎРѕРѕР±С‰РµСЃС‚РІР°';
+    //@todo: РІСЂРµРјРµРЅРЅРѕ РёСЃРїРѕР»СЊР·СѓРµРј РёРЅРґРµРєСЃ commune2
+    //РїРѕСЃР»Рµ РїРµСЂРµРіРµРЅРµСЂР°С†РёРё РЅР° Р±РѕРµ РїРµСЂРµРєР»СЋС‡РёС‚СЊ РЅР° commune
     protected $_indexSfx = '2';
     
     public function setResults() 
@@ -48,7 +48,7 @@ class searchElementCommune extends searchElement
     
     
     /**
-     * Взять информацию по найденным результатам
+     * Р’Р·СЏС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ РїРѕ РЅР°Р№РґРµРЅРЅС‹Рј СЂРµР·СѓР»СЊС‚Р°С‚Р°Рј
      *
      * @return array
      */
@@ -125,7 +125,7 @@ class searchElementCommune extends searchElement
                 ));
                 $msgtext = preg_replace('~(https?:/){[^}]+}/~', '$1/', $msgtext);
                 if ($title == '') {
-                    $title = '<Без темы>';
+                    $title = '<Р‘РµР· С‚РµРјС‹>';
                 }
                 if (empty($value['parent_id']) || is_null($value['parent_id'])) {
                     $link = '/commune/?id=' . $value['commune_id'] . '&site=Topic&post=' . $value['id'] . '&om=0';
@@ -134,7 +134,7 @@ class searchElementCommune extends searchElement
                 }
                 $html[$key]  = '<a href="' . $link . '" style="font-weight: bold;" class="blue">' . $title . '</a>';
                 $html[$key] .= '<div style="margin-top: 4px;">' . reformat($msgtext,80,0,1) . '</div>';
-                $html[$key] .= '<div class="little" style="margin-top: 4px;"><span class="topic">Сообщество:</span> <a href="/commune/?id=' . $value['commune_id'] . '">' . $commune_name . '</a> - ' . (($value['parent_id'] == 0) ? 'топик' : 'комментарий') . ' ';
+                $html[$key] .= '<div class="little" style="margin-top: 4px;"><span class="topic">РЎРѕРѕР±С‰РµСЃС‚РІРѕ:</span> <a href="/commune/?id=' . $value['commune_id'] . '">' . $commune_name . '</a> - ' . (($value['parent_id'] == 0) ? 'С‚РѕРїРёРє' : 'РєРѕРјРјРµРЅС‚Р°СЂРёР№') . ' ';
                 if ($value['user_id'] > 0) {
                     $html[$key] .= '[<a href="/users/' . $value['login'] . '/" title="' . $value['uname'] . ' ' . $value['usurname'] . '" class="black">' . $login . '</a>]';
                 } else {

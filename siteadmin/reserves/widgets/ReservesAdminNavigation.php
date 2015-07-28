@@ -14,23 +14,23 @@ class ReservesAdminNavigation extends CWidget
     {
         $default_menu_items = array(
             'index' => array(
-                'title' => 'Âñå Ñäåëêè',
+                'title' => 'Ð’ÑÐµ Ð¡Ð´ÐµÐ»ÐºÐ¸',
                 'url' => '?action=index'
             ),
             'frod' => array(
-                'title' => 'Ïîäîçðèòåëüíûå ñäåëêè',
+                'title' => 'ÐŸÐ¾Ð´Ð¾Ð·Ñ€Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ ÑÐ´ÐµÐ»ÐºÐ¸',
                 'url' => '?action=frod'
             ),
             'reestr' => array(
-                'title' => 'Ðååñòðû',
+                'title' => 'Ð ÐµÐµÑÑ‚Ñ€Ñ‹',
                 'url' => '?action=reestr'
             ),
             'factura' => array(
-                'title' => 'Ðååñòð ñ÷åò-ôàêòóð',
+                'title' => 'Ð ÐµÐµÑÑ‚Ñ€ ÑÑ‡ÐµÑ‚-Ñ„Ð°ÐºÑ‚ÑƒÑ€',
                 'url' => '?action=factura'
             ),
             'archive' => array(
-                'title' => 'Àðõèâ äîêóìåíòîâ',
+                'title' => 'ÐÑ€Ñ…Ð¸Ð² Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð¾Ð²',
                 'url' => '?action=archive'
             )
         );
@@ -43,7 +43,7 @@ class ReservesAdminNavigation extends CWidget
 
     public function run() 
     {
-        //ñîáèðàåì øàáëîí
+        //ÑÐ¾Ð±Ð¸Ñ€Ð°ÐµÐ¼ ÑˆÐ°Ð±Ð»Ð¾Ð½
         $this->render('reserves-admin-navigation', array(
             'menu_items' => $this->menu_items,
             'current_action' => $this->current_action

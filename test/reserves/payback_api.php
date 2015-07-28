@@ -59,7 +59,7 @@ $returnPaymentRequest->setShopId(17233);
 $returnPaymentRequest->setClientOrderId(777);
 $returnPaymentRequest->setInvoiceId(888);
 $returnPaymentRequest->setCurrency(10643);//643
-$returnPaymentRequest->setCause('Âîçâðàò ñðåäñòâ Çàêàç÷èêó ÁÑ#00001 ïî ðåøåíèþ àðáèòðàæà.');
+$returnPaymentRequest->setCause('Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‚ ÑÑ€ÐµÐ´ÑÑ‚Ð² Ð—Ð°ÐºÐ°Ð·Ñ‡Ð¸ÐºÑƒ Ð‘Ð¡#00001 Ð¿Ð¾ Ñ€ÐµÑˆÐµÐ½Ð¸ÑŽ Ð°Ñ€Ð±Ð¸Ñ‚Ñ€Ð°Ð¶Ð°.');
 $returnPaymentRequest->setAmount('1.0');
 
 

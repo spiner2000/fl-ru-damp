@@ -37,22 +37,22 @@ switch($type) {
                     $pictname = $prevname = '';
                 } else {
                     if(!in_array($img->getext(), $GLOBALS['graf_array'])) {
-                        $err = "Íåäîïóñòèìûé òèï ôàéëà";
+                        $err = "ÐÐµÐ´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ñ‚Ð¸Ð¿ Ñ„Ð°Ð¹Ð»Ð°";
                         $error = true;
                     }
                     
                     if (in_array($img->getext(), $GLOBALS['disallowed_array'])) {
-                        $err = 'Íåäîïóñòèìûé òèï ôàéëà';
+                        $err = 'ÐÐµÐ´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ñ‚Ð¸Ð¿ Ñ„Ð°Ð¹Ð»Ð°';
                         $error = true;
                     } else {
                         if (in_array($img->getext(), $GLOBALS['graf_array']) && strtolower($img->getext()) != "swf" && strtolower($img->getext()) != "flv") {
                             
                             $image_size = $img->image_size;
                             if ($image_size['width'] > 150 || $image_size['height'] > 100) {
-                                $err = 'Ðàçìåð èçîáðàæåíèÿ íå äîëæåí ïðåâûøàòü 150õ100 ïèêñåëåé';
+                                $err = 'Ð Ð°Ð·Ð¼ÐµÑ€ Ð¸Ð·Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ð½Ðµ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð¿Ñ€ÐµÐ²Ñ‹ÑˆÐ°Ñ‚ÑŒ 150Ñ…100 Ð¿Ð¸ÐºÑÐµÐ»ÐµÐ¹';
                                 $error = true;
                             }
-                            // Äåëàåì ïðåâüþ.
+                            // Ð”ÐµÐ»Ð°ÐµÐ¼ Ð¿Ñ€ÐµÐ²ÑŒÑŽ.
                             $pict_added = $img->img_to_small("sm_" . $pictname, array('width' => 150, 'height' => 100, 'less' => 0));
                             if (!isNulArray($img->error)) {
                                 $error = true;
@@ -94,7 +94,7 @@ switch($type) {
                     $error = true;
                 } else {
                     if ( in_array($file->getext(), $GLOBALS['disallowed_array']) ) {
-                        $err = 'Íåäîïóñòèìûé òèï ôàéëà';
+                        $err = 'ÐÐµÐ´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ñ‚Ð¸Ð¿ Ñ„Ð°Ð¹Ð»Ð°';
                         $error = true;
                     } else {
                         $isImg = in_array($file->getext(), $GLOBALS['graf_array']) && strtolower($file->getext()) != "swf";
@@ -105,7 +105,7 @@ switch($type) {
                     }
                 }
             } else {
-                $err = 'Çàãðóçêà ôàéëà ïðåðâàëàñü';
+                $err = 'Ð—Ð°Ð³Ñ€ÑƒÐ·ÐºÐ° Ñ„Ð°Ð¹Ð»Ð° Ð¿Ñ€ÐµÑ€Ð²Ð°Ð»Ð°ÑÑŒ';
                 $error = true;
             }
         }
@@ -137,7 +137,7 @@ switch($type) {
                     $pictname = $prevname = '';
                 } else {
                     if (in_array($img->getext(), $GLOBALS['disallowed_array'])) {
-                        $err = 'Íåäîïóñòèìûé òèï ôàéëà';
+                        $err = 'ÐÐµÐ´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ñ‚Ð¸Ð¿ Ñ„Ð°Ð¹Ð»Ð°';
                         $error = true;
                     } else {
                         if (in_array($img->getext(), $GLOBALS['graf_array']) && strtolower($img->getext()) != "swf" && strtolower($img->getext()) != "flv") {
@@ -150,7 +150,7 @@ switch($type) {
                             }
                         } else {
                             $pict_added = true;
-                            $err = 'Íåäîïóñòèìûé òèï ôàéëà';
+                            $err = 'ÐÐµÐ´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ñ‚Ð¸Ð¿ Ñ„Ð°Ð¹Ð»Ð°';
                             $error = true;
                         }
                     }
@@ -189,11 +189,11 @@ switch($type) {
                     $pictname = $prevname = '';
                 } else {
                     if (in_array($img->getext(), $GLOBALS['disallowed_array'])) {
-                        $err = 'Íåäîïóñòèìûé òèï ôàéëà';
+                        $err = 'ÐÐµÐ´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ñ‚Ð¸Ð¿ Ñ„Ð°Ð¹Ð»Ð°';
                         $error = true;
                     } else {
                         if (in_array($img->getext(), $GLOBALS['graf_array']) && strtolower($img->getext()) != "swf" && strtolower($img->getext()) != "flv") {
-                            // Äåëàåì ïðåâüþ.
+                            // Ð”ÐµÐ»Ð°ÐµÐ¼ Ð¿Ñ€ÐµÐ²ÑŒÑŽ.
                             $pict_added = $img->img_to_small("sm_" . $pictname, array('width' => 200, 'height' => 200, 'less' => 0));
                             if (!isNulArray($img->error)) {
                                 $error = true;
@@ -207,7 +207,7 @@ switch($type) {
                     }
                 }
             } elseif( strlen($img->tmp_name) != 0) {
-                $err = "Ïóñòîé ôàéë";
+                $err = "ÐŸÑƒÑÑ‚Ð¾Ð¹ Ñ„Ð°Ð¹Ð»";
                 $error = true;
             } elseif ($img->error) {
                 $err = $img->error[0];
@@ -223,7 +223,7 @@ switch($type) {
            $link  = WDCPREFIX . '/' . $dir . $pictname;
            $name  = __paramValue('string', $_FILES['upload_file']['name']);
            $maxLen = 25;
-           // ñîêðàùàåì íàçâàíèå ôàéëà, ñîõðàíÿÿ ðàñøèðåíèå
+           // ÑÐ¾ÐºÑ€Ð°Ñ‰Ð°ÐµÐ¼ Ð½Ð°Ð·Ð²Ð°Ð½Ð¸Ðµ Ñ„Ð°Ð¹Ð»Ð°, ÑÐ¾Ñ…Ñ€Ð°Ð½ÑÑ Ñ€Ð°ÑÑˆÐ¸Ñ€ÐµÐ½Ð¸Ðµ
            if (strlen($name) > $maxLen) {
                $arr = explode('.', $name);
                $ext = array_pop($arr);

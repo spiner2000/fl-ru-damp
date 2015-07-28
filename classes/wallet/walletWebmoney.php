@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Ïîäêëþ÷àåì ôàéë äëÿ ðàáîòû ñ êëþ÷àìè îïëàòû
+ * ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼ Ñ„Ð°Ð¹Ð» Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ ÐºÐ»ÑŽÑ‡Ð°Ð¼Ð¸ Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/wallet/wallet.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/pmpay.php");
@@ -10,34 +10,34 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/JWS.php";
 
 
 /**
- * Êëàññ äëÿ ðàáîòû ñ êîøåëüêîì WebMoney äëÿ àâòîìàòè÷åñêîé îïëàòû óñëóã
+ * ÐšÐ»Ð°ÑÑ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ ÐºÐ¾ÑˆÐµÐ»ÑŒÐºÐ¾Ð¼ WebMoney Ð´Ð»Ñ Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ð¹ Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹ ÑƒÑÐ»ÑƒÐ³
  *
  */
 class walletWebmoney extends Wallet
 {
     /**
-     * Çàäàåì òèï ïëàòåæíîãî ìåòîäà
+     * Ð—Ð°Ð´Ð°ÐµÐ¼ Ñ‚Ð¸Ð¿ Ð¿Ð»Ð°Ñ‚ÐµÐ¶Ð½Ð¾Ð³Ð¾ Ð¼ÐµÑ‚Ð¾Ð´Ð°
      *
      * @var int
      */
     protected $_type = WalletTypes::WALLET_WEBMONEY;
 
     /**
-     * Ñîäåðæèò îáúåêò êëàññà ÷åðåç êîòîðûé ïèøåì ëîãè
+     * Ð¡Ð¾Ð´ÐµÑ€Ð¶Ð¸Ñ‚ Ð¾Ð±ÑŠÐµÐºÑ‚ ÐºÐ»Ð°ÑÑÐ° Ñ‡ÐµÑ€ÐµÐ· ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð¿Ð¸ÑˆÐµÐ¼ Ð»Ð¾Ð³Ð¸
      *
      * @var log
      */
     public $log;
 
     /**
-     * Êîíñòðóêòîð êëàññà íåîáõîäèìî çàäàòü ÈÄ ïîëüçîâàòåëÿ
+     * ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ ÐºÐ»Ð°ÑÑÐ° Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ Ð·Ð°Ð´Ð°Ñ‚ÑŒ Ð˜Ð” Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
      *
-     * @param integer $uid ÈÄ ïîëüçîâàòåëÿ
+     * @param integer $uid Ð˜Ð” Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
      */
     public function __construct($uid = null) {
         parent::__construct($uid);
 
-        // Åñëè åñòü êîä àâòîðèçàöèè âñå ãóä
+        // Ð•ÑÐ»Ð¸ ÐµÑÑ‚ÑŒ ÐºÐ¾Ð´ Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ð¸ Ð²ÑÐµ Ð³ÑƒÐ´
         if($this->getAccessToken() !== false) {
             $this->api = new API_Webmoney(null, $this->getAccessToken());
         } else {
@@ -48,7 +48,7 @@ class walletWebmoney extends Wallet
     }
 
     /**
-     * Èíèöèàëèçèðóåò ñðîê äåéñòâèÿ êëþ÷à (ó êàæäîé ñèñòåìû îí ñâîé, ïî óìîë÷àíèþ 3 ãîäà)
+     * Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€ÑƒÐµÑ‚ ÑÑ€Ð¾Ðº Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ ÐºÐ»ÑŽÑ‡Ð° (Ñƒ ÐºÐ°Ð¶Ð´Ð¾Ð¹ ÑÐ¸ÑÑ‚ÐµÐ¼Ñ‹ Ð¾Ð½ ÑÐ²Ð¾Ð¹, Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ 3 Ð³Ð¾Ð´Ð°)
      *
      */
     public function initValidity() {
@@ -57,7 +57,7 @@ class walletWebmoney extends Wallet
 
 
     public function payment($sum) {
-        // Íà áåòå àëüôå âêëþ÷àåì äåáàã ðåæèì
+        // ÐÐ° Ð±ÐµÑ‚Ðµ Ð°Ð»ÑŒÑ„Ðµ Ð²ÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼ Ð´ÐµÐ±Ð°Ð³ Ñ€ÐµÐ¶Ð¸Ð¼
         if(!is_release())  {
             //$sum = 0.1;// @debug
             $this->api->setDebug(true);
@@ -70,11 +70,11 @@ class walletWebmoney extends Wallet
             switch($process['status']) {
                 case API_Webmoney::STATUS_PAYMENT_PROGRESS:
                 case API_Webmoney::STATUS_PAYMENT_SUCCESS:
-                    // Çà÷èñëÿåì äåíüãè íà áåòå/àëüôå
+                    // Ð—Ð°Ñ‡Ð¸ÑÐ»ÑÐµÐ¼ Ð´ÐµÐ½ÑŒÐ³Ð¸ Ð½Ð° Ð±ÐµÑ‚Ðµ/Ð°Ð»ÑŒÑ„Ðµ
 //                    if(!is_release()) {
 //                        $paymentDateTime = date('d.m.Y H:i');
 //                        $orderNumber     = rand(1, 99999999);
-//                        $descr = "WebMoney ñ êîøåëüêà {$this->data['wallet']} ñóììà - {$sum}, îáðàáîòàí {$paymentDateTime}, íîìåð ïîêóïêè - $orderNumber";
+//                        $descr = "WebMoney Ñ ÐºÐ¾ÑˆÐµÐ»ÑŒÐºÐ° {$this->data['wallet']} ÑÑƒÐ¼Ð¼Ð° - {$sum}, Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚Ð°Ð½ {$paymentDateTime}, Ð½Ð¾Ð¼ÐµÑ€ Ð¿Ð¾ÐºÑƒÐ¿ÐºÐ¸ - $orderNumber";
 //
 //                        $this->account->deposit($op_id, $this->account->id, $sum, $descr, 3, $sum, 12);
 //                    }
@@ -91,8 +91,8 @@ class walletWebmoney extends Wallet
                     $this->log->write("Result:\n {$content}");
                     return false;
                     break;
-                // Îòëîæèòü ïëàòåæ íà ïîë ÷àñà
-                // @todo ïðèäóìàòü êàê îòëîæèòü çàïðîñ íà ïîòîì
+                // ÐžÑ‚Ð»Ð¾Ð¶Ð¸Ñ‚ÑŒ Ð¿Ð»Ð°Ñ‚ÐµÐ¶ Ð½Ð° Ð¿Ð¾Ð» Ñ‡Ð°ÑÐ°
+                // @todo Ð¿Ñ€Ð¸Ð´ÑƒÐ¼Ð°Ñ‚ÑŒ ÐºÐ°Ðº Ð¾Ñ‚Ð»Ð¾Ð¶Ð¸Ñ‚ÑŒ Ð·Ð°Ð¿Ñ€Ð¾Ñ Ð½Ð° Ð¿Ð¾Ñ‚Ð¾Ð¼
                 //case API_Webmoney::STATUS_PAYMENT_PROCESS:
                 default:
                     return null;
@@ -114,63 +114,63 @@ class walletWebmoney extends Wallet
 
 
     /**
-     * Êëàññ äëÿ ðàáîòû ñ API ßíäåêñ.äåíüãè
+     * ÐšÐ»Ð°ÑÑ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ API Ð¯Ð½Ð´ÐµÐºÑ.Ð´ÐµÐ½ÑŒÐ³Ð¸
      *
      * @link http://api.yandex.ru/money/doc/dg/concepts/About.xml
      */
 class API_Webmoney extends API_OAuth
 {
     /**
-     * Àäðåñ ãäå ìû ïîëó÷àåì àâòîðèçàöèþ äëÿ äàëüíåéøåé ðàáîòû ñ ÀÏÈ
+     * ÐÐ´Ñ€ÐµÑ Ð³Ð´Ðµ Ð¼Ñ‹ Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸ÑŽ Ð´Ð»Ñ Ð´Ð°Ð»ÑŒÐ½ÐµÐ¹ÑˆÐµÐ¹ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ ÐÐŸÐ˜
      */
     const AUTH_URI = 'https://paymaster.ru';
 
     /**
-     * Àäðåñ API ñ êîòîðûì âçàèìîäåéñòâóåì ïîñëå àâòîðèçàöèè
+     * ÐÐ´Ñ€ÐµÑ API Ñ ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¼ Ð²Ð·Ð°Ð¸Ð¼Ð¾Ð´ÐµÐ¹ÑÑ‚Ð²ÑƒÐµÐ¼ Ð¿Ð¾ÑÐ»Ðµ Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ð¸
      */
     const API_URI  = 'https://paymaster.ru';
 
     /**
-     * Àäðåñ, ãäå íåîáõîäèìà àâòîðèçàöèÿ OAUTH
+     * ÐÐ´Ñ€ÐµÑ, Ð³Ð´Ðµ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð° Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ñ OAUTH
      */
     const OAUTH_URI = 'paymaster.ru';
 
     /**
-     * Òåñòîâûå äàííûå (èñïîëüçóåòñÿ äëÿ òåñòèðîâàíèÿ íà áåòå, àëüôå)
+     * Ð¢ÐµÑÑ‚Ð¾Ð²Ñ‹Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ (Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð´Ð»Ñ Ñ‚ÐµÑÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð½Ð° Ð±ÐµÑ‚Ðµ, Ð°Ð»ÑŒÑ„Ðµ)
      */
     const CLIENT_BETA_ID     = '8e9d6b16-4f21-4a1c-af24-659827ffaa87';
     const REDIRECT_BETA_URI  = 'https://beta.free-lance.ru/income/auto-wm.php';
 
     /**
-     * Áîåâûå äàííûå @see classes/payment_keys.php
+     * Ð‘Ð¾ÐµÐ²Ñ‹Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ @see classes/payment_keys.php
      */
     const CLIENT_ID     = WEBMONEY_CLIENT_ID;
     const REDIRECT_URI  = 'https://www.fl.ru/income/auto-wm.php';
 
     /**
-     * Íàçâàíèå àëãîðèòìà øèôðîâàíèÿ äëÿ ðàáîòû ñ JWS
+     * ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð°Ð»Ð³Ð¾Ñ€Ð¸Ñ‚Ð¼Ð° ÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ JWS
      */
     const JWS_ALG = 'RS256';
 
     /**
-     * Ïðèâàòíûé êëþ÷ äëÿ øèôðîâàíèÿ äàííûõ
+     * ÐŸÑ€Ð¸Ð²Ð°Ñ‚Ð½Ñ‹Ð¹ ÐºÐ»ÑŽÑ‡ Ð´Ð»Ñ ÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð´Ð°Ð½Ð½Ñ‹Ñ…
      */
     const PRIVATE_KEY = '';
 
     /**
-     * Ïóáëè÷íûé êëþ÷ äëÿ ïðîâåðêè è øèôðîâàíèÿ äàííûõ
+     * ÐŸÑƒÐ±Ð»Ð¸Ñ‡Ð½Ñ‹Ð¹ ÐºÐ»ÑŽÑ‡ Ð´Ð»Ñ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ¸ Ð¸ ÑˆÐ¸Ñ„Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð´Ð°Ð½Ð½Ñ‹Ñ…
      */
     const PUBLIC_KEY = '';
 
     /**
-     * Ñòàòóñ API Webmoney
-     * Óñïåøíîå âûïîëíåíèå.
+     * Ð¡Ñ‚Ð°Ñ‚ÑƒÑ API Webmoney
+     * Ð£ÑÐ¿ÐµÑˆÐ½Ð¾Ðµ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ðµ.
      */
     const STATUS_SUCCESS = 'success';
 
     /**
-     * Ñòàòóñ API Webmoney
-     * Îøèáêà âûïîëíåíèÿ
+     * Ð¡Ñ‚Ð°Ñ‚ÑƒÑ API Webmoney
+     * ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ
      */
     const STATUS_FAIL = 'failure';
 
@@ -179,10 +179,10 @@ class API_Webmoney extends API_OAuth
     const STATUS_PAYMENT_FAIL       = 'failure';
 
     /**
-     * Êîíñòðóêòîð êëàññà
+     * ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ ÐºÐ»Ð°ÑÑÐ°
      *
-     * @param string $code            Âðåìåííûé êëþ÷
-     * @param string $accessToken     Êëþ÷ äîñòóïà
+     * @param string $code            Ð’Ñ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ð¹ ÐºÐ»ÑŽÑ‡
+     * @param string $accessToken     ÐšÐ»ÑŽÑ‡ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð°
      */
     public function __construct($code = null, $accessToken = null) {
         $this->setAuthCode($code);
@@ -192,9 +192,9 @@ class API_Webmoney extends API_OAuth
     }
 
     /**
-     * Ïîëó÷àåì äàííûå îò ßíäåêñà â ôîðìå ìàññèâà
+     * ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð¾Ñ‚ Ð¯Ð½Ð´ÐµÐºÑÐ° Ð² Ñ„Ð¾Ñ€Ð¼Ðµ Ð¼Ð°ÑÑÐ¸Ð²Ð°
      *
-     * @param HTTP_Request2 $resp     Îáúåêò çàïðîñà
+     * @param HTTP_Request2 $resp     ÐžÐ±ÑŠÐµÐºÑ‚ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°
      * @return array
      */
     public function getBodyArray($resp) {
@@ -204,10 +204,10 @@ class API_Webmoney extends API_OAuth
     }
 
     /**
-     * Ãåíåðèðóåò àäðåñ àâòîðèçàöèè
+     * Ð“ÐµÐ½ÐµÑ€Ð¸Ñ€ÑƒÐµÑ‚ Ð°Ð´Ñ€ÐµÑ Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ð¸
      * @see http://api.yandex.ru/money/doc/dg/reference/request-access-token.xml
      *
-     * @param string $scope   Ñïèñîê çàïðàøèâàåìûõ ïðàâ. Ðàçäåëèòåëü ýëåìåíòîâ ñïèñêà - ïðîáåë. Ýëåìåíòû ñïèñêà ÷óâñòâèòåëüíû ê ðåãèñòðó.
+     * @param string $scope   Ð¡Ð¿Ð¸ÑÐ¾Ðº Ð·Ð°Ð¿Ñ€Ð°ÑˆÐ¸Ð²Ð°ÐµÐ¼Ñ‹Ñ… Ð¿Ñ€Ð°Ð². Ð Ð°Ð·Ð´ÐµÐ»Ð¸Ñ‚ÐµÐ»ÑŒ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð¾Ð² ÑÐ¿Ð¸ÑÐºÐ° - Ð¿Ñ€Ð¾Ð±ÐµÐ». Ð­Ð»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹ ÑÐ¿Ð¸ÑÐºÐ° Ñ‡ÑƒÐ²ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹ Ðº Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ñƒ.
      * @return string
      */
     static public function getAuthorizeUri( $scope = null ) {
@@ -233,10 +233,10 @@ class API_Webmoney extends API_OAuth
     }
 
     /**
-     * Îïðåäåëÿåì ïî àäðåñó íóæíà ëè íàì àâòîðèçàöèÿ OAuth â çàïðîñå
+     * ÐžÐ¿Ñ€ÐµÐ´ÐµÐ»ÑÐµÐ¼ Ð¿Ð¾ Ð°Ð´Ñ€ÐµÑÑƒ Ð½ÑƒÐ¶Ð½Ð° Ð»Ð¸ Ð½Ð°Ð¼ Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ñ OAuth Ð² Ð·Ð°Ð¿Ñ€Ð¾ÑÐµ
      *
-     * @param $uri      Àäðåñ çàïðîñà
-     * @return bool     true - Íóæíà, false - Íå íóæíà
+     * @param $uri      ÐÐ´Ñ€ÐµÑ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°
+     * @return bool     true - ÐÑƒÐ¶Ð½Ð°, false - ÐÐµ Ð½ÑƒÐ¶Ð½Ð°
      */
     public function isOAuth($uri) {
         $result = parse_url($uri);
@@ -244,7 +244,7 @@ class API_Webmoney extends API_OAuth
     }
 
     /**
-     * Âîçâðàùàåò ÈÄ ïðèëîæåíèÿ
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð˜Ð” Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ
      *
      * @return string
      */
@@ -253,7 +253,7 @@ class API_Webmoney extends API_OAuth
     }
 
     /**
-     * Âîçâðàùàåò àäðåñ ðåäèðåêòà ïðèëîæåíèÿ
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð°Ð´Ñ€ÐµÑ Ñ€ÐµÐ´Ð¸Ñ€ÐµÐºÑ‚Ð° Ð¿Ñ€Ð¸Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ
      *
      * @return string
      */
@@ -262,7 +262,7 @@ class API_Webmoney extends API_OAuth
     }
 
     /**
-     * Âîçâðàùàåò ïðèâàòíûé êëþ÷
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð¿Ñ€Ð¸Ð²Ð°Ñ‚Ð½Ñ‹Ð¹ ÐºÐ»ÑŽÑ‡
      *
      * @return string
      */
@@ -273,7 +273,7 @@ class API_Webmoney extends API_OAuth
     }
 
     /**
-     * Âîçâðàùàåò ïóáëè÷íûé êëþ÷
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð¿ÑƒÐ±Ð»Ð¸Ñ‡Ð½Ñ‹Ð¹ ÐºÐ»ÑŽÑ‡
      *
      * @return string
      */
@@ -284,11 +284,11 @@ class API_Webmoney extends API_OAuth
     }
 
     /**
-     * Äåëàåì çàïðîñ
+     * Ð”ÐµÐ»Ð°ÐµÐ¼ Ð·Ð°Ð¿Ñ€Ð¾Ñ
      *
-     * @param string $uri    Àäðåññ çàïðîñà
-     * @param array  $req    POST äàííûå åñëè åñòü
-     * @param $method        Ìåòîä çàïðîñà (ïî óìîë÷àíèþ POST)
+     * @param string $uri    ÐÐ´Ñ€ÐµÑÑ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°
+     * @param array  $req    POST Ð´Ð°Ð½Ð½Ñ‹Ðµ ÐµÑÐ»Ð¸ ÐµÑÑ‚ÑŒ
+     * @param $method        ÐœÐµÑ‚Ð¾Ð´ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° (Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ POST)
      * @return mixed
      */
     public function request($uri, $req = array(), $method = HTTP_Request2::METHOD_POST) {
@@ -315,7 +315,7 @@ class API_Webmoney extends API_OAuth
     }
 
     /**
-     * Ïîëó÷åíèå êëþ÷à äîñòóïà
+     * ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ðµ ÐºÐ»ÑŽÑ‡Ð° Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð°
      *
      */
     public function initAccessToken() {
@@ -333,7 +333,7 @@ class API_Webmoney extends API_OAuth
     }
 
     /**
-     * Echo-çàïðîñû äëÿ ïðîâåðêè ðàáîòû ñåðâåðà ïàðòíåðîâ
+     * Echo-Ð·Ð°Ð¿Ñ€Ð¾ÑÑ‹ Ð´Ð»Ñ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ¸ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ ÑÐµÑ€Ð²ÐµÑ€Ð° Ð¿Ð°Ñ€Ñ‚Ð½ÐµÑ€Ð¾Ð²
      *
      * @return array
      */
@@ -347,10 +347,10 @@ class API_Webmoney extends API_OAuth
     }
 
     /**
-     * Çàïðîñ ñîçäàíèÿ ïëàòåæà
+     * Ð—Ð°Ð¿Ñ€Ð¾Ñ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ Ð¿Ð»Ð°Ñ‚ÐµÐ¶Ð°
      *
-     * @param $sum          Ñóììà ïëàòåæà
-     * @param $account      Êëàññ àêêàóíòà
+     * @param $sum          Ð¡ÑƒÐ¼Ð¼Ð° Ð¿Ð»Ð°Ñ‚ÐµÐ¶Ð°
+     * @param $account      ÐšÐ»Ð°ÑÑ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð°
      * @return array
      */
     public function requestPayment($sum, $accountId) {
@@ -363,7 +363,7 @@ class API_Webmoney extends API_OAuth
             'amount'                    => round($sum, 2),
             'currency'                  => 'RUB',
             'custom'                    => array('PAYMENT_BILL_NO' => $accountId),
-            'description'               => iconv('CP1251', 'UTF-8', "Îïëàòà çà óñëóãè ñàéòà www.free-lance.ru, â òîì ÷èñëå ÍÄÑ - 18%. Ñ÷åò #{$accountId}.") //PAYMENT_BILL_NO={$accountId}
+            'description'               => iconv('CP1251', 'UTF-8', "ÐžÐ¿Ð»Ð°Ñ‚Ð° Ð·Ð° ÑƒÑÐ»ÑƒÐ³Ð¸ ÑÐ°Ð¹Ñ‚Ð° www.free-lance.ru, Ð² Ñ‚Ð¾Ð¼ Ñ‡Ð¸ÑÐ»Ðµ ÐÐ”Ð¡ - 18%. Ð¡Ñ‡ÐµÑ‚ #{$accountId}.") //PAYMENT_BILL_NO={$accountId}
         );
 //        if($this->isDebug()) {
 //            $post['test_payment'] = 'true';
@@ -375,10 +375,10 @@ class API_Webmoney extends API_OAuth
     }
 
     /**
-     * Ïîäòâåðæäåíèå ïëàòåæà
+     * ÐŸÐ¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ðµ Ð¿Ð»Ð°Ñ‚ÐµÐ¶Ð°
      *
-     * @param $transaction_id   Èäåíòèôèêàòîð íàøåé òðàíçàêöèè
-     * @param $request_id       Èäåíòèôèêàòîð çàïðîñà, ïîëó÷åííûé èç îòâåòà ìåòîäà self::requestPayment()
+     * @param $transaction_id   Ð˜Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€ Ð½Ð°ÑˆÐµÐ¹ Ñ‚Ñ€Ð°Ð½Ð·Ð°ÐºÑ†Ð¸Ð¸
+     * @param $request_id       Ð˜Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°, Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð½Ñ‹Ð¹ Ð¸Ð· Ð¾Ñ‚Ð²ÐµÑ‚Ð° Ð¼ÐµÑ‚Ð¾Ð´Ð° self::requestPayment()
      * @return array
      */
     public function processPayment($transaction_id, $request_id) {
@@ -395,10 +395,10 @@ class API_Webmoney extends API_OAuth
     }
 
     /**
-     * Çàïðîñ îòìåíû ïëàòåæà (åñëè èñõîäíàÿ òðàíçàêöèÿ íå çàâåðøåíà)
+     * Ð—Ð°Ð¿Ñ€Ð¾Ñ Ð¾Ñ‚Ð¼ÐµÐ½Ñ‹ Ð¿Ð»Ð°Ñ‚ÐµÐ¶Ð° (ÐµÑÐ»Ð¸ Ð¸ÑÑ…Ð¾Ð´Ð½Ð°Ñ Ñ‚Ñ€Ð°Ð½Ð·Ð°ÐºÑ†Ð¸Ñ Ð½Ðµ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð°)
      *
-     * @param $request_id       Èäåíòèôèêàòîð çàïðîñà, ïîëó÷åííûé èç îòâåòà ìåòîäà self::requestPayment()
-     * @param $transaction_id   Èäåíòèôèêàòîð íàøåé òðàíçàêöèè
+     * @param $request_id       Ð˜Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°, Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð½Ñ‹Ð¹ Ð¸Ð· Ð¾Ñ‚Ð²ÐµÑ‚Ð° Ð¼ÐµÑ‚Ð¾Ð´Ð° self::requestPayment()
+     * @param $transaction_id   Ð˜Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€ Ð½Ð°ÑˆÐµÐ¹ Ñ‚Ñ€Ð°Ð½Ð·Ð°ÐºÑ†Ð¸Ð¸
      * @return array
      */
     public function refund($request_id, $transaction_id) {
@@ -414,7 +414,7 @@ class API_Webmoney extends API_OAuth
         return $this->getBodyArray($resp);
     }
 
-    // @todo óçíàòü êàê ïðîâåðèòü òîêåí
+    // @todo ÑƒÐ·Ð½Ð°Ñ‚ÑŒ ÐºÐ°Ðº Ð¿Ñ€Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÑŒ Ñ‚Ð¾ÐºÐµÐ½
     public function checkToken() {
         //$info = $this->accountInfo();
         return true;

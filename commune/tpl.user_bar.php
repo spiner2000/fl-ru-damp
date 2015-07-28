@@ -1,22 +1,22 @@
 <? if ($top['close_comments'] == 't') { ?>
     <li class="b-post__links-item b-post__links-item_padleft_10">
-        <a href="<?=getFriendlyURL('commune', $msg_id)?><?= ($page>1?'?bp='.$page : '')?>">Комментирование закрыто</a>
+        <a href="<?=getFriendlyURL('commune', $msg_id)?><?= ($page>1?'?bp='.$page : '')?>">РљРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ Р·Р°РєСЂС‹С‚Рѕ</a>
     </li>
 <? } else { 
     $unread = $top['a_count']-1 - $top['current_count'];
 ?>
     <li class="b-post__links-item b-post__links-item_padleft_10">
         <a class="b-post__link b-post__link" href="<?=getFriendlyURL('commune', $msg_id)?><?= ($page>1?'?bp='.$page : '') ?>">
-            <?= ($top['a_count'] - 1)." ".ending($top['a_count'] - 1, комментарий, комментария, комментариев)  ?>
+            <?= ($top['a_count'] - 1)." ".ending($top['a_count'] - 1, РєРѕРјРјРµРЅС‚Р°СЂРёР№, РєРѕРјРјРµРЅС‚Р°СЂРёСЏ, РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ)  ?>
         </a>
         <? if(intval($top['a_users_count'])) { ?>
-        &nbsp;(от <?= $top['a_users_count']." ".ending($top['a_users_count'], пользователя, пользователей, пользователей)  ?>)
+        &nbsp;(РѕС‚ <?= $top['a_users_count']." ".ending($top['a_users_count'], РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№)  ?>)
         <? } ?>
     </li>
     <? if ($unread > 0 && get_uid(false) && $unread != ($top['a_count'] - 1)) { ?>
     <li class="b-post__links-item b-post__links-item_padleft_10">
         <a class="b-post__link b-post__link_color_6db335" href="<?=getFriendlyURL('commune', $msg_id)?><?= ($om ? '?om='.$om : '') ?>#unread">
-            <?= $unread." ".ending($unread, новый, новых, новых)  ?>
+            <?= $unread." ".ending($unread, РЅРѕРІС‹Р№, РЅРѕРІС‹С…, РЅРѕРІС‹С…)  ?>
         </a>
     </li>
     <? } ?>

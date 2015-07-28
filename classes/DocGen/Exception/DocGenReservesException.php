@@ -4,26 +4,26 @@ require_once('DocGenException.php');
 
 class DocGenReservesException extends DocGenException
 {
-    const BANK_INVOICE_ERROR_MSG       = 'счета на оплату';
+    const BANK_INVOICE_ERROR_MSG       = 'СЃС‡РµС‚Р° РЅР° РѕРїР»Р°С‚Сѓ';
     
-    const ACT_COMPLETED_FRL_ERROR_MSG  = 'акта о выполнении работы Исполнителем';
-    const ACT_SERVICE_EMP_ERROR_MSG    = 'aктa об оказании услуг Заказчику';
-    const AGENT_REPORT_ERROR_MSG       = 'отчета агента по Договору';
+    const ACT_COMPLETED_FRL_ERROR_MSG  = 'Р°РєС‚Р° Рѕ РІС‹РїРѕР»РЅРµРЅРёРё СЂР°Р±РѕС‚С‹ РСЃРїРѕР»РЅРёС‚РµР»РµРј';
+    const ACT_SERVICE_EMP_ERROR_MSG    = 'aРєС‚a РѕР± РѕРєР°Р·Р°РЅРёРё СѓСЃР»СѓРі Р—Р°РєР°Р·С‡РёРєСѓ';
+    const AGENT_REPORT_ERROR_MSG       = 'РѕС‚С‡РµС‚Р° Р°РіРµРЅС‚Р° РїРѕ Р”РѕРіРѕРІРѕСЂСѓ';
     
-    const RESERVE_OFFER_CONTRACT_ERROR_MSG  = 'документа договора';
-    const RESERVE_OFFER_AGREEMENT_ERROR_MSG = 'документа соглашения';
+    const RESERVE_OFFER_CONTRACT_ERROR_MSG  = 'РґРѕРєСѓРјРµРЅС‚Р° РґРѕРіРѕРІРѕСЂР°';
+    const RESERVE_OFFER_AGREEMENT_ERROR_MSG = 'РґРѕРєСѓРјРµРЅС‚Р° СЃРѕРіР»Р°С€РµРЅРёСЏ';
     
-    const LETTER_FRL_ERROR_MSG       = 'информационного письма Исполнителю';
+    const LETTER_FRL_ERROR_MSG       = 'РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРіРѕ РїРёСЃСЊРјР° РСЃРїРѕР»РЅРёС‚РµР»СЋ';
     
-    const ARBITRAGE_REPORT_ERROR_MSG    = 'отчета об арбитражном рассмотрении';
+    const ARBITRAGE_REPORT_ERROR_MSG    = 'РѕС‚С‡РµС‚Р° РѕР± Р°СЂР±РёС‚СЂР°Р¶РЅРѕРј СЂР°СЃСЃРјРѕС‚СЂРµРЅРёРё';
     
-    const RESERVE_FACTURA_ERROR_MSG     = 'счет-фактуры';
+    const RESERVE_FACTURA_ERROR_MSG     = 'СЃС‡РµС‚-С„Р°РєС‚СѓСЂС‹';
     
-    const RESERVE_SPECIFICATION_ERROR_MSG     = 'технического задания';
+    const RESERVE_SPECIFICATION_ERROR_MSG     = 'С‚РµС…РЅРёС‡РµСЃРєРѕРіРѕ Р·Р°РґР°РЅРёСЏ';
     
     /**
-     * @todo: А если сделать проще и писать Ошибка при формировании документа: "Бла бля".?
-     * Тогда тут нужно перебить конструктор и собирать там полную строку а в модели передавать
-     * просто название документа.
+     * @todo: Рђ РµСЃР»Рё СЃРґРµР»Р°С‚СЊ РїСЂРѕС‰Рµ Рё РїРёСЃР°С‚СЊ РћС€РёР±РєР° РїСЂРё С„РѕСЂРјРёСЂРѕРІР°РЅРёРё РґРѕРєСѓРјРµРЅС‚Р°: "Р‘Р»Р° Р±Р»СЏ".?
+     * РўРѕРіРґР° С‚СѓС‚ РЅСѓР¶РЅРѕ РїРµСЂРµР±РёС‚СЊ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Рё СЃРѕР±РёСЂР°С‚СЊ С‚Р°Рј РїРѕР»РЅСѓСЋ СЃС‚СЂРѕРєСѓ Р° РІ РјРѕРґРµР»Рё РїРµСЂРµРґР°РІР°С‚СЊ
+     * РїСЂРѕСЃС‚Рѕ РЅР°Р·РІР°РЅРёРµ РґРѕРєСѓРјРµРЅС‚Р°.
      */
 }

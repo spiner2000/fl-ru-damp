@@ -1,13 +1,13 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/search/search_element.php";
 /**
- * Класс для поиска по работам
+ * РљР»Р°СЃСЃ РґР»СЏ РїРѕРёСЃРєР° РїРѕ СЂР°Р±РѕС‚Р°Рј
  *
  */
 class searchElementWorks extends searchElement
 {
-    public $name = 'Работы';
-    public $totalwords = array('работа', 'работы', 'работ');
+    public $name = 'Р Р°Р±РѕС‚С‹';
+    public $totalwords = array('СЂР°Р±РѕС‚Р°', 'СЂР°Р±РѕС‚С‹', 'СЂР°Р±РѕС‚');
     public $layout = self::LAYOUT_BLOCK;
     protected $_sort = SPH_SORT_EXTENDED;
     protected $_sortby = 'is_pro DESC, post_time DESC';
@@ -63,7 +63,7 @@ class searchElementWorks extends searchElement
                     $html[$key] .= '<div style="text-align:left;padding-top:4px;"><a href="/users/' . $value['login'] . '/viewproj.php?prjid=' . $value['id'] . '" target="_blank" class="blue" style="font-weight: bold;">' . $name . '</a></div>';
                     $html[$key] .= '<div style="text-align:left;padding-top:4px;">' . reformat($descr, 36, 0, 1) . '</div>';
                 }
-                $html[$key] .= '<div class="little" style="margin-top: 4px;">Автор: ';
+                $html[$key] .= '<div class="little" style="margin-top: 4px;">РђРІС‚РѕСЂ: ';
                 if ($value['user_id'] > 0) {
                     $html[$key] .= '[<a href="/users/' . $value['login'] . '/" title="' . $value['uname'] . ' ' . $value['usurname'] . '" class="black">' . $login . '</a>]';
                 } else {

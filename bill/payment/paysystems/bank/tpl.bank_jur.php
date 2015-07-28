@@ -1,4 +1,4 @@
-<h2 class="b-layout__title b-layout__title_padbot_30">Оплата через банковский перевод <span class="b-layout__bold">Б-<?=$bill->acc['id']?>-<?=($bill->pm->billNum+1)?></span></h2>
+<h2 class="b-layout__title b-layout__title_padbot_30">РћРїР»Р°С‚Р° С‡РµСЂРµР· Р±Р°РЅРєРѕРІСЃРєРёР№ РїРµСЂРµРІРѕРґ <span class="b-layout__bold">Р‘-<?=$bill->acc['id']?>-<?=($bill->pm->billNum+1)?></span></h2>
 
 <form id="<?= $type_payment ?>" name="<?= $type_payment ?>" method="POST" action="<?= "/bill/payment/?type={$type_payment}"?>">
     <input type="hidden" name="action" value="payment"/>
@@ -8,7 +8,7 @@
         <tbody>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Название организации</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">РќР°Р·РІР°РЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10 b-layout__td_width_240">
                     <div class="b-combo">
@@ -20,7 +20,7 @@
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Телефон</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">РўРµР»РµС„РѕРЅ</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10 b-layout__td_width_240">
                     <div class="b-combo">
@@ -32,7 +32,7 @@
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Электронная почта</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Р­Р»РµРєС‚СЂРѕРЅРЅР°СЏ РїРѕС‡С‚Р°</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10 b-layout__td_width_240">
                     <div class="b-combo">
@@ -44,31 +44,31 @@
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Страна</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">РЎС‚СЂР°РЅР°</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10 b-layout__td_width_240">
                     <div class="b-combo">
-                        <div class="b-combo__input  <?= $bill->error['country_id'] ? "b-combo__input_error" : ""?> b-combo__input_multi_dropdown  b-combo__input_width_270 b-combo__input_resize b-combo__input_arrow_yes  b-combo__input_on_load_request_id_getrelevantcountries all_value_id_0_0_Все+страны exclude_value_1_0 drop_down_default_<?= $bill->pm->country_id ? $bill->pm->country_id : 0?> multi_drop_down_default_column_0">
-                            <input class="b-combo__input-text  js-payform_input <?= $bill->pm->country_id ? '' : 'b-combo__input-text_color_67' ?>" name="country" id="country" onchange="loadCities()" type="text" size="80" value="<?= $bill->pm->country ? $bill->pm->country : "Выберите из списка"?>"><span class="b-combo__arrow"></span>
+                        <div class="b-combo__input  <?= $bill->error['country_id'] ? "b-combo__input_error" : ""?> b-combo__input_multi_dropdown  b-combo__input_width_270 b-combo__input_resize b-combo__input_arrow_yes  b-combo__input_on_load_request_id_getrelevantcountries all_value_id_0_0_Р’СЃРµ+СЃС‚СЂР°РЅС‹ exclude_value_1_0 drop_down_default_<?= $bill->pm->country_id ? $bill->pm->country_id : 0?> multi_drop_down_default_column_0">
+                            <input class="b-combo__input-text  js-payform_input <?= $bill->pm->country_id ? '' : 'b-combo__input-text_color_67' ?>" name="country" id="country" onchange="loadCities()" type="text" size="80" value="<?= $bill->pm->country ? $bill->pm->country : "Р’С‹Р±РµСЂРёС‚Рµ РёР· СЃРїРёСЃРєР°"?>"><span class="b-combo__arrow"></span>
                         </div>
                     </div>
                 </td>
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Город</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Р“РѕСЂРѕРґ</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10 b-layout__td_width_240">
                     <div class="b-combo">
-                        <div class="b-combo__input  <?= $bill->error['city_id'] ? "b-combo__input_error" : ""?> b-combo__input_multi_dropdown  b-combo__input_width_270 b-combo__input_resize b-combo__input_arrow_yes  b-combo__input_max-width_450 all_value_id_0_0_Все+города drop_down_default_<?= $bill->pm->city_id ? $bill->pm->city_id : 0?> multi_drop_down_default_column_0 <?= $country_id > 0 ? "b-combo__input_on_load_request_id_getcitiesbyid?id=".$bill->pm->country : "" ?>">
-                            <input class="b-combo__input-text  js-payform_input <?= $bill->pm->city_id ? '' : 'b-combo__input-text_color_67' ?>" name="city" id="city" type="text" size="80" value="<?= $bill->pm->city ? $bill->pm->city: "Выберите из списка"?>"><span class="b-combo__arrow"></span>
+                        <div class="b-combo__input  <?= $bill->error['city_id'] ? "b-combo__input_error" : ""?> b-combo__input_multi_dropdown  b-combo__input_width_270 b-combo__input_resize b-combo__input_arrow_yes  b-combo__input_max-width_450 all_value_id_0_0_Р’СЃРµ+РіРѕСЂРѕРґР° drop_down_default_<?= $bill->pm->city_id ? $bill->pm->city_id : 0?> multi_drop_down_default_column_0 <?= $country_id > 0 ? "b-combo__input_on_load_request_id_getcitiesbyid?id=".$bill->pm->country : "" ?>">
+                            <input class="b-combo__input-text  js-payform_input <?= $bill->pm->city_id ? '' : 'b-combo__input-text_color_67' ?>" name="city" id="city" type="text" size="80" value="<?= $bill->pm->city ? $bill->pm->city: "Р’С‹Р±РµСЂРёС‚Рµ РёР· СЃРїРёСЃРєР°"?>"><span class="b-combo__arrow"></span>
                         </div>
                     </div>
                 </td>
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Почтовый индекс</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">РџРѕС‡С‚РѕРІС‹Р№ РёРЅРґРµРєСЃ</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10 b-layout__td_width_240">
                     <div class="b-combo">
@@ -80,7 +80,7 @@
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Почтовый адрес</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">РџРѕС‡С‚РѕРІС‹Р№ Р°РґСЂРµСЃ</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10 b-layout__td_width_240">
                     <div class="b-combo">
@@ -92,7 +92,7 @@
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">ИНН</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">РРќРќ</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10 b-layout__td_width_240">
                     <div class="b-combo">
@@ -101,13 +101,13 @@
                         </div>
                     </div>
                     <? if ($bill->pm->country_id != 1) { ?>
-                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_3">Укажите по желанию</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_3">РЈРєР°Р¶РёС‚Рµ РїРѕ Р¶РµР»Р°РЅРёСЋ</div>
                     <? } ?>
                 </td>
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Полное название организации</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">РџРѕР»РЅРѕРµ РЅР°Р·РІР°РЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10 b-layout__td_width_240">
                     <div class="b-combo">
@@ -119,7 +119,7 @@
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Юридический адрес</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Р®СЂРёРґРёС‡РµСЃРєРёР№ Р°РґСЂРµСЃ</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10 b-layout__td_width_240">
                     <div class="b-combo">
@@ -131,7 +131,7 @@
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Расчетный счет</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Р Р°СЃС‡РµС‚РЅС‹Р№ СЃС‡РµС‚</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10 b-layout__td_width_240">
                     <div class="b-combo">
@@ -139,12 +139,12 @@
                             <input class="b-combo__input-text js-payform_input" name="bank_rs"  id="bank_rs" type="text" size="80" value="<?=stripslashes(($bill->pm->bank_rs))?>">
                         </div>
                     </div>
-                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_3">Укажите по желанию</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_3">РЈРєР°Р¶РёС‚Рµ РїРѕ Р¶РµР»Р°РЅРёСЋ</div>
                 </td>
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Название банка</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">РќР°Р·РІР°РЅРёРµ Р±Р°РЅРєР°</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10 b-layout__td_width_240">
                     <div class="b-combo">
@@ -152,12 +152,12 @@
                             <input class="b-combo__input-text js-payform_input" name="bank_name" id="bank_name" type="text" size="80" value="<?=stripslashes(($bill->pm->bank_name))?>" >
                         </div>
                     </div>
-                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_3">Укажите по желанию</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_3">РЈРєР°Р¶РёС‚Рµ РїРѕ Р¶РµР»Р°РЅРёСЋ</div>
                 </td>
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3 js-payform_input">Корреспондентский счет</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3 js-payform_input">РљРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС‚СЃРєРёР№ СЃС‡РµС‚</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10 b-layout__td_width_240">
                     <div class="b-combo">
@@ -165,15 +165,15 @@
                             <input class="b-combo__input-text" name="bank_ks" id="bank_ks" type="text" size="80" value="<?=stripslashes(($bill->pm->bank_ks))?>">
                         </div>
                     </div>
-                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_3">Укажите по желанию</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_3">РЈРєР°Р¶РёС‚Рµ РїРѕ Р¶РµР»Р°РЅРёСЋ</div>
                 </td>
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td" colspan="2">
                     <div class="b-fon b-fon_bg_fff9bf b-fon_pad_10 b-fon_padleft_35">
-                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold"><span class="b-icon b-icon_sbr_oattent b-icon_margleft_-20"></span>Обратите внимание</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_11">— Период зачисления средств — до 7 рабочих дней.<br>— Банковский перевод для юридических лиц и ИП.</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_11">— Минимальная сумма платежа 10 рублей.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold"><span class="b-icon b-icon_sbr_oattent b-icon_margleft_-20"></span>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_11">вЂ” РџРµСЂРёРѕРґ Р·Р°С‡РёСЃР»РµРЅРёСЏ СЃСЂРµРґСЃС‚РІ вЂ” РґРѕ 7 СЂР°Р±РѕС‡РёС… РґРЅРµР№.<br>вЂ” Р‘Р°РЅРєРѕРІСЃРєРёР№ РїРµСЂРµРІРѕРґ РґР»СЏ СЋСЂРёРґРёС‡РµСЃРєРёС… Р»РёС† Рё РРџ.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_11">вЂ” РњРёРЅРёРјР°Р»СЊРЅР°СЏ СЃСѓРјРјР° РїР»Р°С‚РµР¶Р° 10 СЂСѓР±Р»РµР№.</div>
                     </div>
                     <? $disabled = ($payment_sum < 10); ?>
                     <? include ( $_SERVER['DOCUMENT_ROOT'] . "/bill/payment/paysystems/tpl.button_buy.php");?>                       

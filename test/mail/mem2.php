@@ -30,7 +30,7 @@ $profiler->start('fill_frl_mem');
 
 
 //------------------------------------------------------------------------------
-//Обьем занимаемый 1 милионом записей (пожатые скорей всего)
+//РћР±СЊРµРј Р·Р°РЅРёРјР°РµРјС‹Р№ 1 РјРёР»РёРѕРЅРѕРј Р·Р°РїРёСЃРµР№ (РїРѕР¶Р°С‚С‹Рµ СЃРєРѕСЂРµР№ РІСЃРµРіРѕ)
 //http://monosnap.com/image/Av6zqOhHG5XTTu1jee4tIstCLkn7WY.png
 //http://monosnap.com/image/uvvNljrvWdaAqKcyECSawSeKzm5xCR.png
 //http://monosnap.com/image/XnPzZYgfbqvJwGKMdH3TEJzxWLnNwb.png

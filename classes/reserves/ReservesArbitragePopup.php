@@ -2,7 +2,7 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/template.php');
 
 /**
- * Попап обращения в арбитраж
+ * РџРѕРїР°Рї РѕР±СЂР°С‰РµРЅРёСЏ РІ Р°СЂР±РёС‚СЂР°Р¶
  */
 class ReservesArbitragePopup {
     

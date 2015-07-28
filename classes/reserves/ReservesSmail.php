@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  Класс для работы с уведомлениями при резервировании средств.
+ *  РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СѓРІРµРґРѕРјР»РµРЅРёСЏРјРё РїСЂРё СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРё СЃСЂРµРґСЃС‚РІ.
  *
  */
 
@@ -14,7 +14,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/classes/smail.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/reserves/ReservesSms.php';
 
 /**
- * Директория шаблонов писем
+ * Р”РёСЂРµРєС‚РѕСЂРёСЏ С€Р°Р±Р»РѕРЅРѕРІ РїРёСЃРµРј
  */
 define('RESERVES_TPL_MAIL_PATH', $_SERVER['DOCUMENT_ROOT'] . '/templates/mail/reserves/');
 define('RESERVES_TPL_BASE_LAYOUT', 'layout.tpl.php');
@@ -37,10 +37,10 @@ class ReservesSmail extends smail
     }
     
     /**
-     * Скрываем вызов некоторых методов чтобы при их вызове проверить 
-     * в каком окружении запускается рассылка и если на локале то игнорим ее
+     * РЎРєСЂС‹РІР°РµРј РІС‹Р·РѕРІ РЅРµРєРѕС‚РѕСЂС‹С… РјРµС‚РѕРґРѕРІ С‡С‚РѕР±С‹ РїСЂРё РёС… РІС‹Р·РѕРІРµ РїСЂРѕРІРµСЂРёС‚СЊ 
+     * РІ РєР°РєРѕРј РѕРєСЂСѓР¶РµРЅРёРё Р·Р°РїСѓСЃРєР°РµС‚СЃСЏ СЂР°СЃСЃС‹Р»РєР° Рё РµСЃР»Рё РЅР° Р»РѕРєР°Р»Рµ С‚Рѕ РёРіРЅРѕСЂРёРј РµРµ
      * 
-     * @todo: Если мешает достаточно закоментить проверку на лакальность ;)
+     * @todo: Р•СЃР»Рё РјРµС€Р°РµС‚ РґРѕСЃС‚Р°С‚РѕС‡РЅРѕ Р·Р°РєРѕРјРµРЅС‚РёС‚СЊ РїСЂРѕРІРµСЂРєСѓ РЅР° Р»Р°РєР°Р»СЊРЅРѕСЃС‚СЊ ;)
      * 
      * @param string $method
      * @param type $arguments
@@ -61,7 +61,7 @@ class ReservesSmail extends smail
     
     
     /**
-     * Инициализация или получение аттрибутов класса
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РёР»Рё РїРѕР»СѓС‡РµРЅРёРµ Р°С‚С‚СЂРёР±СѓС‚РѕРІ РєР»Р°СЃСЃР°
      * 
      * @param array $attributes
      * @return type
@@ -152,7 +152,7 @@ class ReservesSmail extends smail
     
     
     /**
-     * Уведомление о подозрительной сделке
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ Рѕ РїРѕРґРѕР·СЂРёС‚РµР»СЊРЅРѕР№ СЃРґРµР»РєРµ
      * 
      * @param type $orderObj
      * @return boolean
@@ -191,7 +191,7 @@ class ReservesSmail extends smail
 
 
    /**
-     * Уведомить участников сделки об успешном резервировании средств.
+     * РЈРІРµРґРѕРјРёС‚СЊ СѓС‡Р°СЃС‚РЅРёРєРѕРІ СЃРґРµР»РєРё РѕР± СѓСЃРїРµС€РЅРѕРј СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРё СЃСЂРµРґСЃС‚РІ.
      * 
      * @return boolean
      */
@@ -216,10 +216,10 @@ class ReservesSmail extends smail
 
 
     /**
-     * Отправляем письма уведомления о создании арбитража заказчику или исполнителю.
+     * РћС‚РїСЂР°РІР»СЏРµРј РїРёСЃСЊРјР° СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ СЃРѕР·РґР°РЅРёРё Р°СЂР±РёС‚СЂР°Р¶Р° Р·Р°РєР°Р·С‡РёРєСѓ РёР»Рё РёСЃРїРѕР»РЅРёС‚РµР»СЋ.
      * 
      * @param array $order
-     * @param bool $is_emp От кого поступила заявка
+     * @param bool $is_emp РћС‚ РєРѕРіРѕ РїРѕСЃС‚СѓРїРёР»Р° Р·Р°СЏРІРєР°
      * @return boolean
      */
     public function _onNewArbitrage($order, $is_emp = false)
@@ -227,7 +227,7 @@ class ReservesSmail extends smail
         if(empty($order)) return FALSE;
         
         $uid = $is_emp ? @$order['frl_id'] : @$order['emp_id'];
-        //@todo: если тут входные данные по заказу то там должны быть данные юзеров
+        //@todo: РµСЃР»Рё С‚СѓС‚ РІС…РѕРґРЅС‹Рµ РґР°РЅРЅС‹Рµ РїРѕ Р·Р°РєР°Р·Сѓ С‚Рѕ С‚Р°Рј РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РґР°РЅРЅС‹Рµ СЋР·РµСЂРѕРІ
         $user = new users();
         $user->GetUserByUID((int) $uid);
         if(!$user->uid) return FALSE;
@@ -245,7 +245,7 @@ class ReservesSmail extends smail
 
         $ret = $this->send('text/html');
         
-        //Сообщение СМС
+        //РЎРѕРѕР±С‰РµРЅРёРµ РЎРњРЎ
         $status = $is_emp ? ReservesSms::STATUS_NEW_ARBITRAGE_FRL : ReservesSms::STATUS_NEW_ARBITRAGE_EMP;
         ReservesSms::model($uid)->sendByStatus($status, $order['id']);
         
@@ -253,17 +253,17 @@ class ReservesSmail extends smail
     }
     
     /**
-     * Отправляем письма уведомления об отмене арбитража заказчику и исполнителю.
+     * РћС‚РїСЂР°РІР»СЏРµРј РїРёСЃСЊРјР° СѓРІРµРґРѕРјР»РµРЅРёСЏ РѕР± РѕС‚РјРµРЅРµ Р°СЂР±РёС‚СЂР°Р¶Р° Р·Р°РєР°Р·С‡РёРєСѓ Рё РёСЃРїРѕР»РЅРёС‚РµР»СЋ.
      * 
-     * @param array $order Заказ
+     * @param array $order Р—Р°РєР°Р·
      * @return boolean
      */
     protected function _onRemoveArbitrage($order) 
     {
         if(empty($order)) return FALSE;
         
-        //Уведомления заказчику
-        //@todo: если тут входные данные по заказу то там должны быть данные юзеров
+        //РЈРІРµРґРѕРјР»РµРЅРёСЏ Р·Р°РєР°Р·С‡РёРєСѓ
+        //@todo: РµСЃР»Рё С‚СѓС‚ РІС…РѕРґРЅС‹Рµ РґР°РЅРЅС‹Рµ РїРѕ Р·Р°РєР°Р·Сѓ С‚Рѕ С‚Р°Рј РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РґР°РЅРЅС‹Рµ СЋР·РµСЂРѕРІ
         $user = new employer();
         $user->GetUserByUID((int)@$order['emp_id']);
         if(!$user->uid) return FALSE;
@@ -281,7 +281,7 @@ class ReservesSmail extends smail
         $ret1 = $this->send('text/html');        
         ReservesSms::model($user->uid)->sendByStatus(ReservesSms::STATUS_CANCEL_ARBITRAGE_EMP, $order['id']);
         
-        //Уведомления исполнителю
+        //РЈРІРµРґРѕРјР»РµРЅРёСЏ РёСЃРїРѕР»РЅРёС‚РµР»СЋ
         $user = new freelancer();
         $user->GetUserByUID((int)@$order['frl_id']);
         if(!$user->uid) return FALSE;
@@ -303,9 +303,9 @@ class ReservesSmail extends smail
     }
     
     /**
-     * Отправляем письма уведомления об отмене арбитража заказчику и исполнителю.
+     * РћС‚РїСЂР°РІР»СЏРµРј РїРёСЃСЊРјР° СѓРІРµРґРѕРјР»РµРЅРёСЏ РѕР± РѕС‚РјРµРЅРµ Р°СЂР±РёС‚СЂР°Р¶Р° Р·Р°РєР°Р·С‡РёРєСѓ Рё РёСЃРїРѕР»РЅРёС‚РµР»СЋ.
      * 
-     * @param array $order Заказ
+     * @param array $order Р—Р°РєР°Р·
      * @return boolean
      */
     protected function _onApplyArbitrage($order, $price) {
@@ -313,7 +313,7 @@ class ReservesSmail extends smail
         
         $priceBack = $order['reserve_data']['price'] - $price;
         
-        //Уведомления заказчику
+        //РЈРІРµРґРѕРјР»РµРЅРёСЏ Р·Р°РєР°Р·С‡РёРєСѓ
         $user = new employer();
         $user->GetUserByUID((int)@$order['emp_id']);
         if(!$user->uid) return FALSE;
@@ -333,7 +333,7 @@ class ReservesSmail extends smail
         $ret1 = $this->send('text/html');        
         ReservesSms::model($user->uid)->sendByStatusAndPrice(ReservesSms::STATUS_APPLY_ARBITRAGE_EMP, $price, $priceBack, $order['id']);
         
-        //Уведомления исполнителю
+        //РЈРІРµРґРѕРјР»РµРЅРёСЏ РёСЃРїРѕР»РЅРёС‚РµР»СЋ
         $user = new freelancer();
         $user->GetUserByUID((int)@$order['frl_id']);
         if(!$user->uid) return FALSE;
@@ -357,8 +357,8 @@ class ReservesSmail extends smail
     }
 
     /**
-     * Форматтер имени юзера
-     * @todo Не лучшее место для этого?
+     * Р¤РѕСЂРјР°С‚С‚РµСЂ РёРјРµРЅРё СЋР·РµСЂР°
+     * @todo РќРµ Р»СѓС‡С€РµРµ РјРµСЃС‚Рѕ РґР»СЏ СЌС‚РѕРіРѕ?
      * 
      * @param type $user
      * @param type $with_email

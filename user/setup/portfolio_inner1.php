@@ -38,7 +38,7 @@ var profnum = <?=$j?>;
 var pmin = -1; var pmax = -1;
 
 	function editprj(num, profid, whom){
-		ff.innerHTML = "<strong>Изменить работу</strong> <a href=\"#\" onclick=\"delprj();\">Удалить</a>";
+		ff.innerHTML = "<strong>РР·РјРµРЅРёС‚СЊ СЂР°Р±РѕС‚Сѓ</strong> <a href=\"#\" onclick=\"delprj();\">РЈРґР°Р»РёС‚СЊ</a>";
 		tedit.style.backgroundColor="#FFE5D5";
 		editform.style.visibility='visible';
 		j = 0;
@@ -67,7 +67,7 @@ var pmin = -1; var pmax = -1;
 	}
 	
 	function addprj(profid){
-		ff.innerHTML = "<strong>Добавить работу</strong>";
+		ff.innerHTML = "<strong>Р”РѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚Сѓ</strong>";
 		tedit.style.backgroundColor="#FFF7DD";
 		editform.style.visibility='visible';
 		viewprof(profid);
@@ -86,7 +86,7 @@ var pmin = -1; var pmax = -1;
 			pmax = i-1;
 			j++;
 			out += "<tr><td width=\"6\" height=\"20\"><img src=\"/images/ico_setup.gif\" alt=\"\" name=\"pi"+j+"\" id=\"pi"+j+"\" width=\"6\" height=\"9\" border=\"0\"></td>\
-			<td width=\"50\"><a href=\"#edit\" name=\"ap1"+j+"\" id=\"ap1"+j+"\" onClick=\"editprj("+i+","+profid+",this);\">Изменить</a></td>";
+			<td width=\"50\"><a href=\"#edit\" name=\"ap1"+j+"\" id=\"ap1"+j+"\" onClick=\"editprj("+i+","+profid+",this);\">РР·РјРµРЅРёС‚СЊ</a></td>";
 			if (profid != -1){
 				out +="<td align=\"right\"><img src=\"/images/ico_up.gif\" alt=\"\" width=\"9\" height=\"9\" border=\"0\" onClick=\"changepos("+i+", 'up', "+profid+");\"></td>\
 				<td><img src=\"/images/ico_down1.gif\" alt=\"\" width=\"9\" height=\"9\" border=\"0\" onClick=\"changepos("+i+", 'down', "+profid+");\"></td>";
@@ -101,16 +101,16 @@ var pmin = -1; var pmax = -1;
 		if (profid != -1){
 			out +="<tr>\
 				<td colspan=\"2\">&nbsp;</td>\
-				<td align=\"right\" colspan=\"3\"><a href=\"#\" id=\"possave\" onClick=\"preposchange();\" class=\"small\">Сохранить</a></td>\
+				<td align=\"right\" colspan=\"3\"><a href=\"#\" id=\"possave\" onClick=\"preposchange();\" class=\"small\">РЎРѕС…СЂР°РЅРёС‚СЊ</a></td>\
 				<td colspan=\"2\">&nbsp;</td>\
 			</tr>\
 			<tr>\
-				<td align=\"right\" colspan=\"7\" height=\"20\"><img src=\"/images/ico_plus.gif\" alt=\"\" width=\"9\" height=\"9\" border=\"0\">&nbsp;&nbsp;<a href=\"#edit\" onClick=\"addprj('"+profid+"');\">Добавить работу</a></td>\
+				<td align=\"right\" colspan=\"7\" height=\"20\"><img src=\"/images/ico_plus.gif\" alt=\"\" width=\"9\" height=\"9\" border=\"0\">&nbsp;&nbsp;<a href=\"#edit\" onClick=\"addprj('"+profid+"');\">Р”РѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚Сѓ</a></td>\
 			</tr>";
 		}
 		out += "</table>";
 		
-		if (profid == -1) { proflinkall.style.fontWeight = 'bold'; profname.innerHTML = "Все портфолио";}
+		if (profid == -1) { proflinkall.style.fontWeight = 'bold'; profname.innerHTML = "Р’СЃРµ РїРѕСЂС‚С„РѕР»РёРѕ";}
 		else {proflinkall.style.fontWeight = 'normal';}
 		for (i = 0; i<profnum; i++){
 			a = document.getElementById('proflink'+prof_ids[i]);
@@ -201,11 +201,11 @@ var pmin = -1; var pmax = -1;
 		<? } ?>
 		<tr>
 			<td width="11"><img src="/images/ico_down.gif" alt="" width="11" height="11" border="0"></td>
-			<td><a href="#" class="blue" id="proflinkall" onClick="viewprof(-1);">Все портфолио</a></td>
+			<td><a href="#" class="blue" id="proflinkall" onClick="viewprof(-1);">Р’СЃРµ РїРѕСЂС‚С„РѕР»РёРѕ</a></td>
 		</tr>
 		</table>
 	</td>
-	<td align="right" valign="top" style="padding-top: 4px;"><img src="/images/ico_setup.gif" alt="" width="6" height="9" border="0">&nbsp;&nbsp;<a href="../portfsetup/">Редактировать</a></td>
+	<td align="right" valign="top" style="padding-top: 4px;"><img src="/images/ico_setup.gif" alt="" width="6" height="9" border="0">&nbsp;&nbsp;<a href="../portfsetup/">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></td>
 	<td width="14">&nbsp;</td>
 </tr>
 <tr><td colspan="3" height="20">&nbsp;</td></tr>
@@ -237,24 +237,24 @@ var pmin = -1; var pmax = -1;
 <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFE5D5" class="edit" id="tedit">
 <tr>
 	<td rowspan="9" width="19">&nbsp;</td>
-	<td height="25" colspan="2" id="ff"><strong>Изменить работу</strong></td>
+	<td height="25" colspan="2" id="ff"><strong>РР·РјРµРЅРёС‚СЊ СЂР°Р±РѕС‚Сѓ</strong></td>
 	<td rowspan="9" width="19">&nbsp;</td>
 </tr>
 <tr>
-	<td height="20" valign="bottom" colspan="2">Название</td>
+	<td height="20" valign="bottom" colspan="2">РќР°Р·РІР°РЅРёРµ</td>
 </tr>
 <tr>
 	<td width="390" height="25"><input type="text" name="pname" class="wdh100"></td>
-	<td width="80" align="right">54 символа</td>
+	<td width="80" align="right">54 СЃРёРјРІРѕР»Р°</td>
 </tr>
 <tr>
-	<td height="20" valign="bottom" colspan="2">Картинка</td>
+	<td height="20" valign="bottom" colspan="2">РљР°СЂС‚РёРЅРєР°</td>
 </tr>
 <tr>
 	<td height="25" colspan="2"><input type="hidden" name="MAX_FILE_SIZE" value="3145728"><input type="file" name="img" size="74"></td>
 </tr>
 <tr>
-	<td height="20" valign="bottom" colspan="2">Ссылка</td>
+	<td height="20" valign="bottom" colspan="2">РЎСЃС‹Р»РєР°</td>
 </tr>
 <tr>
 	<td height="25">
@@ -266,17 +266,17 @@ var pmin = -1; var pmax = -1;
 	<td>&nbsp;</td>
 </tr>
 <tr>
-	<td height="20" valign="bottom" colspan="2">Описание</td>
+	<td height="20" valign="bottom" colspan="2">РћРїРёСЃР°РЅРёРµ</td>
 </tr>
 <tr>
 	<td height="130"><textarea cols="74" rows="7" name="descr" class="wdh100"></textarea></td>
-	<td align="right">300 символов</td>
+	<td align="right">300 СЃРёРјРІРѕР»РѕРІ</td>
 </tr>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 	<td width="19" height="60">&nbsp;</td>
-	<td align="right"><input type="hidden" name="prof" value=""><input type="hidden" name="prjid" value=""><input type="hidden" name="action" value="portf_change"><input type="submit" name="btn" value="Сохранить"></td>
+	<td align="right"><input type="hidden" name="prof" value=""><input type="hidden" name="prjid" value=""><input type="hidden" name="action" value="portf_change"><input type="submit" name="btn" value="РЎРѕС…СЂР°РЅРёС‚СЊ"></td>
 	<td width="19">&nbsp;</td>
 </tr>
 </table>

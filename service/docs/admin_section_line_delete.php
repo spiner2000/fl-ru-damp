@@ -8,8 +8,8 @@
 </td>
 <th class="dg-remove-true">
     <span class="dg-remove">
-        <input onclick="xajax_DeleteSection(<?= $section['id']?>); return false;" type="button" value="Удалить" class="i-btn">&nbsp; <a href="#" onclick="xajax_GetSectionHTML(<?= $section['id']; ?>, <?= $num;?>); return false;" class="lnk-dot-666">Отменить</a>&nbsp;
+        <input onclick="xajax_DeleteSection(<?= $section['id']?>); return false;" type="button" value="РЈРґР°Р»РёС‚СЊ" class="i-btn">&nbsp; <a href="#" onclick="xajax_GetSectionHTML(<?= $section['id']; ?>, <?= $num;?>); return false;" class="lnk-dot-666">РћС‚РјРµРЅРёС‚СЊ</a>&nbsp;
     </span>
-    <span class="mc-g-o"><?= $num; ?>&nbsp;&nbsp; <a href=""><img src="/images/ico-e-u.png" alt="Редактировать"></a>&nbsp;&nbsp; <a href=""><img src="/images/btn-remove2.png" alt="Удалить"></a>&nbsp;&nbsp;</span>
+    <span class="mc-g-o"><?= $num; ?>&nbsp;&nbsp; <a href=""><img src="/images/ico-e-u.png" alt="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ"></a>&nbsp;&nbsp; <a href=""><img src="/images/btn-remove2.png" alt="РЈРґР°Р»РёС‚СЊ"></a>&nbsp;&nbsp;</span>
             <?= htmlspecialchars(hyphen_words($section['name'])); ?>
 </th>

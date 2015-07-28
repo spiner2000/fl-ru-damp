@@ -7,12 +7,12 @@ function CheckFlds() {
     var error = 0;
     <?php if(!$is_edit){ ?>
     if (op > ac_sum) {
-        $('error_buy').set('html', 'На вашем счету не хватает ' + (Math.ceil((op - ac_sum)*100)/100) + ' FM для покупки. <a id="no_money_link" href="/bill/">Пополнить счет</a>');
+        $('error_buy').set('html', 'РќР° РІР°С€РµРј СЃС‡РµС‚Сѓ РЅРµ С…РІР°С‚Р°РµС‚ ' + (Math.ceil((op - ac_sum)*100)/100) + ' FM РґР»СЏ РїРѕРєСѓРїРєРё. <a id="no_money_link" href="/bill/">РџРѕРїРѕР»РЅРёС‚СЊ СЃС‡РµС‚</a>');
         $('error_no_money').setStyle('display', 'block');
         error = 1;
     } 
     <?php } //if?>
-    var filled = $('button').hasClass('btn-filled') ? true : false; // была ли форма полностью заполнена
+    var filled = $('button').hasClass('btn-filled') ? true : false; // Р±С‹Р»Р° Р»Рё С„РѕСЂРјР° РїРѕР»РЅРѕСЃС‚СЊСЋ Р·Р°РїРѕР»РЅРµРЅР°
     if(($('f1').get('value').trim())=='') {
         if (filled)
         {
@@ -48,7 +48,7 @@ function CheckFlds() {
     return true;
 }
 function ClearErrorBox(id_error_box) {
-    if (!$('button').hasClass('btn-filled')) // если форма не была ни разу полностью заполнена
+    if (!$('button').hasClass('btn-filled')) // РµСЃР»Рё С„РѕСЂРјР° РЅРµ Р±С‹Р»Р° РЅРё СЂР°Р·Сѓ РїРѕР»РЅРѕСЃС‚СЊСЋ Р·Р°РїРѕР»РЅРµРЅР°
     {
         CheckFlds();
     }
@@ -65,7 +65,7 @@ function ClearErrorBox(id_error_box) {
 </script>
 <? include_once($_SERVER['DOCUMENT_ROOT'].'/filter_specs.php');?>
 <div class="lancer-public">
-    <h2><?= ($is_edit?"Редактирование предложения":"Публикация предложения"); ?></h2><br/>
+    <h2><?= ($is_edit?"Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ":"РџСѓР±Р»РёРєР°С†РёСЏ РїСЂРµРґР»РѕР¶РµРЅРёСЏ"); ?></h2><br/>
     <form action="/public/offer/" id="frl_offers" method="POST" onsubmit="return false;">
         <?php if(!$is_edit) { ?>
         <input type="hidden" name="action" value="create">
@@ -78,46 +78,46 @@ function ClearErrorBox(id_error_box) {
         <fieldset>
             <div class="form-block">
                 <div class="form-el">
-                    <label class="form-l">Заголовок</label>
+                    <label class="form-l">Р—Р°РіРѕР»РѕРІРѕРє</label>
                     <div class="form-value">
                         <input type="text" class="i-txt" name="title" id="f1" maxlength="<?= freelancer_offers::MAX_SIZE_TITLE;?>" value="<?=htmlspecialchars($offer['title']?$offer['title']:stripslashes($_POST['title']))?>" onkeydown="ClearErrorBox('offer_title_error')">
                         <?php if($error['title_max']) {?>
-                        <div class="attention" id="offer_descr_max_error"><p>&nbsp;<strong>Максимальное количество символов <?= freelancer_offers::MAX_SIZE_TITLE ?></strong></p></div> 
+                        <div class="attention" id="offer_descr_max_error"><p>&nbsp;<strong>РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ <?= freelancer_offers::MAX_SIZE_TITLE ?></strong></p></div> 
                         <?php } //if?>
-                        <div class="attention" style="display:none;" id="offer_title_error"><p>&nbsp;<strong>Поле не заполнено</strong></p></div>
+                        <div class="attention" style="display:none;" id="offer_title_error"><p>&nbsp;<strong>РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ</strong></p></div>
                     </div>
                 </div>
                 <div class="form-el">
-                    <label class="form-l">Текст</label>
+                    <label class="form-l">РўРµРєСЃС‚</label>
                     <div class="form-value">
                         <textarea  class="tawl" cols="40" rel="<?= freelancer_offers::MAX_SIZE_DESCRIPTION ?>" rows="10" name="descr" id="f2" onkeydown="ClearErrorBox('offer_descr_error');"><?=htmlspecialchars($offer['descr']?$offer['descr']:stripslashes($_POST['descr']))?></textarea>
                         <br/>
                         <?php if($error['descr_max']) {?>
-                        <div class="attention" id="offer_descr_max_error"><p>&nbsp;<strong>Максимальное количество символов <?= freelancer_offers::MAX_SIZE_DESCRIPTION ?></strong></p></div> 
+                        <div class="attention" id="offer_descr_max_error"><p>&nbsp;<strong>РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ <?= freelancer_offers::MAX_SIZE_DESCRIPTION ?></strong></p></div> 
                         <?php } //if?>
-                        <div class="attention" style="display:none;" id="offer_descr_error"><p>&nbsp;<strong>Поле не заполнено</strong></p></div>  
+                        <div class="attention" style="display:none;" id="offer_descr_error"><p>&nbsp;<strong>РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ</strong></p></div>  
                     </div>
                 </div>
             </div>
             <div class="form-block">
                 <div class="form-el">
-                    <label class="form-l">Раздел</label>
+                    <label class="form-l">Р Р°Р·РґРµР»</label>
                     <div class="select-group">
                         <div class="form-value" id="cat_line">
                             <select name="categories"  onchange="RefreshSubCategory(this); ClearErrorBox('offer_category_error');">
-                                <option value="0">Выберите раздел</option>
+                                <option value="0">Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»</option>
                                 <?php foreach($categories as $cat) { if($cat['id']<=0) continue; ?>
                                 <option value="<?=$cat['id']?>" <?=(($cat['id'] == $offer['category_id'] || $cat['id'] == $_POST['categories']) ? ' selected' : '')?>><?=$cat['name']?></option>
                                 <?php } // foreach ?>
                             </select> 
                             <br/>
                             <select name="subcategories" <?if($offer['category_id']==0 && !$_POST['subcategories']):?>disabled<?endif;?> class="subcat">
-                                <option value="0" <? if($ccat['subcategory_id'] == 0) echo "selected"; ?>>Все специализации</option>
+                                <option value="0" <? if($ccat['subcategory_id'] == 0) echo "selected"; ?>>Р’СЃРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё</option>
                                 <?php for ($i=0; $i<sizeof($categories_specs); $i++) { ?>
                                 <option value="<?=$categories_specs[$i]['id']?>"<? if ($categories_specs[$i]['id'] == $offer['subcategory_id'] || $categories_specs[$i]['id'] == $_POST['subcategories']) echo(" selected") ?>><?=$categories_specs[$i]['profname']?></option>
                                 <?php } //for ?>
                             </select>
-                            <div class="attention" style="display:none;" id="offer_category_error"><p>&nbsp;<strong>Не выбран раздел и подраздел</strong></p></div>
+                            <div class="attention" style="display:none;" id="offer_category_error"><p>&nbsp;<strong>РќРµ РІС‹Р±СЂР°РЅ СЂР°Р·РґРµР» Рё РїРѕРґСЂР°Р·РґРµР»</strong></p></div>
                         </div>
                     </div>
                 </div>
@@ -125,11 +125,11 @@ function ClearErrorBox(id_error_box) {
             <?php if(!$is_edit) {?>
             <div class="form-block">
                 <div class="form-el">
-                    <label class="form-l">Стоимость</label>
+                    <label class="form-l">РЎС‚РѕРёРјРѕСЃС‚СЊ</label>
 					<div class="price"><?= freelancer_offers::SUM_FM_COST?> FM</div>
                     <div class="attention" id="error_no_money" style="display:none">
-                        <p><strong>Недостаточно средств на счету</strong></p>
-                        <p id="error_buy">В данный момент на счету <?= $_SESSION['ac_sum'];  ?> FM <a href="#">Пополнить счет</a></p>
+                        <p><strong>РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ РЅР° СЃС‡РµС‚Сѓ</strong></p>
+                        <p id="error_buy">Р’ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РЅР° СЃС‡РµС‚Сѓ <?= $_SESSION['ac_sum'];  ?> FM <a href="#">РџРѕРїРѕР»РЅРёС‚СЊ СЃС‡РµС‚</a></p>
                     </div>
                 </div>
             </div>
@@ -138,7 +138,7 @@ function ClearErrorBox(id_error_box) {
             <a id="button" class="b-button b-button_margleft_115 b-button_rectangle_color_transparent <?= (!$is_edit?"b-button_disabled":"")?>" onclick="if( CheckFlds() && $('button').hasClass('b-button_disabled') == false ) { $('button').addClass('b-button_disabled'); $('frl_offers').submit(); }" href="javascript:void(0)">
                 <span class="b-button__b1">
 					<span class="b-button__b2">
-						<span class="b-button__txt"><?= ($is_edit==true?"Сохранить":"Опубликовать")?></span>
+						<span class="b-button__txt"><?= ($is_edit==true?"РЎРѕС…СЂР°РЅРёС‚СЊ":"РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ")?></span>
 					</span>
 				</span>
             </a>
@@ -147,18 +147,18 @@ function ClearErrorBox(id_error_box) {
             <a class="b-button b-button_rectangle_color_transparent" onclick="window.location = '/projects/?kind=8'">
 				<span class="b-button__b1">
 					<span class="b-button__b2">
-						<span class="b-button__txt">Отменить</span>
+						<span class="b-button__txt">РћС‚РјРµРЅРёС‚СЊ</span>
 					</span>
 				</span>
 			</a>
             <?php }//if?>
             <p style="margin-top: 10px;">
-            Подробное описание назначения раздела &laquo;Сделаю&raquo; и порядка размещения объявления<br/>находится <a href="https://feedback.fl.ru/">здесь</a>.
+            РџРѕРґСЂРѕР±РЅРѕРµ РѕРїРёСЃР°РЅРёРµ РЅР°Р·РЅР°С‡РµРЅРёСЏ СЂР°Р·РґРµР»Р° &laquo;РЎРґРµР»Р°СЋ&raquo; Рё РїРѕСЂСЏРґРєР° СЂР°Р·РјРµС‰РµРЅРёСЏ РѕР±СЉСЏРІР»РµРЅРёСЏ<br/>РЅР°С…РѕРґРёС‚СЃСЏ <a href="https://feedback.fl.ru/">Р·РґРµСЃСЊ</a>.
             </p>
         </fieldset>
     </form>
     <div class=" public-inf">
-        <h3>Дайте работодателям больше шансов найти именно вас</h3>
-        <p>Публикуя предложения на главной странице, вы значительно увеличиваете приток новых работодателей.</p>
+        <h3>Р”Р°Р№С‚Рµ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏРј Р±РѕР»СЊС€Рµ С€Р°РЅСЃРѕРІ РЅР°Р№С‚Рё РёРјРµРЅРЅРѕ РІР°СЃ</h3>
+        <p>РџСѓР±Р»РёРєСѓСЏ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ, РІС‹ Р·РЅР°С‡РёС‚РµР»СЊРЅРѕ СѓРІРµР»РёС‡РёРІР°РµС‚Рµ РїСЂРёС‚РѕРє РЅРѕРІС‹С… СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№.</p>
     </div>
 </div>

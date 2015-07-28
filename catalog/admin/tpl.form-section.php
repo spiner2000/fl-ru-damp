@@ -13,10 +13,10 @@
     <input type="hidden" name="is_subcategory" value="<?=($is_subcategory ? '1' : '0')?>">
                 <? if($is_edit) { ?>
                 <div class="form-el">
-                  <label><strong>Направление</strong></label>
+                  <label><strong>РќР°РїСЂР°РІР»РµРЅРёРµ</strong></label>
                   <div class="form-value ">
                     <select id="s_direction" name="direction" <?= $parent_section ? 'disabled': '' ?> onChange="if(this.value != $('old_direction').get('value')) { $('new_position').set('disabled', true); } else { $('new_position').set('disabled', false); }">
-<!--                        <option value="0">Не выбрано</option>-->
+<!--                        <option value="0">РќРµ РІС‹Р±СЂР°РЅРѕ</option>-->
                         <?php if($directions) foreach($directions as $row) { ?>
                         <option value="<?= $row['id']?>" <?= ($form_section['direct_id'] == $row['id'])?'selected="selected"':''?>><?= $row['dir_name']?></option>
                         <?php } //foreach?>
@@ -27,13 +27,13 @@
     
                 <?php if($parent_section) { ?>
                 <div class="form-el">
-                  <label><strong>Регион</strong></label>
+                  <label><strong>Р РµРіРёРѕРЅ</strong></label>
                   <div class="form-value ">
                     <?php if($seo->subdomain['id'] > 0) { ?>
                     <input type="hidden" name="subdomain" value="<?= $seo->subdomain['id']?>">
                     <?php }?>
                     <select name="subdomain" <?= ($seo->subdomain['id'] > 0)?"disabled":""?>>
-                      <option value="-1" <?=(($subdomain_id == -1)?'selected="selected"':'')?>>Все</option>
+                      <option value="-1" <?=(($subdomain_id == -1)?'selected="selected"':'')?>>Р’СЃРµ</option>
                       <?php
                       foreach($countries as $country) {
                         $country_options = "<option value=''>{$country['country_name']}</option>";
@@ -52,7 +52,7 @@
                 <?php } //if?>
                 <?php if($parent_section) { ?>
                 <div class="form-el">
-                  <label><strong>Раздел</strong></label>
+                  <label><strong>Р Р°Р·РґРµР»</strong></label>
                   <div class="form-group">
                     <div class="form-value form-select">
                       <select style="float:left" name="parent" onChange="if($('old_parent')) { if(this.value != $('old_parent').get('value')) { $('new_position').set('disabled', true); } } xajax_getPositions(this.value, '<?=$form_section['direct_id']?>');">
@@ -60,7 +60,7 @@
                         <option value="<?= $section['id']?>" <?= ($parent_section == $section['id']?'selected="selected"':'');?>><?=$section['name_section']?></option>
                         <?php } //foreach ?>
                       </select> 
-											<span style="float:left; padding-top:2px;">&nbsp;&nbsp;<input type="checkbox" name="is_draft" value="<?= ($form_section['is_draft'] == 't'?1:0)?>" <?= ($form_section['is_draft'] == 't'?'checked="checked"':'')?> onclick="if(this.checked) {this.value = 1;} else { this.value = 0}"> В черновик</span>
+											<span style="float:left; padding-top:2px;">&nbsp;&nbsp;<input type="checkbox" name="is_draft" value="<?= ($form_section['is_draft'] == 't'?1:0)?>" <?= ($form_section['is_draft'] == 't'?'checked="checked"':'')?> onclick="if(this.checked) {this.value = 1;} else { this.value = 0}"> Р’ С‡РµСЂРЅРѕРІРёРє</span>
                         
                     </div>
                   </div>
@@ -68,7 +68,7 @@
                 <?php } //if?>
     
                 <div class="form-el">
-                  <label><strong>Название <?=$parent_section?'под':''?>раздела</strong></label>
+                  <label><strong>РќР°Р·РІР°РЅРёРµ <?=$parent_section?'РїРѕРґ':''?>СЂР°Р·РґРµР»Р°</strong></label>
                   <div class="form-group">
                     <div class="form-value "><input type="text" name="name_section" id="name_section" class="i-txt" value="<?= $form_section['name_section']?>" onblur="xajax_setTranslit(this.value)"></div>
                     <div class="form-value form-select">
@@ -77,7 +77,7 @@
                             <option value="<?=$p?>" <?=$selected?>><?= ($parent_pos_num ? $parent_pos_num."." : "")?><?=$p?></option>
                             <?php }//for?>
                             <?php if($positions) { ?>
-                              <option value="-1" <?=($is_selected==true ? '' : 'selected')?>>Последний</options>
+                              <option value="-1" <?=($is_selected==true ? '' : 'selected')?>>РџРѕСЃР»РµРґРЅРёР№</options>
                             <?php } else { ?>
                               <option value="1"><?= ($parent_pos_num ? $parent_pos_num."." : "")?>1</option>
                             <?php } ?>
@@ -86,7 +86,7 @@
                   </div>  
                 </div>
                 <div class="form-el">
-                  <label><strong>Название ссылки <?=$parent_section?'под':''?>раздела</strong></label>
+                  <label><strong>РќР°Р·РІР°РЅРёРµ СЃСЃС‹Р»РєРё <?=$parent_section?'РїРѕРґ':''?>СЂР°Р·РґРµР»Р°</strong></label>
                   <div class="form-value "><input type="text" name="name_section_link" id="name_section_link" class="i-txt" value="<?= $form_section['name_section_link']?>"></div>
                 </div>
                 
@@ -95,22 +95,22 @@
                   <div class="form-value"><textarea name="meta_description" cols="20" rows="5"><?= $form_section['meta_description']?></textarea></div>
                 </div>
                 <div class="form-el">
-                  <label><strong>META Keywords</strong> (через запятую)</label>
+                  <label><strong>META Keywords</strong> (С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ)</label>
                   <div class="form-value form-key"><div class="b-input-hint"><div id="body_1" ><textarea name="meta_keywords" cols="20" rows="5" id="kword_se"><?= $form_section['meta_keywords']?></textarea></div></div></div>
                 </div>
                 
-                <label><strong>Содержимое страницы </strong>(до динамического контента)</label>
+                <label><strong>РЎРѕРґРµСЂР¶РёРјРѕРµ СЃС‚СЂР°РЅРёС†С‹ </strong>(РґРѕ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РєРѕРЅС‚РµРЅС‚Р°)</label>
                 <div class="cl-form">
                   <div class="cl-form-in">
                     <textarea class="ckeditor" id="content_before" name="content_before" rows="5" cols="100"><?= $form_section['content_before']?></textarea>    
                   </div>
                 </div><!--cl-form-->
     
-                <label><strong>Содержимое страницы </strong>(после динамического контента)</label>
+                <label><strong>РЎРѕРґРµСЂР¶РёРјРѕРµ СЃС‚СЂР°РЅРёС†С‹ </strong>(РїРѕСЃР»Рµ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РєРѕРЅС‚РµРЅС‚Р°)</label>
                 <div class="cl-form">
                   <div class="cl-form-in">
                     <textarea class="ckeditor" id="content_after" name="content_after" rows="5" cols="100"><?= $form_section['content_after']?></textarea> 
                   </div>
                 </div><!--cl-form-->
-                <a class="btnr btnr-t" href="javascript:void(0)" onclick="xajax_createSection(getFormToArray('form_section'), '<?= $is_edit?"update":"create"?>');"><span class="btn-lc"><span class="btn-m"><span class="btn-txt"><?= $is_edit?"Изменить":"Создать"?> <?=($is_subcategory ? 'подраздел' : 'раздел')?></span></span></span></a>
+                <a class="btnr btnr-t" href="javascript:void(0)" onclick="xajax_createSection(getFormToArray('form_section'), '<?= $is_edit?"update":"create"?>');"><span class="btn-lc"><span class="btn-m"><span class="btn-txt"><?= $is_edit?"РР·РјРµРЅРёС‚СЊ":"РЎРѕР·РґР°С‚СЊ"?> <?=($is_subcategory ? 'РїРѕРґСЂР°Р·РґРµР»' : 'СЂР°Р·РґРµР»')?></span></span></span></a>
 </form>

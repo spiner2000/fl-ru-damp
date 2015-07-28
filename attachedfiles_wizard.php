@@ -27,7 +27,7 @@ switch($action) {
                     $max_files_size = wizard::MAX_FILE_SIZE;
                     break;
                 default:
-                    $file['error'] = 'Ошибка загрузки файла';
+                    $file['error'] = 'РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»Р°';
                     break;
             }
 
@@ -42,13 +42,13 @@ switch($action) {
                 $files_size = $files_info['size'];
                 
                 if(($files_count+1)>$max_files) {
-                    $file['error'] = "Максимальное количество файлов: {$max_files}";
+                    $file['error'] = "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ С„Р°Р№Р»РѕРІ: {$max_files}";
                 }
                 if(($files_size+$cFile->size)>$max_files_size) {
-                    $file['error'] = "Максимальный объем файлов: ".ConvertBtoMB($max_files_size);
+                    $file['error'] = "РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РѕР±СЉРµРј С„Р°Р№Р»РѕРІ: ".ConvertBtoMB($max_files_size);
                 }
                 if( in_array($cFile->getext(), $GLOBALS['disallowed_array'])) {
-                    $file['error'] = "Недопустимый формат файла";
+                    $file['error'] = "РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ С„РѕСЂРјР°С‚ С„Р°Р№Р»Р°";
                 }
                 if($file['error']) {
                     $cFile->Delete($cFile->id);
@@ -62,9 +62,9 @@ switch($action) {
                 }
             } else {
                 if($_FILES['attachedfiles_file']['size']>$max_files_size) {
-                    $file['error'] = "Максимальный объем файлов: ".ConvertBtoMB($max_files_size);
+                    $file['error'] = "РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РѕР±СЉРµРј С„Р°Р№Р»РѕРІ: ".ConvertBtoMB($max_files_size);
                 } else {
-                    $file['error'] = 'Ошибка загрузки файла';
+                    $file['error'] = 'РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»Р°';
                 }
             }
         }

@@ -6,13 +6,13 @@
 <table width="100%" cellspacing="0" cellpadding="0"  >
     <tr>
         <td style="width:14px" >&nbsp;</td>
-        <? // если $iWantPro == true значит находимся в режиме показа ПРО для НЕПРО
+        <? // РµСЃР»Рё $iWantPro == true Р·РЅР°С‡РёС‚ РЅР°С…РѕРґРёРјСЃСЏ РІ СЂРµР¶РёРјРµ РїРѕРєР°Р·Р° РџР Рћ РґР»СЏ РќР•РџР Рћ
         if( ( ( $pinfo['gr_prevs'] == 't' && $user->is_pro =='t' ) || $iWantPro ) && $work[0]['id'] != null ) {?>
         <td>
             <?php if($is_owner) {?>
             <div class="b-layout__txt b-layout__txt_float_right b-layout__txt_lineheight_1 b-layout__txt_margleft_-15 b-layout__txt_nowrap">
                 <span class="b-layout__txt b-layout__txt_fontsize_22 b-layout__txt_color_808080 b-layout__txt_valign_middle">+</span>
-                <a onclick="portfolio.editContent('openEditWork', '<?= $_SESSION['uid']?>', {'prof_id' : '<?= $prof_id;?>' })" href="javascript:void(0)" class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_bold b-layout__link_fontsize_11">Добавить работу</a>
+                <a onclick="portfolio.editContent('openEditWork', '<?= $_SESSION['uid']?>', {'prof_id' : '<?= $prof_id;?>' })" href="javascript:void(0)" class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_bold b-layout__link_fontsize_11">Р”РѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚Сѓ</a>
             </div>
             <?php }//if?>
             <?php foreach($prjs as $in=>$blocks) { ?>
@@ -34,7 +34,7 @@
                                 <?php 
                                 if($prj['prj_prev_type']) {
                                     $sDescr = /*$prj['moderator_status'] === '0' ? $stop_words->replace($prj['descr']) :*/ $prj['descr'];
-                                    print("<p style='padding-bottom:7px'>".reformat2($sDescr,25,0,1)."</p>"); // Для текста нужен свой блок <p> с отступом вконце @todo
+                                    print("<p style='padding-bottom:7px'>".reformat2($sDescr,25,0,1)."</p>"); // Р”Р»СЏ С‚РµРєСЃС‚Р° РЅСѓР¶РµРЅ СЃРІРѕР№ Р±Р»РѕРє <p> СЃ РѕС‚СЃС‚СѓРїРѕРј РІРєРѕРЅС†Рµ @todo
                                 } else { //if 
                                     $sName = /*$prj['moderator_status'] === '0' ? $stop_words->replace($prj['name'], 'plain', false) :*/ $prj['name'];
                                     ?>
@@ -57,9 +57,9 @@
                                         <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13">
                                             <span class="b-fon__attent"></span>
                                             <div class="b-fon__txt b-fon__txt_margleft_20">
-                                                    <span class="b-fon__txt_bold">Работа заблокирована</span>. <?= reformat($prj['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>Служба поддержки</a>
-                                                    <div class='b-fon__txt'><?php if ($is_adm) { ?><?= ($prj['admin_login'] ? "Заблокировал: <a class='b-fon__link' href='/users/{$prj['admin_login']}'>{$prj['admin_uname']} {$prj['admin_usurname']} [{$prj['admin_login']}]</a><br />": '') ?><?php } ?>
-                                                    Дата блокировки: <?= dateFormat('d.m.Y H:i', $prj['blocked_time']) ?></div>
+                                                    <span class="b-fon__txt_bold">Р Р°Р±РѕС‚Р° Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅР°</span>. <?= reformat($prj['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё</a>
+                                                    <div class='b-fon__txt'><?php if ($is_adm) { ?><?= ($prj['admin_login'] ? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°Р»: <a class='b-fon__link' href='/users/{$prj['admin_login']}'>{$prj['admin_uname']} {$prj['admin_usurname']} [{$prj['admin_login']}]</a><br />": '') ?><?php } ?>
+                                                    Р”Р°С‚Р° Р±Р»РѕРєРёСЂРѕРІРєРё: <?= dateFormat('d.m.Y H:i', $prj['blocked_time']) ?></div>
                                             </div>
                                         </div>
                                         <b class="b-fon__b2"></b>
@@ -70,12 +70,12 @@
 
                                 <?php if ($is_adm && !$is_owner) { ?>
                                 <div id="portfolio-button-<?= $prj['id'] ?>" style="clear:left;">
-                                    <a class="admn" href="javascript:void(0);" onclick="banned.<?=($prj['is_blocked']=='t'? 'unblockedPortfolio': 'blockedPortfolio')?>(<?=$prj['id']?>)"><?= $prj['is_blocked']=='f' ? "Заблокировать" : "Разблокировать"; ?></a><br/>
-                                    <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditPortfolio', '<?=$prj['id']?>_0', 0, '')">Редактировать</a>
+                                    <a class="admn" href="javascript:void(0);" onclick="banned.<?=($prj['is_blocked']=='t'? 'unblockedPortfolio': 'blockedPortfolio')?>(<?=$prj['id']?>)"><?= $prj['is_blocked']=='f' ? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ" : "Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ"; ?></a><br/>
+                                    <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditPortfolio', '<?=$prj['id']?>_0', 0, '')">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
                                 </div>
                                 <?php } elseif($is_owner) { ?>
                                 <div id="portfolio-button-<?= $prj['id'] ?>" style="clear:left;">
-                                    <a class="admn" href="javascript:void(0);" onclick="portfolio.editContent('openEditWork', '<?= $_SESSION['uid']?>', {'id' : '<?=$prj['id']?>', 'prof_id' : '<?= $prof_id;?>' })">Редактировать</a>
+                                    <a class="admn" href="javascript:void(0);" onclick="portfolio.editContent('openEditWork', '<?= $_SESSION['uid']?>', {'id' : '<?=$prj['id']?>', 'prof_id' : '<?= $prof_id;?>' })">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
                                 </div>
                                 <?php } ?>
                              </div>
@@ -100,7 +100,7 @@
                             <span class="b-layout__txt b-layout__txt_fontsize_22 b-layout__txt_color_808080 b-layout__txt_valign_middle">+</span>
                             <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_bold b-layout__link_fontsize_11" 
                                href="javascript:void(0)"
-                               onclick="xajax_openEditWork(null, {id:0, prof_id:<?= $prof_id?>});">Добавить работу</a>
+                               onclick="xajax_openEditWork(null, {id:0, prof_id:<?= $prof_id?>});">Р”РѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚Сѓ</a>
                         </div>
                     </td>
                 </tr>
@@ -122,9 +122,9 @@
                                 <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13">
                                     <span class="b-fon__attent"></span>
                                     <div class="b-fon__txt b-fon__txt_margleft_20">
-                                            <span class="b-fon__txt_bold">Работа заблокирована</span>. <?= reformat($prj['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>Служба поддержки</a>
-                                            <div class='b-fon__txt'><?php if ($is_adm) { ?><?= ($prj['admin_login'] ? "Заблокировал: <a class='b-fon__link' href='/users/{$prj['admin_login']}'>{$prj['admin_uname']} {$prj['admin_usurname']} [{$prj['admin_login']}]</a><br />": '') ?><?php } ?>
-                                            Дата блокировки: <?= dateFormat('d.m.Y H:i', $prj['blocked_time']) ?></div>
+                                            <span class="b-fon__txt_bold">Р Р°Р±РѕС‚Р° Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅР°</span>. <?= reformat($prj['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё</a>
+                                            <div class='b-fon__txt'><?php if ($is_adm) { ?><?= ($prj['admin_login'] ? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°Р»: <a class='b-fon__link' href='/users/{$prj['admin_login']}'>{$prj['admin_uname']} {$prj['admin_usurname']} [{$prj['admin_login']}]</a><br />": '') ?><?php } ?>
+                                            Р”Р°С‚Р° Р±Р»РѕРєРёСЂРѕРІРєРё: <?= dateFormat('d.m.Y H:i', $prj['blocked_time']) ?></div>
                                     </div>
                                 </div>
                                 <b class="b-fon__b2"></b>
@@ -136,12 +136,12 @@
                     <td class="odd">
                         <?php if ($is_adm && !$is_owner ) { ?>
                         <div id="portfolio-button-<?= $prj['id'] ?>">
-                            <a class="admn" href="javascript:void(0);" onclick="banned.<?=($prj['is_blocked']=='t'? 'unblockedPortfolio': 'blockedPortfolio')?>(<?=$prj['id']?>)"><?= $prj['is_blocked']=='f' ? "Заблокировать" : "Разблокировать"; ?></a><br/>
-                            <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditPortfolio', '<?=$prj['id']?>_0', 0, '')">Редактировать</a>
+                            <a class="admn" href="javascript:void(0);" onclick="banned.<?=($prj['is_blocked']=='t'? 'unblockedPortfolio': 'blockedPortfolio')?>(<?=$prj['id']?>)"><?= $prj['is_blocked']=='f' ? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ" : "Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ"; ?></a><br/>
+                            <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditPortfolio', '<?=$prj['id']?>_0', 0, '')">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
                         </div>
                         <?php } elseif($is_owner) { ?>
                         <div id="portfolio-button-<?= $prj['id'] ?>">
-                            <a class="admn" href="javascript:void(0);" onclick="portfolio.editContent('openEditWork', '<?= $_SESSION['uid']?>', {'id' : '<?=$prj['id']?>', 'prof_id' : '<?= $prof_id;?>' })">Редактировать</a>
+                            <a class="admn" href="javascript:void(0);" onclick="portfolio.editContent('openEditWork', '<?= $_SESSION['uid']?>', {'id' : '<?=$prj['id']?>', 'prof_id' : '<?= $prof_id;?>' })">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
                         </div>
                         <?php } ?>
                     </td>

@@ -3,7 +3,7 @@
 /**
  * Class TServiceCatalogPromo
  *
- * Виджет - блочная реклама всего раздела
+ * Р’РёРґР¶РµС‚ - Р±Р»РѕС‡РЅР°СЏ СЂРµРєР»Р°РјР° РІСЃРµРіРѕ СЂР°Р·РґРµР»Р°
  */
 class TServiceCatalogPromo extends CWidget {
 

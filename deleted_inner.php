@@ -1,8 +1,8 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="15">
 <tr valign="top">
 	<td height="400" valign="top" bgcolor="#FFFFFF" class="box2">
-	<h1>Удаление аккаунта</h1>
-	<?=@view_info("Ваш аккаунт был удален")?>
+	<h1>РЈРґР°Р»РµРЅРёРµ Р°РєРєР°СѓРЅС‚Р°</h1>
+	<?=@view_info("Р’Р°С€ Р°РєРєР°СѓРЅС‚ Р±С‹Р» СѓРґР°Р»РµРЅ")?>
 	</td>
 </tr>
 </table>

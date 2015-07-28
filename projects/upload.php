@@ -10,7 +10,7 @@ $uid = get_uid(false);
 $is_pro = payed::CheckPro($_SESSION['login']);
 $is_adm = false;
 
-// чтобы админ мог редактировать предложения по проектам
+// С‡С‚РѕР±С‹ Р°РґРјРёРЅ РјРѕРі СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РїСЂРѕРµРєС‚Р°Рј
 if ( hasPermissions('projects') && InGetPost('uid') ) {
      $uid    = InGetPost('uid');
      $is_pro = payed::checkProByUid( $uid );
@@ -30,7 +30,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'add_pic') && is_array($_FIL
     {
       $dir = get_login($uid);
       
-      // чтобы админ мог редактировать предложения по проектам
+      // С‡С‚РѕР±С‹ Р°РґРјРёРЅ РјРѕРі СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РїСЂРѕРµРєС‚Р°Рј
       if ( $is_adm ) {
           require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/users.php' );
           $user = new users;
@@ -44,7 +44,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'add_pic') && is_array($_FIL
       $mid = $img->id;
       if (!isNulArray($img->error))
       {
-          if ($img->size > $img->max_size) $err = 'Недопустимый размер файла';
+          if ($img->size > $img->max_size) $err = 'РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°';
 		  $error = true;
           $pictname = $prevname = '';
       }
@@ -52,7 +52,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'add_pic') && is_array($_FIL
       {
           if ( in_array($img->getext(), $GLOBALS['disallowed_array']) )
           {
-              $err = 'Недопустимый тип файла';
+              $err = 'РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ С‚РёРї С„Р°Р№Р»Р°';
               $error = true;
           }
           else
@@ -60,7 +60,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'add_pic') && is_array($_FIL
               if (in_array($img->getext(), $GLOBALS['graf_array']) && strtolower($img->getext()) != "swf" && strtolower($img->getext()) != "flv")
               {
                   /**
-                  * Делаем превью.
+                  * Р”РµР»Р°РµРј РїСЂРµРІСЊСЋ.
                   */
                   $pict_added = $img->img_to_small("sm_".$pictname,array('width'=>200,'height'=>200, 'less' => 0));
                   if (!isNulArray($img->error))
@@ -89,7 +89,7 @@ if (isset($_POST['action']) && ($_POST['action'] == 'add_pic') && is_array($_FIL
 else
 {
     if($_GET['do_upload']) {
-        $err = 'Недопустимый размер файла';
+        $err = 'РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°';
         $error = true;
         $pictname = $prevname = '';
     }
@@ -110,7 +110,7 @@ if ($prj_id > 0)
 					<nothing>opera</nothing>
 					<status>error</status>
 					<message>$err</message>
-					<time>".date('Добавлено d.m.Y в H:i', time())."</time>
+					<time>".date('Р”РѕР±Р°РІР»РµРЅРѕ d.m.Y РІ H:i', time())."</time>
 				</uploaded>
 				-- IBox --
 			";
@@ -124,7 +124,7 @@ if ($prj_id > 0)
 					<fileid>u$mid</fileid>
 					<preview>".WDCPREFIX."/users/$dir/upload/$prevname</preview>
 					<filename>".WDCPREFIX."/users/$dir/upload/$pictname</filename>
-					<time>".date('Добавлено d.m.Y в H:i', time())."</time>
+					<time>".date('Р”РѕР±Р°РІР»РµРЅРѕ d.m.Y РІ H:i', time())."</time>
 				</uploaded>
 				-- IBox --
 			";
@@ -138,7 +138,7 @@ if ($prj_id > 0)
 					<fileid>u$mid</fileid>
 					<displayname>".htmlentities($_FILES['ps_attach']['name'],ENT_COMPAT,'cp1251')."</displayname>
 					<filename>".WDCPREFIX."/users/$dir/upload/$pictname</filename>
-					<time>".date('Добавлено d.m.Y в H:i', time())."</time>
+					<time>".date('Р”РѕР±Р°РІР»РµРЅРѕ d.m.Y РІ H:i', time())."</time>
 				</uploaded>
 				-- IBox --
 			";
@@ -170,7 +170,7 @@ if ($prj_id > 0)
   <form>
   <input type="file" size="50" disabled />
   <input type="hidden" name="u_token_key" value="<?=$_SESSION['rand']?>">
-  <input type="button" value="Загрузить" disabled />
+  <input type="button" value="Р—Р°РіСЂСѓР·РёС‚СЊ" disabled />
   </form>
 <? } else { ?>
   <form id="form_add_pict" name="form_add_pict" action="/projects/upload.php?pid=<?=$prj_id?>&do_upload=1" method="POST" enctype="multipart/form-data" onsubmit="return parent.allowedExt(this['ps_attach'].value) && parent.filesizeNotNull(this['ps_attach']);">
@@ -182,7 +182,7 @@ if ($prj_id > 0)
   <input id="ps_pid" name="pid" type="hidden" value="<?=$prj_id?>" />
   <input name="MAX_FILE_SIZE" value="2097152" type="hidden" />
   <input type="file" name="ps_attach" size="50"<? if (($prj_kind != 2) && !$is_pro && !$is_adm) { ?> disabled="disabled"<? } ?> />
-  <input type="submit" id="ps_pict_add" name="ps_pict_add" value="Загрузить"<? if (($prj_kind != 2) && !$is_pro && !$is_adm) { ?> disabled="disabled"<? } ?> />
+  <input type="submit" id="ps_pict_add" name="ps_pict_add" value="Р—Р°РіСЂСѓР·РёС‚СЊ"<? if (($prj_kind != 2) && !$is_pro && !$is_adm) { ?> disabled="disabled"<? } ?> />
   <? if ($error) { ?>
   <?=view_error($err)?><br/>
   <? } ?>

@@ -56,15 +56,15 @@ if ($gr_base == 0 || $gr_base == 1) {
 }
 
 
-// такая же есть в viewgr_cnt.php и xajax/banned.server.php
+// С‚Р°РєР°СЏ Р¶Рµ РµСЃС‚СЊ РІ viewgr_cnt.php Рё xajax/banned.server.php
 function BlockedThreadHTML($reason, $date, $moder_login='', $moder_name='') {
     return "
         <div class='br-moderation-options'>
-            <a href='/help/?all' class='lnk-feedback' style='color: #fff;'>Служба поддержки</a>
-            <div class='br-mo-status'><strong>Топик заблокирован.</strong> Причина: ".str_replace("\n", "<br />", $reason)."</div>
+            <a href='/help/?all' class='lnk-feedback' style='color: #fff;'>РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё</a>
+            <div class='br-mo-status'><strong>РўРѕРїРёРє Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ.</strong> РџСЂРёС‡РёРЅР°: ".str_replace("\n", "<br />", $reason)."</div>
             <p class='br-mo-info'>".
-            ($moder_login? "Заблокировал: <a href='/users/$moder_login' style='color: #FF6B3D'>$moder_name [$moder_login]</a><br />": '').
-            "Дата блокировки: ".dateFormat('d.m.Y H:i', $date)."</p>
+            ($moder_login? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°Р»: <a href='/users/$moder_login' style='color: #FF6B3D'>$moder_name [$moder_login]</a><br />": '').
+            "Р”Р°С‚Р° Р±Р»РѕРєРёСЂРѕРІРєРё: ".dateFormat('d.m.Y H:i', $date)."</p>
         </div>
     ";
 }
@@ -103,7 +103,7 @@ $xajax->printJavascript('/xajax/');
 $user = new users();
 
 if($use_draft) {
-    // Заполнение данных из черновика
+    // Р—Р°РїРѕР»РЅРµРЅРёРµ РґР°РЅРЅС‹С… РёР· С‡РµСЂРЅРѕРІРёРєР°
     $draft_id = intval($_GET['draft_id']);
     $uid = get_uid(false);
     $draft_data = drafts::getDraft($draft_id, $uid, 3);
@@ -143,8 +143,8 @@ var oldid = 0;
 errmsg1 = errmsg2 = '';
 navigated = 0;
 <? if ($uid) {
-	$tmp=(($gr_base == 5)? "Публиковать работу" : "Комментировать");
-	$act_text = ($action == "edit")? "Редактировать" : $tmp;
+	$tmp=(($gr_base == 5)? "РџСѓР±Р»РёРєРѕРІР°С‚СЊ СЂР°Р±РѕС‚Сѓ" : "РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ");
+	$act_text = ($action == "edit")? "Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" : $tmp;
   if ($action == "edit") print("goToAncor('efrm');");
 	if ($error_flag) {
 		if ($alert[1]) print("errmsg1=\"".ref_scr(view_error($alert[1]))."\";");
@@ -159,7 +159,7 @@ navigated = 0;
         $ban=$user->GetBan($uid,$ban_where);
 		?>
 		function GetForm(){
-			out = "<div style=\"padding:10px 10px 10px 20px;\"><h1>Команда Free-lance.ru заблокировала вам возможность оставлять записи в сервисе «Блоги» <?=($ban["to"] ? "до ".date("d.m.Y  H:i",strtotimeEx($ban["to"])) : '')?>по причине: <?=addslashes(reformat( $ban["comment"], 24, 0, 0, 1, 24 ))?></h1><br /><br />Если у вас возникли вопросы, напишите нам на <a href='mailto:info@free-lance.ru'>info@free-lance.ru</a><br /><br /></div>";
+			out = "<div style=\"padding:10px 10px 10px 20px;\"><h1>РљРѕРјР°РЅРґР° Free-lance.ru Р·Р°Р±Р»РѕРєРёСЂРѕРІР°Р»Р° РІР°Рј РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РѕСЃС‚Р°РІР»СЏС‚СЊ Р·Р°РїРёСЃРё РІ СЃРµСЂРІРёСЃРµ В«Р‘Р»РѕРіРёВ» <?=($ban["to"] ? "РґРѕ ".date("d.m.Y  H:i",strtotimeEx($ban["to"])) : '')?>РїРѕ РїСЂРёС‡РёРЅРµ: <?=addslashes(reformat( $ban["comment"], 24, 0, 0, 1, 24 ))?></h1><br /><br />Р•СЃР»Рё Сѓ РІР°СЃ РІРѕР·РЅРёРєР»Рё РІРѕРїСЂРѕСЃС‹, РЅР°РїРёС€РёС‚Рµ РЅР°Рј РЅР° <a href='mailto:info@free-lance.ru'>info@free-lance.ru</a><br /><br /></div>";
 			return(out); }
 
             <? } else if (
@@ -171,21 +171,21 @@ navigated = 0;
       function GetForm(mode, multiattach, is_attach){
           if(is_attach==undefined) is_attach = 1;
         out = "<div style=\"background: url(/images/shadow_t.gif) repeat-x; padding: 0 15px;\">";
-        out += "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" id=\"editForm\"><tr><td style=\"padding:10px;border:0;\"><a name=\"efrm\" id=\"efrm\"></a><form action=\"<?=$form_uri?>\" method=\"post\" enctype=\"multipart/form-data\" name=\"frm\" id=\"frm\" onkeypress=\"if((event.ctrlKey) && ((event.keyCode==10)||(event.keyCode==13))) {submitLock(this);}\" onSubmit=\"if (checkexts()) { this.btn.value='Подождите'; this.btn.disabled=true; } else { return false; }\"><br />";
-        <? $count_drafts = drafts::CheckBlogs($uid); if($count_drafts) { ?>out += '<div class="form fs-p drafts-v" id="draft_div_info"><b class="b1"></b><b class="b2"></b><div class="form-in" id="draft_div_info_text"><?='Не забывайте, у вас в черновиках <a href="/drafts/?p=blogs">'.ending($count_drafts, 'сохранен', 'сохранено', 'сохранено').' '.$count_drafts.' '.getSymbolicName($count_drafts, 'blogs').'</a>'?></div><b class="b2"></b><b class="b1"></b></div>'; <? } ?>
+        out += "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" id=\"editForm\"><tr><td style=\"padding:10px;border:0;\"><a name=\"efrm\" id=\"efrm\"></a><form action=\"<?=$form_uri?>\" method=\"post\" enctype=\"multipart/form-data\" name=\"frm\" id=\"frm\" onkeypress=\"if((event.ctrlKey) && ((event.keyCode==10)||(event.keyCode==13))) {submitLock(this);}\" onSubmit=\"if (checkexts()) { this.btn.value='РџРѕРґРѕР¶РґРёС‚Рµ'; this.btn.disabled=true; } else { return false; }\"><br />";
+        <? $count_drafts = drafts::CheckBlogs($uid); if($count_drafts) { ?>out += '<div class="form fs-p drafts-v" id="draft_div_info"><b class="b1"></b><b class="b2"></b><div class="form-in" id="draft_div_info_text"><?='РќРµ Р·Р°Р±С‹РІР°Р№С‚Рµ, Сѓ РІР°СЃ РІ С‡РµСЂРЅРѕРІРёРєР°С… <a href="/drafts/?p=blogs">'.ending($count_drafts, 'СЃРѕС…СЂР°РЅРµРЅ', 'СЃРѕС…СЂР°РЅРµРЅРѕ', 'СЃРѕС…СЂР°РЅРµРЅРѕ').' '.$count_drafts.' '.getSymbolicName($count_drafts, 'blogs').'</a>'?></div><b class="b2"></b><b class="b1"></b></div>'; <? } ?>
         out += "<h1 class=\"bl\">"+act_text+":<\/h1>";
         out += "<?= view_hint_access_action(false, 'b-fon_padleft_120');?>";
         out += "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" class=\"n_qpr\">\
 				<col width=\"120\"><col>\
 				<tr valign=\"top\">\
-          <td style=\"padding-top:5px\">Заголовок:</td>\
+          <td style=\"padding-top:5px\">Р—Р°РіРѕР»РѕРІРѕРє:</td>\
           <td style=\"padding-top:5px\"><div class=\"b-input\"><input type=\"text\" id=\"name\" name=\"msg_name\" class=\"b-input__text\" ><\/div>\
 <\/td>\
         </tr>\
 				<tr valign=\"top\">\
-          <td style=\"padding-top:5px\">Комментарий:</td>\
+          <td style=\"padding-top:5px\">РљРѕРјРјРµРЅС‚Р°СЂРёР№:</td>\
           <td style=\"padding-top:5px\"><div class=\"b-textarea\"><textarea style=\"height:180px\" id=\"msg\" name=\"msg\" class=\"b-textarea__textarea b-textarea__textarea_fontsize_11\" cols=\"50\" row=\"20\"><\/textarea><\/div>"+errmsg2+
-          "Можно использовать &lt;b&gt;&lt;i&gt;&lt;p&gt;&lt;ul&gt;&lt;li&gt;&lt;cut&gt;&lt;h&gt;&lt;s&gt;\
+          "РњРѕР¶РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ &lt;b&gt;&lt;i&gt;&lt;p&gt;&lt;ul&gt;&lt;li&gt;&lt;cut&gt;&lt;h&gt;&lt;s&gt;\
           <?= ($alert[1] ? addslashes(view_error($alert[1])) : '');?></td>\
         </tr>\
         ";
@@ -198,13 +198,13 @@ navigated = 0;
         ";
 
 <?
-        //убираем в СБР youtube-линк
+        //СѓР±РёСЂР°РµРј РІ РЎР‘Р  youtube-Р»РёРЅРє
 	if ($hide_youtube != 1)
 	{
 ?>
         out += "<tr valign=\"top\">\
           <td>&nbsp;</td>\
-          <td><a href=\"javascript:void(null);\" class=\"blue\" onClick=\"toggle_yt_link();\" style=\"border-bottom:1px dashed; height:15px; text-decoration:none;\">Добавить ссылку на YouTube/RuTube/Vimeo видео</a></td>\
+          <td><a href=\"javascript:void(null);\" class=\"blue\" onClick=\"toggle_yt_link();\" style=\"border-bottom:1px dashed; height:15px; text-decoration:none;\">Р”РѕР±Р°РІРёС‚СЊ СЃСЃС‹Р»РєСѓ РЅР° YouTube/RuTube/Vimeo РІРёРґРµРѕ</a></td>\
         </tr>\
         <tr valign=\"top\">\
           <td>&nbsp;</td>\
@@ -221,7 +221,7 @@ navigated = 0;
 	{
         out += "<tr valign=\"top\">\
           <td>&nbsp;</td>\
-          <td><br /><a href=\"javascript:void(null);\" onClick=\"toggle_settings();\" class=\"blue\" style=\"border-bottom:1px dashed; height:15px; text-decoration:none;\">Дополнительные настройки</a></td>\
+          <td><br /><a href=\"javascript:void(null);\" onClick=\"toggle_settings();\" class=\"blue\" style=\"border-bottom:1px dashed; height:15px; text-decoration:none;\">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё</a></td>\
         </tr>\
         <tr valign=\"top\">\
           <td>&nbsp;</td>\
@@ -232,11 +232,11 @@ navigated = 0;
           <td><div id=\"settings\" style=\"<?=( $bClose || $bPrivate ? '' : 'display:none;' )?>padding-top:4px\">\
 							<div class=\"b-check b-check_padtop_3\">\
               <input onclick=\"toggle_close()\" id=\"ch_close_comments\" class=\"b-check__input\" type=\"checkbox\" name=\"close_comments\" value=\"1\" <?=( $bClose ? 'checked=\"checked\"' : '' )?>>\
-              <LABEL class=\"b-check__label\" for=\"ch_close_comments\" id=\"label_close_comments\">Запретить комментирование</LABEL>\
+              <LABEL class=\"b-check__label\" for=\"ch_close_comments\" id=\"label_close_comments\">Р—Р°РїСЂРµС‚РёС‚СЊ РєРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ</LABEL>\
               </div>\
 							<div class=\"b-check b-check_padtop_3\">\
               <input id=\"ch_is_private\" class=\"b-check__input\" type=\"checkbox\" onclick=\"toggle_private()\"  name=\"is_private\" value=\"1\" <?=( $bPrivate ? 'checked=\"checked\"' : '' )?>>\
-              <LABEL class=\"b-check__label\" for=\"ch_is_private\"  id=\"label_is_private\">Показывать только мне<?=(($edit_msg['is_private']=='t')?" (скрытые от пользователей темы видны модераторам)":"")?></LABEL>\
+              <LABEL class=\"b-check__label\" for=\"ch_is_private\"  id=\"label_is_private\">РџРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ РјРЅРµ<?=(($edit_msg['is_private']=='t')?" (СЃРєСЂС‹С‚С‹Рµ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ С‚РµРјС‹ РІРёРґРЅС‹ РјРѕРґРµСЂР°С‚РѕСЂР°Рј)":"")?></LABEL>\
               </div>\
             </div>\
           </td>\
@@ -246,10 +246,10 @@ navigated = 0;
 		out += "\
 		<tr valign=\"top\">\
 			<td>&nbsp;</td>\
-			<td><br /><a href=\"javascript:void(null);\" onClick=\"toggle_pool();\" class=\"blue\" style=\"border-bottom:1px dashed; height:15px; text-decoration:none;\"><?=($blog->poll_question? 'Редактировать опрос': 'Добавить опрос')?></a></td>\
+			<td><br /><a href=\"javascript:void(null);\" onClick=\"toggle_pool();\" class=\"blue\" style=\"border-bottom:1px dashed; height:15px; text-decoration:none;\"><?=($blog->poll_question? 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РѕРїСЂРѕСЃ': 'Р”РѕР±Р°РІРёС‚СЊ РѕРїСЂРѕСЃ')?></a></td>\
 		</tr>\
 		<tr id=\"trpollquestion\" valign=\"top\" class=\"poll-st\"<?=((!empty($alert[5]) || $blog->poll_question)? '': ' style=\\"display: none\\"')?>>\
-			<td>Вопрос</td>\
+			<td>Р’РѕРїСЂРѕСЃ</td>\
 			<td>\
 				<textarea cols=\"50\" row=\"20\" id=\"poll-question-source\" style=\"display: none\"><?=str_replace(array("\r\n", "\n"), array("\\r\\n", "\\n"), isset($_POST['question'])? str_replace(array('"', "'", "\\", "<", ">"), array('&quot;', '&#039;', '&#92;', '&lt;', '&gt;'), stripslashes($_POST['question'])): ($blog->poll_question? str_replace("\\", '&#92;', $blog->poll_question): ''))?></textarea>\
 				<? if ($blog->poll_question && !(hasPermissions('blogs') || $blog->fromuser_id == $uid)) { ?>\
@@ -263,14 +263,14 @@ navigated = 0;
 			</td>\
 		</tr>\
 	   <tr id=\"trpolltype\" class=\"poll-type\"<?=((!empty($alert[5]) || $blog->poll_question)? '': ' style=\\"display: none\\"')?>>\
-	   <td>Тип опроса:</td>\
+	   <td>РўРёРї РѕРїСЂРѕСЃР°:</td>\
 	   <td>\
 		<table>\
 			<tr>\
 				<td><input id=\"fmultiple0\" type=\"radio\" name=\"multiple\" value=\"0\" <?=((($blog->poll_multiple != 't') && empty($_POST['multiple']))? "checked": "")?> />&nbsp;</td>\
-				<td>&nbsp;Один вариант ответа&nbsp;&nbsp;&nbsp;</td>\
+				<td>&nbsp;РћРґРёРЅ РІР°СЂРёР°РЅС‚ РѕС‚РІРµС‚Р°&nbsp;&nbsp;&nbsp;</td>\
 				<td><input id=\"fmultiple1\" type=\"radio\" name=\"multiple\" value=\"1\" <?=((($blog->poll_multiple == 't') || !empty($_POST['multiple']))? "checked": "")?> />&nbsp;</td>\
-				<td>&nbsp;Несколько вариантов ответа</td>\
+				<td>&nbsp;РќРµСЃРєРѕР»СЊРєРѕ РІР°СЂРёР°РЅС‚РѕРІ РѕС‚РІРµС‚Р°</td>\
 			</tr>\
 		</table>\
 	   </td>\
@@ -280,7 +280,7 @@ navigated = 0;
 		  $c = count($answers);
 		  foreach ($answers as $answer) {
 		?><tr valign=\"top\" class=\"poll-line\"<?=((!empty($alert[5]) || $blog->poll_question)? '': ' style=\\"display: none\\"')?>>\
-          <td>Ответ #<span class=\"poll-num\"><?=($i+1)?></span></td>\
+          <td>РћС‚РІРµС‚ #<span class=\"poll-num\"><?=($i+1)?></span></td>\
           <td>\
 			<? if ($answer['id'] && !(hasPermissions('blogs') || $blog->fromuser_id == $uid)) { ?><input class=\"poll-answer-exists\" type=\"hidden\" name=\"answers_exists[<?=$answer['id']?>]\" value=\"1\" /><? } ?>\
 			<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\
@@ -288,7 +288,7 @@ navigated = 0;
 \
 				<td><input maxlength=\"<?=blogs::MAX_POLL_ANSWER_CHARS?>\" class=\"poll-answer\" type=\"text\" value=\"<?=str_replace("\\", "&#92;", $answer['answer'])?>\" <?=($answer['id']? ((hasPermissions('blogs') || $blog->fromuser_id == $uid)? "name='answers_exists[{$answer['id']}]'": 'name=\\"it_no\\"  disabled'): "name='answers[]'")?> tabindex=\"20<?=$i?>\"></td>\
 \
-				<td class=\"poll-btn\"><a class=\"poll-del\" href=\"javascript: return false\" onclick=\"poll.del('Blogs', <?=$i++?>); return false;\"><img src=\"/images/delpoll.png\" width=\"15\" height=\"15\" border=\"0\" alt=\"Удалить ответ\" title=\"Удалить ответ\"></a></td>\
+				<td class=\"poll-btn\"><a class=\"poll-del\" href=\"javascript: return false\" onclick=\"poll.del('Blogs', <?=$i++?>); return false;\"><img src=\"/images/delpoll.png\" width=\"15\" height=\"15\" border=\"0\" alt=\"РЈРґР°Р»РёС‚СЊ РѕС‚РІРµС‚\" title=\"РЈРґР°Р»РёС‚СЊ РѕС‚РІРµС‚\"></a></td>\
 				<td class=\"poll-btn\"><span class=\"poll-add\">&nbsp;</span></td>\
 			</tr>\
 			</table>\
@@ -308,7 +308,7 @@ navigated = 0;
         out += "<tr>"+
         <? if ($groups && $action == "edit") { ?>
          (mode==1 ? "<tr valign=\"top\">\
-          <td><br />Раздел</td>\
+          <td><br />Р Р°Р·РґРµР»</td>\
           <td><br />\
              <select id=\"fcategory\" name=\"category\" onfocus=\"isFocus = true;\" onblur=\"isFocus = false;\" tabindex=300>\
                <? foreach ($groups as $id => $group) {
@@ -323,7 +323,7 @@ navigated = 0;
             <td>&nbsp;</td>\
             <td><br />\
             <div class=\"b-check\"><input class=\"b-check__input\" type=\"checkbox\" id=\"ontopid\" name=\"ontop\" value=\"t\" <?=($edit_msg['ontop'] == 't')? 'checked=\"checked\"': ''?> />\
-            <label class=\"b-check__label b-check__label_fontsize_11\" for=\"ontopid\">Закрепить тему наверху</label><\/div><\/td><?php } ?>" : '')+
+            <label class=\"b-check__label b-check__label_fontsize_11\" for=\"ontopid\">Р—Р°РєСЂРµРїРёС‚СЊ С‚РµРјСѓ РЅР°РІРµСЂС…Сѓ</label><\/div><\/td><?php } ?>" : '')+
         <? } ?>
        "</tr>\
           <td>&nbsp;</td><td><br />\
@@ -336,16 +336,16 @@ navigated = 0;
 						<input type=\"hidden\" name=\"draft_id\" id=\"draft_id\" value=\"<?=$draft_id?>\" />\
 						<input type=\"hidden\" name=\"draft_post_id\" id=\"draft_post_id\" value=\"<? echo $edit_msg['id']; ?>\" />\
             <input type=\"hidden\" name=\"u_token_key\" value=\""+U_TOKEN_KEY+"\" />\
-						<input type=\"hidden\" name=\"action\" value=\"post_msg\" /><input <?=$use_draft?'style=\"display:none;\"':''?> tabindex=301 type=\"submit\" name=\"btn\" class=\"btn\" value=\"<?=(($gr_base == 5)? "Публиковать работу" : "Комментировать")?>\" />\
+						<input type=\"hidden\" name=\"action\" value=\"post_msg\" /><input <?=$use_draft?'style=\"display:none;\"':''?> tabindex=301 type=\"submit\" name=\"btn\" class=\"btn\" value=\"<?=(($gr_base == 5)? "РџСѓР±Р»РёРєРѕРІР°С‚СЊ СЂР°Р±РѕС‚Сѓ" : "РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ")?>\" />\
 <? if($use_draft) { ?><div class=\"form-el\">\
 <span class=\"todrafts\">\
-<span class=\"time-save\" id=\"draft_time_save\" style=\"display:none;\"></span> <a href=\"javascript:DraftSave();\" onclick=\"this.blur();\" class=\"btnr-mb\"><span class=\"btn-lc\"><span class=\"btn-m\"><span class=\"btn-txt\">В черновики</span></span></span></a>\
+<span class=\"time-save\" id=\"draft_time_save\" style=\"display:none;\"></span> <a href=\"javascript:DraftSave();\" onclick=\"this.blur();\" class=\"btnr-mb\"><span class=\"btn-lc\"><span class=\"btn-m\"><span class=\"btn-txt\">Р’ С‡РµСЂРЅРѕРІРёРєРё</span></span></span></a>\
 </span>\
 <span style=\"float: left;\">\
-  <a id=\"btn\" class=\"b-button b-button_rectangle_color_green\"  href=\"javascript: void(0)\" onmousedown=\"return false\" onmouseup=\"if($('btn').get('disabled')==true) { return false; } $('btn_text').set('html','Подождите'); $('btn').set('disabled',true); $('btn' ).addClass('b-button_rectangle_color_disable'); $('btn' ).removeClass('b-button_rectangle_color_green'); submitLock($('frm')); return false;\">\
+  <a id=\"btn\" class=\"b-button b-button_rectangle_color_green\"  href=\"javascript: void(0)\" onmousedown=\"return false\" onmouseup=\"if($('btn').get('disabled')==true) { return false; } $('btn_text').set('html','РџРѕРґРѕР¶РґРёС‚Рµ'); $('btn').set('disabled',true); $('btn' ).addClass('b-button_rectangle_color_disable'); $('btn' ).removeClass('b-button_rectangle_color_green'); submitLock($('frm')); return false;\">\
                 <span class=\"b-button__b1\">\
                     <span class=\"b-button__b2\">\
-                        <span class=\"b-button__txt\" id=\"btn_text\">Сохранить</span>\
+                        <span class=\"b-button__txt\" id=\"btn_text\">РЎРѕС…СЂР°РЅРёС‚СЊ</span>\
                     </span>\
                 </span>\
   </a>\
@@ -359,7 +359,7 @@ navigated = 0;
 			<?}?>
 			var formhtml = GetForm(0);
 
-      function answer(num, attach, user, mode, max) {  <? // mode: 1 -- редактировать топ, 2 -- редактировать комментарий ?>
+      function answer(num, attach, user, mode, max) {  <? // mode: 1 -- СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ С‚РѕРї, 2 -- СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№ ?>
                 if(max == undefined) max = 0;
                 yt_link = false;
                 var max_blog_file = <?=blogs::MAX_FILES;?>;
@@ -368,13 +368,13 @@ navigated = 0;
 					td1 = document.getElementById('form'+oldid);
 					td1.innerHTML = "";
 				}
-        act_text = "<?=(($gr_base == 5)? "Публиковать работу" : "Комментировать")?>";
-        if(mode==1||mode==2) act_text = 'Редактировать';
+        act_text = "<?=(($gr_base == 5)? "РџСѓР±Р»РёРєРѕРІР°С‚СЊ СЂР°Р±РѕС‚Сѓ" : "РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ")?>";
+        if(mode==1||mode==2) act_text = 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ';
 				if (!user) { user='<?=$blog->login?>'; }
                 if (attach && attach.length) {
 
                     attach_text = '<div class="apf-addedfiles">\
-                        <h3 style="margin: 16px 0 4px 0">Добавленные файлы:</h3>\
+                        <h3 style="margin: 16px 0 4px 0">Р”РѕР±Р°РІР»РµРЅРЅС‹Рµ С„Р°Р№Р»С‹:</h3>\
                         <table cellpadding="2" cellspacing="0" border="0">';
 
                     for (var i=0; i<attach.length; i++) {
@@ -386,10 +386,10 @@ navigated = 0;
                         </td> \
                         <td> \
                             <input type="hidden" name="filecount" value="10" /> \
-                            <a href="<?=WDCPREFIX?>/' + attach[i].path + '/' + attach[i].fname + '" target="_blank">Посмотреть</a> ('+attach[i].ftype+'; '+attach[i].mb_size+') \
+                            <a href="<?=WDCPREFIX?>/' + attach[i].path + '/' + attach[i].fname + '" target="_blank">РџРѕСЃРјРѕС‚СЂРµС‚СЊ</a> ('+attach[i].ftype+'; '+attach[i].mb_size+') \
                         </td> \
                         <td> \
-                            <input type="checkbox" name="delattach[]" value="' + attach[i].id + '" /> удалить \
+                            <input type="checkbox" name="delattach[]" value="' + attach[i].id + '" /> СѓРґР°Р»РёС‚СЊ \
                             <input type="hidden" name="filetodelete" id="filetodelete" value="" /> \
                         </td> \
                         </tr> \
@@ -409,7 +409,7 @@ navigated = 0;
             ?>                
             <? if ($edit_attach) { ?>
                 attach_text = '<div class="apf-addedfiles">\
-            <h3 style="margin: 16px 0 4px 0">Добавленные файлы:</h3>\
+            <h3 style="margin: 16px 0 4px 0">Р”РѕР±Р°РІР»РµРЅРЅС‹Рµ С„Р°Р№Р»С‹:</h3>\
             <table cellpadding="2" cellspacing="0" border="0">\
             <?
             foreach ($edit_attach as $attach) {
@@ -425,10 +425,10 @@ navigated = 0;
                     <input type="hidden" id="hidden_file<?=$i+1?>_name" name="hidden_file_name" value="<?=$attach['fname']?>" /> \
                     <input type="hidden" name="hidden_file<?=$i+1?>_size" value="<?=$attach['size']?>" /> \
                     <input type="hidden" name="hidden_file<?=$i+1?>_ftype" value="<?=$attach['ftype']?>" /> \
-                    <a href="<?=WDCPREFIX?>/users/<?=$blog->login?>/upload/<?=$attach['fname']?>" target="_blank">Посмотреть</a> (<?=$attach['ftype']?>; <?=ConvertBtoMB($attachFile->size)?> ) \
+                    <a href="<?=WDCPREFIX?>/users/<?=$blog->login?>/upload/<?=$attach['fname']?>" target="_blank">РџРѕСЃРјРѕС‚СЂРµС‚СЊ</a> (<?=$attach['ftype']?>; <?=ConvertBtoMB($attachFile->size)?> ) \
                 </td> \
                 <td> \
-                    <input type="checkbox" name="delattach[]" value="<?=$attach['id']?>"> удалить \
+                    <input type="checkbox" name="delattach[]" value="<?=$attach['id']?>"> СѓРґР°Р»РёС‚СЊ \
                     <input type="hidden" name="filetodelete" id="filetodelete" value="" /> \
                 </td> \
                 </tr> \
@@ -558,7 +558,7 @@ if ($gr_base == 3 || $gr_base == 4 || $gr_base == 5 || !isset($gr_base)) {
 
 <?php
 $crumbs = array();
-$crumbs[] = array("title"=>"Блоги", "url"=>"/blogs/");
+$crumbs[] = array("title"=>"Р‘Р»РѕРіРё", "url"=>"/blogs/");
 $crumbs[] = array("title"=>$gr_name, "url"=>getFriendlyURL("blog_group", $gr_id)."?from={$thread}".($gr_base ? "&amp;t=prof" : ""));
 ?>
 <div class="b-menu b-menu_crumbs "><?=getCrumbs($crumbs, 'blogs')?></div>
@@ -589,16 +589,16 @@ $crumbs[] = array("title"=>$gr_name, "url"=>getFriendlyURL("blog_group", $gr_id)
 	<tr>
 		<td style=" padding: 15px 19px 0 0; text-align:right;"><?
 		seo_start();
-		if (get_class($blog) == "blogs_articles") { ?><b>[<a href="/articles/<?=(($page = (int)InGet('bp'))? "?page=$page": '')?>" class="blue"><b>Назад</b></a>]</b><? } else {
+		if (get_class($blog) == "blogs_articles") { ?><b>[<a href="/articles/<?=(($page = (int)InGet('bp'))? "?page=$page": '')?>" class="blue"><b>РќР°Р·Р°Рґ</b></a>]</b><? } else {
 			if (($gr_base == 3 || $gr_base == 4 || $gr_base == 5 || !isset($gr_base)) && $_SESSION['p_ref']) {
 
 				if (!$_SESSION["prj_ref_link"]) { $_SESSION["prj_ref_link"]=$_SESSION['p_ref']; }
 
-		     ?><b>[<a href="<?=($_SESSION["prj_ref_link"] ? $_SESSION["prj_ref_link"]."#prj".$gr_id  : $_SESSION['p_ref']."#prj".$gr_id)?>" class="blue"><b>Назад</b></a>]</b>
+		     ?><b>[<a href="<?=($_SESSION["prj_ref_link"] ? $_SESSION["prj_ref_link"]."#prj".$gr_id  : $_SESSION['p_ref']."#prj".$gr_id)?>" class="blue"><b>РќР°Р·Р°Рґ</b></a>]</b>
 		<? } elseif ($gr_base != 3 && $gr_base != 4  && $gr_base != 5) {
 			$_SESSION["prj_ref_link"]='';
 		    ?>
-		<b>[<a href="<?=getFriendlyURL("blog_group", $gr_id)?>?<?=($page)?"page=$page&":''?><?=(($page = (int)InGet('bp'))? "page=$page": '')?><?=($gr_base)?"&t=prof":""?>&from=<?=$thread?><?=($bOrd?"&ord=".$bOrd:"")?>#b<?=$thread?>" class="blue"><b>Назад</b></a>]</b>
+		<b>[<a href="<?=getFriendlyURL("blog_group", $gr_id)?>?<?=($page)?"page=$page&":''?><?=(($page = (int)InGet('bp'))? "page=$page": '')?><?=($gr_base)?"&t=prof":""?>&from=<?=$thread?><?=($bOrd?"&ord=".$bOrd:"")?>#b<?=$thread?>" class="blue"><b>РќР°Р·Р°Рґ</b></a>]</b>
 		<? } } ?>
         <?= seo_end();?>
 		</td>
@@ -650,20 +650,20 @@ $crumbs[] = array("title"=>$gr_name, "url"=>getFriendlyURL("blog_group", $gr_id)
 			
 			<? if ($blog->modified) {?> 
      <span class="b-layout__txt b-layout__txt_fontsize_11">
-         <?	if (!$blog->modified_id || $blog->modified_id == $blog->fromuser_id) { ?> [внесены изменения: <?=date("d.m.Y | H:i]",strtotimeEx($blog->modified)); }
-               else { ?>Отредактировано модератором <? if (!$mod) { ?>( <? if (!$user) $user = new user(); $mod_user = $user->GetName($blog->modified_id, $err); print($mod_user['login'] . ' : ' . $mod_user['usurname'] . ' ' . $mod_user['uname']); ?> ) <? } ?> <?=date("[d.m.Y | H:i]",strtotimeEx($blog->modified));?><? }?>
+         <?	if (!$blog->modified_id || $blog->modified_id == $blog->fromuser_id) { ?> [РІРЅРµСЃРµРЅС‹ РёР·РјРµРЅРµРЅРёСЏ: <?=date("d.m.Y | H:i]",strtotimeEx($blog->modified)); }
+               else { ?>РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј <? if (!$mod) { ?>( <? if (!$user) $user = new user(); $mod_user = $user->GetName($blog->modified_id, $err); print($mod_user['login'] . ' : ' . $mod_user['usurname'] . ' ' . $mod_user['uname']); ?> ) <? } ?> <?=date("[d.m.Y | H:i]",strtotimeEx($blog->modified));?><? }?>
      </span>      
    <br />
 			<? }?>
 			<? if ($blog->deleted) {?> 
        <span class="b-layout__txt b-layout__txt_color_c10600">
           <? if (!$blog->deluser_id || $blog->deluser_id == $blog->fromuser_id) { ?>
-            Удалено автором <?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));?>
+            РЈРґР°Р»РµРЅРѕ Р°РІС‚РѕСЂРѕРј <?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));?>
           <? } else { ?>
-            Удалено модератором<? if (!$mod) { ?> 
+            РЈРґР°Р»РµРЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј<? if (!$mod) { ?> 
               ( <? if (!$user) $user = new user(); $mod_user = $user->GetName($blog->deluser_id, $err); print($mod_user['login'] . ' : ' . $mod_user['usurname'] . ' ' . $mod_user['uname']); ?> )
 										<? } ?> 
-														<? if($blog->thread[count($blog->thread) - 1]['deleted_reason']) { ?>Причина удаления: <?=$blog->thread[count($blog->thread) - 1]['deleted_reason']?><? } ?> 
+														<? if($blog->thread[count($blog->thread) - 1]['deleted_reason']) { ?>РџСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ: <?=$blog->thread[count($blog->thread) - 1]['deleted_reason']?><? } ?> 
 														<?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));?>
           <? } ?>
         </span><br />
@@ -675,7 +675,7 @@ $crumbs[] = array("title"=>$gr_name, "url"=>getFriendlyURL("blog_group", $gr_id)
             ?><h1 class="bl_name" <?=$css_deleted?>><?=reformat($sTitle,52,0,1); ?></h1><? } ?>
 
 
-	<!--<div class="blog-one-cnt" id="message<?=$blog->id?>" <?=$css_deleted?> style="width:<?=(855-(($blog->level>18?18:$blog->level)*20))."px;"?>"> эти стили слишком расширяли блоги и они ломались, поэтому пока закомментил-->
+	<!--<div class="blog-one-cnt" id="message<?=$blog->id?>" <?=$css_deleted?> style="width:<?=(855-(($blog->level>18?18:$blog->level)*20))."px;"?>"> СЌС‚Рё СЃС‚РёР»Рё СЃР»РёС€РєРѕРј СЂР°СЃС€РёСЂСЏР»Рё Р±Р»РѕРіРё Рё РѕРЅРё Р»РѕРјР°Р»РёСЃСЊ, РїРѕСЌС‚РѕРјСѓ РїРѕРєР° Р·Р°РєРѕРјРјРµРЅС‚РёР»-->
 			<div class="blog-one-cnt" id="message<?=$blog->id?>" <?=$css_deleted?> >
 
 
@@ -748,16 +748,16 @@ $crumbs[] = array("title"=>$gr_name, "url"=>getFriendlyURL("blog_group", $gr_id)
 				<div class="poll-options">
 					<? if (!$voted && $_SESSION['uid'] && $blog->poll_closed != 't' && $ban_where != 1 && !$blog->is_blocked && !$blog->deleted) { ?>
                     <div class="b-buttons b-buttons_inline-block">
-					<span id="poll-btn-vote-<?=$thread?>"><a class="b-button b-button_rectangle_color_transparent" href="javascript: return false;" onclick="poll.vote('Blogs', <?=$thread?>); return false;"><span class="b-button__b1"><span class="b-button__b2"><span class="b-button__txt">Ответить</span></span></span></a>&nbsp;&nbsp;&nbsp;</span>
-					<span id="poll-btn-result-<?=$thread?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showResult('Blogs', <?=$thread?>); return false;">Посмотреть результаты</a>&nbsp;&nbsp;&nbsp;</span>
+					<span id="poll-btn-vote-<?=$thread?>"><a class="b-button b-button_rectangle_color_transparent" href="javascript: return false;" onclick="poll.vote('Blogs', <?=$thread?>); return false;"><span class="b-button__b1"><span class="b-button__b2"><span class="b-button__txt">РћС‚РІРµС‚РёС‚СЊ</span></span></span></a>&nbsp;&nbsp;&nbsp;</span>
+					<span id="poll-btn-result-<?=$thread?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showResult('Blogs', <?=$thread?>); return false;">РџРѕСЃРјРѕС‚СЂРµС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹</a>&nbsp;&nbsp;&nbsp;</span>
                     </div>
 					<? } else { ?>
 					<span id="poll-btn-vote-<?=$thread?>"></span>
 					<span id="poll-btn-result-<?=$thread?>"></span>
 					<? } ?>
 					<? if (($blog->fromuser_id == $_SESSION['uid'] && $ban_where != 1 && !$blog->is_blocked) || hasPermissions('blogs')) { ?>
-					<span id="poll-btn-close-<?=$thread?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.close('Blogs', <?=$thread?>); return false;"><?=(($blog->poll_closed == 't')? 'Открыть': 'Закрыть')?> опрос</a>&nbsp;&nbsp;&nbsp;</span>
-					<span id="poll-btn-remove-<?=$thread?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.remove('Blogs', <?=$thread?>); return false;">Удалить опрос</a></span>
+					<span id="poll-btn-close-<?=$thread?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.close('Blogs', <?=$thread?>); return false;"><?=(($blog->poll_closed == 't')? 'РћС‚РєСЂС‹С‚СЊ': 'Р—Р°РєСЂС‹С‚СЊ')?> РѕРїСЂРѕСЃ</a>&nbsp;&nbsp;&nbsp;</span>
+					<span id="poll-btn-remove-<?=$thread?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.remove('Blogs', <?=$thread?>); return false;">РЈРґР°Р»РёС‚СЊ РѕРїСЂРѕСЃ</a></span>
 					<? } ?>
 				</div>
 			</div>
@@ -781,7 +781,7 @@ $crumbs[] = array("title"=>$gr_name, "url"=>getFriendlyURL("blog_group", $gr_id)
                     } else {
                         $str = '<div class="flw_offer_attach">'.viewattachLeft($blog->login, $attach['fname'], "upload", $file, 1000, 600, 307200, false, (($attach['small']==2)?1:0)).'</div>';
                     }*/
-                    $str = '<div class="flw_offer_attach" style="padding-left:60px">'.viewattachLeft($blog->login, $attach['fname'], "upload", $file, 1000, 600, 307200, false, (($attach['small']==2)?1:0), 1, 0, "{$foto_alt} фото {$attach['fname']}", "{$foto_alt} (фото)").'</div>';
+                    $str = '<div class="flw_offer_attach" style="padding-left:60px">'.viewattachLeft($blog->login, $attach['fname'], "upload", $file, 1000, 600, 307200, false, (($attach['small']==2)?1:0), 1, 0, "{$foto_alt} С„РѕС‚Рѕ {$attach['fname']}", "{$foto_alt} (С„РѕС‚Рѕ)").'</div>';
                     print("<tr><td colspan='2'>".$str."</td></tr>");
                 
                 }
@@ -801,7 +801,7 @@ $crumbs[] = array("title"=>$gr_name, "url"=>getFriendlyURL("blog_group", $gr_id)
                         } else {
 							$str = '<div class="flw_offer_attach">'.viewattachLeft($blog->login, $temp["fname"], "upload", $file, 1000, 600, 307200, false, 0).'</div>';
 						}*/
-                        $str = '<div class="flw_offer_attach" style="padding-left:60px">'.viewattachLeft($blog->login, $temp["fname"], "upload", $file, 1000, 600, 307200, false, 0, 1, 0, "{$foto_alt} фото {$temp['fname']}").'</div>';
+                        $str = '<div class="flw_offer_attach" style="padding-left:60px">'.viewattachLeft($blog->login, $temp["fname"], "upload", $file, 1000, 600, 307200, false, 0, 1, 0, "{$foto_alt} С„РѕС‚Рѕ {$temp['fname']}").'</div>';
 
 						if ($file) { print("<tr><td colspan='2'><br />".$str."<br /></td></tr>"); }
 						else { print("<tr><td colspan=\"2\">".$str."</td></tr>"); }
@@ -832,15 +832,15 @@ $crumbs[] = array("title"=>$gr_name, "url"=>getFriendlyURL("blog_group", $gr_id)
 <?
 //rus
 
-if ($_GET["openlevel"]) { $openlevel=intval($_GET["openlevel"]); } else { $openlevel=0; }// Ид с которого открыть тред
-if ($bPageFrom) { $PageFrom=$bPageFrom; } else { $PageFrom=0; } // постраничка
-if ($_GET["openalllevels"]) { $OpenAllLevels=$_GET["openalllevels"]; } else { $OpenAllLevels=0; } // все треды развернуты
-if ($_GET["wopages"]) { $MaxOnPage=999999999; } else { $MaxOnPage=10; } // максимум корневых записей на стр
+if ($_GET["openlevel"]) { $openlevel=intval($_GET["openlevel"]); } else { $openlevel=0; }// РРґ СЃ РєРѕС‚РѕСЂРѕРіРѕ РѕС‚РєСЂС‹С‚СЊ С‚СЂРµРґ
+if ($bPageFrom) { $PageFrom=$bPageFrom; } else { $PageFrom=0; } // РїРѕСЃС‚СЂР°РЅРёС‡РєР°
+if ($_GET["openalllevels"]) { $OpenAllLevels=$_GET["openalllevels"]; } else { $OpenAllLevels=0; } // РІСЃРµ С‚СЂРµРґС‹ СЂР°Р·РІРµСЂРЅСѓС‚С‹
+if ($_GET["wopages"]) { $MaxOnPage=999999999; } else { $MaxOnPage=10; } // РјР°РєСЃРёРјСѓРј РєРѕСЂРЅРµРІС‹С… Р·Р°РїРёСЃРµР№ РЅР° СЃС‚СЂ
 
 $MaxOnPage=999999999;
 $OpenAllLevels=1;
 
-$MinOpenLevel=2; // до какого уровня развернуты
+$MinOpenLevel=2; // РґРѕ РєР°РєРѕРіРѕ СѓСЂРѕРІРЅСЏ СЂР°Р·РІРµСЂРЅСѓС‚С‹
 
 $BlockLevel=false;
 $FirstTop=true;
@@ -875,7 +875,7 @@ $NextPostPage= ($PageFrom+$MaxOnPage<$AllRootRecord ? floor($AllRootRecord/$MaxO
 		if ($uid)
 		{
 ?>
-				<div class="star-outer"><img src="/images/bookmarks/<?=(!isset($favs[$thread]))?'bsw.png':blogs::$priority_img[$favs[$thread]['priority']]?>" alt="Добавить в закладки" title="Добавить в закладки" class="star" id="favstar<?=$thread?>" style="position: absolute; cursor: pointer;" onclick="ShowFavFloat(<?=$thread?>)" /><div id="FavFloat<?=$thread?>" style="postiton:absolute; margin-left:-20px; margin-top:-15px;"></div></div>
+				<div class="star-outer"><img src="/images/bookmarks/<?=(!isset($favs[$thread]))?'bsw.png':blogs::$priority_img[$favs[$thread]['priority']]?>" alt="Р”РѕР±Р°РІРёС‚СЊ РІ Р·Р°РєР»Р°РґРєРё" title="Р”РѕР±Р°РІРёС‚СЊ РІ Р·Р°РєР»Р°РґРєРё" class="star" id="favstar<?=$thread?>" style="position: absolute; cursor: pointer;" onclick="ShowFavFloat(<?=$thread?>)" /><div id="FavFloat<?=$thread?>" style="postiton:absolute; margin-left:-20px; margin-top:-15px;"></div></div>
 				<div id="favcnt<?=$thread?>" class="favor-number"><span><?=$blog->fav_cnt?></span></div>
 
 <?
@@ -889,7 +889,7 @@ $NextPostPage= ($PageFrom+$MaxOnPage<$AllRootRecord ? floor($AllRootRecord/$MaxO
 seo_start();		
 ?>
 			<div class="section-blog">
-				<div class="section ">Раздел:</div>
+				<div class="section ">Р Р°Р·РґРµР»:</div>
 				<div class="small"><a href="<?=getFriendlyURL("blog_group", $gr_id)?>"><?=$gr_name?></a></div>
 			</div>
 <?= seo_end();?>
@@ -897,58 +897,58 @@ seo_start();
 				<div class="commline">
 
 <? if(hasPermissions('blogs') && $blog->deleted) { ?>				
-    <a href="?id=<?=$blog->id?>&action=restore&ord=<?=$bOrd?>" onclick="return warning(14);">Восстановить</a> | 
+    <a href="?id=<?=$blog->id?>&action=restore&ord=<?=$bOrd?>" onclick="return warning(14);">Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ</a> | 
 <? } else { ?>
 				<?if (hasPermissions('blogs') && $blog->login!=$_SESSION["login"] && $blog->login['login']!="admin") {
 				    ?>
 				    <script type="text/javascript">
-                    banned.addContext( 'blog_<?=$thread?>', 2, '<?=$GLOBALS['host']?><?=getFriendlyURL("blog", $thread)?>', "<?=($blog->title!=='' ? $blog->title : '<без темы>')?>" );
+                    banned.addContext( 'blog_<?=$thread?>', 2, '<?=$GLOBALS['host']?><?=getFriendlyURL("blog", $thread)?>', "<?=($blog->title!=='' ? $blog->title : '<Р±РµР· С‚РµРјС‹>')?>" );
                     </script>
 				    <?php
             if(hasPermissions('users')) {
 					if ( $blog->warn<3 && !$blog->is_banned && !$blog->ban_where ) {
-						?><span class="warnlink-<?=$blog->fromuser_id?>"><a style="color: #D75A29; font-size:9px;" href="javascript: void(0);" onclick="banned.warnUser(<?=$blog->fromuser_id?>, 0, 'blogs', 'blog_<?=$thread?>', 0); return false;">Предупредить (<span class="warncount-<?=$blog->fromuser_id?>"><?=($blog->warn ? $blog->warn : 0)?></span>)</a></span> | <?
+						?><span class="warnlink-<?=$blog->fromuser_id?>"><a style="color: #D75A29; font-size:9px;" href="javascript: void(0);" onclick="banned.warnUser(<?=$blog->fromuser_id?>, 0, 'blogs', 'blog_<?=$thread?>', 0); return false;">РџСЂРµРґСѓРїСЂРµРґРёС‚СЊ (<span class="warncount-<?=$blog->fromuser_id?>"><?=($blog->warn ? $blog->warn : 0)?></span>)</a></span> | <?
 					}
 					else /*if (!$blog->is_banned)*/ {
-					    $sBanTitle = (!$blog->is_banned && !$blog->ban_where) ? 'Забанить!' : 'Разбанить';
+					    $sBanTitle = (!$blog->is_banned && !$blog->ban_where) ? 'Р—Р°Р±Р°РЅРёС‚СЊ!' : 'Р Р°Р·Р±Р°РЅРёС‚СЊ';
 						?><span class="warnlink-<?=$blog->fromuser_id?>"><a href="javascript:void(0);" onclick="banned.userBan(<?=$blog->fromuser_id?>, 'blog_<?=$thread?>',0)" style="color: Red;font-size:9px;"><?=$sBanTitle?></a></span> | <?
-					} } ?><span id="thread-button-<?=$thread?>"><a style="color: Red; font-size:9px;" href="javascript: void(0);" onclick="banned.<?=($blog->is_blocked? 'unblockedThread': 'blockedThread')?>(<?=$thread?>); return false;"><?=($blog->is_blocked? 'Разблокировать': 'Блокировать')?></a></span> | <?
+					} } ?><span id="thread-button-<?=$thread?>"><a style="color: Red; font-size:9px;" href="javascript: void(0);" onclick="banned.<?=($blog->is_blocked? 'unblockedThread': 'blockedThread')?>(<?=$thread?>); return false;"><?=($blog->is_blocked? 'Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ': 'Р‘Р»РѕРєРёСЂРѕРІР°С‚СЊ')?></a></span> | <?
                 }
                      $parent_login = $blog->login;
                      if ($blog->id && $blog->login == $_SESSION['login'] && !$blog->is_blocked && $gr_base != 3 && $gr_base != 4 || !$mod) {
 					?>
-            <? if ($gr_base == 5 && $winner) { ?> <a href="#winner">Победитель</a> |
-            <a  style="color: Red; " href="view.php?tr=<?=$thread?>&action=deletewinner&winner=<?=$winner?>&ord=<?=$bOrd?>" style="color: #D75A29;" onclick="return warning(1);">Отменить победителя!</a> |
+            <? if ($gr_base == 5 && $winner) { ?> <a href="#winner">РџРѕР±РµРґРёС‚РµР»СЊ</a> |
+            <a  style="color: Red; " href="view.php?tr=<?=$thread?>&action=deletewinner&winner=<?=$winner?>&ord=<?=$bOrd?>" style="color: #D75A29;" onclick="return warning(1);">РћС‚РјРµРЅРёС‚СЊ РїРѕР±РµРґРёС‚РµР»СЏ!</a> |
 					
             <? } ?>
-            <? if ($gr_base == 5 && !$winner) { ?> Победитель не определен | <? } ?>
+            <? if ($gr_base == 5 && !$winner) { ?> РџРѕР±РµРґРёС‚РµР»СЊ РЅРµ РѕРїСЂРµРґРµР»РµРЅ | <? } ?>
 			
             <? if ($gr_base == 5 || $gr_base == 3) { ?>
-              <a href="<?=rawurlencode($_SERVER['PHP_SELF'])."?".htmlspecialchars($clearQueryStrOpen)?>&amp;id=<?=$blog->id?>&amp;action=delete&ord=<?=$bOrd?>" onclick="return warning(1);">Удалить</a> |
-              <a href="/public/?step=1&public=<?=$blog->id_gr?>&red=<?=rawurlencode($_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING'])?>">Редактировать</a> |
+              <a href="<?=rawurlencode($_SERVER['PHP_SELF'])."?".htmlspecialchars($clearQueryStrOpen)?>&amp;id=<?=$blog->id?>&amp;action=delete&ord=<?=$bOrd?>" onclick="return warning(1);">РЈРґР°Р»РёС‚СЊ</a> |
+              <a href="/public/?step=1&public=<?=$blog->id_gr?>&red=<?=rawurlencode($_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING'])?>">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> |
             <? }
                else
                {
-                 if ( ($gr_base == 0 && !$blog->deleted && $blog->login == $_SESSION['login']) || !$mod ) { // в комментах.
-                   ?><a href="/blogs/viewgroup.php?id=<?=$blog->id?>&action=delete&ord=<?=$bOrd?>&u_token_key=<?=$_SESSION['rand']?>" onclick="return warning(1);">Удалить</a>
+                 if ( ($gr_base == 0 && !$blog->deleted && $blog->login == $_SESSION['login']) || !$mod ) { // РІ РєРѕРјРјРµРЅС‚Р°С….
+                   ?><a href="/blogs/viewgroup.php?id=<?=$blog->id?>&action=delete&ord=<?=$bOrd?>&u_token_key=<?=$_SESSION['rand']?>" onclick="return warning(1);">РЈРґР°Р»РёС‚СЊ</a>
                    | <?
                  }
             ?>
             <?php if (!$blog->deleted) {?>
-              <a href="?id=<?=$blog->id?>&amp;action=edit&pagefrom=<?=$bPageFrom?>&amp;tr=<?=$thread?>&ord=<?=$bOrd?>">Редактировать</a> |
+              <a href="?id=<?=$blog->id?>&amp;action=edit&pagefrom=<?=$bPageFrom?>&amp;tr=<?=$thread?>&ord=<?=$bOrd?>">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> |
               <?}?>
             <? } ?>
           <? } ?>
           <?  $_i=''; if(blogs::isBlogSubscribe($thread, $uid) == true && $_SESSION["login"] != $blog->login && $uid && (!$blog->is_blocked && !$closed_comments)): $_i=' | ' ?>
-          <a href="javascript:void(1)" id="blog_subscribe" onClick="xajax_DelBlogSubscribe(<?=$thread?>)">Отписаться от темы</a>
+          <a href="javascript:void(1)" id="blog_subscribe" onClick="xajax_DelBlogSubscribe(<?=$thread?>)">РћС‚РїРёСЃР°С‚СЊСЃСЏ РѕС‚ С‚РµРјС‹</a>
           <? elseif($uid && $_SESSION["login"] != $blog->login && (!$blog->is_blocked && !$closed_comments)):  $_i=' | ' ?>
-          <a href="javascript:void(1)" id="blog_subscribe" onClick="xajax_SetBlogSubscribe(<?=$thread?>, 1)">Подписаться на тему</a>
+          <a href="javascript:void(1)" id="blog_subscribe" onClick="xajax_SetBlogSubscribe(<?=$thread?>, 1)">РџРѕРґРїРёСЃР°С‚СЊСЃСЏ РЅР° С‚РµРјСѓ</a>
           <? endif; ?>
 <? } ?>
           <?php if (!$blog->deleted) {?>
               <? if ((!$blog->is_blocked && !$closed_comments) || hasPermissions('blogs')) { seo_start();?>
                  <?=$_i?><a <? if($_SESSION["login"]){?> href="javascript: void(0);" onclick="javascript:answer(<?=$blog->id?>, '','<?=get_login($uid)?>'); document.getElementById('frm').olduser.value = '<?=$uid?>'; document.getElementById('frm').scrollIntoView(true); <?=($NextPostPage? "document.getElementById('frm').onpage.value = '".$NextPostPage."';" : '' )?>" <? }else{?>href='/fbd.php'<? }?>>
-                     <?=(($gr_base == 5)? "Публиковать работу" : "Комментировать")?>
+                     <?=(($gr_base == 5)? "РџСѓР±Р»РёРєРѕРІР°С‚СЊ СЂР°Р±РѕС‚Сѓ" : "РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ")?>
                    </a>
                    <?= seo_end();?>
               <? } ?>
@@ -956,7 +956,7 @@ seo_start();
 
 					<?
 					$link = "/contacts/?from=".$blog->login."#form";
-					if ($gr_base == 5 || $gr_base == 3) {?> | <a href="javascript: void(0);"  onclick="javascript: document.frmdet.submit();"> Оговорить детали</a><form action="<?=$link?>" method="post" name="frmdet"><input type="hidden" name="prjname" value="<?=htmlspecialchars($blog->title)?>"></form><?}?>
+					if ($gr_base == 5 || $gr_base == 3) {?> | <a href="javascript: void(0);"  onclick="javascript: document.frmdet.submit();"> РћРіРѕРІРѕСЂРёС‚СЊ РґРµС‚Р°Р»Рё</a><form action="<?=$link?>" method="post" name="frmdet"><input type="hidden" name="prjname" value="<?=htmlspecialchars($blog->title)?>"></form><?}?>
 					
                 </div>
                 
@@ -971,12 +971,12 @@ seo_start();
           	<div style="padding:0 19px 19px">
           <? if ($blog->close_comments) { ?>
             <? if ($blog->fromuser_id == get_uid()) {?>
-                <h3 class="bl">Вы запретили оставлять комментарии.</h3>
+                <h3 class="bl">Р’С‹ Р·Р°РїСЂРµС‚РёР»Рё РѕСЃС‚Р°РІР»СЏС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёРё.</h3>
             <? } else { ?>
-                <h3 class="bl">Автор блога запретил оставлять комментарии.</h3>
+                <h3 class="bl">РђРІС‚РѕСЂ Р±Р»РѕРіР° Р·Р°РїСЂРµС‚РёР» РѕСЃС‚Р°РІР»СЏС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёРё.</h3>
             <? } ?>
           <? } if ($blog->is_private) { ?>
-          <h3 class="bl">Вы запретили просматривать эту запись.</h3>
+          <h3 class="bl">Р’С‹ Р·Р°РїСЂРµС‚РёР»Рё РїСЂРѕСЃРјР°С‚СЂРёРІР°С‚СЊ СЌС‚Сѓ Р·Р°РїРёСЃСЊ.</h3>
           <? } ?>
           </div>
         </td>
@@ -1026,7 +1026,7 @@ seo_start();
         document.getElementById('frm').msg.value = document.getElementById('msg_source').value;
 		if (document.getElementById('frm').yt_link != undefined) document.getElementById('frm').yt_link.value = '<?=($error_flag)?(stripslashes(html_entity_decode($yt_link,ENT_QUOTES))):input_ref_scr(html_entity_decode($blog->yt_link,ENT_QUOTES))?>';
 		if (document.getElementById('frm').yt_link.value) document.getElementById('yt_link').style.display = '';
-        document.getElementById('frm').btn.value = 'Сохранить';
+        document.getElementById('frm').btn.value = 'РЎРѕС…СЂР°РЅРёС‚СЊ';
 		document.getElementById('frm').action.value = 'change';
 		errmsg1 = errmsg2 = '';
 		document.getElementById('poll-question').value = document.getElementById('poll-question-source').value;	
@@ -1040,7 +1040,7 @@ seo_start();
     <tr>
 	<td style="padding:0px;">
         <a name="comments"></a>
-		<? if ($gr_base < 100) { ?><h1 class="bl" style="margin: 10px 0px 25px 15px;"><?=(($gr_base == 5)? "Конкурсные работы" : "Комментарии")?>:</h1><? } ?>
+		<? if ($gr_base < 100) { ?><h1 class="bl" style="margin: 10px 0px 25px 15px;"><?=(($gr_base == 5)? "РљРѕРЅРєСѓСЂСЃРЅС‹Рµ СЂР°Р±РѕС‚С‹" : "РљРѕРјРјРµРЅС‚Р°СЂРёРё")?>:</h1><? } ?>
 		<?
 
 
@@ -1057,7 +1057,7 @@ seo_start();
 		$allow_del = ($blog->login == $_SESSION['login'])? 1 : 0;
 
 		while ($blog->GetNext()) {
-          $level = ($blog->level > 18?18:$blog->level);   // @todo Вынести максимальный левел в какую-нибудь глобальную для блогов переменную
+          $level = ($blog->level > 18?18:$blog->level);   // @todo Р’С‹РЅРµСЃС‚Рё РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ Р»РµРІРµР» РІ РєР°РєСѓСЋ-РЅРёР±СѓРґСЊ РіР»РѕР±Р°Р»СЊРЅСѓСЋ РґР»СЏ Р±Р»РѕРіРѕРІ РїРµСЂРµРјРµРЅРЅСѓСЋ
 		  $maxw_msg = round(81-2*($level));
 		  $maxw_ttl = round(50-1.5*($level));
 		  $width_level = (855-($level*20));
@@ -1091,7 +1091,7 @@ seo_start();
                     } else {
                         $attach_html .= '<div class="flw_offer_attach">'.viewattachLeft($blog->login, $attach['fname'], "upload", $file, 1000, 600, 307200, false, (($attach['small']==2)?1:0)).'</div>';
                     }*/
-                    $attach_html .= '<div class="flw_offer_attach">'.viewattachLeft($blog->login, $attach['fname'], "upload", $file, 1000, 600, 307200, false, (($attach['small']==2)?1:0), 1, 0, "{$foto_alt} фото {$attach['fname']}").'</div>';
+                    $attach_html .= '<div class="flw_offer_attach">'.viewattachLeft($blog->login, $attach['fname'], "upload", $file, 1000, 600, 307200, false, (($attach['small']==2)?1:0), 1, 0, "{$foto_alt} С„РѕС‚Рѕ {$attach['fname']}").'</div>';
                 }
             } else if ($blog->attach) {
                 $att_ext = CFile::getext($blog->attach);
@@ -1102,7 +1102,7 @@ seo_start();
                 } else {
                     $attach_html = '<div class="flw_offer_attach">'.viewattachLeft($blog->login, $blog->attach, "upload", $file, 1000, 600, 307200, false, (($blog->small==2)?1:0)).'</div>';
                 }*/
-                $attach_html = '<div class="flw_offer_attach">'.viewattachLeft($blog->login, $blog->attach, "upload", $file, 1000, 600, 307200, false, (($blog->small==2)?1:0), 1, 0, "{$foto_alt} фото {$blog->attach}").'</div>';
+                $attach_html = '<div class="flw_offer_attach">'.viewattachLeft($blog->login, $blog->attach, "upload", $file, 1000, 600, 307200, false, (($blog->small==2)?1:0), 1, 0, "{$foto_alt} С„РѕС‚Рѕ {$blog->attach}").'</div>';
             }
 			$padding = ($blog->level > 18) ? 380 : (($blog->level+1)*20);
 			//if (in_array($blog->reply, $cur_user_msgs)) $allow_del = 1;
@@ -1114,7 +1114,7 @@ seo_start();
 			if (!$OpenAllLevels && $blog->level) {
 
 				if ($blog->level<$OpenLevelFrom && $blog->level>$MinOpenLevel) {
-					// закрытые треды
+					// Р·Р°РєСЂС‹С‚С‹Рµ С‚СЂРµРґС‹
 					if (!$blog->deleted)
 					{
 						print '<span  name="'.$blog->id.'" id="'.$blog->id.'">';
@@ -1160,9 +1160,9 @@ seo_start();
 					$buser_id = array_pop($buser_id);
 					$buser_id = $buser_id['fromuser_id'];
 				}
-				if ($blog->deluser_id == $blog->fromuser_id) { ?> Комментарий удален автором <?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted)); }
-			     elseif ($blog->deluser_id == $buser_id) { ?> Комментарий удален автором темы <?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));?>
-			<?   } else { ?> Комментарий удален модератором <? if (!$mod) { ?>( <? $del_user = $user->GetName($blog->deluser_id, $err); print($del_user['login'] . ' : ' . $del_user['usurname'] . ' ' . $del_user['uname']); ?> ) <? } ?><?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));?><?}?>
+				if ($blog->deluser_id == $blog->fromuser_id) { ?> РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ Р°РІС‚РѕСЂРѕРј <?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted)); }
+			     elseif ($blog->deluser_id == $buser_id) { ?> РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ Р°РІС‚РѕСЂРѕРј С‚РµРјС‹ <?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));?>
+			<?   } else { ?> РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ РјРѕРґРµСЂР°С‚РѕСЂРѕРј <? if (!$mod) { ?>( <? $del_user = $user->GetName($blog->deluser_id, $err); print($del_user['login'] . ' : ' . $del_user['usurname'] . ' ' . $del_user['uname']); ?> ) <? } ?><?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));?><?}?>
 			<? } else {?>
   			<b>
   			<? if ($blog->title!=='') { ?>
@@ -1177,17 +1177,17 @@ seo_start();
   			<div style="color: #D75A29; font-size:9px;<? if ($blog->attach && !$file) { ?> padding-left: <?=$padding+60?>px;<? } ?>">
   			
   			<? if ($blog->login == $_SESSION['login'] || $allow_del || !$mod) {?>
-  			<a href="<?=rawurlencode($_SERVER['PHP_SELF'])."?".htmlspecialchars($clearQueryStrOpen)?>&amp;id=<?=$blog->id?>&amp;action=delete&ord=<?=$bOrd?>&u_token_key=<?=$_SESSION['rand']?>" style="color: #D75A29;" onclick="return warning(1);">Удалить</a> |
+  			<a href="<?=rawurlencode($_SERVER['PHP_SELF'])."?".htmlspecialchars($clearQueryStrOpen)?>&amp;id=<?=$blog->id?>&amp;action=delete&ord=<?=$bOrd?>&u_token_key=<?=$_SESSION['rand']?>" style="color: #D75A29;" onclick="return warning(1);">РЈРґР°Р»РёС‚СЊ</a> |
   			<? } if ($blog->login == $_SESSION['login'] || (!$mod)) {?>
-  			<a href="<?=rawurlencode($_SERVER['PHP_SELF'])."?".htmlspecialchars($clearQueryStrOpen)?>&amp;id=<?=$blog->id?>&amp;action=edit&pagefrom=<?=$bPageFrom?>&amp;tr=<?=$thread?>&ord=<?=$bOrd?>#efrm" style="color: #D75A29;">Редактировать</a> |
+  			<a href="<?=rawurlencode($_SERVER['PHP_SELF'])."?".htmlspecialchars($clearQueryStrOpen)?>&amp;id=<?=$blog->id?>&amp;action=edit&pagefrom=<?=$bPageFrom?>&amp;tr=<?=$thread?>&ord=<?=$bOrd?>#efrm" style="color: #D75A29;">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> |
   			<? } ?>
   			<?seo_start();?>
   			  <? if (!$closed_comments) { ?>
-            <a <?if($_SESSION['login']){?> href="javascript: void(0);" onclick="javascript:answer(<?=$blog->id?>, '', '<?=get_login($uid)?>'); document.getElementById('frm').olduser.value = '<?=$uid?>'; " <?}else{?>href="/fbd.php"<?}?> style="color: #D75A29">Комментировать</a> |
+            <a <?if($_SESSION['login']){?> href="javascript: void(0);" onclick="javascript:answer(<?=$blog->id?>, '', '<?=get_login($uid)?>'); document.getElementById('frm').olduser.value = '<?=$uid?>'; " <?}else{?>href="/fbd.php"<?}?> style="color: #D75A29">РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ</a> |
   			  <? } ?>
-  			<a href="<?=rawurlencode($_SERVER['PHP_SELF'])."?".htmlspecialchars($clearQueryStrOpen)."&openlevel=".$blog->id.$ord_get_part."#o".$blog->id?>" style="color: #D75A29">Ссылка</a>
+  			<a href="<?=rawurlencode($_SERVER['PHP_SELF'])."?".htmlspecialchars($clearQueryStrOpen)."&openlevel=".$blog->id.$ord_get_part."#o".$blog->id?>" style="color: #D75A29">РЎСЃС‹Р»РєР°</a>
   			<?= seo_end();?>
-  			<? if ($FirstId) { $FirstClose=$blog->id;  $FirstId=0; ?> <?if (!$blog->deleted) {?> |<? }else {?><br /><br /><div style="color: #D75A29;font-size:9px;"><?}?> <a href="javascript: void(0);" onclick="javascript: var ddiv=document.getElementById('<?=$FirstClose?>'); ddiv.innerHTML='<?=$innerDiv?>'; xajax_openlevel(<?=$thread?>, <?=$mod?>, <?=$FirstClose?>, <?=$LastClose?>, <?=$PageFrom?>, <?=$thread?>, <?=$LastLink?>,'<?=$bOrd?>');" style="color: #D75A29">Развернуть </a>  <?if ($blog->deleted) {?></div><?} }?>
+  			<? if ($FirstId) { $FirstClose=$blog->id;  $FirstId=0; ?> <?if (!$blog->deleted) {?> |<? }else {?><br /><br /><div style="color: #D75A29;font-size:9px;"><?}?> <a href="javascript: void(0);" onclick="javascript: var ddiv=document.getElementById('<?=$FirstClose?>'); ddiv.innerHTML='<?=$innerDiv?>'; xajax_openlevel(<?=$thread?>, <?=$mod?>, <?=$FirstClose?>, <?=$LastClose?>, <?=$PageFrom?>, <?=$thread?>, <?=$LastLink?>,'<?=$bOrd?>');" style="color: #D75A29">Р Р°Р·РІРµСЂРЅСѓС‚СЊ </a>  <?if ($blog->deleted) {?></div><?} }?>
   			<?php } ?>
    			</div></td></tr>
   			<tr <? if (!$blog->level || $LastLink==$blog->id) { ?> class="qpr" <? } ?>><td colspan="2" ><br /></td></tr>
@@ -1207,7 +1207,7 @@ seo_start();
 			*/?>document.getElementById('frm').msg.value = "<?=str_replace(array("\r","\n"), array('', '\n'), addslashes(($error_flag)?input_ref(addslashes(html_entity_decode($msg,ENT_QUOTES))):input_ref(html_entity_decode($blog->msgtext,ENT_QUOTES))))?>";
             if(document.getElementById('frm').yt_link != undefined) document.getElementById('frm').yt_link.value = '<?=($error_flag)?(stripslashes(html_entity_decode($yt_link,ENT_QUOTES))):input_ref_scr(html_entity_decode($blog->yt_link,ENT_QUOTES))?>';
 			if (document.getElementById('frm').yt_link.value) document.getElementById('yt_link').style.display = '';
-            document.getElementById('frm').btn.value = 'Сохранить';
+            document.getElementById('frm').btn.value = 'РЎРѕС…СЂР°РЅРёС‚СЊ';
 			document.getElementById('frm').action.value = 'change';
 			//-->
 			</script>
@@ -1244,7 +1244,7 @@ seo_start();
 
 				} else {
 
-					// открытые треды
+					// РѕС‚РєСЂС‹С‚С‹Рµ С‚СЂРµРґС‹
 
 						?>
 		<? if ($openlevel==$blog->id) {?><a name="o<?=$openlevel?>"></a><?}?>
@@ -1271,17 +1271,17 @@ seo_start();
 					$buser_id = array_pop($buser_id);
 					$buser_id = $buser_id['fromuser_id'];
 				}
-				if ($blog->deluser_id == $blog->fromuser_id) { ?><br /><br />Комментарий удален автором <?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted)); }
-			     elseif ($blog->deluser_id == $buser_id) { ?><br /><br />Комментарий удален автором темы <?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));?>
-			<?   } else { ?><br /><br />Комментарий удален модератором1 <? if (!$mod) { ?>( <? $del_user = $user->GetName($blog->deluser_id, $err); print($del_user['login'] . ' : ' . $del_user['usurname'] . ' ' . $del_user['uname']); ?> ) <? } ?><?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));?><?}?><br /><br />
+				if ($blog->deluser_id == $blog->fromuser_id) { ?><br /><br />РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ Р°РІС‚РѕСЂРѕРј <?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted)); }
+			     elseif ($blog->deluser_id == $buser_id) { ?><br /><br />РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ Р°РІС‚РѕСЂРѕРј С‚РµРјС‹ <?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));?>
+			<?   } else { ?><br /><br />РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ РјРѕРґРµСЂР°С‚РѕСЂРѕРј1 <? if (!$mod) { ?>( <? $del_user = $user->GetName($blog->deluser_id, $err); print($del_user['login'] . ' : ' . $del_user['usurname'] . ' ' . $del_user['uname']); ?> ) <? } ?><?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));?><?}?><br /><br />
 			<? } else {
 				if ($blog->modified) { ?> 
 				<span class="b-layout__txt b-layout__txt_fontsize_11">
-				<? if (!$blog->modified_id || $blog->modified_id == $blog->fromuser_id) { ?>[внесены изменения: <?=date("d.m.Y | H:i]",strtotimeEx($blog->modified)); }
-    else {?>Отредактировано модератором <? if (!$mod) { ?>( <? $mod_user = $user->GetName($blog->modified_id, $err); print($mod_user['login'] . ' : ' . $mod_user['usurname'] . ' ' . $mod_user['uname']); ?> ) <? } ?> <?=date("[d.m.Y | H:i]",strtotimeEx($blog->modified));?><? }?><? }?>
+				<? if (!$blog->modified_id || $blog->modified_id == $blog->fromuser_id) { ?>[РІРЅРµСЃРµРЅС‹ РёР·РјРµРЅРµРЅРёСЏ: <?=date("d.m.Y | H:i]",strtotimeEx($blog->modified)); }
+    else {?>РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј <? if (!$mod) { ?>( <? $mod_user = $user->GetName($blog->modified_id, $err); print($mod_user['login'] . ' : ' . $mod_user['usurname'] . ' ' . $mod_user['uname']); ?> ) <? } ?> <?=date("[d.m.Y | H:i]",strtotimeEx($blog->modified));?><? }?><? }?>
     </span>
   			<br />
-  			<? if ($winner == $blog->id) { ?><span class="b-layout__txt" color="#000099" style="font-size:20px">Победитель</span><? } ?>
+  			<? if ($winner == $blog->id) { ?><span class="b-layout__txt" color="#000099" style="font-size:20px">РџРѕР±РµРґРёС‚РµР»СЊ</span><? } ?>
   			<br />
   			<? if ($blog->title!=='') { ?><h1 class="bl_name">
   			<? if ($blog->login == "Anonymous"){
@@ -1304,19 +1304,19 @@ seo_start();
             }
             ?>
             <br />
-  			<? if ($gr_base == 5 && !$winner && $parent_login == $_SESSION['login']) { ?><input type="submit" name="btn" value="Это победитель" onClick="if (warning(0)) window.location.replace('./view.php?tr=<?=$thread?>&winner=<?=$blog->id?>&ord=<?=$bOrd?>'); else return false;"><? } ?>
+  			<? if ($gr_base == 5 && !$winner && $parent_login == $_SESSION['login']) { ?><input type="submit" name="btn" value="Р­С‚Рѕ РїРѕР±РµРґРёС‚РµР»СЊ" onClick="if (warning(0)) window.location.replace('./view.php?tr=<?=$thread?>&winner=<?=$blog->id?>&ord=<?=$bOrd?>'); else return false;"><? } ?>
   			<div style="color: #D75A29;font-size:9px;<? if ($blog->attach && !$file) { ?> padding-left: <?=$padding+60?>px;<? } ?>">
   			<? if ($blog->login == $_SESSION['login'] || $allow_del || !$mod) {?>
-  			<a href="<?=rawurlencode($_SERVER['PHP_SELF'])."?".htmlspecialchars($clearQueryStrOpen)?>&amp;id=<?=$blog->id?>&amp;action=delete&ord=<?=$bOrd?>&u_token_key=<?=$_SESSION['rand']?>" style="color: #D75A29;" onclick="return warning(1);">Удалить</a> |
+  			<a href="<?=rawurlencode($_SERVER['PHP_SELF'])."?".htmlspecialchars($clearQueryStrOpen)?>&amp;id=<?=$blog->id?>&amp;action=delete&ord=<?=$bOrd?>&u_token_key=<?=$_SESSION['rand']?>" style="color: #D75A29;" onclick="return warning(1);">РЈРґР°Р»РёС‚СЊ</a> |
   			<? } if ($blog->login == $_SESSION['login'] || (!$mod)) {?>
-  			<a href="<?=rawurlencode($_SERVER['PHP_SELF'])."?".htmlspecialchars($clearQueryStrOpen)?>&amp;id=<?=$blog->id?>&amp;action=edit&pagefrom=<?=$bPageFrom?>&amp;tr=<?=$thread?>&ord=<?=$bOrd?>#efrm" style="color: #D75A29;">Редактировать</a> |
+  			<a href="<?=rawurlencode($_SERVER['PHP_SELF'])."?".htmlspecialchars($clearQueryStrOpen)?>&amp;id=<?=$blog->id?>&amp;action=edit&pagefrom=<?=$bPageFrom?>&amp;tr=<?=$thread?>&ord=<?=$bOrd?>#efrm" style="color: #D75A29;">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> |
   			<? } ?>
   			<?seo_start();?>
 			  <? if (!$closed_comments) { ?>
-            <a <?if($_SESSION['login']){?> href="javascript: void(0);" onclick="javascript: answer(<?=$blog->id?>, '', '<?=get_login($uid)?>'); document.getElementById('frm').olduser.value = '<?=$uid?>';" <?}else{?>href="/fbd.php"<?}?> style="color: #D75A29">Комментировать</a> |
+            <a <?if($_SESSION['login']){?> href="javascript: void(0);" onclick="javascript: answer(<?=$blog->id?>, '', '<?=get_login($uid)?>'); document.getElementById('frm').olduser.value = '<?=$uid?>';" <?}else{?>href="/fbd.php"<?}?> style="color: #D75A29">РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ</a> |
   			  <? } ?>
 
-  			<a href="<?=rawurlencode($_SERVER['PHP_SELF'])."?".htmlspecialchars($clearQueryStrOpen)."&openlevel=".$blog->id.$ord_get_part."#o".$blog->id?>" style="color: #D75A29">Ссылка</a>
+  			<a href="<?=rawurlencode($_SERVER['PHP_SELF'])."?".htmlspecialchars($clearQueryStrOpen)."&openlevel=".$blog->id.$ord_get_part."#o".$blog->id?>" style="color: #D75A29">РЎСЃС‹Р»РєР°</a>
   			<?= seo_end();?>
   			</div>
   		<?php } ?>
@@ -1336,7 +1336,7 @@ seo_start();
 			<?/*document.getElementById('frm').msg.value = '<?=str_replace("\n", "\\n", ($error_flag)?input_ref(html_entity_decode($msg,ENT_QUOTES)):input_ref(html_entity_decode($blog->msgtext,ENT_QUOTES)))?>';
 			*/?>document.getElementById('frm').msg.value = "<?=str_replace(array("\r","\n"), array('', '\n'), addslashes(($error_flag)?input_ref(addslashes(html_entity_decode($msg,ENT_QUOTES))):input_ref(html_entity_decode($blog->msgtext,ENT_QUOTES))))?>";
             if(document.getElementById('frm').yt_link != undefined) document.getElementById('frm').yt_link.value = '<?=($error_flag)?(stripslashes(html_entity_decode($yt_link,ENT_QUOTES))):input_ref_scr(html_entity_decode($blog->yt_link,ENT_QUOTES))?>';
-			document.getElementById('frm').btn.value = 'Сохранить';
+			document.getElementById('frm').btn.value = 'РЎРѕС…СЂР°РЅРёС‚СЊ';
 			document.getElementById('frm').action.value = 'change';
 			//-->
 			</script>
@@ -1365,7 +1365,7 @@ seo_start();
 			}
 			else {
 
-				// как обычно открытые
+				// РєР°Рє РѕР±С‹С‡РЅРѕ РѕС‚РєСЂС‹С‚С‹Рµ
 		?>
 		<?if ($openlevel==$blog->id) {?><a name="o<?=$openlevel?>"></a><?}?>
 		<?if($blog->new == 't' && !$iunread): $iunread=true; ?><a name="unread"></a><? endif; ?>
@@ -1394,15 +1394,15 @@ seo_start();
 			    	$buser_id = array_pop($buser_id);
 			    	$buser_id = $buser_id['fromuser_id'];
 			    }
-			    if ($blog->deluser_id == $blog->fromuser_id) { if (!hasPermissions('blogs')) echo "<br /><br />"; ?>Комментарий удален автором <?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted)); }
-			     elseif ($blog->deluser_id == $buser_id) { if (!hasPermissions('blogs')) echo "<br /><br />"; ?>Комментарий удален автором темы <?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));?>
-			<?   } else { if (!hasPermissions('blogs')) echo "<br /><br />"; ?>Комментарий удален модератором <? if (!$mod) { ?>( <? $del_user = $user->GetName($blog->deluser_id, $err); print($del_user['login'] . ' : ' . $del_user['usurname'] . ' ' . $del_user['uname']); ?> ) <? } ?> <?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));?><?php if($blog->deleted_reason) { ?><br/>Причина: <br/><?=$blog->deleted_reason?><?php } ?> <?}?>
+			    if ($blog->deluser_id == $blog->fromuser_id) { if (!hasPermissions('blogs')) echo "<br /><br />"; ?>РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ Р°РІС‚РѕСЂРѕРј <?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted)); }
+			     elseif ($blog->deluser_id == $buser_id) { if (!hasPermissions('blogs')) echo "<br /><br />"; ?>РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ Р°РІС‚РѕСЂРѕРј С‚РµРјС‹ <?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));?>
+			<?   } else { if (!hasPermissions('blogs')) echo "<br /><br />"; ?>РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ РјРѕРґРµСЂР°С‚РѕСЂРѕРј <? if (!$mod) { ?>( <? $del_user = $user->GetName($blog->deluser_id, $err); print($del_user['login'] . ' : ' . $del_user['usurname'] . ' ' . $del_user['uname']); ?> ) <? } ?> <?=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));?><?php if($blog->deleted_reason) { ?><br/>РџСЂРёС‡РёРЅР°: <br/><?=$blog->deleted_reason?><?php } ?> <?}?>
 			<? } if (!$blog->deleted || hasPermissions('blogs') || $del_allow) {
 				if ($blog->deleted && hasPermissions('blogs')) { ?> <span class="b-layout__txt b-layout__txt_fontsize_11" style=" color:#ccc"> <? }
 				if ($blog->modified) { ?> 
 				<span class="b-layout__txt b-layout__txt_fontsize_11">
-				   <? if (!$blog->modified_id || $blog->modified_id == $blog->fromuser_id) { ?>[внесены изменения: <?=date("d.m.Y | H:i]",strtotimeEx($blog->modified)); }
-      			 else {?>Отредактировано модератором <? if (!$mod) { ?>
+				   <? if (!$blog->modified_id || $blog->modified_id == $blog->fromuser_id) { ?>[РІРЅРµСЃРµРЅС‹ РёР·РјРµРЅРµРЅРёСЏ: <?=date("d.m.Y | H:i]",strtotimeEx($blog->modified)); }
+      			 else {?>РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј <? if (!$mod) { ?>
             ( <? $mod_user = $user->GetName($blog->modified_id, $err); print($mod_user['login'] . ' : ' . $mod_user['usurname'] . ' ' . $mod_user['uname']); ?> ) 
 												<? } ?> 
 												<?=date("[d.m.Y | H:i]",strtotimeEx($blog->modified));?>
@@ -1410,14 +1410,14 @@ seo_start();
 												<? }?>
      </span>
   			<? if ($blog->is_banned  && hasPermissions('blogs')) {?>
-  			<span style="color:#000" ><b>Пользователь забанен.</b></span>
+  			<span style="color:#000" ><b>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°Р±Р°РЅРµРЅ.</b></span>
   			<? }?>
   			<br />
-  			<? if ($winner == $blog->id) { ?><span color="#000099" style="font-size:20px">Победитель</span><? } ?>
+  			<? if ($winner == $blog->id) { ?><span color="#000099" style="font-size:20px">РџРѕР±РµРґРёС‚РµР»СЊ</span><? } ?>
   			<br />
   			<? if ($blog->is_banned  && !hasPermissions('blogs')) {
   			    ?>
-  			    Ответ от заблокированного пользователя
+  			    РћС‚РІРµС‚ РѕС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
   			    <?
   			}
   			else if ( $blog->deluser_id == $_SESSION['uid'] || $blog->deluser_id == $_SESSION['uid'] || hasPermissions('blogs') || !$blog->deleted ) {
@@ -1451,43 +1451,43 @@ seo_start();
   			
   			<? if ($blog->deleted && hasPermissions('blogs')) { ?> </span> <? } ?>
   				<br />
-  			<? if ($gr_base == 5 && !$winner && $parent_login == $_SESSION['login']) { ?><input type="submit" name="btn" value="Это победитель" onClick="if (warning(0)) window.location.replace('./view.php?tr=<?=$thread?>&winner=<?=$blog->id?>&ord=<?=$bOrd?>'); else return false;"><? } ?>
+  			<? if ($gr_base == 5 && !$winner && $parent_login == $_SESSION['login']) { ?><input type="submit" name="btn" value="Р­С‚Рѕ РїРѕР±РµРґРёС‚РµР»СЊ" onClick="if (warning(0)) window.location.replace('./view.php?tr=<?=$thread?>&winner=<?=$blog->id?>&ord=<?=$bOrd?>'); else return false;"><? } ?>
   			<table width="100%" border="0" cellpadding="0" cellspacing="0"><tr valign="middle"><td align="left"  width="100%"  style="color: #D75A29; font-size:9px; white-space:nowrap">
 
   			<?
   			//  || $parent_login == $_SESSION['login']
   			if ((!$blog->deleted && !$blog->is_banned) && !$blog->is_blocked){ //|| hasPermissions('blogs')
         if (($blog->login == $_SESSION['login'] || $del_allow || !$mod) && (!$post_only || !$mod)) { ?>
-          <a href="<?=($gr_base == 101 ? $form_uri.'&' : '?')?>id=<?=$blog->id?>&amp;action=delete&ord=<?=$bOrd?>&u_token_key=<?=$_SESSION['rand']?>" style="color: #D75A29;" onclick="return warning(1);">Удалить</a> | 
+          <a href="<?=($gr_base == 101 ? $form_uri.'&' : '?')?>id=<?=$blog->id?>&amp;action=delete&ord=<?=$bOrd?>&u_token_key=<?=$_SESSION['rand']?>" style="color: #D75A29;" onclick="return warning(1);">РЈРґР°Р»РёС‚СЊ</a> | 
         <? } if (($blog->login == $_SESSION['login'] || !$mod || hasPermissions('blogs')) && (!$post_only || !$mod)) {?>
-        <a href="<?=($gr_base == 101 ? $form_uri.'&' : '?')?>id=<?=$blog->id?>&amp;action=edit&pagefrom=<?=$bPageFrom?>&amp;tr=<?=$thread?>&ord=<?=$bOrd?>" style="color: #D75A29;">Редактировать</a> |
+        <a href="<?=($gr_base == 101 ? $form_uri.'&' : '?')?>id=<?=$blog->id?>&amp;action=edit&pagefrom=<?=$bPageFrom?>&amp;tr=<?=$thread?>&ord=<?=$bOrd?>" style="color: #D75A29;">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> |
   			<? } ?>
   			<? seo_start();?>
   			<? if ($form_uri != "/payed/") { ?>
   			  <?if (!$closed_comments && !$blog->is_blocked){ ?>
-                            <a <?if ($_SESSION["login"]){?> href="javascript: void(0);" onclick="javascript:answer(<?=$blog->id?>,'', '<?=get_login($uid)?>'); document.getElementById('frm').olduser.value = '<?=$uid?>'; document.getElementById('frm').scrollIntoView(true);" <?}else{?>href="/fbd.php"<?}?> style="color: #D75A29">Комментировать</a> |
+                            <a <?if ($_SESSION["login"]){?> href="javascript: void(0);" onclick="javascript:answer(<?=$blog->id?>,'', '<?=get_login($uid)?>'); document.getElementById('frm').olduser.value = '<?=$uid?>'; document.getElementById('frm').scrollIntoView(true);" <?}else{?>href="/fbd.php"<?}?> style="color: #D75A29">РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ</a> |
   			  <? } ?>
   			<? } ?>
-  			<a href="<?=($gr_base == 101 ? $form_uri.'&' : '?')."openlevel=".$blog->id.$ord_get_part."#o".$blog->id?>" style="color: #D75A29">Ссылка</a>
+  			<a href="<?=($gr_base == 101 ? $form_uri.'&' : '?')."openlevel=".$blog->id.$ord_get_part."#o".$blog->id?>" style="color: #D75A29">РЎСЃС‹Р»РєР°</a>
   			<?= seo_end();?>
   			</td><?
 			} else if ($blog->deleted) {	 ?>
-                <a href="<?=($gr_base == 101 ? $form_uri.'&' : '?')?>id=<?=$blog->id?>&amp;action=restore&ord=<?=$bOrd?>" style="color: #D75A29;" onclick="return warning(1);">Вернуть</a> |
-                <a href="<?=($gr_base == 101 ? $form_uri.'&' : '?')."openlevel=".$blog->id.$ord_get_part."#o".$blog->id?>" style="color: #D75A29">Ссылка</a>
+                <a href="<?=($gr_base == 101 ? $form_uri.'&' : '?')?>id=<?=$blog->id?>&amp;action=restore&ord=<?=$bOrd?>" style="color: #D75A29;" onclick="return warning(1);">Р’РµСЂРЅСѓС‚СЊ</a> |
+                <a href="<?=($gr_base == 101 ? $form_uri.'&' : '?')."openlevel=".$blog->id.$ord_get_part."#o".$blog->id?>" style="color: #D75A29">РЎСЃС‹Р»РєР°</a>
             <? } ?>
   			<td style="white-space:nowrap">
   			<? if (hasPermissions('blogs') && $blog->login!=$_SESSION["login"] && $blog->login['login']!="admin") {
   			    ?>
   			    <script type="text/javascript">
-                banned.addContext( 'blog_msg_<?=$blog->id?>', 2, '<?="{$GLOBALS['host']}/blogs/view.php?".htmlspecialchars($clearQueryStrOpen)."&openlevel=".$blog->id.$ord_get_part."#o".$blog->id?>', "<?=($blog->title!=='' ? $blog->title : '<без темы>')?>" );
+                banned.addContext( 'blog_msg_<?=$blog->id?>', 2, '<?="{$GLOBALS['host']}/blogs/view.php?".htmlspecialchars($clearQueryStrOpen)."&openlevel=".$blog->id.$ord_get_part."#o".$blog->id?>', "<?=($blog->title!=='' ? $blog->title : '<Р±РµР· С‚РµРјС‹>')?>" );
                 </script>
   			    <?php
             if(hasPermissions('users')) {
   				if ( $blog->warn<3 && !$blog->is_banned && !$blog->ban_where ) {
-  					?><span class="warnlink-<?=$blog->fromuser_id?>"><a style="color: #D75A29; font-size:9px;" href="javascript: void(0);" onclick="banned.warnUser(<?=$blog->fromuser_id?>, 0, 'blogs', 'blog_msg_<?=$blog->id?>', 0); return false;">Предупредить (<span class="warncount-<?=$blog->fromuser_id?>"><?=($blog->warn ? $blog->warn : 0)?></span>)</a></span><?
+  					?><span class="warnlink-<?=$blog->fromuser_id?>"><a style="color: #D75A29; font-size:9px;" href="javascript: void(0);" onclick="banned.warnUser(<?=$blog->fromuser_id?>, 0, 'blogs', 'blog_msg_<?=$blog->id?>', 0); return false;">РџСЂРµРґСѓРїСЂРµРґРёС‚СЊ (<span class="warncount-<?=$blog->fromuser_id?>"><?=($blog->warn ? $blog->warn : 0)?></span>)</a></span><?
   				}
   				else {
-  				    $sBanTitle = (!$blog->is_banned && !$blog->ban_where) ? 'Забанить!' : 'Разбанить';
+  				    $sBanTitle = (!$blog->is_banned && !$blog->ban_where) ? 'Р—Р°Р±Р°РЅРёС‚СЊ!' : 'Р Р°Р·Р±Р°РЅРёС‚СЊ';
   					?><span class="warnlink-<?=$blog->fromuser_id?>"><a href="javascript:void(0);" onclick="banned.userBan(<?=$blog->fromuser_id?>, 'blog_msg_<?=$blog->id?>',0)" style="color: Red;font-size:9px;"><?=$sBanTitle?></a></span><?
   				}
         }
@@ -1507,14 +1507,14 @@ seo_start();
 			<?/*document.getElementById('frm').msg_name.value = '<?=($error_flag)?input_ref_scr($msg_name):input_ref_scr($blog->title)?>';
 			*/?>document.getElementById('frm').msg.value = "<?=str_replace(array("\r","\n"), array('\n', '\n'), ($error_flag)?html_entity_decode($msg,ENT_QUOTES):addslashes(html_entity_decode($blog->msgtext,ENT_QUOTES)))?>";
             if(document.getElementById('frm').yt_link != undefined) document.getElementById('frm').yt_link.value = '<?=($error_flag)?(stripslashes(html_entity_decode($yt_link,ENT_QUOTES))):input_ref_scr(html_entity_decode($blog->yt_link,ENT_QUOTES))?>';
-			document.getElementById('frm').btn.value = 'Сохранить';
+			document.getElementById('frm').btn.value = 'РЎРѕС…СЂР°РЅРёС‚СЊ';
 			document.getElementById('frm').action.value = 'change';
 			//-->
 			</script>
 		<? } ?>
 		</td></tr>
 		</table>
-				<? }	//килец	?>
+				<? }	//РєРёР»РµС†	?>
 				
 <br />
 
@@ -1524,7 +1524,7 @@ seo_start();
 	<? } ?>
 </table>
 					<table width="100%" border="0" cellpadding="10" cellspacing="0"><tr valign="middle"><td align="left"><?
-					// постраничка
+					// РїРѕСЃС‚СЂР°РЅРёС‡РєР°
 
 					if ($AllRootRecord>$MaxOnPage) {
 						$counter=1;
@@ -1543,15 +1543,15 @@ seo_start();
 					}
 
 					if (!$OpenAllLevels) {
-						print "&nbsp;&nbsp;<a  style='color: #666;' href='".rawurlencode($_SERVER['PHP_SELF'])."?".htmlspecialchars($clearQueryStr).'&openalllevels=1&wopages=1'."'>Развернуть все</a>";
+						print "&nbsp;&nbsp;<a  style='color: #666;' href='".rawurlencode($_SERVER['PHP_SELF'])."?".htmlspecialchars($clearQueryStr).'&openalllevels=1&wopages=1'."'>Р Р°Р·РІРµСЂРЅСѓС‚СЊ РІСЃРµ</a>";
 					}
 					else {
 						$qstr=eregi_replace("&openalllevels=1&wopages=1","",$clearQueryStr);
-						// print "&nbsp;&nbsp;<a  style='color: #666;' href='".$_SERVER['PHP_SELF']."?".htmlspecialchars($qstr).''."'>Показать свернутым</a>";
+						// print "&nbsp;&nbsp;<a  style='color: #666;' href='".$_SERVER['PHP_SELF']."?".htmlspecialchars($qstr).''."'>РџРѕРєР°Р·Р°С‚СЊ СЃРІРµСЂРЅСѓС‚С‹Рј</a>";
 					}
 				?></td><td style="text-align:right; padding-right:19px;">
 				<? seo_start(); ?>
-				<a href="#top" style='color: #666;'  >Наверх</a>
+				<a href="#top" style='color: #666;'  >РќР°РІРµСЂС…</a>
 				<?= seo_end();?>
 				</td></tr></table>
 				<br />

@@ -5,24 +5,24 @@ if(!defined('IN_STDF')) {
 }
 
 /**
- * Разметка для типовых услуг в формате "черепица"
+ * Р Р°Р·РјРµС‚РєР° РґР»СЏ С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі РІ С„РѕСЂРјР°С‚Рµ "С‡РµСЂРµРїРёС†Р°"
  *
  *
  * @var TServiceCatalogController $this
- * @var array $category выбранная категория
- * @var int $total общее количество карточек по параметрам поиска
- * @var bool $nothing_found true если искали, но ничего не нашли
- * @var array $tservices найденные карточки типовых услуг
- * @var int $page номер страницы
- * @var int $limit количество карточек на странице
- * @var string $paging_base_url базовый URL без номера текущей страницы для пейджинга
+ * @var array $category РІС‹Р±СЂР°РЅРЅР°СЏ РєР°С‚РµРіРѕСЂРёСЏ
+ * @var int $total РѕР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РєР°СЂС‚РѕС‡РµРє РїРѕ РїР°СЂР°РјРµС‚СЂР°Рј РїРѕРёСЃРєР°
+ * @var bool $nothing_found true РµСЃР»Рё РёСЃРєР°Р»Рё, РЅРѕ РЅРёС‡РµРіРѕ РЅРµ РЅР°С€Р»Рё
+ * @var array $tservices РЅР°Р№РґРµРЅРЅС‹Рµ РєР°СЂС‚РѕС‡РєРё С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі
+ * @var int $page РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹
+ * @var int $limit РєРѕР»РёС‡РµСЃС‚РІРѕ РєР°СЂС‚РѕС‡РµРє РЅР° СЃС‚СЂР°РЅРёС†Рµ
+ * @var string $paging_base_url Р±Р°Р·РѕРІС‹Р№ URL Р±РµР· РЅРѕРјРµСЂР° С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹ РґР»СЏ РїРµР№РґР¶РёРЅРіР°
  */
 
 /**
- * Возвращает форматированное число, например: 123 456,78
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРЅРѕРµ С‡РёСЃР»Рѕ, РЅР°РїСЂРёРјРµСЂ: 123 456,78
  *
  * @var mixed $number
- * @var int $precition число знаков после запятой
+ * @var int $precition С‡РёСЃР»Рѕ Р·РЅР°РєРѕРІ РїРѕСЃР»Рµ Р·Р°РїСЏС‚РѕР№
  */
 function _format($number, $precition=2) {
 	$number = (string) round($number, $precition);
@@ -44,16 +44,16 @@ $bind_teaser = $this->renderClip('bind_teaser', array(), true);
     <?php echo $bind_teaser ?>
 	<?php if ($nothing_found) {?>
 		<div class="b-post b-post_padtop_60">
-			<h4 class="b-post__h4 b-post__h4_padbot_5 b-post__h4_center">Услуг не найдено</h4>
-			<div class="b-post__txt b-post__txt_padbot_10 b-post__txt_center">Попробуйте изменить параметры фильтра</div>
-            <div class="b-layout__txt b-post__txt_padbot_20 b-layout__txt_center b-layout__txt_bold">или</div> 
+			<h4 class="b-post__h4 b-post__h4_padbot_5 b-post__h4_center">РЈСЃР»СѓРі РЅРµ РЅР°Р№РґРµРЅРѕ</h4>
+			<div class="b-post__txt b-post__txt_padbot_10 b-post__txt_center">РџРѕРїСЂРѕР±СѓР№С‚Рµ РёР·РјРµРЅРёС‚СЊ РїР°СЂР°РјРµС‚СЂС‹ С„РёР»СЊС‚СЂР°</div>
+            <div class="b-layout__txt b-post__txt_padbot_20 b-layout__txt_center b-layout__txt_bold">РёР»Рё</div> 
             <div class="b-layout__txt b-layout__txt_center"><a href="/public/?step=1&amp;kind=1&amp;red=/<?php 
 			if(is_emp()&&is_pro()) print '&utm_source=tu_catalog&utm_medium=emp&utm_content=pro&utm_campaign=btn_new_project';
 			elseif(is_emp()&&!is_pro()) print '&utm_source=tu_catalog&utm_medium=emp&utm_content=unpro&utm_campaign=btn_new_project';
 			elseif(!is_emp()&&is_pro()&&get_uid()) print '&utm_source=tu_catalog&utm_medium=frl&utm_content=pro&utm_campaign=btn_new_project';
 			elseif(!is_emp()&&!is_pro()&&get_uid()) print '&utm_source=tu_catalog&utm_medium=frl&utm_content=unpro&utm_campaign=btn_new_project';
 			elseif(!get_uid()) print '&utm_source=tu_catalog&utm_medium=uauth&utm_content=unpro&utm_campaign=btn_new_project';
-			?>" class="b-button b-button_flat b-button_flat_orange b-button_width_190">Опубликуйте проект</a></div>
+			?>" class="b-button b-button_flat b-button_flat_orange b-button_width_190">РћРїСѓР±Р»РёРєСѓР№С‚Рµ РїСЂРѕРµРєС‚</a></div>
 		</div>
 	<?php } ?>
 
@@ -75,7 +75,7 @@ $bind_teaser = $this->renderClip('bind_teaser', array(), true);
 		$hasVideo = false;
         
         $alt = $tservice_title;
-        $title = sprintf("Услуги фрилансера %s: %s", $user['login'], $tservice_title);
+        $title = sprintf("РЈСЃР»СѓРіРё С„СЂРёР»Р°РЅСЃРµСЂР° %s: %s", $user['login'], $tservice_title);
 		if ($hasVideo)
 		{
 			$video = current($tservice['videos']);
@@ -92,7 +92,7 @@ $bind_teaser = $this->renderClip('bind_teaser', array(), true);
                 
         $hasVideo = !empty($tservice['videos']) && count($tservice['videos']);
                 
-        $sold_count = isset($tservice['count_sold']) ? $tservice['count_sold'] : $tservice['total_feedbacks']; // Пока сфинск не считает все покупки, будем брать отзывы. #0026584
+        $sold_count = isset($tservice['count_sold']) ? $tservice['count_sold'] : $tservice['total_feedbacks']; // РџРѕРєР° СЃС„РёРЅСЃРє РЅРµ СЃС‡РёС‚Р°РµС‚ РІСЃРµ РїРѕРєСѓРїРєРё, Р±СѓРґРµРј Р±СЂР°С‚СЊ РѕС‚Р·С‹РІС‹. #0026584
                 
         $is_owner = $tservice['user_id'] == $uid;
         
@@ -113,7 +113,7 @@ $bind_teaser = $this->renderClip('bind_teaser', array(), true);
             </a>
             <a class="b-pic__price-box b-pic__price-box_pay b-pic__price-box b-pic__price-box_noline" href="javascript:void(0);" data-url="<?=$tservice_url?>" onclick="TServices_Catalog.orderNow(this);"><?=tservices_helper::cost_format($tservice['price'],true)?>			
 			<?php if ($sold_count!=0) { ?>
-              <span title="Количество продаж услуги"><span class="b-icon b-icon__tu2 b-icon_top_2"></span> <?=number_format($sold_count, 0, '', ' ')?></span>
+              <span title="РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕРґР°Р¶ СѓСЃР»СѓРіРё"><span class="b-icon b-icon__tu2 b-icon_top_2"></span> <?=number_format($sold_count, 0, '', ' ')?></span>
             <?php } ?>
             </a>
         </div>
@@ -154,7 +154,7 @@ $bind_teaser = $this->renderClip('bind_teaser', array(), true);
 		{
 			$paging_url = str_replace('%', '%%', $paging_base_url) . (false===strpos($paging_base_url, '?') ? '?' : '&') . 'page=%d';
 			$paginator_html = new_paginator2($page, $pages, 4, "%s{$paging_url}%s");
-			// удаляем параметр 'page=1' у первой страницы для более чистого url
+			// СѓРґР°Р»СЏРµРј РїР°СЂР°РјРµС‚СЂ 'page=1' Сѓ РїРµСЂРІРѕР№ СЃС‚СЂР°РЅРёС†С‹ РґР»СЏ Р±РѕР»РµРµ С‡РёСЃС‚РѕРіРѕ url
 			$paginator_html = preg_replace('/\?page=1&/', '?', $paginator_html); // "?page=1&c=d" -> "?c=d"
 			$paginator_html = preg_replace('/\?page=1"/', '"', $paginator_html); // "?page=1" -> ""
 			$paginator_html = preg_replace('/&page=1&/', '&', $paginator_html); // "?a=b&page=1&c=d" -> "?a=b&c=d"

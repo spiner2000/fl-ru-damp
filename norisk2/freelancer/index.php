@@ -32,7 +32,7 @@ switch($site) {
             }
         }
 
-        if($stage->status != sbr_stages::STATUS_INARBITRAGE && $stage->status != sbr_stages::STATUS_ARBITRAGED) { // !!! можно убрать условия.
+        if($stage->status != sbr_stages::STATUS_INARBITRAGE && $stage->status != sbr_stages::STATUS_ARBITRAGED) { // !!! РјРѕР¶РЅРѕ СѓР±СЂР°С‚СЊ СѓСЃР»РѕРІРёСЏ.
             if($sbr->status == sbr::STATUS_CHANGED && ($stage_changed = ($stage->frl_version && ($stage->frl_version < $stage->version || $sbr->frl_version < $sbr->version)))) {
                 $sbr->v_data = $sbr->data;
                 $stage->v_data = $stage->data;
@@ -41,9 +41,9 @@ switch($site) {
             }
         }
         /*
-         Зеленая:
-         1) этап завершен нормально и не проставлены отзывы или не выбрана валюта выплат.
-         2) этап завершен по арбитражу, вся сделка завершена, валюта выплат по этапу выбрана, отзывы проставлены, но не проставлены отзывы сервису.
+         Р—РµР»РµРЅР°СЏ:
+         1) СЌС‚Р°Рї Р·Р°РІРµСЂС€РµРЅ РЅРѕСЂРјР°Р»СЊРЅРѕ Рё РЅРµ РїСЂРѕСЃС‚Р°РІР»РµРЅС‹ РѕС‚Р·С‹РІС‹ РёР»Рё РЅРµ РІС‹Р±СЂР°РЅР° РІР°Р»СЋС‚Р° РІС‹РїР»Р°С‚.
+         2) СЌС‚Р°Рї Р·Р°РІРµСЂС€РµРЅ РїРѕ Р°СЂР±РёС‚СЂР°Р¶Сѓ, РІСЃСЏ СЃРґРµР»РєР° Р·Р°РІРµСЂС€РµРЅР°, РІР°Р»СЋС‚Р° РІС‹РїР»Р°С‚ РїРѕ СЌС‚Р°РїСѓ РІС‹Р±СЂР°РЅР°, РѕС‚Р·С‹РІС‹ РїСЂРѕСЃС‚Р°РІР»РµРЅС‹, РЅРѕ РЅРµ РїСЂРѕСЃС‚Р°РІР»РµРЅС‹ РѕС‚Р·С‹РІС‹ СЃРµСЂРІРёСЃСѓ.
          */
         if( $stage->status == sbr_stages::STATUS_COMPLETED
              && (!$stage->frl_feedback_id || !$stage->getPayouts($sbr->uid))
@@ -87,7 +87,7 @@ switch($site) {
         $rt_checked = !!$rez_type;
         if($rt_disabled = $sbr->checkChangeRT()) {
             if(!($rez_type = $sbr->user_reqvs['rez_type']))
-                 $rez_type = sbr::RT_RU; // если не установлен флаг в базе, но checkChangeRT, то считаем, что он руський (т.к. до флага только резиденты были).
+                 $rez_type = sbr::RT_RU; // РµСЃР»Рё РЅРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅ С„Р»Р°Рі РІ Р±Р°Р·Рµ, РЅРѕ checkChangeRT, С‚Рѕ СЃС‡РёС‚Р°РµРј, С‡С‚Рѕ РѕРЅ СЂСѓСЃСЊРєРёР№ (С‚.Рє. РґРѕ С„Р»Р°РіР° С‚РѕР»СЊРєРѕ СЂРµР·РёРґРµРЅС‚С‹ Р±С‹Р»Рё).
         }
 
         $isReqvsFilled = $sbr->checkUserReqvs();
@@ -108,14 +108,14 @@ switch($site) {
                     }
                     if(!$sbr->error) {
                         if($rez_type != $sbr->user_reqvs['rez_type']) {
-                            //@todo: запрещаем изменять финансы в старой СБР #29196
+                            //@todo: Р·Р°РїСЂРµС‰Р°РµРј РёР·РјРµРЅСЏС‚СЊ С„РёРЅР°РЅСЃС‹ РІ СЃС‚Р°СЂРѕР№ РЎР‘Р  #29196
                             //sbr_meta::setUserReqv($sbr->uid, $rez_type, $sbr->user_reqvs['form_type'], $rrr, TRUE);
                             $sbr->user_reqvs['rez_type'] = $rez_type;
                         }
                         if($sbr->agree($version)) {
                             $sbr_stage = $sbr->getStages();
                             foreach($sbr_stage as $stage) {
-                                $sbr->setUserReqvHistory($sbr->uid, intval($stage->data['id']), 0); // Сохраняем для всех этапов, согласие исполнителя
+                                $sbr->setUserReqvHistory($sbr->uid, intval($stage->data['id']), 0); // РЎРѕС…СЂР°РЅСЏРµРј РґР»СЏ РІСЃРµС… СЌС‚Р°РїРѕРІ, СЃРѕРіР»Р°СЃРёРµ РёСЃРїРѕР»РЅРёС‚РµР»СЏ
                             }
                             header_location_exit("/norisk2/?id={$id}");
                         }

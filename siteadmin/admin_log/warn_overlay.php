@@ -3,10 +3,10 @@
                 <?php /*
              	<a class="close" href="javascript:void(0);" onclick="adminLogOverlayClose();"><img height="21" width="21" alt="" src="/images/btn-close.png"></a>
              	*/ ?>
-             	<h4>Список предупреждений <a id="a_user_warns" href="#"><span id="s_user_warns"></span></a> (<span id="e_user_warns"></span>/<span id="n_user_warns"></span>)</h4>
+             	<h4>РЎРїРёСЃРѕРє РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ <a id="a_user_warns" href="#"><span id="s_user_warns"></span></a> (<span id="e_user_warns"></span>/<span id="n_user_warns"></span>)</h4>
              	<div id="d_user_warns"></div>
                 
               	<div id="b_user_warns" class="bun-button">
-              		<button>Забанить</button>
+              		<button>Р—Р°Р±Р°РЅРёС‚СЊ</button>
 				</div>
  </div>

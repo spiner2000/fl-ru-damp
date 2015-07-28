@@ -21,16 +21,16 @@ if(!$xajax)
     $xajax->register(XAJAX_FUNCTION, "tservicesOrdersSetPrice",array());
     $xajax->register(XAJAX_FUNCTION, "getOrderHistory", array());
     
-    //Áûñòðàÿ îïëàòà
+    //Ð‘Ñ‹ÑÑ‚Ñ€Ð°Ñ Ð¾Ð¿Ð»Ð°Ñ‚Ð°
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPaymentProcess", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quick_payment.server.php"));
-    //Âûïëàòû ïî ñäåëêå ñ ðåçåðâîì ñðåäñòâ
+    //Ð’Ñ‹Ð¿Ð»Ð°Ñ‚Ñ‹ Ð¿Ð¾ ÑÐ´ÐµÐ»ÐºÐµ Ñ Ñ€ÐµÐ·ÐµÑ€Ð²Ð¾Ð¼ ÑÑ€ÐµÐ´ÑÑ‚Ð²
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("reservesPayoutProcess", $_SERVER['DOCUMENT_ROOT'] . "/xajax/reserves.server.php"));
-    //Ðàáîòà ñ àðáèòðàæåì ðåçåðâà
+    //Ð Ð°Ð±Ð¾Ñ‚Ð° Ñ Ð°Ñ€Ð±Ð¸Ñ‚Ñ€Ð°Ð¶ÐµÐ¼ Ñ€ÐµÐ·ÐµÑ€Ð²Ð°
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("reservesArbitrageNew", $_SERVER['DOCUMENT_ROOT'] . "/xajax/reserves.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("reservesArbitrageApply", $_SERVER['DOCUMENT_ROOT'] . "/xajax/reserves.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("reservesArbitrageCancel", $_SERVER['DOCUMENT_ROOT'] . "/xajax/reserves.server.php"));
     
-    //Àÿêñ îáðàáîò÷èêè ïîïàïà ïîêóïêè ÏÐÎ
+    //ÐÑÐºÑ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚Ñ‡Ð¸ÐºÐ¸ Ð¿Ð¾Ð¿Ð°Ð¿Ð° Ð¿Ð¾ÐºÑƒÐ¿ÐºÐ¸ ÐŸÐ Ðž
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROPayAccount", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROGetYandexKassaLink", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROGetPlatipotomLink", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));

@@ -19,12 +19,12 @@
             $('err_msg').set('text', info);
         } 
     }
-</script><h2 style="color:#666666; font-family:arial; font-size:20pt;" >Загрузка файлов на DAV сервер</h2>
+</script><h2 style="color:#666666; font-family:arial; font-size:20pt;" >Р—Р°РіСЂСѓР·РєР° С„Р°Р№Р»РѕРІ РЅР° DAV СЃРµСЂРІРµСЂ</h2>
 <div style="color:#a0a0a0 solid 1px; pading 5px 7px;">
 <iframe id="upload" scrolling="no" src="/siteadmin/davupload/?mode=files&view=form&v=1" border="0" style="border:none; overflow: hidden;width:100%; height:250px; border:solid 1px #a0a0a0" ></iframe>
 <div id="uploadresult" style="text-align:;left; margin-left:25px; font-size:11pt;">
     <span style="color:green;" id="msg"></span><br>
     <span style="color:red;" id="err_msg"></span><br>
-    <div id="newlink_block" style="display:none"><span>Cсылка на файл: </span><span id="newlink">http://dhsajkdhsajdkhasjkhsd.dsj/dsadad/dsadasd/dsadasdsad.txt</span></div>
-    <div id="oldlink_block" style="display:none"><span>Cсылка на старый файл: </span><span  id="oldlink">http://dhsajkdhsajdkhasjkhsd.dsj/dsadad/dsadasd/dsadasdsad.txt</span></div>
+    <div id="newlink_block" style="display:none"><span>CСЃС‹Р»РєР° РЅР° С„Р°Р№Р»: </span><span id="newlink">http://dhsajkdhsajdkhasjkhsd.dsj/dsadad/dsadasd/dsadasdsad.txt</span></div>
+    <div id="oldlink_block" style="display:none"><span>CСЃС‹Р»РєР° РЅР° СЃС‚Р°СЂС‹Р№ С„Р°Р№Р»: </span><span  id="oldlink">http://dhsajkdhsajdkhasjkhsd.dsj/dsadad/dsadasd/dsadasdsad.txt</span></div>
 </div>

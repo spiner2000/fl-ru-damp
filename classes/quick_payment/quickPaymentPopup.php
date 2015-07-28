@@ -39,12 +39,12 @@ class quickPaymentPopup
         
         $this->options['payments'] = array(
             self::PAYMENT_TYPE_CARD => array(
-                'title' => 'Пластиковые<br/>карты', 
+                'title' => 'РџР»Р°СЃС‚РёРєРѕРІС‹Рµ<br/>РєР°СЂС‚С‹', 
                 'class' => 'b-button__pm_card',
                 'short' => 'card'
                 ),
             self::PAYMENT_TYPE_YA   => array(
-                'title' => 'Яндекс.Деньги', 
+                'title' => 'РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё', 
                 'class' => 'b-button__pm_yd',
                 'short' => 'ym'
                 ),
@@ -54,28 +54,28 @@ class quickPaymentPopup
                 'short' => 'wm'
                 ),
             self::PAYMENT_TYPE_BANK => array(
-                'title' => 'Банковский<br/>перевод',
+                'title' => 'Р‘Р°РЅРєРѕРІСЃРєРёР№<br/>РїРµСЂРµРІРѕРґ',
                 'class' => 'b-button__pm_bank',
-                'wait' => 'Идет создание счета на оплату.',
+                'wait' => 'РРґРµС‚ СЃРѕР·РґР°РЅРёРµ СЃС‡РµС‚Р° РЅР° РѕРїР»Р°С‚Сѓ.',
                 'short' => 'bank'
                 ),
             self::PAYMENT_TYPE_SBERBANK => array(
-                'title' => 'Сбербанк<br />Онлайн',
+                'title' => 'РЎР±РµСЂР±Р°РЅРє<br />РћРЅР»Р°Р№РЅ',
                 'class' => 'b-button__pm_sber',
                 'data-maxprice' => self::MAX_PAYMENT_SB,
                 'short' => 'sber'
                 ),
             self::PAYMENT_TYPE_ALFACLICK => array(
-                'title' => 'Альфа Клик',
+                'title' => 'РђР»СЊС„Р° РљР»РёРє',
                 'class' => 'b-button__pm_alfa',
                 'data-maxprice' => self::MAX_PAYMENT_ALFA,
                 'short' => 'alfa'
                 ),
             self::PAYMENT_TYPE_PLATIPOTOM => array(
-                'title' => 'Купить <br />с отсрочкой <br />оплаты',
+                'title' => 'РљСѓРїРёС‚СЊ <br />СЃ РѕС‚СЃСЂРѕС‡РєРѕР№ <br />РѕРїР»Р°С‚С‹',
                 'class' => 'b-button__pm_pp platipotom_link',
-                'content_after' => 'Купите %s сейчас, а оплатите потом с отсрочкой 
-                    платежа до 30 дней через сервис &quot;ПлатиПотом&quot;.',
+                'content_after' => 'РљСѓРїРёС‚Рµ %s СЃРµР№С‡Р°СЃ, Р° РѕРїР»Р°С‚РёС‚Рµ РїРѕС‚РѕРј СЃ РѕС‚СЃСЂРѕС‡РєРѕР№ 
+                    РїР»Р°С‚РµР¶Р° РґРѕ 30 РґРЅРµР№ С‡РµСЂРµР· СЃРµСЂРІРёСЃ &quot;РџР»Р°С‚РёРџРѕС‚РѕРј&quot;.',
                 'short' => 'pp'
                 )
         );
@@ -139,7 +139,7 @@ class quickPaymentPopup
     
 
     /**
-     * Успех после оплаты и перехода юзера на сайт
+     * РЈСЃРїРµС… РїРѕСЃР»Рµ РѕРїР»Р°С‚С‹ Рё РїРµСЂРµС…РѕРґР° СЋР·РµСЂР° РЅР° СЃР°Р№С‚
      */    
     public function fireEventSuccess()
     {
@@ -149,7 +149,7 @@ class quickPaymentPopup
     }
     
     /**
-     * Отказ/неудача оплаты и переход юзера на сайт
+     * РћС‚РєР°Р·/РЅРµСѓРґР°С‡Р° РѕРїР»Р°С‚С‹ Рё РїРµСЂРµС…РѕРґ СЋР·РµСЂР° РЅР° СЃР°Р№С‚
      */
     public function failEventSuccess()
     {
@@ -181,7 +181,7 @@ class quickPaymentPopup
 
     
     /**
-     * Создаем синглтон
+     * РЎРѕР·РґР°РµРј СЃРёРЅРіР»С‚РѕРЅ
      * @return object
      */
     final public static function getInstance()

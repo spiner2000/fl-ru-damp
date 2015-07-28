@@ -4,9 +4,9 @@
     style="display:block;"
     data-order-arbitrage="true">
     <div class="b-shadow__body b-shadow__body_pad_20">
-        <h2 class="b-layout__title">Обращение в Арбитраж</h2>
+        <h2 class="b-layout__title">РћР±СЂР°С‰РµРЅРёРµ РІ РђСЂР±РёС‚СЂР°Р¶</h2>
         <div class="b-layout__txt b-layout__txt_padbot_10">
-            Пожалуйста, укажите, по какой именно причине вы хотите обратиться в Арбитраж.
+            РџРѕР¶Р°Р»СѓР№СЃС‚Р°, СѓРєР°Р¶РёС‚Рµ, РїРѕ РєР°РєРѕР№ РёРјРµРЅРЅРѕ РїСЂРёС‡РёРЅРµ РІС‹ С…РѕС‚РёС‚Рµ РѕР±СЂР°С‚РёС‚СЊСЃСЏ РІ РђСЂР±РёС‚СЂР°Р¶.
         </div>
         
         <div class="b-layout b-layout_padleft_20">
@@ -16,7 +16,7 @@
                     <textarea data-validators="maxLength:500 required" 
                               id="message" class="b-textarea__textarea b-textarea__textarea_italic" 
                               rows="5" cols="80" maxlength="500" name="message" 
-                              placeholder="Введите текст причины"></textarea>
+                              placeholder="Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚ РїСЂРёС‡РёРЅС‹"></textarea>
                     <div id="error_message" class="error-message i-shadow b-shadow_hide">
                         <div class="b-shadow b-shadow_m b-shadow_top_0 b-shadow_zindex_2">
                             <div class="b-shadow__body b-shadow__body_pad_5_10 b-shadow__body_bg_fff">
@@ -27,15 +27,15 @@
                     </div>
                 </div>
                 <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">
-                    Не более 500 символов.
+                    РќРµ Р±РѕР»РµРµ 500 СЃРёРјРІРѕР»РѕРІ.
                 </div>
                 <div class="b-buttons b-buttons_padtop_20">
                     <a href="javascript:void(0);" data-order-arbitrage-submit="true" 
                        class="b-button b-button_flat b-button_flat_green __tservices_orders_arbitrage_submit_label">
-                        Начать Арбитраж
+                        РќР°С‡Р°С‚СЊ РђСЂР±РёС‚СЂР°Р¶
                     </a>
-                    <span class="b-layout__txt b-layout__txt_fontsize_11">&#160; или 
-                        <a class="b-layout__link" data-order-arbitrage-close="true" href="javascript:void(0);">продолжить сотрудничество</a>
+                    <span class="b-layout__txt b-layout__txt_fontsize_11">&#160; РёР»Рё 
+                        <a class="b-layout__link" data-order-arbitrage-close="true" href="javascript:void(0);">РїСЂРѕРґРѕР»Р¶РёС‚СЊ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ</a>
                     </span>
                 </div>
             </form>

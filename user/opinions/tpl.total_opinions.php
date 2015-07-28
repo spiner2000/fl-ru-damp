@@ -19,20 +19,20 @@ $aUser = get_object_vars($user);
     <? if ($_user->uid) { ?>
     <div class="b-fon b-fon_width_full b-fon_margbot_10 b-fon_clear_both advice-status-sent" style="display: none;">
         <div class="b-fon__body b-fon__body_pad_10 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf b-fon__body_bordbot_dfedcf">
-            Рекомендация отправлена <?= is_emp($user->role) ? 'работодателю' : 'исполнителю' ?>. <a class="b-fon__link b-fon__link_fontsize_13" onclick="adviceAddForm()" href="javascript:void(0)">Отправить ещё одну</a> 
+            Р РµРєРѕРјРµРЅРґР°С†РёСЏ РѕС‚РїСЂР°РІР»РµРЅР° <?= is_emp($user->role) ? 'СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЋ' : 'РёСЃРїРѕР»РЅРёС‚РµР»СЋ' ?>. <a class="b-fon__link b-fon__link_fontsize_13" onclick="adviceAddForm()" href="javascript:void(0)">РћС‚РїСЂР°РІРёС‚СЊ РµС‰С‘ РѕРґРЅСѓ</a> 
         </div>
         <span class="b-fon__close"></span>
     </div>
     
     <div class="b-fon b-fon_width_full b-fon_margbot_10 b-fon_clear_both advice-status-declined" style="display: none;">
         <div class="b-fon__body b-fon__body_pad_10 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb b-fon__body_bordbot_edddda">
-            Вы отказались от рекомендации. <a class="b-fon__link b-fon__link_fontsize_13 b-fon__link_bordbot_dot_0f71c8" href="#">Вернуть рекомендацию</a> 
+            Р’С‹ РѕС‚РєР°Р·Р°Р»РёСЃСЊ РѕС‚ СЂРµРєРѕРјРµРЅРґР°С†РёРё. <a class="b-fon__link b-fon__link_fontsize_13 b-fon__link_bordbot_dot_0f71c8" href="#">Р’РµСЂРЅСѓС‚СЊ СЂРµРєРѕРјРµРЅРґР°С†РёСЋ</a> 
         </div>
         <span class="b-fon__close"></span>
     </div>
     <div class="b-fon b-fon_width_full b-fon_margbot_10 b-fon_clear_both advice-status-deleted" style="display: none;">
         <div class="b-fon__body b-fon__body_pad_10 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb b-fon__body_bordbot_edddda">
-            Заявка удалена.  <a class="b-fon__link b-fon__link_fontsize_13 b-fon__link_bordbot_dot_0f71c8" href="#">Восстановить</a> 
+            Р—Р°СЏРІРєР° СѓРґР°Р»РµРЅР°.  <a class="b-fon__link b-fon__link_fontsize_13 b-fon__link_bordbot_dot_0f71c8" href="#">Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ</a> 
         </div>
         <span class="b-fon__close"></span>
     </div>
@@ -56,8 +56,8 @@ $aUser = get_object_vars($user);
 
       if(false && $theme['sbr_id'] == $oid && $theme['is_payed'] == 0) {
           
-      //Получается в эту часть вообще никогда не заходим
-      //Зачем так делать? Зечем она нужна?
+      //РџРѕР»СѓС‡Р°РµС‚СЃСЏ РІ СЌС‚Сѓ С‡Р°СЃС‚СЊ РІРѕРѕР±С‰Рµ РЅРёРєРѕРіРґР° РЅРµ Р·Р°С…РѕРґРёРј
+      //Р—Р°С‡РµРј С‚Р°Рє РґРµР»Р°С‚СЊ? Р—РµС‡РµРј РѕРЅР° РЅСѓР¶РЅР°?
 ?>
     <div class="b-post " id="p_stage_<?=$theme['uniq_id']?>">
         <a name="p_<?=$theme['uniq_id']?>"></a>
@@ -67,29 +67,29 @@ $aUser = get_object_vars($user);
             </div>
             <div class="b-post__content b-post__content_margleft_60">
                 <div class="b-post__time b-post__time_float_right">
-                    <a class="b-post__anchor b-post__anchor_margright_10" onclick="hlAnchor('p',<?= $theme['uniq_id'] ?>);" href="#p_<?= $theme['uniq_id'] ?>" title="Ссылка на этот отзыв"></a>
-                    <?= date("d.m.Y в H:i", strtotime($theme['posted_time'])) ?>
+                    <a class="b-post__anchor b-post__anchor_margright_10" onclick="hlAnchor('p',<?= $theme['uniq_id'] ?>);" href="#p_<?= $theme['uniq_id'] ?>" title="РЎСЃС‹Р»РєР° РЅР° СЌС‚РѕС‚ РѕС‚Р·С‹РІ"></a>
+                    <?= date("d.m.Y РІ H:i", strtotime($theme['posted_time'])) ?>
                 </div>
                 <div id="form_container_<?= $theme['id'] ?>" class="editFormSbr" style="display:none"></div>
                 <div id="form_container_to_<?= $theme['id'] ?>" class="sbrmsgblock">
                     <div class="b-username b-username_padbot_5 b-username_bold"><?= view_user3($theme) ?></div>			
-                    <?php if ( $theme['is_banned'] ) { ?><div style="color:#000; margin: 0 0 10px 0;" ><b>Пользователь&nbsp;забанен.</b></div><?php } ?>
+                    <?php if ( $theme['is_banned'] ) { ?><div style="color:#000; margin: 0 0 10px 0;" ><b>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ&nbsp;Р·Р°Р±Р°РЅРµРЅ.</b></div><?php } ?>
                     <div class="b-fon b-fon_fontsize_11 b-fon_inline-block">
                         <div class="b-fon__body  b-fon__body_padleft_20 b-fon__body_bg_fff9bf b-fon__body_fontsize_11">
                             <span id="cont_<?= $theme['id'] ?>" class="b-button b-button_poll_<?= $theme['sbr_rating'] == -1 ? 'minus' : ($theme['sbr_rating'] == 1 ? 'plus' : 'multi') ?> b-button_active b-button_marg_-2_2_0_-15"></span> 
                             <?if($theme['is_payed'] == 1) { ?>
-                                подтвержденная рекомендация по итогам сотрудничества
+                                РїРѕРґС‚РІРµСЂР¶РґРµРЅРЅР°СЏ СЂРµРєРѕРјРµРЅРґР°С†РёСЏ РїРѕ РёС‚РѕРіР°Рј СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР°
                             <? } else { ?>
-                                по итогам сделки <span class="b-icon b-icon_top_3 b-icon_sbr_shield"></span>&nbsp; 
-                                <? if ($uid == $theme['frl_id'] || $uid == $theme['emp_id']) { // отзывы смотрит участнк сделк ?>
-                                    «<a class="b-layout__link" href="<?=( sbr_meta::isNewVersionSbr($theme['scheme_type']) ? "/".sbr::NEW_TEMPLATE_SBR."/?id={$theme['sbr_id']}" : "/norisk2/?id={$theme['sbr_id']}" ) ?>"><?= reformat($theme['sbr_name'], 40, 0, 1) ?></a>» &nbsp;
+                                РїРѕ РёС‚РѕРіР°Рј СЃРґРµР»РєРё <span class="b-icon b-icon_top_3 b-icon_sbr_shield"></span>&nbsp; 
+                                <? if ($uid == $theme['frl_id'] || $uid == $theme['emp_id']) { // РѕС‚Р·С‹РІС‹ СЃРјРѕС‚СЂРёС‚ СѓС‡Р°СЃС‚РЅРє СЃРґРµР»Рє ?>
+                                    В«<a class="b-layout__link" href="<?=( sbr_meta::isNewVersionSbr($theme['scheme_type']) ? "/".sbr::NEW_TEMPLATE_SBR."/?id={$theme['sbr_id']}" : "/norisk2/?id={$theme['sbr_id']}" ) ?>"><?= reformat($theme['sbr_name'], 40, 0, 1) ?></a>В» &nbsp;
                                 <? } elseif ($theme['project_id']) { ?>
-                                    «<a class="b-post__link" href="/projects/<?= $theme['project_id'] ?>"><?= reformat($theme['sbr_name'], 40, 0, 1) ?></a>»<?= !$is_next?",":""?>
+                                    В«<a class="b-post__link" href="/projects/<?= $theme['project_id'] ?>"><?= reformat($theme['sbr_name'], 40, 0, 1) ?></a>В»<?= !$is_next?",":""?>
                                 <? } else { ?>
-                                     «<?= reformat($theme['sbr_name'], 40, 0, 1) ?>»<?= !$is_next?",":""?> 
+                                     В«<?= reformat($theme['sbr_name'], 40, 0, 1) ?>В»<?= !$is_next?",":""?> 
                                 <? } ?>
                                 <? if(!$is_next) { ?>
-                                    этап «<?= reformat($theme['stage_name'], 40, 0, 1); ?>», <?= ($theme['stage_status'] == 7) ? '<span class="b-post__txt b-post__txt_color_c10601 b-post__txt_fontsize_11">завершенный арбитражем</span>' : 'сданный'; ?> <?= date("d.m.Y в H:i", strtotime($theme['stage_closed'])) ?>
+                                    СЌС‚Р°Рї В«<?= reformat($theme['stage_name'], 40, 0, 1); ?>В», <?= ($theme['stage_status'] == 7) ? '<span class="b-post__txt b-post__txt_color_c10601 b-post__txt_fontsize_11">Р·Р°РІРµСЂС€РµРЅРЅС‹Р№ Р°СЂР±РёС‚СЂР°Р¶РµРј</span>' : 'СЃРґР°РЅРЅС‹Р№'; ?> <?= date("d.m.Y РІ H:i", strtotime($theme['stage_closed'])) ?>
                                 <? } ?>
                             <? } ?>      
                         </div>
@@ -97,9 +97,9 @@ $aUser = get_object_vars($user);
                     <div class="b-post__txt b-post__txt_padtop_5" id="op_message_<?=$theme['id']?>"><?= reformat($theme['descr'], 30, 0, 0, 1) ?></div>
                 <?php if ( ( ( $theme['fromuser_id'] == $_SESSION['uid'] && (strtotime($theme['posted_time'])+3600*24 > time()) ) || hasPermissions('users') ) && $theme['is_payed'] != 1) { ?>
     			<div class="b-post__foot b-post__foot_padtop_10">
-                    <a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" onclick="xajax_EditSBROpForm(<?= $theme['id'] ?>, '<?=$theme['login']?>')">Редактировать отзыв</a>
+                    <a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" onclick="xajax_EditSBROpForm(<?= $theme['id'] ?>, '<?=$theme['login']?>')">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РѕС‚Р·С‹РІ</a>
                     <?php if (hasPermissions('sbr') && $theme['is_payed'] != 1) { ?>
-                    &nbsp;&nbsp;<a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" onclick="if (confirm('Удалить отзыв?')) {xajax_DeleteFeedback(<?= $theme['stage_id'] ?>, <?= $theme['id'] ?>, true)}">Удалить отзыв</a>
+                    &nbsp;&nbsp;<a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" onclick="if (confirm('РЈРґР°Р»РёС‚СЊ РѕС‚Р·С‹РІ?')) {xajax_DeleteFeedback(<?= $theme['stage_id'] ?>, <?= $theme['id'] ?>, true)}">РЈРґР°Р»РёС‚СЊ РѕС‚Р·С‹РІ</a>
                     <?php }//if?>
                 </div>
     			<?php }//if?>
@@ -107,7 +107,7 @@ $aUser = get_object_vars($user);
                         <div class="b-post__foot b-post__foot_padtop_10 <?= empty($theme['comm_id']) ? "" : "b-post__foot-empty"?>" id="feedback_buttons_<?= $theme['id']?>">
                             <a  class="b-post__link b-post__link_dot_0f71c8" id="feedback_opinion_btn_add_comment_<?= $theme['id']?>" href="javascript:void(0)" 
                                 onclick="if(!this.disabled) { $(this).getParent('.b-post__foot').hide(); this.disabled = true; xajax_AddOpComentForm('<?= $theme['id']?>', '<?=$ops_type?>', true); return false; }">
-                                Добавить комментарий</a>  &#160;&#160; 
+                                Р”РѕР±Р°РІРёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№</a>  &#160;&#160; 
                         </div>
                             <div class="b-post" id="feedback_comment_<?= $theme['id']?>" <?//= $showPostFootBlock ? '' : 'style="display:none"' ?>></div>
                     <? } ?>
@@ -128,18 +128,18 @@ $aUser = get_object_vars($user);
             </div>
             <div class="b-post__content b-post__content_margleft_60">
                 <div class="b-post__time b-post__time_float_right">
-                    <a class="b-post__anchor b-post__anchor_margright_10" onclick="hlAnchor('p',<?= $theme['uniq_id'] ?>);" href="#p_<?= $theme['uniq_id'] ?>" title="Ссылка на этот отзыв"></a>
-                    <?= date("d.m.Y в H:i", strtotime($theme['posted_time'])) ?>
+                    <a class="b-post__anchor b-post__anchor_margright_10" onclick="hlAnchor('p',<?= $theme['uniq_id'] ?>);" href="#p_<?= $theme['uniq_id'] ?>" title="РЎСЃС‹Р»РєР° РЅР° СЌС‚РѕС‚ РѕС‚Р·С‹РІ"></a>
+                    <?= date("d.m.Y РІ H:i", strtotime($theme['posted_time'])) ?>
                 </div>
                 <div id="form_container_<?= $theme['id'] . $uniq_id_sufix ?>" class="editFormSbr" style="display:none"></div>
                     <div id="form_container_to_<?= $theme['id'] . $uniq_id_sufix ?>" class="sbrmsgblock">
                         <div class="b-username b-username_padbot_5 b-username_bold<?php if($is_hidden) { ?> b-username_color_a7a7a6<?php } ?>"><?= view_user3($theme) ?></div>			
-                        <?php if ( $theme['is_banned'] ) { ?><div style="color:#000; margin: 0 0 10px 0;" ><b>Пользователь&nbsp;забанен.</b></div><?php } ?>
+                        <?php if ( $theme['is_banned'] ) { ?><div style="color:#000; margin: 0 0 10px 0;" ><b>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ&nbsp;Р·Р°Р±Р°РЅРµРЅ.</b></div><?php } ?>
                         <div class="b-fon b-fon_fontsize_11 b-fon_inline-block">
                             <div class="b-fon__body  b-fon__body_padleft_20 b-fon__body_bg_fff9bf b-fon__body_fontsize_11<?php if($is_hidden) { ?> b-post__txt_color_a7a7a6<?php } ?>">
                                 <span id="cont_<?= $theme['id'] . $uniq_id_sufix ?>" class="b-button b-button_poll_<?= $theme['sbr_rating'] == -1 ? 'minus' : ($theme['sbr_rating'] == 1 ? 'plus' : 'multi') ?> b-button_active b-button_marg_-2_2_0_-15"></span> 
                             <?php if($theme['opinion_type'] == 2){ ?>
-                                <?php if($is_emp){ ?>за заказ<?php }else{ ?>за выполнение заказа<?php } ?> 
+                                <?php if($is_emp){ ?>Р·Р° Р·Р°РєР°Р·<?php }else{ ?>Р·Р° РІС‹РїРѕР»РЅРµРЅРёРµ Р·Р°РєР°Р·Р°<?php } ?> 
                                     <?php if($theme['type'] == 0): ?>
                                     <a href="<?php echo tservices_helper::card_link($theme['project_id'], $theme['sbr_name']) ?>">
                                             <?= reformat($theme['sbr_name'], 40, 0, 1) ?>
@@ -147,9 +147,9 @@ $aUser = get_object_vars($user);
                                     <?php else: ?>
                                         <b><?= reformat(htmlspecialchars($theme['sbr_name']), 40, 0, 1) ?></b>
                                     <?php endif; ?>
-                                на сумму <?php echo tservices_helper::cost_format($theme['num'], true, false, false) ?>
+                                РЅР° СЃСѓРјРјСѓ <?php echo tservices_helper::cost_format($theme['num'], true, false, false) ?>
                             <?php } elseif($theme['opinion_type'] == 3) { ?>
-                                <?php if($is_emp){ ?>за проект<?php }else{ ?>за выполнение проекта<?php } ?>
+                                <?php if($is_emp){ ?>Р·Р° РїСЂРѕРµРєС‚<?php }else{ ?>Р·Р° РІС‹РїРѕР»РЅРµРЅРёРµ РїСЂРѕРµРєС‚Р°<?php } ?>
                                 <?php if($theme['kind'] == 9): ?>
                                     &laquo;<?= reformat($theme['sbr_name'], 40, 0, 1) ?>&raquo;
                                 <?php else: ?>
@@ -157,17 +157,17 @@ $aUser = get_object_vars($user);
                                 <?php endif; ?>
                             <?php } else { ?>
                                 <?if($theme['is_payed'] == 1) { ?>
-                                    подтвержденная рекомендация по итогам сотрудничества
+                                    РїРѕРґС‚РІРµСЂР¶РґРµРЅРЅР°СЏ СЂРµРєРѕРјРµРЅРґР°С†РёСЏ РїРѕ РёС‚РѕРіР°Рј СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР°
                                 <? } else { ?>
-                                    по итогам сделки <span class="b-icon b-icon_top_3 b-icon_sbr_shield"></span>&nbsp; 
-                                    <? if ($uid == $theme['frl_id'] || $uid == $theme['emp_id']) { // отзывы смотрит участнк сделк ?>
-                                        «<a id='sbr_name_<?=$theme['id']?>' class="b-layout__link" href="<?=( sbr_meta::isNewVersionSbr($theme['scheme_type']) ? "/".sbr::NEW_TEMPLATE_SBR."/?id={$theme['sbr_id']}" : "/norisk2/?id={$theme['sbr_id']}" ) ?>"><?= reformat($theme['sbr_name'], 40, 0, 1) ?></a>» &nbsp;
+                                    РїРѕ РёС‚РѕРіР°Рј СЃРґРµР»РєРё <span class="b-icon b-icon_top_3 b-icon_sbr_shield"></span>&nbsp; 
+                                    <? if ($uid == $theme['frl_id'] || $uid == $theme['emp_id']) { // РѕС‚Р·С‹РІС‹ СЃРјРѕС‚СЂРёС‚ СѓС‡Р°СЃС‚РЅРє СЃРґРµР»Рє ?>
+                                        В«<a id='sbr_name_<?=$theme['id']?>' class="b-layout__link" href="<?=( sbr_meta::isNewVersionSbr($theme['scheme_type']) ? "/".sbr::NEW_TEMPLATE_SBR."/?id={$theme['sbr_id']}" : "/norisk2/?id={$theme['sbr_id']}" ) ?>"><?= reformat($theme['sbr_name'], 40, 0, 1) ?></a>В» &nbsp;
                                     <? } elseif ($theme['project_id']) { ?>
-                                        «<a id='sbr_name_<?=$theme['id']?>' class="b-post__link" href="/projects/<?= $theme['project_id'] ?>"><?= reformat($theme['sbr_name'], 40, 0, 1) ?></a>»<?= !$is_next?",":""?>
+                                        В«<a id='sbr_name_<?=$theme['id']?>' class="b-post__link" href="/projects/<?= $theme['project_id'] ?>"><?= reformat($theme['sbr_name'], 40, 0, 1) ?></a>В»<?= !$is_next?",":""?>
                                     <? } else { ?>
-                                         «<span id='sbr_name_<?=$theme['id']?>'><?= reformat($theme['sbr_name'], 40, 0, 1) ?></span>»<?= !$is_next?",":""?> 
+                                         В«<span id='sbr_name_<?=$theme['id']?>'><?= reformat($theme['sbr_name'], 40, 0, 1) ?></span>В»<?= !$is_next?",":""?> 
                                     <? } ?>
-                                    этап «<span id='stage_name_<?=$theme['id']?>'><?= reformat($theme['stage_name'], 40, 0, 1); ?></span>», <?= ($theme['stage_status'] == 7) ? '<span class="b-post__txt b-post__txt_color_c10601 b-post__txt_fontsize_11">завершенный арбитражем</span>' : 'сданный'; ?> <?= date("d.m.Y в H:i", strtotime($theme['stage_closed'])) ?>
+                                    СЌС‚Р°Рї В«<span id='stage_name_<?=$theme['id']?>'><?= reformat($theme['stage_name'], 40, 0, 1); ?></span>В», <?= ($theme['stage_status'] == 7) ? '<span class="b-post__txt b-post__txt_color_c10601 b-post__txt_fontsize_11">Р·Р°РІРµСЂС€РµРЅРЅС‹Р№ Р°СЂР±РёС‚СЂР°Р¶РµРј</span>' : 'СЃРґР°РЅРЅС‹Р№'; ?> <?= date("d.m.Y РІ H:i", strtotime($theme['stage_closed'])) ?>
                                 <? } ?>
                             <?php } ?>
                             </div>
@@ -191,13 +191,13 @@ $aUser = get_object_vars($user);
                         <div class="b-post__foot b-post__foot_padtop_10">
                             <?php if($is_allow_edit){ ?>
                             <a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" onclick="xajax_tservicesOrdersEditFeedback(<?= $theme['id'] ?>);">
-                                Редактировать отзыв
+                                Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РѕС‚Р·С‹РІ
                             </a>
                             &nbsp;&nbsp;
                             <?php } ?>
                             <?php if($is_allow_delete){ ?>
-                            <a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" onclick="if (confirm('Удалить отзыв?')) {xajax_tservicesOrdersDeleteFeedback(<?= $theme['id'] ?>);}">
-                                Удалить отзыв
+                            <a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" onclick="if (confirm('РЈРґР°Р»РёС‚СЊ РѕС‚Р·С‹РІ?')) {xajax_tservicesOrdersDeleteFeedback(<?= $theme['id'] ?>);}">
+                                РЈРґР°Р»РёС‚СЊ РѕС‚Р·С‹РІ
                             </a>
                             <?php }//if ?>
                         </div>
@@ -207,7 +207,7 @@ $aUser = get_object_vars($user);
                         <div class="b-post__foot b-post__foot_padtop_10 <?= empty($theme['comm_id']) ? "" : "b-post__foot-empty"?>" id="feedback_buttons_<?= $theme['id']?>">
                             <a class="b-post__link b-post__link_dot_0f71c8" id="feedback_opinion_btn_add_comment_<?= $theme['id']?>" href="javascript:void(0)" 
                                onclick="if(!this.disabled) { $(this).hide(); this.disabled = true; xajax_AddOpComentForm('<?= $theme['id']?>', '<?=$ops_type?>', true); return false; }">
-                                Добавить комментарий
+                                Р”РѕР±Р°РІРёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№
                             </a>  &#160;&#160; 
                             <div class="b-post" id="feedback_comment_<?= $theme['id']?>" <?//= $showPostFootBlock ? '' : 'style="display:none"' ?>></div>
                         </div>
@@ -230,13 +230,13 @@ $aUser = get_object_vars($user);
                         <div class="b-post__foot b-post__foot_padtop_10">
                             <?php if($is_allow_edit){ ?>
                             <a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" onclick="xajax_projectEditFeedback(<?= $theme['id'] ?>);">
-                                Редактировать отзыв
+                                Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РѕС‚Р·С‹РІ
                             </a>
                             &nbsp;&nbsp;
                             <?php } ?>
                             <?php if($is_allow_delete){ ?>
-                            <a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" onclick="if (confirm('Удалить отзыв?')) {xajax_projectDeleteFeedback(<?= $theme['id'] ?>);}">
-                                Удалить отзыв
+                            <a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" onclick="if (confirm('РЈРґР°Р»РёС‚СЊ РѕС‚Р·С‹РІ?')) {xajax_projectDeleteFeedback(<?= $theme['id'] ?>);}">
+                                РЈРґР°Р»РёС‚СЊ РѕС‚Р·С‹РІ
                             </a>
                             <?php }//if ?>
                         </div>
@@ -248,9 +248,9 @@ $aUser = get_object_vars($user);
                         ?>
                         <?php if ( ( ( $theme['fromuser_id'] == $_SESSION['uid'] && (strtotime($theme['posted_time'])+3600*24 > time()) ) || hasPermissions('users') ) && $theme['is_payed'] != 1) { ?>
                         <div class="b-post__foot b-post__foot_padtop_10">
-                        <a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" onclick="xajax_EditSBROpForm(<?= $theme['id'] ?>, '<?=$theme['login']?>')">Редактировать отзыв</a>
+                        <a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" onclick="xajax_EditSBROpForm(<?= $theme['id'] ?>, '<?=$theme['login']?>')">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РѕС‚Р·С‹РІ</a>
                         <?php if (hasPermissions('sbr') && $theme['is_payed'] != 1) { ?>
-                        &nbsp;&nbsp;<a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" onclick="if (confirm('Удалить отзыв?')) {xajax_DeleteFeedback(<?= $theme['stage_id'] ?>, <?= $theme['id'] ?>, true)}">Удалить отзыв</a>
+                        &nbsp;&nbsp;<a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" onclick="if (confirm('РЈРґР°Р»РёС‚СЊ РѕС‚Р·С‹РІ?')) {xajax_DeleteFeedback(<?= $theme['stage_id'] ?>, <?= $theme['id'] ?>, true)}">РЈРґР°Р»РёС‚СЊ РѕС‚Р·С‹РІ</a>
                         <?php }//if?>
                         </div>
                         <?php }//if?>
@@ -258,7 +258,7 @@ $aUser = get_object_vars($user);
                             <div class="b-post__foot b-post__foot_padtop_10 <?= empty($theme['comm_id']) ? "" : "b-post__foot-empty"?>" id="feedback_buttons_<?= $theme['id']?>">
                                 <a  class="b-post__link b-post__link_dot_0f71c8" id="feedback_opinion_btn_add_comment_<?= $theme['id']?>" href="javascript:void(0)" 
                                     onclick="if(!this.disabled) { $(this).getParent('.b-post__foot').hide(); this.disabled = true; xajax_AddOpComentForm('<?= $theme['id']?>', '<?=$ops_type?>', true); return false; }">
-                                    Добавить комментарий</a>  &#160;&#160; 
+                                    Р”РѕР±Р°РІРёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№</a>  &#160;&#160; 
                             </div>
                                 <div class="b-post" id="feedback_comment_<?= $theme['id']?>" <?//= $showPostFootBlock ? '' : 'style="display:none"' ?>></div>
                         <? } ?>
@@ -267,10 +267,10 @@ $aUser = get_object_vars($user);
                     
                 <?php if ($is_hidden && !$is_owner) {?>
                     <div class="b-layout__txt b-layout__txt_padtop_10 b-layout__txt_padbot_10">
-                        Данный отзыв пока скрыт и виден только вам и заказчику.<br>
-                        Как только вы приобретете аккаунт PRO, все ваши скрытые отзывы станут видны всем.
+                        Р”Р°РЅРЅС‹Р№ РѕС‚Р·С‹РІ РїРѕРєР° СЃРєСЂС‹С‚ Рё РІРёРґРµРЅ С‚РѕР»СЊРєРѕ РІР°Рј Рё Р·Р°РєР°Р·С‡РёРєСѓ.<br>
+                        РљР°Рє С‚РѕР»СЊРєРѕ РІС‹ РїСЂРёРѕР±СЂРµС‚РµС‚Рµ Р°РєРєР°СѓРЅС‚ PRO, РІСЃРµ РІР°С€Рё СЃРєСЂС‹С‚С‹Рµ РѕС‚Р·С‹РІС‹ СЃС‚Р°РЅСѓС‚ РІРёРґРЅС‹ РІСЃРµРј.
                     </div>
-                    <a class="b-button b-button_flat b-button_flat_green" href="/payed/">Купить PRO и опубликовать все скрытые отзывы</a>
+                    <a class="b-button b-button_flat b-button_flat_green" href="/payed/">РљСѓРїРёС‚СЊ PRO Рё РѕРїСѓР±Р»РёРєРѕРІР°С‚СЊ РІСЃРµ СЃРєСЂС‹С‚С‹Рµ РѕС‚Р·С‹РІС‹</a>
                 <?php } ?>
             </div>
         </div>
@@ -324,7 +324,7 @@ $aUser = get_object_vars($user);
                 </div>
                 <div class="b-post__content b-post__content_margleft_60">
                     <div class="b-post__time b-post__time_float_right"> 
-                        <a class="b-post__anchor b-post__anchor_margright_10" onclick="hlAnchor('o',<?= $opinion['id'] ?>);" href="#o_<?= $opinion['id'] ?>" title="Ссылка на это мнение"></a> <?= date('d.m.Y в H:i', strtotime($opinion['post_time']))?> 
+                        <a class="b-post__anchor b-post__anchor_margright_10" onclick="hlAnchor('o',<?= $opinion['id'] ?>);" href="#o_<?= $opinion['id'] ?>" title="РЎСЃС‹Р»РєР° РЅР° СЌС‚Рѕ РјРЅРµРЅРёРµ"></a> <?= date('d.m.Y РІ H:i', strtotime($opinion['post_time']))?> 
                     </div>
                     <div class="b-username b-username_padbot_5 b-username_bold">
                         <?= view_user3($opinion)?>
@@ -341,15 +341,15 @@ $aUser = get_object_vars($user);
                                 <a class="b-post__link b-post__link_dot_0f71c8" 
                                    id="opinion_btn_add_comment_<?= $opinion['id']?>" href="#" 
                                    onclick="if(!this.disabled) { $(this).getParent('.b-post__foot').hide(); this.disabled = true; xajax_AddOpComentForm('<?= $opinion['id']?>', '<?=$ops_type?>'); return false; }">
-                                Добавить комментарий</a>  &#160;&#160; 
+                                Р”РѕР±Р°РІРёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№</a>  &#160;&#160; 
 							</div>
                             <div class="b-post" id="comment_<?= $opinion['id']?>" <?= $showPostFootBlock ? '' : 'style="display:none"' ?>></div>
                         <? } ?>
                         <?php if($is_user_admin): ?>    
                         <a class="b-post__link b-post__link_dot_c10601" 
                            href="javascript:void(0)" 
-                           onclick="if (confirm('Вы действительно хотите удалить отзыв?')) xajax_DeleteOpinion(<?= $opinion['id'] ?>,'<?= (is_emp($opinion['role'])?'emp':'frl')?>'); return false;">
-                            Удалить отзыв</a>
+                           onclick="if (confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РѕС‚Р·С‹РІ?')) xajax_DeleteOpinion(<?= $opinion['id'] ?>,'<?= (is_emp($opinion['role'])?'emp':'frl')?>'); return false;">
+                            РЈРґР°Р»РёС‚СЊ РѕС‚Р·С‹РІ</a>
                         <?php endif; ?>
                 </div>
             </div>

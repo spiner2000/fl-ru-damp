@@ -4,25 +4,25 @@ $crumbs =
 array(
     0 => array(
         'href' => '/' . sbr::NEW_TEMPLATE_SBR . '/', 
-        'name' => '«Мои Сделки»'
+        'name' => 'В«РњРѕРё РЎРґРµР»РєРёВ»'
     ),
     1 => array(
         'href' => '', 
-        'name' => 'Новая сделка'
+        'name' => 'РќРѕРІР°СЏ СЃРґРµР»РєР°'
     )
 );
 $css_selector_crumbs = "b-page__title_padbot_30";
-// Хлебные крошки
+// РҐР»РµР±РЅС‹Рµ РєСЂРѕС€РєРё
 include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php"); 
 ?>
 
-<div class="b-layout__txt b-layout__txt_fontsize_22">&mdash; <a class="b-layout__link" href="/users/<?=$sbr->login?>/setup/projects/">В открытом проекте</a></div>
+<div class="b-layout__txt b-layout__txt_fontsize_22">&mdash; <a class="b-layout__link" href="/users/<?=$sbr->login?>/setup/projects/">Р’ РѕС‚РєСЂС‹С‚РѕРј РїСЂРѕРµРєС‚Рµ</a></div>
 <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_30 b-layout__txt_padbot_40">
     <?php if($projects_cnt['open'] == 1) {?>
-    На данный момент у вас 1 открытый проект. Вы можете начать в нем «Безопасную Сделку».
+    РќР° РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ Сѓ РІР°СЃ 1 РѕС‚РєСЂС‹С‚С‹Р№ РїСЂРѕРµРєС‚. Р’С‹ РјРѕР¶РµС‚Рµ РЅР°С‡Р°С‚СЊ РІ РЅРµРј В«Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓВ».
     <?php } else { //if?>
-    Выберите любой из <?= $projects_cnt['open']; ?> открытых вами проектов и начните по нему «Безопасную Сделку».
+    Р’С‹Р±РµСЂРёС‚Рµ Р»СЋР±РѕР№ РёР· <?= $projects_cnt['open']; ?> РѕС‚РєСЂС‹С‚С‹С… РІР°РјРё РїСЂРѕРµРєС‚РѕРІ Рё РЅР°С‡РЅРёС‚Рµ РїРѕ РЅРµРјСѓ В«Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓВ».
     <?php } //else?>
 </div>
-<div class="b-layout__txt b-layout__txt_fontsize_22">&mdash; <a class="b-layout__link" href="?site=create">Без публикации проекта</a></div>
-<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_30 b-layout__txt_padbot_40">Если вы определились с исполнителем, создайте проект, который не будет опубликован на главной странице, и сразу начинайте по нему «Безопасную Сделку». </div>
+<div class="b-layout__txt b-layout__txt_fontsize_22">&mdash; <a class="b-layout__link" href="?site=create">Р‘РµР· РїСѓР±Р»РёРєР°С†РёРё РїСЂРѕРµРєС‚Р°</a></div>
+<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_30 b-layout__txt_padbot_40">Р•СЃР»Рё РІС‹ РѕРїСЂРµРґРµР»РёР»РёСЃСЊ СЃ РёСЃРїРѕР»РЅРёС‚РµР»РµРј, СЃРѕР·РґР°Р№С‚Рµ РїСЂРѕРµРєС‚, РєРѕС‚РѕСЂС‹Р№ РЅРµ Р±СѓРґРµС‚ РѕРїСѓР±Р»РёРєРѕРІР°РЅ РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ, Рё СЃСЂР°Р·Сѓ РЅР°С‡РёРЅР°Р№С‚Рµ РїРѕ РЅРµРјСѓ В«Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓВ». </div>

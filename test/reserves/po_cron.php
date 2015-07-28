@@ -46,7 +46,7 @@ $results['cron'] = $reservesPayout->cron(3);
 
 
 //$reservesPayout = new ReservesPayoutTest();
-//$reservesPayout->errorLog(777, 'Íåêîððåêòíàÿ ñóììà âûïëàòû');
+//$reservesPayout->errorLog(777, 'ÐÐµÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ð°Ñ ÑÑƒÐ¼Ð¼Ð° Ð²Ñ‹Ð¿Ð»Ð°Ñ‚Ñ‹');
 //$sum = 77777;
 //print_r($reservesPayout->calcRequestList(777, $sum));
 //$reservesPayout->saveToHistory(5);

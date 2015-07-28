@@ -3,32 +3,32 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/blogs.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/articles.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/articles_comments.php';
 /**
- * Класс работает с группой комментариев из разных сервисов.
- * Магазин, статьи, дефиле.
+ * РљР»Р°СЃСЃ СЂР°Р±РѕС‚Р°РµС‚ СЃ РіСЂСѓРїРїРѕР№ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ РёР· СЂР°Р·РЅС‹С… СЃРµСЂРІРёСЃРѕРІ.
+ * РњР°РіР°Р·РёРЅ, СЃС‚Р°С‚СЊРё, РґРµС„РёР»Рµ.
  *
  * 
  */
 class comments {
 
 	/**
-	 * Идентификатор комментариев в статьях
+	 * РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ РІ СЃС‚Р°С‚СЊСЏС…
 	 *
 	 */
 	const T_ARTICLES = 2;
 
 	/**
-	 * Возвращает список комментариев
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
 	 *
-	 * @param  integer  $count   Возвращает общее количество комментариев
-	 * @param  array    $filter  Настройки фильтра: category - отобразить конкретную категорию, sdate - с кокретной даты, edate - до конкретной даты
-	 * @param  integer  $limit   Количество сообщений, которые нужно отобразить
-	 * @param  integer  $offset  С какого сообщения отображать
-	 * @return array             Массив с данными
+	 * @param  integer  $count   Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
+	 * @param  array    $filter  РќР°СЃС‚СЂРѕР№РєРё С„РёР»СЊС‚СЂР°: category - РѕС‚РѕР±СЂР°Р·РёС‚СЊ РєРѕРЅРєСЂРµС‚РЅСѓСЋ РєР°С‚РµРіРѕСЂРёСЋ, sdate - СЃ РєРѕРєСЂРµС‚РЅРѕР№ РґР°С‚С‹, edate - РґРѕ РєРѕРЅРєСЂРµС‚РЅРѕР№ РґР°С‚С‹
+	 * @param  integer  $limit   РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕРѕР±С‰РµРЅРёР№, РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ РѕС‚РѕР±СЂР°Р·РёС‚СЊ
+	 * @param  integer  $offset  РЎ РєР°РєРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ РѕС‚РѕР±СЂР°Р¶Р°С‚СЊ
+	 * @return array             РњР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё
 	 */
 	public function GetItems(&$count, $filter, $limit, $offset) {
         global $DB;
 
-		// подзапрос для статей
+		// РїРѕРґР·Р°РїСЂРѕСЃ РґР»СЏ СЃС‚Р°С‚РµР№
 		if (empty($filter['category']) || $filter['category'] == self::T_ARTICLES) {
 			$subquery = $articles = "
 				SELECT
@@ -41,7 +41,7 @@ class comments {
 			";
 		}
 
-		// дополнительный условия для фильтра
+		// РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ СѓСЃР»РѕРІРёСЏ РґР»СЏ С„РёР»СЊС‚СЂР°
 		$where = '';
 		if (!empty($filter['sdate'])) {
 			$where = " post_time >= '{$filter['sdate']} 00:00:00' ";
@@ -53,7 +53,7 @@ class comments {
 			$where = "WHERE {$where}";
 		}
 
-		// общее количество комментариев
+		// РѕР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
 		$count = $DB->val("SELECT COUNT(*) FROM ({$subquery}) comments {$where}");
 
 		$sql = "
@@ -87,7 +87,7 @@ class comments {
     		}
         }
 
-		// аттачи
+		// Р°С‚С‚Р°С‡Рё
 		$files = array();
 
 		if (!empty($ids[1])) {
@@ -133,11 +133,11 @@ class comments {
 
 
 	/**
-	 * Возвращает данные комментария
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
 	 * 
-	 * @param  integer  $type  Тип группы комментариев
-	 * @param  integer  $id    id комментария
-	 * @return array           Массив с данными
+	 * @param  integer  $type  РўРёРї РіСЂСѓРїРїС‹ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
+	 * @param  integer  $id    id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+	 * @return array           РњР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё
 	 */
 	public function GetItem($type, $id) {
         global $DB;
@@ -182,19 +182,19 @@ class comments {
 
 
 	/**
-	 * Редактирование комментария
+	 * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
 	 *
-	 * @param  integer  $type        Тип группы комментариев
-	 * @param  integer  $id          id комментария
-	 * @param  integer  $user_id     uid пользователя, комментарий которого редактируем
-	 * @param  integer  $moder_uid   uid пользователя, который редактирует
-	 * @param  string   $title       заголовок комментария (если есть у группы)
-	 * @param  string   $msg         сообщение
-	 * @param  array    $attaches    массив с новыми файлами (объекты CFile)
-	 * @param  array    $rmattaches  массив с данными для удаления файлов. содержит поля:
-	 *                               array(attach_id: id файлы во внутренней таблице сервиса; file_id: id файла в таблице file; name: имя файла
-	 * @param  string   $yt_link     ссылка на Youtube/Rutube/etc...
-	 * @return string                Возможная ошибка
+	 * @param  integer  $type        РўРёРї РіСЂСѓРїРїС‹ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
+	 * @param  integer  $id          id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+	 * @param  integer  $user_id     uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕРјРјРµРЅС‚Р°СЂРёР№ РєРѕС‚РѕСЂРѕРіРѕ СЂРµРґР°РєС‚РёСЂСѓРµРј
+	 * @param  integer  $moder_uid   uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂС‹Р№ СЂРµРґР°РєС‚РёСЂСѓРµС‚
+	 * @param  string   $title       Р·Р°РіРѕР»РѕРІРѕРє РєРѕРјРјРµРЅС‚Р°СЂРёСЏ (РµСЃР»Рё РµСЃС‚СЊ Сѓ РіСЂСѓРїРїС‹)
+	 * @param  string   $msg         СЃРѕРѕР±С‰РµРЅРёРµ
+	 * @param  array    $attaches    РјР°СЃСЃРёРІ СЃ РЅРѕРІС‹РјРё С„Р°Р№Р»Р°РјРё (РѕР±СЉРµРєС‚С‹ CFile)
+	 * @param  array    $rmattaches  РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РґР»СЏ СѓРґР°Р»РµРЅРёСЏ С„Р°Р№Р»РѕРІ. СЃРѕРґРµСЂР¶РёС‚ РїРѕР»СЏ:
+	 *                               array(attach_id: id С„Р°Р№Р»С‹ РІРѕ РІРЅСѓС‚СЂРµРЅРЅРµР№ С‚Р°Р±Р»РёС†Рµ СЃРµСЂРІРёСЃР°; file_id: id С„Р°Р№Р»Р° РІ С‚Р°Р±Р»РёС†Рµ file; name: РёРјСЏ С„Р°Р№Р»Р°
+	 * @param  string   $yt_link     СЃСЃС‹Р»РєР° РЅР° Youtube/Rutube/etc...
+	 * @return string                Р’РѕР·РјРѕР¶РЅР°СЏ РѕС€РёР±РєР°
 	 */
 	public function Edit($type, $id, $user_id, $moder_uid, $title, $msg, $attaches, $rmattaches, $yt_link) {
         global $DB;
@@ -226,13 +226,13 @@ class comments {
 
 
 	/**
-	 * Удаляет комментарий (помечает удаленным)
+	 * РЈРґР°Р»СЏРµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёР№ (РїРѕРјРµС‡Р°РµС‚ СѓРґР°Р»РµРЅРЅС‹Рј)
 	 * 
-	 * @param  integer  $type        Тип группы комментариев
-	 * @param  integer  $id          id комментария
-	 * @param  integer  $user_id     uid пользователя, комментарий которого редактируем
-	 * @param  integer  $moder_uid   uid пользователя, который редактирует
-	 * @return string                Возможная ошибка
+	 * @param  integer  $type        РўРёРї РіСЂСѓРїРїС‹ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
+	 * @param  integer  $id          id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+	 * @param  integer  $user_id     uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕРјРјРµРЅС‚Р°СЂРёР№ РєРѕС‚РѕСЂРѕРіРѕ СЂРµРґР°РєС‚РёСЂСѓРµРј
+	 * @param  integer  $moder_uid   uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂС‹Р№ СЂРµРґР°РєС‚РёСЂСѓРµС‚
+	 * @return string                Р’РѕР·РјРѕР¶РЅР°СЏ РѕС€РёР±РєР°
 	 */
 	public function Del($type, $id, $user_id, $moder_id) {
 		$error = '';
@@ -248,13 +248,13 @@ class comments {
 
 
 	/**
-	 * Восстанавливает комментарий
+	 * Р’РѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёР№
 	 *
-	 * @param  integer  $type        Тип группы комментариев
-	 * @param  integer  $id          id комментария
-	 * @param  integer  $user_id     uid пользователя, комментарий которого редактируем
-	 * @param  integer  $moder_uid   uid пользователя, который редактирует
-	 * @return string                Возможная ошибка
+	 * @param  integer  $type        РўРёРї РіСЂСѓРїРїС‹ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
+	 * @param  integer  $id          id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+	 * @param  integer  $user_id     uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕРјРјРµРЅС‚Р°СЂРёР№ РєРѕС‚РѕСЂРѕРіРѕ СЂРµРґР°РєС‚РёСЂСѓРµРј
+	 * @param  integer  $moder_uid   uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂС‹Р№ СЂРµРґР°РєС‚РёСЂСѓРµС‚
+	 * @return string                Р’РѕР·РјРѕР¶РЅР°СЏ РѕС€РёР±РєР°
 	 */
 	public function Restore($type, $id, $user_id, $moder_id) {
 		$error = '';

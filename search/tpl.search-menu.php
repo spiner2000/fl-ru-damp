@@ -1,17 +1,17 @@
 <ul class="search-tabs" data-ga_role="<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>">
     <li <?= $type=='users'?'class="active"':''?>>
         <a href="/search/?type=users" data-ga_type="performer">
-            Поиск <span class="b-page__desktop b-page__ipad">исполнителя</span><div class="b-page__iphone">исполнителя</div>
+            РџРѕРёСЃРє <span class="b-page__desktop b-page__ipad">РёСЃРїРѕР»РЅРёС‚РµР»СЏ</span><div class="b-page__iphone">РёСЃРїРѕР»РЅРёС‚РµР»СЏ</div>
         </a>
     </li>
     <li <?= $type=='projects'?'class="active"':''?>>
         <a href="/search/?type=projects" data-ga_type="project">
-            Поиск <span class="b-page__desktop b-page__ipad">проекта</span><div class="b-page__iphone">проекта</div>
+            РџРѕРёСЃРє <span class="b-page__desktop b-page__ipad">РїСЂРѕРµРєС‚Р°</span><div class="b-page__iphone">РїСЂРѕРµРєС‚Р°</div>
         </a>
     </li>
     <li <?= $sections?'class="active"':''?>>
         <a href="/search/?type=works" data-ga_type="section">
-            Поиск по <span class="b-page__desktop b-page__ipad">разделам сайта</span><div class="b-page__iphone">разделам сайта</div>
+            РџРѕРёСЃРє РїРѕ <span class="b-page__desktop b-page__ipad">СЂР°Р·РґРµР»Р°Рј СЃР°Р№С‚Р°</span><div class="b-page__iphone">СЂР°Р·РґРµР»Р°Рј СЃР°Р№С‚Р°</div>
         </a>
     </li>
 </ul>

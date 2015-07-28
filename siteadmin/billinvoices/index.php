@@ -7,7 +7,7 @@ require_once(__DIR__ . '/controllers/BillInvoicesAdminController.php');
 
 session_start();
 
-//@todo: для пополнения обычно было нужны !hasPermissions('payments')
+//@todo: РґР»СЏ РїРѕРїРѕР»РЅРµРЅРёСЏ РѕР±С‹С‡РЅРѕ Р±С‹Р»Рѕ РЅСѓР¶РЅС‹ !hasPermissions('payments')
 if (!(hasPermissions('bank') && hasPermissions('adm'))) {
     header_location_exit('/404.php');
 }
@@ -26,7 +26,7 @@ $action = __paramInit('string', 'action', 'action', 'index');
 $module = new CModule('billinvoices-admin');
 $module->setBasePath(dirname(__FILE__));
 $controller = new BillInvoicesAdminController('billinvoices-admin', $module);
-$controller->init($action); // инициализация контролера
+$controller->init($action); // РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєРѕРЅС‚СЂРѕР»РµСЂР°
 $controller->run($action);
 
 $content = "tpl.index.php";

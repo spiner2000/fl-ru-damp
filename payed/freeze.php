@@ -49,7 +49,7 @@ $to_time = date('Y-m-d', $to_time);
 
 
 //if(date('Ymd', strtotime($_SESSION['pro_last'])) == date('Ymd')) $freeze_allow = false;
-//@todo: âûêëþ÷àåì âîçìîæíîñòü çàìîðîçêè
+//@todo: Ð²Ñ‹ÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚ÑŒ Ð·Ð°Ð¼Ð¾Ñ€Ð¾Ð·ÐºÐ¸
 //https://beta.free-lance.ru/mantis/view.php?id=29292
 $freeze_allow = false;
 
@@ -98,15 +98,15 @@ if ($action == 'freeze' && $freeze_allow) {
         header_location_exit($location);
 
     } elseif (strtotime($from_date) > strtotime($_SESSION['pro_last']) || strtotime($from_date) < $fstart ) {
-        $freeze_error = 'Íåâåðíàÿ äàòà íà÷àëà çàìîðîçêè.';
+        $freeze_error = 'ÐÐµÐ²ÐµÑ€Ð½Ð°Ñ Ð´Ð°Ñ‚Ð° Ð½Ð°Ñ‡Ð°Ð»Ð° Ð·Ð°Ð¼Ð¾Ñ€Ð¾Ð·ÐºÐ¸.';
     } else {
-        $freeze_error = 'Îøèáêà, íå óêàçàíà îäíà èç äàò.';
+        $freeze_error = 'ÐžÑˆÐ¸Ð±ÐºÐ°, Ð½Ðµ ÑƒÐºÐ°Ð·Ð°Ð½Ð° Ð¾Ð´Ð½Ð° Ð¸Ð· Ð´Ð°Ñ‚.';
     }
 }
 
 if ($action == 'freeze_cancel' && $freeze_set) {
     if (!payed::freezeProCancel($uid, $last_freeze_id)) {
-        $freeze_error = 'Íåâîçìîæíî îòìåíèòü çàìîðîçêó.';
+        $freeze_error = 'ÐÐµÐ²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ Ð¾Ñ‚Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð·Ð°Ð¼Ð¾Ñ€Ð¾Ð·ÐºÑƒ.';
     } else {
         $freeze_set = false;
         $freeze_allow = true;
@@ -124,7 +124,7 @@ if ($action == 'freeze_cancel' && $freeze_set) {
 
 if ($action == 'freeze_stop' && $freezed_now) {
     if (!payed::freezeProStop($uid, $last_freeze_id)) {
-        $freeze_error = 'Íåâîçìîæíî ðàçìîðîçèòü àêêàóíò.';
+        $freeze_error = 'ÐÐµÐ²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ Ñ€Ð°Ð·Ð¼Ð¾Ñ€Ð¾Ð·Ð¸Ñ‚ÑŒ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚.';
     } else {
         $pro_last = payed::ProLast($_SESSION['login']);
         if(!$pro_last['freeze_to']) {

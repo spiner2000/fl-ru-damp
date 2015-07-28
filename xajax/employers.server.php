@@ -11,10 +11,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/portfolio.php");
 
 
 /**
- * Формирует список городов для выбранной страны.
+ * Р¤РѕСЂРјРёСЂСѓРµС‚ СЃРїРёСЃРѕРє РіРѕСЂРѕРґРѕРІ РґР»СЏ РІС‹Р±СЂР°РЅРЅРѕР№ СЃС‚СЂР°РЅС‹.
  *
- * @param integer $country_id код страны
- * @param integer $city_id код города
+ * @param integer $country_id РєРѕРґ СЃС‚СЂР°РЅС‹
+ * @param integer $city_id РєРѕРґ РіРѕСЂРѕРґР°
  */
 function ChangeCity($country_id, $city_id)
 {
@@ -28,7 +28,7 @@ function ChangeCity($country_id, $city_id)
   {
     $select .= " selected";
   }
-  $select .= ">Все города</option>";
+  $select .= ">Р’СЃРµ РіРѕСЂРѕРґР°</option>";
   if ($cities)
   {
     foreach ($cities as $id => $city)
@@ -60,7 +60,7 @@ function AddFav($frl_id, $prof_id, $is_pro = 'f')
   }
   if (isset($info))
   {
-// Временно отключено количество.    $objResponse->assign("fav_count", "innerHTML", $info[0]);
+// Р’СЂРµРјРµРЅРЅРѕ РѕС‚РєР»СЋС‡РµРЅРѕ РєРѕР»РёС‡РµСЃС‚РІРѕ.    $objResponse->assign("fav_count", "innerHTML", $info[0]);
     if ($info[1])
     {
       if ($is_pro == 't')

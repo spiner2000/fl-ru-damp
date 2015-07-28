@@ -24,7 +24,7 @@
 
 
   $header = "../header.php";
-  //$additional_header = "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"¡ÎÓ„Ë Ì‡ Free-lance.ru (".$gr_name.")\" href=\"/rss/blogs.php?gr=".$gr."&amp;t=".$t."\" />";
+  //$additional_header = "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"–ë–ª–æ–≥–∏ –Ω–∞ Free-lance.ru (".$gr_name.")\" href=\"/rss/blogs.php?gr=".$gr."&amp;t=".$t."\" />";
   $css_file = array( "lenta.css", 'commune.css', '/css/nav.css' );
   $content = "content.php";
   $js_file = array( 'polls.js', 'commune.js' );
@@ -49,7 +49,7 @@
       $prof_groups = __paramInit('array', NULL, 'prof_group_id');
 
       if(!lenta::SaveUserSettings($has_lenta, $uid, $my_team, $all_profs, $communes, $prof_groups))
-        ; // Ó¯Ë·Í‡.
+        ; // –æ—à–∏–±–∫–∞.
 
       header("Location: /lenta/");
       exit;

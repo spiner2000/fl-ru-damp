@@ -41,33 +41,33 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
 
 <a id="frl_anc" name="frl"></a>
 
-    <h1 class="b-page__title">Все работы</h1>
+    <h1 class="b-page__title">Р’СЃРµ СЂР°Р±РѕС‚С‹</h1>
 <div class="b-layout__right b-layout__right_relative b-layout__left_width_72ps b-layout__left_float_left">
     <div class="b-menu b-menu_line b-menu_padbot_10 b-menu__cat" >
         <div class=" cat-tab">
             <div class="b-menu"  data-accordion="true" data-accordion-descriptor="worktype">
                 <ul class="b-menu__list">
                     <li class="b-menu__item">
-                        <a class="b-menu__link" href="/freelancers/" title="Все фрилансеры">
-                            <span class="b-menu__b1">Все фрилансеры</span>
+                        <a class="b-menu__link" href="/freelancers/" title="Р’СЃРµ С„СЂРёР»Р°РЅСЃРµСЂС‹">
+                            <span class="b-menu__b1">Р’СЃРµ С„СЂРёР»Р°РЅСЃРµСЂС‹</span>
                         </a>
                     </li>
                     <li class="b-menu__item b-menu__item_active" data-accordion-opener="true" data-accordion-descriptor="worktype">
-                        <a class="b-menu__link" href="/portfolio/<?= ($prof_id ? '?prof=' . $prof_id : '') ?>" title="Работы">
-                            <span class="b-menu__b1">Работы</span>
+                        <a class="b-menu__link" href="/portfolio/<?= ($prof_id ? '?prof=' . $prof_id : '') ?>" title="Р Р°Р±РѕС‚С‹">
+                            <span class="b-menu__b1">Р Р°Р±РѕС‚С‹</span>
                         </a>
                     </li>
-                    <li class="b-menu__item"><a class="b-menu__link" href="/clients/<?= ($prof_id) ? '?prof=' . $prof_id : "" ?>" title="Клиенты"><span class="b-menu__b1">Клиенты</span></a></li>
+                    <li class="b-menu__item"><a class="b-menu__link" href="/clients/<?= ($prof_id) ? '?prof=' . $prof_id : "" ?>" title="РљР»РёРµРЅС‚С‹"><span class="b-menu__b1">РљР»РёРµРЅС‚С‹</span></a></li>
 				<li class="b-menu__item b-menu__item_last b-page__ipad b-page__iphone"><a class="b-menu__link" href="/profi/"><span class="b-menu__b1">PROFI</span></a></li>
-				<li class="b-menu__item b-menu__item_padbot_null b-page__desktop"><a class="b-menu__link" href="/profi/"><span class="b-icon b-icon__profi b-icon_valign_bas" data-profi-txt="Лучшие фрилансеры сайта FL.ru. Работают на сайте более 2-х лет, прошли верификацию личности и имеют не менее 98% положительных отзывов."></span></a></li>
+				<li class="b-menu__item b-menu__item_padbot_null b-page__desktop"><a class="b-menu__link" href="/profi/"><span class="b-icon b-icon__profi b-icon_valign_bas" data-profi-txt="Р›СѓС‡С€РёРµ С„СЂРёР»Р°РЅСЃРµСЂС‹ СЃР°Р№С‚Р° FL.ru. Р Р°Р±РѕС‚Р°СЋС‚ РЅР° СЃР°Р№С‚Рµ Р±РѕР»РµРµ 2-С… Р»РµС‚, РїСЂРѕС€Р»Рё РІРµСЂРёС„РёРєР°С†РёСЋ Р»РёС‡РЅРѕСЃС‚Рё Рё РёРјРµСЋС‚ РЅРµ РјРµРЅРµРµ 98% РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… РѕС‚Р·С‹РІРѕРІ."></span></a></li>
                     <li class="b-menu__item b-menu__item_promo b-page__desktop"><?php require_once($_SERVER['DOCUMENT_ROOT'] . "/banner_promo.php"); ?></li>
                 </ul>
             </div>
         </div>
     </div>
 		
-        <div class="b-layout__txt b-layout__txt_padbot_20">В разделе представлены работы только пользователей расширенного аккаунта <a class="b-layout__link" href="/payed/"><span title="платного аккаунта" class="b-icon b-icon__pro b-icon__pro_f"></span></a></div>
-    <!-- Фильтр -->
+        <div class="b-layout__txt b-layout__txt_padbot_20">Р’ СЂР°Р·РґРµР»Рµ РїСЂРµРґСЃС‚Р°РІР»РµРЅС‹ СЂР°Р±РѕС‚С‹ С‚РѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЂР°СЃС€РёСЂРµРЅРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р° <a class="b-layout__link" href="/payed/"><span title="РїР»Р°С‚РЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°" class="b-icon b-icon__pro b-icon__pro_f"></span></a></div>
+    <!-- Р¤РёР»СЊС‚СЂ -->
     <div id="flt-works" class="flt-out <?=(($filter_show)?"flt-show":"flt-hide")?>" page="<?=$filter_page?>">
         <form action="/portfolio/" method="post" enctype="multipart/form-data">
         <div>
@@ -76,43 +76,43 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
         <input type="hidden" name="order" value="<?=$order?>" />
         <input type="hidden" name="dir" value="<?=$direction?>" />
         <div class="flt-bar">
-            <a href="javascript: void(0);" class="flt-tgl-lnk"><?=(($filter_show)?"Свернуть":"Развернуть")?></a>
-            <h3>Фильтр</h3> 
+            <a href="javascript: void(0);" class="flt-tgl-lnk"><?=(($filter_show)?"РЎРІРµСЂРЅСѓС‚СЊ":"Р Р°Р·РІРµСЂРЅСѓС‚СЊ")?></a>
+            <h3>Р¤РёР»СЊС‚СЂ</h3> 
              <? if ($filter_apply): ?> 
-             <span class="flt-stat flt-on">включен&nbsp;&nbsp;&nbsp;<a href="/portfolio/index.php?action=deletefilter<?=($fav_show) ? "&fs=" . $fav_show : ''?><?=($order) ? "&order=" . $order : ''?><?=($direction) ? "&dir=" . $direction : ''?><?=($prof_id)?"&prof=".$prof_id:""?>" class="flt-lnk">отключить</a></span> 
+             <span class="flt-stat flt-on">РІРєР»СЋС‡РµРЅ&nbsp;&nbsp;&nbsp;<a href="/portfolio/index.php?action=deletefilter<?=($fav_show) ? "&fs=" . $fav_show : ''?><?=($order) ? "&order=" . $order : ''?><?=($direction) ? "&dir=" . $direction : ''?><?=($prof_id)?"&prof=".$prof_id:""?>" class="flt-lnk">РѕС‚РєР»СЋС‡РёС‚СЊ</a></span> 
              <? else: ?>
-             <span class="flt-stat flt-off">отключен&nbsp;&nbsp;&nbsp;<a href="/portfolio/index.php?action=activefilter<?=($fav_show) ? "&fs=" . $fav_show : ''?><?=($order) ? "&order=" . $order : ''?><?=($direction) ? "&dir=" . $direction : ''?><?=($prof_id)?"&prof=".$prof_id:""?>" class="flt-lnk">включить</a></span> 
+             <span class="flt-stat flt-off">РѕС‚РєР»СЋС‡РµРЅ&nbsp;&nbsp;&nbsp;<a href="/portfolio/index.php?action=activefilter<?=($fav_show) ? "&fs=" . $fav_show : ''?><?=($order) ? "&order=" . $order : ''?><?=($direction) ? "&dir=" . $direction : ''?><?=($prof_id)?"&prof=".$prof_id:""?>" class="flt-lnk">РІРєР»СЋС‡РёС‚СЊ</a></span> 
              <? endif; ?>
         </div>
         <div class="flt-cnt">
             <div class="flt-block flt-b-fc">
-                <label class="flt-lbl">Стоимость работы:</label>
+                <label class="flt-lbl">РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹:</label>
                 <div class="flt-b-in">
                     <span class="flt-prm">
                         <input type="text" size="10" class="flt-prm1" id="pf_cost_from" name="pf_cost_from" value="<?=($pf['cost_from']>0?$pf['cost_from']:"")?>" maxlength="6" /> &mdash; <input type="text" size="10" class="flt-prm1" id="pf_cost_to" name="pf_cost_to" value="<?=($pf['cost_to']>0?$pf['cost_to']:"")?>" maxlength="6" />&nbsp;&nbsp;
                         <select class="pf-sel" name="pf_cost_type">
-                            <option value="2" <?=(!strlen($pf['cost_type']) || $pf['cost_type'] == 2 ? "selected=\"selected\"" : "")?>>Руб</option>
+                            <option value="2" <?=(!strlen($pf['cost_type']) || $pf['cost_type'] == 2 ? "selected=\"selected\"" : "")?>>Р СѓР±</option>
                             <option value="0" <?=(strlen($pf['cost_type']) && $pf['cost_type'] == 0 ? "selected=\"selected\"" : "")?>>USD</option>
                             <option value="1" <?=($pf['cost_type'] == 1 ? "selected=\"selected\"" : "")?>>Euro</option>
                         </select>
                     </span>
                 </div>
-                    <input type="button" id="pf_save" name="pf_save" class="i-btn" value="Применить фильтр" onClick="submit();"/>
+                    <input type="button" id="pf_save" name="pf_save" class="i-btn" value="РџСЂРёРјРµРЅРёС‚СЊ С„РёР»СЊС‚СЂ" onClick="submit();"/>
             </div>
         </div>
         </div>
         </form>
     </div>
-    <!-- Конец фильтра -->
+    <!-- РљРѕРЅРµС† С„РёР»СЊС‚СЂР° -->
     <? if($size == 0): ?>
-    <div>Работ не найдено.</div>
+    <div>Р Р°Р±РѕС‚ РЅРµ РЅР°Р№РґРµРЅРѕ.</div>
     <? else: ?>
     <div class="b-menu b-menu_simple b-menu_padbot_20 b-menu_bordbot_b2">
       <ul class="b-menu__list">
-          <li class="b-menu__item b-menu__item_margright_15"><a class="b-menu__link b-menu__link_fontsize_11 <? if (!$order || $order == 'rating'): ?>b-menu__link_bold<? endif; ?>" href="./?order=rating<?=($prof_id)?"&prof=".$prof_id:""?><?=($fav_show)?"&fs=".$fav_show:""?>">По рейтингу фрилансера</a></li>
-          <li class="b-menu__item b-menu__item_margright_15"><a class="b-menu__link b-menu__link_fontsize_11 <? if ($order == 'rnd'): ?>b-menu__link_bold<? endif; ?>" href="./?order=rnd<?=($prof_id)?"&prof=".$prof_id:""?><?=($fav_show)?"&fs=".$fav_show:""?>">Случайно</a></li>
-          <li class="b-menu__item b-menu__item_margright_15"><a class="b-menu__link b-menu__link_fontsize_11 <? if ($order == 'prc'): ?>b-menu__link_bold<? endif; ?>" href="./?order=prc<?=($prof_id)?"&prof=".$prof_id:""?><?=($fav_show)?"&fs=".$fav_show:""?>">По цене работы</a></li>
-          <li class="b-menu__item"><a class="b-menu__link b-menu__link_fontsize_11 <? if ($order == 'ops'): ?>b-menu__link_bold<? endif; ?>" href="./?order=ops<?=($prof_id)?"&prof=".$prof_id:""?><?=($fav_show)?"&fs=".$fav_show:""?>">По отзывам заказчиков фрилансеру</a></li>
+          <li class="b-menu__item b-menu__item_margright_15"><a class="b-menu__link b-menu__link_fontsize_11 <? if (!$order || $order == 'rating'): ?>b-menu__link_bold<? endif; ?>" href="./?order=rating<?=($prof_id)?"&prof=".$prof_id:""?><?=($fav_show)?"&fs=".$fav_show:""?>">РџРѕ СЂРµР№С‚РёРЅРіСѓ С„СЂРёР»Р°РЅСЃРµСЂР°</a></li>
+          <li class="b-menu__item b-menu__item_margright_15"><a class="b-menu__link b-menu__link_fontsize_11 <? if ($order == 'rnd'): ?>b-menu__link_bold<? endif; ?>" href="./?order=rnd<?=($prof_id)?"&prof=".$prof_id:""?><?=($fav_show)?"&fs=".$fav_show:""?>">РЎР»СѓС‡Р°Р№РЅРѕ</a></li>
+          <li class="b-menu__item b-menu__item_margright_15"><a class="b-menu__link b-menu__link_fontsize_11 <? if ($order == 'prc'): ?>b-menu__link_bold<? endif; ?>" href="./?order=prc<?=($prof_id)?"&prof=".$prof_id:""?><?=($fav_show)?"&fs=".$fav_show:""?>">РџРѕ С†РµРЅРµ СЂР°Р±РѕС‚С‹</a></li>
+          <li class="b-menu__item"><a class="b-menu__link b-menu__link_fontsize_11 <? if ($order == 'ops'): ?>b-menu__link_bold<? endif; ?>" href="./?order=ops<?=($prof_id)?"&prof=".$prof_id:""?><?=($fav_show)?"&fs=".$fav_show:""?>">РџРѕ РѕС‚Р·С‹РІР°Рј Р·Р°РєР°Р·С‡РёРєРѕРІ С„СЂРёР»Р°РЅСЃРµСЂСѓ</a></li>
       </ul>
     </div>                
     <table class="b-layout__table b-layout__table_width_full" cellpadding="0" cellspacing="0">

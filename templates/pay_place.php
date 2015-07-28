@@ -29,7 +29,7 @@ $is_show_tizer = false; //$uid && !is_emp();
         <span id="carusel_shadow_right" class="b-carusel__shadow-right"></span>
         <span id="carusel_shadow_left" class="b-carusel__shadow-left" style="display:none"></span>
         <?php if($is_show_tizer): ?>
-        <span class="b-carusel__add"><a id="carusel_tizer_switcher" class="b-carusel__link b-carusel__link_hide" href="javascript: void(0);">Добавить объявление</a></span>
+        <span class="b-carusel__add"><a id="carusel_tizer_switcher" class="b-carusel__link b-carusel__link_hide" href="javascript: void(0);">Р”РѕР±Р°РІРёС‚СЊ РѕР±СЉСЏРІР»РµРЅРёРµ</a></span>
         <?php endif; ?>
     </div>
     <span class="b-carusel__prev b-carusel__prev_disabled b-carusel-ubtn"></span>

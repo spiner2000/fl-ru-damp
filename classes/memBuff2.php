@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/globals.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/log.php");
 
 /**
- * Кеширование произвольной информации через MemCache
+ * РљРµС€РёСЂРѕРІР°РЅРёРµ РїСЂРѕРёР·РІРѕР»СЊРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё С‡РµСЂРµР· MemCache
  *
  */
 class memBuff extends Memcached
@@ -12,38 +12,38 @@ class memBuff extends Memcached
     const SERVERS_VARKEY = 'MEMCACHED_SERVERS_VARKEY';
 	
 	/**
-	 * Есть ли соединение с сервером мем-кеша
+	 * Р•СЃС‚СЊ Р»Рё СЃРѕРµРґРёРЅРµРЅРёРµ СЃ СЃРµСЂРІРµСЂРѕРј РјРµРј-РєРµС€Р°
 	 *
 	 * @var boolean
 	 */
 	private $bIsConnected = false;
 	
 	/**
-	 * Имя сервера. Задается в config.php как SERVER
+	 * РРјСЏ СЃРµСЂРІРµСЂР°. Р—Р°РґР°РµС‚СЃСЏ РІ config.php РєР°Рє SERVER
 	 * 
 	 * @var string
 	 */
 	private $server = '';
 	
 	/**
-	 * Данные пришли из кеша или из базы. Только для ф-ции getSql()
-	 * true - из кеша
+	 * Р”Р°РЅРЅС‹Рµ РїСЂРёС€Р»Рё РёР· РєРµС€Р° РёР»Рё РёР· Р±Р°Р·С‹. РўРѕР»СЊРєРѕ РґР»СЏ С„-С†РёРё getSql()
+	 * true - РёР· РєРµС€Р°
 	 *
 	 * @var boolean
 	 */
 	private $bWasMqUsed = true;
 	
     /**
-     * Количество ожиданий (с промежутком в одну секунду) появления запрашиваемых данных в мемкеше
-     * в случает если их там нет, но их запрашивает сразу несколько скриптов. Для смягчения dogpile эфекта
-     * Единый цикл для всех запущенных копий объекта
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ РѕР¶РёРґР°РЅРёР№ (СЃ РїСЂРѕРјРµР¶СѓС‚РєРѕРј РІ РѕРґРЅСѓ СЃРµРєСѓРЅРґСѓ) РїРѕСЏРІР»РµРЅРёСЏ Р·Р°РїСЂР°С€РёРІР°РµРјС‹С… РґР°РЅРЅС‹С… РІ РјРµРјРєРµС€Рµ
+     * РІ СЃР»СѓС‡Р°РµС‚ РµСЃР»Рё РёС… С‚Р°Рј РЅРµС‚, РЅРѕ РёС… Р·Р°РїСЂР°С€РёРІР°РµС‚ СЃСЂР°Р·Сѓ РЅРµСЃРєРѕР»СЊРєРѕ СЃРєСЂРёРїС‚РѕРІ. Р”Р»СЏ СЃРјСЏРіС‡РµРЅРёСЏ dogpile СЌС„РµРєС‚Р°
+     * Р•РґРёРЅС‹Р№ С†РёРєР» РґР»СЏ РІСЃРµС… Р·Р°РїСѓС‰РµРЅРЅС‹С… РєРѕРїРёР№ РѕР±СЉРµРєС‚Р°
      * 
      * @var integer
      */
     private static $__edwCycles = 2;
     
     /**
-     * Не использовать блокировки при запросе данных
+     * РќРµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ Р±Р»РѕРєРёСЂРѕРІРєРё РїСЂРё Р·Р°РїСЂРѕСЃРµ РґР°РЅРЅС‹С…
      * 
      * @var boolean 
      */
@@ -52,7 +52,7 @@ class memBuff extends Memcached
 	private $_log;
 	
 	/**
-	 * Конструктор. Подключается к серваку мемкэша
+	 * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ. РџРѕРґРєР»СЋС‡Р°РµС‚СЃСЏ Рє СЃРµСЂРІР°РєСѓ РјРµРјРєСЌС€Р°
 	 */
 	public function __construct($noLock=FALSE) {
    		parent::__construct();
@@ -77,26 +77,26 @@ class memBuff extends Memcached
 	}
 	
 	/**
-	 * Деструктор. Отключается от сервака мемкэша
+	 * Р”РµСЃС‚СЂСѓРєС‚РѕСЂ. РћС‚РєР»СЋС‡Р°РµС‚СЃСЏ РѕС‚ СЃРµСЂРІР°РєР° РјРµРјРєСЌС€Р°
 	 */
 	public function __destruct() {
 		//if ($this->bIsConnected) $this->close();
 	}
 	
 	/**
-	 * Возвращает false если данные пришли из базы
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ false РµСЃР»Рё РґР°РЅРЅС‹Рµ РїСЂРёС€Р»Рё РёР· Р±Р°Р·С‹
 	 * 
-	 * @return boolean		false - из базы, true - из кеша
+	 * @return boolean		false - РёР· Р±Р°Р·С‹, true - РёР· РєРµС€Р°
 	 */
 	public function getBWasMqUsed() {
 		return $this->bWasMqUsed;
 	}
 	
     /**
-     * Запрашивает данные из мемкеша.
+     * Р—Р°РїСЂР°С€РёРІР°РµС‚ РґР°РЅРЅС‹Рµ РёР· РјРµРјРєРµС€Р°.
      *
-     * @param string $key		ключ для поиска
-     * @return array			результат. false, если не найдено
+     * @param string $key		РєР»СЋС‡ РґР»СЏ РїРѕРёСЃРєР°
+     * @return array			СЂРµР·СѓР»СЊС‚Р°С‚. false, РµСЃР»Рё РЅРµ РЅР°Р№РґРµРЅРѕ
      */
     public function get($key) {
         $output = FALSE;
@@ -155,10 +155,10 @@ class memBuff extends Memcached
 
     
     /**
-     * Запрашивает набор данных из мемкеша
+     * Р—Р°РїСЂР°С€РёРІР°РµС‚ РЅР°Р±РѕСЂ РґР°РЅРЅС‹С… РёР· РјРµРјРєРµС€Р°
      *
-     * @param  array  $keys  массив со списком ключей для получения
-     * @return array         массив с результатом
+     * @param  array  $keys  РјР°СЃСЃРёРІ СЃРѕ СЃРїРёСЃРєРѕРј РєР»СЋС‡РµР№ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ
+     * @return array         РјР°СЃСЃРёРІ СЃ СЂРµР·СѓР»СЊС‚Р°С‚РѕРј
      */
     public function gets($keys) {
         if ( $this->bIsConnected ) {
@@ -251,13 +251,13 @@ class memBuff extends Memcached
         
 	
 	/**
-	 * Пропихивает данные в мемкеш.
+	 * РџСЂРѕРїРёС…РёРІР°РµС‚ РґР°РЅРЅС‹Рµ РІ РјРµРјРєРµС€.
 	 *
-	 * @param string $key			ключ для кеширования
-	 * @param string $data			данные
-	 * @param integer $data			время жизни данных
-	 * @param string|array $tags			Строка с именем тега или массив, если нужно добавить несколько тегов
-	 * @return boolean				true - если все ок			
+	 * @param string $key			РєР»СЋС‡ РґР»СЏ РєРµС€РёСЂРѕРІР°РЅРёСЏ
+	 * @param string $data			РґР°РЅРЅС‹Рµ
+	 * @param integer $data			РІСЂРµРјСЏ Р¶РёР·РЅРё РґР°РЅРЅС‹С…
+	 * @param string|array $tags			РЎС‚СЂРѕРєР° СЃ РёРјРµРЅРµРј С‚РµРіР° РёР»Рё РјР°СЃСЃРёРІ, РµСЃР»Рё РЅСѓР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ С‚РµРіРѕРІ
+	 * @return boolean				true - РµСЃР»Рё РІСЃРµ РѕРє			
 	 */
 	public function set($key, $data, $expire = 600, $tags = '') {
         $output = FALSE;
@@ -280,12 +280,12 @@ class memBuff extends Memcached
     
 	
     /**
-	 * Пропихивает группу данных в мемкеш.
+	 * РџСЂРѕРїРёС…РёРІР°РµС‚ РіСЂСѓРїРїСѓ РґР°РЅРЅС‹С… РІ РјРµРјРєРµС€.
 	 *
-	 * @param string $datas	        массив с данным
-	 * @param integer $data	        время жизни данных
-	 * @param string|array $tags    Строка с именем тега или массив, если нужно добавить несколько тегов
-	 * @return boolean              true - если все ок			
+	 * @param string $datas	        РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹Рј
+	 * @param integer $data	        РІСЂРµРјСЏ Р¶РёР·РЅРё РґР°РЅРЅС‹С…
+	 * @param string|array $tags    РЎС‚СЂРѕРєР° СЃ РёРјРµРЅРµРј С‚РµРіР° РёР»Рё РјР°СЃСЃРёРІ, РµСЃР»Рё РЅСѓР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ С‚РµРіРѕРІ
+	 * @return boolean              true - РµСЃР»Рё РІСЃРµ РѕРє			
 	 */
     public function sets($datas, $expire = 600, $tags = '') {
         $output = FALSE;
@@ -313,11 +313,11 @@ class memBuff extends Memcached
     
     
 	/**
-	 * Инициализирует данные при set-операциях.
+	 * РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РґР°РЅРЅС‹Рµ РїСЂРё set-РѕРїРµСЂР°С†РёСЏС….
 	 *
-	 * @param array $data			массив с данными
-	 * @param integer $expire		время жизни данных
-	 * @param string|array $tags			Строка с именем тега или массив, если нужно добавить несколько тегов
+	 * @param array $data			РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё
+	 * @param integer $expire		РІСЂРµРјСЏ Р¶РёР·РЅРё РґР°РЅРЅС‹С…
+	 * @param string|array $tags			РЎС‚СЂРѕРєР° СЃ РёРјРµРЅРµРј С‚РµРіР° РёР»Рё РјР°СЃСЃРёРІ, РµСЃР»Рё РЅСѓР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ С‚РµРіРѕРІ
 	 */
     private function _initSetData(&$data, $expire, $tags) {
         $data = array(
@@ -351,13 +351,13 @@ class memBuff extends Memcached
     }
 	
 	/**
-	 * Пихает данные в мемкеш. Не пихает, если ключ занят.
+	 * РџРёС…Р°РµС‚ РґР°РЅРЅС‹Рµ РІ РјРµРјРєРµС€. РќРµ РїРёС…Р°РµС‚, РµСЃР»Рё РєР»СЋС‡ Р·Р°РЅСЏС‚.
 	 *
-	 * @param string $key			ключ для кеширования
-	 * @param array $data			данные
-	 * @param integer $expire		время жизни данных
-	 * @param string|array $tags	Строка с именем тега или массив, если нужно добавить несколько тегов
-	 * @return boolean				true - если все ок			
+	 * @param string $key			РєР»СЋС‡ РґР»СЏ РєРµС€РёСЂРѕРІР°РЅРёСЏ
+	 * @param array $data			РґР°РЅРЅС‹Рµ
+	 * @param integer $expire		РІСЂРµРјСЏ Р¶РёР·РЅРё РґР°РЅРЅС‹С…
+	 * @param string|array $tags	РЎС‚СЂРѕРєР° СЃ РёРјРµРЅРµРј С‚РµРіР° РёР»Рё РјР°СЃСЃРёРІ, РµСЃР»Рё РЅСѓР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ С‚РµРіРѕРІ
+	 * @return boolean				true - РµСЃР»Рё РІСЃРµ РѕРє			
 	 */
 	public function add($key, $data, $expire = 600, $tags = '') {
         $output = FALSE;
@@ -376,10 +376,10 @@ class memBuff extends Memcached
 	}
 	
 	/**
-	 * Удаляет запись из кеша по ее коду
+	 * РЈРґР°Р»СЏРµС‚ Р·Р°РїРёСЃСЊ РёР· РєРµС€Р° РїРѕ РµРµ РєРѕРґСѓ
 	 *
-	 * @param string $key	ключ записи
-	 * @return boolean				true - если все ок	
+	 * @param string $key	РєР»СЋС‡ Р·Р°РїРёСЃРё
+	 * @return boolean				true - РµСЃР»Рё РІСЃРµ РѕРє	
 	 */
 	function delete($key, $time = 0) {
 		if ($this->bIsConnected) {
@@ -392,11 +392,11 @@ class memBuff extends Memcached
 	}
 	
     /**
-     * Удаляет группу записей из мемкеша
+     * РЈРґР°Р»СЏРµС‚ РіСЂСѓРїРїСѓ Р·Р°РїРёСЃРµР№ РёР· РјРµРјРєРµС€Р°
      * 
      * @deprecated
-     * @param string $group		группа записей
-     * @return boolean			true - если все ок	
+     * @param string $group		РіСЂСѓРїРїР° Р·Р°РїРёСЃРµР№
+     * @return boolean			true - РµСЃР»Рё РІСЃРµ РѕРє	
      */
 	function _flushGroup($group){
 		$items = parent::get($group.$this->server);
@@ -410,7 +410,7 @@ class memBuff extends Memcached
 	}
 	
 	/**
-	 * Вычищает весь кеш
+	 * Р’С‹С‡РёС‰Р°РµС‚ РІРµСЃСЊ РєРµС€
 	 *
 	 */
 	function flush($delay = 0){
@@ -419,14 +419,14 @@ class memBuff extends Memcached
 
     
 	/**
-	 * Запрашивает данные из мемкеша. Если не находит ключ, то кеширует результат запроса в
-	 * формате pg_fetch_all()
+	 * Р—Р°РїСЂР°С€РёРІР°РµС‚ РґР°РЅРЅС‹Рµ РёР· РјРµРјРєРµС€Р°. Р•СЃР»Рё РЅРµ РЅР°С…РѕРґРёС‚ РєР»СЋС‡, С‚Рѕ РєРµС€РёСЂСѓРµС‚ СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР° РІ
+	 * С„РѕСЂРјР°С‚Рµ pg_fetch_all()
 	 *
-	 * @param string $error			возвращает сообщение об ошибке при запросе к Постгресу
-	 * @param string $sql			запрос к Постгресу
-	 * @param integer $expire		время жизни кэша (в секундах)
-	 * @param boolean $read_only		запрос только на чтение?
-	 * @return array			результат запроса из кэша или базы в формате массива pg_fetch_all()
+	 * @param string $error			РІРѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РїСЂРё Р·Р°РїСЂРѕСЃРµ Рє РџРѕСЃС‚РіСЂРµСЃСѓ
+	 * @param string $sql			Р·Р°РїСЂРѕСЃ Рє РџРѕСЃС‚РіСЂРµСЃСѓ
+	 * @param integer $expire		РІСЂРµРјСЏ Р¶РёР·РЅРё РєСЌС€Р° (РІ СЃРµРєСѓРЅРґР°С…)
+	 * @param boolean $read_only		Р·Р°РїСЂРѕСЃ С‚РѕР»СЊРєРѕ РЅР° С‡С‚РµРЅРёРµ?
+	 * @return array			СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР° РёР· РєСЌС€Р° РёР»Рё Р±Р°Р·С‹ РІ С„РѕСЂРјР°С‚Рµ РјР°СЃСЃРёРІР° pg_fetch_all()
 	 */
 	function getSql(&$error, $sql, $expire = 600, $read_only = false, $group = false){
 	    $key = md5($sql);
@@ -447,11 +447,11 @@ class memBuff extends Memcached
     
     
     /**
-     * Алиас к Memcached::touchTag(), для совместимости
+     * РђР»РёР°СЃ Рє Memcached::touchTag(), РґР»СЏ СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё
      * 
      * @see Memcached::touchTag()
      * 
-     * @param type $tag_name    Имя тега
+     * @param type $tag_name    РРјСЏ С‚РµРіР°
      * @return type 
      */
     public function flushGroup($tag_name) {
@@ -459,10 +459,10 @@ class memBuff extends Memcached
     }
  
     /**
-     * Обновляет версию тега
-     * Связанные с тегом данные перестают быть актуальными.
+     * РћР±РЅРѕРІР»СЏРµС‚ РІРµСЂСЃРёСЋ С‚РµРіР°
+     * РЎРІСЏР·Р°РЅРЅС‹Рµ СЃ С‚РµРіРѕРј РґР°РЅРЅС‹Рµ РїРµСЂРµСЃС‚Р°СЋС‚ Р±С‹С‚СЊ Р°РєС‚СѓР°Р»СЊРЅС‹РјРё.
      * 
-     * @param string $tag_name  Имя тега
+     * @param string $tag_name  РРјСЏ С‚РµРіР°
      * @return type 
      */
     public function touchTag ($tag_name) {
@@ -471,7 +471,7 @@ class memBuff extends Memcached
     }
 	
     /**
-     * Обновляет кеш по ключу и добавляет указанный тег.
+     * РћР±РЅРѕРІР»СЏРµС‚ РєРµС€ РїРѕ РєР»СЋС‡Сѓ Рё РґРѕР±Р°РІР»СЏРµС‚ СѓРєР°Р·Р°РЅРЅС‹Р№ С‚РµРі.
      * 
      * @param type $key
      * @param string $tag_name
@@ -527,7 +527,7 @@ class memBuff extends Memcached
     }
     
     /**
-     * Обновляет кеш по ключу и удаляет указанный тег.
+     * РћР±РЅРѕРІР»СЏРµС‚ РєРµС€ РїРѕ РєР»СЋС‡Сѓ Рё СѓРґР°Р»СЏРµС‚ СѓРєР°Р·Р°РЅРЅС‹Р№ С‚РµРі.
      * 
      * @param type $key
      * @param string $tag_name

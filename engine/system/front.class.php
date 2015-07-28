@@ -1,12 +1,12 @@
 <?php
 /**
- * Îñíîâíîé êëàññ äëÿ ôóíêöèîíèðîâàíèÿ äâèæêà
+ * ÐžÑÐ½Ð¾Ð²Ð½Ð¾Ð¹ ÐºÐ»Ð°ÑÑ Ð´Ð»Ñ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¾Ð½Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð´Ð²Ð¸Ð¶ÐºÐ°
  */
 final class front
 {
     static private $_object = array();
     /**
-     * Ïåðåìåííàÿ äëÿ õðàíåíèÿ äàííûõ REQUEST è äîñòóïà ÷åðåç ñòàòè÷óñêóþ ïåðåìåííóþ
+     * ÐŸÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ð°Ñ Ð´Ð»Ñ Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ñ Ð´Ð°Ð½Ð½Ñ‹Ñ… REQUEST Ð¸ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð° Ñ‡ÐµÑ€ÐµÐ· ÑÑ‚Ð°Ñ‚Ð¸Ñ‡ÑƒÑÐºÑƒÑŽ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½ÑƒÑŽ
      * @var
      */
 	static public $_req = array();
@@ -15,8 +15,8 @@ final class front
     private function __construct(){}
     
 	/**
-	 * Âûçîâ è âûâîä ñòðàíèöû îøèáêè
-	 * @param string $str [optional] Ñòðîêà òåñêòà îøèáêè
+	 * Ð’Ñ‹Ð·Ð¾Ð² Ð¸ Ð²Ñ‹Ð²Ð¾Ð´ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ Ð¾ÑˆÐ¸Ð±ÐºÐ¸
+	 * @param string $str [optional] Ð¡Ñ‚Ñ€Ð¾ÐºÐ° Ñ‚ÐµÑÐºÑ‚Ð° Ð¾ÑˆÐ¸Ð±ÐºÐ¸
 	 * @return 
 	 */
     public function error($str='') {
@@ -25,8 +25,8 @@ final class front
     }
     
 	/**
-	 * Óñòàíîâêà êàðòû ðîóòèíãà äâèæêà - ñëóæåáíàÿ
-	 * @param object $map Êàðòà
+	 * Ð£ÑÑ‚Ð°Ð½Ð¾Ð²ÐºÐ° ÐºÐ°Ñ€Ñ‚Ñ‹ Ñ€Ð¾ÑƒÑ‚Ð¸Ð½Ð³Ð° Ð´Ð²Ð¸Ð¶ÐºÐ° - ÑÐ»ÑƒÐ¶ÐµÐ±Ð½Ð°Ñ
+	 * @param object $map ÐšÐ°Ñ€Ñ‚Ð°
 	 * @return 
 	 */
     public function setMap($map) {
@@ -34,9 +34,9 @@ final class front
     }
     
 	/**
-	 * Êîíâåðòèðîâàòü â óòô8
-	 * @param string $in Ñòðîêà win1251
-	 * @return Ñòðîêà
+	 * ÐšÐ¾Ð½Ð²ÐµÑ€Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð² ÑƒÑ‚Ñ„8
+	 * @param string $in Ð¡Ñ‚Ñ€Ð¾ÐºÐ° win1251
+	 * @return Ð¡Ñ‚Ñ€Ð¾ÐºÐ°
 	 */
     public function toUtf($in) {
         if(is_array($in)) {
@@ -49,9 +49,9 @@ final class front
         return $in;
     }
 	/**
-	 * Êîíâåðòàöèÿ â win1251
-	 * @param string $in Ñòðîêà óòô8
-	 * @return Ñòðîêà
+	 * ÐšÐ¾Ð½Ð²ÐµÑ€Ñ‚Ð°Ñ†Ð¸Ñ Ð² win1251
+	 * @param string $in Ð¡Ñ‚Ñ€Ð¾ÐºÐ° ÑƒÑ‚Ñ„8
+	 * @return Ð¡Ñ‚Ñ€Ð¾ÐºÐ°
 	 */
     public function toWin($in) {
         if(is_array($in)) {
@@ -64,11 +64,11 @@ final class front
         return $in;
     }
 	/**
-	 * Ñîçäàåò õýø ìàññèâ ñ ðàçìåòêîé ïî äâóì êëþ÷àì èç äâóõìåðíîãî ìàññèâà 
+	 * Ð¡Ð¾Ð·Ð´Ð°ÐµÑ‚ Ñ…ÑÑˆ Ð¼Ð°ÑÑÐ¸Ð² Ñ Ñ€Ð°Ð·Ð¼ÐµÑ‚ÐºÐ¾Ð¹ Ð¿Ð¾ Ð´Ð²ÑƒÐ¼ ÐºÐ»ÑŽÑ‡Ð°Ð¼ Ð¸Ð· Ð´Ð²ÑƒÑ…Ð¼ÐµÑ€Ð½Ð¾Ð³Ð¾ Ð¼Ð°ÑÑÐ¸Ð²Ð° 
 	 * @param array $arr
-	 * @param object $key_name [optional] èìÿ ìåðåìåííîé äëÿ êëþ÷à, åñëè íå çàäàí çàäàåòñÿ îò 0 ...
-	 * @param object $val_name [optional] èìÿ ïåðåìåííîé äëÿ çíà÷åíèÿ
-	 * @return Ðåçóëüòèðóþùèé ìàññèâ
+	 * @param object $key_name [optional] Ð¸Ð¼Ñ Ð¼ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ð¾Ð¹ Ð´Ð»Ñ ÐºÐ»ÑŽÑ‡Ð°, ÐµÑÐ»Ð¸ Ð½Ðµ Ð·Ð°Ð´Ð°Ð½ Ð·Ð°Ð´Ð°ÐµÑ‚ÑÑ Ð¾Ñ‚ 0 ...
+	 * @param object $val_name [optional] Ð¸Ð¼Ñ Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ð¾Ð¹ Ð´Ð»Ñ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ
+	 * @return Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð¸Ñ€ÑƒÑŽÑ‰Ð¸Ð¹ Ð¼Ð°ÑÑÐ¸Ð²
 	 */
     public function get_hash($arr, $key_name=false, $val_name='id') {
         if (!is_array($arr)) return array();
@@ -84,9 +84,9 @@ final class front
         return $ret;
     }
 	/**
-	 * Ñëóæåáíàÿ ôóíêöèÿ âûçîâà ô-èè è êëàññà äâèæêà
-	 * @param object $class Íàçâàíèå êëàññà
-	 * @param object $die [optional] Âûçâàòü è îñòàíîâèòü ñêðèïò
+	 * Ð¡Ð»ÑƒÐ¶ÐµÐ±Ð½Ð°Ñ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ð²Ñ‹Ð·Ð¾Ð²Ð° Ñ„-Ð¸Ð¸ Ð¸ ÐºÐ»Ð°ÑÑÐ° Ð´Ð²Ð¸Ð¶ÐºÐ°
+	 * @param object $class ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ ÐºÐ»Ð°ÑÑÐ°
+	 * @param object $die [optional] Ð’Ñ‹Ð·Ð²Ð°Ñ‚ÑŒ Ð¸ Ð¾ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ ÑÐºÑ€Ð¸Ð¿Ñ‚
 	 * @return 
 	 */
     public function exec_page($class, $die=false) {
@@ -126,8 +126,8 @@ final class front
     }
     
 	/**
-	 * Îáðàáîò÷èê ñòðîêè àäðåñà ÷åðåç êàðòó ðîóòèíãà
-	 * @param string $uri_ Ñòðîêà çàïðîñà àäðåñà
+	 * ÐžÐ±Ñ€Ð°Ð±Ð¾Ñ‚Ñ‡Ð¸Ðº ÑÑ‚Ñ€Ð¾ÐºÐ¸ Ð°Ð´Ñ€ÐµÑÐ° Ñ‡ÐµÑ€ÐµÐ· ÐºÐ°Ñ€Ñ‚Ñƒ Ñ€Ð¾ÑƒÑ‚Ð¸Ð½Ð³Ð°
+	 * @param string $uri_ Ð¡Ñ‚Ñ€Ð¾ÐºÐ° Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° Ð°Ð´Ñ€ÐµÑÐ°
 	 * @return 
 	 */
     public function exec_uri($uri_) {
@@ -170,7 +170,7 @@ final class front
             
             if($dat == "adminback") {
                 if(!hasPermissions('adm')) {
-                    self::error("Íåò ïðàâ");    
+                    self::error("ÐÐµÑ‚ Ð¿Ñ€Ð°Ð²");    
                 }
             }
             
@@ -204,8 +204,8 @@ final class front
     }
 	
 	/**
-	 * Ïðîâåðÿåò, åñëè ëè êëàññ â ñòàòè÷åñêîì ðåïîçèòîðèè îáúåêòîâ
-	 * @param string $name Ìåòêà êëàññà
+	 * ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÑ‚, ÐµÑÐ»Ð¸ Ð»Ð¸ ÐºÐ»Ð°ÑÑ Ð² ÑÑ‚Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ð¼ Ñ€ÐµÐ¿Ð¾Ð·Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¸ Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð²
+	 * @param string $name ÐœÐµÑ‚ÐºÐ° ÐºÐ»Ð°ÑÑÐ°
 	 * @return 
 	 */
     static public function oc($name) {
@@ -213,8 +213,8 @@ final class front
     }
     
 	/**
-	 * Âîçâðàùàåò êëàññ èç ñòàòè÷åñêîãî ðåïîçèòîðèÿ îáúåêòîâ, åñëè ñóùåñòâóåò
-	 * @param string $name Ìåòêà êëàññà
+	 * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ ÐºÐ»Ð°ÑÑ Ð¸Ð· ÑÑ‚Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¾Ð³Ð¾ Ñ€ÐµÐ¿Ð¾Ð·Ð¸Ñ‚Ð¾Ñ€Ð¸Ñ Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð², ÐµÑÐ»Ð¸ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚
+	 * @param string $name ÐœÐµÑ‚ÐºÐ° ÐºÐ»Ð°ÑÑÐ°
 	 * @return 
 	 */
     static public function og($name) {
@@ -224,9 +224,9 @@ final class front
         return self::$_object[$name];
     }
     /**
-     * Äîáàâëÿåò êëàññ â ñòàòè÷åñêèé ðåïîçèòîðèé îáúåêòîâ
-     * @param string $name Ìåòêà êëàññà
-     * @param object $obj Êëàññ
+     * Ð”Ð¾Ð±Ð°Ð²Ð»ÑÐµÑ‚ ÐºÐ»Ð°ÑÑ Ð² ÑÑ‚Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹ Ñ€ÐµÐ¿Ð¾Ð·Ð¸Ñ‚Ð¾Ñ€Ð¸Ð¹ Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð²
+     * @param string $name ÐœÐµÑ‚ÐºÐ° ÐºÐ»Ð°ÑÑÐ°
+     * @param object $obj ÐšÐ»Ð°ÑÑ
      * @return 
      */
     static public function os($name, &$obj) {
@@ -238,8 +238,8 @@ final class front
         return true;
     }
     /**
-     * Àâòî ëîàäåð êëàññîâ
-     * @param string $class Èìÿ êëàññà
+     * ÐÐ²Ñ‚Ð¾ Ð»Ð¾Ð°Ð´ÐµÑ€ ÐºÐ»Ð°ÑÑÐ¾Ð²
+     * @param string $class Ð˜Ð¼Ñ ÐºÐ»Ð°ÑÑÐ°
      * @return 
      */
     static public function load_class($class) {

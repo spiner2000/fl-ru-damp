@@ -3,7 +3,7 @@ if ( !(hasPermissions('advstat') && hasPermissions('adm')) ) {
     exit;
 }
 ?>
-<h1>Промо баннеры</h1>
+<h1>РџСЂРѕРјРѕ Р±Р°РЅРЅРµСЂС‹</h1>
 <?php if(isset($banners)) { ?>
 <script type="text/javascript">
 var maxW = 165;
@@ -19,7 +19,7 @@ function checkLinkWidth() {
                 if (th.length > 0) {
                     th[0].getElement('div.banner-error')
                             .removeClass('b-layout_hide')
-                            .set('text', "Ширина ссылки превышает " + maxW + " пикселей");
+                            .set('text', "РЁРёСЂРёРЅР° СЃСЃС‹Р»РєРё РїСЂРµРІС‹С€Р°РµС‚ " + maxW + " РїРёРєСЃРµР»РµР№");
                 } 
             }
         }
@@ -45,7 +45,7 @@ function checkLinkWidth() {
     }
 }
 </script>
-<div class="b-buttons b-buttons_padtb_10"><a href="?new" class="b-button_flat b-button_flat_green">Создать баннер</a></div>
+<div class="b-buttons b-buttons_padtb_10"><a href="?new" class="b-button_flat b-button_flat_green">РЎРѕР·РґР°С‚СЊ Р±Р°РЅРЅРµСЂ</a></div>
 <br/>
 <table class="payed-compar" style="border:1px silver solid" cellspacing="0" id="bannerlist">
     <col width="150"/>
@@ -54,10 +54,10 @@ function checkLinkWidth() {
     <col width="63" />
     <thead>
         <tr>
-            <td><strong>Название</strong></td>
-            <td style="border-left:1px silver solid; border-right:1px silver solid"><strong>Ссылка</strong></td>
-            <td style="border-left:1px silver solid; border-right:1px silver solid"><strong>Период</strong></td>
-            <td><strong>Рекламный</strong></td>
+            <td><strong>РќР°Р·РІР°РЅРёРµ</strong></td>
+            <td style="border-left:1px silver solid; border-right:1px silver solid"><strong>РЎСЃС‹Р»РєР°</strong></td>
+            <td style="border-left:1px silver solid; border-right:1px silver solid"><strong>РџРµСЂРёРѕРґ</strong></td>
+            <td><strong>Р РµРєР»Р°РјРЅС‹Р№</strong></td>
             <td style="border-left:1px silver solid;"><img src="/images/ico_edit_news.gif"></td>
         </tr>    
     </thead>
@@ -104,10 +104,10 @@ function checkLinkWidth() {
             <? }//elseif?>
             </td>
             <td <?=($banner['is_activity'] == 't'?'class="td-pro"':"")?> style="border-left:1px silver solid; border-right:1px silver solid"><?= date("d.m.Y", strtotime($banner['from_date']));?> - <?=date("d.m.Y", strtotime($banner['to_date']))?></td>
-            <td <?=($banner['is_activity'] == 't'?'class="td-pro"':"")?>><?= $banner['advertising'] == 't'?'Да':'Нет'?></td>
+            <td <?=($banner['is_activity'] == 't'?'class="td-pro"':"")?>><?= $banner['advertising'] == 't'?'Р”Р°':'РќРµС‚'?></td>
             <td <?=($banner['is_activity'] == 't'?'class="td-pro"':"")?> style="border-left:1px silver solid;">
                 <a href="?edit=<?=$banner['id']?>"><img src="/images/btn-edit4.png" align="center"></a>
-                <a id="del_banner_id_<?=$banner['id']?>" href="/siteadmin/ban_promo/?delete=<?=$banner['id']?>" onclick="return addTokenToLink('del_banner_id_<?=$banner['id']?>', 'Вы действительно хотите удалить ссылку?')"><img src="/images/btn-remove4.png" align="right"></a>  
+                <a id="del_banner_id_<?=$banner['id']?>" href="/siteadmin/ban_promo/?delete=<?=$banner['id']?>" onclick="return addTokenToLink('del_banner_id_<?=$banner['id']?>', 'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЃСЃС‹Р»РєСѓ?')"><img src="/images/btn-remove4.png" align="right"></a>  
             </td>
         </tr>
         <?php }//foreach?>
@@ -115,7 +115,7 @@ function checkLinkWidth() {
 </table>
 <br/>
 
-<div class="b-buttons b-buttons_padtop_10"><a href="?new" class="b-button_flat b-button_flat_green">Создать баннер</a></div>
+<div class="b-buttons b-buttons_padtop_10"><a href="?new" class="b-button_flat b-button_flat_green">РЎРѕР·РґР°С‚СЊ Р±Р°РЅРЅРµСЂ</a></div>
 <?php } else {//if?>
-<strong>В настойщий момент в базе нет промо банеров</strong>
+<strong>Р’ РЅР°СЃС‚РѕР№С‰РёР№ РјРѕРјРµРЅС‚ РІ Р±Р°Р·Рµ РЅРµС‚ РїСЂРѕРјРѕ Р±Р°РЅРµСЂРѕРІ</strong>
 <?php }//else

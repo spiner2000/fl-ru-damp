@@ -1,73 +1,73 @@
 <?php
 /**
- * Подключаем предка
+ * РџРѕРґРєР»СЋС‡Р°РµРј РїСЂРµРґРєР°
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/paid_advices.php");
 
 define(DEFAULT_ITEMS_PER_PAGE, 20);
 define(MAX_ITEMS_PER_PAGE, 100);
 /**
- * Класс для поиска фрилансеров
+ * РљР»Р°СЃСЃ РґР»СЏ РїРѕРёСЃРєР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
 class admin_frl_search {
-    //параметры фильтра
+    //РїР°СЂР°РјРµС‚СЂС‹ С„РёР»СЊС‚СЂР°
     /**
-     * наличие специализации
+     * РЅР°Р»РёС‡РёРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё
      */
     private $prof;
     /**
-     * наличие минимум 3-х подтвержденных мнений
+     * РЅР°Р»РёС‡РёРµ РјРёРЅРёРјСѓРј 3-С… РїРѕРґС‚РІРµСЂР¶РґРµРЅРЅС‹С… РјРЅРµРЅРёР№
      */
     private $opinions;
     /**
-     * наличие минимум 10 работ в портфолио
+     * РЅР°Р»РёС‡РёРµ РјРёРЅРёРјСѓРј 10 СЂР°Р±РѕС‚ РІ РїРѕСЂС‚С„РѕР»РёРѕ
      */
     private $portfolio;
     /**
-     * минимум 5 визитов за месяц и 1 за неделю
+     * РјРёРЅРёРјСѓРј 5 РІРёР·РёС‚РѕРІ Р·Р° РјРµСЃСЏС† Рё 1 Р·Р° РЅРµРґРµР»СЋ
      */
     private $visits;
     /**
-     * минимум 5 откликов на проекты 
+     * РјРёРЅРёРјСѓРј 5 РѕС‚РєР»РёРєРѕРІ РЅР° РїСЂРѕРµРєС‚С‹ 
      */
     private $projects;
     /**
-     * номер страницы 
+     * РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹ 
      */
     public $page;
     /**
-     * количество фрилансеров на странице 
+     * РєРѕР»РёС‡РµСЃС‚РІРѕ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РЅР° СЃС‚СЂР°РЅРёС†Рµ 
      */
     private $items;
     /**
-     * смещение 
+     * СЃРјРµС‰РµРЅРёРµ 
      */
     private $offset;
     /**
-     * есть ли параметры фильтрации
+     * РµСЃС‚СЊ Р»Рё РїР°СЂР°РјРµС‚СЂС‹ С„РёР»СЊС‚СЂР°С†РёРё
      */
     public $is_filter;
     /**
-     * выбраны все опции фильтра 
+     * РІС‹Р±СЂР°РЅС‹ РІСЃРµ РѕРїС†РёРё С„РёР»СЊС‚СЂР° 
      */
     public $full_filter;
     
     /**
-     * количество найденных фрилансеров
+     * РєРѕР»РёС‡РµСЃС‚РІРѕ РЅР°Р№РґРµРЅРЅС‹С… С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
      */
     public $count;
     /**
-     * количество страниц после очередного поиска, зависит от $items 
+     * РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂР°РЅРёС† РїРѕСЃР»Рµ РѕС‡РµСЂРµРґРЅРѕРіРѕ РїРѕРёСЃРєР°, Р·Р°РІРёСЃРёС‚ РѕС‚ $items 
      */
     public $pages;
     /**
-     * список найденых фрилансеров 
+     * СЃРїРёСЃРѕРє РЅР°Р№РґРµРЅС‹С… С„СЂРёР»Р°РЅСЃРµСЂРѕРІ 
      */
     public $totalFrls = array();
     /**
-     * список фрилансеров после пагинации? то есть для текущей страницы
+     * СЃРїРёСЃРѕРє С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РїРѕСЃР»Рµ РїР°РіРёРЅР°С†РёРё? С‚Рѕ РµСЃС‚СЊ РґР»СЏ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹
      */
     public $pageFrls = array();
     
@@ -76,15 +76,15 @@ class admin_frl_search {
     }
     
     /**
-     * устанавливает фильтр для поиска
-     * @param $filter - массив с праметрами фильтра
-     * @key prof - определиена ли специализация
-     * @key opinions - есть ли как минимум 3 подтвержденных мнения
-     * @key portfolio - есть ли как минимум 10 работ
-     * @key visits - 5 посещений за последний месяц и 1 посещение за последнюю неделю
-     * @key projects - 5 проектов за последнюю еделю
-     * @key page - страница
-     * @key items - фрилансеров на странице
+     * СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ С„РёР»СЊС‚СЂ РґР»СЏ РїРѕРёСЃРєР°
+     * @param $filter - РјР°СЃСЃРёРІ СЃ РїСЂР°РјРµС‚СЂР°РјРё С„РёР»СЊС‚СЂР°
+     * @key prof - РѕРїСЂРµРґРµР»РёРµРЅР° Р»Рё СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏ
+     * @key opinions - РµСЃС‚СЊ Р»Рё РєР°Рє РјРёРЅРёРјСѓРј 3 РїРѕРґС‚РІРµСЂР¶РґРµРЅРЅС‹С… РјРЅРµРЅРёСЏ
+     * @key portfolio - РµСЃС‚СЊ Р»Рё РєР°Рє РјРёРЅРёРјСѓРј 10 СЂР°Р±РѕС‚
+     * @key visits - 5 РїРѕСЃРµС‰РµРЅРёР№ Р·Р° РїРѕСЃР»РµРґРЅРёР№ РјРµСЃСЏС† Рё 1 РїРѕСЃРµС‰РµРЅРёРµ Р·Р° РїРѕСЃР»РµРґРЅСЋСЋ РЅРµРґРµР»СЋ
+     * @key projects - 5 РїСЂРѕРµРєС‚РѕРІ Р·Р° РїРѕСЃР»РµРґРЅСЋСЋ РµРґРµР»СЋ
+     * @key page - СЃС‚СЂР°РЅРёС†Р°
+     * @key items - С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РЅР° СЃС‚СЂР°РЅРёС†Рµ
      */
     public function setFilter ($filter) {
         if (!is_array($filter)) {
@@ -111,12 +111,12 @@ class admin_frl_search {
     }
     
     /**
-     * Возвращает количество пользователей, удовлетворяющих условиям выборки
-     * Список пользователей сохраняется в $frls, $pageFrls
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё
+     * РЎРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃРѕС…СЂР°РЅСЏРµС‚СЃСЏ РІ $frls, $pageFrls
      * 
-     * @param  int $count возвращает количество записей удовлтворяющих условиям выборки
-     * @param  array $filter Параметры фильтра
-     * @param  int $page номер текущей страницы
+     * @param  int $count РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ СѓРґРѕРІР»С‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё
+     * @param  array $filter РџР°СЂР°РјРµС‚СЂС‹ С„РёР»СЊС‚СЂР°
+     * @param  int $page РЅРѕРјРµСЂ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹
      * @return array
      */
     function searchFrls() {
@@ -135,7 +135,7 @@ class admin_frl_search {
         $this->count = count($totalFrls);
         $this->pages = ceil($this->count / $this->items);
         
-        // находим фрилансеров для нужной страницы
+        // РЅР°С…РѕРґРёРј С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РґР»СЏ РЅСѓР¶РЅРѕР№ СЃС‚СЂР°РЅРёС†С‹
         $sql_limit = ' LIMIT ' . $this->items . ' OFFSET ' . $this->offset;
         $sql = $this->getRes() . $this->getFrom() . $this->getExt() . $this->getCond() . $this->getLimit();
         $pageFrls = $DB->rows($sql);
@@ -151,7 +151,7 @@ class admin_frl_search {
     }
     
     /**
-     * возвращает (ресурс) полный список фрилансеров, для excel-отчета
+     * РІРѕР·РІСЂР°С‰Р°РµС‚ (СЂРµСЃСѓСЂСЃ) РїРѕР»РЅС‹Р№ СЃРїРёСЃРѕРє С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, РґР»СЏ excel-РѕС‚С‡РµС‚Р°
      */
     private function searchFrlsTotal () {
         global $DB;
@@ -163,78 +163,78 @@ class admin_frl_search {
             
     
     /**
-     * генерирует отчет в Excel, данные берет из $frls - полный список фрилансеров 
+     * РіРµРЅРµСЂРёСЂСѓРµС‚ РѕС‚С‡РµС‚ РІ Excel, РґР°РЅРЅС‹Рµ Р±РµСЂРµС‚ РёР· $frls - РїРѕР»РЅС‹Р№ СЃРїРёСЃРѕРє С„СЂРёР»Р°РЅСЃРµСЂРѕРІ 
      */
     public function generateReport () {
         
         require_once( 'Spreadsheet/Excel/Writer.php' );
         
-        // поиск фрилансеров
+        // РїРѕРёСЃРє С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
         $res = $this->searchFrlsTotal();
         
-        // имя файла
-        $fileName = 'фрилансеры (';
+        // РёРјСЏ С„Р°Р№Р»Р°
+        $fileName = 'С„СЂРёР»Р°РЅСЃРµСЂС‹ (';
         if ($this->is_filter) {
-            $fileName .= 'с фильтром';
+            $fileName .= 'СЃ С„РёР»СЊС‚СЂРѕРј';
         } else {
-            $fileName .= 'без фильтра';
+            $fileName .= 'Р±РµР· С„РёР»СЊС‚СЂР°';
         }
         $fileName .= ')';
         $fileName .= '.xls';
         
-        // создаем документ
+        // СЃРѕР·РґР°РµРј РґРѕРєСѓРјРµРЅС‚
         $workbook = new Spreadsheet_Excel_Writer();
         $workbook->setVersion( 8 );
         
-        // создаем лист
+        // СЃРѕР·РґР°РµРј Р»РёСЃС‚
         $worksheet =& $workbook->addWorksheet( '1' );
         $worksheet->setInputEncoding( 'CP1251' );
         
-        // ширина ячеек
+        // С€РёСЂРёРЅР° СЏС‡РµРµРє
         $worksheet->setColumn(1, 2, 20);
         $worksheet->setColumn(3, 6, 25);
         $worksheet->setColumn(7, 7, 30);
         
-        // стили
+        // СЃС‚РёР»Рё
         $th_sty = array('FontFamily'=>'Arial', 'Size'=>10, 'Align'=>'center', 'Border'=>1, 'BorderColor'=>'black', 'Bold'=>1, 'Text_wrap'=>true);
         $format_top   =& $workbook->addFormat( $th_sty );
         
-        // заголовок листа
-        $worksheet->write( 0, 0, 'ООО "Ваан"' );
-        $worksheet->write( 2, 1, 'Фрилансеры' );
+        // Р·Р°РіРѕР»РѕРІРѕРє Р»РёСЃС‚Р°
+        $worksheet->write( 0, 0, 'РћРћРћ "Р’Р°Р°РЅ"' );
+        $worksheet->write( 2, 1, 'Р¤СЂРёР»Р°РЅСЃРµСЂС‹' );
         
         $line = 4;
         
         if ($this->is_filter) {
-            $worksheet->write($line++, 1, 'Параметры фильтра:');
+            $worksheet->write($line++, 1, 'РџР°СЂР°РјРµС‚СЂС‹ С„РёР»СЊС‚СЂР°:');
             if ($this->prof) {
-                $worksheet->write($line++, 1, 'только со специальностью');
+                $worksheet->write($line++, 1, 'С‚РѕР»СЊРєРѕ СЃРѕ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚СЊСЋ');
             }
             if ($this->opinions) {
-                $worksheet->write($line++, 1, 'только с 3-мя и более мнениями/рекомендациями');
+                $worksheet->write($line++, 1, 'С‚РѕР»СЊРєРѕ СЃ 3-РјСЏ Рё Р±РѕР»РµРµ РјРЅРµРЅРёСЏРјРё/СЂРµРєРѕРјРµРЅРґР°С†РёСЏРјРё');
             }
             if ($this->portfolio) {
-                $worksheet->write($line++, 1, 'только с 10-ю и более работами в портфолио');
+                $worksheet->write($line++, 1, 'С‚РѕР»СЊРєРѕ СЃ 10-СЋ Рё Р±РѕР»РµРµ СЂР°Р±РѕС‚Р°РјРё РІ РїРѕСЂС‚С„РѕР»РёРѕ');
             }
             if ($this->visits) {
-                $worksheet->write($line++, 1, 'только с 5-ю и более заходами на сайт за последний месяц и 1 и более - за последнюю неделю');
+                $worksheet->write($line++, 1, 'С‚РѕР»СЊРєРѕ СЃ 5-СЋ Рё Р±РѕР»РµРµ Р·Р°С…РѕРґР°РјРё РЅР° СЃР°Р№С‚ Р·Р° РїРѕСЃР»РµРґРЅРёР№ РјРµСЃСЏС† Рё 1 Рё Р±РѕР»РµРµ - Р·Р° РїРѕСЃР»РµРґРЅСЋСЋ РЅРµРґРµР»СЋ');
             }
             if ($this->projects) {
-                $worksheet->write($line++, 1, 'только с 5-ю и более ответами на проекты за последний месяц');
+                $worksheet->write($line++, 1, 'С‚РѕР»СЊРєРѕ СЃ 5-СЋ Рё Р±РѕР»РµРµ РѕС‚РІРµС‚Р°РјРё РЅР° РїСЂРѕРµРєС‚С‹ Р·Р° РїРѕСЃР»РµРґРЅРёР№ РјРµСЃСЏС†');
             }
         }
         
         $line = $line + 2;
        
-        // заголовок таблицы
-        $aHeader = array('№ п/п', 'Фрилансер', 'Специализация', 'Мнений/рекомендаций', 'Работ в портфолио', 'Посещений за месяц', 'Посещений за неделю', 'Ответов на проекты за месяц');
+        // Р·Р°РіРѕР»РѕРІРѕРє С‚Р°Р±Р»РёС†С‹
+        $aHeader = array('в„– Рї/Рї', 'Р¤СЂРёР»Р°РЅСЃРµСЂ', 'РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ', 'РњРЅРµРЅРёР№/СЂРµРєРѕРјРµРЅРґР°С†РёР№', 'Р Р°Р±РѕС‚ РІ РїРѕСЂС‚С„РѕР»РёРѕ', 'РџРѕСЃРµС‰РµРЅРёР№ Р·Р° РјРµСЃСЏС†', 'РџРѕСЃРµС‰РµРЅРёР№ Р·Р° РЅРµРґРµР»СЋ', 'РћС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚С‹ Р·Р° РјРµСЃСЏС†');
         
         for ( $i = 0; $i<count($aHeader); $i++ ) {
             $worksheet->write( $line, $i, $aHeader[$i], $format_top );
         }
         
         if (!res) {
-            $worksheet->write($line, 0, 'Ни одного фрилансера не найдено');
+            $worksheet->write($line, 0, 'РќРё РѕРґРЅРѕРіРѕ С„СЂРёР»Р°РЅСЃРµСЂР° РЅРµ РЅР°Р№РґРµРЅРѕ');
         }
         
         $num = 1;
@@ -246,7 +246,7 @@ class admin_frl_search {
             $rowData = array(
                 $num,
                 $name,
-                $frl['param_spec'] ? 'Есть' : 'Нет',
+                $frl['param_spec'] ? 'Р•СЃС‚СЊ' : 'РќРµС‚',
                 $frl['param_opinions'] ? $frl['param_opinions'] : 0,
                 $frl['param_jobs'] ? $frl['param_jobs'] : 0,
                 $frl['param_m_visits'] ? $frl['param_m_visits'] : 0,
@@ -259,42 +259,42 @@ class admin_frl_search {
         }
         
         
-        // отправляем на скачивание
+        // РѕС‚РїСЂР°РІР»СЏРµРј РЅР° СЃРєР°С‡РёРІР°РЅРёРµ
         $workbook->send($fileName);
         
-        // закрываем документ
+        // Р·Р°РєСЂС‹РІР°РµРј РґРѕРєСѓРјРµРЅС‚
         $workbook->close();
     }
     
-    // составные части запроса
+    // СЃРѕСЃС‚Р°РІРЅС‹Рµ С‡Р°СЃС‚Рё Р·Р°РїСЂРѕСЃР°
     private function getRes () {
-        // колонки результата
+        // РєРѕР»РѕРЅРєРё СЂРµР·СѓР»СЊС‚Р°С‚Р°
         $sql_res  = 'SELECT DISTINCT frl.uid, frl.uname, frl.usurname, frl.login, frl.role, frl.is_pro, frl.is_pro_test, frl.is_team, frl.photo, frl.warn, 
             frl.email, frl.reg_ip, frl.last_ip, frl.is_banned, frl.ban_where, frl.self_deleted, frl.safety_phone, frl.safety_only_phone, 
             frl.safety_bind_ip, frl.active, frl.pop, frl.phone, frl.phone_1, frl.phone_2, frl.phone_3';
         $sql_res .= ', frl.spec_orig param_spec';
-        // рекомендации
+        // СЂРµРєРѕРјРµРЅРґР°С†РёРё
         $sql_res .= ', (uc.ops_emp_null + uc.ops_emp_plus + uc.ops_emp_minus + uc.sbr_opi_null + uc.sbr_opi_plus + uc.sbr_opi_minus) param_opinions';
-        // портфолио
+        // РїРѕСЂС‚С„РѕР»РёРѕ
         $sql_res .= ', po.jobs param_jobs';
-        // визиты
+        // РІРёР·РёС‚С‹
         $sql_res .= ', vi.m_visits param_m_visits, vi.w_visits param_w_visits';
-        // проекты
+        // РїСЂРѕРµРєС‚С‹
         $sql_res .= ', p_o.projects param_projects';
         
         return $sql_res;
     }
     private function getResExcel () {
-        // колонки результата
+        // РєРѕР»РѕРЅРєРё СЂРµР·СѓР»СЊС‚Р°С‚Р°
         $sql_res  = 'SELECT DISTINCT frl.uid, frl.uname, frl.usurname, frl.login';
         $sql_res .= ', frl.spec_orig param_spec';
-        // рекомендации
+        // СЂРµРєРѕРјРµРЅРґР°С†РёРё
         $sql_res .= ', (uc.ops_emp_null + uc.ops_emp_plus + uc.ops_emp_minus + uc.sbr_opi_null + uc.sbr_opi_plus + uc.sbr_opi_minus) param_opinions';
-        // портфолио
+        // РїРѕСЂС‚С„РѕР»РёРѕ
         $sql_res .= ', po.jobs param_jobs';
-        // визиты
+        // РІРёР·РёС‚С‹
         $sql_res .= ', vi.m_visits param_m_visits, vi.w_visits param_w_visits';
-        // проекты
+        // РїСЂРѕРµРєС‚С‹
         $sql_res .= ', p_o.projects param_projects';
         
         return $sql_res;
@@ -308,17 +308,17 @@ class admin_frl_search {
         return $sql_from;
     }
     private function getExt () {
-        // мнения
+        // РјРЅРµРЅРёСЏ
         $sql_ext = " LEFT JOIN users_counters uc
                     ON uc.user_id = frl.uid";
-        // портфолио
+        // РїРѕСЂС‚С„РѕР»РёРѕ
         $sql_ext .= " LEFT JOIN
                     (SELECT DISTINCT prt.user_id user_id, count(*) jobs
                     FROM portfolio prt
                     GROUP BY prt.user_id) po
                     ON po.user_id = frl.uid";
         
-        // визиты
+        // РІРёР·РёС‚С‹
         $sql_ext .= " LEFT JOIN
                     (SELECT DISTINCT    r2m.user_id uid, 
                                         count(r2m.*) m_visits, 
@@ -329,7 +329,7 @@ class admin_frl_search {
                     GROUP BY r2m.user_id) vi
                     ON vi.uid = frl.uid";
 
-        // портфолио
+        // РїРѕСЂС‚С„РѕР»РёРѕ
         $sql_ext .= " LEFT JOIN
                     (SELECT DISTINCT prj.user_id user_id, count(*) projects
                     FROM projects_offers prj
@@ -339,24 +339,24 @@ class admin_frl_search {
         return $sql_ext;
     }
     private function getCond () {
-        // условия
+        // СѓСЃР»РѕРІРёСЏ
         $sql_cond = " WHERE frl.uid > 0
                     AND frl.is_banned = B'0'
                     AND frl.active = TRUE";
         
-        if ($this->prof) { // наличие специализации
+        if ($this->prof) { // РЅР°Р»РёС‡РёРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё
             $sql_cond .= ' AND spec_orig > 0';
         }        
-        if ($this->opinions) { // наличие минимум 3-х подтвержденных мнений
+        if ($this->opinions) { // РЅР°Р»РёС‡РёРµ РјРёРЅРёРјСѓРј 3-С… РїРѕРґС‚РІРµСЂР¶РґРµРЅРЅС‹С… РјРЅРµРЅРёР№
             $sql_cond .= ' AND (uc.sbr_opi_plus + uc.paid_advices_cnt) >= 3';
         }
-        if ($this->portfolio) { // наличие работ в портфолио
+        if ($this->portfolio) { // РЅР°Р»РёС‡РёРµ СЂР°Р±РѕС‚ РІ РїРѕСЂС‚С„РѕР»РёРѕ
             $sql_cond .= ' AND po.jobs >= 10';
         }
-        if ($this->visits) { // количество посещений
+        if ($this->visits) { // РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕСЃРµС‰РµРЅРёР№
             $sql_cond .= ' AND vi.m_visits >= 5 AND vi.w_visits >= 1';
         }
-        if ($this->projects) { // отклики на проекты
+        if ($this->projects) { // РѕС‚РєР»РёРєРё РЅР° РїСЂРѕРµРєС‚С‹
             $sql_cond .= ' AND p_o.projects >= 5';
         }
         return $sql_cond;

@@ -1,6 +1,6 @@
 <?php
 /**
- * Уведомление у которых еще не было никогда про, даже тестового
+ * РЈРІРµРґРѕРјР»РµРЅРёРµ Сѓ РєРѕС‚РѕСЂС‹С… РµС‰Рµ РЅРµ Р±С‹Р»Рѕ РЅРёРєРѕРіРґР° РїСЂРѕ, РґР°Р¶Рµ С‚РµСЃС‚РѕРІРѕРіРѕ
  * */
 ini_set('max_execution_time', '0');
 ini_set('memory_limit', '512M');
@@ -10,12 +10,12 @@ require_once '../classes/memBuff.php';
 require_once '../classes/smtp2.php';
 
 /**
- * Логин пользователя от кого осуществляется рассылка
+ * Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РѕС‚ РєРѕРіРѕ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ СЂР°СЃСЃС‹Р»РєР°
  * 
  */
 $sender = 'admin';
 
-// ищем фрилансеров у которых не было никогда ПРО
+// РёС‰РµРј С„СЂРёР»Р°РЅСЃРµСЂРѕРІ Сѓ РєРѕС‚РѕСЂС‹С… РЅРµ Р±С‹Р»Рѕ РЅРёРєРѕРіРґР° РџР Рћ
 $sql = 
    "SELECT f.uid, f.login, f.uname, f.usurname, f.email
     FROM freelancer f
@@ -32,7 +32,7 @@ $sql =
 
 $eHost = $GLOBALS['host'];
 
-$eSubject = "Free-lance.ru: попробуйте аккаунт PRO";
+$eSubject = "Free-lance.ru: РїРѕРїСЂРѕР±СѓР№С‚Рµ Р°РєРєР°СѓРЅС‚ PRO";
 
 $mail = new smtp2;
 
@@ -75,7 +75,7 @@ ob_start(); ?>
                             <tr>
                                 <td bgcolor="#ffffff" width="20"></td>
                                 <td width="20"></td>
-                                <td align="left" ><font color="#000000" size="6" face="tahoma,sans-serif">Тестовый аккаунт PRO за 1 FM</font></td>
+                                <td align="left" ><font color="#000000" size="6" face="tahoma,sans-serif">РўРµСЃС‚РѕРІС‹Р№ Р°РєРєР°СѓРЅС‚ PRO Р·Р° 1 FM</font></td>
                                 <td></td>
                                 <td width="20"></td>
                                 <td bgcolor="#ffffff" width="20"></td>
@@ -97,9 +97,9 @@ ob_start(); ?>
                                 <td valign="middle"><img src="cid:<?= $imgPro ?>" width="313" height="133" align="middle" border="0"></td>
                                 <td align="center" width="200">
                                 	<font color="#6db335" size="6" face="tahoma,sans-serif">1 FM<br></font>
-									<font color="#000000" size="6" face="tahoma,sans-serif">1 неделя</font></td>
+									<font color="#000000" size="6" face="tahoma,sans-serif">1 РЅРµРґРµР»СЏ</font></td>
                                 <td valign="middle" align="center" width="140"><img src="cid:<?= $img18 ?>" alt="" width="62" height="62" border="0" align="middle" /><br>
-                                	<font color="#fd6c30" size="3" face="tahoma,sans-serif">Акция продлится<br>до 21 февраля</font>
+                                	<font color="#fd6c30" size="3" face="tahoma,sans-serif">РђРєС†РёСЏ РїСЂРѕРґР»РёС‚СЃСЏ<br>РґРѕ 21 С„РµРІСЂР°Р»СЏ</font>
                                 </td>
                                 <td width="20"></td>
                                 <td bgcolor="#ffffff" width="20"></td>
@@ -118,7 +118,7 @@ ob_start(); ?>
                             <tr>
                                 <td bgcolor="#ffffff" width="20"></td>
                                 <td width="20"></td>
-                                <td align="left"><font color="#444444" size="2" face="tahoma,sans-serif">Обладатели аккаунтна PRO &mdash; наиболее активные пользователи Free-lance.ru с неплохими заработками. Заказчики чаще доверяют PRO &mdash; большая часть всех опубликованных на сайте проектов выполняется фрилансерами с профессиональным аккаунтом.</font></td>
+                                <td align="left"><font color="#444444" size="2" face="tahoma,sans-serif">РћР±Р»Р°РґР°С‚РµР»Рё Р°РєРєР°СѓРЅС‚РЅР° PRO &mdash; РЅР°РёР±РѕР»РµРµ Р°РєС‚РёРІРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё Free-lance.ru СЃ РЅРµРїР»РѕС…РёРјРё Р·Р°СЂР°Р±РѕС‚РєР°РјРё. Р—Р°РєР°Р·С‡РёРєРё С‡Р°С‰Рµ РґРѕРІРµСЂСЏСЋС‚ PRO &mdash; Р±РѕР»СЊС€Р°СЏ С‡Р°СЃС‚СЊ РІСЃРµС… РѕРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹С… РЅР° СЃР°Р№С‚Рµ РїСЂРѕРµРєС‚РѕРІ РІС‹РїРѕР»РЅСЏРµС‚СЃСЏ С„СЂРёР»Р°РЅСЃРµСЂР°РјРё СЃ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј.</font></td>
                                 <td width="20"></td>
                                 <td bgcolor="#ffffff" width="20"></td>
                             </tr>
@@ -132,7 +132,7 @@ ob_start(); ?>
                             <tr>
                                 <td bgcolor="#ffffff" width="20"></td>
                                 <td width="20"></td>
-                                <td align="left"><b><font color="#444444" size="3" face="arial,sans-serif">Некоторые преимущества аккаунта PRO</font></b></td>
+                                <td align="left"><b><font color="#444444" size="3" face="arial,sans-serif">РќРµРєРѕС‚РѕСЂС‹Рµ РїСЂРµРёРјСѓС‰РµСЃС‚РІР° Р°РєРєР°СѓРЅС‚Р° PRO</font></b></td>
                                 <td width="20"></td>
                                 <td bgcolor="#ffffff" width="20"></td>
                             </tr>
@@ -149,22 +149,22 @@ ob_start(); ?>
                                 <td>
                                     <table style=" background-color: #ffffff; text-align:left" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%">
                                         <tr>
-                                              <td height="30" style="border-bottom-color:#cccccc; border-bottom-style:double; border-bottom-width:3px;"><em><font color="#444444" size="2" face="tahoma,sans-serif">Возможности</font></em></td>
-                                              <td width="100" height="30" align="center" style="border-bottom-color:#cccccc; border-bottom-style:double; border-bottom-width:3px;"><em><font color="#444444" size="2" face="tahoma,sans-serif">Аккаунт <img border="0" src="cid:<?= $imgFPro ?>" width="27" height="12"></font></em></td>
-                                              <td width="130" height="30" align="center" style="border-bottom-color:#cccccc; border-bottom-style:double; border-bottom-width:3px;"><em><font color="#444444" size="2" face="tahoma,sans-serif">Базовый аккаунт</font></em></td>
+                                              <td height="30" style="border-bottom-color:#cccccc; border-bottom-style:double; border-bottom-width:3px;"><em><font color="#444444" size="2" face="tahoma,sans-serif">Р’РѕР·РјРѕР¶РЅРѕСЃС‚Рё</font></em></td>
+                                              <td width="100" height="30" align="center" style="border-bottom-color:#cccccc; border-bottom-style:double; border-bottom-width:3px;"><em><font color="#444444" size="2" face="tahoma,sans-serif">РђРєРєР°СѓРЅС‚ <img border="0" src="cid:<?= $imgFPro ?>" width="27" height="12"></font></em></td>
+                                              <td width="130" height="30" align="center" style="border-bottom-color:#cccccc; border-bottom-style:double; border-bottom-width:3px;"><em><font color="#444444" size="2" face="tahoma,sans-serif">Р‘Р°Р·РѕРІС‹Р№ Р°РєРєР°СѓРЅС‚</font></em></td>
                                         </tr>
                                         <tr>
-                                              <td height="40" style="border-bottom-color:#cccccc; border-bottom-style: solid; border-bottom-width:1px;"><font color="#444444" size="2" face="tahoma,sans-serif">Ваши контакты видны работодателям</font></em></td>
+                                              <td height="40" style="border-bottom-color:#cccccc; border-bottom-style: solid; border-bottom-width:1px;"><font color="#444444" size="2" face="tahoma,sans-serif">Р’Р°С€Рё РєРѕРЅС‚Р°РєС‚С‹ РІРёРґРЅС‹ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏРј</font></em></td>
                                               <td width="100" height="40" align="center" valign="middle" style="border-bottom-color:#cccccc; border-bottom-style: solid; border-bottom-width:1px;"><img src="cid:<?= $img20 ?>" width="15" height="15" border="0"></td>
                                               <td width="130" height="40" align="center" valign="middle" style="border-bottom-color:#cccccc; border-bottom-style: solid; border-bottom-width:1px;"><img src="cid:<?= $img22 ?>" width="15" height="15" border="0"></td>
                                         </tr>
                                         <tr>
-                                              <td height="40" style="border-bottom-color:#cccccc; border-bottom-style: solid; border-bottom-width:1px;"><font color="#444444" size="2" face="tahoma,sans-serif">Количество ответов на проекты (в месяц)</font></em></td>
+                                              <td height="40" style="border-bottom-color:#cccccc; border-bottom-style: solid; border-bottom-width:1px;"><font color="#444444" size="2" face="tahoma,sans-serif">РљРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚С‹ (РІ РјРµСЃСЏС†)</font></em></td>
                                               <td width="100" height="40" align="center" valign="middle" style="border-bottom-color:#cccccc; border-bottom-style: solid; border-bottom-width:1px;"><img src="cid:<?= $img21 ?>" width="16" height="10" border="0"></td>
                                               <td width="130" height="40" align="center" valign="middle" style="border-bottom-color:#cccccc; border-bottom-style: solid; border-bottom-width:1px;"><b><font color="#cc1313" size="3" face="arial,sans-serif">3</font></b></td>
                                         </tr>
                                         <tr>
-                                              <td height="40" style="border-bottom-color:#cccccc; border-bottom-style: solid; border-bottom-width:1px;"><font color="#444444" size="2" face="tahoma,sans-serif">Возможность отвечать на проекты с пометкой &laquo;Только для PRO&raquo;</font></em></td>
+                                              <td height="40" style="border-bottom-color:#cccccc; border-bottom-style: solid; border-bottom-width:1px;"><font color="#444444" size="2" face="tahoma,sans-serif">Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РѕС‚РІРµС‡Р°С‚СЊ РЅР° РїСЂРѕРµРєС‚С‹ СЃ РїРѕРјРµС‚РєРѕР№ &laquo;РўРѕР»СЊРєРѕ РґР»СЏ PRO&raquo;</font></em></td>
                                               <td width="100" height="40" align="center" valign="middle" style="border-bottom-color:#cccccc; border-bottom-style: solid; border-bottom-width:1px;"><img src="cid:<?= $img20 ?>" width="15" height="15" border="0"></td>
                                               <td width="130" height="40" align="center" valign="middle" style="border-bottom-color:#cccccc; border-bottom-style: solid; border-bottom-width:1px;"><img src="cid:<?= $img22 ?>" width="15" height="15" border="0"></td>
                                         </tr>
@@ -200,8 +200,8 @@ ob_start(); ?>
                                 <td bgcolor="#ffffff" width="20"></td>
                                 <td bgcolor="#ffffff" width="20"></td>
                                 <td bgcolor="#ffffff" align="left">
-                                    <font color="#4d4d4d" size="1" face="tahoma,sans-serif">По всем возникающим вопросам вы можете обращаться в нашу <a target="_blank" style="color:#0f71c8;" href="<?= $eHost ?>/about/feedback">службу поддержки</a>.<br>
-                        Вы можете отключить уведомления на странице «<a target="_blank" style="color:#0f71c8;" href="<?= $eHost ?>/users/%%%USER_LOGIN%%%/setup/mailer/">Уведомления/Рассылка</a>» вашего аккаунта.</font>
+                                    <font color="#4d4d4d" size="1" face="tahoma,sans-serif">РџРѕ РІСЃРµРј РІРѕР·РЅРёРєР°СЋС‰РёРј РІРѕРїСЂРѕСЃР°Рј РІС‹ РјРѕР¶РµС‚Рµ РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РІ РЅР°С€Сѓ <a target="_blank" style="color:#0f71c8;" href="<?= $eHost ?>/about/feedback">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.<br>
+                        Р’С‹ РјРѕР¶РµС‚Рµ РѕС‚РєР»СЋС‡РёС‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ РЅР°В СЃС‚СЂР°РЅРёС†Рµ В«<a target="_blank" style="color:#0f71c8;" href="<?= $eHost ?>/users/%%%USER_LOGIN%%%/setup/mailer/">РЈРІРµРґРѕРјР»РµРЅРёСЏ/Р Р°СЃСЃС‹Р»РєР°</a>В»В РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р°.</font>
                                 </td>
                                 <td bgcolor="#ffffff" width="20"></td>
                                 <td bgcolor="#ffffff" width="20"></td>
@@ -217,7 +217,7 @@ ob_start(); ?>
                                 <td bgcolor="#ffffff" width="20"></td>
                                 <td bgcolor="#ffffff" width="20"></td>
                                 <td bgcolor="#ffffff" align="left">
-                                    <font color="#4d4d4d" size="1" face="tahoma,sans-serif">Приятной работы!<br>Команда <a href="<?= $eHost ?>" target="_blank" style="color:#0f71c8;">Free-lance.ru</a></font>
+                                    <font color="#4d4d4d" size="1" face="tahoma,sans-serif">РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹!<br>РљРѕРјР°РЅРґР° <a href="<?= $eHost ?>" target="_blank" style="color:#0f71c8;">Free-lance.ru</a></font>
                                 </td>
                                 <td bgcolor="#ffffff" width="20"></td>
                                 <td bgcolor="#ffffff" width="20"></td>
@@ -240,7 +240,7 @@ ob_start(); ?>
 <? $eMessage = ob_get_clean();
 
 // ----------------------------------------------------------------------------------------------------------------
-// -- Рассылка ----------------------------------------------------------------------------------------------------
+// -- Р Р°СЃСЃС‹Р»РєР° ----------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------
 $master = new DB('master');
 $cnt = 0;
@@ -252,13 +252,13 @@ if (empty($sender)) {
 
 echo "Send email messages\n";
 
-$mail->subject = $eSubject;  // заголовок письма
-$mail->message = $eMessage; // текст письма
-$mail->recipient = ''; // свойство 'получатель' оставляем пустым
+$mail->subject = $eSubject;  // Р·Р°РіРѕР»РѕРІРѕРє РїРёСЃСЊРјР°
+$mail->message = $eMessage; // С‚РµРєСЃС‚ РїРёСЃСЊРјР°
+$mail->recipient = ''; // СЃРІРѕР№СЃС‚РІРѕ 'РїРѕР»СѓС‡Р°С‚РµР»СЊ' РѕСЃС‚Р°РІР»СЏРµРј РїСѓСЃС‚С‹Рј
 $spamid = $mail->masssend();
 //if (!$spamid) die('Failed!');
-// с этого момента рассылка создана, но еще никому не отправлена!
-// допустим нам нужно получить список получателей с какого-либо запроса
+// СЃ СЌС‚РѕРіРѕ РјРѕРјРµРЅС‚Р° СЂР°СЃСЃС‹Р»РєР° СЃРѕР·РґР°РЅР°, РЅРѕ РµС‰Рµ РЅРёРєРѕРјСѓ РЅРµ РѕС‚РїСЂР°РІР»РµРЅР°!
+// РґРѕРїСѓСЃС‚РёРј РЅР°Рј РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РїРѕР»СѓС‡Р°С‚РµР»РµР№ СЃ РєР°РєРѕРіРѕ-Р»РёР±Рѕ Р·Р°РїСЂРѕСЃР°
 $i = 0;
 $mail->recipient = array();
 $res = $master->query($sql);

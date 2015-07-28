@@ -106,7 +106,7 @@ if ($error['name']) {
 ?>
 <script type="text/javascript">
 window.addEvent('domready', function(){
-    // прокрутка к элементу
+    // РїСЂРѕРєСЂСѓС‚РєР° Рє СЌР»РµРјРµРЅС‚Сѓ
     function scrollToEl (el) {
         var el = $(el), xScroll, yScroll, userBarHeight = 45;
         if (el) {
@@ -131,29 +131,29 @@ window.addEvent('domready', function(){
         <?php if($data['logo_id']) { ?>
         <input type="hidden" name="logo_id" value="<?= $data['logo_id']?>" id="logo_id">
         <?php }//if?>
-    <div class="b-layout__txt b-layout__txt_padbot_40">Самый простой способ найти исполнителя – опубликовать проект. Проекты бывают трех типов: фри-ланс-проект, конкурс и вакансия в офис.</div>
+    <div class="b-layout__txt b-layout__txt_padbot_40">РЎР°РјС‹Р№ РїСЂРѕСЃС‚РѕР№ СЃРїРѕСЃРѕР± РЅР°Р№С‚Рё РёСЃРїРѕР»РЅРёС‚РµР»СЏ вЂ“ РѕРїСѓР±Р»РёРєРѕРІР°С‚СЊ РїСЂРѕРµРєС‚. РџСЂРѕРµРєС‚С‹ Р±С‹РІР°СЋС‚ С‚СЂРµС… С‚РёРїРѕРІ: С„СЂРё-Р»Р°РЅСЃ-РїСЂРѕРµРєС‚, РєРѕРЅРєСѓСЂСЃ Рё РІР°РєР°РЅСЃРёСЏ РІ РѕС„РёСЃ.</div>
     <div class="b-buttons b-buttons_margleft_-4 b-buttons_padbot_20">
         <a href="javascript:void(0)" class="b-button b-button_rectangle_color_transparent b-button_toggle <?= $data['kind'] != 7 ? "b-button_active" : ""; ?> " onclick="setTypeProject(0)">
             <span class="b-button__b1">
                 <span class="b-button__b2 b-button__b2_padlr_10">
-                    <span class="b-button__txt">Добавить проект</span>
+                    <span class="b-button__txt">Р”РѕР±Р°РІРёС‚СЊ РїСЂРѕРµРєС‚</span>
                 </span>
             </span>
         </a>&#160;&#160;
         <a href="javascript:void(0)" class="b-button b-button_rectangle_color_transparent b-button_toggle  <?= $data['kind'] == 7 ? "b-button_active" : ""; ?>" onclick="setTypeProject(1)">
             <span class="b-button__b1">
                 <span class="b-button__b2 b-button__b2_padlr_10">
-                    <span class="b-button__txt">Добавить конкурс</span>
+                    <span class="b-button__txt">Р”РѕР±Р°РІРёС‚СЊ РєРѕРЅРєСѓСЂСЃ</span>
                 </span>
             </span>
         </a>
     </div>
-    <div class="b-layout__txt b-layout__txt_padbot_15 project-elm"><span class="b-layout__bold">Проект</span> предполагает разовое задание, которое может быть выполнено удаленно. В описании проекта необходимо максимально подробно описать суть задачи, а еще лучше – приложить детальное техзадание (ТЗ) на выполнение работы.</div>
-    <div class="b-layout__txt b-layout__txt_padbot_15 b-layout_hide contest-elm">Создайте <span class="b-layout__bold">конкурс</span>, если хотите выбрать лучшего исполнителя по результатам выполнения тестового задания. В описании конкурса нужно указать суть тестовой задачи, условия проведения конкурса и критерии выбора победителя.</div>
-    <div class="b-layout__txt b-layout__txt_padbot_10 b-layout_hide contest-elm">Публикация конкурса платная &mdash; <span class="b-layout__txt b-layout__txt_bold b-layout__txt_color_fd6c30"><?= new_projects::getKonkursPrice();?> рублей</span></div>
+    <div class="b-layout__txt b-layout__txt_padbot_15 project-elm"><span class="b-layout__bold">РџСЂРѕРµРєС‚</span> РїСЂРµРґРїРѕР»Р°РіР°РµС‚ СЂР°Р·РѕРІРѕРµ Р·Р°РґР°РЅРёРµ, РєРѕС‚РѕСЂРѕРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РІС‹РїРѕР»РЅРµРЅРѕ СѓРґР°Р»РµРЅРЅРѕ. Р’ РѕРїРёСЃР°РЅРёРё РїСЂРѕРµРєС‚Р° РЅРµРѕР±С…РѕРґРёРјРѕ РјР°РєСЃРёРјР°Р»СЊРЅРѕ РїРѕРґСЂРѕР±РЅРѕ РѕРїРёСЃР°С‚СЊ СЃСѓС‚СЊ Р·Р°РґР°С‡Рё, Р° РµС‰Рµ Р»СѓС‡С€Рµ вЂ“ РїСЂРёР»РѕР¶РёС‚СЊ РґРµС‚Р°Р»СЊРЅРѕРµ С‚РµС…Р·Р°РґР°РЅРёРµ (РўР—) РЅР° РІС‹РїРѕР»РЅРµРЅРёРµ СЂР°Р±РѕС‚С‹.</div>
+    <div class="b-layout__txt b-layout__txt_padbot_15 b-layout_hide contest-elm">РЎРѕР·РґР°Р№С‚Рµ <span class="b-layout__bold">РєРѕРЅРєСѓСЂСЃ</span>, РµСЃР»Рё С…РѕС‚РёС‚Рµ РІС‹Р±СЂР°С‚СЊ Р»СѓС‡С€РµРіРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЏ РїРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°Рј РІС‹РїРѕР»РЅРµРЅРёСЏ С‚РµСЃС‚РѕРІРѕРіРѕ Р·Р°РґР°РЅРёСЏ. Р’ РѕРїРёСЃР°РЅРёРё РєРѕРЅРєСѓСЂСЃР° РЅСѓР¶РЅРѕ СѓРєР°Р·Р°С‚СЊ СЃСѓС‚СЊ С‚РµСЃС‚РѕРІРѕР№ Р·Р°РґР°С‡Рё, СѓСЃР»РѕРІРёСЏ РїСЂРѕРІРµРґРµРЅРёСЏ РєРѕРЅРєСѓСЂСЃР° Рё РєСЂРёС‚РµСЂРёРё РІС‹Р±РѕСЂР° РїРѕР±РµРґРёС‚РµР»СЏ.</div>
+    <div class="b-layout__txt b-layout__txt_padbot_10 b-layout_hide contest-elm">РџСѓР±Р»РёРєР°С†РёСЏ РєРѕРЅРєСѓСЂСЃР° РїР»Р°С‚РЅР°СЏ &mdash;В <span class="b-layout__txt b-layout__txt_bold b-layout__txt_color_fd6c30"><?= new_projects::getKonkursPrice();?> СЂСѓР±Р»РµР№</span></div>
     <div class="b-check b-check_padtop_3 b-check_padbot_20 project-elm">
         <input id="in_office" class="b-check__input" name="in_office" type="checkbox" value="1" <?= $data['kind'] == 4 ? "checked='checked'" : ""?>/>
-        <label for="in_office" class="b-check__label b-check__label_fontsize_13">Исполнитель нужен для работы в офисе</label>
+        <label for="in_office" class="b-check__label b-check__label_fontsize_13">РСЃРїРѕР»РЅРёС‚РµР»СЊ РЅСѓР¶РµРЅ РґР»СЏ СЂР°Р±РѕС‚С‹ РІ РѕС„РёСЃРµ</label>
     </div>
     <? if ( $error['project'] ) { ?>
     <div class="b-layout__txt b-layout__txt_color_c4271f b-layout__txt_padbot_10">
@@ -163,7 +163,7 @@ window.addEvent('domready', function(){
     <div class="b-layout b-layout_margleft_-80">
         <table class="b-layout__table b-layout__table_width_full" border="0" cellpadding="0" cellspacing="0">
             <tr class="b-layout__tr">
-                <td class="b-layout__left b-layout__left_width_80"><div class="b-layout__txt b-layout__txt_padtop_5">Заголовок</div></td>
+                <td class="b-layout__left b-layout__left_width_80"><div class="b-layout__txt b-layout__txt_padtop_5">Р—Р°РіРѕР»РѕРІРѕРє</div></td>
                 <td class="b-layout__right b-layout__right_padbot_20">
                     <div class="b-combo" id="prj-name-hashtag">
                         <div class="b-combo__input <?=($error['name'] ? 'b-combo__input_error' : '')?>">
@@ -183,7 +183,7 @@ window.addEvent('domready', function(){
             </tr>
             <? } ?>
             <tr class="b-layout__tr">
-                <td class="b-layout__left b-layout__left_width_80 b-layout__left_padbot_15"><div class="b-layout__txt b-layout__txt_padtop_1" id="condition_descr">Задание</div></td>
+                <td class="b-layout__left b-layout__left_width_80 b-layout__left_padbot_15"><div class="b-layout__txt b-layout__txt_padtop_1" id="condition_descr">Р—Р°РґР°РЅРёРµ</div></td>
                 <td class="b-layout__right b-layout__right_padbot_15">
                     <div id="prj-descr-hashtag" class="b-textarea <?=($error['descr'] ? 'b-textarea_error' : '')?>">
                         <textarea name="descr" rel="5000" class="b-textarea__textarea b-textarea__textarea_height_100 tawl" cols="80" rows="5" onfocus="clearErrorPrjBlock(this)"><?= stripslashes($data['descr'])?></textarea>
@@ -218,7 +218,7 @@ window.addEvent('domready', function(){
                                         <tr>
                                             <td class='b-icon-layout__icon'><img class='b-fon__loader' src='/images/ico_error.gif' alt='' width='22' height='18'></td>
                                             <td class='b-icon-layout__files' id='attachedfiles_errortxt' colspan='2'></td>
-                                            <td class='b-icon-layout__operate'><a id="attachedfiles_hide_error" class='b-icon-layout__link b-icon-layout__link_dot_666' href='javascript:void(0)'>Скрыть</a></td>
+                                            <td class='b-icon-layout__operate'><a id="attachedfiles_hide_error" class='b-icon-layout__link b-icon-layout__link_dot_666' href='javascript:void(0)'>РЎРєСЂС‹С‚СЊ</a></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -226,7 +226,7 @@ window.addEvent('domready', function(){
                                     <table class='b-icon-layout wdh100'>
                                         <tr>
                                             <td class='b-icon-layout__icon'><img class='b-fon__loader' src='/images/loader-gray.gif' alt='' width='24' height='24'></td>
-                                            <td class='b-icon-layout__files'>Идет загрузка файла…</td>
+                                            <td class='b-icon-layout__files'>РРґРµС‚ Р·Р°РіСЂСѓР·РєР° С„Р°Р№Р»Р°вЂ¦</td>
                                             <td class='b-icon-layout__size'>&nbsp;</td>
                                             <td class='b-icon-layout__operate'>&nbsp;</td>
                                         </tr>
@@ -236,7 +236,7 @@ window.addEvent('domready', function(){
                                     <table class='b-icon-layout wdh100'>
                                         <tr>
                                             <td class='b-icon-layout__icon'><img class='b-fon__loader' src='/images/loader-gray.gif' alt='' width='24' height='24'></td>
-                                            <td class='b-icon-layout__files'>Идет удаление файла…</td>
+                                            <td class='b-icon-layout__files'>РРґРµС‚ СѓРґР°Р»РµРЅРёРµ С„Р°Р№Р»Р°вЂ¦</td>
                                             <td class='b-icon-layout__size'>&nbsp;</td>
                                             <td class='b-icon-layout__operate'>&nbsp;</td>
                                         </tr>
@@ -247,7 +247,7 @@ window.addEvent('domready', function(){
                                         <tr>
                                             <td class='b-icon-layout__icon'><img class='b-fon__loader' src='/images/ico_error.gif' alt='' width='22' height='18'></td>
                                             <td class='b-icon-layout__files' id='attachedfiles_errortxt' colspan='2'></td>
-                                            <td class='b-icon-layout__operate'><a class='b-icon-layout__link b-icon-layout__link_dot_666' href='#' onClick='attachedFiles.hideError(); return false;'>Скрыть</a></td>
+                                            <td class='b-icon-layout__operate'><a class='b-icon-layout__link b-icon-layout__link_dot_666' href='#' onClick='attachedFiles.hideError(); return false;'>РЎРєСЂС‹С‚СЊ</a></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -259,7 +259,7 @@ window.addEvent('domready', function(){
                                                 <a href="javascript:void(0)" class="b-button b-button_rectangle_color_transparent">
                                                     <span class="b-button__b1">
                                                         <span class="b-button__b2">
-                                                            <span class="b-button__txt">Прикрепить файлы</span>
+                                                            <span class="b-button__txt">РџСЂРёРєСЂРµРїРёС‚СЊ С„Р°Р№Р»С‹</span>
                                                         </span>
                                                     </span>
                                                 </a>
@@ -268,7 +268,7 @@ window.addEvent('domready', function(){
                                         <td class="b-file__text">
                                             <div class="b-filter">
                                                 <div class="b-filter__body b-filter__body_padtop_10">
-                                                    <a href="javascript:void(0)" class="b-filter__link b-filter__link_fontsize_11 b-filter__link_dot_41" id="hint_files">Требования к файлам</a>
+                                                    <a href="javascript:void(0)" class="b-filter__link b-filter__link_fontsize_11 b-filter__link_dot_41" id="hint_files">РўСЂРµР±РѕРІР°РЅРёСЏ Рє С„Р°Р№Р»Р°Рј</a>
                                                 </div>
                                                 <div id="attachedfiles_info" class="b-shadow b-filter__toggle b-shadow_hide b-shadow__margleft_-110 b-shadow__margtop_10">
                                                     <div class="b-shadow__right">
@@ -276,9 +276,9 @@ window.addEvent('domready', function(){
                                                             <div class="b-shadow__top">
                                                                 <div class="b-shadow__bottom">
                                                                     <div class="b-shadow__body b-shadow__body_pad_15 b-shadow_width_270 b-shadow__body_bg_fff">
-                                                                        <div class="b-shadow__txt b-shadow__txt_fontsize_11 b-shadow__txt_padbot_5">Разрешается добавлять не более <span class="b-shadow__txt b-shadow__txt_bold">10 файлов</span> общим объемом не более 5 МБ.</div>
-                                                                        <div class="b-shadow__txt b-shadow__txt_fontsize_11 b-shadow__txt_padbot_5">jpg и gif размером <span class="b-shadow__txt b-shadow__txt_bold">600х1000 пикс.</span> и весом не более 300 КБ будут вставлены в текст поста, остальные файлы будут приложены к нему.</div>
-                                                                        <div class="b-shadow__txt b-shadow__txt_fontsize_11">Запрещенные форматы: ade, adp, chm, cmd, com, cpl, exe, hta, ins, isp, jse, lib, mde, msk, msp, mst, pif, scr, sct, shb, sys, vb, vbe, vbs, vxd, wsc, wsf, wsh</div>
+                                                                        <div class="b-shadow__txt b-shadow__txt_fontsize_11 b-shadow__txt_padbot_5">Р Р°Р·СЂРµС€Р°РµС‚СЃСЏ РґРѕР±Р°РІР»СЏС‚СЊ РЅРµ Р±РѕР»РµРµ <span class="b-shadow__txt b-shadow__txt_bold">10 С„Р°Р№Р»РѕРІ</span> РѕР±С‰РёРј РѕР±СЉРµРјРѕРј РЅРµ Р±РѕР»РµРµ 5 РњР‘.</div>
+                                                                        <div class="b-shadow__txt b-shadow__txt_fontsize_11 b-shadow__txt_padbot_5">jpg Рё gif СЂР°Р·РјРµСЂРѕРј <span class="b-shadow__txt b-shadow__txt_bold">600С…1000 РїРёРєСЃ.</span> Рё РІРµСЃРѕРј РЅРµ Р±РѕР»РµРµ 300 РљР‘ Р±СѓРґСѓС‚ РІСЃС‚Р°РІР»РµРЅС‹ РІ С‚РµРєСЃС‚ РїРѕСЃС‚Р°, РѕСЃС‚Р°Р»СЊРЅС‹Рµ С„Р°Р№Р»С‹ Р±СѓРґСѓС‚ РїСЂРёР»РѕР¶РµРЅС‹ Рє РЅРµРјСѓ.</div>
+                                                                        <div class="b-shadow__txt b-shadow__txt_fontsize_11">Р—Р°РїСЂРµС‰РµРЅРЅС‹Рµ С„РѕСЂРјР°С‚С‹: ade, adp, chm, cmd, com, cpl, exe, hta, ins, isp, jse, lib, mde, msk, msp, mst, pif, scr, sct, shb, sys, vb, vbe, vbs, vxd, wsc, wsf, wsh</div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -354,11 +354,11 @@ window.addEvent('domready', function(){
                 </td>
             </tr>
             <tr class="b-layout__tr">
-                <td class="b-layout__left b-layout__left_width_80"><div class="b-layout__txt b-layout__txt_padtop_4">Разделы</div></td>
+                <td class="b-layout__left b-layout__left_width_80"><div class="b-layout__txt b-layout__txt_padtop_4">Р Р°Р·РґРµР»С‹</div></td>
                 <td class="b-layout__right b-layout__right_padbot_20">
                     <div class="b-combo" id="prj-category-hashtag">
                         <div class="b-combo__input b-combo__input_width_150 b-combo__input_multi_dropdown b-combo__input_resize b-combo__input_arrow_yes b-combo__input_init_professionsList drop_down_default_<?= $subcategory ? (int)$subcategory : (int)$category?> multi_drop_down_default_column_<?= $subcategory ? "1" : "0"?> <?=($error['category'] ? 'b-combo__input_error' : '')?>">
-                            <input type="text" value="<?= $data['categories'] ? $category_name : "Выберите раздел";?>" size="80" name="category" class="b-combo__input-text b-combo__input-text_fontsize_15" id="category" onchange="saveCatValue(); setMinAvgMaxBudgetPrice(); changeBudgetSlider();" onfocus="clearErrorPrjBlock(this)">
+                            <input type="text" value="<?= $data['categories'] ? $category_name : "Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»";?>" size="80" name="category" class="b-combo__input-text b-combo__input-text_fontsize_15" id="category" onchange="saveCatValue(); setMinAvgMaxBudgetPrice(); changeBudgetSlider();" onfocus="clearErrorPrjBlock(this)">
                             <label for="category" class="b-combo__label b-combo__label_fontsize_15"></label>
                             <span id="category_arrow" class="b-combo__arrow"></span>
                         </div>
@@ -376,11 +376,11 @@ window.addEvent('domready', function(){
             </tr>
             <? } ?>
             <tr class="b-layout__tr">
-                <td class="b-layout__left b-layout__left_width_80 b-layout__left_padbot_20"><div class="b-layout__txt" id="name_of_payment">Бюджет</div></td>
+                <td class="b-layout__left b-layout__left_width_80 b-layout__left_padbot_20"><div class="b-layout__txt" id="name_of_payment">Р‘СЋРґР¶РµС‚</div></td>
                 <td class="b-layout__right b-layout__right_padbot_20">
                     <div class="b-check b-check_padtop_3 b-check_padbot_10">
                         <input id="agreement" class="b-check__input" name="agreement" type="checkbox" value="1" />
-                        <label for="agreement" class="b-check__label b-check__label_fontsize_13">По договоренности</label>
+                        <label for="agreement" class="b-check__label b-check__label_fontsize_13">РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</label>
                     </div>
                     <div id="prj-cost-hashtag" class="b-combo b-combo_inline-block b-combo_margright_10">
                         <div class="b-combo__input b-combo__input_width_100 <?=($error['cost'] ? 'b-combo__input_error' : '')?>">
@@ -390,14 +390,14 @@ window.addEvent('domready', function(){
 
                     <div id="prj-currency-hashtag" class="b-combo b-combo_inline-block b-combo_margright_10 b-combo_zindex_2">
                         <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_125 b-combo__input_resize b-combo__input_min-width_40 b-combo__input_arrow_yes b-combo__input_init_currency_data drop_down_default_<?= isset($data['currency']) ? (int) $data['currency'] : '-1';?> multi_drop_down_default_column_0 <?=($error['currency'] ? 'b-combo__input_error' : '')?>" readonly="readonly">
-                            <input type="text" readonly="readonly" value="<?= $currency_name ? $currency_name : "Выберите валюту"?>" size="80" name="currency" class="b-combo__input-text b-combo__input-text_fontsize_15" id="currency" onchange="setMinAvgMaxBudgetPrice(); changeBudgetSlider(); saveChangeSingleValue('currency');" onfocus="clearErrorBlock(this, 'b-layout__right')">
+                            <input type="text" readonly="readonly" value="<?= $currency_name ? $currency_name : "Р’С‹Р±РµСЂРёС‚Рµ РІР°Р»СЋС‚Сѓ"?>" size="80" name="currency" class="b-combo__input-text b-combo__input-text_fontsize_15" id="currency" onchange="setMinAvgMaxBudgetPrice(); changeBudgetSlider(); saveChangeSingleValue('currency');" onfocus="clearErrorBlock(this, 'b-layout__right')">
                             <label for="currency" class="b-combo__label"></label>
                             <span id="currency_arrow" class="b-combo__arrow"></span>
                         </div>
                     </div>							
                     <div class="b-combo b-combo_inline-block b-combo_margright_10 b-combo_zindex_2">
                         <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_140 b-combo__input_arrow_yes b-combo__input_resize b-combo__input_init_cost_data drop_down_default_<?= isset($data['priceby']) ? (int) $data['priceby'] : '-1';?> multi_drop_down_default_column_0 <?=($error['priceby'] ? 'b-combo__input_error' : '')?> ">
-                            <input readonly="readonly" type="text" value="<?= $priceby_name ? $priceby_name : "Выберите из списка"?>" size="80" name="priceby" class="b-combo__input-text b-combo__input-text_fontsize_15" id="priceby" onchange="setMinAvgMaxBudgetPrice(); changeBudgetSlider(); saveChangeSingleValue('priceby');" onfocus="clearErrorPrjBlock(this, 'budget')">
+                            <input readonly="readonly" type="text" value="<?= $priceby_name ? $priceby_name : "Р’С‹Р±РµСЂРёС‚Рµ РёР· СЃРїРёСЃРєР°"?>" size="80" name="priceby" class="b-combo__input-text b-combo__input-text_fontsize_15" id="priceby" onchange="setMinAvgMaxBudgetPrice(); changeBudgetSlider(); saveChangeSingleValue('priceby');" onfocus="clearErrorPrjBlock(this, 'budget')">
                             <label for="priceby" class="b-combo__label"></label>
                             <span id="cost_arrow" class="b-combo__arrow"></span>
                         </div>
@@ -417,7 +417,7 @@ window.addEvent('domready', function(){
             </tr>
             <? } ?>
             <tr class="b-layout__tr b-layout_hide contest-elm">
-                <td class="b-layout__left b-layout__left_width_80"><div class="b-layout__txt b-layout__txt_padtop_4">Окончание</div></td>
+                <td class="b-layout__left b-layout__left_width_80"><div class="b-layout__txt b-layout__txt_padtop_4">РћРєРѕРЅС‡Р°РЅРёРµ</div></td>
                 <td class="b-layout__right b-layout__right_padbot_20">
                     <div id="prj-enddate-hashtag" class="b-combo">
                         <div class="b-combo__input b-combo__input_width_150 b-combo__input_calendar b-combo__input_resize b-combo__input_arrow_yes date_format_use_text date_min_limit_<?=date('Y_m_d', strtotime("+1 day"))?> <?=($error['end_date'] ? 'b-combo__input_error' : '')?>">
@@ -439,7 +439,7 @@ window.addEvent('domready', function(){
             </tr>
             <? } ?>
             <tr class="b-layout__tr b-layout_hide contest-elm">
-                <td class="b-layout__left b-layout__left_width_80"><div class="b-layout__txt b-layout__txt_padtop_4">Подведение итогов</div></td>
+                <td class="b-layout__left b-layout__left_width_80"><div class="b-layout__txt b-layout__txt_padtop_4">РџРѕРґРІРµРґРµРЅРёРµ РёС‚РѕРіРѕРІ</div></td>
                 <td class="b-layout__right b-layout__right_padbot_20">
                     <div id="prj-windate-hashtag" class="b-combo">
                         <div class="b-combo__input b-combo__input_width_150 b-combo__input_calendar b-combo__input_resize b-combo__input_arrow_yes date_format_use_text date_min_limit_<?=date('Y_m_d', strtotime("+2 day"))?> <?=($error['win_date'] ? 'b-combo__input_error' : '')?>">
@@ -461,7 +461,7 @@ window.addEvent('domready', function(){
             </tr>
             <? } ?>
             <tr class="b-layout__tr <?= $data['kind'] == 4 ? "" : "b-layout_hide"?>" id="block_location">
-                <td class="b-layout__left b-layout__left_width_80 location-title"><?= $data['kind'] == 4 ? "<div class='b-layout__txt b-layout__txt_lineheight_1'>Офис находится в</div>" : ""?></td>
+                <td class="b-layout__left b-layout__left_width_80 location-title"><?= $data['kind'] == 4 ? "<div class='b-layout__txt b-layout__txt_lineheight_1'>РћС„РёСЃ РЅР°С…РѕРґРёС‚СЃСЏ РІ</div>" : ""?></td>
                 <td class="b-layout__right b-layout__right_padbot_15 location-content">
                     <?php if($data['kind'] == 4) { ?>
                     <div class="b-combo">
@@ -473,7 +473,7 @@ window.addEvent('domready', function(){
                     </div>
                     <?php } else {?>
                     <div class="b-layout__txt b-layout__txt_padbot_20 i-button">
-                        <a class="b-button b-button_poll_plus location-addbtn" href="javascript:void(0)"></a>&#160;<a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle b-layout__link_lineheight_15 location-addbtn" href="javascript:void(0)">Месторасположение офиса</a><span class="b-layout__txt b-layout__txt_valign_middle">: страна и город</span>
+                        <a class="b-button b-button_poll_plus location-addbtn" href="javascript:void(0)"></a>&#160;<a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle b-layout__link_lineheight_15 location-addbtn" href="javascript:void(0)">РњРµСЃС‚РѕСЂР°СЃРїРѕР»РѕР¶РµРЅРёРµ РѕС„РёСЃР°</a><span class="b-layout__txt b-layout__txt_valign_middle">: СЃС‚СЂР°РЅР° Рё РіРѕСЂРѕРґ</span>
                     </div>
                     <?php }?>
                 </td>
@@ -483,9 +483,9 @@ window.addEvent('domready', function(){
                 <td class="b-layout__right b-layout__right_padbot_15">
                     <div class="b-check b-check_padbot_15">
                         <input id="b-check2" class="b-check__input" name="pro_only" type="checkbox" value="1" <?= $data['pro_only'] ? "checked='checked'" : ""?> />
-                        <label for="b-check2" class="b-check__label b-check__label_fontsize_13">Только для <span class="b-icon b-icon__pro b-icon__pro_f" title="PRO"></span></label>
+                        <label for="b-check2" class="b-check__label b-check__label_fontsize_13">РўРѕР»СЊРєРѕ РґР»СЏ <span class="b-icon b-icon__pro b-icon__pro_f" title="PRO"></span></label>
                     </div>
-                    <div class="b-layout__txt b-layout__txt_fontsize_11">Отвечать на проект cмогут только фрилансеры с профессиональным<br />аккаунтом &mdash; наиболее серьезная и активная часть аудитории сайта.</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_11">РћС‚РІРµС‡Р°С‚СЊ РЅР° РїСЂРѕРµРєС‚ cРјРѕРіСѓС‚ С‚РѕР»СЊРєРѕ С„СЂРёР»Р°РЅСЃРµСЂС‹ СЃ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Рј<br />Р°РєРєР°СѓРЅС‚РѕРј &mdash; РЅР°РёР±РѕР»РµРµ СЃРµСЂСЊРµР·РЅР°СЏ Рё Р°РєС‚РёРІРЅР°СЏ С‡Р°СЃС‚СЊ Р°СѓРґРёС‚РѕСЂРёРё СЃР°Р№С‚Р°.</div>
                 </td>
             </tr>
         </table>
@@ -501,7 +501,7 @@ window.addEvent('domready', function(){
 
                                                                                                                     <div class="i-prompt">
                                                                                                                                     <div id="prj_pointer" class="b-prompt b-prompt_left_-170 b-prompt_top_175 b-prompt_width_150">
-                                                                                                                                                    <div id="prj_pointer_text" class="b-prompt__txt b-prompt__txt_color_6db335 b-prompt__txt_italic">Ваш проект будет<br />опубликован где-то<br />здесь</div>
+                                                                                                                                                    <div id="prj_pointer_text" class="b-prompt__txt b-prompt__txt_color_6db335 b-prompt__txt_italic">Р’Р°С€ РїСЂРѕРµРєС‚ Р±СѓРґРµС‚<br />РѕРїСѓР±Р»РёРєРѕРІР°РЅ РіРґРµ-С‚Рѕ<br />Р·РґРµСЃСЊ</div>
                                                                                                                                                     <div class="b-prompt__arrow b-prompt__arrow_left_40  b-prompt__arrow_1"></div>
                                                                                                                                     </div>
                                                                                                                     </div>
@@ -518,8 +518,8 @@ window.addEvent('domready', function(){
                     </div>
     </div>
 
-    <h2 class="b-layout__title b-layout__title_padtop_20 b-layout__title_padbot_20"><a class="b-layout__link b-layout__link_bordbot_dot_000 paid-option" href="javascript:void(0)">Сделать проект заметнее</a></h2>
-    <div class="b-layout__txt b-layout__txt_padbot_20">У платных объявлений в разы больше просмотров и ответов<br/> от потенциальных исполнителей. Обычно фрилансеры<br/> относятся к платным проектам более серьезно.</div>
+    <h2 class="b-layout__title b-layout__title_padtop_20 b-layout__title_padbot_20"><a class="b-layout__link b-layout__link_bordbot_dot_000 paid-option" href="javascript:void(0)">РЎРґРµР»Р°С‚СЊ РїСЂРѕРµРєС‚ Р·Р°РјРµС‚РЅРµРµ</a></h2>
+    <div class="b-layout__txt b-layout__txt_padbot_20">РЈ РїР»Р°С‚РЅС‹С… РѕР±СЉСЏРІР»РµРЅРёР№ РІ СЂР°Р·С‹ Р±РѕР»СЊС€Рµ РїСЂРѕСЃРјРѕС‚СЂРѕРІ Рё РѕС‚РІРµС‚РѕРІ<br/> РѕС‚ РїРѕС‚РµРЅС†РёР°Р»СЊРЅС‹С… РёСЃРїРѕР»РЅРёС‚РµР»РµР№. РћР±С‹С‡РЅРѕ С„СЂРёР»Р°РЅСЃРµСЂС‹<br/> РѕС‚РЅРѕСЃСЏС‚СЃСЏ Рє РїР»Р°С‚РЅС‹Рј РїСЂРѕРµРєС‚Р°Рј Р±РѕР»РµРµ СЃРµСЂСЊРµР·РЅРѕ.</div>
         
     
     
@@ -528,22 +528,22 @@ window.addEvent('domready', function(){
         <div class="b-check b-check_relative b-check_padbot_10">
             <span id="option_top_pin" class="b-check__pin2" style="display: none"></span>
             <input id="ntop1" class="b-check__input scalc-click count-change" name="option_top" type="checkbox" value="1" <?= $option['top'] == 1 ? "checked='checked'" : ""?> price="<?= $pTopPrice;?>" />
-            <label id="option_top_label_off" class="b-check__label  b-check__label_fontsize_13" for="ntop1">Закрепить наверху ленты</label>
-            <label id="option_top_label_on" class="b-check__label  b-check__label_fontsize_13" for="ntop1" style="display:none">Закреплен наверху ленты</label>
+            <label id="option_top_label_off" class="b-check__label  b-check__label_fontsize_13" for="ntop1">Р—Р°РєСЂРµРїРёС‚СЊ РЅР°РІРµСЂС…Сѓ Р»РµРЅС‚С‹</label>
+            <label id="option_top_label_on" class="b-check__label  b-check__label_fontsize_13" for="ntop1" style="display:none">Р—Р°РєСЂРµРїР»РµРЅ РЅР°РІРµСЂС…Сѓ Р»РµРЅС‚С‹</label>
             <div id="option_top_count_block" class="b-form b-form_padtop_5 b-form_padleft_20 b-form_hide">
-                <label class="b-form__name b-form__name_fontsize_13 b-form__name_padtop_5">на&#160;</label>
+                <label class="b-form__name b-form__name_fontsize_13 b-form__name_padtop_5">РЅР°&#160;</label>
                 <div class="b-combo b-combo_inline-block">
                     <div class="b-combo__input b-combo__input_width_40">
-                        <input class="b-combo__input-text scalc-change" id="ntop2" name="option_top_count" maxlength="3" type="text" size="80" value="<?= $option['top'] == 1 ? $option['top_count'] : "1"?>" price="<?= $pTopPrice;?>" maxlength="4" change1="день" change2="дня" change3="дней"/>
+                        <input class="b-combo__input-text scalc-change" id="ntop2" name="option_top_count" maxlength="3" type="text" size="80" value="<?= $option['top'] == 1 ? $option['top_count'] : "1"?>" price="<?= $pTopPrice;?>" maxlength="4" change1="РґРµРЅСЊ" change2="РґРЅСЏ" change3="РґРЅРµР№"/>
                     </div>
                 </div>
-                <label class="b-form__name b-form__name_fontsize_13 b-form__name_padtop_5">&#160;<span class="scalc-change-name">день</span> за <span class="b-form__txt b-form__txt_bold b-form__txt_inline b-form__text_color_fd6c30"><span class="scalc-change-result" id="ntopresult"><?= $pTopPrice;?></span> руб.</span></label>
+                <label class="b-form__name b-form__name_fontsize_13 b-form__name_padtop_5">&#160;<span class="scalc-change-name">РґРµРЅСЊ</span> Р·Р° <span class="b-form__txt b-form__txt_bold b-form__txt_inline b-form__text_color_fd6c30"><span class="scalc-change-result" id="ntopresult"><?= $pTopPrice;?></span> СЂСѓР±.</span></label>
             </div>
         </div>
         <div class="b-check b-check_padbot_20">
             <input id="option_logo" class="b-check__input scalc-click" name="option_logo" type="checkbox" value="1" price="<?= $logoPrc;?>" onclick="setLogo(this)" <?= $option['logo'] == 1 ? "checked='checked'" : ""?> />
-            <label id="option_logo_label_off" class="b-check__label b-check__label_fontsize_13" for="option_logo">Добавить логотип со ссылкой за</label>
-            <label id="option_logo_label_on" class="b-check__label b-check__label_fontsize_13" for="option_logo">Добавлен логотип со ссылкой за  <span class="b-layout__txt b-layout__txt_lineheight_1 b-layout__txt_bold b-layout__txt_color_fd6c30"><?= $logoPrc;?> руб.</span></label>
+            <label id="option_logo_label_off" class="b-check__label b-check__label_fontsize_13" for="option_logo">Р”РѕР±Р°РІРёС‚СЊ Р»РѕРіРѕС‚РёРї СЃРѕ СЃСЃС‹Р»РєРѕР№ Р·Р°</label>
+            <label id="option_logo_label_on" class="b-check__label b-check__label_fontsize_13" for="option_logo">Р”РѕР±Р°РІР»РµРЅ Р»РѕРіРѕС‚РёРї СЃРѕ СЃСЃС‹Р»РєРѕР№ Р·Р°  <span class="b-layout__txt b-layout__txt_lineheight_1 b-layout__txt_bold b-layout__txt_color_fd6c30"><?= $logoPrc;?> СЂСѓР±.</span></label>
             
             <span id="logo_block" class="logo-element">
             <?php if($data['logo_id'] > 0) { ?>
@@ -557,7 +557,7 @@ window.addEvent('domready', function(){
                 </div>
             <?php }//if?>
             </span>
-            <? /* предзагрузка спинера */ ?>
+            <? /* РїСЂРµРґР·Р°РіСЂСѓР·РєР° СЃРїРёРЅРµСЂР° */ ?>
             <img src="/images/loader-2.gif" style="display:none">
             <div id="prj-logoimage-hashtag" class="b-file b-file_margleft_18 b-file_margtop_5 b-file__fon-m logo-element b-file__input_loading logo-add-element<?=($error['logo_image'] ? ' b-file_error_border' : '')?>" <?= ($data['logo_id'] > 0)? 'style="display:none"' : ($option['logo'] == 1 ? '' : 'style="display:none"'); ?>>
                 <div class="b-file__wrap b-file__wrap_margtop_50">
@@ -565,21 +565,21 @@ window.addEvent('domready', function(){
                     <a id="prj-logoimage-block" class="b-button b-button_rectangle_color_transparent b-button_block"  href="javascript:void(0)">
                         <span class="b-button__b1">
                             <span class="b-button__b2">
-                                <span class="b-button__txt">Прикрепить файл</span>
+                                <span class="b-button__txt">РџСЂРёРєСЂРµРїРёС‚СЊ С„Р°Р№Р»</span>
                             </span>
                         </span>
                     </a>
                     <iframe style="width:1px;height:1px;visibility: hidden;" scrolling="no" id="fupload" name="fupload" src="about:blank" frameborder="0"></iframe>
                 </div>
             </div><!-- b-work-empty -->
-												<div class="b-layout__txt b-layout__txt_padleft_18 b-layout__txt_fontsize_11">Не более 50 Кб, 150 пикселей в ширину, до 150 пикселей<br />в высоту (gif, jpeg, png)</div>
+												<div class="b-layout__txt b-layout__txt_padleft_18 b-layout__txt_fontsize_11">РќРµ Р±РѕР»РµРµ 50 РљР±, 150 РїРёРєСЃРµР»РµР№ РІ С€РёСЂРёРЅСѓ, РґРѕ 150 РїРёРєСЃРµР»РµР№<br />РІ РІС‹СЃРѕС‚Сѓ (gif, jpeg, png)</div>
             <div id="logo_block_link" class="b-form b-form_padtop_10 b-form_margleft_-22 logo-element" <?= ($option['logo'] > 0) ? '' : 'style="display:none"'; ?>>
                 <div class="b-form__name b-form__name_fontsize_13 b-form__name_padtop_6 b-form__name_width_40">http://</div>
                 <div class="b-combo b-combo_inline-block">
                     <div class="b-combo__input b-combo__input_width_138 <?=($error['logo_link'] ? 'b-combo__input_error' : '')?>">
                         <input class="b-combo__input-text <?= ($option['logo'] && $data['logo_link']) ? '' : 'b-combo__input-text_color_a7'; ?>" name="logo_link" type="text" size="80" 
-                               onfocus="clearErrorPrjBlock(this); if(this.value == 'Адрес сайта') this.value = ''" onblur="if(this.value != 'Адрес сайта' && this.value.length == 0) { $(this).addClass('b-combo__input-text_color_a7'); this.value = 'Адрес сайта' }" 
-                               value="<?= ($option['logo'] && $data['logo_link']) ? $data['logo_link'] : "Адрес сайта"?>" />
+                               onfocus="clearErrorPrjBlock(this); if(this.value == 'РђРґСЂРµСЃ СЃР°Р№С‚Р°') this.value = ''" onblur="if(this.value != 'РђРґСЂРµСЃ СЃР°Р№С‚Р°' && this.value.length == 0) { $(this).addClass('b-combo__input-text_color_a7'); this.value = 'РђРґСЂРµСЃ СЃР°Р№С‚Р°' }" 
+                               value="<?= ($option['logo'] && $data['logo_link']) ? $data['logo_link'] : "РђРґСЂРµСЃ СЃР°Р№С‚Р°"?>" />
                     </div>
                 <? if ( $error['logo_link'] ) { ?>
                 <div  id="errPrjField_logo_link" class="b-layout__txt b-layout__txt_color_c4271f b-layout__txt_padbot_10 b-shadow__margtop_10">
@@ -590,8 +590,8 @@ window.addEvent('domready', function(){
             </div>
         </div>
         
-        <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bold">Выбранные услуги будут стоить <span class="b-layout__txt b-layout__txt_color_fd6c30"><span id="scalc_result"><?= ($price>0?$price:0)?></span> <?= ending($price>0?$price:0, 'рубль', 'рубля', 'рублeй');?></span></div>
-        <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_11">Оплатить услуги можно на последнем шаге мастера</div>
+        <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bold">Р’С‹Р±СЂР°РЅРЅС‹Рµ СѓСЃР»СѓРіРё Р±СѓРґСѓС‚ СЃС‚РѕРёС‚СЊ <span class="b-layout__txt b-layout__txt_color_fd6c30"><span id="scalc_result"><?= ($price>0?$price:0)?></span> <?= ending($price>0?$price:0, 'СЂСѓР±Р»СЊ', 'СЂСѓР±Р»СЏ', 'СЂСѓР±Р»eР№');?></span></div>
+        <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_11">РћРїР»Р°С‚РёС‚СЊ СѓСЃР»СѓРіРё РјРѕР¶РЅРѕ РЅР° РїРѕСЃР»РµРґРЅРµРј С€Р°РіРµ РјР°СЃС‚РµСЂР°</div>
     </div>		
     </div>
 
@@ -599,13 +599,13 @@ window.addEvent('domready', function(){
         <a href="javascript:void(0)" class="b-button b-button_rectangle_color_green" onclick="$('frm').submit();">
             <span class="b-button__b1">
                 <span class="b-button__b2 b-button__b2_padlr_15">
-                    <span class="b-button__txt">Продолжить</span>
+                    <span class="b-button__txt">РџСЂРѕРґРѕР»Р¶РёС‚СЊ</span>
                 </span>
             </span>
         </a>&#160;&#160;
-        <a href="/wizard/registration/?action=next&complited=1" class="b-buttons__link">пропустить этот шаг</a>
-        <span class="b-buttons__txt">&#160;или&#160;</span>
-        <a href="/wizard/registration/?action=exit" class="b-buttons__link b-buttons__link_color_c10601">выйти из мастера</a>
+        <a href="/wizard/registration/?action=next&complited=1" class="b-buttons__link">РїСЂРѕРїСѓСЃС‚РёС‚СЊ СЌС‚РѕС‚ С€Р°Рі</a>
+        <span class="b-buttons__txt">&#160;РёР»Рё&#160;</span>
+        <a href="/wizard/registration/?action=exit" class="b-buttons__link b-buttons__link_color_c10601">РІС‹Р№С‚Рё РёР· РјР°СЃС‚РµСЂР°</a>
 								
     </div>
 

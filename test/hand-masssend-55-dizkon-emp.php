@@ -1,6 +1,6 @@
 <?php
 /**
- * Уведомление работодателям
+ * РЈРІРµРґРѕРјР»РµРЅРёРµ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏРј
  * */
 ini_set('max_execution_time', '0');
 ini_set('memory_limit', '512M');
@@ -11,12 +11,12 @@ require_once '../classes/smtp.php';
 
 
 /**
- * Логин пользователя от кого осуществляется рассылка
+ * Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РѕС‚ РєРѕРіРѕ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ СЂР°СЃСЃС‹Р»РєР°
  * 
  */
 $sender = 'admin';
 
-// Только фрилансерам, активированным и неактивированным, незабаненным (is_banned = B'0'), с включенными рассылками
+// РўРѕР»СЊРєРѕ С„СЂРёР»Р°РЅСЃРµСЂР°Рј, Р°РєС‚РёРІРёСЂРѕРІР°РЅРЅС‹Рј Рё РЅРµР°РєС‚РёРІРёСЂРѕРІР°РЅРЅС‹Рј, РЅРµР·Р°Р±Р°РЅРµРЅРЅС‹Рј (is_banned = B'0'), СЃ РІРєР»СЋС‡РµРЅРЅС‹РјРё СЂР°СЃСЃС‹Р»РєР°РјРё
 
 $sql = "SELECT uid, email, login, uname, usurname, subscr FROM employer WHERE is_banned = B'0'
         "; //employer
@@ -25,14 +25,14 @@ $sql = "SELECT uid, email, login, uname, usurname, subscr FROM employer WHERE is
 
 $pHost = str_replace("http://", "", $GLOBALS['host']);
 if ( defined('HTTP_PREFIX') ) {
-    $pHttp = str_replace("://", "", HTTP_PREFIX); // Введено с учетом того планируется включение HTTPS на серверах (для писем в ЛС)
+    $pHttp = str_replace("://", "", HTTP_PREFIX); // Р’РІРµРґРµРЅРѕ СЃ СѓС‡РµС‚РѕРј С‚РѕРіРѕ РїР»Р°РЅРёСЂСѓРµС‚СЃСЏ РІРєР»СЋС‡РµРЅРёРµ HTTPS РЅР° СЃРµСЂРІРµСЂР°С… (РґР»СЏ РїРёСЃРµРј РІ Р›РЎ)
 } else {
     $pHttp = 'http';
 }
 $eHost = $GLOBALS['host'];
 
 
-$eSubject = "Уже 3000 дизайнеров и почти 100 конкурсов!";
+$eSubject = "РЈР¶Рµ 3000 РґРёР·Р°Р№РЅРµСЂРѕРІ Рё РїРѕС‡С‚Рё 100 РєРѕРЅРєСѓСЂСЃРѕРІ!";
 
 $eMessage = '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -61,7 +61,7 @@ $eMessage = '
     <tbody>
     <tr>
         <td bgcolor="#ffffff" width="20"></td>
-        <td align="right" valign="middle"><font color="#9a9a9a" size="3" face="arial">Мы в социальных сетях</font> &#160; </td>
+        <td align="right" valign="middle"><font color="#9a9a9a" size="3" face="arial">РњС‹ РІ СЃРѕС†РёР°Р»СЊРЅС‹С… СЃРµС‚СЏС…</font> &#160; </td>
         <td valign="middle" width="120">
            <a href="https://www.facebook.com/dizkon.ru" target="_blank"><img src="http://gallery.mailchimp.com/3723ed50f1f494db19fd7ca04/images/f.png" width="30" height="30" border="0"></a> &#160;
            <a href="http://vk.com/dizkon" target="_blank"><img src="http://gallery.mailchimp.com/3723ed50f1f494db19fd7ca04/images/v.png" width="31" height="30"></a> &#160;
@@ -91,7 +91,7 @@ $eMessage = '
     </tr>
     <tr>
         <td bgcolor="#ffffff" width="20"></td>
-        <td><b><font color="#000000" size="4" face="arial">Здравствуйте!</font></b></td>
+        <td><b><font color="#000000" size="4" face="arial">Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!</font></b></td>
         <td bgcolor="#ffffff" width="20"></td>
     </tr>
     <tr>
@@ -99,7 +99,7 @@ $eMessage = '
     </tr>
     <tr>
         <td bgcolor="#ffffff" width="20"></td>
-        <td><font color="#000000" size="3" face="arial">Рады сообщить, что всего за два месяца мы собрали около 3000 дизайнеров и почти 100 клиентов в виде открытых конкурсов. Вот лишь несколько лучших работ наших дизайнеров:</font></td>
+        <td><font color="#000000" size="3" face="arial">Р Р°РґС‹ СЃРѕРѕР±С‰РёС‚СЊ, С‡С‚Рѕ РІСЃРµРіРѕ Р·Р° РґРІР° РјРµСЃСЏС†Р° РјС‹ СЃРѕР±СЂР°Р»Рё РѕРєРѕР»Рѕ 3000 РґРёР·Р°Р№РЅРµСЂРѕРІ Рё РїРѕС‡С‚Рё 100 РєР»РёРµРЅС‚РѕРІ РІ РІРёРґРµ РѕС‚РєСЂС‹С‚С‹С… РєРѕРЅРєСѓСЂСЃРѕРІ. Р’РѕС‚ Р»РёС€СЊ РЅРµСЃРєРѕР»СЊРєРѕ Р»СѓС‡С€РёС… СЂР°Р±РѕС‚ РЅР°С€РёС… РґРёР·Р°Р№РЅРµСЂРѕРІ:</font></td>
         <td bgcolor="#ffffff" width="20"></td>
     </tr>
     <tr>
@@ -118,14 +118,14 @@ $eMessage = '
         <td bgcolor="#ffffff" width="20"></td>
         <td valign="top"><a href="http://www.dizkon.ru/contests/2132/winner?utm_source=fl_emp_19_02&utm_medium=email&utm_campaign=clients"><img src="http://cdn.joxi.ru/uploads/prod/2014/02/13/c5f/5c8/a8713d98f717cd5e7ac62b7c9af7ca7cd9d29251.jpg" width="265" height="150" border="0" align="top"></a>
         <br><br>
-              <font color="#000000" size="3" face="arial">Логотип для компании "Retail Master"<br>
-              <b>Бюджет конкурса <font color="#e54f3b" size="3" face="arial">9000 рублей</font></b></font>
+              <font color="#000000" size="3" face="arial">Р›РѕРіРѕС‚РёРї РґР»СЏ РєРѕРјРїР°РЅРёРё "Retail Master"<br>
+              <b>Р‘СЋРґР¶РµС‚ РєРѕРЅРєСѓСЂСЃР° <font color="#e54f3b" size="3" face="arial">9000 СЂСѓР±Р»РµР№</font></b></font>
         </td>
         <td bgcolor="#ffffff" width="20"></td>
         <td valign="top"><a href="http://www.dizkon.ru/contests/1161/work?utm_source=fl_emp_19_02&utm_medium=email&utm_campaign=clients#work-1892"><img src="http://cdn.joxi.ru/uploads/prod/2014/02/13/008/3e1/17538364c5c7eae21731e78de0f48455c9e77ded.jpg" width="265" height="150" border="0" align="top"></a>
         <br><br>
-              <font color="#000000" size="3" face="arial">Дизайн главной страницы сайта web-студии "Will Day"<br>
-              <b>Бюджет конкурса <font color="#e54f3b" size="3" face="arial">13500 рублей</font></b></font>
+              <font color="#000000" size="3" face="arial">Р”РёР·Р°Р№РЅ РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹ СЃР°Р№С‚Р° web-СЃС‚СѓРґРёРё "Will Day"<br>
+              <b>Р‘СЋРґР¶РµС‚ РєРѕРЅРєСѓСЂСЃР° <font color="#e54f3b" size="3" face="arial">13500 СЂСѓР±Р»РµР№</font></b></font>
         </td>
         <td bgcolor="#ffffff" width="20"></td>
     </tr>
@@ -136,14 +136,14 @@ $eMessage = '
         <td bgcolor="#ffffff" width="20"></td>
         <td valign="top"><a href="http://www.dizkon.ru/contests/2135/winner?utm_source=fl_emp_19_02&utm_medium=email&utm_campaign=clients"><img src="http://cdn.joxi.ru/uploads/prod/2014/02/13/053/5e3/b89d2437c6e927f64862d1df706d1edcd1d0e0d8.jpg" width="265" height="149" border="0" align="top"></a>
         <br><br>
-              <font color="#000000" size="3" face="arial">Логотип телеканала <br>
-              <b>Бюджет конкурса <font color="#e54f3b" size="3" face="arial">6300 рублей</font></b></font>
+              <font color="#000000" size="3" face="arial">Р›РѕРіРѕС‚РёРї С‚РµР»РµРєР°РЅР°Р»Р° <br>
+              <b>Р‘СЋРґР¶РµС‚ РєРѕРЅРєСѓСЂСЃР° <font color="#e54f3b" size="3" face="arial">6300 СЂСѓР±Р»РµР№</font></b></font>
         </td>
         <td bgcolor="#ffffff" width="20"></td>
         <td valign="top"><a href="http://www.dizkon.ru/contests/1381/winner?utm_source=fl_emp_19_02&utm_medium=email&utm_campaign=clients"><img src="http://cdn.joxi.ru/uploads/prod/2014/02/13/33e/bdd/4ecea80c8be82c3a2a794ae05b4aed180a9f7298.jpg" width="265" height="149" border="0" align="top"></a>
         <br><br>
-              <font color="#000000" size="3" face="arial">Логотип для магазина автозапчасти "Механика"<br>
-              <b>Бюджет конкурса <font color="#e54f3b" size="3" face="arial">6300 рублей</font></b></font>
+              <font color="#000000" size="3" face="arial">Р›РѕРіРѕС‚РёРї РґР»СЏ РјР°РіР°Р·РёРЅР° Р°РІС‚РѕР·Р°РїС‡Р°СЃС‚Рё "РњРµС…Р°РЅРёРєР°"<br>
+              <b>Р‘СЋРґР¶РµС‚ РєРѕРЅРєСѓСЂСЃР° <font color="#e54f3b" size="3" face="arial">6300 СЂСѓР±Р»РµР№</font></b></font>
         </td>
         <td bgcolor="#ffffff" width="20"></td>
     </tr>
@@ -165,7 +165,7 @@ $eMessage = '
     <tbody>
     <tr>
         <td bgcolor="#ffffff" width="20"></td>
-        <td align="center"><b><font color="#000000" size="4" face="arial">Почему DizKon удобнее?</font></b></td>
+        <td align="center"><b><font color="#000000" size="4" face="arial">РџРѕС‡РµРјСѓ DizKon СѓРґРѕР±РЅРµРµ?</font></b></td>
         <td bgcolor="#ffffff" width="20"></td>
     </tr>
     <tr>
@@ -182,14 +182,14 @@ $eMessage = '
         <td bgcolor="#ffffff" width="20"></td>
         <td valign="top" width="80"><img src="http://gallery.mailchimp.com/3723ed50f1f494db19fd7ca04/images/11.png" width="55" height="74" align="top"></td>
         <td valign="top">
-              <b><font color="#000000" size="3" face="arial">Гарантии</font></b><br><br>
-              <font color="#000000" size="3" face="arial">Ресурс имеет четкий регламент проведения конкурсов, который исключает возможность срыва проекта.</font>
+              <b><font color="#000000" size="3" face="arial">Р“Р°СЂР°РЅС‚РёРё</font></b><br><br>
+              <font color="#000000" size="3" face="arial">Р РµСЃСѓСЂСЃ РёРјРµРµС‚ С‡РµС‚РєРёР№ СЂРµРіР»Р°РјРµРЅС‚ РїСЂРѕРІРµРґРµРЅРёСЏ РєРѕРЅРєСѓСЂСЃРѕРІ, РєРѕС‚РѕСЂС‹Р№ РёСЃРєР»СЋС‡Р°РµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЃСЂС‹РІР° РїСЂРѕРµРєС‚Р°.</font>
         </td>
         <td bgcolor="#ffffff" width="20"></td>
         <td valign="top" width="80"><img src="http://gallery.mailchimp.com/3723ed50f1f494db19fd7ca04/images/12.png" width="60" height="48" align="top"></td>
         <td valign="top">
-              <b><font color="#000000" size="3" face="arial">Юридическое оформление</font></b><br><br>
-              <font color="#000000" size="3" face="arial">При завершении конкурса заключается договор об отчуждении исключительного права на использование работы дизайнера.</font>
+              <b><font color="#000000" size="3" face="arial">Р®СЂРёРґРёС‡РµСЃРєРѕРµ РѕС„РѕСЂРјР»РµРЅРёРµ</font></b><br><br>
+              <font color="#000000" size="3" face="arial">РџСЂРё Р·Р°РІРµСЂС€РµРЅРёРё РєРѕРЅРєСѓСЂСЃР° Р·Р°РєР»СЋС‡Р°РµС‚СЃСЏ РґРѕРіРѕРІРѕСЂ РѕР± РѕС‚С‡СѓР¶РґРµРЅРёРё РёСЃРєР»СЋС‡РёС‚РµР»СЊРЅРѕРіРѕ РїСЂР°РІР° РЅР° РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ СЂР°Р±РѕС‚С‹ РґРёР·Р°Р№РЅРµСЂР°.</font>
         </td>
         <td bgcolor="#ffffff" width="20"></td>
     </tr>
@@ -200,14 +200,14 @@ $eMessage = '
         <td bgcolor="#ffffff" width="20"></td>
         <td valign="top" width="80"><img src="http://gallery.mailchimp.com/3723ed50f1f494db19fd7ca04/images/13.png" width="59" height="49" align="top"></td>
         <td valign="top">
-              <b><font color="#000000" size="3" face="arial">Безналичный расчет</font></b><br><br>
-              <font color="#000000" size="3" face="arial">Выставляем счет и высылаем закрывающие документы для вашей бухгалтерии.</font>
+              <b><font color="#000000" size="3" face="arial">Р‘РµР·РЅР°Р»РёС‡РЅС‹Р№ СЂР°СЃС‡РµС‚</font></b><br><br>
+              <font color="#000000" size="3" face="arial">Р’С‹СЃС‚Р°РІР»СЏРµРј СЃС‡РµС‚ Рё РІС‹СЃС‹Р»Р°РµРј Р·Р°РєСЂС‹РІР°СЋС‰РёРµ РґРѕРєСѓРјРµРЅС‚С‹ РґР»СЏ РІР°С€РµР№ Р±СѓС…РіР°Р»С‚РµСЂРёРё.</font>
         </td>
         <td bgcolor="#ffffff" width="20"></td>
         <td valign="top" width="80"><img src="http://gallery.mailchimp.com/3723ed50f1f494db19fd7ca04/images/14.png" width="55" height="55" align="top"></td>
         <td valign="top">
-              <b><font color="#000000" size="3" face="arial">Оперативность</font></b><br><br>
-              <font color="#000000" size="3" face="arial">Минимальный срок для проведения конкурса &mdash; 4 дня.</font>
+              <b><font color="#000000" size="3" face="arial">РћРїРµСЂР°С‚РёРІРЅРѕСЃС‚СЊ</font></b><br><br>
+              <font color="#000000" size="3" face="arial">РњРёРЅРёРјР°Р»СЊРЅС‹Р№ СЃСЂРѕРє РґР»СЏ РїСЂРѕРІРµРґРµРЅРёСЏ РєРѕРЅРєСѓСЂСЃР° &mdash; 4 РґРЅСЏ.</font>
         </td>
         <td bgcolor="#ffffff" width="20"></td>
     </tr>
@@ -223,8 +223,8 @@ $eMessage = '
         <td bgcolor="#ffffff" width="20"></td>
         <td valign="top" width="80"><img src="http://gallery.mailchimp.com/3723ed50f1f494db19fd7ca04/images/15.png" width="58" height="52" align="top"></td>
         <td valign="top">
-              <b><font color="#000000" size="3" face="arial">Бесплатное продвижение</font></b><br><br>
-              <font color="#000000" size="3" face="arial">Конкурс с DizKon.ru дополнительно публикуется в топ ленты проектов <a href="https://www.fl.ru/?utm_source=fl_emp_19_02&utm_medium=email&utm_campaign=clients" target="_blank" style="color:#e74c3c">FL.ru</a>, где его увидят еще больше исполнителей.</font>
+              <b><font color="#000000" size="3" face="arial">Р‘РµСЃРїР»Р°С‚РЅРѕРµ РїСЂРѕРґРІРёР¶РµРЅРёРµ</font></b><br><br>
+              <font color="#000000" size="3" face="arial">РљРѕРЅРєСѓСЂСЃ СЃ DizKon.ru РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ РїСѓР±Р»РёРєСѓРµС‚СЃСЏ РІ С‚РѕРї Р»РµРЅС‚С‹ РїСЂРѕРµРєС‚РѕРІ <a href="https://www.fl.ru/?utm_source=fl_emp_19_02&utm_medium=email&utm_campaign=clients" target="_blank" style="color:#e74c3c">FL.ru</a>, РіРґРµ РµРіРѕ СѓРІРёРґСЏС‚ РµС‰Рµ Р±РѕР»СЊС€Рµ РёСЃРїРѕР»РЅРёС‚РµР»РµР№.</font>
         </td>
         <td bgcolor="#ffffff" width="20"></td>
     </tr>
@@ -249,7 +249,7 @@ $eMessage = '
 ';
 
 // ----------------------------------------------------------------------------------------------------------------
-// -- Рассылка ----------------------------------------------------------------------------------------------------
+// -- Р Р°СЃСЃС‹Р»РєР° ----------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------
 $DB = new DB('plproxy');
 $master = new DB('master');
@@ -263,11 +263,11 @@ if (empty($sender)) {
 
 echo "Send personal messages\n";
 
-// подготавливаем рассылку
+// РїРѕРґРіРѕС‚Р°РІР»РёРІР°РµРј СЂР°СЃСЃС‹Р»РєСѓ
 $msgid = $DB->val("SELECT masssend(?, ?, '{}', '')", $sender['uid'], $pMessage);
 if (!$msgid) die('Failed!');
 
-// допустим, мы получаем адресатов с какого-то запроса
+// РґРѕРїСѓСЃС‚РёРј, РјС‹ РїРѕР»СѓС‡Р°РµРј Р°РґСЂРµСЃР°С‚РѕРІ СЃ РєР°РєРѕРіРѕ-С‚Рѕ Р·Р°РїСЂРѕСЃР°
 $i = 0;
 while ($users = $master->col("{$sql} LIMIT 30000 OFFSET ?", $i)) {
     $DB->query("SELECT masssend_bind(?, {$sender['uid']}, ?a)", $msgid, $users);
@@ -275,13 +275,13 @@ while ($users = $master->col("{$sql} LIMIT 30000 OFFSET ?", $i)) {
 }
 
 $mail = new smtp;
-$mail->subject = $eSubject;  // заголовок письма
-$mail->message = $eMessage; // текст письма
-$mail->recipient = ''; // свойство 'получатель' оставляем пустым
+$mail->subject = $eSubject;  // Р·Р°РіРѕР»РѕРІРѕРє РїРёСЃСЊРјР°
+$mail->message = $eMessage; // С‚РµРєСЃС‚ РїРёСЃСЊРјР°
+$mail->recipient = ''; // СЃРІРѕР№СЃС‚РІРѕ 'РїРѕР»СѓС‡Р°С‚РµР»СЊ' РѕСЃС‚Р°РІР»СЏРµРј РїСѓСЃС‚С‹Рј
 $spamid = $mail->send('text/html');
 if (!$spamid) die('Failed!');
-// с этого момента рассылка создана, но еще никому не отправлена!
-// допустим нам нужно получить список получателей с какого-либо запроса
+// СЃ СЌС‚РѕРіРѕ РјРѕРјРµРЅС‚Р° СЂР°СЃСЃС‹Р»РєР° СЃРѕР·РґР°РЅР°, РЅРѕ РµС‰Рµ РЅРёРєРѕРјСѓ РЅРµ РѕС‚РїСЂР°РІР»РµРЅР°!
+// РґРѕРїСѓСЃС‚РёРј РЅР°Рј РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РїРѕР»СѓС‡Р°С‚РµР»РµР№ СЃ РєР°РєРѕРіРѕ-Р»РёР±Рѕ Р·Р°РїСЂРѕСЃР°
 $i = 0;
 $mail->recipient = array();
 $res = $master->query($sql);

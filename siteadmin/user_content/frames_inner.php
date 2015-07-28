@@ -1,6 +1,6 @@
 <?php 
 /**
- * Модерирование пользовательского контента. Фреймы. Шаблон.
+ * РњРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РєРѕРЅС‚РµРЅС‚Р°. Р¤СЂРµР№РјС‹. РЁР°Р±Р»РѕРЅ.
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
@@ -11,8 +11,8 @@ if ( !defined("IN_STDF") || !defined('IS_SITE_ADMIN') ) {
 }
 
 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/static_compress.php' );
-$stc  = new static_compress(); // общий.
-$stc2 = new static_compress(); // для подключаемых модулей.
+$stc  = new static_compress(); // РѕР±С‰РёР№.
+$stc2 = new static_compress(); // РґР»СЏ РїРѕРґРєР»СЋС‡Р°РµРјС‹С… РјРѕРґСѓР»РµР№.
 $js_file = array( 'user_content.js', 'banned.js', 'adm_edit_content.js', 'swfobject.js', 'player.js', 'warning.js', 'mootools-new.js', 'mootools-more.js', 'new_site.js', 'nav.js', 'navigate.js', 'new.js', 'ajax_blocks.js', 'csrf.js', 'b-combo/b-combo-dynamic-input.js', '/css/block/b-textarea/b-textarea.js', 'b-combo/b-combo-multidropdown.js', 'b-combo/b-combo-autocomplete.js', 'b-combo/b-combo-calendar.js', 'b-combo/b-combo-manager.js', '/css/block/b-page/b-page.js', '/css/block/b-menu/b-menu.js', '/css/block/b-input-hint/b-input-hint.js', '/css/block/b-ext-filter/b-ext-filter.js', '/css/block/b-catalog/b-catalog.js', '/scripts/b-bar.js', '/css/block/b-ext-filter/b-ext-filter.js', '/css/block/b-shadow/b-shadow.js', 'highlight.min.js', 'highlight.init.js', 'attachedfiles.js', 'polls.js', 'ibox.js', 'contest.js', 'admin_log.js', 'projects.js', 'calendar.js' );
 $bInFrames = true;
 
@@ -25,7 +25,7 @@ if ( !empty($_COOKIE['my_streams_content_id']) && !empty($_COOKIE['my_streams_st
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
-    <title>Фреймы</title>
+    <title>Р¤СЂРµР№РјС‹</title>
     <script type="text/javascript">
         var _TOKEN_KEY = '<?=$_SESSION['rand']?>';
         var _UID = <?=(int) $_SESSION['uid']?>;
@@ -103,7 +103,7 @@ if ( !empty($_COOKIE['my_streams_content_id']) && !empty($_COOKIE['my_streams_st
     <body id="frames_body" class="b-page b-layout <?= BROWSER_NAME;?>" <?=$sOnload?>>
 <?/*
 <h3 id="" class="b-layout__h3 b-layout__one_bg_f7 b-layout__h3_nowrap b-layout__h3_margright_55 b-layout__h3_relative" style="display: <?=( is_array($aStreams) && count($aStreams) ? 'none' : 'block' )?>">
-    <center>Нет захваченных потоков</center>
+    <center>РќРµС‚ Р·Р°С…РІР°С‡РµРЅРЅС‹С… РїРѕС‚РѕРєРѕРІ</center>
 </h3>
 */?>
 <?php
@@ -168,7 +168,7 @@ $$('#tr_frames td').setStyle('height', wSize.x-100)
 wSize();
 </script>
 */ ?>   
-<?php if ( $bChooseErr ) {?><script type="text/javascript">alert('Захват потока не удался');</script><?php } ?>
+<?php if ( $bChooseErr ) {?><script type="text/javascript">alert('Р—Р°С…РІР°С‚ РїРѕС‚РѕРєР° РЅРµ СѓРґР°Р»СЃСЏ');</script><?php } ?>
 
 <script type="text/javascript">
 banned.addContext( 'admin', -1, '', '' );

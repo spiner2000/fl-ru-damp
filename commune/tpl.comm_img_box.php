@@ -3,5 +3,5 @@
     <input type="file" style="width:100%" name="file" class="i-file"/>
     <?= ($error ? view_error($error) : '') ?>
 <!--    <br/>
-    gif, jpeg. <?= commune::IMAGE_MAX_WIDTH ?>x<?= commune::IMAGE_MAX_HEIGHT ?> ïèêñåëåé.-->
+    gif, jpeg. <?= commune::IMAGE_MAX_WIDTH ?>x<?= commune::IMAGE_MAX_HEIGHT ?> Ð¿Ð¸ÐºÑÐµÐ»ÐµÐ¹.-->
 </div>

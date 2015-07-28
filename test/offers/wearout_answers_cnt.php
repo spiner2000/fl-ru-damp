@@ -36,7 +36,7 @@ if ($freelancer->uid > 0) {
    print_r($data);
     
 } else {
-    print_r('Фрилансер не найден!');
+    print_r('Р¤СЂРёР»Р°РЅСЃРµСЂ РЅРµ РЅР°Р№РґРµРЅ!');
 }
 
 exit;

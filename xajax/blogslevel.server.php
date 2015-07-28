@@ -50,17 +50,17 @@ function openlevel($thread, $mod, $begin, $end, $thispage, $blog_thread, $lastli
   			     $buser_id = array_pop($buser_id);
   			     $buser_id = $buser_id['fromuser_id'];
 			     }
-			     if ($blog->deluser_id == $blog->fromuser_id) { $ret.='<br><br>Комментарий удален автором '.date("[d.m.Y | H:i]",strtotimeEx($blog->deleted)); }
-			     elseif ($blog->deluser_id == $buser_id) { $ret.='<br><br>Комментарий удален автором темы '.date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));
-			     } else { $ret.='<br><br>Комментарий удален модератором';  if (!$mod) { $ret.='( '; 
+			     if ($blog->deluser_id == $blog->fromuser_id) { $ret.='<br><br>РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ Р°РІС‚РѕСЂРѕРј '.date("[d.m.Y | H:i]",strtotimeEx($blog->deleted)); }
+			     elseif ($blog->deluser_id == $buser_id) { $ret.='<br><br>РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ Р°РІС‚РѕСЂРѕРј С‚РµРјС‹ '.date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));
+			     } else { $ret.='<br><br>РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ РјРѕРґРµСЂР°С‚РѕСЂРѕРј';  if (!$mod) { $ret.='( '; 
 			     $del_user = $user->GetName($blog->deluser_id, $err); $ret.=($del_user['login'] . ' : ' . $del_user['usurname'] . ' ' . $del_user['uname']); $ret.=' ) '; } $ret.=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted)); } $ret.='<br><br>';
 			   } else {
 			     if ($blog->modified) { $ret.='&nbsp; &nbsp;';
-			       if ($blog->modified_id == $blog->fromuser_id) { $ret.='[внесены изменения: '.date("d.m.Y | H:i]",strtotimeEx($blog->modified)); } 
-      			 else { $ret.='Отредактировано модератором'; 
+			       if ($blog->modified_id == $blog->fromuser_id) { $ret.='[РІРЅРµСЃРµРЅС‹ РёР·РјРµРЅРµРЅРёСЏ: '.date("d.m.Y | H:i]",strtotimeEx($blog->modified)); } 
+      			 else { $ret.='РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј'; 
       			 if (!$mod) { $ret.='( '; $mod_user = $user->GetName($blog->modified_id, $err); $ret.=($mod_user['login'] . ' : ' . $mod_user['usurname'] . ' ' . $mod_user['uname']); $ret.=' ) '; } $ret.=' '.date("[d.m.Y | H:i]",strtotimeEx($blog->modified)); } } 
   			$ret.='<br>';
-  			if ($winner == $blog->id) { $ret.='<font color="#000099" style="font-size:20px">Победитель</font>'; } 
+  			if ($winner == $blog->id) { $ret.='<font color="#000099" style="font-size:20px">РџРѕР±РµРґРёС‚РµР»СЊ</font>'; } 
   			$ret.='<br>';
   			if ($blog->new == 't') { $ret.='<img src="/images/ico_new_blog.gif" alt="" width="44" height="12" border="0"><br>'; } 
   			if ($blog->title) { $ret.=' <font class="bl_name">';
@@ -74,18 +74,18 @@ function openlevel($thread, $mod, $begin, $end, $thispage, $blog_thread, $lastli
   				 else $ret.="</td></tr><tr class=\"qpr\"><td colspan=\"2\"><br>".$str;
   			 } 
   				$ret.='<br>';
-  			if ($gr_base == 5 && !$winner && $parent_login == $_SESSION['login']) { $ret.="<input type=\"submit\" name=\"btn\" value=\"Это победитель\" onClick=\"if (warning(0)) window.location.replace('./view.php?tr=".$thread."&winner=".$blog->id."'); else return false;\">"; } 
+  			if ($gr_base == 5 && !$winner && $parent_login == $_SESSION['login']) { $ret.="<input type=\"submit\" name=\"btn\" value=\"Р­С‚Рѕ РїРѕР±РµРґРёС‚РµР»СЊ\" onClick=\"if (warning(0)) window.location.replace('./view.php?tr=".$thread."&winner=".$blog->id."'); else return false;\">"; } 
   			$ret.='<div style="color: #D75A29;font-size:9px;';
   			if ($blog->attach && !$file) { $ret.=' padding-left: '.($padding+60).'px;'; } $ret.='">';
   			if ($blog->login == $_SESSION['login'] || $parent_login == $_SESSION['login'] || $allow_del || !$mod) {
-  			$ret.=' <a href="'.$form_uri.'?id='.$blog->id.'&amp;action=delete" style="color: #D75A29;" onclick="return warning(1);">Удалить</a> |';
+  			$ret.=' <a href="'.$form_uri.'?id='.$blog->id.'&amp;action=delete" style="color: #D75A29;" onclick="return warning(1);">РЈРґР°Р»РёС‚СЊ</a> |';
   			} if ($blog->login == $_SESSION['login'] || (!$mod)) {
-  			$ret.='<a href="'.$form_uri.'?id='.$blog->id.'&amp;action=edit&amp;tr='.$thread.'" style="color: #D75A29;">Редактировать</a> |';
+  			$ret.='<a href="'.$form_uri.'?id='.$blog->id.'&amp;action=edit&amp;tr='.$thread.'" style="color: #D75A29;">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> |';
   			 } 
   			$ret.="<a href=\"javascript: void(0);\" onclick=\"javascript: answer('".$blog->id."', '".($blog->attach ? $blog->attach : '')."', '".get_login($_SESSION["uid"])."'); document.getElementById('frm').olduser.value = '".$_SESSION["uid"]."'; \" ";
   			
-  			$ret.='style="color: #D75A29">Комментировать</a> |
-  			<a href="/blogs/view.php'."?tr=".$blog_thread.($thispage ? "&pagefrom=".$thispage : "")."&openlevel=".$blog->id."#o".$blog->id.'" style="color: #D75A29">Ссылка</a> 
+  			$ret.='style="color: #D75A29">РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ</a> |
+  			<a href="/blogs/view.php'."?tr=".$blog_thread.($thispage ? "&pagefrom=".$thispage : "")."&openlevel=".$blog->id."#o".$blog->id.'" style="color: #D75A29">РЎСЃС‹Р»РєР°</a> 
   			</div>
 						</td>
 		</tr>
@@ -101,7 +101,7 @@ function openlevel($thread, $mod, $begin, $end, $thispage, $blog_thread, $lastli
 			document.getElementById('frm').olduser.value = '".$_SESSION["uid"]."';
 			document.getElementById('frm').msg_name.value = '".($error_flag)?input_ref_scr($msg_name):input_ref_scr($blog->title)."';
 			document.getElementById('frm').msg.value = '".($error_flag)?input_ref_scr($msg):input_ref_scr($blog->msgtext)."';
-			document.getElementById('frm').btn.value = 'Сохранить';
+			document.getElementById('frm').btn.value = 'РЎРѕС…СЂР°РЅРёС‚СЊ';
 			document.getElementById('frm').action.value = 'change';
 			//-->
 			</script>";

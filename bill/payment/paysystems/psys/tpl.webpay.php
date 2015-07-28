@@ -1,12 +1,12 @@
-<h2 class="b-layout__title b-layout__title_padbot_30">Оплата через Веб-кошелек</h2>
+<h2 class="b-layout__title b-layout__title_padbot_30">РћРїР»Р°С‚Р° С‡РµСЂРµР· Р’РµР±-РєРѕС€РµР»РµРє</h2>
 <table class="b-layout__table b-layout__table_width_full">
     <tbody>
         <tr class="b-layout__tr">
             <td class="b-layout__td b-layout__td_padright_20">
                 <div class="b-fon b-fon_bg_fff9bf b-fon_pad_10 b-fon_padleft_35">
-                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold"><span class="b-icon b-icon_sbr_oattent b-icon_margleft_-20"></span>Обратите внимание</div>
-                    <div class="b-layout__txt b-layout__txt_fontsize_11">— Оплата услуг производится в течение 2-3 минут.</div> 
-                    <div class="b-layout__txt b-layout__txt_fontsize_11">— Платежи суммой более 15 000 не производятся.</div> 
+                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold"><span class="b-icon b-icon_sbr_oattent b-icon_margleft_-20"></span>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_11">вЂ” РћРїР»Р°С‚Р° СѓСЃР»СѓРі РїСЂРѕРёР·РІРѕРґРёС‚СЃСЏ РІ С‚РµС‡РµРЅРёРµ 2-3 РјРёРЅСѓС‚.</div> 
+                    <div class="b-layout__txt b-layout__txt_fontsize_11">вЂ” РџР»Р°С‚РµР¶Рё СЃСѓРјРјРѕР№ Р±РѕР»РµРµ 15 000 РЅРµ РїСЂРѕРёР·РІРѕРґСЏС‚СЃСЏ.</div> 
                 </div> 
                 <form action="<?= is_release() ? "http://www.onlinedengi.ru/wmpaycheck.php" : "/bill/test/webpay.php"?>" method="post" id="<?= $type_payment ?>" name="<?= $type_payment ?>">
                     <input type="hidden" name="project" value="3097"  />

@@ -19,12 +19,12 @@
         background: whitesmoke;
     }
 </style>
-<strong>Список пользователей, которые не учитываются в статистике</strong><br/><br/>
+<strong>РЎРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, РєРѕС‚РѕСЂС‹Рµ РЅРµ СѓС‡РёС‚С‹РІР°СЋС‚СЃСЏ РІ СЃС‚Р°С‚РёСЃС‚РёРєРµ</strong><br/><br/>
 
 <form method="POST" action=".">
 <input type="hidden" name="action" value="addteam">
-Добавить пользователя<br/>
-Логин: <input type="text" name="login"> <input type="submit" value="Добавить">
+Р”РѕР±Р°РІРёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ<br/>
+Р›РѕРіРёРЅ: <input type="text" name="login"> <input type="submit" value="Р”РѕР±Р°РІРёС‚СЊ">
 <?php if($error_login) {?><?= view_error(htmlspecialchars($error_login));?><?php } //if?>
 </form>
 
@@ -41,9 +41,9 @@
     </colgroup>
     <thead>
         <tr>
-            <td>№</td>
-            <td>Пользователи</td>
-            <td>Настройка</td>
+            <td>в„–</td>
+            <td>РџРѕР»СЊР·РѕРІР°С‚РµР»Рё</td>
+            <td>РќР°СЃС‚СЂРѕР№РєР°</td>
         </tr>
     </thead>
     <tbody>
@@ -59,12 +59,12 @@
                     </tr>
                 </table>
             </td>
-            <td align="center">[<a href="javascript:void(0)" onclick="if(confirm('Удалить пользователя из списка?')) {$('login_team').set('value', '<?=$uteam['login']?>'); $('delform').submit(); } else { return false; }" class="public_red">удалить</a>]</td>
+            <td align="center">[<a href="javascript:void(0)" onclick="if(confirm('РЈРґР°Р»РёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР· СЃРїРёСЃРєР°?')) {$('login_team').set('value', '<?=$uteam['login']?>'); $('delform').submit(); } else { return false; }" class="public_red">СѓРґР°Р»РёС‚СЊ</a>]</td>
         </tr>
         <?php } //foreach?>
         <?php } else { //if?>
         <tr class="env">
-            <td colspan="3" align="center"><strong>Пользователей нет</strong></td>
+            <td colspan="3" align="center"><strong>РџРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РЅРµС‚</strong></td>
         </tr>
         <?php } // else?>
     </tbody>

@@ -1,22 +1,22 @@
 <?
 /**
- * Подключаем файл с основными функциями
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» СЃ РѕСЃРЅРѕРІРЅС‹РјРё С„СѓРЅРєС†РёСЏРјРё
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
- * Класс для работы с городами в БД
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РіРѕСЂРѕРґР°РјРё РІ Р‘Р”
  */
 class city 
 {
     static protected $_data_cache = array();
 
     /**
-     * Берем ID города по имени в транслит
+     * Р‘РµСЂРµРј ID РіРѕСЂРѕРґР° РїРѕ РёРјРµРЅРё РІ С‚СЂР°РЅСЃР»РёС‚
      *
-     * @param    string    $translit    Название города в транслит
-     * @param    integer   $country_id  ID страны
-     * @return   array                  Информация о городе
+     * @param    string    $translit    РќР°Р·РІР°РЅРёРµ РіРѕСЂРѕРґР° РІ С‚СЂР°РЅСЃР»РёС‚
+     * @param    integer   $country_id  ID СЃС‚СЂР°РЅС‹
+     * @return   array                  РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РіРѕСЂРѕРґРµ
      */
     function getCityIDByTranslit( $translit, & $country_id=0 ) {
         global $DB;
@@ -30,10 +30,10 @@ class city
     }
 
     /**
-     * Получить всю информацию о городе по ID
+     * РџРѕР»СѓС‡РёС‚СЊ РІСЃСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РіРѕСЂРѕРґРµ РїРѕ ID
      *
-     * @param    integer    $id    ID города
-     * @return   array             информация о городе
+     * @param    integer    $id    ID РіРѕСЂРѕРґР°
+     * @return   array             РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РіРѕСЂРѕРґРµ
      */
     function getCity($id) {
         global $DB;
@@ -43,10 +43,10 @@ class city
     }
 
     /**
-     * Взять название города по его ИД
+     * Р’Р·СЏС‚СЊ РЅР°Р·РІР°РЅРёРµ РіРѕСЂРѕРґР° РїРѕ РµРіРѕ РР”
      * 
-     * @param  integer $id ИД города
-     * @return string Название города
+     * @param  integer $id РР” РіРѕСЂРѕРґР°
+     * @return string РќР°Р·РІР°РЅРёРµ РіРѕСЂРѕРґР°
      */
     function GetCityName( $id ) {
         global $DB;
@@ -54,9 +54,9 @@ class city
     }
     
     /**
-     * Взять название страны по идентификатору города 
-     * @param  integer $id ИД города
-     * @return string Название страны
+     * Р’Р·СЏС‚СЊ РЅР°Р·РІР°РЅРёРµ СЃС‚СЂР°РЅС‹ РїРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂСѓ РіРѕСЂРѕРґР° 
+     * @param  integer $id РР” РіРѕСЂРѕРґР°
+     * @return string РќР°Р·РІР°РЅРёРµ СЃС‚СЂР°РЅС‹
      */
     function GetCountryName($cityId) {
         global $DB;
@@ -65,31 +65,31 @@ class city
     }
     
     /**
-     * Берем ИД города по названию.
+     * Р‘РµСЂРµРј РР” РіРѕСЂРѕРґР° РїРѕ РЅР°Р·РІР°РЅРёСЋ.
      * 
-     * @param  string $name название города
-     * @return int ИД города
+     * @param  string $name РЅР°Р·РІР°РЅРёРµ РіРѕСЂРѕРґР°
+     * @return int РР” РіРѕСЂРѕРґР°
      */
     function getCityId( $name ) {
         return $GLOBALS['DB']->val( 'SELECT id FROM city WHERE city_name = ?', $name );
     }
     
     /**
-     * Берем ИД города по названию и стране.
+     * Р‘РµСЂРµРј РР” РіРѕСЂРѕРґР° РїРѕ РЅР°Р·РІР°РЅРёСЋ Рё СЃС‚СЂР°РЅРµ.
      * 
-     * @param  string $name название города
-     * @param  int $country_id ИД страны
-     * @return int ИД страны
+     * @param  string $name РЅР°Р·РІР°РЅРёРµ РіРѕСЂРѕРґР°
+     * @param  int $country_id РР” СЃС‚СЂР°РЅС‹
+     * @return int РР” СЃС‚СЂР°РЅС‹
      */
     function getCityIdByCountry($name, $country_id) {
         return $GLOBALS['DB']->val( 'SELECT id FROM city WHERE city_name = ? AND country_id = ?i', $name, $country_id);
     }
     
     /**
-     * Взять все города по определенной стране
+     * Р’Р·СЏС‚СЊ РІСЃРµ РіРѕСЂРѕРґР° РїРѕ РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ СЃС‚СЂР°РЅРµ
      * 
-     * @param  integer $country ИД Страны
-     * @return array Массив городов
+     * @param  integer $country РР” РЎС‚СЂР°РЅС‹
+     * @return array РњР°СЃСЃРёРІ РіРѕСЂРѕРґРѕРІ
      */
     function GetCities( $country ) {
         if (!$country) return 0;
@@ -109,9 +109,9 @@ class city
     }
     
     /**
-     * Количество всех городов в БД
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ РІСЃРµС… РіРѕСЂРѕРґРѕРІ РІ Р‘Р”
      * 
-     * @param  string $limit Лимит показа - '10 OFFSET 0'
+     * @param  string $limit Р›РёРјРёС‚ РїРѕРєР°Р·Р° - '10 OFFSET 0'
      * @return array
      */
     function CountAll( $limit = '' ) {
@@ -126,7 +126,7 @@ class city
         return ($ret);
     }
     /**
-     * Выборка всех профессий и групп к которым они относятся.
+     * Р’С‹Р±РѕСЂРєР° РІСЃРµС… РїСЂРѕС„РµСЃСЃРёР№ Рё РіСЂСѓРїРї Рє РєРѕС‚РѕСЂС‹Рј РѕРЅРё РѕС‚РЅРѕСЃСЏС‚СЃСЏ.
      * @return array $rows 
      * */
     function GetCountriesAndCities(){
@@ -143,7 +143,7 @@ class city
      
 
      /**
-      * Все данные по имени города
+      * Р’СЃРµ РґР°РЅРЅС‹Рµ РїРѕ РёРјРµРЅРё РіРѕСЂРѕРґР°
       * 
       * @global type $DB
       * @param type $name

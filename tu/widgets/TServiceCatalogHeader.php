@@ -2,13 +2,13 @@
 /**
  * Class TServiceCatalogHeader
  *
- * Âèäæåò - Áëîê c çàãîëîâêîì
+ * Ð’Ð¸Ð´Ð¶ÐµÑ‚ - Ð‘Ð»Ð¾Ðº c Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²ÐºÐ¾Ð¼
  */
 class TServiceCatalogHeader extends CWidget 
 {
         public function run() 
         {
-            //ñîáèðàåì øàáëîí
+            //ÑÐ¾Ð±Ð¸Ñ€Ð°ÐµÐ¼ ÑˆÐ°Ð±Ð»Ð¾Ð½
             $this->render('t-service-catalog-header', array(
                 'page_title' => SeoTags::getInstance()->getH1()
             ));

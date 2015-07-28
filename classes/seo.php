@@ -3,15 +3,15 @@
 require_once("stdf.php");
 
 /**
- * Класс для работы на страницах /catalog/, /catalog/admin/
- * При создании класса задается поддомен в котором класс создается.
- * Данные в таком случае будут браться только по определнному подддомену, иначе будут выдаваться все данные
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ РЅР° СЃС‚СЂР°РЅРёС†Р°С… /catalog/, /catalog/admin/
+ * РџСЂРё СЃРѕР·РґР°РЅРёРё РєР»Р°СЃСЃР° Р·Р°РґР°РµС‚СЃСЏ РїРѕРґРґРѕРјРµРЅ РІ РєРѕС‚РѕСЂРѕРј РєР»Р°СЃСЃ СЃРѕР·РґР°РµС‚СЃСЏ.
+ * Р”Р°РЅРЅС‹Рµ РІ С‚Р°РєРѕРј СЃР»СѓС‡Р°Рµ Р±СѓРґСѓС‚ Р±СЂР°С‚СЊСЃСЏ С‚РѕР»СЊРєРѕ РїРѕ РѕРїСЂРµРґРµР»РЅРЅРѕРјСѓ РїРѕРґРґРґРѕРјРµРЅСѓ, РёРЅР°С‡Рµ Р±СѓРґСѓС‚ РІС‹РґР°РІР°С‚СЊСЃСЏ РІСЃРµ РґР°РЅРЅС‹Рµ
  * 
  * @example 
  * <?php
- * // Данные берутся по поддомену "spb" (если его не существует, по умолчанию)
+ * // Р”Р°РЅРЅС‹Рµ Р±РµСЂСѓС‚СЃСЏ РїРѕ РїРѕРґРґРѕРјРµРЅСѓ "spb" (РµСЃР»Рё РµРіРѕ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚, РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ)
  * $seo = new seo("spb");
- * // Берутся данные всех поддоменов существующих в системе
+ * // Р‘РµСЂСѓС‚СЃСЏ РґР°РЅРЅС‹Рµ РІСЃРµС… РїРѕРґРґРѕРјРµРЅРѕРІ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёС… РІ СЃРёСЃС‚РµРјРµ
  * $seo_full = new seo();
  * ?>
  * 
@@ -19,19 +19,19 @@ require_once("stdf.php");
 class seo
 {
     /**
-     * Субдомен - по умолчанию все субдомены
+     * РЎСѓР±РґРѕРјРµРЅ - РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РІСЃРµ СЃСѓР±РґРѕРјРµРЅС‹
      *
      * @var array
      */
     public $subdomain = array("id"             => 0,
                               "subdomain"      => "",
-                              "name_subdomain" => "Все регионы");
+                              "name_subdomain" => "Р’СЃРµ СЂРµРіРёРѕРЅС‹");
     const COUNT_DINAMIC_ARTICLES = 6;
     
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      *
-     * @param string|boolean $subdomain   Определяем на какой странице работаем, по умолчанию false
+     * @param string|boolean $subdomain   РћРїСЂРµРґРµР»СЏРµРј РЅР° РєР°РєРѕР№ СЃС‚СЂР°РЅРёС†Рµ СЂР°Р±РѕС‚Р°РµРј, РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ false
      */
     public function __construct($subdomain = false){
         if($subdomain) {
@@ -40,13 +40,13 @@ class seo
     }
 
     /**
-     * Генерация ЧПУ ссылки
+     * Р“РµРЅРµСЂР°С†РёСЏ Р§РџРЈ СЃСЃС‹Р»РєРё
      *
-     * @param    string    $subdomain   Город
-     * @param    string    $direction   Направление
-     * @param    string    $dir         Статья
-     * @param    string    $folder      Раздел
-     * @return   string                 ЧПУ ссылка
+     * @param    string    $subdomain   Р“РѕСЂРѕРґ
+     * @param    string    $direction   РќР°РїСЂР°РІР»РµРЅРёРµ
+     * @param    string    $dir         РЎС‚Р°С‚СЊСЏ
+     * @param    string    $folder      Р Р°Р·РґРµР»
+     * @return   string                 Р§РџРЈ СЃСЃС‹Р»РєР°
      */
     function getFriendlyURL($subdomain, $direction, $dir, $folder='') {
         global $host;
@@ -60,15 +60,15 @@ class seo
         return $url;
     }
     /**
-     * Проверяет сущетвуетли уже данная ссылка в направлении/разделе
+     * РџСЂРѕРІРµСЂСЏРµС‚ СЃСѓС‰РµС‚РІСѓРµС‚Р»Рё СѓР¶Рµ РґР°РЅРЅР°СЏ СЃСЃС‹Р»РєР° РІ РЅР°РїСЂР°РІР»РµРЅРёРё/СЂР°Р·РґРµР»Рµ
      *
-     * @param    string    $type         Тип ссылки: direct - направление, section - раздел
-     * @param    string    $link         Проверяемая ссылка
-     * @param    integer   $direct_id    ID направления
-     * @param    integer   $parent_id    ID раздела
-     * @param    integer   $section_id   ID элемента
-     * @param    interer   $subdomain_id ID поддомена
-     * @return   boolean                 true - ссылка есть, false - ссылки нет
+     * @param    string    $type         РўРёРї СЃСЃС‹Р»РєРё: direct - РЅР°РїСЂР°РІР»РµРЅРёРµ, section - СЂР°Р·РґРµР»
+     * @param    string    $link         РџСЂРѕРІРµСЂСЏРµРјР°СЏ СЃСЃС‹Р»РєР°
+     * @param    integer   $direct_id    ID РЅР°РїСЂР°РІР»РµРЅРёСЏ
+     * @param    integer   $parent_id    ID СЂР°Р·РґРµР»Р°
+     * @param    integer   $section_id   ID СЌР»РµРјРµРЅС‚Р°
+     * @param    interer   $subdomain_id ID РїРѕРґРґРѕРјРµРЅР°
+     * @return   boolean                 true - СЃСЃС‹Р»РєР° РµСЃС‚СЊ, false - СЃСЃС‹Р»РєРё РЅРµС‚
      */
     public function checkLink($type, $link, $direct_id=0, $parent_id=0, $section_id=0, $subdomain_id=0) {
         global $DB;
@@ -97,9 +97,9 @@ class seo
     }
 
     /**
-     * Получает ID стран для городов которые есть
+     * РџРѕР»СѓС‡Р°РµС‚ ID СЃС‚СЂР°РЅ РґР»СЏ РіРѕСЂРѕРґРѕРІ РєРѕС‚РѕСЂС‹Рµ РµСЃС‚СЊ
      *
-     * @return array    Массив в ID стран и их названий
+     * @return array    РњР°СЃСЃРёРІ РІ ID СЃС‚СЂР°РЅ Рё РёС… РЅР°Р·РІР°РЅРёР№
      */
     function getCountries() {
         global $DB;
@@ -108,9 +108,9 @@ class seo
     }
     
     /**
-     * Берем все  разделы с подразделами, разбираем их через функцию @see self::parseResultSections($result)
+     * Р‘РµСЂРµРј РІСЃРµ  СЂР°Р·РґРµР»С‹ СЃ РїРѕРґСЂР°Р·РґРµР»Р°РјРё, СЂР°Р·Р±РёСЂР°РµРј РёС… С‡РµСЂРµР· С„СѓРЅРєС†РёСЋ @see self::parseResultSections($result)
      *
-     * @return array $section массив разделов с подмассивом подразделов (array[0]['subsections']) 
+     * @return array $section РјР°СЃСЃРёРІ СЂР°Р·РґРµР»РѕРІ СЃ РїРѕРґРјР°СЃСЃРёРІРѕРј РїРѕРґСЂР°Р·РґРµР»РѕРІ (array[0]['subsections']) 
      */
     public function getSections($full = true, $direct_id = null) {
         global $DB;
@@ -140,9 +140,9 @@ class seo
     }
 
     /**
-     * Берем все  разделы с подразделами для главной страницы, разбираем их через функцию @see self::parseResultSections($result)
+     * Р‘РµСЂРµРј РІСЃРµ  СЂР°Р·РґРµР»С‹ СЃ РїРѕРґСЂР°Р·РґРµР»Р°РјРё РґР»СЏ РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹, СЂР°Р·Р±РёСЂР°РµРј РёС… С‡РµСЂРµР· С„СѓРЅРєС†РёСЋ @see self::parseResultSections($result)
      *
-     * @return array $section массив разделов с подмассивом подразделов (array[0]['subsections']) 
+     * @return array $section РјР°СЃСЃРёРІ СЂР°Р·РґРµР»РѕРІ СЃ РїРѕРґРјР°СЃСЃРёРІРѕРј РїРѕРґСЂР°Р·РґРµР»РѕРІ (array[0]['subsections']) 
      */
     public function getSectionsForMain($limit=5) {
         global $DB;
@@ -163,9 +163,9 @@ class seo
     }
     
     /**
-     * Берем раздел (и его подразделы) по его ИД 
+     * Р‘РµСЂРµРј СЂР°Р·РґРµР» (Рё РµРіРѕ РїРѕРґСЂР°Р·РґРµР»С‹) РїРѕ РµРіРѕ РР” 
      *
-     * @param  inetger $section_id ИД Раздела
+     * @param  inetger $section_id РР” Р Р°Р·РґРµР»Р°
      * @return array
      */
     public function getFullSectionById($section_id) {
@@ -187,10 +187,10 @@ class seo
     }
     
     /**
-     * Берем данные только определенного раздела (без подразделов) по его ИД
+     * Р‘РµСЂРµРј РґР°РЅРЅС‹Рµ С‚РѕР»СЊРєРѕ РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ СЂР°Р·РґРµР»Р° (Р±РµР· РїРѕРґСЂР°Р·РґРµР»РѕРІ) РїРѕ РµРіРѕ РР”
      *
-     * @param integer $section_id  ИД раздела (подраздела)
-     * @return array Данные выборки
+     * @param integer $section_id  РР” СЂР°Р·РґРµР»Р° (РїРѕРґСЂР°Р·РґРµР»Р°)
+     * @return array Р”Р°РЅРЅС‹Рµ РІС‹Р±РѕСЂРєРё
      */
     public function getSectionById($section_id) {
         global $DB;
@@ -202,10 +202,10 @@ class seo
     }
     
     /**
-     * Берем данные только определенного раздела (без подразделов) по его ИД
+     * Р‘РµСЂРµРј РґР°РЅРЅС‹Рµ С‚РѕР»СЊРєРѕ РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ СЂР°Р·РґРµР»Р° (Р±РµР· РїРѕРґСЂР°Р·РґРµР»РѕРІ) РїРѕ РµРіРѕ РР”
      *
-     * @param integer $section_id  название раздела (подраздела)
-     * @return array Данные выборки
+     * @param integer $section_id  РЅР°Р·РІР°РЅРёРµ СЂР°Р·РґРµР»Р° (РїРѕРґСЂР°Р·РґРµР»Р°)
+     * @return array Р”Р°РЅРЅС‹Рµ РІС‹Р±РѕСЂРєРё
      */
     public function getSectionByName($section_name, $with_subdomain=true, $direct_id=NULL, $cat=NULL) {
         global $DB;
@@ -223,10 +223,10 @@ class seo
     }
     
     /**
-     * Разбираем результат выдачи разделов
+     * Р Р°Р·Р±РёСЂР°РµРј СЂРµР·СѓР»СЊС‚Р°С‚ РІС‹РґР°С‡Рё СЂР°Р·РґРµР»РѕРІ
      *
-     * @param array $result результат выдачи разделов @see self::getSections();
-     * @return array $section массив разделов с подмассивом подразделов (array[0]['subsections']) 
+     * @param array $result СЂРµР·СѓР»СЊС‚Р°С‚ РІС‹РґР°С‡Рё СЂР°Р·РґРµР»РѕРІ @see self::getSections();
+     * @return array $section РјР°СЃСЃРёРІ СЂР°Р·РґРµР»РѕРІ СЃ РїРѕРґРјР°СЃСЃРёРІРѕРј РїРѕРґСЂР°Р·РґРµР»РѕРІ (array[0]['subsections']) 
      */
     public function parseResultSections($result, $limit=NULL) {
         if(!$result) return false;
@@ -246,10 +246,10 @@ class seo
     }
     
     /**
-     * Берем данные субдомена по его имени
+     * Р‘РµСЂРµРј РґР°РЅРЅС‹Рµ СЃСѓР±РґРѕРјРµРЅР° РїРѕ РµРіРѕ РёРјРµРЅРё
      *
-     * @param string $name Имя субдомена (spb, msk)
-     * @return array Данные субдомена
+     * @param string $name РРјСЏ СЃСѓР±РґРѕРјРµРЅР° (spb, msk)
+     * @return array Р”Р°РЅРЅС‹Рµ СЃСѓР±РґРѕРјРµРЅР°
      */
     public function getSubdomainByName($name) {
         global $DB;
@@ -265,10 +265,10 @@ class seo
     }
 
     /**
-     * Получить список поддоменов у которых есть статьи в данном направлении
+     * РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РїРѕРґРґРѕРјРµРЅРѕРІ Сѓ РєРѕС‚РѕСЂС‹С… РµСЃС‚СЊ СЃС‚Р°С‚СЊРё РІ РґР°РЅРЅРѕРј РЅР°РїСЂР°РІР»РµРЅРёРё
      *
-     * @param    $integer    $direct_id     ID направления
-     * @return   array                      Список городов
+     * @param    $integer    $direct_id     ID РЅР°РїСЂР°РІР»РµРЅРёСЏ
+     * @return   array                      РЎРїРёСЃРѕРє РіРѕСЂРѕРґРѕРІ
      */
     function getSubdomainsByDirectID($direct_id) {
         global $DB;
@@ -283,10 +283,10 @@ class seo
     }
     
     /**
-     * Берем все субдомены которые есть в базе
+     * Р‘РµСЂРµРј РІСЃРµ СЃСѓР±РґРѕРјРµРЅС‹ РєРѕС‚РѕСЂС‹Рµ РµСЃС‚СЊ РІ Р±Р°Р·Рµ
      *
-     * @param boolean $active Если true, то берем только те к которым прикреплены какие-либо статьи  
-     * @return array Данные субдоменов
+     * @param boolean $active Р•СЃР»Рё true, С‚Рѕ Р±РµСЂРµРј С‚РѕР»СЊРєРѕ С‚Рµ Рє РєРѕС‚РѕСЂС‹Рј РїСЂРёРєСЂРµРїР»РµРЅС‹ РєР°РєРёРµ-Р»РёР±Рѕ СЃС‚Р°С‚СЊРё  
+     * @return array Р”Р°РЅРЅС‹Рµ СЃСѓР±РґРѕРјРµРЅРѕРІ
      */
     public function getSubdomains($active = true) {
         global $DB;
@@ -303,24 +303,24 @@ class seo
     }
     
     /**
-     * Добавление раздела/подраздела
+     * Р”РѕР±Р°РІР»РµРЅРёРµ СЂР°Р·РґРµР»Р°/РїРѕРґСЂР°Р·РґРµР»Р°
      *
      * @example $section = array(
      *          "bind"             => 0, 
      *          "parent"           => 0, 
-     *          "name_section"     => "Программирование",  
-     *          "meta_description" => "мета", 
-     *          "meta_keywords"    => "ключи", 
-     *          "content_before"   => "до",
-     *          "content_after"    => "после",
+     *          "name_section"     => "РџСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ",  
+     *          "meta_description" => "РјРµС‚Р°", 
+     *          "meta_keywords"    => "РєР»СЋС‡Рё", 
+     *          "content_before"   => "РґРѕ",
+     *          "content_after"    => "РїРѕСЃР»Рµ",
      *          "date_create"      => "NOW();"
      *    );
      * 
-     * pos_num добавляется через триггер @see bI seo_section/pos_num()
+     * pos_num РґРѕР±Р°РІР»СЏРµС‚СЃСЏ С‡РµСЂРµР· С‚СЂРёРіРіРµСЂ @see bI seo_section/pos_num()
      * 
      * @param array   $info         @see example
-     * @param integer $subdomain    ИД поддомена (региона)
-     * @param integer $parent       ИД раздела
+     * @param integer $subdomain    РР” РїРѕРґРґРѕРјРµРЅР° (СЂРµРіРёРѕРЅР°)
+     * @param integer $parent       РР” СЂР°Р·РґРµР»Р°
      */
     public function createSection($info, $subdomain = 0, $is_draft = 0) {
         global $DB;
@@ -339,7 +339,7 @@ class seo
     }
     
     /**
-     * Обновляем раздел подраздел
+     * РћР±РЅРѕРІР»СЏРµРј СЂР°Р·РґРµР» РїРѕРґСЂР°Р·РґРµР»
      *
      * @param unknown_type $section_id
      * @param unknown_type $info
@@ -363,11 +363,11 @@ class seo
     }
     
     /**
-     * Связывание раздела с регионом (поддоменом) @see Триггер в базе aI seo_bind/section()
+     * РЎРІСЏР·С‹РІР°РЅРёРµ СЂР°Р·РґРµР»Р° СЃ СЂРµРіРёРѕРЅРѕРј (РїРѕРґРґРѕРјРµРЅРѕРј) @see РўСЂРёРіРіРµСЂ РІ Р±Р°Р·Рµ aI seo_bind/section()
      *
-     * @param integer $section     ИД раздела
-     * @param integer $subdomain   ИД подддомена
-     * @return inetger ИД связи
+     * @param integer $section     РР” СЂР°Р·РґРµР»Р°
+     * @param integer $subdomain   РР” РїРѕРґРґРґРѕРјРµРЅР°
+     * @return inetger РР” СЃРІСЏР·Рё
      */
     public function setBind($section, $subdomain, $is_draft=false) {
         global $DB;
@@ -377,12 +377,12 @@ class seo
     }
     
     /**
-     * Обновление связи подраздела с поддоменом
+     * РћР±РЅРѕРІР»РµРЅРёРµ СЃРІСЏР·Рё РїРѕРґСЂР°Р·РґРµР»Р° СЃ РїРѕРґРґРѕРјРµРЅРѕРј
      *
-     * @param integer $bind        ИД Связи
-     * @param integer $section     ИД Подраздела
-     * @param integer $subdomain   ИД поддомена
-     * @param integer $is_draft    Флаг устанавливающий подраздел как в черновик @todo наверное лучше кинуть флаг в таблицу seo_sections
+     * @param integer $bind        РР” РЎРІСЏР·Рё
+     * @param integer $section     РР” РџРѕРґСЂР°Р·РґРµР»Р°
+     * @param integer $subdomain   РР” РїРѕРґРґРѕРјРµРЅР°
+     * @param integer $is_draft    Р¤Р»Р°Рі СѓСЃС‚Р°РЅР°РІР»РёРІР°СЋС‰РёР№ РїРѕРґСЂР°Р·РґРµР» РєР°Рє РІ С‡РµСЂРЅРѕРІРёРє @todo РЅР°РІРµСЂРЅРѕРµ Р»СѓС‡С€Рµ РєРёРЅСѓС‚СЊ С„Р»Р°Рі РІ С‚Р°Р±Р»РёС†Сѓ seo_sections
      * @return boolean
      */
     public function updateBind($bind, $section, $subdomain, $is_draft=false) {
@@ -393,10 +393,10 @@ class seo
     }
     
     /**
-     * Удаление связи по ИД Подраздела 
-     * @todo пока нигде не используется, по идее связь нельзя удалить, если удаляем связь то подраздел должен становится разделом, тк. подраздел без связи не существует
+     * РЈРґР°Р»РµРЅРёРµ СЃРІСЏР·Рё РїРѕ РР” РџРѕРґСЂР°Р·РґРµР»Р° 
+     * @todo РїРѕРєР° РЅРёРіРґРµ РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ, РїРѕ РёРґРµРµ СЃРІСЏР·СЊ РЅРµР»СЊР·СЏ СѓРґР°Р»РёС‚СЊ, РµСЃР»Рё СѓРґР°Р»СЏРµРј СЃРІСЏР·СЊ С‚Рѕ РїРѕРґСЂР°Р·РґРµР» РґРѕР»Р¶РµРЅ СЃС‚Р°РЅРѕРІРёС‚СЃСЏ СЂР°Р·РґРµР»РѕРј, С‚Рє. РїРѕРґСЂР°Р·РґРµР» Р±РµР· СЃРІСЏР·Рё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
      *
-     * @param integer $section  ИД Подраздела
+     * @param integer $section  РР” РџРѕРґСЂР°Р·РґРµР»Р°
      * @return boolean
      */
     public function deleteBind($section) {
@@ -406,7 +406,7 @@ class seo
     }
     
     /**
-     * Проверяет находимся ли мы в каком либо поддомене и если да то  выдает SQL для взятия данных только этого поддомена
+     * РџСЂРѕРІРµСЂСЏРµС‚ РЅР°С…РѕРґРёРјСЃСЏ Р»Рё РјС‹ РІ РєР°РєРѕРј Р»РёР±Рѕ РїРѕРґРґРѕРјРµРЅРµ Рё РµСЃР»Рё РґР° С‚Рѕ  РІС‹РґР°РµС‚ SQL РґР»СЏ РІР·СЏС‚РёСЏ РґР°РЅРЅС‹С… С‚РѕР»СЊРєРѕ СЌС‚РѕРіРѕ РїРѕРґРґРѕРјРµРЅР°
      *
      * @return string
      */
@@ -424,9 +424,9 @@ class seo
     }
     
     /**
-     * Удаление раздела (подраздела) по его ИД (есил удаляем раздел, автоматически удаляем все подразделы в нем)
+     * РЈРґР°Р»РµРЅРёРµ СЂР°Р·РґРµР»Р° (РїРѕРґСЂР°Р·РґРµР»Р°) РїРѕ РµРіРѕ РР” (РµСЃРёР» СѓРґР°Р»СЏРµРј СЂР°Р·РґРµР», Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё СѓРґР°Р»СЏРµРј РІСЃРµ РїРѕРґСЂР°Р·РґРµР»С‹ РІ РЅРµРј)
      *
-     * @param integer $section_id  ИД раздела (подраздела)
+     * @param integer $section_id  РР” СЂР°Р·РґРµР»Р° (РїРѕРґСЂР°Р·РґРµР»Р°)
      * @return boolean
      */
     public function deleteSection($section_id) {
@@ -437,10 +437,10 @@ class seo
     }
     
     /**
-     * Редактирование содержания поддомена
+     * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ СЃРѕРґРµСЂР¶Р°РЅРёСЏ РїРѕРґРґРѕРјРµРЅР°
      *
-     * @param array   $data        Данные редактирования поддомена (региона)
-     * @param integer $subdomain   ИД поддомена (региона) который редактируем
+     * @param array   $data        Р”Р°РЅРЅС‹Рµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РїРѕРґРґРѕРјРµРЅР° (СЂРµРіРёРѕРЅР°)
+     * @param integer $subdomain   РР” РїРѕРґРґРѕРјРµРЅР° (СЂРµРіРёРѕРЅР°) РєРѕС‚РѕСЂС‹Р№ СЂРµРґР°РєС‚РёСЂСѓРµРј
      * @return boolean
      */
     public function updateContentSubdomain($data, $subdomain) {
@@ -451,7 +451,7 @@ class seo
     }
     
     /**
-     * Подгрузка шаблона формы редактрования содеражния поддомена (региона)
+     * РџРѕРґРіСЂСѓР·РєР° С€Р°Р±Р»РѕРЅР° С„РѕСЂРјС‹ СЂРµРґР°РєС‚СЂРѕРІР°РЅРёСЏ СЃРѕРґРµСЂР°Р¶РЅРёСЏ РїРѕРґРґРѕРјРµРЅР° (СЂРµРіРёРѕРЅР°)
      *
      * @param object $objResponse @see class xajaxResponse
      */
@@ -467,11 +467,11 @@ class seo
     }
     
     /**
-     * Выбор пользователей для динамического контента
+     * Р’С‹Р±РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РґР»СЏ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РєРѕРЅС‚РµРЅС‚Р°
      *
-     * @param string $keys    Ключи выбора ("раз, два, три" - ключи обычно поле meta_keywords из таблицы seo_sections, идут через запятую)
-     * @param string|integer $city    Город выбора (Может быть как ИД города, так и название его)
-     * @return array|boolean Результат выборки, false если никого не выбрало
+     * @param string $keys    РљР»СЋС‡Рё РІС‹Р±РѕСЂР° ("СЂР°Р·, РґРІР°, С‚СЂРё" - РєР»СЋС‡Рё РѕР±С‹С‡РЅРѕ РїРѕР»Рµ meta_keywords РёР· С‚Р°Р±Р»РёС†С‹ seo_sections, РёРґСѓС‚ С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ)
+     * @param string|integer $city    Р“РѕСЂРѕРґ РІС‹Р±РѕСЂР° (РњРѕР¶РµС‚ Р±С‹С‚СЊ РєР°Рє РР” РіРѕСЂРѕРґР°, С‚Р°Рє Рё РЅР°Р·РІР°РЅРёРµ РµРіРѕ)
+     * @return array|boolean Р РµР·СѓР»СЊС‚Р°С‚ РІС‹Р±РѕСЂРєРё, false РµСЃР»Рё РЅРёРєРѕРіРѕ РЅРµ РІС‹Р±СЂР°Р»Рѕ
      */
     public function getDinamicContent($keys, $city) {
         global $DB;
@@ -479,7 +479,7 @@ class seo
         $exp = explode(",", $keys);
         foreach($exp as $k=>$v) $exp[$k] = "'".trim($v)."'";
 
-        if($city!=-1 && $city!='Все') {
+        if($city!=-1 && $city!='Р’СЃРµ') {
             if(!is_numeric($city)) {
                 require_once($_SERVER['DOCUMENT_ROOT']."/classes/city.php");
                 $city = city::getCityId($city);
@@ -557,7 +557,7 @@ class seo
     }
 
     /**
-     * Возвращает ид направления по его ссылке
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРґ РЅР°РїСЂР°РІР»РµРЅРёСЏ РїРѕ РµРіРѕ СЃСЃС‹Р»РєРµ
      * 
      * @global DB $DB
      * @return type 
@@ -572,7 +572,7 @@ class seo
     }
 
     /**
-     * Выбрать все направления
+     * Р’С‹Р±СЂР°С‚СЊ РІСЃРµ РЅР°РїСЂР°РІР»РµРЅРёСЏ
      * 
      * @global DB $DB
      * @return type 
@@ -593,7 +593,7 @@ class seo
     }
     
     /**
-     * Сохраняет/создает новое направление
+     * РЎРѕС…СЂР°РЅСЏРµС‚/СЃРѕР·РґР°РµС‚ РЅРѕРІРѕРµ РЅР°РїСЂР°РІР»РµРЅРёРµ
      * 
      * @global DB $DB
      * @param type $update

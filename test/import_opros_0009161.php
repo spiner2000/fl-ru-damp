@@ -1,6 +1,6 @@
 <?php
 
-// ïðîñòî çàïóñòèòü â áðàóçåðå
+// Ð¿Ñ€Ð¾ÑÑ‚Ð¾ Ð·Ð°Ð¿ÑƒÑÑ‚Ð¸Ñ‚ÑŒ Ð² Ð±Ñ€Ð°ÑƒÐ·ÐµÑ€Ðµ
 
 require_once '../classes/stdf.php';
 
@@ -18,34 +18,34 @@ pg_query(DBConnect(),"ALTER SEQUENCE opros_answers_id_seq RESTART WITH ".($m['ma
 
 pg_query(DBConnect(), "START TRANSACTION");
 
-$res = pg_query(DBConnect(), "INSERT INTO opros (name, descr, flags, is_active, is_multi_page, content) VALUES ('Çàðàáîòîê ôðèëàíñåðîâ', 'Ïðèâåò, äðóçüÿ! Ìíîãèå, â òîì ÷èñëå è âû ñàìè, ñïîðÿò î çàðàáîòêàõ ôðèëàíñåðîâ. Ìû ðåøèëè ïðîÿñíèòü ýòó ñèòóàöèþ ñ âàøåé ïîìîùüþ. Ïîæàëóéñòà, îòâåòüòå íà íåñêîëüêî âîïðîñîâ î âàøèõ çàðàáîòêàõ. Ýòî îòíèìåò ó âàñ íåñêîëüêî ìèíóò.', B'1110', true, false, '') RETURNING id");
+$res = pg_query(DBConnect(), "INSERT INTO opros (name, descr, flags, is_active, is_multi_page, content) VALUES ('Ð—Ð°Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ðº Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð²', 'ÐŸÑ€Ð¸Ð²ÐµÑ‚, Ð´Ñ€ÑƒÐ·ÑŒÑ! ÐœÐ½Ð¾Ð³Ð¸Ðµ, Ð² Ñ‚Ð¾Ð¼ Ñ‡Ð¸ÑÐ»Ðµ Ð¸ Ð²Ñ‹ ÑÐ°Ð¼Ð¸, ÑÐ¿Ð¾Ñ€ÑÑ‚ Ð¾ Ð·Ð°Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ°Ñ… Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð². ÐœÑ‹ Ñ€ÐµÑˆÐ¸Ð»Ð¸ Ð¿Ñ€Ð¾ÑÑÐ½Ð¸Ñ‚ÑŒ ÑÑ‚Ñƒ ÑÐ¸Ñ‚ÑƒÐ°Ñ†Ð¸ÑŽ Ñ Ð²Ð°ÑˆÐµÐ¹ Ð¿Ð¾Ð¼Ð¾Ñ‰ÑŒÑŽ. ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð¾Ñ‚Ð²ÐµÑ‚ÑŒÑ‚Ðµ Ð½Ð° Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð²Ð¾Ð¿Ñ€Ð¾ÑÐ¾Ð² Ð¾ Ð²Ð°ÑˆÐ¸Ñ… Ð·Ð°Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ°Ñ…. Ð­Ñ‚Ð¾ Ð¾Ñ‚Ð½Ð¸Ð¼ÐµÑ‚ Ñƒ Ð²Ð°Ñ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¼Ð¸Ð½ÑƒÑ‚.', B'1110', true, false, '') RETURNING id");
 list($opros_id) = pg_fetch_row($res);
 
 
 
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_questions (name, opros_id, max_answer, page_num, num, type) VALUES
-('Êàê äàâíî âû çàíèìàåòåñü ôðè-ëàíñîì?', $opros_id, 1, 1, 1, 2)
+('ÐšÐ°Ðº Ð´Ð°Ð²Ð½Ð¾ Ð²Ñ‹ Ð·Ð°Ð½Ð¸Ð¼Ð°ÐµÑ‚ÐµÑÑŒ Ñ„Ñ€Ð¸-Ð»Ð°Ð½ÑÐ¾Ð¼?', $opros_id, 1, 1, 1, 2)
 RETURNING id");
 list($question_1) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_questions (name, opros_id, max_answer, page_num, num, type) VALUES
-('Ñîâìåùàåòå ëè âû ôðè-ëàíñ ñ îôèñíîé ðàáîòîé?', $opros_id, 1, 1, 2, 2)
+('Ð¡Ð¾Ð²Ð¼ÐµÑ‰Ð°ÐµÑ‚Ðµ Ð»Ð¸ Ð²Ñ‹ Ñ„Ñ€Ð¸-Ð»Ð°Ð½Ñ Ñ Ð¾Ñ„Ð¸ÑÐ½Ð¾Ð¹ Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð¹?', $opros_id, 1, 1, 2, 2)
 RETURNING id");
 list($question_2) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_questions (name, opros_id, max_answer, page_num, num, type) VALUES
-('Õâàòàåò ëè âàì ãîíîðàðîâ, êîòîðûå âû çàðàáàòûâàåòå íà ôðè-ëàíñå?', $opros_id, 1, 1, 3, 2)
+('Ð¥Ð²Ð°Ñ‚Ð°ÐµÑ‚ Ð»Ð¸ Ð²Ð°Ð¼ Ð³Ð¾Ð½Ð¾Ñ€Ð°Ñ€Ð¾Ð², ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð²Ñ‹ Ð·Ð°Ñ€Ð°Ð±Ð°Ñ‚Ñ‹Ð²Ð°ÐµÑ‚Ðµ Ð½Ð° Ñ„Ñ€Ð¸-Ð»Ð°Ð½ÑÐµ?', $opros_id, 1, 1, 3, 2)
 RETURNING id");
 list($question_3) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_questions (name, opros_id, max_answer, page_num, num, type) VALUES
-('Âàøà ñôåðà äåÿòåëüíîñòè:', $opros_id, 1, 1, 4, 2)
+('Ð’Ð°ÑˆÐ° ÑÑ„ÐµÑ€Ð° Ð´ÐµÑÑ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚Ð¸:', $opros_id, 1, 1, 4, 2)
 RETURNING id");
 list($question_4) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_questions (name, opros_id, max_answer, page_num, num, type) VALUES
-('Âàø ñðåäíèé åæåìåñÿ÷íûé äîõîä íà ôðè-ëàíñå (âàæíû ðåçóëüòàòû â çàâèñèìîñòè îò âîïðîñîâ 2, 3 è 4)', $opros_id, 1, 1, 5, 2)
+('Ð’Ð°Ñˆ ÑÑ€ÐµÐ´Ð½Ð¸Ð¹ ÐµÐ¶ÐµÐ¼ÐµÑÑÑ‡Ð½Ñ‹Ð¹ Ð´Ð¾Ñ…Ð¾Ð´ Ð½Ð° Ñ„Ñ€Ð¸-Ð»Ð°Ð½ÑÐµ (Ð²Ð°Ð¶Ð½Ñ‹ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ñ‹ Ð² Ð·Ð°Ð²Ð¸ÑÐ¸Ð¼Ð¾ÑÑ‚Ð¸ Ð¾Ñ‚ Ð²Ð¾Ð¿Ñ€Ð¾ÑÐ¾Ð² 2, 3 Ð¸ 4)', $opros_id, 1, 1, 5, 2)
 RETURNING id");
 list($question_5) = pg_fetch_row($res);
 
@@ -53,135 +53,135 @@ list($question_5) = pg_fetch_row($res);
 
 // 1
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('ìåíüøå ãîäà', $question_1, 1, 1, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ð¼ÐµÐ½ÑŒÑˆÐµ Ð³Ð¾Ð´Ð°', $question_1, 1, 1, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('îò ãîäà äî òðåõ ëåò', $question_1, 2, 2, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ð¾Ñ‚ Ð³Ð¾Ð´Ð° Ð´Ð¾ Ñ‚Ñ€ÐµÑ… Ð»ÐµÑ‚', $question_1, 2, 2, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('îò òðåõ äî ïÿòè ëåò', $question_1, 3, 3, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ð¾Ñ‚ Ñ‚Ñ€ÐµÑ… Ð´Ð¾ Ð¿ÑÑ‚Ð¸ Ð»ÐµÑ‚', $question_1, 3, 3, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('áîëåå ïÿòè ëåò', $question_1, 4, 4, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ð±Ð¾Ð»ÐµÐµ Ð¿ÑÑ‚Ð¸ Ð»ÐµÑ‚', $question_1, 4, 4, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 
 // 2
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Äà', $question_2, 1, 1, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ð”Ð°', $question_2, 1, 1, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Íåò', $question_2, 2, 2, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('ÐÐµÑ‚', $question_2, 2, 2, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 
 // 3
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Äà', $question_3, 1, 1, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ð”Ð°', $question_3, 1, 1, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Íåò', $question_3, 2, 2, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('ÐÐµÑ‚', $question_3, 2, 2, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 
 // 4
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('ðàçðàáîòêà ñàéòîâ', $question_4, 1, 1, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ñ€Ð°Ð·Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ° ÑÐ°Ð¹Ñ‚Ð¾Ð²', $question_4, 1, 1, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('ïðîãðàììèðîâàíèå', $question_4, 2, 2, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ', $question_4, 2, 2, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('äèçàéí', $question_4, 3, 3, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ð´Ð¸Ð·Ð°Ð¹Ð½', $question_4, 3, 3, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('êîïèðàéòèíã', $question_4, 4, 4, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('ÐºÐ¾Ð¿Ð¸Ñ€Ð°Ð¹Ñ‚Ð¸Ð½Ð³', $question_4, 4, 4, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('ïåðåâîäû', $question_4, 5, 5, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ð¿ÐµÑ€ÐµÐ²Ð¾Ð´Ñ‹', $question_4, 5, 5, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('îïòèìèçàöèÿ (SEO)', $question_4, 6, 6, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ð¾Ð¿Ñ‚Ð¸Ð¼Ð¸Ð·Ð°Ñ†Ð¸Ñ (SEO)', $question_4, 6, 6, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('àðõèòåêòóðà/èíòåðüåð', $question_4, 7, 7, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ð°Ñ€Ñ…Ð¸Ñ‚ÐµÐºÑ‚ÑƒÑ€Ð°/Ð¸Ð½Ñ‚ÐµÑ€ÑŒÐµÑ€', $question_4, 7, 7, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('ôîòîãðàôèÿ', $question_4, 8, 8, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ñ„Ð¾Ñ‚Ð¾Ð³Ñ€Ð°Ñ„Ð¸Ñ', $question_4, 8, 8, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('àóäèî/âèäåî', $question_4, 9, 9, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ð°ÑƒÐ´Ð¸Ð¾/Ð²Ð¸Ð´ÐµÐ¾', $question_4, 9, 9, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('3D ãðàôèêà', $question_4, 10, 10, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('3D Ð³Ñ€Ð°Ñ„Ð¸ÐºÐ°', $question_4, 10, 10, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('ôëåø', $question_4, 11, 11, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ñ„Ð»ÐµÑˆ', $question_4, 11, 11, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('ïîëèãðàôèÿ', $question_4, 12, 12, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ð¿Ð¾Ð»Ð¸Ð³Ñ€Ð°Ñ„Ð¸Ñ', $question_4, 12, 12, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('àíèìàöèÿ/ìóëüòèïëèêàöèÿ', $question_4, 13, 13, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ð°Ð½Ð¸Ð¼Ð°Ñ†Ð¸Ñ/Ð¼ÑƒÐ»ÑŒÑ‚Ð¸Ð¿Ð»Ð¸ÐºÐ°Ñ†Ð¸Ñ', $question_4, 13, 13, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('ìàðêåòèíã/ðåêëàìà/PR', $question_4, 14, 14, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ð¼Ð°Ñ€ÐºÐµÑ‚Ð¸Ð½Ð³/Ñ€ÐµÐºÐ»Ð°Ð¼Ð°/PR', $question_4, 14, 14, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 
 // 5
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('ìåíåå 10 000 ðóáëåé', $question_5, 1, 1, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ð¼ÐµÐ½ÐµÐµ 10Â 000 Ñ€ÑƒÐ±Ð»ÐµÐ¹', $question_5, 1, 1, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('10 000 – 25 000 ðóáëåé', $question_5, 2, 2, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('10Â 000 â€“ 25Â 000 Ñ€ÑƒÐ±Ð»ÐµÐ¹', $question_5, 2, 2, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('25 000 – 40 000 ðóáëåé', $question_5, 3, 3, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('25Â 000 â€“ 40Â 000 Ñ€ÑƒÐ±Ð»ÐµÐ¹', $question_5, 3, 3, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('40 000 – 60 000 ðóáëåé', $question_5, 4, 4, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('40Â 000 â€“ 60Â 000 Ñ€ÑƒÐ±Ð»ÐµÐ¹', $question_5, 4, 4, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('60 000 – 80 000 ðóáëåé', $question_5, 5, 5, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('60Â 000 â€“ 80Â 000 Ñ€ÑƒÐ±Ð»ÐµÐ¹', $question_5, 5, 5, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('80 000 – 100 000 ðóáëåé', $question_5, 6, 6, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('80Â 000 â€“ 100Â 000 Ñ€ÑƒÐ±Ð»ÐµÐ¹', $question_5, 6, 6, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('100 000 – 120 000 ðóáëåé', $question_5, 7, 7, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('100Â 000 â€“ 120Â 000 Ñ€ÑƒÐ±Ð»ÐµÐ¹', $question_5, 7, 7, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('120 000 – 150 000 ðóáëåé', $question_5, 8, 8, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('120Â 000 â€“ 150Â 000 Ñ€ÑƒÐ±Ð»ÐµÐ¹', $question_5, 8, 8, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('áîëåå 150 000 ðóáëåé', $question_5, 9, 9, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Ð±Ð¾Ð»ÐµÐµ 150Â 000 Ñ€ÑƒÐ±Ð»ÐµÐ¹', $question_5, 9, 9, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 
 

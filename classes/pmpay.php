@@ -6,7 +6,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/payment_keys.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/log.php");
 
 /**
- * Класс для пополнения счета через WebMoney по системе Paymaster
+ * РљР»Р°СЃСЃ РґР»СЏ РїРѕРїРѕР»РЅРµРЅРёСЏ СЃС‡РµС‚Р° С‡РµСЂРµР· WebMoney РїРѕ СЃРёСЃС‚РµРјРµ Paymaster
  *
  * @see /income/pm.php
  */
@@ -18,11 +18,11 @@ class pmpay extends account
     const MERCHANT_SBR  = 1;
     const MERCHANT_BETA = 2;
 
-    // Сколько минимум секунд ждать подтверждения оплаты после "Invoice Confirmation", чтоб начать проверку статуса.
+    // РЎРєРѕР»СЊРєРѕ РјРёРЅРёРјСѓРј СЃРµРєСѓРЅРґ Р¶РґР°С‚СЊ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ РѕРїР»Р°С‚С‹ РїРѕСЃР»Рµ "Invoice Confirmation", С‡С‚РѕР± РЅР°С‡Р°С‚СЊ РїСЂРѕРІРµСЂРєСѓ СЃС‚Р°С‚СѓСЃР°.
     const CHECK_INVOICED_LAG = 300;
     
     /**
-     * Идентификаторы учетной записи,
+     * РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ СѓС‡РµС‚РЅРѕР№ Р·Р°РїРёСЃРё,
      *
      * @var string
      */
@@ -33,7 +33,7 @@ class pmpay extends account
     );
     
     /**
-     * Ключ оплаты
+     * РљР»СЋС‡ РѕРїР»Р°С‚С‹
      * 
      * @link /classes/payment_keys.php
      * @var string
@@ -41,14 +41,14 @@ class pmpay extends account
     public $key = PM_KEY;
     
     /**
-     * Лог
+     * Р›РѕРі
      * @var log
      */
     public $log;
     
     
     /**
-     * Учетные данные для автоматических запросов (на проверку статусов и т.п.).
+     * РЈС‡РµС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРёС… Р·Р°РїСЂРѕСЃРѕРІ (РЅР° РїСЂРѕРІРµСЂРєСѓ СЃС‚Р°С‚СѓСЃРѕРІ Рё С‚.Рї.).
      */
     private $_restUrl      = 'https://paymaster.ru/partners/rest/';
     private $_debugUrl     = '';
@@ -57,13 +57,13 @@ class pmpay extends account
     
     
     /**
-     * Генерирует LMI_PAYMENT_NO для передачи в Paymaster.
+     * Р“РµРЅРµСЂРёСЂСѓРµС‚ LMI_PAYMENT_NO РґР»СЏ РїРµСЂРµРґР°С‡Рё РІ Paymaster.
      *
-     * Схема обработки платежей:
-     * 1. Не делая новую запись в таблицу pm_payments, получаем через nextval() номер счета.
-     * 2. Отправляем юзера в Paymaster с этим номером (параметр LMI_PAYMENT_NO).
-     * 3. От Paymaster приходит извещение "Invoice Confirmation": сохраняем его в таблице по тому же LMI_PAYMENT_NO.
-     * 4. Делаем периодические проверки статусов.
+     * РЎС…РµРјР° РѕР±СЂР°Р±РѕС‚РєРё РїР»Р°С‚РµР¶РµР№:
+     * 1. РќРµ РґРµР»Р°СЏ РЅРѕРІСѓСЋ Р·Р°РїРёСЃСЊ РІ С‚Р°Р±Р»РёС†Сѓ pm_payments, РїРѕР»СѓС‡Р°РµРј С‡РµСЂРµР· nextval() РЅРѕРјРµСЂ СЃС‡РµС‚Р°.
+     * 2. РћС‚РїСЂР°РІР»СЏРµРј СЋР·РµСЂР° РІ Paymaster СЃ СЌС‚РёРј РЅРѕРјРµСЂРѕРј (РїР°СЂР°РјРµС‚СЂ LMI_PAYMENT_NO).
+     * 3. РћС‚ Paymaster РїСЂРёС…РѕРґРёС‚ РёР·РІРµС‰РµРЅРёРµ "Invoice Confirmation": СЃРѕС…СЂР°РЅСЏРµРј РµРіРѕ РІ С‚Р°Р±Р»РёС†Рµ РїРѕ С‚РѕРјСѓ Р¶Рµ LMI_PAYMENT_NO.
+     * 4. Р”РµР»Р°РµРј РїРµСЂРёРѕРґРёС‡РµСЃРєРёРµ РїСЂРѕРІРµСЂРєРё СЃС‚Р°С‚СѓСЃРѕРІ.
      */
     function genPaymentNo() {
         global $DB;
@@ -71,7 +71,7 @@ class pmpay extends account
     }
 
     /**
-     * Костыль для того чтобы забрать PAYMENT_BILL_NO в автоплатежах
+     * РљРѕСЃС‚С‹Р»СЊ РґР»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ Р·Р°Р±СЂР°С‚СЊ PAYMENT_BILL_NO РІ Р°РІС‚РѕРїР»Р°С‚РµР¶Р°С…
      *
      * @param $descr
      */
@@ -80,10 +80,10 @@ class pmpay extends account
     }
     
     /**
-     * Обработка запроса "Invoice Confirmation". Проверяем и регистрируем платеж в БД.
+     * РћР±СЂР°Р±РѕС‚РєР° Р·Р°РїСЂРѕСЃР° "Invoice Confirmation". РџСЂРѕРІРµСЂСЏРµРј Рё СЂРµРіРёСЃС‚СЂРёСЂСѓРµРј РїР»Р°С‚РµР¶ РІ Р‘Р”.
      *
-     * @param array  $req   параметры запроса.  
-     * @return string Сообщение об ошибке
+     * @param array  $req   РїР°СЂР°РјРµС‚СЂС‹ Р·Р°РїСЂРѕСЃР°.  
+     * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
      */
     function prepare($req) {
         global $DB;
@@ -97,10 +97,10 @@ class pmpay extends account
         }
         
         if (!$error) {
-            // Регистрируем платеж.
+            // Р РµРіРёСЃС‚СЂРёСЂСѓРµРј РїР»Р°С‚РµР¶.
             $sreq = base64_encode(serialize($req));
             $payment_no = (int)$req['LMI_PAYMENT_NO'];
-            $max_no = $this->genPaymentNo() - 1; // глянуть получше способ: надо просто узнать текущее значение, увеличивать не обязательно.
+            $max_no = $this->genPaymentNo() - 1; // РіР»СЏРЅСѓС‚СЊ РїРѕР»СѓС‡С€Рµ СЃРїРѕСЃРѕР±: РЅР°РґРѕ РїСЂРѕСЃС‚Рѕ СѓР·РЅР°С‚СЊ С‚РµРєСѓС‰РµРµ Р·РЅР°С‡РµРЅРёРµ, СѓРІРµР»РёС‡РёРІР°С‚СЊ РЅРµ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ.
             if ($payment_no <= 0 || ($more = $payment_no > $max_no)) {
                 $error = 'Bad LMI_PAYMENT_NO' . ($more ? " (more {$max_no})" : '');
             } else {
@@ -116,10 +116,10 @@ class pmpay extends account
     
 
     /**
-     * Проверяет стаусы платежей, прошедших pmpay::prepared(), но еще не подтвержденных.
-     * Если платеж успешно завершен, зачисляем деньги.
+     * РџСЂРѕРІРµСЂСЏРµС‚ СЃС‚Р°СѓСЃС‹ РїР»Р°С‚РµР¶РµР№, РїСЂРѕС€РµРґС€РёС… pmpay::prepared(), РЅРѕ РµС‰Рµ РЅРµ РїРѕРґС‚РІРµСЂР¶РґРµРЅРЅС‹С….
+     * Р•СЃР»Рё РїР»Р°С‚РµР¶ СѓСЃРїРµС€РЅРѕ Р·Р°РІРµСЂС€РµРЅ, Р·Р°С‡РёСЃР»СЏРµРј РґРµРЅСЊРіРё.
      * 
-     * @return integer   кол-во обработанных платежей.
+     * @return integer   РєРѕР»-РІРѕ РѕР±СЂР°Р±РѕС‚Р°РЅРЅС‹С… РїР»Р°С‚РµР¶РµР№.
      */
     function checkInvoiced() {
         global $DB;
@@ -139,28 +139,28 @@ class pmpay extends account
         }
         
         foreach ($payments as $pmt) {
-            $this->_log("Запрашиваем платеж: {$pmt['id']} (account_id: {$pmt['account_id']}, invoiced_time: {$pmt['invoiced_time']})...");
+            $this->_log("Р—Р°РїСЂР°С€РёРІР°РµРј РїР»Р°С‚РµР¶: {$pmt['id']} (account_id: {$pmt['account_id']}, invoiced_time: {$pmt['invoiced_time']})...");
             if ($pinf = $this->getPaymentByInvoiceID($pmt['id'], $this->merchants[$pmt['merchant_type']])) {
-                $this->_log('Получен ответ: ' . http_build_query($pinf, '', '&'));
+                $this->_log('РџРѕР»СѓС‡РµРЅ РѕС‚РІРµС‚: ' . http_build_query($pinf, '', '&'));
                 switch ($pinf['State']) {
                     case 'COMPLETE' :
-                        $this->_log('Зачисляем деньги...');
+                        $this->_log('Р—Р°С‡РёСЃР»СЏРµРј РґРµРЅСЊРіРё...');
                         $req = unserialize(base64_decode($pmt['invoice_req']));
                         $req['LMI_SYS_PAYMENT_DATE'] = $pinf['LastUpdateTime'];
                         $req['LMI_SYS_PAYMENT_ID']   = $pinf['PaymentID'];
                         if ($error = $this->_setDeposit($req)) {
                             $this->_log("ERROR: {$error}");
                         }
-                        $this->_log('ОК.');
+                        $this->_log('РћРљ.');
                         break;
                     case 'CANCELLED' :
-                        $this->_log('Платеж отменен, ставим флаг...');
+                        $this->_log('РџР»Р°С‚РµР¶ РѕС‚РјРµРЅРµРЅ, СЃС‚Р°РІРёРј С„Р»Р°Рі...');
                         $sql = "UPDATE pm_payments SET is_canceled = true WHERE id = ?i";
-                        $res = $DB->query($sql, $pmt['id']) ? 'ОК.' : 'ERROR: '.pg_last_error();
+                        $res = $DB->query($sql, $pmt['id']) ? 'РћРљ.' : 'ERROR: '.pg_last_error();
                         $this->_log($res);
                         break;
                     default :
-                        $this->_log("Платеж в статусе {$pinf['State']}, игнорируем.");
+                        $this->_log("РџР»Р°С‚РµР¶ РІ СЃС‚Р°С‚СѓСЃРµ {$pinf['State']}, РёРіРЅРѕСЂРёСЂСѓРµРј.");
                         break;
                 }
             }
@@ -170,7 +170,7 @@ class pmpay extends account
     }
     
     /**
-     * Проверяем статус возврата денег
+     * РџСЂРѕРІРµСЂСЏРµРј СЃС‚Р°С‚СѓСЃ РІРѕР·РІСЂР°С‚Р° РґРµРЅРµРі
      * 
      * @global type $DB 
      */
@@ -191,32 +191,32 @@ class pmpay extends account
         }
         
         foreach ($payments as $pmt) {
-            $this->_log("Запрашиваем платеж: {$pmt['id']} (payment_id: {$pmt['payment_id']}, stage_id: {$pmt['stage_id']})...");
+            $this->_log("Р—Р°РїСЂР°С€РёРІР°РµРј РїР»Р°С‚РµР¶: {$pmt['id']} (payment_id: {$pmt['payment_id']}, stage_id: {$pmt['stage_id']})...");
             
             if ($pinf = $this->getRefundByPaymentID($pmt['payment_id'])) {
-                $this->_log('Получен ответ: ' . http_build_query($pinf, '', '&'));
-                $refund = $this->findRefundById($pinf, $pmt['refund_id']); // Ищем из выдачи наш возврат
+                $this->_log('РџРѕР»СѓС‡РµРЅ РѕС‚РІРµС‚: ' . http_build_query($pinf, '', '&'));
+                $refund = $this->findRefundById($pinf, $pmt['refund_id']); // РС‰РµРј РёР· РІС‹РґР°С‡Рё РЅР°С€ РІРѕР·РІСЂР°С‚
                 if(!$refund) {
-                    $this->_log('Ошибка: Платеж не найден в выдаче ' . $pmt['refund_id']);
+                    $this->_log('РћС€РёР±РєР°: РџР»Р°С‚РµР¶ РЅРµ РЅР°Р№РґРµРЅ РІ РІС‹РґР°С‡Рµ ' . $pmt['refund_id']);
                     return;
                 }
                 switch ($refund['Status']) {
                     case 'SUCCESS' :
                         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/pmpay.php';
-                        $this->_log('Возврат денег выполнен успешно, обновляем статус');
+                        $this->_log('Р’РѕР·РІСЂР°С‚ РґРµРЅРµРі РІС‹РїРѕР»РЅРµРЅ СѓСЃРїРµС€РЅРѕ, РѕР±РЅРѕРІР»СЏРµРј СЃС‚Р°С‚СѓСЃ');
                         $update = array('is_refund' => true, 'completed' => 'NOW()');
                         sbr_adm::refundStatusUpdate($update, $pmt['id']);
-                        $this->_log('ОК.');
+                        $this->_log('РћРљ.');
                         break;
                     case 'FAILURE' :
-                        $this->_log('Платеж отменен, отменяем возврат, ставим соттветствующий флаг');
-                        $this->_log('Код ошибки: '. $refund['ErrorCode']);
+                        $this->_log('РџР»Р°С‚РµР¶ РѕС‚РјРµРЅРµРЅ, РѕС‚РјРµРЅСЏРµРј РІРѕР·РІСЂР°С‚, СЃС‚Р°РІРёРј СЃРѕС‚С‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ С„Р»Р°Рі');
+                        $this->_log('РљРѕРґ РѕС€РёР±РєРё: '. $refund['ErrorCode']);
                         $update = array('is_refund' => null, 'completed' => null);
-                        $res = sbr_adm::refundStatusUpdate($update, $pmt['id']) ? 'ОК.' : 'ERROR: '.pg_last_error();;
+                        $res = sbr_adm::refundStatusUpdate($update, $pmt['id']) ? 'РћРљ.' : 'ERROR: '.pg_last_error();;
                         $this->_log($res);
                         break;
                     default :
-                        $this->_log("Платеж в статусе {$refund['Status']}, игнорируем.");
+                        $this->_log("РџР»Р°С‚РµР¶ РІ СЃС‚Р°С‚СѓСЃРµ {$refund['Status']}, РёРіРЅРѕСЂРёСЂСѓРµРј.");
                         break;
                 }
             }
@@ -232,10 +232,10 @@ class pmpay extends account
     }
     
     /**
-     * Проверяет платеж на дубли и прочее перед зачислением.
+     * РџСЂРѕРІРµСЂСЏРµС‚ РїР»Р°С‚РµР¶ РЅР° РґСѓР±Р»Рё Рё РїСЂРѕС‡РµРµ РїРµСЂРµРґ Р·Р°С‡РёСЃР»РµРЅРёРµРј.
      *
-     * @param integer $invoice_id   ид. счета (pm_payments.id или LMI_PAYMENT_NO).
-     * @return boolean   true: все ок, можно зачилять деньги.
+     * @param integer $invoice_id   РёРґ. СЃС‡РµС‚Р° (pm_payments.id РёР»Рё LMI_PAYMENT_NO).
+     * @return boolean   true: РІСЃРµ РѕРє, РјРѕР¶РЅРѕ Р·Р°С‡РёР»СЏС‚СЊ РґРµРЅСЊРіРё.
      */
     private function _checkInvoice4Deposit($invoice_id) {
         global $DB;
@@ -244,11 +244,11 @@ class pmpay extends account
         $pmt = $DB->row('SELECT * FROM pm_payments WHERE id = ?i', $invoice_id);
         
         if (!$pmt) {
-            $err = "ERROR: Платеж {$invoice_id} не зарегистрирован.";
+            $err = "ERROR: РџР»Р°С‚РµР¶ {$invoice_id} РЅРµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ.";
         } else if ($pmt['is_canceled'] == 't') {
-            $err = "WARNING: Платеж {$invoice_id} был отменен, деньги зачислены не будут.";
+            $err = "WARNING: РџР»Р°С‚РµР¶ {$invoice_id} Р±С‹Р» РѕС‚РјРµРЅРµРЅ, РґРµРЅСЊРіРё Р·Р°С‡РёСЃР»РµРЅС‹ РЅРµ Р±СѓРґСѓС‚.";
         } else if ($pmt['billing_id']) {
-            $err = "WARNING: Дубль. По платежу {$invoice_id} деньги уже зачислены: операция {$pmt['billing_id']}.";
+            $err = "WARNING: Р”СѓР±Р»СЊ. РџРѕ РїР»Р°С‚РµР¶Сѓ {$invoice_id} РґРµРЅСЊРіРё СѓР¶Рµ Р·Р°С‡РёСЃР»РµРЅС‹: РѕРїРµСЂР°С†РёСЏ {$pmt['billing_id']}.";
         }
         
         if ($err) {
@@ -260,10 +260,10 @@ class pmpay extends account
     }
     
     /**
-     * Запрашивает у paymaster информацию о платеже по нашему номеру счета (LMI_PAYMENT_NO).
+     * Р—Р°РїСЂР°С€РёРІР°РµС‚ Сѓ paymaster РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РїР»Р°С‚РµР¶Рµ РїРѕ РЅР°С€РµРјСѓ РЅРѕРјРµСЂСѓ СЃС‡РµС‚Р° (LMI_PAYMENT_NO).
      *
-     * @param integer $invoice_id   ид. счета.
-     * @param integer $merchant_id  ид. магазина (мерчанта).
+     * @param integer $invoice_id   РёРґ. СЃС‡РµС‚Р°.
+     * @param integer $merchant_id  РёРґ. РјР°РіР°Р·РёРЅР° (РјРµСЂС‡Р°РЅС‚Р°).
      * @return array
      */
     function getPaymentByInvoiceID($invoice_id, $merchant_id) {
@@ -272,11 +272,11 @@ class pmpay extends account
     }
     
     /**
-     * Отправляет запрос в Paymaster и возвращает результат.
+     * РћС‚РїСЂР°РІР»СЏРµС‚ Р·Р°РїСЂРѕСЃ РІ Paymaster Рё РІРѕР·РІСЂР°С‰Р°РµС‚ СЂРµР·СѓР»СЊС‚Р°С‚.
      *
-     * @param string $opname   название операции по системе Paymaster.
-     * @param array $aprms   параметры операции (в дополнение к трем обязательным, см. внутрь), по ним же строится хэш.
-     * @return object   декодированный json ответ. (note: все структурные элементы -- объекты, а не ассоциативные массивы.)
+     * @param string $opname   РЅР°Р·РІР°РЅРёРµ РѕРїРµСЂР°С†РёРё РїРѕ СЃРёСЃС‚РµРјРµ Paymaster.
+     * @param array $aprms   РїР°СЂР°РјРµС‚СЂС‹ РѕРїРµСЂР°С†РёРё (РІ РґРѕРїРѕР»РЅРµРЅРёРµ Рє С‚СЂРµРј РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рј, СЃРј. РІРЅСѓС‚СЂСЊ), РїРѕ РЅРёРј Р¶Рµ СЃС‚СЂРѕРёС‚СЃСЏ С…СЌС€.
+     * @return object   РґРµРєРѕРґРёСЂРѕРІР°РЅРЅС‹Р№ json РѕС‚РІРµС‚. (note: РІСЃРµ СЃС‚СЂСѓРєС‚СѓСЂРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹ -- РѕР±СЉРµРєС‚С‹, Р° РЅРµ Р°СЃСЃРѕС†РёР°С‚РёРІРЅС‹Рµ РјР°СЃСЃРёРІС‹.)
      */
     private function _send($opname, $aprms) {
         $prms = $aprms;
@@ -291,7 +291,7 @@ class pmpay extends account
             $res = file_get_contents($this->_restUrl.$opname.'?'.$query);
         }
         if (!$res) {
-            $this->_log('ERROR: Не удалось получить информацию по платежу.');
+            $this->_log('ERROR: РќРµ СѓРґР°Р»РѕСЃСЊ РїРѕР»СѓС‡РёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ РїРѕ РїР»Р°С‚РµР¶Сѓ.');
             return NULL;
         }
         
@@ -299,12 +299,12 @@ class pmpay extends account
         
         switch ($ec = $res->ErrorCode) {
             case 0   : return $res;
-            case -1  : $this->_log("ERROR: {$ec}: Неизвестная ошибка. Сбой в системе PayMaster. Если ошибка повторяется, обратитесь в техподдержку."); break;
-            case -2  : $this->_log("ERROR: {$ec}: Сетевая ошибка. Сбой в системе PayMaster. Если ошибка повторяется, обратитесь в техподдержку."); break;
-            case -6  : $this->_log("ERROR: {$ec}: Нет доступа. Неверно указан логин, или у данного логина нет прав на запрошенную информацию."); break;
-            case -7  : $this->_log("ERROR: {$ec}: Неверная подпись запроса. Неверно сформирован хеш запроса."); break;
-            case -14 : $this->_log("ERROR: {$ec}: Повторный запрос с тем же nonce."); break;
-            default  : $this->_log("ERROR: {$ec}: Неизвестная ошибка."); break;
+            case -1  : $this->_log("ERROR: {$ec}: РќРµРёР·РІРµСЃС‚РЅР°СЏ РѕС€РёР±РєР°. РЎР±РѕР№ РІ СЃРёСЃС‚РµРјРµ PayMaster. Р•СЃР»Рё РѕС€РёР±РєР° РїРѕРІС‚РѕСЂСЏРµС‚СЃСЏ, РѕР±СЂР°С‚РёС‚РµСЃСЊ РІ С‚РµС…РїРѕРґРґРµСЂР¶РєСѓ."); break;
+            case -2  : $this->_log("ERROR: {$ec}: РЎРµС‚РµРІР°СЏ РѕС€РёР±РєР°. РЎР±РѕР№ РІ СЃРёСЃС‚РµРјРµ PayMaster. Р•СЃР»Рё РѕС€РёР±РєР° РїРѕРІС‚РѕСЂСЏРµС‚СЃСЏ, РѕР±СЂР°С‚РёС‚РµСЃСЊ РІ С‚РµС…РїРѕРґРґРµСЂР¶РєСѓ."); break;
+            case -6  : $this->_log("ERROR: {$ec}: РќРµС‚ РґРѕСЃС‚СѓРїР°. РќРµРІРµСЂРЅРѕ СѓРєР°Р·Р°РЅ Р»РѕРіРёРЅ, РёР»Рё Сѓ РґР°РЅРЅРѕРіРѕ Р»РѕРіРёРЅР° РЅРµС‚ РїСЂР°РІ РЅР° Р·Р°РїСЂРѕС€РµРЅРЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ."); break;
+            case -7  : $this->_log("ERROR: {$ec}: РќРµРІРµСЂРЅР°СЏ РїРѕРґРїРёСЃСЊ Р·Р°РїСЂРѕСЃР°. РќРµРІРµСЂРЅРѕ СЃС„РѕСЂРјРёСЂРѕРІР°РЅ С…РµС€ Р·Р°РїСЂРѕСЃР°."); break;
+            case -14 : $this->_log("ERROR: {$ec}: РџРѕРІС‚РѕСЂРЅС‹Р№ Р·Р°РїСЂРѕСЃ СЃ С‚РµРј Р¶Рµ nonce."); break;
+            default  : $this->_log("ERROR: {$ec}: РќРµРёР·РІРµСЃС‚РЅР°СЏ РѕС€РёР±РєР°."); break;
         }
         
         return NULL;
@@ -324,11 +324,11 @@ class pmpay extends account
     }
     
     /**
-     * Зачисление средств при поступлении "Payment Confirmation" от Paymaster.
+     * Р—Р°С‡РёСЃР»РµРЅРёРµ СЃСЂРµРґСЃС‚РІ РїСЂРё РїРѕСЃС‚СѓРїР»РµРЅРёРё "Payment Confirmation" РѕС‚ Paymaster.
      *
      * @see /income/pm.php 
-     * @param array  $req   параметры запроса.  
-     * @return string Сообщение об ошибке
+     * @param array  $req   РїР°СЂР°РјРµС‚СЂС‹ Р·Р°РїСЂРѕСЃР°.  
+     * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
      */
     function checkdeposit($req) {
         $this->log = new log('pmpay/checkdeposit-%d%m%Y.log', 'a', '%d.%m.%Y %H:%M:%S : ');
@@ -356,10 +356,10 @@ class pmpay extends account
     
     
     /**
-     * Зачисление средств.
+     * Р—Р°С‡РёСЃР»РµРЅРёРµ СЃСЂРµРґСЃС‚РІ.
      *
-     * @param array  $req   параметры платежа.
-     * @return string Сообщение об ошибке
+     * @param array  $req   РїР°СЂР°РјРµС‚СЂС‹ РїР»Р°С‚РµР¶Р°.
+     * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
      */
     private function _setDeposit($req) {
         global $DB;
@@ -372,10 +372,10 @@ class pmpay extends account
             return 'Bad LMI_PAYMENT_AMOUNT';
         }
         
-        $descr = "WM #{$req['LMI_PAYMENT_NO']} (pmnum: {$req['LMI_SYS_PAYMENT_ID']}) на кошелек {$req['LMI_MERCHANT_ID']};"
-               . " платежная cистема пользователя #{$req['LMI_PAYMENT_SYSTEM']}: сумма оплаты {$req['LMI_PAID_AMOUNT']} {$req['LMI_PAID_CURRENCY']};"
-               . " сумма поступления: {$req['LMI_PAYMENT_AMOUNT']} {$req['LMI_CURRENCY']};"
-               . " обработан {$req['LMI_SYS_PAYMENT_DATE']}";
+        $descr = "WM #{$req['LMI_PAYMENT_NO']} (pmnum: {$req['LMI_SYS_PAYMENT_ID']}) РЅР° РєРѕС€РµР»РµРє {$req['LMI_MERCHANT_ID']};"
+               . " РїР»Р°С‚РµР¶РЅР°СЏ cРёСЃС‚РµРјР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ #{$req['LMI_PAYMENT_SYSTEM']}: СЃСѓРјРјР° РѕРїР»Р°С‚С‹ {$req['LMI_PAID_AMOUNT']} {$req['LMI_PAID_CURRENCY']};"
+               . " СЃСѓРјРјР° РїРѕСЃС‚СѓРїР»РµРЅРёСЏ: {$req['LMI_PAYMENT_AMOUNT']} {$req['LMI_CURRENCY']};"
+               . " РѕР±СЂР°Р±РѕС‚Р°РЅ {$req['LMI_SYS_PAYMENT_DATE']}";
          
         if (!$this->_checkInvoice4Deposit($req['LMI_PAYMENT_NO'])) {
             return NULL;
@@ -384,12 +384,12 @@ class pmpay extends account
         $op_id = 0;
         $ammount = $req['LMI_PAYMENT_AMOUNT'];
         switch ($req['OPERATION_TYPE']) {
-            case sbr::OP_RESERVE: // Резерв денег по СбР
+            case sbr::OP_RESERVE: // Р РµР·РµСЂРІ РґРµРЅРµРі РїРѕ РЎР±Р 
                 $op_code = sbr::OP_RESERVE;
                 $amm = 0;
-                $descr .= ' СбР #'.$req['OPERATION_ID'];
+                $descr .= ' РЎР±Р  #'.$req['OPERATION_ID'];
                 break;
-            default:        // Перевод денег на личный счет
+            default:        // РџРµСЂРµРІРѕРґ РґРµРЅРµРі РЅР° Р»РёС‡РЅС‹Р№ СЃС‡РµС‚
                 $op_code = 12;
                 $amm = $ammount;
                 break;
@@ -406,8 +406,8 @@ class pmpay extends account
     
     
     /**
-     * Пишет сообщение в лог.
-     * @param string $msg   сообщение.
+     * РџРёС€РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РІ Р»РѕРі.
+     * @param string $msg   СЃРѕРѕР±С‰РµРЅРёРµ.
      */
     private function _log($msg) {
         if(!$this->log) return;
@@ -415,10 +415,10 @@ class pmpay extends account
     }
     
     /**
-     * Возврат денежных средств после резерва
+     * Р’РѕР·РІСЂР°С‚ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ РїРѕСЃР»Рµ СЂРµР·РµСЂРІР°
      * 
-     * @param type $payment_id  ИД операции в paymaster
-     * @param type $ammount     Сумма возврата
+     * @param type $payment_id  РР” РѕРїРµСЂР°С†РёРё РІ paymaster
+     * @param type $ammount     РЎСѓРјРјР° РІРѕР·РІСЂР°С‚Р°
      * @return type 
      */
     public function refundPayments($payment_id, $ammount) {
@@ -429,9 +429,9 @@ class pmpay extends account
     }
     
     /**
-     * Запрашиваем операции
+     * Р—Р°РїСЂР°С€РёРІР°РµРј РѕРїРµСЂР°С†РёРё
      * 
-     * @param type $payment_id  ИД операции в paymaster
+     * @param type $payment_id  РР” РѕРїРµСЂР°С†РёРё РІ paymaster
      * @return type 
      */
     public function getRefundByPaymentID($payment_id) {

@@ -1,11 +1,11 @@
 <?php
 /* 
  * 
- * Данный файл является частью проекта Веб Мессенджер.
+ * Р”Р°РЅРЅС‹Р№ С„Р°Р№Р» СЏРІР»СЏРµС‚СЃСЏ С‡Р°СЃС‚СЊСЋ РїСЂРѕРµРєС‚Р° Р’РµР± РњРµСЃСЃРµРЅРґР¶РµСЂ.
  * 
- * Все права защищены. (c) 2005-2009 ООО "ТОП".
- * Данное программное обеспечение и все сопутствующие материалы
- * предоставляются на условиях лицензии, доступной по адресу
+ * Р’СЃРµ РїСЂР°РІР° Р·Р°С‰РёС‰РµРЅС‹. (c) 2005-2009 РћРћРћ "РўРћРџ".
+ * Р”Р°РЅРЅРѕРµ РїСЂРѕРіСЂР°РјРјРЅРѕРµ РѕР±РµСЃРїРµС‡РµРЅРёРµ Рё РІСЃРµ СЃРѕРїСѓС‚СЃС‚РІСѓСЋС‰РёРµ РјР°С‚РµСЂРёР°Р»С‹
+ * РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‚СЃСЏ РЅР° СѓСЃР»РѕРІРёСЏС… Р»РёС†РµРЅР·РёРё, РґРѕСЃС‚СѓРїРЅРѕР№ РїРѕ Р°РґСЂРµСЃСѓ
  * http://webim.ru/license.html
  * 
  */
@@ -36,7 +36,7 @@ $email_from = !empty($_POST['email_from']) ? trim($_POST['email_from']) : false;
 $mode = !empty($_POST['mode']) ? trim($_POST['mode']) : false;
 $dept = !empty($_POST['dept']) ? trim($_POST['dept']) : false;
 
-// отправке диалогов из мессенджера ----------
+// РѕС‚РїСЂР°РІРєРµ РґРёР°Р»РѕРіРѕРІ РёР· РјРµСЃСЃРµРЅРґР¶РµСЂР° ----------
 if ( $dept && isset($aDko[$dept]['email']) ) {
 	$email = $aDko[$dept]['email'];
 }
@@ -68,7 +68,7 @@ if ($has_errors) {
   $TML->assign('level', $_REQUEST['level']);
   if($mode != 'cons') $TML->display('send-history.tpl');
   else {
-      // отделы службы поддержки free-lance ---
+      // РѕС‚РґРµР»С‹ СЃР»СѓР¶Р±С‹ РїРѕРґРґРµСЂР¶РєРё free-lance ---
         $aDetps = array();
         foreach ( $aDkoOrder as $nOrder ) {
             $aDetps[] = array( 'value'=> $nOrder, 'title' => $aDko[$nOrder]['option'] );
@@ -95,11 +95,11 @@ foreach ($output as $msg) {
 $visitSession = VisitSession::GetInstance()->GetVisitSessionById($thread['visitsessionid']);
 
 $systemInfo = 
-"Системная информация
-имя: " . $visitSession['visitorname'] . "
-создан: " . date('Y-m-d', $visitSession['created']) . "
+"РЎРёСЃС‚РµРјРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ
+РёРјСЏ: " . $visitSession['visitorname'] . "
+СЃРѕР·РґР°РЅ: " . date('Y-m-d', $visitSession['created']) . "
 ip: {$visitSession['ip']}
-браузер: " . get_user_agent($visitSession['useragent']) . "
+Р±СЂР°СѓР·РµСЂ: " . get_user_agent($visitSession['useragent']) . "
 
 ";
 
@@ -107,7 +107,7 @@ $history = $systemInfo . $history;
 
 $subject = Resources::Get("mail.visitor.history.subject");
 
-// отправке диалогов из мессенджера ------------
+// РѕС‚РїСЂР°РІРєРµ РґРёР°Р»РѕРіРѕРІ РёР· РјРµСЃСЃРµРЅРґР¶РµСЂР° ------------
 if ( $dept && isset($aDko[$dept]['subject']) ) {
 	$subject = $aDko[$dept]['subject'];
 }
@@ -115,7 +115,7 @@ if ( $dept && isset($aDko[$dept]['subject']) ) {
 $visitor_name = $visitSession['visitorname'];
 $body = Resources::Get("mail.visitor.history.body", array($visitor_name, $history));
 
-// отправке диалогов из мессенджера
+// РѕС‚РїСЂР°РІРєРµ РґРёР°Р»РѕРіРѕРІ РёР· РјРµСЃСЃРµРЅРґР¶РµСЂР°
 if ( $dept && ($feedback = feedbackAdd($dept, $visitor_name, $email_from, $body, 0)) ) {
     $body .= "\n" . '[[UCODE::{' . $feedback['uc'] . '},FID::{' . $feedback['id']  .'}]]';
 }
@@ -125,9 +125,9 @@ $webim_from_email = $email_from ? $email_from : Settings::Get("from_email");
 $body = Resources::Get("mail.visitor.history.body", array( $visitor_name, $history ));
 webim_mail($email, $webim_from_email, $subject, $body, 0);
 
-// отправке диалогов из мессенджера ------------
+// РѕС‚РїСЂР°РІРєРµ РґРёР°Р»РѕРіРѕРІ РёР· РјРµСЃСЃРµРЅРґР¶РµСЂР° ------------
 if ( $dept && isset($aDko[$dept]['option']) ) {
-    $sMsg = 'Диалог был отправлен в раздел: ' . $aDko[$dept]['option'];
+    $sMsg = 'Р”РёР°Р»РѕРі Р±С‹Р» РѕС‚РїСЂР°РІР»РµРЅ РІ СЂР°Р·РґРµР»: ' . $aDko[$dept]['option'];
     Thread::getInstance()->PostMessage( $threadid, KIND_EVENTS, $sMsg );
 }
 

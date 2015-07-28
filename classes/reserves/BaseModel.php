@@ -1,18 +1,18 @@
 <?php
 
-//@todo: ïîêà èñïîëüçóþ àáñòðàêòíûé îáùèé êëàññ èç ÒÓ 
-//ïîòîì åãî ìîæíî âûäåëèòü â îáùóþ áèáëèîòåêó
+//@todo: Ð¿Ð¾ÐºÐ° Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÑŽ Ð°Ð±ÑÑ‚Ñ€Ð°ÐºÑ‚Ð½Ñ‹Ð¹ Ð¾Ð±Ñ‰Ð¸Ð¹ ÐºÐ»Ð°ÑÑ Ð¸Ð· Ð¢Ð£ 
+//Ð¿Ð¾Ñ‚Ð¾Ð¼ ÐµÐ³Ð¾ Ð¼Ð¾Ð¶Ð½Ð¾ Ð²Ñ‹Ð´ÐµÐ»Ð¸Ñ‚ÑŒ Ð² Ð¾Ð±Ñ‰ÑƒÑŽ Ð±Ð¸Ð±Ð»Ð¸Ð¾Ñ‚ÐµÐºÑƒ
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/tservices/atservices_model.php');
 
 
 /**
- *  Áàçîâûé êëàññ ìîäåëè
+ *  Ð‘Ð°Ð·Ð¾Ð²Ñ‹Ð¹ ÐºÐ»Ð°ÑÑ Ð¼Ð¾Ð´ÐµÐ»Ð¸
  */
 abstract class BaseModel extends atservices_model
 {
     
     /**
-     * Ñîçäàåì ñàìè ñåáÿ
+     * Ð¡Ð¾Ð·Ð´Ð°ÐµÐ¼ ÑÐ°Ð¼Ð¸ ÑÐµÐ±Ñ
      * @return ReservesModel
      */
     public static function model(array $options = array()) 

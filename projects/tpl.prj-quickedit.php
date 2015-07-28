@@ -1,4 +1,4 @@
-					<?php // С Сашей CSS для старого календаря временно решили поставить здесь, до переделки календаря на новый вид ?>
+					<?php // РЎ РЎР°С€РµР№ CSS РґР»СЏ СЃС‚Р°СЂРѕРіРѕ РєР°Р»РµРЅРґР°СЂСЏ РІСЂРµРјРµРЅРЅРѕ СЂРµС€РёР»Рё РїРѕСЃС‚Р°РІРёС‚СЊ Р·РґРµСЃСЊ, РґРѕ РїРµСЂРµРґРµР»РєРё РєР°Р»РµРЅРґР°СЂСЏ РЅР° РЅРѕРІС‹Р№ РІРёРґ ?>
 
 					<?php
 					require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/professions.php");
@@ -64,8 +64,8 @@
 			                    <form id="popup_qedit_prj_frm" name="popup_qedit_prj_frm" action="" enctype="multipart/form-data" method="post">
 				                    <div class="b-menu b-menu_rubric b-menu_padbot_10">
 					                    <ul class="b-menu__list">
-						                    <li id="popup_qedit_prj_tab_i1" class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">Основное</span></span></li>
-						                    <li id="popup_qedit_prj_tab_i2" class="b-menu__item"><a class="b-menu__link" href="#" onClick="popupQEditPrjMenu(2); return false;">Платные услуги</a></li>
+						                    <li id="popup_qedit_prj_tab_i1" class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">РћСЃРЅРѕРІРЅРѕРµ</span></span></li>
+						                    <li id="popup_qedit_prj_tab_i2" class="b-menu__item"><a class="b-menu__link" href="#" onClick="popupQEditPrjMenu(2); return false;">РџР»Р°С‚РЅС‹Рµ СѓСЃР»СѓРіРё</a></li>
 						                    <li id="popup_qedit_prj_tab_i3" class="b-menu__item"><span class="b-menu__info"></span></li>
 					                    </ul>
 				                    </div>
@@ -79,55 +79,55 @@
 							                    <td class="b-layout__left b-layout__left_width_240 b-layout__left_padleft_15">
 								                    <div class="b-check b-check_padbot_10">
 									                    <input id="popup_qedit_prj_top_ok" class="b-check__input" name="top_ok" type="checkbox" value="1" onClick='popupQEditPrjToggleIsOntop();' />
-									                    <label for="popup_qedit_prj_top_ok" class="b-check__label b-check__label_margleft_5">Закрепить наверху страницы<span id="popup_qedit_prj_top_ok_icon" class="b-check__pin" style="display:none"></span></label>
+									                    <label for="popup_qedit_prj_top_ok" class="b-check__label b-check__label_margleft_5">Р—Р°РєСЂРµРїРёС‚СЊ РЅР°РІРµСЂС…Сѓ СЃС‚СЂР°РЅРёС†С‹<span id="popup_qedit_prj_top_ok_icon" class="b-check__pin" style="display:none"></span></label>
 								                    </div>
                                                     <div id="popup_qedit_prj_top_ok_tab1" class="b-check b-check_margleft_25 b-check_padbot_15" style="display:none;">
-                                                        <label class="b-check__label">На </label>
+                                                        <label class="b-check__label">РќР° </label>
                                                         <div class="b-form b-form_inline-block b-check__form">
                                                             <div class="b-input b-input_inline-block"><input id="popup_qedit_prj_top_ok_tab1_days" class="b-input__text b-input__text_width_25 b-input__text_fontsize_11" name="top_days" type="text" value="1" /></div> 
-                                                            <label class="b-form__name b-form__name_padtop_2">&nbsp;дней</label>
+                                                            <label class="b-form__name b-form__name_padtop_2">&nbsp;РґРЅРµР№</label>
                                                         </div>
                                                     </div>
 								                    <div id="popup_qedit_prj_top_ok_tab2" class="b-check b-check_margleft_25 b-check_padbot_15" style="display:none">
 									                    <p id="popup_qedit_prj_top_ok_tab2_left" class="b-check__over"></p>
 									                    <input id="popup_qedit_prj_top_ok_tab2_c" class="b-check__input" name="top_ok" type="checkbox" value="1" disabled="disabled" />
-									                    <label for="r24" class="b-check__label">Продлить на </label>
+									                    <label for="r24" class="b-check__label">РџСЂРѕРґР»РёС‚СЊ РЅР° </label>
 									                    <div class="b-form b-form_inline-block b-check__form">
 										                    <div class="b-input b-input_inline-block"><input id="popup_qedit_prj_top_ok_tab2_days" class="b-input__text b-input__text_width_25 b-input__text_fontsize_11" name="top_days" type="text" value="10" disabled="disabled" /></div> 
-										                    <label class="b-form__name b-form__name_padtop_2" for="r26">&nbsp;дней</label>
+										                    <label class="b-form__name b-form__name_padtop_2" for="r26">&nbsp;РґРЅРµР№</label>
 									                    </div>
 								                    </div>
                                             <?php /*
 								                    <div class="b-check b-check_padbot_10">
 									                    <input id="popup_qedit_prj_is_color" class="b-check__input" name="is_color" type="checkbox" value="1" onClick="popupQEditPrjToggleIsColor();" />
-									                    <label for="popup_qedit_prj_is_color" class="b-check__label b-check__label_margleft_5 ">Выделить цветом</label>
+									                    <label for="popup_qedit_prj_is_color" class="b-check__label b-check__label_margleft_5 ">Р’С‹РґРµР»РёС‚СЊ С†РІРµС‚РѕРј</label>
 								                    </div>
 								                    <div class="b-check b-check_padbot_10">
 									                    <input id="popup_qedit_prj_is_bold" class="b-check__input" name="is_bold" type="checkbox" value="1" onClick="popupQEditPrjToggleIsBold();" />
-									                    <label for="popup_qedit_prj_is_bold" class="b-check__label b-check__label_margleft_5">Выделить <span class="">жирным</span></label>
+									                    <label for="popup_qedit_prj_is_bold" class="b-check__label b-check__label_margleft_5">Р’С‹РґРµР»РёС‚СЊ <span class="">Р¶РёСЂРЅС‹Рј</span></label>
 								                    </div>
 														  */ ?>
 								                    <div class="b-check b-check_padbot_10">
 									                    <input id="popup_qedit_prj_is_hide" class="b-check__input" name="is_hide" type="checkbox" value="1"  />
-									                    <label for="popup_qedit_prj_is_hide" class="b-check__label b-check__label_margleft_5 ">Скрытый проект</label>
+									                    <label for="popup_qedit_prj_is_hide" class="b-check__label b-check__label_margleft_5 ">РЎРєСЂС‹С‚С‹Р№ РїСЂРѕРµРєС‚</label>
 								                    </div>
 								                    <div class="b-check b-check_padbot_10">
 									                    <input id="popup_qedit_prj_is_urgent" class="b-check__input" name="is_urgent" type="checkbox" value="1"  />
-									                    <label for="popup_qedit_prj_is_urgent" class="b-check__label b-check__label_margleft_5 ">Срочный проект</label>
+									                    <label for="popup_qedit_prj_is_urgent" class="b-check__label b-check__label_margleft_5 ">РЎСЂРѕС‡РЅС‹Р№ РїСЂРѕРµРєС‚</label>
 								                    </div>
 							                    </td>
 							                    <td class="b-layout__right b-layout__right_width_240 b-layout__right_padleft_15">
 								                    <div class="b-check b-check_padbot_5">
 									                    <input id="popup_qedit_prj_use_logo" class="b-check__input" name="use_logo" type="checkbox" value="1" onClick="popupQEditPrjToggleUseLogo();" />
-									                    <label for="popup_qedit_prj_use_logo" class="b-check__label b-check__label_margleft_5">Разместить логотип со ссылкой</label>
+									                    <label for="popup_qedit_prj_use_logo" class="b-check__label b-check__label_margleft_5">Р Р°Р·РјРµСЃС‚РёС‚СЊ Р»РѕРіРѕС‚РёРї СЃРѕ СЃСЃС‹Р»РєРѕР№</label>
 								                    </div>
 
 								                    <div id="popup_qedit_prj_use_logo_tab" class="b-form b-form_margleft_25" style="display:none">
-													    <label class="b-form__name b-form_padbot_5" for="r27">Загруженный логотип:</label>
+													    <label class="b-form__name b-form_padbot_5" for="r27">Р—Р°РіСЂСѓР¶РµРЅРЅС‹Р№ Р»РѕРіРѕС‚РёРї:</label>
 									                    <div class="b-menu b-menu_separator b-menu_padbot_10">
 										                    <ul class="b-menu__list">
-											                    <li class="b-menu__item"><a id="popup_qedit_prj_use_logo_src" class="b-menu__link" href="#" target="_blank">Посмотреть</a>&nbsp;•&nbsp;</li>
-											                    <li class="b-menu__item"><a class="b-menu__link b-menu__link_color_c10601" href="#" onclick="popupQEditPrjDelLogo(); return false;">Удалить</a></li>
+											                    <li class="b-menu__item"><a id="popup_qedit_prj_use_logo_src" class="b-menu__link" href="#" target="_blank">РџРѕСЃРјРѕС‚СЂРµС‚СЊ</a>&nbsp;вЂў&nbsp;</li>
+											                    <li class="b-menu__item"><a class="b-menu__link b-menu__link_color_c10601" href="#" onclick="popupQEditPrjDelLogo(); return false;">РЈРґР°Р»РёС‚СЊ</a></li>
 										                    </ul>
 									                    </div>
 									                    <div class="b-input b-input_padbot_10">
@@ -137,21 +137,21 @@
 
                                                     <div id="popup_qedit_prj_use_logo_tab2" class="b-form b-form_margleft_25" style="display:none">
 														<div class="b-file">
-															<label class="b-form__name b-form_padbot_5" for="r27">Загрузить логотип:</label>
+															<label class="b-form__name b-form_padbot_5" for="r27">Р—Р°РіСЂСѓР·РёС‚СЊ Р»РѕРіРѕС‚РёРї:</label>
 															<table class="b-file__layout">
 						      									<tr>
 																	<td class="b-file__button">            
 							     										<div class="b-file__wrap">
 																			<input class="b-file__input" type="file" name="logo" />
-																			<a class="b-button b-button_flat b-button_flat_grey" onclick="return false" href="#">Выбрать файл</a>
+																			<a class="b-button b-button_flat b-button_flat_grey" onclick="return false" href="#">Р’С‹Р±СЂР°С‚СЊ С„Р°Р№Р»</a>
 																		</div>
 												    				</td>
 																	<td class="b-file__button">
-																		<a class="b-button b-button_flat b-button_flat_grey" onclick="popupQEditPrjUploadLogo(); return false;" href="#">Загрузить</a>
+																		<a class="b-button b-button_flat b-button_flat_grey" onclick="popupQEditPrjUploadLogo(); return false;" href="#">Р—Р°РіСЂСѓР·РёС‚СЊ</a>
 																	</td>
 																</tr>
 															</table>
-															<p class="b-file__descript">Не более 50 Кб., 150 пикселей в ширину, до 150 в высоту (gif, jpeg, png).</p>
+															<p class="b-file__descript">РќРµ Р±РѕР»РµРµ 50 РљР±., 150 РїРёРєСЃРµР»РµР№ РІ С€РёСЂРёРЅСѓ, РґРѕ 150 РІ РІС‹СЃРѕС‚Сѓ (gif, jpeg, png).</p>
 														</div>
 
 								                    </div>
@@ -165,7 +165,7 @@
 																	<b class="b-fon__b1"></b>
 																	<b class="b-fon__b2"></b>
 																	<div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13 ">
-																	<span class="b-fon__attent"></span><div id="popup_qedit_prj_fld_err_pay_txt" class="b-fon__txt b-fon__txt_margleft_20">Ошибка</div>
+																	<span class="b-fon__attent"></span><div id="popup_qedit_prj_fld_err_pay_txt" class="b-fon__txt b-fon__txt_margleft_20">РћС€РёР±РєР°</div>
 																</div>
 																	<b class="b-fon__b2"></b>
 																	<b class="b-fon__b1"></b>
@@ -176,7 +176,7 @@
 
                                     <div id="popup_qedit_prj_tab_main">
     				                    <div class="b-form b-form_padleft_15">
-	    				                    <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_90 b-form__name_padtop_3" for="popup_qedit_prj_fld_name">Заголовок</label>
+	    				                    <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_90 b-form__name_padtop_3" for="popup_qedit_prj_fld_name">Р—Р°РіРѕР»РѕРІРѕРє</label>
     					                    <div class="b-input b-input_inline-block b-input_width_400">
     						                    <input id="popup_qedit_prj_fld_name" class="b-input__text" name="name" type="text" size="80" value="" />
     					                    </div>
@@ -185,7 +185,7 @@
 												<b class="b-fon__b1"></b>
 												<b class="b-fon__b2"></b>
 												<div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13 ">
-												    <span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20">Поле не заполнено</div>
+												    <span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20">РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ</div>
 												</div>
 												<b class="b-fon__b2"></b>
 												<b class="b-fon__b1"></b>
@@ -193,7 +193,7 @@
 																	
     				                    </div>
     				                    <div class="b-form b-form_padleft_15">
-    					                    <label class="b-form__name b-form__name_bold b-form__name_width_90 b-form__name_padtop_3" for="popup_qedit_prj_fld_descr">Текст</label>
+    					                    <label class="b-form__name b-form__name_bold b-form__name_width_90 b-form__name_padtop_3" for="popup_qedit_prj_fld_descr">РўРµРєСЃС‚</label>
     					                    <div class="b-textarea b-textarea_inline-block b-textarea_width_402">
     						                    <textarea id="popup_qedit_prj_fld_descr" class="b-textarea__textarea b-textarea__textarea__height_140" name="descr" cols="77" rows="5"></textarea>
     					                    </div>
@@ -202,7 +202,7 @@
 												<b class="b-fon__b1"></b>
 												<b class="b-fon__b2"></b>
 												<div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13 ">
-													<span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20">Поле не заполнено</div>
+													<span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20">РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ</div>
 												</div>
 												<b class="b-fon__b2"></b>
 												<b class="b-fon__b1"></b>
@@ -213,7 +213,7 @@
                                         <div id="popup_qedit_prj_attachedfiles" class="b-form b-form_relative b-form_bordbot_d7d7d7 b-form_padleft_90 b-form_padright_5 b-form_margleft_15"></div>
 
     				                    <div class="b-form b-form_padleft_15 b-form_padtop_10 b-form_width_500 b-form_float_left">
-    					                    <label class="b-form__name b-form__name_bold b-form__name_width_90 b-form__name_padtop_3" >Раздел</label>
+    					                    <label class="b-form__name b-form__name_bold b-form__name_width_90 b-form__name_padtop_3" >Р Р°Р·РґРµР»</label>
                                             <div id="popup_qedit_prj_fld_categories"></div>
 <style type="text/css">
 #popup_qedit_prj_fld_categories {display: inline-block;margin-bottom: -20px;width: 400px;}
@@ -228,7 +228,7 @@
 												<b class="b-fon__b1"></b>
 												<b class="b-fon__b2"></b>
 												<div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13 ">
-													<span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20">Поле не заполнено</div>
+													<span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20">РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ</div>
 												</div>
 												<b class="b-fon__b2"></b>
 												<b class="b-fon__b1"></b>
@@ -238,7 +238,7 @@
     				                    </div>
 <div style=" position:relative; clear:both;">
 										<div id="popup_qedit_prj_cal1" class="b-form b-form_padleft_15 b-form_padtop_10 b-form_width_490">
-											<label class="b-form__name b-form__name_bold b-form__name_width_90" for="r8">Окончание конкурса</label>
+											<label class="b-form__name b-form__name_bold b-form__name_width_90" for="r8">РћРєРѕРЅС‡Р°РЅРёРµ РєРѕРЅРєСѓСЂСЃР°</label>
 											<div class="b-input b-input_width_180 b-input_inline-block">
 												<input id="popup_qedit_prj_fld_end_date" class="b-input__text" name="end_date" type="text" size="10" maxlength="10" value="" />
 												<div id="end_date_btn" class="b-input__cal"></div>
@@ -248,7 +248,7 @@
 												<b class="b-fon__b1"></b>
 												<b class="b-fon__b2"></b>
 												<div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13 ">
-													<span class="b-fon__attent"></span><div id="popup_qedit_prj_fld_err_txt_cal1" class="b-fon__txt b-fon__txt_margleft_20">Поле не заполнено</div>
+													<span class="b-fon__attent"></span><div id="popup_qedit_prj_fld_err_txt_cal1" class="b-fon__txt b-fon__txt_margleft_20">РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ</div>
 												</div>
 												<b class="b-fon__b2"></b>
 												<b class="b-fon__b1"></b>
@@ -256,7 +256,7 @@
 
 										</div>
 										<div id="popup_qedit_prj_cal2" class="b-form b-form_padleft_15 b-form_bordbot_d7d7d7 b-form_padtop_10 b-form_width_490">
-											<label class="b-form__name b-form__name_bold b-form__name_width_90" for="r10">Объявление победителей</label>
+											<label class="b-form__name b-form__name_bold b-form__name_width_90" for="r10">РћР±СЉСЏРІР»РµРЅРёРµ РїРѕР±РµРґРёС‚РµР»РµР№</label>
 											<div class="b-input b-input_width_180 b-input_inline-block">
 												<input id="popup_qedit_prj_fld_win_date" class="b-input__text" name="win_date" type="text" size="10" maxlength="10" value="" />
 												<div id="win_date_btn" class="b-input__cal"></div>
@@ -266,7 +266,7 @@
 												<b class="b-fon__b1"></b>
 												<b class="b-fon__b2"></b>
 												<div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13 ">
-													<span class="b-fon__attent"></span><div id="popup_qedit_prj_fld_err_txt_cal2" class="b-fon__txt b-fon__txt_margleft_20">Поле не заполнено</div>
+													<span class="b-fon__attent"></span><div id="popup_qedit_prj_fld_err_txt_cal2" class="b-fon__txt b-fon__txt_margleft_20">РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ</div>
 												</div>
 												<b class="b-fon__b2"></b>
 												<b class="b-fon__b1"></b>
@@ -275,15 +275,15 @@
 </div>
 
     				                    <div id="popup_qedit_prj_kind" class="b-form b-form_margleft_15 b-form_bordbot_d7d7d7 b-form_padtop_10 b-form_width_500 b-form_padright_5 b-form_relative ">
-    					                    <label class="b-form__name b-form__name_bold b-form__name_width_90">Закладка</label>
+    					                    <label class="b-form__name b-form__name_bold b-form__name_width_90">Р—Р°РєР»Р°РґРєР°</label>
     					                    <div class="b-radio b-radio_layout_vertical b-radio_inline-block">
     						                    <div class="b-radio__item b-radio__item_padbot_10">
     							                    <input id="popup_qedit_prj_fld_kind_1" class="b-radio__input" name="kind" type="radio" value="1" onClick="popupQEditPrjChangeKind();" />
-    							                    <label class="b-radio__label" for="popup_qedit_prj_fld_kind_1"><span class="b-radio__bold">Проекты</span> — Разовые проекты с фиксированной оплатой</label>
+    							                    <label class="b-radio__label" for="popup_qedit_prj_fld_kind_1"><span class="b-radio__bold">РџСЂРѕРµРєС‚С‹</span> вЂ” Р Р°Р·РѕРІС‹Рµ РїСЂРѕРµРєС‚С‹ СЃ С„РёРєСЃРёСЂРѕРІР°РЅРЅРѕР№ РѕРїР»Р°С‚РѕР№</label>
     						                    </div>
     						                    <div class="b-radio__item">
     							                    <input id="popup_qedit_prj_fld_kind_2" class="b-radio__input" name="kind" type="radio" value="4" onClick="popupQEditPrjChangeKind();" />
-    							                    <label class="b-radio__label" for="popup_qedit_prj_fld_kind_2"><span class="b-radio__bold">Вакансии</span> — Вакансии на постоянную или попроектную работу в офисе</label>
+    							                    <label class="b-radio__label" for="popup_qedit_prj_fld_kind_2"><span class="b-radio__bold">Р’Р°РєР°РЅСЃРёРё</span> вЂ” Р’Р°РєР°РЅСЃРёРё РЅР° РїРѕСЃС‚РѕСЏРЅРЅСѓСЋ РёР»Рё РїРѕРїСЂРѕРµРєС‚РЅСѓСЋ СЂР°Р±РѕС‚Сѓ РІ РѕС„РёСЃРµ</label>
     						                    </div>
                                              
                                                 <div id="popup_qedit_prj_fld_location" style="display: none;"></div>
@@ -293,7 +293,7 @@
 												<b class="b-fon__b1"></b>
 												<b class="b-fon__b2"></b>
 												<div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13 ">
-													<span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20">Поле не заполнено</div>
+													<span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20">РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ</div>
 												</div>
 												<b class="b-fon__b2"></b>
 												<b class="b-fon__b1"></b>
@@ -304,35 +304,35 @@
     				                    <div class="b-form b-form_relative b-form_margleft_15 b-form_padleft_90 b-form_padtop_20">
     					                    <div class="b-check b-check_bg_fff9e5 b-check_width_410">
     						                    <input id="popup_qedit_prj_fld_pro_only" class="b-check__input" name="pro_only" type="checkbox" value="1" />
-    						                    <label for="popup_qedit_prj_fld_pro_only" class="b-check__label">Отвечать на проект могут только пользователи с аккаунтом <span class="b-icon b-icon__pro b-icon__pro_f" title="PRO"></span><br />Фрилансеры с аккаунтом <span class="b-icon b-icon__pro b-icon__pro_f" title="PRO"></span> - наиболее серьезная и активная<br />часть аудитории сайта</label>
+    						                    <label for="popup_qedit_prj_fld_pro_only" class="b-check__label">РћС‚РІРµС‡Р°С‚СЊ РЅР° РїСЂРѕРµРєС‚ РјРѕРіСѓС‚ С‚РѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ Р°РєРєР°СѓРЅС‚РѕРј <span class="b-icon b-icon__pro b-icon__pro_f" title="PRO"></span><br />Р¤СЂРёР»Р°РЅСЃРµСЂС‹ СЃ Р°РєРєР°СѓРЅС‚РѕРј <span class="b-icon b-icon__pro b-icon__pro_f" title="PRO"></span> - РЅР°РёР±РѕР»РµРµ СЃРµСЂСЊРµР·РЅР°СЏ Рё Р°РєС‚РёРІРЅР°СЏ<br />С‡Р°СЃС‚СЊ Р°СѓРґРёС‚РѕСЂРёРё СЃР°Р№С‚Р°</label>
     					                    </div>
     					                    <div class="b-check b-check_bg_fff9e5 b-check_width_410">
     						                    <input id="popup_qedit_prj_fld_verify_only" class="b-check__input" name="verify_only" type="checkbox" value="1" />
-    						                    <label for="popup_qedit_prj_fld_verify_only" class="b-check__label">Отвечать на проект могут только верифицированные пользователи <span class="b-icon b-icon__ver b-icon_valign_middle"></span></label>
+    						                    <label for="popup_qedit_prj_fld_verify_only" class="b-check__label">РћС‚РІРµС‡Р°С‚СЊ РЅР° РїСЂРѕРµРєС‚ РјРѕРіСѓС‚ С‚РѕР»СЊРєРѕ РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё <span class="b-icon b-icon__ver b-icon_valign_middle"></span></label>
     					                    </div>
     					                    <div class="b-check b-check_bg_fff9e5 b-check_width_410">
     						                    <input id="popup_qedit_prj_fld_prefer_sbr" class="b-check__input" name="prefer_sbr" type="checkbox" value="1" />
-    						                    <label for="popup_qedit_prj_fld_prefer_sbr" class="b-check__label">Предпочитаю Безопасную Сделку <?= view_sbr_shield('', 'b-icon_valign_middle') ?></label>
+    						                    <label for="popup_qedit_prj_fld_prefer_sbr" class="b-check__label">РџСЂРµРґРїРѕС‡РёС‚Р°СЋ Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ <?= view_sbr_shield('', 'b-icon_valign_middle') ?></label>
     					                    </div>
     				                    </div>
                                                     <div class="b-form b-form_relative b-form_margleft_15 b-form_padleft_90 b-form_padtop_20">
                                                         <div class="b-check b-check_width_400">
                                                             <input id="popup_qedit_prj_fld_strong_top" class="b-check__input" name="strong_top" type="checkbox" value="1" />
-                                                            <label for="popup_qedit_prj_fld_strong_top" class="b-check__label">Закрепить железно наверху ленты</label>
+                                                            <label for="popup_qedit_prj_fld_strong_top" class="b-check__label">Р—Р°РєСЂРµРїРёС‚СЊ Р¶РµР»РµР·РЅРѕ РЅР°РІРµСЂС…Сѓ Р»РµРЅС‚С‹</label>
                                                         </div>
     				                    </div> 
                                         <?/* #0019741
     				                    <div id="sbr_text_block" class="b-form b-form_relative b-form_margleft_15 b-form_padleft_90 b-form_padtop_20">
     					                    <div class="b-check b-check_width_400 b-check_bg_fff9e5" style="background-color: #d9efff">
     						                    <input id="popup_qedit_prj_fld_prefer_sbr" class="b-check__input" name="prefer_sbr" type="checkbox" value="1" />
-    						                    <label for="popup_qedit_prj_fld_prefer_sbr" class="b-check__label">Чтобы обезопасить себя и сократить риски при работе <br />с фрилансерами, воспользуйтесь <a class="sbr-ic" href="/sbr/" target="_blank">Сделкой Без Риска</a></label>
+    						                    <label for="popup_qedit_prj_fld_prefer_sbr" class="b-check__label">Р§С‚РѕР±С‹ РѕР±РµР·РѕРїР°СЃРёС‚СЊ СЃРµР±СЏ Рё СЃРѕРєСЂР°С‚РёС‚СЊ СЂРёСЃРєРё РїСЂРё СЂР°Р±РѕС‚Рµ <br />СЃ С„СЂРёР»Р°РЅСЃРµСЂР°РјРё, РІРѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ <a class="sbr-ic" href="/sbr/" target="_blank">РЎРґРµР»РєРѕР№ Р‘РµР· Р РёСЃРєР°</a></label>
     					                    </div>
     				                    </div>
                                          */ ?>
                                     </div>
 					                    <div class="b-buttons b-buttons_padleft_102">
-						                    <a class="b-button b-button_flat b-button_flat_green" href="#" onClick="popupQEditPrjSave(<?=$quickEditPoputType?>); return false;">Сохранить изменения</a>
-						                    <a class="b-buttons__link b-buttons__link_dot_039" href="#" onClick="popupQEditPrjHide(); return false;">Закрыть без изменений</a>
+						                    <a class="b-button b-button_flat b-button_flat_green" href="#" onClick="popupQEditPrjSave(<?=$quickEditPoputType?>); return false;">РЎРѕС…СЂР°РЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ</a>
+						                    <a class="b-buttons__link b-buttons__link_dot_039" href="#" onClick="popupQEditPrjHide(); return false;">Р—Р°РєСЂС‹С‚СЊ Р±РµР· РёР·РјРµРЅРµРЅРёР№</a>
 					                    </div>
 			                    </form>
                                 <iframe id="popup_qedit_prj_upload_logo" name="popup_qedit_prj_upload_logo" style="display:none;"></iframe>

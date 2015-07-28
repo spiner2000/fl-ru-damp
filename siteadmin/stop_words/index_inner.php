@@ -1,34 +1,34 @@
 <?php
 /**
- * Стоп-слова. Шаблон.
+ * РЎС‚РѕРї-СЃР»РѕРІР°. РЁР°Р±Р»РѕРЅ.
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
 if ( !defined('IS_SITE_ADMIN') ) { header('Location: /404.php'); exit; }
 ?>
 
-<h2 class="b-layout__title b-layout__title_padbot_20">Пользовательский контент / Стоп-слова</h2>
+<h2 class="b-layout__title b-layout__title_padbot_20">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ РєРѕРЅС‚РµРЅС‚ / РЎС‚РѕРї-СЃР»РѕРІР°</h2>
 
 <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_bold b-layout__txt_padbot_5">
 <?php /*
-// мини меню
+// РјРёРЅРё РјРµРЅСЋ
 echo $site == 'words' ? '<a href="/siteadmin/stop_words/?site=regex" class="lnk-dot-666">' : '';
-echo 'Запрещенные выражения';
+echo 'Р—Р°РїСЂРµС‰РµРЅРЅС‹Рµ РІС‹СЂР°Р¶РµРЅРёСЏ';
 echo $site == 'words' ? '</a>' : '';
 echo '&nbsp;|&nbsp;';
 echo $site == 'regex' ? '<a href="/siteadmin/stop_words/?site=words" class="lnk-dot-666">' : '';
-echo 'Подозрительные слова';
+echo 'РџРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹Рµ СЃР»РѕРІР°';
 echo $site == 'regex' ? '</a>' : '';
 */?>
 </div>
 
 <?php 
-// блоки сообщение об успехе или ошибках при сохранении
+// Р±Р»РѕРєРё СЃРѕРѕР±С‰РµРЅРёРµ РѕР± СѓСЃРїРµС…Рµ РёР»Рё РѕС€РёР±РєР°С… РїСЂРё СЃРѕС…СЂР°РЅРµРЅРёРё
 if ($_SESSION['admin_stop_words_success']) { 
     unset( $_SESSION['admin_stop_words_success'] );
 ?>
   <div>
-    <img src="/images/ico_ok.gif" alt="" border="0" height="18" width="19"/>&nbsp;&nbsp;Изменения внесены.
+    <img src="/images/ico_ok.gif" alt="" border="0" height="18" width="19"/>&nbsp;&nbsp;РР·РјРµРЅРµРЅРёСЏ РІРЅРµСЃРµРЅС‹.
   </div>
   <br/><br/>
 <?php } if ($error) print(view_error($error).'<br/>'); ?>
@@ -40,7 +40,7 @@ if ($_SESSION['admin_stop_words_success']) {
 <?php
 if ( $site == 'regex' ) {
     /*
-    // Запрещенные выражения
+    // Р—Р°РїСЂРµС‰РµРЅРЅС‹Рµ РІС‹СЂР°Р¶РµРЅРёСЏ
     
 ?>
     <input type="hidden" name="action" id="action" value="">
@@ -49,28 +49,28 @@ if ( $site == 'regex' ) {
     </div>
 
     <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_20">
-        Каждое новое выражение &mdash; с новой строки. При публикации будет заменено на <?=CENSORED?>.<br/>
-        Порядок следования выражений влияет на конечный результат замен.
+        РљР°Р¶РґРѕРµ РЅРѕРІРѕРµ РІС‹СЂР°Р¶РµРЅРёРµ &mdash; СЃ РЅРѕРІРѕР№ СЃС‚СЂРѕРєРё. РџСЂРё РїСѓР±Р»РёРєР°С†РёРё Р±СѓРґРµС‚ Р·Р°РјРµРЅРµРЅРѕ РЅР° <?=CENSORED?>.<br/>
+        РџРѕСЂСЏРґРѕРє СЃР»РµРґРѕРІР°РЅРёСЏ РІС‹СЂР°Р¶РµРЅРёР№ РІР»РёСЏРµС‚ РЅР° РєРѕРЅРµС‡РЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РјРµРЅ.
     </div>
     
-    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_bold b-layout__txt_padbot_5">Тестовый текст</div>
+    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_bold b-layout__txt_padbot_5">РўРµСЃС‚РѕРІС‹Р№ С‚РµРєСЃС‚</div>
     
     <div class="b-textarea">
         <textarea class="b-textarea__textarea" name="test" id="test" cols="80" rows="5"><?=  $sTestText?></textarea>
     </div>
     
     <div class="b-layout__txt b-layout__txt_fontsize_11 <?php if ( !empty($sUserMode) || !empty($sAdminMode) ) { ?>b-layout__txt_padbot_20<?php } ?>">
-        Во избежание ошибок перед сохранением запрещенных выражений рекомендуется проверить их на тестовом тексте и убедиться, что производятся все ожидаемые замены.
-        В противном случае пользователи будут видеь запрещенную к показу информацию.
+        Р’Рѕ РёР·Р±РµР¶Р°РЅРёРµ РѕС€РёР±РѕРє РїРµСЂРµРґ СЃРѕС…СЂР°РЅРµРЅРёРµРј Р·Р°РїСЂРµС‰РµРЅРЅС‹С… РІС‹СЂР°Р¶РµРЅРёР№ СЂРµРєРѕРјРµРЅРґСѓРµС‚СЃСЏ РїСЂРѕРІРµСЂРёС‚СЊ РёС… РЅР° С‚РµСЃС‚РѕРІРѕРј С‚РµРєСЃС‚Рµ Рё СѓР±РµРґРёС‚СЊСЃСЏ, С‡С‚Рѕ РїСЂРѕРёР·РІРѕРґСЏС‚СЃСЏ РІСЃРµ РѕР¶РёРґР°РµРјС‹Рµ Р·Р°РјРµРЅС‹.
+        Р’ РїСЂРѕС‚РёРІРЅРѕРј СЃР»СѓС‡Р°Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё Р±СѓРґСѓС‚ РІРёРґРµСЊ Р·Р°РїСЂРµС‰РµРЅРЅСѓСЋ Рє РїРѕРєР°Р·Сѓ РёРЅС„РѕСЂРјР°С†РёСЋ.
     </div>
     
     <?php if ( !empty($sUserMode) ) { ?>
-        <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_bold b-layout__txt_padbot_5">Замены для пользователя:</div>
+        <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_bold b-layout__txt_padbot_5">Р—Р°РјРµРЅС‹ РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ:</div>
         <div class="b-layout__txt b-layout__txt_fontsize_11 <?php if ( !empty($sAdminMode) ) { ?>b-layout__txt_padbot_20<?php } ?>"><?=reformat( $sUserMode, 100, 0, 1 )?></div>
     <?php } ?>
     
     <?php if ( !empty($sAdminMode) ) { ?>
-        <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_bold b-layout__txt_padbot_5">Замены для администратора:</div>
+        <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_bold b-layout__txt_padbot_5">Р—Р°РјРµРЅС‹ РґР»СЏ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°:</div>
         <div class="b-layout__txt b-layout__txt_fontsize_11"><?=reformat( $sAdminMode, 100, 0, 1 )?></div>
     <?php } ?>
     
@@ -78,7 +78,7 @@ if ( $site == 'regex' ) {
         <a onclick="stop_words.regexTest();" class="b-button b-button_rectangle_color_green" href="javascript:void(0);">
             <span class="b-button__b1">
                 <span class="b-button__b2">
-                    <span class="b-button__txt">Тестировать</span>
+                    <span class="b-button__txt">РўРµСЃС‚РёСЂРѕРІР°С‚СЊ</span>
                 </span>
             </span>
         </a>
@@ -88,12 +88,12 @@ if ( $site == 'regex' ) {
         <a href="javascript:void(0);"  onclick="stop_words.regexSubmit();" class="b-button b-button_rectangle_color_green">
             <span class="b-button__b1">
                 <span class="b-button__b2">
-                    <span class="b-button__txt">Сохранить</span>
+                    <span class="b-button__txt">РЎРѕС…СЂР°РЅРёС‚СЊ</span>
                 </span>
             </span>
         </a>
-        <span class="b-buttons__txt b-buttons__txt_padleft_10">или</span>
-        <a href="/siteadmin/stop_words/?site=<?=$site?>" class="b-buttons__link b-buttons__link_color_c10601">отменить изменения</a>
+        <span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё</span>
+        <a href="/siteadmin/stop_words/?site=<?=$site?>" class="b-buttons__link b-buttons__link_color_c10601">РѕС‚РјРµРЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ</a>
     </div>
 
     
@@ -102,19 +102,19 @@ if ( $site == 'regex' ) {
 }
 else {
     
-    // Подозрительные слова
+    // РџРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹Рµ СЃР»РѕРІР°
     
 ?>
     <div class="b-textarea">
         <textarea class="b-textarea__textarea" name="words" id="words" cols="80" rows="5"><?=  $sStopWords?></textarea>
     </div>
 
-    <div class="b-layout__txt b-layout__txt_fontsize_11">Через запятую. Эти слова будут выделены жирным при модерировании пользовательского контента.</div>
+    <div class="b-layout__txt b-layout__txt_fontsize_11">Р§РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ. Р­С‚Рё СЃР»РѕРІР° Р±СѓРґСѓС‚ РІС‹РґРµР»РµРЅС‹ Р¶РёСЂРЅС‹Рј РїСЂРё РјРѕРґРµСЂРёСЂРѕРІР°РЅРёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РєРѕРЅС‚РµРЅС‚Р°.</div>
 
     <div class="b-buttons b-buttons_padtop_40">
-        <a href="javascript:void(0);" onclick="stop_words.wordsSubmit();" class="b-button b-button_flat b-button_flat_green">Сохранить</a>
-        <span class="b-buttons__txt b-buttons__txt_padleft_10">или</span>
-        <a href="/siteadmin/stop_words/?site=<?=$site?>" class="b-buttons__link b-buttons__link_color_c10601">отменить изменения</a>
+        <a href="javascript:void(0);" onclick="stop_words.wordsSubmit();" class="b-button b-button_flat b-button_flat_green">РЎРѕС…СЂР°РЅРёС‚СЊ</a>
+        <span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё</span>
+        <a href="/siteadmin/stop_words/?site=<?=$site?>" class="b-buttons__link b-buttons__link_color_c10601">РѕС‚РјРµРЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ</a>
     </div>
 
 <?php

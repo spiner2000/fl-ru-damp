@@ -1,4 +1,4 @@
-<h2 class="b-layout__title b-layout__title_padbot_10 b-layout__title_padtop_70">Файлы по этапу</h2>			
+<h2 class="b-layout__title b-layout__title_padbot_10 b-layout__title_padtop_70">Р¤Р°Р№Р»С‹ РїРѕ СЌС‚Р°РїСѓ</h2>			
 <? if($sbr->isAdmin()) { ?>
 <table class="b-layout__table" cellpadding="0" cellspacing="0" border="0">
     <? foreach($sbr->all_docs as $k=>$doc) { 
@@ -24,7 +24,7 @@
         </td>
         <td class="b-layout__right b-layout__right_padleft_20 b-layout__right_padbot_5">
             <div class="b-layout__txt">
-                <a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?=$doc['file_path'] . $doc['file_name']?>" target="_blank">Скачать</a>
+                <a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?=$doc['file_path'] . $doc['file_name']?>" target="_blank">РЎРєР°С‡Р°С‚СЊ</a>
             </div>
         </td>
         <?php if($sbr->isAdmin() && $doc['type'] != sbr::DOCS_TYPE_OFFER && $doc['access_role'] != null) { ?>
@@ -33,9 +33,9 @@
                 <a class="b-button b-button_admin_edit b-button_margright_20" href="javascript:void(0)" onclick="xajax_aEditDocument('<?= $stage->id?>', '<?= $doc['id']?>');"></a><a class="b-button b-button_admin_del" href="javascript:void(0)" onclick="xajax_aDelDocument('<?= $stage->id?>', '<?= $doc['id']?>');"></a>
                 &nbsp;&nbsp;
                 <? if($doc['id'] != $doc['first_doc_id']) {?>
-                <a class="b-layout__link b-layout__link_bordbot_dot_ee1d16" href="javascript:void(0)" onclick="if(confirm('Вы хотите пересоздать документ?')) xajax_aRecreateDocLC('<?= $doc['id']; ?>', '<?= $sbr->emp_id; ?>', '<?= $stage->id; ?>', 'create', 'stage');">Создать новый</a> 
+                <a class="b-layout__link b-layout__link_bordbot_dot_ee1d16" href="javascript:void(0)" onclick="if(confirm('Р’С‹ С…РѕС‚РёС‚Рµ РїРµСЂРµСЃРѕР·РґР°С‚СЊ РґРѕРєСѓРјРµРЅС‚?')) xajax_aRecreateDocLC('<?= $doc['id']; ?>', '<?= $sbr->emp_id; ?>', '<?= $stage->id; ?>', 'create', 'stage');">РЎРѕР·РґР°С‚СЊ РЅРѕРІС‹Р№</a> 
                 <? } else if($doc['id'] == $doc['first_doc_id']) { //if?>
-                <a class="b-layout__link b-layout__link_bordbot_dot_ee1d16"  href="javascript:void(0)" onmouseover="$('doc_<?=$doc['second_doc_id']?>').addClass('b-layout__tr_loadfon')" onmouseout="$('doc_<?=$doc['second_doc_id']?>').removeClass('b-layout__tr_loadfon')" onclick="xajax_aRecreateDocLC('<?= $doc['id']?>', '<?= $sbr->frl_id; ?>', <?= $stage->id; ?>, 'remove', 'stage');" title="При восстановлении будет удален выделенный файл">Восстановить</a>
+                <a class="b-layout__link b-layout__link_bordbot_dot_ee1d16"  href="javascript:void(0)" onmouseover="$('doc_<?=$doc['second_doc_id']?>').addClass('b-layout__tr_loadfon')" onmouseout="$('doc_<?=$doc['second_doc_id']?>').removeClass('b-layout__tr_loadfon')" onclick="xajax_aRecreateDocLC('<?= $doc['id']?>', '<?= $sbr->frl_id; ?>', <?= $stage->id; ?>, 'remove', 'stage');" title="РџСЂРё РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРё Р±СѓРґРµС‚ СѓРґР°Р»РµРЅ РІС‹РґРµР»РµРЅРЅС‹Р№ С„Р°Р№Р»">Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ</a>
                 <? }//if?>
             </div>
         </td>
@@ -52,19 +52,19 @@
         <tbody><tr>
                 <td class="b-file__button">            
                     <div class="b-file__wrap">
-                        <a href="javascript:void(0)" onclick="$('popup_admin_files').removeClass('b-shadow_hide');" class="b-button b-button_flat b-button_flat_grey">Загрузить файл</a>
+                        <a href="javascript:void(0)" onclick="$('popup_admin_files').removeClass('b-shadow_hide');" class="b-button b-button_flat b-button_flat_grey">Р—Р°РіСЂСѓР·РёС‚СЊ С„Р°Р№Р»</a>
                     </div>
                 </td>
                 <td class="b-file__text">
                     <div style="z-index: 10;" class="b-filter">
-                        <div class="b-filter__body b-filter__body_padtop_10"><a href="#" class="b-filter__link b-filter__link_fontsize_11 b-filter__link_dot_41 b-fileinfo">Требования к файлам</a></div>
+                        <div class="b-filter__body b-filter__body_padtop_10"><a href="#" class="b-filter__link b-filter__link_fontsize_11 b-filter__link_dot_41 b-fileinfo">РўСЂРµР±РѕРІР°РЅРёСЏ Рє С„Р°Р№Р»Р°Рј</a></div>
                         <div class="b-shadow b-filter__toggle b-shadow__margleft_-110 b-shadow__margtop_10 b-shadow_hide b-fileinfo-shadow" style="margin-left: 0pt;">
                             <div class="b-shadow__right">
                                 <div class="b-shadow__left">
                                     <div class="b-shadow__top">
                                         <div class="b-shadow__bottom">
                                             <div class="b-shadow__body b-shadow__body_pad_15 b-shadow_width_270 b-shadow__body_bg_fff">
-                                                <div class="b-shadow__txt b-shadow__txt_fontsize_11">Запрещенные форматы: ade, adp, chm, cmd, com, cpl, exe, hta, ins, isp, jse, lib, mde, msk, msp, mst, pif, scr, sct, shb, sys, vb, vbe, vbs, vxd, wsc, wsf, wsh</div>
+                                                <div class="b-shadow__txt b-shadow__txt_fontsize_11">Р—Р°РїСЂРµС‰РµРЅРЅС‹Рµ С„РѕСЂРјР°С‚С‹: ade, adp, chm, cmd, com, cpl, exe, hta, ins, isp, jse, lib, mde, msk, msp, mst, pif, scr, sct, shb, sys, vb, vbe, vbs, vxd, wsc, wsf, wsh</div>
                                             </div>
                                         </div>
                                     </div>
@@ -114,16 +114,16 @@
         </td>
         <td class="b-layout__right b-layout__right_padleft_20 b-layout__right_padbot_5">
             <div class="b-layout__txt">
-                <a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?=$doc['file_path'] . $doc['file_name']?>" target="_blank">Скачать</a>
+                <a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?=$doc['file_path'] . $doc['file_name']?>" target="_blank">РЎРєР°С‡Р°С‚СЊ</a>
             </div>
         </td>
         <?php if($sbr->isAdmin() && $doc['type'] != sbr::DOCS_TYPE_OFFER && $doc['access_role'] != null) { ?>
         <td class="b-layout__right b-layout__right_padleft_20 b-layout__right_padbot_5">
             <div class="b-layout__txt">
                 <? if($doc['id'] != $doc['first_doc_id']) {?>
-                <a class="b-layout__link b-layout__link_bordbot_dot_ee1d16" href="javascript:void(0)" onclick="xajax_aRecreateDocLC('<?= $doc['id']; ?>', '<?= $sbr->emp_id; ?>', '<?= $stage->id; ?>', 'create', 'stage');">Создать новый</a> 
+                <a class="b-layout__link b-layout__link_bordbot_dot_ee1d16" href="javascript:void(0)" onclick="xajax_aRecreateDocLC('<?= $doc['id']; ?>', '<?= $sbr->emp_id; ?>', '<?= $stage->id; ?>', 'create', 'stage');">РЎРѕР·РґР°С‚СЊ РЅРѕРІС‹Р№</a> 
                 <? } else if($doc['id'] == $doc['first_doc_id']) { //if?>
-                <a class="b-layout__link b-layout__link_bordbot_dot_ee1d16"  href="javascript:void(0)" onmouseover="$('doc_<?=$doc['second_doc_id']?>').addClass('b-layout__tr_loadfon')" onmouseout="$('doc_<?=$doc['second_doc_id']?>').removeClass('b-layout__tr_loadfon')" onclick="xajax_aRecreateDocLC('<?= $doc['id']?>', '<?= $sbr->frl_id; ?>', <?= $stage->id; ?>, 'remove', 'stage');" title="При восстановлении будет удален выделенный файл">Восстановить</a>
+                <a class="b-layout__link b-layout__link_bordbot_dot_ee1d16"  href="javascript:void(0)" onmouseover="$('doc_<?=$doc['second_doc_id']?>').addClass('b-layout__tr_loadfon')" onmouseout="$('doc_<?=$doc['second_doc_id']?>').removeClass('b-layout__tr_loadfon')" onclick="xajax_aRecreateDocLC('<?= $doc['id']?>', '<?= $sbr->frl_id; ?>', <?= $stage->id; ?>, 'remove', 'stage');" title="РџСЂРё РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРё Р±СѓРґРµС‚ СѓРґР°Р»РµРЅ РІС‹РґРµР»РµРЅРЅС‹Р№ С„Р°Р№Р»">Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ</a>
                 <? }//if?>
             </div>
         </td>

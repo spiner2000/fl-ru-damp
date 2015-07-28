@@ -1,19 +1,19 @@
 <?php
 
 /**
- * Êëàññ äëÿ ğàáîòû ñî çíà÷åíèÿìè ñåî-òåêñòîâ äëÿ ğàçäåëîâ è ñïåöèàëèçàöèé
+ * ĞšĞ»Ğ°ÑÑ Ğ´Ğ»Ñ Ñ€Ğ°Ğ±Ğ¾Ñ‚Ñ‹ ÑĞ¾ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸ÑĞ¼Ğ¸ ÑĞµĞ¾-Ñ‚ĞµĞºÑÑ‚Ğ¾Ğ² Ğ´Ğ»Ñ Ñ€Ğ°Ğ·Ğ´ĞµĞ»Ğ¾Ğ² Ğ¸ ÑĞ¿ĞµÑ†Ğ¸Ğ°Ğ»Ğ¸Ğ·Ğ°Ñ†Ğ¸Ğ¹
  *
  * @author danil
  */
 class SeoValues {
 
     /**
-     * Êîëè÷åñòâî çàãîëîâêîâ
+     * ĞšĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ·Ğ°Ğ³Ğ¾Ğ»Ğ¾Ğ²ĞºĞ¾Ğ²
      */
     const SIZE_TITLE = 4;
     
     /**
-     * Êîëè÷åñòâî êëş÷åâûõ ñëîâ
+     * ĞšĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ĞºĞ»ÑÑ‡ĞµĞ²Ñ‹Ñ… ÑĞ»Ğ¾Ğ²
      */
     const SIZE_KEY = 10;
     const SIZE_TEXT = 4;
@@ -21,35 +21,35 @@ class SeoValues {
     const TABLE = 'seo_tags';
 
     /*
-     * Çàãîëîâêè â seo-òåêñòàõ è ğàçäåëàõ êàòàëîãà óñëóã
+     * Ğ—Ğ°Ğ³Ğ¾Ğ»Ğ¾Ğ²ĞºĞ¸ Ğ² seo-Ñ‚ĞµĞºÑÑ‚Ğ°Ñ… Ğ¸ Ñ€Ğ°Ğ·Ğ´ĞµĞ»Ğ°Ñ… ĞºĞ°Ñ‚Ğ°Ğ»Ğ¾Ğ³Ğ° ÑƒÑĞ»ÑƒĞ³
      */
     protected $tu_titles;
 
     /*
-     * Çàãîëîâêè â seo-òåêñòàõ è ğàçäåëàõ êàòàëîãà ôğèëàíñåğîâ
+     * Ğ—Ğ°Ğ³Ğ¾Ğ»Ğ¾Ğ²ĞºĞ¸ Ğ² seo-Ñ‚ĞµĞºÑÑ‚Ğ°Ñ… Ğ¸ Ñ€Ğ°Ğ·Ğ´ĞµĞ»Ğ°Ñ… ĞºĞ°Ñ‚Ğ°Ğ»Ğ¾Ğ³Ğ° Ñ„Ñ€Ğ¸Ğ»Ğ°Ğ½ÑĞµÑ€Ğ¾Ğ²
      */
     protected $f_titles;
 
     /*
-     * êëş÷åâûå ñëîâà â ğàçäåëàõ êàòàëîãà
+     * ĞºĞ»ÑÑ‡ĞµĞ²Ñ‹Ğµ ÑĞ»Ğ¾Ğ²Ğ° Ğ² Ñ€Ğ°Ğ·Ğ´ĞµĞ»Ğ°Ñ… ĞºĞ°Ñ‚Ğ°Ğ»Ğ¾Ğ³Ğ°
      */
     protected $keys;
 
     /*
-     * seo-òåêñòû â ğàçäåëàõ êàòàëîãà óñëóã
+     * seo-Ñ‚ĞµĞºÑÑ‚Ñ‹ Ğ² Ñ€Ğ°Ğ·Ğ´ĞµĞ»Ğ°Ñ… ĞºĞ°Ñ‚Ğ°Ğ»Ğ¾Ğ³Ğ° ÑƒÑĞ»ÑƒĞ³
      */
     protected $tu_texts;
 
     /*
-     * seo-òåêñòû â ğàçäåëàõ êàòàëîãà ôğèëàíñåğîâ
+     * seo-Ñ‚ĞµĞºÑÑ‚Ñ‹ Ğ² Ñ€Ğ°Ğ·Ğ´ĞµĞ»Ğ°Ñ… ĞºĞ°Ñ‚Ğ°Ğ»Ğ¾Ğ³Ğ° Ñ„Ñ€Ğ¸Ğ»Ğ°Ğ½ÑĞµÑ€Ğ¾Ğ²
      */
     protected $f_texts;
     
     
     /**
-     * Ïîëó÷åíèå îäíîé çàïèñè
-     * @param integer $id ÈÄ ïğèâÿçêè 
-     * @param bool $is_spec ñïåöèàëèçàöèÿ èëè ğàçäåë
+     * ĞŸĞ¾Ğ»ÑƒÑ‡ĞµĞ½Ğ¸Ğµ Ğ¾Ğ´Ğ½Ğ¾Ğ¹ Ğ·Ğ°Ğ¿Ğ¸ÑĞ¸
+     * @param integer $id Ğ˜Ğ” Ğ¿Ñ€Ğ¸Ğ²ÑĞ·ĞºĞ¸ 
+     * @param bool $is_spec ÑĞ¿ĞµÑ†Ğ¸Ğ°Ğ»Ğ¸Ğ·Ğ°Ñ†Ğ¸Ñ Ğ¸Ğ»Ğ¸ Ñ€Ğ°Ğ·Ğ´ĞµĞ»
      */
     function initCard($id, $is_spec = true) {
         $sql = "SELECT * FROM " . self::TABLE . " WHERE parent_id = ?i AND is_spec = ?;";
@@ -72,7 +72,7 @@ class SeoValues {
     }
     
     /**
-     * Ïîëó÷åíèå ñïèñêà çàïèñåé äëÿ àäìèíêè
+     * ĞŸĞ¾Ğ»ÑƒÑ‡ĞµĞ½Ğ¸Ğµ ÑĞ¿Ğ¸ÑĞºĞ° Ğ·Ğ°Ğ¿Ğ¸ÑĞµĞ¹ Ğ´Ğ»Ñ Ğ°Ğ´Ğ¼Ğ¸Ğ½ĞºĞ¸
      */
     public function getList() {
         $sql = "SELECT st.*, p.name as prof_title, pg.name as prof_group_title 
@@ -84,7 +84,7 @@ class SeoValues {
     }
     
     /**
-     * Ïîëó÷åíèå îäíîé çàïèñè äëÿ àäìèíêè
+     * ĞŸĞ¾Ğ»ÑƒÑ‡ĞµĞ½Ğ¸Ğµ Ğ¾Ğ´Ğ½Ğ¾Ğ¹ Ğ·Ğ°Ğ¿Ğ¸ÑĞ¸ Ğ´Ğ»Ñ Ğ°Ğ´Ğ¼Ğ¸Ğ½ĞºĞ¸
      */
     public function getCardById($id) {
         $sql = "SELECT st.*, p.name as prof_title, pg.name as prof_group_title 
@@ -101,8 +101,8 @@ class SeoValues {
     }
     
     /**
-     * Âîçâğàùàåò îäíî êëş÷åâîå ñëîâî ïî êëş÷ó
-     * @param int $num Êëş÷
+     * Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ĞµÑ‚ Ğ¾Ğ´Ğ½Ğ¾ ĞºĞ»ÑÑ‡ĞµĞ²Ğ¾Ğµ ÑĞ»Ğ¾Ğ²Ğ¾ Ğ¿Ğ¾ ĞºĞ»ÑÑ‡Ñƒ
+     * @param int $num ĞšĞ»ÑÑ‡
      * @return string
      */
     public function getKey($num) {
@@ -110,9 +110,9 @@ class SeoValues {
     }
     
     /**
-     * Âîçâğàùàåò ñòğîêó èç ğÿäà êëş÷åâûõ ñëîâ
-     * @param int $count Êîëè÷åñòâî èñïîëüçóåìûõ êëş÷åâûõ ñëîâ
-     * @return string Ñîáğàííàÿ ñòğîêà
+     * Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ĞµÑ‚ ÑÑ‚Ñ€Ğ¾ĞºÑƒ Ğ¸Ğ· Ñ€ÑĞ´Ğ° ĞºĞ»ÑÑ‡ĞµĞ²Ñ‹Ñ… ÑĞ»Ğ¾Ğ²
+     * @param int $count ĞšĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ¸ÑĞ¿Ğ¾Ğ»ÑŒĞ·ÑƒĞµĞ¼Ñ‹Ñ… ĞºĞ»ÑÑ‡ĞµĞ²Ñ‹Ñ… ÑĞ»Ğ¾Ğ²
+     * @return string Ğ¡Ğ¾Ğ±Ñ€Ğ°Ğ½Ğ½Ğ°Ñ ÑÑ‚Ñ€Ğ¾ĞºĞ°
      */
     public function getKeysString($count = self::SIZE_KEY) {
         if ($this->keys) {
@@ -124,36 +124,36 @@ class SeoValues {
     }
     
     /**
-     * Âîçâğàùàåò îäèí èç çàãîëîâêîâ ôğèëàíñåğîâ ïî êëş÷ó
-     * @param int $num êëş÷
-     * @return string Çàãîëîâîê
+     * Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ĞµÑ‚ Ğ¾Ğ´Ğ¸Ğ½ Ğ¸Ğ· Ğ·Ğ°Ğ³Ğ¾Ğ»Ğ¾Ğ²ĞºĞ¾Ğ² Ñ„Ñ€Ğ¸Ğ»Ğ°Ğ½ÑĞµÑ€Ğ¾Ğ² Ğ¿Ğ¾ ĞºĞ»ÑÑ‡Ñƒ
+     * @param int $num ĞºĞ»ÑÑ‡
+     * @return string Ğ—Ğ°Ğ³Ğ¾Ğ»Ğ¾Ğ²Ğ¾Ğº
      */
     public function getFTitle($num) {
         return isset($this->f_titles[$num]) ? $this->f_titles[$num] : '';
     }
     
     /**
-     * Âîçâğàùàåò îäèí èç òåêñòîâ ôğèëàíñåğîâ ïî êëş÷ó
-     * @param int $num êëş÷
-     * @return string Òåêñò
+     * Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ĞµÑ‚ Ğ¾Ğ´Ğ¸Ğ½ Ğ¸Ğ· Ñ‚ĞµĞºÑÑ‚Ğ¾Ğ² Ñ„Ñ€Ğ¸Ğ»Ğ°Ğ½ÑĞµÑ€Ğ¾Ğ² Ğ¿Ğ¾ ĞºĞ»ÑÑ‡Ñƒ
+     * @param int $num ĞºĞ»ÑÑ‡
+     * @return string Ğ¢ĞµĞºÑÑ‚
      */
     public function getFText($num) {
         return isset($this->f_texts[$num]) ? $this->f_texts[$num] : '';
     }
     
     /**
-     * Âîçâğàùàåò îäèí èç çàãîëîâêîâ óñëóã ïî êëş÷ó
-     * @param int $num êëş÷
-     * @return string Çàãîëîâîê
+     * Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ĞµÑ‚ Ğ¾Ğ´Ğ¸Ğ½ Ğ¸Ğ· Ğ·Ğ°Ğ³Ğ¾Ğ»Ğ¾Ğ²ĞºĞ¾Ğ² ÑƒÑĞ»ÑƒĞ³ Ğ¿Ğ¾ ĞºĞ»ÑÑ‡Ñƒ
+     * @param int $num ĞºĞ»ÑÑ‡
+     * @return string Ğ—Ğ°Ğ³Ğ¾Ğ»Ğ¾Ğ²Ğ¾Ğº
      */
     public function getTUTitle($num) {
         return isset($this->tu_titles[$num]) ? $this->tu_titles[$num] : '';
     }
     
     /**
-     * Âîçâğàùàåò îäèí èç òåêñòîâ óñëóã ïî êëş÷ó
-     * @param int $num êëş÷
-     * @return string Òåêñò
+     * Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ĞµÑ‚ Ğ¾Ğ´Ğ¸Ğ½ Ğ¸Ğ· Ñ‚ĞµĞºÑÑ‚Ğ¾Ğ² ÑƒÑĞ»ÑƒĞ³ Ğ¿Ğ¾ ĞºĞ»ÑÑ‡Ñƒ
+     * @param int $num ĞºĞ»ÑÑ‡
+     * @return string Ğ¢ĞµĞºÑÑ‚
      */
     public function getTUText($num) {
         return isset($this->tu_texts[$num]) ? $this->tu_texts[$num] : '';

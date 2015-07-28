@@ -33,7 +33,7 @@ switch ($filter_page) {
             $prmd = "{$prof_link}/?";
 }
 
-//создаем массив специализаций (для фильтра на главной он уже есть в $prfs, для фильтра в проектах фрилансера его нет, поэтому делаем проверку на существование
+//СЃРѕР·РґР°РµРј РјР°СЃСЃРёРІ СЃРїРµС†РёР°Р»РёР·Р°С†РёР№ (РґР»СЏ С„РёР»СЊС‚СЂР° РЅР° РіР»Р°РІРЅРѕР№ РѕРЅ СѓР¶Рµ РµСЃС‚СЊ РІ $prfs, РґР»СЏ С„РёР»СЊС‚СЂР° РІ РїСЂРѕРµРєС‚Р°С… С„СЂРёР»Р°РЅСЃРµСЂР° РµРіРѕ РЅРµС‚, РїРѕСЌС‚РѕРјСѓ РґРµР»Р°РµРј РїСЂРѕРІРµСЂРєСѓ РЅР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ
 if (!sizeof($profs)) {
     $all_specs = professions::GetAllProfessions("", 0, 1);
 } else {
@@ -53,7 +53,7 @@ if ( $cFilter && is_array($cFilter) && count($cFilter) ) {
 $currencies = array(
     'USD',
     'Euro',
-    'Руб',
+    'Р СѓР±',
     'FM'
 );
 
@@ -81,7 +81,7 @@ var vsbr = 0;
 
 function FilterCatalogAddCategoryType() {
     if ($('pf_subcategory').value == 0) {
-        //добавляем категорию
+        //РґРѕР±Р°РІР»СЏРµРј РєР°С‚РµРіРѕСЂРёСЋ
         if(Number($('pf_category').value) > 0) {
             tl = $('pf_category').options[$('pf_category').selectedIndex].text;
             tlf = tl;
@@ -92,7 +92,7 @@ function FilterCatalogAddCategoryType() {
         }
     }
     else {
-        //добавляем подкатегорию
+        //РґРѕР±Р°РІР»СЏРµРј РїРѕРґРєР°С‚РµРіРѕСЂРёСЋ
         if(Number($('pf_category').value) > 0) {
             tl = $('pf_subcategory').options[$('pf_subcategory').selectedIndex].text;
             tlf = tl;
@@ -104,8 +104,8 @@ function FilterCatalogAddCategoryType() {
     }
 }
 
-//1 = фильтр проектов
-//2 = фильтр фрилансеров
+//1 = С„РёР»СЊС‚СЂ РїСЂРѕРµРєС‚РѕРІ
+//2 = С„РёР»СЊС‚СЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
 var curFBulletsBox = 2;
 
 var maxCostBlock = 12;
@@ -143,8 +143,8 @@ for ($i=0; $i<sizeof($all_specs); $i++)
   else {echo ",";}
 }
 
-$cost_type = array(1 => "За месяц", 2 => "За 1000 знаков", 3 => "За Проект", 4 => "За час");
-$curr_type = array("USD", "Euro", "Руб", "FM");
+$cost_type = array(1 => "Р—Р° РјРµСЃСЏС†", 2 => "Р—Р° 1000 Р·РЅР°РєРѕРІ", 3 => "Р—Р° РџСЂРѕРµРєС‚", 4 => "Р—Р° С‡Р°СЃ");
+$curr_type = array("USD", "Euro", "Р СѓР±", "FM");
 ?>
 var filter_mirror_specs = {<?
 for ($i=0; $i<count($all_mirrored_specs),$ms=$all_mirrored_specs[$i]; $i++)
@@ -252,11 +252,11 @@ function addCost(o, inp, def) {
     if(cost_count < maxCostBlock && def == 0) {
         bSpan.className = "flt-add";
         bSpan.onclick=addCost;
-        bSpan.innerHTML = '<span class="flt-spec"><span class="flt-s-in"><a href="javascript: void(0);"><img src="/images/flt-add.png" alt="" width="15" height="15" /><span>Добавить еще</span></a></span></span>';
+        bSpan.innerHTML = '<span class="flt-spec"><span class="flt-s-in"><a href="javascript: void(0);"><img src="/images/flt-add.png" alt="" width="15" height="15" /><span>Р”РѕР±Р°РІРёС‚СЊ РµС‰Рµ</span></a></span></span>';
     } else {
         bSpan.className = "flt-remove";
         bSpan.onclick=delCost;
-        bSpan.innerHTML = '<span class="flt-spec"><span class="flt-s-in"><a href="javascript: void(0);"><img src="/images/flt-close.png" alt="" width="15" height="15" /><span>Убрать</span></a></span></span>';
+        bSpan.innerHTML = '<span class="flt-spec"><span class="flt-s-in"><a href="javascript: void(0);"><img src="/images/flt-close.png" alt="" width="15" height="15" /><span>РЈР±СЂР°С‚СЊ</span></a></span></span>';
     }
     
     var mSpan = document.createElement("span");
@@ -304,22 +304,22 @@ function delCost(o) {
 }
 
 function add2del(o) {
-    var a = o.childNodes[0].childNodes[0].childNodes[0]; // Ссылка
-    var i = a.childNodes[0]; // Картинка
-    var t = a.childNodes[1]; // Текст
+    var a = o.childNodes[0].childNodes[0].childNodes[0]; // РЎСЃС‹Р»РєР°
+    var i = a.childNodes[0]; // РљР°СЂС‚РёРЅРєР°
+    var t = a.childNodes[1]; // РўРµРєСЃС‚
     
     if(o.className == "flt-add") { 
         o.onclick = delCost;
         o.className = "flt-remove";
         a.href = "javascript: void(1)";
         i.src = "/images/flt-close.png";
-        t.innerHTML = "Убрать";
+        t.innerHTML = "РЈР±СЂР°С‚СЊ";
     } else {
         o.onclick = addCost;
         o.className = "flt-add";
         a.href = "javascript: void(0)";
         i.src = "/images/flt-add.png";
-        t.innerHTML = "Добавить еще";
+        t.innerHTML = "Р”РѕР±Р°РІРёС‚СЊ РµС‰Рµ";
     }                        
 }
 
@@ -332,7 +332,7 @@ function add2del(o) {
         <b class="b2"></b>
         <div class="form-in">
             <div class="form-h">
-                <a href="javascript:;" onclick="frlFiltersToggle(this)" id="frlFiltersToggle" class="lnk-dot-blue">Поиск по каталогу</a>
+                <a href="javascript:;" onclick="frlFiltersToggle(this)" id="frlFiltersToggle" class="lnk-dot-blue">РџРѕРёСЃРє РїРѕ РєР°С‚Р°Р»РѕРіСѓ</a>
             </div>
             <div class="form-b">
                 <div class="form-block first">
@@ -342,17 +342,17 @@ function add2del(o) {
                         </div>
                         <ul class="form-list">
                             <?php if(false){ ?>
-                            <li><label><input type="checkbox" class="i-chk" /> Рекомендации работодателей</label></li>
+                            <li><label><input type="checkbox" class="i-chk" /> Р РµРєРѕРјРµРЅРґР°С†РёРё СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№</label></li>
                             <?php } ?>
-                            <li><label><input type="checkbox" class="i-chk" name="is_pro" value="1" <?=($mFilter['is_pro']=="t"?'checked="true"':'')?> /> C <a href="/payed/"><span class="b-icon__pro b-icon__pro_f"></span></a> аккаунтом</label></li>
-                            <li><label><input type="checkbox" class="i-chk" name="success_sbr[0]" value="1" <?=($mFilter['success_sbr'][0]==1?'checked="true"':'')?> /> С успешными <img src="/images/ico-sbr.png" alt="" /> <a href="/norisk2/" target="_blank">«Безопасными Сделками»</a></label></li>
+                            <li><label><input type="checkbox" class="i-chk" name="is_pro" value="1" <?=($mFilter['is_pro']=="t"?'checked="true"':'')?> /> C <a href="/payed/"><span class="b-icon__pro b-icon__pro_f"></span></a> Р°РєРєР°СѓРЅС‚РѕРј</label></li>
+                            <li><label><input type="checkbox" class="i-chk" name="success_sbr[0]" value="1" <?=($mFilter['success_sbr'][0]==1?'checked="true"':'')?> /> РЎ СѓСЃРїРµС€РЅС‹РјРё <img src="/images/ico-sbr.png" alt="" /> <a href="/norisk2/" target="_blank">В«Р‘РµР·РѕРїР°СЃРЅС‹РјРё РЎРґРµР»РєР°РјРёВ»</a></label></li>
                         </ul>
                         <? if (!$prof_id) { ?>
                         <div class="b-spec">
-                            <label class="form-l"><strong>Специализация</strong></label>
+                            <label class="form-l"><strong>РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ</strong></label>
                             <div class="f-sel">
                                <select class="flt-p-sel" name="pf_category" id="pf_category" onChange="FilterSubCategory(this.value)">
-                                   <option value="0">Все разделы</option>
+                                   <option value="0">Р’СЃРµ СЂР°Р·РґРµР»С‹</option>
                                  <? foreach($filter_categories as $cat) { if($cat['id']<=0) continue; ?>
                                  <option value="<?=$cat['id']?>"><?=$cat['name']?></option>
                                  <? } ?>
@@ -360,13 +360,13 @@ function add2del(o) {
                             </div>
                             <div class="f-sel" id="frm_subcategory">
                                <select class="flt-p-sel" name="pf_subcategory" id="pf_subcategory" disabled="disabled">
-                                 <option value="0">Все подкатегории</option>
+                                 <option value="0">Р’СЃРµ РїРѕРґРєР°С‚РµРіРѕСЂРёРё</option>
                                  <? if(false) for ($i=0; $i<sizeof($filter_subcategories); $i++) { ?>
                                  <option value="<?=$filter_subcategories[$i]['id']?>"><?=$filter_subcategories[$i]['profname']?></option>
                                  <? } ?>
                                </select>
                             </div>
-                            <a href="javascript: void(0);" onclick="FilterCatalogAddCategoryType();" class="lnk-dot-666">Добавить еще</a>
+                            <a href="javascript: void(0);" onclick="FilterCatalogAddCategoryType();" class="lnk-dot-666">Р”РѕР±Р°РІРёС‚СЊ РµС‰Рµ</a>
                             <div class="spec-list c" id="pf_specs"></div>
                         </div>
                         <? } else { ?>
@@ -378,7 +378,7 @@ function add2del(o) {
                 <div class="form-block last">
                     <div class="form-el">
                         <div class="f-tgl">
-                            <a href="" class="lnk-dot-blue">Стоимость работы за месяц</a>
+                            <a href="" class="lnk-dot-blue">РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹ Р·Р° РјРµСЃСЏС†</a>
                         </div>
                         <div>
                             <input type="hidden" name="cost_type[]" value="1" />
@@ -394,7 +394,7 @@ function add2del(o) {
                     </div>
                     <div class="form-el">
                         <div class="f-tgl">
-                            <a href="" class="lnk-dot-blue">Стоимость работы за 1000 знаков</a>
+                            <a href="" class="lnk-dot-blue">РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹ Р·Р° 1000 Р·РЅР°РєРѕРІ</a>
                         </div>
                         <div>
                             <input type="hidden" name="cost_type[]" value="2" />
@@ -410,7 +410,7 @@ function add2del(o) {
                     </div>
                     <div class="form-el">
                         <div class="f-tgl">
-                            <a href="" class="lnk-dot-blue">Стоимость работы за проект</a>
+                            <a href="" class="lnk-dot-blue">РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹ Р·Р° РїСЂРѕРµРєС‚</a>
                         </div>
                         <div>
                             <input type="hidden" name="cost_type[]" value="3" />
@@ -426,7 +426,7 @@ function add2del(o) {
                     </div>
                     <div class="form-el">
                         <div class="f-tgl">
-                            <a href="" class="lnk-dot-blue">Стоимость работы за час</a>
+                            <a href="" class="lnk-dot-blue">РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹ Р·Р° С‡Р°СЃ</a>
                         </div>
                         <div>
                             <input type="hidden" name="cost_type[]" value="4" />
@@ -442,17 +442,17 @@ function add2del(o) {
                     </div>
                     <div class="form-el">
                         <div class="f-tgl">
-                            <a href="" class="lnk-dot-blue">Опыт работы</a>
+                            <a href="" class="lnk-dot-blue">РћРїС‹С‚ СЂР°Р±РѕС‚С‹</a>
                         </div>
                         <div>
                             <input type="text" size="10" name="exp[]" value="<?=$mFilter['exp_from']==0?'':$mFilter['exp_from']?>" maxlength="3" class="w65" />
                             &mdash;
-                            <input type="text" size="10" maxlength="3" name="exp[]" value="<?=$mFilter['exp_to']==0?'':$mFilter['exp_to']?>" class="w65" /> лет
+                            <input type="text" size="10" maxlength="3" name="exp[]" value="<?=$mFilter['exp_to']==0?'':$mFilter['exp_to']?>" class="w65" /> Р»РµС‚
                         </div>
                     </div>
                     <div class="form-el">
                         <div class="f-tgl">
-                            <a href="" class="lnk-dot-blue">Имя или логин</a>
+                            <a href="" class="lnk-dot-blue">РРјСЏ РёР»Рё Р»РѕРіРёРЅ</a>
                         </div>
                         <div>
                             <input type="text" name="login" value="<?=stripcslashes($mFilter['login'])?>" />
@@ -460,34 +460,34 @@ function add2del(o) {
                     </div>
                     <div class="form-el">
                         <div class="f-tgl">
-                            <a href="" class="lnk-dot-blue">Возраст</a>
+                            <a href="" class="lnk-dot-blue">Р’РѕР·СЂР°СЃС‚</a>
                         </div>
                         <div>
                             <input type="text" size="10" maxlength="3" name="age[]" value="<?=$mFilter['age_from']==0?'':$mFilter['age_from']?>" class="w65" />
                             &mdash;
-                            <input type="text" size="10" maxlength="3" name="age[]" value="<?=$mFilter['age_to']==0?'':$mFilter['age_to']?>" class="w65" /> лет
+                            <input type="text" size="10" maxlength="3" name="age[]" value="<?=$mFilter['age_to']==0?'':$mFilter['age_to']?>" class="w65" /> Р»РµС‚
                         </div>
                     </div>
                     <div class="form-el">
                         <div class="f-tgl">
-                            <a href="" class="lnk-dot-blue">Пол</a>
+                            <a href="" class="lnk-dot-blue">РџРѕР»</a>
                         </div>
                         <div>
                             <select name="sex" class="w120">
-                                <option value="0">любой</option>
-                                <option value="1" <?= $mFilter['sex'] == 1 ? 'selected' : '' ?>>Женский</option>
-                                <option value="2" <?= $mFilter['sex'] == 2 ? 'selected' : '' ?>>Мужской</option>
+                                <option value="0">Р»СЋР±РѕР№</option>
+                                <option value="1" <?= $mFilter['sex'] == 1 ? 'selected' : '' ?>>Р–РµРЅСЃРєРёР№</option>
+                                <option value="2" <?= $mFilter['sex'] == 2 ? 'selected' : '' ?>>РњСѓР¶СЃРєРѕР№</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-el">
                         <div class="f-tgl">
-                            <a href="" class="lnk-dot-blue">Месторасположение</a>
+                            <a href="" class="lnk-dot-blue">РњРµСЃС‚РѕСЂР°СЃРїРѕР»РѕР¶РµРЅРёРµ</a>
                         </div>
                         <div>
                             <div class="f-sel">
                                 <select class="flt-p-sel" id="pf_country" name="pf_country" onChange="FilterCityUpd(this.value)">
-                                    <option value="0">Все страны</option>
+                                    <option value="0">Р’СЃРµ СЃС‚СЂР°РЅС‹</option>
                                     <? foreach ($filter_countries as $countid => $country): ?>
                                         <option value="<?= $countid ?>"<? if ($countid == $mFilter['country']) echo(" selected") ?>><?= $country ?></option>
                                     <? endforeach; ?>
@@ -495,7 +495,7 @@ function add2del(o) {
                             </div>
                             <div class="f-sel" id="frm_city">
                                 <select class="flt-p-sel" name="pf_city">
-                                    <option value="0">Все города</option>
+                                    <option value="0">Р’СЃРµ РіРѕСЂРѕРґР°</option>
                                     <? if (sizeof($filter_cities)) foreach ($filter_cities as $cityid => $city): ?>
                                         <option value="<?= $cityid ?>"<? if ($cityid == $mFilter['city']) echo(" selected") ?>><?= $city ?></option>
                                     <? endforeach; ?>
@@ -505,26 +505,26 @@ function add2del(o) {
                     </div>
                     <div class="form-el">
                         <div class="f-tgl">
-                            <a href="" class="lnk-dot-blue">Дополнительные параметры</a>
+                            <a href="" class="lnk-dot-blue">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹</a>
                         </div>
                         <div style="display: none;">
                             <ul class="form-list">
-                                <li><div class="b-check"><input type="checkbox" class="b-check__input" name="in_office" value="1" <?=($mFilter['in_office']=='t'?'checked="checked"':'')?> /> <label class="b-check__label">Ищет работу в офисе</label></div></li>
-                                <li><div class="b-check"><input type="checkbox" class="b-check__input" name="in_fav" value="1" <?=($mFilter['in_fav']=="t"?'checked="checked"':'')?> /> <label class="b-check__label">У меня в избранных</label></div></li>
-                                <li><div class="b-check"><input type="checkbox" class="b-check__input" name="only_free" value="1" <?=($mFilter['only_free']=="t"?'checked="checked"':'')?> /> <label class="b-check__label">Только свободные</label></div></li>
-                                <li><div class="b-check"><input type="checkbox" class="b-check__input" name="is_positive" value="1" <?=($mFilter['is_positive']=="t"?'checked="checked"':'')?> /> <label class="b-check__label">С положительными отзывами</label></div></li>
-                                <li><div class="b-check"><input type="checkbox" class="b-check__input" name="is_preview" value="1" <?=($mFilter['is_preview']=="t"?'checked="checked"':'')?> /> <label class="b-check__label">Только с примерами работ</label></div></li>
-                                <li><div class="b-check"><input type="checkbox" class="b-check__input" name="not_negative" value="1" <?=($mFilter['not_negative']=="t"?'checked="checked"':'')?> /> <label class="b-check__label">Без отрицательных отзывов</label></div></li>
+                                <li><div class="b-check"><input type="checkbox" class="b-check__input" name="in_office" value="1" <?=($mFilter['in_office']=='t'?'checked="checked"':'')?> /> <label class="b-check__label">РС‰РµС‚ СЂР°Р±РѕС‚Сѓ РІ РѕС„РёСЃРµ</label></div></li>
+                                <li><div class="b-check"><input type="checkbox" class="b-check__input" name="in_fav" value="1" <?=($mFilter['in_fav']=="t"?'checked="checked"':'')?> /> <label class="b-check__label">РЈ РјРµРЅСЏ РІ РёР·Р±СЂР°РЅРЅС‹С…</label></div></li>
+                                <li><div class="b-check"><input type="checkbox" class="b-check__input" name="only_free" value="1" <?=($mFilter['only_free']=="t"?'checked="checked"':'')?> /> <label class="b-check__label">РўРѕР»СЊРєРѕ СЃРІРѕР±РѕРґРЅС‹Рµ</label></div></li>
+                                <li><div class="b-check"><input type="checkbox" class="b-check__input" name="is_positive" value="1" <?=($mFilter['is_positive']=="t"?'checked="checked"':'')?> /> <label class="b-check__label">РЎ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹РјРё РѕС‚Р·С‹РІР°РјРё</label></div></li>
+                                <li><div class="b-check"><input type="checkbox" class="b-check__input" name="is_preview" value="1" <?=($mFilter['is_preview']=="t"?'checked="checked"':'')?> /> <label class="b-check__label">РўРѕР»СЊРєРѕ СЃ РїСЂРёРјРµСЂР°РјРё СЂР°Р±РѕС‚</label></div></li>
+                                <li><div class="b-check"><input type="checkbox" class="b-check__input" name="not_negative" value="1" <?=($mFilter['not_negative']=="t"?'checked="checked"':'')?> /> <label class="b-check__label">Р‘РµР· РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹С… РѕС‚Р·С‹РІРѕРІ</label></div></li>
                             </ul>
                         </div>
                     </div>
                     <div class="form-el">
-                        <input type="submit" value="Применить" />
-                        <input type="button" value="Очистить" onclick="FilterCatalogClearForm()" />
+                        <input type="submit" value="РџСЂРёРјРµРЅРёС‚СЊ" />
+                        <input type="button" value="РћС‡РёСЃС‚РёС‚СЊ" onclick="FilterCatalogClearForm()" />
                         <? if ($filter_apply) { ?>
-                        <a href="<?=$frm_action?><?=$prmd?>action=deletefilter<?=$filter_query?>" class="flt-lnk">Отключить фильтр</a>
+                        <a href="<?=$frm_action?><?=$prmd?>action=deletefilter<?=$filter_query?>" class="flt-lnk">РћС‚РєР»СЋС‡РёС‚СЊ С„РёР»СЊС‚СЂ</a>
                         <? } else { ?>
-                        <a href="<?=$frm_action?><?=$prmd?>action=activatefilter<?=$filter_query?>" class="flt-lnk">Включить фильтр</a>
+                        <a href="<?=$frm_action?><?=$prmd?>action=activatefilter<?=$filter_query?>" class="flt-lnk">Р’РєР»СЋС‡РёС‚СЊ С„РёР»СЊС‚СЂ</a>
                         <? } ?>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Уведомление у которых еще не было никогда про, даже тестового
+ * РЈРІРµРґРѕРјР»РµРЅРёРµ Сѓ РєРѕС‚РѕСЂС‹С… РµС‰Рµ РЅРµ Р±С‹Р»Рѕ РЅРёРєРѕРіРґР° РїСЂРѕ, РґР°Р¶Рµ С‚РµСЃС‚РѕРІРѕРіРѕ
  * */
 ini_set('max_execution_time', '0');
 ini_set('memory_limit', '512M');
@@ -11,12 +11,12 @@ require_once '../classes/smtp2.php';
 require_once '../classes/users.php';
 
 /**
- * Логин пользователя от кого осуществляется рассылка
+ * Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РѕС‚ РєРѕРіРѕ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ СЂР°СЃСЃС‹Р»РєР°
  * 
  */
 $sender = 'admin';
 
-// Работодателям
+// Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЏРј
 $sql = "SELECT u.uid, u.email, u.login, u.uname, u.usurname, u.subscr, usk.key AS ukey
 FROM users AS u
 LEFT JOIN users_subscribe_keys AS usk ON usk.uid = u.uid
@@ -33,7 +33,7 @@ if ($_GET['to'] != null) {
 
 $eHost = $GLOBALS['host'];
 
-$eSubject = "Безопасная Сделка: теперь еще лучше";
+$eSubject = "Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°: С‚РµРїРµСЂСЊ РµС‰Рµ Р»СѓС‡С€Рµ";
 
 $mail = new smtp2;
 
@@ -81,8 +81,8 @@ ob_start(); ?><html>
         	<table style="margin-top: 0pt; margin-left: auto; margin-right: auto; background-color: #ffffff; text-align:left" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
         	<td width="100"><img width="85" height="91" src="cid:<?= $img2; ?>" alt="" border="0" style="position:relative;top:7px;left:-2px;"></td>
         	<td>
-			<span style="color:#000000;font-family:Arial, Tahoma, Sans-serif;font-size:34px;">Безопасная сделка</span><br />
-        	<span style="color:#74bb54;font-family:Arial, Tahoma, Sans-serif;font-size:22px;">становится лучше</span>        				
+			<span style="color:#000000;font-family:Arial, Tahoma, Sans-serif;font-size:34px;">Р‘РµР·РѕРїР°СЃРЅР°СЏ СЃРґРµР»РєР°</span><br />
+        	<span style="color:#74bb54;font-family:Arial, Tahoma, Sans-serif;font-size:22px;">СЃС‚Р°РЅРѕРІРёС‚СЃСЏ Р»СѓС‡С€Рµ</span>        				
         	</td>
         	</tr>
         	</table>
@@ -107,22 +107,22 @@ ob_start(); ?><html>
         <td class="pad_null" width="20"></td>
         <td class="pad_null" style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;">
         
-            <p><b>Здравствуйте!</b></p>
-            <p style="line-height:140%;">Наша команда непрерывно работает над улучшением ключевых сервисов сайта для того, чтобы вам было проще и удобнее ими пользоваться. Хотим представить вам позитивные изменения по Безопасной Сделке, которые были сделаны в последнее время.</p>
+            <p><b>Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!</b></p>
+            <p style="line-height:140%;">РќР°С€Р° РєРѕРјР°РЅРґР° РЅРµРїСЂРµСЂС‹РІРЅРѕ СЂР°Р±РѕС‚Р°РµС‚ РЅР°Рґ СѓР»СѓС‡С€РµРЅРёРµРј РєР»СЋС‡РµРІС‹С… СЃРµСЂРІРёСЃРѕРІ СЃР°Р№С‚Р° РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ РІР°Рј Р±С‹Р»Рѕ РїСЂРѕС‰Рµ Рё СѓРґРѕР±РЅРµРµ РёРјРё РїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ. РҐРѕС‚РёРј РїСЂРµРґСЃС‚Р°РІРёС‚СЊ РІР°Рј РїРѕР·РёС‚РёРІРЅС‹Рµ РёР·РјРµРЅРµРЅРёСЏ РїРѕ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµ, РєРѕС‚РѕСЂС‹Рµ Р±С‹Р»Рё СЃРґРµР»Р°РЅС‹ РІ РїРѕСЃР»РµРґРЅРµРµ РІСЂРµРјСЏ.</p>
             
 <table width="100%" border="0" style="margin-top:36px;">
     <tr valign="top">
         <td width="140"><img width="134" height="133" src="cid:<?= $img3; ?>" alt="" border="0" align="left"></td>
         <td>
-            <p style="font-size:15px;color:#000000;font-family:Arial, Tahoma, Sans-serif;padding-left:20px;"><b>Начало сотрудничества</b></p>
+            <p style="font-size:15px;color:#000000;font-family:Arial, Tahoma, Sans-serif;padding-left:20px;"><b>РќР°С‡Р°Р»Рѕ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР°</b></p>
 			<table cellpadding="0" cellspacing="0" style="width:100%;margin-top:5px;text-align:left">
 			<tr valign="top">
 				<td width="20" style="color:#74bb54;font-size:25px;font-family:Arial, Tahoma, Sans-serif;line-height:80%;">&#8226;</td>
-				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif; vertical-align:top">Новая промо-страница сервиса Безопасная Сделка с кратким описанием возможностей.</span></td>
+				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif; vertical-align:top">РќРѕРІР°СЏ РїСЂРѕРјРѕ-СЃС‚СЂР°РЅРёС†Р° СЃРµСЂРІРёСЃР° Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР° СЃ РєСЂР°С‚РєРёРј РѕРїРёСЃР°РЅРёРµРј РІРѕР·РјРѕР¶РЅРѕСЃС‚РµР№.</span></td>
 			</tr>
 			<tr valign="top">
 				<td width="20" style="color:#74bb54;font-size:25px;font-family:Arial, Tahoma, Sans-serif;line-height:80%;">&#8226;</td>
-				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">Обязательное ознакомление с Договором аккредитива перед началом активной работы.</span></td>
+				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">РћР±СЏР·Р°С‚РµР»СЊРЅРѕРµ РѕР·РЅР°РєРѕРјР»РµРЅРёРµ СЃ Р”РѕРіРѕРІРѕСЂРѕРј Р°РєРєСЂРµРґРёС‚РёРІР° РїРµСЂРµРґ РЅР°С‡Р°Р»РѕРј Р°РєС‚РёРІРЅРѕР№ СЂР°Р±РѕС‚С‹.</span></td>
 			</tr>
 			</table>
         </td>
@@ -131,19 +131,19 @@ ob_start(); ?><html>
     <tr valign="top">
         <td width="140"><img width="134" height="133" src="cid:<?= $img4; ?>" alt="" border="0" align="left"></td>
         <td>
-            <p style="font-size:15px;color:#000000;font-family:Arial, Tahoma, Sans-serif;padding-left:20px;"><b>Этап согласования</b></p>
+            <p style="font-size:15px;color:#000000;font-family:Arial, Tahoma, Sans-serif;padding-left:20px;"><b>Р­С‚Р°Рї СЃРѕРіР»Р°СЃРѕРІР°РЅРёСЏ</b></p>
 			<table cellpadding="0" cellspacing="0" style="width:100%;margin-top:5px;text-align:left">
 			<tr valign="top">
 				<td width="20" style="color:#74bb54;font-size:25px;font-family:Arial, Tahoma, Sans-serif;line-height:80%;">&#8226;</td>
-				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">Повышение минимальной суммы сделки до 300 рублей в целях уменьшения демпинга.</span></td>
+				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">РџРѕРІС‹С€РµРЅРёРµ РјРёРЅРёРјР°Р»СЊРЅРѕР№ СЃСѓРјРјС‹ СЃРґРµР»РєРё РґРѕ 300 СЂСѓР±Р»РµР№ РІ С†РµР»СЏС… СѓРјРµРЅСЊС€РµРЅРёСЏ РґРµРјРїРёРЅРіР°.</span></td>
 			</tr>
 			<tr valign="top">
 				<td width="20" style="color:#74bb54;font-size:25px;font-family:Arial, Tahoma, Sans-serif;line-height:80%;">&#8226;</td>
-				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">Привязка банковской карты к Веб-кошельку непосредственно на нашем сайте, без перехода на сторонние ресурсы.</span></td>
+				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">РџСЂРёРІСЏР·РєР° Р±Р°РЅРєРѕРІСЃРєРѕР№ РєР°СЂС‚С‹ Рє Р’РµР±-РєРѕС€РµР»СЊРєСѓ РЅРµРїРѕСЃСЂРµРґСЃС‚РІРµРЅРЅРѕ РЅР° РЅР°С€РµРј СЃР°Р№С‚Рµ, Р±РµР· РїРµСЂРµС…РѕРґР° РЅР° СЃС‚РѕСЂРѕРЅРЅРёРµ СЂРµСЃСѓСЂСЃС‹.</span></td>
 			</tr>
 			<tr valign="top">
 				<td width="20" style="color:#74bb54;font-size:25px;font-family:Arial, Tahoma, Sans-serif;line-height:80%;">&#8226;</td>
-				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">Изменения в интерфейсе окна «Идет оплата…»: стало более информативным с подробными инструкциями по действиям, которые нужно совершить заказчику.</span></td>
+				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">РР·РјРµРЅРµРЅРёСЏ РІ РёРЅС‚РµСЂС„РµР№СЃРµ РѕРєРЅР° В«РРґРµС‚ РѕРїР»Р°С‚Р°вЂ¦В»: СЃС‚Р°Р»Рѕ Р±РѕР»РµРµ РёРЅС„РѕСЂРјР°С‚РёРІРЅС‹Рј СЃ РїРѕРґСЂРѕР±РЅС‹РјРё РёРЅСЃС‚СЂСѓРєС†РёСЏРјРё РїРѕ РґРµР№СЃС‚РІРёСЏРј, РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ СЃРѕРІРµСЂС€РёС‚СЊ Р·Р°РєР°Р·С‡РёРєСѓ.</span></td>
 			</tr>
 			</table>
         </td>
@@ -152,15 +152,15 @@ ob_start(); ?><html>
     <tr valign="top">
         <td width="140"><img width="134" height="133" src="cid:<?= $img5; ?>" alt="" border="0" align="left"></td>
         <td>
-            <p style="font-size:15px;color:#000000;font-family:Arial, Tahoma, Sans-serif;padding-left:20px;"><b>Сделка в работе</b></p>
+            <p style="font-size:15px;color:#000000;font-family:Arial, Tahoma, Sans-serif;padding-left:20px;"><b>РЎРґРµР»РєР° РІ СЂР°Р±РѕС‚Рµ</b></p>
 			<table cellpadding="0" cellspacing="0" style="width:100%;margin-top:5px;text-align:left">
 			<tr valign="top">
 				<td width="20" style="color:#74bb54;font-size:25px;font-family:Arial, Tahoma, Sans-serif;line-height:80%;">&#8226;</td>
-				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">Добавили возможность настраивать расположение формы комментирования так, как это удобно пользователю &mdash; сверху или снизу в Безопасной Сделке, а также менять порядок отображения сообщений/комментариев.</span></td>
+				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">Р”РѕР±Р°РІРёР»Рё РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РЅР°СЃС‚СЂР°РёРІР°С‚СЊ СЂР°СЃРїРѕР»РѕР¶РµРЅРёРµ С„РѕСЂРјС‹ РєРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅРёСЏ С‚Р°Рє, РєР°Рє СЌС‚Рѕ СѓРґРѕР±РЅРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ &mdash; СЃРІРµСЂС…Сѓ РёР»Рё СЃРЅРёР·Сѓ РІ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµ, Р° С‚Р°РєР¶Рµ РјРµРЅСЏС‚СЊ РїРѕСЂСЏРґРѕРє РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ СЃРѕРѕР±С‰РµРЅРёР№/РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ.</span></td>
 			</tr>
 			<tr valign="top">
 				<td width="20" style="color:#74bb54;font-size:25px;font-family:Arial, Tahoma, Sans-serif;line-height:80%;">&#8226;</td>
-				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">Упорядочили уведомления при изменениях: теперь можно посмотреть, на какие именно коррективы по сделке соглашается вторая сторона.</span></td>
+				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">РЈРїРѕСЂСЏРґРѕС‡РёР»Рё СѓРІРµРґРѕРјР»РµРЅРёСЏ РїСЂРё РёР·РјРµРЅРµРЅРёСЏС…: С‚РµРїРµСЂСЊ РјРѕР¶РЅРѕ РїРѕСЃРјРѕС‚СЂРµС‚СЊ, РЅР° РєР°РєРёРµ РёРјРµРЅРЅРѕ РєРѕСЂСЂРµРєС‚РёРІС‹ РїРѕ СЃРґРµР»РєРµ СЃРѕРіР»Р°С€Р°РµС‚СЃСЏ РІС‚РѕСЂР°СЏ СЃС‚РѕСЂРѕРЅР°.</span></td>
 			</tr>
 			</table>
         </td>
@@ -169,23 +169,23 @@ ob_start(); ?><html>
     <tr valign="top">
         <td width="140"><img width="134" height="133" src="cid:<?= $img6; ?>" alt="" border="0" align="left"></td>
         <td>
-            <p style="font-size:15px;color:#000000;font-family:Arial, Tahoma, Sans-serif;padding-left:20px;"><b>Завершение Безопасной Сделки </b></p>
+            <p style="font-size:15px;color:#000000;font-family:Arial, Tahoma, Sans-serif;padding-left:20px;"><b>Р—Р°РІРµСЂС€РµРЅРёРµ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё </b></p>
 			<table cellpadding="0" cellspacing="0" style="width:100%;margin-top:5px;text-align:left">
 			<tr valign="top">
 				<td width="20" style="color:#74bb54;font-size:25px;font-family:Arial, Tahoma, Sans-serif;line-height:80%;">&#8226;</td>
-				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">Появилась возможность писать ответ на оставленный вам отзыв по результатам сотрудничества через БС.</span></td>
+				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">РџРѕСЏРІРёР»Р°СЃСЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРёСЃР°С‚СЊ РѕС‚РІРµС‚ РЅР° РѕСЃС‚Р°РІР»РµРЅРЅС‹Р№ РІР°Рј РѕС‚Р·С‹РІ РїРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°Рј СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР° С‡РµСЂРµР· Р‘РЎ.</span></td>
 			</tr>
 			<tr valign="top">
 				<td width="20" style="color:#74bb54;font-size:25px;font-family:Arial, Tahoma, Sans-serif;line-height:80%;">&#8226;</td>
-				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">Юридическим лицам отправляется информация о том, когда и каким образом будут предоставлены закрывающие документы.</span></td>
+				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">Р®СЂРёРґРёС‡РµСЃРєРёРј Р»РёС†Р°Рј РѕС‚РїСЂР°РІР»СЏРµС‚СЃСЏ РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‚РѕРј, РєРѕРіРґР° Рё РєР°РєРёРј РѕР±СЂР°Р·РѕРј Р±СѓРґСѓС‚ РїСЂРµРґРѕСЃС‚Р°РІР»РµРЅС‹ Р·Р°РєСЂС‹РІР°СЋС‰РёРµ РґРѕРєСѓРјРµРЅС‚С‹.</span></td>
 			</tr>
 			<tr valign="top">
 				<td width="20" style="color:#74bb54;font-size:25px;font-family:Arial, Tahoma, Sans-serif;line-height:80%;">&#8226;</td>
-				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">Срок Арбитража теперь рассчитывается в рабочих днях, а обращение в Арбитраж можно подавать не позднее чем за 2 рабочих дня до закрытия аккредитива.</span></td>
+				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">РЎСЂРѕРє РђСЂР±РёС‚СЂР°Р¶Р° С‚РµРїРµСЂСЊ СЂР°СЃСЃС‡РёС‚С‹РІР°РµС‚СЃСЏ РІ СЂР°Р±РѕС‡РёС… РґРЅСЏС…, Р° РѕР±СЂР°С‰РµРЅРёРµ РІ РђСЂР±РёС‚СЂР°Р¶ РјРѕР¶РЅРѕ РїРѕРґР°РІР°С‚СЊ РЅРµ РїРѕР·РґРЅРµРµ С‡РµРј Р·Р° 2 СЂР°Р±РѕС‡РёС… РґРЅСЏ РґРѕ Р·Р°РєСЂС‹С‚РёСЏ Р°РєРєСЂРµРґРёС‚РёРІР°.</span></td>
 			</tr>
 			<tr valign="top">
 				<td width="20" style="color:#74bb54;font-size:25px;font-family:Arial, Tahoma, Sans-serif;line-height:80%;">&#8226;</td>
-				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">Сделаны уведомления для заказчиков о сроках возврата средств после Арбитража (с указанием точной даты).</span></td>
+				<td style="padding-bottom:11px;"><span style="font-family:Arial, Tahoma, Sans-serif;font-size:15px;color:#000000;line-height:130%;font-family:Arial, Tahoma, Sans-serif;">РЎРґРµР»Р°РЅС‹ СѓРІРµРґРѕРјР»РµРЅРёСЏ РґР»СЏ Р·Р°РєР°Р·С‡РёРєРѕРІ Рѕ СЃСЂРѕРєР°С… РІРѕР·РІСЂР°С‚Р° СЃСЂРµРґСЃС‚РІ РїРѕСЃР»Рµ РђСЂР±РёС‚СЂР°Р¶Р° (СЃ СѓРєР°Р·Р°РЅРёРµРј С‚РѕС‡РЅРѕР№ РґР°С‚С‹).</span></td>
 			</tr>
 			</table>
         </td>
@@ -193,9 +193,9 @@ ob_start(); ?><html>
     <tr><td colspan="2" height="50">&nbsp;</td></tr>
 </table>
 
-<p style="font-size:15px;line-height:140%;color:#000000;font-family:Arial, Tahoma, Sans-serif;">Надеемся, эти улучшения сделают ваше сотрудничество в Безопасной Сделке проще и удобнее. Будем рады услышать ваши отзывы и предложения в нашем <a href="https://feedback.free-lance.ru/?utm_source=newsletter4&utm_medium=email&utm_campaign=bs_upd1" target="_blank" style="color:#0f71c8;">сообществе поддержки</a>.</p>
+<p style="font-size:15px;line-height:140%;color:#000000;font-family:Arial, Tahoma, Sans-serif;">РќР°РґРµРµРјСЃСЏ, СЌС‚Рё СѓР»СѓС‡С€РµРЅРёСЏ СЃРґРµР»Р°СЋС‚ РІР°С€Рµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ РІ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµ РїСЂРѕС‰Рµ Рё СѓРґРѕР±РЅРµРµ. Р‘СѓРґРµРј СЂР°РґС‹ СѓСЃР»С‹С€Р°С‚СЊ РІР°С€Рё РѕС‚Р·С‹РІС‹ Рё РїСЂРµРґР»РѕР¶РµРЅРёСЏ РІ РЅР°С€РµРј <a href="https://feedback.free-lance.ru/?utm_source=newsletter4&utm_medium=email&utm_campaign=bs_upd1" target="_blank" style="color:#0f71c8;">СЃРѕРѕР±С‰РµСЃС‚РІРµ РїРѕРґРґРµСЂР¶РєРё</a>.</p>
 
-<p style="padding-top:25px;font-size:15px;color:#000000;font-family:Arial, Tahoma, Sans-serif;font-style: italic;">Приятной работы с Free-lance.ru!</p>
+<p style="padding-top:25px;font-size:15px;color:#000000;font-family:Arial, Tahoma, Sans-serif;font-style: italic;">РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹ СЃ Free-lance.ru!</p>
 
         </td>
         <td class="pad_null" width="20"></td>
@@ -223,7 +223,7 @@ ob_start(); ?><html>
         <td class="pad_null" bgcolor="#ffffff" width="20"></td>
         <td class="pad_null" bgcolor="#ffffff" width="20"></td>
         <td class="pad_null" bgcolor="#ffffff" style="text-align:left">
-            <font color="#999999" size="1" face="tahoma,sans-serif">Вы можете отписаться от рассылки новостей на <a target="_blank" style="color:#0f71c8;" href="<?= $eHost ?>/unsubscribe?ukey=%%%UNSUBSCRIBE_KEY%%%&utm_source=newsletter4&utm_medium=email&utm_campaign=bs_upd1">этой странице</a>.</font>
+            <font color="#999999" size="1" face="tahoma,sans-serif">Р’С‹ РјРѕР¶РµС‚Рµ РѕС‚РїРёСЃР°С‚СЊСЃСЏ РѕС‚ СЂР°СЃСЃС‹Р»РєРё РЅРѕРІРѕСЃС‚РµР№ РЅР° <a target="_blank" style="color:#0f71c8;" href="<?= $eHost ?>/unsubscribe?ukey=%%%UNSUBSCRIBE_KEY%%%&utm_source=newsletter4&utm_medium=email&utm_campaign=bs_upd1">СЌС‚РѕР№ СЃС‚СЂР°РЅРёС†Рµ</a>.</font>
         </td>
         <td class="pad_null" bgcolor="#ffffff" width="20"></td>
         <td class="pad_null" bgcolor="#ffffff" width="20"></td>
@@ -246,7 +246,7 @@ ob_start(); ?><html>
 </body>
 </html><? $eMessage = ob_get_clean();
 // ----------------------------------------------------------------------------------------------------------------
-// -- Рассылка ----------------------------------------------------------------------------------------------------
+// -- Р Р°СЃСЃС‹Р»РєР° ----------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------
 $DB = new DB('master');
 $cnt = 0;
@@ -258,13 +258,13 @@ if (empty($sender)) {
 
 echo "Send email messages\n";
 
-$mail->subject = $eSubject;  // заголовок письма
-$mail->message = $eMessage; // текст письма
-$mail->recipient = ''; // свойство 'получатель' оставляем пустым
+$mail->subject = $eSubject;  // Р·Р°РіРѕР»РѕРІРѕРє РїРёСЃСЊРјР°
+$mail->message = $eMessage; // С‚РµРєСЃС‚ РїРёСЃСЊРјР°
+$mail->recipient = ''; // СЃРІРѕР№СЃС‚РІРѕ 'РїРѕР»СѓС‡Р°С‚РµР»СЊ' РѕСЃС‚Р°РІР»СЏРµРј РїСѓСЃС‚С‹Рј
 $spamid = $mail->masssend();
 //if (!$spamid) die('Failed!');
-// с этого момента рассылка создана, но еще никому не отправлена!
-// допустим нам нужно получить список получателей с какого-либо запроса
+// СЃ СЌС‚РѕРіРѕ РјРѕРјРµРЅС‚Р° СЂР°СЃСЃС‹Р»РєР° СЃРѕР·РґР°РЅР°, РЅРѕ РµС‰Рµ РЅРёРєРѕРјСѓ РЅРµ РѕС‚РїСЂР°РІР»РµРЅР°!
+// РґРѕРїСѓСЃС‚РёРј РЅР°Рј РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РїРѕР»СѓС‡Р°С‚РµР»РµР№ СЃ РєР°РєРѕРіРѕ-Р»РёР±Рѕ Р·Р°РїСЂРѕСЃР°
 $i = 0;
 $mail->recipient = array();
 $res = $DB->query($sql);

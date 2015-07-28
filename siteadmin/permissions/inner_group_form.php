@@ -5,16 +5,16 @@ if(!(hasPermissions('adm') && hasPermissions('permissions'))) {
 }
 ?>
 
-<strong>Права доступа. <?=(($action=='group_add')?'Добавление':'Редактирование')?> группы</strong>
+<strong>РџСЂР°РІР° РґРѕСЃС‚СѓРїР°. <?=(($action=='group_add')?'Р”РѕР±Р°РІР»РµРЅРёРµ':'Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ')?> РіСЂСѓРїРїС‹</strong>
 
 <br><br>
 
 <form method="POST" action="index.php" onSubmit="return checkGroupForm();">
     <input type="hidden" name="action" value="<?=(($action=='group_add')?'group_insert':'group_update')?>">
     <input type="hidden" name="id" value="<?=$id?>">
-    Название: <input type="text" id="group_name" name="name" value="<?=$group['name']?>">
+    РќР°Р·РІР°РЅРёРµ: <input type="text" id="group_name" name="name" value="<?=$group['name']?>">
     <br /><br />
-    Права доступа:
+    РџСЂР°РІР° РґРѕСЃС‚СѓРїР°:
     <br /><br />
     <table>
     <? foreach($rights as $right) { ?>
@@ -26,13 +26,13 @@ if(!(hasPermissions('adm') && hasPermissions('permissions'))) {
     <? } ?>
     </table>
     <br>
-    <input type="submit" value=" <?=(($action=='group_add')?'Добавить':'Сохранить')?> ">
+    <input type="submit" value=" <?=(($action=='group_add')?'Р”РѕР±Р°РІРёС‚СЊ':'РЎРѕС…СЂР°РЅРёС‚СЊ')?> ">
 </form>
 
 <script type="text/javascript">
     function checkGroupForm() {
         if(document.getElementById('group_name').value=='') {
-            alert('Название группы не может быть пустым');
+            alert('РќР°Р·РІР°РЅРёРµ РіСЂСѓРїРїС‹ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј');
             return false;
         } else {
             return true;

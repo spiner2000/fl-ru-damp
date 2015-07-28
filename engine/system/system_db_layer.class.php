@@ -1,32 +1,32 @@
 <?
 /**
- * Класс для работы с базой данных
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р°Р·РѕР№ РґР°РЅРЅС‹С…
  *
  */
 class system_db_layer {
     /**
-     * Переменная инициализации класса
+     * РџРµСЂРµРјРµРЅРЅР°СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё РєР»Р°СЃСЃР°
      *
      * @var object
      */
 	static $instanse = false;
 	/**
-	 * Переменная подключения
+	 * РџРµСЂРµРјРµРЅРЅР°СЏ РїРѕРґРєР»СЋС‡РµРЅРёСЏ
 	 *
 	 * @var resource
 	 */
 	public $connection = false;
 	/**
-	 * Конструктор класса
+	 * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
 	 *
-	 * @param string $host Адресс БД
-	 * @param string $user Пользователь БД
-	 * @param string $pass Пароль к БД
-	 * @param string $db   Название БД
-	 * @param mixed $sett Дополнительные настройки [port=>5432, presistent=>true]
+	 * @param string $host РђРґСЂРµСЃСЃ Р‘Р”
+	 * @param string $user РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р‘Р”
+	 * @param string $pass РџР°СЂРѕР»СЊ Рє Р‘Р”
+	 * @param string $db   РќР°Р·РІР°РЅРёРµ Р‘Р”
+	 * @param mixed $sett Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё [port=>5432, presistent=>true]
 	 */
     static function connect($host, $user, $pass, $db, $sett = array()) {
-        $port = 5432; // Порт по умолчанию
+        $port = 5432; // РџРѕСЂС‚ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
         if(isset($sett['port'])) $port = $sett['port'];
         
         $persistent = false;
@@ -36,7 +36,7 @@ class system_db_layer {
         
         try {
             if(!$persistent)
-                self::$instanse->connection = pg_connect("host=$host port=$port dbname=$db user=$user password=$pass"); // Подключение к БД
+                self::$instanse->connection = pg_connect("host=$host port=$port dbname=$db user=$user password=$pass"); // РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”
             else
                 self::$instanse->connection = pg_pconnect("host=$host port=$port dbname=$db user=$user password=$pass");     
         } catch(Exception $e) {
@@ -47,10 +47,10 @@ class system_db_layer {
         return self::$instanse;
     }
     /**
-     * Установка переменной подключения. Возвращает указатель на соединение c БД
+     * РЈСЃС‚Р°РЅРѕРІРєР° РїРµСЂРµРјРµРЅРЅРѕР№ РїРѕРґРєР»СЋС‡РµРЅРёСЏ. Р’РѕР·РІСЂР°С‰Р°РµС‚ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕРµРґРёРЅРµРЅРёРµ c Р‘Р”
      *
-     * @param resource $conn Указатель на соединение с БД
-     * @return Указатель на соединение с БД
+     * @param resource $conn РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕРµРґРёРЅРµРЅРёРµ СЃ Р‘Р”
+     * @return РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕРµРґРёРЅРµРЅРёРµ СЃ Р‘Р”
      */
     static function setConnection($conn) {
         self::$instanse = new system_db_layer();
@@ -60,7 +60,7 @@ class system_db_layer {
         return self::$instanse;
     }
     /**
-     * Инициализация класса
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєР»Р°СЃСЃР°
      *
      * @return unknown
      */
@@ -75,24 +75,24 @@ class system_db_layer {
         
     }
     /**
-     * Функция выборки через SELECT
+     * Р¤СѓРЅРєС†РёСЏ РІС‹Р±РѕСЂРєРё С‡РµСЂРµР· SELECT
      *
-     * // ?s - подстановка массива [[name=>'nane'],[kod=>'kod']] 
-     * где ключ это имя поля, значение массива это данные для обновления
-     * // ?a - подстановка массива [1,3,4,5,6,7] Используется в случае 'id IN (?a)'
-     * // ?f - подстановка FLOAT
+     * // ?s - РїРѕРґСЃС‚Р°РЅРѕРІРєР° РјР°СЃСЃРёРІР° [[name=>'nane'],[kod=>'kod']] 
+     * РіРґРµ РєР»СЋС‡ СЌС‚Рѕ РёРјСЏ РїРѕР»СЏ, Р·РЅР°С‡РµРЅРёРµ РјР°СЃСЃРёРІР° СЌС‚Рѕ РґР°РЅРЅС‹Рµ РґР»СЏ РѕР±РЅРѕРІР»РµРЅРёСЏ
+     * // ?a - РїРѕРґСЃС‚Р°РЅРѕРІРєР° РјР°СЃСЃРёРІР° [1,3,4,5,6,7] РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ СЃР»СѓС‡Р°Рµ 'id IN (?a)'
+     * // ?f - РїРѕРґСЃС‚Р°РЅРѕРІРєР° FLOAT
      * 
-     * Достать одну запись:
-     * // ?n - постановка INT
+     * Р”РѕСЃС‚Р°С‚СЊ РѕРґРЅСѓ Р·Р°РїРёСЃСЊ:
+     * // ?n - РїРѕСЃС‚Р°РЅРѕРІРєР° INT
 	 * $db->select("SELECT * FROM test WHERE id = ?n", 1)->fetchRow();
 	 * 
-	 * Достать все записи:
+	 * Р”РѕСЃС‚Р°С‚СЊ РІСЃРµ Р·Р°РїРёСЃРё:
 	 * $db->select("SELECT * FROM test;")->fetchAll();
 	 * 
-	 * Достать одно значения:
+	 * Р”РѕСЃС‚Р°С‚СЊ РѕРґРЅРѕ Р·РЅР°С‡РµРЅРёСЏ:
 	 * $db->select("SELECT name FROM test WHERE id = ?n", 1)->fetchOne();
      * 
-     * @return возврашает класс db_layer_statement
+     * @return РІРѕР·РІСЂР°С€Р°РµС‚ РєР»Р°СЃСЃ db_layer_statement
      */
     public function select() {
         $args = func_get_args();
@@ -105,11 +105,11 @@ class system_db_layer {
         return $statement->select();
     }
     /**
-     * Добавить запись в БД
+     * Р”РѕР±Р°РІРёС‚СЊ Р·Р°РїРёСЃСЊ РІ Р‘Р”
      *
-     * @param string $table_name Название таблицы // test
-     * @param array $array Данные для записи [[name=>'nane'],[kod=>'kod']]
-     * @return ID записи если ID записи добавляется инкрементно
+     * @param string $table_name РќР°Р·РІР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ // test
+     * @param array $array Р”Р°РЅРЅС‹Рµ РґР»СЏ Р·Р°РїРёСЃРё [[name=>'nane'],[kod=>'kod']]
+     * @return ID Р·Р°РїРёСЃРё РµСЃР»Рё ID Р·Р°РїРёСЃРё РґРѕР±Р°РІР»СЏРµС‚СЃСЏ РёРЅРєСЂРµРјРµРЅС‚РЅРѕ
      */
     public function insert($table_name, $array, $pkey = "id") {
         $values = array();
@@ -139,9 +139,9 @@ class system_db_layer {
         return pg_last_oid($result); 
     }
     /**
-     * Выдать SQL запрос
+     * Р’С‹РґР°С‚СЊ SQL Р·Р°РїСЂРѕСЃ
      *
-     * @return SQL запрос
+     * @return SQL Р·Р°РїСЂРѕСЃ
      */
     public function sql() {
         $args = func_get_args();
@@ -154,12 +154,12 @@ class system_db_layer {
         return $statement->sql();
     }
     /**
-     * Обновить запись в БД
+     * РћР±РЅРѕРІРёС‚СЊ Р·Р°РїРёСЃСЊ РІ Р‘Р”
      * 
-     * // ?n - постановка INT
-     * // ?s - подстановка массива 
+     * // ?n - РїРѕСЃС‚Р°РЅРѕРІРєР° INT
+     * // ?s - РїРѕРґСЃС‚Р°РЅРѕРІРєР° РјР°СЃСЃРёРІР° 
      * $save = [[name=>'nane'],[kod=>'kod']] 
-     * где ключ это имя поля, значение массива это данные для обновления
+     * РіРґРµ РєР»СЋС‡ СЌС‚Рѕ РёРјСЏ РїРѕР»СЏ, Р·РЅР°С‡РµРЅРёРµ РјР°СЃСЃРёРІР° СЌС‚Рѕ РґР°РЅРЅС‹Рµ РґР»СЏ РѕР±РЅРѕРІР»РµРЅРёСЏ
      * 
 	 * $db->update("UPDATE test SET name ?s WHERE id = ?n", $save, 1);
      * 
@@ -176,9 +176,9 @@ class system_db_layer {
         return $statement->update();
     }
     /**
-     * Удалить запись из БД
+     * РЈРґР°Р»РёС‚СЊ Р·Р°РїРёСЃСЊ РёР· Р‘Р”
      *
-     * // ?n - постановка INT
+     * // ?n - РїРѕСЃС‚Р°РЅРѕРІРєР° INT
 	 * $db->update("DELETE FROM test WHERE id = ?n", 1);
      * 
      * @return unknown
@@ -195,30 +195,30 @@ class system_db_layer {
     }
 }
 /**
- * Класс для обработки и выполнения SQL запросов
+ * РљР»Р°СЃСЃ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё Рё РІС‹РїРѕР»РЅРµРЅРёСЏ SQL Р·Р°РїСЂРѕСЃРѕРІ
  *
  */
 class db_layer_statement {
 	/**
-	 * Тип подключения
+	 * РўРёРї РїРѕРґРєР»СЋС‡РµРЅРёСЏ
 	 *
 	 * @var unknown_type
 	 */
     private $statement = false;
     /**
-     * Параметры
+     * РџР°СЂР°РјРµС‚СЂС‹
      *
      * @var array
      */
     private $params = array();
     /**
-     * Выполнение запроса
+     * Р’С‹РїРѕР»РЅРµРЅРёРµ Р·Р°РїСЂРѕСЃР°
      *
      * @var unknown_type
      */
     private $executed = false;
     /**
-     * Запрос к БД
+     * Р—Р°РїСЂРѕСЃ Рє Р‘Р”
      *
      * @var unknown_type
      */
@@ -226,17 +226,17 @@ class db_layer_statement {
     const REGEX_SELECT = "{(\?[a|n|f|v]?)}sx";
     const REGEX_UPDATE = "{(\?[a|n|f|s|v]?)}sx";
     /**
-     * Указатель на соединение c БД
+     * РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕРµРґРёРЅРµРЅРёРµ c Р‘Р”
      *
      * @var resource
      */
     private $connection = false;
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      *
-     * @param resource $connection Указатель на соединение
-     * @param string   $query Запрос
-     * @param mixed    $params Параметры
+     * @param resource $connection РЈРєР°Р·Р°С‚РµР»СЊ РЅР° СЃРѕРµРґРёРЅРµРЅРёРµ
+     * @param string   $query Р—Р°РїСЂРѕСЃ
+     * @param mixed    $params РџР°СЂР°РјРµС‚СЂС‹
      * @return unknown
      */
     function __construct(&$connection, $query, $params) {
@@ -248,7 +248,7 @@ class db_layer_statement {
         return $this;
     }
     /**
-     * Обновить запись
+     * РћР±РЅРѕРІРёС‚СЊ Р·Р°РїРёСЃСЊ
      *
      * @return unknown
      */
@@ -266,7 +266,7 @@ class db_layer_statement {
         return pg_affected_rows($result);
     }
     /**
-     * Удаление записи
+     * РЈРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё
      *
      * @return unknown
      */
@@ -284,7 +284,7 @@ class db_layer_statement {
         return pg_affected_rows($result);
     }
     /**
-     * Выборка записи
+     * Р’С‹Р±РѕСЂРєР° Р·Р°РїРёСЃРё
      *
      * @return self
      */
@@ -292,7 +292,7 @@ class db_layer_statement {
         return $this;
     }
     /**
-     * Обработка SELECT запроса
+     * РћР±СЂР°Р±РѕС‚РєР° SELECT Р·Р°РїСЂРѕСЃР°
      *
      */
     private function select_prepare() {
@@ -305,7 +305,7 @@ class db_layer_statement {
         
     }
     /**
-     * Возвращает запрос к БД
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р°РїСЂРѕСЃ Рє Р‘Р”
      *
      * @return unknown
      */
@@ -314,7 +314,7 @@ class db_layer_statement {
         return $this->query;
     }
     /**
-     * Выбрать все записи, по запросу
+     * Р’С‹Р±СЂР°С‚СЊ РІСЃРµ Р·Р°РїРёСЃРё, РїРѕ Р·Р°РїСЂРѕСЃСѓ
      *
      * @param unknown_type $map_id
      * @return unknown
@@ -364,7 +364,7 @@ class db_layer_statement {
         return $result;
     }
     /**
-     * Выборка одной строки записи из БД
+     * Р’С‹Р±РѕСЂРєР° РѕРґРЅРѕР№ СЃС‚СЂРѕРєРё Р·Р°РїРёСЃРё РёР· Р‘Р”
      *
      * @return unknown
      */
@@ -378,7 +378,7 @@ class db_layer_statement {
         return pg_fetch_assoc($result);
     }
     /**
-     * Выбрать одно поле по запросу из БД
+     * Р’С‹Р±СЂР°С‚СЊ РѕРґРЅРѕ РїРѕР»Рµ РїРѕ Р·Р°РїСЂРѕСЃСѓ РёР· Р‘Р”
      *
      * @return unknown
      */
@@ -386,7 +386,7 @@ class db_layer_statement {
         return array_shift($this->fetchColumn());
     }
     /**
-     * Выбрать колонку из БД
+     * Р’С‹Р±СЂР°С‚СЊ РєРѕР»РѕРЅРєСѓ РёР· Р‘Р”
      *
      * @return unknown
      */
@@ -400,7 +400,7 @@ class db_layer_statement {
         return pg_fetch_all_columns($result);
     }
     /**
-     * Обработка дополнительных переменных
+     * РћР±СЂР°Р±РѕС‚РєР° РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… РїРµСЂРµРјРµРЅРЅС‹С…
      *
      * @param array $matches
      * @return unknown
@@ -411,7 +411,7 @@ class db_layer_statement {
         }
         
         switch($matches[1]{1}) {
-            case "a": // Тип переменной массив, ("SELECT ... WHERE id IN (?a)", array(1,2,3,4,5));
+            case "a": // РўРёРї РїРµСЂРµРјРµРЅРЅРѕР№ РјР°СЃСЃРёРІ, ("SELECT ... WHERE id IN (?a)", array(1,2,3,4,5));
                 if(is_array($value)) {
                     foreach($value as &$val) {
                         if(!is_integer($val))
@@ -422,10 +422,10 @@ class db_layer_statement {
                     trigger_error("?a value is not Array!", E_USER_ERROR);    
                 }
             break;
-            case "n": // Тип переменной INT, ("SELECT ... WHERE id = ?n", 2);
+            case "n": // РўРёРї РїРµСЂРµРјРµРЅРЅРѕР№ INT, ("SELECT ... WHERE id = ?n", 2);
                 return intval($value);
             break;
-            case "s": // Тип перменной массив, ("UPDATE ... SET ?s WHERE ...", array('name'=>'Name1', 'time'=>'Time1'));
+            case "s": // РўРёРї РїРµСЂРјРµРЅРЅРѕР№ РјР°СЃСЃРёРІ, ("UPDATE ... SET ?s WHERE ...", array('name'=>'Name1', 'time'=>'Time1'));
                 $update_arr = array();
                 foreach($value as $update_key=>&$update_param) {
                     if(!is_int($update_param)) {
@@ -436,31 +436,31 @@ class db_layer_statement {
                 }
                 return implode(", ", $update_arr);
             break;
-            case "f": // Тип переменной FLOAT, ("SELECT ... WHERE id = ?f", 10.15);
+            case "f": // РўРёРї РїРµСЂРµРјРµРЅРЅРѕР№ FLOAT, ("SELECT ... WHERE id = ?f", 10.15);
                 return floatval($value);
             break;
-            case "v": // Тип переменной - значение,  ("SELECT ... WHERE id = ?v", 'tbl1.id');
+            case "v": // РўРёРї РїРµСЂРµРјРµРЅРЅРѕР№ - Р·РЅР°С‡РµРЅРёРµ,  ("SELECT ... WHERE id = ?v", 'tbl1.id');
                 return $this->_prepare_value($value);
             break;
-            default: // Тип переменной - текст, ("SELECT ... WHERE name = ?", 'Name1');
+            default: // РўРёРї РїРµСЂРµРјРµРЅРЅРѕР№ - С‚РµРєСЃС‚, ("SELECT ... WHERE name = ?", 'Name1');
                 return "'" . $this->_prepare_value($value) . "'";
             break;
         }
     }
     /**
-     * Обработка переменной
+     * РћР±СЂР°Р±РѕС‚РєР° РїРµСЂРµРјРµРЅРЅРѕР№
      *
      * @param mixed $value
      * @return unknown
      */
     private function _prepare_value($value) {
-        if(get_magic_quotes_gpc() || defined('NEO')) { // Creaker проставляет слеши для общей совместимости, но get_magic_quotes_gpc отключен.
+        if(get_magic_quotes_gpc() || defined('NEO')) { // Creaker РїСЂРѕСЃС‚Р°РІР»СЏРµС‚ СЃР»РµС€Рё РґР»СЏ РѕР±С‰РµР№ СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё, РЅРѕ get_magic_quotes_gpc РѕС‚РєР»СЋС‡РµРЅ.
             $value = stripslashes($value);
         }
         return pg_escape_string($value);
     }
     /**
-     * Функция для защиты от SQL-Injection
+     * Р¤СѓРЅРєС†РёСЏ РґР»СЏ Р·Р°С‰РёС‚С‹ РѕС‚ SQL-Injection
      *
      * @param mixed $param_to_clean
      * @return mixed

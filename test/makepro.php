@@ -39,14 +39,14 @@ if ($login != '' && $date) {
 	$res = pg_query($sql);
 	
 	if (!pg_num_rows($res)) {
-		die("Пользователь $login не найден или он не PRO");
+		die("РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ $login РЅРµ РЅР°Р№РґРµРЅ РёР»Рё РѕРЅ РЅРµ PRO");
 	}
 	
 	$updated = 0;
 	pg_query('ALTER TABLE orders DISABLE TRIGGER "bI orders"');
 	while ($user = pg_fetch_assoc($res)) {
 		if (date('Y-m-d', strtotime($user['from_date'])) > date('Y-m-d', strtotime($date))) {
-            // все покупки PRO которые были после даты которую ставим как окончания PRO загоняем в прошлое
+            // РІСЃРµ РїРѕРєСѓРїРєРё PRO РєРѕС‚РѕСЂС‹Рµ Р±С‹Р»Рё РїРѕСЃР»Рµ РґР°С‚С‹ РєРѕС‚РѕСЂСѓСЋ СЃС‚Р°РІРёРј РєР°Рє РѕРєРѕРЅС‡Р°РЅРёСЏ PRO Р·Р°РіРѕРЅСЏРµРј РІ РїСЂРѕС€Р»РѕРµ
     		pg_query("UPDATE orders SET from_date='$date 00:00:00', to_date = '0 days' WHERE id = {$user['id']}");
 			continue;
 		}
@@ -67,7 +67,7 @@ if ($login != '' && $date) {
         $session->UpdateProEndingDate($login);
 		echo "Done ($updated)";
 	} else {
-		echo "Пользователь $login купил PRO после " . date('Y-m-d', strtotime($date));
+		echo "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ $login РєСѓРїРёР» PRO РїРѕСЃР»Рµ " . date('Y-m-d', strtotime($date));
 	}
 	
 }

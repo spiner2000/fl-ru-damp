@@ -5,24 +5,24 @@ if(!defined('IN_STDF')) {
 }
 
 /**
- * Разметка для типовых услуг в формате "список"
+ * Р Р°Р·РјРµС‚РєР° РґР»СЏ С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі РІ С„РѕСЂРјР°С‚Рµ "СЃРїРёСЃРѕРє"
  *
  *
  * @var TServiceCatalogController $this
- * @var array $category_title название выбранной категории
- * @var int $total общее количество карточек по параметрам поиска
- * @var bool $nothing_found true если искали, но ничего не нашли
- * @var array $tservices найденные карточки типовых услуг
- * @var int $page номер страницы
- * @var int $limit количество карточек на странице
- * @var string $paging_base_url базовый URL без номера текущей страницы для пейджинга
+ * @var array $category_title РЅР°Р·РІР°РЅРёРµ РІС‹Р±СЂР°РЅРЅРѕР№ РєР°С‚РµРіРѕСЂРёРё
+ * @var int $total РѕР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РєР°СЂС‚РѕС‡РµРє РїРѕ РїР°СЂР°РјРµС‚СЂР°Рј РїРѕРёСЃРєР°
+ * @var bool $nothing_found true РµСЃР»Рё РёСЃРєР°Р»Рё, РЅРѕ РЅРёС‡РµРіРѕ РЅРµ РЅР°С€Р»Рё
+ * @var array $tservices РЅР°Р№РґРµРЅРЅС‹Рµ РєР°СЂС‚РѕС‡РєРё С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі
+ * @var int $page РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹
+ * @var int $limit РєРѕР»РёС‡РµСЃС‚РІРѕ РєР°СЂС‚РѕС‡РµРє РЅР° СЃС‚СЂР°РЅРёС†Рµ
+ * @var string $paging_base_url Р±Р°Р·РѕРІС‹Р№ URL Р±РµР· РЅРѕРјРµСЂР° С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹ РґР»СЏ РїРµР№РґР¶РёРЅРіР°
  */
 
 /**
- * Возвращает форматированное число, например: 123 456,78
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРЅРѕРµ С‡РёСЃР»Рѕ, РЅР°РїСЂРёРјРµСЂ: 123 456,78
  *
  * @var mixed $number
- * @var int $precition число знаков после запятой
+ * @var int $precition С‡РёСЃР»Рѕ Р·РЅР°РєРѕРІ РїРѕСЃР»Рµ Р·Р°РїСЏС‚РѕР№
  */
 function _format($number, $precition=2) {
 	$number = (string) round($number, $precition);
@@ -39,15 +39,15 @@ function _format($number, $precition=2) {
 <h2 class="b-layout__txt b-page__iphone">
 	<?php if ($total) {?>
     <span class="b-txt b-layout__txt_bold">
-        <?=ending($total,'Найдена','Найдены','Найдены')?> 
+        <?=ending($total,'РќР°Р№РґРµРЅР°','РќР°Р№РґРµРЅС‹','РќР°Р№РґРµРЅС‹')?> 
         <?=number_format($total, 0, '', ' ')?>
-        <?=ending($total,'услуга','услуги','услуг')?>
+        <?=ending($total,'СѓСЃР»СѓРіР°','СѓСЃР»СѓРіРё','СѓСЃР»СѓРі')?>
     </span>
 	<?php } ?>
 </h2>
 <?php if(!$nothing_found){ ?>
 <div class="b-layout__txt b-layout__txt_float_right b-layout__txt_padtop_5 b-layout__txt_padbot_20 b-layout__txt_float_none_iphone b-layout__txt_bold">
- Сортировать по: 
+ РЎРѕСЂС‚РёСЂРѕРІР°С‚СЊ РїРѕ: 
  <span class="i-shadow">
    <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" onClick="this.getNext().toggleClass('b-shadow_hide');" href="javascript:void(0)">
       <?=$orders[$cur_order]?>
@@ -71,9 +71,9 @@ function _format($number, $precition=2) {
 
 <h2 class="b-layout__txt b-layout__txt_padbot_20 b-page__desktop b-page__ipad">
 	<?php if ($total) {?>
-        <?=ending($total,'Найдена','Найдены','Найдены')?> 
+        <?=ending($total,'РќР°Р№РґРµРЅР°','РќР°Р№РґРµРЅС‹','РќР°Р№РґРµРЅС‹')?> 
         <?=number_format($total, 0, '', ' ')?>
-        <?=ending($total,'услуга','услуги','услуг')?>
+        <?=ending($total,'СѓСЃР»СѓРіР°','СѓСЃР»СѓРіРё','СѓСЃР»СѓРі')?>
 	<?php } ?>
 </h2>
 <?php } ?>
@@ -83,16 +83,16 @@ function _format($number, $precition=2) {
     <?php echo $this->renderClip('bind_teaser') ?>
 	<?php if ($nothing_found) {?>
 		<div class="b-post b-post_padtop_60">
-			<h4 class="b-post__h4 b-post__h4_padbot_5 b-post__h4_center">Услуг не найдено</h4>
-			<div class="b-post__txt b-post__txt_padbot_10 b-post__txt_center">Попробуйте изменить параметры фильтра</div>
-            <div class="b-layout__txt b-post__txt_padbot_20 b-layout__txt_center b-layout__txt_bold">или</div> 
+			<h4 class="b-post__h4 b-post__h4_padbot_5 b-post__h4_center">РЈСЃР»СѓРі РЅРµ РЅР°Р№РґРµРЅРѕ</h4>
+			<div class="b-post__txt b-post__txt_padbot_10 b-post__txt_center">РџРѕРїСЂРѕР±СѓР№С‚Рµ РёР·РјРµРЅРёС‚СЊ РїР°СЂР°РјРµС‚СЂС‹ С„РёР»СЊС‚СЂР°</div>
+            <div class="b-layout__txt b-post__txt_padbot_20 b-layout__txt_center b-layout__txt_bold">РёР»Рё</div> 
             <div class="b-layout__txt b-layout__txt_center"><a href="/public/?step=1&amp;kind=1&amp;red=/<?php 
 			if(is_emp()&&is_pro()) print '&utm_source=tu_catalog&utm_medium=emp&utm_content=pro&utm_campaign=btn_new_project';
 			elseif(is_emp()&&!is_pro()) print '&utm_source=tu_catalog&utm_medium=emp&utm_content=unpro&utm_campaign=btn_new_project';
 			elseif(!is_emp()&&is_pro()&&get_uid()) print '&utm_source=tu_catalog&utm_medium=frl&utm_content=pro&utm_campaign=btn_new_project';
 			elseif(!is_emp()&&!is_pro()&&get_uid()) print '&utm_source=tu_catalog&utm_medium=frl&utm_content=unpro&utm_campaign=btn_new_project';
 			elseif(!get_uid()) print '&utm_source=tu_catalog&utm_medium=uauth&utm_content=unpro&utm_campaign=btn_new_project';
-			?>" class="b-button b-button_flat b-button_flat_orange b-button_width_190">Опубликуйте проект</a></div>
+			?>" class="b-button b-button_flat b-button_flat_orange b-button_width_190">РћРїСѓР±Р»РёРєСѓР№С‚Рµ РїСЂРѕРµРєС‚</a></div>
 		</div>
 	<?php } ?>
     
@@ -111,7 +111,7 @@ function _format($number, $precition=2) {
 		$avatar_url = tservices_helper::photo_src($user['photo'], $user['login']);
 
 		//$hasVideo = !empty($tservice['videos']) && count($tservice['videos']);
-                $hasVideo = false; //Теперь вместо видео-кадра - превью
+                $hasVideo = false; //РўРµРїРµСЂСЊ РІРјРµСЃС‚Рѕ РІРёРґРµРѕ-РєР°РґСЂР° - РїСЂРµРІСЊСЋ
 		if ($hasVideo)
 		{
 			$video = current($tservice['videos']);
@@ -129,7 +129,7 @@ function _format($number, $precition=2) {
 
 		$hasVideo = !empty($tservice['videos']) && count($tservice['videos']);
                 
-        $sold_count = isset($tservice['count_sold']) ? $tservice['count_sold'] : $tservice['total_feedbacks']; // Пока сфинск не считает все покупки, будем брать отзывы. #0026584
+        $sold_count = isset($tservice['count_sold']) ? $tservice['count_sold'] : $tservice['total_feedbacks']; // РџРѕРєР° СЃС„РёРЅСЃРє РЅРµ СЃС‡РёС‚Р°РµС‚ РІСЃРµ РїРѕРєСѓРїРєРё, Р±СѓРґРµРј Р±СЂР°С‚СЊ РѕС‚Р·С‹РІС‹. #0026584
         
         $is_owner = $tservice['user_id'] == $uid;
 		?>
@@ -158,7 +158,7 @@ function _format($number, $precition=2) {
 				</h2>
                                 <div class="b-layout__txt b-layout__txt_float_right b-page__desktop">
                                     <a href="javascript:void(0);" data-url="<?=$tservice_url?>" onclick="TServices_Catalog.orderNow(this);" class="b-layout__link b-layout__link_color_6db335 b-layout__link_bold">
-                                        Заказать услугу
+                                        Р—Р°РєР°Р·Р°С‚СЊ СѓСЃР»СѓРіСѓ
                                     </a>
                                 </div>
 				<div class="b-user b-user_inline-block b-user_padright_20">
@@ -170,27 +170,27 @@ function _format($number, $precition=2) {
                     <?php if($user['is_profi'] == 't'){ ?>
                         <?=view_profi($class = '')?>&nbsp;
                     <?php } elseif($user['is_pro'] === 't'){?>
-                    <a title="Платный аккаунт" target="_blank" href="/payed/" class="b-user__link"><span alt="Платный аккаунт" class="b-icon b-icon__pro b-icon__pro_f b-icon_top_null"></span></a>&nbsp;
+                    <a title="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" target="_blank" href="/payed/" class="b-user__link"><span alt="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" class="b-icon b-icon__pro b-icon__pro_f b-icon_top_null"></span></a>&nbsp;
                     <?php } ?>
                     <?php if($user['is_verify'] === 't'){?>
-                    <a title="Верифицированный пользователь" href="/promo/verification" target="_blank" class="b-user__link"><span alt="Верифицированный пользователь" class="b-icon b-icon__ver b-icon_top_-2"></span></a>
+                    <a title="Р’РµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ" href="/promo/verification" target="_blank" class="b-user__link"><span alt="Р’РµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ" class="b-icon b-icon__ver b-icon_top_-2"></span></a>
                     <?php } ?>
 				</div>
 				<div class="b-user b-user_inline-block">
 					<?php if ($sold_count!=0) { ?>
-						<div class="b-icon b-icon__tu2_gray" title="Количество продаж услуги"></div>
-						<span class="b-txt b-txt_lh_1 b-txt_fs_14 b-txt_padright_20" title="Количество продаж услуги"><?=number_format($sold_count, 0, '', ' ')?></span>
+						<div class="b-icon b-icon__tu2_gray" title="РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕРґР°Р¶ СѓСЃР»СѓРіРё"></div>
+						<span class="b-txt b-txt_lh_1 b-txt_fs_14 b-txt_padright_20" title="РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕРґР°Р¶ СѓСЃР»СѓРіРё"><?=number_format($sold_count, 0, '', ' ')?></span>
                                         <?php } ?>
                                                 
                                         <?php if ($tservice['total_feedbacks']!=0) { ?>
-						<div class="b-icon b-icon__cat_thumbsup_gray b-icon__cat_thumbsup2_wh_13 b-icon_top_-1" title="Процент положительных отзывов об услуге"></div>
-						<span class="b-txt b-txt_lh_1 b-txt_fs_14 b-txt_padright_20" title="Процент положительных отзывов об услуге"><?=_format($tservice['plus_feedbacks'] / $tservice['total_feedbacks'] * 100, 0)?>%</span>
+						<div class="b-icon b-icon__cat_thumbsup_gray b-icon__cat_thumbsup2_wh_13 b-icon_top_-1" title="РџСЂРѕС†РµРЅС‚ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… РѕС‚Р·С‹РІРѕРІ РѕР± СѓСЃР»СѓРіРµ"></div>
+						<span class="b-txt b-txt_lh_1 b-txt_fs_14 b-txt_padright_20" title="РџСЂРѕС†РµРЅС‚ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… РѕС‚Р·С‹РІРѕРІ РѕР± СѓСЃР»СѓРіРµ"><?=_format($tservice['plus_feedbacks'] / $tservice['total_feedbacks'] * 100, 0)?>%</span>
 					<?php } ?>
 
-					<div class="b-icon b-icon__time_gray" title="Срок выполнения услуги"></div>
-					<span class="b-txt b-txt_lh_1 b-txt_fs_14" title="Срок выполнения услуги"><?=$tservice['days']?> <?=ending($tservice['days'],'день','дня','дней')?></span>
+					<div class="b-icon b-icon__time_gray" title="РЎСЂРѕРє РІС‹РїРѕР»РЅРµРЅРёСЏ СѓСЃР»СѓРіРё"></div>
+					<span class="b-txt b-txt_lh_1 b-txt_fs_14" title="РЎСЂРѕРє РІС‹РїРѕР»РЅРµРЅРёСЏ СѓСЃР»СѓРіРё"><?=$tservice['days']?> <?=ending($tservice['days'],'РґРµРЅСЊ','РґРЅСЏ','РґРЅРµР№')?></span>
 <?php 
-    //Если админ показываем 1 параметр по #0026579
+    //Р•СЃР»Рё Р°РґРјРёРЅ РїРѕРєР°Р·С‹РІР°РµРј 1 РїР°СЂР°РјРµС‚СЂ РїРѕ #0026579
     if($is_adm)
     {
 ?>
@@ -201,7 +201,7 @@ function _format($number, $precition=2) {
     }
 ?>    
 				</div>
-                <div class="b-layout__txt b-page__ipad b-page__iphone"><a href="<?=$tservice_url?>" class="b-layout__link b-layout__link_color_6db335 b-layout__link_bold">Заказать услугу</a></div>
+                <div class="b-layout__txt b-page__ipad b-page__iphone"><a href="<?=$tservice_url?>" class="b-layout__link b-layout__link_color_6db335 b-layout__link_bold">Р—Р°РєР°Р·Р°С‚СЊ СѓСЃР»СѓРіСѓ</a></div>
 			</div>
 		</article>
                 
@@ -223,7 +223,7 @@ function _format($number, $precition=2) {
 		{
 			$paging_url = str_replace('%', '%%', $paging_base_url) . (false===strpos($paging_base_url, '?') ? '?' : '&') . 'page=%d';
 			$paginator_html = new_paginator2($page, $pages, 4, "%s{$paging_url}%s");
-			// удаляем параметр 'page=1' у первой страницы для более чистого url
+			// СѓРґР°Р»СЏРµРј РїР°СЂР°РјРµС‚СЂ 'page=1' Сѓ РїРµСЂРІРѕР№ СЃС‚СЂР°РЅРёС†С‹ РґР»СЏ Р±РѕР»РµРµ С‡РёСЃС‚РѕРіРѕ url
 			$paginator_html = preg_replace('/\?page=1&/', '?', $paginator_html); // "?page=1&c=d" -> "?c=d"
 			$paginator_html = preg_replace('/\?page=1"/', '"', $paginator_html); // "?page=1" -> ""
 			$paginator_html = preg_replace('/&page=1&/', '&', $paginator_html); // "?a=b&page=1&c=d" -> "?a=b&c=d"

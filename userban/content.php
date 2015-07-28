@@ -6,58 +6,58 @@ if(!defined('IN_STDF')) {
 if (hasPermissions('users')) {
     ?>  
     <table width="100%"><tr><td style="padding-left:50px;">
-<h1>Вы баните пользователя 
+<h1>Р’С‹ Р±Р°РЅРёС‚Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ 
 <a href="/users/<?=$usr->login?>" class="<?=(is_emp($usr->role)?"emp":"frl")?>name11"><?=view_avatar($usr->login, $usr->photo)?></a>
 <a href="/users/<?=$usr->login?>" class="<?=(is_emp($usr->role)?"emp":"frl")?>name11"><?=$usr->uname?> <?=$usr->usurname?> [<?=$usr->login?>]</a></h1> 
-<b>Где баним:</b>
+<b>Р“РґРµ Р±Р°РЅРёРј:</b>
 <br><br>
 <form method="POST" action="." >
 <input type="hidden" name="no_send" value="<?=(isset($_GET["no_send"])?1:0)?>">
-<input type="radio" name="where" id="where1" value="0" <?=(!$_GET["where"] ? 'checked' : '')?>> <label for="where1">Везде</label><br>
+<input type="radio" name="where" id="where1" value="0" <?=(!$_GET["where"] ? 'checked' : '')?>> <label for="where1">Р’РµР·РґРµ</label><br>
 <?php if ($bIsWhere): ?>
-<input type="radio" name="where" id="where2" value="1" <?=($_GET["where"]==1 ? 'checked' : '')?>> <label for="where2">В блогах</label> <br>
+<input type="radio" name="where" id="where2" value="1" <?=($_GET["where"]==1 ? 'checked' : '')?>> <label for="where2">Р’ Р±Р»РѕРіР°С…</label> <br>
 <?php endif; ?>
 
 <br><br>
-<b>Причина:</b>
+<b>РџСЂРёС‡РёРЅР°:</b>
 <br>
-<!--<input type="radio" name="reason" id="reason1" value="1" checked> <label for="reason1">Крайне некорректное поведение на сайте</label> <br>-->
-<input type="radio" name="reason" id="reason2" value="2" > <label for="reason2">Спам в блогах</label> <br>
-<input type="radio" name="reason" id="reason3" value="3" > <label for="reason3">Спам в проектах</label> <br>
-<input type="radio" name="reason" id="reason4" value="4" > <label for="reason4">Аккаунт удален</label> <br>
+<!--<input type="radio" name="reason" id="reason1" value="1" checked> <label for="reason1">РљСЂР°Р№РЅРµ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РїРѕРІРµРґРµРЅРёРµ РЅР° СЃР°Р№С‚Рµ</label> <br>-->
+<input type="radio" name="reason" id="reason2" value="2" > <label for="reason2">РЎРїР°Рј РІ Р±Р»РѕРіР°С…</label> <br>
+<input type="radio" name="reason" id="reason3" value="3" > <label for="reason3">РЎРїР°Рј РІ РїСЂРѕРµРєС‚Р°С…</label> <br>
+<input type="radio" name="reason" id="reason4" value="4" > <label for="reason4">РђРєРєР°СѓРЅС‚ СѓРґР°Р»РµРЅ</label> <br>
 <br><br>
-<b><input type="radio" name="alltime" id="alltime1" value="1" checked> <label for="alltime1">Забанить</label><?php if ($bIsTime): ?> <input type="radio" name="alltime" id="alltime2" value="0"> <label for="alltime2">или на</label> <input type="text" size="3" name="time" maxlength="2" value="7"> дней</b><?php endif; ?><br><br>
-<b>Комментарий:</b><br>
+<b><input type="radio" name="alltime" id="alltime1" value="1" checked> <label for="alltime1">Р—Р°Р±Р°РЅРёС‚СЊ</label><?php if ($bIsTime): ?> <input type="radio" name="alltime" id="alltime2" value="0"> <label for="alltime2">РёР»Рё РЅР°</label> <input type="text" size="3" name="time" maxlength="2" value="7"> РґРЅРµР№</b><?php endif; ?><br><br>
+<b>РљРѕРјРјРµРЅС‚Р°СЂРёР№:</b><br>
 <textarea  cols="50" rows="10" name="comment"></textarea><br>
 <br>
-Причина и комментарий бана отобразятся в истории банов в админке.<br>
+РџСЂРёС‡РёРЅР° Рё РєРѕРјРјРµРЅС‚Р°СЂРёР№ Р±Р°РЅР° РѕС‚РѕР±СЂР°Р·СЏС‚СЃСЏ РІ РёСЃС‚РѕСЂРёРё Р±Р°РЅРѕРІ РІ Р°РґРјРёРЅРєРµ.<br>
 <br>
 <?php if ( intval($_GET['no_send']) == 0 ): ?>
-Пользователь получит сообщение от администрации сервиса на его активную почту.<br>
+РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РїРѕР»СѓС‡РёС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕС‚ Р°РґРјРёРЅРёСЃС‚СЂР°С†РёРё СЃРµСЂРІРёСЃР° РЅР° РµРіРѕ Р°РєС‚РёРІРЅСѓСЋ РїРѕС‡С‚Сѓ.<br>
 <br>
 <?php endif; ?>
-По получению бана, пользователь утратит доступ к своему аккаунту.
-Все созданные им темы в блоге и проекты будут сняты с публикации.
+РџРѕ РїРѕР»СѓС‡РµРЅРёСЋ Р±Р°РЅР°, РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓС‚СЂР°С‚РёС‚ РґРѕСЃС‚СѓРї Рє СЃРІРѕРµРјСѓ Р°РєРєР°СѓРЅС‚Сѓ.
+Р’СЃРµ СЃРѕР·РґР°РЅРЅС‹Рµ РёРј С‚РµРјС‹ РІ Р±Р»РѕРіРµ Рё РїСЂРѕРµРєС‚С‹ Р±СѓРґСѓС‚ СЃРЅСЏС‚С‹ СЃ РїСѓР±Р»РёРєР°С†РёРё.
 <?
 if ($sbrs) {
 ?><br>
-<h1 class="public_red_normal">ВНИМАНИЕ! Этот пользователь участвует в «Безопасных Сделках»!</h1><br/>
+<h1 class="public_red_normal">Р’РќРРњРђРќРР•! Р­С‚РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓС‡Р°СЃС‚РІСѓРµС‚ РІ В«Р‘РµР·РѕРїР°СЃРЅС‹С… РЎРґРµР»РєР°С…В»!</h1><br/>
 <ul><? foreach ($sbrs as $s) { ?>
 	<li style="margin-bottom:20px;"><a href="/norisk2/?id=<?=$s->id?>&access=A&<?=$s->isEmp() ? 'E' : 'F'?>=<?=$s->login?>" class="blue"><?=$s->name?></a><br/>
-	<? if($s->reserved_id) { ?>Деньги зарезервированы <?=date('j '.strtolower($MONTHA[date('n', strtotime($s->reserved_time))]).' Y года в H:i', strtotime($s->reserved_time))?>
-	<? } else { ?>Деньги не зарезервированы<? } ?><br/>
-	Срок выполнения проекта: <?=$s->work_days?> <?=ending(abs($s->work_days), 'день', 'дня', 'дней')?>.<br/>
+	<? if($s->reserved_id) { ?>Р”РµРЅСЊРіРё Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹ <?=date('j '.strtolower($MONTHA[date('n', strtotime($s->reserved_time))]).' Y РіРѕРґР° РІ H:i', strtotime($s->reserved_time))?>
+	<? } else { ?>Р”РµРЅСЊРіРё РЅРµ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹<? } ?><br/>
+	РЎСЂРѕРє РІС‹РїРѕР»РЅРµРЅРёСЏ РїСЂРѕРµРєС‚Р°: <?=$s->work_days?> <?=ending(abs($s->work_days), 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№')?>.<br/>
 	<? if (is_emp($usr->role)) { ?>
-	Фрилансер: <a href="/users/<?=$s->frl_login?>" class="frlname11"><?=$s->frl_uname?> <?=$s->frl_usurname?> [<?=$s->frl_login?>]</a>
+	Р¤СЂРёР»Р°РЅСЃРµСЂ: <a href="/users/<?=$s->frl_login?>" class="frlname11"><?=$s->frl_uname?> <?=$s->frl_usurname?> [<?=$s->frl_login?>]</a>
 	<? } else { ?>
-	Заказчик: <a href="/users/<?=$s->emp_login?>" class="empname11"><?=$s->emp_uname?> <?=$s->emp_usurname?> [<?=$s->emp_login?>]</a>
+	Р—Р°РєР°Р·С‡РёРє: <a href="/users/<?=$s->emp_login?>" class="empname11"><?=$s->emp_uname?> <?=$s->emp_usurname?> [<?=$s->emp_login?>]</a>
 	<? } ?></li>
 <? } ?></ul>
 
 <? } ?>
 <br><input type="hidden" name="uid" value="<?=$usr->login?>"><input type="hidden" name="blogid" value="<?=htmlspecialchars($_GET["blogid"])?>">
 <br><input type="hidden" name="returnpath" value="<?=($_GET["returnpath"] ? htmlspecialchars($_GET["returnpath"])  :  htmlspecialchars($_SERVER["HTTP_REFERER"]))?>">
-<div align="center"><input type="submit" value="Забанить"></div>
+<div align="center"><input type="submit" value="Р—Р°Р±Р°РЅРёС‚СЊ"></div>
 </form>
 </td> </tr> </table>  
 <?

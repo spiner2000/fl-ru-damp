@@ -9,8 +9,8 @@ window.addEvent('domready', function() { SBR_STAGE.setMsgAnchor(); } );
 </script>
 
 	<div class="nr-discuss">
-        <?php if (($sbr->isAdmin() || $sbr->isEmp() || $sbr->isFrl())) { ?><a href="#c_0" class="btngr btn-right" onclick="window.setTimeout('document.getElementById(\'msg_form0\').msgtext.focus()',0)"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Добавить комментарий</span></span></span></a><?php }//if?>
-		<h4>Обсуждение проекта</h4>
+        <?php if (($sbr->isAdmin() || $sbr->isEmp() || $sbr->isFrl())) { ?><a href="#c_0" class="btngr btn-right" onclick="window.setTimeout('document.getElementById(\'msg_form0\').msgtext.focus()',0)"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Р”РѕР±Р°РІРёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№</span></span></span></a><?php }//if?>
+		<h4>РћР±СЃСѓР¶РґРµРЅРёРµ РїСЂРѕРµРєС‚Р°</h4>
         <div class="comment-list" id="cl">
 					<?php if(($stage_msgs)||($sbr->docs)) { ?>
             <ul class="cl-ul">
@@ -23,17 +23,17 @@ window.addEvent('domready', function() { SBR_STAGE.setMsgAnchor(); } );
 		<div class="nr-discuss-comment">
             <br />
             <a name="c_0"></a>
-			<h4>Добавить комментарий</h4>
+			<h4>Р”РѕР±Р°РІРёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№</h4>
             <p class="nr-discuss-imp">
-              Просим обратить внимание на то, что <strong>Арбитраж принимает во внимание переписку только в комментариях к проекту</strong>.<br />
-              Не рассматривается переписка в иных сервисах, например Skype, ICQ или электронной почте.
+              РџСЂРѕСЃРёРј РѕР±СЂР°С‚РёС‚СЊ РІРЅРёРјР°РЅРёРµ РЅР° С‚Рѕ, С‡С‚Рѕ <strong>РђСЂР±РёС‚СЂР°Р¶ РїСЂРёРЅРёРјР°РµС‚ РІРѕ РІРЅРёРјР°РЅРёРµ РїРµСЂРµРїРёСЃРєСѓ С‚РѕР»СЊРєРѕ РІ РєРѕРјРјРµРЅС‚Р°СЂРёСЏС… Рє РїСЂРѕРµРєС‚Сѓ</strong>.<br />
+              РќРµ СЂР°СЃСЃРјР°С‚СЂРёРІР°РµС‚СЃСЏ РїРµСЂРµРїРёСЃРєР° РІ РёРЅС‹С… СЃРµСЂРІРёСЃР°С…, РЅР°РїСЂРёРјРµСЂ Skype, ICQ РёР»Рё СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ РїРѕС‡С‚Рµ.
             </p>
             <div id="msg_form_box0">
                 <? 
                 if($stage->post_msg && !$stage->post_msg['parent_id'] && !$stage->post_msg['id'])
                        echo $stage->msg_form($stage->post_msg, $stage->error['msgs'], true);
                    else
-                       echo $stage->msg_form(array('stage_id'=>$stage->id, 'id'=>'0'), NULL, true); // !!! нужно вместо 0 что-нибудь другое.
+                       echo $stage->msg_form(array('stage_id'=>$stage->id, 'id'=>'0'), NULL, true); // !!! РЅСѓР¶РЅРѕ РІРјРµСЃС‚Рѕ 0 С‡С‚Рѕ-РЅРёР±СѓРґСЊ РґСЂСѓРіРѕРµ.
                 ?>
             </div>
 		</div>

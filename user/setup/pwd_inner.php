@@ -7,7 +7,7 @@ checkLngPass = function(v) {
     else var obj = v;
     if(obj.length > 24) {
         $('error_box').style.display = 'block';
-        $('error_text').innerHTML = 'Слишком длинный пароль (максимум — 24 символа)';
+        $('error_text').innerHTML = 'РЎР»РёС€РєРѕРј РґР»РёРЅРЅС‹Р№ РїР°СЂРѕР»СЊ (РјР°РєСЃРёРјСѓРј вЂ” 24 СЃРёРјРІРѕР»Р°)';
         return false;  
     } else {
         $('error_box').style.display = 'none';
@@ -17,8 +17,8 @@ checkLngPass = function(v) {
 </script>
 <form action="." method="post" onsubmit="return checkLngPass()">
 <div class="b-layout b-layout_padtop_20">
-<h2 class="b-layout__title">Изменить пароль</h2>
-<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_20">От 6 до 24 символов. Допустимы латинские буквы, цифры и следующие спецсимволы: !@#$%^&*()_+-=;,./?[]{}</div>
+<h2 class="b-layout__title">РР·РјРµРЅРёС‚СЊ РїР°СЂРѕР»СЊ</h2>
+<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_20">РћС‚ 6 РґРѕ 24 СЃРёРјРІРѕР»РѕРІ. Р”РѕРїСѓСЃС‚РёРјС‹ Р»Р°С‚РёРЅСЃРєРёРµ Р±СѓРєРІС‹, С†РёС„СЂС‹ Рё СЃР»РµРґСѓСЋС‰РёРµ СЃРїРµС†СЃРёРјРІРѕР»С‹: !@#$%^&*()_+-=;,./?[]{}</div>
 <? if ($info || $error) { ?>
    <div class="b-layout__txt">
 	<? if ($info) { print(view_info($info)); } ?>
@@ -27,7 +27,7 @@ checkLngPass = function(v) {
 <? } ?>
 <table cellspacing="0" cellpadding="0" class="b-layout__table">
 <tr class="b-layout__tr">
-	<td class="b-layout__td b-layout__td_padbot_20"><div class="b-layout__txt b-layout__txt_padtop_5">Старый пароль:&#160;</div></td>
+	<td class="b-layout__td b-layout__td_padbot_20"><div class="b-layout__txt b-layout__txt_padtop_5">РЎС‚Р°СЂС‹Р№ РїР°СЂРѕР»СЊ:&#160;</div></td>
 	<td class="b-layout__td b-layout__td_padbot_20 b-layout__td_width_320">
 	<div class="b-combo">
 		<div class="b-combo__input">
@@ -39,7 +39,7 @@ checkLngPass = function(v) {
     </td>
 </tr>
 <tr class="b-layout__tr">
-	<td class="b-layout__td b-layout__td_padbot_20"><div class="b-layout__txt b-layout__txt_padtop_5">Новый пароль:&#160;</div></td>
+	<td class="b-layout__td b-layout__td_padbot_20"><div class="b-layout__txt b-layout__txt_padtop_5">РќРѕРІС‹Р№ РїР°СЂРѕР»СЊ:&#160;</div></td>
 	<td class="b-layout__td b-layout__td_padbot_20 b-layout__td_width_320">
 	<div class="b-combo">
 		<div class="b-combo__input">
@@ -51,7 +51,7 @@ checkLngPass = function(v) {
     </td>
 </tr>
 <tr class="b-layout__tr">
-	<td class="b-layout__td b-layout__td_padbot_20"><div class="b-layout__txt b-layout__txt_padtop_5">Повторите пароль:&#160;</div></td>
+	<td class="b-layout__td b-layout__td_padbot_20"><div class="b-layout__txt b-layout__txt_padtop_5">РџРѕРІС‚РѕСЂРёС‚Рµ РїР°СЂРѕР»СЊ:&#160;</div></td>
 	<td class="b-layout__td b-layout__td_padbot_20 b-layout__td_width_320">
 	<div class="b-combo">
 		<div class="b-combo__input">
@@ -63,7 +63,7 @@ checkLngPass = function(v) {
 </tr>
 <tr class="b-layout__tr">
     <td class="b-layout__td b-layout__td_right" colspan="2">
-       <button type="submit" name="btn" class="b-button b-button_flat b-button_flat_green">Изменить</button>
+       <button type="submit" name="btn" class="b-button b-button_flat b-button_flat_green">РР·РјРµРЅРёС‚СЊ</button>
        <input type="hidden" name="action" value="pwd_change" />
     </td>
 </tr>

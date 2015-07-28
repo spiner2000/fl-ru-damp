@@ -5,7 +5,7 @@ $stc = new static_compress;
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta content="text/html; charset=windows-1251" http-equiv="Content-Type"/>
-		<title>Удаленная работа (фри-ланс) на Free-lance.ru</title>
+		<title>РЈРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° (С„СЂРё-Р»Р°РЅСЃ) РЅР° Free-lance.ru</title>
 		
 		<style type="text/css">
 			*{
@@ -40,12 +40,12 @@ $stc = new static_compress;
 	<body>
 		<div class="container">
 			<img src="/images/logo.png" alt="Free-lance.ru" class="logo" />
-			<h1>На сайте проводятся технические работы.</h1>
-			<p>Free-lance.ru будет доступен для посещения с <?= IS_CLOSED_UNTIL?> по московскому времени. </p>
-			<p>Приносим свои извинения за временные неудобства.</p>
+			<h1>РќР° СЃР°Р№С‚Рµ РїСЂРѕРІРѕРґСЏС‚СЃСЏ С‚РµС…РЅРёС‡РµСЃРєРёРµ СЂР°Р±РѕС‚С‹.</h1>
+			<p>Free-lance.ru Р±СѓРґРµС‚ РґРѕСЃС‚СѓРїРµРЅ РґР»СЏ РїРѕСЃРµС‰РµРЅРёСЏ СЃ <?= IS_CLOSED_UNTIL?> РїРѕ РјРѕСЃРєРѕРІСЃРєРѕРјСѓ РІСЂРµРјРµРЅРё. </p>
+			<p>РџСЂРёРЅРѕСЃРёРј СЃРІРѕРё РёР·РІРёРЅРµРЅРёСЏ Р·Р° РІСЂРµРјРµРЅРЅС‹Рµ РЅРµСѓРґРѕР±СЃС‚РІР°.</p>
 			
 						<div class="b-social b-social_width_240 b-social_center">
-							<h4 class="b-social__title">Мы в социальных сетях:</h4>
+							<h4 class="b-social__title">РњС‹ РІ СЃРѕС†РёР°Р»СЊРЅС‹С… СЃРµС‚СЏС…:</h4>
 							<ul class="b-social__list b-social__list_padbot_10">
 									<li class="b-social__item"><a class="b-social__link b-social__link_v" target="_blank" href="http://vk.com/free_lanceru"></a></li>
 									<li class="b-social__item"><a class="b-social__link b-social__link_f" target="_blank" href="http://www.facebook.com/freelanceru"></a></li>

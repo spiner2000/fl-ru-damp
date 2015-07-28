@@ -11,47 +11,47 @@ class DocGenReserves extends DocGen
     const TEMPLATE_PATH             = '/templates/reserves/docs/';
     
     const BANK_INVOICE              = 'bank_invoice.odt';
-    const BANK_INVOICE_TEXT         = 'Счет №%s';
+    const BANK_INVOICE_TEXT         = 'РЎС‡РµС‚ в„–%s';
     const BANK_INVOICE_TYPE         = 5;
     
     const ACT_COMPLETED_FRL         = 'act_completed_frl.odt';
-    const ACT_COMPLETED_FRL_TEXT    = 'Акт о выполнении работы Исполнителем';
+    const ACT_COMPLETED_FRL_TEXT    = 'РђРєС‚ Рѕ РІС‹РїРѕР»РЅРµРЅРёРё СЂР°Р±РѕС‚С‹ РСЃРїРѕР»РЅРёС‚РµР»РµРј';
     const ACT_COMPLETED_FRL_TYPE    = 10;
     
     const ACT_SERVICE_EMP           = 'act_service_emp.odt';
-    const ACT_SERVICE_EMP_TEXT      = 'Акт об оказании услуг Заказчику';
+    const ACT_SERVICE_EMP_TEXT      = 'РђРєС‚ РѕР± РѕРєР°Р·Р°РЅРёРё СѓСЃР»СѓРі Р—Р°РєР°Р·С‡РёРєСѓ';
     const ACT_SERVICE_EMP_TYPE      = 20;
     
     const AGENT_REPORT              = 'agent_report.odt';
-    const AGENT_REPORT_TEXT         = 'Отчет агента по Договору';
+    const AGENT_REPORT_TEXT         = 'РћС‚С‡РµС‚ Р°РіРµРЅС‚Р° РїРѕ Р”РѕРіРѕРІРѕСЂСѓ';
     const AGENT_REPORT_TYPE         = 30;
     
     const RESERVE_OFFER_CONTRACT        = 'contract.odt';
-    const RESERVE_OFFER_CONTRACT_TEXT   = 'Договор %s';
+    const RESERVE_OFFER_CONTRACT_TEXT   = 'Р”РѕРіРѕРІРѕСЂ %s';
     const RESERVE_OFFER_CONTRACT_TYPE   = 40;
     
     const RESERVE_OFFER_AGREEMENT       = 'agreement.odt';
-    const RESERVE_OFFER_AGREEMENT_TEXT  = 'Соглашение %s';
+    const RESERVE_OFFER_AGREEMENT_TEXT  = 'РЎРѕРіР»Р°С€РµРЅРёРµ %s';
     const RESERVE_OFFER_AGREEMENT_TYPE  = 50;
 
     const LETTER_FRL                = 'letter_frl.odt';
-    const LETTER_FRL_TEXT           = 'Информационное письмо Исполнителю';
+    const LETTER_FRL_TEXT           = 'РРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРµ РїРёСЃСЊРјРѕ РСЃРїРѕР»РЅРёС‚РµР»СЋ';
     const LETTER_FRL_TYPE           = 60;
     
     
     const ARBITRAGE_REPORT          = 'arbitrage_report.odt';
-    const ARBITRAGE_REPORT_TEXT     = 'Отчет об арбитражном рассмотрении';
+    const ARBITRAGE_REPORT_TEXT     = 'РћС‚С‡РµС‚ РѕР± Р°СЂР±РёС‚СЂР°Р¶РЅРѕРј СЂР°СЃСЃРјРѕС‚СЂРµРЅРёРё';
     const ARBITRAGE_REPORT_TYPE     = 70;
     
     
     const RESERVE_FACTURA           = 'factura.xls';
-    const RESERVE_FACTURA_TEXT      = 'Счет-фактура';
+    const RESERVE_FACTURA_TEXT      = 'РЎС‡РµС‚-С„Р°РєС‚СѓСЂР°';
     const RESERVE_FACTURA_TYPE      = 80;
     
     
     
     const RESERVE_SPECIFICATION         = 'specification.odt';
-    const RESERVE_SPECIFICATION_TEXT    = 'Техническое задание';
+    const RESERVE_SPECIFICATION_TEXT    = 'РўРµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ';
     const RESERVE_SPECIFICATION_TYPE    = 90;
     
     
@@ -129,7 +129,7 @@ class DocGenReserves extends DocGen
     public $order;
 
     /**
-     * Использовать ли очередь
+     * РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ Р»Рё РѕС‡РµСЂРµРґСЊ
      * @var type 
      */
     private $use_queue = true;
@@ -210,7 +210,7 @@ class DocGenReserves extends DocGen
 
 
     /**
-     * Акт о выполнении работы Исполнителем
+     * РђРєС‚ Рѕ РІС‹РїРѕР»РЅРµРЅРёРё СЂР°Р±РѕС‚С‹ РСЃРїРѕР»РЅРёС‚РµР»РµРј
      */
     public function generateActCompletedFrl()
     {
@@ -239,7 +239,7 @@ class DocGenReserves extends DocGen
 
     
     /**
-     * Акт об оказании услуг Заказчику
+     * РђРєС‚ РѕР± РѕРєР°Р·Р°РЅРёРё СѓСЃР»СѓРі Р—Р°РєР°Р·С‡РёРєСѓ
      */
     public function generateActServiceEmp()
     {
@@ -262,7 +262,7 @@ class DocGenReserves extends DocGen
     
     
     /**
-     * Отчет агента по Договору
+     * РћС‚С‡РµС‚ Р°РіРµРЅС‚Р° РїРѕ Р”РѕРіРѕРІРѕСЂСѓ
      */
     public function generateAgentReport()
     {
@@ -288,7 +288,7 @@ class DocGenReserves extends DocGen
     
     
     /**
-     * Договор и Соглашение
+     * Р”РѕРіРѕРІРѕСЂ Рё РЎРѕРіР»Р°С€РµРЅРёРµ
      * 
      * @throws DocGenReservesException
      */
@@ -315,11 +315,11 @@ class DocGenReserves extends DocGen
     
     
     /**
-     * Информационное письмо Исполнителю
+     * РРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРµ РїРёСЃСЊРјРѕ РСЃРїРѕР»РЅРёС‚РµР»СЋ
      */
     public function generateInformLetterFRL() 
     {
-        //Удаляем старый файл
+        //РЈРґР°Р»СЏРµРј СЃС‚Р°СЂС‹Р№ С„Р°Р№Р»
         $this->deleteFiles($this->order['id'], self::LETTER_FRL_TYPE);
         
         $price = $this->order['reserve']->getPayoutSum();
@@ -348,7 +348,7 @@ class DocGenReserves extends DocGen
     
     
     /**
-     * Отчет об арбитражном рассмотрении
+     * РћС‚С‡РµС‚ РѕР± Р°СЂР±РёС‚СЂР°Р¶РЅРѕРј СЂР°СЃСЃРјРѕС‚СЂРµРЅРёРё
      */
     public function generateArbitrageReport()
     {
@@ -359,7 +359,7 @@ class DocGenReserves extends DocGen
         $this->setField('fio_frl', $this->order['reserve']->getFrlReqv());
         $this->setField('date_confirm', $this->order['reserve_data']['date']);
         $is_emp = $this->order['reserve_data']['arbitrage_is_emp'] == 't';
-        $this->setField('empfrl', ($is_emp)?'Заказчик':'Исполнитель');
+        $this->setField('empfrl', ($is_emp)?'Р—Р°РєР°Р·С‡РёРє':'РСЃРїРѕР»РЅРёС‚РµР»СЊ');
         $this->setField('pricelong_price', $this->order['reserve_data']['price']);
         $this->setField('title', $this->order['title']);
         
@@ -368,10 +368,10 @@ class DocGenReserves extends DocGen
         if($this->order['type'] == 0)
         {
             
-            $this->setField('description', sprintf("Что вы получите \n%s", $description));
+            $this->setField('description', sprintf("Р§С‚Рѕ РІС‹ РїРѕР»СѓС‡РёС‚Рµ \n%s", $description));
             
             $requirement = $this->order['requirement'];
-            $this->setField('requirement', sprintf("Что нужно, чтобы начать \n%s", $requirement)); 
+            $this->setField('requirement', sprintf("Р§С‚Рѕ РЅСѓР¶РЅРѕ, С‡С‚РѕР±С‹ РЅР°С‡Р°С‚СЊ \n%s", $requirement)); 
             
             if($this->order['order_extra'])
             {
@@ -402,7 +402,7 @@ class DocGenReserves extends DocGen
     
     
     /**
-     * Генерация счет-фактуры
+     * Р“РµРЅРµСЂР°С†РёСЏ СЃС‡РµС‚-С„Р°РєС‚СѓСЂС‹
      * 
      * @return type
      */
@@ -410,7 +410,7 @@ class DocGenReserves extends DocGen
     {
         $order = $this->order;
         
-        //Удаляем старую фактуру
+        //РЈРґР°Р»СЏРµРј СЃС‚Р°СЂСѓСЋ С„Р°РєС‚СѓСЂСѓ
         $this->deleteFiles($order['id'], self::RESERVE_FACTURA_TYPE);
         
         $this->setField('name_emp', $order['employer']['reqv']);
@@ -436,7 +436,7 @@ class DocGenReserves extends DocGen
 
     
     /**
-     * Техническое задание
+     * РўРµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ
      */
     public function generateSpecification() 
     {
@@ -466,8 +466,8 @@ class DocGenReserves extends DocGen
 
     
     /**
-     * Удаление файлов указанных типов
-     * @todo Удалять из очереди тоже нужно наверно
+     * РЈРґР°Р»РµРЅРёРµ С„Р°Р№Р»РѕРІ СѓРєР°Р·Р°РЅРЅС‹С… С‚РёРїРѕРІ
+     * @todo РЈРґР°Р»СЏС‚СЊ РёР· РѕС‡РµСЂРµРґРё С‚РѕР¶Рµ РЅСѓР¶РЅРѕ РЅР°РІРµСЂРЅРѕ
      * 
      * @param type $srcId
      * @param type $types
@@ -499,7 +499,7 @@ class DocGenReserves extends DocGen
     }
     
     /**
-     * Возвращает данные, необходимые для воссоздания экземпляра класса
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ, РЅРµРѕР±С…РѕРґРёРјС‹Рµ РґР»СЏ РІРѕСЃСЃРѕР·РґР°РЅРёСЏ СЌРєР·РµРјРїР»СЏСЂР° РєР»Р°СЃСЃР°
      * @return type
      */
     protected function getConstructorParams()

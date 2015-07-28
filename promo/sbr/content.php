@@ -1,2 +1,2 @@
-<div class="page-title">Услуги</div>
+<div class="page-title">РЈСЃР»СѓРіРё</div>
 <? include ($fpath.$inner); ?>

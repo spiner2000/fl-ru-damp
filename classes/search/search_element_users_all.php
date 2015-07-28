@@ -1,13 +1,13 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/search/search_element.php";
 /**
- * Класс для поиска по всем пользователям
+ * РљР»Р°СЃСЃ РґР»СЏ РїРѕРёСЃРєР° РїРѕ РІСЃРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј
  *
  */
 class searchElementUsers_all extends searchElement
 {
-    public $name = 'Люди';
-    public $totalwords = array('человек', 'человека', 'людей');
+    public $name = 'Р›СЋРґРё';
+    public $totalwords = array('С‡РµР»РѕРІРµРє', 'С‡РµР»РѕРІРµРєР°', 'Р»СЋРґРµР№');
     protected $_indexSfx = '';
     protected $_mode   = SPH_MATCH_ANY; //SPH_MATCH_EXTENDED2;
     protected $_sort   = SPH_SORT_EXTENDED;
@@ -40,13 +40,13 @@ class searchElementUsers_all extends searchElement
         'skype_1' => 1,
         'skype_2' => 1,
         'skype_3' => 1,
-        'jabbers' => 1, //доп jabber1-3
-        'ljs' => 1 //доп lj1-3
+        'jabbers' => 1, //РґРѕРї jabber1-3
+        'ljs' => 1 //РґРѕРї lj1-3
     );
 
     
     /**
-     * Пока поиск по всем юзерам доступен только админу с правами
+     * РџРѕРєР° РїРѕРёСЃРє РїРѕ РІСЃРµРј СЋР·РµСЂР°Рј РґРѕСЃС‚СѓРїРµРЅ С‚РѕР»СЊРєРѕ Р°РґРјРёРЅСѓ СЃ РїСЂР°РІР°РјРё
      * 
      * @return type
      */
@@ -57,7 +57,7 @@ class searchElementUsers_all extends searchElement
     
     
     /**
-     * Установка атрибутов из фильтра
+     * РЈСЃС‚Р°РЅРѕРІРєР° Р°С‚СЂРёР±СѓС‚РѕРІ РёР· С„РёР»СЊС‚СЂР°
      * 
      * @param type $page
      * @param type $filter
@@ -123,7 +123,7 @@ class searchElementUsers_all extends searchElement
     
     
     /**
-     * Выборка по результатам поиска
+     * Р’С‹Р±РѕСЂРєР° РїРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°Рј РїРѕРёСЃРєР°
      * 
      * @global type $DB
      */
@@ -133,7 +133,7 @@ class searchElementUsers_all extends searchElement
 
         $sqlLimit = '';
         
-        //Фильтрация на уровне выборки из БД
+        //Р¤РёР»СЊС‚СЂР°С†РёСЏ РЅР° СѓСЂРѕРІРЅРµ РІС‹Р±РѕСЂРєРё РёР· Р‘Р”
         if (($filter = $this->isAdvanced())) {
         
             $page   = $this->_advanced_page;
@@ -150,7 +150,7 @@ class searchElementUsers_all extends searchElement
         }
         
         
-        //Базовый запрос
+        //Р‘Р°Р·РѕРІС‹Р№ Р·Р°РїСЂРѕСЃ
         $sqlBase = "
            FROM users AS u
            LEFT JOIN account a ON a.uid = u.uid
@@ -159,7 +159,7 @@ class searchElementUsers_all extends searchElement
         ";
         
         
-        //Если есть ограничения то нужно посчитать кол-во из выбокри БД
+        //Р•СЃР»Рё РµСЃС‚СЊ РѕРіСЂР°РЅРёС‡РµРЅРёСЏ С‚Рѕ РЅСѓР¶РЅРѕ РїРѕСЃС‡РёС‚Р°С‚СЊ РєРѕР»-РІРѕ РёР· РІС‹Р±РѕРєСЂРё Р‘Р”
         if(!empty($sqlLimit)) {
             $sqlCnt = "
                 SELECT
@@ -170,7 +170,7 @@ class searchElementUsers_all extends searchElement
             $this->total = $DB->val($sqlCnt, $this->matches);
         }   
            
-        //Основная выборка по результатам поиска
+        //РћСЃРЅРѕРІРЅР°СЏ РІС‹Р±РѕСЂРєР° РїРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°Рј РїРѕРёСЃРєР°
         $sql = "
             SELECT 
                 u.uid, 

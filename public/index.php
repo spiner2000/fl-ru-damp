@@ -10,9 +10,9 @@ $no_banner = 1;
 $enter=true;
 $header = "../header.php";
 $footer = "../footer.html";
-$page_title = "Публикация проекта - фриланс, удаленная работа на FL.ru";
-$page_keyw = "фрилансер, работодатель, удаленная работа, поиск работы, предложение работы, портфолио фрилансеров, разработка сайтов, программирование, переводы, тексты, дизайн, арт, реклама, маркетинг, прочее, fl.ru";
-$page_descr = "Фрилансер. Работодатель.Удаленная работа. Поиск работы. Предложение работы. Портфолио фрилансеров. Разработка сайтов, Программирование, Переводы, Тексты, Дизайн, Арт, Реклама, Маркетинг, Прочее. FL.ru";
+$page_title = "РџСѓР±Р»РёРєР°С†РёСЏ РїСЂРѕРµРєС‚Р° - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
+$page_keyw = "С„СЂРёР»Р°РЅСЃРµСЂ, СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°, РїРѕРёСЃРє СЂР°Р±РѕС‚С‹, РїСЂРµРґР»РѕР¶РµРЅРёРµ СЂР°Р±РѕС‚С‹, РїРѕСЂС‚С„РѕР»РёРѕ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, СЂР°Р·СЂР°Р±РѕС‚РєР° СЃР°Р№С‚РѕРІ, РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ, РїРµСЂРµРІРѕРґС‹, С‚РµРєСЃС‚С‹, РґРёР·Р°Р№РЅ, Р°СЂС‚, СЂРµРєР»Р°РјР°, РјР°СЂРєРµС‚РёРЅРі, РїСЂРѕС‡РµРµ, fl.ru";
+$page_descr = "Р¤СЂРёР»Р°РЅСЃРµСЂ. Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ.РЈРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°. РџРѕРёСЃРє СЂР°Р±РѕС‚С‹. РџСЂРµРґР»РѕР¶РµРЅРёРµ СЂР°Р±РѕС‚С‹. РџРѕСЂС‚С„РѕР»РёРѕ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ. Р Р°Р·СЂР°Р±РѕС‚РєР° СЃР°Р№С‚РѕРІ, РџСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ, РџРµСЂРµРІРѕРґС‹, РўРµРєСЃС‚С‹, Р”РёР·Р°Р№РЅ, РђСЂС‚, Р РµРєР»Р°РјР°, РњР°СЂРєРµС‚РёРЅРі, РџСЂРѕС‡РµРµ. FL.ru";
 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
@@ -29,7 +29,7 @@ $step    = __paramInit('int', 'step', 'step', -1);
 $proj_id = __paramInit('int', 'public', 'public', 0);
 $kind    = __paramInit('int', 'kind', 'kind');
 if ($kind == 7) {
-    $page_title = "Публикация конкурса - фриланс, удаленная работа на FL.ru";
+    $page_title = "РџСѓР±Р»РёРєР°С†РёСЏ РєРѕРЅРєСѓСЂСЃР° - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
 }
 $back    = __paramInit('string', 'red', 'red', '');
 $key     = __paramInit('string', 'pk', 'pk');
@@ -38,9 +38,9 @@ $draft_id   = intval(__paramInit('int', 'draft_id', 'draft_id'));
 $auto_draft = intval(__paramInit('int', 'auto_draft', 'auto_draft'));
 
 if(!$key) {
-  $key = md5(uniqid($uid)); // ключ-идентификатор создаваемого/редактируемого проекта, для хранения в кэше.
-  if($step==1 && !$proj_id) { // если с нулевого шага пришли. Не передаем ключ оттуда сразу, т.к. юзер может несколько
-                              // несколько проектов сразу открыть, в этом случае ключ должен быть уникальным.
+  $key = md5(uniqid($uid)); // РєР»СЋС‡-РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃРѕР·РґР°РІР°РµРјРѕРіРѕ/СЂРµРґР°РєС‚РёСЂСѓРµРјРѕРіРѕ РїСЂРѕРµРєС‚Р°, РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РІ РєСЌС€Рµ.
+  if($step==1 && !$proj_id) { // РµСЃР»Рё СЃ РЅСѓР»РµРІРѕРіРѕ С€Р°РіР° РїСЂРёС€Р»Рё. РќРµ РїРµСЂРµРґР°РµРј РєР»СЋС‡ РѕС‚С‚СѓРґР° СЃСЂР°Р·Сѓ, С‚.Рє. СЋР·РµСЂ РјРѕР¶РµС‚ РЅРµСЃРєРѕР»СЊРєРѕ
+                              // РЅРµСЃРєРѕР»СЊРєРѕ РїСЂРѕРµРєС‚РѕРІ СЃСЂР°Р·Сѓ РѕС‚РєСЂС‹С‚СЊ, РІ СЌС‚РѕРј СЃР»СѓС‡Р°Рµ РєР»СЋС‡ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СѓРЅРёРєР°Р»СЊРЅС‹Рј.
       header("Location: /public/?step=1&kind={$kind}&pk={$key}&".($auto_draft?'auto_draft=1&':'').($draft_id?'draft_id='.$draft_id.'&':'')."red=".urlencode($back));
       exit;
   }
@@ -85,7 +85,7 @@ if($PDA) {
     if($_POST['action_change3'] != "") $action = "change_country2";
 }
 
-// черновики. если пользователь сразу публикует, то подставляем данные в массив #_POST
+// С‡РµСЂРЅРѕРІРёРєРё. РµСЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃСЂР°Р·Сѓ РїСѓР±Р»РёРєСѓРµС‚, С‚Рѕ РїРѕРґСЃС‚Р°РІР»СЏРµРј РґР°РЅРЅС‹Рµ РІ РјР°СЃСЃРёРІ #_POST
 if ( $draft_id && $auto_draft ) {
     
     $draft = $drafts->getDraft($draft_id, $uid, 1);
@@ -145,7 +145,7 @@ if ( $draft_id && $auto_draft ) {
     
     $action = 'next';
 
-} elseif ($draft_id && !$drafts->getDraft($draft_id, $uid, 1)) { // если дан id черновика, но такой черновик не существует
+} elseif ($draft_id && !$drafts->getDraft($draft_id, $uid, 1)) { // РµСЃР»Рё РґР°РЅ id С‡РµСЂРЅРѕРІРёРєР°, РЅРѕ С‚Р°РєРѕР№ С‡РµСЂРЅРѕРІРёРє РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
     header("Location: /403.php"); exit;
 }
 
@@ -161,7 +161,7 @@ switch($step)
 {
     case 1:
 
-        // Для PDA версии
+        // Р”Р»СЏ PDA РІРµСЂСЃРёРё
         if($action == 'prev' && $PDA) {
             $content = "content0.php";
             break;
@@ -185,17 +185,17 @@ switch($step)
         }
         
         $tmpPrj->setProjectField('kind', $kind ? $kind : $project['kind']);
-        // Может быть получен с нулевого шага.
+        // РњРѕР¶РµС‚ Р±С‹С‚СЊ РїРѕР»СѓС‡РµРЅ СЃ РЅСѓР»РµРІРѕРіРѕ С€Р°РіР°.
         $project = $tmpPrj->getProject();
         
         if($project['kind'] && !in_array($project['kind'], array(0,1,2,4,7)))
-            $error['kind'] = 'Закладка не выбрана';
+            $error['kind'] = 'Р—Р°РєР»Р°РґРєР° РЅРµ РІС‹Р±СЂР°РЅР°';
         
         if($action=='next' || $action=="change" || $action=="change_country") {
             
             $use_draft = ($project['user_id']==get_uid(false));
             
-            // сохаряем проект в черновики между первым и вторым шагом, если вдруг что пойдет не так
+            // СЃРѕС…Р°СЂСЏРµРј РїСЂРѕРµРєС‚ РІ С‡РµСЂРЅРѕРІРёРєРё РјРµР¶РґСѓ РїРµСЂРІС‹Рј Рё РІС‚РѕСЂС‹Рј С€Р°РіРѕРј, РµСЃР»Рё РІРґСЂСѓРі С‡С‚Рѕ РїРѕР№РґРµС‚ РЅРµ С‚Р°Рє
             $is_tmp_draft = false;
             if ($use_draft) {
                 if(!$draft_id) $is_tmp_draft = true;
@@ -218,7 +218,7 @@ switch($step)
                 $sc =  __paramInit('array', NULL, 'subcategories');
                 if(empty($c) || (sizeof($c)==1 && $c[0] == 0)) {
                     
-                    $error['category'] = 'Не выбран раздел';   
+                    $error['category'] = 'РќРµ РІС‹Р±СЂР°РЅ СЂР°Р·РґРµР»';   
                     
                 } else {
                 
@@ -260,23 +260,23 @@ switch($step)
 
             $project = $tmpPrj->getProject();
             if($project['cost'] < 0)
-                $error['cost'] = 'Введите положительную сумму';
+                $error['cost'] = 'Р’РІРµРґРёС‚Рµ РїРѕР»РѕР¶РёС‚РµР»СЊРЅСѓСЋ СЃСѓРјРјСѓ';
 
             if($project['cost'] > 999999)
-                $error['cost'] = 'Слишком большая сумма';
+                $error['cost'] = 'РЎР»РёС€РєРѕРј Р±РѕР»СЊС€Р°СЏ СЃСѓРјРјР°';
 
             if($project['cost']>0 && ($project['currency'] < 0 || $project['currency'] > 3))
-                $error['currency'] = 'Валюта не определена';
+                $error['currency'] = 'Р’Р°Р»СЋС‚Р° РЅРµ РѕРїСЂРµРґРµР»РµРЅР°';
 
             if(is_empty_html($project['descr']))
-                $error['descr'] = 'Поле не заполнено';
+                $error['descr'] = 'РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ';
 
             if(is_empty_html($project['name']))
-                $error['name'] = 'Поле не заполнено';
+                $error['name'] = 'РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ';
             
             $descr_limit = !$PDA ? 5000 : 2500;
             if(strlen_real($project['descr']) > $descr_limit)
-                $error['descr'] = "Исчерпан лимит символов ($descr_limit)";
+                $error['descr'] = "РСЃС‡РµСЂРїР°РЅ Р»РёРјРёС‚ СЃРёРјРІРѕР»РѕРІ ($descr_limit)";
 				
 			if ($project['kind'] == 7) {
 				$tmpPrj->setProjectField('end_date', __paramInit('string', NULL, 'end_date'),0,64);
@@ -284,18 +284,18 @@ switch($step)
 				$project = $tmpPrj->getProject();
 
 				if (!preg_match("/^([0-9]{1,2})\-([0-9]{1,2})\-([0-9]{4})$/", $project['end_date'], $o1) || !checkdate($o1[2], $o1[1], $o1[3]))
-					$error['end_date'] = 'Неправильная дата';
+					$error['end_date'] = 'РќРµРїСЂР°РІРёР»СЊРЅР°СЏ РґР°С‚Р°';
 
 				if (!preg_match("/^([0-9]{1,2})\-([0-9]{1,2})\-([0-9]{4})$/", $project['win_date'], $o2) || !checkdate($o2[2], $o2[1], $o2[3]))
-					$error['win_date'] = 'Неправильная дата';
+					$error['win_date'] = 'РќРµРїСЂР°РІРёР»СЊРЅР°СЏ РґР°С‚Р°';
 				
-				// Модераторам аккуратней	
+				// РњРѕРґРµСЂР°С‚РѕСЂР°Рј Р°РєРєСѓСЂР°С‚РЅРµР№	
 			    if(!hasPermissions('projects')) {
     				if (!$error['end_date'] && mktime(0, 0, 0, $o1[2], $o1[1], $o1[3]) <= mktime(0, 0, 0))
-    					$error['end_date'] = 'Дата окончания конкурса не может находиться  в прошлом';
+    					$error['end_date'] = 'Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР° РЅРµ РјРѕР¶РµС‚ РЅР°С…РѕРґРёС‚СЊСЃСЏ  РІ РїСЂРѕС€Р»РѕРј';
     			
     				if (!$error['win_date'] && mktime(0, 0, 0, $o2[2], $o2[1], $o2[3]) <= mktime(0, 0, 0, $o1[2], $o1[1], $o1[3]))
-					$error['win_date'] = 'Дата определения победителя должна быть больше даты окончания конкурса';
+					$error['win_date'] = 'Р”Р°С‚Р° РѕРїСЂРµРґРµР»РµРЅРёСЏ РїРѕР±РµРґРёС‚РµР»СЏ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РґР°С‚С‹ РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР°';
 				}
 				
 			}
@@ -314,12 +314,12 @@ switch($step)
                 //if($err = $tmpPrj->addAttach($_FILES['attach'])) $error['attach'] = $err;  
                 
                 if($PDA) {
-                    // Удаление файла для ПДА версии
+                    // РЈРґР°Р»РµРЅРёРµ С„Р°Р№Р»Р° РґР»СЏ РџР”Рђ РІРµСЂСЃРёРё
                     $idDel = __paramInit('int', NULL, 'atch');
                     if($idDel <= 0 && $_FILES['attach']['error'][0] == 4) {
                         $tmpPrj->delAttach(0);
                     }
-                    // сохранение файла
+                    // СЃРѕС…СЂР°РЅРµРЅРёРµ С„Р°Р№Р»Р°
                     if (is_array($_FILES['attachedfiles_file']) && !$_FILES['attachedfiles_file']['error']) {
                         $_POST['attachedfiles_action'] = 'add';
                         $_POST['attachedfiles_type'] = 'project';
@@ -334,7 +334,7 @@ switch($step)
             }
             
             $tmpPrj->fix();
-            // Опять для ПДА
+            // РћРїСЏС‚СЊ РґР»СЏ РџР”Рђ
             if($action=="change" && $PDA) {
                 header("Location: /public/?step={$step}{$pprm}&kind=".$project['kind']);
                 exit;
@@ -358,7 +358,7 @@ switch($step)
             }
         } else if ( $draft_id ) {
     
-            // загрузка с черновика
+            // Р·Р°РіСЂСѓР·РєР° СЃ С‡РµСЂРЅРѕРІРёРєР°
             
             $draft = $drafts->getDraft($draft_id, $uid, 1);
             
@@ -426,7 +426,7 @@ switch($step)
         break;
 
     case 2:
-        if(!$tmpPrj->isEdit() && ($project['descr']==='' || $project['name']==='')) { // сразу на шаг 2 нельзя, когда публикуется.
+        if(!$tmpPrj->isEdit() && ($project['descr']==='' || $project['name']==='')) { // СЃСЂР°Р·Сѓ РЅР° С€Р°Рі 2 РЅРµР»СЊР·СЏ, РєРѕРіРґР° РїСѓР±Р»РёРєСѓРµС‚СЃСЏ.
             header("Location: /public/?step=".(isset($project['kind']) ? 1 : 0))."{$pprm}";
             exit;
         }
@@ -439,17 +439,17 @@ switch($step)
             
             if(__paramInit('bool', NULL, 'logo_ok')) {
                 if(!$_FILES['logo']['size'])
-                    $error['logo'] = 'Необходимо выбрать файл';
+                    $error['logo'] = 'РќРµРѕР±С…РѕРґРёРјРѕ РІС‹Р±СЂР°С‚СЊ С„Р°Р№Р»';
                 elseif($err = $tmpPrj->setLogo(new CFile($_FILES['logo'])))
                     $error['logo'] = $err;
             }
             
             if(!$error && $action!='prev' && $action!='reload') {
-            	//для пользователя
+            	//РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
                 $price = $tmpPrj->getPrice($payedItems);
                 $account_sum = $account->sum;
                 $account_bonus_sum = $account->bonus_sum;
-                //для модератора
+                //РґР»СЏ РјРѕРґРµСЂР°С‚РѕСЂР°
                 $view_user_login = '';
                 if (hasPermissions("projects")) {
                 	$uid      = $tmpPrj->getAuthorId();
@@ -475,14 +475,14 @@ switch($step)
                         $drafts->DeleteDraft($draft_id, $uid, 1);
                         
                         if($price) {
-                            // в PDA без страниц-прокладок
+                            // РІ PDA Р±РµР· СЃС‚СЂР°РЅРёС†-РїСЂРѕРєР»Р°РґРѕРє
                             if ($PDA) {
                                 if($back == '/') $back = false;
                                 $_SESSION['bill.GET']['back'] = $back;
                                 header("Location: /bill/success/");
                                 exit;
                             }
-                            // платные опции
+                            // РїР»Р°С‚РЅС‹Рµ РѕРїС†РёРё
                             $payedParams = "";
                             foreach ($payedItems as $name=>$sum) {
                                 if ($sum > 0) {
@@ -491,7 +491,7 @@ switch($step)
                             }
                             $payedParams .= "&top_days=" . __paramInit('int', NULL, 'top_days',0);
                             $params = "?prj_id=" . $proj['id'] . $payedParams;
-                            // если конкурс
+                            // РµСЃР»Рё РєРѕРЅРєСѓСЂСЃ
                             if ($proj['kind'] == 7) {
                                 $contest = "&contest=" . (is_pro() ? 100 : 110);
                                 header("Location: /public/contest_published.php/" . $params . $contest . $editPrj);
@@ -506,7 +506,7 @@ switch($step)
                             if ($draft_prj_id) {
                                 header("Location: {$back}");
                             } else {
-                                // в PDA без страниц прокладок
+                                // РІ PDA Р±РµР· СЃС‚СЂР°РЅРёС† РїСЂРѕРєР»Р°РґРѕРє
                                 if ($PDA) {
                                     header("Location: {$back}");
                                 } else {
@@ -524,7 +524,7 @@ switch($step)
                         header("Location: /bill/?paysum=".ceil($price - $account->sum));
                         exit;
                     } else {
-                        $error['buy'] = 'На вашем счету не хватает '.round($price - $account->sum, 2). ' ' . ending(round($price - $account->sum), 'рубль', 'рубля', 'рублей');
+                        $error['buy'] = 'РќР° РІР°С€РµРј СЃС‡РµС‚Сѓ РЅРµ С…РІР°С‚Р°РµС‚ '.round($price - $account->sum, 2). ' ' . ending(round($price - $account->sum), 'СЂСѓР±Р»СЊ', 'СЂСѓР±Р»СЏ', 'СЂСѓР±Р»РµР№');
                     }
                 }
             }
@@ -532,7 +532,7 @@ switch($step)
             $tmpPrj->push('error', $error);
             $tmpPrj->fix();
             
-            // Для обработки в ПДА
+            // Р”Р»СЏ РѕР±СЂР°Р±РѕС‚РєРё РІ РџР”Рђ
             if(!$error && $action == 'reload' && $PDA) {
                 $price = $tmpPrj->getPrice();
                 header('Location: /public/?step='.($action!='prev' || $error ? 3 : 2)."{$pprm}" );
@@ -551,9 +551,9 @@ switch($step)
         }
         $content = "content2.php";
         break;
-    case 3: // Шаг для ПДА версии
+    case 3: // РЁР°Рі РґР»СЏ РџР”Рђ РІРµСЂСЃРёРё
         
-        if(!$tmpPrj->isEdit() && ($project['descr']==='' || $project['name']==='')) { // сразу на шаг 2 нельзя, когда публикуется.
+        if(!$tmpPrj->isEdit() && ($project['descr']==='' || $project['name']==='')) { // СЃСЂР°Р·Сѓ РЅР° С€Р°Рі 2 РЅРµР»СЊР·СЏ, РєРѕРіРґР° РїСѓР±Р»РёРєСѓРµС‚СЃСЏ.
             header("Location: /public/?step=".(isset($project['kind']) ? 1 : 0)."{$pprm}");
             exit;
         }
@@ -596,7 +596,7 @@ switch($step)
 }
 
 
-// Все изменения $tmpPrj->_project переносим в переменную.
+// Р’СЃРµ РёР·РјРµРЅРµРЅРёСЏ $tmpPrj->_project РїРµСЂРµРЅРѕСЃРёРј РІ РїРµСЂРµРјРµРЅРЅСѓСЋ.
 $project = $tmpPrj->getProject();
 if($step > 0)
     $tmpPrj->fix();

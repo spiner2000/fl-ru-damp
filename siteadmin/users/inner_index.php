@@ -153,7 +153,7 @@ switch ($action){
     case "change_safety_ip":
         break;
     case "nulrating":
-		users::NullRating(intval($_GET["id"]), hasPermissions('all')); // !!! только админы
+		users::NullRating(intval($_GET["id"]), hasPermissions('all')); // !!! С‚РѕР»СЊРєРѕ Р°РґРјРёРЅС‹
 		break;
 	 case "chmoder":
 		users::ChModer(intval($_GET["id"]), hasPermissions('users'));
@@ -198,9 +198,9 @@ INPUT.exact { margin-left: -4px }
 banned.addContext( 'all', -1, '', '' );
 banned.zero = true;
 </script>
-<strong>Пользователи</strong><br><br>
-<a href="/siteadmin/users/?type=frl" class="blue">Фрилансеры</a> | <a href="/siteadmin/users/?type=emp" class="blue">Работодатели</a> | <a href="/siteadmin/users/?type=ban" class="blue">Забаненные</a> | <a href="/siteadmin/users/?type=active" class="blue">Не активированные</a>
- | <a href="/siteadmin/users/?type=warns" class="blue">С предупреждениями</a>
+<strong>РџРѕР»СЊР·РѕРІР°С‚РµР»Рё</strong><br><br>
+<a href="/siteadmin/users/?type=frl" class="blue">Р¤СЂРёР»Р°РЅСЃРµСЂС‹</a> | <a href="/siteadmin/users/?type=emp" class="blue">Р Р°Р±РѕС‚РѕРґР°С‚РµР»Рё</a> | <a href="/siteadmin/users/?type=ban" class="blue">Р—Р°Р±Р°РЅРµРЅРЅС‹Рµ</a> | <a href="/siteadmin/users/?type=active" class="blue">РќРµ Р°РєС‚РёРІРёСЂРѕРІР°РЅРЅС‹Рµ</a>
+ | <a href="/siteadmin/users/?type=warns" class="blue">РЎ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏРјРё</a>
 <br><br>
 <table cellspacing="2" cellpadding="2" border="0">
 <tr>
@@ -212,11 +212,11 @@ banned.zero = true;
     <input type="text" name="search" value="<?=htmlspecialchars($search, ENT_QUOTES)?>">
     <input type="hidden" name="action" value="search">
     <input type="hidden" name="type" value="<?=htmlspecialchars($stype, ENT_QUOTES)?>">
-    <input type="submit" name="btn" value="Искать">
+    <input type="submit" name="btn" value="РСЃРєР°С‚СЊ">
     </td>
 </tr>
 <tr>
-    <td><input type="checkbox" name="exact" value="1" class="exact"<?=($_POST['exact']? ' checked': '')?>>точное совпадение</td>
+    <td><input type="checkbox" name="exact" value="1" class="exact"<?=($_POST['exact']? ' checked': '')?>>С‚РѕС‡РЅРѕРµ СЃРѕРІРїР°РґРµРЅРёРµ</td>
 </tr>
 </table>
 </form>
@@ -225,27 +225,27 @@ banned.zero = true;
 <table cellpadding="0" cellspacing="0" border="0">
 <tr>
     <td>
-    Искать по ip:
+    РСЃРєР°С‚СЊ РїРѕ ip:
     </td>
     <td>
     <form action="." method="post">
     <input type="text" name="searchip" value="<?=htmlspecialchars($searchip, ENT_QUOTES)?>">
     <input type="hidden" name="action" value="searchip">
     <input type="hidden" name="type" value="<?=htmlspecialchars($stype, ENT_QUOTES)?>">
-    <input type="submit" name="btn" value="Искать">
+    <input type="submit" name="btn" value="РСЃРєР°С‚СЊ">
     </form>
     </td>
 </tr>
 <tr>
     <td>
-    По карте:
+    РџРѕ РєР°СЂС‚Рµ:
     </td>
     <td>
     <form action="." method="post">
     <input type="text" name="searchcard" value="<?=htmlspecialchars($searchcard, ENT_QUOTES)?>">
     <input type="hidden" name="action" value="searchcard">
     <input type="hidden" name="type" value="<?=htmlspecialchars($stype, ENT_QUOTES)?>">
-    <input type="submit" name="btn" value="Искать">
+    <input type="submit" name="btn" value="РСЃРєР°С‚СЊ">
     </form>
     </td>
 </tr>
@@ -298,7 +298,7 @@ banned.zero = true;
                             <input type="hidden" name="s_action" value="<?=htmlspecialchars($action, ENT_QUOTES)?>">
                             <input type="hidden" name="s_search" value="<?=htmlspecialchars($search, ENT_QUOTES)?>">
                             <input type="hidden" name="s_searchip" value="<?=htmlspecialchars($searchip, ENT_QUOTES)?>">
-                            <input type="text" name="email" value="<?=htmlspecialchars($user['email'], ENT_QUOTES)?>"> <input type="submit" value="сменить">
+                            <input type="text" name="email" value="<?=htmlspecialchars($user['email'], ENT_QUOTES)?>"> <input type="submit" value="СЃРјРµРЅРёС‚СЊ">
                             </form>
                             </td>
                     </tr>
@@ -311,40 +311,40 @@ banned.zero = true;
 			<? if ($stype != "active") {	?>
 			
 			<?php
-            $sBanTitle = (!$user['is_banned'] && !$user['ban_where']) ? 'Забанить!' : 'Разбанить';
+            $sBanTitle = (!$user['is_banned'] && !$user['ban_where']) ? 'Р—Р°Р±Р°РЅРёС‚СЊ!' : 'Р Р°Р·Р±Р°РЅРёС‚СЊ';
             ?>
             <div style="float: left;" class="warnlink-<?=$user['uid']?>"><a style="color:red;" href="javascript:void(0);" onclick="banned.userBan(<?=$user['uid']?>, 'all',0)"><?=$sBanTitle?></a>&nbsp;</div>| 
             
 			<? } if ($stype == "active")	{ ?>
 
-			<a href="/siteadmin/users/?action=activate&amp;login=<?=$user['login']?>&amp;type=<?=$utype?>" class="blue">активировать</a> |
+			<a href="/siteadmin/users/?action=activate&amp;login=<?=$user['login']?>&amp;type=<?=$utype?>" class="blue">Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊ</a> |
 
 			<? } ?>
 			
-			<? /* <a href="/siteadmin/users/?action=delete&amp;login=<?=$user['login']?>&amp;type=<?=$utype?>" class="blue" onclick="return warning(20);">удалить</a> */ ?>
+			<? /* <a href="/siteadmin/users/?action=delete&amp;login=<?=$user['login']?>&amp;type=<?=$utype?>" class="blue" onclick="return warning(20);">СѓРґР°Р»РёС‚СЊ</a> */ ?>
 
 			<? if (hasPermissions('users') && $stype != "active") { ?>
                 <?php if ( hasPermissions('payments') ) { ?>
-                <a href="/siteadmin/bill/?login=<?=$user['login']?>" class="blue">счет</a> | 
+                <a href="/siteadmin/bill/?login=<?=$user['login']?>" class="blue">СЃС‡РµС‚</a> | 
                 <?php } ?>
 			 
-                <?php if ( hasPermissions('all') ) { // !!! только админы ?>
-                <a href=".?action=nulrating&id=<?=$user['uid']?>" class="blue">обнулить рейтинг</a> | 
+                <?php if ( hasPermissions('all') ) { // !!! С‚РѕР»СЊРєРѕ Р°РґРјРёРЅС‹ ?>
+                <a href=".?action=nulrating&id=<?=$user['uid']?>" class="blue">РѕР±РЅСѓР»РёС‚СЊ СЂРµР№С‚РёРЅРі</a> | 
                 <?php } ?>
 			<? } if (hasPermissions('users') && $stype != "active") { ?>
 			
-			<a href="javascript: void(0);" class="blue" onclick="banned.warnUser(<?=$user['uid']?>, 0, 'admpage', 'all', 0); return false;">сделать предупреждение</a> |
+			<a href="javascript: void(0);" class="blue" onclick="banned.warnUser(<?=$user['uid']?>, 0, 'admpage', 'all', 0); return false;">СЃРґРµР»Р°С‚СЊ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ</a> |
 			<? if($user['is_block_money'] == 'f'): ?>
-			<a href=".?action=block_money&id=<?=$user['uid']?>&search=<?=$user['login']?>" class="public_red_normal">заблокировать деньги</a>
+			<a href=".?action=block_money&id=<?=$user['uid']?>&search=<?=$user['login']?>" class="public_red_normal">Р·Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё</a>
 			<? else: ?>
-			<a href=".?action=unblock_money&id=<?=$user['uid']?>&search=<?=$user['login']?>" class="public_red_normal">разблокировать деньги</a>
+			<a href=".?action=unblock_money&id=<?=$user['uid']?>&search=<?=$user['login']?>" class="public_red_normal">СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё</a>
 			<? endif; ?>
 			
 			<br><br>
-			<? if (hasPermissions('users')) { ?> Права: 
-			<a href=".?action=chmoder&id=<?=$user['uid']?>" class="blue"><?=((is_moder($user['role'])?"снять":"дать"))?> модератора</a> |
-			<a href=".?action=chredact&id=<?=$user['uid']?>" class="blue"><?=((is_redactor($user['role'])?"снять":"дать"))?> редактора</a>
-            <? if($user['active']=='f') { ?> | <a href="/siteadmin/users/?action=activate&amp;login=<?=$user['login']?>&amp;type=<?=$utype?>" class="blue">активировать</a><? } ?>
+			<? if (hasPermissions('users')) { ?> РџСЂР°РІР°: 
+			<a href=".?action=chmoder&id=<?=$user['uid']?>" class="blue"><?=((is_moder($user['role'])?"СЃРЅСЏС‚СЊ":"РґР°С‚СЊ"))?> РјРѕРґРµСЂР°С‚РѕСЂР°</a> |
+			<a href=".?action=chredact&id=<?=$user['uid']?>" class="blue"><?=((is_redactor($user['role'])?"СЃРЅСЏС‚СЊ":"РґР°С‚СЊ"))?> СЂРµРґР°РєС‚РѕСЂР°</a>
+            <? if($user['active']=='f') { ?> | <a href="/siteadmin/users/?action=activate&amp;login=<?=$user['login']?>&amp;type=<?=$utype?>" class="blue">Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊ</a><? } ?>
             <br>
             <? } ?>
 			<? }elseif($stype == "active") { ?> <BR> <? } ?>
@@ -364,7 +364,7 @@ banned.zero = true;
                     <td><div id="ip_last_<?=$user['uid']?>" style="float:left; width: 80px;"><?=$user['last_ip']?></div></td>
                     </tr>
                     </table>
-                    <a href="#" onClick="javascript:window.open('/siteadmin/users/last10ip.php?uid=<?=$user['uid']?>&login=<?=$user['login']?>&usurname=<?=$user['usurname']?>&uname=<?=$user['uname']?>','LAST10','width=600,height=400,toolbar=no,location=no'); return false;">Последние 10 IP</a> | <a href="#" onClick="javascript:window.open('/siteadmin/users/last10email.php?uid=<?=$user['uid']?>&login=<?=$user['login']?>&usurname=<?=$user['usurname']?>&uname=<?=$user['uname']?>','EMAIL10','width=600,height=400,toolbar=no,location=no'); return false;">Последние 10 e-mail</a>
+                    <a href="#" onClick="javascript:window.open('/siteadmin/users/last10ip.php?uid=<?=$user['uid']?>&login=<?=$user['login']?>&usurname=<?=$user['usurname']?>&uname=<?=$user['uname']?>','LAST10','width=600,height=400,toolbar=no,location=no'); return false;">РџРѕСЃР»РµРґРЅРёРµ 10 IP</a> | <a href="#" onClick="javascript:window.open('/siteadmin/users/last10email.php?uid=<?=$user['uid']?>&login=<?=$user['login']?>&usurname=<?=$user['usurname']?>&uname=<?=$user['uname']?>','EMAIL10','width=600,height=400,toolbar=no,location=no'); return false;">РџРѕСЃР»РµРґРЅРёРµ 10 e-mail</a>
                     </td>
                 </tr>
                 <?
@@ -398,12 +398,12 @@ banned.zero = true;
             <table cellpadding="0" cellspacing="0">
                 <?php if($user['sum']) { ?>
                 <tr>
-                    <td width="90">Приход:</td>
+                    <td width="90">РџСЂРёС…РѕРґ:</td>
                     <td>$<?=$user['sum']?></td>
                 </tr>
                 <?php } ?>
                 <tr>
-                    <td width="90">Предупреждений:</td>
+                    <td width="90">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№:</td>
                     <td><span id='warnlink-<?=$user['uid']?>'><?=($user['warn'])? "(<a class='blue' href='javascript: void(0);' onclick='if (document.getElementById(\"warnlist-{$user['uid']}\").style.display==\"none\") xajax_GetWarns({$user['uid']}, \"admpage\"); else document.getElementById(\"warnlist-{$user['uid']}\").style.display = \"none\"; return false;'>".$user['warn']."</a>)": "(0)"?></span></td>
                 </tr>
             </table>
@@ -419,26 +419,26 @@ banned.zero = true;
                             <input type="hidden" name="s_action" value="<?=htmlspecialchars($action, ENT_QUOTES)?>">
                             <input type="hidden" name="s_search" value="<?=htmlspecialchars($search, ENT_QUOTES)?>">
                             <input type="hidden" name="s_searchip" value="<?=htmlspecialchars($searchip, ENT_QUOTES)?>">
-                            <input type="text" name="safety_ip" value="<?=htmlspecialchars($safety_ip, ENT_QUOTES)?>"> <input type="submit" value="сменить">
+                            <input type="text" name="safety_ip" value="<?=htmlspecialchars($safety_ip, ENT_QUOTES)?>"> <input type="submit" value="СЃРјРµРЅРёС‚СЊ">
                             </form>
                         </td>
                     </tr>
                     <form action="<?=$_SERVER['PHP_SELF']?>" method="POST" ><input type="hidden" name="action" value="change_safety_phone"><input type="hidden" name="uid" value="<?=htmlspecialchars($user['uid'], ENT_QUOTES)?>">
                     <tr>
-                        <td>Телефон:</td>
+                        <td>РўРµР»РµС„РѕРЅ:</td>
                         <td>
                             <input type="hidden" name="s_type" value="<?=htmlspecialchars($stype, ENT_QUOTES)?>">
                             <input type="hidden" name="s_page" value="<?=htmlspecialchars($page, ENT_QUOTES)?>">
                             <input type="hidden" name="s_action" value="<?=htmlspecialchars($action, ENT_QUOTES)?>">
                             <input type="hidden" name="s_search" value="<?=htmlspecialchars($search, ENT_QUOTES)?>">
                             <input type="hidden" name="s_searchip" value="<?=htmlspecialchars($searchip, ENT_QUOTES)?>">
-                            <input type="text" name="safety_phone" value="<?=htmlspecialchars($user['safety_phone'], ENT_QUOTES)?>"> <input type="submit" value="сменить">
+                            <input type="text" name="safety_phone" value="<?=htmlspecialchars($user['safety_phone'], ENT_QUOTES)?>"> <input type="submit" value="СЃРјРµРЅРёС‚СЊ">
                         </td>
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
                         <td>
-                            <input type="checkbox" name="safety_only_phone" value="t" <?=($user['safety_only_phone']=='t')?'checked':''?>> только по SMS
+                            <input type="checkbox" name="safety_only_phone" value="t" <?=($user['safety_only_phone']=='t')?'checked':''?>> С‚РѕР»СЊРєРѕ РїРѕ SMS
                         </td>
                     </tr>
                     </form>
@@ -451,7 +451,7 @@ banned.zero = true;
 			?>
             <div style='display:none' id="warnreason-<?=$user['uid']?>">&nbsp;</div>
             <div id="warnlist-<?=$user['uid']?>" class="warnings" style="margin-top: 10px; display: none">&nbsp;</div>
-			<?=($user['is_banned'])? "Причина бана: ".$ban['comment']."<br>": ""?>
+			<?=($user['is_banned'])? "РџСЂРёС‡РёРЅР° Р±Р°РЅР°: ".$ban['comment']."<br>": ""?>
 			</td>
 		</tr>
 		<?php if(isset($history_bill)) { $history_user = $history_bill[$user['uid']];?>
@@ -466,9 +466,9 @@ banned.zero = true;
                     </colgroup>
                     <thead>
                         <tr>
-                            <td>Сумма</td>
-                            <td>Дата</td>
-                            <td>Комментарий</td>
+                            <td>РЎСѓРјРјР°</td>
+                            <td>Р”Р°С‚Р°</td>
+                            <td>РљРѕРјРјРµРЅС‚Р°СЂРёР№</td>
                         </tr>
                     </thead>
                     <tbody> 
@@ -490,7 +490,7 @@ banned.zero = true;
 
 <? } ?>
 </table>
-	<? // Страницы
+	<? // РЎС‚СЂР°РЅРёС†С‹
 						$pages = ceil($count / $frl_pp);
 			if ($pages > 1){ ?>
 	<table border="0" cellspacing="1" cellpadding="0" class="pgs">
@@ -507,7 +507,7 @@ banned.zero = true;
 			<? if (ceil($i/30) == floor($i/30)) { ?> </tr><tr> <? }
 			} ?></tr>
 		</table>
-	 <? } // Страницы закончились?>
+	 <? } // РЎС‚СЂР°РЅРёС†С‹ Р·Р°РєРѕРЅС‡РёР»РёСЃСЊ?>
 
 <script type="text/javascript">
 window.addEvent('domready', function() {
@@ -529,8 +529,8 @@ if($_SESSION['a_alert_msg']) {
 
 <?php include_once( $_SERVER['DOCUMENT_ROOT'] . '/user/ban_overlay.php' ); ?>
 
-<!-- редактирование предупреждения старт -->
+<!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ СЃС‚Р°СЂС‚ -->
 <?php
 include_once( $_SERVER['DOCUMENT_ROOT'] . '/user/warn_overlay.php' );
 ?>
-<!-- редактирование предупреждения стоп -->
+<!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ СЃС‚РѕРї -->

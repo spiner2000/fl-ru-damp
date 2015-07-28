@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Список PROFI для лендинга
+ * РЎРїРёСЃРѕРє PROFI РґР»СЏ Р»РµРЅРґРёРЅРіР°
  */
 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/freelancer.php");
@@ -12,7 +12,7 @@ $profiList = $freelancer->getProfiAllRandom(90);
 if ($profiList):
 ?>
 <h2 class="b-page__title b-page__title_center">
-    <a href="/profi/" class="b-page__title_decor_none b-page__title_color_32">Лучшие исполнители</a>
+    <a href="/profi/" class="b-page__title_decor_none b-page__title_color_32">Р›СѓС‡С€РёРµ РёСЃРїРѕР»РЅРёС‚РµР»Рё</a>
 </h2>
 <div class="b-layout b-layout_box b-layout_margbot_30 b-layout_padleft_30_iphone b-layout_padright_15_iphone b-layout_pad_null_r560">
 <?php

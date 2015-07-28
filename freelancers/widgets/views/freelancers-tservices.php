@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Шаблон ТУ для каталога фрилансеров
+ * РЁР°Р±Р»РѕРЅ РўРЈ РґР»СЏ РєР°С‚Р°Р»РѕРіР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
  */
 
 if ($tservices): 
-    //Только 3 штуки как в миниатюры портфолио
+    //РўРѕР»СЊРєРѕ 3 С€С‚СѓРєРё РєР°Рє РІ РјРёРЅРёР°С‚СЋСЂС‹ РїРѕСЂС‚С„РѕР»РёРѕ
     $max = 3;
     $tservices = array_slice($tservices, 0, $max);
 ?>
@@ -17,7 +17,7 @@ foreach($tservices as $key => $tservice):
     $tservice_url = sprintf('/tu/%d/%s.html', $tservice['id'], tservices_helper::translit($tservice['title']));
     $tservice_title = LenghtFormatEx(reformat($tservice['title'], 20, 0, 1),80);
     $alt = $tservice_title;
-    $title = sprintf("Услуги фрилансера %s: %s", $tservice['login'], $tservice_title);
+    $title = sprintf("РЈСЃР»СѓРіРё С„СЂРёР»Р°РЅСЃРµСЂР° %s: %s", $tservice['login'], $tservice_title);
 
     if (!empty($tservice['file'])) {
         $image_url = tservices_helper::image_src($tservice['file'], $tservice['login']);
@@ -27,7 +27,7 @@ foreach($tservices as $key => $tservice):
     }
 
     $hasVideo = !empty($tservice['videos']) && count($tservice['videos']);
-    // Пока сфинск не считает все покупки, будем брать отзывы. #0026584
+    // РџРѕРєР° СЃС„РёРЅСЃРє РЅРµ СЃС‡РёС‚Р°РµС‚ РІСЃРµ РїРѕРєСѓРїРєРё, Р±СѓРґРµРј Р±СЂР°С‚СЊ РѕС‚Р·С‹РІС‹. #0026584
     $sold_count = isset($tservice['count_sold']) ? $tservice['count_sold'] : $tservice['total_feedbacks']; 
 ?>
         <td itemscope itemtype="http://schema.org/ImageObject">
@@ -44,7 +44,7 @@ foreach($tservices as $key => $tservice):
                         </a>
                         <a class="b-pic__price-box b-pic__price-box_pay b-pic__price-box b-pic__price-box_noline" href="javascript:void(0);" data-url="<?=$tservice_url?>" onclick="TServices_Catalog.orderNow(this);"><?=tservices_helper::cost_format($tservice['price'],true)?>			
                         <?php if ($sold_count > 0): ?>
-                            <span title="Количество продаж услуги"><span class="b-icon b-icon__tu2 b-icon_top_2"></span> <?=number_format($sold_count, 0, '', ' ')?></span>
+                            <span title="РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕРґР°Р¶ СѓСЃР»СѓРіРё"><span class="b-icon b-icon__tu2 b-icon_top_2"></span> <?=number_format($sold_count, 0, '', ' ')?></span>
                         <?php endif; ?>
                         </a>
                     </div>
@@ -54,13 +54,13 @@ foreach($tservices as $key => $tservice):
                 </div>
             <?php if($is_owner): ?>
             </div>
-            <a href="javascript:void(0);" data-preview-pos="<?=$key + 1?>" data-popup="<?=FreelancersPreviewEditorPopup::getInstance()->getPopupId()?>">Изменить</a>
+            <a href="javascript:void(0);" data-preview-pos="<?=$key + 1?>" data-popup="<?=FreelancersPreviewEditorPopup::getInstance()->getPopupId()?>">РР·РјРµРЅРёС‚СЊ</a>
             <?php endif; ?> 
         </td>
 <?php endforeach; ?>  
 <?php
-    //По правилам каталога по 3 вряд а 
-    //если не хватает достраиваем пустышками
+    //РџРѕ РїСЂР°РІРёР»Р°Рј РєР°С‚Р°Р»РѕРіР° РїРѕ 3 РІСЂСЏРґ Р° 
+    //РµСЃР»Рё РЅРµ С…РІР°С‚Р°РµС‚ РґРѕСЃС‚СЂР°РёРІР°РµРј РїСѓСЃС‚С‹С€РєР°РјРё
     $cnt = count($tservices);
     if($is_owner):
         if ($cnt < $max):
@@ -68,7 +68,7 @@ foreach($tservices as $key => $tservice):
 ?>
             <td>
                 <div id="preview_pos_<?=$key+1?>"><?=str_repeat('<br/>', 6);?></div>
-                <a href="javascript:void(0);" data-preview-pos="<?=$key+1?>" data-popup="<?=FreelancersPreviewEditorPopup::getInstance()->getPopupId()?>">Изменить</a>
+                <a href="javascript:void(0);" data-preview-pos="<?=$key+1?>" data-popup="<?=FreelancersPreviewEditorPopup::getInstance()->getPopupId()?>">РР·РјРµРЅРёС‚СЊ</a>
             </td>
 <?php        
             endfor;

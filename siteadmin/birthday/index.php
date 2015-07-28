@@ -18,7 +18,7 @@ switch($action) {
         $usero = new users();
         $usero->GetUser($login);
         if(!$usero->uid) {
-            $error = "Ошибка. Пользователя с логином {$login} не существует";
+            $error = "РћС€РёР±РєР°. РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ Р»РѕРіРёРЅРѕРј {$login} РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚";
             break;
         }
         $usero->utype = is_emp() ? 2 : 1;
@@ -29,14 +29,14 @@ switch($action) {
             header("Location: /siteadmin/birthday/?year={$year}");
             exit;
         }
-        $error = 'Ошибка.';
+        $error = 'РћС€РёР±РєР°.';
         break;
     case "del":
         if($birthday->del($id)) {
             header("Location: /siteadmin/birthday/?year={$year}");
             exit;
         }
-        $error = 'Ошибка.';
+        $error = 'РћС€РёР±РєР°.';
         break;
     case "accept":
     case "unaccept":
@@ -44,7 +44,7 @@ switch($action) {
             header("Location: /siteadmin/birthday/?year={$year}");
             exit;
         }
-        $error = 'Ошибка.';
+        $error = 'РћС€РёР±РєР°.';
         break;
 		case 'close':
 		case 'open':
@@ -52,7 +52,7 @@ switch($action) {
             header("Location: /siteadmin/birthday/?year={$year}");
             exit;
         }
-        $error = 'Ошибка.';
+        $error = 'РћС€РёР±РєР°.';
     default:
         break;
 }

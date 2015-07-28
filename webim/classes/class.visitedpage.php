@@ -1,11 +1,11 @@
 <?php
 /* 
  * 
- * Данный файл является частью проекта Веб Мессенджер.
+ * Р”Р°РЅРЅС‹Р№ С„Р°Р№Р» СЏРІР»СЏРµС‚СЃСЏ С‡Р°СЃС‚СЊСЋ РїСЂРѕРµРєС‚Р° Р’РµР± РњРµСЃСЃРµРЅРґР¶РµСЂ.
  * 
- * Все права защищены. (c) 2005-2009 ООО "ТОП".
- * Данное программное обеспечение и все сопутствующие материалы
- * предоставляются на условиях лицензии, доступной по адресу
+ * Р’СЃРµ РїСЂР°РІР° Р·Р°С‰РёС‰РµРЅС‹. (c) 2005-2009 РћРћРћ "РўРћРџ".
+ * Р”Р°РЅРЅРѕРµ РїСЂРѕРіСЂР°РјРјРЅРѕРµ РѕР±РµСЃРїРµС‡РµРЅРёРµ Рё РІСЃРµ СЃРѕРїСѓС‚СЃС‚РІСѓСЋС‰РёРµ РјР°С‚РµСЂРёР°Р»С‹
+ * РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‚СЃСЏ РЅР° СѓСЃР»РѕРІРёСЏС… Р»РёС†РµРЅР·РёРё, РґРѕСЃС‚СѓРїРЅРѕР№ РїРѕ Р°РґСЂРµСЃСѓ
  * http://webim.ru/license.html
  * 
  */
@@ -67,7 +67,7 @@ class VisitedPage  {
 
   static function writeToFile($id, $data, $closed = false) {
     $filename = self::getVistedPageFilename($id, $closed);
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     //create_basedir($filename);
     //return @file_put_contents($filename, serialize($data), LOCK_EX) !== false;
     if ( !($aKeys = $GLOBALS['mem_buff']->get('TRACKER_FILES_DIR')) ) {
@@ -93,7 +93,7 @@ class VisitedPage  {
     }
 
     $filename = self::getVisitSessionFilename($visitsessionid);
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     //create_basedir($filename);
     //return @file_put_contents($filename, serialize($data) . "\n", FILE_APPEND);
     if ( !($sData = $GLOBALS['mem_buff']->get($filename)) ) {
@@ -120,12 +120,12 @@ class VisitedPage  {
     
     $filename = self::getVisitSessionFilename($visitsessionid);
     
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     //create_basedir($filename);
     
-    $to_write = implode("\n", array_map("serialize",$data)); // так и было
+    $to_write = implode("\n", array_map("serialize",$data)); // С‚Р°Рє Рё Р±С‹Р»Рѕ
 
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     //return @file_put_contents($filename, $to_write. "\n", LOCK_EX);
     
     if ( !($aKeys = $GLOBALS['mem_buff']->get('TRACKER_FILES_DIR')) ) {
@@ -143,7 +143,7 @@ class VisitedPage  {
   function enumVisitedPagesByVisitSessionId($visitsessionid) {
     $filename = self::getVisitSessionFilename($visitsessionid);
     
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     /*if(!file_exists($filename)) {
       return array();	
     }*/
@@ -153,7 +153,7 @@ class VisitedPage  {
 
     $visitedpages = array();
     
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     //$lines = file($filename);
     $lines = explode( "\n", $sData );
     
@@ -184,18 +184,18 @@ class VisitedPage  {
     $paramsHash = array_merge($visitedpage, $paramsHash);
     $paramsHash = array_merge($paramsHash, $params);
     
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     //self::writeToFile($visitedpageid, $paramsHash);
 
     self::appendDataToVisitSessionFile($paramsHash['visitsessionid'], $paramsHash);
  
     if($paramsHash['state'] == VISITED_PAGE_CLOSED) {
-      // папка online в мэмкэш --------------------
+      // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
       //rename(self::getVistedPageFilename($visitedpageid), self::getVistedPageFilename($visitedpageid, true));
       $GLOBALS['mem_buff']->delete( self::getVistedPageFilename($visitedpageid) );
       self::writeToFile( $visitedpageid, $paramsHash, true );
     }
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     else {
         self::writeToFile($visitedpageid, $paramsHash);
     }
@@ -241,7 +241,7 @@ class VisitedPage  {
     $filename = self::getVistedPageFilename($visitedpageid);
     $closed_filename = self::getVistedPageFilename($visitedpageid, true);
   
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     /*if(file_exists($filename)) {
       $exists_filename = $filename;
     } else if(file_exists($closed_filename) ) {
@@ -306,11 +306,11 @@ class VisitedPage  {
   }
   
     /**
-     * Получить посетителей
+     * РџРѕР»СѓС‡РёС‚СЊ РїРѕСЃРµС‚РёС‚РµР»РµР№
      * 
-     * Аналог retrieveVisitors только для работы с мэмкэш
+     * РђРЅР°Р»РѕРі retrieveVisitors С‚РѕР»СЊРєРѕ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РјСЌРјРєСЌС€
      * 
-     * @return bool true - успех, false - провал
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function retrieveVisitorsFromMemBuff() {
         $min_delta = VISITED_PAGE_TIMEOUT;

@@ -2,61 +2,61 @@
 $reviewer = new StdClass();
 $reviewer->uname = @$_POST["uname"];
 $reviewer->usurname = @$_POST["usurname"];
-$str = "Все рецензии от рецензента";
+$str = "Р’СЃРµ СЂРµС†РµРЅР·РёРё РѕС‚ СЂРµС†РµРЅР·РµРЅС‚Р°";
 if ( strlen($reviewer->uname) > 0 && strlen($reviewer->usurname) > 0 ) {
-            //Все рецензии от <Имя_Фамилия_в_родительском_падеже>
-            $consonants = "бвгджзклмнпрстфхцчшщ";
-            $vowels = "аеёиоуыэюя";
+            //Р’СЃРµ СЂРµС†РµРЅР·РёРё РѕС‚ <РРјСЏ_Р¤Р°РјРёР»РёСЏ_РІ_СЂРѕРґРёС‚РµР»СЊСЃРєРѕРј_РїР°РґРµР¶Рµ>
+            $consonants = "Р±РІРіРґР¶Р·РєР»РјРЅРїСЂСЃС‚С„С…С†С‡С€С‰";
+            $vowels = "Р°РµС‘РёРѕСѓС‹СЌСЋСЏ";
             $vLetter = $letter = $reviewer->uname[ strlen($reviewer->uname) - 1 ];
             $uname = $reviewer->uname;
-            if ( $letter == "й" ) {
-                $uname[ strlen($uname) - 1 ] = 'я';
-            } elseif ( $letter == "ь" ) {
-                $uname[ strlen($uname) - 1 ] = 'я';
+            if ( $letter == "Р№" ) {
+                $uname[ strlen($uname) - 1 ] = 'СЏ';
+            } elseif ( $letter == "СЊ" ) {
+                $uname[ strlen($uname) - 1 ] = 'СЏ';
             } elseif ( strpos($consonants, $letter ) !== false ) {
-                $uname .= 'а';
+                $uname .= 'Р°';
             } elseif ( strpos($vowels, $letter ) !== false ) {
-                if ( $letter == 'а' ) {
+                if ( $letter == 'Р°' ) {
                     $prev = $reviewer->uname[ strlen($reviewer->uname) - 2 ];
                     if ( strpos($consonants, $prev) !== false) {
-                        if ( $prev != 'ш' && $prev != 'ж' ) {
-                            $uname[ strlen($uname) - 1 ] = 'ы';
+                        if ( $prev != 'С€' && $prev != 'Р¶' ) {
+                            $uname[ strlen($uname) - 1 ] = 'С‹';
                         } else {
-                            $uname[ strlen($uname) - 1 ] = 'и';
+                            $uname[ strlen($uname) - 1 ] = 'Рё';
                         }
                     } else {
-                        $uname[ strlen($uname) - 1 ] = 'и';
+                        $uname[ strlen($uname) - 1 ] = 'Рё';
                     }
                 } else {
-                    $uname[ strlen($uname) - 1 ] = 'и';
+                    $uname[ strlen($uname) - 1 ] = 'Рё';
                 }
             }
             
             $usurname = $reviewer->usurname;
             $letter = $reviewer->usurname[ strlen($reviewer->usurname) - 1 ];
-            if ( $letter == "й" && $reviewer->usurname[ strlen($reviewer->usurname) - 2 ] == "и" ) {
-                $usurname[ strlen($usurname) - 2 ] = 'о';
-                $usurname[ strlen($usurname) - 1 ] = 'г';
-                $usurname .= 'о';
-            } elseif ( $letter == "я" && $reviewer->usurname[ strlen($reviewer->usurname) - 2 ] == "а" ) {
-                $usurname[ strlen($usurname) - 2 ] = 'о';
-                $usurname[ strlen($usurname) - 1 ] = 'й';
+            if ( $letter == "Р№" && $reviewer->usurname[ strlen($reviewer->usurname) - 2 ] == "Рё" ) {
+                $usurname[ strlen($usurname) - 2 ] = 'Рѕ';
+                $usurname[ strlen($usurname) - 1 ] = 'Рі';
+                $usurname .= 'Рѕ';
+            } elseif ( $letter == "СЏ" && $reviewer->usurname[ strlen($reviewer->usurname) - 2 ] == "Р°" ) {
+                $usurname[ strlen($usurname) - 2 ] = 'Рѕ';
+                $usurname[ strlen($usurname) - 1 ] = 'Р№';
             } elseif ( strpos($consonants, $letter ) !== false && strpos($vowels, $vLetter ) === false ) {
-                $usurname .= 'а';
+                $usurname .= 'Р°';
             } elseif ( strpos($vowels, $letter ) !== false ) {
-                if ( $letter != 'е' ) {$prev = $reviewer->uname[ strlen($reviewer->uname) - 2 ];
-                    if ( $letter == 'а' ) {
-                        $usurname[ strlen($usurname) - 1 ] = 'о';
-                        $usurname .= 'й';
-                    } elseif ( $letter == 'о' && strpos($vowels, $vLetter ) !== false ) {
+                if ( $letter != 'Рµ' ) {$prev = $reviewer->uname[ strlen($reviewer->uname) - 2 ];
+                    if ( $letter == 'Р°' ) {
+                        $usurname[ strlen($usurname) - 1 ] = 'Рѕ';
+                        $usurname .= 'Р№';
+                    } elseif ( $letter == 'Рѕ' && strpos($vowels, $vLetter ) !== false ) {
                         ;
                     } else {
-                        $usurname[ strlen($usurname) - 1 ] = 'и';
+                        $usurname[ strlen($usurname) - 1 ] = 'Рё';
                     }
                 }
             }
             
-            $str = "Все рецензии от $uname $usurname";
+            $str = "Р’СЃРµ СЂРµС†РµРЅР·РёРё РѕС‚ $uname $usurname";
 }
 ?>
 <form method="POST">

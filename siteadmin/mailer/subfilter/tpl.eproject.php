@@ -2,11 +2,11 @@
 <div class="b-fon-subfilter b-fon b-fon_width_full b-fon_padbot_15 <?= !empty($message['eproject'])? "" :"b-fon_hide"; ?>">
     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf i-button">
         <a class="b-button b-button_admin_del b-button_float_right close-block " href="#" onclick="$('eproject').set('value', 0);"></a>
-        <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_20 b-layout__txt_fontsize_13 b-layout__txt_float_left">Проекты</div>
+        <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_20 b-layout__txt_fontsize_13 b-layout__txt_float_left">РџСЂРѕРµРєС‚С‹</div>
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_120 b-layout__left_valign_middle">
-                    <div class="b-layout__txt">За период</div>
+                    <div class="b-layout__txt">Р—Р° РїРµСЂРёРѕРґ</div>
                 </td>
                 <td class="b-layout__right">
                     <span id="i_eproject_period"></span>
@@ -25,14 +25,14 @@
                             <span class="b-combo__arrow-date"></span>
                         </div>
                     </div>
-                    <span id="eprj_period_date_text" class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?=($message['eproject']['period'][0] || $message['eproject']['period'][1] ? "style='display: none'" : '')?>>&#160;&#160;за всё время</span>
+                    <span id="eprj_period_date_text" class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?=($message['eproject']['period'][0] || $message['eproject']['period'][1] ? "style='display: none'" : '')?>>&#160;&#160;Р·Р° РІСЃС‘ РІСЂРµРјСЏ</span>
                 </td>
             </tr>
         </table>
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_120 b-layout__left_valign_middle">
-                    <div class="b-layout__txt b-layout__txt_lineheight_13">Создал проектов<br />любого типа</div>
+                    <div class="b-layout__txt b-layout__txt_lineheight_13">РЎРѕР·РґР°Р» РїСЂРѕРµРєС‚РѕРІ<br />Р»СЋР±РѕРіРѕ С‚РёРїР°</div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-combo b-combo_inline-block">
@@ -46,14 +46,14 @@
                             <input id="c3" class="b-combo__input-text b-combo-digital-input" name="eproject_created[1]" type="text" size="80" value="<?= $message['eproject']['created'][1]?>"/>
                         </div>
                     </div>
-                    <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?= (mailer::checkEmptyRange($message, 'eproject', 'created') ? "style='display:none'" : ""); ?>>&#160;&#160;любое количество</span>
+                    <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?= (mailer::checkEmptyRange($message, 'eproject', 'created') ? "style='display:none'" : ""); ?>>&#160;&#160;Р»СЋР±РѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ</span>
                 </td>
             </tr>
         </table>
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_120 b-layout__left_valign_middle">
-                    <div class="b-layout__txt b-layout__txt_lineheight_13">Фри-ланс</div>
+                    <div class="b-layout__txt b-layout__txt_lineheight_13">Р¤СЂРё-Р»Р°РЅСЃ</div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-combo b-combo_inline-block">
@@ -67,14 +67,14 @@
                             <input id="c3" class="b-combo__input-text b-combo-digital-input" name="eproject_freelance[1]" type="text" size="80" value="<?= $message['eproject']['frelance'][1]?>"/>
                         </div>
                     </div>
-                    <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?= (mailer::checkEmptyRange($message, 'eproject', 'freelance') ? "style='display:none'" : ""); ?>>&#160;&#160;любое количество</span>
+                    <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?= (mailer::checkEmptyRange($message, 'eproject', 'freelance') ? "style='display:none'" : ""); ?>>&#160;&#160;Р»СЋР±РѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ</span>
                 </td>
             </tr>
         </table>
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_120 b-layout__left_valign_middle">
-                    <div class="b-layout__txt">Только для <img src="/images/icons/f-pro.png" alt="" /></div>
+                    <div class="b-layout__txt">РўРѕР»СЊРєРѕ РґР»СЏ <img src="/images/icons/f-pro.png" alt="" /></div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-combo b-combo_inline-block">
@@ -88,14 +88,14 @@
                             <input id="c3" class="b-combo__input-text b-combo-digital-input" name="eproject_only_pro[1]" type="text" size="80" value="<?= $message['eproject']['only_pro'][1]?>"/>
                         </div>
                     </div>
-                    <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?= (mailer::checkEmptyRange($message, 'eproject', 'only_pro') ? "style='display:none'" : ""); ?>>&#160;&#160;любое количество</span>
+                    <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?= (mailer::checkEmptyRange($message, 'eproject', 'only_pro') ? "style='display:none'" : ""); ?>>&#160;&#160;Р»СЋР±РѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ</span>
                 </td>
             </tr>
         </table>
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_120 b-layout__left_valign_middle">
-                    <div class="b-layout__txt">В офис</div>
+                    <div class="b-layout__txt">Р’ РѕС„РёСЃ</div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-combo b-combo_inline-block">
@@ -109,14 +109,14 @@
                             <input id="c3" class="b-combo__input-text b-combo-digital-input" name="eproject_in_office[1]" type="text" size="80" value="<?= $message['eproject']['in_office'][1]?>"/>
                         </div>
                     </div>
-                    <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?= (mailer::checkEmptyRange($message, 'eproject', 'in_office') ? "style='display:none'" : ""); ?>>&#160;&#160;любое количество</span>
+                    <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?= (mailer::checkEmptyRange($message, 'eproject', 'in_office') ? "style='display:none'" : ""); ?>>&#160;&#160;Р»СЋР±РѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ</span>
                 </td>
             </tr>
         </table>
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_120 b-layout__left_valign_middle">
-                    <div class="b-layout__txt">Конкурсы</div>
+                    <div class="b-layout__txt">РљРѕРЅРєСѓСЂСЃС‹</div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-combo b-combo_inline-block">
@@ -130,14 +130,14 @@
                             <input id="c3" class="b-combo__input-text b-combo-digital-input" name="eproject_konkurs[1]" type="text" size="80" value="<?= $message['eproject']['konkurs'][1]?>"/>
                         </div>
                     </div>
-                    <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?= (mailer::checkEmptyRange($message, 'eproject', 'konkurs') ? "style='display:none'" : ""); ?>>&#160;&#160;любое количество</span>
+                    <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?= (mailer::checkEmptyRange($message, 'eproject', 'konkurs') ? "style='display:none'" : ""); ?>>&#160;&#160;Р»СЋР±РѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ</span>
                 </td>
             </tr>
         </table>
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_120 b-layout__left_valign_middle">
-                    <div class="b-layout__txt b-layout__txt_lineheight_13">Бюджет каждого<br />проекта</div>
+                    <div class="b-layout__txt b-layout__txt_lineheight_13">Р‘СЋРґР¶РµС‚ РєР°Р¶РґРѕРіРѕ<br />РїСЂРѕРµРєС‚Р°</div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-combo b-combo_inline-block">
@@ -151,14 +151,14 @@
                             <input id="c3" class="b-combo__input-text b-combo-digital-input" name="eproject_budget[1]" type="text" size="80" value="<?= $message['eproject']['budget'][1]?>"/>
                         </div>
                     </div>
-                    <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?= (mailer::checkEmptyRange($message, 'eproject', 'budget') ? "style='display:none'" : ""); ?>>&#160;&#160;любой</span>
+                    <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?= (mailer::checkEmptyRange($message, 'eproject', 'budget') ? "style='display:none'" : ""); ?>>&#160;&#160;Р»СЋР±РѕР№</span>
                 </td>
             </tr>
         </table>
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_120 b-layout__left_valign_middle">
-                    <div class="b-layout__txt b-layout__txt_lineheight_13">Сум. бюджет<br />всех проектов</div>
+                    <div class="b-layout__txt b-layout__txt_lineheight_13">РЎСѓРј. Р±СЋРґР¶РµС‚<br />РІСЃРµС… РїСЂРѕРµРєС‚РѕРІ</div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-combo b-combo_inline-block">
@@ -172,14 +172,14 @@
                             <input id="c3" class="b-combo__input-text b-combo-digital-input" name="eproject_sum_budget[1]" type="text" size="80" value="<?= $message['eproject']['sum_budget'][1]?>" />
                         </div>
                     </div>
-                    <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?= (mailer::checkEmptyRange($message, 'eproject', 'sum_budget') ? "style='display:none'" : ""); ?>>&#160;&#160;любой</span>
+                    <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?= (mailer::checkEmptyRange($message, 'eproject', 'sum_budget') ? "style='display:none'" : ""); ?>>&#160;&#160;Р»СЋР±РѕР№</span>
                 </td>
             </tr>
         </table>
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_120 b-layout__left_valign_middle">
-                    <div class="b-layout__txt b-layout__txt_lineheight_13">Среднее кол-во<br />отв. на проекты</div>
+                    <div class="b-layout__txt b-layout__txt_lineheight_13">РЎСЂРµРґРЅРµРµ РєРѕР»-РІРѕ<br />РѕС‚РІ. РЅР° РїСЂРѕРµРєС‚С‹</div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-combo b-combo_inline-block">
@@ -193,27 +193,27 @@
                             <input id="c3" class="b-combo__input-text b-combo-digital-input" name="eproject_avg_answer[1]" type="text" size="80" value="<?= $message['eproject']['avg_answer'][1]?>" />
                         </div>
                     </div>
-                    <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?= (mailer::checkEmptyRange($message, 'eproject', 'avg_answer') ? "style='display:none'" : ""); ?>>&#160;&#160;любое количество</span>
+                    <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?= (mailer::checkEmptyRange($message, 'eproject', 'avg_answer') ? "style='display:none'" : ""); ?>>&#160;&#160;Р»СЋР±РѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ</span>
                 </td>
             </tr>
         </table>
         <table class="b-layout__table b-layout__table_width_full" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_120">
-                    <div class="b-layout__txt b-layout__txt_lineheight_13">Расчитаны на<br />исполнителей</div>
+                    <div class="b-layout__txt b-layout__txt_lineheight_13">Р Р°СЃС‡РёС‚Р°РЅС‹ РЅР°<br />РёСЃРїРѕР»РЅРёС‚РµР»РµР№</div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-check b-check_padbot_5">
                         <input id="eproject_executor0" class="b-check__input" name="eproject_executor[0]" type="checkbox" value="1" <?=($message['eproject']['executor'][0]==1?"checked":"")?>/>
-                        <label class="b-check__label b-check__label_fontsize_13" for="eproject_executor0">Высокого класса</label>
+                        <label class="b-check__label b-check__label_fontsize_13" for="eproject_executor0">Р’С‹СЃРѕРєРѕРіРѕ РєР»Р°СЃСЃР°</label>
                     </div>
                     <div class="b-check b-check_padbot_5">
                         <input id="eproject_executor1" class="b-check__input" name="eproject_executor[1]" type="checkbox" value="1" <?=($message['eproject']['executor'][1]==1?"checked":"")?>/>
-                        <label class="b-check__label b-check__label_fontsize_13" for="eproject_executor1">Среднего</label>
+                        <label class="b-check__label b-check__label_fontsize_13" for="eproject_executor1">РЎСЂРµРґРЅРµРіРѕ</label>
                     </div>
                     <div class="b-check b-check_padbot_20">
                         <input id="eproject_executor2" class="b-check__input" name="eproject_executor[2]" type="checkbox" value="1" <?=($message['eproject']['executor'][2]==1?"checked":"")?>/>
-                        <label class="b-check__label b-check__label_fontsize_13" for="eproject_executor2">Низкого</label>
+                        <label class="b-check__label b-check__label_fontsize_13" for="eproject_executor2">РќРёР·РєРѕРіРѕ</label>
                     </div>
                 </td>
             </tr>
@@ -221,12 +221,12 @@
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_10" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_120">
-                    <div class="b-layout__txt">Специализации</div>
+                    <div class="b-layout__txt">РЎРїРµС†РёР°Р»РёР·Р°С†РёРё</div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-select">
                         <select name="eproject_spec" class="b-select__select b-select__select_width_300">
-                            <option value="0">Любые</option>
+                            <option value="0">Р›СЋР±С‹Рµ</option>
                             <?php if( $specs ) { ?>
                             <?php foreach($specs as $key=>$value) { ?>
                             <option value="<?= $value['id'];?>" <?= ($value['id'] == $message['eproject']['spec']?"selected":"")?>><?=$value['name'];?></option>

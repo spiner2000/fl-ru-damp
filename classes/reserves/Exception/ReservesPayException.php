@@ -3,10 +3,10 @@
 
 class ReservesPayException extends Exception
 {
-    const RESERVE_NOTFOUND      = 'БС не найдена.';
-    const RESERVE_STATUS_FAIL   = 'Статус БС не подходящий для операции.';
-    const API_CRITICAL_FAIL     = 'Невозможно повторить запрос. Код ошибки API: %d.';
-    const REQUEST_LIMIT         = 'Превышен лимит в более 999 запросов.';
+    const RESERVE_NOTFOUND      = 'Р‘РЎ РЅРµ РЅР°Р№РґРµРЅР°.';
+    const RESERVE_STATUS_FAIL   = 'РЎС‚Р°С‚СѓСЃ Р‘РЎ РЅРµ РїРѕРґС…РѕРґСЏС‰РёР№ РґР»СЏ РѕРїРµСЂР°С†РёРё.';
+    const API_CRITICAL_FAIL     = 'РќРµРІРѕР·РјРѕР¶РЅРѕ РїРѕРІС‚РѕСЂРёС‚СЊ Р·Р°РїСЂРѕСЃ. РљРѕРґ РѕС€РёР±РєРё API: %d.';
+    const REQUEST_LIMIT         = 'РџСЂРµРІС‹С€РµРЅ Р»РёРјРёС‚ РІ Р±РѕР»РµРµ 999 Р·Р°РїСЂРѕСЃРѕРІ.';
     
     protected $repeat = false;
 

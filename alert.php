@@ -17,7 +17,7 @@ switch($alert) {
         $back_gr = __paramInit('string', 'back_gr', 'back_gr');
         $back = $back_gr !== null ? "&back_gr=".$back_gr : "";
         $alert      = "blog";
-        $text_descr = "Вы действительно хотите удалить сообщение?";
+        $text_descr = "Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ?";
         $form_uri   = "/blogs/viewgroup.php?id={$id}{$back}&action=delete&ord=new&u_token_key={$u_token_key}";
         $back_uri   = $_SESSION['back_uri'];
         break;
@@ -26,7 +26,7 @@ switch($alert) {
         $tr         = intval($_GET['tr']);
         $u_token_key = __paramInit('string', null, 'u_token_key');
         $alert      = "comment";
-        $text_descr = "Вы действительно хотите удалить комментарий?";
+        $text_descr = "Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№?";
         $form_uri   = "/blogs/view.php?tr={$tr}&ord=new&id={$id}&action=delete&ord=new&u_token_key={$u_token_key}";
         $back_uri   = $_SESSION['back_uri'];
         break;  

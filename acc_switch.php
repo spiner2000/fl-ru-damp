@@ -7,7 +7,7 @@
         $pro_ico = view_pro2($is_pro_test);
     }
 
-    $login_val = ($_SESSION['anti_uid']) ? $_SESSION['anti_login'] : 'Логин';
+    $login_val = ($_SESSION['anti_uid']) ? $_SESSION['anti_login'] : 'Р›РѕРіРёРЅ';
 ?>
 
 <script type="text/javascript">
@@ -46,7 +46,7 @@ window.addEvent('domready', function() {
 });
 </script>
         <span class="b-userbar__switcher">
-			<a id="l-switch" class="b-userbar__toplink" href="javascript:void(0);"><i class="b-userbar__icsw"></i>Аккаунт <?=!is_emp() ? 'работодателя' : 'фрилансера'?></a>
+			<a id="l-switch" class="b-userbar__toplink" href="javascript:void(0);"><i class="b-userbar__icsw"></i>РђРєРєР°СѓРЅС‚ <?=!is_emp() ? 'СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ' : 'С„СЂРёР»Р°РЅСЃРµСЂР°'?></a>
 		</span>
 		
 		
@@ -59,10 +59,10 @@ window.addEvent('domready', function() {
 				<div>
 					<input type="hidden" name="redirect" id="redirect_au" value="<?= urlencode($_SERVER['REQUEST_URI']);?>" />
 					<label class="b-userbar__transloginlabel" for="b-userbar__transitlogin"><i class="b-userbar__icsw"></i></label>
-					<input id="b-userbar__transitlogin" class="b-userbar__transitlogin" type="text" name="a_login" value="<?=$login_val?>" onfocus="if(this.value=='Логин'){this.value='';}" onblur="if(this.value==''){this.value='Логин';}" />
+					<input id="b-userbar__transitlogin" class="b-userbar__transitlogin" type="text" name="a_login" value="<?=$login_val?>" onfocus="if(this.value=='Р›РѕРіРёРЅ'){this.value='';}" onblur="if(this.value==''){this.value='Р›РѕРіРёРЅ';}" />
 					<input  id="b-userbar__transitpswrd" class="b-userbar__transitpswrd"  type="password" name="passwd" value="******" onfocus="if(this.value=='******') {this.value='';}" onblur="if(this.value==''){this.value='******';}" />
-					<a id="l-cancel" class="b-userbar__toplink" href="">Отмена</a>
-					<input class="b-userbar__transition" type="submit" value="Перейти" />
+					<a id="l-cancel" class="b-userbar__toplink" href="">РћС‚РјРµРЅР°</a>
+					<input class="b-userbar__transition" type="submit" value="РџРµСЂРµР№С‚Рё" />
 				</div>
 			</form>
 		</div>
@@ -71,9 +71,9 @@ window.addEvent('domready', function() {
 
 <?/*
 <? if (!$_SESSION['pro_last']) { ?>
-  <a href="javascript: void(0)" onclick="acc_toggler();" class="lnk-acc-change"><span>Аккаунт</span></a>&nbsp;&mdash;&nbsp;Начальный. <a href="/payed" class="payed-lnk">Купить Pro</a>
+  <a href="javascript: void(0)" onclick="acc_toggler();" class="lnk-acc-change"><span>РђРєРєР°СѓРЅС‚</span></a>&nbsp;&mdash;&nbsp;РќР°С‡Р°Р»СЊРЅС‹Р№. <a href="/payed" class="payed-lnk">РљСѓРїРёС‚СЊ Pro</a>
 <? } else { ?>
-  <a href="javascript: void(0)" onclick="acc_toggler();" class="lnk-acc-change"><? if($_SESSION['pro_last']) { ?><span>Аккаунт</span></a>&nbsp;&mdash;&nbsp;<?=$pro_ico." <b>(".pro_days($_SESSION['pro_last']).")</b>"?><? } ?>
+  <a href="javascript: void(0)" onclick="acc_toggler();" class="lnk-acc-change"><? if($_SESSION['pro_last']) { ?><span>РђРєРєР°СѓРЅС‚</span></a>&nbsp;&mdash;&nbsp;<?=$pro_ico." <b>(".pro_days($_SESSION['pro_last']).")</b>"?><? } ?>
 <? } ?>
 <? if ($_SESSION['pro_last'] || is_emp()) { ?>
     <div class="mb-change-menu" id="acc-change">
@@ -82,47 +82,47 @@ window.addEvent('domready', function() {
             <ul>
                 <? if(!is_emp()) { ?>
                   <li class="mb-lancer-act" id="mb-lancer">
-                       <span>Фрилансер<br /><strong><?=$_SESSION['name'].' '.$_SESSION['surname']?> [<?=$_SESSION['login']?>]</strong></span>
+                       <span>Р¤СЂРёР»Р°РЅСЃРµСЂ<br /><strong><?=$_SESSION['name'].' '.$_SESSION['surname']?> [<?=$_SESSION['login']?>]</strong></span>
                   </li>
                   <? if($_SESSION['anti_uid']) { ?>
                        <li class="mb-employer" id="mb-employer">
-                            <span>Работодатель<br/><strong><a href="javascript:asw_subm('switch')"><?=$_SESSION['anti_name'].' '.$_SESSION['anti_surname']?> [<?=$_SESSION['anti_login']?>]</a></strong></span>
-                            <span class="mb-change-lnk"><a href="javascript:void(0)" onclick="emp_acc_exit();">Изменить</a></span>
+                            <span>Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ<br/><strong><a href="javascript:asw_subm('switch')"><?=$_SESSION['anti_name'].' '.$_SESSION['anti_surname']?> [<?=$_SESSION['anti_login']?>]</a></strong></span>
+                            <span class="mb-change-lnk"><a href="javascript:void(0)" onclick="emp_acc_exit();">РР·РјРµРЅРёС‚СЊ</a></span>
                        </li>
                   <? }else{ ?>
                        <li class="mb-employer-add">
                            <span>
                                <span class="mbc-fl">
-                                   <label for="fl2" onclick="this.nextSibling.focus();" class="fl">Логин</label><input id="fl2" name="a_login" type="text" class="mba-str" onfocus="clean(this)" onkeydown="if(event.keyCode==13)asw_subm('change_au')" />
+                                   <label for="fl2" onclick="this.nextSibling.focus();" class="fl">Р›РѕРіРёРЅ</label><input id="fl2" name="a_login" type="text" class="mba-str" onfocus="clean(this)" onkeydown="if(event.keyCode==13)asw_subm('change_au')" />
                                </span>
                                <span class="mbc-fl">
-                                   <label for="fp2" onclick="this.nextSibling.focus();" class="fp">Пароль</label><input id="fp2" name="passwd" type="password" class="mba-str" onfocus="clean(this)" onkeydown="if(event.keyCode==13)asw_subm('change_au')" />
+                                   <label for="fp2" onclick="this.nextSibling.focus();" class="fp">РџР°СЂРѕР»СЊ</label><input id="fp2" name="passwd" type="password" class="mba-str" onfocus="clean(this)" onkeydown="if(event.keyCode==13)asw_subm('change_au')" />
                                </span>
-                               <span class="lnc-add-acc"><a href="javascript:asw_subm('change_au')">Добавить аккаунт</a></span>
+                               <span class="lnc-add-acc"><a href="javascript:asw_subm('change_au')">Р”РѕР±Р°РІРёС‚СЊ Р°РєРєР°СѓРЅС‚</a></span>
                            </span>
                        </li>
                   <? } ?>
                 <? } else { ?>
                   <? if($_SESSION['anti_uid']) { ?>
                        <li class="mb-lancer" id="mb-lancer">
-                            <span>Фрилансер<br/><strong><a href="javascript:asw_subm('switch')"><?=$_SESSION['anti_name'].' '.$_SESSION['anti_surname']?> [<?=$_SESSION['anti_login']?>]</a></strong></span>
-                            <span class="mb-change-lnk"><a href="javascript:void(0)" onclick="lancer_acc_exit();">Изменить</a></span>
+                            <span>Р¤СЂРёР»Р°РЅСЃРµСЂ<br/><strong><a href="javascript:asw_subm('switch')"><?=$_SESSION['anti_name'].' '.$_SESSION['anti_surname']?> [<?=$_SESSION['anti_login']?>]</a></strong></span>
+                            <span class="mb-change-lnk"><a href="javascript:void(0)" onclick="lancer_acc_exit();">РР·РјРµРЅРёС‚СЊ</a></span>
                        </li>
                   <? }else{ ?>
                        <li class="mb-lancer-add">
                            <span>
                                <span class="mbc-fl">
-                                   <label for="fl2" onclick="this.nextSibling.focus();" class="fl">Логин</label><input id="fl2" name="a_login" type="text" class="mba-str" onfocus="clean(this)" onkeydown="if(event.keyCode==13)asw_subm('change_au')" />
+                                   <label for="fl2" onclick="this.nextSibling.focus();" class="fl">Р›РѕРіРёРЅ</label><input id="fl2" name="a_login" type="text" class="mba-str" onfocus="clean(this)" onkeydown="if(event.keyCode==13)asw_subm('change_au')" />
                                </span>
                                <span class="mbc-fl">
-                                   <label for="fp2" onclick="this.nextSibling.focus();" class="fp">Пароль</label><input id="fp2" name="passwd" type="password" class="mba-str" onfocus="clean(this)" onkeydown="if(event.keyCode==13)asw_subm('change_au')" />
+                                   <label for="fp2" onclick="this.nextSibling.focus();" class="fp">РџР°СЂРѕР»СЊ</label><input id="fp2" name="passwd" type="password" class="mba-str" onfocus="clean(this)" onkeydown="if(event.keyCode==13)asw_subm('change_au')" />
                                </span>
-                               <span class="lnc-add-acc"><a href="javascript:asw_subm('change_au')">Добавить аккаунт</a></span>
+                               <span class="lnc-add-acc"><a href="javascript:asw_subm('change_au')">Р”РѕР±Р°РІРёС‚СЊ Р°РєРєР°СѓРЅС‚</a></span>
                            </span>
                        </li>
                   <? } ?>
                   <li class="mb-employer-act" id="mb-employer">
-                       <span>Работодатель<br /><strong><?=$_SESSION['name'].' '.$_SESSION['surname']?> [<?=$_SESSION['login']?>]</strong></span>
+                       <span>Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ<br /><strong><?=$_SESSION['name'].' '.$_SESSION['surname']?> [<?=$_SESSION['login']?>]</strong></span>
                   </li>
                 <? } ?>
             </ul>
@@ -133,7 +133,7 @@ window.addEvent('domready', function() {
 <? } else { ?>
     <div class="mb-change-menu" id="acc-change">
          <ul>
-              <li class="mb-nopro"><span>Быстрое перемещение между аккаунтами доступно только для владельцев <?=view_pro()?></span></li>
+              <li class="mb-nopro"><span>Р‘С‹СЃС‚СЂРѕРµ РїРµСЂРµРјРµС‰РµРЅРёРµ РјРµР¶РґСѓ Р°РєРєР°СѓРЅС‚Р°РјРё РґРѕСЃС‚СѓРїРЅРѕ С‚РѕР»СЊРєРѕ РґР»СЏ РІР»Р°РґРµР»СЊС†РµРІ <?=view_pro()?></span></li>
          </ul>
     </div>
 <? } 

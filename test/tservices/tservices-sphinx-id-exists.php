@@ -33,7 +33,7 @@ $res = $sphinxClient->Query("","tservices;delta_tservices");
 /*
 $sphinxClient = new SphinxClient;
 $sphinxClient->SetServer(SEARCHHOST, SEARCHPORT);
-$sphinxClient->setFilter('created_order', array(99999)); // это поле - алиас для ID чтобы сортировать можно было как в задаче требуется
+$sphinxClient->setFilter('created_order', array(99999)); // СЌС‚Рѕ РїРѕР»Рµ - Р°Р»РёР°СЃ РґР»СЏ ID С‡С‚РѕР±С‹ СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ РјРѕР¶РЅРѕ Р±С‹Р»Рѕ РєР°Рє РІ Р·Р°РґР°С‡Рµ С‚СЂРµР±СѓРµС‚СЃСЏ
 $res = $sphinxClient->query('', "tservices;delta_tservices");
 */
 
@@ -58,7 +58,7 @@ if (count($res['matches']) == 1) {
 /*
  * $time_start = microtime(true);
 
-// Спим некоторое время
+// РЎРїРёРј РЅРµРєРѕС‚РѕСЂРѕРµ РІСЂРµРјСЏ
 usleep(100);
 
 $time_end = microtime(true);

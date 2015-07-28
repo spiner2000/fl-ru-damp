@@ -7,13 +7,13 @@
     <div class="b-form b-form_padbot_20">
         <input name="file" type="file" />
         <button type="submit" class="b-button_margleft_15">
-            Загрузить реестр
+            Р—Р°РіСЂСѓР·РёС‚СЊ СЂРµРµСЃС‚СЂ
         </button>
     </div>
 </form>
 
 <?php if(!empty($files)): ?>
-<h3>Загруженные реестры</h3>
+<h3>Р—Р°РіСЂСѓР¶РµРЅРЅС‹Рµ СЂРµРµСЃС‚СЂС‹</h3>
 <br/>
 <table class="nr-a-tbl" cellspacing="5" style="table-layout:fixed">
     <colgroup>
@@ -24,8 +24,8 @@
     </colgroup>
     <thead>
         <tr>
-            <th>Дата</th>
-            <th>Файл</th>
+            <th>Р”Р°С‚Р°</th>
+            <th>Р¤Р°Р№Р»</th>
         </tr>
     </thead>
     

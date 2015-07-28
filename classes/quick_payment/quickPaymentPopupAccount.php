@@ -31,11 +31,11 @@ class quickPaymentPopupAccount extends quickPaymentPopup
         $options = array(
             'popup_title_class_bg'      => '',
             'popup_title_class_icon'    => '',
-            'popup_title'               => 'Ïîïîëíåíèå ñ÷åòà',
-            'popup_subtitle'            => 'Ñóììà ïîïîëíåíèÿ',
+            'popup_title'               => 'ÐŸÐ¾Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ðµ ÑÑ‡ÐµÑ‚Ð°',
+            'popup_subtitle'            => 'Ð¡ÑƒÐ¼Ð¼Ð° Ð¿Ð¾Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ',
             'popup_id'                  => $this->ID,
             'unic_name'                 => $this->UNIC_NAME,
-            'payments_title'            => 'Ñïîñîá ïîïîëíåíèÿ',
+            'payments_title'            => 'Ð¡Ð¿Ð¾ÑÐ¾Ð± Ð¿Ð¾Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ',
             'payments_exclude'          => array(
                 self::PAYMENT_TYPE_BANK,
                 self::PAYMENT_TYPE_PLATIPOTOM
@@ -44,12 +44,12 @@ class quickPaymentPopupAccount extends quickPaymentPopup
             'max_price' => self::PRICE_MAX
         );
         
-        //Îáÿçàòåëüíî ïåðåäàåì ðîäèòåëþ
+        //ÐžÐ±ÑÐ·Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ð¿ÐµÑ€ÐµÐ´Ð°ÐµÐ¼ Ñ€Ð¾Ð´Ð¸Ñ‚ÐµÐ»ÑŽ
         parent::init($options);
         
         
-        //Äîáàâëÿåì ñâîéñòâî ê îäíîìó ñïîñîáó îïëàòû
-        $this->options['payments'][self::PAYMENT_TYPE_CARD]['wait'] = 'Æäèòå ....';
+        //Ð”Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼ ÑÐ²Ð¾Ð¹ÑÑ‚Ð²Ð¾ Ðº Ð¾Ð´Ð½Ð¾Ð¼Ñƒ ÑÐ¿Ð¾ÑÐ¾Ð±Ñƒ Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹
+        $this->options['payments'][self::PAYMENT_TYPE_CARD]['wait'] = 'Ð–Ð´Ð¸Ñ‚Ðµ ....';
         $this->options['payments'][self::PAYMENT_TYPE_WM]['data-maxprice'] = self::PRICE_MAX_WM;            
         
     }

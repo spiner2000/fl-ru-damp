@@ -1,4 +1,4 @@
-<h2 class="b-layout__title b-layout__title_padbot_30">Оплата через «Альфа-клик»</h2>
+<h2 class="b-layout__title b-layout__title_padbot_30">РћРїР»Р°С‚Р° С‡РµСЂРµР· В«РђР»СЊС„Р°-РєР»РёРєВ»</h2>
 
 <form id="<?= $type_payment ?>" name="<?= $type_payment ?>" action="<?= "/bill/payment/?type={$type_payment}"?>" accept-charset="UTF-8" method="post">  
     <input type="hidden" name="action" value="reserve" />
@@ -11,22 +11,22 @@
                 <a class="b-layout__link" target="_blank" href="http://www.alfabank.ru/"><img class="b-layout__pic" width="130" height="97" alt="" src="/images/bill-alfa-big.png"></a>
             </td>
             <td class="b-layout__td b-layout__td_padleft_30">
-                <h3 class="b-layout__h3">Пополнение личного счета с помощью Интернет-банка «Альфа-Клик»</h3>
+                <h3 class="b-layout__h3">РџРѕРїРѕР»РЅРµРЅРёРµ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р° СЃ РїРѕРјРѕС‰СЊСЋ РРЅС‚РµСЂРЅРµС‚-Р±Р°РЅРєР° В«РђР»СЊС„Р°-РљР»РёРєВ»</h3>
                 <div class="b-fon b-fon_padbot_20">
                     <b class="b-fon__b1"></b>
                     <b class="b-fon__b2"></b>
                     <div class="b-fon__body b-fon__body_pad_10_20">
-                        <div class="b-layout__txt b-layout__txt_padbot_5">1. В Интернет-банке «Альфа-Клик» в разделе «Оплата услуг и другие платежи» выберите подраздел «Другие услуги».</div>
-                        <div class="b-layout__txt b-layout__txt_padbot_5">2. Из списка получателей выберите наименование: «Free-lance.ru».</div>
-                        <div class="b-layout__txt b-layout__txt_padbot_5">3. Введите ваш логин на Free-lance.ru в назначение платежа</div>
-                        <div class="b-layout__txt">4. Подтвердите операцию одноразовым паролем, который придет в SMS-сообщении.</div>
+                        <div class="b-layout__txt b-layout__txt_padbot_5">1. Р’ РРЅС‚РµСЂРЅРµС‚-Р±Р°РЅРєРµ В«РђР»СЊС„Р°-РљР»РёРєВ» РІ СЂР°Р·РґРµР»Рµ В«РћРїР»Р°С‚Р° СѓСЃР»СѓРі Рё РґСЂСѓРіРёРµ РїР»Р°С‚РµР¶РёВ» РІС‹Р±РµСЂРёС‚Рµ РїРѕРґСЂР°Р·РґРµР» В«Р”СЂСѓРіРёРµ СѓСЃР»СѓРіРёВ».</div>
+                        <div class="b-layout__txt b-layout__txt_padbot_5">2. РР· СЃРїРёСЃРєР° РїРѕР»СѓС‡Р°С‚РµР»РµР№ РІС‹Р±РµСЂРёС‚Рµ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ: В«Free-lance.ruВ».</div>
+                        <div class="b-layout__txt b-layout__txt_padbot_5">3. Р’РІРµРґРёС‚Рµ РІР°С€ Р»РѕРіРёРЅ РЅР° Free-lance.ru РІ РЅР°Р·РЅР°С‡РµРЅРёРµ РїР»Р°С‚РµР¶Р°</div>
+                        <div class="b-layout__txt">4. РџРѕРґС‚РІРµСЂРґРёС‚Рµ РѕРїРµСЂР°С†РёСЋ РѕРґРЅРѕСЂР°Р·РѕРІС‹Рј РїР°СЂРѕР»РµРј, РєРѕС‚РѕСЂС‹Р№ РїСЂРёРґРµС‚ РІ SMS-СЃРѕРѕР±С‰РµРЅРёРё.</div>
                     </div>
                     <b class="b-fon__b2"></b>
                     <b class="b-fon__b1"></b>
                 </div>
                 
-                <div class="b-layout__txt b-layout__txt_padbot_15">Обращаем ваше внимание на то, что средства зачисляются <span class="b-layout__bold">в течение следующего рабочего дня после совершения перевода</span>.</div>
-                <div class="b-layout__txt b-layout__txt_padbot_15">Комиссия за платеж не взимается!</div>
+                <div class="b-layout__txt b-layout__txt_padbot_15">РћР±СЂР°С‰Р°РµРј РІР°С€Рµ РІРЅРёРјР°РЅРёРµ РЅР° С‚Рѕ, С‡С‚Рѕ СЃСЂРµРґСЃС‚РІР° Р·Р°С‡РёСЃР»СЏСЋС‚СЃСЏ <span class="b-layout__bold">РІ С‚РµС‡РµРЅРёРµ СЃР»РµРґСѓСЋС‰РµРіРѕ СЂР°Р±РѕС‡РµРіРѕ РґРЅСЏ РїРѕСЃР»Рµ СЃРѕРІРµСЂС€РµРЅРёСЏ РїРµСЂРµРІРѕРґР°</span>.</div>
+                <div class="b-layout__txt b-layout__txt_padbot_15">РљРѕРјРёСЃСЃРёСЏ Р·Р° РїР»Р°С‚РµР¶ РЅРµ РІР·РёРјР°РµС‚СЃСЏ!</div>
                 
                 <? include ( $_SERVER['DOCUMENT_ROOT'] . "/bill/payment/paysystems/tpl.button_buy.php");?>
             </td>

@@ -1,11 +1,11 @@
 <?php
 /* 
  * 
- * Данный файл является частью проекта Веб Мессенджер.
+ * Р”Р°РЅРЅС‹Р№ С„Р°Р№Р» СЏРІР»СЏРµС‚СЃСЏ С‡Р°СЃС‚СЊСЋ РїСЂРѕРµРєС‚Р° Р’РµР± РњРµСЃСЃРµРЅРґР¶РµСЂ.
  * 
- * Все права защищены. (c) 2005-2009 ООО "ТОП".
- * Данное программное обеспечение и все сопутствующие материалы
- * предоставляются на условиях лицензии, доступной по адресу
+ * Р’СЃРµ РїСЂР°РІР° Р·Р°С‰РёС‰РµРЅС‹. (c) 2005-2009 РћРћРћ "РўРћРџ".
+ * Р”Р°РЅРЅРѕРµ РїСЂРѕРіСЂР°РјРјРЅРѕРµ РѕР±РµСЃРїРµС‡РµРЅРёРµ Рё РІСЃРµ СЃРѕРїСѓС‚СЃС‚РІСѓСЋС‰РёРµ РјР°С‚РµСЂРёР°Р»С‹
+ * РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‚СЃСЏ РЅР° СѓСЃР»РѕРІРёСЏС… Р»РёС†РµРЅР·РёРё, РґРѕСЃС‚СѓРїРЅРѕР№ РїРѕ Р°РґСЂРµСЃСѓ
  * http://webim.ru/license.html
  * 
  */
@@ -98,11 +98,11 @@ class OperatorOnlineMapper extends BaseMapper {
   	}
   	
   	/**
-  	 * Возвращает данные по оператору
+  	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ РїРѕ РѕРїРµСЂР°С‚РѕСЂСѓ
   	 * 
-  	 * Альтернатива папке online_stats
+  	 * РђР»СЊС‚РµСЂРЅР°С‚РёРІР° РїР°РїРєРµ online_stats
   	 * 
-  	 * @param  int $operatorid ID оператора
+  	 * @param  int $operatorid ID РѕРїРµСЂР°С‚РѕСЂР°
   	 * @return string 
   	 */
   	public function getOperatorMemStats( $operatorid ) {
@@ -122,9 +122,9 @@ class OperatorOnlineMapper extends BaseMapper {
   	}
   	
   	/**
-  	 * Возвращает данные по всем операторам
+  	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ РїРѕ РІСЃРµРј РѕРїРµСЂР°С‚РѕСЂР°Рј
   	 * 
-  	 * Альтернатива папке online_stats
+  	 * РђР»СЊС‚РµСЂРЅР°С‚РёРІР° РїР°РїРєРµ online_stats
   	 * 
   	 * @return array
   	 */
@@ -140,13 +140,13 @@ class OperatorOnlineMapper extends BaseMapper {
   	}
   	
   	/**
-  	 * Сохраняет данные по оператору
+  	 * РЎРѕС…СЂР°РЅСЏРµС‚ РґР°РЅРЅС‹Рµ РїРѕ РѕРїРµСЂР°С‚РѕСЂСѓ
   	 * 
-  	 * Альтернатива папке online_stats
+  	 * РђР»СЊС‚РµСЂРЅР°С‚РёРІР° РїР°РїРєРµ online_stats
   	 * 
-  	 * @param  int $operatorid ID оператора
-  	 * @param  string $stats данные
-  	 * @return bool true - успех, false - провал
+  	 * @param  int $operatorid ID РѕРїРµСЂР°С‚РѕСЂР°
+  	 * @param  string $stats РґР°РЅРЅС‹Рµ
+  	 * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
   	 */
   	public function setOperatorMemStats( $operatorid, $stats ) {
   	    $sQuery = 'INSERT INTO {operatormemstats} (operator_id, stats) VALUES (:operator_id, :stats) 
@@ -163,10 +163,10 @@ class OperatorOnlineMapper extends BaseMapper {
   	}
   	
   	/**
-  	 * Удаляет данные по оператору
+  	 * РЈРґР°Р»СЏРµС‚ РґР°РЅРЅС‹Рµ РїРѕ РѕРїРµСЂР°С‚РѕСЂСѓ
   	 * 
-  	 * @param  int $operatorid ID оператора
-  	 * @return bool true - успех, false - провал
+  	 * @param  int $operatorid ID РѕРїРµСЂР°С‚РѕСЂР°
+  	 * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
   	 */
   	public function delOperatorMemStats( $operatorid ) {
   	    $sQuery = 'DELETE FROM {operatormemstats} WHERE operator_id = :operator_id';
@@ -182,9 +182,9 @@ class OperatorOnlineMapper extends BaseMapper {
   	}
   	
   	/**
-  	 * Очищает данные по всем операторам
+  	 * РћС‡РёС‰Р°РµС‚ РґР°РЅРЅС‹Рµ РїРѕ РІСЃРµРј РѕРїРµСЂР°С‚РѕСЂР°Рј
   	 * 
-  	 * @return bool true - успех, false - провал
+  	 * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
   	 */
   	public function truncateOperatorMemStats() {
   	    try {

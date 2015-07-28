@@ -9,7 +9,7 @@ get_uid(false);
 $header = ABS_PATH."/header.php";
 $footer = ABS_PATH."/footer.html";
 $content = ABS_PATH."/unsubscribe/inner.php";
-$page_title = "Îòïèñàòüñÿ îò ðàññûëêè";
+$page_title = "ÐžÑ‚Ð¿Ð¸ÑÐ°Ñ‚ÑŒÑÑ Ð¾Ñ‚ Ñ€Ð°ÑÑÑ‹Ð»ÐºÐ¸";
 
 $captcha = null;
 $captchanum = uniqid('', true);
@@ -21,7 +21,7 @@ $type   = in_array($type, array('new_projects', 'mailer'))?$type:NULL;
 
 $info = users::GetUserInfoByUnsubscribeKey($ukey);
 
-//Åñëè êëþ÷ óñòàðåë
+//Ð•ÑÐ»Ð¸ ÐºÐ»ÑŽÑ‡ ÑƒÑÑ‚Ð°Ñ€ÐµÐ»
 if(!count($info)){
     include ABS_PATH . '/404.php';
     exit;    
@@ -29,8 +29,8 @@ if(!count($info)){
 
 $email = $info["email"]; 
 
-//Åñëè òèï îòïèñêè íå ñîîòâåòñòâóåò ðîëè òî 404
-//@todo: ïîêà â ýòîì íåò íåîáõîäèìîñòè
+//Ð•ÑÐ»Ð¸ Ñ‚Ð¸Ð¿ Ð¾Ñ‚Ð¿Ð¸ÑÐºÐ¸ Ð½Ðµ ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÐµÑ‚ Ñ€Ð¾Ð»Ð¸ Ñ‚Ð¾ 404
+//@todo: Ð¿Ð¾ÐºÐ° Ð² ÑÑ‚Ð¾Ð¼ Ð½ÐµÑ‚ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ÑÑ‚Ð¸
 /*
 if(in_array($type, array('new_projects')) && $info["role"][0] != 0){
     include ABS_PATH . '/404.php';
@@ -39,16 +39,16 @@ if(in_array($type, array('new_projects')) && $info["role"][0] != 0){
 */
 
 $alert = "";
-//TODO: Èçáàâèòüñÿ îò ýòîãî ñîîáùåíèÿ
+//TODO: Ð˜Ð·Ð±Ð°Ð²Ð¸Ñ‚ÑŒÑÑ Ð¾Ñ‚ ÑÑ‚Ð¾Ð³Ð¾ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ
 if (!$ukey) {
-    $alert = "Íå óäàëîñü íàéòè ïîëüçîâàòåëÿ";
+    $alert = "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð½Ð°Ð¹Ñ‚Ð¸ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ";
 }
 if ($action == "unsubscribe") {    
     $num = __paramInit('string', null, 'rndnum');
     $captchanum = __paramInit("string", null, "captchanum");
     $captcha = new captcha($captchanum);
     if (!$captcha->checkNumber($num)) {
-        $alert = 'Ââåäåíû íåâåðíûå ñèìâîëû';            
+        $alert = 'Ð’Ð²ÐµÐ´ÐµÐ½Ñ‹ Ð½ÐµÐ²ÐµÑ€Ð½Ñ‹Ðµ ÑÐ¸Ð¼Ð²Ð¾Ð»Ñ‹';            
     }
     if (!$alert) {
     	$class = 'users';
@@ -66,13 +66,13 @@ if ($action == "unsubscribe") {
             
             if($info["role"][0] == 1){
                 
-                //@todo: UpdateSubscr2 ïîêà òîëüêî äëÿ ðàáîòîäàòåëåé
+                //@todo: UpdateSubscr2 Ð¿Ð¾ÐºÐ° Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»ÐµÐ¹
                 $info['subscr'][12] = 0;
                 $user->UpdateSubscr2($info["uid"],$info['subscr']);
                 
             }else{
                 
-                //@todo: æóòü ìåäîò :)    
+                //@todo: Ð¶ÑƒÑ‚ÑŒ Ð¼ÐµÐ´Ð¾Ñ‚ :)    
                 $user->UpdateSubscr(
                     $info["uid"], 
                     $info['subscr'][0], 

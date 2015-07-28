@@ -1,5 +1,5 @@
                         <div id="rating-tpl" style="display: none; float: right; margin: 0pt 0pt 0pt 25px; width: 270px;">
-                            <p style="margin: 0 0 11px 0;">Пожалуйста оцените сотрудничество с фрилансером по трем критериям.</p>
+                            <p style="margin: 0 0 11px 0;">РџРѕР¶Р°Р»СѓР№СЃС‚Р° РѕС†РµРЅРёС‚Рµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ СЃ С„СЂРёР»Р°РЅСЃРµСЂРѕРј РїРѕ С‚СЂРµРј РєСЂРёС‚РµСЂРёСЏРј.</p>
                         </div>
 
                         <div class="utxt ops-nr-utxt"  id="message-tpl" style="display:none; margin:0">
@@ -18,7 +18,7 @@
                                         <span></span>
                                     </div>
                                     <div class="ops-nr-e-btns">
-                                        <input onclick="saveRating()" type="button" value="Сохранить" />&nbsp;&nbsp;<a href="#" class="lnk-dot-666" onclick="closeForm(); return false;">Отменить</a>
+                                        <input onclick="saveRating()" type="button" value="РЎРѕС…СЂР°РЅРёС‚СЊ" />&nbsp;&nbsp;<a href="#" class="lnk-dot-666" onclick="closeForm(); return false;">РћС‚РјРµРЅРёС‚СЊ</a>
                                     </div>
                                 </div>
                             </div>
@@ -30,7 +30,7 @@
                             <div class="form">
                                 <b class="b1"></b>
                                 <b class="b2"></b>
-                                <div class="form-in">Здесь отображаются Рекомендации работодателей, которые оставлены вам по результатам сотрудничества через сервис «Безопасная Сделка». Для того чтобы получить Рекомендацию, вам необходимо выполнять проекты через данный сервис. </div>
+                                <div class="form-in">Р—РґРµСЃСЊ РѕС‚РѕР±СЂР°Р¶Р°СЋС‚СЃСЏ Р РµРєРѕРјРµРЅРґР°С†РёРё СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№, РєРѕС‚РѕСЂС‹Рµ РѕСЃС‚Р°РІР»РµРЅС‹ РІР°Рј РїРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°Рј СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР° С‡РµСЂРµР· СЃРµСЂРІРёСЃ В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В». Р”Р»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ Р РµРєРѕРјРµРЅРґР°С†РёСЋ, РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РІС‹РїРѕР»РЅСЏС‚СЊ РїСЂРѕРµРєС‚С‹ С‡РµСЂРµР· РґР°РЅРЅС‹Р№ СЃРµСЂРІРёСЃ. </div>
                                 <b class="b2"></b>
                                 <b class="b1"></b>
                             </div>                            
@@ -59,7 +59,7 @@
                                         <div class="user-info" style="height:auto">
                                             <div class="username"><?= view_user($user); ?>
                                                 <? if (hasPermissions('users')) { ?>
-                                                <i>На сайте <?= ElapsedMnths(strtotime($user->reg_date)) ?></i>
+                                                <i>РќР° СЃР°Р№С‚Рµ <?= ElapsedMnths(strtotime($user->reg_date)) ?></i>
                                                 <? } ?>
                                             </div>
                                             <? $curr_sbr_id = $theme['sbr_id']; ?>
@@ -77,7 +77,7 @@
                                                     <div class="ops-nr-stage-in">
                                                         <ul class="ops-i">
                 <?php if ($edited) { ?>
-                                                                <li><img src="/images/ico-e-u.png" title="Редактировал <?= $edited; ?>" alt="Редактировал <?= $edited; ?>" /></li>
+                                                                <li><img src="/images/ico-e-u.png" title="Р РµРґР°РєС‚РёСЂРѕРІР°Р» <?= $edited; ?>" alt="Р РµРґР°РєС‚РёСЂРѕРІР°Р» <?= $edited; ?>" /></li>
                 <?php } ?>
                                                             <li class="ops-time"><?= $posted; ?></li>
 
@@ -87,7 +87,7 @@
 
                                                         <?php
                                                         if ($print_sbr_name) {
-                                                            // Первый этап
+                                                            // РџРµСЂРІС‹Р№ СЌС‚Р°Рї
                                                             $print_sbr_name = false;
 
                                                             $sSbrNameText = reformat($theme['sbr_name'], 40, 0, 1);
@@ -108,20 +108,20 @@
                                                             ?>
                                                         <?php } ?>
 
-                                                        <?php if ($theme['stage_status'] == sbr_stages::STATUS_ARBITRAGED) {// Первый этап ?>
-                                                            <h3 class="ops-nr-arb">Завершено арбитражем</h3>
+                                                        <?php if ($theme['stage_status'] == sbr_stages::STATUS_ARBITRAGED) {// РџРµСЂРІС‹Р№ СЌС‚Р°Рї ?>
+                                                            <h3 class="ops-nr-arb">Р—Р°РІРµСЂС€РµРЅРѕ Р°СЂР±РёС‚СЂР°Р¶РµРј</h3>
                                                         <?php } ?>
 
                                                         <?php $sStageName = reformat($theme['stage_name'], 40, 0, 1); ?>
                                                         <?php if ($uid == $theme['frl_id'] || $uid == $theme['emp_id']): ?>
-                                                            <p>Этап: <a href="/norisk2/?site=Stage&id=<?= $theme['stage_id'] ?>"><?= $sStageName ?></a></p>
+                                                            <p>Р­С‚Р°Рї: <a href="/norisk2/?site=Stage&id=<?= $theme['stage_id'] ?>"><?= $sStageName ?></a></p>
                                                         <?php else: ?>
-                                                            <p>Этап: <?= $sStageName ?></p>
+                                                            <p>Р­С‚Р°Рї: <?= $sStageName ?></p>
                                                         <?php endif; ?>
 
 
                 <?php if ((int) $theme['sub_category']) { ?>
-                                                            <p><span>Категория: <?php echo professions::GetProfNameWP($theme['sub_category']) ?></span></p>
+                                                            <p><span>РљР°С‚РµРіРѕСЂРёСЏ: <?php echo professions::GetProfNameWP($theme['sub_category']) ?></span></p>
                                                 <?php } ?>
                                                     </div>
                                                     <b class="b2"></b>
@@ -130,7 +130,7 @@
                 <?php if ($theme['stage_status'] != sbr_stages::STATUS_ARBITRAGED) { ?>
                                                     <ul class="vote ops-nr-vote" id="rating<?= $theme['id'] ?>">
                                                         <li class="c">
-                                                            <label>Профессионализм</label>
+                                                            <label>РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»РёР·Рј</label>
                                                             <span id="p_stars_<?= $theme['id'] ?>" class="stars-vote vote-<?= $theme['p_rate'] ?>">
                                                                 <span>
                     <?
@@ -140,7 +140,7 @@
                                                             </span>
                                                         </li>
                                                         <li class="c">
-                                                            <label>Надежность</label>
+                                                            <label>РќР°РґРµР¶РЅРѕСЃС‚СЊ</label>
                                                             <span id="n_stars_<?= $theme['id'] ?>" class="stars-vote vote-<?= $theme['n_rate'] ?>">
                                                                 <span>
                     <?
@@ -150,7 +150,7 @@
                                                             </span>
                                                         </li>
                                                         <li class="c">
-                                                            <label>Корректность</label>
+                                                            <label>РљРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ</label>
                                                             <span id="a_stars_<?= $theme['id'] ?>" class="stars-vote vote-<?= $theme['a_rate'] ?>">
                                                                 <span>
                     <?
@@ -164,9 +164,9 @@
                                                 <div class="utxt ops-nr-utxt<?= $theme['stage_status'] == sbr_stages::STATUS_ARBITRAGED ? ' ops-nr-arb' : ''; ?>">
                                                     <p id="message<?= $theme['id'] ?>"><?= reformat($theme['descr'], 30, 0, 1, 1) ?></p>
                                                 </div>
-                                                <?php if ($theme['fromuser_id'] == $_SESSION['uid'] || hasPermissions('users')) { //Мой комент или я админ ?>
+                                                <?php if ($theme['fromuser_id'] == $_SESSION['uid'] || hasPermissions('users')) { //РњРѕР№ РєРѕРјРµРЅС‚ РёР»Рё СЏ Р°РґРјРёРЅ ?>
                                                     <ul class="opsa-op" id="edit_block_<?= $theme['id'] ?>">
-                                                        <li><a href="#" onclick="feedbackEditForm(<?= $theme['stage_id'] ?>,<?= $theme['id'] ?>,'<?= $theme['login'] ?>'); return false;" class="lnk-dot-red">Редактировать</a></li>
+                                                        <li><a href="#" onclick="feedbackEditForm(<?= $theme['stage_id'] ?>,<?= $theme['id'] ?>,'<?= $theme['login'] ?>'); return false;" class="lnk-dot-red">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></li>
                                                     </ul>
                 <?php } ?>
                                 <? } while ($curr_sbr_id == $msgs[$i + 1]['sbr_id']); ?>
@@ -183,7 +183,7 @@
     <table>
         <tr>
             <td>&nbsp;</td>
-            <td style="padding-bottom: 10px;">Сообщений нет</td>
+            <td style="padding-bottom: 10px;">РЎРѕРѕР±С‰РµРЅРёР№ РЅРµС‚</td>
             <td>&nbsp;</td>
         </tr>
     </table>

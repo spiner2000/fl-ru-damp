@@ -38,7 +38,7 @@ class page_admin_flash_upload2 extends page_base {
         //die("1ssss");
         if (!($img = $_FILES['Filedata']))
         {
-            print(json_encode(array ('success' => false, 'text'=>"Не получены данные", 'debug' => $_FILES['Filedata'])));
+            print(json_encode(array ('success' => false, 'text'=>"РќРµ РїРѕР»СѓС‡РµРЅС‹ РґР°РЅРЅС‹Рµ", 'debug' => $_FILES['Filedata'])));
             return false;
         }
         
@@ -49,7 +49,7 @@ class page_admin_flash_upload2 extends page_base {
                 'png' => 3);
             
             if ($type < 1 || $type > 3) {
-              //   print(json_encode(array ('success' => false, 'text'=>"Формат не поддерживается", 'debug' => $_FILES['Filedata'])));
+              //   print(json_encode(array ('success' => false, 'text'=>"Р¤РѕСЂРјР°С‚ РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ", 'debug' => $_FILES['Filedata'])));
                //  return false;
             }
             
@@ -57,7 +57,7 @@ class page_admin_flash_upload2 extends page_base {
                 (front::$_req["width"] > 0 && $width > front::$_req["width"])
                 || (front::$_req["height"] > 0 && $height > front::$_req["height"])
                 ) {
-                    print(json_encode(array ('success' => false, 'text'=>"Слишком большое разрешение", 'debug' => $_FILES['Filedata'])));
+                    print(json_encode(array ('success' => false, 'text'=>"РЎР»РёС€РєРѕРј Р±РѕР»СЊС€РѕРµ СЂР°Р·СЂРµС€РµРЅРёРµ", 'debug' => $_FILES['Filedata'])));
                     return false;
             }
         }

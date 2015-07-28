@@ -1,7 +1,7 @@
 <?php 
 
 if(!isset($finance_name)) {
-    // По умолчанию
+    // РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
     $finance_name   = array("money"          => "finance_money",
                             "spend"          => "finance_spend[%s]",
                             "deposit"        => "finance_deposit[%s]",
@@ -16,11 +16,11 @@ if(!isset($finance_check)) {
 <div class="b-fon-subfilter b-fon b-fon_width_full b-fon_padbot_15 <?= !empty($message[$finance_check]) ? "" : "b-fon_hide"; ?>">
     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf i-button">
         <a class="b-button b-button_admin_del b-button_float_right close-block " href="#" onclick="$('<?=$finance_check?>').set('value', 0);"></a>
-        <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_20 b-layout__txt_fontsize_13 b-layout__txt_float_left">Финансы</div>
+        <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_20 b-layout__txt_fontsize_13 b-layout__txt_float_left">Р¤РёРЅР°РЅСЃС‹</div>
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_120 b-layout__left_valign_middle">
-                    <div class="b-layout__txt">Денег на счету</div>
+                    <div class="b-layout__txt">Р”РµРЅРµРі РЅР° СЃС‡РµС‚Сѓ</div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-combo b-combo_inline-block">
@@ -28,14 +28,14 @@ if(!isset($finance_check)) {
                             <input id="c3888" class="b-combo__input-text b-combo-digital-input" name="<?= $finance_name['money']?>" type="text" size="80"  value="<?= _bill($message[$finance_check]['money'])?>" />
                         </div>
                     </div>
-                    <span class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5">&#160;руб.</span>
+                    <span class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5">&#160;СЂСѓР±.</span>
                 </td>
             </tr>
         </table>
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_120 b-layout__left_valign_middle">
-                    <div class="b-layout__txt b-layout__txt_lineheight_13">Последнее<br />списание</div>
+                    <div class="b-layout__txt b-layout__txt_lineheight_13">РџРѕСЃР»РµРґРЅРµРµ<br />СЃРїРёСЃР°РЅРёРµ</div>
                 </td>
                 <td class="b-layout__right">
                     <span id="i_<?= $finance_name['spend']?>"></span>
@@ -54,14 +54,14 @@ if(!isset($finance_check)) {
                             <span class="b-combo__arrow-date"></span>
                         </div>
                     </div>
-                    <span id="fin_lastout_date_text" class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?=($message[$finance_check]['spend'][0] || $message[$finance_check]['spend'][1] ? "style='display: none'" : '')?>>&#160;&#160;не важно</span>
+                    <span id="fin_lastout_date_text" class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?=($message[$finance_check]['spend'][0] || $message[$finance_check]['spend'][1] ? "style='display: none'" : '')?>>&#160;&#160;РЅРµ РІР°Р¶РЅРѕ</span>
                 </td>
             </tr>
         </table>
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_120 b-layout__left_valign_middle">
-                    <div class="b-layout__txt b-layout__txt_lineheight_13">Последнее<br />пополнение</div>
+                    <div class="b-layout__txt b-layout__txt_lineheight_13">РџРѕСЃР»РµРґРЅРµРµ<br />РїРѕРїРѕР»РЅРµРЅРёРµ</div>
                 </td>
                 <td class="b-layout__right">
                     <span id="i_<?= $finance_name['deposit']?>"></span>
@@ -80,19 +80,19 @@ if(!isset($finance_check)) {
                             <span class="b-combo__arrow-date"></span>
                         </div>
                     </div>
-                    <span id="fin_lastin_date_text" class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?=($message[$finance_check]['deposit'][0] || $message[$finance_check]['deposit'][1] ? "style='display: none'" : '')?>>&#160;&#160;не важно</span>
+                    <span id="fin_lastin_date_text" class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?=($message[$finance_check]['deposit'][0] || $message[$finance_check]['deposit'][1] ? "style='display: none'" : '')?>>&#160;&#160;РЅРµ РІР°Р¶РЅРѕ</span>
                 </td>
             </tr>
         </table>
         <table class="b-layout__table b-layout__table_width_full" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_120">
-                    <div class="b-layout__txt b-layout__txt_lineheight_13">Способ<br />пополнения счёта</div>
+                    <div class="b-layout__txt b-layout__txt_lineheight_13">РЎРїРѕСЃРѕР±<br />РїРѕРїРѕР»РЅРµРЅРёСЏ СЃС‡С‘С‚Р°</div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-check b-check_padbot_5">
                         <input id="<?= sprintf($finance_name['method_deposit'], 0)?>" class="b-check__input" name="<?= sprintf($finance_name['method_deposit'], 0)?>" type="checkbox" value="1" <?=($message[$finance_check]['method_deposit'][0]==1?"checked":"")?>/>
-                        <label class="b-check__label b-check__label_fontsize_13" for="<?= sprintf($finance_name['method_deposit'], 0)?>">Яндекс.Деньги</label>
+                        <label class="b-check__label b-check__label_fontsize_13" for="<?= sprintf($finance_name['method_deposit'], 0)?>">РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё</label>
                     </div>
                     <div class="b-check b-check_padbot_5">
                         <input id="<?= sprintf($finance_name['method_deposit'], 1)?>" class="b-check__input" name="<?= sprintf($finance_name['method_deposit'], 1)?>" type="checkbox" value="1" <?=($message[$finance_check]['method_deposit'][1]==1?"checked":"")?>/>
@@ -100,11 +100,11 @@ if(!isset($finance_check)) {
                     </div>
                     <div class="b-check b-check_padbot_5">
                         <input id="<?= sprintf($finance_name['method_deposit'], 2)?>" class="b-check__input" name="<?= sprintf($finance_name['method_deposit'], 2)?>" type="checkbox" value="1" <?=($message[$finance_check]['method_deposit'][2]==1?"checked":"")?>/>
-                        <label class="b-check__label b-check__label_fontsize_13" for="<?= sprintf($finance_name['method_deposit'], 2)?>">СМС</label>
+                        <label class="b-check__label b-check__label_fontsize_13" for="<?= sprintf($finance_name['method_deposit'], 2)?>">РЎРњРЎ</label>
                     </div>
                     <div class="b-check">
                         <input id="<?= sprintf($finance_name['method_deposit'], 3)?>" class="b-check__input" name="<?= sprintf($finance_name['method_deposit'], 3)?>" type="checkbox" value="1" <?=($message[$finance_check]['method_deposit'][3]==1?"checked":"")?>/>
-                        <label class="b-check__label b-check__label_fontsize_13" for="<?= sprintf($finance_name['method_deposit'], 3)?>">Банковский перевод</label>
+                        <label class="b-check__label b-check__label_fontsize_13" for="<?= sprintf($finance_name['method_deposit'], 3)?>">Р‘Р°РЅРєРѕРІСЃРєРёР№ РїРµСЂРµРІРѕРґ</label>
                     </div>
                 </td>
             </tr>

@@ -20,16 +20,16 @@ class quickPaymentPopupTservicebindup extends quickPaymentPopup
     {
         parent::__construct();
         
-        //Äîïóñêàåì îïëàòó ñ ëè÷íîãî ñ÷åòà
+        //Ğ”Ğ¾Ğ¿ÑƒÑĞºĞ°ĞµĞ¼ Ğ¾Ğ¿Ğ»Ğ°Ñ‚Ñƒ Ñ Ğ»Ğ¸Ñ‡Ğ½Ğ¾Ğ³Ğ¾ ÑÑ‡ĞµÑ‚Ğ°
         $this->options['payments'][self::PAYMENT_TYPE_ACCOUNT] = array();
         
-        //Äîïóñêàåì îïëàòó ñ áóôåğà
+        //Ğ”Ğ¾Ğ¿ÑƒÑĞºĞ°ĞµĞ¼ Ğ¾Ğ¿Ğ»Ğ°Ñ‚Ñƒ Ñ Ğ±ÑƒÑ„ĞµÑ€Ğ°
         $this->options['payments'][self::PAYMENT_TYPE_BUFFER] = array();
     }
     
     public function init($params) 
     {
-        $kind = $params['kind'] ? : tservices_binds::KIND_LANDING; //Ïî óìîë÷àíèş ñòàâèì ëåíäèíã
+        $kind = $params['kind'] ? : tservices_binds::KIND_LANDING; //ĞŸĞ¾ ÑƒĞ¼Ğ¾Ğ»Ñ‡Ğ°Ğ½Ğ¸Ñ ÑÑ‚Ğ°Ğ²Ğ¸Ğ¼ Ğ»ĞµĞ½Ğ´Ğ¸Ğ½Ğ³
         $prof_id = (int) $params['prof_id'];
         
         $this->setBuyPopupTemplate('buy_popup_tservicebindup.tpl.php');
@@ -43,10 +43,10 @@ class quickPaymentPopupTservicebindup extends quickPaymentPopup
         $options = array(
             'popup_title_class_bg'      => 'b-fon_bg_po',
             'popup_title_class_icon'    => 'b-icon__po',
-            'popup_title'               => 'Ïîäíÿòèå çàêğåïëåíèÿ íà 1 ìåñòî',
+            'popup_title'               => 'ĞŸĞ¾Ğ´Ğ½ÑÑ‚Ğ¸Ğµ Ğ·Ğ°ĞºÑ€ĞµĞ¿Ğ»ĞµĞ½Ğ¸Ñ Ğ½Ğ° 1 Ğ¼ĞµÑÑ‚Ğ¾',
             'popup_id'                  => $this->getPopupId(0),
             'unic_name'                 => $this->UNIC_NAME,
-            'payments_title'            => 'Ñóììà è ñïîñîá îïëàòû',
+            'payments_title'            => 'Ğ¡ÑƒĞ¼Ğ¼Ğ° Ğ¸ ÑĞ¿Ğ¾ÑĞ¾Ğ± Ğ¾Ğ¿Ğ»Ğ°Ñ‚Ñ‹',
             'payments_exclude'          => array(self::PAYMENT_TYPE_BANK),
             'ac_sum'                    => round($_SESSION['ac_sum'], 2),
             'payment_account'           => self::PAYMENT_TYPE_ACCOUNT,
@@ -59,16 +59,16 @@ class quickPaymentPopupTservicebindup extends quickPaymentPopup
             'promo_code' => $promoCodes->render(PromoCodes::SERVICE_TSERVICEBIND)
         );
         
-        //Îáÿçàòåëüíî ïåğåäàåì ğîäèòåëş
+        //ĞĞ±ÑĞ·Ğ°Ñ‚ĞµĞ»ÑŒĞ½Ğ¾ Ğ¿ĞµÑ€ĞµĞ´Ğ°ĞµĞ¼ Ñ€Ğ¾Ğ´Ğ¸Ñ‚ĞµĞ»Ñ
         parent::init($options);
         
         
-        //Äîáàâëÿåì ñâîéñòâî ê îäíîìó ñïîñîáó îïëàòû
-        $this->options['payments'][self::PAYMENT_TYPE_CARD]['wait'] = 'Æäèòå ....';
+        //Ğ”Ğ¾Ğ±Ğ°Ğ²Ğ»ÑĞµĞ¼ ÑĞ²Ğ¾Ğ¹ÑÑ‚Ğ²Ğ¾ Ğº Ğ¾Ğ´Ğ½Ğ¾Ğ¼Ñƒ ÑĞ¿Ğ¾ÑĞ¾Ğ±Ñƒ Ğ¾Ğ¿Ğ»Ğ°Ñ‚Ñ‹
+        $this->options['payments'][self::PAYMENT_TYPE_CARD]['wait'] = 'Ğ–Ğ´Ğ¸Ñ‚Ğµ ....';
         
         $this->options['payments'][self::PAYMENT_TYPE_PLATIPOTOM]['content_after'] = sprintf(
             $this->options['payments'][self::PAYMENT_TYPE_PLATIPOTOM]['content_after'],
-            'çàêğåïëåíèå'
+            'Ğ·Ğ°ĞºÑ€ĞµĞ¿Ğ»ĞµĞ½Ğ¸Ğµ'
         );
         
         $this->inited = true;

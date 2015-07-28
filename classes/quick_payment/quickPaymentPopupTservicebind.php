@@ -19,13 +19,13 @@ class quickPaymentPopupTservicebind extends quickPaymentPopup
     {
         parent::__construct();
         
-        //Допускаем оплату с личного счета
+        //Р”РѕРїСѓСЃРєР°РµРј РѕРїР»Р°С‚Сѓ СЃ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р°
         $this->options['payments'][self::PAYMENT_TYPE_ACCOUNT] = array();
     }
     
     public function init($params) 
     {
-        $kind = $params['kind'] ? : 1; //По умолчанию ставим лендинг
+        $kind = $params['kind'] ? : 1; //РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЃС‚Р°РІРёРј Р»РµРЅРґРёРЅРі
         
         $prof_id = (int) $params['prof_id'];
 
@@ -65,11 +65,11 @@ class quickPaymentPopupTservicebind extends quickPaymentPopup
         $options = array(
             'popup_title_class_bg'      => 'b-fon_bg_po',
             'popup_title_class_icon'    => 'b-icon__po',
-            'popup_title'               => $is_prolong ? 'Продление закрепления' : 'Закрепление услуги',
-            'popup_subtitle'            => $is_prolong ? 'Срок продления закрепления' : 'Срок закрепления услуги',
+            'popup_title'               => $is_prolong ? 'РџСЂРѕРґР»РµРЅРёРµ Р·Р°РєСЂРµРїР»РµРЅРёСЏ' : 'Р—Р°РєСЂРµРїР»РµРЅРёРµ СѓСЃР»СѓРіРё',
+            'popup_subtitle'            => $is_prolong ? 'РЎСЂРѕРє РїСЂРѕРґР»РµРЅРёСЏ Р·Р°РєСЂРµРїР»РµРЅРёСЏ' : 'РЎСЂРѕРє Р·Р°РєСЂРµРїР»РµРЅРёСЏ СѓСЃР»СѓРіРё',
             'popup_id'                  => $this->getPopupId(0),
             'unic_name'                 => $this->UNIC_NAME,
-            'payments_title'            => 'Сумма и способ оплаты',
+            'payments_title'            => 'РЎСѓРјРјР° Рё СЃРїРѕСЃРѕР± РѕРїР»Р°С‚С‹',
             'payments_exclude'          => array(self::PAYMENT_TYPE_BANK),
             'ac_sum'                    => round($_SESSION['ac_sum'], 2),
             'payment_account'           => self::PAYMENT_TYPE_ACCOUNT,
@@ -84,16 +84,16 @@ class quickPaymentPopupTservicebind extends quickPaymentPopup
             'promo_code' => $promoCodes->render(PromoCodes::SERVICE_TSERVICEBIND)
         );
         
-        //Обязательно передаем родителю
+        //РћР±СЏР·Р°С‚РµР»СЊРЅРѕ РїРµСЂРµРґР°РµРј СЂРѕРґРёС‚РµР»СЋ
         parent::init($options);
         
         
-        //Добавляем свойство к одному способу оплаты
-        $this->options['payments'][self::PAYMENT_TYPE_CARD]['wait'] = 'Ждите ....';
+        //Р”РѕР±Р°РІР»СЏРµРј СЃРІРѕР№СЃС‚РІРѕ Рє РѕРґРЅРѕРјСѓ СЃРїРѕСЃРѕР±Сѓ РѕРїР»Р°С‚С‹
+        $this->options['payments'][self::PAYMENT_TYPE_CARD]['wait'] = 'Р–РґРёС‚Рµ ....';
         
         $this->options['payments'][self::PAYMENT_TYPE_PLATIPOTOM]['content_after'] = sprintf(
             $this->options['payments'][self::PAYMENT_TYPE_PLATIPOTOM]['content_after'],
-            'закрепление'
+            'Р·Р°РєСЂРµРїР»РµРЅРёРµ'
         );
         
         $this->inited = true;
@@ -103,14 +103,14 @@ class quickPaymentPopupTservicebind extends quickPaymentPopup
     {
         $this->options['is_show'] = __paramInit('bool', $options['popup_id'], $options['popup_id'], false);
         
-        //@todo: неиспользуется?
+        //@todo: РЅРµРёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ?
         $tservices_binds = new tservices_binds($this->options['kind']);
         
         
         $is_prolong = (boolean) $options['date_stop'];
         
-        $options['popup_title'] = $is_prolong ? 'Продление закрепления услуги' : 'Закрепление услуги';
-        $options['popup_subtitle'] = $is_prolong ? 'Срок продления услуги' : 'Срок закрепления услуги';
+        $options['popup_title'] = $is_prolong ? 'РџСЂРѕРґР»РµРЅРёРµ Р·Р°РєСЂРµРїР»РµРЅРёСЏ СѓСЃР»СѓРіРё' : 'Р—Р°РєСЂРµРїР»РµРЅРёРµ СѓСЃР»СѓРіРё';
+        $options['popup_subtitle'] = $is_prolong ? 'РЎСЂРѕРє РїСЂРѕРґР»РµРЅРёСЏ СѓСЃР»СѓРіРё' : 'РЎСЂРѕРє Р·Р°РєСЂРµРїР»РµРЅРёСЏ СѓСЃР»СѓРіРё';
         
         if ($is_prolong) {
             $options['tservices'] = '{'.$options['tservices_cur'].':'.$options['tservices_cur_text'].'}';

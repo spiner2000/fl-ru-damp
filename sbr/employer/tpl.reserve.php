@@ -8,7 +8,7 @@ if ($sbr->scheme_type == sbr::SCHEME_LC) {
 ?>
 <div class="b-menu b-menu_crumbs">
     <ul class="b-menu__list">
-								<li class="b-menu__item"><a class="b-menu__link" href="/<?= sbr::NEW_TEMPLATE_SBR; ?>">«Мои Сделки»</a>&#160;&rarr;&#160;</li>
+								<li class="b-menu__item"><a class="b-menu__link" href="/<?= sbr::NEW_TEMPLATE_SBR; ?>">В«РњРѕРё РЎРґРµР»РєРёВ»</a>&#160;&rarr;&#160;</li>
     </ul>
 </div>			
 <h1 class="b-page__title b-page__title_padnull"><?= reformat2($sbr->data['name']) ?></h1>
@@ -32,7 +32,7 @@ if ($sbr->scheme_type == sbr::SCHEME_PDRD2) {
         <input type="hidden" name="LMI_MERCHANT_ID" value="<?=$pm->merchants[pmpay::MERCHANT_SBR]?>" />
         <input type="hidden" name="LMI_PAYMENT_AMOUNT" value="<?=round($sbr->reserve_sum, 2)?>" />
         <input type="hidden" name="LMI_CURRENCY" value="RUB" />
-        <input type="hidden" name="LMI_PAYMENT_DESC_BASE64" value="<?=base64_encode(iconv('CP1251', 'UTF-8', 'Оплата по договору-оферте ' . $sbr->getContractNum() . '. ' . $ndss . '. Счет #' .$account->id. ', логин ' . $sbr->getLogin() )) ?>" />
+        <input type="hidden" name="LMI_PAYMENT_DESC_BASE64" value="<?=base64_encode(iconv('CP1251', 'UTF-8', 'РћРїР»Р°С‚Р° РїРѕ РґРѕРіРѕРІРѕСЂСѓ-РѕС„РµСЂС‚Рµ ' . $sbr->getContractNum() . '. ' . $ndss . '. РЎС‡РµС‚ #' .$account->id. ', Р»РѕРіРёРЅ ' . $sbr->getLogin() )) ?>" />
         <input type="hidden" name="LMI_PAYMENT_NO" value="<?=$pm->genPaymentNo()?>" />
         <input type="hidden" name="LMI_SIM_MODE" value="0" />
         <input type="hidden" name="PAYMENT_BILL_NO" value="<?=$account->id?>" />
@@ -54,7 +54,7 @@ if ($sbr->scheme_type == sbr::SCHEME_PDRD2) {
         });
     </script>
     <?php
-    // проверяем, заполнены ли необходимые финансовые данные? для выбранного лица (физ/юр)
+    // РїСЂРѕРІРµСЂСЏРµРј, Р·Р°РїРѕР»РЅРµРЅС‹ Р»Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ С„РёРЅР°РЅСЃРѕРІС‹Рµ РґР°РЅРЅС‹Рµ? РґР»СЏ РІС‹Р±СЂР°РЅРЅРѕРіРѕ Р»РёС†Р° (С„РёР·/СЋСЂ)
     $is_filled = explode(',',preg_replace('/[}{]/', '', $sbr->user_reqvs['is_filled']));
     $isReqvsFilled[sbr::FT_PHYS] = $is_filled[sbr::FT_PHYS - 1] == 't';
     $isReqvsFilled[sbr::FT_JURI] = $is_filled[sbr::FT_JURI - 1] == 't';
@@ -83,7 +83,7 @@ if ($sbr->scheme_type == sbr::SCHEME_PDRD2) {
             <td class="b-layout__left">
                 <div class="b-fon b-fon_width_72ps b-fon_padbot_30">
                     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb">
-                        <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-20"></span>Исполнитель не приступит к работе, пока вы не зарезервируете деньги под сделку.
+                        <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-20"></span>РСЃРїРѕР»РЅРёС‚РµР»СЊ РЅРµ РїСЂРёСЃС‚СѓРїРёС‚ Рє СЂР°Р±РѕС‚Рµ, РїРѕРєР° РІС‹ РЅРµ Р·Р°СЂРµР·РµСЂРІРёСЂСѓРµС‚Рµ РґРµРЅСЊРіРё РїРѕРґ СЃРґРµР»РєСѓ.
                     </div>
                 </div>	
 
@@ -94,12 +94,12 @@ if ($sbr->scheme_type == sbr::SCHEME_PDRD2) {
                             <div class="b-layout__txt b-layout__txt_bold b-layout__txt_fontsize_15"><a class="b-layout__link" href="?site=Stage&id=<?= $stage->data['id'] ?>"><?= reformat($stage->data['name'], 35, 0, 1) ?></a></div>
                         </td>
                         <td class="b-layout__middle b-layout__middle_width_200"><div class="b-layout__txt b-layout__txt_padtop_2 b-layout__txt_bold"><?= sbr_meta::view_cost($stage->data['cost'], exrates::BANK ) ?></div></td>
-                        <td class="b-layout__right b-layout__right_width_250"><div class="b-layout__txt b-layout__txt_padtop_2"><span class="b-layout__bold"><?= $stage->data['work_days'] ?> <?= ending(abs($stage->data['work_days']), 'день', 'дня', 'дней') ?></span> на задачу</div></td>
+                        <td class="b-layout__right b-layout__right_width_250"><div class="b-layout__txt b-layout__txt_padtop_2"><span class="b-layout__bold"><?= $stage->data['work_days'] ?> <?= ending(abs($stage->data['work_days']), 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№') ?></span> РЅР° Р·Р°РґР°С‡Сѓ</div></td>
                     </tr>
                 <? } ?>
                 </table>
 
-                <h2 class="b-layout__title b-layout__title_padtop_50">Резервирование денег</h2>
+                <h2 class="b-layout__title b-layout__title_padtop_50">Р РµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ РґРµРЅРµРі</h2>
                 
                 <? if ($sbr->scheme_type == sbr::SCHEME_LC) include ($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.pskb-psys.php"); ?>
                 <? if ($sbr->scheme_type == sbr::SCHEME_PDRD2) {
@@ -110,7 +110,7 @@ if ($sbr->scheme_type == sbr::SCHEME_PDRD2) {
                     <tbody>
                         <tr class="b-layout__tr">
                             <td class="b-layout__left b-layout__left_width_160">
-                                <div class="b-layout__txt">Форма организации
+                                <div class="b-layout__txt">Р¤РѕСЂРјР° РѕСЂРіР°РЅРёР·Р°С†РёРё
                                     <div class="i-shadow i-shadow_inline-block">
                                         <span class="b-shadow__icon b-shadow__icon_top_-1 b-shadow__icon_valign_middle b-shadow__icon_quest"></span>
                                         <div class="b-shadow b-shadow_width_270 b-shadow_left_-117 b-shadow_top_15 b-shadow_hide b-shadow_zindex_2">
@@ -119,7 +119,7 @@ if ($sbr->scheme_type == sbr::SCHEME_PDRD2) {
                                                     <div class="b-shadow__top">
                                                         <div class="b-shadow__bottom">
                                                             <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_15">
-                                                                <div class="b-shadow__txt">Укажите форму организации: юридическое лицо (также в случае, если вы являетесь индивидуальным предпринимателем) или физическое лицо</div>
+                                                                <div class="b-shadow__txt">РЈРєР°Р¶РёС‚Рµ С„РѕСЂРјСѓ РѕСЂРіР°РЅРёР·Р°С†РёРё: СЋСЂРёРґРёС‡РµСЃРєРѕРµ Р»РёС†Рѕ (С‚Р°РєР¶Рµ РІ СЃР»СѓС‡Р°Рµ, РµСЃР»Рё РІС‹ СЏРІР»СЏРµС‚РµСЃСЊ РёРЅРґРёРІРёРґСѓР°Р»СЊРЅС‹Рј РїСЂРµРґРїСЂРёРЅРёРјР°С‚РµР»РµРј) РёР»Рё С„РёР·РёС‡РµСЃРєРѕРµ Р»РёС†Рѕ</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -138,7 +138,7 @@ if ($sbr->scheme_type == sbr::SCHEME_PDRD2) {
                             <td class="b-layout__right b-layout__right_padbot_30">
                                 <div class="b-radio b-radio_layout_vertical">
                                     <div class="b-radio__item b-radio__item_padbot_5">
-                                        <label class="b-radio__label b-radio__label_fontsize_13" for="form_type_juri"><?= ($sbr->user_reqvs['form_type'] == sbr::FT_JURI ? "Юридическое лицо или ИП" : "Физическое лицо")?></lable> (<a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 finance-open" href="javascript:void(0)">изменить</a>)
+                                        <label class="b-radio__label b-radio__label_fontsize_13" for="form_type_juri"><?= ($sbr->user_reqvs['form_type'] == sbr::FT_JURI ? "Р®СЂРёРґРёС‡РµСЃРєРѕРµ Р»РёС†Рѕ РёР»Рё РРџ" : "Р¤РёР·РёС‡РµСЃРєРѕРµ Р»РёС†Рѕ")?></lable> (<a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 finance-open" href="javascript:void(0)">РёР·РјРµРЅРёС‚СЊ</a>)
                                     </div>
                                 </div>
                             </td>
@@ -148,7 +148,7 @@ if ($sbr->scheme_type == sbr::SCHEME_PDRD2) {
                 <table class="b-layout__table" cellpadding="0" cellspacing="0" border="0">
                     <tr class="b-layout__tr">
                         <td class="b-layout__left b-layout__left_width_160">
-                            <div class="b-layout__txt">Способ оплаты
+                            <div class="b-layout__txt">РЎРїРѕСЃРѕР± РѕРїР»Р°С‚С‹
                                 <div class="i-shadow i-shadow_inline-block">
                                     <span class="b-shadow__icon b-shadow__icon_top_-1 b-shadow__icon_valign_middle b-shadow__icon_quest"></span>
                                     <div class="b-shadow b-shadow_width_270 b-shadow_left_-117 b-shadow_top_15 b-shadow_hide">
@@ -157,7 +157,7 @@ if ($sbr->scheme_type == sbr::SCHEME_PDRD2) {
                                                 <div class="b-shadow__top">
                                                     <div class="b-shadow__bottom">
                                                         <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_15">
-                                                            <div class="b-shadow__txt">Способ перевода денег</div>
+                                                            <div class="b-shadow__txt">РЎРїРѕСЃРѕР± РїРµСЂРµРІРѕРґР° РґРµРЅРµРі</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -177,15 +177,15 @@ if ($sbr->scheme_type == sbr::SCHEME_PDRD2) {
                             <div class="b-radio b-radio_layout_vertical b-radio_float_left" id="type_payments_btn">
                                 <div class="b-radio__item b-radio__item_padbot_10">
                                     <input id="bank" class="b-radio__input" name="cost_sys" type="radio" value="<?=  exrates::BANK; ?>" onclick="changeCostSysPdrd(this)" for_disable="0" <?= $sbr->cost_sys == exrates::BANK ? "checked" : ""?>/>
-                                    <label class="b-radio__label b-radio__label_fontsize_13" for="bank">Банковский перевод</lable>
+                                    <label class="b-radio__label b-radio__label_fontsize_13" for="bank">Р‘Р°РЅРєРѕРІСЃРєРёР№ РїРµСЂРµРІРѕРґ</lable>
                                 </div>
                                 <div class="b-radio__item b-radio__item_padbot_10">
                                     <input id="ym" class="b-radio__input" name="cost_sys" type="radio" value="<?=  exrates::YM; ?>" onclick="changeCostSysPdrd(this)" for_disable="<?= sbr::FT_JURI; ?>" <?= ($sbr->user_reqvs['form_type'] == sbr::FT_JURI ? "disabled" : "")?> <?= $sbr->cost_sys == exrates::YM && $sbr->user_reqvs['form_type'] == sbr::FT_PHYS ? "checked" : ""?>/>
-                                    <label class="b-radio__label b-radio__label_fontsize_13" for="ym">Яндекс.Деньги</label>
+                                    <label class="b-radio__label b-radio__label_fontsize_13" for="ym">РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё</label>
                                 </div>
                                 <div class="b-radio__item b-radio__item_padbot_10">
                                     <input id="wmr" class="b-radio__input" name="cost_sys" type="radio" value="<?=  exrates::WMR; ?>" onclick="changeCostSysPdrd(this)" for_disable="<?= sbr::FT_JURI; ?>" <?= ($sbr->user_reqvs['form_type'] == sbr::FT_JURI ? "disabled" : "")?> <?= $sbr->cost_sys == exrates::WMR && $sbr->user_reqvs['form_type'] == sbr::FT_PHYS ? "checked" : ""?>/>
-                                    <label class="b-radio__label b-radio__label_fontsize_13" for="wmr">Webmoney, рубли</label>
+                                    <label class="b-radio__label b-radio__label_fontsize_13" for="wmr">Webmoney, СЂСѓР±Р»Рё</label>
                                 </div>
                             </div>
                         </td>
@@ -194,7 +194,7 @@ if ($sbr->scheme_type == sbr::SCHEME_PDRD2) {
                 
                 <div id="pdrd_finance_alert" class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_padtop_20 b-layout__txt_padbot_40 b-layout__txt_padleft_20 <?= ($isReqvsFilled[$sbr->user_reqvs['form_type']] ? "b-layout__txt_hide" : "")?>">
                     <span class="b-icon b-icon_margleft_-20 b-icon_sbr_rattent"></span>
-                    Вам не хватает данных на странице «<a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 finance-open" href="javascript:void(0)">Финансы</a>». Пожалуйста, заполните все необходимые поля, иначе вы не сможете воспользоваться сервисом «Безопасная Сделка».
+                    Р’Р°Рј РЅРµ С…РІР°С‚Р°РµС‚ РґР°РЅРЅС‹С… РЅР° СЃС‚СЂР°РЅРёС†Рµ В«<a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 finance-open" href="javascript:void(0)">Р¤РёРЅР°РЅСЃС‹</a>В». РџРѕР¶Р°Р»СѓР№СЃС‚Р°, Р·Р°РїРѕР»РЅРёС‚Рµ РІСЃРµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РїРѕР»СЏ, РёРЅР°С‡Рµ РІС‹ РЅРµ СЃРјРѕР¶РµС‚Рµ РІРѕСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ СЃРµСЂРІРёСЃРѕРј В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В».
                 </div>
                 
                 <div class="b-tax b-tax_margbot_20">
@@ -206,16 +206,16 @@ if ($sbr->scheme_type == sbr::SCHEME_PDRD2) {
                                         <div class="b-tax__content">
                                             
                                             <?/*
-                                            <? // схемы ?>
+                                            <? // СЃС…РµРјС‹ ?>
                                             <div class="sch_<?=$sch['type']?> sbr_schemes">
                                                 <div class="b-tax__level b-tax__level_padbot_12">
-                                                    <div class="b-tax__txt b-tax__txt_width_160 b-tax__txt_inline-block">Бюджет всех этапов</div>
+                                                    <div class="b-tax__txt b-tax__txt_width_160 b-tax__txt_inline-block">Р‘СЋРґР¶РµС‚ РІСЃРµС… СЌС‚Р°РїРѕРІ</div>
                                                     <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_bold" id="sch_<?=$sch['type']?>_f"><?=(float)$sbr->data['cost']?></div>
                                                 </div>
                                                 <div class="b-tax__level b-tax__level_padbot_12 b-tax__level_double">
-                                                    <div class="b-tax__txt b-tax__txt_padleft_1 b-tax__txt_width_160 b-tax__txt_inline-block b-tax__txt_fontsize_11">Налоги и вычеты</div>
-                                                    <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_fontsize_11">Сумма, руб.</div>
-                                                    <div class="b-tax__txt b-tax__txt_width_130 b-tax__txt_inline-block b-tax__txt_fontsize_11">% от бюджета проекта</div>
+                                                    <div class="b-tax__txt b-tax__txt_padleft_1 b-tax__txt_width_160 b-tax__txt_inline-block b-tax__txt_fontsize_11">РќР°Р»РѕРіРё Рё РІС‹С‡РµС‚С‹</div>
+                                                    <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_fontsize_11">РЎСѓРјРјР°, СЂСѓР±.</div>
+                                                    <div class="b-tax__txt b-tax__txt_width_130 b-tax__txt_inline-block b-tax__txt_fontsize_11">% РѕС‚ Р±СЋРґР¶РµС‚Р° РїСЂРѕРµРєС‚Р°</div>
                                                 </div>
 
                                                 <? foreach($sbr->scheme['taxes'][1] as $tax_id=>$tax) {
@@ -251,26 +251,26 @@ if ($sbr->scheme_type == sbr::SCHEME_PDRD2) {
                                                     <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_bold" id="taxsum_<?= $sch['type'] ?>_<?=$id ?>"><?= number_format($ts, 2, '.', ' ');?></div>
                                                     <div class="b-tax__txt b-tax__txt_width_130 b-tax__txt_inline-block b-tax__txt_fontsize_11" id="taxper_<?= $sch['type'] ?>_<?= $id ?>"><?= $tax['percent']*100 ?></div>
                                                 </div>
-                                                <? // строка налога ?>
+                                                <? // СЃС‚СЂРѕРєР° РЅР°Р»РѕРіР° ?>
                                                 <? } ?>
                                             </div>
-                                            <? // схемы ?>
+                                            <? // СЃС…РµРјС‹ ?>
                                             */?>
                                             <? foreach($sbr_schemes as $sch) { if(!$sch['taxes'][1]) continue;?>
-                                            <? // схемы ?>
+                                            <? // СЃС…РµРјС‹ ?>
                                             <div style="display:none" class="sch_<?=$sch['type']?> sbr_schemes">
                                                 <div class="b-tax__level b-tax__level_padbot_12">
-                                                    <div class="b-tax__txt b-tax__txt_width_160 b-tax__txt_inline-block">Бюджет всех этапов</div>
+                                                    <div class="b-tax__txt b-tax__txt_width_160 b-tax__txt_inline-block">Р‘СЋРґР¶РµС‚ РІСЃРµС… СЌС‚Р°РїРѕРІ</div>
                                                     <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_bold" id="sch_<?=$sch['type']?>_f"><?=(float)$sbr->data['cost']?></div>
                                                 </div>
                                                 <div class="b-tax__level b-tax__level_padbot_12 b-tax__level_double">
-                                                    <div class="b-tax__txt b-tax__txt_padleft_1 b-tax__txt_width_160 b-tax__txt_inline-block b-tax__txt_fontsize_11">Налоги и вычеты</div>
-                                                    <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_fontsize_11">Сумма, руб.</div>
-                                                    <div class="b-tax__txt b-tax__txt_width_130 b-tax__txt_inline-block b-tax__txt_fontsize_11">% от бюджета проекта</div>
+                                                    <div class="b-tax__txt b-tax__txt_padleft_1 b-tax__txt_width_160 b-tax__txt_inline-block b-tax__txt_fontsize_11">РќР°Р»РѕРіРё Рё РІС‹С‡РµС‚С‹</div>
+                                                    <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_fontsize_11">РЎСѓРјРјР°, СЂСѓР±.</div>
+                                                    <div class="b-tax__txt b-tax__txt_width_130 b-tax__txt_inline-block b-tax__txt_fontsize_11">% РѕС‚ Р±СЋРґР¶РµС‚Р° РїСЂРѕРµРєС‚Р°</div>
                                                 </div>
 
                                                 <? foreach($sch['taxes'][1] as $id=>$tax) { $s=$e=''; if($id==sbr::TAX_NDS) {$s='<strong>';$e='</strong>';}  ?>
-                                                <? // строка налога ?>
+                                                <? // СЃС‚СЂРѕРєР° РЅР°Р»РѕРіР° ?>
                                                 <div class="b-tax__level b-tax__level_padbot_12 b-tax__level_padtop_15 taxrow-class" id="taxrow_<?=$sch['type'].'_'.$id?>"><div
                                                         class="b-tax__txt b-tax__txt_width_160 b-tax__txt_inline-block"><div 
                                                         class="i-shadow i-shadow_inline-block i-shadow_margleft_-16"><span
@@ -300,19 +300,19 @@ if ($sbr->scheme_type == sbr::SCHEME_PDRD2) {
                                                     <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_bold" id="taxsum_<?= $sch['type'] ?>_<?=$id ?>">0</div>
                                                     <div class="b-tax__txt b-tax__txt_width_130 b-tax__txt_inline-block b-tax__txt_fontsize_11" id="taxper_<?= $sch['type'] ?>_<?= $id ?>"><?= $tax['percent']*100 ?></div>
                                                 </div>
-                                                <? // строка налога ?>
+                                                <? // СЃС‚СЂРѕРєР° РЅР°Р»РѕРіР° ?>
                                                 <? } ?>
                                             </div>
-                                            <? // схемы ?>
+                                            <? // СЃС…РµРјС‹ ?>
                                             <? } ?>
                                             
-                                            <? // итого ?>
+                                            <? // РёС‚РѕРіРѕ ?>
 
                                             <div class="b-tax__level b-tax__level_padtop_15" id="bank_payment_sum">
-                                                <div class="b-tax__txt b-tax__txt_bold b-tax__txt_width_160 b-tax__txt_inline-block">Итого к оплате</div>
+                                                <div class="b-tax__txt b-tax__txt_bold b-tax__txt_width_160 b-tax__txt_inline-block">РС‚РѕРіРѕ Рє РѕРїР»Р°С‚Рµ</div>
                                                 <div class="b-tax__txt b-tax__txt_inline-block"><span class="b-tax__txt b-tax__txt_bold b-tax__txt_fontsize_15" id="cost_total"><?= sbr_meta::view_cost($t, exrates::BANK)?></span></div>
                                             </div>
-                                            <? // итого ?>
+                                            <? // РёС‚РѕРіРѕ ?>
                                         </div>
                                     </div>
                                 </div>
@@ -333,17 +333,17 @@ if ($sbr->scheme_type == sbr::SCHEME_PDRD2) {
                     });
                 </script>
                 <? }//if?>
-                <div class="b-layout__txt b-layout__txt_color_a0763b b-layout__txt_padtop_20 b-layout__txt_padleft_20"><span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_oattent"></span>После резервирования вернуть деньги можно будет только через арбитраж.</div>									
-                <div id="finance-err" class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_padleft_20 b-layout__txt_padtop_30 b-layout_hide"><span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_rattent"></span>Произошла ошибка. <span id="finance-err-txt"></span></div>
+                <div class="b-layout__txt b-layout__txt_color_a0763b b-layout__txt_padtop_20 b-layout__txt_padleft_20"><span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_oattent"></span>РџРѕСЃР»Рµ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ РІРµСЂРЅСѓС‚СЊ РґРµРЅСЊРіРё РјРѕР¶РЅРѕ Р±СѓРґРµС‚ С‚РѕР»СЊРєРѕ С‡РµСЂРµР· Р°СЂР±РёС‚СЂР°Р¶.</div>									
+                <div id="finance-err" class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_padleft_20 b-layout__txt_padtop_30 b-layout_hide"><span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_rattent"></span>РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°. <span id="finance-err-txt"></span></div>
                 <div class="b-buttons b-buttons_padtop_40 b-buttons_padleft_20">
-                    <a href="javascript:void(0)" onclick="if(!$(this).hasClass('b-button_disabled')) <?= $sbr->scheme_type == sbr::SCHEME_PDRD2 ? "sendReservePdrd('{$sbr->data['id']}')" : "sendReserve()"?>" class="b-button b-button_flat b-button_flat_green<?= $noFinanceDataPDRD ? " b-button_disabled" : ""?>" id="send_btn">Зарезервировать деньги
+                    <a href="javascript:void(0)" onclick="if(!$(this).hasClass('b-button_disabled')) <?= $sbr->scheme_type == sbr::SCHEME_PDRD2 ? "sendReservePdrd('{$sbr->data['id']}')" : "sendReserve()"?>" class="b-button b-button_flat b-button_flat_green<?= $noFinanceDataPDRD ? " b-button_disabled" : ""?>" id="send_btn">Р—Р°СЂРµР·РµСЂРІРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё
                                 <img width="26" height="6" alt="" src="/css/block/b-button/b-button__load.gif" class="b-button__load b-layout_hide"></a>
-                    <span id="finance-btns"><span class="b-buttons__txt b-buttons__txt_padleft_10">или</span> <a class="b-buttons__link b-buttons__link_dot_c10601" href="javascript:void(0)" onclick="if(confirm('Отменить сделку?')) { submitForm($('actionSbrForm'), {action: 'status_action', cancel:1}); }">отменить сделку</a>	</span>
-                    <span id="finance-btns-spinn" class="b-buttons__txt b-buttons__txt_padleft_10" style="display: none;">идет подготовка к резервированию, это может занять от нескольких секунд до минуты…</span>
+                    <span id="finance-btns"><span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё</span> <a class="b-buttons__link b-buttons__link_dot_c10601" href="javascript:void(0)" onclick="if(confirm('РћС‚РјРµРЅРёС‚СЊ СЃРґРµР»РєСѓ?')) { submitForm($('actionSbrForm'), {action: 'status_action', cancel:1}); }">РѕС‚РјРµРЅРёС‚СЊ СЃРґРµР»РєСѓ</a>	</span>
+                    <span id="finance-btns-spinn" class="b-buttons__txt b-buttons__txt_padleft_10" style="display: none;">РёРґРµС‚ РїРѕРґРіРѕС‚РѕРІРєР° Рє СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЋ, СЌС‚Рѕ РјРѕР¶РµС‚ Р·Р°РЅСЏС‚СЊ РѕС‚ РЅРµСЃРєРѕР»СЊРєРёС… СЃРµРєСѓРЅРґ РґРѕ РјРёРЅСѓС‚С‹вЂ¦</span>
                 </div>
                 <? if ($sbr->scheme_type == sbr::SCHEME_PDRD2 && !is_release()) { ?>
                 <div class="b-buttons b-buttons_padtop_40 b-buttons_padleft_20" id="buttonBankReserved">
-                    <a href="javascript:void(0)" onclick="if(!$(this).hasClass('b-button_disabled')) submitForm($('commonFrm'), {action: 'test_reserve'});" class="b-button b-button_flat b-button_flat_green">Я тестю
+                    <a href="javascript:void(0)" onclick="if(!$(this).hasClass('b-button_disabled')) submitForm($('commonFrm'), {action: 'test_reserve'});" class="b-button b-button_flat b-button_flat_green">РЇ С‚РµСЃС‚СЋ
                                 <img width="26" height="6" alt="" src="/css/block/b-button/b-button__load.gif" class="b-button__load b-layout_hide"></a>
                 </div>
                 <? } ?>
@@ -377,14 +377,14 @@ if ($sbr->scheme_type == sbr::SCHEME_PDRD2) {
 
 <?php if($sbr->scheme_type == sbr::SCHEME_LC) {?>
 <div id="reserve-error-box" class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb" style="<?= $is_pskb_err ? '' : 'display: none;'?>">
-    <div class="b-layout__txt b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span>Ошибка.</div>
+    <div class="b-layout__txt b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span>РћС€РёР±РєР°.</div>
     <? if ($lc['state'] == pskb::STATE_ERR && !$lc['dol_is_failed']) { ?>
-    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_10"><?= $lc['stateReason'] ? $lc['stateReason'] : 'Ошибка обработки платежа. Средства возвращены плательщику.' ?></div>
+    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_10"><?= $lc['stateReason'] ? $lc['stateReason'] : 'РћС€РёР±РєР° РѕР±СЂР°Р±РѕС‚РєРё РїР»Р°С‚РµР¶Р°. РЎСЂРµРґСЃС‚РІР° РІРѕР·РІСЂР°С‰РµРЅС‹ РїР»Р°С‚РµР»СЊС‰РёРєСѓ.' ?></div>
     <? } ?>
     <? if ($lc['state'] == pskb::STATE_ERR && $lc['dol_is_failed']) { ?>
-    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_10">Платеж был отменен, либо произошла ошибка обработки платежа.</div>
+    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_10">РџР»Р°С‚РµР¶ Р±С‹Р» РѕС‚РјРµРЅРµРЅ, Р»РёР±Рѕ РїСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° РѕР±СЂР°Р±РѕС‚РєРё РїР»Р°С‚РµР¶Р°.</div>
     <? } ?>
-    <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-fon__link" href="javascript:void(0)" onclick="this.getParent('#reserve-error-box').hide(); if ($('reserveForm')) { $('reserveForm').show(); $('reserveForm').removeClass('b-layout_hide'); }">Выбрать другой тип оплаты</a></div>
-    <div class="b-layout__txt">По всем вопросам обращайтесь в <a class="b-layout__link" href="/about/feedback/">службу поддержки</a> или к <?= webim_button(2, 'консультанту', 'b-layout__link') ?>.</div>
+    <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-fon__link" href="javascript:void(0)" onclick="this.getParent('#reserve-error-box').hide(); if ($('reserveForm')) { $('reserveForm').show(); $('reserveForm').removeClass('b-layout_hide'); }">Р’С‹Р±СЂР°С‚СЊ РґСЂСѓРіРѕР№ С‚РёРї РѕРїР»Р°С‚С‹</a></div>
+    <div class="b-layout__txt">РџРѕ РІСЃРµРј РІРѕРїСЂРѕСЃР°Рј РѕР±СЂР°С‰Р°Р№С‚РµСЃСЊ РІ <a class="b-layout__link" href="/about/feedback/">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a> РёР»Рё Рє <?= webim_button(2, 'РєРѕРЅСЃСѓР»СЊС‚Р°РЅС‚Сѓ', 'b-layout__link') ?>.</div>
 </div>
 <? } ?>

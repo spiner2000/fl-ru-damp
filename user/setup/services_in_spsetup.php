@@ -28,11 +28,11 @@ $xajax->printJavascript('/xajax/');
 ?>
 <div class="b-layout b-layout_padtop_20">
 <form id='idProfs' action="/users/<?=$user->login?>/setup/portfolio/" method="post">
-<h3 class="b-layout__h3">Выберите вашу специализацию:</h3>
+<h3 class="b-layout__h3">Р’С‹Р±РµСЂРёС‚Рµ РІР°С€Сѓ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ:</h3>
 
 <div class="b-radio b-radio__item_padbot_20">
   <input class="b-radio__input" type="radio" id="lb000" name="spec" value="0" <? if (0 == $user->spec) print("checked='checked'")?>  />
-  <label class="b-radio__label" for="lb000">Нет специализации</label>
+  <label class="b-radio__label" for="lb000">РќРµС‚ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё</label>
 </div>
 
 
@@ -70,7 +70,7 @@ $xajax->printJavascript('/xajax/');
 
 <div class="b-buttons">
 		<input type="hidden" name="action" value="spec_change" />
-        <button type="submit" name="btn" id="btn_spec_change" class="b-button b-button_flat b-button_flat_green b-button_float_right">Изменить</button>
+        <button type="submit" name="btn" id="btn_spec_change" class="b-button b-button_flat b-button_flat_green b-button_float_right">РР·РјРµРЅРёС‚СЊ</button>
 </div>
 </form>
 </div>

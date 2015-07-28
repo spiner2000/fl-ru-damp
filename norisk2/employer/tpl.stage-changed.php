@@ -3,26 +3,26 @@
                                     <b class="b1"></b>
                                     <b class="b2"></b>
                                     <div class="form-h-in">
-                                        <h3>Исполнитель отказался от новых условий к задаче!</h3>
+                                        <h3>РСЃРїРѕР»РЅРёС‚РµР»СЊ РѕС‚РєР°Р·Р°Р»СЃСЏ РѕС‚ РЅРѕРІС‹С… СѓСЃР»РѕРІРёР№ Рє Р·Р°РґР°С‡Рµ!</h3>
                                     </div>
                                 </div>
                                 <div class="form-in">
                                     <form action="." method="post" id="changedFrm">
                                     	<div class="form-block first">
                                     	    <div class="form-el">
-                                    	        <strong class="reason-title">Причина:</strong>
+                                    	        <strong class="reason-title">РџСЂРёС‡РёРЅР°:</strong>
                                     	        <div class="reason-txt">
-                                    	            <p><?=$stage->data['frl_refuse_reason'] ? reformat($stage->data['frl_refuse_reason'], 100) : 'Не указана'?></p>
+                                    	            <p><?=$stage->data['frl_refuse_reason'] ? reformat($stage->data['frl_refuse_reason'], 100) : 'РќРµ СѓРєР°Р·Р°РЅР°'?></p>
                                     	        </div>
                                     	    </div>
                                     	</div>
                                     	<div class="form-block last">
                                     	    <div class="form-el">
                                     	        <div class="nr-prj-btns c">
-                                    	            <input type="submit" name="cancel" value="Отменить изменения" class="i-btn" />
-                                    	            <input type="submit" name="resend" value="Повторный запрос" class="i-btn i-bold" />
+                                    	            <input type="submit" name="cancel" value="РћС‚РјРµРЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ" class="i-btn" />
+                                    	            <input type="submit" name="resend" value="РџРѕРІС‚РѕСЂРЅС‹Р№ Р·Р°РїСЂРѕСЃ" class="i-btn i-bold" />
                                                     <? if($new_dead_time_ex || $new_work_time_ex || $new_cost_ex || $new_descr_ex) { ?>
-                                                        <input type="button" value="Редактировать условия" class="i-btn i-bold" onclick="document.location.href='?site=editstage&id=<?=$stage->data['id']?>&v=1'"/>
+                                                        <input type="button" value="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СѓСЃР»РѕРІРёСЏ" class="i-btn i-bold" onclick="document.location.href='?site=editstage&id=<?=$stage->data['id']?>&v=1'"/>
                                                     <? } ?>
                                     	        </div>
                                     	    </div>

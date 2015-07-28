@@ -24,23 +24,23 @@ class ReservesChangeStatusForm extends Form_View
         $default = ReservesAdminOrderModel::$_reserve_order_status_txt;
         
         $options = array(
-            '' => 'Âûáåðèòå ñòàòóñ',
+            '' => 'Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÑÑ‚Ð°Ñ‚ÑƒÑ',
             ReservesAdminOrderModel::ReserveOrderStatus_Reserve => 
                 $default[ReservesAdminOrderModel::ReserveOrderStatus_Reserve],
             ReservesAdminOrderModel::ReserveOrderStatus_InWork => 
                 $default[ReservesAdminOrderModel::ReserveOrderStatus_InWork],
-            ReservesAdminOrderModel::ReserveOrderStatus_ArbitrageEmp => 'àðáèòðàæ êàê çàêàç÷èê',
-            ReservesAdminOrderModel::ReserveOrderStatus_ArbitrageFrl => 'àðáèòðàæ êàê èñïîëíèòåëü'
+            ReservesAdminOrderModel::ReserveOrderStatus_ArbitrageEmp => 'Ð°Ñ€Ð±Ð¸Ñ‚Ñ€Ð°Ð¶ ÐºÐ°Ðº Ð·Ð°ÐºÐ°Ð·Ñ‡Ð¸Ðº',
+            ReservesAdminOrderModel::ReserveOrderStatus_ArbitrageFrl => 'Ð°Ñ€Ð±Ð¸Ñ‚Ñ€Ð°Ð¶ ÐºÐ°Ðº Ð¸ÑÐ¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒ'
         );
         
         $this->addElement(
            new Form_Element_Select('status', array(
-               'label' => 'Ñòàòóñ',
+               'label' => 'Ð¡Ñ‚Ð°Ñ‚ÑƒÑ',
                'multioptions' => $options
         ))); 
         
         $this->addElementByName('submit', 'submit', array(
-            'label' => 'Èçìåíèòü',
+            'label' => 'Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ',
             'disableLoadDefaultDecorators' => true,
             'decorators' => array('ViewHelper')
         ));

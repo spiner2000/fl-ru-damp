@@ -3,7 +3,7 @@
 require_once 'DigestBlockList.php';
 
 /**
- * Класс для работы с блоком "Статьи"
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р»РѕРєРѕРј "РЎС‚Р°С‚СЊРё"
  */
 class DigestBlockListArticle extends DigestBlockList {
     
@@ -20,17 +20,17 @@ class DigestBlockListArticle extends DigestBlockList {
     /**
      * @see parent::$title
      */
-    public $title = '<a class="b-layout__link" href="/articles/" target="_blank">Статьи</a>';
+    public $title = '<a class="b-layout__link" href="/articles/" target="_blank">РЎС‚Р°С‚СЊРё</a>';
     
     /**
      * @see parent::$hint
      */
-    public $hint  = 'Например: https://www.free-lance.ru/articles/100/example.html';
+    public $hint  = 'РќР°РїСЂРёРјРµСЂ: https://www.free-lance.ru/articles/100/example.html';
     
     /**
      * @see parent::$title_field
      */
-    public $title_field = 'Ссылки на статьи:';
+    public $title_field = 'РЎСЃС‹Р»РєРё РЅР° СЃС‚Р°С‚СЊРё:';
     
     /**
      * @see parent::initHtmlData

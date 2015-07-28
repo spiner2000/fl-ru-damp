@@ -43,7 +43,7 @@ if($_GET['a'] == 1 && hasPermissions('users')) {
                 $clnt->newClient($name, $link, $logo, $error);
                 header("Location: /clients/?a=1".$upage);   
             } else {
-                $error = "Çàïîëíåíû íå âñå ïîëÿ";
+                $error = "Ğ—Ğ°Ğ¿Ğ¾Ğ»Ğ½ĞµĞ½Ñ‹ Ğ½Ğµ Ğ²ÑĞµ Ğ¿Ğ¾Ğ»Ñ";
             }
             
             break;
@@ -65,7 +65,7 @@ if($_GET['a'] == 1 && hasPermissions('users')) {
                 
                 $clnt->editClient($name, $link, $logo, $cid, $error_edit); 
             } else {
-                $error_edit = "Çàïîëíåíû íå âñå ïîëÿ";
+                $error_edit = "Ğ—Ğ°Ğ¿Ğ¾Ğ»Ğ½ĞµĞ½Ñ‹ Ğ½Ğµ Ğ²ÑĞµ Ğ¿Ğ¾Ğ»Ñ";
             }
             
             
@@ -80,7 +80,7 @@ if($_GET['a'] == 1 && hasPermissions('users')) {
             }
             break;         
     }
-    $limit = 10; // Ñêîëüêî íà îäíîé ñòğàíèöå âûäàâàòü
+    $limit = 10; // Ğ¡ĞºĞ¾Ğ»ÑŒĞºĞ¾ Ğ½Ğ° Ğ¾Ğ´Ğ½Ğ¾Ğ¹ ÑÑ‚Ñ€Ğ°Ğ½Ğ¸Ñ†Ğµ Ğ²Ñ‹Ğ´Ğ°Ğ²Ğ°Ñ‚ÑŒ
     $clients = $clnt->getAdminClients($page, $count, $limit);
 } else {
     $clients = $clnt->getClients();

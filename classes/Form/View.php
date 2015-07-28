@@ -1,51 +1,51 @@
 <?php
 
-//Путь для автоподгрузки классов
+//РџСѓС‚СЊ РґР»СЏ Р°РІС‚РѕРїРѕРґРіСЂСѓР·РєРё РєР»Р°СЃСЃРѕРІ
 set_include_path(get_include_path()
         . PATH_SEPARATOR . ABS_PATH . '/classes/'
 );
 
-// Перевод сообщений об ошибках заполнения форм Zend_Form
+// РџРµСЂРµРІРѕРґ СЃРѕРѕР±С‰РµРЅРёР№ РѕР± РѕС€РёР±РєР°С… Р·Р°РїРѕР»РЅРµРЅРёСЏ С„РѕСЂРј Zend_Form
 $translateValidators = array(
-    Zend_Validate_Alnum::NOT_ALNUM => 'Введенное значение неправильное. Разрешены только латинские символы и цифры', 
-    Zend_Validate_Alnum::STRING_EMPTY => 'Поле не может быть пустым. Заполните его, пожалуйста', 
-    Zend_Validate_Alpha::NOT_ALPHA => 'Введите в это поле только латинские символы', 
-    Zend_Validate_Alpha::STRING_EMPTY => 'Поле не может быть пустым. Заполните его, пожалуйста', 
-    Zend_Validate_Between::NOT_BETWEEN => 'Значение должно быть в диапазоне между "%min%" и "%max%"', 
-    Zend_Validate_Between::NOT_BETWEEN_STRICT => 'Значение не находится строго между "%min%" и "%max%"', 
-    Zend_Validate_Ccnum::LENGTH => 'Значение должно быть численным значением от 13 до 19 цифр длинной', 
-    Zend_Validate_Ccnum::CHECKSUM => 'Подсчёт контрольной суммы неудался. Значение неверно', 
-    Zend_Validate_Date::INVALID => 'Неверная дата', 
-    Zend_Validate_Date::FALSEFORMAT => 'Значение не подходит по формату', 
-    Zend_Validate_Digits::NOT_DIGITS => 'Значение неправильное. Введите только цифры', 
-    Zend_Validate_Digits::STRING_EMPTY => 'Поле не может быть пустым. Заполните его, пожалуйста', 
-    Zend_Validate_EmailAddress::INVALID => 'Неправильный адрес електронной почты. Введите его в формате имя@домен', 
-    Zend_Validate_EmailAddress::INVALID_FORMAT => "Адрес электронной почты должен содержать @, точку и, минимум, два символа после точки.",
-    Zend_Validate_EmailAddress::INVALID_HOSTNAME => '"%hostname%" неверный домен для адреса "%value%"', 
-    Zend_Validate_EmailAddress::INVALID_MX_RECORD => 'Домен "%hostname%" не имеет MX-записи об адресе "%value%"', 
-    Zend_Validate_EmailAddress::DOT_ATOM => '"%localPart%" не соответствует формату dot-atom', 
-    Zend_Validate_EmailAddress::QUOTED_STRING => '"%localPart%" не соответствует формату указанной строки', 
-    Zend_Validate_EmailAddress::INVALID_LOCAL_PART => '"%localPart%" не правильное имя для адреса, вводите адрес вида имя@домен', 
-    Zend_Validate_Float::NOT_FLOAT => 'Значение не является дробным числом', 
-    Zend_Validate_GreaterThan::NOT_GREATER => 'Значение не превышает "%min%"', 
-    Zend_Validate_Hex::NOT_HEX => 'Значение содержит в себе не только шестнадцатеричные символы', 
-    Zend_Validate_Hostname::IP_ADDRESS_NOT_ALLOWED => '"%value%" - это IP-адрес, но IP-адреса не разрешены ', 
-    Zend_Validate_Hostname::UNKNOWN_TLD => '"%value%" - это DNS имя хоста, но оно не дожно быть из TLD-списка', 
-    Zend_Validate_Hostname::INVALID_DASH => '"%value%" - это DNS имя хоста, но знак "-" находится в неправильном месте', 
-    Zend_Validate_Hostname::INVALID_HOSTNAME_SCHEMA => '"%value%" - это DNS имя хоста, но оно не соответствует TLD для TLD "%tld%"', 
-    Zend_Validate_Hostname::UNDECIPHERABLE_TLD => '"%value%" - это DNS имя хоста. Не удаётся извлечь TLD часть', 
-    Zend_Validate_Hostname::INVALID_HOSTNAME => '"%value%" - не соответствует ожидаемой структуре для DNS имени хоста', 
-    Zend_Validate_Hostname::INVALID_LOCAL_NAME => '"%value%" - адрес является недопустимым локальным сетевым адресом', 
-    Zend_Validate_Hostname::LOCAL_NAME_NOT_ALLOWED => '"%value%" - адрес является сетевым расположением, но локальные сетевые адреса не разрешены', 
-    Zend_Validate_Identical::NOT_SAME => 'Значения не совпадают', 
-    Zend_Validate_Identical::MISSING_TOKEN => 'Не было введено значения для проверки на идентичность', 
-    Zend_Validate_InArray::NOT_IN_ARRAY => 'Значение не найдено в перечисленных допустимых значениях', 
-    Zend_Validate_Int::NOT_INT => 'Значение не является целочисленным значением', 
-    Zend_Validate_Ip::NOT_IP_ADDRESS => 'Значение не является правильным IP-адресом', 
-    Zend_Validate_LessThan::NOT_LESS => 'Значение не меньше, чем "%max%"', 
-    Zend_Validate_NotEmpty::IS_EMPTY => 'Введённое значение пустое, заполните поле, пожалуйста', 
-    Zend_Validate_StringLength::TOO_SHORT => 'Длина введённого значения, меньше чем %min% симв.', 
-    Zend_Validate_StringLength::TOO_LONG => 'Длина введённого значения не должна быть больше чем %max% символов', 
+    Zend_Validate_Alnum::NOT_ALNUM => 'Р’РІРµРґРµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РЅРµРїСЂР°РІРёР»СЊРЅРѕРµ. Р Р°Р·СЂРµС€РµРЅС‹ С‚РѕР»СЊРєРѕ Р»Р°С‚РёРЅСЃРєРёРµ СЃРёРјРІРѕР»С‹ Рё С†РёС„СЂС‹', 
+    Zend_Validate_Alnum::STRING_EMPTY => 'РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј. Р—Р°РїРѕР»РЅРёС‚Рµ РµРіРѕ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°', 
+    Zend_Validate_Alpha::NOT_ALPHA => 'Р’РІРµРґРёС‚Рµ РІ СЌС‚Рѕ РїРѕР»Рµ С‚РѕР»СЊРєРѕ Р»Р°С‚РёРЅСЃРєРёРµ СЃРёРјРІРѕР»С‹', 
+    Zend_Validate_Alpha::STRING_EMPTY => 'РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј. Р—Р°РїРѕР»РЅРёС‚Рµ РµРіРѕ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°', 
+    Zend_Validate_Between::NOT_BETWEEN => 'Р—РЅР°С‡РµРЅРёРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РІ РґРёР°РїР°Р·РѕРЅРµ РјРµР¶РґСѓ "%min%" Рё "%max%"', 
+    Zend_Validate_Between::NOT_BETWEEN_STRICT => 'Р—РЅР°С‡РµРЅРёРµ РЅРµ РЅР°С…РѕРґРёС‚СЃСЏ СЃС‚СЂРѕРіРѕ РјРµР¶РґСѓ "%min%" Рё "%max%"', 
+    Zend_Validate_Ccnum::LENGTH => 'Р—РЅР°С‡РµРЅРёРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ С‡РёСЃР»РµРЅРЅС‹Рј Р·РЅР°С‡РµРЅРёРµРј РѕС‚ 13 РґРѕ 19 С†РёС„СЂ РґР»РёРЅРЅРѕР№', 
+    Zend_Validate_Ccnum::CHECKSUM => 'РџРѕРґСЃС‡С‘С‚ РєРѕРЅС‚СЂРѕР»СЊРЅРѕР№ СЃСѓРјРјС‹ РЅРµСѓРґР°Р»СЃСЏ. Р—РЅР°С‡РµРЅРёРµ РЅРµРІРµСЂРЅРѕ', 
+    Zend_Validate_Date::INVALID => 'РќРµРІРµСЂРЅР°СЏ РґР°С‚Р°', 
+    Zend_Validate_Date::FALSEFORMAT => 'Р—РЅР°С‡РµРЅРёРµ РЅРµ РїРѕРґС…РѕРґРёС‚ РїРѕ С„РѕСЂРјР°С‚Сѓ', 
+    Zend_Validate_Digits::NOT_DIGITS => 'Р—РЅР°С‡РµРЅРёРµ РЅРµРїСЂР°РІРёР»СЊРЅРѕРµ. Р’РІРµРґРёС‚Рµ С‚РѕР»СЊРєРѕ С†РёС„СЂС‹', 
+    Zend_Validate_Digits::STRING_EMPTY => 'РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј. Р—Р°РїРѕР»РЅРёС‚Рµ РµРіРѕ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°', 
+    Zend_Validate_EmailAddress::INVALID => 'РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ Р°РґСЂРµСЃ РµР»РµРєС‚СЂРѕРЅРЅРѕР№ РїРѕС‡С‚С‹. Р’РІРµРґРёС‚Рµ РµРіРѕ РІ С„РѕСЂРјР°С‚Рµ РёРјСЏ@РґРѕРјРµРЅ', 
+    Zend_Validate_EmailAddress::INVALID_FORMAT => "РђРґСЂРµСЃ СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ РїРѕС‡С‚С‹ РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ @, С‚РѕС‡РєСѓ Рё, РјРёРЅРёРјСѓРј, РґРІР° СЃРёРјРІРѕР»Р° РїРѕСЃР»Рµ С‚РѕС‡РєРё.",
+    Zend_Validate_EmailAddress::INVALID_HOSTNAME => '"%hostname%" РЅРµРІРµСЂРЅС‹Р№ РґРѕРјРµРЅ РґР»СЏ Р°РґСЂРµСЃР° "%value%"', 
+    Zend_Validate_EmailAddress::INVALID_MX_RECORD => 'Р”РѕРјРµРЅ "%hostname%" РЅРµ РёРјРµРµС‚ MX-Р·Р°РїРёСЃРё РѕР± Р°РґСЂРµСЃРµ "%value%"', 
+    Zend_Validate_EmailAddress::DOT_ATOM => '"%localPart%" РЅРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ С„РѕСЂРјР°С‚Сѓ dot-atom', 
+    Zend_Validate_EmailAddress::QUOTED_STRING => '"%localPart%" РЅРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ С„РѕСЂРјР°С‚Сѓ СѓРєР°Р·Р°РЅРЅРѕР№ СЃС‚СЂРѕРєРё', 
+    Zend_Validate_EmailAddress::INVALID_LOCAL_PART => '"%localPart%" РЅРµ РїСЂР°РІРёР»СЊРЅРѕРµ РёРјСЏ РґР»СЏ Р°РґСЂРµСЃР°, РІРІРѕРґРёС‚Рµ Р°РґСЂРµСЃ РІРёРґР° РёРјСЏ@РґРѕРјРµРЅ', 
+    Zend_Validate_Float::NOT_FLOAT => 'Р—РЅР°С‡РµРЅРёРµ РЅРµ СЏРІР»СЏРµС‚СЃСЏ РґСЂРѕР±РЅС‹Рј С‡РёСЃР»РѕРј', 
+    Zend_Validate_GreaterThan::NOT_GREATER => 'Р—РЅР°С‡РµРЅРёРµ РЅРµ РїСЂРµРІС‹С€Р°РµС‚ "%min%"', 
+    Zend_Validate_Hex::NOT_HEX => 'Р—РЅР°С‡РµРЅРёРµ СЃРѕРґРµСЂР¶РёС‚ РІ СЃРµР±Рµ РЅРµ С‚РѕР»СЊРєРѕ С€РµСЃС‚РЅР°РґС†Р°С‚РµСЂРёС‡РЅС‹Рµ СЃРёРјРІРѕР»С‹', 
+    Zend_Validate_Hostname::IP_ADDRESS_NOT_ALLOWED => '"%value%" - СЌС‚Рѕ IP-Р°РґСЂРµСЃ, РЅРѕ IP-Р°РґСЂРµСЃР° РЅРµ СЂР°Р·СЂРµС€РµРЅС‹ ', 
+    Zend_Validate_Hostname::UNKNOWN_TLD => '"%value%" - СЌС‚Рѕ DNS РёРјСЏ С…РѕСЃС‚Р°, РЅРѕ РѕРЅРѕ РЅРµ РґРѕР¶РЅРѕ Р±С‹С‚СЊ РёР· TLD-СЃРїРёСЃРєР°', 
+    Zend_Validate_Hostname::INVALID_DASH => '"%value%" - СЌС‚Рѕ DNS РёРјСЏ С…РѕСЃС‚Р°, РЅРѕ Р·РЅР°Рє "-" РЅР°С…РѕРґРёС‚СЃСЏ РІ РЅРµРїСЂР°РІРёР»СЊРЅРѕРј РјРµСЃС‚Рµ', 
+    Zend_Validate_Hostname::INVALID_HOSTNAME_SCHEMA => '"%value%" - СЌС‚Рѕ DNS РёРјСЏ С…РѕСЃС‚Р°, РЅРѕ РѕРЅРѕ РЅРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ TLD РґР»СЏ TLD "%tld%"', 
+    Zend_Validate_Hostname::UNDECIPHERABLE_TLD => '"%value%" - СЌС‚Рѕ DNS РёРјСЏ С…РѕСЃС‚Р°. РќРµ СѓРґР°С‘С‚СЃСЏ РёР·РІР»РµС‡СЊ TLD С‡Р°СЃС‚СЊ', 
+    Zend_Validate_Hostname::INVALID_HOSTNAME => '"%value%" - РЅРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ РѕР¶РёРґР°РµРјРѕР№ СЃС‚СЂСѓРєС‚СѓСЂРµ РґР»СЏ DNS РёРјРµРЅРё С…РѕСЃС‚Р°', 
+    Zend_Validate_Hostname::INVALID_LOCAL_NAME => '"%value%" - Р°РґСЂРµСЃ СЏРІР»СЏРµС‚СЃСЏ РЅРµРґРѕРїСѓСЃС‚РёРјС‹Рј Р»РѕРєР°Р»СЊРЅС‹Рј СЃРµС‚РµРІС‹Рј Р°РґСЂРµСЃРѕРј', 
+    Zend_Validate_Hostname::LOCAL_NAME_NOT_ALLOWED => '"%value%" - Р°РґСЂРµСЃ СЏРІР»СЏРµС‚СЃСЏ СЃРµС‚РµРІС‹Рј СЂР°СЃРїРѕР»РѕР¶РµРЅРёРµРј, РЅРѕ Р»РѕРєР°Р»СЊРЅС‹Рµ СЃРµС‚РµРІС‹Рµ Р°РґСЂРµСЃР° РЅРµ СЂР°Р·СЂРµС€РµРЅС‹', 
+    Zend_Validate_Identical::NOT_SAME => 'Р—РЅР°С‡РµРЅРёСЏ РЅРµ СЃРѕРІРїР°РґР°СЋС‚', 
+    Zend_Validate_Identical::MISSING_TOKEN => 'РќРµ Р±С‹Р»Рѕ РІРІРµРґРµРЅРѕ Р·РЅР°С‡РµРЅРёСЏ РґР»СЏ РїСЂРѕРІРµСЂРєРё РЅР° РёРґРµРЅС‚РёС‡РЅРѕСЃС‚СЊ', 
+    Zend_Validate_InArray::NOT_IN_ARRAY => 'Р—РЅР°С‡РµРЅРёРµ РЅРµ РЅР°Р№РґРµРЅРѕ РІ РїРµСЂРµС‡РёСЃР»РµРЅРЅС‹С… РґРѕРїСѓСЃС‚РёРјС‹С… Р·РЅР°С‡РµРЅРёСЏС…', 
+    Zend_Validate_Int::NOT_INT => 'Р—РЅР°С‡РµРЅРёРµ РЅРµ СЏРІР»СЏРµС‚СЃСЏ С†РµР»РѕС‡РёСЃР»РµРЅРЅС‹Рј Р·РЅР°С‡РµРЅРёРµРј', 
+    Zend_Validate_Ip::NOT_IP_ADDRESS => 'Р—РЅР°С‡РµРЅРёРµ РЅРµ СЏРІР»СЏРµС‚СЃСЏ РїСЂР°РІРёР»СЊРЅС‹Рј IP-Р°РґСЂРµСЃРѕРј', 
+    Zend_Validate_LessThan::NOT_LESS => 'Р—РЅР°С‡РµРЅРёРµ РЅРµ РјРµРЅСЊС€Рµ, С‡РµРј "%max%"', 
+    Zend_Validate_NotEmpty::IS_EMPTY => 'Р’РІРµРґС‘РЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РїСѓСЃС‚РѕРµ, Р·Р°РїРѕР»РЅРёС‚Рµ РїРѕР»Рµ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°', 
+    Zend_Validate_StringLength::TOO_SHORT => 'Р”Р»РёРЅР° РІРІРµРґС‘РЅРЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ, РјРµРЅСЊС€Рµ С‡РµРј %min% СЃРёРјРІ.', 
+    Zend_Validate_StringLength::TOO_LONG => 'Р”Р»РёРЅР° РІРІРµРґС‘РЅРЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ РЅРµ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ С‡РµРј %max% СЃРёРјРІРѕР»РѕРІ', 
 );
 $translator = new Zend_Translate('Zend_Translate_Adapter_Array', $translateValidators);
 Zend_Validate_Abstract::setDefaultTranslator($translator);
@@ -65,19 +65,19 @@ class Form_View extends Zend_Form
         $view->setScriptPath($_SERVER['DOCUMENT_ROOT']);
         $this->setView($view);
         
-        //Где ищем кастомные фильтры
+        //Р“РґРµ РёС‰РµРј РєР°СЃС‚РѕРјРЅС‹Рµ С„РёР»СЊС‚СЂС‹
         $this->addElementPrefixPath(
                 'Form_Filter',
                 'Form/Filter',
                 'filter');
         
-        //Где ищем кастомные валидаторы
+        //Р“РґРµ РёС‰РµРј РєР°СЃС‚РѕРјРЅС‹Рµ РІР°Р»РёРґР°С‚РѕСЂС‹
         $this->addElementPrefixPath(
                 'Form_Validate',
                 'Form/Validate',
                 'validate');
         
-        //По умолчанию для элементов ставим преффикс ID - имя класса объекта
+        //РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РґР»СЏ СЌР»РµРјРµРЅС‚РѕРІ СЃС‚Р°РІРёРј РїСЂРµС„С„РёРєСЃ ID - РёРјСЏ РєР»Р°СЃСЃР° РѕР±СЉРµРєС‚Р°
         $this->setDefaultIdPreffix();
     }
 
@@ -108,7 +108,7 @@ class Form_View extends Zend_Form
         }
 
         if ($this->getAttrib('readonly')) {
-            // Делаем все элементы формы только для чтения
+            // Р”РµР»Р°РµРј РІСЃРµ СЌР»РµРјРµРЅС‚С‹ С„РѕСЂРјС‹ С‚РѕР»СЊРєРѕ РґР»СЏ С‡С‚РµРЅРёСЏ
             $element->setAttrib('readonly', true);
             $options['readonly'] = true;
         }
@@ -132,7 +132,7 @@ class Form_View extends Zend_Form
 
 
     /**
-    * Объединяет все значения сабформ в один массив
+    * РћР±СЉРµРґРёРЅСЏРµС‚ РІСЃРµ Р·РЅР°С‡РµРЅРёСЏ СЃР°Р±С„РѕСЂРј РІ РѕРґРёРЅ РјР°СЃСЃРёРІ
     *
     * @return array $values
     */
@@ -152,7 +152,7 @@ class Form_View extends Zend_Form
     
     
     /**
-     * Установить суффикс ID
+     * РЈСЃС‚Р°РЅРѕРІРёС‚СЊ СЃСѓС„С„РёРєСЃ ID
      *
      * @param string $suffix
      * @return My_Form
@@ -164,7 +164,7 @@ class Form_View extends Zend_Form
     }
 
     /**
-     * Установить префикс ID
+     * РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РїСЂРµС„РёРєСЃ ID
      * 
      * @param type $preffix
      * @return \Form_View
@@ -176,7 +176,7 @@ class Form_View extends Zend_Form
     }
     
     /**
-     * Установить поумолчанию вкачестве префикса ID имя класса объекта
+     * РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РїРѕСѓРјРѕР»С‡Р°РЅРёСЋ РІРєР°С‡РµСЃС‚РІРµ РїСЂРµС„РёРєСЃР° ID РёРјСЏ РєР»Р°СЃСЃР° РѕР±СЉРµРєС‚Р°
      * 
      * @return object
      */
@@ -189,8 +189,8 @@ class Form_View extends Zend_Form
     
 
     /**
-     * Вывод формы
-     * @todo: переопределили для установки префикса и суффикса для ID формы и/или элементов
+     * Р’С‹РІРѕРґ С„РѕСЂРјС‹
+     * @todo: РїРµСЂРµРѕРїСЂРµРґРµР»РёР»Рё РґР»СЏ СѓСЃС‚Р°РЅРѕРІРєРё РїСЂРµС„РёРєСЃР° Рё СЃСѓС„С„РёРєСЃР° РґР»СЏ ID С„РѕСЂРјС‹ Рё/РёР»Рё СЌР»РµРјРµРЅС‚РѕРІ
      *
      * @param Zend_View_Interface $view
      * @return string
@@ -228,8 +228,8 @@ class Form_View extends Zend_Form
     }
     
     /**
-     * Собираем ошибки элементов в одну строку 
-     * для каждого с указанным разделителем
+     * РЎРѕР±РёСЂР°РµРј РѕС€РёР±РєРё СЌР»РµРјРµРЅС‚РѕРІ РІ РѕРґРЅСѓ СЃС‚СЂРѕРєСѓ 
+     * РґР»СЏ РєР°Р¶РґРѕРіРѕ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј СЂР°Р·РґРµР»РёС‚РµР»РµРј
      * 
      * @param type $glue
      * @return type

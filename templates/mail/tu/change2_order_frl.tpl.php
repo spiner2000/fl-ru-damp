@@ -1,13 +1,13 @@
 <?php
 /**
- * Шаблон письма уведомление исполнителю об изменении заказа (П-3)
- * все переводы каретки (новая строка) будут заменены <br/>
+ * РЁР°Р±Р»РѕРЅ РїРёСЃСЊРјР° СѓРІРµРґРѕРјР»РµРЅРёРµ РёСЃРїРѕР»РЅРёС‚РµР»СЋ РѕР± РёР·РјРµРЅРµРЅРёРё Р·Р°РєР°Р·Р° (Рџ-3)
+ * РІСЃРµ РїРµСЂРµРІРѕРґС‹ РєР°СЂРµС‚РєРё (РЅРѕРІР°СЏ СЃС‚СЂРѕРєР°) Р±СѓРґСѓС‚ Р·Р°РјРµРЅРµРЅС‹ <br/>
  */
 
 /**
- * Тема письма
+ * РўРµРјР° РїРёСЃСЊРјР°
  */
-$smail->subject = "Заказ на услугу «{$order['title']}» изменен";
+$smail->subject = "Р—Р°РєР°Р· РЅР° СѓСЃР»СѓРіСѓ В«{$order['title']}В» РёР·РјРµРЅРµРЅ";
 
 $title = reformat(htmlspecialchars($order['title']), 30, 0, 1);
 
@@ -16,8 +16,8 @@ $accept_url = $GLOBALS['host'] . tservices_helper::getOrderStatusUrl($order['id'
 $decline_url = $GLOBALS['host'] . tservices_helper::getOrderStatusUrl($order['id'], 'decline', $order['frl_id']);
 
 ?>
-Заказчик <?=$emp_fullname?> изменил параметры заказа &laquo;<a href="<?=$order_url?>"><?=$title?></a>&raquo;:
+Р—Р°РєР°Р·С‡РёРє <?=$emp_fullname?> РёР·РјРµРЅРёР» РїР°СЂР°РјРµС‚СЂС‹ Р·Р°РєР°Р·Р° &laquo;<a href="<?=$order_url?>"><?=$title?></a>&raquo;:
 
 <?php include 'change2_order.tpl.php'; ?>
 
-<a href="<?=$order_url?>">Перейти к заказу</a> / <a href="<?=$accept_url?>">Подтвердить его</a> / <a href="<?=$decline_url?>">Отказаться от выполнения</a><?=PHP_EOL?>
+<a href="<?=$order_url?>">РџРµСЂРµР№С‚Рё Рє Р·Р°РєР°Р·Сѓ</a> / <a href="<?=$accept_url?>">РџРѕРґС‚РІРµСЂРґРёС‚СЊ РµРіРѕ</a> / <a href="<?=$decline_url?>">РћС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ РІС‹РїРѕР»РЅРµРЅРёСЏ</a><?=PHP_EOL?>

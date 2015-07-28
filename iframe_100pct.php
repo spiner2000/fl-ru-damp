@@ -18,7 +18,7 @@ if ($g_page_id) {
             div{height: 90px;vertical-align:top; padding:0; margin:0}
             img{border: 0px; padding:0; margin:0;}
         </style>
-        <script type="text/javascript" src="<?=WDCPREFIX?>/scripts/swfobject.js"></script> <? // äîëæåí áûòü ëèíê íà ïàïêó /scripts â ïàïêå âåáäàâà ?>
+        <script type="text/javascript" src="<?=WDCPREFIX?>/scripts/swfobject.js"></script> <? // Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ Ð»Ð¸Ð½Ðº Ð½Ð° Ð¿Ð°Ð¿ÐºÑƒ /scripts Ð² Ð¿Ð°Ð¿ÐºÐµ Ð²ÐµÐ±Ð´Ð°Ð²Ð° ?>
     </head>
     <body>
         <div <?=($banner?'style="border-bottom:1px solid #ccc;"':'')?>>

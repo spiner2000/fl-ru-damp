@@ -75,7 +75,7 @@ function chkcost(_th) {
 }
 
 
-// --- Слайдер
+// --- РЎР»Р°Р№РґРµСЂ
 
 function CheckCatsAndSubCats() {
     var category_error = 0;
@@ -149,7 +149,7 @@ function getBudgetFromFM(priceFM) {
 
 function setMinAvgMaxBudgetPrice() {
     if($('fcurrency').value==-1 || $('fpriceby').value==-1) { return false; }
-    // Перевести в текущую валюту
+    // РџРµСЂРµРІРµСЃС‚Рё РІ С‚РµРєСѓС‰СѓСЋ РІР°Р»СЋС‚Сѓ
     var is_prj_cat = 1;
     var count = 1;
     var sum_min = 0;
@@ -230,7 +230,7 @@ function setBudgetSlider(price) {
     }
 }
 
-// --- Слайдер
+// --- РЎР»Р°Р№РґРµСЂ
 
 
 var alert_show = false;
@@ -242,7 +242,7 @@ function chtext()
     document.getElementById('f2').value = descr.substring(0, 5000);
     if(!alert_show){
     alert_show = true;
-    alert('Слишком длинный текст описания проекта');
+    alert('РЎР»РёС€РєРѕРј РґР»РёРЅРЅС‹Р№ С‚РµРєСЃС‚ РѕРїРёСЃР°РЅРёСЏ РїСЂРѕРµРєС‚Р°');
     alert_show = false;
     }
 
@@ -254,7 +254,7 @@ function chtext()
 function CityUpd(v){
   ct = document.getElementById("frm").city;
   ct.disabled = true;
-  ct.options[0].innerHTML = "Подождите...";
+  ct.options[0].innerHTML = "РџРѕРґРѕР¶РґРёС‚Рµ...";
   ct.value = 0;
   xajax_GetCitysByCid(v);
 }
@@ -262,7 +262,7 @@ function CityUpd(v){
 function SubCategoryUpd(v){
   ct = document.getElementById("frm").subcategory;
   ct.disabled = true;
-  ct.options[0].innerHTML = "Подождите...";
+  ct.options[0].innerHTML = "РџРѕРґРѕР¶РґРёС‚Рµ...";
   ct.value = 0;
   xajax_GetProfessionsBySpec(v);
 }
@@ -360,14 +360,14 @@ function CheckDates() {
     var error = 0;
     if($('end_date').get('value')=='') {
         $('end_date_error').setStyle('display','block');
-        $('end_date_error_msg').set('html','Неправильная дата');
+        $('end_date_error_msg').set('html','РќРµРїСЂР°РІРёР»СЊРЅР°СЏ РґР°С‚Р°');
         error_end_date=1;
     } else {
         $('end_date_error').setStyle('display','none');
     }
     if($('win_date').get('value')=='') {
         $('win_date_error').setStyle('display','block');
-        $('win_date_error_msg').set('html','Неправильная дата');
+        $('win_date_error_msg').set('html','РќРµРїСЂР°РІРёР»СЊРЅР°СЏ РґР°С‚Р°');
         error_win_date=1;
     } else {
         $('win_date_error').setStyle('display','none');
@@ -379,12 +379,12 @@ function CheckDates() {
         var win_date = f_tcalParseDate($('win_date').get('value'));
         if(end_date.valueOf()<cur_date.valueOf()) {
             $('end_date_error').setStyle('display','block');
-            $('end_date_error_msg').set('html','Дата окончания конкурса не может находиться в прошлом');
+            $('end_date_error_msg').set('html','Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР° РЅРµ РјРѕР¶РµС‚ РЅР°С…РѕРґРёС‚СЊСЃСЏ РІ РїСЂРѕС€Р»РѕРј');
             error=1;
         } else {
             if(win_date.valueOf()<=end_date.valueOf()) {
                 $('win_date_error').setStyle('display','block');
-                $('win_date_error_msg').set('html','Дата определения победителя не должна предшествовать дате окончания конкурса');
+                $('win_date_error_msg').set('html','Р”Р°С‚Р° РѕРїСЂРµРґРµР»РµРЅРёСЏ РїРѕР±РµРґРёС‚РµР»СЏ РЅРµ РґРѕР»Р¶РЅР° РїСЂРµРґС€РµСЃС‚РІРѕРІР°С‚СЊ РґР°С‚Рµ РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР°');
                 error=1;
             }
         }
@@ -503,11 +503,11 @@ function NextStep() {
 
 if ($project['kind'] == 7)
 {
-    echo "<h1 class='b-page__title'>Новый конкурс</h1>";
+    echo "<h1 class='b-page__title'>РќРѕРІС‹Р№ РєРѕРЅРєСѓСЂСЃ</h1>";
 }
 else
 {
-    echo "<h1 class='b-page__title'>Новый проект</h1>";
+    echo "<h1 class='b-page__title'>РќРѕРІС‹Р№ РїСЂРѕРµРєС‚</h1>";
 }
 
 ?>
@@ -519,19 +519,19 @@ else
 						<div class="b-tel">
 								<span class="b-tel__icon <?= (NY2012TIME?"b-tel__icon_red":"b-tel__icon_green")?>"></span>
 								<big class="b-tel__number">8-800-555-33-14</big>
-								<span class="b-tel__txt"><?= (NY2012TIME?"С 31 декабря по 9 января телефон<br />службы поддержки работать не будет":"пн-пт с 9:00 до 22:00 часов МСК, <br/>без выходных")?></span>
+								<span class="b-tel__txt"><?= (NY2012TIME?"РЎ 31 РґРµРєР°Р±СЂСЏ РїРѕ 9 СЏРЅРІР°СЂСЏ С‚РµР»РµС„РѕРЅ<br />СЃР»СѓР¶Р±С‹ РїРѕРґРґРµСЂР¶РєРё СЂР°Р±РѕС‚Р°С‚СЊ РЅРµ Р±СѓРґРµС‚":"РїРЅ-РїС‚ СЃ 9:00 РґРѕ 22:00 С‡Р°СЃРѕРІ РњРЎРљ, <br/>Р±РµР· РІС‹С…РѕРґРЅС‹С…")?></span>
 						</div>
     <br />
  						<!--
             <div class="fphones <?= (NY2012TIME?"fphones_red":"")?>">
 							<i></i>
             	<strong>8-800-555-33-14</strong>
-            	<span><?= (NY2012TIME?"С 31 декабря по 9 января телефон<br />службы поддержки работать не будет":"телефон поддержки")?></span>
+            	<span><?= (NY2012TIME?"РЎ 31 РґРµРєР°Р±СЂСЏ РїРѕ 9 СЏРЅРІР°СЂСЏ С‚РµР»РµС„РѕРЅ<br />СЃР»СѓР¶Р±С‹ РїРѕРґРґРµСЂР¶РєРё СЂР°Р±РѕС‚Р°С‚СЊ РЅРµ Р±СѓРґРµС‚":"С‚РµР»РµС„РѕРЅ РїРѕРґРґРµСЂР¶РєРё")?></span>
             </div>
             <div class="fphones fphones_red">
 							<i></i>
             	<strong>8-800-555-33-14</strong>
-            	<span>телефон поддержки</span>
+            	<span>С‚РµР»РµС„РѕРЅ РїРѕРґРґРµСЂР¶РєРё</span>
             </div>
 						-->
    <?php endif; ?>
@@ -556,29 +556,29 @@ else
       	<tr class="b-layout__tr">
         	<td class="b-layout__left b-layout__left_width_95">
                 <a name="field_name"></a>
-        		<label for="f1" class="apf-label">Заголовок</label>
+        		<label for="f1" class="apf-label">Р—Р°РіРѕР»РѕРІРѕРє</label>
       		</td>
             <td class="b-layout__right b-layout__right_padbot_15">
             	<div class="b-input">
                 	<input id="f1" class="b-input__text" name="name" type="text" value="<?=$project['name']?>" maxlength="60" onkeydown="$('prj_title_error').setStyle('display', 'none');"/>
                 </div>
-                <div class="errorBox" style="display:none; margin-top:5px;" id="prj_title_error"><img src="/images/ico_error.gif" alt="" width="22" height="18"> &nbsp;<span>Поле не заполнено</span></div>
+                <div class="errorBox" style="display:none; margin-top:5px;" id="prj_title_error"><img src="/images/ico_error.gif" alt="" width="22" height="18"> &nbsp;<span>РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ</span></div>
                 <?=($error['name'] ? view_error($error['name']) : '')?>
-                <div style="margin-top:5px;" ><span>Специалист какой квалификации и на какие задачи вам требуется. Например: Дизайнер иконок на проект</span></div>
+                <div style="margin-top:5px;" ><span>РЎРїРµС†РёР°Р»РёСЃС‚ РєР°РєРѕР№ РєРІР°Р»РёС„РёРєР°С†РёРё Рё РЅР° РєР°РєРёРµ Р·Р°РґР°С‡Рё РІР°Рј С‚СЂРµР±СѓРµС‚СЃСЏ. РќР°РїСЂРёРјРµСЂ: Р”РёР·Р°Р№РЅРµСЂ РёРєРѕРЅРѕРє РЅР° РїСЂРѕРµРєС‚</span></div>
             </td>
         </tr>
         
       	<tr class="b-layout__tr">
         	<td class="b-layout__left b-layout__left_width_95">
                 <a name="field_descr"></a>
-                <label for="f2" class="apf-label">Текст</label>
+                <label for="f2" class="apf-label">РўРµРєСЃС‚</label>
       		</td>
             <td class="b-layout__right">
             	<div class="b-textarea">
                 <textarea id="f2" cols="50" class="b-textarea__textarea tawl" name="descr" rel="5000" rows="7" onkeydown="$('prj_text_error').setStyle('display', 'none');"><?=$project['descr']?></textarea>
                 </div>
-                <div class="errorBox" style="display:none; margin-top:5px;" id="prj_text_error"><img src="/images/ico_error.gif" alt="" width="22" height="18"> &nbsp;<span>Поле не заполнено</span></div>
-                <div style="margin-top:5px;" ><span>Подробно опишите задачу, сроки выполнения, другие условия работы</span></div>
+                <div class="errorBox" style="display:none; margin-top:5px;" id="prj_text_error"><img src="/images/ico_error.gif" alt="" width="22" height="18"> &nbsp;<span>РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ</span></div>
+                <div style="margin-top:5px;" ><span>РџРѕРґСЂРѕР±РЅРѕ РѕРїРёС€РёС‚Рµ Р·Р°РґР°С‡Сѓ, СЃСЂРѕРєРё РІС‹РїРѕР»РЅРµРЅРёСЏ, РґСЂСѓРіРёРµ СѓСЃР»РѕРІРёСЏ СЂР°Р±РѕС‚С‹</span></div>
                 <?=($error['descr'] ? view_error($error['descr']) : '')?>
             </td>
         </tr>
@@ -595,7 +595,7 @@ else
 	  <div class="apf-files" id="apf-files" style="margin-top: 5px; position:relative;">
       		<a class="b-layout__link" href="https://www.free-lance.ru/service/docs/section/?id=2"><img style="position:absolute; right:10px; top:13px; z-index:1;" src="/images/stuff.png" alt="" width="179" height="26" /></a>
             <div id="attachedfiles" class="b-fon"></div>
-            <div style="margin-top:5px;" ><span>Загрузите документ или иллюстрацию, дающую дополнительную информацию о проекте и задаче</span></div>
+            <div style="margin-top:5px;" ><span>Р—Р°РіСЂСѓР·РёС‚Рµ РґРѕРєСѓРјРµРЅС‚ РёР»Рё РёР»Р»СЋСЃС‚СЂР°С†РёСЋ, РґР°СЋС‰СѓСЋ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РїСЂРѕРµРєС‚Рµ Рё Р·Р°РґР°С‡Рµ</span></div>
       </div>
 
 
@@ -604,19 +604,19 @@ else
         <div class="apf-blc">
             <a name="field_category"></a>
 			<div class="apf-option">
-				<label for="f3" class="apf-label">Раздел</label>
+				<label for="f3" class="apf-label">Р Р°Р·РґРµР»</label>
 				<div id="fcategory">
 					<div class="apf-or" style="margin: 0 0 -7px 0;" id="cat_con">
                     <?php if($tmpPrj->getCategories()) foreach($tmpPrj->getCategories() as $ccat){ ?>
 						<div class="apf-or-one" id="cat_line">
 							<select class="" style="width: 170px" name="categories[]"  onchange="RefreshSubCategory(this); setMinAvgMaxBudgetPrice(); changeBudgetSlider(); $('prj_razdel_error').setStyle('display', 'none'); this.blur();">
-							 <option value="0">Выберите раздел</option>
+							 <option value="0">Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»</option>
 								<? foreach($categories as $cat) { if($cat['id']<=0) continue; ?>
                                 <option value="<?=$cat['id']?>" <?=($ccat['category_id']==$cat['id'] ? ' selected' : '')?>><?=$cat['name']?></option>
                                 <? } //if ?>
 							</select>&nbsp;&nbsp;
 							<select name="subcategories[]" style="width: 200px" <?if($ccat['category_id']==0):?>disabled<?endif;?> class="subcat" onchange="setMinAvgMaxBudgetPrice(); changeBudgetSlider(); $('prj_razdel_error').setStyle('display', 'none');">
-							    <option value="0" <? if($ccat['subcategory_id'] == 0) echo "selected"; ?>>Все специализации</option>
+							    <option value="0" <? if($ccat['subcategory_id'] == 0) echo "selected"; ?>>Р’СЃРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё</option>
 								<?$categories_specs = $professions[$ccat['category_id']];
                                   for ($i=0; $i<sizeof($categories_specs); $i++) { ?>
                                     <option value="<?=$categories_specs[$i]['id']?>"<? if ($categories_specs[$i]['id'] == $ccat['subcategory_id']) echo(" selected") ?>><?=$categories_specs[$i]['profname']?></option>
@@ -627,13 +627,13 @@ else
 <?php }else{ ?>
         						<div class="apf-or-one" id="cat_line">
 							<select class="" style="width: 170px" name="categories[]"  onchange="RefreshSubCategory(this); setMinAvgMaxBudgetPrice(); changeBudgetSlider(); $('prj_razdel_error').setStyle('display', 'none'); this.blur();">
-							<option value="0" selected>Выберите раздел</option>	
+							<option value="0" selected>Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»</option>	
 							<? foreach($categories as $cat) { if($cat['id']<=0) continue; ?>
               <option value="<?=$cat['id']?>" <?=($ccat['category_id']==$cat['id'] ? ' selected' : '')?>><?=$cat['name']?></option>
             <? } ?>
 							</select>&nbsp;&nbsp;
 							<select name="subcategories[]" style="width: 200px" disabled class="subcat" onchange="setMinAvgMaxBudgetPrice(); changeBudgetSlider(); $('prj_razdel_error').setStyle('display', 'none');">
-							<option value="0" selected>Выберите специализацию</option>
+							<option value="0" selected>Р’С‹Р±РµСЂРёС‚Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ</option>
 								<? /*for ($i=0; $i<sizeof($categories_specs); $i++) { ?>
               <option value="<?=$categories_specs[$i]['id']?>"><?=$categories_specs[$i]['profname']?></option>
               <? } */?>
@@ -643,15 +643,15 @@ else
 <?php } ?>
 
 					</div>
-                    <div class="errorBox" style="display:none; margin-top:5px;" id="prj_razdel_error"><img src="/images/ico_error.gif" alt="" width="22" height="18"> &nbsp;<span id="prj_razdel_txt_error">Не выбран раздел и подраздел</span></div>
-                    <div style="margin-top:5px;" ><span>Выберите раздел и специализацию из каталога фрилансеров</span></div>
+                    <div class="errorBox" style="display:none; margin-top:5px;" id="prj_razdel_error"><img src="/images/ico_error.gif" alt="" width="22" height="18"> &nbsp;<span id="prj_razdel_txt_error">РќРµ РІС‹Р±СЂР°РЅ СЂР°Р·РґРµР» Рё РїРѕРґСЂР°Р·РґРµР»</span></div>
+                    <div style="margin-top:5px;" ><span>Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР» Рё СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ РёР· РєР°С‚Р°Р»РѕРіР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</span></div>
 					<?=($error['category'] ? view_error($error['category']) : '')?>
 				</div>
 			</div>
 		</div>
     <div class="apf-blc" style="display: none">
       <div class="apf-option">
-        <label for="f3" class="apf-label">Раздел</label>
+        <label for="f3" class="apf-label">Р Р°Р·РґРµР»</label>
         <div>
           <div class="apf-or">
             <select class="apf-select apf-category" name="category" onchange="SubCategoryUpd(this.value); this.blur();">
@@ -665,19 +665,19 @@ else
               <?for ($i=0; $i<sizeof($categories_specs); $i++) { ?>
               <option value="<?=$categories_specs[$i]['id']?>"<? if ($categories_specs[$i]['id'] == $project['subcategory']) echo(" selected") ?>><?=$categories_specs[$i]['profname']?></option>
               <? } ?>
-              <option value="0" <? if (!$project['subcategory']) echo(" selected") ?>>Все специализации</option>
+              <option value="0" <? if (!$project['subcategory']) echo(" selected") ?>>Р’СЃРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё</option>
             </select>
           </div>
         </div>
         
-      </div><div style="margin-top:5px;" ><span>Выберите раздел и специализацию из каталога фрилансеров</span></div>
+      </div><div style="margin-top:5px;" ><span>Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР» Рё СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ РёР· РєР°С‚Р°Р»РѕРіР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</span></div>
     </div>
     
 	<? if ($project['kind'] == 7) { ?>
     <a name="field_date"></a>
 	<div class="apf-blc">
 		<div class="apf-option">
-			<label for="f3" class="apf-label" style="margin-top: -3px">Окончание конкурса</label>
+			<label for="f3" class="apf-label" style="margin-top: -3px">РћРєРѕРЅС‡Р°РЅРёРµ РєРѕРЅРєСѓСЂСЃР°</label>
 			<div class="apf-or">
 				<input type="text" maxlength="10" id="end_date" name="end_date" value="<?=$project['end_date']?>" class="apf-date" readonly="readonly" onfocus="$('end_date').blur()"/>
 				<span class="apf-date" id="end_date_btn">&nbsp;</span>
@@ -686,7 +686,7 @@ else
 			</div>
 		</div>
 		<div class="apf-option" style="margin-top: 5px">
-			<label for="f3" class="apf-label" style="margin-top: -3px">Объявление победителей</label>
+			<label for="f3" class="apf-label" style="margin-top: -3px">РћР±СЉСЏРІР»РµРЅРёРµ РїРѕР±РµРґРёС‚РµР»РµР№</label>
 			<div class="apf-or" style="margin-bottom: 0">
 				<input type="text" maxlength="10" id="win_date" name="win_date" value="<?=$project['win_date']?>" class="apf-date" readonly="readonly" onfocus="$('win_date').blur()"/>
 				<span class="apf-date" id="win_date_btn">&nbsp;</span>
@@ -704,16 +704,16 @@ else
           <label class="apf-label">&nbsp;</label>
           <div>
             <ul class="apf-list">
-              <li><span class="apf-or-radio"><input type="radio" name="kind" value="1" id="f5"<?=(!$project['kind'] || $project['kind']==1 ? ' checked' : '')?> onclick="ShowCities()"/></span><label for="f5" onclick="ShowCities()">Проекты</label> - <span>Разовые проекты с фиксированной оплатой</span></li>
-              <li><span class="apf-or-radio"><input type="radio" name="kind" value="4" id="f8"<?=($project['kind']==4 ? ' checked' : '')?> onclick="ShowCities()"/></span><label for="f8" onclick="ShowCities()">Вакансии</label> -
-              <span>Вакансии на работу в офисе или удаленно</span>
+              <li><span class="apf-or-radio"><input type="radio" name="kind" value="1" id="f5"<?=(!$project['kind'] || $project['kind']==1 ? ' checked' : '')?> onclick="ShowCities()"/></span><label for="f5" onclick="ShowCities()">РџСЂРѕРµРєС‚С‹</label> - <span>Р Р°Р·РѕРІС‹Рµ РїСЂРѕРµРєС‚С‹ СЃ С„РёРєСЃРёСЂРѕРІР°РЅРЅРѕР№ РѕРїР»Р°С‚РѕР№</span></li>
+              <li><span class="apf-or-radio"><input type="radio" name="kind" value="4" id="f8"<?=($project['kind']==4 ? ' checked' : '')?> onclick="ShowCities()"/></span><label for="f8" onclick="ShowCities()">Р’Р°РєР°РЅСЃРёРё</label> -
+              <span>Р’Р°РєР°РЅСЃРёРё РЅР° СЂР°Р±РѕС‚Сѓ РІ РѕС„РёСЃРµ РёР»Рё СѓРґР°Р»РµРЅРЅРѕ</span>
               <?php if ( !is_pro() ) {?>
-                  <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_20">Публикация &mdash; <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold b-layout__txt_color_fd6c30"><?= new_projects::getProjectInOfficePrice(); ?> руб</span>.<br />В тексте вакансии можно публиковать контактную информацию</div>
+                  <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_20">РџСѓР±Р»РёРєР°С†РёСЏ &mdash; <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold b-layout__txt_color_fd6c30"><?= new_projects::getProjectInOfficePrice(); ?> СЂСѓР±</span>.<br />Р’ С‚РµРєСЃС‚Рµ РІР°РєР°РЅСЃРёРё РјРѕР¶РЅРѕ РїСѓР±Р»РёРєРѕРІР°С‚СЊ РєРѕРЅС‚Р°РєС‚РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ</div>
               <?php }?>
                 <div class="apf-office" id="showcities" <?=(($project['kind']!=4)?"style=\"display:none;\"":"")?>>
                   <div class="apf-or">
                     <select id="fcountry" name="country" class="apf-select" onChange="CityUpd(this.value)">
-                      <option value="0">Страна</option>
+                      <option value="0">РЎС‚СЂР°РЅР°</option>
                       <?foreach ($countries as $countid => $country) { ?>
                       <option value="<?=$countid?>"<? if ($countid == $project['country']) echo(" selected") ?>><?=$country?></option>
                       <? } ?>
@@ -721,7 +721,7 @@ else
                   </div>
                   <div class="apf-or flt-b-lc" id="frm_city">
                   <select id="fcity" name="city" class="apf-select">
-                    <option value="0">Город</option>
+                    <option value="0">Р“РѕСЂРѕРґ</option>
                      <?if (sizeof($cities)) foreach ($cities as $cityid => $city) { ?>
                      <option value="<?=$cityid?>"<? if ($cityid == $project['city']) echo(" selected") ?>><?=$city?></option>
                      <? } ?>
@@ -740,27 +740,27 @@ else
 	<div class="apf-blc">
      <a name="field_budget"></a>
      <div class="apf-option apf-o-budjet">
-         <label for="f3" class="apf-label">Бюджет</label>
+         <label for="f3" class="apf-label">Р‘СЋРґР¶РµС‚</label>
          <div>
-             <span class="apf-dogovor"><input name="agreement" type="checkbox" value="1" id="agreement" <?= isset($project['cost']) && intval($project['cost']) == 0 ? 'checked' : '' ?> /> <label for="agreement">По договоренности</label></span>
+             <span class="apf-dogovor"><input name="agreement" type="checkbox" value="1" id="agreement" <?= isset($project['cost']) && intval($project['cost']) == 0 ? 'checked' : '' ?> /> <label for="agreement">РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</label></span>
              <table cellpadding="0" cellspacing="0" border="0">
                  <tr>
                      <td style="vertical-align: middle"><input type="text" id="f3" class="apf-budget" name="cost" onchange="chkcost(this)" value="<?= $project['cost'] ?>" maxlength="6" /></td>
                      <td style="vertical-align: middle; padding-left: 5px">
                          <select id="fcurrency" name="currency" class="apf-select" onChange="setMinAvgMaxBudgetPrice(); changeBudgetSlider();">
-                             <option value="-1">Выберите валюту</option>
-                             <option value="2"<?= ($project['currency'] == 2 && !(isset($project['cost']) && intval($project['cost']) == 0) ? ' selected="selected"' : '') ?>>Руб</option>
+                             <option value="-1">Р’С‹Р±РµСЂРёС‚Рµ РІР°Р»СЋС‚Сѓ</option>
+                             <option value="2"<?= ($project['currency'] == 2 && !(isset($project['cost']) && intval($project['cost']) == 0) ? ' selected="selected"' : '') ?>>Р СѓР±</option>
                              <option value="0"<?= ($project['currency'] === '0' && !(isset($project['cost']) && intval($project['cost']) == 0) ? ' selected="selected"' : '') ?>>USD</option>
                              <option value="1"<?= ($project['currency'] == 1 && !(isset($project['cost']) && intval($project['cost']) == 0) ? ' selected="selected"' : '') ?>>Euro</option>
                          </select>
                      </td>
                      <td style="vertical-align: middle; padding-left: 5px">
                          <select id="fpriceby" name="priceby" class="apf-select" onChange="setMinAvgMaxBudgetPrice(); changeBudgetSlider();">
-                             <option value="-1">Выберите из списка</option>
-                             <option value="1"<?= ($project['priceby'] == 1 ? ' selected="selected"' : '') ?>>цена за час</option>
-                             <option value="2"<?= ($project['priceby'] == 2 ? ' selected="selected"' : '') ?>>цена за день</option>
-                             <option value="3"<?= ($project['priceby'] == 3 ? ' selected="selected"' : '') ?>>цена за месяц</option>
-                             <option value="4"<?= ($project['priceby'] == 4 ? ' selected="selected"' : '') ?>>цена за проект</option>
+                             <option value="-1">Р’С‹Р±РµСЂРёС‚Рµ РёР· СЃРїРёСЃРєР°</option>
+                             <option value="1"<?= ($project['priceby'] == 1 ? ' selected="selected"' : '') ?>>С†РµРЅР° Р·Р° С‡Р°СЃ</option>
+                             <option value="2"<?= ($project['priceby'] == 2 ? ' selected="selected"' : '') ?>>С†РµРЅР° Р·Р° РґРµРЅСЊ</option>
+                             <option value="3"<?= ($project['priceby'] == 3 ? ' selected="selected"' : '') ?>>С†РµРЅР° Р·Р° РјРµСЃСЏС†</option>
+                             <option value="4"<?= ($project['priceby'] == 4 ? ' selected="selected"' : '') ?>>С†РµРЅР° Р·Р° РїСЂРѕРµРєС‚</option>
                   
                          </select>
                      </td>
@@ -768,17 +768,17 @@ else
              </table>
              <?= ($error['currency'] ? view_error($error['currency']) : '') ?>
              <?= ($error['cost'] ? view_error($error['cost']) : '') ?>
-             <div class="errorBox" style="display:none; margin-top:5px;" id="prj_currency_error"><img src="/images/ico_error.gif" alt="" width="22" height="18"> &nbsp;<span>Вы не выбрали валюту</span></div>
-             <div class="errorBox" style="display:none; margin-top:5px;" id="prj_priceby_error"><img src="/images/ico_error.gif" alt="" width="22" height="18"> &nbsp;<span>Вы не выбрали вид бюджета</span></div>
+             <div class="errorBox" style="display:none; margin-top:5px;" id="prj_currency_error"><img src="/images/ico_error.gif" alt="" width="22" height="18"> &nbsp;<span>Р’С‹ РЅРµ РІС‹Р±СЂР°Р»Рё РІР°Р»СЋС‚Сѓ</span></div>
+             <div class="errorBox" style="display:none; margin-top:5px;" id="prj_priceby_error"><img src="/images/ico_error.gif" alt="" width="22" height="18"> &nbsp;<span>Р’С‹ РЅРµ РІС‹Р±СЂР°Р»Рё РІРёРґ Р±СЋРґР¶РµС‚Р°</span></div>
          </div>
      </div>
 
-     <!-- Слайдер -->
+     <!-- РЎР»Р°Р№РґРµСЂ -->
      <input type="hidden" name="budget_type" id="fbudget_type" value="<?= intval($project['budget_type']) ?>">
                     <div class="budget-select budget-middle">
                         <div class="budget-select-lug"></div>
                         <div class="budget-select-content fl-form fl-form-o">
-                            <div class="b-layout__txt">Для выбора наиболее подходящей аудитории исполнителей укажите уровень кандидатов.</div>
+                            <div class="b-layout__txt">Р”Р»СЏ РІС‹Р±РѕСЂР° РЅР°РёР±РѕР»РµРµ РїРѕРґС…РѕРґСЏС‰РµР№ Р°СѓРґРёС‚РѕСЂРёРё РёСЃРїРѕР»РЅРёС‚РµР»РµР№ СѓРєР°Р¶РёС‚Рµ СѓСЂРѕРІРµРЅСЊ РєР°РЅРґРёРґР°С‚РѕРІ.</div>
                             <div class="budget-slider">
                                 <div class="budget-scale">
                                     <span class="point-l"></span>
@@ -792,33 +792,33 @@ else
                                     <span class="budget-point budget-point-h" id="budget-point-h"></span>
                                 </div>
                                 <div class="budget-levels">
-                                    <span class="budget-l b-layout__txt b-layout__txt_fontsize_11" id="budget-point-l">Низкий</span>
-                                    <span class="budget-m b-layout__txt b-layout__txt_fontsize_11" id="budget-point-m">Средний</span>
-                                    <span class="budget-h b-layout__txt b-layout__txt_fontsize_11" id="budget-point-h">Высокий</span>
+                                    <span class="budget-l b-layout__txt b-layout__txt_fontsize_11" id="budget-point-l">РќРёР·РєРёР№</span>
+                                    <span class="budget-m b-layout__txt b-layout__txt_fontsize_11" id="budget-point-m">РЎСЂРµРґРЅРёР№</span>
+                                    <span class="budget-h b-layout__txt b-layout__txt_fontsize_11" id="budget-point-h">Р’С‹СЃРѕРєРёР№</span>
                                 </div>
                             </div>
-                            <div class="b-layout__txt b-layout__txt_fontsize_11">Учитывается средняя стоимость проектов или рабочего времени фрилансеров. Подробнее <a href="http://feedback.free-lance.ru/article/details/id/147" target="_blank">тут</a>.</div>
+                            <div class="b-layout__txt b-layout__txt_fontsize_11">РЈС‡РёС‚С‹РІР°РµС‚СЃСЏ СЃСЂРµРґРЅСЏСЏ СЃС‚РѕРёРјРѕСЃС‚СЊ РїСЂРѕРµРєС‚РѕРІ РёР»Рё СЂР°Р±РѕС‡РµРіРѕ РІСЂРµРјРµРЅРё С„СЂРёР»Р°РЅСЃРµСЂРѕРІ. РџРѕРґСЂРѕР±РЅРµРµ <a href="http://feedback.free-lance.ru/article/details/id/147" target="_blank">С‚СѓС‚</a>.</div>
                             <span class="cc cc-lt"></span>
                             <span class="cc cc-rt"></span>
                             <span class="cc cc-lb"></span>
                             <span class="cc cc-rb"></span>
                         </div>
-                        <!-- скрытые поля с ценами -->
+                        <!-- СЃРєСЂС‹С‚С‹Рµ РїРѕР»СЏ СЃ С†РµРЅР°РјРё -->
                         <div class="hidden-budget">
                             <div id="hb-low">0</div>
                             <div id="hb-middle">0</div>
                             <div id="hb-high">0</div>
                         </div>
-                        <!--// скрытые поля с ценами -->
+                        <!--// СЃРєСЂС‹С‚С‹Рµ РїРѕР»СЏ СЃ С†РµРЅР°РјРё -->
                     </div>
-     <!-- /Слайдер -->
+     <!-- /РЎР»Р°Р№РґРµСЂ -->
 
 
 
       <div class="apf-o-pro">
         <div class="b-check b-check_padbot_10">
            <input class="b-check__input" name="pro_only" type="checkbox" id="f22" value="1"<?=($project['pro_only']=='f' ? '' : ' checked="checked"')?> />
-           <label class="b-check__label" for="f22">Хочу получать ответы только от пользователей с аккаунтом <?= view_pro(false, false, true, 'пользователей с платным аккаунтом')?></label>
+           <label class="b-check__label" for="f22">РҐРѕС‡Сѓ РїРѕР»СѓС‡Р°С‚СЊ РѕС‚РІРµС‚С‹ С‚РѕР»СЊРєРѕ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ Р°РєРєР°СѓРЅС‚РѕРј <?= view_pro(false, false, true, 'РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ РїР»Р°С‚РЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј')?></label>
         </div>
           
         <?php if(false): ?>  
@@ -827,12 +827,12 @@ else
 
             <div class="b-check">
                 <input class="b-check__input" type="checkbox" value="1" disabled="disabled" />
-                <label class="b-check__label b-check__label_color_666" for="f24">Хочу получать ответы только от пользователей с верифицированным<br /> аккаунтом <?= view_verify('верифицированных пользователей', '')?> (будет доступно с 14 июня)</label>
+                <label class="b-check__label b-check__label_color_666" for="f24">РҐРѕС‡Сѓ РїРѕР»СѓС‡Р°С‚СЊ РѕС‚РІРµС‚С‹ С‚РѕР»СЊРєРѕ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹Рј<br /> Р°РєРєР°СѓРЅС‚РѕРј <?= view_verify('РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№', '')?> (Р±СѓРґРµС‚ РґРѕСЃС‚СѓРїРЅРѕ СЃ 14 РёСЋРЅСЏ)</label>
             </div>
             <? } else { ?>
             <div class="b-check">
                 <input class="b-check__input" name="verify_only" type="checkbox" id="f24" value="1"<?=($project['verify_only']=='t' ? ' checked="checked"' : '')?> />
-                <label class="b-check__label b-check__label_color_666" for="f24">Хочу получать ответы только от пользователей с верифицированным<br /> аккаунтом <?= view_verify('верифицированных пользователей', '')?></label>
+                <label class="b-check__label b-check__label_color_666" for="f24">РҐРѕС‡Сѓ РїРѕР»СѓС‡Р°С‚СЊ РѕС‚РІРµС‚С‹ С‚РѕР»СЊРєРѕ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹Рј<br /> Р°РєРєР°СѓРЅС‚РѕРј <?= view_verify('РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№', '')?></label>
             </div>
             <? } ?>
         <?php endif ?>
@@ -842,15 +842,15 @@ else
      <div class="apf-o-pro" style="background:#fff">
         <div class="b-check">
           <input class="b-check__input" name="strong_top" type="checkbox" id="f23" value="1" <?=($project['strong_top']=='0' ? '' : ' checked="checked"')?> />
-          <label class="b-check__label" for="f23">Закрепить железно наверху ленты</label>
+          <label class="b-check__label" for="f23">Р—Р°РєСЂРµРїРёС‚СЊ Р¶РµР»РµР·РЅРѕ РЅР°РІРµСЂС…Сѓ Р»РµРЅС‚С‹</label>
         </div>
       </div>
      <? }//if?>
       <? /* #0019741 if ($project['kind'] != 7) { ?>
       <div class="apf-sbr">
         <span class="apf-pro-check"><input name="prefer_sbr" id="prefer_sbr" type="checkbox" value="1"<?=($project['prefer_sbr']=='t' ? ' checked="checked"':'')?>></span>
-        <p class="apf-pro-only">Чтобы обезопасить себя и сократить риски при работе с фрилансерами,<br>
-          воспользуйтесь <a href="/norisk2/" target="_blank" class="sbr-ic">Сделкой Без Риска</a>.</p>
+        <p class="apf-pro-only">Р§С‚РѕР±С‹ РѕР±РµР·РѕРїР°СЃРёС‚СЊ СЃРµР±СЏ Рё СЃРѕРєСЂР°С‚РёС‚СЊ СЂРёСЃРєРё РїСЂРё СЂР°Р±РѕС‚Рµ СЃ С„СЂРёР»Р°РЅСЃРµСЂР°РјРё,<br>
+          РІРѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ <a href="/norisk2/" target="_blank" class="sbr-ic">РЎРґРµР»РєРѕР№ Р‘РµР· Р РёСЃРєР°</a>.</p>
       </div>
       <? } */?>
     </div>
@@ -858,7 +858,7 @@ else
 
         <?php if($use_draft) { ?>
         <span class="todrafts">
-             <span id="draft_time_save" class="time-save" style="float:none; display: none;"></span> <a href="javascript:DraftSave();" onclick="this.blur();" class="btnr-mb"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">В черновики</span></span></span></a>
+             <span id="draft_time_save" class="time-save" style="float:none; display: none;"></span> <a href="javascript:DraftSave();" onclick="this.blur();" class="btnr-mb"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Р’ С‡РµСЂРЅРѕРІРёРєРё</span></span></span></a>
 	    </span>
         <? } ?>
 
@@ -869,7 +869,7 @@ else
       <input type="hidden" name="step" value="1"/>
       <input type="hidden" name="pk" value="<?=$key?>"/>
 
-      <a href="" onClick="return NextStep()" class="btnr btnr-blue"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Далее »</span></span></span></a>
+      <a href="" onClick="return NextStep()" class="btnr btnr-blue"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Р”Р°Р»РµРµ В»</span></span></span></a>
     </div>
     </form>
   </div>

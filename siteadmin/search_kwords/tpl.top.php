@@ -1,9 +1,9 @@
 <?php if ( !defined('IS_SITE_ADMIN') ) { header('Location: /404.php'); exit; } ?>
-<h2>Поиск</h2>
+<h2>РџРѕРёСЃРє</h2>
 <div class="admin">
 <div class="lm-col">
     <div class="admin-menu">
-        <h3>Поиск</h3>
+        <h3>РџРѕРёСЃРє</h3>
 
         <? include ($rpath . "/siteadmin/leftmenu.php") ?>
 
@@ -12,7 +12,7 @@
 </div>
 <div class="r-col">
     <div class="ban-razban">
-        <h3>Топ запросы</h3>
+        <h3>РўРѕРї Р·Р°РїСЂРѕСЃС‹</h3>
         <? include_once ('tpl.navigation.php'); ?>
         <br/>
         
@@ -26,27 +26,27 @@
                             
                             &nbsp;&nbsp;&nbsp;&nbsp;
                             <? if ($start != 'all') { ?>
-                            <a href="?tab=top&s=all">Все</a>
+                            <a href="?tab=top&s=all">Р’СЃРµ</a>
                             <? } else { ?>
-                            <strong>Все</strong>
+                            <strong>Р’СЃРµ</strong>
                             <? } ?>
                             &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
                             <? if ($start != 'users') { ?>
-                            <a href="?tab=top&s=users">По исполнителям</a>
+                            <a href="?tab=top&s=users">РџРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЏРј</a>
                             <? } else { ?>
-                            <strong>По исполнителям</strong>
+                            <strong>РџРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЏРј</strong>
                             <? } ?>
                             &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
                             <? if ($start != 'projects') { ?>
-                            <a href="?tab=top&s=projects">По проектам</a>
+                            <a href="?tab=top&s=projects">РџРѕ РїСЂРѕРµРєС‚Р°Рј</a>
                             <? } else { ?>
-                            <strong>По проектам</strong>
+                            <strong>РџРѕ РїСЂРѕРµРєС‚Р°Рј</strong>
                             <? } ?>
                             &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
                             <? if ($start != 'more') { ?>
-                            <a href="?tab=top&s=more">По разделам сайта</a>
+                            <a href="?tab=top&s=more">РџРѕ СЂР°Р·РґРµР»Р°Рј СЃР°Р№С‚Р°</a>
                             <? } else { ?>
-                            <strong>По разделам сайта</strong>
+                            <strong>РџРѕ СЂР°Р·РґРµР»Р°Рј СЃР°Р№С‚Р°</strong>
                             <? } ?>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
             <b class="b1"></b>
         </div>
         
-        <!-- Таблица клиентов и кампаний -->
+        <!-- РўР°Р±Р»РёС†Р° РєР»РёРµРЅС‚РѕРІ Рё РєР°РјРїР°РЅРёР№ -->
         <table class="tbl-cnc">
             <thead>
                 <tr>
@@ -64,16 +64,16 @@
                         #
                     </th>
                     <th width="230">
-                        Строка запроса
+                        РЎС‚СЂРѕРєР° Р·Р°РїСЂРѕСЃР°
                     </th>
                     <th width="60">
-                        Кол-во повторов (N)
+                        РљРѕР»-РІРѕ РїРѕРІС‚РѕСЂРѕРІ (N)
                     </th>
                     <th width="60">
-                        Кол-во совпадений (M)
+                        РљРѕР»-РІРѕ СЃРѕРІРїР°РґРµРЅРёР№ (M)
                     </th>
                     <th width="80">
-                        Вес (W)  
+                        Р’РµСЃ (W)  
                     </th>
                 </tr>
             </thead>
@@ -108,10 +108,10 @@
                                     <div class="form-in">
                                         <div class="form-block first">
                                             <div class="form-el">
-                                                Чтобы удаляемый запрос или его часть больше не попадали в эту таблицу, нужно заполнить эту форму.
+                                                Р§С‚РѕР±С‹ СѓРґР°Р»СЏРµРјС‹Р№ Р·Р°РїСЂРѕСЃ РёР»Рё РµРіРѕ С‡Р°СЃС‚СЊ Р±РѕР»СЊС€Рµ РЅРµ РїРѕРїР°РґР°Р»Рё РІ СЌС‚Сѓ С‚Р°Р±Р»РёС†Сѓ, РЅСѓР¶РЅРѕ Р·Р°РїРѕР»РЅРёС‚СЊ СЌС‚Сѓ С„РѕСЂРјСѓ.
                                             </div>
                                             <div class="form-el">
-                                                <label class="form-l">Удаляет слова, которые:</label>
+                                                <label class="form-l">РЈРґР°Р»СЏРµС‚ СЃР»РѕРІР°, РєРѕС‚РѕСЂС‹Рµ:</label>
                                                 <div class="form-value">
                                                     <select name="filter_rule" class="sw205">
                                                         <? foreach ($rules as $rule) { ?>
@@ -124,7 +124,7 @@
                                         </div>
                                         <div class="form-block last">
                                             <div class="form-el form-btns flm">
-                                                <button type="submit">Удалить запрос и создать фильтр</button> или <button onclick="return deleteQueryOnly(this)">Просто удалить запрос</button> 
+                                                <button type="submit">РЈРґР°Р»РёС‚СЊ Р·Р°РїСЂРѕСЃ Рё СЃРѕР·РґР°С‚СЊ С„РёР»СЊС‚СЂ</button> РёР»Рё <button onclick="return deleteQueryOnly(this)">РџСЂРѕСЃС‚Рѕ СѓРґР°Р»РёС‚СЊ Р·Р°РїСЂРѕСЃ</button> 
                                             </div>
                                         </div>
                                     </div>

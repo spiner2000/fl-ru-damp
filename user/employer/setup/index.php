@@ -112,13 +112,13 @@ switch ($action){
                     $error_phone = false;
                     unset($_SESSION["unbind_phone_action"]);
                 } else {
-                    $error_phone['phone'] = current($text_error); // Телефон забит
+                    $error_phone['phone'] = current($text_error); // РўРµР»РµС„РѕРЅ Р·Р°Р±РёС‚
                 }
-            } else if($type == 'unbind') { // Сбрасываем все
+            } else if($type == 'unbind') { // РЎР±СЂР°СЃС‹РІР°РµРј РІСЃРµ
                 $phone = '';
                 $save_reqv['mob_phone'] = '';
                 $ureqv['mob_phone']     = '';
-                sbr_meta::setUserReqv($uid, $reqv['rez_type'], $reqv['form_type'], $save_reqv); // Удаляем телефон
+                sbr_meta::setUserReqv($uid, $reqv['rez_type'], $reqv['form_type'], $save_reqv); // РЈРґР°Р»СЏРµРј С‚РµР»РµС„РѕРЅ
                 sbr_meta::authMobPhone($uid, false);
                 sbr_meta::safetyMobPhone($uid, false);
                 $user->updateSafetyPhone($uid, false);
@@ -154,7 +154,7 @@ switch ($action){
             $error_phone['code'] = true;
         }
         
-        // Включение, без проверки СМС
+        // Р’РєР»СЋС‡РµРЅРёРµ, Р±РµР· РїСЂРѕРІРµСЂРєРё РЎРњРЎ
         if($o_only_phone == 'f' && $only_phone == 't' && !$safety_complete) {
             $o_only_phone = 't';
             $user->updateSafetyPhone($uid, true);
@@ -180,21 +180,21 @@ switch ($action){
         
         $frl = new users();
         
-        // Проверям IP
+        // РџСЂРѕРІРµСЂСЏРј IP
         $c_ip = $frl->CheckSafetyIP($ip_addresses);
         $ip_addresses = $c_ip['ip_addresses'];
         $alert[1] = $c_ip['alert'][1];
         $error_flag = $c_ip['error_flag'];
         
-        // Проверям правильность пароля
+        // РџСЂРѕРІРµСЂСЏРј РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ РїР°СЂРѕР»СЏ
         $current_password = $frl->GetField($uid,$ee,'passwd');
         if(users::hashPasswd($password)!=$current_password) {
             $error_flag = 1;
-            $alert[3] = "Вы ввели неправильный пароль";
+            $alert[3] = "Р’С‹ РІРІРµР»Рё РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ РїР°СЂРѕР»СЊ";
         }        
         $password = '';
 		if (!$error_flag) {
-            $info_msg = "Изменения внесены";
+            $info_msg = "РР·РјРµРЅРµРЅРёСЏ РІРЅРµСЃРµРЅС‹";
             $_SESSION['info_msg'] = $info_msg;
             $frl->UpdateSafetyInformation($uid,$ip_addresses,$bind_ip);
             header_location_exit("/users/{$_SESSION['login']}/setup/safety/");
@@ -219,18 +219,18 @@ switch ($action){
             
             if (!$provider_type) {
                 $error_flag = 1;
-                $alert[4] = "Вы не указали соцсеть";
+                $alert[4] = "Р’С‹ РЅРµ СѓРєР°Р·Р°Р»Рё СЃРѕС†СЃРµС‚СЊ";
             }
             
             $user = new users();
-            // Проверям правильность пароля
+            // РџСЂРѕРІРµСЂСЏРј РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ РїР°СЂРѕР»СЏ
             if (users::hashPasswd($password) != $user->GetField($uid, $ee, 'passwd')) {
                 $error_flag = 1;
-                $alert[5] = "Вы ввели неправильный пароль";
+                $alert[5] = "Р’С‹ РІРІРµР»Рё РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ РїР°СЂРѕР»СЊ";
             }
 
             if (!$error_flag) {
-                $info_msg = "Изменения внесены";
+                $info_msg = "РР·РјРµРЅРµРЅРёСЏ РІРЅРµСЃРµРЅС‹";
                 $_SESSION['info_msg'] = $info_msg;
                 $opauthModel->addMultilevel($uid, $provider_type);
                 header_location_exit('/users/'. $_SESSION['login'] .'/setup/safety/');
@@ -247,7 +247,7 @@ switch ($action){
 		$jornal = trim($_POST['jornal']);
 		$emp = new employer;
         $error .= $emp->UpdateTabs($uid, $prjs, $info, $jornal, 0, 0);
-		if (!$error) $info_msg = "Изменения внесены";
+		if (!$error) $info_msg = "РР·РјРµРЅРµРЅРёСЏ РІРЅРµСЃРµРЅС‹";
 		break;
 
 	case "update_subscr":
@@ -260,7 +260,7 @@ switch ($action){
 		$articlescomments = trim($_POST['articlescomments']);
 		$paid_advice = 0;//trim($_POST['paid_advice']);
         
-        // сообщества
+        // СЃРѕРѕР±С‰РµСЃС‚РІР°
 		$comm = !empty($_POST['comm']) ? array_map('intvalPgSql', $_POST['comm']) : false;
 		require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/commune.php");
         if (!empty($_POST['commune_topics'])){
@@ -292,7 +292,7 @@ switch ($action){
                         $paid_advice,
                         __paramInit('bool', NULL, 'payment')));
 		
-                if (!$error) $info_msg = "Изменения внесены";
+                if (!$error) $info_msg = "РР·РјРµРЅРµРЅРёСЏ РІРЅРµСЃРµРЅС‹";
 		
                 break;
 	case "inform_change":
@@ -304,40 +304,40 @@ switch ($action){
 		{
 			if (checkdate(intval(trim($_POST['datem'])), intval(trim($_POST['dated'])), intval(trim($_POST['datey']))))
 			$frl->birthday = date("Y-m-d", strtotimeEx(trim($_POST['datey'])."-".trim($_POST['datem'])."-".trim($_POST['dated'])));
-			else {$error_flag = 1; $alert[1] = "Поле заполнено некорректно";}
+			else {$error_flag = 1; $alert[1] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";}
 		}
 		else
 		{
 			//$frl->birthday = "1910-01-01";
-            $error_flag = 1; $alert[1] = "Поле заполнено некорректно";
+            $error_flag = 1; $alert[1] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
 		}
-		if (!$alert[1] && $frl->birthday && (date("Y", strtotime($frl->birthday)) >= date("Y"))) {$error_flag = 1; $alert[1] = "Поле заполнено некорректно";}
+		if (!$alert[1] && $frl->birthday && (date("Y", strtotime($frl->birthday)) >= date("Y"))) {$error_flag = 1; $alert[1] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";}
 		$frl->country = intval(trim($_POST['country']));
 		$frl->city = intval(trim($_POST['pf_city']));
         if($frl->country <= 0) {
             $error_flag = 1;
-            $alert['country'] = 'Выберите страну';
+            $alert['country'] = 'Р’С‹Р±РµСЂРёС‚Рµ СЃС‚СЂР°РЅСѓ';
         }
         if($frl->city <= 0) {
             $error_flag = 1;
-            $alert['city'] = 'Выберите город';
+            $alert['city'] = 'Р’С‹Р±РµСЂРёС‚Рµ РіРѕСЂРѕРґ';
         }
         if($frl->site = change_q(substr(addhttp(trim($_POST['site'])), 0, 96), true))
             if ( !url_validate($frl->site, true)) {
-                $error_flag = 1; $alert[11] = "Поле заполнено некорректно";
+                $error_flag = 1; $alert[11] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
             }
         // more site
         if($frl->site_1 = change_q(substr(addhttp(trim($_POST['site_1'])), 0, 96), true))
             if ( !url_validate($frl->site_1, true)) {
-                $error_flag = 1; $alert[41] = "Поле заполнено некорректно";
+                $error_flag = 1; $alert[41] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
             }
         if($frl->site_2 = change_q(substr(addhttp(trim($_POST['site_2'])), 0, 96), true))
             if ( !url_validate($frl->site_2, true)) {
-                $error_flag = 1; $alert[42] = "Поле заполнено некорректно";
+                $error_flag = 1; $alert[42] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
             }
         if($frl->site_3 = change_q(substr(addhttp(trim($_POST['site_3'])), 0, 96), true))
             if ( !url_validate($frl->site_3, true)) {
-                $error_flag = 1; $alert[43] = "Поле заполнено некорректно";
+                $error_flag = 1; $alert[43] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
             }
         // more site
 
@@ -345,20 +345,20 @@ switch ($action){
 		$frl->icq = substr(strip_tags(trim($_POST['icq'])),0,96);
     if(strlen($frl->jabber = __paramInit('string', NULL, 'jabber','')) > 3071) {
       $error_flag = 1;
-      $alert['jabber'] = "Количество знаков превышает допустимое значение";
+      $alert['jabber'] = "РљРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°РєРѕРІ РїСЂРµРІС‹С€Р°РµС‚ РґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ";
     }
         // more jabber
         if(strlen($frl->jabber_1 = __paramInit('string', NULL, 'jabber_1','')) > 3071) {
           $error_flag = 1;
-          $alert['51'] = "Количество знаков превышает допустимое значение";
+          $alert['51'] = "РљРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°РєРѕРІ РїСЂРµРІС‹С€Р°РµС‚ РґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ";
         }
         if(strlen($frl->jabber_2 = __paramInit('string', NULL, 'jabber_2','')) > 3071) {
           $error_flag = 1;
-          $alert['52'] = "Количество знаков превышает допустимое значение";
+          $alert['52'] = "РљРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°РєРѕРІ РїСЂРµРІС‹С€Р°РµС‚ РґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ";
         }
         if(strlen($frl->jabber_3 = __paramInit('string', NULL, 'jabber_3','')) > 3071) {
           $error_flag = 1;
-          $alert['53'] = "Количество знаков превышает допустимое значение";
+          $alert['53'] = "РљРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°РєРѕРІ РїСЂРµРІС‹С€Р°РµС‚ РґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ";
         }
         // more jabber
 
@@ -366,56 +366,56 @@ switch ($action){
     
         if($frl->second_email = change_q(substr(trim($_POST['second_email']), 0, 96), true)) {
             if (!is_email($frl->second_email)) {
-                $error_flag = 1; $alert[10] = "Поле заполнено некорректно"; 
+                $error_flag = 1; $alert[10] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; 
             }
             //$frl->email_as_link = $_POST['email_as_link'];
         }
 
         if($frl->email_1 = change_q(substr(trim($_POST['email_1']), 0, 96), true)) {
             if (!is_email($frl->email_1)) {
-                $error_flag = 1; $alert[21] = "Поле заполнено некорректно"; 
+                $error_flag = 1; $alert[21] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; 
             }
             //$frl->email_1_as_link = $_POST['email_1_as_link'];
         }
         if($frl->email_2 = change_q(substr(trim($_POST['email_2']), 0, 96), true)) {
             if (!is_email($frl->email_2)) {
-                $error_flag = 1; $alert[22] = "Поле заполнено некорректно"; 
+                $error_flag = 1; $alert[22] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; 
             }
             //$frl->email_2_as_link = $_POST['email_2_as_link'];
         }
         if($frl->email_3 = change_q(substr(trim($_POST['email_3']), 0, 96), true)) {
             if (!is_email($frl->email_3)) {
-                $error_flag = 1; $alert[23] = "Поле заполнено некорректно"; 
+                $error_flag = 1; $alert[23] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; 
             }
             //$frl->email_3_as_link = $_POST['email_3_as_link'];
         }
 
 
 		if($frl->icq = change_q(substr(strip_tags(trim($_POST['icq'])),0,96),true))
-		  if (!preg_match("/^[-0-9\s]*$/", $frl->icq) && !is_email($frl->icq)) { $error_flag = 1; $alert[2] = "Поле заполнено некорректно"; }
+		  if (!preg_match("/^[-0-9\s]*$/", $frl->icq) && !is_email($frl->icq)) { $error_flag = 1; $alert[2] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; }
 		if($frl->icq_1 = change_q(substr(strip_tags(trim($_POST['icq_1'])),0,96), true))
-		  if (!preg_match("/^[-0-9\s]*$/", $frl->icq_1) && !is_email($frl->icq_1)) { $error_flag = 1; $alert[31] = "Поле заполнено некорректно"; }
+		  if (!preg_match("/^[-0-9\s]*$/", $frl->icq_1) && !is_email($frl->icq_1)) { $error_flag = 1; $alert[31] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; }
 		if($frl->icq_2 = change_q(substr(strip_tags(trim($_POST['icq_2'])),0,96), true))
-		  if (!preg_match("/^[-0-9\s]*$/", $frl->icq_2) && !is_email($frl->icq_2)) { $error_flag = 1; $alert[32] = "Поле заполнено некорректно"; }
+		  if (!preg_match("/^[-0-9\s]*$/", $frl->icq_2) && !is_email($frl->icq_2)) { $error_flag = 1; $alert[32] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; }
 		if($frl->icq_3 = change_q(substr(strip_tags(trim($_POST['icq_3'])),0,96), true))
-		  if (!preg_match("/^[-0-9\s]*$/", $frl->icq_3) && !is_email($frl->icq_3)) { $error_flag = 1; $alert[32] = "Поле заполнено некорректно"; }
+		  if (!preg_match("/^[-0-9\s]*$/", $frl->icq_3) && !is_email($frl->icq_3)) { $error_flag = 1; $alert[32] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; }
 
 
 		if($frl->phone = change_q(substr(strip_tags(trim($_POST['phone'])),0,24), true))
-		  if (!preg_match("/^[-+0-9)( #]*$/", $frl->phone)) { $error_flag = 1; $alert[3] = "Поле заполнено некорректно"; }
+		  if (!preg_match("/^[-+0-9)( #]*$/", $frl->phone)) { $error_flag = 1; $alert[3] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; }
         // more phone
         if($frl->phone_1 = change_q(substr(trim($_POST['phone_1']), 0, 24), true))
-        	  if (!preg_match("/^[-+0-9)( #]*$/", $frl->phone_1)) { $error_flag = 1; $alert[61] = "Поле заполнено некорректно"; }
+        	  if (!preg_match("/^[-+0-9)( #]*$/", $frl->phone_1)) { $error_flag = 1; $alert[61] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; }
         if($frl->phone_2 = change_q(substr(trim($_POST['phone_2']), 0, 24), true))
-        	  if (!preg_match("/^[-+0-9)( #]*$/", $frl->phone_2)) { $error_flag = 1; $alert[62] = "Поле заполнено некорректно"; }
+        	  if (!preg_match("/^[-+0-9)( #]*$/", $frl->phone_2)) { $error_flag = 1; $alert[62] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; }
         if($frl->phone_3 = change_q(substr(trim($_POST['phone_3']), 0, 24), true))
-        	  if (!preg_match("/^[-+0-9)( #]*$/", $frl->phone_3)) { $error_flag = 1; $alert[63] = "Поле заполнено некорректно"; }
+        	  if (!preg_match("/^[-+0-9)( #]*$/", $frl->phone_3)) { $error_flag = 1; $alert[63] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; }
         // more phone
 
 
 		if (strlen($_POST['resumetxt']) > 4000)
 		{
-			$error_flag = 1; $alert[5] = "Количество знаков превышает допустимое значение";
+			$error_flag = 1; $alert[5] = "РљРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°РєРѕРІ РїСЂРµРІС‹С€Р°РµС‚ РґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ";
 		}
 		else
 		{
@@ -424,7 +424,7 @@ switch ($action){
 
 		if (strlen($_POST['companytxt']) > 500)
 		{
-			$error_flag = 1; $alert[6] = "Количество знаков в тексте о компании превышает допустимое значение";
+			$error_flag = 1; $alert[6] = "РљРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°РєРѕРІ РІ С‚РµРєСЃС‚Рµ Рѕ РєРѕРјРїР°РЅРёРё РїСЂРµРІС‹С€Р°РµС‚ РґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ";
 		}
 		else
 		{
@@ -442,11 +442,11 @@ switch ($action){
 		$frl->ljuser = change_q(substr(strip_tags(trim($_POST['ljuser'])),0,64), true);
         // more lj
 		$frl->lj_1 = change_q(substr(trim($_POST['lj_1']), 0, 64), true);
-        if (!preg_match("/^[a-zA-Z0-9_-]*$/", $frl->lj_1)) { $error_flag = 1; $alert[71] = "Поле заполнено некорректно"; }
+        if (!preg_match("/^[a-zA-Z0-9_-]*$/", $frl->lj_1)) { $error_flag = 1; $alert[71] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; }
 		$frl->lj_2 = change_q(substr(trim($_POST['lj_2']), 0, 64), true);
-        if (!preg_match("/^[a-zA-Z0-9_-]*$/", $frl->lj_2)) { $error_flag = 1; $alert[72] = "Поле заполнено некорректно"; }
+        if (!preg_match("/^[a-zA-Z0-9_-]*$/", $frl->lj_2)) { $error_flag = 1; $alert[72] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; }
 		$frl->lj_3 = change_q(substr(trim($_POST['lj_3']), 0, 64), true);
-        if (!preg_match("/^[a-zA-Z0-9_-]*$/", $frl->lj_3)) { $error_flag = 1; $alert[73] = "Поле заполнено некорректно"; }
+        if (!preg_match("/^[a-zA-Z0-9_-]*$/", $frl->lj_3)) { $error_flag = 1; $alert[73] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; }
         // more lj
 
 
@@ -461,7 +461,7 @@ switch ($action){
 
 		$frl->info_for_reg = serialize($_POST['info_for_reg']);
 
-        if (!preg_match("/^[a-zA-Z0-9_-]*$/", $frl->ljuser)) { $error_flag = 1; $alert[12] = "Поле заполнено некорректно"; }
+        if (!preg_match("/^[a-zA-Z0-9_-]*$/", $frl->ljuser)) { $error_flag = 1; $alert[12] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; }
 
 
 		if ((isset($_FILES['logo']) || isset($_POST['del']) && $_POST['del'] == 1) && !$error_flag ) {
@@ -469,15 +469,15 @@ switch ($action){
 			$del = intval($_POST['del']);
 			if ($logo->name || $del == 1){
 				$error .= $frl->UpdateLogo(get_uid(),$logo, $del);
-				if (!$error) $info_msg = "Изменения внесены";
-				else $error .= "Файл не удовлетворяет условиям загрузки. ";
+				if (!$error) $info_msg = "РР·РјРµРЅРµРЅРёСЏ РІРЅРµСЃРµРЅС‹";
+				else $error .= "Р¤Р°Р№Р» РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё. ";
 			}
 		}
 
 		if (!$error_flag) {
 			//print_r($frl);
 			$error .= $frl->UpdateInform(get_uid());
-            // Доступ пользователя к функциям сайта
+            // Р”РѕСЃС‚СѓРї РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Рє С„СѓРЅРєС†РёСЏРј СЃР°Р№С‚Р°
             require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/registration.php");
             $reg    = new registration();
             $reg->checkUserAccess(get_uid(), true);
@@ -486,7 +486,7 @@ switch ($action){
 			$error .= teams::teamsDelFavoritesExcept(get_uid(), $selected);
 		}
 		if (!$error && !$error_flag) {
-            //$info = "Изменения внесены";
+            //$info = "РР·РјРµРЅРµРЅРёСЏ РІРЅРµСЃРµРЅС‹";
             header_location_exit( '/users/'. $_SESSION['login'] .'/setup/info/?msg=1' );
         }
 		break;
@@ -500,9 +500,9 @@ switch ($action){
         $promo_block_hide = intval($_POST['promo_show']);
         $direct_links = intval($_POST['direct_links']);
         setlocale(LC_ALL, 'ru_RU.CP1251');
-        if (!preg_match("/^[-a-zA-Zа-яёА-ЯЁ]+$/", $name)) { $error_flag = 1; $alert[1] = "Поле заполнено некорректно"; }
-        if (!preg_match("/^[-a-zA-Zа-яёА-ЯЁ]+$/", $surname)) { $error_flag = 1; $alert[2] = "Поле заполнено некорректно"; }
-        if (!is_email($email)) { $error_flag = 1; $alert[3] = "Поле заполнено некорректно"; }
+        if (!preg_match("/^[-a-zA-ZР°-СЏС‘Рђ-РЇРЃ]+$/", $name)) { $error_flag = 1; $alert[1] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; }
+        if (!preg_match("/^[-a-zA-ZР°-СЏС‘Рђ-РЇРЃ]+$/", $surname)) { $error_flag = 1; $alert[2] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; }
+        if (!is_email($email)) { $error_flag = 1; $alert[3] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; }
 	require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/freelancer.php");
         $user = new employer();
         $user->GetUser($_SESSION['login']);
@@ -511,28 +511,28 @@ switch ($action){
         $sOldSurname = $user->usurname;
         
         if ($email != $user->email) {$ch_mail = 1;}
-	if ($user->CheckEmail($email)) { $error_flag = 1; $alert[3] = "Извините, такой электронный ящик уже существует"; }
+	if ($user->CheckEmail($email)) { $error_flag = 1; $alert[3] = "РР·РІРёРЅРёС‚Рµ, С‚Р°РєРѕР№ СЌР»РµРєС‚СЂРѕРЅРЅС‹Р№ СЏС‰РёРє СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚"; }
     if (temp_email::isTempEmail($email)) {
         $error_flag = 1;
-        $alert[3] = "Извините, но почтовые адреса с этого домена запрещены к регистрации";
+        $alert[3] = "РР·РІРёРЅРёС‚Рµ, РЅРѕ РїРѕС‡С‚РѕРІС‹Рµ Р°РґСЂРµСЃР° СЃ СЌС‚РѕРіРѕ РґРѕРјРµРЅР° Р·Р°РїСЂРµС‰РµРЅС‹ Рє СЂРµРіРёСЃС‚СЂР°С†РёРё";
     }
         $frl = new employer;
         $err = $frl->UpdateMain(get_uid(), $name, $surname, $user->email, $oldpwd, $pname, $error_flag);
         
-        if ( !$err && !$error_flag ) { // все что нужно после успешного обновления:
+        if ( !$err && !$error_flag ) { // РІСЃРµ С‡С‚Рѕ РЅСѓР¶РЅРѕ РїРѕСЃР»Рµ СѓСЃРїРµС€РЅРѕРіРѕ РѕР±РЅРѕРІР»РµРЅРёСЏ:
             if ( users::isSuspiciousUser(get_uid(), $_SESSION['login'], $_SESSION['login'], $name, $sOldName, $surname, $sOldSurname) ) {
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/smail.php' );
                 $smail = new smail();
                 $smail->adminNewSuspectUser( $_SESSION['login'], $name, $surname );
             }
             
-            // галки поля settings
+            // РіР°Р»РєРё РїРѕР»СЏ settings
             $frl->updateMainSettings( $uid, $question_button_hide, $promo_block_hide, $direct_links );
             $frl->setPromoBlockShowCookie( $uid, $promo_block_hide );
         }
         
-        if ($err == 1) $alert[4] = "Поле заполнено некорректно"; 
-        if (!$err && !$error_flag) $info = "Изменения внесены";
+        if ($err == 1) $alert[4] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; 
+        if (!$err && !$error_flag) $info = "РР·РјРµРЅРµРЅРёСЏ РІРЅРµСЃРµРЅС‹";
         setlocale(LC_ALL, 'en_US.UTF-8');
         if ($ch_mail && !$err && !$error_flag) { 
 			require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/activate_mail.php");
@@ -542,7 +542,7 @@ switch ($action){
 				$smail->ConfirmNewEmail($_SESSION['login'], $email, $code);
 				$inner = "../../setup/chmail_inner.php";
 			}
-		if ($err) { $alert[3] = "Извините, такой электронный ящик уже существует"; $info = "";}
+		if ($err) { $alert[3] = "РР·РІРёРЅРёС‚Рµ, С‚Р°РєРѕР№ СЌР»РµРєС‚СЂРѕРЅРЅС‹Р№ СЏС‰РёРє СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚"; $info = "";}
 			$activ_tab = 0;
 		}
 		break;
@@ -554,22 +554,22 @@ switch ($action){
         
         if (!preg_match('/^[a-zA-Z\d\!\@\#\$\%\^\&\*\(\)\_\+\-\=\;\,\.\/\?\[\]\{\}]+$/', $pwd)) {
             $error_flag = 1; 
-            $alert[3] = "Пароль содержит недопустимые символы.<br>Пожалуйста, используйте только латинские буквы, "
-                . "цифры и следующие спецсимволы: !@#$%^&*()_+-=;,./?[]{}";
+            $alert[3] = "РџР°СЂРѕР»СЊ СЃРѕРґРµСЂР¶РёС‚ РЅРµРґРѕРїСѓСЃС‚РёРјС‹Рµ СЃРёРјРІРѕР»С‹.<br>РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РёСЃРїРѕР»СЊР·СѓР№С‚Рµ С‚РѕР»СЊРєРѕ Р»Р°С‚РёРЅСЃРєРёРµ Р±СѓРєРІС‹, "
+                . "С†РёС„СЂС‹ Рё СЃР»РµРґСѓСЋС‰РёРµ СЃРїРµС†СЃРёРјРІРѕР»С‹: !@#$%^&*()_+-=;,./?[]{}";
         }
-        if ((strlen($pwd) < 6)) { $error_flag = 1; $alert[2] = "Слишком короткий пароль (минимум — 6 символов)";}
-        if ((strlen($pwd) > 24)) { $error_flag = 1; $alert[2] = "Слишком длинный пароль (максимум — 24 символа)";}
-        if ($pwd != $pwd2 || $pwd2 == '') {$error_flag = 1; $alert[3] = "Поле заполнено некорректно";}
+        if ((strlen($pwd) < 6)) { $error_flag = 1; $alert[2] = "РЎР»РёС€РєРѕРј РєРѕСЂРѕС‚РєРёР№ РїР°СЂРѕР»СЊ (РјРёРЅРёРјСѓРј вЂ” 6 СЃРёРјРІРѕР»РѕРІ)";}
+        if ((strlen($pwd) > 24)) { $error_flag = 1; $alert[2] = "РЎР»РёС€РєРѕРј РґР»РёРЅРЅС‹Р№ РїР°СЂРѕР»СЊ (РјР°РєСЃРёРјСѓРј вЂ” 24 СЃРёРјРІРѕР»Р°)";}
+        if ($pwd != $pwd2 || $pwd2 == '') {$error_flag = 1; $alert[3] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";}
         
 		if (!$error_flag){
 			$frl = new employer;
 			$alert[1] = $frl->UpdatePwd(get_uid(), $oldpwd, $pwd, 0);
 			if (!$alert[1]) {
-				$info = "Изменения внесены";
+				$info = "РР·РјРµРЅРµРЅРёСЏ РІРЅРµСЃРµРЅС‹";
 				$smail = new smail();
 				$smail->ChangePwd($uid, $pwd);
                 
-                // Пишем в лог смены паролей
+                // РџРёС€РµРј РІ Р»РѕРі СЃРјРµРЅС‹ РїР°СЂРѕР»РµР№
                 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/restorepass_log.php");
                 restorepass_log::SaveToLog($uid, getRemoteIP(), 3);                
 			}
@@ -581,8 +581,8 @@ switch ($action){
 		$frl = new employer;
 		if ($foto->name || $del == 1){
 			$error .= $frl->UpdateFoto(get_uid(),$foto, $del);
-			/*if (!$error) $info_msg = "Изменения внесены";
-			else $error = "Файл не удовлетворяет условиям загрузки";*/
+			/*if (!$error) $info_msg = "РР·РјРµРЅРµРЅРёСЏ РІРЅРµСЃРµРЅС‹";
+			else $error = "Р¤Р°Р№Р» РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё";*/
             if(!$error) {
                 $_SESSION['photo'] = $frl->photo;
             }
@@ -590,7 +590,7 @@ switch ($action){
             header_location_exit( '/users/'. $_SESSION['login'] .'/setup/foto/?msg='.$nParam );
 		}
 		break;
-	//Удаление аккаунта убрано! не раскоменчивать!
+	//РЈРґР°Р»РµРЅРёРµ Р°РєРєР°СѓРЅС‚Р° СѓР±СЂР°РЅРѕ! РЅРµ СЂР°СЃРєРѕРјРµРЅС‡РёРІР°С‚СЊ!
 	/*case "delete":
 		$passwd = trim($_POST['passwd']);
 		if ($passwd){
@@ -598,8 +598,8 @@ switch ($action){
 			if ($frl->DeleteUser(get_uid(), $passwd, $error)){
 				logout();
 				$content = $rpath."deleted_inner.php";
-			} else $error = "Поле заполнено некорректно";
-		} else $error = "Поле заполнено некорректно";
+			} else $error = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
+		} else $error = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
 		break;*/
 	case "prj_change":
 		include("newproj.php");
@@ -616,7 +616,7 @@ switch ($action){
                     
 		$location  = "/users/{$_SESSION['login']}/setup/projects/?p=list&fld={$_POST['fld']}&open={$_POST['open']}";
 //		$location .= ($_POST['openclose']==1) ? '?open=1' : ( ($_POST['openclose']==2) ? '?closed=1' : '' ) ;
-		header("Location: $location"); //перекидываем на текущую страницу, чтобы нельзя было повторить POST по F5
+		header("Location: $location"); //РїРµСЂРµРєРёРґС‹РІР°РµРј РЅР° С‚РµРєСѓС‰СѓСЋ СЃС‚СЂР°РЅРёС†Сѓ, С‡С‚РѕР±С‹ РЅРµР»СЊР·СЏ Р±С‹Р»Рѕ РїРѕРІС‚РѕСЂРёС‚СЊ POST РїРѕ F5
 		exit;
 		break;
 	case "prj_up":
@@ -669,7 +669,7 @@ switch ($action){
             exit;
 	    }
 	    break;
-    case "delete": // удаление аккаунта
+    case "delete": // СѓРґР°Р»РµРЅРёРµ Р°РєРєР°СѓРЅС‚Р°
         require_once (ABS_PATH . "/classes/users.php");
         require_once (ABS_PATH . '/classes/admin_log.php');
         $user_obj = new users();
@@ -677,9 +677,9 @@ switch ($action){
         $user_obj->GetUserByUID($sUid);
         $sObjName = $user_obj->uname. ' ' . $user_obj->usurname . '[' . $user_obj->login . ']';
         $sObjLink = '/users/' . $user_obj->login;
-        $sReason = "Аккаунт удален самостоятельно";
-        if ($user_obj->setUserBan(get_uid(), 0, $sReason, 4, '', 1, true)) { // если удалось заблокировать аккаунт
-            // пишем лог
+        $sReason = "РђРєРєР°СѓРЅС‚ СѓРґР°Р»РµРЅ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ";
+        if ($user_obj->setUserBan(get_uid(), 0, $sReason, 4, '', 1, true)) { // РµСЃР»Рё СѓРґР°Р»РѕСЃСЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ Р°РєРєР°СѓРЅС‚
+            // РїРёС€РµРј Р»РѕРі
             admin_log::addLog( admin_log::OBJ_CODE_USER, admin_log::ACT_ID_DEL_ACC, $sUid, $sUid, $sObjName, $sObjLink, 1, '', 18, $sReason);
             header("Location: /users/$user");
         }            

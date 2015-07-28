@@ -3,12 +3,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
 
 /**
- * Подключаем файл для работы с ключами оплаты
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РєР»СЋС‡Р°РјРё РѕРїР»Р°С‚С‹
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/payment_keys.php");
 
 /**
- * Класс для работы с оплатой через Яндекс деньги
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РѕРїР»Р°С‚РѕР№ С‡РµСЂРµР· РЇРЅРґРµРєСЃ РґРµРЅСЊРіРё
  *
  */
 class ydpay extends account
@@ -17,49 +17,49 @@ class ydpay extends account
     const SHOP_DEPOSIT     = 4551;
     const SHOP_SBR_RESERVE = 12445;
     
-    // IP, с которых разрешено приходить запросам Яндекса.
+    // IP, СЃ РєРѕС‚РѕСЂС‹С… СЂР°Р·СЂРµС€РµРЅРѕ РїСЂРёС…РѕРґРёС‚СЊ Р·Р°РїСЂРѕСЃР°Рј РЇРЅРґРµРєСЃР°.
     protected $_allowed_ips = array('77.75.157.168', '77.75.157.169', '77.75.159.166', '77.75.159.170', '77.75.159.196');
     
 	/**
-	 * ИД магазина 
+	 * РР” РјР°РіР°Р·РёРЅР° 
 	 *
 	 * @var integer
 	 */
 	public $shopid = array(self::SHOP_DEPOSIT, self::SHOP_SBR_RESERVE);
 	
 	/**
-	 * Ключ оплаты
+	 * РљР»СЋС‡ РѕРїР»Р°С‚С‹
 	 *
 	 * @var integer
 	 */
 	public $key = YD_KEY;
 	
 	/**
-	 * Валюта оплаты
+	 * Р’Р°Р»СЋС‚Р° РѕРїР»Р°С‚С‹
 	 *
 	 * @var string
 	 */
 	public $exchR = EXCH_YM;
 	
 	/**
-	 * ИД курса для оплаты
+	 * РР” РєСѓСЂСЃР° РґР»СЏ РѕРїР»Р°С‚С‹
 	 *
 	 * @var integer
 	 */
 	public $curid = 643;
 	
 	/**
-	 * ИД банка
+	 * РР” Р±Р°РЅРєР°
 	 *
 	 * @var integer
 	 */
 	public $bank = 1001;
 	
 	/**
-	 * Проверка данных на дублирование
+	 * РџСЂРѕРІРµСЂРєР° РґР°РЅРЅС‹С… РЅР° РґСѓР±Р»РёСЂРѕРІР°РЅРёРµ
 	 *
-	 * @param string $str	строка описания операции
-	 * @return integer		id предыдущей операции, false если операция не найдена
+	 * @param string $str	СЃС‚СЂРѕРєР° РѕРїРёСЃР°РЅРёСЏ РѕРїРµСЂР°С†РёРё
+	 * @return integer		id РїСЂРµРґС‹РґСѓС‰РµР№ РѕРїРµСЂР°С†РёРё, false РµСЃР»Рё РѕРїРµСЂР°С†РёСЏ РЅРµ РЅР°Р№РґРµРЅР°
 	 */
 	function checkDups($str){
 	    global $DB;
@@ -71,69 +71,69 @@ class ydpay extends account
 	}
 	
 	/**
-	 * Проверка входящих данных
+	 * РџСЂРѕРІРµСЂРєР° РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
 	 *
-	 * @param integer $shopid     		ИД магазина
-	 * @param integer $billing_no 		Номер биллинга
-	 * @param integer $ammount    		Сумма оплаты
-	 * @param string  $operation_type 	Тип операции
-	 * @param integer $operation_id   	Ид операции  (op_codes)
-	 * @return string Сообщение об ошибке
+	 * @param integer $shopid     		РР” РјР°РіР°Р·РёРЅР°
+	 * @param integer $billing_no 		РќРѕРјРµСЂ Р±РёР»Р»РёРЅРіР°
+	 * @param integer $ammount    		РЎСѓРјРјР° РѕРїР»Р°С‚С‹
+	 * @param string  $operation_type 	РўРёРї РѕРїРµСЂР°С†РёРё
+	 * @param integer $operation_id   	РРґ РѕРїРµСЂР°С†РёРё  (op_codes)
+	 * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function prepare($shopid, $billing_no, $ammount, $operation_type, $operation_id){
-		if (!in_array($shopid, $this->shopid)) $error = 'Неверный магазин!';
-		if (!$this->is_dep_exists($billing_no)) $error = 'Неверный счет на сайте!';
+		if (!in_array($shopid, $this->shopid)) $error = 'РќРµРІРµСЂРЅС‹Р№ РјР°РіР°Р·РёРЅ!';
+		if (!$this->is_dep_exists($billing_no)) $error = 'РќРµРІРµСЂРЅС‹Р№ СЃС‡РµС‚ РЅР° СЃР°Р№С‚Рµ!';
 		return $error;
 	}
 	
 	/**
-	 * Проверка и внесение депозита
+	 * РџСЂРѕРІРµСЂРєР° Рё РІРЅРµСЃРµРЅРёРµ РґРµРїРѕР·РёС‚Р°
 	 *
-	 * @param integer $shopid       	Ид магазина
-	 * @param integer $ammount      	Сумма депозита 
-	 * @param integer $orderIsPaid  	Оплачено или нет
-	 * @param integer $orderNumber  	Номер оплаты
-	 * @param integer $billing_no   	Номер биллинга
-	 * @param integer $hash         	Хэш оплаты (то что мы должны послать в запросе на Яндекс деньги должно совпадать с этим хешем)
-	 * @param integer $fromcode     	Кошелек с которого происхдит оплата
-	 * @param integer $paymentDateTime  Дата оплаты
-	 * @param string  $operation_type   Тип операции (см. в функции)
-	 * @param integer $operation_id     Ид операции (op_codes)
-	 * @return string Сообщение об ошибке
+	 * @param integer $shopid       	РРґ РјР°РіР°Р·РёРЅР°
+	 * @param integer $ammount      	РЎСѓРјРјР° РґРµРїРѕР·РёС‚Р° 
+	 * @param integer $orderIsPaid  	РћРїР»Р°С‡РµРЅРѕ РёР»Рё РЅРµС‚
+	 * @param integer $orderNumber  	РќРѕРјРµСЂ РѕРїР»Р°С‚С‹
+	 * @param integer $billing_no   	РќРѕРјРµСЂ Р±РёР»Р»РёРЅРіР°
+	 * @param integer $hash         	РҐСЌС€ РѕРїР»Р°С‚С‹ (С‚Рѕ С‡С‚Рѕ РјС‹ РґРѕР»Р¶РЅС‹ РїРѕСЃР»Р°С‚СЊ РІ Р·Р°РїСЂРѕСЃРµ РЅР° РЇРЅРґРµРєСЃ РґРµРЅСЊРіРё РґРѕР»Р¶РЅРѕ СЃРѕРІРїР°РґР°С‚СЊ СЃ СЌС‚РёРј С…РµС€РµРј)
+	 * @param integer $fromcode     	РљРѕС€РµР»РµРє СЃ РєРѕС‚РѕСЂРѕРіРѕ РїСЂРѕРёСЃС…РґРёС‚ РѕРїР»Р°С‚Р°
+	 * @param integer $paymentDateTime  Р”Р°С‚Р° РѕРїР»Р°С‚С‹
+	 * @param string  $operation_type   РўРёРї РѕРїРµСЂР°С†РёРё (СЃРј. РІ С„СѓРЅРєС†РёРё)
+	 * @param integer $operation_id     РРґ РѕРїРµСЂР°С†РёРё (op_codes)
+	 * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function checkdeposit($shopid, $ammount, $orderIsPaid,
         $orderNumber, $billing_no, $hash, $fromcode, $paymentDateTime, $operation_type, $operation_id)
     {
         if (floatval($ammount) <= 0)
-            return 'Неверная сумма!';
+            return 'РќРµРІРµСЂРЅР°СЏ СЃСѓРјРјР°!';
             
         $hash_str = $orderIsPaid . ';' . $ammount . ';' . $this->curid . ';'
                   . $this->bank . ';' . $shopid . ';' . $orderNumber . ';' . $billing_no . ';' . $this->key;
                   
         if (strtoupper(md5($hash_str)) != $hash)
-            return 'Неверный хэш!';
+            return 'РќРµРІРµСЂРЅС‹Р№ С…СЌС€!';
         
         $op_id = 0;
-        $descr = "ЯД с кошелька $fromcode сумма - $ammount, обработан $paymentDateTime, номер покупки - $orderNumber";
+        $descr = "РЇР” СЃ РєРѕС€РµР»СЊРєР° $fromcode СЃСѓРјРјР° - $ammount, РѕР±СЂР°Р±РѕС‚Р°РЅ $paymentDateTime, РЅРѕРјРµСЂ РїРѕРєСѓРїРєРё - $orderNumber";
         
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/sbr.php");
         
-        if($operation_type == sbr::OP_RESERVE) { // убрать проверку после тестирования.
+        if($operation_type == sbr::OP_RESERVE) { // СѓР±СЂР°С‚СЊ РїСЂРѕРІРµСЂРєСѓ РїРѕСЃР»Рµ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ.
             $shopid = ydpay::SHOP_SBR_RESERVE;
         }
         
         switch ($shopid) {
-            case ydpay::SHOP_SBR_RESERVE : // Резерв денег по СбР (новая)
+            case ydpay::SHOP_SBR_RESERVE : // Р РµР·РµСЂРІ РґРµРЅРµРі РїРѕ РЎР±Р  (РЅРѕРІР°СЏ)
                 $op_code = sbr::OP_RESERVE;
                 $amm = 0;
-                $descr .= " СбР #".$operation_id;
+                $descr .= " РЎР±Р  #".$operation_id;
                 break;
-            case ydpay::SHOP_DEPOSIT : // Перевод денег на личный счет
+            case ydpay::SHOP_DEPOSIT : // РџРµСЂРµРІРѕРґ РґРµРЅРµРі РЅР° Р»РёС‡РЅС‹Р№ СЃС‡РµС‚
                 $op_code = 12;
                 $amm = $ammount/$this->exchR;
                 break;
             default :
-                return 'Неверный магазин!';
+                return 'РќРµРІРµСЂРЅС‹Р№ РјР°РіР°Р·РёРЅ!';
         }
         
         $dups = $this->checkDups($descr);
@@ -146,11 +146,11 @@ class ydpay extends account
     
     
     /**
-     * Проверка и подтверждение платежа, внесение депозита
+     * РџСЂРѕРІРµСЂРєР° Рё РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РїР»Р°С‚РµР¶Р°, РІРЅРµСЃРµРЅРёРµ РґРµРїРѕР·РёС‚Р°
      * 
      * @global DB $DB
-     * @param type $request     Массив с данными запроса (можно весь $_POST)
-     * @return type             Строка, если ошибка, иначе NULL
+     * @param type $request     РњР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё Р·Р°РїСЂРѕСЃР° (РјРѕР¶РЅРѕ РІРµСЃСЊ $_POST)
+     * @return type             РЎС‚СЂРѕРєР°, РµСЃР»Рё РѕС€РёР±РєР°, РёРЅР°С‡Рµ NULL
      */
     function process_payment($request) {
         global $DB;
@@ -159,11 +159,11 @@ class ydpay extends account
         $ip = getRemoteIp();
         
         if (!in_array($ip, $this->_allowed_ips)) {
-            return "Неразрешенный IP: {$ip}";
+            return "РќРµСЂР°Р·СЂРµС€РµРЅРЅС‹Р№ IP: {$ip}";
         }
         
         if (!in_array($action, array('Check', 'PaymentSuccess'))) {
-            return 'Некорректный запрос';
+            return 'РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ Р·Р°РїСЂРѕСЃ';
         }
 
         $shopid = $request['shopId'];
@@ -179,39 +179,39 @@ class ydpay extends account
         $operation_id = $request['OPERATION_ID'];
 
         if (floatval($ammount) <= 0)
-            return 'Неверная сумма!';
+            return 'РќРµРІРµСЂРЅР°СЏ СЃСѓРјРјР°!';
 
         $hash_str = $orderIsPaid . ';' . $ammount . ';' . $this->curid . ';'
             . $this->bank . ';' . $shopid . ';' . $orderNumber . ';' . $billing_no . ';' . $this->key;
 
         var_dump(strtoupper(md5($hash_str)));
         if (strtoupper(md5($hash_str)) != $hash)
-            return 'Неверный хэш!';
+            return 'РќРµРІРµСЂРЅС‹Р№ С…СЌС€!';
         
         $op_id = 0; 
         
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/sbr.php");
-        if($operation_type == sbr::OP_RESERVE) { // убрать проверку после тестирования.
+        if($operation_type == sbr::OP_RESERVE) { // СѓР±СЂР°С‚СЊ РїСЂРѕРІРµСЂРєСѓ РїРѕСЃР»Рµ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ.
             $shopid = ydpay::SHOP_SBR_RESERVE;
         }
         $op_descr = '';
         switch ($shopid) {
-            case ydpay::SHOP_SBR_RESERVE : // Резерв денег по СбР (новая)
+            case ydpay::SHOP_SBR_RESERVE : // Р РµР·РµСЂРІ РґРµРЅРµРі РїРѕ РЎР±Р  (РЅРѕРІР°СЏ)
                 $op_code = sbr::OP_RESERVE;
                 $amm = 0;
-                $op_descr = " СбР #".$operation_id;
+                $op_descr = " РЎР±Р  #".$operation_id;
                 break;
-            case ydpay::SHOP_DEPOSIT : // Перевод денег на личный счет
+            case ydpay::SHOP_DEPOSIT : // РџРµСЂРµРІРѕРґ РґРµРЅРµРі РЅР° Р»РёС‡РЅС‹Р№ СЃС‡РµС‚
                 $op_code = 12;
                 $amm = $ammount;
                 break;
             default :
-                return 'Неверный магазин!';
+                return 'РќРµРІРµСЂРЅС‹Р№ РјР°РіР°Р·РёРЅ!';
         }
         
         if ($action == 'Check') {
             
-            $descr = "ЯД с кошелька $fromcode сумма - $ammount, номер покупки - $orderNumber";
+            $descr = "РЇР” СЃ РєРѕС€РµР»СЊРєР° $fromcode СЃСѓРјРјР° - $ammount, РЅРѕРјРµСЂ РїРѕРєСѓРїРєРё - $orderNumber";
             $descr .= $op_descr;
             
             $dups = $DB->val('SELECT id FROM account_operations_yd WHERE descr = ?', $descr);
@@ -229,12 +229,12 @@ class ydpay extends account
                 $error = $DB->error;
             }
         } elseif ($action == 'PaymentSuccess') {
-            $descr = "ЯД с кошелька $fromcode сумма - $ammount, обработан $paymentDateTime, номер покупки - $orderNumber";
+            $descr = "РЇР” СЃ РєРѕС€РµР»СЊРєР° $fromcode СЃСѓРјРјР° - $ammount, РѕР±СЂР°Р±РѕС‚Р°РЅ $paymentDateTime, РЅРѕРјРµСЂ РїРѕРєСѓРїРєРё - $orderNumber";
             $descr .= $op_descr;
         
             $tmp_payment = $DB->row('SELECT * FROM account_operations_yd WHERE invoice_id = ?', $orderNumber);
             if (!$tmp_payment) {
-                return 'Платеж не найден';
+                return 'РџР»Р°С‚РµР¶ РЅРµ РЅР°Р№РґРµРЅ';
             }
             
             $dups = $this->checkDups($descr);
@@ -248,7 +248,7 @@ class ydpay extends account
                 $DB->query('DELETE FROM account_operations_yd WHERE invoice_id = ?', $orderNumber);
             }
         } else {
-            $error = 'Некорректный запрос';
+            $error = 'РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ Р·Р°РїСЂРѕСЃ';
         }
 
         return $error;

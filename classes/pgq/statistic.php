@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Êîíñüþìåð äëÿ îòïðàâêè ñòàòèñòèêè
+ * ÐšÐ¾Ð½ÑÑŒÑŽÐ¼ÐµÑ€ Ð´Ð»Ñ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸ ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ¸
  */
 
 ini_set('display_errors',1);
@@ -47,7 +47,7 @@ class PGQDaemonStatistic extends PGQConsumer
         $this->loglevel = $config["LOGLEVEL"];
         $this->delay = $config["DELAY"];
         
-        //ïåðâûé çàïóñê ðîòàöèè
+        //Ð¿ÐµÑ€Ð²Ñ‹Ð¹ Ð·Ð°Ð¿ÑƒÑÐº Ñ€Ð¾Ñ‚Ð°Ñ†Ð¸Ð¸
         $this->logRotate();
         //$this->logfile  = $config["LOGFILE"];
     }
@@ -55,7 +55,7 @@ class PGQDaemonStatistic extends PGQConsumer
     //--------------------------------------------------------------------------
     
     /**
-     * Ìåòîä ðîòàöèè ëîãîâ ïî ìåñÿöàì
+     * ÐœÐµÑ‚Ð¾Ð´ Ñ€Ð¾Ñ‚Ð°Ñ†Ð¸Ð¸ Ð»Ð¾Ð³Ð¾Ð² Ð¿Ð¾ Ð¼ÐµÑÑÑ†Ð°Ð¼
      */
     public function logRotate()
     {
@@ -80,7 +80,7 @@ class PGQDaemonStatistic extends PGQConsumer
 
     public function process() 
     {
-        //îáÿçàòåëüíûé âûçîâ äëÿ ðîòàöèè ëîãîâ
+        //Ð¾Ð±ÑÐ·Ð°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¹ Ð²Ñ‹Ð·Ð¾Ð² Ð´Ð»Ñ Ñ€Ð¾Ñ‚Ð°Ñ†Ð¸Ð¸ Ð»Ð¾Ð³Ð¾Ð²
         $this->logRotate();
         
         parent::process();
@@ -148,8 +148,8 @@ class PGQDaemonStatistic extends PGQConsumer
                     
                     break;
                 
-                //Îáðàáàòûâàåì ìåòîäû êîòîðûå ïîääåðæèâàåò $ga èíñòàíñ
-                //Îáû÷íî ýòî òèïîâûå ìåòîäû òèïà GA::event
+                //ÐžÐ±Ñ€Ð°Ð±Ð°Ñ‚Ñ‹Ð²Ð°ÐµÐ¼ Ð¼ÐµÑ‚Ð¾Ð´Ñ‹ ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð¿Ð¾Ð´Ð´ÐµÑ€Ð¶Ð¸Ð²Ð°ÐµÑ‚ $ga Ð¸Ð½ÑÑ‚Ð°Ð½Ñ
+                //ÐžÐ±Ñ‹Ñ‡Ð½Ð¾ ÑÑ‚Ð¾ Ñ‚Ð¸Ð¿Ð¾Ð²Ñ‹Ðµ Ð¼ÐµÑ‚Ð¾Ð´Ñ‹ Ñ‚Ð¸Ð¿Ð° GA::event
                 default:
                     unset($event->data['cid']);
                     
@@ -159,7 +159,7 @@ class PGQDaemonStatistic extends PGQConsumer
             }
             
             
-            //Çàïèñü ñîáûòèé â ëîã
+            //Ð—Ð°Ð¿Ð¸ÑÑŒ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ð¹ Ð² Ð»Ð¾Ð³
             if (is_object($ga) && method_exists($ga, 'getLastRequest')) {
                 require_once(ABS_PATH . "/classes/log.php");                                                                                                                                                                                                                                  
                 $log = new log('statistic/'.SERVER.'-%d%m%Y.log');
@@ -174,7 +174,7 @@ class PGQDaemonStatistic extends PGQConsumer
             }
             
         } catch (Exception $e) {
-            $message = 'Îøèáêà: ' . $e->getMessage();
+            $message = 'ÐžÑˆÐ¸Ð±ÐºÐ°: ' . $e->getMessage();
         }
         
         if ($message) {
@@ -186,7 +186,7 @@ class PGQDaemonStatistic extends PGQConsumer
             $log_message = sprintf(self::LOG_FORMAT, $event->type, $data, $message);
             $this->log->notice(iconv('CP1251', 'UTF-8', $log_message));
             
-            //Ïîâòîðèòü ÷åðåç 60 ñåê
+            //ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÑŒ Ñ‡ÐµÑ€ÐµÐ· 60 ÑÐµÐº
             //$event->retry_delay = 60;
             //return PGQ_EVENT_RETRY;
         }

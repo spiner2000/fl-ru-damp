@@ -3,12 +3,12 @@ if(!defined('IN_STDF')) {
     header("HTTP/1.0 404 Not Found");
     exit();
 }
-ob_start(); /*Шаблон используется в подстановке его в innerHTML через AJAX*/?>
+ob_start(); /*РЁР°Р±Р»РѕРЅ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ РїРѕРґСЃС‚Р°РЅРѕРІРєРµ РµРіРѕ РІ innerHTML С‡РµСЂРµР· AJAX*/?>
 <table class="wrap-izbr">
   <tr>
     <td>
       <div class="b-fon b-fon_bg_fff9bf b-fon_pad_10 b-fon__border_radius_3">
-            <span class="izbr-del" onclick="if(confirm('Вы действительно хотите удалить заметку?')) xajax_delNote(<?= $_SESSION['uid']?>, <?= $rec['uid']?>, <?=$type?>)"></span>
+            <span class="izbr-del" onclick="if(confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ Р·Р°РјРµС‚РєСѓ?')) xajax_delNote(<?= $_SESSION['uid']?>, <?= $rec['uid']?>, <?=$type?>)"></span>
             <span class="izbr-edit" onclick="xajax_getNotesForm(<?= $_SESSION['uid']?>, <?=$rec['uid']?>, <?=(int)$type?>)"></span><p class="text_notes_<?= $rec['uid']?>"><?= nl2br(reformat($note['n_text'], 19, 0, 0))?></p>
       </div>
     </td>
@@ -16,6 +16,6 @@ ob_start(); /*Шаблон используется в подстановке его в innerHTML через AJAX*/?>
 </table>
 <?php
 $html = ob_get_clean();
-$html = str_replace(array("\r", "\n"), "", $html); // Убираем переносы чтобы через AJAX не было проблем
+$html = str_replace(array("\r", "\n"), "", $html); // РЈР±РёСЂР°РµРј РїРµСЂРµРЅРѕСЃС‹ С‡С‚РѕР±С‹ С‡РµСЂРµР· AJAX РЅРµ Р±С‹Р»Рѕ РїСЂРѕР±Р»РµРј
 print($html);
 ?>

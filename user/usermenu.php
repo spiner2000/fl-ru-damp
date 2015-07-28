@@ -8,9 +8,9 @@ if(!defined('IN_STDF')) {
 
 <div class="b-menu b-menu_line">
     <?php if ($user->login == $_SESSION['login']) { ?>
-       <div class="b-menu__right-item"><a class="b-menu__link" href="/users/<?= $user->login ?>/setup/"><span class="b-icon b-icon__cont b-icon__cont_setfrl b-icon_top_-2"></span>Настройки</a></div>
+       <div class="b-menu__right-item"><a class="b-menu__link" href="/users/<?= $user->login ?>/setup/"><span class="b-icon b-icon__cont b-icon__cont_setfrl b-icon_top_-2"></span>РќР°СЃС‚СЂРѕР№РєРё</a></div>
     <?php } else if ( hasPermissions('users')) { ?>
-       <div class="b-menu__right-item"><a class="b-menu__link" href="/users/<?= $user->login ?>/setup/finance/"><span class="b-icon b-icon__cont b-icon__cont_setfrl b-icon_top_-2"></span>Финансы</a></div>
+       <div class="b-menu__right-item"><a class="b-menu__link" href="/users/<?= $user->login ?>/setup/finance/"><span class="b-icon b-icon__cont b-icon__cont_setfrl b-icon_top_-2"></span>Р¤РёРЅР°РЅСЃС‹</a></div>
     <?php } ?>
     <ul class="b-menu__list" data-menu="true" data-menu-descriptor="profile-nav" >
 				<?php if (substr($user->tabs, 0, 1) == 1 || hasPermissions('users')) { 
@@ -20,7 +20,7 @@ if(!defined('IN_STDF')) {
         }?>
         <li class="b-menu__item <?= $activ_tab == 1 ? 'b-menu__item_active' : ''; ?> b-menu_portfolio-item" <?= $activ_tab == 1 ? 'data-menu-opener="true" data-menu-descriptor="profile-nav"' : ''; ?>>
 			<a class="b-menu__link" href="/users/<?= $user->login ?>/portfolio/" title="<?= view_tab_name($user->tab_name_id) ?>">
-				<span class="b-menu__b1"><?= view_tab_name($user->tab_name_id) ?><?=((substr($user->tabs,0,1)==0 && hasPermissions('users'))?' [с]':'')?></span>
+				<span class="b-menu__b1"><?= view_tab_name($user->tab_name_id) ?><?=((substr($user->tabs,0,1)==0 && hasPermissions('users'))?' [СЃ]':'')?></span>
 			</a>
 		</li>
         <?php } ?>
@@ -34,8 +34,8 @@ if(!defined('IN_STDF')) {
             }    
         ?>        
         <li class="b-menu__item <?= $activ_tab == 2 ? 'b-menu__item_active' : ''; ?> b-menu_services-item" <?= $activ_tab == 2 ? 'data-menu-opener="true" data-menu-descriptor="profile-nav"' : ''; ?>>
-            <a class="b-menu__link" href="/users/<?= $user->login ?>/tu/" title="Типовые услуги">
-                <span class="b-menu__b1">Типовые услуги<?= (!$user->tabs[7] && $hasPerm) ? ' [c]' : '' ?></span>
+            <a class="b-menu__link" href="/users/<?= $user->login ?>/tu/" title="РўРёРїРѕРІС‹Рµ СѓСЃР»СѓРіРё">
+                <span class="b-menu__b1">РўРёРїРѕРІС‹Рµ СѓСЃР»СѓРіРё<?= (!$user->tabs[7] && $hasPerm) ? ' [c]' : '' ?></span>
             </a>
         </li> 
         <?php } ?> 
@@ -46,14 +46,14 @@ if(!defined('IN_STDF')) {
 							$ops_type='norisk';
 				} ?>
         <li class="b-menu__item <?= $activ_tab == 5 ? 'b-menu__item_active' : ''; ?> b-menu_testimonials-item" <?= $activ_tab == 5 ? 'data-menu-opener="true" data-menu-descriptor="profile-nav"' : ''; ?>>
-			<a class="b-menu__link" href="/users/<?= $user->login ?>/opinions/" title="Отзывы">
-				<span class="b-menu__b1">Отзывы</span>
+			<a class="b-menu__link" href="/users/<?= $user->login ?>/opinions/" title="РћС‚Р·С‹РІС‹">
+				<span class="b-menu__b1">РћС‚Р·С‹РІС‹</span>
 			</a>
 		</li>
         <?php if (substr($user->tabs, 2, 1) == 1) { ?>
         <li class="b-menu__item <?= $activ_tab == 3 ? 'b-menu__item_active' : ''; ?> b-menu_information-item" <?= $activ_tab == 3 ? 'data-menu-opener="true" data-menu-descriptor="profile-nav"' : ''; ?>>
-			<a class="b-menu__link" href="/users/<?= $user->login ?>/info/" title="Информация">
-				<span class="b-menu__b1">Информация</span>
+			<a class="b-menu__link" href="/users/<?= $user->login ?>/info/" title="РРЅС„РѕСЂРјР°С†РёСЏ">
+				<span class="b-menu__b1">РРЅС„РѕСЂРјР°С†РёСЏ</span>
 			</a>
 		</li>
 		<?php } ?>
@@ -65,8 +65,8 @@ if(!defined('IN_STDF')) {
 				}
 				?>
 		<li class="b-menu__item b-menu__item_last <?= $activ_tab == 6 ? 'b-menu__item_active' : ''; ?> b-menu_rating-item " <?= $activ_tab == 6 ? 'data-menu-opener="true" data-menu-descriptor="profile-nav"' : ''; ?>>
-			<a class="b-menu__link" href="/users/<?= $user->login ?>/rating/" title="Рейтинг">
-				<span class="b-menu__b1">Рейтинг<?=((substr($user->tabs,4,1)==0 && hasPermissions('users'))?' [с]':'')?></span>
+			<a class="b-menu__link" href="/users/<?= $user->login ?>/rating/" title="Р РµР№С‚РёРЅРі">
+				<span class="b-menu__b1">Р РµР№С‚РёРЅРі<?=((substr($user->tabs,4,1)==0 && hasPermissions('users'))?' [СЃ]':'')?></span>
 			</a>
 		</li>
 		<?php } ?>

@@ -4,7 +4,7 @@ $xajax->printJavascript('/xajax/');
 ?>
 
 <div class="b-layout b-layout__page">
-    <h1 class="b-page__title">Мои услуги</h1>
+    <h1 class="b-page__title">РњРѕРё СѓСЃР»СѓРіРё</h1>
     <div class="b-page__ipad b-page__iphone"><?php include($_SERVER['DOCUMENT_ROOT'] . "/bill/tpl.head_menu.php"); ?></div>
     <div class="b-layout__one b-layout__one_width_25ps b-layout__one_padbot_30 b-layout__right_float_right b-layout__one_width_full_ipad b-layout_padbot_10_ipad">
        <?php include($_SERVER['DOCUMENT_ROOT'] . "/bill/widget/tpl.score.php"); ?>
@@ -16,8 +16,8 @@ $xajax->printJavascript('/xajax/');
         <?php if($_SESSION['send_success']) { unset($_SESSION['send_success']); $hide_form = true;?>
             <div class="b-fon b-fon_padbot_10" id='send_success'>
                 <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-                    <span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Перевод денежных средств прошел успешно.<br/>
-                    <a href="javascript:void(0)" class="b-buttons__link" onclick="$('send_success').destroy(); $('sended_form').removeClass('b-layout__txt_hide');">Перевести еще раз</a>
+                    <span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>РџРµСЂРµРІРѕРґ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ РїСЂРѕС€РµР» СѓСЃРїРµС€РЅРѕ.<br/>
+                    <a href="javascript:void(0)" class="b-buttons__link" onclick="$('send_success').destroy(); $('sended_form').removeClass('b-layout__txt_hide');">РџРµСЂРµРІРµСЃС‚Рё РµС‰Рµ СЂР°Р·</a>
                 </div>
             </div>
         <?php } ?>
@@ -31,18 +31,18 @@ $xajax->printJavascript('/xajax/');
                             <table class="b-layout__table b-layout__table_width_full ">
                                 <tbody>
                                     <tr class="b-layout__tr">
-                                        <td class="b-layout__td b-layout__td_padbot_20"><div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Сумма</div></td>
+                                        <td class="b-layout__td b-layout__td_padbot_20"><div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">РЎСѓРјРјР°</div></td>
                                         <td class="b-layout__td b-layout__td_padleft_20 b-layout__td_padbot_20">
                                             <div class="b-combo b-combo_inline-block">
                                                 <div class="b-combo__input b-combo__input_width_200 <?= $bill->error['sum'] ? "b-combo__input_error" : ""?>">
                                                     <input type="text" id="sum" name="sum" maxlength="9" class="b-combo__input-text" size="80" style="text-align:right" value="<?= stripcslashes($bill->post['sum'])?>"> 
                                                 </div>
                                             </div>
-                                            <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_4"> руб.</div>                        
+                                            <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_4"> СЂСѓР±.</div>                        
                                         </td>
                                     </tr>
                                     <tr class="b-layout__tr">
-                                        <td class="b-layout__td b-layout__td_padbot_20"><div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Логин</div></td>
+                                        <td class="b-layout__td b-layout__td_padbot_20"><div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Р›РѕРіРёРЅ</div></td>
                                         <td class="b-layout__td b-layout__td_padleft_20 b-layout__td_padbot_20">
                                             <div class="b-combo">
                                                 <div class="b-combo__input b-combo__input_resize <?= $bill->error['login'] ? "b-combo__input_error" : ""?> b-combo__input_dropdown b-combo__input_width_200 b-combo__input_max-width_700 b-combo__input_arrow-user_yes b_combo__input_quantity_symbols_3  b_combo__input_request_id_getuserlist search_in_userlist <?= ($bill->post['uid'] > 0 ? "drop_down_default_" . $bill->post['uid'] : ""); ?>">
@@ -52,7 +52,7 @@ $xajax->printJavascript('/xajax/');
                                         </td>
                                     </tr>
                                     <tr class="b-layout__tr">
-                                        <td class="b-layout__td b-layout__td_padbot_20"><div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Комментарий</div></td>
+                                        <td class="b-layout__td b-layout__td_padbot_20"><div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">РљРѕРјРјРµРЅС‚Р°СЂРёР№</div></td>
                                         <td class="b-layout__td b-layout__td_padleft_20 b-layout__td_padbot_20">
                                             <div class="b-textarea <?= $bill->error['address'] ? "b-textarea_error" : ""?>">
                                                 <textarea rows="5" cols="80" id="comment" name="comment" class="b-textarea__textarea"><?=stripcslashes($bill->post['comment'])?></textarea>
@@ -63,13 +63,13 @@ $xajax->printJavascript('/xajax/');
                             </table>
                         </form>
                         <!--<div class="b-fon b-fon_bg_fff9bf b-fon_pad_10 b-fon_padleft_35">
-                            <div class="b-layout__txt b-layout__txt_fontsize_11">Введите логин получателя и сумму, которую вы собираетесь перевести.</div>
-                            <div class="b-layout__txt b-layout__txt_fontsize_11">Вы также можете добавить небольшой комментарий к переводу.</div>
-                            <div class="b-layout__txt b-layout__txt_fontsize_11">Деньги будут переведены мгновенно и без комиссии..</div>
+                            <div class="b-layout__txt b-layout__txt_fontsize_11">Р’РІРµРґРёС‚Рµ Р»РѕРіРёРЅ РїРѕР»СѓС‡Р°С‚РµР»СЏ Рё СЃСѓРјРјСѓ, РєРѕС‚РѕСЂСѓСЋ РІС‹ СЃРѕР±РёСЂР°РµС‚РµСЃСЊ РїРµСЂРµРІРµСЃС‚Рё.</div>
+                            <div class="b-layout__txt b-layout__txt_fontsize_11">Р’С‹ С‚Р°РєР¶Рµ РјРѕР¶РµС‚Рµ РґРѕР±Р°РІРёС‚СЊ РЅРµР±РѕР»СЊС€РѕР№ РєРѕРјРјРµРЅС‚Р°СЂРёР№ Рє РїРµСЂРµРІРѕРґСѓ.</div>
+                            <div class="b-layout__txt b-layout__txt_fontsize_11">Р”РµРЅСЊРіРё Р±СѓРґСѓС‚ РїРµСЂРµРІРµРґРµРЅС‹ РјРіРЅРѕРІРµРЅРЅРѕ Рё Р±РµР· РєРѕРјРёСЃСЃРёРё..</div>
                         </div>  -->
 
                         <div class="b-buttons b-buttons_padtop_20">
-                            <a href="javascript:void(0)" class="b-button  b-button_flat  b-button_flat_green" onclick="if(!$(this).hasClass('b-button_disabled')) { $(this).addClass('b-button_disabled'); $('send_money').submit(); }">Перевести</a>
+                            <a href="javascript:void(0)" class="b-button  b-button_flat  b-button_flat_green" onclick="if(!$(this).hasClass('b-button_disabled')) { $(this).addClass('b-button_disabled'); $('send_money').submit(); }">РџРµСЂРµРІРµСЃС‚Рё</a>
                         </div>
                     </td>
                 </tr>

@@ -1,26 +1,26 @@
 <?php
 
 /**
- * Валидация данных
+ * Р’Р°Р»РёРґР°С†РёСЏ РґР°РЅРЅС‹С…
  */
 class validation 
 {
     
-    const VALIDATION_MSG_SYMBOLS_INTERVAL               = 'Поле должно содержать от %d до %d символов';
-    const VALIDATION_MSG_REQUIRED                       = 'Заполните это поле';//'Обязательно для заполнения.'
-    const VALIDATION_MSG_REQUIRED_PRICE                 = 'Укажите стоимость';
-    const VALIDATION_MSG_PRICE_GREATER_THAN_EQUAL_TO    = 'Минимальная стоимость %s';//Стоимость должна быть более или равная %s
-    const VALIDATION_MSG_PRICE_LESS_THAN_EQUAL_TO       = 'Максимальная стоимость %s';//Стоимость должна быть менее или равна %s
-    const VALIDATION_MSG_REQUIRED_TIME                  = 'Укажите срок';//(более специфично?) Укажите срок выполнения работы.    
-    const VALIDATION_MSG_INTERVAL                       = 'Укажите от %s до %s';
-    const VALIDATION_MSG_CATEGORY_FROM_LIST             = 'Выберите категорию из списка';
-    const VALIDATION_MSG_MAX_TAGS                       = 'Укажите до %d разных ключевых слов';
-    const VALIDATION_MSG_BAD_LINK                       = 'Некорректная ссылка';
-    const VALIDATION_MSG_FROM_RADIO                     = 'Выберите подходящий вариант';
-    const VALIDATION_MSG_CITY_FROM_LIST                 = 'Выберите город из списка';
-    const VALIDATION_MSG_ONE_REQUIRED                   = 'Необходимо согласиться с условиями размещения';
-    const VALIDATION_MSG_FROM_LIST                      = 'Выберите из списка';
-    const VALIDATION_MSG_PRICE_MIN_TOTAL                = 'Минимальная стоимость %s <br/>c учетом всех скидок';
+    const VALIDATION_MSG_SYMBOLS_INTERVAL               = 'РџРѕР»Рµ РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ РѕС‚ %d РґРѕ %d СЃРёРјРІРѕР»РѕРІ';
+    const VALIDATION_MSG_REQUIRED                       = 'Р—Р°РїРѕР»РЅРёС‚Рµ СЌС‚Рѕ РїРѕР»Рµ';//'РћР±СЏР·Р°С‚РµР»СЊРЅРѕ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ.'
+    const VALIDATION_MSG_REQUIRED_PRICE                 = 'РЈРєР°Р¶РёС‚Рµ СЃС‚РѕРёРјРѕСЃС‚СЊ';
+    const VALIDATION_MSG_PRICE_GREATER_THAN_EQUAL_TO    = 'РњРёРЅРёРјР°Р»СЊРЅР°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ %s';//РЎС‚РѕРёРјРѕСЃС‚СЊ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»РµРµ РёР»Рё СЂР°РІРЅР°СЏ %s
+    const VALIDATION_MSG_PRICE_LESS_THAN_EQUAL_TO       = 'РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ %s';//РЎС‚РѕРёРјРѕСЃС‚СЊ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РјРµРЅРµРµ РёР»Рё СЂР°РІРЅР° %s
+    const VALIDATION_MSG_REQUIRED_TIME                  = 'РЈРєР°Р¶РёС‚Рµ СЃСЂРѕРє';//(Р±РѕР»РµРµ СЃРїРµС†РёС„РёС‡РЅРѕ?) РЈРєР°Р¶РёС‚Рµ СЃСЂРѕРє РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹.    
+    const VALIDATION_MSG_INTERVAL                       = 'РЈРєР°Р¶РёС‚Рµ РѕС‚ %s РґРѕ %s';
+    const VALIDATION_MSG_CATEGORY_FROM_LIST             = 'Р’С‹Р±РµСЂРёС‚Рµ РєР°С‚РµРіРѕСЂРёСЋ РёР· СЃРїРёСЃРєР°';
+    const VALIDATION_MSG_MAX_TAGS                       = 'РЈРєР°Р¶РёС‚Рµ РґРѕ %d СЂР°Р·РЅС‹С… РєР»СЋС‡РµРІС‹С… СЃР»РѕРІ';
+    const VALIDATION_MSG_BAD_LINK                       = 'РќРµРєРѕСЂСЂРµРєС‚РЅР°СЏ СЃСЃС‹Р»РєР°';
+    const VALIDATION_MSG_FROM_RADIO                     = 'Р’С‹Р±РµСЂРёС‚Рµ РїРѕРґС…РѕРґСЏС‰РёР№ РІР°СЂРёР°РЅС‚';
+    const VALIDATION_MSG_CITY_FROM_LIST                 = 'Р’С‹Р±РµСЂРёС‚Рµ РіРѕСЂРѕРґ РёР· СЃРїРёСЃРєР°';
+    const VALIDATION_MSG_ONE_REQUIRED                   = 'РќРµРѕР±С…РѕРґРёРјРѕ СЃРѕРіР»Р°СЃРёС‚СЊСЃСЏ СЃ СѓСЃР»РѕРІРёСЏРјРё СЂР°Р·РјРµС‰РµРЅРёСЏ';
+    const VALIDATION_MSG_FROM_LIST                      = 'Р’С‹Р±РµСЂРёС‚Рµ РёР· СЃРїРёСЃРєР°';
+    const VALIDATION_MSG_PRICE_MIN_TOTAL                = 'РњРёРЅРёРјР°Р»СЊРЅР°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ %s <br/>c СѓС‡РµС‚РѕРј РІСЃРµС… СЃРєРёРґРѕРє';
             
     
     
@@ -28,7 +28,7 @@ class validation
      * MB support
      * @var bool
      */
-    private $mb_enabled = FALSE;//Отключаю так как на сервере FL mb_strlen считает не корректно
+    private $mb_enabled = FALSE;//РћС‚РєР»СЋС‡Р°СЋ С‚Р°Рє РєР°Рє РЅР° СЃРµСЂРІРµСЂРµ FL mb_strlen СЃС‡РёС‚Р°РµС‚ РЅРµ РєРѕСЂСЂРµРєС‚РЅРѕ
     
 
 
@@ -40,12 +40,12 @@ class validation
     
     /**
      * 
-     * Проверяем и парсим превьюшки и видео по ссылке
-     * Спасибо за код https://gist.github.com/bezumkin/4243590
+     * РџСЂРѕРІРµСЂСЏРµРј Рё РїР°СЂСЃРёРј РїСЂРµРІСЊСЋС€РєРё Рё РІРёРґРµРѕ РїРѕ СЃСЃС‹Р»РєРµ
+     * РЎРїР°СЃРёР±Рѕ Р·Р° РєРѕРґ https://gist.github.com/bezumkin/4243590
      * 
-     * @param string $url       - ссылка на видео
-     * @param type $thumb_id    - индекс превьюшки
-     * @return array('video' - url для встраивания, 'image' - массив или одна ссылка на картинку)
+     * @param string $url       - СЃСЃС‹Р»РєР° РЅР° РІРёРґРµРѕ
+     * @param type $thumb_id    - РёРЅРґРµРєСЃ РїСЂРµРІСЊСЋС€РєРё
+     * @return array('video' - url РґР»СЏ РІСЃС‚СЂР°РёРІР°РЅРёСЏ, 'image' - РјР°СЃСЃРёРІ РёР»Рё РѕРґРЅР° СЃСЃС‹Р»РєР° РЅР° РєР°СЂС‚РёРЅРєСѓ)
      */
     public function video_validate_with_thumbs($url, $thumb_id = null){
         
@@ -121,7 +121,7 @@ class validation
             }
             
             /* 
-            //Чет не пашет
+            //Р§РµС‚ РЅРµ РїР°С€РµС‚
             if ($xml = simplexml_load_file('http://vimeo.com/api/v2/video/'.$url_id.'.xml')) 
             {
                  //print_r($xml);
@@ -185,17 +185,17 @@ class validation
     
     /**
      * 
-     * Валидация ссылки с Youtube/Rutube/Vimeo
+     * Р’Р°Р»РёРґР°С†РёСЏ СЃСЃС‹Р»РєРё СЃ Youtube/Rutube/Vimeo
      * 
-     * @param   string          $url   ссылка, которую нужно проверить
-     * @return  string|boolean         если валидация успешна, возвращает правильно отредактированную ссылку, или FALSE
+     * @param   string          $url   СЃСЃС‹Р»РєР°, РєРѕС‚РѕСЂСѓСЋ РЅСѓР¶РЅРѕ РїСЂРѕРІРµСЂРёС‚СЊ
+     * @return  string|boolean         РµСЃР»Рё РІР°Р»РёРґР°С†РёСЏ СѓСЃРїРµС€РЅР°, РІРѕР·РІСЂР°С‰Р°РµС‚ РїСЂР°РІРёР»СЊРЅРѕ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРЅСѓСЋ СЃСЃС‹Р»РєСѓ, РёР»Рё FALSE
      * 
      * 
-     * форматы ссылок на youtube
-     * http://www.youtube.com/watch?feature=player_detailpage&v=hZI-LMHYU48 - не встраиваемая, надо переделывать
-     * http://www.youtube.com/watch?feature=player_detailpage&v=hZI-LMHYU48#t=7s - тоже не встраиваемая
+     * С„РѕСЂРјР°С‚С‹ СЃСЃС‹Р»РѕРє РЅР° youtube
+     * http://www.youtube.com/watch?feature=player_detailpage&v=hZI-LMHYU48 - РЅРµ РІСЃС‚СЂР°РёРІР°РµРјР°СЏ, РЅР°РґРѕ РїРµСЂРµРґРµР»С‹РІР°С‚СЊ
+     * http://www.youtube.com/watch?feature=player_detailpage&v=hZI-LMHYU48#t=7s - С‚РѕР¶Рµ РЅРµ РІСЃС‚СЂР°РёРІР°РµРјР°СЏ
      * http://www.youtube.com/watch?v=hZI-LMHYU48&feature=g-logo&context=G295d7c5FOAAAAAAAAAA
-     * эти три вида преобразуем в формат - http://www.youtube.com/watch?v=hZI-LMHYU48
+     * СЌС‚Рё С‚СЂРё РІРёРґР° РїСЂРµРѕР±СЂР°Р·СѓРµРј РІ С„РѕСЂРјР°С‚ - http://www.youtube.com/watch?v=hZI-LMHYU48
      * http://youtu.be/hZI-LMHYU48
      */
     public function video_validate($url){
@@ -217,7 +217,7 @@ class validation
         
         $REGEXP_IS_VIMEO            = "/^((?:http|https):\/\/(?:www\.)?vimeo\.com\/[0-9]+)/i";
         
-        //@todo: взято со старого сайта - непонятно зачем нужны эти замены? для красоты урла? 
+        //@todo: РІР·СЏС‚Рѕ СЃРѕ СЃС‚Р°СЂРѕРіРѕ СЃР°Р№С‚Р° - РЅРµРїРѕРЅСЏС‚РЅРѕ Р·Р°С‡РµРј РЅСѓР¶РЅС‹ СЌС‚Рё Р·Р°РјРµРЅС‹? РґР»СЏ РєСЂР°СЃРѕС‚С‹ СѓСЂР»Р°? 
         $REGEXP_REPLACE_PROTOCOL    = function($url){return $url; /*preg_replace(array("/^http:\/\/www\./", "/^https:\/\/www\./", "/^http:\/\//"), "https://", $url);*/};
         $REGEXP_REPLACE_PROTOCOL2   = function($url){return $url; /*preg_replace(array("/^http:\/\/www\./", "/^https:\/\/www\./", "/^https:\/\//"), "http://", $url);*/};
         
@@ -257,10 +257,10 @@ class validation
     
     
      /**
-    * Валидация ссылки с Youtube/Rutube/Vimeo
+    * Р’Р°Р»РёРґР°С†РёСЏ СЃСЃС‹Р»РєРё СЃ Youtube/Rutube/Vimeo
     * 
-    * @param   string          $url   ссылка, которую нужно проверить
-    * @return  string|boolean  если валидация успешна, возвращает правильно отредактированную ссылку, или FALSE
+    * @param   string          $url   СЃСЃС‹Р»РєР°, РєРѕС‚РѕСЂСѓСЋ РЅСѓР¶РЅРѕ РїСЂРѕРІРµСЂРёС‚СЊ
+    * @return  string|boolean  РµСЃР»Рё РІР°Р»РёРґР°С†РёСЏ СѓСЃРїРµС€РЅР°, РІРѕР·РІСЂР°С‰Р°РµС‚ РїСЂР°РІРёР»СЊРЅРѕ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРЅСѓСЋ СЃСЃС‹Р»РєСѓ, РёР»Рё FALSE
     */
     /*
     function video_validate($url) {
@@ -278,11 +278,11 @@ class validation
         }
         return FALSE;
         
-        // форматы ссылок на youtube
-        // http://www.youtube.com/watch?feature=player_detailpage&v=hZI-LMHYU48 - не встраиваемая, надо переделывать
-        // http://www.youtube.com/watch?feature=player_detailpage&v=hZI-LMHYU48#t=7s - тоже не встраиваемая
+        // С„РѕСЂРјР°С‚С‹ СЃСЃС‹Р»РѕРє РЅР° youtube
+        // http://www.youtube.com/watch?feature=player_detailpage&v=hZI-LMHYU48 - РЅРµ РІСЃС‚СЂР°РёРІР°РµРјР°СЏ, РЅР°РґРѕ РїРµСЂРµРґРµР»С‹РІР°С‚СЊ
+        // http://www.youtube.com/watch?feature=player_detailpage&v=hZI-LMHYU48#t=7s - С‚РѕР¶Рµ РЅРµ РІСЃС‚СЂР°РёРІР°РµРјР°СЏ
         // http://www.youtube.com/watch?v=hZI-LMHYU48&feature=g-logo&context=G295d7c5FOAAAAAAAAAA
-        // эти три вида преобразуем в формат - http://www.youtube.com/watch?v=hZI-LMHYU48
+        // СЌС‚Рё С‚СЂРё РІРёРґР° РїСЂРµРѕР±СЂР°Р·СѓРµРј РІ С„РѕСЂРјР°С‚ - http://www.youtube.com/watch?v=hZI-LMHYU48
         // http://youtu.be/hZI-LMHYU48
     }   
     */

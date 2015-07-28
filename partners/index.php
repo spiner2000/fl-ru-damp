@@ -22,7 +22,7 @@ if (isset($_POST['email'])) {
         exit();
     }
 
-    // Проверка правильности ввода email-адреса
+    // РџСЂРѕРІРµСЂРєР° РїСЂР°РІРёР»СЊРЅРѕСЃС‚Рё РІРІРѕРґР° email-Р°РґСЂРµСЃР°
     if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $form_error = true;
     }

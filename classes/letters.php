@@ -1,43 +1,43 @@
 <?php
 /**
- * Подключаем файл с основными функциями системы
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» СЃ РѕСЃРЅРѕРІРЅС‹РјРё С„СѓРЅРєС†РёСЏРјРё СЃРёСЃС‚РµРјС‹
  */
 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/stdf.php';
 /**
- * Класс для работы с пистмами в админке
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РїРёСЃС‚РјР°РјРё РІ Р°РґРјРёРЅРєРµ
  */
 class letters {
 
     /**
-     * Максимально допустимый размер вложенных файлов
+     * РњР°РєСЃРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјС‹Р№ СЂР°Р·РјРµСЂ РІР»РѕР¶РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ
      *
      */
     const MAX_FILE_SIZE = 100097152;
 
     /**
-     * Соответствие статусам цветам которыми они отображаются
+     * РЎРѕРѕС‚РІРµС‚СЃС‚РІРёРµ СЃС‚Р°С‚СѓСЃР°Рј С†РІРµС‚Р°Рј РєРѕС‚РѕСЂС‹РјРё РѕРЅРё РѕС‚РѕР±СЂР°Р¶Р°СЋС‚СЃСЏ
      *
      * @var array
      */
     public static $status_colors = array('0'=>'41', '1'=>'6db335', '2'=>'6db335', '3'=>'6db335', '4'=>'6db335', '5'=>'c7271e', '6'=>'c7271e', '7'=>'c7271e', '8'=>'6db335', '9'=>'41', '10'=>'c7271e', '11'=>'6db335', '12'=>'41');
 
     /**
-     * Соответствие статусам иконок которыми они отображаются
+     * РЎРѕРѕС‚РІРµС‚СЃС‚РІРёРµ СЃС‚Р°С‚СѓСЃР°Рј РёРєРѕРЅРѕРє РєРѕС‚РѕСЂС‹РјРё РѕРЅРё РѕС‚РѕР±СЂР°Р¶Р°СЋС‚СЃСЏ
      *
      * @var array
      */
     public static $status_icons = array('0'=>'sbr_sempty', '1'=>'sbr_glet', '2'=>'sbr_glet', '3'=>'sbr_glet', '4'=>'sbr_glet', '5'=>'sbr_rlet', '6'=>'sbr_rtime', '7'=>'sbr_rtime', '8'=>'sbr_sok', '9'=>'sbr_sempty', '10'=>'sbr_rlet', '11'=>'sbr_sok', '12'=>'sbr_sempty');
 
     /**
-     * Поля для отслеживания истории изменения
+     * РџРѕР»СЏ РґР»СЏ РѕС‚СЃР»РµР¶РёРІР°РЅРёСЏ РёСЃС‚РѕСЂРёРё РёР·РјРµРЅРµРЅРёСЏ
      *
      * @var array
      */
-    public static $history_fields = array(1=>'название', 2=>'группу', 3=>'сторону 1', 4=>'сторону 2', 5=>'сторону 3', 6=>'статус стороны 1', 7=>'статус стороны 2', 8=>'статус стороны 3', 9=>'тип доставки', 10=>'стоимость доставки', 11=>'подчиненный документ', 12=>'примечание');
+    public static $history_fields = array(1=>'РЅР°Р·РІР°РЅРёРµ', 2=>'РіСЂСѓРїРїСѓ', 3=>'СЃС‚РѕСЂРѕРЅСѓ 1', 4=>'СЃС‚РѕСЂРѕРЅСѓ 2', 5=>'СЃС‚РѕСЂРѕРЅСѓ 3', 6=>'СЃС‚Р°С‚СѓСЃ СЃС‚РѕСЂРѕРЅС‹ 1', 7=>'СЃС‚Р°С‚СѓСЃ СЃС‚РѕСЂРѕРЅС‹ 2', 8=>'СЃС‚Р°С‚СѓСЃ СЃС‚РѕСЂРѕРЅС‹ 3', 9=>'С‚РёРї РґРѕСЃС‚Р°РІРєРё', 10=>'СЃС‚РѕРёРјРѕСЃС‚СЊ РґРѕСЃС‚Р°РІРєРё', 11=>'РїРѕРґС‡РёРЅРµРЅРЅС‹Р№ РґРѕРєСѓРјРµРЅС‚', 12=>'РїСЂРёРјРµС‡Р°РЅРёРµ');
 
     
     /**
-     * Количество документов (всего, без LIMIT и OFFSET) после выполнения self::getLetters
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ РґРѕРєСѓРјРµРЅС‚РѕРІ (РІСЃРµРіРѕ, Р±РµР· LIMIT Рё OFFSET) РїРѕСЃР»Рµ РІС‹РїРѕР»РЅРµРЅРёСЏ self::getLetters
      * 
      * @var integer
      */
@@ -45,13 +45,13 @@ class letters {
     
 
     /**
-     * Получить список документов
+     * РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РґРѕРєСѓРјРµРЅС‚РѕРІ
      *
-     * @param  integer  $type     Тип корреспонденции (Все, Исходящие, Входящие, В обработке, Архив)
-     * @param  array    $filter   Данные фильтра
-     * @param  integer  $limit    Количество документов, которые нужно получить (0 - все)
-     * @param  ingeter  $offset   Смещение от начала списка
-     * @return array              Список документов
+     * @param  integer  $type     РўРёРї РєРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС†РёРё (Р’СЃРµ, РСЃС…РѕРґСЏС‰РёРµ, Р’С…РѕРґСЏС‰РёРµ, Р’ РѕР±СЂР°Р±РѕС‚РєРµ, РђСЂС…РёРІ)
+     * @param  array    $filter   Р”Р°РЅРЅС‹Рµ С„РёР»СЊС‚СЂР°
+     * @param  integer  $limit    РљРѕР»РёС‡РµСЃС‚РІРѕ РґРѕРєСѓРјРµРЅС‚РѕРІ, РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ (0 - РІСЃРµ)
+     * @param  ingeter  $offset   РЎРјРµС‰РµРЅРёРµ РѕС‚ РЅР°С‡Р°Р»Р° СЃРїРёСЃРєР°
+     * @return array              РЎРїРёСЃРѕРє РґРѕРєСѓРјРµРЅС‚РѕРІ
      */
     function getLetters($type = 0, $filter = null, $limit = '', $offset = '') {
         global $DB;
@@ -90,7 +90,7 @@ class letters {
             }
         }
 
-        if($filter['letters_filter_search_fld2']=='Название группы, документа или ID') {
+        if($filter['letters_filter_search_fld2']=='РќР°Р·РІР°РЅРёРµ РіСЂСѓРїРїС‹, РґРѕРєСѓРјРµРЅС‚Р° РёР»Рё ID') {
             $filter['letters_filter_search_fld2'] = '';
         }
             
@@ -265,9 +265,9 @@ class letters {
     }
 
     /**
-     * Удалить документ
+     * РЈРґР°Р»РёС‚СЊ РґРѕРєСѓРјРµРЅС‚
      *
-     * @param    integer    $id    ID документа
+     * @param    integer    $id    ID РґРѕРєСѓРјРµРЅС‚Р°
      */
     function delDocument($id) {
         global $DB;
@@ -288,9 +288,9 @@ class letters {
     }
 
     /**
-     * Формирование документов
+     * Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ РґРѕРєСѓРјРµРЅС‚РѕРІ
      *
-     * @param    array    $ids    ID документов
+     * @param    array    $ids    ID РґРѕРєСѓРјРµРЅС‚РѕРІ
      */
     function processDocs($ids) {
         global $DB;
@@ -300,11 +300,11 @@ class letters {
     }
 
     /**
-     * Формирование документов для отправки
+     * Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ РґРѕРєСѓРјРµРЅС‚РѕРІ РґР»СЏ РѕС‚РїСЂР°РІРєРё
      *
-     * @param    array    $d_ids    ID документов
-     * @param    array    $u_ids    ID получателей
-     * @param    array    $delivery_ids    ID сопособов доставки
+     * @param    array    $d_ids    ID РґРѕРєСѓРјРµРЅС‚РѕРІ
+     * @param    array    $u_ids    ID РїРѕР»СѓС‡Р°С‚РµР»РµР№
+     * @param    array    $delivery_ids    ID СЃРѕРїРѕСЃРѕР±РѕРІ РґРѕСЃС‚Р°РІРєРё
      */
     function processSendDocs($d_ids, $u_ids, $delivery_ids) {
         global $DB;
@@ -345,10 +345,10 @@ class letters {
     }
 
     /**
-     * Расчитать стоимость доставки документов
+     * Р Р°СЃС‡РёС‚Р°С‚СЊ СЃС‚РѕРёРјРѕСЃС‚СЊ РґРѕСЃС‚Р°РІРєРё РґРѕРєСѓРјРµРЅС‚РѕРІ
      *
-     * @param    array    $ids    ID документов
-     * @return   float            Стоимость доставки
+     * @param    array    $ids    ID РґРѕРєСѓРјРµРЅС‚РѕРІ
+     * @return   float            РЎС‚РѕРёРјРѕСЃС‚СЊ РґРѕСЃС‚Р°РІРєРё
      */
     function calcDeliveryCost($ids) {
         global $DB;
@@ -369,10 +369,10 @@ class letters {
     }
 
     /**
-     * Обновить статусы документов(массовое)
+     * РћР±РЅРѕРІРёС‚СЊ СЃС‚Р°С‚СѓСЃС‹ РґРѕРєСѓРјРµРЅС‚РѕРІ(РјР°СЃСЃРѕРІРѕРµ)
      *
      * @param    array    $ids_docs        ID
-     * @param    array    $ids_statuses    Статусы
+     * @param    array    $ids_statuses    РЎС‚Р°С‚СѓСЃС‹
      */
     function updateMassStatus($ids_docs, $ids_statuses) {
         global $DB;
@@ -418,10 +418,10 @@ class letters {
     }
 
     /**
-     * Изменение свойства "Документ без нашего экземпляра"
+     * РР·РјРµРЅРµРЅРёРµ СЃРІРѕР№СЃС‚РІР° "Р”РѕРєСѓРјРµРЅС‚ Р±РµР· РЅР°С€РµРіРѕ СЌРєР·РµРјРїР»СЏСЂР°"
      *
-     * @param     integer    $id            ID документа
-     * @param     boolean    $is_checked    статус свойства
+     * @param     integer    $id            ID РґРѕРєСѓРјРµРЅС‚Р°
+     * @param     boolean    $is_checked    СЃС‚Р°С‚СѓСЃ СЃРІРѕР№СЃС‚РІР°
      */
     function changeWithoutourdocs($id, $is_checked) {
         global $DB;
@@ -431,10 +431,10 @@ class letters {
     }
 
     /**
-     * Обновить стоимость доставки документов(массовое)
+     * РћР±РЅРѕРІРёС‚СЊ СЃС‚РѕРёРјРѕСЃС‚СЊ РґРѕСЃС‚Р°РІРєРё РґРѕРєСѓРјРµРЅС‚РѕРІ(РјР°СЃСЃРѕРІРѕРµ)
      *
-     * @param    array    $ids_docs        ID документов
-     * @param    float    $cost            Стоимость доставки
+     * @param    array    $ids_docs        ID РґРѕРєСѓРјРµРЅС‚РѕРІ
+     * @param    float    $cost            РЎС‚РѕРёРјРѕСЃС‚СЊ РґРѕСЃС‚Р°РІРєРё
      */
     function updateMassDeliveryCost($ids_docs, $cost) {
         global $DB;
@@ -453,10 +453,10 @@ class letters {
     }
 
     /**
-     * Обновить дату документов(массовое)
+     * РћР±РЅРѕРІРёС‚СЊ РґР°С‚Сѓ РґРѕРєСѓРјРµРЅС‚РѕРІ(РјР°СЃСЃРѕРІРѕРµ)
      *
-     * @param    array    $ids_docs        ID документов
-     * @param    atring   $date            Дата
+     * @param    array    $ids_docs        ID РґРѕРєСѓРјРµРЅС‚РѕРІ
+     * @param    atring   $date            Р”Р°С‚Р°
      */
     function updateMassDate($ids_docs, $date) {
         global $DB;
@@ -466,10 +466,10 @@ class letters {
     }
 
     /**
-     * Получить список статусов документов
+     * РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє СЃС‚Р°С‚СѓСЃРѕРІ РґРѕРєСѓРјРµРЅС‚РѕРІ
      *
-     * @param    array    $ids    ID документов
-     * @return   array            Статусы
+     * @param    array    $ids    ID РґРѕРєСѓРјРµРЅС‚РѕРІ
+     * @return   array            РЎС‚Р°С‚СѓСЃС‹
      */
     function getDocumentsStatuses($ids) {
         global $DB;
@@ -482,7 +482,7 @@ class letters {
                 foreach($qtstatuses as $tstatus) { 
                     $tstatuses[$tstatus['id']] = $tstatus['title'];
                 }
-                $tstatuses[0] = 'Не выбрано';
+                $tstatuses[0] = 'РќРµ РІС‹Р±СЂР°РЅРѕ';
                 foreach($qstatuses as $status) {
                     if($status['user_1']) { $statuses[intval($status['user_status_1'])] = $tstatuses[intval($status['user_status_1'])]; }
                     if($status['user_2']) { $statuses[intval($status['user_status_2'])] = $tstatuses[intval($status['user_status_2'])]; }
@@ -494,10 +494,10 @@ class letters {
     }
 
     /**
-     * Получить документ
+     * РџРѕР»СѓС‡РёС‚СЊ РґРѕРєСѓРјРµРЅС‚
      *
-     * @param    integer    $id    ID документа
-     * @return   array             Информация о документе
+     * @param    integer    $id    ID РґРѕРєСѓРјРµРЅС‚Р°
+     * @return   array             РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РґРѕРєСѓРјРµРЅС‚Рµ
      */
     function getDocument($id) {
         global $DB;
@@ -517,10 +517,10 @@ class letters {
     }
 
     /**
-     * Получить документы по IS
+     * РџРѕР»СѓС‡РёС‚СЊ РґРѕРєСѓРјРµРЅС‚С‹ РїРѕ IS
      *
-     * @param    integer    $ids   ID документов
-     * @return   array             Информация о документах
+     * @param    integer    $ids   ID РґРѕРєСѓРјРµРЅС‚РѕРІ
+     * @return   array             РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РґРѕРєСѓРјРµРЅС‚Р°С…
      */
     function getDocumentsByID($ids) {
         global $DB;
@@ -540,9 +540,9 @@ class letters {
     }
 
     /**
-     * Получить список доступных статусов
+     * РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РґРѕСЃС‚СѓРїРЅС‹С… СЃС‚Р°С‚СѓСЃРѕРІ
      *
-     * @return    array    Данные о статусах
+     * @return    array    Р”Р°РЅРЅС‹Рµ Рѕ СЃС‚Р°С‚СѓСЃР°С…
      */
     function getStatuses() {
         global $DB;
@@ -554,10 +554,10 @@ class letters {
     }
 
     /**
-     * Обновить поля документа
+     * РћР±РЅРѕРІРёС‚СЊ РїРѕР»СЏ РґРѕРєСѓРјРµРЅС‚Р°
      *
-     * @param    integer    $id    ID документа
-     * @param    array      $data  Данные для обновления
+     * @param    integer    $id    ID РґРѕРєСѓРјРµРЅС‚Р°
+     * @param    array      $data  Р”Р°РЅРЅС‹Рµ РґР»СЏ РѕР±РЅРѕРІР»РµРЅРёСЏ
      */
     function updateFields($id, $data) {
         global $DB;
@@ -570,9 +570,9 @@ class letters {
     }
 
     /**
-     * Получить список доступных способов доставки
+     * РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РґРѕСЃС‚СѓРїРЅС‹С… СЃРїРѕСЃРѕР±РѕРІ РґРѕСЃС‚Р°РІРєРё
      *
-     * @return    array    Данные о способах доставки
+     * @return    array    Р”Р°РЅРЅС‹Рµ Рѕ СЃРїРѕСЃРѕР±Р°С… РґРѕСЃС‚Р°РІРєРё
      */
     function getDeliveries() {
         global $DB;
@@ -584,11 +584,11 @@ class letters {
     }
 
     /**
-     * Получить список груп
+     * РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РіСЂСѓРї
      *
-     * @param     string   Строка для поиска группы по названию
-     * @param     integer  Сколько груп получить
-     * @return    array    Данные о группах
+     * @param     string   РЎС‚СЂРѕРєР° РґР»СЏ РїРѕРёСЃРєР° РіСЂСѓРїРїС‹ РїРѕ РЅР°Р·РІР°РЅРёСЋ
+     * @param     integer  РЎРєРѕР»СЊРєРѕ РіСЂСѓРї РїРѕР»СѓС‡РёС‚СЊ
+     * @return    array    Р”Р°РЅРЅС‹Рµ Рѕ РіСЂСѓРїРїР°С…
      */
     function getGroups($word = null, $limit = 'ALL') {
         global $DB;
@@ -602,10 +602,10 @@ class letters {
     }
 
     /**
-     * Получить групу
+     * РџРѕР»СѓС‡РёС‚СЊ РіСЂСѓРїСѓ
      *
-     * @param     integer $id    ID группы
-     * @return    array    Данные о группе
+     * @param     integer $id    ID РіСЂСѓРїРїС‹
+     * @return    array    Р”Р°РЅРЅС‹Рµ Рѕ РіСЂСѓРїРїРµ
      */
     function getGroup($id) {
         global $DB;
@@ -617,11 +617,11 @@ class letters {
     }
 
     /**
-     * Получить список документов
+     * РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РґРѕРєСѓРјРµРЅС‚РѕРІ
      *
-     * @param     string   Строка для поиска документа по ID
-     * @param     integer  Сколько документов получить
-     * @return    array    Данные о документах
+     * @param     string   РЎС‚СЂРѕРєР° РґР»СЏ РїРѕРёСЃРєР° РґРѕРєСѓРјРµРЅС‚Р° РїРѕ ID
+     * @param     integer  РЎРєРѕР»СЊРєРѕ РґРѕРєСѓРјРµРЅС‚РѕРІ РїРѕР»СѓС‡РёС‚СЊ
+     * @return    array    Р”Р°РЅРЅС‹Рµ Рѕ РґРѕРєСѓРјРµРЅС‚Р°С…
      */
     function getDocuments($word = null, $limit = 'ALL') {
         global $DB;
@@ -645,11 +645,11 @@ class letters {
     }
 
     /**
-     * Получить список компаний
+     * РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РєРѕРјРїР°РЅРёР№
      *
-     * @param     string   Строка для поиска компании
-     * @param     integer  Сколько компаний получить
-     * @return    array    Данные о компаниях
+     * @param     string   РЎС‚СЂРѕРєР° РґР»СЏ РїРѕРёСЃРєР° РєРѕРјРїР°РЅРёРё
+     * @param     integer  РЎРєРѕР»СЊРєРѕ РєРѕРјРїР°РЅРёР№ РїРѕР»СѓС‡РёС‚СЊ
+     * @return    array    Р”Р°РЅРЅС‹Рµ Рѕ РєРѕРјРїР°РЅРёСЏС…
      */
     function getCompanies($word = null, $limit = 'ALL') {
         global $DB;
@@ -664,11 +664,11 @@ class letters {
     }
 
     /**
-     * Поиск документов
+     * РџРѕРёСЃРє РґРѕРєСѓРјРµРЅС‚РѕРІ
      *
-     * @param     string   Строка для поиска документа
-     * @param     integer  Сколько документов получить
-     * @return    array    Данные о документах
+     * @param     string   РЎС‚СЂРѕРєР° РґР»СЏ РїРѕРёСЃРєР° РґРѕРєСѓРјРµРЅС‚Р°
+     * @param     integer  РЎРєРѕР»СЊРєРѕ РґРѕРєСѓРјРµРЅС‚РѕРІ РїРѕР»СѓС‡РёС‚СЊ
+     * @return    array    Р”Р°РЅРЅС‹Рµ Рѕ РґРѕРєСѓРјРµРЅС‚Р°С…
      */
     function getSearchDocuments($word = null, $limit = 'ALL') {
         global $DB;
@@ -700,10 +700,10 @@ class letters {
     }
 
     /**
-     * Проверка и если группы такой нет, то создание
+     * РџСЂРѕРІРµСЂРєР° Рё РµСЃР»Рё РіСЂСѓРїРїС‹ С‚Р°РєРѕР№ РЅРµС‚, С‚Рѕ СЃРѕР·РґР°РЅРёРµ
      *
-     * @param    string    $title    Название группы
-     * @return   integer             ID группы
+     * @param    string    $title    РќР°Р·РІР°РЅРёРµ РіСЂСѓРїРїС‹
+     * @return   integer             ID РіСЂСѓРїРїС‹
      */
     function checkCreateGroup($title) {
         global $DB;
@@ -717,10 +717,10 @@ class letters {
     }
 
     /**
-     * Добавление нового документа
+     * Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ РґРѕРєСѓРјРµРЅС‚Р°
      *
-     * @param    array    $data    Данные документа
-     * @return   integer           ID документа
+     * @param    array    $data    Р”Р°РЅРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚Р°
+     * @return   integer           ID РґРѕРєСѓРјРµРЅС‚Р°
      */
     function addDocument($data) {
         global $DB;
@@ -873,9 +873,9 @@ class letters {
     }
 
     /**
-     * Удаление шаблона
+     * РЈРґР°Р»РµРЅРёРµ С€Р°Р±Р»РѕРЅР°
      *
-     * @param    integer    $id    ID шаблона
+     * @param    integer    $id    ID С€Р°Р±Р»РѕРЅР°
      */
     function delTemplate($id) {
         global $DB;
@@ -886,10 +886,10 @@ class letters {
     }
 
     /**
-     * Получить информацию о шаблоне
+     * РџРѕР»СѓС‡РёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ С€Р°Р±Р»РѕРЅРµ
      *
-     * @param    integer    $id     ID шаблона
-     * @return   array              Шаблон
+     * @param    integer    $id     ID С€Р°Р±Р»РѕРЅР°
+     * @return   array              РЁР°Р±Р»РѕРЅ
      */
     function getTemplate($id) {
         global $DB;
@@ -901,9 +901,9 @@ class letters {
     }
 
     /**
-     * Обновить информацию о шаблоне
+     * РћР±РЅРѕРІРёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ С€Р°Р±Р»РѕРЅРµ
      *
-     * @param    array    $data     Шаблон
+     * @param    array    $data     РЁР°Р±Р»РѕРЅ
      */
     function updateTemplate($data) {
         global $DB;
@@ -912,9 +912,9 @@ class letters {
     }
 
     /**
-     * Удалить документы из шаблона
+     * РЈРґР°Р»РёС‚СЊ РґРѕРєСѓРјРµРЅС‚С‹ РёР· С€Р°Р±Р»РѕРЅР°
      *
-     * @param    integer    $id     Шаблон
+     * @param    integer    $id     РЁР°Р±Р»РѕРЅ
      */
     function delTemplateDocs($id) {
         global $DB;
@@ -923,11 +923,11 @@ class letters {
     }
 
     /**
-     * Добавление нового документа в шаблон
+     * Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ РґРѕРєСѓРјРµРЅС‚Р° РІ С€Р°Р±Р»РѕРЅ
      *
-     * @param    integer  $tpl     ID шаблона
-     * @param    array    $data    Данные шаблона
-     * @return   integer           ID документа
+     * @param    integer  $tpl     ID С€Р°Р±Р»РѕРЅР°
+     * @param    array    $data    Р”Р°РЅРЅС‹Рµ С€Р°Р±Р»РѕРЅР°
+     * @return   integer           ID РґРѕРєСѓРјРµРЅС‚Р°
      */
     function addTemplateDoc($data) {
         global $DB;
@@ -1070,10 +1070,10 @@ class letters {
     }
 
     /**
-     * Добавление нового шаблона
+     * Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ С€Р°Р±Р»РѕРЅР°
      *
-     * @param    string    $title    Название
-     * @return   integer             ID шаблона
+     * @param    string    $title    РќР°Р·РІР°РЅРёРµ
+     * @return   integer             ID С€Р°Р±Р»РѕРЅР°
     */
     function addTemplate($title) {
         global $DB;
@@ -1083,10 +1083,10 @@ class letters {
     }
 
     /**
-     * Изменение документа
+     * РР·РјРµРЅРµРЅРёРµ РґРѕРєСѓРјРµРЅС‚Р°
      *
-     * @param    integer  $id      ID документа
-     * @param    array    $data    Данные документа
+     * @param    integer  $id      ID РґРѕРєСѓРјРµРЅС‚Р°
+     * @param    array    $data    Р”Р°РЅРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚Р°
      */
     function updateDocument($id, $data) {
         global $DB;
@@ -1240,10 +1240,10 @@ class letters {
     }
 
     /**
-     * Получить историю изменения документа
+     * РџРѕР»СѓС‡РёС‚СЊ РёСЃС‚РѕСЂРёСЋ РёР·РјРµРЅРµРЅРёСЏ РґРѕРєСѓРјРµРЅС‚Р°
      *
-     * @param    integer    $id          ID документа
-     * @return   array                   История изменения
+     * @param    integer    $id          ID РґРѕРєСѓРјРµРЅС‚Р°
+     * @return   array                   РСЃС‚РѕСЂРёСЏ РёР·РјРµРЅРµРЅРёСЏ
      */
     function getHistory($id) {
         global $DB;
@@ -1253,9 +1253,9 @@ class letters {
     }
 
     /**
-     * Обновление даты изменения статуса
+     * РћР±РЅРѕРІР»РµРЅРёРµ РґР°С‚С‹ РёР·РјРµРЅРµРЅРёСЏ СЃС‚Р°С‚СѓСЃР°
      *
-     * @param    integer    $id          ID документа
+     * @param    integer    $id          ID РґРѕРєСѓРјРµРЅС‚Р°
      */
     function updateDateStatusChange($id) {
         global $DB;
@@ -1264,10 +1264,10 @@ class letters {
     }
 
     /**
-     * Запись истории изменения документа
+     * Р—Р°РїРёСЃСЊ РёСЃС‚РѕСЂРёРё РёР·РјРµРЅРµРЅРёСЏ РґРѕРєСѓРјРµРЅС‚Р°
      *
-     * @param    integer    $id          ID документа
-     * @param    array      $new_data    Новые данные документа
+     * @param    integer    $id          ID РґРѕРєСѓРјРµРЅС‚Р°
+     * @param    array      $new_data    РќРѕРІС‹Рµ РґР°РЅРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚Р°
      */
     function saveHistory($id, $new_data) {
         global $DB;
@@ -1280,7 +1280,7 @@ class letters {
                 }
                 if($key=='is_user_1_company' || $key=='is_user_2_company' || $key=='is_user_3_company') continue;
                 if($key=='user_1' || $key=='user_2' || $key=='user_3') {
-                    $oldIsCompany = ($old_data["is_{$key}_company"] === 't') ? 't' : 'f'; // избавляемся от null
+                    $oldIsCompany = ($old_data["is_{$key}_company"] === 't') ? 't' : 'f'; // РёР·Р±Р°РІР»СЏРµРјСЃСЏ РѕС‚ null
                     $newIsCompany = ($new_data["is_{$key}_company"] === 't') ? 't' : 'f';
                     if($new_val!=$old_data[$key] || (($new_val || $old_data[$key]) && $newIsCompany != $oldIsCompany)) {
                         $changed[] = $key;
@@ -1305,7 +1305,7 @@ class letters {
             foreach($qstatuses as $v) {
                 $statuses[$v['id']] = $v['title'];
             }
-            $statuses[0] = 'Не выбрано';
+            $statuses[0] = 'РќРµ РІС‹Р±СЂР°РЅРѕ';
 
             foreach($changed as $change_type) {
                 switch($change_type) {
@@ -1386,13 +1386,13 @@ class letters {
                             $old_doc = letters::getDocument($old_data['parent']);
                             $old_val = "ID{$old_doc['id']} {$old_doc['title']}";
                         } else {
-                            $old_val = "Нет";
+                            $old_val = "РќРµС‚";
                         }
                         if($new_data['parent']) {
                             $new_doc = letters::getDocument($new_data['parent']);
                             $new_val = "ID{$new_doc['id']} {$new_doc['title']}";
                         } else {
-                            $new_val = "Нет";
+                            $new_val = "РќРµС‚";
                         }
                         break;
                     case 'comment':
@@ -1428,14 +1428,14 @@ class letters {
     }
 
     /**
-     * Получает буквы в которых есть компании
+     * РџРѕР»СѓС‡Р°РµС‚ Р±СѓРєРІС‹ РІ РєРѕС‚РѕСЂС‹С… РµСЃС‚СЊ РєРѕРјРїР°РЅРёРё
      *
-     * @return    Массив букв
+     * @return    РњР°СЃСЃРёРІ Р±СѓРєРІ
      */
     function getCompaniesSymbols() {
         global $DB;
         $en = "abcdefghijklmnopqrstuvwxyz";
-        $rus = "абвгдежзиклмнопрстуфхцчшщэюя";
+        $rus = "Р°Р±РІРіРґРµР¶Р·РёРєР»РјРЅРѕРїСЂСЃС‚СѓС„С…С†С‡С€С‰СЌСЋСЏ";
 
         $sql = "SELECT DISTINCT(lower(substring(name from 1 for 1))) as sym FROM letters_company ORDER BY sym";
         $res = $DB->rows($sql);
@@ -1456,16 +1456,16 @@ class letters {
     }
 
     /**
-     * Находит компании которые начинаются на определенную букву
+     * РќР°С…РѕРґРёС‚ РєРѕРјРїР°РЅРёРё РєРѕС‚РѕСЂС‹Рµ РЅР°С‡РёРЅР°СЋС‚СЃСЏ РЅР° РѕРїСЂРµРґРµР»РµРЅРЅСѓСЋ Р±СѓРєРІСѓ
      *
-     * @param    string     $s           Буква
-     * @return   array                   Список компаний
+     * @param    string     $s           Р‘СѓРєРІР°
+     * @return   array                   РЎРїРёСЃРѕРє РєРѕРјРїР°РЅРёР№
      */
     function getCompaniesBySym($s) {
         global $DB;
 
         if($s=='#') {
-            $sql = "SELECT letters_company.*, country.country_name AS country_title, city.city_name AS city_title FROM letters_company LEFT JOIN country ON country.id=letters_company.country LEFT JOIN city ON city.id=letters_company.city WHERE lower(name) NOT SIMILAR TO '(а|б|в|г|д|е|ж|з|и|к|л|м|н|о|п|р|с|т|у|ф|х|ц|ч|ш|щ|э|ю|я|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z)%'";
+            $sql = "SELECT letters_company.*, country.country_name AS country_title, city.city_name AS city_title FROM letters_company LEFT JOIN country ON country.id=letters_company.country LEFT JOIN city ON city.id=letters_company.city WHERE lower(name) NOT SIMILAR TO '(Р°|Р±|РІ|Рі|Рґ|Рµ|Р¶|Р·|Рё|Рє|Р»|Рј|РЅ|Рѕ|Рї|СЂ|СЃ|С‚|Сѓ|С„|С…|С†|С‡|С€|С‰|СЌ|СЋ|СЏ|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z)%'";
         } else {
             $sql = "SELECT letters_company.*, country.country_name AS country_title, city.city_name AS city_title FROM letters_company LEFT JOIN country ON country.id=letters_company.country LEFT JOIN city ON city.id=letters_company.city WHERE lower(name) ILIKE '{$s}%' ORDER BY name";
         }
@@ -1473,9 +1473,9 @@ class letters {
     }
 
     /**
-     * Добваление компании
+     * Р”РѕР±РІР°Р»РµРЅРёРµ РєРѕРјРїР°РЅРёРё
      *
-     * @param    array    $frm    Данные о компании
+     * @param    array    $frm    Р”Р°РЅРЅС‹Рµ Рѕ РєРѕРјРїР°РЅРёРё
      */
     function addCompany($frm) {
         global $DB;
@@ -1484,9 +1484,9 @@ class letters {
     }
 
     /**
-     * Изменение компании
+     * РР·РјРµРЅРµРЅРёРµ РєРѕРјРїР°РЅРёРё
      *
-     * @param    array    $frm    Данные о компании
+     * @param    array    $frm    Р”Р°РЅРЅС‹Рµ Рѕ РєРѕРјРїР°РЅРёРё
      */
     function updateCompany($frm) {
         global $DB;
@@ -1503,10 +1503,10 @@ class letters {
     }
 
     /**
-     * Получить данные о компании
+     * РџРѕР»СѓС‡РёС‚СЊ РґР°РЅРЅС‹Рµ Рѕ РєРѕРјРїР°РЅРёРё
      *
-     * @param    integer    $id     ID компании
-     * @return   array              Информация о компании
+     * @param    integer    $id     ID РєРѕРјРїР°РЅРёРё
+     * @return   array              РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РєРѕРјРїР°РЅРёРё
      */
     function getCompany($id) {
         global $DB;
@@ -1516,10 +1516,10 @@ class letters {
     
     
     /**
-     * Получить данные о пользователе. Обертка для sbr_meta::getUserReqvs()
+     * РџРѕР»СѓС‡РёС‚СЊ РґР°РЅРЅС‹Рµ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ. РћР±РµСЂС‚РєР° РґР»СЏ sbr_meta::getUserReqvs()
      * 
-     * @param  type $uid  uid пользователя
-     * @return array      данные пользователя
+     * @param  type $uid  uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @return array      РґР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      */
     function getUserReqvs($uid) {
         $user = sbr_meta::getUserReqvs($uid);
@@ -1534,9 +1534,9 @@ class letters {
     }
 
     /**
-     * Получить список шаблонов
+     * РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє С€Р°Р±Р»РѕРЅРѕРІ
      *
-     * @return array    Информация о шаблонах
+     * @return array    РРЅС„РѕСЂРјР°С†РёСЏ Рѕ С€Р°Р±Р»РѕРЅР°С…
      */
     function getTemplatesList() {
         global $DB;
@@ -1547,8 +1547,8 @@ class letters {
     
     
     /**
-     * Найти ID компании по различным 
-     * и возможным входным данным
+     * РќР°Р№С‚Рё ID РєРѕРјРїР°РЅРёРё РїРѕ СЂР°Р·Р»РёС‡РЅС‹Рј 
+     * Рё РІРѕР·РјРѕР¶РЅС‹Рј РІС…РѕРґРЅС‹Рј РґР°РЅРЅС‹Рј
      * 
      * @global type $DB
      * @param type $data

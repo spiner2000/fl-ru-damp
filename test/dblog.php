@@ -14,7 +14,7 @@ if ( !preg_match("/^[-0-9]+$/", $date) ) {
 $file = LOG_DIR."/db/{$server}/{$date}.log";
 
 if ( !file_exists($file) ) {
-    $file = "../classes/log/{$server}/{$date}.log"; // Для просмотра старых логов пробуем старый путь
+    $file = "../classes/log/{$server}/{$date}.log"; // Р”Р»СЏ РїСЂРѕСЃРјРѕС‚СЂР° СЃС‚Р°СЂС‹С… Р»РѕРіРѕРІ РїСЂРѕР±СѓРµРј СЃС‚Р°СЂС‹Р№ РїСѓС‚СЊ
     if ( !file_exists($file) ) {
         die("Log not exists");
     }

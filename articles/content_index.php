@@ -1,19 +1,19 @@
 <?php
 /**
- * Главная страница, список статей
+ * Р“Р»Р°РІРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°, СЃРїРёСЃРѕРє СЃС‚Р°С‚РµР№
  */
 $sorting = array(
-    'date' => 'по дате добавления',
-    'comm' => 'по количеству комментариев',
-    'views' => 'по количеству просмотров',
-    'rating' => 'по оценке',
+    'date' => 'РїРѕ РґР°С‚Рµ РґРѕР±Р°РІР»РµРЅРёСЏ',
+    'comm' => 'РїРѕ РєРѕР»РёС‡РµСЃС‚РІСѓ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ',
+    'views' => 'РїРѕ РєРѕР»РёС‡РµСЃС‚РІСѓ РїСЂРѕСЃРјРѕС‚СЂРѕРІ',
+    'rating' => 'РїРѕ РѕС†РµРЅРєРµ',
 );
 ?>
 
 <?php
 $crumbs = array();
-$crumbs[] = array("title"=>"Статьи и интервью", "url"=>"/articles/");
-$crumbs[] = array("title"=>"Статьи", "url"=>"");
+$crumbs[] = array("title"=>"РЎС‚Р°С‚СЊРё Рё РёРЅС‚РµСЂРІСЊСЋ", "url"=>"/articles/");
+$crumbs[] = array("title"=>"РЎС‚Р°С‚СЊРё", "url"=>"");
 ?>
 <div class="b-menu b-menu_crumbs  b-menu_padbot_20"><?=getCrumbs($crumbs)?></div>
 
@@ -27,13 +27,13 @@ $crumbs[] = array("title"=>"Статьи", "url"=>"");
             <?php if($is_approved) { ?>
 						<div class="b-fon b-fon_margbot_20">
 								<div class="b-fon__body b-fon__body_pad_10 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf b-fon__body_bordbot_dfedcf">
-								Ваша статья была отправлена на модерацию.  Срок прохождения модерации &mdash; 1 неделя.
+								Р’Р°С€Р° СЃС‚Р°С‚СЊСЏ Р±С‹Р»Р° РѕС‚РїСЂР°РІР»РµРЅР° РЅР° РјРѕРґРµСЂР°С†РёСЋ.  РЎСЂРѕРє РїСЂРѕС…РѕР¶РґРµРЅРёСЏ РјРѕРґРµСЂР°С†РёРё &mdash; 1 РЅРµРґРµР»СЏ.
 							</div>
 						</div>
 			<?php }//if?>
 		    <?php if(isset($_GET['tag'])) { ?>
-            <h4>Статьи по теме «<?= htmlspecialchars($tag_name)?>»</h4>		
-			<p><a href="/articles/">Показать все</a></p><br/>
+            <h4>РЎС‚Р°С‚СЊРё РїРѕ С‚РµРјРµ В«<?= htmlspecialchars($tag_name)?>В»</h4>		
+			<p><a href="/articles/">РџРѕРєР°Р·Р°С‚СЊ РІСЃРµ</a></p><br/>
 			<?php }//if?>
             <? if($articles) foreach($articles as $article) {
                 $classname = $article['rating'] < 0 ? 'pr-minus' : ($article['rating'] >= 1 ? 'pr-plus' : '') ;
@@ -58,7 +58,7 @@ $crumbs[] = array("title"=>"Статьи", "url"=>"");
                     <img src="<?=WDCPREFIX?>/<?=$article['path']?><?=$article['fname']?>" alt="" width="100" class="post-img" />
                 <? } ?>
                 <div class="post-txt">
-                    <h3><a class="b-layout__link" href="<?=getFriendlyURL('article', $article['id'])?><?= ($ord ? "?ord=$ord" : ""). ($page ? "&p=$page" : "")?>"><?=!$article['title'] ? 'Без названия' : (reformat($article['title'], 32, 0, 1)) ?></a></h3>
+                    <h3><a class="b-layout__link" href="<?=getFriendlyURL('article', $article['id'])?><?= ($ord ? "?ord=$ord" : ""). ($page ? "&p=$page" : "")?>"><?=!$article['title'] ? 'Р‘РµР· РЅР°Р·РІР°РЅРёСЏ' : (reformat($article['title'], 32, 0, 1)) ?></a></h3>
                     <p class="post-body">
                         <?= (reformat($article['short'], 50, 0, 0, 1)) ?>
                         <?//= $article['short'] ?>
@@ -79,7 +79,7 @@ $crumbs[] = array("title"=>"Статьи", "url"=>"");
                             </td>
                         	<td class="b-layout__one b-layout__one_width_60">
                                 <div class="post-f-date">
-                                    <?=date('d.m.Y в H:i', strtotime($article['approve_date']))?>
+                                    <?=date('d.m.Y РІ H:i', strtotime($article['approve_date']))?>
                                 </div>
                             
                             </td>
@@ -94,16 +94,16 @@ $crumbs[] = array("title"=>"Статьи", "url"=>"");
                         	<td class="b-layout__one b-layout__one_padright_10 b-layout__one_width_100">
                             	<div style="float:right; white-space:nowrap;">
 									<? if(hasPermissions('articles')) { ?>
-                                    <a href="javascript:void(0)" style="color: #A23E3E;" onclick="editArticle(<?=$article['id']?>)">Редактировать</a>
+                                    <a href="javascript:void(0)" style="color: #A23E3E;" onclick="editArticle(<?=$article['id']?>)">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
                                     &nbsp;|&nbsp;
-                                    <a href="/articles/?task=del-article&id=<?=$article['id']?>" style="color: #A23E3E;" onclick="return (confirm('Вы уверены?'));">Удалить</a>
+                                    <a href="/articles/?task=del-article&id=<?=$article['id']?>" style="color: #A23E3E;" onclick="return (confirm('Р’С‹ СѓРІРµСЂРµРЅС‹?'));">РЈРґР°Р»РёС‚СЊ</a>
                                     &nbsp;|&nbsp;
                                     <? } ?>
 
-                                    <a href="<?=getFriendlyURL('article', $article['id'])?>" style="<?=$article['comments_cnt']>0 && $article['lastviewtime'] === NULL ? 'font-weight:bold;' : ''?>">Комментарии (<?=$article['comments_cnt']?>)</a>
+                                    <a href="<?=getFriendlyURL('article', $article['id'])?>" style="<?=$article['comments_cnt']>0 && $article['lastviewtime'] === NULL ? 'font-weight:bold;' : ''?>">РљРѕРјРјРµРЅС‚Р°СЂРёРё (<?=$article['comments_cnt']?>)</a>
                                     <? if($uid && intval($article['comments_unread']) > 0 && $article['lastviewtime'] !== NULL) { ?>
                                     <a href="/articles/?id=<?=$article['id']?>#unread" style="color:#6BA813; font-weight:bold;">
-                                        (<?=$article['comments_unread']?> <?=ending($article['comments_unread'], 'новый', 'новых', 'новых')?>)
+                                        (<?=$article['comments_unread']?> <?=ending($article['comments_unread'], 'РЅРѕРІС‹Р№', 'РЅРѕРІС‹С…', 'РЅРѕРІС‹С…')?>)
                                     </a>
                                     <? } ?>
                                 </div>
@@ -120,7 +120,7 @@ $crumbs[] = array("title"=>"Статьи", "url"=>"");
         <div class="p-a-left b-layout__left b-layout__left_width_25ps">
             <div class="p-a-popular">
             <? if($authors) { ?>
-                <h3>Популярные авторы</h3>
+                <h3>РџРѕРїСѓР»СЏСЂРЅС‹Рµ Р°РІС‚РѕСЂС‹</h3>
                 <ul>
                     <? foreach($authors as $author) { ?>
                     <li>
@@ -135,7 +135,7 @@ $crumbs[] = array("title"=>"Статьи", "url"=>"");
             <? if($uid) { include ('part/bookmarks.php'); } ?>
             <?php if(count($pop_tags)>0) { ?>
             <div class="b-menu b-menu_vertical b-menu_padbot_10 b-menu_clear_left b-menu_padtop_10">
-                <h3 class="b-menu__title b-menu__title_padbot_10">Темы</h3>
+                <h3 class="b-menu__title b-menu__title_padbot_10">РўРµРјС‹</h3>
                 <ul class="b-menu__list">
                     <?php foreach($pop_tags as $nm=>$tag) { ?>
                     <li class="b-menu__item b-menu__item_padbot_5"><div class="b-menu__b1"><div class="b-menu__number"><?= intval($tag['cnt'])?></div></div><a class="b-menu__link" href="?tag=<?=$tag['word_id']?>"><?= htmlspecialchars(reformat($tag['name'], 25, 0, 1))?></a></li>

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Попап при заказе ТУ для анонимуса c интерфейсом резерва по "новой БС"
+ * РџРѕРїР°Рї РїСЂРё Р·Р°РєР°Р·Рµ РўРЈ РґР»СЏ Р°РЅРѕРЅРёРјСѓСЃР° c РёРЅС‚РµСЂС„РµР№СЃРѕРј СЂРµР·РµСЂРІР° РїРѕ "РЅРѕРІРѕР№ Р‘РЎ"
  */
 
 $title = reformat($title, 30, 0, 1);
@@ -13,23 +13,23 @@ $show_popup = (isset($_POST['popup']));
 <div class="b-shadow b-shadow_center b-shadow_width_520 <?php if(!$show_popup){ ?>b-shadow_hide <?php } ?>b-shadow__quick b-shadow_overflow_visible"  id="tesrvices_order_auth_popup" style="display:block;">
   <div class="b-shadow__body b-shadow__body_pad_20">
     <h2 class="b-layout__title">
-        Заказ услуги
+        Р—Р°РєР°Р· СѓСЃР»СѓРіРё
     </h2>
     <div class="b-layout__txt b-layout__txt_padbot_20">
-        Для заказа услуги "<?=$title?>", вам необходимо зарегистрироваться (указав ФИО и e-mail и способ оплаты) или авторизоваться.
+        Р”Р»СЏ Р·Р°РєР°Р·Р° СѓСЃР»СѓРіРё "<?=$title?>", РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ (СѓРєР°Р·Р°РІ Р¤РРћ Рё e-mail Рё СЃРїРѕСЃРѕР± РѕРїР»Р°С‚С‹) РёР»Рё Р°РІС‚РѕСЂРёР·РѕРІР°С‚СЊСЃСЏ.
     </div>
     <div class="b-layout b-layout_padleft_15">
         <table class="b-layout__table">
             <tbody>
                 <tr class="b-layout__tr">
                     <td class="b-layout__td b-layout__td_width_70 b-layout__td_padbot_10 b-layout__td_width_null_iphone">
-                        <div class="b-layout__txt b-layout__txt_padtop_4 b-page__desktop b-page__ipad">Имя</div>
+                        <div class="b-layout__txt b-layout__txt_padtop_4 b-page__desktop b-page__ipad">РРјСЏ</div>
                     </td>
                     <td class="b-layout__td b-layout__td_padbot_10">
-                        <div class="b-layout__txt b-layout__txt_padbot_5 b-page__iphone">Имя</div>
+                        <div class="b-layout__txt b-layout__txt_padbot_5 b-page__iphone">РРјСЏ</div>
                         <div class="b-combo">
                             <div class="b-combo__input b-combo__input_width_260">
-                                <input tabindex="1" class="b-combo__input-text b-combo__input-text_italic" type="text" placeholder="Ваше имя, не более 21 символа" size="21" maxlength="21" id="reg_name">
+                                <input tabindex="1" class="b-combo__input-text b-combo__input-text_italic" type="text" placeholder="Р’Р°С€Рµ РёРјСЏ, РЅРµ Р±РѕР»РµРµ 21 СЃРёРјРІРѕР»Р°" size="21" maxlength="21" id="reg_name">
                             </div>
                         </div>         
                     </td>
@@ -37,13 +37,13 @@ $show_popup = (isset($_POST['popup']));
                 </tr>
                 <tr class="b-layout__tr">
                     <td class="b-layout__td b-layout__td_width_70 b-layout__td_padbot_10 b-layout__td_width_null_iphone">
-                        <div class="b-layout__txt b-layout__txt_padtop_4 b-page__desktop b-page__ipad">Фамилия</div>
+                        <div class="b-layout__txt b-layout__txt_padtop_4 b-page__desktop b-page__ipad">Р¤Р°РјРёР»РёСЏ</div>
                     </td>
                     <td class="b-layout__td b-layout__td_padbot_10">
-                        <div class="b-layout__txt b-layout__txt_padbot_5 b-page__iphone">Фамилия</div>
+                        <div class="b-layout__txt b-layout__txt_padbot_5 b-page__iphone">Р¤Р°РјРёР»РёСЏ</div>
                         <div class="b-combo">
                             <div class="b-combo__input b-combo__input_width_260">
-                                <input tabindex="2" class="b-combo__input-text b-combo__input-text_italic" type="text" placeholder="Ваша фамилия, не более 21 символа" size="21" maxlength="21" id="reg_surname">
+                                <input tabindex="2" class="b-combo__input-text b-combo__input-text_italic" type="text" placeholder="Р’Р°С€Р° С„Р°РјРёР»РёСЏ, РЅРµ Р±РѕР»РµРµ 21 СЃРёРјРІРѕР»Р°" size="21" maxlength="21" id="reg_surname">
                             </div>
                         </div>         
                     </td>
@@ -57,7 +57,7 @@ $show_popup = (isset($_POST['popup']));
                         <div class="b-layout__txt b-layout__txt_padbot_5 b-page__iphone">E-mail</div>
                         <div class="b-combo">
                             <div class="b-combo__input b-combo__input_width_260">
-                                <input tabindex="3" class="b-combo__input-text b-combo__input-text_italic" type="text" onblur="TServices_Order_Auth.checkEmail(1);" onkeyup="TServices_Order_Auth.checkEmail(0);" placeholder="Введите ваш e-mail" size="80" id="reg_email" name="email">
+                                <input tabindex="3" class="b-combo__input-text b-combo__input-text_italic" type="text" onblur="TServices_Order_Auth.checkEmail(1);" onkeyup="TServices_Order_Auth.checkEmail(0);" placeholder="Р’РІРµРґРёС‚Рµ РІР°С€ e-mail" size="80" id="reg_email" name="email">
                             </div>
                         </div>         
                     </td>
@@ -76,26 +76,26 @@ $show_popup = (isset($_POST['popup']));
                 <tr class="b-layout__tr">
                     <td class="b-layout__td" colspan="3">
                         <div class="b-txt b-txt_padbot_20">
-                            Бюджет <strong><span class="__tservice_price2"><?=$price?></span></strong> 
-                            <span class="__tservice_paytype"><strong>+ 10%</strong> комиссии сервису</span>
+                            Р‘СЋРґР¶РµС‚ <strong><span class="__tservice_price2"><?=$price?></span></strong> 
+                            <span class="__tservice_paytype"><strong>+ 10%</strong> РєРѕРјРёСЃСЃРёРё СЃРµСЂРІРёСЃСѓ</span>
                         </div>
                         <div class="b-radio b-radio_layout_vertical">
                             <div class="b-radio__item b-radio__item_padbot_10">
                                 <input data-show-class=".__tservice_paytype" data-show-display="inline" tabindex="4" checked="checked" type="radio" value="1" name="paytype" class="b-radio__input" id="paytype1"/>
                                 <label for="paytype1" class="b-radio__label b-radio__label_bold b-radio__label_fontsize_13 b-radio__label_margtop_-1">
-                                    Безопасная сделка (с резервированием бюджета) &#160;<a class="b-layout__link" href="/promo/bezopasnaya-sdelka/" target="_blank"><span class="b-shadow__icon b-shadow__icon_quest2 b-icon_top_2"></span></a>
+                                    Р‘РµР·РѕРїР°СЃРЅР°СЏ СЃРґРµР»РєР° (СЃ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРµРј Р±СЋРґР¶РµС‚Р°) &#160;<a class="b-layout__link" href="/promo/bezopasnaya-sdelka/" target="_blank"><span class="b-shadow__icon b-shadow__icon_quest2 b-icon_top_2"></span></a>
                                 </label>
                                 <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_20">
-                                    Безопасное сотрудничество с гарантией возврата средств. Вы резервируете бюджет заказа на сайте FL.ru - а мы гарантируем вам возврат суммы, если работа будет выполнена Исполнителем некачественно или не в срок.
+                                    Р‘РµР·РѕРїР°СЃРЅРѕРµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ СЃ РіР°СЂР°РЅС‚РёРµР№ РІРѕР·РІСЂР°С‚Р° СЃСЂРµРґСЃС‚РІ. Р’С‹ СЂРµР·РµСЂРІРёСЂСѓРµС‚Рµ Р±СЋРґР¶РµС‚ Р·Р°РєР°Р·Р° РЅР° СЃР°Р№С‚Рµ FL.ru - Р° РјС‹ РіР°СЂР°РЅС‚РёСЂСѓРµРј РІР°Рј РІРѕР·РІСЂР°С‚ СЃСѓРјРјС‹, РµСЃР»Рё СЂР°Р±РѕС‚Р° Р±СѓРґРµС‚ РІС‹РїРѕР»РЅРµРЅР° РСЃРїРѕР»РЅРёС‚РµР»РµРј РЅРµРєР°С‡РµСЃС‚РІРµРЅРЅРѕ РёР»Рё РЅРµ РІ СЃСЂРѕРє.
                                 </div>
                             </div>
                             <div class="b-radio__item b-radio__item_padbot_20">
                                 <input data-hide-class=".__tservice_paytype" tabindex="5" type="radio" value="0" name="paytype" class="b-radio__input" id="paytype0">
                                 <label for="paytype0" class="b-radio__label b-radio__label_bold b-radio__label_fontsize_13 b-radio__label_margtop_-1">
-                                    Прямая оплата Исполнителю на его кошелек/счет
+                                    РџСЂСЏРјР°СЏ РѕРїР»Р°С‚Р° РСЃРїРѕР»РЅРёС‚РµР»СЋ РЅР° РµРіРѕ РєРѕС€РµР»РµРє/СЃС‡РµС‚
                                 </label>
                                 <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_20">
-                                    Сотрудничество без участия сайта в процессе оплаты. Вы сами договариваетесь с Исполнителем о способе и порядке оплаты. И самостоятельно регулируете все претензии, связанные с качеством и сроками выполнения работы.
+                                    РЎРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ Р±РµР· СѓС‡Р°СЃС‚РёСЏ СЃР°Р№С‚Р° РІ РїСЂРѕС†РµСЃСЃРµ РѕРїР»Р°С‚С‹. Р’С‹ СЃР°РјРё РґРѕРіРѕРІР°СЂРёРІР°РµС‚РµСЃСЊ СЃ РСЃРїРѕР»РЅРёС‚РµР»РµРј Рѕ СЃРїРѕСЃРѕР±Рµ Рё РїРѕСЂСЏРґРєРµ РѕРїР»Р°С‚С‹. Р СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ СЂРµРіСѓР»РёСЂСѓРµС‚Рµ РІСЃРµ РїСЂРµС‚РµРЅР·РёРё, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ РєР°С‡РµСЃС‚РІРѕРј Рё СЃСЂРѕРєР°РјРё РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹.
                                 </div>
                             </div>
                         </div>
@@ -104,11 +104,11 @@ $show_popup = (isset($_POST['popup']));
             </tbody>
         </table>
         <div class="b-buttons b-buttons_padleft_null_iphone">
-            <a href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green" onclick="TServices_Order_Auth.submitForm(); return false;">Зарегистрироваться<span class="b-page__ipad b-page__desktop"> и заказать услугу</span></a>
-            <span class="b-layout__txt b-layout__txt_fontsize_11">&nbsp;<span class="b-page__iphone"> и заказать услугу</span> или <a class="b-layout__link" href="/registration/?type=empl&user_action=tu">авторизоваться</a></span>
+            <a href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green" onclick="TServices_Order_Auth.submitForm(); return false;">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ<span class="b-page__ipad b-page__desktop"> Рё Р·Р°РєР°Р·Р°С‚СЊ СѓСЃР»СѓРіСѓ</span></a>
+            <span class="b-layout__txt b-layout__txt_fontsize_11">&nbsp;<span class="b-page__iphone"> Рё Р·Р°РєР°Р·Р°С‚СЊ СѓСЃР»СѓРіСѓ</span> РёР»Рё <a class="b-layout__link" href="/registration/?type=empl&user_action=tu">Р°РІС‚РѕСЂРёР·РѕРІР°С‚СЊСЃСЏ</a></span>
             <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_10">
-                После нажатия на кнопку "Зарегистрироваться и заказать услугу" на указанный адрес будет отправлено письмо со ссылкой. 
-                Перейдя по ней, вы подтвердите регистрацию и заказ услуги.
+                РџРѕСЃР»Рµ РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ "Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ Рё Р·Р°РєР°Р·Р°С‚СЊ СѓСЃР»СѓРіСѓ" РЅР° СѓРєР°Р·Р°РЅРЅС‹Р№ Р°РґСЂРµСЃ Р±СѓРґРµС‚ РѕС‚РїСЂР°РІР»РµРЅРѕ РїРёСЃСЊРјРѕ СЃРѕ СЃСЃС‹Р»РєРѕР№. 
+                РџРµСЂРµР№РґСЏ РїРѕ РЅРµР№, РІС‹ РїРѕРґС‚РІРµСЂРґРёС‚Рµ СЂРµРіРёСЃС‚СЂР°С†РёСЋ Рё Р·Р°РєР°Р· СѓСЃР»СѓРіРё.
             </div>
         </div>
     </div>

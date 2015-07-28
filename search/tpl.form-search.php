@@ -30,11 +30,11 @@ kword = kword.combine(search_kwords);
                           <div class="b-search <?php if($view_advanced){ ?>b-search_margright_370<?php } else {?>b-search_margright_200<?php } ?> b-search_marg_null_iphone">
                                   <table class="b-search__table" cellpadding="0" cellspacing="0"><tr class="b-search__tr"><td class="b-search__input">
                                       <div id="body_1" class="b-input  b-input_height_24">
-                                              <input id="search-request" class="b-input__text " placeholder="Например, <?=$search_input_hint?>" autocomplete="off"  name="search_string" type="text" value="<?= htmlspecialchars($search_string?str_replace($_SESSION['string_professions'], "", $search_string):"")?>" />
+                                              <input id="search-request" class="b-input__text " placeholder="РќР°РїСЂРёРјРµСЂ, <?=$search_input_hint?>" autocomplete="off"  name="search_string" type="text" value="<?= htmlspecialchars($search_string?str_replace($_SESSION['string_professions'], "", $search_string):"")?>" />
                                               <input id="search-hint" name="search_hint" type="hidden" value="<?=$search_input_hint?>">
                                       </div>
                                   </td><td class="b-search__button">
-                                  <a id="search-button" class="b-button b-button_flat b-button_flat_grey b-button_margleft_5" href="javascript:void(0)">Найти</a>
+                                  <a id="search-button" class="b-button b-button_flat b-button_flat_grey b-button_margleft_5" href="javascript:void(0)">РќР°Р№С‚Рё</a>
                                   </td></tr></table>
                            </div>
                           <div class="search-ext">

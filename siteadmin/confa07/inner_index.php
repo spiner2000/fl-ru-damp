@@ -12,7 +12,7 @@
 	
 	$users = confa07::GetAll();
 ?>
-<strong>Пользователи</strong><br><br>
+<strong>РџРѕР»СЊР·РѕРІР°С‚РµР»Рё</strong><br><br>
 
 <br><br>
 <table width="100%" border="0" cellspacing="2" cellpadding="2">
@@ -27,10 +27,10 @@ $i = 0;
 			<td>
 			<?=$i?> <a href="/users/<?=$user['login']?>"><?=". ".$user['name']." ".$user['surname']." [".$user['login']."]"?></a> 
 			<a href="mailto:<?=$user['email']?>"><?=$user['email']?></a> 
-			<? if ($user['type'] == 1) print("Фрилансер"); if ($user['type'] == 2) print("Работодатель"); if ($user['type'] == 3) print("Пресса") ?>
-			<a href="/siteadmin/confa07/?action=delete&amp;id=<?=$user['id']?>" onclick="return warning(20);">удалить</a>
+			<? if ($user['type'] == 1) print("Р¤СЂРёР»Р°РЅСЃРµСЂ"); if ($user['type'] == 2) print("Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ"); if ($user['type'] == 3) print("РџСЂРµСЃСЃР°") ?>
+			<a href="/siteadmin/confa07/?action=delete&amp;id=<?=$user['id']?>" onclick="return warning(20);">СѓРґР°Р»РёС‚СЊ</a>
 			<br>
-			 Что написал: <?=($user['message']  ? $user['message'] : "ничего не написал")?><br><br>
+			 Р§С‚Рѕ РЅР°РїРёСЃР°Р»: <?=($user['message']  ? $user['message'] : "РЅРёС‡РµРіРѕ РЅРµ РЅР°РїРёСЃР°Р»")?><br><br>
 			
 			</td>
 		</tr>

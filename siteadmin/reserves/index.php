@@ -32,7 +32,7 @@ $action = __paramInit('string', 'action', 'action', 'index');
 $module = new CModule('reserves-admin');
 $module->setBasePath(dirname(__FILE__));
 $controller = new ReservesAdminController('reserves-admin', $module);
-$controller->init($action); // èíèöèàëèçàöèÿ êîíòðîëåðà
+$controller->init($action); // Ð¸Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ ÐºÐ¾Ð½Ñ‚Ñ€Ð¾Ð»ÐµÑ€Ð°
 $controller->run($action);
 
 $content = "tpl.index.php";

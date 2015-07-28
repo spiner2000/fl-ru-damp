@@ -1,12 +1,12 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/projects-quick-edit.common.php");
 /**
- * @param $frm - данные запроса
- * @param $type - тип страницы, с которой была запрошена форма быстрого редактирования проекта
- *                 1 - лента на главной, 
- *                 2 - редактируется конкурс,
- *                 3 - страница проекта в профиле работодателя,
- *                 4 - проект в списке в профиле работодателя
+ * @param $frm - РґР°РЅРЅС‹Рµ Р·Р°РїСЂРѕСЃР°
+ * @param $type - С‚РёРї СЃС‚СЂР°РЅРёС†С‹, СЃ РєРѕС‚РѕСЂРѕР№ Р±С‹Р»Р° Р·Р°РїСЂРѕС€РµРЅР° С„РѕСЂРјР° Р±С‹СЃС‚СЂРѕРіРѕ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РїСЂРѕРµРєС‚Р°
+ *                 1 - Р»РµРЅС‚Р° РЅР° РіР»Р°РІРЅРѕР№, 
+ *                 2 - СЂРµРґР°РєС‚РёСЂСѓРµС‚СЃСЏ РєРѕРЅРєСѓСЂСЃ,
+ *                 3 - СЃС‚СЂР°РЅРёС†Р° РїСЂРѕРµРєС‚Р° РІ РїСЂРѕС„РёР»Рµ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ,
+ *                 4 - РїСЂРѕРµРєС‚ РІ СЃРїРёСЃРєРµ РІ РїСЂРѕС„РёР»Рµ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ
  * */
 function quickprjedit_save_prj($frm, $type) {
     $objResponse = new xajaxResponse();
@@ -26,7 +26,7 @@ function quickprjedit_save_prj($frm, $type) {
             $frm['name'] = trim($frm['name']);
             $frm['descr'] = trim($frm['descr']);
 
-            if($frm['link']=='Адрес сайта') $frm['link']='';
+            if($frm['link']=='РђРґСЂРµСЃ СЃР°Р№С‚Р°') $frm['link']='';
             $frm['link'] == trim($frm['link']);
             if(!empty($frm['link'])) {
                 if(strpos($frm['link'], 'http://') === 0)  $protocol = 'http://';
@@ -137,7 +137,7 @@ function quickprjedit_save_prj($frm, $type) {
                 switch($type) {
                     case 1:
                     case 4:
-                        // Лента проектов
+                        // Р›РµРЅС‚Р° РїСЂРѕРµРєС‚РѕРІ
                         global $session;
                         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/projects.php';
                         $prj_id = $project['id'];
@@ -216,12 +216,12 @@ function quickprjedit_save_prj($frm, $type) {
                         } else {
                             $objResponse->script("$('project-item{$prj_id}').removeClass('b-post_bg_fffded')");
                         }
-                        //$objResponse->script('alert("Лента");');
+                        //$objResponse->script('alert("Р›РµРЅС‚Р°");');
                         //$objResponse->script('window.location.reload();');
                         break;
                     case 2:
-                        // Конкурс
-                        //$objResponse->script('alert("Конкурс");');
+                        // РљРѕРЅРєСѓСЂСЃ
+                        //$objResponse->script('alert("РљРѕРЅРєСѓСЂСЃ");');
                         $project_exRates = project_exrates::GetAll();
                         $translate_exRates = array(0 => 2, 1 => 3, 2 => 4, 3 => 1);
 
@@ -255,7 +255,7 @@ function quickprjedit_save_prj($frm, $type) {
                         $objResponse->assign("contest_info_{$prj_id}", "innerHTML", $html_data);
                         break;
                     case 3:
-                        // Проект
+                        // РџСЂРѕРµРєС‚
                         $project_exRates = project_exrates::GetAll();
                         $translate_exRates = array(0 => 2, 1 => 3, 2 => 4, 3 => 1);
 
@@ -287,24 +287,24 @@ function quickprjedit_save_prj($frm, $type) {
                 foreach($errors as $error) {
                     switch($error) {
                         case 'end_date':
-                            $objResponse->script('$("popup_qedit_prj_fld_err_txt_cal1").set("html", "Неправильная дата");');
+                            $objResponse->script('$("popup_qedit_prj_fld_err_txt_cal1").set("html", "РќРµРїСЂР°РІРёР»СЊРЅР°СЏ РґР°С‚Р°");');
                             $objResponse->script('popupQEditPrjShowError("cal1");');
                             break;
                         case 'win_date':
-                            $objResponse->script('$("popup_qedit_prj_fld_err_txt_cal2").set("html", "Неправильная дата");');
+                            $objResponse->script('$("popup_qedit_prj_fld_err_txt_cal2").set("html", "РќРµРїСЂР°РІРёР»СЊРЅР°СЏ РґР°С‚Р°");');
                             $objResponse->script('popupQEditPrjShowError("cal2");');
                             break;
                         case 'end_date_past':
-                            $objResponse->script('$("popup_qedit_prj_fld_err_txt_cal1").set("html", "Дата окончания конкурса не может находиться  в прошлом");');
+                            $objResponse->script('$("popup_qedit_prj_fld_err_txt_cal1").set("html", "Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР° РЅРµ РјРѕР¶РµС‚ РЅР°С…РѕРґРёС‚СЊСЃСЏ  РІ РїСЂРѕС€Р»РѕРј");');
                             $objResponse->script('popupQEditPrjShowError("cal1");');
                             break;
                         case 'win_date_past':
-                            $objResponse->script('$("popup_qedit_prj_fld_err_txt_cal2").set("html", "Дата определения победителя должна быть больше даты окончания конкурса");');
+                            $objResponse->script('$("popup_qedit_prj_fld_err_txt_cal2").set("html", "Р”Р°С‚Р° РѕРїСЂРµРґРµР»РµРЅРёСЏ РїРѕР±РµРґРёС‚РµР»СЏ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РґР°С‚С‹ РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР°");');
                             $objResponse->script('popupQEditPrjShowError("cal2");');
                             break;
                         case 'logourl':
                             $objResponse->script('$("popup_qedit_prj_fld_err_pay").setStyle("display","block");');
-                            $objResponse->script('$("popup_qedit_prj_fld_err_pay_txt").set("html", "Ссылка для логотипа указана не верно");');
+                            $objResponse->script('$("popup_qedit_prj_fld_err_pay_txt").set("html", "РЎСЃС‹Р»РєР° РґР»СЏ Р»РѕРіРѕС‚РёРїР° СѓРєР°Р·Р°РЅР° РЅРµ РІРµСЂРЅРѕ");');
                             break;
                         default:
                             $objResponse->script('popupQEditPrjShowError("'.$error.'");');
@@ -350,7 +350,7 @@ function quickprjedit_get_prj($prj_id) {
             foreach($project_categories as $project_category) {
                 $html_categories .= "<div id='category_line'>
                                         <select name='categories[]' class='b-select__select b-select__select_width_180' onchange='popupQEditPrjRefreshSubCategory(this);'>
-                                            <option value='0'>Выберите раздел</option>
+                                            <option value='0'>Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»</option>
                                      ";
 				foreach($categories as $cat) {
                     if($cat['id']<=0) continue;
@@ -365,7 +365,7 @@ function quickprjedit_get_prj($prj_id) {
                     $html_categories .= "<option value='{$categories_specs[$i]['id']}'".($categories_specs[$i]['id'] == $project_category['subcategory_id'] ? ' selected' : '').">{$categories_specs[$i]['profname']}</option>";
                 }
 
-                $html_categories .= "      <option value='0' ".($project_category['subcategory_id']==0 ? ' selected' : '').">Все специализации</option>
+                $html_categories .= "      <option value='0' ".($project_category['subcategory_id']==0 ? ' selected' : '').">Р’СЃРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё</option>
                                         </select>
                                      </div>
                                      ";
@@ -376,12 +376,12 @@ function quickprjedit_get_prj($prj_id) {
             }
 
             $html_location = '';
-            $html_location .= "<div><select id='popup_qedit_prj_fld_country' name='country' onChange='popupQEditPrjCityUpd(this.value);'><option value='0'>Страна</option>";
+            $html_location .= "<div><select id='popup_qedit_prj_fld_country' name='country' onChange='popupQEditPrjCityUpd(this.value);'><option value='0'>РЎС‚СЂР°РЅР°</option>";
             foreach($countries as $country_id=>$country) {
                 $html_location .= "<option value='{$country_id}' ".($country_id==$project['country'] ? 'selected' : '').">{$country}</option>";
             }
             $html_location .= "</select></div>";
-            $html_location .= "<div id='frm_city'><select name='city'><option value='0'>Город</option>";
+            $html_location .= "<div id='frm_city'><select name='city'><option value='0'>Р“РѕСЂРѕРґ</option>";
             if($cities) {
                 foreach($cities as $city_id=>$city) {
                     $html_location .= "<option value='{$city_id}' ".($city_id==$project['city'] ? 'selected' : '').">{$city}</option>";
@@ -560,7 +560,7 @@ function quickprjedit_save_budget($prj_id, $frm, $type, $page_type) {
     if(hasPermissions('projects')) {
         if($frm['agreement']==1 || $frm['cost']==0) {
             $budget = projects::updateBudget($prj_id, 0, 0, 0, true);
-            $str_budget_cost = "По договоренности";
+            $str_budget_cost = "РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё";
             $agreement = true;
             $str_budget_lnk = "popupShowChangeBudget({$prj_id}, '', 0, 1, true, {$prj_id}, ".($type==1 ? 1 : 2).", ".($page_type?$page_type:0)."); return false;";
             $budget_block = '<table cellspacing="0" cellpadding="0">
@@ -570,7 +570,7 @@ function quickprjedit_save_budget($prj_id, $frm, $type, $page_type) {
                                         <b class="b1"></b>
                                         <b class="b2"></b>
                                             <div class="form-in">
-                                            <a href="#" id="prj_budget_lnk_'.$prj_id.'" onClick="popupShowChangeBudget('.$prj_id.', \'\', 0, 1, true, '.$prj_id.', '.($type==1 ? 1 : 2).', '.($page_type?$page_type:0).'); return false;">Бюджет по договоренности</a>
+                                            <a href="#" id="prj_budget_lnk_'.$prj_id.'" onClick="popupShowChangeBudget('.$prj_id.', \'\', 0, 1, true, '.$prj_id.', '.($type==1 ? 1 : 2).', '.($page_type?$page_type:0).'); return false;">Р‘СЋРґР¶РµС‚ РїРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</a>
                                             </div>
                                         <b class="b2"></b>
                                         <b class="b1"></b>
@@ -611,16 +611,16 @@ function quickprjedit_save_budget($prj_id, $frm, $type, $page_type) {
                 $budget_block .= '<div class="fl-form '.$budget_price_class.' color-budget">';
                 switch ($budget['costby']) {
                     case '1':
-                       $priceby_str = "/час";
+                       $priceby_str = "/С‡Р°СЃ";
                        break;
                     case '2':
-                       $priceby_str = "/день";
+                       $priceby_str = "/РґРµРЅСЊ";
                        break;
                     case '3':
-                       $priceby_str = "/месяц";
+                       $priceby_str = "/РјРµСЃСЏС†";
                        break;
                     case '4':
-                       $priceby_str = "/проект";
+                       $priceby_str = "/РїСЂРѕРµРєС‚";
                        break;
                     default:
                        $priceby_str = "";
@@ -630,11 +630,11 @@ function quickprjedit_save_budget($prj_id, $frm, $type, $page_type) {
                    $priceby_str = "";
                }
                 $budget_block .= '<strong>
-                                <a href="#" id="prj_budget_lnk_'.$prj_id.'">Бюджет: '.CurToChar($budget['cost'], $budget['currency']) . $priceby_str.'</a>
+                                <a href="#" id="prj_budget_lnk_'.$prj_id.'">Р‘СЋРґР¶РµС‚: '.CurToChar($budget['cost'], $budget['currency']) . $priceby_str.'</a>
                              </strong>';
                 if ($budget['cost'] > 0) {
                     $project_exRates = project_exrates::GetAll();
-                    $exch = array(1=>'FM', 'USD','Euro','Руб');
+                    $exch = array(1=>'FM', 'USD','Euro','Р СѓР±');
                     $translate_exRates = array
                     (
                     0 => 2,
@@ -656,7 +656,7 @@ function quickprjedit_save_budget($prj_id, $frm, $type, $page_type) {
                        $price_other_cur .= CurToChar(preg_replace('/.00$/', '', sprintf("%.2f", round($budget['cost'] * $project_exRates[trim($translate_exRates[$budget['currency']]) . '1'], 2))), 3) . "AA";
                    }
                    $price_other_cur = preg_replace("/AA$/", "", $price_other_cur);
-                   $price_other_cur = preg_replace("/AA/", "&nbsp;—&nbsp;", $price_other_cur);
+                   $price_other_cur = preg_replace("/AA/", "&nbsp;вЂ”&nbsp;", $price_other_cur);
                    $budget_block .= '<em>'.$price_other_cur.'</em>';
                 }
                 $budget_block .= '
@@ -670,16 +670,16 @@ function quickprjedit_save_budget($prj_id, $frm, $type, $page_type) {
         }
         switch ($budget['costby']) {
             case '1':
-                $costby_str = "/час";
+                $costby_str = "/С‡Р°СЃ";
                 break;
             case '2':
-                $costby_str = "/день";
+                $costby_str = "/РґРµРЅСЊ";
                 break;
             case '3':
-                $costby_str = "/месяц";
+                $costby_str = "/РјРµСЃСЏС†";
                 break;
             case '4':
-                $costby_str = "/проект";
+                $costby_str = "/РїСЂРѕРµРєС‚";
                 break;
             default:
                 $costby_str = "";
@@ -690,7 +690,7 @@ function quickprjedit_save_budget($prj_id, $frm, $type, $page_type) {
     if($budget) {
         switch($type) {
             case 1:
-                // Лента
+                // Р›РµРЅС‚Р°
                 $objResponse->assign("prj_budget_lnk_{$prj_id}", "innerHTML", $str_budget_cost);
                 if ($agreement) {
                     $objResponse->script('$("prj_budget_lnk_'.$prj_id.'").getParent().removeClass("b-post__price_bold").removeClass("b-post__price_fontsize_15").addClass("bujet-dogovor");');
@@ -704,7 +704,7 @@ function quickprjedit_save_budget($prj_id, $frm, $type, $page_type) {
                 $objResponse->script("$('prj_budget_lnk_{$prj_id}').addEvent('click', function() { {$str_budget_lnk} });");
                 break;
             case 2:
-                // Проект
+                // РџСЂРѕРµРєС‚
                 $objResponse->assign("budget_block", "innerHTML", $budget_block);
                 $objResponse->script("$('budget_block').set('class', '{$budget_block_class}');");
                 $objResponse->script("$('prj_budget_lnk_{$prj_id}').addEvent('click', function() { {$str_budget_lnk} });");

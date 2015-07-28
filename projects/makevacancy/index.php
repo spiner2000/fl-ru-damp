@@ -15,12 +15,12 @@ if (!$is_allow) {
 
 $project = new_projects::initData(new_projects::getPrj($id));
 if ($project->isAllowMovedToVacancy()) {
-    // Äåëàåì ïðîåêò âàêàíñèåé
+    // Ð”ÐµÐ»Ð°ÐµÐ¼ Ð¿Ñ€Ð¾ÐµÐºÑ‚ Ð²Ð°ÐºÐ°Ð½ÑÐ¸ÐµÐ¹
     $project->movedToVacancy();
 
-    // Îòñûëàåì ïèñüìî çàêàç÷èêó î ïåðåíîñå åãî ïðîåêòà â ðàçäåë âàêàíñèè
+    // ÐžÑ‚ÑÑ‹Ð»Ð°ÐµÐ¼ Ð¿Ð¸ÑÑŒÐ¼Ð¾ Ð·Ð°ÐºÐ°Ð·Ñ‡Ð¸ÐºÑƒ Ð¾ Ð¿ÐµÑ€ÐµÐ½Ð¾ÑÐµ ÐµÐ³Ð¾ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð° Ð² Ñ€Ð°Ð·Ð´ÐµÐ» Ð²Ð°ÐºÐ°Ð½ÑÐ¸Ð¸
     $mail = new smtp();
-    $mail->subject   = 'Âàø ïðîåêò ïåðåíåñåí â ðàçäåë Âàêàíñèè è îæèäàåò îïëàòû';  // çàãîëîâîê ïèñüìà
+    $mail->subject   = 'Ð’Ð°Ñˆ Ð¿Ñ€Ð¾ÐµÐºÑ‚ Ð¿ÐµÑ€ÐµÐ½ÐµÑÐµÐ½ Ð² Ñ€Ð°Ð·Ð´ÐµÐ» Ð’Ð°ÐºÐ°Ð½ÑÐ¸Ð¸ Ð¸ Ð¾Ð¶Ð¸Ð´Ð°ÐµÑ‚ Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹';  // Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº Ð¿Ð¸ÑÑŒÐ¼Ð°
     $mail->message = Template::render(HOME.'/templates/mail/projects/makevacancy.tpl.php',array(
         'title' => $project->_project['name'],
         'project_id' => $project->_project['id'],
@@ -29,7 +29,7 @@ if ($project->isAllowMovedToVacancy()) {
         'not_pro_price' => $project->getProjectInOfficePrice(false)
     ));
 
-    $mail->recipient = "{$project->_project['email']} <{$project->_project['email']}>"; // ïîëó÷àòåëü
+    $mail->recipient = "{$project->_project['email']} <{$project->_project['email']}>"; // Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ñ‚ÐµÐ»ÑŒ
     $success = $mail->SmtpMail('text/html');
 }
 

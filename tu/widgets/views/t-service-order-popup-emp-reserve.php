@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Попап при заказе ТУ для заказчика c интерфейсом резерва по "новой БС"
+ * РџРѕРїР°Рї РїСЂРё Р·Р°РєР°Р·Рµ РўРЈ РґР»СЏ Р·Р°РєР°Р·С‡РёРєР° c РёРЅС‚РµСЂС„РµР№СЃРѕРј СЂРµР·РµСЂРІР° РїРѕ "РЅРѕРІРѕР№ Р‘РЎ"
  */
 
 $title = reformat($title, 30, 0, 1);
-$days = $days . ' ' . ending($days, 'день', 'дня', 'дней');
+$days = $days . ' ' . ending($days, 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№');
 $priceFormated = tservices_helper::cost_format($price,true, false, false);
 $priceWithTaxFormated = tservices_helper::cost_format($priceWithTax,true, false, false);
 
@@ -18,47 +18,47 @@ $show_popup = (isset($_POST['popup']));
 <div id="tservices_orders_status_popup" class="b-shadow b-shadow_center b-shadow_width_520 <?php if(!$show_popup){ ?>b-shadow_hide <?php } ?>b-shadow__quick" style="display:block;">
     <div class="b-shadow__body b-shadow__body_pad_20">
         <h2 class="b-layout__title">
-            Заказ услуги
+            Р—Р°РєР°Р· СѓСЃР»СѓРіРё
         </h2>
         <div class="b-layout__txt b-layout__txt_padbot_20">
-            Для заказа услуги вам необходимо выбрать способ оплаты работы (с резервированием суммы или без него).
+            Р”Р»СЏ Р·Р°РєР°Р·Р° СѓСЃР»СѓРіРё РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РІС‹Р±СЂР°С‚СЊ СЃРїРѕСЃРѕР± РѕРїР»Р°С‚С‹ СЂР°Р±РѕС‚С‹ (СЃ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРµРј СЃСѓРјРјС‹ РёР»Рё Р±РµР· РЅРµРіРѕ).
         </div>
         <div class="b-layout b-layout_padleft_15">
             <div class="b-layout__txt b-layout__txt_padbot_20">
-                Исполнитель <b><?=$frl_fullname?></b><br/>
-                Услуга &laquo;<b><?=$title?></b>&raquo; за <b><span class="__tservice_days"><?=$days?></span></b><br/>
-                Сумма оплаты <b>
+                РСЃРїРѕР»РЅРёС‚РµР»СЊ <b><?=$frl_fullname?></b><br/>
+                РЈСЃР»СѓРіР° &laquo;<b><?=$title?></b>&raquo; Р·Р° <b><span class="__tservice_days"><?=$days?></span></b><br/>
+                РЎСѓРјРјР° РѕРїР»Р°С‚С‹ <b>
                     <span class="__tservice_price3"><?=$priceWithTaxFormated?></span>
                     <span class="__tservice_price2" style="display: none"><?=$priceFormated?></span>
                 </b> 
-                <span class="__tservice_paytype"> (с учетом <strong><span class="__tservice_reserve_tax"><?=$reserveTax?></span>%</strong> комиссии сервису)</span>
+                <span class="__tservice_paytype"> (СЃ СѓС‡РµС‚РѕРј <strong><span class="__tservice_reserve_tax"><?=$reserveTax?></span>%</strong> РєРѕРјРёСЃСЃРёРё СЃРµСЂРІРёСЃСѓ)</span>
             </div>
             <div class="b-radio b-radio_layout_vertical">
                 <div class="b-radio__item b-radio__item_padbot_10">
                     <input data-hide-class=".__tservice_price2" data-show-class=".__tservice_paytype,.__tservice_price3" data-show-display="inline" tabindex="4" checked="checked" type="radio" value="1" name="paytype" class="b-radio__input" id="paytype1"/>
                     <label for="paytype1" class="b-radio__label b-radio__label_fontsize_13 b-radio__label_bold b-radio__label_margtop_-1">
-                        Безопасная сделка (с резервированием бюджета) &#160;<a class="b-layout__link" href="/promo/bezopasnaya-sdelka/" target="_blank"><span class="b-shadow__icon b-shadow__icon_quest2 b-icon_top_2"></span></a>
+                        Р‘РµР·РѕРїР°СЃРЅР°СЏ СЃРґРµР»РєР° (СЃ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРµРј Р±СЋРґР¶РµС‚Р°) &#160;<a class="b-layout__link" href="/promo/bezopasnaya-sdelka/" target="_blank"><span class="b-shadow__icon b-shadow__icon_quest2 b-icon_top_2"></span></a>
                     </label>
                     <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_20">
-                        Безопасное сотрудничество с гарантией возврата средств. Вы резервируете бюджет заказа на сайте FL.ru - а мы гарантируем вам возврат суммы, если работа будет выполнена Исполнителем некачественно или не в срок.
+                        Р‘РµР·РѕРїР°СЃРЅРѕРµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ СЃ РіР°СЂР°РЅС‚РёРµР№ РІРѕР·РІСЂР°С‚Р° СЃСЂРµРґСЃС‚РІ. Р’С‹ СЂРµР·РµСЂРІРёСЂСѓРµС‚Рµ Р±СЋРґР¶РµС‚ Р·Р°РєР°Р·Р° РЅР° СЃР°Р№С‚Рµ FL.ru - Р° РјС‹ РіР°СЂР°РЅС‚РёСЂСѓРµРј РІР°Рј РІРѕР·РІСЂР°С‚ СЃСѓРјРјС‹, РµСЃР»Рё СЂР°Р±РѕС‚Р° Р±СѓРґРµС‚ РІС‹РїРѕР»РЅРµРЅР° РСЃРїРѕР»РЅРёС‚РµР»РµРј РЅРµРєР°С‡РµСЃС‚РІРµРЅРЅРѕ РёР»Рё РЅРµ РІ СЃСЂРѕРє.
                     </div>
                 </div>
                 <div class="b-radio__item">
                     <input data-hide-class=".__tservice_paytype,.__tservice_price3" data-show-class=".__tservice_price2" data-show-display="inline" tabindex="5" type="radio" value="0" name="paytype" class="b-radio__input" id="paytype0">
                     <label for="paytype0" class="b-radio__label b-radio__label_fontsize_13 b-radio__label_bold b-radio__label_margtop_-1">
-                        Прямая оплата Исполнителю на его кошелек/счет
+                        РџСЂСЏРјР°СЏ РѕРїР»Р°С‚Р° РСЃРїРѕР»РЅРёС‚РµР»СЋ РЅР° РµРіРѕ РєРѕС€РµР»РµРє/СЃС‡РµС‚
                     </label>
                     <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_20">
-                        Сотрудничество без участия сайта в процессе оплаты. Вы сами договариваетесь с Исполнителем о способе и порядке оплаты. И самостоятельно регулируете все претензии, связанные с качеством и сроками выполнения работы.
+                        РЎРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ Р±РµР· СѓС‡Р°СЃС‚РёСЏ СЃР°Р№С‚Р° РІ РїСЂРѕС†РµСЃСЃРµ РѕРїР»Р°С‚С‹. Р’С‹ СЃР°РјРё РґРѕРіРѕРІР°СЂРёРІР°РµС‚РµСЃСЊ СЃ РСЃРїРѕР»РЅРёС‚РµР»РµРј Рѕ СЃРїРѕСЃРѕР±Рµ Рё РїРѕСЂСЏРґРєРµ РѕРїР»Р°С‚С‹. Р СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ СЂРµРіСѓР»РёСЂСѓРµС‚Рµ РІСЃРµ РїСЂРµС‚РµРЅР·РёРё, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ РєР°С‡РµСЃС‚РІРѕРј Рё СЃСЂРѕРєР°РјРё РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹.
                     </div>
                 </div>
             </div>
             <div class="b-buttons b-buttons_padtop_20">
                 <a href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green" onclick="yaCounter6051055.reachGoal('zakaz_tu'); TServices.onSendToCbr(this, '__form_tservice');">
-                    <span class="__tservices_orders_feedback_submit_label">Создать заказ и перейти в него</span>
+                    <span class="__tservices_orders_feedback_submit_label">РЎРѕР·РґР°С‚СЊ Р·Р°РєР°Р· Рё РїРµСЂРµР№С‚Рё РІ РЅРµРіРѕ</span>
                 </a>
-                <span class="b-layout__txt b-layout__txt_fontsize_11">&#160; или 
-                    <a class="b-layout__link" href="javascript:void(0);" onclick="TServices.closePopup();">отменить заказ</a>
+                <span class="b-layout__txt b-layout__txt_fontsize_11">&#160; РёР»Рё 
+                    <a class="b-layout__link" href="javascript:void(0);" onclick="TServices.closePopup();">РѕС‚РјРµРЅРёС‚СЊ Р·Р°РєР°Р·</a>
                 </span>
             </div>
         </div>

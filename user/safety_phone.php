@@ -2,28 +2,28 @@
 <div class="b-fon b-fon_width_full b-fon_padbot_10" id="safety-phone-block">
 	<span class="b-fon__bord-attent"></span>
  <div class="b-fon__body b-fon__body_pad_15 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffe679">
-				<div class="b-fon__txt b-fon__txt_bold b-fon__txt_padleft_100 b-fon__txt_padbot_5">Восстановление пароля на телефон</div>
-				<div class="b-fon__txt b-fon__txt_fontsize_11 b-fon__txt_padleft_100 b-fon__txt_padbot_20">Установка этого параметра позволит сохранить доступ к вашему аккаунту, даже если произойдет утрата электронного почтового ящика.<br>Пожалуйста, ознакомьтесь сначала с <a class="b-fon__link" href="https://feedback.fl.ru/article/details/id/209">инструкцией по привязке телефона</a>.</div>
-				<div class="b-fon__txt b-fon__txt_padleft_100 b-fon__txt_inline-block b-fon__txt_width_160">Номер вашего телефона:</div><div class="b-combo b-combo_margtop_-5 b-combo_inline-block b-combo_padbot_15">
+				<div class="b-fon__txt b-fon__txt_bold b-fon__txt_padleft_100 b-fon__txt_padbot_5">Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РїР°СЂРѕР»СЏ РЅР° С‚РµР»РµС„РѕРЅ</div>
+				<div class="b-fon__txt b-fon__txt_fontsize_11 b-fon__txt_padleft_100 b-fon__txt_padbot_20">РЈСЃС‚Р°РЅРѕРІРєР° СЌС‚РѕРіРѕ РїР°СЂР°РјРµС‚СЂР° РїРѕР·РІРѕР»РёС‚ СЃРѕС…СЂР°РЅРёС‚СЊ РґРѕСЃС‚СѓРї Рє РІР°С€РµРјСѓ Р°РєРєР°СѓРЅС‚Сѓ, РґР°Р¶Рµ РµСЃР»Рё РїСЂРѕРёР·РѕР№РґРµС‚ СѓС‚СЂР°С‚Р° СЌР»РµРєС‚СЂРѕРЅРЅРѕРіРѕ РїРѕС‡С‚РѕРІРѕРіРѕ СЏС‰РёРєР°.<br>РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕР·РЅР°РєРѕРјСЊС‚РµСЃСЊ СЃРЅР°С‡Р°Р»Р° СЃ <a class="b-fon__link" href="https://feedback.fl.ru/article/details/id/209">РёРЅСЃС‚СЂСѓРєС†РёРµР№ РїРѕ РїСЂРёРІСЏР·РєРµ С‚РµР»РµС„РѕРЅР°</a>.</div>
+				<div class="b-fon__txt b-fon__txt_padleft_100 b-fon__txt_inline-block b-fon__txt_width_160">РќРѕРјРµСЂ РІР°С€РµРіРѕ С‚РµР»РµС„РѕРЅР°:</div><div class="b-combo b-combo_margtop_-5 b-combo_inline-block b-combo_padbot_15">
 					<div class="b-combo__input b-combo__input_width_100 ">
 						<input class="b-combo__input-text" id="safety_phone" name="safety_phone" type="text" size="80" value=""><label class="b-combo__label" for=""></label>
 					</div>
 				</div>
-				<span id="safety_phone_example" class="b-fon__txt b-fon__txt_fontsize_11">&nbsp;&nbsp;&nbsp;Формат: +7xxxxxxxxxx</span>
+				<span id="safety_phone_example" class="b-fon__txt b-fon__txt_fontsize_11">&nbsp;&nbsp;&nbsp;Р¤РѕСЂРјР°С‚: +7xxxxxxxxxx</span>
                 <span id="safety_phone_error" class="b-fon__txt b-fon__txt_fontsize_16 b-fon__txt_color_c10601 b-fon_hide"></span>
 				<div class="b-check b-check_padleft_260">
 						<input id="safety_phone_only" class="b-check__input" name="safety_phone_only" type="checkbox" value="">
-						<label class="b-check__label b-check__label_fontsize_13">Восстанавливать пароль только с помощью телефона</label>
+						<label class="b-check__label b-check__label_fontsize_13">Р’РѕСЃСЃС‚Р°РЅР°РІР»РёРІР°С‚СЊ РїР°СЂРѕР»СЊ С‚РѕР»СЊРєРѕ СЃ РїРѕРјРѕС‰СЊСЋ С‚РµР»РµС„РѕРЅР°</label>
 				</div>
 				<div class="b-buttons b-buttons_padtop_15 b-buttons_padleft_260">
 					<a id="safety_phone_now" class="b-button b-button_rectangle_color_green b-button_rectangle_color_disable" href="javascript:void(0)" onclick="SafetyPhoneNow();">
 						<span class="b-button__b1">
 							<span class="b-button__b2 b-button__b2_padlr_5">
-								<span class="b-button__txt">Привязать телефон</span>
+								<span class="b-button__txt">РџСЂРёРІСЏР·Р°С‚СЊ С‚РµР»РµС„РѕРЅ</span>
 							</span>
 						</span>
 					</a>
-					&nbsp;&nbsp;&nbsp;<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript:void(0)" onclick="SafetyPhoneLater();">напомнить позже</a> <span class="b-buttons__txt">или</span>		<a class="b-buttons__link b-buttons__link_dot_c10601" href="javascript:void(0)" onclick="SafetyPhoneNever();">больше не показывать это сообщение</a>
+					&nbsp;&nbsp;&nbsp;<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript:void(0)" onclick="SafetyPhoneLater();">РЅР°РїРѕРјРЅРёС‚СЊ РїРѕР·Р¶Рµ</a> <span class="b-buttons__txt">РёР»Рё</span>		<a class="b-buttons__link b-buttons__link_dot_c10601" href="javascript:void(0)" onclick="SafetyPhoneNever();">Р±РѕР»СЊС€Рµ РЅРµ РїРѕРєР°Р·С‹РІР°С‚СЊ СЌС‚Рѕ СЃРѕРѕР±С‰РµРЅРёРµ</a>
 				</div>
 
 
@@ -81,8 +81,8 @@ function SafetyPhoneNever() {
     }).post({'xjxfun': 'SafetyPhoneNever', 'u_token_key': _TOKEN_KEY});
 }
 
-// скрывает блок привязки телефона к аккаунту
-// а также корректирует положение промоблока, карусели и основного контентного блока
+// СЃРєСЂС‹РІР°РµС‚ Р±Р»РѕРє РїСЂРёРІСЏР·РєРё С‚РµР»РµС„РѕРЅР° Рє Р°РєРєР°СѓРЅС‚Сѓ
+// Р° С‚Р°РєР¶Рµ РєРѕСЂСЂРµРєС‚РёСЂСѓРµС‚ РїРѕР»РѕР¶РµРЅРёРµ РїСЂРѕРјРѕР±Р»РѕРєР°, РєР°СЂСѓСЃРµР»Рё Рё РѕСЃРЅРѕРІРЅРѕРіРѕ РєРѕРЅС‚РµРЅС‚РЅРѕРіРѕ Р±Р»РѕРєР°
 function hideSafetyPhoneBlock () {
     var safetyBlock = $$("div#safety-phone-block")[0];
     safetyBlock.dispose();
@@ -95,7 +95,7 @@ function safetyPhoneEnter () {
     var button = $('safety_phone_now');
     if (!input || !button) return;
     var phone = input.get('value');
-    // проверяем введен ли телефон
+    // РїСЂРѕРІРµСЂСЏРµРј РІРІРµРґРµРЅ Р»Рё С‚РµР»РµС„РѕРЅ
     var valid = true;
     if (phone.length === 0 || !/^\+7\d{10}$/.test(phone)) {
         valid = false;
@@ -115,7 +115,7 @@ window.addEvent('domready', function () {
         if (!input || !button) return;
         var phone = input.get('value');
         
-        // фильтрация недопустимых символов
+        // С„РёР»СЊС‚СЂР°С†РёСЏ РЅРµРґРѕРїСѓСЃС‚РёРјС‹С… СЃРёРјРІРѕР»РѕРІ
         if (!/^[\+0-9]*$/.test(phone)) {
             input.set('value', lastPhone);
             return false;
@@ -123,7 +123,7 @@ window.addEvent('domready', function () {
             lastPhone = phone;
         }
         
-        // проверяем введен ли телефон
+        // РїСЂРѕРІРµСЂСЏРµРј РІРІРµРґРµРЅ Р»Рё С‚РµР»РµС„РѕРЅ
         var valid = true;
         if (phone.length === 0 || !/^\+\d{1,}$/.test(phone)) {
             valid = false;

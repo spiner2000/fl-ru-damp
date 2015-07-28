@@ -1,19 +1,19 @@
 <?php
 /**
- * Модерирование пользовательского контента. Количество потоков в сменах. Шаблон.
+ * РњРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РєРѕРЅС‚РµРЅС‚Р°. РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕС‚РѕРєРѕРІ РІ СЃРјРµРЅР°С…. РЁР°Р±Р»РѕРЅ.
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
 if ( !defined('IS_SITE_ADMIN') ) { header('Location: /404.php'); exit; }
 ?>
 
-<h2 class="b-layout__title b-layout__title_padbot_30">Пользовательский контент / Потоки</h2>
+<h2 class="b-layout__title b-layout__title_padbot_30">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ РєРѕРЅС‚РµРЅС‚ / РџРѕС‚РѕРєРё</h2>
 
 <?php if ($_SESSION['admin_streams_success']) { 
     unset( $_SESSION['admin_streams_success'] );
 ?>
   <div>
-    <img src="/images/ico_ok.gif" alt="" border="0" height="18" width="19"/>&nbsp;&nbsp;Изменения внесены.
+    <img src="/images/ico_ok.gif" alt="" border="0" height="18" width="19"/>&nbsp;&nbsp;РР·РјРµРЅРµРЅРёСЏ РІРЅРµСЃРµРЅС‹.
   </div>
   <br/><br/>
 <?php } if ($error) print(view_error($error).'<br/>'); ?>
@@ -26,10 +26,10 @@ if ( $nShifts ) {
 <form method="post" name="form_streams" id="form_streams">
     <input type="hidden" name="cmd" value="go">
 <div style="overflow:auto; width:760px;">
-<table class="b-layout__table b-layout__table_width_full" border="0" cellpadding="0" cellspacing="0" style="width:<?=(120+100*$nShifts)?>px;"><!-- ширину вычислять так: 120 + 100 x число столбцов -->
+<table class="b-layout__table b-layout__table_width_full" border="0" cellpadding="0" cellspacing="0" style="width:<?=(120+100*$nShifts)?>px;"><!-- С€РёСЂРёРЅСѓ РІС‹С‡РёСЃР»СЏС‚СЊ С‚Р°Рє: 120 + 100 x С‡РёСЃР»Рѕ СЃС‚РѕР»Р±С†РѕРІ -->
     <tr class="b-layout__tr">
         <td class="b-layout__left b-layout__left_valign_bottom b-layout__left_width_120 b-layout__left_padbot_30">
-            <div class="b-layout__txt b-layout__txt_fontsize_11">Смены</div>
+            <div class="b-layout__txt b-layout__txt_fontsize_11">РЎРјРµРЅС‹</div>
         </td>
 <?php
         $nCnt = 1;
@@ -53,7 +53,7 @@ if ( $nShifts ) {
     </tr>
     <tr class="b-layout__tr">
         <td class="b-layout__left b-layout__left_width_120 b-layout__left_padbot_30">
-            <div class="b-layout__txt">Кол-во потоков</div>
+            <div class="b-layout__txt">РљРѕР»-РІРѕ РїРѕС‚РѕРєРѕРІ</div>
         </td>
 <?php
             foreach ( $aStreams[$aOne['id']] as $nShiftId => $nStreams ) {
@@ -76,9 +76,9 @@ if ( $nShifts ) {
 </div>
 
 <div class="b-buttons b-buttons_padtop_20">
-    <a href="javascript:void(0);" onclick="return user_content.submitShiftsContents();" class="b-button b-button_flat b-button_flat_green">Сохранить</a>
-	<span class="b-buttons__txt b-buttons__txt_padleft_10">или</span>
-	<a href="/siteadmin/user_content/?site=streams" class="b-buttons__link b-buttons__link_color_c10601">отменить изменения</a>
+    <a href="javascript:void(0);" onclick="return user_content.submitShiftsContents();" class="b-button b-button_flat b-button_flat_green">РЎРѕС…СЂР°РЅРёС‚СЊ</a>
+	<span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё</span>
+	<a href="/siteadmin/user_content/?site=streams" class="b-buttons__link b-buttons__link_color_c10601">РѕС‚РјРµРЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ</a>
 </div>
 
 </form>
@@ -88,7 +88,7 @@ if ( $nShifts ) {
 else {
     
 ?>
-Перед настройкой потоков необходимо настроить <a href="/siteadmin/user_content/?site=shifts">смены</a>.
+РџРµСЂРµРґ РЅР°СЃС‚СЂРѕР№РєРѕР№ РїРѕС‚РѕРєРѕРІ РЅРµРѕР±С…РѕРґРёРјРѕ РЅР°СЃС‚СЂРѕРёС‚СЊ <a href="/siteadmin/user_content/?site=shifts">СЃРјРµРЅС‹</a>.
 <?php
 
 }

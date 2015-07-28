@@ -33,7 +33,7 @@ class createBillResponse {
 
 /**
  * ServerWSService class
- * Êëàññ äëÿ ðàáîòû ñ ïðîòîêîëîì SOAP
+ * ÐšÐ»Ð°ÑÑ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ Ð¿Ñ€Ð¾Ñ‚Ð¾ÐºÐ¾Ð»Ð¾Ð¼ SOAP
  */
 class ServerWSService extends SoapClient {
     
@@ -99,14 +99,14 @@ class qiwipay_soap extends qiwipay
     }
     
     /**
-     * Ïîëó÷åíèå ñïèñêà ñ÷åòîâ ñ óêàçàíèåì òåêóùèõ ñòàòóñîâ (ìàêñèìàëüíûé ïåðèîä çàïðîñà ñ÷åòîâ - 31 äåíü). 
+     * ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ðµ ÑÐ¿Ð¸ÑÐºÐ° ÑÑ‡ÐµÑ‚Ð¾Ð² Ñ ÑƒÐºÐ°Ð·Ð°Ð½Ð¸ÐµÐ¼ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ñ… ÑÑ‚Ð°Ñ‚ÑƒÑÐ¾Ð² (Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ð¿ÐµÑ€Ð¸Ð¾Ð´ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° ÑÑ‡ÐµÑ‚Ð¾Ð² - 31 Ð´ÐµÐ½ÑŒ). 
      *
      * @return unknown
      */
     function getBillList() {
         $params = new getBillList();
-        $params->login    = $this->login; // ëîãèí
-        $params->password = $this->passwd; // ïàðîëü
+        $params->login    = $this->login; // Ð»Ð¾Ð³Ð¸Ð½
+        $params->password = $this->passwd; // Ð¿Ð°Ñ€Ð¾Ð»ÑŒ
         $params->dateFrom = date('d.m.Y', (time()-86400*30));
         $params->dateTo   = date('d.m.Y');
         $params->status   = self::STATUS_COMPLETED;
@@ -117,13 +117,13 @@ class qiwipay_soap extends qiwipay
     }
     
     /**
-     * Ñîçäàíèå ñ÷åòà @see class qiwipay
+     * Ð¡Ð¾Ð·Ð´Ð°Ð½Ð¸Ðµ ÑÑ‡ÐµÑ‚Ð° @see class qiwipay
      *
-     * @param array $request ïàðàìåòðû ($_POST).
+     * @param array $request Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹ ($_POST).
      * @return unknown
      */
     function createBill($request) {
-        if ( !$this->uid ) return 'Ïîëüçîâàòåëü íå îïðåäåëåí';
+        if ( !$this->uid ) return 'ÐŸÐ¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð½Ðµ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½';
         
         $account = new account();
         $account->GetInfo( $this->uid, true );
@@ -142,13 +142,13 @@ class qiwipay_soap extends qiwipay
 		
 		if ($id) {
 		    $params = new createBill();
-        	$params->login    = $this->login; // ëîãèí
-        	$params->password = $this->passwd; // ïàðîëü
-        	$params->user     = $this->form['phone']; // ïîëüçîâàòåëü, êîòîðîìó âûñòàâëÿåòñÿ ñ÷åò
-        	$params->amount   = $this->form['sum']; // ñóììà
-        	$params->comment  = $this->form['comment']; // êîììåíòàðèé
-        	$params->txn      = $id; // íîìåð çàêàçà
-        	$params->lifetime = $this->ltime; // âðåìÿ æèçíè (åñëè ïóñòî, èñïîëüçóåòñÿ ïî óìîë÷àíèþ 30 äíåé)
+        	$params->login    = $this->login; // Ð»Ð¾Ð³Ð¸Ð½
+        	$params->password = $this->passwd; // Ð¿Ð°Ñ€Ð¾Ð»ÑŒ
+        	$params->user     = $this->form['phone']; // Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ, ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¼Ñƒ Ð²Ñ‹ÑÑ‚Ð°Ð²Ð»ÑÐµÑ‚ÑÑ ÑÑ‡ÐµÑ‚
+        	$params->amount   = $this->form['sum']; // ÑÑƒÐ¼Ð¼Ð°
+        	$params->comment  = $this->form['comment']; // ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¹
+        	$params->txn      = $id; // Ð½Ð¾Ð¼ÐµÑ€ Ð·Ð°ÐºÐ°Ð·Ð°
+        	$params->lifetime = $this->ltime; // Ð²Ñ€ÐµÐ¼Ñ Ð¶Ð¸Ð·Ð½Ð¸ (ÐµÑÐ»Ð¸ Ð¿ÑƒÑÑ‚Ð¾, Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ 30 Ð´Ð½ÐµÐ¹)
 		    $params->alarm    = $this->alarm_sms; 
         	
         	if($this->passwd=='debug') {
@@ -196,10 +196,10 @@ class qiwipay_soap extends qiwipay
     }
     
     /**
-     * Åñëè ïëàòåæíàÿ ñèñòåìà ñîîáùàåò îá îøèáêå, òî âîçâðàùåò òåêñò îøèáêè
+     * Ð•ÑÐ»Ð¸ Ð¿Ð»Ð°Ñ‚ÐµÐ¶Ð½Ð°Ñ ÑÐ¸ÑÑ‚ÐµÐ¼Ð° ÑÐ¾Ð¾Ð±Ñ‰Ð°ÐµÑ‚ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ, Ñ‚Ð¾ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰ÐµÑ‚ Ñ‚ÐµÐºÑÑ‚ Ð¾ÑˆÐ¸Ð±ÐºÐ¸
      *
-     * @param string $result   îòâåò ñèñòåìû (îáúåêò)
-     * @return string   ïóñòî èëè òåêñò îøèáêè.
+     * @param string $result   Ð¾Ñ‚Ð²ÐµÑ‚ ÑÐ¸ÑÑ‚ÐµÐ¼Ñ‹ (Ð¾Ð±ÑŠÐµÐºÑ‚)
+     * @return string   Ð¿ÑƒÑÑ‚Ð¾ Ð¸Ð»Ð¸ Ñ‚ÐµÐºÑÑ‚ Ð¾ÑˆÐ¸Ð±ÐºÐ¸.
      */
     function _checkResultError($rc) {
         return $this->_errors[(string)$rc];

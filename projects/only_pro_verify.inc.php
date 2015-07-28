@@ -7,19 +7,19 @@
                         <?php if ($project['urgent'] == 't' || $project['hide'] == 't'): ?>
                             <div class="b-layout__txt b-layout__txt_lineheight_1">
                                 <?php if ($project['urgent'] == 't'): ?>
-                                    <span class="b-layout__txt b-layout__txt_color_ba0000"><span class="b-icon b-icon__fire b-icon_top_2"></span>Срочный проект</span>&nbsp;&nbsp;
+                                    <span class="b-layout__txt b-layout__txt_color_ba0000"><span class="b-icon b-icon__fire b-icon_top_2"></span>РЎСЂРѕС‡РЅС‹Р№ РїСЂРѕРµРєС‚</span>&nbsp;&nbsp;
                                 <?php endif; ?>
                                 <?php if ($project['hide'] == 't'): ?>
-                                    <span class="b-layout__txt"><span class="b-icon b-icon__eye b-icon_top_2"></span> Скрытый от поисковых систем и неавторизованных пользователей</span>
+                                    <span class="b-layout__txt"><span class="b-icon b-icon__eye b-icon_top_2"></span> РЎРєСЂС‹С‚С‹Р№ РѕС‚ РїРѕРёСЃРєРѕРІС‹С… СЃРёСЃС‚РµРј Рё РЅРµР°РІС‚РѕСЂРёР·РѕРІР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</span>
                                 <?php endif; ?>
                             </div>
                         <?php endif; ?>
                         
                         <?php if ($project['pro_only'] == 't' || $project['verify_only'] == 't'): ?>
                             <div class="b-layout__txt b-layout__txt_lineheight_1">
-                                Только для 
+                                РўРѕР»СЊРєРѕ РґР»СЏ 
                                 <?php if ($project['pro_only'] == 't'): echo ' '.view_pro(); endif; ?>
-                                <?php if ($project['verify_only'] == 't'):?> <?= $project['pro_only'] == 't' ? 'и' : '' ?> верифицированныx пользователей <a href="/promo/verification" alt="верифицированных пользователей" title="верифицированных пользователей"><span class="b-icon b-icon__ver b-icon_valign_bot"></span></a><?php endif; ?>
+                                <?php if ($project['verify_only'] == 't'):?> <?= $project['pro_only'] == 't' ? 'Рё' : '' ?> РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹x РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ <a href="/promo/verification" alt="РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№" title="РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№"><span class="b-icon b-icon__ver b-icon_valign_bot"></span></a><?php endif; ?>
                             </div>
                         <?php endif; ?>
                 <?php endif; ?>

@@ -38,10 +38,10 @@ else if($spec_pay) {
         if($err) {
            $error['spec'] = $err;
         } else {
-            $_SESSION['bill.GET']['addinfo'] = "<a href=\"/users/{$_SESSION['login']}/setup/specaddsetup/\">Страница управления специализациями</a>";
+            $_SESSION['bill.GET']['addinfo'] = "<a href=\"/users/{$_SESSION['login']}/setup/specaddsetup/\">РЎС‚СЂР°РЅРёС†Р° СѓРїСЂР°РІР»РµРЅРёСЏ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏРјРё</a>";
         }
     }else{
-        $error['spec'] = 'Не верно указано заначение количества доп. специализаций ';
+        $error['spec'] = 'РќРµ РІРµСЂРЅРѕ СѓРєР°Р·Р°РЅРѕ Р·Р°РЅР°С‡РµРЅРёРµ РєРѕР»РёС‡РµСЃС‚РІР° РґРѕРї. СЃРїРµС†РёР°Р»РёР·Р°С†РёР№ ';
     }
 }
 

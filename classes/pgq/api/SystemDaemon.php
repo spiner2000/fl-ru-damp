@@ -290,7 +290,7 @@ abstract class SystemDaemon
       {		
 	$pid = file_get_contents($this->pidfile);
     
-    // Åùå òàêîé âàðèàíò ïðîâåðêè (äëÿ áåòû).
+    // Ð•Ñ‰Ðµ Ñ‚Ð°ÐºÐ¾Ð¹ Ð²Ð°Ñ€Ð¸Ð°Ð½Ñ‚ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ¸ (Ð´Ð»Ñ Ð±ÐµÑ‚Ñ‹).
     exec(sprintf('ps -p %s | grep "%s"', $pid, preg_quote($this->name,'/')), $pidprc);
     if($pidprc && count($pidprc))
       return $pid;

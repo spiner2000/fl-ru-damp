@@ -1,38 +1,38 @@
 <?php
 /**
- * Подключаем предка
+ * РџРѕРґРєР»СЋС‡Р°РµРј РїСЂРµРґРєР°
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/admin_parent.php");
 
 /**
- * Класс для поиска пользователей
+ * РљР»Р°СЃСЃ РґР»СЏ РїРѕРёСЃРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
 class user_search extends admin_parent {    
     /**
-     * Сообщения об ошибках
+     * РЎРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕС€РёР±РєР°С…
      * 
      * @var array
      */
     static $error = array(
-        'fromIP' => '<div style="color: red; padding-top: 10px;">Начальный IP должен состоять из чисел от 0 до 255.<br/>Начинаться с числа. Вместо пропущенных чисел будут подставлены 0</div>',
-        'toIP'   => '<div style="color: red; padding-top: 10px;">Конечный IP должен состоять из чисел от 0 до 255.<br/>Начинаться с числа. Вместо пропущенных чисел будут подставлены 255</div>'
+        'fromIP' => '<div style="color: red; padding-top: 10px;">РќР°С‡Р°Р»СЊРЅС‹Р№ IP РґРѕР»Р¶РµРЅ СЃРѕСЃС‚РѕСЏС‚СЊ РёР· С‡РёСЃРµР» РѕС‚ 0 РґРѕ 255.<br/>РќР°С‡РёРЅР°С‚СЊСЃСЏ СЃ С‡РёСЃР»Р°. Р’РјРµСЃС‚Рѕ РїСЂРѕРїСѓС‰РµРЅРЅС‹С… С‡РёСЃРµР» Р±СѓРґСѓС‚ РїРѕРґСЃС‚Р°РІР»РµРЅС‹ 0</div>',
+        'toIP'   => '<div style="color: red; padding-top: 10px;">РљРѕРЅРµС‡РЅС‹Р№ IP РґРѕР»Р¶РµРЅ СЃРѕСЃС‚РѕСЏС‚СЊ РёР· С‡РёСЃРµР» РѕС‚ 0 РґРѕ 255.<br/>РќР°С‡РёРЅР°С‚СЊСЃСЏ СЃ С‡РёСЃР»Р°. Р’РјРµСЃС‚Рѕ РїСЂРѕРїСѓС‰РµРЅРЅС‹С… С‡РёСЃРµР» Р±СѓРґСѓС‚ РїРѕРґСЃС‚Р°РІР»РµРЅС‹ 255</div>'
     );
     
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      * 
-     * @param int $items_pp Количество пользователей на странице
+     * @param int $items_pp РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РЅР° СЃС‚СЂР°РЅРёС†Рµ
      */
     function __construct( $items_pp ) {
         parent::__construct( $items_pp );
     }
     
     /**
-     * Возвращает информацию о пользователе
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ
      * 
-     * @param  int $sUid UID пользователя
+     * @param  int $sUid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * @return array
      */
     function getUserByUid( $sUid = 0 ) {
@@ -44,12 +44,12 @@ class user_search extends admin_parent {
     }
     
     /**
-     * Возвращает список пользователей, удовлетворяющих условиям выборки
-     * Внешняя функция
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё
+     * Р’РЅРµС€РЅСЏСЏ С„СѓРЅРєС†РёСЏ
      * 
-     * @param  int $count возвращает количество записей удовлтворяющих условиям выборки
-     * @param  array $filter Параметры фильтра
-     * @param  int $page номер текущей страницы
+     * @param  int $count РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ СѓРґРѕРІР»С‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё
+     * @param  array $filter РџР°СЂР°РјРµС‚СЂС‹ С„РёР»СЊС‚СЂР°
+     * @param  int $page РЅРѕРјРµСЂ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹
      * @return array
      */
     function searchUsers( &$count, $filter, $page = 1 ) {
@@ -59,25 +59,25 @@ class user_search extends admin_parent {
     }
     
     /**
-     * Возвращает список пользователей, удовлетворяющих условиям выборки
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё
      * 
-     * @param  int $count возвращает количество записей удовлтворяющих условиям выборки
-     * @param  int $page номер текущей страницы
-     * @param  string order тип сортировки
-     * @param  int $direction порядок сортировки: 0 - по убыванию, не 0 - по возрастанию
-     * @param  bool $unlimited опционально. установить в true если нужно получить все записи (без постраничного вывода)
+     * @param  int $count РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ СѓРґРѕРІР»С‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё
+     * @param  int $page РЅРѕРјРµСЂ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹
+     * @param  string order С‚РёРї СЃРѕСЂС‚РёСЂРѕРІРєРё
+     * @param  int $direction РїРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё: 0 - РїРѕ СѓР±С‹РІР°РЅРёСЋ, РЅРµ 0 - РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ
+     * @param  bool $unlimited РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РІ true РµСЃР»Рё РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ РІСЃРµ Р·Р°РїРёСЃРё (Р±РµР· РїРѕСЃС‚СЂР°РЅРёС‡РЅРѕРіРѕ РІС‹РІРѕРґР°)
      * @return array
      */
     function getUsers( &$count, $page = 1, $order = 'general', $direction = 0, $unlimited = false ) {
         $this->aSQL = array();
         $offset     = $this->items_pp * ($page - 1);
         
-        // строим внутренний запрос
+        // СЃС‚СЂРѕРёРј РІРЅСѓС‚СЂРµРЅРЅРёР№ Р·Р°РїСЂРѕСЃ
         $this->_setUsersLimit( $offset, $unlimited );
         $this->_setUsersWhere();
         $this->_setUsersFrom( false );
         
-        // выбираем историю админских действий
+        // РІС‹Р±РёСЂР°РµРј РёСЃС‚РѕСЂРёСЋ Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
         $sQuery = 'SELECT u.uid, u.uname, u.usurname, u.login, u.role, u.is_pro, u.is_pro_test, u.is_team, u.photo, u.warn, 
             u.email, u.reg_ip, u.last_ip, u.is_banned, u.ban_where, u.self_deleted, u.safety_only_phone, 
             u.safety_bind_ip, u.active, u.pop, u.phone, u.phone_1, u.phone_2, u.phone_3, a.is_block as is_block_money, u.is_verify, 
@@ -95,7 +95,7 @@ class user_search extends admin_parent {
             return array();
         }
         
-        // получаем общее количество админских действий
+        // РїРѕР»СѓС‡Р°РµРј РѕР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
         $sAlias = $this->_setUsersFrom( true );
         
         $sQuery = 'SELECT COUNT('. $sAlias .'.uid) FROM '. $this->aSQL['from']
@@ -108,10 +108,10 @@ class user_search extends admin_parent {
     }
     
     /**
-     * Собирает FROM часть SQL запроса
+     * РЎРѕР±РёСЂР°РµС‚ FROM С‡Р°СЃС‚СЊ SQL Р·Р°РїСЂРѕСЃР°
      * 
-     * @param  bool $bCount true если запрос строится для получения количества
-     * @return string алиас таблицы для получения количества
+     * @param  bool $bCount true РµСЃР»Рё Р·Р°РїСЂРѕСЃ СЃС‚СЂРѕРёС‚СЃСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РєРѕР»РёС‡РµСЃС‚РІР°
+     * @return string Р°Р»РёР°СЃ С‚Р°Р±Р»РёС†С‹ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РєРѕР»РёС‡РµСЃС‚РІР°
      */
     function _setUsersFrom( $bCount = false ) {
         $sTable = $this->isFilter('who') ? ( $this->filter['who'] == 'emp' ? 'employer' : 'freelancer' ) : 'users';
@@ -155,11 +155,11 @@ class user_search extends admin_parent {
     }
     
     /**
-     * Строит подзапрос по пользователям
+     * РЎС‚СЂРѕРёС‚ РїРѕРґР·Р°РїСЂРѕСЃ РїРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј
      * 
-     * @param  string $sTable название таблицы
-     * @param  bool $bCount если true - то строится запрос получения количества, а не данных
-     * @return string внутренний запрос
+     * @param  string $sTable РЅР°Р·РІР°РЅРёРµ С‚Р°Р±Р»РёС†С‹
+     * @param  bool $bCount РµСЃР»Рё true - С‚Рѕ СЃС‚СЂРѕРёС‚СЃСЏ Р·Р°РїСЂРѕСЃ РїРѕР»СѓС‡РµРЅРёСЏ РєРѕР»РёС‡РµСЃС‚РІР°, Р° РЅРµ РґР°РЅРЅС‹С…
+     * @return string РІРЅСѓС‚СЂРµРЅРЅРёР№ Р·Р°РїСЂРѕСЃ
      */
     function _getUsersInnerSql( $sTable = '', $bCount = false ) {
         $sSql = '';
@@ -169,7 +169,7 @@ class user_search extends admin_parent {
             $sSearch   = pg_escape_string( $this->filter['search_name'] );
             $sCardSQL  = '';
             
-            // поиск по контактной информации всегда
+            // РїРѕРёСЃРє РїРѕ РєРѕРЅС‚Р°РєС‚РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё РІСЃРµРіРґР°
             $aThree  = array( 'email', 'icq', 'skype', 'jabber', 'lj', 'site' );
             $aZero   = array( 'lj' );
             $aFields = array( 'uname', 'usurname', 'login', 'second_email', 'ljuser' );
@@ -183,7 +183,7 @@ class user_search extends admin_parent {
             	$sCardSQL = $GLOBALS['DB']->parse( 'SELECT a.uid FROM account_operations AS ao 
                     INNER JOIN account a ON a.id = ao.billing_id 
                     WHERE ao.descr ILIKE ? OR ao.descr ILIKE ? OR ao.descr ILIKE ?', 
-            	   "%в ассисте {$sSearch} %", "%с карты %{$sSearch}% %", "%номер покупки - {$sSearch}%"
+            	   "%РІ Р°СЃСЃРёСЃС‚Рµ {$sSearch} %", "%СЃ РєР°СЂС‚С‹ %{$sSearch}% %", "%РЅРѕРјРµСЂ РїРѕРєСѓРїРєРё - {$sSearch}%"
             	);
             }
                         
@@ -205,11 +205,11 @@ class user_search extends admin_parent {
     }
     
     /**
-     * Строит подзапрос по IP адресам
+     * РЎС‚СЂРѕРёС‚ РїРѕРґР·Р°РїСЂРѕСЃ РїРѕ IP Р°РґСЂРµСЃР°Рј
      * 
-     * @param  string $sTable название таблицы
-     * @param  bool $bCount если true - то строится запрос получения количества, а не данных
-     * @return string внутренний запрос
+     * @param  string $sTable РЅР°Р·РІР°РЅРёРµ С‚Р°Р±Р»РёС†С‹
+     * @param  bool $bCount РµСЃР»Рё true - С‚Рѕ СЃС‚СЂРѕРёС‚СЃСЏ Р·Р°РїСЂРѕСЃ РїРѕР»СѓС‡РµРЅРёСЏ РєРѕР»РёС‡РµСЃС‚РІР°, Р° РЅРµ РґР°РЅРЅС‹С…
+     * @return string РІРЅСѓС‚СЂРµРЅРЅРёР№ Р·Р°РїСЂРѕСЃ
      */
     function _getIpInnerSql( $sTable = '', $bCount = false ) {
         $sSql = '';
@@ -227,17 +227,17 @@ class user_search extends admin_parent {
     }
     
     /**
-     * Собирает WHERE часть SQL запроса
+     * РЎРѕР±РёСЂР°РµС‚ WHERE С‡Р°СЃС‚СЊ SQL Р·Р°РїСЂРѕСЃР°
      */
     function _setUsersWhere() {
         $this->aSQL['where'] = array();
         
-        // фильтр по UID пользователя
+        // С„РёР»СЊС‚СЂ РїРѕ UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
         if ( $this->isFilter('uid') ) {
             $this->aSQL['where'][] = $GLOBALS['DB']->parse( 'u.uid = ?i', $this->filter['uid'] );
         }
         
-        // #0015793: Поиск по телефону
+        // #0015793: РџРѕРёСЃРє РїРѕ С‚РµР»РµС„РѕРЅСѓ
         if ( $this->isFilter('search_phone') ) {
             $sSearch = pg_escape_string( $this->filter['search_phone'] );
             $this->aSQL['where'][] = $this->_getWhereOrFields( 
@@ -249,7 +249,7 @@ class user_search extends admin_parent {
             );
         }
         
-        // фильтр по статусу пользователя
+        // С„РёР»СЊС‚СЂ РїРѕ СЃС‚Р°С‚СѓСЃСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
         if ( $this->isFilter('status') ) {
             if ( $this->filter['status'] == '1' ) { $this->aSQL['where'][] = "u.is_banned = B'1' AND NOT u.self_deleted = TRUE"; }
             if ( $this->filter['status'] == '2' ) { $this->aSQL['where'][] = 'u.active = false'; }
@@ -260,13 +260,13 @@ class user_search extends admin_parent {
     }
     
     /**
-     * Собирает WHERE часть SQL запроса для поиска по ключевому слову
+     * РЎРѕР±РёСЂР°РµС‚ WHERE С‡Р°СЃС‚СЊ SQL Р·Р°РїСЂРѕСЃР° РґР»СЏ РїРѕРёСЃРєР° РїРѕ РєР»СЋС‡РµРІРѕРјСѓ СЃР»РѕРІСѓ
      * 
-     * @param  array $aThree массив имен полей типа jabber - будет автоматом добавлено jabber jabber_1 jabber_2 jabber_3
-     * @param  array $aZero массив имен полей типа lj - будет автоматом добавлено lj_1 lj_2 lj_3, но не lj которого нет в базе
-     * @param  array $aFields массив остальных полей
-     * @param  string $sSearch ключевое слово
-     * @param  bool $bExact установить в true если искать точное совпадение
+     * @param  array $aThree РјР°СЃСЃРёРІ РёРјРµРЅ РїРѕР»РµР№ С‚РёРїР° jabber - Р±СѓРґРµС‚ Р°РІС‚РѕРјР°С‚РѕРј РґРѕР±Р°РІР»РµРЅРѕ jabber jabber_1 jabber_2 jabber_3
+     * @param  array $aZero РјР°СЃСЃРёРІ РёРјРµРЅ РїРѕР»РµР№ С‚РёРїР° lj - Р±СѓРґРµС‚ Р°РІС‚РѕРјР°С‚РѕРј РґРѕР±Р°РІР»РµРЅРѕ lj_1 lj_2 lj_3, РЅРѕ РЅРµ lj РєРѕС‚РѕСЂРѕРіРѕ РЅРµС‚ РІ Р±Р°Р·Рµ
+     * @param  array $aFields РјР°СЃСЃРёРІ РѕСЃС‚Р°Р»СЊРЅС‹С… РїРѕР»РµР№
+     * @param  string $sSearch РєР»СЋС‡РµРІРѕРµ СЃР»РѕРІРѕ
+     * @param  bool $bExact СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РІ true РµСЃР»Рё РёСЃРєР°С‚СЊ С‚РѕС‡РЅРѕРµ СЃРѕРІРїР°РґРµРЅРёРµ
      * @return string
      */
     function _getWhereOrFields( $aThree = array(), $aZero = array(), $aFields = array(), $sSearch = '', $bExact = false ) {
@@ -288,15 +288,15 @@ class user_search extends admin_parent {
     }
     
     /**
-     * Собирает WHERE часть SQL запроса для поиска по диапазону IP
+     * РЎРѕР±РёСЂР°РµС‚ WHERE С‡Р°СЃС‚СЊ SQL Р·Р°РїСЂРѕСЃР° РґР»СЏ РїРѕРёСЃРєР° РїРѕ РґРёР°РїР°Р·РѕРЅСѓ IP
      * 
-     * @param  string $fromIp начальный IP адрес
-     * @param  string $toIp конечный IP адрес
+     * @param  string $fromIp РЅР°С‡Р°Р»СЊРЅС‹Р№ IP Р°РґСЂРµСЃ
+     * @param  string $toIp РєРѕРЅРµС‡РЅС‹Р№ IP Р°РґСЂРµСЃ
      * @return string
      */
     function _getIpWhere( $fromIp = '', $toIp = '' ) {
         $sReturn  = '';
-        $nLongIpF = $fromIp ? ip2long($fromIp) : 0; // некий вид валидации
+        $nLongIpF = $fromIp ? ip2long($fromIp) : 0; // РЅРµРєРёР№ РІРёРґ РІР°Р»РёРґР°С†РёРё
         $nLongIpT = $toIp   ? ip2long($toIp)   : 0;
         
         if ( $nLongIpF || $nLongIpT ) {
@@ -312,11 +312,11 @@ class user_search extends admin_parent {
     }
     
     /**
-     * Собирает подзапрос SQL запроса для поиска по диапазону IP
+     * РЎРѕР±РёСЂР°РµС‚ РїРѕРґР·Р°РїСЂРѕСЃ SQL Р·Р°РїСЂРѕСЃР° РґР»СЏ РїРѕРёСЃРєР° РїРѕ РґРёР°РїР°Р·РѕРЅСѓ IP
      * 
-     * @param  string $sTable название таблицы
-     * @param  string $fromIp начальный IP адрес
-     * @param  string $toIp конечный IP адрес
+     * @param  string $sTable РЅР°Р·РІР°РЅРёРµ С‚Р°Р±Р»РёС†С‹
+     * @param  string $fromIp РЅР°С‡Р°Р»СЊРЅС‹Р№ IP Р°РґСЂРµСЃ
+     * @param  string $toIp РєРѕРЅРµС‡РЅС‹Р№ IP Р°РґСЂРµСЃ
      * @return string
      */
     function _getIpQuery( $sTable, $fromIp = '', $toIp = '' ) {
@@ -336,10 +336,10 @@ class user_search extends admin_parent {
     }
     
     /**
-     * Собирает LIMIT часть SQL запроса
+     * РЎРѕР±РёСЂР°РµС‚ LIMIT С‡Р°СЃС‚СЊ SQL Р·Р°РїСЂРѕСЃР°
      *
-     * @param int $offset начальный индекс
-     * @param  bool $unlimited опционально. установить в true если нужно получить все записи (без постраничного вывода)
+     * @param int $offset РЅР°С‡Р°Р»СЊРЅС‹Р№ РёРЅРґРµРєСЃ
+     * @param  bool $unlimited РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РІ true РµСЃР»Рё РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ РІСЃРµ Р·Р°РїРёСЃРё (Р±РµР· РїРѕСЃС‚СЂР°РЅРёС‡РЅРѕРіРѕ РІС‹РІРѕРґР°)
      */
     function _setUsersLimit( $offset = 0, $unlimited = false ) {
         $this->aSQL['limit'] = $unlimited ? '' : ' LIMIT ' . $this->items_pp . ' OFFSET ' . $offset;
@@ -347,7 +347,7 @@ class user_search extends admin_parent {
     
 
     /**
-     * Поиск по всем пользователям через Sphinx
+     * РџРѕРёСЃРє РїРѕ РІСЃРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј С‡РµСЂРµР· Sphinx
      * 
      * @param type $count
      * @param boolean $filter
@@ -363,7 +363,7 @@ class user_search extends admin_parent {
         unset($filter['search_name'], $filter['search_name_exact']);
         $type = 'users_all';
         
-        //Любое из слов
+        //Р›СЋР±РѕРµ РёР· СЃР»РѕРІ
         if (!$search_name_exact) {
             
             $aKeyword = array();
@@ -385,10 +385,10 @@ class user_search extends admin_parent {
             
         } 
         
-        //Убираем пустые параметры фильра
+        //РЈР±РёСЂР°РµРј РїСѓСЃС‚С‹Рµ РїР°СЂР°РјРµС‚СЂС‹ С„РёР»СЊСЂР°
         $filter = array_filter($filter);
 
-        //Поиск Sphinx
+        //РџРѕРёСЃРє Sphinx
         $search = new searchExt(get_uid(false));
         $search->setUserLimit($this->items_pp);
         $searchElement = $search->addElement($type, true, $this->items_pp);

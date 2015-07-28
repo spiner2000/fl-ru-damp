@@ -1,8 +1,8 @@
 <table class="b-layout__table b-layout__table_width_full">
    <tr class="b-layout__tr">
       <td class="b-layout__td b-layout__td_padright_20">
-        <h1 class="b-page__title">Ошибка 403</h1>
-        <div class="b-layout__txt">Доступ к этой странице запрещен.<br />Спасибо за понимание! </div>
+        <h1 class="b-page__title">РћС€РёР±РєР° 403</h1>
+        <div class="b-layout__txt">Р”РѕСЃС‚СѓРї Рє СЌС‚РѕР№ СЃС‚СЂР°РЅРёС†Рµ Р·Р°РїСЂРµС‰РµРЅ.<br />РЎРїР°СЃРёР±Рѕ Р·Р° РїРѕРЅРёРјР°РЅРёРµ! </div>
       </td>
       <td class="b-layout__td b-layout__td_width_240 b-layout__td_width_null_iphone">
         <div class="b-page__desktop b-page__ipad">

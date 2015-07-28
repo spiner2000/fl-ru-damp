@@ -3,8 +3,8 @@
 
 class DocGenException extends Exception
 {
-    const DEFAULT_ERROR_MSG     = 'Ошибка при формировании документа.';
-    const DEFAULT_ERROR_PREFFIX = 'Ошибка при формировании %s.';
+    const DEFAULT_ERROR_MSG     = 'РћС€РёР±РєР° РїСЂРё С„РѕСЂРјРёСЂРѕРІР°РЅРёРё РґРѕРєСѓРјРµРЅС‚Р°.';
+    const DEFAULT_ERROR_PREFFIX = 'РћС€РёР±РєР° РїСЂРё С„РѕСЂРјРёСЂРѕРІР°РЅРёРё %s.';
     
     public function __construct($message = null, $self = false)
     {

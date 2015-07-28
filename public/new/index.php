@@ -14,9 +14,9 @@ $no_banner = 1;
 $enter=true;
 $header = "../header.php";
 $footer = "../footer.html";
-$page_title = "Публикация проекта - фриланс, удаленная работа на FL.ru";
-$page_keyw = "фрилансер, работодатель, удаленная работа, поиск работы, предложение работы, портфолио фрилансеров, разработка сайтов, программирование, переводы, тексты, дизайн, арт, реклама, маркетинг, прочее, fl.ru";
-$page_descr = "Фрилансер. Работодатель.Удаленная работа. Поиск работы. Предложение работы. Портфолио фрилансеров. Разработка сайтов, Программирование, Переводы, Тексты, Дизайн, Арт, Реклама, Маркетинг, Прочее. FL.ru";
+$page_title = "РџСѓР±Р»РёРєР°С†РёСЏ РїСЂРѕРµРєС‚Р° - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
+$page_keyw = "С„СЂРёР»Р°РЅСЃРµСЂ, СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°, РїРѕРёСЃРє СЂР°Р±РѕС‚С‹, РїСЂРµРґР»РѕР¶РµРЅРёРµ СЂР°Р±РѕС‚С‹, РїРѕСЂС‚С„РѕР»РёРѕ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, СЂР°Р·СЂР°Р±РѕС‚РєР° СЃР°Р№С‚РѕРІ, РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ, РїРµСЂРµРІРѕРґС‹, С‚РµРєСЃС‚С‹, РґРёР·Р°Р№РЅ, Р°СЂС‚, СЂРµРєР»Р°РјР°, РјР°СЂРєРµС‚РёРЅРі, РїСЂРѕС‡РµРµ, fl.ru";
+$page_descr = "Р¤СЂРёР»Р°РЅСЃРµСЂ. Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ.РЈРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°. РџРѕРёСЃРє СЂР°Р±РѕС‚С‹. РџСЂРµРґР»РѕР¶РµРЅРёРµ СЂР°Р±РѕС‚С‹. РџРѕСЂС‚С„РѕР»РёРѕ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ. Р Р°Р·СЂР°Р±РѕС‚РєР° СЃР°Р№С‚РѕРІ, РџСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ, РџРµСЂРµРІРѕРґС‹, РўРµРєСЃС‚С‹, Р”РёР·Р°Р№РЅ, РђСЂС‚, Р РµРєР»Р°РјР°, РњР°СЂРєРµС‚РёРЅРі, РџСЂРѕС‡РµРµ. FL.ru";
 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/projects.php");
@@ -44,7 +44,7 @@ $proj_id = __paramInit('int', 'public', 'public', 0);
 $kind    = __paramInit('int', 'kind', 'kind');
 $back    = __paramInit('string', 'red', 'red', '');
 $key     = __paramInit('string', 'pk', 'pk');
-$exec    = __paramInit('string', 'exec', 'exec'); //Логин выбранного исполнителя в персональном проекте
+$exec    = __paramInit('string', 'exec', 'exec'); //Р›РѕРіРёРЅ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЏ РІ РїРµСЂСЃРѕРЅР°Р»СЊРЅРѕРј РїСЂРѕРµРєС‚Рµ
 $hash = __paramInit('string', 'hash');
 $promo = __paramInit('string', 'promo', 'promo');
 
@@ -54,9 +54,9 @@ $draft_id   = intval(__paramInit('int', 'draft_id', 'draft_id'));
 $auto_draft = intval(__paramInit('int', 'auto_draft', 'auto_draft'));
 
 if(!$key) {
-  $key = md5(uniqid($uid)); // ключ-идентификатор создаваемого/редактируемого проекта, для хранения в кэше.
-  if($step==1 && !$proj_id) { // если с нулевого шага пришли. Не передаем ключ оттуда сразу, т.к. юзер может несколько
-                              // несколько проектов сразу открыть, в этом случае ключ должен быть уникальным.
+  $key = md5(uniqid($uid)); // РєР»СЋС‡-РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃРѕР·РґР°РІР°РµРјРѕРіРѕ/СЂРµРґР°РєС‚РёСЂСѓРµРјРѕРіРѕ РїСЂРѕРµРєС‚Р°, РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РІ РєСЌС€Рµ.
+  if($step==1 && !$proj_id) { // РµСЃР»Рё СЃ РЅСѓР»РµРІРѕРіРѕ С€Р°РіР° РїСЂРёС€Р»Рё. РќРµ РїРµСЂРµРґР°РµРј РєР»СЋС‡ РѕС‚С‚СѓРґР° СЃСЂР°Р·Сѓ, С‚.Рє. СЋР·РµСЂ РјРѕР¶РµС‚ РЅРµСЃРєРѕР»СЊРєРѕ
+                              // РЅРµСЃРєРѕР»СЊРєРѕ РїСЂРѕРµРєС‚РѕРІ СЃСЂР°Р·Сѓ РѕС‚РєСЂС‹С‚СЊ, РІ СЌС‚РѕРј СЃР»СѓС‡Р°Рµ РєР»СЋС‡ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СѓРЅРёРєР°Р»СЊРЅС‹Рј.
       header("Location: /public/?step=1&kind={$kind}".($exec?"&exec={$exec}":'')."&pk={$key}&".($auto_draft?'auto_draft=1&':'').($draft_id?'draft_id='.$draft_id.'&':'').($hash?'hash='.$hash.'&':'')."red=".urlencode($back));
       exit;
   }
@@ -71,7 +71,7 @@ if(!($project = $tmpPrj->init($step, $proj_id))) {
                            '/guest/new/project/';
     
     if(($kind != 1 && $kind != 4) || $exec) {
-        ref_uri();//Сохраняем ref_uri страницы
+        ref_uri();//РЎРѕС…СЂР°РЅСЏРµРј ref_uri СЃС‚СЂР°РЅРёС†С‹
     }
     
     if ($kind == 4) { 
@@ -80,24 +80,24 @@ if(!($project = $tmpPrj->init($step, $proj_id))) {
         $user_action = '/registration/?user_action=add_contest'; 
     }
     
-	// Публикация проектов доступна только для работодателя
+	// РџСѓР±Р»РёРєР°С†РёСЏ РїСЂРѕРµРєС‚РѕРІ РґРѕСЃС‚СѓРїРЅР° С‚РѕР»СЊРєРѕ РґР»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ
     header('Location: ' . $user_action);
     exit;
 }
 
-//Проверка перехода с лендинга публикации проекта
+//РџСЂРѕРІРµСЂРєР° РїРµСЂРµС…РѕРґР° СЃ Р»РµРЅРґРёРЅРіР° РїСѓР±Р»РёРєР°С†РёРё РїСЂРѕРµРєС‚Р°
 if (($name = isLandingProject())) {
     $tmpPrj->setProjectField('name', $name);
 }
 
 
-ref_uri();//Сохраняем ref_uri страницы
+ref_uri();//РЎРѕС…СЂР°РЅСЏРµРј ref_uri СЃС‚СЂР°РЅРёС†С‹
 
 
 $is_personal = false;
 if ($exec || $project['exec_id']) {
 	$freelancer = new freelancer();
-	if ($exec) { //Добавление проекта
+	if ($exec) { //Р”РѕР±Р°РІР»РµРЅРёРµ РїСЂРѕРµРєС‚Р°
 		$freelancer->GetUser($exec);
 	} else {
 		$freelancer->GetUserByUID($project['exec_id']);
@@ -117,13 +117,13 @@ if (!$kind) {
 
 
 //#0026326 
-//Лимит на кол-во публикаций проектов для неPRO за 24 часа 
-if( $kind == 1 && //это проект
-    !$proj_id && //это новый проект, не редактирование
-    //Теперь учитывается в isProjectsLimit, хотя непонятно зачем  проверяется PRO в $tmpPrj->init()
-    //да еще из таблицы покупок услуг orders? Почему не используется is_pro у employer?
-    //$project['is_pro'] == 'f' && //юзер неПРО
-    ($last_prj_date = $tmpPrj->isProjectsLimit($uid))){ //и есть лимит
+//Р›РёРјРёС‚ РЅР° РєРѕР»-РІРѕ РїСѓР±Р»РёРєР°С†РёР№ РїСЂРѕРµРєС‚РѕРІ РґР»СЏ РЅРµPRO Р·Р° 24 С‡Р°СЃР° 
+if( $kind == 1 && //СЌС‚Рѕ РїСЂРѕРµРєС‚
+    !$proj_id && //СЌС‚Рѕ РЅРѕРІС‹Р№ РїСЂРѕРµРєС‚, РЅРµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ
+    //РўРµРїРµСЂСЊ СѓС‡РёС‚С‹РІР°РµС‚СЃСЏ РІ isProjectsLimit, С…РѕС‚СЏ РЅРµРїРѕРЅСЏС‚РЅРѕ Р·Р°С‡РµРј  РїСЂРѕРІРµСЂСЏРµС‚СЃСЏ PRO РІ $tmpPrj->init()
+    //РґР° РµС‰Рµ РёР· С‚Р°Р±Р»РёС†С‹ РїРѕРєСѓРїРѕРє СѓСЃР»СѓРі orders? РџРѕС‡РµРјСѓ РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ is_pro Сѓ employer?
+    //$project['is_pro'] == 'f' && //СЋР·РµСЂ РЅРµРџР Рћ
+    ($last_prj_date = $tmpPrj->isProjectsLimit($uid))){ //Рё РµСЃС‚СЊ Р»РёРјРёС‚
 
     $last_prj_date = ago_pub($last_prj_date,'G:i');
     $content = "new/tpl.limit.php";
@@ -133,9 +133,9 @@ if( $kind == 1 && //это проект
 
 
 if ($kind == 7) {
-    $page_title = "Публикация конкурса - фриланс, удаленная работа на FL.ru";
+    $page_title = "РџСѓР±Р»РёРєР°С†РёСЏ РєРѕРЅРєСѓСЂСЃР° - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
 } elseif ($kind == 4) {
-    $page_title = "Новая вакансия - фриланс, удаленная работа на FL.ru";
+    $page_title = "РќРѕРІР°СЏ РІР°РєР°РЅСЃРёСЏ - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
 }
 
 if($proj_id && projects::isProjectOfficePostedAfterNewSBR($project) && !hasPermissions('projects')) {
@@ -174,11 +174,11 @@ $employer->GetUserByUID(get_uid(false));
 
 $contacts = array(
     'phone' => array(
-        'name'  => 'Телефон',
+        'name'  => 'РўРµР»РµС„РѕРЅ',
         'value' => $employer->phone
     ),
     'site' => array(
-        'name'  => 'Сайт',
+        'name'  => 'РЎР°Р№С‚',
         'value' => $employer->site
     ),
     'icq' => array(
@@ -195,8 +195,8 @@ $contacts = array(
     )
 );
 
-//hash. Если пользователь вводил данные до авторизации, то подставляем данные в массив #_POST
-//@todo Переписать это в адаптер.
+//hash. Р•СЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІРІРѕРґРёР» РґР°РЅРЅС‹Рµ РґРѕ Р°РІС‚РѕСЂРёР·Р°С†РёРё, С‚Рѕ РїРѕРґСЃС‚Р°РІР»СЏРµРј РґР°РЅРЅС‹Рµ РІ РјР°СЃСЃРёРІ #_POST
+//@todo РџРµСЂРµРїРёСЃР°С‚СЊ СЌС‚Рѕ РІ Р°РґР°РїС‚РµСЂ.
 if ($hash) {
     $guestMemoryModel = new GuestMemoryModel();
     $savedData = $guestMemoryModel->getData($hash);
@@ -240,7 +240,7 @@ if ($hash) {
     }
 }
 
-// черновики. если пользователь сразу публикует, то подставляем данные в массив #_POST
+// С‡РµСЂРЅРѕРІРёРєРё. РµСЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃСЂР°Р·Сѓ РїСѓР±Р»РёРєСѓРµС‚, С‚Рѕ РїРѕРґСЃС‚Р°РІР»СЏРµРј РґР°РЅРЅС‹Рµ РІ РјР°СЃСЃРёРІ #_POST
 if ( $draft_id && $auto_draft ) {
     
     $draft = $drafts->getDraft($draft_id, $uid, 1);
@@ -304,7 +304,7 @@ if ( $draft_id && $auto_draft ) {
     
     $action = 'next';
 
-} elseif ($draft_id && !$drafts->getDraft($draft_id, $uid, 1)) { // если дан id черновика, но такой черновик не существует
+} elseif ($draft_id && !$drafts->getDraft($draft_id, $uid, 1)) { // РµСЃР»Рё РґР°РЅ id С‡РµСЂРЅРѕРІРёРєР°, РЅРѕ С‚Р°РєРѕР№ С‡РµСЂРЅРѕРІРёРє РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
     header("Location: /403.php"); exit;
 }
 
@@ -316,7 +316,7 @@ $_SESSION['bn_sum'] = $account->bonus_sum;
 
 $konk_price = new_projects::getPriceByCode(( is_pro() ? new_projects::OPCODE_KON : new_projects::OPCODE_KON_NOPRO ));
 
-//Определяем доступные коды для покупки
+//РћРїСЂРµРґРµР»СЏРµРј РґРѕСЃС‚СѓРїРЅС‹Рµ РєРѕРґС‹ РґР»СЏ РїРѕРєСѓРїРєРё
 $promoCodes = new PromoCodes();
 $allowedPromoCodes = array(
     PromoCodes::SERVICE_PROJECT
@@ -342,7 +342,7 @@ switch($step)
             $attachLogo = new attachedfiles();
         }
 
-        // Для PDA версии
+        // Р”Р»СЏ PDA РІРµСЂСЃРёРё
         if($action == 'prev' && $PDA) {
             $content = "content0.php";
             break;
@@ -365,18 +365,18 @@ switch($step)
             exit;
         }
         
-        if($_POST['link']=='Адрес сайта по желанию') {
+        if($_POST['link']=='РђРґСЂРµСЃ СЃР°Р№С‚Р° РїРѕ Р¶РµР»Р°РЅРёСЋ') {
             $_POST['link'] = '';
         } else {
             $_POST['link'] = addhttp($_POST['link']);
         }
 
         $tmpPrj->setProjectField('kind', $kind ? $kind : $project['kind']);
-        // Может быть получен с нулевого шага.
+        // РњРѕР¶РµС‚ Р±С‹С‚СЊ РїРѕР»СѓС‡РµРЅ СЃ РЅСѓР»РµРІРѕРіРѕ С€Р°РіР°.
         $project = $tmpPrj->getProject();
         
         if($project['kind'] && !in_array($project['kind'], array(0,1,2,4,7,9))) {
-            $error['kind'] = 'Закладка не выбрана';
+            $error['kind'] = 'Р—Р°РєР»Р°РґРєР° РЅРµ РІС‹Р±СЂР°РЅР°';
         }
         
         if($_POST['logo_del']=="1") {
@@ -404,7 +404,7 @@ switch($step)
                 $tmpPrj->setProjectField('currency', 0);
                 $tmpPrj->setProjectField('priceby', 1);
             } else {
-                // если редактируется конкурс с новой системой расчета стоимости публикации, то менять бюджет нельзя
+                // РµСЃР»Рё СЂРµРґР°РєС‚РёСЂСѓРµС‚СЃСЏ РєРѕРЅРєСѓСЂСЃ СЃ РЅРѕРІРѕР№ СЃРёСЃС‚РµРјРѕР№ СЂР°СЃС‡РµС‚Р° СЃС‚РѕРёРјРѕСЃС‚Рё РїСѓР±Р»РёРєР°С†РёРё, С‚Рѕ РјРµРЅСЏС‚СЊ Р±СЋРґР¶РµС‚ РЅРµР»СЊР·СЏ
                 if ( !($project['kind'] == 7 && $tmpPrj->isEdit() && new_projects::isNewContestBudget($project['post_date'])) ) {
                     $tmpPrj->setProjectField('cost', __paramInit('float', NULL, 'cost',0));
                     $tmpPrj->setProjectField('currency', __paramInit('int', NULL, 'currency_db_id',0));
@@ -415,7 +415,7 @@ switch($step)
             if(!$PDA) {
                 
                 if (!$is_personal) {
-					// выбранные специализации
+					// РІС‹Р±СЂР°РЅРЅС‹Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё
 					$check = array();
 					for ($i = 0; $i <= 2; $i++) {
 						$catID = __paramValue('int', $_POST['project_profession' . $i . '_columns'][0]);
@@ -436,7 +436,7 @@ switch($step)
 						}
 						$tmpPrj->setCategories($cats);
 					} else {
-						$error['category'] = 'Не выбран раздел';   
+						$error['category'] = 'РќРµ РІС‹Р±СЂР°РЅ СЂР°Р·РґРµР»';   
 					}
 				} else {
 					$subcat = $freelancer->spec;
@@ -470,8 +470,8 @@ switch($step)
             $oproject = $project;
             $project = $tmpPrj->getProject();
             
-            //Данные о ранее купленных услугах "Срочный" и "Скрытый"
-            //Если редактирование, то берем старое значение. иначе false
+            //Р”Р°РЅРЅС‹Рµ Рѕ СЂР°РЅРµРµ РєСѓРїР»РµРЅРЅС‹С… СѓСЃР»СѓРіР°С… "РЎСЂРѕС‡РЅС‹Р№" Рё "РЎРєСЂС‹С‚С‹Р№"
+            //Р•СЃР»Рё СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ, С‚Рѕ Р±РµСЂРµРј СЃС‚Р°СЂРѕРµ Р·РЅР°С‡РµРЅРёРµ. РёРЅР°С‡Рµ false
             if($tmpPrj->isEdit()) {
                 $tmpPrj->setProjectField('o_hide', $oproject['hide']);
                 $tmpPrj->setProjectField('o_urgent', $oproject['urgent']);
@@ -479,33 +479,33 @@ switch($step)
                 $tmpPrj->setProjectField('o_hide', 'f');
                 $tmpPrj->setProjectField('o_urgent', 'f');
             }
-            //Устанавливаем новые флаги для этих услуг
+            //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Рµ С„Р»Р°РіРё РґР»СЏ СЌС‚РёС… СѓСЃР»СѓРі
             $tmpPrj->setProjectField('urgent', __paramInit('bool', NULL, 'urgent') ? 't' : 'f');
             $tmpPrj->setProjectField('hide', __paramInit('bool', NULL, 'hide') ? 't' : 'f');
             
             if ($project['cost'] < 0) {
-                $error['cost'] = 'Введите положительную сумму';
+                $error['cost'] = 'Р’РІРµРґРёС‚Рµ РїРѕР»РѕР¶РёС‚РµР»СЊРЅСѓСЋ СЃСѓРјРјСѓ';
             }
 
             if ($project['cost'] > 999999) {
-                $error['cost'] = 'Слишком большая сумма';
+                $error['cost'] = 'РЎР»РёС€РєРѕРј Р±РѕР»СЊС€Р°СЏ СЃСѓРјРјР°';
             }
 
             if ($project['cost']>0 && ($project['currency'] < 0 || $project['currency'] > 3)) {
-                $error['currency'] = 'Валюта не определена';
+                $error['currency'] = 'Р’Р°Р»СЋС‚Р° РЅРµ РѕРїСЂРµРґРµР»РµРЅР°';
             }
 
             if (is_empty_html($project['descr'])) {
-                $error['descr'] = 'Поле не заполнено';
+                $error['descr'] = 'РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ';
             }
 
             if (is_empty_html($project['name'])) {
-                $error['name'] = 'Поле не заполнено';
+                $error['name'] = 'РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ';
             }
             
             $descr_limit = !$PDA ? 5000 : 2500;
             if (strlen_real($project['descr']) > $descr_limit) {
-                $error['descr'] = "Исчерпан лимит символов ($descr_limit)";
+                $error['descr'] = "РСЃС‡РµСЂРїР°РЅ Р»РёРјРёС‚ СЃРёРјРІРѕР»РѕРІ ($descr_limit)";
             }
 				
 			if ($project['kind'] == 7) {
@@ -515,36 +515,36 @@ switch($step)
 
                 $pExrates = project_exrates::getAll();
                 if ($project['currency'] == 0) { // USD
-                    $costRub = $project['cost'] * $pExrates['24']; // бюджет в рублях
+                    $costRub = $project['cost'] * $pExrates['24']; // Р±СЋРґР¶РµС‚ РІ СЂСѓР±Р»СЏС…
                 } elseif ($project['currency'] == 1) { // EURO
                     $costRub = $project['cost'] * $pExrates['34'];
-                } else { // рубли
+                } else { // СЂСѓР±Р»Рё
                     $costRub = $project['cost'];
                 }
                 $tmpPrj->setCostRub($costRub);
 
-                // минимальный бюджет конкурса зависит от того введена ли новая система подсчета стоимости публикации
+                // РјРёРЅРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ РєРѕРЅРєСѓСЂСЃР° Р·Р°РІРёСЃРёС‚ РѕС‚ С‚РѕРіРѕ РІРІРµРґРµРЅР° Р»Рё РЅРѕРІР°СЏ СЃРёСЃС‚РµРјР° РїРѕРґСЃС‡РµС‚Р° СЃС‚РѕРёРјРѕСЃС‚Рё РїСѓР±Р»РёРєР°С†РёРё
                 $contestMinBudget = new_projects::isNewContestBudget($project['post_date']) ? new_projects::NEW_CONTEST_MIN_BUDGET : new_projects::CONTEST_MIN_BUDGET;
                 if (!$project['cost'] || $costRub < $contestMinBudget) {
                     $error['cost'] = true;
                 }
                 
 				if (!preg_match("/^([0-9]{1,2})\-([0-9]{1,2})\-([0-9]{4})$/", $project['end_date'], $o1) || !checkdate($o1[2], $o1[1], $o1[3])) {
-					$error['end_date'] = 'Неправильная дата';
+					$error['end_date'] = 'РќРµРїСЂР°РІРёР»СЊРЅР°СЏ РґР°С‚Р°';
                 }
 
 				if (!preg_match("/^([0-9]{1,2})\-([0-9]{1,2})\-([0-9]{4})$/", $project['win_date'], $o2) || !checkdate($o2[2], $o2[1], $o2[3])) {
-					$error['win_date'] = 'Неправильная дата';
+					$error['win_date'] = 'РќРµРїСЂР°РІРёР»СЊРЅР°СЏ РґР°С‚Р°';
                 }
 				
-				// Модераторам аккуратней	
+				// РњРѕРґРµСЂР°С‚РѕСЂР°Рј Р°РєРєСѓСЂР°С‚РЅРµР№	
 			    if(!hasPermissions('projects')) {
     				if (!$error['end_date'] && mktime(0, 0, 0, $o1[2], $o1[1], $o1[3]) <= mktime(0, 0, 0)) {
-    					$error['end_date'] = 'Дата окончания конкурса не может находиться  в прошлом';
+    					$error['end_date'] = 'Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР° РЅРµ РјРѕР¶РµС‚ РЅР°С…РѕРґРёС‚СЊСЃСЏ  РІ РїСЂРѕС€Р»РѕРј';
                     }
     			
     				if (!$error['win_date'] && mktime(0, 0, 0, $o2[2], $o2[1], $o2[3]) <= mktime(0, 0, 0, $o1[2], $o1[1], $o1[3])) {
-                        $error['win_date'] = 'Дата определения победителя должна быть больше даты окончания конкурса';
+                        $error['win_date'] = 'Р”Р°С‚Р° РѕРїСЂРµРґРµР»РµРЅРёСЏ РїРѕР±РµРґРёС‚РµР»СЏ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РґР°С‚С‹ РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР°';
                     }
 				}				
 			}
@@ -554,7 +554,7 @@ switch($step)
                 $logoAttach = new attachedfiles($_POST['logo_attachedfiles_session']);
                 $logoFiles = $logoAttach->getFiles(array(1,3));
                 if (count($logoFiles)) {
-                    $logoFile = array_pop($logoFiles); // загружено может быть несколько файлов, берем последний
+                    $logoFile = array_pop($logoFiles); // Р·Р°РіСЂСѓР¶РµРЅРѕ РјРѕР¶РµС‚ Р±С‹С‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ С„Р°Р№Р»РѕРІ, Р±РµСЂРµРј РїРѕСЃР»РµРґРЅРёР№
                     $logoCFile = new CFile($logoFile['id']);
                     $tmpPrj->setLogoNew($logoCFile);
                     $logoAttach->setStatusTo3($logoFile['id']);
@@ -563,7 +563,7 @@ switch($step)
                     //$tmpPrj->setLogoNew($logoCFile);
                 } else {
                     if($_POST['is_exec_quickprj']!=1) {
-                    $error['logo'] = 'Необходимо выбрать файл';
+                    $error['logo'] = 'РќРµРѕР±С…РѕРґРёРјРѕ РІС‹Р±СЂР°С‚СЊ С„Р°Р№Р»';
                     }
                 }
             } else {
@@ -583,12 +583,12 @@ switch($step)
                 }
 
                 if($PDA) {
-                    // Удаление файла для ПДА версии
+                    // РЈРґР°Р»РµРЅРёРµ С„Р°Р№Р»Р° РґР»СЏ РџР”Рђ РІРµСЂСЃРёРё
                     $idDel = __paramInit('int', NULL, 'atch');
                     if($idDel <= 0 && $_FILES['attach']['error'][0] == 4) {
                         $tmpPrj->delAttach(0);
                     }
-                    // сохранение файла
+                    // СЃРѕС…СЂР°РЅРµРЅРёРµ С„Р°Р№Р»Р°
                     if (is_array($_FILES['attachedfiles_file']) && !$_FILES['attachedfiles_file']['error']) {
                         $_POST['attachedfiles_action'] = 'add';
                         $_POST['attachedfiles_type'] = 'project';
@@ -603,7 +603,7 @@ switch($step)
             }
             
             $tmpPrj->fix();
-            // Опять для ПДА
+            // РћРїСЏС‚СЊ РґР»СЏ РџР”Рђ
             if($action=="change" && $PDA) {
                 header("Location: /public/?step={$step}{$pprm}&kind=".$project['kind']);
                 exit;
@@ -622,10 +622,10 @@ switch($step)
             }
 
             if (!$error) {
-            	//для пользователя
+            	//РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
                 $account_sum = $account->sum;
                 $account_bonus_sum = $account->bonus_sum;
-                //для модератора
+                //РґР»СЏ РјРѕРґРµСЂР°С‚РѕСЂР°
                 $view_user_login = '';
                 if (hasPermissions("projects")) {
                 	$uid      = $tmpPrj->getAuthorId();
@@ -679,8 +679,8 @@ switch($step)
                             $tmpProject['project_location_columns'] = $_POST['project_location_columns'];
                             $tmpProject['verify_only'] = $tmpProject['verify_only'] == 't' ? true : false;
                             $tmpProject['videolnk']        = $_POST['videolnk'];
-                            $tmpProject['name']        = $_POST['name']; // Там они экранированные уже
-                            $tmpProject['descr']       = $_POST['descr']; // Там они экранированные уже
+                            $tmpProject['name']        = $_POST['name']; // РўР°Рј РѕРЅРё СЌРєСЂР°РЅРёСЂРѕРІР°РЅРЅС‹Рµ СѓР¶Рµ
+                            $tmpProject['descr']       = $_POST['descr']; // РўР°Рј РѕРЅРё СЌРєСЂР°РЅРёСЂРѕРІР°РЅРЅС‹Рµ СѓР¶Рµ
                             $tmpProject['IDResource']  = $_POST['IDResource'];
                             $attached_files = $tmpPrj->getNewAttach();
                             if($attached_files) {
@@ -734,7 +734,7 @@ switch($step)
                         if($items) {
                             $bill->start();
                             
-                            // Офис первым делом создаем
+                            // РћС„РёСЃ РїРµСЂРІС‹Рј РґРµР»РѕРј СЃРѕР·РґР°РµРј
                             if($items['office'] > 0) {
                                 $bill->setPromoCodes('SERVICE_VACANCY', $promo); 
                                 $option['items'] = array('office' => $items['office']);
@@ -745,7 +745,7 @@ switch($step)
                                 $bill->unsetPromoCodes();
                             }
 
-                            // Конкурс
+                            // РљРѕРЅРєСѓСЂСЃ
                             if($items['contest'] > 0) {
                                 $bill->setPromoCodes('SERVICE_CONTEST', $promo); 
                                 $option['items'] = array('contest' => $items['contest']);
@@ -757,7 +757,7 @@ switch($step)
                             
                             $bill->setPromoCodes('SERVICE_PROJECT', $promo); 
 
-                            // Создаем услуги по отдельности
+                            // РЎРѕР·РґР°РµРј СѓСЃР»СѓРіРё РїРѕ РѕС‚РґРµР»СЊРЅРѕСЃС‚Рё
                             foreach($items as $opt=>$value) {
                                 if ( is_array($value) && $value["no_pro"] <= 0) {
                                     continue;
@@ -785,7 +785,7 @@ switch($step)
                                     $_SESSION['new_public'] = 1;
                                 }
                                 
-                                // Сохраним данные проекта при этом убираем платные плюшки
+                                // РЎРѕС…СЂР°РЅРёРј РґР°РЅРЅС‹Рµ РїСЂРѕРµРєС‚Р° РїСЂРё СЌС‚РѕРј СѓР±РёСЂР°РµРј РїР»Р°С‚РЅС‹Рµ РїР»СЋС€РєРё
                                 if($tmpPrj->isEdit()) {
                                     if ($tmpPrj->isVacancy()) {
                                         $tmpPrj->setProjectField('state', $initedState);
@@ -819,8 +819,8 @@ switch($step)
                     $is_edit = $tmpPrj->isEdit();
                     if (!($error['buy'] = $tmpPrj->saveProject(hasPermissions('projects') ? $uid : NULL, $proj))) {
 
-                        //Если проект был создан при переходе с лендинга 
-                        //то привязываем его для статистики
+                        //Р•СЃР»Рё РїСЂРѕРµРєС‚ Р±С‹Р» СЃРѕР·РґР°РЅ РїСЂРё РїРµСЂРµС…РѕРґРµ СЃ Р»РµРЅРґРёРЅРіР° 
+                        //С‚Рѕ РїСЂРёРІСЏР·С‹РІР°РµРј РµРіРѕ РґР»СЏ СЃС‚Р°С‚РёСЃС‚РёРєРё
                         if (!$is_edit) {
                             if (($landingProjectId = getLastLandingProjectId())) {
                                 require_once(ABS_PATH . '/classes/LandingProjects.php');
@@ -833,7 +833,7 @@ switch($step)
                         
                         
                         if (!$is_edit) {
-                            # Если есть раздел "Дизайн" среди выбранных
+                            # Р•СЃР»Рё РµСЃС‚СЊ СЂР°Р·РґРµР» "Р”РёР·Р°Р№РЅ" СЃСЂРµРґРё РІС‹Р±СЂР°РЅРЅС‹С…
                             $finded = 0;
                             foreach ($t_cats as $cat) {
                                 if (in_array($cat['category_id'], array(3,10,11,18))) {
@@ -845,63 +845,63 @@ switch($step)
                             if ($finded > 0) {
                                 
                                 $category_names = array(
-                                    3 => 'Дизайн',
-                                    10 => 'Фотография',
-                                    11 => 'Аудио/Видео',
-                                    18 => 'Арт'
+                                    3 => 'Р”РёР·Р°Р№РЅ',
+                                    10 => 'Р¤РѕС‚РѕРіСЂР°С„РёСЏ',
+                                    11 => 'РђСѓРґРёРѕ/Р’РёРґРµРѕ',
+                                    18 => 'РђСЂС‚'
                                 );
                                 
                                 $mail = new smtp();
-                                $mail->subject = 'Опубликуйте свой проект на Fotogazon.ru';
-                                $mail->message = "Здравствуйте!
+                                $mail->subject = 'РћРїСѓР±Р»РёРєСѓР№С‚Рµ СЃРІРѕР№ РїСЂРѕРµРєС‚ РЅР° Fotogazon.ru';
+                                $mail->message = "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!
 <br /><br />
-Благодарю вас за публикацию проекта в категории {$category_names[$finded]} на сайте FL.ru. Среди полутора миллионов наших пользователей есть десятки тысяч профессиональных дизайнеров, многие из которых с радостью возьмутся за выполнение вашей задачи.
+Р‘Р»Р°РіРѕРґР°СЂСЋ РІР°СЃ Р·Р° РїСѓР±Р»РёРєР°С†РёСЋ РїСЂРѕРµРєС‚Р° РІ РєР°С‚РµРіРѕСЂРёРё {$category_names[$finded]} РЅР° СЃР°Р№С‚Рµ FL.ru. РЎСЂРµРґРё РїРѕР»СѓС‚РѕСЂР° РјРёР»Р»РёРѕРЅРѕРІ РЅР°С€РёС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РµСЃС‚СЊ РґРµСЃСЏС‚РєРё С‚С‹СЃСЏС‡ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹С… РґРёР·Р°Р№РЅРµСЂРѕРІ, РјРЅРѕРіРёРµ РёР· РєРѕС‚РѕСЂС‹С… СЃ СЂР°РґРѕСЃС‚СЊСЋ РІРѕР·СЊРјСѓС‚СЃСЏ Р·Р° РІС‹РїРѕР»РЅРµРЅРёРµ РІР°С€РµР№ Р·Р°РґР°С‡Рё.
 <br /><br />
-<a href='http://fotogazon.ru/'>FotoGazon.ru</a> - наш новый проект по поиску фотографов. Найдите лучшего фотографа на <a href='http://fotogazon.ru/'>FotoGazon.ru</a>                                    
+<a href='http://fotogazon.ru/'>FotoGazon.ru</a> - РЅР°С€ РЅРѕРІС‹Р№ РїСЂРѕРµРєС‚ РїРѕ РїРѕРёСЃРєСѓ С„РѕС‚РѕРіСЂР°С„РѕРІ. РќР°Р№РґРёС‚Рµ Р»СѓС‡С€РµРіРѕ С„РѕС‚РѕРіСЂР°С„Р° РЅР° <a href='http://fotogazon.ru/'>FotoGazon.ru</a>                                    
 <br /><br />
 ---<br />
-С уважением,<br /> 
-команда <a href='http://fotogazon.ru/'>FotoGazon.ru</a><br />
+РЎ СѓРІР°Р¶РµРЅРёРµРј,<br /> 
+РєРѕРјР°РЅРґР° <a href='http://fotogazon.ru/'>FotoGazon.ru</a><br />
 ";
 
 /*
-                                $mail->subject   = 'Опубликуйте свой проект на DizKon.ru';  // заголовок письма
-                                $mail->message = "Здравствуйте!
+                                $mail->subject   = 'РћРїСѓР±Р»РёРєСѓР№С‚Рµ СЃРІРѕР№ РїСЂРѕРµРєС‚ РЅР° DizKon.ru';  // Р·Р°РіРѕР»РѕРІРѕРє РїРёСЃСЊРјР°
+                                $mail->message = "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!
 <br /><br />
-Благодарю вас за публикацию проекта в категории Дизайн на сайте <a href='https://fl.ru'>FL.ru</a>. Среди полутора миллионов наших пользователей есть десятки тысяч профессиональных дизайнеров, многие из которых с радостью возьмутся за выполнение вашей задачи.
+Р‘Р»Р°РіРѕРґР°СЂСЋ РІР°СЃ Р·Р° РїСѓР±Р»РёРєР°С†РёСЋ РїСЂРѕРµРєС‚Р° РІ РєР°С‚РµРіРѕСЂРёРё Р”РёР·Р°Р№РЅ РЅР° СЃР°Р№С‚Рµ <a href='https://fl.ru'>FL.ru</a>. РЎСЂРµРґРё РїРѕР»СѓС‚РѕСЂР° РјРёР»Р»РёРѕРЅРѕРІ РЅР°С€РёС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РµСЃС‚СЊ РґРµСЃСЏС‚РєРё С‚С‹СЃСЏС‡ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹С… РґРёР·Р°Р№РЅРµСЂРѕРІ, РјРЅРѕРіРёРµ РёР· РєРѕС‚РѕСЂС‹С… СЃ СЂР°РґРѕСЃС‚СЊСЋ РІРѕР·СЊРјСѓС‚СЃСЏ Р·Р° РІС‹РїРѕР»РЅРµРЅРёРµ РІР°С€РµР№ Р·Р°РґР°С‡Рё.
 <br /><br />
-Другим, возможно более удобным, способом получить нужный вам дизайн является проведение конкурса на сайте <a href='http://www.dizkon.ru/?utm_source=flnwsldiz&utm_medium=email&utm_campaign=dizkonvsjob' >DizKon.ru</a>.
+Р”СЂСѓРіРёРј, РІРѕР·РјРѕР¶РЅРѕ Р±РѕР»РµРµ СѓРґРѕР±РЅС‹Рј, СЃРїРѕСЃРѕР±РѕРј РїРѕР»СѓС‡РёС‚СЊ РЅСѓР¶РЅС‹Р№ РІР°Рј РґРёР·Р°Р№РЅ СЏРІР»СЏРµС‚СЃСЏ РїСЂРѕРІРµРґРµРЅРёРµ РєРѕРЅРєСѓСЂСЃР° РЅР° СЃР°Р№С‚Рµ <a href='http://www.dizkon.ru/?utm_source=flnwsldiz&utm_medium=email&utm_campaign=dizkonvsjob' >DizKon.ru</a>.
 <br /><br />
-<a href='http://www.dizkon.ru/?utm_source=flnwsldiz&utm_medium=email&utm_campaign=dizkonvsjob'>DizKon.ru</a> – это первая площадка для проведения дизайн-конкурсов в рунете, на которой все проекты имеют полное юридическое оформление. Для заказчиков мы обеспечиваем возможность оплаты конкурса со счета юрлица и получение необходимых заказывающих документов по его завершению, включая документы, подтверждающие право на коммерческое использование выбранной графической работы.
+<a href='http://www.dizkon.ru/?utm_source=flnwsldiz&utm_medium=email&utm_campaign=dizkonvsjob'>DizKon.ru</a> вЂ“ СЌС‚Рѕ РїРµСЂРІР°СЏ РїР»РѕС‰Р°РґРєР° РґР»СЏ РїСЂРѕРІРµРґРµРЅРёСЏ РґРёР·Р°Р№РЅ-РєРѕРЅРєСѓСЂСЃРѕРІ РІ СЂСѓРЅРµС‚Рµ, РЅР° РєРѕС‚РѕСЂРѕР№ РІСЃРµ РїСЂРѕРµРєС‚С‹ РёРјРµСЋС‚ РїРѕР»РЅРѕРµ СЋСЂРёРґРёС‡РµСЃРєРѕРµ РѕС„РѕСЂРјР»РµРЅРёРµ. Р”Р»СЏ Р·Р°РєР°Р·С‡РёРєРѕРІ РјС‹ РѕР±РµСЃРїРµС‡РёРІР°РµРј РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РѕРїР»Р°С‚С‹ РєРѕРЅРєСѓСЂСЃР° СЃРѕ СЃС‡РµС‚Р° СЋСЂР»РёС†Р° Рё РїРѕР»СѓС‡РµРЅРёРµ РЅРµРѕР±С…РѕРґРёРјС‹С… Р·Р°РєР°Р·С‹РІР°СЋС‰РёС… РґРѕРєСѓРјРµРЅС‚РѕРІ РїРѕ РµРіРѕ Р·Р°РІРµСЂС€РµРЅРёСЋ, РІРєР»СЋС‡Р°СЏ РґРѕРєСѓРјРµРЅС‚С‹, РїРѕРґС‚РІРµСЂР¶РґР°СЋС‰РёРµ РїСЂР°РІРѕ РЅР° РєРѕРјРјРµСЂС‡РµСЃРєРѕРµ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РІС‹Р±СЂР°РЅРЅРѕР№ РіСЂР°С„РёС‡РµСЃРєРѕР№ СЂР°Р±РѕС‚С‹.
 <br /><br />
-<a href='http://www.dizkon.ru/?utm_source=flnwsldiz&utm_medium=email&utm_campaign=dizkonvsjob'>DizKon.ru</a> – это четкий регламент, не допускающий срыва сроков конкурса, десятки, а иногда и сотни, конкурсных вариантов, возможность вернуть средства, если ничего не понравилось, и около 10 тыс. профессиональных исполнителей к вашим услугам.
+<a href='http://www.dizkon.ru/?utm_source=flnwsldiz&utm_medium=email&utm_campaign=dizkonvsjob'>DizKon.ru</a> вЂ“ СЌС‚Рѕ С‡РµС‚РєРёР№ СЂРµРіР»Р°РјРµРЅС‚, РЅРµ РґРѕРїСѓСЃРєР°СЋС‰РёР№ СЃСЂС‹РІР° СЃСЂРѕРєРѕРІ РєРѕРЅРєСѓСЂСЃР°, РґРµСЃСЏС‚РєРё, Р° РёРЅРѕРіРґР° Рё СЃРѕС‚РЅРё, РєРѕРЅРєСѓСЂСЃРЅС‹С… РІР°СЂРёР°РЅС‚РѕРІ, РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РІРµСЂРЅСѓС‚СЊ СЃСЂРµРґСЃС‚РІР°, РµСЃР»Рё РЅРёС‡РµРіРѕ РЅРµ РїРѕРЅСЂР°РІРёР»РѕСЃСЊ, Рё РѕРєРѕР»Рѕ 10 С‚С‹СЃ. РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹С… РёСЃРїРѕР»РЅРёС‚РµР»РµР№ Рє РІР°С€РёРј СѓСЃР»СѓРіР°Рј.
 <br /><br />
-Надеюсь на взаимовыгодное сотрудничество!
+РќР°РґРµСЋСЃСЊ РЅР° РІР·Р°РёРјРѕРІС‹РіРѕРґРЅРѕРµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ!
 <br /><br />
 ---<br />
-С уважением,<br />
-Максим Россошанский<br />
-Руководитель проекта <a href='http://www.dizkon.ru/?utm_source=flnwsldiz&utm_medium=email&utm_campaign=dizkonvsjob' >DizKon.ru</a><br />
+РЎ СѓРІР°Р¶РµРЅРёРµРј,<br />
+РњР°РєСЃРёРј Р РѕСЃСЃРѕС€Р°РЅСЃРєРёР№<br />
+Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ РїСЂРѕРµРєС‚Р° <a href='http://www.dizkon.ru/?utm_source=flnwsldiz&utm_medium=email&utm_campaign=dizkonvsjob' >DizKon.ru</a><br />
 <a href='mailto:maxim@dizkon.ru'>maxim@dizkon.ru</a><br />
-                                "; // текст письма
+                                "; // С‚РµРєСЃС‚ РїРёСЃСЊРјР°
                                  */
                                 
-                                $mail->recipient = "{$employer->login} <".$employer->email.">"; // получатель
-                                $mail->send('text/html'); // отправляем письмо как plain/text
+                                $mail->recipient = "{$employer->login} <".$employer->email.">"; // РїРѕР»СѓС‡Р°С‚РµР»СЊ
+                                $mail->send('text/html'); // РѕС‚РїСЂР°РІР»СЏРµРј РїРёСЃСЊРјРѕ РєР°Рє plain/text
                             }
                         }
 				
                         
                         if (!$is_edit && $is_personal) 
                         {
-                            //Добавляем ответ фрилансера
-                            //$message = 'Я получил' . ($sex == 'f' ? 'а' : '') . ' ваше предложение о проекте, в скором времени отвечу на него.';
+                            //Р”РѕР±Р°РІР»СЏРµРј РѕС‚РІРµС‚ С„СЂРёР»Р°РЅСЃРµСЂР°
+                            //$message = 'РЇ РїРѕР»СѓС‡РёР»' . ($sex == 'f' ? 'Р°' : '') . ' РІР°С€Рµ РїСЂРµРґР»РѕР¶РµРЅРёРµ Рѕ РїСЂРѕРµРєС‚Рµ, РІ СЃРєРѕСЂРѕРј РІСЂРµРјРµРЅРё РѕС‚РІРµС‡Сѓ РЅР° РЅРµРіРѕ.';
                             $message = '';
                             $obj_offer = new projects_offers();
                             $obj_offer->AddOffer($freelancer->uid, $proj['id'], '', '', 2, '', '', 0, $message, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', false, 0, 1);
                             $tmpPrj->SetExecutor($proj['id'], $freelancer->uid, $employer->uid);
                             
-                            //Отправляем СМС Фрилансеру
+                            //РћС‚РїСЂР°РІР»СЏРµРј РЎРњРЎ Р¤СЂРёР»Р°РЅСЃРµСЂСѓ
                             require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/projects_sms.php");
                             ProjectsSms::model($freelancer->uid)->sendStatus(0, $proj['id'], 9);
                         }
@@ -930,7 +930,7 @@ switch($step)
                         exit;
                         
                         
-                        //@todo: пока полное назначение кода ниже не ясно
+                        //@todo: РїРѕРєР° РїРѕР»РЅРѕРµ РЅР°Р·РЅР°С‡РµРЅРёРµ РєРѕРґР° РЅРёР¶Рµ РЅРµ СЏСЃРЅРѕ
                         /*
                         if($_POST['is_exec_quickprj']==1) {
                             $friendly_url = getFriendlyURL('project', $proj['id']);
@@ -944,14 +944,14 @@ switch($step)
                         
                         /*
                         if($price) {
-                            // в PDA без страниц-прокладок
+                            // РІ PDA Р±РµР· СЃС‚СЂР°РЅРёС†-РїСЂРѕРєР»Р°РґРѕРє
                             if ($PDA) {
                                 if($back == '/') $back = false;
                                 $_SESSION['bill.GET']['back'] = $back;
                                 header("Location: /bill/success/");
                                 exit;
                             }
-                            // платные опции
+                            // РїР»Р°С‚РЅС‹Рµ РѕРїС†РёРё
                             $payedParams = "";
                             foreach ($payedItems as $name=>$sum) {
                                 if ($sum > 0) {
@@ -960,7 +960,7 @@ switch($step)
                             }
                             $payedParams .= "&top_days=" . __paramInit('int', NULL, 'top_days',0);
                             $params = "?prj_id=" . $proj['id'] . $payedParams;
-                            // если конкурс
+                            // РµСЃР»Рё РєРѕРЅРєСѓСЂСЃ
                             if ($proj['kind'] == 7) {
                                 if (new_projects::isNewContestBudget($proj['post_date'])) {
                                     $contestPrice = new_projects::getContestTax($tmpPrj->getCostRub(), $project['is_pro'] === 't');
@@ -980,7 +980,7 @@ switch($step)
                             if ($draft_prj_id) {
                                 header("Location: {$back}");
                             } else {
-                                // в PDA без страниц прокладок
+                                // РІ PDA Р±РµР· СЃС‚СЂР°РЅРёС† РїСЂРѕРєР»Р°РґРѕРє
                                 if ($PDA) {
                                     header("Location: {$back}");
                                 } else {
@@ -1004,14 +1004,14 @@ switch($step)
                             exit;
                         }
                     } else {
-                        $error['buy'] = 'На вашем счету не хватает '. round($price - $account->sum, 2). ' ' . ending(round($price - $account->sum), 'рубль', 'рубля', 'рублей');
+                        $error['buy'] = 'РќР° РІР°С€РµРј СЃС‡РµС‚Сѓ РЅРµ С…РІР°С‚Р°РµС‚ '. round($price - $account->sum, 2). ' ' . ending(round($price - $account->sum), 'СЂСѓР±Р»СЊ', 'СЂСѓР±Р»СЏ', 'СЂСѓР±Р»РµР№');
                     }
                 }
             }
             
         } else if ( $draft_id ) {
     
-            // загрузка с черновика
+            // Р·Р°РіСЂСѓР·РєР° СЃ С‡РµСЂРЅРѕРІРёРєР°
             
             $draft = $drafts->getDraft($draft_id, $uid, 1);
             
@@ -1097,7 +1097,7 @@ switch($step)
 }
 
 
-// Все изменения $tmpPrj->_project переносим в переменную.
+// Р’СЃРµ РёР·РјРµРЅРµРЅРёСЏ $tmpPrj->_project РїРµСЂРµРЅРѕСЃРёРј РІ РїРµСЂРµРјРµРЅРЅСѓСЋ.
 $project = $tmpPrj->getProject();
 
 if(trim($project['contacts']) != '') {

@@ -1,6 +1,6 @@
 <?php
 $paypost = $_POST;
-// Тестовое оплата услуг через WM
+// РўРµСЃС‚РѕРІРѕРµ РѕРїР»Р°С‚Р° СѓСЃР»СѓРі С‡РµСЂРµР· WM
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 if(is_release()) exit;
 
@@ -74,14 +74,14 @@ if(isset($paypost['cancel'])) {
 $_SESSION['post_payment'] = $paypost;
 ?>
 
-<h2>Тестовая оплата Webmoney</h2>
+<h2>РўРµСЃС‚РѕРІР°СЏ РѕРїР»Р°С‚Р° Webmoney</h2>
 <p>
-<?= iconv('UTF-8', 'CP1251', base64_decode($paypost['LMI_PAYMENT_DESC_BASE64']))?>, сумма оплаты <?= $paypost['LMI_PAYMENT_AMOUNT'] ?> рублей
+<?= iconv('UTF-8', 'CP1251', base64_decode($paypost['LMI_PAYMENT_DESC_BASE64']))?>, СЃСѓРјРјР° РѕРїР»Р°С‚С‹ <?= $paypost['LMI_PAYMENT_AMOUNT'] ?> СЂСѓР±Р»РµР№
 </p>
 
 <form method="POST" />
     <input type="hidden" name="LMI_PREREQUEST" value="1" />
-    <input type="submit" name="success" value="Оплатить" />
-    <input type="submit" name="cancel" value="Отмена" />
+    <input type="submit" name="success" value="РћРїР»Р°С‚РёС‚СЊ" />
+    <input type="submit" name="cancel" value="РћС‚РјРµРЅР°" />
     <input type="hidden" name="u_token_key" value="<?=$_SESSION['rand']?>"/>
 </form>

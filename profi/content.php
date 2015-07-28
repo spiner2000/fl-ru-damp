@@ -1,7 +1,7 @@
 <?php
     
     /**
-     * PROFI шаблон
+     * PROFI С€Р°Р±Р»РѕРЅ
      */
 
 if (isset($account)):
@@ -15,9 +15,9 @@ if (isset($account)):
 
             <div class="b-fon b-fon_bg_f7f4f2 b-fon_center b-fon_padtop_40 b-fon_padbot_30 b-fon_margbot_30">
                <span class="b-icon b-icon__mprofi"></span>
-               <h1 class="b-page__title b-page__title_padbot_null b-page__title_padtop_28">Войдите в список PROFI фрилансеров</h1>
+               <h1 class="b-page__title b-page__title_padbot_null b-page__title_padtop_28">Р’РѕР№РґРёС‚Рµ РІ СЃРїРёСЃРѕРє PROFI С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</h1>
                <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_30">
-                   с верификацией, сроком регистрации более 2-х лет, с 10-ю и более отзывами (из которых не менее 98% положительных).
+                   СЃ РІРµСЂРёС„РёРєР°С†РёРµР№, СЃСЂРѕРєРѕРј СЂРµРіРёСЃС‚СЂР°С†РёРё Р±РѕР»РµРµ 2-С… Р»РµС‚, СЃ 10-СЋ Рё Р±РѕР»РµРµ РѕС‚Р·С‹РІР°РјРё (РёР· РєРѕС‚РѕСЂС‹С… РЅРµ РјРµРЅРµРµ 98% РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С…).
                </div>
                <table class="b-layout__table b-layout__table_width_800 b-layout__table_center b-layout__table_margbot_40">
                   <tr class="b-layout__tr">
@@ -26,7 +26,7 @@ if (isset($account)):
                      <td class="b-layout__td b-layout__td_width_240 b-layout__td_width_full_ipad">
                         <div class="b-fon b-fon_bg_fff b-fon_pad_15 b-fon__border_radius_3 b-fon_center b-layout_marglr_10_ipad">
                            <div class="b-layout__txt b-layout__txt_fontsize_46 b-layout__txt_bold b-layout__txt_color_6db335">+40%</div>
-                           <div class="b-layout__txt b-layout__txt_fontsize_18">К рейтингу в течение<br>срока действия PROFI</div>
+                           <div class="b-layout__txt b-layout__txt_fontsize_18">Рљ СЂРµР№С‚РёРЅРіСѓ РІ С‚РµС‡РµРЅРёРµ<br>СЃСЂРѕРєР° РґРµР№СЃС‚РІРёСЏ PROFI</div>
                         </div>
                      </td>
                      <td class="b-layout__td b-layout__td_width_20 b-layout__td_padbot_10_ipad">
@@ -34,7 +34,7 @@ if (isset($account)):
                      <td class="b-layout__td b-layout__td_width_240 b-layout__td_width_full_ipad">
                         <div class="b-fon b-fon_bg_fff b-fon_pad_15 b-fon__border_radius_3 b-fon_center b-layout_marglr_10_ipad">
                            <div class="b-layout__txt b-layout__txt_fontsize_46 b-layout__txt_bold b-layout__txt_color_f1ba32">PRO</div>
-                           <div class="b-layout__txt b-layout__txt_fontsize_18">Все возможности<br>PRO аккаунта</div>
+                           <div class="b-layout__txt b-layout__txt_fontsize_18">Р’СЃРµ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё<br>PRO Р°РєРєР°СѓРЅС‚Р°</div>
                         </div>
                      </td>
                      <td class="b-layout__td b-layout__td_width_20 b-layout__td_padbot_10_ipad">
@@ -42,7 +42,7 @@ if (isset($account)):
                      <td class="b-layout__td b-layout__td_width_240 b-layout__td_width_full_ipad">
                         <div class="b-fon b-fon_bg_fff b-fon_pad_15 b-fon__border_radius_3 b-fon_center b-layout_marglr_10_ipad">
                            <div class="b-layout__txt b-layout__txt_fontsize_46 b-layout__txt_bold b-layout__txt_color_6db335">-20%</div>
-                           <div class="b-layout__txt b-layout__txt_fontsize_18">Скидка при покупке<br>любых сервисов</div>
+                           <div class="b-layout__txt b-layout__txt_fontsize_18">РЎРєРёРґРєР° РїСЂРё РїРѕРєСѓРїРєРµ<br>Р»СЋР±С‹С… СЃРµСЂРІРёСЃРѕРІ</div>
                         </div>
                      </td>
                      <td class="b-layout__td">
@@ -57,13 +57,13 @@ if (isset($account)):
                   href="javascript:void(0)" 
                   onclick="<?="quickPRO_show(); $('quick_pro_f_item_".$pay['opcode']."').set('checked', 'true'); quickPRO_select($('quick_pro_f_item_".$pay['opcode']."'));"?>">
                    <?php if(isProfi()): ?>
-                        Продлить PROFI за 5990 руб.
+                        РџСЂРѕРґР»РёС‚СЊ PROFI Р·Р° 5990 СЂСѓР±.
                    <?php else: ?>
-                        Стать PROFI за 5990 руб.
+                        РЎС‚Р°С‚СЊ PROFI Р·Р° 5990 СЂСѓР±.
                    <?php endif; ?>
                </a>
                <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_10 b-layout__txt_padbot_10">
-                   Цена указана за 1 месяц действия аккаунта. Неиспользованные дни действующего PRO будут добавлены к сроку действия PROFI (из расчета 1 день PROFI = 13 дней PRO).
+                   Р¦РµРЅР° СѓРєР°Р·Р°РЅР° Р·Р° 1 РјРµСЃСЏС† РґРµР№СЃС‚РІРёСЏ Р°РєРєР°СѓРЅС‚Р°. РќРµРёСЃРїРѕР»СЊР·РѕРІР°РЅРЅС‹Рµ РґРЅРё РґРµР№СЃС‚РІСѓСЋС‰РµРіРѕ PRO Р±СѓРґСѓС‚ РґРѕР±Р°РІР»РµРЅС‹ Рє СЃСЂРѕРєСѓ РґРµР№СЃС‚РІРёСЏ PROFI (РёР· СЂР°СЃС‡РµС‚Р° 1 РґРµРЅСЊ PROFI = 13 РґРЅРµР№ PRO).
                </div>
 <?php
                   endif;
@@ -74,7 +74,7 @@ else:
 ?>
             <div class="b-fon b-fon_bg_f7f4f2 b-fon_center b-fon_padtop_40 b-fon_padbot_30 b-fon_margbot_30">
                <span class="b-icon b-icon__mprofi"></span>
-               <h1 class="b-page__title b-page__title_padtop_28">Лучшие фрилансеры сайта FL.ru</h1>
+               <h1 class="b-page__title b-page__title_padtop_28">Р›СѓС‡С€РёРµ С„СЂРёР»Р°РЅСЃРµСЂС‹ СЃР°Р№С‚Р° FL.ru</h1>
                <table class="b-layout__table b-layout__table_width_910 b-layout__table_center">
                   <tr class="b-layout__tr">
                      <td class="b-layout__td">
@@ -83,8 +83,8 @@ else:
                         <div class="b-fon b-fon_bg_fff b-fon_pad_15 b-fon__border_radius_3 b-fon_center b-layout_marglr_10_ipad">
                            <img class="b-pic b-pic_margbot_10" src="<?=WDCPREFIX?>/images/profi/p1.png" width="52" height="61">
                            <div class="b-layout__txt b-layout__txt_fontsize_18">
-                               Прошли верификацию<br/>
-                               и подтвердили личность
+                               РџСЂРѕС€Р»Рё РІРµСЂРёС„РёРєР°С†РёСЋ<br/>
+                               Рё РїРѕРґС‚РІРµСЂРґРёР»Рё Р»РёС‡РЅРѕСЃС‚СЊ
                            </div>
                         </div>
                      </td>
@@ -94,8 +94,8 @@ else:
                         <div class="b-fon b-fon_bg_fff b-fon_pad_15 b-fon__border_radius_3 b-fon_center b-layout_marglr_10_ipad">
                            <img class="b-pic b-pic_margbot_10" src="<?=WDCPREFIX?>/images/profi/p2.png" width="110" height="61">
                            <div class="b-layout__txt b-layout__txt_fontsize_18">
-                               Успешно работают<br/>
-                               на сайте более 2-х лет
+                               РЈСЃРїРµС€РЅРѕ СЂР°Р±РѕС‚Р°СЋС‚<br/>
+                               РЅР° СЃР°Р№С‚Рµ Р±РѕР»РµРµ 2-С… Р»РµС‚
                            </div>
                         </div>
                      </td>
@@ -105,8 +105,8 @@ else:
                         <div class="b-fon b-fon_bg_fff b-fon_pad_15 b-fon__border_radius_3 b-fon_center b-layout_marglr_10_ipad">
                            <img class="b-pic b-pic_margbot_10" src="<?=WDCPREFIX?>/images/profi/p3.png" width="57" height="61">
                            <div class="b-layout__txt b-layout__txt_fontsize_18">
-                               Не менее 10 отзывов<br/>
-                               минимум 98% положительных
+                               РќРµ РјРµРЅРµРµ 10 РѕС‚Р·С‹РІРѕРІ<br/>
+                               РјРёРЅРёРјСѓРј 98% РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С…
                            </div>
                         </div>
                      </td>
@@ -123,13 +123,13 @@ endif;
                <table class="b-layout__table b-layout__table_width_full b-page__ipad b-page__iphone b-layout__table_ipad">
                   <tr class="b-layout__tr">
                      <td class="b-layout__td b-layout__td_padtb_15 b-layout__td_bordbot_e6 b-layout__td_ipad b-layout__td_width_33ps_ipad">
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold b-layout__txt_center"><span class="b-icon b-icon__cont b-icon__cont_rate b-icon_top_3"></span>Рейтинг</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold b-layout__txt_center"><span class="b-icon b-icon__cont b-icon__cont_rate b-icon_top_3"></span>Р РµР№С‚РёРЅРі</div>
                      </td>
                      <td class="b-layout__td b-layout__td_padtb_15 b-layout__td_bordbot_e6 b-layout__td_ipad b-layout__td_width_33ps_ipad">
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold b-layout__txt_center"><a class="b-layout__link" href="/promo/bezopasnaya-sdelka/"><span class="b-icon b-icon__bs_small b-icon_top_1"></span></a>Сделки</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold b-layout__txt_center"><a class="b-layout__link" href="/promo/bezopasnaya-sdelka/"><span class="b-icon b-icon__bs_small b-icon_top_1"></span></a>РЎРґРµР»РєРё</div>
                      </td>
                      <td class="b-layout__td b-layout__td_padtb_15 b-layout__td_bordbot_e6 b-layout__td_ipad b-layout__td_width_33ps_ipad">
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold b-layout__txt_center"><span class="b-icon b-icon__cont b-icon__cont_op b-icon_valign_middle"></span>Отзывы</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold b-layout__txt_center"><span class="b-icon b-icon__cont b-icon__cont_op b-icon_valign_middle"></span>РћС‚Р·С‹РІС‹</div>
                      </td>
                   </tr>
                </table>
@@ -138,13 +138,13 @@ endif;
                      <td class="b-layout__td b-layout__td_padleft_20 b-layout__td_padtb_15 b-layout__td_valign_mid b-layout__td_width_33ps">
                      </td>
                      <td class="b-layout__td b-layout__td_padtb_15 b-layout__td_valign_mid b-layout__td_bordbot_e6 b-layout__td_ipad b-layout__td_width_11ps b-layout__td_width_33ps_ipad">
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold b-layout__txt_center b-layout__txt_nowrap"><span class="b-icon b-icon__cont b-icon__cont_rate b-icon_top_3"></span>Рейтинг</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold b-layout__txt_center b-layout__txt_nowrap"><span class="b-icon b-icon__cont b-icon__cont_rate b-icon_top_3"></span>Р РµР№С‚РёРЅРі</div>
                      </td>
                      <td class="b-layout__td b-layout__td_padtb_15 b-layout__td_valign_mid b-layout__td_bordbot_e6 b-layout__td_ipad b-layout__td_width_33ps_ipad">
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold b-layout__txt_center b-layout__txt_nowrap">&#160;<a class="b-layout__link" href="/promo/bezopasnaya-sdelka/"><span class="b-icon b-icon__bs_small b-icon_top_1" data-bs-txt='Безопасная сделка - удобный сервис для безопасного сотрудничества между Заказчиками и Исполнителями.'></span></a>Сделки</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold b-layout__txt_center b-layout__txt_nowrap">&#160;<a class="b-layout__link" href="/promo/bezopasnaya-sdelka/"><span class="b-icon b-icon__bs_small b-icon_top_1" data-bs-txt='Р‘РµР·РѕРїР°СЃРЅР°СЏ СЃРґРµР»РєР° - СѓРґРѕР±РЅС‹Р№ СЃРµСЂРІРёСЃ РґР»СЏ Р±РµР·РѕРїР°СЃРЅРѕРіРѕ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР° РјРµР¶РґСѓ Р—Р°РєР°Р·С‡РёРєР°РјРё Рё РСЃРїРѕР»РЅРёС‚РµР»СЏРјРё.'></span></a>РЎРґРµР»РєРё</div>
                      </td>
                      <td class="b-layout__td b-layout__td_padtb_15 b-layout__td_valign_mid b-layout__td_bordbot_e6 b-layout__td_ipad b-layout__td_width_11ps b-layout__td_width_33ps_ipad">
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold b-layout__txt_center b-layout__txt_nowrap">&#160;<span class="b-icon b-icon__cont b-icon__cont_op b-icon_valign_middle"></span>Отзывы</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold b-layout__txt_center b-layout__txt_nowrap">&#160;<span class="b-icon b-icon__cont b-icon__cont_op b-icon_valign_middle"></span>РћС‚Р·С‹РІС‹</div>
                      </td>
                      <td class="b-layout__td b-layout__td_padleft_20 b-layout__td_padtb_15 b-layout__td_valign_mid b-layout__td_width_33ps">
                      </td>
@@ -244,7 +244,7 @@ endif;
                      <td class="b-layout__td b-layout__td_padtop_20" colspan="3">
                         <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_center">
                             <a class="b-layout__link b-layout__link_bold" href="javascript: void(0);" onclick="$('profiCatalog').removeClass('b-layout_hide');this.getParent('tr').hide().getPrevious('tr').hide();">
-                                Полный список PROFI
+                                РџРѕР»РЅС‹Р№ СЃРїРёСЃРѕРє PROFI
                             </a>
                         </div>
                      </td>

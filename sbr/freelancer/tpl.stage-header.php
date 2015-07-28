@@ -1,6 +1,6 @@
 <? if($stage->notification['ntype'] == 'sbr_stages.FRL_FEEDBACK' && $head_docs && $stage->sbr->scheme_type == sbr::SCHEME_PDRD2) { $hdoc_cnt = count($head_docs);?>
     <div class="b-layout b-layout_padleft_35 b-layout_padtop_15 b-layout_padbot_15 b-layout_padright_15" id="head_docs">
-        <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_color_a0763b">Для того, чтобы получить заработанные деньги, вам нужно скачать, распечатать, подписать <?= ending($hdoc_cnt, 'документ', 'документы', 'документы');?>:</div>
+        <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_color_a0763b">Р”Р»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ Р·Р°СЂР°Р±РѕС‚Р°РЅРЅС‹Рµ РґРµРЅСЊРіРё, РІР°Рј РЅСѓР¶РЅРѕ СЃРєР°С‡Р°С‚СЊ, СЂР°СЃРїРµС‡Р°С‚Р°С‚СЊ, РїРѕРґРїРёСЃР°С‚СЊ <?= ending($hdoc_cnt, 'РґРѕРєСѓРјРµРЅС‚', 'РґРѕРєСѓРјРµРЅС‚С‹', 'РґРѕРєСѓРјРµРЅС‚С‹');?>:</div>
             <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table">
                 <tbody>
                     <? foreach($head_docs as $hdoc) { $e = explode(".", $hdoc['file_name']); $ext = $e[count($e)-1];  ?>
@@ -13,19 +13,19 @@
                         </td>
                         <td class="b-layout__right b-layout__right_padleft_20 b-layout__right_padbot_5">
                             <div class="b-layout__txt">
-                                <a href="<?= WDCPREFIX; ?>/<?= $hdoc['file_path'] . $hdoc['file_name']?>" class="b-layout__link">Скачать</a>
+                                <a href="<?= WDCPREFIX; ?>/<?= $hdoc['file_path'] . $hdoc['file_name']?>" class="b-layout__link">РЎРєР°С‡Р°С‚СЊ</a>
                             </div>
                         </td>
                     </tr>
                     <? }//foreach?>
                 </tbody>
             </table>										
-        <div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_color_a0763b">Подписанный документ нужно отправить по любому удобному вам адресу:</div>
-        <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_a0763b">129223, Москва, а/я 33;</div>
-        <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_a0763b">190031, Санкт-Петербург, Сенная пл., д.13/52, а/я 427; </div>
-        <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_a0763b">420032, Казань, а/я 624;</div>
-        <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_a0763b">454014, Челябинск-14, а/я 2710.</div>
-        <div class="b-layout__txt b-layout__txt_color_a0763b b-layout__txt_padbot_10">На конверте обязательно укажите наименование организации ООО «ВААН». </div>
-        <div class="b-layout__txt b-layout__txt_color_a0763b">Обычно документы идут в течение от трех дней до двух недель. Если по истечении этого времени вы все еще не получили деньги, <a href="/about/feedback/" class="b-layout__link b-layout__link_bordbot_dot_0f71c8">обратитесь в службу поддержки</a>.</div>
+        <div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_color_a0763b">РџРѕРґРїРёСЃР°РЅРЅС‹Р№ РґРѕРєСѓРјРµРЅС‚ РЅСѓР¶РЅРѕ РѕС‚РїСЂР°РІРёС‚СЊ РїРѕ Р»СЋР±РѕРјСѓ СѓРґРѕР±РЅРѕРјСѓ РІР°Рј Р°РґСЂРµСЃСѓ:</div>
+        <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_a0763b">129223, РњРѕСЃРєРІР°, Р°/СЏ 33;</div>
+        <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_a0763b">190031, РЎР°РЅРєС‚-РџРµС‚РµСЂР±СѓСЂРі, РЎРµРЅРЅР°СЏ РїР»., Рґ.13/52, Р°/СЏ 427; </div>
+        <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_a0763b">420032, РљР°Р·Р°РЅСЊ, Р°/СЏ 624;</div>
+        <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_a0763b">454014, Р§РµР»СЏР±РёРЅСЃРє-14, Р°/СЏ 2710.</div>
+        <div class="b-layout__txt b-layout__txt_color_a0763b b-layout__txt_padbot_10">РќР° РєРѕРЅРІРµСЂС‚Рµ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ СѓРєР°Р¶РёС‚Рµ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё РћРћРћ В«Р’РђРђРќВ». </div>
+        <div class="b-layout__txt b-layout__txt_color_a0763b">РћР±С‹С‡РЅРѕ РґРѕРєСѓРјРµРЅС‚С‹ РёРґСѓС‚ РІ С‚РµС‡РµРЅРёРµ РѕС‚ С‚СЂРµС… РґРЅРµР№ РґРѕ РґРІСѓС… РЅРµРґРµР»СЊ. Р•СЃР»Рё РїРѕ РёСЃС‚РµС‡РµРЅРёРё СЌС‚РѕРіРѕ РІСЂРµРјРµРЅРё РІС‹ РІСЃРµ РµС‰Рµ РЅРµ РїРѕР»СѓС‡РёР»Рё РґРµРЅСЊРіРё, <a href="/about/feedback/" class="b-layout__link b-layout__link_bordbot_dot_0f71c8">РѕР±СЂР°С‚РёС‚РµСЃСЊ РІ СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.</div>
     </div>
 <? }?> 

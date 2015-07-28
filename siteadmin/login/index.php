@@ -32,7 +32,7 @@ $save = intval($_POST['save']);
 
 if ($old_login && $new_login && $_SESSION["rand"] == $_POST["u_token_key"]) {
     $new_login = substr(strip_tags(trim(stripslashes($new_login))),0,15);
-    if (!preg_match("/^[a-zA-Z0-9]+[-a-zA-Z0-9_]{2,}$/", $new_login)) $error = "Поле заполнено некорректно";
+    if (!preg_match("/^[a-zA-Z0-9]+[-a-zA-Z0-9_]{2,}$/", $new_login)) $error = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
     
     if(!$error) {
     	$login_change->new_login = $new_login;

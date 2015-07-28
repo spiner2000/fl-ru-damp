@@ -34,20 +34,20 @@ if($_SESSION['info_msg']) {
 ?>
 
 <div class="b-layout b-layout_padtop_20">
-	<h2 class="b-layout__title b-layout__title_padbot_30">Безопасность аккаунта</h2>
+	<h2 class="b-layout__title b-layout__title_padbot_30">Р‘РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ Р°РєРєР°СѓРЅС‚Р°</h2>
 	<? if ($info_msg) print(view_info($info_msg)."<br />") ?>
     
-    <h3 class="b-layout__h3">Двухэтапная аутентификация через соцсети</h3>
+    <h3 class="b-layout__h3">Р”РІСѓС…СЌС‚Р°РїРЅР°СЏ Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёСЏ С‡РµСЂРµР· СЃРѕС†СЃРµС‚Рё</h3>
     <?php if ($social_multivel && is_array($social_multivel)): ?>
         <div class="b-layout__txt b-layout__txt_padbot_40">
-            Включена двухэтапная аутентификация с помощью <?=$social_multivel['name']?>. 
-            <a id="multilevel_switchoff" href="javascript:void(0);">Отключить</a>.
+            Р’РєР»СЋС‡РµРЅР° РґРІСѓС…СЌС‚Р°РїРЅР°СЏ Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёСЏ СЃ РїРѕРјРѕС‰СЊСЋ <?=$social_multivel['name']?>. 
+            <a id="multilevel_switchoff" href="javascript:void(0);">РћС‚РєР»СЋС‡РёС‚СЊ</a>.
         </div>
     <?php else: ?>
         <div class="b-layout__txt b-layout__txt_padbot_15">
-            Настройте двухэтапную аутентификацию, и после ввода логина и пароля вам 
-            также нужно будет авторизоваться через выбранную соцсеть на втором шаге. 
-            <a href="http://feedback.fl.ru/topic/683170-dvuhetapnaya-autentifikatsiya-cherez-sotsseti/" target="_blank">Подробнее</a>
+            РќР°СЃС‚СЂРѕР№С‚Рµ РґРІСѓС…СЌС‚Р°РїРЅСѓСЋ Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёСЋ, Рё РїРѕСЃР»Рµ РІРІРѕРґР° Р»РѕРіРёРЅР° Рё РїР°СЂРѕР»СЏ РІР°Рј 
+            С‚Р°РєР¶Рµ РЅСѓР¶РЅРѕ Р±СѓРґРµС‚ Р°РІС‚РѕСЂРёР·РѕРІР°С‚СЊСЃСЏ С‡РµСЂРµР· РІС‹Р±СЂР°РЅРЅСѓСЋ СЃРѕС†СЃРµС‚СЊ РЅР° РІС‚РѕСЂРѕРј С€Р°РіРµ. 
+            <a href="http://feedback.fl.ru/topic/683170-dvuhetapnaya-autentifikatsiya-cherez-sotsseti/" target="_blank">РџРѕРґСЂРѕР±РЅРµРµ</a>
         </div>
         <?php if (isset($social_links) && !empty($social_links)): ?>
             <form action="." method="post" class="b-form b-form_padbot_40">
@@ -55,7 +55,7 @@ if($_SESSION['info_msg']) {
                 <table class="b-layout__table">
                     <tr class="b-layout__tr">
                         <td class="b-layout__td b-layout__td_width_140">
-                            <div class="b-layout__txt b-layout__txt_padtop_5">Выберите соцсеть:</div>
+                            <div class="b-layout__txt b-layout__txt_padtop_5">Р’С‹Р±РµСЂРёС‚Рµ СЃРѕС†СЃРµС‚СЊ:</div>
                         </td>
 
                         <td class="b-layout__td b-layout__td_padbot_20">
@@ -81,7 +81,7 @@ if($_SESSION['info_msg']) {
                     </tr>
                     <tr class="b-layout__tr">
                         <td class="b-layout__td b-layout__td_width_140">
-                            <div class="b-layout__txt b-layout__txt_padtop_5">Введите пароль:</div>
+                            <div class="b-layout__txt b-layout__txt_padtop_5">Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ:</div>
                         </td>
                         <td class="b-layout__td b-layout__td_padbot_20">
                             <div class="b-combo">
@@ -95,10 +95,10 @@ if($_SESSION['info_msg']) {
                         </td>
                     </tr>
                 </table>
-                <button class="b-button b-button_flat b-button_flat_green" type="submit">Включить двухэтапную аутентификацию</button>
+                <button class="b-button b-button_flat b-button_flat_green" type="submit">Р’РєР»СЋС‡РёС‚СЊ РґРІСѓС…СЌС‚Р°РїРЅСѓСЋ Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёСЋ</button>
             </form>
         <?php else: ?>
-            <div class="b-layout__txt b-layout__txt_padbot_15">Привяжите ваш аккаунт из соцсети, который вы будете использовать для двухэтапной аутентификации.</div>
+            <div class="b-layout__txt b-layout__txt_padbot_15">РџСЂРёРІСЏР¶РёС‚Рµ РІР°С€ Р°РєРєР°СѓРЅС‚ РёР· СЃРѕС†СЃРµС‚Рё, РєРѕС‚РѕСЂС‹Р№ РІС‹ Р±СѓРґРµС‚Рµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РґР»СЏ РґРІСѓС…СЌС‚Р°РїРЅРѕР№ Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёРё.</div>
             <div class="b-layout b-layout_padbot_30">
                 <?php if (isset($social_bind_error) && !empty($social_bind_error)): ?>
                     <div class="b-layout__txt b-layout__txt_color_c4271f">
@@ -108,19 +108,19 @@ if($_SESSION['info_msg']) {
                 <div class="b-layout__txt">
                     <a href="/auth/?param=vkontakte&multilevel=1"
                        class="b-layout__link b-layout__link_lineheight_34 b-layout__link_valign_top">
-                        <span class="b-auth_btn b-auth_mini b-auth_btn_vk b-auth_margright_5 b-auth_btn_float_left"></span>Привязать VKontakte-аккаунт к профилю
+                        <span class="b-auth_btn b-auth_mini b-auth_btn_vk b-auth_margright_5 b-auth_btn_float_left"></span>РџСЂРёРІСЏР·Р°С‚СЊ VKontakte-Р°РєРєР°СѓРЅС‚ Рє РїСЂРѕС„РёР»СЋ
                     </a>
                 </div>
                 <div class="b-layout__txt">
                     <a href="/auth/?param=facebook&multilevel=1"
                        class="b-layout__link b-layout__link_lineheight_34 b-layout__link_valign_top">
-                        <span class="b-auth_btn b-auth_mini b-auth_btn_facebook b-auth_margright_5 b-auth_btn_float_left"></span>Привязать Facebook-аккаунт к профилю
+                        <span class="b-auth_btn b-auth_mini b-auth_btn_facebook b-auth_margright_5 b-auth_btn_float_left"></span>РџСЂРёРІСЏР·Р°С‚СЊ Facebook-Р°РєРєР°СѓРЅС‚ Рє РїСЂРѕС„РёР»СЋ
                     </a>
                 </div>
                 <div class="b-layout__txt">
                     <a href="/auth/?param=odnoklassniki&multilevel=1"
                        class="b-layout__link b-layout__link_lineheight_34 b-layout__link_valign_top">
-                        <span class="b-auth_btn b-auth_mini b-auth_btn_odnoklassniki b-auth_margright_5 b-auth_btn_float_left"></span>Привязать Odnoklassniki-аккаунт к профилю
+                        <span class="b-auth_btn b-auth_mini b-auth_btn_odnoklassniki b-auth_margright_5 b-auth_btn_float_left"></span>РџСЂРёРІСЏР·Р°С‚СЊ Odnoklassniki-Р°РєРєР°СѓРЅС‚ Рє РїСЂРѕС„РёР»СЋ
                     </a>
                 </div>
             </div>
@@ -128,44 +128,44 @@ if($_SESSION['info_msg']) {
     <?php endif; ?>
     
 	<a name="safety_ip"></a>
-	<h3 class="b-layout__h3">Привязка аккаунта к IP-адресу</h3>
+	<h3 class="b-layout__h3">РџСЂРёРІСЏР·РєР° Р°РєРєР°СѓРЅС‚Р° Рє IP-Р°РґСЂРµСЃСѓ</h3>
 	<form action='.' method='POST' id="safetyform">
 		<div class="b-form">
-			<label for="ip_addresses" class="b-form__name b-form__name_fontsize_13 b-form__name_padbot_10">Укажите IP-адреса, для которых будет разрешен вход в аккаунт. Вход с других IP-адресов будет невозможен.</label>
+			<label for="ip_addresses" class="b-form__name b-form__name_fontsize_13 b-form__name_padbot_10">РЈРєР°Р¶РёС‚Рµ IP-Р°РґСЂРµСЃР°, РґР»СЏ РєРѕС‚РѕСЂС‹С… Р±СѓРґРµС‚ СЂР°Р·СЂРµС€РµРЅ РІС…РѕРґ РІ Р°РєРєР°СѓРЅС‚. Р’С…РѕРґ СЃ РґСЂСѓРіРёС… IP-Р°РґСЂРµСЃРѕРІ Р±СѓРґРµС‚ РЅРµРІРѕР·РјРѕР¶РµРЅ.</label>
 			<div class="b-textarea">
 				<textarea id="ip_addresses" class="b-textarea__textarea b-textarea__textarea_width_750" cols="20" rows="5" name="ip_addresses"><?=$ip_addresses?></textarea>
 			</div>
 			<input type="hidden" name="action" value="safety_update" />			
-			<div class="b-form__txt b-form__txt_fontsize_11 b-form__txt_padtop_3 b-form__txt_block b-form__txt_width_full">IP-адреса следует указывать через запятую, при вводе диапазона адресов используйте дефис или слеш.<br/>К примеру,  10.10.10.1, 10.10.10.5-10.10.10.10 или 10.10.10.0/24</div>
+			<div class="b-form__txt b-form__txt_fontsize_11 b-form__txt_padtop_3 b-form__txt_block b-form__txt_width_full">IP-Р°РґСЂРµСЃР° СЃР»РµРґСѓРµС‚ СѓРєР°Р·С‹РІР°С‚СЊ С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ, РїСЂРё РІРІРѕРґРµ РґРёР°РїР°Р·РѕРЅР° Р°РґСЂРµСЃРѕРІ РёСЃРїРѕР»СЊР·СѓР№С‚Рµ РґРµС„РёСЃ РёР»Рё СЃР»РµС€.<br/>Рљ РїСЂРёРјРµСЂСѓ,  10.10.10.1, 10.10.10.5-10.10.10.10 РёР»Рё 10.10.10.0/24</div>
 		</div><?php if ($alert[1]) { ?>
 				<?=view_error($alert[1]);?>
 			<?php } ?>
 		<div class="b-fon b-fon_width_full b-fon_padbot_30">
 			<div class="b-fon__body b-fon__body_pad_10 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb b-fon__body_bordbot_edddda">
-				Обратите внимание: не используйте привязку к IP, если у вас динамический IP-адрес (информацию можно получить у вашего провайдера).
+				РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ: РЅРµ РёСЃРїРѕР»СЊР·СѓР№С‚Рµ РїСЂРёРІСЏР·РєСѓ Рє IP, РµСЃР»Рё Сѓ РІР°СЃ РґРёРЅР°РјРёС‡РµСЃРєРёР№ IP-Р°РґСЂРµСЃ (РёРЅС„РѕСЂРјР°С†РёСЋ РјРѕР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ Сѓ РІР°С€РµРіРѕ РїСЂРѕРІР°Р№РґРµСЂР°).
 			</div>
 		</div>
-		<h3 class="b-layout__h3">Привязка авторизации на сайте к IP-адресу <? if ($bind_ip_current=='t') { ?><span class="b-layout__txt b-layout__txt_color_6bb336 b-layout__txt_fontsize_15">включена</span><? } else { ?><span class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_fontsize_15">выключена</span><? } ?></h3>
-		<div class="b-layout__txt b-layout__txt_padbot_15">Активировав эту функцию и установив флажок напротив &laquo;Запомнить меня&raquo;, вы будете авторизованы на сайте до тех пор, пока не изменится ваш IP-адрес. Функция полезна для тех, кто беспокоится о безопасности своего аккаунта: привязка авторизации к IP не позволит злоумышленнику авторизоваться в вашем аккаунте с другого IP-адреса, использовав данные, украденные из вашего браузера (файлы cookies).</div>
+		<h3 class="b-layout__h3">РџСЂРёРІСЏР·РєР° Р°РІС‚РѕСЂРёР·Р°С†РёРё РЅР° СЃР°Р№С‚Рµ Рє IP-Р°РґСЂРµСЃСѓ <? if ($bind_ip_current=='t') { ?><span class="b-layout__txt b-layout__txt_color_6bb336 b-layout__txt_fontsize_15">РІРєР»СЋС‡РµРЅР°</span><? } else { ?><span class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_fontsize_15">РІС‹РєР»СЋС‡РµРЅР°</span><? } ?></h3>
+		<div class="b-layout__txt b-layout__txt_padbot_15">РђРєС‚РёРІРёСЂРѕРІР°РІ СЌС‚Сѓ С„СѓРЅРєС†РёСЋ Рё СѓСЃС‚Р°РЅРѕРІРёРІ С„Р»Р°Р¶РѕРє РЅР°РїСЂРѕС‚РёРІ &laquo;Р—Р°РїРѕРјРЅРёС‚СЊ РјРµРЅСЏ&raquo;, РІС‹ Р±СѓРґРµС‚Рµ Р°РІС‚РѕСЂРёР·РѕРІР°РЅС‹ РЅР° СЃР°Р№С‚Рµ РґРѕ С‚РµС… РїРѕСЂ, РїРѕРєР° РЅРµ РёР·РјРµРЅРёС‚СЃСЏ РІР°С€ IP-Р°РґСЂРµСЃ. Р¤СѓРЅРєС†РёСЏ РїРѕР»РµР·РЅР° РґР»СЏ С‚РµС…, РєС‚Рѕ Р±РµСЃРїРѕРєРѕРёС‚СЃСЏ Рѕ Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё СЃРІРѕРµРіРѕ Р°РєРєР°СѓРЅС‚Р°: РїСЂРёРІСЏР·РєР° Р°РІС‚РѕСЂРёР·Р°С†РёРё Рє IP РЅРµ РїРѕР·РІРѕР»РёС‚ Р·Р»РѕСѓРјС‹С€Р»РµРЅРЅРёРєСѓ Р°РІС‚РѕСЂРёР·РѕРІР°С‚СЊСЃСЏ РІ РІР°С€РµРј Р°РєРєР°СѓРЅС‚Рµ СЃ РґСЂСѓРіРѕРіРѕ IP-Р°РґСЂРµСЃР°, РёСЃРїРѕР»СЊР·РѕРІР°РІ РґР°РЅРЅС‹Рµ, СѓРєСЂР°РґРµРЅРЅС‹Рµ РёР· РІР°С€РµРіРѕ Р±СЂР°СѓР·РµСЂР° (С„Р°Р№Р»С‹ cookies).</div>
 		<div class="b-check">
-			<input id="bind_ip" class="b-check__input" type="checkbox" name="bind_ip" value="t" <?=($bind_ip=='t'?' checked="checked"':'')?> /> <label class="b-check__label b-check__label_fontsize_13" for="bind_ip">Привязка включена</label>
+			<input id="bind_ip" class="b-check__input" type="checkbox" name="bind_ip" value="t" <?=($bind_ip=='t'?' checked="checked"':'')?> /> <label class="b-check__label b-check__label_fontsize_13" for="bind_ip">РџСЂРёРІСЏР·РєР° РІРєР»СЋС‡РµРЅР°</label>
 		</div>
 		<div class="b-fon b-fon_width_full b-fon_padbot_30 b-fon_padtop_10">
 			<div class="b-fon__body b-fon__body_pad_10 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb b-fon__body_bordbot_edddda">
-				Обратите внимание: функция может причинить определенные неудобства обладателям динамического IP &mdash; в связи со сменой IP-адреса, которая происходит через некоторый промежуток времени, вам будет необходимо повторно вводить логин и пароль от аккаунта.
+				РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ: С„СѓРЅРєС†РёСЏ РјРѕР¶РµС‚ РїСЂРёС‡РёРЅРёС‚СЊ РѕРїСЂРµРґРµР»РµРЅРЅС‹Рµ РЅРµСѓРґРѕР±СЃС‚РІР° РѕР±Р»Р°РґР°С‚РµР»СЏРј РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ IP &mdash; РІ СЃРІСЏР·Рё СЃРѕ СЃРјРµРЅРѕР№ IP-Р°РґСЂРµСЃР°, РєРѕС‚РѕСЂР°СЏ РїСЂРѕРёСЃС…РѕРґРёС‚ С‡РµСЂРµР· РЅРµРєРѕС‚РѕСЂС‹Р№ РїСЂРѕРјРµР¶СѓС‚РѕРє РІСЂРµРјРµРЅРё, РІР°Рј Р±СѓРґРµС‚ РЅРµРѕР±С…РѕРґРёРјРѕ РїРѕРІС‚РѕСЂРЅРѕ РІРІРѕРґРёС‚СЊ Р»РѕРіРёРЅ Рё РїР°СЂРѕР»СЊ РѕС‚ Р°РєРєР°СѓРЅС‚Р°.
 			</div>
 		</div>
         <? /* #0019359
-		<h3 class="b-layout__h3">Привязка к телефону</h3>
-		<div class="b-layout__txt b-layout__txt_padbot_5">В случае кражи ваших личных данных вы сможете восстановить доступ к аккаунту посредством мобильного телефона &mdash; пароль придет в виде SMS-сообщения на указанный вами номер телефона. <br /><br />Ваш номер:</div>
+		<h3 class="b-layout__h3">РџСЂРёРІСЏР·РєР° Рє С‚РµР»РµС„РѕРЅСѓ</h3>
+		<div class="b-layout__txt b-layout__txt_padbot_5">Р’ СЃР»СѓС‡Р°Рµ РєСЂР°Р¶Рё РІР°С€РёС… Р»РёС‡РЅС‹С… РґР°РЅРЅС‹С… РІС‹ СЃРјРѕР¶РµС‚Рµ РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РґРѕСЃС‚СѓРї Рє Р°РєРєР°СѓРЅС‚Сѓ РїРѕСЃСЂРµРґСЃС‚РІРѕРј РјРѕР±РёР»СЊРЅРѕРіРѕ С‚РµР»РµС„РѕРЅР° &mdash; РїР°СЂРѕР»СЊ РїСЂРёРґРµС‚ РІ РІРёРґРµ SMS-СЃРѕРѕР±С‰РµРЅРёСЏ РЅР° СѓРєР°Р·Р°РЅРЅС‹Р№ РІР°РјРё РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°. <br /><br />Р’Р°С€ РЅРѕРјРµСЂ:</div>
 		<div class="b-form b-form_width_490">
 			<div class="b-input b-input_width_160 b-input_inline-block">
 				<input id="phone" class="b-input__text" type="text" autocomplete="off"  name="phone" value="<?=$phone?>" maxlength="30" <?=(($o_only_phone=='t')?'disabled="disabled"':'')?> onKeyPress="return submitEnter(this,event)"  /> 
 			</div>
 			<div class="b-check b-check_inline-block b-check_padleft_10 b-check_padtop_3">
-				<input id="only_phone" class="b-check__input" type="checkbox" name="only_phone" value="t" <?=($only_phone=='t'?' checked="checked"':'')?> <?=(($o_only_phone=='t')?'disabled="disabled"':'')?> /> <label class="b-check__label b-check__label_fontsize_13" for="only_phone">Восстанавливать пароль только на телефон</label>
+				<input id="only_phone" class="b-check__input" type="checkbox" name="only_phone" value="t" <?=($only_phone=='t'?' checked="checked"':'')?> <?=(($o_only_phone=='t')?'disabled="disabled"':'')?> /> <label class="b-check__label b-check__label_fontsize_13" for="only_phone">Р’РѕСЃСЃС‚Р°РЅР°РІР»РёРІР°С‚СЊ РїР°СЂРѕР»СЊ С‚РѕР»СЊРєРѕ РЅР° С‚РµР»РµС„РѕРЅ</label>
 			</div>
-			<div class="b-form__txt b-form__txt_fontsize_11 b-form__txt_padtop_3 b-form__txt_width_full">Например, +79266543210</div>
+			<div class="b-form__txt b-form__txt_fontsize_11 b-form__txt_padtop_3 b-form__txt_width_full">РќР°РїСЂРёРјРµСЂ, +79266543210</div>
 			
 		</div>
 		<?php if ($alert[2]) { ?>
@@ -173,17 +173,17 @@ if($_SESSION['info_msg']) {
 			<?php } ?>
 		<div class="b-fon b-fon_width_full b-fon_padbot_10 b-fon_padtop_10">
 			<div class="b-fon__body b-fon__body_pad_10 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb b-fon__body_bordbot_edddda">
-				Обратите внимание: если вы выберете опцию восстановления пароля только на телефон, единственным способом изменения указанного номера телефона будет обращение в <a class="b-layout__link" href="/help/?all" target="_blank">Службу поддержки</a>.
+				РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ: РµСЃР»Рё РІС‹ РІС‹Р±РµСЂРµС‚Рµ РѕРїС†РёСЋ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ РїР°СЂРѕР»СЏ С‚РѕР»СЊРєРѕ РЅР° С‚РµР»РµС„РѕРЅ, РµРґРёРЅСЃС‚РІРµРЅРЅС‹Рј СЃРїРѕСЃРѕР±РѕРј РёР·РјРµРЅРµРЅРёСЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ РЅРѕРјРµСЂР° С‚РµР»РµС„РѕРЅР° Р±СѓРґРµС‚ РѕР±СЂР°С‰РµРЅРёРµ РІВ <a class="b-layout__link" href="/help/?all" target="_blank">РЎР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.
 			</div>
 		</div>
-		<h4 class="b-layout__h4"><a class="b-layout__link b-layout__toggler b-layout__link_bordbot_dot_0f71c8" href="#">Способ восстановления пароля через SMS и стоимость услуги</a></h4>
+		<h4 class="b-layout__h4"><a class="b-layout__link b-layout__toggler b-layout__link_bordbot_dot_0f71c8" href="#">РЎРїРѕСЃРѕР± РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ РїР°СЂРѕР»СЏ С‡РµСЂРµР· SMS Рё СЃС‚РѕРёРјРѕСЃС‚СЊ СѓСЃР»СѓРіРё</a></h4>
 		<div class="b-layout__slider">
-			<div class="b-layout__txt b-layout__txt_padbot_10">Для восстановления пароля вам необходимо отправить SMS с текстом <span class="b-layout__txt b-layout__txt_color_6bb336">free 2+<?=htmlspecialchars($_SESSION['login'])?></span> на номер <span class="b-layout__txt b-layout__txt_color_6bb336">4446</span>.<br/>Подробная инструкция по восстановлению пароля через SMS-сообщение находится в соответствующем <a class="b-layout__link" href="/help/?q=882">разделе помощи</a>.</div>
-			<div class="b-layout__txt b-layout__txt_padbot_10">Услуга доступна для жителей России, Украины и Белоруссии.</div> 
+			<div class="b-layout__txt b-layout__txt_padbot_10">Р”Р»СЏ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ РїР°СЂРѕР»СЏ РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РѕС‚РїСЂР°РІРёС‚СЊ SMS СЃ С‚РµРєСЃС‚РѕРј <span class="b-layout__txt b-layout__txt_color_6bb336">free 2+<?=htmlspecialchars($_SESSION['login'])?></span> РЅР° РЅРѕРјРµСЂ <span class="b-layout__txt b-layout__txt_color_6bb336">4446</span>.<br/>РџРѕРґСЂРѕР±РЅР°СЏ РёРЅСЃС‚СЂСѓРєС†РёСЏ РїРѕ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЋ РїР°СЂРѕР»СЏ С‡РµСЂРµР· SMS-СЃРѕРѕР±С‰РµРЅРёРµ РЅР°С…РѕРґРёС‚СЃСЏ РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРј <a class="b-layout__link" href="/help/?q=882">СЂР°Р·РґРµР»Рµ РїРѕРјРѕС‰Рё</a>.</div>
+			<div class="b-layout__txt b-layout__txt_padbot_10">РЈСЃР»СѓРіР° РґРѕСЃС‚СѓРїРЅР° РґР»СЏ Р¶РёС‚РµР»РµР№ Р РѕСЃСЃРёРё, РЈРєСЂР°РёРЅС‹ Рё Р‘РµР»РѕСЂСѓСЃСЃРёРё.</div> 
     		<div class="b-layout__txt b-layout__txt_padbot_10"><?=sms_services::$tariffs['4446']['descr']?></div>
 		</div>
         
-        <h3 class="b-layout__h3 b-layout__h3_padtop_30">Привязка мобильного телефона <span class="b-layout__txt <?= ( $reqv['is_activate_mob'] == 't' ? 'b-layout__txt_color_6bb336' : 'b-layout__txt_color_c10600' );?> b-layout__txt_fontsize_15" id="safety_status"><?= ( $reqv['is_activate_mob'] == 't' ? 'включена' : 'выключена' );?></span></h3>
+        <h3 class="b-layout__h3 b-layout__h3_padtop_30">РџСЂРёРІСЏР·РєР° РјРѕР±РёР»СЊРЅРѕРіРѕ С‚РµР»РµС„РѕРЅР° <span class="b-layout__txt <?= ( $reqv['is_activate_mob'] == 't' ? 'b-layout__txt_color_6bb336' : 'b-layout__txt_color_c10600' );?> b-layout__txt_fontsize_15" id="safety_status"><?= ( $reqv['is_activate_mob'] == 't' ? 'РІРєР»СЋС‡РµРЅР°' : 'РІС‹РєР»СЋС‡РµРЅР°' );?></span></h3>
         <div class="b-combo b-combo_inline-block b-combo_valign_mid">
             <div class="b-combo__input b-combo__input_width_170 <?= ( ($reqv['is_activate_mob'] == 't' || $_SESSION['is_verify'] == 't') ? 'b-combo__input_disabled' : '');?>" id="safety_mob_phone">
                 <input class="b-combo__input-text b-combo__input-text_fontsize_18" <?= ( $reqv['is_activate_mob'] == 't' ? 'disabled' : '');?> name="mob_phone" type="text" size="12" maxlength="15" value="<?= $ureqv['mob_phone'];?>" onChange="savePhoneChage(this);" onBlur="savePhoneChage(this);"/>
@@ -193,31 +193,31 @@ if($_SESSION['info_msg']) {
             <?php if($reqv['is_activate_mob'] == 't') { ?>
             &#160;&#160;
             <div class="b-layout__txt b-layout__txt_inline-block">
-                <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)">Отвязать</a>
+                <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)">РћС‚РІСЏР·Р°С‚СЊ</a>
             </div>
             <script>bindLinkUnativateAuth('<?= $_SESSION['uid'];?>');</script>
             <?php } else {//if?>
             <a href="javascript:void(0)" class="b-button b-button_rectangle_color_transparent b-button_margtop_-2" data-send="safety" data-phone="<?= $ureqv['mob_phone'];?>">
                 <span class="b-button__b1">
                     <span class="b-button__b2">
-                        <span class="b-button__txt">Активировать</span>
+                        <span class="b-button__txt">РђРєС‚РёРІРёСЂРѕРІР°С‚СЊ</span>
                     </span>
                 </span>
             </a>
             <?php }//else?>
         </span>
-        <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_fontsize_11">Например +79201234567</div>
+        <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_fontsize_11">РќР°РїСЂРёРјРµСЂ +79201234567</div>
         <div class="b-check b-check_padbot_10 safety_phone_checks">
-            <input class="b-check__input" name="only_phone" value="t" type="checkbox" <?= ( $o_only_phone == 't' ? 'checked="checked"' : '' );?> <?= ( $reqv['is_activate_mob'] == 't' ? '' : 'disabled');?>/> <label class="b-check__label b-check__label_fontsize_13" >Восстанавливать пароль только на мобильный телефон</label>
+            <input class="b-check__input" name="only_phone" value="t" type="checkbox" <?= ( $o_only_phone == 't' ? 'checked="checked"' : '' );?> <?= ( $reqv['is_activate_mob'] == 't' ? '' : 'disabled');?>/> <label class="b-check__label b-check__label_fontsize_13" >Р’РѕСЃСЃС‚Р°РЅР°РІР»РёРІР°С‚СЊ РїР°СЂРѕР»СЊ С‚РѕР»СЊРєРѕ РЅР° РјРѕР±РёР»СЊРЅС‹Р№ С‚РµР»РµС„РѕРЅ</label>
         </div>
         <div class="b-check safety_phone_check safety_phone_checks">
-            <input class="b-check__input" id="finance_safety_phone" name="finance_safety_phone" value="t" type="checkbox" <?= ( $reqv['is_safety_mob'] == 't' ? 'checked="checked"' : '' );?> <?= ( $reqv['is_activate_mob'] == 't' ? '' : 'disabled');?>/> <label class="b-check__label b-check__label_fontsize_13" >Вход на страницу &laquo;Финансы&raquo; &mdash; только через код из смс-сообщения</label>
+            <input class="b-check__input" id="finance_safety_phone" name="finance_safety_phone" value="t" type="checkbox" <?= ( $reqv['is_safety_mob'] == 't' ? 'checked="checked"' : '' );?> <?= ( $reqv['is_activate_mob'] == 't' ? '' : 'disabled');?>/> <label class="b-check__label b-check__label_fontsize_13" >Р’С…РѕРґ РЅР° СЃС‚СЂР°РЅРёС†Сѓ &laquo;Р¤РёРЅР°РЅСЃС‹&raquo; &mdash; С‚РѕР»СЊРєРѕ С‡РµСЂРµР· РєРѕРґ РёР· СЃРјСЃ-СЃРѕРѕР±С‰РµРЅРёСЏ</label>
         </div>*/ ?>
  
         <a name="safety_password"></a>
-		<h3 class="b-layout__h3 b-layout__h3_padtop_30">Подтверждение изменений</h3>
+		<h3 class="b-layout__h3 b-layout__h3_padtop_30">РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РёР·РјРµРЅРµРЅРёР№</h3>
 		<div class="b-form b-form_padbot_40 b-form_width_full">
-			<label class="b-form__name b-form__name_fontsize_13 b-form__name_padbot_10">Для сохранения внесенных изменений введите ваш текущий пароль:</label>
+			<label class="b-form__name b-form__name_fontsize_13 b-form__name_padbot_10">Р”Р»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ РІРЅРµСЃРµРЅРЅС‹С… РёР·РјРµРЅРµРЅРёР№ РІРІРµРґРёС‚Рµ РІР°С€ С‚РµРєСѓС‰РёР№ РїР°СЂРѕР»СЊ:</label>
 			<div class="b-input b-input_width_160">
 				<input id="password" class="b-input__text b-input__text_width_160" type="password" name="password" onKeyPress="return submitEnter(this,event)" />
 			</div>
@@ -225,7 +225,7 @@ if($_SESSION['info_msg']) {
                     <?=view_error($alert[3])?>
             <?php } ?>
 		</div>
-		<a class="b-button b-button_flat b-button_flat_green" onclick="safetyForm('f');" href="javascript:void(0)">Сохранить изменения</a>
+		<a class="b-button b-button_flat b-button_flat_green" onclick="safetyForm('f');" href="javascript:void(0)">РЎРѕС…СЂР°РЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ</a>
 </form>	
 </div>
 <div class="b-shadow b-shadow_zindex_11 b-shadow_center b-shadow_width_450" id="auth_popup" style="display:none"></div>

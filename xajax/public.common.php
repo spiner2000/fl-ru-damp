@@ -14,7 +14,7 @@ $xajax->register(XAJAX_FUNCTION, "GetPreview");
 $xajax->register(XAJAX_FUNCTION, "HideDizkonAdv");
 $xajax->register(XAJAX_FUNCTION, "getRelativeTU");
 
-// ×åðíîâèêè
+// Ð§ÐµÑ€Ð½Ð¾Ð²Ð¸ÐºÐ¸
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("SaveDraftProject", $_SERVER['DOCUMENT_ROOT'] . "/xajax/drafts.server.php"));
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("CheckDraftsProject", $_SERVER['DOCUMENT_ROOT'] . "/xajax/drafts.server.php"));
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("FillDraftForm", $_SERVER['DOCUMENT_ROOT'] . "/xajax/drafts.server.php"));

@@ -1,5 +1,5 @@
 <?
-// sawa: Не понял, где это используется. Если используется, то надо выкинуть обращения к file_exists()
+// sawa: РќРµ РїРѕРЅСЏР», РіРґРµ СЌС‚Рѕ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ. Р•СЃР»Рё РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ, С‚Рѕ РЅР°РґРѕ РІС‹РєРёРЅСѓС‚СЊ РѕР±СЂР°С‰РµРЅРёСЏ Рє file_exists()
   require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
   $user = __paramInit('string', 'user', NULL);
   $file = __paramInit('string', 'f', NULL);

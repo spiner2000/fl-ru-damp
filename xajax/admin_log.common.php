@@ -44,12 +44,12 @@ if (!$xajax) {
     $xajax->register( XAJAX_FUNCTION, new xajaxUserFunction('setUserBanForm', $_SERVER['DOCUMENT_ROOT'] . '/xajax/banned.server.php') );
     $xajax->register( XAJAX_FUNCTION, new xajaxUserFunction('setUserMassBanForm', $_SERVER['DOCUMENT_ROOT'] . '/xajax/banned.server.php') );
     
-    //êîììåíòàðèè
+    //ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¸
     $xajax->register( XAJAX_FUNCTION, new xajaxUserFunction('EditComment', $_SERVER['DOCUMENT_ROOT'] . '/xajax/comments.server.php') );
     $xajax->register( XAJAX_FUNCTION, new xajaxUserFunction('RateComment', $_SERVER['DOCUMENT_ROOT'] . '/xajax/comments.server.php') );
     $xajax->register( XAJAX_FUNCTION, new xajaxUserFunction('GetComment',  $_SERVER['DOCUMENT_ROOT'] . '/xajax/comments.server.php') );
     
-    // ïðåäóïðåæäåíèÿ
+    // Ð¿Ñ€ÐµÐ´ÑƒÐ¿Ñ€ÐµÐ¶Ð´ÐµÐ½Ð¸Ñ
     $xajax->register( XAJAX_FUNCTION, new xajaxUserFunction('setUserWarnForm', $_SERVER['DOCUMENT_ROOT'] . '/xajax/banned.server.php') );
     $xajax->register( XAJAX_FUNCTION, new xajaxUserFunction('updateUserWarn', $_SERVER['DOCUMENT_ROOT'] . '/xajax/banned.server.php') );
 }

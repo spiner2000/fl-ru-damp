@@ -43,8 +43,8 @@ if ($result == 'VERIFIED') {
 		require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
 	    $account = new account();
     	$account->GetInfo( $_POST['ok_f_uid'] );
-	    $descr = "OKPAY #".$_POST['ok_txn_id']." на кошелек ".$_POST['ok_receiver_wallet']." OKPAYID: ".$_POST['ok_payer_id']." сумма - ".$_POST['ok_item_1_price'].",";
-    	$descr .= " обработан ".$_POST['ok_txn_datetime'].", счет - ".$_POST['ok_f_bill_id'];
+	    $descr = "OKPAY #".$_POST['ok_txn_id']." РЅР° РєРѕС€РµР»РµРє ".$_POST['ok_receiver_wallet']." OKPAYID: ".$_POST['ok_payer_id']." СЃСѓРјРјР° - ".$_POST['ok_item_1_price'].",";
+    	$descr .= " РѕР±СЂР°Р±РѕС‚Р°РЅ ".$_POST['ok_txn_datetime'].", СЃС‡РµС‚ - ".$_POST['ok_f_bill_id'];
 		$account->deposit($op_id, $_POST['ok_f_bill_id'], $_POST['ok_item_1_price'], $descr, 14, $_POST['ok_item_1_price'], 12);
 	}
 		

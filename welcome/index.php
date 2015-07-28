@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Мастер регистрации
+ * РњР°СЃС‚РµСЂ СЂРµРіРёСЃС‚СЂР°С†РёРё
  */
 
 define('IS_WELCOME_WIZARD', 1);
@@ -23,14 +23,14 @@ $module->setBasePath(dirname(__FILE__));
 $class_name = ucfirst($controller_name) . "Controller";
 if (class_exists($class_name)) {
    $controller = new $class_name($controller_name, $module);
-   $controller->init($action); // инициализация контролера
+   $controller->init($action); // РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєРѕРЅС‚СЂРѕР»РµСЂР°
    $controller->run($action); 
 } else {
    header("Location: /404.php"); 
    exit;
 }
 
-//@todo: Отключает лишнюю обертку в template3
+//@todo: РћС‚РєР»СЋС‡Р°РµС‚ Р»РёС€РЅСЋСЋ РѕР±РµСЂС‚РєСѓ РІ template3
 $stretch_page = true;
 $registration_page = $registration_folder = true;
 $footer_registration = true;

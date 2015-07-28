@@ -1,6 +1,6 @@
 <? /*if($template == 'template2.php') { ?>
  	
- 	<h1 class="b-page__title">Настройки</h1>
+ 	<h1 class="b-page__title">РќР°СЃС‚СЂРѕР№РєРё</h1>
  	<div class="acc-settings">
  	  <? include($fpath."info2.php") ?>
  	  <? include($fpath."usermenu.php") ?>
@@ -12,7 +12,7 @@
   } */
 ?>
 <div class="page-profile">
-    <h1 class="b-page__title">Настройки профиля</h1>
+    <h1 class="b-page__title">РќР°СЃС‚СЂРѕР№РєРё РїСЂРѕС„РёР»СЏ</h1>
     
     <?php if ($alert_message): ?>
         <div class="b-fon b-fon_inline-block b-fon_padbot_20">

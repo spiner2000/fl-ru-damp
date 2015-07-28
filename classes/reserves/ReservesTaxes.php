@@ -3,11 +3,11 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/reserves/BaseModel.php');
 
 /**
- * Коммисия для заказчика по резерву средств
+ * РљРѕРјРјРёСЃРёСЏ РґР»СЏ Р·Р°РєР°Р·С‡РёРєР° РїРѕ СЂРµР·РµСЂРІСѓ СЃСЂРµРґСЃС‚РІ
  */
 class ReservesTaxes extends BaseModel
 {
-    const CACHE_TTL     = 604800;//1 неделя
+    const CACHE_TTL     = 604800;//1 РЅРµРґРµР»СЏ
     
     private $TABLE = 'reserves_taxes';
     
@@ -21,7 +21,7 @@ class ReservesTaxes extends BaseModel
     
     
     /**
-     * Получить все варианты коммисии
+     * РџРѕР»СѓС‡РёС‚СЊ РІСЃРµ РІР°СЂРёР°РЅС‚С‹ РєРѕРјРјРёСЃРёРё
      * 
      * @return array
      */
@@ -34,8 +34,8 @@ class ReservesTaxes extends BaseModel
     
     
     /**
-     * Получить значение коммисии
-     * для указанной суммы резерва
+     * РџРѕР»СѓС‡РёС‚СЊ Р·РЅР°С‡РµРЅРёРµ РєРѕРјРјРёСЃРёРё
+     * РґР»СЏ СѓРєР°Р·Р°РЅРЅРѕР№ СЃСѓРјРјС‹ СЂРµР·РµСЂРІР°
      * 
      * @param init $price
      * @return double
@@ -61,7 +61,7 @@ class ReservesTaxes extends BaseModel
     
     
     /**
-     * Получить сумму с коммисией
+     * РџРѕР»СѓС‡РёС‚СЊ СЃСѓРјРјСѓ СЃ РєРѕРјРјРёСЃРёРµР№
      * 
      * @param type $price
      * @return type

@@ -1,10 +1,10 @@
 <?
 /**
- * Класс для хранения и обработки изменения логина пользователя
+ * РљР»Р°СЃСЃ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ Рё РѕР±СЂР°Р±РѕС‚РєРё РёР·РјРµРЅРµРЅРёСЏ Р»РѕРіРёРЅР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
  */
 class login_change {
 	/**
-	 * id изменения
+	 * id РёР·РјРµРЅРµРЅРёСЏ
 	 *
 	 * @var integer
 	 */
@@ -16,34 +16,34 @@ class login_change {
 	 */
 	public $user_id;
 	/**
-	 * Новый логин
+	 * РќРѕРІС‹Р№ Р»РѕРіРёРЅ
 	 *
 	 * @var char
 	 */
 	public $new_login;
 	/**
-	 * Старый логин
+	 * РЎС‚Р°СЂС‹Р№ Р»РѕРіРёРЅ
 	 *
 	 * @var char
 	 */
 	public $old_login;
 	
 	/**
-	 * Хранить ли старый логин
+	 * РҐСЂР°РЅРёС‚СЊ Р»Рё СЃС‚Р°СЂС‹Р№ Р»РѕРіРёРЅ
 	 *
 	 * @var boolean
 	 */
 	public $save_old;
 	
 	/**
-	 * ID операции в таблице account_operations
+	 * ID РѕРїРµСЂР°С†РёРё РІ С‚Р°Р±Р»РёС†Рµ account_operations
 	 *
 	 * @var boolean
 	 */
 	public $operation_id;
 	
 	/**
-	 * Дата создания
+	 * Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ
 	 *
 	 * @var string
 	 */
@@ -54,10 +54,10 @@ class login_change {
 	const OP_CODE = 70;
 	
 	/**
-	 * Изменение логина юзера. Перед вызовом необходимо проинициализировать члены класса
+	 * РР·РјРµРЅРµРЅРёРµ Р»РѕРіРёРЅР° СЋР·РµСЂР°. РџРµСЂРµРґ РІС‹Р·РѕРІРѕРј РЅРµРѕР±С…РѕРґРёРјРѕ РїСЂРѕРёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ С‡Р»РµРЅС‹ РєР»Р°СЃСЃР°
 	 * old_login, new_login, save_old
 	 * 
-	 * @param string $error	возвращает сообщение об ошибке	
+	 * @param string $error	РІРѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ	
 	 * @return 0
 	 * @see classes/db_access#Add($error, $return_id)
 	 */
@@ -67,16 +67,16 @@ class login_change {
 		require_once ABS_PATH.'/classes/users.php';
 		$user = new users();
 		$this->user_id = $user->GetUid($error, $this->old_login);
-		if (!$this->user_id) {$error = "Пользователь не найден!"; return 0;}
+		if (!$this->user_id) {$error = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РЅР°Р№РґРµРЅ!"; return 0;}
 		$new_user = $user->GetUid($error, $this->new_login);
-		if ($new_user) {$error = "Логин занят!"; return 0;}
+		if ($new_user) {$error = "Р›РѕРіРёРЅ Р·Р°РЅСЏС‚!"; return 0;}
 		if ($this->save_old){
 			require_once ABS_PATH.'/classes/users_old.php';
 			require_once ABS_PATH.'/classes/account.php';
 			$account = new account();
 			$tr_id = $account->start_transaction($this->user_id);
 			$id = 0;
-			$error = $account->Buy($id, $tr_id, login_change::OP_CODE, $this->user_id, "Изменеие логина", "Изменение логина");
+			$error = $account->Buy($id, $tr_id, login_change::OP_CODE, $this->user_id, "РР·РјРµРЅРµРёРµ Р»РѕРіРёРЅР°", "РР·РјРµРЅРµРЅРёРµ Р»РѕРіРёРЅР°");
 			if ($error) return 0;
 			$this->operation_id = $id;
 			$users_old = new users_old();
@@ -98,7 +98,7 @@ class login_change {
             
     		$CFile = new CFile();
     		if (!$CFile->MoveDir($this->new_login, $this->old_login)) {
-    			$error = "Директория не создана! $this->new_login, $this->old_login";
+    			$error = "Р”РёСЂРµРєС‚РѕСЂРёСЏ РЅРµ СЃРѕР·РґР°РЅР°! $this->new_login, $this->old_login";
     			if ($this->operation_id){
     				$account->Del($this->user_id,$this->operation_id);
     			}
@@ -112,10 +112,10 @@ class login_change {
 	}
 	
 	/**
-	 * Выбирает запись из login_change по полю old_login и устанавливает переменные класса.
+	 * Р’С‹Р±РёСЂР°РµС‚ Р·Р°РїРёСЃСЊ РёР· login_change РїРѕ РїРѕР»СЋ old_login Рё СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РїРµСЂРµРјРµРЅРЅС‹Рµ РєР»Р°СЃСЃР°.
 	 * 
 	 * @param  string $sOldLogin old_login
-	 * @return bool true - успех, false - провал
+	 * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
 	 */
 	function GetRowByOldLogin( $sOldLogin = '' ) {
 	    global $DB;
@@ -136,16 +136,16 @@ class login_change {
 	}
 	
 	/**
-	 * Поиск по смене логина:
-	 * 1. по конкретному логину.
-	 * 2. по конкретному логину в конкретную дату.
-	 * 3. все смены логина за указанный период.
+	 * РџРѕРёСЃРє РїРѕ СЃРјРµРЅРµ Р»РѕРіРёРЅР°:
+	 * 1. РїРѕ РєРѕРЅРєСЂРµС‚РЅРѕРјСѓ Р»РѕРіРёРЅСѓ.
+	 * 2. РїРѕ РєРѕРЅРєСЂРµС‚РЅРѕРјСѓ Р»РѕРіРёРЅСѓ РІ РєРѕРЅРєСЂРµС‚РЅСѓСЋ РґР°С‚Сѓ.
+	 * 3. РІСЃРµ СЃРјРµРЅС‹ Р»РѕРіРёРЅР° Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ.
 	 * 
-	 * @param  string $login опционально. старый логин при поиске по логину.
-	 * @param  string $date опционально. дата смены логина по логину.
-	 * @param  string $ds опционально. начальная дата при поиске за период.
-	 * @param  string $de опционально. конечная дата при поиске за период.
-	 * @return array массив записей.
+	 * @param  string $login РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. СЃС‚Р°СЂС‹Р№ Р»РѕРіРёРЅ РїСЂРё РїРѕРёСЃРєРµ РїРѕ Р»РѕРіРёРЅСѓ.
+	 * @param  string $date РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. РґР°С‚Р° СЃРјРµРЅС‹ Р»РѕРіРёРЅР° РїРѕ Р»РѕРіРёРЅСѓ.
+	 * @param  string $ds РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. РЅР°С‡Р°Р»СЊРЅР°СЏ РґР°С‚Р° РїСЂРё РїРѕРёСЃРєРµ Р·Р° РїРµСЂРёРѕРґ.
+	 * @param  string $de РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. РєРѕРЅРµС‡РЅР°СЏ РґР°С‚Р° РїСЂРё РїРѕРёСЃРєРµ Р·Р° РїРµСЂРёРѕРґ.
+	 * @return array РјР°СЃСЃРёРІ Р·Р°РїРёСЃРµР№.
 	 */
 	function getAllForAdmin( $login = '', $date = '', $ds = '', $de = '' ) {
 	    global $DB;
@@ -163,10 +163,10 @@ class login_change {
 	}
 	
 	/**
-	 * Заглушка для вызова в account::Del();
+	 * Р—Р°РіР»СѓС€РєР° РґР»СЏ РІС‹Р·РѕРІР° РІ account::Del();
 	 * 
 	 * @param integer $uid	UID	
-	 * @param integer $opid идентификатор операции
+	 * @param integer $opid РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРїРµСЂР°С†РёРё
 	 * @return 0
 	 */
 	function DelByOpid($uid, $opid){
@@ -174,33 +174,33 @@ class login_change {
 	}
 	
 	/**
-	 * Заглушка для вызова в account::GetHistoryInfo();
+	 * Р—Р°РіР»СѓС€РєР° РґР»СЏ РІС‹Р·РѕРІР° РІ account::GetHistoryInfo();
 	 * 
-	 * @param  integer $bill_id идентификатор операции
-	 * @param  integer $uid ID Пользователя
-	 * @param  integer $mode 1:история юзера; 2:история юзера для админа; 3:подарок
-	 * @return string текстовое описание операции
+	 * @param  integer $bill_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРїРµСЂР°С†РёРё
+	 * @param  integer $uid ID РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param  integer $mode 1:РёСЃС‚РѕСЂРёСЏ СЋР·РµСЂР°; 2:РёСЃС‚РѕСЂРёСЏ СЋР·РµСЂР° РґР»СЏ Р°РґРјРёРЅР°; 3:РїРѕРґР°СЂРѕРє
+	 * @return string С‚РµРєСЃС‚РѕРІРѕРµ РѕРїРёСЃР°РЅРёРµ РѕРїРµСЂР°С†РёРё
 	 */
 	function GetOrderInfo( $bill_id, $uid, $mode ) {
 	    return '';
 	}
 	
 	/**
-	 * Заглушка для вызова в account::Blocked();
+	 * Р—Р°РіР»СѓС€РєР° РґР»СЏ РІС‹Р·РѕРІР° РІ account::Blocked();
 	 * 
-	 * @param  integer $uid ID Пользователя Который производит блокировку
-	 * @param  integer $opid идентификатор типа операции
-	 * @return string сообщение об ошибке
+	 * @param  integer $uid ID РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ РљРѕС‚РѕСЂС‹Р№ РїСЂРѕРёР·РІРѕРґРёС‚ Р±Р»РѕРєРёСЂРѕРІРєСѓ
+	 * @param  integer $opid РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚РёРїР° РѕРїРµСЂР°С†РёРё
+	 * @return string СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function BlockedByOpid( $uid, $opid ) {
 	    return '';
 	}
 	
     /**
-     * Заглушка для вызова в account::unBlocked();
+     * Р—Р°РіР»СѓС€РєР° РґР»СЏ РІС‹Р·РѕРІР° РІ account::unBlocked();
      * 
-     * @param integer $uid ИД заблокированной записи 
-	 * @param integer $opid ИД заблокированной операции
+     * @param integer $uid РР” Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅРѕР№ Р·Р°РїРёСЃРё 
+	 * @param integer $opid РР” Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅРѕР№ РѕРїРµСЂР°С†РёРё
      */
     function unBlockedByOpid( $uid, $opid ) {
         return true;

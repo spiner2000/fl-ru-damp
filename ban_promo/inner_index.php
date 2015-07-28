@@ -6,7 +6,7 @@ if ( !defined('IS_ACCESS_PAGE') ) {
 ?>
 
 <div class="b-page">
-    <h1 class="b-page__title">Статистика баннера <?= $bpromo->info['name']?></h1>
+    <h1 class="b-page__title">РЎС‚Р°С‚РёСЃС‚РёРєР° Р±Р°РЅРЅРµСЂР° <?= $bpromo->info['name']?></h1>
     
     <div class="b-page__txt b-page__txt_fontsize_15 b-page__txt_padbot_10">
         <table>
@@ -48,11 +48,11 @@ if ( !defined('IS_ACCESS_PAGE') ) {
                 </td>
             </tr>
             <tr>
-                <td style="text-align:right"><div class="b-layout__txt b-layout__txt_padbot_10"><strong>Всего показов:</strong></div></td>
+                <td style="text-align:right"><div class="b-layout__txt b-layout__txt_padbot_10"><strong>Р’СЃРµРіРѕ РїРѕРєР°Р·РѕРІ:</strong></div></td>
                 <td><div class="b-layout__txt b-layout__txt_padleft_10"><?=intval($count['views'])?></div></td>
             </tr>
             <tr>
-                <td style="text-align:right"><div class="b-layout__txt b-layout__txt_padbot_5"><strong>Всего кликов:</strong></div></td>
+                <td style="text-align:right"><div class="b-layout__txt b-layout__txt_padbot_5"><strong>Р’СЃРµРіРѕ РєР»РёРєРѕРІ:</strong></div></td>
                 <td><div class="b-layout__txt b-layout__txt_padleft_10"><?=intval($count['clicks'])?></div></td>
             </tr>
         </table>
@@ -61,9 +61,9 @@ if ( !defined('IS_ACCESS_PAGE') ) {
         <br><br>
         <table border="1">
             <tr>
-                <td width="100">&nbsp;<strong>Дата</strong></td>
-                <td width="50">&nbsp;<strong>Показы</strong></td>
-                <td width="50">&nbsp;<strong>Клики</strong></td>
+                <td width="100">&nbsp;<strong>Р”Р°С‚Р°</strong></td>
+                <td width="50">&nbsp;<strong>РџРѕРєР°Р·С‹</strong></td>
+                <td width="50">&nbsp;<strong>РљР»РёРєРё</strong></td>
             </tr>
             <? foreach($stats as $stat ) { ?>
                 <tr>

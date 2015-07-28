@@ -6,7 +6,7 @@ require_once(__DIR__ . '/ReservesPayback.php');
 
 
 /**
- * Класс для работы с арбитражем
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р°СЂР±РёС‚СЂР°Р¶РµРј
  */
 class ReservesArbitrage extends BaseModel {
     
@@ -17,9 +17,9 @@ class ReservesArbitrage extends BaseModel {
     const STATUS_CLOSED = 1;
     
     /**
-     * Создание новой заявки на арбитраж.
-     * @param type $data Массив необходимых данных по столбцам таблицы reserves_arbitrage
-     * @return array Массив арбитража при успехе, либо пустой массив
+     * РЎРѕР·РґР°РЅРёРµ РЅРѕРІРѕР№ Р·Р°СЏРІРєРё РЅР° Р°СЂР±РёС‚СЂР°Р¶.
+     * @param type $data РњР°СЃСЃРёРІ РЅРµРѕР±С…РѕРґРёРјС‹С… РґР°РЅРЅС‹С… РїРѕ СЃС‚РѕР»Р±С†Р°Рј С‚Р°Р±Р»РёС†С‹ reserves_arbitrage
+     * @return array РњР°СЃСЃРёРІ Р°СЂР±РёС‚СЂР°Р¶Р° РїСЂРё СѓСЃРїРµС…Рµ, Р»РёР±Рѕ РїСѓСЃС‚РѕР№ РјР°СЃСЃРёРІ
      */
     public function createArbitrage($data) 
     {
@@ -34,9 +34,9 @@ class ReservesArbitrage extends BaseModel {
     }
     
     /**
-     * Удаляет открытый арбитраж
-     * @param type $reserve_id ИД резерва
-     * @return bool true если успешно
+     * РЈРґР°Р»СЏРµС‚ РѕС‚РєСЂС‹С‚С‹Р№ Р°СЂР±РёС‚СЂР°Р¶
+     * @param type $reserve_id РР” СЂРµР·РµСЂРІР°
+     * @return bool true РµСЃР»Рё СѓСЃРїРµС€РЅРѕ
      */
     public function removeArbitrage($reserve_id) {
         if ($this->is_allowed()) {
@@ -48,10 +48,10 @@ class ReservesArbitrage extends BaseModel {
     }
     
     /**
-     * Закрывает арбитраж
-     * @param array $reserve_data данные резерва
-     * @param array data Массив данных
-     * @return bool true если успешно
+     * Р—Р°РєСЂС‹РІР°РµС‚ Р°СЂР±РёС‚СЂР°Р¶
+     * @param array $reserve_data РґР°РЅРЅС‹Рµ СЂРµР·РµСЂРІР°
+     * @param array data РњР°СЃСЃРёРІ РґР°РЅРЅС‹С…
+     * @return bool true РµСЃР»Рё СѓСЃРїРµС€РЅРѕ
      */
     public function closeArbitrage($reserve_data, $data) 
     {
@@ -86,7 +86,7 @@ class ReservesArbitrage extends BaseModel {
             if($data['price_back'] > 0) 
             {
                 $backStatusDone = $reserveInstance->changeBackStatus(ReservesModel::SUBSTATUS_NEW);
-                //Ставим задачу на возврат средств в очередь
+                //РЎС‚Р°РІРёРј Р·Р°РґР°С‡Сѓ РЅР° РІРѕР·РІСЂР°С‚ СЃСЂРµРґСЃС‚РІ РІ РѕС‡РµСЂРµРґСЊ
                 if($backStatusDone && $reserve_data['invoice_id'] > 0)
                 {
                     ReservesPayback::getInstance()->requestPayback(
@@ -108,7 +108,7 @@ class ReservesArbitrage extends BaseModel {
     
     
     /**
-     * Проверяет доступность пользователю управления арбитражами
+     * РџСЂРѕРІРµСЂСЏРµС‚ РґРѕСЃС‚СѓРїРЅРѕСЃС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ СѓРїСЂР°РІР»РµРЅРёСЏ Р°СЂР±РёС‚СЂР°Р¶Р°РјРё
      */
     private function is_allowed() 
     {

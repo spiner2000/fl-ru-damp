@@ -10,7 +10,7 @@ class BillPayback {
     
     protected static $instance;
     
-    const PAYBACK_CAUSE     = 'Возврат неиcпользованных средств';
+    const PAYBACK_CAUSE     = 'Р’РѕР·РІСЂР°С‚ РЅРµРёcРїРѕР»СЊР·РѕРІР°РЅРЅС‹С… СЃСЂРµРґСЃС‚РІ';
     
     const STATUS_NEW        = -1;
     const STATUS_SUCCESS    = 0;
@@ -73,7 +73,7 @@ class BillPayback {
     
     
     /**
-     * Вызвать запрос к сервису на возврат средств
+     * Р’С‹Р·РІР°С‚СЊ Р·Р°РїСЂРѕСЃ Рє СЃРµСЂРІРёСЃСѓ РЅР° РІРѕР·РІСЂР°С‚ СЃСЂРµРґСЃС‚РІ
      * 
      * @param int $id
      * @return boolean
@@ -87,15 +87,15 @@ class BillPayback {
             WHERE id = ?i
         ",$id);
         
-        //Если запроса не существует    
+        //Р•СЃР»Рё Р·Р°РїСЂРѕСЃР° РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚    
         if(!$paybackData) 
             throw new BillPaybackException(BillPaybackException::PAYBACK_NOTFOUND);
         
         $is_timeout = $this->isTimeout($paybackData['cnt'], $paybackData['last']);
-        //Таймаут еще не вышел нужно поставить в очередь
+        //РўР°Р№РјР°СѓС‚ РµС‰Рµ РЅРµ РІС‹С€РµР» РЅСѓР¶РЅРѕ РїРѕСЃС‚Р°РІРёС‚СЊ РІ РѕС‡РµСЂРµРґСЊ
         if(!$is_timeout) return false;
         
-        //Превышен лимит прерываем цикл для этого запроса
+        //РџСЂРµРІС‹С€РµРЅ Р»РёРјРёС‚ РїСЂРµСЂС‹РІР°РµРј С†РёРєР» РґР»СЏ СЌС‚РѕРіРѕ Р·Р°РїСЂРѕСЃР°
         if($is_timeout === -1) 
             throw new BillPaybackException(BillPaybackException::REQUEST_LIMIT);
         
@@ -104,7 +104,7 @@ class BillPayback {
         
         try
         {
-            //Готовим запрос
+            //Р“РѕС‚РѕРІРёРј Р·Р°РїСЂРѕСЃ
             $returnPaymentRequest = new ReturnPaymentRequest();
             $returnPaymentRequest->setShopId(yandex_kassa::SHOPID_DEPOSIT);
             $returnPaymentRequest->setClientOrderId($paybackData['id']);
@@ -112,17 +112,17 @@ class BillPayback {
             $returnPaymentRequest->setCurrency($this->getCurrency());
             $returnPaymentRequest->setCause(self::PAYBACK_CAUSE);
             $returnPaymentRequest->setAmount(number_format($paybackData['price'], 2, '.', ''));
-            //Делаем запрос к API сервиса
+            //Р”РµР»Р°РµРј Р·Р°РїСЂРѕСЃ Рє API СЃРµСЂРІРёСЃР°
             $result = $this->getApiFacade()->returnPayment($returnPaymentRequest);
             
-            //Выставляем статус и код ошибки
+            //Р’С‹СЃС‚Р°РІР»СЏРµРј СЃС‚Р°С‚СѓСЃ Рё РєРѕРґ РѕС€РёР±РєРё
             $data['status'] = $result->getStatus();
             $data['error'] = (!$result->isSuccess())?$result->getError():0;
         }
         catch(Exception $e)
         {
-            //В случае аварии при транспорте API 
-            //пишем в лог и просим поставить задачу в очередь
+            //Р’ СЃР»СѓС‡Р°Рµ Р°РІР°СЂРёРё РїСЂРё С‚СЂР°РЅСЃРїРѕСЂС‚Рµ API 
+            //РїРёС€РµРј РІ Р»РѕРі Рё РїСЂРѕСЃРёРј РїРѕСЃС‚Р°РІРёС‚СЊ Р·Р°РґР°С‡Сѓ РІ РѕС‡РµСЂРµРґСЊ
             $data['status'] = self::STATUS_FAIL;
             $data['error'] = 10000 + intval($e->getCode());
             $this->db()->update($this->TABLE, $data,'id = ?i', $paybackData['id']);
@@ -132,21 +132,21 @@ class BillPayback {
         $this->db()->update($this->TABLE, $data, 'id = ?i', $result->getClientOrderId());
         
         
-        //Ошибки при которых ставить в очередь нет смысла
+        //РћС€РёР±РєРё РїСЂРё РєРѕС‚РѕСЂС‹С… СЃС‚Р°РІРёС‚СЊ РІ РѕС‡РµСЂРµРґСЊ РЅРµС‚ СЃРјС‹СЃР»Р°
         if(!$result->isSuccess() && in_array($result->getError(), array(403, 404, 405, 412, 413, 414, 417)))
             throw new BillPaybackException(BillPaybackException::API_CRITICAL_FAIL, $result->getError()); 
         
         
-        //Если статус еще не оплачен то нужно 
-        //повторить и поставить задачу в очередь
+        //Р•СЃР»Рё СЃС‚Р°С‚СѓСЃ РµС‰Рµ РЅРµ РѕРїР»Р°С‡РµРЅ С‚Рѕ РЅСѓР¶РЅРѕ 
+        //РїРѕРІС‚РѕСЂРёС‚СЊ Рё РїРѕСЃС‚Р°РІРёС‚СЊ Р·Р°РґР°С‡Сѓ РІ РѕС‡РµСЂРµРґСЊ
         return $data['error'] == 0;
     }
 
 
     /**
-     * Запрос на возврат средств
-     * или обновить по возможности существующий запрос
-     * Так же ставит в очередь
+     * Р—Р°РїСЂРѕСЃ РЅР° РІРѕР·РІСЂР°С‚ СЃСЂРµРґСЃС‚РІ
+     * РёР»Рё РѕР±РЅРѕРІРёС‚СЊ РїРѕ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ Р·Р°РїСЂРѕСЃ
+     * РўР°Рє Р¶Рµ СЃС‚Р°РІРёС‚ РІ РѕС‡РµСЂРµРґСЊ
      * 
      * @param int $src_id
      * @param int $invoice_id
@@ -189,7 +189,7 @@ class BillPayback {
             
         if(!$id) throw new BillPaybackException(BillPaybackException::INSERT_FAIL_MSG);
         
-        //запускаем в очередь на обработку
+        //Р·Р°РїСѓСЃРєР°РµРј РІ РѕС‡РµСЂРµРґСЊ РЅР° РѕР±СЂР°Р±РѕС‚РєСѓ
         $this->db()->query("SELECT pgq.insert_event('payback', 'payback', ?)", 
                 http_build_query(array('id' => $id)));
     }
@@ -197,8 +197,8 @@ class BillPayback {
     
 
     /**
-     * Рекомендуется следующий режим повтора: первый повтор через 1 минуту, 
-     * следующие три с промежутком в 5 минут, далее не чаще чем раз в 30 минут.
+     * Р РµРєРѕРјРµРЅРґСѓРµС‚СЃСЏ СЃР»РµРґСѓСЋС‰РёР№ СЂРµР¶РёРј РїРѕРІС‚РѕСЂР°: РїРµСЂРІС‹Р№ РїРѕРІС‚РѕСЂ С‡РµСЂРµР· 1 РјРёРЅСѓС‚Сѓ, 
+     * СЃР»РµРґСѓСЋС‰РёРµ С‚СЂРё СЃ РїСЂРѕРјРµР¶СѓС‚РєРѕРј РІ 5 РјРёРЅСѓС‚, РґР°Р»РµРµ РЅРµ С‡Р°С‰Рµ С‡РµРј СЂР°Р· РІ 30 РјРёРЅСѓС‚.
      */
     private function isTimeout($cnt, $timeString)
     {
@@ -215,7 +215,7 @@ class BillPayback {
 
 
     /**
-     * Создаем синглтон
+     * РЎРѕР·РґР°РµРј СЃРёРЅРіР»С‚РѕРЅ
      * @return object
      */
     public static function getInstance() 

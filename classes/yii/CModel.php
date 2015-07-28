@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Class ÑModel
+ * Class Ð¡Model
  * 
- * Áàçîâûé êëàññ ìîäåëè äàííûõ
+ * Ð‘Ð°Ð·Ð¾Ð²Ñ‹Ð¹ ÐºÐ»Ð°ÑÑ Ð¼Ð¾Ð´ÐµÐ»Ð¸ Ð´Ð°Ð½Ð½Ñ‹Ñ…
  */
 abstract class CModel 
 {
     /**
-     * Ïàðàìåòðû ïàãèíàöèè
+     * ÐŸÐ°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹ Ð¿Ð°Ð³Ð¸Ð½Ð°Ñ†Ð¸Ð¸
      * @var int
      */
     protected $limit = 0;
@@ -16,7 +16,7 @@ abstract class CModel
     
     
     /**
-     * Óñòàíîâèòü ïàðàìåòðû ïàãèíàöèè
+     * Ð£ÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹ Ð¿Ð°Ð³Ð¸Ð½Ð°Ñ†Ð¸Ð¸
      * 
      * @param int $limit
      * @param int $page
@@ -33,7 +33,7 @@ abstract class CModel
     
     
     /**
-     * Äîñòðîèòü SQL çàïðîñ îãðàíè÷åíèåì íà êîë-âî è ñìåùåíèå
+     * Ð”Ð¾ÑÑ‚Ñ€Ð¾Ð¸Ñ‚ÑŒ SQL Ð·Ð°Ð¿Ñ€Ð¾Ñ Ð¾Ð³Ñ€Ð°Ð½Ð¸Ñ‡ÐµÐ½Ð¸ÐµÐ¼ Ð½Ð° ÐºÐ¾Ð»-Ð²Ð¾ Ð¸ ÑÐ¼ÐµÑ‰ÐµÐ½Ð¸Ðµ
      * 
      * @param string $sql
      * @return string
@@ -60,8 +60,8 @@ abstract class CModel
     
     
     /**
-     * Ñîçäàåì ñàìè ñåáÿ
-     * @return ÑModel
+     * Ð¡Ð¾Ð·Ð´Ð°ÐµÐ¼ ÑÐ°Ð¼Ð¸ ÑÐµÐ±Ñ
+     * @return Ð¡Model
      */
     public static function model(array $options = array()) 
     {

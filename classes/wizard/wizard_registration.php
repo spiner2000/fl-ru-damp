@@ -5,7 +5,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/classes/wizard/step_employer.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/wizard/step_freelancer.php';
 
 /**
- * Класс для работы с мастером регистрации
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РјР°СЃС‚РµСЂРѕРј СЂРµРіРёСЃС‚СЂР°С†РёРё
  *  
  */
 class wizard_registration extends wizard
@@ -14,8 +14,8 @@ class wizard_registration extends wizard
     const REG_EMP_ID = 1;
     
     /**
-     * Установка роли при прохождении мастера 
-     * @param type $role    1 - работодатель, 2 - фрилансер
+     * РЈСЃС‚Р°РЅРѕРІРєР° СЂРѕР»Рё РїСЂРё РїСЂРѕС…РѕР¶РґРµРЅРёРё РјР°СЃС‚РµСЂР° 
+     * @param type $role    1 - СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ, 2 - С„СЂРёР»Р°РЅСЃРµСЂ
      * @return type 
      */
     public function setRole($role) {
@@ -23,7 +23,7 @@ class wizard_registration extends wizard
     }
     
     /**
-     * Возвращаем текующую роль из куки
+     * Р’РѕР·РІСЂР°С‰Р°РµРј С‚РµРєСѓСЋС‰СѓСЋ СЂРѕР»СЊ РёР· РєСѓРєРё
      * @return type 
      */
     public function getRole() {

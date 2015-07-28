@@ -28,10 +28,10 @@ function drawStars($mode, $id) {
 <script type="text/javascript">
     var opinion_max_length  = <?php echo opinions::$opinion_max_length ?>;
     var comment_max_length  = <?php echo opinions::$comment_max_length ?>;
-    var opinion_error_limit = '<? print(ref_scr(view_error('Èñ÷åðïàí ëèìèò ñèìâîëîâ äëÿ ïîëÿ (??? ñèìâîëîâ)'))); ?>';
-    var opinion_error_empty = '<? print(ref_scr(view_error('Ïîëå íå äîëæíî áûòü ïóñòûì!'))); ?>';
-    var opinion_error_rating = '<? print(ref_scr(view_error('Âûáåðèòå õàðàêòåð ìíåíèÿ.'))); ?>';
-    var comment_error_empty = '<? print(ref_scr(view_error('Êîììåíòàðèé íå äîëæåí áûòü ïóñòûì!'))); ?>';
+    var opinion_error_limit = '<? print(ref_scr(view_error('Ð˜ÑÑ‡ÐµÑ€Ð¿Ð°Ð½ Ð»Ð¸Ð¼Ð¸Ñ‚ ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð² Ð´Ð»Ñ Ð¿Ð¾Ð»Ñ (??? ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð²)'))); ?>';
+    var opinion_error_empty = '<? print(ref_scr(view_error('ÐŸÐ¾Ð»Ðµ Ð½Ðµ Ð´Ð¾Ð»Ð¶Ð½Ð¾ Ð±Ñ‹Ñ‚ÑŒ Ð¿ÑƒÑÑ‚Ñ‹Ð¼!'))); ?>';
+    var opinion_error_rating = '<? print(ref_scr(view_error('Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ñ…Ð°Ñ€Ð°ÐºÑ‚ÐµÑ€ Ð¼Ð½ÐµÐ½Ð¸Ñ.'))); ?>';
+    var comment_error_empty = '<? print(ref_scr(view_error('ÐšÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¹ Ð½Ðµ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ Ð¿ÑƒÑÑ‚Ñ‹Ð¼!'))); ?>';
 </script>
 
 <? if ($ops_type == 'total') {
@@ -46,13 +46,13 @@ function drawStars($mode, $id) {
         include_once(dirname(__FILE__).'/tpl.advice-edit.php');
     } 
     
-} else { // ÍÅ ÑÁÐ ÎÒÇÛÂÛ?>
+} else { // ÐÐ• Ð¡Ð‘Ð  ÐžÐ¢Ð—Ð«Ð’Ð«?>
     <div id="messages_container">
         <? include_once(dirname(__FILE__).'/opinions/tpl.opinions.php');?>
     </div>
 
     <?
-    // Ñòðàíèöû
+    // Ð¡Ñ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹
     $pages = ceil($num_msgs / $blogspp);
     if ($pages > 1) {
         ?>
@@ -71,7 +71,7 @@ function drawStars($mode, $id) {
             else { ?>
                                                         <td class="box"><?= $i ?></td>
             <? }
-        } // Ñòðàíèöû çàêîí÷èëèñü ?></tr>
+        } // Ð¡Ñ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ Ð·Ð°ÐºÐ¾Ð½Ñ‡Ð¸Ð»Ð¸ÑÑŒ ?></tr>
                                         </table>
                                     </td>
                                     <td  style="width:19px">&nbsp;</td>

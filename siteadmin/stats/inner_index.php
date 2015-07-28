@@ -7,8 +7,8 @@
 ?>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
-	<td align="left"><strong>Статистика</strong></td>
-	<td align="right"><a href="/siteadmin/stats/charts.php">График</a></td>
+	<td align="left"><strong>РЎС‚Р°С‚РёСЃС‚РёРєР°</strong></td>
+	<td align="right"><a href="/siteadmin/stats/charts.php">Р“СЂР°С„РёРє</a></td>
 </tr>
 </table>
 <br>
@@ -59,41 +59,41 @@ for ($i = 0; $i < $forms_cnt; $i++){
 	$fdate = $fyear[$i] . "-". $fmnth[$i] ."-" .$fday[$i];
 	$tdate = $tyear[$i] . "-". $tmnth[$i] ."-" .$tday[$i];
 ?>
-с&nbsp;&nbsp;
+СЃ&nbsp;&nbsp;
 <input type="text" name="fday[]" size="2" maxlength="2" value="<?=$fday[$i]?>">
 <select name="fmnth[]">
-	<option value="1" <? if ($fmnth[$i] == 1) print "SELECTED"?>>января</option>
-	<option value="2" <? if ($fmnth[$i] == 2) print "SELECTED"?>>февраля</option>
-	<option value="3" <? if ($fmnth[$i] == 3) print "SELECTED"?>>марта</option>
-	<option value="4" <? if ($fmnth[$i] == 4) print "SELECTED"?>>апреля</option>
-	<option value="5" <? if ($fmnth[$i] == 5) print "SELECTED"?>>мая</option>
-	<option value="6" <? if ($fmnth[$i] == 6) print "SELECTED"?>>июня</option>
-	<option value="7" <? if ($fmnth[$i] == 7) print "SELECTED"?>>июля</option>
-	<option value="8" <? if ($fmnth[$i] == 8) print "SELECTED"?>>августа</option>
-	<option value="9" <? if ($fmnth[$i] == 9) print "SELECTED"?>>сентября</option>
-	<option value="10" <? if ($fmnth[$i] == 10) print "SELECTED"?>>октября</option>
-	<option value="11" <? if ($fmnth[$i] == 11) print "SELECTED"?>>ноября</option>
-	<option value="12" <? if ($fmnth[$i] == 12) print "SELECTED"?>>декабря</option>
+	<option value="1" <? if ($fmnth[$i] == 1) print "SELECTED"?>>СЏРЅРІР°СЂСЏ</option>
+	<option value="2" <? if ($fmnth[$i] == 2) print "SELECTED"?>>С„РµРІСЂР°Р»СЏ</option>
+	<option value="3" <? if ($fmnth[$i] == 3) print "SELECTED"?>>РјР°СЂС‚Р°</option>
+	<option value="4" <? if ($fmnth[$i] == 4) print "SELECTED"?>>Р°РїСЂРµР»СЏ</option>
+	<option value="5" <? if ($fmnth[$i] == 5) print "SELECTED"?>>РјР°СЏ</option>
+	<option value="6" <? if ($fmnth[$i] == 6) print "SELECTED"?>>РёСЋРЅСЏ</option>
+	<option value="7" <? if ($fmnth[$i] == 7) print "SELECTED"?>>РёСЋР»СЏ</option>
+	<option value="8" <? if ($fmnth[$i] == 8) print "SELECTED"?>>Р°РІРіСѓСЃС‚Р°</option>
+	<option value="9" <? if ($fmnth[$i] == 9) print "SELECTED"?>>СЃРµРЅС‚СЏР±СЂСЏ</option>
+	<option value="10" <? if ($fmnth[$i] == 10) print "SELECTED"?>>РѕРєС‚СЏР±СЂСЏ</option>
+	<option value="11" <? if ($fmnth[$i] == 11) print "SELECTED"?>>РЅРѕСЏР±СЂСЏ</option>
+	<option value="12" <? if ($fmnth[$i] == 12) print "SELECTED"?>>РґРµРєР°Р±СЂСЏ</option>
 </select>
 <input type="text" name="fyear[]" size="4" maxlength="4" value="<?=$fyear[$i]?>">&nbsp;&nbsp;
-по&nbsp;&nbsp;
+РїРѕ&nbsp;&nbsp;
 <input type="text" name="tday[]" size="2" maxlength="2" value="<?=$tday[$i]?>">
 <select name="tmnth[]">
-	<option value="1" <? if ($tmnth[$i] == 1) print "SELECTED"?>>января</option>
-	<option value="2" <? if ($tmnth[$i] == 2) print "SELECTED"?>>февраля</option>
-	<option value="3" <? if ($tmnth[$i] == 3) print "SELECTED"?>>марта</option>
-	<option value="4" <? if ($tmnth[$i] == 4) print "SELECTED"?>>апреля</option>
-	<option value="5" <? if ($tmnth[$i] == 5) print "SELECTED"?>>мая</option>
-	<option value="6" <? if ($tmnth[$i] == 6) print "SELECTED"?>>июня</option>
-	<option value="7" <? if ($tmnth[$i] == 7) print "SELECTED"?>>июля</option>
-	<option value="8" <? if ($tmnth[$i] == 8) print "SELECTED"?>>августа</option>
-	<option value="9" <? if ($tmnth[$i] == 9) print "SELECTED"?>>сентября</option>
-	<option value="10" <? if ($tmnth[$i] == 10) print "SELECTED"?>>октября</option>
-	<option value="11" <? if ($tmnth[$i] == 11) print "SELECTED"?>>ноября</option>
-	<option value="12" <? if ($tmnth[$i] == 12) print "SELECTED"?>>декабря</option>
+	<option value="1" <? if ($tmnth[$i] == 1) print "SELECTED"?>>СЏРЅРІР°СЂСЏ</option>
+	<option value="2" <? if ($tmnth[$i] == 2) print "SELECTED"?>>С„РµРІСЂР°Р»СЏ</option>
+	<option value="3" <? if ($tmnth[$i] == 3) print "SELECTED"?>>РјР°СЂС‚Р°</option>
+	<option value="4" <? if ($tmnth[$i] == 4) print "SELECTED"?>>Р°РїСЂРµР»СЏ</option>
+	<option value="5" <? if ($tmnth[$i] == 5) print "SELECTED"?>>РјР°СЏ</option>
+	<option value="6" <? if ($tmnth[$i] == 6) print "SELECTED"?>>РёСЋРЅСЏ</option>
+	<option value="7" <? if ($tmnth[$i] == 7) print "SELECTED"?>>РёСЋР»СЏ</option>
+	<option value="8" <? if ($tmnth[$i] == 8) print "SELECTED"?>>Р°РІРіСѓСЃС‚Р°</option>
+	<option value="9" <? if ($tmnth[$i] == 9) print "SELECTED"?>>СЃРµРЅС‚СЏР±СЂСЏ</option>
+	<option value="10" <? if ($tmnth[$i] == 10) print "SELECTED"?>>РѕРєС‚СЏР±СЂСЏ</option>
+	<option value="11" <? if ($tmnth[$i] == 11) print "SELECTED"?>>РЅРѕСЏР±СЂСЏ</option>
+	<option value="12" <? if ($tmnth[$i] == 12) print "SELECTED"?>>РґРµРєР°Р±СЂСЏ</option>
 </select>
 <input type="text" name="tyear[]" size="4" maxlength="4" value="<?=$tyear[$i]?>">
-<input type="submit" value="Ага!"><br><br>
+<input type="submit" value="РђРіР°!"><br><br>
 
 
 
@@ -127,7 +127,7 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
 
 <table  border="1" cellspacing="2" cellpadding="2" class="brd-tbl">
 <tr>
-	<td width=200><strong>Проекты:</strong></td>
+	<td width=200><strong>РџСЂРѕРµРєС‚С‹:</strong></td>
 	<td>
         <?php
         $sql = "SELECT COUNT(*) as cnt FROM projects WHERE post_date >= ? AND post_date - '1 day'::interval < ?";
@@ -137,7 +137,7 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td width=200><strong>Кол-во ответов на проекты:</strong></td>
+	<td width=200><strong>РљРѕР»-РІРѕ РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚С‹:</strong></td>
 	<td>
         <?php
         $sql = "SELECT COUNT(*) as cnt FROM projects_offers WHERE post_date >= ? AND post_date - '1 day'::interval < ?";
@@ -147,7 +147,7 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td width=200><strong>Среднее кол-во проектов:</strong></td>
+	<td width=200><strong>РЎСЂРµРґРЅРµРµ РєРѕР»-РІРѕ РїСЂРѕРµРєС‚РѕРІ:</strong></td>
 	<td>
         <?
         list($fyd, $fmd, $fdd) = preg_split("/-/",$fdate);
@@ -158,7 +158,7 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td width=200><strong>Среднее кол-во ответов на проект:</strong></td>
+	<td width=200><strong>РЎСЂРµРґРЅРµРµ РєРѕР»-РІРѕ РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚:</strong></td>
 	<td>
         <?php
         $sql = "select count(1) as cnt from projects_offers where post_date >= ? AND post_date - '1 day'::interval < ?";
@@ -168,9 +168,9 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
         <?php if($s_project[0]['cnt']==0) { echo '0'; } else { echo round($s_project_offers[0]['cnt']/$s_project[0]['cnt'],2); } ?>
     </td>
 </tr>
-<tr><td colspan=2><strong>Регистрации</strong></td></tr>
+<tr><td colspan=2><strong>Р РµРіРёСЃС‚СЂР°С†РёРё</strong></td></tr>
 <tr>
-	<td>- Фрилансеры:</td>
+	<td>- Р¤СЂРёР»Р°РЅСЃРµСЂС‹:</td>
 	<td>
         <?php
         $sql = "SELECT count(*) as cnt FROM freelancer WHERE reg_date >= ? AND reg_date - '1 day'::interval < ?";
@@ -180,7 +180,7 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td>- Работадатели:</td>
+	<td>- Р Р°Р±РѕС‚Р°РґР°С‚РµР»Рё:</td>
 	<td>
         <?php
         $sql = "SELECT count(*) as cnt FROM employer WHERE reg_date >= ? AND reg_date - '1 day'::interval < ?";
@@ -190,14 +190,14 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td>- Всего:</td>
+	<td>- Р’СЃРµРіРѕ:</td>
 	<td>
         <?=$s_reg_e[0]['cnt']+$s_reg_f[0]['cnt']?>
     </td>
 </tr>
-<tr><td colspan=2><strong>Заблокированы</strong></td></tr>
+<tr><td colspan=2><strong>Р—Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹</strong></td></tr>
 <tr>
-	<td>- Фрилансеры:</td>
+	<td>- Р¤СЂРёР»Р°РЅСЃРµСЂС‹:</td>
 	<td>
         <?php
         $sql = "SELECT sum(b_frl) as cnt FROM stat_data WHERE date >= ? AND date - '1 day'::interval < ?";
@@ -207,7 +207,7 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td>- Работадатели:</td>
+	<td>- Р Р°Р±РѕС‚Р°РґР°С‚РµР»Рё:</td>
 	<td>
         <?php
         $sql = "SELECT sum(b_emp) as cnt FROM stat_data WHERE date >= ? AND date - '1 day'::interval < ?";
@@ -217,63 +217,63 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td>- Всего:</td>
+	<td>- Р’СЃРµРіРѕ:</td>
 	<td>
         <?=$s_ban_e[0]['cnt']+$s_ban_f[0]['cnt']?>
     </td>
 </tr>
-<tr><td colspan=2><strong>Покупка сервисов</strong></td></tr>
+<tr><td colspan=2><strong>РџРѕРєСѓРїРєР° СЃРµСЂРІРёСЃРѕРІ</strong></td></tr>
 <tr>
-	<td>- TEST-PRO фрилансеры:</td>
+	<td>- TEST-PRO С„СЂРёР»Р°РЅСЃРµСЂС‹:</td>
 	<td><?=zin($testpro[$i]['cnt'])?></td>
 </tr>
 <tr>
-	<td>- PRO фрилансеры:</td>
+	<td>- PRO С„СЂРёР»Р°РЅСЃРµСЂС‹:</td>
 	<td><?=zin($prop[$i]['cnt'])?></td>
 </tr>
 <tr>
-	<td>- PRO работадатели:</td>
+	<td>- PRO СЂР°Р±РѕС‚Р°РґР°С‚РµР»Рё:</td>
 	<td><?=zin($prop2[$i]['cnt'])?></td>
 </tr>
 <tr>
-	<td>- Платные проекты:</td>
+	<td>- РџР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹:</td>
 	<td><?=zin($ppp[$i]['cnt'])?></td>
 </tr>
 <tr>
-	<td>- Подарки:</td>
+	<td>- РџРѕРґР°СЂРєРё:</td>
 	<td><?=zin($gpp[$i]['cnt'])?></td>
 </tr>
 <tr>
-	<td>- Место на главной:</td>
+	<td>- РњРµСЃС‚Рѕ РЅР° РіР»Р°РІРЅРѕР№:</td>
 	<td><?=zin($fpp[$i]['cnt'])?></td>
 </tr>
 <tr>
-	<td>- Место в общем каталоге:</td>
+	<td>- РњРµСЃС‚Рѕ РІ РѕР±С‰РµРј РєР°С‚Р°Р»РѕРіРµ:</td>
 	<td><?=zin($fppc[$i]['cnt'])?></td>
 </tr>
 <tr>
-	<td>- Место внутри каталога:</td>
+	<td>- РњРµСЃС‚Рѕ РІРЅСѓС‚СЂРё РєР°С‚Р°Р»РѕРіР°:</td>
 	<td><?=zin($fppci[$i]['cnt'])?></td>
 </tr>
 <tr>
-	<td>- Перемещения:</td>
+	<td>- РџРµСЂРµРјРµС‰РµРЅРёСЏ:</td>
 	<td><?=zin($cho[$i]['cnt'])?></td>
 </tr>
 <tr>
-	<td>- Конкурсы:</td>
+	<td>- РљРѕРЅРєСѓСЂСЃС‹:</td>
 	<td><?=zin($konk[$i]['cnt'])?></td>
 </tr>
 <tr>
-	<td>- Подняли проект:</td>
+	<td>- РџРѕРґРЅСЏР»Рё РїСЂРѕРµРєС‚:</td>
 	<td><?=zin($upproj[$i]['cnt'])?></td>
 </tr>
 <tr>
-	<td>- Перевели денег:</td>
+	<td>- РџРµСЂРµРІРµР»Рё РґРµРЅРµРі:</td>
 	<td><?=zin($transf[$i]['cnt'])?></td>
 </tr>
-<tr><td colspan=2><strong>Живых</strong></td></tr>
+<tr><td colspan=2><strong>Р–РёРІС‹С…</strong></td></tr>
 <tr>
-	<td>- Фрилансеры:</td>
+	<td>- Р¤СЂРёР»Р°РЅСЃРµСЂС‹:</td>
 	<td>
         <?php
         $sql = "SELECT SUM(l_frl) as cnt FROM stat_data WHERE date >=? AND date<=?";
@@ -283,7 +283,7 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td>- Работадатели:</td>
+	<td>- Р Р°Р±РѕС‚Р°РґР°С‚РµР»Рё:</td>
 	<td>
         <?php
         $sql = "SELECT SUM(l_emp) as cnt FROM stat_data WHERE date >=? AND date<=?";
@@ -293,14 +293,14 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td>- Всего:</td>
+	<td>- Р’СЃРµРіРѕ:</td>
 	<td><?=$s_e_live['cnt']+$s_f_live['cnt']?></td>
 </tr>
 <?php
 /*
 ?>
 <tr>
-	<td><strong>Показано баннеров:</strong></td>
+	<td><strong>РџРѕРєР°Р·Р°РЅРѕ Р±Р°РЅРЅРµСЂРѕРІ:</strong></td>
 	<td>
         <?php
 		$sql = "SELECT t2.views FROM ban_banners
@@ -320,9 +320,9 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
 <?php
 */
 ?>
-<tr><td colspan=2><strong>Обратная связь</strong></td></tr>
+<tr><td colspan=2><strong>РћР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ</strong></td></tr>
 <tr>
-	<td>- Сервисы:</td>
+	<td>- РЎРµСЂРІРёСЃС‹:</td>
 	<td>
         <?php
         $sql = "SELECT SUM(count) as cnt FROM stat_feedback WHERE date >=? AND date - '1 day'::interval <? AND type=1";
@@ -333,7 +333,7 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td>- Ошибки:</td>
+	<td>- РћС€РёР±РєРё:</td>
 	<td>
         <?php
         $sql = "SELECT SUM(count) as cnt FROM stat_feedback WHERE date >=? AND date - '1 day'::interval <? AND type=2";
@@ -344,7 +344,7 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td>- Реклама, деньги:</td>
+	<td>- Р РµРєР»Р°РјР°, РґРµРЅСЊРіРё:</td>
 	<td>
         <?php
         $sql = "SELECT SUM(count) as cnt FROM stat_feedback WHERE date >=? AND date - '1 day'::interval <? AND type=3";
@@ -355,7 +355,7 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td>- Жалобы на пользователей:</td>
+	<td>- Р–Р°Р»РѕР±С‹ РЅР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№:</td>
 	<td>
         <?php
         $sql = "SELECT SUM(count) as cnt FROM stat_feedback WHERE date >=? AND date - '1 day'::interval <? AND type=4";
@@ -366,7 +366,7 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td>- Предложения:</td>
+	<td>- РџСЂРµРґР»РѕР¶РµРЅРёСЏ:</td>
 	<td>
         <?php
         $sql = "SELECT SUM(count) as cnt FROM stat_feedback WHERE date >=? AND date - '1 day'::interval <? AND type=5";
@@ -377,7 +377,7 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td>- Жалобы на админов:</td>
+	<td>- Р–Р°Р»РѕР±С‹ РЅР° Р°РґРјРёРЅРѕРІ:</td>
 	<td>
         <?php
         $sql = "SELECT SUM(count) as cnt FROM stat_feedback WHERE date >=? AND date - '1 day'::interval <? AND type=6";
@@ -388,29 +388,29 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td>- Всего:</td>
+	<td>- Р’СЃРµРіРѕ:</td>
 	<td><?=$sf1[0]['cnt']+$sf2[0]['cnt']+$sf3[0]['cnt']+$sf4[0]['cnt']+$sf5[0]['cnt']+$sf6[0]['cnt']?></td>
 </tr>
 <tr>
-	<td><strong>Кол-во PRO после тест-PRO:</strong></td>
+	<td><strong>РљРѕР»-РІРѕ PRO РїРѕСЃР»Рµ С‚РµСЃС‚-PRO:</strong></td>
 	<td><?=$testbuypro[$i]?></td>
 </tr>
-<tr><td colspan=2><strong>Бонусы фрилансерам за ЯД</strong></td></tr>
+<tr><td colspan=2><strong>Р‘РѕРЅСѓСЃС‹ С„СЂРёР»Р°РЅСЃРµСЂР°Рј Р·Р° РЇР”</strong></td></tr>
 <tr>
-	<td>- PRO в подарок:</td>
+	<td>- PRO РІ РїРѕРґР°СЂРѕРє:</td>
 	<td><?=$bonuses[$i]['frl_pro']?></td>
 </tr>
 <tr>
-	<td>- Размещение на главной:</td>
+	<td>- Р Р°Р·РјРµС‰РµРЅРёРµ РЅР° РіР»Р°РІРЅРѕР№:</td>
 	<td><?=$bonuses[$i]['frl_main']?></td>
 </tr>
-<tr><td colspan=2><strong>Бонусы Работадателям за ЯД</strong></td></tr>
+<tr><td colspan=2><strong>Р‘РѕРЅСѓСЃС‹ Р Р°Р±РѕС‚Р°РґР°С‚РµР»СЏРј Р·Р° РЇР”</strong></td></tr>
 <tr>
-	<td>- PRO в подарок:</td>
+	<td>- PRO РІ РїРѕРґР°СЂРѕРє:</td>
 	<td><?=$bonuses[$i]['emp_pro']?></td>
 </tr>
 <tr>
-	<td>- 85 FM на бонусный счет:</td>
+	<td>- 85 FM РЅР° Р±РѕРЅСѓСЃРЅС‹Р№ СЃС‡РµС‚:</td>
 	<td><?=$bonuses[$i]['emp_fm']?></td>
 </tr>
 </table>
@@ -422,87 +422,87 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
 
 <table width="100%" border="1" cellspacing="2" cellpadding="2">
 <tr>
-	<td>Активно PRO (Всего разных юзеров в PRO (за все время))</td>
+	<td>РђРєС‚РёРІРЅРѕ PRO (Р’СЃРµРіРѕ СЂР°Р·РЅС‹С… СЋР·РµСЂРѕРІ РІ PRO (Р·Р° РІСЃРµ РІСЂРµРјСЏ))</td>
 	<td><?=$pro['cur']?> (<?=$pro['all']?>)</td>
 </tr>
 <tr>
-	<td>Автопродление PRO FL:</td>
+	<td>РђРІС‚РѕРїСЂРѕРґР»РµРЅРёРµ PRO FL:</td>
 	<td><?=$cnt['autopro_fl']?></td>
 </tr>
 <tr>
-	<td>Автопродление PRO EMP:</td>
+	<td>РђРІС‚РѕРїСЂРѕРґР»РµРЅРёРµ PRO EMP:</td>
 	<td><?=$cnt['autopro_emp']?></td>
 </tr>
 <tr>
-	<td>Всего народу (сегодня новых)</td>
+	<td>Р’СЃРµРіРѕ РЅР°СЂРѕРґСѓ (СЃРµРіРѕРґРЅСЏ РЅРѕРІС‹С…)</td>
 	<td><?=$cnt['all']?> (<?=$cnt['frl_today']+$cnt['emp_today']?>)</td>
 </tr>
 <tr>
-	<td>- фрилансеров (сегодня новых)</td>
+	<td>- С„СЂРёР»Р°РЅСЃРµСЂРѕРІ (СЃРµРіРѕРґРЅСЏ РЅРѕРІС‹С…)</td>
 	<td><?=$cnt['frl']?> (<?=$cnt['frl_today']?>)</td>
 </tr>
 <tr>
-	<td>- работодателей (сегодня новых)</td>
+	<td>- СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ (СЃРµРіРѕРґРЅСЏ РЅРѕРІС‹С…)</td>
 	<td><?=$cnt['emp']?> (<?=$cnt['emp_today']?>)</td>
 </tr>
 <tr>
-	<td>Всего живых</td>
+	<td>Р’СЃРµРіРѕ Р¶РёРІС‹С…</td>
 	<td><?=$cnt['live_emp_today']+$cnt['live_frl_today']?></td>
 </tr>
 <tr>
-	<td>- фрилансеров живых</td>
+	<td>- С„СЂРёР»Р°РЅСЃРµСЂРѕРІ Р¶РёРІС‹С…</td>
 	<td><?=$cnt['live_frl_today']?></td>
 </tr>
 <tr>
-	<td>- работодателей живых</td>
+	<td>- СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ Р¶РёРІС‹С…</td>
 	<td><?=$cnt['live_emp_today']?></td>
 </tr>
 <tr>
-	<td>- Проектов сегодня (вчера)</td>
+	<td>- РџСЂРѕРµРєС‚РѕРІ СЃРµРіРѕРґРЅСЏ (РІС‡РµСЂР°)</td>
 	<td><?=$cnt['prjt']?> (<?=$cnt['prjy']?>)</td>
 </tr>
 <tr>
-	<td>- пользуются сообщениями</td>
+	<td>- РїРѕР»СЊР·СѓСЋС‚СЃСЏ СЃРѕРѕР±С‰РµРЅРёСЏРјРё</td>
 	<td><?=$cnt['mess']?></td>
 </tr>
 <tr>
-	<td>- пользуются заметкой</td>
+	<td>- РїРѕР»СЊР·СѓСЋС‚СЃСЏ Р·Р°РјРµС‚РєРѕР№</td>
 	<td><?=$cnt['notes']?></td>
 </tr>
 <tr>
-	<td>- пользуются командой</td>
+	<td>- РїРѕР»СЊР·СѓСЋС‚СЃСЏ РєРѕРјР°РЅРґРѕР№</td>
 	<td><?=$cnt['teams']?></td>
 </tr>
 <tr>
-	<td>- Уведомления о новых сообщениях</td>
+	<td>- РЈРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏС…</td>
 	<td><?=$cnt['mcont']?></td>
 </tr>
 <tr>
-	<td>- Уведомления об опубликованных на главной странице Проектах/Предложениях</td>
+	<td>- РЈРІРµРґРѕРјР»РµРЅРёСЏ РѕР± РѕРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹С… РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ РџСЂРѕРµРєС‚Р°С…/РџСЂРµРґР»РѕР¶РµРЅРёСЏС…</td>
 	<td><?=$cnt['mvac']?></td>
 </tr>
 <tr>
-	<td>- Комментарии к сообщениям/комментариям в блогах</td>
+	<td>- РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє СЃРѕРѕР±С‰РµРЅРёСЏРј/РєРѕРјРјРµРЅС‚Р°СЂРёСЏРј РІ Р±Р»РѕРіР°С…</td>
 	<td><?=$cnt['mblog']?></td>
 </tr>
 <tr>
-	<td>- Уведомления об ответе на опубликованный Проект/Предложение</td>
+	<td>- РЈРІРµРґРѕРјР»РµРЅРёСЏ РѕР± РѕС‚РІРµС‚Рµ РЅР° РѕРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹Р№ РџСЂРѕРµРєС‚/РџСЂРµРґР»РѕР¶РµРЅРёРµ</td>
 	<td><?=$cnt['mprj']?></td>
 </tr>
 <tr>
-	<td>- Закладка портфолио</td>
+	<td>- Р—Р°РєР»Р°РґРєР° РїРѕСЂС‚С„РѕР»РёРѕ</td>
 	<td><?=$cnt['tportf']?></td>
 </tr>
 <tr>
-	<td>- Закладка услуги</td>
+	<td>- Р—Р°РєР»Р°РґРєР° СѓСЃР»СѓРіРё</td>
 	<td><?=$cnt['tserv']?></td>
 </tr>
 <tr>
-	<td>- Закладка инфо</td>
+	<td>- Р—Р°РєР»Р°РґРєР° РёРЅС„Рѕ</td>
 	<td><?=$cnt['tinfo']?></td>
 </tr>
 <tr>
-	<td>- Закладка журнал</td>
+	<td>- Р—Р°РєР»Р°РґРєР° Р¶СѓСЂРЅР°Р»</td>
 	<td><?=$cnt['tjour']?></td>
 </tr>
 </table>
@@ -511,78 +511,78 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
 <br/><br/>
 <table  width="100%" border="1" cellspacing="2" cellpadding="2">
     <tr>
-        <td colspan="2"><strong>Фрилансеры:</strong></td>
+        <td colspan="2"><strong>Р¤СЂРёР»Р°РЅСЃРµСЂС‹:</strong></td>
     </tr>
     <tr>
-        <td width=500>- Покупок тестового pro:</td>
+        <td width=500>- РџРѕРєСѓРїРѕРє С‚РµСЃС‚РѕРІРѕРіРѕ pro:</td>
         <td><?=$frlpp['tp']?></td>
     </tr>
     <tr>
-        <td>- Купившие полный pro после тестового pro:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅС‹Р№ pro РїРѕСЃР»Рµ С‚РµСЃС‚РѕРІРѕРіРѕ pro:</td>
         <td><?=$frlpp['fpp_tp']?></td>
     </tr>
     <tr>
-        <td>- Купившие полный pro 2 раза после тестового pro:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅС‹Р№ pro 2 СЂР°Р·Р° РїРѕСЃР»Рµ С‚РµСЃС‚РѕРІРѕРіРѕ pro:</td>
         <td><?=$frlpp['fpp2_tp']?></td>
     </tr>
     <tr>
-        <td>- Купившие полный pro 3 раза после тестового pro:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅС‹Р№ pro 3 СЂР°Р·Р° РїРѕСЃР»Рµ С‚РµСЃС‚РѕРІРѕРіРѕ pro:</td>
         <td><?=$frlpp['fpp3_tp']?></td>
     </tr>
     <tr>
-        <td>- Купившие полный pro 4 раза после тестового pro:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅС‹Р№ pro 4 СЂР°Р·Р° РїРѕСЃР»Рµ С‚РµСЃС‚РѕРІРѕРіРѕ pro:</td>
         <td><?=$frlpp['fpp4_tp']?></td>
     </tr>
     <tr>
-        <td>- Купившие полный pro 5 раз после тестового pro:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅС‹Р№ pro 5 СЂР°Р· РїРѕСЃР»Рµ С‚РµСЃС‚РѕРІРѕРіРѕ pro:</td>
         <td><?=$frlpp['fpp5_tp']?></td>
     </tr>
     <!-- 
     <tr>
-        <td colspan="2"><strong>Фрилансеры:</strong></td>
+        <td colspan="2"><strong>Р¤СЂРёР»Р°РЅСЃРµСЂС‹:</strong></td>
     </tr>-->
     <tr>
-        <td>- Купивших полноценный pro:</td>
+        <td>- РљСѓРїРёРІС€РёС… РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro:</td>
         <td><?=$frlpp['fpp']?></td>
     </tr>
     <tr>
-        <td>- Купившие полноценный pro 2 раза:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro 2 СЂР°Р·Р°:</td>
         <td><?=$frlpp['fpp2']?></td>
     </tr>
     <tr>
-        <td>- Купившие полноценный pro 3 раза:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro 3 СЂР°Р·Р°:</td>
         <td><?=$frlpp['fpp3']?></td>
     </tr>
     <tr>
-        <td>- Купившие полноценный pro 4 раза:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro 4 СЂР°Р·Р°:</td>
         <td><?=$frlpp['fpp4']?></td>
     </tr>
     <tr>
-        <td>- Купившие полноценный pro 5 раз:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro 5 СЂР°Р·:</td>
         <td><?=$frlpp['fpp5']?></td>
     </tr>
     <!-- -->
     <tr>
-        <td colspan="2"><strong>Работодатели:</strong></td>
+        <td colspan="2"><strong>Р Р°Р±РѕС‚РѕРґР°С‚РµР»Рё:</strong></td>
     </tr>
     <tr>
-        <td>- Купивших полноценный pro:</td>
+        <td>- РљСѓРїРёРІС€РёС… РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro:</td>
         <td><?=$emppp['epp']?></td>
     </tr>
     <tr>
-        <td>- Купившие полноценный pro 2 раза:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro 2 СЂР°Р·Р°:</td>
         <td><?=$emppp['epp2']?></td>
     </tr>
     <tr>
-        <td>- Купившие полноценный pro 3 раза:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro 3 СЂР°Р·Р°:</td>
         <td><?=$emppp['epp3']?></td>
     </tr>
     <tr>
-        <td>- Купившие полноценный pro 4 раза:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro 4 СЂР°Р·Р°:</td>
         <td><?=$emppp['epp4']?></td>
     </tr>
     <tr>
-        <td>- Купившие полноценный pro 5 раз:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro 5 СЂР°Р·:</td>
         <td><?=$emppp['epp5']?></td>
     </tr>
 </table>
@@ -594,9 +594,9 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
 <br><br><br>
 <table width="100%" cellspacing="2" cellpadding="2" border="0">
 <tr>
-	<td>Страны</td>
-	<td>Города</td>
-    <td>Возраст</td>
+	<td>РЎС‚СЂР°РЅС‹</td>
+	<td>Р“РѕСЂРѕРґР°</td>
+    <td>Р’РѕР·СЂР°СЃС‚</td>
 </tr>
 <tr>
 	<td valign="top">
@@ -636,7 +636,7 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
         $ages = $DB->rows($sql);
 			foreach($ages as $ikey=>$age){
                 if($age['_year']=='') {
-                    $tage = 'Не указано';
+                    $tage = 'РќРµ СѓРєР°Р·Р°РЅРѕ';
                 } else {
                     $tage = date('Y')-$age['_year'];
                 }
@@ -651,4 +651,4 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
 </tr>
 </table>
 
-<a href="geo.php">Все города, страны и возраст</a>
+<a href="geo.php">Р’СЃРµ РіРѕСЂРѕРґР°, СЃС‚СЂР°РЅС‹ Рё РІРѕР·СЂР°СЃС‚</a>

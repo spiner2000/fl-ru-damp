@@ -65,10 +65,10 @@ switch ($action) {
 		$chat_user->GetUser($chat_with);
         if($chat_user->is_banned && !hasPermissions('users')) {
             $error_flag = 1; 
-            $alert[3] = "Ýòîò ïîëüçîâàòåëü çàáëîêèðîâàí. Âû íå ìîæåòå îòïðàâèòü åìó ëè÷íîå ñîîáùåíèå";
+            $alert[3] = "Ð­Ñ‚Ð¾Ñ‚ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð·Ð°Ð±Ð»Ð¾ÐºÐ¸Ñ€Ð¾Ð²Ð°Ð½. Ð’Ñ‹ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ ÐµÐ¼Ñƒ Ð»Ð¸Ñ‡Ð½Ð¾Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ";
         }
         
-        //Ðàçðåøåíî ëè ïîëüçîâàòåëþ îòïðàâëÿòü ñîîáùåíèÿ
+        //Ð Ð°Ð·Ñ€ÐµÑˆÐµÐ½Ð¾ Ð»Ð¸ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŽ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ
         if (!isset($error_flag) && is_emp($chat_user->role) && 
             !messages::isAllowed($chat_user->uid, $uid) ) {
                 $chat_with = '';
@@ -81,7 +81,7 @@ switch ($action) {
 		$attachedfiles_session = __paramInit('string', NULL, 'attachedfiles_session');
 		//$attach = new CFile($_FILES['attach']);
 		
-		// çàãðóçêà ôàéëîâ
+		// Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ° Ñ„Ð°Ð¹Ð»Ð¾Ð²
 		$files = array();
 		$attach = $_FILES['attach'];
 		if (is_array($attach) && !empty($attach['name'])) {
@@ -103,10 +103,10 @@ switch ($action) {
 		
 		if ((!$msg || trim($msg) == "") && !(sizeof($files) || $attachedfiles_info['count'])) {
             $error_flag = 1; 
-            $alert[2] = "Ïîëå çàïîëíåíî íåêîððåêòíî";
+            $alert[2] = "ÐŸÐ¾Ð»Ðµ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¾ Ð½ÐµÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ð¾";
         } elseif($msg && strlen($msg) > messages::MAX_MSG_LENGTH) {
             $error_flag = 1; 
-            $alert[2] = "Âû ââåëè ñëèøêîì áîëüøîå ñîîáùåíèå. Òåêñò ñîîáùåíèÿ íå äîëæåí ïðåâûøàòü 20 000 ñèìâîëîâ.";
+            $alert[2] = "Ð’Ñ‹ Ð²Ð²ÐµÐ»Ð¸ ÑÐ»Ð¸ÑˆÐºÐ¾Ð¼ Ð±Ð¾Ð»ÑŒÑˆÐ¾Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ. Ð¢ÐµÐºÑÑ‚ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð½Ðµ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð¿Ñ€ÐµÐ²Ñ‹ÑˆÐ°Ñ‚ÑŒ 20 000 ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð².";
         }
 
         if($isNeedUseCaptcha) {
@@ -115,11 +115,11 @@ switch ($action) {
             $captcha = new captcha($captchanum);
             $rnd = $_POST['rndnum'];
             if(!$captcha->checkNumber(trim($rnd))) {
-                $error_flag = 1; $alert[4] = "Âû ââåëè íåâåðíóþ êîìáèíàöèþ ñèìâîëîâ";
+                $error_flag = 1; $alert[4] = "Ð’Ñ‹ Ð²Ð²ÐµÐ»Ð¸ Ð½ÐµÐ²ÐµÑ€Ð½ÑƒÑŽ ÐºÐ¾Ð¼Ð±Ð¸Ð½Ð°Ñ†Ð¸ÑŽ ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð²";
             }
         }
         
-        // åñëè çàïðîøåíî îáíîâëåíèå êàï÷è â PDA
+        // ÐµÑÐ»Ð¸ Ð·Ð°Ð¿Ñ€Ð¾ÑˆÐµÐ½Ð¾ Ð¾Ð±Ð½Ð¾Ð²Ð»ÐµÐ½Ð¸Ðµ ÐºÐ°Ð¿Ñ‡Ð¸ Ð² PDA
         $newCaptcha = $_POST['newcaptcha'];
         if ($newCaptcha) {
             $alert = array();
@@ -136,7 +136,7 @@ switch ($action) {
                     drafts::DeleteDraft(intval($draft_id), get_uid(false), 2, true);
                 }
                 
-                //Åñëè ñîîáùåíèå ôðèëàíñåðó òî ðàçðåøàåì îòïðàâêó ñîîáùåíèé îáðàòíî
+                //Ð•ÑÐ»Ð¸ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ñƒ Ñ‚Ð¾ Ñ€Ð°Ð·Ñ€ÐµÑˆÐ°ÐµÐ¼ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÑƒ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¹ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾
                 if (!is_emp($chat_user->role)) {
                     messages::setIsAllowed($uid, $chat_user->uid);
                 }
@@ -165,7 +165,7 @@ switch ($action) {
    	if (empty($name) || ($name==''))
    	{
       $error_flag = 1;
-      $error = 'Íå óêàçàíî èìÿ ïàïêè';
+      $error = 'ÐÐµ ÑƒÐºÐ°Ð·Ð°Ð½Ð¾ Ð¸Ð¼Ñ Ð¿Ð°Ð¿ÐºÐ¸';
    	}
    	else
    	{
@@ -188,7 +188,7 @@ switch ($action) {
 		break;
     default:
         if ($_SERVER["REQUEST_METHOD"] == 'POST' && empty($_POST)) {
-            $alert[1] = 'Âû ïðåâûñèëè ìàêñèìàëüíî äîïóñòèìûé ðàçìåð ôàéëîâ';
+            $alert[1] = 'Ð’Ñ‹ Ð¿Ñ€ÐµÐ²Ñ‹ÑÐ¸Ð»Ð¸ Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾ Ð´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ñ€Ð°Ð·Ð¼ÐµÑ€ Ñ„Ð°Ð¹Ð»Ð¾Ð²';
         }
         break;
 }
@@ -223,16 +223,16 @@ if ($chat_with) {
 		{
 			header("Location: /404.php");
 		}
-		// Åñëè ïîëüçîâàòåëü çàáàíåí
+		// Ð•ÑÐ»Ð¸ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð·Ð°Ð±Ð°Ð½ÐµÐ½
 		if($user->is_banned && !hasPermissions('users')) {
-            $error_flag = 1; $alert[3] = "Ýòîò ïîëüçîâàòåëü çàáëîêèðîâàí. Âû íå ìîæåòå îòïðàâèòü åìó ëè÷íîå ñîîáùåíèå";
+            $error_flag = 1; $alert[3] = "Ð­Ñ‚Ð¾Ñ‚ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð·Ð°Ð±Ð»Ð¾ÐºÐ¸Ñ€Ð¾Ð²Ð°Ð½. Ð’Ñ‹ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ ÐµÐ¼Ñƒ Ð»Ð¸Ñ‡Ð½Ð¾Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ";
         }
 
 		$dlg_user = users::GetUid($err,$user->login);
 		$dlg_user_login = $user->login;
         
         
-		if ($post_denied = (ignor::CheckIgnored($dlg_user, $_SESSION['uid']) || in_array($user->login, array('admin', 'Anonymous')))) $error = "Ïîëüçîâàòåëü çàïðåòèë îòïðàâëÿòü åìó ñîîáùåíèÿ";
+		if ($post_denied = (ignor::CheckIgnored($dlg_user, $_SESSION['uid']) || in_array($user->login, array('admin', 'Anonymous')))) $error = "ÐŸÐ¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð·Ð°Ð¿Ñ€ÐµÑ‚Ð¸Ð» Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÑ‚ÑŒ ÐµÐ¼Ñƒ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ";
 		
         if (!$post_denied && is_emp($user->role)) {
             $is_allow_messages = messages::isAllowed($user->uid, $uid);
@@ -275,7 +275,7 @@ if ($chat_with) {
 	if ($page <= 0) $page = 1;
     
 	if ( !$pm_folder ) {
-	    // ïîëüçîâàòåëüñêèå ïàïêè
+	    // Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÑÐºÐ¸Ðµ Ð¿Ð°Ð¿ÐºÐ¸
         if ( $cur_folder == -5 ) {
             $contacts = $msgs->GetContactsWithNote( get_uid(), $find );
         }
@@ -284,7 +284,7 @@ if ($chat_with) {
         }
 	}
 	else {
-	    // àâòîìàòè÷åñêèå ïàïêè äëÿ ìàññîâûõ ðàññûëîê ëè÷íûõ ìåíåäæåðîâ
+	    // Ð°Ð²Ñ‚Ð¾Ð¼Ð°Ñ‚Ð¸Ñ‡ÐµÑÐºÐ¸Ðµ Ð¿Ð°Ð¿ÐºÐ¸ Ð´Ð»Ñ Ð¼Ð°ÑÑÐ¾Ð²Ñ‹Ñ… Ñ€Ð°ÑÑÑ‹Ð»Ð¾Ðº Ð»Ð¸Ñ‡Ð½Ñ‹Ñ… Ð¼ÐµÐ½ÐµÐ´Ð¶ÐµÑ€Ð¾Ð²
 	    $contacts = $msgs->pmAutoFolderGetContacts( get_uid(), $pm_folder, $find );
 	}
     

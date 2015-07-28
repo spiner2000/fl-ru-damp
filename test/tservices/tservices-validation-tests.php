@@ -13,7 +13,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/tservices/tservices.php");
 
 
 $_POST = array(
-    'title' => "Поч<ему? парал'лельно углово\"е расстояние<b>hello</b>"
+    'title' => "РџРѕС‡<РµРјСѓ? РїР°СЂР°Р»'Р»РµР»СЊРЅРѕ СѓРіР»РѕРІРѕ\"Рµ СЂР°СЃСЃС‚РѕСЏРЅРёРµ<b>hello</b>"
 );
 
 

@@ -1,14 +1,14 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/search/search_element.php";
 /**
- * Êëàññ äëÿ ïîèñêà ïî çàìåòêàì
+ * ÐšÐ»Ð°ÑÑ Ð´Ð»Ñ Ð¿Ð¾Ð¸ÑÐºÐ° Ð¿Ð¾ Ð·Ð°Ð¼ÐµÑ‚ÐºÐ°Ð¼
  *
  */
 class searchElementNotes extends searchElement
 {
 
-    public $name = 'Ëè÷íûå çàìåòêè';
-    public $totalwords = array('çàìåòêà', 'çàìåòêè', 'çàìåòîê');
+    public $name = 'Ð›Ð¸Ñ‡Ð½Ñ‹Ðµ Ð·Ð°Ð¼ÐµÑ‚ÐºÐ¸';
+    public $totalwords = array('Ð·Ð°Ð¼ÐµÑ‚ÐºÐ°', 'Ð·Ð°Ð¼ÐµÑ‚ÐºÐ¸', 'Ð·Ð°Ð¼ÐµÑ‚Ð¾Ðº');
     protected $_sort = SPH_SORT_RELEVANCE;
     public $layout = self::LAYOUT_ROW;
 
@@ -28,7 +28,7 @@ class searchElementNotes extends searchElement
     }
     
     /**
-     * Âçÿòü èíôîðìàöèþ ïî íàéäåííûì ðåçóëüòàòàì
+     * Ð’Ð·ÑÑ‚ÑŒ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¿Ð¾ Ð½Ð°Ð¹Ð´ÐµÐ½Ð½Ñ‹Ð¼ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð°Ð¼
      *
      * @return array
      */

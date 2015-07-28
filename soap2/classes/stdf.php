@@ -9,8 +9,8 @@ $rates = array
 
 function str_ago_pub($from_date){
     switch (date("z") - date("z",$from_date) + (date("Y") - date("Y",$from_date))*365){
-        case 0 : $out = "Сегодня"; break;
-        case 1 : $out = "Вчера"; break;
+        case 0 : $out = "РЎРµРіРѕРґРЅСЏ"; break;
+        case 1 : $out = "Р’С‡РµСЂР°"; break;
         default : $out = ""; break;
     }
     return $out;
@@ -35,7 +35,7 @@ $break_words = false)
 function CurToChar($val, $ind){
     switch ($ind) {
         case 1: $out = $val." &euro;"; break;
-        case 2: $out = $val." руб"; break;
+        case 2: $out = $val." СЂСѓР±"; break;
         case 3: $out = $val." FM"; break;
         default: $out = "$".$val;
     }
@@ -103,44 +103,44 @@ function GetSession($length=32) {
 
 function ago_pub($from_date, $format = "ynjGi"){
     $date_diff = ($from_date < time())?(time() - $from_date - (3*60*60)):($from_date - time() - (3*60*60));
-    //года
+    //РіРѕРґР°
     if (($val = date("y", $date_diff)-70) && strpos($format, "y") !== false){
         $mod1 = $val%10;
         $mod2 = $val%100;
-        if ($mod1 == 1 && ($mod2 < 10 || $mod2 > 20)) $out[] = intval($val)." год";
-        elseif ($mod1 < 5 && ($mod2 < 10 || $mod2 > 20)) $out[] = intval($val)." года";
-        else $out[] = $val." лет";
+        if ($mod1 == 1 && ($mod2 < 10 || $mod2 > 20)) $out[] = intval($val)." РіРѕРґ";
+        elseif ($mod1 < 5 && ($mod2 < 10 || $mod2 > 20)) $out[] = intval($val)." РіРѕРґР°";
+        else $out[] = $val." Р»РµС‚";
     }
-    //месяцы
+    //РјРµСЃСЏС†С‹
     if (($val = date("n", $date_diff)-1) && strpos($format, "n") !== false){
         $mod1 = $val%10;
-        if ($mod1 == 1 && ($val < 10 || $val > 20)) $out[] = intval($val)." месяц";
-        elseif ($mod1 < 5 && ($val < 10 || $val > 20)) $out[] = intval($val)." месяца";
-        else $out[] = $val." месяцев";
+        if ($mod1 == 1 && ($val < 10 || $val > 20)) $out[] = intval($val)." РјРµСЃСЏС†";
+        elseif ($mod1 < 5 && ($val < 10 || $val > 20)) $out[] = intval($val)." РјРµСЃСЏС†Р°";
+        else $out[] = $val." РјРµСЃСЏС†РµРІ";
     }
-    //дни
+    //РґРЅРё
     if (($val = date("j", $date_diff)-1) && strpos($format, "j") !== false){
         $mod1 = $val%10;
-        if ($mod1 == 1 && ($val < 10 || $val > 20)) $out[] = intval($val)." день";
-        elseif ($mod1 < 5 && ($val < 10 || $val > 20)) $out[] = intval($val)." дня";
-        else $out[] = $val." дней";
+        if ($mod1 == 1 && ($val < 10 || $val > 20)) $out[] = intval($val)." РґРµРЅСЊ";
+        elseif ($mod1 < 5 && ($val < 10 || $val > 20)) $out[] = intval($val)." РґРЅСЏ";
+        else $out[] = $val." РґРЅРµР№";
     }
-    //часы
+    //С‡Р°СЃС‹
     if (($val = date("G", $date_diff)) && strpos($format, "G") !== false){
         $mod1 = $val%10;
-        if ($mod1 == 1 && ($val < 10 || $val > 20)) $out[] = intval($val)." час";
-        elseif ($mod1 < 5 && ($val < 10 || $val > 20)) $out[] = intval($val)." часа";
-        else $out[] = $val." часов";
+        if ($mod1 == 1 && ($val < 10 || $val > 20)) $out[] = intval($val)." С‡Р°СЃ";
+        elseif ($mod1 < 5 && ($val < 10 || $val > 20)) $out[] = intval($val)." С‡Р°СЃР°";
+        else $out[] = $val." С‡Р°СЃРѕРІ";
     }
-    //минуты
+    //РјРёРЅСѓС‚С‹
 
     if (($val = date("i", $date_diff)) && strpos($format, "i") !== false){
         $mod1 = $val%10;
-        if ($val<1)  $out[] = "менее минуты";
-        elseif ($val==1) $out[] = intval($val)." минуту";
-        elseif ($mod1 == 1 && ($val < 10 || $val > 20)) $out[] = intval($val)." минута";
-        elseif ($mod1 < 5 && ($val < 10 || $val > 20)) $out[] = intval($val)." минуты";
-        else $out[] = $val." минут";
+        if ($val<1)  $out[] = "РјРµРЅРµРµ РјРёРЅСѓС‚С‹";
+        elseif ($val==1) $out[] = intval($val)." РјРёРЅСѓС‚Сѓ";
+        elseif ($mod1 == 1 && ($val < 10 || $val > 20)) $out[] = intval($val)." РјРёРЅСѓС‚Р°";
+        elseif ($mod1 < 5 && ($val < 10 || $val > 20)) $out[] = intval($val)." РјРёРЅСѓС‚С‹";
+        else $out[] = $val." РјРёРЅСѓС‚";
     }
     if ($out) $ret = implode(" ", $out);
     else  $ret = "";
@@ -201,10 +201,10 @@ function view_online_status($login, $full=false){
     $last_ref = getActivityByLogin($login);
     if ($last_ref){
         $ago = ago_pub(strtotimeEx($last_ref));
-        if (intval($ago) == 0) $ago = "менее минуты";
-        return "<img src=\"".$GLOBALS["host"]."/images/dot_active.gif\" style=\"width:10px;height:10px;padding-right:3px;vertical-align:middle;\" alt=\"Последняя активность была ".$ago." назад\" title=\"Последняя активность была ".$ago." назад\" border=\"0\">" . ($full ? "<span class='u_active'>На сайте</span>" : "");
+        if (intval($ago) == 0) $ago = "РјРµРЅРµРµ РјРёРЅСѓС‚С‹";
+        return "<img src=\"".$GLOBALS["host"]."/images/dot_active.gif\" style=\"width:10px;height:10px;padding-right:3px;vertical-align:middle;\" alt=\"РџРѕСЃР»РµРґРЅСЏСЏ Р°РєС‚РёРІРЅРѕСЃС‚СЊ Р±С‹Р»Р° ".$ago." РЅР°Р·Р°Рґ\" title=\"РџРѕСЃР»РµРґРЅСЏСЏ Р°РєС‚РёРІРЅРѕСЃС‚СЊ Р±С‹Р»Р° ".$ago." РЅР°Р·Р°Рґ\" border=\"0\">" . ($full ? "<span class='u_active'>РќР° СЃР°Р№С‚Рµ</span>" : "");
     }
-    return "<img src=\"".$GLOBALS["host"]."/images/dot_inactive.gif\" style=\"width:8px;height:9px;padding-right:3px;vertical-align:middle;\" alt=\"Нет на сайте\" title=\"Нет на сайте\" border=\"0\">" . ($full ? "<span class='u_inactive'>Нет на сайте</span>" : "");
+    return "<img src=\"".$GLOBALS["host"]."/images/dot_inactive.gif\" style=\"width:8px;height:9px;padding-right:3px;vertical-align:middle;\" alt=\"РќРµС‚ РЅР° СЃР°Р№С‚Рµ\" title=\"РќРµС‚ РЅР° СЃР°Р№С‚Рµ\" border=\"0\">" . ($full ? "<span class='u_inactive'>РќРµС‚ РЅР° СЃР°Р№С‚Рµ</span>" : "");
 }
 
 function Session ($session, &$return) {
@@ -215,17 +215,17 @@ function Session ($session, &$return) {
         $res_pass = $DB->query("SELECT uid, login, is_banned, is_pro, active FROM users WHERE uid=?  LIMIT 1", $uid);
         if (pg_numrows($res_pass) > 0){
             if (pg_numrows($res_pass)){
-                // ок
+                // РѕРє
                 $user_arr=pg_fetch_assoc($res_pass);
-                if ($user_arr["is_pro"]=="f") { $return = 'Доступно только для PRO'; return 0; }
-                if ($user_arr["active"]=="f") { $return = 'А активировать аккаунт Пушкин будет?';  return 0; }
-                if ($user_arr["is_banned"]) { $return ='Забанены вы нафих'; return 0; }
+                if ($user_arr["is_pro"]=="f") { $return = 'Р”РѕСЃС‚СѓРїРЅРѕ С‚РѕР»СЊРєРѕ РґР»СЏ PRO'; return 0; }
+                if ($user_arr["active"]=="f") { $return = 'Рђ Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊ Р°РєРєР°СѓРЅС‚ РџСѓС€РєРёРЅ Р±СѓРґРµС‚?';  return 0; }
+                if ($user_arr["is_banned"]) { $return ='Р—Р°Р±Р°РЅРµРЅС‹ РІС‹ РЅР°С„РёС…'; return 0; }
                 $uid=$user_arr["uid"];
                 $login=$user_arr["login"];
                 $res = mysql_query("SELECT * FROM sessions WHERE session_data = 'TrayPrj' AND session_login='".$login."'", DBMyConnect());
                 if (@mysql_num_rows($res)>1) {
                     $res = mysql_query("DELETE FROM sessions WHERE session_data = 'TrayPrj' AND session_login='".$login."'", DBMyConnect());
-                    $return =  'Две сессии. Возможно еще кто-то под Вашим именем в сети. Перелогиньтесь с введением логина и пароля';  return 0;
+                    $return =  'Р”РІРµ СЃРµСЃСЃРёРё. Р’РѕР·РјРѕР¶РЅРѕ РµС‰Рµ РєС‚Рѕ-С‚Рѕ РїРѕРґ Р’Р°С€РёРј РёРјРµРЅРµРј РІ СЃРµС‚Рё. РџРµСЂРµР»РѕРіРёРЅСЊС‚РµСЃСЊ СЃ РІРІРµРґРµРЅРёРµРј Р»РѕРіРёРЅР° Рё РїР°СЂРѕР»СЏ';  return 0;
                 }
                 mysql_query("UPDATE sessions
                 SET session_last_refresh = now(),
@@ -237,9 +237,9 @@ function Session ($session, &$return) {
             }
 
         }
-        else { $return = 'Не могу вас найти'; return 0; }
+        else { $return = 'РќРµ РјРѕРіСѓ РІР°СЃ РЅР°Р№С‚Рё'; return 0; }
     }
-    else { $return = 'Нет такой сессии. Перелогиньтесь с введением логина и пароля'; return 0; }
+    else { $return = 'РќРµС‚ С‚Р°РєРѕР№ СЃРµСЃСЃРёРё. РџРµСЂРµР»РѕРіРёРЅСЊС‚РµСЃСЊ СЃ РІРІРµРґРµРЅРёРµРј Р»РѕРіРёРЅР° Рё РїР°СЂРѕР»СЏ'; return 0; }
 }
 
 function GetNewMessages ($uid, &$id, &$login, &$uname, &$usurname, &$text, &$picname, &$thread, &$pro, &$online, &$time, &$head, &$budget, &$b_type, &$type, &$role, &$lastmess, $maxmess=100) {
@@ -295,8 +295,8 @@ function GetNewMessages ($uid, &$id, &$login, &$uname, &$usurname, &$text, &$pic
         if ($users_is_pro=="t") $tmp_mess .='<a href="'.$GLOBALS["host"].'/payed/"><img src="'.$GLOBALS["host"].'/images/icons/f-pro.png" alt="" class="pro"></a>';
         $tmp_mess .=view_online_status($users_login);
         $tmp_mess .='<a href="'.$GLOBALS["host"].'/users/'.$users_login.'" class="frlname11">'.$users_uname.' '.$users_usurname.'</a> [<a href="'.$GLOBALS["host"].'/users/'.$users_login.'" class="frlname11">'.$users_login.'</a>]<br>
-        <font class="cl9">Всего сообщений: '.$messages_count.'</font><br>
-        <a  target="_blank" href="'.$GLOBALS["host"].'/contacts/?from='.$users_login.'#form" class="blue">Написать новое сообщение</a><br>
+        <font class="cl9">Р’СЃРµРіРѕ СЃРѕРѕР±С‰РµРЅРёР№: '.$messages_count.'</font><br>
+        <a  target="_blank" href="'.$GLOBALS["host"].'/contacts/?from='.$users_login.'#form" class="blue">РќР°РїРёСЃР°С‚СЊ РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ</a><br>
         </td>
 
         </tr>
@@ -320,18 +320,18 @@ function GetNewMessages ($uid, &$id, &$login, &$uname, &$usurname, &$text, &$pic
     else return 1;
 }
 /*
-формат фильтра
+С„РѕСЂРјР°С‚ С„РёР»СЊС‚СЂР°
 $filter
-[0] - включен? = 0
-[1] - бюджет от = 0
-[2] - бюджет до = 0
-[3] - Показывать с неуказанным бюджетом = 1
-[4] - разработка сайтов = 1 (2 Разработка сайта)
-[5] - программирование = 1 (1 Программирование)
-[6] - Переводы тексты = 1 (3 Тексты, переводы)
-[7] - Дизайнарт = 1 (4 Дизайн)
-[8] - реклама-маркетинг = 1 (5 Реклама, маркетинг)
-[9] - прочее = 1 (6 Прочее)
+[0] - РІРєР»СЋС‡РµРЅ? = 0
+[1] - Р±СЋРґР¶РµС‚ РѕС‚ = 0
+[2] - Р±СЋРґР¶РµС‚ РґРѕ = 0
+[3] - РџРѕРєР°Р·С‹РІР°С‚СЊ СЃ РЅРµСѓРєР°Р·Р°РЅРЅС‹Рј Р±СЋРґР¶РµС‚РѕРј = 1
+[4] - СЂР°Р·СЂР°Р±РѕС‚РєР° СЃР°Р№С‚РѕРІ = 1 (2 Р Р°Р·СЂР°Р±РѕС‚РєР° СЃР°Р№С‚Р°)
+[5] - РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ = 1 (1 РџСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ)
+[6] - РџРµСЂРµРІРѕРґС‹ С‚РµРєСЃС‚С‹ = 1 (3 РўРµРєСЃС‚С‹, РїРµСЂРµРІРѕРґС‹)
+[7] - Р”РёР·Р°Р№РЅР°СЂС‚ = 1 (4 Р”РёР·Р°Р№РЅ)
+[8] - СЂРµРєР»Р°РјР°-РјР°СЂРєРµС‚РёРЅРі = 1 (5 Р РµРєР»Р°РјР°, РјР°СЂРєРµС‚РёРЅРі)
+[9] - РїСЂРѕС‡РµРµ = 1 (6 РџСЂРѕС‡РµРµ)
 [10] - 0 - free
 [11] - 1 - office
 [12] - 2 - koncurs
@@ -442,7 +442,7 @@ function GetNewProjects ($uid, $filter,  &$id, &$login, &$uname, &$usurname, &$t
             /*
             $prjs_id[]=$prj_arr["id"];
             $prj_desc=preg_replace("|[\n\r]|is", "",reformat(strip_tags(LenghtFormatEx($prj_arr['descr'], 300),"<br>"), 96, 1));
-            $prjs[]=mb_convert_encoding('<div class="prj_bold">'.preg_replace("|[\n\r]|is", "",reformat($prj_arr["name"],60,0,1)).($prj_arr["cost"] ? '<br>Бюджет: '.CurToChar($prj_arr['cost'], $prj_arr['currency']) : "").'</div> <a target="_blank" class="prj_a" href="'.$GLOBALS["host"].'/blogs/view.php?tr='.$prj_arr["thread_id"].'">'.substr($prj_desc,0,1000).(strlen($prj_desc)> 1000 ? "..." : "").'</a><br><a target="_blank" class="user_blue" href="'.$GLOBALS["host"].'/users/'.$prj_arr["login"].'/">'.$prj_arr["uname"].' '.$prj_arr["usurname"].' ['.$prj_arr["login"].']</a> <div  class="cl9"> Прошло '.ago_pub(strtotimeEx($prj_arr['post_date'])).'</div> ', "UTF-8", "windows-1251");
+            $prjs[]=mb_convert_encoding('<div class="prj_bold">'.preg_replace("|[\n\r]|is", "",reformat($prj_arr["name"],60,0,1)).($prj_arr["cost"] ? '<br>Р‘СЋРґР¶РµС‚: '.CurToChar($prj_arr['cost'], $prj_arr['currency']) : "").'</div> <a target="_blank" class="prj_a" href="'.$GLOBALS["host"].'/blogs/view.php?tr='.$prj_arr["thread_id"].'">'.substr($prj_desc,0,1000).(strlen($prj_desc)> 1000 ? "..." : "").'</a><br><a target="_blank" class="user_blue" href="'.$GLOBALS["host"].'/users/'.$prj_arr["login"].'/">'.$prj_arr["uname"].' '.$prj_arr["usurname"].' ['.$prj_arr["login"].']</a> <div  class="cl9"> РџСЂРѕС€Р»Рѕ '.ago_pub(strtotimeEx($prj_arr['post_date'])).'</div> ', "UTF-8", "windows-1251");
 
             */
             if ($prj_arr["id"]>$lastprj) { $lastprj=$prj_arr["id"]; }

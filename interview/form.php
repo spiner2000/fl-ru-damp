@@ -101,33 +101,33 @@
     }
 </script>
 <div class="form ai-form interview-<?=isset($id) ? 'one-' : ''?>edit" style="display:none;">
-    <h3><?=!isset($id) ? 'Новое' : 'Редактировать'?> интервью</h3>
+    <h3><?=!isset($id) ? 'РќРѕРІРѕРµ' : 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ'?> РёРЅС‚РµСЂРІСЊСЋ</h3>
     <form action="" method="post" name="interviewForm" onsubmit="return false;">
         <fieldset>
         <input type="hidden" name="task" value="add"/>
         <input type="hidden" name="id" value=""/>
         <input type="hidden" name="page_view" value="<?=$_page?>"/>
             <div class="form-el">
-                <label class="form-label3">Логин героя:</label>
+                <label class="form-label3">Р›РѕРіРёРЅ РіРµСЂРѕСЏ:</label>
                 <span class="login-input" style="<?=isset($form_data['login']) ? 'display:none;' : ''?>">
                     <input type="text" size="40" name="login" value="<?=isset($form_data['login']) ? $form_data['login'] : ''?>" />
                 </span>
                 <span class="login-view" style="<?=!isset($form_data['login']) ? 'display:none;' : ''?>">
-                    <a href="#"><?=isset($form_data['username']) ? $form_data['username'] : ''?></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="changeLogin()">изменить</a>
+                    <a href="#"><?=isset($form_data['username']) ? $form_data['username'] : ''?></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="changeLogin()">РёР·РјРµРЅРёС‚СЊ</a>
                 </span>
                 <span class="login-error" style="display:none;">
-                    Пользователь не найден
+                    РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РЅР°Р№РґРµРЅ
                 </span>
             </div>
             <div class="form-el">
-                <label class="form-label3">Текст интервью:</label>
+                <label class="form-label3">РўРµРєСЃС‚ РёРЅС‚РµСЂРІСЊСЋ:</label>
                 <div class="form-edit form-fck2">
                     <textarea rows="20" cols="100" name="txt"><?=isset($form_data['txt']) ? $form_data['txt'] : ''?></textarea>
 <!--                    <ul class="cl-form-o c">
                         <li class="cl-form-tags">
-                            <a href="" class="question_tag">&lt;вопрос&gt;</a>
+                            <a href="" class="question_tag">&lt;РІРѕРїСЂРѕСЃ&gt;</a>
                             &nbsp;
-                            <a href="" class="answer_tag">&lt;ответ&gt;</a>
+                            <a href="" class="answer_tag">&lt;РѕС‚РІРµС‚&gt;</a>
                             &nbsp;&nbsp;&nbsp;
                             <a href="" class="b_tag">&lt;b&gt;</a>
                             <a href="" class="i_tag">&lt;i&gt;</a>
@@ -142,14 +142,14 @@
                     <div>
 <!--                        <ul class="form-edit-hint">
                             <li>
-                                Вставка изображения: <strong>&lt;img id="n"&gt;</strong>&nbsp;&nbsp;n — номер изображения
+                                Р’СЃС‚Р°РІРєР° РёР·РѕР±СЂР°Р¶РµРЅРёСЏ: <strong>&lt;img id="n"&gt;</strong>&nbsp;&nbsp;n вЂ” РЅРѕРјРµСЂ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
                             </li>
                             <li>
-                                <strong>&lt;p class="q"&gt;</strong> Вопрос <strong>&lt;/p&gt;</strong>&nbsp;&nbsp;
-                                <strong>&lt;p class="a"&gt;</strong> Ответ <strong>&lt;/p&gt;</strong>
+                                <strong>&lt;p class="q"&gt;</strong> Р’РѕРїСЂРѕСЃ <strong>&lt;/p&gt;</strong>&nbsp;&nbsp;
+                                <strong>&lt;p class="a"&gt;</strong> РћС‚РІРµС‚ <strong>&lt;/p&gt;</strong>
                             </li>
                             <li>
-                                Можно использовать
+                                РњРѕР¶РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ
                                 <strong>&lt;b&gt;</strong>&nbsp;
                                 <strong>&lt;i&gt;</strong>&nbsp;
                                 <strong>&lt;p&gt;</strong>&nbsp;
@@ -161,12 +161,12 @@
                         </ul>-->
                         <div class="add-photos">
                             <div class="add-photos-g c">
-                                <label class="add-photos-label">Основная фотография:</label>
+                                <label class="add-photos-label">РћСЃРЅРѕРІРЅР°СЏ С„РѕС‚РѕРіСЂР°С„РёСЏ:</label>
                                 <div class="add-photos-in main-f">
 																
                                     <ul class="form-files-added main-f"></ul>
 																
-                                    <div class="add-photos-up">180х180 px, JPG, GIF, PNG</div>
+                                    <div class="add-photos-up">180С…180 px, JPG, GIF, PNG</div>
                                     <ul class="form-files-list main-f ">
                                         <li>
                                             <span class="ap-id">&lt;img id=""&gt;</span>
@@ -176,7 +176,7 @@
                                 </div>
                             </div>
                             <div class="add-photos-g c">
-                                <label class="add-photos-label">Примеры работ:</label>
+                                <label class="add-photos-label">РџСЂРёРјРµСЂС‹ СЂР°Р±РѕС‚:</label>
                                 <div class="add-photos-in">
 																
                                     <ul class="form-files-added add-f"></ul>
@@ -193,8 +193,8 @@
                             </div>
                         </div>
                         <div class="form-btns">
-                            <input type="submit" class="i-btn i-bold" value="Сохранить" onclick="saveInterview(this.form)" />
-                            <input type="button" class="i-btn" value="Отменить" onclick="toggleAddForm(true)" />
+                            <input type="submit" class="i-btn i-bold" value="РЎРѕС…СЂР°РЅРёС‚СЊ" onclick="saveInterview(this.form)" />
+                            <input type="button" class="i-btn" value="РћС‚РјРµРЅРёС‚СЊ" onclick="toggleAddForm(true)" />
                         </div>
                     </div>
                 </div>
@@ -205,7 +205,7 @@
         <li>
             <input type="hidden" name="attaches[]" value="" />
             <span class="ap-id">&lt;img id="2"&gt;</span>
-            <a href="javascript:void(0)" title="Удалить" onclick="deleteAttach(this)"><img src="/images/btn-remove2.png" alt="Удалить" /></a>
+            <a href="javascript:void(0)" title="РЈРґР°Р»РёС‚СЊ" onclick="deleteAttach(this)"><img src="/images/btn-remove2.png" alt="РЈРґР°Р»РёС‚СЊ" /></a>
             <a href="javascript:void(0)"></a>
         </li>
     </ul>

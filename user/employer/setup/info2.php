@@ -3,7 +3,7 @@ if(!defined('IN_STDF')) {
     header("HTTP/1.0 404 Not Found");
     exit();
 }
-  // Меню для template2.php
+  // РњРµРЅСЋ РґР»СЏ template2.php
 	require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/freelancer.php");
 	$user = new employer();
 	$user->GetUser($login);
@@ -22,46 +22,46 @@ if(!defined('IN_STDF')) {
 			<td style="width:17px; height:17px; vertical-align:middle"><img src="/images/dot_black.gif" alt="" width="3" height="3" /></td>
 			<td style="height:17px">
 			
-			<? if ($inner == "main_inner.php") {?>Основные настройки<? } else {?><a href="/users/<?=$user->login?>/setup/main/" class="blue">Основные настройки</a><? } ?>
+			<? if ($inner == "main_inner.php") {?>РћСЃРЅРѕРІРЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё<? } else {?><a href="/users/<?=$user->login?>/setup/main/" class="blue">РћСЃРЅРѕРІРЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё</a><? } ?>
 			</td>
 		</tr>
 		<tr>
 			<td style="width:17px; height:17px; vertical-align:middle"><img src="/images/dot_black.gif" alt="" width="3" height="3" /></td>
 			<td style="height:17px">
-			<? if ($inner == "foto_inner.php") {?>Моя фотография<? } else {?><a href="/users/<?=$user->login?>/setup/foto/" class="blue">Моя фотография</a><? } ?>
+			<? if ($inner == "foto_inner.php") {?>РњРѕСЏ С„РѕС‚РѕРіСЂР°С„РёСЏ<? } else {?><a href="/users/<?=$user->login?>/setup/foto/" class="blue">РњРѕСЏ С„РѕС‚РѕРіСЂР°С„РёСЏ</a><? } ?>
 			</td>
 		</tr>
 		<tr>
 			<td style="width:17px; height:17px; vertical-align:middle"><img src="/images/dot_black.gif" alt="" width="3" height="3" /></td>
 			<td style="height:17px">
-			<? if ($inner == "mailer_inner.php") {?>Уведомления/Рассылка<? } else {?><a href="/users/<?=$user->login?>/setup/mailer/" class="blue">Уведомления/Рассылка</a><? } ?>
+			<? if ($inner == "mailer_inner.php") {?>РЈРІРµРґРѕРјР»РµРЅРёСЏ/Р Р°СЃСЃС‹Р»РєР°<? } else {?><a href="/users/<?=$user->login?>/setup/mailer/" class="blue">РЈРІРµРґРѕРјР»РµРЅРёСЏ/Р Р°СЃСЃС‹Р»РєР°</a><? } ?>
 			</td>
 		</tr>
 		<tr>
 			<td style="width:17px; height:17px; vertical-align:middle"><img src="/images/dot_black.gif" alt="" width="3" height="3" /></td>
 			<td style="height:17px">
-			<? if ($inner == "list_inner.php") {?>Настройка закладок<? } else {?><a href="/users/<?=$user->login?>/setup/tabssetup/" class="blue">Настройка закладок</a><? } ?>
+			<? if ($inner == "list_inner.php") {?>РќР°СЃС‚СЂРѕР№РєР° Р·Р°РєР»Р°РґРѕРє<? } else {?><a href="/users/<?=$user->login?>/setup/tabssetup/" class="blue">РќР°СЃС‚СЂРѕР№РєР° Р·Р°РєР»Р°РґРѕРє</a><? } ?>
 			</td>
 		</tr>
 		<tr>
 			<td style="width:17px; height:17px; vertical-align:middle"><img src="/images/dot_black.gif" alt="" width="3" height="3" /></td>
 			<td style="height:17px">
-			<? if ($inner == "safety_inner.php") {?>Безопасность<? } else {?><a href="/users/<?=$user->login?>/setup/safety/" class="blue">Безопасность</a><? } ?>
+			<? if ($inner == "safety_inner.php") {?>Р‘РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ<? } else {?><a href="/users/<?=$user->login?>/setup/safety/" class="blue">Р‘РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ</a><? } ?>
 			</td>
 		</tr>
 		<tr>
 			<td style="width:17px; height:17px; vertical-align:middle"><span class="del-icon"></span></td>
 			<td style="height:17px">
-					<a class="del-user-lnk blue" href="/users/<?=$user->login?>/setup/delete/">Удалить аккаунт</a>
+					<a class="del-user-lnk blue" href="/users/<?=$user->login?>/setup/delete/">РЈРґР°Р»РёС‚СЊ Р°РєРєР°СѓРЅС‚</a>
 			</td>
 		</tr>
 		</table>
 		<!--<ul>
-			<li><? if ($inner == "main_inner.php")   { ?>Основные настройки<? } else { ?><a href="/users/<?=$user->login?>/setup/main/">Основные настройки</a><? } ?></li>
-			<li><? if ($inner == "foto_inner.php")   { ?>Моя фотография<? } else { ?><a href="/users/<?=$user->login?>/setup/foto/">Моя фотография</a><? } ?></li>
-			<li><? if ($inner == "mailer_inner.php") { ?>Уведомления/Рассылка<? } else { ?><a href="/users/<?=$user->login?>/setup/mailer/">Уведомления/Рассылка</a><? } ?></li>
-			<li><? if ($inner == "list_inner.php")   { ?>Настройки закладок<? } else { ?><a href="/users/<?=$user->login?>/setup/tabssetup/">Настройки закладок</a><? } ?></li>
-			<li><? if ($inner == "safety_inner.php") { ?>Безопасность<? } else { ?><a href="/users/<?=$user->login?>/setup/safety/">Безопасность</a><? } ?></li>
+			<li><? if ($inner == "main_inner.php")   { ?>РћСЃРЅРѕРІРЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё<? } else { ?><a href="/users/<?=$user->login?>/setup/main/">РћСЃРЅРѕРІРЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё</a><? } ?></li>
+			<li><? if ($inner == "foto_inner.php")   { ?>РњРѕСЏ С„РѕС‚РѕРіСЂР°С„РёСЏ<? } else { ?><a href="/users/<?=$user->login?>/setup/foto/">РњРѕСЏ С„РѕС‚РѕРіСЂР°С„РёСЏ</a><? } ?></li>
+			<li><? if ($inner == "mailer_inner.php") { ?>РЈРІРµРґРѕРјР»РµРЅРёСЏ/Р Р°СЃСЃС‹Р»РєР°<? } else { ?><a href="/users/<?=$user->login?>/setup/mailer/">РЈРІРµРґРѕРјР»РµРЅРёСЏ/Р Р°СЃСЃС‹Р»РєР°</a><? } ?></li>
+			<li><? if ($inner == "list_inner.php")   { ?>РќР°СЃС‚СЂРѕР№РєРё Р·Р°РєР»Р°РґРѕРє<? } else { ?><a href="/users/<?=$user->login?>/setup/tabssetup/">РќР°СЃС‚СЂРѕР№РєРё Р·Р°РєР»Р°РґРѕРє</a><? } ?></li>
+			<li><? if ($inner == "safety_inner.php") { ?>Р‘РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ<? } else { ?><a href="/users/<?=$user->login?>/setup/safety/">Р‘РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ</a><? } ?></li>
 		</ul>-->
 	</div>
 </div>

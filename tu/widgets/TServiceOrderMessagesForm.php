@@ -6,7 +6,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/tservices/tservices_helper.ph
 /**
  * Class TServiceOrderMessagesForm
  *
- * Âèäæåò - Ôîğìà ñîîáùåíèÿ â ïåğåïèñêå â çàêàçå
+ * Ğ’Ğ¸Ğ´Ğ¶ĞµÑ‚ - Ğ¤Ğ¾Ñ€Ğ¼Ğ° ÑĞ¾Ğ¾Ğ±Ñ‰ĞµĞ½Ğ¸Ñ Ğ² Ğ¿ĞµÑ€ĞµĞ¿Ğ¸ÑĞºĞµ Ğ² Ğ·Ğ°ĞºĞ°Ğ·Ğµ
  */
 class TServiceOrderMessagesForm extends CWidget 
 {
@@ -30,13 +30,13 @@ class TServiceOrderMessagesForm extends CWidget
     {
         $attachedfiles = new attachedfiles();
         $attachedfiles_session = $attachedfiles->getSession();
-        //Õåø áåçîïàñíîñòè öåëîñíîñòè ïàğàìåòğîâ ôîğìû
-        //ñåé÷àñ èñïîëüçóåòñÿ äëÿ çàãğóç÷èêà ôàéëîâ
+        //Ğ¥ĞµÑˆ Ğ±ĞµĞ·Ğ¾Ğ¿Ğ°ÑĞ½Ğ¾ÑÑ‚Ğ¸ Ñ†ĞµĞ»Ğ¾ÑĞ½Ğ¾ÑÑ‚Ğ¸ Ğ¿Ğ°Ñ€Ğ°Ğ¼ĞµÑ‚Ñ€Ğ¾Ğ² Ñ„Ğ¾Ñ€Ğ¼Ñ‹
+        //ÑĞµĞ¹Ñ‡Ğ°Ñ Ğ¸ÑĞ¿Ğ¾Ğ»ÑŒĞ·ÑƒĞµÑ‚ÑÑ Ğ´Ğ»Ñ Ğ·Ğ°Ğ³Ñ€ÑƒĞ·Ñ‡Ğ¸ĞºĞ° Ñ„Ğ°Ğ¹Ğ»Ğ¾Ğ²
         $param_hash = tservices_helper::getOrderUrlHash(
                 array((int)$this->order_id, $attachedfiles_session),
                 $this->uid);
         
-        //ñîáèğàåì øàáëîí
+        //ÑĞ¾Ğ±Ğ¸Ñ€Ğ°ĞµĞ¼ ÑˆĞ°Ğ±Ğ»Ğ¾Ğ½
         $this->render('t-service-order-messages-form', array(
             'order_id' => $this->order_id,
             'param_hash' => $param_hash,

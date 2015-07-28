@@ -2,8 +2,8 @@
 
 /**
  * 
- * Êëàññ äëÿ ðàáîòû ñ ëîãàìè ñôèíêñà. 
- * Ïîëó÷åííûå äàííûå èñïîëüçóþòñÿ íà ñòðàíèöå ïîèñêà /search äëÿ ïîäñêàçîê
+ * ÐšÐ»Ð°ÑÑ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ Ð»Ð¾Ð³Ð°Ð¼Ð¸ ÑÑ„Ð¸Ð½ÐºÑÐ°. 
+ * ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð½Ñ‹Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÑŽÑ‚ÑÑ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ Ð¿Ð¾Ð¸ÑÐºÐ° /search Ð´Ð»Ñ Ð¿Ð¾Ð´ÑÐºÐ°Ð·Ð¾Ðº
  * (http://beta.free-lance.ru/mantis/view.php?id=13466)
  * 
  */
@@ -20,21 +20,21 @@ class search_parser {
 
     private static $instance;
     /**
-     * Ôàéë àðõèâà ñ ëîãîì
+     * Ð¤Ð°Ð¹Ð» Ð°Ñ€Ñ…Ð¸Ð²Ð° Ñ Ð»Ð¾Ð³Ð¾Ð¼
      * 
      * @var string 
      */
     public $sphinxLog = '/var/www/_sphinx/log/query.log.1.gz';
 
     /**
-     * Óêàçàòåëü íà îòêðûòûé ôàéë
+     * Ð£ÐºÐ°Ð·Ð°Ñ‚ÐµÐ»ÑŒ Ð½Ð° Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ñ‹Ð¹ Ñ„Ð°Ð¹Ð»
      * 
      * @var resource 
      */
     private $_resource = NULL;
 
     /**
-     * Ôàéë ëîãà âûïîëíåíèÿ
+     * Ð¤Ð°Ð¹Ð» Ð»Ð¾Ð³Ð° Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ
      * 
      * @var string 
      */
@@ -46,16 +46,16 @@ class search_parser {
     private $_log;
 
     /**
-     * Ôîðìàò ëîãà ([query-date] query-time [match-mode/filters-count/sort-mode
+     * Ð¤Ð¾Ñ€Ð¼Ð°Ñ‚ Ð»Ð¾Ð³Ð° ([query-date] query-time [match-mode/filters-count/sort-mode
      *               total-matches (offset,limit) @groupby-attr] [index-name] query)
-     * áåðåì âñå, êðîìå äàò
+     * Ð±ÐµÑ€ÐµÐ¼ Ð²ÑÐµ, ÐºÑ€Ð¾Ð¼Ðµ Ð´Ð°Ñ‚
      * 
      * @var string 
      */
     private $_sphinxLogFormat = "/\[[a-z]+\/\d+\/.*? (\d+) \(\d+,\d+\)\] \[(.*?)\] (.*?)$/si";
     
     /**
-     * Ññûëêà íà ïîäêëþ÷åíèå
+     * Ð¡ÑÑ‹Ð»ÐºÐ° Ð½Ð° Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ
      * 
      * @var DB 
      */
@@ -102,8 +102,8 @@ class search_parser {
 
     /**
      * 
-     * Áåðåò ðàñïàêîâàííûé ëîã è ðàñêèäûâàåò äàííûå ïî òðåì òàáëèöàì 
-     * (â ñîîòâåòñòâèè ñ ðàçäåëàìè ïîèñêà)
+     * Ð‘ÐµÑ€ÐµÑ‚ Ñ€Ð°ÑÐ¿Ð°ÐºÐ¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ð»Ð¾Ð³ Ð¸ Ñ€Ð°ÑÐºÐ¸Ð´Ñ‹Ð²Ð°ÐµÑ‚ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð¿Ð¾ Ñ‚Ñ€ÐµÐ¼ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ð°Ð¼ 
+     * (Ð² ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²Ð¸Ð¸ Ñ Ñ€Ð°Ð·Ð´ÐµÐ»Ð°Ð¼Ð¸ Ð¿Ð¾Ð¸ÑÐºÐ°)
      * 
      */
     public function parseRaw() {
@@ -112,11 +112,11 @@ class search_parser {
         if (!$file) {
             return;
         }
-        $this->_log("Îáðàáîòêà ëîãà '$this->sphinxLog'.");
+        $this->_log("ÐžÐ±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ° Ð»Ð¾Ð³Ð° '$this->sphinxLog'.");
         
         $lastmod = @filemtime($this->sphinxLog); // @ - #0015499 stat failed
         if (date('Y-m-d', $lastmod) != date('Y-m-d')) {
-            $this->_log("Íîâûõ äàííûõ íåò.");
+            $this->_log("ÐÐ¾Ð²Ñ‹Ñ… Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð½ÐµÑ‚.");
             return;
         }
         
@@ -127,7 +127,7 @@ class search_parser {
             if (preg_match($this->_sphinxLogFormat, $str, $data)) {
                 if (!$data[1]) continue;
                 
-                //èìÿ èíäåêñà ñôèíêñà
+                //Ð¸Ð¼Ñ Ð¸Ð½Ð´ÐµÐºÑÐ° ÑÑ„Ð¸Ð½ÐºÑÐ°
                 $index = explode(";", $data[2]);
                 $index = trim($index[0]);
                 
@@ -164,7 +164,7 @@ class search_parser {
                     foreach ($a_sql as $table => $data) {
                         $ret = $this->_db->insert($table, $data);
                         if ($ret === FALSE) {
-                            $this->_log("Îøèáêà çàïèñè â áàçó: {$this->_db->error}", "error");
+                            $this->_log("ÐžÑˆÐ¸Ð±ÐºÐ° Ð·Ð°Ð¿Ð¸ÑÐ¸ Ð² Ð±Ð°Ð·Ñƒ: {$this->_db->error}", "error");
                             return;
                         }
                     }
@@ -179,39 +179,39 @@ class search_parser {
             foreach ($a_sql as $table => $data) {
                 $ret = $this->_db->insert($table, $data);
                 if ($ret === FALSE) {
-                    $this->_log("Îøèáêà çàïèñè â áàçó: {$this->_db->error}", "error");
+                    $this->_log("ÐžÑˆÐ¸Ð±ÐºÐ° Ð·Ð°Ð¿Ð¸ÑÐ¸ Ð² Ð±Ð°Ð·Ñƒ: {$this->_db->error}", "error");
                     return;
                 }
             }
         }
-        $this->_log("×òåíèå ëîãà çàêîí÷åíî. $cnt_all ñòðîê äîáàâëåíî.");
+        $this->_log("Ð§Ñ‚ÐµÐ½Ð¸Ðµ Ð»Ð¾Ð³Ð° Ð·Ð°ÐºÐ¾Ð½Ñ‡ÐµÐ½Ð¾. $cnt_all ÑÑ‚Ñ€Ð¾Ðº Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¾.");
     }
     
     /**
-     * Ôèëüòðóåò "ñûðûå" äàííûå è ñîõðàíÿåò â òàáëèöó search_kwords_tmp
+     * Ð¤Ð¸Ð»ÑŒÑ‚Ñ€ÑƒÐµÑ‚ "ÑÑ‹Ñ€Ñ‹Ðµ" Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð¸ ÑÐ¾Ñ…Ñ€Ð°Ð½ÑÐµÑ‚ Ð² Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñƒ search_kwords_tmp
      * 
      * @param type $from 
      */
     public function filterRaw($from = '') {
-        $type = "ïî âñåì èíäåêñàì (êðîìå projects, users, users_na)";
+        $type = "Ð¿Ð¾ Ð²ÑÐµÐ¼ Ð¸Ð½Ð´ÐµÐºÑÐ°Ð¼ (ÐºÑ€Ð¾Ð¼Ðµ projects, users, users_na)";
         if ($from) {
-            $type = "ïî èíäåêñó '$from'";
+            $type = "Ð¿Ð¾ Ð¸Ð½Ð´ÐµÐºÑÑƒ '$from'";
         }
-        $this->_log("Ôèëüòðàöèÿ çàïðîñîâ {$type}.");
+        $this->_log("Ð¤Ð¸Ð»ÑŒÑ‚Ñ€Ð°Ñ†Ð¸Ñ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ¾Ð² {$type}.");
         
         $sql = "SELECT * FROM search_kwords_parser('$from')";
         $res = $this->_db->query($sql);
         
         if ($this->_db->error) {
-            $this->_log("Îøèáêà çàïèñè â áàçó: {$this->_db->error}", "error");
+            $this->_log("ÐžÑˆÐ¸Ð±ÐºÐ° Ð·Ð°Ð¿Ð¸ÑÐ¸ Ð² Ð±Ð°Ð·Ñƒ: {$this->_db->error}", "error");
         }
     }
     
     /**
-     * Ôèëüòðàöèÿ â èòîãîâîé òàáëèöå ïî çàäàííûì óñëîâèÿì
+     * Ð¤Ð¸Ð»ÑŒÑ‚Ñ€Ð°Ñ†Ð¸Ñ Ð² Ð¸Ñ‚Ð¾Ð³Ð¾Ð²Ð¾Ð¹ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ðµ Ð¿Ð¾ Ð·Ð°Ð´Ð°Ð½Ð½Ñ‹Ð¼ ÑƒÑÐ»Ð¾Ð²Ð¸ÑÐ¼
      * 
-     * @param type $rule_id     ÈÄ ïðàâèëà ôèëüòðàöèè (search_kwords_filters_rules)
-     * @param type $query       Òåêñò ôèëüòðà
+     * @param type $rule_id     Ð˜Ð” Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð° Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ (search_kwords_filters_rules)
+     * @param type $query       Ð¢ÐµÐºÑÑ‚ Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð°
      * @return type 
      */
     public function filterByRule($rule_id, $query) {
@@ -235,7 +235,7 @@ class search_parser {
     }
     
     /**
-     * Óäàëÿåò çàïðîñû, âåñ (cnt*match_cnt) êîòîðûõ ìåíüøå òåêóùåãî çíà÷åíèÿ search_kwords_settings.min_cnt
+     * Ð£Ð´Ð°Ð»ÑÐµÑ‚ Ð·Ð°Ð¿Ñ€Ð¾ÑÑ‹, Ð²ÐµÑ (cnt*match_cnt) ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ñ… Ð¼ÐµÐ½ÑŒÑˆÐµ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ³Ð¾ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ search_kwords_settings.min_cnt
      * 
      * @return type 
      */
@@ -290,12 +290,12 @@ class search_parser {
     }
 
     /**
-     * Ïîëó÷àåò ñïèñîê ïîëüçîâàòåëüñêèõ çàïðîñîâ
+     * ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÑ‚ ÑÐ¿Ð¸ÑÐ¾Ðº Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÑÐºÐ¸Ñ… Ð·Ð°Ð¿Ñ€Ð¾ÑÐ¾Ð²
      * 
-     * @param type $start   Ôèëüòð ïî ïåðâîìó ñèìâîëó
+     * @param type $start   Ð¤Ð¸Ð»ÑŒÑ‚Ñ€ Ð¿Ð¾ Ð¿ÐµÑ€Ð²Ð¾Ð¼Ñƒ ÑÐ¸Ð¼Ð²Ð¾Ð»Ñƒ
      * @param type $limit   
      * @param type $offset
-     * @param type $count   Âîçâðàùàåò êîë-âî ñòðîê äëÿ ïîñòðàíè÷êè
+     * @param type $count   Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ ÐºÐ¾Ð»-Ð²Ð¾ ÑÑ‚Ñ€Ð¾Ðº Ð´Ð»Ñ Ð¿Ð¾ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ‡ÐºÐ¸
      * @return array             
      */
     public function getQueries($start = '', $limit = 40, $offset = 0, &$count = 0) {
@@ -308,7 +308,7 @@ class search_parser {
         }
         
         if ($start == 'others') {
-            $where = " WHERE substring(lower(query) from E'^[a-zà-ÿ0-9]{1}') IS NULL ";
+            $where = " WHERE substring(lower(query) from E'^[a-zÐ°-Ñ0-9]{1}') IS NULL ";
         }
         
         if ($start == 'num') {
@@ -351,9 +351,9 @@ class search_parser {
     }
     
     /**
-     * Óäàëÿåò çàïðîñ ïî ID
+     * Ð£Ð´Ð°Ð»ÑÐµÑ‚ Ð·Ð°Ð¿Ñ€Ð¾Ñ Ð¿Ð¾ ID
      * 
-     * @param int $id       ÈÄ çàïðîñà
+     * @param int $id       Ð˜Ð” Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°
      * @return type 
      */
     public function removeQuery($id) {
@@ -361,7 +361,7 @@ class search_parser {
     }
     
     /**
-     * Ïîëó÷àåò ñïèñîê ïðàâèë ôèëüòðàöèè
+     * ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÑ‚ ÑÐ¿Ð¸ÑÐ¾Ðº Ð¿Ñ€Ð°Ð²Ð¸Ð» Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð°Ñ†Ð¸Ð¸
      * 
      * @return array 
      */
@@ -370,10 +370,10 @@ class search_parser {
     }
     
     /**
-     * Äîáàâëÿåò óñëîâèå ôèëüòðàöèè
+     * Ð”Ð¾Ð±Ð°Ð²Ð»ÑÐµÑ‚ ÑƒÑÐ»Ð¾Ð²Ð¸Ðµ Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð°Ñ†Ð¸Ð¸
      * 
-     * @param string $name      Èìÿ
-     * @param string $pattern   Óñëîâèå
+     * @param string $name      Ð˜Ð¼Ñ
+     * @param string $pattern   Ð£ÑÐ»Ð¾Ð²Ð¸Ðµ
      * @return type 
      */
     public function addRule ($name, $pattern) {
@@ -384,9 +384,9 @@ class search_parser {
     }
     
     /**
-     * Óäàëÿåò óñëîâèå ôèëòðàöèè
+     * Ð£Ð´Ð°Ð»ÑÐµÑ‚ ÑƒÑÐ»Ð¾Ð²Ð¸Ðµ Ñ„Ð¸Ð»Ñ‚Ñ€Ð°Ñ†Ð¸Ð¸
      * 
-     * @param int $id       ÈÄ óñëîâèÿ
+     * @param int $id       Ð˜Ð” ÑƒÑÐ»Ð¾Ð²Ð¸Ñ
      * @return type 
      */
     public function deleteRuleById($id) {
@@ -397,7 +397,7 @@ class search_parser {
     }
     
     /**
-     * Ïîëó÷àåò ñïèñîê ôèëüòðîâ
+     * ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÑ‚ ÑÐ¿Ð¸ÑÐ¾Ðº Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð¾Ð²
      * 
      * @return type 
      */
@@ -408,9 +408,9 @@ class search_parser {
     }
     
     /**
-     * Âîçâðàùàåò ìàññèâ ñ äàííûìè ôèëüòðà
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð¼Ð°ÑÑÐ¸Ð² Ñ Ð´Ð°Ð½Ð½Ñ‹Ð¼Ð¸ Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð°
      * 
-     * @param int $id       ÈÄ ôèëüòðà
+     * @param int $id       Ð˜Ð” Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð°
      * @return type 
      */
     public function getFilter($id) {
@@ -420,11 +420,11 @@ class search_parser {
     }
     
     /**
-     * Ñîçäàåò íîâûé ôèëüòð
+     * Ð¡Ð¾Ð·Ð´Ð°ÐµÑ‚ Ð½Ð¾Ð²Ñ‹Ð¹ Ñ„Ð¸Ð»ÑŒÑ‚Ñ€
      * 
-     * @param string $word          Ñòðîêà ôèëüòðàöèè
-     * @param int $rule             ÈÄ óñëîâèÿ ôèëüòðàöèè
-     * @param bool $filterBase      Âûïîëíèòü ôèëüòðàöèþ äàííûõ â îñíîâíîé òàáëèöå ñ íîâûìè óñëîâèÿìè?
+     * @param string $word          Ð¡Ñ‚Ñ€Ð¾ÐºÐ° Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð°Ñ†Ð¸Ð¸
+     * @param int $rule             Ð˜Ð” ÑƒÑÐ»Ð¾Ð²Ð¸Ñ Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð°Ñ†Ð¸Ð¸
+     * @param bool $filterBase      Ð’Ñ‹Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÑŒ Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð°Ñ†Ð¸ÑŽ Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð² Ð¾ÑÐ½Ð¾Ð²Ð½Ð¾Ð¹ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ðµ Ñ Ð½Ð¾Ð²Ñ‹Ð¼Ð¸ ÑƒÑÐ»Ð¾Ð²Ð¸ÑÐ¼Ð¸?
      * @return type 
      */
     public function addFilter($word, $rule, $filterBase = FALSE) {
@@ -451,9 +451,9 @@ class search_parser {
     }
     
     /**
-     * Óäàëåíèå ôèëüòðà ïî ÈÄ
+     * Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð° Ð¿Ð¾ Ð˜Ð”
      * 
-     * @param int $id       ÈÄ ôèëüòðà
+     * @param int $id       Ð˜Ð” Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð°
      * @return type 
      */
     public function deleteFilterById($id) {
@@ -466,7 +466,7 @@ class search_parser {
     }
     
     /**
-     * Âîçâðàùàåò ìàññèâ ñ íàñòðîéêàìè
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð¼Ð°ÑÑÐ¸Ð² Ñ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ°Ð¼Ð¸
      * 
      * @return array 
      */
@@ -475,7 +475,7 @@ class search_parser {
     }
     
     /**
-     * Óñòàíàâëèâàåò íàñòðîéêè
+     * Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÑ‚ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸
      * 
      * @param array $data       
      * @return type 
@@ -576,9 +576,9 @@ class search_parser {
     }
 
     /**
-     * Ðàñïàêîâûâàåò ôàéë àðõèâà
+     * Ð Ð°ÑÐ¿Ð°ÐºÐ¾Ð²Ñ‹Ð²Ð°ÐµÑ‚ Ñ„Ð°Ð¹Ð» Ð°Ñ€Ñ…Ð¸Ð²Ð°
      * 
-     * @return resource  Âîçâðàùàåò óêàçàòåëü íà ôàéë.
+     * @return resource  Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ ÑƒÐºÐ°Ð·Ð°Ñ‚ÐµÐ»ÑŒ Ð½Ð° Ñ„Ð°Ð¹Ð».
      */
     private function _getFile() {
         if (is_file($this->sphinxLog)) {
@@ -586,12 +586,12 @@ class search_parser {
             $this->_resource = fopen($file, 'r');
             
             if (!$this->_resource) {
-                $this->_log("Îøèáêà ïðè îòêðûòèè ôàéëà '$file'.", 'error');
+                $this->_log("ÐžÑˆÐ¸Ð±ÐºÐ° Ð¿Ñ€Ð¸ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ð¸ Ñ„Ð°Ð¹Ð»Ð° '$file'.", 'error');
             }
             
             return $this->_resource;
         } else {
-            $this->_log("Ôàéë '$this->sphinxLog' íå íàéäåí.", 'error');
+            $this->_log("Ð¤Ð°Ð¹Ð» '$this->sphinxLog' Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½.", 'error');
         }
     }
     

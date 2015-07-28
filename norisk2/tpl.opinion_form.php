@@ -2,24 +2,24 @@
     <input type="hidden" id="feedback_id" value="<?= $op['id'];?>"/>
     <input type="hidden" id="stage_id" value="<?= $op['stage_id'];?>"/>
     <input type="hidden" id="login" value="<?=$login_user?>"/>
-    <div class="b-username b-username_bold b-username_padbot_10">Ваша <br class="b-page__iphone">рекомендация</div>			
+    <div class="b-username b-username_bold b-username_padbot_10">Р’Р°С€Р° <br class="b-page__iphone">СЂРµРєРѕРјРµРЅРґР°С†РёСЏ</div>			
     <div class="b-post__voice-item b-post__voice-item_positive <?= $op['rating'] == 1 ? 'b-post__voice-item_current' : '' ;?>">
-        <a class="b-post__link" href="javascript:void(0)" onclick="setVote(1)"><span class="b-post__voice b-post__voice_apositive"></span><span class="b-post__inner-link">Положительная</span></a>
+        <a class="b-post__link" href="javascript:void(0)" onclick="setVote(1)"><span class="b-post__voice b-post__voice_apositive"></span><span class="b-post__inner-link">РџРѕР»РѕР¶РёС‚РµР»СЊРЅР°СЏ</span></a>
         <input type="radio" value="1" name="ops_type" <?= $op['rating'] == 1 ? 'checked="checked"' : '' ;?> style="display:none"/>
     </div>
     <div class="b-post__voice-item b-post__voice-item_neutral <?= $op['rating'] == 0 ? 'b-post__voice-item_current' : '' ;?>">
-        <a class="b-post__link " href="javascript:void(0)" onclick="setVote(0)"><span class="b-post__voice b-post__voice_anegative"></span><span class="b-post__inner-link">Нейтральная</span></a>
+        <a class="b-post__link " href="javascript:void(0)" onclick="setVote(0)"><span class="b-post__voice b-post__voice_anegative"></span><span class="b-post__inner-link">РќРµР№С‚СЂР°Р»СЊРЅР°СЏ</span></a>
         <input type="radio" value="0" name="ops_type" <?= $op['rating'] == 0 ? 'checked="checked"' : '' ;?> style="display:none"/>
     </div>
     <div class="b-post__voice-item b-post__voice-item_negative <?= $op['rating'] == -1 ? 'b-post__voice-item_current' : '' ;?>">
-        <a class="b-post__link " href="javascript:void(0)" onclick="setVote(-1)"><span class="b-post__voice b-post__voice_aneutral"></span><span class="b-post__inner-link">Отрицательная</span></a>
+        <a class="b-post__link " href="javascript:void(0)" onclick="setVote(-1)"><span class="b-post__voice b-post__voice_aneutral"></span><span class="b-post__inner-link">РћС‚СЂРёС†Р°С‚РµР»СЊРЅР°СЏ</span></a>
         <input type="radio" value="-1" name="ops_type" <?= $op['rating'] == -1 ? 'checked="checked"' : '' ;?> style="display:none"/>
     </div>
     <? if(hasPermissions("sbr")) { ?>
     <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_150">
-                <div class="b-layout__txt b-layout__txt_padtop_5">Название сделки</div>
+                <div class="b-layout__txt b-layout__txt_padtop_5">РќР°Р·РІР°РЅРёРµ СЃРґРµР»РєРё</div>
             </td>
             <td class="b-layout__right">
                 <div class="b-combo">
@@ -33,7 +33,7 @@
     <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_150">
-                <div class="b-layout__txt b-layout__txt_padtop_5">Название этапа</div>
+                <div class="b-layout__txt b-layout__txt_padtop_5">РќР°Р·РІР°РЅРёРµ СЌС‚Р°РїР°</div>
             </td>
             <td class="b-layout__right">
                 <div class="b-combo">
@@ -49,7 +49,7 @@
 	   <textarea rows="5" cols="80" name="" id="sbr_op_text" class="b-textarea__textarea  b-textarea__textarea__height_50"><?= $op['descr'];?></textarea>
 	</div>
 	<div class="form-btn">
-        <a href="javascript:void(0)" onclick="submitEditSBROp(<?= hasPermissions("sbr") ? "$('sbr_name').get('value'), $('stage_name').get('value')" : ""?>)" class="btnr btnr-t"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Сохранить</span></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp; 
-        <a href="javascript:void(0);" onclick="reverseForm(<?= (int)$op['id']?>);" class="lnk-dot-666">Отменить</a>
+        <a href="javascript:void(0)" onclick="submitEditSBROp(<?= hasPermissions("sbr") ? "$('sbr_name').get('value'), $('stage_name').get('value')" : ""?>)" class="btnr btnr-t"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РЎРѕС…СЂР°РЅРёС‚СЊ</span></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp; 
+        <a href="javascript:void(0);" onclick="reverseForm(<?= (int)$op['id']?>);" class="lnk-dot-666">РћС‚РјРµРЅРёС‚СЊ</a>
     </div>   
 </form>

@@ -1,13 +1,13 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/search/search_element.php";
 /**
- * Êëàññ äëÿ ïîèñêà ïî ñîîáùåíèÿì
+ * ÐšÐ»Ð°ÑÑ Ð´Ð»Ñ Ð¿Ð¾Ð¸ÑÐºÐ° Ð¿Ð¾ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸ÑÐ¼
  *
  */
 class searchElementMessages extends searchElement
 {
-    public $name = 'Ëè÷íûå ñîîáùåíèÿ';
-    public $totalwords = array('ñîîáùåíèå', 'ñîîáùåíèÿ', 'ñîîáùåíèé');
+    public $name = 'Ð›Ð¸Ñ‡Ð½Ñ‹Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ';
+    public $totalwords = array('ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ', 'ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ', 'ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¹');
 
 
     function setEngine() {
@@ -30,7 +30,7 @@ class searchElementMessages extends searchElement
     }
     
     /**
-     * Âçÿòü èíôîðìàöèþ ïî íàéäåííûì ðåçóëüòàòàì
+     * Ð’Ð·ÑÑ‚ÑŒ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¿Ð¾ Ð½Ð°Ð¹Ð´ÐµÐ½Ð½Ñ‹Ð¼ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð°Ð¼
      *
      * @return array
      */

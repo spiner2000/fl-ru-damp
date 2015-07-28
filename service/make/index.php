@@ -10,7 +10,7 @@ include $_SERVER['DOCUMENT_ROOT']."/404.php";
 exit;
 $stretch_page = true;
 $showMainDiv  = true;
-$page_title = "Сервис «Сделаю» - фриланс, удаленная работа на FL.ru";
+$page_title = "РЎРµСЂРІРёСЃ В«РЎРґРµР»Р°СЋВ» - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
 $header   = "$rpath/header.php";
 $content  = 'content.php';
 $js_file = array( 'banned.js', 'warning.js' );

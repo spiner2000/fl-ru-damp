@@ -8,7 +8,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/classes/stdf.php';
 session_start();
 get_uid();
 
-// настраиваем контент страницы
+// РЅР°СЃС‚СЂР°РёРІР°РµРј РєРѕРЅС‚РµРЅС‚ СЃС‚СЂР°РЅРёС†С‹
 if (!get_uid(0)) {
     $guest = true;
     $forFrl = true;
@@ -23,7 +23,7 @@ if (!get_uid(0)) {
     $forEmp = false;
 }
 
-$page_title = "Услуги - фриланс, удаленная работа на FL.ru";
+$page_title = "РЈСЃР»СѓРіРё - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
 
 $header   = '../header.php';
 $footer   = '../footer.php';

@@ -6,16 +6,16 @@
                     <div class="b-tax__rama-r">
                         <div class="b-tax__content b-tax__content_width_600">
                             <div class="b-tax__level b-tax__level_padbot_20">
-                                <div class="b-tax__txt b-tax__txt_fontsize_22 b-tax__txt_width_340 b-tax__txt_inline-block b-tax__txt_valign_top">Бюджет <?= ($this->data['num'] + 1)?>-го этапа
+                                <div class="b-tax__txt b-tax__txt_fontsize_22 b-tax__txt_width_340 b-tax__txt_inline-block b-tax__txt_valign_top">Р‘СЋРґР¶РµС‚ <?= ($this->data['num'] + 1)?>-РіРѕ СЌС‚Р°РїР°
                                     <div class="b-tax__txt b-tax__txt_fontsize_11">&laquo;<?= $this->data['descr']?>&raquo;</div>
                                 </div>
-                                <div class="b-tax__txt b-tax__txt_fontsize_22 b-tax__txt_inline-block"><?= number_format($this->data['cost'], 0, ',', ' ')?> руб.</div>
+                                <div class="b-tax__txt b-tax__txt_fontsize_22 b-tax__txt_inline-block"><?= number_format($this->data['cost'], 0, ',', ' ')?> СЂСѓР±.</div>
                             </div>
                             <?php if($taxes) { ?>
                             <div class="b-tax__level b-tax__level_padbot_12 b-tax__level_double">
-                                <div class="b-tax__txt b-tax__txt_width_340 b-tax__txt_inline-block b-tax__txt_fontsize_11">Налоги и вычеты</div>
-                                <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_fontsize_11">Сумма, руб.</div>
-                                <div class="b-tax__txt b-tax__txt_width_130 b-tax__txt_inline-block b-tax__txt_fontsize_11">% от бюджета проекта</div>
+                                <div class="b-tax__txt b-tax__txt_width_340 b-tax__txt_inline-block b-tax__txt_fontsize_11">РќР°Р»РѕРіРё Рё РІС‹С‡РµС‚С‹</div>
+                                <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_fontsize_11">РЎСѓРјРјР°, СЂСѓР±.</div>
+                                <div class="b-tax__txt b-tax__txt_width_130 b-tax__txt_inline-block b-tax__txt_fontsize_11">% РѕС‚ Р±СЋРґР¶РµС‚Р° РїСЂРѕРµРєС‚Р°</div>
                             </div>
                             <?php }//if?>
                             <?php foreach ($taxes as $k => $tax) { ?>
@@ -35,14 +35,14 @@
                             <?php } //foreach?>
                             
                             <div class="b-tax__level b-tax__level_padtop_15">
-                                <div class="b-tax__txt b-tax__txt_fontsize_22 b-tax__txt_valign_top b-tax__txt_width_340 b-tax__txt_inline-block">Вы получите
+                                <div class="b-tax__txt b-tax__txt_fontsize_22 b-tax__txt_valign_top b-tax__txt_width_340 b-tax__txt_inline-block">Р’С‹ РїРѕР»СѓС‡РёС‚Рµ
                                     <div class="b-tax__txt b-tax__txt_fontsize_11">
-                                        на <?= ($this->data['cost'] <= pskb::WW_ONLY_SUM && $this->sbr->user_reqvs['form_type'] == sbr::FT_PHYS)? "Веб-кошелек" : sbr_meta::view_type_payment(pskb::$exrates_map[$ps]);?>
+                                        РЅР° <?= ($this->data['cost'] <= pskb::WW_ONLY_SUM && $this->sbr->user_reqvs['form_type'] == sbr::FT_PHYS)? "Р’РµР±-РєРѕС€РµР»РµРє" : sbr_meta::view_type_payment(pskb::$exrates_map[$ps]);?>
                                     </div>
                                 </div>
                                 <div class="b-tax__txt b-tax__txt_fontsize_11 b-tax__txt_inline-block b-tax__txt_padbot_5">
-                                    <div class="b-tax__txt b-tax__txt_padbot_5 b-tax__txt_fontsize_22"><?= number_format($total_sum, 2, ',', ' ')?> руб.</div>
-                                    и <span class="b-tax__txt_bold"><?= $RT?> <?= ending($RT, 'балл', 'балла', 'баллов')?></span> рейтинга
+                                    <div class="b-tax__txt b-tax__txt_padbot_5 b-tax__txt_fontsize_22"><?= number_format($total_sum, 2, ',', ' ')?> СЂСѓР±.</div>
+                                    Рё <span class="b-tax__txt_bold"><?= $RT?> <?= ending($RT, 'Р±Р°Р»Р»', 'Р±Р°Р»Р»Р°', 'Р±Р°Р»Р»РѕРІ')?></span> СЂРµР№С‚РёРЅРіР°
                                 </div>
                             </div>
                         </div>

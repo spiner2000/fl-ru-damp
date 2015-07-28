@@ -23,7 +23,7 @@
   
   $header = "../header.php";
   
-// Формируем JS внизу страницы
+// Р¤РѕСЂРјРёСЂСѓРµРј JS РІРЅРёР·Сѓ СЃС‚СЂР°РЅРёС†С‹
 define('JS_BOTTOM', true);
 
   $css_file = array( '/css/block/b-search/b-search.css', '/css/block/b-spinner/b-spinner.css', '/css/block/b-voting/b-voting.css', '/css/block/b-button/_m/b-button_m.css', '/css/nav.css', '/css/block/b-free-share/b-free-share.css', '/css/block/b-menu/_vertical/b-menu_vertical.css', 'commune.css' );
@@ -56,35 +56,35 @@ define('JS_BOTTOM', true);
 
 	function ShowPages($page,$pages,$uri){
             $sBox = '';
-		// Страницы
+		// РЎС‚СЂР°РЅРёС†С‹
 		if ($pages > 1){
 		    $sBox = "
 		    <div class=\"pager\">";
                         if ($page == $pages){
 				$sBox .= "
-				<span class=\"page-next\">следующая&nbsp;&nbsp;&rarr;</span>";
+				<span class=\"page-next\">СЃР»РµРґСѓСЋС‰Р°СЏ&nbsp;&nbsp;&rarr;</span>";
 			}else {
                             $next_uri = $uri.($page+1);
 				$sBox .= "
-				<span class=\"page-next\"><a href=\"".$next_uri."\">следующая</a>&nbsp;&nbsp;&rarr;</span>";
+				<span class=\"page-next\"><a href=\"".$next_uri."\">СЃР»РµРґСѓСЋС‰Р°СЏ</a>&nbsp;&nbsp;&rarr;</span>";
 			}
 			if ($page == 1){
 				$sBox .= "
-				<span class=\"page-back\">&larr;&nbsp;&nbsp;предыдущая</span>";
+				<span class=\"page-back\">&larr;&nbsp;&nbsp;РїСЂРµРґС‹РґСѓС‰Р°СЏ</span>";
 			}else {
                             $prev_uri = $uri.($page-1);
 				$sBox .= "
-				<span class=\"page-back\">&larr;&nbsp;&nbsp;<a href=\"".$prev_uri."\">предыдущая</a></span>";
+				<span class=\"page-back\">&larr;&nbsp;&nbsp;<a href=\"".$prev_uri."\">РїСЂРµРґС‹РґСѓС‰Р°СЏ</a></span>";
 			}
 
-			//в начале
+			//РІ РЅР°С‡Р°Р»Рµ
 			if ($page <= 10) {
 				$sBox .= BuildNavigation($page, 1, ($pages>10)?($page+4):$pages, "{$uri}");
 				if ($pages > 15) {
 					$sBox .= '...';
 				}
 			}
-			//в конце
+			//РІ РєРѕРЅС†Рµ
 			elseif ($page >= $pages-10) {
 				$sBox .= '...';
 				$sBox .= BuildNavigation($page, $page-5, $pages, $uri);
@@ -94,7 +94,7 @@ define('JS_BOTTOM', true);
 				$sBox .= '...';
 			}
             $sBox .= "</div>";
-		} // Страницы закончились
+		} // РЎС‚СЂР°РЅРёС†С‹ Р·Р°РєРѕРЅС‡РёР»РёСЃСЊ
 
 		return $sBox;
 	}
@@ -120,7 +120,7 @@ define('JS_BOTTOM', true);
   $order_by = __paramInit('string', 'order', 'order', ($mode == 'Asked' ? 'asked_desc' : 'date_desc'));
   if((int) $cat < 1) $cat = 0;
 
-  // возможно лучше доработать функцию __paramInit
+  // РІРѕР·РјРѕР¶РЅРѕ Р»СѓС‡С€Рµ РґРѕСЂР°Р±РѕС‚Р°С‚СЊ С„СѓРЅРєС†РёСЋ __paramInit
   if((int)$page < 1) $page = extractInteger($_REQUEST['page'], 1);
   $action     = __paramInit('string', 'action', 'action');
   $top_id     = __paramInit('string', 'post', 'top_id');
@@ -139,7 +139,7 @@ define('JS_BOTTOM', true);
       $first_param = true;
       foreach ($query_array as $key=>$value) {
           if ($value) {
-              if ($first_param === true) { // перед первым параметром не ставим &
+              if ($first_param === true) { // РїРµСЂРµРґ РїРµСЂРІС‹Рј РїР°СЂР°РјРµС‚СЂРѕРј РЅРµ СЃС‚Р°РІРёРј &
                   $first_param = false;
               } else {
                   $query_string .= '&';
@@ -202,26 +202,26 @@ define('JS_BOTTOM', true);
             $fname = $cfile->MoveUploadedFile($_SESSION['login']."/upload");
             if ($cfile->image_size['width'] > commune::IMAGE_MAX_WIDTH || $cfile->image_size['height'] > commune::IMAGE_MAX_HEIGHT) {
                 $cfile->Delete($cfile->id);
-                echo "status=fileTooBig&msg=Размер изображения превышает максимально допустимый: ".commune::IMAGE_MAX_WIDTH." x ".commune::IMAGE_MAX_HEIGHT;
+                echo "status=fileTooBig&msg=Р Р°Р·РјРµСЂ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РїСЂРµРІС‹С€Р°РµС‚ РјР°РєСЃРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјС‹Р№: ".commune::IMAGE_MAX_WIDTH." x ".commune::IMAGE_MAX_HEIGHT;
                 exit;
             }
             if ($fname) {
-                //добавить данные о файле
+                //РґРѕР±Р°РІРёС‚СЊ РґР°РЅРЅС‹Рµ Рѕ С„Р°Р№Р»Рµ
                 commune::addWysiwygFile($cfile);
-                //запомнить идентификатор временного файла                                                                         
+                //Р·Р°РїРѕРјРЅРёС‚СЊ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РІСЂРµРјРµРЅРЅРѕРіРѕ С„Р°Р№Р»Р°                                                                         
                 $_SESSION['wysiwyg_inline_files'][$cfile->id] = $cfile->id; 
                 $link = WDCPREFIX."/users/".substr($_SESSION['login'], 0, 2)."/".$_SESSION['login']."/upload/".$fname;
                 $imgWidth = $cfile->image_size['width'];
                 $imgHeight = $cfile->image_size['height'];
                 echo "status=uploadSuccess&url={$link}&width=$imgWidth&height=$imgHeight";
             }else {                       
-                echo "status=uploadFailed&msg=Ошибка загрузки файла";
+                echo "status=uploadFailed&msg=РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»Р°";
                 exit;
             }
         }else {
-            echo "status=wrongFormat&msg=Загрузите изображение формата gif, png или jpg";
+            echo "status=wrongFormat&msg=Р—Р°РіСЂСѓР·РёС‚Рµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ С„РѕСЂРјР°С‚Р° gif, png РёР»Рё jpg";
         }
-    }else echo "status=fail&msg=У вас недостаточно прав, чтобы оставить этот комментарий";
+    }else echo "status=fail&msg=РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ, С‡С‚РѕР±С‹ РѕСЃС‚Р°РІРёС‚СЊ СЌС‚РѕС‚ РєРѕРјРјРµРЅС‚Р°СЂРёР№";
     exit;
   }
   
@@ -262,12 +262,12 @@ define('JS_BOTTOM', true);
     }
   }
 
-  // если это редактирование черновика
+  // РµСЃР»Рё СЌС‚Рѕ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ С‡РµСЂРЅРѕРІРёРєР°
   if ($draft_id && $action !== 'do.Edit.post') {
       $site = 'Editdraft';
       $action = 'Edit.post';
   }
-  // если пытаемся опубликовать из черновика
+  // РµСЃР»Рё РїС‹С‚Р°РµРјСЃСЏ РѕРїСѓР±Р»РёРєРѕРІР°С‚СЊ РёР· С‡РµСЂРЅРѕРІРёРєР°
   if ($draft_id && $action === 'do.Edit.post') {
       $site = 'Newtopic';
       $action = 'do.Create.post';
@@ -307,7 +307,7 @@ define('JS_BOTTOM', true);
   }
   
   if($comm['name']!="") {
-      $page_title = $page_keyw = "Сообщество > {$comm['name']} < - фриланс, удаленная работа на FL.ru";
+      $page_title = $page_keyw = "РЎРѕРѕР±С‰РµСЃС‚РІРѕ > {$comm['name']} < - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
       $page_descr = LenghtFormatEx($comm['descr'], 250, '', 0);
   }
 
@@ -318,10 +318,10 @@ define('JS_BOTTOM', true);
   }
 
  
-  // Подключаем RSS.
+  // РџРѕРґРєР»СЋС‡Р°РµРј RSS.
   if($user_mod & (commune::MOD_COMM_ACCEPTED | commune::MOD_COMM_AUTHOR))
-    $additional_header = '<link rel="alternate" type="application/rss+xml" title=\'Сообщество "'.$comm['name'].'" на FL.ru\' href="/rss/commune.php?id='.$id.'" />';
-	// Если сюда попали, значит все препятствия пройдены, нужно выполнять операцию.
+    $additional_header = '<link rel="alternate" type="application/rss+xml" title=\'РЎРѕРѕР±С‰РµСЃС‚РІРѕ "'.$comm['name'].'" РЅР° FL.ru\' href="/rss/commune.php?id='.$id.'" />';
+	// Р•СЃР»Рё СЃСЋРґР° РїРѕРїР°Р»Рё, Р·РЅР°С‡РёС‚ РІСЃРµ РїСЂРµРїСЏС‚СЃС‚РІРёСЏ РїСЂРѕР№РґРµРЅС‹, РЅСѓР¶РЅРѕ РІС‹РїРѕР»РЅСЏС‚СЊ РѕРїРµСЂР°С†РёСЋ.
     
     if ($_POST['action'] != 'wysiwygUploadImage' && $_POST['action'] != 'add_comment' && $_POST['action'] != 'do.Create.post' && $_POST['action'] != 'do.Edit.post') {
       $_SESSION['wysiwyg_inline_files'] = array();
@@ -332,7 +332,7 @@ define('JS_BOTTOM', true);
     	case 'Edit' :			        $commune_output = 'create.php';			break;
     	case 'Admin' :			      $commune_output = 'admin.php';			break;
     	case 'Admin.members' :
-    	    $adminCnt  = commune::GetAdminCount($id) + 1; // + создатель
+    	    $adminCnt  = commune::GetAdminCount($id) + 1; // + СЃРѕР·РґР°С‚РµР»СЊ
     	    $joinedCnt = $comm['a_count'] - $comm['w_count'] - $adminCnt;
     	    $nPagesCnt = ( $mode=='Asked' ) ? $comm['w_count'] : $joinedCnt;
             $user_filter = __paramInit('int', 'type', 'type', 0);
@@ -385,14 +385,14 @@ define('JS_BOTTOM', true);
             
             if ((!$is_user_member && !$is_user_admin && !$is_top_author) || $top['is_blocked_s'] == 't' || $top['is_blocked_c'] == 't') {
                 $params['readonly'] = 1;
-                $params['readonly_alert'] = 'Вы не являетесь членом данного сообщества. Данная функция вам недоступна.';
+                $params['readonly_alert'] = 'Р’С‹ РЅРµ СЏРІР»СЏРµС‚РµСЃСЊ С‡Р»РµРЅРѕРј РґР°РЅРЅРѕРіРѕ СЃРѕРѕР±С‰РµСЃС‚РІР°. Р”Р°РЅРЅР°СЏ С„СѓРЅРєС†РёСЏ РІР°Рј РЅРµРґРѕСЃС‚СѓРїРЅР°.';
             }
             if ($top['close_comments'] == 't') {
                 $params['no_comments'] = true;
                 $params['readonly']    = 1;
             }
             if ($is_user_member) {
-                $params['readonly_alert'] = 'Комментирование закрыто.';
+                $params['readonly_alert'] = 'РљРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ Р·Р°РєСЂС‹С‚Рѕ.';
             }
             $params['is_permission'] = commune::setAccessComments($user_mod);
             
@@ -417,7 +417,7 @@ define('JS_BOTTOM', true);
             
             $js_file_utf8[] = '/scripts/ckedit/ckeditor.js';
             $js_file[] = '/scripts/commune_card.js';
-            // если собираемся редактировать пост
+            // РµСЃР»Рё СЃРѕР±РёСЂР°РµРјСЃСЏ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РїРѕСЃС‚
             if (__paramInit('string', 'taction') === 'edit') {
                 
                 if (!get_uid(1)) {
@@ -439,11 +439,11 @@ define('JS_BOTTOM', true);
             $sQuestion = /*$top['moderator_status'] === '0' ? $stop_words->replace($top['question'], 'plain', false) :*/ $top['question'];
             
             if ( $top['title'] ) {
-                $page_title = $page_keyw = "{$sTitle} - сообщества > {$comm['name']} < - фриланс, удаленная работа на FL.ru";
+                $page_title = $page_keyw = "{$sTitle} - СЃРѕРѕР±С‰РµСЃС‚РІР° > {$comm['name']} < - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
             } else {
                 $html_title = strip_tags(substr($sMessage, 0, 30) . (strlen($sMessage)>30?"...":""));
                 if($html_title == "") $html_title = substr($sQuestion, 0, 30) . (strlen($sQuestion)>30?"...":"");
-                $page_title = $page_keyw = "{$html_title} - сообщества > {$comm['name']} < - фриланс, удаленная работа на FL.ru";
+                $page_title = $page_keyw = "{$html_title} - СЃРѕРѕР±С‰РµСЃС‚РІР° > {$comm['name']} < - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
             }
             $FBShare = array(
                 "title"       => ( $sTitle ? $sTitle : $html_title ),
@@ -497,7 +497,7 @@ define('JS_BOTTOM', true);
 			}
 
 			if(!$id) {
-			    // дополнительный параметр сортировки
+			    // РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ РїР°СЂР°РјРµС‚СЂ СЃРѕСЂС‚РёСЂРѕРІРєРё
                 if ( $_GET['sub_om'] ) {
                     $sub_om = $_GET['sub_om'];
                     setcookie( "commune_{$om}_ord", $sub_om, strtotime('+10 years') );
@@ -520,7 +520,7 @@ define('JS_BOTTOM', true);
                 }
                 $_GET['gr'] = $group_info['id'];
                 
-                // Сообщества.
+                // РЎРѕРѕР±С‰РµСЃС‚РІР°.
                 $gr_id     = __paramInit('int', 'gr', NULL);
                 $search    = stripslashes( __paramInit('string', 'search', NULL) );
                 $sAuthorId = ( $om == commune::OM_CM_MY ? $uid : NULL );
@@ -529,9 +529,9 @@ define('JS_BOTTOM', true);
                 $limit     = commune::MAX_ON_PAGE;
 
                
-                $groupCommCnt = 0;  // Количество сообществ в данном разделе.
+                $groupCommCnt = 0;  // РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕРѕР±С‰РµСЃС‚РІ РІ РґР°РЅРЅРѕРј СЂР°Р·РґРµР»Рµ.
                 
-                if ( ($om == commune::OM_CM_MY || $om == commune::OM_CM_JOINED) && !$uid ) { // Неавторизовался и зашел в "свои" закладки.
+                if ( ($om == commune::OM_CM_MY || $om == commune::OM_CM_JOINED) && !$uid ) { // РќРµР°РІС‚РѕСЂРёР·РѕРІР°Р»СЃСЏ Рё Р·Р°С€РµР» РІ "СЃРІРѕРё" Р·Р°РєР»Р°РґРєРё.
                     $communes = NULL;
                 }
                 else {
@@ -559,14 +559,14 @@ define('JS_BOTTOM', true);
                 }
                 
                 switch ( $om ) {
-                    case commune::OM_CM_POPULAR: $sOrd = 'Популярные';  break;
-                    case commune::OM_CM_ACTUAL:  $sOrd = 'Актуальные';  break;
-                    case commune::OM_CM_NEW:     $sOrd = 'Новые';       break;
-                    case commune::OM_CM_MY:      $sOrd = 'Я создал';    break;
-                    case commune::OM_CM_JOINED:  $sOrd = 'Я вступил в'; break;
+                    case commune::OM_CM_POPULAR: $sOrd = 'РџРѕРїСѓР»СЏСЂРЅС‹Рµ';  break;
+                    case commune::OM_CM_ACTUAL:  $sOrd = 'РђРєС‚СѓР°Р»СЊРЅС‹Рµ';  break;
+                    case commune::OM_CM_NEW:     $sOrd = 'РќРѕРІС‹Рµ';       break;
+                    case commune::OM_CM_MY:      $sOrd = 'РЇ СЃРѕР·РґР°Р»';    break;
+                    case commune::OM_CM_JOINED:  $sOrd = 'РЇ РІСЃС‚СѓРїРёР» РІ'; break;
                     case commune::OM_CM_BEST:
                     default:
-                        $sOrd = 'Лучшие';
+                        $sOrd = 'Р›СѓС‡С€РёРµ';
                         break;
                 }
                 
@@ -575,16 +575,16 @@ define('JS_BOTTOM', true);
                     $sGroup = $aGroup['name'];
                 }
                 else {
-                    $sGroup = 'Все Сообщества';
+                    $sGroup = 'Р’СЃРµ РЎРѕРѕР±С‰РµСЃС‚РІР°';
                 }
                 
-                $page_title = $page_keyw = $sOrd . ' сообщества раздела > ' . $sGroup . ' < - ' . ( $page > 1 ? "Страница $page - " : '' ) . ' фриланс, удаленная работа на FL.ru';
-                $page_descr = $sOrd . ' сообщества раздела ' . $sGroup . ' на FL.ru';
+                $page_title = $page_keyw = $sOrd . ' СЃРѕРѕР±С‰РµСЃС‚РІР° СЂР°Р·РґРµР»Р° > ' . $sGroup . ' < - ' . ( $page > 1 ? "РЎС‚СЂР°РЅРёС†Р° $page - " : '' ) . ' С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru';
+                $page_descr = $sOrd . ' СЃРѕРѕР±С‰РµСЃС‚РІР° СЂР°Р·РґРµР»Р° ' . $sGroup . ' РЅР° FL.ru';
                 
                 $commune_output = 'tpl.main.php';
 			}
 			else {
-                // Количество всего тем в сообществе.
+                // РљРѕР»РёС‡РµСЃС‚РІРѕ РІСЃРµРіРѕ С‚РµРј РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ.
                 $communeThemesCounts = commune::getCommuneThemesCount($comm['id']);
                 if (hasPermissions('communes')) {
                     $themesCount = $communeThemesCounts['count'];
@@ -596,10 +596,10 @@ define('JS_BOTTOM', true);
                 if ($om == commune::OM_TH_MY) {
                     $themesCount = $uid ? commune::GetMyThemesCount($id, $uid, $cat) : 0;
                 }
-                //else if(!($user_mod & (commune::MOD_ADMIN)))           // !!! Не, похоже не надо. На количество страниц это влияние не оказывает,
-                //  $themesCount -= commune::GetBannedThemesCount($id);  // т.к. запрос не использует данное условие, то есть в офсете есть и забаны.
-                // Просто на конкретной странице окажется меньше чем commune::MAX_TOP_ON_PAGE
-                // топов и все.
+                //else if(!($user_mod & (commune::MOD_ADMIN)))           // !!! РќРµ, РїРѕС…РѕР¶Рµ РЅРµ РЅР°РґРѕ. РќР° РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂР°РЅРёС† СЌС‚Рѕ РІР»РёСЏРЅРёРµ РЅРµ РѕРєР°Р·С‹РІР°РµС‚,
+                //  $themesCount -= commune::GetBannedThemesCount($id);  // С‚.Рє. Р·Р°РїСЂРѕСЃ РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚ РґР°РЅРЅРѕРµ СѓСЃР»РѕРІРёРµ, С‚Рѕ РµСЃС‚СЊ РІ РѕС„СЃРµС‚Рµ РµСЃС‚СЊ Рё Р·Р°Р±Р°РЅС‹.
+                // РџСЂРѕСЃС‚Рѕ РЅР° РєРѕРЅРєСЂРµС‚РЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ РѕРєР°Р¶РµС‚СЃСЏ РјРµРЅСЊС€Рµ С‡РµРј commune::MAX_TOP_ON_PAGE
+                // С‚РѕРїРѕРІ Рё РІСЃРµ.
                 
                 if ($cat && $om != commune::OM_TH_MY) {
                     $themesCount = commune::GetCategoryThemesCount($id, $cat);
@@ -616,7 +616,7 @@ define('JS_BOTTOM', true);
                 }
                 
                 if( $comm['name'] != "" ) {
-                    $page_title = $page_keyw = "Сообщество > {$comm['name']} <". ($page > 1 ? " - Страница $page" : '') .' - фриланс, удаленная работа на FL.ru';
+                    $page_title = $page_keyw = "РЎРѕРѕР±С‰РµСЃС‚РІРѕ > {$comm['name']} <". ($page > 1 ? " - РЎС‚СЂР°РЅРёС†Р° $page" : '') .' - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru';
                     $page_descr = LenghtFormatEx($comm['descr'], 250, '', 0);
                 }
                 
@@ -672,12 +672,12 @@ define('JS_BOTTOM', true);
 
       $r = commune::AddAdmin($id, $user_login, $e);
       if(!$r)
-        $alert['user_login'] = "Не удалось совершить операцию: {$e}";
+        $alert['user_login'] = "РќРµ СѓРґР°Р»РѕСЃСЊ СЃРѕРІРµСЂС€РёС‚СЊ РѕРїРµСЂР°С†РёСЋ: {$e}";
       else if($r<0)
         if(strtolower($user_login) == strtolower($_SESSION['login'])) {
-            $alert['user_login'] = "Нельзя назначить создателя сообщества администратором.";
+            $alert['user_login'] = "РќРµР»СЊР·СЏ РЅР°Р·РЅР°С‡РёС‚СЊ СЃРѕР·РґР°С‚РµР»СЏ СЃРѕРѕР±С‰РµСЃС‚РІР° Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј.";
         } else {
-            $alert['user_login'] = "Пользователь с таким логином не существует либо он не состоит в данном сообществе.";
+            $alert['user_login'] = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ С‚Р°РєРёРј Р»РѕРіРёРЅРѕРј РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ Р»РёР±Рѕ РѕРЅ РЅРµ СЃРѕСЃС‚РѕРёС‚ РІ РґР°РЅРЅРѕРј СЃРѕРѕР±С‰РµСЃС‚РІРµ.";
         }
       else {
         $sm = new smail();
@@ -703,7 +703,7 @@ define('JS_BOTTOM', true);
       }
     
       if(!($user_id=commune::RemoveAdmin($member_id)))
-        $alert = 'Ошибка!'; // !!! Куда-то ее вывести...
+        $alert = 'РћС€РёР±РєР°!'; // !!! РљСѓРґР°-С‚Рѕ РµРµ РІС‹РІРµСЃС‚Рё...
       else {
         $sm = new smail();
         $sm->CommuneMemberAction($user_id, $action, $comm);
@@ -729,7 +729,7 @@ define('JS_BOTTOM', true);
       }
 
       if(!($user_id=commune::AcceptMember($member_id, ($action=='do.Accept.member' ? 0 : 1))))
-        $alert = 'Ошибка!'; // !!! Куда-то ее вывести...
+        $alert = 'РћС€РёР±РєР°!'; // !!! РљСѓРґР°-С‚Рѕ РµРµ РІС‹РІРµСЃС‚Рё...
       else {
         $sm = new smail();
         $sm->CommuneMemberAction($user_id, $action, $comm);
@@ -755,12 +755,12 @@ define('JS_BOTTOM', true);
       
       $om             = __paramInit('int', 'om', 'om', commune::OM_TH_NEW);
       $user_login     = __paramInit('string', NULL, 'user_login');
-      $message_id     = __paramInit('int', NULL, 'message_id'); // Если есть, то оно редактируется.
+      $message_id     = __paramInit('int', NULL, 'message_id'); // Р•СЃР»Рё РµСЃС‚СЊ, С‚Рѕ РѕРЅРѕ СЂРµРґР°РєС‚РёСЂСѓРµС‚СЃСЏ.
 
       $parent_id      = __paramInit('int', NULL, 'parent_id');
       $pos            = __paramInit('int', NULL, 'pos');
       $title          = antispam(__paramInit('htmltext', NULL, 'title', ''));
-        // дополнительно обрезаем отформатированую строку до 256 символов (максимальное количество в базе)
+        // РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ РѕР±СЂРµР·Р°РµРј РѕС‚С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅСѓСЋ СЃС‚СЂРѕРєСѓ РґРѕ 256 СЃРёРјРІРѕР»РѕРІ (РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РІ Р±Р°Р·Рµ)
         $title = substr($title, 0 , 256);
         $title = $title === false ? '' : $title;
       $category_id    = __paramInit('int', NULL, 'category_id');
@@ -821,7 +821,7 @@ define('JS_BOTTOM', true);
       $attach_name = NULL;
 
 
-      // загрузка файлов
+      // Р·Р°РіСЂСѓР·РєР° С„Р°Р№Р»РѕРІ
         $files = array();
 		$attach = $_FILES['attach'];
 		$countfiles = 0;
@@ -848,7 +848,7 @@ define('JS_BOTTOM', true);
 				$nTotalSize += $attach['size'][$key];
 				
 				if ( $nTotalSize > commune::MAX_FILE_SIZE ) {
-                	$alert['attach']   = 'Максимальный объем прикрепленных файлов: ' . (commune::MAX_FILE_SIZE / (1024*1024))." Мб";
+                	$alert['attach']   = 'РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РѕР±СЉРµРј РїСЂРёРєСЂРµРїР»РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ: ' . (commune::MAX_FILE_SIZE / (1024*1024))." РњР±";
                 	break;
                 }
 			}
@@ -857,7 +857,7 @@ define('JS_BOTTOM', true);
 		}
 		
 		if ( count($files) > commune::MAX_FILES ) { 
-			$alert['attach']   = "Максимальное кол-во файлов для загрузки: " . commune::MAX_FILES;
+			$alert['attach']   = "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»-РІРѕ С„Р°Р№Р»РѕРІ РґР»СЏ Р·Р°РіСЂСѓР·РєРё: " . commune::MAX_FILES;
 		}
 		
       if($files) {
@@ -896,7 +896,7 @@ define('JS_BOTTOM', true);
             }
 		 }
 	   }
-       $request['answers'][] = ''; // добавляем последний пустой ответ
+       $request['answers'][] = ''; // РґРѕР±Р°РІР»СЏРµРј РїРѕСЃР»РµРґРЅРёР№ РїСѓСЃС‚РѕР№ РѕС‚РІРµС‚
 	   if ($_POST['answers_exists'] && is_array($_POST['answers_exists'])) {
 		foreach ($_POST['answers_exists'] as $key=>$answer) {
 			if (intval($key) && trim($answer) != '') {
@@ -906,28 +906,28 @@ define('JS_BOTTOM', true);
 		}
 	   }
 	   if ($acount > 0 && $question == '') {
-			$alert['polls'] = 'Введите текст вопроса';
+			$alert['polls'] = 'Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚ РІРѕРїСЂРѕСЃР°';
 	   } else if ($acount > commune::POLL_ANSWERS_MAX && $question != '') {
-			$alert['polls_question'] = 'Вы можете указать максимум '.commune::POLL_ANSWERS_MAX.' ответов';
+			$alert['polls_question'] = 'Р’С‹ РјРѕР¶РµС‚Рµ СѓРєР°Р·Р°С‚СЊ РјР°РєСЃРёРјСѓРј '.commune::POLL_ANSWERS_MAX.' РѕС‚РІРµС‚РѕРІ';
 	   } else if ($acount < 2 && $question != '') {
-			$alert['polls_question'] = 'Нужно указать минимум 2 варианта ответа';
+			$alert['polls_question'] = 'РќСѓР¶РЅРѕ СѓРєР°Р·Р°С‚СЊ РјРёРЅРёРјСѓРј 2 РІР°СЂРёР°РЅС‚Р° РѕС‚РІРµС‚Р°';
 	   }
 
       if(strlen($_POST['title']) > commune::MSG_TITLE_MAX_LENGTH)
-        $alert['title'] = 'Количество символов превышает допустимое ('.commune::MSG_TITLE_MAX_LENGTH.')';
+        $alert['title'] = 'РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ РїСЂРµРІС‹С€Р°РµС‚ РґРѕРїСѓСЃС‚РёРјРѕРµ ('.commune::MSG_TITLE_MAX_LENGTH.')';
 
       if(is_empty_html($msgtext) && $question == '' && empty($alert) && $nTotalSize == 0 && $youtube_link == '' && count($attachedfiles_files) == 0) {
-        $alert['msgtext'] = 'Поле заполнено некорректно';
+        $alert['msgtext'] = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
         $msgtext='';
       }
       else if(strlen($msgtext) > commune::MSG_TEXT_MAX_LENGTH)
-        $alert['msgtext'] = 'Количество символов превышает допустимое';
+        $alert['msgtext'] = 'РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ РїСЂРµРІС‹С€Р°РµС‚ РґРѕРїСѓСЃС‚РёРјРѕРµ';
 
        if ($youtube_link != '') {
 		 if ($video = video_validate($youtube_link)) {
 		   $request['youtube_link'] = $video;
 		 } else {
-           $alert['youtube'] = 'Неверная ссылка';
+           $alert['youtube'] = 'РќРµРІРµСЂРЅР°СЏ СЃСЃС‹Р»РєР°';
          }
        }
 
@@ -957,29 +957,29 @@ define('JS_BOTTOM', true);
 
             if($draft_id) { drafts::DeleteDraft($draft_id, get_uid(false), 4); }
             
-            // пингуем Яндекс.Блоги, если сообщество открытое
+            // РїРёРЅРіСѓРµРј РЇРЅРґРµРєСЃ.Р‘Р»РѕРіРё, РµСЃР»Рё СЃРѕРѕР±С‰РµСЃС‚РІРѕ РѕС‚РєСЂС‹С‚РѕРµ
             if ((int)$comm['restrict_type']{0} === 0) {
                 require_once($_SERVER['DOCUMENT_ROOT']."/classes/IXR.php");
                 $pingClient = new IXR_Client('ping.blogs.yandex.ru', '/RPC2');
-                // Что посылаем в пингах
-                // Название сайта
+                // Р§С‚Рѕ РїРѕСЃС‹Р»Р°РµРј РІ РїРёРЅРіР°С…
+                // РќР°Р·РІР°РЅРёРµ СЃР°Р№С‚Р°
                 $siteName = 'Free-lance.ru';
-                // Адрес сайта
+                // РђРґСЂРµСЃ СЃР°Р№С‚Р°
                 $siteURL  = $GLOBALS['host'];
-                // Адрес страницы, которая изменилась (например)
+                // РђРґСЂРµСЃ СЃС‚СЂР°РЅРёС†С‹, РєРѕС‚РѕСЂР°СЏ РёР·РјРµРЅРёР»Р°СЃСЊ (РЅР°РїСЂРёРјРµСЂ)
                 $pageURL  = $siteURL . getFriendlyURL('commune', $message_id);
-                // Адрес страницы с фидом
+                // РђРґСЂРµСЃ СЃС‚СЂР°РЅРёС†С‹ СЃ С„РёРґРѕРј
                 $feedURL  = $siteURL . '/rss/commune.php?id=' . $id;
                 
-                // для проверки работоспособности нужно передать реальные страницы со свободным доступом
-                // а также раскомментировать EXIT чуть ниже
+                // РґР»СЏ РїСЂРѕРІРµСЂРєРё СЂР°Р±РѕС‚РѕСЃРїРѕСЃРѕР±РЅРѕСЃС‚Рё РЅСѓР¶РЅРѕ РїРµСЂРµРґР°С‚СЊ СЂРµР°Р»СЊРЅС‹Рµ СЃС‚СЂР°РЅРёС†С‹ СЃРѕ СЃРІРѕР±РѕРґРЅС‹Рј РґРѕСЃС‚СѓРїРѕРј
+                // Р° С‚Р°РєР¶Рµ СЂР°СЃРєРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ EXIT С‡СѓС‚СЊ РЅРёР¶Рµ
                 //$siteURL  = 'http://www.free-lance.ru';
                 //$pageURL  = 'http://www.free-lance.ru/commune/professionalnyie/47/chrnyiy-spisok/2110877/pravila.html';
                 //$feedURL  = 'http://www.free-lance.ru/rss/commune.php?id=47';
 
-                // Посылаем challange-запрос
+                // РџРѕСЃС‹Р»Р°РµРј challange-Р·Р°РїСЂРѕСЃ
                 if (defined('SERVER') && SERVER != 'release') {
-//                    echo "отладочный режим для тикета 0019174 <br />";
+//                    echo "РѕС‚Р»Р°РґРѕС‡РЅС‹Р№ СЂРµР¶РёРј РґР»СЏ С‚РёРєРµС‚Р° 0019174 <br />";
 //                    $pingClient->debug = true;
 //                    $res = $pingClient->query('weblogUpdates.ping', $siteName, $siteURL, $pageURL, $feedURL);
 //                    echo '<br /> [' .  $pingClient->getErrorCode().'] '.$pingClient->getErrorMessage();
@@ -1006,7 +1006,7 @@ define('JS_BOTTOM', true);
             if($o == 0) $o = "";
             require_once($_SERVER['DOCUMENT_ROOT']."/classes/drafts.php");
             if($draft_id) { drafts::DeleteDraft($draft_id, get_uid(false), 4); }
-            header("Location: /commune/?id={$id}&site=Topic&post={$top_id}".($top_id==$message_id ? '' : ".{$message_id}").($om ? "&om={$om}":'')."&o=$o".($rating ? '&rating='.$rating : '').($o? "#o$o": '')); // Бежим на страницу комментариев.
+            header("Location: /commune/?id={$id}&site=Topic&post={$top_id}".($top_id==$message_id ? '' : ".{$message_id}").($om ? "&om={$om}":'')."&o=$o".($rating ? '&rating='.$rating : '').($o? "#o$o": '')); // Р‘РµР¶РёРј РЅР° СЃС‚СЂР°РЅРёС†Сѓ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ.
 //            exit;
           }
 				}
@@ -1026,7 +1026,7 @@ define('JS_BOTTOM', true);
       
       $alert = NULL;
       
-      $name          = __paramInit('string', NULL, 'name', '', commune::NAME_MAX_LENGTH*2); // внешний substr по размеру поля в базе.
+      $name          = __paramInit('string', NULL, 'name', '', commune::NAME_MAX_LENGTH*2); // РІРЅРµС€РЅРёР№ substr РїРѕ СЂР°Р·РјРµСЂСѓ РїРѕР»СЏ РІ Р±Р°Р·Рµ.
       $descr         = __paramInit('string', NULL, 'descr', '', commune::DESCR_MAX_LENGTH);
       $group_id      = __paramInit('int', NULL, 'group_id'); 
       $author_id     = __paramInit('int', NULL, 'author_id'); 
@@ -1056,7 +1056,7 @@ define('JS_BOTTOM', true);
       $request['author_id'] = $author_id;
       $request['author_login'] = $author_login;
       $request['small'] = 0;
-      $small=0;   // в commune small пока не используется. Просто заглушка.
+      $small=0;   // РІ commune small РїРѕРєР° РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ. РџСЂРѕСЃС‚Рѕ Р·Р°РіР»СѓС€РєР°.
 
       $image_name = NULL;
 
@@ -1074,21 +1074,21 @@ define('JS_BOTTOM', true);
           }
         }
         else
-          $alert['image'] = 'Недопустимый тип файла.';
+          $alert['image'] = 'РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ С‚РёРї С„Р°Р№Р»Р°.';
       }
 
       if(!$name)
-        $alert['name'] = 'Это поле не должно быть пустым.';
+        $alert['name'] = 'Р­С‚Рѕ РїРѕР»Рµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.';
 
       if(!($descr_len = strlen(stripslashes($_POST['descr']))))
-        $alert['descr'] = 'Это поле не должно быть пустым.';
+        $alert['descr'] = 'Р­С‚Рѕ РїРѕР»Рµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.';
 
       if(!$group_id)
-        $alert['group_id'] = 'Укажите раздел.';
+        $alert['group_id'] = 'РЈРєР°Р¶РёС‚Рµ СЂР°Р·РґРµР».';
 
       if($descr_len > commune::DESCR_MAX_LENGTH)
-        $alert['descr'] = 'Количество символов превышает допустимое.';
-      $descr = substr($descr, 0, commune::DESCR_MAX_LENGTH*2); // размер поля в базе.
+        $alert['descr'] = 'РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ РїСЂРµРІС‹С€Р°РµС‚ РґРѕРїСѓСЃС‚РёРјРѕРµ.';
+      $descr = substr($descr, 0, commune::DESCR_MAX_LENGTH*2); // СЂР°Р·РјРµСЂ РїРѕР»СЏ РІ Р±Р°Р·Рµ.
 
       if($alert)
         $commune_output = 'create.php';
@@ -1173,7 +1173,7 @@ define('JS_BOTTOM', true);
 
 
 
-// Рабочие функции -------------------------------------------------------------
+// Р Р°Р±РѕС‡РёРµ С„СѓРЅРєС†РёРё -------------------------------------------------------------
 
 
 
@@ -1207,16 +1207,16 @@ define('JS_BOTTOM', true);
                 $ext = $file->getext();
                 if(in_array($ext, $GLOBALS['graf_array']) && $ext != "swf" && $ext != "flv" && $max_img_width && $max_img_height) {
                     if(!$file->image_size['width'] || !$file->image_size['height']) {
-                        return "Невозможно уменьшить картинку.";
+                        return "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ.";
                     }
                     if($file->image_size['width'] > $max_img_width || $file->image_size['height'] > $max_img_height) {
                         if($is_fix_size) {
                             $file->Delete($file->id);
-                            return "Размеры картинки превышают максимально допустимые: {$max_img_width}x{$max_img_height} px.";
+                            return "Р Р°Р·РјРµСЂС‹ РєР°СЂС‚РёРЅРєРё РїСЂРµРІС‹С€Р°СЋС‚ РјР°РєСЃРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјС‹Рµ: {$max_img_width}x{$max_img_height} px.";
                         }
                         $smfile = clone $file;
                         if(!$smfile->img_to_small("sm_".$file_name,array('width'=>$max_img_width, 'height'=>$max_img_height))) {
-                            $error = "Невозможно уменьшить картинку.";
+                            $error = "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ.";
                         } else {
                             $is_smalled = 1;
                         }
@@ -1228,7 +1228,7 @@ define('JS_BOTTOM', true);
                 $file->is_smalled = $is_smalled;
             }
             
-            if($error) return $error; // Если есть ошибка дальше загружать файлы бессмысленно
+            if($error) return $error; // Р•СЃР»Рё РµСЃС‚СЊ РѕС€РёР±РєР° РґР°Р»СЊС€Рµ Р·Р°РіСЂСѓР¶Р°С‚СЊ С„Р°Р№Р»С‹ Р±РµСЃСЃРјС‹СЃР»РµРЅРЅРѕ
         }
         
         return $error;
@@ -1254,16 +1254,16 @@ define('JS_BOTTOM', true);
           {
     
             if(!$files->image_size['width'] || !$files->image_size['height'])
-              return "Невозможно уменьшить картинку.";
+              return "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ.";
     
             if($files->image_size['width'] > $max_img_width || $files->image_size['height'] > $max_img_height)
             {
               if($is_fix_size) {
                 $files->Delete($files->id);
-                return "Размеры картинки превышают максимально допустимые: {$max_img_width}x{$max_img_height} px.";
+                return "Р Р°Р·РјРµСЂС‹ РєР°СЂС‚РёРЅРєРё РїСЂРµРІС‹С€Р°СЋС‚ РјР°РєСЃРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјС‹Рµ: {$max_img_width}x{$max_img_height} px.";
               }
               if(!$files->img_to_small("sm_".$file_name,array('width'=>$max_img_width, 'height'=>$max_img_height)))
-                $error = "Невозможно уменьшить картинку.";
+                $error = "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ.";
               else
                 $is_smalled = 1;
             }
@@ -1292,38 +1292,38 @@ define('JS_BOTTOM', true);
 	// stdf
 //  function array2tree(
   function transformArray2Tree(
-	 $array, // исходный массив, содержащий неупорядоченные узлы дерева. Каждый
-	         // узел должен иметь идентификатор и знать идентификатор своего родителя.
-	 $id_name, // имя члена, который хранит идентификатор узла.
-	 $parent_name, // имя члена, который хранит идентификатор родительского узла.
-	 $top_id=NULL, // идентификатор корня дерева. Может быть NULL. Используется для получения
-	               // первого уровня дерева.
-	 $return_mode = 'FULL') // режим возврата. SIMPLE || FULL.
-	// Все исходные идентификаторы -- целые числа. Ид. узла не может быть NULL.
-	// $array -- неассоциативный массив, узлы должны быть доступны через простой индекс
-	// в непрерывном диапазоне [0, count($array)-1]. А вот узлы -- это уже ассоциативные массивы.
-  // Получаем упорядоченное дерево в виде списка: i:level|j:level ... k:level,
-  // где i, j, ..., k -- индекс узла, соответствующий индексу элемента массива $array;
-  // level -- уровень вложенности, начиная с 1.
+	 $array, // РёСЃС…РѕРґРЅС‹Р№ РјР°СЃСЃРёРІ, СЃРѕРґРµСЂР¶Р°С‰РёР№ РЅРµСѓРїРѕСЂСЏРґРѕС‡РµРЅРЅС‹Рµ СѓР·Р»С‹ РґРµСЂРµРІР°. РљР°Р¶РґС‹Р№
+	         // СѓР·РµР» РґРѕР»Р¶РµРЅ РёРјРµС‚СЊ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Рё Р·РЅР°С‚СЊ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃРІРѕРµРіРѕ СЂРѕРґРёС‚РµР»СЏ.
+	 $id_name, // РёРјСЏ С‡Р»РµРЅР°, РєРѕС‚РѕСЂС‹Р№ С…СЂР°РЅРёС‚ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СѓР·Р»Р°.
+	 $parent_name, // РёРјСЏ С‡Р»РµРЅР°, РєРѕС‚РѕСЂС‹Р№ С…СЂР°РЅРёС‚ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЂРѕРґРёС‚РµР»СЊСЃРєРѕРіРѕ СѓР·Р»Р°.
+	 $top_id=NULL, // РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РєРѕСЂРЅСЏ РґРµСЂРµРІР°. РњРѕР¶РµС‚ Р±С‹С‚СЊ NULL. РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ
+	               // РїРµСЂРІРѕРіРѕ СѓСЂРѕРІРЅСЏ РґРµСЂРµРІР°.
+	 $return_mode = 'FULL') // СЂРµР¶РёРј РІРѕР·РІСЂР°С‚Р°. SIMPLE || FULL.
+	// Р’СЃРµ РёСЃС…РѕРґРЅС‹Рµ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ -- С†РµР»С‹Рµ С‡РёСЃР»Р°. РРґ. СѓР·Р»Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ NULL.
+	// $array -- РЅРµР°СЃСЃРѕС†РёР°С‚РёРІРЅС‹Р№ РјР°СЃСЃРёРІ, СѓР·Р»С‹ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РґРѕСЃС‚СѓРїРЅС‹ С‡РµСЂРµР· РїСЂРѕСЃС‚РѕР№ РёРЅРґРµРєСЃ
+	// РІ РЅРµРїСЂРµСЂС‹РІРЅРѕРј РґРёР°РїР°Р·РѕРЅРµ [0, count($array)-1]. Рђ РІРѕС‚ СѓР·Р»С‹ -- СЌС‚Рѕ СѓР¶Рµ Р°СЃСЃРѕС†РёР°С‚РёРІРЅС‹Рµ РјР°СЃСЃРёРІС‹.
+  // РџРѕР»СѓС‡Р°РµРј СѓРїРѕСЂСЏРґРѕС‡РµРЅРЅРѕРµ РґРµСЂРµРІРѕ РІ РІРёРґРµ СЃРїРёСЃРєР°: i:level|j:level ... k:level,
+  // РіРґРµ i, j, ..., k -- РёРЅРґРµРєСЃ СѓР·Р»Р°, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ РёРЅРґРµРєСЃСѓ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР° $array;
+  // level -- СѓСЂРѕРІРµРЅСЊ РІР»РѕР¶РµРЅРЅРѕСЃС‚Рё, РЅР°С‡РёРЅР°СЏ СЃ 1.
   // SIMPLE:
-	// Преобразуем список в такой, примерно, массив:
+	// РџСЂРµРѕР±СЂР°Р·СѓРµРј СЃРїРёСЃРѕРє РІ С‚Р°РєРѕР№, РїСЂРёРјРµСЂРЅРѕ, РјР°СЃСЃРёРІ:
 	//
-	//   $tree[0]='k:1'       --> нужно взять элемент $array[k]
-	//   $tree[1]='i:1'       --> нужно взять элемент $array[i]
-	//     $tree[2]='j:2'     --> нужно взять элемент $array[j]
+	//   $tree[0]='k:1'       --> РЅСѓР¶РЅРѕ РІР·СЏС‚СЊ СЌР»РµРјРµРЅС‚ $array[k]
+	//   $tree[1]='i:1'       --> РЅСѓР¶РЅРѕ РІР·СЏС‚СЊ СЌР»РµРјРµРЅС‚ $array[i]
+	//     $tree[2]='j:2'     --> РЅСѓР¶РЅРѕ РІР·СЏС‚СЊ СЌР»РµРјРµРЅС‚ $array[j]
 	//   ...
-	//       $tree[n]='q:3'   --> нужно взять элемент $array[q]
-	//     $tree[n+1]='p:2'   --> нужно взять элемент $array[p]
+	//       $tree[n]='q:3'   --> РЅСѓР¶РЅРѕ РІР·СЏС‚СЊ СЌР»РµРјРµРЅС‚ $array[q]
+	//     $tree[n+1]='p:2'   --> РЅСѓР¶РЅРѕ РІР·СЏС‚СЊ СЌР»РµРјРµРЅС‚ $array[p]
 	//
-	// То есть, пробегая по массиву с начала до конца, нужно просто извлекать нужный элемент
-	// из исходного массива по индексу, хранящемуся в $tree.
+	// РўРѕ РµСЃС‚СЊ, РїСЂРѕР±РµРіР°СЏ РїРѕ РјР°СЃСЃРёРІСѓ СЃ РЅР°С‡Р°Р»Р° РґРѕ РєРѕРЅС†Р°, РЅСѓР¶РЅРѕ РїСЂРѕСЃС‚Рѕ РёР·РІР»РµРєР°С‚СЊ РЅСѓР¶РЅС‹Р№ СЌР»РµРјРµРЅС‚
+	// РёР· РёСЃС…РѕРґРЅРѕРіРѕ РјР°СЃСЃРёРІР° РїРѕ РёРЅРґРµРєСЃСѓ, С…СЂР°РЅСЏС‰РµРјСѓСЃСЏ РІ $tree.
   // FULL:
-	// Немного обработаем дерево, пройдемся еще раз по массиву.
-	// Возвращается целиком копия исходного массива, только упорядоченная и
-	// дополненная информацией о каждом узле: уровень узла (level) и
-	// флаг "последний в поддереве" (is_last). Поддерево -- это вся ветвь, корнем которой является
-	// элемент с уровнем вложенности 1. Причем, последний в поддереве, имеется в виду самый
-  // левый (мысленно поверни поддерево корнем к верху), а не самый удаленный.
+	// РќРµРјРЅРѕРіРѕ РѕР±СЂР°Р±РѕС‚Р°РµРј РґРµСЂРµРІРѕ, РїСЂРѕР№РґРµРјСЃСЏ РµС‰Рµ СЂР°Р· РїРѕ РјР°СЃСЃРёРІСѓ.
+	// Р’РѕР·РІСЂР°С‰Р°РµС‚СЃСЏ С†РµР»РёРєРѕРј РєРѕРїРёСЏ РёСЃС…РѕРґРЅРѕРіРѕ РјР°СЃСЃРёРІР°, С‚РѕР»СЊРєРѕ СѓРїРѕСЂСЏРґРѕС‡РµРЅРЅР°СЏ Рё
+	// РґРѕРїРѕР»РЅРµРЅРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ РєР°Р¶РґРѕРј СѓР·Р»Рµ: СѓСЂРѕРІРµРЅСЊ СѓР·Р»Р° (level) Рё
+	// С„Р»Р°Рі "РїРѕСЃР»РµРґРЅРёР№ РІ РїРѕРґРґРµСЂРµРІРµ" (is_last). РџРѕРґРґРµСЂРµРІРѕ -- СЌС‚Рѕ РІСЃСЏ РІРµС‚РІСЊ, РєРѕСЂРЅРµРј РєРѕС‚РѕСЂРѕР№ СЏРІР»СЏРµС‚СЃСЏ
+	// СЌР»РµРјРµРЅС‚ СЃ СѓСЂРѕРІРЅРµРј РІР»РѕР¶РµРЅРЅРѕСЃС‚Рё 1. РџСЂРёС‡РµРј, РїРѕСЃР»РµРґРЅРёР№ РІ РїРѕРґРґРµСЂРµРІРµ, РёРјРµРµС‚СЃСЏ РІ РІРёРґСѓ СЃР°РјС‹Р№
+  // Р»РµРІС‹Р№ (РјС‹СЃР»РµРЅРЅРѕ РїРѕРІРµСЂРЅРё РїРѕРґРґРµСЂРµРІРѕ РєРѕСЂРЅРµРј Рє РІРµСЂС…Сѓ), Р° РЅРµ СЃР°РјС‹Р№ СѓРґР°Р»РµРЅРЅС‹Р№.
 	{
   	if(empty($array))
 			return $array;

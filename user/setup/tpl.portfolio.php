@@ -1,11 +1,11 @@
 <?php 
-include_once("act.portfolio.php"); // Файл для обработки логики
+include_once("act.portfolio.php"); // Р¤Р°Р№Р» РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё Р»РѕРіРёРєРё
 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/users.common.php");
 $xajax->printJavascript('/xajax/');
 ?>
 
-<form action="." method="post" name="frm_serv" id="frm_serv" onSubmit="if(tawlFormValidation(this)){this.btn.value='Подождите'; this.btn.disabled=true;}else{return false;}">
+<form action="." method="post" name="frm_serv" id="frm_serv" onSubmit="if(tawlFormValidation(this)){this.btn.value='РџРѕРґРѕР¶РґРёС‚Рµ'; this.btn.disabled=true;}else{return false;}">
   <div class="b-layout b-layout_padtop_20">
     <input type="hidden" name="action" value="serv_change" />
     <input type="hidden" name="prjid" value="" />
@@ -24,28 +24,28 @@ $xajax->printJavascript('/xajax/');
         </div>
     </div>
     <?php } ?>
-    <div class="b-layout__txt b-layout__txt_float_right b-page__desktop"><img src="/images/ico_setup.gif" alt="" width="6" height="9" />&nbsp;&nbsp;<a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_color_0f71c8" href="/users/<?= $user->login ?>/setup/portfsetup/">Изменить разделы</a></div>
+    <div class="b-layout__txt b-layout__txt_float_right b-page__desktop"><img src="/images/ico_setup.gif" alt="" width="6" height="9" />&nbsp;&nbsp;<a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_color_0f71c8" href="/users/<?= $user->login ?>/setup/portfsetup/">РР·РјРµРЅРёС‚СЊ СЂР°Р·РґРµР»С‹</a></div>
     
     <div class="b-select b-select_inline-block b-select_padbot_20">
-        <label class="b-select__label" for="b-select__select">Выберите название закладки:</label>
+        <label class="b-select__label" for="b-select__select">Р’С‹Р±РµСЂРёС‚Рµ РЅР°Р·РІР°РЅРёРµ Р·Р°РєР»Р°РґРєРё:</label>
         <select id="tab_name_id" class="b-select__select  b-select__select_inline-block b-select__select_width_110" name="tab_name_id">
-          <option value="0"<? if ($frm_serv_val['tab_name_id'] == 0) { ?> selected='selected'<? } ?>>Портфолио</option>
-          <option value="1"<? if ($frm_serv_val['tab_name_id'] == 1) { ?> selected='selected'<? } ?>>Услуги</option>
+          <option value="0"<? if ($frm_serv_val['tab_name_id'] == 0) { ?> selected='selected'<? } ?>>РџРѕСЂС‚С„РѕР»РёРѕ</option>
+          <option value="1"<? if ($frm_serv_val['tab_name_id'] == 1) { ?> selected='selected'<? } ?>>РЈСЃР»СѓРіРё</option>
         </select>
     </div>
-    <div class="b-layout__txt b-layout__txt_padbot_20 b-page__ipad b-page__iphone"><img src="/images/ico_setup.gif" alt="" width="6" height="9" />&nbsp;&nbsp;<a class="b-layout__link b-layout__link_fontsize_11" href="/users/<?= $user->login ?>/setup/portfsetup/">Изменить разделы</a></div>
-    <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_fontsize_11"><a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_color_0f71c8" href="/users/<?= $user->login ?>/setup/specsetup/" id="ap11">Специализация</a>:&nbsp;&nbsp;<?= professions::GetProfNameWP($user->spec, ' / ', 'Нет специализации') ?></div>
+    <div class="b-layout__txt b-layout__txt_padbot_20 b-page__ipad b-page__iphone"><img src="/images/ico_setup.gif" alt="" width="6" height="9" />&nbsp;&nbsp;<a class="b-layout__link b-layout__link_fontsize_11" href="/users/<?= $user->login ?>/setup/portfsetup/">РР·РјРµРЅРёС‚СЊ СЂР°Р·РґРµР»С‹</a></div>
+    <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_fontsize_11"><a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_color_0f71c8" href="/users/<?= $user->login ?>/setup/specsetup/" id="ap11">РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ</a>:&nbsp;&nbsp;<?= professions::GetProfNameWP($user->spec, ' / ', 'РќРµС‚ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё') ?></div>
     <? if(!is_pro()) { ?>
-    <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_fontsize_11">Чтобы увеличить количество специализаций и получить дополнительные возможности, рекомендуем приобрести аккаунт <?= view_pro(false, false, true, 'владельцев платного аккаунта')?></div>
+    <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_fontsize_11">Р§С‚РѕР±С‹ СѓРІРµР»РёС‡РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёР№ Рё РїРѕР»СѓС‡РёС‚СЊ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё, СЂРµРєРѕРјРµРЅРґСѓРµРј РїСЂРёРѕР±СЂРµСЃС‚Рё Р°РєРєР°СѓРЅС‚ <?= view_pro(false, false, true, 'РІР»Р°РґРµР»СЊС†РµРІ РїР»Р°С‚РЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°')?></div>
     <? } else { ?>
-    <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_fontsize_11"><a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_color_0f71c8" href="/users/<?= $user->login ?>/setup/specaddsetup/" id="ap11">Дополнительные специализации</a>:&nbsp;&nbsp;<?= $specs_add_string ?></div>
+    <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_fontsize_11"><a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_color_0f71c8" href="/users/<?= $user->login ?>/setup/specaddsetup/" id="ap11">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё</a>:&nbsp;&nbsp;<?= $specs_add_string ?></div>
     <? } ?>
   <div class="b-check b-check_padbot_20">
      <table class="b-layout__table b-layout__table_width_full">
         <tr class="b-layout__tr">
            <td class="b-layout__td b-layout__td_width_null_ipad b-layout__td_ipad"><input name="cat_show" class="b-check__input" type="checkbox" value="1" <?= !is_pro() ? 'disabled="disabled"' : '' ?> <?= $user->cat_show == 't' || !is_pro() ? 'checked="checked"' : '' ?> id="cat_showl" /></td>
            <td class="b-layout__td b-layout__td_ipad b-layout__td_width_full b-layout__td_width_full_ipad">
-              <label class="b-check__label b-check__label_color_71" for="cat_showl">&#160;<strong class="b-layout__txt_bold">Разрешить размещение в каталоге</strong><span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_71 b-layout__txt_lineheight_1 b-layout_block_iphone">&#160;(только для <span title="владельцев платного аккаунта" class="b-icon b-icon__pro b-icon__pro_f b-icon_valign_bas"></span>)</span></label>
+              <label class="b-check__label b-check__label_color_71" for="cat_showl">&#160;<strong class="b-layout__txt_bold">Р Р°Р·СЂРµС€РёС‚СЊ СЂР°Р·РјРµС‰РµРЅРёРµ РІ РєР°С‚Р°Р»РѕРіРµ</strong><span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_71 b-layout__txt_lineheight_1 b-layout_block_iphone">&#160;(С‚РѕР»СЊРєРѕ РґР»СЏ <span title="РІР»Р°РґРµР»СЊС†РµРІ РїР»Р°С‚РЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°" class="b-icon b-icon__pro b-icon__pro_f b-icon_valign_bas"></span>)</span></label>
            </td>
         </tr>
      </table>         
@@ -55,7 +55,7 @@ $xajax->printJavascript('/xajax/');
   <table class="b-layout__table b-layout__table_width_full">
      <tr class="b-layout__tr">
         <td class="b-layout__td b-layout__td_width_240 b-layout__td_padbot_10">
-           <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_2">Опыт работы (в годах)</div>
+           <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_2">РћРїС‹С‚ СЂР°Р±РѕС‚С‹ (РІ РіРѕРґР°С…)</div>
         </td>
         <td class="b-layout__td b-layout__td_width_140 b-layout__td_padbot_10 b-layout__td_right b-layout__td_left_ipad b-layout__td_padright_35">
            <div class="b-input b-input_width_60 b-input_inline-block">
@@ -66,14 +66,14 @@ $xajax->printJavascript('/xajax/');
      </tr>
      <tr class="b-layout__tr">
         <td class="b-layout__td b-layout__td_width_240 b-layout__td_padbot_10">
-           <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_2">Укажите стоимость часа вашей работы</div>
+           <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_2">РЈРєР°Р¶РёС‚Рµ СЃС‚РѕРёРјРѕСЃС‚СЊ С‡Р°СЃР° РІР°С€РµР№ СЂР°Р±РѕС‚С‹</div>
         </td>
         <td class="b-layout__td b-layout__td_width_140 b-layout__td_padbot_10 b-layout__td_right b-layout__td_left_ipad b-layout__td_padright_35">
            <div class="b-select  b-select_margright_5 b-select_inline-block">
               <select  class="b-select__select b-select__select_width_50" name="cost_type_hour" id="cost_type_hour">
                   <option value="0" <?= ($frm_serv_val['cost_type_hour'] == 0 ? "selected='selected'" : "") ?> >USD</option>
                   <option value="1" <?= ($frm_serv_val['cost_type_hour'] == 1 ? "selected='selected'" : "") ?>>Euro</option>
-                  <option value="2" <?= ($frm_serv_val['cost_type_hour'] == 2 ? "selected='selected'" : "") ?>>Руб</option>
+                  <option value="2" <?= ($frm_serv_val['cost_type_hour'] == 2 ? "selected='selected'" : "") ?>>Р СѓР±</option>
               </select>
            </div>
            <div class="b-input b-input_width_60 b-input_inline-block">
@@ -81,19 +81,19 @@ $xajax->printJavascript('/xajax/');
            </div>
         </td>
         <td class="b-layout__td b-layout__td_padbot_10">
-           <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_2"> &mdash; данные цены будут выводиться на вашей странице и в общем каталоге</div>
+           <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_2"> &mdash; РґР°РЅРЅС‹Рµ С†РµРЅС‹ Р±СѓРґСѓС‚ РІС‹РІРѕРґРёС‚СЊСЃСЏ РЅР° РІР°С€РµР№ СЃС‚СЂР°РЅРёС†Рµ Рё РІ РѕР±С‰РµРј РєР°С‚Р°Р»РѕРіРµ</div>
         </td>
      </tr>
      <tr class="b-layout__tr">
         <td class="b-layout__td b-layout__td_width_240 b-layout__td_padbot_10">
-           <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_2">Укажите стоимость месяца вашей работы</div>
+           <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_2">РЈРєР°Р¶РёС‚Рµ СЃС‚РѕРёРјРѕСЃС‚СЊ РјРµСЃСЏС†Р° РІР°С€РµР№ СЂР°Р±РѕС‚С‹</div>
         </td>
         <td class="b-layout__td b-layout__td_width_140 b-layout__td_padbot_10 b-layout__td_right b-layout__td_left_ipad b-layout__td_padright_35">
            <div class="b-select  b-select_margright_5 b-select_inline-block">
               <select class="b-select__select b-select__select_width_50" name="cost_type_month" id="cost_type_month">
                   <option value="0" <?= ($frm_serv_val['cost_type_month'] == 0 ? "selected='selected'" : "") ?> >USD</option>
                   <option value="1" <?= ($frm_serv_val['cost_type_month'] == 1 ? "selected='selected'" : "") ?>>Euro</option>
-                  <option value="2" <?= ($frm_serv_val['cost_type_month'] == 2 ? "selected='selected'" : "") ?>>Руб</option>
+                  <option value="2" <?= ($frm_serv_val['cost_type_month'] == 2 ? "selected='selected'" : "") ?>>Р СѓР±</option>
               </select>
            </div>
            <div class="b-input b-input_width_60 b-input_inline-block">
@@ -106,17 +106,17 @@ $xajax->printJavascript('/xajax/');
     <div class="b-check b-check_padbot_30">
         <input type="checkbox" id="in_officel" name="in_office" value="1" <?= $frm_serv_val['in_office'] == "t" ? " checked='checked'" : "" ?>  class="b-check__input" />
         <label class="b-check__label b-check__label_bold b-check__label_color_71" for="in_officel">
-            Ищу долгосрочную работу <span style="display:inline-block; vertical-align: baseline; line-height:1; padding: 0 0 0 15px; background: url(/images/icons-sprite.png) no-repeat -100px -337px;">в офисе</span>
+            РС‰Сѓ РґРѕР»РіРѕСЃСЂРѕС‡РЅСѓСЋ СЂР°Р±РѕС‚Сѓ <span style="display:inline-block; vertical-align: baseline; line-height:1; padding: 0 0 0 15px; background: url(/images/icons-sprite.png) no-repeat -100px -337px;">РІ РѕС„РёСЃРµ</span>
         </label>
     </div>
     
     
-    <div class="b-layout__txt b-layout__txt_padbot_5">Уточнения к услугам в портфолио:</div>
+    <div class="b-layout__txt b-layout__txt_padbot_5">РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СѓСЃР»СѓРіР°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ:</div>
     <div class="b-textarea">
         <textarea class="b-textarea__textarea" rel="<?= $ab_text_max_length ?>" cols="60" rows="7" id="ab_text" name="ab_text"><?= input_ref($frm_serv_val['text']) ?></textarea>
     </div>
     <div class="b-buttons b-buttons_padtop_10">
-       <button id="btn" class="b-button b-button_flat b-button_flat_green" name="btn" type="submit">Изменить</button>
+       <button id="btn" class="b-button b-button_flat b-button_flat_green" name="btn" type="submit">РР·РјРµРЅРёС‚СЊ</button>
     </div>
   </div>
 </form>

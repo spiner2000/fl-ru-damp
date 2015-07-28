@@ -3,26 +3,26 @@
 require_once 'DigestBlockList.php';
 
 /**
- * Класс для работы с блоком фрилансеров
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р»РѕРєРѕРј С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
  */
 class DigestBlockListFreelancer extends DigestBlockList {
     
     /**
-     * Доступна ли кнопка автозаполнения ссылок
+     * Р”РѕСЃС‚СѓРїРЅР° Р»Рё РєРЅРѕРїРєР° Р°РІС‚РѕР·Р°РїРѕР»РЅРµРЅРёСЏ СЃСЃС‹Р»РѕРє
      * 
      * @var boolean 
      */
     const AUTO_COMPLETE = true;
     
     /**
-     * Маска валидации и проверки ссылки
+     * РњР°СЃРєР° РІР°Р»РёРґР°С†РёРё Рё РїСЂРѕРІРµСЂРєРё СЃСЃС‹Р»РєРё
      * 
      * @var string
      */
     const MASK_LINK = '~users\/(\S+)~mix';
     
     /**
-     * Количество ссылок
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ СЃСЃС‹Р»РѕРє
      * 
      * @var integer 
      */
@@ -31,20 +31,20 @@ class DigestBlockListFreelancer extends DigestBlockList {
     /**
      * @see parent::$title
      */
-    public $title = 'Топ %s рекомендуемых <a class="b-layout__link" href="/freelancer/" target="_blank">фрилансеров</a>';
+    public $title = 'РўРѕРї %s СЂРµРєРѕРјРµРЅРґСѓРµРјС‹С… <a class="b-layout__link" href="/freelancer/" target="_blank">С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</a>';
     
     /**
      * @see parent::$hint
      */
-    public $hint = 'Например: http://www.free-lance.ru/users/example/';
+    public $hint = 'РќР°РїСЂРёРјРµСЂ: http://www.free-lance.ru/users/example/';
     
     /**
      * @see parent::$title_field
      */
-    public $title_field = 'Ссылки на фрилансеров:';
+    public $title_field = 'РЎСЃС‹Р»РєРё РЅР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ:';
     
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      * 
      * @param integer $size
      * @param mixed   $link
@@ -69,7 +69,7 @@ class DigestBlockListFreelancer extends DigestBlockList {
     }
     
     /**
-     * Функция автозаполнения полей
+     * Р¤СѓРЅРєС†РёСЏ Р°РІС‚РѕР·Р°РїРѕР»РЅРµРЅРёСЏ РїРѕР»РµР№
      * 
      * @return boolean
      */

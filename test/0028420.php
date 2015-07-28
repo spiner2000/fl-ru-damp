@@ -1,12 +1,12 @@
 <?php
-// Задача https://beta.free-lance.ru/mantis/view.php?id=28240
+// Р—Р°РґР°С‡Р° https://beta.free-lance.ru/mantis/view.php?id=28240
 
 ini_set('display_errors', 'on');
 
 require_once("../classes/config.php");
 require_once("../classes/opinions.php");
 
-// Месяц для подсчета статистики
+// РњРµСЃСЏС† РґР»СЏ РїРѕРґСЃС‡РµС‚Р° СЃС‚Р°С‚РёСЃС‚РёРєРё
 $date_start = '2014-09-01 00:00:00'; 
 $date_end = '2014-10-01 00:00:00';
 

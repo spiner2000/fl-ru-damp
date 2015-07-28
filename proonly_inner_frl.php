@@ -31,7 +31,7 @@ $poa->GetInfo($uid);
 $poa_codes = $poa->GetOpCodes();
 
 $user = new freelancer();
-// Изменяем авто продление PRO, если нужно
+// РР·РјРµРЅСЏРµРј Р°РІС‚Рѕ РїСЂРѕРґР»РµРЅРёРµ PRO, РµСЃР»Рё РЅСѓР¶РЅРѕ
 if (strtolower($_GET['pro_auto_prolong']) == 'on') {
     $user->setPROAutoProlong('on', $uid);
 }
@@ -44,7 +44,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
 $account = new account();
 $ok = $account->GetInfo($uid, true);
 
-$u_is_pro_auto_prolong = $user->GetField($uid, $e, 'is_pro_auto_prolong', false); // Включено ли у юзера автоматическое продление PRO
+$u_is_pro_auto_prolong = $user->GetField($uid, $e, 'is_pro_auto_prolong', false); // Р’РєР»СЋС‡РµРЅРѕ Р»Рё Сѓ СЋР·РµСЂР° Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРµ РїСЂРѕРґР»РµРЅРёРµ PRO
 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/professions.common.php");
 $xajax->printJavascript('/xajax/');
@@ -79,9 +79,9 @@ if ( query[1] && query[1] != 'undefined' ) {
         <input type="hidden" name="action" value="buy">
         <input type="hidden" id="week_payed" name="oppro" value="76"/>
         
-            <h1 class="b-page__title">Функция доступна только для <span title="PRO" class="b-icon b-icon__spro b-icon__spro_f"></span></h1>
-            <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20">Фрилансеры с аккаунтом <a class="b-layout__link" href="/payed/"><span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_4" alt="Платный аккаунт" title="Платный аккаунт"></span></a> настроены на долгосрочное и продуктивное сотрудничество с работодателями и пользуются большим доверием с их стороны. Аккаунт PRO — это показатель деловой активности и серьезного отношения к своей работе.</div>
-            <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20">Профессиональный аккаунт предоставляет фрилансерам целый набор преимуществ и возможностей, которые позволяют привлечь внимание заказчиков и повышают шансы получить выгодные и действительно интересные проекты. Стать успешным легко — поPROбуйте!</div>
+            <h1 class="b-page__title">Р¤СѓРЅРєС†РёСЏ РґРѕСЃС‚СѓРїРЅР° С‚РѕР»СЊРєРѕ РґР»СЏ <span title="PRO" class="b-icon b-icon__spro b-icon__spro_f"></span></h1>
+            <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20">Р¤СЂРёР»Р°РЅСЃРµСЂС‹ СЃ Р°РєРєР°СѓРЅС‚РѕРј <a class="b-layout__link" href="/payed/"><span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_4" alt="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" title="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚"></span></a> РЅР°СЃС‚СЂРѕРµРЅС‹ РЅР° РґРѕР»РіРѕСЃСЂРѕС‡РЅРѕРµ Рё РїСЂРѕРґСѓРєС‚РёРІРЅРѕРµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ СЃ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏРјРё Рё РїРѕР»СЊР·СѓСЋС‚СЃСЏ Р±РѕР»СЊС€РёРј РґРѕРІРµСЂРёРµРј СЃ РёС… СЃС‚РѕСЂРѕРЅС‹. РђРєРєР°СѓРЅС‚ PRO вЂ” СЌС‚Рѕ РїРѕРєР°Р·Р°С‚РµР»СЊ РґРµР»РѕРІРѕР№ Р°РєС‚РёРІРЅРѕСЃС‚Рё Рё СЃРµСЂСЊРµР·РЅРѕРіРѕ РѕС‚РЅРѕС€РµРЅРёСЏ Рє СЃРІРѕРµР№ СЂР°Р±РѕС‚Рµ.</div>
+            <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20">РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚ РїСЂРµРґРѕСЃС‚Р°РІР»СЏРµС‚ С„СЂРёР»Р°РЅСЃРµСЂР°Рј С†РµР»С‹Р№ РЅР°Р±РѕСЂ РїСЂРµРёРјСѓС‰РµСЃС‚РІ Рё РІРѕР·РјРѕР¶РЅРѕСЃС‚РµР№, РєРѕС‚РѕСЂС‹Рµ РїРѕР·РІРѕР»СЏСЋС‚ РїСЂРёРІР»РµС‡СЊ РІРЅРёРјР°РЅРёРµ Р·Р°РєР°Р·С‡РёРєРѕРІ Рё РїРѕРІС‹С€Р°СЋС‚ С€Р°РЅСЃС‹ РїРѕР»СѓС‡РёС‚СЊ РІС‹РіРѕРґРЅС‹Рµ Рё РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ РёРЅС‚РµСЂРµСЃРЅС‹Рµ РїСЂРѕРµРєС‚С‹. РЎС‚Р°С‚СЊ СѓСЃРїРµС€РЅС‹Рј Р»РµРіРєРѕ вЂ” РїРѕPROР±СѓР№С‚Рµ!</div>
             <div class="payed-block payed-block-proonly">
                 <b class="b1"></b>
                 <b class="b2"><b class="b4"></b></b>
@@ -92,28 +92,28 @@ if ( query[1] && query[1] != 'undefined' ) {
             		<input type="hidden" name="week" id="week" value="1">
             		<input type="hidden" name="transaction_id" value="<?=$transaction_id?>">
             		<input type="hidden" name="action" value="buy">
-                    <h3 class="b-layout__h3">Покупка <span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_3" title="Платного аккаунта"></span> аккаунта:</h3>
+                    <h3 class="b-layout__h3">РџРѕРєСѓРїРєР° <span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_3" title="РџР»Р°С‚РЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°"></span> Р°РєРєР°СѓРЅС‚Р°:</h3>
                     <? if($_SESSION['pro_last']): ?>
                     <?
                     $last_time = $_SESSION['pro_last'];
                     if(floor((strtotime($last_time)-time())/(60*60*24)) > 0) {
                         $last_ending = floor((strtotime($last_time)-time())/(60*60*24));
-                        $last_string1 = 'день';
-                        $last_string2 = 'дня';
-                        $last_string3 = 'дней';
+                        $last_string1 = 'РґРµРЅСЊ';
+                        $last_string2 = 'РґРЅСЏ';
+                        $last_string3 = 'РґРЅРµР№';
                     } else if (floor((strtotime($last_time)-time())/(60*60)) > 0) {
                         $last_ending = floor((strtotime($last_time)-time())/(60*60));
-                        $last_string1 = 'час';
-                        $last_string2 = 'часа';
-                        $last_string3 = 'часов';
+                        $last_string1 = 'С‡Р°СЃ';
+                        $last_string2 = 'С‡Р°СЃР°';
+                        $last_string3 = 'С‡Р°СЃРѕРІ';
                     } else {
                         $last_ending = floor((strtotime($last_time)-time())/(60));
-                        $last_string1 = 'минута';
-                        $last_string2 = 'минуты';
-                        $last_string3 = 'минут';
+                        $last_string1 = 'РјРёРЅСѓС‚Р°';
+                        $last_string2 = 'РјРёРЅСѓС‚С‹';
+                        $last_string3 = 'РјРёРЅСѓС‚';
                     }
                     ?>
-                    <div class="b-layout__txt b-layout__txt_padbot_10">Ваш <span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_3" alt="Платный аккаунт" title="Платный аккаунт"></span> аккаунт истекает через <?=$last_ending?> <?=ending($last_ending, $last_string1, $last_string2, $last_string3)?></div>
+                    <div class="b-layout__txt b-layout__txt_padbot_10">Р’Р°С€ <span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_3" alt="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" title="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚"></span> Р°РєРєР°СѓРЅС‚ РёСЃС‚РµРєР°РµС‚ С‡РµСЂРµР· <?=$last_ending?> <?=ending($last_ending, $last_string1, $last_string2, $last_string3)?></div>
                     <? endif; ?>
                     <table class="buy-pro-tbl">
                         <col width="22" />
@@ -124,55 +124,55 @@ if ( query[1] && query[1] != 'undefined' ) {
                         <col width="70" />
                         <tr class="">
                             <td class="buy-pro-tbl__radio"><input type="radio" name="oppro" value="132"/></td>
-							<td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">99 руб.</span><b class="b2"></b><b class="b1"></b></span></td>
-							<td class="sign">х</td>
-							<td>1 день</td>
+							<td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">99 СЂСѓР±.</span><b class="b2"></b><b class="b1"></b></span></td>
+							<td class="sign">С…</td>
+							<td>1 РґРµРЅСЊ</td>
 							<td class="sign">=</td>
-							<td><strong>99 руб.</strong></td>
+							<td><strong>99 СЂСѓР±.</strong></td>
                         </tr>
                         <tr class="">
                             <td class="buy-pro-tbl__radio"><input type="radio" name="oppro" value="131"/></td>
-							<td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">299 руб.</span><b class="b2"></b><b class="b1"></b></span></td>
-							<td class="sign">х</td>
-							<td>1 неделю</td>
+							<td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">299 СЂСѓР±.</span><b class="b2"></b><b class="b1"></b></span></td>
+							<td class="sign">С…</td>
+							<td>1 РЅРµРґРµР»СЋ</td>
 							<td class="sign">=</td>
-							<td><strong>299 руб.</strong></td>
+							<td><strong>299 СЂСѓР±.</strong></td>
                         </tr>
                         <tr>
                             <td class="buy-pro-tbl__radio"><input type="radio" name="oppro" value="48" onClick="if(this.checked) noSumAmmount(780, 'block_pro_pay', 'pro_pay_sum');"/></td>
-							<td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">780 руб.</span><b class="b2"></b><b class="b1"></b></span></td>
-							<td class="sign">х</td>
-							<td>1 месяц</td>
+							<td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">780 СЂСѓР±.</span><b class="b2"></b><b class="b1"></b></span></td>
+							<td class="sign">С…</td>
+							<td>1 РјРµСЃСЏС†</td>
 							<td class="sign">=</td>
-							<td><strong>780 руб.</strong></td>
+							<td><strong>780 СЂСѓР±.</strong></td>
                         </tr>
                         <tr>
                             <td class="buy-pro-tbl__radio"><input type="radio" name="oppro" value="49" onClick="if(this.checked) noSumAmmount(2220, 'block_pro_pay', 'pro_pay_sum');"/></td>
-                            <td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">740 руб.</span><b class="b2"></b><b class="b1"></b></span></td>
-                            <td class="sign">х</td>
-							<td>3 месяца</td>
+                            <td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">740 СЂСѓР±.</span><b class="b2"></b><b class="b1"></b></span></td>
+                            <td class="sign">С…</td>
+							<td>3 РјРµСЃСЏС†Р°</td>
 							<td class="sign">=</td>
-							<td><strong>2220 руб.</strong></td>
+							<td><strong>2220 СЂСѓР±.</strong></td>
 						</tr>
 						<tr>
                             <td class="buy-pro-tbl__radio"><input type="radio" name="oppro" value="50" onClick="if(this.checked) noSumAmmount(4200, 'block_pro_pay', 'pro_pay_sum');"/></td>
-							<td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">700 руб.</span><b class="b2"></b><b class="b1"></b></span></td>
-							<td class="sign">х</td>
-							<td>6 месяцев</td>
+							<td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">700 СЂСѓР±.</span><b class="b2"></b><b class="b1"></b></span></td>
+							<td class="sign">С…</td>
+							<td>6 РјРµСЃСЏС†РµРІ</td>
 							<td class="sign">=</td>
-							<td><strong>4200 руб.</strong></td>
+							<td><strong>4200 СЂСѓР±.</strong></td>
 						</tr>
 						<tr>
                             <td class="buy-pro-tbl__radio"><input type="radio" name="oppro" value="51" onClick="if(this.checked) noSumAmmount(7500, 'block_pro_pay', 'pro_pay_sum');"/></td>
-							<td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">625 руб.</span><b class="b2"></b><b class="b1"></b></span></td>
-							<td class="sign">х</td>
-							<td>12 месяцев</td>
+							<td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">625 СЂСѓР±.</span><b class="b2"></b><b class="b1"></b></span></td>
+							<td class="sign">С…</td>
+							<td>12 РјРµСЃСЏС†РµРІ</td>
 							<td class="sign">=</td>
-							<td><strong>7500 руб.</strong></td>
+							<td><strong>7500 СЂСѓР±.</strong></td>
 					    </tr>
 					</table>
                     <div>
-                        <a href="javascript:void(0);" class="btn btn-blue" onClick="if(!$(this).hasClass('btn-disabled')) { $(this).addClass('btn-disabled'); checkBalance('block_pro_pay', 'frmbuy'); }"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Купить</span></span></span></a>
+                        <a href="javascript:void(0);" class="btn btn-blue" onClick="if(!$(this).hasClass('btn-disabled')) { $(this).addClass('btn-disabled'); checkBalance('block_pro_pay', 'frmbuy'); }"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РљСѓРїРёС‚СЊ</span></span></span></a>
 					</div>
 					</form>
                 </div>
@@ -181,22 +181,22 @@ if ( query[1] && query[1] != 'undefined' ) {
                 <b class="b1"></b>
             </div>
 
-            <h3 class="b-layout__h3">Бонусы для фрилансеров с PRO:</h3>
+            <h3 class="b-layout__h3">Р‘РѕРЅСѓСЃС‹ РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ СЃ PRO:</h3>
             
 <div class="b-promo">
 	<ul class="b-promo__list">
-			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Неограниченное количество ответов на проекты по всем специализациям</li>
-			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Открытые контакты: адрес эл.почты, Skype, ICQ, ссылки на сторонние ресурсы размещены в профиле фрилансера и видны всем пользователям сайта</li>
-			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Возможность откликаться на проекты с пометкой «Только для <a class="b-layout__link" href="/payed/"><span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_3" alt="Платный аккаунт" title="Платный аккаунт"></span></a>»</li>
-			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Увеличение рейтинга на 20%</li>
-			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Бесплатная реклама аккаунта в проектах работодателей</li>
-			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Четыре дополнительных специализации в каталоге фрилансеров</li>
-			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Размещение ответов на проекты выше остальных (в зоне <a class="b-layout__link" href="/payed/"><span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_3" alt="Платный аккаунт" title="Платный аккаунт"></span></a>)</li>
-			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Возможность создавать сообщества</li>
-			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Графические превью работ в портфолио</li>
-			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Разделы «Лучшие работы» и «Клиенты» в портфолио</li>
+			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>РќРµРѕРіСЂР°РЅРёС‡РµРЅРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚С‹ РїРѕ РІСЃРµРј СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏРј</li>
+			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>РћС‚РєСЂС‹С‚С‹Рµ РєРѕРЅС‚Р°РєС‚С‹: Р°РґСЂРµСЃ СЌР».РїРѕС‡С‚С‹, Skype, ICQ, СЃСЃС‹Р»РєРё РЅР° СЃС‚РѕСЂРѕРЅРЅРёРµ СЂРµСЃСѓСЂСЃС‹ СЂР°Р·РјРµС‰РµРЅС‹ РІ РїСЂРѕС„РёР»Рµ С„СЂРёР»Р°РЅСЃРµСЂР° Рё РІРёРґРЅС‹ РІСЃРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј СЃР°Р№С‚Р°</li>
+			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РѕС‚РєР»РёРєР°С‚СЊСЃСЏ РЅР° РїСЂРѕРµРєС‚С‹ СЃ РїРѕРјРµС‚РєРѕР№ В«РўРѕР»СЊРєРѕ РґР»СЏ <a class="b-layout__link" href="/payed/"><span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_3" alt="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" title="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚"></span></a>В»</li>
+			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>РЈРІРµР»РёС‡РµРЅРёРµ СЂРµР№С‚РёРЅРіР° РЅР° 20%</li>
+			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Р‘РµСЃРїР»Р°С‚РЅР°СЏ СЂРµРєР»Р°РјР° Р°РєРєР°СѓРЅС‚Р° РІ РїСЂРѕРµРєС‚Р°С… СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№</li>
+			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Р§РµС‚С‹СЂРµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… СЃРїРµС†РёР°Р»РёР·Р°С†РёРё РІ РєР°С‚Р°Р»РѕРіРµ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</li>
+			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Р Р°Р·РјРµС‰РµРЅРёРµ РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚С‹ РІС‹С€Рµ РѕСЃС‚Р°Р»СЊРЅС‹С… (РІ Р·РѕРЅРµ <a class="b-layout__link" href="/payed/"><span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_3" alt="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" title="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚"></span></a>)</li>
+			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЃРѕР·РґР°РІР°С‚СЊ СЃРѕРѕР±С‰РµСЃС‚РІР°</li>
+			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Р“СЂР°С„РёС‡РµСЃРєРёРµ РїСЂРµРІСЊСЋ СЂР°Р±РѕС‚ РІ РїРѕСЂС‚С„РѕР»РёРѕ</li>
+			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Р Р°Р·РґРµР»С‹ В«Р›СѓС‡С€РёРµ СЂР°Р±РѕС‚С‹В» Рё В«РљР»РёРµРЅС‚С‹В» РІ РїРѕСЂС‚С„РѕР»РёРѕ</li>
 	</ul>
 </div>            
             
-            <div class="b-layout__txt"><a class="b-layout__link" href="/payed/">и другие полезные преимущества</a></div>
+            <div class="b-layout__txt"><a class="b-layout__link" href="/payed/">Рё РґСЂСѓРіРёРµ РїРѕР»РµР·РЅС‹Рµ РїСЂРµРёРјСѓС‰РµСЃС‚РІР°</a></div>
 

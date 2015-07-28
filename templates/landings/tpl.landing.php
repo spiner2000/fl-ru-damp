@@ -1,7 +1,7 @@
 <div class="h-land">
-     <div class="b-layout__txt b-layout__txt_center b-layout__txt_color_fff b-layout__txt_bold b-layout__txt_padtop_35 b-layout__txt_uppercase let-space">Крупнейшая биржа удаленной работы</div>
+     <div class="b-layout__txt b-layout__txt_center b-layout__txt_color_fff b-layout__txt_bold b-layout__txt_padtop_35 b-layout__txt_uppercase let-space">РљСЂСѓРїРЅРµР№С€Р°СЏ Р±РёСЂР¶Р° СѓРґР°Р»РµРЅРЅРѕР№ СЂР°Р±РѕС‚С‹</div>
      <h1 class="b-page__title b-page__title_center b-page__title_color_fff b-page__title_size80 b-page__title_padnull">1 150 000</h1>
-     <div class="b-layout__txt b-layout__txt_center b-layout__txt_color_fff b-layout__txt_fontsize_24"><span class="b-page__desktop b-page__ipad">&mdash;</span>  исполнителей ждут вас  <span class="b-page__desktop b-page__ipad">&mdash;</span></div>
+     <div class="b-layout__txt b-layout__txt_center b-layout__txt_color_fff b-layout__txt_fontsize_24"><span class="b-page__desktop b-page__ipad">&mdash;</span>  РёСЃРїРѕР»РЅРёС‚РµР»РµР№ Р¶РґСѓС‚ РІР°СЃ  <span class="b-page__desktop b-page__ipad">&mdash;</span></div>
      <div class="b-layout b-layout_center b-layuot_width_1000 b-layout_padtop_50 b-layout_padtop_10_iphone b-layout__one_width_full_ipad">
          <table class="b-layout__table b-layout__table_width_full b-layout__table_ipad">
             <tr class="b-layout__tr">
@@ -11,16 +11,16 @@
                     </a>
                     <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_fff b-layout__txt_fontsize_18 b-layout__txt_padtop_20 b-layout__txt_padbot_10 b-page__desktop b-page__ipad">
                         <a class="create_tu_button b-layout__link b-layout__link_color_fff b-layout__link_no-decorat b-layout__link_color_fff_hover" href="/tu/">
-                            Закажите услугу
+                            Р—Р°РєР°Р¶РёС‚Рµ СѓСЃР»СѓРіСѓ
                         </a>
                     </div>
                     <div class="b-layout__txt b-layout__txt_color_fff b-layout__txt_fontsize_15 b-layout__txt_padbot_20 b-page__desktop b-page__ipad">
                         <a class="create_tu_button b-layout__link b-layout__link_color_fff b-layout__link_no-decorat b-layout__link_color_fff_hover" href="/tu/">
-                            Выбирайте из более чем 15&nbsp;000 <br>услуг по фиксированной цене
+                            Р’С‹Р±РёСЂР°Р№С‚Рµ РёР· Р±РѕР»РµРµ С‡РµРј 15&nbsp;000 <br>СѓСЃР»СѓРі РїРѕ С„РёРєСЃРёСЂРѕРІР°РЅРЅРѕР№ С†РµРЅРµ
                         </a>
                     </div>
                     <a class="create_tu_button b-button b-button_flat b-button_flat_green b-button_flat_sbig b-button_width_210 b-button_width_full_iphone" href="/tu/">
-                        Заказать <span class="b-page__iphone">услугу</span>
+                        Р—Р°РєР°Р·Р°С‚СЊ <span class="b-page__iphone">СѓСЃР»СѓРіСѓ</span>
                     </a>
                </td>
                <td class="b-layout__td b-layout__td_center b-layout__td_width_320 b-layout__td_ipad b-layout__td_block_iphone">
@@ -29,16 +29,16 @@
                     </a>
                     <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_fff b-layout__txt_fontsize_18 b-layout__txt_padtop_20 b-layout__txt_padbot_10 b-page__desktop b-page__ipad">
                         <a class="create_project_button b-layout__link b-layout__link_color_fff b-layout__link_no-decorat b-layout__link_color_fff_hover" href="/public/?step=1&kind=1&red=">
-                            Опубликуйте проект
+                            РћРїСѓР±Р»РёРєСѓР№С‚Рµ РїСЂРѕРµРєС‚
                         </a>
                     </div>
                     <div class="b-layout__txt b-layout__txt_color_fff b-layout__txt_fontsize_15 b-layout__txt_padbot_20 b-page__desktop b-page__ipad">
                         <a class="create_project_button b-layout__link b-layout__link_color_fff b-layout__link_no-decorat b-layout__link_color_fff_hover" href="/public/?step=1&kind=1&red=">
-                            Получайте десятки предложений <br>от исполнителей
+                            РџРѕР»СѓС‡Р°Р№С‚Рµ РґРµСЃСЏС‚РєРё РїСЂРµРґР»РѕР¶РµРЅРёР№ <br>РѕС‚ РёСЃРїРѕР»РЅРёС‚РµР»РµР№
                         </a>
                     </div>
                     <a class="create_project_button b-button b-button_flat b-button_flat_green b-button_flat_sbig b-button_width_210 b-button_width_full_iphone" href="/public/?step=1&kind=1&red=">
-                        Опубликовать <span class="b-page__iphone">проект</span>
+                        РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ <span class="b-page__iphone">РїСЂРѕРµРєС‚</span>
                     </a>
                </td>
                <td class="b-layout__td b-layout__td_center b-layout__td_width_320 b-layout__td_ipad b-layout__td_block_iphone">
@@ -47,16 +47,16 @@
                     </a>
                     <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_fff b-layout__txt_fontsize_18 b-layout__txt_padtop_20 b-layout__txt_padbot_10 b-page__desktop b-page__ipad">
                         <a class="choose_freelancer_button b-layout__link b-layout__link_color_fff b-layout__link_no-decorat b-layout__link_color_fff_hover" href="/freelancers/">
-                            Выберите исполнителя
+                            Р’С‹Р±РµСЂРёС‚Рµ РёСЃРїРѕР»РЅРёС‚РµР»СЏ
                         </a>
                     </div>
                     <div class="b-layout__txt b-layout__txt_color_fff b-layout__txt_fontsize_15 b-layout__txt_padbot_20 b-page__desktop b-page__ipad">
                         <a class="choose_freelancer_button b-layout__link b-layout__link_color_fff b-layout__link_no-decorat b-layout__link_color_fff_hover" href="/freelancers/">
-                            У нас огромный каталог <br>с отзывами и примерами работ
+                            РЈ РЅР°СЃ РѕРіСЂРѕРјРЅС‹Р№ РєР°С‚Р°Р»РѕРі <br>СЃ РѕС‚Р·С‹РІР°РјРё Рё РїСЂРёРјРµСЂР°РјРё СЂР°Р±РѕС‚
                         </a>
                     </div>
                     <a class="choose_freelancer_button b-button b-button_flat b-button_flat_green b-button_flat_sbig b-button_width_210 b-button_width_full_iphone" href="/freelancers/">
-                        Выбрать <span class="b-page__iphone">исполнителя</span>
+                        Р’С‹Р±СЂР°С‚СЊ <span class="b-page__iphone">РёСЃРїРѕР»РЅРёС‚РµР»СЏ</span>
                     </a>
                </td>
             </tr>
@@ -65,7 +65,7 @@
 </div>
 
 <?php if ($tservices_chunks): ?>
-    <h2 class="b-page__title b-page__title_center">Популярные услуги</h2>
+    <h2 class="b-page__title b-page__title_center">РџРѕРїСѓР»СЏСЂРЅС‹Рµ СѓСЃР»СѓРіРё</h2>
     <div class="b-layout b-layout_overflow_hidden">
         <?php foreach ($tservices_chunks as $chunk): ?>
                 <?php foreach ($chunk as $chunk_num => $tservice): ?>
@@ -76,7 +76,7 @@
                     $avatar_url = tservices_helper::photo_src($user['photo'], $user['login']);
 
                     //$hasVideo = !empty($tservice['videos']) && count($tservice['videos']);
-                            $hasVideo = false; //Теперь вместо видео-кадра - превью
+                            $hasVideo = false; //РўРµРїРµСЂСЊ РІРјРµСЃС‚Рѕ РІРёРґРµРѕ-РєР°РґСЂР° - РїСЂРµРІСЊСЋ
                     if ($hasVideo)
                     {
                         $video = current($tservice['videos']);
@@ -94,7 +94,7 @@
 
                     $hasVideo = !empty($tservice['videos']) && count($tservice['videos']);
                             
-                            $sold_count = isset($tservice['count_sold']) ? $tservice['count_sold'] : $tservice['total_feedbacks'] // Пока сфинск не считает все покупки, будем брать отзывы. #0026584
+                            $sold_count = isset($tservice['count_sold']) ? $tservice['count_sold'] : $tservice['total_feedbacks'] // РџРѕРєР° СЃС„РёРЅСЃРє РЅРµ СЃС‡РёС‚Р°РµС‚ РІСЃРµ РїРѕРєСѓРїРєРё, Р±СѓРґРµРј Р±СЂР°С‚СЊ РѕС‚Р·С‹РІС‹. #0026584
                     ?>                
                     <div class="b-layout__tu-cols">
                         <figure class="i-pic i-pic_port i-pic_port_z-index_inherit i-pic_margbot_30 i-pic_pad_10 i-pic_height_265 i-pic_bord_green_hover">
@@ -106,7 +106,7 @@
                                 <a onclick="TServices_Catalog.orderNow(this);" data-url="<?=$tservice_url?>" href="javascript:void(0);" class="b-pic__price-box b-pic__price-box_pay b-pic__price-box b-pic__price-box_noline">
                                     <?=tservices_helper::cost_format($tservice['price'],true)?>
                                     <?php if ($sold_count != 0): ?>        
-                                        <span title="Количество продаж услуги"><span class="b-icon b-icon__tu2 b-icon_top_2"></span><?=number_format($sold_count, 0, '', ' ')?></span>
+                                        <span title="РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕРґР°Р¶ СѓСЃР»СѓРіРё"><span class="b-icon b-icon__tu2 b-icon_top_2"></span><?=number_format($sold_count, 0, '', ' ')?></span>
                                     <?php endif; ?>
                                 </a>
                             </div>
@@ -129,7 +129,7 @@
 <?php endif; ?>
 
 <?php if (isset($profs) && $profs): ?>
-    <h2 class="b-page__title b-page__title_center">Исполнители по категориям</h2>
+    <h2 class="b-page__title b-page__title_center">РСЃРїРѕР»РЅРёС‚РµР»Рё РїРѕ РєР°С‚РµРіРѕСЂРёСЏРј</h2>
     <div class="b-layout b-layout_col_4 b-layout_col_2_ipad b-layout_col_1_iphone">
     <?php foreach ($profs as $prof): ?>
         <?php if (!isset($groups_repeat[$prof['grouplink']]) && ($groups_repeat[$prof['grouplink']] = 1)): ?>
@@ -141,49 +141,49 @@
 <?php endif; ?>
 
 <div class="b-layout b-layout_clear_both b-layout_bordtop_b2 b-layout_padtop_20 b-layout_top_100">
-    <h2 class="b-page__title b-page__title_center">Fl.ru &mdash; крупнейшая русскоязычная биржа удаленной работы </h2>
+    <h2 class="b-page__title b-page__title_center">Fl.ru &mdash; РєСЂСѓРїРЅРµР№С€Р°СЏ СЂСѓСЃСЃРєРѕСЏР·С‹С‡РЅР°СЏ Р±РёСЂР¶Р° СѓРґР°Р»РµРЅРЅРѕР№ СЂР°Р±РѕС‚С‹ </h2>
     <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20">
         <tr class="b-layout__tr">
             <td class="b-layout__td b-layout__td_width_50ps b-layout__td_padright_70">
-                <h3 class="b-layout__title b-layout__title_center b-layout__title_padbot_20">Для тех, кому нужен специалист (фрилансер)</h3>
+                <h3 class="b-layout__title b-layout__title_center b-layout__title_padbot_20">Р”Р»СЏ С‚РµС…, РєРѕРјСѓ РЅСѓР¶РµРЅ СЃРїРµС†РёР°Р»РёСЃС‚ (С„СЂРёР»Р°РЅСЃРµСЂ)</h3>
                 <p class="b-layout__txt b-layout__txt_padbot_5">
-                    У нас вы можете найти лучших фриланс специалистов среди 1 млн исполнителей, зарегистрированных на сайте FL.ru. Программисты, дизайнеры, художники, копирайтеры, юристы, бухгалтеры, инженеры, фотографы - тысячи удаленных сотрудников по любым freelance специализациям.
+                    РЈ РЅР°СЃ РІС‹ РјРѕР¶РµС‚Рµ РЅР°Р№С‚Рё Р»СѓС‡С€РёС… С„СЂРёР»Р°РЅСЃ СЃРїРµС†РёР°Р»РёСЃС‚РѕРІ СЃСЂРµРґРё 1 РјР»РЅ РёСЃРїРѕР»РЅРёС‚РµР»РµР№, Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹С… РЅР° СЃР°Р№С‚Рµ FL.ru. РџСЂРѕРіСЂР°РјРјРёСЃС‚С‹, РґРёР·Р°Р№РЅРµСЂС‹, С…СѓРґРѕР¶РЅРёРєРё, РєРѕРїРёСЂР°Р№С‚РµСЂС‹, СЋСЂРёСЃС‚С‹, Р±СѓС…РіР°Р»С‚РµСЂС‹, РёРЅР¶РµРЅРµСЂС‹, С„РѕС‚РѕРіСЂР°С„С‹ - С‚С‹СЃСЏС‡Рё СѓРґР°Р»РµРЅРЅС‹С… СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ РїРѕ Р»СЋР±С‹Рј freelance СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏРј.
                 </p>
                 <p class="b-layout__txt b-layout__txt_padbot_5">
-                    Вам достаточно опубликовать проект, конкурс или вакансию - и заинтересованные фрилансеры сами предложат свои услуги, помогут вам сформировать задание, определить бюджет и сроки выполнения работы. Останется только выбрать лучшего исполнителя из числа откликнувшихся фриланс специалистов и начать с ним сотрудничество.
+                    Р’Р°Рј РґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РѕРїСѓР±Р»РёРєРѕРІР°С‚СЊ РїСЂРѕРµРєС‚, РєРѕРЅРєСѓСЂСЃ РёР»Рё РІР°РєР°РЅСЃРёСЋ - Рё Р·Р°РёРЅС‚РµСЂРµСЃРѕРІР°РЅРЅС‹Рµ С„СЂРёР»Р°РЅСЃРµСЂС‹ СЃР°РјРё РїСЂРµРґР»РѕР¶Р°С‚ СЃРІРѕРё СѓСЃР»СѓРіРё, РїРѕРјРѕРіСѓС‚ РІР°Рј СЃС„РѕСЂРјРёСЂРѕРІР°С‚СЊ Р·Р°РґР°РЅРёРµ, РѕРїСЂРµРґРµР»РёС‚СЊ Р±СЋРґР¶РµС‚ Рё СЃСЂРѕРєРё РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹. РћСЃС‚Р°РЅРµС‚СЃСЏ С‚РѕР»СЊРєРѕ РІС‹Р±СЂР°С‚СЊ Р»СѓС‡С€РµРіРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЏ РёР· С‡РёСЃР»Р° РѕС‚РєР»РёРєРЅСѓРІС€РёС…СЃСЏ С„СЂРёР»Р°РЅСЃ СЃРїРµС†РёР°Р»РёСЃС‚РѕРІ Рё РЅР°С‡Р°С‚СЊ СЃ РЅРёРј СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ.
                 </p>
                 <p class="b-layout__txt b-layout__txt_padbot_5">
-                    Если же совсем нет времени на проекты, вы можете быстро найти и заказать нужную услугу (с фиксированной ценой и сроком выполнения) в нашем каталоге услуг. А также выбрать удаленных специалистов в каталоге, оценив их портфолио с представленными работами - и в 2 клика предложить заказ.
+                    Р•СЃР»Рё Р¶Рµ СЃРѕРІСЃРµРј РЅРµС‚ РІСЂРµРјРµРЅРё РЅР° РїСЂРѕРµРєС‚С‹, РІС‹ РјРѕР¶РµС‚Рµ Р±С‹СЃС‚СЂРѕ РЅР°Р№С‚Рё Рё Р·Р°РєР°Р·Р°С‚СЊ РЅСѓР¶РЅСѓСЋ СѓСЃР»СѓРіСѓ (СЃ С„РёРєСЃРёСЂРѕРІР°РЅРЅРѕР№ С†РµРЅРѕР№ Рё СЃСЂРѕРєРѕРј РІС‹РїРѕР»РЅРµРЅРёСЏ) РІ РЅР°С€РµРј РєР°С‚Р°Р»РѕРіРµ СѓСЃР»СѓРі. Рђ С‚Р°РєР¶Рµ РІС‹Р±СЂР°С‚СЊ СѓРґР°Р»РµРЅРЅС‹С… СЃРїРµС†РёР°Р»РёСЃС‚РѕРІ РІ РєР°С‚Р°Р»РѕРіРµ, РѕС†РµРЅРёРІ РёС… РїРѕСЂС‚С„РѕР»РёРѕ СЃ РїСЂРµРґСЃС‚Р°РІР»РµРЅРЅС‹РјРё СЂР°Р±РѕС‚Р°РјРё - Рё РІ 2 РєР»РёРєР° РїСЂРµРґР»РѕР¶РёС‚СЊ Р·Р°РєР°Р·.
                 </p>
                 <p class="b-layout__txt b-layout__txt_padbot_5">
-                    FL.ru за безопасность freelance сотрудничества! Используйте наш сервис "Безопасная сделка" с резервированием суммы на сайте для сотрудничества с фрилансерами - и мы гарантируем вам возврат средств, если работа будет выполнена некачественно и/или не в срок.
+                    FL.ru Р·Р° Р±РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ freelance СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР°! РСЃРїРѕР»СЊР·СѓР№С‚Рµ РЅР°С€ СЃРµСЂРІРёСЃ "Р‘РµР·РѕРїР°СЃРЅР°СЏ СЃРґРµР»РєР°" СЃ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРµРј СЃСѓРјРјС‹ РЅР° СЃР°Р№С‚Рµ РґР»СЏ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР° СЃ С„СЂРёР»Р°РЅСЃРµСЂР°РјРё - Рё РјС‹ РіР°СЂР°РЅС‚РёСЂСѓРµРј РІР°Рј РІРѕР·РІСЂР°С‚ СЃСЂРµРґСЃС‚РІ, РµСЃР»Рё СЂР°Р±РѕС‚Р° Р±СѓРґРµС‚ РІС‹РїРѕР»РЅРµРЅР° РЅРµРєР°С‡РµСЃС‚РІРµРЅРЅРѕ Рё/РёР»Рё РЅРµ РІ СЃСЂРѕРє.
                 </p>
-                <p class="b-layout__txt b-layout__txt_padbot_30">Хороших вам исполнителей!</p>      
+                <p class="b-layout__txt b-layout__txt_padbot_30">РҐРѕСЂРѕС€РёС… РІР°Рј РёСЃРїРѕР»РЅРёС‚РµР»РµР№!</p>      
             </td>
 
             <td class="b-layout__td b-layout__td_padleft_50">
-                <h3 class="b-layout__title b-layout__title_center b-layout__title_padbot_20">Тем, кто ищет работу на дому (фрилансерам)</h3>
+                <h3 class="b-layout__title b-layout__title_center b-layout__title_padbot_20">РўРµРј, РєС‚Рѕ РёС‰РµС‚ СЂР°Р±РѕС‚Сѓ РЅР° РґРѕРјСѓ (С„СЂРёР»Р°РЅСЃРµСЂР°Рј)</h3>
                 <p class="b-layout__txt b-layout__txt_padbot_5">
-                    Для вас ежедневно свыше 1500 фриланс проектов, конкурсов и вакансий с поиском исполнителей. Если вы ищете удаленную работу фрилансером и умеете создавать сайты, писать тексты, администрировать, консультировать, оказывать freelance услуги на дому - добро пожаловать на сайт FL.ru.
+                    Р”Р»СЏ РІР°СЃ РµР¶РµРґРЅРµРІРЅРѕ СЃРІС‹С€Рµ 1500 С„СЂРёР»Р°РЅСЃ РїСЂРѕРµРєС‚РѕРІ, РєРѕРЅРєСѓСЂСЃРѕРІ Рё РІР°РєР°РЅСЃРёР№ СЃ РїРѕРёСЃРєРѕРј РёСЃРїРѕР»РЅРёС‚РµР»РµР№. Р•СЃР»Рё РІС‹ РёС‰РµС‚Рµ СѓРґР°Р»РµРЅРЅСѓСЋ СЂР°Р±РѕС‚Сѓ С„СЂРёР»Р°РЅСЃРµСЂРѕРј Рё СѓРјРµРµС‚Рµ СЃРѕР·РґР°РІР°С‚СЊ СЃР°Р№С‚С‹, РїРёСЃР°С‚СЊ С‚РµРєСЃС‚С‹, Р°РґРјРёРЅРёСЃС‚СЂРёСЂРѕРІР°С‚СЊ, РєРѕРЅСЃСѓР»СЊС‚РёСЂРѕРІР°С‚СЊ, РѕРєР°Р·С‹РІР°С‚СЊ freelance СѓСЃР»СѓРіРё РЅР° РґРѕРјСѓ - РґРѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РЅР° СЃР°Р№С‚ FL.ru.
                 </p>
                 <p class="b-layout__txt b-layout__txt_padbot_5">
-                    Начиная работу с нашим сайтом, вам прежде всего необходимо заполнить портфолио фрилансера, добавив примеры успешно выполненных вами проектов и заказов. Указать в профиле всю необходимую информацию о своих навыках и опыте, добавить контактные данные.
+                    РќР°С‡РёРЅР°СЏ СЂР°Р±РѕС‚Сѓ СЃ РЅР°С€РёРј СЃР°Р№С‚РѕРј, РІР°Рј РїСЂРµР¶РґРµ РІСЃРµРіРѕ РЅРµРѕР±С…РѕРґРёРјРѕ Р·Р°РїРѕР»РЅРёС‚СЊ РїРѕСЂС‚С„РѕР»РёРѕ С„СЂРёР»Р°РЅСЃРµСЂР°, РґРѕР±Р°РІРёРІ РїСЂРёРјРµСЂС‹ СѓСЃРїРµС€РЅРѕ РІС‹РїРѕР»РЅРµРЅРЅС‹С… РІР°РјРё РїСЂРѕРµРєС‚РѕРІ Рё Р·Р°РєР°Р·РѕРІ. РЈРєР°Р·Р°С‚СЊ РІ РїСЂРѕС„РёР»Рµ РІСЃСЋ РЅРµРѕР±С…РѕРґРёРјСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃРІРѕРёС… РЅР°РІС‹РєР°С… Рё РѕРїС‹С‚Рµ, РґРѕР±Р°РІРёС‚СЊ РєРѕРЅС‚Р°РєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ.
                 </p>
                 <p class="b-layout__txt b-layout__txt_padbot_5">
-                    Фрилансерам для получения работы рекомендуем регулярно просматривать ленту проектов, отвечая на подходящие вам предложения - в случае заинтересованности заказчики обязательно предложат вам сотрудничество по freelance проектам с дальнейшим выполнением работы.
+                    Р¤СЂРёР»Р°РЅСЃРµСЂР°Рј РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ СЂР°Р±РѕС‚С‹ СЂРµРєРѕРјРµРЅРґСѓРµРј СЂРµРіСѓР»СЏСЂРЅРѕ РїСЂРѕСЃРјР°С‚СЂРёРІР°С‚СЊ Р»РµРЅС‚Сѓ РїСЂРѕРµРєС‚РѕРІ, РѕС‚РІРµС‡Р°СЏ РЅР° РїРѕРґС…РѕРґСЏС‰РёРµ РІР°Рј РїСЂРµРґР»РѕР¶РµРЅРёСЏ - РІ СЃР»СѓС‡Р°Рµ Р·Р°РёРЅС‚РµСЂРµСЃРѕРІР°РЅРЅРѕСЃС‚Рё Р·Р°РєР°Р·С‡РёРєРё РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РїСЂРµРґР»РѕР¶Р°С‚ РІР°Рј СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ РїРѕ freelance РїСЂРѕРµРєС‚Р°Рј СЃ РґР°Р»СЊРЅРµР№С€РёРј РІС‹РїРѕР»РЅРµРЅРёРµРј СЂР°Р±РѕС‚С‹.
                 </p>
                 <p class="b-layout__txt b-layout__txt_padbot_5">
-                    Чтобы повысить шансы получить работу, также рекомендуем фрилансеру оформить и добавить на сайт все свои услуги, описав их и указав стоимость и срок выполнения того или иного объема работ. И не забудьте приобрести аккаунт PRO - сервис, который значительно расширит возможности вашего фриланс профиля и поможет привлечь еще больше выгодных заказов.
+                    Р§С‚РѕР±С‹ РїРѕРІС‹СЃРёС‚СЊ С€Р°РЅСЃС‹ РїРѕР»СѓС‡РёС‚СЊ СЂР°Р±РѕС‚Сѓ, С‚Р°РєР¶Рµ СЂРµРєРѕРјРµРЅРґСѓРµРј С„СЂРёР»Р°РЅСЃРµСЂСѓ РѕС„РѕСЂРјРёС‚СЊ Рё РґРѕР±Р°РІРёС‚СЊ РЅР° СЃР°Р№С‚ РІСЃРµ СЃРІРѕРё СѓСЃР»СѓРіРё, РѕРїРёСЃР°РІ РёС… Рё СѓРєР°Р·Р°РІ СЃС‚РѕРёРјРѕСЃС‚СЊ Рё СЃСЂРѕРє РІС‹РїРѕР»РЅРµРЅРёСЏ С‚РѕРіРѕ РёР»Рё РёРЅРѕРіРѕ РѕР±СЉРµРјР° СЂР°Р±РѕС‚. Р РЅРµ Р·Р°Р±СѓРґСЊС‚Рµ РїСЂРёРѕР±СЂРµСЃС‚Рё Р°РєРєР°СѓРЅС‚ PRO - СЃРµСЂРІРёСЃ, РєРѕС‚РѕСЂС‹Р№ Р·РЅР°С‡РёС‚РµР»СЊРЅРѕ СЂР°СЃС€РёСЂРёС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РІР°С€РµРіРѕ С„СЂРёР»Р°РЅСЃ РїСЂРѕС„РёР»СЏ Рё РїРѕРјРѕР¶РµС‚ РїСЂРёРІР»РµС‡СЊ РµС‰Рµ Р±РѕР»СЊС€Рµ РІС‹РіРѕРґРЅС‹С… Р·Р°РєР°Р·РѕРІ.
                 </p>
-                <p class="b-layout__txt b-layout__txt_padbot_30">Успешного поиска работы!</p>
+                <p class="b-layout__txt b-layout__txt_padbot_30">РЈСЃРїРµС€РЅРѕРіРѕ РїРѕРёСЃРєР° СЂР°Р±РѕС‚С‹!</p>
             </td>
         </tr>
         <tr class="b-layout__tr">
             <td class="b-layout__td b-layout__td_padbot_40 b-layout__td_width_50ps b-layout__td_padright_70">
-                <div class="b-buttons b-buttons_center"><a class="b-button b-button_flat b-button_flat_green"  href="/public/?step=1&kind=1&red=">Опубликовать проект и найти специалиста</a></div>
+                <div class="b-buttons b-buttons_center"><a class="b-button b-button_flat b-button_flat_green"  href="/public/?step=1&kind=1&red=">РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ РїСЂРѕРµРєС‚ Рё РЅР°Р№С‚Рё СЃРїРµС†РёР°Р»РёСЃС‚Р°</a></div>
             </td>
             <td class="b-layout__td b-layout__td_padbot_40 b-layout__td_padleft_50">
-                <div class="b-buttons b-buttons_center "><a class="b-button b-button_flat b-button_flat_green"  href="/registration/">Стать фрилансером и найти работу</a></div>
+                <div class="b-buttons b-buttons_center "><a class="b-button b-button_flat b-button_flat_green"  href="/registration/">РЎС‚Р°С‚СЊ С„СЂРёР»Р°РЅСЃРµСЂРѕРј Рё РЅР°Р№С‚Рё СЂР°Р±РѕС‚Сѓ</a></div>
             </td>
     </table>
 </div>

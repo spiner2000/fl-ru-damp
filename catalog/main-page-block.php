@@ -1,6 +1,6 @@
 <div class="b-menu b-menu_seo b-menu_padtop_20 b-menu_padbot_20 b-menu_bordtop_b2">
 	<div class="b-menu__inner">
-		<h3 class="b-menu__h4 b-menu__h4_padbot_10">О разделах каталога фрилансеров:</h3>
+		<h3 class="b-menu__h4 b-menu__h4_padbot_10">Рћ СЂР°Р·РґРµР»Р°С… РєР°С‚Р°Р»РѕРіР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ:</h3>
 		<table class="b-menu__table b-menu__table_width_full" cellpadding="0" cellspacing="0" border="0">
 			<tbody>
 			<?php

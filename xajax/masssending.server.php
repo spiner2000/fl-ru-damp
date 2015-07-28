@@ -32,12 +32,12 @@ function GetCities($country, $city) {
 	require_once $_SERVER['DOCUMENT_ROOT'].'/classes/city.php';
 	$response = new xajaxResponse();
 	$cities = city::GetCities( intval($country) );
-	/*$html = '<option value="0">Все города</option>';
+	/*$html = '<option value="0">Р’СЃРµ РіРѕСЂРѕРґР°</option>';
 	foreach ($cities as $id=>$val) {
 		$html .= '<option value="'.$id.'">'.htmlspecialchars($val).'</option>';
 	}*/
 	$script  = "document.getElementById('cities').options.length = 0; \n";
-	$script .= "document.getElementById('cities').options[0] = new Option('Все города', 0); \n";
+	$script .= "document.getElementById('cities').options[0] = new Option('Р’СЃРµ РіРѕСЂРѕРґР°', 0); \n";
 	$i = 1;
 	foreach ($cities as $id=>$val) {
 		$script .= "document.getElementById('cities').options[{$i}] = new Option('".htmlspecialchars($val)."', {$id}); \n";
@@ -87,7 +87,7 @@ function Calculate($params) {
 	if (!empty($_SESSION['masssending']['files'])) $params['files'] = $_SESSION['masssending']['files'];
 	$_SESSION['masssending'] = $params; //serialize($params);
 	$response = new xajaxResponse();
-	// преобразуем js массив в формат для masssending::Calculate()
+	// РїСЂРµРѕР±СЂР°Р·СѓРµРј js РјР°СЃСЃРёРІ РІ С„РѕСЂРјР°С‚ РґР»СЏ masssending::Calculate()
 	if (!empty($params['locations']) && is_array($params['locations'])) {
 		$tmp = array();
 		foreach ($params['locations'] as $value) {
@@ -124,7 +124,7 @@ function Calculate($params) {
 		unset($params['costs']);
 	}
     $calc = $masssending->Calculate($uid, $params);
-	// преобразуем обратно
+	// РїСЂРµРѕР±СЂР°Р·СѓРµРј РѕР±СЂР°С‚РЅРѕ
 	$locations = array();
 	foreach ($calc['locations'] as $location) {
 		$locations[] = "{ country: {$location['country']}, city: {$location['city']}, count: {$location['count']}, cost: {$location['cost']} }";
@@ -166,18 +166,18 @@ function Calculate($params) {
 }
 
 /**
- * подсчет получателей при переходе из поиска пользователей
- * @param string $query строка параметров из URL
+ * РїРѕРґСЃС‡РµС‚ РїРѕР»СѓС‡Р°С‚РµР»РµР№ РїСЂРё РїРµСЂРµС…РѕРґРµ РёР· РїРѕРёСЃРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
+ * @param string $query СЃС‚СЂРѕРєР° РїР°СЂР°РјРµС‚СЂРѕРІ РёР· URL
  */
 function CalculateFromSearch ($query) {
 	$response = new xajaxResponse();
 	session_start();
-    // парсим строку параметров из URL
+    // РїР°СЂСЃРёРј СЃС‚СЂРѕРєСѓ РїР°СЂР°РјРµС‚СЂРѕРІ РёР· URL
     parse_str($query, $param);
     
 	$uid = get_uid(FALSE);
     
-    // стоимость рассылки
+    // СЃС‚РѕРёРјРѕСЃС‚СЊ СЂР°СЃСЃС‹Р»РєРё
     require_once $_SERVER['DOCUMENT_ROOT'].'/classes/masssending.php';
 	$masssending = new masssending;
     $calc = $masssending->CalculateFromSearch($uid, $param);

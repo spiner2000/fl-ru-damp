@@ -15,12 +15,12 @@ if ( $uid ) {
             $error = $verification->error;
         }
     } else {
-        $error = 'Произошла ошибка при работе с сервисом FF.RU (no code).';
+        $error = 'РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° РїСЂРё СЂР°Р±РѕС‚Рµ СЃ СЃРµСЂРІРёСЃРѕРј FF.RU (no code).';
     }
     
 } else {
 
-    $error = 'Вы не авторизованы';
+    $error = 'Р’С‹ РЅРµ Р°РІС‚РѕСЂРёР·РѕРІР°РЅС‹';
     
 }
 
@@ -33,7 +33,7 @@ if ( empty($error) && $verification->is_pro ) {
 
 ?><html>
 <head>
-    <title>Верификация через сервис FF.RU</title>
+    <title>Р’РµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· СЃРµСЂРІРёСЃ FF.RU</title>
 </head>
 <body>
     <script type="text/javascript">

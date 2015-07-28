@@ -53,7 +53,7 @@
 </tr>
 <tr>
 	<td valign="bottom"><input type="submit" id="btn" value="Ok" class="s" onClick="subm(true);"></td>
-	<td valign="bottom"><input type="submit" id="btn" value="Îòìåíà" class="s" onClick="subm(false);"></td>
+	<td valign="bottom"><input type="submit" id="btn" value="ÐžÑ‚Ð¼ÐµÐ½Ð°" class="s" onClick="subm(false);"></td>
 </tr>
 </table>
 

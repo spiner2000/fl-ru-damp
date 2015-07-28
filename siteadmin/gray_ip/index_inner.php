@@ -7,30 +7,30 @@ banned.addContext( 'gray_ip', -1, '', '' );
 banned.reload = 1;
 gray_ip.adminId = <?=$_SESSION['uid']?>;
 </script>
-<h3>IP-адреса / Серый список IP</h3>
-<!-- Добавить IP старт -->
+<h3>IP-Р°РґСЂРµСЃР° / РЎРµСЂС‹Р№ СЃРїРёСЃРѕРє IP</h3>
+<!-- Р”РѕР±Р°РІРёС‚СЊ IP СЃС‚Р°СЂС‚ -->
 <div class="form form-acnew add-ip">
     <b class="b1"></b>
     <b class="b2"></b>
     <div class="form-in">
-        <h4 class="toggle"><a href="#" class="lnk-dot-666">Добавить IP</a></h4>
+        <h4 class="toggle"><a href="#" class="lnk-dot-666">Р”РѕР±Р°РІРёС‚СЊ IP</a></h4>
         <div class="slideBlock filtr-hide">
             <form name="frm_gray_ip_add" id="frm_gray_ip_add">
             <input type="hidden" name="add_uid" id="add_uid" value="">
             <div class="form-block first">
                 <div class="form-el">
-                    <label class="form-l">Для юзера:</label>
+                    <label class="form-l">Р”Р»СЏ СЋР·РµСЂР°:</label>
                     <div class="form-value fvs">
                         <span class="login-input">
                             <input type="text" name="add_login" id="add_login" class="i-txt" />
                         </span>
                         <span class="login-view" style="display: none;">
-                            <a href="#"></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="gray_ip.changeLogin()">изменить</a>
+                            <a href="#"></a>&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" onclick="gray_ip.changeLogin()">РёР·РјРµРЅРёС‚СЊ</a>
                         </span>
                     </div>
                 </div>
                 <div class="form-el">
-                    <label class="form-l">IP-адреса:</label>
+                    <label class="form-l">IP-Р°РґСЂРµСЃР°:</label>
                     <div class="form-value">
                         <textarea name="add_ip" id="add_ip" cols="" rows=""></textarea>
                     </div>
@@ -38,8 +38,8 @@ gray_ip.adminId = <?=$_SESSION['uid']?>;
             </div>
             <div class="form-block last">
                 <div class="form-el form-btns">
-                    <button type="button" onclick="gray_ip.submitAdd()" disabled>Добавить</button>
-                    <a href="javascript:void(0);" onclick="gray_ip.clearAdd()" class="lnk-dot-grey">Очистить</a>
+                    <button type="button" onclick="gray_ip.submitAdd()" disabled>Р”РѕР±Р°РІРёС‚СЊ</button>
+                    <a href="javascript:void(0);" onclick="gray_ip.clearAdd()" class="lnk-dot-grey">РћС‡РёСЃС‚РёС‚СЊ</a>
                 </div>
             </div>
             </form>
@@ -48,22 +48,22 @@ gray_ip.adminId = <?=$_SESSION['uid']?>;
     <b class="b2"></b>
     <b class="b1"></b>
 </div>
-<!-- Добавить IP стоп -->
+<!-- Р”РѕР±Р°РІРёС‚СЊ IP СЃС‚РѕРї -->
 
-<!-- Фильтр старт -->
+<!-- Р¤РёР»СЊС‚СЂ СЃС‚Р°СЂС‚ -->
 <?php if ( !$primary_id ) { ?>
 <div class="form form-acnew">
     <b class="b1"></b>
     <b class="b2"></b>
     <div class="form-in">
-        <h4 class="toggle"><a href="#" class="lnk-dot-666">Фильтр</a></h4>
+        <h4 class="toggle"><a href="#" class="lnk-dot-666">Р¤РёР»СЊС‚СЂ</a></h4>
         <div class="slideBlock filtr-hide">
             <form name="frm_gray_ip_filter" id="frm_gray_ip_filter" method="GET" onsubmit="return gray_ip.submitFilter();">
             <input type="hidden" name="cmd" value="filter" />
             <input type="hidden" id="log_pp" name="log_pp" value="<?=$log_pp?>">
             <div class="form-block first">
                 <div class="form-el">
-                    <label class="form-l">Фильтр:</label>
+                    <label class="form-l">Р¤РёР»СЊС‚СЂ:</label>
                     <div class="form-value form-filtr">
                         <input value="<?=$f_ip?>" name="f_ip" id="f_ip" type="text" maxlength="15" />&#160;&#160;&mdash;&#160;&#160;
                         <input value="<?=$t_ip?>" name="t_ip" id="t_ip" type="text" maxlength="15" />
@@ -71,10 +71,10 @@ gray_ip.adminId = <?=$_SESSION['uid']?>;
                     </div>
                 </div>
                 <div class="form-el">
-                    <label class="form-l">Модератор:</label>
+                    <label class="form-l">РњРѕРґРµСЂР°С‚РѕСЂ:</label>
                     <div class="form-value fvs">
                         <select name="adm" id="adm" class="sw205">
-                            <option value="0">Все</option>
+                            <option value="0">Р’СЃРµ</option>
                             <?php 
                             $sAdmin = '';
                             foreach ( $admins as $aOne ) { 
@@ -87,7 +87,7 @@ gray_ip.adminId = <?=$_SESSION['uid']?>;
                     </div>
                 </div>
                 <div class="form-el">
-                    <label class="form-l">Логин:</label>
+                    <label class="form-l">Р›РѕРіРёРЅ:</label>
                     <div class="form-value fvs">
                         <input value="<?=$search_name?>" name="search_name" id="search_name" type="text" class="i-txt fvsi" />
                     </div>
@@ -95,8 +95,8 @@ gray_ip.adminId = <?=$_SESSION['uid']?>;
             </div>
             <div class="form-block last">
                 <div class="form-el form-btns">
-                    <button type="submit">Отфильтровать</button>
-                    <a href="javascript:void(0);" onclick="gray_ip.clearFilter()" class="lnk-dot-grey">Очистить</a>
+                    <button type="submit">РћС‚С„РёР»СЊС‚СЂРѕРІР°С‚СЊ</button>
+                    <a href="javascript:void(0);" onclick="gray_ip.clearFilter()" class="lnk-dot-grey">РћС‡РёСЃС‚РёС‚СЊ</a>
                 </div>
             </div>
             </form>
@@ -106,9 +106,9 @@ gray_ip.adminId = <?=$_SESSION['uid']?>;
     <b class="b1"></b>
 </div>
 <?php } ?>
-<!-- Фильтр стоп -->
+<!-- Р¤РёР»СЊС‚СЂ СЃС‚РѕРї -->
 
-<!-- Массовые действия старт -->
+<!-- РњР°СЃСЃРѕРІС‹Рµ РґРµР№СЃС‚РІРёСЏ СЃС‚Р°СЂС‚ -->
 <div class="form form-check">
     <b class="b1"></b>
     <b class="b2"></b>
@@ -118,28 +118,28 @@ gray_ip.adminId = <?=$_SESSION['uid']?>;
                 <input onchange="gray_ip.checkUsers(this.checked);" name="chk_all" id="chk_all" type="checkbox" value="1" />
             </div>
             
-            <button type="button" onclick="getMassBanUser('gray_ip')">Заблокировать</button>
-            <button type="button" onclick="if(confirm('Прекратить отслеживать выбранных пользователей?')){gray_ip.submitDel();}">Удалить</button>
+            <button type="button" onclick="getMassBanUser('gray_ip')">Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ</button>
+            <button type="button" onclick="if(confirm('РџСЂРµРєСЂР°С‚РёС‚СЊ РѕС‚СЃР»РµР¶РёРІР°С‚СЊ РІС‹Р±СЂР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№?')){gray_ip.submitDel();}">РЈРґР°Р»РёС‚СЊ</button>
         </div>
     </div>
     <b class="b2"></b>
     <b class="b1"></b>
 </div>
-<!-- Массовые действия стоп -->
+<!-- РњР°СЃСЃРѕРІС‹Рµ РґРµР№СЃС‚РІРёСЏ СЃС‚РѕРї -->
 
 <?php if ( $filter['ip_from'] || $filter['ip_to'] || $sAdmin || $search_name ) {
 	$aParts = array();
 	
 	if ( $filter['ip_from'] || $filter['ip_to'] ) {
-		$aParts[] = 'IP:' . ( $filter['ip_from'] ? ' c '.$filter['ip_from'] : '' ).( $filter['ip_to'] ? ' по '.$filter['ip_to'] : '' );
+		$aParts[] = 'IP:' . ( $filter['ip_from'] ? ' c '.$filter['ip_from'] : '' ).( $filter['ip_to'] ? ' РїРѕ '.$filter['ip_to'] : '' );
 	}
 	
 	if ( $sAdmin ) {
-		$aParts[] = 'Модератор: '.hyphen_words($sAdmin, true);
+		$aParts[] = 'РњРѕРґРµСЂР°С‚РѕСЂ: '.hyphen_words($sAdmin, true);
 	}
 	
 	if ( $search_name ) {
-		$aParts[] = 'Логин: '.hyphen_words($search_name, true);
+		$aParts[] = 'Р›РѕРіРёРЅ: '.hyphen_words($search_name, true);
 	}
 	
 	echo '<div class="date-list name-ip"><span>'.implode(', ', $aParts ).'</span></div>';
@@ -177,8 +177,8 @@ gray_ip.adminId = <?=$_SESSION['uid']?>;
                                 <ul class="c">
                                     '.( $bCheck ? '<li class="edit-ip"><a href="javascript:void(0);" onclick="gray_ip.MassDelSecondaryUser('.$aOne['p_id'].', \''.$aOne['ip'].'\')"><img src="/images/icons/del.png"></a></li>' : '').'
                                     '.( $bCheck ? '<li class="edit-ip"><a href="javascript:void(0);" onclick="gray_ip.MassBanSecondaryUser('.$aOne['p_id'].')"><img src="/images/icons/block.png"></a></li>' : '').'
-                                    <li class="edit-ip"><a onclick="if(confirm(\'Прекратить отслеживать пользователя '.$aOne['p_login'].'?\')){window.location=\'?task=pdel&puid='.$aOne['p_uid'].($primary_id ? '&primary_id='.$primary_id : '').'\';}" href="javascript:void(0);" class="lnk-dot-999">Убрать из "Cерого списка IP"</a></li>
-                                    <li class="edit-ip"><a href="javascript:void(0);" onclick="xajax_getPrimaryIpForm('.$i.', '.$aOne['p_uid'].', gray_ip.adminId);" class="lnk-dot-999">Редактировать IP-адреса</a></li>
+                                    <li class="edit-ip"><a onclick="if(confirm(\'РџСЂРµРєСЂР°С‚РёС‚СЊ РѕС‚СЃР»РµР¶РёРІР°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ '.$aOne['p_login'].'?\')){window.location=\'?task=pdel&puid='.$aOne['p_uid'].($primary_id ? '&primary_id='.$primary_id : '').'\';}" href="javascript:void(0);" class="lnk-dot-999">РЈР±СЂР°С‚СЊ РёР· "CРµСЂРѕРіРѕ СЃРїРёСЃРєР° IP"</a></li>
+                                    <li class="edit-ip"><a href="javascript:void(0);" onclick="xajax_getPrimaryIpForm('.$i.', '.$aOne['p_uid'].', gray_ip.adminId);" class="lnk-dot-999">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ IP-Р°РґСЂРµСЃР°</a></li>
                                     <li class="name-ip">
                                         '.( $bCheck ? '<input onclick="gray_ip.checkSecondaryUsers(this.value, this.checked);" name="chk_prim_'.$aOne['p_id'].'" id="chk_prim_'.$aOne['p_id'].'" value="'.$aOne['p_id'].'" type="checkbox">&nbsp;' : '' ).'
                                         <span>'.$aOne['ip'].'</span> <a href="/users/'.$aOne['p_login'].'">['.$aOne['p_login'].']</a>
@@ -221,16 +221,16 @@ gray_ip.adminId = <?=$_SESSION['uid']?>;
         }
         
         if ( !$primary_id ) {
-            // не нужен на странице с полным списком логинов по определенному IP
+            // РЅРµ РЅСѓР¶РµРЅ РЅР° СЃС‚СЂР°РЅРёС†Рµ СЃ РїРѕР»РЅС‹Рј СЃРїРёСЃРєРѕРј Р»РѕРіРёРЅРѕРІ РїРѕ РѕРїСЂРµРґРµР»РµРЅРЅРѕРјСѓ IP
             echo printPerPageSelect( $log_pp );
         }
         
-        // редактирование бана старт
+        // СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±Р°РЅР° СЃС‚Р°СЂС‚
         include_once( $_SERVER['DOCUMENT_ROOT'] . '/user/ban_overlay.php' );
         
     }
     else {
-        echo 'Нет пользователей, удовлетворяющих условиям выборки';
+        echo 'РќРµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё';
     }
     ?>
 
@@ -261,9 +261,9 @@ if ( $bWindowClose && $primary_id ) {
 
 <?php 
 /**
- * Генерирует HTML со строкой вторичной регистрации
+ * Р“РµРЅРµСЂРёСЂСѓРµС‚ HTML СЃРѕ СЃС‚СЂРѕРєРѕР№ РІС‚РѕСЂРёС‡РЅРѕР№ СЂРµРіРёСЃС‚СЂР°С†РёРё
  * 
- * @param  array $aOne массив информации о вторичной регистрации
+ * @param  array $aOne РјР°СЃСЃРёРІ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РІС‚РѕСЂРёС‡РЅРѕР№ СЂРµРіРёСЃС‚СЂР°С†РёРё
  * @return string HTML
  */
 function grayIpParseSecondary( $aOne, $primary_id = 0 ) {
@@ -279,16 +279,16 @@ function grayIpParseSecondary( $aOne, $primary_id = 0 ) {
         <td style="text-align:right;">'. date('d.m.Y', strtotime($aOne['reg_date'])) .'</td>
         <td class="cell-btn">
             &nbsp;<a href="javascript:void(0);" onclick="banned.userBan('.$aOne['s_uid'].', \'gray_ip\',0)"><img src="/images/icons/block.png"></a>
-            &nbsp;<a href="javascript:void(0);" onclick="if(confirm(\'Прекратить отслеживать пользователя '.$aOne['s_login'].'??\')){window.location=\'?task=sdel&chk_users='.$aOne['s_uid'].($primary_id ? '&primary_id='.$primary_id : '').'\';}"><img src="/images/icons/del.png"></a>
+            &nbsp;<a href="javascript:void(0);" onclick="if(confirm(\'РџСЂРµРєСЂР°С‚РёС‚СЊ РѕС‚СЃР»РµР¶РёРІР°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ '.$aOne['s_login'].'??\')){window.location=\'?task=sdel&chk_users='.$aOne['s_uid'].($primary_id ? '&primary_id='.$primary_id : '').'\';}"><img src="/images/icons/del.png"></a>
         </td>
     </tr>';
 }
 
 /**
- Генерирует HTML со строкой "Еще Х пользователь"
+ Р“РµРЅРµСЂРёСЂСѓРµС‚ HTML СЃРѕ СЃС‚СЂРѕРєРѕР№ "Р•С‰Рµ РҐ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ"
  * 
- * @param  int $sPid id первичного IP
- * @param  int $sid количество вторичных IP
+ * @param  int $sPid id РїРµСЂРІРёС‡РЅРѕРіРѕ IP
+ * @param  int $sid РєРѕР»РёС‡РµСЃС‚РІРѕ РІС‚РѕСЂРёС‡РЅС‹С… IP
  * @return string HTML
  */
 function grayIpParseMore( $sPid, $sid ) {
@@ -296,7 +296,7 @@ function grayIpParseMore( $sPid, $sid ) {
 	return '<tr>
         <td class="first">&#160;</td>
         <td colspan="3">
-        <a href="'.$sHref.'" target="_blank" onClick="popupWin = window.open(this.href, \'secondary\'); popupWin.focus(); return false;">Еще '.($sid-10).' '.ending(($sid-10), 'пользователь', 'пользователя', 'пользователей').'</a>
+        <a href="'.$sHref.'" target="_blank" onClick="popupWin = window.open(this.href, \'secondary\'); popupWin.focus(); return false;">Р•С‰Рµ '.($sid-10).' '.ending(($sid-10), 'РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ', 'РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ', 'РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№').'</a>
         </td>
     </tr>';
 }

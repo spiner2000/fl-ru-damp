@@ -3,6 +3,6 @@ $type = $pro_type[$service['op_code']];
 ?>
 <div class="b-layout b-layout_pad_10 b-layout_bord_e6 b-layout_relative b-layout_margbot_10">
     <span class="b-page__desktop b-page__ipad"><span class="b-icon b-icon__spro b-icon__spro_f b-icon_absolute b-icon_left_10" title="PRO"></span></span>
-    <span class="b-layout__txt b-layout__txt_float_right b-layout__txt_fontsize_15 b-layout__txt_color_fd6c30 b-layout__txt_padtop_2 b-layout__txt_padleft_10"><?= to_money($service['ammount'])?> руб.</span>
-    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padleft_70 b-layout__txt_padleft_null_iphone b-layout__txt_padtop_2">Профессиональный аккаунт на <? if($type['day']) { ?><?= $type['day']?> <?= ending($type['day'], 'день', 'дня', 'дней')?><? } elseif ($type['week']) { ?><?= $type['week']?> <?= ending($type['week'], 'неделю', 'недели', 'недель')?><? } else { ?><?= $type['month']?> <?= ending($type['month'], 'месяц', 'месяца', 'месяцев')?><? } ?></div>
+    <span class="b-layout__txt b-layout__txt_float_right b-layout__txt_fontsize_15 b-layout__txt_color_fd6c30 b-layout__txt_padtop_2 b-layout__txt_padleft_10"><?= to_money($service['ammount'])?> СЂСѓР±.</span>
+    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padleft_70 b-layout__txt_padleft_null_iphone b-layout__txt_padtop_2">РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚ РЅР° <? if($type['day']) { ?><?= $type['day']?> <?= ending($type['day'], 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№')?><? } elseif ($type['week']) { ?><?= $type['week']?> <?= ending($type['week'], 'РЅРµРґРµР»СЋ', 'РЅРµРґРµР»Рё', 'РЅРµРґРµР»СЊ')?><? } else { ?><?= $type['month']?> <?= ending($type['month'], 'РјРµСЃСЏС†', 'РјРµСЃСЏС†Р°', 'РјРµСЃСЏС†РµРІ')?><? } ?></div>
 </div>

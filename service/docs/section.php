@@ -3,7 +3,7 @@
       <div class="docs-block c">
         <div class="docs-content c">
           <div class="docs-cnt">
-            <div class="docs-breadcrumb"> <a class="b-layout__link" href="/service/docs/">Вернуться на главную</a> </div>
+            <div class="docs-breadcrumb"> <a class="b-layout__link" href="/service/docs/">Р’РµСЂРЅСѓС‚СЊСЃСЏ РЅР° РіР»Р°РІРЅСѓСЋ</a> </div>
             <h3>
               <?= htmlspecialchars($section['name']);?>
             </h3>
@@ -14,10 +14,10 @@
               <h4><a class="b-layout__link" name="doc<?=$doc['id']?>"></a>
                 <?= htmlspecialchars($doc['name']);?>
               </h4>
-              <p><span class="d">Добавлен
+              <p><span class="d">Р”РѕР±Р°РІР»РµРЅ
                 <?= date("d.m.Y",strtotime($doc['date_create']));?>
                 <?php if($doc['date_update']){?>
-                &nbsp;&nbsp;&nbsp;Обновлен
+                &nbsp;&nbsp;&nbsp;РћР±РЅРѕРІР»РµРЅ
                 <?= date("d.m.Y",strtotime($doc['date_update']));}?>
                 </span></p>
               <p>
@@ -33,7 +33,7 @@
             </div>
             <?} ?>
             <?}else{ //if ?>
-            <div style="color:red; padding-bottom:100px;">Документов в данном разделе нет</div>
+            <div style="color:red; padding-bottom:100px;">Р”РѕРєСѓРјРµРЅС‚РѕРІ РІ РґР°РЅРЅРѕРј СЂР°Р·РґРµР»Рµ РЅРµС‚</div>
             <?php } ?>
           </div>
         </div>

@@ -45,7 +45,7 @@ $types = array(
     'messages',
     'commune',
     'notes',
-    'users_all',//нужны права админа!!!
+    'users_all',//РЅСѓР¶РЅС‹ РїСЂР°РІР° Р°РґРјРёРЅР°!!!
     'users_ext',
     //'users_test',
     'users_simple',

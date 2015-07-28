@@ -29,7 +29,7 @@
         </div>
         <?php } ?>
         <?php /*if (get_uid(FALSE) == $message['author_id']) { ?>
-            <div class="b-layout__txt"><a class="b-layout__link b-layout__link_dot_c10600" href="#">Редактировать</a></div>
+            <div class="b-layout__txt"><a class="b-layout__link b-layout__link_dot_c10600" href="#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></div>
         <?php }*/ ?>
     </div>
     <?php } ?>

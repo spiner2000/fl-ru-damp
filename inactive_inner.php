@@ -4,8 +4,8 @@
     <!-- end of Banner 240x400 -->
 </div>
 <div class="b-layout__left b-layout__left_margright_270">
-<h1 class="b-page__title">Активируйте аккаунт!</h1>
-<div class="b-layout__txt b-layout__txt_padbot_20">Регистрация прошла удачно.</div>
-<div class="b-layout__txt b-layout__txt_padbot_20">На адрес <?=$_SESSION['email']?> выслано письмо с просьбой подтвердить регистрацию.</div>
-<div class="b-layout__txt">Пожалуйста, сделайте это в течение трех дней, иначе ваш аккаунт будет удален.</div>
+<h1 class="b-page__title">РђРєС‚РёРІРёСЂСѓР№С‚Рµ Р°РєРєР°СѓРЅС‚!</h1>
+<div class="b-layout__txt b-layout__txt_padbot_20">Р РµРіРёСЃС‚СЂР°С†РёСЏ РїСЂРѕС€Р»Р° СѓРґР°С‡РЅРѕ.</div>
+<div class="b-layout__txt b-layout__txt_padbot_20">РќР° Р°РґСЂРµСЃ <?=$_SESSION['email']?> РІС‹СЃР»Р°РЅРѕ РїРёСЃСЊРјРѕ СЃ РїСЂРѕСЃСЊР±РѕР№ РїРѕРґС‚РІРµСЂРґРёС‚СЊ СЂРµРіРёСЃС‚СЂР°С†РёСЋ.</div>
+<div class="b-layout__txt">РџРѕР¶Р°Р»СѓР№СЃС‚Р°, СЃРґРµР»Р°Р№С‚Рµ СЌС‚Рѕ РІ С‚РµС‡РµРЅРёРµ С‚СЂРµС… РґРЅРµР№, РёРЅР°С‡Рµ РІР°С€ Р°РєРєР°СѓРЅС‚ Р±СѓРґРµС‚ СѓРґР°Р»РµРЅ.</div>
 </div>

@@ -4,10 +4,10 @@ require_once('DocGenFormatter.php');
 
 class DocGenBillFormatter extends DocGenFormatter 
 {
-    const BANK_INVOICE_NUM = "Б-%06d";
+    const BANK_INVOICE_NUM = "Р‘-%06d";
     
-    const FIO_JURI_TML  = '%s (в лице _____________________________, действующего на основании ________________)';
-    const FIO_JURI_TML2 = '%s «%s» (в лице _____________________________, действующего на основании ________________)';
+    const FIO_JURI_TML  = '%s (РІ Р»РёС†Рµ _____________________________, РґРµР№СЃС‚РІСѓСЋС‰РµРіРѕ РЅР° РѕСЃРЅРѕРІР°РЅРёРё ________________)';
+    const FIO_JURI_TML2 = '%s В«%sВ» (РІ Р»РёС†Рµ _____________________________, РґРµР№СЃС‚РІСѓСЋС‰РµРіРѕ РЅР° РѕСЃРЅРѕРІР°РЅРёРё ________________)';
     
     
     
@@ -20,7 +20,7 @@ class DocGenBillFormatter extends DocGenFormatter
         } elseif($reqv['type'] == sbr_meta::TYPE_IP) { 
             $fio = sbr_meta::$types_short[(int)$reqv['type']] . ' ' . $fio;
         } else {
-            $fio = sprintf("%s «%s»", sbr_meta::$types_short[(int)$reqv['type']], $reqv['full_name']); 
+            $fio = sprintf("%s В«%sВ»", sbr_meta::$types_short[(int)$reqv['type']], $reqv['full_name']); 
         }
 
         return html_entity_decode($fio, ENT_QUOTES);

@@ -3,10 +3,10 @@ $rpath = "../../";
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/country.php");
 
-$idMonth = date('m'); //дефолтный месяц
-$idYear = date('Y'); //дефотлный год
-$iBarWidth = (is_numeric(InGet('y')) && !is_numeric(InGet('m')))?30:20; //ширина ячейки
-$iHeight = 20; //отступ снизу
+$idMonth = date('m'); //РґРµС„РѕР»С‚РЅС‹Р№ РјРµСЃСЏС†
+$idYear = date('Y'); //РґРµС„РѕС‚Р»РЅС‹Р№ РіРѕРґ
+$iBarWidth = (is_numeric(InGet('y')) && !is_numeric(InGet('m')))?30:20; //С€РёСЂРёРЅР° СЏС‡РµР№РєРё
+$iHeight = 20; //РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ
 $hbl = 30;
 $sFont = ABS_PATH.'/siteadmin/account/Aricyr.ttf';
 $DB = new DB('master');
@@ -44,7 +44,7 @@ function getOP($date_from='2006-10-10', $date_to='now()', $bYear=false) {
         }
 	}
     
-    // Данные для тесту
+    // Р”Р°РЅРЅС‹Рµ РґР»СЏ С‚РµСЃС‚Сѓ
     /*
     $s = 9000;
     $sm = 9300;
@@ -95,12 +95,12 @@ else {
 }
 
 
-$iMaxDays = $iMax = ($bYear)?12:date('t',mktime(0,0,0, $iMonth, 1, $iYear)); //Вычисление максимального количества дней\месяцев в текущем месяце\годе
-$iFMperPX = (!$bYear)?30:(30*10); //масштаб
+$iMaxDays = $iMax = ($bYear)?12:date('t',mktime(0,0,0, $iMonth, 1, $iYear)); //Р’С‹С‡РёСЃР»РµРЅРёРµ РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ РєРѕР»РёС‡РµСЃС‚РІР° РґРЅРµР№\РјРµСЃСЏС†РµРІ РІ С‚РµРєСѓС‰РµРј РјРµСЃСЏС†Рµ\РіРѕРґРµ
+$iFMperPX = (!$bYear)?30:(30*10); //РјР°СЃС€С‚Р°Р±
 
-$graphStyle[3]['text'] = 'Работодатели';
-$graphStyle[2]['text'] = 'Фрилансеры';
-$graphStyle[1]['text'] = 'Всего';
+$graphStyle[3]['text'] = 'Р Р°Р±РѕС‚РѕРґР°С‚РµР»Рё';
+$graphStyle[2]['text'] = 'Р¤СЂРёР»Р°РЅСЃРµСЂС‹';
+$graphStyle[1]['text'] = 'Р’СЃРµРіРѕ';
 $graphStyle[3]['val'] = 'cnt_emp';
 $graphStyle[2]['val'] = 'cnt_frl';
 $graphStyle[1]['val'] = 'cnt';
@@ -128,7 +128,7 @@ for ($i=1; $i<=count($graphStyle); $i++) {
             $ii = $aTemp[$j][$value];
 //            $iAmount = $aTemp[$j]['cnt'];
 			if ($iAmount > $graphStyle[$i]['max']) {
-				$graphStyle[$i]['max'] = $iAmount; //Вычисляем максимальную высоту всего графика
+				$graphStyle[$i]['max'] = $iAmount; //Р’С‹С‡РёСЃР»СЏРµРј РјР°РєСЃРёРјР°Р»СЊРЅСѓСЋ РІС‹СЃРѕС‚Сѓ РІСЃРµРіРѕ РіСЂР°С„РёРєР°
 			}
 
 			$graphValues[$i][$aTemp[$j]['_day']-1] = $iAmount;
@@ -157,16 +157,16 @@ for ($i=0; $i<=$iMaxDays; $i++) {
 }
 //print_r($graphValues2);
 
-$imgHeight += count($graphValues)*$hbl; //прибавляем промежутки к максимальной высоте графика
+$imgHeight += count($graphValues)*$hbl; //РїСЂРёР±Р°РІР»СЏРµРј РїСЂРѕРјРµР¶СѓС‚РєРё Рє РјР°РєСЃРёРјР°Р»СЊРЅРѕР№ РІС‹СЃРѕС‚Рµ РіСЂР°С„РёРєР°
 $imgWidth = $iMax*$iBarWidth+100;
 
 
-$image=imagecreate($imgWidth, $imgHeight); //создаем график с учетом максимальной высоты и ширины.
+$image=imagecreate($imgWidth, $imgHeight); //СЃРѕР·РґР°РµРј РіСЂР°С„РёРє СЃ СѓС‡РµС‚РѕРј РјР°РєСЃРёРјР°Р»СЊРЅРѕР№ РІС‹СЃРѕС‚С‹ Рё С€РёСЂРёРЅС‹.
 imagecolorallocate($image, 255, 255, 255);
 
-$graphStyle[1]['color'] = imagecolorallocate($image, 0, 0, 0); //Всего
-$graphStyle[2]['color'] = imagecolorallocate($image, 103, 135, 179); //Фрилансеры
-$graphStyle[3]['color'] = imagecolorallocate($image, 111, 177, 92); //Работодатели
+$graphStyle[1]['color'] = imagecolorallocate($image, 0, 0, 0); //Р’СЃРµРіРѕ
+$graphStyle[2]['color'] = imagecolorallocate($image, 103, 135, 179); //Р¤СЂРёР»Р°РЅСЃРµСЂС‹
+$graphStyle[3]['color'] = imagecolorallocate($image, 111, 177, 92); //Р Р°Р±РѕС‚РѕРґР°С‚РµР»Рё
 
 
 
@@ -175,13 +175,13 @@ $colorGrey=imagecolorallocate($image, 192, 192, 192);
 $colorDarkBlue=imagecolorallocate($image, 153, 153, 153);
 
 for ($i=1; $i<count($graphValues); $i++) {
-	//вычисляем откуда начать прорисовку графика
+	//РІС‹С‡РёСЃР»СЏРµРј РѕС‚РєСѓРґР° РЅР°С‡Р°С‚СЊ РїСЂРѕСЂРёСЃРѕРІРєСѓ РіСЂР°С„РёРєР°
 	if ($i > 1) {
 		$iMaxHeight = $graphValues[$i-1][0];
 		for ($k=1; $k<count($graphValues[$i-1]); $k++) {
 			$iMaxHeight = ($graphValues[$i-1][$k] > $iMaxHeight)?$graphValues[$i-1][$k]:$iMaxHeight;
 		}
-		$iHeight += $iMaxHeight+$hbl; // +15 - расстояние между строчками
+		$iHeight += $iMaxHeight+$hbl; // +15 - СЂР°СЃСЃС‚РѕСЏРЅРёРµ РјРµР¶РґСѓ СЃС‚СЂРѕС‡РєР°РјРё
 	}
 
 	for ($j=0; $j<count($graphValues[$i]); $j++) {
@@ -194,8 +194,8 @@ for ($i=1; $i<count($graphValues); $i++) {
 
 		if ($graphValues[$i][$j]) {
 			imagefilledrectangle($image, $j*$iBarWidth+2 + 100, ($imgHeight-$iHeight-round($graphValues[$i][$j])), ($j+1)*$iBarWidth + 100, $imgHeight-$iHeight, $graphStyle[$i]['color']);
-			//надпись количества FM
-			$addD = ($i == 8)?2:1; ///Если подарки, то результат делим на 2
+			//РЅР°РґРїРёСЃСЊ РєРѕР»РёС‡РµСЃС‚РІР° FM
+			$addD = ($i == 8)?2:1; ///Р•СЃР»Рё РїРѕРґР°СЂРєРё, С‚Рѕ СЂРµР·СѓР»СЊС‚Р°С‚ РґРµР»РёРј РЅР° 2
 			$color = (!$i)?$graphStyle[$i]['color']:$colorDarkBlue;
             if($i!=0) {
 			    imagefttext($image, '7', 0, $j*$iBarWidth + 100+2, $imgHeight-$iHeight-$graphValues[$i][$j]-2, $color, $sFont, round($graphValuesV[$i][$j]));
@@ -216,26 +216,26 @@ for ($i=1; $i<count($graphValues); $i++) {
 }
 
 
-$aMonthes[1] = 'Январь';
-$aMonthes[2] = 'Февраль';
-$aMonthes[3] = 'Март';
-$aMonthes[4] = 'Апрель';
-$aMonthes[5] = 'Май';
-$aMonthes[6] = 'Июнь';
-$aMonthes[7] = 'Июль';
-$aMonthes[8] = 'Август';
-$aMonthes[9] = 'Сентябрь';
-$aMonthes[10] = 'Октябрь';
-$aMonthes[11] = 'Ноябрь';
-$aMonthes[12] = 'Декабрь';
+$aMonthes[1] = 'РЇРЅРІР°СЂСЊ';
+$aMonthes[2] = 'Р¤РµРІСЂР°Р»СЊ';
+$aMonthes[3] = 'РњР°СЂС‚';
+$aMonthes[4] = 'РђРїСЂРµР»СЊ';
+$aMonthes[5] = 'РњР°Р№';
+$aMonthes[6] = 'РСЋРЅСЊ';
+$aMonthes[7] = 'РСЋР»СЊ';
+$aMonthes[8] = 'РђРІРіСѓСЃС‚';
+$aMonthes[9] = 'РЎРµРЅС‚СЏР±СЂСЊ';
+$aMonthes[10] = 'РћРєС‚СЏР±СЂСЊ';
+$aMonthes[11] = 'РќРѕСЏР±СЂСЊ';
+$aMonthes[12] = 'Р”РµРєР°Р±СЂСЊ';
 
-$sString = 'PRO пользователи';
+$sString = 'PRO РїРѕР»СЊР·РѕРІР°С‚РµР»Рё';
 imagefttext($image, '18', 0, 100, 20, $colorGrey, $sFont, $sString);
 
 header("Pragma: no-cache");
 header("Cache-Control: no-cache, must-revalidate");
-header("Expires: Sun, 1 Jan 1995 01:00:00 GMT"); // Это какая-нибудь давно прошедшая дата
-header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); // это строчка говорит, что наш скрипт всегда изменен
+header("Expires: Sun, 1 Jan 1995 01:00:00 GMT"); // Р­С‚Рѕ РєР°РєР°СЏ-РЅРёР±СѓРґСЊ РґР°РІРЅРѕ РїСЂРѕС€РµРґС€Р°СЏ РґР°С‚Р°
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); // СЌС‚Рѕ СЃС‚СЂРѕС‡РєР° РіРѕРІРѕСЂРёС‚, С‡С‚Рѕ РЅР°С€ СЃРєСЂРёРїС‚ РІСЃРµРіРґР° РёР·РјРµРЅРµРЅ
 header("Content-type: image/png");
 imagepng($image);
 imagedestroy($image);

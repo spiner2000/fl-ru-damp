@@ -1,5 +1,5 @@
 <?php
-// Тестовое оплата услуг через Qiwi
+// РўРµСЃС‚РѕРІРѕРµ РѕРїР»Р°С‚Р° СѓСЃР»СѓРі С‡РµСЂРµР· Qiwi
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 if(is_release()) exit;
 
@@ -18,11 +18,11 @@ if(isset($_POST['cancel'])) {
     $account = new account();
     $account->GetInfo( $_SESSION['post_payment']['ok_f_uid'] );
 
-    //$descr = "OKPAY #".$_SESSION['post_payment']['ok_txn_id']." на кошелек ".$_SESSION['post_payment']['ok_receiver_wallet']." OKPAYID: ".$_SESSION['post_payment']['ok_payer_id']." сумма - ".$_SESSION['post_payment']['ok_item_1_price'].",";
-    //$descr .= " обработан ".$_SESSION['post_payment']['ok_txn_datetime'].", счет - ".$_SESSION['post_payment']['ok_f_bill_id'];
+    //$descr = "OKPAY #".$_SESSION['post_payment']['ok_txn_id']." РЅР° РєРѕС€РµР»РµРє ".$_SESSION['post_payment']['ok_receiver_wallet']." OKPAYID: ".$_SESSION['post_payment']['ok_payer_id']." СЃСѓРјРјР° - ".$_SESSION['post_payment']['ok_item_1_price'].",";
+    //$descr .= " РѕР±СЂР°Р±РѕС‚Р°РЅ ".$_SESSION['post_payment']['ok_txn_datetime'].", СЃС‡РµС‚ - ".$_SESSION['post_payment']['ok_f_bill_id'];
 
-    $descr = "OKPAY #11 на кошелек OK460571733 OKPAYID: 1111 сумма - ".$_SESSION['post_payment']['ok_item_1_price'].",";
-    $descr .= " обработан ".date("Y-m-d H:i:s").", счет - ".$_SESSION['post_payment']['ok_f_bill_id'];
+    $descr = "OKPAY #11 РЅР° РєРѕС€РµР»РµРє OK460571733 OKPAYID: 1111 СЃСѓРјРјР° - ".$_SESSION['post_payment']['ok_item_1_price'].",";
+    $descr .= " РѕР±СЂР°Р±РѕС‚Р°РЅ ".date("Y-m-d H:i:s").", СЃС‡РµС‚ - ".$_SESSION['post_payment']['ok_f_bill_id'];
 
     $account->deposit($op_id, $_SESSION['post_payment']['ok_f_bill_id'], $_SESSION['post_payment']['ok_item_1_price'], $descr, 14, $_SESSION['post_payment']['ok_item_1_price'], 12);
 
@@ -35,13 +35,13 @@ $_SESSION['referer']      = $_SERVER['HTTP_REFERER'];
 
 ?>
 
-<h2>Тестовая оплата OKPAY</h2>
+<h2>РўРµСЃС‚РѕРІР°СЏ РѕРїР»Р°С‚Р° OKPAY</h2>
 <p>
-Оплата услуг аккаунт #<?= get_uid(false);?>, сумма оплаты <?= to_money($_POST['ok_item_1_price'],2)?> рублей
+РћРїР»Р°С‚Р° СѓСЃР»СѓРі Р°РєРєР°СѓРЅС‚ #<?= get_uid(false);?>, СЃСѓРјРјР° РѕРїР»Р°С‚С‹ <?= to_money($_POST['ok_item_1_price'],2)?> СЂСѓР±Р»РµР№
 </p>
 
 <? if ($created) { ?>
-Ошибка:
+РћС€РёР±РєР°:
 <pre>
 <?var_dump($created);?>
 </pre>
@@ -49,8 +49,8 @@ $_SESSION['referer']      = $_SERVER['HTTP_REFERER'];
 <form method="POST" />
 
 
-    <input type="submit" name="success" value="Оплатить" />
-    <input type="submit" name="cancel" value="Отмена" />
+    <input type="submit" name="success" value="РћРїР»Р°С‚РёС‚СЊ" />
+    <input type="submit" name="cancel" value="РћС‚РјРµРЅР°" />
     <input type="hidden" name="u_token_key" value="<?=$_SESSION['rand']?>"/>
 </form>
 <? }//if?>

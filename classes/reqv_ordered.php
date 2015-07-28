@@ -1,115 +1,115 @@
 <?
 /**
- * Ïîäêëş÷àåì ôàéë ñ îñíîâíûìè ôóíêöèÿìè
+ * ĞŸĞ¾Ğ´ĞºĞ»ÑÑ‡Ğ°ĞµĞ¼ Ñ„Ğ°Ğ¹Ğ» Ñ Ğ¾ÑĞ½Ğ¾Ğ²Ğ½Ñ‹Ğ¼Ğ¸ Ñ„ÑƒĞ½ĞºÑ†Ğ¸ÑĞ¼Ğ¸
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/reqv.php");
 
 /**
- * Êëàññ, îáğàáàòûâàşùèé ğåêâèçèòû îïëàòû ïî áåçíàëè÷íîìó ğàñ÷åòó, ïî êîòîğûì óæå ïğîèçâåäåíà îïëàòà (òàáë. reqv_ordered)
+ * ĞšĞ»Ğ°ÑÑ, Ğ¾Ğ±Ñ€Ğ°Ğ±Ğ°Ñ‚Ñ‹Ğ²Ğ°ÑÑ‰Ğ¸Ğ¹ Ñ€ĞµĞºĞ²Ğ¸Ğ·Ğ¸Ñ‚Ñ‹ Ğ¾Ğ¿Ğ»Ğ°Ñ‚Ñ‹ Ğ¿Ğ¾ Ğ±ĞµĞ·Ğ½Ğ°Ğ»Ğ¸Ñ‡Ğ½Ğ¾Ğ¼Ñƒ Ñ€Ğ°ÑÑ‡ĞµÑ‚Ñƒ, Ğ¿Ğ¾ ĞºĞ¾Ñ‚Ğ¾Ñ€Ñ‹Ğ¼ ÑƒĞ¶Ğµ Ğ¿Ñ€Ğ¾Ğ¸Ğ·Ğ²ĞµĞ´ĞµĞ½Ğ° Ğ¾Ğ¿Ğ»Ğ°Ñ‚Ğ° (Ñ‚Ğ°Ğ±Ğ». reqv_ordered)
  *
  */
 class reqv_ordered extends reqv
 {
 	
 	/**
-	 * Ïğèøëà ëè ïëàòåæêà
+	 * ĞŸÑ€Ğ¸ÑˆĞ»Ğ° Ğ»Ğ¸ Ğ¿Ğ»Ğ°Ñ‚ĞµĞ¶ĞºĞ°
 	 *
 	 * @var boolean
 	 */
 	public $pcheck;
 	
 	/**
-	 * Ïğèøëè ëè äåíüãè â îïëàòó
+	 * ĞŸÑ€Ğ¸ÑˆĞ»Ğ¸ Ğ»Ğ¸ Ğ´ĞµĞ½ÑŒĞ³Ğ¸ Ğ² Ğ¾Ğ¿Ğ»Ğ°Ñ‚Ñƒ
 	 *
 	 * @var boolean
 	 */
 	public $payed;
 	
 	/**
-	 * ñóììà íà çà÷èñëåíèå
+	 * ÑÑƒĞ¼Ğ¼Ğ° Ğ½Ğ° Ğ·Ğ°Ñ‡Ğ¸ÑĞ»ĞµĞ½Ğ¸Ğµ
 	 *
 	 * @var float
 	 */
 	public $ammount;
 	
 	/**
-	 * Äàòà âûïèñêè ñ÷åòà
+	 * Ğ”Ğ°Ñ‚Ğ° Ğ²Ñ‹Ğ¿Ğ¸ÑĞºĞ¸ ÑÑ‡ĞµÑ‚Ğ°
 	 *
 	 * @var string (Postgres timestamp)
 	 */
 	public $op_date;
 	
 	/**
-	 * Äàòà ğåäàêòèğîâàíèÿ
+	 * Ğ”Ğ°Ñ‚Ğ° Ñ€ĞµĞ´Ğ°ĞºÑ‚Ğ¸Ñ€Ğ¾Ğ²Ğ°Ğ½Ğ¸Ñ
 	 *
 	 * @var string (Postgres timestamp)
 	 */
 	public $edited;
 	/**
-	 * Äàòà ïğèõîäà ïëàòåæêè
+	 * Ğ”Ğ°Ñ‚Ğ° Ğ¿Ñ€Ğ¸Ñ…Ğ¾Ğ´Ğ° Ğ¿Ğ»Ğ°Ñ‚ĞµĞ¶ĞºĞ¸
 	 *
 	 * @var string (Postgres timestamp)
 	 */
 	public $pcheck_time;
 	
 	/**
-	 * Äàòà ïğèõîäà äåíåã íà ñ÷åò
+	 * Ğ”Ğ°Ñ‚Ğ° Ğ¿Ñ€Ğ¸Ñ…Ğ¾Ğ´Ğ° Ğ´ĞµĞ½ĞµĞ³ Ğ½Ğ° ÑÑ‡ĞµÑ‚
 	 *
 	 * @var string (Postgres timestamp)
 	 */
 	public $payed_time;
 	
 	/**
-	 * Âûñëàíû ëè äîêóìåíòû
+	 * Ğ’Ñ‹ÑĞ»Ğ°Ğ½Ñ‹ Ğ»Ğ¸ Ğ´Ğ¾ĞºÑƒĞ¼ĞµĞ½Ñ‚Ñ‹
 	 *
 	 * @var boolean
 	 */
 	public $docsend;
 	
 	/**
-	 * Äàòà îòïğàâêè äîêóìåíòîâ
+	 * Ğ”Ğ°Ñ‚Ğ° Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²ĞºĞ¸ Ğ´Ğ¾ĞºÑƒĞ¼ĞµĞ½Ñ‚Ğ¾Ğ²
 	 *
 	 * @var string (Postgres timestamp)
 	 */
 	public $docsend_time;
 	
 	/**
-	 * id çà÷èñëåíèÿ ñğåäñò íà ñ÷åò şçåğà (òàáë. account_operations)
+	 * id Ğ·Ğ°Ñ‡Ğ¸ÑĞ»ĞµĞ½Ğ¸Ñ ÑÑ€ĞµĞ´ÑÑ‚ Ğ½Ğ° ÑÑ‡ĞµÑ‚ ÑĞ·ĞµÑ€Ğ° (Ñ‚Ğ°Ğ±Ğ». account_operations)
 	 *
 	 * @var integer
 	 */
 	public $billing_id;
 	
 	/**
-	 * Íîìåğ ñ÷åòà ïî ïîğÿäêó äëÿ äàííîãî şçåğà
+	 * ĞĞ¾Ğ¼ĞµÑ€ ÑÑ‡ĞµÑ‚Ğ° Ğ¿Ğ¾ Ğ¿Ğ¾Ñ€ÑĞ´ĞºÑƒ Ğ´Ğ»Ñ Ğ´Ğ°Ğ½Ğ½Ğ¾Ğ³Ğ¾ ÑĞ·ĞµÑ€Ğ°
 	 *
 	 * @var integer
 	 */
 	public $bill_no;
 	
 	/**
-	 * Êîä îïåğàöèè, äëÿ êîòîğîé ïğåäíàçíà÷åíû ıòè äåíüãè (op_codes)
+	 * ĞšĞ¾Ğ´ Ğ¾Ğ¿ĞµÑ€Ğ°Ñ†Ğ¸Ğ¸, Ğ´Ğ»Ñ ĞºĞ¾Ñ‚Ğ¾Ñ€Ğ¾Ğ¹ Ğ¿Ñ€ĞµĞ´Ğ½Ğ°Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ñ‹ ÑÑ‚Ğ¸ Ğ´ĞµĞ½ÑŒĞ³Ğ¸ (op_codes)
 	 *
 	 * @var integer
 	 */
 	public $op_code;
 	
 	/**
-	 * Âåğíóëèñü ëè äîêóìåíòû?
+	 * Ğ’ĞµÑ€Ğ½ÑƒĞ»Ğ¸ÑÑŒ Ğ»Ğ¸ Ğ´Ğ¾ĞºÑƒĞ¼ĞµĞ½Ñ‚Ñ‹?
 	 *
 	 * @var boolean
 	 */
 	public $docback;
 	
 	/**
-	 * Äàòà âîçâğàòà äîêóìåíòîâ
+	 * Ğ”Ğ°Ñ‚Ğ° Ğ²Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‚Ğ° Ğ´Ğ¾ĞºÑƒĞ¼ĞµĞ½Ñ‚Ğ¾Ğ²
 	 *
 	 * @var string (Postgres timestamp)
 	 */
 	public $docback_time;
 	
 	/**
-	 * id Ñäåëêè áåç Ğèñêà (åå äåíüãè ğåçåğâèğóşòñÿ ïîä íåå)
+	 * id Ğ¡Ğ´ĞµĞ»ĞºĞ¸ Ğ±ĞµĞ· Ğ Ğ¸ÑĞºĞ° (ĞµĞµ Ğ´ĞµĞ½ÑŒĞ³Ğ¸ Ñ€ĞµĞ·ĞµÑ€Ğ²Ğ¸Ñ€ÑƒÑÑ‚ÑÑ Ğ¿Ğ¾Ğ´ Ğ½ĞµĞµ)
 	 *
 	 * @var integer
 	 */
@@ -120,9 +120,9 @@ class reqv_ordered extends reqv
  public $file_act;
 	
 	/**
-	 * Êîíñòğóêòîğ êëàññà
+	 * ĞšĞ¾Ğ½ÑÑ‚Ñ€ÑƒĞºÑ‚Ğ¾Ñ€ ĞºĞ»Ğ°ÑÑĞ°
 	 *
-	 * @param object $reqv êëàññ reqv 
+	 * @param object $reqv ĞºĞ»Ğ°ÑÑ reqv 
 	 */
 	function reqv_ordered($reqv = 0){
 		if ($reqv){
@@ -136,7 +136,7 @@ class reqv_ordered extends reqv
 	}
 	
 	/**
-	 * Äåëàåò çàïèñü â òàáëèöå î âûñòàâëåííîì ñ÷åòå ïî òåêóùèì ğåêâèçèòàì
+	 * Ğ”ĞµĞ»Ğ°ĞµÑ‚ Ğ·Ğ°Ğ¿Ğ¸ÑÑŒ Ğ² Ñ‚Ğ°Ğ±Ğ»Ğ¸Ñ†Ğµ Ğ¾ Ğ²Ñ‹ÑÑ‚Ğ°Ğ²Ğ»ĞµĞ½Ğ½Ğ¾Ğ¼ ÑÑ‡ĞµÑ‚Ğµ Ğ¿Ğ¾ Ñ‚ĞµĞºÑƒÑ‰Ğ¸Ğ¼ Ñ€ĞµĞºĞ²Ğ¸Ğ·Ğ¸Ñ‚Ğ°Ğ¼
 	 *
 	 * @return integer
 	 */
@@ -148,16 +148,16 @@ class reqv_ordered extends reqv
 	}
 	
 	/**
-	 * Âîçâğàùàåò âñå ñ÷åòà, âûïèñàííûå çà äàííûé ïåğèîä
+	 * Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ĞµÑ‚ Ğ²ÑĞµ ÑÑ‡ĞµÑ‚Ğ°, Ğ²Ñ‹Ğ¿Ğ¸ÑĞ°Ğ½Ğ½Ñ‹Ğµ Ğ·Ğ° Ğ´Ğ°Ğ½Ğ½Ñ‹Ğ¹ Ğ¿ĞµÑ€Ğ¸Ğ¾Ğ´
 	 *
-	 * @todo Ïğèâåñòè êîä ôóíêöèè â óäîáî÷èòàåìûé âèä
+	 * @todo ĞŸÑ€Ğ¸Ğ²ĞµÑÑ‚Ğ¸ ĞºĞ¾Ğ´ Ñ„ÑƒĞ½ĞºÑ†Ğ¸Ğ¸ Ğ² ÑƒĞ´Ğ¾Ğ±Ğ¾Ñ‡Ğ¸Ñ‚Ğ°ĞµĞ¼Ñ‹Ğ¹ Ğ²Ğ¸Ğ´
 	 * 
-	 * @param string $fdate			    ñ êàêîãî ÷èñëà ïîëó÷èòü ñ÷åòà
-	 * @param string $tdate			    ïî êàêîå ÷èñëî
-	 * @param string $search            Ïîèñêîâîå ñëîâî
-	 * @param array  $sort              Òèï ñîğòèğîâêè [login=> DESC, fio=>ASC, ...]
-     * @param string $date_search_type  ïî êàêèì äàòàì èùåì, 1-èùåì, 0-íåò (X1X2X3, X1 - ïî äàòå ñîçäàíèÿ, X2 - ïî äàòå îïëàòû, X3 - ïî äàòå îòïğàâêè äîêóìåíòîâ)
-	 * @return array				    èíôà ïî ñ÷åòàì
+	 * @param string $fdate			    Ñ ĞºĞ°ĞºĞ¾Ğ³Ğ¾ Ñ‡Ğ¸ÑĞ»Ğ° Ğ¿Ğ¾Ğ»ÑƒÑ‡Ğ¸Ñ‚ÑŒ ÑÑ‡ĞµÑ‚Ğ°
+	 * @param string $tdate			    Ğ¿Ğ¾ ĞºĞ°ĞºĞ¾Ğµ Ñ‡Ğ¸ÑĞ»Ğ¾
+	 * @param string $search            ĞŸĞ¾Ğ¸ÑĞºĞ¾Ğ²Ğ¾Ğµ ÑĞ»Ğ¾Ğ²Ğ¾
+	 * @param array  $sort              Ğ¢Ğ¸Ğ¿ ÑĞ¾Ñ€Ñ‚Ğ¸Ñ€Ğ¾Ğ²ĞºĞ¸ [login=> DESC, fio=>ASC, ...]
+     * @param string $date_search_type  Ğ¿Ğ¾ ĞºĞ°ĞºĞ¸Ğ¼ Ğ´Ğ°Ñ‚Ğ°Ğ¼ Ğ¸Ñ‰ĞµĞ¼, 1-Ğ¸Ñ‰ĞµĞ¼, 0-Ğ½ĞµÑ‚ (X1X2X3, X1 - Ğ¿Ğ¾ Ğ´Ğ°Ñ‚Ğµ ÑĞ¾Ğ·Ğ´Ğ°Ğ½Ğ¸Ñ, X2 - Ğ¿Ğ¾ Ğ´Ğ°Ñ‚Ğµ Ğ¾Ğ¿Ğ»Ğ°Ñ‚Ñ‹, X3 - Ğ¿Ğ¾ Ğ´Ğ°Ñ‚Ğµ Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²ĞºĞ¸ Ğ´Ğ¾ĞºÑƒĞ¼ĞµĞ½Ñ‚Ğ¾Ğ²)
+	 * @return array				    Ğ¸Ğ½Ñ„Ğ° Ğ¿Ğ¾ ÑÑ‡ĞµÑ‚Ğ°Ğ¼
 	 */
 	function GetOrders($fdate, $tdate, $search=NULL, $sort = NULL, $date_search_type='111'){
 	  if($sort) {
@@ -175,15 +175,15 @@ class reqv_ordered extends reqv
   	}
     $where = '';
     if(substr($date_search_type,0,1)) {
-        // äàòà ñîçäàíèÿ
+        // Ğ´Ğ°Ñ‚Ğ° ÑĞ¾Ğ·Ğ´Ğ°Ğ½Ğ¸Ñ
         $where .= " (op_date >= '$fdate' AND op_date-'1 day'::interval < '$tdate') OR ";
     }
     if(substr($date_search_type,1,1)) {
-        // äàòà îïëàòû
+        // Ğ´Ğ°Ñ‚Ğ° Ğ¾Ğ¿Ğ»Ğ°Ñ‚Ñ‹
         $where .= " (payed_time >= '$fdate' AND payed_time-'1 day'::interval < '$tdate') OR ";
     }
     if(substr($date_search_type,2,1)) {
-        // äàòà îòïğàâêè äîêóìåíòîâ
+        // Ğ´Ğ°Ñ‚Ğ° Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²ĞºĞ¸ Ğ´Ğ¾ĞºÑƒĞ¼ĞµĞ½Ñ‚Ğ¾Ğ²
         $where .= " (docsend_time >= '$fdate' AND docsend_time-'1 day'::interval < '$tdate') OR ";
     }
 
@@ -195,8 +195,8 @@ class reqv_ordered extends reqv
         $where .= " (ro.fio ilike '%{$search}%'
                      OR ro.org_name ilike '%{$search}%'
                      OR ro.full_name ilike '%{$search}%'
-                     OR 'Á-'||a.id||'-'||(COALESCE(ro.bill_no,0)+1) ilike '%{$search}%'
-                     OR 'Á-ÑÁĞ-'||s.id||'-'||CASE s.scheme_type WHEN 1 THEN 'À' WHEN 2 THEN 'Ï' ELSE 'Ò' END||'/Î' ilike '%{$search}%'
+                     OR 'Ğ‘-'||a.id||'-'||(COALESCE(ro.bill_no,0)+1) ilike '%{$search}%'
+                     OR 'Ğ‘-Ğ¡Ğ‘Ğ -'||s.id||'-'||CASE s.scheme_type WHEN 1 THEN 'Ğ' WHEN 2 THEN 'ĞŸ' ELSE 'Ğ¢' END||'/Ğ' ilike '%{$search}%'
                      OR u.login ilike '%{$search}%')";
     }
 

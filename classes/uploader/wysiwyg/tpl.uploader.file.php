@@ -12,7 +12,7 @@
                 <td class="b-icon-layout__icon">
                     <img class="b-fon__loader load-spinner" src="/images/loader-gray.gif" alt="" height="24" width="24">
                 </td>                                
-                <td class="b-icon-layout__files qq-upload-spinner-text">Идет загрузка файла…</td>                              
+                <td class="b-icon-layout__files qq-upload-spinner-text">РРґРµС‚ Р·Р°РіСЂСѓР·РєР° С„Р°Р№Р»Р°вЂ¦</td>                              
                 <td class="b-icon-layout__size">&nbsp;</td>                                   
                 <td class="b-icon-layout__operate">&nbsp;</td>                               
             </tr>                            
@@ -40,7 +40,7 @@
                     <a class="b-icon-layout__link qq-upload-file" href="javascript:void(0)" target="_blank">{fileName}</a>
                 </td>                                       
                 <td class="b-icon-layout__size qq-upload-size"></td>    
-                <td class="b-icon-layout__operate"><a class="b-icon-layout__link b-icon-layout__link_dot_a23e3e qq-upload-delete" href="javascript:void(0)">Удалить</a></td>                                   
+                <td class="b-icon-layout__operate"><a class="b-icon-layout__link b-icon-layout__link_dot_a23e3e qq-upload-delete" href="javascript:void(0)">РЈРґР°Р»РёС‚СЊ</a></td>                                   
             </tr>
         </tbody>                                
     </table>

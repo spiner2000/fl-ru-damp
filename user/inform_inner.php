@@ -22,7 +22,7 @@ if(!defined('IN_STDF')) {
     $rating_total = rating::round($additinfo['rating']);
 
 	$info_for_reg = unserialize($user->info_for_reg);
-	$reg_string = "только для <A class=\"blue\" href=\"/registration/\">зарегистрированных</A>";
+	$reg_string = "С‚РѕР»СЊРєРѕ РґР»СЏ <A class=\"blue\" href=\"/registration/\">Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹С…</A>";
 	
 	if($_SESSION['uid']) {
     	$note = notes::GetNotes($_SESSION['uid'], null, $error);
@@ -63,21 +63,21 @@ window.addEvent('domready',
 			</colgroup>
 			<tbody>
 			<tr class="first">
-				<th>Рейтинг:</th>
+				<th>Р РµР№С‚РёРЅРі:</th>
 				<td><?=$rating_total?></td>
 				<td></td>
 			</tr>
 			<tr>
-				<th>Посещаемость:</th>
+				<th>РџРѕСЃРµС‰Р°РµРјРѕСЃС‚СЊ:</th>
 				<td><?=$additinfo['hits']?></td>
 				<td></td>
 			</tr>
 			<? if ($user->birthday && $user->birthday > "1910-01-01") { ?>
 			<tr>
-				<th>Дата рождения:</th>
+				<th>Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ:</th>
 				<td>
 	
-				<?=dateFormat("d.m.y",$user->birthday)?> (Возраст: <?=ElapsedYears(strtotimeEx($user->birthday))?>)
+				<?=dateFormat("d.m.y",$user->birthday)?> (Р’РѕР·СЂР°СЃС‚: <?=ElapsedYears(strtotimeEx($user->birthday))?>)
 	
 				</td>
 				<td></td>
@@ -85,14 +85,14 @@ window.addEvent('domready',
 		<? } ?>
                         <?php if($val = $user->sex){?>
 			<tr>
-				<th>Пол:</th>
+				<th>РџРѕР»:</th>
 				<td><?
                 			if($user->sex == 't'){
-                			    echo 'Мужской';
+                			    echo 'РњСѓР¶СЃРєРѕР№';
                 			} else if($user->sex == 'f'){
-                                            echo 'Женский';
+                                            echo 'Р–РµРЅСЃРєРёР№';
                                         } else {
-                                            echo 'не указан';
+                                            echo 'РЅРµ СѓРєР°Р·Р°РЅ';
                                         }
                             ?>
                 </td>
@@ -101,18 +101,18 @@ window.addEvent('domready',
 			<?php }?>
                         
 			<tr>
-				<th>На сайте:</th>
+				<th>РќР° СЃР°Р№С‚Рµ:</th>
 				<td><?=ElapsedMnths(strtotime($user->reg_date))?></td>
 				<td></td>
 			</tr>
 			<tr>
-				<th>Дата регистрации:</th>
+				<th>Р”Р°С‚Р° СЂРµРіРёСЃС‚СЂР°С†РёРё:</th>
 				<td><?=date('d.m.Y', strtotime($user->reg_date))?></td>
 				<td></td>
 			</tr>
 			<?php if($user->country){?>
 			<tr>
-				<th>Местонахождение:</th>
+				<th>РњРµСЃС‚РѕРЅР°С…РѕР¶РґРµРЅРёРµ:</th>
 				<td>			
 
 			<?=country::GetCountryName($user->country); if ($user->city) { ?>, <?=city::GetCityName($user->city); } ?>
@@ -131,21 +131,21 @@ window.addEvent('domready',
                             //}
                         ?>
 			<tr>
-				<th>Языки:</th>
+				<th>РЇР·С‹РєРё:</th>
 				<td><? if ( is_array($languages) ) {
                            $text = array();
                            $i = 0;
                            foreach($languages as $lang  ) {
-                           	    $quality = "средний";
+                           	    $quality = "СЃСЂРµРґРЅРёР№";
                            	    switch ($lang["quality"]) {
                            	    	case 1:
-                           	    	   $quality = "начальный";
+                           	    	   $quality = "РЅР°С‡Р°Р»СЊРЅС‹Р№";
                            	    	   break;
                                     case 3:
-                                        $quality = "продвинутый";
+                                        $quality = "РїСЂРѕРґРІРёРЅСѓС‚С‹Р№";
                                         break;
                                     case 4:
-                                        $quality = "родной";
+                                        $quality = "СЂРѕРґРЅРѕР№";
                                         break;
                            	    }
                            	    if ($i > 0) {
@@ -157,7 +157,7 @@ window.addEvent('domready',
                            }
                            echo join(", ", $text);
                       } else {
-                            echo "Пользователь не указал языки, которыми владеет";
+                            echo "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ СѓРєР°Р·Р°Р» СЏР·С‹РєРё, РєРѕС‚РѕСЂС‹РјРё РІР»Р°РґРµРµС‚";
                       }?></td>
 				<td></td>
 			</tr>
@@ -165,7 +165,7 @@ window.addEvent('domready',
 	<? if ($_SESSION['login'] == $user->login) { ?>
 	<tr>
 	   <td colspan="3" valign="top" style="padding-top: 14px; text-align:right">
-	       <div class="change"><div style="padding-right:19px;"><a href=""><img height="9"  width="6" alt="" src="/images/ico_setup.gif" /></a> <a href="/users/<?=$_SESSION['login']?>/setup/info/">Изменить</a></div></div>
+	       <div class="change"><div style="padding-right:19px;"><a href=""><img height="9"  width="6" alt="" src="/images/ico_setup.gif" /></a> <a href="/users/<?=$_SESSION['login']?>/setup/info/">РР·РјРµРЅРёС‚СЊ</a></div></div>
 	   </td>
     </tr>
 	<? } ?>
@@ -187,7 +187,7 @@ window.addEvent('domready',
 $edit_date = strtotime($user->resume_edit_date);
 
 if($edit_date){
-	$alt = "Отредактировано ".date('d.m.Y в H.i', $edit_date);
+	$alt = "РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ ".date('d.m.Y РІ H.i', $edit_date);
 	$pen_ico = strtotime('+7 days', $edit_date) > time() ? '/images/ico-e-a.png' : '/images/ico-e-o.png';
 	$pen_html = '<img src="'.$pen_ico.'" alt="'.$alt.'" title="'.$alt.'" />';
 }else{
@@ -197,14 +197,14 @@ if($edit_date){
 <table width="100%"  cellspacing="0" cellpadding="0" class="b-information-clause-title" 	>
 <tr>
 	<td  style="width:19px; height:20px" class="brdtop">&nbsp;</td>
-	<td class="brdtop">Резюме&nbsp;&nbsp;<?php echo $pen_html?>&nbsp;&nbsp;</td>
+	<td class="brdtop">Р РµР·СЋРјРµ&nbsp;&nbsp;<?php echo $pen_html?>&nbsp;&nbsp;</td>
 	
     <td  style="text-align:right; width:350px" class="brdtop"><a name="resume_file"></a>
         <? if ($user->resume_file) { ?>
-        <a href="<?=WDCPREFIX?>/users/<?=$user->login?>/resume/<?=$user->resume_file?>" class="pages">Скачать резюме</a>
+        <a href="<?=WDCPREFIX?>/users/<?=$user->login?>/resume/<?=$user->resume_file?>" class="pages">РЎРєР°С‡Р°С‚СЊ СЂРµР·СЋРјРµ</a>
         <? } ?>
         <?php if ( hasPermissions('users') ) { ?>
-        <?$user->resume_file ? "|":"";?> <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'resume_file', 'utable': 'freelancer'})">Редактировать</a>
+        <?$user->resume_file ? "|":"";?> <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'resume_file', 'utable': 'freelancer'})">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
         <?php } ?>
     </td>
     
@@ -218,7 +218,7 @@ if($edit_date){
 		<?=($user->resume)? reformat($sResume, 90) : "<br />"?>
         <?php if ( hasPermissions('users') ) { ?>
         <br/><br/>
-        <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'resume', 'utable': 'freelancer'})">Редактировать</a>
+        <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'resume', 'utable': 'freelancer'})">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
         <?php } ?>
 	</td>
 </tr>
@@ -230,7 +230,7 @@ if($edit_date){
 <table width="100%"  cellspacing="0" cellpadding="0" style="background:#ffe5d5" class="b-information-clause-title" >
 <tr>
 	<td  style="width:19px; height:20px" class="brdtop">&nbsp;</td>
-	<td class="brdtop"><a name="konk"></a>Участие в конкурсах и награды</td>
+	<td class="brdtop"><a name="konk"></a>РЈС‡Р°СЃС‚РёРµ РІ РєРѕРЅРєСѓСЂСЃР°С… Рё РЅР°РіСЂР°РґС‹</td>
 	<td  style="width:19px; height:20px" class="brdtop">&nbsp;</td>
 </tr>
 </table>
@@ -242,7 +242,7 @@ if($edit_date){
         
         <?php if ( hasPermissions('users') ) { ?>
         <br/><br/>
-        <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'konk', 'utable': 'freelancer'})">Редактировать</a>
+        <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'konk', 'utable': 'freelancer'})">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
         <?php } ?>
 	</td>
 </tr>
@@ -253,7 +253,7 @@ if($edit_date){
 <table width="100%"  cellspacing="0" cellpadding="0" class="b-information-clause-title" >
 <tr>
 	<td  style="width:19px; height:20px" class="brdtop">&nbsp;</td>
-	<td class="brdtop">Крупные клиенты</td>
+	<td class="brdtop">РљСЂСѓРїРЅС‹Рµ РєР»РёРµРЅС‚С‹</td>
 	<td  style="width:19px; height:20px" class="brdtop">&nbsp;</td>
 </tr>
 </table>
@@ -275,7 +275,7 @@ if($edit_date){
 <table width="100%"  cellspacing="0" cellpadding="0" class="b-information-clause-title" >
 <tr>
 	<td  style="width:19px; height:20px" class="brdtop">&nbsp;</td>
-	<td class="brdtop">В избранном у работодателей</td>
+	<td class="brdtop">Р’ РёР·Р±СЂР°РЅРЅРѕРј Сѓ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№</td>
 	<td  style="width:19px; height:20px" class="brdtop">&nbsp;</td>
 </tr>
 </table>
@@ -305,7 +305,7 @@ if($edit_date){
   <? if($realCnt > $limit) { ?>
     <tr>
       <td style="padding: 0 19px 19px">
-        <a class="blue" href='/users/<?=$user->login?>/all/?mode=1'><b>Все (<?=$realCnt?>)</b></a>
+        <a class="blue" href='/users/<?=$user->login?>/all/?mode=1'><b>Р’СЃРµ (<?=$realCnt?>)</b></a>
       </td>
     </tr>
   <? } ?>
@@ -318,7 +318,7 @@ if($edit_date){
 <table width="100%"  cellspacing="0" cellpadding="0" class="b-information-clause-title" >
 <tr>
 	<td  style="width:19px; height:20px" class="brdtop">&nbsp;</td>
-	<td class="brdtop">В избранном у фрилансеров</td>
+	<td class="brdtop">Р’ РёР·Р±СЂР°РЅРЅРѕРј Сѓ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</td>
 	<td  style="width:19px; height:20px" class="brdtop">&nbsp;</td>
 </tr>
 </table>
@@ -329,7 +329,7 @@ if($edit_date){
     <div class="izbr-odd">
 <?php
 
-    //Получаем is_profi
+    //РџРѕР»СѓС‡Р°РµРј is_profi
     $ids = array();
     $recsProfi = array();
     foreach($recs as $rec) {
@@ -363,7 +363,7 @@ if($edit_date){
   <? if($realCnt > $limit) { ?>
     <tr>
       <td style="padding: 0 19px 19px;">
-        <a class="blue" href='/users/<?=$user->login?>/all/?mode=2'><b>Все (<?=$realCnt?>)</b></a>
+        <a class="blue" href='/users/<?=$user->login?>/all/?mode=2'><b>Р’СЃРµ (<?=$realCnt?>)</b></a>
       </td>
     </tr>
   <? } ?>
@@ -378,7 +378,7 @@ if($edit_date){
 <table width="100%"  cellspacing="0" cellpadding="0" class="b-information-clause-title" >
 <tr>
 	<td  style="width:19px; height:20px" class="brdtop">&nbsp;</td>
-	<td class="brdtop">Избранные</td>
+	<td class="brdtop">РР·Р±СЂР°РЅРЅС‹Рµ</td>
 	<td  style="width:19px; height:20px" class="brdtop">&nbsp;</td>
 </tr>
 </table>
@@ -389,7 +389,7 @@ if($edit_date){
         <div class="izbr-odd">
 <?php
         
-        //Получаем is_profi
+        //РџРѕР»СѓС‡Р°РµРј is_profi
         $ids = array();
         $recsProfi = array();
         foreach($recs as $rec) {
@@ -424,7 +424,7 @@ if($edit_date){
   <? if($realCnt > $limit) { ?>
     <tr>
       <td style="padding: 0 19px 19px">
-        <a class="blue" href='<?=$rpath?>all/?mode=3'><b>Все (<?=$realCnt?>)</b></a>
+        <a class="blue" href='<?=$rpath?>all/?mode=3'><b>Р’СЃРµ (<?=$realCnt?>)</b></a>
       </td>
     </tr>
   <? } ?>
@@ -443,7 +443,7 @@ if($edit_date){
 <table width="100%" cellspacing="0" cellpadding="0" class="b-information-clause-title" >
 <tr>
   <td  style="width:19px; height:20px" class="brdtop">&nbsp;</td>
-  <td class="brdtop">Создал сообщества (<?=$commCnt?>)</td>
+  <td class="brdtop">РЎРѕР·РґР°Р» СЃРѕРѕР±С‰РµСЃС‚РІР° (<?=$commCnt?>)</td>
   <td  style="width:19px; height:20px" class="brdtop">&nbsp;</td>
 </tr>
 </table>
@@ -457,12 +457,12 @@ if($edit_date){
         <? foreach($communes as $comm) {
               
              $i++;
-             // Название.
+             // РќР°Р·РІР°РЅРёРµ.
              $name = "<a href='".getFriendlyURL("commune_commune", $comm['id'])."' class='blue' style='font-size:20px'>".reformat($comm['name'], 25, 1)."</a>";
              $descr = reformat($comm['descr'], 25, 1);
-             // Сколько участников.
+             // РЎРєРѕР»СЊРєРѕ СѓС‡Р°СЃС‚РЅРёРєРѕРІ.
              $mAcceptedCnt = $comm['a_count'] - $comm['w_count'] + 1;
-             $mCnt = $mAcceptedCnt.' участник'.getSymbolicName($mAcceptedCnt, 'man');
+             $mCnt = $mAcceptedCnt.' СѓС‡Р°СЃС‚РЅРёРє'.getSymbolicName($mAcceptedCnt, 'man');
         ?>
         
         <!-- NEW -->
@@ -558,7 +558,7 @@ if($edit_date){
 <table width="100%"  cellspacing="0" cellpadding="0" class="b-information-clause-title" >
 <tr>
   <td  style="width:19px; height:20px" class="brdtop">&nbsp;</td>
-  <td class="brdtop">Состоит в сообществах (<?=$commCnt?>)</td>
+  <td class="brdtop">РЎРѕСЃС‚РѕРёС‚ РІ СЃРѕРѕР±С‰РµСЃС‚РІР°С… (<?=$commCnt?>)</td>
   <td  style="width:19px; height:20px" class="brdtop">&nbsp;</td>
 </tr>
 </table>
@@ -572,12 +572,12 @@ if($edit_date){
         <? foreach($communes as $comm) {
               
              $i++;
-             // Название.
+             // РќР°Р·РІР°РЅРёРµ.
              $name = "<a href='".getFriendlyURL("commune_commune", $comm['id'])."' class='blue' style='font-size:20px'>".reformat($comm['name'], 25, 1)."</a>";
              $descr = reformat($comm['descr'], 25, 1);
-             // Сколько участников.
+             // РЎРєРѕР»СЊРєРѕ СѓС‡Р°СЃС‚РЅРёРєРѕРІ.
              $mAcceptedCnt = $comm['a_count'] - $comm['w_count'] + 1;
-             $mCnt = $mAcceptedCnt.' участник'.getSymbolicName($mAcceptedCnt, 'man');
+             $mCnt = $mAcceptedCnt.' СѓС‡Р°СЃС‚РЅРёРє'.getSymbolicName($mAcceptedCnt, 'man');
         ?>
         
         

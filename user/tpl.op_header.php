@@ -7,5 +7,5 @@
             </ul>
         </div>
     </div>
-    <h2 class="b-layout__title b-layout__title_padtop_10 b-layout__title_padleft_15"><?= $opCount . ending($opCount, ' îòçûâ', ' îòçûâà', ' îòçûâîâ') . ' ' . mb_strtolower($author_filter_string) . ' ' . mb_strtolower($filter_string) ?></h2>
+    <h2 class="b-layout__title b-layout__title_padtop_10 b-layout__title_padleft_15"><?= $opCount . ending($opCount, ' Ð¾Ñ‚Ð·Ñ‹Ð²', ' Ð¾Ñ‚Ð·Ñ‹Ð²Ð°', ' Ð¾Ñ‚Ð·Ñ‹Ð²Ð¾Ð²') . ' ' . mb_strtolower($author_filter_string) . ' ' . mb_strtolower($filter_string) ?></h2>
 <? } ?>

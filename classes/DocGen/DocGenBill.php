@@ -10,12 +10,12 @@ class DocGenBill extends DocGen
     const TEMPLATE_PATH             = '/templates/bill/docs/';
     
     const BANK_INVOICE              = 'bank_invoice.odt';
-    const BANK_INVOICE_TEXT         = 'Счет %s';
+    const BANK_INVOICE_TEXT         = 'РЎС‡РµС‚ %s';
     const BANK_INVOICE_TYPE         = 1;
     
     
     const BILL_FACTURA              = 'factura.xls';
-    const BILL_FACTURA_TEXT         = 'Счет-фактура СФ-%s';
+    const BILL_FACTURA_TEXT         = 'РЎС‡РµС‚-С„Р°РєС‚СѓСЂР° РЎР¤-%s';
     const BILL_FACTURA_TYPE         = 2;
 
     const BANK_INVOICE_TABLE        = 'bill_invoices';
@@ -97,7 +97,7 @@ class DocGenBill extends DocGen
     
     
     /**
-     * Генерация счет-фактуры
+     * Р“РµРЅРµСЂР°С†РёСЏ СЃС‡РµС‚-С„Р°РєС‚СѓСЂС‹
      * 
      * @return type
      */

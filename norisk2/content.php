@@ -3,7 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/sbr.common.php");
 $xajax->printJavascript('/xajax/');
 ?>
 <a name="page"></a>
-<h2>Проекты по &laquo;Безопасной Сделке&raquo;</h2>
+<h2>РџСЂРѕРµРєС‚С‹ РїРѕ &laquo;Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµ&raquo;</h2>
 <div class="norisk">
 <?
 include($fpath.'header.php');
@@ -12,12 +12,12 @@ include($fpath.'header.php');
 <!--
 <div class="tabs">
     <ul class="clear">
-        <li class="tab1 <?=($site != 'completed' && $site != 'drafts' && $site != 'calc' ? ' active' : '')?>"><span><a href=".">Текущие СБР</a></span></li>
-        <li class="tab2 <?= $site == 'calc' ? 'active' : '' ?>"><span><a href="?site=calc" >Калькулятор СБР</a></span></li>
+        <li class="tab1 <?=($site != 'completed' && $site != 'drafts' && $site != 'calc' ? ' active' : '')?>"><span><a href=".">РўРµРєСѓС‰РёРµ РЎР‘Р </a></span></li>
+        <li class="tab2 <?= $site == 'calc' ? 'active' : '' ?>"><span><a href="?site=calc" >РљР°Р»СЊРєСѓР»СЏС‚РѕСЂ РЎР‘Р </a></span></li>
         <? if($sbr->isEmp()) { ?>
-            <?/* <li class="tab2 <?=($site == 'old' ? ' active' : '')?>"><span><a href="/norisk/">Старые СБР</a></span></li> */?>
+            <?/* <li class="tab2 <?=($site == 'old' ? ' active' : '')?>"><span><a href="/norisk/">РЎС‚Р°СЂС‹Рµ РЎР‘Р </a></span></li> */?>
             <? if($sbr->draftExists()) { ?>
-              <li class="tab3 <?=($site == 'drafts' ? ' active' : '')?>"><span><a href="?site=drafts" class="lnk-drafts">Черновики</a></span></li>
+              <li class="tab3 <?=($site == 'drafts' ? ' active' : '')?>"><span><a href="?site=drafts" class="lnk-drafts">Р§РµСЂРЅРѕРІРёРєРё</a></span></li>
             <? } ?>
         <? } ?>
     </ul>
@@ -27,23 +27,23 @@ include($fpath.'header.php');
     <ul class="b-menu__list b-menu__list_padleft_15">
         <li class="b-menu__item <?=($site != 'completed' && $site != 'drafts' && $site != 'calc' ? 'b-menu__item_active' : '')?>">
 						<?php if (!($site != 'completed' && $site != 'drafts' && $site != 'calc')) { ?>
-							<a class="b-menu__link" href="." title="Текущие «Безопасные Сделки»">
+							<a class="b-menu__link" href="." title="РўРµРєСѓС‰РёРµ В«Р‘РµР·РѕРїР°СЃРЅС‹Рµ РЎРґРµР»РєРёВ»">
 						<?php } else print '<span class="b-menu__b2">'?>
-								<span class="b-menu__b1">Текущие «Безопасные Сделки»</span>
+								<span class="b-menu__b1">РўРµРєСѓС‰РёРµ В«Р‘РµР·РѕРїР°СЃРЅС‹Рµ РЎРґРµР»РєРёВ»</span>
 						<?php if (!($site != 'completed' && $site != 'drafts' && $site != 'calc')) { ?>
 							</a>
 						<?php } else print '</span>' ?>
 				</li>
         <? if($sbr->isEmp()) { ?>
             <? if($sbr->draftExists()) { ?>
-        		<li class="b-menu__item <?= $site == 'drafts' ? 'b-menu__item_active' : '' ?>"><a class="b-menu__link" href="?site=drafts" title="Черновики"><span class="b-menu__b1">Черновики</span></a></li>
+        		<li class="b-menu__item <?= $site == 'drafts' ? 'b-menu__item_active' : '' ?>"><a class="b-menu__link" href="?site=drafts" title="Р§РµСЂРЅРѕРІРёРєРё"><span class="b-menu__b1">Р§РµСЂРЅРѕРІРёРєРё</span></a></li>
             <? } ?>
         <? } ?>
         <li class="b-menu__item b-menu__item_last <?= $site == 'calc' ? 'b-menu__item_active' : '' ?>">
 						<?php if ( $site != 'calc') { ?>
-						<a class="b-menu__link" href="/bezopasnaya-sdelka/?site=calc" title="Калькулятор «Безопасной Сделки»">
+						<a class="b-menu__link" href="/bezopasnaya-sdelka/?site=calc" title="РљР°Р»СЊРєСѓР»СЏС‚РѕСЂ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ»">
 						<?php } else print '<span class="b-menu__b2">'?>
-								<span class="b-menu__b1">Калькулятор «Безопасной Сделки»</span>
+								<span class="b-menu__b1">РљР°Р»СЊРєСѓР»СЏС‚РѕСЂ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ»</span>
 						<?php if ( $site != 'calc') { ?>
 						</a>
 						<?php } else print '</span>' ?>

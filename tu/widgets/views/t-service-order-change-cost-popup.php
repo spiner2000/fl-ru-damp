@@ -1,7 +1,7 @@
 <?php
 
 /**
-* Шаблон окошка редактирования бюджета и сроков заказа ТУ
+* РЁР°Р±Р»РѕРЅ РѕРєРѕС€РєР° СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ Р±СЋРґР¶РµС‚Р° Рё СЃСЂРѕРєРѕРІ Р·Р°РєР°Р·Р° РўРЈ
 */
 
 $title = reformat(htmlspecialchars($order['title']), 30, 0, 1);
@@ -9,14 +9,14 @@ $title = reformat(htmlspecialchars($order['title']), 30, 0, 1);
 ?>
 <div id="tu_edit_budjet" class="b-shadow b-shadow_hide b-shadow_pad_20 b-shadow_center b-shadow_width_320 b-shadow_zindex_4">
     <h2 class="b-layout__txt b-layout__txt_fontsize_18">
-        Редактирование бюджетов и сроков
+        Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±СЋРґР¶РµС‚РѕРІ Рё СЃСЂРѕРєРѕРІ
     </h2>
-    <div class="b-layout__txt b-layout__txt_padbot_10">Заказ "<span class="b-layout__bold"><?= $title ?></span>"</div>
+    <div class="b-layout__txt b-layout__txt_padbot_10">Р—Р°РєР°Р· "<span class="b-layout__bold"><?= $title ?></span>"</div>
     <table class="b-layout__table b-layout__table_width_full">
         <tr class="b-layout__tr">
             <td class="b-layout__td b-layout__td_width_70 b-layout__td_padbot_10">
                 <div class="b-layout__txt b-layout__txt_padtop_5">
-                    Бюджет
+                    Р‘СЋРґР¶РµС‚
                 </div>
             </td>
             <td class="b-layout__td b-layout__td_width_100 b-layout__td_padbot_10">
@@ -28,14 +28,14 @@ $title = reformat(htmlspecialchars($order['title']), 30, 0, 1);
             </td>
             <td class="b-layout__td b-layout__td_padbot_10 b-layout__td_padleft_10">
                 <div class="b-layout__txt b-layout__txt_padtop_5">
-                    рублей
+                    СЂСѓР±Р»РµР№
                 </div>
             </td>
         </tr>
         <tr class="b-layout__tr">
             <td class="b-layout__td b-layout__td_width_70 b-layout__td_padbot_10">
                 <div class="b-layout__txt b-layout__txt_padtop_5">
-                    Срок
+                    РЎСЂРѕРє
                 </div>
             </td>
             <td class="b-layout__td b-layout__td_width_100 b-layout__td_padbot_10">
@@ -47,14 +47,14 @@ $title = reformat(htmlspecialchars($order['title']), 30, 0, 1);
             </td>
             <td class="b-layout__td b-layout__td_padbot_10 b-layout__td_padleft_10">
                 <div class="b-layout__txt b-layout__txt_padtop_5">
-                    дней
+                    РґРЅРµР№
                 </div>
             </td>
         </tr>
     </table>
-    <div class="b-layout__txt b-layout__txt_fontsize_11">Минимальный бюджет заказа &mdash; 300 рублей.<br>Минимальный срок выполнения &mdash; 1 день.</div>
+    <div class="b-layout__txt b-layout__txt_fontsize_11">РњРёРЅРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ Р·Р°РєР°Р·Р° &mdash; 300 СЂСѓР±Р»РµР№.<br>РњРёРЅРёРјР°Р»СЊРЅС‹Р№ СЃСЂРѕРє РІС‹РїРѕР»РЅРµРЅРёСЏ &mdash; 1 РґРµРЅСЊ.</div>
     <div class="b-buttons b-buttons_padtop_10">
-        <a class="b-button b-button_flat b-button_flat_green " onclick="yaCounter6051055.reachGoal('zakaz_change_ok');TServices_Order.changePriceAndDays(<?= $order['id'] ?>);" href="javascript:void(0);">Сохранить</a>
-        &#160;&#160;<span class="b-buttons__txt">или <a data-popup-ok="true" class="b-layout__link b-layout__link_bordbot_dot_ee1d16" href="javascript:void(0);">закрыть без изменений</a></span>
+        <a class="b-button b-button_flat b-button_flat_green " onclick="yaCounter6051055.reachGoal('zakaz_change_ok');TServices_Order.changePriceAndDays(<?= $order['id'] ?>);" href="javascript:void(0);">РЎРѕС…СЂР°РЅРёС‚СЊ</a>
+        &#160;&#160;<span class="b-buttons__txt">РёР»Рё <a data-popup-ok="true" class="b-layout__link b-layout__link_bordbot_dot_ee1d16" href="javascript:void(0);">Р·Р°РєСЂС‹С‚СЊ Р±РµР· РёР·РјРµРЅРµРЅРёР№</a></span>
     </div>
 </div>

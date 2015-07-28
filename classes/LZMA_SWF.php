@@ -10,13 +10,13 @@ if(!defined('LZMA_EXEC')) {
     define("LZMA_EXEC", "lzma -d -f -c -S .lz");
 }
 /**
- * Класс для работы в SWF которые запакованы через 7z алгоритмом LZMA, 
- * в таком случае getimagesize -- не может разобрать исходный файл
- * Это костыль что бы разобрать файл
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ РІ SWF РєРѕС‚РѕСЂС‹Рµ Р·Р°РїР°РєРѕРІР°РЅС‹ С‡РµСЂРµР· 7z Р°Р»РіРѕСЂРёС‚РјРѕРј LZMA, 
+ * РІ С‚Р°РєРѕРј СЃР»СѓС‡Р°Рµ getimagesize -- РЅРµ РјРѕР¶РµС‚ СЂР°Р·РѕР±СЂР°С‚СЊ РёСЃС…РѕРґРЅС‹Р№ С„Р°Р№Р»
+ * Р­С‚Рѕ РєРѕСЃС‚С‹Р»СЊ С‡С‚Рѕ Р±С‹ СЂР°Р·РѕР±СЂР°С‚СЊ С„Р°Р№Р»
  * 
- * Для работы класса требуется библиотека LZMA SDK v 9.*
+ * Р”Р»СЏ СЂР°Р±РѕС‚С‹ РєР»Р°СЃСЃР° С‚СЂРµР±СѓРµС‚СЃСЏ Р±РёР±Р»РёРѕС‚РµРєР° LZMA SDK v 9.*
  * 
- * Ниже пример заголовка файла SWF запакованного 7x
+ * РќРёР¶Рµ РїСЂРёРјРµСЂ Р·Р°РіРѕР»РѕРІРєР° С„Р°Р№Р»Р° SWF Р·Р°РїР°РєРѕРІР°РЅРЅРѕРіРѕ 7x
  * A LZMA compressed SWF looks like this (example):
  *
  * 0000 5A 57 53 0F   // ZWS + Version 15
@@ -36,43 +36,43 @@ class LZMA_SWF
 {
     
     /**
-     * Размер несжатых данных
+     * Р Р°Р·РјРµСЂ РЅРµСЃР¶Р°С‚С‹С… РґР°РЅРЅС‹С…
      * 
      * @var integer
      */
     public $uncompress_length;
     
     /**
-     * Файлы которые необходимо почистить после работы скрипта
+     * Р¤Р°Р№Р»С‹ РєРѕС‚РѕСЂС‹Рµ РЅРµРѕР±С…РѕРґРёРјРѕ РїРѕС‡РёСЃС‚РёС‚СЊ РїРѕСЃР»Рµ СЂР°Р±РѕС‚С‹ СЃРєСЂРёРїС‚Р°
      * 
      * @var array
      */
     public $clear_files = array();
     
     /**
-     * Путь главного файла который разбираем
+     * РџСѓС‚СЊ РіР»Р°РІРЅРѕРіРѕ С„Р°Р№Р»Р° РєРѕС‚РѕСЂС‹Р№ СЂР°Р·Р±РёСЂР°РµРј
      * 
      * @var string
      */
     public $filename    = '';
     
     /**
-     * Текущий путь файла этапа работы скрипта
+     * РўРµРєСѓС‰РёР№ РїСѓС‚СЊ С„Р°Р№Р»Р° СЌС‚Р°РїР° СЂР°Р±РѕС‚С‹ СЃРєСЂРёРїС‚Р°
      * @var string 
      */
     public $curr_file   = '';
     
     /**
-     * Версия flash
+     * Р’РµСЂСЃРёСЏ flash
      * 
      * @var integer
      */
     public $version     = 0x0F;
     
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      * 
-     * @param string $filename Путь к файлу
+     * @param string $filename РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ
      */
     public function __construct($filename) {
         $this->filename = $filename;
@@ -80,20 +80,20 @@ class LZMA_SWF
     }
     
     /**
-     * Проверяем зависимости скрипта ( зависит от пакета LZMA SDK ) если он не установлен в системе скрипт не будет работать
+     * РџСЂРѕРІРµСЂСЏРµРј Р·Р°РІРёСЃРёРјРѕСЃС‚Рё СЃРєСЂРёРїС‚Р° ( Р·Р°РІРёСЃРёС‚ РѕС‚ РїР°РєРµС‚Р° LZMA SDK ) РµСЃР»Рё РѕРЅ РЅРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅ РІ СЃРёСЃС‚РµРјРµ СЃРєСЂРёРїС‚ РЅРµ Р±СѓРґРµС‚ СЂР°Р±РѕС‚Р°С‚СЊ
      * 
-     * @return boolean true - если все ок
+     * @return boolean true - РµСЃР»Рё РІСЃРµ РѕРє
      */
     public function isRequirement() {
         return ( strpos(shell_exec("lzma -V"), 'command not found') === false );
     }
     
     /**
-     * Переводим размер в байты
+     * РџРµСЂРµРІРѕРґРёРј СЂР°Р·РјРµСЂ РІ Р±Р°Р№С‚С‹
      * 
-     * @param integer $size    Размер     
-     * @param integer $length  Количество ячеек памяти
-     * @return array (1 элемент массива ячейка памяти)
+     * @param integer $size    Р Р°Р·РјРµСЂ     
+     * @param integer $length  РљРѕР»РёС‡РµСЃС‚РІРѕ СЏС‡РµРµРє РїР°РјСЏС‚Рё
+     * @return array (1 СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР° СЏС‡РµР№РєР° РїР°РјСЏС‚Рё)
      */
     public function getByteForSize($size, $length = 4) {
        $bytes = array();
@@ -104,11 +104,11 @@ class LZMA_SWF
     }
     
     /**
-     * Переводим байты в размер
+     * РџРµСЂРµРІРѕРґРёРј Р±Р°Р№С‚С‹ РІ СЂР°Р·РјРµСЂ
      * 
-     * @param array   $byte    байты
-     * @param integer $offset   С какой ячейки памяти читать
-     * @param integer $length   Количество ячеек памяти
+     * @param array   $byte    Р±Р°Р№С‚С‹
+     * @param integer $offset   РЎ РєР°РєРѕР№ СЏС‡РµР№РєРё РїР°РјСЏС‚Рё С‡РёС‚Р°С‚СЊ
+     * @param integer $length   РљРѕР»РёС‡РµСЃС‚РІРѕ СЏС‡РµРµРє РїР°РјСЏС‚Рё
      * @return integer
      */
     public function getSizeForByte($byte, $offset=0, $length=4) {
@@ -120,16 +120,16 @@ class LZMA_SWF
     }
     
     /**
-     * Записываем файл на удаление
+     * Р—Р°РїРёСЃС‹РІР°РµРј С„Р°Р№Р» РЅР° СѓРґР°Р»РµРЅРёРµ
      * 
-     * @param string $file  Путь файла
+     * @param string $file  РџСѓС‚СЊ С„Р°Р№Р»Р°
      */
     public function setClear($file) {
         $this->clear_files[basename($file)] = $file;
     }
     
     /**
-     * Очищаем временные файлы созданные скриптом
+     * РћС‡РёС‰Р°РµРј РІСЂРµРјРµРЅРЅС‹Рµ С„Р°Р№Р»С‹ СЃРѕР·РґР°РЅРЅС‹Рµ СЃРєСЂРёРїС‚РѕРј
      */
     public function clearTmpFiles() {
         foreach($this->clear_files as $files) {
@@ -138,7 +138,7 @@ class LZMA_SWF
     }
     
     /**
-     * Получаем информацию по SWF
+     * РџРѕР»СѓС‡Р°РµРј РёРЅС„РѕСЂРјР°С†РёСЋ РїРѕ SWF
      */
     public function getInformationSWF() {
         if($this->isRequirement()) {
@@ -157,7 +157,7 @@ class LZMA_SWF
     }
     
     /**
-     * Проверяем файл SWF сжат он через 7z или нет
+     * РџСЂРѕРІРµСЂСЏРµРј С„Р°Р№Р» SWF СЃР¶Р°С‚ РѕРЅ С‡РµСЂРµР· 7z РёР»Рё РЅРµС‚
      * 
      * @param string $filename
      * @return boolean
@@ -170,7 +170,7 @@ class LZMA_SWF
         }
         $fp = fopen($filename, 'rb');
         $pack = "";
-        // Читаем первые 3 байта смотрит точно это ZWS или нет
+        // Р§РёС‚Р°РµРј РїРµСЂРІС‹Рµ 3 Р±Р°Р№С‚Р° СЃРјРѕС‚СЂРёС‚ С‚РѕС‡РЅРѕ СЌС‚Рѕ ZWS РёР»Рё РЅРµС‚
         for($i=0;$i<3;$i++) {
             $pack .= fread($fp, 1);
         }
@@ -179,8 +179,8 @@ class LZMA_SWF
     }
     
     /**
-     * Переводим все байты в символы
-     * @param array $bytes  байты
+     * РџРµСЂРµРІРѕРґРёРј РІСЃРµ Р±Р°Р№С‚С‹ РІ СЃРёРјРІРѕР»С‹
+     * @param array $bytes  Р±Р°Р№С‚С‹
      * @return type
      */
     public function byte2Char($bytes) {
@@ -189,9 +189,9 @@ class LZMA_SWF
     }
     
     /**
-     * Получаем корректный заголовок файла LZMA
+     * РџРѕР»СѓС‡Р°РµРј РєРѕСЂСЂРµРєС‚РЅС‹Р№ Р·Р°РіРѕР»РѕРІРѕРє С„Р°Р№Р»Р° LZMA
      * 
-     * @param array $SWFheader  байты заголовка SWF сжатого через 7z
+     * @param array $SWFheader  Р±Р°Р№С‚С‹ Р·Р°РіРѕР»РѕРІРєР° SWF СЃР¶Р°С‚РѕРіРѕ С‡РµСЂРµР· 7z
      * 
      * @return int
      * @throws Exception
@@ -216,9 +216,9 @@ class LZMA_SWF
     }
     
     /**
-     * Получаем заголовок файла несжатого SWF
+     * РџРѕР»СѓС‡Р°РµРј Р·Р°РіРѕР»РѕРІРѕРє С„Р°Р№Р»Р° РЅРµСЃР¶Р°С‚РѕРіРѕ SWF
      * 
-     * @param integer $size Размер несжатого SWF
+     * @param integer $size Р Р°Р·РјРµСЂ РЅРµСЃР¶Р°С‚РѕРіРѕ SWF
      * @return array
      */
     public function getHeaderFWS($size) {
@@ -232,7 +232,7 @@ class LZMA_SWF
     }
     
     /**
-     * Получаем байты в массив
+     * РџРѕР»СѓС‡Р°РµРј Р±Р°Р№С‚С‹ РІ РјР°СЃСЃРёРІ
      * 
      * @param string $filename
      * @return type
@@ -240,10 +240,10 @@ class LZMA_SWF
      */
     
     /**
-     * Получаем байты в массив
+     * РџРѕР»СѓС‡Р°РµРј Р±Р°Р№С‚С‹ РІ РјР°СЃСЃРёРІ
      * 
-     * @param string  $filename     Путь к файлу
-     * @param boolean $header       Взять только заголовок файла
+     * @param string  $filename     РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ
+     * @param boolean $header       Р’Р·СЏС‚СЊ С‚РѕР»СЊРєРѕ Р·Р°РіРѕР»РѕРІРѕРє С„Р°Р№Р»Р°
      * @return array
      * @throws Exception
      */
@@ -251,7 +251,7 @@ class LZMA_SWF
         if(!file_exists($filename)) {
             throw new Exception("{$filename} does not exists");
         }
-        if($header) { // Взять только шапку
+        if($header) { // Р’Р·СЏС‚СЊ С‚РѕР»СЊРєРѕ С€Р°РїРєСѓ
             $fp = fopen($filename, 'rb');
             $content_swf = fread($fp, 17);
             fclose($fp);
@@ -267,10 +267,10 @@ class LZMA_SWF
     }
     
     /**
-     * Текущий файл с которым работаем
+     * РўРµРєСѓС‰РёР№ С„Р°Р№Р» СЃ РєРѕС‚РѕСЂС‹Рј СЂР°Р±РѕС‚Р°РµРј
      * 
-     * @param string $filename  Путь к файлу 
-     * @param string $ext       Расширение файла
+     * @param string $filename  РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ 
+     * @param string $ext       Р Р°СЃС€РёСЂРµРЅРёРµ С„Р°Р№Р»Р°
      * @return string
      */
     public function getCurrentFileName($filename = null, $ext = "txt") {
@@ -282,9 +282,9 @@ class LZMA_SWF
     }
     
     /**
-     * Меняем заголовок файла упакованного в 7z
+     * РњРµРЅСЏРµРј Р·Р°РіРѕР»РѕРІРѕРє С„Р°Р№Р»Р° СѓРїР°РєРѕРІР°РЅРЅРѕРіРѕ РІ 7z
      * 
-     * @param string $filename  Путь к файлу 
+     * @param string $filename  РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ 
      * @return \LZMA_SWF
      */
     public function replaceHeaderSWF($filename) {
@@ -294,7 +294,7 @@ class LZMA_SWF
         $LZMAHeaderChar = self::byte2Char(self::getHeaderLZMA(self::getFileByteSWF($filename)));
         
         $fp = fopen($filename, 'rb');
-        // Удаляем первые 17 байт
+        // РЈРґР°Р»СЏРµРј РїРµСЂРІС‹Рµ 17 Р±Р°Р№С‚
         $delete = fread($fp, 17); 
 
         $contents = $LZMAHeaderChar;
@@ -307,9 +307,9 @@ class LZMA_SWF
     }
     
     /**
-     * Декомпрессим файл
+     * Р”РµРєРѕРјРїСЂРµСЃСЃРёРј С„Р°Р№Р»
      * 
-     * @param string $filename  Путь к файлу 
+     * @param string $filename  РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ 
      * @return \LZMA_SWF
      * @throws Exception
      */
@@ -322,9 +322,9 @@ class LZMA_SWF
     }
     
     /**
-     * Добавляем корректный заголовок для несжатого SWF
+     * Р”РѕР±Р°РІР»СЏРµРј РєРѕСЂСЂРµРєС‚РЅС‹Р№ Р·Р°РіРѕР»РѕРІРѕРє РґР»СЏ РЅРµСЃР¶Р°С‚РѕРіРѕ SWF
      * 
-     * @param string $filename  Путь к файлу 
+     * @param string $filename  РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ 
      * @return \LZMA_SWF
      * @throws Exception
      */
@@ -340,9 +340,9 @@ class LZMA_SWF
     }
     
     /**
-     * Берем инфу у обрабтанного файла SWF 
+     * Р‘РµСЂРµРј РёРЅС„Сѓ Сѓ РѕР±СЂР°Р±С‚Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р° SWF 
      * 
-     * @param string $filename  Путь к файлу 
+     * @param string $filename  РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ 
      * @return \LZMA_SWF
      */
     public function getInfoSWF($filename) {
@@ -351,8 +351,8 @@ class LZMA_SWF
     }
     
     /**
-     * Выдаем папку для махинаций с временными файлами,
-     * если ее нет создаем
+     * Р’С‹РґР°РµРј РїР°РїРєСѓ РґР»СЏ РјР°С…РёРЅР°С†РёР№ СЃ РІСЂРµРјРµРЅРЅС‹РјРё С„Р°Р№Р»Р°РјРё,
+     * РµСЃР»Рё РµРµ РЅРµС‚ СЃРѕР·РґР°РµРј
      * 
      * @return string
      */

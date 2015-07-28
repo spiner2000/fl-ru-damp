@@ -7,7 +7,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/tu/models/TServiceOrderModel.php');
 
 $user_link = "/users/{$_SESSION['login']}";
 
-$anti_login = ($_SESSION['anti_uid']) ? $_SESSION['anti_login'] : 'Логин';
+$anti_login = ($_SESSION['anti_uid']) ? $_SESSION['anti_login'] : 'Р›РѕРіРёРЅ';
 
 $projects_active = $grey_main && $kind != 8 && $kind != 2 && $kind != 4;
 $konkurs_active = $grey_main && $kind == 2;
@@ -15,10 +15,10 @@ $vacancy_active = $grey_main && $kind == 4;
 $grey_catalog = isset($grey_catalog) && (@$grey_catalog == 1);
 
 
-//Уведомления ЛС
+//РЈРІРµРґРѕРјР»РµРЅРёСЏ Р›РЎ
 $tip_msg = notifications::getMessTip();
 
-//Уведомления и ссылки для групового пункта меню "Проекты и Заказы"
+//РЈРІРµРґРѕРјР»РµРЅРёСЏ Рё СЃСЃС‹Р»РєРё РґР»СЏ РіСЂСѓРїРѕРІРѕРіРѕ РїСѓРЅРєС‚Р° РјРµРЅСЋ "РџСЂРѕРµРєС‚С‹ Рё Р—Р°РєР°Р·С‹"
 /*
 if ($_SESSION['po_count'] || @$_SESSION['tu_orders']):
     $tip_group = notifications::getFrlGroupTip();
@@ -26,19 +26,19 @@ endif;
 */
 
 
-//Уведомления и ссылки для Проектов
+//РЈРІРµРґРѕРјР»РµРЅРёСЏ Рё СЃСЃС‹Р»РєРё РґР»СЏ РџСЂРѕРµРєС‚РѕРІ
 if ($_SESSION['po_count']):
     $tip_prj = notifications::getProjectsTipFrl();
 endif;
 
 
-//Уведомления и ссылки для Заказов ТУ
+//РЈРІРµРґРѕРјР»РµРЅРёСЏ Рё СЃСЃС‹Р»РєРё РґР»СЏ Р—Р°РєР°Р·РѕРІ РўРЈ
 if (@$_SESSION['tu_orders']):
     $tip_tu = notifications::getTServicesOrdersTip();
 endif;
 
 
-//Уведомления по БС
+//РЈРІРµРґРѕРјР»РµРЅРёСЏ РїРѕ Р‘РЎ
 $tip_sbr = notifications::getAllSbrTip();
 $link_sbr = '/' . sbr::NEW_TEMPLATE_SBR . '/';
 
@@ -67,62 +67,62 @@ var prj_check_delay = '<?=PRJ_CHECK_DELAY?>';
                 <section class="l-header-section l-header-first-section">
 
                     <span class="b-logo">
-                        <a href="/" class="b-logo-link" title="На главную">FL.ru</a>
+                        <a href="/" class="b-logo-link" title="РќР° РіР»Р°РІРЅСѓСЋ">FL.ru</a>
                     </span>
 
                     <ul class="b-primary-menu">
                         <li class="b-primary-menu-clause b-primary-menu-tasks-clause<?php if ($projects_active) { ?> b-primary-menu-current-clause<?php } ?>">
-                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'projects'}" href="/projects/" class="b-primary-menu-clause-link" title="Список проектов для фрилансеров">Работа</a>
+                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'projects'}" href="/projects/" class="b-primary-menu-clause-link" title="РЎРїРёСЃРѕРє РїСЂРѕРµРєС‚РѕРІ РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ">Р Р°Р±РѕС‚Р°</a>
                         </li>
                         <li class="b-primary-menu-clause b-primary-menu-employees-clause<?php if ($grey_catalog) { ?> b-primary-menu-current-clause<?php } ?>">
-                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'freelancers'}" href="/freelancers/" class="b-primary-menu-clause-link" title="Каталог фрилансеров">Фрилансеры</a>
+                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'freelancers'}" href="/freelancers/" class="b-primary-menu-clause-link" title="РљР°С‚Р°Р»РѕРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ">Р¤СЂРёР»Р°РЅСЃРµСЂС‹</a>
                         </li>
                         <li class="b-primary-menu-clause b-primary-menu-services-clause <?= isCurrentPage('tu','b-primary-menu-current-clause','',null,array(1 => 'order')) ?>">
-                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'tu'}" href="/tu/" class="b-primary-menu-clause-link" title="Каталог услуг фрилансеров">Услуги</a>
+                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'tu'}" href="/tu/" class="b-primary-menu-clause-link" title="РљР°С‚Р°Р»РѕРі СѓСЃР»СѓРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ">РЈСЃР»СѓРіРё</a>
                         </li>
                         <li class="b-primary-menu-clause b-primary-menu-competitions-clause<?php if ($konkurs_active) { ?> b-primary-menu-current-clause<?php } ?>">
-                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'konkurs'}" href="/konkurs/" class="b-primary-menu-clause-link" title="Список конкурсов для фрилансеров">Конкурсы</a>
+                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'konkurs'}" href="/konkurs/" class="b-primary-menu-clause-link" title="РЎРїРёСЃРѕРє РєРѕРЅРєСѓСЂСЃРѕРІ РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ">РљРѕРЅРєСѓСЂСЃС‹</a>
                         </li>
                         <li class="b-primary-menu-clause b-primary-menu-vacancy-clause<?php if ($vacancy_active) {?> b-primary-menu-current-clause<?php }?>">
-                           <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'vacancy'}" href="/projects/?kind=4" class="b-primary-menu-clause-link" title="Список вакансий для фрилансеров">Вакансии</a>
+                           <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'vacancy'}" href="/projects/?kind=4" class="b-primary-menu-clause-link" title="РЎРїРёСЃРѕРє РІР°РєР°РЅСЃРёР№ РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ">Р’Р°РєР°РЅСЃРёРё</a>
                         </li>
                         <li class="b-primary-menu-clause b-primary-menu-search-clause <?= isCurrentPage('search','b-primary-menu-current-clause','') ?>">
-                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'search'}" href="/search/" class="b-primary-menu-clause-link" title="Поиск по сайту">Поиск</a>
+                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'search'}" href="/search/" class="b-primary-menu-clause-link" title="РџРѕРёСЃРє РїРѕ СЃР°Р№С‚Сѓ">РџРѕРёСЃРє</a>
                         </li>
                         <li class="b-primary-menu-clause b-primary-menu-additional-clause">
                             <div class="b-dropdown b-primary-menu-dropdown" data-dropdown="true" data-dropdown-descriptor="primary-menu">
-                                <a href="#" class="b-dropdown-opener" data-dropdown-opener="true" title="Навигация">Еще</a>
+                                <a href="#" class="b-dropdown-opener" data-dropdown-opener="true" title="РќР°РІРёРіР°С†РёСЏ">Р•С‰Рµ</a>
                                 <div class="b-dropdown-concealment g-hidden" data-dropdown-concealment="true">
                                     <ul class="b-dropdown-concealment-options">
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-tasks-clause<?php if ($projects_active) { ?> b-dropdown-concealment-options-current-clause<?php } ?>">
-                                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'projects'}" href="/projects/" class="b-dropdown-concealment-options-clause-link" title="Список проектов для фрилансеров">Работа</a>
+                                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'projects'}" href="/projects/" class="b-dropdown-concealment-options-clause-link" title="РЎРїРёСЃРѕРє РїСЂРѕРµРєС‚РѕРІ РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ">Р Р°Р±РѕС‚Р°</a>
                                         </li>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-employees-clause<?php if ($grey_catalog) { ?> b-dropdown-concealment-options-current-clause<?php } ?>">
-                                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'freelancers'}" href="/freelancers/" class="b-dropdown-concealment-options-clause-link" title="Каталог фрилансеров">Фрилансеры</a>
+                                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'freelancers'}" href="/freelancers/" class="b-dropdown-concealment-options-clause-link" title="РљР°С‚Р°Р»РѕРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ">Р¤СЂРёР»Р°РЅСЃРµСЂС‹</a>
                                         </li>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-services-clause <?= isCurrentPage('tu','b-dropdown-concealment-options-current-clause','',null,array(1 => 'order')) ?>">
-                                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'tu'}" href="/tu/" class="b-dropdown-concealment-options-clause-link" title="Каталог услуг фрилансеров">Услуги</a>
+                                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'tu'}" href="/tu/" class="b-dropdown-concealment-options-clause-link" title="РљР°С‚Р°Р»РѕРі СѓСЃР»СѓРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ">РЈСЃР»СѓРіРё</a>
                                         </li>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-competitions-clause<?php if ($konkurs_active) { ?> b-dropdown-concealment-options-current-clause<?php } ?>">
-                                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'konkurs'}" href="/konkurs/" class="b-dropdown-concealment-options-clause-link" title="Список конкурсов для фрилансеров">Конкурсы</a>
+                                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'konkurs'}" href="/konkurs/" class="b-dropdown-concealment-options-clause-link" title="РЎРїРёСЃРѕРє РєРѕРЅРєСѓСЂСЃРѕРІ РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ">РљРѕРЅРєСѓСЂСЃС‹</a>
                                         </li>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-vacancy-clause<?php if ($vacancy_active) {?> b-dropdown-concealment-options-current-clause<?php }?>">
-                                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'vacancy'}" href="/projects/?kind=4" class="b-dropdown-concealment-options-clause-link" title="Список вакансий для фрилансеров">Вакансии</a>
+                                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'vacancy'}" href="/projects/?kind=4" class="b-dropdown-concealment-options-clause-link" title="РЎРїРёСЃРѕРє РІР°РєР°РЅСЃРёР№ РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ">Р’Р°РєР°РЅСЃРёРё</a>
                                         </li>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-search-clause">
-                                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'search'}" href="/search/" class="b-dropdown-concealment-options-clause-link" title="Поиск по сайту">Поиск</a>
+                                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'search'}" href="/search/" class="b-dropdown-concealment-options-clause-link" title="РџРѕРёСЃРє РїРѕ СЃР°Р№С‚Сѓ">РџРѕРёСЃРє</a>
                                         </li>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-communities-clause <?= isCurrentPage('commune','b-dropdown-concealment-options-current-clause','') ?>">
-                                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'commune'}" href="/commune/" class="b-dropdown-concealment-options-clause-link" title="Список сообществ">Сообщества</a>
+                                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'commune'}" href="/commune/" class="b-dropdown-concealment-options-clause-link" title="РЎРїРёСЃРѕРє СЃРѕРѕР±С‰РµСЃС‚РІ">РЎРѕРѕР±С‰РµСЃС‚РІР°</a>
                                         </li>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-reclam-clause">
-                                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'promo_adv'}" href="/promo/adv/" class="b-dropdown-concealment-options-clause-link" title="Реклама на сайте">Реклама на сайте</a>
+                                            <a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'promo_adv'}" href="/promo/adv/" class="b-dropdown-concealment-options-clause-link" title="Р РµРєР»Р°РјР° РЅР° СЃР°Р№С‚Рµ">Р РµРєР»Р°РјР° РЅР° СЃР°Р№С‚Рµ</a>
                                         </li>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-faq-clause">
-                                            <noindex><a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'help'}" onmouseover="UE.Popin.preload();" onclick="UE.Popin.show(); return false;" rel="nofollow" target="_blank" href="https://feedback.fl.ru/" class="b-dropdown-concealment-options-clause-link" title="Помощь">Помощь</a></noindex>
+                                            <noindex><a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'help'}" onmouseover="UE.Popin.preload();" onclick="UE.Popin.show(); return false;" rel="nofollow" target="_blank" href="https://feedback.fl.ru/" class="b-dropdown-concealment-options-clause-link" title="РџРѕРјРѕС‰СЊ">РџРѕРјРѕС‰СЊ</a></noindex>
                                         </li>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-faq-clause">
-                                           <noindex><a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'promo_mbm'}" rel="nofollow" target="_blank" href="/promo/mbm/" class="b-dropdown-concealment-options-clause-link" title="Малый бизнес Москвы">Малый бизнес Москвы</a></noindex>
+                                           <noindex><a data-ga-event="{ec: 'freelancer', ea: 'main_menu_clicked',el: 'promo_mbm'}" rel="nofollow" target="_blank" href="/promo/mbm/" class="b-dropdown-concealment-options-clause-link" title="РњР°Р»С‹Р№ Р±РёР·РЅРµСЃ РњРѕСЃРєРІС‹">РњР°Р»С‹Р№ Р±РёР·РЅРµСЃ РњРѕСЃРєРІС‹</a></noindex>
                                         </li>
                                     </ul>
                                 </div>
@@ -131,27 +131,27 @@ var prj_check_delay = '<?=PRJ_CHECK_DELAY?>';
                     </ul>
                     <ul class="b-primary-menu">
                         <li class="b-primary-menu-clause b-primary-menu-faq-clause">
-                            <noindex><a rel="nofollow" target="_blank" href="https://feedback.fl.ru/" class="b-primary-menu-clause-link" title="Помощь">Помощь</a></noindex>
+                            <noindex><a rel="nofollow" target="_blank" href="https://feedback.fl.ru/" class="b-primary-menu-clause-link" title="РџРѕРјРѕС‰СЊ">РџРѕРјРѕС‰СЊ</a></noindex>
                         </li>
                     </ul>
                     
                     
                     <?php  
-                        //Форма смены аккаунта
+                        //Р¤РѕСЂРјР° СЃРјРµРЅС‹ Р°РєРєР°СѓРЅС‚Р°
                         require_once("personal_au_form.php"); 
                     ?>
                     
                     <ul class="b-user-menu b-user-employee-menu" data-antiuser="false">
                         <li class="b-user-menu-clause b-user-menu-messages-clause <?= isCurrentPage('contacts','b-user-menu-current-clause','') ?>">
                             <a href="/contacts/" class="b-user-menu-clause-link" title="<?= $tip_msg['tip'] ?>">
-                                Сообщения
+                                РЎРѕРѕР±С‰РµРЅРёСЏ
                                 <?= view_event_count_format($tip_msg['count']) ?>
                             </a>
                         </li>
                         <?php if (isset($tip_prj)): ?>
                         <li class="b-user-menu-clause b-user-menu-tasks-clause <?= isCurrentPage('proj','b-user-menu-current-clause','') ?>">
                             <a href="<?= $tip_prj['link'] ?>" class="b-user-menu-clause-link" title="<?= $tip_prj['tip'] ?>">
-                                Проекты
+                                РџСЂРѕРµРєС‚С‹
                                 <?= view_event_count_format($tip_prj['count']) ?>
                             </a>
                         </li>
@@ -159,7 +159,7 @@ var prj_check_delay = '<?=PRJ_CHECK_DELAY?>';
                         <?php if(isset($tip_tu)): ?>
                         <li class="b-user-menu-clause b-user-menu-orders-clause <?= isCurrentPage('tu-orders','b-user-menu-current-clause','') ?> <?= isCurrentPage(array('tu','order'),'b-user-menu-current-clause','') ?>">
                             <a href="<?= $tip_tu['link'] ?>" class="b-user-menu-clause-link" title="<?= $tip_tu['tip'] ?>">
-                                Заказы
+                                Р—Р°РєР°Р·С‹
                                 <?= view_event_count_format($tip_tu['count']) ?>
                             </a>
                         </li>
@@ -167,43 +167,43 @@ var prj_check_delay = '<?=PRJ_CHECK_DELAY?>';
                         <?php /*
                         <li class="b-user-menu-clause b-user-menu-contracts-clause <?= isCurrentPage(sbr::NEW_TEMPLATE_SBR,'b-user-menu-current-clause','') ?>">
                             <a href="<?= $link_sbr ?>" class="b-user-menu-clause-link" title="<?= $tip_sbr['tip'] ?>">
-                                Сделки
+                                РЎРґРµР»РєРё
                                 <?= view_event_count_format($tip_sbr['count']) ?>
                             </a>
                         </li>
                         <li class="b-user-menu-clause b-user-menu-digest-clause <?= isCurrentPage('lenta','b-user-menu-current-clause','') ?>">
-                            <a href="/lenta/" class="b-user-menu-clause-link" title="Лента новых работ и сообществ">Лента</a>
+                            <a href="/lenta/" class="b-user-menu-clause-link" title="Р›РµРЅС‚Р° РЅРѕРІС‹С… СЂР°Р±РѕС‚ Рё СЃРѕРѕР±С‰РµСЃС‚РІ">Р›РµРЅС‚Р°</a>
                         </li>
                         */ ?>
                         <?
                         
-                        //Код ни где не участвует?
+                        //РљРѕРґ РЅРё РіРґРµ РЅРµ СѓС‡Р°СЃС‚РІСѓРµС‚?
                         
                         $freeze_info = '';
                         if ($_SESSION['freeze_from']) {
                             if ($_SESSION['is_freezed']) {
-                                $freeze_info = "После окончания заморозки PRO будет действовать до " . date('d.m.Y', strtotime($_SESSION['payed_to']));
+                                $freeze_info = "РџРѕСЃР»Рµ РѕРєРѕРЅС‡Р°РЅРёСЏ Р·Р°РјРѕСЂРѕР·РєРё PRO Р±СѓРґРµС‚ РґРµР№СЃС‚РІРѕРІР°С‚СЊ РґРѕ " . date('d.m.Y', strtotime($_SESSION['payed_to']));
                             } else {
-                                $freeze_info = "С учетом заморозки с ";
-                                $freeze_info .= date('d.m.Y', strtotime($_SESSION['freeze_from'])) . " по " . date('d.m.Y', strtotime($_SESSION['freeze_to']));
+                                $freeze_info = "РЎ СѓС‡РµС‚РѕРј Р·Р°РјРѕСЂРѕР·РєРё СЃ ";
+                                $freeze_info .= date('d.m.Y', strtotime($_SESSION['freeze_from'])) . " РїРѕ " . date('d.m.Y', strtotime($_SESSION['freeze_to']));
                             }
                         }
                         ?>
                         <?php if (isProfi()) { ?>
                             <li class="b-user-menu-clause b-user-menu-profi-clause">
-                                <a href="/profi/" class="b-user-menu-clause-link" title="Активен <?= pro_days($_SESSION['pro_last']) ?>">PROFI</a>
+                                <a href="/profi/" class="b-user-menu-clause-link" title="РђРєС‚РёРІРµРЅ <?= pro_days($_SESSION['pro_last']) ?>">PROFI</a>
                             </li>
                         <?php } elseif ($_SESSION['pro_last']) { ?>
                             <li class="b-user-menu-clause b-user-menu-pro-clause">
-                                <a href="/payed/" class="b-user-menu-clause-link" title="Активен <?= pro_days($_SESSION['pro_last']) ?>">PRO</a>
+                                <a href="/payed/" class="b-user-menu-clause-link" title="РђРєС‚РёРІРµРЅ <?= pro_days($_SESSION['pro_last']) ?>">PRO</a>
                             </li>
                         <?php } elseif ($_SESSION['is_freezed']) { ?>
                             <li class="b-user-menu-clause b-user-menu-pro-clause b-user-menu-frozen-pro-clause">
-                                <a href="/payed/" class="b-user-menu-clause-link" title="<?= pro_days($_SESSION['freeze_to'], 'по') ?>">PRO</a>
+                                <a href="/payed/" class="b-user-menu-clause-link" title="<?= pro_days($_SESSION['freeze_to'], 'РїРѕ') ?>">PRO</a>
                             </li>
                         <?php } else { ?>
                             <li class="b-user-menu-clause b-user-menu-pro-clause b-user-menu-completed-pro-clause">
-                                <a href="/payed/" class="b-user-menu-clause-link" title="Купить аккаунт ПРО">PRO</a>
+                                <a href="/payed/" class="b-user-menu-clause-link" title="РљСѓРїРёС‚СЊ Р°РєРєР°СѓРЅС‚ РџР Рћ">PRO</a>
                             </li>
                         <?php } ?>
 
@@ -217,78 +217,78 @@ var prj_check_delay = '<?=PRJ_CHECK_DELAY?>';
                                 <div class="b-dropdown-concealment g-hidden" data-dropdown-concealment="true">
                                     <ul class="b-dropdown-concealment-options">
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-profile-clause">
-                                            <a title="Профиль" class="b-dropdown-concealment-options-clause-link" href="<?= $user_link?>">Профиль</a>
+                                            <a title="РџСЂРѕС„РёР»СЊ" class="b-dropdown-concealment-options-clause-link" href="<?= $user_link?>">РџСЂРѕС„РёР»СЊ</a>
                                         </li>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-messages-clause">
-                                            <a href="/contacts/" class="b-dropdown-concealment-options-clause-link" title="<?= $tip_msg['tip'] ?>">Сообщения</a>
+                                            <a href="/contacts/" class="b-dropdown-concealment-options-clause-link" title="<?= $tip_msg['tip'] ?>">РЎРѕРѕР±С‰РµРЅРёСЏ</a>
                                         </li>
                                         <?
                                         if (isset($tip_prj)):
                                         ?>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-tasks-clause">
                                             <a href="<?= $tip_prj['link'] ?>" class="b-dropdown-concealment-options-clause-link" title="<?= $tip_prj['tip'] ?>">
-                                                Проекты
+                                                РџСЂРѕРµРєС‚С‹
                                             </a>
                                         </li>
                                         <?php endif; ?>
                                         <?php if(isset($tip_tu)): ?>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-orders-clause">
                                             <a href="<?= $tip_tu['link'] ?>" class="b-dropdown-concealment-options-clause-link" title="<?= $tip_tu['tip'] ?>">
-                                                Заказы
+                                                Р—Р°РєР°Р·С‹
                                             </a>
                                         </li>
                                         <?php endif; ?>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-contracts-clause">
-                                            <a href="<?= $link_sbr ?>" class="b-dropdown-concealment-options-clause-link" title="<?= $tip_sbr['tip'] ?>">Сделки</a>
+                                            <a href="<?= $link_sbr ?>" class="b-dropdown-concealment-options-clause-link" title="<?= $tip_sbr['tip'] ?>">РЎРґРµР»РєРё</a>
                                         </li>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-digest-clause">
-                                            <a href="/lenta/" class="b-dropdown-concealment-options-clause-link" title="Лента новых работ и сообществ">Лента</a>
+                                            <a href="/lenta/" class="b-dropdown-concealment-options-clause-link" title="Р›РµРЅС‚Р° РЅРѕРІС‹С… СЂР°Р±РѕС‚ Рё СЃРѕРѕР±С‰РµСЃС‚РІ">Р›РµРЅС‚Р°</a>
                                         </li>
                                         <? if ($_SESSION['pro_last']) { ?>
                                             <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-pro-clause">
-                                                <a href="/payed/" class="b-dropdown-concealment-options-clause-link" title="Активен <?= pro_days($_SESSION['pro_last']) ?>">PRO-аккаунт</a>
+                                                <a href="/payed/" class="b-dropdown-concealment-options-clause-link" title="РђРєС‚РёРІРµРЅ <?= pro_days($_SESSION['pro_last']) ?>">PRO-Р°РєРєР°СѓРЅС‚</a>
                                             </li>
                                         <? } elseif ($_SESSION['is_freezed']) { ?>
                                             <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-pro-clause">
-                                                <a href="/payed/" class="b-dropdown-concealment-options-clause-link" title="<?= pro_days($_SESSION['freeze_to'], 'по') ?>">PRO-аккаунт</a>
+                                                <a href="/payed/" class="b-dropdown-concealment-options-clause-link" title="<?= pro_days($_SESSION['freeze_to'], 'РїРѕ') ?>">PRO-Р°РєРєР°СѓРЅС‚</a>
                                             </li>
                                         <? } else { ?>
                                             <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-pro-clause">
-                                                <a href="/payed/" class="b-dropdown-concealment-options-clause-link" title="Купить аккаунт ПРО">PRO-аккаунт</a>
+                                                <a href="/payed/" class="b-dropdown-concealment-options-clause-link" title="РљСѓРїРёС‚СЊ Р°РєРєР°СѓРЅС‚ РџР Рћ">PRO-Р°РєРєР°СѓРЅС‚</a>
                                             </li>
                                         <? } ?>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-statistics-clause">
-                                            <a href="/promotion/" class="b-dropdown-concealment-options-clause-link" title="Статистика аккаунта">Статистика</a>
+                                            <a href="/promotion/" class="b-dropdown-concealment-options-clause-link" title="РЎС‚Р°С‚РёСЃС‚РёРєР° Р°РєРєР°СѓРЅС‚Р°">РЎС‚Р°С‚РёСЃС‚РёРєР°</a>
                                         </li>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-wallet-clause">
                                             <a href="/bill/history/?period=3" class="b-dropdown-concealment-options-clause-link" title="<?= $account_sum_format ?>">
-                                                Счет
+                                                РЎС‡РµС‚
                                                 <span class="b-txt b-txt_pa b-txt_right_20 b-txt_lh_40 b-txt_fs_14 b-txt_ff_hn b-txt_color_<?php if($account_sum_is_plus): ?>fd6c30<?php else: ?>c10600<?php endif; ?>">
                                                     <?= $account_sum_format ?>
                                                 </span>
                                             </a>
                                         </li>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-settings-clause">
-                                            <a href="<?= $user_link ?>/setup/" class="b-dropdown-concealment-options-clause-link" title="Настройки аккаунта">Настройки</a>
+                                            <a href="<?= $user_link ?>/setup/" class="b-dropdown-concealment-options-clause-link" title="РќР°СЃС‚СЂРѕР№РєРё Р°РєРєР°СѓРЅС‚Р°">РќР°СЃС‚СЂРѕР№РєРё</a>
                                         </li>
                                         <?php if (hasPermissions('adm')) { ?>
                                             <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-switch-clause">
-                                                <a class="b-dropdown-concealment-options-clause-link" href="/siteadmin/">Админка</a>
+                                                <a class="b-dropdown-concealment-options-clause-link" href="/siteadmin/">РђРґРјРёРЅРєР°</a>
                                             </li>
                                         <?php }//if?>
                                         <?php if (hasPermissions('sbr') || hasPermissions('sbr_finance')) { ?>
                                             <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-switch-clause">
-                                                <a class="b-dropdown-concealment-options-clause-link" href="/norisk2/?site=admin">Админка БС</a>
+                                                <a class="b-dropdown-concealment-options-clause-link" href="/norisk2/?site=admin">РђРґРјРёРЅРєР° Р‘РЎ</a>
                                             </li>
                                             <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-switch-clause">
-                                                <a class="b-dropdown-concealment-options-clause-link" href="/siteadmin/reserves/">Админка заказов по БС</a>
+                                                <a class="b-dropdown-concealment-options-clause-link" href="/siteadmin/reserves/">РђРґРјРёРЅРєР° Р·Р°РєР°Р·РѕРІ РїРѕ Р‘РЎ</a>
                                             </li>                                             
                                         <?php }//if?>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-switch-clause">
-                                            <a data-toggle-action="antiuser" href="javascript:void(0);" class="b-dropdown-concealment-options-clause-link" title="Перейти в аккаунт работодателя">Войти работодателем</a>
+                                            <a data-toggle-action="antiuser" href="javascript:void(0);" class="b-dropdown-concealment-options-clause-link" title="РџРµСЂРµР№С‚Рё РІ Р°РєРєР°СѓРЅС‚ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ">Р’РѕР№С‚Рё СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµРј</a>
                                         </li>
                                         <li class="b-dropdown-concealment-options-clause b-dropdown-concealment-options-exit-clause">
-                                            <a href="javascript:void(0);" class="b-dropdown-concealment-options-clause-link" title="Выйти из аккаунта фрилансера" onclick="Bar_Ext.logout();">Выйти</a>
+                                            <a href="javascript:void(0);" class="b-dropdown-concealment-options-clause-link" title="Р’С‹Р№С‚Рё РёР· Р°РєРєР°СѓРЅС‚Р° С„СЂРёР»Р°РЅСЃРµСЂР°" onclick="Bar_Ext.logout();">Р’С‹Р№С‚Рё</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -309,8 +309,8 @@ var prj_check_delay = '<?=PRJ_CHECK_DELAY?>';
 			<div class="l-header-inside">
 				<section class="l-header-section l-header-second-section">
 					<div class="b-general-notification">
-						У вас есть неподтвержденные заказы 
-						<a class="b-general-notification-link b-general-notification-employee-link" href="/tu-orders/?s=new">Посмотреть заказы</a> 
+						РЈ РІР°СЃ РµСЃС‚СЊ РЅРµРїРѕРґС‚РІРµСЂР¶РґРµРЅРЅС‹Рµ Р·Р°РєР°Р·С‹ 
+						<a class="b-general-notification-link b-general-notification-employee-link" href="/tu-orders/?s=new">РџРѕСЃРјРѕС‚СЂРµС‚СЊ Р·Р°РєР°Р·С‹</a> 
 					</div>
 				</section> 
 			</div>

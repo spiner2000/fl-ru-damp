@@ -5,36 +5,36 @@
 <div class="b-layuot b-layout_pad_20">
 	  <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_nowrap b-layout_block_iphone b-layout__txt_padbot_10">
 		<?php if(!$tu_order_status){ ?>
-        <span class="b-layout__bold">Все</span>
+        <span class="b-layout__bold">Р’СЃРµ</span>
         <?php }else{ ?>
-        <a href="<?php echo "/users/{$user->login}/tu-orders/" ?>" class="b-layout__link b-layout__link_bold">Все</a> 
+        <a href="<?php echo "/users/{$user->login}/tu-orders/" ?>" class="b-layout__link b-layout__link_bold">Р’СЃРµ</a> 
         <?php } ?>
         (<?= (int)$tu_orders_cnts['total'] ?>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </span>
       
       <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_nowrap b-layout_block_iphone b-layout__txt_padbot_10">
 		<?php if($tu_order_status == 'new'){ ?>
-        <span class="b-layout__bold">Ожидают подтверждения</span>
+        <span class="b-layout__bold">РћР¶РёРґР°СЋС‚ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ</span>
         <?php }else{ ?>
-        <a href="?s=new" class="b-layout__link b-layout__link_bold">Ожидают подтверждения</a> 
+        <a href="?s=new" class="b-layout__link b-layout__link_bold">РћР¶РёРґР°СЋС‚ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ</a> 
         <?php } ?>
         (<?= (int)$tu_orders_cnts['new'] ?>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </span>
       
       <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_nowrap b-layout_block_iphone b-layout__txt_padbot_10">
 		<?php if($tu_order_status == 'accept'){ ?>
-        <span class="b-layout__bold">В работе</span>
+        <span class="b-layout__bold">Р’ СЂР°Р±РѕС‚Рµ</span>
         <?php }else{ ?>
-        <a href="?s=accept" class="b-layout__link b-layout__link_bold">В работе</a> 
+        <a href="?s=accept" class="b-layout__link b-layout__link_bold">Р’ СЂР°Р±РѕС‚Рµ</a> 
         <?php } ?>
         (<?= (int)$tu_orders_cnts['accept'] ?>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </span>
       
       <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_nowrap b-layout_block_iphone">
 		<?php if($tu_order_status == 'close'){ ?>
-        <span class="b-layout__bold">Закрытые</span> 
+        <span class="b-layout__bold">Р—Р°РєСЂС‹С‚С‹Рµ</span> 
         <?php }else{ ?>
-        <a href="?s=close" class="b-layout__link b-layout__link_bold">Закрытые</a> 
+        <a href="?s=close" class="b-layout__link b-layout__link_bold">Р—Р°РєСЂС‹С‚С‹Рµ</a> 
         <?php } ?>
         (<?= (int)$tu_orders_cnts['close'] ?>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </span> 
@@ -53,8 +53,8 @@ if(count($orders_list))
 <div class="b-layout b-layout_pad_10_20">
     <div class="b-layout b-layout_float_right b-layout__txt_right b-page__desktop">
         <div class="b-layout__txt">
-            Стоимость: <span class="b-layout__bold"><?php echo tservices_helper::cost_format($order['order_price'],true) ?></span><br/>
-            Срок: <span class="b-layout__bold"><?php echo tservices_helper::days_format($order['order_days']) ?></span></div>
+            РЎС‚РѕРёРјРѕСЃС‚СЊ: <span class="b-layout__bold"><?php echo tservices_helper::cost_format($order['order_price'],true) ?></span><br/>
+            РЎСЂРѕРє: <span class="b-layout__bold"><?php echo tservices_helper::days_format($order['order_days']) ?></span></div>
     </div>
     <h2 class="b-layout__title">
         <a class="b-layout__link" href="<?php echo tservices_helper::getOrderCardUrl($order['id']); ?>">
@@ -62,25 +62,25 @@ if(count($orders_list))
         </a>
     </h2>
     <div class="b-layout__txt b-layout__txt_lineheight_1 b-layout__txt_padbot_20 b-layout_padbot_10_ipad">
-        Исполнитель: 
+        РСЃРїРѕР»РЅРёС‚РµР»СЊ: 
         <a class="b-layout__link b-layout__link_bold b-layout__link_color_000" href="/users/<?=$order['login']?>/"><?php echo "{$order['uname']} {$order['usurname']} [{$order['login']}]" ?></a> 
         <?php echo view_mark_user2($order) ?>
     </div>
     <div class="b-layout__txt b-layout__txt_padbot_10 b-page__ipad b-page__iphone">
-        Стоимость: <span class="b-layout__bold"><?php echo tservices_helper::cost_format($order['order_price'],true) ?></span><br/>
-        Срок: <span class="b-layout__bold"><?php echo tservices_helper::days_format($order['order_days']) ?></span>
+        РЎС‚РѕРёРјРѕСЃС‚СЊ: <span class="b-layout__bold"><?php echo tservices_helper::cost_format($order['order_price'],true) ?></span><br/>
+        РЎСЂРѕРє: <span class="b-layout__bold"><?php echo tservices_helper::days_format($order['order_days']) ?></span>
     </div>
     <div class="b-layout b-layout_float_right b-layout_width_240 b-page__desktop">
-        <div class="b-layout__txt b-layout__txt_right"><a class="b-layout__link" href="<?php echo tservices_helper::getOrderCardUrl($order['id']); ?>#messages">Переписка в заказе</a><br>(<?php if ($count['all']) {
-            echo $count['all'] . ' ' . ending($count['all'], 'сообщение', 'сообщения', 'сообщений');
-            if ($count['new']) echo ', <span class="b-layout__txt_color_6db335">'.$count['new'].' '.ending($count['new'], 'новое', 'новых', 'новых').'</span>';
-        } else echo 'Нет сообщений'; ?>)
+        <div class="b-layout__txt b-layout__txt_right"><a class="b-layout__link" href="<?php echo tservices_helper::getOrderCardUrl($order['id']); ?>#messages">РџРµСЂРµРїРёСЃРєР° РІ Р·Р°РєР°Р·Рµ</a><br>(<?php if ($count['all']) {
+            echo $count['all'] . ' ' . ending($count['all'], 'СЃРѕРѕР±С‰РµРЅРёРµ', 'СЃРѕРѕР±С‰РµРЅРёСЏ', 'СЃРѕРѕР±С‰РµРЅРёР№');
+            if ($count['new']) echo ', <span class="b-layout__txt_color_6db335">'.$count['new'].' '.ending($count['new'], 'РЅРѕРІРѕРµ', 'РЅРѕРІС‹С…', 'РЅРѕРІС‹С…').'</span>';
+        } else echo 'РќРµС‚ СЃРѕРѕР±С‰РµРЅРёР№'; ?>)
         </div>
     </div>
-    <div class="b-layout__txt b-layout__txt_padbot_10 b-page__ipad b-page__iphone"><a class="b-layout__link" href="<?php echo tservices_helper::getOrderCardUrl($order['id']); ?>#messages">Переписка в заказе</a> (<?php if ($count['all']) {
-            echo $count['all'] . ' ' . ending($count['all'], 'сообщение', 'сообщения', 'сообщений');
-            if ($count['new']) echo ', <span class="b-layout__txt_color_6db335">'.$count['new'].' '.ending($count['new'], 'новое', 'новых', 'новых').'</span>';
-        } else echo 'Нет сообщений'; ?>)
+    <div class="b-layout__txt b-layout__txt_padbot_10 b-page__ipad b-page__iphone"><a class="b-layout__link" href="<?php echo tservices_helper::getOrderCardUrl($order['id']); ?>#messages">РџРµСЂРµРїРёСЃРєР° РІ Р·Р°РєР°Р·Рµ</a> (<?php if ($count['all']) {
+            echo $count['all'] . ' ' . ending($count['all'], 'СЃРѕРѕР±С‰РµРЅРёРµ', 'СЃРѕРѕР±С‰РµРЅРёСЏ', 'СЃРѕРѕР±С‰РµРЅРёР№');
+            if ($count['new']) echo ', <span class="b-layout__txt_color_6db335">'.$count['new'].' '.ending($count['new'], 'РЅРѕРІРѕРµ', 'РЅРѕРІС‹С…', 'РЅРѕРІС‹С…').'</span>';
+        } else echo 'РќРµС‚ СЃРѕРѕР±С‰РµРЅРёР№'; ?>)
     </div>
     <div id="tservices_order_status_<?=$order['id']?>" class="b-fon b-fon_bg_f5 b-fon_pad_10 b-fon_margbot_20 b-layout_margright_250 b-layout_marg_null_ipad b-layout_margbot_20_ipad">
         <?php $tserviceOrderStatusWidget->run(); ?>
@@ -109,7 +109,7 @@ else
 {
 ?>
 <div class="b-txt b-txt_center b-txt_padtop_20 b-txt_padbot_40">
-    Ничего не найдено.
+    РќРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ.
 </div>
 <?php
 }

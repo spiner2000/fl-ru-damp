@@ -1,16 +1,16 @@
 <?php
 /**
- * API для работы с мобильным приложением
+ * API РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РјРѕР±РёР»СЊРЅС‹Рј РїСЂРёР»РѕР¶РµРЅРёРµРј
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
 class externalApi_Mobile extends externalApi {
-    // @todo php 5.3 сделать const
+    // @todo php 5.3 СЃРґРµР»Р°С‚СЊ const
     protected $API_NAMESPACE      = 'http://www.free-lance.ru/external/api/mobile';
     protected $API_DEFAULT_PREFIX = '';
     
     /**
-     * Поддерживаемые платформы
+     * РџРѕРґРґРµСЂР¶РёРІР°РµРјС‹Рµ РїР»Р°С‚С„РѕСЂРјС‹
      * 
      * @var array 
      */
@@ -22,14 +22,14 @@ class externalApi_Mobile extends externalApi {
     );
     
     /**
-     * Текущая платформа
+     * РўРµРєСѓС‰Р°СЏ РїР»Р°С‚С„РѕСЂРјР°
      * 
      * @var string 
      */
     private $_sPlatform = '';
     
     /**
-     * Текущий уникальный индификатор устройства
+     * РўРµРєСѓС‰РёР№ СѓРЅРёРєР°Р»СЊРЅС‹Р№ РёРЅРґРёС„РёРєР°С‚РѕСЂ СѓСЃС‚СЂРѕР№СЃС‚РІР°
      * 
      * @var string 
      */
@@ -37,12 +37,12 @@ class externalApi_Mobile extends externalApi {
 
 
     /**
-     * Конфигурация для методов
+     * РљРѕРЅС„РёРіСѓСЂР°С†РёСЏ РґР»СЏ РјРµС‚РѕРґРѕРІ
      * 
      * @var array 
      */
     protected $_methodsCfg = array(
-        'users_signin'             => array( 'req_no_auth' => true ), // не требует авторизации
+        'users_signin'             => array( 'req_no_auth' => true ), // РЅРµ С‚СЂРµР±СѓРµС‚ Р°РІС‚РѕСЂРёР·Р°С†РёРё
         'users_signout'            => array(), 
         'users_signup'             => array( 'req_no_auth' => true ), 
         'users_signup_sms_resend'  => array( 'req_no_auth' => true ), 
@@ -54,22 +54,22 @@ class externalApi_Mobile extends externalApi {
         'users_get'                => array(), 
         'users_portfolio'          => array(), 
         'users_favorites_list'     => array(), 
-        'users_favorites_set'      => array( 'fields_required' => true ), // нужно заполнить обязательные поля
+        'users_favorites_set'      => array( 'fields_required' => true ), // РЅСѓР¶РЅРѕ Р·Р°РїРѕР»РЅРёС‚СЊ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ
         'users_exists'             => array( 'req_no_auth' => true ), 
         'projects_list'            => array( 
-            'items_per_page'  => 20, // количество записей на страницу
-            'default_kind'    => -1, // тип проекта по умолчанию
+            'items_per_page'  => 20, // РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ РЅР° СЃС‚СЂР°РЅРёС†Сѓ
+            'default_kind'    => -1, // С‚РёРї РїСЂРѕРµРєС‚Р° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
             'req_no_auth'     => true
         ), 
         'projects_get'             => array(),
         'projects_add'             => array( 
-            'emp_only'        => true, // только для работодателей
+            'emp_only'        => true, // С‚РѕР»СЊРєРѕ РґР»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№
             'fields_required' => true, 
-            'default_kind'    => 1,    // тип проекта по умолчанию
-            'descr_limit'     => 5000  // максимальное количество символов в описании проекта
+            'default_kind'    => 1,    // С‚РёРї РїСЂРѕРµРєС‚Р° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+            'descr_limit'     => 5000  // РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ РІ РѕРїРёСЃР°РЅРёРё РїСЂРѕРµРєС‚Р°
         ), 
         'projects_response_add'    => array( 
-            'frl_only'        => true, // только для фрилансеров 
+            'frl_only'        => true, // С‚РѕР»СЊРєРѕ РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ 
             'fields_required' => true 
             ), 
         'projects_response_select' => array( 
@@ -79,7 +79,7 @@ class externalApi_Mobile extends externalApi {
         'messages_list'            => array(),
         'messages_send'            => array( 
             'fields_required' => true, 
-            'text_limit'      => 20000 // максимальное количество символов в сообщении
+            'text_limit'      => 20000 // РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ РІ СЃРѕРѕР±С‰РµРЅРёРё
         ), 
         'messages_read'            => array(
             'fields_required' => true 
@@ -111,16 +111,16 @@ class externalApi_Mobile extends externalApi {
     const GOOGLE_APIKEY = 'AIzaSyBLrVWnx_QuhSGjKE2x-QDI80sM8gB5Ah8';
     
     /**
-     * Объект сессии
+     * РћР±СЉРµРєС‚ СЃРµСЃСЃРёРё
      * 
      * @var type 
      */
     private $_oSession;
     
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      * 
-     * @param externalSession $sess объект сессии.
+     * @param externalSession $sess РѕР±СЉРµРєС‚ СЃРµСЃСЃРёРё.
      */
     function __construct( $sess ) {
         parent::__construct( $sess );
@@ -132,11 +132,11 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Вызывается перед каждым методом только внутри данного пространства имен (кроме методов externalApi) для 
-     * проверки прав на вызов метода.
-     * Доступны $this->_mName и $this->_mCfg.
+     * Р’С‹Р·С‹РІР°РµС‚СЃСЏ РїРµСЂРµРґ РєР°Р¶РґС‹Рј РјРµС‚РѕРґРѕРј С‚РѕР»СЊРєРѕ РІРЅСѓС‚СЂРё РґР°РЅРЅРѕРіРѕ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІР° РёРјРµРЅ (РєСЂРѕРјРµ РјРµС‚РѕРґРѕРІ externalApi) РґР»СЏ 
+     * РїСЂРѕРІРµСЂРєРё РїСЂР°РІ РЅР° РІС‹Р·РѕРІ РјРµС‚РѕРґР°.
+     * Р”РѕСЃС‚СѓРїРЅС‹ $this->_mName Рё $this->_mCfg.
      *
-     * @return integer код ошибки или 0 -- метод разрешен.
+     * @return integer РєРѕРґ РѕС€РёР±РєРё РёР»Рё 0 -- РјРµС‚РѕРґ СЂР°Р·СЂРµС€РµРЅ.
      */
     protected function _methodsDenied() {
         if ( empty($this->_mCfg['req_no_auth']) && empty($_SESSION['uid']) ) {
@@ -165,17 +165,17 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Получение списка настроек @deprecated
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° РЅР°СЃС‚СЂРѕРµРє @deprecated
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____settings_set( $aParams = array() ) {
         $this->_validDevice( $aParams );
         
         require_once( ABS_PATH . '/classes/projects_filter.php' );
         
-        $nPage      = self::$_aPlatform[$this->_sPlatform]['filter_page']; // какой фильтр сохранять
+        $nPage      = self::$_aPlatform[$this->_sPlatform]['filter_page']; // РєР°РєРѕР№ С„РёР»СЊС‚СЂ СЃРѕС…СЂР°РЅСЏС‚СЊ
         $oPrjFilter = new projects_filters();
         $bUseMain   = intvalPgSql( $aParams['enabled'] ) ? true : false;
         $sKeyword   = iconv( 'utf-8', 'cp1251', $aParams['keyword'] );
@@ -206,10 +206,10 @@ class externalApi_Mobile extends externalApi {
     }
 
     /**
-     * Сохранение настроек PUSH
+     * РЎРѕС…СЂР°РЅРµРЅРёРµ РЅР°СЃС‚СЂРѕРµРє PUSH
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____settings_push_set( $aParams = array() ) {
         global $DB;
@@ -268,10 +268,10 @@ class externalApi_Mobile extends externalApi {
     }
 
     /**
-     * Регистрация устройства для PUSH
+     * Р РµРіРёСЃС‚СЂР°С†РёСЏ СѓСЃС‚СЂРѕР№СЃС‚РІР° РґР»СЏ PUSH
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____device_register( $aParams = array() ) {
         global $DB;
@@ -296,17 +296,17 @@ class externalApi_Mobile extends externalApi {
     }
 
     /**
-     * Получение списка настроек
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° РЅР°СЃС‚СЂРѕРµРє
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____settings_filter_set( $aParams = array() ) {
         $this->_validDevice( $aParams );
         
         require_once( ABS_PATH . '/classes/projects_filter.php' );
         
-        $nPage      = self::$_aPlatform[$this->_sPlatform]['filter_page']; // какой фильтр сохранять
+        $nPage      = self::$_aPlatform[$this->_sPlatform]['filter_page']; // РєР°РєРѕР№ С„РёР»СЊС‚СЂ СЃРѕС…СЂР°РЅСЏС‚СЊ
         $oPrjFilter = new projects_filters();
         $bUseMain   = intvalPgSql( $aParams['enabled'] ) ? true : false;
         $sKeyword   = iconv( 'utf-8', 'cp1251', $aParams['keyword'] );
@@ -338,19 +338,19 @@ class externalApi_Mobile extends externalApi {
 
 
     /**
-     * Получение списка настроек
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° РЅР°СЃС‚СЂРѕРµРє
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____settings_get( $aParams = array() ) {
         $this->_validDevice( $aParams );
         
         global $DB;
         
-        $aKeys      = array_keys( $this->_mCfg['tables'] ); // ключи справочных таблиц
-        $aLastTime  = array(); // последнее время обновления
-        $bRetMirror = false;   // возвращать ли зеркальные профессии
+        $aKeys      = array_keys( $this->_mCfg['tables'] ); // РєР»СЋС‡Рё СЃРїСЂР°РІРѕС‡РЅС‹С… С‚Р°Р±Р»РёС†
+        $aLastTime  = array(); // РїРѕСЃР»РµРґРЅРµРµ РІСЂРµРјСЏ РѕР±РЅРѕРІР»РµРЅРёСЏ
+        $bRetMirror = false;   // РІРѕР·РІСЂР°С‰Р°С‚СЊ Р»Рё Р·РµСЂРєР°Р»СЊРЅС‹Рµ РїСЂРѕС„РµСЃСЃРёРё
         
         foreach ( $aKeys as $sKey ) {
             $aLastTime[$sKey] = intvalPgSql( $aParams['last_update_' . $this->_mCfg['tables'][$sKey]['out']] );
@@ -358,20 +358,20 @@ class externalApi_Mobile extends externalApi {
         
         $aResult = array( 
             'settings' => array(
-                "version_ios"     => "1.0", // TODO: положить в таблицу variables
-                "version_android" => "1.0"  // TODO: положить в таблицу variables
+                "version_ios"     => "1.0", // TODO: РїРѕР»РѕР¶РёС‚СЊ РІ С‚Р°Р±Р»РёС†Сѓ variables
+                "version_android" => "1.0"  // TODO: РїРѕР»РѕР¶РёС‚СЊ РІ С‚Р°Р±Р»РёС†Сѓ variables
             )
         );
         
         foreach ( $aKeys as $sKey ) {
             $sql  = "SELECT version FROM external_cache WHERE obj_name = '{$sKey}' AND obj_type = " . self::OBJTYPE_TABLE;
-            $bRet = true; // выводить данные
+            $bRet = true; // РІС‹РІРѕРґРёС‚СЊ РґР°РЅРЅС‹Рµ
             
             if ( $server_version = $DB->val($sql) ) {
                 $server_version = $this->pg2ex($server_version, EXTERNAL_DT_TIME);
                 
                 if ( $aLastTime[$sKey] && $server_version <= $aLastTime[$sKey] ) {
-                    $bRet = false; // данные не изменялись - не выводить данные
+                    $bRet = false; // РґР°РЅРЅС‹Рµ РЅРµ РёР·РјРµРЅСЏР»РёСЃСЊ - РЅРµ РІС‹РІРѕРґРёС‚СЊ РґР°РЅРЅС‹Рµ
                 }
             }
             
@@ -389,9 +389,9 @@ class externalApi_Mobile extends externalApi {
             }
         }
         
-        $aResult['settings']['filter'] = $this->_settings_get_filter(); // настройки фильтра
+        $aResult['settings']['filter'] = $this->_settings_get_filter(); // РЅР°СЃС‚СЂРѕР№РєРё С„РёР»СЊС‚СЂР°
         
-        // зеркальные профессии
+        // Р·РµСЂРєР°Р»СЊРЅС‹Рµ РїСЂРѕС„РµСЃСЃРёРё
         if ( $bRetMirror ) {
             require_once( ABS_PATH  . '/classes/professions.php' );
             $aResult['settings']['mirrored_professions'] = professions::GetAllMirroredProfsId();
@@ -416,7 +416,7 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Получение настроек фильтра
+     * РџРѕР»СѓС‡РµРЅРёРµ РЅР°СЃС‚СЂРѕРµРє С„РёР»СЊС‚СЂР°
      * 
      * @return array
      */
@@ -425,19 +425,19 @@ class externalApi_Mobile extends externalApi {
         require_once( ABS_PATH . '/classes/professions.php' );
         
         $aReturn = array();
-        $nPage   = self::$_aPlatform[$this->_sPlatform]['filter_page'];    // какой фильтр получать
+        $nPage   = self::$_aPlatform[$this->_sPlatform]['filter_page'];    // РєР°РєРѕР№ С„РёР»СЊС‚СЂ РїРѕР»СѓС‡Р°С‚СЊ
         $oFilter = new projects_filters();
-        $aFilter = $oFilter->GetFilter( $_SESSION['uid'], $error, $nPage ); // фильтр из базы даных
+        $aFilter = $oFilter->GetFilter( $_SESSION['uid'], $error, $nPage ); // С„РёР»СЊС‚СЂ РёР· Р±Р°Р·С‹ РґР°РЅС‹С…
         
         if ( $this->_sPlatform == 'ios' || $this->_sPlatform == 'android' ) {
-            $aReturn['enabled'] = $aFilter['use_main_filter'] == 't' ? 1 : 0; // наследовать фильтр с главной
+            $aReturn['enabled'] = $aFilter['use_main_filter'] == 't' ? 1 : 0; // РЅР°СЃР»РµРґРѕРІР°С‚СЊ С„РёР»СЊС‚СЂ СЃ РіР»Р°РІРЅРѕР№
         }
         
-        $aReturn['keyword'] = iconv( 'cp1251', 'utf-8', $aFilter['keywords'] ); // ключевые слова
+        $aReturn['keyword'] = iconv( 'cp1251', 'utf-8', $aFilter['keywords'] ); // РєР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°
         
         $aReturn['items'] = array();
         
-        // группы профессий, где выбран весь раздел
+        // РіСЂСѓРїРїС‹ РїСЂРѕС„РµСЃСЃРёР№, РіРґРµ РІС‹Р±СЂР°РЅ РІРµСЃСЊ СЂР°Р·РґРµР»
         if ( !empty($aFilter['categories']) && !empty($aFilter['categories'][0]) && is_array($aFilter['categories'][0]) ) {
             
             foreach ( $aFilter['categories'][0] as $nId => $nFake ) {
@@ -445,7 +445,7 @@ class externalApi_Mobile extends externalApi {
             }
         }
         
-        // профессии, где выбрана конкретная
+        // РїСЂРѕС„РµСЃСЃРёРё, РіРґРµ РІС‹Р±СЂР°РЅР° РєРѕРЅРєСЂРµС‚РЅР°СЏ
         if ( !empty($aFilter['categories']) && !empty($aFilter['categories'][1]) && is_array($aFilter['categories'][1]) ) {
             $aProfsAndGroups = professions::GetProfessionsAndGroup();
             $aProfsToGroups  = array();
@@ -464,9 +464,9 @@ class externalApi_Mobile extends externalApi {
 
 
     /**
-     * Получение списка городов
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° РіРѕСЂРѕРґРѕРІ
      * 
-     * @param aray $aData Массив с городами
+     * @param aray $aData РњР°СЃСЃРёРІ СЃ РіРѕСЂРѕРґР°РјРё
      */
     private function _settings_get_city( $aData = array(), $server_version = 0 ) {
         $aReturn = array();
@@ -489,9 +489,9 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Получение списка стран
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° СЃС‚СЂР°РЅ
      * 
-     * @param aray $aData Массив со странами
+     * @param aray $aData РњР°СЃСЃРёРІ СЃРѕ СЃС‚СЂР°РЅР°РјРё
      */
     private function _settings_get_country( $aData = array(), $server_version = 0 ) {
         $aReturn = array();
@@ -513,9 +513,9 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Получение списка профессий
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° РїСЂРѕС„РµСЃСЃРёР№
      * 
-     * @param aray $aData Массив с профессиями
+     * @param aray $aData РњР°СЃСЃРёРІ СЃ РїСЂРѕС„РµСЃСЃРёСЏРјРё
      */
     private function _settings_get_professions( $aData = array(), $server_version = 0 ) {
         $aReturn = array();
@@ -538,9 +538,9 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Получение списка групп профессий
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° РіСЂСѓРїРї РїСЂРѕС„РµСЃСЃРёР№
      * 
-     * @param aray $aData Массив с группами профессий
+     * @param aray $aData РњР°СЃСЃРёРІ СЃ РіСЂСѓРїРїР°РјРё РїСЂРѕС„РµСЃСЃРёР№
      */
     private function _settings_get_prof_group( $aData = array(), $server_version = 0 ) {
         $aReturn = array();
@@ -563,10 +563,10 @@ class externalApi_Mobile extends externalApi {
 
 
     /**
-     * Установка статуса прочитано к диалогу
+     * РЈСЃС‚Р°РЅРѕРІРєР° СЃС‚Р°С‚СѓСЃР° РїСЂРѕС‡РёС‚Р°РЅРѕ Рє РґРёР°Р»РѕРіСѓ
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____messages_read( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -609,10 +609,10 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Добавление личного сообщения
+     * Р”РѕР±Р°РІР»РµРЅРёРµ Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____messages_send( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -654,7 +654,7 @@ class externalApi_Mobile extends externalApi {
                                 $this->error( EXTERNAL_ERR_SERVER_ERROR );
                             }
                             
-                            $aResult = array( // чтобы реально не вытаскиваро сообщение из базы
+                            $aResult = array( // С‡С‚РѕР±С‹ СЂРµР°Р»СЊРЅРѕ РЅРµ РІС‹С‚Р°СЃРєРёРІР°СЂРѕ СЃРѕРѕР±С‰РµРЅРёРµ РёР· Р±Р°Р·С‹
                                 "message" => array(
                                     "id"          => $sId,
                                     "from_id"     => $nUid,
@@ -691,12 +691,12 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Получение списка личных сообщений.
-     * Возвращает все сообщения пользователя (входящие и исходящие), которые были добавлены, изменены или помечены удаленными после определенной даты.
-     * (!) Массовые рассылки только входящие.
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° Р»РёС‡РЅС‹С… СЃРѕРѕР±С‰РµРЅРёР№.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµ СЃРѕРѕР±С‰РµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (РІС…РѕРґСЏС‰РёРµ Рё РёСЃС…РѕРґСЏС‰РёРµ), РєРѕС‚РѕСЂС‹Рµ Р±С‹Р»Рё РґРѕР±Р°РІР»РµРЅС‹, РёР·РјРµРЅРµРЅС‹ РёР»Рё РїРѕРјРµС‡РµРЅС‹ СѓРґР°Р»РµРЅРЅС‹РјРё РїРѕСЃР»Рµ РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ РґР°С‚С‹.
+     * (!) РњР°СЃСЃРѕРІС‹Рµ СЂР°СЃСЃС‹Р»РєРё С‚РѕР»СЊРєРѕ РІС…РѕРґСЏС‰РёРµ.
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____messages_list( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -720,10 +720,10 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Выбор пользователя в предложении к проекту
+     * Р’С‹Р±РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ РїСЂРµРґР»РѕР¶РµРЅРёРё Рє РїСЂРѕРµРєС‚Сѓ
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____projects_response_select( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -741,7 +741,7 @@ class externalApi_Mobile extends externalApi {
             $oPrj     = new new_projects();
             $aProject = $oPrj->GetPrjCust( $aOffer['project_id'] );
             
-            if ( !empty($aProject) || $aProject['is_blocked'] == 'f' ) { // Не позволяем производить действия с заблокированным проектом
+            if ( !empty($aProject) || $aProject['is_blocked'] == 'f' ) { // РќРµ РїРѕР·РІРѕР»СЏРµРј РїСЂРѕРёР·РІРѕРґРёС‚СЊ РґРµР№СЃС‚РІРёСЏ СЃ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рј РїСЂРѕРµРєС‚РѕРј
                 if ( $nUid == $aProject['user_id'] ) {
                     $nSelect = intvalPgSql($aParams['select']);
                     
@@ -812,10 +812,10 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Добавления предложения к проекту
+     * Р”РѕР±Р°РІР»РµРЅРёСЏ РїСЂРµРґР»РѕР¶РµРЅРёСЏ Рє РїСЂРѕРµРєС‚Сѓ
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____projects_response_add( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -838,7 +838,7 @@ class externalApi_Mobile extends externalApi {
                     if($aParams['term']>9999) {
                         $this->error( EXTERNAL_ERR_SERVER_ERROR );
                     } else {
-                        // TODO: все что с ps_ - по умолчанию
+                        // TODO: РІСЃРµ С‡С‚Рѕ СЃ ps_ - РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
                         $obj_offer   = new projects_offers();
                         $error_offer = $obj_offer->AddOffer(
                             $nUid, 
@@ -898,10 +898,10 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Добавление проекта
+     * Р”РѕР±Р°РІР»РµРЅРёРµ РїСЂРѕРµРєС‚Р°
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____projects_add( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -912,7 +912,7 @@ class externalApi_Mobile extends externalApi {
         $nKind = !empty($nKind) ? $nKind : $this->_mCfg['default_kind'];
         
         $nUid  = get_uid( false );
-        $sKey  = md5(uniqid($uid)); // ключ-идентификатор создаваемого/редактируемого проекта, для хранения в кэше.
+        $sKey  = md5(uniqid($uid)); // РєР»СЋС‡-РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃРѕР·РґР°РІР°РµРјРѕРіРѕ/СЂРµРґР°РєС‚РёСЂСѓРµРјРѕРіРѕ РїСЂРѕРµРєС‚Р°, РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РІ РєСЌС€Рµ.
         $aCats = array( array('category_id' => intvalPgSql($aParams['group_category_id']), 'subcategory_id' => intvalPgSql($aParams['category_id'])) );
         
         $tmpPrj = new tmp_project( $sKey );
@@ -958,30 +958,30 @@ class externalApi_Mobile extends externalApi {
             $this->error( EXTERNAL_ERR_PRJ_LENGTH_DESCR );
         }
         
-        // TODO: пока только проекты
+        // TODO: РїРѕРєР° С‚РѕР»СЊРєРѕ РїСЂРѕРµРєС‚С‹
         /*if ( $project['kind'] == 7 ) {
                 $tmpPrj->setProjectField('end_date', __paramInit('string', NULL, 'end_date'),0,64);
                 $tmpPrj->setProjectField('win_date', __paramInit('string', NULL, 'win_date'),0,64);
                 $project = $tmpPrj->getProject();
 
                 if (!preg_match("/^([0-9]{1,2})\-([0-9]{1,2})\-([0-9]{4})$/", $project['end_date'], $o1) || !checkdate($o1[2], $o1[1], $o1[3]))
-                        $error['end_date'] = 'Неправильная дата';
+                        $error['end_date'] = 'РќРµРїСЂР°РІРёР»СЊРЅР°СЏ РґР°С‚Р°';
 
                 if (!preg_match("/^([0-9]{1,2})\-([0-9]{1,2})\-([0-9]{4})$/", $project['win_date'], $o2) || !checkdate($o2[2], $o2[1], $o2[3]))
-                        $error['win_date'] = 'Неправильная дата';
+                        $error['win_date'] = 'РќРµРїСЂР°РІРёР»СЊРЅР°СЏ РґР°С‚Р°';
 
-                // Модераторам аккуратней	
+                // РњРѕРґРµСЂР°С‚РѕСЂР°Рј Р°РєРєСѓСЂР°С‚РЅРµР№	
             if(!hasPermissions('projects')) {
                 if (!$error['end_date'] && mktime(0, 0, 0, $o1[2], $o1[1], $o1[3]) <= mktime(0, 0, 0))
-                        $error['end_date'] = 'Дата окончания конкурса не может находиться  в прошлом';
+                        $error['end_date'] = 'Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР° РЅРµ РјРѕР¶РµС‚ РЅР°С…РѕРґРёС‚СЊСЃСЏ  РІ РїСЂРѕС€Р»РѕРј';
 
                 if (!$error['win_date'] && mktime(0, 0, 0, $o2[2], $o2[1], $o2[3]) <= mktime(0, 0, 0, $o1[2], $o1[1], $o1[3]))
-                        $error['win_date'] = 'Дата определения победителя должна быть больше даты окончания конкурса';
+                        $error['win_date'] = 'Р”Р°С‚Р° РѕРїСЂРµРґРµР»РµРЅРёСЏ РїРѕР±РµРґРёС‚РµР»СЏ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РґР°С‚С‹ РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР°';
                 }
 
         }*/
         
-        // сохранение файлов
+        // СЃРѕС…СЂР°РЅРµРЅРёРµ С„Р°Р№Р»РѕРІ
         if ( is_array($_FILES['files']) && $_FILES['files'] ) {
             $aFiles = $this->_multiple($_FILES);
             
@@ -1018,7 +1018,7 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Вспомогательная для загрузки файлов
+     * Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ РґР»СЏ Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»РѕРІ
      * 
      * @param  array $_files
      * @param  type $top
@@ -1050,10 +1050,10 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Получение одного проекта
+     * РџРѕР»СѓС‡РµРЅРёРµ РѕРґРЅРѕРіРѕ РїСЂРѕРµРєС‚Р°
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____projects_get( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -1068,7 +1068,7 @@ class externalApi_Mobile extends externalApi {
             $aAttaches = $oPrj->getAllAttach( $sId );
             
             if ( !empty($aProject) ) {
-                if ( $aProject['is_banned'] || $aProject['is_blocked'] ) { // работодатель или проест заблокированы
+                if ( $aProject['is_banned'] || $aProject['is_blocked'] ) { // СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ РёР»Рё РїСЂРѕРµСЃС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹
                     $this->error( EXTERNAL_ERR_PROJECT_NOT_FOUND );
                 }
                 
@@ -1091,7 +1091,7 @@ class externalApi_Mobile extends externalApi {
 
                 $aResult['item']['responses'] = array();
                 
-                if ( $aProject['kind'] == 7 ) { // конкурс
+                if ( $aProject['kind'] == 7 ) { // РєРѕРЅРєСѓСЂСЃ
                     require_once( ABS_PATH.'/classes/contest.php' );
                     
                     $oContest = new contest( $sId, $nUid, is_emp(), ($aProject['user_id'] == $nUid), false, is_pro() );
@@ -1103,7 +1103,7 @@ class externalApi_Mobile extends externalApi {
                         }
                     }
                 }
-                else { // проект
+                else { // РїСЂРѕРµРєС‚
                     require_once( ABS_PATH . '/classes/projects_offers.php' );
                     require_once( ABS_PATH . '/classes/projects_offers_dialogue.php' );
                     
@@ -1111,7 +1111,7 @@ class externalApi_Mobile extends externalApi {
                     $obj_dialogue = new projects_offers_dialogue();
                     $nOffersCnt   = 0;
                     
-                    if ( is_emp() ) { // залогинен работодатель
+                    if ( is_emp() ) { // Р·Р°Р»РѕРіРёРЅРµРЅ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ
                         $aOffers = $oPrjOffers->GetPrjOffers(
                             $nOffersCnt, $sId, 'ALL', 0, $nUid, ($aProject['user_id'] == $nUid), 'date', (($aProject['user_id'] == $nUid) ? 'a' : 'nor')
                         );
@@ -1120,7 +1120,7 @@ class externalApi_Mobile extends externalApi {
                         $aOffers = $oPrjOffers->GetPrjOffers( $nOffersCnt, $sId, 'ALL', 0, $nUid, false, null, 'nor' );
                     }
                     
-                    // Диалоги по предложениям к данному проекту и все остальное
+                    // Р”РёР°Р»РѕРіРё РїРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЏРј Рє РґР°РЅРЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ Рё РІСЃРµ РѕСЃС‚Р°Р»СЊРЅРѕРµ
                     if ( is_array($aOffers) && $aOffers ) {
                         foreach ($aOffers as $key => $value) {
                             $aOffers[$key]['exec_id']       = $aProject['exec_id'];
@@ -1133,15 +1133,15 @@ class externalApi_Mobile extends externalApi {
                     $aResult['item']['responses_count']     = $nOffersCnt;
                     $aResult['item']['is_responses_exists'] = $oPrjOffers->OfferExist($sId, $nUid) ? 1 : 2;
                     
-                    // Наличие предложения данного юзера по данному проекту
+                    // РќР°Р»РёС‡РёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РґР°РЅРЅРѕРіРѕ СЋР·РµСЂР° РїРѕ РґР°РЅРЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ
                     if ( $aResult['item']['is_responses_exists'] == 1 ) {
-                        // Предложение данного пользователя по данному проекту
+                        // РџСЂРµРґР»РѕР¶РµРЅРёРµ РґР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ РґР°РЅРЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ
                         $user_offer = $oPrjOffers->GetPrjOffer( $sId, $nUid );
                         
                         $user_offer['exec_id'] = $aProject['exec_id'];
                         $user_offer['emp_uid'] = $aProject['user_id'];
 
-                        // Диалог по предложению данного пользователя
+                        // Р”РёР°Р»РѕРі РїРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЋ РґР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
                         $user_offer['dialogue'] = $obj_dialogue->GetDialogueForOffer( $user_offer['id'] );
                         
                         $aResult['item']['responses'][] = $this->_getProjectOfferData( $user_offer );
@@ -1160,10 +1160,10 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Получение списока проектов
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРѕРєР° РїСЂРѕРµРєС‚РѕРІ
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____projects_list( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -1173,7 +1173,7 @@ class externalApi_Mobile extends externalApi {
         
         $nUid = get_uid( false );
         
-        $nPage      = self::$_aPlatform[$this->_sPlatform]['filter_page'];    // какой фильтр получать
+        $nPage      = self::$_aPlatform[$this->_sPlatform]['filter_page'];    // РєР°РєРѕР№ С„РёР»СЊС‚СЂ РїРѕР»СѓС‡Р°С‚СЊ
         $prj_filter = new projects_filters();
         $filter     = $prj_filter->GetFilter( $nUid, $error, $nPage );
         
@@ -1228,10 +1228,10 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Добавление/удаление пользователя из избранного
+     * Р”РѕР±Р°РІР»РµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР· РёР·Р±СЂР°РЅРЅРѕРіРѕ
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____users_favorites_set( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -1286,10 +1286,10 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Получение списка избранных пользователей
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° РёР·Р±СЂР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____users_favorites_list( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -1333,10 +1333,10 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Получение портфолио пользователя
+     * РџРѕР»СѓС‡РµРЅРёРµ РїРѕСЂС‚С„РѕР»РёРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____users_portfolio( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -1375,10 +1375,10 @@ class externalApi_Mobile extends externalApi {
     
     
     /**
-     * Получение списка пользователей
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____users_get( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -1426,10 +1426,10 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Получение списка пользователей
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____users_list( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -1477,10 +1477,10 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Забыли пароль. Телефон.
+     * Р—Р°Р±С‹Р»Рё РїР°СЂРѕР»СЊ. РўРµР»РµС„РѕРЅ.
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____users_forgot_email( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -1525,10 +1525,10 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Забыли пароль. Телефон.
+     * Р—Р°Р±С‹Р»Рё РїР°СЂРѕР»СЊ. РўРµР»РµС„РѕРЅ.
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____users_forgot_phone( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -1540,7 +1540,7 @@ class externalApi_Mobile extends externalApi {
             require_once( ABS_PATH . '/classes/sbr_meta.php' );
             require_once( ABS_PATH . '/classes/users.php' );
             
-            // проверяем существует ли пользователь с таким логином
+            // РїСЂРѕРІРµСЂСЏРµРј СЃСѓС‰РµСЃС‚РІСѓРµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ С‚Р°РєРёРј Р»РѕРіРёРЅРѕРј
             $oUser = new users();
             $oUser->GetUser( $sLogin );
             
@@ -1572,10 +1572,10 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Регистрация. Заполнение обязательных полей.
+     * Р РµРіРёСЃС‚СЂР°С†РёСЏ. Р—Р°РїРѕР»РЅРµРЅРёРµ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹С… РїРѕР»РµР№.
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____users_signup_required( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -1626,10 +1626,10 @@ class externalApi_Mobile extends externalApi {
         return array();
     }
     /**
-     * Регистрация. Подтверждение.
+     * Р РµРіРёСЃС‚СЂР°С†РёСЏ. РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ.
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____users_signup_complete( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -1640,8 +1640,8 @@ class externalApi_Mobile extends externalApi {
         $registration = new registration();
         $oUser = $registration->actionRegistrationMobileComplete( $aParams );
 
-        if ( !empty($oUser->uid) ) { // пользователь существует
-            // формируем ответ --------------
+        if ( !empty($oUser->uid) ) { // РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃСѓС‰РµСЃС‚РІСѓРµС‚
+            // С„РѕСЂРјРёСЂСѓРµРј РѕС‚РІРµС‚ --------------
             $aData      = array();
             $aClassVars = array_keys( get_class_vars('users') );
 
@@ -1657,7 +1657,7 @@ class externalApi_Mobile extends externalApi {
 
             $aResult = $this->_getUserData( $aData, true );
 
-            // логиним ----------------------
+            // Р»РѕРіРёРЅРёРј ----------------------
             login( $oUser->login, $oUser->GetField($oUser->uid, $error, "passwd"), 0, false );
 
             switch($this->_sPlatform) {
@@ -1711,10 +1711,10 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Регистрация. Выслать SMS еще раз.
+     * Р РµРіРёСЃС‚СЂР°С†РёСЏ. Р’С‹СЃР»Р°С‚СЊ SMS РµС‰Рµ СЂР°Р·.
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____users_signup_sms_resend( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -1734,10 +1734,10 @@ class externalApi_Mobile extends externalApi {
         return array();
     }
     /**
-     * Регистрация. Начало.
+     * Р РµРіРёСЃС‚СЂР°С†РёСЏ. РќР°С‡Р°Р»Рѕ.
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____users_signup( $aParams = array() ) {
         $this->_validDevice( $aParams );
@@ -1756,17 +1756,17 @@ class externalApi_Mobile extends externalApi {
                 $this->error( EXTERNAL_ERR_SEND_SMS );
             }
 
-            $this->error( EXTERNAL_ERR_SERVER_ERROR ); // неизвестная ошибка
+            $this->error( EXTERNAL_ERR_SERVER_ERROR ); // РЅРµРёР·РІРµСЃС‚РЅР°СЏ РѕС€РёР±РєР°
         }
         
         return array();
     }
 
     /**
-     * Выход
+     * Р’С‹С…РѕРґ
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____users_signout( $aParams = array() ) {
         global $DB;
@@ -1790,10 +1790,10 @@ class externalApi_Mobile extends externalApi {
     }
 
     /**
-     * Проверка существования пользователя
+     * РџСЂРѕРІРµСЂРєР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____users_exists( $aParams = array() ) {
         global $DB;
@@ -1818,10 +1818,10 @@ class externalApi_Mobile extends externalApi {
     }
 
     /**
-     * Авторизация
+     * РђРІС‚РѕСЂРёР·Р°С†РёСЏ
      * 
-     * @param  array $aParams массив входящих данных
-     * @return array $aResult ответ
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return array $aResult РѕС‚РІРµС‚
      */
     protected function x____users_signin( $aParams = array() ) {
         global $DB;
@@ -1905,9 +1905,9 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Возвращает часть ответа с информацией о личном сообщении
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ С‡Р°СЃС‚СЊ РѕС‚РІРµС‚Р° СЃ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ Р»РёС‡РЅРѕРј СЃРѕРѕР±С‰РµРЅРёРё
      * 
-     * @param  array $aData информация о личном сообщении
+     * @param  array $aData РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ Р»РёС‡РЅРѕРј СЃРѕРѕР±С‰РµРЅРёРё
      * @return array
      */
     private function _getMessageData( $aData = array() ) {
@@ -1933,10 +1933,10 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Возвращает часть ответа с информацией о работе в портфолио
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ С‡Р°СЃС‚СЊ РѕС‚РІРµС‚Р° СЃ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ СЂР°Р±РѕС‚Рµ РІ РїРѕСЂС‚С„РѕР»РёРѕ
      * 
-     * @param  array $aData все портфолио юзера
-     * @param  int $nUid UID юзера владельца портфолио
+     * @param  array $aData РІСЃРµ РїРѕСЂС‚С„РѕР»РёРѕ СЋР·РµСЂР°
+     * @param  int $nUid UID СЋР·РµСЂР° РІР»Р°РґРµР»СЊС†Р° РїРѕСЂС‚С„РѕР»РёРѕ
      * @return array
      */
     private function _getPortfolioData( $aPortfolio = array(), $nUid = 0 ) {
@@ -1979,19 +1979,19 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Возвращает часть ответа с информацией о предложении в конкурсе
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ С‡Р°СЃС‚СЊ РѕС‚РІРµС‚Р° СЃ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ РїСЂРµРґР»РѕР¶РµРЅРёРё РІ РєРѕРЅРєСѓСЂСЃРµ
      * 
-     * @param  array $aData информация о предложении в конкурсе
-     * @param  bool $bShowEmail включить пользователя Email в ответ
+     * @param  array $aData РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїСЂРµРґР»РѕР¶РµРЅРёРё РІ РєРѕРЅРєСѓСЂСЃРµ
+     * @param  bool $bShowEmail РІРєР»СЋС‡РёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Email РІ РѕС‚РІРµС‚
      * @return array
      */
     private function _getContestOfferData( $aData = array(), $bShowEmail = false ) {
         $nUid    = get_uid( false );
         $nStatus = ( $aData['is_deleted'] || $aData['is_blocked'] == 't' ) ? 2 : 1;
-        $nSelect = 0; // исполнитель кандидат отказ
+        $nSelect = 0; // РёСЃРїРѕР»РЅРёС‚РµР»СЊ РєР°РЅРґРёРґР°С‚ РѕС‚РєР°Р·
         
         if ( $aData['selected'] == 't' ) {
-            $nSelect = 2; // кандидат
+            $nSelect = 2; // РєР°РЅРґРёРґР°С‚
         }
         
         $aReturn = array(
@@ -2011,29 +2011,29 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Возвращает часть ответа с информацией о предложении в проекте
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ С‡Р°СЃС‚СЊ РѕС‚РІРµС‚Р° СЃ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ РїСЂРµРґР»РѕР¶РµРЅРёРё РІ РїСЂРѕРµРєС‚Рµ
      * 
-     * @param  array $aData информация о предложении в проекте
-     * @param  bool $bShowEmail включить пользователя Email в ответ
+     * @param  array $aData РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїСЂРµРґР»РѕР¶РµРЅРёРё РІ РїСЂРѕРµРєС‚Рµ
+     * @param  bool $bShowEmail РІРєР»СЋС‡РёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Email РІ РѕС‚РІРµС‚
      * @return array
      */
     private function _getProjectOfferData( $aData = array(), $bShowEmail = false ) {
         $nUid    = get_uid( false );
         $nStatus = ( $aData['frl_refused'] && $aData['user_id'] != $nUid || $aData['is_deleted'] || $aData['is_blocked'] == 't' ) ? 2 : 1;
-        $nSelect = 0; // исполнитель кандидат отказ
+        $nSelect = 0; // РёСЃРїРѕР»РЅРёС‚РµР»СЊ РєР°РЅРґРёРґР°С‚ РѕС‚РєР°Р·
         
         if ( $nUid == $aData['emp_uid'] || $nUid == $aData['user_id'] ) {
             if ( $aData['user_id'] == $aData['exec_id'] ) {
-                $nSelect = 3; // исполнитель
+                $nSelect = 3; // РёСЃРїРѕР»РЅРёС‚РµР»СЊ
             }
             elseif ( $aData['selected'] == 't' ) {
-                $nSelect = 2; // кандидат
+                $nSelect = 2; // РєР°РЅРґРёРґР°С‚
             }
             elseif ( $aData['refused'] == 't' ) {
-                $nSelect = 1; // отказ
+                $nSelect = 1; // РѕС‚РєР°Р·
             }
             elseif ( $aData['frl_refused'] == 't' ) {
-                $nSelect = 4; // фрилансер отказался
+                $nSelect = 4; // С„СЂРёР»Р°РЅСЃРµСЂ РѕС‚РєР°Р·Р°Р»СЃСЏ
             }
         }
         
@@ -2058,10 +2058,10 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Возвращает часть ответа с информацией о проекте
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ С‡Р°СЃС‚СЊ РѕС‚РІРµС‚Р° СЃ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ РїСЂРѕРµРєС‚Рµ
      * 
-     * @param  array $aData информация о проекте
-     * @param  bool $bShowEmail включить пользователя Email в ответ
+     * @param  array $aData РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїСЂРѕРµРєС‚Рµ
+     * @param  bool $bShowEmail РІРєР»СЋС‡РёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Email РІ РѕС‚РІРµС‚
      * @return array
      */
     private function _getProjectData( $aData = array(), $bShowEmail = false ) {
@@ -2089,11 +2089,11 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Возвращает часть ответа с информацией о пользователе
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ С‡Р°СЃС‚СЊ РѕС‚РІРµС‚Р° СЃ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ
      * 
-     * @param  array $aData информация о пользователе из базы
-     * @param  bool $bShowEmail включить пользователя Email в ответ
-     * @param  bool $bExtended получить расширенную информацию (аналог профиля на сайте)
+     * @param  array $aData РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ РёР· Р±Р°Р·С‹
+     * @param  bool $bShowEmail РІРєР»СЋС‡РёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Email РІ РѕС‚РІРµС‚
+     * @param  bool $bExtended РїРѕР»СѓС‡РёС‚СЊ СЂР°СЃС€РёСЂРµРЅРЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ (Р°РЅР°Р»РѕРі РїСЂРѕС„РёР»СЏ РЅР° СЃР°Р№С‚Рµ)
      * @return array
      */
     private function _getUserData( $aData = array(), $bShowEmail = false, $bExtended = false ) {
@@ -2156,9 +2156,9 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Возвращает часть ответа с отзывами о пользователе
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ С‡Р°СЃС‚СЊ РѕС‚РІРµС‚Р° СЃ РѕС‚Р·С‹РІР°РјРё Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ
      * 
-     * @param  array $aData информация о отзывами о пользователе
+     * @param  array $aData РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РѕС‚Р·С‹РІР°РјРё Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ
      * @return array
      */
     private function _getUserOpinionsData( $aData ) {
@@ -2168,8 +2168,8 @@ class externalApi_Mobile extends externalApi {
         require_once( ABS_PATH . '/classes/sbr.php' );
         
         $aReturn = array();
-        $msgs    = sbr::getUserFeedbacks( $aData['uid'], is_emp($aData['role']), false, 0, false, false ); // рекомендации
-        $msgs2   = opinions::GetMsgs( $aData['uid'], null, null, null, $error, 'users', false, 0, 0 );     // мнения
+        $msgs    = sbr::getUserFeedbacks( $aData['uid'], is_emp($aData['role']), false, 0, false, false ); // СЂРµРєРѕРјРµРЅРґР°С†РёРё
+        $msgs2   = opinions::GetMsgs( $aData['uid'], null, null, null, $error, 'users', false, 0, 0 );     // РјРЅРµРЅРёСЏ
             
         if (is_array($msgs) && $msgs ) {
             foreach ( $msgs as $theme ) {
@@ -2221,7 +2221,7 @@ class externalApi_Mobile extends externalApi {
                     'type'         => 2,
                     "from_user_id" => $opinion['fromuser_id'],
                     "to_user_id"   => $opinion['touser_id'],
-                    "rate"         => $opinion['rating'], // 1 - положительный, 0 - нейтральный, -1 - отрицательный
+                    "rate"         => $opinion['rating'], // 1 - РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№, 0 - РЅРµР№С‚СЂР°Р»СЊРЅС‹Р№, -1 - РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№
                     "text"         => $opinion['msgtext'] ? iconv( 'cp1251', 'utf-8', $opinion['msgtext'] ) : '',
                     "status"       => 1, // $opinion[''],
                     "create_time"  => strtotime($opinion['post_time']),
@@ -2235,9 +2235,9 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Возвращает часть ответа с контактной информацией о пользователе
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ С‡Р°СЃС‚СЊ РѕС‚РІРµС‚Р° СЃ РєРѕРЅС‚Р°РєС‚РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ
      * 
-     * @param  array $aData информация о пользователе из базы
+     * @param  array $aData РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ РёР· Р±Р°Р·С‹
      * @return array
      */
     private function _getUserContactsData( $aData ) {
@@ -2274,19 +2274,19 @@ class externalApi_Mobile extends externalApi {
     }
 
     /**
-     * Проверка устройства на валидность (платформа, уникальный индификатор устройства)
-     * Устанавливает соответствующие переменные класса
+     * РџСЂРѕРІРµСЂРєР° СѓСЃС‚СЂРѕР№СЃС‚РІР° РЅР° РІР°Р»РёРґРЅРѕСЃС‚СЊ (РїР»Р°С‚С„РѕСЂРјР°, СѓРЅРёРєР°Р»СЊРЅС‹Р№ РёРЅРґРёС„РёРєР°С‚РѕСЂ СѓСЃС‚СЂРѕР№СЃС‚РІР°)
+     * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРµ РїРµСЂРµРјРµРЅРЅС‹Рµ РєР»Р°СЃСЃР°
      * 
-     * @param  array $aParams массив входящих данных
-     * @return bool true - успех, false - провал
+     * @param  array $aParams РјР°СЃСЃРёРІ РІС…РѕРґСЏС‰РёС… РґР°РЅРЅС‹С…
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     private function _validDevice( $aParams = array() ) {
         if ( !empty($this->_sUdid) && !empty($this->_sPlatform) ) {
             return true;
         }
         
-        $sUdid     = __paramValue( 'string', $aParams['udid'], null, true );  // Уникальный индификатор устройства (используется для Push сообщений)
-        $sPlatform = __paramValue( 'string', $aParams['agent'], null, true ); // Тип устройства: ios, android
+        $sUdid     = __paramValue( 'string', $aParams['udid'], null, true );  // РЈРЅРёРєР°Р»СЊРЅС‹Р№ РёРЅРґРёС„РёРєР°С‚РѕСЂ СѓСЃС‚СЂРѕР№СЃС‚РІР° (РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ Push СЃРѕРѕР±С‰РµРЅРёР№)
+        $sPlatform = __paramValue( 'string', $aParams['agent'], null, true ); // РўРёРї СѓСЃС‚СЂРѕР№СЃС‚РІР°: ios, android
         
         if ( empty($sUdid) ) {
             $this->error( EXTERNAL_ERR_EMPTY_UDID );
@@ -2307,7 +2307,7 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Устанавливает ошибки для параметра Логин
+     * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РѕС€РёР±РєРё РґР»СЏ РїР°СЂР°РјРµС‚СЂР° Р›РѕРіРёРЅ
      * 
      * @param type $obj
      */
@@ -2325,7 +2325,7 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Устанавливает ошибки для параметра Email
+     * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РѕС€РёР±РєРё РґР»СЏ РїР°СЂР°РјРµС‚СЂР° Email
      * 
      * @param type $obj
      */
@@ -2341,7 +2341,7 @@ class externalApi_Mobile extends externalApi {
 
 
     /**
-     * Устанавливает ошибки для параметра Пароль
+     * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РѕС€РёР±РєРё РґР»СЏ РїР°СЂР°РјРµС‚СЂР° РџР°СЂРѕР»СЊ
      * 
      * @param type $obj
      */
@@ -2358,7 +2358,7 @@ class externalApi_Mobile extends externalApi {
 
 
     /**
-     * Устанавливает ошибки для параметра Логин
+     * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РѕС€РёР±РєРё РґР»СЏ РїР°СЂР°РјРµС‚СЂР° Р›РѕРіРёРЅ
      * 
      * @param type $obj
      */
@@ -2373,7 +2373,7 @@ class externalApi_Mobile extends externalApi {
     }
     
     /**
-     * Устанавливает ошибки для параметра Роль
+     * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РѕС€РёР±РєРё РґР»СЏ РїР°СЂР°РјРµС‚СЂР° Р РѕР»СЊ
      * 
      * @param type $obj
      */
@@ -2387,11 +2387,11 @@ class externalApi_Mobile extends externalApi {
     }
 
     /**
-     * Добавляет PUSH сообщение в очередь
+     * Р”РѕР±Р°РІР»СЏРµС‚ PUSH СЃРѕРѕР±С‰РµРЅРёРµ РІ РѕС‡РµСЂРµРґСЊ
      *
-     * @param    integer    $user_id    ID пользователя
-     * @param    string     $type       Тип сообщения
-     * @param    array      $data       Данные сообщения
+     * @param    integer    $user_id    ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param    string     $type       РўРёРї СЃРѕРѕР±С‰РµРЅРёСЏ
+     * @param    array      $data       Р”Р°РЅРЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ
      */
     public function addPushMsg($user_id, $type, $data = array()) {
         global $DB;
@@ -2411,7 +2411,7 @@ class externalApi_Mobile extends externalApi {
                         if($push_settings['message_new']=='t') {
                             $user = new users;
                             $name  = $user->GetField($data['from_user_id'], $err, 'uname').' '.$user->GetField($data['from_user_id'], $err, 'usurname').' ['.$user->GetField($data['from_user_id'], $err, 'login').']';
-                            $msg = 'У вас новое сообщение от '.$name;
+                            $msg = 'РЈ РІР°СЃ РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РѕС‚ '.$name;
                             $type = 1;
                             $pdata['type'] = 1;
                             $pdata['text'] = $msg;
@@ -2422,7 +2422,7 @@ class externalApi_Mobile extends externalApi {
                     case 'prj_response':
                         if($push_settings['project_response_new']=='t') {
                             $user = new users;
-                            $msg = 'У вас новое предложение в проекте "'.$data['name'].'"';
+                            $msg = 'РЈ РІР°СЃ РЅРѕРІРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ РІ РїСЂРѕРµРєС‚Рµ "'.$data['name'].'"';
                             $type = 2;
                             $pdata['type'] = 2;
                             $pdata['text'] = $msg;
@@ -2433,7 +2433,7 @@ class externalApi_Mobile extends externalApi {
                         if($push_settings['project_select_candidate']=='t') {
                             $user = new users;
                             $name  = $user->GetField($data['from_user_id'], $err, 'uname').' '.$user->GetField($data['from_user_id'], $err, 'usurname').' ['.$user->GetField($data['from_user_id'], $err, 'login').']';
-                            $msg = $name.' выбрал вас кандидатом в проекте "'.$data['name'].'"';
+                            $msg = $name.' РІС‹Р±СЂР°Р» РІР°СЃ РєР°РЅРґРёРґР°С‚РѕРј РІ РїСЂРѕРµРєС‚Рµ "'.$data['name'].'"';
                             $type = 3;
                             $pdata['type'] = 3;
                             $pdata['text'] = $msg;
@@ -2444,7 +2444,7 @@ class externalApi_Mobile extends externalApi {
                         if($push_settings['project_select_performer']=='t') {
                             $user = new users;
                             $name  = $user->GetField($data['from_user_id'], $err, 'uname').' '.$user->GetField($data['from_user_id'], $err, 'usurname').' ['.$user->GetField($data['from_user_id'], $err, 'login').']';
-                            $msg = $name.' выбрал вас исполнителем в проекте "'.$data['name'].'"';
+                            $msg = $name.' РІС‹Р±СЂР°Р» РІР°СЃ РёСЃРїРѕР»РЅРёС‚РµР»РµРј РІ РїСЂРѕРµРєС‚Рµ "'.$data['name'].'"';
                             $type = 4;
                             $pdata['type'] = 4;
                             $pdata['text'] = $msg;
@@ -2455,7 +2455,7 @@ class externalApi_Mobile extends externalApi {
                         if($push_settings['project_select_reject']=='t') {
                             $user = new users;
                             $name  = $user->GetField($data['from_user_id'], $err, 'uname').' '.$user->GetField($data['from_user_id'], $err, 'usurname').' ['.$user->GetField($data['from_user_id'], $err, 'login').']';
-                            $msg = $name.' отказал вам в проекте "'.$data['name'].'"';
+                            $msg = $name.' РѕС‚РєР°Р·Р°Р» РІР°Рј РІ РїСЂРѕРµРєС‚Рµ "'.$data['name'].'"';
                             $type = 5;
                             $pdata['type'] = 5;
                             $pdata['text'] = $msg;
@@ -2475,8 +2475,8 @@ class externalApi_Mobile extends externalApi {
                             break;
                         
                         /*
-                         * @todo: Вырубил iOS Push сообщения так приложение нет AppStore
-                         * и постоянно возникает ошибка соединение на сокет
+                         * @todo: Р’С‹СЂСѓР±РёР» iOS Push СЃРѕРѕР±С‰РµРЅРёСЏ С‚Р°Рє РїСЂРёР»РѕР¶РµРЅРёРµ РЅРµС‚ AppStore
+                         * Рё РїРѕСЃС‚РѕСЏРЅРЅРѕ РІРѕР·РЅРёРєР°РµС‚ РѕС€РёР±РєР° СЃРѕРµРґРёРЅРµРЅРёРµ РЅР° СЃРѕРєРµС‚
                         case 'ios':
                             $dev_data = unserialize(base64_decode($push['data']));
                             $pdata['devicetoken'] = $dev_data['devicetoken'];
@@ -2490,9 +2490,9 @@ class externalApi_Mobile extends externalApi {
     }
 
     /**
-     * Отправка PUSH для Android
+     * РћС‚РїСЂР°РІРєР° PUSH РґР»СЏ Android
      *
-     * @param    array    $data    Данные сообщения
+     * @param    array    $data    Р”Р°РЅРЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ
      */
     public function sendPushAndroid($data) {
         $apiKey = self::GOOGLE_APIKEY;
@@ -2554,9 +2554,9 @@ class externalApi_Mobile extends externalApi {
     }
 
     /**
-     * Отправка PUSH для iOS
+     * РћС‚РїСЂР°РІРєР° PUSH РґР»СЏ iOS
      *
-     * @param    array    $data    Данные сообщения
+     * @param    array    $data    Р”Р°РЅРЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ
      */
     public function sendPushiOS($data) {
         switch($data['type']) {

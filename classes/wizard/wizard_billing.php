@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/classes/wizard/wizard.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/wizard/step_wizard.php';
 
 /**
- * Класс для работы с платными операциями заказанными в мастере
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РїР»Р°С‚РЅС‹РјРё РѕРїРµСЂР°С†РёСЏРјРё Р·Р°РєР°Р·Р°РЅРЅС‹РјРё РІ РјР°СЃС‚РµСЂРµ
  *  
  */
 class wizard_billing
@@ -15,9 +15,9 @@ class wizard_billing
     }
     
     /**
-     * Обработка оплаты операций
+     * РћР±СЂР°Р±РѕС‚РєР° РѕРїР»Р°С‚С‹ РѕРїРµСЂР°С†РёР№
      * 
-     * @param type $operations  Операции к оплате
+     * @param type $operations  РћРїРµСЂР°С†РёРё Рє РѕРїР»Р°С‚Рµ
      * @return boolean 
      */
     function paymentOptions($operations) {
@@ -33,7 +33,7 @@ class wizard_billing
         $payed_operation = $this->getDraftAccountOperationsByIds($operations, $this->uid);
         $account = new account;
         if($payed_operation) {
-            // выбран ли или уже куплен аккаунт ПРО
+            // РІС‹Р±СЂР°РЅ Р»Рё РёР»Рё СѓР¶Рµ РєСѓРїР»РµРЅ Р°РєРєР°СѓРЅС‚ РџР Рћ
             $is_pro = is_pro();
             if (!$is_pro) {
                 foreach($payed_operation as $option) {
@@ -43,7 +43,7 @@ class wizard_billing
                     }
                 }
             }
-            // перебираем все позиции и переделываем с учетом ПРО
+            // РїРµСЂРµР±РёСЂР°РµРј РІСЃРµ РїРѕР·РёС†РёРё Рё РїРµСЂРµРґРµР»С‹РІР°РµРј СЃ СѓС‡РµС‚РѕРј РџР Рћ
             if ($is_pro) {
                 foreach($payed_operation as &$option) {
                     switch($option['op_code']) {
@@ -80,7 +80,7 @@ class wizard_billing
     }
     
     /**
-     * Обработка и оплата операций
+     * РћР±СЂР°Р±РѕС‚РєР° Рё РѕРїР»Р°С‚Р° РѕРїРµСЂР°С†РёР№
      * 
      * @global type $DB
      * @param type $option
@@ -91,15 +91,15 @@ class wizard_billing
         $ok = false;
         $account = new account();
         switch($option['op_code']) {
-            // Аккаунт ПРО у фрилансера
+            // РђРєРєР°СѓРЅС‚ РџР Рћ Сѓ С„СЂРёР»Р°РЅСЃРµСЂР°
             case 48:
             case 49:
             case 50:
             case 51:
             case 76:
-                // Удаляем операции по покупке ответов - публикуем ответы
+                // РЈРґР°Р»СЏРµРј РѕРїРµСЂР°С†РёРё РїРѕ РїРѕРєСѓРїРєРµ РѕС‚РІРµС‚РѕРІ - РїСѓР±Р»РёРєСѓРµРј РѕС‚РІРµС‚С‹
                 $prof = new payed();
-                $ok   = $prof->SetOrderedTarif($this->uid, $transaction_id, 1, "Аккаунт PRO", $option['op_code'], $error);
+                $ok   = $prof->SetOrderedTarif($this->uid, $transaction_id, 1, "РђРєРєР°СѓРЅС‚ PRO", $option['op_code'], $error);
                 if($ok) {
                     $_SESSION['pro_last'] = payed::ProLast($_SESSION['login']);
                     $_SESSION['pro_last'] = $_SESSION['pro_last']['freeze_to'] ? false : $_SESSION['pro_last']['cnt'];
@@ -119,17 +119,17 @@ class wizard_billing
                     $this->showProjectsFeedbacks();
                 }
                 break; 
-            // Аккаунт ПРО у работодателя
+            // РђРєРєР°СѓРЅС‚ РџР Рћ Сѓ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ
             case 15:
                 $prof = new payed();
-                $ok   = $prof->SetOrderedTarif($this->uid, $transaction_id, 1, "Аккаунт PRO", $option['op_code'], $error);
+                $ok   = $prof->SetOrderedTarif($this->uid, $transaction_id, 1, "РђРєРєР°СѓРЅС‚ PRO", $option['op_code'], $error);
                 if($ok) {
                     $_SESSION['pro_last'] = payed::ProLast($_SESSION['login']);
                     $_SESSION['pro_last'] = $_SESSION['pro_last']['freeze_to'] ? false : $_SESSION['pro_last']['cnt'];
                     $userdata = new users();
                     $_SESSION['pro_test'] = $userdata->GetField($this->uid, $error2, 'is_pro_test', false);
                 }
-                // Обновляем выбор цвета для проектов тк он для ПРО бесплатный
+                // РћР±РЅРѕРІР»СЏРµРј РІС‹Р±РѕСЂ С†РІРµС‚Р° РґР»СЏ РїСЂРѕРµРєС‚РѕРІ С‚Рє РѕРЅ РґР»СЏ РџР Рћ Р±РµСЃРїР»Р°С‚РЅС‹Р№
                 $colorProjects = $this->updateColorProject();
                 $prj = new new_projects();
                 foreach($colorProjects as $k=>$project) {
@@ -143,19 +143,19 @@ class wizard_billing
                     $project['is_color']    = 't';
                     $prj->editPrj($project, false);
                 }
-                // Удаляем данные операции
+                // РЈРґР°Р»СЏРµРј РґР°РЅРЅС‹Рµ РѕРїРµСЂР°С†РёРё
                 if($delete_color) {
                     $this->deleteDraftAccountOperation($delete_color);
                 }
                 break;
-            // Публикация конкурса
+            // РџСѓР±Р»РёРєР°С†РёСЏ РєРѕРЅРєСѓСЂСЃР°
             case new_projects::OPCODE_KON:
             case new_projects::OPCODE_KON_NOPRO:
                 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/wizard/step_wizard_registration.php';
                 
                 $drafts  = new drafts();
                 $draft   = $drafts->getDraft($option['parent_id'], $this->uid, 1);
-                // Если еще не опубликован
+                // Р•СЃР»Рё РµС‰Рµ РЅРµ РѕРїСѓР±Р»РёРєРѕРІР°РЅ
                 if(!$draft['prj_id']) {
                     $project_id = $draft['id'];
                     $error = $account->Buy($bill_id, $transaction_id, $option['op_code'], $this->uid, $option['descr'], $option['comment'], 1, 0);
@@ -197,7 +197,7 @@ class wizard_billing
                         
                         $prj->addPrj($draft, $files);                        
                         $prj->saveSpecs($draft["id"], $spec);
-                        // смотрим были ли выбраны платные опции для опубликованного конкурса
+                        // СЃРјРѕС‚СЂРёРј Р±С‹Р»Рё Р»Рё РІС‹Р±СЂР°РЅС‹ РїР»Р°С‚РЅС‹Рµ РѕРїС†РёРё РґР»СЏ РѕРїСѓР±Р»РёРєРѕРІР°РЅРЅРѕРіРѕ РєРѕРЅРєСѓСЂСЃР°
                         if($draft['id'] != $project_id && $draft['id'] > 0) {
                             if($this->sleep[$project_id]) {
                                 foreach($this->sleep[$project_id] as $k=>$opt) {
@@ -205,7 +205,7 @@ class wizard_billing
                                     $this->billingOperation($opt);
                                 }
                             } else {
-                                //Обновляем родителя на всякий случай
+                                //РћР±РЅРѕРІР»СЏРµРј СЂРѕРґРёС‚РµР»СЏ РЅР° РІСЃСЏРєРёР№ СЃР»СѓС‡Р°Р№
                                 $update = array("parent_id" => $draft['id']);
                                 $DB->update("draft_account_operations", $update, "parent_id = ? AND op_type = 'contest' AND uid = ?", $project_id, wizard::getUserIDReg()); 
                                 $this->sleep_parent[$project_id] = $draft['id'];
@@ -216,7 +216,7 @@ class wizard_billing
                     }
                 }
                 break;
-            // Платный проект/конкурс
+            // РџР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚/РєРѕРЅРєСѓСЂСЃ
             case 53:
                 $prj = new new_projects();
                 if($this->sleep_parent[$option['parent_id']]) {
@@ -303,14 +303,14 @@ class wizard_billing
                 }
                 
                 break;
-            // Платные ответы на проекты
+            // РџР»Р°С‚РЅС‹Рµ РѕС‚РІРµС‚С‹ РЅР° РїСЂРѕРµРєС‚С‹
             case 61:
                 $answers = new projects_offers_answers();
                 $error = $answers->BuyByFM($this->uid, $option['op_count'], $transaction_id, 0);
                 if (!$error) {
                     $ok = true;
                     $_SESSION['answers_ammount'] = $option['op_count'];
-                    // Публикуем ответы
+                    // РџСѓР±Р»РёРєСѓРµРј РѕС‚РІРµС‚С‹
                     $step_frl = new step_freelancer();
                     $offers   = $step_frl->getWizardOffers($this->uid, $option['op_count']);
                     if($offers) {
@@ -328,7 +328,7 @@ class wizard_billing
     }
     
     /**
-     * Обновляем проекты если были выбраны опции выделения цветом и куплен ПРО аккаунт
+     * РћР±РЅРѕРІР»СЏРµРј РїСЂРѕРµРєС‚С‹ РµСЃР»Рё Р±С‹Р»Рё РІС‹Р±СЂР°РЅС‹ РѕРїС†РёРё РІС‹РґРµР»РµРЅРёСЏ С†РІРµС‚РѕРј Рё РєСѓРїР»РµРЅ РџР Рћ Р°РєРєР°СѓРЅС‚
      * 
      * @global type $DB
      * @return type 
@@ -343,10 +343,10 @@ class wizard_billing
     }
     
     /**
-     * Удаляем операции которые блокируются при покупке ПРО
+     * РЈРґР°Р»СЏРµРј РѕРїРµСЂР°С†РёРё РєРѕС‚РѕСЂС‹Рµ Р±Р»РѕРєРёСЂСѓСЋС‚СЃСЏ РїСЂРё РїРѕРєСѓРїРєРµ РџР Рћ
      * 
      * @global type $DB
-     * @param type $op_code Код операции
+     * @param type $op_code РљРѕРґ РѕРїРµСЂР°С†РёРё
      * @return type 
      */
     function clearBlockedOperations($op_code, $option = false) {
@@ -356,7 +356,7 @@ class wizard_billing
     }
     
     /**
-     * Удаляем оплаченные операции
+     * РЈРґР°Р»СЏРµРј РѕРїР»Р°С‡РµРЅРЅС‹Рµ РѕРїРµСЂР°С†РёРё
      * 
      * @global type $DB
      * @param type $id
@@ -373,10 +373,10 @@ class wizard_billing
     }
     
     /**
-     * Возвращает операции по Ид пользователя
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕРїРµСЂР°С†РёРё РїРѕ РРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * 
      * @global type $DB
-     * @param type $uid Ид пользователя
+     * @param type $uid РРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * @return boolean 
      */
     public function getDraftAccountOperations($uid = false) {
@@ -392,10 +392,10 @@ class wizard_billing
     }
     
     /**
-     * Возвращает операции по Ид операции
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕРїРµСЂР°С†РёРё РїРѕ РРґ РѕРїРµСЂР°С†РёРё
      * 
      * @global type $DB
-     * @param array|integer $operations  Ид операций, может быть массив ИД
+     * @param array|integer $operations  РРґ РѕРїРµСЂР°С†РёР№, РјРѕР¶РµС‚ Р±С‹С‚СЊ РјР°СЃСЃРёРІ РР”
      * @param integer $uid
      * @return array 
      */
@@ -421,11 +421,11 @@ class wizard_billing
     }
     
     /**
-     * Добавляем платную операцию
+     * Р”РѕР±Р°РІР»СЏРµРј РїР»Р°С‚РЅСѓСЋ РѕРїРµСЂР°С†РёСЋ
      * 
      * @global type $DB
-     * @param array $insert  Данные для записи
-     * @return integer ID опции 
+     * @param array $insert  Р”Р°РЅРЅС‹Рµ РґР»СЏ Р·Р°РїРёСЃРё
+     * @return integer ID РѕРїС†РёРё 
      */
     public function addPaidOption($insert) {
         global $DB;
@@ -434,11 +434,11 @@ class wizard_billing
     }
     
     /**
-     * Редактируем платную опцию
+     * Р РµРґР°РєС‚РёСЂСѓРµРј РїР»Р°С‚РЅСѓСЋ РѕРїС†РёСЋ
      * 
      * @global type $DB
-     * @param array   $update  Данные для редактирования
-     * @param integer $id      ИД операции
+     * @param array   $update  Р”Р°РЅРЅС‹Рµ РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+     * @param integer $id      РР” РѕРїРµСЂР°С†РёРё
      * @return boolean
      */
     public function editPaidOption($update, $id) {
@@ -448,10 +448,10 @@ class wizard_billing
     }
     
     /**
-     * Берем платные операции пользователя по Ид операции
+     * Р‘РµСЂРµРј РїР»Р°С‚РЅС‹Рµ РѕРїРµСЂР°С†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ РРґ РѕРїРµСЂР°С†РёРё
      * 
      * @global type $DB
-     * @param integer|array $id  Ид операции или массив ИД операций
+     * @param integer|array $id  РРґ РѕРїРµСЂР°С†РёРё РёР»Рё РјР°СЃСЃРёРІ РР” РѕРїРµСЂР°С†РёР№
      * @return array 
      */
     public function getPaidOptionById($id) {
@@ -465,10 +465,10 @@ class wizard_billing
     }
     
     /**
-     * Удаляем платные операции
+     * РЈРґР°Р»СЏРµРј РїР»Р°С‚РЅС‹Рµ РѕРїРµСЂР°С†РёРё
      * 
      * @global type $DB
-     * @param array $delete Массив Ид для удаления
+     * @param array $delete РњР°СЃСЃРёРІ РРґ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ
      * @return boolean 
      */
     public function deletePaidOptions($delete) {
@@ -478,10 +478,10 @@ class wizard_billing
     }
     
     /**
-     * Выбираем платные опции которые будем оплачивать, удаляем те которые не выбирали
+     * Р’С‹Р±РёСЂР°РµРј РїР»Р°С‚РЅС‹Рµ РѕРїС†РёРё РєРѕС‚РѕСЂС‹Рµ Р±СѓРґРµРј РѕРїР»Р°С‡РёРІР°С‚СЊ, СѓРґР°Р»СЏРµРј С‚Рµ РєРѕС‚РѕСЂС‹Рµ РЅРµ РІС‹Р±РёСЂР°Р»Рё
      *  
-     * @param array $option     Платные операции пользователя
-     * @param array $selected   Выбранные к оплате платные операции пользователя
+     * @param array $option     РџР»Р°С‚РЅС‹Рµ РѕРїРµСЂР°С†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param array $selected   Р’С‹Р±СЂР°РЅРЅС‹Рµ Рє РѕРїР»Р°С‚Рµ РїР»Р°С‚РЅС‹Рµ РѕРїРµСЂР°С†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      */
     public function selectedPaidOption($options, $selected) {
         if($options) {
@@ -496,7 +496,7 @@ class wizard_billing
             }
             
             if($delete) {
-                // Удаляем не выбранные опции
+                // РЈРґР°Р»СЏРµРј РЅРµ РІС‹Р±СЂР°РЅРЅС‹Рµ РѕРїС†РёРё
                 $this->updateParentsOptions($delete);
                 $this->deletePaidOptions($delete);
             }
@@ -508,9 +508,9 @@ class wizard_billing
     }
     
     /**
-     * Обновляем родителей платных опций при их удалении
+     * РћР±РЅРѕРІР»СЏРµРј СЂРѕРґРёС‚РµР»РµР№ РїР»Р°С‚РЅС‹С… РѕРїС†РёР№ РїСЂРё РёС… СѓРґР°Р»РµРЅРёРё
      * 
-     * @param array $selected    Массив Ид выбранных на удаление опции
+     * @param array $selected    РњР°СЃСЃРёРІ РРґ РІС‹Р±СЂР°РЅРЅС‹С… РЅР° СѓРґР°Р»РµРЅРёРµ РѕРїС†РёРё
      */
     public function updateParentsOptions($selected) {
         global $DB;
@@ -519,25 +519,25 @@ class wizard_billing
         if($options) {
             foreach ($options as $key => $option) {
                 switch ($option['op_code']) {
-                    // Платный проект
+                    // РџР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚
                     case 53:
                         switch ($option['option']) {
-                            // Выделение на верху
+                            // Р’С‹РґРµР»РµРЅРёРµ РЅР° РІРµСЂС…Сѓ
                             case 1:
                                 $sql = "UPDATE wizard_projects SET top_count = null, payed = payed - {$option['ammount']} 
                                         WHERE id = ? AND wiz_uid = ?";
                                 break;
-                            // Выделение цветом
+                            // Р’С‹РґРµР»РµРЅРёРµ С†РІРµС‚РѕРј
                             case 2:
                                 $sql = "UPDATE wizard_projects SET is_color = false, payed = payed - {$option['ammount']} 
                                         WHERE id = ? AND wiz_uid = ?";
                                 break;
-                            // Выделение текста
+                            // Р’С‹РґРµР»РµРЅРёРµ С‚РµРєСЃС‚Р°
                             case 3:
                                 $sql = "UPDATE wizard_projects SET is_bold = false, payed = payed - {$option['ammount']} 
                                         WHERE id = ? AND wiz_uid = ?";
                                 break;
-                            // Логотип
+                            // Р›РѕРіРѕС‚РёРї
                             case 4:
                                 $logo = $DB->val("SELECT logo_id FROM wizard_projects WHERE id = ? AND wiz_uid = ?", $option['parent'], step_wizard::getWizardUserID());
                                 $cfile = new CFile();
@@ -549,7 +549,7 @@ class wizard_billing
                         
                         $DB->query($sql, $option['parent'], step_wizard::getWizardUserID());
                         break;
-                    // Конкурс -- Удалять не будем конкурс из базы тк мы конкурс все равно пишем в черновик и потом пользователь может его опубликовать и оплатить 
+                    // РљРѕРЅРєСѓСЂСЃ -- РЈРґР°Р»СЏС‚СЊ РЅРµ Р±СѓРґРµРј РєРѕРЅРєСѓСЂСЃ РёР· Р±Р°Р·С‹ С‚Рє РјС‹ РєРѕРЅРєСѓСЂСЃ РІСЃРµ СЂР°РІРЅРѕ РїРёС€РµРј РІ С‡РµСЂРЅРѕРІРёРє Рё РїРѕС‚РѕРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РјРѕР¶РµС‚ РµРіРѕ РѕРїСѓР±Р»РёРєРѕРІР°С‚СЊ Рё РѕРїР»Р°С‚РёС‚СЊ 
                     case 9:
                         //$this->_db->query("DELETE FROM wizard_projects WHERE id = ?i AND wiz_uid = ?", $option['parent'], step_wizard::getWizardUserID());
                         break;
@@ -559,12 +559,12 @@ class wizard_billing
     }
     
     /**
-     * Переносим все выбранные платные операции в черновики операций
+     * РџРµСЂРµРЅРѕСЃРёРј РІСЃРµ РІС‹Р±СЂР°РЅРЅС‹Рµ РїР»Р°С‚РЅС‹Рµ РѕРїРµСЂР°С†РёРё РІ С‡РµСЂРЅРѕРІРёРєРё РѕРїРµСЂР°С†РёР№
      * 
-     * @param array $selected Платные операции
+     * @param array $selected РџР»Р°С‚РЅС‹Рµ РѕРїРµСЂР°С†РёРё
      */
     public function transferPaidOptionsToDraft($selected) {
-        // На всякий случай берем переносимые опции из базы чтобы не было подлогов
+        // РќР° РІСЃСЏРєРёР№ СЃР»СѓС‡Р°Р№ Р±РµСЂРµРј РїРµСЂРµРЅРѕСЃРёРјС‹Рµ РѕРїС†РёРё РёР· Р±Р°Р·С‹ С‡С‚РѕР±С‹ РЅРµ Р±С‹Р»Рѕ РїРѕРґР»РѕРіРѕРІ
         $options = $this->getPaidOptionById($selected);
         $log  = new log('wizard/transfer-'.SERVER.'-%d.log', 'a', '%d.%m.%Y %H:%M:%S : ');
         if($options) {
@@ -583,73 +583,73 @@ class wizard_billing
     }
     
     /**
-     * Создание отложенной платной опции на основе опции созданной в мастере
+     * РЎРѕР·РґР°РЅРёРµ РѕС‚Р»РѕР¶РµРЅРЅРѕР№ РїР»Р°С‚РЅРѕР№ РѕРїС†РёРё РЅР° РѕСЃРЅРѕРІРµ РѕРїС†РёРё СЃРѕР·РґР°РЅРЅРѕР№ РІ РјР°СЃС‚РµСЂРµ
      *  
-     * @param type $option  Данные опции созданной в мастере @see table - wizad_billing
+     * @param type $option  Р”Р°РЅРЅС‹Рµ РѕРїС†РёРё СЃРѕР·РґР°РЅРЅРѕР№ РІ РјР°СЃС‚РµСЂРµ @see table - wizad_billing
      * @return null|boolean     
      */
     public function createDraftAccountOperation($option) {
         global $DB;
         switch($option['op_code']) {
-            // Публикация конкурса
+            // РџСѓР±Р»РёРєР°С†РёСЏ РєРѕРЅРєСѓСЂСЃР°
             case 9:
             case 106:
-                $descr     = "Публикация конкурса";
+                $descr     = "РџСѓР±Р»РёРєР°С†РёСЏ РєРѕРЅРєСѓСЂСЃР°";
                 $count     = 1;
                 $op_type   = 'contest';
                 $parent_id = $option['parent'];
                 $src_id = $str_option = null;
                 break;
-            // Платный проект/конкурс
+            // РџР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚/РєРѕРЅРєСѓСЂСЃ
             case 53:
                 $step_emp = new step_employer();
                 $project   = $step_emp->getProjectById($option['parent']);
                 $parent_id = $option['parent'];
                 if($project['kind'] == 7) {
-                    $title   = "конкурс";
+                    $title   = "РєРѕРЅРєСѓСЂСЃ";
                     $op_type = 'contest';
                 } else {
-                    $title   = "проект";
+                    $title   = "РїСЂРѕРµРєС‚";
                     $op_type = 'project';
                 }
                 $count  = 1;
                 $src_id = $str_option = null;
-                $descr  = "Платный {$title} / ";
+                $descr  = "РџР»Р°С‚РЅС‹Р№ {$title} / ";
                 switch($option['option']) {
                     case step_employer::PROJECT_OPTION_TOP:
                         $str_option  = 'top';
                         $count   = $project['top_count'];
-                        $descr  .= "закрепление наверху на " . (int)$project['top_count'] . " ". ending($project['top_count'], "день", "дня", "дней");
+                        $descr  .= "Р·Р°РєСЂРµРїР»РµРЅРёРµ РЅР°РІРµСЂС…Сѓ РЅР° " . (int)$project['top_count'] . " ". ending($project['top_count'], "РґРµРЅСЊ", "РґРЅСЏ", "РґРЅРµР№");
                         break;
                     case step_employer::PROJECT_OPTION_COLOR:
                         $str_option  = 'color';
-                        $descr  .= "подсветка фоном";
+                        $descr  .= "РїРѕРґСЃРІРµС‚РєР° С„РѕРЅРѕРј";
                         break;
                     case step_employer::PROJECT_OPTION_BOLD:
                         $str_option  = 'bold';
-                        $descr  .= "жирный шрифт";
+                        $descr  .= "Р¶РёСЂРЅС‹Р№ С€СЂРёС„С‚";
                         break;
                     case step_employer::PROJECT_OPTION_LOGO: 
                         $str_option  = 'logo';
-                        $descr  .= "логотип";
+                        $descr  .= "Р»РѕРіРѕС‚РёРї";
                         $src_id  = $project['logo_id'];
                         break;
                 }
                 break;
-            // Покупка аккаунта ПРО
+            // РџРѕРєСѓРїРєР° Р°РєРєР°СѓРЅС‚Р° РџР Рћ
             case 48:
             case 49:
             case 50:
             case 51:
             case 76:
             case 15:
-                $descr = "Аккаунт PRO";
+                $descr = "РђРєРєР°СѓРЅС‚ PRO";
                 $count = 1;
                 $src_id = $parent_id = $str_option = $op_type = null;
                 break;
-            // Покупка платных ответов
+            // РџРѕРєСѓРїРєР° РїР»Р°С‚РЅС‹С… РѕС‚РІРµС‚РѕРІ
             case step_freelancer::OFFERS_OP_CODE:
-                $descr  = "Покупка ответов на проекты (кол-во: {$option['option']})";
+                $descr  = "РџРѕРєСѓРїРєР° РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚С‹ (РєРѕР»-РІРѕ: {$option['option']})";
                 $count  = $option['option'];
                 $src_id = $parent_id = $str_option = $op_type = null;
                 break;
@@ -680,7 +680,7 @@ class wizard_billing
     }
     
     /**
-     * Платные опции выбранные пользователем
+     * РџР»Р°С‚РЅС‹Рµ РѕРїС†РёРё РІС‹Р±СЂР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
      * 
      * @return array 
      */
@@ -696,8 +696,8 @@ class wizard_billing
     }
     
     /**
-     * удаляет все платные опции пользователя или только для конкретного проекта
-     * @param integer $parent = null : родитель платной опции (например id проекта)
+     * СѓРґР°Р»СЏРµС‚ РІСЃРµ РїР»Р°С‚РЅС‹Рµ РѕРїС†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР»Рё С‚РѕР»СЊРєРѕ РґР»СЏ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РїСЂРѕРµРєС‚Р°
+     * @param integer $parent = null : СЂРѕРґРёС‚РµР»СЊ РїР»Р°С‚РЅРѕР№ РѕРїС†РёРё (РЅР°РїСЂРёРјРµСЂ id РїСЂРѕРµРєС‚Р°)
      */
     function clearPayedOptions ($parent = null) {
         global $DB;
@@ -711,7 +711,7 @@ class wizard_billing
     }
     
     /**
-     * Отображаем отзывы к проектам, которые он оставил, пока не был ПРО
+     * РћС‚РѕР±СЂР°Р¶Р°РµРј РѕС‚Р·С‹РІС‹ Рє РїСЂРѕРµРєС‚Р°Рј, РєРѕС‚РѕСЂС‹Рµ РѕРЅ РѕСЃС‚Р°РІРёР», РїРѕРєР° РЅРµ Р±С‹Р» РџР Рћ
      * 
      * @global type $DB
      * @return type 

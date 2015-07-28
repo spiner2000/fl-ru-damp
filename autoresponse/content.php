@@ -1,15 +1,15 @@
 <div class="b-layout__right b-layout__right_relative b-layout__left_width_72ps">
-    <h1 class="b-page__title">Автоответы на проект</h1>
+    <h1 class="b-page__title">РђРІС‚РѕРѕС‚РІРµС‚С‹ РЅР° РїСЂРѕРµРєС‚</h1>
 
     <div class="b-page__filter">
         <div class="b-menu b-menu_line b-menu_relative b-menu_padbot_10">
             <div class="b-menu__filter"></div>
 
             <ul class="b-menu__list">
-                <li class="b-menu__item "><a href="/projects/?kind=5" class="b-menu__link"><span class="b-page__desktop">Вся работа</span><span class="b-page__ipad b-page__iphone">Все</span></a></li>
-                <li class="b-menu__item "><a class="b-menu__link" href="/projects/?kind=1">Проекты</a></li>
-                <li class="b-menu__item "><a class="b-menu__link" href="/projects/?kind=4">Вакансии</a></li>
-                <li class="b-menu__item "><a class="b-menu__link" href="/konkurs/">Конкурсы</a></li>
+                <li class="b-menu__item "><a href="/projects/?kind=5" class="b-menu__link"><span class="b-page__desktop">Р’СЃСЏ СЂР°Р±РѕС‚Р°</span><span class="b-page__ipad b-page__iphone">Р’СЃРµ</span></a></li>
+                <li class="b-menu__item "><a class="b-menu__link" href="/projects/?kind=1">РџСЂРѕРµРєС‚С‹</a></li>
+                <li class="b-menu__item "><a class="b-menu__link" href="/projects/?kind=4">Р’Р°РєР°РЅСЃРёРё</a></li>
+                <li class="b-menu__item "><a class="b-menu__link" href="/konkurs/">РљРѕРЅРєСѓСЂСЃС‹</a></li>
             </ul>
         </div>
     </div>
@@ -19,17 +19,17 @@
         <?php /*
         <div class="b-layout b-layout_padtop_20 b-layout_padbot_20 b-layout_bordbot_b2">            
             <?php
-                //Для примера
+                //Р”Р»СЏ РїСЂРёРјРµСЂР°
                 require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/quick_payment.common.php");
                 $xajax->printJavascript('/xajax/');
             ?>
             
             <?=quickPaymentPopupAutoresponse::getInstance()->render(array('reserve_price' => 77777))?>
             
-            <div class="b-layout__txt b-layout__txt_padbot_20">Составьте текст ответа и он будет добавляться автоматически к проектам по выбранным вами критериям. <br>Стоимость одного автоответа — <?=autoresponse::$config['price']?> руб.</div>
+            <div class="b-layout__txt b-layout__txt_padbot_20">РЎРѕСЃС‚Р°РІСЊС‚Рµ С‚РµРєСЃС‚ РѕС‚РІРµС‚Р° Рё РѕРЅ Р±СѓРґРµС‚ РґРѕР±Р°РІР»СЏС‚СЊСЃСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё Рє РїСЂРѕРµРєС‚Р°Рј РїРѕ РІС‹Р±СЂР°РЅРЅС‹Рј РІР°РјРё РєСЂРёС‚РµСЂРёСЏРј. <br>РЎС‚РѕРёРјРѕСЃС‚СЊ РѕРґРЅРѕРіРѕ Р°РІС‚РѕРѕС‚РІРµС‚Р° вЂ” <?=autoresponse::$config['price']?> СЂСѓР±.</div>
             
             <?php if (!$form->hasErrors()): ?>
-                <a class="b-button b-button_flat b-button_flat_green" href="#" onclick="this.getNext('.b-layout').removeClass('b-layout_hide');this.dispose();return false;">Добавить автоответ</a>
+                <a class="b-button b-button_flat b-button_flat_green" href="#" onclick="this.getNext('.b-layout').removeClass('b-layout_hide');this.dispose();return false;">Р”РѕР±Р°РІРёС‚СЊ Р°РІС‚РѕРѕС‚РІРµС‚</a>
             <?php endif; ?>
 
             <iframe name="quick_ar_iframe" id="quick_ar_iframe" style="display: none;"></iframe>
@@ -52,12 +52,12 @@
 
                             <tr class="b-layout__tr">
                                 <td class="b-layout__td b-layout__td_padbot_10" colspan="2">
-                                    <h3 class="b-layout__h3">Критерии выбора проектов</h3>
+                                    <h3 class="b-layout__h3">РљСЂРёС‚РµСЂРёРё РІС‹Р±РѕСЂР° РїСЂРѕРµРєС‚РѕРІ</h3>
                                 </td>
                             </tr>
 
                             <tr class="b-layout__tr">
-                                <td class="b-layout__td b-layout__td_width_120 b-layout__td_padbot_20"><div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_2">Специализация</div></td>
+                                <td class="b-layout__td b-layout__td_width_120 b-layout__td_padbot_20"><div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_2">РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ</div></td>
                                 <td class="b-layout__td b-layout__td_padbot_20">
                                     <div class="b-combo b-combo__input_width_250 b-combo_margright_5 b-combo_zindex_3">
                                       <div class="b-combo__input b-combo__input_width_250 b-combo__input_multi_dropdown 
@@ -66,7 +66,7 @@
                                            b-combo__input_init_professionsList sort_abc  
                                            drop_down_default_0 multi_drop_down_default_column_0 
                                            exclude_value_0_0 sort_abc">
-                                          <input id="filter_category" class="b-combo__input-text" name="filter_category" type="text" size="80" value="Все специализации" />
+                                          <input id="filter_category" class="b-combo__input-text" name="filter_category" type="text" size="80" value="Р’СЃРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё" />
                                           <span class="b-combo__arrow"></span>
                                       </div>
                                     </div>
@@ -86,7 +86,7 @@
                                 <td colspan="3">
                                      <a href="javascript:void(0);" id="ar-save-btn" 
                                         class="b-button b-button_flat b-button_flat_green">
-                                            Купить за <span id="ar-submit-price"><?=autoresponse::$config['default_quantity'] * autoresponse::$config['price']?></span> руб.
+                                            РљСѓРїРёС‚СЊ Р·Р° <span id="ar-submit-price"><?=autoresponse::$config['default_quantity'] * autoresponse::$config['price']?></span> СЂСѓР±.
                                      </a>
                                 </td>                                 
                             </tr>
@@ -101,14 +101,14 @@
         <?php if ($autoresponse_list): ?>
             <?php foreach ($autoresponse_list as $response): ?>
                 <div class="b-layout b-layout_padtop_30 b-layout_padbot_50 b-layout_bordbot_b2">
-                    <div class="b-layout__txt b-layout__txt_float_right b-layout__txt_bold">Осталось автоответов: <?=$response->data['remained']?></div>
+                    <div class="b-layout__txt b-layout__txt_float_right b-layout__txt_bold">РћСЃС‚Р°Р»РѕСЃСЊ Р°РІС‚РѕРѕС‚РІРµС‚РѕРІ: <?=$response->data['remained']?></div>
                     <div class="b-layout__txt b-layout__txt_padbot_10">
                         <span class="b-layout__bold">
-                            Куплено автоответов: <?=$response->data['total']?> 
+                            РљСѓРїР»РµРЅРѕ Р°РІС‚РѕРѕС‚РІРµС‚РѕРІ: <?=$response->data['total']?> 
                         </span>
                         &mdash; 
                         <span class="b-layout__txt b-layout__txt_color_808080">
-                            <?=dateFormat("d.m.Y в H:i", $response->data['payed_date'])?>
+                            <?=dateFormat("d.m.Y РІ H:i", $response->data['payed_date'])?>
                         </span>
                     </div>
                     <div class="b-fon b-fon_bg_fa b-fon_pad_20">
@@ -116,11 +116,11 @@
                             <?=reformat($stop_words->replace(htmlspecialchars($response->data['descr'])), 30, 0, 0, 1)?>
                         </div>
                         <?php if ($response->toBoolean($response->data['only_4_cust'])):?>
-                            <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_000">Автоответ виден только заказчику (автору проекта).</div>
+                            <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_000">РђРІС‚РѕРѕС‚РІРµС‚ РІРёРґРµРЅ С‚РѕР»СЊРєРѕ Р·Р°РєР°Р·С‡РёРєСѓ (Р°РІС‚РѕСЂСѓ РїСЂРѕРµРєС‚Р°).</div>
                         <?php endif; ?>
                         <?php if ($response->data['filter_subcategory_id'] || $response->data['filter_category_id']): ?>
                             <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_000">
-                                Размещение в специализации:
+                                Р Р°Р·РјРµС‰РµРЅРёРµ РІ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё:
                                 <?php if ($response->data['filter_subcategory_id']): ?> 
                                     <?=professions::GetProfNameWP($response->data['filter_subcategory_id'], ' / ')?>
                                 <?php elseif ($response->data['filter_category_id']): ?>
@@ -130,13 +130,13 @@
                         <?php endif; ?>
                         <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_000">
                             <?php if ($response->data['filter_budget']): ?>                            
-                                <?php $currencyList = array('USD', 'евро', 'руб'); ?>
-                                <?php $pricebyList = array(1 => 'за час', 2 => 'за день', 3 => 'за месяц', 4 => 'за проект'); ?>
-                                Бюджет проектов: от <?=$response->data['filter_budget']?> 
-                                <?=isset($currencyList[$response->data['filter_budget_currency']])?$currencyList[$response->data['filter_budget_currency']]:' руб'?>
-                                <?=isset($pricebyList[$response->data['filter_budget_priceby']])?$pricebyList[$response->data['filter_budget_priceby']]:' за проект'?>
+                                <?php $currencyList = array('USD', 'РµРІСЂРѕ', 'СЂСѓР±'); ?>
+                                <?php $pricebyList = array(1 => 'Р·Р° С‡Р°СЃ', 2 => 'Р·Р° РґРµРЅСЊ', 3 => 'Р·Р° РјРµСЃСЏС†', 4 => 'Р·Р° РїСЂРѕРµРєС‚'); ?>
+                                Р‘СЋРґР¶РµС‚ РїСЂРѕРµРєС‚РѕРІ: РѕС‚ <?=$response->data['filter_budget']?> 
+                                <?=isset($currencyList[$response->data['filter_budget_currency']])?$currencyList[$response->data['filter_budget_currency']]:' СЂСѓР±'?>
+                                <?=isset($pricebyList[$response->data['filter_budget_priceby']])?$pricebyList[$response->data['filter_budget_priceby']]:' Р·Р° РїСЂРѕРµРєС‚'?>
                             <?php else: ?>
-                                Бюджет проектов: любой
+                                Р‘СЋРґР¶РµС‚ РїСЂРѕРµРєС‚РѕРІ: Р»СЋР±РѕР№
                             <?php endif; ?>
                         </div>
                     </div>

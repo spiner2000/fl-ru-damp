@@ -7,18 +7,18 @@ $xajax->printJavascript( '/xajax/' );
 
 <?php if ( $sViweId ) { 
     
-    // сюда попадаем из email уведомления о комментарии 
-    // чтобы не искать по всей ленте кудабы админа направить
+    // СЃСЋРґР° РїРѕРїР°РґР°РµРј РёР· email СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РєРѕРјРјРµРЅС‚Р°СЂРёРё 
+    // С‡С‚РѕР±С‹ РЅРµ РёСЃРєР°С‚СЊ РїРѕ РІСЃРµР№ Р»РµРЅС‚Рµ РєСѓРґР°Р±С‹ Р°РґРјРёРЅР° РЅР°РїСЂР°РІРёС‚СЊ
     
 ?>
 
-<h3>Действия / <?=$aOne['act_name']?></h3>
+<h3>Р”РµР№СЃС‚РІРёСЏ / <?=$aOne['act_name']?></h3>
 
 <div class="admin-lenta">
     <table>
     <?php 
     $aOne['object_name'] = ( $aOne['obj_code'] != admin_log::OBJ_CODE_OFFER) ? $aOne['object_name'] : htmlspecialchars($aOne['object_name']);
-    $sObjName  = $aOne['object_name'] ? hyphen_words(reformat($aOne['object_name'], 60), true) : '<без названия>';
+    $sObjName  = $aOne['object_name'] ? hyphen_words(reformat($aOne['object_name'], 60), true) : '<Р±РµР· РЅР°Р·РІР°РЅРёСЏ>';
     $sObjLink  = ( $aOne['object_link'] && $aOne['object_deleted'] != 't' ) ? $aOne['object_link'] : '';
     $sObjClass = $aClass[$aOne['obj_code']];
     $sActClass = '';
@@ -46,8 +46,8 @@ $xajax->printJavascript( '/xajax/' );
             <?php if ( in_array($aOne['act_id'], $aReasonData) ) { echo '<br/>', $aOne['admin_comment']; } ?>
             <?php if ( in_array($aOne['act_id'], $aLogShowAuthor) ) { echo '<br/><a href="/users/'. $aOne['aut_login'] .'" target="_blank">'. $aOne['aut_uname']. ' '. $aOne['aut_usurname'] .' ['. $aOne['aut_login'] .']</a>'; } ?>
         </td>
-        <td class="cell-who cell-top"><?php if ( $aOne['adm_login'] ) { ?><a target="_blank" href="/users/<?=$aOne['adm_login']?>">[<?=$aOne['adm_login']?>]</a><?php } else { ?>[не известно]<?php } ?></td>
-        <td class="cell-date cell-top"><?php if ( $aOne['act_time'] ) { ?><?=date('d.m.Y H:i', strtotime($aOne['act_time']))?><?php } else { ?>не известно<?php } ?></td>
+        <td class="cell-who cell-top"><?php if ( $aOne['adm_login'] ) { ?><a target="_blank" href="/users/<?=$aOne['adm_login']?>">[<?=$aOne['adm_login']?>]</a><?php } else { ?>[РЅРµ РёР·РІРµСЃС‚РЅРѕ]<?php } ?></td>
+        <td class="cell-date cell-top"><?php if ( $aOne['act_time'] ) { ?><?=date('d.m.Y H:i', strtotime($aOne['act_time']))?><?php } else { ?>РЅРµ РёР·РІРµСЃС‚РЅРѕ<?php } ?></td>
         <td class="cell-com"><?=$sComments?></td>
     </tr>
     <tr>
@@ -62,25 +62,25 @@ $xajax->printJavascript( '/xajax/' );
 }
 else {
     
-    // сюда попадаем когда просто смотрим ленту
+    // СЃСЋРґР° РїРѕРїР°РґР°РµРј РєРѕРіРґР° РїСЂРѕСЃС‚Рѕ СЃРјРѕС‚СЂРёРј Р»РµРЅС‚Сѓ
     
 ?>
 
-<h3>Действия / Лента всех действий</h3>
+<h3>Р”РµР№СЃС‚РІРёСЏ / Р›РµРЅС‚Р° РІСЃРµС… РґРµР№СЃС‚РІРёР№</h3>
 
-<!-- Фильтр старт -->
+<!-- Р¤РёР»СЊС‚СЂ СЃС‚Р°СЂС‚ -->
 <div class="form form-acnew">
 	<b class="b1"></b>
 	<b class="b2"></b>
 	<div class="form-in">
-        <h4 class="toggle"><a href="javascript:void(0);" onclick="var mySlide = new Fx.Slide('slideBlock').toggle();" class="lnk-dot-666">Фильтр</a></h4>
+        <h4 class="toggle"><a href="javascript:void(0);" onclick="var mySlide = new Fx.Slide('slideBlock').toggle();" class="lnk-dot-666">Р¤РёР»СЊС‚СЂ</a></h4>
         <div id="slideBlock" class="slideBlock">
             <form name="frm_filter" id="frm_filter" method="GET" onsubmit="return checkDateFilter();">
             <input type="hidden" id="cmd" name="cmd" value="filter">
             <input type="hidden" id="log_pp" name="log_pp" value="<?=$log_pp?>">
             <div class="form-block first">
                 <div class="form-el form-date">
-                    <label class="form-l">Дата:</label>
+                    <label class="form-l">Р”Р°С‚Р°:</label>
                     <div class="form-value">
                         <select name="from_d" id="from_d" class="sel-year">
                             <option value=""></option>
@@ -136,7 +136,7 @@ else {
 <div class="b-radio b-radio_layout_vertical b-radio_clear_both b-radio_padleft_80">
     <div class="b-radio__item b-radio__item_padbot_10">
         <input <?=$shiftChecked ?> type="radio" value="shift" name="period" class="b-radio__input" id="shift" onchange="switchTimeInputsEnable('shift')">
-        <label for="shift" class="b-radio__label b-radio__label_valign_bot b-radio__label_width_50" style="cursor:pointer">Смена</label>
+        <label for="shift" class="b-radio__label b-radio__label_valign_bot b-radio__label_width_50" style="cursor:pointer">РЎРјРµРЅР°</label>
         <div class="b-select b-select_width_160 b-select_inline-block b-select_valign_bot b-select_top_2">
         <?           
             $timeFrom = $fromH&&$fromI ? "$fromH:$fromI" : "";
@@ -144,7 +144,7 @@ else {
         ?>
             <select <?=$shiftEnabled ?> class="b-select__select" name="shifts_list" id="shifts_list" onchange="setTimeInterval()"><?php 
             foreach ($shifts as $i=>$shift) {
-                ?><option value="<?=$shift["id"] ?>" <?=($shift["id"] == $shiftId?'selected="selected"':'') ?>time_from="<?=substr($shift["time_from"], 0, 5) ?>" time_to="<?=substr($shift["time_to"], 0, 5) ?>" >Смена <?=($i + 1) ?></option><?
+                ?><option value="<?=$shift["id"] ?>" <?=($shift["id"] == $shiftId?'selected="selected"':'') ?>time_from="<?=substr($shift["time_from"], 0, 5) ?>" time_to="<?=substr($shift["time_to"], 0, 5) ?>" >РЎРјРµРЅР° <?=($i + 1) ?></option><?
                 if ( (($i == 0) || ($shift["id"] == $shiftId)) && ($shiftChecked) ) {
                     $fromH = substr($shift["time_from"], 0, 2);
                     $fromI = substr($shift["time_from"], 3, 2);
@@ -161,7 +161,7 @@ else {
     </div>
     <div class="b-radio__item b-radio__item_padbot_20">
         <input <?=$timeChecked ?> type="radio" value="time" name="period" class="b-radio__input" id="time" onchange="switchTimeInputsEnable('time')">
-        <label for="time" class="b-radio__label b-radio__label_valign_bot b-radio__label_width_50" style="cursor:pointer">Период</label>
+        <label for="time" class="b-radio__label b-radio__label_valign_bot b-radio__label_width_50" style="cursor:pointer">РџРµСЂРёРѕРґ</label>
         <div class="b-input b-input_inline-block b-input_width_60 b-input_valign_bot b-input_top_2">
             <input <?=$timeEnabled ?> type="text" value="<?=$timeFrom ?>" class="b-input__text b-input__text_align_center" name="timeFrom" id="timeFrom" maxlength="5">
         </div>&nbsp;&nbsp;&mdash;&nbsp;&nbsp;<div class="b-input b-input_inline-block b-input_width_60 b-input_valign_bot b-input_top_2">
@@ -170,10 +170,10 @@ else {
     </div>
 </div>                
                 <div class="form-el">
-                    <label class="form-l">Действие:</label>
+                    <label class="form-l">Р”РµР№СЃС‚РІРёРµ:</label>
                     <div class="form-value fvs">
                         <select name="act" id="act" class="sw205" style="width: 395px;">
-                            <option value="0">Все</option>
+                            <option value="0">Р’СЃРµ</option>
                             <?php foreach ( $actions as $aOne ) { 
                                 $sSel = ($aOne['id'] == $act) ? ' selected' : '';
                             ?>
@@ -183,10 +183,10 @@ else {
                     </div>
                 </div>
                 <div class="form-el">
-                    <label class="form-l">Модератор:</label>
+                    <label class="form-l">РњРѕРґРµСЂР°С‚РѕСЂ:</label>
                     <div class="form-value fvs">
                         <select name="adm" id="adm" class="sw205" style="width: 395px;">
-                            <option value="0">Все</option>
+                            <option value="0">Р’СЃРµ</option>
                             <?php foreach ( $admins as $aOne ) { 
                                 $sSel = ($aOne['uid'] == $adm) ? ' selected' : '';
                             ?>
@@ -196,7 +196,7 @@ else {
                     </div>
                 </div>
                 <div class="form-el">
-                    <label class="form-l">Поиск:</label>
+                    <label class="form-l">РџРѕРёСЃРє:</label>
                     <div class="form-value fvs">
                         <input value="<?=$search?>" name="search" id="search" type="text" class="i-txt fvsi" />
                     </div>
@@ -204,8 +204,8 @@ else {
             </div>
             <div class="form-block last">
                 <div class="form-el form-btns">
-                    <button type="submit">Отфильтровать</button>
-                    <a href="javascript:void(0);" onclick="adminLogClearFilter('<?=date('j')?>', '<?=date('m')?>', '<?=date('Y')?>');" class="lnk-dot-grey">Очистить</a>
+                    <button type="submit">РћС‚С„РёР»СЊС‚СЂРѕРІР°С‚СЊ</button>
+                    <a href="javascript:void(0);" onclick="adminLogClearFilter('<?=date('j')?>', '<?=date('m')?>', '<?=date('Y')?>');" class="lnk-dot-grey">РћС‡РёСЃС‚РёС‚СЊ</a>
                 </div>
             </div>
             </form>
@@ -214,7 +214,7 @@ else {
 	<b class="b2"></b>
 	<b class="b1"></b>
 </div>
-<!-- Фильтр стоп -->
+<!-- Р¤РёР»СЊС‚СЂ СЃС‚РѕРї -->
 
 <div class="admin-lenta">
     <?php if ( $log ) { 
@@ -223,7 +223,7 @@ else {
     <table>
         <?php foreach ( $log as $aOne ) { 
             $aOne['object_name'] = ( $aOne['obj_code'] != admin_log::OBJ_CODE_OFFER) ? $aOne['object_name'] : htmlspecialchars($aOne['object_name']);
-            $sObjName  = $aOne['object_name'] ? hyphen_words(reformat($aOne['object_name'], 60), true) : '<без названия>';
+            $sObjName  = $aOne['object_name'] ? hyphen_words(reformat($aOne['object_name'], 60), true) : '<Р±РµР· РЅР°Р·РІР°РЅРёСЏ>';
             $sObjLink  = ( $aOne['object_link'] && $aOne['object_deleted'] != 't' ) ? $aOne['object_link'] : '';
             $sObjClass = $aClass[$aOne['obj_code']];
             $sActClass = '';
@@ -257,8 +257,8 @@ else {
                 <?php if ( in_array($aOne['act_id'], $aReasonData) ) { echo '<br/>', $aOne['admin_comment']; } ?>
                 <?php if ( in_array($aOne['act_id'], $aLogShowAuthor) ) { echo '<br/><a href="/users/'. $aOne['aut_login'] .'" target="_blank">'. $aOne['aut_uname']. ' '. $aOne['aut_usurname'] .' ['. $aOne['aut_login'] .']</a>'; } ?>
             </td>
-            <td class="cell-who cell-top"><?php if ( $aOne['adm_login'] ) { ?><a target="_blank" href="/users/<?=$aOne['adm_login']?>">[<?=$aOne['adm_login']?>]</a><?php } else { ?>[не известно]<?php } ?></td>
-            <td class="cell-date cell-top"><?php if ( $aOne['act_time'] ) { ?><?=date('d.m.Y H:i', strtotime($aOne['act_time']))?><?php } else { ?>не известно<?php } ?></td>
+            <td class="cell-who cell-top"><?php if ( $aOne['adm_login'] ) { ?><a target="_blank" href="/users/<?=$aOne['adm_login']?>">[<?=$aOne['adm_login']?>]</a><?php } else { ?>[РЅРµ РёР·РІРµСЃС‚РЅРѕ]<?php } ?></td>
+            <td class="cell-date cell-top"><?php if ( $aOne['act_time'] ) { ?><?=date('d.m.Y H:i', strtotime($aOne['act_time']))?><?php } else { ?>РЅРµ РёР·РІРµСЃС‚РЅРѕ<?php } ?></td>
             <td class="cell-com"><?=$sComments?></td>
         </tr>
         <tr>
@@ -284,7 +284,7 @@ else {
     }
     else {
     ?>
-    Нет действий, удовлетворяющих условиям выборки
+    РќРµС‚ РґРµР№СЃС‚РІРёР№, СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё
     <?php
     }
     ?>

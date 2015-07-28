@@ -35,20 +35,20 @@ $is_admin_site = hasPermissions('communes');
                )
         ) {
             
-        // предупреждения и бан -----------------
+        // РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ Рё Р±Р°РЅ -----------------
         $ban_href = 'javascript:void(0)';
         
         if ( $mod & (commune::MOD_ADMIN | commune::MOD_MODER) ) {
             if ( $top['user_warn_cnt'] >= 3 || $top['user_is_banned'] || $top['user_ban_where'] ) {
                 $ban_onclick = "banned.userBan({$top['user_id']}, '{$top['id']}',0)";
-                $ban_title   = ($top['user_is_banned'] || $top['user_ban_where']) ? 'Разбанить' : "Забанить!";
+                $ban_title   = ($top['user_is_banned'] || $top['user_ban_where']) ? 'Р Р°Р·Р±Р°РЅРёС‚СЊ' : "Р—Р°Р±Р°РЅРёС‚СЊ!";
                 $ban_count   = '';
                 $ban_class   = 'lnk-red';
             }
             else {
                 $ban_onclick = "banned.warnUser({$top['user_id']}, 0, 'std', '{$top['id']}', 0)";
-                $ban_title   = "Сделать предупреждение ";
-                $ban_count   = " — ".($top['user_warn_cnt'] ? $top['user_warn_cnt'] : 0);
+                $ban_title   = "РЎРґРµР»Р°С‚СЊ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ ";
+                $ban_count   = " вЂ” ".($top['user_warn_cnt'] ? $top['user_warn_cnt'] : 0);
                 $ban_class   = 'lnk-dred';
             }
         }
@@ -56,19 +56,19 @@ $is_admin_site = hasPermissions('communes');
             $ban_onclick = "if(warning()) xajax_BanMemberForTopic('{$box_id}', {$msg_id}, '{$top['member_id']}', {$user_id}, {$mod}, '{$page}','{$om}', '{$site}','{$is_fav}');";
             
             if ( $top['member_warn_count'] >= 3 || $top['member_is_banned'] ) {
-            	$ban_title = ($top['member_is_banned']) ? 'Разбанить' : "Забанить!";
+            	$ban_title = ($top['member_is_banned']) ? 'Р Р°Р·Р±Р°РЅРёС‚СЊ' : "Р—Р°Р±Р°РЅРёС‚СЊ!";
                 $ban_class = 'lnk-red';
             }
             else {
-                $ban_title = "Сделать предупреждение ({$top['member_warn_count']})";
+                $ban_title = "РЎРґРµР»Р°С‚СЊ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ ({$top['member_warn_count']})";
                 $ban_class = 'lnk-dred';
             }
         }
         //---------------------------------------
         
-        // блокировка/разблокировка топика ------
+        // Р±Р»РѕРєРёСЂРѕРІРєР°/СЂР°Р·Р±Р»РѕРєРёСЂРѕРІРєР° С‚РѕРїРёРєР° ------
         if ( $top['is_blocked_s'] == 't' || $top['is_blocked_c'] == 't' ) {
-        	$block_title = 'Разблокировать';
+        	$block_title = 'Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ';
         	
         	if ( $top['is_blocked_c'] == 't' ) {
         		$block_onclick = "if(warning()) xajax_BlockedTopic({$top['commune_id']},{$top['theme_id']},{$top['id']},'unblock')";
@@ -80,7 +80,7 @@ $is_admin_site = hasPermissions('communes');
         	}
         }
         else {
-            $block_title = 'Заблокировать';
+            $block_title = 'Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ';
             
             if ( $mod & ( commune::MOD_ADMIN | commune::MOD_MODER ) ) {
                 $block_onclick = "banned.blockedCommuneTheme({$top['commune_id']},{$top['theme_id']},{$top['id']})";
@@ -125,17 +125,17 @@ if ($is_admin_site) {
 <?php if(($mod & (commune::MOD_COMM_MODERATOR | commune::MOD_COMM_AUTHOR | commune::MOD_ADMIN | commune::MOD_MODER) || $top['user_id'] == get_uid(false)) && ($top['is_blocked_s'] != 't' && $top['is_blocked_c'] != 't' || hasPermissions('communes') || $top['admin_login_c'] == $_SESSION['login'])) { ?>
     <?php if ($top['category_id'] && $top['category_name']) {?>
         <li class="b-post__links-item b-post__links-item_padright_10">
-            Раздел: <a class="b-post__link b-post__link_color_000" href="<?=getFriendlyURL('commune_commune', $top['commune_id'])?>?om=<?=__paramInit("int", "om")?__paramInit("int", "om"):'0' ?>&cat=<?=$top['category_id'] ?>"><?=$top['category_name'] ?></a>
+            Р Р°Р·РґРµР»: <a class="b-post__link b-post__link_color_000" href="<?=getFriendlyURL('commune_commune', $top['commune_id'])?>?om=<?=__paramInit("int", "om")?__paramInit("int", "om"):'0' ?>&cat=<?=$top['category_id'] ?>"><?=$top['category_name'] ?></a>
        </li>
     <?}?>
     <li class="b-post__links-item b-post__links-item_padright_10">
         <a href="<?=getFriendlyURL('commune', $msg_id)?><?= ($page>1?'?bp='.$page : '')?><?= "?taction=edit" ?>" class="b-post__link b-post__link_color_c10601" id="c_edit_lnk">
-            Редактировать
+            Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ
         </a>
     </li>
     <li class="b-post__links-item b-post__links-item_padright_10">
         <a href="<?= $delete_href;?>" onclick="<?= $delete_onclick;?>" class="b-post__link b-post__link_color_c10601" id="c_edit_lnk">
-            <? if( !intval($top["deleted_id"]) ) {?>Удалить<? } else { ?>Восстановить<?} ?>
+            <? if( !intval($top["deleted_id"]) ) {?>РЈРґР°Р»РёС‚СЊ<? } else { ?>Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ<?} ?>
         </a>
     </li>
     <?php if ( $block_title && $block_onclick ) { ?>
@@ -156,7 +156,7 @@ if ($is_admin_site) {
 <?php }?>
 <? } else if ($top['category_id'] && $top['category_name']) {?>
 <li class="b-post__links-item b-post__links-item_padright_10">
-    Раздел: <a class="b-post__link b-post__link_color_000" href="<?=getFriendlyURL('commune_commune', $top['commune_id'])?>?om=<?=__paramInit("int", "om")?__paramInit("int", "om"):'0' ?>&cat=<?=$top['category_id'] ?>"><?=$top['category_name'] ?></a>
+    Р Р°Р·РґРµР»: <a class="b-post__link b-post__link_color_000" href="<?=getFriendlyURL('commune_commune', $top['commune_id'])?>?om=<?=__paramInit("int", "om")?__paramInit("int", "om"):'0' ?>&cat=<?=$top['category_id'] ?>"><?=$top['category_name'] ?></a>
 </li>
 <?} ?>
 </ul>

@@ -14,7 +14,7 @@ if(!get_uid()) {
     exit;
 }
 
-//Ðåäèðåêòèì íà èñòîðèþ çàêàçîâ
+//Ð ÐµÐ´Ð¸Ñ€ÐµÐºÑ‚Ð¸Ð¼ Ð½Ð° Ð¸ÑÑ‚Ð¾Ñ€Ð¸ÑŽ Ð·Ð°ÐºÐ°Ð·Ð¾Ð²
 header('Location: /bill/history/?period=3'); 
 exit;
 
@@ -35,12 +35,12 @@ if($bill->getOrders()) {
 
 $bill->setPage('orders');
 
-// äåëàåì óâåäîìëåíèÿ ïðî÷èòàííûìè
+// Ð´ÐµÐ»Ð°ÐµÐ¼ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ Ð¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð½Ñ‹Ð¼Ð¸
 $barNotify = new bar_notify($_SESSION['uid']);
 $barNotify->delNotifies( array('page'=>'bill', 'subpage'=>'orders') );
 
 
-// Ïîäãîòàâëèâàåì çàêàç è èäåì íà ñòðàíèöó îïëàòû
+// ÐŸÐ¾Ð´Ð³Ð¾Ñ‚Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ Ð·Ð°ÐºÐ°Ð· Ð¸ Ð¸Ð´ÐµÐ¼ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹
 if(!is_emp($bill->user['role'])) { 
     $is_user_was_pro = $bill->IsUserWasPro();
 }
@@ -48,11 +48,11 @@ $pro_payed = payed::getPayedPROList( is_emp($bill->user['role'])? 'emp' : 'frl' 
 foreach($pro_payed as $p) {
     $pro_type[$p['opcode']] = $p;
 }
-$payed_sum = 0; //ðåàëüíàÿ ñóììà
+$payed_sum = 0; //Ñ€ÐµÐ°Ð»ÑŒÐ½Ð°Ñ ÑÑƒÐ¼Ð¼Ð°
 
 foreach($bill->list_service as $service) {
     $payed_sum += ($bill->pro_exists_in_list_service && ($service['pro_ammount'] > 0 || $service['op_code'] == 53) ? $service['pro_ammount'] : $service['ammount']);
-}//foreach //ïîäñ÷èòàëè ðåàëüíóþ ñóììó ê îïëàòå
+}//foreach //Ð¿Ð¾Ð´ÑÑ‡Ð¸Ñ‚Ð°Ð»Ð¸ Ñ€ÐµÐ°Ð»ÑŒÐ½ÑƒÑŽ ÑÑƒÐ¼Ð¼Ñƒ Ðº Ð¾Ð¿Ð»Ð°Ñ‚Ðµ
 $bill->calcPayedSum($payed_sum);
 ?>
 <form id="form" method="post" id="payment" action="/bill/payment/">

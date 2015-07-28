@@ -4,7 +4,7 @@ if (!defined('IS_SITE_ADMIN')) {
     exit;
 }
 /**
-* @desc Транслитирует отображаемое имя файла ($_POST['filename']) и возвращает его с расширением загружаемого файла
+* @desc РўСЂР°РЅСЃР»РёС‚РёСЂСѓРµС‚ РѕС‚РѕР±СЂР°Р¶Р°РµРјРѕРµ РёРјСЏ С„Р°Р№Р»Р° ($_POST['filename']) Рё РІРѕР·РІСЂР°С‰Р°РµС‚ РµРіРѕ СЃ СЂР°СЃС€РёСЂРµРЅРёРµРј Р·Р°РіСЂСѓР¶Р°РµРјРѕРіРѕ С„Р°Р№Р»Р°
 * @param CFile $cfile
 * @return string 
 */
@@ -57,7 +57,7 @@ switch ($action) {
                     $rename_name = $s . "_" .  $rename_name;
                 }
                 $existingFile->Rename("{$path}/{$rename_name}");
-            	$info = 'Файл был заменен';
+            	$info = 'Р¤Р°Р№Р» Р±С‹Р» Р·Р°РјРµРЅРµРЅ';
             	$old_link = WDCPREFIX . '/' . $path . '/' . $rename_name;
             }
 	        $cf->server_root = 1;
@@ -67,12 +67,12 @@ switch ($action) {
             if ($err == '') {
               $link = WDCPREFIX . '/' . $cf->path . $cf->name;
               $name = WDCPREFIX . '/' . $cf->path . $cf->name;
-              $info = 'Файл был загружен';
-              //добавляем запись в таблицу replace_file_log
+              $info = 'Р¤Р°Р№Р» Р±С‹Р» Р·Р°РіСЂСѓР¶РµРЅ';
+              //РґРѕР±Р°РІР»СЏРµРј Р·Р°РїРёСЃСЊ РІ С‚Р°Р±Р»РёС†Сѓ replace_file_log
               dav_file_upload::addRecord($cf->id, $cf->name, $rename_name);
             }
         } else {
-            $error_folder = 'Нет такого каталога';
+            $error_folder = 'РќРµС‚ С‚Р°РєРѕРіРѕ РєР°С‚Р°Р»РѕРіР°';
         }
         include dirname(__FILE__)."/uploadform.php";
         return;

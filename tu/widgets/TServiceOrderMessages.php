@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/tu/models/TServiceMsgModel.php');
 /**
  * Class TServiceOrderMessages
  *
- * Âèäæåò - Ïåðåïèñêà â çàêàçå
+ * Ð’Ð¸Ð´Ð¶ÐµÑ‚ - ÐŸÐµÑ€ÐµÐ¿Ð¸ÑÐºÐ° Ð² Ð·Ð°ÐºÐ°Ð·Ðµ
  */
 class TServiceOrderMessages extends CWidget 
 {
@@ -24,7 +24,7 @@ class TServiceOrderMessages extends CWidget
             
             if($this->is_owner)
             {
-                //Ïîìå÷àåì ñîîáùåíèÿ â çàêàçå êàê ïðî÷òåííûå
+                //ÐŸÐ¾Ð¼ÐµÑ‡Ð°ÐµÐ¼ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð² Ð·Ð°ÐºÐ°Ð·Ðµ ÐºÐ°Ðº Ð¿Ñ€Ð¾Ñ‡Ñ‚ÐµÐ½Ð½Ñ‹Ðµ
                 $msg_model->markAsRead($this->order_id, $this->uid);
             }
 
@@ -32,7 +32,7 @@ class TServiceOrderMessages extends CWidget
     
         public function run() 
         {
-            //ñîáèðàåì øàáëîí
+            //ÑÐ¾Ð±Ð¸Ñ€Ð°ÐµÐ¼ ÑˆÐ°Ð±Ð»Ð¾Ð½
             $this->render('t-service-order-messages', array(
                 'messages' => $this->messages,
                 'frl_id' => $this->frl_id

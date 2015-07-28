@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/promo.common.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/PromoCodes.php");
 
 /**
- * возвращает отзывы сервису в промоблок Безопасной Сделки
+ * РІРѕР·РІСЂР°С‰Р°РµС‚ РѕС‚Р·С‹РІС‹ СЃРµСЂРІРёСЃСѓ РІ РїСЂРѕРјРѕР±Р»РѕРє Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё
  */
 function checkPromoCode($popup, $code, $service_id, $type = 'id')
 {

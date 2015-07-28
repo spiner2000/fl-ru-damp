@@ -15,9 +15,9 @@ mirrors[<?=$i?>] = {main: <?=$mirrors[$i]['main_prof']?>, mirror: <?=$mirrors[$i
 <? } ?>
 
 /**
- * @param int  id           - идентификатор чекбокса
- * @param bool flag         - если определен, то копируется в checked   
- * @param int  noDisableId  - если определен, то чекбоксу с id = 'lb' + noDisableId disable не устанавливается     
+ * @param int  id           - РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‡РµРєР±РѕРєСЃР°
+ * @param bool flag         - РµСЃР»Рё РѕРїСЂРµРґРµР»РµРЅ, С‚Рѕ РєРѕРїРёСЂСѓРµС‚СЃСЏ РІ checked   
+ * @param int  noDisableId  - РµСЃР»Рё РѕРїСЂРµРґРµР»РµРЅ, С‚Рѕ С‡РµРєР±РѕРєСЃСѓ СЃ id = 'lb' + noDisableId disable РЅРµ СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ     
  */
 function checkMirrors(id, flag, noDisableId) {
     var f = $('lb' + id).checked;
@@ -44,11 +44,11 @@ function checkMirrors(id, flag, noDisableId) {
 	    <?php if($_SESSION['text_spec']) { ?>
         <div class="b-layout__txt_padtop_10">
 	    <div class="b-fon b-fon_bg_fff9bf b-fon_pad_5_10 b-fon_margbot_20">
-	        Для добавления работ необходимо выбрать разделы портфолио
+	        Р”Р»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ СЂР°Р±РѕС‚ РЅРµРѕР±С…РѕРґРёРјРѕ РІС‹Р±СЂР°С‚СЊ СЂР°Р·РґРµР»С‹ РїРѕСЂС‚С„РѕР»РёРѕ
         </div>
         </div>
         <?php } else {//if?>
-	    <p style="padding:15px 0">Выберите разделы, в которых намерены разместить свои работы:</p>
+	    <p style="padding:15px 0">Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»С‹, РІ РєРѕС‚РѕСЂС‹С… РЅР°РјРµСЂРµРЅС‹ СЂР°Р·РјРµСЃС‚РёС‚СЊ СЃРІРѕРё СЂР°Р±РѕС‚С‹:</p>
 	    <?php } //else?>
       <table cellspacing="0" cellpadding="0" class="b-layout__table b-layout__table_width_full">
         <tr class="b-layout__tr">
@@ -97,7 +97,7 @@ function checkMirrors(id, flag, noDisableId) {
 
 	<input type="hidden" name="action" value="portf_choise" />
     <div class="b-buttons">
-	   <a class="b-button b-button_flat b-button_flat_green b-button_float_right" onclick="$('frm').submit();"><?php if($_SESSION['text_spec']) { ?>Сохранить и добавить новую работу<?php } else {?>Сохранить изменения<?php }//else?></a>
+	   <a class="b-button b-button_flat b-button_flat_green b-button_float_right" onclick="$('frm').submit();"><?php if($_SESSION['text_spec']) { ?>РЎРѕС…СЂР°РЅРёС‚СЊ Рё РґРѕР±Р°РІРёС‚СЊ РЅРѕРІСѓСЋ СЂР°Р±РѕС‚Сѓ<?php } else {?>РЎРѕС…СЂР°РЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ<?php }//else?></a>
     </div>
 
 </form>

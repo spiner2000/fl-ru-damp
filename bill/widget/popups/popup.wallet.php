@@ -1,6 +1,6 @@
-<div class="b-layout__title ">Автоматическая оплата услуги</div>
-<div class="b-layout__txt b-layout__txt_fontsize_15">Вы включили автопродление услуги</div>
-<div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20">Пожалуйста, выберите способ регулярного платежа.</div>
+<div class="b-layout__title ">РђРІС‚РѕРјР°С‚РёС‡РµСЃРєР°СЏ РѕРїР»Р°С‚Р° СѓСЃР»СѓРіРё</div>
+<div class="b-layout__txt b-layout__txt_fontsize_15">Р’С‹ РІРєР»СЋС‡РёР»Рё Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёРµ СѓСЃР»СѓРіРё</div>
+<div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20">РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІС‹Р±РµСЂРёС‚Рµ СЃРїРѕСЃРѕР± СЂРµРіСѓР»СЏСЂРЅРѕРіРѕ РїР»Р°С‚РµР¶Р°.</div>
 <div class="b-radio b-radio_layout_vertical walletTypes">
     <? $ignore_wallet = array(); foreach(WalletTypes::getListWallets() as $wallet) { $ignore_wallet[] = $wallet['type']; ?>
         <div class="b-radio__item b-radio__item_padbot_10">
@@ -26,8 +26,8 @@
     <? } //foreach?>
 </div>
 <div class="b-buttons b-buttons_padtop_20">
-    <a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green walletActivate">Сохранить изменения</a> &nbsp;
-    <span class="b-buttons__txt">или</span>
-    <a class="b-buttons__link" href="javascript:void(0)" onclick="toggleWalletPopup();">отменить</a>
+    <a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green walletActivate">РЎРѕС…СЂР°РЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ</a> &nbsp;
+    <span class="b-buttons__txt">РёР»Рё</span>
+    <a class="b-buttons__link" href="javascript:void(0)" onclick="toggleWalletPopup();">РѕС‚РјРµРЅРёС‚СЊ</a>
 </div>
 <form id="walletForm" method="POST" action=""></form>

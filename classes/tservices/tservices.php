@@ -9,7 +9,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/stop_words.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/account.php');
 
 /**
- * Модель типовых услуг
+ * РњРѕРґРµР»СЊ С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі
  *
  */
 class tservices extends atservices_model
@@ -37,14 +37,14 @@ class tservices extends atservices_model
 
 
     /**
-     * ID пользователя
+     * ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * @var int
      */
     private $uid;
 
 
     /**
-     * Массив полей записи
+     * РњР°СЃСЃРёРІ РїРѕР»РµР№ Р·Р°РїРёСЃРё
      * 
      * @var array
      */
@@ -52,7 +52,7 @@ class tservices extends atservices_model
 
     
     /**
-     * Массив свойств связных с записью
+     * РњР°СЃСЃРёРІ СЃРІРѕР№СЃС‚РІ СЃРІСЏР·РЅС‹С… СЃ Р·Р°РїРёСЃСЊСЋ
      * 
      * @var array 
      */
@@ -60,7 +60,7 @@ class tservices extends atservices_model
 
     
     /**
-     * Свойства требующие сериализации/десериализации
+     * РЎРІРѕР№СЃС‚РІР° С‚СЂРµР±СѓСЋС‰РёРµ СЃРµСЂРёР°Р»РёР·Р°С†РёРё/РґРµСЃРµСЂРёР°Р»РёР·Р°С†РёРё
      * 
      * @var array 
      */
@@ -69,8 +69,8 @@ class tservices extends atservices_model
     
     
     /**
-     * Выставляется некоторыми методами 
-     * при наличии отрицательных отзывов
+     * Р’С‹СЃС‚Р°РІР»СЏРµС‚СЃСЏ РЅРµРєРѕС‚РѕСЂС‹РјРё РјРµС‚РѕРґР°РјРё 
+     * РїСЂРё РЅР°Р»РёС‡РёРё РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹С… РѕС‚Р·С‹РІРѕРІ
      * 
      * @var boolean 
      */
@@ -82,7 +82,7 @@ class tservices extends atservices_model
     
     
     /**
-     * Конструктор
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
      * 
      * @param type $uid
      */
@@ -94,9 +94,9 @@ class tservices extends atservices_model
     
     
     /**
-     * Помечает последний элемент массива
+     * РџРѕРјРµС‡Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР°
      * 
-     * @todo Возможно здесь не пригодится.
+     * @todo Р’РѕР·РјРѕР¶РЅРѕ Р·РґРµСЃСЊ РЅРµ РїСЂРёРіРѕРґРёС‚СЃСЏ.
      * 
      * @param array $rows
      */
@@ -113,7 +113,7 @@ class tservices extends atservices_model
     
     
     /**
-     * Есть ли отзывы по ТУ и сколько
+     * Р•СЃС‚СЊ Р»Рё РѕС‚Р·С‹РІС‹ РїРѕ РўРЈ Рё СЃРєРѕР»СЊРєРѕ
      * 
      * @param int $service_id
      * @return int
@@ -132,7 +132,7 @@ class tservices extends atservices_model
     
     
     /**
-     * Всего отзывов у юзера
+     * Р’СЃРµРіРѕ РѕС‚Р·С‹РІРѕРІ Сѓ СЋР·РµСЂР°
      * 
      * @return array
      */
@@ -155,7 +155,7 @@ class tservices extends atservices_model
     
     
     /**
-     * Услуги рядом
+     * РЈСЃР»СѓРіРё СЂСЏРґРѕРј
      * 
      * @param string $type
      * @param int $current_id
@@ -205,9 +205,9 @@ class tservices extends atservices_model
     
     
     /**
-     * Количество завершенных ТУ по СБ
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РІРµСЂС€РµРЅРЅС‹С… РўРЈ РїРѕ РЎР‘
      * 
-     * @todo Переработать для новой СБ
+     * @todo РџРµСЂРµСЂР°Р±РѕС‚Р°С‚СЊ РґР»СЏ РЅРѕРІРѕР№ РЎР‘
      * 
      * @return int
      */
@@ -231,8 +231,8 @@ class tservices extends atservices_model
     
     
     /**
-     * Удаление типовой услуги по ID
-     * доступ и наличие долны быть проверены перед вызовом
+     * РЈРґР°Р»РµРЅРёРµ С‚РёРїРѕРІРѕР№ СѓСЃР»СѓРіРё РїРѕ ID
+     * РґРѕСЃС‚СѓРї Рё РЅР°Р»РёС‡РёРµ РґРѕР»РЅС‹ Р±С‹С‚СЊ РїСЂРѕРІРµСЂРµРЅС‹ РїРµСЂРµРґ РІС‹Р·РѕРІРѕРј
      * 
      * @param int $id
      * @return boolean
@@ -266,8 +266,8 @@ class tservices extends atservices_model
     
     
     /**
-     * Существует ли у пользователя 
-     * запись с таким ID
+     * РЎСѓС‰РµСЃС‚РІСѓРµС‚ Р»Рё Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ 
+     * Р·Р°РїРёСЃСЊ СЃ С‚Р°РєРёРј ID
      * 
      * @param int $id
      * @return row
@@ -290,8 +290,8 @@ class tservices extends atservices_model
     
     
     /**
-     * Есть ли у пользователя указанная ТУ
-     * Должна быть не забаненой / не удаленной и активной
+     * Р•СЃС‚СЊ Р»Рё Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СѓРєР°Р·Р°РЅРЅР°СЏ РўРЈ
+     * Р”РѕР»Р¶РЅР° Р±С‹С‚СЊ РЅРµ Р·Р°Р±Р°РЅРµРЅРѕР№ / РЅРµ СѓРґР°Р»РµРЅРЅРѕР№ Рё Р°РєС‚РёРІРЅРѕР№
      */
     public function isExistActive($id)
     {
@@ -316,8 +316,8 @@ class tservices extends atservices_model
 
 
     /**
-     * Переключаем доступность 
-     * типовой услуги для публики
+     * РџРµСЂРµРєР»СЋС‡Р°РµРј РґРѕСЃС‚СѓРїРЅРѕСЃС‚СЊ 
+     * С‚РёРїРѕРІРѕР№ СѓСЃР»СѓРіРё РґР»СЏ РїСѓР±Р»РёРєРё
      * 
      * @param int $id
      * @return type
@@ -337,7 +337,7 @@ class tservices extends atservices_model
     
     
     /**
-     * Получить отзывы
+     * РџРѕР»СѓС‡РёС‚СЊ РѕС‚Р·С‹РІС‹
      * 
      * @param int $id
      * @return array
@@ -373,8 +373,8 @@ class tservices extends atservices_model
             INNER JOIN {$this->TABLE_EMPLOYER} AS e ON (e.uid = sr.emp_id AND e.is_banned = B'0' AND e.self_deleted = FALSE) 
             LEFT JOIN {$this->TABLE_COUNTRY} AS co ON co.id = e.country 
             LEFT JOIN {$this->TABLE_CITY} AS ci ON ci.id = e.city 
-            -- можно сделать проверку на существование типовой услуги раньше
-            -- тогда join и с фрилансером отпадает
+            -- РјРѕР¶РЅРѕ СЃРґРµР»Р°С‚СЊ РїСЂРѕРІРµСЂРєСѓ РЅР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ С‚РёРїРѕРІРѕР№ СѓСЃР»СѓРіРё СЂР°РЅСЊС€Рµ
+            -- С‚РѕРіРґР° join Рё СЃ С„СЂРёР»Р°РЅСЃРµСЂРѕРј РѕС‚РїР°РґР°РµС‚
             INNER JOIN {$this->TABLE} AS s ON (s.id = ts.service_id AND s.active = TRUE AND s.deleted = FALSE) 
             LEFT JOIN {$this->TABLE_BLOCKED} AS sb ON sb.src_id = s.id
             INNER JOIN {$this->TABLE_FREELANCER} AS f ON (f.uid = s.user_id AND f.is_banned = B'0' AND f.self_deleted = FALSE) 
@@ -424,18 +424,18 @@ class tservices extends atservices_model
     
     
     /**
-     * Получаем карточку ТУ с нужными полями
-     * для передачи на создание заказа
+     * РџРѕР»СѓС‡Р°РµРј РєР°СЂС‚РѕС‡РєСѓ РўРЈ СЃ РЅСѓР¶РЅС‹РјРё РїРѕР»СЏРјРё
+     * РґР»СЏ РїРµСЂРµРґР°С‡Рё РЅР° СЃРѕР·РґР°РЅРёРµ Р·Р°РєР°Р·Р°
      * 
-     * @param int $id - ID ТУ
+     * @param int $id - ID РўРЈ
      * @return boolean|array
      */
     public function getCardForOrder($id)
     {
         $sql = "
             SELECT 
-                s.id AS tu_id, -- ID ТУ именуем как в таблице tservices_orders
-                s.user_id AS frl_id, -- ID фрилансера именуем как в таблице tservices_orders
+                s.id AS tu_id, -- ID РўРЈ РёРјРµРЅСѓРµРј РєР°Рє РІ С‚Р°Р±Р»РёС†Рµ tservices_orders
+                s.user_id AS frl_id, -- ID С„СЂРёР»Р°РЅСЃРµСЂР° РёРјРµРЅСѓРµРј РєР°Рє РІ С‚Р°Р±Р»РёС†Рµ tservices_orders
                 s.title,
                 s.price,
                 s.days,
@@ -473,10 +473,10 @@ class tservices extends atservices_model
 
 
     /**
-     * Получить карточку услуги по ID
+     * РџРѕР»СѓС‡РёС‚СЊ РєР°СЂС‚РѕС‡РєСѓ СѓСЃР»СѓРіРё РїРѕ ID
      * 
-     * @todo: не учитывается active в категориях
-     * @todo: возможно не лучший способ получения категории
+     * @todo: РЅРµ СѓС‡РёС‚С‹РІР°РµС‚СЃСЏ active РІ РєР°С‚РµРіРѕСЂРёСЏС…
+     * @todo: РІРѕР·РјРѕР¶РЅРѕ РЅРµ Р»СѓС‡С€РёР№ СЃРїРѕСЃРѕР± РїРѕР»СѓС‡РµРЅРёСЏ РєР°С‚РµРіРѕСЂРёРё
      * 
      * @param int $id
      * @return array
@@ -546,8 +546,8 @@ class tservices extends atservices_model
     
     
     /**
-     * Получаем услугу, принадлежащую текущему пользователю, по ID и
-     * заполняем свойства обьекта
+     * РџРѕР»СѓС‡Р°РµРј СѓСЃР»СѓРіСѓ, РїСЂРёРЅР°РґР»РµР¶Р°С‰СѓСЋ С‚РµРєСѓС‰РµРјСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ, РїРѕ ID Рё
+     * Р·Р°РїРѕР»РЅСЏРµРј СЃРІРѕР№СЃС‚РІР° РѕР±СЊРµРєС‚Р°
      * 
      * @param type $id
      * @return boolean
@@ -584,9 +584,9 @@ class tservices extends atservices_model
     
     
     /**
-     * Список типовых услуг юзера с основной информацией
-     * и картинкой. Если $is_public = TRUE только публичные
-     * иначе все.
+     * РЎРїРёСЃРѕРє С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі СЋР·РµСЂР° СЃ РѕСЃРЅРѕРІРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРµР№
+     * Рё РєР°СЂС‚РёРЅРєРѕР№. Р•СЃР»Рё $is_public = TRUE С‚РѕР»СЊРєРѕ РїСѓР±Р»РёС‡РЅС‹Рµ
+     * РёРЅР°С‡Рµ РІСЃРµ.
      * 
      * @param bool $is_public
      * @return array
@@ -628,7 +628,7 @@ class tservices extends atservices_model
     
     
     /**
-     * Кол-во ТУ в зависимости от вида видимости
+     * РљРѕР»-РІРѕ РўРЈ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РІРёРґР° РІРёРґРёРјРѕСЃС‚Рё
      * 
      * @param bool $is_public
      * @return int
@@ -655,7 +655,7 @@ class tservices extends atservices_model
     
     
     /**
-     * Обновление типовой услуги
+     * РћР±РЅРѕРІР»РµРЅРёРµ С‚РёРїРѕРІРѕР№ СѓСЃР»СѓРіРё
      * 
      * @param type $data
      */
@@ -680,7 +680,7 @@ class tservices extends atservices_model
     
 
     /**
-     * Создать типовую услугу
+     * РЎРѕР·РґР°С‚СЊ С‚РёРїРѕРІСѓСЋ СѓСЃР»СѓРіСѓ
      * 
      * @param type $data
      */
@@ -703,14 +703,14 @@ class tservices extends atservices_model
  
     
     /**
-     * Необходимые преобразование перед вставкой/обновлением БД
+     * РќРµРѕР±С…РѕРґРёРјС‹Рµ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РїРµСЂРµРґ РІСЃС‚Р°РІРєРѕР№/РѕР±РЅРѕРІР»РµРЅРёРµРј Р‘Р”
      * 
      * @param array $data
      * @return type
      */
     protected function beforeDb(Array $data) 
     {
-        //Фиксируем заголовки из доп.полей для индексации поиска sphinx
+        //Р¤РёРєСЃРёСЂСѓРµРј Р·Р°РіРѕР»РѕРІРєРё РёР· РґРѕРї.РїРѕР»РµР№ РґР»СЏ РёРЅРґРµРєСЃР°С†РёРё РїРѕРёСЃРєР° sphinx
         if (isset($this->extra) && !empty($this->extra)) {
             $extra_title = implode(', ',array_map(function($a) {return $a['title'];}, $this->extra));
             if (!empty($extra_title)) {
@@ -724,7 +724,7 @@ class tservices extends atservices_model
 
 
     /**
-     * Отправить услугу на модерацию
+     * РћС‚РїСЂР°РІРёС‚СЊ СѓСЃР»СѓРіСѓ РЅР° РјРѕРґРµСЂР°С†РёСЋ
      * 
      * @param int $id
      * @param array $data
@@ -736,7 +736,7 @@ class tservices extends atservices_model
         
         $this->db()->insert($this->TABLE_MODERATION,array(
             'rec_id' => $id,
-            'rec_type' => 22,//ID в admin_contents - сущность для модерирования
+            'rec_type' => 22,//ID РІ admin_contents - СЃСѓС‰РЅРѕСЃС‚СЊ РґР»СЏ РјРѕРґРµСЂРёСЂРѕРІР°РЅРёСЏ
             'stop_words_cnt' => $nStopWordsCnt,
             'status' => $status
         ));        
@@ -745,7 +745,7 @@ class tservices extends atservices_model
     
     
     /**
-     * Разблокирование ТУ
+     * Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°РЅРёРµ РўРЈ
      * 
      * @param int $id
      * @return array()
@@ -787,7 +787,7 @@ class tservices extends atservices_model
         ",$id);
             
         $sObjLink = sprintf('%s/tu/%d/%s.html',$GLOBALS['host'],$data['id'],translit(strtolower(htmlspecialchars_decode($data['title'], ENT_QUOTES))));
-        //пишем лог админских действий
+        //РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
         admin_log::addLog(admin_log::OBJ_CODE_TSERVICES, 65, $data['uid'], $id, $data['title'], $sObjLink, 0, '', 0, '', 0, '', $user_id);      
             
         return TRUE;
@@ -819,7 +819,7 @@ class tservices extends atservices_model
 
         $sRecId = $this->db()->val($sQuery, $id, user_content::MODER_TSERVICES);
         
-        //Если вдруг записи нет на модерации добавляем
+        //Р•СЃР»Рё РІРґСЂСѓРі Р·Р°РїРёСЃРё РЅРµС‚ РЅР° РјРѕРґРµСЂР°С†РёРё РґРѕР±Р°РІР»СЏРµРј
         if(!$sRecId) {
             $this->sendToModeration($id, $data, 2);
         }
@@ -838,16 +838,16 @@ class tservices extends atservices_model
         }
         
         $sObjLink = sprintf('%s/tu/%d/%s.html',$GLOBALS['host'],$data['id'],translit(strtolower(htmlspecialchars_decode($data['title'], ENT_QUOTES))));
-        //пишем лог админских действий
+        //РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
         admin_log::addLog(admin_log::OBJ_CODE_TSERVICES, 64, $data['uid'], $id, $data['title'], $sObjLink, 0, '', 0, $reason, $sBlockId, '', $user_id);  
-        //отправляем сообщение о блокировки
+        //РѕС‚РїСЂР°РІР»СЏРµРј СЃРѕРѕР±С‰РµРЅРёРµ Рѕ Р±Р»РѕРєРёСЂРѕРІРєРё
         messages::SendBlockedTServices($data, $reason);
         
         return TRUE;
     }
 
     /**
-     * Получает карточку услуги с данными о модерации
+     * РџРѕР»СѓС‡Р°РµС‚ РєР°СЂС‚РѕС‡РєСѓ СѓСЃР»СѓРіРё СЃ РґР°РЅРЅС‹РјРё Рѕ РјРѕРґРµСЂР°С†РёРё
      * @param type $id
      * @return type
      */
@@ -875,8 +875,8 @@ class tservices extends atservices_model
 
 
     /**
-     * Связываем с записью
-     * TODO: нет обновления сортировки возможно сделать ее при загрузке?
+     * РЎРІСЏР·С‹РІР°РµРј СЃ Р·Р°РїРёСЃСЊСЋ
+     * TODO: РЅРµС‚ РѕР±РЅРѕРІР»РµРЅРёСЏ СЃРѕСЂС‚РёСЂРѕРІРєРё РІРѕР·РјРѕР¶РЅРѕ СЃРґРµР»Р°С‚СЊ РµРµ РїСЂРё Р·Р°РіСЂСѓР·РєРµ?
      * 
      * @param string $sess
      * @param int $id
@@ -895,7 +895,7 @@ class tservices extends atservices_model
         
         if(count($file_ids))
         {
-            //Если загружаем превью, то удалить ранее загруженные превью
+            //Р•СЃР»Рё Р·Р°РіСЂСѓР¶Р°РµРј РїСЂРµРІСЊСЋ, С‚Рѕ СѓРґР°Р»РёС‚СЊ СЂР°РЅРµРµ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Рµ РїСЂРµРІСЊСЋ
             if ($clear) $this->clearOldPreview($id);
             
             $res = $this->db()->update($this->TABLE_FILES,  array('src_id' => $id), 'id IN(?l)', $file_ids);
@@ -912,7 +912,7 @@ class tservices extends atservices_model
     
     
     /**
-     * Массив в свойства обьекта
+     * РњР°СЃСЃРёРІ РІ СЃРІРѕР№СЃС‚РІР° РѕР±СЊРµРєС‚Р°
      * 
      * @param type $data
      * @return boolean
@@ -941,7 +941,7 @@ class tservices extends atservices_model
     
     
     /**
-     * Свойства обьекта в массив
+     * РЎРІРѕР№СЃС‚РІР° РѕР±СЊРµРєС‚Р° РІ РјР°СЃСЃРёРІ
      * 
      * @param array $fields
      * @return array
@@ -972,14 +972,14 @@ class tservices extends atservices_model
     
     
     /**
-     * Инициализация свойств обьекта
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃРІРѕР№СЃС‚РІ РѕР±СЊРµРєС‚Р°
      * 
      * @param array $props
      * @return array
      */
     public function initProps($props = array())
     {
-        //@todo: лучше получить из базы? describe?
+        //@todo: Р»СѓС‡С€Рµ РїРѕР»СѓС‡РёС‚СЊ РёР· Р±Р°Р·С‹? describe?
         $_default_fields = array(
             'user_id' => $this->uid,
             'title' => '',
@@ -1007,7 +1007,7 @@ class tservices extends atservices_model
             'images' => array(),
         );
         
-        //@todo: а зачем мне они?
+        //@todo: Р° Р·Р°С‡РµРј РјРЅРµ РѕРЅРё?
         $this->_props_schema = array_keys($_default_props);
 
         $this->_serialized_fields = array(
@@ -1027,11 +1027,11 @@ class tservices extends atservices_model
     }
     
     /**
-     * Удаление заказа по id в account_operations
+     * РЈРґР°Р»РµРЅРёРµ Р·Р°РєР°Р·Р° РїРѕ id РІ account_operations
      * @see account::DelByOpid()
      *
-     * @param  intr $uid uid пользователя
-     * @param  int $opid id операции в биллинге
+     * @param  intr $uid uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $opid id РѕРїРµСЂР°С†РёРё РІ Р±РёР»Р»РёРЅРіРµ
      * @return int 0
      */
     function DelByOpid($uid, $opid) {
@@ -1070,8 +1070,8 @@ class tservices extends atservices_model
     }
     
     /**
-     * Имеет ли пользователь хотя бы одну типовую услугу
-     * @param array $profs Список категорий, в которых ищется услуга
+     * РРјРµРµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ С…РѕС‚СЏ Р±С‹ РѕРґРЅСѓ С‚РёРїРѕРІСѓСЋ СѓСЃР»СѓРіСѓ
+     * @param array $profs РЎРїРёСЃРѕРє РєР°С‚РµРіРѕСЂРёР№, РІ РєРѕС‚РѕСЂС‹С… РёС‰РµС‚СЃСЏ СѓСЃР»СѓРіР°
      */
     public function hasUserTservice($is_public = false, $profs = array()) {
         if (count($profs)) {
@@ -1093,7 +1093,7 @@ class tservices extends atservices_model
     }
     
     /**
-     * Список незакрепленных типовых услуг юзера
+     * РЎРїРёСЃРѕРє РЅРµР·Р°РєСЂРµРїР»РµРЅРЅС‹С… С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі СЋР·РµСЂР°
      * 
      * @param bool $kind
      * @return array
@@ -1120,7 +1120,7 @@ class tservices extends atservices_model
     }    
     
     /**
-     * Имеет ли пользователь незакрепленные услуги
+     * РРјРµРµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµР·Р°РєСЂРµРїР»РµРЅРЅС‹Рµ СѓСЃР»СѓРіРё
      */
     public function hasUnbindedTservices($kind, $user_id, $profs)
     {

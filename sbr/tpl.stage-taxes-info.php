@@ -6,14 +6,14 @@
                     <div class="b-tax__rama-r">
                         <div class="b-tax__content">
                             <div class="b-tax__level b-tax__level_padbot_12">
-                                <div class="b-tax__txt b-tax__txt_width_220 b-tax__txt_inline-block">Бюджет этапа</div>
+                                <div class="b-tax__txt b-tax__txt_width_220 b-tax__txt_inline-block">Р‘СЋРґР¶РµС‚ СЌС‚Р°РїР°</div>
                                 <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block" id="budget_stage"><?= sbr_meta::view_cost($this->data['cost'], $this->sbr->cost_sys) ?></div>
                             </div>
                             <? if($taxes) { ?>
                             <div class="b-tax__level b-tax__level_padbot_12 b-tax__level_double">
-                                <div class="b-tax__txt b-tax__txt_padleft_1 b-tax__txt_width_220 b-tax__txt_inline-block b-tax__txt_fontsize_11">Налоги и вычеты</div>
-                                <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_fontsize_11">Сумма, руб.</div>
-                                <div class="b-tax__txt b-tax__txt_width_130 b-tax__txt_inline-block b-tax__txt_fontsize_11">% от бюджета проекта</div>
+                                <div class="b-tax__txt b-tax__txt_padleft_1 b-tax__txt_width_220 b-tax__txt_inline-block b-tax__txt_fontsize_11">РќР°Р»РѕРіРё Рё РІС‹С‡РµС‚С‹</div>
+                                <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_fontsize_11">РЎСѓРјРјР°, СЂСѓР±.</div>
+                                <div class="b-tax__txt b-tax__txt_width_130 b-tax__txt_inline-block b-tax__txt_fontsize_11">% РѕС‚ Р±СЋРґР¶РµС‚Р° РїСЂРѕРµРєС‚Р°</div>
                             </div>
                             <? }//if?>
                             <? foreach ($taxes as $k => $tax) { ?>
@@ -54,8 +54,8 @@
                                 </div>
                             <? } //foreach ?>
                             <div class="b-tax__level b-tax__level_padtop_15" id="tax_sum">
-                                <div class="b-tax__txt b-tax__txt_bold b-tax__txt_width_220 b-tax__txt_inline-block">Вы получите</div>
-                                <div class="b-tax__txt b-tax__txt_inline-block"><span class="b-tax__txt b-tax__txt_bold" id="tax_ammount"><?= sbr_meta::view_cost( $this->type_payment != exrates::FM ? $total_sum : $total_sum_fm, $this->type_payment != exrates::FM ? $cost_sys : $this->type_payment  ) ?></span> и <?= $RT?> <?= ending($RT, 'балл', 'балла', 'баллов')?> рейтинга</div>
+                                <div class="b-tax__txt b-tax__txt_bold b-tax__txt_width_220 b-tax__txt_inline-block">Р’С‹ РїРѕР»СѓС‡РёС‚Рµ</div>
+                                <div class="b-tax__txt b-tax__txt_inline-block"><span class="b-tax__txt b-tax__txt_bold" id="tax_ammount"><?= sbr_meta::view_cost( $this->type_payment != exrates::FM ? $total_sum : $total_sum_fm, $this->type_payment != exrates::FM ? $cost_sys : $this->type_payment  ) ?></span> Рё <?= $RT?> <?= ending($RT, 'Р±Р°Р»Р»', 'Р±Р°Р»Р»Р°', 'Р±Р°Р»Р»РѕРІ')?> СЂРµР№С‚РёРЅРіР°</div>
                             </div>
                         </div>
                     </div>

@@ -29,7 +29,7 @@ $orderModel = TServiceOrderModel::model();
 //------------------------------------------------------------------------------
 
 /**
- * Удаление отзыва по заказу ТУ
+ * РЈРґР°Р»РµРЅРёРµ РѕС‚Р·С‹РІР° РїРѕ Р·Р°РєР°Р·Сѓ РўРЈ
  * 
  * @param type $feedback_id
  * @return \xajaxResponse
@@ -54,11 +54,11 @@ function tservicesOrdersDeleteFeedback($feedback_id)
     $ret = $orderFeedbackModel->deleteFeedback($feedback_id);
     if(!$ret) return $objResponse;
     
-    //Очистить кеш кол-ва новых событий
+    //РћС‡РёСЃС‚РёС‚СЊ РєРµС€ РєРѕР»-РІР° РЅРѕРІС‹С… СЃРѕР±С‹С‚РёР№
     $anti_prefix = (is_emp())?'frl':'emp';
     TServiceOrderModel::model()->clearCountEvent($data["{$anti_prefix}_id"]);
     
-    //TODO: можно пересчитать кол-во и обновить на старице или обновить всю страницу
+    //TODO: РјРѕР¶РЅРѕ РїРµСЂРµСЃС‡РёС‚Р°С‚СЊ РєРѕР»-РІРѕ Рё РѕР±РЅРѕРІРёС‚СЊ РЅР° СЃС‚Р°СЂРёС†Рµ РёР»Рё РѕР±РЅРѕРІРёС‚СЊ РІСЃСЋ СЃС‚СЂР°РЅРёС†Сѓ
     
     $objResponse->script("$('p_stage_{$feedback_id}-2').dispose();");
     $objResponse->script("$('feedback_comment_cont_{$feedback_id}-2').dispose();");;
@@ -73,7 +73,7 @@ function tservicesOrdersDeleteFeedback($feedback_id)
 
 
 /**
- * Обновление отзыва по зказу ТУ
+ * РћР±РЅРѕРІР»РµРЅРёРµ РѕС‚Р·С‹РІР° РїРѕ Р·РєР°Р·Сѓ РўРЈ
  * 
  * @param type $params
  * @return \xajaxResponse
@@ -125,7 +125,7 @@ function tservicesOrdersUpdateFeedback($params)
 
 
 /**
- * Редактирование отзыва по заказу ТУ
+ * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РѕС‚Р·С‹РІР° РїРѕ Р·Р°РєР°Р·Сѓ РўРЈ
  * 
  * @param type $feedback_id
  * @return \xajaxResponse
@@ -166,7 +166,7 @@ function tservicesOrdersEditFeedback($feedback_id)
 
 
 /**
- * Новый отзыв по заказу ТУ
+ * РќРѕРІС‹Р№ РѕС‚Р·С‹РІ РїРѕ Р·Р°РєР°Р·Сѓ РўРЈ
  * 
  * @global type $uid
  * @global type $orderModel
@@ -207,12 +207,12 @@ function tservicesOrdersNewFeedback($params)
     $fbtype = @$params['fbtype'];
     
     $orderData = $orderModel->getCard($order_id, $uid);    
-    //Если не существует или статус не подходящий
+    //Р•СЃР»Рё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ РёР»Рё СЃС‚Р°С‚СѓСЃ РЅРµ РїРѕРґС…РѕРґСЏС‰РёР№
     if(!$orderData || !in_array($orderData['status'], $allow_status)) {
         $memebuff->delete('feedback_process_' . $order_id);
         return $objResponse;
     }
-    //Если есть отзыв и он не удален
+    //Р•СЃР»Рё РµСЃС‚СЊ РѕС‚Р·С‹РІ Рё РѕРЅ РЅРµ СѓРґР°Р»РµРЅ
     if(!empty($orderData[$prefix . '_feedback'])) {
         $memebuff->delete('feedback_process_' . $order_id);
         return $objResponse;
@@ -226,7 +226,7 @@ function tservicesOrdersNewFeedback($params)
         return $objResponse;
     }
     
-    //Меняем статус при необходимости и тем самым закрываем заказ
+    //РњРµРЅСЏРµРј СЃС‚Р°С‚СѓСЃ РїСЂРё РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё Рё С‚РµРј СЃР°РјС‹Рј Р·Р°РєСЂС‹РІР°РµРј Р·Р°РєР°Р·
     if($status != TServiceOrderModel::STATUS_EMPCLOSE)
     {
         try
@@ -245,7 +245,7 @@ function tservicesOrdersNewFeedback($params)
     }
     
 
-    //Сохраняем отзыв если он есть
+    //РЎРѕС…СЂР°РЅСЏРµРј РѕС‚Р·С‹РІ РµСЃР»Рё РѕРЅ РµСЃС‚СЊ
     if($is_feedback)
     {
         $orderFeedbackModel = new TServiceOrderFeedbackModel();
@@ -256,7 +256,7 @@ function tservicesOrdersNewFeedback($params)
             'user_id' => $uid
         ));
         
-        //Тут обрабатывать ошибки при валидации
+        //РўСѓС‚ РѕР±СЂР°Р±Р°С‚С‹РІР°С‚СЊ РѕС€РёР±РєРё РїСЂРё РІР°Р»РёРґР°С†РёРё
         if(!$is_valid || !$orderFeedbackModel->addFeedback($order_id)) {
             $memebuff->delete('feedback_process_' . $order_id);
             return $objResponse;
@@ -266,11 +266,11 @@ function tservicesOrdersNewFeedback($params)
         $orderData[$prefix . '_feedback'] = $attributes['feedback'];
         $orderData[$prefix . '_rating'] = $attributes['rating'];
         
-        //Сохранить действие в историю
+        //РЎРѕС…СЂР°РЅРёС‚СЊ РґРµР№СЃС‚РІРёРµ РІ РёСЃС‚РѕСЂРёСЋ
         $history = new tservices_order_history($order_id);
         $history->saveFeedback($is_emp, $fbtype);
         
-        //Чистим кеш кол-во новых сообщений юзера после написания комментария 
+        //Р§РёСЃС‚РёРј РєРµС€ РєРѕР»-РІРѕ РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№ СЋР·РµСЂР° РїРѕСЃР»Рµ РЅР°РїРёСЃР°РЅРёСЏ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ 
         $orderModel->clearCountEvent($orderData["{$sufix}_id"]);
         
         /*
@@ -283,7 +283,7 @@ function tservicesOrdersNewFeedback($params)
     
 
         
-    //Уведомление на почту 
+    //РЈРІРµРґРѕРјР»РµРЅРёРµ РЅР° РїРѕС‡С‚Сѓ 
     $tservices_smail = new tservices_smail();
     $tservices_smail->attributes(array('order' => $orderData, 'is_emp' => $is_emp));
     $tservices_smail->closeOrderAndFeedback($status);
@@ -301,21 +301,21 @@ function tservicesOrdersNewFeedback($params)
     
     $objResponse->assign('tservices_order_status_'.$order_id,'innerHTML',$sHtml);
     
-    //если фрилансер закрывает заказ или оставляет отзыв
-    //то обновляем ему информацию о состоянии счета
+    //РµСЃР»Рё С„СЂРёР»Р°РЅСЃРµСЂ Р·Р°РєСЂС‹РІР°РµС‚ Р·Р°РєР°Р· РёР»Рё РѕСЃС‚Р°РІР»СЏРµС‚ РѕС‚Р·С‹РІ
+    //С‚Рѕ РѕР±РЅРѕРІР»СЏРµРј РµРјСѓ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃРѕСЃС‚РѕСЏРЅРёРё СЃС‡РµС‚Р°
     if(!$is_emp)
     {
-        //не показываем отрицательную сумму
-        //$balance = ($_SESSION['ac_sum'] > 0)?number_format(round(zin($_SESSION['ac_sum']),2), 2, ",", " ").' руб.':'Мои услуги';
+        //РЅРµ РїРѕРєР°Р·С‹РІР°РµРј РѕС‚СЂРёС†Р°С‚РµР»СЊРЅСѓСЋ СЃСѓРјРјСѓ
+        //$balance = ($_SESSION['ac_sum'] > 0)?number_format(round(zin($_SESSION['ac_sum']),2), 2, ",", " ").' СЂСѓР±.':'РњРѕРё СѓСЃР»СѓРіРё';
         //$balance = '<span class="b-bar__icon b-bar__icon_fm"></span>' . $balance;
         
-        //для новой шапки
-        $balance = number_format(round(zin($_SESSION['ac_sum']),2), 2, ",", " ").' Р';
+        //РґР»СЏ РЅРѕРІРѕР№ С€Р°РїРєРё
+        $balance = number_format(round(zin($_SESSION['ac_sum']),2), 2, ",", " ").' Р ';
         $objResponse->script("$$('.b-user-menu-wallet-clause a').set('html', '".$balance."');");
     }
     
-    //Обновляем события так как у mootools нет Live 
-    //а Delegation не работает.
+    //РћР±РЅРѕРІР»СЏРµРј СЃРѕР±С‹С‚РёСЏ С‚Р°Рє РєР°Рє Сѓ mootools РЅРµС‚ Live 
+    //Р° Delegation РЅРµ СЂР°Р±РѕС‚Р°РµС‚.
     $objResponse->script('
         Bar_Ext.popuper();
         window.order_feedback_factory = new OrderFeedbackFactory();
@@ -331,7 +331,7 @@ function tservicesOrdersNewFeedback($params)
 
 
 /**
- * Новое сообщение в заказе ТУ
+ * РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РІ Р·Р°РєР°Р·Рµ РўРЈ
  * 
  * @global type $orderModel
  * @param type $order_id
@@ -351,15 +351,15 @@ function tservicesOrdersNewMessage($order_id, $message, $sess)
     
     $orderData = $orderModel->getCard($order_id, $uid);
     
-    //Если не существует или статус не подходящий
+    //Р•СЃР»Рё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ РёР»Рё СЃС‚Р°С‚СѓСЃ РЅРµ РїРѕРґС…РѕРґСЏС‰РёР№
     if(!$orderData) return $objResponse;
     
     $author_id = $uid;
     $reciever_id = is_emp() ? $orderData['frl_id'] : $orderData['emp_id'];
-    //@todo: Зачем делаем reformat? это только функция ворматирования!
-    //@todo: где валидация на кол-во симолов?
-    //@todo: "reformat(htmlspecialchars(strip_tags(" это для кучи? 
-    //если есть теги то нужно показвать их а не вырезать
+    //@todo: Р—Р°С‡РµРј РґРµР»Р°РµРј reformat? СЌС‚Рѕ С‚РѕР»СЊРєРѕ С„СѓРЅРєС†РёСЏ РІРѕСЂРјР°С‚РёСЂРѕРІР°РЅРёСЏ!
+    //@todo: РіРґРµ РІР°Р»РёРґР°С†РёСЏ РЅР° РєРѕР»-РІРѕ СЃРёРјРѕР»РѕРІ?
+    //@todo: "reformat(htmlspecialchars(strip_tags(" СЌС‚Рѕ РґР»СЏ РєСѓС‡Рё? 
+    //РµСЃР»Рё РµСЃС‚СЊ С‚РµРіРё С‚Рѕ РЅСѓР¶РЅРѕ РїРѕРєР°Р·РІР°С‚СЊ РёС… Р° РЅРµ РІС‹СЂРµР·Р°С‚СЊ
     $text = reformat(htmlspecialchars(strip_tags($message)), 30);
     
     $modelMsg = TServiceMsgModel::model();
@@ -408,7 +408,7 @@ function tservicesOrdersNewMessage($order_id, $message, $sess)
 
 /**
  * 
- * Получить последнии сообщения по заказу ТУ
+ * РџРѕР»СѓС‡РёС‚СЊ РїРѕСЃР»РµРґРЅРёРё СЃРѕРѕР±С‰РµРЅРёСЏ РїРѕ Р·Р°РєР°Р·Сѓ РўРЈ
  * 
  * @global type $orderModel
  * @param type $order_id
@@ -454,7 +454,7 @@ function tservicesOrdersCheckMessages($order_id)
 
 
 /**
- * Редактирование стоимости и сроков заказа ТУ
+ * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ СЃС‚РѕРёРјРѕСЃС‚Рё Рё СЃСЂРѕРєРѕРІ Р·Р°РєР°Р·Р° РўРЈ
  * 
  * @param type $order_id
  * @param type $price
@@ -472,26 +472,26 @@ function tservicesOrdersSetPrice($order_id, $price, $days, $paytype)
     $days = intval($days);
     $paytype = intval($paytype);
     
-    //Валидация входных параметров
+    //Р’Р°Р»РёРґР°С†РёСЏ РІС…РѕРґРЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ
     $validator = new validation();
     $valid = $validator->is_natural_no_zero($price) && $validator->greater_than_equal_to($price, 300);
     $valid = $valid && $validator->is_natural_no_zero($days) && $validator->numeric_interval($days, 1, 730);
     $valid = $valid && in_array($valid, array(TServiceOrderModel::PAYTYPE_DEFAULT, TServiceOrderModel::PAYTYPE_RESERVE));
     if(!$valid) return $objResponse;
 
-    //Получение заказа
+    //РџРѕР»СѓС‡РµРЅРёРµ Р·Р°РєР°Р·Р°
     $orderModel = TServiceOrderModel::model();
     $order_id = intval($order_id);
     $old_order = $orderModel->getCard($order_id, $uid);
     if(!$old_order) return $objResponse; 
     
-    //Валидация возможности изменений
+    //Р’Р°Р»РёРґР°С†РёСЏ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РёР·РјРµРЅРµРЅРёР№
     $is_new_status = $old_order['status'] == TServiceOrderModel::STATUS_NEW;
     $is_owner = $old_order['emp_id'] == $uid;
     $is_reserve_accepted = isset($old_order['reserve_data']);
     if(!($is_new_status && $is_owner && !$is_reserve_accepted)) return $objResponse;
     
-    //Проверка возможности смены типа оплаты
+    //РџСЂРѕРІРµСЂРєР° РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё СЃРјРµРЅС‹ С‚РёРїР° РѕРїР»Р°С‚С‹
     $is_reserve = tservices_helper::isOrderReserve($paytype);
     if($is_reserve && !tservices_helper::isAllowOrderReserve($old_order['category_id'])) return $objResponse;
     if(!$is_reserve) $paytype = TServiceOrderModel::PAYTYPE_DEFAULT;
@@ -502,7 +502,7 @@ function tservicesOrdersSetPrice($order_id, $price, $days, $paytype)
         'pay_type' => $paytype
     );
 
-    //Меняем
+    //РњРµРЅСЏРµРј
     if ($orderModel->edit($order_id, $data, $old_order['tax'])) 
     {
         $order = $old_order;
@@ -510,23 +510,23 @@ function tservicesOrdersSetPrice($order_id, $price, $days, $paytype)
         $order['order_days'] = $days;
         $order['pay_type'] = $paytype;
 
-        //Сохранить действие в историю
+        //РЎРѕС…СЂР°РЅРёС‚СЊ РґРµР№СЃС‚РІРёРµ РІ РёСЃС‚РѕСЂРёСЋ
         $history = new tservices_order_history($order_id);
         $history->save($order, $old_order);
 
-        //Уведомление на почту 
+        //РЈРІРµРґРѕРјР»РµРЅРёРµ РЅР° РїРѕС‡С‚Сѓ 
         $tservices_smail = new tservices_smail();
         $tservices_smail->changeOrder2($order, $old_order);
         
         
-        //Обновляем интерфейс цен и сроков
+        //РћР±РЅРѕРІР»СЏРµРј РёРЅС‚РµСЂС„РµР№СЃ С†РµРЅ Рё СЃСЂРѕРєРѕРІ
         $objResponse->script("$('tu-container-price').set('html', '" . tservices_helper::cost_format($price) . "');");
         $objResponse->script("$('tu-container-days').set('html', '" . tservices_helper::days_format($days) . "');");
         $objResponse->script("$('tu_edit_budjet_price').set('value', '" . $price . "');");
         $objResponse->script("$('tu_edit_budjet_days').set('value', '" . $days . "');");
         
         
-        //Обновляем сообщение статуса, т.к. вторая сторона тоже могла его изменить
+        //РћР±РЅРѕРІР»СЏРµРј СЃРѕРѕР±С‰РµРЅРёРµ СЃС‚Р°С‚СѓСЃР°, С‚.Рє. РІС‚РѕСЂР°СЏ СЃС‚РѕСЂРѕРЅР° С‚РѕР¶Рµ РјРѕРіР»Р° РµРіРѕ РёР·РјРµРЅРёС‚СЊ
         $tserviceOrderStatusWidget = new TServiceOrderStatus();
         $tserviceOrderStatusWidget->setIsEmp(true); 
         $tserviceOrderStatusWidget->setOrder($order);
@@ -542,7 +542,7 @@ function tservicesOrdersSetPrice($order_id, $price, $days, $paytype)
             $('tu-container-price').getParent()
             .removeClass('b-layout__link_bordbot_dot_".($is_reserve?'000':'ee1d16')."')
             .addClass('b-layout__link_bordbot_dot_".($is_reserve?'ee1d16':'000')."');
-            $('tu-container-price').getPrevious('span').set('html','".($is_reserve?'Бюджет:':'Стоимость:')."');    
+            $('tu-container-price').getPrevious('span').set('html','".($is_reserve?'Р‘СЋРґР¶РµС‚:':'РЎС‚РѕРёРјРѕСЃС‚СЊ:')."');    
         ");
     }
 
@@ -554,7 +554,7 @@ function tservicesOrdersSetPrice($order_id, $price, $days, $paytype)
 
 
 /**
- * Запрос на обновление истории заказа
+ * Р—Р°РїСЂРѕСЃ РЅР° РѕР±РЅРѕРІР»РµРЅРёРµ РёСЃС‚РѕСЂРёРё Р·Р°РєР°Р·Р°
  * 
  * @param type $order_id
  * @return \xajaxResponse
@@ -584,7 +584,7 @@ function getOrderHistory($order_id)
     ob_end_clean();
     $objResponse->assign('history','innerHTML',$historyHtml);
     
-    //Заодно обновляем индикатор статуса  
+    //Р—Р°РѕРґРЅРѕ РѕР±РЅРѕРІР»СЏРµРј РёРЅРґРёРєР°С‚РѕСЂ СЃС‚Р°С‚СѓСЃР°  
     $orderStatusIndicator = new OrderStatusIndicator();
     $orderStatusIndicator->order = $order;
     $html = $orderStatusIndicator->getAjaxRender();

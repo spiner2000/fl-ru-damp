@@ -3,7 +3,7 @@
 require_once 'DigestBlockList.php';
 
 /**
- * Класс для работы с блоком "Обсуждают в блогах"
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р»РѕРєРѕРј "РћР±СЃСѓР¶РґР°СЋС‚ РІ Р±Р»РѕРіР°С…"
  */
 class DigestBlockListBlog extends DigestBlockList {
     
@@ -21,19 +21,19 @@ class DigestBlockListBlog extends DigestBlockList {
      * @see parent::$title
      * @var string 
      */
-    public $title = 'Обсуждают в <a class="b-layout__link" href="/blogs/" target="_blank">блогах</a>';
+    public $title = 'РћР±СЃСѓР¶РґР°СЋС‚ РІ <a class="b-layout__link" href="/blogs/" target="_blank">Р±Р»РѕРіР°С…</a>';
     
     /**
      * @see parent::hint
      * @var string 
      */
-    public $hint  = 'Например: https://www.free-lance.ru/blogs/obschenie/268587/example.html';
+    public $hint  = 'РќР°РїСЂРёРјРµСЂ: https://www.free-lance.ru/blogs/obschenie/268587/example.html';
     
     /**
      * @see parent::$tirle_field
      * @var string 
      */
-    public $title_field = 'Ссылки на блоги:';
+    public $title_field = 'РЎСЃС‹Р»РєРё РЅР° Р±Р»РѕРіРё:';
     
     
     /**

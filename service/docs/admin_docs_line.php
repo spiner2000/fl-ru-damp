@@ -11,5 +11,5 @@
     <?= date("d.m.Y", strtotime($doc['date_create'])); ?>
 </td>
 <td class="ops">
-    <a href="#" onclick="xajax_EditDocFormPrepare(<?= $doc['id']; ?>); return false;"><img src="/images/ico-e-u.png" alt="Ðåäàêòèðîâàòü"></a>&nbsp;&nbsp; <a href=""><img src="/images/btn-remove2.png" alt="Óäàëèòü" onclick="xajax_DeleteDocHTML(<?= $doc['id']; ?>); return false;"></a>&nbsp;
+    <a href="#" onclick="xajax_EditDocFormPrepare(<?= $doc['id']; ?>); return false;"><img src="/images/ico-e-u.png" alt="Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ"></a>&nbsp;&nbsp; <a href=""><img src="/images/btn-remove2.png" alt="Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ" onclick="xajax_DeleteDocHTML(<?= $doc['id']; ?>); return false;"></a>&nbsp;
 </td>

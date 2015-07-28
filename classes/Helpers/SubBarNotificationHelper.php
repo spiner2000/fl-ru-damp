@@ -5,7 +5,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/template.php';
 /**
  * Class SubBarNotificationHelper
  * 
- * Хелпер уведомлений под панелью меню
+ * РҐРµР»РїРµСЂ СѓРІРµРґРѕРјР»РµРЅРёР№ РїРѕРґ РїР°РЅРµР»СЊСЋ РјРµРЅСЋ
  */
 class SubBarNotificationHelper 
 {
@@ -18,10 +18,10 @@ class SubBarNotificationHelper
     const MEMCACHE_TTL = 86400;
     const MEMCACHE_KEY_PREFIX = "SubBarNotificationHelperUserID%d";
     
-    //Храним сообщение в мемкеше
+    //РҐСЂР°РЅРёРј СЃРѕРѕР±С‰РµРЅРёРµ РІ РјРµРјРєРµС€Рµ
     protected $_membuff = NULL;
     
-    //Храним с переменной на время работы скрипта
+    //РҐСЂР°РЅРёРј СЃ РїРµСЂРµРјРµРЅРЅРѕР№ РЅР° РІСЂРµРјСЏ СЂР°Р±РѕС‚С‹ СЃРєСЂРёРїС‚Р°
     protected $_message = NULL;
 
 
@@ -31,7 +31,7 @@ class SubBarNotificationHelper
 
 
     /**
-     * Виды уведомлений
+     * Р’РёРґС‹ СѓРІРµРґРѕРјР»РµРЅРёР№
      */
     const TYPE_TEXT                 = 0;
     const TYPE_GUEST_NEW_ORDER      = 10;
@@ -113,7 +113,7 @@ class SubBarNotificationHelper
         $html = '';
         $key = $this->getMemcacheKeyPrefix($user_id);
         
-        //Показать отложенное сообщение из мемкеша
+        //РџРѕРєР°Р·Р°С‚СЊ РѕС‚Р»РѕР¶РµРЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РёР· РјРµРјРєРµС€Р°
         if ($key) {
             $result = $this->_membuff->get($key);
             if (!empty($result)) {
@@ -130,7 +130,7 @@ class SubBarNotificationHelper
             }
         }
         
-        //Показать сообщение в течении жизни скрипта
+        //РџРѕРєР°Р·Р°С‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ РІ С‚РµС‡РµРЅРёРё Р¶РёР·РЅРё СЃРєСЂРёРїС‚Р°
         if (empty($html) && $this->_message) {
             $this->_is_show = true;
             $html = Template::render(ABS_PATH . $this->template, $this->_message);
@@ -152,7 +152,7 @@ class SubBarNotificationHelper
 
     
     /**
-    * Создаем синглтон
+    * РЎРѕР·РґР°РµРј СЃРёРЅРіР»С‚РѕРЅ
     * @return object
     */
     public static function getInstance() 

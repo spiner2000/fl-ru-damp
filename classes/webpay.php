@@ -2,44 +2,44 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/onlinedengi_cards.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/account.php';
 /**
- * Класс для пополнения счета через вебкошелек ПСКБ
+ * РљР»Р°СЃСЃ РґР»СЏ РїРѕРїРѕР»РЅРµРЅРёСЏ СЃС‡РµС‚Р° С‡РµСЂРµР· РІРµР±РєРѕС€РµР»РµРє РџРЎРљР‘
  * @see http://dengionline.com/
  * 
  */
 class webpay {
 
     /**
-     * Код системы оплат
+     * РљРѕРґ СЃРёСЃС‚РµРјС‹ РѕРїР»Р°С‚
      */
     const PAYMENT_SYS_CODE = 13;
     
     /**
-     * Код ошибки. Недостаточно данных.
+     * РљРѕРґ РѕС€РёР±РєРё. РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РґР°РЅРЅС‹С….
      */
     const ERR_DATA   = 1;
     /**
-     * Код ошибки. Не подходит секретный ключ.
+     * РљРѕРґ РѕС€РёР±РєРё. РќРµ РїРѕРґС…РѕРґРёС‚ СЃРµРєСЂРµС‚РЅС‹Р№ РєР»СЋС‡.
      */
     const ERR_SECRET = 2;
     /**
-     * Код ошибки. Нулевая или отрицательная сумма пополнения.
+     * РљРѕРґ РѕС€РёР±РєРё. РќСѓР»РµРІР°СЏ РёР»Рё РѕС‚СЂРёС†Р°С‚РµР»СЊРЅР°СЏ СЃСѓРјРјР° РїРѕРїРѕР»РЅРµРЅРёСЏ.
      */
     const ERR_AMOUNT = 3;
     /**
-     * Код ошибки. Операция осуществлялась ранее.
+     * РљРѕРґ РѕС€РёР±РєРё. РћРїРµСЂР°С†РёСЏ РѕСЃСѓС‰РµСЃС‚РІР»СЏР»Р°СЃСЊ СЂР°РЅРµРµ.
      */
     const ERR_RETRY  = 4;
     /**
-     * Код ошибки. Пользователя не существует
+     * РљРѕРґ РѕС€РёР±РєРё. РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
      */
     const ERR_USER  = 5;
     /**
-     * Код ошибки. Ошибка при выполнениее account::deposit()
+     * РљРѕРґ РѕС€РёР±РєРё. РћС€РёР±РєР° РїСЂРё РІС‹РїРѕР»РЅРµРЅРёРµРµ account::deposit()
      */
     const ERR_DEPOSIT = 6;
     
     /**
-     * Данные для ведения таблицы с логами (webpay_log)
+     * Р”Р°РЅРЅС‹Рµ РґР»СЏ РІРµРґРµРЅРёСЏ С‚Р°Р±Р»РёС†С‹ СЃ Р»РѕРіР°РјРё (webpay_log)
      * 
      * @var array
      */
@@ -47,10 +47,10 @@ class webpay {
     
     
     /**
-     * Основная функция для пополнения. В нее нужно передать POST данны, которые пришли от веб-кошелька
+     * РћСЃРЅРѕРІРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РїРѕРїРѕР»РЅРµРЅРёСЏ. Р’ РЅРµРµ РЅСѓР¶РЅРѕ РїРµСЂРµРґР°С‚СЊ POST РґР°РЅРЅС‹, РєРѕС‚РѕСЂС‹Рµ РїСЂРёС€Р»Рё РѕС‚ РІРµР±-РєРѕС€РµР»СЊРєР°
      * 
-     * @param  array    массив с данным от webpay
-     * @return успех
+     * @param  array    РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹Рј РѕС‚ webpay
+     * @return СѓСЃРїРµС…
      */
     public function income($data) {
         global $DB;
@@ -87,7 +87,7 @@ class webpay {
         } else {
             $account = new account;
             $account->GetInfo($user->uid);
-            $comment = "Пополнение через Веб-кошелек";
+            $comment = "РџРѕРїРѕР»РЅРµРЅРёРµ С‡РµСЂРµР· Р’РµР±-РєРѕС€РµР»РµРє";
             if ( $account->deposit($op_id, $account->id, $amount, $comment, self::PAYMENT_SYS_CODE, $amount) ) {
                 $this->_error($id, self::ERR_DEPOSIT);
                 return false;
@@ -100,10 +100,10 @@ class webpay {
     
     
     /**
-     * Возвращает в вебкошелек ошибку и пишет о ней в базу с в логами
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РІ РІРµР±РєРѕС€РµР»РµРє РѕС€РёР±РєСѓ Рё РїРёС€РµС‚ Рѕ РЅРµР№ РІ Р±Р°Р·Сѓ СЃ РІ Р»РѕРіР°РјРё
      * 
-     * @param integer $id    id записи в логах
-     * @param integer $errno номер ошибки
+     * @param integer $id    id Р·Р°РїРёСЃРё РІ Р»РѕРіР°С…
+     * @param integer $errno РЅРѕРјРµСЂ РѕС€РёР±РєРё
      */
     protected function _error($id, $errno) {
         global $DB;
@@ -111,11 +111,11 @@ class webpay {
         $DB->update('webpay_log', $this->_fields, "id = {$id}");
         switch ( $errno ) {
             case self::ERR_USER: {
-                $comment = 'Не указан пользователь';
+                $comment = 'РќРµ СѓРєР°Р·Р°РЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ';
                 break;
             }
             default: {
-                $comment = 'Ошибка при пополнении счета';
+                $comment = 'РћС€РёР±РєР° РїСЂРё РїРѕРїРѕР»РЅРµРЅРёРё СЃС‡РµС‚Р°';
             }
         }
         $xml  = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n";
@@ -125,17 +125,17 @@ class webpay {
     
     
     /**
-     * Возвращает в вебкошелек успех пополенения
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РІ РІРµР±РєРѕС€РµР»РµРє СѓСЃРїРµС… РїРѕРїРѕР»РµРЅРµРЅРёСЏ
      * 
-     * @param type $id     id записи в логах
-     * @param type $retry  были ли такая операция ранее (@see http://dengionline.com/dev/protocol/notification)
+     * @param type $id     id Р·Р°РїРёСЃРё РІ Р»РѕРіР°С…
+     * @param type $retry  Р±С‹Р»Рё Р»Рё С‚Р°РєР°СЏ РѕРїРµСЂР°С†РёСЏ СЂР°РЅРµРµ (@see http://dengionline.com/dev/protocol/notification)
      */
     protected function _success($id, $retry=false) {
         global $DB;
         $this->_fields['result'] = $retry? self::ERR_RETRY: 0;
         $DB->update('webpay_log', $this->_fields, "id = {$id}");
         $xml  = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n";
-        $xml .= "<result>\r\n<id>{$id}</id>\r\n<code>YES</code>\r\n<comment>Ваш счет пополнен</comment>\r\n</result>";
+        $xml .= "<result>\r\n<id>{$id}</id>\r\n<code>YES</code>\r\n<comment>Р’Р°С€ СЃС‡РµС‚ РїРѕРїРѕР»РЅРµРЅ</comment>\r\n</result>";
         echo iconv('CP1251', 'UTF-8', $xml);
     }
     

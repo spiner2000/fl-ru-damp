@@ -120,34 +120,34 @@ filter_bullets[<?=$fvalue?>][<?=$fkey?>]['parentid'] = '<?=(!($fvalue)?0:$prof_g
 <input type="hidden" value="0" name="kind">    <b class="b1"></b>
     <b class="b2"></b>
      <div class="flt-bar" >
-          <a class="flt-tgl-lnk" href="javascript: void(0);"><?=(($filter_show)?"Свернуть":"Развернуть")?></a>
-          <h3>Фильтр предложений</h3>
+          <a class="flt-tgl-lnk" href="javascript: void(0);"><?=(($filter_show)?"РЎРІРµСЂРЅСѓС‚СЊ":"Р Р°Р·РІРµСЂРЅСѓС‚СЊ")?></a>
+          <h3>Р¤РёР»СЊС‚СЂ РїСЂРµРґР»РѕР¶РµРЅРёР№</h3>
           <? if($filter_apply) { ?>
-            <span class="flt-stat flt-on">включен&nbsp;&nbsp;&nbsp;<a href="/?kind=8&action=delete_offers_filter" class="flt-lnk">отключить</a></span>
+            <span class="flt-stat flt-on">РІРєР»СЋС‡РµРЅ&nbsp;&nbsp;&nbsp;<a href="/?kind=8&action=delete_offers_filter" class="flt-lnk">РѕС‚РєР»СЋС‡РёС‚СЊ</a></span>
           <? } else { ?>
-            <span class="flt-stat flt-off">отключен&nbsp;&nbsp;&nbsp;<a href="/?kind=8&action=activate_offers_filter" class="flt-lnk">включить</a></span>
+            <span class="flt-stat flt-off">РѕС‚РєР»СЋС‡РµРЅ&nbsp;&nbsp;&nbsp;<a href="/?kind=8&action=activate_offers_filter" class="flt-lnk">РІРєР»СЋС‡РёС‚СЊ</a></span>
           <? } ?>
      </div>
      <div class="flt-cnt">
           <div class="flt-block" >
-               <label class="flt-lbl">Раздел:</label>
+               <label class="flt-lbl">Р Р°Р·РґРµР»:</label>
                <div class="flt-b-in">
                     <div class="flt-b-row" >
                          <span class="flt-prm">
                            <select onchange="FilterSubCategory(this.value)" id="pf_category" name="pf_category" class="flt-p-sel">
-                             <option value="0">Выберите раздел</option>
+                             <option value="0">Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»</option>
                              <? foreach($filter_categories as $cat) { if($cat['id']<=0) continue; ?>
                              <option value="<?=$cat['id']?>"><?=$cat['name']?></option>
                              <? } ?>
                            </select>
-                         </span><a class="lnk-dot-blue" onclick="if($('pf_category').value != 0) FilterAddBullet(0, $('pf_category').value, $('pf_category').options[$('pf_category').selectedIndex].text, 0);" href="javascript: void(0);">Добавить раздел</a>
+                         </span><a class="lnk-dot-blue" onclick="if($('pf_category').value != 0) FilterAddBullet(0, $('pf_category').value, $('pf_category').options[$('pf_category').selectedIndex].text, 0);" href="javascript: void(0);">Р”РѕР±Р°РІРёС‚СЊ СЂР°Р·РґРµР»</a>
                     </div>
                     <div class="flt-b-row" >
                          <span id="frm_subcategory" class="flt-prm">
                            <select id="pf_subcategory" name="pf_subcategory" class="flt-p-sel" disabled="">
                              
-                           <option value="0">Выберите подраздел</option></select>
-                         </span><a class="lnk-dot-blue" onclick="if($('pf_subcategory').value != 0) FilterAddBullet(1, $('pf_subcategory').value, $('pf_subcategory').options[$('pf_subcategory').selectedIndex].text, $('pf_category').value);" href="javascript: void(0);">Добавить подраздел</a>
+                           <option value="0">Р’С‹Р±РµСЂРёС‚Рµ РїРѕРґСЂР°Р·РґРµР»</option></select>
+                         </span><a class="lnk-dot-blue" onclick="if($('pf_subcategory').value != 0) FilterAddBullet(1, $('pf_subcategory').value, $('pf_subcategory').options[$('pf_subcategory').selectedIndex].text, $('pf_category').value);" href="javascript: void(0);">Р”РѕР±Р°РІРёС‚СЊ РїРѕРґСЂР°Р·РґРµР»</a>
                     </div>
                    <?php if(!is_emp()) {?>
                    <div class="flt-b-row" >
@@ -155,7 +155,7 @@ filter_bullets[<?=$fvalue?>][<?=$fkey?>]['parentid'] = '<?=(!($fvalue)?0:$prof_g
                             <span class="i-chk">
                                 <input type="checkbox" value="1" <? if ($filter['only_my_offs']=='t') {?>checked="checked" <? } ?>name="pf_only_my_offs" id="pf_only_my_offs">
                             </span>
-                           Смотреть только мои предложения
+                           РЎРјРѕС‚СЂРµС‚СЊ С‚РѕР»СЊРєРѕ РјРѕРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ
                        </label> 
                     </div>
                    <?php }//if?>
@@ -165,7 +165,7 @@ filter_bullets[<?=$fvalue?>][<?=$fkey?>]['parentid'] = '<?=(!($fvalue)?0:$prof_g
           <div class="flt-block flt-b-lc" >
                <label class="flt-lbl"></label>
                <div class="flt-b-in" >
-                   <input type="submit" onclick="submit();" value="Применить фильтр" class="i-btn">&nbsp;&nbsp;&nbsp;<a href="javascript: void(0);" onclick="FilterOffersClearForm()" class="flt-lnk">Очистить форму</a>
+                   <input type="submit" onclick="submit();" value="РџСЂРёРјРµРЅРёС‚СЊ С„РёР»СЊС‚СЂ" class="i-btn">&nbsp;&nbsp;&nbsp;<a href="javascript: void(0);" onclick="FilterOffersClearForm()" class="flt-lnk">РћС‡РёСЃС‚РёС‚СЊ С„РѕСЂРјСѓ</a>
                </div>
           </div>
      </div>

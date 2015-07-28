@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/LocalDateTime.php");
 
 $multi = new multi_buttons();
 
-if($stage->version != $stage->frl_version) {// Фрилансер еще не согласился, для расчета берем старую дату
+if($stage->version != $stage->frl_version) {// Р¤СЂРёР»Р°РЅСЃРµСЂ РµС‰Рµ РЅРµ СЃРѕРіР»Р°СЃРёР»СЃСЏ, РґР»СЏ СЂР°СЃС‡РµС‚Р° Р±РµСЂРµРј СЃС‚Р°СЂСѓСЋ РґР°С‚Сѓ
     $frl_version = $stage->getVersion($stage->frl_version, $stage->data);
     $work_time = intval($frl_version['work_time']);
     $start_time = $frl_version['start_time'];
@@ -12,7 +12,7 @@ if($stage->version != $stage->frl_version) {// Фрилансер еще не согласился, для 
     $work_time = intval($stage->work_time);
     $start_time = $stage->start_time;
 }
-$work_time = $work_time < 0 ? 0 : $work_time; // Если проект уже просрочен даем еще 5 дней с момента отмены арбитража
+$work_time = $work_time < 0 ? 0 : $work_time; // Р•СЃР»Рё РїСЂРѕРµРєС‚ СѓР¶Рµ РїСЂРѕСЃСЂРѕС‡РµРЅ РґР°РµРј РµС‰Рµ 5 РґРЅРµР№ СЃ РјРѕРјРµРЅС‚Р° РѕС‚РјРµРЅС‹ Р°СЂР±РёС‚СЂР°Р¶Р°
 $cdate = new LocalDateTime(date('d.m.Y', strtotime($start_time . ' + ' . $work_time . 'day')));
 $cdate->getWorkForDay(pskb::PERIOD_EXP);
 $days      = ($work_time + $cdate->getCountDays()) . "day";
@@ -20,7 +20,7 @@ $overtime  = strtotime($start_time . ' + ' . $days);
 
 if($sbr->data['lc_id'] > 0) {
     $overtime = strtotime($sbr->data['dateEndLC'] . ' - ' . pskb::ARBITRAGE_PERIOD_DAYS . " day");
-    // Сб, Вс не рабочие дни
+    // РЎР±, Р’СЃ РЅРµ СЂР°Р±РѕС‡РёРµ РґРЅРё
     if(date('w', $overtime) == 0 || date('w', $overtime) == 6) {
         $d = date('w', $overtime) == 6 ? 1 : 2;
         $overtime = $overtime - ($d * 3600* 24);
@@ -28,60 +28,60 @@ if($sbr->data['lc_id'] > 0) {
 } else {
     $overtime = null;
 }
-// Если в арбитраже, действий делать никаких нельзя, независимо от статуса СБР
+// Р•СЃР»Рё РІ Р°СЂР±РёС‚СЂР°Р¶Рµ, РґРµР№СЃС‚РІРёР№ РґРµР»Р°С‚СЊ РЅРёРєР°РєРёС… РЅРµР»СЊР·СЏ, РЅРµР·Р°РІРёСЃРёРјРѕ РѕС‚ СЃС‚Р°С‚СѓСЃР° РЎР‘Р 
 if($stage->data['status'] == sbr_stages::STATUS_INARBITRAGE || $stage->data['status'] == sbr_stages::STATUS_ARBITRAGED) return;
 
-// Инициируем все доступные кнопки один раз @todo Чтото тут надо придумать
-$edit = new buttons('Изменить условия', null, 'edit');
+// РРЅРёС†РёРёСЂСѓРµРј РІСЃРµ РґРѕСЃС‚СѓРїРЅС‹Рµ РєРЅРѕРїРєРё РѕРґРёРЅ СЂР°Р· @todo Р§С‚РѕС‚Рѕ С‚СѓС‚ РЅР°РґРѕ РїСЂРёРґСѓРјР°С‚СЊ
+$edit = new buttons('РР·РјРµРЅРёС‚СЊ СѓСЃР»РѕРІРёСЏ', null, 'edit');
 $edit->setLink("/" . sbr::NEW_TEMPLATE_SBR . "/?site=editstage&id={$stage->id}");
 $edit->addEvent("onclick", "window.location = '/" . sbr::NEW_TEMPLATE_SBR . "/?site=editstage&id={$stage->id}';");
 
-$cancel = new buttons('Отменить сделку', 'red', 'cancel');
-$cancel->addEvent("onclick", "if(confirm('Отменить сделку?')) { submitForm($('actionSbrForm'), {action: 'status_action', cancel:1}); }");
+$cancel = new buttons('РћС‚РјРµРЅРёС‚СЊ СЃРґРµР»РєСѓ', 'red', 'cancel');
+$cancel->addEvent("onclick", "if(confirm('РћС‚РјРµРЅРёС‚СЊ СЃРґРµР»РєСѓ?')) { submitForm($('actionSbrForm'), {action: 'status_action', cancel:1}); }");
 
-$draft = new buttons('Отказаться, поместить проект в черновик', 'red', 'action_stage');
+$draft = new buttons('РћС‚РєР°Р·Р°С‚СЊСЃСЏ, РїРѕРјРµСЃС‚РёС‚СЊ РїСЂРѕРµРєС‚ РІ С‡РµСЂРЅРѕРІРёРє', 'red', 'action_stage');
 $draft->addEvent("onclick", "submitForm($('actionStageForm'), {action:'draft'})");
 
-$arbitrage = new buttons('Обратиться в арбитраж', 'red', 'arbitrage');
+$arbitrage = new buttons('РћР±СЂР°С‚РёС‚СЊСЃСЏ РІ Р°СЂР±РёС‚СЂР°Р¶', 'red', 'arbitrage');
 $arbitrage->addEvent("onclick", "toggle_arb();");
 
-$complete = new buttons('Принять работу', null, 'complete');
+$complete = new buttons('РџСЂРёРЅСЏС‚СЊ СЂР°Р±РѕС‚Сѓ', null, 'complete');
 $complete->setLink("/" . sbr::NEW_TEMPLATE_SBR . "/?site=Stage&id={$stage->id}&event=complete");
 
-$pause = new buttons('Поставить на паузу', null, 'pause');
+$pause = new buttons('РџРѕСЃС‚Р°РІРёС‚СЊ РЅР° РїР°СѓР·Сѓ', null, 'pause');
 $pause->addEvent("onclick", "view_sbr_popup('pause_confirm');");
 //$pause->addEvent("onclick", "submitForm($('actionStageForm'), {action: 'change_status', status:" . sbr_stages::STATUS_FROZEN . "});");
       
-$inwork = new buttons('Вернуть в работу', null, 'action_stage');
+$inwork = new buttons('Р’РµСЂРЅСѓС‚СЊ РІ СЂР°Р±РѕС‚Сѓ', null, 'action_stage');
 $inwork->addEvent("onclick", "submitForm($('actionStageForm'), {action: 'change_status', status:" . sbr_stages::STATUS_PROCESS . "});");
 
-$resend = new buttons('Повторный запрос', null, 'action_stage');
+$resend = new buttons('РџРѕРІС‚РѕСЂРЅС‹Р№ Р·Р°РїСЂРѕСЃ', null, 'action_stage');
 $resend->addEvent("onclick", "submitForm($('actionStageForm'), {action: 'resolve_changes', resend:1});");
 
-$rollback = new buttons('Отменить изменения', 'red', 'action_stage');
+$rollback = new buttons('РћС‚РјРµРЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ', 'red', 'action_stage');
 $rollback->addEvent("onclick", "submitForm($('actionStageForm'), {action: 'resolve_changes', cancel:1});");
                 
-$reserved = new buttons('Зарезервировать деньги', null, 'reserved');
+$reserved = new buttons('Р—Р°СЂРµР·РµСЂРІРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё', null, 'reserved');
 $reserved->setLink("/" . sbr::NEW_TEMPLATE_SBR . "/?site=reserve&id={$sbr->id}");
 
 switch($sbr->status) {
     case sbr::STATUS_NEW:
-        $draft->setName("Поместить проект в черновик");
+        $draft->setName("РџРѕРјРµСЃС‚РёС‚СЊ РїСЂРѕРµРєС‚ РІ С‡РµСЂРЅРѕРІРёРє");
         $multi->addButton($cancel);
         $multi->addButton($edit);
         $multi->addButton($draft);
         
         break;
     case sbr::STATUS_CHANGED:
-        if($sbr->data['reserved_id']) { // Деньги зарезервированы, тут еще зависимость от статусов будет
+        if($sbr->data['reserved_id']) { // Р”РµРЅСЊРіРё Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹, С‚СѓС‚ РµС‰Рµ Р·Р°РІРёСЃРёРјРѕСЃС‚СЊ РѕС‚ СЃС‚Р°С‚СѓСЃРѕРІ Р±СѓРґРµС‚
             if($stage->data['status'] == sbr_stages::STATUS_NEW) {
                 //if($stage->num > 0 && $sbr->stages[$stage->num-1]->data['status'] == sbr_stages::STATUS_INARBITRAGE) {
-                //    $inwork->setName('Поставить в работу');
+                //    $inwork->setName('РџРѕСЃС‚Р°РІРёС‚СЊ РІ СЂР°Р±РѕС‚Сѓ');
                 //    $multi->addButton($inwork);
                 //}
-                break; // Если этап не начат и деньги зарезервированы с этим этапом ничего нельзя делать???
+                break; // Р•СЃР»Рё СЌС‚Р°Рї РЅРµ РЅР°С‡Р°С‚ Рё РґРµРЅСЊРіРё Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹ СЃ СЌС‚РёРј СЌС‚Р°РїРѕРј РЅРёС‡РµРіРѕ РЅРµР»СЊР·СЏ РґРµР»Р°С‚СЊ???
             }
-            // Из статуса Не начат - В работе -- можно изменить только 1 раз, причем пока фрилансер не согласился статус этапа менять нельзя
+            // РР· СЃС‚Р°С‚СѓСЃР° РќРµ РЅР°С‡Р°С‚ - Р’ СЂР°Р±РѕС‚Рµ -- РјРѕР¶РЅРѕ РёР·РјРµРЅРёС‚СЊ С‚РѕР»СЊРєРѕ 1 СЂР°Р·, РїСЂРёС‡РµРј РїРѕРєР° С„СЂРёР»Р°РЅСЃРµСЂ РЅРµ СЃРѕРіР»Р°СЃРёР»СЃСЏ СЃС‚Р°С‚СѓСЃ СЌС‚Р°РїР° РјРµРЅСЏС‚СЊ РЅРµР»СЊР·СЏ
             if($stage->data['status'] == sbr_stages::STATUS_PROCESS) { 
                 
                 $multi->addButton($arbitrage);
@@ -94,14 +94,14 @@ switch($sbr->status) {
                 break;
             }
             
-            if($stage->data['status'] == sbr_stages::STATUS_FROZEN) { // Этап на паузе ждем соглашения исполнителя с этим делом
+            if($stage->data['status'] == sbr_stages::STATUS_FROZEN) { // Р­С‚Р°Рї РЅР° РїР°СѓР·Рµ Р¶РґРµРј СЃРѕРіР»Р°С€РµРЅРёСЏ РёСЃРїРѕР»РЅРёС‚РµР»СЏ СЃ СЌС‚РёРј РґРµР»РѕРј
                 
                 //$multi->addButton($inwork);
                 $multi->addButton($arbitrage);
                 $multi->addButton($edit);
             }
             
-        } else { // Деньги не зарезервированы
+        } else { // Р”РµРЅСЊРіРё РЅРµ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹
             
             $multi->addButton($cancel);
             //$multi->addButton($draft);
@@ -110,9 +110,9 @@ switch($sbr->status) {
         
         break;
     case sbr::STATUS_PROCESS:
-        if($sbr->data['reserved_id']) { // Деньги зарезервированы
+        if($sbr->data['reserved_id']) { // Р”РµРЅСЊРіРё Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹
             
-            if($stage_changed) { // Необходима реакция Заказчика
+            if($stage_changed) { // РќРµРѕР±С…РѕРґРёРјР° СЂРµР°РєС†РёСЏ Р—Р°РєР°Р·С‡РёРєР°
                 
                 $multi->addButton($edit);
                 $multi->addButton($resend);
@@ -122,15 +122,15 @@ switch($sbr->status) {
                 break;
             }
             
-            // Если этап не начат и деньги зарезервированы с этим этапом ничего нельзя делать??? После завершения предыдущего этапа он автоматически пойдет в работу
+            // Р•СЃР»Рё СЌС‚Р°Рї РЅРµ РЅР°С‡Р°С‚ Рё РґРµРЅСЊРіРё Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹ СЃ СЌС‚РёРј СЌС‚Р°РїРѕРј РЅРёС‡РµРіРѕ РЅРµР»СЊР·СЏ РґРµР»Р°С‚СЊ??? РџРѕСЃР»Рµ Р·Р°РІРµСЂС€РµРЅРёСЏ РїСЂРµРґС‹РґСѓС‰РµРіРѕ СЌС‚Р°РїР° РѕРЅ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РїРѕР№РґРµС‚ РІ СЂР°Р±РѕС‚Сѓ
             if($stage->data['status'] == sbr_stages::STATUS_NEW) {
                 //if($stage->num > 0 && $sbr->stages[$stage->num-1]->data['status'] == sbr_stages::STATUS_INARBITRAGE) {
-                //    $inwork->setName('Поставить в работу');
+                //    $inwork->setName('РџРѕСЃС‚Р°РІРёС‚СЊ РІ СЂР°Р±РѕС‚Сѓ');
                 //    $multi->addButton($inwork);
                 //}
                 break; 
             }
-            if($stage->data['status'] == sbr_stages::STATUS_PROCESS) { // Этап в работе
+            if($stage->data['status'] == sbr_stages::STATUS_PROCESS) { // Р­С‚Р°Рї РІ СЂР°Р±РѕС‚Рµ
                 
                 $multi->addButton($complete);
                 $multi->addButton($arbitrage);
@@ -138,7 +138,7 @@ switch($sbr->status) {
                 $multi->addButton($edit);
             }
             
-            if($stage->data['status'] == sbr_stages::STATUS_FROZEN) { // Этап на паузе
+            if($stage->data['status'] == sbr_stages::STATUS_FROZEN) { // Р­С‚Р°Рї РЅР° РїР°СѓР·Рµ
                 
                 $multi->addButton($inwork);
                 $multi->addButton($arbitrage);
@@ -146,8 +146,8 @@ switch($sbr->status) {
                 $multi->addButton($edit);
             }
             
-        } elseif($stage_changed) { // Исполнитель отказался от изменений
-            $edit->setName('Изменить условия сделки');
+        } elseif($stage_changed) { // РСЃРїРѕР»РЅРёС‚РµР»СЊ РѕС‚РєР°Р·Р°Р»СЃСЏ РѕС‚ РёР·РјРµРЅРµРЅРёР№
+            $edit->setName('РР·РјРµРЅРёС‚СЊ СѓСЃР»РѕРІРёСЏ СЃРґРµР»РєРё');
             
             $multi->addButton($edit);
             $multi->addButton($resend);
@@ -155,13 +155,13 @@ switch($sbr->status) {
             //$multi->addButton($draft);
             $multi->addButton($cancel);
 
-        } elseif($sbr_changed) { // Если какая то сделка требует реакции от работодателя, пока деньги не зарезервированы
+        } elseif($sbr_changed) { // Р•СЃР»Рё РєР°РєР°СЏ С‚Рѕ СЃРґРµР»РєР° С‚СЂРµР±СѓРµС‚ СЂРµР°РєС†РёРё РѕС‚ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ, РїРѕРєР° РґРµРЅСЊРіРё РЅРµ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹
             
             $multi->addButton($cancel);
             //$multi->addButton($draft);
             $multi->addButton($edit);
             
-        } else { // Деньги еще не зарезервированы
+        } else { // Р”РµРЅСЊРіРё РµС‰Рµ РЅРµ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹
             
             $multi->addButton($reserved);
             //$multi->addButton($draft);
@@ -171,7 +171,7 @@ switch($sbr->status) {
         break;
     case sbr::STATUS_REFUSED:
     case sbr::STATUS_CANCELED:
-        $draft->setName('Поместить проект в черновик');
+        $draft->setName('РџРѕРјРµСЃС‚РёС‚СЊ РїСЂРѕРµРєС‚ РІ С‡РµСЂРЅРѕРІРёРє');
         
         $edit->setLink("/sbr/?site=edit&id={$sbr->id}");
         
@@ -180,20 +180,20 @@ switch($sbr->status) {
         
         break;
 }
-// Если время вышло #0020166 #0023680
+// Р•СЃР»Рё РІСЂРµРјСЏ РІС‹С€Р»Рѕ #0020166 #0023680
 if(time() > $overtime && $overtime !== null) {
     $multi->removeButton($arbitrage);
 }
  
-// Выводим сгенерированные кнопки
+// Р’С‹РІРѕРґРёРј СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Рµ РєРЅРѕРїРєРё
 $multi->view();
 
-// Если есть кнопка арбитража
+// Р•СЃР»Рё РµСЃС‚СЊ РєРЅРѕРїРєР° Р°СЂР±РёС‚СЂР°Р¶Р°
 if($multi->isButton('arbitrage')) {
     include ($_SERVER['DOCUMENT_ROOT'] . "/sbr/arbitrage.php");
 }
 
-// Если есть кнопка отмены СБР
+// Р•СЃР»Рё РµСЃС‚СЊ РєРЅРѕРїРєР° РѕС‚РјРµРЅС‹ РЎР‘Р 
 if($multi->isButton('cancel')) {
     ?>
     <form id="actionSbrForm" action="?id=<?= $sbr->id;?>" method="post">
@@ -206,7 +206,7 @@ if($multi->isButton('cancel')) {
     <?
 }
 
-// Если есть кнопка Поставить на паузу
+// Р•СЃР»Рё РµСЃС‚СЊ РєРЅРѕРїРєР° РџРѕСЃС‚Р°РІРёС‚СЊ РЅР° РїР°СѓР·Сѓ
 if($multi->isButton('pause') ) {
     $dateMaxLimit = "date_max_limit_" . date('Y_m_d', strtotime('+ 30 days'));
     $dateMinLimit = "date_min_limit_" . date('Y_m_d', strtotime('+ 1 day'));
@@ -218,17 +218,17 @@ if($multi->isButton('pause') ) {
                     <div class="b-shadow__top">
                         <div class="b-shadow__bottom">
                             <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20">
-                                <h2 class="b-shadow__title b-shadow__title_padbot_10">Пауза по этапу</h2>
-                                <div class="b-shadow__txt b-shadow__txt_padbot_20 b-shadow__txt_fontsize_11">Установите срок паузы в любом из полей ниже</div>
+                                <h2 class="b-shadow__title b-shadow__title_padbot_10">РџР°СѓР·Р° РїРѕ СЌС‚Р°РїСѓ</h2>
+                                <div class="b-shadow__txt b-shadow__txt_padbot_20 b-shadow__txt_fontsize_11">РЈСЃС‚Р°РЅРѕРІРёС‚Рµ СЃСЂРѕРє РїР°СѓР·С‹ РІ Р»СЋР±РѕРј РёР· РїРѕР»РµР№ РЅРёР¶Рµ</div>
 
-                                <div class="b-layout__txt b-layout__txt_padtop_4 b-layout__txt_inline-block b-layout__txt_width_20">на</div>
+                                <div class="b-layout__txt b-layout__txt_padtop_4 b-layout__txt_inline-block b-layout__txt_width_20">РЅР°</div>
                                 <div class="b-combo b-combo_inline-block b-combo_padbot_20">
                                     <div class="b-combo__input b-combo__input_multi_dropdown show_all_records use_scroll b-combo__input_visible_height_200 b-combo__input_width_170 b-combo__input_arrow_yes b-combo__input_init_listPauseDays drop_down_default_7">
-                                        <input class="b-combo__input-text" id="count_pause_days" name="count_pause_days" type="text" size="80" value="7 дней" onchange="changePauseDays();"/>
+                                        <input class="b-combo__input-text" id="count_pause_days" name="count_pause_days" type="text" size="80" value="7 РґРЅРµР№" onchange="changePauseDays();"/>
                                     </div>
                                 </div>
                                 <div class="b-layout__txt">
-                                    <div class="b-layout__txt b-layout__txt_padtop_4 b-layout__txt_inline-block b-layout__txt_width_20">до</div>
+                                    <div class="b-layout__txt b-layout__txt_padtop_4 b-layout__txt_inline-block b-layout__txt_width_20">РґРѕ</div>
                                     <div class="b-combo b-combo_inline-block">
                                         <div class="b-combo__input b-combo__input_calendar b-combo__input_width_170 b-combo__input_arrow-date_yes use_past_date <?= $dateMinLimit; ?> <?= $dateMaxLimit ?>">
                                             <input class="b-combo__input-text" id="pause_date" name="pause_date" type="text" size="80" value="<?= date("d.m.Y", strtotime('+7day')); ?>" onchange="changePauseDays(1);"/>
@@ -238,9 +238,9 @@ if($multi->isButton('pause') ) {
                                 </div>
 
                                 <div class="b-buttons b-buttons_padleft_25 b-buttons_padtb_20">
-                                    <a class="b-button b-button_flat b-button_flat_green" href="javascript:void(0)" onclick="submitForm($('actionStageForm'), {action: 'change_status', status: '<?= sbr_stages::STATUS_FROZEN?>', days: $('count_pause_days_db_id').get('value')});" style=" overflow:visible;">Пауза</a>
+                                    <a class="b-button b-button_flat b-button_flat_green" href="javascript:void(0)" onclick="submitForm($('actionStageForm'), {action: 'change_status', status: '<?= sbr_stages::STATUS_FROZEN?>', days: $('count_pause_days_db_id').get('value')});" style=" overflow:visible;">РџР°СѓР·Р°</a>
                                 </div>
-                                <div class="b-shadow__txt b-shadow__txt_fontsize_11">Максимальная длительность паузы &mdash; 30 календарных дней. Работа по сделке будет автоматически возобновлена по истечении назначенного срока.</div>
+                                <div class="b-shadow__txt b-shadow__txt_fontsize_11">РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёС‚РµР»СЊРЅРѕСЃС‚СЊ РїР°СѓР·С‹ &mdash; 30 РєР°Р»РµРЅРґР°СЂРЅС‹С… РґРЅРµР№. Р Р°Р±РѕС‚Р° РїРѕ СЃРґРµР»РєРµ Р±СѓРґРµС‚ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РІРѕР·РѕР±РЅРѕРІР»РµРЅР° РїРѕ РёСЃС‚РµС‡РµРЅРёРё РЅР°Р·РЅР°С‡РµРЅРЅРѕРіРѕ СЃСЂРѕРєР°.</div>
 
                             </div>
                         </div>
@@ -253,7 +253,7 @@ if($multi->isButton('pause') ) {
     <?
 }
 
-// Если есть кнопка Принять работу
+// Р•СЃР»Рё РµСЃС‚СЊ РєРЅРѕРїРєР° РџСЂРёРЅСЏС‚СЊ СЂР°Р±РѕС‚Сѓ
 if($multi->isButton('complete') ) {
     ?>
     <div class="i-shadow i-shadow_zindex_110" id="completed_confirm">
@@ -263,12 +263,12 @@ if($multi->isButton('complete') ) {
                     <div class="b-shadow__top">
                         <div class="b-shadow__bottom">
                             <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20 b-layout">
-                                <div class="b-shadow__txt b-shadow__txt_padbot_5">Вы уверены, что хотите принять работу?</div> 
-                                <div class="b-shadow__txt b-shadow__txt_padbot_10">Обратите внимание: отменить действие будет невозможно.<br />Исполнитель получит деньги за данный этап «Безопасной Сделки».</div>
+                                <div class="b-shadow__txt b-shadow__txt_padbot_5">Р’С‹ СѓРІРµСЂРµРЅС‹, С‡С‚Рѕ С…РѕС‚РёС‚Рµ РїСЂРёРЅСЏС‚СЊ СЂР°Р±РѕС‚Сѓ?</div> 
+                                <div class="b-shadow__txt b-shadow__txt_padbot_10">РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ: РѕС‚РјРµРЅРёС‚СЊ РґРµР№СЃС‚РІРёРµ Р±СѓРґРµС‚ РЅРµРІРѕР·РјРѕР¶РЅРѕ.<br />РСЃРїРѕР»РЅРёС‚РµР»СЊ РїРѕР»СѓС‡РёС‚ РґРµРЅСЊРіРё Р·Р° РґР°РЅРЅС‹Р№ СЌС‚Р°Рї В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ».</div>
                                 <div class="b-buttons ">
-                                    <a href="javascript:void(0)" onclick="submitForm($('actionStageForm'), {action: 'change_status', status: '<?= sbr_stages::STATUS_COMPLETED?>'});" class="b-button b-button_flat b-button_flat_green">Принять работу</a>
-                                    <span class="b-buttons__txt">&#160;&#160;&#160;или</span>
-                                    <a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript:void(0)" onclick="$('completed_confirm').getElement('.b-shadow').addClass('b-shadow_hide'); $('b-shadow_sbr__overlay').dispose(); return false;">отменить</a>
+                                    <a href="javascript:void(0)" onclick="submitForm($('actionStageForm'), {action: 'change_status', status: '<?= sbr_stages::STATUS_COMPLETED?>'});" class="b-button b-button_flat b-button_flat_green">РџСЂРёРЅСЏС‚СЊ СЂР°Р±РѕС‚Сѓ</a>
+                                    <span class="b-buttons__txt">&#160;&#160;&#160;РёР»Рё</span>
+                                    <a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript:void(0)" onclick="$('completed_confirm').getElement('.b-shadow').addClass('b-shadow_hide'); $('b-shadow_sbr__overlay').dispose(); return false;">РѕС‚РјРµРЅРёС‚СЊ</a>
                                 </div>
 
                             </div>
@@ -287,7 +287,7 @@ if($multi->isButton('complete') ) {
     <?
 }
 
-// Если есть кнопки из блока действий по этапу сделки
+// Р•СЃР»Рё РµСЃС‚СЊ РєРЅРѕРїРєРё РёР· Р±Р»РѕРєР° РґРµР№СЃС‚РІРёР№ РїРѕ СЌС‚Р°РїСѓ СЃРґРµР»РєРё
 if($multi->isButton('action_stage') || $multi->isButton('complete') || $multi->isButton('pause')) {
     ?>
     <form id="actionStageForm" method="post">

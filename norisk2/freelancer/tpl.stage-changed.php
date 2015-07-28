@@ -1,6 +1,6 @@
 							<? if($sbr->error['new_version']) { ?>
 							<div class="nr-cancel-reason c">
-								<p>Операция (отказ) была отменена, так как заказчик успел внести новые изменения в условия задачи. Пожалуйста, ознакомтесь и примите решение.</p>
+								<p>РћРїРµСЂР°С†РёСЏ (РѕС‚РєР°Р·) Р±С‹Р»Р° РѕС‚РјРµРЅРµРЅР°, С‚Р°Рє РєР°Рє Р·Р°РєР°Р·С‡РёРє СѓСЃРїРµР» РІРЅРµСЃС‚Рё РЅРѕРІС‹Рµ РёР·РјРµРЅРµРЅРёСЏ РІ СѓСЃР»РѕРІРёСЏ Р·Р°РґР°С‡Рё. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕР·РЅР°РєРѕРјС‚РµСЃСЊ Рё РїСЂРёРјРёС‚Рµ СЂРµС€РµРЅРёРµ.</p>
 							</div>
 							<br />
 							<? } ?>
@@ -13,24 +13,24 @@
                                         <div class="nr-prj-btns c">
                                             <div class="btn-margin">
                                                 <span class="btn-o-red">
-                                                    <a href="javascript:;" onclick="document.getElementById('rrbox').style.display='block'; return false;" class="btnr btnr-red"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Отказаться</span></span></span></a>
+                                                    <a href="javascript:;" onclick="document.getElementById('rrbox').style.display='block'; return false;" class="btnr btnr-red"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РћС‚РєР°Р·Р°С‚СЊСЃСЏ</span></span></span></a>
                                                 </span>
                                                 <span class="btn-o-green">
-                                                    <a href="javascript:;" onclick="SBR.sendForm({ok:1})" class="btnr btnr-green2"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Я согласен с изменениями</span></span></span></a>
+                                                    <a href="javascript:;" onclick="SBR.sendForm({ok:1})" class="btnr btnr-green2"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РЇ СЃРѕРіР»Р°СЃРµРЅ СЃ РёР·РјРµРЅРµРЅРёСЏРјРё</span></span></span></a>
                                                     <input type="hidden" name="ok" value="" />
                                                 </span>
                                             </div>
                                             <div class="nr-warning">
-                                                <strong>Будьте внимательны при согласии с условиями, </strong><br />
-                                                текущее действие необратимо без вмешательства Арбитража
+                                                <strong>Р‘СѓРґСЊС‚Рµ РІРЅРёРјР°С‚РµР»СЊРЅС‹ РїСЂРё СЃРѕРіР»Р°СЃРёРё СЃ СѓСЃР»РѕРІРёСЏРјРё, </strong><br />
+                                                С‚РµРєСѓС‰РµРµ РґРµР№СЃС‚РІРёРµ РЅРµРѕР±СЂР°С‚РёРјРѕ Р±РµР· РІРјРµС€Р°С‚РµР»СЊСЃС‚РІР° РђСЂР±РёС‚СЂР°Р¶Р°
                                             </div>
                                             <div class="f-overlay f-o-nr-c" id="rrbox" style="display:none">
                                                 <div class="f-overlay-in">
-                                                    <h3>Укажите причину отказа</h3>
+                                                    <h3>РЈРєР°Р¶РёС‚Рµ РїСЂРёС‡РёРЅСѓ РѕС‚РєР°Р·Р°</h3>
                                                     <div class="f-overlay-cnt"><textarea name="frl_refuse_reason" rows="5" cols="10" id="rrtext"></textarea></div>
                                                     <div class="f-overlay-btns">
-                                                        <input type="submit" value="Отказаться" class="i-btn i-bold" />
-                                                        <input type="button" value="Отменить" class="i-btn" onclick="document.getElementById('rrbox').style.display='none'; document.getElementById('rrtext').value=''; return false;" />
+                                                        <input type="submit" value="РћС‚РєР°Р·Р°С‚СЊСЃСЏ" class="i-btn i-bold" />
+                                                        <input type="button" value="РћС‚РјРµРЅРёС‚СЊ" class="i-btn" onclick="document.getElementById('rrbox').style.display='none'; document.getElementById('rrtext').value=''; return false;" />
                                                   </div>
                                                 </div>
                                             </div>

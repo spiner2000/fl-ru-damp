@@ -3,16 +3,16 @@
     	<img class="b-tel-help__photo" src="/images/temp/alexandra.png" alt="" width="50" height="50" />
     	<div class="b-tel-help__tooltip b-tel-help__tooltip_205x60">
     	    <? if(NY2012TIME) { ?>
-            <div class="b-tel-help__txt b-tel-help__txt_bold">С 31 декабря по 9 января</div>
-    		<div class="b-tel-help__txt">телефон работать не будет</div>
+            <div class="b-tel-help__txt b-tel-help__txt_bold">РЎ 31 РґРµРєР°Р±СЂСЏ РїРѕ 9 СЏРЅРІР°СЂСЏ</div>
+    		<div class="b-tel-help__txt">С‚РµР»РµС„РѕРЅ СЂР°Р±РѕС‚Р°С‚СЊ РЅРµ Р±СѓРґРµС‚</div>
             <? } else {?>
-    		<div class="b-tel-help__txt b-tel-help__txt_bold">Возникли сложности?</div>
-    		<div class="b-tel-help__txt"><a class="b-tel-help__link" href="/contacts/?from=norisk" target="_blank">Обсудить проект</a><br />E-mail: <a class="b-tel-help__link" href="mailto:norisk@free-lance.ru">norisk@free-lance.ru</a></div> 
+    		<div class="b-tel-help__txt b-tel-help__txt_bold">Р’РѕР·РЅРёРєР»Рё СЃР»РѕР¶РЅРѕСЃС‚Рё?</div>
+    		<div class="b-tel-help__txt"><a class="b-tel-help__link" href="/contacts/?from=norisk" target="_blank">РћР±СЃСѓРґРёС‚СЊ РїСЂРѕРµРєС‚</a><br />E-mail: <a class="b-tel-help__link" href="mailto:norisk@free-lance.ru">norisk@free-lance.ru</a></div> 
     		<?}?>
     	</div>
 			
     </div>	
 </div>
 <?php if(date('Ymd') <= '20120110') { ?>
-			<div class="sbr-news-txt">Последний день выплат, возвратов денежных средств и вынесение решений арбитражем по &laquo;Безопасным Сделкам&raquo; &mdash; 28 декабря 2011 года. Все операции с денежными средствами , поступившими по безналичному расчету после 12:00 мск 28 декабря 2011, будут проведены после 10 января 2012 г.</div>
+			<div class="sbr-news-txt">РџРѕСЃР»РµРґРЅРёР№ РґРµРЅСЊ РІС‹РїР»Р°С‚, РІРѕР·РІСЂР°С‚РѕРІ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ Рё РІС‹РЅРµСЃРµРЅРёРµ СЂРµС€РµРЅРёР№ Р°СЂР±РёС‚СЂР°Р¶РµРј РїРѕ &laquo;Р‘РµР·РѕРїР°СЃРЅС‹Рј РЎРґРµР»РєР°Рј&raquo; &mdash; 28 РґРµРєР°Р±СЂСЏ 2011 РіРѕРґР°. Р’СЃРµ РѕРїРµСЂР°С†РёРё СЃ РґРµРЅРµР¶РЅС‹РјРё СЃСЂРµРґСЃС‚РІР°РјРё , РїРѕСЃС‚СѓРїРёРІС€РёРјРё РїРѕ Р±РµР·РЅР°Р»РёС‡РЅРѕРјСѓ СЂР°СЃС‡РµС‚Сѓ РїРѕСЃР»Рµ 12:00 РјСЃРє 28 РґРµРєР°Р±СЂСЏ 2011, Р±СѓРґСѓС‚ РїСЂРѕРІРµРґРµРЅС‹ РїРѕСЃР»Рµ 10 СЏРЅРІР°СЂСЏ 2012 Рі.</div>
 <?php } //if?>

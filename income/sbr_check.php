@@ -6,6 +6,6 @@ $request = $_POST;
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/pskb.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/log.php");
-if($_GET['key'] != pskb::KEY_CHECK_AUTH) exit(); // Авторизация
+if($_GET['key'] != pskb::KEY_CHECK_AUTH) exit(); // РђРІС‚РѕСЂРёР·Р°С†РёСЏ
 pskb::listenRequest('superCheck');
 exit();

@@ -4,58 +4,58 @@
     <div class="b-fon b-fon_width_full b-fon_padbot_10 last-gift-block<?= $i > 0 ? " b-fon_hide" : "" ?>" id="last_gift<?= $gift['id'] ?>">
         <div class="b-fon__body b-fon__body_pad_10 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
             <div class="b-fon__txt b-fon__txt_center b-username">
-                <? if ($gift['op_code'] == 23) { // перевод ?>
+                <? if ($gift['op_code'] == 23) { // РїРµСЂРµРІРѕРґ ?>
                     <span class="b-icon b-icon_mid_f b-icon_valign_middle"></span>
-                    Пользователь 
+                    РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ 
                     <a class="b-username__link" href="<?= $link ?>"><?= $gift['uname'] . ' ' . $gift['usurname'] ?></a> 
                     <span class="b-username__login b-username__login_color_fd6c30">[<a class="b-username__link b-username__link_color_fd6c30" href="<?= $link ?>"><?= $gift['login'] ?></a>]</span>
-                    перевел<?= $gift['sex'] == 'f' ? 'а' : '' ?> вам 
-                    <span class="b-fon__txt b-fon__txt_bold"><?= round($gift['ammount'],2) ?> руб.</span> &nbsp;&nbsp;
-                <? } else { // подарок ?>
+                    РїРµСЂРµРІРµР»<?= $gift['sex'] == 'f' ? 'Р°' : '' ?> РІР°Рј 
+                    <span class="b-fon__txt b-fon__txt_bold"><?= round($gift['ammount'],2) ?> СЂСѓР±.</span> &nbsp;&nbsp;
+                <? } else { // РїРѕРґР°СЂРѕРє ?>
                     <span class="b-icon b-icon_mid_gift b-icon_valign_middle"></span>
                     <?php if ( $gift['login'] != 'admin' ) {?>
-                        Пользователь 
+                        РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ 
                         <a class="b-username__link" href="<?= $link ?>"><?= $gift['uname'] . ' ' . $gift['usurname'] ?></a> 
                         <span class="b-username__login b-username__login_color_fd6c30">[<a class="b-username__link b-username__link_color_fd6c30" href="<?= $link ?>"><?= $gift['login'] ?></a>]</span> 
-                        подарил<?= $gift['sex'] == 'f' ? 'а' : '' ?> вам 
+                        РїРѕРґР°СЂРёР»<?= $gift['sex'] == 'f' ? 'Р°' : '' ?> РІР°Рј 
                     <?php }?>
                     <? switch ($gift['op_code']) {
                         case 16:
                         case 52:
-                            $text1 = 'аккаунт PRO';
+                            $text1 = 'Р°РєРєР°СѓРЅС‚ PRO';
                             $count = - $gift['ammount_from'] / (is_emp() ? 10 : 19);
-                            $text2 = ' на ' . $count . ' ' . ending($count, 'месяц', 'месяца', 'месяцев') . '.';
+                            $text2 = ' РЅР° ' . $count . ' ' . ending($count, 'РјРµСЃСЏС†', 'РјРµСЃСЏС†Р°', 'РјРµСЃСЏС†РµРІ') . '.';
                             break;
                         case 69:
-                            $text1 = 'платное место в каталогах сайта';
+                            $text1 = 'РїР»Р°С‚РЅРѕРµ РјРµСЃС‚Рѕ РІ РєР°С‚Р°Р»РѕРіР°С… СЃР°Р№С‚Р°';
                             break;
                         case 17:
-                            $text1 = 'платное место на главной странице';
+                            $text1 = 'РїР»Р°С‚РЅРѕРµ РјРµСЃС‚Рѕ РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ';
                             $count = - $gift['ammount_from'] / 150;
-                            $text2 = ' на ' . $count . ' ' . ending($count, 'месяц', 'месяца', 'месяцев') . '.';
+                            $text2 = ' РЅР° ' . $count . ' ' . ending($count, 'РјРµСЃСЏС†', 'РјРµСЃСЏС†Р°', 'РјРµСЃСЏС†РµРІ') . '.';
                             break;
                         case 83:
-                            $text1 = 'платное место наверху каталога';
+                            $text1 = 'РїР»Р°С‚РЅРѕРµ РјРµСЃС‚Рѕ РЅР°РІРµСЂС…Сѓ РєР°С‚Р°Р»РѕРіР°';
                             break;
-                        case 84: // во всем каталоге
-                            $text1 = 'платное место в каталоге';
+                        case 84: // РІРѕ РІСЃРµРј РєР°С‚Р°Р»РѕРіРµ
+                            $text1 = 'РїР»Р°С‚РЅРѕРµ РјРµСЃС‚Рѕ РІ РєР°С‚Р°Р»РѕРіРµ';
                             $count = - $gift['ammount_from'] / 25;
-                            $text2 = ' на ' . $count . ' ' . ending($count, 'неделю', 'недели', 'недель') . '.';
+                            $text2 = ' РЅР° ' . $count . ' ' . ending($count, 'РЅРµРґРµР»СЋ', 'РЅРµРґРµР»Рё', 'РЅРµРґРµР»СЊ') . '.';
                             break;
-                        case 85: // в каком-то разделе
-                            $text1 = 'платное место в каталоге';
+                        case 85: // РІ РєР°РєРѕРј-С‚Рѕ СЂР°Р·РґРµР»Рµ
+                            $text1 = 'РїР»Р°С‚РЅРѕРµ РјРµСЃС‚Рѕ РІ РєР°С‚Р°Р»РѕРіРµ';
                             $count = - $gift['ammount_from'] / 10;
-                            $text2 = ' на ' . $count . ' ' . ending($count, 'неделю', 'недели', 'недель') . '.';
+                            $text2 = ' РЅР° ' . $count . ' ' . ending($count, 'РЅРµРґРµР»СЋ', 'РЅРµРґРµР»Рё', 'РЅРµРґРµР»СЊ') . '.';
                             break;
                         case 115: // 
-                            $text1 = 'Вы активировали подарок - профессиональный аккаунт на 1 неделю. Воспользуйтесь расширенными возможностями PRO.';
+                            $text1 = 'Р’С‹ Р°РєС‚РёРІРёСЂРѕРІР°Р»Рё РїРѕРґР°СЂРѕРє - РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚ РЅР° 1 РЅРµРґРµР»СЋ. Р’РѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ СЂР°СЃС€РёСЂРµРЅРЅС‹РјРё РІРѕР·РјРѕР¶РЅРѕСЃС‚СЏРјРё PRO.';
                             if ( is_emp() ) {
-                                $text1 = 'Вы активировали подарок - профессиональный аккаунт на 1 месяц. Воспользуйтесь расширенными возможностями PRO';
+                                $text1 = 'Р’С‹ Р°РєС‚РёРІРёСЂРѕРІР°Р»Рё РїРѕРґР°СЂРѕРє - РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚ РЅР° 1 РјРµСЃСЏС†. Р’РѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ СЂР°СЃС€РёСЂРµРЅРЅС‹РјРё РІРѕР·РјРѕР¶РЅРѕСЃС‚СЏРјРё PRO';
                             }
                             $count = 1;
                             $text2 = '';
                             break;
-                            //Спасибо, что воспользовались Сбербанком/WebMoney при пополнении счета. Ваш подарок - ХХХ рублей. 
+                            //РЎРїР°СЃРёР±Рѕ, С‡С‚Рѕ РІРѕСЃРїРѕР»СЊР·РѕРІР°Р»РёСЃСЊ РЎР±РµСЂР±Р°РЅРєРѕРј/WebMoney РїСЂРё РїРѕРїРѕР»РЅРµРЅРёРё СЃС‡РµС‚Р°. Р’Р°С€ РїРѕРґР°СЂРѕРє - РҐРҐРҐ СЂСѓР±Р»РµР№. 
                         case 95: 
                         case 96: 
                         case 97:
@@ -76,7 +76,7 @@
                                     $n = 2550;
                                 }
                             }
-                            $text1 = "Спасибо, что воспользовались банковским переводом при пополнении счета. Ваш подарок - $n рублей.";
+                            $text1 = "РЎРїР°СЃРёР±Рѕ, С‡С‚Рѕ РІРѕСЃРїРѕР»СЊР·РѕРІР°Р»РёСЃСЊ Р±Р°РЅРєРѕРІСЃРєРёРј РїРµСЂРµРІРѕРґРѕРј РїСЂРё РїРѕРїРѕР»РЅРµРЅРёРё СЃС‡РµС‚Р°. Р’Р°С€ РїРѕРґР°СЂРѕРє - $n СЂСѓР±Р»РµР№.";
                             $count = 1;
                             $text2 = '';
                             break;
@@ -93,7 +93,7 @@
                                     $n = 2550;
                                 }
                             } 
-                            $text1 = "Спасибо, что воспользовались WebMoney при пополнении счета. Ваш подарок - $n рублей.";
+                            $text1 = "РЎРїР°СЃРёР±Рѕ, С‡С‚Рѕ РІРѕСЃРїРѕР»СЊР·РѕРІР°Р»РёСЃСЊ WebMoney РїСЂРё РїРѕРїРѕР»РЅРµРЅРёРё СЃС‡РµС‚Р°. Р’Р°С€ РїРѕРґР°СЂРѕРє - $n СЂСѓР±Р»РµР№.";
                             $count = 1;
                             $text2 = '';
                             break;
@@ -110,18 +110,18 @@
                     <a class="b-button b-button_rectangle_color_green"  href="javascript:void(0)" onclick="SetGiftResv(<?= $gift['id'] ?>)">
                         <span class="b-button__b1">
                             <span class="b-button__b2">
-                                <span class="b-button__txt">Принять</span>
+                                <span class="b-button__txt">РџСЂРёРЅСЏС‚СЊ</span>
                             </span>
                         </span>
                     </a>&nbsp;&nbsp;
                     <? }//if?>
                     <? if ( $gift['login'] != "admin" ) {?>
-                        <a class="b-fon__link b-fon__link_fontsize_11" href="/bill/gift/">Ответный подарок</a> &nbsp;&nbsp;<? if( in_array($gift['op_code'], array(16, 52, 91, 92, 95, 99, 96, 100)) ) { ?></span><? }//if?>
+                        <a class="b-fon__link b-fon__link_fontsize_11" href="/bill/gift/">РћС‚РІРµС‚РЅС‹Р№ РїРѕРґР°СЂРѕРє</a> &nbsp;&nbsp;<? if( in_array($gift['op_code'], array(16, 52, 91, 92, 95, 99, 96, 100)) ) { ?></span><? }//if?>
                     <? } ?>
                 <? } ?>
                         
                 <? if( !in_array($gift['op_code'], array(16, 52, 91, 92, 95, 99, 96, 100)) ) { ?>
-                <a class="b-fon__link b-fon__link_bordbot_dot_0f71c8 b-fon__link_fontsize_11" href="javascript:void(0)" onclick="SetGiftResv(<?= $gift['id'] ?>)">Закрыть</a></span>
+                <a class="b-fon__link b-fon__link_bordbot_dot_0f71c8 b-fon__link_fontsize_11" href="javascript:void(0)" onclick="SetGiftResv(<?= $gift['id'] ?>)">Р—Р°РєСЂС‹С‚СЊ</a></span>
                 <? }//if?>
             </div> 
         </div>

@@ -2,8 +2,8 @@
 
 exit;
 
-//Отключаем запуск основного приложения
-//и инклудим библиотеки сами ниже чтобы создать минимальное окружение
+//РћС‚РєР»СЋС‡Р°РµРј Р·Р°РїСѓСЃРє РѕСЃРЅРѕРІРЅРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ
+//Рё РёРЅРєР»СѓРґРёРј Р±РёР±Р»РёРѕС‚РµРєРё СЃР°РјРё РЅРёР¶Рµ С‡С‚РѕР±С‹ СЃРѕР·РґР°С‚СЊ РјРёРЅРёРјР°Р»СЊРЅРѕРµ РѕРєСЂСѓР¶РµРЅРёРµ
 define('IN_STDF', 1);
 
 
@@ -17,9 +17,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/CFile.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/DB.php'); 
 
 
-//Пока такой хак чтобы отдельно 
-//конфиг не делать для мини окружения
-//так в DAV там хост соответствующий
+//РџРѕРєР° С‚Р°РєРѕР№ С…Р°Рє С‡С‚РѕР±С‹ РѕС‚РґРµР»СЊРЅРѕ 
+//РєРѕРЅС„РёРі РЅРµ РґРµР»Р°С‚СЊ РґР»СЏ РјРёРЅРё РѕРєСЂСѓР¶РµРЅРёСЏ
+//С‚Р°Рє РІ DAV С‚Р°Рј С…РѕСЃС‚ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№
 if (is_release()) {
     $host = HTTP_PREFIX . 'www.fl.ru';
 } elseif (is_beta()) {
@@ -37,7 +37,7 @@ if ($uid <= 0 || !$filename) {
     exit;
 }
 
-//Исправляем не корректный путь у папки юзера
+//РСЃРїСЂР°РІР»СЏРµРј РЅРµ РєРѕСЂСЂРµРєС‚РЅС‹Р№ РїСѓС‚СЊ Сѓ РїР°РїРєРё СЋР·РµСЂР°
 $components = explode('/', $filename);
 $components_cnt = count($components);
 if ($components[0] === 'users' && $components_cnt > 2) {
@@ -52,7 +52,7 @@ if ($components[0] === 'users' && $components_cnt > 2) {
 $DB = new DB('master');
 $file = new CFile($filename);
 
-//Если ли файл у нас в базе
+//Р•СЃР»Рё Р»Рё С„Р°Р№Р» Сѓ РЅР°СЃ РІ Р±Р°Р·Рµ
 if ($file->id > 0) {
 
     $tableName = $file->getTableName();
@@ -60,7 +60,7 @@ if ($file->id > 0) {
     $allow_download = true; 
     
     switch ($tableName) {
-        //файлы БС документы
+        //С„Р°Р№Р»С‹ Р‘РЎ РґРѕРєСѓРјРµРЅС‚С‹
         case 'file_reserves_order':
 
             require_once($_SERVER['DOCUMENT_ROOT'] . '/tu/models/TServiceOrderModel.php');
@@ -72,7 +72,7 @@ if ($file->id > 0) {
 
             break;
         
-        //файлы БС в сообщениях 
+        //С„Р°Р№Р»С‹ Р‘РЎ РІ СЃРѕРѕР±С‰РµРЅРёСЏС… 
         case 'file_tservice_msg':
             
             require_once($_SERVER['DOCUMENT_ROOT'] . '/tu/models/TServiceMsgModel.php');
@@ -85,13 +85,13 @@ if ($file->id > 0) {
             break;
         
         
-        //Другие файлы
+        //Р”СЂСѓРіРёРµ С„Р°Р№Р»С‹
         default:
         
             $components = explode('/', $filename);
             $components_cnt = count($components);
             
-            //Работает с файлами в диретории пользователя
+            //Р Р°Р±РѕС‚Р°РµС‚ СЃ С„Р°Р№Р»Р°РјРё РІ РґРёСЂРµС‚РѕСЂРёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
             if ($components[0] === 'users' && $components_cnt > 2) {
     
                 $splice_idx = strlen($components[1]) == 2? 2:1;
@@ -104,7 +104,7 @@ if ($file->id > 0) {
             
     }
     
-    //Если полный админ или соспец правами
+    //Р•СЃР»Рё РїРѕР»РЅС‹Р№ Р°РґРјРёРЅ РёР»Рё СЃРѕСЃРїРµС† РїСЂР°РІР°РјРё
     $is_adm = currentUserHasPermissions($permission);
 
     if ($allow_download || $is_adm) {

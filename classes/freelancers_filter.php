@@ -1,34 +1,34 @@
 <?
 /**
- * Подключаем файл с основными функциями
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» СЃ РѕСЃРЅРѕРІРЅС‹РјРё С„СѓРЅРєС†РёСЏРјРё
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
- * Управление фильтрами на странице фрилансеров.
+ * РЈРїСЂР°РІР»РµРЅРёРµ С„РёР»СЊС‚СЂР°РјРё РЅР° СЃС‚СЂР°РЅРёС†Рµ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ.
  * 
  */
 class freelancers_filters 
 {
     /**
-     * ИД Пользователя
+     * РР” РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      *
      * @var integer
      */
     public $uid = -1;
     
     /**
-     * ИД Фильтра
+     * РР” Р¤РёР»СЊС‚СЂР°
      *
      * @var integer
      */
     public $fid = -1;
     
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      *
-     * @param integer $uid ИД пользователя фильтра
-     * @param integer $fid ИД фильра если есть (по умолчанию false)
+     * @param integer $uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ С„РёР»СЊС‚СЂР°
+     * @param integer $fid РР” С„РёР»СЊСЂР° РµСЃР»Рё РµСЃС‚СЊ (РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ false)
      */
     function __construct($uid=false, $fid=false) {
         if(!$uid) $this->uid = get_uid(false);
@@ -39,9 +39,9 @@ class freelancers_filters
     }
     
     /**
-     * Сохранить фильтр
+     * РЎРѕС…СЂР°РЅРёС‚СЊ С„РёР»СЊС‚СЂ
      *
-     * @param array $filter Данные для сохранения
+     * @param array $filter Р”Р°РЅРЅС‹Рµ РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ
      */
     function saveFilter($filter) {
         if(get_uid(false)) {
@@ -74,7 +74,7 @@ class freelancers_filters
     }
 
     /**
-     * Сохранение фильтра неавторизированного пользоваля при авторизации
+     * РЎРѕС…СЂР°РЅРµРЅРёРµ С„РёР»СЊС‚СЂР° РЅРµР°РІС‚РѕСЂРёР·РёСЂРѕРІР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°Р»СЏ РїСЂРё Р°РІС‚РѕСЂРёР·Р°С†РёРё
      */
     function SaveFromAnon() {
         global $DB;
@@ -128,25 +128,25 @@ class freelancers_filters
     }
     
     /**
-     * Добавить новый фильтр
+     * Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ С„РёР»СЊС‚СЂ
      *
-     * @param array   $exp          опыт [от, до]
-     * @param array   $age          лет [от, до]
-     * @param string  $login        Логин, имя пользователя
-     * @param integer $country      Страна
-     * @param integer $city         Город
-     * @param boolean $in_office    Ищу работу в офисе
-     * @param boolean $in_fav       В избранном  у меня
-     * @param boolean $only_free    ТОлько свободный
-     * @param boolean $is_pro       только с аккаунотом про
-     * @param boolean $only_online  Сейчас на сайте
-     * @param boolean $is_positive  С положительными отзывами
-     * @param boolean $is_preview   Только с примерами работ
-     * @param boolean $not_negative Без отрицательных отзывов
-     * @param array   $success_sbr  С успешным СБР
-     * @param string  $kword        Ключевые слова
-     * @param string  $sex          Пол
-     * @return string Сообщение об ошибке
+     * @param array   $exp          РѕРїС‹С‚ [РѕС‚, РґРѕ]
+     * @param array   $age          Р»РµС‚ [РѕС‚, РґРѕ]
+     * @param string  $login        Р›РѕРіРёРЅ, РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param integer $country      РЎС‚СЂР°РЅР°
+     * @param integer $city         Р“РѕСЂРѕРґ
+     * @param boolean $in_office    РС‰Сѓ СЂР°Р±РѕС‚Сѓ РІ РѕС„РёСЃРµ
+     * @param boolean $in_fav       Р’ РёР·Р±СЂР°РЅРЅРѕРј  Сѓ РјРµРЅСЏ
+     * @param boolean $only_free    РўРћР»СЊРєРѕ СЃРІРѕР±РѕРґРЅС‹Р№
+     * @param boolean $is_pro       С‚РѕР»СЊРєРѕ СЃ Р°РєРєР°СѓРЅРѕС‚РѕРј РїСЂРѕ
+     * @param boolean $only_online  РЎРµР№С‡Р°СЃ РЅР° СЃР°Р№С‚Рµ
+     * @param boolean $is_positive  РЎ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹РјРё РѕС‚Р·С‹РІР°РјРё
+     * @param boolean $is_preview   РўРѕР»СЊРєРѕ СЃ РїСЂРёРјРµСЂР°РјРё СЂР°Р±РѕС‚
+     * @param boolean $not_negative Р‘РµР· РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹С… РѕС‚Р·С‹РІРѕРІ
+     * @param array   $success_sbr  РЎ СѓСЃРїРµС€РЅС‹Рј РЎР‘Р 
+     * @param string  $kword        РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°
+     * @param string  $sex          РџРѕР»
+     * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
      */
     function addFilter($exp, $age, $login, $country, $city, $in_office, $in_fav, $only_free, $is_pro, /*$only_online,*/ $sbr_is_positive, $is_preview, $sbr_not_negative, $success_sbr, $kword, $sex, $opi_is_positive, $opi_not_negative, $is_verify, $only_tu) {
         $exp_from     = intval($exp[0])<0?0:(int)$exp[0];    
@@ -195,7 +195,7 @@ class freelancers_filters
             $error = $DB->error;
         
             if(!$error) {
-                /* берем идишник фильтра */
+                /* Р±РµСЂРµРј РёРґРёС€РЅРёРє С„РёР»СЊС‚СЂР° */
                 self::isFilter();
                 return true;
             }
@@ -210,25 +210,25 @@ class freelancers_filters
     }
     
     /**
-     * Обновление фильтра
+     * РћР±РЅРѕРІР»РµРЅРёРµ С„РёР»СЊС‚СЂР°
      * 
-     * @param array   $exp          опыт [от, до]
-     * @param array   $age          лет [от, до]
-     * @param string  $login        Логин, имя пользователя
-     * @param integer $country      Страна
-     * @param integer $city         Город
-     * @param boolean $in_office    Ищу работу в офисе
-     * @param boolean $in_fav       В избранном  у меня
-     * @param boolean $only_free    ТОлько свободный
-     * @param boolean $is_pro       только с аккаунотом про
-     * @param boolean $only_online  Сейчас на сайте
-     * @param boolean $is_positive  С положительными отзывами
-     * @param boolean $is_preview   Только с примерами работ
-     * @param boolean $not_negative Без отрицательных отзывов
-     * @param array   $success_sbr  С успешным СБР
-     * @param string  $kword        Ключевые слова
-     * @param integer $sex          Пол
-     * @return string Сообщение об ошибке
+     * @param array   $exp          РѕРїС‹С‚ [РѕС‚, РґРѕ]
+     * @param array   $age          Р»РµС‚ [РѕС‚, РґРѕ]
+     * @param string  $login        Р›РѕРіРёРЅ, РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param integer $country      РЎС‚СЂР°РЅР°
+     * @param integer $city         Р“РѕСЂРѕРґ
+     * @param boolean $in_office    РС‰Сѓ СЂР°Р±РѕС‚Сѓ РІ РѕС„РёСЃРµ
+     * @param boolean $in_fav       Р’ РёР·Р±СЂР°РЅРЅРѕРј  Сѓ РјРµРЅСЏ
+     * @param boolean $only_free    РўРћР»СЊРєРѕ СЃРІРѕР±РѕРґРЅС‹Р№
+     * @param boolean $is_pro       С‚РѕР»СЊРєРѕ СЃ Р°РєРєР°СѓРЅРѕС‚РѕРј РїСЂРѕ
+     * @param boolean $only_online  РЎРµР№С‡Р°СЃ РЅР° СЃР°Р№С‚Рµ
+     * @param boolean $is_positive  РЎ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹РјРё РѕС‚Р·С‹РІР°РјРё
+     * @param boolean $is_preview   РўРѕР»СЊРєРѕ СЃ РїСЂРёРјРµСЂР°РјРё СЂР°Р±РѕС‚
+     * @param boolean $not_negative Р‘РµР· РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹С… РѕС‚Р·С‹РІРѕРІ
+     * @param array   $success_sbr  РЎ СѓСЃРїРµС€РЅС‹Рј РЎР‘Р 
+     * @param string  $kword        РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°
+     * @param integer $sex          РџРѕР»
+     * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
      */
     function updateFilter($exp, $age, $login, $country, $city, $in_office, $in_fav, $only_free, $is_pro, /*$only_online,*/ $sbr_is_positive, $is_preview, $sbr_not_negative, $success_sbr, $kword, $sex, $opi_is_positive, $opi_not_negative, $is_verify, $only_tu) {
         $exp_from     = intval($exp[0])<0?0:(int)$exp[0];    
@@ -281,9 +281,9 @@ class freelancers_filters
     }
     
     /**
-     * Берем данные по фильтру 
+     * Р‘РµСЂРµРј РґР°РЅРЅС‹Рµ РїРѕ С„РёР»СЊС‚СЂСѓ 
      *
-     * @return array [Основной фильтр, Фильтр стоимости, фильтр категорий]
+     * @return array [РћСЃРЅРѕРІРЅРѕР№ С„РёР»СЊС‚СЂ, Р¤РёР»СЊС‚СЂ СЃС‚РѕРёРјРѕСЃС‚Рё, С„РёР»СЊС‚СЂ РєР°С‚РµРіРѕСЂРёР№]
      */
     function getFilter() {
         if(get_uid(false)) {
@@ -337,13 +337,13 @@ class freelancers_filters
     }
     
     /**
-     * Добавляем стоимость в фильтр
+     * Р”РѕР±Р°РІР»СЏРµРј СЃС‚РѕРёРјРѕСЃС‚СЊ РІ С„РёР»СЊС‚СЂ
      *
-     * @param array $from_cost Суммы (от)
-     * @param array $to_cost   Суммы (до)
-     * @param array $cost_type Тип суммы (см табл freelancers_filters_cost) 
-     * @param array $curr_type Тип валюты
-     * @return string|boolean Сообщение об ошибке
+     * @param array $from_cost РЎСѓРјРјС‹ (РѕС‚)
+     * @param array $to_cost   РЎСѓРјРјС‹ (РґРѕ)
+     * @param array $cost_type РўРёРї СЃСѓРјРјС‹ (СЃРј С‚Р°Р±Р» freelancers_filters_cost) 
+     * @param array $curr_type РўРёРї РІР°Р»СЋС‚С‹
+     * @return string|boolean РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
      */
     function addCost($from_cost, $to_cost, $cost_type, $curr_type) {
         if(get_uid(false)) {
@@ -395,10 +395,10 @@ class freelancers_filters
     }
     
     /**
-     * Добавляем категории профессий в фильтр
+     * Р”РѕР±Р°РІР»СЏРµРј РєР°С‚РµРіРѕСЂРёРё РїСЂРѕС„РµСЃСЃРёР№ РІ С„РёР»СЊС‚СЂ
      *
-     * @param arrya $category Категории
-     * @return string Сообщение об ошибке
+     * @param arrya $category РљР°С‚РµРіРѕСЂРёРё
+     * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
      */
     function addGroup($category) {
         include_once(realpath(dirname(__FILE__)).'/professions.php');
@@ -484,7 +484,7 @@ class freelancers_filters
     }
     
     /**
-     * Проверяем был ли создан фильтр и записываем его ИД
+     * РџСЂРѕРІРµСЂСЏРµРј Р±С‹Р» Р»Рё СЃРѕР·РґР°РЅ С„РёР»СЊС‚СЂ Рё Р·Р°РїРёСЃС‹РІР°РµРј РµРіРѕ РР”
      *
      * @return boolean
      */
@@ -503,10 +503,10 @@ class freelancers_filters
     }
     
     /**
-     * Проверяем активен ли фильтр, и ставим его в положение активности если того требует
+     * РџСЂРѕРІРµСЂСЏРµРј Р°РєС‚РёРІРµРЅ Р»Рё С„РёР»СЊС‚СЂ, Рё СЃС‚Р°РІРёРј РµРіРѕ РІ РїРѕР»РѕР¶РµРЅРёРµ Р°РєС‚РёРІРЅРѕСЃС‚Рё РµСЃР»Рё С‚РѕРіРѕ С‚СЂРµР±СѓРµС‚
      *
-     * @param boolean $act Статус активности
-     * @return boolean Состояние активности
+     * @param boolean $act РЎС‚Р°С‚СѓСЃ Р°РєС‚РёРІРЅРѕСЃС‚Рё
+     * @return boolean РЎРѕСЃС‚РѕСЏРЅРёРµ Р°РєС‚РёРІРЅРѕСЃС‚Рё
      */
     function isActive($act=true) {
         if(get_uid(false)) {
@@ -531,9 +531,9 @@ class freelancers_filters
     }
     
     /**
-     * Гнерирует переменную с данными всего фильтра
+     * Р“РЅРµСЂРёСЂСѓРµС‚ РїРµСЂРµРјРµРЅРЅСѓСЋ СЃ РґР°РЅРЅС‹РјРё РІСЃРµРіРѕ С„РёР»СЊС‚СЂР°
      *
-     * @return array Фильтр
+     * @return array Р¤РёР»СЊС‚СЂ
      */
     function getAllFilter() {
         if(!$this->filter) self::getFilter();
@@ -570,9 +570,9 @@ class freelancers_filters
     }
     
     /**
-     * Считаем количество фрилансеров различных разрядов СБР
+     * РЎС‡РёС‚Р°РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ СЂР°Р·Р»РёС‡РЅС‹С… СЂР°Р·СЂСЏРґРѕРІ РЎР‘Р 
      *
-     * @return array Данные подсчета
+     * @return array Р”Р°РЅРЅС‹Рµ РїРѕРґСЃС‡РµС‚Р°
      */
     function getRankCount($prof_id = 0) {
         $memBuff = new memBuff();
@@ -612,8 +612,8 @@ class freelancers_filters
     }
     
     /**
-     * @desc Возвращает JavaScript объект all_mirrored_specs, который используется на страницах содержащих фильтр
-     * @param array $all_mirrored_specs - результат DB->rows("SELECT * FROM mirrored_professions")
+     * @desc Р’РѕР·РІСЂР°С‰Р°РµС‚ JavaScript РѕР±СЉРµРєС‚ all_mirrored_specs, РєРѕС‚РѕСЂС‹Р№ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РЅР° СЃС‚СЂР°РЅРёС†Р°С… СЃРѕРґРµСЂР¶Р°С‰РёС… С„РёР»СЊС‚СЂ
+     * @param array $all_mirrored_specs - СЂРµР·СѓР»СЊС‚Р°С‚ DB->rows("SELECT * FROM mirrored_professions")
      * @return string 
     **/
     static public function getMirroredSpecsJsObject($all_mirrored_specs) {
@@ -637,8 +637,8 @@ class freelancers_filters
         return json_encode( $result );
     }
     /**
-     * Поиск в массиве $set
-     * $id или его отражения в $mirrored_specs
+     * РџРѕРёСЃРє РІ РјР°СЃСЃРёРІРµ $set
+     * $id РёР»Рё РµРіРѕ РѕС‚СЂР°Р¶РµРЅРёСЏ РІ $mirrored_specs
      * */
     static public function mirrorExistsInArray($id, $set, $mirrored_specs) {
         if (in_array($mirrored_specs[$id], $set)) return true;

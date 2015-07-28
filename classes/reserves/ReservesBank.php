@@ -10,16 +10,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/DocGen/DocGenReserves.php');
 
 /**
  * Class ReservesBank
- * Работа с разчетом по безналу для резерва средств
+ * Р Р°Р±РѕС‚Р° СЃ СЂР°Р·С‡РµС‚РѕРј РїРѕ Р±РµР·РЅР°Р»Сѓ РґР»СЏ СЂРµР·РµСЂРІР° СЃСЂРµРґСЃС‚РІ
  */
 class ReservesBank extends BaseModel
 {
     const TEMPLATES_PATH        = '/templates/docs/';
     const INVOICE_TEMPLATE      = 'bank_invoice.odt';
     const TABLE_FILES           = 'file';
-    const BILL_NUM_FORMAT       = 'БС-%d';
-    const CHECK_ORG_FILENAME    = 'Счет №%s';
-    const CHECK_TITLE           = 'Перечисление средств по договору № %s';
+    const BILL_NUM_FORMAT       = 'Р‘РЎ-%d';
+    const CHECK_ORG_FILENAME    = 'РЎС‡РµС‚ в„–%s';
+    const CHECK_TITLE           = 'РџРµСЂРµС‡РёСЃР»РµРЅРёРµ СЃСЂРµРґСЃС‚РІ РїРѕ РґРѕРіРѕРІРѕСЂСѓ в„– %s';
     
     private $TABLE         = 'reserves_bank';
     static public $_TABLE  = 'reserves_bank';
@@ -30,7 +30,7 @@ class ReservesBank extends BaseModel
 
 
     /**
-     * Конструктор получает настройки для класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕР»СѓС‡Р°РµС‚ РЅР°СЃС‚СЂРѕР№РєРё РґР»СЏ РєР»Р°СЃСЃР°
      * 
      * @param type $options
      */
@@ -52,7 +52,7 @@ class ReservesBank extends BaseModel
     
    
    /**
-    * Инициализировать данные счета
+    * РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ РґР°РЅРЅС‹Рµ СЃС‡РµС‚Р°
     * 
     * @param type $data
     */
@@ -64,7 +64,7 @@ class ReservesBank extends BaseModel
 
 
     /**
-     * Получить счет
+     * РџРѕР»СѓС‡РёС‚СЊ СЃС‡РµС‚
      * 
      * @param type $id
      * @return type
@@ -81,7 +81,7 @@ class ReservesBank extends BaseModel
 
     
     /**
-     * Получить счет по ID резерва
+     * РџРѕР»СѓС‡РёС‚СЊ СЃС‡РµС‚ РїРѕ ID СЂРµР·РµСЂРІР°
      * 
      * @param type $reserve_id
      * @return type
@@ -98,7 +98,7 @@ class ReservesBank extends BaseModel
 
     
     /**
-     * Обновить данные по счету
+     * РћР±РЅРѕРІРёС‚СЊ РґР°РЅРЅС‹Рµ РїРѕ СЃС‡РµС‚Сѓ
      * 
      * @param type $id
      * @param type $data
@@ -111,7 +111,7 @@ class ReservesBank extends BaseModel
 
     
     /**
-     * Получение папки для сохранения файлов
+     * РџРѕР»СѓС‡РµРЅРёРµ РїР°РїРєРё РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ С„Р°Р№Р»РѕРІ
      * 
      * @return boolean
      */
@@ -133,8 +133,8 @@ class ReservesBank extends BaseModel
     
 
     /**
-     * Добавление/обновление информации о счете
-     * если счет уже оплачен то обновить неполучится
+     * Р”РѕР±Р°РІР»РµРЅРёРµ/РѕР±РЅРѕРІР»РµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃС‡РµС‚Рµ
+     * РµСЃР»Рё СЃС‡РµС‚ СѓР¶Рµ РѕРїР»Р°С‡РµРЅ С‚Рѕ РѕР±РЅРѕРІРёС‚СЊ РЅРµРїРѕР»СѓС‡РёС‚СЃСЏ
      * 
      * @param type $data
      * @return boolean
@@ -190,7 +190,7 @@ class ReservesBank extends BaseModel
 
     
     /**
-     * Добавление/обновление информации о счете
+     * Р”РѕР±Р°РІР»РµРЅРёРµ/РѕР±РЅРѕРІР»РµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃС‡РµС‚Рµ
      * 
      * @param type $data
      * @return boolean
@@ -232,8 +232,8 @@ class ReservesBank extends BaseModel
 
     
     /**
-     * Аналог generateInvoice
-     * использующий DocGenReserves класс для генерации дока
+     * РђРЅР°Р»РѕРі generateInvoice
+     * РёСЃРїРѕР»СЊР·СѓСЋС‰РёР№ DocGenReserves РєР»Р°СЃСЃ РґР»СЏ РіРµРЅРµСЂР°С†РёРё РґРѕРєР°
      * 
      * @param type $user_info
      * @return boolean
@@ -305,11 +305,11 @@ class ReservesBank extends BaseModel
 
 
     /**
-     * НЕ ИСПОЛЬЗОВАТЬ - УСТАРЕЛ СМ generateInvoice2.
+     * РќР• РРЎРџРћР›Р¬Р—РћР’РђРўР¬ - РЈРЎРўРђР Р•Р› РЎРњ generateInvoice2.
      * 
-     * Генерация счета
-     * @todo: может перенести генерацию в очереди?
-     * @todo: но тогда нужно организовать обратную связь.
+     * Р“РµРЅРµСЂР°С†РёСЏ СЃС‡РµС‚Р°
+     * @todo: РјРѕР¶РµС‚ РїРµСЂРµРЅРµСЃС‚Рё РіРµРЅРµСЂР°С†РёСЋ РІ РѕС‡РµСЂРµРґРё?
+     * @todo: РЅРѕ С‚РѕРіРґР° РЅСѓР¶РЅРѕ РѕСЂРіР°РЅРёР·РѕРІР°С‚СЊ РѕР±СЂР°С‚РЅСѓСЋ СЃРІСЏР·СЊ.
      * 
      * @param type $user_info
      * @return boolean|\CFile

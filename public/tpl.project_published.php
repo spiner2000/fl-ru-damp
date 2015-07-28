@@ -5,12 +5,12 @@
                 <img class="b-promo__pic" src="/images/promo-icons/big/1.png" alt="" />
             </td>
             <td class="b-layout__right b-layout__right_width_72ps">
-                <h1 class="b-page__title">Проект опубликован</h1>
+                <h1 class="b-page__title">РџСЂРѕРµРєС‚ РѕРїСѓР±Р»РёРєРѕРІР°РЅ</h1>
 
                 <div class="b-fon b-fon_padbot_30">
                 <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-                    <div class="b-fon__txt b-fon__txt_padbot_5"><span class="b-fon__ok"></span>Ваш проект успешно опубликован и размещён на главной странице. <a class="b-fon__link" href="<?= $prj_url ?>">Перейти к проекту</a>.</div>
-                    <div class="b-fon__txt">Если у вас возникнут вопросы, обращайтесь в <a class="b-fon__link" href="https://feedback.fl.ru/">службу поддержки</a>.</div>
+                    <div class="b-fon__txt b-fon__txt_padbot_5"><span class="b-fon__ok"></span>Р’Р°С€ РїСЂРѕРµРєС‚ СѓСЃРїРµС€РЅРѕ РѕРїСѓР±Р»РёРєРѕРІР°РЅ Рё СЂР°Р·РјРµС‰С‘РЅ РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ. <a class="b-fon__link" href="<?= $prj_url ?>">РџРµСЂРµР№С‚Рё Рє РїСЂРѕРµРєС‚Сѓ</a>.</div>
+                    <div class="b-fon__txt">Р•СЃР»Рё Сѓ РІР°СЃ РІРѕР·РЅРёРєРЅСѓС‚ РІРѕРїСЂРѕСЃС‹, РѕР±СЂР°С‰Р°Р№С‚РµСЃСЊ РІ <a class="b-fon__link" href="https://feedback.fl.ru/">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.</div>
                 </div>
                 </div>
                 

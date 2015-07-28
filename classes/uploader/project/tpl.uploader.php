@@ -9,10 +9,10 @@
                         </div>                                    
                     </td>                                    
                     <td class="b-file__text">
-                       <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5 qq-upload-txt">Не более 10 файлов общим объемом до 5 Мб</div>
+                       <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5 qq-upload-txt">РќРµ Р±РѕР»РµРµ 10 С„Р°Р№Р»РѕРІ РѕР±С‰РёРј РѕР±СЉРµРјРѕРј РґРѕ 5 РњР±</div>
                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5 qq-upload-error" style="display: none;">                            
                            <img class="b-pic" src="/images/ico_error.gif" alt="" height="18" width="22">
-                           <span class="qq-upload-error-text"></span> <a class="b-layout__link b-layout__link_bordbot_dot_41 b-layout__link_fontsize_11 qq-upload-error-close" href="javascript:void(0)">Скрыть</a>
+                           <span class="qq-upload-error-text"></span> <a class="b-layout__link b-layout__link_bordbot_dot_41 b-layout__link_fontsize_11 qq-upload-error-close" href="javascript:void(0)">РЎРєСЂС‹С‚СЊ</a>
                        </div>
                     </td>                               
                 </tr>

@@ -13,14 +13,14 @@ class quickPaymentPopupAutoresponse extends quickPaymentPopup
     {
         parent::__construct();
         
-        //Допускаем оплату с личного счета
+        //Р”РѕРїСѓСЃРєР°РµРј РѕРїР»Р°С‚Сѓ СЃ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р°
         $this->options['payments'][self::PAYMENT_TYPE_ACCOUNT] = array();
     }
     
     public function init() 
     {
-        //@todo: здесь можно получить список 
-        //услуг для данной бизнес модели
+        //@todo: Р·РґРµСЃСЊ РјРѕР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє 
+        //СѓСЃР»СѓРі РґР»СЏ РґР°РЅРЅРѕР№ Р±РёР·РЅРµСЃ РјРѕРґРµР»Рё
         
         $this->setBuyPopupTemplate('buy_popup_autoresponse.tpl.php');
 
@@ -31,28 +31,28 @@ class quickPaymentPopupAutoresponse extends quickPaymentPopup
         $options = array(
             'popup_title_class_bg'      => 'b-fon_bg_po',
             'popup_title_class_icon'    => 'b-icon__po',
-            'popup_title'               => 'Купить услуги автоответов',
+            'popup_title'               => 'РљСѓРїРёС‚СЊ СѓСЃР»СѓРіРё Р°РІС‚РѕРѕС‚РІРµС‚РѕРІ',
             'popup_subtitle'            => '',
-            'items_title'               => 'Подзаголовок тут',
+            'items_title'               => 'РџРѕРґР·Р°РіРѕР»РѕРІРѕРє С‚СѓС‚',
             'popup_id'                  => $this->ID,
             'unic_name'                 => $this->UNIC_NAME,
-            'payments_title'            => 'Сумма и способ оплаты',
+            'payments_title'            => 'РЎСѓРјРјР° Рё СЃРїРѕСЃРѕР± РѕРїР»Р°С‚С‹',
             'payments_exclude'          => array(self::PAYMENT_TYPE_BANK),
             'ac_sum'                    => round($_SESSION['ac_sum'], 2),
             'payment_account'           => self::PAYMENT_TYPE_ACCOUNT,
             'promo_code' => $promoCodes->render(PromoCodes::SERVICE_AUTORESPONSE)
         );
         
-        //Обязательно передаем родителю
+        //РћР±СЏР·Р°С‚РµР»СЊРЅРѕ РїРµСЂРµРґР°РµРј СЂРѕРґРёС‚РµР»СЋ
         parent::init($options);
         
         
-        //Добавляем свойство к одному способу оплаты
-        $this->options['payments'][self::PAYMENT_TYPE_CARD]['wait'] = 'Ждите ....';
+        //Р”РѕР±Р°РІР»СЏРµРј СЃРІРѕР№СЃС‚РІРѕ Рє РѕРґРЅРѕРјСѓ СЃРїРѕСЃРѕР±Сѓ РѕРїР»Р°С‚С‹
+        $this->options['payments'][self::PAYMENT_TYPE_CARD]['wait'] = 'Р–РґРёС‚Рµ ....';
         
         $this->options['payments'][self::PAYMENT_TYPE_PLATIPOTOM]['content_after'] = sprintf(
             $this->options['payments'][self::PAYMENT_TYPE_PLATIPOTOM]['content_after'],
-            'автоответы'
+            'Р°РІС‚РѕРѕС‚РІРµС‚С‹'
         );
         
     }

@@ -4,8 +4,8 @@
     <? include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.stage-user.php") ?>
     <div class="b-fon b-fon_width_full">
         <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-            <div class="b-fon__txt b-fon__txt_padbot_5"><span class="b-icon b-icon_sbr_gok b-icon_margleft_-20"></span>Вы согласились на сделку, работодатель уже получил уведомление об этом. <br />Не приступайте к работе, пока работодатель не зарезервирует деньги. Перейти к  <a class="b-fon__link" href="/sbr/?id=<?= $sbr->id ?>">списку сделок</a>.</div>
-            <div class="b-fon__txt">Если у вас возникнут вопросы, обращайтесь в <a class="b-fon__link" href="https://feedback.fl.ru/">службу поддержки</a>.</div>
+            <div class="b-fon__txt b-fon__txt_padbot_5"><span class="b-icon b-icon_sbr_gok b-icon_margleft_-20"></span>Р’С‹ СЃРѕРіР»Р°СЃРёР»РёСЃСЊ РЅР° СЃРґРµР»РєСѓ, СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ СѓР¶Рµ РїРѕР»СѓС‡РёР» СѓРІРµРґРѕРјР»РµРЅРёРµ РѕР± СЌС‚РѕРј. <br />РќРµ РїСЂРёСЃС‚СѓРїР°Р№С‚Рµ Рє СЂР°Р±РѕС‚Рµ, РїРѕРєР° СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ РЅРµ Р·Р°СЂРµР·РµСЂРІРёСЂСѓРµС‚ РґРµРЅСЊРіРё. РџРµСЂРµР№С‚Рё Рє  <a class="b-fon__link" href="/sbr/?id=<?= $sbr->id ?>">СЃРїРёСЃРєСѓ СЃРґРµР»РѕРє</a>.</div>
+            <div class="b-fon__txt">Р•СЃР»Рё Сѓ РІР°СЃ РІРѕР·РЅРёРєРЅСѓС‚ РІРѕРїСЂРѕСЃС‹, РѕР±СЂР°С‰Р°Р№С‚РµСЃСЊ РІ <a class="b-fon__link" href="https://feedback.fl.ru/">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.</div>
         </div>
     </div>
 </div>

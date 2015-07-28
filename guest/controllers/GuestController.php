@@ -17,7 +17,7 @@ class GuestController extends CController
     protected $is_adm = false;
 
     /**
-     * Инициализация контроллера
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєРѕРЅС‚СЂРѕР»Р»РµСЂР°
      */
     public function init($action) 
     {
@@ -31,15 +31,15 @@ class GuestController extends CController
 
 
     /**
-     * Обработка события до какого-либо экшена
+     * РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ РґРѕ РєР°РєРѕРіРѕ-Р»РёР±Рѕ СЌРєС€РµРЅР°
      * 
      * @param string $action
      * @return bool
      */
     public function beforeAction($action) 
     {
-        //Только для не зарегиных пользователей
-        // и админов в вакансиях/проектах
+        //РўРѕР»СЊРєРѕ РґР»СЏ РЅРµ Р·Р°СЂРµРіРёРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
+        // Рё Р°РґРјРёРЅРѕРІ РІ РІР°РєР°РЅСЃРёСЏС…/РїСЂРѕРµРєС‚Р°С…
         if ( ($this->uid > 0) && 
              !in_array($action, array('activate', 'unsubscribe')) && 
              !(in_array($action, array('vacancy','project')) && $this->is_adm) ) {
@@ -69,7 +69,7 @@ class GuestController extends CController
 
 
     /**
-     * Активация созданного ранее чего-либа и регистрация/авторизация
+     * РђРєС‚РёРІР°С†РёСЏ СЃРѕР·РґР°РЅРЅРѕРіРѕ СЂР°РЅРµРµ С‡РµРіРѕ-Р»РёР±Р° Рё СЂРµРіРёСЃС‚СЂР°С†РёСЏ/Р°РІС‚РѕСЂРёР·Р°С†РёСЏ
      */
     public function actionActivate()
     {
@@ -86,7 +86,7 @@ class GuestController extends CController
 
     
     /**
-     * Создание проекта
+     * РЎРѕР·РґР°РЅРёРµ РїСЂРѕРµРєС‚Р°
      */
     public function actionProject()
     {
@@ -95,7 +95,7 @@ class GuestController extends CController
         
         $form->addElement(new Form_Element_Hidden('social'));
         
-        //Проверка перехода с лендинга публикации проекта
+        //РџСЂРѕРІРµСЂРєР° РїРµСЂРµС…РѕРґР° СЃ Р»РµРЅРґРёРЅРіР° РїСѓР±Р»РёРєР°С†РёРё РїСЂРѕРµРєС‚Р°
         if (($name = isLandingProject())) {
             $subform->setDefault('name', $name);
         }
@@ -112,16 +112,16 @@ class GuestController extends CController
             
             $data = $form->getValues();
             
-            //@todo: подготовка данных, лучше все это делать в контролах но нет времени!
-            //@todo: частично дублирует GuestHelper::overrideData
+            //@todo: РїРѕРґРіРѕС‚РѕРІРєР° РґР°РЅРЅС‹С…, Р»СѓС‡С€Рµ РІСЃРµ СЌС‚Рѕ РґРµР»Р°С‚СЊ РІ РєРѕРЅС‚СЂРѕР»Р°С… РЅРѕ РЅРµС‚ РІСЂРµРјРµРЅРё!
+            //@todo: С‡Р°СЃС‚РёС‡РЅРѕ РґСѓР±Р»РёСЂСѓРµС‚ GuestHelper::overrideData
             
-            //Если публикация проекта из лендинга, то фиксируем ID 
-            //чтобы в случае публикации привязать проект
+            //Р•СЃР»Рё РїСѓР±Р»РёРєР°С†РёСЏ РїСЂРѕРµРєС‚Р° РёР· Р»РµРЅРґРёРЅРіР°, С‚Рѕ С„РёРєСЃРёСЂСѓРµРј ID 
+            //С‡С‚РѕР±С‹ РІ СЃР»СѓС‡Р°Рµ РїСѓР±Р»РёРєР°С†РёРё РїСЂРёРІСЏР·Р°С‚СЊ РїСЂРѕРµРєС‚
             if(($landingProjectId = getLastLandingProjectId())) {
                 $data['dataForm']['landingProjectId'] = $landingProjectId;
             }
             
-            $data['dataForm']['kind'] = 1;//проект!
+            $data['dataForm']['kind'] = 1;//РїСЂРѕРµРєС‚!
             unset($data['dataForm']['profession']);
             $data['dataForm']['categories'][] = array(
                 'category_id' => $subform->getElement('profession')->getGroupDbIdValue(),
@@ -143,8 +143,8 @@ class GuestController extends CController
                 
             if ($this->is_adm) {
                 if (!$data['uname'] && !$data['usurname']) {
-                    $data['uname'] = "Менеджер";
-                    $data['usurname'] = "Компании";
+                    $data['uname'] = "РњРµРЅРµРґР¶РµСЂ";
+                    $data['usurname'] = "РљРѕРјРїР°РЅРёРё";
                 }
             }
 
@@ -208,7 +208,7 @@ class GuestController extends CController
         }
         
         $this->render('project', array(
-           'title' => 'Новый проект (задание на разовую работу)',
+           'title' => 'РќРѕРІС‹Р№ РїСЂРѕРµРєС‚ (Р·Р°РґР°РЅРёРµ РЅР° СЂР°Р·РѕРІСѓСЋ СЂР°Р±РѕС‚Сѓ)',
            'form' => $form->render()
         ));        
     }
@@ -216,7 +216,7 @@ class GuestController extends CController
     
     
     /**
-     * Создание вакансии
+     * РЎРѕР·РґР°РЅРёРµ РІР°РєР°РЅСЃРёРё
      */
     public function actionVacancy()
     {
@@ -225,7 +225,7 @@ class GuestController extends CController
         
         $form->addElement(new Form_Element_Hidden('social'));
         
-        //@todo: не корректно использование - есть общее решение в GuestConst::$_error_messages
+        //@todo: РЅРµ РєРѕСЂСЂРµРєС‚РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ - РµСЃС‚СЊ РѕР±С‰РµРµ СЂРµС€РµРЅРёРµ РІ GuestConst::$_error_messages
         $userValidator = $form->getElement('email')->getValidator('NoUserExists');
         $userValidator->setMessages(array('userFound' => GuestConst::VACANCY_EMAIL_BUSY));
 
@@ -240,9 +240,9 @@ class GuestController extends CController
             $valid = $form->isValid($_POST);
             $data = $form->getValues();
 
-            //@todo: подготовка данных, лучше все это делать в контролах но нет времени!
-            //@todo: частично дублирует GuestHelper::overrideData
-            $data['dataForm']['kind'] = 4;//вакансия!
+            //@todo: РїРѕРґРіРѕС‚РѕРІРєР° РґР°РЅРЅС‹С…, Р»СѓС‡С€Рµ РІСЃРµ СЌС‚Рѕ РґРµР»Р°С‚СЊ РІ РєРѕРЅС‚СЂРѕР»Р°С… РЅРѕ РЅРµС‚ РІСЂРµРјРµРЅРё!
+            //@todo: С‡Р°СЃС‚РёС‡РЅРѕ РґСѓР±Р»РёСЂСѓРµС‚ GuestHelper::overrideData
+            $data['dataForm']['kind'] = 4;//РІР°РєР°РЅСЃРёСЏ!
             unset($data['dataForm']['profession']);
             $data['dataForm']['categories'][] = array(
                 'category_id' => $subform->getElement('profession')->getGroupDbIdValue(),
@@ -269,8 +269,8 @@ class GuestController extends CController
             
             if ($this->is_adm) {
                 if (!$data['uname'] && !$data['usurname']) {
-                    $data['uname'] = "Менеджер";
-                    $data['usurname'] = "Компании";
+                    $data['uname'] = "РњРµРЅРµРґР¶РµСЂ";
+                    $data['usurname'] = "РљРѕРјРїР°РЅРёРё";
                 }
             }
                 
@@ -338,7 +338,7 @@ class GuestController extends CController
         }
         
         $this->render('index', array(
-           'title' => 'Новая вакансия',
+           'title' => 'РќРѕРІР°СЏ РІР°РєР°РЅСЃРёСЏ',
            'form' => $form->render()
         ));        
     }
@@ -346,7 +346,7 @@ class GuestController extends CController
     
     
     /**
-     * Создание персонального заказа
+     * РЎРѕР·РґР°РЅРёРµ РїРµСЂСЃРѕРЅР°Р»СЊРЅРѕРіРѕ Р·Р°РєР°Р·Р°
      */
     public function actionPersonalOrder()
     {
@@ -388,18 +388,18 @@ class GuestController extends CController
            }
         }
 
-        //Выводим в сайдбар виджет индикатор статуса заказа
+        //Р’С‹РІРѕРґРёРј РІ СЃР°Р№РґР±Р°СЂ РІРёРґР¶РµС‚ РёРЅРґРёРєР°С‚РѕСЂ СЃС‚Р°С‚СѓСЃР° Р·Р°РєР°Р·Р°
         require_once($_SERVER['DOCUMENT_ROOT'] . '/tu/widgets/OrderStatusIndicator.php');
         $this->getClips()->add('sidebar', $this->widget('OrderStatusIndicator', array(), TRUE));
 
         $this->render('index', array(
-           'title' => 'Новый заказ',
+           'title' => 'РќРѕРІС‹Р№ Р·Р°РєР°Р·',
            'form' => $form->render()
         ));
     }
     
     /**
-     * Отписка от приглашений
+     * РћС‚РїРёСЃРєР° РѕС‚ РїСЂРёРіР»Р°С€РµРЅРёР№
      */
     public function actionUnsubscribe()
     {
@@ -412,8 +412,8 @@ class GuestController extends CController
         
         if ($hash == $trueHash) {
             $guestInviteUnsubscribeModel->addEmail($email);
-            //@todo: решение не учитывает что отписываться могу не только от вакансий
-            // пока пришлось подправить сообщение
+            //@todo: СЂРµС€РµРЅРёРµ РЅРµ СѓС‡РёС‚С‹РІР°РµС‚ С‡С‚Рѕ РѕС‚РїРёСЃС‹РІР°С‚СЊСЃСЏ РјРѕРіСѓ РЅРµ С‚РѕР»СЊРєРѕ РѕС‚ РІР°РєР°РЅСЃРёР№
+            // РїРѕРєР° РїСЂРёС€Р»РѕСЃСЊ РїРѕРґРїСЂР°РІРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ
             $notification = GuestConst::$_unsubscribe_ok_message;
             $notification['message'] = sprintf($notification['message'], $email);
             require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/Helpers/PopupAfterPageLoaded.php");

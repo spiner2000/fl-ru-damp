@@ -60,7 +60,7 @@ local performance
 execution_time = 6.59270 sec
 sended = 12704
 
----холодный запуск
+---С…РѕР»РѕРґРЅС‹Р№ Р·Р°РїСѓСЃРє
 execution_time = 116.79537 sec
 sended = 32704
 
@@ -73,7 +73,7 @@ sended = 32704
 execution_time = 13.42381 sec
 sended = 32704
 
----холодный запуск
+---С…РѕР»РѕРґРЅС‹Р№ Р·Р°РїСѓСЃРє
 execution_time = 111.76793 sec
 sended = 52704
 

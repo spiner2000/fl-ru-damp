@@ -8,11 +8,11 @@
 <?php if(hasPermissions('sbr')  && $_SESSION['access']=='A') { ?>
 <div class="b-fon b-fon_float_right">
     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb">
-		<div class="b-layout__txt"><a class="b-layout__link b-layout__link_float_right" href="<?=($site_uri ? $site_uri.'&' : '?')?>access=U">Выйти</a>Вы видите сделку глазами:</div>
+		<div class="b-layout__txt"><a class="b-layout__link b-layout__link_float_right" href="<?=($site_uri ? $site_uri.'&' : '?')?>access=U">Р’С‹Р№С‚Рё</a>Р’С‹ РІРёРґРёС‚Рµ СЃРґРµР»РєСѓ РіР»Р°Р·Р°РјРё:</div>
 		<div class="b-layout__txt">
-            <?php if(!$_SESSION['E'] && !$_SESSION['F']) { ?>Администратора<?php } else {//if?><a href="<?=($site_uri ? $site_uri.'&' : '?')?>access=A" class="b-layout__link">Администратора</a><?php }//else?>&#160;&#160;&#160;
-            <?php if($_SESSION['E']) { ?>Работодателя<?php } else {//if?><a href="<?=($site_uri ? $site_uri.'&' : '?')?>access=A&E=<?=$sbr->emp_login?>" class="b-layout__link">Работодателя</a><?php }//else?>&#160;&#160;&#160;
-            <?php if($_SESSION['F']) { ?>Исполнителя<?php } else {//if?><a href="<?=($site_uri ? $site_uri.'&' : '?')?>access=A&F=<?=$sbr->frl_login?>" class="b-layout__link">Исполнителя</a><?php }//else?>
+            <?php if(!$_SESSION['E'] && !$_SESSION['F']) { ?>РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°<?php } else {//if?><a href="<?=($site_uri ? $site_uri.'&' : '?')?>access=A" class="b-layout__link">РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°</a><?php }//else?>&#160;&#160;&#160;
+            <?php if($_SESSION['E']) { ?>Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЏ<?php } else {//if?><a href="<?=($site_uri ? $site_uri.'&' : '?')?>access=A&E=<?=$sbr->emp_login?>" class="b-layout__link">Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЏ</a><?php }//else?>&#160;&#160;&#160;
+            <?php if($_SESSION['F']) { ?>РСЃРїРѕР»РЅРёС‚РµР»СЏ<?php } else {//if?><a href="<?=($site_uri ? $site_uri.'&' : '?')?>access=A&F=<?=$sbr->frl_login?>" class="b-layout__link">РСЃРїРѕР»РЅРёС‚РµР»СЏ</a><?php }//else?>
         </div>
 	</div>
 </div>

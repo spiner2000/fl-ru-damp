@@ -42,7 +42,7 @@ if (!$xajax) {
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("setDeleted", $_SERVER['DOCUMENT_ROOT'] . "/xajax/banned.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("getAdminActionReasonTextDel", $_SERVER['DOCUMENT_ROOT'] . "/xajax/banned.server.php"));
     
-    // Черновики блогов
+    // Р§РµСЂРЅРѕРІРёРєРё Р±Р»РѕРіРѕРІ
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("SaveDraftBlog", $_SERVER['DOCUMENT_ROOT'] . "/xajax/drafts.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("CheckDraftsBlog", $_SERVER['DOCUMENT_ROOT'] . "/xajax/drafts.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("FillDraftForm", $_SERVER['DOCUMENT_ROOT'] . "/xajax/drafts.server.php"));
@@ -52,7 +52,7 @@ if (!$xajax) {
     
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction('saveHeaderNote', $_SERVER['DOCUMENT_ROOT'] . '/xajax/notes.server.php'));
     
-    /* ��� ������� ������������ */
+    /* Для профиля пользователя */
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("GetCitysByCid", $_SERVER['DOCUMENT_ROOT'] . "/xajax/countrys.server.php"));
 	$xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("SaveStatus", $_SERVER['DOCUMENT_ROOT'] . "/xajax/status.server.php"));
 	$xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("FormSave", $_SERVER['DOCUMENT_ROOT'] . "/xajax/notes.server.php"));

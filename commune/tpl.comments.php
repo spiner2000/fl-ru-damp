@@ -4,13 +4,13 @@ $xajax->printJavascript('/xajax/');
 
 global $id, $uid, $om, $comm, $top, $page, $session, $message_id, $comment_id, $request, $alert, $action, $user_mod;
 
-// Топ-тема должна быть получена заранее.
+// РўРѕРї-С‚РµРјР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РїРѕР»СѓС‡РµРЅР° Р·Р°СЂР°РЅРµРµ.
 $favs = commune::GetFavorites($uid, $top['id']);
 $top['last_viewed_time'] = !$uid ? 0 : commune::GetMessageLVT($top['id'], $uid);
 
 //print($top['member_is_banned']);
 //print($user_mod & (commune::MOD_ADMIN | commune::MOD_COMM_AUTHOR | commune::MOD_COMM_MANAGER));
-// Дерево сообщений.
+// Р”РµСЂРµРІРѕ СЃРѕРѕР±С‰РµРЅРёР№.
 if (!($thread = commune::GetAsThread($top['theme_id'])))
     $thread = array();
 
@@ -25,7 +25,7 @@ $is_site_admin = hasPermissions('communes');
     $aGroup = commune::getGroupById( $comm['group_id'] );
     $sGroup = $aGroup['name'];
     $crumbs = array();
-    $crumbs[] = array("title"=>"Сообщества", "url"=>"/commune/");
+    $crumbs[] = array("title"=>"РЎРѕРѕР±С‰РµСЃС‚РІР°", "url"=>"/commune/");
     if($comm['id'] != commune::COMMUNE_BLOGS_ID) $crumbs[] = array("title"=>$sGroup, "url"=>"/commune/?gr={$comm['group_id']}");
     $crumbs[] = array("title"=>$comm['name'], "url"=>getFriendlyURL('commune_commune', $comm['id']));
     $crumbs[] = array("title"=>$top['category_name'], "url"=>getFriendlyURL('commune_commune', $comm['id'])."?om=".(__paramInit("int", "om")?__paramInit("int", "om"):'0').'&cat='.$top['category_id']);
@@ -40,8 +40,8 @@ $is_site_admin = hasPermissions('communes');
                     //$onclick = ($site == 'Lenta') ? "ShowFavFloatLenta($msg_id, $user_id, 'CM')" : "ShowFavFloat($msg_id, $user_id, $om)";
                     //$ids = ($site == 'Lenta' ? 'CM' : '') . $msg_id;
                     //$pr = ($favs[$msg_id] || ($site == 'Lenta' && $favs['CM' . $msg_id])) ? ($site == 'Lenta' ? $favs['CM' . $msg_id]['priority'] : $favs[$msg_id]['priority']) : '0_empty';
-                    //$alt_text = $favs[$msg_id] || ($site == 'Lenta' && $favs['CM' . $msg_id]) ? 'Редактировать приоритет' : 'Добавить в закладки';
-                    // с помощью id передаем параметры в js код
+                    //$alt_text = $favs[$msg_id] || ($site == 'Lenta' && $favs['CM' . $msg_id]) ? 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РїСЂРёРѕСЂРёС‚РµС‚' : 'Р”РѕР±Р°РІРёС‚СЊ РІ Р·Р°РєР»Р°РґРєРё';
+                    // СЃ РїРѕРјРѕС‰СЊСЋ id РїРµСЂРµРґР°РµРј РїР°СЂР°РјРµС‚СЂС‹ РІ js РєРѕРґ
                 ?>
                     <span id="fav_star_<?= $msg_id ?>_<?= $user_id ?>_<?= $om ?>_<?= $favs[$msg_id]['priority'] ? $favs[$msg_id]['priority'] : 0 ?>" class="b-post__star b-post__star_<?= $favs[$msg_id] ? "yellow" : "white" ?>"></span>
                 <? } ?>
@@ -64,11 +64,11 @@ $is_site_admin = hasPermissions('communes');
 
 
 
-<?php } else { /* не используется ?>
+<?php } else { /* РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ ?>
     <table border="0" width="100%" cellpadding="0" cellspacing="0">
         <tr valign="middle">
             <td align="left">
-                <h1><a style="color:#666" href="?id=<?= $comm['id'] ?>">Сообщество &laquo;<?= $comm['name'] ?>&raquo;</a></h1>
+                <h1><a style="color:#666" href="?id=<?= $comm['id'] ?>">РЎРѕРѕР±С‰РµСЃС‚РІРѕ &laquo;<?= $comm['name'] ?>&raquo;</a></h1>
             </td>
         </tr>
     </table>
@@ -77,7 +77,7 @@ $is_site_admin = hasPermissions('communes');
         <tr valign="top">
             <td height="400" bgcolor="#FFFFFF" class="ba bClr commune">
                 <div style="text-align:right;padding:15px 15px 0 0">
-                    <a href="?post=<?= $top['id'] ?><?= ($om ? '&om='.$om : '') ?>&mode=Back" class="blue"><b>[Назад]</b></a>
+                    <a href="?post=<?= $top['id'] ?><?= ($om ? '&om='.$om : '') ?>&mode=Back" class="blue"><b>[РќР°Р·Р°Рґ]</b></a>
                 </div>
                 <a name="o<?= $comment['id'] ?>"></a>
                 <div id='idTop_<?= $top['id'] ?>'>
@@ -86,12 +86,12 @@ $is_site_admin = hasPermissions('communes');
 
 <? if ($top['close_comments'] == 't') { ?>
             <div style="padding: 20px 20px 0; font: 18px Tahoma;">
-                Автор запретил оставлять комментарии
+                РђРІС‚РѕСЂ Р·Р°РїСЂРµС‚РёР» РѕСЃС‚Р°РІР»СЏС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёРё
             </div>
             <? } ?>
             <? if ($top['is_private'] == 't') { ?>
                 <div style="padding: 20px 20px 0; font: 18px Tahoma;">
-                    Автор запретил просматривать эту запись
+                    РђРІС‚РѕСЂ Р·Р°РїСЂРµС‚РёР» РїСЂРѕСЃРјР°С‚СЂРёРІР°С‚СЊ СЌС‚Сѓ Р·Р°РїРёСЃСЊ
                 </div>
             <? } ?>
 
@@ -113,7 +113,7 @@ $is_site_admin = hasPermissions('communes');
                                         NULL,
                                         $request,
                                         $alert, 'Topic', $user_mod));
-                    } else if (!$request && empty($thread)) { // Со страницы сообщества сразу ткнули "Комментировать" на топе.
+                    } else if (!$request && empty($thread)) { // РЎРѕ СЃС‚СЂР°РЅРёС†С‹ СЃРѕРѕР±С‰РµСЃС‚РІР° СЃСЂР°Р·Сѓ С‚РєРЅСѓР»Рё "РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ" РЅР° С‚РѕРїРµ.
                         print(__commPrntCommentForm($top['commune_id'],
                                         $om,
                                         NULL,
@@ -141,7 +141,7 @@ $is_site_admin = hasPermissions('communes');
             ?>
                     <script>var __commCCnt=<?= $len ?></script>
                     <div id="idCommentsHeader" style="padding:0 0 10px 15px">
-                        <h1>Комментарии:</h1>
+                        <h1>РљРѕРјРјРµРЅС‚Р°СЂРёРё:</h1>
                     </div>
 
 
@@ -193,8 +193,8 @@ $is_site_admin = hasPermissions('communes');
                                                 NULL,
                                                 $action,
                                                 $top['id'],
-                                                $message_id, // Если do.Create.post, то тут NULL, иначе $comment['id'].
-                                                NULL, // Здесь необязательно указывать, т.к. если есть $request, то он несет в себе ид. родителя.
+                                                $message_id, // Р•СЃР»Рё do.Create.post, С‚Рѕ С‚СѓС‚ NULL, РёРЅР°С‡Рµ $comment['id'].
+                                                NULL, // Р—РґРµСЃСЊ РЅРµРѕР±СЏР·Р°С‚РµР»СЊРЅРѕ СѓРєР°Р·С‹РІР°С‚СЊ, С‚.Рє. РµСЃР»Рё РµСЃС‚СЊ $request, С‚Рѕ РѕРЅ РЅРµСЃРµС‚ РІ СЃРµР±Рµ РёРґ. СЂРѕРґРёС‚РµР»СЏ.
                                                 $request,
                                                 $alert, 'Topic', $user_mod));
 
@@ -208,7 +208,7 @@ $is_site_admin = hasPermissions('communes');
 
 <? } ?>
                 <div style="text-align:right;padding:35px 15px 20px 0">
-                    <a class="vv" style="color:#666" href="#top">Наверх</a>
+                    <a class="vv" style="color:#666" href="#top">РќР°РІРµСЂС…</a>
                 </div>
             </td>
         </tr>
@@ -225,9 +225,9 @@ $is_site_admin = hasPermissions('communes');
 
 
 <?
-                // Ставим запись, что топик просмотрен.
+                // РЎС‚Р°РІРёРј Р·Р°РїРёСЃСЊ, С‡С‚Рѕ С‚РѕРїРёРє РїСЂРѕСЃРјРѕС‚СЂРµРЅ.
                 if ($uid)
-                    commune::SetMessageLVT($top['id'], $uid, -1, ($top['a_count']-1)); // в a_count содержится на 1 комментарий больше, не знаю почему
+                    commune::SetMessageLVT($top['id'], $uid, -1, ($top['a_count']-1)); // РІ a_count СЃРѕРґРµСЂР¶РёС‚СЃСЏ РЅР° 1 РєРѕРјРјРµРЅС‚Р°СЂРёР№ Р±РѕР»СЊС€Рµ, РЅРµ Р·РЅР°СЋ РїРѕС‡РµРјСѓ
 ?> 
 
 <?php 

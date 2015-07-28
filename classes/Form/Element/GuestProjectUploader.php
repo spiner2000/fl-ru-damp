@@ -12,7 +12,7 @@ class Form_Element_GuestProjectUploader extends Form_Element
         global $js_file;
         $js_file['uploader'] = 'uploader.js';
         
-        //Âñåãäà ôèëüòðóåì ResourceID
+        //Ð’ÑÐµÐ³Ð´Ð° Ñ„Ð¸Ð»ÑŒÑ‚Ñ€ÑƒÐµÐ¼ ResourceID
         $this->addFilter('PregReplace',array('match' => '/[^0-9a-z_-]/', 'replace' => ''));
     }
     

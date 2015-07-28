@@ -4,10 +4,10 @@ window.addEvent('domready', function() { SBR = new Sbr('historyFrm'); } );
 </script>
 <div class="tabs-in nr-tabs-in2 c">
 	<div class="lnk-nr-back">
-        <a href="/norisk2/">Вернуться в раздел Проекты по «Безопасным Сделкам»</a>
+        <a href="/norisk2/">Р’РµСЂРЅСѓС‚СЊСЃСЏ РІ СЂР°Р·РґРµР» РџСЂРѕРµРєС‚С‹ РїРѕ В«Р‘РµР·РѕРїР°СЃРЅС‹Рј РЎРґРµР»РєР°РјВ»</a>
 	</div>
 	<div class="nr-prnt-project">
-        История проекта: <strong class="nr-ico">#<?=$sbr->data['id']?></strong> <a href="/norisk2/?id=<?=$sbr->data['id']?>"><?=reformat($sbr->data['name'],50,0,1)?></a>
+        РСЃС‚РѕСЂРёСЏ РїСЂРѕРµРєС‚Р°: <strong class="nr-ico">#<?=$sbr->data['id']?></strong> <a href="/norisk2/?id=<?=$sbr->data['id']?>"><?=reformat($sbr->data['name'],50,0,1)?></a>
 	</div>
     <form action=".#page" method="get" id="historyFrm">
     <div>
@@ -23,21 +23,21 @@ window.addEvent('domready', function() { SBR = new Sbr('historyFrm'); } );
                 <thead>
                     <tr>
                         <th>
-                            Дата
+                            Р”Р°С‚Р°
                             <a href="javascript:SBR.changeFormDir(0,'DESC')"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?=($dir=='DESC' ? '-a' : '')?>.png" /></a>
                             <a href="javascript:SBR.changeFormDir(0,'ASC')"><img width="11" height="11" alt="^" src="/images/arrow-top<?=($dir=='ASC' ? '-a' : '')?>.png" /></a>
                         </th>
                         <th>
-                            Событие
+                            РЎРѕР±С‹С‚РёРµ
                         </th>
                         <th>
-                            Этап
+                            Р­С‚Р°Рї
                         </th>
                     </tr>
                     <tr>
                         <td>
                             <select class="nr-h-sel1" name="filter[ev_date]" onchange="document.getElementById('historyFrm').submit()">
-                               <option value="">Все</option>
+                               <option value="">Р’СЃРµ</option>
                              <? foreach($sbr_history['options']['ev_date'] as $ev_date=>$x) { ?>
                                <option value="<?=$ev_date?>"<?=($ev_date==$sbr_history['filter']['ev_date'] ? ' selected="selected"' : '')?> ><?=$ev_date?></option>
                              <? } ?>
@@ -45,7 +45,7 @@ window.addEvent('domready', function() { SBR = new Sbr('historyFrm'); } );
                         </td>
                         <td>
                             <select class="nr-h-sel2" name="filter[ev_code]" onchange="document.getElementById('historyFrm').submit()">
-                               <option value="">Все</option>
+                               <option value="">Р’СЃРµ</option>
                              <? foreach($sbr_history['options']['ev_code'] as $ev_code=>$ev_name) { ?>
                                <option value="<?=$ev_code?>"<?=($ev_code==$sbr_history['filter']['ev_code'] ? ' selected="selected"' : '')?>><?=$ev_name?></option>
                              <? } ?>
@@ -53,7 +53,7 @@ window.addEvent('domready', function() { SBR = new Sbr('historyFrm'); } );
                         </td>
                         <td>
                             <select class="nr-h-sel3" name="filter[stage_id]" onchange="document.getElementById('historyFrm').submit()">
-                               <option value="">Все</option>
+                               <option value="">Р’СЃРµ</option>
                              <? if($sbr_history['options']['stage_id']) foreach($sbr_history['options']['stage_id'] as $id=>$name) { ?>
                                <option value="<?=$id?>"<?=($id==$sbr_history['filter']['stage_id'] ? ' selected="selected"' : '')?>><?=$name?></option>
                              <? } ?>
@@ -66,7 +66,7 @@ window.addEvent('domready', function() { SBR = new Sbr('historyFrm'); } );
                     <tr class="<?=((++$i % 2) ? 'odd' : 'even')?>">
                         <td><?=date('d.m.Y H:i', strtotime($ev['ev_time']))?></td>
                         <td><strong><?=$ev['ev_name'].($ev['note'] ? ' ('.trim($ev['note']).')' : '')?></strong></td>
-                        <td><span <?=($ev['stage_name'] ? ' class="nr-h-sub"' : '')?>><a href="<?=($ev['stage_name'] ? "?site=Stage&id={$ev['own_id']}" : "/norisk2/?id={$ev['sbr_id']}")?>"><?=($ev['stage_name'] ? reformat($ev['stage_name'],40,0,1) : 'Весь проект')?></a></span></td>
+                        <td><span <?=($ev['stage_name'] ? ' class="nr-h-sub"' : '')?>><a href="<?=($ev['stage_name'] ? "?site=Stage&id={$ev['own_id']}" : "/norisk2/?id={$ev['sbr_id']}")?>"><?=($ev['stage_name'] ? reformat($ev['stage_name'],40,0,1) : 'Р’РµСЃСЊ РїСЂРѕРµРєС‚')?></a></span></td>
                     </tr>
                     <? } ?>
                 </tbody>

@@ -27,8 +27,8 @@
     $kind = @$project['kind'];
     
     
-    $emp_warn_txt = 'Обращаем внимание, что при сотрудничестве вы самостоятельно несете все риски, связанные с несвоевременным или некачественным выполнением работы или отсутствием ожидаемого результата.';
-    $frl_warn_txt = 'Обращаем внимание, что при сотрудничестве вы самостоятельно несете все риски, связанные с оплатой работы и процессом ее выполнения.';
+    $emp_warn_txt = 'РћР±СЂР°С‰Р°РµРј РІРЅРёРјР°РЅРёРµ, С‡С‚Рѕ РїСЂРё СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРµ РІС‹ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ РЅРµСЃРµС‚Рµ РІСЃРµ СЂРёСЃРєРё, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ РЅРµСЃРІРѕРµРІСЂРµРјРµРЅРЅС‹Рј РёР»Рё РЅРµРєР°С‡РµСЃС‚РІРµРЅРЅС‹Рј РІС‹РїРѕР»РЅРµРЅРёРµРј СЂР°Р±РѕС‚С‹ РёР»Рё РѕС‚СЃСѓС‚СЃС‚РІРёРµРј РѕР¶РёРґР°РµРјРѕРіРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°.';
+    $frl_warn_txt = 'РћР±СЂР°С‰Р°РµРј РІРЅРёРјР°РЅРёРµ, С‡С‚Рѕ РїСЂРё СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРµ РІС‹ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ РЅРµСЃРµС‚Рµ РІСЃРµ СЂРёСЃРєРё, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ РѕРїР»Р°С‚РѕР№ СЂР°Р±РѕС‚С‹ Рё РїСЂРѕС†РµСЃСЃРѕРј РµРµ РІС‹РїРѕР»РЅРµРЅРёСЏ.';
     
 ?>
 <table class="b-layout__table b-layout__table_width_full">
@@ -70,24 +70,24 @@ if($status == projects_status::STATUS_NEW)
          {
 ?>             
              <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold">
-                Исполнитель выбран, но еще не подтвердил участие в проекте.
+                РСЃРїРѕР»РЅРёС‚РµР»СЊ РІС‹Р±СЂР°РЅ, РЅРѕ РµС‰Рµ РЅРµ РїРѕРґС‚РІРµСЂРґРёР» СѓС‡Р°СЃС‚РёРµ РІ РїСЂРѕРµРєС‚Рµ.
             </div>  
 <?php    } 
          elseif($is_emp)
          {           
 ?>
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold">
-                Исполнитель выбран, но еще не подтвердил участие в проекте.
+                РСЃРїРѕР»РЅРёС‚РµР»СЊ РІС‹Р±СЂР°РЅ, РЅРѕ РµС‰Рµ РЅРµ РїРѕРґС‚РІРµСЂРґРёР» СѓС‡Р°СЃС‚РёРµ РІ РїСЂРѕРµРєС‚Рµ.
             </div>            
             <div class="b-layout__txt b-layout__txt_padbot_10">
-                 <?php echo $fullname ?> получил ваше предложение стать исполнителем проекта.<br/> 
-                 Как только он подтвердит его, начнется выполнение работы. Ожидайте, пожалуйста. 
+                 <?php echo $fullname ?> РїРѕР»СѓС‡РёР» РІР°С€Рµ РїСЂРµРґР»РѕР¶РµРЅРёРµ СЃС‚Р°С‚СЊ РёСЃРїРѕР»РЅРёС‚РµР»РµРј РїСЂРѕРµРєС‚Р°.<br/> 
+                 РљР°Рє С‚РѕР»СЊРєРѕ РѕРЅ РїРѕРґС‚РІРµСЂРґРёС‚ РµРіРѕ, РЅР°С‡РЅРµС‚СЃСЏ РІС‹РїРѕР»РЅРµРЅРёРµ СЂР°Р±РѕС‚С‹. РћР¶РёРґР°Р№С‚Рµ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°. 
             </div>
             <div class="b-buttons">
                 <a class="b-button b-button_flat b-button_flat_red" 
                    href="javascript:void(0);" 
                    onClick="yaCounter6051055.reachGoal('proj_cancel'); ProjectsStatus.changeStatus(<?=projects_helper::getJsParams($project_id, 'cancel')?>);">
-                   Отменить предложение
+                   РћС‚РјРµРЅРёС‚СЊ РїСЂРµРґР»РѕР¶РµРЅРёРµ
                 </a>
             </div>
 <?php
@@ -96,29 +96,29 @@ if($status == projects_status::STATUS_NEW)
          {
 ?>
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold">
-                Заказчик предлагает вам стать исполнителем проекта.
+                Р—Р°РєР°Р·С‡РёРє РїСЂРµРґР»Р°РіР°РµС‚ РІР°Рј СЃС‚Р°С‚СЊ РёСЃРїРѕР»РЅРёС‚РµР»РµРј РїСЂРѕРµРєС‚Р°.
             </div>
             <div class="b-layout__txt b-layout__txt_padbot_10">
-                Заказчик <?php echo $fullname ?> предлагает вам стать исполнителем проекта.<br/>
-                Вы можете согласовать все условия сотрудничества и начать выполнение проекта или отказаться от него.
+                Р—Р°РєР°Р·С‡РёРє <?php echo $fullname ?> РїСЂРµРґР»Р°РіР°РµС‚ РІР°Рј СЃС‚Р°С‚СЊ РёСЃРїРѕР»РЅРёС‚РµР»РµРј РїСЂРѕРµРєС‚Р°.<br/>
+                Р’С‹ РјРѕР¶РµС‚Рµ СЃРѕРіР»Р°СЃРѕРІР°С‚СЊ РІСЃРµ СѓСЃР»РѕРІРёСЏ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР° Рё РЅР°С‡Р°С‚СЊ РІС‹РїРѕР»РЅРµРЅРёРµ РїСЂРѕРµРєС‚Р° РёР»Рё РѕС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ РЅРµРіРѕ.
             </div>
             <div class="b-buttons b-buttons_padbot_10">
                 <a href="javascript:void(0);" 
                    class="b-button b-button_flat b-button_flat_green" 
                    onClick="yaCounter6051055.reachGoal('proj_apply'); ProjectsStatus.changeStatus(<?=projects_helper::getJsParams($project_id, 'accept')?>);">
-                    Начать выполнение проекта
+                    РќР°С‡Р°С‚СЊ РІС‹РїРѕР»РЅРµРЅРёРµ РїСЂРѕРµРєС‚Р°
                 </a>
-                <span class="b-buttons__txt b-button__txt_padbot_10_ipad">&#160; или &#160;</span>
+                <span class="b-buttons__txt b-button__txt_padbot_10_ipad">&#160; РёР»Рё &#160;</span>
                 <a class="b-button b-button_flat b-button_flat_red" 
                    href="javascript:void(0);" 
                    onClick="yaCounter6051055.reachGoal('proj_decline'); ProjectsStatus.changeStatus(<?=projects_helper::getJsParams($project_id, 'decline')?>);">
-                    Отказаться от него
+                    РћС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ РЅРµРіРѕ
                 </a>
             </div>
             <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_20">
-                <span class="b-icon b-icon_sbr_oattent b-icon_top_5 b-icon_margleft_-20"></span>Нажимая кнопку "Начать выполнение проекта", 
-                вы соглашаетесь выполнить работу, заявленную в проекте, на согласованных с заказчиком условиях. <br/>Вы самостоятельно несете все риски, 
-                связанные с оплатой работы, порядком ее выполнения и получением соответствующего отзыва.
+                <span class="b-icon b-icon_sbr_oattent b-icon_top_5 b-icon_margleft_-20"></span>РќР°Р¶РёРјР°СЏ РєРЅРѕРїРєСѓ "РќР°С‡Р°С‚СЊ РІС‹РїРѕР»РЅРµРЅРёРµ РїСЂРѕРµРєС‚Р°", 
+                РІС‹ СЃРѕРіР»Р°С€Р°РµС‚РµСЃСЊ РІС‹РїРѕР»РЅРёС‚СЊ СЂР°Р±РѕС‚Сѓ, Р·Р°СЏРІР»РµРЅРЅСѓСЋ РІ РїСЂРѕРµРєС‚Рµ, РЅР° СЃРѕРіР»Р°СЃРѕРІР°РЅРЅС‹С… СЃ Р·Р°РєР°Р·С‡РёРєРѕРј СѓСЃР»РѕРІРёСЏС…. <br/>Р’С‹ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ РЅРµСЃРµС‚Рµ РІСЃРµ СЂРёСЃРєРё, 
+                СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ РѕРїР»Р°С‚РѕР№ СЂР°Р±РѕС‚С‹, РїРѕСЂСЏРґРєРѕРј РµРµ РІС‹РїРѕР»РЅРµРЅРёСЏ Рё РїРѕР»СѓС‡РµРЅРёРµРј СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРіРѕ РѕС‚Р·С‹РІР°.
             </div>            
 <?php            
          }
@@ -127,12 +127,12 @@ if($status == projects_status::STATUS_NEW)
      {
          if($is_adm)
          {
-             //Пресональный проект статус для админа
+             //РџСЂРµСЃРѕРЅР°Р»СЊРЅС‹Р№ РїСЂРѕРµРєС‚ СЃС‚Р°С‚СѓСЃ РґР»СЏ Р°РґРјРёРЅР°
              if($kind == 9 && $offer_status == projects_status::STATUS_CANCEL)
              {
 ?>
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold b-layout__txt_color_c7271e">
-                Заказчик отменил проект.
+                Р—Р°РєР°Р·С‡РёРє РѕС‚РјРµРЅРёР» РїСЂРѕРµРєС‚.
             </div>
 <?php                        
              }
@@ -140,7 +140,7 @@ if($status == projects_status::STATUS_NEW)
              {
 ?>
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold b-layout__txt_color_c7271e">
-                Исполнитель отказался от проекта.
+                РСЃРїРѕР»РЅРёС‚РµР»СЊ РѕС‚РєР°Р·Р°Р»СЃСЏ РѕС‚ РїСЂРѕРµРєС‚Р°.
             </div>
 <?php            
              }
@@ -148,20 +148,20 @@ if($status == projects_status::STATUS_NEW)
              {
 ?>            
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold">
-                Исполнитель проекта пока не выбран.
+                РСЃРїРѕР»РЅРёС‚РµР»СЊ РїСЂРѕРµРєС‚Р° РїРѕРєР° РЅРµ РІС‹Р±СЂР°РЅ.
             </div>
 <?php
              }  
          } 
          elseif($is_emp)
          {
-             //Персональный проект заказчик отказался
+             //РџРµСЂСЃРѕРЅР°Р»СЊРЅС‹Р№ РїСЂРѕРµРєС‚ Р·Р°РєР°Р·С‡РёРє РѕС‚РєР°Р·Р°Р»СЃСЏ
              if($kind == 9 && $offer_status == projects_status::STATUS_CANCEL)
              {
 ?>
             <div class="b-layout__txt">
-                Вы отменили проект.<br/>
-                Рекомендуем выбрать и заказать услуги фрилансеров или предложить проект другому исполнителю.
+                Р’С‹ РѕС‚РјРµРЅРёР»Рё РїСЂРѕРµРєС‚.<br/>
+                Р РµРєРѕРјРµРЅРґСѓРµРј РІС‹Р±СЂР°С‚СЊ Рё Р·Р°РєР°Р·Р°С‚СЊ СѓСЃР»СѓРіРё С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РёР»Рё РїСЂРµРґР»РѕР¶РёС‚СЊ РїСЂРѕРµРєС‚ РґСЂСѓРіРѕРјСѓ РёСЃРїРѕР»РЅРёС‚РµР»СЋ.
             </div>
 <?php            
              }
@@ -169,8 +169,8 @@ if($status == projects_status::STATUS_NEW)
              {
 ?>
             <div class="b-layout__txt b-layout__txt_color_c7271e">
-                К сожалению, исполнитель <?php echo $fullname ?> отказался от выполнения вашего проекта.<br/>
-                Рекомендуем посмотреть и заказать услуги фрилансеров или предложить проект другому исполнителю.
+                Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, РёСЃРїРѕР»РЅРёС‚РµР»СЊ <?php echo $fullname ?> РѕС‚РєР°Р·Р°Р»СЃСЏ РѕС‚ РІС‹РїРѕР»РЅРµРЅРёСЏ РІР°С€РµРіРѕ РїСЂРѕРµРєС‚Р°.<br/>
+                Р РµРєРѕРјРµРЅРґСѓРµРј РїРѕСЃРјРѕС‚СЂРµС‚СЊ Рё Р·Р°РєР°Р·Р°С‚СЊ СѓСЃР»СѓРіРё С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РёР»Рё РїСЂРµРґР»РѕР¶РёС‚СЊ РїСЂРѕРµРєС‚ РґСЂСѓРіРѕРјСѓ РёСЃРїРѕР»РЅРёС‚РµР»СЋ.
             </div>            
 <?php            
              }
@@ -178,16 +178,16 @@ if($status == projects_status::STATUS_NEW)
              {
 ?>
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold b-layout__txt_color_c7271e">
-                Исполнитель отказался от проекта.
+                РСЃРїРѕР»РЅРёС‚РµР»СЊ РѕС‚РєР°Р·Р°Р»СЃСЏ РѕС‚ РїСЂРѕРµРєС‚Р°.
             </div>
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_color_c7271e">
-                К сожалению, исполнитель <?php echo $fullname ?> отказался от выполнения вашего проекта.<br/>
-                Рекомендуем вам:<br/>
+                Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, РёСЃРїРѕР»РЅРёС‚РµР»СЊ <?php echo $fullname ?> РѕС‚РєР°Р·Р°Р»СЃСЏ РѕС‚ РІС‹РїРѕР»РЅРµРЅРёСЏ РІР°С€РµРіРѕ РїСЂРѕРµРєС‚Р°.<br/>
+                Р РµРєРѕРјРµРЅРґСѓРµРј РІР°Рј:<br/>
                 <ol>
-                    <li>Выбрать другого исполнителя из числа ответивших фрилансеров.</li>
-                    <li>Как только исполнитель подтвердил участие в проекте, начать с ним сотрудничество.</li>
-                    <li>Получать от исполнителя результат работы.</li>
-                    <li>Завершить проект и обменять отзывами.</li>
+                    <li>Р’С‹Р±СЂР°С‚СЊ РґСЂСѓРіРѕРіРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЏ РёР· С‡РёСЃР»Р° РѕС‚РІРµС‚РёРІС€РёС… С„СЂРёР»Р°РЅСЃРµСЂРѕРІ.</li>
+                    <li>РљР°Рє С‚РѕР»СЊРєРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЊ РїРѕРґС‚РІРµСЂРґРёР» СѓС‡Р°СЃС‚РёРµ РІ РїСЂРѕРµРєС‚Рµ, РЅР°С‡Р°С‚СЊ СЃ РЅРёРј СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ.</li>
+                    <li>РџРѕР»СѓС‡Р°С‚СЊ РѕС‚ РёСЃРїРѕР»РЅРёС‚РµР»СЏ СЂРµР·СѓР»СЊС‚Р°С‚ СЂР°Р±РѕС‚С‹.</li>
+                    <li>Р—Р°РІРµСЂС€РёС‚СЊ РїСЂРѕРµРєС‚ Рё РѕР±РјРµРЅСЏС‚СЊ РѕС‚Р·С‹РІР°РјРё.</li>
                 </ol>
             </div>
 <?php            
@@ -196,16 +196,16 @@ if($status == projects_status::STATUS_NEW)
              {
 ?>            
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold">
-                Исполнитель проекта пока не выбран.
+                РСЃРїРѕР»РЅРёС‚РµР»СЊ РїСЂРѕРµРєС‚Р° РїРѕРєР° РЅРµ РІС‹Р±СЂР°РЅ.
             </div>
             <div class="b-layout__txt">
-                Рекомендуем вам:<br/>
+                Р РµРєРѕРјРµРЅРґСѓРµРј РІР°Рј:<br/>
                 <ol>
-                    <li>Из числа ответивших фрилансеров определить нескольких кандидатов (претендентов на выполнение работы).</li>
-                    <li>По результатам общения с кандидатами определить одного исполнителя.</li>
-                    <li>Как только исполнитель подтвердит участие в проекте, начать с ним сотрудничество.</li>
-                    <li>Получить от исполнителя результат работы.</li>
-                    <li>Завершить проект и обменяться отзывами.</li>
+                    <li>РР· С‡РёСЃР»Р° РѕС‚РІРµС‚РёРІС€РёС… С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РѕРїСЂРµРґРµР»РёС‚СЊ РЅРµСЃРєРѕР»СЊРєРёС… РєР°РЅРґРёРґР°С‚РѕРІ (РїСЂРµС‚РµРЅРґРµРЅС‚РѕРІ РЅР° РІС‹РїРѕР»РЅРµРЅРёРµ СЂР°Р±РѕС‚С‹).</li>
+                    <li>РџРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°Рј РѕР±С‰РµРЅРёСЏ СЃ РєР°РЅРґРёРґР°С‚Р°РјРё РѕРїСЂРµРґРµР»РёС‚СЊ РѕРґРЅРѕРіРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЏ.</li>
+                    <li>РљР°Рє С‚РѕР»СЊРєРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЊ РїРѕРґС‚РІРµСЂРґРёС‚ СѓС‡Р°СЃС‚РёРµ РІ РїСЂРѕРµРєС‚Рµ, РЅР°С‡Р°С‚СЊ СЃ РЅРёРј СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ.</li>
+                    <li>РџРѕР»СѓС‡РёС‚СЊ РѕС‚ РёСЃРїРѕР»РЅРёС‚РµР»СЏ СЂРµР·СѓР»СЊС‚Р°С‚ СЂР°Р±РѕС‚С‹.</li>
+                    <li>Р—Р°РІРµСЂС€РёС‚СЊ РїСЂРѕРµРєС‚ Рё РѕР±РјРµРЅСЏС‚СЊСЃСЏ РѕС‚Р·С‹РІР°РјРё.</li>
                 </ol>
             </div>   
 <?php
@@ -217,11 +217,11 @@ if($status == projects_status::STATUS_NEW)
              {
 ?>
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold">
-                Вы отказались от проекта.
+                Р’С‹ РѕС‚РєР°Р·Р°Р»РёСЃСЊ РѕС‚ РїСЂРѕРµРєС‚Р°.
             </div>
             <div class="b-layout__txt">
-                Вы отклонили предложение заказчика стать исполнителем проекта.<br/>
-                <?php if($project['kind']!=9) { ?>Ваш статус в проекте изменен с "Исполнитель" на "Кандидат".<?php } ?>
+                Р’С‹ РѕС‚РєР»РѕРЅРёР»Рё РїСЂРµРґР»РѕР¶РµРЅРёРµ Р·Р°РєР°Р·С‡РёРєР° СЃС‚Р°С‚СЊ РёСЃРїРѕР»РЅРёС‚РµР»РµРј РїСЂРѕРµРєС‚Р°.<br/>
+                <?php if($project['kind']!=9) { ?>Р’Р°С€ СЃС‚Р°С‚СѓСЃ РІ РїСЂРѕРµРєС‚Рµ РёР·РјРµРЅРµРЅ СЃ "РСЃРїРѕР»РЅРёС‚РµР»СЊ" РЅР° "РљР°РЅРґРёРґР°С‚".<?php } ?>
             </div>  
 <?php            
              }
@@ -229,11 +229,11 @@ if($status == projects_status::STATUS_NEW)
              {
 ?>
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold b-layout__txt_color_c7271e">
-                Заказчик отменил свое предложение.
+                Р—Р°РєР°Р·С‡РёРє РѕС‚РјРµРЅРёР» СЃРІРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ.
             </div>
             <div class="b-layout__txt b-layout__txt_color_c7271e">
-                К сожалению, <?php echo $fullname ?> отменил предложение вам стать исполнителем по проекту.<br/>
-				<?php if($project['kind']!=9) { ?>Ваш статус в проекте изменен с "Исполнитель" на "Кандидат".<?php } ?>
+                Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, <?php echo $fullname ?> РѕС‚РјРµРЅРёР» РїСЂРµРґР»РѕР¶РµРЅРёРµ РІР°Рј СЃС‚Р°С‚СЊ РёСЃРїРѕР»РЅРёС‚РµР»РµРј РїРѕ РїСЂРѕРµРєС‚Сѓ.<br/>
+				<?php if($project['kind']!=9) { ?>Р’Р°С€ СЃС‚Р°С‚СѓСЃ РІ РїСЂРѕРµРєС‚Рµ РёР·РјРµРЅРµРЅ СЃ "РСЃРїРѕР»РЅРёС‚РµР»СЊ" РЅР° "РљР°РЅРґРёРґР°С‚".<?php } ?>
             </div>            
 <?php               
              }           
@@ -246,10 +246,10 @@ elseif($status == projects_status::STATUS_ACCEPT)
     {
 ?>             
              <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold b-layout__txt_color_6db335">
-                Проект в работе.
+                РџСЂРѕРµРєС‚ РІ СЂР°Р±РѕС‚Рµ.
             </div>            
             <div class="b-layout__txt b-layout__txt_color_6db335 b-layout__txt_padbot_15">
-                Исполнитель подтвердил участие в проекте и выполняет его.<br/>
+                РСЃРїРѕР»РЅРёС‚РµР»СЊ РїРѕРґС‚РІРµСЂРґРёР» СѓС‡Р°СЃС‚РёРµ РІ РїСЂРѕРµРєС‚Рµ Рё РІС‹РїРѕР»РЅСЏРµС‚ РµРіРѕ.<br/>
             </div> 
 <?php    
     } 
@@ -257,17 +257,17 @@ elseif($status == projects_status::STATUS_ACCEPT)
     {
 ?>
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold b-layout__txt_color_6db335">
-                Проект в работе.
+                РџСЂРѕРµРєС‚ РІ СЂР°Р±РѕС‚Рµ.
             </div>            
             <div class="b-layout__txt b-layout__txt_color_6db335 b-layout__txt_padbot_15">
-                Исполнитель <?php echo $fullname ?> подтвердил участие в проекте и выполняет его.<br/>
-                В любой момент вы можете завершить сотрудничество с исполнителем, произвести оплату выполненной работы и оставить отзыв (положительный или отрицательный).
+                РСЃРїРѕР»РЅРёС‚РµР»СЊ <?php echo $fullname ?> РїРѕРґС‚РІРµСЂРґРёР» СѓС‡Р°СЃС‚РёРµ РІ РїСЂРѕРµРєС‚Рµ Рё РІС‹РїРѕР»РЅСЏРµС‚ РµРіРѕ.<br/>
+                Р’ Р»СЋР±РѕР№ РјРѕРјРµРЅС‚ РІС‹ РјРѕР¶РµС‚Рµ Р·Р°РІРµСЂС€РёС‚СЊ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ СЃ РёСЃРїРѕР»РЅРёС‚РµР»РµРј, РїСЂРѕРёР·РІРµСЃС‚Рё РѕРїР»Р°С‚Сѓ РІС‹РїРѕР»РЅРµРЅРЅРѕР№ СЂР°Р±РѕС‚С‹ Рё РѕСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ (РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№ РёР»Рё РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№).
             </div>
             <div class="b-buttons b-buttons_padbot_15">
                 <a class="b-button b-button_flat b-button_flat_green" 
                    href="javascript:void(0);" 
                    onClick="ProjectsFeedback.open(<?=projects_helper::getJsCloseParams($project_id)?>);">
-                    Завершить сотрудничество
+                    Р—Р°РІРµСЂС€РёС‚СЊ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ
                 </a>
             </div> 
             <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_20">
@@ -279,19 +279,19 @@ elseif($status == projects_status::STATUS_ACCEPT)
     {
 ?>
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold b-layout__txt_color_6db335">
-                Проект в работе.
+                РџСЂРѕРµРєС‚ РІ СЂР°Р±РѕС‚Рµ.
             </div>            
             <div class="b-layout__txt b-layout__txt_color_6db335 b-layout__txt_padbot_15">
-                Вы подтвердили участие в проекте в качестве исполнителя. 
-                Далее вам необходимо выполнить работу и передать результат заказчику, получив от него сумму оплаты.<br/>
-                В любой момент вы можете завершить сотрудничество по проекту и оставить отзыв (положительный или отрицательный).
+                Р’С‹ РїРѕРґС‚РІРµСЂРґРёР»Рё СѓС‡Р°СЃС‚РёРµ РІ РїСЂРѕРµРєС‚Рµ РІ РєР°С‡РµСЃС‚РІРµ РёСЃРїРѕР»РЅРёС‚РµР»СЏ. 
+                Р”Р°Р»РµРµ РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РІС‹РїРѕР»РЅРёС‚СЊ СЂР°Р±РѕС‚Сѓ Рё РїРµСЂРµРґР°С‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РєР°Р·С‡РёРєСѓ, РїРѕР»СѓС‡РёРІ РѕС‚ РЅРµРіРѕ СЃСѓРјРјСѓ РѕРїР»Р°С‚С‹.<br/>
+                Р’ Р»СЋР±РѕР№ РјРѕРјРµРЅС‚ РІС‹ РјРѕР¶РµС‚Рµ Р·Р°РІРµСЂС€РёС‚СЊ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ РїРѕ РїСЂРѕРµРєС‚Сѓ Рё РѕСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ (РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№ РёР»Рё РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№).
             </div>
             
             <div class="b-buttons b-buttons_padbot_15">
                 <a class="b-button b-button_flat b-button_flat_green" 
                    href="javascript:void(0);" 
                    onClick="ProjectsFeedback.open(<?=projects_helper::getJsCloseParams($project_id)?>);">
-                    Завершить сотрудничество
+                    Р—Р°РІРµСЂС€РёС‚СЊ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ
                 </a>
             </div>
             
@@ -307,11 +307,11 @@ elseif($status == projects_status::STATUS_EMPCLOSE)
     {
 ?>
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold">
-                Проект завершен и закрыт заказчиком. 
+                РџСЂРѕРµРєС‚ Р·Р°РІРµСЂС€РµРЅ Рё Р·Р°РєСЂС‹С‚ Р·Р°РєР°Р·С‡РёРєРѕРј. 
             </div>
             <?php if($is_emp_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_color_<?=$emp_color?> b-layout__txt_padbot_5 b-layout__txt_bold">
-                Отзыв заказчика:
+                РћС‚Р·С‹РІ Р·Р°РєР°Р·С‡РёРєР°:
             </div>
             <div class="b-layout__txt b-layout__txt_margbot_10 b-layout__txt_fontsize_11 b-layout__txt_italic b-layout__txt_padleft_15 b-layout__txt_margleft_15 b-layout_bordleft_<?=$emp_color?> b-layout__txt_color_<?=$emp_color?>">
                <?=$emp_feedback?>
@@ -319,7 +319,7 @@ elseif($status == projects_status::STATUS_EMPCLOSE)
              <?php } ?>
             <?php if($is_frl_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_color_<?=$frl_color?> b-layout__txt_padbot_5 b-layout__txt_bold">
-                Отзыв исполнителя:
+                РћС‚Р·С‹РІ РёСЃРїРѕР»РЅРёС‚РµР»СЏ:
             </div>
             <div class="b-layout__txt b-layout__txt_margbot_10 b-layout__txt_fontsize_11 b-layout__txt_italic b-layout__txt_padleft_15 b-layout__txt_margleft_15 b-layout_bordleft_<?=$frl_color?> b-layout__txt_color_<?=$frl_color?>">
                <?=$frl_feedback?>
@@ -331,37 +331,37 @@ elseif($status == projects_status::STATUS_EMPCLOSE)
     {
 ?>
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold b-layout__txt_color_<?=$emp_color?>">
-                Проект завершен и закрыт. 
+                РџСЂРѕРµРєС‚ Р·Р°РІРµСЂС€РµРЅ Рё Р·Р°РєСЂС‹С‚. 
             </div>
             <?php if($is_emp_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_color_<?=$emp_color?>">
-                Вы завершили сотрудничество с исполнителем и закрыли проект.
+                Р’С‹ Р·Р°РІРµСЂС€РёР»Рё СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ СЃ РёСЃРїРѕР»РЅРёС‚РµР»РµРј Рё Р·Р°РєСЂС‹Р»Рё РїСЂРѕРµРєС‚.
             </div>
             <div class="b-layout__txt b-layout__txt_color_<?=$emp_color?> b-layout__txt_padbot_5 b-layout__txt_bold">
-                Ваш отзыв исполнителю:
+                Р’Р°С€ РѕС‚Р·С‹РІ РёСЃРїРѕР»РЅРёС‚РµР»СЋ:
             </div>
             <div class="b-layout__txt b-layout__txt_margbot_10 b-layout__txt_fontsize_11 b-layout__txt_italic b-layout__txt_padleft_15 b-layout__txt_margleft_15 b-layout_bordleft_<?=$emp_color?> b-layout__txt_color_<?=$emp_color?>">
                <?=$emp_feedback?>
             </div>                    
             <?php }elseif($is_allow_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_color_ b-layout__txt_color_6db335 b-layout__txt_padbot_10">
-                Вы можете оставить отзыв до <?=$date_feedback?>
+                Р’С‹ РјРѕР¶РµС‚Рµ РѕСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ РґРѕ <?=$date_feedback?>
             </div>
             <div class="b-buttons b-buttons_padbot_15">
                 <a class="b-button b-button_flat b-button_flat_green" 
                    href="javascript:void(0);" 
                    onclick="ProjectsFeedback.open(<?=projects_helper::getJsCloseParams($project_id, true, $frl_rating)?>);">
-                    Оставить отзыв
+                    РћСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ
                 </a>
             </div> 
             <?php }else{ ?>
             <div class="b-layout__txt b-layout__txt_color_ b-layout__txt_color_6db335 b-layout__txt_padbot_10">
-                Вы завершили сотрудничество с исполнителем и закрыли проект.
+                Р’С‹ Р·Р°РІРµСЂС€РёР»Рё СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ СЃ РёСЃРїРѕР»РЅРёС‚РµР»РµРј Рё Р·Р°РєСЂС‹Р»Рё РїСЂРѕРµРєС‚.
             </div>                    
             <?php } ?>
             <?php if($is_frl_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_color_<?=$frl_color?> b-layout__txt_padbot_5 b-layout__txt_bold">
-                Отзыв исполнителя:
+                РћС‚Р·С‹РІ РёСЃРїРѕР»РЅРёС‚РµР»СЏ:
             </div>
             <div class="b-layout__txt b-layout__txt_margbot_10 b-layout__txt_fontsize_11 b-layout__txt_italic b-layout__txt_padleft_15 b-layout__txt_margleft_15 b-layout_bordleft_<?=$frl_color?> b-layout__txt_color_<?=$frl_color?>">
                <?=$frl_feedback?>
@@ -378,21 +378,21 @@ elseif($status == projects_status::STATUS_EMPCLOSE)
     {
 ?>
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold b-layout__txt_color_<?=$frl_color?>">
-                Проект завершен и закрыт. 
+                РџСЂРѕРµРєС‚ Р·Р°РІРµСЂС€РµРЅ Рё Р·Р°РєСЂС‹С‚. 
             </div>
             <?php if($is_frl_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_color_<?=$frl_color?>">
-                Заказчик <?php echo $fullname ?> завершил сотрудничество и закрыл проект.
+                Р—Р°РєР°Р·С‡РёРє <?php echo $fullname ?> Р·Р°РІРµСЂС€РёР» СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ Рё Р·Р°РєСЂС‹Р» РїСЂРѕРµРєС‚.
             </div>
             <div class="b-layout__txt b-layout__txt_color_<?=$frl_color?> b-layout__txt_padbot_5 b-layout__txt_bold">
-                Ваш отзыв заказчику:
+                Р’Р°С€ РѕС‚Р·С‹РІ Р·Р°РєР°Р·С‡РёРєСѓ:
             </div>
             <div class="b-layout__txt b-layout__txt_margbot_10 b-layout__txt_fontsize_11 b-layout__txt_italic b-layout__txt_padleft_15 b-layout__txt_margleft_15 b-layout_bordleft_<?=$frl_color?> b-layout__txt_color_<?=$frl_color?>">
                 <?=$frl_feedback?>
             </div>
             <?php if($is_emp_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_color_<?=$emp_color?> b-layout__txt_padbot_5 b-layout__txt_bold">
-                Отзыв заказчика:
+                РћС‚Р·С‹РІ Р·Р°РєР°Р·С‡РёРєР°:
             </div>
             <div class="b-layout__txt b-layout__txt_margbot_10 b-layout__txt_fontsize_11 b-layout__txt_italic b-layout__txt_padleft_15 b-layout__txt_margleft_15 b-layout_bordleft_<?=$emp_color?> b-layout__txt_color_<?=$emp_color?>">
                 <?=$emp_feedback?>
@@ -401,23 +401,23 @@ elseif($status == projects_status::STATUS_EMPCLOSE)
             <?php }else{ ?>
             <?php if($is_emp_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_color_<?=$emp_color?> b-layout__txt_padbot_5">
-                <?php echo $fullname ?> завершил сотрудничество и оставил вам <?php if($emp_is_good){ ?>положительный отзыв.<?php }else{ ?>отрицательный отзыв.<?php } ?>
+                <?php echo $fullname ?> Р·Р°РІРµСЂС€РёР» СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ Рё РѕСЃС‚Р°РІРёР» РІР°Рј <?php if($emp_is_good){ ?>РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№ РѕС‚Р·С‹РІ.<?php }else{ ?>РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№ РѕС‚Р·С‹РІ.<?php } ?>
             </div>
             <div class="b-layout__txt b-layout__txt_margbot_10 b-layout__txt_fontsize_11 b-layout__txt_italic b-layout__txt_padleft_15 b-layout__txt_margleft_15 b-layout_bordleft_<?=$emp_color?> b-layout__txt_color_<?=$emp_color?>">
                 <?=$emp_feedback?>
             </div>  
             <?php if($is_allow_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_color_<?=$emp_color?> b-layout__txt_padbot_10">
-                Вы можете оставить ответный отзыв до <?=$date_feedback?>
+                Р’С‹ РјРѕР¶РµС‚Рµ РѕСЃС‚Р°РІРёС‚СЊ РѕС‚РІРµС‚РЅС‹Р№ РѕС‚Р·С‹РІ РґРѕ <?=$date_feedback?>
             </div>
             <?php } ?>
             <?php }else{ ?>
             <div class="b-layout__txt b-layout__txt_color_6db335">
-                Заказчик <?php echo $fullname ?> завершил сотрудничество и закрыл проект.
+                Р—Р°РєР°Р·С‡РёРє <?php echo $fullname ?> Р·Р°РІРµСЂС€РёР» СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ Рё Р·Р°РєСЂС‹Р» РїСЂРѕРµРєС‚.
             </div> 
             <?php if($is_allow_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_color_6db335 b-layout__txt_padbot_10">
-                Вы можете оставить отзыв до <?=$date_feedback?>
+                Р’С‹ РјРѕР¶РµС‚Рµ РѕСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ РґРѕ <?=$date_feedback?>
             </div>  
             <?php } ?>
             <?php } ?>
@@ -426,7 +426,7 @@ elseif($status == projects_status::STATUS_EMPCLOSE)
                 <a class="b-button b-button_flat b-button_flat_green" 
                    href="javascript:void(0);" 
                    onclick="ProjectsFeedback.open(<?=projects_helper::getJsCloseParams($project_id, true, $emp_rating)?>);">
-                    Оставить отзыв
+                    РћСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ
                 </a>
             </div>
             <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_20">
@@ -443,11 +443,11 @@ elseif($status == projects_status::STATUS_FRLCLOSE)
     {
 ?>
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold">
-                Проект завершен и закрыт исполнителем. 
+                РџСЂРѕРµРєС‚ Р·Р°РІРµСЂС€РµРЅ Рё Р·Р°РєСЂС‹С‚ РёСЃРїРѕР»РЅРёС‚РµР»РµРј. 
             </div>
             <?php if($is_emp_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_color_<?=$emp_color?> b-layout__txt_padbot_5 b-layout__txt_bold">
-                Отзыв заказчика:
+                РћС‚Р·С‹РІ Р·Р°РєР°Р·С‡РёРєР°:
             </div>
             <div class="b-layout__txt b-layout__txt_margbot_10 b-layout__txt_fontsize_11 b-layout__txt_italic b-layout__txt_padleft_15 b-layout__txt_margleft_15 b-layout_bordleft_<?=$emp_color?> b-layout__txt_color_<?=$emp_color?>">
                <?=$emp_feedback?>
@@ -455,7 +455,7 @@ elseif($status == projects_status::STATUS_FRLCLOSE)
              <?php } ?>
             <?php if($is_frl_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_color_<?=$frl_color?> b-layout__txt_padbot_5 b-layout__txt_bold">
-                Отзыв исполнителя:
+                РћС‚Р·С‹РІ РёСЃРїРѕР»РЅРёС‚РµР»СЏ:
             </div>
             <div class="b-layout__txt b-layout__txt_margbot_10 b-layout__txt_fontsize_11 b-layout__txt_italic b-layout__txt_padleft_15 b-layout__txt_margleft_15 b-layout_bordleft_<?=$frl_color?> b-layout__txt_color_<?=$frl_color?>">
                <?=$frl_feedback?>
@@ -467,21 +467,21 @@ elseif($status == projects_status::STATUS_FRLCLOSE)
     {
 ?>
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold b-layout__txt_color_<?=$emp_color?>">
-                Проект завершен и закрыт. 
+                РџСЂРѕРµРєС‚ Р·Р°РІРµСЂС€РµРЅ Рё Р·Р°РєСЂС‹С‚. 
             </div>           
             <?php if($is_emp_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_color_<?=$emp_color?>">
-                <?php echo $fullname ?> завершил сотрудничество и закрыл проект.
+                <?php echo $fullname ?> Р·Р°РІРµСЂС€РёР» СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ Рё Р·Р°РєСЂС‹Р» РїСЂРѕРµРєС‚.
             </div>
             <div class="b-layout__txt b-layout__txt_color_<?=$emp_color?> b-layout__txt_padbot_5 b-layout__txt_bold">
-                Ваш отзыв исполнителю:
+                Р’Р°С€ РѕС‚Р·С‹РІ РёСЃРїРѕР»РЅРёС‚РµР»СЋ:
             </div>
             <div class="b-layout__txt b-layout__txt_margbot_10 b-layout__txt_fontsize_11 b-layout__txt_italic b-layout__txt_padleft_15 b-layout__txt_margleft_15 b-layout_bordleft_<?=$emp_color?> b-layout__txt_color_<?=$emp_color?>">
                 <?=$emp_feedback?>
             </div>
             <?php if($is_frl_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_color_<?=$frl_color?> b-layout__txt_padbot_5 b-layout__txt_bold">
-                Отзыв исполнителя:
+                РћС‚Р·С‹РІ РёСЃРїРѕР»РЅРёС‚РµР»СЏ:
             </div>
             <div class="b-layout__txt b-layout__txt_margbot_10 b-layout__txt_fontsize_11 b-layout__txt_italic b-layout__txt_padleft_15 b-layout__txt_margleft_15 b-layout_bordleft_<?=$frl_color?> b-layout__txt_color_<?=$frl_color?>">
                 <?=$frl_feedback?>
@@ -490,23 +490,23 @@ elseif($status == projects_status::STATUS_FRLCLOSE)
             <?php }else{ ?>
             <?php if($is_frl_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_color_<?=$frl_color?> b-layout__txt_padbot_5">
-                <?php echo $fullname ?> завершил сотрудничество и оставил вам <?php if($frl_is_good){ ?>положительный отзыв.<?php }else{ ?>отрицательный отзыв.<?php } ?>
+                <?php echo $fullname ?> Р·Р°РІРµСЂС€РёР» СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ Рё РѕСЃС‚Р°РІРёР» РІР°Рј <?php if($frl_is_good){ ?>РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№ РѕС‚Р·С‹РІ.<?php }else{ ?>РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№ РѕС‚Р·С‹РІ.<?php } ?>
             </div>
             <div class="b-layout__txt b-layout__txt_margbot_10 b-layout__txt_fontsize_11 b-layout__txt_italic b-layout__txt_padleft_15 b-layout__txt_margleft_15 b-layout_bordleft_<?=$frl_color?> b-layout__txt_color_<?=$frl_color?>">
                 <?=$frl_feedback?>
             </div>
             <?php if($is_allow_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_color_<?=$frl_color?> b-layout__txt_padbot_10">
-                Вы можете оставить ответный отзыв до <?=$date_feedback?>
+                Р’С‹ РјРѕР¶РµС‚Рµ РѕСЃС‚Р°РІРёС‚СЊ РѕС‚РІРµС‚РЅС‹Р№ РѕС‚Р·С‹РІ РґРѕ <?=$date_feedback?>
             </div>
             <?php } ?>
             <?php }else{ ?>
             <div class="b-layout__txt b-layout__txt_color_6db335">
-                <?php echo $fullname ?> завершил сотрудничество и закрыл проект.
+                <?php echo $fullname ?> Р·Р°РІРµСЂС€РёР» СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ Рё Р·Р°РєСЂС‹Р» РїСЂРѕРµРєС‚.
             </div> 
             <?php if($is_allow_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_color_6db335 b-layout__txt_padbot_10">
-                Вы можете оставить отзыв до <?=$date_feedback?>
+                Р’С‹ РјРѕР¶РµС‚Рµ РѕСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ РґРѕ <?=$date_feedback?>
             </div> 
             <?php } ?>
             <?php } ?>
@@ -515,7 +515,7 @@ elseif($status == projects_status::STATUS_FRLCLOSE)
                 <a class="b-button b-button_flat b-button_flat_green" 
                    href="javascript:void(0);" 
                    onclick="ProjectsFeedback.open(<?=projects_helper::getJsCloseParams($project_id, true, $frl_rating)?>);">
-                    Оставить отзыв
+                    РћСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ
                 </a>
             </div>                    
             <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_20">
@@ -529,14 +529,14 @@ elseif($status == projects_status::STATUS_FRLCLOSE)
     {
 ?>
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_bold b-layout__txt_color_<?=$frl_color?>">
-                Проект завершен и закрыт. 
+                РџСЂРѕРµРєС‚ Р·Р°РІРµСЂС€РµРЅ Рё Р·Р°РєСЂС‹С‚. 
             </div> 
             <?php if($is_frl_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_color_<?=$frl_color?>">
-                Вы завершили сотрудничество и закрыли проект.
+                Р’С‹ Р·Р°РІРµСЂС€РёР»Рё СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ Рё Р·Р°РєСЂС‹Р»Рё РїСЂРѕРµРєС‚.
             </div>
             <div class="b-layout__txt b-layout__txt_color_<?=$frl_color?> b-layout__txt_padbot_5 b-layout__txt_bold">
-                Ваш отзыв заказчику:
+                Р’Р°С€ РѕС‚Р·С‹РІ Р·Р°РєР°Р·С‡РёРєСѓ:
             </div>
             <div class="b-layout__txt b-layout__txt_margbot_10 b-layout__txt_fontsize_11 b-layout__txt_italic b-layout__txt_padleft_15 b-layout__txt_margleft_15 b-layout_bordleft_<?=$frl_color?> b-layout__txt_color_<?=$frl_color?>">
                 <?=$frl_feedback?>
@@ -544,24 +544,24 @@ elseif($status == projects_status::STATUS_FRLCLOSE)
             <?php }else{ ?>
             <?php if($is_allow_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_color_ b-layout__txt_color_6db335 b-layout__txt_padbot_10">
-                Вы можете оставить отзыв до <?=$date_feedback?>
+                Р’С‹ РјРѕР¶РµС‚Рµ РѕСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ РґРѕ <?=$date_feedback?>
             </div>
             <div class="b-buttons b-buttons_padbot_15">
                 <a class="b-button b-button_flat b-button_flat_green" 
                    href="javascript:void(0);" 
                    onclick="ProjectsFeedback.open(<?=projects_helper::getJsCloseParams($project_id, true, $emp_rating)?>);">
-                    Оставить отзыв
+                    РћСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ
                 </a>
             </div> 
             <?php }else{ ?>
             <div class="b-layout__txt b-layout__txt_color_6db335 b-layout__txt_padbot_10">
-                Вы завершили сотрудничество и закрыли проект.
+                Р’С‹ Р·Р°РІРµСЂС€РёР»Рё СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ Рё Р·Р°РєСЂС‹Р»Рё РїСЂРѕРµРєС‚.
             </div>                    
             <?php } ?>
             <?php } ?>
             <?php if($is_emp_feedback){ ?>
             <div class="b-layout__txt b-layout__txt_color_<?=$emp_color?> b-layout__txt_padbot_5 b-layout__txt_bold">
-                Отзыв заказчика:
+                РћС‚Р·С‹РІ Р·Р°РєР°Р·С‡РёРєР°:
             </div>
             <div class="b-layout__txt b-layout__txt_margbot_10 b-layout__txt_fontsize_11 b-layout__txt_italic b-layout__txt_padleft_15 b-layout__txt_margleft_15 b-layout_bordleft_<?php echo $emp_color ?> b-layout__txt_color_<?=$emp_color?>">
                 <?=$emp_feedback?>

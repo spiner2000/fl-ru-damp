@@ -48,8 +48,8 @@ require_once($path . "/classes/freelancer.php");
 
 
 $mail = new smtp;
-$mail->subject   = 'Òåìà ïèñüìà - ïğîâåğêà ğàññûëêè';
-$mail->message   = 'İòî òåëî ïèñüìà';
+$mail->subject   = 'Ğ¢ĞµĞ¼Ğ° Ğ¿Ğ¸ÑÑŒĞ¼Ğ° - Ğ¿Ñ€Ğ¾Ğ²ĞµÑ€ĞºĞ° Ñ€Ğ°ÑÑÑ‹Ğ»ĞºĞ¸';
+$mail->message   = 'Ğ­Ñ‚Ğ¾ Ñ‚ĞµĞ»Ğ¾ Ğ¿Ğ¸ÑÑŒĞ¼Ğ°';
 $mail->recipient = '';
 
 $spamid = $mail->send('text/html');
@@ -61,41 +61,41 @@ if ( !$spamid )
 $mail->recipient = array();
 
 $rows[] = array(
-    'uname'     => 'Àëåêñåé',
-    'usurname'  => 'Êàçàêîâ',
+    'uname'     => 'ĞĞ»ĞµĞºÑĞµĞ¹',
+    'usurname'  => 'ĞšĞ°Ğ·Ğ°ĞºĞ¾Ğ²',
     'email'     => 'dezinger@gmail.com'
 );
 
 $rows[] = array(
-    'uname'     => 'Àëåêñåé',
-    'usurname'  => 'Êàçàêîâ',
+    'uname'     => 'ĞĞ»ĞµĞºÑĞµĞ¹',
+    'usurname'  => 'ĞšĞ°Ğ·Ğ°ĞºĞ¾Ğ²',
     'email'     => 'kazakov@fl.ru'
 );
 
 $rows[] = array(
-    'uname'     => 'Àëåêñåé',
-    'usurname'  => 'Êàçàêîâ',
+    'uname'     => 'ĞĞ»ĞµĞºÑĞµĞ¹',
+    'usurname'  => 'ĞšĞ°Ğ·Ğ°ĞºĞ¾Ğ²',
     'email'     => 'kazakov@free-lance.ru'
 );
 
 $rows[] = array(
-    'uname'     => 'Àëåêñåé',
-    'usurname'  => 'Êàçàêîâ',
+    'uname'     => 'ĞĞ»ĞµĞºÑĞµĞ¹',
+    'usurname'  => 'ĞšĞ°Ğ·Ğ°ĞºĞ¾Ğ²',
     'email'     => 'ak_soft@list.ru'
 );
 
 
 $rows[] = array(
-    'uname'     => 'Àëåêñåé',
-    'usurname'  => 'Êàçàêîâ',
+    'uname'     => 'ĞĞ»ĞµĞºÑĞµĞ¹',
+    'usurname'  => 'ĞšĞ°Ğ·Ğ°ĞºĞ¾Ğ²',
     'email'     => 'ddezinger@yandex.ru'
 );
 
 
 /*
 $rows[] = array(
-    'uname'     => 'Àëåêñåé',
-    'usurname'  => 'Êàçàêîâ',
+    'uname'     => 'ĞĞ»ĞµĞºÑĞµĞ¹',
+    'usurname'  => 'ĞšĞ°Ğ·Ğ°ĞºĞ¾Ğ²',
     'email'     => 'yabrus@mail.ru'
 );
 */

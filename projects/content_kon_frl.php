@@ -5,7 +5,7 @@ if (!$no_answers) {$xajax->printJavascript('/xajax/');}
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/project_exrates.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/HTML/projects_lenta.php");
 $project_exRates = project_exrates::GetAll();
-$exch = array(1=>'FM', 'USD','Euro','Руб');
+$exch = array(1=>'FM', 'USD','Euro','Р СѓР±');
 
 $translate_exRates = array
 (
@@ -53,7 +53,7 @@ works_picts[<?=$value['id']?>] = '<?=$value['pict']?>';
 
 function submitAddFileForm() {
     xajax.$("ps_pict_add").disabled=true;
-    xajax.$("ps_pict_add").value="Файл загружается";
+    xajax.$("ps_pict_add").value="Р¤Р°Р№Р» Р·Р°РіСЂСѓР¶Р°РµС‚СЃСЏ";
     xajax_submitAddFileForm(xajax.getFormValues("form_add_pict"));
     return false;
 }
@@ -68,14 +68,14 @@ function GetForm(num, commentid){
 <input type=\"hidden\" id=\"prj_id\" name=\"prj_id\" value=\"<?=$prj_id?>\">\
 <table width=\"96%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\
 <tr>\
-	<td colspan=\"2\" style=\"padding-bottom:4px;\">Сообщение:</td>\
+	<td colspan=\"2\" style=\"padding-bottom:4px;\">РЎРѕРѕР±С‰РµРЅРёРµ:</td>\
 <\/tr>\
 <tr>\
 	<td colspan=\"2\" style=\"padding-bottom:4px;\"><textarea tabindex=\"1\" id=\"po_text\" name=\"po_text\" rows=\"4\" style=\"width: 100%;padding-left:2px;\" onkeydown=\"document.getElementById('po_text_msg').innerHTML = '';\"></textarea><div id=\"po_text_msg\"></div></td>\
 <\/tr>\
 <tr>\
-	<td><input type=\"button\" name=\"resetbtn\" id=\"resetbtn\" value=\"Отменить\" onClick=\"resetfld('"+num+"');\" tabindex=\"3\"></td>\
-	<td align=\"right\"><input type=\"submit\" name=\"savebtn\" id=\"savebtn\" value=\"Публиковать\" tabindex=\"2\"></td>\
+	<td><input type=\"button\" name=\"resetbtn\" id=\"resetbtn\" value=\"РћС‚РјРµРЅРёС‚СЊ\" onClick=\"resetfld('"+num+"');\" tabindex=\"3\"></td>\
+	<td align=\"right\"><input type=\"submit\" name=\"savebtn\" id=\"savebtn\" value=\"РџСѓР±Р»РёРєРѕРІР°С‚СЊ\" tabindex=\"2\"></td>\
 <\/tr>\
 <tr>\
 	<td colspan=\"2\" id=\"po_id_error_" + num + "\"></td>\
@@ -105,7 +105,7 @@ function answer(num, commentid) {
     old_num = num;
     if (commentid) {
 	$('po_text').value = $('po_comment_original_' + commentid).innerHTML.replace(/&amp;/gi, '&').replace(/<br>/gi, '\n');
-	$('savebtn').value = "Сохранить";
+	$('savebtn').value = "РЎРѕС…СЂР°РЅРёС‚СЊ";
     }
     $('po_text').focus();
 }
@@ -119,9 +119,9 @@ function resetfld(num){
     td1 = $('po_dialogue_answer_'+num);
     innerHTML = '';
 	if (dialogue_count['num'] > 1) {
-        innerHTML = innerHTML + '<span style="float: right;"><a href="javascript:void(null)" onClick="dialogue_toggle(' + num + ');markRead(' + num + ');" class="internal" id="toggle_dialogue_' + num + '">Развернуть всю переписку</a> ' + dialogue_count[num] + '</span>';
+        innerHTML = innerHTML + '<span style="float: right;"><a href="javascript:void(null)" onClick="dialogue_toggle(' + num + ');markRead(' + num + ');" class="internal" id="toggle_dialogue_' + num + '">Р Р°Р·РІРµСЂРЅСѓС‚СЊ РІСЃСЋ РїРµСЂРµРїРёСЃРєСѓ</a> ' + dialogue_count[num] + '</span>';
 	}
-    innerHTML = innerHTML + '<span><a href="javascript:void(0);" onClick="answer(' + num + ');markRead(' + num + ');" class="internal">Написать ответ</a></span>';
+    innerHTML = innerHTML + '<span><a href="javascript:void(0);" onClick="answer(' + num + ');markRead(' + num + ');" class="internal">РќР°РїРёСЃР°С‚СЊ РѕС‚РІРµС‚</a></span>';
     if (edit_block[num]) innerHTML = innerHTML + edit_block[num];
 
     td1.innerHTML = innerHTML;
@@ -161,15 +161,15 @@ function toggle_link_text(num)
 {
 	el_top = $('toggle_dialogue_' + num);
 	el_div = $('po_comments_'+num);
-	if (el_top.innerHTML == 'Свернуть переписку')
+	if (el_top.innerHTML == 'РЎРІРµСЂРЅСѓС‚СЊ РїРµСЂРµРїРёСЃРєСѓ')
 	{
-		el_top.innerHTML = 'Развернуть всю переписку';
+		el_top.innerHTML = 'Р Р°Р·РІРµСЂРЅСѓС‚СЊ РІСЃСЋ РїРµСЂРµРїРёСЃРєСѓ';
 		if(el_div)
 		  el_div.className = 'po_comments_hide';
 	}
 	else
 	{
-		el_top.innerHTML = 'Свернуть переписку';
+		el_top.innerHTML = 'РЎРІРµСЂРЅСѓС‚СЊ РїРµСЂРµРїРёСЃРєСѓ';
 		if(el_div)
   		el_div.className = 'po_comments';
 	}
@@ -189,13 +189,13 @@ function add_work(num, pict, prev)
     if (work_pict.value == '')
     {
         work.className = 'pic';
-        if (prev != '') // есть превью
+        if (prev != '') // РµСЃС‚СЊ РїСЂРµРІСЊСЋ
         {
-            work.innerHTML = '<div align="left"><a href="<?=WDCPREFIX?>/users/<?=get_login(get_uid())?>/upload/' + pict + '" target="_blank" class="blue" title=""><img src="<?=WDCPREFIX?>/users/<?=get_login(get_uid())?>/upload/' + prev + '" alt="" border="0"></a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(' + last_work + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+            work.innerHTML = '<div align="left"><a href="<?=WDCPREFIX?>/users/<?=get_login(get_uid())?>/upload/' + pict + '" target="_blank" class="blue" title=""><img src="<?=WDCPREFIX?>/users/<?=get_login(get_uid())?>/upload/' + prev + '" alt="" border="0"></a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(' + last_work + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
         }
         else
         {
-            work.innerHTML = '<div align="left" style="font-size:100%;"><a href="<?=WDCPREFIX?>/users/<?=get_login(get_uid())?>/upload/' + pict + '" target="_blank" class="blue" title="">' + pict + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(' + last_work + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+            work.innerHTML = '<div align="left" style="font-size:100%;"><a href="<?=WDCPREFIX?>/users/<?=get_login(get_uid())?>/upload/' + pict + '" target="_blank" class="blue" title="">' + pict + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(' + last_work + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
         }
         work_pict.value = pict;
         work_prev.value = prev;
@@ -232,7 +232,7 @@ function dialogue_toggle(num) {
 	el_div = $('po_comments_' + num);
 	el_tlk = $('po_dialogue_talk_' + num);
 	if(el_div) {
-  	if (el_top.innerHTML == 'Свернуть диалог')
+  	if (el_top.innerHTML == 'РЎРІРµСЂРЅСѓС‚СЊ РґРёР°Р»РѕРі')
   		el_div.className = 'po_comments';
   	else
   		el_div.className = 'po_comments_hide';
@@ -266,7 +266,7 @@ function dialogue_toggle(num) {
 		<tr valign="top">
 			<td colspan="3" bgcolor="#FFFFFF" class="box" style="padding: 0 19px 19px 19px; color: #000000; font-size:12px;">&nbsp;
       <div style="text-align:right;padding-bottom:15px">
-        <a href="<?=$back_href?>" class="blue"><b>[Назад]</b></a>
+        <a href="<?=$back_href?>" class="blue"><b>[РќР°Р·Р°Рґ]</b></a>
       </div>
   		<table width="100%" border="0" cellspacing="0" cellpadding="0">
   		<tr valign="top">
@@ -282,12 +282,12 @@ function dialogue_toggle(num) {
   			}
   			*/
           ?>
-    			<div class="prj_cost">Бюджет: <?=CurToChar($project['cost'], $project['currency'])?><?
+    			<div class="prj_cost">Р‘СЋРґР¶РµС‚: <?=CurToChar($project['cost'], $project['currency'])?><?
     			if ($project['cost'] > 0) {
     			?><br />
     			<table class="small" style="margin-left:52px;color:#999999;">
     			<tr>
-    			<td style="text-align:right;vertical-align:top;">Это:</td>
+    			<td style="text-align:right;vertical-align:top;">Р­С‚Рѕ:</td>
     			<td style="text-align:left;vertical-align:top;padding-left:7px;"><?
     			if ($project['currency'] != 0) {
     			    ?><?=CurToChar(preg_replace('/.00$/', '', sprintf("%.2f", round($project['cost'] * $project_exRates[trim($translate_exRates[$project['currency']]) . '2'], 2))), 0)?><br><?
@@ -310,27 +310,27 @@ function dialogue_toggle(num) {
     			<?= view_mark_user($project, '', false);?><?=$session->view_online_status($project['login'])?>
     			<font class="empname11"><a href="/users/<?=$project['login']?>" class="empname11" title="<?=($project['uname']." ".$project['usurname'])?>"><?=($project['uname']." ".$project['usurname'])?></a> [<a href="/users/<?=$project['login']?>" class="empname11" title="<?=$project['login']?>"><?=$project['login']?></a>]</font>
                         <?}else{?>
-                        <?=$session->view_online_status($project['login'])?> Автор: <? if ($project['is_pro'] == 't') { ?><?=(is_emp($project['role'])?view_pro_emp():view_pro())?><? } ?>
+                        <?=$session->view_online_status($project['login'])?> РђРІС‚РѕСЂ: <? if ($project['is_pro'] == 't') { ?><?=(is_emp($project['role'])?view_pro_emp():view_pro())?><? } ?>
                         <?
                               $emp_user = new users;
 		              $emp_user->GetUser($project['login']);
-                              echo "на сайте ".ElapsedMnths(strtotime($emp_user->reg_date)).", ";
+                              echo "РЅР° СЃР°Р№С‚Рµ ".ElapsedMnths(strtotime($emp_user->reg_date)).", ";
                               echo "<span class=\"r_positive\">+&nbsp;".(int)$emp_user->ops_plus."</span>&nbsp;/&nbsp;<span class=\"r_neutral\">".(int)$emp_user->ops_null."</span>&nbsp;/&nbsp;<span class=\"r_negative\">-&nbsp;".(int)$emp_user->ops_minus."</span>, ";
                               require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/sbr.php");
                               $sbr_info = sbr_meta::getUserInfo($emp_user->uid);
-                              echo (int)$sbr_info['completed_cnt']." СБР";
+                              echo (int)$sbr_info['completed_cnt']." РЎР‘Р ";
                         ?>
                         <?}?>
           <?=dateFormat("[d.m.Y | H:i]", $project['create_date'])?>
-          <?=(($project['edit_date'])?dateFormat("[внесены изменения: d.m.Y | H:i]", $project['edit_date']):"")?>
+          <?=(($project['edit_date'])?dateFormat("[РІРЅРµСЃРµРЅС‹ РёР·РјРµРЅРµРЅРёСЏ: d.m.Y | H:i]", $project['edit_date']):"")?>
           <? 
           if(hasPermissions('projects') && ($project['ico_payed']=='t' || $project['is_upped'] == 't')) { ?>
-             <b style="color:#ff0000"><nobr>Внимание! Это платный проект!</nobr></b>
+             <b style="color:#ff0000"><nobr>Р’РЅРёРјР°РЅРёРµ! Р­С‚Рѕ РїР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚!</nobr></b>
     			<? }
     			if ($project['name']) {
     			    $sBox1 = '';
-    			    if (intval($project['sbr_id'])) $sBox1 .= "<a href=\"/".sbr::NEW_TEMPLATE_SBR."/".($project['sbr_emp_id']==$uid||$project['sbr_frl_id']==$uid ? "?id={$project['sbr_id']}" : '')."\" title=\"Безопасная Сделка\"><img src=\"/images/shield_sm.gif\" alt=\"Безопасная Сделка\" style='vertical-align: middle;margin: 0px 8px 4px 0px;' /></a>";
-    			    if ($project['ico_closed'] == "t")  $sBox1 .= "<a href=\"/about/prjrules/\" title=\"Проект закрыт\"><img src=\"/images/ico_closed.gif\" alt=\"Проект закрыт\" style='vertical-align: middle;margin: 0px 8px 4px 0px;' /></a>";
+    			    if (intval($project['sbr_id'])) $sBox1 .= "<a href=\"/".sbr::NEW_TEMPLATE_SBR."/".($project['sbr_emp_id']==$uid||$project['sbr_frl_id']==$uid ? "?id={$project['sbr_id']}" : '')."\" title=\"Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°\"><img src=\"/images/shield_sm.gif\" alt=\"Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°\" style='vertical-align: middle;margin: 0px 8px 4px 0px;' /></a>";
+    			    if ($project['ico_closed'] == "t")  $sBox1 .= "<a href=\"/about/prjrules/\" title=\"РџСЂРѕРµРєС‚ Р·Р°РєСЂС‹С‚\"><img src=\"/images/ico_closed.gif\" alt=\"РџСЂРѕРµРєС‚ Р·Р°РєСЂС‹С‚\" style='vertical-align: middle;margin: 0px 8px 4px 0px;' /></a>";
     			    ?><h2 class="b-page__title"><?=$sBox1?><?=reformat($project['name'],30,0,1); ?></h2><?
     			}
     			?>
@@ -365,7 +365,7 @@ function dialogue_toggle(num) {
             }
 		    ?>
     		</table>
-            <div style="font-size:11px;color:#666666;text-align:right;padding:0 0 5px 0">Раздел: <?=projects::getSpecsStr($project['id'],'<strong> / </strong>');?></div>
+            <div style="font-size:11px;color:#666666;text-align:right;padding:0 0 5px 0">Р Р°Р·РґРµР»: <?=projects::getSpecsStr($project['id'],'<strong> / </strong>');?></div>
             <div id="warnreason-p<?=$project['id']?>" style="display:none; margin-bottom: 5px;">&nbsp;</div>
             <div id="project-reason-<?=$project['id']?>" style="margin-top: 10px;<?=($project['is_blocked']? 'display: block': 'display: none')?>"><? 
                 if ($project['is_blocked']) {
@@ -379,16 +379,16 @@ function dialogue_toggle(num) {
 $sBox = '';
 if (hasPermissions('projects') && $project['login']!=$_SESSION["login"]) {
     if ( $project['warn']<=3 && !$project['is_banned'] && !$project['ban_where'] ) {
-        $sBox .= "<span class='warnlink-{$project['user_id']}'><a style='color: red;' href='javascript: void(0);' onclick='banned.warnUser({$project['user_id']}, 0, \"projects\", \"p{$project['id']}\", 0); return false;'>Сделать предупреждение (<span class='warncount-{$project['user_id']}'>".($project['warn'] ? $project['warn'] : 0)."</span>)</a></span> | ";
+        $sBox .= "<span class='warnlink-{$project['user_id']}'><a style='color: red;' href='javascript: void(0);' onclick='banned.warnUser({$project['user_id']}, 0, \"projects\", \"p{$project['id']}\", 0); return false;'>РЎРґРµР»Р°С‚СЊ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ (<span class='warncount-{$project['user_id']}'>".($project['warn'] ? $project['warn'] : 0)."</span>)</a></span> | ";
     }
     else {
-        $sBanTitle = (!$project['is_banned'] && !$project['ban_where']) ? 'Забанить!' : 'Разбанить';
+        $sBanTitle = (!$project['is_banned'] && !$project['ban_where']) ? 'Р—Р°Р±Р°РЅРёС‚СЊ!' : 'Р Р°Р·Р±Р°РЅРёС‚СЊ';
         $sBox .= '<span class="warnlink-'.$project['user_id'].'"><a style="color:Red;" href="javascript:void(0);" onclick="banned.userBan('.$project['user_id'].', \'p'.$project['id'].'\',0)">'.$sBanTitle.'</a></span> | ';
     }
 }
 if (hasPermissions('projects') && $project['login']!=$_SESSION["login"]) {
-    $sBox.="<a href=\"/public/?step=1&public=".$project['id']."&red=".rawurlencode($_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING'])."\">Редактировать</a> | ";
-    $sBox.='<span id="project-button-'.$project['id'].'"><a style="color:Red;" href="javascript: void(0);" onClick="banned.'.($project['is_blocked']? 'unblockedProject': 'blockedProject').'('.$project['id'].')">'.($project['is_blocked']? 'Разблокировать': 'Заблокировать')."</a></span>";
+    $sBox.="<a href=\"/public/?step=1&public=".$project['id']."&red=".rawurlencode($_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING'])."\">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> | ";
+    $sBox.='<span id="project-button-'.$project['id'].'"><a style="color:Red;" href="javascript: void(0);" onClick="banned.'.($project['is_blocked']? 'unblockedProject': 'blockedProject').'('.$project['id'].')">'.($project['is_blocked']? 'Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ': 'Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ')."</a></span>";
 }
 if ($sBox != '') {
         ?>
@@ -403,7 +403,7 @@ if ($sBox != '') {
 
 <tr valign="top">
 	<td colspan="2" style="padding:18px 0 12px 0;">
-		 <a name="offers"></a><h2 class="offer_project">Предложения по проекту</h2>
+		 <a name="offers"></a><h2 class="offer_project">РџСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РїСЂРѕРµРєС‚Сѓ</h2>
 	</td>
 </tr>
 <tr valign="top">
@@ -417,9 +417,9 @@ if ($sBox != '') {
 		<tr valign="top">
 			<td colspan="3" bgcolor="#FFFFFF" class="box" style="padding: 6px 114px 0px 64px;">
 		<? } ?>
-			<? if (!$user_offer_exist) { // Нет предложений от данного юзера. ?>
-			  <? if ((get_uid() > 0) && (($project['closed'] == 'f'))) { // Юзер авторизован и проект открыт. ?>
-  			<h1>Сделайте предложение по проекту:</h1>
+			<? if (!$user_offer_exist) { // РќРµС‚ РїСЂРµРґР»РѕР¶РµРЅРёР№ РѕС‚ РґР°РЅРЅРѕРіРѕ СЋР·РµСЂР°. ?>
+			  <? if ((get_uid() > 0) && (($project['closed'] == 'f'))) { // Р®Р·РµСЂ Р°РІС‚РѕСЂРёР·РѕРІР°РЅ Рё РїСЂРѕРµРєС‚ РѕС‚РєСЂС‹С‚. ?>
+  			<h1>РЎРґРµР»Р°Р№С‚Рµ РїСЂРµРґР»РѕР¶РµРЅРёРµ РїРѕ РїСЂРѕРµРєС‚Сѓ:</h1>
   			<form id="form_add_offer" name="form_add_offer" action="/projects/?pid=<?=$prj_id?>" method="POST" onKeyPress="if((event.ctrlKey) && ((event.keyCode==10)||(event.keyCode==13))) {this.submit()}">
             <input name="hash" type="hidden" value="<?=$hash?>" />
             <input id="ps_action" name="action" type="hidden" value="add" />
@@ -428,7 +428,7 @@ if ($sBox != '') {
             <input name="u" type="hidden" value="<?=$from_usr?>" />
     		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:8px;">
     		<tr valign="top">
-    			<td style="padding-right:16px;padding-bottom:6px;font-weight:bold;">Комментарий</td>
+    			<td style="padding-right:16px;padding-bottom:6px;font-weight:bold;">РљРѕРјРјРµРЅС‚Р°СЂРёР№</td>
     			<td style="padding-right:6px;padding-bottom:6px;"></td>
     			<td style="width:100%;padding-right:6px;padding-bottom:6px;" colspan="4">
                 <textarea cols="60" rows="7" id="ps_text" name="ps_text" style="width:99%;height:100px;" onkeydown="msg.innerHTML = '';"><?=input_ref($ps['text'])?></textarea>
@@ -453,23 +453,23 @@ if ($sBox != '') {
     			</td>
     		</tr>
     		</table>
-        <?/* <div id="works_no_select" style="font-size:11px;font-weight:bold;padding-top:16px;padding-left:100px;display:none;color:#666666;">Чтобы добавить другую работу удалите загруженную</div> */?>
+        <?/* <div id="works_no_select" style="font-size:11px;font-weight:bold;padding-top:16px;padding-left:100px;display:none;color:#666666;">Р§С‚РѕР±С‹ РґРѕР±Р°РІРёС‚СЊ РґСЂСѓРіСѓСЋ СЂР°Р±РѕС‚Сѓ СѓРґР°Р»РёС‚Рµ Р·Р°РіСЂСѓР¶РµРЅРЅСѓСЋ</div> */?>
     		<table id="works_add" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:8px;">
     		<tr valign="top">
-    			<td style="padding-right:16px;padding-bottom:6px;font-weight:bold;">Присоедините конкурсную работу</td>
+    			<td style="padding-right:16px;padding-bottom:6px;font-weight:bold;">РџСЂРёСЃРѕРµРґРёРЅРёС‚Рµ РєРѕРЅРєСѓСЂСЃРЅСѓСЋ СЂР°Р±РѕС‚Сѓ</td>
     			<td style="padding-right:6px;padding-bottom:6px;"></td>
     			<td style="width:100%;padding-right:6px;padding-bottom:6px;" colspan="4">
                 <iframe style="width:626px;height:40px;" scrolling="no" id="fupload" name="fupload" src="/projects/upload.php?pid=<?=$prj_id?>" frameborder="0"></iframe><br />
-                С помощью этого поля возможно загрузить файл.<br />
-                Максимальный размер файла: 2 Мб.<br />
-                Файлы следующих форматов запрещены к загрузке: <?=implode(', ', $GLOBALS['disallowed_array'])?>
+                РЎ РїРѕРјРѕС‰СЊСЋ СЌС‚РѕРіРѕ РїРѕР»СЏ РІРѕР·РјРѕР¶РЅРѕ Р·Р°РіСЂСѓР·РёС‚СЊ С„Р°Р№Р».<br />
+                РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°: 2 РњР±.<br />
+                Р¤Р°Р№Р»С‹ СЃР»РµРґСѓСЋС‰РёС… С„РѕСЂРјР°С‚РѕРІ Р·Р°РїСЂРµС‰РµРЅС‹ Рє Р·Р°РіСЂСѓР·РєРµ: <?=implode(', ', $GLOBALS['disallowed_array'])?>
     			</td>
     		</tr>
     		</table>
     		<table id="works_submit" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:8px;">
     		<tr valign="top">
     			<td style="padding-top:16px;padding-right:6px;padding-bottom:24px;font-weight:bold;">
-            <a id="ps_add" class="b-button  b-button_flat b-button_flat_green" href="javascript: void(0)" onclick="this.disabled=true;$('form_add_offer').submit();">Добавить предложение</a>
+            <a id="ps_add" class="b-button  b-button_flat b-button_flat_green" href="javascript: void(0)" onclick="this.disabled=true;$('form_add_offer').submit();">Р”РѕР±Р°РІРёС‚СЊ РїСЂРµРґР»РѕР¶РµРЅРёРµ</a>
     			</td>
     		</tr>
     		</table>
@@ -477,7 +477,7 @@ if ($sBox != '') {
     		<?
                 }
             }
-			else // Предложение от данного юзера уже есть.
+			else // РџСЂРµРґР»РѕР¶РµРЅРёРµ РѕС‚ РґР°РЅРЅРѕРіРѕ СЋР·РµСЂР° СѓР¶Рµ РµСЃС‚СЊ.
 			{
 	            if ($value['user_id'] == $project['exec_id']) {
 			?><a name="winner"></a><?
@@ -492,9 +492,9 @@ if ($sBox != '') {
                 <td>
           			<?= view_mark_user($user_offer);?><?=$session->view_online_status($user_offer['login'])?>
           			<span class="frlname11"><a href="/users/<?=$user_offer['login']?>" class="frlname11" title="<?=($user_offer['uname']." ".$user_offer['usurname'])?>"><?=($user_offer['uname']." ".$user_offer['usurname'])?></a> [<a href="/users/<?=$user_offer['login']?>" class="frlname11" title="<?=$user_offer['login']?>"><?=$user_offer['login']?></a>]</span><br />
-                <? if ($user_offer['spec_name'] != '') { ?>Специализация: <?=$user_offer['spec_name']?><? } ?><br />
-                Рекомендации работодателей: <strong class="r_positive"> + <?=(int) $user_offer['sbr_opi_plus']?></strong> / <strong> <?=(int) $user_offer['sbr_opi_null']?></strong> / <strong class="r_negative"> - <?=(int) $user_offer['sbr_opi_minus']?></strong><br />
-                <? if ($user_offer['country_name'] != 'Не определено') { ?><?=$user_offer['country_name']?><? if ($$user_offer['city_name'] != 'Не определено') { ?><? if ($user_offer['country_name'] && $user_offer['city_name']) { ?>, <? } ?><?=$user_offer['city_name']?><br /><? } } ?>
+                <? if ($user_offer['spec_name'] != '') { ?>РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ: <?=$user_offer['spec_name']?><? } ?><br />
+                Р РµРєРѕРјРµРЅРґР°С†РёРё СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№: <strong class="r_positive"> + <?=(int) $user_offer['sbr_opi_plus']?></strong> / <strong> <?=(int) $user_offer['sbr_opi_null']?></strong> / <strong class="r_negative"> - <?=(int) $user_offer['sbr_opi_minus']?></strong><br />
+                <? if ($user_offer['country_name'] != 'РќРµ РѕРїСЂРµРґРµР»РµРЅРѕ') { ?><?=$user_offer['country_name']?><? if ($$user_offer['city_name'] != 'РќРµ РѕРїСЂРµРґРµР»РµРЅРѕ') { ?><? if ($user_offer['country_name'] && $user_offer['city_name']) { ?>, <? } ?><?=$user_offer['city_name']?><br /><? } } ?>
                 </td>
                 <td style="text-align:center;vertical-align:top;">
                 <?
@@ -513,36 +513,36 @@ if ($sBox != '') {
                 </table>
                 <? if ($project['exec_id'] == get_uid()) { ?>
                 <div class="po_exec">
-                    <strong>Вы победитель</strong><br />
-                    Заказчик Вас определил как победителя по этому проекту.<br /><br />
+                    <strong>Р’С‹ РїРѕР±РµРґРёС‚РµР»СЊ</strong><br />
+                    Р—Р°РєР°Р·С‡РёРє Р’Р°СЃ РѕРїСЂРµРґРµР»РёР» РєР°Рє РїРѕР±РµРґРёС‚РµР»СЏ РїРѕ СЌС‚РѕРјСѓ РїСЂРѕРµРєС‚Сѓ.<br /><br />
                 </div>
                 <?  } elseif ($user_offer['selected'] == 't') { ?>
           			<div class="po_selected">
-                  <strong>Вы кандидат</strong><br />
-                  Заказчик Вас определил как кандидата по этому проекту.<br />
-                  Это значит, что Вы прошли предварительный отбор. Может быть, Вы будете выбраны исполнителем проекта.
+                  <strong>Р’С‹ РєР°РЅРґРёРґР°С‚</strong><br />
+                  Р—Р°РєР°Р·С‡РёРє Р’Р°СЃ РѕРїСЂРµРґРµР»РёР» РєР°Рє РєР°РЅРґРёРґР°С‚Р° РїРѕ СЌС‚РѕРјСѓ РїСЂРѕРµРєС‚Сѓ.<br />
+                  Р­С‚Рѕ Р·РЅР°С‡РёС‚, С‡С‚Рѕ Р’С‹ РїСЂРѕС€Р»Рё РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Р№ РѕС‚Р±РѕСЂ. РњРѕР¶РµС‚ Р±С‹С‚СЊ, Р’С‹ Р±СѓРґРµС‚Рµ РІС‹Р±СЂР°РЅС‹ РёСЃРїРѕР»РЅРёС‚РµР»РµРј РїСЂРѕРµРєС‚Р°.
           			</div>
           			<? } elseif ($user_offer['refused'] == 't') { ?>
           			<div class="po_refused">
-                  <strong>Вы получили отказ</strong><br />
-                  Ваше предложение не подошло заказчику. Причина &mdash; <?
+                  <strong>Р’С‹ РїРѕР»СѓС‡РёР»Рё РѕС‚РєР°Р·</strong><br />
+                  Р’Р°С€Рµ РїСЂРµРґР»РѕР¶РµРЅРёРµ РЅРµ РїРѕРґРѕС€Р»Рѕ Р·Р°РєР°Р·С‡РёРєСѓ. РџСЂРёС‡РёРЅР° &mdash; <?
                   switch ($user_offer['refuse_reason'])
                   {
                       default:
                       case 0:
-                          ?>некорректность<?
+                          ?>РЅРµРєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ<?
                           break;
                       case 1:
-                          ?>не подходят работы<?
+                          ?>РЅРµ РїРѕРґС…РѕРґСЏС‚ СЂР°Р±РѕС‚С‹<?
                           break;
                       case 2:
-                          ?>не подходит цена<?
+                          ?>РЅРµ РїРѕРґС…РѕРґРёС‚ С†РµРЅР°<?
                           break;
                       case 3:
-                          ?>не указана<?
+                          ?>РЅРµ СѓРєР°Р·Р°РЅР°<?
                           break;
                       case 4:
-                          ?>выбран другой исполнитель<?
+                          ?>РІС‹Р±СЂР°РЅ РґСЂСѓРіРѕР№ РёСЃРїРѕР»РЅРёС‚РµР»СЊ<?
                           break;
                   }
                   ?>.<br /><br />
@@ -552,7 +552,7 @@ if ($sBox != '') {
           			<? if (isset($user_offer['dialogue']) && is_array($user_offer['dialogue']) && (count($user_offer['dialogue']) > 0)) { ?>
           			<div class="po_comments_<? if ($user_offer['frl_new_msg_count'] > 0) { ?>new_<? } ?>hide" id="po_comments_<?=$user_offer['id']?>"><?
           			if ($user_offer['frl_new_msg_count'] > 0) {
-          			    ?><span id="new_msgs_<?=$user_offer['id']?>" style="float: right;"><img src="/images/ico_mail_2.gif" alt="" width="10" height="8" border="0"> <?=$user_offer['frl_new_msg_count']?> <?=ending($user_offer['frl_new_msg_count'], 'новое сообщение', 'новых сообщения', 'новых сообщений')?></span><?
+          			    ?><span id="new_msgs_<?=$user_offer['id']?>" style="float: right;"><img src="/images/ico_mail_2.gif" alt="" width="10" height="8" border="0"> <?=$user_offer['frl_new_msg_count']?> <?=ending($user_offer['frl_new_msg_count'], 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№')?></span><?
           			}
           			$i = 0;
           			$dc = count($user_offer['dialogue']);
@@ -580,18 +580,18 @@ if ($sBox != '') {
             			<div id="po_dialogue_answer_<?=$user_offer['id']?>" style="font-size:100%;margin:16px 0px 6px 0px;">
                     	<? if (($user_offer['refused'] == 'f') && ($project['closed'] == 'f')) { ?>
                         	<? if (count($user_offer['dialogue']) > 1) { ?>
-            			<span style="float: right;"><a href="javascript:void(null)" onClick="dialogue_toggle(<?=$user_offer['id']?>);markRead('<?=$user_offer['id']?>');" class="internal" id="toggle_dialogue_<?=$user_offer['id']?>">Развернуть всю переписку</a> <?=count($user_offer['dialogue'])?></span>
+            			<span style="float: right;"><a href="javascript:void(null)" onClick="dialogue_toggle(<?=$user_offer['id']?>);markRead('<?=$user_offer['id']?>');" class="internal" id="toggle_dialogue_<?=$user_offer['id']?>">Р Р°Р·РІРµСЂРЅСѓС‚СЊ РІСЃСЋ РїРµСЂРµРїРёСЃРєСѓ</a> <?=count($user_offer['dialogue'])?></span>
                 			<? } ?>
-            			<span><a href="javascript:void(0);" onClick="answer(<?=$user_offer['id']?>);markRead('<?=$user_offer['id']?>');" class="internal">Написать ответ</a></span>
+            			<span><a href="javascript:void(0);" onClick="answer(<?=$user_offer['id']?>);markRead('<?=$user_offer['id']?>');" class="internal">РќР°РїРёСЃР°С‚СЊ РѕС‚РІРµС‚</a></span>
 
                           			<?
                           			if ($comment['user_id'] == get_uid() && count($user_offer['dialogue']) > 1){
                           			?>
 
-                          			&nbsp;<span><a href="javascript:void(null)" onClick="answer(<?=$user_offer['id']?>, <?=$comment['id']?>);markRead('<?=$user_offer['id']?>');" class="internal">Редактировать</a></span>
+                          			&nbsp;<span><a href="javascript:void(null)" onClick="answer(<?=$user_offer['id']?>, <?=$comment['id']?>);markRead('<?=$user_offer['id']?>');" class="internal">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></span>
                           			<SCRIPT language="javascript">
 						last_commentid = <?=$comment['id']?>;
-                          			edit_block[<?=$user_offer['id']?>] = '&nbsp;&nbsp;<span><a href="javascript:void(null)" onClick="answer(<?=$user_offer['id']?>, last_commentid);markRead(\'<?=$user_offer['id']?>\');" class="internal">Редактировать</a></span>';
+                          			edit_block[<?=$user_offer['id']?>] = '&nbsp;&nbsp;<span><a href="javascript:void(null)" onClick="answer(<?=$user_offer['id']?>, last_commentid);markRead(\'<?=$user_offer['id']?>\');" class="internal">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></span>';
                           			</SCRIPT>
 
                           			<?
@@ -601,7 +601,7 @@ if ($sBox != '') {
 
               			<? } else { ?>
                         	<? if (count($user_offer['dialogue']) > 1) { ?>
-            			<span style="float: right;"><a href="javascript:void(null)" onClick="dialogue_toggle(<?=$user_offer['id']?>);markRead('<?=$user_offer['id']?>');" class="internal" id="toggle_dialogue_<?=$user_offer['id']?>">Развернуть всю переписку</a> <?=count($user_offer['dialogue'])?></span>
+            			<span style="float: right;"><a href="javascript:void(null)" onClick="dialogue_toggle(<?=$user_offer['id']?>);markRead('<?=$user_offer['id']?>');" class="internal" id="toggle_dialogue_<?=$user_offer['id']?>">Р Р°Р·РІРµСЂРЅСѓС‚СЊ РІСЃСЋ РїРµСЂРµРїРёСЃРєСѓ</a> <?=count($user_offer['dialogue'])?></span>
                 			<? } ?>
             			<? } ?>
             			</div>
@@ -647,17 +647,17 @@ if ($sBox != '') {
             			<div id="po_dialogue_answer_<?=$user_offer['id']?>" style="font-size:100%;margin:16px 0px 6px 0px;">
                     	<? if (($user_offer['refused'] == 'f') && ($project['closed'] == 'f')) { ?>
                         	<? if (count($user_offer['dialogue']) > 1) { ?>
-            			<span style="float: right;"><a href="javascript:void(null)" onClick="dialogue_toggle(<?=$user_offer['id']?>);markRead('<?=$user_offer['id']?>');" class="internal" id="toggle_dialogue_<?=$user_offer['id']?>">Развернуть всю переписку</a> <?=count($user_offer['dialogue'])?></span>
+            			<span style="float: right;"><a href="javascript:void(null)" onClick="dialogue_toggle(<?=$user_offer['id']?>);markRead('<?=$user_offer['id']?>');" class="internal" id="toggle_dialogue_<?=$user_offer['id']?>">Р Р°Р·РІРµСЂРЅСѓС‚СЊ РІСЃСЋ РїРµСЂРµРїРёСЃРєСѓ</a> <?=count($user_offer['dialogue'])?></span>
                 			<? } ?>
-            			<span><a href="javascript:void(0);" onClick="answer(<?=$user_offer['id']?>);markRead('<?=$user_offer['id']?>');" class="internal">Написать ответ</a></span>
+            			<span><a href="javascript:void(0);" onClick="answer(<?=$user_offer['id']?>);markRead('<?=$user_offer['id']?>');" class="internal">РќР°РїРёСЃР°С‚СЊ РѕС‚РІРµС‚</a></span>
 
                           			<?
                           			if ($comment['user_id'] == get_uid() && count($user_offer['dialogue']) > 1){
                           			?>
 
-                          			&nbsp;<span><a href="javascript:void(null)" onClick="answer(<?=$user_offer['id']?>, <?=$comment['id']?>);markRead('<?=$user_offer['id']?>');" class="internal">Редактировать</a></span>
+                          			&nbsp;<span><a href="javascript:void(null)" onClick="answer(<?=$user_offer['id']?>, <?=$comment['id']?>);markRead('<?=$user_offer['id']?>');" class="internal">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></span>
                           			<SCRIPT language="javascript">
-                          			edit_block[<?=$user_offer['id']?>] = '&nbsp;&nbsp;<span><a href="javascript:void(null)" onClick="answer(<?=$user_offer['id']?>, <?=$comment['id']?>);markRead(\'<?=$user_offer['id']?>\');" class="internal">Редактировать</a></span>';
+                          			edit_block[<?=$user_offer['id']?>] = '&nbsp;&nbsp;<span><a href="javascript:void(null)" onClick="answer(<?=$user_offer['id']?>, <?=$comment['id']?>);markRead(\'<?=$user_offer['id']?>\');" class="internal">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></span>';
                           			</SCRIPT>
 
                           			<?
@@ -667,7 +667,7 @@ if ($sBox != '') {
 
               			<? } else { ?>
                         	<? if (count($user_offer['dialogue']) > 1) { ?>
-            			<span style="float: right;"><a href="javascript:void(null)" onClick="dialogue_toggle(<?=$user_offer['id']?>);markRead('<?=$user_offer['id']?>');" class="internal" id="toggle_dialogue_<?=$user_offer['id']?>">Развернуть всю переписку</a> <?=count($user_offer['dialogue'])?></span>
+            			<span style="float: right;"><a href="javascript:void(null)" onClick="dialogue_toggle(<?=$user_offer['id']?>);markRead('<?=$user_offer['id']?>');" class="internal" id="toggle_dialogue_<?=$user_offer['id']?>">Р Р°Р·РІРµСЂРЅСѓС‚СЊ РІСЃСЋ РїРµСЂРµРїРёСЃРєСѓ</a> <?=count($user_offer['dialogue'])?></span>
                 			<? } ?>
              			<span>&nbsp;</span>
             			<? } ?>
@@ -690,9 +690,9 @@ if ($sBox != '') {
                               <? } elseif ($value['pict'] != '') { ?>
                           <div style="text-align:left;font-size:11px;">
                             <? if (strtolower(CFile::getext($value['pict'])) == "mp3") { ?>
-                            <img src="/images/ico_mp3.gif" alt="загрузить" width="32" height="32" border="0" style="vertical-align: middle;padding-right: 8px;" />
+                            <img src="/images/ico_mp3.gif" alt="Р·Р°РіСЂСѓР·РёС‚СЊ" width="32" height="32" border="0" style="vertical-align: middle;padding-right: 8px;" />
                             <? } ?>
-                            <a href="/projects/viewwork.php?pid=<?=$user_offer['project_id']?>&user=<?=$user_offer['login']?>&wid=<?=$value['id']?>" target="_blank" class="blue" title="">открыть</a></div>
+                            <a href="/projects/viewwork.php?pid=<?=$user_offer['project_id']?>&user=<?=$user_offer['login']?>&wid=<?=$value['id']?>" target="_blank" class="blue" title="">РѕС‚РєСЂС‹С‚СЊ</a></div>
                               <? } ?>
                           <? } else { ?>
                               <? if ($value['prev'] != '') { ?>
@@ -711,8 +711,8 @@ if ($sBox != '') {
             		</table>
                 <? } ?>
 
-    			  <? if ((get_uid() > 0) && (($project['closed'] == 'f')) && ($user_offer['refused'] != 't')) { // Юзер авторизован, проект открыт и ему не отказано. ?>
-      			<h1>Добавьте работы к вашему предложению:</h1>
+    			  <? if ((get_uid() > 0) && (($project['closed'] == 'f')) && ($user_offer['refused'] != 't')) { // Р®Р·РµСЂ Р°РІС‚РѕСЂРёР·РѕРІР°РЅ, РїСЂРѕРµРєС‚ РѕС‚РєСЂС‹С‚ Рё РµРјСѓ РЅРµ РѕС‚РєР°Р·Р°РЅРѕ. ?>
+      			<h1>Р”РѕР±Р°РІСЊС‚Рµ СЂР°Р±РѕС‚С‹ Рє РІР°С€РµРјСѓ РїСЂРµРґР»РѕР¶РµРЅРёСЋ:</h1>
       			<form id="form_add_offer" name="form_add_offer" action="/projects/?pid=<?=$prj_id?>" method="POST">
                     <input name="hash" type="hidden" value="<?=$hash?>" />
                     <input id="ps_action" name="action" type="hidden" value="change" />
@@ -730,27 +730,27 @@ if ($sBox != '') {
               		
               <table id="works_add" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:8px;">
             		<tr valign="top">
-            			<td style="padding-right:16px;padding-bottom:6px;font-weight:bold;">Присоедините конкурсную работу</td>
+            			<td style="padding-right:16px;padding-bottom:6px;font-weight:bold;">РџСЂРёСЃРѕРµРґРёРЅРёС‚Рµ РєРѕРЅРєСѓСЂСЃРЅСѓСЋ СЂР°Р±РѕС‚Сѓ</td>
             			<td style="padding-right:6px;padding-bottom:6px;"></td>
             			<td style="width:100%;padding-right:6px;padding-bottom:6px;" colspan="4">
                         <iframe style="width:626px;height:40px;" scrolling="no" id="fupload" name="fupload" src="/projects/upload.php?pid=<?=$prj_id?>" frameborder="0"></iframe><br />
-                        С помощью этого поля возможно загрузить файл.<br />
-                        Максимальный размер файла: 2 Мб.<br />
-                        Файлы следующих форматов запрещены к загрузке: <?=implode(', ', $GLOBALS['disallowed_array'])?>
+                        РЎ РїРѕРјРѕС‰СЊСЋ СЌС‚РѕРіРѕ РїРѕР»СЏ РІРѕР·РјРѕР¶РЅРѕ Р·Р°РіСЂСѓР·РёС‚СЊ С„Р°Р№Р».<br />
+                        РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°: 2 РњР±.<br />
+                        Р¤Р°Р№Р»С‹ СЃР»РµРґСѓСЋС‰РёС… С„РѕСЂРјР°С‚РѕРІ Р·Р°РїСЂРµС‰РµРЅС‹ Рє Р·Р°РіСЂСѓР·РєРµ: <?=implode(', ', $GLOBALS['disallowed_array'])?>
             			</td>
             		</tr>
            		</table>
           		<table id="works_submit" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:8px;">
           		<tr valign="top">
           			<td style="text-align:right;padding-top:16px;padding-right:6px;padding-bottom:24px;font-weight:bold;">
-                  <input type="button" id="ps_add" name="ps_add" value="Добавить" onclick="this.disabled=true;$('form_add_offer').submit();" />
+                  <input type="button" id="ps_add" name="ps_add" value="Р”РѕР±Р°РІРёС‚СЊ" onclick="this.disabled=true;$('form_add_offer').submit();" />
           			</td>
           		</tr>
           		</table>
         		</form>
         		<? } ?>
             		
-          			<div style="color:#000;font-size:100%;padding:0px 0px 38px 0px"><a href="/users/<?=$user_offer['login']?>/" class="blue"><strong>Все работы <?=$user_offer['uname']." ".$user_offer['usurname']?> [<?=$user_offer['login']?>]</strong></a></div>
+          			<div style="color:#000;font-size:100%;padding:0px 0px 38px 0px"><a href="/users/<?=$user_offer['login']?>/" class="blue"><strong>Р’СЃРµ СЂР°Р±РѕС‚С‹ <?=$user_offer['uname']." ".$user_offer['usurname']?> [<?=$user_offer['login']?>]</strong></a></div>
 					
 					<div id="warnreason-o<?=$user_offer['id']?>" style="display:none; margin-bottom: 5px;">&nbsp;</div>	
 					
@@ -759,12 +759,12 @@ if ($sBox != '') {
             <?
                 if (hasPermissions('projects')) {
                     if ( $user_offer['warn']<3 && !$project['is_banned'] && !$project['ban_where'] ) {
-                        $sBox = "<span class='warnlink-{$user_offer['user_id']}'><a style='color: red;' href='javascript: void(0);' onclick='banned.warnUser({$user_offer['user_id']}, 0, \"projects\", \"p{$project['id']}\", 0); return false;'>Сделать предупреждение (<span class='warncount-{$user_offer['user_id']}'>".($user_offer['warn'] ? $user_offer['warn'] : 0)."</span>)</a></span> | ";
+                        $sBox = "<span class='warnlink-{$user_offer['user_id']}'><a style='color: red;' href='javascript: void(0);' onclick='banned.warnUser({$user_offer['user_id']}, 0, \"projects\", \"p{$project['id']}\", 0); return false;'>РЎРґРµР»Р°С‚СЊ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ (<span class='warncount-{$user_offer['user_id']}'>".($user_offer['warn'] ? $user_offer['warn'] : 0)."</span>)</a></span> | ";
                     } else {
-                        $sBanTitle = (!$project['is_banned'] && !$project['ban_where']) ? 'Забанить!' : 'Разбанить';
+                        $sBanTitle = (!$project['is_banned'] && !$project['ban_where']) ? 'Р—Р°Р±Р°РЅРёС‚СЊ!' : 'Р Р°Р·Р±Р°РЅРёС‚СЊ';
                         $sBox = '<span class="warnlink-'.$user_offer['user_id'].'"><a style="color:Red;" href="javascript:void(0);" onclick="banned.userBan('.$project['user_id'].', \'p'.$project['id'].'\',0)">'.$sBanTitle.'</a></span> | ';
                     }
-                    $sBox .= "<a style=\"color:Red;\" href=\"/projects/?action=deloffer&pid=" . $user_offer['project_id']."&oid=" . $user_offer['id']."\" onclick=\"return warning(2)\">Удалить</a>";
+                    $sBox .= "<a style=\"color:Red;\" href=\"/projects/?action=deloffer&pid=" . $user_offer['project_id']."&oid=" . $user_offer['id']."\" onclick=\"return warning(2)\">РЈРґР°Р»РёС‚СЊ</a>";
                 }
                 if ($sBox != '') {
             ?>
@@ -793,9 +793,9 @@ if ($sBox != '') {
         			<td style="padding:0px;">
           			<?= view_mark_user($value);?><?=$session->view_online_status($value['login'])?>
           			<span class="frlname11"><a href="/users/<?=$value['login']?>" class="frlname11" title="<?=($value['uname']." ".$value['usurname'])?>"><?=($value['uname']." ".$value['usurname'])?></a> [<a href="/users/<?=$value['login']?>" class="frlname11" title="<?=$value['login']?>"><?=$value['login']?></a>]</span><br />
-                <? if ($value['spec_name'] != '') { ?>Специализация: <?=$value['spec_name']?><? } ?><br />
-                Рекомендации работодателей: <strong class="r_positive"> + <?=(int) $value['sbr_opi_plus']?></strong> / <strong> <?=(int) $value['sbr_opi_null']?></strong> / <strong class="r_negative"> - <?=(int) $value['sbr_opi_minus']?></strong><br />
-                <? if ($value['country_name'] != 'Не определено') { ?><?=$value['country_name']?><? if ($value['city_name'] != 'Не определено') { ?><? if ($value['country_name'] && $value['city_name']) { ?>, <? } ?><?=$value['city_name']?><br /><? } } ?>
+                <? if ($value['spec_name'] != '') { ?>РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ: <?=$value['spec_name']?><? } ?><br />
+                Р РµРєРѕРјРµРЅРґР°С†РёРё СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№: <strong class="r_positive"> + <?=(int) $value['sbr_opi_plus']?></strong> / <strong> <?=(int) $value['sbr_opi_null']?></strong> / <strong class="r_negative"> - <?=(int) $value['sbr_opi_minus']?></strong><br />
+                <? if ($value['country_name'] != 'РќРµ РѕРїСЂРµРґРµР»РµРЅРѕ') { ?><?=$value['country_name']?><? if ($value['city_name'] != 'РќРµ РѕРїСЂРµРґРµР»РµРЅРѕ') { ?><? if ($value['country_name'] && $value['city_name']) { ?>, <? } ?><?=$value['city_name']?><br /><? } } ?>
           			<div style="color:#000;font-size:115%;padding:12px 0px 8px 0px">
           			<?
                     $dc = count($value['dialogue']);
@@ -824,8 +824,8 @@ if ($sBox != '') {
                         <span style="float: right;"><a
                         href="javascript:void(null)"
                         onClick="dialogue_toggle(<?=$value['id']?>);markRead('<?=$value['id']?>');"
-                        class="internal" id="toggle_dialogue_<?=$value['id']?>">Развернуть
-                        всю переписку</a> <?=count($value['dialogue'])?></span><?
+                        class="internal" id="toggle_dialogue_<?=$value['id']?>">Р Р°Р·РІРµСЂРЅСѓС‚СЊ
+                        РІСЃСЋ РїРµСЂРµРїРёСЃРєСѓ</a> <?=count($value['dialogue'])?></span><?
                     } else {
                     ?>
                         <?=reformat(strip_tags($value['dialogue'][0]['post_text']), 100)?>
@@ -847,9 +847,9 @@ if ($sBox != '') {
                               <? } elseif ($work['pict'] != '') { ?>
                           <div style="text-align:left;font-size:11px;">
                             <? if (strtolower(CFile::getext($work['pict'])) == "mp3") { ?>
-                            <img src="/images/ico_mp3.gif" alt="загрузить" width="32" height="32" border="0" style="vertical-align: middle;padding-right: 8px;" />
+                            <img src="/images/ico_mp3.gif" alt="Р·Р°РіСЂСѓР·РёС‚СЊ" width="32" height="32" border="0" style="vertical-align: middle;padding-right: 8px;" />
                             <? } ?>
-                            <a href="/projects/viewwork.php?pid=<?=$value['project_id']?>&user=<?=$value['login']?>&wid=<?=$work['id']?>" target="_blank" class="blue" title="">открыть</a></div>
+                            <a href="/projects/viewwork.php?pid=<?=$value['project_id']?>&user=<?=$value['login']?>&wid=<?=$work['id']?>" target="_blank" class="blue" title="">РѕС‚РєСЂС‹С‚СЊ</a></div>
                               <? } ?>
                           <? } else { ?>
                               <? if ($work['prev'] != '') { ?>
@@ -871,24 +871,24 @@ if ($sBox != '') {
 			            if ($value['user_id'] == $project['exec_id']) {
                     /*?><img id="po_img_exec_<?=$value['id']?>" class="po_img_exec" src="/images/b_winner_0.png" style="float: right;" /><?*/
                     ?><div class="po_exec2">
-                        <strong>Это победитель</strong><br />
-                        Заказчик определил этого фрилансера как победителя по этому проекту.<br /><br />
+                        <strong>Р­С‚Рѕ РїРѕР±РµРґРёС‚РµР»СЊ</strong><br />
+                        Р—Р°РєР°Р·С‡РёРє РѕРїСЂРµРґРµР»РёР» СЌС‚РѕРіРѕ С„СЂРёР»Р°РЅСЃРµСЂР° РєР°Рє РїРѕР±РµРґРёС‚РµР»СЏ РїРѕ СЌС‚РѕРјСѓ РїСЂРѕРµРєС‚Сѓ.<br /><br />
                     </div><?
 			            }
           			?>
-          			<div style="color:#000;font-size:100%;padding:0px 0px 38px 0px"><a href="/users/<?=$value['login']?>/" class="blue"><strong>Все работы <?=$value['uname']." ".$value['usurname']?> [<?=$value['login']?>]</strong></a></div>
+          			<div style="color:#000;font-size:100%;padding:0px 0px 38px 0px"><a href="/users/<?=$value['login']?>/" class="blue"><strong>Р’СЃРµ СЂР°Р±РѕС‚С‹ <?=$value['uname']." ".$value['usurname']?> [<?=$value['login']?>]</strong></a></div>
                     <div id="warnreason-o<?=$value['id']?>" style="display:none; margin-bottom: 5px;">&nbsp;</div>
                 </td>
           	</tr>
             <?
             if (hasPermissions('projects')) {
                 if ( $value['warn']<3 && !$project['is_banned'] && !$project['ban_where'] ) {
-                    $sBox = "<span class='warnlink-{$value['user_id']}'><a style='color: red;' href='javascript: void(0);' onclick='banned.warnUser({$value['user_id']}, 0, \"projects\", \"p{$project['id']}\", 0); return false;'>Сделать предупреждение (<span class='warncount-{$value['user_id']}'>".($value['warn'] ? $value['warn'] : 0)."</span>)</a></span> | ";
+                    $sBox = "<span class='warnlink-{$value['user_id']}'><a style='color: red;' href='javascript: void(0);' onclick='banned.warnUser({$value['user_id']}, 0, \"projects\", \"p{$project['id']}\", 0); return false;'>РЎРґРµР»Р°С‚СЊ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ (<span class='warncount-{$value['user_id']}'>".($value['warn'] ? $value['warn'] : 0)."</span>)</a></span> | ";
                 } else {
-                    $sBanTitle = (!$project['is_banned'] && !$project['ban_where']) ? 'Забанить!' : 'Разбанить';
+                    $sBanTitle = (!$project['is_banned'] && !$project['ban_where']) ? 'Р—Р°Р±Р°РЅРёС‚СЊ!' : 'Р Р°Р·Р±Р°РЅРёС‚СЊ';
                     $sBox = '<span class="warnlink-'.$user_offer['user_id'].'"><a style="color:Red;" href="javascript:void(0);" onclick="banned.userBan('.$project['user_id'].', \'p'.$project['id'].'\',0)">'.$sBanTitle.'</a></span> | ';
                 }
-                $sBox .= "<a style=\"color:Red;\" href=\"/projects/?action=deloffer&pid=" . $value['project_id']."&oid=" . $value['id']."\" onClick=\"return warning(2)\">Удалить</a>";
+                $sBox .= "<a style=\"color:Red;\" href=\"/projects/?action=deloffer&pid=" . $value['project_id']."&oid=" . $value['id']."\" onClick=\"return warning(2)\">РЈРґР°Р»РёС‚СЊ</a>";
             }
             if ($sBox != '') {
             ?>
@@ -906,7 +906,7 @@ if ($sBox != '') {
         	<tr valign="top">
                 <td colspan="3" bgcolor="#FFFFFF" class="box" style="border-top:none;">
             <?php
-            // Страницы
+            // РЎС‚СЂР°РЅРёС†С‹
             $pagesCount = ceil($num_offers / MAX_OFFERS_AT_PAGE);
             $href = '%s/projects/index.php?pid='. $prj_id;
             if (isset($po_sort)) $href .= '&sort=' . $po_sort;
@@ -935,11 +935,11 @@ if ($sBox != '') {
 	</td>
 </tr>
 </table>
-    <? if (!$user_offer_exist) { // Нет предложений от данного юзера. ?>
+    <? if (!$user_offer_exist) { // РќРµС‚ РїСЂРµРґР»РѕР¶РµРЅРёР№ РѕС‚ РґР°РЅРЅРѕРіРѕ СЋР·РµСЂР°. ?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr valign="top">
 	<td colspan="3" bgcolor="#FFFFFF" class="box" style="padding: 48px 64px 48px 64px;">
-            Ответов нет.
+            РћС‚РІРµС‚РѕРІ РЅРµС‚.
 	</td>
 </tr>
 </table>
@@ -958,14 +958,14 @@ function check_text()
   	if(area.value.length > 1000)
   	{
   		area.value = area.value.substr(0, 1000);
-    	msg.innerHTML = '<? print(ref_scr(view_error('Исчерпан лимит символов для поля (1000 символов)'))); ?>';
+    	msg.innerHTML = '<? print(ref_scr(view_error('РСЃС‡РµСЂРїР°РЅ Р»РёРјРёС‚ СЃРёРјРІРѕР»РѕРІ РґР»СЏ РїРѕР»СЏ (1000 СЃРёРјРІРѕР»РѕРІ)'))); ?>';
   	}
 }
 
 function check_com_text() {
     if((document.getElementById('po_text') != undefined) && document.getElementById('po_text').value.length > 1000) {
 		document.getElementById('po_text').value = document.getElementById('po_text').value.substr(0, 1000);
-        document.getElementById('po_text_msg').innerHTML = '<? print(ref_scr(view_error('Исчерпан лимит символов для поля (1000 символов)'))); ?>';
+        document.getElementById('po_text_msg').innerHTML = '<? print(ref_scr(view_error('РСЃС‡РµСЂРїР°РЅ Р»РёРјРёС‚ СЃРёРјРІРѕР»РѕРІ РґР»СЏ РїРѕР»СЏ (1000 СЃРёРјРІРѕР»РѕРІ)'))); ?>';
     }
 }
 //-->

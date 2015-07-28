@@ -1,6 +1,6 @@
 <?php
 /**
- * Модерирование пользовательского контента. Диалог в личной переписке. Шаблон.
+ * РњРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РєРѕРЅС‚РµРЅС‚Р°. Р”РёР°Р»РѕРі РІ Р»РёС‡РЅРѕР№ РїРµСЂРµРїРёСЃРєРµ. РЁР°Р±Р»РѕРЅ.
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
@@ -17,16 +17,16 @@ $xajax->printJavascript( '/xajax/' );
 <a href="javascript:void(0);" id="my_close" class="b-button b-button_rectangle_color_green b-button_float_right">
     <span class="b-button__b1">
         <span class="b-button__b2">
-            <span class="b-button__txt">Закрыть поток</span>
+            <span class="b-button__txt">Р—Р°РєСЂС‹С‚СЊ РїРѕС‚РѕРє</span>
         </span>
     </span>
 </a>
 */ ?>
 
-<div class="b-layout__txt"><a class="b-layout__link" href="/siteadmin/user_content/?site=stream&cid=1&sid=<?=$aStream['stream_id']?>">Личные сообщения, поток <?=$aStream['title_num']?></a> &rarr;</div>
+<div class="b-layout__txt"><a class="b-layout__link" href="/siteadmin/user_content/?site=stream&cid=1&sid=<?=$aStream['stream_id']?>">Р›РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ, РїРѕС‚РѕРє <?=$aStream['title_num']?></a> &rarr;</div>
 <?php } ?>
 
-<h2 class="b-layout__title">Переписка</h2>
+<h2 class="b-layout__title">РџРµСЂРµРїРёСЃРєР°</h2>
 
 <?php
 if ( $oFromUser->login && $oToUser->login ) {
@@ -36,13 +36,13 @@ if ( $oFromUser->login && $oToUser->login ) {
     
 ?>
 <script type="text/javascript">
-    banned.addContext( 'user_from', 2, '', 'Личное сообщение для <?=$oToUser->uname?> <?=$oToUser->usurname?> [<?=$oToUser->login?>]' );
-    banned.addContext( 'user_to', 2, '', 'Личное сообщение для <?=$oFromUser->uname?> <?=$oFromUser->usurname?> [<?=$oFromUser->login?>]' );
+    banned.addContext( 'user_from', 2, '', 'Р›РёС‡РЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РґР»СЏ <?=$oToUser->uname?> <?=$oToUser->usurname?> [<?=$oToUser->login?>]' );
+    banned.addContext( 'user_to', 2, '', 'Р›РёС‡РЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РґР»СЏ <?=$oFromUser->uname?> <?=$oFromUser->usurname?> [<?=$oFromUser->login?>]' );
 </script>
     
 <table class="b-layout__table" border="0" cellpadding="0" cellspacing="0">
     <tr class="b-layout__tr">
-        <td class="b-layout__left b-layout__left_padbot_10"><div class="b-username  b-username_fontsize_11"><a class="b-username__link b-username__link_color_41" href="/users/<?=$oFromUser->login?>" target="_blakn"><?=$oFromUser->uname?> <?=$oFromUser->usurname?></a> <a class="b-username__link b-username__link_color_41" href="/users/<?=$oFromUser->login?>" target="_blakn">[<?=$oFromUser->login?>]</a>&nbsp;с&nbsp;</div></td>
+        <td class="b-layout__left b-layout__left_padbot_10"><div class="b-username  b-username_fontsize_11"><a class="b-username__link b-username__link_color_41" href="/users/<?=$oFromUser->login?>" target="_blakn"><?=$oFromUser->uname?> <?=$oFromUser->usurname?></a> <a class="b-username__link b-username__link_color_41" href="/users/<?=$oFromUser->login?>" target="_blakn">[<?=$oFromUser->login?>]</a>&nbsp;СЃ&nbsp;</div></td>
         <td class="b-layout__right b-layout__right_padbot_10"><div class="b-username  b-username_fontsize_11"><a class="b-username__link b-username__link_color_41" href="/users/<?=$oToUser->login?>" target="_blakn"><?=$oToUser->uname?> <?=$oToUser->usurname?></a> <a class="b-username__link b-username__link_color_41" href="/users/<?=$oToUser->login?>" target="_blakn">[<?=$oToUser->login?>]</a></div></td>
     </tr>
     <tr class="b-layout__tr">
@@ -94,7 +94,7 @@ else {
     
 ?>
 <div class="b-post b-post_padtop_15">
-    <div class="b-post__txt">Нет диалога</div>
+    <div class="b-post__txt">РќРµС‚ РґРёР°Р»РѕРіР°</div>
 </div>
 <?php
     

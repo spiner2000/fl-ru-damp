@@ -7,7 +7,7 @@
 <tr style="text-align:left; vertical-align:top">
 	<td rowspan="2"  style="text-align:center; width:110px"><?=view_avatar($user->login, $user->photo, 0)?></td>
 	<td class="empname"><?=($user->is_pro == 't')?view_pro_emp(1):''?><?=$session->view_online_status($user->login)?><?=$user->uname?> <?=$user->usurname?> [<?=$user->login?>]</td>
-	<!-- <td align="right"><a href="/users/<?=$user->login?>/setup/delete/"><img src="/images/ico_close.gif" alt="" width="9" height="9" border="0"></a>&nbsp;<a href="/users/<?=$user->login?>/setup/delete/">Удалить аккаунт</a></td> -->
+	<!-- <td align="right"><a href="/users/<?=$user->login?>/setup/delete/"><img src="/images/ico_close.gif" alt="" width="9" height="9" border="0"></a>&nbsp;<a href="/users/<?=$user->login?>/setup/delete/">РЈРґР°Р»РёС‚СЊ Р°РєРєР°СѓРЅС‚</a></td> -->
 </tr>
 <tr style="text-align:left">
 	<td colspan="2" style="vertical-align:top">
@@ -16,19 +16,19 @@
 			<td><img src="/images/dot_black.gif" alt="" width="3" height="3" /></td>
 			<td>
 			
-			<? if ($inner == "../setup/main_inner.php") {?> Основные настройки<? } else {?><a href="/users/<?=$user->login?>/setup/main/" class="blue">Основные настройки</a><? } ?>
+			<? if ($inner == "../setup/main_inner.php") {?> РћСЃРЅРѕРІРЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё<? } else {?><a href="/users/<?=$user->login?>/setup/main/" class="blue">РћСЃРЅРѕРІРЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё</a><? } ?>
 			</td>
 		</tr>
 		<tr>
 			<td><img src="/images/dot_black.gif" alt="" width="3" height="3" /></td>
 			<td>
-			<? if ($inner == "../setup/foto_inner.php") {?> Моя фотография<? } else {?><a href="/users/<?=$user->login?>/setup/foto/" class="blue">Моя фотография</a><? } ?>
+			<? if ($inner == "../setup/foto_inner.php") {?> РњРѕСЏ С„РѕС‚РѕРіСЂР°С„РёСЏ<? } else {?><a href="/users/<?=$user->login?>/setup/foto/" class="blue">РњРѕСЏ С„РѕС‚РѕРіСЂР°С„РёСЏ</a><? } ?>
 			</td>
 		</tr>
 		<tr>
 			<td><img src="/images/dot_black.gif" alt="" width="3" height="3" /></td>
 			<td>
-			<? if ($inner == "mailer_inner.php") {?> Уведомления/Рассылка<? } else {?><a href="/users/<?=$user->login?>/setup/mailer/" class="blue">Уведомления/Рассылка</a><? } ?>
+			<? if ($inner == "mailer_inner.php") {?> РЈРІРµРґРѕРјР»РµРЅРёСЏ/Р Р°СЃСЃС‹Р»РєР°<? } else {?><a href="/users/<?=$user->login?>/setup/mailer/" class="blue">РЈРІРµРґРѕРјР»РµРЅРёСЏ/Р Р°СЃСЃС‹Р»РєР°</a><? } ?>
 			</td>
 		</tr>
 		</table>

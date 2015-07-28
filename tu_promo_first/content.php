@@ -1,20 +1,20 @@
 <div class="b-layout__page b-promo">
-    <h1 class="b-page__title b-page__title_center b-page__title_ptsans" style="margin:0 !important;">Новый сервис Типовые услуги</h1>
-    <div class="b-txt b-txt_center b-txt_padbot_10">Друзья, в следующем месяце мы запускаем Типовые услуги — новый сервис на сайте, позволяющий фрилансерам эффективно предлагать свои услуги, а работодателям — легко и быстро находить исполнителей.</div>
-    <div class="b-txt b-txt_center b-txt_padbot_10">По традиции хотим начать с презентации дизайна и будущего функционала сервиса. Надеемся, что вам все очень понравится. Будем рады любым замечаниям и идеям!</div>
-    <div class="b-txt b-txt_center b-txt_padbot_30">PS: скриншоты кликабельны и доступны в большом разрешении.</div>
+    <h1 class="b-page__title b-page__title_center b-page__title_ptsans" style="margin:0 !important;">РќРѕРІС‹Р№ СЃРµСЂРІРёСЃ РўРёРїРѕРІС‹Рµ СѓСЃР»СѓРіРё</h1>
+    <div class="b-txt b-txt_center b-txt_padbot_10">Р”СЂСѓР·СЊСЏ, РІ СЃР»РµРґСѓСЋС‰РµРј РјРµСЃСЏС†Рµ РјС‹ Р·Р°РїСѓСЃРєР°РµРј РўРёРїРѕРІС‹Рµ СѓСЃР»СѓРіРё вЂ” РЅРѕРІС‹Р№ СЃРµСЂРІРёСЃ РЅР° СЃР°Р№С‚Рµ, РїРѕР·РІРѕР»СЏСЋС‰РёР№ С„СЂРёР»Р°РЅСЃРµСЂР°Рј СЌС„С„РµРєС‚РёРІРЅРѕ РїСЂРµРґР»Р°РіР°С‚СЊ СЃРІРѕРё СѓСЃР»СѓРіРё, Р° СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏРј вЂ” Р»РµРіРєРѕ Рё Р±С‹СЃС‚СЂРѕ РЅР°С…РѕРґРёС‚СЊ РёСЃРїРѕР»РЅРёС‚РµР»РµР№.</div>
+    <div class="b-txt b-txt_center b-txt_padbot_10">РџРѕ С‚СЂР°РґРёС†РёРё С…РѕС‚РёРј РЅР°С‡Р°С‚СЊ СЃ РїСЂРµР·РµРЅС‚Р°С†РёРё РґРёР·Р°Р№РЅР° Рё Р±СѓРґСѓС‰РµРіРѕ С„СѓРЅРєС†РёРѕРЅР°Р»Р° СЃРµСЂРІРёСЃР°. РќР°РґРµРµРјСЃСЏ, С‡С‚Рѕ РІР°Рј РІСЃРµ РѕС‡РµРЅСЊ РїРѕРЅСЂР°РІРёС‚СЃСЏ. Р‘СѓРґРµРј СЂР°РґС‹ Р»СЋР±С‹Рј Р·Р°РјРµС‡Р°РЅРёСЏРј Рё РёРґРµСЏРј!</div>
+    <div class="b-txt b-txt_center b-txt_padbot_30">PS: СЃРєСЂРёРЅС€РѕС‚С‹ РєР»РёРєР°Р±РµР»СЊРЅС‹ Рё РґРѕСЃС‚СѓРїРЅС‹ РІ Р±РѕР»СЊС€РѕРј СЂР°Р·СЂРµС€РµРЅРёРё.</div>
     <div class="b-promo__wave b-promo__wave_padbot_30"></div>
-    <h2 class="b-txt__title b-txt__title_center">Карточки типовых услуг</h2>
-    <div class="b-txt b-txt_center">Всё, что необходимо знать об услуге и исполнителе — на одной странице, в удобной форме!</div>
+    <h2 class="b-txt__title b-txt__title_center">РљР°СЂС‚РѕС‡РєРё С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі</h2>
+    <div class="b-txt b-txt_center">Р’СЃС‘, С‡С‚Рѕ РЅРµРѕР±С…РѕРґРёРјРѕ Р·РЅР°С‚СЊ РѕР± СѓСЃР»СѓРіРµ Рё РёСЃРїРѕР»РЅРёС‚РµР»Рµ вЂ” РЅР° РѕРґРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ, РІ СѓРґРѕР±РЅРѕР№ С„РѕСЂРјРµ!</div>
     <div class="b-txt b-txt_center"><a id="d1" class="b-txt__lnk promo-servise promo-servise_1" target="_blank" href="/images/promo-service/11.png"></a></div>
     <div class="b-promo__wave b-promo__wave_padbot_30"></div>
-    <h2 class="b-txt__title b-txt__title_center">Каталоги и списки типовых услуг</h2>
-    <div class="b-txt b-txt_center b-txt_padbot_10">Выбирайте реальные услуги, а не портфолио и «красивые обещания»!</div>
+    <h2 class="b-txt__title b-txt__title_center">РљР°С‚Р°Р»РѕРіРё Рё СЃРїРёСЃРєРё С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі</h2>
+    <div class="b-txt b-txt_center b-txt_padbot_10">Р’С‹Р±РёСЂР°Р№С‚Рµ СЂРµР°Р»СЊРЅС‹Рµ СѓСЃР»СѓРіРё, Р° РЅРµ РїРѕСЂС‚С„РѕР»РёРѕ Рё В«РєСЂР°СЃРёРІС‹Рµ РѕР±РµС‰Р°РЅРёСЏВ»!</div>
     <div class="b-txt b-txt_center b-txt_bold">
-        <a id="a2" class="b-txt__lnk b-txt__lnk_color_000 b-txt__lnk_lh_1" href="#">Новая главная</a>&nbsp;&nbsp;&nbsp;      
-        <a id="a3" class="b-txt__lnk b-txt__lnk_dot_0f71c8 b-txt__lnk_lh_1" href="#">Каталог типовых услуг</a>&nbsp;&nbsp;&nbsp;       
-        <a id="a4" class="b-txt__lnk b-txt__lnk_dot_0f71c8 b-txt__lnk_lh_1" href="#">Поиск и списки</a>&nbsp;&nbsp;&nbsp;       
-        <a id="a5" class="b-txt__lnk b-txt__lnk_dot_0f71c8 b-txt__lnk_lh_1" href="#">Профиль фрилансера</a>       
+        <a id="a2" class="b-txt__lnk b-txt__lnk_color_000 b-txt__lnk_lh_1" href="#">РќРѕРІР°СЏ РіР»Р°РІРЅР°СЏ</a>&nbsp;&nbsp;&nbsp;      
+        <a id="a3" class="b-txt__lnk b-txt__lnk_dot_0f71c8 b-txt__lnk_lh_1" href="#">РљР°С‚Р°Р»РѕРі С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі</a>&nbsp;&nbsp;&nbsp;       
+        <a id="a4" class="b-txt__lnk b-txt__lnk_dot_0f71c8 b-txt__lnk_lh_1" href="#">РџРѕРёСЃРє Рё СЃРїРёСЃРєРё</a>&nbsp;&nbsp;&nbsp;       
+        <a id="a5" class="b-txt__lnk b-txt__lnk_dot_0f71c8 b-txt__lnk_lh_1" href="#">РџСЂРѕС„РёР»СЊ С„СЂРёР»Р°РЅСЃРµСЂР°</a>       
     </div>
     <div class="b-txt b-txt_center b-txt_padbot_10">
         <div id="d2" class="b-txt b-txt_center"><a class="b-txt__lnk promo-servise promo-servise_2" target="_blank" href="/images/promo-service/22.jpg"></a></div>
@@ -23,10 +23,10 @@
         <div id="d5" class="b-txt b-txt_center b-txt_hide"><a class="b-txt__lnk promo-servise promo-servise_5" target="_blank" href="/images/promo-service/55.png"></a></div>
     </div>
     
-    <div class="b-txt b-txt_center b-txt_padbot_10">Разработка сервиса будет поэтапной. И на первом этапе мы добавим в профили раздел «Типовые услуги» (он будет доступен вместе с портфолио). У фрилансеров появится возможность бесплатно создавать, редактировать и удалять карточки своих типовых услуг. У работодателей — выбирать нужные услуги и в один клик заказывать их, резервируя сумму покупки.</div>
-    <div class="b-txt b-txt_center b-txt_padbot_30">На следующем этапе добавим каталоги типовых услуг (по аналогии с каталогом фрилансеров), расширим поиск, а на главной странице — вместо списка проектов для работодателей мы покажем перечень рекомендуемых услуг.</div>
+    <div class="b-txt b-txt_center b-txt_padbot_10">Р Р°Р·СЂР°Р±РѕС‚РєР° СЃРµСЂРІРёСЃР° Р±СѓРґРµС‚ РїРѕСЌС‚Р°РїРЅРѕР№. Р РЅР° РїРµСЂРІРѕРј СЌС‚Р°РїРµ РјС‹ РґРѕР±Р°РІРёРј РІ РїСЂРѕС„РёР»Рё СЂР°Р·РґРµР» В«РўРёРїРѕРІС‹Рµ СѓСЃР»СѓРіРёВ» (РѕРЅ Р±СѓРґРµС‚ РґРѕСЃС‚СѓРїРµРЅ РІРјРµСЃС‚Рµ СЃ РїРѕСЂС‚С„РѕР»РёРѕ). РЈ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РїРѕСЏРІРёС‚СЃСЏ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ Р±РµСЃРїР»Р°С‚РЅРѕ СЃРѕР·РґР°РІР°С‚СЊ, СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ Рё СѓРґР°Р»СЏС‚СЊ РєР°СЂС‚РѕС‡РєРё СЃРІРѕРёС… С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі. РЈ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ вЂ” РІС‹Р±РёСЂР°С‚СЊ РЅСѓР¶РЅС‹Рµ СѓСЃР»СѓРіРё Рё РІ РѕРґРёРЅ РєР»РёРє Р·Р°РєР°Р·С‹РІР°С‚СЊ РёС…, СЂРµР·РµСЂРІРёСЂСѓСЏ СЃСѓРјРјСѓ РїРѕРєСѓРїРєРё.</div>
+    <div class="b-txt b-txt_center b-txt_padbot_30">РќР° СЃР»РµРґСѓСЋС‰РµРј СЌС‚Р°РїРµ РґРѕР±Р°РІРёРј РєР°С‚Р°Р»РѕРіРё С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі (РїРѕ Р°РЅР°Р»РѕРіРёРё СЃ РєР°С‚Р°Р»РѕРіРѕРј С„СЂРёР»Р°РЅСЃРµСЂРѕРІ), СЂР°СЃС€РёСЂРёРј РїРѕРёСЃРє, Р° РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ вЂ” РІРјРµСЃС‚Рѕ СЃРїРёСЃРєР° РїСЂРѕРµРєС‚РѕРІ РґР»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ РјС‹ РїРѕРєР°Р¶РµРј РїРµСЂРµС‡РµРЅСЊ СЂРµРєРѕРјРµРЅРґСѓРµРјС‹С… СѓСЃР»СѓРі.</div>
     
-    <div class="b-txt b-txt_center"><a href="https://www.fl.ru/commune/drugoe/5100/free-lanceru/8463245/anons-tipovyih-uslug.html?utm_source=mailing&utm_medium=email&utm_campaign=tp_anons1" class="b-button b-button_flat b-button_flat_green">Обсудить раздел «Типовые услуги» в сообществе</a></div>
+    <div class="b-txt b-txt_center"><a href="https://www.fl.ru/commune/drugoe/5100/free-lanceru/8463245/anons-tipovyih-uslug.html?utm_source=mailing&utm_medium=email&utm_campaign=tp_anons1" class="b-button b-button_flat b-button_flat_green">РћР±СЃСѓРґРёС‚СЊ СЂР°Р·РґРµР» В«РўРёРїРѕРІС‹Рµ СѓСЃР»СѓРіРёВ» РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ</a></div>
 </div>
 
 <style>

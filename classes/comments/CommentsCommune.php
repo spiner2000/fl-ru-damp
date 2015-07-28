@@ -15,48 +15,48 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/classes/user_content.php');
 class CommentsCommune extends TComments {
     
     /**
-     * Шаблон адреса страницы с комментариями
+     * РЁР°Р±Р»РѕРЅ Р°РґСЂРµСЃР° СЃС‚СЂР°РЅРёС†С‹ СЃ РєРѕРјРјРµРЅС‚Р°СЂРёСЏРјРё
      * 
      * @var string
      */
     public $urlTemplate = 'http://{host}/commune/index.php?newurl=1&site=Topic&post={parent_id2}#c_{id}';
     
     /**
-     * Отправлять уведомления об удалении комментария.
-     * в уведомлении используется urlTemplate
+     * РћС‚РїСЂР°РІР»СЏС‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ РѕР± СѓРґР°Р»РµРЅРёРё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ.
+     * РІ СѓРІРµРґРѕРјР»РµРЅРёРё РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ urlTemplate
      * 
      * @var bool
      */
     public $sendDeleteWarn = true;
     
     /**
-     * Переключаемся на новый визивиг или нет
+     * РџРµСЂРµРєР»СЋС‡Р°РµРјСЃСЏ РЅР° РЅРѕРІС‹Р№ РІРёР·РёРІРёРі РёР»Рё РЅРµС‚
      * @var type 
      */
     public $enableNewWysiwyg = true;
     
     /**
-     * Якорь на комментарий
+     * РЇРєРѕСЂСЊ РЅР° РєРѕРјРјРµРЅС‚Р°СЂРёР№
      * 
      * @var string
      */
     public $anchor = '#c_';
     
     /**
-     * Разрешить скрывать комментарии ниже определенного уровня рейтинга
+     * Р Р°Р·СЂРµС€РёС‚СЊ СЃРєСЂС‹РІР°С‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёРё РЅРёР¶Рµ РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ СѓСЂРѕРІРЅСЏ СЂРµР№С‚РёРЅРіР°
      *
      * @var boolean
      */
     public $enableHiddenByRating = false;
     
     /**
-     * Подключить новую верстку или нет
+     * РџРѕРґРєР»СЋС‡РёС‚СЊ РЅРѕРІСѓСЋ РІРµСЂСЃС‚РєСѓ РёР»Рё РЅРµС‚
      * @var type 
      */
     public $is_new_template = true;
     
     /**
-     * Уровень рейтинга необходимый для того чтобы скрыть комментарий
+     * РЈСЂРѕРІРµРЅСЊ СЂРµР№С‚РёРЅРіР° РЅРµРѕР±С…РѕРґРёРјС‹Р№ РґР»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ СЃРєСЂС‹С‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№
      * @see $enableHiddenByRating
      *
      * @var integer
@@ -64,7 +64,7 @@ class CommentsCommune extends TComments {
     public $hiddenByRating = 10;
     
     /**
-     * Включить в комментариях предупреждения
+     * Р’РєР»СЋС‡РёС‚СЊ РІ РєРѕРјРјРµРЅС‚Р°СЂРёСЏС… РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ
      * 
      * @var boolean
      */
@@ -75,21 +75,21 @@ class CommentsCommune extends TComments {
     public $maskLinkForComment = "%s#c_%d";
     public $enableAutoModeration = true;
     
-    // Шаблоны доступа к комментариям и выводы соотетствующих текстов в сообществах
+    // РЁР°Р±Р»РѕРЅС‹ РґРѕСЃС‚СѓРїР° Рє РєРѕРјРјРµРЅС‚Р°СЂРёСЏРј Рё РІС‹РІРѕРґС‹ СЃРѕРѕС‚РµС‚СЃС‚РІСѓСЋС‰РёС… С‚РµРєСЃС‚РѕРІ РІ СЃРѕРѕР±С‰РµСЃС‚РІР°С…
     protected $_access = array(1 => 
-                            array('update' => 'Отредактировано модератором', 
-                                  'delete' => 'Комментарий удален модератором'),
+                            array('update' => 'РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј', 
+                                  'delete' => 'РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ РјРѕРґРµСЂР°С‚РѕСЂРѕРј'),
                                2 =>
-                            array('update' => 'Отредактировано создателем сообщества', 
-                                  'delete' => 'Комментарий удален создателем сообщества'),
+                            array('update' => 'РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ СЃРѕР·РґР°С‚РµР»РµРј СЃРѕРѕР±С‰РµСЃС‚РІР°', 
+                                  'delete' => 'РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ СЃРѕР·РґР°С‚РµР»РµРј СЃРѕРѕР±С‰РµСЃС‚РІР°'),
                                3 =>
-                            array('update' => 'Отредактировано модератором сообщества', 
-                                  'delete' => 'Комментарий удален модератором сообщества'),
+                            array('update' => 'РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј СЃРѕРѕР±С‰РµСЃС‚РІР°', 
+                                  'delete' => 'РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ РјРѕРґРµСЂР°С‚РѕСЂРѕРј СЃРѕРѕР±С‰РµСЃС‚РІР°'),
                                4 => 
-                            array('delete' => 'Комментарий удален автором поста')    
+                            array('delete' => 'РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ Р°РІС‚РѕСЂРѕРј РїРѕСЃС‚Р°')    
                         );
     /**
-     * Конфиг данных для комментариев сервиса
+     * РљРѕРЅС„РёРі РґР°РЅРЅС‹С… РґР»СЏ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ СЃРµСЂРІРёСЃР°
      *
      * @return array
      */
@@ -101,9 +101,9 @@ class CommentsCommune extends TComments {
         $table      = commune::getTableName('commune_messages', $this->_options['commune_id']);
         $user_table = commune::getTableName('commune_users_messages', $this->_options['commune_id'], false, true);
         return array(
-            // ИД ресурса, если отличается от $this->_resource_id
+            // РР” СЂРµСЃСѓСЂСЃР°, РµСЃР»Рё РѕС‚Р»РёС‡Р°РµС‚СЃСЏ РѕС‚ $this->_resource_id
             'resource_id' => $this->_options['theme_id'],
-            // комментарии
+            // РєРѕРјРјРµРЅС‚Р°СЂРёРё
             'comments' => array(
                 'insert_table' => $table,
                 'table' => 'commune_messages',
@@ -112,7 +112,7 @@ class CommentsCommune extends TComments {
                     'resource' => 'theme_id',
                     'author' => 'user_id',
                     'parent_id' => 'parent_id',
-                    'parent_id2' => 'parent_id', // в обход expr
+                    'parent_id2' => 'parent_id', // РІ РѕР±С…РѕРґ expr
                     'msgtext' => 'msgtext',
                     'yt' => 'youtube_link',
                     'created_time' => 'created_time',
@@ -123,11 +123,11 @@ class CommentsCommune extends TComments {
                     'reason' => 'deleted_reason',
                     'rating' => 'rating',
                     'access' => 'mod_access',
-                    'mod_access' => 'mod_access', // в обход access, так как его перебивают в function msg_node($msg)
+                    'mod_access' => 'mod_access', // РІ РѕР±С…РѕРґ access, С‚Р°Рє РєР°Рє РµРіРѕ РїРµСЂРµР±РёРІР°СЋС‚ РІ function msg_node($msg)
                     'moderator_status' => 'moderator_status'
                 ),
-                // Если в селекте для выбора какого-нибудь поля необходимо условие,
-                // добавляем его в этот массив. Ключ = ключ из fields
+                // Р•СЃР»Рё РІ СЃРµР»РµРєС‚Рµ РґР»СЏ РІС‹Р±РѕСЂР° РєР°РєРѕРіРѕ-РЅРёР±СѓРґСЊ РїРѕР»СЏ РЅРµРѕР±С…РѕРґРёРјРѕ СѓСЃР»РѕРІРёРµ,
+                // РґРѕР±Р°РІР»СЏРµРј РµРіРѕ РІ СЌС‚РѕС‚ РјР°СЃСЃРёРІ. РљР»СЋС‡ = РєР»СЋС‡ РёР· fields
                 'expr' => array(
                     'parent_id' => $this->_resource_id ? "CASE WHEN commune_messages.parent_id = {$this->_resource_id} THEN NULL ELSE commune_messages.parent_id END" : null
                 ),
@@ -136,7 +136,7 @@ class CommentsCommune extends TComments {
                 ),
                 'set' => 'SET enable_sort = false; SET enable_hashjoin = false',
             ),
-            // файлы
+            // С„Р°Р№Р»С‹
             'attaches' => array(
                 'file_table' => 'file_commune',
                 'table' => 'file_commune',
@@ -147,7 +147,7 @@ class CommentsCommune extends TComments {
                     'sort'    => 'sort'
                 )
             ),
-            // данные пользователя
+            // РґР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
             'users' => array(
                 'table' => $user_table,
                 'fields' => array(
@@ -181,11 +181,11 @@ class CommentsCommune extends TComments {
     }
     
     /**
-     * Голосование в комментах
+     * Р“РѕР»РѕСЃРѕРІР°РЅРёРµ РІ РєРѕРјРјРµРЅС‚Р°С…
      *
-     * @param <type> $uid       ид пользователя
-     * @param <type> $id        ид комментария
-     * @param <type> $dir       голос +1/-1
+     * @param <type> $uid       РёРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param <type> $id        РёРґ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+     * @param <type> $dir       РіРѕР»РѕСЃ +1/-1
      */
     public function RateComment($uid, $id, $dir) {
         if(!$uid) return false;
@@ -200,7 +200,7 @@ class CommentsCommune extends TComments {
         $params['access']     = (int) $this->_options['access'];
         $this->_options['commune_id'] = commune::getCommuneIDByThemeID($themeId);
         $messageId = parent::save($params, $cid, $author);  
-        // если комментарий не удалось сохранить
+        // РµСЃР»Рё РєРѕРјРјРµРЅС‚Р°СЂРёР№ РЅРµ СѓРґР°Р»РѕСЃСЊ СЃРѕС…СЂР°РЅРёС‚СЊ
         if (!$messageId) {
             return;
         }
@@ -208,9 +208,9 @@ class CommentsCommune extends TComments {
     }
 
     /**
-     * Выводит все комментарии на страницу
+     * Р’С‹РІРѕРґРёС‚ РІСЃРµ РєРѕРјРјРµРЅС‚Р°СЂРёРё РЅР° СЃС‚СЂР°РЅРёС†Сѓ
      * 
-     * @return string HTML код 
+     * @return string HTML РєРѕРґ 
      */
     public function render() {
        $user_is_subscribe_on_topic = commune::isCommuneTopicSubscribed($this->_resource_id, get_uid(false));

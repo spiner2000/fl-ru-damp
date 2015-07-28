@@ -19,7 +19,7 @@ $action = !isset($action)?registration::ACTION_STEP1 : $action;
         <div class="b-layout b-layout_padtop_45 b-layout_padleft_20 b-layout_padright_20">
             
             <h1 class="b-layout__title b-layout__title_lh_1 b-layout__title_fs30 b-layout__title_color_333 b-layout__title_padbot_40">
-                Логин является вашим именем на портале FL.ru
+                Р›РѕРіРёРЅ СЏРІР»СЏРµС‚СЃСЏ РІР°С€РёРј РёРјРµРЅРµРј РЅР° РїРѕСЂС‚Р°Р»Рµ FL.ru
             </h1>
 
             <div class="b-layout b-layout_inline-block b-layout_width_330 b-layout_width_full_iphone">
@@ -41,13 +41,13 @@ $action = !isset($action)?registration::ACTION_STEP1 : $action;
                                                name="login" 
                                                class="b-combo__input-text" 
                                                autocomplete="off" 
-                                               placeholder="Логин"/>
+                                               placeholder="Р›РѕРіРёРЅ"/>
                                         <label class="b-combo__label" for="reg_login"></label>
                                     </div>
                                 </div>
 
                                 <?php if(false): ?>
-                                <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">3—15 символов: латинские буквы, цифры,<br>знак подчёркивания (_) и дефис (-)</div>
+                                <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">3вЂ”15 СЃРёРјРІРѕР»РѕРІ: Р»Р°С‚РёРЅСЃРєРёРµ Р±СѓРєРІС‹, С†РёС„СЂС‹,<br>Р·РЅР°Рє РїРѕРґС‡С‘СЂРєРёРІР°РЅРёСЏ (_) Рё РґРµС„РёСЃ (-)</div>
                                 <?php endif; ?>
 
                                 <div class="b-layout__txt 
@@ -74,7 +74,7 @@ $action = !isset($action)?registration::ACTION_STEP1 : $action;
                                             class="b-button b-button_flat b-button_flat_green b-button_flat_large b-button_flat_width_full" 
                                             id="send_btn">
 
-                                        Завершить регистрацию
+                                        Р—Р°РІРµСЂС€РёС‚СЊ СЂРµРіРёСЃС‚СЂР°С†РёСЋ
                                     </button>
                                 </div>
                             </td>
@@ -93,7 +93,7 @@ $action = !isset($action)?registration::ACTION_STEP1 : $action;
             
             <?php if(!$from_welcome_wizard): ?>
             <h1 class="b-layout__title b-layout__title_lh_1 b-layout__title_fs25 b-layout__title_color_333 b-layout__title_padbot_28">
-                Регистрация
+                Р РµРіРёСЃС‚СЂР°С†РёСЏ
             </h1>
             <?php endif; ?>
             
@@ -107,7 +107,7 @@ $action = !isset($action)?registration::ACTION_STEP1 : $action;
                            class="b-radio__input b-radio__input_hide" 
                            id="freelancer">
                     <label for="freelancer" class="b-radio__label" data-ga-event="{ec: 'user', ea: 'registration_switcher_used',el: 'freelancer'}">
-                        Я фрилансер, ищу работу
+                        РЇ С„СЂРёР»Р°РЅСЃРµСЂ, РёС‰Сѓ СЂР°Р±РѕС‚Сѓ
                     </label>
                 </div>
                 <div class="b-radio__item <?= $registration->role == registration::ROLE_EMPLOYER ? 'b-radio__item_checked' : ''?>">
@@ -119,21 +119,21 @@ $action = !isset($action)?registration::ACTION_STEP1 : $action;
                            class="b-radio__input b-radio__input_hide" 
                            id="employer">
                     <label for="employer" class="b-radio__label" data-ga-event="{ec: 'user', ea: 'registration_switcher_used',el: 'customer'}">
-                        Я заказчик, ищу исполнителя
+                        РЇ Р·Р°РєР°Р·С‡РёРє, РёС‰Сѓ РёСЃРїРѕР»РЅРёС‚РµР»СЏ
                     </label>
                 </div>
             </div>            
             
             <div id="employer-txt" class="b-layout__txt b-layout__txt_fontsize_30 b-layout__txt_lineheight_44 b-layout__txt_color_333 b-layout__txt_padtop_25 <?= $registration->role != registration::ROLE_EMPLOYER ? 'g-hidden' : ''?>">
-                Зарегистрируйся и размести проект: <br/>
-                мы подберем тебе <strong>лучших исполнителей</strong> с гарантией <br/>
-                выполнения работы <strong>в срок</strong> через <strong>безопасную сделку!</strong>
+                Р—Р°СЂРµРіРёСЃС‚СЂРёСЂСѓР№СЃСЏ Рё СЂР°Р·РјРµСЃС‚Рё РїСЂРѕРµРєС‚: <br/>
+                РјС‹ РїРѕРґР±РµСЂРµРј С‚РµР±Рµ <strong>Р»СѓС‡С€РёС… РёСЃРїРѕР»РЅРёС‚РµР»РµР№</strong> СЃ РіР°СЂР°РЅС‚РёРµР№ <br/>
+                РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹ <strong>РІ СЃСЂРѕРє</strong> С‡РµСЂРµР· <strong>Р±РµР·РѕРїР°СЃРЅСѓСЋ СЃРґРµР»РєСѓ!</strong>
             </div>            
             
             <div id="freelancer-txt" class="b-layout__txt b-layout__txt_fontsize_30 b-layout__txt_lineheight_44 b-layout__txt_color_333 b-layout__txt_padtop_25 <?= $registration->role == registration::ROLE_EMPLOYER ? 'g-hidden' : ''?>">
-                Регистрируйся и зарабатывай <strong>с гарантией оплаты</strong> проектов <br/>
-                от более чем <strong>10 000 лучших заказчиков</strong> рунета, <br/>
-                увеличивай свой рейтинг и доход <strong>на постоянном потоке заказов.</strong>
+                Р РµРіРёСЃС‚СЂРёСЂСѓР№СЃСЏ Рё Р·Р°СЂР°Р±Р°С‚С‹РІР°Р№ <strong>СЃ РіР°СЂР°РЅС‚РёРµР№ РѕРїР»Р°С‚С‹</strong> РїСЂРѕРµРєС‚РѕРІ <br/>
+                РѕС‚ Р±РѕР»РµРµ С‡РµРј <strong>10 000 Р»СѓС‡С€РёС… Р·Р°РєР°Р·С‡РёРєРѕРІ</strong> СЂСѓРЅРµС‚Р°, <br/>
+                СѓРІРµР»РёС‡РёРІР°Р№ СЃРІРѕР№ СЂРµР№С‚РёРЅРі Рё РґРѕС…РѕРґ <strong>РЅР° РїРѕСЃС‚РѕСЏРЅРЅРѕРј РїРѕС‚РѕРєРµ Р·Р°РєР°Р·РѕРІ.</strong>
             </div>
             
         </div>
@@ -142,7 +142,7 @@ $action = !isset($action)?registration::ACTION_STEP1 : $action;
         <div class="b-layout b-layout_pad_40_20_0_20">
             
             <h2 class="b-layout__title b-layout__title_lh_1 b-layout__title_fs24 b-layout__title_color_333 b-layout__title_padbot_25">
-                Регистрируйся через почту
+                Р РµРіРёСЃС‚СЂРёСЂСѓР№СЃСЏ С‡РµСЂРµР· РїРѕС‡С‚Сѓ
             </h2>
 
             <div class="b-layout b-layout_inline-block b-layout_width_330 b-layout_width_full_iphone b-layout_padbot_70">
@@ -206,7 +206,7 @@ $action = !isset($action)?registration::ACTION_STEP1 : $action;
                                                name="password" 
                                                class="b-combo__input-text" 
                                                autocomplete="off" 
-                                               placeholder="Пароль"/>
+                                               placeholder="РџР°СЂРѕР»СЊ"/>
                                         <label class="b-combo__label" for="reg_password"></label>
                                     </div>
                                 </div>
@@ -265,7 +265,7 @@ $action = !isset($action)?registration::ACTION_STEP1 : $action;
                                         </tr>
                                     </table>
                                     <div class="b-captcha__txt b-captcha__txt_padtop_5">
-                                        <a onclick="return updateCaptchaImage();" href="javascript:void(0)" class="b-captcha__link">Обновить картинку</a>
+                                        <a onclick="return updateCaptchaImage();" href="javascript:void(0)" class="b-captcha__link">РћР±РЅРѕРІРёС‚СЊ РєР°СЂС‚РёРЅРєСѓ</a>
                                     </div>
                                 </div>
 
@@ -297,15 +297,15 @@ $action = !isset($action)?registration::ACTION_STEP1 : $action;
                                             id="send_btn" 
                                             data-ga-event="{ec: 'user', ea: 'registration_regbutton1_clicked',el: ''}" 
                                             onclick="formSubmit(); return false;">
-                                        Зарегистрироваться
+                                        Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ
                                         <?php if($customer_wizard): ?>
-                                        <br/>и опубликовать проект    
+                                        <br/>Рё РѕРїСѓР±Р»РёРєРѕРІР°С‚СЊ РїСЂРѕРµРєС‚    
                                         <?php endif; ?>
                                     </button>
                                     <div class="b-layout__txt b-layout__txt_padtop_10 b-layout__txt_fontsize_12 b-layout__txt_color_838383">
-                                        Нажимая на кнопку &laquo;Зарегистрироваться&raquo;, я соглашаюсь с 
-                                        <a href="/about/agreement_site.pdf" class="b-txt__lnk b-txt__lnk_color_0f71c8 b-txt__lnk_underline" target="_blank">публичной офертой ООО «Ваан»</a> 
-                                        и <a href="/about/appendix_2_regulations.pdf" class="b-txt__lnk b-txt__lnk_color_0f71c8 b-txt__lnk_underline" target="_blank">правилами сайта</a>.
+                                        РќР°Р¶РёРјР°СЏ РЅР° РєРЅРѕРїРєСѓ &laquo;Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ&raquo;, СЏ СЃРѕРіР»Р°С€Р°СЋСЃСЊ СЃ 
+                                        <a href="/about/agreement_site.pdf" class="b-txt__lnk b-txt__lnk_color_0f71c8 b-txt__lnk_underline" target="_blank">РїСѓР±Р»РёС‡РЅРѕР№ РѕС„РµСЂС‚РѕР№ РћРћРћ В«Р’Р°Р°РЅВ»</a> 
+                                        Рё <a href="/about/appendix_2_regulations.pdf" class="b-txt__lnk b-txt__lnk_color_0f71c8 b-txt__lnk_underline" target="_blank">РїСЂР°РІРёР»Р°РјРё СЃР°Р№С‚Р°</a>.
                                     </div>
                                 </div>
                             </td>
@@ -316,7 +316,7 @@ $action = !isset($action)?registration::ACTION_STEP1 : $action;
                                 <div class="b-check">
                                     <input id="subscribe" class="b-check__input" name="subscribe" type="checkbox" value="1" checked="checked" />
                                     <label for="subscribe" class="b-check__label b-check__label_fontsize_12 b-layout__txt_color_838383">
-                                        Получать новости и рассылки от команды FL.ru
+                                        РџРѕР»СѓС‡Р°С‚СЊ РЅРѕРІРѕСЃС‚Рё Рё СЂР°СЃСЃС‹Р»РєРё РѕС‚ РєРѕРјР°РЅРґС‹ FL.ru
                                     </label>
                                 </div>                            
                             </td>
@@ -328,7 +328,7 @@ $action = !isset($action)?registration::ACTION_STEP1 : $action;
             </div>    
             
             <h2 class="b-layout__title b-layout__title_lh_1 b-layout__title_fs24 b-layout__title_color_333 b-layout__title_padbot_25">
-                 Быстрая регистрация
+                 Р‘С‹СЃС‚СЂР°СЏ СЂРµРіРёСЃС‚СЂР°С†РёСЏ
             </h2>  
             
             <div class="b-layout__txt b-layout__txt_padbot_65">
@@ -349,7 +349,7 @@ $action = !isset($action)?registration::ACTION_STEP1 : $action;
             
             <div class="b-layout__txt">
                 <a href="/login/" class="b-layout__link b-layout__link_fontsize_18 b-layout__link_no-decorat">
-                    У меня есть аккаунт
+                    РЈ РјРµРЅСЏ РµСЃС‚СЊ Р°РєРєР°СѓРЅС‚
                 </a>
             </div>
         </div>

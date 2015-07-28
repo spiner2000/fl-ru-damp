@@ -1,7 +1,7 @@
 <?
 $reqv = sbr_meta::getUserReqvs(get_uid(false));
 ?>
-<? if ($stage->data['lc_state'] && $stage->sbr->scheme_type == sbr::SCHEME_LC && $stage->status != sbr_stages::STATUS_СLOSED) { ?>
+<? if ($stage->data['lc_state'] && $stage->sbr->scheme_type == sbr::SCHEME_LC && $stage->status != sbr_stages::STATUS_РЎLOSED) { ?>
     <? if ($stage->sbr->isFrl() && $stage->data['lc_state'] == pskb::STATE_PASSED && $stage->data[$sbr->upfx . 'feedback_id']) {
         include ($_SERVER['DOCUMENT_ROOT'].'/sbr/tpl.pskb-stage-header-sms.php');
     } ?>
@@ -13,12 +13,12 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
                 <td class="b-layout__right b-layout__right_padright_15 b-layout__right_width_73ps">
                     <?= pskb::$state_messages[$stage->data['lc_state']] ?> 
                     <? if ($stage->data['lc_state'] == pskb::PAYOUT_END || $stage->data['lc_state'] == pskb::STATE_COVER) { ?>
-                    <?= date('d.m.Y в H:i', strtotime($stage->data['lc_date'])) . '.' ?>
+                    <?= date('d.m.Y РІ H:i', strtotime($stage->data['lc_date'])) . '.' ?>
                     <? } ?>
                     <? if ( ($stage->sbr->data['ps_frl'] == onlinedengi::BANK_FL || $stage->sbr->data['ps_frl'] == onlinedengi::BANK_YL) &&
                             ($stage->data['lc_state'] == pskb::PAYOUT_END || $stage->data['lc_state'] == pskb::STATE_COVER || $stage->data['lc_state'] == pskb::STATE_TRANS)
                             ) { ?>
-                    <?= ' Средства поступят на ваш счет в течение 3-х рабочих дней.' ?>
+                    <?= ' РЎСЂРµРґСЃС‚РІР° РїРѕСЃС‚СѓРїСЏС‚ РЅР° РІР°С€ СЃС‡РµС‚ РІ С‚РµС‡РµРЅРёРµ 3-С… СЂР°Р±РѕС‡РёС… РґРЅРµР№.' ?>
                     <? } ?>
                 </td>
             </tr>
@@ -55,7 +55,7 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
                     <td class="b-layout__left">&#160;</td>
                     <td class="b-layout__right b-layout__right_padright_15 b-layout__right_width_73ps">
                         <div id="feedback_ops_type_error" class="b-layout__txt b-layout__txt_color_c4271f b-layout__txt_padbot_10">
-                            <span class="b-form__error"></span> Выберите тип отзыва
+                            <span class="b-form__error"></span> Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї РѕС‚Р·С‹РІР°
                         </div>
                     </td>
                 </tr>
@@ -64,18 +64,18 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
             <table class="b-layout__table b-layout__table_width_full"  cellpadding="0" cellspacing="0" border="0">
                 <tr class="b-layout__tr">
                     <td class="b-layout__left b-layout__left_padleft_35 b-layout__left_padright_20">
-                        <div class="b-layout__txt">Ваш отзыв <?= $sbr->isEmp() ? 'исполнителю' : 'заказчику' ?> по итогам сотрудничества по этапу</div>
+                        <div class="b-layout__txt">Р’Р°С€ РѕС‚Р·С‹РІ <?= $sbr->isEmp() ? 'РёСЃРїРѕР»РЅРёС‚РµР»СЋ' : 'Р·Р°РєР°Р·С‡РёРєСѓ' ?> РїРѕ РёС‚РѕРіР°Рј СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР° РїРѕ СЌС‚Р°РїСѓ</div>
                     </td>
                     <td class="b-layout__right b-layout__right_padright_15 b-layout__right_width_73ps">
                         <div class="b-estimate b-estimate_padbot_15">
                             <div class="b-estimate__item b-estimate__item_green b-estimate__item_margright_20 <?= ($ops_type == 1 && isset($_POST['feedback']['ops_type']) ? 'b-estimate__item_active' : ''); ?>">
-                                <span class="b-estimate__left"><span class="b-estimate__right"><a class="b-estimate__link " href="javascript:void(0)" onclick="$('ops_type').set('value', '1'); sbr_check_enter_sms_code(); if($('feedback_ops_type_error')) $('feedback_ops_type_error').dispose();"><span class="b-button b-button_margtop_1 b-button_margright_5 b-button_float_left b-button_poll_plus"></span>Положительный</a></span></span>
+                                <span class="b-estimate__left"><span class="b-estimate__right"><a class="b-estimate__link " href="javascript:void(0)" onclick="$('ops_type').set('value', '1'); sbr_check_enter_sms_code(); if($('feedback_ops_type_error')) $('feedback_ops_type_error').dispose();"><span class="b-button b-button_margtop_1 b-button_margright_5 b-button_float_left b-button_poll_plus"></span>РџРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№</a></span></span>
                             </div>
                             <div class="b-estimate__item b-estimate__item_grey b-estimate__item_margright_20 <?= ($ops_type == 0 && $ops_type !== null && isset($_POST['feedback']['ops_type']) ? 'b-estimate__item_active' : ''); ?>">
-                                <span class="b-estimate__left"><span class="b-estimate__right"><a class="b-estimate__link " href="javascript:void(0)" onclick="$('ops_type').set('value', '0'); sbr_check_enter_sms_code(); if($('feedback_ops_type_error'))$('feedback_ops_type_error').dispose();"><span class="b-button b-button_margright_5 b-button_float_left b-button_poll_multi"></span>Нейтральный</a></span></span>
+                                <span class="b-estimate__left"><span class="b-estimate__right"><a class="b-estimate__link " href="javascript:void(0)" onclick="$('ops_type').set('value', '0'); sbr_check_enter_sms_code(); if($('feedback_ops_type_error'))$('feedback_ops_type_error').dispose();"><span class="b-button b-button_margright_5 b-button_float_left b-button_poll_multi"></span>РќРµР№С‚СЂР°Р»СЊРЅС‹Р№</a></span></span>
                             </div>
                             <div class="b-estimate__item b-estimate__item_red b-estimate__item_margright_20 <?= ($ops_type == -1 && isset($_POST['feedback']['ops_type']) ? 'b-estimate__item_active' : ''); ?>">
-                                <span class="b-estimate__left"><span class="b-estimate__right"><a class="b-estimate__link " href="javascript:void(0)" onclick="$('ops_type').set('value', '-1'); sbr_check_enter_sms_code(); if($('feedback_ops_type_error')) $('feedback_ops_type_error').dispose();"><span class="b-button b-button_margright_5 b-button_float_left b-button_poll_minus"></span>Отрицательный</a></span></span>
+                                <span class="b-estimate__left"><span class="b-estimate__right"><a class="b-estimate__link " href="javascript:void(0)" onclick="$('ops_type').set('value', '-1'); sbr_check_enter_sms_code(); if($('feedback_ops_type_error')) $('feedback_ops_type_error').dispose();"><span class="b-button b-button_margright_5 b-button_float_left b-button_poll_minus"></span>РћС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№</a></span></span>
                             </div>
                         </div>
 
@@ -84,7 +84,7 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
                         </div>
                         <? if ($stage->error['feedback']['descr']) { ?>
                         <div class="b-layout__txt b-layout__txt_color_c4271f b-layout__txt_padtop_10" id="feedback_descr_error">
-                            <span class="b-form__error"></span> Пожалуйста, оставьте отзыв
+                            <span class="b-form__error"></span> РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕСЃС‚Р°РІСЊС‚Рµ РѕС‚Р·С‹РІ
                         </div>
                         <? }//if?>
                         <? if ($stage->error['credit_sys']) { ?>
@@ -94,21 +94,21 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
                             </div>
                             <? }//foreach?>
                         <? }//if?>
-                        <? if ( $sbr->data['stages_cnt'] == ($stage->data['num'] + 1) ) { // Последний этап ?>
-                        <div class="b-layout__txt b-layout__txt_padtop_15"><a class="b-layout__link b-layout__link_color_0f71c8 b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="$('_sbr_feedback').removeClass('b-layout__txt_hide'); $(this).getParent().hide();">Добавить отзыв о сервисе Безопасная Сделка</a></div>
+                        <? if ( $sbr->data['stages_cnt'] == ($stage->data['num'] + 1) ) { // РџРѕСЃР»РµРґРЅРёР№ СЌС‚Р°Рї ?>
+                        <div class="b-layout__txt b-layout__txt_padtop_15"><a class="b-layout__link b-layout__link_color_0f71c8 b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="$('_sbr_feedback').removeClass('b-layout__txt_hide'); $(this).getParent().hide();">Р”РѕР±Р°РІРёС‚СЊ РѕС‚Р·С‹РІ Рѕ СЃРµСЂРІРёСЃРµ Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°</a></div>
                         <? } //if ?>
                     </td>
                 </tr>
             </table>
         </div>
     </div>
-    <? if ( $sbr->data['stages_cnt'] == ($stage->data['num'] + 1) ) { // Последний этап ?>
+    <? if ( $sbr->data['stages_cnt'] == ($stage->data['num'] + 1) ) { // РџРѕСЃР»РµРґРЅРёР№ СЌС‚Р°Рї ?>
     <div class="b-layout b-layout_padtop_20 b-layout_bordbot_dedfe0 b-layout_marglr_15 b-layout__txt_hide" id="_sbr_feedback">
         <div class="b-layout__inner b-layout__inner_padbot_20 b-layout__inner_marglr_-15">
             <table class="b-layout__table b-layout__table_width_full"  cellpadding="0" cellspacing="0" border="0">
                 <tr class="b-layout__tr">
                     <td class="b-layout__left b-layout__left_padleft_35 b-layout__left_padright_20">
-                        <div class="b-layout__txt">Отзыв сервису «Безопасная Сделка»</div>
+                        <div class="b-layout__txt">РћС‚Р·С‹РІ СЃРµСЂРІРёСЃСѓ В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В»</div>
                     </td>
                     <td class="b-layout__right b-layout__right_padright_15 b-layout__right_width_73ps">
                         <div class="b-textarea <?= $stage->error['sbr_feedback'] || $stage->sbr->error['feedback'] ? 'b-textarea_error' : '' ?>">
@@ -116,7 +116,7 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
                         </div>
                         <? if ($stage->error['sbr_feedback'] || $stage->sbr->error['feedback']) { ?>
                         <div class="b-layout__txt b-layout__txt_color_c4271f b-layout__txt_padtop_10" id="sbr_feedback_descr_error">
-                            <span class="b-form__error"></span> Пожалуйста, оставьте отзыв
+                            <span class="b-form__error"></span> РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕСЃС‚Р°РІСЊС‚Рµ РѕС‚Р·С‹РІ
                         </div>
                         <? }//if?>
                     </td>
@@ -132,10 +132,10 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
                 <tbody>
                     <tr class="b-layout__tr">
                         <td class="b-layout__left b-layout__left_padleft_35 b-layout__left_padright_20">
-                            <div class="b-layout__txt">Код подтверждения</div>
+                            <div class="b-layout__txt">РљРѕРґ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ</div>
                         </td>
                         <td class="b-layout__right b-layout__right_padright_15 b-layout__right_width_73ps">
-                            <div class="b-layout__txt b-layout__txt_padbot_10">На номер <?=$reqv[$reqv['form_type']]['mob_phone']?> в течении 5 минут придет код подтверждения. Введите полученный код, чтобы завершить этап сделки.</div>
+                            <div class="b-layout__txt b-layout__txt_padbot_10">РќР° РЅРѕРјРµСЂ <?=$reqv[$reqv['form_type']]['mob_phone']?> РІ С‚РµС‡РµРЅРёРё 5 РјРёРЅСѓС‚ РїСЂРёРґРµС‚ РєРѕРґ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ. Р’РІРµРґРёС‚Рµ РїРѕР»СѓС‡РµРЅРЅС‹Р№ РєРѕРґ, С‡С‚РѕР±С‹ Р·Р°РІРµСЂС€РёС‚СЊ СЌС‚Р°Рї СЃРґРµР»РєРё.</div>
                             <div class="b-combo">
                                 <div class="b-combo__input b-combo__input_width_110 b-combo__input_height_60 <?=($stage->error['feedback']['sms']==1 ? 'b-combo__input_error' : '')?>">
                                     <input type="text" value="" name="sbr_sms_code" class="b-combo__input-text b-combo__input-text_center" id="sbr_sms_code" onkeydown="sbr_check_enter_sms_code();" onkeyup="sbr_check_enter_sms_code();" onkeypress="sbr_check_num_only(event);">
@@ -143,14 +143,14 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
 
                                 <div class="b-shadow b-shadow_m b-shadow_left_120 <?=($stage->error['feedback']['sms']==1 ? '' : 'b-shadow_hide')?>">
                                     <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_10">
-                                        <div class="b-layout__txt b-layout__txt_nowrap b-layout__txt_padright_15 b-layout__txt_color_c4271f"><span class="b-form__error"></span>Неверный код. Попробуйте еще раз</div>
+                                        <div class="b-layout__txt b-layout__txt_nowrap b-layout__txt_padright_15 b-layout__txt_color_c4271f"><span class="b-form__error"></span>РќРµРІРµСЂРЅС‹Р№ РєРѕРґ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·</div>
                                     </div>
                                     <span class="b-shadow__icon b-shadow__icon_close b-shadow__icon_right_12 b-shadow__icon_top_12"></span> <span class="b-shadow__icon b-shadow__icon_nosik-left b-shadow__icon_top_10 b-shadow__icon_left_-4"></span> 
                                 </div>
 
                             </div>                                                             
-                            <div id="sbr_send_sms_link" class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="" onClick="xajax_sendFeedbackSMSCode(); return false;">Выслать код повторно</a></div>
-                            <div id="sbr_send_sms_link_disabled" class="b-layout__txt b-layout__txt_padtop_5 b-layout_hide">Код отправлен</div>
+                            <div id="sbr_send_sms_link" class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="" onClick="xajax_sendFeedbackSMSCode(); return false;">Р’С‹СЃР»Р°С‚СЊ РєРѕРґ РїРѕРІС‚РѕСЂРЅРѕ</a></div>
+                            <div id="sbr_send_sms_link_disabled" class="b-layout__txt b-layout__txt_padtop_5 b-layout_hide">РљРѕРґ РѕС‚РїСЂР°РІР»РµРЅ</div>
                         </td>
                     </tr>
                 </tbody>
@@ -168,12 +168,12 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
                     </td>
                     <td class="b-layout__right b-layout__right_padright_15 b-layout__right_width_73ps">
                         <div class="b-layout__txt b-layout__txt_padtop_15 b-layout__txt_padbot_20 b-layout__txt_color_a0763b">
-                            Обратите внимание: отменить действие будет невозможно.<br>Исполнитель получит деньги за данный этап Безопасной Сделки.
+                            РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ: РѕС‚РјРµРЅРёС‚СЊ РґРµР№СЃС‚РІРёРµ Р±СѓРґРµС‚ РЅРµРІРѕР·РјРѕР¶РЅРѕ.<br>РСЃРїРѕР»РЅРёС‚РµР»СЊ РїРѕР»СѓС‡РёС‚ РґРµРЅСЊРіРё Р·Р° РґР°РЅРЅС‹Р№ СЌС‚Р°Рї Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё.
                         </div>
                         <div class="b-buttons">
-                            <a id="sbr_btn" href="javascript:void(0)" onclick="$('completeFrm').submit();" class="b-button b-button_flat b-button_flat_green b-button_disabled">>Принять работу и завершить <?= $sbr->data['stages_cnt'] == ($stage->data['num'] + 1) ? 'сделку' : 'этап' ?></a>
-                            <span class="b-buttons__txt b-buttons__txt_padleft_10">или</span>
-                            <a class="b-buttons__link b-buttons__link_dot_c10601" href="/bezopasnaya-sdelka/?site=Stage&id=<?= $stage->id; ?>">вернуть этап в работу</a>
+                            <a id="sbr_btn" href="javascript:void(0)" onclick="$('completeFrm').submit();" class="b-button b-button_flat b-button_flat_green b-button_disabled">>РџСЂРёРЅСЏС‚СЊ СЂР°Р±РѕС‚Сѓ Рё Р·Р°РІРµСЂС€РёС‚СЊ <?= $sbr->data['stages_cnt'] == ($stage->data['num'] + 1) ? 'СЃРґРµР»РєСѓ' : 'СЌС‚Р°Рї' ?></a>
+                            <span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё</span>
+                            <a class="b-buttons__link b-buttons__link_dot_c10601" href="/bezopasnaya-sdelka/?site=Stage&id=<?= $stage->id; ?>">РІРµСЂРЅСѓС‚СЊ СЌС‚Р°Рї РІ СЂР°Р±РѕС‚Сѓ</a>
                         </div>
                     </td>
                 </tr>
@@ -189,12 +189,12 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
                 <div class="b-shadow__top">
                     <div class="b-shadow__bottom">
                         <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20 b-layout">
-                            <div class="b-shadow__txt b-shadow__txt_padbot_5">Вы уверены, что хотите принять работу?</div>
-                            <div class="b-shadow__txt b-shadow__txt_padbot_10">Обратите внимание: отменить действие будет невозможно.<br />Исполнитель получит деньги за данный этап «Безопасной Сделки».</div>
+                            <div class="b-shadow__txt b-shadow__txt_padbot_5">Р’С‹ СѓРІРµСЂРµРЅС‹, С‡С‚Рѕ С…РѕС‚РёС‚Рµ РїСЂРёРЅСЏС‚СЊ СЂР°Р±РѕС‚Сѓ?</div>
+                            <div class="b-shadow__txt b-shadow__txt_padbot_10">РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ: РѕС‚РјРµРЅРёС‚СЊ РґРµР№СЃС‚РІРёРµ Р±СѓРґРµС‚ РЅРµРІРѕР·РјРѕР¶РЅРѕ.<br />РСЃРїРѕР»РЅРёС‚РµР»СЊ РїРѕР»СѓС‡РёС‚ РґРµРЅСЊРіРё Р·Р° РґР°РЅРЅС‹Р№ СЌС‚Р°Рї В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ».</div>
                             <div class="b-buttons ">
-                                <a href="javascript:void(0)" onclick="$('completeFrm').submit();" class="b-button b-button_flat b-button_flat_green">Принять работу</a>
-                                <span class="b-buttons__txt">&#160;&#160;&#160;или</span>
-                                <a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript:void(0)" onclick="$('completed_confirm').getElement('.b-shadow').addClass('b-shadow_hide'); $('b-shadow_sbr__overlay').dispose(); return false;">отменить</a>
+                                <a href="javascript:void(0)" onclick="$('completeFrm').submit();" class="b-button b-button_flat b-button_flat_green">РџСЂРёРЅСЏС‚СЊ СЂР°Р±РѕС‚Сѓ</a>
+                                <span class="b-buttons__txt">&#160;&#160;&#160;РёР»Рё</span>
+                                <a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript:void(0)" onclick="$('completed_confirm').getElement('.b-shadow').addClass('b-shadow_hide'); $('b-shadow_sbr__overlay').dispose(); return false;">РѕС‚РјРµРЅРёС‚СЊ</a>
                             </div>
                         </div>
                     </div>
@@ -211,10 +211,10 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
 
 <? } elseif ($stage->isTransferMoneyCompleted() && !$stage->data['lc_state'] && !$sbr->isEmp()) { ?>
     <div class="b-fon__txt b-fon__txt_pad_15_15_15_35 b-fon__txt_color_a0763b">
-        <? $add_txt = ( ( $sbr->isEmp() ?  ( pskb::$exrates_map[$sbr->data['ps_emp']] == exrates::CARD  ) : ($stage->data['type_payment'] == exrates::CARD) )  ? "вашу " : "ваш " );?>
-        В течение дня деньги будут отправлены на <?= sbr_meta::view_type_payment( $sbr->isEmp() ? pskb::$exrates_map[$sbr->data['ps_emp']] : $stage->data['type_payment'], $add_txt)?>. 
-        <? if($stage->type_payment == exrates::BANK && $sbr->scheme_type == sbr::SCHEME_PDRD2) { ?>Время прихода денег на ваш счет – до 5 суток.<? }//if?>
-        Если по истечении этого времени вы все еще не получили деньги, <a class="b-fon__link b-fon__link_bordbot_dot_0f71c8" href="/about/feedback/">обратитесь в службу поддержки</a>.
+        <? $add_txt = ( ( $sbr->isEmp() ?  ( pskb::$exrates_map[$sbr->data['ps_emp']] == exrates::CARD  ) : ($stage->data['type_payment'] == exrates::CARD) )  ? "РІР°С€Сѓ " : "РІР°С€ " );?>
+        Р’ С‚РµС‡РµРЅРёРµ РґРЅСЏ РґРµРЅСЊРіРё Р±СѓРґСѓС‚ РѕС‚РїСЂР°РІР»РµРЅС‹ РЅР° <?= sbr_meta::view_type_payment( $sbr->isEmp() ? pskb::$exrates_map[$sbr->data['ps_emp']] : $stage->data['type_payment'], $add_txt)?>. 
+        <? if($stage->type_payment == exrates::BANK && $sbr->scheme_type == sbr::SCHEME_PDRD2) { ?>Р’СЂРµРјСЏ РїСЂРёС…РѕРґР° РґРµРЅРµРі РЅР° РІР°С€ СЃС‡РµС‚ вЂ“ РґРѕ 5 СЃСѓС‚РѕРє.<? }//if?>
+        Р•СЃР»Рё РїРѕ РёСЃС‚РµС‡РµРЅРёРё СЌС‚РѕРіРѕ РІСЂРµРјРµРЅРё РІС‹ РІСЃРµ РµС‰Рµ РЅРµ РїРѕР»СѓС‡РёР»Рё РґРµРЅСЊРіРё, <a class="b-fon__link b-fon__link_bordbot_dot_0f71c8" href="/about/feedback/">РѕР±СЂР°С‚РёС‚РµСЃСЊ РІ СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.
     </div>
 <? } elseif ( !($sbr->isEmp() && $sbr->data['emp_feedback_id'] > 0) && $stage->isStageCompleted() && !$stage->data[$sbr->upfx . 'feedback_id'] && !($sbr->isAdmin() || $sbr->isAdminFinance()) ) {//if?>
     
@@ -226,7 +226,7 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
                     <img class="b-layout__pic b-layout__pic_float_left b-layout__pic_margtop_10" src="/images/temp/arbitration.png" alt="" width="50" height="50" />
                 </td>
                 <td class="b-layout__middle b-layout__middle_padright_15 b-layout__middle_width_210">
-                    <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_padtop_2">Комментарий арбитража</div>
+                    <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_padtop_2">РљРѕРјРјРµРЅС‚Р°СЂРёР№ Р°СЂР±РёС‚СЂР°Р¶Р°</div>
                 </td>
                 <td class="b-layout__right b-layout__right_padright_15 b-layout__right_width_73ps">
                     <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_fontsize_15"><?= reformat($stage->arbitrage['descr_arb'], 40, 0, 0, 1) ?></div>
@@ -234,20 +234,20 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__middle b-layout__middle_padright_15 b-layout__middle_width_210">
-                    <div class="b-layout__txt b-layout__txt_padbot_10">Разделить бюджет</div>
+                    <div class="b-layout__txt b-layout__txt_padbot_10">Р Р°Р·РґРµР»РёС‚СЊ Р±СЋРґР¶РµС‚</div>
                 </td>
                 <td class="b-layout__right b-layout__right_padright_15 b-layout__right_width_73ps">
-                    <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_color_a0763b"><span class="b-post__bold">Заказчику вернуть <?= 100 * (1 - $stage->arbitrage['frl_percent']) ?>%</span> бюджета проекта, <?= sbr_meta::view_cost($stage->getPayoutSum(sbr::EMP), $stage->sbr->cost_sys) ?></div>
-                    <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_color_a0763b"><span class="b-post__bold">Исполнителю заплатить <?= 100 * $stage->arbitrage['frl_percent'] ?>%</span> бюджета проекта, <?= sbr_meta::view_cost($stage->getPayoutSum(sbr::FRL), $stage->sbr->cost_sys) ?></div>
+                    <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_color_a0763b"><span class="b-post__bold">Р—Р°РєР°Р·С‡РёРєСѓ РІРµСЂРЅСѓС‚СЊ <?= 100 * (1 - $stage->arbitrage['frl_percent']) ?>%</span> Р±СЋРґР¶РµС‚Р° РїСЂРѕРµРєС‚Р°, <?= sbr_meta::view_cost($stage->getPayoutSum(sbr::EMP), $stage->sbr->cost_sys) ?></div>
+                    <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_color_a0763b"><span class="b-post__bold">РСЃРїРѕР»РЅРёС‚РµР»СЋ Р·Р°РїР»Р°С‚РёС‚СЊ <?= 100 * $stage->arbitrage['frl_percent'] ?>%</span> Р±СЋРґР¶РµС‚Р° РїСЂРѕРµРєС‚Р°, <?= sbr_meta::view_cost($stage->getPayoutSum(sbr::FRL), $stage->sbr->cost_sys) ?></div>
                 </td>
             </tr>
             <? /* @todo #0018802 */?>
             <tr class="b-layout__tr">
                 <td class="b-layout__middle b-layout__middle_padright_15 b-layout__middle_width_210">
-                    <div class="b-layout__txt b-layout__txt_padbot_10">Решение</div>
+                    <div class="b-layout__txt b-layout__txt_padbot_10">Р РµС€РµРЅРёРµ</div>
                 </td>
                 <td class="b-layout__right b-layout__right_padright_15 b-layout__right_width_73ps">
-                    <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_color_a0763b"><?= $stage->arbitrage['result'] == '' ? 'Расторжение договора' : reformat(str_replace(array('e%', 'f%'), array((100 * (1 - $stage->arbitrage['frl_percent'])) . "%", ( 100 * $stage->arbitrage['frl_percent']) . "%" ), $stage->arbitrage['result']), 40, 0, 0, 1) ?></div>
+                    <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_color_a0763b"><?= $stage->arbitrage['result'] == '' ? 'Р Р°СЃС‚РѕСЂР¶РµРЅРёРµ РґРѕРіРѕРІРѕСЂР°' : reformat(str_replace(array('e%', 'f%'), array((100 * (1 - $stage->arbitrage['frl_percent'])) . "%", ( 100 * $stage->arbitrage['frl_percent']) . "%" ), $stage->arbitrage['result']), 40, 0, 0, 1) ?></div>
                 </td>
             </tr>
         </table>
@@ -279,8 +279,8 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
         <?php if(
                 $stage->isAccessOldFeedback() &&
 
-             ( !($sbr->isFrl() && $stage->arbitrage['id'] > 0 && strtotime($stage->arbitrage['resolved']) <= strtotime(date('2013-09-17 00:00')) && $stage->arbitrage['frl_percent'] == 0) && // Для старых арбитражей, можно будет убрать через месяц-два
-               !($sbr->isEmp() && $stage->arbitrage['id'] > 0 && strtotime($stage->arbitrage['resolved']) <= strtotime(date('2013-09-17 00:00')) &&  $stage->arbitrage['frl_percent'] == 1) ) // Для старых арбитражей, можно будет убрать через месяц-два
+             ( !($sbr->isFrl() && $stage->arbitrage['id'] > 0 && strtotime($stage->arbitrage['resolved']) <= strtotime(date('2013-09-17 00:00')) && $stage->arbitrage['frl_percent'] == 0) && // Р”Р»СЏ СЃС‚Р°СЂС‹С… Р°СЂР±РёС‚СЂР°Р¶РµР№, РјРѕР¶РЅРѕ Р±СѓРґРµС‚ СѓР±СЂР°С‚СЊ С‡РµСЂРµР· РјРµСЃСЏС†-РґРІР°
+               !($sbr->isEmp() && $stage->arbitrage['id'] > 0 && strtotime($stage->arbitrage['resolved']) <= strtotime(date('2013-09-17 00:00')) &&  $stage->arbitrage['frl_percent'] == 1) ) // Р”Р»СЏ СЃС‚Р°СЂС‹С… Р°СЂР±РёС‚СЂР°Р¶РµР№, РјРѕР¶РЅРѕ Р±СѓРґРµС‚ СѓР±СЂР°С‚СЊ С‡РµСЂРµР· РјРµСЃСЏС†-РґРІР°
                 &&
              ( !($stage->arbitrage['id'] > 0 && ($stage->arbitrage['result_id'] == 1) ) && !($sbr->isFrl() && $stage->arbitrage['id'] > 0 && ($stage->arbitrage['result_id'] == 5 || $stage->arbitrage['result_id'] == 6)) && !($sbr->isEmp() && $stage->arbitrage['id'] > 0 && $stage->arbitrage['result_id'] == 7) ) ) { ?>
         <div class="b-layout b-layout_padtop_7 b-layout_bordbot_dedfe0 b-layout_marglr_15">
@@ -291,17 +291,17 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
                         <td class="b-layout__left">&#160;</td>
                         <td class="b-layout__right b-layout__right_padright_15 b-layout__right_width_73ps">
                             <div id="feedback_ops_type_error" class="b-layout__txt b-layout__txt_color_c4271f b-layout__txt_padbot_10">
-                                <span class="b-form__error"></span> Выберите тип отзыва
+                                <span class="b-form__error"></span> Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї РѕС‚Р·С‹РІР°
                             </div>
                 		</td>
                      </tr>
                 </table>
                 <? }//if?>
                 
-                <? if ($sbr->scheme_type != sbr::SCHEME_LC) { // для аккредитива не актуально ?>
+                <? if ($sbr->scheme_type != sbr::SCHEME_LC) { // РґР»СЏ Р°РєРєСЂРµРґРёС‚РёРІР° РЅРµ Р°РєС‚СѓР°Р»СЊРЅРѕ ?>
                 <? if(!$stage->checkPayoutReqvs(($stage->type_payment ? $stage->type_payment : exrates::BANK )) || !$isReqvsFilled[$sbr->user_reqvs['form_type']]) {
                     $disable_btn = true;?>
-                <div class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_padbot_10 b-layout__txt_padleft_50"><span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_rattent"></span>Вам не хватает данных на странице «<a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 finance-open" href="javascript:void(0)">Финансы</a>». Пожалуйста, заполните все необходимые поля, иначе вы не сможете воспользоваться сервисом «Безопасная Сделка».</div>
+                <div class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_padbot_10 b-layout__txt_padleft_50"><span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_rattent"></span>Р’Р°Рј РЅРµ С…РІР°С‚Р°РµС‚ РґР°РЅРЅС‹С… РЅР° СЃС‚СЂР°РЅРёС†Рµ В«<a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 finance-open" href="javascript:void(0)">Р¤РёРЅР°РЅСЃС‹</a>В». РџРѕР¶Р°Р»СѓР№СЃС‚Р°, Р·Р°РїРѕР»РЅРёС‚Рµ РІСЃРµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РїРѕР»СЏ, РёРЅР°С‡Рµ РІС‹ РЅРµ СЃРјРѕР¶РµС‚Рµ РІРѕСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ СЃРµСЂРІРёСЃРѕРј В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В».</div>
                 <? }//if?>
                 
                 <? } ?>
@@ -309,18 +309,18 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
                 <table class="b-layout__table b-layout__table_width_full"  cellpadding="0" cellspacing="0" border="0">
                     <tr class="b-layout__tr">
                         <td class="b-layout__left b-layout__left_padleft_35 b-layout__left_padright_20">
-                            <div class="b-layout__txt">Ваш отзыв <?= $sbr->isEmp() ? 'исполнителю' : 'заказчику' ?> по итогам сотрудничества по этапу</div>
+                            <div class="b-layout__txt">Р’Р°С€ РѕС‚Р·С‹РІ <?= $sbr->isEmp() ? 'РёСЃРїРѕР»РЅРёС‚РµР»СЋ' : 'Р·Р°РєР°Р·С‡РёРєСѓ' ?> РїРѕ РёС‚РѕРіР°Рј СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР° РїРѕ СЌС‚Р°РїСѓ</div>
                         </td>
                         <td class="b-layout__right b-layout__right_padright_15 b-layout__right_width_73ps">
                             <div class="b-estimate b-estimate_padbot_15">
                                 <div class="b-estimate__item b-estimate__item_green b-estimate__item_margright_20 <?= ($ops_type == 1 && isset($_POST['feedback']['ops_type']) ? 'b-estimate__item_active' : ''); ?>">
-                                    <span class="b-estimate__left"><span class="b-estimate__right"><a class="b-estimate__link " href="javascript:void(0)" onclick="$('ops_type').set('value', '1'); if($('feedback_ops_type_error')) $('feedback_ops_type_error').dispose();"><span class="b-button b-button_margtop_1 b-button_margright_5 b-button_float_left b-button_poll_plus"></span>Положительный</a></span></span>
+                                    <span class="b-estimate__left"><span class="b-estimate__right"><a class="b-estimate__link " href="javascript:void(0)" onclick="$('ops_type').set('value', '1'); if($('feedback_ops_type_error')) $('feedback_ops_type_error').dispose();"><span class="b-button b-button_margtop_1 b-button_margright_5 b-button_float_left b-button_poll_plus"></span>РџРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№</a></span></span>
                                 </div>
                                 <div class="b-estimate__item b-estimate__item_grey b-estimate__item_margright_20 <?= ($ops_type == 0 && $ops_type !== null && isset($_POST['feedback']['ops_type']) ? 'b-estimate__item_active' : ''); ?>">
-                                    <span class="b-estimate__left"><span class="b-estimate__right"><a class="b-estimate__link " href="javascript:void(0)" onclick="$('ops_type').set('value', '0'); if($('feedback_ops_type_error'))$('feedback_ops_type_error').dispose();"><span class="b-button b-button_margright_5 b-button_float_left b-button_poll_multi"></span>Нейтральный</a></span></span>
+                                    <span class="b-estimate__left"><span class="b-estimate__right"><a class="b-estimate__link " href="javascript:void(0)" onclick="$('ops_type').set('value', '0'); if($('feedback_ops_type_error'))$('feedback_ops_type_error').dispose();"><span class="b-button b-button_margright_5 b-button_float_left b-button_poll_multi"></span>РќРµР№С‚СЂР°Р»СЊРЅС‹Р№</a></span></span>
                                 </div>
                                 <div class="b-estimate__item b-estimate__item_red b-estimate__item_margright_20 <?= ($ops_type == -1 && isset($_POST['feedback']['ops_type']) ? 'b-estimate__item_active' : ''); ?>">
-                                    <span class="b-estimate__left"><span class="b-estimate__right"><a class="b-estimate__link " href="javascript:void(0)" onclick="$('ops_type').set('value', '-1'); if($('feedback_ops_type_error')) $('feedback_ops_type_error').dispose();"><span class="b-button b-button_margright_5 b-button_float_left b-button_poll_minus"></span>Отрицательный</a></span></span>
+                                    <span class="b-estimate__left"><span class="b-estimate__right"><a class="b-estimate__link " href="javascript:void(0)" onclick="$('ops_type').set('value', '-1'); if($('feedback_ops_type_error')) $('feedback_ops_type_error').dispose();"><span class="b-button b-button_margright_5 b-button_float_left b-button_poll_minus"></span>РћС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№</a></span></span>
                                 </div>
                             </div>
 
@@ -329,7 +329,7 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
                             </div>
                             <? if ($stage->error['feedback']['descr']) { ?>
                             <div class="b-layout__txt b-layout__txt_color_c4271f b-layout__txt_padtop_10" id="feedback_descr_error">
-                                <span class="b-form__error"></span> Пожалуйста, оставьте отзыв
+                                <span class="b-form__error"></span> РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕСЃС‚Р°РІСЊС‚Рµ РѕС‚Р·С‹РІ
                             </div>
                             <? }//if?>
                             <? if ($stage->error['credit_sys']) { ?> 
@@ -346,7 +346,7 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
         </div>
         <?php } else {//if?>
         <div class="b-fon__txt b-fon__txt_pad_15_15_15_35 b-fon__txt_color_a0763b">
-            К сожалению, срок публикации отзыва о сотрудничестве уже истек. Однако вы можете оставить отзыв о сервисе Безопасная сделка и закрыть этап.
+            Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, СЃСЂРѕРє РїСѓР±Р»РёРєР°С†РёРё РѕС‚Р·С‹РІР° Рѕ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРµ СѓР¶Рµ РёСЃС‚РµРє. РћРґРЅР°РєРѕ РІС‹ РјРѕР¶РµС‚Рµ РѕСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ Рѕ СЃРµСЂРІРёСЃРµ Р‘РµР·РѕРїР°СЃРЅР°СЏ СЃРґРµР»РєР° Рё Р·Р°РєСЂС‹С‚СЊ СЌС‚Р°Рї.
         </div>
         <?php }//else?>
         
@@ -356,7 +356,7 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
                 <table class="b-layout__table b-layout__table_width_full"  cellpadding="0" cellspacing="0" border="0">
                     <tr class="b-layout__tr">
                         <td class="b-layout__left b-layout__left_padleft_35 b-layout__left_padright_20">
-                            <div class="b-layout__txt">Отзыв сервису «Безопасная Сделка»</div>
+                            <div class="b-layout__txt">РћС‚Р·С‹РІ СЃРµСЂРІРёСЃСѓ В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В»</div>
                         </td>
                         <td class="b-layout__right b-layout__right_padright_15 b-layout__right_width_73ps">
                             <div class="b-textarea <?= $stage->error['sbr_feedback'] || $stage->sbr->error['feedback'] ? 'b-textarea_error' : '' ?>">
@@ -364,7 +364,7 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
                             </div>
                             <? if ($stage->error['sbr_feedback'] || $stage->sbr->error['feedback']) { ?>
                             <div class="b-layout__txt b-layout__txt_color_c4271f b-layout__txt_padtop_10" id="sbr_feedback_descr_error">
-                                <span class="b-form__error"></span> Пожалуйста, оставьте отзыв
+                                <span class="b-form__error"></span> РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕСЃС‚Р°РІСЊС‚Рµ РѕС‚Р·С‹РІ
                             </div>
                             <? }//if?>
                         </td>
@@ -375,7 +375,7 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
         <? }//if ?>
         
         <? if ($sbr->scheme_type != sbr::SCHEME_LC && ( ( $stage->getPayoutSum(sbr::FRL) > 0 && $sbr->isFrl() ) || (  $stage->getPayoutSum(sbr::EMP) > 0 && $sbr->isEmp() && $sbr->data['ps_emp'] == onlinedengi::WMR )  ) ) {?>
-            <? // @todo переписать вывод информации о выплатах ?>
+            <? // @todo РїРµСЂРµРїРёСЃР°С‚СЊ РІС‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РІС‹РїР»Р°С‚Р°С… ?>
             <? 
             if($sbr->isEmp()) {
                 $dvals = array('P' => pskb::$exrates_map[$sbr->data['ps_emp']]);
@@ -400,7 +400,7 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
                     <table class="b-layout__table b-layout__table_width_full"  cellpadding="0" cellspacing="0" border="0">
                         <tr class="b-layout__tr">
                             <td class="b-layout__left b-layout__left_padleft_35 b-layout__left_padright_20">
-                                <div class="b-layout__txt">Способ вывода денег</div>
+                                <div class="b-layout__txt">РЎРїРѕСЃРѕР± РІС‹РІРѕРґР° РґРµРЅРµРі</div>
                             </td>
                             <td class="b-layout__right b-layout__right_padright_15 b-layout__right_width_73ps">
                                 <?/*<div class="b-radio b-radio_layout_vertical">
@@ -425,9 +425,9 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
                                 <?= $taxes ?>
                                 <div class="b-layout__txt b-layout__txt_color_a0763b b-layout__txt_padleft_20">
                                     <span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_oattent"></span>
-                                        После получения нами подписанного вами акта в 2-х экземплярах и технического задания вы получите гонорар <?= sbr_meta::view_cost($stage->type_payment != exrates::FM ? $stage->total_sum_stage : $stage->total_sum_stagefm, $stage->type_payment) ?> на <?= sbr_meta::view_type_payment($type_payment, 'свой ');?>, 
+                                        РџРѕСЃР»Рµ РїРѕР»СѓС‡РµРЅРёСЏ РЅР°РјРё РїРѕРґРїРёСЃР°РЅРЅРѕРіРѕ РІР°РјРё Р°РєС‚Р° РІ 2-С… СЌРєР·РµРјРїР»СЏСЂР°С… Рё С‚РµС…РЅРёС‡РµСЃРєРѕРіРѕ Р·Р°РґР°РЅРёСЏ РІС‹ РїРѕР»СѓС‡РёС‚Рµ РіРѕРЅРѕСЂР°СЂ <?= sbr_meta::view_cost($stage->type_payment != exrates::FM ? $stage->total_sum_stage : $stage->total_sum_stagefm, $stage->type_payment) ?> РЅР° <?= sbr_meta::view_type_payment($type_payment, 'СЃРІРѕР№ ');?>, 
                                         <?php if($stage->type_payment != exrates::FM) { ?>
-                                        указанный на странице «<a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="/users/<?= $sbr->data[($sbr->isFrl() ? 'frl_' : 'emp_' ) . 'login'] ?>/setup/finance/">Финансы</a>».
+                                        СѓРєР°Р·Р°РЅРЅС‹Р№ РЅР° СЃС‚СЂР°РЅРёС†Рµ В«<a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="/users/<?= $sbr->data[($sbr->isFrl() ? 'frl_' : 'emp_' ) . 'login'] ?>/setup/finance/">Р¤РёРЅР°РЅСЃС‹</a>В».
                                         <?php } else { echo "."; }//if?>
                                 </div>
                             </td>
@@ -448,7 +448,7 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
                             <td class="b-layout__right b-layout__right_padright_15 b-layout__right_width_73ps">
                                 <?= $stage->_new_getTaxInfo(NULL, array('P' => pskb::$exrates_map[$stage->data['ps_frl']]), null, false); ?>
                                 <div class="b-layout__txt b-layout__txt_color_a0763b b-layout__txt_padleft_20">
-                                    <span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_oattent"></span>После нажатия на кнопку "Завершить этап" вам придет смс с кодом подтверждения на номер <strong><?= pskb::phone($lc['numPerf']) ?></strong>.
+                                    <span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_oattent"></span>РџРѕСЃР»Рµ РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ "Р—Р°РІРµСЂС€РёС‚СЊ СЌС‚Р°Рї" РІР°Рј РїСЂРёРґРµС‚ СЃРјСЃ СЃ РєРѕРґРѕРј РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ РЅР° РЅРѕРјРµСЂ <strong><?= pskb::phone($lc['numPerf']) ?></strong>.
                                 </div>
                             </td>
                         </tr>
@@ -466,13 +466,13 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
                         <td class="b-layout__right b-layout__right_padright_15 b-layout__right_width_73ps">
                             <div class="b-buttons">
                                 <? if ($sbr->scheme_type != sbr::SCHEME_LC) { ?>
-                                <a href="javascript:void(0)" onclick="if(!$(this).hasClass('b-button_disabled')) { submitForm($('completeFrm')); }" class="b-button b-button_flat b-button_flat_green <?= !$isReqvsFilled[$sbr->user_reqvs['form_type']] || $disable_btn ? "b-button_disabled" : ""?>" id="submit_btn">Завершить этап</a>
+                                <a href="javascript:void(0)" onclick="if(!$(this).hasClass('b-button_disabled')) { submitForm($('completeFrm')); }" class="b-button b-button_flat b-button_flat_green <?= !$isReqvsFilled[$sbr->user_reqvs['form_type']] || $disable_btn ? "b-button_disabled" : ""?>" id="submit_btn">Р—Р°РІРµСЂС€РёС‚СЊ СЌС‚Р°Рї</a>
                                 <? } else { ?>
-                                <a href="javascript:void(0)" onclick="if(!$(this).hasClass('b-button_disabled')) { submitForm($('completeFrm')); }" class="b-button b-button_flat b-button_flat_green" id="submit_btn">Завершить этап</a>
+                                <a href="javascript:void(0)" onclick="if(!$(this).hasClass('b-button_disabled')) { submitForm($('completeFrm')); }" class="b-button b-button_flat b-button_flat_green" id="submit_btn">Р—Р°РІРµСЂС€РёС‚СЊ СЌС‚Р°Рї</a>
                                 <? } ?>
                                 <? if ($stage->status == sbr_stages::STATUS_ARBITRAGED) { ?>
-                                    <span class="b-buttons__txt b-buttons__txt_padleft_10">или</span>
-                                    <a class="b-buttons__link b-buttons__link_dot_0f71c8" href="https://feedback.fl.ru/">обратиться в службу поддержки</a>
+                                    <span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё</span>
+                                    <a class="b-buttons__link b-buttons__link_dot_0f71c8" href="https://feedback.fl.ru/">РѕР±СЂР°С‚РёС‚СЊСЃСЏ РІ СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>
                                 <? }//if ?>
                             </div>
                         </td>
@@ -491,12 +491,12 @@ $reqv = sbr_meta::getUserReqvs(get_uid(false));
     $type_payment = $sbr->scheme_type == sbr::SCHEME_LC ? ( $sbr->isEmp() ? pskb::$exrates_map[$sbr->data['ps_emp']] : $stage->data['type_payment'] ) : $sbr->cost_sys;
     ?>
     <div class="b-fon__txt b-fon__txt_pad_15_15_15_35 b-fon__txt_color_a0763b">
-        <? $add_txt = ( ( $sbr->isEmp() ?  ( pskb::$exrates_map[$sbr->data['ps_emp']] == exrates::CARD  ) : ($stage->data['type_payment'] == exrates::CARD) )  ? "вашу " : "ваш " );?>
+        <? $add_txt = ( ( $sbr->isEmp() ?  ( pskb::$exrates_map[$sbr->data['ps_emp']] == exrates::CARD  ) : ($stage->data['type_payment'] == exrates::CARD) )  ? "РІР°С€Сѓ " : "РІР°С€ " );?>
         <? $pskb ?>
-        Деньги будут отправлены на <?= sbr_meta::view_type_payment( $type_payment, $add_txt)?> в течение 1 рабочего дня после закрытия аккредитива. Дата закрытия аккредитива - <?= date('d.m.Y', strtotime($sbr->data['dateEndLC'])) ?>.
-        <? if($stage->type_payment == exrates::BANK && $sbr->scheme_type == sbr::SCHEME_PDRD2) { ?>Время прихода денег на ваш счет – до 5 суток.<? }//if?>
-        Если по истечении этого времени вы все еще не получили деньги, обратитесь в <a class="b-fon__link b-fon__link_bordbot_dot_0f71c8" href="/about/feedback/">службу поддержки</a>.<br>
-        Также согласно условиям безотзывного аккредитива исполнитель может ввести код, подтвердив тем самым отказ от всего бюджета сделки или его части (в зависимости от решения Арбитража). В этом случае деньги будут отправлены вам в течение 1 рабочего дня после завершения сделки исполнителем. Подробнее <a class="b-fon__link b-fon__link_bordbot_dot_0f71c8" href="https://feedback.free-lance.ru/article/details/id/1130">здесь</a>.
+        Р”РµРЅСЊРіРё Р±СѓРґСѓС‚ РѕС‚РїСЂР°РІР»РµРЅС‹ РЅР° <?= sbr_meta::view_type_payment( $type_payment, $add_txt)?> РІ С‚РµС‡РµРЅРёРµ 1 СЂР°Р±РѕС‡РµРіРѕ РґРЅСЏ РїРѕСЃР»Рµ Р·Р°РєСЂС‹С‚РёСЏ Р°РєРєСЂРµРґРёС‚РёРІР°. Р”Р°С‚Р° Р·Р°РєСЂС‹С‚РёСЏ Р°РєРєСЂРµРґРёС‚РёРІР° - <?= date('d.m.Y', strtotime($sbr->data['dateEndLC'])) ?>.
+        <? if($stage->type_payment == exrates::BANK && $sbr->scheme_type == sbr::SCHEME_PDRD2) { ?>Р’СЂРµРјСЏ РїСЂРёС…РѕРґР° РґРµРЅРµРі РЅР° РІР°С€ СЃС‡РµС‚ вЂ“ РґРѕ 5 СЃСѓС‚РѕРє.<? }//if?>
+        Р•СЃР»Рё РїРѕ РёСЃС‚РµС‡РµРЅРёРё СЌС‚РѕРіРѕ РІСЂРµРјРµРЅРё РІС‹ РІСЃРµ РµС‰Рµ РЅРµ РїРѕР»СѓС‡РёР»Рё РґРµРЅСЊРіРё, РѕР±СЂР°С‚РёС‚РµСЃСЊ РІ <a class="b-fon__link b-fon__link_bordbot_dot_0f71c8" href="/about/feedback/">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.<br>
+        РўР°РєР¶Рµ СЃРѕРіР»Р°СЃРЅРѕ СѓСЃР»РѕРІРёСЏРј Р±РµР·РѕС‚Р·С‹РІРЅРѕРіРѕ Р°РєРєСЂРµРґРёС‚РёРІР° РёСЃРїРѕР»РЅРёС‚РµР»СЊ РјРѕР¶РµС‚ РІРІРµСЃС‚Рё РєРѕРґ, РїРѕРґС‚РІРµСЂРґРёРІ С‚РµРј СЃР°РјС‹Рј РѕС‚РєР°Р· РѕС‚ РІСЃРµРіРѕ Р±СЋРґР¶РµС‚Р° СЃРґРµР»РєРё РёР»Рё РµРіРѕ С‡Р°СЃС‚Рё (РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЂРµС€РµРЅРёСЏ РђСЂР±РёС‚СЂР°Р¶Р°). Р’ СЌС‚РѕРј СЃР»СѓС‡Р°Рµ РґРµРЅСЊРіРё Р±СѓРґСѓС‚ РѕС‚РїСЂР°РІР»РµРЅС‹ РІР°Рј РІ С‚РµС‡РµРЅРёРµ 1 СЂР°Р±РѕС‡РµРіРѕ РґРЅСЏ РїРѕСЃР»Рµ Р·Р°РІРµСЂС€РµРЅРёСЏ СЃРґРµР»РєРё РёСЃРїРѕР»РЅРёС‚РµР»РµРј. РџРѕРґСЂРѕР±РЅРµРµ <a class="b-fon__link b-fon__link_bordbot_dot_0f71c8" href="https://feedback.free-lance.ru/article/details/id/1130">Р·РґРµСЃСЊ</a>.
         
     </div>    
 <?php }//elseif?>

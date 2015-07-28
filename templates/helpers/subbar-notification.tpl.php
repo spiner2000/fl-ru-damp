@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Шаблон уведомлений под меню сайта
+ * РЁР°Р±Р»РѕРЅ СѓРІРµРґРѕРјР»РµРЅРёР№ РїРѕРґ РјРµРЅСЋ СЃР°Р№С‚Р°
  */
 
 ?>
@@ -15,49 +15,49 @@
     switch ($type):
         case SubBarNotificationHelper::TYPE_GUEST_NEW_ORDER:
 ?>
-                        Поздравляем с успешной регистрацией на сайте и созданием первого заказа! 
-                        Ваш логин: <span class="b-txt b-txt_color_000"><?=$login?></span>, 
-                        пароль: <span class="b-txt b-txt_color_000"><?=$password?></span>
+                        РџРѕР·РґСЂР°РІР»СЏРµРј СЃ СѓСЃРїРµС€РЅРѕР№ СЂРµРіРёСЃС‚СЂР°С†РёРµР№ РЅР° СЃР°Р№С‚Рµ Рё СЃРѕР·РґР°РЅРёРµРј РїРµСЂРІРѕРіРѕ Р·Р°РєР°Р·Р°! 
+                        Р’Р°С€ Р»РѕРіРёРЅ: <span class="b-txt b-txt_color_000"><?=$login?></span>, 
+                        РїР°СЂРѕР»СЊ: <span class="b-txt b-txt_color_000"><?=$password?></span>
                         <a class="b-general-notification-link b-general-notification-employer-link" href="/users/<?=$login?>/setup/pwd/">
-                            Поменять пароль
+                            РџРѕРјРµРЅСЏС‚СЊ РїР°СЂРѕР»СЊ
                         </a>
 <?php                        
             break;
         
         case SubBarNotificationHelper::TYPE_GUEST_NEW_PROJECT:
 ?>        
-                        Поздравляем с успешной регистрацией на сайте и публикацией первого проекта!
-                        Ваш логин: <span class="b-txt b-txt_color_000"><?=$login?></span>, 
-                        пароль: <span class="b-txt b-txt_color_000"><?=$password?></span>
+                        РџРѕР·РґСЂР°РІР»СЏРµРј СЃ СѓСЃРїРµС€РЅРѕР№ СЂРµРіРёСЃС‚СЂР°С†РёРµР№ РЅР° СЃР°Р№С‚Рµ Рё РїСѓР±Р»РёРєР°С†РёРµР№ РїРµСЂРІРѕРіРѕ РїСЂРѕРµРєС‚Р°!
+                        Р’Р°С€ Р»РѕРіРёРЅ: <span class="b-txt b-txt_color_000"><?=$login?></span>, 
+                        РїР°СЂРѕР»СЊ: <span class="b-txt b-txt_color_000"><?=$password?></span>
                         <a class="b-general-notification-link b-general-notification-employer-link" href="/users/<?=$login?>/setup/pwd/">
-                            Поменять пароль
+                            РџРѕРјРµРЅСЏС‚СЊ РїР°СЂРѕР»СЊ
                         </a>
 <?php        
             break;
         
         case SubBarNotificationHelper::TYPE_GUEST_NEW_VACANCY:
 ?>        
-                        Поздравляем с успешной регистрацией на сайте и публикацией первой вакансии!
-                        Ваш логин: <span class="b-txt b-txt_color_000"><?=$login?></span>, 
-                        пароль: <span class="b-txt b-txt_color_000"><?=$password?></span>
+                        РџРѕР·РґСЂР°РІР»СЏРµРј СЃ СѓСЃРїРµС€РЅРѕР№ СЂРµРіРёСЃС‚СЂР°С†РёРµР№ РЅР° СЃР°Р№С‚Рµ Рё РїСѓР±Р»РёРєР°С†РёРµР№ РїРµСЂРІРѕР№ РІР°РєР°РЅСЃРёРё!
+                        Р’Р°С€ Р»РѕРіРёРЅ: <span class="b-txt b-txt_color_000"><?=$login?></span>, 
+                        РїР°СЂРѕР»СЊ: <span class="b-txt b-txt_color_000"><?=$password?></span>
                         <a class="b-general-notification-link b-general-notification-employer-link" href="/users/<?=$login?>/setup/pwd/">
-                            Поменять пароль
+                            РџРѕРјРµРЅСЏС‚СЊ РїР°СЂРѕР»СЊ
                         </a>
 <?php        
             break;
         
         case SubBarNotificationHelper::TYPE_RESERVE_PROMO:
 ?>        
-                        Выбран способ оплаты - <b>Прямая оплата</b>. Рекомендуем изменить на 
+                        Р’С‹Р±СЂР°РЅ СЃРїРѕСЃРѕР± РѕРїР»Р°С‚С‹ - <b>РџСЂСЏРјР°СЏ РѕРїР»Р°С‚Р°</b>. Р РµРєРѕРјРµРЅРґСѓРµРј РёР·РјРµРЅРёС‚СЊ РЅР° 
                         <a class="b-general-notification-link b-general-notification-employee-link" href="<?=$url?>">
-                            Безопасную сделку
+                            Р‘РµР·РѕРїР°СЃРЅСѓСЋ СЃРґРµР»РєСѓ
                         </a>
 <?php        
             break;
         
         case SubBarNotificationHelper::TYPE_USER_ACTIVATED:
 ?>
-                        Ваш аккаунт успешно активирован
+                        Р’Р°С€ Р°РєРєР°СѓРЅС‚ СѓСЃРїРµС€РЅРѕ Р°РєС‚РёРІРёСЂРѕРІР°РЅ
 <?php                        
             break;
 

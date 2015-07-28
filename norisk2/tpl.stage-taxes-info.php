@@ -1,5 +1,5 @@
 <tr>
-    <td class="first">Стоимость работы, в т.ч. НДС</td>
+    <td class="first">РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹, РІ С‚.С‡. РќР”РЎ</td>
     <td></td>
     <td>&mdash;</td>
     <td class="last"><?= sbr_meta::view_cost($cost, $cost_sys, false) ?></td>
@@ -13,7 +13,7 @@
     </tr>
 <? } ?>
 <tr class="last">
-    <td class="first"><strong>Итого вы получите</strong></td>
+    <td class="first"><strong>РС‚РѕРіРѕ РІС‹ РїРѕР»СѓС‡РёС‚Рµ</strong></td>
     <td></td>
     <td>&mdash;</td>
     <td class="last"><strong><?= sbr_meta::view_cost($total_sum, $cost_sys) ?></strong></td>

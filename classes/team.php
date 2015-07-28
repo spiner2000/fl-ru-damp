@@ -1,25 +1,25 @@
 <?
 /**
- * Подключаем файл с основными функциями
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» СЃ РѕСЃРЅРѕРІРЅС‹РјРё С„СѓРЅРєС†РёСЏРјРё
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /*
- * Класс страницы команда http://free-lance.ru/team/
+ * РљР»Р°СЃСЃ СЃС‚СЂР°РЅРёС†С‹ РєРѕРјР°РЅРґР° http://free-lance.ru/team/
  *
  */
 class team 
 {
 
 	/**
-	 * Создает новую группу
+	 * РЎРѕР·РґР°РµС‚ РЅРѕРІСѓСЋ РіСЂСѓРїРїСѓ
 	 *
-	 * @param string $title	название группы
-	 * @return boolean всегда true
+	 * @param string $title	РЅР°Р·РІР°РЅРёРµ РіСЂСѓРїРїС‹
+	 * @return boolean РІСЃРµРіРґР° true
 	 */
 	function CreateGroup($title,$position)
 	{
-        //на всякий случай перед операцией перемещения обновим позиции всех групп
+        //РЅР° РІСЃСЏРєРёР№ СЃР»СѓС‡Р°Р№ РїРµСЂРµРґ РѕРїРµСЂР°С†РёРµР№ РїРµСЂРµРјРµС‰РµРЅРёСЏ РѕР±РЅРѕРІРёРј РїРѕР·РёС†РёРё РІСЃРµС… РіСЂСѓРїРї
 		$res = $GLOBALS['DB']->query("SELECT id, position FROM team_groups ORDER BY position, id");
 		$i = 1;
 		$sql = "";
@@ -43,9 +43,9 @@ class team
 	}
 
     /**
-    * Реорганизация членов комманды в категориях
+    * Р РµРѕСЂРіР°РЅРёР·Р°С†РёСЏ С‡Р»РµРЅРѕРІ РєРѕРјРјР°РЅРґС‹ РІ РєР°С‚РµРіРѕСЂРёСЏС…
     *
-    * @param    string  $order  Порядок членов комманды в категориях
+    * @param    string  $order  РџРѕСЂСЏРґРѕРє С‡Р»РµРЅРѕРІ РєРѕРјРјР°РЅРґС‹ РІ РєР°С‚РµРіРѕСЂРёСЏС…
     *
     */
     function ReorderTeam($order) {
@@ -69,15 +69,15 @@ class team
     }
 
 	/**
-	 * Редактирует группу
+	 * Р РµРґР°РєС‚РёСЂСѓРµС‚ РіСЂСѓРїРїСѓ
 	 *
-	 * @param integer $groupid		id группы
-	 * @param string $title			название группы
-	 * @return boolean всегда true
+	 * @param integer $groupid		id РіСЂСѓРїРїС‹
+	 * @param string $title			РЅР°Р·РІР°РЅРёРµ РіСЂСѓРїРїС‹
+	 * @return boolean РІСЃРµРіРґР° true
 	 */
 	function EditGroup($groupid, $title, $position)
 	{
-        //на всякий случай перед операцией перемещения обновим позиции всех групп
+        //РЅР° РІСЃСЏРєРёР№ СЃР»СѓС‡Р°Р№ РїРµСЂРµРґ РѕРїРµСЂР°С†РёРµР№ РїРµСЂРµРјРµС‰РµРЅРёСЏ РѕР±РЅРѕРІРёРј РїРѕР·РёС†РёРё РІСЃРµС… РіСЂСѓРїРї
 		$res = $GLOBALS['DB']->query("SELECT id, position FROM team_groups ORDER BY position, id");
 		$i = 1;
 		$sql = "";
@@ -105,10 +105,10 @@ class team
 	}
 
 	/**
-	 * Удаляет группу и всех ее членов
+	 * РЈРґР°Р»СЏРµС‚ РіСЂСѓРїРїСѓ Рё РІСЃРµС… РµРµ С‡Р»РµРЅРѕРІ
 	 *
-	 * @param integer $groupid		id группы
-	 * @return boolean всегда true
+	 * @param integer $groupid		id РіСЂСѓРїРїС‹
+	 * @return boolean РІСЃРµРіРґР° true
 	 */
 	function DeleteGroup($groupid)
 	{
@@ -132,9 +132,9 @@ class team
 	}
 
 	/**
-	 * Возвращает определенную группу по id
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕРїСЂРµРґРµР»РµРЅРЅСѓСЋ РіСЂСѓРїРїСѓ РїРѕ id
 	 *
-	 * @param integer groupid		id группы
+	 * @param integer groupid		id РіСЂСѓРїРїС‹
 	 * @return array
 	 */
 	function GetGroup($groupid)
@@ -143,7 +143,7 @@ class team
 	}
 
 	/**
-	 * Возвращает массив с id и title всех групп
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ СЃ id Рё title РІСЃРµС… РіСЂСѓРїРї
 	 *
 	 * @return array
 	 */
@@ -153,17 +153,17 @@ class team
 	}
 
 	/**
-	 * Перемещает группу по списку
+	 * РџРµСЂРµРјРµС‰Р°РµС‚ РіСЂСѓРїРїСѓ РїРѕ СЃРїРёСЃРєСѓ
 	 *
-	 * @param string moveto		тип перемещения up/down
-	 * @param integer groupid	группа, которую следует переместить
-	 * @return boolean всегда true
+	 * @param string moveto		С‚РёРї РїРµСЂРµРјРµС‰РµРЅРёСЏ up/down
+	 * @param integer groupid	РіСЂСѓРїРїР°, РєРѕС‚РѕСЂСѓСЋ СЃР»РµРґСѓРµС‚ РїРµСЂРµРјРµСЃС‚РёС‚СЊ
+	 * @return boolean РІСЃРµРіРґР° true
 	 */
 	function MoveGroup($moveto, $groupid)
 	{
 		if ($moveto == "up" || $moveto == "down")
 		{
-			//на всякий случай перед операцией перемещения обновим позиции всех групп
+			//РЅР° РІСЃСЏРєРёР№ СЃР»СѓС‡Р°Р№ РїРµСЂРµРґ РѕРїРµСЂР°С†РёРµР№ РїРµСЂРµРјРµС‰РµРЅРёСЏ РѕР±РЅРѕРІРёРј РїРѕР·РёС†РёРё РІСЃРµС… РіСЂСѓРїРї
 			$res = $GLOBALS['DB']->query("SELECT id, position FROM team_groups ORDER BY position, id");
 
 			$i = 1;
@@ -196,12 +196,12 @@ class team
 	}
 
 	/**
-	 * Перемещает пользователя по списку
+	 * РџРµСЂРµРјРµС‰Р°РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ СЃРїРёСЃРєСѓ
 	 *
-	 * @param string moveto		тип перемещения left/right
-	 * @param integer groupid	группа, пользователя которой следует переместить
-	 * @param integer userid	пользователь, которого следует переместить
-	 * @return boolean всегда true
+	 * @param string moveto		С‚РёРї РїРµСЂРµРјРµС‰РµРЅРёСЏ left/right
+	 * @param integer groupid	РіСЂСѓРїРїР°, РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕС‚РѕСЂРѕР№ СЃР»РµРґСѓРµС‚ РїРµСЂРµРјРµСЃС‚РёС‚СЊ
+	 * @param integer userid	РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ, РєРѕС‚РѕСЂРѕРіРѕ СЃР»РµРґСѓРµС‚ РїРµСЂРµРјРµСЃС‚РёС‚СЊ
+	 * @return boolean РІСЃРµРіРґР° true
 	 */
 	function MoveUser($moveto, $groupid, $userid)
 	{
@@ -243,21 +243,21 @@ class team
 
 
 
-	 * Создает нового пользователя в определенной группе
+	 * РЎРѕР·РґР°РµС‚ РЅРѕРІРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ РіСЂСѓРїРїРµ
 	 *
 
-	 * @param string name			ФИО
-	 * @param string login			Логин
-	 * @param string occupation		Должность
-	 * @param string userpic		Аватарка
-	 * @param integer groupid 		id группы. к которой принадлежит пользователь
-     * @param integer position      номер по порядку
-     * @param string info           Дополнительная информация
-	 * @return ineger               ID добавленного пользователя
+	 * @param string name			Р¤РРћ
+	 * @param string login			Р›РѕРіРёРЅ
+	 * @param string occupation		Р”РѕР»Р¶РЅРѕСЃС‚СЊ
+	 * @param string userpic		РђРІР°С‚Р°СЂРєР°
+	 * @param integer groupid 		id РіСЂСѓРїРїС‹. Рє РєРѕС‚РѕСЂРѕР№ РїСЂРёРЅР°РґР»РµР¶РёС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ
+     * @param integer position      РЅРѕРјРµСЂ РїРѕ РїРѕСЂСЏРґРєСѓ
+     * @param string info           Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ
+	 * @return ineger               ID РґРѕР±Р°РІР»РµРЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	 */
 	function AddUser($name, $login, $occupation, $userpic, $groupid, $position, $info)
 	{
-		//на всякий случай перед операцией перемещения обновим позиции всех пользователей в группе
+		//РЅР° РІСЃСЏРєРёР№ СЃР»СѓС‡Р°Р№ РїРµСЂРµРґ РѕРїРµСЂР°С†РёРµР№ РїРµСЂРµРјРµС‰РµРЅРёСЏ РѕР±РЅРѕРІРёРј РїРѕР·РёС†РёРё РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РІ РіСЂСѓРїРїРµ
 		$res = $GLOBALS['DB']->query("SELECT id, position FROM team_people WHERE groupid = ? ORDER BY position, id", $groupid);
 
 		$i = 1;
@@ -290,17 +290,17 @@ class team
 	}
 
 	/**
-	 * Редактирует пользователя в определенной группе
+	 * Р РµРґР°РєС‚РёСЂСѓРµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ РіСЂСѓРїРїРµ
 	 *
-	 * @param string userid			id пользователя
-	 * @param string name			ФИО
-	 * @param string login			Логин
-	 * @param string occupation		Должность
-	 * @param string userpic		Аватарка
-	 * @param integer groupid 		id группы. к которой принадлежит пользователь
-     * @param integer position      номер по порядку
-     * @param string info           Дополнительная информация
-	 * @return ineger               ID добавленного пользователя
+	 * @param string userid			id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param string name			Р¤РРћ
+	 * @param string login			Р›РѕРіРёРЅ
+	 * @param string occupation		Р”РѕР»Р¶РЅРѕСЃС‚СЊ
+	 * @param string userpic		РђРІР°С‚Р°СЂРєР°
+	 * @param integer groupid 		id РіСЂСѓРїРїС‹. Рє РєРѕС‚РѕСЂРѕР№ РїСЂРёРЅР°РґР»РµР¶РёС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ
+     * @param integer position      РЅРѕРјРµСЂ РїРѕ РїРѕСЂСЏРґРєСѓ
+     * @param string info           Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ
+	 * @return ineger               ID РґРѕР±Р°РІР»РµРЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	 */
 	function EditUser($id, $name, $login, $occupation, $userpic, $groupid, $position, $info)
 	{
@@ -311,7 +311,7 @@ class team
             $cfile->Delete(0,'team/'.$u['userpic']);
         }
 
-		//на всякий случай перед операцией перемещения обновим позиции всех пользователей в группе
+		//РЅР° РІСЃСЏРєРёР№ СЃР»СѓС‡Р°Р№ РїРµСЂРµРґ РѕРїРµСЂР°С†РёРµР№ РїРµСЂРµРјРµС‰РµРЅРёСЏ РѕР±РЅРѕРІРёРј РїРѕР·РёС†РёРё РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РІ РіСЂСѓРїРїРµ
 		$res = $GLOBALS['DB']->query("SELECT id, position FROM team_people WHERE groupid = ? ORDER BY position, id", $groupid);
 
 		$i = 1;
@@ -357,9 +357,9 @@ class team
 	}
 
 	/**
-	 * Удаляет пользователя
+	 * РЈРґР°Р»СЏРµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	 *
-	 * @param integer $userid		id группы
+	 * @param integer $userid		id РіСЂСѓРїРїС‹
 	 *
 	 */
 	function DeleteUser($userid)
@@ -368,7 +368,7 @@ class team
         
 		$GLOBALS['DB']->query("DELETE FROM team_people WHERE id = ?", $userid);
 
-		//на всякий случай перед операцией перемещения обновим позиции всех пользователей в группе
+		//РЅР° РІСЃСЏРєРёР№ СЃР»СѓС‡Р°Р№ РїРµСЂРµРґ РѕРїРµСЂР°С†РёРµР№ РїРµСЂРµРјРµС‰РµРЅРёСЏ РѕР±РЅРѕРІРёРј РїРѕР·РёС†РёРё РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РІ РіСЂСѓРїРїРµ
 		$res = $GLOBALS['DB']->query("SELECT id, position FROM team_people WHERE groupid = ? ORDER BY position, id", $groupid);
 
 		$i = 1;
@@ -387,9 +387,9 @@ class team
 
 	/**
 
-	 * Удаляет фото пользователя
+	 * РЈРґР°Р»СЏРµС‚ С„РѕС‚Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	 *
-	 * @param integer $id		id пользователя
+	 * @param integer $id		id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	 *
 	 */
 	function DeletePhoto($id)
@@ -403,9 +403,9 @@ class team
 	}
 
 	/**
-	 * Возвращает всех пользователей из определенной группы
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РёР· РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ РіСЂСѓРїРїС‹
 	 *
-	 * @param integer groupid		id группы
+	 * @param integer groupid		id РіСЂСѓРїРїС‹
 	 * @return array
 	 */
 	function GetGroupUsers($groupid)
@@ -414,9 +414,9 @@ class team
 	}
 
 	/**
-	 * Возвращает определенного пользователя по id
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ id
 	 *
-	 * @param integer userid		id пользователя
+	 * @param integer userid		id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	 * @return array
 	 */
 	function GetUser($userid)
@@ -425,11 +425,11 @@ class team
 	}
 
     /**
-    * Обновить фотографию пользователя
+    * РћР±РЅРѕРІРёС‚СЊ С„РѕС‚РѕРіСЂР°С„РёСЋ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     *
-    * @param    object  $foto   Фотография
+    * @param    object  $foto   Р¤РѕС‚РѕРіСЂР°С„РёСЏ
     *
-    * @return boolean           true - фото обновилось, false - ошибка
+    * @return boolean           true - С„РѕС‚Рѕ РѕР±РЅРѕРІРёР»РѕСЃСЊ, false - РѕС€РёР±РєР°
     */
     function UpdateFoto($foto) {
         $error = 0;

@@ -3,7 +3,7 @@
         <tr>
             <td  bgcolor="#ffffff" width="20"></td>
             <td  width="20"></td>
-            <td ><font color="#444444" size="3" face="arial,sans-serif"><b><a href="<?= $this->host . '/interview/'?>" style=" color:#0F71C8" target="_blank">Интервью</a></b></font></td>
+            <td ><font color="#444444" size="3" face="arial,sans-serif"><b><a href="<?= $this->host . '/interview/'?>" style=" color:#0F71C8" target="_blank">РРЅС‚РµСЂРІСЊСЋ</a></b></font></td>
             <td  width="20"></td>
             <td  bgcolor="#ffffff" width="20"></td>
         </tr>

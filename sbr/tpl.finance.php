@@ -20,8 +20,8 @@
                 <div class="b-shadow__top">
                     <div class="b-shadow__bottom">
                         <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20">
-                            <h1 class="b-shadow__title b-shadow__title_fontsize_34 b-shadow__title_padbot_15">Финансы</h1>
-                            <div class="b-layout__txt b-layout__txt_padbot_20">Эта форма — копия страницы «Финансы» в вашем профиле. Вся информация, которую вы укажете сейчас, попадет на вашу страницу «<a class="b-layout__link" href="/users/<?=$_SESSION['login']?>/setup/finance/" target="_blank">Финансы</a>». Кроме вас и администрации эти данные никто не увидит.</div>
+                            <h1 class="b-shadow__title b-shadow__title_fontsize_34 b-shadow__title_padbot_15">Р¤РёРЅР°РЅСЃС‹</h1>
+                            <div class="b-layout__txt b-layout__txt_padbot_20">Р­С‚Р° С„РѕСЂРјР° вЂ”В РєРѕРїРёСЏ СЃС‚СЂР°РЅРёС†С‹ В«Р¤РёРЅР°РЅСЃС‹В» РІ РІР°С€РµРј РїСЂРѕС„РёР»Рµ. Р’СЃСЏ РёРЅС„РѕСЂРјР°С†РёСЏ, РєРѕС‚РѕСЂСѓСЋ РІС‹ СѓРєР°Р¶РµС‚Рµ СЃРµР№С‡Р°СЃ, РїРѕРїР°РґРµС‚ РЅР° РІР°С€Сѓ СЃС‚СЂР°РЅРёС†Сѓ В«<a class="b-layout__link" href="/users/<?=$_SESSION['login']?>/setup/finance/" target="_blank">Р¤РёРЅР°РЅСЃС‹</a>В». РљСЂРѕРјРµ РІР°СЃ Рё Р°РґРјРёРЅРёСЃС‚СЂР°С†РёРё СЌС‚Рё РґР°РЅРЅС‹Рµ РЅРёРєС‚Рѕ РЅРµ СѓРІРёРґРёС‚.</div>
                             
                             <span class="ft<?=sbr::FT_PHYS?>_set" <?=$form_type==sbr::FT_JURI ? ' style="display:none"' : ''?>>
                                 <?php 
@@ -29,8 +29,8 @@
                                     $reqvs, 
                                     sbr::FT_PHYS, 
                                     'MOBILE', 
-                                    'Мобильный телефон', 
-                                    'С кодом в международном формате. Например, +7, +3', 
+                                    'РњРѕР±РёР»СЊРЅС‹Р№ С‚РµР»РµС„РѕРЅ', 
+                                    'РЎ РєРѕРґРѕРј РІ РјРµР¶РґСѓРЅР°СЂРѕРґРЅРѕРј С„РѕСЂРјР°С‚Рµ. РќР°РїСЂРёРјРµСЂ, +7, +3', 
                                     array(), 
                                     array(
                                         'theme' => 'new',
@@ -50,8 +50,8 @@
                                     $reqvs, 
                                     sbr::FT_JURI, 
                                     'MOBILE', 
-                                    'Мобильный телефон', 
-                                    'С кодом в международном формате. Например, +7, +3', 
+                                    'РњРѕР±РёР»СЊРЅС‹Р№ С‚РµР»РµС„РѕРЅ', 
+                                    'РЎ РєРѕРґРѕРј РІ РјРµР¶РґСѓРЅР°СЂРѕРґРЅРѕРј С„РѕСЂРјР°С‚Рµ. РќР°РїСЂРёРјРµСЂ, +7, +3', 
                                     array(), 
                                     array(
                                         'theme' => 'new',
@@ -68,21 +68,21 @@
                             <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table">
                                 <tbody><tr class="b-layout__tr">
                                         <td class="b-layout__left b-layout__left_width_175">
-                                            <div class="b-layout__txt">Резидентство</div>
+                                            <div class="b-layout__txt">Р РµР·РёРґРµРЅС‚СЃС‚РІРѕ</div>
                                         </td>
                                         <td class="b-layout__right b-layout__right_padbot_20">
                                             <div class="b-radio b-radio_layout_vertical">
                                                 <div class="b-radio__item b-radio__item_padbot_10">
                                                     <input type="radio" name="rez_type" class="b-radio__input" onclick="finance.switchReqvRT(<?=sbr::RT_RU?>)" value="-1" id="_rt1" <?=(int)$rez_type <= 0 ? ' checked="checked"' : ''?><?=$rt_disabled && !$stage ? ' disabled="disabled"' : ''?> />
-                                                    <label for="_rt1" class="b-radio__label b-radio__label_fontsize_13">не выбрано</label>
+                                                    <label for="_rt1" class="b-radio__label b-radio__label_fontsize_13">РЅРµ РІС‹Р±СЂР°РЅРѕ</label>
                                                 </div>
                                                 <div class="b-radio__item b-radio__item_padbot_10">
                                                     <input type="radio" name="rez_type" class="b-radio__input" onclick="finance.switchReqvRT(<?=sbr::RT_RU?>)" value="<?=sbr::RT_RU?>" id="_rt2" <?=$rez_type == sbr::RT_RU ? ' checked="checked"' : ''?><?=$rt_disabled  && !$stage ? ' disabled="disabled"' : ''?> />
-                                                    <label for="_rt2" class="b-radio__label b-radio__label_fontsize_13">резидент Российской Федерации</label>
+                                                    <label for="_rt2" class="b-radio__label b-radio__label_fontsize_13">СЂРµР·РёРґРµРЅС‚ Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё</label>
                                                 </div>
                                                 <div class="b-radio__item b-radio__item_padbot_10">
                                                     <input type="radio" name="rez_type" class="b-radio__input" onclick="finance.switchReqvRT(<?=sbr::RT_UABYKZ?>)" value="<?=sbr::RT_UABYKZ?>" id="_rt3" class="i-radio"<?=$rez_type == sbr::RT_UABYKZ ? ' checked="checked"' : ''?><?=$rt_disabled && !$stage ? ' disabled="disabled"' : ''?> />
-                                                    <label for="_rt3" class="b-radio__label b-radio__label_fontsize_13">нерезидент Российской Федерации <span style="color: #999">(бюджет «Безопасной Сделки» до <?=sbr::MAX_COST_USD_STR?> $)</span></label>
+                                                    <label for="_rt3" class="b-radio__label b-radio__label_fontsize_13">РЅРµСЂРµР·РёРґРµРЅС‚ Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё <span style="color: #999">(Р±СЋРґР¶РµС‚ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ» РґРѕ <?=sbr::MAX_COST_USD_STR?> $)</span></label>
                                                 </div>
                                             </div>
                                         </td>
@@ -91,12 +91,12 @@
 
                             <div class="b-menu b-menu_tabs b-menu_padbot_20" id="fiz_yuri_tabs">
                                 <ul class="b-menu__list b-menu__list_padleft_10">
-                                    <li class="b-menu__item <?= $form_type != sbr::FT_JURI ? "b-menu__item_active" : "" ;?>" id="lnk_<?=sbr::FT_PHYS?>_set"><a href="javascript:void(0)" class="b-menu__link" onclick="finance.switchReqvFT(<?=sbr::FT_JURI?>,<?=sbr::FT_PHYS?>)"><span class="b-menu__b1">Физическое лицо</span></a></li>
-                                    <li class="b-menu__item b-menu__item_last <?= $form_type==sbr::FT_JURI ? "b-menu__item_active" : "" ;?>" id="lnk_<?=sbr::FT_JURI?>_set"><a href="javascript:void(0)" class="b-menu__link" onclick="finance.switchReqvFT(<?=sbr::FT_PHYS?>,<?=sbr::FT_JURI?>)"><span class="b-menu__b1">Юридическое лицо или ИП</span></a></li>
+                                    <li class="b-menu__item <?= $form_type != sbr::FT_JURI ? "b-menu__item_active" : "" ;?>" id="lnk_<?=sbr::FT_PHYS?>_set"><a href="javascript:void(0)" class="b-menu__link" onclick="finance.switchReqvFT(<?=sbr::FT_JURI?>,<?=sbr::FT_PHYS?>)"><span class="b-menu__b1">Р¤РёР·РёС‡РµСЃРєРѕРµ Р»РёС†Рѕ</span></a></li>
+                                    <li class="b-menu__item b-menu__item_last <?= $form_type==sbr::FT_JURI ? "b-menu__item_active" : "" ;?>" id="lnk_<?=sbr::FT_JURI?>_set"><a href="javascript:void(0)" class="b-menu__link" onclick="finance.switchReqvFT(<?=sbr::FT_PHYS?>,<?=sbr::FT_JURI?>)"><span class="b-menu__b1">Р®СЂРёРґРёС‡РµСЃРєРѕРµ Р»РёС†Рѕ РёР»Рё РРџ</span></a></li>
                                 </ul>
                             </div>
 
-                            <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_color_c10600">Пожалуйста, заполните каждое поле этой формы. Необязательные поля подписаны отдельно.</div>
+                            <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_color_c10600">РџРѕР¶Р°Р»СѓР№СЃС‚Р°, Р·Р°РїРѕР»РЅРёС‚Рµ РєР°Р¶РґРѕРµ РїРѕР»Рµ СЌС‚РѕР№ С„РѕСЂРјС‹. РќРµРѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ РїРѕРґРїРёСЃР°РЅС‹ РѕС‚РґРµР»СЊРЅРѕ.</div>
                             
                             <span class="ft<?=sbr::FT_PHYS?>_set" <?=$form_type==sbr::FT_JURI ? ' style="display:none"' : ''?>>
                                 <?php
@@ -111,14 +111,14 @@
                                     array(
                                         'theme' => 'new',
                                         'group' => array(1,2),
-                                        'subdescr' => array(1 => 'Обязательно укажите свои реальные ФИО, это связано с ' . (is_emp() ? 'резервированием и возвратом' : 'получением') . ' денег по сделкам'),
+                                        'subdescr' => array(1 => 'РћР±СЏР·Р°С‚РµР»СЊРЅРѕ СѓРєР°Р¶РёС‚Рµ СЃРІРѕРё СЂРµР°Р»СЊРЅС‹Рµ Р¤РРћ, СЌС‚Рѕ СЃРІСЏР·Р°РЅРѕ СЃ ' . (is_emp() ? 'СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРµРј Рё РІРѕР·РІСЂР°С‚РѕРј' : 'РїРѕР»СѓС‡РµРЅРёРµРј') . ' РґРµРЅРµРі РїРѕ СЃРґРµР»РєР°Рј'),
                                     )
                                 ); 
                                 sbr::view_finance_tbl(
                                     $reqvs, 
                                     sbr::FT_PHYS, 
                                     NULL, 
-                                    'Документ, удостоверяющий личность', 
+                                    'Р”РѕРєСѓРјРµРЅС‚, СѓРґРѕСЃС‚РѕРІРµСЂСЏСЋС‰РёР№ Р»РёС‡РЅРѕСЃС‚СЊ', 
                                     '',
                                     array(),
                                     array(
@@ -127,14 +127,14 @@
                                         'abbr_block' => 'docs',
                                         'caption_expand' => true
                                         //'caption_expand' => true,
-                                        //'caption_descr'  => '&mdash; можно не заполнять'
+                                        //'caption_descr'  => '&mdash; РјРѕР¶РЅРѕ РЅРµ Р·Р°РїРѕР»РЅСЏС‚СЊ'
                                     )
                                 ); 
 
-                                // прикрепить скан
+                                // РїСЂРёРєСЂРµРїРёС‚СЊ СЃРєР°РЅ
                                 $params = array(
-                                    'file_description' => 'Файлы с изображением отсканированных страниц вашего документа, удостоверяющего личность:<br/>страница с общей информацией о владельце, кем и когда выдан.',
-                                    'button_title'  => 'Прикрепить скан',
+                                    'file_description' => 'Р¤Р°Р№Р»С‹ СЃ РёР·РѕР±СЂР°Р¶РµРЅРёРµРј РѕС‚СЃРєР°РЅРёСЂРѕРІР°РЅРЅС‹С… СЃС‚СЂР°РЅРёС† РІР°С€РµРіРѕ РґРѕРєСѓРјРµРЅС‚Р°, СѓРґРѕСЃС‚РѕРІРµСЂСЏСЋС‰РµРіРѕ Р»РёС‡РЅРѕСЃС‚СЊ:<br/>СЃС‚СЂР°РЅРёС†Р° СЃ РѕР±С‰РµР№ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ РІР»Р°РґРµР»СЊС†Рµ, РєРµРј Рё РєРѕРіРґР° РІС‹РґР°РЅ.',
+                                    'button_title'  => 'РџСЂРёРєСЂРµРїРёС‚СЊ СЃРєР°РЅ',
                                     'new_interface' => true
                                 );
                                 sbr::view_finance_files('finance_doc', $attachedFilesDoc, $attachDoc, $params);
@@ -143,7 +143,7 @@
                                     $reqvs, 
                                     sbr::FT_PHYS, 
                                     NULL, 
-                                    'Постоянное место жительства', 
+                                    'РџРѕСЃС‚РѕСЏРЅРЅРѕРµ РјРµСЃС‚Рѕ Р¶РёС‚РµР»СЊСЃС‚РІР°', 
                                     '',
                                     array(),
                                     array(
@@ -153,11 +153,11 @@
                                     )
                                 );
                                 
-                                // прикрепить скан
+                                // РїСЂРёРєСЂРµРїРёС‚СЊ СЃРєР°РЅ
                                 ob_start();
                                 $params = array(
-                                    'file_description' => 'Файл с изображением отсканированного свидетельства о пенсионном страховании.',
-                                    'button_title'  => 'Прикрепить скан',
+                                    'file_description' => 'Р¤Р°Р№Р» СЃ РёР·РѕР±СЂР°Р¶РµРЅРёРµРј РѕС‚СЃРєР°РЅРёСЂРѕРІР°РЅРЅРѕРіРѕ СЃРІРёРґРµС‚РµР»СЊСЃС‚РІР° Рѕ РїРµРЅСЃРёРѕРЅРЅРѕРј СЃС‚СЂР°С…РѕРІР°РЅРёРё.',
+                                    'button_title'  => 'РџСЂРёРєСЂРµРїРёС‚СЊ СЃРєР°РЅ',
                                     'new_interface' => true,
                                     'css_class'     => '  b-file_padtop_5'
                                 );
@@ -168,7 +168,7 @@
                                     $reqvs, 
                                     sbr::FT_PHYS, 
                                     NULL, 
-                                    'Прочие документы', 
+                                    'РџСЂРѕС‡РёРµ РґРѕРєСѓРјРµРЅС‚С‹', 
                                     '',
                                     array(),
                                     array(
@@ -183,7 +183,7 @@
                                     $reqvs, 
                                     sbr::FT_PHYS, 
                                     NULL, 
-                                    'Контактная информация', 
+                                    'РљРѕРЅС‚Р°РєС‚РЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ', 
                                     '',
                                     array(),
                                     array(
@@ -196,7 +196,7 @@
 
                                 ?>
 
-                                <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_color_c10600">Укажите хотя бы один способ вывода денег, с помощью которого вы планируете получать деньги.</div>
+                                <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_color_c10600">РЈРєР°Р¶РёС‚Рµ С…РѕС‚СЏ Р±С‹ РѕРґРёРЅ СЃРїРѕСЃРѕР± РІС‹РІРѕРґР° РґРµРЅРµРі, СЃ РїРѕРјРѕС‰СЊСЋ РєРѕС‚РѕСЂРѕРіРѕ РІС‹ РїР»Р°РЅРёСЂСѓРµС‚Рµ РїРѕР»СѓС‡Р°С‚СЊ РґРµРЅСЊРіРё.</div>
 
                                 <?php
 
@@ -204,15 +204,15 @@
                                     $reqvs, 
                                     sbr::FT_PHYS, 
                                     'BANK', 
-                                    'Банковские реквизиты', 
+                                    'Р‘Р°РЅРєРѕРІСЃРєРёРµ СЂРµРєРІРёР·РёС‚С‹', 
                                     '',
                                     array(),
                                     array(
                                         'theme' => 'new',
                                         'subdescr' => array(
-                                            20 => ( $rez_type == sbr::RT_UABYKZ ? 'Содержит 20 символов. Обратите внимание: к/с начинается на 30111810' : '' ),
-                                            29 => 'Уточните у вашего банка о необходимости этого поля',
-                                            32 => 'Заполните, только если эти данные обязательны для перевода средств в вашем банке.', 33 => 'Заполните, только если эти данные обязательны для перевода средств в вашем банке.'),
+                                            20 => ( $rez_type == sbr::RT_UABYKZ ? 'РЎРѕРґРµСЂР¶РёС‚ 20 СЃРёРјРІРѕР»РѕРІ. РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ: Рє/СЃ РЅР°С‡РёРЅР°РµС‚СЃСЏ РЅР° 30111810' : '' ),
+                                            29 => 'РЈС‚РѕС‡РЅРёС‚Рµ Сѓ РІР°С€РµРіРѕ Р±Р°РЅРєР° Рѕ РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё СЌС‚РѕРіРѕ РїРѕР»СЏ',
+                                            32 => 'Р—Р°РїРѕР»РЅРёС‚Рµ, С‚РѕР»СЊРєРѕ РµСЃР»Рё СЌС‚Рё РґР°РЅРЅС‹Рµ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹ РґР»СЏ РїРµСЂРµРІРѕРґР° СЃСЂРµРґСЃС‚РІ РІ РІР°С€РµРј Р±Р°РЅРєРµ.', 33 => 'Р—Р°РїРѕР»РЅРёС‚Рµ, С‚РѕР»СЊРєРѕ РµСЃР»Рё СЌС‚Рё РґР°РЅРЅС‹Рµ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹ РґР»СЏ РїРµСЂРµРІРѕРґР° СЃСЂРµРґСЃС‚РІ РІ РІР°С€РµРј Р±Р°РЅРєРµ.'),
                                         'caption_expand' => true
                                     )
                                 );
@@ -221,9 +221,9 @@
                                     $reqvs, 
                                     sbr::FT_PHYS, 
                                     'EL', 
-                                    'Электронные кошельки', 
+                                    'Р­Р»РµРєС‚СЂРѕРЅРЅС‹Рµ РєРѕС€РµР»СЊРєРё', 
                                     '',
-                                    array('pos' => 3, 'title' => 'Для проведения выплат Webmoney запрашивают паспортные данные'),
+                                    array('pos' => 3, 'title' => 'Р”Р»СЏ РїСЂРѕРІРµРґРµРЅРёСЏ РІС‹РїР»Р°С‚ Webmoney Р·Р°РїСЂР°С€РёРІР°СЋС‚ РїР°СЃРїРѕСЂС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ'),
                                     array(
                                         'theme'      => 'new',
                                         'caption_expand' => true
@@ -234,7 +234,7 @@
                                 ?> 
 
                                 <div class="b-layout__txt b-layout__txt_padleft_180 b-layout__txt_color_c10600">
-                                    Если вы планируете работать на сайте как юридическое лицо, не забудьте заполнить форму для <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="finance.switchReqvFT(<?=sbr::FT_PHYS?>,<?=sbr::FT_JURI?>)">юридического лица</a> (при переходе по ссылке данные физического лица не потеряются).
+                                    Р•СЃР»Рё РІС‹ РїР»Р°РЅРёСЂСѓРµС‚Рµ СЂР°Р±РѕС‚Р°С‚СЊ РЅР° СЃР°Р№С‚Рµ РєР°Рє СЋСЂРёРґРёС‡РµСЃРєРѕРµ Р»РёС†Рѕ, РЅРµ Р·Р°Р±СѓРґСЊС‚Рµ Р·Р°РїРѕР»РЅРёС‚СЊ С„РѕСЂРјСѓ РґР»СЏ <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="finance.switchReqvFT(<?=sbr::FT_PHYS?>,<?=sbr::FT_JURI?>)">СЋСЂРёРґРёС‡РµСЃРєРѕРіРѕ Р»РёС†Р°</a> (РїСЂРё РїРµСЂРµС…РѕРґРµ РїРѕ СЃСЃС‹Р»РєРµ РґР°РЅРЅС‹Рµ С„РёР·РёС‡РµСЃРєРѕРіРѕ Р»РёС†Р° РЅРµ РїРѕС‚РµСЂСЏСЋС‚СЃСЏ).
                                 </div>
                             </span>
                             
@@ -257,7 +257,7 @@
                                     $reqvs, 
                                     sbr::FT_JURI, 
                                     NULL, 
-                                    'Регистрация организации', 
+                                    'Р РµРіРёСЃС‚СЂР°С†РёСЏ РѕСЂРіР°РЅРёР·Р°С†РёРё', 
                                     '',
                                     array(),
                                     array(
@@ -271,15 +271,15 @@
                                     $reqvs, 
                                     sbr::FT_JURI, 
                                     NULL, 
-                                    'Реквизиты организации', 
+                                    'Р РµРєРІРёР·РёС‚С‹ РѕСЂРіР°РЅРёР·Р°С†РёРё', 
                                     '',
                                     array(),
                                     array(
                                         'theme' => 'new',
                                         'group' => array(10,17),
                                         'subdescr' => array(
-                                            12 => 'Заполните, только если эти данные обязательны для перевода средств в вашем банке.',
-                                            17 => 'Заполните, только если эти данные обязательны для перевода средств в вашем банке.'
+                                            12 => 'Р—Р°РїРѕР»РЅРёС‚Рµ, С‚РѕР»СЊРєРѕ РµСЃР»Рё СЌС‚Рё РґР°РЅРЅС‹Рµ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹ РґР»СЏ РїРµСЂРµРІРѕРґР° СЃСЂРµРґСЃС‚РІ РІ РІР°С€РµРј Р±Р°РЅРєРµ.',
+                                            17 => 'Р—Р°РїРѕР»РЅРёС‚Рµ, С‚РѕР»СЊРєРѕ РµСЃР»Рё СЌС‚Рё РґР°РЅРЅС‹Рµ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹ РґР»СЏ РїРµСЂРµРІРѕРґР° СЃСЂРµРґСЃС‚РІ РІ РІР°С€РµРј Р±Р°РЅРєРµ.'
                                         ),
                                         'caption_expand' => true
 
@@ -292,16 +292,16 @@
                                     $reqvs, 
                                     sbr::FT_JURI, 
                                     'BANK', 
-                                    'Банковские реквизиты', 
+                                    'Р‘Р°РЅРєРѕРІСЃРєРёРµ СЂРµРєРІРёР·РёС‚С‹', 
                                     '',
                                     array(),
                                     array(
                                         'theme' => 'new',
                                         'caption_expand' => true,
                                         'subdescr' => array(
-                                            20 => ( $rez_type == sbr::RT_UABYKZ ? 'Содержит 20 символов. Обратите внимание: к/с начинается на 30111810' : '' ),
-                                            28 => 'БИК — Банковский Идентификационный Код, состоит из 9 цифр. Уточните у вашего банка о необходимости этого поля',
-                                            29 => 'Уточните у вашего банка о необходимости этого поля'
+                                            20 => ( $rez_type == sbr::RT_UABYKZ ? 'РЎРѕРґРµСЂР¶РёС‚ 20 СЃРёРјРІРѕР»РѕРІ. РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ: Рє/СЃ РЅР°С‡РёРЅР°РµС‚СЃСЏ РЅР° 30111810' : '' ),
+                                            28 => 'Р‘РРљ вЂ” Р‘Р°РЅРєРѕРІСЃРєРёР№ РРґРµРЅС‚РёС„РёРєР°С†РёРѕРЅРЅС‹Р№ РљРѕРґ, СЃРѕСЃС‚РѕРёС‚ РёР· 9 С†РёС„СЂ. РЈС‚РѕС‡РЅРёС‚Рµ Сѓ РІР°С€РµРіРѕ Р±Р°РЅРєР° Рѕ РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё СЌС‚РѕРіРѕ РїРѕР»СЏ',
+                                            29 => 'РЈС‚РѕС‡РЅРёС‚Рµ Сѓ РІР°С€РµРіРѕ Р±Р°РЅРєР° Рѕ РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё СЌС‚РѕРіРѕ РїРѕР»СЏ'
                                         )
                                     )
                                 ); 
@@ -311,28 +311,28 @@
                                     $reqvs, 
                                     sbr::FT_JURI, 
                                     NULL, 
-                                    'Контактная информация', 
+                                    'РљРѕРЅС‚Р°РєС‚РЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ', 
                                     '',
                                     array(),
                                     array(
                                         'theme' => 'new',
                                         'group' => array(30,33),
                                         'subdescr' => array(
-                                            32 => 'Укажите, если есть'
+                                            32 => 'РЈРєР°Р¶РёС‚Рµ, РµСЃР»Рё РµСЃС‚СЊ'
                                         ),
                                         'caption_expand' => true
                                     )
                                 ); 
                                 ?>
                                 <div class="b-layout__txt b-layout__txt_padleft_180 b-layout__txt_color_c10600">
-                                    Если вы планируете работать на сайте как физическое лицо, не забудьте заполнить форму для <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="finance.switchReqvFT(<?=sbr::FT_JURI?>,<?=sbr::FT_PHYS?>)">физического лица</a> (при переходе по ссылке данные юридического лица не потеряются).
+                                    Р•СЃР»Рё РІС‹ РїР»Р°РЅРёСЂСѓРµС‚Рµ СЂР°Р±РѕС‚Р°С‚СЊ РЅР° СЃР°Р№С‚Рµ РєР°Рє С„РёР·РёС‡РµСЃРєРѕРµ Р»РёС†Рѕ, РЅРµ Р·Р°Р±СѓРґСЊС‚Рµ Р·Р°РїРѕР»РЅРёС‚СЊ С„РѕСЂРјСѓ РґР»СЏ <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="finance.switchReqvFT(<?=sbr::FT_JURI?>,<?=sbr::FT_PHYS?>)">С„РёР·РёС‡РµСЃРєРѕРіРѕ Р»РёС†Р°</a> (РїСЂРё РїРµСЂРµС…РѕРґРµ РїРѕ СЃСЃС‹Р»РєРµ РґР°РЅРЅС‹Рµ СЋСЂРёРґРёС‡РµСЃРєРѕРіРѕ Р»РёС†Р° РЅРµ РїРѕС‚РµСЂСЏСЋС‚СЃСЏ).
                                 </div>
                             </span>
                             
                             <div class="b-buttons b-buttons_padtop_40 b-buttons_padbot_20 b-buttons_padleft_180">
-                                <a class="b-button b-button_flat b-button_flat_green finance-save"  href="javascript:void(0)">Сохранить</a>
-                                <span class="b-buttons__txt b-buttons__txt_padleft_10">или</span>
-                                <a class="b-buttons__link b-buttons__link_dot_c10601 finance-close" href="javascript:void(0)">закрыть, не сохраняя</a>
+                                <a class="b-button b-button_flat b-button_flat_green finance-save"  href="javascript:void(0)">РЎРѕС…СЂР°РЅРёС‚СЊ</a>
+                                <span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё</span>
+                                <a class="b-buttons__link b-buttons__link_dot_c10601 finance-close" href="javascript:void(0)">Р·Р°РєСЂС‹С‚СЊ, РЅРµ СЃРѕС…СЂР°РЅСЏСЏ</a>
                             </div>
                         </div>
                     </div>

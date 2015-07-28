@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/CFile.php");
 
 /**
  * Class TServiceMsgModel
- * Модель переписки в заказе типовой услуги
+ * РњРѕРґРµР»СЊ РїРµСЂРµРїРёСЃРєРё РІ Р·Р°РєР°Р·Рµ С‚РёРїРѕРІРѕР№ СѓСЃР»СѓРіРё
  */
 class TServiceMsgModel extends atservices_model {
         
@@ -17,30 +17,30 @@ class TServiceMsgModel extends atservices_model {
     private $TABLE_ATTACHEDFILES    = 'attachedfiles';
 
     /**
-     * Куда сохраняет файлы сообщений заказа
-     * Пример: kazakov/private/orders/777/
+     * РљСѓРґР° СЃРѕС…СЂР°РЅСЏРµС‚ С„Р°Р№Р»С‹ СЃРѕРѕР±С‰РµРЅРёР№ Р·Р°РєР°Р·Р°
+     * РџСЂРёРјРµСЂ: kazakov/private/orders/777/
      */
     const UPLOAD_FILE_PATH          = "%s/private/orders/%d";
     
     /**
-    * Максимальный размер файла в байтmsgsCntах
+    * РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р° РІ Р±Р°Р№С‚msgsCntР°С…
     *
     * @var integer
     */
    const MAX_FILE_SIZE = 5242880;
 
    /**
-    * Максимальное количество прикрепленных файлов
+    * РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРёРєСЂРµРїР»РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ
     *
     * @var integer
     */
    const MAX_FILES = 10;
 
     /**
-     * Список сообщений в заказе
+     * РЎРїРёСЃРѕРє СЃРѕРѕР±С‰РµРЅРёР№ РІ Р·Р°РєР°Р·Рµ
      * 
      * @param int $order_id
-     * @return array - список сообщений, можно ограничить постраничностью
+     * @return array - СЃРїРёСЃРѕРє СЃРѕРѕР±С‰РµРЅРёР№, РјРѕР¶РЅРѕ РѕРіСЂР°РЅРёС‡РёС‚СЊ РїРѕСЃС‚СЂР°РЅРёС‡РЅРѕСЃС‚СЊСЋ
      */
     public function getList($order_id)
     {
@@ -71,10 +71,10 @@ class TServiceMsgModel extends atservices_model {
     }
 
     /**
-     * Новые непрочитанные сообщения в заказе
+     * РќРѕРІС‹Рµ РЅРµРїСЂРѕС‡РёС‚Р°РЅРЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ РІ Р·Р°РєР°Р·Рµ
      * 
      * @param int $order_id
-     * @return array - список сообщений
+     * @return array - СЃРїРёСЃРѕРє СЃРѕРѕР±С‰РµРЅРёР№
      */
     public function getListNew($order_id)
     {
@@ -91,7 +91,7 @@ class TServiceMsgModel extends atservices_model {
             ORDER BY
                 m.sent DESC
         ",$order_id, get_uid(false));
-        //@todo: использование тут get_uid - это плохо!     
+        //@todo: РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ С‚СѓС‚ get_uid - СЌС‚Рѕ РїР»РѕС…Рѕ!     
 
 
         $rows = $this->db()->rows($sql);
@@ -124,7 +124,7 @@ class TServiceMsgModel extends atservices_model {
     
     
     /**
-     * Получить сообщение
+     * РџРѕР»СѓС‡РёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ
      * 
      * @param type $id
      * @return type
@@ -155,7 +155,7 @@ class TServiceMsgModel extends atservices_model {
 
 
     /**
-     * Кол-во сообщений в заказе для юзера
+     * РљРѕР»-РІРѕ СЃРѕРѕР±С‰РµРЅРёР№ РІ Р·Р°РєР°Р·Рµ РґР»СЏ СЋР·РµСЂР°
      * 
      * @param type $order_id
      * @param type $user_id
@@ -180,7 +180,7 @@ class TServiceMsgModel extends atservices_model {
 
 
     /**
-     * Получить кол-во новых сообщений для юзера
+     * РџРѕР»СѓС‡РёС‚СЊ РєРѕР»-РІРѕ РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№ РґР»СЏ СЋР·РµСЂР°
      * 
      * @param type $uid
      * @return type
@@ -196,7 +196,7 @@ class TServiceMsgModel extends atservices_model {
 
 
     /**
-     * Добавить сообщение в заказе ТУ
+     * Р”РѕР±Р°РІРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ РІ Р·Р°РєР°Р·Рµ РўРЈ
      * 
      * @param type $order_id
      * @param type $author_id
@@ -220,7 +220,7 @@ class TServiceMsgModel extends atservices_model {
 
 
     /**
-     * Приаттачить загруженные файлы к сообщению
+     * РџСЂРёР°С‚С‚Р°С‡РёС‚СЊ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Рµ С„Р°Р№Р»С‹ Рє СЃРѕРѕР±С‰РµРЅРёСЋ
      * 
      * @param type $sess
      * @param type $msg_id
@@ -248,7 +248,7 @@ class TServiceMsgModel extends atservices_model {
 
 
     /**
-     * Получить список файлов сообщения
+     * РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє С„Р°Р№Р»РѕРІ СЃРѕРѕР±С‰РµРЅРёСЏ
      *  
      * @param type $msg_id
      * @return type
@@ -261,7 +261,7 @@ class TServiceMsgModel extends atservices_model {
 
 
     /**
-     * Пометить сообщения как прочитанные
+     * РџРѕРјРµС‚РёС‚СЊ СЃРѕРѕР±С‰РµРЅРёСЏ РєР°Рє РїСЂРѕС‡РёС‚Р°РЅРЅС‹Рµ
      * 
      * @param type $order_id
      * @param type $uid
@@ -272,7 +272,7 @@ class TServiceMsgModel extends atservices_model {
     }
         
     /**
-     * Получает список сообщений, отправленных до указанной даты
+     * РџРѕР»СѓС‡Р°РµС‚ СЃРїРёСЃРѕРє СЃРѕРѕР±С‰РµРЅРёР№, РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… РґРѕ СѓРєР°Р·Р°РЅРЅРѕР№ РґР°С‚С‹
      * @param type $order_id
      * @param type $date
      * @return type
@@ -301,7 +301,7 @@ class TServiceMsgModel extends atservices_model {
     
     
     /**
-     * Получить директорию для загружаемого файла
+     * РџРѕР»СѓС‡РёС‚СЊ РґРёСЂРµРєС‚РѕСЂРёСЋ РґР»СЏ Р·Р°РіСЂСѓР¶Р°РµРјРѕРіРѕ С„Р°Р№Р»Р°
      * 
      * @param type $order_id
      * @param type $sess
@@ -317,8 +317,8 @@ class TServiceMsgModel extends atservices_model {
                 array($order_id, $sess), 
                 $uid);
 
-        //Если проверка принадлежности по хешу неудалась 
-        //то пробуем получить через БД
+        //Р•СЃР»Рё РїСЂРѕРІРµСЂРєР° РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚Рё РїРѕ С…РµС€Сѓ РЅРµСѓРґР°Р»Р°СЃСЊ 
+        //С‚Рѕ РїСЂРѕР±СѓРµРј РїРѕР»СѓС‡РёС‚СЊ С‡РµСЂРµР· Р‘Р”
         if ($hash !== $_hash) {
             require_once(ABS_PATH . "/tu/models/TServiceOrderModel.php");
             $isMember = TServiceOrderModel::model()->isOrderMember($order_id, $uid);
@@ -335,7 +335,7 @@ class TServiceMsgModel extends atservices_model {
 
 
     /**
-     * Создаем сами себя
+     * РЎРѕР·РґР°РµРј СЃР°РјРё СЃРµР±СЏ
 	 * @return TServiceModel
 	 */
 	public static function model()

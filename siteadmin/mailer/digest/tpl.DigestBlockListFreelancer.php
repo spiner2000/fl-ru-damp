@@ -3,7 +3,7 @@
         <tr>
             <td  bgcolor="#ffffff" width="20"></td>
             <td  width="20"></td>
-            <td ><font color="#444444" size="3" face="arial,sans-serif"><b><a href="<?= $this->host.'/freelancers/'?>" style=" color:#0F71C8" target="_blank">Топ <?= $this->getListSize();?></a> рекомендуемых фрилансеров</b></font></td>
+            <td ><font color="#444444" size="3" face="arial,sans-serif"><b><a href="<?= $this->host.'/freelancers/'?>" style=" color:#0F71C8" target="_blank">РўРѕРї <?= $this->getListSize();?></a> СЂРµРєРѕРјРµРЅРґСѓРµРјС‹С… С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</b></font></td>
             <td  width="20"></td>
             <td  bgcolor="#ffffff" width="20"></td>
         </tr>
@@ -33,7 +33,7 @@
             <td >
                 <font color="#000000" size="2" face="arial,sans-serif"><a href="<?= $this->host; ?>/users/<?= $user['login']?>" style="color:#000000" target="_blank"><?= ($user['uname'] . " ". $user['usurname']); ?></a></font><br>
                 <font color="#fd6c30" size="2" face="arial,sans-serif">[<a href="<?= $this->host; ?>/users/<?= $user['login']?>" style="color:#fd6c30" target="_blank"><?= $user['login']?></a>]</font><br>
-                <font color="#444444" size="1" face="arial,sans-serif"><?= professions::GetProfNameWP($user['spec'], ' / ', 'Нет специализации', false)?></font>
+                <font color="#444444" size="1" face="arial,sans-serif"><?= professions::GetProfNameWP($user['spec'], ' / ', 'РќРµС‚ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё', false)?></font>
             </td>
             <?= ( $i %2 != 0 ? '<td  width="20">&nbsp;</td>' : ""); ?>
             

@@ -25,12 +25,12 @@
   if(!($joinedComms = commune::GetCommunes(NULL, NULL, $uid, commune::OM_CM_JOINED)))
     $joinedComms = array();
 
-  // Все сообщества, доступные пользователю.
+  // Р’СЃРµ СЃРѕРѕР±С‰РµСЃС‚РІР°, РґРѕСЃС‚СѓРїРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ.
   $communes = array();
   foreach($myComms as $comm) $communes[] = $comm;
   foreach($joinedComms as $comm) $communes[] = $comm;
 
-  // Блоги
+  // Р‘Р»РѕРіРё
   if(!($blog_grs=blogs::GetThemes($error, 1)))
     $blog_grs = array();
 
@@ -50,8 +50,8 @@
 
   $DB = new DB('master');
 
-  // Отбираем среди выбранных ранее сообществ в ленте, те которые до сих пор остаются
-  // доступными ему для просмотра в ленте (его могли удалить или забанить). А также заполняем массив user_mod-ов на каждое из сообществ.
+  // РћС‚Р±РёСЂР°РµРј СЃСЂРµРґРё РІС‹Р±СЂР°РЅРЅС‹С… СЂР°РЅРµРµ СЃРѕРѕР±С‰РµСЃС‚РІ РІ Р»РµРЅС‚Рµ, С‚Рµ РєРѕС‚РѕСЂС‹Рµ РґРѕ СЃРёС… РїРѕСЂ РѕСЃС‚Р°СЋС‚СЃСЏ
+  // РґРѕСЃС‚СѓРїРЅС‹РјРё РµРјСѓ РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° РІ Р»РµРЅС‚Рµ (РµРіРѕ РјРѕРіР»Рё СѓРґР°Р»РёС‚СЊ РёР»Рё Р·Р°Р±Р°РЅРёС‚СЊ). Рђ С‚Р°РєР¶Рµ Р·Р°РїРѕР»РЅСЏРµРј РјР°СЃСЃРёРІ user_mod-РѕРІ РЅР° РєР°Р¶РґРѕРµ РёР· СЃРѕРѕР±С‰РµСЃС‚РІ.
   if($lenta && $lenta['communes'] && !empty($lenta['communes']))
   {
     $i=0;
@@ -173,7 +173,7 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
 
 
 
-					<h1 id='hh' class="b-page__title">Лента</h1>
+					<h1 id='hh' class="b-page__title">Р›РµРЅС‚Р°</h1>
 					<div class="page-lenta">
 						<div class="p-lenta-in c">
                             <a name="lentatop"></a>
@@ -185,7 +185,7 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
                             foreach($items as $item) {
                                 switch ($item['item_type']) {
                                     case '2':
-                                    // Сообщества
+                                    // РЎРѕРѕР±С‰РµСЃС‚РІР°
                                     $top = $item;
                                     $user_mod = $user_comm_mods[$top['commune_id']];
                                     if( ($top['member_is_banned'] && !($user_mod & (commune::MOD_ADMIN | commune::MOD_COMM_AUTHOR | commune::MOD_COMM_MANAGER)))
@@ -210,7 +210,7 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
 									<ul class="lo-p">
 										<li class="lo-s">
 											<div class="b-layout_bordrad_3">
-												<a href="" class="lnk-dot-666">Сообщества</a>
+												<a href="" class="lnk-dot-666">РЎРѕРѕР±С‰РµСЃС‚РІР°</a>
 											</div>
 										</li>
 										<li class="post-f-fav">
@@ -278,8 +278,8 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
 				<? if (!$top['poll_votes'] && $user_id && $top['poll_closed'] != 't' && $top['commune_blocked'] != 't' && !$top['user_is_banned'] && !$top['member_is_banned'] && $is_member) { ?>
                 
                     <div class="b-buttons b-buttons_inline-block">
-					<span id="poll-btn-vote-<?=$top['theme_id']?>"><a class="b-button b-button_flat b-button_flat_grey" href="javascript: return false;" onclick="poll.vote('Commune', <?=$top['theme_id']?>); return false;">Ответить</a>&nbsp;&nbsp;&nbsp;</span>
-					<span id="poll-btn-result-<?=$top['theme_id']?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showResult('Commune', <?=$top['theme_id']?>); return false;">Посмотреть результаты</a>&nbsp;&nbsp;&nbsp;</span>
+					<span id="poll-btn-vote-<?=$top['theme_id']?>"><a class="b-button b-button_flat b-button_flat_grey" href="javascript: return false;" onclick="poll.vote('Commune', <?=$top['theme_id']?>); return false;">РћС‚РІРµС‚РёС‚СЊ</a>&nbsp;&nbsp;&nbsp;</span>
+					<span id="poll-btn-result-<?=$top['theme_id']?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showResult('Commune', <?=$top['theme_id']?>); return false;">РџРѕСЃРјРѕС‚СЂРµС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹</a>&nbsp;&nbsp;&nbsp;</span>
                     </div>
                 
                 
@@ -319,7 +319,7 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
                 }
                     if (sizeof($top['attach']) > 1) {
                         $cntfl = count($top['attach'])-1;
-                        echo "<a href=\"/commune/?id=".$top['commune_id']."&site=Topic&post=".$top['id']."&om=".commune::OM_TH_NEW."\" style=\"color:#003399\"><b>Внутри еще $cntfl фай".ending($cntfl, "л", "ла", "лов")."</b></a><br/><br/>";
+                        echo "<a href=\"/commune/?id=".$top['commune_id']."&site=Topic&post=".$top['id']."&om=".commune::OM_TH_NEW."\" style=\"color:#003399\"><b>Р’РЅСѓС‚СЂРё РµС‰Рµ $cntfl С„Р°Р№".ending($cntfl, "Р»", "Р»Р°", "Р»РѕРІ")."</b></a><br/><br/>";
                     }
                     
              }?>
@@ -338,7 +338,7 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
                             <?
                                     break;
                                     case '1':
-                                      // Портфолио
+                                      // РџРѕСЂС‚С„РѕР»РёРѕ
                                       $work = $item;
                                       $is_fav = (isset($favs['PF'.$work['portfolio_id']]) ? 1 : 0);
                                       $msg_id = $work['portfolio_id'];
@@ -347,7 +347,7 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
 									<ul class="lo-p">
 										<li class="lo-s">
 											<div class="b-layout_bordrad_3">
-												<a href="" class="lnk-dot-666">Работы</a>
+												<a href="" class="lnk-dot-666">Р Р°Р±РѕС‚С‹</a>
 											</div>
 										</li>
 										<li class="post-f-fav">
@@ -375,7 +375,7 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
                             <?
                                 break;
                                     case '4':
-                                        // Блоги
+                                        // Р‘Р»РѕРіРё
                                     $item['thread_id'] = $item['theme_id'];
                                     $sql = "SELECT * FROM blogs_poll_answers WHERE thread_id IN (".$item['thread_id'].") ORDER BY id";
                         			$res = $DB->rows($sql);
@@ -391,7 +391,7 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
 									<ul class="lo-p">
 										<li class="lo-s">
 											<div class="b-layout_bordrad_3">
-												<a href="" class="lnk-dot-666">Блоги</a>
+												<a href="" class="lnk-dot-666">Р‘Р»РѕРіРё</a>
 											</div>
 										</li>
 										<li class="post-f-fav" style="visibility: hidden;">
@@ -457,8 +457,8 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
 				<? if (!$item['poll_votes'] && $user_id && $item['poll_closed'] != 't') { ?>
                 
                     <div class="b-buttons b-buttons_inline-block">
-					<span id="poll-btn-vote-<?=$item['thread_id']?>"><a class="b-button b-button_flat b-button_flat_grey" href="javascript: return false;" onclick="poll.vote('Blogs', <?=$item['thread_id']?>); return false;">Ответить</a>&nbsp;&nbsp;&nbsp;</span>
-					<span id="poll-btn-result-<?=$item['thread_id']?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showResult('Blogs', <?=$item['thread_id']?>); return false;">Посмотреть результаты</a>&nbsp;&nbsp;&nbsp;</span>
+					<span id="poll-btn-vote-<?=$item['thread_id']?>"><a class="b-button b-button_flat b-button_flat_grey" href="javascript: return false;" onclick="poll.vote('Blogs', <?=$item['thread_id']?>); return false;">РћС‚РІРµС‚РёС‚СЊ</a>&nbsp;&nbsp;&nbsp;</span>
+					<span id="poll-btn-result-<?=$item['thread_id']?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showResult('Blogs', <?=$item['thread_id']?>); return false;">РџРѕСЃРјРѕС‚СЂРµС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹</a>&nbsp;&nbsp;&nbsp;</span>
                     </div>
                 
 				<? } else { ?>
@@ -525,7 +525,7 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
 
                         <div class="pager">
                         <?
-    	                // Страницы
+    	                // РЎС‚СЂР°РЅРёС†С‹
     	                $pages = ceil(($allWorkCount + $allThemesCount) / lenta::MAX_ON_PAGE);
     	                if ($pages > 1){
     	                	$maxpages = $pages;
@@ -542,14 +542,14 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
     	                	}
     	                	$sBox = '';
     	                	if ($page == 1){
-    	                		//$sBox .= '<span class="page-back" id="nav_pre_not_active1">&larr;&nbsp;&nbsp;предыдущая</span>';
+    	                		//$sBox .= '<span class="page-back" id="nav_pre_not_active1">&larr;&nbsp;&nbsp;РїСЂРµРґС‹РґСѓС‰Р°СЏ</span>';
     	                	}else {
     	                		$sBox .= "<input type=\"hidden\" id=\"pre_navigation_link1\" value=\"".($sHref.($page-1))."\"/>";
-    	                		$sBox .= "<span class=\"page-back\">&larr;&nbsp;&nbsp;<a href=\"".($sHref.($page-1))."\">предыдущая</a></span>";
+    	                		$sBox .= "<span class=\"page-back\">&larr;&nbsp;&nbsp;<a href=\"".($sHref.($page-1))."\">РїСЂРµРґС‹РґСѓС‰Р°СЏ</a></span>";
     	                	}
     	                	$sBox .= '';
 
-    	                	//в начале
+    	                	//РІ РЅР°С‡Р°Р»Рµ
     	                	if ($page <= 10) {
     	                		$sBox .= buildNavigation($page, 1, ($pages>10)?($page+4):$pages, $sHref);
     	                		if ($pages > 15) {
@@ -557,7 +557,7 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
     	                			//$sBox .= buildNavigation($page, $pages-5, $pages, $sHref);
     	                		}
     	                	}
-    	                	//в конце
+    	                	//РІ РєРѕРЅС†Рµ
     	                	elseif ($page >= $pages-10) {
     	                		$sBox .= buildNavigation($page, 1, 5, $sHref);
     	                		$sBox .= '&nbsp;...';
@@ -586,17 +586,17 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
     	                	<?        }*/
                         $sBox .= '';
                         if ($page == $pages){
-                          //$sBox .= "<span class=\"page-next\" id=\"nav_next_not_active1\">следующая&nbsp;&nbsp;&rarr;</span>";
+                          //$sBox .= "<span class=\"page-next\" id=\"nav_next_not_active1\">СЃР»РµРґСѓСЋС‰Р°СЏ&nbsp;&nbsp;&rarr;</span>";
                         }else {
                           $sBox .= "<input type=\"hidden\" id=\"next_navigation_link1\" value=\"".($sHref.($page+1))."\"/>";
-                          $sBox .= "<span class=\"page-next\" id=\"nav_next_not_active1\"><a href=\"".($sHref.($page+1))."\">следующая</a>&nbsp;&nbsp;&rarr;</span>";
+                          $sBox .= "<span class=\"page-next\" id=\"nav_next_not_active1\"><a href=\"".($sHref.($page+1))."\">СЃР»РµРґСѓСЋС‰Р°СЏ</a>&nbsp;&nbsp;&rarr;</span>";
                         }
                         $sBox .= '';
                         $sBox .= '';
     	                }
     	                $sBox .= '';
     	                echo $sBox;
-    	                        // Страницы закончились?>
+    	                        // РЎС‚СЂР°РЅРёС†С‹ Р·Р°РєРѕРЅС‡РёР»РёСЃСЊ?>
     	                  
                     </span>
                     <?php
@@ -631,15 +631,15 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
 											<label for="idCBMyRec">
                                                 <input type="checkbox" disabled="disabled" class="i-chk" id="idCBMyRec" name="my_team" <?=($lenta && $lenta['my_team_checked']=='t' ? ' checked="checked"' : '')?> onClick="xajax_Lenta_Save(xajax.getFormValues('lentaForm')); disable_lenta_cats_checkbox();" />
                                                 <? if($user_mod & commune::MOD_EMPLOYER) { ?>
-                                                    Моя команда
+                                                    РњРѕСЏ РєРѕРјР°РЅРґР°
                                                 <? } else { ?>
-                                                    Избранные мной
+                                                    РР·Р±СЂР°РЅРЅС‹Рµ РјРЅРѕР№
                                                 <? } ?>
                                             </label>
 										</div>
 										<ul>
 											<li>
-												<label><input type="checkbox" disabled="disabled" id="all_cat_lenta_portfolio" class="i-chk" <?=((count($lenta['prof_groups'])>0)?'checked="checked"':'')?> onClick="toggle_all_checkbox('cat_lenta_portfolio'); xajax_Lenta_Save(xajax.getFormValues('lentaForm')); disable_lenta_cats_checkbox();" /><a href="" class="lnk-dot-blue" onClick="toggle_visibility('cat_lenta_portfolio'); return false;">Новые работы</a></label>
+												<label><input type="checkbox" disabled="disabled" id="all_cat_lenta_portfolio" class="i-chk" <?=((count($lenta['prof_groups'])>0)?'checked="checked"':'')?> onClick="toggle_all_checkbox('cat_lenta_portfolio'); xajax_Lenta_Save(xajax.getFormValues('lentaForm')); disable_lenta_cats_checkbox();" /><a href="" class="lnk-dot-blue" onClick="toggle_visibility('cat_lenta_portfolio'); return false;">РќРѕРІС‹Рµ СЂР°Р±РѕС‚С‹</a></label>
 												<ul id="cat_lenta_portfolio" style="display: none;">
                                                     <?
                                                     foreach($groups as $grp) {
@@ -653,7 +653,7 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
 												</ul>
 											</li>
 											<li>
-												<label><input type="checkbox" disabled="disabled" id="all_cat_lenta_commune" <?=((count($lenta['communes'])>0)?'checked="checked"':'')?> class="i-chk" onClick="toggle_all_checkbox('cat_lenta_commune'); xajax_Lenta_Save(xajax.getFormValues('lentaForm')); disable_lenta_cats_checkbox();" /><a href="" onClick="toggle_visibility('cat_lenta_commune'); return false;" class="lnk-dot-blue">Сообщества</a></label>
+												<label><input type="checkbox" disabled="disabled" id="all_cat_lenta_commune" <?=((count($lenta['communes'])>0)?'checked="checked"':'')?> class="i-chk" onClick="toggle_all_checkbox('cat_lenta_commune'); xajax_Lenta_Save(xajax.getFormValues('lentaForm')); disable_lenta_cats_checkbox();" /><a href="" onClick="toggle_visibility('cat_lenta_commune'); return false;" class="lnk-dot-blue">РЎРѕРѕР±С‰РµСЃС‚РІР°</a></label>
 												<ul id="cat_lenta_commune" style="display:none;">
                                                     <?
                                                     if(count($communes)) {
@@ -670,7 +670,7 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
 											</li>
                                             <? if(BLOGS_CLOSED == false) { ?>
 											<li>
-												<label><input type="checkbox" disabled="disabled" id="all_cat_lenta_blogs" <?=((count($lenta['blog_grs'])>0)?'checked="checked"':'')?> class="i-chk" onClick="toggle_all_checkbox('cat_lenta_blogs'); xajax_Lenta_Save(xajax.getFormValues('lentaForm')); disable_lenta_cats_checkbox();" /><a href="" onClick="toggle_visibility('cat_lenta_blogs'); return false;" class="lnk-dot-blue">Блоги</a></label>
+												<label><input type="checkbox" disabled="disabled" id="all_cat_lenta_blogs" <?=((count($lenta['blog_grs'])>0)?'checked="checked"':'')?> class="i-chk" onClick="toggle_all_checkbox('cat_lenta_blogs'); xajax_Lenta_Save(xajax.getFormValues('lentaForm')); disable_lenta_cats_checkbox();" /><a href="" onClick="toggle_visibility('cat_lenta_blogs'); return false;" class="lnk-dot-blue">Р‘Р»РѕРіРё</a></label>
 												<ul id="cat_lenta_blogs" style="display:none;">
                                                     <?
                                                     if(count($blog_grs)) {
@@ -698,7 +698,7 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
 								<div class="favorites b-layout_bord_c6 b-layout_bordrad_3 b-layout b-layout_margbot_20">
 									<div class="bm-in">
 										<span class="bm-num" id="lenta_count_favs"><?=count($favs)?></span>
-										<h3><a href="javascript: toggle_visibility('lenta_fav_sortby'); toggle_visibility('lenta_fav_list');" class="lnk-dot-blue">Закладки</a></h3>
+										<h3><a href="javascript: toggle_visibility('lenta_fav_sortby'); toggle_visibility('lenta_fav_list');" class="lnk-dot-blue">Р—Р°РєР»Р°РґРєРё</a></h3>
 										<div class="fav-sort " id="lenta_fav_sortby" style="display:none;">
                                             <? if ($favs): ?>
                                                 <? if ($_COOKIE['lenta_fav_order'] != ""): ?>
@@ -718,7 +718,7 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
                                                 <?endif;?>
                                             <?endif;?>
                                             <div id="lenta_fav_sort_by" <?=($favs?'':'style="display:none;"')?>>
-    											<strong>Сортировка по</strong> 
+    											<strong>РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ</strong> 
                                                 <div id="fav_order">
                                                     <div id="fav_order_float" style="display:none;position:absolute;top:2px;z-index:10"></div>
                                                     <a href="javascript:void(0)" onclick="ShowFavOrderFloatLenta()"><script type="text/javascript">document.write(fav_orders[order_now])</script>&nbsp;<img src="/images/ico_fav_arrow.gif" alt="" /></a>
@@ -726,7 +726,7 @@ if($all_groups_check==count($groups) && $all_groups_check!=0) { $all_groups_chec
                                             </div>
 										</div>
                                         <ul class="fav-list" id="lenta_fav_list" style="display:none;">
-                                            <?=($favs?__lentaPrntFavs($favs, $uid):"Нет закладок")?>
+                                            <?=($favs?__lentaPrntFavs($favs, $uid):"РќРµС‚ Р·Р°РєР»Р°РґРѕРє")?>
                                         </ul>
 									</div>
 								</div>

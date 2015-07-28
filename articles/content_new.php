@@ -1,6 +1,6 @@
 <?php
 /**
- * Форма добавления статьи
+ * Р¤РѕСЂРјР° РґРѕР±Р°РІР»РµРЅРёСЏ СЃС‚Р°С‚СЊРё
  */
 ?>
 <?php
@@ -53,23 +53,23 @@ window.addEvent('domready', function() {
         });
     });
 </script>
-<h2>Статьи и интервью</h2>
+<h2>РЎС‚Р°С‚СЊРё Рё РёРЅС‚РµСЂРІСЊСЋ</h2>
 <? include($mpath . '/tabs.php'); ?>
 <div class="page-interview">
     <div class="tnav-interview">
-        <a class="b-layout__link" href="./">Вернуться к списку статей</a>
+        <a class="b-layout__link" href="./">Р’РµСЂРЅСѓС‚СЊСЃСЏ Рє СЃРїРёСЃРєСѓ СЃС‚Р°С‚РµР№</a>
     </div>
     <div class="p-interview-in">
         <div class="p-article-add-i">
-            <div class="b-txt b-txt_padbot_10">Если вам есть о чем рассказать, вы умеете писать ярко и увлекательно, или вам просто хочется поделиться опытом – присылайте ваши статьи.</div>
-            <h3 class="b-txt__h3">Требования к присылаемым статьям:</h3>
-            <div class="b-txt">&mdash; Присылаемый материал должен принадлежать вам. Мы не приветствуем статьи, скопированные из других источников.</div> 
-            <div class="b-txt">&mdash; Желательно, чтобы отправляемый на модерацию контент не был опубликован ранее на других сайтах.</div> 
-            <div class="b-txt">&mdash; Для нас важен хорошо структурированный материал, который будет идти не одним большим сплошным куском, а разбит на небольшие абзацы и отформатированный.</div> 
-            <div class="b-txt">&mdash; Соблюдайте правила орфографии и пунктуации.</div> 
-            <div class="b-txt">&mdash; Ваша статья должна быть полезной и интересной для наших читателей.</div>
-            <div class="b-txt b-txt_padbot_10">В течение недели после того, как вы прислали статью на модерацию, мы известим вас о её судьбе по почте или личным сообщением на сайте.</div> 
-            <div class="b-txt b-txt_padbot_10">По всем вопросам и предложениям пишите на почту: <a class="b-layout__link" href="mailto:editor@free-lance.ru">editor@fl.ru</a></div>
+            <div class="b-txt b-txt_padbot_10">Р•СЃР»Рё РІР°Рј РµСЃС‚СЊ Рѕ С‡РµРј СЂР°СЃСЃРєР°Р·Р°С‚СЊ, РІС‹ СѓРјРµРµС‚Рµ РїРёСЃР°С‚СЊ СЏСЂРєРѕ Рё СѓРІР»РµРєР°С‚РµР»СЊРЅРѕ, РёР»Рё РІР°Рј РїСЂРѕСЃС‚Рѕ С…РѕС‡РµС‚СЃСЏ РїРѕРґРµР»РёС‚СЊСЃСЏ РѕРїС‹С‚РѕРј вЂ“ РїСЂРёСЃС‹Р»Р°Р№С‚Рµ РІР°С€Рё СЃС‚Р°С‚СЊРё.</div>
+            <h3 class="b-txt__h3">РўСЂРµР±РѕРІР°РЅРёСЏ Рє РїСЂРёСЃС‹Р»Р°РµРјС‹Рј СЃС‚Р°С‚СЊСЏРј:</h3>
+            <div class="b-txt">&mdash; РџСЂРёСЃС‹Р»Р°РµРјС‹Р№ РјР°С‚РµСЂРёР°Р» РґРѕР»Р¶РµРЅ РїСЂРёРЅР°РґР»РµР¶Р°С‚СЊ РІР°Рј. РњС‹ РЅРµ РїСЂРёРІРµС‚СЃС‚РІСѓРµРј СЃС‚Р°С‚СЊРё, СЃРєРѕРїРёСЂРѕРІР°РЅРЅС‹Рµ РёР· РґСЂСѓРіРёС… РёСЃС‚РѕС‡РЅРёРєРѕРІ.</div> 
+            <div class="b-txt">&mdash; Р–РµР»Р°С‚РµР»СЊРЅРѕ, С‡С‚РѕР±С‹ РѕС‚РїСЂР°РІР»СЏРµРјС‹Р№ РЅР° РјРѕРґРµСЂР°С†РёСЋ РєРѕРЅС‚РµРЅС‚ РЅРµ Р±С‹Р» РѕРїСѓР±Р»РёРєРѕРІР°РЅ СЂР°РЅРµРµ РЅР° РґСЂСѓРіРёС… СЃР°Р№С‚Р°С….</div> 
+            <div class="b-txt">&mdash; Р”Р»СЏ РЅР°СЃ РІР°Р¶РµРЅ С…РѕСЂРѕС€Рѕ СЃС‚СЂСѓРєС‚СѓСЂРёСЂРѕРІР°РЅРЅС‹Р№ РјР°С‚РµСЂРёР°Р», РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ РёРґС‚Рё РЅРµ РѕРґРЅРёРј Р±РѕР»СЊС€РёРј СЃРїР»РѕС€РЅС‹Рј РєСѓСЃРєРѕРј, Р° СЂР°Р·Р±РёС‚ РЅР° РЅРµР±РѕР»СЊС€РёРµ Р°Р±Р·Р°С†С‹ Рё РѕС‚С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРЅС‹Р№.</div> 
+            <div class="b-txt">&mdash; РЎРѕР±Р»СЋРґР°Р№С‚Рµ РїСЂР°РІРёР»Р° РѕСЂС„РѕРіСЂР°С„РёРё Рё РїСѓРЅРєС‚СѓР°С†РёРё.</div> 
+            <div class="b-txt">&mdash; Р’Р°С€Р° СЃС‚Р°С‚СЊСЏ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РїРѕР»РµР·РЅРѕР№ Рё РёРЅС‚РµСЂРµСЃРЅРѕР№ РґР»СЏ РЅР°С€РёС… С‡РёС‚Р°С‚РµР»РµР№.</div>
+            <div class="b-txt b-txt_padbot_10">Р’ С‚РµС‡РµРЅРёРµ РЅРµРґРµР»Рё РїРѕСЃР»Рµ С‚РѕРіРѕ, РєР°Рє РІС‹ РїСЂРёСЃР»Р°Р»Рё СЃС‚Р°С‚СЊСЋ РЅР° РјРѕРґРµСЂР°С†РёСЋ, РјС‹ РёР·РІРµСЃС‚РёРј РІР°СЃ Рѕ РµС‘ СЃСѓРґСЊР±Рµ РїРѕ РїРѕС‡С‚Рµ РёР»Рё Р»РёС‡РЅС‹Рј СЃРѕРѕР±С‰РµРЅРёРµРј РЅР° СЃР°Р№С‚Рµ.</div> 
+            <div class="b-txt b-txt_padbot_10">РџРѕ РІСЃРµРј РІРѕРїСЂРѕСЃР°Рј Рё РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РїРёС€РёС‚Рµ РЅР° РїРѕС‡С‚Сѓ: <a class="b-layout__link" href="mailto:editor@free-lance.ru">editor@fl.ru</a></div>
         </div>
         
         <div class="cl-form form-article-add js-form">
@@ -79,14 +79,14 @@ window.addEvent('domready', function() {
                     <input type="hidden" name="action" value="add-article" />
                     <input type="hidden" name="task" value="add-article" />
 										<div class="b-form">
-                    	<label class="b-form__name b-form__name_fontsize_13">Заголовок (до 100 символов):</label>
+                    	<label class="b-form__name b-form__name_fontsize_13">Р—Р°РіРѕР»РѕРІРѕРє (РґРѕ 100 СЃРёРјРІРѕР»РѕРІ):</label>
 											<div class="b-input">
 												<input class="b-input__text " type="text" name="title" value="<?=$title?>"  />
 											</div>
 										</div>
                     <? if ($alert[0])  print(view_error($alert[0])) . '<br />' ?>
 										<div class="b-form">
-                    	<label class="b-form__name b-form__name_fontsize_13">Анонс:</label>
+                    	<label class="b-form__name b-form__name_fontsize_13">РђРЅРѕРЅСЃ:</label>
                     	<div class="b-textarea">
                         <textarea class="b-textarea__textarea b-textarea__textarea__height_140 editor" cols="100" name="short"><?=$short?></textarea>
 											</div>
@@ -94,19 +94,19 @@ window.addEvent('domready', function() {
 
                     <? if ($alert[1])  print(view_error($alert[1])) . '<br />' ?>
 										<div class="b-form">
-											<label class="b-form__name b-form__name_fontsize_13">Текст статьи:</label>
+											<label class="b-form__name b-form__name_fontsize_13">РўРµРєСЃС‚ СЃС‚Р°С‚СЊРё:</label>
 											<div >
 													<textarea class="b-textarea__textarea b-textarea__textarea__height_140 editor" rows="5" cols="100" name="msgtext"><?=$msgtext?></textarea>
 											</div>
 										</div>
 										<div class="b-form">
-                    	<label class="b-form__name b-form__name_fontsize_13">Темы:</label>
+                    	<label class="b-form__name b-form__name_fontsize_13">РўРµРјС‹:</label>
 											<div class="b-input-hint b-input-hint_height_20">
                         <div id="body_1" class="b-input">
                         	<input id="kword_se" class="b-input__text " type="text" name="kword"  />
 												</div>
 											</div>
-											<div class="b-form__txt b-form__txt_fontsize_11">Ключевые слова вводятся через запятую.</div>
+											<div class="b-form__txt b-form__txt_fontsize_11">РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР° РІРІРѕРґСЏС‚СЃСЏ С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ.</div>
 										</div>
                     <? if ($alert[2])  print(view_error($alert[2])) . '<br />' ?>
                     <div class="cl-form-files c">
@@ -115,14 +115,14 @@ window.addEvent('domready', function() {
                         </ul>
                         <div class="form-files-inf">
                             <?php $aAllowedExt = array_diff( $GLOBALS['graf_array'], array('swf') ) ?>
-                            <strong class="form-files-max">Максимальный размер файла: <?=articles::ARTICLE_MAX_LOGOSIZE/(1024*1024)?> Мб.</strong>
-                             Картинка: 100х100px, <?=implode(', ', $aAllowedExt )?><br />
+                            <strong class="form-files-max">РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°: <?=articles::ARTICLE_MAX_LOGOSIZE/(1024*1024)?> РњР±.</strong>
+                             РљР°СЂС‚РёРЅРєР°: 100С…100px, <?=implode(', ', $aAllowedExt )?><br />
                         </div>
                         <? if ($alert[3])  print(view_error($alert[3])) ?>
                     </div>
                     <div class="cl-form-btns">
-                        <a href="javascript:void(0)" id="btn-send-articles" onclick="if(!$(this).hasClass('btnr-disabled')) {  saveArticle($('frm')); $(this).addClass('btnr-disabled'); }" class="btnr btnr-grey "><span class="btn-lc"><span class="btn-m"><span class="btn-txt" id="btn_name">Отправить на модерацию</span></span></span></a>
-                        &nbsp;&nbsp;&nbsp;Ваша статья должна быть проверена перед публикацией. Срок прохождения модерации — 1 неделя.
+                        <a href="javascript:void(0)" id="btn-send-articles" onclick="if(!$(this).hasClass('btnr-disabled')) {  saveArticle($('frm')); $(this).addClass('btnr-disabled'); }" class="btnr btnr-grey "><span class="btn-lc"><span class="btn-m"><span class="btn-txt" id="btn_name">РћС‚РїСЂР°РІРёС‚СЊ РЅР° РјРѕРґРµСЂР°С†РёСЋ</span></span></span></a>
+                        &nbsp;&nbsp;&nbsp;Р’Р°С€Р° СЃС‚Р°С‚СЊСЏ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РїСЂРѕРІРµСЂРµРЅР° РїРµСЂРµРґ РїСѓР±Р»РёРєР°С†РёРµР№. РЎСЂРѕРє РїСЂРѕС…РѕР¶РґРµРЅРёСЏ РјРѕРґРµСЂР°С†РёРё вЂ” 1 РЅРµРґРµР»СЏ.
                     </div>
                     </div>
                 </form>

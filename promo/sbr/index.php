@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 $content = "new/tpl.bs.php";
 
-$page_title = "Безопасная сделка – FL.ru";
+$page_title = "Р‘РµР·РѕРїР°СЃРЅР°СЏ СЃРґРµР»РєР° вЂ“ FL.ru";
 
 $header = "../../header.php";
 $footer = "../../footer.html";

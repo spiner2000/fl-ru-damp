@@ -98,12 +98,12 @@ if($data) {
     $fmtT = &$workbook->addFormat($title_sty);
     $fmtM->setTextWrap();
 
-    $worksheet->write(0, 0, "N\nêîíâåðòà", $fmtT);
-    $worksheet->write(0, 1, "Êîë-âî ïèñåì\nâ êîíâåðòå", $fmtT);
-    $worksheet->write(0, 2, "ID\nïîëó÷àòåëÿ", $fmtT);
-    $worksheet->write(0, 3, "Ïîëó÷àòåëü", $fmtT);
-    $worksheet->write(0, 4, "Àäðåñ ïîëó÷àòåëÿ", $fmtT);
-    $worksheet->write(0, 5, "Òèï äîñòàâêè", $fmtT);
+    $worksheet->write(0, 0, "N\nÐºÐ¾Ð½Ð²ÐµÑ€Ñ‚Ð°", $fmtT);
+    $worksheet->write(0, 1, "ÐšÐ¾Ð»-Ð²Ð¾ Ð¿Ð¸ÑÐµÐ¼\nÐ² ÐºÐ¾Ð½Ð²ÐµÑ€Ñ‚Ðµ", $fmtT);
+    $worksheet->write(0, 2, "ID\nÐ¿Ð¾Ð»ÑƒÑ‡Ð°Ñ‚ÐµÐ»Ñ", $fmtT);
+    $worksheet->write(0, 3, "ÐŸÐ¾Ð»ÑƒÑ‡Ð°Ñ‚ÐµÐ»ÑŒ", $fmtT);
+    $worksheet->write(0, 4, "ÐÐ´Ñ€ÐµÑ Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ñ‚ÐµÐ»Ñ", $fmtT);
+    $worksheet->write(0, 5, "Ð¢Ð¸Ð¿ Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸", $fmtT);
 
 	$worksheet->setRow(0,40);
 	$worksheet->setColumn(0,0,10);
@@ -177,25 +177,25 @@ if($data) {
 
 	$worksheet->setRow(0,80);
 
-    $worksheet->write(0, 0, "ÎÎÎ \"Âààí\"\n125040, Ìîñêâà, óëèöà Íèæíÿÿ, äîì 14, êîðïóñ 1\nÈÍÍ 7805399430/ ÊÏÏ 771401001\nÒåëåôîí: +7 495 646-81-29", $fmtMerge);
+    $worksheet->write(0, 0, "ÐžÐžÐž \"Ð’Ð°Ð°Ð½\"\n125040, ÐœÐ¾ÑÐºÐ²Ð°, ÑƒÐ»Ð¸Ñ†Ð° ÐÐ¸Ð¶Ð½ÑÑ, Ð´Ð¾Ð¼ 14, ÐºÐ¾Ñ€Ð¿ÑƒÑ 1\nÐ˜ÐÐ 7805399430/ ÐšÐŸÐŸ 771401001\nÐ¢ÐµÐ»ÐµÑ„Ð¾Ð½: +7 495 646-81-29", $fmtMerge);
     $worksheet->write(0, 1, '', $fmtMerge);
     $worksheet->write(0, 2, '', $fmtMerge);
 
-	$worksheet->write(1, 0, "Ðååñòð êîððåñïîíäåíöèè", $fmtMergeBold);
+	$worksheet->write(1, 0, "Ð ÐµÐµÑÑ‚Ñ€ ÐºÐ¾Ñ€Ñ€ÐµÑÐ¿Ð¾Ð½Ð´ÐµÐ½Ñ†Ð¸Ð¸", $fmtMergeBold);
 
     $worksheet->write(1, 1, '', $fmtMergeBold);
     $worksheet->write(1, 2, '', $fmtMergeBold);
 
 	$worksheet->write(2, 0, "", $fmtTB);
-	$worksheet->write(2, 1, "Íàçâàíèå îðãàíèçàöèè", $fmtTB);
-	$worksheet->write(2, 2, "Àäðåñ", $fmtTB);
-	$worksheet->write(2, 3, "Òåëåôîí", $fmtTB);
-	$worksheet->write(2, 4, "Êîíòàêòíîå ëèöî", $fmtTB);
-	$worksheet->write(2, 5, "Ñðîê äîñòàâêè", $fmtTB);
-	$worksheet->write(2, 6, "Êîììåíòàðèé", $fmtTB);
-	$worksheet->write(2, 7, "Äàòà ïîëó÷åíèÿ", $fmtTB);
-	$worksheet->write(2, 8, "Ïîäïèñü ïîëó÷àòåëÿ", $fmtTB);
-	$worksheet->write(2, 9, "ÔÈÎ ïîëó÷àòåëÿ", $fmtTB);
+	$worksheet->write(2, 1, "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¾Ñ€Ð³Ð°Ð½Ð¸Ð·Ð°Ñ†Ð¸Ð¸", $fmtTB);
+	$worksheet->write(2, 2, "ÐÐ´Ñ€ÐµÑ", $fmtTB);
+	$worksheet->write(2, 3, "Ð¢ÐµÐ»ÐµÑ„Ð¾Ð½", $fmtTB);
+	$worksheet->write(2, 4, "ÐšÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð½Ð¾Ðµ Ð»Ð¸Ñ†Ð¾", $fmtTB);
+	$worksheet->write(2, 5, "Ð¡Ñ€Ð¾Ðº Ð´Ð¾ÑÑ‚Ð°Ð²ÐºÐ¸", $fmtTB);
+	$worksheet->write(2, 6, "ÐšÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¹", $fmtTB);
+	$worksheet->write(2, 7, "Ð”Ð°Ñ‚Ð° Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ñ", $fmtTB);
+	$worksheet->write(2, 8, "ÐŸÐ¾Ð´Ð¿Ð¸ÑÑŒ Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ñ‚ÐµÐ»Ñ", $fmtTB);
+	$worksheet->write(2, 9, "Ð¤Ð˜Ðž Ð¿Ð¾Ð»ÑƒÑ‡Ð°Ñ‚ÐµÐ»Ñ", $fmtTB);
 
 	$worksheet->setRow(2,35);
 
@@ -266,7 +266,7 @@ if($data) {
 				$pdf->AddPage('L');
 				$pdf->SetXY(197,145);
 				$pdf->SetDrawColor(50,60,100);
-				$pdf->MultiCell(65,6,"Êîìó: ".html_entity_decode($letter['user'])."\nÊóäà: ".html_entity_decode($letter['address']),0,'L');
+				$pdf->MultiCell(65,6,"ÐšÐ¾Ð¼Ñƒ: ".html_entity_decode($letter['user'])."\nÐšÑƒÐ´Ð°: ".html_entity_decode($letter['address']),0,'L');
 				$pdf->Output("/tmp/{$sid}-{$n}letters.pdf", "F");
 				$n++;
 			}

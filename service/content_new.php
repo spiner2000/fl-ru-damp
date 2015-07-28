@@ -1,66 +1,66 @@
-    <h1 class="b-page__title">Услуги сайта</h1>
+    <h1 class="b-page__title">РЈСЃР»СѓРіРё СЃР°Р№С‚Р°</h1>
     <table class="b-layout__table b-layout__table_margbot_20 b-layout__table_width_full" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
             <td class="b-layout__td b-layout__td_padtop_15 b-layout__td_width_140 b-layout__td_width_null_ipad">
                 <img class="b-layout__pic b-layout__pic_center b-page__desktop" src="/images/promo-icons/big/11.png" alt="" width="82" height="90" />
             </td>
             <td class="b-layout__td b-layout__td_padright_20">
-                <h2 class="b-layout__title"><a class="b-layout__link" href="/promo/bezopasnaya-sdelka/">Безопасная Сделка</a></h2>
+                <h2 class="b-layout__title"><a class="b-layout__link" href="/promo/bezopasnaya-sdelka/">Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°</a></h2>
                 <ul class="b-promo__list">
                     <?php if($forEmp && !$guest) {?>
-                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_1"></span>Вы полностью застрахованы от недобросовестных исполнителей.</li>
-                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_2"></span>Все сотрудничество ведется онлайн &mdash; без бумажной волокиты.</li>
-                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_3"></span>Возможность официально провести сделку.</li> 
+                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_1"></span>Р’С‹ РїРѕР»РЅРѕСЃС‚СЊСЋ Р·Р°СЃС‚СЂР°С…РѕРІР°РЅС‹ РѕС‚ РЅРµРґРѕР±СЂРѕСЃРѕРІРµСЃС‚РЅС‹С… РёСЃРїРѕР»РЅРёС‚РµР»РµР№.</li>
+                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_2"></span>Р’СЃРµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ РІРµРґРµС‚СЃСЏ РѕРЅР»Р°Р№РЅ &mdash; Р±РµР· Р±СѓРјР°Р¶РЅРѕР№ РІРѕР»РѕРєРёС‚С‹.</li>
+                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_3"></span>Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РѕС„РёС†РёР°Р»СЊРЅРѕ РїСЂРѕРІРµСЃС‚Рё СЃРґРµР»РєСѓ.</li> 
                     <?php } elseif($forFrl && !$guest) {?>
-                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_1"></span>Вы полностью застрахованы от недобросовестных заказчиков.</li>
-                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_2"></span>Все требования и сроки по проекту зафиксированы внутри сделки.</li>
-                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_3"></span>Все сотрудничество ведется онлайн &mdash; без бумажной волокиты.</li> 
+                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_1"></span>Р’С‹ РїРѕР»РЅРѕСЃС‚СЊСЋ Р·Р°СЃС‚СЂР°С…РѕРІР°РЅС‹ РѕС‚ РЅРµРґРѕР±СЂРѕСЃРѕРІРµСЃС‚РЅС‹С… Р·Р°РєР°Р·С‡РёРєРѕРІ.</li>
+                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_2"></span>Р’СЃРµ С‚СЂРµР±РѕРІР°РЅРёСЏ Рё СЃСЂРѕРєРё РїРѕ РїСЂРѕРµРєС‚Сѓ Р·Р°С„РёРєСЃРёСЂРѕРІР°РЅС‹ РІРЅСѓС‚СЂРё СЃРґРµР»РєРё.</li>
+                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_3"></span>Р’СЃРµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ РІРµРґРµС‚СЃСЏ РѕРЅР»Р°Р№РЅ &mdash; Р±РµР· Р±СѓРјР°Р¶РЅРѕР№ РІРѕР»РѕРєРёС‚С‹.</li> 
                     <?php } else {//else?>
-                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_1"></span>Вы полностью застрахованы от недобросовестных заказчиков и исполнителей.</li>
-                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_2"></span>Все сотрудничество ведется онлайн &mdash; без бумажной волокиты.</li>
-                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_3"></span>Возможность официально провести сделку.</li>
+                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_1"></span>Р’С‹ РїРѕР»РЅРѕСЃС‚СЊСЋ Р·Р°СЃС‚СЂР°С…РѕРІР°РЅС‹ РѕС‚ РЅРµРґРѕР±СЂРѕСЃРѕРІРµСЃС‚РЅС‹С… Р·Р°РєР°Р·С‡РёРєРѕРІ Рё РёСЃРїРѕР»РЅРёС‚РµР»РµР№.</li>
+                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_2"></span>Р’СЃРµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ РІРµРґРµС‚СЃСЏ РѕРЅР»Р°Р№РЅ &mdash; Р±РµР· Р±СѓРјР°Р¶РЅРѕР№ РІРѕР»РѕРєРёС‚С‹.</li>
+                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_3"></span>Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РѕС„РёС†РёР°Р»СЊРЅРѕ РїСЂРѕРІРµСЃС‚Рё СЃРґРµР»РєСѓ.</li>
                     <?php }//else?>
                 </ul>
                 <?php if ($forEmp && !$guest) { ?><div class="b-buttons b-buttons_padtop_15"> 
-                    <?php /*<a href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/?site=new" class="b-button b-button_flat b-button_flat_green">Начать новую сделку</a>*/ ?>
+                    <?php /*<a href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/?site=new" class="b-button b-button_flat b-button_flat_green">РќР°С‡Р°С‚СЊ РЅРѕРІСѓСЋ СЃРґРµР»РєСѓ</a>*/ ?>
                 </div> <?php } else { //if?><div class="b-buttons b-buttons_padtop_15"> 
-                    <a href="/promo/bezopasnaya-sdelka/" class="b-button b-button_flat b-button_flat_green">Подробнее</a>
+                    <a href="/promo/bezopasnaya-sdelka/" class="b-button b-button_flat b-button_flat_green">РџРѕРґСЂРѕР±РЅРµРµ</a>
                 </div><?php } ?>
             </td>                       
             <td class="b-layout__td b-layout__td_padtop_15 b-layout__td_width_140 b-layout__td_width_null_ipad">
                 <?php if($forEmp && !$guest) { ?>
-                <span title="Платный аккаунт" class="b-icon b-icon__mpro b-icon__mpro_e b-page__desktop"></span>
+                <span title="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" class="b-icon b-icon__mpro b-icon__mpro_e b-page__desktop"></span>
                 <?php } elseif($forFrl && !$guest) {//if?>
-                <span title="Платный аккаунт" class="b-icon b-icon__mpro b-icon__mpro_f b-page__desktop"></span>
+                <span title="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" class="b-icon b-icon__mpro b-icon__mpro_f b-page__desktop"></span>
                 <?php } else {//elseif?>
-                <span title="Платный аккаунт" class="b-icon b-icon__mpro b-icon__mpro_fe b-page__desktop"></span>
+                <span title="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" class="b-icon b-icon__mpro b-icon__mpro_fe b-page__desktop"></span>
                 <?php }//else?>
             </td>
             <td class="b-layout__td">
                 <h2 class="b-layout__title">
                     <?php if(!$guest) {?>
-                    <a class="b-layout__link" href="<?= $forFrl ? '/payed/' : '/payed-emp/'?>">Профессиональный аккаунт</a>
+                    <a class="b-layout__link" href="<?= $forFrl ? '/payed/' : '/payed-emp/'?>">РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚</a>
                     <?php }else {//if?>
-                    Профессиональный аккаунт
+                    РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚
                     <?php }//else?>
                 </h2>
                 <ul class="b-promo__list">
                     <?php if($forEmp && !$guest) {?>
-                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_1"></span>Вы видите контакты всех исполнителей.</li>
-                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_2"></span>Вы получаете скидки на платные<br />услуги.</li>
-                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_3"></span>Вы можете указать больше информации о себе.</li>
+                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_1"></span>Р’С‹ РІРёРґРёС‚Рµ РєРѕРЅС‚Р°РєС‚С‹ РІСЃРµС… РёСЃРїРѕР»РЅРёС‚РµР»РµР№.</li>
+                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_2"></span>Р’С‹ РїРѕР»СѓС‡Р°РµС‚Рµ СЃРєРёРґРєРё РЅР° РїР»Р°С‚РЅС‹Рµ<br />СѓСЃР»СѓРіРё.</li>
+                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_3"></span>Р’С‹ РјРѕР¶РµС‚Рµ СѓРєР°Р·Р°С‚СЊ Р±РѕР»СЊС€Рµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃРµР±Рµ.</li>
                     <?php } elseif($forFrl && !$guest) { //elseif?>
-                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_1"></span>Вы видите контакты всех <br />работодателей.</li>
-                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_2"></span>Вы можете неограниченно отвечать <br />на проекты.</li>
-                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_3"></span>Вы можете указать 4 дополнительные специализации.</li> 
+                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_1"></span>Р’С‹ РІРёРґРёС‚Рµ РєРѕРЅС‚Р°РєС‚С‹ РІСЃРµС… <br />СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№.</li>
+                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_2"></span>Р’С‹ РјРѕР¶РµС‚Рµ РЅРµРѕРіСЂР°РЅРёС‡РµРЅРЅРѕ РѕС‚РІРµС‡Р°С‚СЊ <br />РЅР° РїСЂРѕРµРєС‚С‹.</li>
+                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_3"></span>Р’С‹ РјРѕР¶РµС‚Рµ СѓРєР°Р·Р°С‚СЊ 4 РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё.</li> 
                     <?php } else {//if?>
-                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_1"></span>Вы видите контакты всех <br />работодателей.</li>
-                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_2"></span>Вы видите контакты всех исполнителей.</li>
-                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_3"></span>Дополнительные бонусы и скидки на платные услуги.</li>
+                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_1"></span>Р’С‹ РІРёРґРёС‚Рµ РєРѕРЅС‚Р°РєС‚С‹ РІСЃРµС… <br />СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№.</li>
+                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_2"></span>Р’С‹ РІРёРґРёС‚Рµ РєРѕРЅС‚Р°РєС‚С‹ РІСЃРµС… РёСЃРїРѕР»РЅРёС‚РµР»РµР№.</li>
+                    <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_3"></span>Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ Р±РѕРЅСѓСЃС‹ Рё СЃРєРёРґРєРё РЅР° РїР»Р°С‚РЅС‹Рµ СѓСЃР»СѓРіРё.</li>
                     <?php }//else?>
                 </ul>
                 <div class="b-buttons b-buttons_padtop_15"> 
-                    <a href="<?= $forFrl ? '/payed/' : '/payed-emp/'?>" class="b-button b-button_flat b-button_flat_green">Купить PRO</a>
+                    <a href="<?= $forFrl ? '/payed/' : '/payed-emp/'?>" class="b-button b-button_flat b-button_flat_green">РљСѓРїРёС‚СЊ PRO</a>
                 </div>
             </td>
         </tr>
@@ -69,48 +69,48 @@
 
 <?php if ($forEmp) { ?>
     <?php if ($guest) { ?>
-    <h2 class="b-layout__title">Для работодателей</h2>
+    <h2 class="b-layout__title">Р”Р»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№</h2>
     <?php }//if?>
     
     <div class="b-layout__one b-layout__one_width_33ps b-layout__one_width_full_iphone b-layout__one_inline-block b-promo__servis b-promo__servis_cont">
         <div class="b-layout__txt b-layout__txt_margleft_70 b-layout__txt_padright_15 b-layout__txt_margleft_null_iphone">
-            <h3 class="b-layout__h3"><a class="b-layout__link b-layout__link_bold" href="/public/?step=1&kind=7">Платные конкурсы</a></h3>
-            <div class="b-layout__txt b-layout__txt_padbot_20">Объявить конкурс может любой работодатель. Фрилансеры выполнят конкурсное задание, после чего будет выбран победитель.</div>
+            <h3 class="b-layout__h3"><a class="b-layout__link b-layout__link_bold" href="/public/?step=1&kind=7">РџР»Р°С‚РЅС‹Рµ РєРѕРЅРєСѓСЂСЃС‹</a></h3>
+            <div class="b-layout__txt b-layout__txt_padbot_20">РћР±СЉСЏРІРёС‚СЊ РєРѕРЅРєСѓСЂСЃ РјРѕР¶РµС‚ Р»СЋР±РѕР№ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ. Р¤СЂРёР»Р°РЅСЃРµСЂС‹ РІС‹РїРѕР»РЅСЏС‚ РєРѕРЅРєСѓСЂСЃРЅРѕРµ Р·Р°РґР°РЅРёРµ, РїРѕСЃР»Рµ С‡РµРіРѕ Р±СѓРґРµС‚ РІС‹Р±СЂР°РЅ РїРѕР±РµРґРёС‚РµР»СЊ.</div>
         </div>
     </div>
     <div class="b-layout__one b-layout__one_width_33ps b-layout__one_width_full_iphone b-layout__one_inline-block b-promo__servis b-promo__servis_let">
         <div class="b-layout__txt b-layout__txt_margleft_70 b-layout__txt_padright_15 b-layout__txt_margleft_null_iphone">
-            <h3 class="b-layout__h3"><a class="b-layout__link b-layout__link_bold" href="/masssending/">Рассылка по каталогу</a></h3>
-            <div class="b-layout__txt b-layout__txt_padbot_20">Возможность обратиться сразу к большому количеству фрилансеров из различных разделов каталога.</div>
+            <h3 class="b-layout__h3"><a class="b-layout__link b-layout__link_bold" href="/masssending/">Р Р°СЃСЃС‹Р»РєР° РїРѕ РєР°С‚Р°Р»РѕРіСѓ</a></h3>
+            <div class="b-layout__txt b-layout__txt_padbot_20">Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РѕР±СЂР°С‚РёС‚СЊСЃСЏ СЃСЂР°Р·Сѓ Рє Р±РѕР»СЊС€РѕРјСѓ РєРѕР»РёС‡РµСЃС‚РІСѓ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РёР· СЂР°Р·Р»РёС‡РЅС‹С… СЂР°Р·РґРµР»РѕРІ РєР°С‚Р°Р»РѕРіР°.</div>
         </div>
     </div>
 	<?php if($guest) { ?>
     <div class="b-layout__one b-layout__one_width_33ps b-layout__one_width_full_iphone b-layout__one_inline-block">
         <div class="b-layout__txt b-layout__txt_margleft_70 b-layout__txt_padright_15 b-layout__txt_relative b-layout__txt_margleft_null_iphone">
-            <h3 class="b-layout__h3"><a class="b-layout__link b-layout__link_bold" href="/payed-emp/">Профессиональный аккаунт</a></h3>
-            <div class="b-layout__txt b-layout__txt_padbot_20">Возможность просматривать контакты всех пользователей, скидки на дополнительные услуги, размещение в особой зоне PRO каталога работодателей и другие бонусы.</div>
+            <h3 class="b-layout__h3"><a class="b-layout__link b-layout__link_bold" href="/payed-emp/">РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚</a></h3>
+            <div class="b-layout__txt b-layout__txt_padbot_20">Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїСЂРѕСЃРјР°С‚СЂРёРІР°С‚СЊ РєРѕРЅС‚Р°РєС‚С‹ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, СЃРєРёРґРєРё РЅР° РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СѓСЃР»СѓРіРё, СЂР°Р·РјРµС‰РµРЅРёРµ РІ РѕСЃРѕР±РѕР№ Р·РѕРЅРµ PRO РєР°С‚Р°Р»РѕРіР° СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ Рё РґСЂСѓРіРёРµ Р±РѕРЅСѓСЃС‹.</div>
             <span class="b-page__desktop b-page__ipad"><span title="PRO" class="b-icon b-icon__spro b-icon__spro_e" style="position:absolute; left:-60px; top:10px;"></span></span>
         </div>
     </div>
 	<?php }//if?>
     <div class="b-layout__one b-layout__one_width_33ps b-layout__one_width_full_iphone b-layout__one_inline-block b-promo__servis b-promo__servis_prj">
         <div class="b-layout__txt b-layout__txt_margleft_70 b-layout__txt_padright_15 b-layout__txt_margleft_null_iphone">
-            <h3 class="b-layout__h3"><a class="b-layout__link b-layout__link_bold" href="/public/?step=1&kind=1">Бесплатные проекты</a></h3>
-            <div class="b-layout__txt b-layout__txt_padbot_20">Публикация проекта — это бесплатная услуга, доступная всем зарегистрированным работодателям.</div>
+            <h3 class="b-layout__h3"><a class="b-layout__link b-layout__link_bold" href="/public/?step=1&kind=1">Р‘РµСЃРїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹</a></h3>
+            <div class="b-layout__txt b-layout__txt_padbot_20">РџСѓР±Р»РёРєР°С†РёСЏ РїСЂРѕРµРєС‚Р° вЂ” СЌС‚Рѕ Р±РµСЃРїР»Р°С‚РЅР°СЏ СѓСЃР»СѓРіР°, РґРѕСЃС‚СѓРїРЅР°СЏ РІСЃРµРј Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Рј СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏРј.</div>
         </div>
     </div>
 <?php }//if?>
 <?php if ($forFrl) { ?>
     <?php if ($guest) { ?>
-    <h2 class="b-layout__title b-layout__title_padtop_40">Для фрилансеров</h2>
+    <h2 class="b-layout__title b-layout__title_padtop_40">Р”Р»СЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</h2>
     <?php }//if?>
     
     
     <?php if($guest) { ?>
     <div class="b-layout__one b-layout__one_width_33ps b-layout__one_width_full_iphone b-layout__one_inline-block">
         <div class="b-layout__txt b-layout__txt_margleft_70 b-layout__txt_padright_15 b-layout__txt_relative b-layout__txt_margleft_null_iphone">
-            <h3 class="b-layout__h3"><a class="b-layout__link b-layout__link_bold" href="/payed/">Профессиональный аккаунт</a></h3>
-            <div class="b-layout__txt b-layout__txt_padbot_20">Контакты фри-ласера видны всем работодателям и фрилансерам, размещение в особой зоне каталога фрилансеров, неограниченные ответы на проекты и повышенное внимание со стороны заказчиков</div>
+            <h3 class="b-layout__h3"><a class="b-layout__link b-layout__link_bold" href="/payed/">РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚</a></h3>
+            <div class="b-layout__txt b-layout__txt_padbot_20">РљРѕРЅС‚Р°РєС‚С‹ С„СЂРё-Р»Р°СЃРµСЂР° РІРёРґРЅС‹ РІСЃРµРј СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏРј Рё С„СЂРёР»Р°РЅСЃРµСЂР°Рј, СЂР°Р·РјРµС‰РµРЅРёРµ РІ РѕСЃРѕР±РѕР№ Р·РѕРЅРµ РєР°С‚Р°Р»РѕРіР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, РЅРµРѕРіСЂР°РЅРёС‡РµРЅРЅС‹Рµ РѕС‚РІРµС‚С‹ РЅР° РїСЂРѕРµРєС‚С‹ Рё РїРѕРІС‹С€РµРЅРЅРѕРµ РІРЅРёРјР°РЅРёРµ СЃРѕ СЃС‚РѕСЂРѕРЅС‹ Р·Р°РєР°Р·С‡РёРєРѕРІ</div>
             <span class="b-page__desktop b-page__ipad"><span title="PRO" class="b-icon b-icon__spro b-icon__spro_f" style="position:absolute; left:-60px; top:10px;"></span></span>
         </div>
     </div>
@@ -118,34 +118,34 @@
     
     <?php
     
-    //@todo: оставил на случай если понадобиться блок о карусели
+    //@todo: РѕСЃС‚Р°РІРёР» РЅР° СЃР»СѓС‡Р°Р№ РµСЃР»Рё РїРѕРЅР°РґРѕР±РёС‚СЊСЃСЏ Р±Р»РѕРє Рѕ РєР°СЂСѓСЃРµР»Рё
     
     /*
     <div class="b-layout__one b-layout__one_width_33ps b-layout__one_width_full_iphone b-layout__one_inline-block b-promo__servis b-promo__servis_pl-car">
         <div class="b-layout__txt b-layout__txt_margleft_70 b-layout__txt_padright_15 b-layout__txt_margleft_null_iphone">
-            <h3 class="b-layout__h3"><a class="b-layout__link b-layout__link_bold" href="#">Место на «карусели»</a></h3>
-            <div class="b-layout__txt b-layout__txt_padbot_20">Рекламное место наверху каталогов сайта. Ваше объявление увидят тысячи пользователей.</div>
+            <h3 class="b-layout__h3"><a class="b-layout__link b-layout__link_bold" href="#">РњРµСЃС‚Рѕ РЅР° В«РєР°СЂСѓСЃРµР»РёВ»</a></h3>
+            <div class="b-layout__txt b-layout__txt_padbot_20">Р РµРєР»Р°РјРЅРѕРµ РјРµСЃС‚Рѕ РЅР°РІРµСЂС…Сѓ РєР°С‚Р°Р»РѕРіРѕРІ СЃР°Р№С‚Р°. Р’Р°С€Рµ РѕР±СЉСЏРІР»РµРЅРёРµ СѓРІРёРґСЏС‚ С‚С‹СЃСЏС‡Рё РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.</div>
         </div>
     </div>
      */
     ?>
 <?php }//if ?>
-    <h2 class="b-layout__title b-layout__title_padtop_40"><?= ($guest ? "Общие бесплатные услуги" : "Бесплатные услуги")?></h2>
+    <h2 class="b-layout__title b-layout__title_padtop_40"><?= ($guest ? "РћР±С‰РёРµ Р±РµСЃРїР»Р°С‚РЅС‹Рµ СѓСЃР»СѓРіРё" : "Р‘РµСЃРїР»Р°С‚РЅС‹Рµ СѓСЃР»СѓРіРё")?></h2>
     
     <div class="b-layout__one b-layout__one_width_33ps b-layout__one_width_full_iphone b-layout__one_inline-block b-promo__servis b-promo__servis_blog">
         <div class="b-layout__txt b-layout__txt_margleft_70 b-layout__txt_padright_15 b-layout__txt_margleft_null_iphone">
             <? if (BLOGS_CLOSED == false) { ?>
-                <h3 class="b-layout__h3"><a class="b-layout__link b-layout__link_bold" href="/commune/">Сообщества</a> и <a class="b-layout__link b-layout__link_bold" href="/blogs/">блоги</a></h3>
-                <div class="b-layout__txt b-layout__txt_padbot_20">Бесплатные сервисы, предназначенные для общения пользователей, обмена опытом, тематических и профессиональных обсуждений.</div>
+                <h3 class="b-layout__h3"><a class="b-layout__link b-layout__link_bold" href="/commune/">РЎРѕРѕР±С‰РµСЃС‚РІР°</a> Рё <a class="b-layout__link b-layout__link_bold" href="/blogs/">Р±Р»РѕРіРё</a></h3>
+                <div class="b-layout__txt b-layout__txt_padbot_20">Р‘РµСЃРїР»Р°С‚РЅС‹Рµ СЃРµСЂРІРёСЃС‹, РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅРЅС‹Рµ РґР»СЏ РѕР±С‰РµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, РѕР±РјРµРЅР° РѕРїС‹С‚РѕРј, С‚РµРјР°С‚РёС‡РµСЃРєРёС… Рё РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹С… РѕР±СЃСѓР¶РґРµРЅРёР№.</div>
             <? } else { ?>
-                <h3 class="b-layout__h3"><a class="b-layout__link b-layout__link_bold" href="/commune/">Сообщества</a></h3>
-                <div class="b-layout__txt b-layout__txt_padbot_20">Бесплатный сервис, предназначенный для общения пользователей, обмена опытом, тематических и профессиональных обсуждений.</div>
+                <h3 class="b-layout__h3"><a class="b-layout__link b-layout__link_bold" href="/commune/">РЎРѕРѕР±С‰РµСЃС‚РІР°</a></h3>
+                <div class="b-layout__txt b-layout__txt_padbot_20">Р‘РµСЃРїР»Р°С‚РЅС‹Р№ СЃРµСЂРІРёСЃ, РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅРЅС‹Р№ РґР»СЏ РѕР±С‰РµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, РѕР±РјРµРЅР° РѕРїС‹С‚РѕРј, С‚РµРјР°С‚РёС‡РµСЃРєРёС… Рё РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹С… РѕР±СЃСѓР¶РґРµРЅРёР№.</div>
             <? } ?>
         </div>
     </div>
     <div class="b-layout__one b-layout__one_width_33ps b-layout__one_width_full_iphone b-layout__one_inline-block b-promo__servis b-promo__servis_help">
         <div class="b-layout__txt b-layout__txt_margleft_70 b-layout__txt_padright_15 b-layout__txt_margleft_null_iphone">
-            <h3 class="b-layout__h3"><noindex><a rel="nofollow" class="b-layout__link b-layout__link_bold" href="https://feedback.fl.ru/">Помощь</a></noindex></h3>
-            <div class="b-layout__txt b-layout__txt_padbot_20">Ответы на вопросы, помощь в затруднительных ситуациях, инструкции ко всем сервисам сайта.</div>
+            <h3 class="b-layout__h3"><noindex><a rel="nofollow" class="b-layout__link b-layout__link_bold" href="https://feedback.fl.ru/">РџРѕРјРѕС‰СЊ</a></noindex></h3>
+            <div class="b-layout__txt b-layout__txt_padbot_20">РћС‚РІРµС‚С‹ РЅР° РІРѕРїСЂРѕСЃС‹, РїРѕРјРѕС‰СЊ РІ Р·Р°С‚СЂСѓРґРЅРёС‚РµР»СЊРЅС‹С… СЃРёС‚СѓР°С†РёСЏС…, РёРЅСЃС‚СЂСѓРєС†РёРё РєРѕ РІСЃРµРј СЃРµСЂРІРёСЃР°Рј СЃР°Р№С‚Р°.</div>
         </div>
     </div>

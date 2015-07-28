@@ -17,7 +17,7 @@ function addHHSpecProf($hh_field, $hh_spec_id, $prof_id) {
     ob_start();
     $pname = professions::GetProfNameWP($prof_id, '::');
     if(!$hh->addHHSpecProf($hh_field, $hh_spec_id, $prof_id))
-        $err = "Ñïåöèàëèçàöèÿ '{$pname}' óæå ïðèâÿçàíà ê äàííîìó ðàçäåëó.";
+        $err = "Ð¡Ð¿ÐµÑ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ '{$pname}' ÑƒÐ¶Ðµ Ð¿Ñ€Ð¸Ð²ÑÐ·Ð°Ð½Ð° Ðº Ð´Ð°Ð½Ð½Ð¾Ð¼Ñƒ Ñ€Ð°Ð·Ð´ÐµÐ»Ñƒ.";
     ob_end_clean();
     $objResponse->call("addHHSpecProf", $pname, $err);
     return $objResponse;

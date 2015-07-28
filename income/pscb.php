@@ -26,7 +26,7 @@ $log->writevar($log_data);
 $pskb = new pskb();
 $_lc = $pskb->getLCbyLCId($lc_id);
 
-$err_msg = "Неизвестная ошибка";
+$err_msg = "РќРµРёР·РІРµСЃС‚РЅР°СЏ РѕС€РёР±РєР°";
 if ($src == 2) {
     if ($state && in_array($state, array_keys(pskb::$card_messages))) {
         $err_msg = pskb::$card_messages[$state];

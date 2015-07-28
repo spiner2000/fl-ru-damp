@@ -22,7 +22,7 @@ if(!$uid) {
     exit;
 }
 
-// Åñëè þçåð çàáàíåí, òî íå ïîêàçûâàåì åãî ðàáîòó.
+// Ð•ÑÐ»Ð¸ ÑŽÐ·ÐµÑ€ Ð·Ð°Ð±Ð°Ð½ÐµÐ½, Ñ‚Ð¾ Ð½Ðµ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÐ¼ ÐµÐ³Ð¾ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ.
 if ($user_obj->is_banned == 1 && !(hasPermissions('users'))) {$fpath = "../"; include(ABS_PATH."/404.php"); exit;}
 
 $prjid = __paramInit('int', 'prjid');
@@ -73,7 +73,7 @@ if ( !$proj || $proj['is_blocked'] == 't' && $uid != get_uid(false) && !hasPermi
 else {
 	$spec_text = professions::GetProfName($proj['spec']);
     if ($proj['pict']) {
-        $imgTitle = $proj['name'] . ' (' . $spec_text . ') - ôðè-ëàíñåð ' . $proj['uname'] . ' ' . $proj['usurname'] . ' [' . $proj['login'] . ']. ';
+        $imgTitle = $proj['name'] . ' (' . $spec_text . ') - Ñ„Ñ€Ð¸-Ð»Ð°Ð½ÑÐµÑ€ ' . $proj['uname'] . ' ' . $proj['usurname'] . ' [' . $proj['login'] . ']. ';
         $str = viewattach($proj['login'], $proj['pict'], "upload", $file, -1, -1, 1048576, 0, 0, 'center', false, 1, $proj['name'], true, false, $imgTitle, $proj["wmode"]);
     }
 	//elseif ($proj['link'] && !$proj['descr']) header("Location: http://" . $proj['link']);
@@ -82,7 +82,7 @@ else {
 	
     $js_file   = array( 'banned.js' );
     
-    //Ìåòà-òåãè
+    //ÐœÐµÑ‚Ð°-Ñ‚ÐµÐ³Ð¸
     SeoTags::getInstance()->initByPortfolio($proj, $spec_text);
     $page_title = SeoTags::getInstance()->getTitle();
     $page_descr = SeoTags::getInstance()->getDescription();

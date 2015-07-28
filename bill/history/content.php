@@ -2,7 +2,7 @@
 <a name="top"></a>
 <div class="b-layout b-layout__page">
 
-    <h1 class="b-page__title">Счет на сайте</h1>
+    <h1 class="b-page__title">РЎС‡РµС‚ РЅР° СЃР°Р№С‚Рµ</h1>
     
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/bill/tpl.head_menu.php"); ?>
     <?php include($_SERVER['DOCUMENT_ROOT'] . "/bill/widget/tpl.score.php"); ?>
@@ -20,19 +20,19 @@
             <table class="b-layout__table  b-layout__table_width_full b-layout__table_ipad">
                 <tr class="b-layout__tr">
                     <td class="b-layout__td b-layout__td_bordbot_3_e6 b-layout__td_padbot_10 b-layout__td_width_90">
-                        <div class="b-layout__txt b-layout__txt_italic">Дата</div>
+                        <div class="b-layout__txt b-layout__txt_italic">Р”Р°С‚Р°</div>
                     </td>
                     <td class="b-layout__td b-layout__td_bordbot_3_e6 b-layout__td_padbot_10 b-layout__td_padleft_10">
-                        <div class="b-layout__txt b-layout__txt_italic">Событие</div>
+                        <div class="b-layout__txt b-layout__txt_italic">РЎРѕР±С‹С‚РёРµ</div>
                     </td>
                     <td class="b-layout__td b-layout__td_bordbot_3_e6 b-layout__td_padbot_10 b-layout__td_padleft_10 b-layout__td_width_90">
-                        <div class="b-layout__txt b-layout__txt_italic">Сумма, руб.</div>
+                        <div class="b-layout__txt b-layout__txt_italic">РЎСѓРјРјР°, СЂСѓР±.</div>
                     </td>
                     <td class="b-layout__td b-layout__td_bordbot_3_e6 b-layout__td_padbot_10 b-layout__td_padleft_10 b-layout__td_width_90">
-                        <div class="b-layout__txt b-layout__txt_italic">Баланс, руб.</div>
+                        <div class="b-layout__txt b-layout__txt_italic">Р‘Р°Р»Р°РЅСЃ, СЂСѓР±.</div>
                     </td>
                     <td class="b-layout__td b-layout__td_bordbot_3_e6 b-layout__td_padbot_10 b-layout__td_padleft_10 b-layout__td_width_240">
-                        <div class="b-layout__txt b-layout__txt_italic">Примечание</div>
+                        <div class="b-layout__txt b-layout__txt_italic">РџСЂРёРјРµС‡Р°РЅРёРµ</div>
                     </td>
                 </tr>
     
@@ -66,9 +66,9 @@
                             <?php if($item['op_code'] != billing::RESERVE_OP_CODE) { ?>
                             <div class="b-layout__txt b-layout__txt_fontsize_15"><?= reformat(htmlspecialchars_decode($item['comments']), 27, 0, 1) ?></div>
                             <?php } elseif($item['status'] == 'reserve') {//if?>
-                            <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_color_c10600" id="com<?=$item['id']?>">Ожидание оплаты<br><?= exrates::getNameExratesForHistory($item['payment_sys'])?></div>
+                            <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_color_c10600" id="com<?=$item['id']?>">РћР¶РёРґР°РЅРёРµ РѕРїР»Р°С‚С‹<br><?= exrates::getNameExratesForHistory($item['payment_sys'])?></div>
                             <?php } elseif($item['status'] == 'cancel') {//if?>
-                            <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_color_808080" id="com<?=$item['id']?>">Список заказов отменен</div>
+                            <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_color_808080" id="com<?=$item['id']?>">РЎРїРёСЃРѕРє Р·Р°РєР°Р·РѕРІ РѕС‚РјРµРЅРµРЅ</div>
                             <?php }//else?>
                         </td>
                     </tr>
@@ -82,8 +82,8 @@
 
     <? } else { ?>
         <div class="b-post b-post_padtop_20 b-post_padbot_15">
-            <h4 class="b-post__h4 b-post__h4_padbot_5 b-post__h4_center">Операций не найдено</h4>
-            <div class="b-post__txt b-post__txt_center">Попробуйте изменить параметры фильтра</div>
+            <h4 class="b-post__h4 b-post__h4_padbot_5 b-post__h4_center">РћРїРµСЂР°С†РёР№ РЅРµ РЅР°Р№РґРµРЅРѕ</h4>
+            <div class="b-post__txt b-post__txt_center">РџРѕРїСЂРѕР±СѓР№С‚Рµ РёР·РјРµРЅРёС‚СЊ РїР°СЂР°РјРµС‚СЂС‹ С„РёР»СЊС‚СЂР°</div>
         </div>
     <? } ?>
 
@@ -92,10 +92,10 @@
         <input type="hidden" name="period" id="period" value="<?= $period ?>" />
     </form>
     <div class="b-fon b-fon_pad_15 b-fon_bg_f2 b-fon_margtop_20">
-        <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_3 b-layout__txt_fontsize_15 b-page__desktop b-page__ipad">Показаны&#160;</div>
+        <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_3 b-layout__txt_fontsize_15 b-page__desktop b-page__ipad">РџРѕРєР°Р·Р°РЅС‹&#160;</div>
         <script>
             var eventsList = {};
-            eventsList[0] = 'Все операции';
+            eventsList[0] = 'Р’СЃРµ РѕРїРµСЂР°С†РёРё';
             <? if (is_array($events)) foreach ($events as $eventCode => $eventName) { ?>
             eventsList[<?= $eventCode ?>] = '<?= str_replace(array('%username%', PHP_EOL), array($_SESSION['login'], ''), $eventName ) ?>';
             <? } ?>
@@ -108,10 +108,10 @@
         </div>&#160;
         <script>
             var periodsList = {
-                0:   'За последнюю неделю',
-                1:  'За последний месяц',
-                2:   'За последний год',
-                3:    'За все время'
+                0:   'Р—Р° РїРѕСЃР»РµРґРЅСЋСЋ РЅРµРґРµР»СЋ',
+                1:  'Р—Р° РїРѕСЃР»РµРґРЅРёР№ РјРµСЃСЏС†',
+                2:   'Р—Р° РїРѕСЃР»РµРґРЅРёР№ РіРѕРґ',
+                3:    'Р—Р° РІСЃРµ РІСЂРµРјСЏ'
             };
         </script>
         <div class="b-combo b-combo_inline-block b-combo_margbot_20_ipad b-combo_shadow_width_280">
@@ -119,13 +119,13 @@
                 <input class="b-combo__input-text" id="_period" name="_period" type="text" size="80" value="" />
             </div>
         </div>&#160;
-        <a href="javascript:void(0)" onclick="$('period').set('value', $('_period_db_id').get('value')); $('event').set('value', $('_event_db_id').get('value')); $('history_form').submit();" class="b-button b-button_flat b-button_flat_grey b-button_margtop_-4">Применить</a>
+        <a href="javascript:void(0)" onclick="$('period').set('value', $('_period_db_id').get('value')); $('event').set('value', $('_event_db_id').get('value')); $('history_form').submit();" class="b-button b-button_flat b-button_flat_grey b-button_margtop_-4">РџСЂРёРјРµРЅРёС‚СЊ</a>
     </div>
 
     <div class="b-layout b-layout_pad_10 b-layout_bord_e6 b-layout_margtop_50">
         <img class="b-layout__pic b-layout__pic_float_left b-layout__pic_margright_10" src="/images/temp/help.png" width="50" height="50">
-        <h3 class="b-layout__h3">Возникли вопросы?</h3>
-        <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_color_808080">Вы можете обратиться к нашей <noindex><a rel="nofollow" class="b-layout__link" href="https://feedback.fl.ru/list/27457-baza-znanij-flru/?category=9239" target="_blank">Базе знаний</a></noindex> <div class="b-icon b-icon_top_8 b-icon__cub b-icon_pad_null"></div></div>
+        <h3 class="b-layout__h3">Р’РѕР·РЅРёРєР»Рё РІРѕРїСЂРѕСЃС‹?</h3>
+        <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_color_808080">Р’С‹ РјРѕР¶РµС‚Рµ РѕР±СЂР°С‚РёС‚СЊСЃСЏ Рє РЅР°С€РµР№ <noindex><a rel="nofollow" class="b-layout__link" href="https://feedback.fl.ru/list/27457-baza-znanij-flru/?category=9239" target="_blank">Р‘Р°Р·Рµ Р·РЅР°РЅРёР№</a></noindex> <div class="b-icon b-icon_top_8 b-icon__cub b-icon_pad_null"></div></div>
     </div>
 
 </div>

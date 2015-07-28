@@ -614,7 +614,7 @@ abstract class PGQConsumer extends SystemDaemon
 
     if( $this->src_constr != "" ) {
       $this->log->verbose("Opening pg_src connexion '%s'.", $this->src_constr);
-      if($this->connected === NULL) { // при первой попытке форсируем новое соединение. Иначе какие-то срывы, возможно, как-то с fork-ом связано.
+      if($this->connected === NULL) { // РїСЂРё РїРµСЂРІРѕР№ РїРѕРїС‹С‚РєРµ С„РѕСЂСЃРёСЂСѓРµРј РЅРѕРІРѕРµ СЃРѕРµРґРёРЅРµРЅРёРµ. РРЅР°С‡Рµ РєР°РєРёРµ-С‚Рѕ СЃСЂС‹РІС‹, РІРѕР·РјРѕР¶РЅРѕ, РєР°Рє-С‚Рѕ СЃ fork-РѕРј СЃРІСЏР·Р°РЅРѕ.
           $this->pg_src_con = pg_connect($this->src_constr, PGSQL_CONNECT_FORCE_NEW);
       } else {
           $this->pg_src_con = pg_connect($this->src_constr);

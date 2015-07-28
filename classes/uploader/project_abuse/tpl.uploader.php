@@ -5,7 +5,7 @@
                 <img class="b-fon__loader" src="/images/ico_error.gif" alt="" height="18" width="22">
             </td>                                    
             <td class="b-icon-layout__files" colspan="2"><div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_3 b-layout__txt_padleft_10 qq-upload-error-text"></div></td>                                    
-            <td class="b-icon-layout__operate b-icon-layout__operate_padleft_10" style="vertical-align:middle;"><a class="b-icon-layout__link b-icon-layout__link_dot_666 qq-upload-error-close" href="javascript:void(0)">Ñêðûòü</a></td>
+            <td class="b-icon-layout__operate b-icon-layout__operate_padleft_10" style="vertical-align:middle;"><a class="b-icon-layout__link b-icon-layout__link_dot_666 qq-upload-error-close" href="javascript:void(0)">Ð¡ÐºÑ€Ñ‹Ñ‚ÑŒ</a></td>
         </tr>                            
     </table>                        
 </div>

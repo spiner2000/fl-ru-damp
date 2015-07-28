@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Попап при заказе ТУ для анонимуса
+ * РџРѕРїР°Рї РїСЂРё Р·Р°РєР°Р·Рµ РўРЈ РґР»СЏ Р°РЅРѕРЅРёРјСѓСЃР°
  */
 
 $title = reformat($title, 30, 0, 1);
@@ -12,28 +12,28 @@ $show_popup = (isset($_POST['popup']));
 <div class="b-shadow b-shadow_center b-shadow_width_520 <?php if(!$show_popup){ ?>b-shadow_hide <?php } ?>b-shadow__quick"  id="tesrvices_order_auth_popup" style="display:block;">
   <div class="b-shadow__body b-shadow__body_pad_15_20">
 
-    <h2 class="b-layout__title">Заказ услуги</h2>
-    <div class="b-layout__txt b-layout__txt_padbot_20">Для заказа услуги "<?=$title?>", вам необходимо зарегистрироваться (указав ФИО и e-mail) или авторизоваться.</div>
+    <h2 class="b-layout__title">Р—Р°РєР°Р· СѓСЃР»СѓРіРё</h2>
+    <div class="b-layout__txt b-layout__txt_padbot_20">Р”Р»СЏ Р·Р°РєР°Р·Р° СѓСЃР»СѓРіРё "<?=$title?>", РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ (СѓРєР°Р·Р°РІ Р¤РРћ Рё e-mail) РёР»Рё Р°РІС‚РѕСЂРёР·РѕРІР°С‚СЊСЃСЏ.</div>
     <table class="b-layout__table">
         <tbody><tr class="b-layout__tr">
-                <td class="b-layout__td b-layout__td_width_70 b-layout__td_padbot_15 b-layout__td_width_null_iphone"><div class="b-layout__txt b-layout__txt_padtop_4 b-page__desktop b-page__ipad">Имя</div></td>
+                <td class="b-layout__td b-layout__td_width_70 b-layout__td_padbot_15 b-layout__td_width_null_iphone"><div class="b-layout__txt b-layout__txt_padtop_4 b-page__desktop b-page__ipad">РРјСЏ</div></td>
                 <td class="b-layout__td b-layout__td_padbot_15">
-                    <div class="b-layout__txt b-layout__txt_padbot_5 b-page__iphone">Имя</div>
+                    <div class="b-layout__txt b-layout__txt_padbot_5 b-page__iphone">РРјСЏ</div>
                     <div class="b-combo">
                         <div class="b-combo__input b-combo__input_width_260">
-                            <input class="b-combo__input-text b-combo__input-text_italic" type="text" placeholder="Ваше имя, не более 21 символа" size="21" maxlength="21" id="reg_name">
+                            <input class="b-combo__input-text b-combo__input-text_italic" type="text" placeholder="Р’Р°С€Рµ РёРјСЏ, РЅРµ Р±РѕР»РµРµ 21 СЃРёРјРІРѕР»Р°" size="21" maxlength="21" id="reg_name">
                         </div>
                     </div>         
                 </td>
                 <td>&nbsp;</td>
             </tr>
             <tr class="b-layout__tr">
-                <td class="b-layout__td b-layout__td_width_70 b-layout__td_padbot_15 b-layout__td_width_null_iphone"><div class="b-layout__txt b-layout__txt_padtop_4 b-page__desktop b-page__ipad">Фамилия</div></td>
+                <td class="b-layout__td b-layout__td_width_70 b-layout__td_padbot_15 b-layout__td_width_null_iphone"><div class="b-layout__txt b-layout__txt_padtop_4 b-page__desktop b-page__ipad">Р¤Р°РјРёР»РёСЏ</div></td>
                 <td class="b-layout__td b-layout__td_padbot_15">
-                    <div class="b-layout__txt b-layout__txt_padbot_5 b-page__iphone">Фамилия</div>
+                    <div class="b-layout__txt b-layout__txt_padbot_5 b-page__iphone">Р¤Р°РјРёР»РёСЏ</div>
                     <div class="b-combo">
                         <div class="b-combo__input b-combo__input_width_260">
-                            <input class="b-combo__input-text b-combo__input-text_italic" type="text" placeholder="Ваша фамилия, не более 21 символа" size="21" maxlength="21" id="reg_surname">
+                            <input class="b-combo__input-text b-combo__input-text_italic" type="text" placeholder="Р’Р°С€Р° С„Р°РјРёР»РёСЏ, РЅРµ Р±РѕР»РµРµ 21 СЃРёРјРІРѕР»Р°" size="21" maxlength="21" id="reg_surname">
                         </div>
                     </div>         
                 </td>
@@ -45,7 +45,7 @@ $show_popup = (isset($_POST['popup']));
                     <div class="b-layout__txt b-layout__txt_padbot_5 b-page__iphone">E-mail</div>
                     <div class="b-combo">
                         <div class="b-combo__input b-combo__input_width_260">
-                            <input class="b-combo__input-text b-combo__input-text_italic" type="text" onblur="TServices_Order_Auth.checkEmail(1);" onkeyup="TServices_Order_Auth.checkEmail(0);" placeholder="Введите ваш e-mail" size="80" id="reg_email" name="email">
+                            <input class="b-combo__input-text b-combo__input-text_italic" type="text" onblur="TServices_Order_Auth.checkEmail(1);" onkeyup="TServices_Order_Auth.checkEmail(0);" placeholder="Р’РІРµРґРёС‚Рµ РІР°С€ e-mail" size="80" id="reg_email" name="email">
                         </div>
                     </div>         
                 </td>
@@ -63,9 +63,9 @@ $show_popup = (isset($_POST['popup']));
             </tr>
         </tbody></table>
     <div class="b-buttons b-buttons_padleft_70 b-buttons_padleft_null_iphone">
-        <a href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green" onclick="TServices_Order_Auth.submitForm(); return false;">Зарегистрироваться<span class="b-page__ipad b-page__desktop"> и заказать услугу</span></a>
-        <span class="b-layout__txt b-layout__txt_fontsize_11">&nbsp;<span class="b-page__iphone"> и заказать услугу</span> или <a class="b-layout__link" href="/registration/?type=empl&user_action=tu">авторизоваться</a></span>
-        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_10">После нажатия на кнопку "Зарегистрироваться и заказать услугу" на указанный адрес будет отправлено письмо со ссылкой.<br>Перейдя по ней, вы подтвердите регистрацию и заказ услуги.</div>
+        <a href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green" onclick="TServices_Order_Auth.submitForm(); return false;">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ<span class="b-page__ipad b-page__desktop"> Рё Р·Р°РєР°Р·Р°С‚СЊ СѓСЃР»СѓРіСѓ</span></a>
+        <span class="b-layout__txt b-layout__txt_fontsize_11">&nbsp;<span class="b-page__iphone"> Рё Р·Р°РєР°Р·Р°С‚СЊ СѓСЃР»СѓРіСѓ</span> РёР»Рё <a class="b-layout__link" href="/registration/?type=empl&user_action=tu">Р°РІС‚РѕСЂРёР·РѕРІР°С‚СЊСЃСЏ</a></span>
+        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_10">РџРѕСЃР»Рµ РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ "Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ Рё Р·Р°РєР°Р·Р°С‚СЊ СѓСЃР»СѓРіСѓ" РЅР° СѓРєР°Р·Р°РЅРЅС‹Р№ Р°РґСЂРµСЃ Р±СѓРґРµС‚ РѕС‚РїСЂР°РІР»РµРЅРѕ РїРёСЃСЊРјРѕ СЃРѕ СЃСЃС‹Р»РєРѕР№.<br>РџРµСЂРµР№РґСЏ РїРѕ РЅРµР№, РІС‹ РїРѕРґС‚РІРµСЂРґРёС‚Рµ СЂРµРіРёСЃС‚СЂР°С†РёСЋ Рё Р·Р°РєР°Р· СѓСЃР»СѓРіРё.</div>
     </div>
   </div>
   <span class="b-shadow__icon b-shadow__icon_close"></span>

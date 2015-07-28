@@ -4,35 +4,35 @@ $xajax->printJavascript('/xajax/');
 ?>
 <div class="b-menu b-menu_crumbs b-layout__right b-layout__right_float_right b-layout__right_width_72ps b-menu_margbot_30">
     <ul class="b-menu__list">
-        <li class="b-menu__item"><a href="/service/" class="b-menu__link">Все услуги сайта</a>&nbsp;&rarr;&nbsp;</li>
+        <li class="b-menu__item"><a href="/service/" class="b-menu__link">Р’СЃРµ СѓСЃР»СѓРіРё СЃР°Р№С‚Р°</a>&nbsp;&rarr;&nbsp;</li>
     </ul>
 </div>
 <table class="b-layout__table b-layout__table_width_full b-layout__table_clear_both">
     <tr class="b-layout__tr">
         <td class="b-layout__one b-layout__one_center" colspan="3">
             <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_100 b-layout__txt_relative">
-                <a class="b-layout__link" style="position:absolute; right:15px; top:55px;" href="/bezopasnaya-sdelka/?site=calc" target="_blank">Калькулятор</a><img class="b-layout__pic" src="/images/bs/1.png" alt="" width="218" height="105" />
+                <a class="b-layout__link" style="position:absolute; right:15px; top:55px;" href="/bezopasnaya-sdelka/?site=calc" target="_blank">РљР°Р»СЊРєСѓР»СЏС‚РѕСЂ</a><img class="b-layout__pic" src="/images/bs/1.png" alt="" width="218" height="105" />
             </div>
-            <h1 class="b-page__title">Безопасная Сделка</h1>
+            <h1 class="b-page__title">Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°</h1>
         </td>
     </tr>
     <tr class="b-layout__tr">
         <td class="b-layout__one b-layout__one_center b-layout__one_width_33ps">
             <div class="b-layout__txt b-layout__txt_color_fd6c30 b-layout__txt_fontsize_46 b-layout__txt_bold"><?= $roleStr === 'frl' ? '0' : '9.9-13.9' ?>%</div>
-            <div class="b-layout__txt"><?= $roleStr === 'frl' ? 'Комиссия для фрилансера' : 'Комиссия для работодателя' ?></div>
+            <div class="b-layout__txt"><?= $roleStr === 'frl' ? 'РљРѕРјРёСЃСЃРёСЏ РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂР°' : 'РљРѕРјРёСЃСЃРёСЏ РґР»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ' ?></div>
             <? if($roleStr !== 'frl') { ?>
-            <div class="b-layout__txt b-layout__txt_fontsize_11" style="color:#000;">(включая все комиссии за открытие аккредитива)</div>
+            <div class="b-layout__txt b-layout__txt_fontsize_11" style="color:#000;">(РІРєР»СЋС‡Р°СЏ РІСЃРµ РєРѕРјРёСЃСЃРёРё Р·Р° РѕС‚РєСЂС‹С‚РёРµ Р°РєРєСЂРµРґРёС‚РёРІР°)</div>
             <? }//if?>
         </td>
         <td class="b-layout__one b-layout__one_center">
-            <div class="b-layout__txt b-layout__txt_color_fd6c30 b-layout__txt_fontsize_46 b-layout__txt_bold"><?= sbr_stages::MIN_COST_RUR; ?> руб.</div>
-            <div class="b-layout__txt">Минимальный бюджет проекта</div>
+            <div class="b-layout__txt b-layout__txt_color_fd6c30 b-layout__txt_fontsize_46 b-layout__txt_bold"><?= sbr_stages::MIN_COST_RUR; ?> СЂСѓР±.</div>
+            <div class="b-layout__txt">РњРёРЅРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ РїСЂРѕРµРєС‚Р°</div>
         </td>
         <td class="b-layout__one b-layout__one_center b-layout__one_valign_bot b-layout__one_width_33ps">
             <img class="b-layout__pic" src="/images/bs/wm.png" alt="Webmoney" title="Webmoney"  />&#160;&#160;&#160;
-            <img class="b-layout__pic" src="/images/bs/pskb.png" alt="Веб-кошелек ПСКБ" title="Веб-кошелек ПСКБ"  />&#160;&#160;&#160;
-            <img class="b-layout__pic" src="/images/bs/pk.png" alt="Пластиковые карты" title="Пластиковые карты"  />
-            <div class="b-layout__txt b-layout__txt_padtop_10"><?= $roleStr === 'frl' ? 'Большой выбор способов вывода денег' : 'Доступны разные способы оплаты' ?></div>
+            <img class="b-layout__pic" src="/images/bs/pskb.png" alt="Р’РµР±-РєРѕС€РµР»РµРє РџРЎРљР‘" title="Р’РµР±-РєРѕС€РµР»РµРє РџРЎРљР‘"  />&#160;&#160;&#160;
+            <img class="b-layout__pic" src="/images/bs/pk.png" alt="РџР»Р°СЃС‚РёРєРѕРІС‹Рµ РєР°СЂС‚С‹" title="РџР»Р°СЃС‚РёРєРѕРІС‹Рµ РєР°СЂС‚С‹"  />
+            <div class="b-layout__txt b-layout__txt_padtop_10"><?= $roleStr === 'frl' ? 'Р‘РѕР»СЊС€РѕР№ РІС‹Р±РѕСЂ СЃРїРѕСЃРѕР±РѕРІ РІС‹РІРѕРґР° РґРµРЅРµРі' : 'Р”РѕСЃС‚СѓРїРЅС‹ СЂР°Р·РЅС‹Рµ СЃРїРѕСЃРѕР±С‹ РѕРїР»Р°С‚С‹' ?></div>
             <? if($roleStr !== 'frl') { ?><div class="b-layout__txt">&nbsp;</div><? }//if?>
         </td>
     </tr>
@@ -43,37 +43,37 @@ $xajax->printJavascript('/xajax/');
     <tr class="b-layout__tr">
         <td class="b-layout__one b-layout__one_padright_20"><div class="b-promo__bs b-promo__bs_1"></div></td>
         <td class="b-layout__one b-layout__one_padbot_30 b-layout__one_width_50ps">
-            <h3 class="b-layout__h3">Вас обманывали работодатели?</h3>
-            <div class="b-layout__txt">У вас есть неприятный опыт, когда вы выполнили проект, а деньги так и не получили?</div>
+            <h3 class="b-layout__h3">Р’Р°СЃ РѕР±РјР°РЅС‹РІР°Р»Рё СЂР°Р±РѕС‚РѕРґР°С‚РµР»Рё?</h3>
+            <div class="b-layout__txt">РЈ РІР°СЃ РµСЃС‚СЊ РЅРµРїСЂРёСЏС‚РЅС‹Р№ РѕРїС‹С‚, РєРѕРіРґР° РІС‹ РІС‹РїРѕР»РЅРёР»Рё РїСЂРѕРµРєС‚, Р° РґРµРЅСЊРіРё С‚Р°Рє Рё РЅРµ РїРѕР»СѓС‡РёР»Рё?</div>
         </td>
         <td class="b-layout__one b-layout__one_padright_20 b-layout__one_padleft_50"><div class="b-promo__bs b-promo__bs_4"></div></td>
         <td class="b-layout__one b-layout__one_padbot_30 b-layout__one_width_50ps">
-            <h3 class="b-layout__h3">Избавьтесь от рисков</h3>
-            <div class="b-layout__txt">Если заказчик неожиданно исчезнет, вы все равно получите деньги за выполненный проект.</div>
+            <h3 class="b-layout__h3">РР·Р±Р°РІСЊС‚РµСЃСЊ РѕС‚ СЂРёСЃРєРѕРІ</h3>
+            <div class="b-layout__txt">Р•СЃР»Рё Р·Р°РєР°Р·С‡РёРє РЅРµРѕР¶РёРґР°РЅРЅРѕ РёСЃС‡РµР·РЅРµС‚, РІС‹ РІСЃРµ СЂР°РІРЅРѕ РїРѕР»СѓС‡РёС‚Рµ РґРµРЅСЊРіРё Р·Р° РІС‹РїРѕР»РЅРµРЅРЅС‹Р№ РїСЂРѕРµРєС‚.</div>
         </td>
     </tr>
     <tr class="b-layout__tr">
         <td class="b-layout__one b-layout__one_padright_20"><div class="b-promo__bs b-promo__bs_2"></div></td>
         <td class="b-layout__one b-layout__one_padbot_30 b-layout__one_width_50ps">
-            <h3 class="b-layout__h3">Надоели бесконечные поправки?</h3>
-            <div class="b-layout__txt">Приходилось вносить правки, подчиняясь безосновательным требованиям заказчиков?</div>
+            <h3 class="b-layout__h3">РќР°РґРѕРµР»Рё Р±РµСЃРєРѕРЅРµС‡РЅС‹Рµ РїРѕРїСЂР°РІРєРё?</h3>
+            <div class="b-layout__txt">РџСЂРёС…РѕРґРёР»РѕСЃСЊ РІРЅРѕСЃРёС‚СЊ РїСЂР°РІРєРё, РїРѕРґС‡РёРЅСЏСЏСЃСЊ Р±РµР·РѕСЃРЅРѕРІР°С‚РµР»СЊРЅС‹Рј С‚СЂРµР±РѕРІР°РЅРёСЏРј Р·Р°РєР°Р·С‡РёРєРѕРІ?</div>
         </td>
         <td class="b-layout__one b-layout__one_padright_20 b-layout__one_padleft_50"><div class="b-promo__bs b-promo__bs_5"></div></td>
         <td class="b-layout__one b-layout__one_padbot_30 b-layout__one_width_50ps">
-            <h3 class="b-layout__h3">Работайте уверенно</h3>
-            <div class="b-layout__txt">Все изменения в ТЗ вносятся только по обоюдному согласию. Если вас не будут устраивать новые условия, сотрудничество продолжится по утвержденному в начале ТЗ.</div>
+            <h3 class="b-layout__h3">Р Р°Р±РѕС‚Р°Р№С‚Рµ СѓРІРµСЂРµРЅРЅРѕ</h3>
+            <div class="b-layout__txt">Р’СЃРµ РёР·РјРµРЅРµРЅРёСЏ РІ РўР— РІРЅРѕСЃСЏС‚СЃСЏ С‚РѕР»СЊРєРѕ РїРѕ РѕР±РѕСЋРґРЅРѕРјСѓ СЃРѕРіР»Р°СЃРёСЋ. Р•СЃР»Рё РІР°СЃ РЅРµ Р±СѓРґСѓС‚ СѓСЃС‚СЂР°РёРІР°С‚СЊ РЅРѕРІС‹Рµ СѓСЃР»РѕРІРёСЏ, СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ РїСЂРѕРґРѕР»Р¶РёС‚СЃСЏ РїРѕ СѓС‚РІРµСЂР¶РґРµРЅРЅРѕРјСѓ РІ РЅР°С‡Р°Р»Рµ РўР—.</div>
         </td>
     </tr>
     <tr class="b-layout__tr">
         <td class="b-layout__one b-layout__one_padright_20"><div class="b-promo__bs b-promo__bs_3"></div></td>
         <td class="b-layout__one b-layout__one_width_50ps">
-            <h3 class="b-layout__h3">Вам не доверяют клиенты?</h3>
-            <div class="b-layout__txt">У вас маленький рейтинг и недостаточно заказов?</div>
+            <h3 class="b-layout__h3">Р’Р°Рј РЅРµ РґРѕРІРµСЂСЏСЋС‚ РєР»РёРµРЅС‚С‹?</h3>
+            <div class="b-layout__txt">РЈ РІР°СЃ РјР°Р»РµРЅСЊРєРёР№ СЂРµР№С‚РёРЅРі Рё РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ Р·Р°РєР°Р·РѕРІ?</div>
         </td>
         <td class="b-layout__one b-layout__one_padright_20 b-layout__one_padleft_50"><div class="b-promo__bs b-promo__bs_6"></div></td>
         <td class="b-layout__one b-layout__one_width_50ps">
-            <h3 class="b-layout__h3">Получите щит БС рядом с именем</h3>
-            <div class="b-layout__txt">Всем пользователям, завершившим хотя бы одну Безопасную Сделку, выдается знак (щит), который размещается рядом с именем. Таким пользователям заказчики доверяют больше.</div>
+            <h3 class="b-layout__h3">РџРѕР»СѓС‡РёС‚Рµ С‰РёС‚ Р‘РЎ СЂСЏРґРѕРј СЃ РёРјРµРЅРµРј</h3>
+            <div class="b-layout__txt">Р’СЃРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј,В Р·Р°РІРµСЂС€РёРІС€РёРј С…РѕС‚СЏ Р±С‹ РѕРґРЅСѓВ Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ, РІС‹РґР°РµС‚СЃСЏ Р·РЅР°Рє (С‰РёС‚), РєРѕС‚РѕСЂС‹Р№ СЂР°Р·РјРµС‰Р°РµС‚СЃСЏ СЂСЏРґРѕРј СЃ РёРјРµРЅРµРј. РўР°РєРёРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј Р·Р°РєР°Р·С‡РёРєРё РґРѕРІРµСЂСЏСЋС‚ Р±РѕР»СЊС€Рµ.</div>
         </td>
     </tr>
 </table>
@@ -82,37 +82,37 @@ $xajax->printJavascript('/xajax/');
     <tr class="b-layout__tr">
         <td class="b-layout__one b-layout__one_padright_20"><div class="b-promo__bs b-promo__bs_1"></div></td>
         <td class="b-layout__one b-layout__one_padbot_30 b-layout__one_width_50ps">
-            <h3 class="b-layout__h3">Вас обманывали исполнители?</h3>
-            <div class="b-layout__txt">У вас есть неприятный опыт, когда вы отдали деньги, а работу так и не получили?</div>
+            <h3 class="b-layout__h3">Р’Р°СЃ РѕР±РјР°РЅС‹РІР°Р»Рё РёСЃРїРѕР»РЅРёС‚РµР»Рё?</h3>
+            <div class="b-layout__txt">РЈ РІР°СЃ РµСЃС‚СЊ РЅРµРїСЂРёСЏС‚РЅС‹Р№ РѕРїС‹С‚, РєРѕРіРґР° РІС‹ РѕС‚РґР°Р»Рё РґРµРЅСЊРіРё, Р° СЂР°Р±РѕС‚Сѓ С‚Р°Рє Рё РЅРµ РїРѕР»СѓС‡РёР»Рё?</div>
         </td>
         <td class="b-layout__one b-layout__one_padright_20 b-layout__one_padleft_50"><div class="b-promo__bs b-promo__bs_4"></div></td>
         <td class="b-layout__one b-layout__one_padbot_30 b-layout__one_width_50ps">
-            <h3 class="b-layout__h3">Избавьтесь от рисков</h3>
-            <div class="b-layout__txt">Если фрилансер не справится с проектом, то мы вернем вам деньги.</div>
+            <h3 class="b-layout__h3">РР·Р±Р°РІСЊС‚РµСЃСЊ РѕС‚ СЂРёСЃРєРѕРІ</h3>
+            <div class="b-layout__txt">Р•СЃР»Рё С„СЂРёР»Р°РЅСЃРµСЂ РЅРµ СЃРїСЂР°РІРёС‚СЃСЏ СЃ РїСЂРѕРµРєС‚РѕРј, С‚Рѕ РјС‹ РІРµСЂРЅРµРј РІР°Рј РґРµРЅСЊРіРё.</div>
         </td>
     </tr>
     <tr class="b-layout__tr">
         <td class="b-layout__one b-layout__one_padright_20"><div class="b-promo__bs b-promo__bs_2"></div></td>
         <td class="b-layout__one b-layout__one_padbot_30 b-layout__one_width_50ps">
-            <h3 class="b-layout__h3">Строгий дедлайн по проекту?</h3>
-            <div class="b-layout__txt">Беспокоитесь, что сроки сдачи проекта будут сорваны?</div>
+            <h3 class="b-layout__h3">РЎС‚СЂРѕРіРёР№ РґРµРґР»Р°Р№РЅ РїРѕ РїСЂРѕРµРєС‚Сѓ?</h3>
+            <div class="b-layout__txt">Р‘РµСЃРїРѕРєРѕРёС‚РµСЃСЊ, С‡С‚Рѕ СЃСЂРѕРєРё СЃРґР°С‡Рё РїСЂРѕРµРєС‚Р° Р±СѓРґСѓС‚ СЃРѕСЂРІР°РЅС‹?</div>
         </td>
         <td class="b-layout__one b-layout__one_padright_20 b-layout__one_padleft_50"><div class="b-promo__bs b-promo__bs_5"></div></td>
         <td class="b-layout__one b-layout__one_padbot_30 b-layout__one_width_50ps">
-            <h3 class="b-layout__h3">Контролируйте ситуацию</h3>
-            <div class="b-layout__txt">Работа, выполненная качественно и в срок, &mdash; обязательное условие оплаты услуг фрилансера.</div>
+            <h3 class="b-layout__h3">РљРѕРЅС‚СЂРѕР»РёСЂСѓР№С‚Рµ СЃРёС‚СѓР°С†РёСЋ</h3>
+            <div class="b-layout__txt">Р Р°Р±РѕС‚Р°, РІС‹РїРѕР»РЅРµРЅРЅР°СЏ РєР°С‡РµСЃС‚РІРµРЅРЅРѕ Рё РІ СЃСЂРѕРє, &mdash; РѕР±СЏР·Р°С‚РµР»СЊРЅРѕРµ СѓСЃР»РѕРІРёРµ РѕРїР»Р°С‚С‹ СѓСЃР»СѓРі С„СЂРёР»Р°РЅСЃРµСЂР°.</div>
         </td>
     </tr>
     <tr class="b-layout__tr">
         <td class="b-layout__one b-layout__one_padright_20"><div class="b-promo__bs b-promo__bs_3"></div></td>
         <td class="b-layout__one b-layout__one_width_50ps">
-            <h3 class="b-layout__h3">Сомневаетесь в качестве?</h3>
-            <div class="b-layout__txt">Не уверены, что работа будет соответствовать ТЗ и вашим<br />ожиданиям?</div>
+            <h3 class="b-layout__h3">РЎРѕРјРЅРµРІР°РµС‚РµСЃСЊ РІ РєР°С‡РµСЃС‚РІРµ?</h3>
+            <div class="b-layout__txt">РќРµ СѓРІРµСЂРµРЅС‹, С‡С‚Рѕ СЂР°Р±РѕС‚Р° Р±СѓРґРµС‚ СЃРѕРѕС‚РІРµС‚СЃС‚РІРѕРІР°С‚СЊ РўР— Рё РІР°С€РёРј<br />РѕР¶РёРґР°РЅРёСЏРј?</div>
         </td>
         <td class="b-layout__one b-layout__one_padright_20 b-layout__one_padleft_50"><div class="b-promo__bs b-promo__bs_6"></div></td>
         <td class="b-layout__one b-layout__one_width_50ps">
-            <h3 class="b-layout__h3">Платите за результат</h3>
-            <div class="b-layout__txt">Фрилансер получит гонорар только после того, как вы примете работу. Исключительные права на результат будут полностью принадлежать вам.</div>
+            <h3 class="b-layout__h3">РџР»Р°С‚РёС‚Рµ Р·Р° СЂРµР·СѓР»СЊС‚Р°С‚</h3>
+            <div class="b-layout__txt">Р¤СЂРёР»Р°РЅСЃРµСЂ РїРѕР»СѓС‡РёС‚ РіРѕРЅРѕСЂР°СЂ С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ С‚РѕРіРѕ, РєР°Рє РІС‹ РїСЂРёРјРµС‚Рµ СЂР°Р±РѕС‚Сѓ. РСЃРєР»СЋС‡РёС‚РµР»СЊРЅС‹Рµ РїСЂР°РІР° РЅР° СЂРµР·СѓР»СЊС‚Р°С‚ Р±СѓРґСѓС‚ РїРѕР»РЅРѕСЃС‚СЊСЋ РїСЂРёРЅР°РґР»РµР¶Р°С‚СЊ РІР°Рј.</div>
         </td>
     </tr>
 </table>
@@ -125,24 +125,24 @@ $xajax->printJavascript('/xajax/');
 <table class="b-layout__table b-layout__table_width_400 b-layout__table_center">
     <tr class="b-layout__tr">
         <td class="b-layout__one b-layout__one_center">
-            <div class="b-layout__txt b-layout__txt_fontsize_34">Как это работает</div>
-            <div class="b-layout__txt b-layout__txt_padbot_30">Безопасная Сделка &mdash; это легко и надежно.</div>
+            <div class="b-layout__txt b-layout__txt_fontsize_34">РљР°Рє СЌС‚Рѕ СЂР°Р±РѕС‚Р°РµС‚</div>
+            <div class="b-layout__txt b-layout__txt_padbot_30">Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР° &mdash; СЌС‚Рѕ Р»РµРіРєРѕ Рё РЅР°РґРµР¶РЅРѕ.</div>
             <img class="b-layout__pic" src="/images/bs/3.png" alt="" width="461" height="79" />
             <? if ($roleStr === 'frl') { ?>
-            <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_left b-layout__txt_padtop_30"><div class="b-promo__num">1</div>&#160;&#160;Работодатель предлагает вам заключить сделку.</div>
-            <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_left"><div class="b-promo__num">2</div>&#160;&#160;Вы просматриваете условия сотрудничества и даете свое согласие.</div>
-            <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_left"><div class="b-promo__num">3</div>&#160;&#160;Заказчик одобряет выполненный вами проект.</div>
-            <div class="b-layout__txt b-layout__txt_left"><div class="b-promo__num">4</div>&#160;&#160;Мы переводим вам гонорар.</div>
+            <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_left b-layout__txt_padtop_30"><div class="b-promo__num">1</div>&#160;&#160;Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ РїСЂРµРґР»Р°РіР°РµС‚ РІР°Рј Р·Р°РєР»СЋС‡РёС‚СЊ СЃРґРµР»РєСѓ.</div>
+            <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_left"><div class="b-promo__num">2</div>&#160;&#160;Р’С‹ РїСЂРѕСЃРјР°С‚СЂРёРІР°РµС‚Рµ СѓСЃР»РѕРІРёСЏ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР° Рё РґР°РµС‚Рµ СЃРІРѕРµ СЃРѕРіР»Р°СЃРёРµ.</div>
+            <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_left"><div class="b-promo__num">3</div>&#160;&#160;Р—Р°РєР°Р·С‡РёРє РѕРґРѕР±СЂСЏРµС‚ РІС‹РїРѕР»РЅРµРЅРЅС‹Р№ РІР°РјРё РїСЂРѕРµРєС‚.</div>
+            <div class="b-layout__txt b-layout__txt_left"><div class="b-promo__num">4</div>&#160;&#160;РњС‹ РїРµСЂРµРІРѕРґРёРј РІР°Рј РіРѕРЅРѕСЂР°СЂ.</div>
             <? } else { ?>
-            <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_left b-layout__txt_padtop_30 b-layout__txt_padleft_100"><div class="b-promo__num">1</div>&#160;&#160;Опубликуйте проект или конкурс и выберите исполнителя.</div>
-            <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_left b-layout__txt_padleft_100"><div class="b-promo__num">2</div>&#160;&#160;Зарезервируйте деньги на специальном счете в банке.</div>
-            <div class="b-layout__txt b-layout__txt_nowrap b-layout__txt_left b-layout__txt_padleft_100"><div class="b-promo__num">3</div>&#160;&#160;Проверьте выполненную работу. С вашего согласия мы переведем гонорар фрилансеру.</div>
+            <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_left b-layout__txt_padtop_30 b-layout__txt_padleft_100"><div class="b-promo__num">1</div>&#160;&#160;РћРїСѓР±Р»РёРєСѓР№С‚Рµ РїСЂРѕРµРєС‚ РёР»Рё РєРѕРЅРєСѓСЂСЃ Рё РІС‹Р±РµСЂРёС‚Рµ РёСЃРїРѕР»РЅРёС‚РµР»СЏ.</div>
+            <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_left b-layout__txt_padleft_100"><div class="b-promo__num">2</div>&#160;&#160;Р—Р°СЂРµР·РµСЂРІРёСЂСѓР№С‚Рµ РґРµРЅСЊРіРё РЅР° СЃРїРµС†РёР°Р»СЊРЅРѕРј СЃС‡РµС‚Рµ РІ Р±Р°РЅРєРµ.</div>
+            <div class="b-layout__txt b-layout__txt_nowrap b-layout__txt_left b-layout__txt_padleft_100"><div class="b-promo__num">3</div>&#160;&#160;РџСЂРѕРІРµСЂСЊС‚Рµ РІС‹РїРѕР»РЅРµРЅРЅСѓСЋ СЂР°Р±РѕС‚Сѓ. РЎ РІР°С€РµРіРѕ СЃРѕРіР»Р°СЃРёСЏ РјС‹ РїРµСЂРµРІРµРґРµРј РіРѕРЅРѕСЂР°СЂ С„СЂРёР»Р°РЅСЃРµСЂСѓ.</div>
                 <? /*if (get_uid(0)) { ?>
                 <div class="b-buttons b-buttons_padtop_40 b-buttons_padbot_10 b-buttons_center">
                     <a class="b-button b-button_big_rectangle_color_green" href="/bezopasnaya-sdelka/?site=new">
                         <span class="b-button__b1">
                             <span class="b-button__b2">
-                                <span class="b-button__txt">Создать сделку</span>
+                                <span class="b-button__txt">РЎРѕР·РґР°С‚СЊ СЃРґРµР»РєСѓ</span>
                             </span>
                         </span>
                     </a>
@@ -162,7 +162,7 @@ $xajax->printJavascript('/xajax/');
         
         var
             $newFeedbacksBtn, $feedbacks,
-            needUpdate; // если true - значит надо обновить отзывы
+            needUpdate; // РµСЃР»Рё true - Р·РЅР°С‡РёС‚ РЅР°РґРѕ РѕР±РЅРѕРІРёС‚СЊ РѕС‚Р·С‹РІС‹
         
         window.addEvent('domready', function() {
             
@@ -177,7 +177,7 @@ $xajax->printJavascript('/xajax/');
         });
         
         function newFeedbacks () {
-            // анимация исчезновения
+            // Р°РЅРёРјР°С†РёСЏ РёСЃС‡РµР·РЅРѕРІРµРЅРёСЏ
             $feedbacks.set('morph', {duration: 500});
             $feedbacks.get('morph').addEvent('complete', hidingComplete);
             $feedbacks.morph({'opacity': 0});
@@ -194,14 +194,14 @@ $xajax->printJavascript('/xajax/');
         }
         
         function newFeedbacksLoaded () {
-            // анимация появления
+            // Р°РЅРёРјР°С†РёСЏ РїРѕСЏРІР»РµРЅРёСЏ
             $feedbacks.morph({'opacity': 1});
         }
         
     })()
 </script>
 <div class="b-buttons b-buttons_center">
-    <a href="javascript:void(0)" id="new-feedbacks" class="b-button b-button_flat b-button_flat_green">Еще отзывы</a>          
+    <a href="javascript:void(0)" id="new-feedbacks" class="b-button b-button_flat b-button_flat_green">Р•С‰Рµ РѕС‚Р·С‹РІС‹</a>          
 </div>
 <? } ?>
 <div class="b-promo__bs-arrow"></div>
@@ -209,22 +209,22 @@ $xajax->printJavascript('/xajax/');
     <tr class="b-layout__tr">
         <td class="b-layout__one b-layout__one_center">
             <div class="b-promo__bs b-promo__bs_7"></div>
-            <div class="b-layout__txt b-layout__txt_fontsize_34 b-layout__txt_padbot_20">Остались вопросы?</div>
+            <div class="b-layout__txt b-layout__txt_fontsize_34 b-layout__txt_padbot_20">РћСЃС‚Р°Р»РёСЃСЊ РІРѕРїСЂРѕСЃС‹?</div>
             <? if ($roleStr === 'frl') { ?>
-            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397488-kak-frilanseru-soglasitsya-na-bezopasnuyu-sdelku/">Как согласиться на сделку</a></div>
-            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397433-kalkulyator-bezopasnoj-sdelki/">Как рассчитать свой гонорар</a></div>
-            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397422-poryadok-dejstvij-pri-rabote-cherez-bezopasnuyu-sdelku/">Каков порядок работы через Безопасную Сделку</a></div>
-            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397435-dokumentooborot-bezopasnoj-sdelki/">Как оформить договор</a></div>
-            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397431-chto-takoe-arbitrazh-servisa-bezopasnaya-sdelka-i-kak-k-nemu-obratitsya/">Как работает Арбитраж</a></div>
-            <div class="b-layout__txt"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397425-zapolnenie-stranitsyi-finansyi-dlya-rabotyi-cherez-bezopasnuyu-sdelku/">Какие данные нужны для работы через Безопасную Сделку</a></div>
+            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397488-kak-frilanseru-soglasitsya-na-bezopasnuyu-sdelku/">РљР°Рє СЃРѕРіР»Р°СЃРёС‚СЊСЃСЏ РЅР° СЃРґРµР»РєСѓ</a></div>
+            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397433-kalkulyator-bezopasnoj-sdelki/">РљР°Рє СЂР°СЃСЃС‡РёС‚Р°С‚СЊ СЃРІРѕР№ РіРѕРЅРѕСЂР°СЂ</a></div>
+            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397422-poryadok-dejstvij-pri-rabote-cherez-bezopasnuyu-sdelku/">РљР°РєРѕРІ РїРѕСЂСЏРґРѕРє СЂР°Р±РѕС‚С‹ С‡РµСЂРµР· Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ</a></div>
+            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397435-dokumentooborot-bezopasnoj-sdelki/">РљР°Рє РѕС„РѕСЂРјРёС‚СЊ РґРѕРіРѕРІРѕСЂ</a></div>
+            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397431-chto-takoe-arbitrazh-servisa-bezopasnaya-sdelka-i-kak-k-nemu-obratitsya/">РљР°Рє СЂР°Р±РѕС‚Р°РµС‚ РђСЂР±РёС‚СЂР°Р¶</a></div>
+            <div class="b-layout__txt"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397425-zapolnenie-stranitsyi-finansyi-dlya-rabotyi-cherez-bezopasnuyu-sdelku/">РљР°РєРёРµ РґР°РЅРЅС‹Рµ РЅСѓР¶РЅС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ С‡РµСЂРµР· Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ</a></div>
             <? } else { ?>
-            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397434-kak-nachat-bezopasnuyu-sdelku/">Как начать Безопасную Сделку</a></div>
-            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397433-kalkulyator-bezopasnoj-sdelki/">Как рассчитать бюджет сделки</a></div>
-            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397428-kak-zarezervirovat-dengi-dlya-bezopasnoj-sdelki/">Как зарезервировать деньги для сделки</a></div>
-            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397432-limityi-na-rezervirovanie-deneg-bankovskoj-kartoj-po-bezopasnoj-sdelke/">Лимиты на сделки по банковским картам</a></div>
-            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397435-dokumentooborot-bezopasnoj-sdelki/">Как оформить договор</a></div>
-            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397431-chto-takoe-arbitrazh-servisa-bezopasnaya-sdelka-i-kak-k-nemu-obratitsya/">Как работает Арбитраж</a></div>
-            <div class="b-layout__txt"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397440-upravlenie-bezopasnoj-sdelkoj-dlya-rabotodatelya/">Как управлять сделкой</a></div>
+            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397434-kak-nachat-bezopasnuyu-sdelku/">РљР°Рє РЅР°С‡Р°С‚СЊ Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ</a></div>
+            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397433-kalkulyator-bezopasnoj-sdelki/">РљР°Рє СЂР°СЃСЃС‡РёС‚Р°С‚СЊ Р±СЋРґР¶РµС‚ СЃРґРµР»РєРё</a></div>
+            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397428-kak-zarezervirovat-dengi-dlya-bezopasnoj-sdelki/">РљР°Рє Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё РґР»СЏ СЃРґРµР»РєРё</a></div>
+            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397432-limityi-na-rezervirovanie-deneg-bankovskoj-kartoj-po-bezopasnoj-sdelke/">Р›РёРјРёС‚С‹ РЅР° СЃРґРµР»РєРё РїРѕ Р±Р°РЅРєРѕРІСЃРєРёРј РєР°СЂС‚Р°Рј</a></div>
+            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397435-dokumentooborot-bezopasnoj-sdelki/">РљР°Рє РѕС„РѕСЂРјРёС‚СЊ РґРѕРіРѕРІРѕСЂ</a></div>
+            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397431-chto-takoe-arbitrazh-servisa-bezopasnaya-sdelka-i-kak-k-nemu-obratitsya/">РљР°Рє СЂР°Р±РѕС‚Р°РµС‚ РђСЂР±РёС‚СЂР°Р¶</a></div>
+            <div class="b-layout__txt"><a class="b-layout__link" href="http://feedback.fl.ru/topic/397440-upravlenie-bezopasnoj-sdelkoj-dlya-rabotodatelya/">РљР°Рє СѓРїСЂР°РІР»СЏС‚СЊ СЃРґРµР»РєРѕР№</a></div>
             <? } ?>
         </td>
     </tr>

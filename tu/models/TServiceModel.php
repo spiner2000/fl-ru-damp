@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/tservices/atservices_model.ph
 
 /**
  * Class TServiceModel
- * Модель типовой услуги
+ * РњРѕРґРµР»СЊ С‚РёРїРѕРІРѕР№ СѓСЃР»СѓРіРё
  */
 class TServiceModel extends atservices_model {
 
@@ -17,7 +17,7 @@ class TServiceModel extends atservices_model {
         
     
     /**
-     * Расширение запроса
+     * Р Р°СЃС€РёСЂРµРЅРёРµ Р·Р°РїСЂРѕСЃР°
      *  
      * @var type 
      */
@@ -28,8 +28,8 @@ class TServiceModel extends atservices_model {
 
 
     /**
-     * Выбрать ТУ для списка пользователей 
-     * по указанному количеству на каждого
+     * Р’С‹Р±СЂР°С‚СЊ РўРЈ РґР»СЏ СЃРїРёСЃРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ 
+     * РїРѕ СѓРєР°Р·Р°РЅРЅРѕРјСѓ РєРѕР»РёС‡РµСЃС‚РІСѓ РЅР° РєР°Р¶РґРѕРіРѕ
      * 
      * @param type $uids
      * @param type $limit
@@ -75,7 +75,7 @@ class TServiceModel extends atservices_model {
     
 
     /**
-     * Расширяем запрос выборки данными пользователя владельца ТУ
+     * Р Р°СЃС€РёСЂСЏРµРј Р·Р°РїСЂРѕСЃ РІС‹Р±РѕСЂРєРё РґР°РЅРЅС‹РјРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІР»Р°РґРµР»СЊС†Р° РўРЈ
      * 
      * @return \TServiceModel
      */
@@ -97,9 +97,9 @@ class TServiceModel extends atservices_model {
     
 
     /**
-	 * Для каждой строки массива $rows извлекает сведения о типовой услуге, ID которой указан в $id_attr
-	 * Если $extend_attr указан, то сведения вписываются в строки rows отдельным ключом
-	 * Иначе ключи строк расширяются извлечёнными сведениями, при необходимости им дописываются префиксы $extend_prefix
+	 * Р”Р»СЏ РєР°Р¶РґРѕР№ СЃС‚СЂРѕРєРё РјР°СЃСЃРёРІР° $rows РёР·РІР»РµРєР°РµС‚ СЃРІРµРґРµРЅРёСЏ Рѕ С‚РёРїРѕРІРѕР№ СѓСЃР»СѓРіРµ, ID РєРѕС‚РѕСЂРѕР№ СѓРєР°Р·Р°РЅ РІ $id_attr
+	 * Р•СЃР»Рё $extend_attr СѓРєР°Р·Р°РЅ, С‚Рѕ СЃРІРµРґРµРЅРёСЏ РІРїРёСЃС‹РІР°СЋС‚СЃСЏ РІ СЃС‚СЂРѕРєРё rows РѕС‚РґРµР»СЊРЅС‹Рј РєР»СЋС‡РѕРј
+	 * РРЅР°С‡Рµ РєР»СЋС‡Рё СЃС‚СЂРѕРє СЂР°СЃС€РёСЂСЏСЋС‚СЃСЏ РёР·РІР»РµС‡С‘РЅРЅС‹РјРё СЃРІРµРґРµРЅРёСЏРјРё, РїСЂРё РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РёРј РґРѕРїРёСЃС‹РІР°СЋС‚СЃСЏ РїСЂРµС„РёРєСЃС‹ $extend_prefix
 	 *
 	 * @param $rows
 	 * @param $id_attr
@@ -110,7 +110,7 @@ class TServiceModel extends atservices_model {
 	public function extend(&$rows, $id_attr, $extend_attr = null, $extend_prefix = '')
 	{
 		$ids = array();
-		foreach($rows as $row) // собрать ID
+		foreach($rows as $row) // СЃРѕР±СЂР°С‚СЊ ID
 		{
 			if (!empty($row[$id_attr]))
 			{
@@ -126,15 +126,15 @@ class TServiceModel extends atservices_model {
 SELECT
     DISTINCT ON (s.id)
 	s.id AS {$extend_prefix}id,
-	s.title AS {$extend_prefix}title, -- заголовок типовой услуги
-	s.price AS {$extend_prefix}price, -- цена типовой услуги
-	s.days AS {$extend_prefix}days, -- срок исполнения в днях
-	s.videos AS {$extend_prefix}videos, -- видеоролики к типовой услуге
-	f.fname AS {$extend_prefix}file,-- иллюстрация (thumbnail) к типовой
+	s.title AS {$extend_prefix}title, -- Р·Р°РіРѕР»РѕРІРѕРє С‚РёРїРѕРІРѕР№ СѓСЃР»СѓРіРё
+	s.price AS {$extend_prefix}price, -- С†РµРЅР° С‚РёРїРѕРІРѕР№ СѓСЃР»СѓРіРё
+	s.days AS {$extend_prefix}days, -- СЃСЂРѕРє РёСЃРїРѕР»РЅРµРЅРёСЏ РІ РґРЅСЏС…
+	s.videos AS {$extend_prefix}videos, -- РІРёРґРµРѕСЂРѕР»РёРєРё Рє С‚РёРїРѕРІРѕР№ СѓСЃР»СѓРіРµ
+	f.fname AS {$extend_prefix}file,-- РёР»Р»СЋСЃС‚СЂР°С†РёСЏ (thumbnail) Рє С‚РёРїРѕРІРѕР№
     {$this->_select}
-	c1.title AS {$extend_prefix}category_title, -- категория типовой услуги
+	c1.title AS {$extend_prefix}category_title, -- РєР°С‚РµРіРѕСЂРёСЏ С‚РёРїРѕРІРѕР№ СѓСЃР»СѓРіРё
 	c1.link AS {$extend_prefix}category_link,
-	c2.title AS {$extend_prefix}category_parent_title, -- родительская категория типовой услуги
+	c2.title AS {$extend_prefix}category_parent_title, -- СЂРѕРґРёС‚РµР»СЊСЃРєР°СЏ РєР°С‚РµРіРѕСЂРёСЏ С‚РёРїРѕРІРѕР№ СѓСЃР»СѓРіРё
 	c2.link AS {$extend_prefix}category_parent_link
 FROM {$this->TABLE} AS s
 LEFT JOIN {$this->TABLE_FILES} AS f ON f.src_id = s.id AND f.small = 4
@@ -147,12 +147,12 @@ SQL;
 
         $extends = $this->db()->cache(300)->rows($sql, array_keys($ids));
             
-		foreach($extends as $extend) // разобрать строки по ID
+		foreach($extends as $extend) // СЂР°Р·РѕР±СЂР°С‚СЊ СЃС‚СЂРѕРєРё РїРѕ ID
 		{
 			$ids[$extend['id']] = $extend;
 		}
 
-		foreach($rows as $i => &$row) // подставить дополнительные сведения в исходный список строк
+		foreach($rows as $i => &$row) // РїРѕРґСЃС‚Р°РІРёС‚СЊ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРІРµРґРµРЅРёСЏ РІ РёСЃС…РѕРґРЅС‹Р№ СЃРїРёСЃРѕРє СЃС‚СЂРѕРє
 		{
 			if (empty($ids[$row[$id_attr]]))
 			{
@@ -166,10 +166,10 @@ SQL;
 
 			if ($extend_attr)
 			{
-				$row[$extend_attr] = $extend; // отдельный ключ
+				$row[$extend_attr] = $extend; // РѕС‚РґРµР»СЊРЅС‹Р№ РєР»СЋС‡
 			} else
 			{
-				$row = array_merge($row, $extend); // расширение массива
+				$row = array_merge($row, $extend); // СЂР°СЃС€РёСЂРµРЅРёРµ РјР°СЃСЃРёРІР°
 			}
 		}
         
@@ -177,11 +177,11 @@ SQL;
 	}
 
 	/**
-	 * В каждой строке списка типовых услуг добавляет массив видео-клипов
+	 * Р’ РєР°Р¶РґРѕР№ СЃС‚СЂРѕРєРµ СЃРїРёСЃРєР° С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі РґРѕР±Р°РІР»СЏРµС‚ РјР°СЃСЃРёРІ РІРёРґРµРѕ-РєР»РёРїРѕРІ
 	 *
 	 * @param array $rows
-	 * @param $src_attrs имя атрибута, где указана информация о видео-клипах
-	 * @param $dest_attr имя атрибута, в котором будет сохранён список видео-клипов
+	 * @param $src_attrs РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°, РіРґРµ СѓРєР°Р·Р°РЅР° РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РІРёРґРµРѕ-РєР»РёРїР°С…
+	 * @param $dest_attr РёРјСЏ Р°С‚СЂРёР±СѓС‚Р°, РІ РєРѕС‚РѕСЂРѕРј Р±СѓРґРµС‚ СЃРѕС…СЂР°РЅС‘РЅ СЃРїРёСЃРѕРє РІРёРґРµРѕ-РєР»РёРїРѕРІ
 	 * @return $this
 	 */
 	public function readVideos(&$rows, $src_attrs, $dest_attr)
@@ -196,7 +196,7 @@ SQL;
 	}
         
         /**
-         * Кол-во типовых услуг всего
+         * РљРѕР»-РІРѕ С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі РІСЃРµРіРѕ
          * 
          * @return type
          */
@@ -220,7 +220,7 @@ SQL;
         }
         
         /**
-         * Кол-во юзеров с типовыми услугами
+         * РљРѕР»-РІРѕ СЋР·РµСЂРѕРІ СЃ С‚РёРїРѕРІС‹РјРё СѓСЃР»СѓРіР°РјРё
          * 
          * @return type
          */

@@ -2,17 +2,17 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
- * Класс управления фильтрами предложений
+ * РљР»Р°СЃСЃ СѓРїСЂР°РІР»РµРЅРёСЏ С„РёР»СЊС‚СЂР°РјРё РїСЂРµРґР»РѕР¶РµРЅРёР№
  *
  */
 class offers_filter
 {
     /**
-     * Сохранение данных фильтра для последующего его создания или обновления
+     * РЎРѕС…СЂР°РЅРµРЅРёРµ РґР°РЅРЅС‹С… С„РёР»СЊС‚СЂР° РґР»СЏ РїРѕСЃР»РµРґСѓСЋС‰РµРіРѕ РµРіРѕ СЃРѕР·РґР°РЅРёСЏ РёР»Рё РѕР±РЅРѕРІР»РµРЅРёСЏ
      *
-     * @param integer $user_id            id пользователя
-     * @param array   $categories         массив с категориями/профессиями
-     * @param bool    ;only_my_offs       только мои предложения
+     * @param integer $user_id            id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param array   $categories         РјР°СЃСЃРёРІ СЃ РєР°С‚РµРіРѕСЂРёСЏРјРё/РїСЂРѕС„РµСЃСЃРёСЏРјРё
+     * @param bool    ;only_my_offs       С‚РѕР»СЊРєРѕ РјРѕРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ
      * @return string
      */
     function Save($user_id, $categories, $only_my_offs) {
@@ -40,11 +40,11 @@ class offers_filter
     }
 
     /**
-     * Создание фильтра
+     * РЎРѕР·РґР°РЅРёРµ С„РёР»СЊС‚СЂР°
      *
-     * @param integer $user_id          id пользователя
-     * @param array   $categories       массив с категориями/профессиями
-     * @param bool    $only_my_offs     показать только мои предложения
+     * @param integer $user_id          id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param array   $categories       РјР°СЃСЃРёРІ СЃ РєР°С‚РµРіРѕСЂРёСЏРјРё/РїСЂРѕС„РµСЃСЃРёСЏРјРё
+     * @param bool    $only_my_offs     РїРѕРєР°Р·Р°С‚СЊ С‚РѕР»СЊРєРѕ РјРѕРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ
      * 
      * @return array
      */
@@ -86,11 +86,11 @@ class offers_filter
     }
     
     /**
-     * Обновление данных фильтра
+     * РћР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… С„РёР»СЊС‚СЂР°
      *
-     * @param integer $filter_id          id фильтра
-     * @param array   $categories         массив с категориями/профессиями
-     * @param bool    $only_my_offs       показать только мои предложения
+     * @param integer $filter_id          id С„РёР»СЊС‚СЂР°
+     * @param array   $categories         РјР°СЃСЃРёРІ СЃ РєР°С‚РµРіРѕСЂРёСЏРјРё/РїСЂРѕС„РµСЃСЃРёСЏРјРё
+     * @param bool    $only_my_offs       РїРѕРєР°Р·Р°С‚СЊ С‚РѕР»СЊРєРѕ РјРѕРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ
      * 
      * @return string
      */
@@ -133,9 +133,9 @@ class offers_filter
     }
     
     /**
-     * Получение данных филтьтра
+     * РџРѕР»СѓС‡РµРЅРёРµ РґР°РЅРЅС‹С… С„РёР»С‚СЊС‚СЂР°
      *
-     * @param integer $user_id          id пользователя
+     * @param integer $user_id          id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      *
      * @return array
      */
@@ -174,9 +174,9 @@ class offers_filter
     }
     
     /**
-     * Удаление фильтра
+     * РЈРґР°Р»РµРЅРёРµ С„РёР»СЊС‚СЂР°
      *
-     * @param integer $user_id          id пользователя
+     * @param integer $user_id          id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      *
      * @return string
      */
@@ -191,9 +191,9 @@ class offers_filter
     }
     
     /**
-     * Активация фильтра
+     * РђРєС‚РёРІР°С†РёСЏ С„РёР»СЊС‚СЂР°
      *
-     * @param integer $user_id          id пользователя
+     * @param integer $user_id          id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      *
      * @return string
      */
@@ -213,11 +213,11 @@ class offers_filter
     }
 
     /**
-     * Проверка существования фильтра конкретного юзера
+     * РџСЂРѕРІРµСЂРєР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ С„РёР»СЊС‚СЂР° РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ СЋР·РµСЂР°
      *
-     * @param integer $user_id          id пользователя
+     * @param integer $user_id          id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      *
-     * @return boolean true, если фильтр существует, false, если нет
+     * @return boolean true, РµСЃР»Рё С„РёР»СЊС‚СЂ СЃСѓС‰РµСЃС‚РІСѓРµС‚, false, РµСЃР»Рё РЅРµС‚
      */
     function IsFilter($user_id) {
         if ( $user_id > 0 ) {
@@ -246,17 +246,17 @@ class offers_filter
                 $sProfCat    = '';
                 $sProfSubcat = '';
                 
-                // собираем подразделы выбранных разделов
+                // СЃРѕР±РёСЂР°РµРј РїРѕРґСЂР°Р·РґРµР»С‹ РІС‹Р±СЂР°РЅРЅС‹С… СЂР°Р·РґРµР»РѕРІ
                 if (sizeof($categories[0])) {
                     $sProfCat = professions::getProfIdForGroups( $categories[0] );
                 }
                 
-                // собираем выбранные подразделы
+                // СЃРѕР±РёСЂР°РµРј РІС‹Р±СЂР°РЅРЅС‹Рµ РїРѕРґСЂР°Р·РґРµР»С‹
                 if (sizeof($categories[1])) {
                     $sProfSubcat = implode( ',', $categories[1] );
                 }
                 
-                // склеиваем и получаем все подразделы вместе с зеркалами
+                // СЃРєР»РµРёРІР°РµРј Рё РїРѕР»СѓС‡Р°РµРј РІСЃРµ РїРѕРґСЂР°Р·РґРµР»С‹ РІРјРµСЃС‚Рµ СЃ Р·РµСЂРєР°Р»Р°РјРё
                 $sProf = $sProfCat . (($sProfCat && $sProfSubcat) ? ',' : '') . $sProfSubcat;
                 $aProf = professions::GetMirroredProfs( $sProf );
                 

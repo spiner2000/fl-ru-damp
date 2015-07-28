@@ -36,14 +36,14 @@ class TServiceCatalogController extends CController {
         $this->uid = get_uid();
         $this->is_adm = hasPermissions('tservices');
                 
-		// ðàçìåòêà ñòðàíèöû ñ ëåâûì ñàéäáàðîì
+		// Ñ€Ð°Ð·Ð¼ÐµÑ‚ÐºÐ° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ Ñ Ð»ÐµÐ²Ñ‹Ð¼ ÑÐ°Ð¹Ð´Ð±Ð°Ñ€Ð¾Ð¼
 		$this->layout = '//layouts/content-with-right-sidebar';
 
-		// â ñàéäáàðå âûâåñòè ôèëüòð ñ ó÷¸òîì òåêóùåé êàòåãîðèè
-		$this->getClips()->add('sidebar', $this->widget('TServiceFilter', array(/*áåç îïöèé*/), true)); // ÷òîáû îòðèñîâàòü ôèëüòð è îïöèè
+		// Ð² ÑÐ°Ð¹Ð´Ð±Ð°Ñ€Ðµ Ð²Ñ‹Ð²ÐµÑÑ‚Ð¸ Ñ„Ð¸Ð»ÑŒÑ‚Ñ€ Ñ ÑƒÑ‡Ñ‘Ñ‚Ð¾Ð¼ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¹ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸
+		$this->getClips()->add('sidebar', $this->widget('TServiceFilter', array(/*Ð±ÐµÐ· Ð¾Ð¿Ñ†Ð¸Ð¹*/), true)); // Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¾Ñ‚Ñ€Ð¸ÑÐ¾Ð²Ð°Ñ‚ÑŒ Ñ„Ð¸Ð»ÑŒÑ‚Ñ€ Ð¸ Ð¾Ð¿Ñ†Ð¸Ð¸
 
-		# TODO äîáèòüñÿ, ÷òîáû $this->widget('TServiceFilter') è $this->createWidget($this,'TServiceFilter') âîçâðàùàë îäèí è òîò æå îáúåêò
-		$this->filter_widget = $this->createWidget($this,'TServiceFilter', array(/*áåç îïöèé*/)); // êîïèÿ, ÷òîáû óçíàòü, êàêèå îïöèè áûëè âûáðàíû
+		# TODO Ð´Ð¾Ð±Ð¸Ñ‚ÑŒÑÑ, Ñ‡Ñ‚Ð¾Ð±Ñ‹ $this->widget('TServiceFilter') Ð¸ $this->createWidget($this,'TServiceFilter') Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°Ð» Ð¾Ð´Ð¸Ð½ Ð¸ Ñ‚Ð¾Ñ‚ Ð¶Ðµ Ð¾Ð±ÑŠÐµÐºÑ‚
+		$this->filter_widget = $this->createWidget($this,'TServiceFilter', array(/*Ð±ÐµÐ· Ð¾Ð¿Ñ†Ð¸Ð¹*/)); // ÐºÐ¾Ð¿Ð¸Ñ, Ñ‡Ñ‚Ð¾Ð±Ñ‹ ÑƒÐ·Ð½Ð°Ñ‚ÑŒ, ÐºÐ°ÐºÐ¸Ðµ Ð¾Ð¿Ñ†Ð¸Ð¸ Ð±Ñ‹Ð»Ð¸ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ñ‹
         
         $prof_id = $this->filter_widget->filter->category 
                 ? $this->filter_widget->filter->category 
@@ -51,8 +51,8 @@ class TServiceCatalogController extends CController {
 
         //----------------------------------------------------------------------
         
-        //@todo: âîçìîæíî íóæíî îáùåå õðàíèëèùå ñîáèðàåìûõ äàííûõ 
-        //â òå÷åíèè ðàáîòû ñêðèïòà ñ ïîñëåäóþùåé ïåðåäà÷åé â GA è Adriver?
+        //@todo: Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ Ð½ÑƒÐ¶Ð½Ð¾ Ð¾Ð±Ñ‰ÐµÐµ Ñ…Ñ€Ð°Ð½Ð¸Ð»Ð¸Ñ‰Ðµ ÑÐ¾Ð±Ð¸Ñ€Ð°ÐµÐ¼Ñ‹Ñ… Ð´Ð°Ð½Ð½Ñ‹Ñ… 
+        //Ð² Ñ‚ÐµÑ‡ÐµÐ½Ð¸Ð¸ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ ÑÐºÑ€Ð¸Ð¿Ñ‚Ð° Ñ Ð¿Ð¾ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÐµÐ¹ Ð¿ÐµÑ€ÐµÐ´Ð°Ñ‡ÐµÐ¹ Ð² GA Ð¸ Adriver?
         
         GaJsHelper::getInstance()->setTuCategories(
                 $this->filter_widget->filter->category_group,
@@ -74,15 +74,15 @@ class TServiceCatalogController extends CController {
             'filter_get_params' => $this->filter_widget->getUserFriendlyUrl(false)
         ), true));
         
-        $this->getClips()->add('content_top', $this->widget('TServiceCatalogHeader', array(/*áåç îïöèé*/), true));
+        $this->getClips()->add('content_top', $this->widget('TServiceCatalogHeader', array(/*Ð±ÐµÐ· Ð¾Ð¿Ñ†Ð¸Ð¹*/), true));
         
         $this->getClips()->add('categories', $this->widget('TServiceCatalogCategories', array(
             'category_group' => $this->filter_widget->filter->category_group,
             'filter_get_params' => $this->filter_widget->getUserFriendlyUrl(false)
         ), true));
 
-		// â ôóòåðå êàòàëîãà âûâåñòè ñïèñîê ñïåöèàëèçàöèé ôðèëàíñåðîâ
-		$this->getClips()->add('footer', $this->widget('TServiceFreelancersCategories', array(/*áåç îïöèé*/), true));
+		// Ð² Ñ„ÑƒÑ‚ÐµÑ€Ðµ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð° Ð²Ñ‹Ð²ÐµÑÑ‚Ð¸ ÑÐ¿Ð¸ÑÐ¾Ðº ÑÐ¿ÐµÑ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ð¹ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð²
+		$this->getClips()->add('footer', $this->widget('TServiceFreelancersCategories', array(/*Ð±ÐµÐ· Ð¾Ð¿Ñ†Ð¸Ð¹*/), true));
 
         $tserviceModel = TServiceModel::model();
 		
@@ -92,7 +92,7 @@ class TServiceCatalogController extends CController {
     }
 
 	/**
-	 * Îòîáðàæåíèå ñòðàíèöû /tu/
+	 * ÐžÑ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ /tu/
 	 */
 	public function actionIndex() {
 
@@ -133,22 +133,22 @@ class TServiceCatalogController extends CController {
         
         $free_places = true;
         
-        //Ñíà÷àëà áåðåì çàêðåïëåííûå
+        //Ð¡Ð½Ð°Ñ‡Ð°Ð»Ð° Ð±ÐµÑ€ÐµÐ¼ Ð·Ð°ÐºÑ€ÐµÐ¿Ð»ÐµÐ½Ð½Ñ‹Ðµ
         $tservicesCatalogModel->setPage($limit, $page);
-        $tservices_binded = $tservicesCatalogModel->getBindedList($kind); //Òóò òîëüêî äëÿ òåêóùåé ñòðàíèöû
-        $tservices_binded_ids = $tservicesCatalogModel->getBindedIds($kind); //Òóò äëÿ âñåõ ñòðàíèö
+        $tservices_binded = $tservicesCatalogModel->getBindedList($kind); //Ð¢ÑƒÑ‚ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð´Ð»Ñ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹
+        $tservices_binded_ids = $tservicesCatalogModel->getBindedIds($kind); //Ð¢ÑƒÑ‚ Ð´Ð»Ñ Ð²ÑÐµÑ… ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†
         $count_binded = count($tservices_binded_ids);
         $count_binded_cur_page = count($tservices_binded);
         if ($count_binded_cur_page) {
-            // ðàñøèðåíèå ñâåäåíèé î òèïîâûõ óñëóãàõ
+            // Ñ€Ð°ÑÑˆÐ¸Ñ€ÐµÐ½Ð¸Ðµ ÑÐ²ÐµÐ´ÐµÐ½Ð¸Ð¹ Ð¾ Ñ‚Ð¸Ð¿Ð¾Ð²Ñ‹Ñ… ÑƒÑÐ»ÑƒÐ³Ð°Ñ…
             $tserviceModel
                 ->extend($tservices_binded, 'id')
-                ->readVideos($tservices_binded, 'videos', 'videos'); // âî âñåõ ñòðîêàõ "ðàñïàêîâàòü" ìàññèâ âèäåî-êëèïîâ
+                ->readVideos($tservices_binded, 'videos', 'videos'); // Ð²Ð¾ Ð²ÑÐµÑ… ÑÑ‚Ñ€Ð¾ÐºÐ°Ñ… "Ñ€Ð°ÑÐ¿Ð°ÐºÐ¾Ð²Ð°Ñ‚ÑŒ" Ð¼Ð°ÑÑÐ¸Ð² Ð²Ð¸Ð´ÐµÐ¾-ÐºÐ»Ð¸Ð¿Ð¾Ð²
 
-            // ðàñøèðåíèå ñâåäåíèé î ïîëüçîâàòåëÿõ
+            // Ñ€Ð°ÑÑˆÐ¸Ñ€ÐµÐ½Ð¸Ðµ ÑÐ²ÐµÐ´ÐµÐ½Ð¸Ð¹ Ð¾ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑÑ…
             $freelancerModel->extend($tservices_binded, 'user_id', 'user');
 
-            //Äîáàâëÿåì ïîïàïû ïðîäëåíèÿ è ïîäíÿòèÿ ê óñëóãàì òåêóùåãî þçåðà
+            //Ð”Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼ Ð¿Ð¾Ð¿Ð°Ð¿Ñ‹ Ð¿Ñ€Ð¾Ð´Ð»ÐµÐ½Ð¸Ñ Ð¸ Ð¿Ð¾Ð´Ð½ÑÑ‚Ð¸Ñ Ðº ÑƒÑÐ»ÑƒÐ³Ð°Ð¼ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ³Ð¾ ÑŽÐ·ÐµÑ€Ð°
             foreach ($tservices_binded as $key=>$tservice) {
                 $is_owner = $tservice['user_id'] == $uid;
                 if ($is_owner) {
@@ -203,7 +203,7 @@ class TServiceCatalogController extends CController {
             $free_places = $count_binded_cur_page < $limit;
         }
         
-        if ($free_places) { //Åñòü ìåñòà äëÿ îòîáðàæåíèÿ íåçàêðåïëåííûõ óñëóã
+        if ($free_places) { //Ð•ÑÑ‚ÑŒ Ð¼ÐµÑÑ‚Ð° Ð´Ð»Ñ Ð¾Ñ‚Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ Ð½ÐµÐ·Ð°ÐºÑ€ÐµÐ¿Ð»ÐµÐ½Ð½Ñ‹Ñ… ÑƒÑÐ»ÑƒÐ³
 
             $tservicesCatalogModel->keywords = $this->filter_widget->filter->keywords;
             $tservicesCatalogModel->price_ranges = $this->filter_widget->filter->prices;
@@ -213,17 +213,17 @@ class TServiceCatalogController extends CController {
             $tservicesCatalogModel->order = $this->filter_widget->filter->order;
             $tservicesCatalogModel->setPage($limit, $page, $count_binded, $count_binded_cur_page);
             
-            // ïîèñê çàïèñåé
+            // Ð¿Ð¾Ð¸ÑÐº Ð·Ð°Ð¿Ð¸ÑÐµÐ¹
             $list = $tservicesCatalogModel->cache(300)->getList($tservices_binded_ids);
             $tservices_search = $list['list'];
             $total = $list['total'];
 
-            // ðàñøèðåíèå ñâåäåíèé î òèïîâûõ óñëóãàõ
+            // Ñ€Ð°ÑÑˆÐ¸Ñ€ÐµÐ½Ð¸Ðµ ÑÐ²ÐµÐ´ÐµÐ½Ð¸Ð¹ Ð¾ Ñ‚Ð¸Ð¿Ð¾Ð²Ñ‹Ñ… ÑƒÑÐ»ÑƒÐ³Ð°Ñ…
             $tserviceModel
                 ->extend($tservices_search, 'id')
-                ->readVideos($tservices_search, 'videos', 'videos'); // âî âñåõ ñòðîêàõ "ðàñïàêîâàòü" ìàññèâ âèäåî-êëèïîâ
+                ->readVideos($tservices_search, 'videos', 'videos'); // Ð²Ð¾ Ð²ÑÐµÑ… ÑÑ‚Ñ€Ð¾ÐºÐ°Ñ… "Ñ€Ð°ÑÐ¿Ð°ÐºÐ¾Ð²Ð°Ñ‚ÑŒ" Ð¼Ð°ÑÑÐ¸Ð² Ð²Ð¸Ð´ÐµÐ¾-ÐºÐ»Ð¸Ð¿Ð¾Ð²
 
-            // ðàñøèðåíèå ñâåäåíèé î ïîëüçîâàòåëÿõ
+            // Ñ€Ð°ÑÑˆÐ¸Ñ€ÐµÐ½Ð¸Ðµ ÑÐ²ÐµÐ´ÐµÐ½Ð¸Ð¹ Ð¾ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑÑ…
             $freelancerModel->extend($tservices_search, 'user_id', 'user');
         }
 
@@ -248,7 +248,7 @@ class TServiceCatalogController extends CController {
                 /*
 		if ($empty_criteria)
 		{
-			// íàä ñïèñêîì òèïîâûõ óñëóã âûâåñòè ðåêëàìíûé áëîê ðàçäåëà
+			// Ð½Ð°Ð´ ÑÐ¿Ð¸ÑÐºÐ¾Ð¼ Ñ‚Ð¸Ð¿Ð¾Ð²Ñ‹Ñ… ÑƒÑÐ»ÑƒÐ³ Ð²Ñ‹Ð²ÐµÑÑ‚Ð¸ Ñ€ÐµÐºÐ»Ð°Ð¼Ð½Ñ‹Ð¹ Ð±Ð»Ð¾Ðº Ñ€Ð°Ð·Ð´ÐµÐ»Ð°
 			require_once($_SERVER['DOCUMENT_ROOT'] . '/tu/widgets/TServiceCatalogPromo.php');
 			$this->getClips()->add('content-promo', $this->widget('TServiceCatalogPromo', array(), true));
 		}
@@ -260,7 +260,7 @@ class TServiceCatalogController extends CController {
 			//'category_title' => $this->filter_widget->getCategoryTitle() ? $this->filter_widget->getCategoryTitle() : $this->filter_widget->getCategoryGroupTitle(),
 			'category_title' => $this->filter_widget->getCategoryAngGroupTitle(' / '),
             'total' => $total,
-			'nothing_found' => empty($tservices), // íè÷åãî íå íàéäåíî
+			'nothing_found' => empty($tservices), // Ð½Ð¸Ñ‡ÐµÐ³Ð¾ Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð¾
 			'tservices' => $tservices,
 			'page' => $tservicesCatalogModel->page,
 			'limit' => $limit,

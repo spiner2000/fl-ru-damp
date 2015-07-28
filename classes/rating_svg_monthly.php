@@ -1,6 +1,6 @@
 <?php
 /**
- * Класс для работы с годовым графиком
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РіРѕРґРѕРІС‹Рј РіСЂР°С„РёРєРѕРј
  */
 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/rating_svg.php");
@@ -10,13 +10,13 @@ class Rating_Svg_Monthly extends Rating_Svg {
     public $_pro;
 
     private $_labels = array(
-        'Январь', 'Февраль', 'Март', 'Апрель',
-        'Май', 'Июнь', 'Июль', 'Август',
-        'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
+        'РЇРЅРІР°СЂСЊ', 'Р¤РµРІСЂР°Р»СЊ', 'РњР°СЂС‚', 'РђРїСЂРµР»СЊ',
+        'РњР°Р№', 'РСЋРЅСЊ', 'РСЋР»СЊ', 'РђРІРіСѓСЃС‚',
+        'РЎРµРЅС‚СЏР±СЂСЊ', 'РћРєС‚СЏР±СЂСЊ', 'РќРѕСЏР±СЂСЊ', 'Р”РµРєР°Р±СЂСЊ'
     );
 
     /**
-     * Инициализация
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ
      */
     public function init() {
         $this->_columns = 12;
@@ -31,7 +31,7 @@ class Rating_Svg_Monthly extends Rating_Svg {
     }
     
     /**
-     * Строит график
+     * РЎС‚СЂРѕРёС‚ РіСЂР°С„РёРє
      */
     public function createGraph() {
         $periods = rating::getMonthParts(date('Y-m-d', $this->_time));
@@ -46,7 +46,7 @@ class Rating_Svg_Monthly extends Rating_Svg {
         }
 
         $dots = array();
-        // месяцы
+        // РјРµСЃСЏС†С‹
         $labels_group = $this->doc->createElement('g');
         $this->svg->appendChild($labels_group);
 
@@ -113,7 +113,7 @@ class Rating_Svg_Monthly extends Rating_Svg {
         }
         $this->drawPart();
 
-        // точки
+        // С‚РѕС‡РєРё
         $this->_dots = $dots;
         $dots_group = $this->doc->createElement('g');
         $dots_group->setAttribute('id', 'dots_group');
@@ -132,7 +132,7 @@ class Rating_Svg_Monthly extends Rating_Svg {
     }
     
     /**
-     * Возвращает максимальый рейтинг
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РјР°РєСЃРёРјР°Р»СЊС‹Р№ СЂРµР№С‚РёРЅРі
      *
      * @return int
      */
@@ -158,7 +158,7 @@ class Rating_Svg_Monthly extends Rating_Svg {
     }
     
     /**
-     * Устанавливает на графике периоды ПРО
+     * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РЅР° РіСЂР°С„РёРєРµ РїРµСЂРёРѕРґС‹ РџР Рћ
      */
     private function _setPro() {
         $maxtime = mktime(0,0,0,12,31,date('Y', $this->_time));
@@ -243,7 +243,7 @@ class Rating_Svg_Monthly extends Rating_Svg {
             }
             $this->drawPart(1, 0);
 
-            // точки
+            // С‚РѕС‡РєРё
             $dots_group = $this->doc->createElement('g');
             $this->svg->appendChild($dots_group);
             foreach($this->_dots as $dot) {
@@ -265,10 +265,10 @@ class Rating_Svg_Monthly extends Rating_Svg {
     }
     
     /**
-     * Возвращает разниуц в днях между двумя датами
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЂР°Р·РЅРёСѓС† РІ РґРЅСЏС… РјРµР¶РґСѓ РґРІСѓРјСЏ РґР°С‚Р°РјРё
      *
-     * @param  string $date1 дата для сравнения
-     * @param  string $date2 дата для сравнения
+     * @param  string $date1 РґР°С‚Р° РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ
+     * @param  string $date2 РґР°С‚Р° РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ
      * @return int
      */
     private function _date_diff($date1, $date2) {

@@ -13,22 +13,22 @@
 	font-size: 13px;
 }
 </style>
-<h1>Услуги</h1>
+<h1>РЈСЃР»СѓРіРё</h1>
 <? if ($profs) { ?>
 <table width="100%" border="0" cellspacing="0" cellpadding="19">
 <tr valign="top">
 	<td height="400" valign="top" bgcolor="#FFFFFF" class="box2" style="color: #333333;">
-		<div style="color: #000000; font-size: 35px; margin-bottom: 25px;">Предоставленные услуги</div>
+		<div style="color: #000000; font-size: 35px; margin-bottom: 25px;">РџСЂРµРґРѕСЃС‚Р°РІР»РµРЅРЅС‹Рµ СѓСЃР»СѓРіРё</div>
 		<table width="290" border="0" cellspacing="0" cellpadding="0" style="background-image: url(/images/bg_pro.gif); background-repeat: no-repeat;">
 			<tr valign="top">
 				<td width="50" rowspan="2" style="height: 112; padding-top:35px; padding-left:8px;padding-right:3px;"><?=view_avatar($user->login, $user->photo)?></td>
 				<td class="frlname" style="height: 112; padding-top:35px;"><?=view_pro2($is_pro_test)?> <?=$user->uname?> <?=$user->usurname?> [<?=$user->login?>]</td>
 			</tr>
 		</table><br><br>
-		Аккаунт &laquo;PRO&raquo;<br>
-		Срок действия &ndash; <?=pro_days($_SESSION['pro_last'])?><br>
+		РђРєРєР°СѓРЅС‚ &laquo;PRO&raquo;<br>
+		РЎСЂРѕРє РґРµР№СЃС‚РІРёСЏ &ndash; <?=pro_days($_SESSION['pro_last'])?><br>
 		<br>
-		<a class="blue" href="/bill/">Перейти в личный счет</a>
+		<a class="blue" href="/bill/">РџРµСЂРµР№С‚Рё РІ Р»РёС‡РЅС‹Р№ СЃС‡РµС‚</a>
 	</td>
 </tr>
 </table>
@@ -36,12 +36,12 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="19">
 <tr valign="top">
 	<td height="400" valign="top" bgcolor="#FFFFFF" class="box2" style="color: #333333;">
-		<div align="center" style="color: #000000; font-size: 35px; margin-bottom: 25px;">Предоставленные услуги:</div>
+		<div align="center" style="color: #000000; font-size: 35px; margin-bottom: 25px;">РџСЂРµРґРѕСЃС‚Р°РІР»РµРЅРЅС‹Рµ СѓСЃР»СѓРіРё:</div>
 
-		Аккаунт &laquo;PRO&raquo;<br>
+		РђРєРєР°СѓРЅС‚ &laquo;PRO&raquo;<br>
 		
-		Выбранные услуги НЕ предоставлены! Проверьте наличие средств на вашем счету.<br><br>
-		<a class="blue" href="/bill/">Пополнить счет</a>
+		Р’С‹Р±СЂР°РЅРЅС‹Рµ СѓСЃР»СѓРіРё РќР• РїСЂРµРґРѕСЃС‚Р°РІР»РµРЅС‹! РџСЂРѕРІРµСЂСЊС‚Рµ РЅР°Р»РёС‡РёРµ СЃСЂРµРґСЃС‚РІ РЅР° РІР°С€РµРј СЃС‡РµС‚Сѓ.<br><br>
+		<a class="blue" href="/bill/">РџРѕРїРѕР»РЅРёС‚СЊ СЃС‡РµС‚</a>
 	</td>
 </tr>
 </table>

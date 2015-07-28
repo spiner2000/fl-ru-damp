@@ -18,9 +18,9 @@
 	
 	$users = confa::GetAll();
 ?>
-<strong>Пользователи</strong><br><br>
+<strong>РџРѕР»СЊР·РѕРІР°С‚РµР»Рё</strong><br><br>
 <? $check = confa::Check(); ?>
-<a href=".?action=<?=($check)?"off":"on"?>" class="blue">В<?=($check)?"ы":""?>ключить регистрацию</a>
+<a href=".?action=<?=($check)?"off":"on"?>" class="blue">Р’<?=($check)?"С‹":""?>РєР»СЋС‡РёС‚СЊ СЂРµРіРёСЃС‚СЂР°С†РёСЋ</a>
 <br><br>
 <table width="100%" border="0" cellspacing="2" cellpadding="2">
 <?
@@ -32,8 +32,8 @@ $i = 0;
 		<tr valign="top" class="n_qpr">
 			<td>
 			<?=($i.". ".$user['name']." ".$user['surname'])?> <a href="mailto:<?=$user['email']?>"><?=$user['email']?></a>
-			<? if ($user['type'] == 1) print("Фрилансер"); if ($user['type'] == 2) print("Работодатель"); if ($user['type'] == 3) print("Пресса") ?>
-			<a href="/siteadmin/confa/?action=delete&amp;id=<?=$user['id']?>" onclick="return warning(20);">удалить</a><br><br>
+			<? if ($user['type'] == 1) print("Р¤СЂРёР»Р°РЅСЃРµСЂ"); if ($user['type'] == 2) print("Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ"); if ($user['type'] == 3) print("РџСЂРµСЃСЃР°") ?>
+			<a href="/siteadmin/confa/?action=delete&amp;id=<?=$user['id']?>" onclick="return warning(20);">СѓРґР°Р»РёС‚СЊ</a><br><br>
 			</td>
 		</tr>
 		</table>

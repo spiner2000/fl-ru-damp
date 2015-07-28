@@ -4,7 +4,7 @@
     })
 </script>
 <?
-// ссылка на поиск
+// СЃСЃС‹Р»РєР° РЅР° РїРѕРёСЃРє
 $url = $_SERVER['REQUEST_URI'];
 $url = preg_replace('~.*?\?(.*)~', '$1', $url);
 $url = preg_replace('~from_search=\d\&(.*)~', '$1', $url);
@@ -12,10 +12,10 @@ $url = preg_replace('~search_count=\d\&(.*)~', '$1', $url);
 
 
 ?>
-<div class="b-layout__txt b-layout__txt_padbot_10">Вы перешли из поиска. По <a class="b-layout__link" href="/search/?<?= $url ?>">вашему запросу</a> <?= ending($searchCount, 'нашелся', 'нашлось', 'нашлось') . ' ' . $searchCount . " " . ending($searchCount, 'пользователь', 'пользователя', 'пользователей') ?>.</div>
-<div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_fontsize_11"><span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold">Обратите внимание!</span> Стоимость рассылки зависит от общего количества фрилансеров, которым будет отправлено сообщение. Это количество может отличаться от числа, полученного путем простого сложения представителей выбранных вами разделов, так как один и тот же фрилансер может иметь несколько специализаций на сайте.</div>
+<div class="b-layout__txt b-layout__txt_padbot_10">Р’С‹ РїРµСЂРµС€Р»Рё РёР· РїРѕРёСЃРєР°. РџРѕ <a class="b-layout__link" href="/search/?<?= $url ?>">РІР°С€РµРјСѓ Р·Р°РїСЂРѕСЃСѓ</a> <?= ending($searchCount, 'РЅР°С€РµР»СЃСЏ', 'РЅР°С€Р»РѕСЃСЊ', 'РЅР°С€Р»РѕСЃСЊ') . ' ' . $searchCount . " " . ending($searchCount, 'РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ', 'РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ', 'РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№') ?>.</div>
+<div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_fontsize_11"><span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold">РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ!</span> РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°СЃСЃС‹Р»РєРё Р·Р°РІРёСЃРёС‚ РѕС‚ РѕР±С‰РµРіРѕ РєРѕР»РёС‡РµСЃС‚РІР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, РєРѕС‚РѕСЂС‹Рј Р±СѓРґРµС‚ РѕС‚РїСЂР°РІР»РµРЅРѕ СЃРѕРѕР±С‰РµРЅРёРµ. Р­С‚Рѕ РєРѕР»РёС‡РµСЃС‚РІРѕ РјРѕР¶РµС‚ РѕС‚Р»РёС‡Р°С‚СЊСЃСЏ РѕС‚ С‡РёСЃР»Р°, РїРѕР»СѓС‡РµРЅРЅРѕРіРѕ РїСѓС‚РµРј РїСЂРѕСЃС‚РѕРіРѕ СЃР»РѕР¶РµРЅРёСЏ РїСЂРµРґСЃС‚Р°РІРёС‚РµР»РµР№ РІС‹Р±СЂР°РЅРЅС‹С… РІР°РјРё СЂР°Р·РґРµР»РѕРІ, С‚Р°Рє РєР°Рє РѕРґРёРЅ Рё С‚РѕС‚ Р¶Рµ С„СЂРёР»Р°РЅСЃРµСЂ РјРѕР¶РµС‚ РёРјРµС‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёР№ РЅР° СЃР°Р№С‚Рµ.</div>
 <div class="masss-mess-b">
-    <h4>Сообщение</h4>
+    <h4>РЎРѕРѕР±С‰РµРЅРёРµ</h4>
     <div class="form masss-mess">
         <b class="b1"></b>
         <b class="b2"></b>
@@ -25,17 +25,17 @@ $url = preg_replace('~search_count=\d\&(.*)~', '$1', $url);
                     <textarea id="msg" name="msg" rows="6" cols="100" onfocus="if (this.className != '') { this.className = ''; this.value = '' }"><?=($params['msg']? htmlspecialchars($params['msg']): '')?></textarea>
                 </div>
                                     <div>
-                            <strong>Важно!</strong> Рассылка предназначена только для реальных целевых проектов и поиска исполнителей. Реклама к рассылке не допускается.
-О размещении рекламы на сайте вы можете узнать <a target="_blank" href="/press/adv/">здесь</a><br /><br />
+                            <strong>Р’Р°Р¶РЅРѕ!</strong> Р Р°СЃСЃС‹Р»РєР° РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅР° С‚РѕР»СЊРєРѕ РґР»СЏ СЂРµР°Р»СЊРЅС‹С… С†РµР»РµРІС‹С… РїСЂРѕРµРєС‚РѕРІ Рё РїРѕРёСЃРєР° РёСЃРїРѕР»РЅРёС‚РµР»РµР№. Р РµРєР»Р°РјР° Рє СЂР°СЃСЃС‹Р»РєРµ РЅРµ РґРѕРїСѓСЃРєР°РµС‚СЃСЏ.
+Рћ СЂР°Р·РјРµС‰РµРЅРёРё СЂРµРєР»Р°РјС‹ РЅР° СЃР°Р№С‚Рµ РІС‹ РјРѕР¶РµС‚Рµ СѓР·РЅР°С‚СЊ <a target="_blank" href="/press/adv/">Р·РґРµСЃСЊ</a><br /><br />
                         </div>
             </div>
             <div class="form-block last">
                 <div class="form-el">
                     <div class="masss-files<?=(empty($params['files'])? ' flt-hide': ' flt-show')?>" id="masss-files" page="0">
                         <div class="masss-files-clip">
-                            <a href="javascript: void(0);" class="flt-tgl-lnk lnk-dot-blue">Прикрепленные файлы (развернуть)</a>
+                            <a href="javascript: void(0);" class="flt-tgl-lnk lnk-dot-blue">РџСЂРёРєСЂРµРїР»РµРЅРЅС‹Рµ С„Р°Р№Р»С‹ (СЂР°Р·РІРµСЂРЅСѓС‚СЊ)</a>
                         </div>
-                        <div id="flt-masss-files" class="flt-cnt-masssend с" >
+                        <div id="flt-masss-files" class="flt-cnt-masssend СЃ" >
                             <div class="cl-form-files c"> 
                                 <ul id="mf-files-list" class="form-files-added"></ul> 
                                 <ul class="form-files-list">
@@ -45,8 +45,8 @@ $url = preg_replace('~search_count=\d\&(.*)~', '$1', $url);
                                     </li>
                                 </ul>
                                 <div class="masss-files-inf">
-                                    <p><strong>Вы можете прикрепить до <?=masssending::MAX_FILES?> файлов общим объемом не более <?=ConvertBtoMB(masssending::MAX_FILE_SIZE)?>.</strong><br />
-                                    Файлы следующих форматов запрещены к загрузке: <?=implode(', ', $GLOBALS['disallowed_array'])?>
+                                    <p><strong>Р’С‹ РјРѕР¶РµС‚Рµ РїСЂРёРєСЂРµРїРёС‚СЊ РґРѕ <?=masssending::MAX_FILES?> С„Р°Р№Р»РѕРІ РѕР±С‰РёРј РѕР±СЉРµРјРѕРј РЅРµ Р±РѕР»РµРµ <?=ConvertBtoMB(masssending::MAX_FILE_SIZE)?>.</strong><br />
+                                    Р¤Р°Р№Р»С‹ СЃР»РµРґСѓСЋС‰РёС… С„РѕСЂРјР°С‚РѕРІ Р·Р°РїСЂРµС‰РµРЅС‹ Рє Р·Р°РіСЂСѓР·РєРµ: <?=implode(', ', $GLOBALS['disallowed_array'])?>
                                     </p>
                                 </div>
                             </div>
@@ -111,23 +111,23 @@ if ($fromSearchAction === 'search_advanced') { ?>
 <input type="hidden" name="prof_group" id="prof_groups" value="" />
 
 
-<div class="masss-res с">
+<div class="masss-res СЃ">
     <div class="masss-res-b">
         <b class="b1"></b>
         <b class="b2"></b>
 
         <div class="masss-res-b-in" id="calc_done">
-            <h4>Результат</h4>
-            <p>Получателей:&nbsp;&nbsp;&nbsp;<strong id="users"><?=format($calc['count'])?></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Стоимость:&nbsp;&nbsp;&nbsp;<strong id="costFM"><?=format($calc['cost'])?></strong> руб.</p>
-            <em class="masss-price">1 получатель &ndash; <?=format($tariff['no_pro'], 1)?> руб, 1 получатель с PRO &ndash; <?=format($tariff['pro'], 1)?> руб</em>
+            <h4>Р РµР·СѓР»СЊС‚Р°С‚</h4>
+            <p>РџРѕР»СѓС‡Р°С‚РµР»РµР№:&nbsp;&nbsp;&nbsp;<strong id="users"><?=format($calc['count'])?></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            РЎС‚РѕРёРјРѕСЃС‚СЊ:&nbsp;&nbsp;&nbsp;<strong id="costFM"><?=format($calc['cost'])?></strong> СЂСѓР±.</p>
+            <em class="masss-price">1 РїРѕР»СѓС‡Р°С‚РµР»СЊ &ndash; <?=format($tariff['no_pro'], 1)?> СЂСѓР±, 1 РїРѕР»СѓС‡Р°С‚РµР»СЊ СЃ PRO &ndash; <?=format($tariff['pro'], 1)?> СЂСѓР±</em>
         </div>
 
         <div class="masss-res-b-in" id="calc_waiting" style="display: none;">
-            <h4>Результат</h4>
-            <p>Получателей:&nbsp;&nbsp;&nbsp;<span id="calc_waiting_users">расчитывается</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Стоимость:&nbsp;&nbsp;&nbsp;<span id="calc_waiting_cost">расчитывается</span></p>
-            <em class="masss-price">1 получатель &ndash; <?=format($tariff['no_pro'], 1)?> руб, 1 получатель с PRO &ndash; <?=format($tariff['pro'], 1)?> руб</em>
+            <h4>Р РµР·СѓР»СЊС‚Р°С‚</h4>
+            <p>РџРѕР»СѓС‡Р°С‚РµР»РµР№:&nbsp;&nbsp;&nbsp;<span id="calc_waiting_users">СЂР°СЃС‡РёС‚С‹РІР°РµС‚СЃСЏ</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            РЎС‚РѕРёРјРѕСЃС‚СЊ:&nbsp;&nbsp;&nbsp;<span id="calc_waiting_cost">СЂР°СЃС‡РёС‚С‹РІР°РµС‚СЃСЏ</span></p>
+            <em class="masss-price">1 РїРѕР»СѓС‡Р°С‚РµР»СЊ &ndash; <?=format($tariff['no_pro'], 1)?> СЂСѓР±, 1 РїРѕР»СѓС‡Р°С‚РµР»СЊ СЃ PRO &ndash; <?=format($tariff['pro'], 1)?> СЂСѓР±</em>
         </div>
 
 
@@ -142,11 +142,11 @@ if ($fromSearchAction === 'search_advanced') { ?>
     <div class="masss-btn">
         <div class="b-buttons">
             <a href="." onclick="this.blur(); return SendIt();" class="b-button b-button_flat b-button_flat_green">
-            <span id="button_load_span">Отправить на модерацию</span>
+            <span id="button_load_span">РћС‚РїСЂР°РІРёС‚СЊ РЅР° РјРѕРґРµСЂР°С†РёСЋ</span>
             <img style="display: none;" id="button_load_img" height="6" width="26" alt="" src="/css/block/b-button/b-button__load.gif" class="b-button__load" />
             </a>	
             <span id="calc_msg" class="b-buttons__txt b-buttons__txt_color_80 b-buttons__txt_padleft_10"></span>
         </div>							
     </div>
-<p style="padding-top:10px;">Премодерация рассылки осуществляется в рабочие часы с 10:00 до 18:00.</p>
+<p style="padding-top:10px;">РџСЂРµРјРѕРґРµСЂР°С†РёСЏ СЂР°СЃСЃС‹Р»РєРё РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ РІ СЂР°Р±РѕС‡РёРµ С‡Р°СЃС‹ СЃ 10:00 РґРѕ 18:00.</p>
 </div>

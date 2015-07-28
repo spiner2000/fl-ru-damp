@@ -1,16 +1,16 @@
 <?
 /**
- * œÓ‰ÍÎ˛˜‡ÂÏ ÍÎ‡ÒÒ ‰Îˇ ‡·ÓÚ˚ Ò ‡ÍÍ‡ÛÌÚÓÏ ÔÓÎ¸ÁÓ‚‡ÚÂÎˇ
+ * –ü–æ–¥–∫–ª—é—á–∞–µ–º –∫–ª–∞—Å—Å –¥–ª—è —Ä–∞–±–æ—Ç—ã —Å –∞–∫–∫–∞—É–Ω—Ç–æ–º –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—è
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/sbr.php");
 /**
- * œÓ‰ÍÎ˛˜‡ÂÏ Ù‡ÈÎ Ò ÍÎ˛˜‡ÏË ÓÔÎ‡Ú˚
+ * –ü–æ–¥–∫–ª—é—á–∞–µ–º —Ñ–∞–π–ª —Å –∫–ª—é—á–∞–º–∏ –æ–ø–ª–∞—Ç—ã
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/payment_keys.php");
 
 /**
- *  Î‡ÒÒ ‰Îˇ ÔÓÔÓÎÌÂÌËˇ Ò˜ÂÚ‡ ˜ÂÂÁ WebMoney
+ * –ö–ª–∞—Å—Å –¥–ª—è –ø–æ–ø–æ–ª–Ω–µ–Ω–∏—è —Å—á–µ—Ç–∞ —á–µ—Ä–µ–∑ WebMoney
  *
  * @see /income/wm.php
  */
@@ -18,14 +18,14 @@ class wmpay extends account
 {
 	
 	/**
-	 *  Ó¯ÂÎ¸ÍË Ì‡ ÍÓÚÓ˚Â ÔÓÒÚÛÔ‡ÂÚ Ò˜ÂÚ
+	 * –ö–æ—à–µ–ª—å–∫–∏ –Ω–∞ –∫–æ—Ç–æ—Ä—ã–µ –ø–æ—Å—Ç—É–ø–∞–µ—Ç —Å—á–µ—Ç
 	 *
 	 * @var array
 	 */
 	public $wmzr = array('Z801604194058','R199396491834','R109922555324');
 	
 	/**
-	 *  Î˛˜ ÓÔÎ‡Ú˚
+	 * –ö–ª—é—á –æ–ø–ª–∞—Ç—ã
 	 * 
 	 * @link /classes/payment_keys.php
 	 * @var string
@@ -33,7 +33,7 @@ class wmpay extends account
 	public $key  = WM_KEY;
 	
 	/**
-	 * ¬‡Î˛Ú‡ ÓÔÎ‡Ú˚ Ì‡ – ÍÓ¯ÂÎÂÍ
+	 * –í–∞–ª—é—Ç–∞ –æ–ø–ª–∞—Ç—ã –Ω–∞ –† –∫–æ—à–µ–ª–µ–∫
 	 *
 	 * @link /classes/payment_keys.php
 	 * @var string
@@ -41,7 +41,7 @@ class wmpay extends account
 	public $exchR = EXCH_WMR;
 	
 	/**
-	 * ¬‡Î˛Ú‡ ÓÔÎ‡Ú˚ Ì‡ Z ÍÓ¯ÂÎÂÍ
+	 * –í–∞–ª—é—Ç–∞ –æ–ø–ª–∞—Ç—ã –Ω–∞ Z –∫–æ—à–µ–ª–µ–∫
 	 *
 	 * @link /classes/payment_keys.php
 	 * @var string
@@ -49,75 +49,75 @@ class wmpay extends account
 	public $exchZ = EXCH_WMZ;
 	
 	/**
-	 * Œ·‡·ÓÚÍ‡ Á‡ÔÓÒ‡ Ì‡ ÓÔÎ‡ÚÛ
+	 * –û–±—Ä–∞–±–æ—Ç–∫–∞ –∑–∞–ø—Ä–æ—Å–∞ –Ω–∞ –æ–ø–ª–∞—Ç—É
 	 *
-	 * @param string  $wmzr           ÕÓÏÂ ÍÓ¯ÂÎ¸Í‡
-	 * @param integer $billing_no     ÕÓÏÂ ·ËÎÎËÌ„‡
-	 * @param integer $ammount        —ÛÏÏ‡ ÔÂÂ‚Ó‰‡
-	 * @param integer $operation_type “ËÔ ÓÔÂ‡ˆËË (Ú·Î. op_codes)
-	 * @param integer $operation_id   »ƒ ÓÔÂ‡ˆËË 
-	 * @return string —ÓÓ·˘ÂÌËÂ Ó· Ó¯Ë·ÍÂ
+	 * @param string  $wmzr           –ù–æ–º–µ—Ä –∫–æ—à–µ–ª—å–∫–∞
+	 * @param integer $billing_no     –ù–æ–º–µ—Ä –±–∏–ª–ª–∏–Ω–≥–∞
+	 * @param integer $ammount        –°—É–º–º–∞ –ø–µ—Ä–µ–≤–æ–¥–∞
+	 * @param integer $operation_type –¢–∏–ø –æ–ø–µ—Ä–∞—Ü–∏–∏ (—Ç–±–ª. op_codes)
+	 * @param integer $operation_id   –ò–î –æ–ø–µ—Ä–∞—Ü–∏–∏ 
+	 * @return string –°–æ–æ–±—â–µ–Ω–∏–µ –æ–± –æ—à–∏–±–∫–µ
 	 */
 	function prepare($wmzr, $billing_no, $ammount, $operation_type, $operation_id){
-		if (!in_array($wmzr, $this->wmzr)) $error = "ÕÂ‚ÂÌ˚È ÍÓ¯ÂÎÂÍ!";
-		if (!$this->is_dep_exists($billing_no)) $error = "ÕÂ‚ÂÌ˚È Ò˜ÂÚ Ì‡ Ò‡ÈÚÂ!";
+		if (!in_array($wmzr, $this->wmzr)) $error = "–ù–µ–≤–µ—Ä–Ω—ã–π –∫–æ—à–µ–ª–µ–∫!";
+		if (!$this->is_dep_exists($billing_no)) $error = "–ù–µ–≤–µ—Ä–Ω—ã–π —Å—á–µ—Ç –Ω–∞ —Å–∞–π—Ç–µ!";
 		switch ($operation_type){
-			case "1":		//–ÂÁÂ‚ ‰ÂÌÂ„ ÔÓ —·–
+			case "1":		//–†–µ–∑–µ—Ä–≤ –¥–µ–Ω–µ–≥ –ø–æ –°–±–†
 				
 				break;
-			default:		//œÂÂ‚Ó‰ ‰ÂÌÂ„ Ì‡ ÎË˜Ì˚È Ò˜ÂÚ
+			default:		//–ü–µ—Ä–µ–≤–æ–¥ –¥–µ–Ω–µ–≥ –Ω–∞ –ª–∏—á–Ω—ã–π —Å—á–µ—Ç
 				
 		}
 		return $error;
 	}
 	
 	/**
-	 * œÓ‚ÂÍ‡ ‰ÂÔÓÁËÚ‡
+	 * –ü—Ä–æ–≤–µ—Ä–∫–∞ –¥–µ–ø–æ–∑–∏—Ç–∞
 	 *
 	 * @see /income/wm.php 
-	 * @param string  $wmzr        ÕÓÏÂ ÍÓ¯ÂÎ¸Í‡ 
-	 * @param inetger $ammount     —ÛÏÏ‡ ‰ÂÔÓÁËÚ‡
-	 * @param inetger $payment_num —ÛÏÏ‡ ÓÔÎ‡Ú˚
-	 * @param inetger $wm_invs_no  ÕÓÏÂ ¬Ã« 
-	 * @param inetger $wm_trans_no ÕÓÏÂ Ú‡ÌÁ‡ÍˆËË ¬Ã«
-	 * @param inetger $payer_wmzr  ÕÓÏÂ ÍÓ¯ÂÎ¸Í‡ ÓÔÎ‡ÚË‚¯Â„Ó
-	 * @param inetger $payer_wmid  ÌÓÏÂ ¬Ã»ƒ ÓÔÎ‡ÚË‚¯Â„Ó 
-	 * @param date    $wm_date     ƒ‡Ú‡ ÓÔÎ‡Ú˚
-	 * @param char    $hash        ’˝¯
-	 * @param inetger $mode        –ÂÊËÏ ÓÔÎ‡Ú˚
-	 * @param inetger $billing_no  ÕÓÏÂ ·ËÎÎËÌ„‡
-	 * @param inetger $operation_type “ËÔ ÓÔÂ‡ˆËË (ÒÏ ÔÓˇÒÌÂÌËˇ ‚ ÙÛÌÍˆËË)
-	 * @param inetger $operation_id   »ƒ ŒÔÂ‡ˆËË
-	 * @return string —ÓÓ·˘ÂÌËÂ Ó· Ó¯Ë·ÍÂ
+	 * @param string  $wmzr        –ù–æ–º–µ—Ä –∫–æ—à–µ–ª—å–∫–∞ 
+	 * @param inetger $ammount     –°—É–º–º–∞ –¥–µ–ø–æ–∑–∏—Ç–∞
+	 * @param inetger $payment_num –°—É–º–º–∞ –æ–ø–ª–∞—Ç—ã
+	 * @param inetger $wm_invs_no  –ù–æ–º–µ—Ä –í–ú–ó 
+	 * @param inetger $wm_trans_no –ù–æ–º–µ—Ä —Ç—Ä–∞–Ω–∑–∞–∫—Ü–∏–∏ –í–ú–ó
+	 * @param inetger $payer_wmzr  –ù–æ–º–µ—Ä –∫–æ—à–µ–ª—å–∫–∞ –æ–ø–ª–∞—Ç–∏–≤—à–µ–≥–æ
+	 * @param inetger $payer_wmid  –Ω–æ–º–µ—Ä –í–ú–ò–î –æ–ø–ª–∞—Ç–∏–≤—à–µ–≥–æ 
+	 * @param date    $wm_date     –î–∞—Ç–∞ –æ–ø–ª–∞—Ç—ã
+	 * @param char    $hash        –•—ç—à
+	 * @param inetger $mode        –†–µ–∂–∏–º –æ–ø–ª–∞—Ç—ã
+	 * @param inetger $billing_no  –ù–æ–º–µ—Ä –±–∏–ª–ª–∏–Ω–≥–∞
+	 * @param inetger $operation_type –¢–∏–ø –æ–ø–µ—Ä–∞—Ü–∏–∏ (—Å–º –ø–æ—è—Å–Ω–µ–Ω–∏—è –≤ —Ñ—É–Ω–∫—Ü–∏–∏)
+	 * @param inetger $operation_id   –ò–î –û–ø–µ—Ä–∞—Ü–∏–∏
+	 * @return string –°–æ–æ–±—â–µ–Ω–∏–µ –æ–± –æ—à–∏–±–∫–µ
 	 */
 	function checkdeposit($wmzr, $ammount, $payment_num,
 			$wm_invs_no, $wm_trans_no, $payer_wmzr, $payer_wmid, $wm_date,
 			$hash, $mode, $billing_no, $operation_type, $operation_id){
 		
-		if (!in_array($wmzr, $this->wmzr)) return "ÕÂ‚ÂÌ˚È ÍÓ¯ÂÎÂÍ ÔÓ‰‡‚ˆ‡!";
+		if (!in_array($wmzr, $this->wmzr)) return "–ù–µ–≤–µ—Ä–Ω—ã–π –∫–æ—à–µ–ª–µ–∫ –ø—Ä–æ–¥–∞–≤—Ü–∞!";
 		
-		if (floatval($ammount) <= 0) return "ÕÂ‚ÂÌ‡ˇ ÒÛÏÏ‡!";
+		if (floatval($ammount) <= 0) return "–ù–µ–≤–µ—Ä–Ω–∞—è —Å—É–º–º–∞!";
 		
 		$hash_str = $wmzr . $ammount . $payment_num . $mode . $wm_invs_no . $wm_trans_no . $wm_date
 					 . $this->key . $payer_wmzr . $payer_wmid;
-		if (strtoupper(md5($hash_str)) != $hash) return "ÕÂ‚ÂÌ˚È ı˝¯!";
+		if (strtoupper(md5($hash_str)) != $hash) return "–ù–µ–≤–µ—Ä–Ω—ã–π —Ö—ç—à!";
 		
-		$descr = "WM #$payment_num Ì‡ ÍÓ¯ÂÎÂÍ $wmzr Ò ÍÓ¯ÂÎ¸Í‡ $payer_wmzr (wmid:$payer_wmid) ÒÛÏÏ‡ - $ammount,";
-		$descr .= " Ó·‡·ÓÚ‡Ì $wm_date, ÌÓÏÂ ÔÓÍÛÔÍË - $payment_num, ÌÓÏÂ ÔÎ‡ÚÂÊ‡ - $wm_trans_no";
+		$descr = "WM #$payment_num –Ω–∞ –∫–æ—à–µ–ª–µ–∫ $wmzr —Å –∫–æ—à–µ–ª—å–∫–∞ $payer_wmzr (wmid:$payer_wmid) —Å—É–º–º–∞ - $ammount,";
+		$descr .= " –æ–±—Ä–∞–±–æ—Ç–∞–Ω $wm_date, –Ω–æ–º–µ—Ä –ø–æ–∫—É–ø–∫–∏ - $payment_num, –Ω–æ–º–µ—Ä –ø–ª–∞—Ç–µ–∂–∞ - $wm_trans_no";
 		
 		$op_id = 0;
 		switch ($operation_type){
-			case "1":		//–ÂÁÂ‚ ‰ÂÌÂ„ ÔÓ —·–
+			case "1":		//–†–µ–∑–µ—Ä–≤ –¥–µ–Ω–µ–≥ –ø–æ –°–±–†
 				$op_code = 36;
 				$amm = 0;
-				$descr .= " —·– #".$operation_id;
+				$descr .= " –°–±–† #".$operation_id;
 				break;
-			case sbr::OP_RESERVE: // –ÂÁÂ‚ ‰ÂÌÂ„ ÔÓ —·– (ÌÓ‚‡ˇ)
+			case sbr::OP_RESERVE: // –†–µ–∑–µ—Ä–≤ –¥–µ–Ω–µ–≥ –ø–æ –°–±–† (–Ω–æ–≤–∞—è)
 				$op_code = sbr::OP_RESERVE;
 				$amm = 0;
-				$descr .= " —·– #".$operation_id;
+				$descr .= " –°–±–† #".$operation_id;
 				break;
-			default:		//œÂÂ‚Ó‰ ‰ÂÌÂ„ Ì‡ ÎË˜Ì˚È Ò˜ÂÚ
+			default:		//–ü–µ—Ä–µ–≤–æ–¥ –¥–µ–Ω–µ–≥ –Ω–∞ –ª–∏—á–Ω—ã–π —Å—á–µ—Ç
 				$op_code = 12;
 				if (substr($wmzr,0,1) == "R") {$amm = $ammount;}
 				if (substr($wmzr,0,1) == "Z") {$amm = $ammount * $this->exchZ;}

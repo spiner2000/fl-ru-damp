@@ -14,7 +14,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/reserves/ReservesPayout.php')
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/tservices/tservices_helper.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/DocGen/DocGenReserves.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/reserves/ReservesArbitrage.php");
-require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/reserves/ReservesArbitragePopup.php");//Для чего тут?
+require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/reserves/ReservesArbitragePopup.php");//Р”Р»СЏ С‡РµРіРѕ С‚СѓС‚?
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/reserves/ReservesSmail.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/tservices/tservices_order_history.php');
 
@@ -25,13 +25,13 @@ session_start();
 //------------------------------------------------------------------------------
 
 /**
- * Выплата по резерву
+ * Р’С‹РїР»Р°С‚Р° РїРѕ СЂРµР·РµСЂРІСѓ
  * 
- * @todo: пока только приспособлено только для заказа
- * но возможна доработка при работе резерва с любым другим объектом
+ * @todo: РїРѕРєР° С‚РѕР»СЊРєРѕ РїСЂРёСЃРїРѕСЃРѕР±Р»РµРЅРѕ С‚РѕР»СЊРєРѕ РґР»СЏ Р·Р°РєР°Р·Р°
+ * РЅРѕ РІРѕР·РјРѕР¶РЅР° РґРѕСЂР°Р±РѕС‚РєР° РїСЂРё СЂР°Р±РѕС‚Рµ СЂРµР·РµСЂРІР° СЃ Р»СЋР±С‹Рј РґСЂСѓРіРёРј РѕР±СЉРµРєС‚РѕРј
  * 
- * @param type $type - тип способа выплаты
- * @param type $params - данные
+ * @param type $type - С‚РёРї СЃРїРѕСЃРѕР±Р° РІС‹РїР»Р°С‚С‹
+ * @param type $params - РґР°РЅРЅС‹Рµ
  * @return \xajaxResponse
  */
 function reservesPayoutProcess($type, $params)
@@ -79,10 +79,10 @@ function reservesPayoutProcess($type, $params)
         $is_done = $reserveInstance->changePayStatus($status);
         
         if ($is_done) {
-            //@todo: передача данных устаревший способ но оставляем для поддержки пока
-            //посностью не передем на обьекты
+            //@todo: РїРµСЂРµРґР°С‡Р° РґР°РЅРЅС‹С… СѓСЃС‚Р°СЂРµРІС€РёР№ СЃРїРѕСЃРѕР± РЅРѕ РѕСЃС‚Р°РІР»СЏРµРј РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РїРѕРєР°
+            //РїРѕСЃРЅРѕСЃС‚СЊСЋ РЅРµ РїРµСЂРµРґРµРј РЅР° РѕР±СЊРµРєС‚С‹
             $orderData['reserve_data'] = $reserveInstance->getReserveData();
-            //@todo: правильный способ - нужно оперировать обьектами
+            //@todo: РїСЂР°РІРёР»СЊРЅС‹Р№ СЃРїРѕСЃРѕР± - РЅСѓР¶РЅРѕ РѕРїРµСЂРёСЂРѕРІР°С‚СЊ РѕР±СЊРµРєС‚Р°РјРё
             $orderData['reserve'] = $reserveInstance;
 
             try {
@@ -103,7 +103,7 @@ function reservesPayoutProcess($type, $params)
         $fbtype = @$params['fbtype'];
     
     
-        //Сохраняем отзыв если он есть
+        //РЎРѕС…СЂР°РЅСЏРµРј РѕС‚Р·С‹РІ РµСЃР»Рё РѕРЅ РµСЃС‚СЊ
         if($is_feedback && !$orderModel->isFrlFeedback())
         {
             $is_emp = false;
@@ -116,17 +116,17 @@ function reservesPayoutProcess($type, $params)
                 'user_id' => $uid
             ));
 
-            //Тут обрабатывать ошибки при валидации
+            //РўСѓС‚ РѕР±СЂР°Р±Р°С‚С‹РІР°С‚СЊ РѕС€РёР±РєРё РїСЂРё РІР°Р»РёРґР°С†РёРё
             if(!$is_valid || !$orderFeedbackModel->addFeedback($order_id)) return $objResponse;
 
             $attributes = $orderFeedbackModel->attributes();   
             $orderData['frl_feedback'] = $attributes['feedback'];
             $orderData['frl_rating'] = $attributes['rating'];
 
-            //Сохранить действие в историю
+            //РЎРѕС…СЂР°РЅРёС‚СЊ РґРµР№СЃС‚РІРёРµ РІ РёСЃС‚РѕСЂРёСЋ
             $history->saveFeedback($is_emp, $fbtype);
 
-            //Чистим кеш кол-во новых сообщений юзера после написания комментария 
+            //Р§РёСЃС‚РёРј РєРµС€ РєРѕР»-РІРѕ РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№ СЋР·РµСЂР° РїРѕСЃР»Рµ РЅР°РїРёСЃР°РЅРёСЏ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ 
             $orderModel->clearCountEvent($orderData["emp_id"]);
         }  
     
@@ -151,8 +151,8 @@ function reservesPayoutProcess($type, $params)
         
     if($error !== false)
     {
-        //Если есть ошибки то статус не обновляется и 
-        //в окошке попапа можно их показать или просто закрыть его
+        //Р•СЃР»Рё РµСЃС‚СЊ РѕС€РёР±РєРё С‚Рѕ СЃС‚Р°С‚СѓСЃ РЅРµ РѕР±РЅРѕРІР»СЏРµС‚СЃСЏ Рё 
+        //РІ РѕРєРѕС€РєРµ РїРѕРїР°РїР° РјРѕР¶РЅРѕ РёС… РїРѕРєР°Р·Р°С‚СЊ РёР»Рё РїСЂРѕСЃС‚Рѕ Р·Р°РєСЂС‹С‚СЊ РµРіРѕ
         $idx = ReservesPayoutPopup::getPopupId($order_id);
         $objResponse->script("
             var rp = window.reserves_payout_factory.getReservesPayout('{$idx}');
@@ -161,7 +161,7 @@ function reservesPayoutProcess($type, $params)
     }
     else
     {
-        //иначе статус обновился и нужно обновить JS события
+        //РёРЅР°С‡Рµ СЃС‚Р°С‚СѓСЃ РѕР±РЅРѕРІРёР»СЃСЏ Рё РЅСѓР¶РЅРѕ РѕР±РЅРѕРІРёС‚СЊ JS СЃРѕР±С‹С‚РёСЏ
         $objResponse->script("
             Bar_Ext.popuper();
             window.reserves_payout_factory = new ReservesPayoutFactory();
@@ -176,10 +176,10 @@ function reservesPayoutProcess($type, $params)
 
 
 /**
- * Создание арбитража
+ * РЎРѕР·РґР°РЅРёРµ Р°СЂР±РёС‚СЂР°Р¶Р°
  * 
- * @todo: здесь нужно полностью обезличить резерв
- * он не должен напрямую связан с заказом
+ * @todo: Р·РґРµСЃСЊ РЅСѓР¶РЅРѕ РїРѕР»РЅРѕСЃС‚СЊСЋ РѕР±РµР·Р»РёС‡РёС‚СЊ СЂРµР·РµСЂРІ
+ * РѕРЅ РЅРµ РґРѕР»Р¶РµРЅ РЅР°РїСЂСЏРјСѓСЋ СЃРІСЏР·Р°РЅ СЃ Р·Р°РєР°Р·РѕРј
  * 
  * @param array $form
  * @return \xajaxResponse
@@ -191,7 +191,7 @@ function reservesArbitrageNew($form)
     $uid = get_uid(false);
     $order_id = intval($form['oid']);
     
-    // Анонимусам нельзя или Заказ не указан
+    // РђРЅРѕРЅРёРјСѓСЃР°Рј РЅРµР»СЊР·СЏ РёР»Рё Р—Р°РєР°Р· РЅРµ СѓРєР°Р·Р°РЅ
     if ($uid <= 0 || !$order_id) { 
         return $objResponse; 
     }
@@ -201,12 +201,12 @@ function reservesArbitrageNew($form)
     $orderModel = TServiceOrderModel::model();
     $order = $orderModel->getCard($order_id, $uid);
     
-    //Заказ не найден
+    //Р—Р°РєР°Р· РЅРµ РЅР°Р№РґРµРЅ
     if (!$order) {
         return $objResponse;
     }
     
-    //Проверяем возможен ли арбитраж
+    //РџСЂРѕРІРµСЂСЏРµРј РІРѕР·РјРѕР¶РµРЅ Р»Рё Р°СЂР±РёС‚СЂР°Р¶
     if ($orderModel->isAllowArbitrageNew()) {
         
         $data = array(
@@ -220,25 +220,25 @@ function reservesArbitrageNew($form)
         $reservesArbitrage = new ReservesArbitrage();
         $arbitrage = $reservesArbitrage->createArbitrage($data);
         if ($arbitrage) {
-            //заполняем данными арбитража
+            //Р·Р°РїРѕР»РЅСЏРµРј РґР°РЅРЅС‹РјРё Р°СЂР±РёС‚СЂР°Р¶Р°
             $orderModel->getReserve()->setReserveDataByKey('arbitrage_id', $arbitrage['id']);
             $orderModel->getReserve()->setReserveDataByKey('arbitrage_is_emp', $arbitrage['is_emp']);
             $orderModel->getReserve()->setReserveDataByKey('arbitrage_message', $arbitrage['message']);
             $order['reserve_data'] = $orderModel->getReserve()->getReserveData();
 
-            //Уведомления
+            //РЈРІРµРґРѕРјР»РµРЅРёСЏ
             $reservesSmail = new ReservesSmail();
             $reservesSmail->onNewArbitrage($order, $is_emp);
 
-            //Фиксируем для истории
+            //Р¤РёРєСЃРёСЂСѓРµРј РґР»СЏ РёСЃС‚РѕСЂРёРё
             $tservicesOrderHistory = new tservices_order_history($order_id);
             $tservicesOrderHistory->reserveArbitrageNew($is_emp);
         }
     }
     
     
-    //Новый статус отображаем без перезагрузки
-    //@todo: нужно вынести в специфическую модель резерва для заказа
+    //РќРѕРІС‹Р№ СЃС‚Р°С‚СѓСЃ РѕС‚РѕР±СЂР°Р¶Р°РµРј Р±РµР· РїРµСЂРµР·Р°РіСЂСѓР·РєРё
+    //@todo: РЅСѓР¶РЅРѕ РІС‹РЅРµСЃС‚Рё РІ СЃРїРµС†РёС„РёС‡РµСЃРєСѓСЋ РјРѕРґРµР»СЊ СЂРµР·РµСЂРІР° РґР»СЏ Р·Р°РєР°Р·Р°
     $tserviceOrderStatusWidget = new TServiceOrderStatus();
     $tserviceOrderStatusWidget->setIsEmp($is_emp); 
     $tserviceOrderStatusWidget->setOrder($order);
@@ -260,7 +260,7 @@ function reservesArbitrageNew($form)
 
 
 /**
- * Вынесение решения арбитром
+ * Р’С‹РЅРµСЃРµРЅРёРµ СЂРµС€РµРЅРёСЏ Р°СЂР±РёС‚СЂРѕРј
  * @param array $form
  * @return \xajaxResponse
  */
@@ -269,7 +269,7 @@ function reservesArbitrageApply($form)
     $objResponse = new xajaxResponse();
     
     $order_id = @$form['order_id'];
-    $price_pay = (int)@$form['price']; //Сумма для выплаты исполнителю
+    $price_pay = (int)@$form['price']; //РЎСѓРјРјР° РґР»СЏ РІС‹РїР»Р°С‚С‹ РёСЃРїРѕР»РЅРёС‚РµР»СЋ
     $allow_fb_frl = (bool)@$form['allow_fb_frl'];
     $allow_fb_emp = (bool)@$form['allow_fb_emp'];
     
@@ -289,7 +289,7 @@ function reservesArbitrageApply($form)
         }
         $price_back = $order['reserve_data']['price'] - $price_pay;
 
-        //запоминаем суммы, которые надо выплатить сторонам, закрываем арбитраж и заказ
+        //Р·Р°РїРѕРјРёРЅР°РµРј СЃСѓРјРјС‹, РєРѕС‚РѕСЂС‹Рµ РЅР°РґРѕ РІС‹РїР»Р°С‚РёС‚СЊ СЃС‚РѕСЂРѕРЅР°Рј, Р·Р°РєСЂС‹РІР°РµРј Р°СЂР±РёС‚СЂР°Р¶ Рё Р·Р°РєР°Р·
         $ok = $reservesArbitrage->closeArbitrage($order['reserve_data'], array(
             'price_pay' => $price_pay, 
             'price_back' => $price_back,
@@ -298,22 +298,22 @@ function reservesArbitrageApply($form)
         ));
 
         if ($ok) {
-            $is_emp = true; //Закрываем заказ от лица заказчика
+            $is_emp = true; //Р—Р°РєСЂС‹РІР°РµРј Р·Р°РєР°Р· РѕС‚ Р»РёС†Р° Р·Р°РєР°Р·С‡РёРєР°
             $orderModel->changeStatus($order_id, 'close', $is_emp);
 
-            //Отправляем уведомления
+            //РћС‚РїСЂР°РІР»СЏРµРј СѓРІРµРґРѕРјР»РµРЅРёСЏ
             $reservesSmail = new ReservesSmail();
             $reservesSmail->onApplyArbitrage($order, $price_pay);
 
             $order = $orderModel->getOrderData();
-            //Новый статус отображаем без перезагрузки
+            //РќРѕРІС‹Р№ СЃС‚Р°С‚СѓСЃ РѕС‚РѕР±СЂР°Р¶Р°РµРј Р±РµР· РїРµСЂРµР·Р°РіСЂСѓР·РєРё
             $order['reserve_data']['arbitrage_price'] = $price_pay;
             $order['reserve_data']['arbitrage_date_close'] = date('Y-m-d H:i:s');
-            //Так как мы в статусах используем обьект то обновляем его данные
+            //РўР°Рє РєР°Рє РјС‹ РІ СЃС‚Р°С‚СѓСЃР°С… РёСЃРїРѕР»СЊР·СѓРµРј РѕР±СЊРµРєС‚ С‚Рѕ РѕР±РЅРѕРІР»СЏРµРј РµРіРѕ РґР°РЅРЅС‹Рµ
             $order['reserve']->setReserveData($order['reserve_data']);
             //$order['status'] = TServiceOrderModel::STATUS_EMPCLOSE;
             
-            //Генерируем документы
+            //Р“РµРЅРµСЂРёСЂСѓРµРј РґРѕРєСѓРјРµРЅС‚С‹
             try {
                 
                 $doc = new DocGenReserves($order);
@@ -366,7 +366,7 @@ function reservesArbitrageApply($form)
 
 
 /**
- * Отклонение арбитража
+ * РћС‚РєР»РѕРЅРµРЅРёРµ Р°СЂР±РёС‚СЂР°Р¶Р°
  * @param int $order_id
  * @return \xajaxResponse
  */
@@ -374,7 +374,7 @@ function reservesArbitrageCancel($order_id) {
     
     $objResponse = new xajaxResponse();
 
-    //Получаем заказ и проверяем его
+    //РџРѕР»СѓС‡Р°РµРј Р·Р°РєР°Р· Рё РїСЂРѕРІРµСЂСЏРµРј РµРіРѕ
     if (!$order_id) {
         return $objResponse;
     }
@@ -386,18 +386,18 @@ function reservesArbitrageCancel($order_id) {
         return $objResponse;
     }
     
-    //Удаляем арбитраж
+    //РЈРґР°Р»СЏРµРј Р°СЂР±РёС‚СЂР°Р¶
     $reservesArbitrage = new ReservesArbitrage();
     $ok = $reservesArbitrage->removeArbitrage($order['reserve_data']['id']);
     if ($ok) {
-        //Отправляем уведомления
+        //РћС‚РїСЂР°РІР»СЏРµРј СѓРІРµРґРѕРјР»РµРЅРёСЏ
         $reservesSmail = new ReservesSmail();
         $reservesSmail->onRemoveArbitrage($order);
         
         $history = new tservices_order_history($order_id);
         $history->reserveArbitrageCancel();
         
-        //Новый статус отображаем без перезагрузки
+        //РќРѕРІС‹Р№ СЃС‚Р°С‚СѓСЃ РѕС‚РѕР±СЂР°Р¶Р°РµРј Р±РµР· РїРµСЂРµР·Р°РіСЂСѓР·РєРё
         unset($order['reserve_data']['arbitrage_id']);
         $tserviceOrderStatusWidget = new TServiceOrderStatus();
         $tserviceOrderStatusWidget->setIsOwner(false); 

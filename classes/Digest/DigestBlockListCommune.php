@@ -3,7 +3,7 @@
 require_once 'DigestBlockList.php';
 
 /**
- * Класс для работы с блоком "Обсуждают в сообществах"
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р»РѕРєРѕРј "РћР±СЃСѓР¶РґР°СЋС‚ РІ СЃРѕРѕР±С‰РµСЃС‚РІР°С…"
  */
 class DigestBlockListCommune extends DigestBlockList {
     
@@ -21,19 +21,19 @@ class DigestBlockListCommune extends DigestBlockList {
      * @see parent::$title
      * @var string 
      */
-    public $title = 'Обсуждают в <a class="b-layout__link" href="/commune/" target="_blank">сообществах</a>';
+    public $title = 'РћР±СЃСѓР¶РґР°СЋС‚ РІ <a class="b-layout__link" href="/commune/" target="_blank">СЃРѕРѕР±С‰РµСЃС‚РІР°С…</a>';
     
     /**
      * @see parent::$hint
      * @var string 
      */
-    public $hint  = 'Например: https://www.free-lance.ru/commune/drugoe/411/example/31837/example.html';
+    public $hint  = 'РќР°РїСЂРёРјРµСЂ: https://www.free-lance.ru/commune/drugoe/411/example/31837/example.html';
     
     /**
      * @see parent::$title_field
      * @var string 
      */
-    public $title_field = 'Ссылки на сообщества:';
+    public $title_field = 'РЎСЃС‹Р»РєРё РЅР° СЃРѕРѕР±С‰РµСЃС‚РІР°:';
     
     /**
      * @see parent::initHtmlData

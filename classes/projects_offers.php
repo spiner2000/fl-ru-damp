@@ -5,53 +5,53 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/users.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/portfolio.php");
 
 /**
- * Класс для работы с предложениями по проектам
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РїСЂРµРґР»РѕР¶РµРЅРёСЏРјРё РїРѕ РїСЂРѕРµРєС‚Р°Рј
  *
  */
 class projects_offers
 {
     
     /**
-     * Соль для формы добавления
+     * РЎРѕР»СЊ РґР»СЏ С„РѕСЂРјС‹ РґРѕР±Р°РІР»РµРЅРёСЏ
      */
     const SALT = 'hfhdjs';
 
 
     /**
-     * Добавление предложения к проекту
+     * Р”РѕР±Р°РІР»РµРЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ Рє РїСЂРѕРµРєС‚Сѓ
      *
-     * @param integer $user_id             id фрилансера
-     * @param integer $prj_id              id проекта
-     * @param integer $cost_from           цена ОТ
-     * @param integer $cost_to             цена ДО
-     * @param integer $cost_type           валюта цены
-     * @param integer $time_from           время ОТ
-     * @param integer $time_to             время ДО
-     * @param integer $time_type           тип времени (0 - часы, 1 - дни. 2 - месяцы)
-     * @param string $text                 текст предложения
-     * @param string $work1_id             id 1 прикрепленной работы
-     * @param string $work2_id             id 2 прикрепленной работы
-     * @param string $work3_id             id 3 прикрепленной работы
-     * @param string $work1_link           ссылка на 1 прикрепленную работы
-     * @param string $work2_link           ссылка на 2 прикрепленную работы
-     * @param string $work3_link           ссылка на 3 прикрепленную работы
-     * @param string $work1_name           название 1 прикрепленной работы
-     * @param string $work2_name           название 2 прикрепленной работы
-     * @param string $work3_name           название 3 прикрепленной работы
-     * @param array $work1_pict            файл 1 работы
-     * @param array $work2_pict            файл 2 работы
-     * @param array $work3_pict            файл 3 работы
-     * @param array $work1_prev_pict       файл превью 1 работы
-     * @param array $work2_prev_pict       файл превью 2 работы
-     * @param array $work3_prev_pict       файл превью 3 работы
-     * @param boolean $for_customer_only   показывать предложение только работоадетлю
-     * @param integer $dialogueId          id ветки диалога
-     * @param integer $emp_read            прочитано работодателем или нет
-     * @param boolean $prefer_sbr          предпочитаю работать с СБР
-     * @param boolean $auto                0 или ID автоответа (не обновляется)
-     * @param integer $moduser_id          UID пользователя (админа), изменяющего предложение. если null - то $user_id id фрилансера
-     * @param string modified_reason       Причина редактирования
-     * @return string                      текст ошибки в случае неуспеха
+     * @param integer $user_id             id С„СЂРёР»Р°РЅСЃРµСЂР°
+     * @param integer $prj_id              id РїСЂРѕРµРєС‚Р°
+     * @param integer $cost_from           С†РµРЅР° РћРў
+     * @param integer $cost_to             С†РµРЅР° Р”Рћ
+     * @param integer $cost_type           РІР°Р»СЋС‚Р° С†РµРЅС‹
+     * @param integer $time_from           РІСЂРµРјСЏ РћРў
+     * @param integer $time_to             РІСЂРµРјСЏ Р”Рћ
+     * @param integer $time_type           С‚РёРї РІСЂРµРјРµРЅРё (0 - С‡Р°СЃС‹, 1 - РґРЅРё. 2 - РјРµСЃСЏС†С‹)
+     * @param string $text                 С‚РµРєСЃС‚ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+     * @param string $work1_id             id 1 РїСЂРёРєСЂРµРїР»РµРЅРЅРѕР№ СЂР°Р±РѕС‚С‹
+     * @param string $work2_id             id 2 РїСЂРёРєСЂРµРїР»РµРЅРЅРѕР№ СЂР°Р±РѕС‚С‹
+     * @param string $work3_id             id 3 РїСЂРёРєСЂРµРїР»РµРЅРЅРѕР№ СЂР°Р±РѕС‚С‹
+     * @param string $work1_link           СЃСЃС‹Р»РєР° РЅР° 1 РїСЂРёРєСЂРµРїР»РµРЅРЅСѓСЋ СЂР°Р±РѕС‚С‹
+     * @param string $work2_link           СЃСЃС‹Р»РєР° РЅР° 2 РїСЂРёРєСЂРµРїР»РµРЅРЅСѓСЋ СЂР°Р±РѕС‚С‹
+     * @param string $work3_link           СЃСЃС‹Р»РєР° РЅР° 3 РїСЂРёРєСЂРµРїР»РµРЅРЅСѓСЋ СЂР°Р±РѕС‚С‹
+     * @param string $work1_name           РЅР°Р·РІР°РЅРёРµ 1 РїСЂРёРєСЂРµРїР»РµРЅРЅРѕР№ СЂР°Р±РѕС‚С‹
+     * @param string $work2_name           РЅР°Р·РІР°РЅРёРµ 2 РїСЂРёРєСЂРµРїР»РµРЅРЅРѕР№ СЂР°Р±РѕС‚С‹
+     * @param string $work3_name           РЅР°Р·РІР°РЅРёРµ 3 РїСЂРёРєСЂРµРїР»РµРЅРЅРѕР№ СЂР°Р±РѕС‚С‹
+     * @param array $work1_pict            С„Р°Р№Р» 1 СЂР°Р±РѕС‚С‹
+     * @param array $work2_pict            С„Р°Р№Р» 2 СЂР°Р±РѕС‚С‹
+     * @param array $work3_pict            С„Р°Р№Р» 3 СЂР°Р±РѕС‚С‹
+     * @param array $work1_prev_pict       С„Р°Р№Р» РїСЂРµРІСЊСЋ 1 СЂР°Р±РѕС‚С‹
+     * @param array $work2_prev_pict       С„Р°Р№Р» РїСЂРµРІСЊСЋ 2 СЂР°Р±РѕС‚С‹
+     * @param array $work3_prev_pict       С„Р°Р№Р» РїСЂРµРІСЊСЋ 3 СЂР°Р±РѕС‚С‹
+     * @param boolean $for_customer_only   РїРѕРєР°Р·С‹РІР°С‚СЊ РїСЂРµРґР»РѕР¶РµРЅРёРµ С‚РѕР»СЊРєРѕ СЂР°Р±РѕС‚РѕР°РґРµС‚Р»СЋ
+     * @param integer $dialogueId          id РІРµС‚РєРё РґРёР°Р»РѕРіР°
+     * @param integer $emp_read            РїСЂРѕС‡РёС‚Р°РЅРѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµРј РёР»Рё РЅРµС‚
+     * @param boolean $prefer_sbr          РїСЂРµРґРїРѕС‡РёС‚Р°СЋ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РЎР‘Р 
+     * @param boolean $auto                0 РёР»Рё ID Р°РІС‚РѕРѕС‚РІРµС‚Р° (РЅРµ РѕР±РЅРѕРІР»СЏРµС‚СЃСЏ)
+     * @param integer $moduser_id          UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (Р°РґРјРёРЅР°), РёР·РјРµРЅСЏСЋС‰РµРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёРµ. РµСЃР»Рё null - С‚Рѕ $user_id id С„СЂРёР»Р°РЅСЃРµСЂР°
+     * @param string modified_reason       РџСЂРёС‡РёРЅР° СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+     * @return string                      С‚РµРєСЃС‚ РѕС€РёР±РєРё РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
 
     function AddOffer($user_id, $prj_id, $cost_from, $cost_to, $cost_type, $time_from, $time_to, $time_type, $text,
@@ -69,12 +69,12 @@ class projects_offers
         if (($cost_from < 0) && ($cost_from !== ''))
         {
           $cost_from = 0;
-          //$error = 'Начальная стоимость должна быть положительным числом.';
+          //$error = 'РќР°С‡Р°Р»СЊРЅР°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рј С‡РёСЃР»РѕРј.';
         }
         if (($cost_to < 0) && ($cost_to !== ''))
         {
           $cost_to = 0;
-          //$error = 'Конечная стоимость должна быть положительным числом.';
+          //$error = 'РљРѕРЅРµС‡РЅР°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рј С‡РёСЃР»РѕРј.';
         }
         
         if (($cost_to !== '') && ($cost_from !== '') && ($cost_to < $cost_from && $cost_to > 0))
@@ -108,7 +108,7 @@ class projects_offers
         $time_to = intval($time_to);
         $time_type = intval($time_type);
         $text = __paramValue('string', $text);
-        $text = str_replace("\r\n", "\n", $text); // Cчитается как два символа -- поэтому надо заменить на один, чтобы при подсчете символов последние символы не обрезались
+        $text = str_replace("\r\n", "\n", $text); // CС‡РёС‚Р°РµС‚СЃСЏ РєР°Рє РґРІР° СЃРёРјРІРѕР»Р° -- РїРѕСЌС‚РѕРјСѓ РЅР°РґРѕ Р·Р°РјРµРЅРёС‚СЊ РЅР° РѕРґРёРЅ, С‡С‚РѕР±С‹ РїСЂРё РїРѕРґСЃС‡РµС‚Рµ СЃРёРјРІРѕР»РѕРІ РїРѕСЃР»РµРґРЅРёРµ СЃРёРјРІРѕР»С‹ РЅРµ РѕР±СЂРµР·Р°Р»РёСЃСЊ
         //$text = preg_replace("/(\r\n|\r|\n){3,100}/i", "\r\n\r\n", $text);//trim(substr(change_q(trim($text), true, 90), 0, 3000));
         $for_customer_only = ($for_customer_only) ? 't' : 'f';
         $prefer_sbr = ($prefer_sbr) ? 't' : 'f';
@@ -171,7 +171,7 @@ class projects_offers
                 || ($po['prev_pict2'] != $work2_prev_pict && !empty($work2_prev_pict)) 
                 || ($po['prev_pict3'] != $work3_prev_pict && !empty($work3_prev_pict)) )
             ) {
-                // автор, не админ, не про меняет заголовок либо текст - отправить на модерирование
+                // Р°РІС‚РѕСЂ, РЅРµ Р°РґРјРёРЅ, РЅРµ РїСЂРѕ РјРµРЅСЏРµС‚ Р·Р°РіРѕР»РѕРІРѕРє Р»РёР±Рѕ С‚РµРєСЃС‚ - РѕС‚РїСЂР°РІРёС‚СЊ РЅР° РјРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/stop_words.php' );
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/user_content.php' );
                 
@@ -179,10 +179,10 @@ class projects_offers
                 $nStopWordsCnt = $stop_words->calculate( $slashedText );
                 $sModer = ' , moderator_status =' . ( $nStopWordsCnt ? ' 0 ' : ' NULL ' );
                 
-                if ( $nStopWordsCnt ) { // если есть что то подозрительное - на модерирование
+                if ( $nStopWordsCnt ) { // РµСЃР»Рё РµСЃС‚СЊ С‡С‚Рѕ С‚Рѕ РїРѕРґРѕР·СЂРёС‚РµР»СЊРЅРѕРµ - РЅР° РјРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ
                     $DB->insert( 'moderation', array('rec_id' => $po['id'], 'rec_type' => user_content::MODER_PRJ_OFFERS, 'stop_words_cnt' => $nStopWordsCnt) );
                 }
-                else { // иначе на модерирование не отправляем
+                else { // РёРЅР°С‡Рµ РЅР° РјРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ РЅРµ РѕС‚РїСЂР°РІР»СЏРµРј
                     $DB->query( 'DELETE FROM moderation WHERE rec_id = ?i AND rec_type = ?i;', $po['id'], user_content::MODER_PRJ_OFFERS );
                 }
             }
@@ -229,7 +229,7 @@ class projects_offers
         else {            
             $nStopWordsCnt = 0;
             
-            if ( $emp_is_pro != 't' && !is_pro() ) { // если нужно считаем стоп-слова
+            if ( $emp_is_pro != 't' && !is_pro() ) { // РµСЃР»Рё РЅСѓР¶РЅРѕ СЃС‡РёС‚Р°РµРј СЃС‚РѕРї-СЃР»РѕРІР°
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/stop_words.php' );
 
                 $stop_words    = new stop_words();
@@ -262,11 +262,11 @@ class projects_offers
     }
 
     /**
-     * Обновляем определенные поля в таблице ответов на проект
+     * РћР±РЅРѕРІР»СЏРµРј РѕРїСЂРµРґРµР»РµРЅРЅС‹Рµ РїРѕР»СЏ РІ С‚Р°Р±Р»РёС†Рµ РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚
      *
-     * @param integer $id_offer    ИД Ответа
-     * @param boolean $fields     Поля для обновления, @example записывать как есть например array("is_color" => "'t'", "payed_items" => "B'1'");
-     * @return $error Ошибка;
+     * @param integer $id_offer    РР” РћС‚РІРµС‚Р°
+     * @param boolean $fields     РџРѕР»СЏ РґР»СЏ РѕР±РЅРѕРІР»РµРЅРёСЏ, @example Р·Р°РїРёСЃС‹РІР°С‚СЊ РєР°Рє РµСЃС‚СЊ РЅР°РїСЂРёРјРµСЂ array("is_color" => "'t'", "payed_items" => "B'1'");
+     * @return $error РћС€РёР±РєР°;
      */
     function setFieldsOffers($id_offer, $fields = array()) {
         global $DB;
@@ -285,16 +285,16 @@ class projects_offers
     }
 
     /**
-     * Добавление предложения к конкурсу
+     * Р”РѕР±Р°РІР»РµРЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ Рє РєРѕРЅРєСѓСЂСЃСѓ
      *
-     * @param integer $user_id             id фрилансера
-     * @param integer $prj_id              id конкурса
-     * @param string $text                 текст предложения
-     * @param array $work_pict             работа
-     * @param array $work_prev_pict        превью работы
-     * @param boolean $for_customer_only   показывать только работодателю
+     * @param integer $user_id             id С„СЂРёР»Р°РЅСЃРµСЂР°
+     * @param integer $prj_id              id РєРѕРЅРєСѓСЂСЃР°
+     * @param string $text                 С‚РµРєСЃС‚ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+     * @param array $work_pict             СЂР°Р±РѕС‚Р°
+     * @param array $work_prev_pict        РїСЂРµРІСЊСЋ СЂР°Р±РѕС‚С‹
+     * @param boolean $for_customer_only   РїРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЋ
      *
-     * @return string                      текст ошибки в случае неуспеха
+     * @return string                      С‚РµРєСЃС‚ РѕС€РёР±РєРё РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
     function AddOfferKon($user_id, $prj_id, $text, $work_pict, $work_prev_pict, $for_customer_only = false )
     {
@@ -320,7 +320,7 @@ class projects_offers
           WHERE (po.project_id = '$prj_id') AND (user_id = " . $user_id . ")";
         $count = $DB->val($sql, $prj_id, $user_id);
         if ($count) {
-            return "Предложение уже существует";
+            return "РџСЂРµРґР»РѕР¶РµРЅРёРµ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚";
         } else {
          $sql = "INSERT INTO projects_offers (project_id, user_id, cost_from, cost_to, cost_type, time_from, time_to, time_type, pict1, pict2, pict3, prev_pict1, prev_pict2, prev_pict3, only_4_cust)
           VALUES (?i, ?i, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', ? );SELECT currval('projects_offers_id_seq');";
@@ -353,14 +353,14 @@ class projects_offers
 
 
     /**
-     * Прикрепление работы к конкурсу
+     * РџСЂРёРєСЂРµРїР»РµРЅРёРµ СЂР°Р±РѕС‚С‹ Рє РєРѕРЅРєСѓСЂСЃСѓ
      *
-     * @param integer $user_id             id фрилансера
-     * @param integer $prj_id              id конкурса
-     * @param array $work_pict             работа
-     * @param array $work_prev_pict        превью работы
+     * @param integer $user_id             id С„СЂРёР»Р°РЅСЃРµСЂР°
+     * @param integer $prj_id              id РєРѕРЅРєСѓСЂСЃР°
+     * @param array $work_pict             СЂР°Р±РѕС‚Р°
+     * @param array $work_prev_pict        РїСЂРµРІСЊСЋ СЂР°Р±РѕС‚С‹
      *
-     * @return string                      текст ошибки в случае неуспеха
+     * @return string                      С‚РµРєСЃС‚ РѕС€РёР±РєРё РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
     function ChangeOfferKon($user_id, $prj_id, $work_pict, $work_prev_pict)
     {
@@ -398,13 +398,13 @@ class projects_offers
 
 
     /**
-     * Удаление предложения
+     * РЈРґР°Р»РµРЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
      *
-     * @param integer $offer_id        id предложения
-     * @param integer $prj_id          id проекта
-     * @param integer $user_id         id пользователя
+     * @param integer $offer_id        id РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+     * @param integer $prj_id          id РїСЂРѕРµРєС‚Р°
+     * @param integer $user_id         id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      *
-     * @param boolean $force           признак удаления сообщения без проверки id пользователя
+     * @param boolean $force           РїСЂРёР·РЅР°Рє СѓРґР°Р»РµРЅРёСЏ СЃРѕРѕР±С‰РµРЅРёСЏ Р±РµР· РїСЂРѕРІРµСЂРєРё id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      */
     function DelOffer($offer_id, $prj_id, $user_id, $force = false)
     {
@@ -427,12 +427,12 @@ class projects_offers
     }
     
     /**
-     * Модераторская. Лента действий. Фиксация событий: удаление предложения в проекте
+     * РњРѕРґРµСЂР°С‚РѕСЂСЃРєР°СЏ. Р›РµРЅС‚Р° РґРµР№СЃС‚РІРёР№. Р¤РёРєСЃР°С†РёСЏ СЃРѕР±С‹С‚РёР№: СѓРґР°Р»РµРЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РІ РїСЂРѕРµРєС‚Рµ
      *
-     * @param int $offer_id id предложения
-     * @param int $prj_id id проекта
-     * @param string $prj_name название проекта
-     * @param int $prj_user_id UID пользователя, создавшего проект
+     * @param int $offer_id id РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+     * @param int $prj_id id РїСЂРѕРµРєС‚Р°
+     * @param string $prj_name РЅР°Р·РІР°РЅРёРµ РїСЂРѕРµРєС‚Р°
+     * @param int $prj_user_id UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, СЃРѕР·РґР°РІС€РµРіРѕ РїСЂРѕРµРєС‚
      */
     function DelOfferLog( $offer_id = 0, $prj_id = 0, $prj_name = '', $prj_user_id ) {
         $aUser = $GLOBALS['DB']->row( 'SELECT f.uid, f.login, f.uname, f.usurname 
@@ -445,7 +445,7 @@ class projects_offers
 	        require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/admin_log.php' );
 	        
 	        $sPrjLink = getFriendlyURL( 'project', $prj_id );
-	        $sReason  = 'Предложение от <a href="' . $GLOBALS['host'] . '/users/' . $aUser['login'] . '" target="_blank">' 
+	        $sReason  = 'РџСЂРµРґР»РѕР¶РµРЅРёРµ РѕС‚ <a href="' . $GLOBALS['host'] . '/users/' . $aUser['login'] . '" target="_blank">' 
 	           . $aUser['uname'] . ' ' . $aUser['usurname'] . ' [' . $aUser['login'] . ']</a>';
 	        
 	        admin_log::addLog( admin_log::OBJ_CODE_PROJ, admin_log::ACT_ID_PRJ_DEL_OFFER, $prj_user_id, $prj_id, $prj_name, $sPrjLink, 0, '', 0, $sReason );
@@ -453,10 +453,10 @@ class projects_offers
     }
     
     /**
-     * Отправляет уведомления об удалении предложения в проекте
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёСЏ РѕР± СѓРґР°Р»РµРЅРёРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ РІ РїСЂРѕРµРєС‚Рµ
      * 
-     * @param int $offer_id ID предложения
-     * @param int $deluser_id UID удаляющего
+     * @param int $offer_id ID РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+     * @param int $deluser_id UID СѓРґР°Р»СЏСЋС‰РµРіРѕ
      */
     function DelOfferNotification( $offer_id = 0, $deluser_id = 0 ) {
         $aOffer = $GLOBALS['DB']->row( 'SELECT po.project_id, f.uid, f.login, f.uname, f.usurname, p.name 
@@ -473,21 +473,21 @@ class projects_offers
     }
 
     /**
-     * Получение предложения конкретного пользователя по конкретному проекту
+     * РџРѕР»СѓС‡РµРЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ РєРѕРЅРєСЂРµС‚РЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ
      *
-     * @param integer $prj_id          id проекта
-     * @param integer $user_id         id пользователя
+     * @param integer $prj_id          id РїСЂРѕРµРєС‚Р°
+     * @param integer $user_id         id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      *
-     * @return array                   данные предложения
+     * @return array                   РґР°РЅРЅС‹Рµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
      */
     function GetPrjOffer($prj_id, $user_id)
     {
         global $DB;
         $ret = false;
         
-        //@todo: Рекомендуется вынести completed_cnt в users_counters таблицу и с ней соединяться
-        //тем более, что в ней уже есть кол-во по новой БС reserves_completed_cnt
-        //нужно добавить поле по старой БС и пересчитать туда
+        //@todo: Р РµРєРѕРјРµРЅРґСѓРµС‚СЃСЏ РІС‹РЅРµСЃС‚Рё completed_cnt РІ users_counters С‚Р°Р±Р»РёС†Сѓ Рё СЃ РЅРµР№ СЃРѕРµРґРёРЅСЏС‚СЊСЃСЏ
+        //С‚РµРј Р±РѕР»РµРµ, С‡С‚Рѕ РІ РЅРµР№ СѓР¶Рµ РµСЃС‚СЊ РєРѕР»-РІРѕ РїРѕ РЅРѕРІРѕР№ Р‘РЎ reserves_completed_cnt
+        //РЅСѓР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ РїРѕР»Рµ РїРѕ СЃС‚Р°СЂРѕР№ Р‘РЎ Рё РїРµСЂРµСЃС‡РёС‚Р°С‚СЊ С‚СѓРґР°
         
         if ($user_id > 0) {
           $sel_blocked  = ', pb.reason as blocked_reason, pb.blocked_time, COALESCE(pb.src_id::boolean, false) as is_blocked, 
@@ -498,7 +498,7 @@ class projects_offers
           $sql = "SELECT po.*,
           fl.uid, fl.login, fl.uname, fl.usurname, fl.email, fl.photo, fl.photosm, fl.spec, fl.is_pro, fl.is_team, fl.is_pro_test, fl.is_profi, uc.ops_frl_plus as ops_plus, uc.ops_frl_null as ops_null, uc.ops_frl_minus as ops_minus, fl.role, fl.warn, fl.is_banned, fl.ban_where, rating_get(fl.rating, fl.is_pro, fl.is_verify, fl.is_profi) as rating, fl.is_verify, fl.photo_modified_time, fl.reg_date, fl.modified_time,
           p.name AS spec_name, 
-          COALESCE(sbr_meta.completed_cnt, 0) + COALESCE(uc.reserves_completed_cnt, 0) AS completed_cnt, -- старые БС + новые БС
+          COALESCE(sbr_meta.completed_cnt, 0) + COALESCE(uc.reserves_completed_cnt, 0) AS completed_cnt, -- СЃС‚Р°СЂС‹Рµ Р‘РЎ + РЅРѕРІС‹Рµ Р‘РЎ
           cr.country_name,
           ct.city_name,
           uc.ops_emp_plus + uc.ops_frl_plus as ops_all_plus, uc.ops_emp_null + uc.ops_frl_null as ops_all_null, uc.ops_emp_minus + uc.ops_frl_minus as ops_all_minus,
@@ -511,14 +511,14 @@ class projects_offers
           INNER JOIN freelancer as fl ON po.user_id=fl.uid
           $join_blocked
           LEFT JOIN users_counters uc ON uc.user_id = fl.uid
-          LEFT JOIN sbr_meta ON sbr_meta.user_id = fl.uid -- старая БС
+          LEFT JOIN sbr_meta ON sbr_meta.user_id = fl.uid -- СЃС‚Р°СЂР°СЏ Р‘РЎ
           LEFT JOIN professions p ON p.id=fl.spec
           LEFT JOIN country cr ON cr.id=fl.country
           LEFT JOIN city ct ON ct.id=fl.city
           WHERE (po.project_id = ?i ) AND po.user_id=?i AND (fl.is_banned='0')";
           $ret = $DB->row($sql, $prj_id, $user_id);
       
-          // Выбираем вложения.
+          // Р’С‹Р±РёСЂР°РµРј РІР»РѕР¶РµРЅРёСЏ.
           if ($ret['id']) {
             $sql = "SELECT a.id, a.prev_pict as prev, a.pict "
                  . "FROM projects_offers_attach AS a "
@@ -530,9 +530,9 @@ class projects_offers
     }
     
     /**
-     * возвращает данные по СБР
-     * а также счетчики исполнителя
-     * и данные пользователя
+     * РІРѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ РїРѕ РЎР‘Р 
+     * Р° С‚Р°РєР¶Рµ СЃС‡РµС‚С‡РёРєРё РёСЃРїРѕР»РЅРёС‚РµР»СЏ
+     * Рё РґР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      */
     function getSbrExecData ($sbrID) {
         global $DB;
@@ -550,10 +550,10 @@ class projects_offers
     }
     
     /**
-     * Получение предложения по его ID
+     * РџРѕР»СѓС‡РµРЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РµРіРѕ ID
      *
-     * @param  integer $offer_id id проекта
-     * @return array данные предложения
+     * @param  integer $offer_id id РїСЂРѕРµРєС‚Р°
+     * @return array РґР°РЅРЅС‹Рµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
      */
     function GetPrjOfferById( $offer_id = 0 ) {
         $ret = false;
@@ -577,7 +577,7 @@ class projects_offers
         
         $ret = $GLOBALS['DB']->row( $sql, $offer_id );
         
-        // Выбираем вложения.
+        // Р’С‹Р±РёСЂР°РµРј РІР»РѕР¶РµРЅРёСЏ.
         if ( $ret['id'] ) {
             $sql = 'SELECT a.id, a.prev_pict as prev, a.pict 
                 FROM projects_offers_attach AS a 
@@ -590,20 +590,20 @@ class projects_offers
     }
     
     /**
-     * Блокирует предложение
+     * Р‘Р»РѕРєРёСЂСѓРµС‚ РїСЂРµРґР»РѕР¶РµРЅРёРµ
      *
-     * @param  integer $offer_id id предложения
-     * @param  integer $user_id UID пользователя
-     * @param  integer $project_id id проекта
-     * @param  string $reason причина
-     * @param  string $reason_id id причины, если она выбрана из списка
-     * @param  integer $uid uid администратора (если 0, используется $_SESSION['uid'])
-     * @param  boolean $from_stream true - блокировка из потока, false - на сайте
-     * @return integer ID блокировки
+     * @param  integer $offer_id id РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+     * @param  integer $user_id UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  integer $project_id id РїСЂРѕРµРєС‚Р°
+     * @param  string $reason РїСЂРёС‡РёРЅР°
+     * @param  string $reason_id id РїСЂРёС‡РёРЅС‹, РµСЃР»Рё РѕРЅР° РІС‹Р±СЂР°РЅР° РёР· СЃРїРёСЃРєР°
+     * @param  integer $uid uid Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР° (РµСЃР»Рё 0, РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ $_SESSION['uid'])
+     * @param  boolean $from_stream true - Р±Р»РѕРєРёСЂРѕРІРєР° РёР· РїРѕС‚РѕРєР°, false - РЅР° СЃР°Р№С‚Рµ
+     * @return integer ID Р±Р»РѕРєРёСЂРѕРІРєРё
      */
     function Blocked( $offer_id = 0, $user_id = 0, $project_id = 0, $reason, $reason_id = null, $uid = 0, $from_stream = false ) {      
         global $DB;
-        if (!$uid && !($uid = $_SESSION['uid'])) return 'Недостаточно прав';
+        if (!$uid && !($uid = $_SESSION['uid'])) return 'РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ';
         $sql = "INSERT INTO projects_offers_blocked (src_id, \"admin\", reason, reason_id, blocked_time) VALUES(?i, ?i, ?, ?, NOW()) RETURNING id";
         $sId = $DB->val( $sql, $offer_id, $uid, $reason, $reason_id );
 
@@ -632,10 +632,10 @@ class projects_offers
     }
         
     /**
-     * Разблокирует предложение
+     * Р Р°Р·Р±Р»РѕРєРёСЂСѓРµС‚ РїСЂРµРґР»РѕР¶РµРЅРёРµ
      *
-     * @param integer $project_id  id предложения
-     * @return string Сообщение об ошибке
+     * @param integer $project_id  id РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+     * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
      */
     function UnBlocked( $offer_id ) {
         global $DB;
@@ -654,12 +654,12 @@ class projects_offers
     }
     
     /**
-     * Получение статуса существования предложения конкретного пользователя по конкретному проекту (есть/нет)
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃС‚Р°С‚СѓСЃР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ РєРѕРЅРєСЂРµС‚РЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ (РµСЃС‚СЊ/РЅРµС‚)
      *
-     * @param integer $prj_id          id проекта
-     * @param integer $user_id         id пользователя
+     * @param integer $prj_id          id РїСЂРѕРµРєС‚Р°
+     * @param integer $user_id         id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      *
-     * @return boolean                 да/нет
+     * @return boolean                 РґР°/РЅРµС‚
      */
     function IsPrjOfferExists($prj_id, $user_id)
     {
@@ -681,15 +681,15 @@ class projects_offers
 
 
     /**
-     * Получение списка предложений по конкретному проекту
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° РїСЂРµРґР»РѕР¶РµРЅРёР№ РїРѕ РєРѕРЅРєСЂРµС‚РЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ
      *
-     * @param integer $count           возвращает количество предложений
-     * @param integer $prj_id          id проекта
-     * @param string $show_all         признак отображения всех (true) или только открытых (false) предложений проекта
-     * @param string $sort             сортировка списка предложений
-     * @param string $type             выбор предложений одного типа ('o' - все, 'c' - выбранных в кандидаты, 'r' - отказанных, 'nor' - все кроме отказавшихся, 'i' - исполнитель)
+     * @param integer $count           РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРµРґР»РѕР¶РµРЅРёР№
+     * @param integer $prj_id          id РїСЂРѕРµРєС‚Р°
+     * @param string $show_all         РїСЂРёР·РЅР°Рє РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РІСЃРµС… (true) РёР»Рё С‚РѕР»СЊРєРѕ РѕС‚РєСЂС‹С‚С‹С… (false) РїСЂРµРґР»РѕР¶РµРЅРёР№ РїСЂРѕРµРєС‚Р°
+     * @param string $sort             СЃРѕСЂС‚РёСЂРѕРІРєР° СЃРїРёСЃРєР° РїСЂРµРґР»РѕР¶РµРЅРёР№
+     * @param string $type             РІС‹Р±РѕСЂ РїСЂРµРґР»РѕР¶РµРЅРёР№ РѕРґРЅРѕРіРѕ С‚РёРїР° ('o' - РІСЃРµ, 'c' - РІС‹Р±СЂР°РЅРЅС‹С… РІ РєР°РЅРґРёРґР°С‚С‹, 'r' - РѕС‚РєР°Р·Р°РЅРЅС‹С…, 'nor' - РІСЃРµ РєСЂРѕРјРµ РѕС‚РєР°Р·Р°РІС€РёС…СЃСЏ, 'i' - РёСЃРїРѕР»РЅРёС‚РµР»СЊ)
      *
-     * @return array                   список предложений
+     * @return array                   СЃРїРёСЃРѕРє РїСЂРµРґР»РѕР¶РµРЅРёР№
      */
     function GetPrjOffers(&$count, $prj_id, $limit, $offset = 0, $user_id = 0, $show_all = false, $sort = 'date', $type = 'a')
     {
@@ -704,7 +704,7 @@ class projects_offers
       
       $bPermissions = hasPermissions( 'projects' );
       
-      // исключаем заблокированные предложения
+      // РёСЃРєР»СЋС‡Р°РµРј Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
       $sel_blocked  = ", pb.reason as blocked_reason, pb.blocked_time, COALESCE(pb.src_id::boolean, false) as is_blocked";
       $join_blocked = "LEFT JOIN projects_offers_blocked pb ON po.id = pb.src_id ";
       
@@ -719,9 +719,9 @@ class projects_offers
           $and_blocked   = ' AND ' . $where_blocked;
       }
   
-    //@todo: Рекомендуется вынести completed_cnt в users_counters таблицу и с ней соединяться
-    //тем более, что в ней уже есть кол-во по новой БС reserves_completed_cnt
-    //нужно добавить поле по старой БС и пересчитать туда
+    //@todo: Р РµРєРѕРјРµРЅРґСѓРµС‚СЃСЏ РІС‹РЅРµСЃС‚Рё completed_cnt РІ users_counters С‚Р°Р±Р»РёС†Сѓ Рё СЃ РЅРµР№ СЃРѕРµРґРёРЅСЏС‚СЊСЃСЏ
+    //С‚РµРј Р±РѕР»РµРµ, С‡С‚Рѕ РІ РЅРµР№ СѓР¶Рµ РµСЃС‚СЊ РєРѕР»-РІРѕ РїРѕ РЅРѕРІРѕР№ Р‘РЎ reserves_completed_cnt
+    //РЅСѓР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ РїРѕР»Рµ РїРѕ СЃС‚Р°СЂРѕР№ Р‘РЎ Рё РїРµСЂРµСЃС‡РёС‚Р°С‚СЊ С‚СѓРґР°
       
 	  if ($type == 'i') {
 		  $sql = "SELECT
@@ -730,7 +730,7 @@ class projects_offers
           p.name AS spec_name,
           cr.country_name,
           ct.city_name, 
-          COALESCE(sbr_meta.completed_cnt, 0) + COALESCE(uc.reserves_completed_cnt, 0) AS completed_cnt, -- старые БС + новые БС
+          COALESCE(sbr_meta.completed_cnt, 0) + COALESCE(uc.reserves_completed_cnt, 0) AS completed_cnt, -- СЃС‚Р°СЂС‹Рµ Р‘РЎ + РЅРѕРІС‹Рµ Р‘РЎ
           uc.ops_emp_plus + uc.ops_frl_plus as ops_all_plus, uc.ops_emp_null + uc.ops_frl_null as ops_all_null, uc.ops_emp_minus + uc.ops_frl_minus as ops_all_minus,
           uc.ops_emp_plus, uc.ops_emp_null, uc.ops_emp_minus,
           uc.sbr_opi_plus, uc.sbr_opi_null, uc.sbr_opi_minus,
@@ -745,7 +745,7 @@ class projects_offers
           $join_blocked 
           LEFT JOIN professions p ON p.id=fl.spec
           LEFT JOIN users_counters uc ON uc.user_id = fl.uid
-          LEFT JOIN sbr_meta ON sbr_meta.user_id = fl.uid -- старые БС
+          LEFT JOIN sbr_meta ON sbr_meta.user_id = fl.uid -- СЃС‚Р°СЂС‹Рµ Р‘РЎ
           LEFT JOIN country cr ON cr.id=fl.country
           LEFT JOIN city ct ON ct.id=fl.city
           " . (($user_id == 0) ? "WHERE $where_blocked" : "WHERE (fl.uid<>" . $user_id . ") $and_blocked");
@@ -756,7 +756,7 @@ class projects_offers
           else {
               if ($ret) {
                 foreach ($ret as &$value) {
-                  // Выбираем вложения.
+                  // Р’С‹Р±РёСЂР°РµРј РІР»РѕР¶РµРЅРёСЏ.
                   if ($value['id']) {
                     $sql = "SELECT a.id, a.prev_pict as prev, a.pict "
                          . "FROM projects_offers_attach AS a "
@@ -851,7 +851,7 @@ class projects_offers
           fl.is_verify, fl.reg_date, fl.modified_time, fl.photo_modified_time,
           p.name AS spec_name,
           cr.country_name,
-          COALESCE(sbr_meta.completed_cnt, 0) + COALESCE(uc.reserves_completed_cnt, 0) AS completed_cnt, -- старые БС + новые БС
+          COALESCE(sbr_meta.completed_cnt, 0) + COALESCE(uc.reserves_completed_cnt, 0) AS completed_cnt, -- СЃС‚Р°СЂС‹Рµ Р‘РЎ + РЅРѕРІС‹Рµ Р‘РЎ
           ct.city_name,
           uc.ops_emp_plus + uc.ops_frl_plus as ops_all_plus, uc.ops_emp_null + uc.ops_frl_null as ops_all_null, uc.ops_emp_minus + uc.ops_frl_minus as ops_all_minus,
           uc.ops_emp_plus, uc.ops_emp_null, uc.ops_emp_minus,
@@ -867,7 +867,7 @@ class projects_offers
           LEFT JOIN professions p ON p.id=fl.spec
           LEFT JOIN country cr ON cr.id=fl.country
           LEFT JOIN city ct ON ct.id=fl.city
-          LEFT JOIN sbr_meta ON sbr_meta.user_id = fl.uid -- старые БС
+          LEFT JOIN sbr_meta ON sbr_meta.user_id = fl.uid -- СЃС‚Р°СЂС‹Рµ Р‘РЎ
           WHERE (po.project_id = ?i ) AND (po.user_id > 0) $and_blocked" . ( $bPermissions ? '' : ' AND fl.is_banned::integer = 0' ) . (($show_all)?'':" AND (po.only_4_cust='f')") . (($user_id == 0)?'':" AND (fl.uid<>" . $user_id . ")") . $filter . $order . $limit_str;
           
           $ret = $DB->rows($sql, $prj_id);
@@ -888,7 +888,7 @@ class projects_offers
             $count = $DB->val($sql, $prj_id);
             if ($count && $ret) {
                 foreach ($ret as &$value) {
-                  // Выбираем вложения.
+                  // Р’С‹Р±РёСЂР°РµРј РІР»РѕР¶РµРЅРёСЏ.
                   if ($value['id']) {
                     $sql = "SELECT a.id, a.prev_pict as prev, a.pict "
                          . "FROM projects_offers_attach AS a "
@@ -901,15 +901,15 @@ class projects_offers
 
         }
 
-         // временное решение для plproxy. очень не красиво, но пока не перенесется большая часть таблиц,
-		 // придется видимо оставить так
+         // РІСЂРµРјРµРЅРЅРѕРµ СЂРµС€РµРЅРёРµ РґР»СЏ plproxy. РѕС‡РµРЅСЊ РЅРµ РєСЂР°СЃРёРІРѕ, РЅРѕ РїРѕРєР° РЅРµ РїРµСЂРµРЅРµСЃРµС‚СЃСЏ Р±РѕР»СЊС€Р°СЏ С‡Р°СЃС‚СЊ С‚Р°Р±Р»РёС†,
+		 // РїСЂРёРґРµС‚СЃСЏ РІРёРґРёРјРѕ РѕСЃС‚Р°РІРёС‚СЊ С‚Р°Рє
 		 if (!empty($ret)) {
 			$teams = new teams;
 			$notes = new notes;
 			$t = $teams->teamsFavorites($ret[0]['p_user_id'], $error);
 			$n = $notes->GetNotes($ret[0]['p_user_id'], 0, $error);
 			for ($i=0; $i<count($ret); $i++) {
-				// избранные
+				// РёР·Р±СЂР°РЅРЅС‹Рµ
 				$ret[$i]['in_team'] = 0;
 				for ($j=0; $j<count($t); $j++) {
 					if ($t[$j]['uid'] == $ret[$i]['uid']) {
@@ -917,7 +917,7 @@ class projects_offers
 						break;
 					}
 				}
-				// заметки
+				// Р·Р°РјРµС‚РєРё
 				$ret[$i]['n_text'] = '';
 				for ($j=0; $j<count($n); $j++) {
 					if ($n[$j]['to_id'] == $ret[$i]['uid']) {
@@ -933,10 +933,10 @@ class projects_offers
     }
     
     /**
-     * Получение списка предложений по конкретному проекту (облегченная версия)
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° РїСЂРµРґР»РѕР¶РµРЅРёР№ РїРѕ РєРѕРЅРєСЂРµС‚РЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ (РѕР±Р»РµРіС‡РµРЅРЅР°СЏ РІРµСЂСЃРёСЏ)
      *
-     * @param integer $prj_id          id проекта
-     * @return array                   список предложений
+     * @param integer $prj_id          id РїСЂРѕРµРєС‚Р°
+     * @return array                   СЃРїРёСЃРѕРє РїСЂРµРґР»РѕР¶РµРЅРёР№
      */
     public function getPrjOffersLite($prj_id)
     {
@@ -949,12 +949,12 @@ class projects_offers
 
 
     /**
-     * Подсчет количества предложений
+     * РџРѕРґСЃС‡РµС‚ РєРѕР»РёС‡РµСЃС‚РІР° РїСЂРµРґР»РѕР¶РµРЅРёР№
      *
-     * @param integer $pid             id проекта
-     * @param string $type             тип подсчитываемых предложений
+     * @param integer $pid             id РїСЂРѕРµРєС‚Р°
+     * @param string $type             С‚РёРї РїРѕРґСЃС‡РёС‚С‹РІР°РµРјС‹С… РїСЂРµРґР»РѕР¶РµРЅРёР№
      *
-     * @return array                   количество предложений, количество новых сообщений
+     * @return array                   РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРµРґР»РѕР¶РµРЅРёР№, РєРѕР»РёС‡РµСЃС‚РІРѕ РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№
      */
     function CountPrjOffers($pid, $type = 'offers')
     {
@@ -994,7 +994,7 @@ class projects_offers
           case 'frl_refuse':
               $where .= " AND po.frl_refused";
               break;
-          case 'frl_not_refuse': // все ответы на проект кроме отказавшихся
+          case 'frl_not_refuse': // РІСЃРµ РѕС‚РІРµС‚С‹ РЅР° РїСЂРѕРµРєС‚ РєСЂРѕРјРµ РѕС‚РєР°Р·Р°РІС€РёС…СЃСЏ
               if (get_uid(0)) {
                 $where .= " AND (NOT po.frl_refused OR po.user_id = " . get_uid(0) . ")";
               } else {
@@ -1016,11 +1016,11 @@ class projects_offers
 
 
     /**
-     * Возвращает счетчики ответов фрилансера на проекты (см. таблицу projects_offers_summary)
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‡РµС‚С‡РёРєРё РѕС‚РІРµС‚РѕРІ С„СЂРёР»Р°РЅСЃРµСЂР° РЅР° РїСЂРѕРµРєС‚С‹ (СЃРј. С‚Р°Р±Р»РёС†Сѓ projects_offers_summary)
      *
-     * @param integer $fid             id фрилансера
+     * @param integer $fid             id С„СЂРёР»Р°РЅСЃРµСЂР°
      *
-     * @return mixed                   счетчики ответов или NULL в случае ошибки
+     * @return mixed                   СЃС‡РµС‚С‡РёРєРё РѕС‚РІРµС‚РѕРІ РёР»Рё NULL РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
      */
     function GetFrlOffersSummary($fid)
     {
@@ -1033,11 +1033,11 @@ class projects_offers
 
 
     /**
-     * Для меня "Проекты". Перемещает определенное предложение в корзину и обратно.
+     * Р”Р»СЏ РјРµРЅСЏ "РџСЂРѕРµРєС‚С‹". РџРµСЂРµРјРµС‰Р°РµС‚ РѕРїСЂРµРґРµР»РµРЅРЅРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ РІ РєРѕСЂР·РёРЅСѓ Рё РѕР±СЂР°С‚РЅРѕ.
      *
-     * @param integer $offer_id        id предложения
+     * @param integer $offer_id        id РїСЂРµРґР»РѕР¶РµРЅРёСЏ
      *
-     * @return integer                 -1 - в корзине, 1 - не в корзине, 0 - ошибка
+     * @return integer                 -1 - РІ РєРѕСЂР·РёРЅРµ, 1 - РЅРµ РІ РєРѕСЂР·РёРЅРµ, 0 - РѕС€РёР±РєР°
      */
     function WasteProj($offer_id, $user_id)
     {
@@ -1058,12 +1058,12 @@ class projects_offers
 
     
     /**
-     * Подсчет количества проектов в корзине, на которые отвечал фрилансер с разбиением
-     * по событиям (кандидат, исполнитель, отказ, и так далее),
+     * РџРѕРґСЃС‡РµС‚ РєРѕР»РёС‡РµСЃС‚РІР° РїСЂРѕРµРєС‚РѕРІ РІ РєРѕСЂР·РёРЅРµ, РЅР° РєРѕС‚РѕСЂС‹Рµ РѕС‚РІРµС‡Р°Р» С„СЂРёР»Р°РЅСЃРµСЂ СЃ СЂР°Р·Р±РёРµРЅРёРµРј
+     * РїРѕ СЃРѕР±С‹С‚РёСЏРј (РєР°РЅРґРёРґР°С‚, РёСЃРїРѕР»РЅРёС‚РµР»СЊ, РѕС‚РєР°Р·, Рё С‚Р°Рє РґР°Р»РµРµ),
      *
-     * @param integer $fid             id фрилансера
+     * @param integer $fid             id С„СЂРёР»Р°РЅСЃРµСЂР°
      *
-     * @return mixed                   массив данных или NULL в случае ошибки
+     * @return mixed                   РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР»Рё NULL РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
      */
     function GetFrlOffersWaste($fid)
     {
@@ -1102,14 +1102,14 @@ class projects_offers
 
 
     /**
-     * Возвращает определенное число последних проектов, на которые отвечал фрилансер
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕРїСЂРµРґРµР»РµРЅРЅРѕРµ С‡РёСЃР»Рѕ РїРѕСЃР»РµРґРЅРёС… РїСЂРѕРµРєС‚РѕРІ, РЅР° РєРѕС‚РѕСЂС‹Рµ РѕС‚РІРµС‡Р°Р» С„СЂРёР»Р°РЅСЃРµСЂ
      *
-     * @param integer $fid             id фрилансера
-     * @param string $mode             отвеченные фрилансеру
-     * @param string $from_date        начиная с даты
-     * @param string $limit            лимит сообщений
+     * @param integer $fid             id С„СЂРёР»Р°РЅСЃРµСЂР°
+     * @param string $mode             РѕС‚РІРµС‡РµРЅРЅС‹Рµ С„СЂРёР»Р°РЅСЃРµСЂСѓ
+     * @param string $from_date        РЅР°С‡РёРЅР°СЏ СЃ РґР°С‚С‹
+     * @param string $limit            Р»РёРјРёС‚ СЃРѕРѕР±С‰РµРЅРёР№
      *
-     * @return mixed                   массив данных или NULL в случае ошибки
+     * @return mixed                   РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР»Рё NULL РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
      */
     function GetFrlOffers($fid, $mode = 'marked', $from_date = NULL, $limit = 'ALL')
     {
@@ -1156,12 +1156,12 @@ class projects_offers
 
 
     /**
-     * Проверка наличия предложения конкретного пользователя по конкретному проекту
+     * РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ РєРѕРЅРєСЂРµС‚РЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ
      *
-     * @param integer $prj_id          id проекта
-     * @param integer $user_id         id пользователя
+     * @param integer $prj_id          id РїСЂРѕРµРєС‚Р°
+     * @param integer $user_id         id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      *
-     * @return boolean                 true, если предложение существует и false, если нет
+     * @return boolean                 true, РµСЃР»Рё РїСЂРµРґР»РѕР¶РµРЅРёРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ Рё false, РµСЃР»Рё РЅРµС‚
      */
     function OfferExist($prj_id, $user_id)
     {
@@ -1178,15 +1178,15 @@ class projects_offers
 
 
     /**
-     * Установка статуса "Кандидат" для автора данного предложения.
+     * РЈСЃС‚Р°РЅРѕРІРєР° СЃС‚Р°С‚СѓСЃР° "РљР°РЅРґРёРґР°С‚" РґР»СЏ Р°РІС‚РѕСЂР° РґР°РЅРЅРѕРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЏ.
      * 
      *
-     * @param integer $po_id           id предложения
-     * @param integer $prj_id          id проекта
-     * @param integer $user_id         id пользователя
-     * @param boolean $selected        выбрано (true) / не выбрано (false)
+     * @param integer $po_id           id РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+     * @param integer $prj_id          id РїСЂРѕРµРєС‚Р°
+     * @param integer $user_id         id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param boolean $selected        РІС‹Р±СЂР°РЅРѕ (true) / РЅРµ РІС‹Р±СЂР°РЅРѕ (false)
      *
-     * @return string                  сообщение об ошибке
+     * @return string                  СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
      */
     function SetSelected($po_id, $prj_id, $user_id, $selected = true)
     {
@@ -1208,15 +1208,15 @@ class projects_offers
 
 
     /**
-     * Установка статуса "Отказано" для автора данного предложения.
+     * РЈСЃС‚Р°РЅРѕРІРєР° СЃС‚Р°С‚СѓСЃР° "РћС‚РєР°Р·Р°РЅРѕ" РґР»СЏ Р°РІС‚РѕСЂР° РґР°РЅРЅРѕРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЏ.
      *
-     * @param integer $po_id           id предложения
-     * @param integer $prj_id          id проекта
-     * @param integer $user_id         id пользователя
-     * @param integer $po_reason       причина отказа (0 - некорректен, 1 - не подходят работы, 2 - не подходит цена, 3 - другая причина)
-     * @param boolean $selected        отказано (true) / не отказано (false)
+     * @param integer $po_id           id РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+     * @param integer $prj_id          id РїСЂРѕРµРєС‚Р°
+     * @param integer $user_id         id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param integer $po_reason       РїСЂРёС‡РёРЅР° РѕС‚РєР°Р·Р° (0 - РЅРµРєРѕСЂСЂРµРєС‚РµРЅ, 1 - РЅРµ РїРѕРґС…РѕРґСЏС‚ СЂР°Р±РѕС‚С‹, 2 - РЅРµ РїРѕРґС…РѕРґРёС‚ С†РµРЅР°, 3 - РґСЂСѓРіР°СЏ РїСЂРёС‡РёРЅР°)
+     * @param boolean $selected        РѕС‚РєР°Р·Р°РЅРѕ (true) / РЅРµ РѕС‚РєР°Р·Р°РЅРѕ (false)
      *
-     * @return string                  сообщение об ошибке
+     * @return string                  СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
      */
     function SetRefused($po_id, $prj_id, $user_id, $po_reason = 0, $refused = true)
     {
@@ -1239,11 +1239,11 @@ class projects_offers
 
 
     /**
-     * Подсчет количесва предложений данного пользователя.
+     * РџРѕРґСЃС‡РµС‚ РєРѕР»РёС‡РµСЃРІР° РїСЂРµРґР»РѕР¶РµРЅРёР№ РґР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
      *
-     * @param integer $frl_id          id фрилансера
+     * @param integer $frl_id          id С„СЂРёР»Р°РЅСЃРµСЂР°
      *
-     * @return array                   количество предложений
+     * @return array                   РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРµРґР»РѕР¶РµРЅРёР№
      */
     function CheckOffers($frl_id)
     {
@@ -1256,11 +1256,11 @@ class projects_offers
 
     
     /**
-     * Есть ли ответы фрилансера на данный проект
+     * Р•СЃС‚СЊ Р»Рё РѕС‚РІРµС‚С‹ С„СЂРёР»Р°РЅСЃРµСЂР° РЅР° РґР°РЅРЅС‹Р№ РїСЂРѕРµРєС‚
      * 
      * @global type $DB
-     * @param type $frl_id          id фрилансера
-     * @param type $project_id      id проекта
+     * @param type $frl_id          id С„СЂРёР»Р°РЅСЃРµСЂР°
+     * @param type $project_id      id РїСЂРѕРµРєС‚Р°
      * @return bool
      */
     function IsExistOffer($frl_id, $project_id)
@@ -1280,7 +1280,7 @@ class projects_offers
     
     
     /**
-     * Массив ID проектов на которые отвечал данный фрилансер
+     * РњР°СЃСЃРёРІ ID РїСЂРѕРµРєС‚РѕРІ РЅР° РєРѕС‚РѕСЂС‹Рµ РѕС‚РІРµС‡Р°Р» РґР°РЅРЅС‹Р№ С„СЂРёР»Р°РЅСЃРµСЂ
      * 
      * @global type $DB
      * @param type $frl_id
@@ -1301,7 +1301,7 @@ class projects_offers
 
     
     /**
-     * ID фрилансеров ответивших на какой-либо из проектов
+     * ID С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РѕС‚РІРµС‚РёРІС€РёС… РЅР° РєР°РєРѕР№-Р»РёР±Рѕ РёР· РїСЂРѕРµРєС‚РѕРІ
      * 
      * @global type $DB
      * @param type $project_ids
@@ -1323,12 +1323,12 @@ class projects_offers
 
 
     /**
-     * Подсчитывает количество предложений для работодателя по всем его проектам.
+     * РџРѕРґСЃС‡РёС‚С‹РІР°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРµРґР»РѕР¶РµРЅРёР№ РґР»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ РїРѕ РІСЃРµРј РµРіРѕ РїСЂРѕРµРєС‚Р°Рј.
      *
-     * @param integer $user_id         id работодателя
-     * @param boolean $new             признак подсчета новых (true) или всех (false) предложений
+     * @param integer $user_id         id СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ
+     * @param boolean $new             РїСЂРёР·РЅР°Рє РїРѕРґСЃС‡РµС‚Р° РЅРѕРІС‹С… (true) РёР»Рё РІСЃРµС… (false) РїСЂРµРґР»РѕР¶РµРЅРёР№
      *
-     * @return integer                 количество предложений
+     * @return integer                 РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРµРґР»РѕР¶РµРЅРёР№
      */
     function CountOffersForEmp($user_id, $new = false)
     {
@@ -1348,9 +1348,9 @@ class projects_offers
     }
     
     /**
-     * возвращает количество новых событий в проектах и конкурсах
+     * РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РЅРѕРІС‹С… СЃРѕР±С‹С‚РёР№ РІ РїСЂРѕРµРєС‚Р°С… Рё РєРѕРЅРєСѓСЂСЃР°С…
      * @global type $DB
-     * @param type $user_id id работодателя
+     * @param type $user_id id СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ
      * @return type 
      */
     function CountNewPrjEventsForEmp($user_id)
@@ -1373,7 +1373,7 @@ class projects_offers
                 AND po.po_emp_read = 'f'  AND po.is_deleted = 'f'";
         $count = $DB->val($sql, $user_id);
 
-        // если производился поиск по новым событиям, то сохраняем результат в мемкеш
+        // РµСЃР»Рё РїСЂРѕРёР·РІРѕРґРёР»СЃСЏ РїРѕРёСЃРє РїРѕ РЅРѕРІС‹Рј СЃРѕР±С‹С‚РёСЏРј, С‚Рѕ СЃРѕС…СЂР°РЅСЏРµРј СЂРµР·СѓР»СЊС‚Р°С‚ РІ РјРµРјРєРµС€
         if (!$DB->error) {
             $mem->set('prjEventsCnt' . $user_id, $count, 1800);
         }        
@@ -1381,11 +1381,11 @@ class projects_offers
     }    
     
     /**
-     * Подсчитывает кол-во проектов в которых произошли какие-нибудь события для работодателя
+     * РџРѕРґСЃС‡РёС‚С‹РІР°РµС‚ РєРѕР»-РІРѕ РїСЂРѕРµРєС‚РѕРІ РІ РєРѕС‚РѕСЂС‹С… РїСЂРѕРёР·РѕС€Р»Рё РєР°РєРёРµ-РЅРёР±СѓРґСЊ СЃРѕР±С‹С‚РёСЏ РґР»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ
      *
-     * @param integer $user_id           id работодателя
+     * @param integer $user_id           id СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ
      *
-     * @return integer                 1 - события произошли, 0 - события не произошли
+     * @return integer                 1 - СЃРѕР±С‹С‚РёСЏ РїСЂРѕРёР·РѕС€Р»Рё, 0 - СЃРѕР±С‹С‚РёСЏ РЅРµ РїСЂРѕРёР·РѕС€Р»Рё
      */  
     function CheckNewEmpEvents($user_id) {
         global $DB;
@@ -1403,12 +1403,12 @@ class projects_offers
     
 
     /**
-     * Проверяет, есть ли хоть в одном проекте фрилансера непросмотренные события (отказ/добавление в кандидаты/исполнители)
+     * РџСЂРѕРІРµСЂСЏРµС‚, РµСЃС‚СЊ Р»Рё С…РѕС‚СЊ РІ РѕРґРЅРѕРј РїСЂРѕРµРєС‚Рµ С„СЂРёР»Р°РЅСЃРµСЂР° РЅРµРїСЂРѕСЃРјРѕС‚СЂРµРЅРЅС‹Рµ СЃРѕР±С‹С‚РёСЏ (РѕС‚РєР°Р·/РґРѕР±Р°РІР»РµРЅРёРµ РІ РєР°РЅРґРёРґР°С‚С‹/РёСЃРїРѕР»РЅРёС‚РµР»Рё)
      *
-     * @param integer $user_id           id фрилансера
-     * @param boolean $waster            учитывать проекты в корзине?
+     * @param integer $user_id           id С„СЂРёР»Р°РЅСЃРµСЂР°
+     * @param boolean $waster            СѓС‡РёС‚С‹РІР°С‚СЊ РїСЂРѕРµРєС‚С‹ РІ РєРѕСЂР·РёРЅРµ?
      *
-     * @return integer                 1:да, 0:нет
+     * @return integer                 1:РґР°, 0:РЅРµС‚
      */    
     function CheckNewFrlEvents($user_id, $waste = true) {
         global $DB;
@@ -1418,10 +1418,10 @@ class projects_offers
     }
     
     /**
-     * Возвращает количество новых событий в проектах фрилансера
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РЅРѕРІС‹С… СЃРѕР±С‹С‚РёР№ РІ РїСЂРѕРµРєС‚Р°С… С„СЂРёР»Р°РЅСЃРµСЂР°
      *
-     * @param integer $user_id           id фрилансера
-     * @param boolean $waster            учитывать проекты в корзине?
+     * @param integer $user_id           id С„СЂРёР»Р°РЅСЃРµСЂР°
+     * @param boolean $waster            СѓС‡РёС‚С‹РІР°С‚СЊ РїСЂРѕРµРєС‚С‹ РІ РєРѕСЂР·РёРЅРµ?
      *
      * @return integer                 
      */    
@@ -1453,11 +1453,11 @@ class projects_offers
     
 
     /**
-     * Сброс флага событий у всех проектов конкретного фрилансера
+     * РЎР±СЂРѕСЃ С„Р»Р°РіР° СЃРѕР±С‹С‚РёР№ Сѓ РІСЃРµС… РїСЂРѕРµРєС‚РѕРІ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ С„СЂРёР»Р°РЅСЃРµСЂР°
      *
-     * @param integer $user_id         id фрилансера
+     * @param integer $user_id         id С„СЂРёР»Р°РЅСЃРµСЂР°
      *
-     * @return string                  сообщение об ошибке, в случае неуспеха
+     * @return string                  СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ, РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */    
     function ResetAllEvents($frl_id)
     {
@@ -1476,15 +1476,15 @@ class projects_offers
     }
 
     /**
-     * Элемент построения навигационной панели страниц для предложений проекта
+     * Р­Р»РµРјРµРЅС‚ РїРѕСЃС‚СЂРѕРµРЅРёСЏ РЅР°РІРёРіР°С†РёРѕРЅРЅРѕР№ РїР°РЅРµР»Рё СЃС‚СЂР°РЅРёС† РґР»СЏ РїСЂРµРґР»РѕР¶РµРЅРёР№ РїСЂРѕРµРєС‚Р°
      * @see public function getPages()
      *
-     * @param integer $iCurrent        номер текущей страницы
-     * @param integer $iStart          номер страницы, с которой начинаем построение навигации
-     * @param integer $iAll            количество страниц
-     * @param string $sHref            ссылка
+     * @param integer $iCurrent        РЅРѕРјРµСЂ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹
+     * @param integer $iStart          РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹, СЃ РєРѕС‚РѕСЂРѕР№ РЅР°С‡РёРЅР°РµРј РїРѕСЃС‚СЂРѕРµРЅРёРµ РЅР°РІРёРіР°С†РёРё
+     * @param integer $iAll            РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂР°РЅРёС†
+     * @param string $sHref            СЃСЃС‹Р»РєР°
      *
-     * @return string                  HTML-код
+     * @return string                  HTML-РєРѕРґ
      */    
     private function _buildNavigation($iCurrent, $iStart, $iAll, $sHref) {
         $sNavigation = '';
@@ -1501,39 +1501,39 @@ class projects_offers
 
 
     /**
-     * Генерация навигационной панели страниц для предложений проекта
+     * Р“РµРЅРµСЂР°С†РёСЏ РЅР°РІРёРіР°С†РёРѕРЅРЅРѕР№ РїР°РЅРµР»Рё СЃС‚СЂР°РЅРёС† РґР»СЏ РїСЂРµРґР»РѕР¶РµРЅРёР№ РїСЂРѕРµРєС‚Р°
      *
-     * @param integer $prj_id          id проекта
-     * @param integer $page            номер текущей страницы
-     * @param integer $pages           количество страниц
-     * @param string $po_sort          сортировка внутри проекта (для генерации ссылок)
-     * @param integer $po_type         тип сообщений внутри проекта (для генерации ссылок)
+     * @param integer $prj_id          id РїСЂРѕРµРєС‚Р°
+     * @param integer $page            РЅРѕРјРµСЂ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹
+     * @param integer $pages           РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂР°РЅРёС†
+     * @param string $po_sort          СЃРѕСЂС‚РёСЂРѕРІРєР° РІРЅСѓС‚СЂРё РїСЂРѕРµРєС‚Р° (РґР»СЏ РіРµРЅРµСЂР°С†РёРё СЃСЃС‹Р»РѕРє)
+     * @param integer $po_type         С‚РёРї СЃРѕРѕР±С‰РµРЅРёР№ РІРЅСѓС‚СЂРё РїСЂРѕРµРєС‚Р° (РґР»СЏ РіРµРЅРµСЂР°С†РёРё СЃСЃС‹Р»РѕРє)
      *
-     * @return string                  HTML-код
+     * @return string                  HTML-РєРѕРґ
      */    
     public function getPages($prj_id, $page, $pages, $po_sort = null, $po_type = null){
         $sBox = "<div id=\"fl2_paginator\">";
 
-        // Страницы
+        // РЎС‚СЂР°РЅРёС†С‹
         if ($pages > 1){
 
             $sBox .= '<table width="100%"><tr>';
             if ($page == 1){
-                $sBox .= "<td>&nbsp;</td>";//<div id=\"nav_pre_not_active\"><span>предыдущая</span></div></td>";
+                $sBox .= "<td>&nbsp;</td>";//<div id=\"nav_pre_not_active\"><span>РїСЂРµРґС‹РґСѓС‰Р°СЏ</span></div></td>";
             }else {
                 $sBox .= "<input type=\"hidden\" id=\"pre_navigation_link\" value=\"/projects/index.php?pid=" . $prj_id . ((isset($po_sort)) ? "&amp;sort=" . $po_sort : "") . ((isset($po_type)) ? "&amp;type=" . $po_type : "") . "&amp;page=" . ($page-1)."\">";
-                $sBox .= "<td><div id=\"nav_pre_not_active\"><a href=\"/projects/index.php?pid=" . $prj_id . ((isset($po_sort)) ? "&amp;sort=" . $po_sort : "") . ((isset($po_type)) ? "&amp;type=" . $po_type : "") . "&amp;page=" . ($page-1) . "\" style=\"color: #717171; \">предыдущая</a></div></td>";
+                $sBox .= "<td><div id=\"nav_pre_not_active\"><a href=\"/projects/index.php?pid=" . $prj_id . ((isset($po_sort)) ? "&amp;sort=" . $po_sort : "") . ((isset($po_type)) ? "&amp;type=" . $po_type : "") . "&amp;page=" . ($page-1) . "\" style=\"color: #717171; \">РїСЂРµРґС‹РґСѓС‰Р°СЏ</a></div></td>";
             }
             $sBox .= '<td width="94%" align="center">';
         
-            //в начале
+            //РІ РЅР°С‡Р°Р»Рµ
             if ($page <= 10) {
                 $sBox .= $this->_buildNavigation($page, 1, ($pages>10)?($page+4):$pages, "/projects/index.php?pid=" . $prj_id . ((isset($po_sort)) ? "&amp;sort=" . $po_sort : "") . ((isset($po_type)) ? "&amp;type=" . $po_type : "") . "&amp;page=");
                 if ($pages > 10) {
                     $sBox .= '<span style="padding-right: 5px">...</span>';
                 }
             }
-            //в конце
+            //РІ РєРѕРЅС†Рµ
             elseif ($page >= $pages-10) {
                 $sBox .= '<span style="padding-right: 5px">...</span>';
                 $sBox .= $this->_buildNavigation($page, $page-5, $pages, "/projects/index.php?pid=" . $prj_id . ((isset($po_sort)) ? "&amp;sort=" . $po_sort : "") . ((isset($po_type)) ? "&amp;type=" . $po_type : "") . "&amp;page=");
@@ -1546,30 +1546,30 @@ class projects_offers
 
             $sBox .= '</td>';
             if ($page == $pages){
-                $sBox .= "<td>&nbsp;</td>";//<div id=\"nav_next_not_active\"><span>следующая</span></div></td>";
+                $sBox .= "<td>&nbsp;</td>";//<div id=\"nav_next_not_active\"><span>СЃР»РµРґСѓСЋС‰Р°СЏ</span></div></td>";
             }else {
                 $sBox .= "<input type=\"hidden\" id=\"next_navigation_link\" value=\"/projects/index.php?pid=" . $prj_id . ((isset($po_sort)) ? "&amp;sort=" . $po_sort : "") . ((isset($po_type)) ? "&amp;type=" . $po_type : "") . "&amp;page=" . ($page+1)."\">";
-                $sBox .= "<td><div id=\"nav_next_not_active\"><a href=\"/projects/index.php?pid=" . $prj_id . ((isset($po_sort)) ? "&amp;sort=" . $po_sort : "") . ((isset($po_type)) ? "&amp;type=" . $po_type : "") . "&amp;page=" . ($page+1)."\" style=\"color: #717171\">следующая</a></div></td>";
+                $sBox .= "<td><div id=\"nav_next_not_active\"><a href=\"/projects/index.php?pid=" . $prj_id . ((isset($po_sort)) ? "&amp;sort=" . $po_sort : "") . ((isset($po_type)) ? "&amp;type=" . $po_type : "") . "&amp;page=" . ($page+1)."\" style=\"color: #717171\">СЃР»РµРґСѓСЋС‰Р°СЏ</a></div></td>";
             }
             $sBox .= '</tr>';
             $sBox .= '</table>';
 
-        } // Страницы закончились
+        } // РЎС‚СЂР°РЅРёС†С‹ Р·Р°РєРѕРЅС‡РёР»РёСЃСЊ
         $sBox .= "</div>";
         return $sBox;
     }
     
     /**
-     * Выборка информации по новым ответам к проектам для отправки уведомлений.
+     * Р’С‹Р±РѕСЂРєР° РёРЅС„РѕСЂРјР°С†РёРё РїРѕ РЅРѕРІС‹Рј РѕС‚РІРµС‚Р°Рј Рє РїСЂРѕРµРєС‚Р°Рј РґР»СЏ РѕС‚РїСЂР°РІРєРё СѓРІРµРґРѕРјР»РµРЅРёР№.
      * 
-     * После изменения этой функции, необходимо перезапустить консьюмер /classes/pgq/mail_cons.php на сервере.
-     * Если нет возможности, то сообщить админу.
+     * РџРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ СЌС‚РѕР№ С„СѓРЅРєС†РёРё, РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ РєРѕРЅСЃСЊСЋРјРµСЂ /classes/pgq/mail_cons.php РЅР° СЃРµСЂРІРµСЂРµ.
+     * Р•СЃР»Рё РЅРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё, С‚Рѕ СЃРѕРѕР±С‰РёС‚СЊ Р°РґРјРёРЅСѓ.
      * @see pmail::NewPrjOffer()
      * @see PGQMailSimpleConsumer::finish_batch()
      *
-     * @param string|array  $offer_ids      Идентификаторы ответов
-     * @param resource      $connect        Соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return array|mixed                  Если есть ответы к проектам то возвращает массив их, если нет то NULL
+     * @param string|array  $offer_ids      РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РѕС‚РІРµС‚РѕРІ
+     * @param resource      $connect        РЎРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return array|mixed                  Р•СЃР»Рё РµСЃС‚СЊ РѕС‚РІРµС‚С‹ Рє РїСЂРѕРµРєС‚Р°Рј С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ РёС…, РµСЃР»Рё РЅРµС‚ С‚Рѕ NULL
      */
     function getNewProjectOffers($offer_ids, $connect=NULL) {
         global $DB;
@@ -1596,16 +1596,16 @@ class projects_offers
     }
     
     /**
-     * Выборка информации по новым ответам к проектам для отправки уведомлений.
+     * Р’С‹Р±РѕСЂРєР° РёРЅС„РѕСЂРјР°С†РёРё РїРѕ РЅРѕРІС‹Рј РѕС‚РІРµС‚Р°Рј Рє РїСЂРѕРµРєС‚Р°Рј РґР»СЏ РѕС‚РїСЂР°РІРєРё СѓРІРµРґРѕРјР»РµРЅРёР№.
      * 
-     * После изменения этой функции, необходимо перезапустить консьюмер /classes/pgq/mail_cons.php на сервере.
-     * Если нет возможности, то сообщить админу.
+     * РџРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ СЌС‚РѕР№ С„СѓРЅРєС†РёРё, РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ РєРѕРЅСЃСЊСЋРјРµСЂ /classes/pgq/mail_cons.php РЅР° СЃРµСЂРІРµСЂРµ.
+     * Р•СЃР»Рё РЅРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё, С‚Рѕ СЃРѕРѕР±С‰РёС‚СЊ Р°РґРјРёРЅСѓ.
      * @see pmail::NewPrjMessageOnOffer()
      * @see PGQMailSimpleConsumer::finish_batch()
      *
-     * @param string|array  $dialog_ids     Идентификаторы ответов
-     * @param resource      $connect        Соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return array|mixed                  Если есть ответы к проектам то возвращает массив их, если нет то NULL
+     * @param string|array  $dialog_ids     РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РѕС‚РІРµС‚РѕРІ
+     * @param resource      $connect        РЎРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return array|mixed                  Р•СЃР»Рё РµСЃС‚СЊ РѕС‚РІРµС‚С‹ Рє РїСЂРѕРµРєС‚Р°Рј С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ РёС…, РµСЃР»Рё РЅРµС‚ С‚Рѕ NULL
      */
     function getNewPrjMessageOnOffer($dialog_ids, $connect=NULL) {
         global $DB;
@@ -1637,16 +1637,16 @@ class projects_offers
 
 
     /**
-     * Выборка информации по отказам к проектам для отправки уведомлений.
+     * Р’С‹Р±РѕСЂРєР° РёРЅС„РѕСЂРјР°С†РёРё РїРѕ РѕС‚РєР°Р·Р°Рј Рє РїСЂРѕРµРєС‚Р°Рј РґР»СЏ РѕС‚РїСЂР°РІРєРё СѓРІРµРґРѕРјР»РµРЅРёР№.
      *
-     * После изменения этой функции, необходимо перезапустить консьюмер /classes/pgq/mail_cons.php на сервере.
-     * Если нет возможности, то сообщить админу.
+     * РџРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ СЌС‚РѕР№ С„СѓРЅРєС†РёРё, РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ РєРѕРЅСЃСЊСЋРјРµСЂ /classes/pgq/mail_cons.php РЅР° СЃРµСЂРІРµСЂРµ.
+     * Р•СЃР»Рё РЅРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё, С‚Рѕ СЃРѕРѕР±С‰РёС‚СЊ Р°РґРјРёРЅСѓ.
      * @see pmail::ProjectsOfferRefused()
      * @see PGQMailSimpleConsumer::finish_batch()
      *
-     * @param string|array  $offer_ids      Идентификаторы ответов
-     * @param resource      $connect        Соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return array|mixed                  Если есть ответы к проектам то возвращает массив их, если нет то NULL
+     * @param string|array  $offer_ids      РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РѕС‚РІРµС‚РѕРІ
+     * @param resource      $connect        РЎРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return array|mixed                  Р•СЃР»Рё РµСЃС‚СЊ РѕС‚РІРµС‚С‹ Рє РїСЂРѕРµРєС‚Р°Рј С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ РёС…, РµСЃР»Рё РЅРµС‚ С‚Рѕ NULL
      */
     function getRefusedProjectOffers($offer_ids, $connect=NULL) {
         global $DB;
@@ -1673,16 +1673,16 @@ class projects_offers
 
 
     /**
-     * Выборка информации по кандидатам к проектам для отправки уведомлений.
+     * Р’С‹Р±РѕСЂРєР° РёРЅС„РѕСЂРјР°С†РёРё РїРѕ РєР°РЅРґРёРґР°С‚Р°Рј Рє РїСЂРѕРµРєС‚Р°Рј РґР»СЏ РѕС‚РїСЂР°РІРєРё СѓРІРµРґРѕРјР»РµРЅРёР№.
      *
-     * После изменения этой функции, необходимо перезапустить консьюмер /classes/pgq/mail_cons.php на сервере.
-     * Если нет возможности, то сообщить админу.
+     * РџРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ СЌС‚РѕР№ С„СѓРЅРєС†РёРё, РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ РєРѕРЅСЃСЊСЋРјРµСЂ /classes/pgq/mail_cons.php РЅР° СЃРµСЂРІРµСЂРµ.
+     * Р•СЃР»Рё РЅРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё, С‚Рѕ СЃРѕРѕР±С‰РёС‚СЊ Р°РґРјРёРЅСѓ.
      * @see pmail::ProjectsOfferSelected()
      * @see PGQMailSimpleConsumer::finish_batch()
      *
-     * @param string|array  $offer_ids      Идентификаторы ответов
-     * @param resource      $connect        Соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return array|mixed                  Если есть ответы к проектам то возвращает массив их, если нет то NULL
+     * @param string|array  $offer_ids      РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РѕС‚РІРµС‚РѕРІ
+     * @param resource      $connect        РЎРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return array|mixed                  Р•СЃР»Рё РµСЃС‚СЊ РѕС‚РІРµС‚С‹ Рє РїСЂРѕРµРєС‚Р°Рј С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ РёС…, РµСЃР»Рё РЅРµС‚ С‚Рѕ NULL
      */
     function getSelectedProjectOffers($offer_ids, $connect=NULL) {
         global $DB;
@@ -1708,10 +1708,10 @@ class projects_offers
 	
     
 	/**
-     * Возвращает список предложенией проекта
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РїСЂРµРґР»РѕР¶РµРЅРёРµР№ РїСЂРѕРµРєС‚Р°
      *
-     * @param  integer     $prj_id      Идентификатор проекта
-     * @return array|mixed              Список предложений
+     * @param  integer     $prj_id      РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїСЂРѕРµРєС‚Р°
+     * @return array|mixed              РЎРїРёСЃРѕРє РїСЂРµРґР»РѕР¶РµРЅРёР№
      */
 	function OffersEmpNewMessages($prj_id) {
         global $DB;
@@ -1720,11 +1720,11 @@ class projects_offers
 	}
 	
     /**
-     * Возвращает Ид проекта через ИД предложения по проекту
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РРґ РїСЂРѕРµРєС‚Р° С‡РµСЂРµР· РР” РїСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РїСЂРѕРµРєС‚Сѓ
      * 
-     * @global object $DB          Подключение к БД
+     * @global object $DB          РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”
      * 
-     * @param integer $offer_id    Ид предложения фрилансера
+     * @param integer $offer_id    РРґ РїСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂР°
      * @return integer     
      */
     function getProjectIDByOfferID($offer_id) {
@@ -1735,7 +1735,7 @@ class projects_offers
     
     
     /**
-     * Получить ID предложения по ID проекта и юзера владельца предложения
+     * РџРѕР»СѓС‡РёС‚СЊ ID РїСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ ID РїСЂРѕРµРєС‚Р° Рё СЋР·РµСЂР° РІР»Р°РґРµР»СЊС†Р° РїСЂРµРґР»РѕР¶РµРЅРёСЏ
      * 
      * @global type $DB
      * @param type $project_id
@@ -1764,11 +1764,11 @@ class projects_offers
 
 
     /**
-     * Возвращает статус проекта (блокирован или нет)
-     * Возвращает true false или 0 если предложение не существует 
-     * @param  integer $offer_id    Ид предложения (если false то данные получаются по двум другим аргументам)
-     * @param  integer $frl_id      Ид фрилансера
-     * @param  integer $prj_id      Ид предложения фрилансера
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚Р°С‚СѓСЃ РїСЂРѕРµРєС‚Р° (Р±Р»РѕРєРёСЂРѕРІР°РЅ РёР»Рё РЅРµС‚)
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ true false РёР»Рё 0 РµСЃР»Рё РїСЂРµРґР»РѕР¶РµРЅРёРµ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ 
+     * @param  integer $offer_id    РРґ РїСЂРµРґР»РѕР¶РµРЅРёСЏ (РµСЃР»Рё false С‚Рѕ РґР°РЅРЅС‹Рµ РїРѕР»СѓС‡Р°СЋС‚СЃСЏ РїРѕ РґРІСѓРј РґСЂСѓРіРёРј Р°СЂРіСѓРјРµРЅС‚Р°Рј)
+     * @param  integer $frl_id      РРґ С„СЂРёР»Р°РЅСЃРµСЂР°
+     * @param  integer $prj_id      РРґ РїСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂР°
      * @return mixed bool|integer   true | false | 0     
      */
     function isOfferBlocked($offer_id, $frl_id = null, $prj_id = null) {
@@ -1807,15 +1807,15 @@ class projects_offers
     }
         
     /**
-     * Проверяет по специализациям, может ли текущий пользователь ответить на проект
+     * РџСЂРѕРІРµСЂСЏРµС‚ РїРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏРј, РјРѕР¶РµС‚ Р»Рё С‚РµРєСѓС‰РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РѕС‚РІРµС‚РёС‚СЊ РЅР° РїСЂРѕРµРєС‚
      * 
-     * @param int $projec_id    ид проекта
+     * @param int $projec_id    РёРґ РїСЂРѕРµРєС‚Р°
      * @return boolean      
      */
     public static function offerSpecIsAllowed($projec_id) {
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/professions.php");
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/projects.php");
-        // ПРО отвечают без ограничений
+        // РџР Рћ РѕС‚РІРµС‡Р°СЋС‚ Р±РµР· РѕРіСЂР°РЅРёС‡РµРЅРёР№
         if (is_pro()) {
             return true;
         }
@@ -1837,7 +1837,7 @@ class projects_offers
         if ($user_spec) {
             $user_spec = array_merge($user_spec, professions::GetMirroredProfs(professions::GetProfessionOrigin(implode(',', $user_spec))));
             $user_spec = array_unique($user_spec);
-            //@todo запехать в один запрос
+            //@todo Р·Р°РїРµС…Р°С‚СЊ РІ РѕРґРёРЅ Р·Р°РїСЂРѕСЃ
             foreach ($user_spec as $spec) {
                 $prof_group[$spec] = professions::GetProfField($spec, 'prof_group');
             }
@@ -1845,7 +1845,7 @@ class projects_offers
 
         foreach ($spec_project as $specs) {
                 if (is_array($prof_group) && in_array($specs['category_id'], $prof_group)) {
-                    $is_send_offers = true; // Разрашаем оставлять отзыв
+                    $is_send_offers = true; // Р Р°Р·СЂР°С€Р°РµРј РѕСЃС‚Р°РІР»СЏС‚СЊ РѕС‚Р·С‹РІ
                     break;
                 }
         }

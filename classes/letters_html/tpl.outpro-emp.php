@@ -12,7 +12,7 @@
     <tr>
         <td  bgcolor="#ffffff" width="20"></td>
         <td  width="20"></td>
-        <td width="515" align="left" ><font color="#444444" size="3" face="tahoma,sans-serif">Завтра заканчивается действие вашего аккаунта PRO, который дает множество преимуществ своим обладателям.</font></td>
+        <td width="515" align="left" ><font color="#444444" size="3" face="tahoma,sans-serif">Р—Р°РІС‚СЂР° Р·Р°РєР°РЅС‡РёРІР°РµС‚СЃСЏ РґРµР№СЃС‚РІРёРµ РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р° PRO, РєРѕС‚РѕСЂС‹Р№ РґР°РµС‚ РјРЅРѕР¶РµСЃС‚РІРѕ РїСЂРµРёРјСѓС‰РµСЃС‚РІ СЃРІРѕРёРј РѕР±Р»Р°РґР°С‚РµР»СЏРј.</font></td>
         <td width="105" valign="top" align="left"><a href="<?= $GLOBALS['host']?>/payed-emp/?<?= $UTM;?>" target="_blank"><img src="cid:<?= $cid1; ?>" width="105" height="65" alt="PRO" title="PRO" border="0"></a></td>
         <td  width="20"></td>
         <td  bgcolor="#ffffff" width="20"></td>
@@ -27,7 +27,7 @@
     <tr>
         <td  bgcolor="#ffffff" width="20"></td>
         <td  width="20"></td>
-        <td  align="left"><font color="#444444" size="3" face="tahoma,sans-serif">Без PRO вы не сможете видеть контакты всех пользователей сайта, а значит, вам будет немного труднее подбирать фрилансеров на свои проекты.</font></td>
+        <td  align="left"><font color="#444444" size="3" face="tahoma,sans-serif">Р‘РµР· PRO РІС‹ РЅРµ СЃРјРѕР¶РµС‚Рµ РІРёРґРµС‚СЊ РєРѕРЅС‚Р°РєС‚С‹ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃР°Р№С‚Р°, Р° Р·РЅР°С‡РёС‚, РІР°Рј Р±СѓРґРµС‚ РЅРµРјРЅРѕРіРѕ С‚СЂСѓРґРЅРµРµ РїРѕРґР±РёСЂР°С‚СЊ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РЅР° СЃРІРѕРё РїСЂРѕРµРєС‚С‹.</font></td>
         <td  width="20"></td>
         <td  bgcolor="#ffffff" width="20"></td>
   </tr>
@@ -66,7 +66,7 @@
     <tr>
         <td  bgcolor="#ffffff" width="20"></td>
         <td  width="20"></td>
-        <td  align="left" ><font color="#444444" size="3" face="tahoma,sans-serif">Кроме того, у вас не будет возможности указать дополнительную информацию о себе и своей компании, а также пользоваться скидками на дополнительные услуги.</font></td>
+        <td  align="left" ><font color="#444444" size="3" face="tahoma,sans-serif">РљСЂРѕРјРµ С‚РѕРіРѕ, Сѓ РІР°СЃ РЅРµ Р±СѓРґРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё СѓРєР°Р·Р°С‚СЊ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃРµР±Рµ Рё СЃРІРѕРµР№ РєРѕРјРїР°РЅРёРё, Р° С‚Р°РєР¶Рµ РїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ СЃРєРёРґРєР°РјРё РЅР° РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СѓСЃР»СѓРіРё.</font></td>
         <td ></td>
         <td width="20"></td>
         <td  bgcolor="#ffffff" width="20"></td>
@@ -82,7 +82,7 @@
     <tr>
         <td  bgcolor="#ffffff" width="20"></td>
         <td  width="20"></td>
-        <td  align="left" ><font color="#444444" size="3" face="tahoma,sans-serif">Напоминаем что, переписка пользователей с начальным аккаунтом попадает на модерацию, и при попытке передачи контактной информации будет блокироваться.</font></td>
+        <td  align="left" ><font color="#444444" size="3" face="tahoma,sans-serif">РќР°РїРѕРјРёРЅР°РµРј С‡С‚Рѕ, РїРµСЂРµРїРёСЃРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ РЅР°С‡Р°Р»СЊРЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј РїРѕРїР°РґР°РµС‚ РЅР° РјРѕРґРµСЂР°С†РёСЋ, Рё РїСЂРё РїРѕРїС‹С‚РєРµ РїРµСЂРµРґР°С‡Рё РєРѕРЅС‚Р°РєС‚РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё Р±СѓРґРµС‚ Р±Р»РѕРєРёСЂРѕРІР°С‚СЊСЃСЏ.</font></td>
         <td ></td>
         <td width="20"></td>
         <td  bgcolor="#ffffff" width="20"></td>
@@ -98,7 +98,7 @@
     <tr>
         <td  bgcolor="#ffffff" width="20"></td>
         <td  width="20"></td>
-        <td align="left"><a href="<?= $GLOBALS['host']?>/payed-emp/?<?= $UTM;?>" target="_blank"><img src="cid:<?= $cid3; ?>" width="197" height="36" border="0" alt="Продлить аккаунт PRO" title="Продлить аккаунт PRO"></a></td>
+        <td align="left"><a href="<?= $GLOBALS['host']?>/payed-emp/?<?= $UTM;?>" target="_blank"><img src="cid:<?= $cid3; ?>" width="197" height="36" border="0" alt="РџСЂРѕРґР»РёС‚СЊ Р°РєРєР°СѓРЅС‚ PRO" title="РџСЂРѕРґР»РёС‚СЊ Р°РєРєР°СѓРЅС‚ PRO"></a></td>
         <td ></td>
         <td width="20"></td>
         <td  bgcolor="#ffffff" width="20"></td>

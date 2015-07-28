@@ -23,7 +23,7 @@ $xajax->printJavascript('/xajax/');
 </script>
 <script type="text/javascript">
 <? 
-// восстанавливаем массивы с данными, если была сессия
+// РІРѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµРј РјР°СЃСЃРёРІС‹ СЃ РґР°РЅРЅС‹РјРё, РµСЃР»Рё Р±С‹Р»Р° СЃРµСЃСЃРёСЏ
 
 if (!empty($params['locations'])) {
 	$tmp = array();
@@ -58,14 +58,14 @@ if (!empty($params['professions'])) {
 </script>
 <div class="b-menu b-menu_crumbs">
     <ul class="b-menu__list">
-        <li class="b-menu__item"><a href="/service/" class="b-menu__link">Все услуги</a>&nbsp;&rarr;&nbsp;</li>
+        <li class="b-menu__item"><a href="/service/" class="b-menu__link">Р’СЃРµ СѓСЃР»СѓРіРё</a>&nbsp;&rarr;&nbsp;</li>
     </ul>
 </div>
-<h1 class="b-page__title">Рассылка по каталогу</h1>
+<h1 class="b-page__title">Р Р°СЃСЃС‹Р»РєР° РїРѕ РєР°С‚Р°Р»РѕРіСѓ</h1>
 <div class="b-menu b-menu_line">
     <ul class="b-menu__list">
-        <li class="b-menu__item<?= $fromSearch ? '' : ' b-menu__item_active' ?>"><a href="/masssending/" class="b-menu__link">Простая рассылка</a></li>
-        <li class="b-menu__item b-menu__item_last<?= $fromSearch ? ' b-menu__item_active' : '' ?>"><a href="/masssending/?from_search=1" class="b-menu__link">Из поиска</a></li>
+        <li class="b-menu__item<?= $fromSearch ? '' : ' b-menu__item_active' ?>"><a href="/masssending/" class="b-menu__link">РџСЂРѕСЃС‚Р°СЏ СЂР°СЃСЃС‹Р»РєР°</a></li>
+        <li class="b-menu__item b-menu__item_last<?= $fromSearch ? ' b-menu__item_active' : '' ?>"><a href="/masssending/?from_search=1" class="b-menu__link">РР· РїРѕРёСЃРєР°</a></li>
     </ul>
 </div>
 <div class="masssending-block c">

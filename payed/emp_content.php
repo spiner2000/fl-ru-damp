@@ -2,7 +2,7 @@
 	require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/employer.php");
 	$user = new employer();
 
-    // Изменяем авто продление PRO, если нужно
+    // РР·РјРµРЅСЏРµРј Р°РІС‚Рѕ РїСЂРѕРґР»РµРЅРёРµ PRO, РµСЃР»Рё РЅСѓР¶РЅРѕ
     if(strtolower($_GET['pro_auto_prolong'])=='on') {
         $user->setPROAutoProlong('on',get_uid());
     }
@@ -15,7 +15,7 @@
 	$account = new account();
 	$ok = $account->GetInfo($_SESSION['uid'], true);
 
-    $u_is_pro_auto_prolong = $user->GetField($uid, $e, 'is_pro_auto_prolong', false); // Включено ли у юзера автоматическое продление PRO
+    $u_is_pro_auto_prolong = $user->GetField($uid, $e, 'is_pro_auto_prolong', false); // Р’РєР»СЋС‡РµРЅРѕ Р»Рё Сѓ СЋР·РµСЂР° Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРµ РїСЂРѕРґР»РµРЅРёРµ PRO
 ?>
 <script type="text/javascript">
 tr = true;
@@ -31,7 +31,7 @@ tr = true;
 			}else{
 				document.getElementById('buy').disabled = false;document.getElementById('error').className = 'error';
 			}
-		document.getElementById('it').innerHTML='Всего к оплате: <span>' + v + '</span> FM';
+		document.getElementById('it').innerHTML='Р’СЃРµРіРѕ Рє РѕРїР»Р°С‚Рµ: <span>' + v + '</span> FM';
 	
 		return (true);
 	}
@@ -40,9 +40,9 @@ tr = true;
 
 
 
-					<h2>Услуги</h2>
+					<h2>РЈСЃР»СѓРіРё</h2>
 					<div class="promo-page c">
-						<h3 class="emp-payed-title">Станьте привлекательнее для<br />серьезных исполнителей</h3>
+						<h3 class="emp-payed-title">РЎС‚Р°РЅСЊС‚Рµ РїСЂРёРІР»РµРєР°С‚РµР»СЊРЅРµРµ РґР»СЏ<br />СЃРµСЂСЊРµР·РЅС‹С… РёСЃРїРѕР»РЅРёС‚РµР»РµР№</h3>
 						<div class="emp-payed-left-col">
 							<div class="emp-promo">
 								<b class="b1"></b>
@@ -50,7 +50,7 @@ tr = true;
 								<div class="emp-promo-in c">
 									<img src="../images/emp-payed-promo1.png" alt="" class="ep-left" />
 									<div class="ep-txt">
-										<strong>Бесплатное выделение вашего проекта</strong> в общей ленте. Такую вакансию обязательно заметят в общей ленте.
+										<strong>Р‘РµСЃРїР»Р°С‚РЅРѕРµ РІС‹РґРµР»РµРЅРёРµ РІР°С€РµРіРѕ РїСЂРѕРµРєС‚Р°</strong> РІ РѕР±С‰РµР№ Р»РµРЅС‚Рµ. РўР°РєСѓСЋ РІР°РєР°РЅСЃРёСЋ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ Р·Р°РјРµС‚СЏС‚ РІ РѕР±С‰РµР№ Р»РµРЅС‚Рµ.
 									</div>
 								</div>
 								<b class="b2"></b>
@@ -62,7 +62,7 @@ tr = true;
 								<div class="emp-promo-in c">
 									<img src="../images/emp-payed-promo2.png" alt="" class="ep-right" />
 									<div class="ep-txt2">
-										Получите возможность <strong>указать больше информации о себе</strong> в каталоге &ndash; разместив логотип и описание компании.
+										РџРѕР»СѓС‡РёС‚Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ <strong>СѓРєР°Р·Р°С‚СЊ Р±РѕР»СЊС€Рµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃРµР±Рµ</strong> РІ РєР°С‚Р°Р»РѕРіРµ &ndash; СЂР°Р·РјРµСЃС‚РёРІ Р»РѕРіРѕС‚РёРї Рё РѕРїРёСЃР°РЅРёРµ РєРѕРјРїР°РЅРёРё.
 									</div>
 								</div>
 								<b class="b2"></b>
@@ -71,26 +71,26 @@ tr = true;
 						</div>
 						<div class="emp-payed-right-col">
 						
-							<p>Работодатель c аккаунтом PRO — активный участник проекта, размещающий большой объем заказов на сайте, внимательно относящийся к собственному имиджу и качеству выполнения своих заданий.</p>
+							<p>Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ c Р°РєРєР°СѓРЅС‚РѕРј PRO вЂ” Р°РєС‚РёРІРЅС‹Р№ СѓС‡Р°СЃС‚РЅРёРє РїСЂРѕРµРєС‚Р°, СЂР°Р·РјРµС‰Р°СЋС‰РёР№ Р±РѕР»СЊС€РѕР№ РѕР±СЉРµРј Р·Р°РєР°Р·РѕРІ РЅР° СЃР°Р№С‚Рµ, РІРЅРёРјР°С‚РµР»СЊРЅРѕ РѕС‚РЅРѕСЃСЏС‰РёР№СЃСЏ Рє СЃРѕР±СЃС‚РІРµРЅРЅРѕРјСѓ РёРјРёРґР¶Сѓ Рё РєР°С‡РµСЃС‚РІСѓ РІС‹РїРѕР»РЅРµРЅРёСЏ СЃРІРѕРёС… Р·Р°РґР°РЅРёР№.</p>
 
-							<p>Серьезный подход работодателя к своему аккаунту позволяет <nobr>фрилансеру</nobr> быть более уверенным в справедливой оплате своего труда, а также в отношении к выполненной работе.</p>
+							<p>РЎРµСЂСЊРµР·РЅС‹Р№ РїРѕРґС…РѕРґ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ Рє СЃРІРѕРµРјСѓ Р°РєРєР°СѓРЅС‚Сѓ РїРѕР·РІРѕР»СЏРµС‚ <nobr>С„СЂРёР»Р°РЅСЃРµСЂСѓ</nobr> Р±С‹С‚СЊ Р±РѕР»РµРµ СѓРІРµСЂРµРЅРЅС‹Рј РІ СЃРїСЂР°РІРµРґР»РёРІРѕР№ РѕРїР»Р°С‚Рµ СЃРІРѕРµРіРѕ С‚СЂСѓРґР°, Р° С‚Р°РєР¶Рµ РІ РѕС‚РЅРѕС€РµРЅРёРё Рє РІС‹РїРѕР»РЅРµРЅРЅРѕР№ СЂР°Р±РѕС‚Рµ.</p>
 
-							<p>Серьезный заказчик требует серьезного подхода и поэтому работодатель с аккаунтом PRO вправе расcчитывать на серьезный подход к делу со стороны исполнителя.</p>
+							<p>РЎРµСЂСЊРµР·РЅС‹Р№ Р·Р°РєР°Р·С‡РёРє С‚СЂРµР±СѓРµС‚ СЃРµСЂСЊРµР·РЅРѕРіРѕ РїРѕРґС…РѕРґР° Рё РїРѕСЌС‚РѕРјСѓ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ СЃ Р°РєРєР°СѓРЅС‚РѕРј PRO РІРїСЂР°РІРµ СЂР°СЃcС‡РёС‚С‹РІР°С‚СЊ РЅР° СЃРµСЂСЊРµР·РЅС‹Р№ РїРѕРґС…РѕРґ Рє РґРµР»Сѓ СЃРѕ СЃС‚РѕСЂРѕРЅС‹ РёСЃРїРѕР»РЅРёС‚РµР»СЏ.</p>
 
-							<p>В первую очередь Free-lance.ru рассматривает все конфликтные ситуации с участием работодателей с аккаунтом PRO и разбирает их особенно тщательно.</p>
+							<p>Р’ РїРµСЂРІСѓСЋ РѕС‡РµСЂРµРґСЊ Free-lance.ru СЂР°СЃСЃРјР°С‚СЂРёРІР°РµС‚ РІСЃРµ РєРѕРЅС„Р»РёРєС‚РЅС‹Рµ СЃРёС‚СѓР°С†РёРё СЃ СѓС‡Р°СЃС‚РёРµРј СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ СЃ Р°РєРєР°СѓРЅС‚РѕРј PRO Рё СЂР°Р·Р±РёСЂР°РµС‚ РёС… РѕСЃРѕР±РµРЅРЅРѕ С‚С‰Р°С‚РµР»СЊРЅРѕ.</p>
 
-							<p>При возникновении конфликтной ситуации, пожалуйста, обратитесь к нам по адресу <a href="mailto:info@free-lance.ru">info@free-lance.ru</a>, мы обязательно поможем вам.</p>
+							<p>РџСЂРё РІРѕР·РЅРёРєРЅРѕРІРµРЅРёРё РєРѕРЅС„Р»РёРєС‚РЅРѕР№ СЃРёС‚СѓР°С†РёРё, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕР±СЂР°С‚РёС‚РµСЃСЊ Рє РЅР°Рј РїРѕ Р°РґСЂРµСЃСѓ <a href="mailto:info@free-lance.ru">info@free-lance.ru</a>, РјС‹ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РїРѕРјРѕР¶РµРј РІР°Рј.</p>
 
-							<p><span>*Все вышесказанное не означает, что среди тех, кто не пользуется платными сервисами, нет достойных работодателей. Удачной работы и приятного дня.</span></p>
+							<p><span>*Р’СЃРµ РІС‹С€РµСЃРєР°Р·Р°РЅРЅРѕРµ РЅРµ РѕР·РЅР°С‡Р°РµС‚, С‡С‚Рѕ СЃСЂРµРґРё С‚РµС…, РєС‚Рѕ РЅРµ РїРѕР»СЊР·СѓРµС‚СЃСЏ РїР»Р°С‚РЅС‹РјРё СЃРµСЂРІРёСЃР°РјРё, РЅРµС‚ РґРѕСЃС‚РѕР№РЅС‹С… СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№. РЈРґР°С‡РЅРѕР№ СЂР°Р±РѕС‚С‹ Рё РїСЂРёСЏС‚РЅРѕРіРѕ РґРЅСЏ.</span></p>
 							<div class="pay-block">
                                 <form action="./buy.php" method="post" name="frmbuy" id="frmbuy">
                                 <div>
-								<div class="pay-inpt">Количество месяцев: <input type="text" size="3"  name="mnth" id="mnth" value="<?=floor($account->sum/10)?>" onKeyUp="return (chang(this.value));" /></div>
-								<div class="pay-inpt" id="it">Всего к оплате: <span>10</span> FM</div>
-                                <div id="error" class="error <? if ($error) { ?>vis<? } ?>"><?=view_error3("Недостаточно средств. В данный момент на счету ".$account->sum."&nbsp;FM<br /> <a href=\"/bill/\" class=\"blue\">Пополнить счет</a>")?><br /></div>
+								<div class="pay-inpt">РљРѕР»РёС‡РµСЃС‚РІРѕ РјРµСЃСЏС†РµРІ: <input type="text" size="3"  name="mnth" id="mnth" value="<?=floor($account->sum/10)?>" onKeyUp="return (chang(this.value));" /></div>
+								<div class="pay-inpt" id="it">Р’СЃРµРіРѕ Рє РѕРїР»Р°С‚Рµ: <span>10</span> FM</div>
+                                <div id="error" class="error <? if ($error) { ?>vis<? } ?>"><?=view_error3("РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ. Р’ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РЅР° СЃС‡РµС‚Сѓ ".$account->sum."&nbsp;FM<br /> <a href=\"/bill/\" class=\"blue\">РџРѕРїРѕР»РЅРёС‚СЊ СЃС‡РµС‚</a>")?><br /></div>
 								<div>
-                                    <a href="javascript:void(0);" class="btn btn-blue" name="buy" id="buy" onClick="$('frmbuy').submit();"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Оплатить</span></span></span></a>
-                                    &nbsp;<a href="/bill/webmoney/" class="btn btn-green"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Получить бесплатно</span></span></span></a></div>
+                                    <a href="javascript:void(0);" class="btn btn-blue" name="buy" id="buy" onClick="$('frmbuy').submit();"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РћРїР»Р°С‚РёС‚СЊ</span></span></span></a>
+                                    &nbsp;<a href="/bill/webmoney/" class="btn btn-green"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РџРѕР»СѓС‡РёС‚СЊ Р±РµСЃРїР»Р°С‚РЅРѕ</span></span></span></a></div>
 
                 				<input type="hidden" name="transaction_id" value="<?=$transaction_id?>" />
                 				<input type="hidden" name="action" value="buy" />
@@ -101,13 +101,13 @@ tr = true;
                             <? if($user->is_pro=='t') {?>
 							<div class="pay-block">
                                 <a name="pro_autoprolong"></a>
-								<h4>Автопродление&nbsp;&nbsp;<span class="b-icon b-icon__pro b-icon__pro_e8"></span></h4>
-								<p>Теперь вам не нужно следить за сроком действия<br />аккаунта PRO.<br />Если у вас есть деньги на счету, то включив эту опцию,<br />ежемесячно с вашего счета будет списываться 10FM.</p>
+								<h4>РђРІС‚РѕРїСЂРѕРґР»РµРЅРёРµ&nbsp;&nbsp;<span class="b-icon b-icon__pro b-icon__pro_e8"></span></h4>
+								<p>РўРµРїРµСЂСЊ РІР°Рј РЅРµ РЅСѓР¶РЅРѕ СЃР»РµРґРёС‚СЊ Р·Р° СЃСЂРѕРєРѕРј РґРµР№СЃС‚РІРёСЏ<br />Р°РєРєР°СѓРЅС‚Р° PRO.<br />Р•СЃР»Рё Сѓ РІР°СЃ РµСЃС‚СЊ РґРµРЅСЊРіРё РЅР° СЃС‡РµС‚Сѓ, С‚Рѕ РІРєР»СЋС‡РёРІ СЌС‚Сѓ РѕРїС†РёСЋ,<br />РµР¶РµРјРµСЃСЏС‡РЅРѕ СЃ РІР°С€РµРіРѕ СЃС‡РµС‚Р° Р±СѓРґРµС‚ СЃРїРёСЃС‹РІР°С‚СЊСЃСЏ 10FM.</p>
 								<div>
                                     <? if($u_is_pro_auto_prolong=='t') { ?>
-                                        <a href="javascript:void(0);" class="btn btn-pink" onClick="location='/payed/?pro_auto_prolong=off#pro_autoprolong';"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Отключить</span></span></span></a>
+                                        <a href="javascript:void(0);" class="btn btn-pink" onClick="location='/payed/?pro_auto_prolong=off#pro_autoprolong';"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РћС‚РєР»СЋС‡РёС‚СЊ</span></span></span></a>
                                     <? } else { ?>
-                                        <a href="javascript:void(0);" class="btn btn-green" onClick="location='/payed/?pro_auto_prolong=on#pro_autoprolong';"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Включить</span></span></span></a>
+                                        <a href="javascript:void(0);" class="btn btn-green" onClick="location='/payed/?pro_auto_prolong=on#pro_autoprolong';"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Р’РєР»СЋС‡РёС‚СЊ</span></span></span></a>
                                     <? } ?>
                                 </div>
 							</div>

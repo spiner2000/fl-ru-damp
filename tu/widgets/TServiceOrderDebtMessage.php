@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/tu/models/TServiceOrderModel.php');
 /**
  * Class TServiceOrderDebtMessage
  *
- * Âèäæåò - Ïîêàçûâàåò ñîîáùåíèå î âîçìîæíîé áëîêèðîâêè ÒÓ èç-çà íå ïîãàøåíèÿ äîëãà ËÑ
+ * Ð’Ð¸Ð´Ð¶ÐµÑ‚ - ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÑ‚ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾Ð¹ Ð±Ð»Ð¾ÐºÐ¸Ñ€Ð¾Ð²ÐºÐ¸ Ð¢Ð£ Ð¸Ð·-Ð·Ð° Ð½Ðµ Ð¿Ð¾Ð³Ð°ÑˆÐµÐ½Ð¸Ñ Ð´Ð¾Ð»Ð³Ð° Ð›Ð¡
  */
 class TServiceOrderDebtMessage extends CWidget 
 {
@@ -22,7 +22,7 @@ class TServiceOrderDebtMessage extends CWidget
             $debt_info = TServiceOrderModel::model()->isDebt($this->user_id);
             if(!$debt_info) return;
             
-            //ñîáèðàåì øàáëîí
+            //ÑÐ¾Ð±Ð¸Ñ€Ð°ÐµÐ¼ ÑˆÐ°Ð±Ð»Ð¾Ð½
             $this->render('t-service-order-debt-message', array(
                 'debt_info' => $debt_info
             ));

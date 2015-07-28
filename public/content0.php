@@ -1,19 +1,19 @@
-<h1 class="b-page__title">Публикация проекта</h1>
+<h1 class="b-page__title">РџСѓР±Р»РёРєР°С†РёСЏ РїСЂРѕРµРєС‚Р°</h1>
 											<table class="b-layout__table" cellpadding="0" cellspacing="0" border="0">
 												<tr class="b-layout__tr">
 													<td class="b-layout__left b-layout__left_padright_20">
-														<a class="btn btn-blue2 " href="/public/?step=1&kind=1&red=" style="display:block"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Опубликовать проект</span></span></span></a>    
+														<a class="btn btn-blue2 " href="/public/?step=1&kind=1&red=" style="display:block"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ РїСЂРѕРµРєС‚</span></span></span></a>    
 													</td>
 													<td class="b-layout__right b-layout__right_width_72ps">
-														<div class="b-layout__txt b-layout__txt_padbot_40">Самый быстрый способ найти исполнителя &mdash; опубликовать проект. Ваше объявление моментально появляется на главной странице сайта, где его видят тысячи фрилансеров. Существует два типа проектов &mdash; платные и бесплатные.</div>
+														<div class="b-layout__txt b-layout__txt_padbot_40">РЎР°РјС‹Р№ Р±С‹СЃС‚СЂС‹Р№ СЃРїРѕСЃРѕР± РЅР°Р№С‚Рё РёСЃРїРѕР»РЅРёС‚РµР»СЏ &mdash; РѕРїСѓР±Р»РёРєРѕРІР°С‚СЊ РїСЂРѕРµРєС‚. Р’Р°С€Рµ РѕР±СЉСЏРІР»РµРЅРёРµ РјРѕРјРµРЅС‚Р°Р»СЊРЅРѕ РїРѕСЏРІР»СЏРµС‚СЃСЏ РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ СЃР°Р№С‚Р°, РіРґРµ РµРіРѕ РІРёРґСЏС‚ С‚С‹СЃСЏС‡Рё С„СЂРёР»Р°РЅСЃРµСЂРѕРІ. РЎСѓС‰РµСЃС‚РІСѓРµС‚ РґРІР° С‚РёРїР° РїСЂРѕРµРєС‚РѕРІ &mdash; РїР»Р°С‚РЅС‹Рµ Рё Р±РµСЃРїР»Р°С‚РЅС‹Рµ.</div>
 													</td>
 												</tr>
 												<tr class="b-layout__tr">
 													<td class="b-layout__left b-layout__left_padright_20">
-														<a class="btn btn-blue2 " href="/public/?step=1&kind=7&red=" style="display:block"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Опубликовать конкурс <?= (new_projects::getKonkursPrice())?> рублей</span></span></span></a>
+														<a class="btn btn-blue2 " href="/public/?step=1&kind=7&red=" style="display:block"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ РєРѕРЅРєСѓСЂСЃ <?= (new_projects::getKonkursPrice())?> СЂСѓР±Р»РµР№</span></span></span></a>
 													</td>
 													<td class="b-layout__right b-layout__right_width_72ps">
-            									<div class="b-layout__txt b-layout__txt_padbot_20">Работодатели! Если вы хотите выбирать из десятков готовых вариантов решения вашей задачи &mdash; опубликуйте конкурс.</div>
+            									<div class="b-layout__txt b-layout__txt_padbot_20">Р Р°Р±РѕС‚РѕРґР°С‚РµР»Рё! Р•СЃР»Рё РІС‹ С…РѕС‚РёС‚Рµ РІС‹Р±РёСЂР°С‚СЊ РёР· РґРµСЃСЏС‚РєРѕРІ РіРѕС‚РѕРІС‹С… РІР°СЂРёР°РЅС‚РѕРІ СЂРµС€РµРЅРёСЏ РІР°С€РµР№ Р·Р°РґР°С‡Рё &mdash; РѕРїСѓР±Р»РёРєСѓР№С‚Рµ РєРѕРЅРєСѓСЂСЃ.</div>
 													</td>
 												</tr>
 												<tr class="b-layout__tr">
@@ -22,27 +22,27 @@
                                                             <?php if(!is_pro()) { ?>
 															<div class="b-promo__note">
 																	<div class="b-promo__note-inner">
-																			<h3 class="b-promo__h3">С <span class="b-promo__pro b-promo__pro_emp"></span>&#160;дешевле</h3>
-																			<p class="b-promo__p b-promo__p_fontsize_13"><a href="/payed-emp/" class="b-promo__link">Купите профессиональный аккаунт</a></p>
-																			<p class="b-promo__p b-promo__p_fontsize_13">и публикация конкурса будет стоить всего <span class="b-promo__txt b-promo__txt_bold b-promo__txt_color_fd6c30">3000 рублей</span>.</p>
+																			<h3 class="b-promo__h3">РЎ <span class="b-promo__pro b-promo__pro_emp"></span>&#160;РґРµС€РµРІР»Рµ</h3>
+																			<p class="b-promo__p b-promo__p_fontsize_13"><a href="/payed-emp/" class="b-promo__link">РљСѓРїРёС‚Рµ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚</a></p>
+																			<p class="b-promo__p b-promo__p_fontsize_13">Рё РїСѓР±Р»РёРєР°С†РёСЏ РєРѕРЅРєСѓСЂСЃР° Р±СѓРґРµС‚ СЃС‚РѕРёС‚СЊ РІСЃРµРіРѕ <span class="b-promo__txt b-promo__txt_bold b-promo__txt_color_fd6c30">3000 СЂСѓР±Р»РµР№</span>.</p>
 																	</div>
 															</div>
                                                             <?php }//if?>
 														</div>				
 													</td>
 													<td class="b-layout__right b-layout__right_width_72ps">
-                        			<div class="b-layout__txt b-layout__txt_padbot_20">Публикация конкурса стоит <?= (new_projects::getKonkursPrice())?> рублей. После публикации ваш проект появится на вкладке &laquo;Конкурсы&raquo;, а фрилансеры предложат варианты решения вашего задания. Вам останется лишь выбрать победителя, оплатить его работу и закрыть конкурс.</div>
-                    					<div class="b-layout__txt b-layout__txt_padbot_40">Рекламодатели! Если вы хотите рассказать о новой услуге или продукте и получить от фрилансеров нестандартные идеи для развития вашего брэнда &mdash; проведите конкурс. Стоимость и условия проведения Вы можете узнать <a class="b-promo__link" target="_blank" href="/press/adv/">здесь</a>.</div>
+                        			<div class="b-layout__txt b-layout__txt_padbot_20">РџСѓР±Р»РёРєР°С†РёСЏ РєРѕРЅРєСѓСЂСЃР° СЃС‚РѕРёС‚ <?= (new_projects::getKonkursPrice())?> СЂСѓР±Р»РµР№. РџРѕСЃР»Рµ РїСѓР±Р»РёРєР°С†РёРё РІР°С€ РїСЂРѕРµРєС‚ РїРѕСЏРІРёС‚СЃСЏ РЅР° РІРєР»Р°РґРєРµ &laquo;РљРѕРЅРєСѓСЂСЃС‹&raquo;, Р° С„СЂРёР»Р°РЅСЃРµСЂС‹ РїСЂРµРґР»РѕР¶Р°С‚ РІР°СЂРёР°РЅС‚С‹ СЂРµС€РµРЅРёСЏ РІР°С€РµРіРѕ Р·Р°РґР°РЅРёСЏ. Р’Р°Рј РѕСЃС‚Р°РЅРµС‚СЃСЏ Р»РёС€СЊ РІС‹Р±СЂР°С‚СЊ РїРѕР±РµРґРёС‚РµР»СЏ, РѕРїР»Р°С‚РёС‚СЊ РµРіРѕ СЂР°Р±РѕС‚Сѓ Рё Р·Р°РєСЂС‹С‚СЊ РєРѕРЅРєСѓСЂСЃ.</div>
+                    					<div class="b-layout__txt b-layout__txt_padbot_40">Р РµРєР»Р°РјРѕРґР°С‚РµР»Рё! Р•СЃР»Рё РІС‹ С…РѕС‚РёС‚Рµ СЂР°СЃСЃРєР°Р·Р°С‚СЊ Рѕ РЅРѕРІРѕР№ СѓСЃР»СѓРіРµ РёР»Рё РїСЂРѕРґСѓРєС‚Рµ Рё РїРѕР»СѓС‡РёС‚СЊ РѕС‚ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РЅРµСЃС‚Р°РЅРґР°СЂС‚РЅС‹Рµ РёРґРµРё РґР»СЏ СЂР°Р·РІРёС‚РёСЏ РІР°С€РµРіРѕ Р±СЂСЌРЅРґР° &mdash; РїСЂРѕРІРµРґРёС‚Рµ РєРѕРЅРєСѓСЂСЃ. РЎС‚РѕРёРјРѕСЃС‚СЊ Рё СѓСЃР»РѕРІРёСЏ РїСЂРѕРІРµРґРµРЅРёСЏ Р’С‹ РјРѕР¶РµС‚Рµ СѓР·РЅР°С‚СЊ <a class="b-promo__link" target="_blank" href="/press/adv/">Р·РґРµСЃСЊ</a>.</div>
 													</td>
 												</tr>
 												<tr class="b-layout__tr">
 													<td class="b-layout__left b-layout__left_padright_20">
-														<a class="btn btn-green2" href="/masssending/" style="display:block"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Рассылка по каталогу</span></span></span></a>
+														<a class="btn btn-green2" href="/masssending/" style="display:block"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Р Р°СЃСЃС‹Р»РєР° РїРѕ РєР°С‚Р°Р»РѕРіСѓ</span></span></span></a>
 													
 													</td>
 													<td class="b-layout__right b-layout__right_width_72ps">
-                    					<div class="b-layout__txt">Вы можете обратиться напрямую ко всем фрилансерам из каталога, и они вас услышат.</div>
-                    					<div class="b-layout__txt">Фрилансеры получат ваше сообщение в виде личного письма.</div>
+                    					<div class="b-layout__txt">Р’С‹ РјРѕР¶РµС‚Рµ РѕР±СЂР°С‚РёС‚СЊСЃСЏ РЅР°РїСЂСЏРјСѓСЋ РєРѕ РІСЃРµРј С„СЂРёР»Р°РЅСЃРµСЂР°Рј РёР· РєР°С‚Р°Р»РѕРіР°, Рё РѕРЅРё РІР°СЃ СѓСЃР»С‹С€Р°С‚.</div>
+                    					<div class="b-layout__txt">Р¤СЂРёР»Р°РЅСЃРµСЂС‹ РїРѕР»СѓС‡Р°С‚ РІР°С€Рµ СЃРѕРѕР±С‰РµРЅРёРµ РІ РІРёРґРµ Р»РёС‡РЅРѕРіРѕ РїРёСЃСЊРјР°.</div>
 													</td>
 												</tr>
 											</table>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Шаблон поумолчанию popup-окна "быстрой" оплаты
+ * РЁР°Р±Р»РѕРЅ РїРѕСѓРјРѕР»С‡Р°РЅРёСЋ popup-РѕРєРЅР° "Р±С‹СЃС‚СЂРѕР№" РѕРїР»Р°С‚С‹
  */
 ?>
 <div id="<?= @$popup_id ?>" data-quick-payment="<?=$unic_name ?>" class="b-shadow b-shadow_block b-shadow_center b-shadow_width_520 <?= (!@$is_show) ? 'b-shadow_hide' : '' ?> b-shadow__quick quick_payment_tservicebindup">
@@ -20,10 +20,10 @@
             <input type="hidden" name="tservice_text_db_id" value="<?=$tservices_cur?>" />
                             
             <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20">
-                Услуга <strong>"<?=$tservices_cur_text?>"</strong>
+                РЈСЃР»СѓРіР° <strong>"<?=$tservices_cur_text?>"</strong>
             </div>
         </form>
-        <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20">Сумма и способ оплаты</div>
+        <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20">РЎСѓРјРјР° Рё СЃРїРѕСЃРѕР± РѕРїР»Р°С‚С‹</div>
 
         <div class="b-layout <?php //b-layout_waiting  ?>">
             <div data-quick-payment-error-screen="true" class="b-fon b-fon_margbot_20 b-fon_marglr_20 b-layout_hide">
@@ -36,14 +36,14 @@
             <?=$promo_code?>
 
             <div class="b-layout__txt b-layout__txt_padleft_20 b-layout__txt_padbot_20 b-layout__txt_fontsize_11">
-                Сумма к оплате: <span class="b-layout__bold"><span class="quick_sum_pay"><?= $ammount ?></span> руб.</span><br/>
-                <span id="pay_buffer" class="b-layout_hide">Она будет списана с вашей буферной суммы (<span id="buffer_sum"><?=$buffer?></span> руб.)</span>
-                <span class="pay_none">Она будет списана с личного счета, на нем <strong class="ac_sum"><?= $ac_sum ?></strong> руб.</span>
+                РЎСѓРјРјР° Рє РѕРїР»Р°С‚Рµ: <span class="b-layout__bold"><span class="quick_sum_pay"><?= $ammount ?></span> СЂСѓР±.</span><br/>
+                <span id="pay_buffer" class="b-layout_hide">РћРЅР° Р±СѓРґРµС‚ СЃРїРёСЃР°РЅР° СЃ РІР°С€РµР№ Р±СѓС„РµСЂРЅРѕР№ СЃСѓРјРјС‹ (<span id="buffer_sum"><?=$buffer?></span> СЂСѓР±.)</span>
+                <span class="pay_none">РћРЅР° Р±СѓРґРµС‚ СЃРїРёСЃР°РЅР° СЃ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р°, РЅР° РЅРµРј <strong class="ac_sum"><?= $ac_sum ?></strong> СЂСѓР±.</span>
                 <span class="pay_part">
-                    Часть суммы (<?= $ac_sum ?> руб.) есть на Вашем личном счете.<br />
-                    Остаток (<span class="quick_sum_part"></span> руб.) вам нужно оплатить одним из способов:
+                    Р§Р°СЃС‚СЊ СЃСѓРјРјС‹ (<?= $ac_sum ?> СЂСѓР±.) РµСЃС‚СЊ РЅР° Р’Р°С€РµРј Р»РёС‡РЅРѕРј СЃС‡РµС‚Рµ.<br />
+                    РћСЃС‚Р°С‚РѕРє (<span class="quick_sum_part"></span> СЂСѓР±.) РІР°Рј РЅСѓР¶РЅРѕ РѕРїР»Р°С‚РёС‚СЊ РѕРґРЅРёРј РёР· СЃРїРѕСЃРѕР±РѕРІ:
                 </span>
-                <span class="pay_full">Ее вы можете оплатить одним из способов:</span>
+                <span class="pay_full">Р•Рµ РІС‹ РјРѕР¶РµС‚Рµ РѕРїР»Р°С‚РёС‚СЊ РѕРґРЅРёРј РёР· СЃРїРѕСЃРѕР±РѕРІ:</span>
             </div>
             <?php
             if (!empty($payments)):
@@ -82,14 +82,14 @@
                 <div class="b-buttons b-buttons_padleft_20 b-buttons_padbot_10">
                     <a class="b-button b-button_flat b-button_flat_green" 
                        href="javascript:void(0);" 
-                       data-quick-payment-type="<?= $payment_account ?>">Оплатить <span class="quick_sum_pay_acc"></span> руб.</a> </div>
+                       data-quick-payment-type="<?= $payment_account ?>">РћРїР»Р°С‚РёС‚СЊ <span class="quick_sum_pay_acc"></span> СЂСѓР±.</a> </div>
             </div>
                 
             <div class="b-buttons b-layout_hide payment_buffer">
                 <div class="b-buttons b-buttons_padleft_20 b-buttons_padbot_10">
                     <a class="b-button b-button_flat b-button_flat_green" 
                        href="javascript:void(0);" 
-                       data-quick-payment-type="buffer">Поднять</a>
+                       data-quick-payment-type="buffer">РџРѕРґРЅСЏС‚СЊ</a>
                 </div>
             </div>
         </div>

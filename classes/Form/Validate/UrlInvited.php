@@ -6,21 +6,21 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/guest/models/GuestInviteModel.php");
 /**
  * Class Form_Validate_UrlInvited
  * 
- * Âàëèäàòîð ïðîâåðÿåò íàëè÷èå ññûëêè óêàçàííîãî òèïà 
+ * Ð’Ð°Ð»Ð¸Ð´Ð°Ñ‚Ð¾Ñ€ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÑÐµÑ‚ Ð½Ð°Ð»Ð¸Ñ‡Ð¸Ðµ ÑÑÑ‹Ð»ÐºÐ¸ ÑƒÐºÐ°Ð·Ð°Ð½Ð½Ð¾Ð³Ð¾ Ñ‚Ð¸Ð¿Ð° 
  */
 class Form_Validate_UrlInvited extends Zend_Validate_Abstract 
 {
     const ERROR_USER_INVITED  = 'invited';
     
     protected $_messageTemplates = array(
-        self::ERROR_USER_INVITED => 'Ïî %s ðàíåå óæå áûëî îòïðàâëåíî ïðèãëàøåíèå.'
+        self::ERROR_USER_INVITED => 'ÐŸÐ¾ %s Ñ€Ð°Ð½ÐµÐµ ÑƒÐ¶Ðµ Ð±Ñ‹Ð»Ð¾ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¾ Ð¿Ñ€Ð¸Ð³Ð»Ð°ÑˆÐµÐ½Ð¸Ðµ.'
     );
     
-    //@todo: ðåàëèçàöèÿ íå ïî ïðàâèëàì Zend_Validation
-    //ñì NoUserExists èëè ëþáîé çåíä âàëèäàòîð
+    //@todo: Ñ€ÐµÐ°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ Ð½Ðµ Ð¿Ð¾ Ð¿Ñ€Ð°Ð²Ð¸Ð»Ð°Ð¼ Zend_Validation
+    //ÑÐ¼ NoUserExists Ð¸Ð»Ð¸ Ð»ÑŽÐ±Ð¾Ð¹ Ð·ÐµÐ½Ð´ Ð²Ð°Ð»Ð¸Ð´Ð°Ñ‚Ð¾Ñ€
     protected $message_type = array(
-        GuestConst::TYPE_VACANCY => 'äàííîé âàêàíñèè',
-        GuestConst::TYPE_PROJECT => 'äàííîìó ïðîåêòó'
+        GuestConst::TYPE_VACANCY => 'Ð´Ð°Ð½Ð½Ð¾Ð¹ Ð²Ð°ÐºÐ°Ð½ÑÐ¸Ð¸',
+        GuestConst::TYPE_PROJECT => 'Ð´Ð°Ð½Ð½Ð¾Ð¼Ñƒ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ'
     );
     
     protected $type;

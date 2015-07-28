@@ -1,7 +1,7 @@
 <?
 
 /**
- * ïîäêëþ÷àåì ôàéë ñ îñíîâíûìè ôóíêöèÿìè
+ * Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼ Ñ„Ð°Ð¹Ð» Ñ Ð¾ÑÐ½Ð¾Ð²Ð½Ñ‹Ð¼Ð¸ Ñ„ÑƒÐ½ÐºÑ†Ð¸ÑÐ¼Ð¸
  *
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
@@ -9,9 +9,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 class docs_sections {
 
     /**
-     * Âçÿòü êàòåãîðèè äîêóìåíòîâ
+     * Ð’Ð·ÑÑ‚ÑŒ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð¾Ð²
      *
-     * @return array Äàííûå âûáîðêè
+     * @return array Ð”Ð°Ð½Ð½Ñ‹Ðµ Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐ¸
      */
     public static function getSections() {
         global $DB;
@@ -27,10 +27,10 @@ class docs_sections {
     }
 
     /**
-     * Âçÿòü îïðåäåëåííóþ êàòåãîðèþ äîêóìåíòîâ
+     * Ð’Ð·ÑÑ‚ÑŒ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð½ÑƒÑŽ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸ÑŽ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð¾Ð²
      *
-     * @param integer $id ÈÄ êàòåãîðèè
-     * @return array Äàííûå âûáîðêè
+     * @param integer $id Ð˜Ð” ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¸
+     * @return array Ð”Ð°Ð½Ð½Ñ‹Ðµ Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐ¸
      */
     public static function getSection($id) {
         global $DB;
@@ -44,10 +44,10 @@ class docs_sections {
     }
 
     /**
-     * Äîáàâèòü íîâóþ ñåêöèþ
+     * Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð½Ð¾Ð²ÑƒÑŽ ÑÐµÐºÑ†Ð¸ÑŽ
      *
      * @param string  $name    Name
-     * @return string Ñîîáùåíèå îá îøèáêå
+     * @return string Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
      */
     public static function Add($name) {
         global $DB;
@@ -58,11 +58,11 @@ class docs_sections {
     }
 
     /**
-     * Îáíîâèòü èìÿ ñåêöèè
+     * ÐžÐ±Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð¸Ð¼Ñ ÑÐµÐºÑ†Ð¸Ð¸
      *
      * @param integer  $id    ID
-     * @param string  $name      Èìÿ
-     * @return string Ñîîáùåíèå îá îøèáêå
+     * @param string  $name      Ð˜Ð¼Ñ
+     * @return string Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
      */
     public static function Update($id, $name) {
         global $DB;
@@ -76,10 +76,10 @@ class docs_sections {
     }
 
     /**
-     * Óäàëèòü ñåêöèþ
+     * Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÐµÐºÑ†Ð¸ÑŽ
      *
-     * @param integer $id Èä ñåêöèè
-     * @return string Ñîîáùåíèå îá îøèáêå
+     * @param integer $id Ð˜Ð´ ÑÐµÐºÑ†Ð¸Ð¸
+     * @return string Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
      */
     public static function Delete($id) {
         global $DB;
@@ -89,10 +89,10 @@ class docs_sections {
     }
     
     /**
-     * Óäàëèòü ñåêöèþ
+     * Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÐµÐºÑ†Ð¸ÑŽ
      *
-     * @param integer $id Èä ñåêöèè
-     * @return string Ñîîáùåíèå îá îøèáêå
+     * @param integer $id Ð˜Ð´ ÑÐµÐºÑ†Ð¸Ð¸
+     * @return string Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
      */
     public static function DeleteList($ids) {
         global $DB;
@@ -103,10 +103,10 @@ class docs_sections {
     }
 
         /**
-     * Ôóíêöèÿ ìåíÿåò ïîçèöèþ ðàçäåëà â ñîðòèðîâêå íà -1
+     * Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð¼ÐµÐ½ÑÐµÑ‚ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸ÑŽ Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Ð² ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐµ Ð½Ð° -1
      *
-     * @param integer $id ÈÄ ðàçäåëà
-     * @return string Ñîîáùåíèå îá îøèáêå
+     * @param integer $id Ð˜Ð” Ñ€Ð°Ð·Ð´ÐµÐ»Ð°
+     * @return string Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
      */
     public static function MoveDown($id) {
         global $DB;
@@ -123,10 +123,10 @@ class docs_sections {
     }
 
             /**
-     * Ôóíêöèÿ ìåíÿåò ïîçèöèþ ðàçäåëà â ñîðòèðîâêå íà +1
+     * Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð¼ÐµÐ½ÑÐµÑ‚ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸ÑŽ Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Ð² ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐµ Ð½Ð° +1
      *
-     * @param integer $id ÈÄ ðàçäåëà
-     * @return string Ñîîáùåíèå îá îøèáêå
+     * @param integer $id Ð˜Ð” Ñ€Ð°Ð·Ð´ÐµÐ»Ð°
+     * @return string Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
      */
     public static function MoveUp($id) {
         global $DB;

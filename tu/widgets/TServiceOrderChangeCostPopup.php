@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/tservices/tservices_helper.ph
 
 /**
  * Class TServiceOrderChangeCostPopup
- * Âèäæåò ïîêàçûâàåò ïîïàï â çàêàçå ÒÓ ïğè èçìåíåíèè ñòîèìîñòè, ñğîêîâ è âèäà ğàñ÷åòà äëÿ çàêàç÷èêà
+ * Ğ’Ğ¸Ğ´Ğ¶ĞµÑ‚ Ğ¿Ğ¾ĞºĞ°Ğ·Ñ‹Ğ²Ğ°ĞµÑ‚ Ğ¿Ğ¾Ğ¿Ğ°Ğ¿ Ğ² Ğ·Ğ°ĞºĞ°Ğ·Ğµ Ğ¢Ğ£ Ğ¿Ñ€Ğ¸ Ğ¸Ğ·Ğ¼ĞµĞ½ĞµĞ½Ğ¸Ğ¸ ÑÑ‚Ğ¾Ğ¸Ğ¼Ğ¾ÑÑ‚Ğ¸, ÑÑ€Ğ¾ĞºĞ¾Ğ² Ğ¸ Ğ²Ğ¸Ğ´Ğ° Ñ€Ğ°ÑÑ‡ĞµÑ‚Ğ° Ğ´Ğ»Ñ Ğ·Ğ°ĞºĞ°Ğ·Ñ‡Ğ¸ĞºĞ°
  */
 
 class TServiceOrderChangeCostPopup extends CWidget 
@@ -13,14 +13,14 @@ class TServiceOrderChangeCostPopup extends CWidget
         public $order;
         
         /**
-         * Ìåòîä ñğàçó ïå÷àòàåò â ïîòîê îêîøêî ïîïàïà
-         * ñì render
+         * ĞœĞµÑ‚Ğ¾Ğ´ ÑÑ€Ğ°Ğ·Ñƒ Ğ¿ĞµÑ‡Ğ°Ñ‚Ğ°ĞµÑ‚ Ğ² Ğ¿Ğ¾Ñ‚Ğ¾Ğº Ğ¾ĞºĞ¾ÑˆĞºĞ¾ Ğ¿Ğ¾Ğ¿Ğ°Ğ¿Ğ°
+         * ÑĞ¼ render
          * 
          * @return boolean
          */
         public function run() 
         {            
-            //Çàäåéñòâóåì äëÿ ıòîãî şçåğà è êàòåãîğèè ÒÓ íîâóş ÁÑ ñ ğåçåğâîì èëè íåò
+            //Ğ—Ğ°Ğ´ĞµĞ¹ÑÑ‚Ğ²ÑƒĞµĞ¼ Ğ´Ğ»Ñ ÑÑ‚Ğ¾Ğ³Ğ¾ ÑĞ·ĞµÑ€Ğ° Ğ¸ ĞºĞ°Ñ‚ĞµĞ³Ğ¾Ñ€Ğ¸Ğ¸ Ğ¢Ğ£ Ğ½Ğ¾Ğ²ÑƒÑ Ğ‘Ğ¡ Ñ Ñ€ĞµĞ·ĞµÑ€Ğ²Ğ¾Ğ¼ Ğ¸Ğ»Ğ¸ Ğ½ĞµÑ‚
             $sufix = ((tservices_helper::isAllowOrderReserve($this->order['category_id']))?'-reserve':'');
             $this->render("t-service-order-change-cost{$sufix}-popup", array('order' => $this->order));
 	}

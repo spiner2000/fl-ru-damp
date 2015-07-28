@@ -21,8 +21,8 @@ else                 {$all_specs = $profs;}
 <script type="text/javascript">
     
     
-//1 = фильтр проектов
-//2 = фильтр фрилансеров
+//1 = С„РёР»СЊС‚СЂ РїСЂРѕРµРєС‚РѕРІ
+//2 = С„РёР»СЊС‚СЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
 var curFBulletsBox = 1;
 
 var filter_user_specs={<?
@@ -110,7 +110,7 @@ filter_bullets[<?=$fvalue?>][<?=$fkey?>]['parentid'] = '<?=(!($fvalue)?0:$prof_g
 
 function FilterCatalogAddCategoryType() {
     if ($('comboe_column_id').value == 0 || Number($('comboe_db_id').value) == 0) {
-        //добавляем категорию
+        //РґРѕР±Р°РІР»СЏРµРј РєР°С‚РµРіРѕСЂРёСЋ
         $('comboe_db_id').set("value", Number($$('input[name="comboe_columns[0]"]').get('value')));
         if(Number($('comboe_db_id').value) > 0) {
             tl = $('comboe').get("value");
@@ -119,12 +119,12 @@ function FilterCatalogAddCategoryType() {
                 tl = tl.substr(0, 28) + '...';
             }
             FilterAddBulletNew(0, $('comboe_db_id').value, tl, undefined, tlf);
-            $('comboe').set("value", "Все разделы");
+            $('comboe').set("value", "Р’СЃРµ СЂР°Р·РґРµР»С‹");
             $('comboe_db_id').set("value", 0);
             $('comboe_column_id').set("value", 0);
         }
     } else {
-        //добавляем подкатегорию
+        //РґРѕР±Р°РІР»СЏРµРј РїРѕРґРєР°С‚РµРіРѕСЂРёСЋ
         if(Number($('comboe_db_id').value) > 0) {
             tl = $('comboe').get("value");
             tlf = tl;
@@ -139,7 +139,7 @@ function FilterCatalogAddCategoryType() {
                 }
             }
             FilterAddBulletNew(1, $('comboe_db_id').value, tl, category_id, tlf);
-            $('comboe').set("value", "Все разделы");
+            $('comboe').set("value", "Р’СЃРµ СЂР°Р·РґРµР»С‹");
             $('comboe_db_id').set("value", 0);
             $('comboe_column_id').set("value", 0);
         }
@@ -152,7 +152,7 @@ function FilterCatalogAddCategoryType() {
     <div class="b-menu b-menu_tabs b-menu_relative b-menu_padbot_2">
         <div class="b-menu__filter">
             <span class="b-icon b-icon_top_2 b-icon__filtr b-icon_float_left<?= $filter_apply ? ' b-icon__filtr_on' : ' b-icon__filtr_off' ?> b-icon_margleft_20"></span>
-            <a class="b-menu__link  <?= $filter_apply ? 'b-menu__link_bordbot_dot_6db335' : 'b-menu__link_bordbot_dot_c10600' ?> b-menu__filter_switcher <?= $kind==8 ? "filter-offers" : ""; ?>">Фильтр</a>
+            <a class="b-menu__link  <?= $filter_apply ? 'b-menu__link_bordbot_dot_6db335' : 'b-menu__link_bordbot_dot_c10600' ?> b-menu__filter_switcher <?= $kind==8 ? "filter-offers" : ""; ?>">Р¤РёР»СЊС‚СЂ</a>
         </div>
          <ul class="b-menu__list"></ul>
     </div>
@@ -163,41 +163,41 @@ function FilterCatalogAddCategoryType() {
             <input type="hidden" value="0" name="kind" />
             <div class="b-ext-filter__inner">
                 <div class="b-ext-filter__txt b-ext-filter__txt_padbot_10">
-                    Фильтр предложений
+                    Р¤РёР»СЊС‚СЂ РїСЂРµРґР»РѕР¶РµРЅРёР№
                     <? if ($filter_apply) { ?>
                         <span class="b-ext-filter__switcher b-ext-filter__switcher_on">
-                                <span class="b-icon b-icon__filtr b-icon__filtr_on"></span>включен &#160;&#160;&#160;&#160;
-                                <a class="b-ext-filter__link " href="<?=$frm_action?>?kind=8&action=delete_offers_filter" onClick="_gaq.push(['_trackEvent', 'User', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_delete_catalog']); ga('send', 'event', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_delete_catalog'); ">Отключить</a>
+                                <span class="b-icon b-icon__filtr b-icon__filtr_on"></span>РІРєР»СЋС‡РµРЅ &#160;&#160;&#160;&#160;
+                                <a class="b-ext-filter__link " href="<?=$frm_action?>?kind=8&action=delete_offers_filter" onClick="_gaq.push(['_trackEvent', 'User', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_delete_catalog']); ga('send', 'event', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_delete_catalog'); ">РћС‚РєР»СЋС‡РёС‚СЊ</a>
                         </span>
                     <? } else { ?>
                         <span class="b-ext-filter__switcher b-ext-filter__switcher_off">
-                                <span class="b-icon b-icon__filtr b-icon__filtr_off"></span>отключен &#160;&#160;
-                                <a class="b-ext-filter__link " href="<?=$frm_action?>?kind=8&action=activate_offers_filter" onClick="_gaq.push(['_trackEvent', 'User', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_include_main']); ga('send', 'event', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_include_main'); ">Включить</a>
+                                <span class="b-icon b-icon__filtr b-icon__filtr_off"></span>РѕС‚РєР»СЋС‡РµРЅ &#160;&#160;
+                                <a class="b-ext-filter__link " href="<?=$frm_action?>?kind=8&action=activate_offers_filter" onClick="_gaq.push(['_trackEvent', 'User', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_include_main']); ga('send', 'event', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_include_main'); ">Р’РєР»СЋС‡РёС‚СЊ</a>
                         </span>
                     <? } ?>
-                    <a class="b-ext-filter__slide <?= !$filter_show?"b-ext-filter__slide_hide":""?> filter-offers" href="#">Cвернуть фильтр<span class="b-ext-filter__toggler b-ext-filter__toggler_up"></span></a>
+                    <a class="b-ext-filter__slide <?= !$filter_show?"b-ext-filter__slide_hide":""?> filter-offers" href="#">CРІРµСЂРЅСѓС‚СЊ С„РёР»СЊС‚СЂ<span class="b-ext-filter__toggler b-ext-filter__toggler_up"></span></a>
                 </div>
                 <div class="b-form b-form_padtop_15">
                     <input name="pf_category" id="pf_category" type="hidden" />
                     <input name="pf_subcategory" id="pf_subcategory" type="hidden" />
-                    <label class="b-form__name b-form__name_padtop_8 b-form__name_width_60">Разделы</label><div
+                    <label class="b-form__name b-form__name_padtop_8 b-form__name_width_60">Р Р°Р·РґРµР»С‹</label><div
                      class="b-combo b-combo_inline-block b-combo_margright_10">
                         <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_150 b-combo__input_resize b-combo__input_max-width_450 b-combo__input_visible_height_200 b-combo__input_arrow_yes  b-combo__input_init_professionsList sort_cnt drop_down_default_0 multi_drop_down_default_column_0">
-                            <input id="comboe" class="b-combo__input-text" name="" type="text" size="80" value="Все разделы" />
+                            <input id="comboe" class="b-combo__input-text" name="" type="text" size="80" value="Р’СЃРµ СЂР°Р·РґРµР»С‹" />
                             <span class="b-combo__arrow"></span>
                         </div>
                     </div><a
                      class="b-button b-button_inline-block b-button_rectangle_color_transparent b-button_margtop_-4" href="javascript:void(0)" onclick="FilterCatalogAddCategoryType();"> 
                         <span class="b-button__b1"> 
                             <span class="b-button__b2"> 
-                                <span class="b-button__txt">Добавить</span> 
+                                <span class="b-button__txt">Р”РѕР±Р°РІРёС‚СЊ</span> 
                             </span> 
                         </span> 
                     </a>
                     <? if(!is_emp()) {?>
                     <div class="b-check b-check_padleft_60 b-check_padtop_8">
                         <input id="pf_only_my_offs" class="b-check__input" type="checkbox" value="1" <? if ($filter['only_my_offs']=='t') {?>checked="checked" <? } ?>name="pf_only_my_offs" />
-                        <label class="b-check__label " for="pf_only_my_offs">Смотреть только мои предложения </label>
+                        <label class="b-check__label " for="pf_only_my_offs">РЎРјРѕС‚СЂРµС‚СЊ С‚РѕР»СЊРєРѕ РјРѕРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ </label>
                     </div>
                     <? }//if?>
                     <ul class="b-ext-filter__list" id="pf_specs"></ul>
@@ -206,7 +206,7 @@ function FilterCatalogAddCategoryType() {
                     <a class="b-button b-button_rectangle_color_transparent"  href="javascript:void(0)" onclick="_gaq.push(['_trackEvent', 'User', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_apply_main']); ga('send', 'event', '<?=(is_emp() ? 'Employer' : (get_uid(false) ? 'Freelance' : 'Unauthorized'))?>', 'button_filter_apply_main'); $('frm').submit();">
                         <span class="b-button__b1">
                             <span class="b-button__b2">
-                                <span class="b-button__txt">Применить фильтр</span>
+                                <span class="b-button__txt">РџСЂРёРјРµРЅРёС‚СЊ С„РёР»СЊС‚СЂ</span>
                             </span>
                         </span>
                     </a>

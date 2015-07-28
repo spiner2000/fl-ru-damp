@@ -14,7 +14,7 @@
     <span class="b-shadow__icon b-shadow__icon_close" onclick="pskb_frame_close(<?= intval($disable_reload) ?>);"></span>
 </div>
 <script>
-    // Перекидываем в body
+    // РџРµСЂРµРєРёРґС‹РІР°РµРј РІ body
     document.body.appendChild(document.getElementById('pskb-frame'));
     
     var pskb_frame = function(id, sgn) {

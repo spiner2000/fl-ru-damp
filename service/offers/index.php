@@ -30,7 +30,7 @@ if ($action == 'buy') {
         exit;
     }
 }
-$page_title = "Ответы на проекты - фриланс, удаленная работа на FL.ru";
+$page_title = "РћС‚РІРµС‚С‹ РЅР° РїСЂРѕРµРєС‚С‹ - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
 $css_file = "projects.css";
 $js_file = array( '/css/block/b-promo/b-promo.js' );
 $content = "content.php";

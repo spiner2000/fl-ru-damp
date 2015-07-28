@@ -1,32 +1,32 @@
 <?php
 
 /**
- * –Â‡ÎËÁ‡ˆËˇ Ó·ÏÂÌ‡ ÔÓ ÓÒÌÓ‚ÌÓÏÛ ÔÓÚÓÍÓÎÛ ƒŒÀ
+ * –†–µ–∞–ª–∏–∑–∞—Ü–∏—è –æ–±–º–µ–Ω–∞ –ø–æ –æ—Å–Ω–æ–≤–Ω–æ–º—É –ø—Ä–æ—Ç–æ–∫–æ–ª—É –î–û–õ
  * http://dengionline.com/dev/protocol/invoice#span-facePri-oplate-bankovskimi-kartamispan
  * 
- * »ÒÔÓÎ¸ÁÛÂÚÒˇ ‰Îˇ ÔÓÔÓÎÌÂÌËˇ Ò˜ÂÚ‡ ·‡ÌÍ. Í‡Ú‡ÏË
+ * –ò—Å–ø–æ–ª—å–∑—É–µ—Ç—Å—è –¥–ª—è –ø–æ–ø–æ–ª–Ω–µ–Ω–∏—è —Å—á–µ—Ç–∞ –±–∞–Ω–∫. –∫–∞—Ä—Ç–∞–º–∏
  */
 require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/account.php';
 
 class onlinedengi_cards extends account {
     /**
-     * »ƒ ÔÓÂÍÚ‡ ‚ ÒËÒÚÂÏÂ ƒÂÌ¸„ËŒÌÎ‡ÈÌ
+     * –ò–î –ø—Ä–æ–µ–∫—Ç–∞ –≤ —Å–∏—Å—Ç–µ–º–µ –î–µ–Ω—å–≥–∏–û–Ω–ª–∞–π–Ω
      */
     const PROJECT_ID = 3097;
 
     /**
-     * »‰ÂÌÚËÙËÍ‡ÚÓ ‚Î‡‰ÂÎ¸ˆ‡ ‚ÌÂ¯ÌÂÈ ÙÓÏ˚
+     * –ò–¥–µ–Ω—Ç–∏—Ñ–∏–∫–∞—Ç–æ—Ä –≤–ª–∞–¥–µ–ª—å—Ü–∞ –≤–Ω–µ—à–Ω–µ–π —Ñ–æ—Ä–º—ã
      */
     const SOURCE_ID = 3097;
 
     /**
-     *  Ó‰ œÎ‡ÒÚËÍ‡  ‚ ÒËÒÚÂÏÂ ƒÂÌ¸„ËŒÌÎ‡ÈÌ
+     * –ö–æ–¥ –ü–ª–∞—Å—Ç–∏–∫–∞  –≤ —Å–∏—Å—Ç–µ–º–µ –î–µ–Ω—å–≥–∏–û–Ω–ª–∞–π–Ω
      */
     const MODE_TYPE = 263;
-//    const MODE_TYPE = 108; // ÚÂÒÚÓ‚˚Â Í‡Ú˚
+//    const MODE_TYPE = 108; // —Ç–µ—Å—Ç–æ–≤—ã–µ –∫–∞—Ä—Ç—ã
 
     /**
-     * ÒÂÍÂÚÌ˚È ÍÓ‰
+     * —Å–µ–∫—Ä–µ—Ç–Ω—ã–π –∫–æ–¥
      */
     const SECRET = 'wihIH*OHhs@kjsdhf&LKADHdgfd13287*j';
 
@@ -34,22 +34,22 @@ class onlinedengi_cards extends account {
     const REQUEST_URL = 'http://www.onlinedengi.ru/wmpaycheck.php';
     
     /**
-     * ”‚Â‰ÓÏÎÂÌËÂ Ó ÔÎ‡ÚÂÊÂ (ÍÓ‰ ÔÂÂ‰‡ÂÚÒˇ ‚ Ô‡‡ÏÂÚÂ src)
+     * –£–≤–µ–¥–æ–º–ª–µ–Ω–∏–µ –æ –ø–ª–∞—Ç–µ–∂–µ (–∫–æ–¥ –ø–µ—Ä–µ–¥–∞–µ—Ç—Å—è –≤ –ø–∞—Ä–∞–º–µ—Ç—Ä–µ src)
      */
     const DO_REQUEST_PAYMENT = 1;
 
     /**
-     * œÓ‚ÂÍ‡ Á‡Í‡Á‡ (ÍÓ‰ ÔÂÂ‰‡ÂÚÒˇ ‚ Ô‡‡ÏÂÚÂ src)
+     * –ü—Ä–æ–≤–µ—Ä–∫–∞ –∑–∞–∫–∞–∑–∞ (–∫–æ–¥ –ø–µ—Ä–µ–¥–∞–µ—Ç—Å—è –≤ –ø–∞—Ä–∞–º–µ—Ç—Ä–µ src)
      */
     const DO_REQUEST_CHECKIN = 2;
 
     /**
-     * ”ÒÔÂ¯Ì˚È ÔÎ‡ÚÂÊ (ÍÓ‰ ÔÂÂ‰‡ÂÚÒˇ ‚ Ô‡‡ÏÂÚÂ src)
+     * –£—Å–ø–µ—à–Ω—ã–π –ø–ª–∞—Ç–µ–∂ (–∫–æ–¥ –ø–µ—Ä–µ–¥–∞–µ—Ç—Å—è –≤ –ø–∞—Ä–∞–º–µ—Ç—Ä–µ src)
      */
     const DO_REQUEST_SUCCESS = 3;
 
     /**
-     * Œ¯Ë·Í‡ ÔÎ‡ÚÂÊ‡ (ÍÓ‰ ÔÂÂ‰‡ÂÚÒˇ ‚ Ô‡‡ÏÂÚÂ src)
+     * –û—à–∏–±–∫–∞ –ø–ª–∞—Ç–µ–∂–∞ (–∫–æ–¥ –ø–µ—Ä–µ–¥–∞–µ—Ç—Å—è –≤ –ø–∞—Ä–∞–º–µ—Ç—Ä–µ src)
      */
     const DO_REQUEST_FAILURE = 4;
 
@@ -60,7 +60,7 @@ class onlinedengi_cards extends account {
     private $_db;
     
     /**
-     * ÎÓ„
+     * –ª–æ–≥
      * @var log 
      */
     private $_log;
@@ -82,7 +82,7 @@ class onlinedengi_cards extends account {
             'order_id' => $order_id,
             'amount' => $amount,
             'mode_type' => self::MODE_TYPE,
-            'comment' => 'œÓÔÓÎÌÂÌËÂ Ò˜ÂÚ‡ π ' . $this->id,
+            'comment' => '–ü–æ–ø–æ–ª–Ω–µ–Ω–∏–µ —Å—á–µ—Ç–∞ ‚Ññ ' . $this->id,
             'xml' => 1
         );
         
@@ -103,7 +103,7 @@ class onlinedengi_cards extends account {
         $log['response'] = iconv('UTF8', 'CP1251', $res);
         
         if (!$res) {
-            $log['result'] = 'Œ¯Ë·Í‡ Á‡ÔÓÒ‡.';
+            $log['result'] = '–û—à–∏–±–∫–∞ –∑–∞–ø—Ä–æ—Å–∞.';
             $this->_log('request')->writevar($log);
             return false;
         }
@@ -111,7 +111,7 @@ class onlinedengi_cards extends account {
         $xml = simplexml_load_string($res, 'SimpleXMLElement', LIBXML_NOCDATA);
         
         if (!$res) {
-            $log['result'] = 'Œ¯Ë·Í‡ Ó·‡·ÓÚÍË ÓÚ‚ÂÚ‡.';
+            $log['result'] = '–û—à–∏–±–∫–∞ –æ–±—Ä–∞–±–æ—Ç–∫–∏ –æ—Ç–≤–µ—Ç–∞.';
             $log['response'] = $xml;
             $this->_log('request')->writevar($log);
             return false;
@@ -125,7 +125,7 @@ class onlinedengi_cards extends account {
                 . '&lang=' . trim($xml->lang)
                 . '&hash=' . trim($xml->hash);
         } else {
-            $log['result'] = 'Œ¯Ë·Í‡ Á‡ÔÓÒ‡.';
+            $log['result'] = '–û—à–∏–±–∫–∞ –∑–∞–ø—Ä–æ—Å–∞.';
             $this->_log('request')->writevar($log);
             return false;
         }
@@ -145,7 +145,7 @@ class onlinedengi_cards extends account {
                 $this->_log('response')->writeln('CHECKIN');
                 $this->_log('response')->writevar($req);
                 if (!$this->_validate()) {
-                    echo $this->_response('NO', 'Œ¯Ë·Í‡ ÔÓ‚ÂÍË ÔÓ‰ÎËÌÌÓÒÚË Á‡ÔÓÒ‡.');
+                    echo $this->_response('NO', '–û—à–∏–±–∫–∞ –ø—Ä–æ–≤–µ—Ä–∫–∏ –ø–æ–¥–ª–∏–Ω–Ω–æ—Å—Ç–∏ –∑–∞–ø—Ä–æ—Å–∞.');
                     exit();
                 }
                 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/users.php';
@@ -154,10 +154,10 @@ class onlinedengi_cards extends account {
                 $user->GetUserByUID($uid);
                 
                 if($user->uid > 0) {
-                    echo $this->_response('YES', 'œÓÎ¸ÁÓ‚‡ÚÂÎ¸ ÒÛ˘ÂÒÚ‚ÛÂÚ.');
+                    echo $this->_response('YES', '–ü–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—å —Å—É—â–µ—Å—Ç–≤—É–µ—Ç.');
                     exit();
                 } else {
-                    echo $this->_response('NO', 'œÓÎ¸ÁÓ‚‡ÚÂÎ¸ ÌÂ ÒÛ˘ÂÒÚ‚ÛÂÚ.');
+                    echo $this->_response('NO', '–ü–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—å –Ω–µ —Å—É—â–µ—Å—Ç–≤—É–µ—Ç.');
                     exit();
                 }   
                 break;
@@ -166,7 +166,7 @@ class onlinedengi_cards extends account {
                 $this->_log('response')->writevar($req);
                 
                 if (!$this->_validate()) {
-                    echo $this->_response('NO', 'Œ¯Ë·Í‡ ÔÓ‚ÂÍË ÔÓ‰ÎËÌÌÓÒÚË Á‡ÔÓÒ‡.');
+                    echo $this->_response('NO', '–û—à–∏–±–∫–∞ –ø—Ä–æ–≤–µ—Ä–∫–∏ –ø–æ–¥–ª–∏–Ω–Ω–æ—Å—Ç–∏ –∑–∞–ø—Ä–æ—Å–∞.');
                     exit();
                 }
 	    
@@ -174,23 +174,23 @@ class onlinedengi_cards extends account {
                 $card_account = new card_account();
                 $billing_no = $card_account->checkPayment($req['orderid']);
                 if(!$billing_no) {
-                    $this->_log('response')->writeln('œÎ‡ÚÂÊ ÌÂ Ì‡È‰ÂÌ.');
-                    echo $this->_response('NO', 'ÕÓÏÂ ÔÎ‡ÚÂÊ‡ ÌÂ Ì‡È‰ÂÌ.');
+                    $this->_log('response')->writeln('–ü–ª–∞—Ç–µ–∂ –Ω–µ –Ω–∞–π–¥–µ–Ω.');
+                    echo $this->_response('NO', '–ù–æ–º–µ—Ä –ø–ª–∞—Ç–µ–∂–∞ –Ω–µ –Ω–∞–π–¥–µ–Ω.');
                     exit();
                 }
                 
                 $req['date'] = date('Y-m-d H:i:s');
 
                 $amm   = $req['amount'];
-                $descr = "CARD ÌÓÏÂ ÔÎ‡ÚÂÊ‡ ‚ ÒËÒÚÂÏÂ ƒÂÌ¸„ËŒÌÎ‡ÈÌ {$req['paymentid']}  "
-                       . "ÒÛÏÏ‡ - {$req['amount']} Û·., "
-                       . "Ó·‡·ÓÚ‡Ì {$req['date']}";
+                $descr = "CARD –Ω–æ–º–µ—Ä –ø–ª–∞—Ç–µ–∂–∞ –≤ —Å–∏—Å—Ç–µ–º–µ –î–µ–Ω—å–≥–∏–û–Ω–ª–∞–π–Ω {$req['paymentid']}  "
+                       . "—Å—É–º–º–∞ - {$req['amount']} —Ä—É–±., "
+                       . "–æ–±—Ä–∞–±–æ—Ç–∞–Ω {$req['date']}";
                 if($error = $this->deposit($op_id, $billing_no, $amm, $descr, 6, $req['amount'])) {
-                    $this->_log('response')->writeln('Œ¯Ë·Í‡ ÔÓ‚Â‰ÂÌËˇ ÔÎ‡ÚÂÊ‡.');
+                    $this->_log('response')->writeln('–û—à–∏–±–∫–∞ –ø—Ä–æ–≤–µ–¥–µ–Ω–∏—è –ø–ª–∞—Ç–µ–∂–∞.');
                     echo $this->_response('NO', $error);
                     exit();
                 }
-                $this->_log('response')->writeln('œÎ‡ÚÂÊ ÔËÌˇÚ.');
+                $this->_log('response')->writeln('–ü–ª–∞—Ç–µ–∂ –ø—Ä–∏–Ω—è—Ç.');
                 echo $this->_response('YES');
                 break;
             case self::DO_REQUEST_SUCCESS:
@@ -244,7 +244,7 @@ class onlinedengi_cards extends account {
         $key = md5(implode('', $arr));
         
         if ($key != $this->_request['key']) {
-            $this->_log('«‡ÔÓÒ ÌÂ ÔÓ‰ÔËÒ‡Ì, ÎË·Ó ÔÂÂ‰‡Ì ÌÂ‚ÂÌ˚È ÍÎ˛˜');
+            $this->_log('–ó–∞–ø—Ä–æ—Å –Ω–µ –ø–æ–¥–ø–∏—Å–∞–Ω, –ª–∏–±–æ –ø–µ—Ä–µ–¥–∞–Ω –Ω–µ–≤–µ—Ä–Ω—ã–π –∫–ª—é—á');
             return false;
         }
         

@@ -11,9 +11,9 @@ session_start();
 $objLetters = new letters();
 
 /**
- * Заполнить форму добавления документа выбранным шаблоном
+ * Р—Р°РїРѕР»РЅРёС‚СЊ С„РѕСЂРјСѓ РґРѕР±Р°РІР»РµРЅРёСЏ РґРѕРєСѓРјРµРЅС‚Р° РІС‹Р±СЂР°РЅРЅС‹Рј С€Р°Р±Р»РѕРЅРѕРј
  *
- * @param    integer    $id    ID шаблона
+ * @param    integer    $id    ID С€Р°Р±Р»РѕРЅР°
  */
 function selectTemplate($id) {
     global $objLetters;
@@ -66,10 +66,10 @@ function selectTemplate($id) {
 }
 
 /**
- * Получить поле для редактирования
+ * РџРѕР»СѓС‡РёС‚СЊ РїРѕР»Рµ РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
  *
- * @param    integer    $id      ID документа
- * @param    string     $filed   Поле
+ * @param    integer    $id      ID РґРѕРєСѓРјРµРЅС‚Р°
+ * @param    string     $filed   РџРѕР»Рµ
  * @return object xajaxResponse
 */
 function getDocField($id, $field) {
@@ -155,12 +155,12 @@ function getDocField($id, $field) {
 }
 
 /**
- * Обновить поле документа
+ * РћР±РЅРѕРІРёС‚СЊ РїРѕР»Рµ РґРѕРєСѓРјРµРЅС‚Р°
  *
- * @param    integer    $id      ID документа
- * @param    string     $filed   Поле
- * @param    string     $data    Значение поля
- * @param    string     $mode    item - простотр документа, list - просмотр списка
+ * @param    integer    $id      ID РґРѕРєСѓРјРµРЅС‚Р°
+ * @param    string     $filed   РџРѕР»Рµ
+ * @param    string     $data    Р—РЅР°С‡РµРЅРёРµ РїРѕР»СЏ
+ * @param    string     $mode    item - РїСЂРѕСЃС‚РѕС‚СЂ РґРѕРєСѓРјРµРЅС‚Р°, list - РїСЂРѕСЃРјРѕС‚СЂ СЃРїРёСЃРєР°
  * @return object xajaxResponse
 */
 function updateDocField($id, $field, $data, $mode) {
@@ -218,9 +218,9 @@ function updateDocField($id, $field, $data, $mode) {
 
 
 /**
- * Расчитать стоимость доставки
+ * Р Р°СЃС‡РёС‚Р°С‚СЊ СЃС‚РѕРёРјРѕСЃС‚СЊ РґРѕСЃС‚Р°РІРєРё
  *
- * @param    string     $ids      ID документов
+ * @param    string     $ids      ID РґРѕРєСѓРјРµРЅС‚РѕРІ
  * @return object xajaxResponse
 */
 function calcDeliveryCost($ids) {
@@ -248,9 +248,9 @@ function calcDeliveryCost($ids) {
 }
 
 /**
- * Редактирование статусов(массовое)
+ * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ СЃС‚Р°С‚СѓСЃРѕРІ(РјР°СЃСЃРѕРІРѕРµ)
  *
- * @param    string     $ids      ID документов
+ * @param    string     $ids      ID РґРѕРєСѓРјРµРЅС‚РѕРІ
  * @return object xajaxResponse
 */
 function showMassStatus($ids) {
@@ -274,7 +274,7 @@ function showMassStatus($ids) {
                     $html .= '<div class="b-layout__txt b-layout__txt_nowrap b-layout__txt_padbot_10">
                                     <input id="letters_mass_action_status_div_fld_'.intval($k).'" name="letters_mass_action_status_div_fld_'.intval($k).'" type="hidden" value="">
                                     <input id="letters_mass_action_status_div_fld_'.intval($k).'_date" name="letters_mass_action_status_div_fld_'.intval($k).'_date" type="hidden" value="">
-                                    '.$status.'&nbsp;&rarr;&nbsp;<a id="letters_mass_action_status_div_lnk_'.intval($k).'" class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="#" onClick="letters.massShowChangeStatus('.intval($k).'); return false;">Изменить статус</a>
+                                    '.$status.'&nbsp;&rarr;&nbsp;<a id="letters_mass_action_status_div_lnk_'.intval($k).'" class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="#" onClick="letters.massShowChangeStatus('.intval($k).'); return false;">РР·РјРµРЅРёС‚СЊ СЃС‚Р°С‚СѓСЃ</a>
                               </div>';
                 }
                 $objResponse->assign('letters_mass_action_status_div_data', 'innerHTML', $html);
@@ -290,9 +290,9 @@ function showMassStatus($ids) {
 
 
 /**
- * Обновление статусов(массовое)
+ * РћР±РЅРѕРІР»РµРЅРёРµ СЃС‚Р°С‚СѓСЃРѕРІ(РјР°СЃСЃРѕРІРѕРµ)
  *
- * @param    array     $frm      Информация о статусах
+ * @param    array     $frm      РРЅС„РѕСЂРјР°С†РёСЏ Рѕ СЃС‚Р°С‚СѓСЃР°С…
  * @return   object xajaxResponse
 */
 function updateMassStatus($frm) {
@@ -334,10 +334,10 @@ function updateMassStatus($frm) {
 }
 
 /**
- * Обновление стоимости(массовое)
+ * РћР±РЅРѕРІР»РµРЅРёРµ СЃС‚РѕРёРјРѕСЃС‚Рё(РјР°СЃСЃРѕРІРѕРµ)
  *
- * @param    string     $ids      ID документов
- * @param    float      $cost     стоимость
+ * @param    string     $ids      ID РґРѕРєСѓРјРµРЅС‚РѕРІ
+ * @param    float      $cost     СЃС‚РѕРёРјРѕСЃС‚СЊ
  * @return   object xajaxResponse
 */
 function updateMassDeliveryCost($ids, $cost) {
@@ -368,10 +368,10 @@ function updateMassDeliveryCost($ids, $cost) {
 }
 
 /**
- * Обновление даты(массовое)
+ * РћР±РЅРѕРІР»РµРЅРёРµ РґР°С‚С‹(РјР°СЃСЃРѕРІРѕРµ)
  *
- * @param    string     $ids      ID документов
- * @param    string     $date     дата
+ * @param    string     $ids      ID РґРѕРєСѓРјРµРЅС‚РѕРІ
+ * @param    string     $date     РґР°С‚Р°
  * @return   object xajaxResponse
 */
 function updateMassDate($ids, $date) {
@@ -400,12 +400,12 @@ function updateMassDate($ids, $date) {
 
 
 /**
- * Получить список корреспонденции
+ * РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РєРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС†РёРё
  * 
- * @param  integer  $type     Тип корреспонденции (Все, Исходящие, Входящие, В обработке, Архив)
- * @param  array    $filter   Данные фильтра
- * @param  integer  $page     Номер страницы
- * @param  integer  $nums     Количество документов на странице (0 - все)
+ * @param  integer  $type     РўРёРї РєРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС†РёРё (Р’СЃРµ, РСЃС…РѕРґСЏС‰РёРµ, Р’С…РѕРґСЏС‰РёРµ, Р’ РѕР±СЂР°Р±РѕС‚РєРµ, РђСЂС…РёРІ)
+ * @param  array    $filter   Р”Р°РЅРЅС‹Рµ С„РёР»СЊС‚СЂР°
+ * @param  integer  $page     РќРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹
+ * @param  integer  $nums     РљРѕР»РёС‡РµСЃС‚РІРѕ РґРѕРєСѓРјРµРЅС‚РѕРІ РЅР° СЃС‚СЂР°РЅРёС†Рµ (0 - РІСЃРµ)
  * @return object xajaxResponse
  */
 function showLetters( $type = 0, $filter = null, $page = 1, $nums = 0 ) {    
@@ -440,7 +440,7 @@ function showLetters( $type = 0, $filter = null, $page = 1, $nums = 0 ) {
         foreach($qstatuses as $qstatus) {
             $statuses[$qstatus['id']] = $qstatus['title'];
         }
-        $statuses[0] = 'Добавить статус';
+        $statuses[0] = 'Р”РѕР±Р°РІРёС‚СЊ СЃС‚Р°С‚СѓСЃ';
         $html = '';
         ob_start();
 
@@ -742,10 +742,10 @@ function showLetters( $type = 0, $filter = null, $page = 1, $nums = 0 ) {
 }
 
 /**
- * Изменение свойства "Документ без нашего экземпляра"
+ * РР·РјРµРЅРµРЅРёРµ СЃРІРѕР№СЃС‚РІР° "Р”РѕРєСѓРјРµРЅС‚ Р±РµР· РЅР°С€РµРіРѕ СЌРєР·РµРјРїР»СЏСЂР°"
  *
- * @param     integer    $id            ID документа
- * @param     boolean    $is_checked    статус свойства
+ * @param     integer    $id            ID РґРѕРєСѓРјРµРЅС‚Р°
+ * @param     boolean    $is_checked    СЃС‚Р°С‚СѓСЃ СЃРІРѕР№СЃС‚РІР°
  */
 function changeWithoutourdocs($id, $is_checked) {
     global $objLetters;
@@ -762,9 +762,9 @@ function changeWithoutourdocs($id, $is_checked) {
 }
 
 /**
- * Удалить документ
+ * РЈРґР°Р»РёС‚СЊ РґРѕРєСѓРјРµРЅС‚
  *
- * @param  integer  $id ID документа
+ * @param  integer  $id ID РґРѕРєСѓРјРµРЅС‚Р°
  * @return object xajaxResponse
  */
 function delDoc($id) {
@@ -786,9 +786,9 @@ function delDoc($id) {
 }
 
 /**
- * Сформировать документы
+ * РЎС„РѕСЂРјРёСЂРѕРІР°С‚СЊ РґРѕРєСѓРјРµРЅС‚С‹
  *
- * @param  string  $frm  Информация о документах
+ * @param  string  $frm  РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РґРѕРєСѓРјРµРЅС‚Р°С…
  * @return object xajaxResponse
  */
 function processDocs($frm) {
@@ -816,9 +816,9 @@ function processDocs($frm) {
 }
 
 /**
- * Сформировать документы для отправки
+ * РЎС„РѕСЂРјРёСЂРѕРІР°С‚СЊ РґРѕРєСѓРјРµРЅС‚С‹ РґР»СЏ РѕС‚РїСЂР°РІРєРё
  *
- * @param  string  $frm  Информация о документах
+ * @param  string  $frm  РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РґРѕРєСѓРјРµРЅС‚Р°С…
  * @return object xajaxResponse
  */
 function processSendDocs($frm) {
@@ -869,7 +869,7 @@ function processSendDocs($frm) {
         $docs_without_delivery = $objLetters->processSendDocs($ids_docs, $ids_users, $ids_delivery);
 
         if($docs_without_delivery) {
-            $str = "У следующих документах не выбран тип доставки:\\n";
+            $str = "РЈ СЃР»РµРґСѓСЋС‰РёС… РґРѕРєСѓРјРµРЅС‚Р°С… РЅРµ РІС‹Р±СЂР°РЅ С‚РёРї РґРѕСЃС‚Р°РІРєРё:\\n";
             foreach($docs_without_delivery as $v) {
                 $t = $v['title'];
                 $t = preg_replace("/\\\/", '\\', $t);
@@ -887,9 +887,9 @@ function processSendDocs($frm) {
 }
 
 /**
- * Редактирование документа
+ * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РґРѕРєСѓРјРµРЅС‚Р°
  *
- * @param  integer  $id ID документа
+ * @param  integer  $id ID РґРѕРєСѓРјРµРЅС‚Р°
  * @return object xajaxResponse
  */
 function editDoc($id) {
@@ -1042,9 +1042,9 @@ function editDoc($id) {
 }
 
 /**
- * Показать документ
+ * РџРѕРєР°Р·Р°С‚СЊ РґРѕРєСѓРјРµРЅС‚
  *
- * @param  integer  $id ID документа
+ * @param  integer  $id ID РґРѕРєСѓРјРµРЅС‚Р°
  * @return object xajaxResponse
  */
 function showDoc($id) {
@@ -1061,7 +1061,7 @@ function showDoc($id) {
         foreach($qstatuses as $qstatus) {
             $statuses[$qstatus['id']] = $qstatus['title'];
         }
-        $statuses[0] = 'Добавить статус';
+        $statuses[0] = 'Р”РѕР±Р°РІРёС‚СЊ СЃС‚Р°С‚СѓСЃ';
         $html = '';
         if($doc['is_user_1_company']=='t') {
             $company = letters::getCompany($doc['user_1']);
@@ -1131,9 +1131,9 @@ function showDoc($id) {
 }
 
 /**
- * Получить список корреспонденции группы
+ * РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РєРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС†РёРё РіСЂСѓРїРїС‹
  * 
- * @param  integer  $group_id ID группы
+ * @param  integer  $group_id ID РіСЂСѓРїРїС‹
  * @return object xajaxResponse
  */
 function showGroup( $group_id ) {    
@@ -1150,7 +1150,7 @@ function showGroup( $group_id ) {
         foreach($qstatuses as $qstatus) {
             $statuses[$qstatus['id']] = $qstatus['title'];
         }
-        $statuses[0] = 'Добавить статус';
+        $statuses[0] = 'Р”РѕР±Р°РІРёС‚СЊ СЃС‚Р°С‚СѓСЃ';
         $html = '';
         ob_start();
         require_once($_SERVER['DOCUMENT_ROOT'].'/siteadmin/letters/tpl.list.header.php');
@@ -1234,9 +1234,9 @@ function showGroup( $group_id ) {
 
 
 /**
- * Получить список корреспонденции для пользователя
+ * РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РєРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС†РёРё РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
  * 
- * @param  integer  $user_id ID пользователя    
+ * @param  integer  $user_id ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ    
  * @return object xajaxResponse
  */
 function showByUser( $user_id, $is_company ) {    
@@ -1254,7 +1254,7 @@ function showByUser( $user_id, $is_company ) {
         foreach($qstatuses as $qstatus) {
             $statuses[$qstatus['id']] = $qstatus['title'];
         }
-        $statuses[0] = 'Добавить статус';
+        $statuses[0] = 'Р”РѕР±Р°РІРёС‚СЊ СЃС‚Р°С‚СѓСЃ';
         $oletters = array();
         foreach($letters as $letter) {
             $oletters[intval($letter['group_id'])][] = $letter;
@@ -1265,7 +1265,7 @@ function showByUser( $user_id, $is_company ) {
         $nn = 0;
 
 foreach($oletters as $oletter) {
-        echo '<div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bold">'.($oletter[0]['group_title'] ? $oletter[0]['group_title'] : '[Без группы]').'</div>';
+        echo '<div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bold">'.($oletter[0]['group_title'] ? $oletter[0]['group_title'] : '[Р‘РµР· РіСЂСѓРїРїС‹]').'</div>';
         foreach($oletter as $letter) {
             if($letter['is_user_1_company']=='t') {
                 $company = letters::getCompany($letter['user_1']);
@@ -1367,7 +1367,7 @@ foreach($oletters as $oletter) {
 
 
 /**
- * Ресет загрузки файлов
+ * Р РµСЃРµС‚ Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»РѕРІ
  *
  * @return object xajaxResponse
  */
@@ -1423,10 +1423,10 @@ function resetAttachedFiles() {
 
 
 /**
- * Добавить корреспонденцию
+ * Р”РѕР±Р°РІРёС‚СЊ РєРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС†РёСЋ
  * 
- * @param  array    $frm_one    Информация о письме
- * @param  string   $frm_data   JSON если добавляется несколько документов сразу
+ * @param  array    $frm_one    РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїРёСЃСЊРјРµ
+ * @param  string   $frm_data   JSON РµСЃР»Рё РґРѕР±Р°РІР»СЏРµС‚СЃСЏ РЅРµСЃРєРѕР»СЊРєРѕ РґРѕРєСѓРјРµРЅС‚РѕРІ СЃСЂР°Р·Сѓ
  * @return object xajaxResponse
  */
 function addLetter( $frm_one, $frm_data ) {    
@@ -1460,62 +1460,62 @@ function addLetter( $frm_one, $frm_data ) {
 
         $errors = array();
         if(trim($frm['letters_doc_frm_title'])=='') {
-            $errors['letters_doc_frm_title'] = 'Вы не ввели название документа';
+            $errors['letters_doc_frm_title'] = 'Р’С‹ РЅРµ РІРІРµР»Рё РЅР°Р·РІР°РЅРёРµ РґРѕРєСѓРјРµРЅС‚Р°';
         }
         /*
         if(trim($frm['letters_doc_frm_group'])=='') {
-            $errors['letters_doc_frm_group'] = 'Вы не ввели группу документа';
+            $errors['letters_doc_frm_group'] = 'Р’С‹ РЅРµ РІРІРµР»Рё РіСЂСѓРїРїСѓ РґРѕРєСѓРјРµРЅС‚Р°';
         }
         */
         if(!$frm['letters_doc_frm_user_1_db_id'] || $frm['letters_doc_frm_user_1_db_id']=='null') {
-            $errors['letters_doc_frm_user_1'] = 'Вы не выбрали пользователя';
+            $errors['letters_doc_frm_user_1'] = 'Р’С‹ РЅРµ РІС‹Р±СЂР°Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ';
         } else {
             /*
             if($frm['letters_doc_frm_user1_status_data']==0) {
-                $errors['letters_doc_frm_user_1'] = 'Вы не выбрали статус';
+                $errors['letters_doc_frm_user_1'] = 'Р’С‹ РЅРµ РІС‹Р±СЂР°Р»Рё СЃС‚Р°С‚СѓСЃ';
             }
             */
         }
         if(!$frm['letters_doc_frm_user_2_db_id'] || $frm['letters_doc_frm_user_2_db_id']=='null') {
-            $errors['letters_doc_frm_user_2'] = 'Вы не выбрали пользователя';
+            $errors['letters_doc_frm_user_2'] = 'Р’С‹ РЅРµ РІС‹Р±СЂР°Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ';
         } else {
             /*
             if($frm['letters_doc_frm_user2_status_data']==0) {
-                $errors['letters_doc_frm_user_2'] = 'Вы не выбрали статус';
+                $errors['letters_doc_frm_user_2'] = 'Р’С‹ РЅРµ РІС‹Р±СЂР°Р»Рё СЃС‚Р°С‚СѓСЃ';
             }
             */
         }
         if($frm['letters_doc_frm_user_3_db_id']) {
             /*
             if($frm['letters_doc_frm_user3_status_data']==0) {
-                $errors['letters_doc_frm_user_3'] = 'Вы не выбрали статус';
+                $errors['letters_doc_frm_user_3'] = 'Р’С‹ РЅРµ РІС‹Р±СЂР°Р»Рё СЃС‚Р°С‚СѓСЃ';
             }
             */
         }
 
         if($frm['letters_doc_frm_user_1_db_id']==$frm['letters_doc_frm_user_2_db_id'] && $frm['letters_doc_frm_user_1_db_id'] && $frm['letters_doc_frm_user_2_db_id'] && $frm['letters_doc_frm_user_1_db_id']!='null' && $frm['letters_doc_frm_user_2_db_id']!='null') {
-            $errors['letters_doc_frm_user_1'] = 'Пользователи не могут быть одинаковыми';
-            $errors['letters_doc_frm_user_2'] = 'Пользователи не могут быть одинаковыми';
+            $errors['letters_doc_frm_user_1'] = 'РџРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РѕРґРёРЅР°РєРѕРІС‹РјРё';
+            $errors['letters_doc_frm_user_2'] = 'РџРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РѕРґРёРЅР°РєРѕРІС‹РјРё';
         }
         if($frm['letters_doc_frm_user_3_db_id'] && $frm['letters_doc_frm_user_3_db_id']!='null' && $frm['letters_doc_frm_user_2_db_id'] && $frm['letters_doc_frm_user_2_db_id']!='null' && $frm['letters_doc_frm_user_1_db_id'] && $frm['letters_doc_frm_user_1_db_id']!='null') {
             if($frm['letters_doc_frm_user_1_db_id']==$frm['letters_doc_frm_user_3_db_id']) {
-                $errors['letters_doc_frm_user_1'] = 'Пользователи не могут быть одинаковыми';
-                $errors['letters_doc_frm_user_3'] = 'Пользователи не могут быть одинаковыми';
+                $errors['letters_doc_frm_user_1'] = 'РџРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РѕРґРёРЅР°РєРѕРІС‹РјРё';
+                $errors['letters_doc_frm_user_3'] = 'РџРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РѕРґРёРЅР°РєРѕРІС‹РјРё';
             }
             if($frm['letters_doc_frm_user_2_db_id']==$frm['letters_doc_frm_user_3_db_id']) {
-                $errors['letters_doc_frm_user_2'] = 'Пользователи не могут быть одинаковыми';
-                $errors['letters_doc_frm_user_3'] = 'Пользователи не могут быть одинаковыми';
+                $errors['letters_doc_frm_user_2'] = 'РџРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РѕРґРёРЅР°РєРѕРІС‹РјРё';
+                $errors['letters_doc_frm_user_3'] = 'РџРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РѕРґРёРЅР°РєРѕРІС‹РјРё';
             }
         }
 
         /*
         if(!$frm['letters_doc_frm_delivery_db_id']) {
-            $errors['letters_doc_frm_delivery'] = 'Вы не выбрали тип доставки';
+            $errors['letters_doc_frm_delivery'] = 'Р’С‹ РЅРµ РІС‹Р±СЂР°Р»Рё С‚РёРї РґРѕСЃС‚Р°РІРєРё';
         }
         */
         $frm['letters_doc_frm_delivery_cost'] = preg_replace("/,/", ".", $frm['letters_doc_frm_delivery_cost']);
         if($frm['letters_doc_frm_delivery_cost'] && (!floatval($frm['letters_doc_frm_delivery_cost']) || floatval($frm['letters_doc_frm_delivery_cost'])<0)) {
-            $errors['letters_doc_frm_delivery_cost'] = 'Вы не ввели недопустимое значение';
+            $errors['letters_doc_frm_delivery_cost'] = 'Р’С‹ РЅРµ РІРІРµР»Рё РЅРµРґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ';
         }
         if($errors) { break; }
     }
@@ -1557,10 +1557,10 @@ function addLetter( $frm_one, $frm_data ) {
 }
 
 /**
- * Изменить корреспонденцию
+ * РР·РјРµРЅРёС‚СЊ РєРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС†РёСЋ
  * 
- * @param  integer  $id    ID документа
- * @param  array    $frm   Информация о письме
+ * @param  integer  $id    ID РґРѕРєСѓРјРµРЅС‚Р°
+ * @param  array    $frm   РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїРёСЃСЊРјРµ
  * @return object xajaxResponse
  */
 function saveLetter( $id, $frm ) {    
@@ -1573,51 +1573,51 @@ function saveLetter( $id, $frm ) {
     $errors = array();
 
     if(trim($frm['letters_doc_frm_title'])=='') {
-        $errors['letters_doc_frm_title'] = 'Вы не ввели название документа';
+        $errors['letters_doc_frm_title'] = 'Р’С‹ РЅРµ РІРІРµР»Рё РЅР°Р·РІР°РЅРёРµ РґРѕРєСѓРјРµРЅС‚Р°';
     }
     /*
     if(trim($frm['letters_doc_frm_group'])=='') {
-        $errors['letters_doc_frm_group'] = 'Вы не ввели группу документа';
+        $errors['letters_doc_frm_group'] = 'Р’С‹ РЅРµ РІРІРµР»Рё РіСЂСѓРїРїСѓ РґРѕРєСѓРјРµРЅС‚Р°';
     }
     */
     if(!$frm['letters_doc_frm_user_1_db_id'] || $frm['letters_doc_frm_user_1_db_id']=='null') {
-        $errors['letters_doc_frm_user_1'] = 'Вы не выбрали пользователя';
+        $errors['letters_doc_frm_user_1'] = 'Р’С‹ РЅРµ РІС‹Р±СЂР°Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ';
     } else {
         /*
         if($frm['letters_doc_frm_user1_status_data']==0) {
-            $errors['letters_doc_frm_user_1'] = 'Вы не выбрали статус';
+            $errors['letters_doc_frm_user_1'] = 'Р’С‹ РЅРµ РІС‹Р±СЂР°Р»Рё СЃС‚Р°С‚СѓСЃ';
         }
         */
     }
     if(!$frm['letters_doc_frm_user_2_db_id'] || $frm['letters_doc_frm_user_2_db_id']=='null') {
-        $errors['letters_doc_frm_user_2'] = 'Вы не выбрали пользователя';
+        $errors['letters_doc_frm_user_2'] = 'Р’С‹ РЅРµ РІС‹Р±СЂР°Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ';
     } else {
         /*
         if($frm['letters_doc_frm_user2_status_data']==0) {
-            $errors['letters_doc_frm_user_2'] = 'Вы не выбрали статус';
+            $errors['letters_doc_frm_user_2'] = 'Р’С‹ РЅРµ РІС‹Р±СЂР°Р»Рё СЃС‚Р°С‚СѓСЃ';
         }
         */
     }
     if($frm['letters_doc_frm_user_3_db_id']) {
         /*
         if($frm['letters_doc_frm_user3_status_data']==0) {
-            $errors['letters_doc_frm_user_3'] = 'Вы не выбрали статус';
+            $errors['letters_doc_frm_user_3'] = 'Р’С‹ РЅРµ РІС‹Р±СЂР°Р»Рё СЃС‚Р°С‚СѓСЃ';
         }
         */
     }
 
     if($frm['letters_doc_frm_user_1_db_id']==$frm['letters_doc_frm_user_2_db_id'] && $frm['letters_doc_frm_user_1_db_id'] && $frm['letters_doc_frm_user_2_db_id'] && $frm['letters_doc_frm_user_1_db_id']!='null' && $frm['letters_doc_frm_user_2_db_id']!='null') {
-        $errors['letters_doc_frm_user_1'] = 'Пользователи не могут быть одинаковыми';
-        $errors['letters_doc_frm_user_2'] = 'Пользователи не могут быть одинаковыми';
+        $errors['letters_doc_frm_user_1'] = 'РџРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РѕРґРёРЅР°РєРѕРІС‹РјРё';
+        $errors['letters_doc_frm_user_2'] = 'РџРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РѕРґРёРЅР°РєРѕРІС‹РјРё';
     }
     if($frm['letters_doc_frm_user_3_db_id'] && $frm['letters_doc_frm_user_3_db_id']!='null' && $frm['letters_doc_frm_user_2_db_id'] && $frm['letters_doc_frm_user_2_db_id']!='null' && $frm['letters_doc_frm_user_1_db_id'] && $frm['letters_doc_frm_user_1_db_id']!='null') {
         if($frm['letters_doc_frm_user_1_db_id']==$frm['letters_doc_frm_user_3_db_id']) {
-            $errors['letters_doc_frm_user_1'] = 'Пользователи не могут быть одинаковыми';
-            $errors['letters_doc_frm_user_3'] = 'Пользователи не могут быть одинаковыми';
+            $errors['letters_doc_frm_user_1'] = 'РџРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РѕРґРёРЅР°РєРѕРІС‹РјРё';
+            $errors['letters_doc_frm_user_3'] = 'РџРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РѕРґРёРЅР°РєРѕРІС‹РјРё';
         }
         if($frm['letters_doc_frm_user_2_db_id']==$frm['letters_doc_frm_user_3_db_id']) {
-            $errors['letters_doc_frm_user_2'] = 'Пользователи не могут быть одинаковыми';
-            $errors['letters_doc_frm_user_3'] = 'Пользователи не могут быть одинаковыми';
+            $errors['letters_doc_frm_user_2'] = 'РџРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РѕРґРёРЅР°РєРѕРІС‹РјРё';
+            $errors['letters_doc_frm_user_3'] = 'РџРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ РѕРґРёРЅР°РєРѕРІС‹РјРё';
         }
     }
 
@@ -1640,9 +1640,9 @@ function saveLetter( $id, $frm ) {
 }
 
 /**
- * Показать список компаний
+ * РџРѕРєР°Р·Р°С‚СЊ СЃРїРёСЃРѕРє РєРѕРјРїР°РЅРёР№
  * 
- * @param  string  $s    Первая буква в названии компании
+ * @param  string  $s    РџРµСЂРІР°СЏ Р±СѓРєРІР° РІ РЅР°Р·РІР°РЅРёРё РєРѕРјРїР°РЅРёРё
  * @return object xajaxResponse
  */
 function showCompanies($s) {
@@ -1662,7 +1662,7 @@ function showCompanies($s) {
             ob_end_clean();
             $objResponse->assign('letters_company_lists', 'innerHTML', $html);
         } else {
-            $objResponse->assign('letters_company_lists', 'innerHTML', '<div><strong>Компаний не найдено</div>');
+            $objResponse->assign('letters_company_lists', 'innerHTML', '<div><strong>РљРѕРјРїР°РЅРёР№ РЅРµ РЅР°Р№РґРµРЅРѕ</div>');
         }
         $objResponse->script("letters.spinner.hide();");
     }
@@ -1671,9 +1671,9 @@ function showCompanies($s) {
 
 
 /**
- * Добавить новый шаблон
+ * Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ С€Р°Р±Р»РѕРЅ
  * 
- * @param  string  $data    JSON данные
+ * @param  string  $data    JSON РґР°РЅРЅС‹Рµ
  * @return object xajaxResponse
  */
 function addTemplate($frm_one, $frm_data) {
@@ -1730,9 +1730,9 @@ function addTemplate($frm_one, $frm_data) {
 
 
 /**
- * Сохранить шаблон
+ * РЎРѕС…СЂР°РЅРёС‚СЊ С€Р°Р±Р»РѕРЅ
  * 
- * @param  string  $data    JSON данные
+ * @param  string  $data    JSON РґР°РЅРЅС‹Рµ
  * @return object xajaxResponse
  */
 function updateTemplate($frm_one, $frm_data) {

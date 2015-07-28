@@ -36,10 +36,10 @@ if(!(hasPermissions('adm') && hasPermissions('communes'))) {
 
 
 </script>
-<strong>Сообщества</strong><br><br>
+<strong>РЎРѕРѕР±С‰РµСЃС‚РІР°</strong><br><br>
 <? if ($_GET['result']=='success') { ?>
   <div>
-    <img src="/images/ico_ok.gif" alt="" border="0" height="18" width="19"/>&nbsp;&nbsp;Готово!
+    <img src="/images/ico_ok.gif" alt="" border="0" height="18" width="19"/>&nbsp;&nbsp;Р“РѕС‚РѕРІРѕ!
   </div>
 <? } ?>
 <? if ($error) { ?>
@@ -55,7 +55,7 @@ if(!(hasPermissions('adm') && hasPermissions('communes'))) {
     <col/>
     <tr>
       <td style="width:50px;">
-        Название
+        РќР°Р·РІР°РЅРёРµ
       </td>
       <td>
 							<div class="b-input b-input_width_200">
@@ -72,7 +72,7 @@ if(!(hasPermissions('adm') && hasPermissions('communes'))) {
     <? } ?>
     <tr valign="top">
       <td>
-        Описание
+        РћРїРёСЃР°РЅРёРµ
       </td>
       <td>
 							<div class="b-input">
@@ -84,7 +84,7 @@ if(!(hasPermissions('adm') && hasPermissions('communes'))) {
       <td colspan="2">
         <br/>
         <br/>
-        <input style="width:150px" type="submit" value="Добавить раздел"/>
+        <input style="width:150px" type="submit" value="Р”РѕР±Р°РІРёС‚СЊ СЂР°Р·РґРµР»"/>
         <br/><br/>
       </td>
     </tr>
@@ -148,7 +148,7 @@ if(!(hasPermissions('adm') && hasPermissions('communes'))) {
           </td>
         <? } ?>
         <td align="center">
-          <a id="del_comm_<?=$grp['id']?>" href="?id=<?=$grp['id']?>&action=Delete" onclick="return addTokenToLink('del_comm_<?=$grp['id']?>', 'Вы уверены?');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0"/></a>
+          <a id="del_comm_<?=$grp['id']?>" href="?id=<?=$grp['id']?>&action=Delete" onclick="return addTokenToLink('del_comm_<?=$grp['id']?>', 'Р’С‹ СѓРІРµСЂРµРЅС‹?');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0"/></a>
         </td>
       </tr>
     <? } ?>
@@ -156,7 +156,7 @@ if(!(hasPermissions('adm') && hasPermissions('communes'))) {
       <td colspan="5" align="right">
         <br/>
         <br/>
-        <input style="width:150px" type="submit" value="Сохранить"/>
+        <input style="width:150px" type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ"/>
       </td>
     </tr>
   </table>

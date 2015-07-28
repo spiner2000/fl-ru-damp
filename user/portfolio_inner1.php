@@ -81,7 +81,7 @@ var profnum = <?=$j?>;
 		}
 		out +="</table>";
 		
-		if (profid == -1) { proflinkall.style.fontWeight = 'bold'; profname.innerHTML = "Все портфолио";}
+		if (profid == -1) { proflinkall.style.fontWeight = 'bold'; profname.innerHTML = "Р’СЃРµ РїРѕСЂС‚С„РѕР»РёРѕ";}
 		else {proflinkall.style.fontWeight = 'normal';}
 		for (i = 0; i<profnum; i++){
 			a = document.getElementById('proflink'+prof_ids[i]);
@@ -98,7 +98,7 @@ var profnum = <?=$j?>;
 //-->
 </script>
 <? if (($_SESSION['login'] == $user->login) && ($user->is_pro != 't')) { ?>
-<?=view_error4('Внимание! Вы отображаетесь в каталоге только по своей специализации. Чтобы увеличить количество специализаций, необходимо перейти на аккаунт ' . view_pro()); ?>
+<?=view_error4('Р’РЅРёРјР°РЅРёРµ! Р’С‹ РѕС‚РѕР±СЂР°Р¶Р°РµС‚РµСЃСЊ РІ РєР°С‚Р°Р»РѕРіРµ С‚РѕР»СЊРєРѕ РїРѕ СЃРІРѕРµР№ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё. Р§С‚РѕР±С‹ СѓРІРµР»РёС‡РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёР№, РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµР№С‚Рё РЅР° Р°РєРєР°СѓРЅС‚ ' . view_pro()); ?>
 <? } ?>
 <table width="100%" cellspacing="0" cellpadding="0" bgcolor="FFFFFF">
 <tr><td height="20" colspan="3">&nbsp;</td></tr>
@@ -116,7 +116,7 @@ var profnum = <?=$j?>;
 		<? } ?>
 		<tr>
 			<td width="11"><img src="/images/ico_down.gif" alt="" width="11" height="11" border="0"></td>
-			<td><a href="#" class="blue" id="proflinkall" onClick="viewprof(-1);">Все портфолио</a></td>
+			<td><a href="#" class="blue" id="proflinkall" onClick="viewprof(-1);">Р’СЃРµ РїРѕСЂС‚С„РѕР»РёРѕ</a></td>
 		</tr>
 		</table>
 	</td>

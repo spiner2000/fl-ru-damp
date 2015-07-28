@@ -11,14 +11,14 @@ function AddUser($login){
 <tr>
 	<td width=\"60\">".view_avatar($user->login, $user->photo)."</td>
 	<td valign=\"top\"><a href=\"/users/".$user->login."\" class=\"frlname11\" title=\"".$user->uname." ".$user->usurname."\">".$user->uname." ".$user->usurname." [".$user->login."]"."</a> 
-	<a href=\"javascript:reload_form();\" class=\"blue\">изменить</a></td>
+	<a href=\"javascript:reload_form();\" class=\"blue\">РёР·РјРµРЅРёС‚СЊ</a></td>
 </tr>
 </table>";
 	$objResponse->assign("usersel","innerHTML",$inner);
 	$objResponse->script("document.getElementById('next').disabled = false;document.getElementById('login').value = '".$login."';");
 	} else {
 		$objResponse->script("reload_form();
-		 document.getElementById('usersel').innerHTML = document.getElementById('usersel').innerHTML + '".ref_scr(view_error("Такого фрилансера не существует"))."';
+		 document.getElementById('usersel').innerHTML = document.getElementById('usersel').innerHTML + '".ref_scr(view_error("РўР°РєРѕРіРѕ С„СЂРёР»Р°РЅСЃРµСЂР° РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚"))."';
 		 document.getElementById('elogin').value = '".$login."';");
 	}
 	return $objResponse;

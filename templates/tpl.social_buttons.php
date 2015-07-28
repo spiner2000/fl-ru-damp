@@ -9,5 +9,5 @@ if(isset($buttons) && !empty($buttons)):
  endif; 
 ?>
 <?php if($with_email): ?>
-<span class="b-auth_btn b-auth_btn_txt b-auth_btn_marg_9_5">или <a href="/registration/">зарегистрироваться по e-mail</a></span>
+<span class="b-auth_btn b-auth_btn_txt b-auth_btn_marg_9_5">РёР»Рё <a href="/registration/">Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ РїРѕ e-mail</a></span>
 <?php endif; ?>

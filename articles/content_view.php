@@ -86,8 +86,8 @@ window.addEvent('domready', function() {
 
 <?php
 $crumbs = array();
-$crumbs[] = array("title"=>"Статьи и интервью", "url"=>"/articles/");
-$crumbs[] = array("title"=>"Статьи", "url"=>"/articles/");
+$crumbs[] = array("title"=>"РЎС‚Р°С‚СЊРё Рё РёРЅС‚РµСЂРІСЊСЋ", "url"=>"/articles/");
+$crumbs[] = array("title"=>"РЎС‚Р°С‚СЊРё", "url"=>"/articles/");
 $crumbs[] = array("title"=>reformat($article['title'], 100, 0, 1));
 ?>
 <div class="b-menu b-menu_crumbs  b-menu_padbot_20"><?=getCrumbs($crumbs)?></div>
@@ -100,24 +100,24 @@ $crumbs[] = array("title"=>reformat($article['title'], 100, 0, 1));
 
             <? if(isset($navigation['prev'])) { 
                 ?>
-                <a class="b-layout__link" href="<?=getFriendlyURL('article', $navigation['prev']['id'])?>">&laquo; <?=($navigation['prev']['title'] ? reformat($navigation['prev']['title'], 32, 0, 1) : 'Без названия')?></a>
+                <a class="b-layout__link" href="<?=getFriendlyURL('article', $navigation['prev']['id'])?>">&laquo; <?=($navigation['prev']['title'] ? reformat($navigation['prev']['title'], 32, 0, 1) : 'Р‘РµР· РЅР°Р·РІР°РЅРёСЏ')?></a>
             <? } else { 
                 /* ?>
-                <span>&laquo; предыдущая статья</span>
+                <span>&laquo; РїСЂРµРґС‹РґСѓС‰Р°СЏ СЃС‚Р°С‚СЊСЏ</span>
                 <? */
             } ?>
             &nbsp;&nbsp;&nbsp;
             <? if(isset($navigation['next'])) { ?>
-                <a class="b-layout__link" href="<?=getFriendlyURL('article', $navigation['next']['id'])?>"><?=($navigation['next']['title'] ? reformat($navigation['next']['title'], 32, 0, 1) : 'Без названия')?> &raquo;</a>
+                <a class="b-layout__link" href="<?=getFriendlyURL('article', $navigation['next']['id'])?>"><?=($navigation['next']['title'] ? reformat($navigation['next']['title'], 32, 0, 1) : 'Р‘РµР· РЅР°Р·РІР°РЅРёСЏ')?> &raquo;</a>
             <? } else { 
                 /* ?>
-                <span>следующая статья &raquo;</span>
+                <span>СЃР»РµРґСѓСЋС‰Р°СЏ СЃС‚Р°С‚СЊСЏ &raquo;</span>
                 <? */ 
             } ?>
 
         <? } ?>
         </div>
-        <a id="articles_back1" class="b-layout__link" href="javascript:void(0);">Вернуться к списку статей</a>
+        <a id="articles_back1" class="b-layout__link" href="javascript:void(0);">Р’РµСЂРЅСѓС‚СЊСЃСЏ Рє СЃРїРёСЃРєСѓ СЃС‚Р°С‚РµР№</a>
     </div>
     <div id="post_<?=$article['id']?>" class="p-interview-in c">
         <div class="interview-avatar">
@@ -150,7 +150,7 @@ $crumbs[] = array("title"=>reformat($article['title'], 100, 0, 1));
 								</div>
             <div class="aih">
                 <span class="interview-date">
-                    <?=date('d.m.Y в H:i', strtotime( ($article['approved'] == 't' ?  $article['approve_date'] : $article['post_time']) ))?>
+                    <?=date('d.m.Y РІ H:i', strtotime( ($article['approved'] == 't' ?  $article['approve_date'] : $article['post_time']) ))?>
                 </span>
                 <span class="interview-date">
                     <a href="/users/<?=$article['login']?>">
@@ -158,23 +158,23 @@ $crumbs[] = array("title"=>reformat($article['title'], 100, 0, 1));
                     </a>
                 </span>
                 <? if(hasPermissions('articles')) { ?>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="lnk-ai" onclick="editArticle(<?=$article['id']?>)">Редактировать</a> |
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:void(0)" class="lnk-ai" onclick="editArticle(<?=$article['id']?>)">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> |
                     <? if($article['approved'] == 'f') { ?>
-                        <a href="javascript:void(0)" class="lnk-ai" onclick="delArticleForm(<?=$article['id']?>);">Удалить</a>
+                        <a href="javascript:void(0)" class="lnk-ai" onclick="delArticleForm(<?=$article['id']?>);">РЈРґР°Р»РёС‚СЊ</a>
                     <? } else { ?>
-                        <a href="/articles/?task=del-article&id=<?=$article['id']?>" class="lnk-ai" onclick="return (confirm('Вы уверены?'));">Удалить</a>
+                        <a href="/articles/?task=del-article&id=<?=$article['id']?>" class="lnk-ai" onclick="return (confirm('Р’С‹ СѓРІРµСЂРµРЅС‹?'));">РЈРґР°Р»РёС‚СЊ</a>
                     <? } ?>
                 <? } ?>
                 <? if($article['declined'] == 'f' && $article['approved'] == 'f' && (hasPermissions('articles'))) { ?>
                     &nbsp;|&nbsp;
-                    <a href="javascript:void(0)"  class="lnk-ai" id="moderator_decline">Отклонить</a>
+                    <a href="javascript:void(0)"  class="lnk-ai" id="moderator_decline">РћС‚РєР»РѕРЅРёС‚СЊ</a>
                 <? } else if(hasPermissions('articles')) {?>
                     &nbsp;|&nbsp;
-                    <a href="javascript:void(0)" style="color: #A23E3E;" id="moderator_undecline">На модерацию</a>
+                    <a href="javascript:void(0)" style="color: #A23E3E;" id="moderator_undecline">РќР° РјРѕРґРµСЂР°С†РёСЋ</a>
                 <? } //?>
                 <? if($article['approved'] == 'f' && (hasPermissions('articles'))) { ?>
                     &nbsp;|&nbsp;
-                    <a href="javascript:void(0)" id="moderator_approve">Подтвердить</a>
+                    <a href="javascript:void(0)" id="moderator_approve">РџРѕРґС‚РІРµСЂРґРёС‚СЊ</a>
                 <? } ?>
             </div>
             
@@ -192,14 +192,14 @@ $crumbs[] = array("title"=>reformat($article['title'], 100, 0, 1));
                 <div class="form-in">
                         <form method="post" action="/articles/?task=del-article">
                     <div class="form-block first last">
-                        <h4>Удаление статьи</h4>
+                        <h4>РЈРґР°Р»РµРЅРёРµ СЃС‚Р°С‚СЊРё</h4>
                             <div class="form-el">
-                                <label class="form-label2">Укажите причину отказа в публикации (для автора):</label>
+                                <label class="form-label2">РЈРєР°Р¶РёС‚Рµ РїСЂРёС‡РёРЅСѓ РѕС‚РєР°Р·Р° РІ РїСѓР±Р»РёРєР°С†РёРё (РґР»СЏ Р°РІС‚РѕСЂР°):</label>
                                 <div class="form-value">
                                     <input type="hidden" name="id" value="<?=$article['id']?>"/>
                                     <textarea rows="5" cols="20" name="msgtxt"></textarea>
                                     <div class="form-btns">
-                                        <button onclick="return delArticleConfirm()">Удалить</button>&nbsp; <a href="javascript:void(0)" onclick="delArticleFormClose()" class="lnk-dot-666">Отменить</a>
+                                        <button onclick="return delArticleConfirm()">РЈРґР°Р»РёС‚СЊ</button>&nbsp; <a href="javascript:void(0)" onclick="delArticleFormClose()" class="lnk-dot-666">РћС‚РјРµРЅРёС‚СЊ</a>
                                     </div>
                                 </div>
                             </div>
@@ -211,7 +211,7 @@ $crumbs[] = array("title"=>reformat($article['title'], 100, 0, 1));
             </div>
             <? } ?>
             
-            <h1><?=!$article['title'] ? 'Без названия' : reformat($article['title'], 59, 0, 1) ?></h1>
+            <h1><?=!$article['title'] ? 'Р‘РµР· РЅР°Р·РІР°РЅРёСЏ' : reformat($article['title'], 59, 0, 1) ?></h1>
             
             <div class="interview-body utxt" id="interview" style="font-size: <?php echo $fs;?>px">
                 <?//=reformat($article['msgtext'], 55, 0, 0, 1)?>
@@ -219,7 +219,7 @@ $crumbs[] = array("title"=>reformat($article['title'], 100, 0, 1));
             </div>
             <?php if(($count_tags = count($article['kwords']))>0) { ?>
         <div class="b-tags">
-        	<span class="b-tags__txt">Темы:</span>
+        	<span class="b-tags__txt">РўРµРјС‹:</span>
         	<ul class="b-tags__list">
         	   <?php foreach($article['kwords'] as $n=>$word) { ?> 
         		<li class="b-tags__item"><a class="b-tags__link" href="/articles/?tag=<?=$word['word_id']?>"><?=htmlspecialchars(reformat($word['name'], 25, 0, 1))?></a><?= ( ($count_tags != $n+1 )?", ":"")?></li>
@@ -228,7 +228,7 @@ $crumbs[] = array("title"=>reformat($article['title'], 100, 0, 1));
         </div>
         <?php } else {//if?>
         <div class="b-tags">
-        	<span class="b-tags__txt" style="display:none">Темы:</span>
+        	<span class="b-tags__txt" style="display:none">РўРµРјС‹:</span>
         	<ul class="b-tags__list">
         	</ul>
         </div>
@@ -249,23 +249,23 @@ $crumbs[] = array("title"=>reformat($article['title'], 100, 0, 1));
             
             <? if(isset($navigation['prev'])) { 
                 ?>
-                <a class="b-layout__link" href="<?=getFriendlyURL('article', $navigation['prev']['id'])?>">&laquo; <?=($navigation['prev']['title'] ? (reformat($navigation['prev']['title'], 32, 0, 1)) : 'Без названия')?></a>
+                <a class="b-layout__link" href="<?=getFriendlyURL('article', $navigation['prev']['id'])?>">&laquo; <?=($navigation['prev']['title'] ? (reformat($navigation['prev']['title'], 32, 0, 1)) : 'Р‘РµР· РЅР°Р·РІР°РЅРёСЏ')?></a>
             <? } else { 
                 /* ?>
-                <span>&laquo; предыдущая статья</span>
+                <span>&laquo; РїСЂРµРґС‹РґСѓС‰Р°СЏ СЃС‚Р°С‚СЊСЏ</span>
                 <? */
             } ?>
             &nbsp;&nbsp;&nbsp;
             <? if(isset($navigation['next'])) { ?>
-                <a class="b-layout__link" href="<?=getFriendlyURL('article', $navigation['next']['id'])?>"><?=($navigation['next']['title'] ? (reformat($navigation['next']['title'], 32, 0, 1)) : 'Без названия')?> &raquo;</a>
+                <a class="b-layout__link" href="<?=getFriendlyURL('article', $navigation['next']['id'])?>"><?=($navigation['next']['title'] ? (reformat($navigation['next']['title'], 32, 0, 1)) : 'Р‘РµР· РЅР°Р·РІР°РЅРёСЏ')?> &raquo;</a>
             <? } else { 
                 /* ?>
-                <span>следующая статья &raquo;</span>
+                <span>СЃР»РµРґСѓСЋС‰Р°СЏ СЃС‚Р°С‚СЊСЏ &raquo;</span>
                 <? */ 
             } ?>
 
         <? } ?>
         </div>
-        <a id="articles_back2" class="b-layout__link" href="javascript:void(0);">Вернуться к списку статей</a>
+        <a id="articles_back2" class="b-layout__link" href="javascript:void(0);">Р’РµСЂРЅСѓС‚СЊСЃСЏ Рє СЃРїРёСЃРєСѓ СЃС‚Р°С‚РµР№</a>
     </div>
 </div>

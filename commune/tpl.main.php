@@ -11,63 +11,63 @@ $gr_prm = $group_id === NULL ? '' : "gr={$group_id}&";
 $s_prm = !$search ? '' : "&search={$search}";
 
 
-$allCommCnt  = 0; // Всего сообществ.
-$pageCommCnt = 0; // Количество сообществ на данной странице.
-// Разделы.
+$allCommCnt  = 0; // Р’СЃРµРіРѕ СЃРѕРѕР±С‰РµСЃС‚РІ.
+$pageCommCnt = 0; // РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕРѕР±С‰РµСЃС‚РІ РЅР° РґР°РЅРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ.
+// Р Р°Р·РґРµР»С‹.
 if (!($commune_groups = commune::GetGroups()))
     $commune_groups = array();
 
-// начало нумерации сообществ для своей сортировки
+// РЅР°С‡Р°Р»Рѕ РЅСѓРјРµСЂР°С†РёРё СЃРѕРѕР±С‰РµСЃС‚РІ РґР»СЏ СЃРІРѕРµР№ СЃРѕСЂС‚РёСЂРѕРІРєРё
 $start_position = ($page - 1) * $limit;
 
 $pageCommCnt = count($communes);
 
-// Классы закладок.
+// РљР»Р°СЃСЃС‹ Р·Р°РєР»Р°РґРѕРє.
 $bmCls = getBookmarksStyles(commune::OM_CM_COUNT, $om);
 ?>
 
 <div class="b-community">
 <? include ('in_out_dialog.php');?>
 <? seo_start();?>  
-<a class="b-button b-button_flat b-button_flat_green b-button_float_right b-button_margbot_-10"  href="?site=Create">Создать сообщество</a>
+<a class="b-button b-button_flat b-button_flat_green b-button_float_right b-button_margbot_-10"  href="?site=Create">РЎРѕР·РґР°С‚СЊ СЃРѕРѕР±С‰РµСЃС‚РІРѕ</a>
 <?= seo_end();?>  
 
 
 <?php
 $crumbs = array();
 if(!$gr_id) {
-    //$crumbs[] = array("title"=>"Сообщества", "url"=>"");
+    //$crumbs[] = array("title"=>"РЎРѕРѕР±С‰РµСЃС‚РІР°", "url"=>"");
 } else {
-    $crumbs[] = array("title"=>"Сообщества", "url"=>"/commune/");
+    $crumbs[] = array("title"=>"РЎРѕРѕР±С‰РµСЃС‚РІР°", "url"=>"/commune/");
     $crumbs[] = array("title"=>$sGroup, "url"=>"");
 }
 ?>
-<? /*= $gr_id ? getCrumbs($crumbs, "commune") : '<h1 class="b-page__title">Сообщества фрилансеров</h1>' */?>
+<? /*= $gr_id ? getCrumbs($crumbs, "commune") : '<h1 class="b-page__title">РЎРѕРѕР±С‰РµСЃС‚РІР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</h1>' */?>
 <?= getCrumbs($crumbs, "commune")?>
-<h1 class="b-page__title">Сообщества фрилансеров</h1>
+<h1 class="b-page__title">РЎРѕРѕР±С‰РµСЃС‚РІР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</h1>
 
 <? ob_start(); ?>
 <div class="b-menu b-menu_line b-menu_clear_both">
     <ul class="b-menu__list b-menu__list_padleft_28ps" data-menu="true" data-menu-descriptor="community-list">
         <li class="b-menu__item<?= $bmCls[commune::OM_CM_BEST] ?>" <?=((!$bmCls[commune::OM_CM_BEST] || $page > 1) ? '' : 'data-menu-opener="true" data-menu-descriptor="community-list" ')?>>
-            <a href="?om=" class="b-menu__link "><span class="b-menu__b1">Лучшие</span></a>
+            <a href="?om=" class="b-menu__link "><span class="b-menu__b1">Р›СѓС‡С€РёРµ</span></a>
         </li>
         <? seo_start();?>  
         <li class="b-menu__item<?= $bmCls[commune::OM_CM_POPULAR] ?>" <?=((!$bmCls[commune::OM_CM_POPULAR] || $page > 1) ? '' : 'data-menu-opener="true" data-menu-descriptor="community-list" ')?>>
-    		<a href="?om=<?= commune::OM_CM_POPULAR ?>" class="b-menu__link "><span class="b-menu__b1">Популярные</span></a>
+    		<a href="?om=<?= commune::OM_CM_POPULAR ?>" class="b-menu__link "><span class="b-menu__b1">РџРѕРїСѓР»СЏСЂРЅС‹Рµ</span></a>
         </li>
         <li class="b-menu__item<?= $bmCls[commune::OM_CM_ACTUAL] ?>" <?=((!$bmCls[commune::OM_CM_ACTUAL] || $page > 1) ? '' : 'data-menu-opener="true" data-menu-descriptor="community-list" ')?>>
-           	<a href="?om=<?= commune::OM_CM_ACTUAL ?>" class="b-menu__link "><span class="b-menu__b1">Актуальные</span></a>
+           	<a href="?om=<?= commune::OM_CM_ACTUAL ?>" class="b-menu__link "><span class="b-menu__b1">РђРєС‚СѓР°Р»СЊРЅС‹Рµ</span></a>
         </li>
         <li class="b-menu__item<?= $bmCls[commune::OM_CM_NEW] ?>" <?=((!$bmCls[commune::OM_CM_NEW] || $page > 1) ? '' : 'data-menu-opener="true" data-menu-descriptor="community-list" ')?>>
-           	<a href="?om=<?= commune::OM_CM_NEW ?>" class="b-menu__link "><span class="b-menu__b1">Новые</span></a>
+           	<a href="?om=<?= commune::OM_CM_NEW ?>" class="b-menu__link "><span class="b-menu__b1">РќРѕРІС‹Рµ</span></a>
         </li>
         <?php if(get_uid(false)) { ?>
         <li class="b-menu__item<?= $bmCls[commune::OM_CM_MY] ?>" <?=((!$bmCls[commune::OM_CM_MY] || $page > 1) ? '' : 'data-menu-opener="true" data-menu-descriptor="community-list" ')?>>
-            <a href="?om=<?= commune::OM_CM_MY ?>" class="b-menu__link "><span class="b-menu__b1">Я создал</span></a>
+            <a href="?om=<?= commune::OM_CM_MY ?>" class="b-menu__link "><span class="b-menu__b1">РЇ СЃРѕР·РґР°Р»</span></a>
         </li>
         <li class="b-menu__item<?= $bmCls[commune::OM_CM_JOINED] ?>" <?=((!$bmCls[commune::OM_CM_JOINED] || $page > 1) ? '' : 'data-menu-opener="true" data-menu-descriptor="community-list" ')?>>
-            <a href="?om=<?= commune::OM_CM_JOINED ?>" class="b-menu__link "><span class="b-menu__b1">Я вступил</span></a>
+            <a href="?om=<?= commune::OM_CM_JOINED ?>" class="b-menu__link "><span class="b-menu__b1">РЇ РІСЃС‚СѓРїРёР»</span></a>
         </li>
         <?php } ?>
         <li class="b-menu__item b-menu__item_promo b-page__desktop"><?php require_once($_SERVER['DOCUMENT_ROOT'] . "/banner_promo.php"); ?></li>
@@ -85,12 +85,12 @@ if(!$gr_id) {
                 <tr class="b-search__tr">
                     <td class="b-search__input">
                             <div class="b-input b-input_height_24">
-                                <input type="text" name="search" class="b-input__text" id="b-input" value="<?= htmlspecialchars(stripslashes($_GET['search'])); ?>" placeholder="<?php if(!$_GET['search']) { ?>Найти сообщество, пост, комментарий<?php } else {  htmlspecialchars(stripslashes($_GET['search']));  } ?>">
+                                <input type="text" name="search" class="b-input__text" id="b-input" value="<?= htmlspecialchars(stripslashes($_GET['search'])); ?>" placeholder="<?php if(!$_GET['search']) { ?>РќР°Р№С‚Рё СЃРѕРѕР±С‰РµСЃС‚РІРѕ, РїРѕСЃС‚, РєРѕРјРјРµРЅС‚Р°СЂРёР№<?php } else {  htmlspecialchars(stripslashes($_GET['search']));  } ?>">
                                 <input type="hidden" name="om" value="<?= $om;?>">
                             </div>
                     </td>
                     <td class="b-search__button b-search__button_padleft_10">
-                        <a href="javascript:void(0)" onclick="$('search_frm').submit()" class="b-button b-button_flat b-button_flat_grey">Найти</a>
+                        <a href="javascript:void(0)" onclick="$('search_frm').submit()" class="b-button b-button_flat b-button_flat_grey">РќР°Р№С‚Рё</a>
                     </td>
                 </tr>
             </table>
@@ -103,17 +103,17 @@ if(!$gr_id) {
             <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_bold">
             <?php
                 switch ($om) {
-                    case commune::OM_CM_BEST : print(!$is_empty_commune ? 'Первыми стоят сообщества с самым большим рейтингом' : 'Сообществ нет');
+                    case commune::OM_CM_BEST : print(!$is_empty_commune ? 'РџРµСЂРІС‹РјРё СЃС‚РѕСЏС‚ СЃРѕРѕР±С‰РµСЃС‚РІР° СЃ СЃР°РјС‹Рј Р±РѕР»СЊС€РёРј СЂРµР№С‚РёРЅРіРѕРј' : 'РЎРѕРѕР±С‰РµСЃС‚РІ РЅРµС‚');
                         break;
-                    case commune::OM_CM_POPULAR : print(!$is_empty_commune ? 'Первыми стоят сообщества с наибольшим количеством участников' : 'Сообществ нет');
+                    case commune::OM_CM_POPULAR : print(!$is_empty_commune ? 'РџРµСЂРІС‹РјРё СЃС‚РѕСЏС‚ СЃРѕРѕР±С‰РµСЃС‚РІР° СЃ РЅР°РёР±РѕР»СЊС€РёРј РєРѕР»РёС‡РµСЃС‚РІРѕРј СѓС‡Р°СЃС‚РЅРёРєРѕРІ' : 'РЎРѕРѕР±С‰РµСЃС‚РІ РЅРµС‚');
                         break;
-                    case commune::OM_CM_ACTUAL: print(!$is_empty_commune ? 'Первыми стоят сообщества, в которых недавно наблюдалась активность' : 'Сообществ нет');
+                    case commune::OM_CM_ACTUAL: print(!$is_empty_commune ? 'РџРµСЂРІС‹РјРё СЃС‚РѕСЏС‚ СЃРѕРѕР±С‰РµСЃС‚РІР°, РІ РєРѕС‚РѕСЂС‹С… РЅРµРґР°РІРЅРѕ РЅР°Р±Р»СЋРґР°Р»Р°СЃСЊ Р°РєС‚РёРІРЅРѕСЃС‚СЊ' : 'РЎРѕРѕР±С‰РµСЃС‚РІ РЅРµС‚');
                         break;
-                    case commune::OM_CM_NEW : print(!$is_empty_commune ? 'Первыми стоят сообщества, созданные позже' : 'Сообществ нет');
+                    case commune::OM_CM_NEW : print(!$is_empty_commune ? 'РџРµСЂРІС‹РјРё СЃС‚РѕСЏС‚ СЃРѕРѕР±С‰РµСЃС‚РІР°, СЃРѕР·РґР°РЅРЅС‹Рµ РїРѕР·Р¶Рµ' : 'РЎРѕРѕР±С‰РµСЃС‚РІ РЅРµС‚');
                         break;
-                    case commune::OM_CM_MY : print(!$is_empty_commune ? 'Сообщества, которые вы создали' : 'Вы еще не создали ни одного сообщества' );
+                    case commune::OM_CM_MY : print(!$is_empty_commune ? 'РЎРѕРѕР±С‰РµСЃС‚РІР°, РєРѕС‚РѕСЂС‹Рµ РІС‹ СЃРѕР·РґР°Р»Рё' : 'Р’С‹ РµС‰Рµ РЅРµ СЃРѕР·РґР°Р»Рё РЅРё РѕРґРЅРѕРіРѕ СЃРѕРѕР±С‰РµСЃС‚РІР°' );
                         break;
-                    case commune::OM_CM_JOINED : print(!$is_empty_commune ? 'Первыми стоят сообщества, в которые вы вступили позже' : 'Вы еще не вступили ни в одно сообщество');
+                    case commune::OM_CM_JOINED : print(!$is_empty_commune ? 'РџРµСЂРІС‹РјРё СЃС‚РѕСЏС‚ СЃРѕРѕР±С‰РµСЃС‚РІР°, РІ РєРѕС‚РѕСЂС‹Рµ РІС‹ РІСЃС‚СѓРїРёР»Рё РїРѕР·Р¶Рµ' : 'Р’С‹ РµС‰Рµ РЅРµ РІСЃС‚СѓРїРёР»Рё РЅРё РІ РѕРґРЅРѕ СЃРѕРѕР±С‰РµСЃС‚РІРѕ');
                         break;
                 }
 			?>
@@ -123,21 +123,21 @@ if(!$gr_id) {
         <?php if ($om == commune::OM_CM_JOINED && !$is_empty_commune) { 
             $href = '/commune/?'.$gr_prm.($om ? 'om='.$om : ''); ?>
             <div class="b-layout__txt b-layout__txt_padbot_20">
-                Отсортировать
+                РћС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ
                 <div class="b-filter" style="z-index: 10; ">
                     <div class="b-filter__body">
                         <a href="#" class="b-filter__link b-filter__link_ie7_top_3 b-filter__link_dot_0f71c8 b-layout__link_fontsize_13">
                             <?
                                 switch ($sub_om) {
-                                    case commune::OM_CM_JOINED_ACCEPTED : print('по дате вступления');
+                                    case commune::OM_CM_JOINED_ACCEPTED : print('РїРѕ РґР°С‚Рµ РІСЃС‚СѓРїР»РµРЅРёСЏ');
                                         break;
-                                    case commune::OM_CM_JOINED_CREATED : print('по дате создания сообщества');
+                                    case commune::OM_CM_JOINED_CREATED : print('РїРѕ РґР°С‚Рµ СЃРѕР·РґР°РЅРёСЏ СЃРѕРѕР±С‰РµСЃС‚РІР°');
                                         break;
-                                    case commune::OM_CM_JOINED_BEST : print('по рейтингу сообщества');
+                                    case commune::OM_CM_JOINED_BEST : print('РїРѕ СЂРµР№С‚РёРЅРіСѓ СЃРѕРѕР±С‰РµСЃС‚РІР°');
                                         break;
-                                    case commune::OM_CM_JOINED_LAST : print('по дате последней темы в сообществе');
+                                    case commune::OM_CM_JOINED_LAST : print('РїРѕ РґР°С‚Рµ РїРѕСЃР»РµРґРЅРµР№ С‚РµРјС‹ РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ');
                                         break;
-                                    case commune::OM_CM_JOINED_MY : print('по моим предпочтениям');
+                                    case commune::OM_CM_JOINED_MY : print('РїРѕ РјРѕРёРј РїСЂРµРґРїРѕС‡С‚РµРЅРёСЏРј');
                                         break;
                                 }
                             ?>
@@ -147,23 +147,23 @@ if(!$gr_id) {
                                         <div class="b-shadow__body b-shadow__body_pad_15 b-shadow__body_bg_fff">
                                             <ul class="b-filter__list">
                                                 <li class="b-filter__item b-filter__item_padbot_10 b-filter__item_lineheight_1 b-filter__item_msie_lineheight_15">
-                                                    <a class="b-filter__link<? if ($sub_om != commune::OM_CM_JOINED_ACCEPTED) { ?> b-filter__link_dot_0f71c8<? } else { ?> b-filter__link_no<? } ?>" onclick="window.location='<?=$href?>&sub_om=<?=commune::OM_CM_JOINED_ACCEPTED?>'">по дате вступления</a>
+                                                    <a class="b-filter__link<? if ($sub_om != commune::OM_CM_JOINED_ACCEPTED) { ?> b-filter__link_dot_0f71c8<? } else { ?> b-filter__link_no<? } ?>" onclick="window.location='<?=$href?>&sub_om=<?=commune::OM_CM_JOINED_ACCEPTED?>'">РїРѕ РґР°С‚Рµ РІСЃС‚СѓРїР»РµРЅРёСЏ</a>
                                                     <span class="b-filter__marker b-filter__marker_top_4 b-filter__marker_galka<? if ($sub_om != commune::OM_CM_JOINED_ACCEPTED) { ?> b-filter__marker_hide<? } ?>"></span>
                                                 </li>
                                                 <li class="b-filter__item b-filter__item_padbot_10 b-filter__item_lineheight_1 b-filter__item_msie_lineheight_15">
-                                                    <a class="b-filter__link<? if ($sub_om != commune::OM_CM_JOINED_CREATED) { ?> b-filter__link_dot_0f71c8<? } else { ?> b-filter__link_no<? } ?>" onclick="window.location='<?=$href?>&sub_om=<?=commune::OM_CM_JOINED_CREATED?>'">по дате создания сообщества</a>
+                                                    <a class="b-filter__link<? if ($sub_om != commune::OM_CM_JOINED_CREATED) { ?> b-filter__link_dot_0f71c8<? } else { ?> b-filter__link_no<? } ?>" onclick="window.location='<?=$href?>&sub_om=<?=commune::OM_CM_JOINED_CREATED?>'">РїРѕ РґР°С‚Рµ СЃРѕР·РґР°РЅРёСЏ СЃРѕРѕР±С‰РµСЃС‚РІР°</a>
                                                     <span class="b-filter__marker b-filter__marker_top_4 b-filter__marker_galka<? if ($sub_om != commune::OM_CM_JOINED_CREATED) { ?> b-filter__marker_hide<? } ?>"></span>
                                                 </li>
                                                 <li class="b-filter__item b-filter__item_padbot_10 b-filter__item_lineheight_1 b-filter__item_msie_lineheight_15">
-                                                    <a class="b-filter__link<? if ($sub_om != commune::OM_CM_JOINED_BEST) { ?> b-filter__link_dot_0f71c8<? } else { ?> b-filter__link_no<? } ?>" onclick="window.location='<?=$href?>&sub_om=<?=commune::OM_CM_JOINED_BEST?>'">по рейтингу сообщества</a>
+                                                    <a class="b-filter__link<? if ($sub_om != commune::OM_CM_JOINED_BEST) { ?> b-filter__link_dot_0f71c8<? } else { ?> b-filter__link_no<? } ?>" onclick="window.location='<?=$href?>&sub_om=<?=commune::OM_CM_JOINED_BEST?>'">РїРѕ СЂРµР№С‚РёРЅРіСѓ СЃРѕРѕР±С‰РµСЃС‚РІР°</a>
                                                     <span class="b-filter__marker b-filter__marker_top_4 b-filter__marker_galka<? if ($sub_om != commune::OM_CM_JOINED_BEST) { ?> b-filter__marker_hide<? } ?>"></span>
                                                 </li>
                                                 <li class="b-filter__item b-filter__item_padbot_10 b-filter__item_lineheight_1 b-filter__item_msie_lineheight_15">
-                                                    <a class="b-filter__link<? if ($sub_om != commune::OM_CM_JOINED_LAST) { ?> b-filter__link_dot_0f71c8<? } else { ?> b-filter__link_no<? } ?>"onclick="window.location='<?=$href?>&sub_om=<?=commune::OM_CM_JOINED_LAST?>'">по дате последней темы в сообществе</a>
+                                                    <a class="b-filter__link<? if ($sub_om != commune::OM_CM_JOINED_LAST) { ?> b-filter__link_dot_0f71c8<? } else { ?> b-filter__link_no<? } ?>"onclick="window.location='<?=$href?>&sub_om=<?=commune::OM_CM_JOINED_LAST?>'">РїРѕ РґР°С‚Рµ РїРѕСЃР»РµРґРЅРµР№ С‚РµРјС‹ РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ</a>
                                                     <span class="b-filter__marker b-filter__marker_top_4  b-filter__marker_galka<? if ($sub_om != commune::OM_CM_JOINED_LAST) { ?> b-filter__marker_hide<? } ?>"></span>
                                                 </li>
                                                 <li class="b-filter__item b-filter__item_padbot_3 b-filter__item_lineheight_1 b-filter__item_msie_lineheight_15">
-                                                    <a class="b-filter__link<? if ($sub_om != commune::OM_CM_JOINED_MY) { ?> b-filter__link_dot_0f71c8<? } else { ?> b-filter__link_no<? } ?>"onclick="window.location='<?=$href?>&sub_om=<?=commune::OM_CM_JOINED_MY?>'">по моим предпочтениям</a>
+                                                    <a class="b-filter__link<? if ($sub_om != commune::OM_CM_JOINED_MY) { ?> b-filter__link_dot_0f71c8<? } else { ?> b-filter__link_no<? } ?>"onclick="window.location='<?=$href?>&sub_om=<?=commune::OM_CM_JOINED_MY?>'">РїРѕ РјРѕРёРј РїСЂРµРґРїРѕС‡С‚РµРЅРёСЏРј</a>
                                                     <span class="b-filter__marker b-filter__marker_top_4  b-filter__marker_galka<? if ($sub_om != commune::OM_CM_JOINED_MY) { ?> b-filter__marker_hide<? } ?>"></span>
                                                 </li>
                                             </ul>
@@ -175,7 +175,7 @@ if(!$gr_id) {
                 
         <? //__commPrintPage( $page, $communes, $groupCommCnt, $sub_om, $search )?>
         <? include(ABS_PATH . "/commune/tpl.communes_list.php"); ?>
-        <?//= ($is_empty_commune && $om !== commune::OM_CM_MY ? '<div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_bold">Сообществ нет</div>' : '') ?>
+        <?//= ($is_empty_commune && $om !== commune::OM_CM_MY ? '<div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_bold">РЎРѕРѕР±С‰РµСЃС‚РІ РЅРµС‚</div>' : '') ?>
 
         <?
         $uq = array();
@@ -198,39 +198,39 @@ if(!$gr_id) {
                     <div class="b-menu__number b-menu__number_fontsize_11">
                     </div>
                     <? if ($rating) { ?>
-                        <a class="b-menu__link" href="?rating=">C любым рейтингом</a>
+                        <a class="b-menu__link" href="?rating=">C Р»СЋР±С‹Рј СЂРµР№С‚РёРЅРіРѕРј</a>
                     <? } else { ?>
-                        <a class="b-menu__link b-menu__h" style="color: #000;" href="?rating=">C любым рейтингом</a>
+                        <a class="b-menu__link b-menu__h" style="color: #000;" href="?rating=">C Р»СЋР±С‹Рј СЂРµР№С‚РёРЅРіРѕРј</a>
                     <? } ?>
                 </li>
                 <li class="b-menu__item b-menu__item_padbot_5">
                     <div class="b-menu__number b-menu__number_fontsize_11">
                     </div>
                     <? if ($rating != 'bronze') { ?>
-                        <a class="b-menu__link" href="?rating=bronze">Бронзовые</a>
-                        <span class="b-menu__txt b-menu__txt_fontsize_11">&nbsp;с рейтингом от 50</span>
+                        <a class="b-menu__link" href="?rating=bronze">Р‘СЂРѕРЅР·РѕРІС‹Рµ</a>
+                        <span class="b-menu__txt b-menu__txt_fontsize_11">&nbsp;СЃ СЂРµР№С‚РёРЅРіРѕРј РѕС‚ 50</span>
                     <? } else { ?>
-                        <a class="b-menu__link b-menu__h" style="color: #000;" href="?rating=bronze">Бронзовые</a>
+                        <a class="b-menu__link b-menu__h" style="color: #000;" href="?rating=bronze">Р‘СЂРѕРЅР·РѕРІС‹Рµ</a>
                     <? } ?>
                 </li>
                 <li class="b-menu__item b-menu__item_padbot_5">
                     <div class="b-menu__number b-menu__number_fontsize_11">
                     </div>
                     <? if ($rating != 'silver') { ?>
-                        <a class="b-menu__link" href="?rating=silver">Серебряные</a>
-                        <span class="b-menu__txt b-menu__txt_fontsize_11">&nbsp;от 200</span>
+                        <a class="b-menu__link" href="?rating=silver">РЎРµСЂРµР±СЂСЏРЅС‹Рµ</a>
+                        <span class="b-menu__txt b-menu__txt_fontsize_11">&nbsp;РѕС‚ 200</span>
                     <? } else { ?>
-                        <a class="b-menu__link b-menu__h" style="color: #000;" href="?rating=silver">Серебряные</a>
+                        <a class="b-menu__link b-menu__h" style="color: #000;" href="?rating=silver">РЎРµСЂРµР±СЂСЏРЅС‹Рµ</a>
                     <? } ?>
                 </li>
                 <li class="b-menu__item b-menu__item_padbot_5">
                     <div class="b-menu__number b-menu__number_fontsize_11">
                     </div>
                     <? if ($rating != 'gold') { ?>
-                        <a class="b-menu__link" href="?rating=gold">Золотые</a>
-                        <span class="b-menu__txt b-menu__txt_fontsize_11">&nbsp;от 1000</span>
+                        <a class="b-menu__link" href="?rating=gold">Р—РѕР»РѕС‚С‹Рµ</a>
+                        <span class="b-menu__txt b-menu__txt_fontsize_11">&nbsp;РѕС‚ 1000</span>
                     <? } else { ?>
-                        <a class="b-menu__link b-menu__h" style="color: #000;" href="?rating=gold">Золотые</a>
+                        <a class="b-menu__link b-menu__h" style="color: #000;" href="?rating=gold">Р—РѕР»РѕС‚С‹Рµ</a>
                     <? } ?>
                 </li>
             </ul>
@@ -271,9 +271,9 @@ if(!$gr_id) {
                 <li class="b-menu__item b-menu__item_padbot_5">
                     <div class="b-menu__number b-menu__number_fontsize_11"><?= $cnt ?></div>
                     <? if ( $group_id === NULL && $page == 1 ) { ?>
-                        <a class="b-menu__link b-menu__h" style="color: #000;" href="/commune/<?= ($om ? '?om='.$om : '') ?>">Все сообщества</a>
+                        <a class="b-menu__link b-menu__h" style="color: #000;" href="/commune/<?= ($om ? '?om='.$om : '') ?>">Р’СЃРµ СЃРѕРѕР±С‰РµСЃС‚РІР°</a>
                     <? } else { ?>
-                        <a class="b-menu__link" href="/commune/<?= ($om ? '?om='.$om : '') ?>">Все сообщества</a>
+                        <a class="b-menu__link" href="/commune/<?= ($om ? '?om='.$om : '') ?>">Р’СЃРµ СЃРѕРѕР±С‰РµСЃС‚РІР°</a>
                     <? } ?>
                 </li>
                 <?= $html ?>

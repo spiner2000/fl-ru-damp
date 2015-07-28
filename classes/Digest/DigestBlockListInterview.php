@@ -3,19 +3,19 @@
 require_once 'DigestBlockList.php';
 
 /**
- * Класс для работы с блоком "Интервью"
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р»РѕРєРѕРј "РРЅС‚РµСЂРІСЊСЋ"
  */
 class DigestBlockListInterview extends DigestBlockList {
     
     /**
-     * Возможность добавлять дополнительные поля
+     * Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РґРѕР±Р°РІР»СЏС‚СЊ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ
      * 
      * @var boolean 
      */
     const ADD_FIELD = true;
     
     /**
-     * Маска валидации и проверки ссылки
+     * РњР°СЃРєР° РІР°Р»РёРґР°С†РёРё Рё РїСЂРѕРІРµСЂРєРё СЃСЃС‹Р»РєРё
      * 
      * @var string 
      */
@@ -25,19 +25,19 @@ class DigestBlockListInterview extends DigestBlockList {
      * @see parent::$title
      * @var string 
      */
-    public $title = '<a class="b-layout__link" href="/interview/" target="_blank">Интервью</a>';
+    public $title = '<a class="b-layout__link" href="/interview/" target="_blank">РРЅС‚РµСЂРІСЊСЋ</a>';
     
     /**
      * @see parent::$hint
      * @var string 
      */
-    public $hint  = 'Например: https://www.free-lance.ru/interview/100/example.html';
+    public $hint  = 'РќР°РїСЂРёРјРµСЂ: https://www.free-lance.ru/interview/100/example.html';
     
     /**
      * @see parent::$title_field
      * @var string 
      */
-    public $title_field = 'Ссылки на интервью:';
+    public $title_field = 'РЎСЃС‹Р»РєРё РЅР° РёРЅС‚РµСЂРІСЊСЋ:';
     
     
     /**

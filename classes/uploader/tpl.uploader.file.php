@@ -9,7 +9,7 @@
     <table class="b-icon-layout wdh100">
         <tr>
             <td class="b-icon-layout__icon"><img class="b-fon__loader load-spinner" src="/images/load_fav_btn.gif" alt="" width="24" height="24" /></td>
-            <td class="b-icon-layout__files qq-upload-spinner-text">Идет загрузка файла…</td>
+            <td class="b-icon-layout__files qq-upload-spinner-text">РРґРµС‚ Р·Р°РіСЂСѓР·РєР° С„Р°Р№Р»Р°вЂ¦</td>
             <td class="b-icon-layout__size">&nbsp;</td>
             <td class="b-icon-layout__operate">&nbsp;</td>
         </tr>

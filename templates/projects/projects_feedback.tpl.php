@@ -1,20 +1,20 @@
 <?php
 
 /**
- * Popup окошка для отправки отзыва и/или закрытии проекта
+ * Popup РѕРєРѕС€РєР° РґР»СЏ РѕС‚РїСЂР°РІРєРё РѕС‚Р·С‹РІР° Рё/РёР»Рё Р·Р°РєСЂС‹С‚РёРё РїСЂРѕРµРєС‚Р°
  */
 
 ?>
 <div id="project_feedback_popup" class="b-shadow b-shadow_center b-shadow_width_520 b-shadow_hide b-shadow__quick b-shadow_zindex_110" style="display:block;">
   <div class="b-shadow__body b-shadow__body_pad_15_20">
    <h2 class="b-layout__title">
-       Завершение сотрудничества
+       Р—Р°РІРµСЂС€РµРЅРёРµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР°
    </h2>
    <div id="project_feedback_label" class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_10">
-       Завершая сотрудничество, вы подтверждаете возможность закрыть проект и обменяться отзывами.
+       Р—Р°РІРµСЂС€Р°СЏ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ, РІС‹ РїРѕРґС‚РІРµСЂР¶РґР°РµС‚Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚СЊ РїСЂРѕРµРєС‚ Рё РѕР±РјРµРЅСЏС‚СЊСЃСЏ РѕС‚Р·С‹РІР°РјРё.
    </div>
    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_10">
-       Ваш отзыв о сотрудничестве:
+       Р’Р°С€ РѕС‚Р·С‹РІ Рѕ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРµ:
    </div>
    <div class="b-layout b-layout_padleft_20">
        <form action="" method="post">
@@ -23,23 +23,23 @@
        <div class="b-radio b-radio_layout_horizontal">
           <div class="b-radio__item b-radio__item_padbot_20 b-radio__item_padright_20">
               <input data-validators="rating" type="radio" value="1" name="rating" class="b-radio__input" id="plus">
-              <label for="plus" class="b-radio__label b-radio__label_fontsize_13 b-radio__label_color_6db335">Положительный</label>
+              <label for="plus" class="b-radio__label b-radio__label_fontsize_13 b-radio__label_color_6db335">РџРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№</label>
           </div>
           <div class="b-radio__item b-radio__item_padbot_20">
               <input data-validators="rating" type="radio" value="-1" name="rating" class="b-radio__input" id="minus">
-              <label for="minus" class="b-radio__label b-radio__label_fontsize_13 b-radio__label_color_c10600">Отрицательный</label>
+              <label for="minus" class="b-radio__label b-radio__label_fontsize_13 b-radio__label_color_c10600">РћС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№</label>
           </div>
        </div>
        <div class="b-textarea">
-           <textarea data-validators="maxLength:500" class="b-textarea__textarea b-textarea__textarea_italic" rows="5" cols="80" maxlength="500" name="feedback" placeholder="Введите текст отзыва"></textarea>
+           <textarea data-validators="maxLength:500" class="b-textarea__textarea b-textarea__textarea_italic" rows="5" cols="80" maxlength="500" name="feedback" placeholder="Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚ РѕС‚Р·С‹РІР°"></textarea>
        </div> 
-       <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">Максимальная длина отзыва &mdash; 500 символов.</div>      
+       <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° РѕС‚Р·С‹РІР° &mdash; 500 СЃРёРјРІРѕР»РѕРІ.</div>      
        <div class="b-buttons b-buttons_padtop_20">
              <a href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green" onclick="ProjectsFeedback.submit();">
-                 <span id="project_feedback_submit_label">Закрыть проект</span>
+                 <span id="project_feedback_submit_label">Р—Р°РєСЂС‹С‚СЊ РїСЂРѕРµРєС‚</span>
              </a>
-             <span class="b-layout__txt b-layout__txt_fontsize_11">&#160; или 
-                 <a class="b-layout__link" href="javascript:void(0);" onclick="ProjectsFeedback.close();">продолжить сотрудничество</a>
+             <span class="b-layout__txt b-layout__txt_fontsize_11">&#160; РёР»Рё 
+                 <a class="b-layout__link" href="javascript:void(0);" onclick="ProjectsFeedback.close();">РїСЂРѕРґРѕР»Р¶РёС‚СЊ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ</a>
              </span>
        </div>
        </form>

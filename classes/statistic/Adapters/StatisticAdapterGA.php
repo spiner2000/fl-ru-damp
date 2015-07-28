@@ -4,13 +4,13 @@ require_once(ABS_PATH . "/classes/vendors/UniversalAnalytics/vendor/autoload.php
 require_once(ABS_PATH . "/classes/statistic/Adapters/AbstractStatisticAdapter.php");
 
 /**
- *  Адаптер для работы с сервисом Google Analitics с помощью сторонней библиотеки. 
- *  Здесь реализуются бизнес логика отправки статистики. 
+ *  РђРґР°РїС‚РµСЂ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЃРµСЂРІРёСЃРѕРј Google Analitics СЃ РїРѕРјРѕС‰СЊСЋ СЃС‚РѕСЂРѕРЅРЅРµР№ Р±РёР±Р»РёРѕС‚РµРєРё. 
+ *  Р—РґРµСЃСЊ СЂРµР°Р»РёР·СѓСЋС‚СЃСЏ Р±РёР·РЅРµСЃ Р»РѕРіРёРєР° РѕС‚РїСЂР°РІРєРё СЃС‚Р°С‚РёСЃС‚РёРєРё. 
  */
 class StatisticAdapterGA extends AbstractStatisticAdapter
 {
     /**
-     * Инициализация сервиса
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃРµСЂРІРёСЃР°
      */
     public function initService() 
     {
@@ -18,8 +18,8 @@ class StatisticAdapterGA extends AbstractStatisticAdapter
     }
     
     /**
-     * Отправить статистику о количестве разосланных писем по рассылке проектов фрилансерам 
-     * групированную по годам регистрации
+     * РћС‚РїСЂР°РІРёС‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ Рѕ РєРѕР»РёС‡РµСЃС‚РІРµ СЂР°Р·РѕСЃР»Р°РЅРЅС‹С… РїРёСЃРµРј РїРѕ СЂР°СЃСЃС‹Р»РєРµ РїСЂРѕРµРєС‚РѕРІ С„СЂРёР»Р°РЅСЃРµСЂР°Рј 
+     * РіСЂСѓРїРёСЂРѕРІР°РЅРЅСѓСЋ РїРѕ РіРѕРґР°Рј СЂРµРіРёСЃС‚СЂР°С†РёРё
      * 
      * @param array $data
      * @param int $timestamp
@@ -32,8 +32,8 @@ class StatisticAdapterGA extends AbstractStatisticAdapter
     
     
     /**
-     * Отправить статистику о количестве разосланных писем по рассылке проектов работодателям 
-     * групированную по годам регистрации
+     * РћС‚РїСЂР°РІРёС‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ Рѕ РєРѕР»РёС‡РµСЃС‚РІРµ СЂР°Р·РѕСЃР»Р°РЅРЅС‹С… РїРёСЃРµРј РїРѕ СЂР°СЃСЃС‹Р»РєРµ РїСЂРѕРµРєС‚РѕРІ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏРј 
+     * РіСЂСѓРїРёСЂРѕРІР°РЅРЅСѓСЋ РїРѕ РіРѕРґР°Рј СЂРµРіРёСЃС‚СЂР°С†РёРё
      * 
      * @param array $data
      * @param int $timestamp
@@ -46,7 +46,7 @@ class StatisticAdapterGA extends AbstractStatisticAdapter
     
     
     /**
-     * Отправить статистику о количестве разосланных писем по рассылке проектов
+     * РћС‚РїСЂР°РІРёС‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ Рѕ РєРѕР»РёС‡РµСЃС‚РІРµ СЂР°Р·РѕСЃР»Р°РЅРЅС‹С… РїРёСЃРµРј РїРѕ СЂР°СЃСЃС‹Р»РєРµ РїСЂРѕРµРєС‚РѕРІ
      * 
      * @param string $category
      * @param array $data
@@ -118,8 +118,8 @@ class StatisticAdapterGA extends AbstractStatisticAdapter
 
     
     /**
-     * Отправляет событие о покупке услуги
-     * @param type $is_emp Заказчик или фрилансер
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СЃРѕР±С‹С‚РёРµ Рѕ РїРѕРєСѓРїРєРµ СѓСЃР»СѓРіРё
+     * @param type $is_emp Р—Р°РєР°Р·С‡РёРє РёР»Рё С„СЂРёР»Р°РЅСЃРµСЂ
      * @param type $label 
      * @param type $value
      * @param type $cid
@@ -127,7 +127,7 @@ class StatisticAdapterGA extends AbstractStatisticAdapter
      */
     public function serviceWasPayed($is_emp, $label, $value, $cid = '', $from_account = false)
     {
-        //Пока только через кассу
+        //РџРѕРєР° С‚РѕР»СЊРєРѕ С‡РµСЂРµР· РєР°СЃСЃСѓ
         if ($from_account || !$label) {
             return null;
         }
@@ -152,7 +152,7 @@ class StatisticAdapterGA extends AbstractStatisticAdapter
     
     
     /**
-     * Событие по добавлению ответа фрилансером
+     * РЎРѕР±С‹С‚РёРµ РїРѕ РґРѕР±Р°РІР»РµРЅРёСЋ РѕС‚РІРµС‚Р° С„СЂРёР»Р°РЅСЃРµСЂРѕРј
      * @param string $cid
      * @param string $project_kind_ident
      * @param int $offer_count
@@ -184,7 +184,7 @@ class StatisticAdapterGA extends AbstractStatisticAdapter
     
     
     /**
-     * Обработать событие GA
+     * РћР±СЂР°Р±РѕС‚Р°С‚СЊ СЃРѕР±С‹С‚РёРµ GA
      * 
      * @param type $category
      * @param type $action

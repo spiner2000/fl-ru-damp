@@ -49,7 +49,7 @@ function mailer_sort_url($top, $bottom, $sort) {
 }
 $filter = array_filter($filter);
 $act = __paramInit('string', 'act');
-if($act == 'filter') { // Если запущен фильтр
+if($act == 'filter') { // Р•СЃР»Рё Р·Р°РїСѓС‰РµРЅ С„РёР»СЊС‚СЂ
     $filter['from'] = ($filter['from'] === null ? '' : $filter['from']);
     $filter['to']   = ($filter['to'] === null ? '' : $filter['to']);
 }
@@ -109,7 +109,7 @@ switch ($pAction) {
                 $error = true;
             }
             if($block->isCheck()) {
-                $check = true; // Хотя бы один блок
+                $check = true; // РҐРѕС‚СЏ Р±С‹ РѕРґРёРЅ Р±Р»РѕРє
             }
         }
         $blocks->sort();
@@ -153,7 +153,7 @@ switch ($pAction) {
             'filter_emp'    => $check_emp ? 0 : null,
             'user_id'       => get_uid(false),
             'type_send_regular' => 1,
-            'type_sending'  => '01', // только на почту
+            'type_sending'  => '01', // С‚РѕР»СЊРєРѕ РЅР° РїРѕС‡С‚Сѓ
             'date_sending'  => $date_sending,
             'subject'       => $title_mail,
             'message'       => $blocks->createHTMLMessage()
@@ -197,7 +197,7 @@ switch ($pAction) {
                 $error = true;
             }
             if($block->isCheck()) {
-                $check = true; // Хотя бы один блок
+                $check = true; // РҐРѕС‚СЏ Р±С‹ РѕРґРёРЅ Р±Р»РѕРє
             }
         }
         $blocks->sort();
@@ -254,7 +254,7 @@ switch ($pAction) {
                     exit;
                 }
                 
-                if($draft != 1) { // Рассылка инициирована, кидаем на главную
+                if($draft != 1) { // Р Р°СЃСЃС‹Р»РєР° РёРЅРёС†РёРёСЂРѕРІР°РЅР°, РєРёРґР°РµРј РЅР° РіР»Р°РІРЅСѓСЋ
                     header_location_exit("/siteadmin/mailer/");
                 }
             }

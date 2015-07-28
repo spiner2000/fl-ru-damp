@@ -4,13 +4,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
 $DB = new DB('master');
 $sql = "SELECT * FROM stat_login ORDER BY date DESC";
 $stats = $DB->rows($sql);
-$monthName = array(1=>"Январь", 2=>"Февраль", 3=>"Март", 4=>"Апрель", 5=>"Май", 6=>"Июнь", 7=>"Июль", 8=>"Август", 9=>"Сентябрь", 10=>"Октябрь", 11=>"Ноябрь", 12=>"Декабрь")
+$monthName = array(1=>"РЇРЅРІР°СЂСЊ", 2=>"Р¤РµРІСЂР°Р»СЊ", 3=>"РњР°СЂС‚", 4=>"РђРїСЂРµР»СЊ", 5=>"РњР°Р№", 6=>"РСЋРЅСЊ", 7=>"РСЋР»СЊ", 8=>"РђРІРіСѓСЃС‚", 9=>"РЎРµРЅС‚СЏР±СЂСЊ", 10=>"РћРєС‚СЏР±СЂСЊ", 11=>"РќРѕСЏР±СЂСЊ", 12=>"Р”РµРєР°Р±СЂСЊ")
 ?>
 
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
-	<td align="left"><strong>Статистика</strong></td>
-	<td align="right"><a href="/siteadmin/stats/charts.php">График</a></td>
+	<td align="left"><strong>РЎС‚Р°С‚РёСЃС‚РёРєР°</strong></td>
+	<td align="right"><a href="/siteadmin/stats/charts.php">Р“СЂР°С„РёРє</a></td>
 </tr>
 </table>
 
@@ -19,7 +19,7 @@ $monthName = array(1=>"Январь", 2=>"Февраль", 3=>"Март", 4=>"Апрель", 5=>"Май", 
 <?php $mUser = true; require_once ("top_menu.php"); ?>
 <br><br>
 <?if(count($stats) == 0) { ?>
-<strong>Статистика пустая</strong>
+<strong>РЎС‚Р°С‚РёСЃС‚РёРєР° РїСѓСЃС‚Р°СЏ</strong>
 <?} else {?>
 <table width="100%" cellpadding="3" cellspacing="0" style="border-bottom:1px black solid" class="brd-tbl">
 <?php foreach($stats as $stat) { ?>
@@ -32,9 +32,9 @@ $monthName = array(1=>"Январь", 2=>"Февраль", 3=>"Март", 4=>"Апрель", 5=>"Май", 
 <td width="15%"><strong><?=$monthName[date('m', strtotime($stat['date']))]?></strong></td><td>&nbsp;</td>
 </tr>
 <tr >
-<td width="15%">Фрилансеров:</td><td><strong><?=$stat['frl']?></strong></td></tr>
+<td width="15%">Р¤СЂРёР»Р°РЅСЃРµСЂРѕРІ:</td><td><strong><?=$stat['frl']?></strong></td></tr>
 <tr>
-<td width="15%">Работодателей:</td><td><strong><?=$stat['emp']?></strong></td>
+<td width="15%">Р Р°Р±РѕС‚РѕРґР°С‚РµР»РµР№:</td><td><strong><?=$stat['emp']?></strong></td>
 </tr>
 <?php $year = date('Y', strtotime($stat['date']));}//foreach?>
 </table>

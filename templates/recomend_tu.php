@@ -22,7 +22,7 @@
 
         $hasVideo = !empty($tservice['videos']) && count($tservice['videos']);
 
-        $sold_count = isset($tservice['count_sold']) ? $tservice['count_sold'] : $tservice['total_feedbacks'] // Ïîêà ñôèíñê íå ñ÷èòàåò âñå ïîêóïêè, áóäåì áðàòü îòçûâû. #0026584
+        $sold_count = isset($tservice['count_sold']) ? $tservice['count_sold'] : $tservice['total_feedbacks'] // ÐŸÐ¾ÐºÐ° ÑÑ„Ð¸Ð½ÑÐº Ð½Ðµ ÑÑ‡Ð¸Ñ‚Ð°ÐµÑ‚ Ð²ÑÐµ Ð¿Ð¾ÐºÑƒÐ¿ÐºÐ¸, Ð±ÑƒÐ´ÐµÐ¼ Ð±Ñ€Ð°Ñ‚ÑŒ Ð¾Ñ‚Ð·Ñ‹Ð²Ñ‹. #0026584
     ?>
 	<figure class="i-pic i-pic_pad_10 i-pic_height_265 i-pic_bord_green_hover">
             <div class="b-layout b-layout_relative">
@@ -32,7 +32,7 @@
                 </a>
                 <a onclick="TServices_Catalog.orderNow(this);" data-url="<?=$tservice_url?>" href="javascript:void(0);" class="b-pic__price-box b-pic__price-box_pay b-pic__price-box b-pic__price-box_noline"><?=tservices_helper::cost_format($tservice['price'],true)?>                
 				<?php if ($sold_count!=0) { ?>
-                    <span title="Êîëè÷åñòâî ïðîäàæ óñëóãè"><span class="b-icon b-icon__tu2 b-icon_top_2"></span> <?=number_format($sold_count, 0, '', ' ')?></span>
+                    <span title="ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¿Ñ€Ð¾Ð´Ð°Ð¶ ÑƒÑÐ»ÑƒÐ³Ð¸"><span class="b-icon b-icon__tu2 b-icon_top_2"></span> <?=number_format($sold_count, 0, '', ' ')?></span>
                 <?php } ?>
                 </a>
             </div>

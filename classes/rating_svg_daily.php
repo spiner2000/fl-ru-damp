@@ -1,6 +1,6 @@
 <?php
 /**
- * Класс для работы с месячным графиком
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РјРµСЃСЏС‡РЅС‹Рј РіСЂР°С„РёРєРѕРј
  */
 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/rating_svg.php");
@@ -12,7 +12,7 @@ class Rating_Svg_Daily extends Rating_Svg {
     private $_proDays = array();
 
     /**
-     * Инициализация
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ
      */
     public function init() {
         $this->_columns = date('t', $this->_time);
@@ -58,7 +58,7 @@ class Rating_Svg_Daily extends Rating_Svg {
     }
     
     /**
-     * Строит график
+     * РЎС‚СЂРѕРёС‚ РіСЂР°С„РёРє
      */
     public function createGraph() {
 
@@ -104,8 +104,8 @@ class Rating_Svg_Daily extends Rating_Svg {
             if ( !count($this->_data) || (date('Y-m', $t) == date('Y-m') && date('d', $t) > date('d')) || date('Y-m-d') == date('Y-m-d', $t))
                 continue;
 
-            // координаты линии
-            if ($i == 0) { // начало
+            // РєРѕРѕСЂРґРёРЅР°С‚С‹ Р»РёРЅРёРё
+            if ($i == 0) { // РЅР°С‡Р°Р»Рѕ
                 $x = 0;
                 $_rating = 0;
                 if(intval($max)) $_rating = ((!$this->_ratingData[$i] ? $this->_data[0]['rating'] : $this->_ratingData[$i]['rating']) + $h_diff) * $this->_graphSize[1] / $max * $this->_zoom;
@@ -159,7 +159,7 @@ class Rating_Svg_Daily extends Rating_Svg {
             $this->_last = $y;
             $r_last = $rating;
 
-            // закрываем сегмент, если тип следующего (ПРО/не ПРО) отличается от текущего
+            // Р·Р°РєСЂС‹РІР°РµРј СЃРµРіРјРµРЅС‚, РµСЃР»Рё С‚РёРї СЃР»РµРґСѓСЋС‰РµРіРѕ (РџР Рћ/РЅРµ РџР Рћ) РѕС‚Р»РёС‡Р°РµС‚СЃСЏ РѕС‚ С‚РµРєСѓС‰РµРіРѕ
 //            if((!in_array($i+1, $this->_pro) && in_array($i+2, $this->_pro))
 //                || (in_array($i+1, $this->_pro) && !in_array($i+2, $this->_pro))) {
 //
@@ -188,7 +188,7 @@ class Rating_Svg_Daily extends Rating_Svg {
 
         $this->drawPart();
 
-        // точки
+        // С‚РѕС‡РєРё
         $g = $this->doc->createElement('g');
         $g->setAttribute('id', 'dots_group');
         $g->setIdAttribute('id', true);
@@ -206,7 +206,7 @@ class Rating_Svg_Daily extends Rating_Svg {
     }
     
     /**
-     * Устанавливает на графике периоды ПРО
+     * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РЅР° РіСЂР°С„РёРєРµ РїРµСЂРёРѕРґС‹ РџР Рћ
      */
     private function _setPro() {
         $maxtime = mktime(0,0,0,date('m', $this->_time),date('t', $this->_time),date('Y', $this->_time));
@@ -298,7 +298,7 @@ class Rating_Svg_Daily extends Rating_Svg {
 
             $this->drawPart(1, 0);
 
-            // точки
+            // С‚РѕС‡РєРё
             $dots_group = $this->doc->createElement('g');
             $this->svg->appendChild($dots_group);
             foreach($this->_dots as $dot) {
@@ -318,7 +318,7 @@ class Rating_Svg_Daily extends Rating_Svg {
     }
     
     /**
-     * Вычисляет периоды ПРО
+     * Р’С‹С‡РёСЃР»СЏРµС‚ РїРµСЂРёРѕРґС‹ РџР Рћ
      */
     private function _setProDays() {
         $maxtime = mktime(0,0,0,date('m', $this->_time),date('t', $this->_time),date('Y', $this->_time));
@@ -353,7 +353,7 @@ class Rating_Svg_Daily extends Rating_Svg {
     }
     
     /**
-     * Возвращает максимальый рейтинг
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РјР°РєСЃРёРјР°Р»СЊС‹Р№ СЂРµР№С‚РёРЅРі
      *
      * @return int
      */
@@ -376,10 +376,10 @@ class Rating_Svg_Daily extends Rating_Svg {
     }
     
     /**
-     * Возвращает разниуц в днях между двумя датами
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЂР°Р·РЅРёСѓС† РІ РґРЅСЏС… РјРµР¶РґСѓ РґРІСѓРјСЏ РґР°С‚Р°РјРё
      *
-     * @param  string $date1 дата для сравнения
-     * @param  string $date2 дата для сравнения
+     * @param  string $date1 РґР°С‚Р° РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ
+     * @param  string $date2 РґР°С‚Р° РґР»СЏ СЃСЂР°РІРЅРµРЅРёСЏ
      * @return int
      */
     private function _date_diff($date1, $date2) {

@@ -26,7 +26,7 @@ define('ON_PAGE', 20);
 $type = 'users_all';
 $uid = get_uid(false);
 
-$string_query = 'ΐλεκρει';
+$string_query = 'ΠΠ»ΠµΠΊΡΠµΠΉ';
 $page = 1;
 $filter = false;
 

@@ -1,5 +1,5 @@
 <?
-// @todo Ïåðåêëþ÷åíèå âåðñòîê ñàéòà, ïîñëå âñåõ òåñòîâ óäàëèòü
+// @todo ÐŸÐµÑ€ÐµÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ Ð²ÐµÑ€ÑÑ‚Ð¾Ðº ÑÐ°Ð¹Ñ‚Ð°, Ð¿Ð¾ÑÐ»Ðµ Ð²ÑÐµÑ… Ñ‚ÐµÑÑ‚Ð¾Ð² ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ
 // #0017167
 //if($_COOKIE['template_site'] == 'template3.php') {
     include "template3.php";
@@ -7,11 +7,11 @@
 //}
 if(!defined('IN_STDF')) return "";    
 if (!$page_title)
-    $page_title = "Óäàëåííàÿ ðàáîòà (ôðè-ëàíñ) íà FL.ru";
+    $page_title = "Ð£Ð´Ð°Ð»ÐµÐ½Ð½Ð°Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ð° (Ñ„Ñ€Ð¸-Ð»Ð°Ð½Ñ) Ð½Ð° FL.ru";
 if (!$page_keyw)
-    $page_keyw = "ðàáîòà, èùó ðàáîòó, ïîèñê ðàáîòû, óäàëåííàÿ ðàáîòà, ôðè-ëàíñ";
+    $page_keyw = "Ñ€Ð°Ð±Ð¾Ñ‚Ð°, Ð¸Ñ‰Ñƒ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ, Ð¿Ð¾Ð¸ÑÐº Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹, ÑƒÐ´Ð°Ð»ÐµÐ½Ð½Ð°Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ð°, Ñ„Ñ€Ð¸-Ð»Ð°Ð½Ñ";
 if (!$page_descr)
-    $page_descr = "FL.ru ýòî ïðîôåññèîíàëüíûé ðåñóðñ, ïðåäíàçíà÷åííûé äëÿ ïîèñêà ðàáîòû èëè èñïîëíèòåëÿ (ôðèëàíñåðà) íà óäàëåííóþ ðàáîòó (ôðè-ëàíñ).";
+    $page_descr = "FL.ru ÑÑ‚Ð¾ Ð¿Ñ€Ð¾Ñ„ÐµÑÑÐ¸Ð¾Ð½Ð°Ð»ÑŒÐ½Ñ‹Ð¹ Ñ€ÐµÑÑƒÑ€Ñ, Ð¿Ñ€ÐµÐ´Ð½Ð°Ð·Ð½Ð°Ñ‡ÐµÐ½Ð½Ñ‹Ð¹ Ð´Ð»Ñ Ð¿Ð¾Ð¸ÑÐºÐ° Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ð¸Ð»Ð¸ Ð¸ÑÐ¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»Ñ (Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð°) Ð½Ð° ÑƒÐ´Ð°Ð»ÐµÐ½Ð½ÑƒÑŽ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ (Ñ„Ñ€Ð¸-Ð»Ð°Ð½Ñ).";
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/static_compress.php");
 $stc = new static_compress;
 
@@ -85,7 +85,7 @@ $page_descr = $page_title;
         </script>
         
         <? if ($rss_file) { ?>
-        <link rel="alternate" type="application/rss+xml" title="Ïðîåêòû/Ïðåäëîæåíèÿ" href="<?= $rss_file ?>" />
+        <link rel="alternate" type="application/rss+xml" title="ÐŸÑ€Ð¾ÐµÐºÑ‚Ñ‹/ÐŸÑ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ" href="<?= $rss_file ?>" />
         <? } ?>
     </head>
     <body<?php if (isset($onload)) { ?> onload="<?= $onload ?>"<?php } ?> class="<?= cssClassBody($body_class) ?> <?= BROWSER_NAME;?> <?= $body_additional_class?> <?php if(getOS()=='Macintosh') { ?>mac<?php } ?>">

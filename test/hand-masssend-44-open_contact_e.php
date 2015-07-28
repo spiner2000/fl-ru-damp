@@ -1,6 +1,6 @@
 <?php
 /**
- * Уведомление у которых еще не было никогда про, даже тестового
+ * РЈРІРµРґРѕРјР»РµРЅРёРµ Сѓ РєРѕС‚РѕСЂС‹С… РµС‰Рµ РЅРµ Р±С‹Р»Рѕ РЅРёРєРѕРіРґР° РїСЂРѕ, РґР°Р¶Рµ С‚РµСЃС‚РѕРІРѕРіРѕ
  * */
 ini_set('max_execution_time', '0');
 ini_set('memory_limit', '512M');
@@ -11,12 +11,12 @@ require_once '../classes/smtp2.php';
 require_once '../classes/users.php';
 
 /**
- * Логин пользователя от кого осуществляется рассылка
+ * Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РѕС‚ РєРѕРіРѕ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ СЂР°СЃСЃС‹Р»РєР°
  * 
  */
 $sender = 'admin';
 
-// Работодателям
+// Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЏРј
 $sql = "SELECT u.uid, u.email, u.login, u.uname, u.usurname, u.subscr, usk.key AS ukey
 FROM employer AS u
 LEFT JOIN users_subscribe_keys AS usk ON usk.uid = u.uid
@@ -26,7 +26,7 @@ WHERE substring(subscr from 8 for 1)::integer = 1 AND is_banned = B'0' AND is_pr
 
 $eHost = $GLOBALS['host'];
 
-$eSubject = "Free-lance.ru: у нас можно обмениваться контактами";
+$eSubject = "Free-lance.ru: Сѓ РЅР°СЃ РјРѕР¶РЅРѕ РѕР±РјРµРЅРёРІР°С‚СЊСЃСЏ РєРѕРЅС‚Р°РєС‚Р°РјРё";
 
 $mail = new smtp2;
 
@@ -69,7 +69,7 @@ ob_start(); ?><html>
     <tbody><tr>
         <td class="pad_null" bgcolor="#ffffff" width="20"></td>
         <td class="pad_null" width="20"></td>
-        <td class="pad_null" ><font color="#000000" size="6" face="tahoma,sans-serif">Здравствуйте!</font></td>
+        <td class="pad_null" ><font color="#000000" size="6" face="tahoma,sans-serif">Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!</font></td>
         <td class="pad_null"></td>
         <td class="pad_null"width="20"></td>
         <td class="pad_null" bgcolor="#ffffff" width="20"></td>
@@ -88,7 +88,7 @@ ob_start(); ?><html>
     <tr>
         <td class="pad_null" bgcolor="#ffffff" width="20"></td>
         <td class="pad_null" width="20"></td>
-        <td class="pad_null"><font color="#000000" size="2" face="tahoma,sans-serif">Напоминаем, что с 5 декабря 2012 года обладатели аккаунта PRO могут оставлять свои контакты (e-mail, ICQ, Skype) в профиле, личных сообщениях, проектах, &laquo;Блогах&raquo; и других разделах сайта. </font></td>
+        <td class="pad_null"><font color="#000000" size="2" face="tahoma,sans-serif">РќР°РїРѕРјРёРЅР°РµРј, С‡С‚Рѕ СЃ 5 РґРµРєР°Р±СЂСЏ 2012 РіРѕРґР° РѕР±Р»Р°РґР°С‚РµР»Рё Р°РєРєР°СѓРЅС‚Р° PRO РјРѕРіСѓС‚ РѕСЃС‚Р°РІР»СЏС‚СЊ СЃРІРѕРё РєРѕРЅС‚Р°РєС‚С‹ (e-mail, ICQ, Skype) РІ РїСЂРѕС„РёР»Рµ, Р»РёС‡РЅС‹С… СЃРѕРѕР±С‰РµРЅРёСЏС…, РїСЂРѕРµРєС‚Р°С…, &laquo;Р‘Р»РѕРіР°С…&raquo; Рё РґСЂСѓРіРёС… СЂР°Р·РґРµР»Р°С… СЃР°Р№С‚Р°. </font></td>
         <td class="pad_null" width="20"></td>
         <td class="pad_null" bgcolor="#ffffff" width="20"></td>
   </tr>
@@ -131,7 +131,7 @@ ob_start(); ?><html>
                 <tr>
                     <td class="pad_null"  width="60"></td>
                     <td class="pad_null"  >
-                        <b><font color="#000000" size="3" face="tahoma,sans-serif">Не забывайте, что контакты на Free-lance.ru открыты</font></b>
+                        <b><font color="#000000" size="3" face="tahoma,sans-serif">РќРµ Р·Р°Р±С‹РІР°Р№С‚Рµ, С‡С‚Рѕ РєРѕРЅС‚Р°РєС‚С‹ РЅР° Free-lance.ru РѕС‚РєСЂС‹С‚С‹</font></b>
                     </td>
                     <td class="pad_null"  width="60"></td>
                 </tr>
@@ -159,7 +159,7 @@ ob_start(); ?><html>
                               </tr>
                               <tr>
                                   <td class="pad_null" align="center">
-                                    <font color="#444444" size="1" face="tahoma,sans-serif">Телефон</font>
+                                    <font color="#444444" size="1" face="tahoma,sans-serif">РўРµР»РµС„РѕРЅ</font>
                                   </td>
                                   <td class="pad_null" ></td>
                                   <td class="pad_null" align="center">
@@ -175,7 +175,7 @@ ob_start(); ?><html>
                                   </td>
                                   <td class="pad_null" ></td>
                                   <td class="pad_null" align="center">
-                                    <font color="#444444" size="1" face="tahoma,sans-serif">И все остальное</font>
+                                    <font color="#444444" size="1" face="tahoma,sans-serif">Р РІСЃРµ РѕСЃС‚Р°Р»СЊРЅРѕРµ</font>
                                   </td>
                                   <td class="pad_null" ></td>
                               </tr>
@@ -218,7 +218,7 @@ ob_start(); ?><html>
     <tr>
         <td class="pad_null" bgcolor="#ffffff" width="20"></td>
         <td class="pad_null" width="20"></td>
-        <td class="pad_null"><font color="#000000" size="2" face="tahoma,sans-serif">Вы можете размещать свои контактные данные в открытом доступе и обмениваться ими с другими пользователями. </font></td>
+        <td class="pad_null"><font color="#000000" size="2" face="tahoma,sans-serif">Р’С‹ РјРѕР¶РµС‚Рµ СЂР°Р·РјРµС‰Р°С‚СЊ СЃРІРѕРё РєРѕРЅС‚Р°РєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ РІ РѕС‚РєСЂС‹С‚РѕРј РґРѕСЃС‚СѓРїРµ Рё РѕР±РјРµРЅРёРІР°С‚СЊСЃСЏ РёРјРё СЃ РґСЂСѓРіРёРјРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРјРё. </font></td>
         <td class="pad_null" width="20"></td>
         <td class="pad_null" bgcolor="#ffffff" width="20"></td>
   </tr>
@@ -252,8 +252,8 @@ ob_start(); ?><html>
         <td class="pad_null" bgcolor="#ffffff" width="20"></td>
         <td class="pad_null" bgcolor="#ffffff" width="20"></td>
         <td class="pad_null" bgcolor="#ffffff">
-            <font color="#4d4d4d" size="1" face="tahoma,sans-serif">По всем возникающим вопросам вы можете обращаться в нашу <a target="_blank" style="color:#0f71c8;" href="https://feedback.free-lance.ru?utm_source=newsletter4&utm_medium=email&utm_campaign=open_contacts_emp">службу поддержки</a>.<br>
-Вы можете отключить уведомления на <a target="_blank" style="color:#0f71c8;" href="<?= $eHost ?>/unsubscribe?ukey=%%%UNSUBSCRIBE_KEY%%%&utm_source=newsletter4&utm_medium=email&utm_campaign=open_contacts_emp">этой странице</a>.</font>
+            <font color="#4d4d4d" size="1" face="tahoma,sans-serif">РџРѕ РІСЃРµРј РІРѕР·РЅРёРєР°СЋС‰РёРј РІРѕРїСЂРѕСЃР°Рј РІС‹ РјРѕР¶РµС‚Рµ РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РІ РЅР°С€Сѓ <a target="_blank" style="color:#0f71c8;" href="https://feedback.free-lance.ru?utm_source=newsletter4&utm_medium=email&utm_campaign=open_contacts_emp">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.<br>
+Р’С‹ РјРѕР¶РµС‚Рµ РѕС‚РєР»СЋС‡РёС‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ РЅР° <a target="_blank" style="color:#0f71c8;" href="<?= $eHost ?>/unsubscribe?ukey=%%%UNSUBSCRIBE_KEY%%%&utm_source=newsletter4&utm_medium=email&utm_campaign=open_contacts_emp">СЌС‚РѕР№ СЃС‚СЂР°РЅРёС†Рµ</a>.</font>
         </td>
         <td class="pad_null" bgcolor="#ffffff" width="20"></td>
         <td class="pad_null" bgcolor="#ffffff" width="20"></td>
@@ -269,7 +269,7 @@ ob_start(); ?><html>
         <td class="pad_null" bgcolor="#ffffff" width="20"></td>
         <td class="pad_null" bgcolor="#ffffff" width="20"></td>
         <td class="pad_null" bgcolor="#ffffff">
-            <font color="#4d4d4d" size="1" face="tahoma,sans-serif">Приятной работы!<br>Команда Free-lance.ru</font>
+            <font color="#4d4d4d" size="1" face="tahoma,sans-serif">РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹!<br>РљРѕРјР°РЅРґР° Free-lance.ru</font>
         </td>
         <td class="pad_null" bgcolor="#ffffff" width="20"></td>
         <td class="pad_null" bgcolor="#ffffff" width="20"></td>
@@ -293,7 +293,7 @@ ob_start(); ?><html>
 </html>
 <? $eMessage = ob_get_clean();
 // ----------------------------------------------------------------------------------------------------------------
-// -- Рассылка ----------------------------------------------------------------------------------------------------
+// -- Р Р°СЃСЃС‹Р»РєР° ----------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------
 $DB = new DB('master');
 $cnt = 0;
@@ -305,16 +305,16 @@ if (empty($sender)) {
 
 echo "Send email messages\n";
 
-$mail->subject = $eSubject;  // заголовок письма
-$mail->message = $eMessage; // текст письма
-$mail->recipient = ''; // свойство 'получатель' оставляем пустым
+$mail->subject = $eSubject;  // Р·Р°РіРѕР»РѕРІРѕРє РїРёСЃСЊРјР°
+$mail->message = $eMessage; // С‚РµРєСЃС‚ РїРёСЃСЊРјР°
+$mail->recipient = ''; // СЃРІРѕР№СЃС‚РІРѕ 'РїРѕР»СѓС‡Р°С‚РµР»СЊ' РѕСЃС‚Р°РІР»СЏРµРј РїСѓСЃС‚С‹Рј
 $spamid = $mail->masssend();
 //if (!$spamid) die('Failed!');
-// с этого момента рассылка создана, но еще никому не отправлена!
-// допустим нам нужно получить список получателей с какого-либо запроса
+// СЃ СЌС‚РѕРіРѕ РјРѕРјРµРЅС‚Р° СЂР°СЃСЃС‹Р»РєР° СЃРѕР·РґР°РЅР°, РЅРѕ РµС‰Рµ РЅРёРєРѕРјСѓ РЅРµ РѕС‚РїСЂР°РІР»РµРЅР°!
+// РґРѕРїСѓСЃС‚РёРј РЅР°Рј РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РїРѕР»СѓС‡Р°С‚РµР»РµР№ СЃ РєР°РєРѕРіРѕ-Р»РёР±Рѕ Р·Р°РїСЂРѕСЃР°
 $i = 0;
 $mail->recipient = array();
-$DB->query("DELETE FROM week_pro_action WHERE is_emp = 't'"); //очистить таблицу логирования обращений за подарком (по идее только на бете нужно, но кто его знает)
+$DB->query("DELETE FROM week_pro_action WHERE is_emp = 't'"); //РѕС‡РёСЃС‚РёС‚СЊ С‚Р°Р±Р»РёС†Сѓ Р»РѕРіРёСЂРѕРІР°РЅРёСЏ РѕР±СЂР°С‰РµРЅРёР№ Р·Р° РїРѕРґР°СЂРєРѕРј (РїРѕ РёРґРµРµ С‚РѕР»СЊРєРѕ РЅР° Р±РµС‚Рµ РЅСѓР¶РЅРѕ, РЅРѕ РєС‚Рѕ РµРіРѕ Р·РЅР°РµС‚)
 $res = $DB->query($sql);
 while ($row = pg_fetch_assoc($res)) {
     if ( strlen($row['ukey']) == 0 ) {

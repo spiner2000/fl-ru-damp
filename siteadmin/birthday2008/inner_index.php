@@ -23,7 +23,7 @@
     	{
 
 ?>
-		<B>Статус регистрации: Открыта</B> &nbsp;&nbsp;&nbsp; &raquo; <A href="./?action=status&value=close" class="blue">Закрыть</A>
+		<B>РЎС‚Р°С‚СѓСЃ СЂРµРіРёСЃС‚СЂР°С†РёРё: РћС‚РєСЂС‹С‚Р°</B> &nbsp;&nbsp;&nbsp; &raquo; <A href="./?action=status&value=close" class="blue">Р—Р°РєСЂС‹С‚СЊ</A>
 
 <?
     	}
@@ -31,7 +31,7 @@
     	{
 ?>
 
-		<B>Статус регистрации: Закрыта</B> &nbsp;&nbsp;&nbsp; &raquo; <A href="./?action=status&value=open" class="blue">Открыть</A>
+		<B>РЎС‚Р°С‚СѓСЃ СЂРµРіРёСЃС‚СЂР°С†РёРё: Р—Р°РєСЂС‹С‚Р°</B> &nbsp;&nbsp;&nbsp; &raquo; <A href="./?action=status&value=open" class="blue">РћС‚РєСЂС‹С‚СЊ</A>
 
 <?
     	}
@@ -40,7 +40,7 @@
 
 <br><br><br>
 
-<strong>Пользователи</strong><br><br>
+<strong>РџРѕР»СЊР·РѕРІР°С‚РµР»Рё</strong><br><br>
 
 <table width="100%" border="0" cellspacing="2" cellpadding="2">
 <?
@@ -54,10 +54,10 @@ $i = 0;
 			<td>
 			<?=$i?> <a href="/users/<?=$user['login']?>"><?=". ".$user['name']." ".$user['surname']." [".$user['login']."]"?></a> 
 			<a href="mailto:<?=$user['email']?>"><?=$user['email']?></a> 
-			<? if ($user['type'] == 1) print("Фри-лансер"); if ($user['type'] == 2) print("Работодатель"); if ($user['type'] == 3) print("Пресса") ?>
-			<a href="/siteadmin/bill/?login=<?=$user['login']?>">счет</a>
+			<? if ($user['type'] == 1) print("Р¤СЂРё-Р»Р°РЅСЃРµСЂ"); if ($user['type'] == 2) print("Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ"); if ($user['type'] == 3) print("РџСЂРµСЃСЃР°") ?>
+			<a href="/siteadmin/bill/?login=<?=$user['login']?>">СЃС‡РµС‚</a>
 			<br>
-			 Что написал: <?=($user['message']  ? $user['message'] : "ничего не написал")?><br><br>
+			 Р§С‚Рѕ РЅР°РїРёСЃР°Р»: <?=($user['message']  ? $user['message'] : "РЅРёС‡РµРіРѕ РЅРµ РЅР°РїРёСЃР°Р»")?><br><br>
 			
 			</td>
 		</tr>

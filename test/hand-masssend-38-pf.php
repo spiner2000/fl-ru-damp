@@ -1,6 +1,6 @@
 <?php
 /**
- * Уведомление у которых еще не было никогда про, даже тестового
+ * РЈРІРµРґРѕРјР»РµРЅРёРµ Сѓ РєРѕС‚РѕСЂС‹С… РµС‰Рµ РЅРµ Р±С‹Р»Рѕ РЅРёРєРѕРіРґР° РїСЂРѕ, РґР°Р¶Рµ С‚РµСЃС‚РѕРІРѕРіРѕ
  * */
 ini_set('max_execution_time', '0');
 ini_set('memory_limit', '512M');
@@ -10,17 +10,17 @@ require_once '../classes/memBuff.php';
 require_once '../classes/smtp2.php';
 
 /**
- * Логин пользователя от кого осуществляется рассылка
+ * Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РѕС‚ РєРѕРіРѕ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ СЂР°СЃСЃС‹Р»РєР°
  * 
  */
 $sender = 'admin';
 
-// Работодателям
+// Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЏРј
 $sql = "SELECT uid, email, login, uname, usurname, subscr FROM employer WHERE substring(subscr from 8 for 1)::integer = 1 AND is_banned = B'0'";
 
 $eHost = $GLOBALS['host'];
 
-$eSubject = "Free-lance.ru: Отдохните, а мы поработаем за вас";
+$eSubject = "Free-lance.ru: РћС‚РґРѕС…РЅРёС‚Рµ, Р° РјС‹ РїРѕСЂР°Р±РѕС‚Р°РµРј Р·Р° РІР°СЃ";
 
 $mail = new smtp2;
 
@@ -55,7 +55,7 @@ ob_start(); ?>
                     <tbody><tr>
                             <td  bgcolor="#ffffff" width="20"></td>
                             <td  width="20"></td>
-                            <td  align="left" ><font color="#000000" size="6" face="tahoma,sans-serif">Здравствуйте!</font></td>
+                            <td  align="left" ><font color="#000000" size="6" face="tahoma,sans-serif">Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!</font></td>
                             <td ></td>
                             <td width="20"></td>
                             <td  bgcolor="#ffffff" width="20"></td>
@@ -76,7 +76,7 @@ ob_start(); ?>
                         <tr>
                             <td  bgcolor="#ffffff" width="20"></td>
                             <td  width="20"></td>
-                            <td  align="left" ><font color="#444444" size="2" face="tahoma,sans-serif">Для удобства работодателей мы создали сервис &laquo;<strong>Подбор фрилансеров</strong>&raquo;. Если у вас нет лишнего времени или возникли трудности с поиском исполнителей, наши квалифицированные менеджеры возьмут все ваши заботы на себя. А вы сможете заняться другими, более важными делами. </font></td>
+                            <td  align="left" ><font color="#444444" size="2" face="tahoma,sans-serif">Р”Р»СЏ СѓРґРѕР±СЃС‚РІР° СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ РјС‹ СЃРѕР·РґР°Р»Рё СЃРµСЂРІРёСЃ &laquo;<strong>РџРѕРґР±РѕСЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</strong>&raquo;. Р•СЃР»Рё Сѓ РІР°СЃ РЅРµС‚ Р»РёС€РЅРµРіРѕ РІСЂРµРјРµРЅРё РёР»Рё РІРѕР·РЅРёРєР»Рё С‚СЂСѓРґРЅРѕСЃС‚Рё СЃ РїРѕРёСЃРєРѕРј РёСЃРїРѕР»РЅРёС‚РµР»РµР№, РЅР°С€Рё РєРІР°Р»РёС„РёС†РёСЂРѕРІР°РЅРЅС‹Рµ РјРµРЅРµРґР¶РµСЂС‹ РІРѕР·СЊРјСѓС‚ РІСЃРµ РІР°С€Рё Р·Р°Р±РѕС‚С‹ РЅР° СЃРµР±СЏ. Рђ РІС‹ СЃРјРѕР¶РµС‚Рµ Р·Р°РЅСЏС‚СЊСЃСЏ РґСЂСѓРіРёРјРё, Р±РѕР»РµРµ РІР°Р¶РЅС‹РјРё РґРµР»Р°РјРё. </font></td>
                             <td width="140" rowspan="3" align="right" valign="top"><img src="cid:<?= $img17; ?>" width="121" height="102" border="0"></td>
                             <td  width="20"></td>
                             <td  bgcolor="#ffffff" width="20"></td>
@@ -91,7 +91,7 @@ ob_start(); ?>
                         <tr>
                             <td  bgcolor="#ffffff" width="20"></td>
                             <td  width="20"></td>
-                            <td  align="left"><font color="#444444" size="2" face="tahoma,sans-serif">Нам требуется только подробно заполненная вами <strong>заявка</strong> с указанием всех требований к кандидату. Наши менеджеры обладают большим опытом в подборе фрилансеров – мы находим профессиональных исполнителей даже на самые сложные проекты.</font></td>
+                            <td  align="left"><font color="#444444" size="2" face="tahoma,sans-serif">РќР°Рј С‚СЂРµР±СѓРµС‚СЃСЏ С‚РѕР»СЊРєРѕ РїРѕРґСЂРѕР±РЅРѕ Р·Р°РїРѕР»РЅРµРЅРЅР°СЏ РІР°РјРё <strong>Р·Р°СЏРІРєР°</strong> СЃ СѓРєР°Р·Р°РЅРёРµРј РІСЃРµС… С‚СЂРµР±РѕРІР°РЅРёР№ Рє РєР°РЅРґРёРґР°С‚Сѓ. РќР°С€Рё РјРµРЅРµРґР¶РµСЂС‹ РѕР±Р»Р°РґР°СЋС‚ Р±РѕР»СЊС€РёРј РѕРїС‹С‚РѕРј РІ РїРѕРґР±РѕСЂРµ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ вЂ“ РјС‹ РЅР°С…РѕРґРёРј РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹С… РёСЃРїРѕР»РЅРёС‚РµР»РµР№ РґР°Р¶Рµ РЅР° СЃР°РјС‹Рµ СЃР»РѕР¶РЅС‹Рµ РїСЂРѕРµРєС‚С‹.</font></td>
                             <td  width="20"></td>
                             <td  bgcolor="#ffffff" width="20"></td>
                         </tr>
@@ -105,7 +105,7 @@ ob_start(); ?>
                         <tr>
                             <td  bgcolor="#ffffff" width="20"></td>
                             <td  width="20"></td>
-                            <td  align="left"><font color="#444444" size="2" face="tahoma,sans-serif">&laquo;Подбор фрилансеров&raquo; – это залог успешного сотрудничества.</font></td>
+                            <td  align="left"><font color="#444444" size="2" face="tahoma,sans-serif">&laquo;РџРѕРґР±РѕСЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ&raquo; вЂ“ СЌС‚Рѕ Р·Р°Р»РѕРі СѓСЃРїРµС€РЅРѕРіРѕ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР°.</font></td>
                             <td  width="20"></td>
                             <td  bgcolor="#ffffff" width="20"></td>
                         </tr>
@@ -124,7 +124,7 @@ ob_start(); ?>
                         <tr>
                             <td  bgcolor="#ffffff" width="20"></td>
                             <td  width="20"></td>
-                            <td  colspan="2" align="left"><a href="<?= $eHost ?>/manager/?utm_source=newsletter4&utm_medium=email&utm_campaign=PF" target="_blank"><img src="cid:<?= $img16; ?>" width="255" height="36" border="0" alt="Заказать подбор фрилансеров" title="Заказать подбор фрилансеров"></a></td>
+                            <td  colspan="2" align="left"><a href="<?= $eHost ?>/manager/?utm_source=newsletter4&utm_medium=email&utm_campaign=PF" target="_blank"><img src="cid:<?= $img16; ?>" width="255" height="36" border="0" alt="Р—Р°РєР°Р·Р°С‚СЊ РїРѕРґР±РѕСЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ" title="Р—Р°РєР°Р·Р°С‚СЊ РїРѕРґР±РѕСЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ"></a></td>
                             <td width="20"></td>
                             <td  bgcolor="#ffffff" width="20"></td>
                         </tr>
@@ -145,8 +145,8 @@ ob_start(); ?>
                             <td  bgcolor="#ffffff" width="20"></td>
                             <td  bgcolor="#ffffff" width="20"></td>
                             <td bgcolor="#ffffff">
-                                <font color="#4d4d4d" size="1" face="tahoma,sans-serif">По всем возникающим вопросам вы можете обращаться в нашу <a target="_blank" style="color:#0f71c8;" href="<?= $eHost ?>/about/feedback/?utm_source=newsletter4&utm_medium=email&utm_campaign=PF">службу поддержки</a>.<br>
-                    Вы можете отключить уведомления на странице «<a target="_blank" style="color:#0f71c8;" href="<?= $eHost ?>/users/%%%USER_LOGIN%%%/setup/mailer/?utm_source=newsletter4&utm_medium=email&utm_campaign=PF">Уведомления/Рассылка</a>» вашего аккаунта.</font>
+                                <font color="#4d4d4d" size="1" face="tahoma,sans-serif">РџРѕ РІСЃРµРј РІРѕР·РЅРёРєР°СЋС‰РёРј РІРѕРїСЂРѕСЃР°Рј РІС‹ РјРѕР¶РµС‚Рµ РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РІ РЅР°С€Сѓ <a target="_blank" style="color:#0f71c8;" href="<?= $eHost ?>/about/feedback/?utm_source=newsletter4&utm_medium=email&utm_campaign=PF">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.<br>
+                    Р’С‹ РјРѕР¶РµС‚Рµ РѕС‚РєР»СЋС‡РёС‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ РЅР°В СЃС‚СЂР°РЅРёС†Рµ В«<a target="_blank" style="color:#0f71c8;" href="<?= $eHost ?>/users/%%%USER_LOGIN%%%/setup/mailer/?utm_source=newsletter4&utm_medium=email&utm_campaign=PF">РЈРІРµРґРѕРјР»РµРЅРёСЏ/Р Р°СЃСЃС‹Р»РєР°</a>В»В РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р°.</font>
                             </td>
                             <td  bgcolor="#ffffff" width="20"></td>
                             <td  bgcolor="#ffffff" width="20"></td>
@@ -162,7 +162,7 @@ ob_start(); ?>
                             <td  bgcolor="#ffffff" width="20"></td>
                             <td  bgcolor="#ffffff" width="20"></td>
                             <td  bgcolor="#ffffff">
-                                <font color="#4d4d4d" size="1" face="tahoma,sans-serif">Приятной работы!<br>Команда Free-lance.ru</font>
+                                <font color="#4d4d4d" size="1" face="tahoma,sans-serif">РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹!<br>РљРѕРјР°РЅРґР° Free-lance.ru</font>
                             </td>
                             <td  bgcolor="#ffffff" width="20"></td>
                             <td  bgcolor="#ffffff" width="20"></td>
@@ -188,7 +188,7 @@ ob_start(); ?>
 
 <? $eMessage = ob_get_clean();
 // ----------------------------------------------------------------------------------------------------------------
-// -- Рассылка ----------------------------------------------------------------------------------------------------
+// -- Р Р°СЃСЃС‹Р»РєР° ----------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------
 $master = new DB('master');
 $cnt = 0;
@@ -200,13 +200,13 @@ if (empty($sender)) {
 
 echo "Send email messages\n";
 
-$mail->subject = $eSubject;  // заголовок письма
-$mail->message = $eMessage; // текст письма
-$mail->recipient = ''; // свойство 'получатель' оставляем пустым
+$mail->subject = $eSubject;  // Р·Р°РіРѕР»РѕРІРѕРє РїРёСЃСЊРјР°
+$mail->message = $eMessage; // С‚РµРєСЃС‚ РїРёСЃСЊРјР°
+$mail->recipient = ''; // СЃРІРѕР№СЃС‚РІРѕ 'РїРѕР»СѓС‡Р°С‚РµР»СЊ' РѕСЃС‚Р°РІР»СЏРµРј РїСѓСЃС‚С‹Рј
 $spamid = $mail->masssend();
 //if (!$spamid) die('Failed!');
-// с этого момента рассылка создана, но еще никому не отправлена!
-// допустим нам нужно получить список получателей с какого-либо запроса
+// СЃ СЌС‚РѕРіРѕ РјРѕРјРµРЅС‚Р° СЂР°СЃСЃС‹Р»РєР° СЃРѕР·РґР°РЅР°, РЅРѕ РµС‰Рµ РЅРёРєРѕРјСѓ РЅРµ РѕС‚РїСЂР°РІР»РµРЅР°!
+// РґРѕРїСѓСЃС‚РёРј РЅР°Рј РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РїРѕР»СѓС‡Р°С‚РµР»РµР№ СЃ РєР°РєРѕРіРѕ-Р»РёР±Рѕ Р·Р°РїСЂРѕСЃР°
 $i = 0;
 $mail->recipient = array();
 $res = $master->query($sql);

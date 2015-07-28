@@ -1,11 +1,11 @@
 <?php
 /* 
  * 
- * Данный файл является частью проекта Веб Мессенджер.
+ * Р”Р°РЅРЅС‹Р№ С„Р°Р№Р» СЏРІР»СЏРµС‚СЃСЏ С‡Р°СЃС‚СЊСЋ РїСЂРѕРµРєС‚Р° Р’РµР± РњРµСЃСЃРµРЅРґР¶РµСЂ.
  * 
- * Все права защищены. (c) 2005-2009 ООО "ТОП".
- * Данное программное обеспечение и все сопутствующие материалы
- * предоставляются на условиях лицензии, доступной по адресу
+ * Р’СЃРµ РїСЂР°РІР° Р·Р°С‰РёС‰РµРЅС‹. (c) 2005-2009 РћРћРћ "РўРћРџ".
+ * Р”Р°РЅРЅРѕРµ РїСЂРѕРіСЂР°РјРјРЅРѕРµ РѕР±РµСЃРїРµС‡РµРЅРёРµ Рё РІСЃРµ СЃРѕРїСѓС‚СЃС‚РІСѓСЋС‰РёРµ РјР°С‚РµСЂРёР°Р»С‹
+ * РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‚СЃСЏ РЅР° СѓСЃР»РѕРІРёСЏС… Р»РёС†РµРЅР·РёРё, РґРѕСЃС‚СѓРїРЅРѕР№ РїРѕ Р°РґСЂРµСЃСѓ
  * http://webim.ru/license.html
  * 
  */
@@ -27,27 +27,27 @@ define("SITE_DB_TABLE_PREFIX", "chat");
 
 define("WEBIM_CONNECTION_TIMEOUT", 60); // seconds
 
-// отправке диалогов из мессенджера -------------
-if ( (defined('SERVER') && SERVER != 'release') || (defined('IS_LOCAL') && IS_LOCAL === TRUE) ) { // тестовые
+// РѕС‚РїСЂР°РІРєРµ РґРёР°Р»РѕРіРѕРІ РёР· РјРµСЃСЃРµРЅРґР¶РµСЂР° -------------
+if ( (defined('SERVER') && SERVER != 'release') || (defined('IS_LOCAL') && IS_LOCAL === TRUE) ) { // С‚РµСЃС‚РѕРІС‹Рµ
     $aDko = array(
-        1 => array( 'option' => 'Общие вопросы', 'email'=>'helpdesk_beta_1@free-lance.ru', 'subject'=>'Вопрос по сервисам сайта, обратная связь' ),
-        2 => array( 'option' => 'Ошибки', 'email'=>'helpdesk_beta_3@free-lance.ru', 'subject'=>'Ошибки на сайте, обратная связь' ),
-        3 => array( 'option' => 'Финансы', 'email'=>'helpdesk_beta_2@free-lance.ru', 'subject'=>'Финансовый вопрос, обратная связь' ),
-        4 => array( 'option' => 'Подбор фрилансеров', 'email'=>'helpdesk_beta_4@free-lance.ru', 'subject'=>'Подбор фрилансеров, обратная связь' ), 
-        5 => array( 'option' => '«Безопасная Сделка»', 'email'=>'helpdesk_beta_5@free-lance.ru', 'subject'=>'«Безопасная Сделка»' ),        
-        6 => array( 'option' => 'Реклама', 'email'=>'helpdesk_beta_6@free-lance.ru', 'subject'=>'Реклама, обратная связь' ),
-        7 => array( 'option' => 'Консалтинг', 'email'=>'consulting@free-lance.ru', 'subject'=>'Консалтинг, обратная связь' )
+        1 => array( 'option' => 'РћР±С‰РёРµ РІРѕРїСЂРѕСЃС‹', 'email'=>'helpdesk_beta_1@free-lance.ru', 'subject'=>'Р’РѕРїСЂРѕСЃ РїРѕ СЃРµСЂРІРёСЃР°Рј СЃР°Р№С‚Р°, РѕР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ' ),
+        2 => array( 'option' => 'РћС€РёР±РєРё', 'email'=>'helpdesk_beta_3@free-lance.ru', 'subject'=>'РћС€РёР±РєРё РЅР° СЃР°Р№С‚Рµ, РѕР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ' ),
+        3 => array( 'option' => 'Р¤РёРЅР°РЅСЃС‹', 'email'=>'helpdesk_beta_2@free-lance.ru', 'subject'=>'Р¤РёРЅР°РЅСЃРѕРІС‹Р№ РІРѕРїСЂРѕСЃ, РѕР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ' ),
+        4 => array( 'option' => 'РџРѕРґР±РѕСЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ', 'email'=>'helpdesk_beta_4@free-lance.ru', 'subject'=>'РџРѕРґР±РѕСЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, РѕР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ' ), 
+        5 => array( 'option' => 'В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В»', 'email'=>'helpdesk_beta_5@free-lance.ru', 'subject'=>'В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В»' ),        
+        6 => array( 'option' => 'Р РµРєР»Р°РјР°', 'email'=>'helpdesk_beta_6@free-lance.ru', 'subject'=>'Р РµРєР»Р°РјР°, РѕР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ' ),
+        7 => array( 'option' => 'РљРѕРЅСЃР°Р»С‚РёРЅРі', 'email'=>'consulting@free-lance.ru', 'subject'=>'РљРѕРЅСЃР°Р»С‚РёРЅРі, РѕР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ' )
     );
 }
-else { // боевой
+else { // Р±РѕРµРІРѕР№
     $aDko = array(
-        1 => array( 'option' => 'Общие вопросы', 'email'=>'info@free-lance.ru', 'subject'=>'Вопрос по сервисам сайта, обратная связь' ),
-        2 => array( 'option' => 'Ошибки', 'email'=>'tester@free-lance.ru', 'subject'=>'Ошибки на сайте, обратная связь' ),
-        3 => array( 'option' => 'Финансы', 'email'=>'finance@free-lance.ru', 'subject'=>'Финансовый вопрос, обратная связь' ),
-        4 => array( 'option' => 'Подбор фрилансеров', 'email'=>'manager@free-lance.ru', 'subject'=>'Подбор фрилансеров, обратная связь' ), 
-        5 => array( 'option' => '«Безопасная Сделка»', 'email'=>'norisk@free-lance.ru', 'subject'=>'«Безопасная Сделка»' ),
-        6 => array( 'option' => 'Реклама', 'email'=>'adv@free-lance.ru', 'subject'=>'Реклама, обратная связь' ),
-        7 => array( 'option' => 'Консалтинг', 'email'=>'consulting@free-lance.ru', 'subject'=>'Консалтинг, обратная связь' )
+        1 => array( 'option' => 'РћР±С‰РёРµ РІРѕРїСЂРѕСЃС‹', 'email'=>'info@free-lance.ru', 'subject'=>'Р’РѕРїСЂРѕСЃ РїРѕ СЃРµСЂРІРёСЃР°Рј СЃР°Р№С‚Р°, РѕР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ' ),
+        2 => array( 'option' => 'РћС€РёР±РєРё', 'email'=>'tester@free-lance.ru', 'subject'=>'РћС€РёР±РєРё РЅР° СЃР°Р№С‚Рµ, РѕР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ' ),
+        3 => array( 'option' => 'Р¤РёРЅР°РЅСЃС‹', 'email'=>'finance@free-lance.ru', 'subject'=>'Р¤РёРЅР°РЅСЃРѕРІС‹Р№ РІРѕРїСЂРѕСЃ, РѕР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ' ),
+        4 => array( 'option' => 'РџРѕРґР±РѕСЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ', 'email'=>'manager@free-lance.ru', 'subject'=>'РџРѕРґР±РѕСЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, РѕР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ' ), 
+        5 => array( 'option' => 'В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В»', 'email'=>'norisk@free-lance.ru', 'subject'=>'В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В»' ),
+        6 => array( 'option' => 'Р РµРєР»Р°РјР°', 'email'=>'adv@free-lance.ru', 'subject'=>'Р РµРєР»Р°РјР°, РѕР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ' ),
+        7 => array( 'option' => 'РљРѕРЅСЃР°Р»С‚РёРЅРі', 'email'=>'consulting@free-lance.ru', 'subject'=>'РљРѕРЅСЃР°Р»С‚РёРЅРі, РѕР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ' )
     );
 }
 

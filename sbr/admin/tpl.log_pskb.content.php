@@ -1,9 +1,9 @@
 <? if($content) { ?>
 
 <a class="b-layout__link b-layout__link_fontsize_15 b-layout__link_float_right b-layout__link_dot_c10600" 
-   title="Данные метод очистит только дублирующие данные для текущего аккредитива, при этом оставит в таблице первое вхождение дубля и последнее." 
+   title="Р”Р°РЅРЅС‹Рµ РјРµС‚РѕРґ РѕС‡РёСЃС‚РёС‚ С‚РѕР»СЊРєРѕ РґСѓР±Р»РёСЂСѓСЋС‰РёРµ РґР°РЅРЅС‹Рµ РґР»СЏ С‚РµРєСѓС‰РµРіРѕ Р°РєРєСЂРµРґРёС‚РёРІР°, РїСЂРё СЌС‚РѕРј РѕСЃС‚Р°РІРёС‚ РІ С‚Р°Р±Р»РёС†Рµ РїРµСЂРІРѕРµ РІС…РѕР¶РґРµРЅРёРµ РґСѓР±Р»СЏ Рё РїРѕСЃР»РµРґРЅРµРµ." 
    href="javascript:void(0)" 
-   onclick="if(confirm('Очистить лог от дублей?')) { xajax_aClearCloneLogPSKB('<?= $lc_id;?>', '<?= $query; ?>', '<?= $logname;?>'); }">Очистить дублирующие логи</a>
+   onclick="if(confirm('РћС‡РёСЃС‚РёС‚СЊ Р»РѕРі РѕС‚ РґСѓР±Р»РµР№?')) { xajax_aClearCloneLogPSKB('<?= $lc_id;?>', '<?= $query; ?>', '<?= $logname;?>'); }">РћС‡РёСЃС‚РёС‚СЊ РґСѓР±Р»РёСЂСѓСЋС‰РёРµ Р»РѕРіРё</a>
 <br/>
 <br/>
 <table class="nr-a-opinions" cellspacing="0" style="width: 100%">
@@ -11,10 +11,10 @@
         <tr>
             <th>#</th>
             <th>URL</th>
-            <th>Название</th>
-            <th>Дата запроса</th>
-            <th>Параметры</th>
-            <th>Ответ</th>
+            <th>РќР°Р·РІР°РЅРёРµ</th>
+            <th>Р”Р°С‚Р° Р·Р°РїСЂРѕСЃР°</th>
+            <th>РџР°СЂР°РјРµС‚СЂС‹</th>
+            <th>РћС‚РІРµС‚</th>
         </tr>
     </thead>
     <tbody>
@@ -31,7 +31,7 @@
                                 <div class="b-shadow__top">
                                     <div class="b-shadow__bottom">
                                         <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_15">
-                                            <strong>Параметры запроса</strong>
+                                            <strong>РџР°СЂР°РјРµС‚СЂС‹ Р·Р°РїСЂРѕСЃР°</strong>
                                             <pre><?= var_export($data['param']); ?></pre>
                                         </div>
                                     </div>
@@ -53,7 +53,7 @@
                                 <div class="b-shadow__top">
                                     <div class="b-shadow__bottom">
                                         <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_15">
-                                            <strong>Ответ</strong><br/>
+                                            <strong>РћС‚РІРµС‚</strong><br/>
                                             <? if(is_string($data['response'])) {?>
                                             <textarea cols="140" onclick="$(this).select()"><?= $data['response'];?></textarea><br/>
                                             <? }//if?>
@@ -78,15 +78,15 @@
             <td><?= $log['logname']?></td>
             <td><?= date('d.m.Y H:i:s', strtotime($log['date_created'])); ?></td>
             <td>
-                <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="$('log_pskb_param_<?= $log['id']?>').toggleClass('b-shadow_hide');" title="Посмотреть параметры запроса">Параметры</a>
+                <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="$('log_pskb_param_<?= $log['id']?>').toggleClass('b-shadow_hide');" title="РџРѕСЃРјРѕС‚СЂРµС‚СЊ РїР°СЂР°РјРµС‚СЂС‹ Р·Р°РїСЂРѕСЃР°">РџР°СЂР°РјРµС‚СЂС‹</a>
             </td>
-            <td><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="$('log_pskb_response_<?= $log['id']?>').toggleClass('b-shadow_hide');" title="Посмотреть ответ">Ответ</a></td>
+            <td><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="$('log_pskb_response_<?= $log['id']?>').toggleClass('b-shadow_hide');" title="РџРѕСЃРјРѕС‚СЂРµС‚СЊ РѕС‚РІРµС‚">РћС‚РІРµС‚</a></td>
         </tr>
         <?php } ?>  
     </tbody>
 </table>
 <? } else { ?>
 <div style="padding:10px">
-Логи по данному аккредитиву не найдены.
+Р›РѕРіРё РїРѕ РґР°РЅРЅРѕРјСѓ Р°РєРєСЂРµРґРёС‚РёРІСѓ РЅРµ РЅР°Р№РґРµРЅС‹.
 </div>
 <? } ?>

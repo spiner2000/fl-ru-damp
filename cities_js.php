@@ -10,41 +10,41 @@ $memkey = "b-combo-getcitiesandcountries";
 $s = 0;//$membuf->get($memkey);
 if (!$s) {
     $rows = country::GetCountriesByCountUser();
-    $result = array(0=>"'0' : 'Все страны'");
+    $result = array(0=>"'0' : 'Р’СЃРµ СЃС‚СЂР°РЅС‹'");
     foreach ($rows as $k=>$i) {
         $i["name"] = str_replace('"', "\"", $i["name"]);
         $result[$i["id"]] = str_replace("'", "\'", $i["name"]);
     }
-    //города России 1
+    //РіРѕСЂРѕРґР° Р РѕСЃСЃРёРё 1
     $rows = city::GetCities(1);
-    $cResult = array("0"=>"'0' : 'Россия'", "undefined_value"=>"'undefined_value' : 'Все города'");
+    $cResult = array("0"=>"'0' : 'Р РѕСЃСЃРёСЏ'", "undefined_value"=>"'undefined_value' : 'Р’СЃРµ РіРѕСЂРѕРґР°'");
     foreach ($rows as $k=>$i) {
         $i = str_replace('"', "\"", $i);
         $i = str_replace("'", "\'", $i);
         $cResult[$k] = "'$k' : '$i'";
     }
     $result[1] = $cResult;
-    //города Украины 2
+    //РіРѕСЂРѕРґР° РЈРєСЂР°РёРЅС‹ 2
     $rows = city::GetCities(2);
-    $cResult = array("0"=>"'0' : 'Украина'", "undefined_value"=>"'undefined_value' : 'Все города'");
+    $cResult = array("0"=>"'0' : 'РЈРєСЂР°РёРЅР°'", "undefined_value"=>"'undefined_value' : 'Р’СЃРµ РіРѕСЂРѕРґР°'");
     foreach ($rows as $k=>$i) {
         $i = str_replace('"', "\"", $i);
         $i = str_replace("'", "\'", $i);
         $cResult[$k] = "'$k' : '$i'";
     }
     $result[2] = $cResult;
-    //города Беларусии 10
+    //РіРѕСЂРѕРґР° Р‘РµР»Р°СЂСѓСЃРёРё 10
     $rows = city::GetCities(10);
-    $cResult = array("0"=>"'0' : 'Беларусь'", "undefined_value"=>"'undefined_value' : 'Все города'");
+    $cResult = array("0"=>"'0' : 'Р‘РµР»Р°СЂСѓСЃСЊ'", "undefined_value"=>"'undefined_value' : 'Р’СЃРµ РіРѕСЂРѕРґР°'");
     foreach ($rows as $k=>$i) {
         $i = str_replace('"', "\"", $i);
         $i = str_replace("'", "\'", $i);
         $cResult[$k] = "'$k' : '$i'";
     }
     $result[10] = $cResult;
-    //города Казахстана     38 
+    //РіРѕСЂРѕРґР° РљР°Р·Р°С…СЃС‚Р°РЅР°     38 
     $rows = city::GetCities(38);
-    $cResult = array("0"=>"'0' : 'Казахстан'", "undefined_value"=>"'undefined_value' : 'Все города'");
+    $cResult = array("0"=>"'0' : 'РљР°Р·Р°С…СЃС‚Р°РЅ'", "undefined_value"=>"'undefined_value' : 'Р’СЃРµ РіРѕСЂРѕРґР°'");
     foreach ($rows as $k=>$i) {
         $i = str_replace('"', "\"", $i);
         $i = str_replace("'", "\'", $i);
@@ -67,4 +67,4 @@ if (!$s) {
     $s = "{".$s."}";
     $membuf->add($memkey, $s, 3600);
 }
-print('var citiesList = '.$s.'; citiesList["1"]["0"] = "Россия"; ' );
+print('var citiesList = '.$s.'; citiesList["1"]["0"] = "Р РѕСЃСЃРёСЏ"; ' );

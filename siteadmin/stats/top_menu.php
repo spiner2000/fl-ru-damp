@@ -1,7 +1,7 @@
 <?php if ( !defined('IS_SITE_ADMIN') ) { header('Location: /404.php'); exit; } ?>
-<?php if($mIndex) {?> По дням <?php } else { //if?><a href="/siteadmin/stats/">По дням</a><?php }//else?> | 
-<?php if($mFull) {?> Общая <?php } else { //if?><a href="?t=g">Общая</a><?php }//else?> |
+<?php if($mIndex) {?> РџРѕ РґРЅСЏРј <?php } else { //if?><a href="/siteadmin/stats/">РџРѕ РґРЅСЏРј</a><?php }//else?> | 
+<?php if($mFull) {?> РћР±С‰Р°СЏ <?php } else { //if?><a href="?t=g">РћР±С‰Р°СЏ</a><?php }//else?> |
 <?php if($mPro) {?> PRO <?php } else { //if?><a href="?t=p">PRO</a><?php }//else?> |
-<?php if($mCountry) {?> Страны, города и возраст <?php } else { //if?><a href="?t=c">Страны, города и возраст</a><?php }//else?> |
-<?php if($mUser) {?>Активные пользователи<?php } else { //if?><a href="?t=u">Активные пользователи</a><?php }//else?> |
-<?php if($mVerify) {?>Верификация<?php } else { //if?><a href="?t=v">Верификация</a><?php }//else?>
+<?php if($mCountry) {?> РЎС‚СЂР°РЅС‹, РіРѕСЂРѕРґР° Рё РІРѕР·СЂР°СЃС‚ <?php } else { //if?><a href="?t=c">РЎС‚СЂР°РЅС‹, РіРѕСЂРѕРґР° Рё РІРѕР·СЂР°СЃС‚</a><?php }//else?> |
+<?php if($mUser) {?>РђРєС‚РёРІРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё<?php } else { //if?><a href="?t=u">РђРєС‚РёРІРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё</a><?php }//else?> |
+<?php if($mVerify) {?>Р’РµСЂРёС„РёРєР°С†РёСЏ<?php } else { //if?><a href="?t=v">Р’РµСЂРёС„РёРєР°С†РёСЏ</a><?php }//else?>

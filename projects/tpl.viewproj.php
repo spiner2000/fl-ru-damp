@@ -21,12 +21,12 @@
 														                         "role"        => $user_obj->role
 														                         ))?> <?=$session->view_online_status($proj['login'])?><br>
 														<?
-														  //время последней активности пользователя
+														  //РІСЂРµРјСЏ РїРѕСЃР»РµРґРЅРµР№ Р°РєС‚РёРІРЅРѕСЃС‚Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 														  $last_ref = $session->getActivityByLogin($proj['login']);
 														  if($last_ref) {
 															$ago = ago_pub(strtotime($last_ref));
 															if(!intval($ago))
-															  $ago = "менее минуты";
+															  $ago = "РјРµРЅРµРµ РјРёРЅСѓС‚С‹";
 														  }
 														  if(!$ago && $proj['last_time']) {
 															$fmt = 'ynjGi';
@@ -42,7 +42,7 @@
                                                                                                                   $usr = new users();
                                                                                                                   $usr->GetUser($proj['login']);
 														?>
-														Заходил<?= $usr->sex == 'f' ? 'а' : '';?>: <?=$ago?> назад
+														Р—Р°С…РѕРґРёР»<?= $usr->sex == 'f' ? 'Р°' : '';?>: <?=$ago?> РЅР°Р·Р°Рґ
 													</td>
 												</tr>
 											</table>
@@ -62,10 +62,10 @@
 												 if ($proj['post_date']) {
 												?>
 												<tr>
-													<td style="text-align:left; padding-left: 20px;">Дата публикации: <?=$proj['post_date']?> 
+													<td style="text-align:left; padding-left: 20px;">Р”Р°С‚Р° РїСѓР±Р»РёРєР°С†РёРё: <?=$proj['post_date']?> 
 													<?php if($proj['edit_date']){?>
 													<br/>
-													Дата обновления: <?= $proj['edit_date']?>
+													Р”Р°С‚Р° РѕР±РЅРѕРІР»РµРЅРёСЏ: <?= $proj['edit_date']?>
 													<?php }?>
 													</td>
 												</tr>
@@ -141,7 +141,7 @@
 																				
 												</li>
 									           <li class="ds-free-lance"> 
-													<a href="/blogs/viewgroup.php?l=<?=HTTP_PREFIX.$_SERVER['HTTP_HOST']?>/users/<?=$name?>/viewproj.php?prjid=<?=$prjid?>#bottom" target="_blank"><img src="/images/btn-toblog.png" width="67" height="23" alt="В блог" title="В блог"></a> 
+													<a href="/blogs/viewgroup.php?l=<?=HTTP_PREFIX.$_SERVER['HTTP_HOST']?>/users/<?=$name?>/viewproj.php?prjid=<?=$prjid?>#bottom" target="_blank"><img src="/images/btn-toblog.png" width="67" height="23" alt="Р’ Р±Р»РѕРі" title="Р’ Р±Р»РѕРі"></a> 
 												</li>
                                             	<li class="ds-facebook"> 
                                                     <?=SocialFBLikeButton("portfolio", HTTP_PREFIX."{$_SERVER['HTTP_HOST']}/users/{$name}/viewproj.php?prjid={$prjid}")?>
@@ -158,7 +158,7 @@
 								</table>
 								<? if (hasPermissions('users')) { ?>
 									<div align="right" style="margin: 10px 10px">
-										<a href="./viewproj.php?prjid=<?=$prjid?>&action=delete" class="blue" onclick="return confirm('Вы действительно хотите удалить работу?')">Удалить</a>
+										<a href="./viewproj.php?prjid=<?=$prjid?>&action=delete" class="blue" onclick="return confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЂР°Р±РѕС‚Сѓ?')">РЈРґР°Р»РёС‚СЊ</a>
 									</div>
 								<? } ?>
 							</div>

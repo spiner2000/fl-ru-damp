@@ -20,11 +20,11 @@
             <?php if(false): ?>            
             <th></th>
             <?php endif; ?>            
-            <th><strong>Создание</strong></th>
-            <th><strong>Период</strong></th>
-            <th><strong>В архиве</strong></th>
-            <th><strong>Статус</strong></th>
-            <th class="b-layout__td_center"><strong>Попыток</strong></th>
+            <th><strong>РЎРѕР·РґР°РЅРёРµ</strong></th>
+            <th><strong>РџРµСЂРёРѕРґ</strong></th>
+            <th><strong>Р’ Р°СЂС…РёРІРµ</strong></th>
+            <th><strong>РЎС‚Р°С‚СѓСЃ</strong></th>
+            <th class="b-layout__td_center"><strong>РџРѕРїС‹С‚РѕРє</strong></th>
         </tr>
     </thead>
     
@@ -77,7 +77,7 @@
 <?php if(false): ?>
 <div class="b-layout b-layout_padtop_20">
     <a id="__change_letters" href="?action=archive" class="b-button b-button_flat b-button_flat_green">
-        Отметить что письма по документам отправлены
+        РћС‚РјРµС‚РёС‚СЊ С‡С‚Рѕ РїРёСЃСЊРјР° РїРѕ РґРѕРєСѓРјРµРЅС‚Р°Рј РѕС‚РїСЂР°РІР»РµРЅС‹
     </a>
 </div>
 <?php endif; ?>    

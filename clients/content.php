@@ -21,27 +21,27 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
 
 <a name="frl" id="frl_anc"></a>
 
-    <h1 class="b-page__title">С фрилансерами работают</h1>
+    <h1 class="b-page__title">РЎ С„СЂРёР»Р°РЅСЃРµСЂР°РјРё СЂР°Р±РѕС‚Р°СЋС‚</h1>
 <div class="b-layout__right b-layout__right_relative b-layout__left_width_72ps b-layout__left_float_left">
 		<div class="b-menu b-menu_padbot_10 b-menu_line b-menu_relative b-menu__cat" >
                             <div class=" cat-tab">
                             <div class="b-menu"  data-accordion="true" data-accordion-descriptor="worktype">
 			<ul class="b-menu__list">
                 <li class="b-menu__item">
-                    <a class="b-menu__link" href="/freelancers/" title="Все фрилансеры">
-                        <span class="b-menu__b1">Все фрилансеры</span>
+                    <a class="b-menu__link" href="/freelancers/" title="Р’СЃРµ С„СЂРёР»Р°РЅСЃРµСЂС‹">
+                        <span class="b-menu__b1">Р’СЃРµ С„СЂРёР»Р°РЅСЃРµСЂС‹</span>
                     </a>
                 </li>
                 <li class="b-menu__item">
-                    <a class="b-menu__link" href="/portfolio/<?= ($prof_id ? '?prof=' . $prof_id : '') ?>" title="Работы">
-                        <span class="b-menu__b1">Работы</span>
+                    <a class="b-menu__link" href="/portfolio/<?= ($prof_id ? '?prof=' . $prof_id : '') ?>" title="Р Р°Р±РѕС‚С‹">
+                        <span class="b-menu__b1">Р Р°Р±РѕС‚С‹</span>
                     </a>
                 </li>
                 <li class="b-menu__item <?php if (!( $page > 1 )) print 'b-menu__item_active' ?>"  data-accordion-opener="true" data-accordion-descriptor="worktype">
-                    <a class="b-menu__link" href="/clients/<?= ($prof_id) ? '?prof=' . $prof_id : "" ?>" title="Клиенты"><span class="b-menu__b1">Клиенты</span></a>
+                    <a class="b-menu__link" href="/clients/<?= ($prof_id) ? '?prof=' . $prof_id : "" ?>" title="РљР»РёРµРЅС‚С‹"><span class="b-menu__b1">РљР»РёРµРЅС‚С‹</span></a>
                 </li>
 				<li class="b-menu__item b-menu__item_last b-page__ipad b-page__iphone"><a class="b-menu__link" href="/profi/"><span class="b-menu__b1">PROFI</span></a></li>
-				<li class="b-menu__item b-menu__item_padbot_null b-page__desktop"><a class="b-menu__link" href="/profi/"><span class="b-icon b-icon__profi b-icon_valign_bas" data-profi-txt="Лучшие фрилансеры сайта FL.ru. Работают на сайте более 2-х лет, прошли верификацию личности и имеют не менее 98% положительных отзывов."></span></a></li>
+				<li class="b-menu__item b-menu__item_padbot_null b-page__desktop"><a class="b-menu__link" href="/profi/"><span class="b-icon b-icon__profi b-icon_valign_bas" data-profi-txt="Р›СѓС‡С€РёРµ С„СЂРёР»Р°РЅСЃРµСЂС‹ СЃР°Р№С‚Р° FL.ru. Р Р°Р±РѕС‚Р°СЋС‚ РЅР° СЃР°Р№С‚Рµ Р±РѕР»РµРµ 2-С… Р»РµС‚, РїСЂРѕС€Р»Рё РІРµСЂРёС„РёРєР°С†РёСЋ Р»РёС‡РЅРѕСЃС‚Рё Рё РёРјРµСЋС‚ РЅРµ РјРµРЅРµРµ 98% РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… РѕС‚Р·С‹РІРѕРІ."></span></a></li>
                 <li class="b-menu__item b-menu__item_promo b-page__desktop"><?php require_once($_SERVER['DOCUMENT_ROOT'] . "/banner_promo.php"); ?></li>
 			</ul>
 		</div>
@@ -53,7 +53,7 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
         <div class="form lnk-aclients-add" id="button" <? if($error): ?>style="display:none"<? endif; ?>>
             <b class="b1"></b>
             <b class="b2"></b>
-            <div class="form-in"><a href="javascript:void(0)" onClick="$('newclient').setStyle('display', 'block'); $('button').setStyle('display', 'none');">Добавить клиента</a></div>
+            <div class="form-in"><a href="javascript:void(0)" onClick="$('newclient').setStyle('display', 'block'); $('button').setStyle('display', 'none');">Р”РѕР±Р°РІРёС‚СЊ РєР»РёРµРЅС‚Р°</a></div>
             <b class="b2"></b>
             <b class="b1"></b>
         </div>
@@ -70,16 +70,16 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                         <div class="f-cc-logo">
                             <div class="logo-canvas"></div>
                             <input type="file" name="logo" />
-                            <?/*<a href="" class="lnk-upload">Загрузить</a>*/?>
-                            <span>140х100px,<br />JPG, PNG, GIF<br />до 100Кб</span>
+                            <?/*<a href="" class="lnk-upload">Р—Р°РіСЂСѓР·РёС‚СЊ</a>*/?>
+                            <span>140С…100px,<br />JPG, PNG, GIF<br />РґРѕ 100РљР±</span>
                         </div>
                         <div class="f-cc-desc">
                             <div>
-                                <label>Название:</label>
+                                <label>РќР°Р·РІР°РЅРёРµ:</label>
                                 <input type="text" name="name_client" value="<?=( $name ? stripslashes($name) : '' )?>" maxlength="128" />
                             </div>
                             <div>
-                                <label>Ссылка:</label>
+                                <label>РЎСЃС‹Р»РєР°:</label>
                                 <input type="text" name="link_client" value="<?=( $link ? $link : '' )?>" maxlength="255"/>
                             </div>
                         </div>
@@ -89,8 +89,8 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                 <? if ($error) print(view_error($error)) ?>
                 
                 <div class="form-btns">
-                    <input type="submit" value="Добавить" class="i-btn i-bold" />
-                    <input type="button" value="Отменить" class="i-btn" onClick="$('newclient').setStyle('display', 'none'); $('button').setStyle('display', 'block');" />
+                    <input type="submit" value="Р”РѕР±Р°РІРёС‚СЊ" class="i-btn i-bold" />
+                    <input type="button" value="РћС‚РјРµРЅРёС‚СЊ" class="i-btn" onClick="$('newclient').setStyle('display', 'none'); $('button').setStyle('display', 'block');" />
 				</div>
 			</div>
 			
@@ -125,16 +125,16 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                                     <div class="f-cc-logo">
                                         <div class="logo-canvas"><img src="<?=WDCPREFIX?>/clients/<?=$client['logo']?>" width="140" height="100" alt="<?=$client['name_client']?>" class="cat-logo" /></div>
 										<input type="file" name="logo">
-                                        <?/*<a href="" class="lnk-upload">Загрузить</a>*/?>
-										<span>140х100px,<br />JPG, PNG, GIF<br />до 100Кб</span>
+                                        <?/*<a href="" class="lnk-upload">Р—Р°РіСЂСѓР·РёС‚СЊ</a>*/?>
+										<span>140С…100px,<br />JPG, PNG, GIF<br />РґРѕ 100РљР±</span>
 									</div>
 									<div class="f-cc-desc">
 									   <div>
-									       <label>Название:</label>
+									       <label>РќР°Р·РІР°РЅРёРµ:</label>
 									       <input type="text" name="name_client" value="<?=$action == 'edit_client' ? stripslashes($name) : stripslashes($client['name_client'])?>" />
 									   </div>
 									   <div>
-									       <label>Ссылка:</label>
+									       <label>РЎСЃС‹Р»РєР°:</label>
 									       <input type="text" name="link_client" value="<?=$action == 'edit_client' ? $link : $client['link_client']?>" />
 									   </div>
 									</div>
@@ -144,8 +144,8 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                             <? if ($error_edit) print(view_error($error_edit)) ?>
                             
                             <div class="form-btns">
-                                <input type="submit" value="Применить" class="i-btn i-bold" />
-								<input type="button" value="Отменить" class="i-btn" onClick="document.location = '/clients/?a=1<?=$upage?>'"/>
+                                <input type="submit" value="РџСЂРёРјРµРЅРёС‚СЊ" class="i-btn i-bold" />
+								<input type="button" value="РћС‚РјРµРЅРёС‚СЊ" class="i-btn" onClick="document.location = '/clients/?a=1<?=$upage?>'"/>
 							</div>
 						</div>
 						</form>
@@ -159,15 +159,15 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                 <td><strong><?=$client['name_client']?></strong></td>
                 <td><a href="<?=$client['link_client']?>" target="_blank"><?=$client['link_client']?></a></td>
                 <td>
-                    <a href="/clients/?a=1&edit=<?=$client['id'].$upage?>#edit"><img src="/images/btn-edit4.png" alt="Редактировать" /></a>
-			        <a href="/clients/?a=1&delete=<?=$client['id'].$upage?>" onClick="if(confirm('Вы действительно хотите удалить клиента?')) { return true; } else { return false; }"><img src="/images/btn-remove4.png" alt="Удалить" /></a>
+                    <a href="/clients/?a=1&edit=<?=$client['id'].$upage?>#edit"><img src="/images/btn-edit4.png" alt="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" /></a>
+			        <a href="/clients/?a=1&delete=<?=$client['id'].$upage?>" onClick="if(confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РєР»РёРµРЅС‚Р°?')) { return true; } else { return false; }"><img src="/images/btn-remove4.png" alt="РЈРґР°Р»РёС‚СЊ" /></a>
 			    </td>
 			    <? endif; ?>
 			</tr>
             <? endforeach; ?>
             <? else: ?>
             <tr>
-                <td colspan="4"><div class="form form-cc">Нет ни одного клиента</div></td>
+                <td colspan="4"><div class="form form-cc">РќРµС‚ РЅРё РѕРґРЅРѕРіРѕ РєР»РёРµРЅС‚Р°</div></td>
 			</tr>
             <? endif; ?>
             
@@ -193,7 +193,7 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                 <? endif; ?>
             <? else: ?>
             <tr class="b-layout__tr">
-                <td class="b-layout__td b-layout__td_padtb_20 b-layout__td_center" colspan="3"><div class="b-layout__txt">Нет ни одного клиента</div></td>
+                <td class="b-layout__td b-layout__td_padtb_20 b-layout__td_center" colspan="3"><div class="b-layout__txt">РќРµС‚ РЅРё РѕРґРЅРѕРіРѕ РєР»РёРµРЅС‚Р°</div></td>
             </tr>
             <? endif; ?>
     </table>

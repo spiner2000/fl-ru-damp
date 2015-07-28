@@ -10,9 +10,9 @@ function checkStatic($from, $to) {
     $stat_bans = $banners->GetBannersByDate($from, $to, true);
 
     if ($stat_bans) {
-        $objResponse->alert("Внимание! На этот период уже есть статические размещения!");
+        $objResponse->alert("Р’РЅРёРјР°РЅРёРµ! РќР° СЌС‚РѕС‚ РїРµСЂРёРѕРґ СѓР¶Рµ РµСЃС‚СЊ СЃС‚Р°С‚РёС‡РµСЃРєРёРµ СЂР°Р·РјРµС‰РµРЅРёСЏ!");
         $objResponse->assign("stat_info", 'innerHTML',
-            "<a href=\"#\" class=\"blue\" onclick=\"window.showModalDialog('actbanners.php?from=" . $from . "&to=" . $to . "&stat=1', null, 'dialogHeight: 300px; dialogWidth: 500px; edge: Raised; center: Yes; help: No; resizable: No; scroll: Vertical; status: No;')\">Статические размещения на этот период</a>"
+            "<a href=\"#\" class=\"blue\" onclick=\"window.showModalDialog('actbanners.php?from=" . $from . "&to=" . $to . "&stat=1', null, 'dialogHeight: 300px; dialogWidth: 500px; edge: Raised; center: Yes; help: No; resizable: No; scroll: Vertical; status: No;')\">РЎС‚Р°С‚РёС‡РµСЃРєРёРµ СЂР°Р·РјРµС‰РµРЅРёСЏ РЅР° СЌС‚РѕС‚ РїРµСЂРёРѕРґ</a>"
         );
     }
     else
@@ -27,7 +27,7 @@ function updateCitys($country) {
     $citys = $banners->GetCitys($country);
 
     if ($citys) {
-        $str .= "document.getElementById('scity').options.length=0; document.getElementById('scity').options[0] = new Option( 'ВСЕ', '0' );";
+        $str .= "document.getElementById('scity').options.length=0; document.getElementById('scity').options[0] = new Option( 'Р’РЎР•', '0' );";
         foreach ($citys as $city) {
             $str .= "document.getElementById('scity').options[document.getElementById('scity').options.length] = new Option( '" . $city['cname'] . "', '" . $city['id'] . "' );";
         }
@@ -102,7 +102,7 @@ function AddClient($data) {
     }
 
     if(!$newid) {
-        $objResponse->alert('Сохранить не получилось. Может что-то не заполнили?');
+        $objResponse->alert('РЎРѕС…СЂР°РЅРёС‚СЊ РЅРµ РїРѕР»СѓС‡РёР»РѕСЃСЊ. РњРѕР¶РµС‚ С‡С‚Рѕ-С‚Рѕ РЅРµ Р·Р°РїРѕР»РЅРёР»Рё?');
         return $objResponse;
     }
 
@@ -130,7 +130,7 @@ function CheckLogin($login) {
 
     if(!$user->uid) {
         $objResponse->call('CheckLogin', array(
-            'error' => 'Пользователь не найден'
+            'error' => 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РЅР°Р№РґРµРЅ'
         ));
         return $objResponse;
     }

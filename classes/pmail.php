@@ -4,25 +4,25 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/classes/smtp.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/employer.php';
 
 /**
- * Класс для отправки писем. Обрабатывается PgQ
+ * РљР»Р°СЃСЃ РґР»СЏ РѕС‚РїСЂР°РІРєРё РїРёСЃРµРј. РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚СЃСЏ PgQ
  *
- * После изменения необходимо перезапустить консьюмеры /classes/pgq/mail_cons.php и /classes/pgq/plproxy-mail.php на сервере 
- * Если нет возможности, то сообщить админу.
+ * РџРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ РєРѕРЅСЃСЊСЋРјРµСЂС‹ /classes/pgq/mail_cons.php Рё /classes/pgq/plproxy-mail.php РЅР° СЃРµСЂРІРµСЂРµ 
+ * Р•СЃР»Рё РЅРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё, С‚Рѕ СЃРѕРѕР±С‰РёС‚СЊ Р°РґРјРёРЅСѓ.
  * @see PGQMailSimpleConsumer::finish_batch()
  */
 class pmail extends SMTP {
     
     
     /**
-     * Общая функция для рассылки сообщений из косюмера nsync
+     * РћР±С‰Р°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ СЂР°СЃСЃС‹Р»РєРё СЃРѕРѕР±С‰РµРЅРёР№ РёР· РєРѕСЃСЋРјРµСЂР° nsync
      * 
-     * @param  integer $msgid       id личного сообщения
-     * @param  integer $spamid      id рассылки или NULL, если рассылку нужно создать
-     * @param  array   $recipients  массив с uid пользователей для рассылки
-     * @param  string  $subject     тема письма
-     * @param  string  $message     сообщение (или NULL чтобы использовать сообщение из таблицы messages)
-     * @param  boolean $useVars     использование переменных
-     * @return integer              id сообщения, 0 - ошибка
+     * @param  integer $msgid       id Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
+     * @param  integer $spamid      id СЂР°СЃСЃС‹Р»РєРё РёР»Рё NULL, РµСЃР»Рё СЂР°СЃСЃС‹Р»РєСѓ РЅСѓР¶РЅРѕ СЃРѕР·РґР°С‚СЊ
+     * @param  array   $recipients  РјР°СЃСЃРёРІ СЃ uid РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РґР»СЏ СЂР°СЃСЃС‹Р»РєРё
+     * @param  string  $subject     С‚РµРјР° РїРёСЃСЊРјР°
+     * @param  string  $message     СЃРѕРѕР±С‰РµРЅРёРµ (РёР»Рё NULL С‡С‚РѕР±С‹ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ РёР· С‚Р°Р±Р»РёС†С‹ messages)
+     * @param  boolean $useVars     РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РїРµСЂРµРјРµРЅРЅС‹С…
+     * @return integer              id СЃРѕРѕР±С‰РµРЅРёСЏ, 0 - РѕС€РёР±РєР°
      */
     protected function _nsyncMasssend( $msgid, $spamid, &$recipients, $subject, $message=NULL, $useVars=TRUE ) {
         $DB = new DB('master');
@@ -34,7 +34,7 @@ class pmail extends SMTP {
                 }
                 $message = trim($message['msg_text']);
             } 
-            $message = str_replace("\n", "\r\n", $message); // это потом доработать и перенести в smtp::SendSmtp
+            $message = str_replace("\n", "\r\n", $message); // СЌС‚Рѕ РїРѕС‚РѕРј РґРѕСЂР°Р±РѕС‚Р°С‚СЊ Рё РїРµСЂРµРЅРµСЃС‚Рё РІ smtp::SendSmtp
             $text = reformat($message, 100, 0, -1);
             $this->subject   = $subject;
             $this->message   = $this->GetHtml('', $text, array('header'=>'none', 'footer'=>'none'));
@@ -68,12 +68,12 @@ class pmail extends SMTP {
     
 
 	/**
-     * Рассылка от администранции /siteadmin/admin
+     * Р Р°СЃСЃС‹Р»РєР° РѕС‚ Р°РґРјРёРЅРёСЃС‚СЂР°РЅС†РёРё /siteadmin/admin
      * 
-     * @param  integer $msgid       id личного сообщения
-     * @param  integer $spamid      id рассылки или NULL, если рассылку нужно создать
-     * @param  array   $recipients  массив с uid пользователей для рассылки
-     * @return integer              0 -> ошибка
+     * @param  integer $msgid       id Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
+     * @param  integer $spamid      id СЂР°СЃСЃС‹Р»РєРё РёР»Рё NULL, РµСЃР»Рё СЂР°СЃСЃС‹Р»РєСѓ РЅСѓР¶РЅРѕ СЃРѕР·РґР°С‚СЊ
+     * @param  array   $recipients  РјР°СЃСЃРёРІ СЃ uid РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РґР»СЏ СЂР°СЃСЃС‹Р»РєРё
+     * @return integer              0 -> РѕС€РёР±РєР°
      */
     public function SpamFromAdmin($msgid, $spamid, $recipients) {
         $DB = new DB('master');
@@ -83,7 +83,7 @@ class pmail extends SMTP {
                 return 0;
             }
             $text = reformat2($message['msg_text'], 100);
-            $this->subject   = "Новое сообщение от Команды FL.ru";
+            $this->subject   = "РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РѕС‚ РљРѕРјР°РЅРґС‹ FL.ru";
             $this->message   = $this->GetHtml('', $text, array('header'=>'none', 'footer'=>'none'));
             $this->recipient = '';
             return $this->send('text/html', ($message['files'] == '{}'? array(): $DB->array_to_php($message['files'])));
@@ -115,12 +115,12 @@ class pmail extends SMTP {
             if ( !($message = $messages->GetMessage($msgid)) ) {
                 return 0;
             }
-            // рассылка пользователям (подготовка)
+            // СЂР°СЃСЃС‹Р»РєР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј (РїРѕРґРіРѕС‚РѕРІРєР°)
             $this->recipient = '';
-            $this->subject   = "Новое сообщение на FL.ru";
+            $this->subject   = "РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РЅР° FL.ru";
             $msg_text = "
 <a href='{$GLOBALS['host']}/users/{$message['from_login']}{$this->_addUrlParams('b')}'>{$message['from_uname']} {$message['from_usurname']}</a> [<a href='{$GLOBALS['host']}/users/{$message['from_login']}{$this->_addUrlParams('b')}'>{$message['from_login']}</a>]
-написал(а) вам новое сообщение на сайте FL.ru.<br />
+РЅР°РїРёСЃР°Р»(Р°) РІР°Рј РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РЅР° СЃР°Р№С‚Рµ FL.ru.<br />
 <br />
 ---------- 
 <br />
@@ -162,13 +162,13 @@ class pmail extends SMTP {
     
     
     /**
-     * Отправляет уведомления о новых сообщениях в личке ("Мои контакты").
-	 * Консьюмер plproxy-mail
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏС… РІ Р»РёС‡РєРµ ("РњРѕРё РєРѕРЅС‚Р°РєС‚С‹").
+	 * РљРѕРЅСЃСЊСЋРјРµСЂ plproxy-mail
      * 
-     * @param   array      $params    Данные от PgQ, TO-адрес получателя; FROM-адрес отправителя
-     * @param   string     $msg       Текст сообщения
+     * @param   array      $params    Р”Р°РЅРЅС‹Рµ РѕС‚ PgQ, TO-Р°РґСЂРµСЃ РїРѕР»СѓС‡Р°С‚РµР»СЏ; FROM-Р°РґСЂРµСЃ РѕС‚РїСЂР°РІРёС‚РµР»СЏ
+     * @param   string     $msg       РўРµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ
      *
-     * @return  integer    количество отправленных уведомлений.
+     * @return  integer    РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
 	function NewMessage($from_uid, $to_uid, $msg) {
 
@@ -183,10 +183,10 @@ class pmail extends SMTP {
 
 		$from = new users;
 		$from->GetUserByUID($from_uid);
-                $msg = preg_replace("/\/\{\W+\}\//", "//", $msg); // Удаляем умные ссылки которые идут в сообщения
+                $msg = preg_replace("/\/\{\W+\}\//", "//", $msg); // РЈРґР°Р»СЏРµРј СѓРјРЅС‹Рµ СЃСЃС‹Р»РєРё РєРѕС‚РѕСЂС‹Рµ РёРґСѓС‚ РІ СЃРѕРѕР±С‰РµРЅРёСЏ
 		$this->message = $this->GetHtml($to->uname, "
 <a href='{$GLOBALS['host']}/users/{$from->login}{$this->_addUrlParams('b')}'>{$from->uname} {$from->usurname}</a> [<a href='{$GLOBALS['host']}/users/{$from->login}{$this->_addUrlParams('b')}'>{$from->login}</a>]
-написал(а) вам новое сообщение на сайте FL.ru.<br />
+РЅР°РїРёСЃР°Р»(Р°) РІР°Рј РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РЅР° СЃР°Р№С‚Рµ FL.ru.<br />
 <br />
 ---------- 
 <br />
@@ -200,7 +200,7 @@ class pmail extends SMTP {
 ", array('header' => 'default', 'footer' => 'default'), array('login'=>$to->login));
 	
 		$this->recipient = "{$to->uname} {$to->usurname} [{$to->login}] <{$to->email}>";
-		$this->subject = "Новое сообщение на FL.ru";
+		$this->subject = "РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РЅР° FL.ru";
 		$this->send('text/html');
 		
 		return $this->sended;
@@ -209,14 +209,14 @@ class pmail extends SMTP {
 
         
     /**
-     * Отправляет уведомления о новых сообщениях в заказах типовых услуг.
-     * Консьюмер plproxy-mail
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏС… РІ Р·Р°РєР°Р·Р°С… С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі.
+     * РљРѕРЅСЃСЊСЋРјРµСЂ plproxy-mail
      * 
-     * @param   array      $params    Данные от PgQ, TO-адрес получателя; FROM-адрес отправителя
-     * @param   string     $order     Заказ
-     * @param   string     $msg       Текст сообщения
+     * @param   array      $params    Р”Р°РЅРЅС‹Рµ РѕС‚ PgQ, TO-Р°РґСЂРµСЃ РїРѕР»СѓС‡Р°С‚РµР»СЏ; FROM-Р°РґСЂРµСЃ РѕС‚РїСЂР°РІРёС‚РµР»СЏ
+     * @param   string     $order     Р—Р°РєР°Р·
+     * @param   string     $msg       РўРµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ
      *
-     * @return  integer    количество отправленных уведомлений.
+     * @return  integer    РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function NewTserviceMessage($from_uid, $to_uid, $order, $msg) {
 
@@ -231,21 +231,21 @@ class pmail extends SMTP {
 
         $from = new users;
         $from->GetUserByUID($from_uid);
-        $msg = preg_replace("/\/\{\W+\}\//", "//", $msg); // Удаляем умные ссылки которые идут в сообщения
+        $msg = preg_replace("/\/\{\W+\}\//", "//", $msg); // РЈРґР°Р»СЏРµРј СѓРјРЅС‹Рµ СЃСЃС‹Р»РєРё РєРѕС‚РѕСЂС‹Рµ РёРґСѓС‚ РІ СЃРѕРѕР±С‰РµРЅРёСЏ
         $role = in_array($from_uid, array($order['frl_id'], $order['emp_id'])) 
-                ? (is_emp() ? 'Заказчик' : 'Исполнитель')
-                : 'Арбитр';
+                ? (is_emp() ? 'Р—Р°РєР°Р·С‡РёРє' : 'РСЃРїРѕР»РЅРёС‚РµР»СЊ')
+                : 'РђСЂР±РёС‚СЂ';
         $this->message = $this->GetHtml($to->uname, "
-            {$role} {$from->uname} {$from->usurname} [{$from->login}] оставил вам новое сообщение в заказе <br />
-            «<a href='{$GLOBALS['host']}/tu/order/{$order['id']}/'>{$order['title']}</a>»:<br /><br />
+            {$role} {$from->uname} {$from->usurname} [{$from->login}] РѕСЃС‚Р°РІРёР» РІР°Рј РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РІ Р·Р°РєР°Р·Рµ <br />
+            В«<a href='{$GLOBALS['host']}/tu/order/{$order['id']}/'>{$order['title']}</a>В»:<br /><br />
             <em>" . $this->ToHtml(LenghtFormatEx(strip_tags($msg), 300)) . "</em><br /><br />"
-            . "<a href='{$GLOBALS['host']}/tu/order/{$order['id']}/#messages'>Перейти к сообщению</a> /
-                <a href='{$GLOBALS['host']}/tu/order/{$order['id']}/#messages'>Ответить на него</a>
+            . "<a href='{$GLOBALS['host']}/tu/order/{$order['id']}/#messages'>РџРµСЂРµР№С‚Рё Рє СЃРѕРѕР±С‰РµРЅРёСЋ</a> /
+                <a href='{$GLOBALS['host']}/tu/order/{$order['id']}/#messages'>РћС‚РІРµС‚РёС‚СЊ РЅР° РЅРµРіРѕ</a>
 
 ", array('header' => 'default', 'footer' => 'default'), array('login' => $to->login));
 
         $this->recipient = "{$to->uname} {$to->usurname} [{$to->login}] <{$to->email}>";
-        $this->subject = "Новое сообщение в заказе на FL.ru";
+        $this->subject = "РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РІ Р·Р°РєР°Р·Рµ РЅР° FL.ru";
         $this->send('text/html');
 
         return $this->sended;
@@ -253,11 +253,11 @@ class pmail extends SMTP {
     
 
     /**
-     * Отправляет уведомления о новых комментариях в сообществе.
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІС‹С… РєРѕРјРјРµРЅС‚Р°СЂРёСЏС… РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ.
      * 
-     * @param   string|array   $message_ids  идентификаторы комментариев.
-     * @param   resource       $connect      соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return  integer                      количество отправленных уведомлений.
+     * @param   string|array   $message_ids  РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ.
+     * @param   resource       $connect      СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return  integer                      РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function CommuneNewComment($message_ids, $connect = NULL)
     {
@@ -282,17 +282,17 @@ class pmail extends SMTP {
         }
 
         foreach($comments as $comment) {
-            $this->subject = 'Новый комментарий в топике «'.$comment['top_title'].'» сообщества «'.$comment['commune_name'].'»';
+            $this->subject = 'РќРѕРІС‹Р№ РєРѕРјРјРµРЅС‚Р°СЂРёР№ РІ С‚РѕРїРёРєРµ В«'.$comment['top_title'].'В» СЃРѕРѕР±С‰РµСЃС‚РІР° В«'.$comment['commune_name'].'В»';
             $userlink = $GLOBALS["host"]."/users/".$comment['login'];
             $friendly_url_topic = getFriendlyURL('commune', $comment["top_id"]); 
             $body_start = "
-<a href=\"{$userlink}\">{$comment['uname']}</a> <a href=\"{$userlink}\">{$comment['usurname']}</a> [<a href=\"{$userlink}\">{$comment['login']}</a>] оставил(а) <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\">комментарий</a> к вашему ".($comment["parent_id"] != $comment["top_id"] ? "сообщению/комментарию" : "посту" )." в топике «<a href=\"{$GLOBALS['host']}{$friendly_url_topic}?{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$comment['top_title']}</a>» сообщества «<a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$comment['commune_name']}</a>».
+<a href=\"{$userlink}\">{$comment['uname']}</a> <a href=\"{$userlink}\">{$comment['usurname']}</a> [<a href=\"{$userlink}\">{$comment['login']}</a>] РѕСЃС‚Р°РІРёР»(Р°) <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\">РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> Рє РІР°С€РµРјСѓ ".($comment["parent_id"] != $comment["top_id"] ? "СЃРѕРѕР±С‰РµРЅРёСЋ/РєРѕРјРјРµРЅС‚Р°СЂРёСЋ" : "РїРѕСЃС‚Сѓ" )." РІ С‚РѕРїРёРєРµ В«<a href=\"{$GLOBALS['host']}{$friendly_url_topic}?{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$comment['top_title']}</a>В» СЃРѕРѕР±С‰РµСЃС‚РІР° В«<a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$comment['commune_name']}</a>В».
 <br/><br/>
 --------
 ";
 
             $body_subscr =
-"<a href=\"{$userlink}\">{$comment['uname']}</a> <a href=\"{$userlink}\">{$comment['usurname']}</a> [<a href=\"{$userlink}\">{$comment['login']}</a>] оставил(а) <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\">комментарий</a> к ".($comment["parent_id"] != $comment["top_id"] ? "сообщению/комментарию" : "посту" ).".
+"<a href=\"{$userlink}\">{$comment['uname']}</a> <a href=\"{$userlink}\">{$comment['usurname']}</a> [<a href=\"{$userlink}\">{$comment['login']}</a>] РѕСЃС‚Р°РІРёР»(Р°) <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\">РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> Рє ".($comment["parent_id"] != $comment["top_id"] ? "СЃРѕРѕР±С‰РµРЅРёСЋ/РєРѕРјРјРµРЅС‚Р°СЂРёСЋ" : "РїРѕСЃС‚Сѓ" ).".
 <br/><br/>
 --------
 ";
@@ -320,16 +320,16 @@ reformat2($comment['title'],100)."
                  && substr($comment['p_subscr'],5,1)=='1'
                  && $comment['p_banned'] == '0')
             {
-                // отправляем родителю.
+                // РѕС‚РїСЂР°РІР»СЏРµРј СЂРѕРґРёС‚РµР»СЋ.
                 $this->recipient = $comment['p_uname']." ".$comment['p_usurname']." [".$comment['p_login']."] <".$comment['p_email'].">";
                 $this->message = $this->GetHtml($comment['p_uname'], $body_start . $body, array('header' => 'default', 'footer' => 'default'), array('login'=>$comment['p_login']));
                 $this->SmtpMail('text/html');
                 $skip_users[] = $comment['p_user_id'];
                 require_once $_SERVER['DOCUMENT_ROOT']."/classes/messages.php";
-                $msg = "Здравствуйте, {$comment['p_uname']}.
-<a href=\"{$userlink}\">{$comment['uname']}</a> <a href=\"{$userlink}\">{$comment['usurname']}</a> [<a href=\"{$userlink}\">{$comment['login']}</a>] оставил(а) коментарий к вашему ".($comment["parent_id"] == $comment["top_id"] ? "посту" : "комментарию к посту")." {$link_topic} в сообществе {$link_commune}. $p_body
-Это сообщение было отправлено автоматически и не требует ответа.
-Команда FL.ru.";
+                $msg = "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, {$comment['p_uname']}.
+<a href=\"{$userlink}\">{$comment['uname']}</a> <a href=\"{$userlink}\">{$comment['usurname']}</a> [<a href=\"{$userlink}\">{$comment['login']}</a>] РѕСЃС‚Р°РІРёР»(Р°) РєРѕРјРµРЅС‚Р°СЂРёР№ Рє РІР°С€РµРјСѓ ".($comment["parent_id"] == $comment["top_id"] ? "РїРѕСЃС‚Сѓ" : "РєРѕРјРјРµРЅС‚Р°СЂРёСЋ Рє РїРѕСЃС‚Сѓ")." {$link_topic} РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ {$link_commune}. $p_body
+Р­С‚Рѕ СЃРѕРѕР±С‰РµРЅРёРµ Р±С‹Р»Рѕ РѕС‚РїСЂР°РІР»РµРЅРѕ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё Рё РЅРµ С‚СЂРµР±СѓРµС‚ РѕС‚РІРµС‚Р°.
+РљРѕРјР°РЅРґР° FL.ru.";
                 //messages::Add( users::GetUid($err, 'admin'), $comment['p_login'], $msg, '', 1 );
             }
 
@@ -339,23 +339,23 @@ reformat2($comment['title'],100)."
                  && substr($comment['t_subscr'],5,1)=='1'
                  && $comment['t_banned'] == '0')
             {
-                // отправляем автору топика.
+                // РѕС‚РїСЂР°РІР»СЏРµРј Р°РІС‚РѕСЂСѓ С‚РѕРїРёРєР°.
                 $this->recipient = $comment['t_uname']." ".$comment['t_usurname']." [".$comment['t_login']."] <".$comment['t_email'].">";
                 $this->message = $this->GetHtml($comment['t_uname'], $body_start . $body, array('header' => 'default', 'footer' => 'default'), array('login'=>$comment['t_login']));
                 $this->SmtpMail('text/html');
                 $skip_users[] = $comment['t_user_id'];
                 require_once $_SERVER['DOCUMENT_ROOT']."/classes/messages.php";
-                $msg = "Здравствуйте, {$comment['t_uname']}.
-<a href=\"{$userlink}\">{$comment['uname']}</a> <a href=\"{$userlink}\">{$comment['usurname']}</a> [<a href=\"{$userlink}\">{$comment['login']}</a>] оставил коментарий ".($comment["parent_id"] == $comment["top_id"] ? "к вашему посту" : "в ветке топика")." {$link_topic} в сообществе {$link_commune}. $p_body
-Это сообщение было отправлено автоматически и не требует ответа.
-Команда FL.ru.";
+                $msg = "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, {$comment['t_uname']}.
+<a href=\"{$userlink}\">{$comment['uname']}</a> <a href=\"{$userlink}\">{$comment['usurname']}</a> [<a href=\"{$userlink}\">{$comment['login']}</a>] РѕСЃС‚Р°РІРёР» РєРѕРјРµРЅС‚Р°СЂРёР№ ".($comment["parent_id"] == $comment["top_id"] ? "Рє РІР°С€РµРјСѓ РїРѕСЃС‚Сѓ" : "РІ РІРµС‚РєРµ С‚РѕРїРёРєР°")." {$link_topic} РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ {$link_commune}. $p_body
+Р­С‚Рѕ СЃРѕРѕР±С‰РµРЅРёРµ Р±С‹Р»Рѕ РѕС‚РїСЂР°РІР»РµРЅРѕ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё Рё РЅРµ С‚СЂРµР±СѓРµС‚ РѕС‚РІРµС‚Р°.
+РљРѕРјР°РЅРґР° FL.ru.";
                 //messages::Add( users::GetUid($err, 'admin'), $comment['t_login'], $msg, '', 1 );
             }
 
             if(isset($subscribers[$comment['top_id']])) {
-                // отправка всем подписчикам топика
+                // РѕС‚РїСЂР°РІРєР° РІСЃРµРј РїРѕРґРїРёСЃС‡РёРєР°Рј С‚РѕРїРёРєР°
                 foreach($subscribers[$comment['top_id']] as $user) {
-                    // кроме родителя и автора
+                    // РєСЂРѕРјРµ СЂРѕРґРёС‚РµР»СЏ Рё Р°РІС‚РѕСЂР°
                     if(in_array($user['user_id'], $skip_users)) continue;
                     $this->recipient = $user['uname']." ".$user['usurname']." [".$user['login']."] <".$user['email'].">";
                     $this->message = $this->GetHtml($user['uname'], 
@@ -363,8 +363,8 @@ reformat2($comment['title'],100)."
                         array('header' => 'subscribe', 'footer' => 'subscribe'),
                         array('type' => 0, 'title' => $link_commune, 'topic_title' => $link_topic, 'login' => $user['login'], 'is_comment' => $user['parent_id']));
                     $this->SmtpMail('text/html');
-                    $msg = "Здравствуйте, {$user['uname']}.
-<a href=\"{$userlink}\">{$comment['uname']}</a> <a href=\"{$userlink}\">{$comment['usurname']}</a> [<a href=\"{$userlink}\">{$comment['login']}</a>] оставил(а) коментарий в ".($comment["parent_id"] == $comment["top_id"] ? "топике" : "ветке топика")." {$link_topic} сообщества {$link_commune} на которое вы подписаны. $p_body";
+                    $msg = "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, {$user['uname']}.
+<a href=\"{$userlink}\">{$comment['uname']}</a> <a href=\"{$userlink}\">{$comment['usurname']}</a> [<a href=\"{$userlink}\">{$comment['login']}</a>] РѕСЃС‚Р°РІРёР»(Р°) РєРѕРјРµРЅС‚Р°СЂРёР№ РІ ".($comment["parent_id"] == $comment["top_id"] ? "С‚РѕРїРёРєРµ" : "РІРµС‚РєРµ С‚РѕРїРёРєР°")." {$link_topic} СЃРѕРѕР±С‰РµСЃС‚РІР° {$link_commune} РЅР° РєРѕС‚РѕСЂРѕРµ РІС‹ РїРѕРґРїРёСЃР°РЅС‹. $p_body";
                     require_once $_SERVER['DOCUMENT_ROOT']."/classes/messages.php";
                     //messages::Add( users::GetUid($err, 'admin'), $user['login'], $msg, '', 1 );
                 }
@@ -375,11 +375,11 @@ reformat2($comment['title'],100)."
     }
     
     /**
-     * Отправляет уведомления о новых комментариях в сообществе.
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІС‹С… РєРѕРјРјРµРЅС‚Р°СЂРёСЏС… РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ.
      * 
-     * @param   string|array   $message_ids  идентификаторы комментариев.
-     * @param   resource       $connect      соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return  integer                      количество отправленных уведомлений.
+     * @param   string|array   $message_ids  РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ.
+     * @param   resource       $connect      СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return  integer                      РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function CommuneUpdateComment($message_ids, $connect = NULL)
     {
@@ -407,7 +407,7 @@ reformat2($comment['title'],100)."
         }
 
         foreach($comments as $comment) {
-            $this->subject = 'Комментарий в сообществе «'.$comment['commune_name'].'» отредактирован';
+            $this->subject = 'РљРѕРјРјРµРЅС‚Р°СЂРёР№ РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ В«'.$comment['commune_name'].'В» РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅ';
             $userlink = $GLOBALS["host"]."/users/".$comment['login'];
             $skip_users = array();
             $link_commune = "<a href='{$GLOBALS['host']}/commune/?id={$comment['commune_id']}' target='_blank'>{$comment['commune_name']}</a>";
@@ -416,7 +416,7 @@ reformat2($comment['title'],100)."
         
             $admin_userlink = $GLOBALS["host"]."/users/".$comment['admin_login'];
             if($comment['commune_id'] == commune::COMMUNE_BLOGS_ID && $comment['p_user_id'] != $comment['user_id']) {
-                $admin_user = "Модератор сообщества";
+                $admin_user = "РњРѕРґРµСЂР°С‚РѕСЂ СЃРѕРѕР±С‰РµСЃС‚РІР°";
             } else {
                 $admin_user = "<a href='{$admin_userlink}'>{$comment['admin_uname']} {$comment['admin_usurname']}</a> [<a href='{$admin_userlink}'>{$comment['admin_login']}</a>]";
             }
@@ -426,15 +426,15 @@ reformat2($comment['title'],100)."
                  && substr($comment['p_subscr'],5,1)=='1'
                  && $comment['p_banned'] == '0')
             {
-                // отправляем родителю.
+                // РѕС‚РїСЂР°РІР»СЏРµРј СЂРѕРґРёС‚РµР»СЋ.
                 $body_start = "
-{$admin_user} отредактировал(а) <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\">комментарий</a> к вашему сообщению/комментарию в топике «<a href=\"{$GLOBALS['host']}{$friendly_url_topic}{$this->_addUrlParams('b', '?')}\" target=\"_blank\">{$comment['top_title']}</a>» сообщества «<a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$comment['commune_name']}</a>».
+{$admin_user} РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р»(Р°) <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\">РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> Рє РІР°С€РµРјСѓ СЃРѕРѕР±С‰РµРЅРёСЋ/РєРѕРјРјРµРЅС‚Р°СЂРёСЋ РІ С‚РѕРїРёРєРµ В«<a href=\"{$GLOBALS['host']}{$friendly_url_topic}{$this->_addUrlParams('b', '?')}\" target=\"_blank\">{$comment['top_title']}</a>В» СЃРѕРѕР±С‰РµСЃС‚РІР° В«<a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$comment['commune_name']}</a>В».
 <br/><br/>
 --------
 ";
 
             $body_subscr =
-"<a href=\"{$userlink}\">{$comment['uname']}</a> <a href=\"{$userlink}\">{$comment['usurname']}</a> [<a href=\"{$userlink}\">{$comment['login']}</a>] отредактировал(а) <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\">комментарий</a> к сообщению/комментарию.
+"<a href=\"{$userlink}\">{$comment['uname']}</a> <a href=\"{$userlink}\">{$comment['usurname']}</a> [<a href=\"{$userlink}\">{$comment['login']}</a>] РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р»(Р°) <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\">РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> Рє СЃРѕРѕР±С‰РµРЅРёСЋ/РєРѕРјРјРµРЅС‚Р°СЂРёСЋ.
 <br/><br/>
 --------
 ";
@@ -462,14 +462,14 @@ reformat2($comment['title'],100)."
                  && $comment['t_banned'] == '0'
                  && ! in_array($comment["t_user_id"], $skip_users) )
             {
-                // отправляем автору топика.
+                // РѕС‚РїСЂР°РІР»СЏРµРј Р°РІС‚РѕСЂСѓ С‚РѕРїРёРєР°.
                 $body_start = "
-Модератор сообщества отредактировал <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\">". ($comment["t_login"] == $comment["admin_login"] ? 'ваше' : '') ." сообщение/комментарий</a> в топике «<a href=\"{$GLOBALS['host']}{$friendly_url_topic}{$this->_addUrlParams('b', '?')}\" target=\"_blank\">{$comment['top_title']}</a>» сообщества «<a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$comment['commune_name']}</a>».
+РњРѕРґРµСЂР°С‚РѕСЂ СЃРѕРѕР±С‰РµСЃС‚РІР° РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р» <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\">". ($comment["t_login"] == $comment["admin_login"] ? 'РІР°С€Рµ' : '') ." СЃРѕРѕР±С‰РµРЅРёРµ/РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> РІ С‚РѕРїРёРєРµ В«<a href=\"{$GLOBALS['host']}{$friendly_url_topic}{$this->_addUrlParams('b', '?')}\" target=\"_blank\">{$comment['top_title']}</a>В» СЃРѕРѕР±С‰РµСЃС‚РІР° В«<a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$comment['commune_name']}</a>В».
 <br/><br/>
 --------
 ";
                 $body_subscr =
-"Модератор отредактировал <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\"> ". ($comment["t_login"] == $comment["admin_login"] ? 'ваше' : '') ." сообщение / комментарий</a>.
+"РњРѕРґРµСЂР°С‚РѕСЂ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р» <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\"> ". ($comment["t_login"] == $comment["admin_login"] ? 'РІР°С€Рµ' : '') ." СЃРѕРѕР±С‰РµРЅРёРµ / РєРѕРјРјРµРЅС‚Р°СЂРёР№</a>.
 <br/><br/>
 --------
 ";
@@ -479,39 +479,39 @@ reformat2($comment['title'],100)."
                 $this->SmtpMail('text/html');
                 $skip_users[] = $comment['t_user_id'];
                 $admin_userlink = $GLOBALS["host"]."/users/".$comment['admin_login'];
-                $msg = "Здравствуйте, {$comment['t_uname']} {$comment['t_usurname']}.<br/>
-<a href=\"{$admin_userlink}\">{$comment['admin_uname']}</a> <a href=\"{$admin_userlink}\">{$comment['admin_usurname']}</a> [<a href=\"{$admin_userlink}\">{$comment['admin_login']}</a>] отредактировал коментарий к вашему сообщению / комментарию {$link_topic} в сообществе {$link_commune}. $p_body";
+                $msg = "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, {$comment['t_uname']} {$comment['t_usurname']}.<br/>
+<a href=\"{$admin_userlink}\">{$comment['admin_uname']}</a> <a href=\"{$admin_userlink}\">{$comment['admin_usurname']}</a> [<a href=\"{$admin_userlink}\">{$comment['admin_login']}</a>] РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р» РєРѕРјРµРЅС‚Р°СЂРёР№ Рє РІР°С€РµРјСѓ СЃРѕРѕР±С‰РµРЅРёСЋ / РєРѕРјРјРµРЅС‚Р°СЂРёСЋ {$link_topic} РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ {$link_commune}. $p_body";
                 //messages::Add( users::GetUid($err, 'admin'), $comment['t_login'], $msg, '', 1 );
             }
             if ( ! in_array($comment["user_id"], $skip_users) ) {
-	                // отправляем автору комментария.
-	                $body_start = ($comment["admin_login"] == $comment["t_login"] ? "Автор темы " : "Модератор сообщества ")."
-	отредактировал <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\"> ваше сообщение/комментарий</a> в топике «<a href=\"{$GLOBALS['host']}{$friendly_url_topic}{$this->_addUrlParams('b', '?')}\" target=\"_blank\">{$comment['top_title']}</a>» сообщества «<a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$comment['commune_name']}</a>».
+	                // РѕС‚РїСЂР°РІР»СЏРµРј Р°РІС‚РѕСЂСѓ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ.
+	                $body_start = ($comment["admin_login"] == $comment["t_login"] ? "РђРІС‚РѕСЂ С‚РµРјС‹ " : "РњРѕРґРµСЂР°С‚РѕСЂ СЃРѕРѕР±С‰РµСЃС‚РІР° ")."
+	РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р» <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\"> РІР°С€Рµ СЃРѕРѕР±С‰РµРЅРёРµ/РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> РІ С‚РѕРїРёРєРµ В«<a href=\"{$GLOBALS['host']}{$friendly_url_topic}{$this->_addUrlParams('b', '?')}\" target=\"_blank\">{$comment['top_title']}</a>В» СЃРѕРѕР±С‰РµСЃС‚РІР° В«<a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$comment['commune_name']}</a>В».
 	<br/><br/>
 	--------
 	";
-	                $body_subscr = ($comment["admin_login"] == $comment["t_login"] ? "Автор темы " : "Модератор сообщества ")."
-	отредактировал <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\"> ваше сообщение / комментарий</a>.
+	                $body_subscr = ($comment["admin_login"] == $comment["t_login"] ? "РђРІС‚РѕСЂ С‚РµРјС‹ " : "РњРѕРґРµСЂР°С‚РѕСЂ СЃРѕРѕР±С‰РµСЃС‚РІР° ")."
+	РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р» <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\"> РІР°С€Рµ СЃРѕРѕР±С‰РµРЅРёРµ / РєРѕРјРјРµРЅС‚Р°СЂРёР№</a>.
 	<br/><br/>
 	--------
 	";
 	                $this->recipient = $comment['uname']." ".$comment['usurname']." [".$comment['login']."] <".$comment['email'].">";
 	                $this->message = $this->GetHtml($comment['uname'], $body_start . $body, array('header' => 'default', 'footer' => 'default'), array('login'=>$comment['login']));
 	                $this->SmtpMail('text/html');
-	                $msg = "Здравствуйте, {$comment['uname']}.<br/>
-<a href=\"{$admin_userlink}\">{$comment['admin_uname']}</a> <a href=\"{$admin_userlink}\">{$comment['admin_usurname']}</a> [<a href=\"{$admin_userlink}\">{$comment['admin_login']}</a>] отредактировал ваш коментарий в топике {$link_topic} в сообществе {$link_commune}. $p_body";
+	                $msg = "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, {$comment['uname']}.<br/>
+<a href=\"{$admin_userlink}\">{$comment['admin_uname']}</a> <a href=\"{$admin_userlink}\">{$comment['admin_usurname']}</a> [<a href=\"{$admin_userlink}\">{$comment['admin_login']}</a>] РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р» РІР°С€ РєРѕРјРµРЅС‚Р°СЂРёР№ РІ С‚РѕРїРёРєРµ {$link_topic} РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ {$link_commune}. $p_body";
                     //messages::Add( users::GetUid($err, 'admin'), $comment['login'], $msg, '', 1 );
 	                $skip_users[] = $comment['user_id'];
            }
-//письмо подписаным
+//РїРёСЃСЊРјРѕ РїРѕРґРїРёСЃР°РЅС‹Рј
 $body_start = "
-{$admin_user} отредактировал(а) <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\">комментарий</a> к вашему сообщению/комментарию в топике «<a href=\"{$GLOBALS['host']}/commune/".translit($comment['commune_name'])."/{$comment['top_id']}/".translit($comment['group_name'])."/".translit($comment['top_title'])."/{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$comment['top_title']}</a>» сообщества «<a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$comment['commune_name']}</a>».
+{$admin_user} РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р»(Р°) <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\">РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> Рє РІР°С€РµРјСѓ СЃРѕРѕР±С‰РµРЅРёСЋ/РєРѕРјРјРµРЅС‚Р°СЂРёСЋ РІ С‚РѕРїРёРєРµ В«<a href=\"{$GLOBALS['host']}/commune/".translit($comment['commune_name'])."/{$comment['top_id']}/".translit($comment['group_name'])."/".translit($comment['top_title'])."/{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$comment['top_title']}</a>В» СЃРѕРѕР±С‰РµСЃС‚РІР° В«<a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$comment['commune_name']}</a>В».
 <br/><br/>
 --------
 ";
 
             $body_subscr =
-"{$admin_user} отредактировал(а) <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\">комментарий</a> к сообщению/комментарию.
+"{$admin_user} РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р»(Р°) <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\">РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> Рє СЃРѕРѕР±С‰РµРЅРёСЋ/РєРѕРјРјРµРЅС‚Р°СЂРёСЋ.
 <br/><br/>
 --------
 ";
@@ -530,9 +530,9 @@ $p_body =
             $p_body = str_replace("__NEWLINE__", "<br/>", $p_body);
             $p_body = str_replace("<br/>", "\n", "\n--------\n".$p_body);
             if(isset($subscribers[$comment['top_id']])) {
-                // отправка всем подписчикам топика
+                // РѕС‚РїСЂР°РІРєР° РІСЃРµРј РїРѕРґРїРёСЃС‡РёРєР°Рј С‚РѕРїРёРєР°
                 foreach($subscribers[$comment['top_id']] as $user) {
-                    // кроме родителя и автора
+                    // РєСЂРѕРјРµ СЂРѕРґРёС‚РµР»СЏ Рё Р°РІС‚РѕСЂР°
                     if(in_array($user['user_id'], $skip_users)) continue;
                     
                     $link_commune = "<a href='{$GLOBALS['host']}/commune/?id={$comment['commune_id']}' target='_blank'>{$comment['commune_name']}</a>";
@@ -549,10 +549,10 @@ $p_body =
         return $this->sended;
     }
     /**
-     * Отправка уведомления о редактировании топика в сообществе
-     * Вызывается в тех случаях, когда commune::GetComments4Sending вернула FALSE
-     * @param $subscr - массив подписчиков, возвращаемый commune::getThemeSubscribers
-     * @param $msg_id - идентификатор темы сообщества или комментария сообщества
+     * РћС‚РїСЂР°РІРєР° СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРё С‚РѕРїРёРєР° РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ
+     * Р’С‹Р·С‹РІР°РµС‚СЃСЏ РІ С‚РµС… СЃР»СѓС‡Р°СЏС…, РєРѕРіРґР° commune::GetComments4Sending РІРµСЂРЅСѓР»Р° FALSE
+     * @param $subscr - РјР°СЃСЃРёРІ РїРѕРґРїРёСЃС‡РёРєРѕРІ, РІРѕР·РІСЂР°С‰Р°РµРјС‹Р№ commune::getThemeSubscribers
+     * @param $msg_id - РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚РµРјС‹ СЃРѕРѕР±С‰РµСЃС‚РІР° РёР»Рё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ СЃРѕРѕР±С‰РµСЃС‚РІР°
      */
     function CommuneUpdateTopic($subscr, $msg_id) {
         $subscribers = array();
@@ -563,21 +563,21 @@ $p_body =
         $skip_users = array();
         $admin_userlink = $GLOBALS["host"]."/users/".$info['editor_login'];
         if($info['commune_id'] == commune::COMMUNE_BLOGS_ID && $info["commentator_uid"] != $info["editor_id"]) {
-            $admin_user = "Модератор сообщества";
+            $admin_user = "РњРѕРґРµСЂР°С‚РѕСЂ СЃРѕРѕР±С‰РµСЃС‚РІР°";
         } else {
             $admin_user = "<a href='{$admin_userlink}'>{$info['editor_uname']} {$info['editor_usurname']}</a> [<a href='{$admin_userlink}'>{$info['editor_login']}</a>]";
         }
-        //отправка автору комментария
+        //РѕС‚РїСЂР°РІРєР° Р°РІС‚РѕСЂСѓ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
         if ($info["commentator_uid"] != $info["editor_id"] && $info["parent_id"]) {
-        	$this->subject = ($info['parent_id']?'Ваш комментарий':'Ваш пост').($info['title'] ? ' «'.$info['title'].'» в сообществе':' в сообществе').' «'.$info['commune_name'].'» отредактирован.';
+        	$this->subject = ($info['parent_id']?'Р’Р°С€ РєРѕРјРјРµРЅС‚Р°СЂРёР№':'Р’Р°С€ РїРѕСЃС‚').($info['title'] ? ' В«'.$info['title'].'В» РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ':' РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ').' В«'.$info['commune_name'].'В» РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅ.';
 
             $body_start = "
-    {$admin_user} отредактировал(а) <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$info['top_id']}.{$msg_id}{$this->_addUrlParams('b', '&')}#c_{$msg_id}\">ваше сообщение/комментарий</a> в сообществе «<a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$info['commune_name']}</a>».
+    {$admin_user} РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р»(Р°) <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$info['top_id']}.{$msg_id}{$this->_addUrlParams('b', '&')}#c_{$msg_id}\">РІР°С€Рµ СЃРѕРѕР±С‰РµРЅРёРµ/РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ В«<a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$info['commune_name']}</a>В».
     <br/><br/>
     --------
     ";
             $body_subscr =
-    "{$admin_user} отредактировал(а) <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$info['top_id']}.{$msg_id}{$this->_addUrlParams('b', '&')}#c_{$msg_id}\">комментарий</a> к сообщению/комментарию.
+    "{$admin_user} РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р»(Р°) <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$info['top_id']}.{$msg_id}{$this->_addUrlParams('b', '&')}#c_{$msg_id}\">РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> Рє СЃРѕРѕР±С‰РµРЅРёСЋ/РєРѕРјРјРµРЅС‚Р°СЂРёСЋ.
     <br/><br/>
     --------
     ";
@@ -592,17 +592,17 @@ $p_body =
             $skip_users[] = $info['commentator_uid'];
         }
         
-        //отправка автору топика
+        //РѕС‚РїСЂР°РІРєР° Р°РІС‚РѕСЂСѓ С‚РѕРїРёРєР°
         if ( $info && $info['topicstarter_uid'] && $info['topicstarter_uid'] != $info['editor_id'] && ! in_array($info['topicstarter_uid'], $skip_users) ) {
-   /*2*/         $this->subject = ($info['parent_id']?'Комментарий к вашему посту':'Ваш пост').($info['title'] ? ' «'.$info['title'].'» в сообществе':' сообщества').' «'.$info['commune_name'].'» отредактирован.';
+   /*2*/         $this->subject = ($info['parent_id']?'РљРѕРјРјРµРЅС‚Р°СЂРёР№ Рє РІР°С€РµРјСѓ РїРѕСЃС‚Сѓ':'Р’Р°С€ РїРѕСЃС‚').($info['title'] ? ' В«'.$info['title'].'В» РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ':' СЃРѕРѕР±С‰РµСЃС‚РІР°').' В«'.$info['commune_name'].'В» РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅ.';
             $body_start = "
-	        <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$msg_id}.{$user['message_id']}{$this->_addUrlParams('b', '&')}\">Комментарий</a> к вашему посту в сообществе «<a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$info['commune_name']}</a>» отредактирован модератором сообщества.
+	        <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$msg_id}.{$user['message_id']}{$this->_addUrlParams('b', '&')}\">РљРѕРјРјРµРЅС‚Р°СЂРёР№</a> Рє РІР°С€РµРјСѓ РїРѕСЃС‚Сѓ РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ В«<a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$info['commune_name']}</a>В» РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅ РјРѕРґРµСЂР°С‚РѕСЂРѕРј СЃРѕРѕР±С‰РµСЃС‚РІР°.
 	        <br/><br/>
 	        --------
 	        ";
             if (!$info["parent_id"]) {
                 $body_start = "
-	            <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$msg_id}.{$user['message_id']}{$this->_addUrlParams('b', '&')}\">Ваш пост</a> в сообществе «<a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$info['commune_name']}</a>» отредактирован модератором сообщества.
+	            <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$msg_id}.{$user['message_id']}{$this->_addUrlParams('b', '&')}\">Р’Р°С€ РїРѕСЃС‚</a> РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ В«<a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$info['commune_name']}</a>В» РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅ РјРѕРґРµСЂР°С‚РѕСЂРѕРј СЃРѕРѕР±С‰РµСЃС‚РІР°.
 	            <br/><br/>
 	            --------
 	            ";  
@@ -619,23 +619,23 @@ $p_body =
                         array('type' => 0, 'title' => $link_commune, 'topic_name' => $link_topic, 'is_comment' => $info['parent_id'], 'to_topicstarter' => true, 'login' => $info['topicstarter_login'],  'is_author' => ($info['deleter_uid'] == $info['topicstarter_uid']) ));
             $this->SmtpMail('text/html');
             require_once $_SERVER['DOCUMENT_ROOT']."/classes/messages.php";
-            $msg = "Здравствуйте, {$info['topicstarter_uname']}.
-Модератор сообщества отредактировал ".( $info["parent_id"] ? "комментарий к Вашему посту" : "Ваш пост" )." {$link_topic} в сообществе {$link_commune}.";
+            $msg = "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, {$info['topicstarter_uname']}.
+РњРѕРґРµСЂР°С‚РѕСЂ СЃРѕРѕР±С‰РµСЃС‚РІР° РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р» ".( $info["parent_id"] ? "РєРѕРјРјРµРЅС‚Р°СЂРёР№ Рє Р’Р°С€РµРјСѓ РїРѕСЃС‚Сѓ" : "Р’Р°С€ РїРѕСЃС‚" )." {$link_topic} РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ {$link_commune}.";
             //messages::Add( users::GetUid($err, 'admin'), $info['topicstarter_login'], $msg, '', 1 );
             $skip_users[] = $info['topicstarter_uid'];
         }
         foreach($subscr as $user) {
             if ( in_array($user["user_id"], $skip_users) ) continue;
-            $this->subject = ($info['parent_id']?'В топике':'Топик').($info['title'] ? ' «'.$info['title'].'» в сообществе':' сообщества').' «'.$info['commune_name'].'» отредактирован'.($info['parent_id']?' комментарий':'');
+            $this->subject = ($info['parent_id']?'Р’ С‚РѕРїРёРєРµ':'РўРѕРїРёРє').($info['title'] ? ' В«'.$info['title'].'В» РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ':' СЃРѕРѕР±С‰РµСЃС‚РІР°').' В«'.$info['commune_name'].'В» РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅ'.($info['parent_id']?' РєРѕРјРјРµРЅС‚Р°СЂРёР№':'');
             $userlink = $GLOBALS["host"]."/users/".$info['editor_login'];
             $body_start = "
-            {$admin_user} отредактировал(а) <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$msg_id}.{$user['message_id']}{$this->_addUrlParams('b', '&')}\">сообщение</a> в сообществе «<a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$info['commune_name']}</a>».
+            {$admin_user} РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р»(Р°) <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$msg_id}.{$user['message_id']}{$this->_addUrlParams('b', '&')}\">СЃРѕРѕР±С‰РµРЅРёРµ</a> РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ В«<a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$info['commune_name']}</a>В».
             <br/><br/>
             --------
             ";
             
             $body_subscr =
-            "{$admin_user} отредактировал(а) <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$msg_id}.{$this->_addUrlParams('b', '&')}\">сообщение</a>.
+            "{$admin_user} РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р»(Р°) <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$msg_id}.{$this->_addUrlParams('b', '&')}\">СЃРѕРѕР±С‰РµРЅРёРµ</a>.
             <br/><br/>
             --------
             ";
@@ -652,17 +652,17 @@ $p_body =
                             array('type' => 0, 'title' => $link_commune, 'topic_name' => $link_topic, 'login' => $user['login'], 'is_admin' => ($info['editor_id'] == $info['topicstarter_uid']), 'to_subscriber' => true ));
             $this->SmtpMail('text/html');
             require_once $_SERVER['DOCUMENT_ROOT']."/classes/messages.php";
-            $msg = "Здравствуйте, {$user['uname']}.
-    Отредактирован ".($info["parent_id"] ? "комментарий к посту {$link_topic}" : 'пост &laquo;'.$info["title"]."&raquo;"). " сообщества {$link_commune} на который вы подписаны.";
+            $msg = "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, {$user['uname']}.
+    РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅ ".($info["parent_id"] ? "РєРѕРјРјРµРЅС‚Р°СЂРёР№ Рє РїРѕСЃС‚Сѓ {$link_topic}" : 'РїРѕСЃС‚ &laquo;'.$info["title"]."&raquo;"). " СЃРѕРѕР±С‰РµСЃС‚РІР° {$link_commune} РЅР° РєРѕС‚РѕСЂС‹Р№ РІС‹ РїРѕРґРїРёСЃР°РЅС‹.";
             //messages::Add( users::GetUid($err, 'admin'), $user['login'], $msg, '', 1 );
         }
     }
     /**
-     * Отправляет уведомления о новых комментариях в сообществе.
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІС‹С… РєРѕРјРјРµРЅС‚Р°СЂРёСЏС… РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ.
      * 
-     * @param   string|array   $message_ids  идентификаторы комментариев.
-     * @param   resource       $connect      соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return  integer                      количество отправленных уведомлений.
+     * @param   string|array   $message_ids  РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ.
+     * @param   resource       $connect      СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return  integer                      РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function CommuneDeleteComment($message_ids, $connect = NULL)
     {
@@ -690,22 +690,22 @@ $p_body =
         }
 
         foreach($comments as $comment) {
-            $this->subject = 'Комментарий в сообществе «'.$comment['commune_name'].'» удален';
+            $this->subject = 'РљРѕРјРјРµРЅС‚Р°СЂРёР№ РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ В«'.$comment['commune_name'].'В» СѓРґР°Р»РµРЅ';
             $skip_users = array();
             $skip_users[] = $comment['user_id'];
             $userlink = $GLOBALS["host"]."/users/".$comment['login'];
             if($comment['commune_id'] == commune::COMMUNE_BLOGS_ID && $comment['p_user_id'] != $comment['user_id']) {
-                $admin_user = "Модератор сообщества";
+                $admin_user = "РњРѕРґРµСЂР°С‚РѕСЂ СЃРѕРѕР±С‰РµСЃС‚РІР°";
             } else {
                 $admin_user = "<a href='{$userlink}'>{$comment['uname']} {$comment['usurname']}</a> [<a href='{$userlink}'>{$comment['login']}</a>]";
             }
             $body_start = "
-{$admin_user} удалил(а) <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\">комментарий</a> к вашему сообщению/комментарию в сообществе «<a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$comment['commune_name']}</a>».
+{$admin_user} СѓРґР°Р»РёР»(Р°) <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\">РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> Рє РІР°С€РµРјСѓ СЃРѕРѕР±С‰РµРЅРёСЋ/РєРѕРјРјРµРЅС‚Р°СЂРёСЋ РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ В«<a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$comment['commune_name']}</a>В».
 <br/><br/>
 --------
 ";
             $body_subscr =
-"{$admin_user} удалил(а) <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\">комментарий</a> к сообщению/комментарию.
+"{$admin_user} СѓРґР°Р»РёР»(Р°) <a href=\"{$GLOBALS['host']}/commune/?id={$comment['commune_id']}&site=Topic&post={$comment['top_id']}.{$comment['id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}\">РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> Рє СЃРѕРѕР±С‰РµРЅРёСЋ/РєРѕРјРјРµРЅС‚Р°СЂРёСЋ.
 <br/><br/>
 --------
 ";
@@ -727,7 +727,7 @@ $p_body =
                  && substr($comment['p_subscr'],5,1)=='1'
                  && $comment['p_banned'] == '0')
             {
-                // отправляем родителю.
+                // РѕС‚РїСЂР°РІР»СЏРµРј СЂРѕРґРёС‚РµР»СЋ.
                 $this->recipient = $comment['p_uname']." ".$comment['p_usurname']." [".$comment['p_login']."] <".$comment['p_email'].">";
                 $this->message = $this->GetHtml($comment['p_uname'], $body_start . $body, array('header' => 'default', 'footer' => 'default'), array('login'=>$comment['p_login']));
                 $this->SmtpMail('text/html');
@@ -740,7 +740,7 @@ $p_body =
                  && substr($comment['t_subscr'],5,1)=='1'
                  && $comment['t_banned'] == '0')
             {
-                // отправляем автору топика.
+                // РѕС‚РїСЂР°РІР»СЏРµРј Р°РІС‚РѕСЂСѓ С‚РѕРїРёРєР°.
                 $this->recipient = $comment['t_uname']." ".$comment['t_usurname']." [".$comment['t_login']."] <".$comment['t_email'].">";
                 $this->message = $this->GetHtml($comment['t_uname'], $body_start . $body, array('header' => 'default', 'footer' => 'default'), array('login'=>$comment['t_login']));
                 $this->SmtpMail('text/html');
@@ -748,9 +748,9 @@ $p_body =
             }
 
             if(isset($subscribers[$comment['top_id']])) {
-                // отправка всем подписчикам топика
+                // РѕС‚РїСЂР°РІРєР° РІСЃРµРј РїРѕРґРїРёСЃС‡РёРєР°Рј С‚РѕРїРёРєР°
                 foreach($subscribers[$comment['top_id']] as $user) {
-                    // кроме родителя и автора
+                    // РєСЂРѕРјРµ СЂРѕРґРёС‚РµР»СЏ Рё Р°РІС‚РѕСЂР°
                     if(in_array($user['user_id'], $skip_users)) continue;
                     
                     $link_commune = "<a href='{$GLOBALS['host']}/commune/?id={$comment['commune_id']}' target='_blank'>{$comment['commune_name']}</a>";
@@ -768,10 +768,10 @@ $p_body =
     }
 
     /**
-     * Отправка уведомления об удалении топика в сообществе
-     * Вызывается в тех случаях, когда commune::GetComments4Sending вернула FALSE
-     * @param $subscr - массив подписчиков, возвращаемый commune::getThemeSubscribers
-     * @param $msg_id - идентификатор темы сообщества или комментария сообщества
+     * РћС‚РїСЂР°РІРєР° СѓРІРµРґРѕРјР»РµРЅРёСЏ РѕР± СѓРґР°Р»РµРЅРёРё С‚РѕРїРёРєР° РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ
+     * Р’С‹Р·С‹РІР°РµС‚СЃСЏ РІ С‚РµС… СЃР»СѓС‡Р°СЏС…, РєРѕРіРґР° commune::GetComments4Sending РІРµСЂРЅСѓР»Р° FALSE
+     * @param $subscr - РјР°СЃСЃРёРІ РїРѕРґРїРёСЃС‡РёРєРѕРІ, РІРѕР·РІСЂР°С‰Р°РµРјС‹Р№ commune::getThemeSubscribers
+     * @param $msg_id - РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚РµРјС‹ СЃРѕРѕР±С‰РµСЃС‚РІР° РёР»Рё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ СЃРѕРѕР±С‰РµСЃС‚РІР°
      */
     function CommuneDeleteTopic($subscr, $msg_id) {
         $subscribers = array();
@@ -783,22 +783,22 @@ $p_body =
         
         $admin_userlink = $GLOBALS["host"]."/users/".$info['deleter_login'];
         if($info['commune_id'] == commune::COMMUNE_BLOGS_ID && $info["commentator_uid"] != $info["deleter_uid"]) {
-            $admin_user = "Модератор сообщества";
+            $admin_user = "РњРѕРґРµСЂР°С‚РѕСЂ СЃРѕРѕР±С‰РµСЃС‚РІР°";
         } else {
             $admin_user = "<a href='{$admin_userlink}'>{$info['deleter_uname']} {$info['deleter_usurname']}</a> [<a href='{$admin_userlink}'>{$info['deleter_login']}</a>]";
         }
         
-        //отправка автору комментария
+        //РѕС‚РїСЂР°РІРєР° Р°РІС‚РѕСЂСѓ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
         if ($info["commentator_uid"] != $info["deleter_uid"]) {
         	$skip_users[] = $info['commentator_uid'];
-	        $this->subject = 'Вашe сообщение в сообществе удалено.';
+	        $this->subject = 'Р’Р°С€e СЃРѕРѕР±С‰РµРЅРёРµ РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ СѓРґР°Р»РµРЅРѕ.';
 	        $body_start = "
-	{$admin_user} удалил(а) <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$info['top_id']}.{$msg_id}{$this->_addUrlParams('b', '&')}#c_{$msg_id}\">ваше сообщение/комментарий</a> в сообществе «<a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$info['commune_name']}</a>».
+	{$admin_user} СѓРґР°Р»РёР»(Р°) <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$info['top_id']}.{$msg_id}{$this->_addUrlParams('b', '&')}#c_{$msg_id}\">РІР°С€Рµ СЃРѕРѕР±С‰РµРЅРёРµ/РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ В«<a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$info['commune_name']}</a>В».
 	<br/><br/>
 	--------
 	";
 	        $body_subscr =
-	"{$admin_user} удалил(а) <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$info['top_id']}.{$msg_id}{$this->_addUrlParams('b', '&')}#c_{$msg_id}\">сообщение</a> в сообществе «<a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$info['commune_name']}</a>».
+	"{$admin_user} СѓРґР°Р»РёР»(Р°) <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$info['top_id']}.{$msg_id}{$this->_addUrlParams('b', '&')}#c_{$msg_id}\">СЃРѕРѕР±С‰РµРЅРёРµ</a> РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ В«<a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$info['commune_name']}</a>В».
 	<br/><br/>
 	--------
 	";
@@ -812,11 +812,11 @@ $p_body =
 	        $this->SmtpMail('text/html');
         }
         
-        //отправка автору топика
+        //РѕС‚РїСЂР°РІРєР° Р°РІС‚РѕСЂСѓ С‚РѕРїРёРєР°
         if ( $info && $info['topicstarter_uid'] && $info['topicstarter_uid'] != $info['deleted_id'] && ! in_array($info['topicstarter_uid'], $skip_users))  {
-            $this->subject = ($info['parent_id']?'Комментарий к вашему посту':'Ваш пост').($info['title'] ? ' «'.$info['title'].'» в сообществе':' сообщества').' «'.$info['commune_name'].'» удален.';
+            $this->subject = ($info['parent_id']?'РљРѕРјРјРµРЅС‚Р°СЂРёР№ Рє РІР°С€РµРјСѓ РїРѕСЃС‚Сѓ':'Р’Р°С€ РїРѕСЃС‚').($info['title'] ? ' В«'.$info['title'].'В» РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ':' СЃРѕРѕР±С‰РµСЃС‚РІР°').' В«'.$info['commune_name'].'В» СѓРґР°Р»РµРЅ.';
             $body_start = "
-        <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$msg_id}.{$user['message_id']}{$this->_addUrlParams('b', '&')}\">Комментарий</a> к вашему посту(1) в сообществе «<a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$info['commune_name']}</a>» удален модератором сообщества.
+        <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$msg_id}.{$user['message_id']}{$this->_addUrlParams('b', '&')}\">РљРѕРјРјРµРЅС‚Р°СЂРёР№</a> Рє РІР°С€РµРјСѓ РїРѕСЃС‚Сѓ(1) РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ В«<a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$info['commune_name']}</a>В» СѓРґР°Р»РµРЅ РјРѕРґРµСЂР°С‚РѕСЂРѕРј СЃРѕРѕР±С‰РµСЃС‚РІР°.
         <br/><br/>
         --------
         ";
@@ -833,23 +833,23 @@ $p_body =
                         array('type' => 0, 'title' => $link_commune, 'topic_name' => $link_topic, 'is_comment' => $info['parent_id'], 'to_topicstarter' => true, 'login' => $info['topicstarter_login'],  'is_author' => ($info['deleter_uid'] == $info['topicstarter_uid']) ));
             $this->SmtpMail('text/html');
             require_once $_SERVER['DOCUMENT_ROOT']."/classes/messages.php";
-            $msg = "Здравствуйте, {$info['topicstarter_uname']}.
-Модератор сообщества удалил комметарий к Вашему посту {$link_topic} в сообществе {$link_commune}.";
+            $msg = "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, {$info['topicstarter_uname']}.
+РњРѕРґРµСЂР°С‚РѕСЂ СЃРѕРѕР±С‰РµСЃС‚РІР° СѓРґР°Р»РёР» РєРѕРјРјРµС‚Р°СЂРёР№ Рє Р’Р°С€РµРјСѓ РїРѕСЃС‚Сѓ {$link_topic} РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ {$link_commune}.";
             //messages::Add( users::GetUid($err, 'admin'), $info['topicstarter_login'], $msg, '', 1 );
             $skip_users[] = $info['topicstarter_uid'];
         }
         foreach($subscr as $user) {
             if ( !in_array($user["user_id"], $skip_users) ) {
-				$this->subject = ($info['parent_id']?'В топике':'Топик').($info['title'] ? ' «'.$info['title'].'» в сообществе':' сообщества').' «'.$info['commune_name'].'» удален'.($info['parent_id']?' комментарий':'');
+				$this->subject = ($info['parent_id']?'Р’ С‚РѕРїРёРєРµ':'РўРѕРїРёРє').($info['title'] ? ' В«'.$info['title'].'В» РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ':' СЃРѕРѕР±С‰РµСЃС‚РІР°').' В«'.$info['commune_name'].'В» СѓРґР°Р»РµРЅ'.($info['parent_id']?' РєРѕРјРјРµРЅС‚Р°СЂРёР№':'');
 				$userlink = $GLOBALS["host"]."/users/".$info['deleter_login'];
 				$body_start = "
-				{$admin_user} удалил(-а) <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$msg_id}.{$user['message_id']}{$this->_addUrlParams('b', '&')}\">сообщение</a> в сообществе «<a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$info['commune_name']}</a>».
+				{$admin_user} СѓРґР°Р»РёР»(-Р°) <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$msg_id}.{$user['message_id']}{$this->_addUrlParams('b', '&')}\">СЃРѕРѕР±С‰РµРЅРёРµ</a> РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ В«<a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}{$this->_addUrlParams('b', '&')}\" target=\"_blank\">{$info['commune_name']}</a>В».
 				<br/><br/>
 				--------
 				";
 				
 				$body_subscr =
-				"{$admin_user} удалил(а) <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$msg_id}.{$this->_addUrlParams('b', '&')}\">сообщение</a>.
+				"{$admin_user} СѓРґР°Р»РёР»(Р°) <a href=\"{$GLOBALS['host']}/commune/?id={$info['commune_id']}&site=Topic&post={$msg_id}.{$this->_addUrlParams('b', '&')}\">СЃРѕРѕР±С‰РµРЅРёРµ</a>.
 				<br/><br/>
 				--------
 				";
@@ -871,18 +871,18 @@ $p_body =
 	}
     
     /**
-     * Отправляет уведомление при разблокировке в блогах.
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёРµ РїСЂРё СЂР°Р·Р±Р»РѕРєРёСЂРѕРІРєРµ РІ Р±Р»РѕРіР°С….
      *
-     * @param  string|array $ids идентификаторы пользователей
-     * @param  resource $connect соединение к БД (необходимо в PgQ) или NULL -- создать новое
-     * @return integer количество отправленных уведомлений
+     * @param  string|array $ids РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
+     * @param  resource $connect СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ
+     * @return integer РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№
      */
     function UserRazban($ids, $connect = NULL) {
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/users.php';
         
         $user          = new users();
-        $this->subject = 'Доступ в Сообщества на FL.ru разблокирован';
-        $message       = 'Команда FL.ru разблокировала Вам доступ в сервис Сообщества.';
+        $this->subject = 'Р”РѕСЃС‚СѓРї РІ РЎРѕРѕР±С‰РµСЃС‚РІР° РЅР° FL.ru СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°РЅ';
+        $message       = 'РљРѕРјР°РЅРґР° FL.ru СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°Р»Р° Р’Р°Рј РґРѕСЃС‚СѓРї РІ СЃРµСЂРІРёСЃ РЎРѕРѕР±С‰РµСЃС‚РІР°.';
         
         foreach ( $ids as $id ) {
             $user->GetUserByUID( $id );
@@ -905,11 +905,11 @@ $p_body =
 
     
     /**
-     * Уведомление о пополнении счета
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ Рѕ РїРѕРїРѕР»РЅРµРЅРёРё СЃС‡РµС‚Р°
      * 
-     * @param  string|array $operation_ids идентификаторы операций с пользовательскими счетами
-     * @param  resource $connect соединение к БД (необходимо в PgQ) или NULL -- создать новое
-     * @return integer количество отправленных уведомлений
+     * @param  string|array $operation_ids РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РѕРїРµСЂР°С†РёР№ СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРјРё СЃС‡РµС‚Р°РјРё
+     * @param  resource $connect СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ
+     * @return integer РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№
      */
     function DepositMail( $operation_ids, $connect = NULL ) {
         return; //##0027187
@@ -926,15 +926,15 @@ $p_body =
         	
         	if ( !$GLOBALS['DB']->error && pg_num_rows($mRes) ) {
                     while ( $aOne = pg_fetch_assoc($mRes) ) {
-                        $this->subject   = 'Пополнение вашего счета на FL.ru';
+                        $this->subject   = 'РџРѕРїРѕР»РЅРµРЅРёРµ РІР°С€РµРіРѕ СЃС‡РµС‚Р° РЅР° FL.ru';
                         $this->recipient = $aOne['uname']." ".$aOne['usurname']." [".$aOne['login']."] <".$aOne['email'].">";;
 
                         $message =
-'На ваш личный счет была зачислена сумма ' . number_format($aOne['trs_sum'], 2, ',', ' ') . ' руб.<br />
+'РќР° РІР°С€ Р»РёС‡РЅС‹Р№ СЃС‡РµС‚ Р±С‹Р»Р° Р·Р°С‡РёСЃР»РµРЅР° СЃСѓРјРјР° ' . number_format($aOne['trs_sum'], 2, ',', ' ') . ' СЂСѓР±.<br />
 <br />
-С подробной информацией по управлению услугами и личным счетом на FL.ru вы можете ознакомиться в нашем <a href="https://feedback.fl.ru/'.$this->_addUrlParams('b', '?').'">сообществе поддержки</a>.<br />
+РЎ РїРѕРґСЂРѕР±РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРµР№ РїРѕ СѓРїСЂР°РІР»РµРЅРёСЋ СѓСЃР»СѓРіР°РјРё Рё Р»РёС‡РЅС‹Рј СЃС‡РµС‚РѕРј РЅР° FL.ru РІС‹ РјРѕР¶РµС‚Рµ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ РІ РЅР°С€РµРј <a href="https://feedback.fl.ru/'.$this->_addUrlParams('b', '?').'">СЃРѕРѕР±С‰РµСЃС‚РІРµ РїРѕРґРґРµСЂР¶РєРё</a>.<br />
 <br />
-По всем возникающим вопросам обращайтесь в нашу <a href="https://feedback.fl.ru/' . $this->_addUrlParams('b', '?') . '">службу поддержки</a>.';
+РџРѕ РІСЃРµРј РІРѕР·РЅРёРєР°СЋС‰РёРј РІРѕРїСЂРѕСЃР°Рј РѕР±СЂР°С‰Р°Р№С‚РµСЃСЊ РІ РЅР°С€Сѓ <a href="https://feedback.fl.ru/' . $this->_addUrlParams('b', '?') . '">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.';
                         $this->message = $this->GetHtml(($aOne['uname'] ? $aOne['uname'] : $aOne['login']), $message, array('header' => 'default', 'footer' => 'default'), array('login' => $aOne['login']));
                         $this->message = str_replace('%USER_NAME%', ($aOne['uname'] ? $aOne['uname'] : $aOne['login']), $this->message);
                         $this->send( 'text/html' );
@@ -944,11 +944,11 @@ $p_body =
     }
     
     /**
-     * Отправляет уведомления о новых комментариях к действиям модераторов.
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІС‹С… РєРѕРјРјРµРЅС‚Р°СЂРёСЏС… Рє РґРµР№СЃС‚РІРёСЏРј РјРѕРґРµСЂР°С‚РѕСЂРѕРІ.
      * 
-     * @param  string|array $message_ids идентификаторы комментариев
-     * @param  resource $connect соединение к БД (необходимо в PgQ) или NULL -- создать новое
-     * @return integer количество отправленных уведомлений
+     * @param  string|array $message_ids РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
+     * @param  resource $connect СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ
+     * @return integer РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№
      */
     function AdminLogCommentsMail( $message_ids, $connect = NULL ) {
         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/admin_log.php' );
@@ -960,17 +960,17 @@ $p_body =
             return NULL;
         }
         
-        $this->subject = 'Комментарии к действию модератора на сайте FL.ru';
+        $this->subject = 'РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РґРµР№СЃС‚РІРёСЋ РјРѕРґРµСЂР°С‚РѕСЂР° РЅР° СЃР°Р№С‚Рµ FL.ru';
         
         foreach( $comments as $comment ) {
             $sObjEntity = admin_log::$aObj[$comment['obj_code']]['name'];
-            $sObjName   = $comment['object_name'] ? $comment['object_name'] : '<без названия>';
+            $sObjName   = $comment['object_name'] ? $comment['object_name'] : '<Р±РµР· РЅР°Р·РІР°РЅРёСЏ>';
             setlocale(LC_ALL, 'ru_RU.CP1251');
             $sObjName   = str_replace(array('<','>'), array('&lt;', '&gt;'), $sObjName );
             setlocale(LC_ALL, "en_US.UTF-8");
             $sObjLink   = $comment['object_link'] ? '<a href="'.$comment['object_link'].$this->_addUrlParams('b').'">'.$sObjName.'</a>' : $sObjName;
             
-            // отправляем автору родительского коментария
+            // РѕС‚РїСЂР°РІР»СЏРµРј Р°РІС‚РѕСЂСѓ СЂРѕРґРёС‚РµР»СЊСЃРєРѕРіРѕ РєРѕРјРµРЅС‚Р°СЂРёСЏ
             if ( 
                 $comment['s_uid'] != $comment['uid']
                 && $comment['s_email']
@@ -978,7 +978,7 @@ $p_body =
             ) {
                 $this->message = $this->GetHtml($comment['s_uname'], "
 <a href='{$GLOBALS['host']}/users/{$comment['login']}{$this->_addUrlParams('b')}'>{$comment['uname']} {$comment['usurname']}</a> [<a href='{$GLOBALS['host']}/users/{$comment['login']}{$this->_addUrlParams('b')}'>{$comment['login']}</a>]
-оставил(а) вам комментарии к действию модератора на сайте FL.ru.
+РѕСЃС‚Р°РІРёР»(Р°) РІР°Рј РєРѕРјРјРµРЅС‚Р°СЂРёРё Рє РґРµР№СЃС‚РІРёСЋ РјРѕРґРµСЂР°С‚РѕСЂР° РЅР° СЃР°Р№С‚Рµ FL.ru.
 <br /> --------
 <br />"
 .($comment['title']? ($this->ToHtml(LenghtFormatEx(strip_tags($comment['title']), 300))."<br />---<br />"): "")
@@ -996,7 +996,7 @@ $sObjEntity: $sObjLink<br />
                 $noSend[ $comment['s_uid'] ] = $comment['s_uid'];
             }
             
-            // отправляем автору действия
+            // РѕС‚РїСЂР°РІР»СЏРµРј Р°РІС‚РѕСЂСѓ РґРµР№СЃС‚РІРёСЏ
             if ( 
                 $comment['a_uid'] != $comment['uid']
                 && $comment['a_uid'] != $comment['s_uid']
@@ -1005,7 +1005,7 @@ $sObjEntity: $sObjLink<br />
             ) {
                 $this->message = $this->GetHtml($comment['s_uname'], "
 <a href='{$GLOBALS['host']}/users/{$comment['login']}'>{$comment['uname']} {$comment['usurname']}</a> [<a href='{$GLOBALS['host']}/users/{$comment['login']}{$this->_addUrlParams('b')}'>{$comment['login']}</a>]
-оставил(а) вам комментарии к действию модератора на сайте FL.ru.
+РѕСЃС‚Р°РІРёР»(Р°) РІР°Рј РєРѕРјРјРµРЅС‚Р°СЂРёРё Рє РґРµР№СЃС‚РІРёСЋ РјРѕРґРµСЂР°С‚РѕСЂР° РЅР° СЃР°Р№С‚Рµ FL.ru.
 <br /> --------
 <br />"
 .($comment['title']? ($this->ToHtml(LenghtFormatEx(strip_tags($comment['title']), 300))."<br />---<br />"): "")
@@ -1023,18 +1023,18 @@ $sObjEntity: $sObjLink<br />
                 $noSend[ $comment['a_uid'] ] = $comment['a_uid'];
             }
             
-            // подписка пока не реализована
+            // РїРѕРґРїРёСЃРєР° РїРѕРєР° РЅРµ СЂРµР°Р»РёР·РѕРІР°РЅР°
         }
         
         return $this->sended;
     }
     
     /**
-     * Отправляет уведомления о новых действиях модераторов
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІС‹С… РґРµР№СЃС‚РІРёСЏС… РјРѕРґРµСЂР°С‚РѕСЂРѕРІ
      * 
-     * @param  string|array $message_ids идентификаторы комментариев
-     * @param  resource $connect соединение к БД (необходимо в PgQ) или NULL -- создать новое
-     * @return integer количество отправленных уведомлений
+     * @param  string|array $message_ids РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
+     * @param  resource $connect СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ
+     * @return integer РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№
      */
     function AdminLogNotice( $log_ids, $connect = NULL ) {
         require_once $_SERVER['DOCUMENT_ROOT']."/classes/admin_log.php";
@@ -1045,7 +1045,7 @@ $sObjEntity: $sObjLink<br />
             return NULL;
         }
         
-        $this->subject = 'Новое действие модератора на сайте FL.ru';
+        $this->subject = 'РќРѕРІРѕРµ РґРµР№СЃС‚РІРёРµ РјРѕРґРµСЂР°С‚РѕСЂР° РЅР° СЃР°Р№С‚Рµ FL.ru';
         
         foreach( $comments as $aOne ) {
             if ( 
@@ -1053,7 +1053,7 @@ $sObjEntity: $sObjLink<br />
                 && $aOne['notice_uid'] != $aOne['a_uid'] 
             ) {
                 $sObjEntity = admin_log::$aObj[$aOne['obj_code']]['name'];
-                $sObjName   = $aOne['object_name'] ? $aOne['object_name'] : '<без названия>';
+                $sObjName   = $aOne['object_name'] ? $aOne['object_name'] : '<Р±РµР· РЅР°Р·РІР°РЅРёСЏ>';
                 setlocale(LC_ALL, 'ru_RU.CP1251');
                 $sObjName   = str_replace(array('<','>'), array('&lt;', '&gt;'), $sObjName );
                 setlocale(LC_ALL, "en_US.UTF-8");
@@ -1066,11 +1066,11 @@ $sObjEntity: $sObjLink<br />
                 }
                 
             	$this->message = $this->GetHtml( $aOne['uname'], "
-Новое действие модератора:<br/>
+РќРѕРІРѕРµ РґРµР№СЃС‚РІРёРµ РјРѕРґРµСЂР°С‚РѕСЂР°:<br/>
 <a href='{$GLOBALS['host']}/users/{$aOne['a_login']}{$this->_addUrlParams('b')}'>{$aOne['a_uname']} {$aOne['a_usurname']}</a> [<a href='{$GLOBALS['host']}/users/{$aOne['a_login']}{$this->_addUrlParams('b')}'>{$aOne['a_login']}</a>]
 <br/>
 $sObjEntity: $sObjLink<br />
-Действие: {$aOne['act_name']}<br />
+Р”РµР№СЃС‚РІРёРµ: {$aOne['act_name']}<br />
 <br />
 <a href='{$GLOBALS['host']}/siteadmin/admin_log/?view={$aOne['id']}{$this->_addUrlParams('b', '&')}'>{$GLOBALS['host']}/siteadmin/admin_log/?view={$aOne['id']}</a>
 <br />
@@ -1086,11 +1086,11 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Отправляет уведомления о новых комментариях в блоге.
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІС‹С… РєРѕРјРјРµРЅС‚Р°СЂРёСЏС… РІ Р±Р»РѕРіРµ.
      * 
-     * @param   string|array   $message_ids  идентификаторы комментариев.
-     * @param   resource       $connect      соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return  integer                      количество отправленных уведомлений.
+     * @param   string|array   $message_ids  РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ.
+     * @param   resource       $connect      СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return  integer                      РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function BlogNewComment($message_ids, $connect = NULL)
     {
@@ -1101,12 +1101,12 @@ $sObjEntity: $sObjLink<br />
             return NULL;
         }
         
-        $this->subject = "Комментарии в сообществе на сайте FL.ru";
+        $this->subject = "РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ РЅР° СЃР°Р№С‚Рµ FL.ru";
         
         $userSubscribe = $blogs->getUsersSubscribe($message_ids, $connect);
         foreach($comments as $comment)
         {
-            // Отправляем родителю.
+            // РћС‚РїСЂР°РІР»СЏРµРј СЂРѕРґРёС‚РµР»СЋ.
             if( substr($comment['p_subscr'], 2, 1) == '1' 
                 && $comment['p_uid'] != $comment['uid']
                 && $comment['p_email']
@@ -1114,7 +1114,7 @@ $sObjEntity: $sObjLink<br />
             {
                 $this->message = $this->GetHtml($comment['p_uname'], "
 <a href='{$GLOBALS['host']}/users/{$comment['login']}/{$this->_addUrlParams('b')}'>{$comment['uname']} {$comment['usurname']}</a> [<a href='{$GLOBALS['host']}/users/{$comment['login']}{$this->_addUrlParams('b')}'>{$comment['login']}</a>]
-оставил(-а) <a href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}&openlevel={$comment['id']}{$this->_addUrlParams('b', '&')}#o{$comment['id']}'>комментарий</a> к вашим сообщениям/комментариям в сообществе на сайте FL.ru.
+РѕСЃС‚Р°РІРёР»(-Р°) <a href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}&openlevel={$comment['id']}{$this->_addUrlParams('b', '&')}#o{$comment['id']}'>РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> Рє РІР°С€РёРј СЃРѕРѕР±С‰РµРЅРёСЏРј/РєРѕРјРјРµРЅС‚Р°СЂРёСЏРј РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ РЅР° СЃР°Р№С‚Рµ FL.ru.
 <br /> --------
 <br />"
 .($comment['title']? ($this->ToHtml(LenghtFormatEx(strip_tags($comment['title']), 300))."<br />---<br />"): "")
@@ -1126,7 +1126,7 @@ $sObjEntity: $sObjLink<br />
                 $this->SmtpMail('text/html');
                 $notSend[$comment['p_uid']] = $comment['p_uid'];
             }
-            // Отправляем автору топика.
+            // РћС‚РїСЂР°РІР»СЏРµРј Р°РІС‚РѕСЂСѓ С‚РѕРїРёРєР°.
             if( substr($comment['t_subscr'], 2, 1) == '1' 
                     && $comment['t_uid'] != $comment['uid']
                     && $comment['t_uid'] != $comment['p_uid']
@@ -1135,7 +1135,7 @@ $sObjEntity: $sObjLink<br />
             {
                 $this->message = $this->GetHtml($comment['t_uname'], "
 <a href='{$GLOBALS['host']}/users/{$comment['login']}{$this->_addUrlParams('b')}'>{$comment['uname']} {$comment['usurname']}</a> [<a href='{$GLOBALS['host']}/users/{$comment['login']}{$this->_addUrlParams('b')}'>{$comment['login']}</a>]
-оставил(-а) <a href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}&openlevel={$comment['id']}{$this->_addUrlParams('b', '&')}#o{$comment['id']}'>комментарий</a> к вашим сообщениям/комментариям в сообществе на сайте FL.ru.
+РѕСЃС‚Р°РІРёР»(-Р°) <a href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}&openlevel={$comment['id']}{$this->_addUrlParams('b', '&')}#o{$comment['id']}'>РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> Рє РІР°С€РёРј СЃРѕРѕР±С‰РµРЅРёСЏРј/РєРѕРјРјРµРЅС‚Р°СЂРёСЏРј РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ РЅР° СЃР°Р№С‚Рµ FL.ru.
 <br /> --------
 <br />"
 .($comment['title']? ($this->ToHtml(LenghtFormatEx(strip_tags($comment['title']), 300))."<br />---<br />"): "")
@@ -1149,20 +1149,20 @@ $sObjEntity: $sObjLink<br />
             }
         }
 
-        // Посылаем подписавшимся на темы  
+        // РџРѕСЃС‹Р»Р°РµРј РїРѕРґРїРёСЃР°РІС€РёРјСЃСЏ РЅР° С‚РµРјС‹  
         if($userSubscribe)
         foreach($userSubscribe as $comment) {
-            $this->subject = "Комментарии в блогах на сайте FL.ru";
+            $this->subject = "РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ Р±Р»РѕРіР°С… РЅР° СЃР°Р№С‚Рµ FL.ru";
            
             if( substr($comment['s_subscr'], 2, 1) == '1' 
                 && !$notSend[$comment['s_uid']] 
                 && $comment['s_uid'] != $comment['uid'] 
                 && $comment['s_email'])
             {
-                $link_title = "<a href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}{$this->_addUrlParams('b', '&')}' target='_blank'>" . ( $comment['blog_title'] == ''? 'Без названия' : $comment['blog_title'] )  ."</a>";  
+                $link_title = "<a href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}{$this->_addUrlParams('b', '&')}' target='_blank'>" . ( $comment['blog_title'] == ''? 'Р‘РµР· РЅР°Р·РІР°РЅРёСЏ' : $comment['blog_title'] )  ."</a>";  
                 $this->message = $this->GetHtml($comment['s_uname'], "
 <a href='{$GLOBALS['host']}/users/{$comment['login']}/{$this->_addUrlParams('b')}'>{$comment['uname']} {$comment['usurname']}</a> [<a href='{$GLOBALS['host']}/users/{$comment['login']}{$this->_addUrlParams('b')}'>{$comment['login']}</a>]
-оставил(-а) <a href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}&openlevel={$comment['id']}{$this->_addUrlParams('b', '&')}#o{$comment['id']}'>новый комментарий</a> к сообщениям/комментариям в сообществе на сайте FL.ru.
+РѕСЃС‚Р°РІРёР»(-Р°) <a href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}&openlevel={$comment['id']}{$this->_addUrlParams('b', '&')}#o{$comment['id']}'>РЅРѕРІС‹Р№ РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> Рє СЃРѕРѕР±С‰РµРЅРёСЏРј/РєРѕРјРјРµРЅС‚Р°СЂРёСЏРј РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ РЅР° СЃР°Р№С‚Рµ FL.ru.
 <br /> --------
 <br />"
 .($comment['title']? ($this->ToHtml(input_ref(LenghtFormatEx($comment['title'], 300), 1))."<br />---<br />"): "")
@@ -1179,11 +1179,11 @@ $sObjEntity: $sObjLink<br />
     }
 
 /**
-     * Отправляет уведомления о редактировании комментария в блоге.
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ РІ Р±Р»РѕРіРµ.
      * 
-     * @param   string|array   $message_ids  идентификаторы комментариев.
-     * @param   resource       $connect      соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return  integer                      количество отправленных уведомлений.
+     * @param   string|array   $message_ids  РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ.
+     * @param   resource       $connect      СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return  integer                      РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function BlogUpdateComment($message_ids, $connect = NULL)
     {
@@ -1193,12 +1193,12 @@ $sObjEntity: $sObjLink<br />
         if(!($comments = $blogs->GetComments4Sending($message_ids, $connect))) {
             return NULL;
         }
-        $this->subject = "Комментарии в сообществе на сайте FL.ru";
+        $this->subject = "РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ РЅР° СЃР°Р№С‚Рµ FL.ru";
         
         $userSubscribe = $blogs->getUsersSubscribe($message_ids, $connect, true);
         foreach($comments as $comment)
         {
-            // Отправляем родителю.
+            // РћС‚РїСЂР°РІР»СЏРµРј СЂРѕРґРёС‚РµР»СЋ.
             if( substr($comment['p_subscr'], 2, 1) == '1' 
                 && ( $comment['p_uid'] != $comment['uid'] || $comment['uid'] != $comment['modified_id'] )
                 && $comment['p_email']
@@ -1206,7 +1206,7 @@ $sObjEntity: $sObjLink<br />
             {
                 $this->message = $this->GetHtml($comment['p_uname'], "
 <a href='{$GLOBALS['host']}/users/{$comment['m_login']}/{$this->_addUrlParams('b')}'>{$comment['m_uname']} {$comment['m_usurname']}</a> [<a href='{$GLOBALS['host']}/users/{$comment['m_login']}{$this->_addUrlParams('b')}'>{$comment['m_login']}</a>]
-отредактировал(а) <a href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}&openlevel={$comment['id']}{$this->_addUrlParams('b', '&')}#o{$comment['id']}'>комментарий</a> к вашим сообщениям/комментариям в сообществе на сайте FL.ru.
+РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р»(Р°) <a href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}&openlevel={$comment['id']}{$this->_addUrlParams('b', '&')}#o{$comment['id']}'>РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> Рє РІР°С€РёРј СЃРѕРѕР±С‰РµРЅРёСЏРј/РєРѕРјРјРµРЅС‚Р°СЂРёСЏРј РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ РЅР° СЃР°Р№С‚Рµ FL.ru.
 <br /> --------
 <br />"
 .($comment['title']? ($this->ToHtml(LenghtFormatEx(strip_tags($comment['title']), 300))."<br />---<br />"): "")
@@ -1218,7 +1218,7 @@ $sObjEntity: $sObjLink<br />
                 $this->SmtpMail('text/html');
                 $notSend[$comment['p_uid']] = $comment['p_uid'];
             }
-            // Отправляем автору топика.
+            // РћС‚РїСЂР°РІР»СЏРµРј Р°РІС‚РѕСЂСѓ С‚РѕРїРёРєР°.
             if( substr($comment['t_subscr'], 2, 1) == '1' 
                     && ( $comment['t_uid'] != $comment['uid'] || $comment['t_uid'] != $comment['modified_id'] )
                     && ( $comment['t_uid'] != $comment['p_uid'] || $comment['t_uid'] != $comment['modified_id'] )
@@ -1226,14 +1226,14 @@ $sObjEntity: $sObjLink<br />
                     && !$notSend[$comment['t_uid']]
                     && $comment['t_banned'] == '0' )
             {
-                $post_type = "<a target='_blank' href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}&openlevel={$comment['id']}{$this->_addUrlParams('b', '&')}#o{$comment['id']}'>комментарий</a> к вашим сообщениям/комментариям";
+                $post_type = "<a target='_blank' href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}&openlevel={$comment['id']}{$this->_addUrlParams('b', '&')}#o{$comment['id']}'>РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> Рє РІР°С€РёРј СЃРѕРѕР±С‰РµРЅРёСЏРј/РєРѕРјРјРµРЅС‚Р°СЂРёСЏРј";
                 if ( $comment['reply_to'] == '' ) {
-                    $post_type = "<a target='_blank' href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}&openlevel={$comment['id']}{$this->_addUrlParams('b', '&')}#o{$comment['id']}'>ваше сообщение</a> ";
-                    $this->subject = "Блоги FL.ru";
+                    $post_type = "<a target='_blank' href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}&openlevel={$comment['id']}{$this->_addUrlParams('b', '&')}#o{$comment['id']}'>РІР°С€Рµ СЃРѕРѕР±С‰РµРЅРёРµ</a> ";
+                    $this->subject = "Р‘Р»РѕРіРё FL.ru";
                 }
                 $this->message = $this->GetHtml($comment['t_uname'], "
 <a href='{$GLOBALS['host']}/users/{$comment['m_login']}{$this->_addUrlParams('b')}'>{$comment['m_uname']} {$comment['m_usurname']}</a> [<a href='{$GLOBALS['host']}/users/{$comment['m_login']}{$this->_addUrlParams('b')}'>{$comment['m_login']}</a>]
-отредактировал(а) {$post_type} в блогах на сайте FL.ru.
+РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р»(Р°) {$post_type} РІ Р±Р»РѕРіР°С… РЅР° СЃР°Р№С‚Рµ FL.ru.
 <br /> --------
 <br />"
 .($comment['title']? ($this->ToHtml(LenghtFormatEx(strip_tags($comment['title']), 300))."<br />---<br />"): "")
@@ -1245,7 +1245,7 @@ $sObjEntity: $sObjLink<br />
                 $this->SmtpMail('text/html');
                 $notSend[$comment['t_uid']] = $comment['t_uid'];
                 $message = "<a href='{$GLOBALS['host']}/users/{$comment['m_login']}{$this->_addUrlParams('b')}'>{$comment['m_uname']} {$comment['m_usurname']}</a> [<a href='{$GLOBALS['host']}/users/{$comment['m_login']}{$this->_addUrlParams('b')}'>{$comment['m_login']}</a>]
-отредактировал(а) {$post_type} в сообществе на сайте FL.ru.
+РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р»(Р°) {$post_type} РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ РЅР° СЃР°Р№С‚Рµ FL.ru.
  --------
 
 "
@@ -1257,24 +1257,24 @@ $sObjEntity: $sObjLink<br />
                 messages::Add( users::GetUid($err, 'admin'), $comment['t_login'], $message, '', 1 );
             }
         }
-        // Посылаем подписавшимся на темы  
+        // РџРѕСЃС‹Р»Р°РµРј РїРѕРґРїРёСЃР°РІС€РёРјСЃСЏ РЅР° С‚РµРјС‹  
         if($userSubscribe)
         foreach($userSubscribe as $comment) {
-            $this->subject = "Комментарии в сообществе на сайте FL.ru";
+            $this->subject = "РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ РЅР° СЃР°Р№С‚Рµ FL.ru";
             if( substr($comment['s_subscr'], 2, 1) == '1' 
                 && !$notSend[$comment['s_uid']] 
                 && $comment['s_email'])
             {
-                $post_type = "<a href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}&openlevel={$comment['id']}{$this->_addUrlParams('b', '&')}#o{$comment['id']}'>комментарий</a> к сообщениям/комментариям в сообществе";
+                $post_type = "<a href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}&openlevel={$comment['id']}{$this->_addUrlParams('b', '&')}#o{$comment['id']}'>РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> Рє СЃРѕРѕР±С‰РµРЅРёСЏРј/РєРѕРјРјРµРЅС‚Р°СЂРёСЏРј РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ";
                 $message_template = "subscribe_edit_comment";
                 if ( $comment['reply_to'] == '' ) {
-                    $post_type = "<a href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}&openlevel={$comment['id']}{$this->_addUrlParams('b', '&')}#o{$comment['id']}'>пост в сообществе</a> на который вы подписаны";
+                    $post_type = "<a href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}&openlevel={$comment['id']}{$this->_addUrlParams('b', '&')}#o{$comment['id']}'>РїРѕСЃС‚ РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ</a> РЅР° РєРѕС‚РѕСЂС‹Р№ РІС‹ РїРѕРґРїРёСЃР°РЅС‹";
                     $message_template = "subscribe_edit_post";
                 }
-                $link_title = "<a href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}{$this->_addUrlParams('b', '&')}' target='_blank'>" . ( $comment['blog_title'] == ''? 'Без названия' : $comment['blog_title'] )  ."</a>";  
+                $link_title = "<a href='{$GLOBALS['host']}/blogs/view.php?tr={$comment['thread_id']}{$this->_addUrlParams('b', '&')}' target='_blank'>" . ( $comment['blog_title'] == ''? 'Р‘РµР· РЅР°Р·РІР°РЅРёСЏ' : $comment['blog_title'] )  ."</a>";  
                 $this->message = $this->GetHtml($comment['s_uname'], "
 <a href='{$GLOBALS['host']}/users/{$comment['m_login']}/{$this->_addUrlParams('b')}'>{$comment['m_uname']} {$comment['m_usurname']}</a> [<a href='{$GLOBALS['host']}/users/{$comment['login']}{$this->_addUrlParams('b')}'>{$comment['m_login']}</a>]
-отредактровал(а) {$post_type} на сайте FL.ru.
+РѕС‚СЂРµРґР°РєС‚СЂРѕРІР°Р»(Р°) {$post_type} РЅР° СЃР°Р№С‚Рµ FL.ru.
 <br /> --------
 <br />"
 .($comment['title']? ($this->ToHtml(input_ref(LenghtFormatEx($comment['title'], 300), 1))."<br />---<br />"): "")
@@ -1284,9 +1284,9 @@ $sObjEntity: $sObjLink<br />
 ", array('header' => $message_template, 'footer' => 'subscribe'), array('type' => 1, 'title' => $link_title));
                 $this->recipient = $comment['s_uname']." ".$comment['s_usurname']." [".$comment['s_login']."] <".$comment['s_email'].">";
                 $this->SmtpMail('text/html');
-                $message = "Здравствуйте, ".$comment['s_uname'].".                
+                $message = "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, ".$comment['s_uname'].".                
 <a href='{$GLOBALS['host']}/users/{$comment['m_login']}/{$this->_addUrlParams('b')}'>{$comment['m_uname']} {$comment['m_usurname']}</a> [<a href='{$GLOBALS['host']}/users/{$comment['login']}{$this->_addUrlParams('b')}'>{$comment['m_login']}</a>]
-отредактровал(а) {$post_type} на сайте FL.ru.
+РѕС‚СЂРµРґР°РєС‚СЂРѕРІР°Р»(Р°) {$post_type} РЅР° СЃР°Р№С‚Рµ FL.ru.
 --------"
 .($comment['title']? ($this->ToHtml(input_ref(LenghtFormatEx($comment['title'], 300), 1))."
 ---
@@ -1302,11 +1302,11 @@ $sObjEntity: $sObjLink<br />
     }
 	
     /**
-     * Отправляет уведомления о смене сроков в конкурсах
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ СЃРјРµРЅРµ СЃСЂРѕРєРѕРІ РІ РєРѕРЅРєСѓСЂСЃР°С…
      * 
-     * @param   string|array    $ids        идентификаторы конкурсов
-     * @param   resource        $connect    соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return  integer                     количество отправленных уведомлений.
+     * @param   string|array    $ids        РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РєРѕРЅРєСѓСЂСЃРѕРІ
+     * @param   resource        $connect    СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return  integer                     РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
 	function ContestChangeDates($ids, $connect = NULL) {
 		require_once $_SERVER['DOCUMENT_ROOT'].'/classes/contest.php';
@@ -1323,15 +1323,15 @@ $sObjEntity: $sObjLink<br />
                 $prj['name'] = htmlspecialchars($prj['name'], ENT_QUOTES, 'CP1251', false);
 				$userlink = HTTP_PREFIX."{$GLOBALS['host']}/users/{$emp->uname}";
 				$this->message = $this->GetHtml($prj['uname'], "
-					Заказчик <a href=\"{$userlink}\">{$emp->uname} {$emp->usurname}</a> [<a href=\"{$userlink}\">{$emp->login}</a>] изменил(a) сроки конкурса
-					«<a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $prj['id']).$this->_addUrlParams('f')."\">".$prj['name']."</a>».
-                    Вы можете перейти к своей <a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $prj['id'])."?offer={$prj['offer_id']}{$this->_addUrlParams('f', '&')}#offer-{$prj['offer_id']}\">работе</a>.
+					Р—Р°РєР°Р·С‡РёРє <a href=\"{$userlink}\">{$emp->uname} {$emp->usurname}</a> [<a href=\"{$userlink}\">{$emp->login}</a>] РёР·РјРµРЅРёР»(a) СЃСЂРѕРєРё РєРѕРЅРєСѓСЂСЃР°
+					В«<a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $prj['id']).$this->_addUrlParams('f')."\">".$prj['name']."</a>В».
+                    Р’С‹ РјРѕР¶РµС‚Рµ РїРµСЂРµР№С‚Рё Рє СЃРІРѕРµР№ <a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $prj['id'])."?offer={$prj['offer_id']}{$this->_addUrlParams('f', '&')}#offer-{$prj['offer_id']}\">СЂР°Р±РѕС‚Рµ</a>.
 					<br /><br/>
-					Дата завершения конкурса: ".dateFormat("d.m.Y", $prj['end_date'])."<br />
-					Дата объявления победителей: ".dateFormat("d.m.Y", $prj['win_date'])."<br />
+					Р”Р°С‚Р° Р·Р°РІРµСЂС€РµРЅРёСЏ РєРѕРЅРєСѓСЂСЃР°: ".dateFormat("d.m.Y", $prj['end_date'])."<br />
+					Р”Р°С‚Р° РѕР±СЉСЏРІР»РµРЅРёСЏ РїРѕР±РµРґРёС‚РµР»РµР№: ".dateFormat("d.m.Y", $prj['win_date'])."<br />
                     ", array('header'=>'simple', 'footer'=>'frl_subscr_projects'), array('login'=>$prj['login']));
 				$this->recipient = "{$prj['uname']} {$prj['usurname']} [{$prj['login']}] <{$prj['email']}>";
-				$this->subject = 'Сроки конкурса «'.htmlspecialchars_decode($prj['name'], ENT_QUOTES).'» были изменены';
+				$this->subject = 'РЎСЂРѕРєРё РєРѕРЅРєСѓСЂСЃР° В«'.htmlspecialchars_decode($prj['name'], ENT_QUOTES).'В» Р±С‹Р»Рё РёР·РјРµРЅРµРЅС‹';
 				$this->send('text/html');
 				++$count;
 			}
@@ -1342,11 +1342,11 @@ $sObjEntity: $sObjLink<br />
 	}
 	
 	/**
-     * Отправляет уведомление автору проекта о новом отклике.
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёРµ Р°РІС‚РѕСЂСѓ РїСЂРѕРµРєС‚Р° Рѕ РЅРѕРІРѕРј РѕС‚РєР»РёРєРµ.
      *
-     * @param   string|array    $ids        идентификаторы ответов к проекту
-     * @param   resource        $connect    соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return  integer                     количество отправленных уведомлений.
+     * @param   string|array    $ids        РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РѕС‚РІРµС‚РѕРІ Рє РїСЂРѕРµРєС‚Сѓ
+     * @param   resource        $connect    СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return  integer                     РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function NewPrjOffer($ids, $connect = NULL) {
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/projects_offers.php';
@@ -1354,18 +1354,18 @@ $sObjEntity: $sObjLink<br />
         
         if (!($ofs = $offers->getNewProjectOffers($ids, $connect))) return NULL;
         
-        //$this->subject = "Фрилансер ответил на проект";
+        //$this->subject = "Р¤СЂРёР»Р°РЅСЃРµСЂ РѕС‚РІРµС‚РёР» РЅР° РїСЂРѕРµРєС‚";
         foreach($ofs as $offer) {            
             $offer['project_name'] = html_entity_decode($offer['project_name'], ENT_QUOTES);
             
             if($offer['kind'] == 7 OR $offer['kind'] == 2) {
-                if (!$offer['to_email'] || substr($offer['to_subscr'], 8, 1) != '1') continue; // если не нужны уведомления пропускаем отсылку
-                $this->subject = "Новая работа добавлена в конкурс «{$offer['project_name']}»";
+                if (!$offer['to_email'] || substr($offer['to_subscr'], 8, 1) != '1') continue; // РµСЃР»Рё РЅРµ РЅСѓР¶РЅС‹ СѓРІРµРґРѕРјР»РµРЅРёСЏ РїСЂРѕРїСѓСЃРєР°РµРј РѕС‚СЃС‹Р»РєСѓ
+                $this->subject = "РќРѕРІР°СЏ СЂР°Р±РѕС‚Р° РґРѕР±Р°РІР»РµРЅР° РІ РєРѕРЅРєСѓСЂСЃ В«{$offer['project_name']}В»";
         		$this->recipient = " {$offer['to_uname']} {$offer['to_usurname']} [{$offer['to_login']}] <".$offer['to_email'].">";		
         		$userlink = $GLOBALS["host"]."/users/".$offer['from_login'];
         		$this->message = $this->GetHtml($offer['to_uname'], "
-        		    <a href=\"{$userlink}\">{$offer['from_uname']} {$offer['from_usurname']}<a/> [<a href=\"{$userlink}\">{$offer['from_login']}</a>] добавил(a) новую работу
-        			в&nbsp;конкурс «<a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $offer['project_id'])."?offer={$offer['id']}{$this->_addUrlParams('e', '&')}\">" . $offer['project_name'] . "</a>».
+        		    <a href=\"{$userlink}\">{$offer['from_uname']} {$offer['from_usurname']}<a/> [<a href=\"{$userlink}\">{$offer['from_login']}</a>] РґРѕР±Р°РІРёР»(a) РЅРѕРІСѓСЋ СЂР°Р±РѕС‚Сѓ
+        			РІ&nbsp;РєРѕРЅРєСѓСЂСЃ В«<a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $offer['project_id'])."?offer={$offer['id']}{$this->_addUrlParams('e', '&')}\">" . $offer['project_name'] . "</a>В».
         			<br />", array('header' => 'default', 'footer' => 'default'), array('login'=>$offer['to_login']));
         		$this->SmtpMail('text/html');  
                 //++$count;   
@@ -1373,8 +1373,8 @@ $sObjEntity: $sObjLink<br />
                 
                 $_blocked_txt = '';
                 
-                //Если это перенесенная вакансия и она не оплачена
-                //то скрываем уведомление об ответе
+                //Р•СЃР»Рё СЌС‚Рѕ РїРµСЂРµРЅРµСЃРµРЅРЅР°СЏ РІР°РєР°РЅСЃРёСЏ Рё РѕРЅР° РЅРµ РѕРїР»Р°С‡РµРЅР°
+                //С‚Рѕ СЃРєСЂС‹РІР°РµРј СѓРІРµРґРѕРјР»РµРЅРёРµ РѕР± РѕС‚РІРµС‚Рµ
                 if($offer['kind'] == 4 && 
                    $offer['state'] == 1 && 
                    $offer['payed'] == 0) {
@@ -1382,35 +1382,35 @@ $sObjEntity: $sObjLink<br />
                     $url_vacancy = sprintf('%s/public/?step=1&kind=4&public=%s&popup=1', $GLOBALS['host'], $offer['project_id']);
                     
                     $_blocked_txt = '
-                        Фрилансер ответил на опубликованный вами проект «<a href="'
+                        Р¤СЂРёР»Р°РЅСЃРµСЂ РѕС‚РІРµС‚РёР» РЅР° РѕРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹Р№ РІР°РјРё РїСЂРѕРµРєС‚ В«<a href="'
                             . $GLOBALS['host'] 
                             . getFriendlyURL("project", $offer['project_id']) 
                             . $this->_addUrlParams('e') . '">'
-                            . $offer['project_name'] . '</a>».
+                            . $offer['project_name'] . '</a>В».
                         <br/>
                         <br/>
                         ------------
                         <br/>
-                        Текст ответа временно скрыт.
+                        РўРµРєСЃС‚ РѕС‚РІРµС‚Р° РІСЂРµРјРµРЅРЅРѕ СЃРєСЂС‹С‚.
                         <br/>
                         ------------
                         <br/>
                         <br/>
-                        Для того, чтобы видеть ответы фрилансеров и иметь возможность выбрать исполнителя, пожалуйста, 
-                        перейдите в вакансию и оплатите ее размещение.
+                        Р”Р»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ РІРёРґРµС‚СЊ РѕС‚РІРµС‚С‹ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ Рё РёРјРµС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РІС‹Р±СЂР°С‚СЊ РёСЃРїРѕР»РЅРёС‚РµР»СЏ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, 
+                        РїРµСЂРµР№РґРёС‚Рµ РІ РІР°РєР°РЅСЃРёСЋ Рё РѕРїР»Р°С‚РёС‚Рµ РµРµ СЂР°Р·РјРµС‰РµРЅРёРµ.
                         <br/>
                         <br/>
-                        <a href="'.$url_vacancy.'">Оплатить размещение вакансии</a>
+                        <a href="'.$url_vacancy.'">РћРїР»Р°С‚РёС‚СЊ СЂР°Р·РјРµС‰РµРЅРёРµ РІР°РєР°РЅСЃРёРё</a>
                     ';
                 }
                 
                 
                 $userlink = $GLOBALS["host"]."/users/".$offer['from_login'];
-                if (!$offer['to_email'] || substr($offer['to_subscr'], 1, 1) != '1') continue; // если не нужны уведомления пропускаем отсылку
-                $this->subject = "Фрилансер ответил на проект «".html_entity_decode($offer['project_name'], ENT_QUOTES)."»";
+                if (!$offer['to_email'] || substr($offer['to_subscr'], 1, 1) != '1') continue; // РµСЃР»Рё РЅРµ РЅСѓР¶РЅС‹ СѓРІРµРґРѕРјР»РµРЅРёСЏ РїСЂРѕРїСѓСЃРєР°РµРј РѕС‚СЃС‹Р»РєСѓ
+                $this->subject = "Р¤СЂРёР»Р°РЅСЃРµСЂ РѕС‚РІРµС‚РёР» РЅР° РїСЂРѕРµРєС‚ В«".html_entity_decode($offer['project_name'], ENT_QUOTES)."В»";
                 
-                $body = empty($_blocked_txt)?"Фрилансер <a href=\"{$userlink}\">{$offer['from_uname']}</a> <a href=\"{$userlink}\">{$offer['from_usurname']}</a> [<a href=\"{$userlink}\">{$offer['from_login']}</a>] "."<a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $offer['project_id']).$this->_addUrlParams('e')."#freelancer_".$offer['user_id']."\">"."ответил</a> на опубликованный вами проект
-                «<a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $offer['project_id']).$this->_addUrlParams('e')."\">" . $offer['project_name'] . "</a>».
+                $body = empty($_blocked_txt)?"Р¤СЂРёР»Р°РЅСЃРµСЂ <a href=\"{$userlink}\">{$offer['from_uname']}</a> <a href=\"{$userlink}\">{$offer['from_usurname']}</a> [<a href=\"{$userlink}\">{$offer['from_login']}</a>] "."<a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $offer['project_id']).$this->_addUrlParams('e')."#freelancer_".$offer['user_id']."\">"."РѕС‚РІРµС‚РёР»</a> РЅР° РѕРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹Р№ РІР°РјРё РїСЂРѕРµРєС‚
+                В«<a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $offer['project_id']).$this->_addUrlParams('e')."\">" . $offer['project_name'] . "</a>В».
                 <br/>
                 <br/>
                 ------------
@@ -1429,11 +1429,11 @@ $sObjEntity: $sObjLink<br />
     }
 
 	/**
-     * Отправляет уведомление автору проекта о новом сообщении от юзера, ранее ответившего на данный проект.
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёРµ Р°РІС‚РѕСЂСѓ РїСЂРѕРµРєС‚Р° Рѕ РЅРѕРІРѕРј СЃРѕРѕР±С‰РµРЅРёРё РѕС‚ СЋР·РµСЂР°, СЂР°РЅРµРµ РѕС‚РІРµС‚РёРІС€РµРіРѕ РЅР° РґР°РЅРЅС‹Р№ РїСЂРѕРµРєС‚.
      *
-     * @param   string|array    $ids        идентификаторы ответов автору проекта
-     * @param   resource        $connect    соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return  integer                     количество отправленных уведомлений.
+     * @param   string|array    $ids        РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РѕС‚РІРµС‚РѕРІ Р°РІС‚РѕСЂСѓ РїСЂРѕРµРєС‚Р°
+     * @param   resource        $connect    СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return  integer                     РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function NewPrjMessageOnOffer($ids, $connect = NULL) {
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/projects_offers.php';
@@ -1447,10 +1447,10 @@ $sObjEntity: $sObjLink<br />
             $msg          = $offer['msg'];
             
             if($offer['usr_dialog'] == $offer['emp_uid']) {
-				if (!$offer['frl_email'] || substr($offer['frl_subscr'], 4, 1) != '1') continue; // если не нужны уведомления пропускаем отсылку
-                $this->subject = "Новое сообщение по проекту «" . html_entity_decode($project_name) . "»";
+				if (!$offer['frl_email'] || substr($offer['frl_subscr'], 4, 1) != '1') continue; // РµСЃР»Рё РЅРµ РЅСѓР¶РЅС‹ СѓРІРµРґРѕРјР»РµРЅРёСЏ РїСЂРѕРїСѓСЃРєР°РµРј РѕС‚СЃС‹Р»РєСѓ
+                $this->subject = "РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РїРѕ РїСЂРѕРµРєС‚Сѓ В«" . html_entity_decode($project_name) . "В»";
                 
-                //Если не исполнитель и не ПРО то скрываем контакты заказчика в уведомлении
+                //Р•СЃР»Рё РЅРµ РёСЃРїРѕР»РЅРёС‚РµР»СЊ Рё РЅРµ РџР Рћ С‚Рѕ СЃРєСЂС‹РІР°РµРј РєРѕРЅС‚Р°РєС‚С‹ Р·Р°РєР°Р·С‡РёРєР° РІ СѓРІРµРґРѕРјР»РµРЅРёРё
                 $emp_contact = '';
                 if (isset($offer['is_view_contacts']) && $offer['is_view_contacts'] == 't') {
                     $userlink = $GLOBALS["host"]."/users/".$offer['emp_login'];
@@ -1459,7 +1459,7 @@ $sObjEntity: $sObjLink<br />
                 
                 $project_name = htmlspecialchars($project_name, ENT_QUOTES, 'CP1251', false);
                 
-                $body = "Заказчик {$emp_contact}оставил(а) вам новое сообщение по проекту «<a href='{$GLOBALS['host']}".getFriendlyURL("project", $project_id).$this->_addUrlParams('f')."#freelancer_".$offer['frl_uid']."'>{$project_name}</a> ».
+                $body = "Р—Р°РєР°Р·С‡РёРє {$emp_contact}РѕСЃС‚Р°РІРёР»(Р°) РІР°Рј РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РїРѕ РїСЂРѕРµРєС‚Сѓ В«<a href='{$GLOBALS['host']}".getFriendlyURL("project", $project_id).$this->_addUrlParams('f')."#freelancer_".$offer['frl_uid']."'>{$project_name}</a> В».
                         <br/><br/>
                         ------
                         <br/>
@@ -1472,13 +1472,13 @@ $sObjEntity: $sObjLink<br />
 				$this->SmtpMail('text/html');
                 //++$count;   
             } else {
-				if (!$offer['emp_email'] || substr($offer['emp_subscr'], 4, 1) != '1') continue; // если не нужны уведомления пропускаем отсылку
-				$this->subject = "Новое сообщение по проекту «" . html_entity_decode($project_name) . "»";
+				if (!$offer['emp_email'] || substr($offer['emp_subscr'], 4, 1) != '1') continue; // РµСЃР»Рё РЅРµ РЅСѓР¶РЅС‹ СѓРІРµРґРѕРјР»РµРЅРёСЏ РїСЂРѕРїСѓСЃРєР°РµРј РѕС‚СЃС‹Р»РєСѓ
+				$this->subject = "РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РїРѕ РїСЂРѕРµРєС‚Сѓ В«" . html_entity_decode($project_name) . "В»";
 				$userlink = $GLOBALS["host"]."/users/".$offer['frl_login'];
                 
                 $project_name = htmlspecialchars($project_name, ENT_QUOTES, 'CP1251', false);
                 
-                $body = "Фрилансер <a href=\"{$userlink}\">{$offer['frl_name']}</a> <a href=\"{$userlink}\">{$offer['frl_uname']}</a> [<a href=\"{$userlink}\">{$offer['frl_login']}</a>] оставил(а) вам <a href='{$GLOBALS['host']}".getFriendlyURL("project", $project_id).$this->_addUrlParams('e')."#comment".$offer['spoiler_id']."'>" . "новое сообщение </a> по опубликованному вами проекту «<a href='{$GLOBALS['host']}".getFriendlyURL("project", $project_id).$this->_addUrlParams('e')."'>{$project_name}</a>».
+                $body = "Р¤СЂРёР»Р°РЅСЃРµСЂ <a href=\"{$userlink}\">{$offer['frl_name']}</a> <a href=\"{$userlink}\">{$offer['frl_uname']}</a> [<a href=\"{$userlink}\">{$offer['frl_login']}</a>] РѕСЃС‚Р°РІРёР»(Р°) РІР°Рј <a href='{$GLOBALS['host']}".getFriendlyURL("project", $project_id).$this->_addUrlParams('e')."#comment".$offer['spoiler_id']."'>" . "РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ </a> РїРѕ РѕРїСѓР±Р»РёРєРѕРІР°РЅРЅРѕРјСѓ РІР°РјРё РїСЂРѕРµРєС‚Сѓ В«<a href='{$GLOBALS['host']}".getFriendlyURL("project", $project_id).$this->_addUrlParams('e')."'>{$project_name}</a>В».
                         <br/><br/>
                         ------
                         <br/>
@@ -1496,11 +1496,11 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Отправляет Уведомления о добавлении в избранные.
+     * РћС‚РїСЂР°РІР»СЏРµС‚ РЈРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РґРѕР±Р°РІР»РµРЅРёРё РІ РёР·Р±СЂР°РЅРЅС‹Рµ.
      *
-     * @param   integer    $from_id        ID пользователя кто добавляет
-     * @param   integer    $target_id      ID пользователя кого добавляют
-     * @return  integer                    количество отправленных уведомлений
+     * @param   integer    $from_id        ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєС‚Рѕ РґРѕР±Р°РІР»СЏРµС‚
+     * @param   integer    $target_id      ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕРіРѕ РґРѕР±Р°РІР»СЏСЋС‚
+     * @return  integer                    РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№
      */
     function addTeamPeople($from_id, $target_id) {
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/users.php';
@@ -1511,18 +1511,18 @@ $sObjEntity: $sObjLink<br />
         $f_user->GetUserByUID($from_id);
         $t_user->GetUserByUID($target_id);
 
-        if (!$t_user->email || substr($t_user->subscr, 9, 1) != '1' || $t_user->is_banned == '1') return 0; // если не нужны уведомления пропускаем отсылку
-        $this->subject = "Вас добавили в «Избранные» на FL.ru";
+        if (!$t_user->email || substr($t_user->subscr, 9, 1) != '1' || $t_user->is_banned == '1') return 0; // РµСЃР»Рё РЅРµ РЅСѓР¶РЅС‹ СѓРІРµРґРѕРјР»РµРЅРёСЏ РїСЂРѕРїСѓСЃРєР°РµРј РѕС‚СЃС‹Р»РєСѓ
+        $this->subject = "Р’Р°СЃ РґРѕР±Р°РІРёР»Рё РІ В«РР·Р±СЂР°РЅРЅС‹РµВ» РЅР° FL.ru";
         $this->recipient = "{$t_user->uname} {$t_user->usurname} [{$t_user->login}] <".$t_user->email.">";		
         		
-        if(is_emp($f_user->role)) $name = "Работодатель"; 
-        else $name = "Фрилансер";
+        if(is_emp($f_user->role)) $name = "Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ"; 
+        else $name = "Р¤СЂРёР»Р°РЅСЃРµСЂ";
             
-        $message = $name." <a href='{$GLOBALS['host']}/users/{$f_user->login}/{$this->_addUrlParams('b')}' target='_blank'>{$f_user->uname} {$f_user->usurname} [{$f_user->login}]</a>  добавил вас в «Избранные» на своей личной странице на <a href=\"{$GLOBALS['host']}/{$this->_addUrlParams('b')}\">FL.ru</a>. 
+        $message = $name." <a href='{$GLOBALS['host']}/users/{$f_user->login}/{$this->_addUrlParams('b')}' target='_blank'>{$f_user->uname} {$f_user->usurname} [{$f_user->login}]</a>  РґРѕР±Р°РІРёР» РІР°СЃ РІ В«РР·Р±СЂР°РЅРЅС‹РµВ» РЅР° СЃРІРѕРµР№ Р»РёС‡РЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ РЅР° <a href=\"{$GLOBALS['host']}/{$this->_addUrlParams('b')}\">FL.ru</a>. 
         <br/><br/>
         --------
         <br/>
-        <a href=\"{$GLOBALS['host']}/users/{$f_user->login}/info/{$this->_addUrlParams('b')}\">Посмотреть</a><br/>
+        <a href=\"{$GLOBALS['host']}/users/{$f_user->login}/info/{$this->_addUrlParams('b')}\">РџРѕСЃРјРѕС‚СЂРµС‚СЊ</a><br/>
         --------
         <br/><br/>
         ";
@@ -1533,11 +1533,11 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Отправляет Уведомления о удалении из избранные.
+     * РћС‚РїСЂР°РІР»СЏРµС‚ РЈРІРµРґРѕРјР»РµРЅРёСЏ Рѕ СѓРґР°Р»РµРЅРёРё РёР· РёР·Р±СЂР°РЅРЅС‹Рµ.
      *
-     * @param   integer    $from_id         ID пользователя кто удаляет
-     * @param   integer    $target_id       ID пользователя кого удаляют
-     * @return  integer                     количество отправленных уведомлений.
+     * @param   integer    $from_id         ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєС‚Рѕ СѓРґР°Р»СЏРµС‚
+     * @param   integer    $target_id       ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕРіРѕ СѓРґР°Р»СЏСЋС‚
+     * @return  integer                     РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function delTeamPeople($from_id, $target_id) {
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/users.php';
@@ -1548,14 +1548,14 @@ $sObjEntity: $sObjLink<br />
         $f_user->GetUserByUID($from_id);
         $t_user->GetUserByUID($target_id);
             
-        if (!$t_user->email || substr($t_user->subscr, 9, 1) != '1' || $t_user->is_banned == '1') return; // если не нужны уведомления пропускаем отсылку
-        $this->subject = "Вас удалили из «Избранных» на FL.ru";
+        if (!$t_user->email || substr($t_user->subscr, 9, 1) != '1' || $t_user->is_banned == '1') return; // РµСЃР»Рё РЅРµ РЅСѓР¶РЅС‹ СѓРІРµРґРѕРјР»РµРЅРёСЏ РїСЂРѕРїСѓСЃРєР°РµРј РѕС‚СЃС‹Р»РєСѓ
+        $this->subject = "Р’Р°СЃ СѓРґР°Р»РёР»Рё РёР· В«РР·Р±СЂР°РЅРЅС‹С…В» РЅР° FL.ru";
         $this->recipient = "{$t_user->uname} {$t_user->usurname} [{$t_user->login}] <".$t_user->email.">";		
         		
-        if(is_emp($f_user->role)) $name = "Работодатель"; 
-        else $name = "Фрилансер";
+        if(is_emp($f_user->role)) $name = "Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ"; 
+        else $name = "Р¤СЂРёР»Р°РЅСЃРµСЂ";
             
-        $message = $name." <a href='{$GLOBALS['host']}/users/{$f_user->login}/{$this->_addUrlParams('b')}' target='_blank'>{$f_user->uname} {$f_user->usurname} [{$f_user->login}]</a>  удалил(а) вас из «Избранных» на своей личной странице на сайте <a href=\"{$GLOBALS['host']}/{$this->_addUrlParams('b')}\">FL.ru</a><br/><br/>";
+        $message = $name." <a href='{$GLOBALS['host']}/users/{$f_user->login}/{$this->_addUrlParams('b')}' target='_blank'>{$f_user->uname} {$f_user->usurname} [{$f_user->login}]</a>  СѓРґР°Р»РёР»(Р°) РІР°СЃ РёР· В«РР·Р±СЂР°РЅРЅС‹С…В» РЅР° СЃРІРѕРµР№ Р»РёС‡РЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ РЅР° СЃР°Р№С‚Рµ <a href=\"{$GLOBALS['host']}/{$this->_addUrlParams('b')}\">FL.ru</a><br/><br/>";
             
         $this->message = $this->GetHtml($t_user->uname, $message, array('header' => 'default', 'footer' => 'default'), array('login'=>$t_user->login));  
         $this->send('text/html');  
@@ -1564,11 +1564,11 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Отсылает сообщение фрилансеру о добавлении комментария к его предложению в конкурсе
+     * РћС‚СЃС‹Р»Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ С„СЂРёР»Р°РЅСЃРµСЂСѓ Рѕ РґРѕР±Р°РІР»РµРЅРёРё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ Рє РµРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЋ РІ РєРѕРЅРєСѓСЂСЃРµ
      *
-     * @param   string|array    $ids        идентификаторы новых комментариев
-     * @param   resource        $connect    соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return  integer                     количество отправленных уведомлений.
+     * @param   string|array    $ids        РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РЅРѕРІС‹С… РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
+     * @param   resource        $connect    СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return  integer                     РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function ContestNewComment($ids, $connect = NULL) {
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/contest.php';
@@ -1577,20 +1577,20 @@ $sObjEntity: $sObjLink<br />
 		if (!($comments = $contest->getContestNewComment($ids, $connect))) return NULL;
         
         foreach($comments as $comment) {
-            // Письмо организатору конкурса, если подписан и не он оставил коммент 
+            // РџРёСЃСЊРјРѕ РѕСЂРіР°РЅРёР·Р°С‚РѕСЂСѓ РєРѕРЅРєСѓСЂСЃР°, РµСЃР»Рё РїРѕРґРїРёСЃР°РЅ Рё РЅРµ РѕРЅ РѕСЃС‚Р°РІРёР» РєРѕРјРјРµРЅС‚ 
             if ( substr($comment['p_subscr'], 8, 1) == '1' 
                 && $comment['p_uid'] != $comment['uid'] 
                 && $comment['p_email'] 
                 && $comment['p_banned'] == '0' 
             ) {
-                $this->subject = 'Комментарии в вашем конкурсе «'.htmlspecialchars_decode($comment['project_name'], ENT_QUOTES).'» на сайте FL.ru';
+                $this->subject = 'РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ РІР°С€РµРј РєРѕРЅРєСѓСЂСЃРµ В«'.htmlspecialchars_decode($comment['project_name'], ENT_QUOTES).'В» РЅР° СЃР°Р№С‚Рµ FL.ru';
                 
                 $comment['project_name'] = htmlspecialchars($comment['project_name'], ENT_QUOTES, 'CP1251', false);
                 
                 $body = '<a href="'.$GLOBALS['host'].'/users/'.$comment['login'].$this->_addUrlParams('e').'">'.$comment['uname'].' '.$comment['usurname'].'</a> [<a href="'.$GLOBALS['host'].'/users/'.$comment['login'].$this->_addUrlParams('e').'">'.$comment['login'].'</a>] 
-                оставил(а) комментарий на <a href="'.$GLOBALS['host'].getFriendlyURL("project", $comment['project_id']).'?offer='.$comment['offer_id'].$this->_addUrlParams('e', '&').'#offer-'.$comment['offer_id'].'">работу</a> 
-                в вашем конкурсе «<a href="'.$GLOBALS['host'].getFriendlyURL("project", $comment['project_id']).$this->_addUrlParams('e').'">'.$comment['project_name'].'</a>». 
-                Ознакомиться с данным <a href="'.$GLOBALS['host'].getFriendlyURL("project", $comment['project_id']).'?comm='.$comment['comment_id'].$this->_addUrlParams('e', '&').'#comment-'.$comment['comment_id'].'">комментарием</a> можно на странице конкурса.';
+                РѕСЃС‚Р°РІРёР»(Р°) РєРѕРјРјРµРЅС‚Р°СЂРёР№ РЅР° <a href="'.$GLOBALS['host'].getFriendlyURL("project", $comment['project_id']).'?offer='.$comment['offer_id'].$this->_addUrlParams('e', '&').'#offer-'.$comment['offer_id'].'">СЂР°Р±РѕС‚Сѓ</a> 
+                РІ РІР°С€РµРјВ РєРѕРЅРєСѓСЂСЃРµ В«<a href="'.$GLOBALS['host'].getFriendlyURL("project", $comment['project_id']).$this->_addUrlParams('e').'">'.$comment['project_name'].'</a>В». 
+                РћР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РґР°РЅРЅС‹Рј <a href="'.$GLOBALS['host'].getFriendlyURL("project", $comment['project_id']).'?comm='.$comment['comment_id'].$this->_addUrlParams('e', '&').'#comment-'.$comment['comment_id'].'">РєРѕРјРјРµРЅС‚Р°СЂРёРµРј</a> РјРѕР¶РЅРѕ РЅР° СЃС‚СЂР°РЅРёС†Рµ РєРѕРЅРєСѓСЂСЃР°.';
                 
                 $this->message   = $this->GetHtml( $comment['p_uname'], $body, array('header' => 'default', 'footer' => 'default'), array('login'=>$comment['p_login']) );
                 $this->recipient = $comment['p_uname']." ".$comment['p_usurname']." [".$comment['p_login']."] <".$comment['p_email'].">";
@@ -1598,20 +1598,20 @@ $sObjEntity: $sObjLink<br />
                 $this->SmtpMail( 'text/html' );
             }
             
-            // Письмо автору предложения, если подписан и не он оставил коммент 
+            // РџРёСЃСЊРјРѕ Р°РІС‚РѕСЂСѓ РїСЂРµРґР»РѕР¶РµРЅРёСЏ, РµСЃР»Рё РїРѕРґРїРёСЃР°РЅ Рё РЅРµ РѕРЅ РѕСЃС‚Р°РІРёР» РєРѕРјРјРµРЅС‚ 
             if ( substr($comment['o_subscr'], 8, 1) == '1' 
                 && $comment['o_uid'] != $comment['uid'] 
                 && $comment['o_email'] 
                 && $comment['o_banned'] == '0' 
             ) {
-            	$this->subject = 'Вашу работу в конкурсе «'.htmlspecialchars_decode($comment['project_name'], ENT_QUOTES).'» прокомментировали';
+            	$this->subject = 'Р’Р°С€Сѓ СЂР°Р±РѕС‚Сѓ РІ РєРѕРЅРєСѓСЂСЃРµ В«'.htmlspecialchars_decode($comment['project_name'], ENT_QUOTES).'В» РїСЂРѕРєРѕРјРјРµРЅС‚РёСЂРѕРІР°Р»Рё';
             	
                 $comment['project_name'] = htmlspecialchars($comment['project_name'], ENT_QUOTES, 'CP1251', false);
                 
                 $body = '<a href="'.$GLOBALS['host'].'/users/'.$comment['login'].$this->_addUrlParams('f').'">'.$comment['uname'].' '.$comment['usurname'].'</a> [<a href="'.$GLOBALS['host'].'/users/'.$comment['login'].$this->_addUrlParams('f').'">'.$comment['login'].'</a>] 
-                прокомментировал(a) вашу <a href="'.$GLOBALS['host'].getFriendlyURL("project", $comment['project_id']).'?offer='.$comment['offer_id'].$this->_addUrlParams('f', '&').'#offer-'.$comment['offer_id'].'">работу</a> 
-                в&nbsp;конкурсе «<a href="'.$GLOBALS['host'].getFriendlyURL("project", $comment['project_id']).$this->_addUrlParams('f').'">' . $comment['project_name'] . '</a>».
-                Ознакомиться с данным <a href="'.$GLOBALS['host'].getFriendlyURL("project", $comment['project_id']).'?comm='.$comment['comment_id'].$this->_addUrlParams('f', '&').'#comment-'.$comment['comment_id'].'">комментарием</a> можно на странице конкурса.';
+                РїСЂРѕРєРѕРјРјРµРЅС‚РёСЂРѕРІР°Р»(a) РІР°С€Сѓ <a href="'.$GLOBALS['host'].getFriendlyURL("project", $comment['project_id']).'?offer='.$comment['offer_id'].$this->_addUrlParams('f', '&').'#offer-'.$comment['offer_id'].'">СЂР°Р±РѕС‚Сѓ</a> 
+                РІ&nbsp;РєРѕРЅРєСѓСЂСЃРµ В«<a href="'.$GLOBALS['host'].getFriendlyURL("project", $comment['project_id']).$this->_addUrlParams('f').'">' . $comment['project_name'] . '</a>В».
+                РћР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РґР°РЅРЅС‹Рј <a href="'.$GLOBALS['host'].getFriendlyURL("project", $comment['project_id']).'?comm='.$comment['comment_id'].$this->_addUrlParams('f', '&').'#comment-'.$comment['comment_id'].'">РєРѕРјРјРµРЅС‚Р°СЂРёРµРј</a> РјРѕР¶РЅРѕ РЅР° СЃС‚СЂР°РЅРёС†Рµ РєРѕРЅРєСѓСЂСЃР°.';
                 
                 $this->message   = $this->GetHtml( $comment['o_uname'], $body, array('header' => 'default', 'footer' => 'default'), array('login'=>$comment['o_login']) );
                 $this->recipient = $comment['o_uname']." ".$comment['o_usurname']." [".$comment['o_login']."] <".$comment['o_email'].">";
@@ -1619,7 +1619,7 @@ $sObjEntity: $sObjLink<br />
                 $this->SmtpMail( 'text/html' );
             }
             
-            // Письмо автору родительского комментария, если нужно 
+            // РџРёСЃСЊРјРѕ Р°РІС‚РѕСЂСѓ СЂРѕРґРёС‚РµР»СЊСЃРєРѕРіРѕ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ, РµСЃР»Рё РЅСѓР¶РЅРѕ 
             if ( substr($comment['m_subscr'], 8, 1) == '1' 
                 && $comment['m_uid'] != $comment['uid'] 
                 && $comment['m_uid'] != $comment['p_uid'] 
@@ -1627,13 +1627,13 @@ $sObjEntity: $sObjLink<br />
                 && $comment['m_email'] 
                 && $comment['m_banned'] == '0' 
             ) {
-            	$this->subject = 'Комментарии в конкурсе "'.htmlspecialchars_decode($comment['project_name'], ENT_QUOTES).'" на сайте FL.ru';
+            	$this->subject = 'РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ РєРѕРЅРєСѓСЂСЃРµ "'.htmlspecialchars_decode($comment['project_name'], ENT_QUOTES).'" РЅР° СЃР°Р№С‚Рµ FL.ru';
             	
                 $comment['project_name'] = htmlspecialchars($comment['project_name'], ENT_QUOTES, 'CP1251', false);
                 
             	$body = '<a href="'.$GLOBALS['host'].'/users/'.$comment['login'].$this->_addUrlParams('b').'">'.$comment['uname'].' '.$comment['usurname'].'</a> [<a href="'.$GLOBALS['host'].'/users/'.$comment['login'].$this->_addUrlParams('b').'">'.$comment['login'].'</a>] 
-                оставил(а) вам комментарий в конкурсе <a href="'.$GLOBALS['host'].getFriendlyURL("project", $comment['project_id']).$this->_addUrlParams('b').'">"'.$comment['project_name'].'"</a>. 
-                <br/>Вы можете прочитать данный <a href="'.$GLOBALS['host'].getFriendlyURL("project", $comment['project_id']).'?comm='.$comment['comment_id'].$this->_addUrlParams('b').'#comment-'.$comment['comment_id'].'">комментарий</a>.';
+                РѕСЃС‚Р°РІРёР»(Р°) РІР°Рј РєРѕРјРјРµРЅС‚Р°СЂРёР№ РІ РєРѕРЅРєСѓСЂСЃРµ <a href="'.$GLOBALS['host'].getFriendlyURL("project", $comment['project_id']).$this->_addUrlParams('b').'">"'.$comment['project_name'].'"</a>. 
+                <br/>Р’С‹ РјРѕР¶РµС‚Рµ РїСЂРѕС‡РёС‚Р°С‚СЊ РґР°РЅРЅС‹Р№ <a href="'.$GLOBALS['host'].getFriendlyURL("project", $comment['project_id']).'?comm='.$comment['comment_id'].$this->_addUrlParams('b').'#comment-'.$comment['comment_id'].'">РєРѕРјРјРµРЅС‚Р°СЂРёР№</a>.';
                 
                 $this->message   = $this->GetHtml( $comment['m_uname'], $body, array('header' => 'default', 'footer' => 'default'), array('login'=>$comment['m_login']) );
                 $this->recipient = $comment['m_uname']." ".$comment['m_usurname']." [".$comment['m_login']."] <".$comment['m_email'].">";
@@ -1646,11 +1646,11 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Отправляет уведомление о новом отзыве.
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёРµ Рѕ РЅРѕРІРѕРј РѕС‚Р·С‹РІРµ.
      *
-     * @param   string|array    $ids        идентификаторы новых отзывов
-     * @param   resource        $connect    соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return  integer                     количество отправленных уведомлений.
+     * @param   string|array    $ids        РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РЅРѕРІС‹С… РѕС‚Р·С‹РІРѕРІ
+     * @param   resource        $connect    СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return  integer                     РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function NewOpinion($ids, $connect = NULL) {
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/opinions.php';
@@ -1659,30 +1659,30 @@ $sObjEntity: $sObjLink<br />
 		if (!($opinions = $opin->getNewOpinion($ids, $connect))) return NULL;
         
         foreach($opinions as $opinion) {
-            if (!$opinion['t_email'] || substr($opinion['t_subscr'],3,1) != '1' || $opinion['t_banned'] == '1') continue; // если не нужны уведомления пропускаем отсылку
+            if (!$opinion['t_email'] || substr($opinion['t_subscr'],3,1) != '1' || $opinion['t_banned'] == '1') continue; // РµСЃР»Рё РЅРµ РЅСѓР¶РЅС‹ СѓРІРµРґРѕРјР»РµРЅРёСЏ РїСЂРѕРїСѓСЃРєР°РµРј РѕС‚СЃС‹Р»РєСѓ
             
             switch ($opinion['rating']) {
                 case 0:
-                    $type_text = "нейтральный";
+                    $type_text = "РЅРµР№С‚СЂР°Р»СЊРЅС‹Р№";
                     break;
                 case 1:
-                    $type_text = "положительный";
+                    $type_text = "РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№";
                     break;
                 case -1:
-                    $type_text = "отрицательный";
+                    $type_text = "РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№";
                     break;
             }
             
             if (substr($opinion['f_role'],0,1)=='1') { $path= "/users/".$opinion["t_login"]."/opinions/"; }
             else { $path= "/users/".$opinion["t_login"]."/opinions/?from=frl"; }
 
-            $body = "Пользователь <a href='{$GLOBALS['host']}/users/{$opinion['f_login']}{$this->_addUrlParams('b')}'>".$opinion["f_uname"]." ".$opinion["f_usurname"]."</a> [<a href='{$GLOBALS['host']}/users/{$opinion['f_login']}{$this->_addUrlParams('b')}'>".$opinion["f_login"]."</a>]
-оставил(а) $type_text отзыв о вас.<br />
-Вы можете ознакомиться с <a href='{$GLOBALS['host']}{$path}{$this->_addUrlParams('b', '&')}'>новым отзывом</a> на странице вашего аккаунта.";
+            $body = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ <a href='{$GLOBALS['host']}/users/{$opinion['f_login']}{$this->_addUrlParams('b')}'>".$opinion["f_uname"]." ".$opinion["f_usurname"]."</a> [<a href='{$GLOBALS['host']}/users/{$opinion['f_login']}{$this->_addUrlParams('b')}'>".$opinion["f_login"]."</a>]
+РѕСЃС‚Р°РІРёР»(Р°) $type_text РѕС‚Р·С‹РІ Рѕ РІР°СЃ.<br />
+Р’С‹ РјРѕР¶РµС‚Рµ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ <a href='{$GLOBALS['host']}{$path}{$this->_addUrlParams('b', '&')}'>РЅРѕРІС‹Рј РѕС‚Р·С‹РІРѕРј</a> РЅР° СЃС‚СЂР°РЅРёС†Рµ РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р°.";
             
             $this->message = $this->GetHtml($opinion["t_uname"], $body, array('header' => 'default', 'footer' => 'default'), array('login'=>$opinion['t_login']));
             $this->from = "FL.ru <administration@fl.ru>";
-            $this->subject = "Новый отзыв на FL.ru";
+            $this->subject = "РќРѕРІС‹Р№ РѕС‚Р·С‹РІ РЅР° FL.ru";
             $this->recipient = "{$opinion['t_uname']} {$opinion['t_usurname']} [{$opinion['t_login']}] <".$opinion['t_email'].">";
             
             $this->SmtpMail('text/html');
@@ -1692,11 +1692,11 @@ $sObjEntity: $sObjLink<br />
     }
     
    /**
-     * Отправляет уведомление о редактировании отзыва.
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёРµ Рѕ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРё РѕС‚Р·С‹РІР°.
      *
-     * @param   string|array    $ids        идентификаторы  отзывов
-     * @param   resource        $connect    соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return  integer                     количество отправленных уведомлений.
+     * @param   string|array    $ids        РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹  РѕС‚Р·С‹РІРѕРІ
+     * @param   resource        $connect    СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return  integer                     РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function EditOpinion($ids, $connect = NULL) {
          require_once $_SERVER['DOCUMENT_ROOT'].'/classes/opinions.php';
@@ -1705,37 +1705,37 @@ $sObjEntity: $sObjLink<br />
          if (!($opinions = $opin->getNewOpinion($ids, $connect))) return NULL;
          
          foreach($opinions as $opinion) {
-            if (!$opinion['t_email'] || substr($opinion['t_subscr'],3,1) != '1' || $opinion['t_banned'] == '1') continue; // если не нужны уведомления пропускаем отсылку
+            if (!$opinion['t_email'] || substr($opinion['t_subscr'],3,1) != '1' || $opinion['t_banned'] == '1') continue; // РµСЃР»Рё РЅРµ РЅСѓР¶РЅС‹ СѓРІРµРґРѕРјР»РµРЅРёСЏ РїСЂРѕРїСѓСЃРєР°РµРј РѕС‚СЃС‹Р»РєСѓ
             
             $path= "/users/{$opinion['t_login']}/opinions/?from=" . ( substr($opinion['f_role'],0,1)=='1' ? 'emp' : 'frl' ); 
             
-            if ( !$opinion['modified_id'] || $opinion['modified_id'] == $opinion['f_uid'] ) { // отзыв редактирует автор
+            if ( !$opinion['modified_id'] || $opinion['modified_id'] == $opinion['f_uid'] ) { // РѕС‚Р·С‹РІ СЂРµРґР°РєС‚РёСЂСѓРµС‚ Р°РІС‚РѕСЂ
                 switch ($opinion['rating']) {
                     case 0:
-                        $type_text = "нейтральный";
+                        $type_text = "РЅРµР№С‚СЂР°Р»СЊРЅС‹Р№";
                         break;
                     case 1:
-                        $type_text = "положительный";
+                        $type_text = "РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№";
                         break;
                     case -1:
-                        $type_text = "отрицательный";
+                        $type_text = "РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№";
                         break;
                 }
     
-                $body = "Пользователь <a href='{$GLOBALS['host']}/users/{$opinion['f_login']}{$this->_addUrlParams('b')}'>".$opinion["f_uname"]." ".$opinion["f_usurname"]."</a> [<a href='{$GLOBALS['host']}/users/{$opinion['f_login']}{$this->_addUrlParams('b')}'>".$opinion["f_login"]."</a>]
-оставил(а) $type_text отзыв о вас.<br />
-Вы можете прочитать его на странице вашего аккаунта - <a href='{$GLOBALS['host']}{$path}{$this->_addUrlParams('b', '&')}'>".$GLOBALS["host"].$path."</a>";
+                $body = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ <a href='{$GLOBALS['host']}/users/{$opinion['f_login']}{$this->_addUrlParams('b')}'>".$opinion["f_uname"]." ".$opinion["f_usurname"]."</a> [<a href='{$GLOBALS['host']}/users/{$opinion['f_login']}{$this->_addUrlParams('b')}'>".$opinion["f_login"]."</a>]
+РѕСЃС‚Р°РІРёР»(Р°) $type_text РѕС‚Р·С‹РІ Рѕ РІР°СЃ.<br />
+Р’С‹ РјРѕР¶РµС‚Рµ РїСЂРѕС‡РёС‚Р°С‚СЊ РµРіРѕ РЅР° СЃС‚СЂР°РЅРёС†Рµ РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р° - <a href='{$GLOBALS['host']}{$path}{$this->_addUrlParams('b', '&')}'>".$GLOBALS["host"].$path."</a>";
             }
-            else { // отзыв редактирует админ
-                $body = "Модератор отредактировал отзыв по Безопасной Сделке.
+            else { // РѕС‚Р·С‹РІ СЂРµРґР°РєС‚РёСЂСѓРµС‚ Р°РґРјРёРЅ
+                $body = "РњРѕРґРµСЂР°С‚РѕСЂ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р» РѕС‚Р·С‹РІ РїРѕ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµ.
 <br />
 <br />
-Вы можете прочитать его на странице вашего аккаунта - <a href='{$GLOBALS['host']}{$path}{$this->_addUrlParams('b', '&')}'>".$GLOBALS["host"].$path."</a>";
+Р’С‹ РјРѕР¶РµС‚Рµ РїСЂРѕС‡РёС‚Р°С‚СЊ РµРіРѕ РЅР° СЃС‚СЂР°РЅРёС†Рµ РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р° - <a href='{$GLOBALS['host']}{$path}{$this->_addUrlParams('b', '&')}'>".$GLOBALS["host"].$path."</a>";
             }
             
             $this->message   = $this->GetHtml($opinion["t_uname"], $body, array('header' => 'default', 'footer' => 'default'), array('login'=>$opinion['t_login']));
             $this->from      = "FL.ru <administration@fl.ru>";
-            $this->subject   = "Редактирование отзыва на FL.ru";
+            $this->subject   = "Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РѕС‚Р·С‹РІР° РЅР° FL.ru";
             $this->recipient = "{$opinion['t_uname']} {$opinion['t_usurname']} [{$opinion['t_login']}] <".$opinion['t_email'].">";
             
             $this->send( 'text/html' );
@@ -1745,11 +1745,11 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Отправляет фрилансеру сообщение об отказе
+     * РћС‚РїСЂР°РІР»СЏРµС‚ С„СЂРёР»Р°РЅСЃРµСЂСѓ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС‚РєР°Р·Рµ
      *
      * @param string|array $ids
      * @param resource $connect
-     * @return  integer количество отправленных уведомлений.
+     * @return  integer РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function ProjectsOfferRefused($ids, $connect = NULL) {
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/projects_offers.php';
@@ -1758,7 +1758,7 @@ $sObjEntity: $sObjLink<br />
         if (!($data = $offers->getRefusedProjectOffers($ids, $connect))) return NULL;
 
         foreach($data as $offer) {
-            if (substr($offer['subscr'], 4, 1) != '1' || $offer['is_banned'] == '1') continue; // если не нужны уведомления пропускаем отсылку
+            if (substr($offer['subscr'], 4, 1) != '1' || $offer['is_banned'] == '1') continue; // РµСЃР»Рё РЅРµ РЅСѓР¶РЅС‹ СѓРІРµРґРѕРјР»РµРЅРёСЏ РїСЂРѕРїСѓСЃРєР°РµРј РѕС‚СЃС‹Р»РєСѓ
 
             $uname = $offer['uname'];
             $usurname = $offer['usurname'];
@@ -1766,11 +1766,11 @@ $sObjEntity: $sObjLink<br />
             $email = $offer['email'];
             $project_name = $offer['project_name'];
 
-            $this->subject = "По проекту «"  . html_entity_decode($project_name) . "» был получен отказ";
+            $this->subject = "РџРѕ РїСЂРѕРµРєС‚Сѓ В«"  . html_entity_decode($project_name) . "В» Р±С‹Р» РїРѕР»СѓС‡РµРЅ РѕС‚РєР°Р·";
             
             $project_name = htmlspecialchars($project_name, ENT_QUOTES, 'CP1251', false);
             
-            $body = "К сожалению, вы получили отказ от заказчика по проекту «<a href=\"".$GLOBALS['host'] . getFriendlyURL("project", $offer['project_id']).$this->_addUrlParams('f')."\">".$project_name."</a>».";
+            $body = "Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, РІС‹ РїРѕР»СѓС‡РёР»Рё РѕС‚РєР°Р· РѕС‚ Р·Р°РєР°Р·С‡РёРєР° РїРѕ РїСЂРѕРµРєС‚Сѓ В«<a href=\"".$GLOBALS['host'] . getFriendlyURL("project", $offer['project_id']).$this->_addUrlParams('f')."\">".$project_name."</a>В».";
             
             $this->recipient = "$uname $usurname [$login] <".$email.">";
             $this->message = $this->GetHtml($uname, $body, array('header'=>'default', 'footer'=>"default"), array('login' => $login));
@@ -1781,13 +1781,13 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Уведомления заказчику, если кандидат/победитель/исполнитель заблокирован на сайте
+     * РЈРІРµРґРѕРјР»РµРЅРёСЏ Р·Р°РєР°Р·С‡РёРєСѓ, РµСЃР»Рё РєР°РЅРґРёРґР°С‚/РїРѕР±РµРґРёС‚РµР»СЊ/РёСЃРїРѕР»РЅРёС‚РµР»СЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ РЅР° СЃР°Р№С‚Рµ
      * 
-     * проект/конкурс/СБР - всего 5 видов уведомлений @see pmail::_ExecutorCandidateBanMail
+     * РїСЂРѕРµРєС‚/РєРѕРЅРєСѓСЂСЃ/РЎР‘Р  - РІСЃРµРіРѕ 5 РІРёРґРѕРІ СѓРІРµРґРѕРјР»РµРЅРёР№ @see pmail::_ExecutorCandidateBanMail
      * 
-     * @param  string|array $ids идентификаторы заблокированных пользователей
-     * @param  resource $connect соединение к БД (необходимо в PgQ) или NULL -- создать новое
-     * @return bool true - успех, false - провал
+     * @param  string|array $ids РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
+     * @param  resource $connect СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function ExecutorCandidateBanMail( $ids, $connect = NULL ) {
         if ( empty($ids) ) {
@@ -1834,34 +1834,34 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Уведомления заказчику, если кандидат/победитель/исполнитель заблокирован на сайте
+     * РЈРІРµРґРѕРјР»РµРЅРёСЏ Р·Р°РєР°Р·С‡РёРєСѓ, РµСЃР»Рё РєР°РЅРґРёРґР°С‚/РїРѕР±РµРґРёС‚РµР»СЊ/РёСЃРїРѕР»РЅРёС‚РµР»СЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ РЅР° СЃР°Р№С‚Рµ
      * 
-     * вспомагательная функция @see pmail::ExecutorCandidateBanMail
+     * РІСЃРїРѕРјР°РіР°С‚РµР»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ @see pmail::ExecutorCandidateBanMail
      * 
-     * @param int $nCnf номер уведомления от 1 до 5 
-     * @param array $aRecipient массив данных для получателей
+     * @param int $nCnf РЅРѕРјРµСЂ СѓРІРµРґРѕРјР»РµРЅРёСЏ РѕС‚ 1 РґРѕ 5 
+     * @param array $aRecipient РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РґР»СЏ РїРѕР»СѓС‡Р°С‚РµР»РµР№
      */
     function _ExecutorCandidateBanMail( $nCnf = 0, $aRecipient = array() ) {
         if ( !$nCnf || !$aRecipient ) return false;
         
         $aCnf = array(
-            // исполнитель в проекте 
-            1 => array('sujb' => 'Исполнитель вашего проекта заблокирован на FL.ru', 'msg' => 'В проекте <a href="%link%'.$this->_addUrlParams('e').'">%name%</a> вы выбрали в качестве исполнителя пользователя <a href="%u_link%'.$this->_addUrlParams('e').'">%u_name%</a>. Сообщаем вам, что данный пользователь был заблокирован на FL.ru.<br />'),
-            // кандидат в проекте
-            2 => array('sujb' => 'Исполнитель, определенный как кандидат в вашем проекте на FL.ru, заблокирован', 'msg' => 'В проекте <a href="%link%'.$this->_addUrlParams('e').'">%name%</a> вы выбрали в качестве кандидата пользователя <a href="%u_link%'.$this->_addUrlParams('e').'">%u_name%</a>. Сообщаем вам, что данный пользователь был заблокирован на FL.ru.<br />'),
-            // кандидат в конкурсе, в котром еще нет победителей
-            3 => array('sujb' => 'Исполнитель, определенный как кандидат в вашем конкурсе на FL.ru, заблокирован', 'msg' => 'В конкурсе <a href="%link%'.$this->_addUrlParams('e').'">%name%</a> вы выбрали в качестве кандидата пользователя <a href="%u_link%'.$this->_addUrlParams('e').'">%u_name%</a>. Сообщаем вам, что данный пользователь был заблокирован на FL.ru.<br />'),
-            // победитель в конкурсе (тут кандидаты уже не важны)
-            4 => array('sujb' => 'Победитель конкурса, опубликованого вами на FL.ru, заблокирован', 'msg' => 'В конкурсе <a href="%link%'.$this->_addUrlParams('e').'">%name%</a> вы выбрали в качестве победителя пользователя <a href="%u_link%'.$this->_addUrlParams('e').'">%u_name%</a>. Сообщаем вам, что данный пользователь был заблокирован на FL.ru.<br />'),
-            // исполнитель в сделке без риска
-            5 => array('sujb' => 'Исполнитель в Безопасной Сделке заблокирован на FL.ru', 'msg' => 'Вы заключили Безопасную Сделку <a href="%link%'.$this->_addUrlParams('e').'">%name%</a> с пользователем <a href="%u_link%'.$this->_addUrlParams('e').'">%u_name%</a>. Сообщаем вам, что данный пользователь был заблокирован на FL.ru.<br />')
+            // РёСЃРїРѕР»РЅРёС‚РµР»СЊ РІ РїСЂРѕРµРєС‚Рµ 
+            1 => array('sujb' => 'РСЃРїРѕР»РЅРёС‚РµР»СЊ РІР°С€РµРіРѕ РїСЂРѕРµРєС‚Р° Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ РЅР° FL.ru', 'msg' => 'Р’ РїСЂРѕРµРєС‚Рµ <a href="%link%'.$this->_addUrlParams('e').'">%name%</a> РІС‹ РІС‹Р±СЂР°Р»Рё РІ РєР°С‡РµСЃС‚РІРµ РёСЃРїРѕР»РЅРёС‚РµР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ <a href="%u_link%'.$this->_addUrlParams('e').'">%u_name%</a>. РЎРѕРѕР±С‰Р°РµРј РІР°Рј, С‡С‚Рѕ РґР°РЅРЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р±С‹Р» Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ РЅР° FL.ru.<br />'),
+            // РєР°РЅРґРёРґР°С‚ РІ РїСЂРѕРµРєС‚Рµ
+            2 => array('sujb' => 'РСЃРїРѕР»РЅРёС‚РµР»СЊ, РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РєР°Рє РєР°РЅРґРёРґР°С‚ РІ РІР°С€РµРј РїСЂРѕРµРєС‚Рµ РЅР° FL.ru, Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ', 'msg' => 'Р’ РїСЂРѕРµРєС‚Рµ <a href="%link%'.$this->_addUrlParams('e').'">%name%</a> РІС‹ РІС‹Р±СЂР°Р»Рё РІ РєР°С‡РµСЃС‚РІРµ РєР°РЅРґРёРґР°С‚Р° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ <a href="%u_link%'.$this->_addUrlParams('e').'">%u_name%</a>. РЎРѕРѕР±С‰Р°РµРј РІР°Рј, С‡С‚Рѕ РґР°РЅРЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р±С‹Р» Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ РЅР° FL.ru.<br />'),
+            // РєР°РЅРґРёРґР°С‚ РІ РєРѕРЅРєСѓСЂСЃРµ, РІ РєРѕС‚СЂРѕРј РµС‰Рµ РЅРµС‚ РїРѕР±РµРґРёС‚РµР»РµР№
+            3 => array('sujb' => 'РСЃРїРѕР»РЅРёС‚РµР»СЊ, РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РєР°Рє РєР°РЅРґРёРґР°С‚ РІ РІР°С€РµРј РєРѕРЅРєСѓСЂСЃРµ РЅР° FL.ru, Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ', 'msg' => 'Р’ РєРѕРЅРєСѓСЂСЃРµ <a href="%link%'.$this->_addUrlParams('e').'">%name%</a> РІС‹ РІС‹Р±СЂР°Р»Рё РІ РєР°С‡РµСЃС‚РІРµ РєР°РЅРґРёРґР°С‚Р° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ <a href="%u_link%'.$this->_addUrlParams('e').'">%u_name%</a>. РЎРѕРѕР±С‰Р°РµРј РІР°Рј, С‡С‚Рѕ РґР°РЅРЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р±С‹Р» Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ РЅР° FL.ru.<br />'),
+            // РїРѕР±РµРґРёС‚РµР»СЊ РІ РєРѕРЅРєСѓСЂСЃРµ (С‚СѓС‚ РєР°РЅРґРёРґР°С‚С‹ СѓР¶Рµ РЅРµ РІР°Р¶РЅС‹)
+            4 => array('sujb' => 'РџРѕР±РµРґРёС‚РµР»СЊ РєРѕРЅРєСѓСЂСЃР°, РѕРїСѓР±Р»РёРєРѕРІР°РЅРѕРіРѕ РІР°РјРё РЅР° FL.ru, Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ', 'msg' => 'Р’ РєРѕРЅРєСѓСЂСЃРµ <a href="%link%'.$this->_addUrlParams('e').'">%name%</a> РІС‹ РІС‹Р±СЂР°Р»Рё РІ РєР°С‡РµСЃС‚РІРµ РїРѕР±РµРґРёС‚РµР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ <a href="%u_link%'.$this->_addUrlParams('e').'">%u_name%</a>. РЎРѕРѕР±С‰Р°РµРј РІР°Рј, С‡С‚Рѕ РґР°РЅРЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р±С‹Р» Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ РЅР° FL.ru.<br />'),
+            // РёСЃРїРѕР»РЅРёС‚РµР»СЊ РІ СЃРґРµР»РєРµ Р±РµР· СЂРёСЃРєР°
+            5 => array('sujb' => 'РСЃРїРѕР»РЅРёС‚РµР»СЊ РІ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ РЅР° FL.ru', 'msg' => 'Р’С‹ Р·Р°РєР»СЋС‡РёР»Рё Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ <a href="%link%'.$this->_addUrlParams('e').'">%name%</a> СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј <a href="%u_link%'.$this->_addUrlParams('e').'">%u_name%</a>. РЎРѕРѕР±С‰Р°РµРј РІР°Рј, С‡С‚Рѕ РґР°РЅРЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р±С‹Р» Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ РЅР° FL.ru.<br />')
         );
         
         $this->subject   = $aCnf[ $nCnf ]['sujb'];
     	$this->recipient = array();
     	$this->message   = $this->GetHtml( 
     	   "%USER_LOGIN%", 
-    	   $aCnf[ $nCnf ]['msg'] . '<br />По всем возникающим вопросам вы можете обращаться в нашу <a href="https://feedback.fl.ru/'.$this->_addUrlParams('e', '?').'">службу поддержки</a>.', 
+    	   $aCnf[ $nCnf ]['msg'] . '<br />РџРѕ РІСЃРµРј РІРѕР·РЅРёРєР°СЋС‰РёРј РІРѕРїСЂРѕСЃР°Рј РІС‹ РјРѕР¶РµС‚Рµ РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РІ РЅР°С€Сѓ <a href="https://feedback.fl.ru/'.$this->_addUrlParams('e', '?').'">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.', 
     	   array( 'header' => 'default', 'footer' => 'simple' ), 
     	   array( 'target_footer' => true ) 
         );
@@ -1875,11 +1875,11 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Отправляет фрилансеру сообщение о том, что его выбрали кандидатом
+     * РћС‚РїСЂР°РІР»СЏРµС‚ С„СЂРёР»Р°РЅСЃРµСЂСѓ СЃРѕРѕР±С‰РµРЅРёРµ Рѕ С‚РѕРј, С‡С‚Рѕ РµРіРѕ РІС‹Р±СЂР°Р»Рё РєР°РЅРґРёРґР°С‚РѕРј
      *
      * @param string|array $ids
      * @param resource $connect
-     * @return  integer количество отправленных уведомлений.
+     * @return  integer РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function ProjectsOfferSelected($ids, $connect = NULL) {
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/projects_offers.php';
@@ -1888,7 +1888,7 @@ $sObjEntity: $sObjLink<br />
         if (!($data = $offers->getSelectedProjectOffers($ids, $connect))) return NULL;
 
         foreach($data as $offer) {
-            //if (substr($offer['subscr'], 4, 1) != '1' || $offer['is_banned'] == '1') continue; // если не нужны уведомления пропускаем отсылку
+            //if (substr($offer['subscr'], 4, 1) != '1' || $offer['is_banned'] == '1') continue; // РµСЃР»Рё РЅРµ РЅСѓР¶РЅС‹ СѓРІРµРґРѕРјР»РµРЅРёСЏ РїСЂРѕРїСѓСЃРєР°РµРј РѕС‚СЃС‹Р»РєСѓ
 
             $uname = $offer['uname'];
             $usurname = $offer['usurname'];
@@ -1897,12 +1897,12 @@ $sObjEntity: $sObjLink<br />
             $project_name = $offer['project_name'];
             $project_id = $offer['project_id'];
 
-            $this->subject = "Вас выбрали кандидатом в проекте «" . html_entity_decode($project_name)."»";
+            $this->subject = "Р’Р°СЃ РІС‹Р±СЂР°Р»Рё РєР°РЅРґРёРґР°С‚РѕРј РІ РїСЂРѕРµРєС‚Рµ В«" . html_entity_decode($project_name)."В»";
 
             $project_name = htmlspecialchars($project_name, ENT_QUOTES, 'CP1251', false);
             
-            $body  = "Вас выбрали кандидатом в проекте «<a href=\"".$GLOBALS['host'] . getFriendlyURL("project", $project_id) . $this->_addUrlParams('f') . "\">".$project_name."</a>».";
-            $body .= "<br/><br/>Желаем вам удачи!<br/>";
+            $body  = "Р’Р°СЃ РІС‹Р±СЂР°Р»Рё РєР°РЅРґРёРґР°С‚РѕРј РІ РїСЂРѕРµРєС‚Рµ В«<a href=\"".$GLOBALS['host'] . getFriendlyURL("project", $project_id) . $this->_addUrlParams('f') . "\">".$project_name."</a>В».";
+            $body .= "<br/><br/>Р–РµР»Р°РµРј РІР°Рј СѓРґР°С‡Рё!<br/>";
 
             $this->recipient = "$uname $usurname [$login] <".$email.">";
             $this->message = $this->GetHtml($uname, $body, array('header'=>'simple', 'footer'=>'frl_simple_projects'), array('login' => $offer['login']));
@@ -1913,11 +1913,11 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Отправляет фрилансеру сообщение о том, что его выбрали исполнителем
+     * РћС‚РїСЂР°РІР»СЏРµС‚ С„СЂРёР»Р°РЅСЃРµСЂСѓ СЃРѕРѕР±С‰РµРЅРёРµ Рѕ С‚РѕРј, С‡С‚Рѕ РµРіРѕ РІС‹Р±СЂР°Р»Рё РёСЃРїРѕР»РЅРёС‚РµР»РµРј
      *
      * @param string|array $ids
      * @param resource $connect
-     * @return  integer количество отправленных уведомлений.
+     * @return  integer РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function ProjectsExecSelected($ids, $connect = NULL) {
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/projects.php';
@@ -1926,7 +1926,7 @@ $sObjEntity: $sObjLink<br />
         if (!($data = $projects->GetExecProjects($ids, $connect))) return NULL;
 
         foreach($data as $proj) {
-            //if (substr($proj['subscr'], 4, 1) != '1' || $proj['is_banned'] == '1') continue; // если не нужны уведомления пропускаем отсылку
+            //if (substr($proj['subscr'], 4, 1) != '1' || $proj['is_banned'] == '1') continue; // РµСЃР»Рё РЅРµ РЅСѓР¶РЅС‹ СѓРІРµРґРѕРјР»РµРЅРёСЏ РїСЂРѕРїСѓСЃРєР°РµРј РѕС‚СЃС‹Р»РєСѓ
 
             $uname = $proj['uname'];
             $usurname = $proj['usurname'];
@@ -1935,11 +1935,11 @@ $sObjEntity: $sObjLink<br />
             $project_name = $proj['project_name'];
             $project_id = $proj['project_id'];
 
-            $this->subject = "Вас выбрали исполнителем в проекте «" . html_entity_decode($project_name)."»";
+            $this->subject = "Р’Р°СЃ РІС‹Р±СЂР°Р»Рё РёСЃРїРѕР»РЅРёС‚РµР»РµРј РІ РїСЂРѕРµРєС‚Рµ В«" . html_entity_decode($project_name)."В»";
             
             $project_name = htmlspecialchars($project_name, ENT_QUOTES, 'CP1251', false);
             
-            $body = "Вас выбрали исполнителем в проекте «<a href=\"".$GLOBALS['host'] . getFriendlyURL("project", $project_id) . $this->_addUrlParams('f') . "\">".$project_name."</a>».";
+            $body = "Р’Р°СЃ РІС‹Р±СЂР°Р»Рё РёСЃРїРѕР»РЅРёС‚РµР»РµРј РІ РїСЂРѕРµРєС‚Рµ В«<a href=\"".$GLOBALS['host'] . getFriendlyURL("project", $project_id) . $this->_addUrlParams('f') . "\">".$project_name."</a>В».";
 
             $this->recipient = "$uname $usurname [$login] <".$email.">";
             $this->message = $this->GetHtml($uname, $body, array('header'=>'simple', 'footer' => 'frl_simple_projects'), array('login'=>$login));
@@ -1953,11 +1953,11 @@ $sObjEntity: $sObjLink<br />
 
 
     /**
-     * Отсылает сообщения заблокированным в конкурсе пользователям
+     * РћС‚СЃС‹Р»Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёСЏ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рј РІ РєРѕРЅРєСѓСЂСЃРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј
      *
-     * @param string|array $ids пользователи
+     * @param string|array $ids РїРѕР»СЊР·РѕРІР°С‚РµР»Рё
      * @param resource $connect
-     * @return  integer количество отправленных уведомлений.
+     * @return  integer РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function ContestUserBlocked($ids, $connect = NULL) {
 
@@ -1976,12 +1976,12 @@ $sObjEntity: $sObjLink<br />
             $project_id = $proj['project_id'];
             $userlink = $GLOBALS["host"]."/users/".$proj['emp_login'];
             $this->recipient = "$uname $usurname [$login] <".$email.">";
-            $this->subject = 'Вас заблокировали в конкурсе «'.htmlspecialchars_decode($project_name, ENT_QUOTES).'»';
+            $this->subject = 'Р’Р°СЃ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°Р»Рё РІ РєРѕРЅРєСѓСЂСЃРµ В«'.htmlspecialchars_decode($project_name, ENT_QUOTES).'В»';
             $project_name = htmlspecialchars($project_name, ENT_QUOTES, 'CP1251', false);
             $this->message = $this->GetHtml($uname, "
-       Заказчик <a href=\"{$userlink}\">{$proj['emp_name']} {$proj['emp_uname']}</a> [<a href=\"{$userlink}\">{$proj['emp_login']}</a>] заблокировал(а) вас
-       в&nbsp;конкурсе «<a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $project_id).$this->_addUrlParams('f')."\">".$project_name."</a>».
-       К сожалению, теперь вы не можете продолжать свое участие в этом конкурсе.<br />
+       Р—Р°РєР°Р·С‡РёРє <a href=\"{$userlink}\">{$proj['emp_name']} {$proj['emp_uname']}</a> [<a href=\"{$userlink}\">{$proj['emp_login']}</a>] Р·Р°Р±Р»РѕРєРёСЂРѕРІР°Р»(Р°) РІР°СЃ
+       РІ&nbsp;РєРѕРЅРєСѓСЂСЃРµ В«<a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $project_id).$this->_addUrlParams('f')."\">".$project_name."</a>В».
+       Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, С‚РµРїРµСЂСЊ РІС‹ РЅРµ РјРѕР¶РµС‚Рµ РїСЂРѕРґРѕР»Р¶Р°С‚СЊ СЃРІРѕРµ СѓС‡Р°СЃС‚РёРµ РІ СЌС‚РѕРј РєРѕРЅРєСѓСЂСЃРµ.<br />
             ", array('header' => 'default', 'footer' => 'default'), array('login'=>$login));
             $this->SmtpMail('text/html');
         }
@@ -1990,11 +1990,11 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Отсылает сообщения разблокированным в конкурсе пользователям
+     * РћС‚СЃС‹Р»Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёСЏ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рј РІ РєРѕРЅРєСѓСЂСЃРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј
      *
-     * @param string|array $ids пользователи
+     * @param string|array $ids РїРѕР»СЊР·РѕРІР°С‚РµР»Рё
      * @param resource $connect
-     * @return  integer количество отправленных уведомлений.
+     * @return  integer РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function ContestUserUnblocked($ids, $connect = NULL) {
 
@@ -2019,15 +2019,15 @@ $sObjEntity: $sObjLink<br />
                 $project_name = $proj['project_name'];
                 $project_id = $proj['project_id'];
 
-                $this->subject = 'Вас разблокировали в конкурсе «'.htmlspecialchars_decode($project_name, ENT_QUOTES).'»';
+                $this->subject = 'Р’Р°СЃ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°Р»Рё РІ РєРѕРЅРєСѓСЂСЃРµ В«'.htmlspecialchars_decode($project_name, ENT_QUOTES).'В»';
                 $userlink = $GLOBALS["host"]."/users/".$proj['emp_login'];
                 $project_name = htmlspecialchars($project_name, ENT_QUOTES, 'CP1251', false);
                 $this->message = $this->GetHtml($uname, "
-                   Заказчик <a href=\"{$userlink}\">{$proj['emp_name']} {$proj['emp_uname']}</a> [<a href=\"{$userlink}\">{$proj['emp_login']}</a>] разблокировал(а) вас
-                   в&nbsp;конкурсе «<a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $project_id).$this->_addUrlParams('f')."\">".$project_name."</a>».
-                   Теперь вы можете продолжить свое участие в этом конкурсе.
+                   Р—Р°РєР°Р·С‡РёРє <a href=\"{$userlink}\">{$proj['emp_name']} {$proj['emp_uname']}</a> [<a href=\"{$userlink}\">{$proj['emp_login']}</a>] СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°Р»(Р°) РІР°СЃ
+                   РІ&nbsp;РєРѕРЅРєСѓСЂСЃРµ В«<a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $project_id).$this->_addUrlParams('f')."\">".$project_name."</a>В».
+                   РўРµРїРµСЂСЊ РІС‹ РјРѕР¶РµС‚Рµ РїСЂРѕРґРѕР»Р¶РёС‚СЊ СЃРІРѕРµ СѓС‡Р°СЃС‚РёРµ РІ СЌС‚РѕРј РєРѕРЅРєСѓСЂСЃРµ.
                    <br /><br />
-                   Желаем удачи!
+                   Р–РµР»Р°РµРј СѓРґР°С‡Рё!
                    <br/>", 
                    array('header' => 'default', 'footer' => 'frl_subscr_projects'), array('login'=>$login));
                 $this->SmtpMail('text/html');
@@ -2038,11 +2038,11 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Отсылает сообщение пользователям, которых определили кандидатами в конкурсах
+     * РћС‚СЃС‹Р»Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј, РєРѕС‚РѕСЂС‹С… РѕРїСЂРµРґРµР»РёР»Рё РєР°РЅРґРёРґР°С‚Р°РјРё РІ РєРѕРЅРєСѓСЂСЃР°С…
      *
-     * @param string|array $ids ид предложений пользователей
+     * @param string|array $ids РёРґ РїСЂРµРґР»РѕР¶РµРЅРёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
      * @param resource $connect
-     * @return  integer количество отправленных уведомлений.
+     * @return  integer РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function ContestAddCandidate($ids, $connect = NULL) {
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/contest.php';
@@ -2060,13 +2060,13 @@ $sObjEntity: $sObjLink<br />
             $project_id = $proj['project_id'];
 
             $this->recipient = "$uname $usurname [$login] <".$email.">";
-            $this->subject = 'Вас добавили в кандидаты в победители в конкурсе «'.htmlspecialchars_decode($project_name, ENT_QUOTES).'»';
+            $this->subject = 'Р’Р°СЃ РґРѕР±Р°РІРёР»Рё РІ РєР°РЅРґРёРґР°С‚С‹ РІ РїРѕР±РµРґРёС‚РµР»Рё РІ РєРѕРЅРєСѓСЂСЃРµ В«'.htmlspecialchars_decode($project_name, ENT_QUOTES).'В»';
             $userlink = $GLOBALS["host"]."/users/".$proj['emp_login'];
             $project_name = htmlspecialchars($project_name, ENT_QUOTES, 'CP1251', false);
-            $this->message = $this->GetHtml($uname, "Заказчик <a href=\"{$userlink}\">{$proj['emp_name']} {$proj['emp_uname']}</a> [<a href=\"{$userlink}\">{$proj['emp_login']}</a>] добавил(а) вас в кандидаты в победители в&nbsp;конкурсе «<a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $project_id).$this->_addUrlParams('f')."\">".$project_name."</a>».
-               Вы можете перейти к своей <a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $project_id)."?offer={$proj['id']}{$this->_addUrlParams('f', '&')}#offer-{$proj['id']}\">работе</a>.
+            $this->message = $this->GetHtml($uname, "Р—Р°РєР°Р·С‡РёРє <a href=\"{$userlink}\">{$proj['emp_name']} {$proj['emp_uname']}</a> [<a href=\"{$userlink}\">{$proj['emp_login']}</a>] РґРѕР±Р°РІРёР»(Р°) РІР°СЃ РІ РєР°РЅРґРёРґР°С‚С‹ РІ РїРѕР±РµРґРёС‚РµР»Рё РІ&nbsp;РєРѕРЅРєСѓСЂСЃРµ В«<a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $project_id).$this->_addUrlParams('f')."\">".$project_name."</a>В».
+               Р’С‹ РјРѕР¶РµС‚Рµ РїРµСЂРµР№С‚Рё Рє СЃРІРѕРµР№ <a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $project_id)."?offer={$proj['id']}{$this->_addUrlParams('f', '&')}#offer-{$proj['id']}\">СЂР°Р±РѕС‚Рµ</a>.
                <br /><br />
-               Желаем вам удачи!
+               Р–РµР»Р°РµРј РІР°Рј СѓРґР°С‡Рё!
                <br/>
               ", array('header' => 'default', 'footer' => 'frl_subscr_projects'), array('login'=>$login));
             $this->SmtpMail('text/html');
@@ -2076,11 +2076,11 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Отсылает сообщения победителям конкурса
+     * РћС‚СЃС‹Р»Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёСЏ РїРѕР±РµРґРёС‚РµР»СЏРј РєРѕРЅРєСѓСЂСЃР°
      *
-     * @param string|array $ids ид предложений пользователей
+     * @param string|array $ids РёРґ РїСЂРµРґР»РѕР¶РµРЅРёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
      * @param resource $connect
-     * @return  integer количество отправленных уведомлений.
+     * @return  integer РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function ContestWinners($ids, $connect = NULL) {
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/contest.php';
@@ -2090,19 +2090,19 @@ $sObjEntity: $sObjLink<br />
         foreach($data as $proj) {
             if (!$proj['email'] || substr($proj['subscr'], 8, 1) != '1' || $proj['is_banned'] == '1') continue;
 
-            $str = array(1 => 'первое', 2 => 'второе', 3 => 'третье');
+            $str = array(1 => 'РїРµСЂРІРѕРµ', 2 => 'РІС‚РѕСЂРѕРµ', 3 => 'С‚СЂРµС‚СЊРµ');
 
             $this->recipient = "{$proj['uname']} {$proj['usurname']} [{$proj['login']}] <{$proj['email']}>";
             $userlink = $GLOBALS["host"]."/users/".$proj['emp_login'];
-            $this->subject = 'Вас объявили одним из победителей конкурса «'.htmlspecialchars_decode($proj['project_name'], ENT_QUOTES).'»';
+            $this->subject = 'Р’Р°СЃ РѕР±СЉСЏРІРёР»Рё РѕРґРЅРёРј РёР· РїРѕР±РµРґРёС‚РµР»РµР№ РєРѕРЅРєСѓСЂСЃР° В«'.htmlspecialchars_decode($proj['project_name'], ENT_QUOTES).'В»';
             
             $proj['project_name'] = htmlspecialchars($proj['project_name'], ENT_QUOTES, 'CP1251', false);
             
-            $this->message = $this->GetHtml($proj['uname'], "Поздравляем вас!<br/><br/>
-                Заказчик <a href=\"{$userlink}\">{$proj['emp_name']}</a> <a href=\"{$userlink}\">{$proj['emp_uname']}</a> [<a href=\"{$userlink}\">{$proj['emp_login']}</a>] объявил(a) вас одним из победителей в&nbsp;конкурсе «<a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $proj['project_id']).$this->_addUrlParams('f')."\">".$proj['project_name']."</a>». 
-                Вы заняли ".($str[$proj['position']]? $str[$proj['position']]: $position)." место. Поздравляем!
+            $this->message = $this->GetHtml($proj['uname'], "РџРѕР·РґСЂР°РІР»СЏРµРј РІР°СЃ!<br/><br/>
+                Р—Р°РєР°Р·С‡РёРє <a href=\"{$userlink}\">{$proj['emp_name']}</a> <a href=\"{$userlink}\">{$proj['emp_uname']}</a> [<a href=\"{$userlink}\">{$proj['emp_login']}</a>] РѕР±СЉСЏРІРёР»(a) РІР°СЃ РѕРґРЅРёРј РёР· РїРѕР±РµРґРёС‚РµР»РµР№ РІ&nbsp;РєРѕРЅРєСѓСЂСЃРµ В«<a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $proj['project_id']).$this->_addUrlParams('f')."\">".$proj['project_name']."</a>В». 
+                Р’С‹ Р·Р°РЅСЏР»Рё ".($str[$proj['position']]? $str[$proj['position']]: $position)." РјРµСЃС‚Рѕ. РџРѕР·РґСЂР°РІР»СЏРµРј!
                 <br /><br/>
-                Вы можете перейти к своей <a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $proj['project_id'])."?offer={$proj['id']}{$this->_addUrlParams('f', '&')}#offer-{$proj['id']}\">работе</a>.
+                Р’С‹ РјРѕР¶РµС‚Рµ РїРµСЂРµР№С‚Рё Рє СЃРІРѕРµР№ <a href=\"{$GLOBALS['host']}".getFriendlyURL("project", $proj['project_id'])."?offer={$proj['id']}{$this->_addUrlParams('f', '&')}#offer-{$proj['id']}\">СЂР°Р±РѕС‚Рµ</a>.
                 <br />
                 ", array('header' => 'default', 'footer' => 'frl_subscr_projects'), array('login'=>$proj['login']));
             $this->SmtpMail('text/html');
@@ -2113,11 +2113,11 @@ $sObjEntity: $sObjLink<br />
 
 
     /**
-     * Отсылает сообщение о том, что проект/конкурс опубликован
+     * РћС‚СЃС‹Р»Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ Рѕ С‚РѕРј, С‡С‚Рѕ РїСЂРѕРµРєС‚/РєРѕРЅРєСѓСЂСЃ РѕРїСѓР±Р»РёРєРѕРІР°РЅ
      *
-     * @param string|array $ids ид проектов
+     * @param string|array $ids РёРґ РїСЂРѕРµРєС‚РѕРІ
      * @param resource $connect
-     * @return  integer количество отправленных уведомлений.
+     * @return  integer РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function ProjectPosted($ids, $connect = NULL) {
         require_once $_SERVER['DOCUMENT_ROOT']."/classes/projects.php";
@@ -2129,21 +2129,21 @@ $sObjEntity: $sObjLink<br />
             $prj['name'] = htmlspecialchars($prj['name'], ENT_QUOTES, 'CP1251', false);
             
             if($prj['kind'] == 7) {
-                //конкурс
+                //РєРѕРЅРєСѓСЂСЃ
                 $this->message = $this->GetHtml($prj['uname'],
-                "Ваш конкурс «<a href='{$GLOBALS['host']}".getFriendlyURL("project", $prj['id']).$this->_addUrlParams('e')."'>{$prj['name']}</a>» был опубликован на сайте FL.ru.
-                Напоминаем вам, что пользователи с <a href='{$GLOBALS['host']}/payed-emp/{$this->_addUrlParams('e')}'>аккаунтом PRO</a> экономят на платных услугах сайта.",
+                "Р’Р°С€ РєРѕРЅРєСѓСЂСЃ В«<a href='{$GLOBALS['host']}".getFriendlyURL("project", $prj['id']).$this->_addUrlParams('e')."'>{$prj['name']}</a>В» Р±С‹Р» РѕРїСѓР±Р»РёРєРѕРІР°РЅ РЅР° СЃР°Р№С‚Рµ FL.ru.
+                РќР°РїРѕРјРёРЅР°РµРј РІР°Рј, С‡С‚Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ <a href='{$GLOBALS['host']}/payed-emp/{$this->_addUrlParams('e')}'>Р°РєРєР°СѓРЅС‚РѕРј PRO</a> СЌРєРѕРЅРѕРјСЏС‚ РЅР° РїР»Р°С‚РЅС‹С… СѓСЃР»СѓРіР°С… СЃР°Р№С‚Р°.",
                 array('header'=>'simple', 'footer'=>'simple'));
             } else {
-                //проект
+                //РїСЂРѕРµРєС‚
                 $this->message = $this->GetHtml($prj['uname'],
-                "Ваш проект «<a href='{$GLOBALS['host']}".getFriendlyURL("project", $prj['id']).$this->_addUrlParams('e')."'>{$prj['name']}</a>» был опубликован на сайте FL.ru.", 
+                "Р’Р°С€ РїСЂРѕРµРєС‚ В«<a href='{$GLOBALS['host']}".getFriendlyURL("project", $prj['id']).$this->_addUrlParams('e')."'>{$prj['name']}</a>В» Р±С‹Р» РѕРїСѓР±Р»РёРєРѕРІР°РЅ РЅР° СЃР°Р№С‚Рµ FL.ru.", 
                 array('header'=>'simple', 'footer'=>($prj['prefer_sbr']=='t' ? 'simple' : 'simple_projects')), array('project' => $prj));
             }
 
             $this->recipient = "{$prj['uname']} {$prj['usurname']} [{$prj['login']}] <". $prj['email'] .">";
-            $item_name = ($prj['kind'] == 7 ? 'конкурс' : 'проект' ) . " «" . html_entity_decode($prj['name'], ENT_QUOTES)."»"; 
-            $this->subject = "Ваш $item_name опубликован на FL.ru";
+            $item_name = ($prj['kind'] == 7 ? 'РєРѕРЅРєСѓСЂСЃ' : 'РїСЂРѕРµРєС‚' ) . " В«" . html_entity_decode($prj['name'], ENT_QUOTES)."В»"; 
+            $this->subject = "Р’Р°С€ $item_name РѕРїСѓР±Р»РёРєРѕРІР°РЅ РЅР° FL.ru";
             $this->SmtpMail('text/html');
         }
 
@@ -2153,11 +2153,11 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Отправляет уведомление об удалении отзыва.
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёРµ РѕР± СѓРґР°Р»РµРЅРёРё РѕС‚Р·С‹РІР°.
      *
-     * @param   string|array    $ids        идентификаторы новых отзывов
-     * @param   resource        $connect    соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return  integer                     количество отправленных уведомлений.
+     * @param   string|array    $ids        РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РЅРѕРІС‹С… РѕС‚Р·С‹РІРѕРІ
+     * @param   resource        $connect    СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return  integer                     РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function DeleteOpinion($ids, $connect = NULL) {
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/users.php';
@@ -2171,13 +2171,13 @@ $sObjEntity: $sObjLink<br />
             $t_user->GetUserByUID($to_id);
             switch ($type) {
                 case "0":
-                    $type_text = "нейтральный";
+                    $type_text = "РЅРµР№С‚СЂР°Р»СЊРЅС‹Р№";
                     break;
                 case "1":
-                    $type_text = "положительный";
+                    $type_text = "РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№";
                     break;
                 case "-1":
-                    $type_text = "отрицательный";
+                    $type_text = "РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№";
                     break;
             }
             
@@ -2188,24 +2188,24 @@ $sObjEntity: $sObjLink<br />
             $role      = $f_user->role;  
             $subscr    = $t_user->subscr; 
             
-            if (substr($subscr, 3, 1) != '1' || $t_user->is_banned == '1') continue; // если не нужны уведомления пропускаем отсылку
+            if (substr($subscr, 3, 1) != '1' || $t_user->is_banned == '1') continue; // РµСЃР»Рё РЅРµ РЅСѓР¶РЅС‹ СѓРІРµРґРѕРјР»РµРЅРёСЏ РїСЂРѕРїСѓСЃРєР°РµРј РѕС‚СЃС‹Р»РєСѓ
             
             if (substr($role,0,1)=='1') { $path= "/users/".$to_user["login"]."/opinions/"; }
             else { $path= "/users/".$to_user["login"]."/opinions/?from=frl"; }
     
             /*
-            $message = "Пользователь <a href='{$GLOBALS['host']}/users/{$from_user['login']}{$this->_addUrlParams('b')}'>".$from_user["uname"]." ".$from_user["usurname"]."</a> [<a href='{$GLOBALS['host']}/users/{$from_user['login']}{$this->_addUrlParams('b')}'>".$from_user["login"]."</a>]
-    удалил(a) свой $type_text отзыв из вашего аккаунта или он был скрыт из-за блокировки или удаления аккаунта пользователя.";
+            $message = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ <a href='{$GLOBALS['host']}/users/{$from_user['login']}{$this->_addUrlParams('b')}'>".$from_user["uname"]." ".$from_user["usurname"]."</a> [<a href='{$GLOBALS['host']}/users/{$from_user['login']}{$this->_addUrlParams('b')}'>".$from_user["login"]."</a>]
+    СѓРґР°Р»РёР»(a) СЃРІРѕР№ $type_text РѕС‚Р·С‹РІ РёР· РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р° РёР»Рё РѕРЅ Р±С‹Р» СЃРєСЂС‹С‚ РёР·-Р·Р° Р±Р»РѕРєРёСЂРѕРІРєРё РёР»Рё СѓРґР°Р»РµРЅРёСЏ Р°РєРєР°СѓРЅС‚Р° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.";
              */
             
-            $message = "Пользователь <a href='{$GLOBALS['host']}/users/{$from_user['login']}{$this->_addUrlParams('b')}'>".$from_user["uname"]." ".$from_user["usurname"]."</a> [<a href='{$GLOBALS['host']}/users/{$from_user['login']}{$this->_addUrlParams('b')}'>".$from_user["login"]."</a>]
-    был заблокирован за нарушение правил сайта FL.ru, и его отзыв скрыт.";
+            $message = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ <a href='{$GLOBALS['host']}/users/{$from_user['login']}{$this->_addUrlParams('b')}'>".$from_user["uname"]." ".$from_user["usurname"]."</a> [<a href='{$GLOBALS['host']}/users/{$from_user['login']}{$this->_addUrlParams('b')}'>".$from_user["login"]."</a>]
+    Р±С‹Р» Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ Р·Р° РЅР°СЂСѓС€РµРЅРёРµ РїСЂР°РІРёР» СЃР°Р№С‚Р° FL.ru, Рё РµРіРѕ РѕС‚Р·С‹РІ СЃРєСЂС‹С‚.";
 
             
             $this->message = $this->GetHtml($to_user['uname'], $message, array('header' => 'default', 'footer' => 'default'), array('login'=>$to_user['login']));
     
             $this->recipient = $to_user["uname"]." ".$to_user["usurname"]." [".$to_user["login"]."] <".$email.">";
-            $this->subject = "Отзыв скрыт на FL.ru";
+            $this->subject = "РћС‚Р·С‹РІ СЃРєСЂС‹С‚ РЅР° FL.ru";
     
             $this->SmtpMail('text/html');
         }
@@ -2214,11 +2214,11 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Отправляет уведомление о востановлении отзыва.
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёРµ Рѕ РІРѕСЃС‚Р°РЅРѕРІР»РµРЅРёРё РѕС‚Р·С‹РІР°.
      *
-     * @param   string|array    $ids        идентификаторы новых отзывов
-     * @param   resource        $connect    соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return  integer                     количество отправленных уведомлений.
+     * @param   string|array    $ids        РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РЅРѕРІС‹С… РѕС‚Р·С‹РІРѕРІ
+     * @param   resource        $connect    СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return  integer                     РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function RestoreOpinion($ids, $connect = NULL) {
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/users.php';
@@ -2237,19 +2237,19 @@ $sObjEntity: $sObjLink<br />
             $role      = $f_user->role;  
             $subscr    = $t_user->subscr; 
             
-            if (substr($subscr, 3, 1) != '1' || $t_user->is_banned == '1') continue; // если не нужны уведомления пропускаем отсылку
+            if (substr($subscr, 3, 1) != '1' || $t_user->is_banned == '1') continue; // РµСЃР»Рё РЅРµ РЅСѓР¶РЅС‹ СѓРІРµРґРѕРјР»РµРЅРёСЏ РїСЂРѕРїСѓСЃРєР°РµРј РѕС‚СЃС‹Р»РєСѓ
             
             if (substr($role,0,1)=='1') { $path= "/users/".$to_user["login"]."/opinions/"; }
 
             else { $path= "/users/".$to_user["login"]."/opinions/?from=frl"; }
 
-            $message = "Отзыв пользователя  <a href='{$GLOBALS['host']}/users/{$from_user['login']}{$this->_addUrlParams('b')}'>".$from_user["uname"]." ".$from_user["usurname"]."</a> [<a href='{$GLOBALS['host']}/users/{$from_user['login']}{$this->_addUrlParams('b')}'>".$from_user["login"]."</a>] 
-                        восстановлен на вашей странице на FL.ru в связи с тем, что данный пользователь был разблокирован модератором сайта.";
+            $message = "РћС‚Р·С‹РІ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ  <a href='{$GLOBALS['host']}/users/{$from_user['login']}{$this->_addUrlParams('b')}'>".$from_user["uname"]." ".$from_user["usurname"]."</a> [<a href='{$GLOBALS['host']}/users/{$from_user['login']}{$this->_addUrlParams('b')}'>".$from_user["login"]."</a>] 
+                        РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅ РЅР° РІР°С€РµР№ СЃС‚СЂР°РЅРёС†Рµ РЅР° FL.ru РІ СЃРІСЏР·Рё СЃ С‚РµРј, С‡С‚Рѕ РґР°РЅРЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р±С‹Р» СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°РЅ РјРѕРґРµСЂР°С‚РѕСЂРѕРј СЃР°Р№С‚Р°.";
     
             $this->message = $this->GetHtml($to_user['uname'], $message, array('header' => 'default', 'footer' => 'default'), array('login'=>$to_user['login']));
     
             $this->recipient = $to_user["uname"]." ".$to_user["usurname"]." [".$to_user["login"]."] <".$email.">";
-            $this->subject = "Отзыв восcтановлен на FL.ru";
+            $this->subject = "РћС‚Р·С‹РІ РІРѕСЃcС‚Р°РЅРѕРІР»РµРЅ РЅР° FL.ru";
     
             $this->SmtpMail('text/html');
         }
@@ -2258,11 +2258,11 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Отправляет пользователю уведомление об ответе на его сообщение
+     * РћС‚РїСЂР°РІР»СЏРµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ СѓРІРµРґРѕРјР»РµРЅРёРµ РѕР± РѕС‚РІРµС‚Рµ РЅР° РµРіРѕ СЃРѕРѕР±С‰РµРЅРёРµ
      *
      * @param string|array $ids
      * @param resource $connect
-     * @return  integer количество отправленных уведомлений.
+     * @return  integer РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function ArticleNewComment($ids, $connect = NULL) {
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/articles_comments.php';
@@ -2271,15 +2271,15 @@ $sObjEntity: $sObjLink<br />
         if (!($data = $c->getComments4Sending($ids, $connect))) return NULL;
 
         foreach($data as $comment) {
-            $this->subject = "Комментарии в разделе «Статьи и интервью» на сайте FL.ru";
+            $this->subject = "РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ СЂР°Р·РґРµР»Рµ В«РЎС‚Р°С‚СЊРё Рё РёРЅС‚РµСЂРІСЊСЋВ» РЅР° СЃР°Р№С‚Рµ FL.ru";
 
             if(substr($comment['s_subscr'], 11, 1) == '1' && $comment['s_uid'] != $comment['uid']
                 && $comment['s_email'] && $comment['parent_id'] && $comment['s_banned'] == '0')
             {
                 $body = 
                 "<a href='{$GLOBALS['host']}/users/{$comment['login']}{$this->_addUrlParams('b')}'>{$comment['uname']} {$comment['usurname']}</a> [<a href='{$GLOBALS['host']}/users/{$comment['login']}{$this->_addUrlParams('b')}'>{$comment['login']}</a>]
-                оставил(-а) <a href='{$GLOBALS['host']}/articles/?id={$comment['article_id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}'>новый комментарий</a> 
-                к вашим сообщениям/комментариям в разделе <a href='{$GLOBALS['host']}/articles/{$this->_addUrlParams('b')}'>«Статьи и интервью»</a> на сайте FL.ru. 
+                РѕСЃС‚Р°РІРёР»(-Р°) <a href='{$GLOBALS['host']}/articles/?id={$comment['article_id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}'>РЅРѕРІС‹Р№ РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> 
+                Рє РІР°С€РёРј СЃРѕРѕР±С‰РµРЅРёСЏРј/РєРѕРјРјРµРЅС‚Р°СЂРёСЏРј РІ СЂР°Р·РґРµР»Рµ <a href='{$GLOBALS['host']}/articles/{$this->_addUrlParams('b')}'>В«РЎС‚Р°С‚СЊРё Рё РёРЅС‚РµСЂРІСЊСЋВ»</a> РЅР° СЃР°Р№С‚Рµ FL.ru. 
                 <br /> --------
                 <br />"
                 .repair_html(LenghtFormatEx($comment['msgtext'], 300))."
@@ -2296,8 +2296,8 @@ $sObjEntity: $sObjLink<br />
                 && $comment['a_email'] && $comment['a_banned'] == '0') {
                 $body = 
                 "<a href='{$GLOBALS['host']}/users/{$comment['login']}{$this->_addUrlParams('b')}'>{$comment['uname']} {$comment['usurname']}</a> [<a href='{$GLOBALS['host']}/users/{$comment['login']}{$this->_addUrlParams('b')}'>{$comment['login']}</a>]
-                оставил(-а) <a href='{$GLOBALS['host']}/articles/?id={$comment['article_id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}'>новый комментарий</a> 
-                к вашим сообщениям/комментариям в разделе <a href='{$GLOBALS['host']}/articles/{$this->_addUrlParams('b')}'>«Статьи и интервью»</a> на сайте FL.ru. 
+                РѕСЃС‚Р°РІРёР»(-Р°) <a href='{$GLOBALS['host']}/articles/?id={$comment['article_id']}{$this->_addUrlParams('b', '&')}#c_{$comment['id']}'>РЅРѕРІС‹Р№ РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> 
+                Рє РІР°С€РёРј СЃРѕРѕР±С‰РµРЅРёСЏРј/РєРѕРјРјРµРЅС‚Р°СЂРёСЏРј РІ СЂР°Р·РґРµР»Рµ <a href='{$GLOBALS['host']}/articles/{$this->_addUrlParams('b')}'>В«РЎС‚Р°С‚СЊРё Рё РёРЅС‚РµСЂРІСЊСЋВ»</a> РЅР° СЃР°Р№С‚Рµ FL.ru. 
                 <br /> --------
                 <br />"
                 .repair_html(LenghtFormatEx($comment['msgtext'], 300))."
@@ -2314,12 +2314,12 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * По идентификаторм транзакций выбирает события для отправки по ним уведомлений.
+     * РџРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРј С‚СЂР°РЅР·Р°РєС†РёР№ РІС‹Р±РёСЂР°РµС‚ СЃРѕР±С‹С‚РёСЏ РґР»СЏ РѕС‚РїСЂР°РІРєРё РїРѕ РЅРёРј СѓРІРµРґРѕРјР»РµРЅРёР№.
      * @see sbr_meta::getEventsInfo4Sending()
      *
-     * @param array $xids   ид. транзакций.
-     * @param resource $connect   текущий коннект к БД.
-     * @return integer   количество отправленных уведомлений.
+     * @param array $xids   РёРґ. С‚СЂР°РЅР·Р°РєС†РёР№.
+     * @param resource $connect   С‚РµРєСѓС‰РёР№ РєРѕРЅРЅРµРєС‚ Рє Р‘Р”.
+     * @return integer   РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function SbrNewEvents($xids, $connect = NULL) {
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/sbr.php';
@@ -2334,18 +2334,18 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Отправляет уведоление об открытии СБР.
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕР»РµРЅРёРµ РѕР± РѕС‚РєСЂС‹С‚РёРё РЎР‘Р .
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrOpened($events) {
         $ev0 = $events[0];
-        $this->subject = "Предложение о заключении новой Безопасной Сделки по проекту  «{$ev0['sbr_name']}»";
+        $this->subject = "РџСЂРµРґР»РѕР¶РµРЅРёРµ Рѕ Р·Р°РєР»СЋС‡РµРЅРёРё РЅРѕРІРѕР№ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё РїРѕ РїСЂРѕРµРєС‚Сѓ  В«{$ev0['sbr_name']}В»";
         $url = $GLOBALS['host'].'/' . sbr::NEW_TEMPLATE_SBR . '/';
         $userlink = $GLOBALS["host"]."/users/".$ev0['e_login'];
         $sbr_name = sbr_meta::getNameForMail($ev0, 'sbr');
         $msg = "
-          Заказчик <a href=\"{$userlink}\">{$ev0['e_uname']} {$ev0['e_usurname']}</a> [<a href=\"{$userlink}\">{$ev0['e_login']}</a>] предлагает вам заключить с ним Безопасную Сделку по проекту «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f')}'>{$sbr_name}</a>». 
-          Вы можете получить подробную информацию по Безопасной Сделке в <a href='https://feedback.fl.ru/{$this->_addUrlParams('f', '?')}'>соответствующем разделе</a> «Помощи». 
+          Р—Р°РєР°Р·С‡РёРє <a href=\"{$userlink}\">{$ev0['e_uname']} {$ev0['e_usurname']}</a> [<a href=\"{$userlink}\">{$ev0['e_login']}</a>] РїСЂРµРґР»Р°РіР°РµС‚ РІР°Рј Р·Р°РєР»СЋС‡РёС‚СЊ СЃ РЅРёРј Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ РїРѕ РїСЂРѕРµРєС‚Сѓ В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f')}'>{$sbr_name}</a>В». 
+          Р’С‹ РјРѕР¶РµС‚Рµ РїРѕР»СѓС‡РёС‚СЊ РїРѕРґСЂРѕР±РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ РїРѕ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµ РІ <a href='https://feedback.fl.ru/{$this->_addUrlParams('f', '?')}'>СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРј СЂР°Р·РґРµР»Рµ</a> В«РџРѕРјРѕС‰РёВ». 
         ";
         $this->message = $this->splitMessage($this->GetHtml($ev0['f_uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
         $this->recipient = $ev0['f_uname']." ".$ev0['f_usurname']." [".$ev0['f_login']."] <".$ev0['f_email'].">";
@@ -2353,8 +2353,8 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Уведомления обоим участникам о том, что деньги зарезервированы.
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * РЈРІРµРґРѕРјР»РµРЅРёСЏ РѕР±РѕРёРј СѓС‡Р°СЃС‚РЅРёРєР°Рј Рѕ С‚РѕРј, С‡С‚Рѕ РґРµРЅСЊРіРё Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹.
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrReserved($events) {
         $ev0 = $events[0];
@@ -2370,24 +2370,24 @@ $sObjEntity: $sObjLink<br />
                 $sbr_name = sbr_meta::getNameForMail($ev0, 'sbr');
                 $cnum = $sbr->getContractNum($ev0['sbr_id'], $ev0['scheme_type'], $ev0['posted']);
                 $num = in_array((int)$reserved['payment_sys'], array(4,5))
-                            ? ((int)$reserved['payment_sys'] == 4 ? '№ Б-'.$cnum : '№ '.  bank_payments::GetBillNum($ev0['reserved_id']))
+                            ? ((int)$reserved['payment_sys'] == 4 ? 'в„– Р‘-'.$cnum : 'в„– '.  bank_payments::GetBillNum($ev0['reserved_id']))
                             : '';
                 $num_str = in_array((int)$reserved['payment_sys'], array(4,5))
-                            ? 'по счету '.$num : '';
+                            ? 'РїРѕ СЃС‡РµС‚Сѓ '.$num : '';
                 if($r == 'e_'){
                     $fuserlink = $GLOBALS["host"]."/users/".$ev0['f_login'];
-                    $msg_e = "Информируем Вас о том, что деньги в Сделке «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('e', '&')}'>{$sbr_name}</a>» успешно зарезервированы. Исполнителю <a href='{$fuserlink}'>{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href='{$fuserlink}'>{$ev0['f_login']}</a>] отправлено уведомление о том, что ему необходимо начать выполнение работы по заданию.";
+                    $msg_e = "РРЅС„РѕСЂРјРёСЂСѓРµРј Р’Р°СЃ Рѕ С‚РѕРј, С‡С‚Рѕ РґРµРЅСЊРіРё РІ РЎРґРµР»РєРµ В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('e', '&')}'>{$sbr_name}</a>В» СѓСЃРїРµС€РЅРѕ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹. РСЃРїРѕР»РЅРёС‚РµР»СЋ <a href='{$fuserlink}'>{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href='{$fuserlink}'>{$ev0['f_login']}</a>] РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ Рѕ С‚РѕРј, С‡С‚Рѕ РµРјСѓ РЅРµРѕР±С…РѕРґРёРјРѕ РЅР°С‡Р°С‚СЊ РІС‹РїРѕР»РЅРµРЅРёРµ СЂР°Р±РѕС‚С‹ РїРѕ Р·Р°РґР°РЅРёСЋ.";
                     
-                    $this->subject = "Денежные средства для $cnum зарезервированы";
+                    $this->subject = "Р”РµРЅРµР¶РЅС‹Рµ СЃСЂРµРґСЃС‚РІР° РґР»СЏ $cnum Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹";
                     $this->message = $this->splitMessage($this->GetHtml($ev0['e_uname'], $msg_e, array('header'=>'simple', 'footer'=>'norisk_robot')));
                     $this->recipient = $ev0['e_uname']." ".$ev0['e_usurname']." [".$ev0['e_login']."] <".$ev0['e_email'].">";
                     $this->SmtpMail('text/html');
                 }else{
                     
-                    $msg_f  = "Информируем Вас о том, что  деньги в Сделке «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>» успешно зарезервированы.<br/><br/>";
-                    $msg_f .= "Пожалуйста, приступите к выполнению задания.";
+                    $msg_f  = "РРЅС„РѕСЂРјРёСЂСѓРµРј Р’Р°СЃ Рѕ С‚РѕРј, С‡С‚Рѕ  РґРµРЅСЊРіРё РІ РЎРґРµР»РєРµ В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>В» СѓСЃРїРµС€РЅРѕ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹.<br/><br/>";
+                    $msg_f .= "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїСЂРёСЃС‚СѓРїРёС‚Рµ Рє РІС‹РїРѕР»РЅРµРЅРёСЋ Р·Р°РґР°РЅРёСЏ.";
                    
-                    $this->subject = "Резервирование денег в Безопасной Сделке (проект «{$ev0['sbr_name']}»)";
+                    $this->subject = "Р РµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ РґРµРЅРµРі РІ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµ (РїСЂРѕРµРєС‚ В«{$ev0['sbr_name']}В»)";
                     $this->message = $this->splitMessage($this->GetHtml($ev0['f_uname'], $msg_f, array('header'=>'simple', 'footer'=>'norisk_robot')));
                     $this->recipient = $ev0['f_uname']." ".$ev0['f_usurname']." [".$ev0['f_login']."] <".$ev0['f_email'].">";
                     $this->SmtpMail('text/html');
@@ -2398,10 +2398,10 @@ $sObjEntity: $sObjLink<br />
             /*
             if(!$sbr->checkUserReqvs()) {
                 $msg =  "
-                  Пожалуйста, внесите все необходимые данные на вкладке «<a href='{$GLOBALS['host']}/users/{$ev0[$r.'login']}/setup/finance/{$this->_addUrlParams($e ? 'e' : 'f')}'>Финансы</a>». Указанные во вкладке реквизиты требуются для составления договора
-                  на оказание услуг и являются необходимым условием для работы через сервис «Сделка Без Риска».
-                ";//по проекту «<a href='{$url}?id={$ev0['sbr_id']}'>{$ev0['sbr_name']}</a>»
-                $this->subject = "Заполнение вкладки «Финансы»";
+                  РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРЅРµСЃРёС‚Рµ РІСЃРµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РґР°РЅРЅС‹Рµ РЅР° РІРєР»Р°РґРєРµ В«<a href='{$GLOBALS['host']}/users/{$ev0[$r.'login']}/setup/finance/{$this->_addUrlParams($e ? 'e' : 'f')}'>Р¤РёРЅР°РЅСЃС‹</a>В». РЈРєР°Р·Р°РЅРЅС‹Рµ РІРѕ РІРєР»Р°РґРєРµ СЂРµРєРІРёР·РёС‚С‹ С‚СЂРµР±СѓСЋС‚СЃСЏ РґР»СЏ СЃРѕСЃС‚Р°РІР»РµРЅРёСЏ РґРѕРіРѕРІРѕСЂР°
+                  РЅР° РѕРєР°Р·Р°РЅРёРµ СѓСЃР»СѓРі Рё СЏРІР»СЏСЋС‚СЃСЏ РЅРµРѕР±С…РѕРґРёРјС‹Рј СѓСЃР»РѕРІРёРµРј РґР»СЏ СЂР°Р±РѕС‚С‹ С‡РµСЂРµР· СЃРµСЂРІРёСЃ В«РЎРґРµР»РєР° Р‘РµР· Р РёСЃРєР°В».
+                ";//РїРѕ РїСЂРѕРµРєС‚Сѓ В«<a href='{$url}?id={$ev0['sbr_id']}'>{$ev0['sbr_name']}</a>В»
+                $this->subject = "Р—Р°РїРѕР»РЅРµРЅРёРµ РІРєР»Р°РґРєРё В«Р¤РёРЅР°РЅСЃС‹В»";
                 $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
                 $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
                 $this->SmtpMail('text/html');
@@ -2410,17 +2410,17 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Уведомление, что фрилансер согласился приступить к проекту по СБР.
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ, С‡С‚Рѕ С„СЂРёР»Р°РЅСЃРµСЂ СЃРѕРіР»Р°СЃРёР»СЃСЏ РїСЂРёСЃС‚СѓРїРёС‚СЊ Рє РїСЂРѕРµРєС‚Сѓ РїРѕ РЎР‘Р .
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrAgreed($events) {
-        $this->subject = "Фрилансер согласился с условиями Безопасной Сделки";
+        $this->subject = "Р¤СЂРёР»Р°РЅСЃРµСЂ СЃРѕРіР»Р°СЃРёР»СЃСЏ СЃ СѓСЃР»РѕРІРёСЏРјРё Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё";
         $ev0 = $events[0];
         $url = $GLOBALS['host'].'/' . sbr::NEW_TEMPLATE_SBR . '/';
         $userlink = $GLOBALS["host"]."/users/".$ev0['f_login'];
         $sbr_name = sbr_meta::getNameForMail($ev0, 'sbr');
-        $msg  = "Исполнитель <a href='{$userlink}'>{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href='{$userlink}'>{$ev0['f_login']}</a>] согласился с предложенными вами условиями Сделки «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('e', '&')}'>{$sbr_name}</a>». Вам необходимо зарезервировать деньги.<br/><br/>";
-        $msg .= "Пожалуйста, перейдите в <a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('e', '&')}'>Сделку</a> и зарезервируйте деньги, следуя подсказкам интерфейса. С подробной инструкцией по резервированию средств можно ознакомиться <a href='https://feedback.fl.ru/{$this->_addUrlParams('e', '?')}'>здесь</a>.";
+        $msg  = "РСЃРїРѕР»РЅРёС‚РµР»СЊ <a href='{$userlink}'>{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href='{$userlink}'>{$ev0['f_login']}</a>] СЃРѕРіР»Р°СЃРёР»СЃСЏ СЃ РїСЂРµРґР»РѕР¶РµРЅРЅС‹РјРё РІР°РјРё СѓСЃР»РѕРІРёСЏРјРё РЎРґРµР»РєРё В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('e', '&')}'>{$sbr_name}</a>В». Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё.<br/><br/>";
+        $msg .= "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРµСЂРµР№РґРёС‚Рµ РІ <a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('e', '&')}'>РЎРґРµР»РєСѓ</a> Рё Р·Р°СЂРµР·РµСЂРІРёСЂСѓР№С‚Рµ РґРµРЅСЊРіРё, СЃР»РµРґСѓСЏ РїРѕРґСЃРєР°Р·РєР°Рј РёРЅС‚РµСЂС„РµР№СЃР°. РЎ РїРѕРґСЂРѕР±РЅРѕР№ РёРЅСЃС‚СЂСѓРєС†РёРµР№ РїРѕ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЋ СЃСЂРµРґСЃС‚РІ РјРѕР¶РЅРѕ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ <a href='https://feedback.fl.ru/{$this->_addUrlParams('e', '?')}'>Р·РґРµСЃСЊ</a>.";
         
         $this->message = $this->splitMessage($this->GetHtml($ev0['e_uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
         $this->recipient = $ev0['e_uname']." ".$ev0['e_usurname']." [".$ev0['e_login']."] <".$ev0['e_email'].">";
@@ -2428,20 +2428,20 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Уведомление работодателю об отказе фрилансера от СБР.
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЋ РѕР± РѕС‚РєР°Р·Рµ С„СЂРёР»Р°РЅСЃРµСЂР° РѕС‚ РЎР‘Р .
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrRefused($events) {
     	require_once $_SERVER['DOCUMENT_ROOT'].'/classes/sbr_meta.php'; 	
-        $this->subject = "Фрилансер отказался от Безопасной Сделки";
+        $this->subject = "Р¤СЂРёР»Р°РЅСЃРµСЂ РѕС‚РєР°Р·Р°Р»СЃСЏ РѕС‚ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё";
         $ev0 = $events[0];
         $url = $GLOBALS['host'].'/' . sbr::NEW_TEMPLATE_SBR . '/';
         $userlink = $GLOBALS["host"]."/users/".$ev0['f_login'];
         $sbr_name = sbr_meta::getNameForMail($ev0, 'sbr');
         $ev0['new_val'] = str_replace("\\", "", $ev0['new_val']);
-        $msg  = "Исполнитель <a href='{$userlink}'>{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href='{$userlink}'>{$ev0['f_login']}</a>] отказался от Сделки «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('e', '&')}'>{$sbr_name}</a>»";
-        $msg .= $ev0['new_val'] ? " по причине:<br/><br/> «{$ev0['new_val']}». " : ' без указания причины. ';
-        $msg .= "<br>Вы можете перейти в <a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('e', '&')}'>Сделку</a>, изменить задание и повторно отправить на утверждение Исполнителю.";
+        $msg  = "РСЃРїРѕР»РЅРёС‚РµР»СЊ <a href='{$userlink}'>{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href='{$userlink}'>{$ev0['f_login']}</a>] РѕС‚РєР°Р·Р°Р»СЃСЏ РѕС‚ РЎРґРµР»РєРё В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('e', '&')}'>{$sbr_name}</a>В»";
+        $msg .= $ev0['new_val'] ? " РїРѕ РїСЂРёС‡РёРЅРµ:<br/><br/> В«{$ev0['new_val']}В». " : ' Р±РµР· СѓРєР°Р·Р°РЅРёСЏ РїСЂРёС‡РёРЅС‹. ';
+        $msg .= "<br>Р’С‹ РјРѕР¶РµС‚Рµ РїРµСЂРµР№С‚Рё РІ <a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('e', '&')}'>РЎРґРµР»РєСѓ</a>, РёР·РјРµРЅРёС‚СЊ Р·Р°РґР°РЅРёРµ Рё РїРѕРІС‚РѕСЂРЅРѕ РѕС‚РїСЂР°РІРёС‚СЊ РЅР° СѓС‚РІРµСЂР¶РґРµРЅРёРµ РСЃРїРѕР»РЅРёС‚РµР»СЋ.";
         
         $this->message = $this->splitMessage($this->GetHtml($ev0['e_uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
         $this->recipient = $ev0['e_uname']." ".$ev0['e_usurname']." [".$ev0['e_login']."] <".$ev0['e_email'].">";
@@ -2449,11 +2449,11 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Уведомление работодателю о принятии изменений в СБР фрилансером.
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЋ Рѕ РїСЂРёРЅСЏС‚РёРё РёР·РјРµРЅРµРЅРёР№ РІ РЎР‘Р  С„СЂРёР»Р°РЅСЃРµСЂРѕРј.
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrChangesAgreed($events) {
-        $this->subject = "Фрилансер согласился с изменением условий Безопасной Сделки";
+        $this->subject = "Р¤СЂРёР»Р°РЅСЃРµСЂ СЃРѕРіР»Р°СЃРёР»СЃСЏ СЃ РёР·РјРµРЅРµРЅРёРµРј СѓСЃР»РѕРІРёР№ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё";
         $ev0 = $events[0];
         $url = $GLOBALS['host'].'/' . sbr::NEW_TEMPLATE_SBR . '/';
         $userlink = $GLOBALS["host"]."/users/".$ev0['f_login'];
@@ -2461,10 +2461,10 @@ $sObjEntity: $sObjLink<br />
         $sbr = sbr_meta::getInstanceLocal($ev0['e_uid']);
         $stage = $sbr->initFromStage($ev0['stage_id']);
         $stage_name = sbr_meta::getNameForMail($ev0);
-        $msg  = "Исполнитель <a href='{$userlink}'>{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href='{$userlink}'>{$ev0['f_login']}</a>] согласился с предложенными Вами изменениями условий в Сделке «<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('e', '&')}'>{$stage_name}</a>».<br/><br/>";
+        $msg  = "РСЃРїРѕР»РЅРёС‚РµР»СЊ <a href='{$userlink}'>{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href='{$userlink}'>{$ev0['f_login']}</a>] СЃРѕРіР»Р°СЃРёР»СЃСЏ СЃ РїСЂРµРґР»РѕР¶РµРЅРЅС‹РјРё Р’Р°РјРё РёР·РјРµРЅРµРЅРёСЏРјРё СѓСЃР»РѕРІРёР№ РІ РЎРґРµР»РєРµ В«<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('e', '&')}'>{$stage_name}</a>В».<br/><br/>";
         if(!$sbr->reserved_id) {
-            $msg .= "Вам необходимо зарезервировать деньги. <br/>";
-            $msg .= "Пожалуйста, перейдите в <a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('e', '&')}'>проект</a> и зарезервируйте деньги, следуя подсказкам интерфейса. С подробной инструкцией по резервированию средств можно ознакомиться <a href='https://feedback.fl.ru/{$this->_addUrlParams('e', '?')}'>здесь</a>.";
+            $msg .= "Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё. <br/>";
+            $msg .= "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРµСЂРµР№РґРёС‚Рµ РІ <a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('e', '&')}'>РїСЂРѕРµРєС‚</a> Рё Р·Р°СЂРµР·РµСЂРІРёСЂСѓР№С‚Рµ РґРµРЅСЊРіРё, СЃР»РµРґСѓСЏ РїРѕРґСЃРєР°Р·РєР°Рј РёРЅС‚РµСЂС„РµР№СЃР°. РЎ РїРѕРґСЂРѕР±РЅРѕР№ РёРЅСЃС‚СЂСѓРєС†РёРµР№ РїРѕ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЋ СЃСЂРµРґСЃС‚РІ РјРѕР¶РЅРѕ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ <a href='https://feedback.fl.ru/{$this->_addUrlParams('e', '?')}'>Р·РґРµСЃСЊ</a>.";
         }
         
         $this->message = $this->splitMessage($this->GetHtml($ev0['e_uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
@@ -2473,17 +2473,17 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Уведомление работодателю об отказе фрилансера от изменений в СБР.
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЋ РѕР± РѕС‚РєР°Р·Рµ С„СЂРёР»Р°РЅСЃРµСЂР° РѕС‚ РёР·РјРµРЅРµРЅРёР№ РІ РЎР‘Р .
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrChangesRefused($events) {
-        $this->subject = "Фрилансер не согласился с изменением условий Безопасной Сделки";
+        $this->subject = "Р¤СЂРёР»Р°РЅСЃРµСЂ РЅРµ СЃРѕРіР»Р°СЃРёР»СЃСЏ СЃ РёР·РјРµРЅРµРЅРёРµРј СѓСЃР»РѕРІРёР№ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё";
         $ev0 = $events[0];
         $url = $GLOBALS['host'].'/' . sbr::NEW_TEMPLATE_SBR . '/';
         $userlink = $GLOBALS["host"]."/users/".$ev0['f_login'];
         $stage_name = sbr_meta::getNameForMail($ev0);
-        $msg = "Исполнитель <a href='{$userlink}'>{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href='{$userlink}'>{$ev0['f_login']}</a>] отказался от предложенных Вами изменений условий в Сделке «<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('e', '&')}'>{$stage_name}</a>».<br/><br/>";
-        $msg .= "Вы можете перейти в <a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('e', '&')}'>сделку</a>, изменить задание и повторно отправить на утверждение Исполнителю или вернуться к предыдущей версии условий.";
+        $msg = "РСЃРїРѕР»РЅРёС‚РµР»СЊ <a href='{$userlink}'>{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href='{$userlink}'>{$ev0['f_login']}</a>] РѕС‚РєР°Р·Р°Р»СЃСЏ РѕС‚ РїСЂРµРґР»РѕР¶РµРЅРЅС‹С… Р’Р°РјРё РёР·РјРµРЅРµРЅРёР№ СѓСЃР»РѕРІРёР№ РІ РЎРґРµР»РєРµ В«<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('e', '&')}'>{$stage_name}</a>В».<br/><br/>";
+        $msg .= "Р’С‹ РјРѕР¶РµС‚Рµ РїРµСЂРµР№С‚Рё РІ <a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('e', '&')}'>СЃРґРµР»РєСѓ</a>, РёР·РјРµРЅРёС‚СЊ Р·Р°РґР°РЅРёРµ Рё РїРѕРІС‚РѕСЂРЅРѕ РѕС‚РїСЂР°РІРёС‚СЊ РЅР° СѓС‚РІРµСЂР¶РґРµРЅРёРµ РСЃРїРѕР»РЅРёС‚РµР»СЋ РёР»Рё РІРµСЂРЅСѓС‚СЊСЃСЏ Рє РїСЂРµРґС‹РґСѓС‰РµР№ РІРµСЂСЃРёРё СѓСЃР»РѕРІРёР№.";
         
         $this->message = $this->splitMessage($this->GetHtml($ev0['e_uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
         $this->recipient = $ev0['e_uname']." ".$ev0['e_usurname']." [".$ev0['e_login']."] <".$ev0['e_email'].">";
@@ -2491,8 +2491,8 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Уведомление одному из участников СБР о том, что другая строна обратилась в арбитраж.
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ РѕРґРЅРѕРјСѓ РёР· СѓС‡Р°СЃС‚РЅРёРєРѕРІ РЎР‘Р  Рѕ С‚РѕРј, С‡С‚Рѕ РґСЂСѓРіР°СЏ СЃС‚СЂРѕРЅР° РѕР±СЂР°С‚РёР»Р°СЃСЊ РІ Р°СЂР±РёС‚СЂР°Р¶.
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrArb($events) {
         $ev0 = $events[0];
@@ -2506,22 +2506,22 @@ $sObjEntity: $sObjLink<br />
         if($arb['user_id'] == $ev0['f_uid']) {
             $r = 'e_';
             $arb = 'f_';
-            $this->subject = "Фрилансер обратился в Арбитраж сервиса Безопасная Сделка";
+            $this->subject = "Р¤СЂРёР»Р°РЅСЃРµСЂ РѕР±СЂР°С‚РёР»СЃСЏ РІ РђСЂР±РёС‚СЂР°Р¶ СЃРµСЂРІРёСЃР° Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°";
             $userlink = $GLOBALS["host"]."/users/".$ev0['f_login'];
-            //$msg = "Информируем вас о том, что по проекту «<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$stage_name}</a>» Исполнитель <a href='{$userlink}'>{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href='{$userlink}'>{$ev0['f_login']}</a>] обратился в Арбитраж по причине:<br/><br/>";
+            //$msg = "РРЅС„РѕСЂРјРёСЂСѓРµРј РІР°СЃ Рѕ С‚РѕРј, С‡С‚Рѕ РїРѕ РїСЂРѕРµРєС‚Сѓ В«<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$stage_name}</a>В» РСЃРїРѕР»РЅРёС‚РµР»СЊ <a href='{$userlink}'>{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href='{$userlink}'>{$ev0['f_login']}</a>] РѕР±СЂР°С‚РёР»СЃСЏ РІ РђСЂР±РёС‚СЂР°Р¶ РїРѕ РїСЂРёС‡РёРЅРµ:<br/><br/>";
         } else {
             $r = 'f_';
             $arb = 'e_';
-            $this->subject = "Заказчик обратился в Арбитраж сервиса Безопасная Сделка";
+            $this->subject = "Р—Р°РєР°Р·С‡РёРє РѕР±СЂР°С‚РёР»СЃСЏ РІ РђСЂР±РёС‚СЂР°Р¶ СЃРµСЂРІРёСЃР° Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°";
             $userlink = $GLOBALS["host"]."/users/".$ev0['e_login'];
-            //$msg = "Информируем вас о том, что по проекту «<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$stage_name}</a>» Заказчик <a href='{$userlink}'>{$ev0['e_uname']} {$ev0['e_usurname']}</a> [<a href='{$userlink}'>{$ev0['e_login']}</a>] обратился в Арбитраж по причине:<br/><br/>";
+            //$msg = "РРЅС„РѕСЂРјРёСЂСѓРµРј РІР°СЃ Рѕ С‚РѕРј, С‡С‚Рѕ РїРѕ РїСЂРѕРµРєС‚Сѓ В«<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$stage_name}</a>В» Р—Р°РєР°Р·С‡РёРє <a href='{$userlink}'>{$ev0['e_uname']} {$ev0['e_usurname']}</a> [<a href='{$userlink}'>{$ev0['e_login']}</a>] РѕР±СЂР°С‚РёР»СЃСЏ РІ РђСЂР±РёС‚СЂР°Р¶ РїРѕ РїСЂРёС‡РёРЅРµ:<br/><br/>";
         }
-        $msg = "Информируем вас о том, что пользователь <a href='{$userlink}'>{$ev0[$arb.'uname']} {$ev0[$arb.'usurname']}</a> [<a href='{$userlink}'>{$ev0[$arb.'login']}</a>] обратился в Арбитраж по причине:<br/><br/>";
-        $msg .= "«" . reformat($arb['descr']) . "»<br/><br/>";
-        $msg .= "Работа по этапу <a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$ev0['stage_name']}</a> «Безопасной Сделки» <a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$sbr_num}</a> приостановлена. Срок вынесения решения – до " . sbr_stages::MAX_ARBITRAGE_DAYS . " рабочих дней с момента обращения в арбитраж.<br/><br/>";
-        $msg .= "Вы можете оставить свой комментарий по поводу сложившейся ситуации в разделе «Мои Сделки», в системе комментариев к сделке «<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$stage_name}</a>».";
-        //$msg .= "«" . reformat($arb['descr']) . "»<br/><br/>";
-        //$msg .= "Пожалуйста, перейдите в <a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>сделку</a> и прокомментируйте ситуацию.";
+        $msg = "РРЅС„РѕСЂРјРёСЂСѓРµРј РІР°СЃ Рѕ С‚РѕРј, С‡С‚Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ <a href='{$userlink}'>{$ev0[$arb.'uname']} {$ev0[$arb.'usurname']}</a> [<a href='{$userlink}'>{$ev0[$arb.'login']}</a>] РѕР±СЂР°С‚РёР»СЃСЏ РІ РђСЂР±РёС‚СЂР°Р¶ РїРѕ РїСЂРёС‡РёРЅРµ:<br/><br/>";
+        $msg .= "В«" . reformat($arb['descr']) . "В»<br/><br/>";
+        $msg .= "Р Р°Р±РѕС‚Р° РїРѕ СЌС‚Р°РїСѓ <a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$ev0['stage_name']}</a> В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ» <a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$sbr_num}</a> РїСЂРёРѕСЃС‚Р°РЅРѕРІР»РµРЅР°. РЎСЂРѕРє РІС‹РЅРµСЃРµРЅРёСЏ СЂРµС€РµРЅРёСЏ вЂ“ РґРѕ " . sbr_stages::MAX_ARBITRAGE_DAYS . " СЂР°Р±РѕС‡РёС… РґРЅРµР№ СЃ РјРѕРјРµРЅС‚Р° РѕР±СЂР°С‰РµРЅРёСЏ РІ Р°СЂР±РёС‚СЂР°Р¶.<br/><br/>";
+        $msg .= "Р’С‹ РјРѕР¶РµС‚Рµ РѕСЃС‚Р°РІРёС‚СЊ СЃРІРѕР№ РєРѕРјРјРµРЅС‚Р°СЂРёР№ РїРѕ РїРѕРІРѕРґСѓ СЃР»РѕР¶РёРІС€РµР№СЃСЏ СЃРёС‚СѓР°С†РёРё РІ СЂР°Р·РґРµР»Рµ В«РњРѕРё РЎРґРµР»РєРёВ», РІ СЃРёСЃС‚РµРјРµ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ Рє СЃРґРµР»РєРµ В«<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$stage_name}</a>В».";
+        //$msg .= "В«" . reformat($arb['descr']) . "В»<br/><br/>";
+        //$msg .= "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРµСЂРµР№РґРёС‚Рµ РІ <a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>СЃРґРµР»РєСѓ</a> Рё РїСЂРѕРєРѕРјРјРµРЅС‚РёСЂСѓР№С‚Рµ СЃРёС‚СѓР°С†РёСЋ.";
             
         $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
         $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
@@ -2529,12 +2529,12 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Уведомление обоим участникам СБР о вынесении решения арбитража.
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ РѕР±РѕРёРј СѓС‡Р°СЃС‚РЅРёРєР°Рј РЎР‘Р  Рѕ РІС‹РЅРµСЃРµРЅРёРё СЂРµС€РµРЅРёСЏ Р°СЂР±РёС‚СЂР°Р¶Р°.
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrArbResolved($events) {
         $ev0 = $events[0];
-        $this->subject = "Арбитраж вынес решение по Безопасной Сделке (проект «{$ev0['sbr_name']}»)";
+        $this->subject = "РђСЂР±РёС‚СЂР°Р¶ РІС‹РЅРµСЃ СЂРµС€РµРЅРёРµ РїРѕ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµ (РїСЂРѕРµРєС‚ В«{$ev0['sbr_name']}В»)";
         $url = $GLOBALS['host'].'/' . sbr::NEW_TEMPLATE_SBR . '/';
         $sbr = new sbr(NULL);
         $stage = $sbr->getStage($ev0['own_id']);
@@ -2546,20 +2546,20 @@ $sObjEntity: $sObjLink<br />
             
             if($r == 'f_') {
                 $userlink = $GLOBALS["host"]."/users/".$ev0['e_login'];
-                $usr = "Заказчику <a href='{$userlink}'>{$ev0['e_uname']} {$ev0['e_usurname']}</a> [<a href='{$userlink}'>{$ev0['e_login']}</a>]";
+                $usr = "Р—Р°РєР°Р·С‡РёРєСѓ <a href='{$userlink}'>{$ev0['e_uname']} {$ev0['e_usurname']}</a> [<a href='{$userlink}'>{$ev0['e_login']}</a>]";
             } else {
                 $userlink = $GLOBALS["host"]."/users/".$ev0['f_login'];
-                $usr = "Исполнителю <a href='{$userlink}'>{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href='{$userlink}'>{$ev0['f_login']}</a>]";
+                $usr = "РСЃРїРѕР»РЅРёС‚РµР»СЋ <a href='{$userlink}'>{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href='{$userlink}'>{$ev0['f_login']}</a>]";
             }
             
-            $msg  = "Информируем Вас о том, что Арбитраж вынес решение в Сделке «<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$stage_name}</a>» и закрыл ее. ";
-            $msg .= "Пожалуйста, перейдите в <a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>сделку</a>, чтобы ознакомиться с решением Арбитража и оставить отзыв {$usr}, а также отзыв сервису Безопасная Сделка.";
+            $msg  = "РРЅС„РѕСЂРјРёСЂСѓРµРј Р’Р°СЃ Рѕ С‚РѕРј, С‡С‚Рѕ РђСЂР±РёС‚СЂР°Р¶ РІС‹РЅРµСЃ СЂРµС€РµРЅРёРµ РІ РЎРґРµР»РєРµ В«<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$stage_name}</a>В» Рё Р·Р°РєСЂС‹Р» РµРµ. ";
+            $msg .= "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРµСЂРµР№РґРёС‚Рµ РІ <a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>СЃРґРµР»РєСѓ</a>, С‡С‚РѕР±С‹ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ СЂРµС€РµРЅРёРµРј РђСЂР±РёС‚СЂР°Р¶Р° Рё РѕСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ {$usr}, Р° С‚Р°РєР¶Рµ РѕС‚Р·С‹РІ СЃРµСЂРІРёСЃСѓ Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°.";
              
-            //$msg =  "«Арбитраж» сервиса «Сделка без риска» вынес решение по задаче «<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$ev0['stage_name']}</a>» проекта <a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$ev0['sbr_name']}</a>:<br/><br/>";
+            //$msg =  "В«РђСЂР±РёС‚СЂР°Р¶В» СЃРµСЂРІРёСЃР° В«РЎРґРµР»РєР° Р±РµР· СЂРёСЃРєР°В» РІС‹РЅРµСЃ СЂРµС€РµРЅРёРµ РїРѕ Р·Р°РґР°С‡Рµ В«<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$ev0['stage_name']}</a>В» РїСЂРѕРµРєС‚Р° <a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$ev0['sbr_name']}</a>:<br/><br/>";
             //$msg .= "----<br/>";
-            //$msg .= "«{$stage->arbitrage['descr_arb']}»";
+            //$msg .= "В«{$stage->arbitrage['descr_arb']}В»";
             //$msg .= "<br/>----<br/>";
-            //$msg .= '<br/><br/>Пройдите по ссылке, чтобы получить более подробную информацию.';
+            //$msg .= '<br/><br/>РџСЂРѕР№РґРёС‚Рµ РїРѕ СЃСЃС‹Р»РєРµ, С‡С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ Р±РѕР»РµРµ РїРѕРґСЂРѕР±РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ.';
             $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
             $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
             $this->SmtpMail('text/html');
@@ -2567,26 +2567,26 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Отправляет уведомление после изменений условий сделки работодателем.
-     * Формируется список изменений со старым и новым значением.
-     * Также отправляет уведомление об откате изменений (с тем же списком) в случае, если фрилансер отказался от них.
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёРµ РїРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёР№ СѓСЃР»РѕРІРёР№ СЃРґРµР»РєРё СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµРј.
+     * Р¤РѕСЂРјРёСЂСѓРµС‚СЃСЏ СЃРїРёСЃРѕРє РёР·РјРµРЅРµРЅРёР№ СЃРѕ СЃС‚Р°СЂС‹Рј Рё РЅРѕРІС‹Рј Р·РЅР°С‡РµРЅРёРµРј.
+     * РўР°РєР¶Рµ РѕС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёРµ РѕР± РѕС‚РєР°С‚Рµ РёР·РјРµРЅРµРЅРёР№ (СЃ С‚РµРј Р¶Рµ СЃРїРёСЃРєРѕРј) РІ СЃР»СѓС‡Р°Рµ, РµСЃР»Рё С„СЂРёР»Р°РЅСЃРµСЂ РѕС‚РєР°Р·Р°Р»СЃСЏ РѕС‚ РЅРёС….
      * @see sbr_meta::parseEvents()
      *
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrTzChanged($events) {
         $ev0 = $events[0];
         $url = $GLOBALS['host'].'/' . sbr::NEW_TEMPLATE_SBR . '/';
-        $sbr_link = " «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('b', '&')}'>{$ev0['sbr_name']}</a>»";
+        $sbr_link = " В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('b', '&')}'>{$ev0['sbr_name']}</a>В»";
         $changes = '';
         $parse = sbr_meta::parseEvents($events);
         foreach($parse['events'] as $id=>$ev) {
             $changes .= '<br/>'.(++$i).'. '.$ev['ev_name'].($ev['note'] ? ' (<strong>'.trim($ev['note']).'</strong>)' : '') . ' &mdash; '
-                     . ($ev['stage_name'] ? 'задача «' : '')
+                     . ($ev['stage_name'] ? 'Р·Р°РґР°С‡Р° В«' : '')
                      . '<a href="' . $url . ($ev['stage_name'] ? "?site=Stage&id={$ev['own_id']}" : "?id={$ev['sbr_id']}") . $this->_addUrlParams('b', '&') . '">'
-                     . ($ev['stage_name'] ? reformat($ev['stage_name'],40,0,1) : 'Весь проект')
+                     . ($ev['stage_name'] ? reformat($ev['stage_name'],40,0,1) : 'Р’РµСЃСЊ РїСЂРѕРµРєС‚')
                      . '</a>'
-                     . ($ev['stage_name'] ? '»' : '')
+                     . ($ev['stage_name'] ? 'В»' : '')
                      . '.'
                      ;
         }
@@ -2594,37 +2594,37 @@ $sObjEntity: $sObjLink<br />
         if(!$changes) return;
 
         if($ev0['xtype'] == sbr::XTYPE_RLBK) { 
-            $this->subject = "Изменения в Безопасной Сделке отменены (проект «{$ev0['sbr_name']}»)";
+            $this->subject = "РР·РјРµРЅРµРЅРёСЏ РІ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµ РѕС‚РјРµРЅРµРЅС‹ (РїСЂРѕРµРєС‚ В«{$ev0['sbr_name']}В»)";
             $userlink = $GLOBALS["host"]."/users/".$ev0['f_login'];
             for($e=0;$e<2;$e++) {
                 $r = $e ? 'e_' : 'f_';
-                $msg = $e ? "В связи с отказом исполнителя <a href=\"{$userlink}\">{$ev0['f_uname']}</a> <a href=\"{$userlink}\">{$ev0['f_usurname']}</a> [<a href=\"{$userlink}\">{$ev0['f_login']}</a>] от изменений, система произвела возврат условий {$sbr_link} к предыдущей версии:<br/>"
-                          : "В связи с тем, что вы отказались от изменений в Безопасной Сделке, система произвела возврат условий {$sbr_link} к предыдущей версии:<br/>";
+                $msg = $e ? "Р’ СЃРІСЏР·Рё СЃ РѕС‚РєР°Р·РѕРј РёСЃРїРѕР»РЅРёС‚РµР»СЏ <a href=\"{$userlink}\">{$ev0['f_uname']}</a> <a href=\"{$userlink}\">{$ev0['f_usurname']}</a> [<a href=\"{$userlink}\">{$ev0['f_login']}</a>] РѕС‚ РёР·РјРµРЅРµРЅРёР№, СЃРёСЃС‚РµРјР° РїСЂРѕРёР·РІРµР»Р° РІРѕР·РІСЂР°С‚ СѓСЃР»РѕРІРёР№ {$sbr_link} Рє РїСЂРµРґС‹РґСѓС‰РµР№ РІРµСЂСЃРёРё:<br/>"
+                          : "Р’ СЃРІСЏР·Рё СЃ С‚РµРј, С‡С‚Рѕ РІС‹ РѕС‚РєР°Р·Р°Р»РёСЃСЊ РѕС‚ РёР·РјРµРЅРµРЅРёР№ РІ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµ, СЃРёСЃС‚РµРјР° РїСЂРѕРёР·РІРµР»Р° РІРѕР·РІСЂР°С‚ СѓСЃР»РѕРІРёР№ {$sbr_link} Рє РїСЂРµРґС‹РґСѓС‰РµР№ РІРµСЂСЃРёРё:<br/>";
                 $msg .= "---<br/>";
                 $msg .= $changes.'<br/>';
                 $msg .= "---<br/><br/>";
-                $msg .= $e ? "Вы можете отредактировать условия и повторно отправить их исполнителю на утверждение или отказаться от изменений, продолжив работу с прежними условиями.".
-                             " Более подробная информация по согласованию Безопасной Сделки с фрилансером размещена <a href='https://feedback.fl.ru/{$this->_addUrlParams('e', '?')}'>здесь</a>."
-                           : "Вы можете продолжить работу с прежними условиями. Вы можете ознакомиться с общей информацией <a href='https://feedback.fl.ru/{$this->_addUrlParams('f', '?')}'>по порядку проведения Безопасной Сделки</a>.";
-                $msg .= ' Пройдите по ссылке, чтобы получить более подробную информацию.';
+                $msg .= $e ? "Р’С‹ РјРѕР¶РµС‚Рµ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СѓСЃР»РѕРІРёСЏ Рё РїРѕРІС‚РѕСЂРЅРѕ РѕС‚РїСЂР°РІРёС‚СЊ РёС… РёСЃРїРѕР»РЅРёС‚РµР»СЋ РЅР° СѓС‚РІРµСЂР¶РґРµРЅРёРµ РёР»Рё РѕС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ РёР·РјРµРЅРµРЅРёР№, РїСЂРѕРґРѕР»Р¶РёРІ СЂР°Р±РѕС‚Сѓ СЃ РїСЂРµР¶РЅРёРјРё СѓСЃР»РѕРІРёСЏРјРё.".
+                             " Р‘РѕР»РµРµ РїРѕРґСЂРѕР±РЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕРіР»Р°СЃРѕРІР°РЅРёСЋ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё СЃ С„СЂРёР»Р°РЅСЃРµСЂРѕРј СЂР°Р·РјРµС‰РµРЅР° <a href='https://feedback.fl.ru/{$this->_addUrlParams('e', '?')}'>Р·РґРµСЃСЊ</a>."
+                           : "Р’С‹ РјРѕР¶РµС‚Рµ РїСЂРѕРґРѕР»Р¶РёС‚СЊ СЂР°Р±РѕС‚Сѓ СЃ РїСЂРµР¶РЅРёРјРё СѓСЃР»РѕРІРёСЏРјРё. Р’С‹ РјРѕР¶РµС‚Рµ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РѕР±С‰РµР№ РёРЅС„РѕСЂРјР°С†РёРµР№ <a href='https://feedback.fl.ru/{$this->_addUrlParams('f', '?')}'>РїРѕ РїРѕСЂСЏРґРєСѓ РїСЂРѕРІРµРґРµРЅРёСЏ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё</a>.";
+                $msg .= ' РџСЂРѕР№РґРёС‚Рµ РїРѕ СЃСЃС‹Р»РєРµ, С‡С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ Р±РѕР»РµРµ РїРѕРґСЂРѕР±РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ.';
                 $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
                 $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
                 $this->SmtpMail('text/html');
             }
         }
         else {
-            $this->subject = "Заказчик внес изменения в условия Безопасной Сделки по проекту «{$ev0['sbr_name']}»";
+            $this->subject = "Р—Р°РєР°Р·С‡РёРє РІРЅРµСЃ РёР·РјРµРЅРµРЅРёСЏ РІ СѓСЃР»РѕРІРёСЏ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё РїРѕ РїСЂРѕРµРєС‚Сѓ В«{$ev0['sbr_name']}В»";
             $userlink = $GLOBALS["host"]."/users/".$ev0['e_login'];
             
-            $msg  = "Заказчик <a href='{$userlink}'>{$ev0['e_uname']} {$ev0['e_usurname']} [{$ev0['e_login']}]</a> предлагает Вам изменить условия Сделки {$sbr_link}.<br/><br/>";
-            $msg .= "Вам необходимо перейти в <a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('b', '&')}'>сделку</a> и ознакомиться с предложенными изменениями. Вы можете согласиться на изменения условий или отказаться от них, указав причину.";
+            $msg  = "Р—Р°РєР°Р·С‡РёРє <a href='{$userlink}'>{$ev0['e_uname']} {$ev0['e_usurname']} [{$ev0['e_login']}]</a> РїСЂРµРґР»Р°РіР°РµС‚ Р’Р°Рј РёР·РјРµРЅРёС‚СЊ СѓСЃР»РѕРІРёСЏ РЎРґРµР»РєРё {$sbr_link}.<br/><br/>";
+            $msg .= "Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµР№С‚Рё РІ <a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('b', '&')}'>СЃРґРµР»РєСѓ</a> Рё РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РїСЂРµРґР»РѕР¶РµРЅРЅС‹РјРё РёР·РјРµРЅРµРЅРёСЏРјРё. Р’С‹ РјРѕР¶РµС‚Рµ СЃРѕРіР»Р°СЃРёС‚СЊСЃСЏ РЅР° РёР·РјРµРЅРµРЅРёСЏ СѓСЃР»РѕРІРёР№ РёР»Рё РѕС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ РЅРёС…, СѓРєР°Р·Р°РІ РїСЂРёС‡РёРЅСѓ.";
             
-            /*$msg = "Работодатель <a href=\"{$userlink}\">{$ev0['e_uname']}</a> <a href=\"{$userlink}\">{$ev0['e_usurname']}</a> [<a href=\"{$userlink}\">{$ev0['e_login']}</a>] внес(-ла) поправки в «Сделку без риска» по проекту";
+            /*$msg = "Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ <a href=\"{$userlink}\">{$ev0['e_uname']}</a> <a href=\"{$userlink}\">{$ev0['e_usurname']}</a> [<a href=\"{$userlink}\">{$ev0['e_login']}</a>] РІРЅРµСЃ(-Р»Р°) РїРѕРїСЂР°РІРєРё РІ В«РЎРґРµР»РєСѓ Р±РµР· СЂРёСЃРєР°В» РїРѕ РїСЂРѕРµРєС‚Сѓ";
             $msg .= $sbr_link.':<br/>';
             $msg .= '----<br/>';
             $msg .= $changes.'<br/><br/>';
             $msg .= '----<br/><br/>';
-            $msg .= "Вам необходимо подтвердить или отклонить данные изменения.<br/> Вы можете ознакомиться с общей информацией по <a href='{$GLOBALS['host']}/help/?q=891{$this->_addUrlParams('f', '&')}'>порядку проведения «Сделки без риска»</a>.";
+            $msg .= "Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РїРѕРґС‚РІРµСЂРґРёС‚СЊ РёР»Рё РѕС‚РєР»РѕРЅРёС‚СЊ РґР°РЅРЅС‹Рµ РёР·РјРµРЅРµРЅРёСЏ.<br/> Р’С‹ РјРѕР¶РµС‚Рµ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РѕР±С‰РµР№ РёРЅС„РѕСЂРјР°С†РёРµР№ РїРѕ <a href='{$GLOBALS['host']}/help/?q=891{$this->_addUrlParams('f', '&')}'>РїРѕСЂСЏРґРєСѓ РїСЂРѕРІРµРґРµРЅРёСЏ В«РЎРґРµР»РєРё Р±РµР· СЂРёСЃРєР°В»</a>.";
             */
             $this->message = $this->splitMessage($this->GetHtml($ev0['f_uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
             $this->recipient = $ev0['f_uname']." ".$ev0['f_usurname']." [".$ev0['f_login']."] <".$ev0['f_email'].">";
@@ -2633,53 +2633,53 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Уведомление об изменении статуса этапа СБР.
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ РѕР± РёР·РјРµРЅРµРЅРёРё СЃС‚Р°С‚СѓСЃР° СЌС‚Р°РїР° РЎР‘Р .
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrStatusChanged($events) {
         $ev0 = $events[0];
         $url = $GLOBALS['host'].'/' . sbr::NEW_TEMPLATE_SBR . '/';
-        $sbr_link_e = "задачи «<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams('e', '&')}'>{$ev0['stage_name']}</a>» «Безопасной Сделки» в проекте «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('e', '&')}'>{$ev0['sbr_name']}</a>»";
-        $sbr_link_f = "задачи «<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams('f', '&')}'>{$ev0['stage_name']}</a>» «Безопасной Сделки» в проекте «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f', '&')}'>{$ev0['sbr_name']}</a>»";
+        $sbr_link_e = "Р·Р°РґР°С‡Рё В«<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams('e', '&')}'>{$ev0['stage_name']}</a>В» В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ» РІ РїСЂРѕРµРєС‚Рµ В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('e', '&')}'>{$ev0['sbr_name']}</a>В»";
+        $sbr_link_f = "Р·Р°РґР°С‡Рё В«<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams('f', '&')}'>{$ev0['stage_name']}</a>В» В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ» РІ РїСЂРѕРµРєС‚Рµ В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f', '&')}'>{$ev0['sbr_name']}</a>В»";
         setlocale(LC_ALL, "ru_RU.CP1251");
-        $changes = "c «" . ucfirst(sbr_stages::$nss_classes[$ev0['old_val']][1]) . "» на «" . ucfirst(sbr_stages::$nss_classes[$ev0['new_val']][1]) . "».";
+        $changes = "c В«" . ucfirst(sbr_stages::$nss_classes[$ev0['old_val']][1]) . "В» РЅР° В«" . ucfirst(sbr_stages::$nss_classes[$ev0['new_val']][1]) . "В».";
         setlocale(LC_ALL, "en_US.UTF-8");
         if($ev0['xtype'] == sbr::XTYPE_RLBK) {
-            $this->subject = "Статус Безопасной Сделки возвращен к предыдущему состоянию";
+            $this->subject = "РЎС‚Р°С‚СѓСЃ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё РІРѕР·РІСЂР°С‰РµРЅ Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ СЃРѕСЃС‚РѕСЏРЅРёСЋ";
             for($e=0;$e<2;$e++) {
                 $r = $e ? 'e_' : 'f_';
                 $userlink = $GLOBALS['host']."/users/{$ev0['f_login']}";
-                $msg = $e ? "В связи с отказом исполнителя <a href=\"{$userlink}\">{$ev0['f_uname']} {$ev0['f_usurname']}</a> <a href=\"{$userlink}\">[{$ev0['f_login']}]</a> от изменений, система произвела возврат {$sbr_link_e} к предыдущей версии:<br/>"
-                          : "В связи с тем, что вы отказались от изменений, система произвела возврат {$sbr_link_f} к предыдущей версии:<br/>";
-                $msg .= "<br>Изменился статус Сделки: {$changes}<br/><br/>";
+                $msg = $e ? "Р’ СЃРІСЏР·Рё СЃ РѕС‚РєР°Р·РѕРј РёСЃРїРѕР»РЅРёС‚РµР»СЏ <a href=\"{$userlink}\">{$ev0['f_uname']} {$ev0['f_usurname']}</a> <a href=\"{$userlink}\">[{$ev0['f_login']}]</a> РѕС‚ РёР·РјРµРЅРµРЅРёР№, СЃРёСЃС‚РµРјР° РїСЂРѕРёР·РІРµР»Р° РІРѕР·РІСЂР°С‚ {$sbr_link_e} Рє РїСЂРµРґС‹РґСѓС‰РµР№ РІРµСЂСЃРёРё:<br/>"
+                          : "Р’ СЃРІСЏР·Рё СЃ С‚РµРј, С‡С‚Рѕ РІС‹ РѕС‚РєР°Р·Р°Р»РёСЃСЊ РѕС‚ РёР·РјРµРЅРµРЅРёР№, СЃРёСЃС‚РµРјР° РїСЂРѕРёР·РІРµР»Р° РІРѕР·РІСЂР°С‚ {$sbr_link_f} Рє РїСЂРµРґС‹РґСѓС‰РµР№ РІРµСЂСЃРёРё:<br/>";
+                $msg .= "<br>РР·РјРµРЅРёР»СЃСЏ СЃС‚Р°С‚СѓСЃ РЎРґРµР»РєРё: {$changes}<br/><br/>";
                 $msg .= $e ? ""
                            : "";
-                $msg .= 'Пройдите по ссылке, чтобы получить более подробную информацию.';
+                $msg .= 'РџСЂРѕР№РґРёС‚Рµ РїРѕ СЃСЃС‹Р»РєРµ, С‡С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ Р±РѕР»РµРµ РїРѕРґСЂРѕР±РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ.';
                 $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'simple')));
                 $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
                 $this->SmtpMail('text/html');
             }
         } else {
-            $this->subject = "Изменился статус задачи в Безопасной Сделке по проекту «{$ev0['sbr_name']}»";
+            $this->subject = "РР·РјРµРЅРёР»СЃСЏ СЃС‚Р°С‚СѓСЃ Р·Р°РґР°С‡Рё РІ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµ РїРѕ РїСЂРѕРµРєС‚Сѓ В«{$ev0['sbr_name']}В»";
             $userlink = $GLOBALS["host"]."/users/".$ev0['e_login'];
             $fuserlink = $GLOBALS["host"]."/users/".$ev0['f_login'];
             $stage_name = sbr_meta::getNameForMail($ev0);
             if($ev0['new_val'] == sbr_stages::STATUS_COMPLETED) {
-                $msg  = "Информируем вас о том, что проект «<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams('e', '&')}'>{$stage_name}</a>»  успешно завершен Заказчиком <a href=\"{$userlink}\">{$ev0['e_uname']} {$ev0['e_usurname']}</a> [<a href=\"{$userlink}\">{$ev0['e_login']}</a>].<br/><br/>";
-                $msg .= "Пожалуйста, перейдите в <a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams('f', '&')}'>сделку</a>, чтобы оставить отзыв Заказчику, отзыв сервису Безопасная Сделка и выбрать способ получения денег.";
+                $msg  = "РРЅС„РѕСЂРјРёСЂСѓРµРј РІР°СЃ Рѕ С‚РѕРј, С‡С‚Рѕ РїСЂРѕРµРєС‚ В«<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams('e', '&')}'>{$stage_name}</a>В»  СѓСЃРїРµС€РЅРѕ Р·Р°РІРµСЂС€РµРЅ Р—Р°РєР°Р·С‡РёРєРѕРј <a href=\"{$userlink}\">{$ev0['e_uname']} {$ev0['e_usurname']}</a> [<a href=\"{$userlink}\">{$ev0['e_login']}</a>].<br/><br/>";
+                $msg .= "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРµСЂРµР№РґРёС‚Рµ РІ <a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams('f', '&')}'>СЃРґРµР»РєСѓ</a>, С‡С‚РѕР±С‹ РѕСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ Р—Р°РєР°Р·С‡РёРєСѓ, РѕС‚Р·С‹РІ СЃРµСЂРІРёСЃСѓ Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР° Рё РІС‹Р±СЂР°С‚СЊ СЃРїРѕСЃРѕР± РїРѕР»СѓС‡РµРЅРёСЏ РґРµРЅРµРі.";
                 
-                // Для работодателя
-                $e_msg  = "Вы успешно завершили проект «<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams('e', '&')}'>{$stage_name}</a>».<br/>";
-                $e_msg .= "Теперь Вам необходимо оставить отзыв Исполнителю <a href=\"{$fuserlink}\">{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href=\"{$fuserlink}\">{$ev0['f_login']}</a>] и отзыв сервису Безопасная Сделка в интерфейсе вашей <a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams('e', '&')}'>сделки</a>.";
+                // Р”Р»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ
+                $e_msg  = "Р’С‹ СѓСЃРїРµС€РЅРѕ Р·Р°РІРµСЂС€РёР»Рё РїСЂРѕРµРєС‚ В«<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams('e', '&')}'>{$stage_name}</a>В».<br/>";
+                $e_msg .= "РўРµРїРµСЂСЊ Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РѕСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ РСЃРїРѕР»РЅРёС‚РµР»СЋ <a href=\"{$fuserlink}\">{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href=\"{$fuserlink}\">{$ev0['f_login']}</a>] Рё РѕС‚Р·С‹РІ СЃРµСЂРІРёСЃСѓ Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР° РІ РёРЅС‚РµСЂС„РµР№СЃРµ РІР°С€РµР№ <a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams('e', '&')}'>СЃРґРµР»РєРё</a>.";
             
                 $this->message = $this->splitMessage($this->GetHtml($ev0['e_uname'], $e_msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
                 $this->recipient = $ev0['e_uname']." ".$ev0['e_usurname']." [".$ev0['e_login']."] <".$ev0['e_email'].">";
                 $this->SmtpMail('text/html');
             } else {
-                $msg  = "Заказчик <a href=\"{$userlink}\">{$ev0['e_uname']} {$ev0['e_usurname']}</a> [<a href=\"{$userlink}\">{$ev0['e_login']}</a>] хочет изменить статус Сделки «<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams('e', '&')}'>{$stage_name}</a>» {$changes}<br/><br/>";
-                $msg .= "Пожалуйста, перейдите в <a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams('f', '&')}'>сделку</a>, чтобы принять или отклонить предложенные Заказчиком изменения.";  
+                $msg  = "Р—Р°РєР°Р·С‡РёРє <a href=\"{$userlink}\">{$ev0['e_uname']} {$ev0['e_usurname']}</a> [<a href=\"{$userlink}\">{$ev0['e_login']}</a>] С…РѕС‡РµС‚ РёР·РјРµРЅРёС‚СЊ СЃС‚Р°С‚СѓСЃ РЎРґРµР»РєРё В«<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams('e', '&')}'>{$stage_name}</a>В» {$changes}<br/><br/>";
+                $msg .= "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРµСЂРµР№РґРёС‚Рµ РІ <a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams('f', '&')}'>СЃРґРµР»РєСѓ</a>, С‡С‚РѕР±С‹ РїСЂРёРЅСЏС‚СЊ РёР»Рё РѕС‚РєР»РѕРЅРёС‚СЊ РїСЂРµРґР»РѕР¶РµРЅРЅС‹Рµ Р—Р°РєР°Р·С‡РёРєРѕРј РёР·РјРµРЅРµРЅРёСЏ.";  
             }
-            //$msg .= "Вы можете ознакомиться с общей информацией по <a href='{$GLOBALS['host']}/help/?q=891{$this->_addUrlParams('f', '&')}'>порядку проведения «Сделки без риска»</a>.";
+            //$msg .= "Р’С‹ РјРѕР¶РµС‚Рµ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РѕР±С‰РµР№ РёРЅС„РѕСЂРјР°С†РёРµР№ РїРѕ <a href='{$GLOBALS['host']}/help/?q=891{$this->_addUrlParams('f', '&')}'>РїРѕСЂСЏРґРєСѓ РїСЂРѕРІРµРґРµРЅРёСЏ В«РЎРґРµР»РєРё Р±РµР· СЂРёСЃРєР°В»</a>.";
             $this->message = $this->splitMessage($this->GetHtml($ev0['f_uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
             $this->recipient = $ev0['f_uname']." ".$ev0['f_usurname']." [".$ev0['f_login']."] <".$ev0['f_email'].">";
             $this->SmtpMail('text/html');
@@ -2689,20 +2689,20 @@ $sObjEntity: $sObjLink<br />
 
 
     /**
-     * Уведомление фрилансеру об отмене СБР.
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ С„СЂРёР»Р°РЅСЃРµСЂСѓ РѕР± РѕС‚РјРµРЅРµ РЎР‘Р .
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrCanceled($events) {
         $ev0 = $events[0];
-        $this->subject = "Заказчик отменил Безопасную Сделку по проекту «{$ev0['sbr_name']}»";
+        $this->subject = "Р—Р°РєР°Р·С‡РёРє РѕС‚РјРµРЅРёР» Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ РїРѕ РїСЂРѕРµРєС‚Сѓ В«{$ev0['sbr_name']}В»";
         $url = $GLOBALS['host'].'/' . sbr::NEW_TEMPLATE_SBR . '/';
         $userlink = $GLOBALS["host"]."/users/".$ev0['e_login'];
         $sbr_name = sbr_meta::getNameForMail($ev0, 'sbr');
         
-        $msg = "Сделка «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>» была отменена Заказчиком. Сожалеем, что ваше сотрудничество не состоялось. Перейти к открытым <a href='{$url}'>Безопасным Сделкам</a>."; 
+        $msg = "РЎРґРµР»РєР° В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>В» Р±С‹Р»Р° РѕС‚РјРµРЅРµРЅР° Р—Р°РєР°Р·С‡РёРєРѕРј. РЎРѕР¶Р°Р»РµРµРј, С‡С‚Рѕ РІР°С€Рµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ РЅРµ СЃРѕСЃС‚РѕСЏР»РѕСЃСЊ. РџРµСЂРµР№С‚Рё Рє РѕС‚РєСЂС‹С‚С‹Рј <a href='{$url}'>Р‘РµР·РѕРїР°СЃРЅС‹Рј РЎРґРµР»РєР°Рј</a>."; 
         
-        //$msg  = "Информируем Вас о том, что проект «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>» отменен Заказчиком <a href=\"{$userlink}\">{$ev0['e_uname']} {$ev0['e_usurname']}</a> [<a href=\"{$userlink}\">{$ev0['e_login']}</a>].<br/>";
-        //$msg .= "Причину отмены сделки вы можете узнать у работодателя.";
+        //$msg  = "РРЅС„РѕСЂРјРёСЂСѓРµРј Р’Р°СЃ Рѕ С‚РѕРј, С‡С‚Рѕ РїСЂРѕРµРєС‚ В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>В» РѕС‚РјРµРЅРµРЅ Р—Р°РєР°Р·С‡РёРєРѕРј <a href=\"{$userlink}\">{$ev0['e_uname']} {$ev0['e_usurname']}</a> [<a href=\"{$userlink}\">{$ev0['e_login']}</a>].<br/>";
+        //$msg .= "РџСЂРёС‡РёРЅСѓ РѕС‚РјРµРЅС‹ СЃРґРµР»РєРё РІС‹ РјРѕР¶РµС‚Рµ СѓР·РЅР°С‚СЊ Сѓ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ.";
         
         $this->message = $this->splitMessage($this->GetHtml($ev0['f_uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
         $this->recipient = $ev0['f_uname']." ".$ev0['f_usurname']." [".$ev0['f_login']."] <".$ev0['f_email'].">";
@@ -2710,21 +2710,21 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Уведомление обоим участникам об отмене арбитража (заявки в арбитраж).
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ РѕР±РѕРёРј СѓС‡Р°СЃС‚РЅРёРєР°Рј РѕР± РѕС‚РјРµРЅРµ Р°СЂР±РёС‚СЂР°Р¶Р° (Р·Р°СЏРІРєРё РІ Р°СЂР±РёС‚СЂР°Р¶).
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrArbCanceled($events) {
         $ev0 = $events[0];
         $url = $GLOBALS['host'].'/' . sbr::NEW_TEMPLATE_SBR . '/';
-        $this->subject = "Арбитраж по Безопасной Сделке отменен";
+        $this->subject = "РђСЂР±РёС‚СЂР°Р¶ РїРѕ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµ РѕС‚РјРµРЅРµРЅ";
         for($e=0;$e<2;$e++) {
             $sbr_name = sbr_meta::getNameForMail($ev0, 'sbr');
             $stage_name = sbr_meta::getNameForMail($ev0);
-            $sbr_link = "задаче «<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($e ? 'e' : 'f', '&')}'>{$stage_name}</a>» в проекте «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams($e ? 'e' : 'f', '&')}'>{$sbr_name}</a>»";
+            $sbr_link = "Р·Р°РґР°С‡Рµ В«<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($e ? 'e' : 'f', '&')}'>{$stage_name}</a>В» РІ РїСЂРѕРµРєС‚Рµ В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams($e ? 'e' : 'f', '&')}'>{$sbr_name}</a>В»";
             $r = $e ? 'e_' : 'f_';
-            $msg = "Арбитраж по {$sbr_link} был отменен.<br/><br/>
-              Статус задачи автоматически изменился на «В разработке». 
-              Вы можете узнать более подробно о статусах Безопасной Сделки в <a href='https://feedback.fl.ru/{$this->_addUrlParams($e ? 'e' : 'f', '?')}'>соответствующем разделе «Помощи»</a>.";
+            $msg = "РђСЂР±РёС‚СЂР°Р¶ РїРѕ {$sbr_link} Р±С‹Р» РѕС‚РјРµРЅРµРЅ.<br/><br/>
+              РЎС‚Р°С‚СѓСЃ Р·Р°РґР°С‡Рё Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РёР·РјРµРЅРёР»СЃСЏ РЅР° В«Р’ СЂР°Р·СЂР°Р±РѕС‚РєРµВ». 
+              Р’С‹ РјРѕР¶РµС‚Рµ СѓР·РЅР°С‚СЊ Р±РѕР»РµРµ РїРѕРґСЂРѕР±РЅРѕ Рѕ СЃС‚Р°С‚СѓСЃР°С… Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё РІ <a href='https://feedback.fl.ru/{$this->_addUrlParams($e ? 'e' : 'f', '?')}'>СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРј СЂР°Р·РґРµР»Рµ В«РџРѕРјРѕС‰РёВ»</a>.";
             $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
             $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
             $this->SmtpMail('text/html');
@@ -2732,26 +2732,26 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Уведомление обоим участникам о завершении всей СБР.
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ РѕР±РѕРёРј СѓС‡Р°СЃС‚РЅРёРєР°Рј Рѕ Р·Р°РІРµСЂС€РµРЅРёРё РІСЃРµР№ РЎР‘Р .
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrCompleted($events) {
         $ev0 = $events[0];
         $url = $GLOBALS['host'].'/' . sbr::NEW_TEMPLATE_SBR . '/';
-        $this->subject = "Безопасная Сделка по проекту «{$ev0['sbr_name']}» завершена";
+        $this->subject = "Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР° РїРѕ РїСЂРѕРµРєС‚Сѓ В«{$ev0['sbr_name']}В» Р·Р°РІРµСЂС€РµРЅР°";
         for($e=0;$e<2;$e++) {
             $sbr_name = sbr_meta::getNameForMail($ev0, 'sbr');
-            $sbr_link = " «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams($e ? 'e' : 'f', '&')}'>{$sbr_name}</a>»";
+            $sbr_link = " В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams($e ? 'e' : 'f', '&')}'>{$sbr_name}</a>В»";
             $r = $e ? 'e_' : 'f_';
             $f = $e ? 'simple' : 'norisk_robot';
-            $w = $e ? 'фрилансеру' : 'заказчику';
+            $w = $e ? 'С„СЂРёР»Р°РЅСЃРµСЂСѓ' : 'Р·Р°РєР°Р·С‡РёРєСѓ';
             $msg = "
-              Безопасная Сделка по проекту {$sbr_link} " .($e?"":"полностью")." завершена.<br/><br/>
-              Пожалуйста, не забудьте оставить отзывы {$w}. 
-              Вы можете получить подробную информацию по <a href='https://feedback.fl.ru/{$this->_addUrlParams($e ? 'e' : 'f', '?')}'>завершению Безопасной Сделки</a>.
+              Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР° РїРѕ РїСЂРѕРµРєС‚Сѓ {$sbr_link} " .($e?"":"РїРѕР»РЅРѕСЃС‚СЊСЋ")." Р·Р°РІРµСЂС€РµРЅР°.<br/><br/>
+              РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РЅРµ Р·Р°Р±СѓРґСЊС‚Рµ РѕСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІС‹ {$w}. 
+              Р’С‹ РјРѕР¶РµС‚Рµ РїРѕР»СѓС‡РёС‚СЊ РїРѕРґСЂРѕР±РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ РїРѕ <a href='https://feedback.fl.ru/{$this->_addUrlParams($e ? 'e' : 'f', '?')}'>Р·Р°РІРµСЂС€РµРЅРёСЋ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё</a>.
               <br/><br/>              
             ";
-            $msg .= $e? "Благодарим вас за использование сервиса Безопасная Сделка. Надеемся, что вы остались довольны!" : "";  
+            $msg .= $e? "Р‘Р»Р°РіРѕРґР°СЂРёРј РІР°СЃ Р·Р° РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ СЃРµСЂРІРёСЃР° Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°. РќР°РґРµРµРјСЃСЏ, С‡С‚Рѕ РІС‹ РѕСЃС‚Р°Р»РёСЃСЊ РґРѕРІРѕР»СЊРЅС‹!" : "";  
             $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>$f)));
             $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
             $this->SmtpMail('text/html');
@@ -2759,7 +2759,7 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Уведомление для подряда о подписанных документах
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ РґР»СЏ РїРѕРґСЂСЏРґР° Рѕ РїРѕРґРїРёСЃР°РЅРЅС‹С… РґРѕРєСѓРјРµРЅС‚Р°С…
      * 
      */
     function SbrStageCompleted($events) {
@@ -2775,7 +2775,7 @@ $sObjEntity: $sObjLink<br />
             $sbr->getDocs();
             $r   = 'f_';
             
-            $this->subject = "Необходимо прислать подписанные документы (проект «{$ev0['sbr_name']}»)";
+            $this->subject = "РќРµРѕР±С…РѕРґРёРјРѕ РїСЂРёСЃР»Р°С‚СЊ РїРѕРґРїРёСЃР°РЅРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹ (РїСЂРѕРµРєС‚ В«{$ev0['sbr_name']}В»)";
             foreach($stage->sbr->docs as $hdoc) {
                 if( $hdoc['type'] == sbr::DOCS_TYPE_ACT || $hdoc['type'] == sbr::DOCS_TYPE_FM_APPL || 
                     $hdoc['type'] == sbr::DOCS_TYPE_WM_APPL || $hdoc['type'] == sbr::DOCS_TYPE_YM_APPL ||
@@ -2785,20 +2785,20 @@ $sObjEntity: $sObjLink<br />
             }
             $hdoc_cnt = count($head_docs);    
             $stage_name = sbr_meta::getNameForMail($ev0);
-            $msg  = "Вы успешно завершили Сделку «<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>{$stage_name}</a>».<br/><br/>";
-            $msg .= "Для получения оплаты Вам необходимо скачать, распечатать в двух экземплярах и подписать данные " . ending($hdoc_cnt, 'документ', 'документы', 'документы') . ":<br/>";
+            $msg  = "Р’С‹ СѓСЃРїРµС€РЅРѕ Р·Р°РІРµСЂС€РёР»Рё РЎРґРµР»РєСѓ В«<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>{$stage_name}</a>В».<br/><br/>";
+            $msg .= "Р”Р»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РѕРїР»Р°С‚С‹ Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ СЃРєР°С‡Р°С‚СЊ, СЂР°СЃРїРµС‡Р°С‚Р°С‚СЊ РІ РґРІСѓС… СЌРєР·РµРјРїР»СЏСЂР°С… Рё РїРѕРґРїРёСЃР°С‚СЊ РґР°РЅРЅС‹Рµ " . ending($hdoc_cnt, 'РґРѕРєСѓРјРµРЅС‚', 'РґРѕРєСѓРјРµРЅС‚С‹', 'РґРѕРєСѓРјРµРЅС‚С‹') . ":<br/>";
 
             foreach($head_docs as $hdoc) {
                 $msg .= "<a href='". WDCPREFIX . "/{$hdoc['file_path']} {$hdoc['file_name']}' class='b-layout__link'> {$hdoc['name']}</a>, " . ConvertBtoMB($hdoc['file_size']);
             }
             $msg .= "<br/><br/>";
-            $msg .= "Подписанные документы необходимо в оригиналах отправить на любой удобный вам адрес из списка:<br/>";
-            $msg .= "- 129223, Москва, а/я 33;<br/>"; 
-            $msg .= "- 190031, Санкт-Петербург, Сенная пл., д.13/52, а/я 427;<br/>";
-            $msg .= "- 420032, Казань, а/я 624;<br/>";
-            $msg .= "- 454014, Челябинск - 14, а/я 2710.<br/><br/>";
-            $msg .= "Обязательно укажите наименование организации-получателя в поле «Кому» на конверте - ООО \"ВААН\".<br/><br/>"; 
-            $msg .= "Время доставки документов зависит от работы выбранной Вами почтовой службы и Вашей удаленности от адреса доставки. При значительной задержке в доставки рекомендуем Вам обратиться в <a href='https://feedback.fl.ru/'>службу поддержки</a>.";
+            $msg .= "РџРѕРґРїРёСЃР°РЅРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹ РЅРµРѕР±С…РѕРґРёРјРѕ РІ РѕСЂРёРіРёРЅР°Р»Р°С… РѕС‚РїСЂР°РІРёС‚СЊ РЅР° Р»СЋР±РѕР№ СѓРґРѕР±РЅС‹Р№ РІР°Рј Р°РґСЂРµСЃ РёР· СЃРїРёСЃРєР°:<br/>";
+            $msg .= "- 129223, РњРѕСЃРєРІР°, Р°/СЏ 33;<br/>"; 
+            $msg .= "- 190031, РЎР°РЅРєС‚-РџРµС‚РµСЂР±СѓСЂРі, РЎРµРЅРЅР°СЏ РїР»., Рґ.13/52, Р°/СЏ 427;<br/>";
+            $msg .= "- 420032, РљР°Р·Р°РЅСЊ, Р°/СЏ 624;<br/>";
+            $msg .= "- 454014, Р§РµР»СЏР±РёРЅСЃРє - 14, Р°/СЏ 2710.<br/><br/>";
+            $msg .= "РћР±СЏР·Р°С‚РµР»СЊРЅРѕ СѓРєР°Р¶РёС‚Рµ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё-РїРѕР»СѓС‡Р°С‚РµР»СЏ РІ РїРѕР»Рµ В«РљРѕРјСѓВ» РЅР° РєРѕРЅРІРµСЂС‚Рµ - РћРћРћ \"Р’РђРђРќ\".<br/><br/>"; 
+            $msg .= "Р’СЂРµРјСЏ РґРѕСЃС‚Р°РІРєРё РґРѕРєСѓРјРµРЅС‚РѕРІ Р·Р°РІРёСЃРёС‚ РѕС‚ СЂР°Р±РѕС‚С‹ РІС‹Р±СЂР°РЅРЅРѕР№ Р’Р°РјРё РїРѕС‡С‚РѕРІРѕР№ СЃР»СѓР¶Р±С‹ Рё Р’Р°С€РµР№ СѓРґР°Р»РµРЅРЅРѕСЃС‚Рё РѕС‚ Р°РґСЂРµСЃР° РґРѕСЃС‚Р°РІРєРё. РџСЂРё Р·РЅР°С‡РёС‚РµР»СЊРЅРѕР№ Р·Р°РґРµСЂР¶РєРµ РІ РґРѕСЃС‚Р°РІРєРё СЂРµРєРѕРјРµРЅРґСѓРµРј Р’Р°Рј РѕР±СЂР°С‚РёС‚СЊСЃСЏ РІ <a href='https://feedback.fl.ru/'>СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.";
 
             $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
             $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
@@ -2806,7 +2806,7 @@ $sObjEntity: $sObjLink<br />
         } else if(( $stage->sbr->scheme_type == sbr::SCHEME_PDRD || $stage->sbr->scheme_type == sbr::SCHEME_PDRD2 ) && $ev0['own_role'] == sbr::EVROLE_FRL && $stage->status == sbr_stages::STATUS_ARBITRAGED) {
             $sbr->getDocs();
             $r   = 'f_';
-            $this->subject = "Необходимо прислать подписанные документы (проект «{$ev0['sbr_name']}»)";
+            $this->subject = "РќРµРѕР±С…РѕРґРёРјРѕ РїСЂРёСЃР»Р°С‚СЊ РїРѕРґРїРёСЃР°РЅРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹ (РїСЂРѕРµРєС‚ В«{$ev0['sbr_name']}В»)";
             foreach($stage->sbr->docs as $hdoc) {
                 if( $hdoc['type'] == sbr::DOCS_TYPE_ACT || $hdoc['type'] == sbr::DOCS_TYPE_FM_APPL || 
                     $hdoc['type'] == sbr::DOCS_TYPE_WM_APPL || $hdoc['type'] == sbr::DOCS_TYPE_YM_APPL ||
@@ -2815,27 +2815,27 @@ $sObjEntity: $sObjLink<br />
                 }
             }
             $stage_name = sbr_meta::getNameForMail($ev0);
-            $msg .= "Информируем вас о том, что для получения вашего гонорара по Сделке «<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>{$stage_name}</a>»  в соответствии с решением Арбитража, вам необходимо скачать, распечатать в двух экземплярах и подписать данные документы:<br/>";
+            $msg .= "РРЅС„РѕСЂРјРёСЂСѓРµРј РІР°СЃ Рѕ С‚РѕРј, С‡С‚Рѕ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РІР°С€РµРіРѕ РіРѕРЅРѕСЂР°СЂР° РїРѕ РЎРґРµР»РєРµ В«<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>{$stage_name}</a>В»  РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ СЂРµС€РµРЅРёРµРј РђСЂР±РёС‚СЂР°Р¶Р°, РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ СЃРєР°С‡Р°С‚СЊ, СЂР°СЃРїРµС‡Р°С‚Р°С‚СЊ РІ РґРІСѓС… СЌРєР·РµРјРїР»СЏСЂР°С… Рё РїРѕРґРїРёСЃР°С‚СЊ РґР°РЅРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹:<br/>";
             foreach($head_docs as $hdoc) {
                 $msg .= "<a href='". WDCPREFIX . "/{$hdoc['file_path']} {$hdoc['file_name']}' class='b-layout__link'> {$hdoc['name']}</a>, " . ConvertBtoMB($hdoc['file_size']);
             }
             $msg .= "<br/><br/>";
-            $msg .= "Подписанные документы необходимо в оригиналах отправить на любой удобный вам адрес из списка:<br/>";
-            $msg .= "- 129223, Москва, а/я 33;<br/>"; 
-            $msg .= "- 190031, Санкт-Петербург, Сенная пл., д.13/52, а/я 427;<br/>";
-            $msg .= "- 420032, Казань, а/я 624;<br/>";
-            $msg .= "- 454014, Челябинск - 14, а/я 2710.<br/><br/>";
-            $msg .= "Обязательно укажите наименование организации-получателя в поле «Кому» на конверте - ООО \"ВААН\".<br/><br/>";
+            $msg .= "РџРѕРґРїРёСЃР°РЅРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹ РЅРµРѕР±С…РѕРґРёРјРѕ РІ РѕСЂРёРіРёРЅР°Р»Р°С… РѕС‚РїСЂР°РІРёС‚СЊ РЅР° Р»СЋР±РѕР№ СѓРґРѕР±РЅС‹Р№ РІР°Рј Р°РґСЂРµСЃ РёР· СЃРїРёСЃРєР°:<br/>";
+            $msg .= "- 129223, РњРѕСЃРєРІР°, Р°/СЏ 33;<br/>"; 
+            $msg .= "- 190031, РЎР°РЅРєС‚-РџРµС‚РµСЂР±СѓСЂРі, РЎРµРЅРЅР°СЏ РїР»., Рґ.13/52, Р°/СЏ 427;<br/>";
+            $msg .= "- 420032, РљР°Р·Р°РЅСЊ, Р°/СЏ 624;<br/>";
+            $msg .= "- 454014, Р§РµР»СЏР±РёРЅСЃРє - 14, Р°/СЏ 2710.<br/><br/>";
+            $msg .= "РћР±СЏР·Р°С‚РµР»СЊРЅРѕ СѓРєР°Р¶РёС‚Рµ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё-РїРѕР»СѓС‡Р°С‚РµР»СЏ РІ РїРѕР»Рµ В«РљРѕРјСѓВ» РЅР° РєРѕРЅРІРµСЂС‚Рµ - РћРћРћ \"Р’РђРђРќ\".<br/><br/>";
             
             $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
             $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
             $this->SmtpMail('text/html');
         } elseif($stage->sbr->scheme_type == sbr::SCHEME_LC) {
             $stage_name = sbr_meta::getNameForMail($ev0);
-            $this->subject = "Безопасная Сделка по проекту «{$ev0['sbr_name']}» завершена";
+            $this->subject = "Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР° РїРѕ РїСЂРѕРµРєС‚Сѓ В«{$ev0['sbr_name']}В» Р·Р°РІРµСЂС€РµРЅР°";
             $endDate = date('d.m.Y', strtotime($sbr->data['dateEndLC']));
-            $msg  = "Безопасная Сделка <a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>{$stage_name}</a> завершена. Для того, чтобы получить заработанные деньги, вам необходимо отправить документы в банк путем нажатия на кнопку «Завершить этап».<br/><br/>";
-            $msg .= "Обратите внимание, что завершить этап необходимо до того, как истечет срок действия аккредитива (до {$endDate}). В противном случае денежные средства будут возвращены Заказчику.";
+            $msg  = "Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР° <a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>{$stage_name}</a> Р·Р°РІРµСЂС€РµРЅР°. Р”Р»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ Р·Р°СЂР°Р±РѕС‚Р°РЅРЅС‹Рµ РґРµРЅСЊРіРё, РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РѕС‚РїСЂР°РІРёС‚СЊ РґРѕРєСѓРјРµРЅС‚С‹ РІ Р±Р°РЅРє РїСѓС‚РµРј РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ В«Р—Р°РІРµСЂС€РёС‚СЊ СЌС‚Р°РїВ».<br/><br/>";
+            $msg .= "РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ, С‡С‚Рѕ Р·Р°РІРµСЂС€РёС‚СЊ СЌС‚Р°Рї РЅРµРѕР±С…РѕРґРёРјРѕ РґРѕ С‚РѕРіРѕ, РєР°Рє РёСЃС‚РµС‡РµС‚ СЃСЂРѕРє РґРµР№СЃС‚РІРёСЏ Р°РєРєСЂРµРґРёС‚РёРІР° (РґРѕ {$endDate}). Р’ РїСЂРѕС‚РёРІРЅРѕРј СЃР»СѓС‡Р°Рµ РґРµРЅРµР¶РЅС‹Рµ СЃСЂРµРґСЃС‚РІР° Р±СѓРґСѓС‚ РІРѕР·РІСЂР°С‰РµРЅС‹ Р—Р°РєР°Р·С‡РёРєСѓ.";
             $r = 'f_';
             $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
             $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
@@ -2844,7 +2844,7 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Уведомление о получении подпсанных документов
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ Рѕ РїРѕР»СѓС‡РµРЅРёРё РїРѕРґРїСЃР°РЅРЅС‹С… РґРѕРєСѓРјРµРЅС‚РѕРІ
      * 
      * @param type $events 
      */
@@ -2860,10 +2860,10 @@ $sObjEntity: $sObjLink<br />
         if($stage->sbr->scheme_type == sbr::SCHEME_PDRD || $stage->sbr->scheme_type == sbr::SCHEME_PDRD2) {
             $r == 'f_';
             
-            $this->subject = "Мы получили подписанные вами документы (проект «{$ev0['sbr_name']}»)";
+            $this->subject = "РњС‹ РїРѕР»СѓС‡РёР»Рё РїРѕРґРїРёСЃР°РЅРЅС‹Рµ РІР°РјРё РґРѕРєСѓРјРµРЅС‚С‹ (РїСЂРѕРµРєС‚ В«{$ev0['sbr_name']}В»)";
              
-            $msg  = "Мы получили подписанные Вами документы.<br/><br/>";
-            $msg .= "Деньги будут переведены вам в течение 1-2 рабочих дней. В случае задержки рекомендуем Вам обратиться в <a href='https://feedback.fl.ru/'>службу поддержки</a>.";
+            $msg  = "РњС‹ РїРѕР»СѓС‡РёР»Рё РїРѕРґРїРёСЃР°РЅРЅС‹Рµ Р’Р°РјРё РґРѕРєСѓРјРµРЅС‚С‹.<br/><br/>";
+            $msg .= "Р”РµРЅСЊРіРё Р±СѓРґСѓС‚ РїРµСЂРµРІРµРґРµРЅС‹ РІР°Рј РІ С‚РµС‡РµРЅРёРµ 1-2 СЂР°Р±РѕС‡РёС… РґРЅРµР№. Р’ СЃР»СѓС‡Р°Рµ Р·Р°РґРµСЂР¶РєРё СЂРµРєРѕРјРµРЅРґСѓРµРј Р’Р°Рј РѕР±СЂР°С‚РёС‚СЊСЃСЏ РІ <a href='https://feedback.fl.ru/'>СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.";
             
             $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
             $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
@@ -2872,7 +2872,7 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Отсылаем уведомление фрилансеру о том что сделка просрочена
+     * РћС‚СЃС‹Р»Р°РµРј СѓРІРµРґРѕРјР»РµРЅРёРµ С„СЂРёР»Р°РЅСЃРµСЂСѓ Рѕ С‚РѕРј С‡С‚Рѕ СЃРґРµР»РєР° РїСЂРѕСЃСЂРѕС‡РµРЅР°
      * 
      * @param type $events 
      */
@@ -2884,18 +2884,18 @@ $sObjEntity: $sObjLink<br />
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/sbr.php';
         $sbr = sbr_meta::getInstanceLocal($ev0['f_uid']);
         $sbr_name = sbr_meta::getNameForMail($ev0, 'sbr');
-        $this->subject = "Время на этап сделки {$sbr_name} истекло. Посетите раздел «Мои Сделки» ";// Этап «Сделки без риска» {$sbr_name} завершен. Посетите раздел «Мои СБР» на FL.ru.)";
+        $this->subject = "Р’СЂРµРјСЏ РЅР° СЌС‚Р°Рї СЃРґРµР»РєРё {$sbr_name} РёСЃС‚РµРєР»Рѕ. РџРѕСЃРµС‚РёС‚Рµ СЂР°Р·РґРµР» В«РњРѕРё РЎРґРµР»РєРёВ» ";// Р­С‚Р°Рї В«РЎРґРµР»РєРё Р±РµР· СЂРёСЃРєР°В» {$sbr_name} Р·Р°РІРµСЂС€РµРЅ. РџРѕСЃРµС‚РёС‚Рµ СЂР°Р·РґРµР» В«РњРѕРё РЎР‘Р В» РЅР° FL.ru.)";
         
-        $fmsg  = "{$ev0[$r.'uname']}, время, отведенное заказчиком на выполнение <a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>этапа</a> Безопасной Сделки <a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>, истекло. Вам необходимо передать заказчику выполненную работу (если необходимо передать файлы, опубликуйте их в комментариях к сделке). <br/><br/>";
-        $fmsg .= "<i>Обратите внимание</i>: если за 2 рабочих дня заказчик не примет работу и не выйдет на связь, вам необходимо обратиться в арбитраж в срок  не позднее чем  5 рабочих дней с даты завершения этапа. В противном случае зарезервированные под сделку деньги будут возвращены заказчику, и вы не получите заработанные денежные средства.";
+        $fmsg  = "{$ev0[$r.'uname']}, РІСЂРµРјСЏ, РѕС‚РІРµРґРµРЅРЅРѕРµ Р·Р°РєР°Р·С‡РёРєРѕРј РЅР° РІС‹РїРѕР»РЅРµРЅРёРµ <a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>СЌС‚Р°РїР°</a> Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё <a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>, РёСЃС‚РµРєР»Рѕ. Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµРґР°С‚СЊ Р·Р°РєР°Р·С‡РёРєСѓ РІС‹РїРѕР»РЅРµРЅРЅСѓСЋ СЂР°Р±РѕС‚Сѓ (РµСЃР»Рё РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµРґР°С‚СЊ С„Р°Р№Р»С‹, РѕРїСѓР±Р»РёРєСѓР№С‚Рµ РёС… РІ РєРѕРјРјРµРЅС‚Р°СЂРёСЏС… Рє СЃРґРµР»РєРµ). <br/><br/>";
+        $fmsg .= "<i>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ</i>: РµСЃР»Рё Р·Р° 2 СЂР°Р±РѕС‡РёС… РґРЅСЏ Р·Р°РєР°Р·С‡РёРє РЅРµ РїСЂРёРјРµС‚ СЂР°Р±РѕС‚Сѓ Рё РЅРµ РІС‹Р№РґРµС‚ РЅР° СЃРІСЏР·СЊ, РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РѕР±СЂР°С‚РёС‚СЊСЃСЏ РІ Р°СЂР±РёС‚СЂР°Р¶ РІ СЃСЂРѕРє  РЅРµ РїРѕР·РґРЅРµРµ С‡РµРј  5 СЂР°Р±РѕС‡РёС… РґРЅРµР№ СЃ РґР°С‚С‹ Р·Р°РІРµСЂС€РµРЅРёСЏ СЌС‚Р°РїР°. Р’ РїСЂРѕС‚РёРІРЅРѕРј СЃР»СѓС‡Р°Рµ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРЅС‹Рµ РїРѕРґ СЃРґРµР»РєСѓ РґРµРЅСЊРіРё Р±СѓРґСѓС‚ РІРѕР·РІСЂР°С‰РµРЅС‹ Р·Р°РєР°Р·С‡РёРєСѓ, Рё РІС‹ РЅРµ РїРѕР»СѓС‡РёС‚Рµ Р·Р°СЂР°Р±РѕС‚Р°РЅРЅС‹Рµ РґРµРЅРµР¶РЅС‹Рµ СЃСЂРµРґСЃС‚РІР°.";
         
         $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $fmsg, array('header'=>'simple', 'footer'=>'norisk_robot')));
         $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
         $this->SmtpMail('text/html');
         
         $r = 'e_';
-        $emsg  = "{$ev0[$r.'uname']}, время, отведенное вами на выполнение <a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>этапа</a> Безопасной Сделки <a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>, истекло. Вам необходимо принять результат работы, предоставленный исполнителем. Если вы не удовлетворены результатом работы и нашли несоответствия работы поставленному вами техническому заданию, а также в том случае, если работа исполнителем не была предоставлена, обратитесь в арбитраж. <br/><br/>";
-        $emsg .= "<i>Обратите внимание</i>: если возникла спорная ситуация, вам необходимо подать жалобу в арбитраж в течение 5 рабочих дней с момента завершения этапа. По истечении этого срока возможности обратиться в арбитраж уже не будет.";
+        $emsg  = "{$ev0[$r.'uname']}, РІСЂРµРјСЏ, РѕС‚РІРµРґРµРЅРЅРѕРµ РІР°РјРё РЅР° РІС‹РїРѕР»РЅРµРЅРёРµ <a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>СЌС‚Р°РїР°</a> Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё <a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>, РёСЃС‚РµРєР»Рѕ. Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РїСЂРёРЅСЏС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚ СЂР°Р±РѕС‚С‹, РїСЂРµРґРѕСЃС‚Р°РІР»РµРЅРЅС‹Р№ РёСЃРїРѕР»РЅРёС‚РµР»РµРј. Р•СЃР»Рё РІС‹ РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂРµРЅС‹ СЂРµР·СѓР»СЊС‚Р°С‚РѕРј СЂР°Р±РѕС‚С‹ Рё РЅР°С€Р»Рё РЅРµСЃРѕРѕС‚РІРµС‚СЃС‚РІРёСЏ СЂР°Р±РѕС‚С‹ РїРѕСЃС‚Р°РІР»РµРЅРЅРѕРјСѓ РІР°РјРё С‚РµС…РЅРёС‡РµСЃРєРѕРјСѓ Р·Р°РґР°РЅРёСЋ, Р° С‚Р°РєР¶Рµ РІ С‚РѕРј СЃР»СѓС‡Р°Рµ, РµСЃР»Рё СЂР°Р±РѕС‚Р° РёСЃРїРѕР»РЅРёС‚РµР»РµРј РЅРµ Р±С‹Р»Р° РїСЂРµРґРѕСЃС‚Р°РІР»РµРЅР°, РѕР±СЂР°С‚РёС‚РµСЃСЊ РІ Р°СЂР±РёС‚СЂР°Р¶. <br/><br/>";
+        $emsg .= "<i>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ</i>: РµСЃР»Рё РІРѕР·РЅРёРєР»Р° СЃРїРѕСЂРЅР°СЏ СЃРёС‚СѓР°С†РёСЏ, РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РїРѕРґР°С‚СЊ Р¶Р°Р»РѕР±Сѓ РІ Р°СЂР±РёС‚СЂР°Р¶ РІ С‚РµС‡РµРЅРёРµ 5 СЂР°Р±РѕС‡РёС… РґРЅРµР№ СЃ РјРѕРјРµРЅС‚Р° Р·Р°РІРµСЂС€РµРЅРёСЏ СЌС‚Р°РїР°. РџРѕ РёСЃС‚РµС‡РµРЅРёРё СЌС‚РѕРіРѕ СЃСЂРѕРєР° РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РѕР±СЂР°С‚РёС‚СЊСЃСЏ РІ Р°СЂР±РёС‚СЂР°Р¶ СѓР¶Рµ РЅРµ Р±СѓРґРµС‚.";
         
         $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $emsg, array('header'=>'simple', 'footer'=>'norisk_robot')));
         $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
@@ -2903,7 +2903,7 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Уведомление о том что пауза была удалена тк исполнител ее не подтвердил
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ Рѕ С‚РѕРј С‡С‚Рѕ РїР°СѓР·Р° Р±С‹Р»Р° СѓРґР°Р»РµРЅР° С‚Рє РёСЃРїРѕР»РЅРёС‚РµР» РµРµ РЅРµ РїРѕРґС‚РІРµСЂРґРёР»
      * 
      * @param array $events
      */
@@ -2914,8 +2914,8 @@ $sObjEntity: $sObjLink<br />
         $sbr_name   = sbr_meta::getNameForMail($ev0, 'sbr');
         $stage_name = sbr_meta::getNameForMail($ev0);
         
-        $this->subject = "Срок паузы в сделке «{$sbr_name}» истек";
-        $msg = "Истек срок подтверждения паузы, ранее предложенной в этапе «<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>{$stage_name}</a>» проекта «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>». Пауза отменена, вы можете продолжить работу в сделке в обычном режиме.";
+        $this->subject = "РЎСЂРѕРє РїР°СѓР·С‹ РІ СЃРґРµР»РєРµ В«{$sbr_name}В» РёСЃС‚РµРє";
+        $msg = "РСЃС‚РµРє СЃСЂРѕРє РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ РїР°СѓР·С‹, СЂР°РЅРµРµ РїСЂРµРґР»РѕР¶РµРЅРЅРѕР№ РІ СЌС‚Р°РїРµ В«<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>{$stage_name}</a>В» РїСЂРѕРµРєС‚Р° В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>В». РџР°СѓР·Р° РѕС‚РјРµРЅРµРЅР°, РІС‹ РјРѕР¶РµС‚Рµ РїСЂРѕРґРѕР»Р¶РёС‚СЊ СЂР°Р±РѕС‚Сѓ РІ СЃРґРµР»РєРµ РІ РѕР±С‹С‡РЅРѕРј СЂРµР¶РёРјРµ.";
         $r = 'f_';
         $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
         $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
@@ -2928,7 +2928,7 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Уведомление о том что пауза была завершена
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ Рѕ С‚РѕРј С‡С‚Рѕ РїР°СѓР·Р° Р±С‹Р»Р° Р·Р°РІРµСЂС€РµРЅР°
      * 
      * @param array $events
      */
@@ -2939,8 +2939,8 @@ $sObjEntity: $sObjLink<br />
         $sbr_name   = sbr_meta::getNameForMail($ev0, 'sbr');
         $stage_name = sbr_meta::getNameForMail($ev0);
         
-        $this->subject = "Срок паузы в сделке «{$sbr_name}» завершен";
-        $msg = "Истек срок паузы, ранее установленной в этапе «<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>{$stage_name}</a>» проекта «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>». Данный этап автоматически возвращен в рабочий режим, статус этапа изменился на «В работе».";
+        $this->subject = "РЎСЂРѕРє РїР°СѓР·С‹ РІ СЃРґРµР»РєРµ В«{$sbr_name}В» Р·Р°РІРµСЂС€РµРЅ";
+        $msg = "РСЃС‚РµРє СЃСЂРѕРє РїР°СѓР·С‹, СЂР°РЅРµРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅРЅРѕР№ РІ СЌС‚Р°РїРµ В«<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>{$stage_name}</a>В» РїСЂРѕРµРєС‚Р° В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>В». Р”Р°РЅРЅС‹Р№ СЌС‚Р°Рї Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РІРѕР·РІСЂР°С‰РµРЅ РІ СЂР°Р±РѕС‡РёР№ СЂРµР¶РёРј, СЃС‚Р°С‚СѓСЃ СЌС‚Р°РїР° РёР·РјРµРЅРёР»СЃСЏ РЅР° В«Р’ СЂР°Р±РѕС‚РµВ».";
         $r = 'f_';
         $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
         $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
@@ -2953,7 +2953,7 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Произведена выплата гонорара.
+     * РџСЂРѕРёР·РІРµРґРµРЅР° РІС‹РїР»Р°С‚Р° РіРѕРЅРѕСЂР°СЂР°.
      * @param type $events 
      */
     function SbrMoneyPaidFrl($events) {
@@ -2967,14 +2967,14 @@ $sObjEntity: $sObjLink<br />
         $arb   = $stage->getArbitrage();
         $type_payment = exrates::getNameExrates($stage->type_payment);
         
-        $this->subject = "Произведена выплата гонорара (проект «{$ev0['sbr_name']}»)";
+        $this->subject = "РџСЂРѕРёР·РІРµРґРµРЅР° РІС‹РїР»Р°С‚Р° РіРѕРЅРѕСЂР°СЂР° (РїСЂРѕРµРєС‚ В«{$ev0['sbr_name']}В»)";
         $sbr_name = sbr_meta::getNameForMail($ev0, 'sbr');
         if($stage->status == sbr_stages::STATUS_ARBITRAGED && (int) $arb['frl_percent'] != 1) {
-            $msg  = "Информируем вас о том, что частичная выплата гонорара в Сделке «<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>» произведена (в соответствии с решением Арбитража).<br/><br/>";
+            $msg  = "РРЅС„РѕСЂРјРёСЂСѓРµРј РІР°СЃ Рѕ С‚РѕРј, С‡С‚Рѕ С‡Р°СЃС‚РёС‡РЅР°СЏ РІС‹РїР»Р°С‚Р° РіРѕРЅРѕСЂР°СЂР° РІ РЎРґРµР»РєРµ В«<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>В» РїСЂРѕРёР·РІРµРґРµРЅР° (РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ СЂРµС€РµРЅРёРµРј РђСЂР±РёС‚СЂР°Р¶Р°).<br/><br/>";
         } else {
-            $msg  = "Информируем вас о том, что в Сделке «<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>» вам был произведен перевод гонорара в сумме " . sbr_meta::view_cost($stage->getPayoutSum(sbr::FRL), $stage->sbr->cost_sys) . " на указанные вами реквизиты.<br/><br/>";
+            $msg  = "РРЅС„РѕСЂРјРёСЂСѓРµРј РІР°СЃ Рѕ С‚РѕРј, С‡С‚Рѕ РІ РЎРґРµР»РєРµ В«<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>В» РІР°Рј Р±С‹Р» РїСЂРѕРёР·РІРµРґРµРЅ РїРµСЂРµРІРѕРґ РіРѕРЅРѕСЂР°СЂР° РІ СЃСѓРјРјРµ " . sbr_meta::view_cost($stage->getPayoutSum(sbr::FRL), $stage->sbr->cost_sys) . " РЅР° СѓРєР°Р·Р°РЅРЅС‹Рµ РІР°РјРё СЂРµРєРІРёР·РёС‚С‹.<br/><br/>";
         }
-        $msg .= "Зачисление средств на ваш личный счет может занять некоторое время (от нескольких минут до нескольких дней в зависимости от способа выплаты).";
+        $msg .= "Р—Р°С‡РёСЃР»РµРЅРёРµ СЃСЂРµРґСЃС‚РІ РЅР° РІР°С€ Р»РёС‡РЅС‹Р№ СЃС‡РµС‚ РјРѕР¶РµС‚ Р·Р°РЅСЏС‚СЊ РЅРµРєРѕС‚РѕСЂРѕРµ РІСЂРµРјСЏ (РѕС‚ РЅРµСЃРєРѕР»СЊРєРёС… РјРёРЅСѓС‚ РґРѕ РЅРµСЃРєРѕР»СЊРєРёС… РґРЅРµР№ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЃРїРѕСЃРѕР±Р° РІС‹РїР»Р°С‚С‹).";
         
         $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
         $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
@@ -2988,11 +2988,11 @@ $sObjEntity: $sObjLink<br />
             $single_send = new single_send($user);
             
             if( !$single_send->is_send(single_send::NOTICE_WEBM) ) {
-                $msg  = "Немного о том, для чего нужен Веб-кошелек: <a href='http://webpay.pscb.ru/login/auth' target='_blank'>Веб-кошелек Петербургского Социального  Коммерческого Банка (ПСКБ)</a> – это платежная система для мгновенной оплаты различных услуг и осуществления банковских переводов через интернет. При работе через «Безопасную Сделку» Веб-кошелек используется для резервирования и возврата денег заказчику, а также для выплаты гонорара исполнителю.<br/><br/>";
-                $msg .= "Веб-кошелек заводится для вас в момент принятия вами <a href='https://www.fl.ru/offer_lc.pdf' target='_blank'>Оферты на заключение договора с аккредитивной формой расчетов</a>. Мы рекомендуем вам идентифицироваться в Веб-кошельке: в этом случае для вас не будет ограничений по выводу денежных средств, а также вы всегда сможете получить деньги в случае непредвиденных ситуаций (потери телефона с мобильным номером, к которому привязывается каждый Веб-кошелек).<br/><br/>";
-                $msg .= "С более подробной информацией по Веб-кошельку можно ознакомиться в <a href='https://feedback.fl.ru/topic/397421-veb-koshelek-obschaya-informatsiya/{$this->_addUrlParams('f', '?')}'>соответствующем разделе помощи</a>.";
+                $msg  = "РќРµРјРЅРѕРіРѕ Рѕ С‚РѕРј, РґР»СЏ С‡РµРіРѕ РЅСѓР¶РµРЅ Р’РµР±-РєРѕС€РµР»РµРє: <a href='http://webpay.pscb.ru/login/auth' target='_blank'>Р’РµР±-РєРѕС€РµР»РµРє РџРµС‚РµСЂР±СѓСЂРіСЃРєРѕРіРѕ РЎРѕС†РёР°Р»СЊРЅРѕРіРѕ  РљРѕРјРјРµСЂС‡РµСЃРєРѕРіРѕ Р‘Р°РЅРєР° (РџРЎРљР‘)</a> вЂ“ СЌС‚Рѕ РїР»Р°С‚РµР¶РЅР°СЏ СЃРёСЃС‚РµРјР° РґР»СЏ РјРіРЅРѕРІРµРЅРЅРѕР№ РѕРїР»Р°С‚С‹ СЂР°Р·Р»РёС‡РЅС‹С… СѓСЃР»СѓРі Рё РѕСЃСѓС‰РµСЃС‚РІР»РµРЅРёСЏ Р±Р°РЅРєРѕРІСЃРєРёС… РїРµСЂРµРІРѕРґРѕРІ С‡РµСЂРµР· РёРЅС‚РµСЂРЅРµС‚. РџСЂРё СЂР°Р±РѕС‚Рµ С‡РµСЂРµР· В«Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓВ» Р’РµР±-РєРѕС€РµР»РµРє РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ Рё РІРѕР·РІСЂР°С‚Р° РґРµРЅРµРі Р·Р°РєР°Р·С‡РёРєСѓ, Р° С‚Р°РєР¶Рµ РґР»СЏ РІС‹РїР»Р°С‚С‹ РіРѕРЅРѕСЂР°СЂР° РёСЃРїРѕР»РЅРёС‚РµР»СЋ.<br/><br/>";
+                $msg .= "Р’РµР±-РєРѕС€РµР»РµРє Р·Р°РІРѕРґРёС‚СЃСЏ РґР»СЏ РІР°СЃ РІ РјРѕРјРµРЅС‚ РїСЂРёРЅСЏС‚РёСЏ РІР°РјРё <a href='https://www.fl.ru/offer_lc.pdf' target='_blank'>РћС„РµСЂС‚С‹ РЅР° Р·Р°РєР»СЋС‡РµРЅРёРµ РґРѕРіРѕРІРѕСЂР° СЃ Р°РєРєСЂРµРґРёС‚РёРІРЅРѕР№ С„РѕСЂРјРѕР№ СЂР°СЃС‡РµС‚РѕРІ</a>. РњС‹ СЂРµРєРѕРјРµРЅРґСѓРµРј РІР°Рј РёРґРµРЅС‚РёС„РёС†РёСЂРѕРІР°С‚СЊСЃСЏ РІ Р’РµР±-РєРѕС€РµР»СЊРєРµ: РІ СЌС‚РѕРј СЃР»СѓС‡Р°Рµ РґР»СЏ РІР°СЃ РЅРµ Р±СѓРґРµС‚ РѕРіСЂР°РЅРёС‡РµРЅРёР№ РїРѕ РІС‹РІРѕРґСѓ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ, Р° С‚Р°РєР¶Рµ РІС‹ РІСЃРµРіРґР° СЃРјРѕР¶РµС‚Рµ РїРѕР»СѓС‡РёС‚СЊ РґРµРЅСЊРіРё РІ СЃР»СѓС‡Р°Рµ РЅРµРїСЂРµРґРІРёРґРµРЅРЅС‹С… СЃРёС‚СѓР°С†РёР№ (РїРѕС‚РµСЂРё С‚РµР»РµС„РѕРЅР° СЃ РјРѕР±РёР»СЊРЅС‹Рј РЅРѕРјРµСЂРѕРј, Рє РєРѕС‚РѕСЂРѕРјСѓ РїСЂРёРІСЏР·С‹РІР°РµС‚СЃСЏ РєР°Р¶РґС‹Р№ Р’РµР±-РєРѕС€РµР»РµРє).<br/><br/>";
+                $msg .= "РЎ Р±РѕР»РµРµ РїРѕРґСЂРѕР±РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРµР№ РїРѕ Р’РµР±-РєРѕС€РµР»СЊРєСѓ РјРѕР¶РЅРѕ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ РІ <a href='https://feedback.fl.ru/topic/397421-veb-koshelek-obschaya-informatsiya/{$this->_addUrlParams('f', '?')}'>СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРј СЂР°Р·РґРµР»Рµ РїРѕРјРѕС‰Рё</a>.";
                 
-                $this->subject = "Что такое Веб-кошелек";
+                $this->subject = "Р§С‚Рѕ С‚Р°РєРѕРµ Р’РµР±-РєРѕС€РµР»РµРє";
                 $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
                 $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
                 $this->SmtpMail('text/html');
@@ -3002,7 +3002,7 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Произведена выплата гонорара.
+     * РџСЂРѕРёР·РІРµРґРµРЅР° РІС‹РїР»Р°С‚Р° РіРѕРЅРѕСЂР°СЂР°.
      * @param type $events 
      */
     function SbrMoneyPaidEmp($events) {
@@ -3016,10 +3016,10 @@ $sObjEntity: $sObjLink<br />
         $arb   = $stage->getArbitrage();
         $type_payment = exrates::getNameExrates($stage->type_payment);
         
-        $this->subject = "Произведена выплата гонорара (проект «{$ev0['sbr_name']}»)";
+        $this->subject = "РџСЂРѕРёР·РІРµРґРµРЅР° РІС‹РїР»Р°С‚Р° РіРѕРЅРѕСЂР°СЂР° (РїСЂРѕРµРєС‚ В«{$ev0['sbr_name']}В»)";
         $sbr_name = sbr_meta::getNameForMail($ev0, 'sbr');
-        $msg  = "Информируем вас о том, что возврат денег в Сделке «<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>» произведен (в соответствии с решением Арбитража).<br/><br/>";
-        $msg .= "Зачисление средств на ваш личный счет может занять некоторое время (от нескольких минут до нескольких дней в зависимости от способа выплаты).";
+        $msg  = "РРЅС„РѕСЂРјРёСЂСѓРµРј РІР°СЃ Рѕ С‚РѕРј, С‡С‚Рѕ РІРѕР·РІСЂР°С‚ РґРµРЅРµРі РІ РЎРґРµР»РєРµ В«<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>В» РїСЂРѕРёР·РІРµРґРµРЅ (РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ СЂРµС€РµРЅРёРµРј РђСЂР±РёС‚СЂР°Р¶Р°).<br/><br/>";
+        $msg .= "Р—Р°С‡РёСЃР»РµРЅРёРµ СЃСЂРµРґСЃС‚РІ РЅР° РІР°С€ Р»РёС‡РЅС‹Р№ СЃС‡РµС‚ РјРѕР¶РµС‚ Р·Р°РЅСЏС‚СЊ РЅРµРєРѕС‚РѕСЂРѕРµ РІСЂРµРјСЏ (РѕС‚ РЅРµСЃРєРѕР»СЊРєРёС… РјРёРЅСѓС‚ РґРѕ РЅРµСЃРєРѕР»СЊРєРёС… РґРЅРµР№ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЃРїРѕСЃРѕР±Р° РІС‹РїР»Р°С‚С‹).";
         
         $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
         $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
@@ -3027,17 +3027,17 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Уведомление одному из участников СБР о том что другой оставил ему отзыв.
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ РѕРґРЅРѕРјСѓ РёР· СѓС‡Р°СЃС‚РЅРёРєРѕРІ РЎР‘Р  Рѕ С‚РѕРј С‡С‚Рѕ РґСЂСѓРіРѕР№ РѕСЃС‚Р°РІРёР» РµРјСѓ РѕС‚Р·С‹РІ.
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrFeedback($events) {
         $ev0 = $events[0];
         $url = $GLOBALS['host'].'/' . sbr::NEW_TEMPLATE_SBR . '/';
-        // Если оставляет мнение исполнитель, этап считается завершенным отправляем уведомление
+        // Р•СЃР»Рё РѕСЃС‚Р°РІР»СЏРµС‚ РјРЅРµРЅРёРµ РёСЃРїРѕР»РЅРёС‚РµР»СЊ, СЌС‚Р°Рї СЃС‡РёС‚Р°РµС‚СЃСЏ Р·Р°РІРµСЂС€РµРЅРЅС‹Рј РѕС‚РїСЂР°РІР»СЏРµРј СѓРІРµРґРѕРјР»РµРЅРёРµ
         if($ev0['abbr'] == 'FRL_FEEDBACK') {
             $this->SbrStageCompleted($events);
         }
-        $this->subject = "Вам оставили отзыв по Безопасной Сделке (проект «{$ev0['sbr_name']}»)";
+        $this->subject = "Р’Р°Рј РѕСЃС‚Р°РІРёР»Рё РѕС‚Р·С‹РІ РїРѕ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµ (РїСЂРѕРµРєС‚ В«{$ev0['sbr_name']}В»)";
         $stage_name = sbr_meta::getNameForMail($ev0);
         if($ev0['own_role'] == sbr::EVROLE_FRL && $ev0['frl_feedback_id']) {
             $r = 'e_';
@@ -3051,9 +3051,9 @@ $sObjEntity: $sObjLink<br />
             $stage = $sbr->initFromStage($ev0['stage_id']);
             
             if($stage->status == sbr_stages::STATUS_ARBITRAGED) {
-                $msg = "Информируем вас о том, что Исполнитель <a href='{$userlink}'>{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href='{$userlink}'>{$ev0['f_login']}</a>] оставил вам <a href='{$link_feedback}'>отзыв</a> по Сделке «<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$stage_name}</a>»:<br/></br>";
+                $msg = "РРЅС„РѕСЂРјРёСЂСѓРµРј РІР°СЃ Рѕ С‚РѕРј, С‡С‚Рѕ РСЃРїРѕР»РЅРёС‚РµР»СЊ <a href='{$userlink}'>{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href='{$userlink}'>{$ev0['f_login']}</a>] РѕСЃС‚Р°РІРёР» РІР°Рј <a href='{$link_feedback}'>РѕС‚Р·С‹РІ</a> РїРѕ РЎРґРµР»РєРµ В«<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$stage_name}</a>В»:<br/></br>";
             } else {    
-                $msg = "Исполнитель <a href='{$userlink}'>{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href='{$userlink}'>{$ev0['f_login']}</a>] завершил Сделку «<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$stage_name}</a>» со своей стороны и оставил вам <a href='{$link_feedback}'>отзыв</a>:<br/></br>";
+                $msg = "РСЃРїРѕР»РЅРёС‚РµР»СЊ <a href='{$userlink}'>{$ev0['f_uname']} {$ev0['f_usurname']}</a> [<a href='{$userlink}'>{$ev0['f_login']}</a>] Р·Р°РІРµСЂС€РёР» РЎРґРµР»РєСѓ В«<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$stage_name}</a>В» СЃРѕ СЃРІРѕРµР№ СЃС‚РѕСЂРѕРЅС‹ Рё РѕСЃС‚Р°РІРёР» РІР°Рј <a href='{$link_feedback}'>РѕС‚Р·С‹РІ</a>:<br/></br>";
             }
         } else if($ev0['emp_feedback_id']) {
             $r = 'f_';
@@ -3061,19 +3061,19 @@ $sObjEntity: $sObjLink<br />
             $feedback = sbr_meta::getFeedback($ev0['emp_feedback_id']);
             $uniq_id = $feedback['id'] * 2 + 1;
             $link_feedback = "{$GLOBALS["host"]}/users/{$ev0['f_login']}/opinions/#p_{$uniq_id}";
-            $msg = "Заказчик <a href='{$userlink}'>{$ev0['e_uname']} {$ev0['e_usurname']}</a> [<a href='{$userlink}'>{$ev0['e_login']}</a>] завершил Сделку «<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$stage_name}</a>» со своей стороны и оставил вам <a href='{$link_feedback}'>отзыв</a>:<br/><br/>";
-            //$msg = "Сообщаем вам о том, что работодатель <a href=\"{$userlink}\">{$ev0['e_uname']}</a> <a href=\"{$userlink}\">{$ev0['e_usurname']}</a> [<a href=\"{$userlink}\">{$ev0['e_login']}</a>]";
+            $msg = "Р—Р°РєР°Р·С‡РёРє <a href='{$userlink}'>{$ev0['e_uname']} {$ev0['e_usurname']}</a> [<a href='{$userlink}'>{$ev0['e_login']}</a>] Р·Р°РІРµСЂС€РёР» РЎРґРµР»РєСѓ В«<a href='{$url}?site=Stage&id={$ev0['stage_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$stage_name}</a>В» СЃРѕ СЃРІРѕРµР№ СЃС‚РѕСЂРѕРЅС‹ Рё РѕСЃС‚Р°РІРёР» РІР°Рј <a href='{$link_feedback}'>РѕС‚Р·С‹РІ</a>:<br/><br/>";
+            //$msg = "РЎРѕРѕР±С‰Р°РµРј РІР°Рј Рѕ С‚РѕРј, С‡С‚Рѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ <a href=\"{$userlink}\">{$ev0['e_uname']}</a> <a href=\"{$userlink}\">{$ev0['e_usurname']}</a> [<a href=\"{$userlink}\">{$ev0['e_login']}</a>]";
         }
-        $sbr_link = "задаче «<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$stage_name}</a>» (проект «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$ev0['sbr_name']}</a>»)";
+        $sbr_link = "Р·Р°РґР°С‡Рµ В«<a href='{$url}?site=Stage&id={$ev0['own_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$stage_name}</a>В» (РїСЂРѕРµРєС‚ В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>{$ev0['sbr_name']}</a>В»)";
         if(!$feedback) return;
         $opi_path = $GLOBALS['host'].'/users/'.$ev0[$r.'login'].'/opinions/?from=norisk';
         
-        $msg .= "«{$feedback['descr']}».";
+        $msg .= "В«{$feedback['descr']}В».";
         
-        //$msg .= " оставил(-a) вам рекомендацию по «Сделке без риска» в {$sbr_link}:<br/><br/>---<br/>«{$feedback['descr']}»<br/>---<br/>";
-        //$msg .= "<br/>Вы можете просмотреть рекомендацию на вкладке <a href='{$opi_path}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>«Отзывы»</a> в вашем аккаунте.";
+        //$msg .= " РѕСЃС‚Р°РІРёР»(-a) РІР°Рј СЂРµРєРѕРјРµРЅРґР°С†РёСЋ РїРѕ В«РЎРґРµР»РєРµ Р±РµР· СЂРёСЃРєР°В» РІ {$sbr_link}:<br/><br/>---<br/>В«{$feedback['descr']}В»<br/>---<br/>";
+        //$msg .= "<br/>Р’С‹ РјРѕР¶РµС‚Рµ РїСЂРѕСЃРјРѕС‚СЂРµС‚СЊ СЂРµРєРѕРјРµРЅРґР°С†РёСЋ РЅР° РІРєР»Р°РґРєРµ <a href='{$opi_path}{$this->_addUrlParams($r == 'e_' ? 'e' : 'f', '&')}'>В«РћС‚Р·С‹РІС‹В»</a> РІ РІР°С€РµРј Р°РєРєР°СѓРЅС‚Рµ.";
         //if($ev0['emp_feedback_id']) {
-        //    $msg .= "<br/><br/>Напоминаем, что вы можете воспользоваться услугой «Рекомендация» - <a href='{$GLOBALS['host']}/service/{$this->_addUrlParams($r == 'e_' ? 'e' : 'f')}'>приобрести рекомендации</a> от работодателей по сервису «Сделка без риска».";
+        //    $msg .= "<br/><br/>РќР°РїРѕРјРёРЅР°РµРј, С‡С‚Рѕ РІС‹ РјРѕР¶РµС‚Рµ РІРѕСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ СѓСЃР»СѓРіРѕР№ В«Р РµРєРѕРјРµРЅРґР°С†РёСЏВ» - <a href='{$GLOBALS['host']}/service/{$this->_addUrlParams($r == 'e_' ? 'e' : 'f')}'>РїСЂРёРѕР±СЂРµСЃС‚Рё СЂРµРєРѕРјРµРЅРґР°С†РёРё</a> РѕС‚ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ РїРѕ СЃРµСЂРІРёСЃСѓ В«РЎРґРµР»РєР° Р±РµР· СЂРёСЃРєР°В».";
         //}
         
         $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'norisk_robot')));
@@ -3082,30 +3082,30 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Уведомление о том, что загружен новый документ в СБР.
-     * Отправляется участнику СБР, если он заинтересован в этом документе (см. статусы и доступы к документам)
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ Рѕ С‚РѕРј, С‡С‚Рѕ Р·Р°РіСЂСѓР¶РµРЅ РЅРѕРІС‹Р№ РґРѕРєСѓРјРµРЅС‚ РІ РЎР‘Р .
+     * РћС‚РїСЂР°РІР»СЏРµС‚СЃСЏ СѓС‡Р°СЃС‚РЅРёРєСѓ РЎР‘Р , РµСЃР»Рё РѕРЅ Р·Р°РёРЅС‚РµСЂРµСЃРѕРІР°РЅ РІ СЌС‚РѕРј РґРѕРєСѓРјРµРЅС‚Рµ (СЃРј. СЃС‚Р°С‚СѓСЃС‹ Рё РґРѕСЃС‚СѓРїС‹ Рє РґРѕРєСѓРјРµРЅС‚Р°Рј)
      *
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrAddDoc($events) {
         $ev0 = $events[0];
         $url = $GLOBALS['host'].'/' . sbr::NEW_TEMPLATE_SBR . '/';
         $sbr_name = sbr_meta::getNameForMail($ev0, 'sbr');
-        $sbr_link_e = " «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('e', '&')}'>{$sbr_name}</a>»";
-        $sbr_link_f = " «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>»";
+        $sbr_link_e = " В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('e', '&')}'>{$sbr_name}</a>В»";
+        $sbr_link_f = " В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams('f', '&')}'>{$sbr_name}</a>В»";
         if(!($doc = sbr_meta::getDoc($ev0['new_val'], false))) return 0;
-        if($doc['owner_role']!=0) return 0; // только если админ загружал.
-        $doc_link_e = " «<a href='{$url}?site=Stage&id={$ev0['stage_id']}&doc={$ev0['new_val']}{$this->_addUrlParams('e', '&')}'>{$doc['name']}</a>»";
-        $doc_link_f = " «<a href='{$url}?site=Stage&id={$ev0['stage_id']}&doc={$ev0['new_val']}{$this->_addUrlParams('f', '&')}'>{$doc['name']}</a>»";
-        $this->subject = "Загружен новый документ по Безопасной Сделке (проект {$ev0['sbr_name']})";
+        if($doc['owner_role']!=0) return 0; // С‚РѕР»СЊРєРѕ РµСЃР»Рё Р°РґРјРёРЅ Р·Р°РіСЂСѓР¶Р°Р».
+        $doc_link_e = " В«<a href='{$url}?site=Stage&id={$ev0['stage_id']}&doc={$ev0['new_val']}{$this->_addUrlParams('e', '&')}'>{$doc['name']}</a>В»";
+        $doc_link_f = " В«<a href='{$url}?site=Stage&id={$ev0['stage_id']}&doc={$ev0['new_val']}{$this->_addUrlParams('f', '&')}'>{$doc['name']}</a>В»";
+        $this->subject = "Р—Р°РіСЂСѓР¶РµРЅ РЅРѕРІС‹Р№ РґРѕРєСѓРјРµРЅС‚ РїРѕ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµ (РїСЂРѕРµРєС‚ {$ev0['sbr_name']})";
         $e = 'e_';
         $f = 'f_';
-        //$msg[$e] = "Менеджер сервиса «Безопасная Сделка» загрузил документ {$doc_link_e} в проект {$sbr_link_e}.
-        $msg[$e] = "В Сделку {$sbr_link_e} загружен документ {$doc_link_e}.
-        Вы можете ознакомиться с общим <a href='https://feedback.fl.ru/{$this->_addUrlParams('e', '?')}'>порядком проведения Безопасной Сделки</a>.";
-        //$msg[$f] = "Менеджер сервиса «Безопасная Сделка» загрузил документ {$doc_link_f} в проект {$sbr_link_f}.
-        $msg[$f] = "В Сделку {$sbr_link_f} загружен документ {$doc_link_f}.
-        Вы можете ознакомиться с общим <a href='https://feedback.fl.ru/{$this->_addUrlParams('f', '?')}'>порядком проведения Безопасной Сделки</a>.";
+        //$msg[$e] = "РњРµРЅРµРґР¶РµСЂ СЃРµСЂРІРёСЃР° В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В» Р·Р°РіСЂСѓР·РёР» РґРѕРєСѓРјРµРЅС‚ {$doc_link_e} РІ РїСЂРѕРµРєС‚ {$sbr_link_e}.
+        $msg[$e] = "Р’ РЎРґРµР»РєСѓ {$sbr_link_e} Р·Р°РіСЂСѓР¶РµРЅ РґРѕРєСѓРјРµРЅС‚ {$doc_link_e}.
+        Р’С‹ РјРѕР¶РµС‚Рµ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РѕР±С‰РёРј <a href='https://feedback.fl.ru/{$this->_addUrlParams('e', '?')}'>РїРѕСЂСЏРґРєРѕРј РїСЂРѕРІРµРґРµРЅРёСЏ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё</a>.";
+        //$msg[$f] = "РњРµРЅРµРґР¶РµСЂ СЃРµСЂРІРёСЃР° В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В» Р·Р°РіСЂСѓР·РёР» РґРѕРєСѓРјРµРЅС‚ {$doc_link_f} РІ РїСЂРѕРµРєС‚ {$sbr_link_f}.
+        $msg[$f] = "Р’ РЎРґРµР»РєСѓ {$sbr_link_f} Р·Р°РіСЂСѓР¶РµРЅ РґРѕРєСѓРјРµРЅС‚ {$doc_link_f}.
+        Р’С‹ РјРѕР¶РµС‚Рµ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РѕР±С‰РёРј <a href='https://feedback.fl.ru/{$this->_addUrlParams('f', '?')}'>РїРѕСЂСЏРґРєРѕРј РїСЂРѕРІРµРґРµРЅРёСЏ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё</a>.";
         $footer = 'norisk_robot';
 
         if($doc['type'] == sbr::DOCS_TYPE_ACT) {
@@ -3113,58 +3113,58 @@ $sObjEntity: $sObjLink<br />
             $sbr->initFromId($ev0['sbr_id']);
             
             if($sbr->isNewVersionSbr()) {
-                $this->subject = "Завершается Безопасная Сделка {$sbr_name}";
+                $this->subject = "Р—Р°РІРµСЂС€Р°РµС‚СЃСЏ Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР° {$sbr_name}";
                 
                 if($sbr->scheme_type == sbr::SCHEME_LC) {
-                    $message  = "Безопасная Сделка {$sbr_link_e} находится на завершающем этапе. В систему комментариев к сделке и подраздел «Файлы по этапу» был загружен {$doc_link_e}.<br/><br/>";
-                    $message .= "<i>Обратите внимание</i>: отправлять документы по почте не требуется. Все налоги и сборы вам необходимо оплатить самостоятельно.<br/><br/>";
-                    $message .= "Подробная информация по порядку завершения Безопасной Сделки находится в соответствующем <a href='https://feedback.fl.ru/' target='_blank'>разделе помощи</a>.";
+                    $message  = "Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР° {$sbr_link_e} РЅР°С…РѕРґРёС‚СЃСЏ РЅР° Р·Р°РІРµСЂС€Р°СЋС‰РµРј СЌС‚Р°РїРµ. Р’ СЃРёСЃС‚РµРјСѓ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ Рє СЃРґРµР»РєРµ Рё РїРѕРґСЂР°Р·РґРµР» В«Р¤Р°Р№Р»С‹ РїРѕ СЌС‚Р°РїСѓВ» Р±С‹Р» Р·Р°РіСЂСѓР¶РµРЅ {$doc_link_e}.<br/><br/>";
+                    $message .= "<i>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ</i>: РѕС‚РїСЂР°РІР»СЏС‚СЊ РґРѕРєСѓРјРµРЅС‚С‹ РїРѕ РїРѕС‡С‚Рµ РЅРµ С‚СЂРµР±СѓРµС‚СЃСЏ. Р’СЃРµ РЅР°Р»РѕРіРё Рё СЃР±РѕСЂС‹ РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РѕРїР»Р°С‚РёС‚СЊ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ.<br/><br/>";
+                    $message .= "РџРѕРґСЂРѕР±РЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ РїРѕСЂСЏРґРєСѓ Р·Р°РІРµСЂС€РµРЅРёСЏ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё РЅР°С…РѕРґРёС‚СЃСЏ РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРј <a href='https://feedback.fl.ru/' target='_blank'>СЂР°Р·РґРµР»Рµ РїРѕРјРѕС‰Рё</a>.";
                     
                     $msg[$e]  = $message;
                     $msg[$f]  = $message;
                 } elseif($sbr->scheme_type == sbr::SCHEME_PDRD2){
-                    //@todo: был не корректный вызов метода sbr::getContractNum($ev0['sbr_id'], $ev0['scheme_type'], $ev0['posted']) который валил всю функцию и возможно консьюмер
-                    $doc_tz = " «<a href='{$url}?site=Stage&id={$ev0['stage_id']}&doc=" . ($ev0['new_val']+1 ) . "{$this->_addUrlParams('e', '&')}'>Техническое задание по договору {$sbr_name}</a>»";
-                    $message  = "Безопасная Сделка {$sbr_link_e} находится на завершающем этапе. В комментарии к сделке и подраздел «Файлы по этапу» был загружен {$doc_link_e} и {$doc_tz}.<br/><br/>";
-                    $message .= "Для того чтобы получить гонорар за выполненную работу, вам необходимо распечатать данные документы в 2-х экземплярах, подписать и отправить на адрес компании FL.ru: 129223, г. Москва, а/я 33, ООО «Ваан».";
+                    //@todo: Р±С‹Р» РЅРµ РєРѕСЂСЂРµРєС‚РЅС‹Р№ РІС‹Р·РѕРІ РјРµС‚РѕРґР° sbr::getContractNum($ev0['sbr_id'], $ev0['scheme_type'], $ev0['posted']) РєРѕС‚РѕСЂС‹Р№ РІР°Р»РёР» РІСЃСЋ С„СѓРЅРєС†РёСЋ Рё РІРѕР·РјРѕР¶РЅРѕ РєРѕРЅСЃСЊСЋРјРµСЂ
+                    $doc_tz = " В«<a href='{$url}?site=Stage&id={$ev0['stage_id']}&doc=" . ($ev0['new_val']+1 ) . "{$this->_addUrlParams('e', '&')}'>РўРµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ РїРѕ РґРѕРіРѕРІРѕСЂСѓ {$sbr_name}</a>В»";
+                    $message  = "Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР° {$sbr_link_e} РЅР°С…РѕРґРёС‚СЃСЏ РЅР° Р·Р°РІРµСЂС€Р°СЋС‰РµРј СЌС‚Р°РїРµ. Р’ РєРѕРјРјРµРЅС‚Р°СЂРёРё Рє СЃРґРµР»РєРµ Рё РїРѕРґСЂР°Р·РґРµР» В«Р¤Р°Р№Р»С‹ РїРѕ СЌС‚Р°РїСѓВ» Р±С‹Р» Р·Р°РіСЂСѓР¶РµРЅ {$doc_link_e} Рё {$doc_tz}.<br/><br/>";
+                    $message .= "Р”Р»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ РіРѕРЅРѕСЂР°СЂ Р·Р° РІС‹РїРѕР»РЅРµРЅРЅСѓСЋ СЂР°Р±РѕС‚Сѓ, РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ СЂР°СЃРїРµС‡Р°С‚Р°С‚СЊ РґР°РЅРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹ РІ 2-С… СЌРєР·РµРјРїР»СЏСЂР°С…, РїРѕРґРїРёСЃР°С‚СЊ Рё РѕС‚РїСЂР°РІРёС‚СЊ РЅР° Р°РґСЂРµСЃ РєРѕРјРїР°РЅРёРё FL.ru: 129223, Рі. РњРѕСЃРєРІР°, Р°/СЏ 33, РћРћРћ В«Р’Р°Р°РЅВ».";
                     
                     $msg[$e]  = $message;
                     $msg[$f]  = $message;
                 }
                 
             } else {
-                $this->subject = "Документы для завершения Безопасной Сделки по проекту «{$ev0['sbr_name']}»";
+                $this->subject = "Р”РѕРєСѓРјРµРЅС‚С‹ РґР»СЏ Р·Р°РІРµСЂС€РµРЅРёСЏ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё РїРѕ РїСЂРѕРµРєС‚Сѓ В«{$ev0['sbr_name']}В»";
                 $msg[$e] = "
-                Ваша Безопасная Сделка по проекту {$sbr_link_e} находится на завершающем этапе. В раздел «Документы проекта» был загружен {$doc_link_e}.
+                Р’Р°С€Р° Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР° РїРѕ РїСЂРѕРµРєС‚Сѓ {$sbr_link_e} РЅР°С…РѕРґРёС‚СЃСЏ РЅР° Р·Р°РІРµСЂС€Р°СЋС‰РµРј СЌС‚Р°РїРµ. Р’ СЂР°Р·РґРµР» В«Р”РѕРєСѓРјРµРЅС‚С‹ РїСЂРѕРµРєС‚Р°В» Р±С‹Р» Р·Р°РіСЂСѓР¶РµРЅ {$doc_link_e}.
                 <br/><br/>
-                Для того чтобы деньги были переведены исполнителю, вам необходимо распечатать данный документ в 2-х экземплярах,
-                подписать и отправить на адрес компании FL.ru: 129223, г. Москва, а/я 33, ООО «Ваан».
+                Р”Р»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ РґРµРЅСЊРіРё Р±С‹Р»Рё РїРµСЂРµРІРµРґРµРЅС‹ РёСЃРїРѕР»РЅРёС‚РµР»СЋ, РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ СЂР°СЃРїРµС‡Р°С‚Р°С‚СЊ РґР°РЅРЅС‹Р№ РґРѕРєСѓРјРµРЅС‚ РІ 2-С… СЌРєР·РµРјРїР»СЏСЂР°С…,
+                РїРѕРґРїРёСЃР°С‚СЊ Рё РѕС‚РїСЂР°РІРёС‚СЊ РЅР° Р°РґСЂРµСЃ РєРѕРјРїР°РЅРёРё FL.ru: 129223, Рі. РњРѕСЃРєРІР°, Р°/СЏ 33, РћРћРћ В«Р’Р°Р°РЅВ».
                 <br/><br/>
-                Пожалуйста, обратите внимание на то, что деньги будут переведены исполнителю только после получения нами оригиналов документов. Выплаты производятся еженедельно в среду и четверг.
+                РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ РЅР° С‚Рѕ, С‡С‚Рѕ РґРµРЅСЊРіРё Р±СѓРґСѓС‚ РїРµСЂРµРІРµРґРµРЅС‹ РёСЃРїРѕР»РЅРёС‚РµР»СЋ С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ РїРѕР»СѓС‡РµРЅРёСЏ РЅР°РјРё РѕСЂРёРіРёРЅР°Р»РѕРІ РґРѕРєСѓРјРµРЅС‚РѕРІ. Р’С‹РїР»Р°С‚С‹ РїСЂРѕРёР·РІРѕРґСЏС‚СЃСЏ РµР¶РµРЅРµРґРµР»СЊРЅРѕ РІ СЃСЂРµРґСѓ Рё С‡РµС‚РІРµСЂРі.
                 ";
 
                 if(!empty($events[1])) {
                     $ev1 = $events[1];
                     $_doc = sbr_meta::getDoc($ev1['new_val'], false);
                     if($_doc['type'] == sbr::DOCS_TYPE_WM_APPL || $_doc['type'] == sbr::DOCS_TYPE_YM_APPL) {
-                        $_doc_link_f = " «<a href='{$url}?site=Stage&id={$ev1['stage_id']}&doc={$ev1['new_val']}{$this->_addUrlParams('f', '&')}'>{$_doc['name']}</a>»";
+                        $_doc_link_f = " В«<a href='{$url}?site=Stage&id={$ev1['stage_id']}&doc={$ev1['new_val']}{$this->_addUrlParams('f', '&')}'>{$_doc['name']}</a>В»";
                     }
                 }
                 if($doc_link_f && $_doc_link_f) {
-                    $doc_string_f = "были загружены {$doc_link_f} и {$_doc_link_f}";
-                    $print_info_f = "Заявление в одном экземпляре, Акт – в двух";
+                    $doc_string_f = "Р±С‹Р»Рё Р·Р°РіСЂСѓР¶РµРЅС‹ {$doc_link_f} Рё {$_doc_link_f}";
+                    $print_info_f = "Р—Р°СЏРІР»РµРЅРёРµ РІ РѕРґРЅРѕРј СЌРєР·РµРјРїР»СЏСЂРµ, РђРєС‚ вЂ“ РІ РґРІСѓС…";
                 } else {
-                    $doc_string_f = "был загружен {$doc_link_f}";
-                    $print_info_f = "данный документ в 2-х экземплярах";
+                    $doc_string_f = "Р±С‹Р» Р·Р°РіСЂСѓР¶РµРЅ {$doc_link_f}";
+                    $print_info_f = "РґР°РЅРЅС‹Р№ РґРѕРєСѓРјРµРЅС‚ РІ 2-С… СЌРєР·РµРјРїР»СЏСЂР°С…";
                 }
 
                 $msg[$f] = "
-                Безопасная Сделка по проекту {$sbr_link_f} находится на завершающем этапе. В раздел «Документы проекта» {$doc_string_f}.
+                Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР° РїРѕ РїСЂРѕРµРєС‚Сѓ {$sbr_link_f} РЅР°С…РѕРґРёС‚СЃСЏ РЅР° Р·Р°РІРµСЂС€Р°СЋС‰РµРј СЌС‚Р°РїРµ. Р’ СЂР°Р·РґРµР» В«Р”РѕРєСѓРјРµРЅС‚С‹ РїСЂРѕРµРєС‚Р°В» {$doc_string_f}.
                 <br/><br/>
-                Для того чтобы вам были перечислены ваши деньги, вам необходимо распечатать {$print_info_f},
-                подписать и отправить на адрес компании FL.ru: 129223, г. Москва, а/я 33, ООО «Ваан».
+                Р”Р»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ РІР°Рј Р±С‹Р»Рё РїРµСЂРµС‡РёСЃР»РµРЅС‹ РІР°С€Рё РґРµРЅСЊРіРё, РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ СЂР°СЃРїРµС‡Р°С‚Р°С‚СЊ {$print_info_f},
+                РїРѕРґРїРёСЃР°С‚СЊ Рё РѕС‚РїСЂР°РІРёС‚СЊ РЅР° Р°РґСЂРµСЃ РєРѕРјРїР°РЅРёРё FL.ru: 129223, Рі. РњРѕСЃРєРІР°, Р°/СЏ 33, РћРћРћ В«Р’Р°Р°РЅВ».
                 <br/><br/>
-                Пожалуйста, обратите внимание на то, что деньги будут переведены вам только после получения нами оригиналов документов. Выплаты производятся еженедельно в среду и четверг.
+                РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ РЅР° С‚Рѕ, С‡С‚Рѕ РґРµРЅСЊРіРё Р±СѓРґСѓС‚ РїРµСЂРµРІРµРґРµРЅС‹ РІР°Рј С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ РїРѕР»СѓС‡РµРЅРёСЏ РЅР°РјРё РѕСЂРёРіРёРЅР°Р»РѕРІ РґРѕРєСѓРјРµРЅС‚РѕРІ. Р’С‹РїР»Р°С‚С‹ РїСЂРѕРёР·РІРѕРґСЏС‚СЃСЏ РµР¶РµРЅРµРґРµР»СЊРЅРѕ РІ СЃСЂРµРґСѓ Рё С‡РµС‚РІРµСЂРі.
                 ";
                 $footer = 'norisk_robot';
             }
@@ -3184,15 +3184,15 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Уведомление о том, что документ удален из СБР.
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ Рѕ С‚РѕРј, С‡С‚Рѕ РґРѕРєСѓРјРµРЅС‚ СѓРґР°Р»РµРЅ РёР· РЎР‘Р .
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrDelDoc($events) {
         $ev0 = $events[0];
         $url = $GLOBALS['host'].'/' . sbr::NEW_TEMPLATE_SBR . '/';
         if(!($doc = sbr_meta::getDoc($ev0['old_val'], false))) return 0;
-        $doc_link = " «{$doc['name']}»";
-        $this->subject = "Удален документ из Безопасной Сделки";
+        $doc_link = " В«{$doc['name']}В»";
+        $this->subject = "РЈРґР°Р»РµРЅ РґРѕРєСѓРјРµРЅС‚ РёР· Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё";
         if($ev0['foronly_role']===NULL || ((int)$ev0['foronly_role'] & sbr::EVROLE_FRL) == sbr::EVROLE_FRL)
             $rs[] = 'f_';
         if($ev0['foronly_role']===NULL || ((int)$ev0['foronly_role'] & sbr::EVROLE_EMP) == sbr::EVROLE_EMP)
@@ -3200,8 +3200,8 @@ $sObjEntity: $sObjLink<br />
         if($rs) {
             foreach($rs as $r) {
                 $sbr_name = sbr_meta::getNameForMail($ev0, 'sbr');
-                $sbr_link = " «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}'>{$sbr_name}</a>»";
-                $msg = "Администратор удалил документ {$doc_link} из Сделки {$sbr_link}";
+                $sbr_link = " В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}'>{$sbr_name}</a>В»";
+                $msg = "РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ СѓРґР°Р»РёР» РґРѕРєСѓРјРµРЅС‚ {$doc_link} РёР· РЎРґРµР»РєРё {$sbr_link}";
                 $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'simple')));
                 $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
                 $this->SmtpMail('text/html');
@@ -3210,14 +3210,14 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Уведомление об изменении статуса документа.
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ РѕР± РёР·РјРµРЅРµРЅРёРё СЃС‚Р°С‚СѓСЃР° РґРѕРєСѓРјРµРЅС‚Р°.
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrDocStatusChanged($events) {
         $ev0 = $events[0];
         $url = $GLOBALS['host'].'/' . sbr::NEW_TEMPLATE_SBR . '/';
         if(!($doc = sbr_meta::getDoc($ev0['own_id'], false))) return 0;
-        $this->subject = "Изменился статус документа в Безопасной Сделки";
+        $this->subject = "РР·РјРµРЅРёР»СЃСЏ СЃС‚Р°С‚СѓСЃ РґРѕРєСѓРјРµРЅС‚Р° РІ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё";
         if($ev0['foronly_role']===NULL || ((int)$ev0['foronly_role'] & sbr::EVROLE_FRL) == sbr::EVROLE_FRL)
             $rs[] = 'f_';
         if($ev0['foronly_role']===NULL || ((int)$ev0['foronly_role'] & sbr::EVROLE_EMP) == sbr::EVROLE_EMP)
@@ -3225,11 +3225,11 @@ $sObjEntity: $sObjLink<br />
         if($rs) {
             $sbr_name = sbr_meta::getNameForMail($ev0, 'sbr');
             foreach($rs as $r) {
-                $sbr_link = " «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}'>{$sbr_name}</a>»";
-                $doc_link = " «<a href='{$url}?site=Stage&id={$ev0['stage_id']}&doc={$ev0['own_id']}{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}'>{$doc['name']}</a>»";
-                $msg = "Администратор Безопасной Сделки изменил статус документа {$doc_link} в Сделке {$sbr_link}: ";
+                $sbr_link = " В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}'>{$sbr_name}</a>В»";
+                $doc_link = " В«<a href='{$url}?site=Stage&id={$ev0['stage_id']}&doc={$ev0['own_id']}{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}'>{$doc['name']}</a>В»";
+                $msg = "РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё РёР·РјРµРЅРёР» СЃС‚Р°С‚СѓСЃ РґРѕРєСѓРјРµРЅС‚Р° {$doc_link} РІ РЎРґРµР»РєРµ {$sbr_link}: ";
                 $msg .= '<br/><br/><strong>' . sbr::$docs_ss[$ev0['old_val']][0] . ' &mdash; ' . sbr::$docs_ss[$ev0['new_val']][0] . '</strong>';
-                $msg .= "<br/><br/>Свяжитесь с <a href=\"{$GLOBALS['host']}/contacts/?from=norisk{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}\">менеджером Безопасной Сделки</a>, чтобы уточнить подробности.";
+                $msg .= "<br/><br/>РЎРІСЏР¶РёС‚РµСЃСЊ СЃ <a href=\"{$GLOBALS['host']}/contacts/?from=norisk{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}\">РјРµРЅРµРґР¶РµСЂРѕРј Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё</a>, С‡С‚РѕР±С‹ СѓС‚РѕС‡РЅРёС‚СЊ РїРѕРґСЂРѕР±РЅРѕСЃС‚Рё.";
                 
                 $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'simple')));
                 $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
@@ -3239,15 +3239,15 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Уведомление о изменении доступа к документу.
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ Рѕ РёР·РјРµРЅРµРЅРёРё РґРѕСЃС‚СѓРїР° Рє РґРѕРєСѓРјРµРЅС‚Сѓ.
      *
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrDocAccessChanged($events) {
         $ev0 = $events[0];
         $url = $GLOBALS['host'].'/' . sbr::NEW_TEMPLATE_SBR . '/';
         if(!($doc = sbr_meta::getDoc($ev0['own_id'], false))) return 0;
-        $this->subject = "Изменилась видимость документа в Безопасной Сделки";
+        $this->subject = "РР·РјРµРЅРёР»Р°СЃСЊ РІРёРґРёРјРѕСЃС‚СЊ РґРѕРєСѓРјРµРЅС‚Р° РІ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё";
         if($ev0['foronly_role']===NULL || ((int)$ev0['foronly_role'] & sbr::EVROLE_FRL) == sbr::EVROLE_FRL)
             $rs[] = 'f_';
         if($ev0['foronly_role']===NULL || ((int)$ev0['foronly_role'] & sbr::EVROLE_EMP) == sbr::EVROLE_EMP)
@@ -3255,11 +3255,11 @@ $sObjEntity: $sObjLink<br />
         if($rs) {
             $sbr_name = sbr_meta::getNameForMail($ev0, 'sbr');
             foreach($rs as $r) {
-                $sbr_link = " «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}'>{$sbr_name}</a>»";
-                $doc_link = " «<a href='{$url}?site=Stage&id={$ev0['stage_id']}&doc={$ev0['own_id']}{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}'>{$doc['name']}</a>»";
-                $msg = "Администратор Безопасной Сделки изменил уровень доступа к просмотру документа {$doc_link} в Сделке {$sbr_link}: ";
+                $sbr_link = " В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}'>{$sbr_name}</a>В»";
+                $doc_link = " В«<a href='{$url}?site=Stage&id={$ev0['stage_id']}&doc={$ev0['own_id']}{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}'>{$doc['name']}</a>В»";
+                $msg = "РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё РёР·РјРµРЅРёР» СѓСЂРѕРІРµРЅСЊ РґРѕСЃС‚СѓРїР° Рє РїСЂРѕСЃРјРѕС‚СЂСѓ РґРѕРєСѓРјРµРЅС‚Р° {$doc_link} РІ РЎРґРµР»РєРµ {$sbr_link}: ";
                 $msg .= '<br/><br/><strong>' . sbr::$docs_access[$ev0['old_val']][0] . ' &mdash; ' . sbr::$docs_access[$ev0['new_val']][0] . '</strong>';
-                $msg .= "<br/><br/>Свяжитесь с <a href=\"{$GLOBALS['host']}/contacts/?from=norisk{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}\">менеджером Безопасной сделки</a>, чтобы уточнить подробности.";
+                $msg .= "<br/><br/>РЎРІСЏР¶РёС‚РµСЃСЊ СЃ <a href=\"{$GLOBALS['host']}/contacts/?from=norisk{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}\">РјРµРЅРµРґР¶РµСЂРѕРј Р‘РµР·РѕРїР°СЃРЅРѕР№ СЃРґРµР»РєРё</a>, С‡С‚РѕР±С‹ СѓС‚РѕС‡РЅРёС‚СЊ РїРѕРґСЂРѕР±РЅРѕСЃС‚Рё.";
                 
                 $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'simple')));
                 $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
@@ -3269,15 +3269,15 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Уведомление о том, что файл документа перезагружен.
-     * @param array $events   информация по событиям (если событий нескольлко, то содержит несколько элементов).
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ Рѕ С‚РѕРј, С‡С‚Рѕ С„Р°Р№Р» РґРѕРєСѓРјРµРЅС‚Р° РїРµСЂРµР·Р°РіСЂСѓР¶РµРЅ.
+     * @param array $events   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СЃРѕР±С‹С‚РёСЏРј (РµСЃР»Рё СЃРѕР±С‹С‚РёР№ РЅРµСЃРєРѕР»СЊР»РєРѕ, С‚Рѕ СЃРѕРґРµСЂР¶РёС‚ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ).
      */
     function SbrDocReload($events) {
         $ev0 = $events[0];
         $url = $GLOBALS['host'].'/' . sbr::NEW_TEMPLATE_SBR . '/';
         if(!($doc = sbr_meta::getDoc($ev0['own_id'], false))) return 0;
-        if($doc['owner_role']!=0) return 0; // только если админ загружал.
-        $this->subject = "Перезагружен файл документа в проекте «Безопасной Сделки»";
+        if($doc['owner_role']!=0) return 0; // С‚РѕР»СЊРєРѕ РµСЃР»Рё Р°РґРјРёРЅ Р·Р°РіСЂСѓР¶Р°Р».
+        $this->subject = "РџРµСЂРµР·Р°РіСЂСѓР¶РµРЅ С„Р°Р№Р» РґРѕРєСѓРјРµРЅС‚Р° РІ РїСЂРѕРµРєС‚Рµ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ»";
         if($ev0['foronly_role']===NULL || ((int)$ev0['foronly_role'] & sbr::EVROLE_FRL) == sbr::EVROLE_FRL)
             $rs[] = 'f_';
         if($ev0['foronly_role']===NULL || ((int)$ev0['foronly_role'] & sbr::EVROLE_EMP) == sbr::EVROLE_EMP)
@@ -3285,10 +3285,10 @@ $sObjEntity: $sObjLink<br />
         if($rs) {
             $sbr_name = sbr_meta::getNameForMail($ev0, 'sbr');
             foreach($rs as $r) {
-                $sbr_link = " «<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}'>{$sbr_name}</a>»";
-                $doc_link = " «<a href='{$url}?site=Stage&id={$ev0['stage_id']}&doc={$ev0['own_id']}{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}'>{$doc['name']}</a>»";
-                $msg = "Администратор Безопасной Сделки перезагрузил файл документа {$doc_link} в Сделке {$sbr_link}.";
-                $msg .= "<br/><br/>Свяжитесь с <a href=\"{$GLOBALS['host']}/contacts/?from=norisk{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}\">менеджером</a>, чтобы уточнить подробности.";
+                $sbr_link = " В«<a href='{$url}?id={$ev0['sbr_id']}{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}'>{$sbr_name}</a>В»";
+                $doc_link = " В«<a href='{$url}?site=Stage&id={$ev0['stage_id']}&doc={$ev0['own_id']}{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}'>{$doc['name']}</a>В»";
+                $msg = "РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё РїРµСЂРµР·Р°РіСЂСѓР·РёР» С„Р°Р№Р» РґРѕРєСѓРјРµРЅС‚Р° {$doc_link} РІ РЎРґРµР»РєРµ {$sbr_link}.";
+                $msg .= "<br/><br/>РЎРІСЏР¶РёС‚РµСЃСЊ СЃ <a href=\"{$GLOBALS['host']}/contacts/?from=norisk{$this->_addUrlParams($r = 'e_' ? 'e' : 'f', '&')}\">РјРµРЅРµРґР¶РµСЂРѕРј</a>, С‡С‚РѕР±С‹ СѓС‚РѕС‡РЅРёС‚СЊ РїРѕРґСЂРѕР±РЅРѕСЃС‚Рё.";
                 
                 $this->message = $this->splitMessage($this->GetHtml($ev0[$r.'uname'], $msg, array('header'=>'simple', 'footer'=>'simple')));
                 $this->recipient = $ev0[$r.'uname']." ".$ev0[$r.'usurname']." [".$ev0[$r.'login']."] <".$ev0[$r.'email'].">";
@@ -3298,11 +3298,11 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Уведомление о новом комментарии в диалоге к этапу СБР.
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ Рѕ РЅРѕРІРѕРј РєРѕРјРјРµРЅС‚Р°СЂРёРё РІ РґРёР°Р»РѕРіРµ Рє СЌС‚Р°РїСѓ РЎР‘Р .
      *
-     * @param array $ids   идентификаторы новых комментов.
-     * @param resource $connect   текущее соединение с БД.
-     * @return integer количество отправленных уведомлений.
+     * @param array $ids   РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РЅРѕРІС‹С… РєРѕРјРјРµРЅС‚РѕРІ.
+     * @param resource $connect   С‚РµРєСѓС‰РµРµ СЃРѕРµРґРёРЅРµРЅРёРµ СЃ Р‘Р”.
+     * @return integer РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СѓРІРµРґРѕРјР»РµРЅРёР№.
      */
     function SbrNewComment($ids, $connect = NULL) {
         require_once($_SERVER['DOCUMENT_ROOT']."/classes/sbr.php");
@@ -3311,39 +3311,39 @@ $sObjEntity: $sObjLink<br />
 
         $url = $GLOBALS['host'].'/' . sbr::NEW_TEMPLATE_SBR . '/';
         foreach($comments as $comment) {
-            $this->subject = "Новый комментарий в Безопасной Сделке по проекту «{$comment['sbr_name']}»";
+            $this->subject = "РќРѕРІС‹Р№ РєРѕРјРјРµРЅС‚Р°СЂРёР№ РІ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµ РїРѕ РїСЂРѕРµРєС‚Сѓ В«{$comment['sbr_name']}В»";
             $rs = array();
             $msg = '';
             
             //$sbr_num = sbr::getContractNum($comment['sbr_id'], $comment['scheme_type']);
             $stage_name = sbr_meta::getNameForMail($comment);
             if($comment['is_admin']=='t') {
-                $this->subject = "Арбитраж оставил комментарий в Безопасной Сделке «{$comment['sbr_name']}»";
-                $msg = "Информируем вас о том, что в Сделке «<a href='{$url}?site=Stage&id={$comment['stage_id']}' target='_blank'>{$stage_name}</a>» Арбитраж оставил новый <a href='{$url}?site=Stage&id={$comment['stage_id']}{$this->_addUrlParams(($r == 'e_' ? 'e' : 'f'), '&')}#c_{$comment['id']}'>комментарий</a>:<br/>";
+                $this->subject = "РђСЂР±РёС‚СЂР°Р¶ РѕСЃС‚Р°РІРёР» РєРѕРјРјРµРЅС‚Р°СЂРёР№ РІ Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµ В«{$comment['sbr_name']}В»";
+                $msg = "РРЅС„РѕСЂРјРёСЂСѓРµРј РІР°СЃ Рѕ С‚РѕРј, С‡С‚Рѕ РІ РЎРґРµР»РєРµ В«<a href='{$url}?site=Stage&id={$comment['stage_id']}' target='_blank'>{$stage_name}</a>В» РђСЂР±РёС‚СЂР°Р¶ РѕСЃС‚Р°РІРёР» РЅРѕРІС‹Р№ <a href='{$url}?site=Stage&id={$comment['stage_id']}{$this->_addUrlParams(($r == 'e_' ? 'e' : 'f'), '&')}#c_{$comment['id']}'>РєРѕРјРјРµРЅС‚Р°СЂРёР№</a>:<br/>";
                 
                 $rs[] = 'f_';
                 $rs[] = 'e_';
             } else if($comment['user_id'] == $comment['e_uid']) {
                 $userlink = $GLOBALS["host"]."/users/".$comment['e_login'];
-                $msg = "Информируем вас о том, что в Сделке «<a href='{$url}?site=Stage&id={$comment['stage_id']}' target='_blank'>{$stage_name}</a>» Заказчик <a href=\"{$userlink}\">{$comment['e_uname']} {$comment['e_usurname']}</a> [<a href=\"{$userlink}\">{$comment['e_login']}</a>] оставил новый <a href='{$url}?site=Stage&id={$comment['stage_id']}{$this->_addUrlParams(($r == 'e_' ? 'e' : 'f'), '&')}#c_{$comment['id']}'>комментарий</a>:<br/>";
+                $msg = "РРЅС„РѕСЂРјРёСЂСѓРµРј РІР°СЃ Рѕ С‚РѕРј, С‡С‚Рѕ РІ РЎРґРµР»РєРµ В«<a href='{$url}?site=Stage&id={$comment['stage_id']}' target='_blank'>{$stage_name}</a>В» Р—Р°РєР°Р·С‡РёРє <a href=\"{$userlink}\">{$comment['e_uname']} {$comment['e_usurname']}</a> [<a href=\"{$userlink}\">{$comment['e_login']}</a>] РѕСЃС‚Р°РІРёР» РЅРѕРІС‹Р№ <a href='{$url}?site=Stage&id={$comment['stage_id']}{$this->_addUrlParams(($r == 'e_' ? 'e' : 'f'), '&')}#c_{$comment['id']}'>РєРѕРјРјРµРЅС‚Р°СЂРёР№</a>:<br/>";
                 
                 $rs[] = 'f_';
             } else if($comment['user_id'] == $comment['f_uid']) {
                 $userlink = $GLOBALS["host"]."/users/".$comment['f_login'];
-                $msg = "Информируем вас о том, что в Сделке «<a href='{$url}?site=Stage&id={$comment['stage_id']}' target='_blank'>{$stage_name}</a>» Исполнитель <a href=\"{$userlink}\">{$comment['f_uname']} {$comment['f_usurname']}</a> [<a href=\"{$userlink}\">{$comment['f_login']}</a>] оставил новый <a href='{$url}?site=Stage&id={$comment['stage_id']}{$this->_addUrlParams(($r == 'e_' ? 'e' : 'f'), '&')}#c_{$comment['id']}'>комментарий</a>:<br/>";
+                $msg = "РРЅС„РѕСЂРјРёСЂСѓРµРј РІР°СЃ Рѕ С‚РѕРј, С‡С‚Рѕ РІ РЎРґРµР»РєРµ В«<a href='{$url}?site=Stage&id={$comment['stage_id']}' target='_blank'>{$stage_name}</a>В» РСЃРїРѕР»РЅРёС‚РµР»СЊ <a href=\"{$userlink}\">{$comment['f_uname']} {$comment['f_usurname']}</a> [<a href=\"{$userlink}\">{$comment['f_login']}</a>] РѕСЃС‚Р°РІРёР» РЅРѕРІС‹Р№ <a href='{$url}?site=Stage&id={$comment['stage_id']}{$this->_addUrlParams(($r == 'e_' ? 'e' : 'f'), '&')}#c_{$comment['id']}'>РєРѕРјРјРµРЅС‚Р°СЂРёР№</a>:<br/>";
                 
                 $rs[] = 'e_';
             }
             if($rs) {
                 foreach($rs as $r) {
-                    /*$sbr_link = "задаче «<a href='{$url}?site=Stage&id={$comment['stage_id']}{$this->_addUrlParams(($r == 'e_' ? 'e' : 'f'), '&')}'>{$comment['stage_name']}</a>» проекта «<a href='{$url}?id={$comment['sbr_id']}{$this->_addUrlParams(($r == 'e_' ? 'e' : 'f'), '&')}'>{$comment['sbr_name']}</a>»";
+                    /*$sbr_link = "Р·Р°РґР°С‡Рµ В«<a href='{$url}?site=Stage&id={$comment['stage_id']}{$this->_addUrlParams(($r == 'e_' ? 'e' : 'f'), '&')}'>{$comment['stage_name']}</a>В» РїСЂРѕРµРєС‚Р° В«<a href='{$url}?id={$comment['sbr_id']}{$this->_addUrlParams(($r == 'e_' ? 'e' : 'f'), '&')}'>{$comment['sbr_name']}</a>В»";
                     $msg .= "
-                    <a href='{$url}?site=Stage&id={$comment['stage_id']}{$this->_addUrlParams(($r == 'e_' ? 'e' : 'f'), '&')}#c_{$comment['id']}'>новый комментарий</a> в {$sbr_link}:
+                    <a href='{$url}?site=Stage&id={$comment['stage_id']}{$this->_addUrlParams(($r == 'e_' ? 'e' : 'f'), '&')}#c_{$comment['id']}'>РЅРѕРІС‹Р№ РєРѕРјРјРµРЅС‚Р°СЂРёР№</a> РІ {$sbr_link}:
                     <br/>-----<br/>
-                    «" . reformat($comment['msgtext'], 0, 0, 0, 1) . "»
+                    В«" . reformat($comment['msgtext'], 0, 0, 0, 1) . "В»
                     <br/>-----<br/>
                     ";*/
-                    $msg_send = $msg . "<br/>«".reformat($comment['msgtext'], 0, 0, 0, 1)."».<br/>";
+                    $msg_send = $msg . "<br/>В«".reformat($comment['msgtext'], 0, 0, 0, 1)."В».<br/>";
                     
                     $this->message = $this->splitMessage($this->GetHtml($comment[$r.'uname'], $msg_send, array('header'=>'simple', 'footer'=>'norisk_robot')));
                     $this->recipient = $comment[$r.'uname']." ".$comment[$r.'usurname']." [".$comment[$r.'login']."] <".$comment[$r.'email'].">";
@@ -3356,11 +3356,11 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Отправляет уведомления о новых сообщениях в личке при платной рассылке.
-	 * Консьюмер plproxy-mail
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏС… РІ Р»РёС‡РєРµ РїСЂРё РїР»Р°С‚РЅРѕР№ СЂР°СЃСЃС‹Р»РєРµ.
+	 * РљРѕРЅСЃСЊСЋРјРµСЂ plproxy-mail
      * 
-     * @param   array      $params    Данные от PgQ, TO-адреса получателей; FROM-адрес отправителя
-     * @param   string     $msg       Текст сообщения
+     * @param   array      $params    Р”Р°РЅРЅС‹Рµ РѕС‚ PgQ, TO-Р°РґСЂРµСЃР° РїРѕР»СѓС‡Р°С‚РµР»РµР№; FROM-Р°РґСЂРµСЃ РѕС‚РїСЂР°РІРёС‚РµР»СЏ
+     * @param   string     $msg       РўРµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ
      */
 	function SendMasssending($params, $from, $to, $msg)
 	{
@@ -3374,10 +3374,10 @@ $sObjEntity: $sObjLink<br />
 		$from = new users;
 		$from->GetUserByUID($uid_from);
 
-        $this->subject = "Новое сообщение на FL.ru";
+        $this->subject = "РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РЅР° FL.ru";
   		$msg_text = "
 <a href='{$GLOBALS['host']}/users/{$from->login}'>{$from->uname} {$from->usurname}</a> [<a href='{$GLOBALS['host']}/users/{$from->login}{$this->_addUrlParams('b')}'>{$from->login}</a>]
-написал(а) вам новое сообщение на сайте FL.ru.<br />
+РЅР°РїРёСЃР°Р»(Р°) РІР°Рј РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РЅР° СЃР°Р№С‚Рµ FL.ru.<br />
 <br />
 ---------- 
 <br />
@@ -3399,7 +3399,7 @@ $sObjEntity: $sObjLink<br />
     		}
 
 	    	if (!$this->Connect())
-    			return "Невозможно соеденится с SMTP сервером";
+    			return "РќРµРІРѕР·РјРѕР¶РЅРѕ СЃРѕРµРґРµРЅРёС‚СЃСЏ СЃ SMTP СЃРµСЂРІРµСЂРѕРј";
             if ($to->email && (substr($to->subscr, 12, 1) == '1')) {
     			$this->recipient = $to->uname." ".$to->usurname." [".$to->login."] <".$to->email.">";
     			$this->message = $this->GetHtml($to->uname, $msg_text, array('header' => 'default', 'footer' => 'default'), array('login'=>$to->login));
@@ -3407,13 +3407,13 @@ $sObjEntity: $sObjLink<br />
             }
         }
 
-        $this->subject = "Ваша рассылка на FL.ru прошла модерацию";
+        $this->subject = "Р’Р°С€Р° СЂР°СЃСЃС‹Р»РєР° РЅР° FL.ru РїСЂРѕС€Р»Р° РјРѕРґРµСЂР°С†РёСЋ";
    		$this->recipient = $from->uname." ".$from->usurname." [".$from->login."] <".$from->email.">";
    		$msg_text = $this->ToHtml($msg);
    		
         $body = 
-        "Ваша заявка на рассылку была рассмотрена и одобрена модераторами сайта FL.ru. 
-         Фрилансерам выбранных вами специализаций будет отправлено сообщение следующего содержания:</br>
+        "Р’Р°С€Р° Р·Р°СЏРІРєР° РЅР° СЂР°СЃСЃС‹Р»РєСѓ Р±С‹Р»Р° СЂР°СЃСЃРјРѕС‚СЂРµРЅР° Рё РѕРґРѕР±СЂРµРЅР° РјРѕРґРµСЂР°С‚РѕСЂР°РјРё СЃР°Р№С‚Р° FL.ru. 
+         Р¤СЂРёР»Р°РЅСЃРµСЂР°Рј РІС‹Р±СЂР°РЅРЅС‹С… РІР°РјРё СЃРїРµС†РёР°Р»РёР·Р°С†РёР№ Р±СѓРґРµС‚ РѕС‚РїСЂР°РІР»РµРЅРѕ СЃРѕРѕР±С‰РµРЅРёРµ СЃР»РµРґСѓСЋС‰РµРіРѕ СЃРѕРґРµСЂР¶Р°РЅРёСЏ:</br>
          ---<br/>
          {$msg_text}<br/>
          ---<br/>";
@@ -3426,11 +3426,11 @@ $sObjEntity: $sObjLink<br />
 
 
     /**
-     * Отправляет уведомления о новых сообщениях в личке при рассылке администрации.
-	 * Консьюмер plproxy-mail
+     * РћС‚РїСЂР°РІР»СЏРµС‚ СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏС… РІ Р»РёС‡РєРµ РїСЂРё СЂР°СЃСЃС‹Р»РєРµ Р°РґРјРёРЅРёСЃС‚СЂР°С†РёРё.
+	 * РљРѕРЅСЃСЊСЋРјРµСЂ plproxy-mail
      *
-     * @param   array      $params    Данные от PgQ, TO-адреса получателей; FROM-адрес отправителя
-     * @param   string     $msg       Текст сообщения
+     * @param   array      $params    Р”Р°РЅРЅС‹Рµ РѕС‚ PgQ, TO-Р°РґСЂРµСЃР° РїРѕР»СѓС‡Р°С‚РµР»РµР№; FROM-Р°РґСЂРµСЃ РѕС‚РїСЂР°РІРёС‚РµР»СЏ
+     * @param   string     $msg       РўРµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ
      */
 	function SendAdminMessage($params)
 	{
@@ -3440,9 +3440,9 @@ $sObjEntity: $sObjLink<br />
         
         $message_id = $params;
 		if (!($message = $messObj->GetMessage($message_id)))
-			return "Тело сообщения отсутствует.";
+			return "РўРµР»Рѕ СЃРѕРѕР±С‰РµРЅРёСЏ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚.";
 
-		$this->subject = "Новое сообщение от Команды FL.ru";
+		$this->subject = "РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РѕС‚ РљРѕРјР°РЅРґС‹ FL.ru";
 
 		$msg_text = reformat2($message['msg_text'], 100);
 		$attaches = array();
@@ -3454,7 +3454,7 @@ $sObjEntity: $sObjLink<br />
 		}
 
 		if (!$this->Connect())
-			return "Невозможно соеденится с SMTP сервером";
+			return "РќРµРІРѕР·РјРѕР¶РЅРѕ СЃРѕРµРґРµРЅРёС‚СЃСЏ СЃ SMTP СЃРµСЂРІРµСЂРѕРј";
 			
         $from = new users;
 		$from->GetUserByUID( $message['from_id'] );
@@ -3480,7 +3480,7 @@ $sObjEntity: $sObjLink<br />
 	}
 	
 	/**
-	 * Новая платная рекомендация
+	 * РќРѕРІР°СЏ РїР»Р°С‚РЅР°СЏ СЂРµРєРѕРјРµРЅРґР°С†РёСЏ
 	 *
 	 * @param array $events
 	 */
@@ -3489,7 +3489,7 @@ $sObjEntity: $sObjLink<br />
         $f_user = new users();
         $t_user = new users();
         
-        $this->subject = "Вам оставили отзыв";
+        $this->subject = "Р’Р°Рј РѕСЃС‚Р°РІРёР»Рё РѕС‚Р·С‹РІ";
         
         if (!is_array($ids)) {
             $ids = array($ids);
@@ -3504,8 +3504,8 @@ $sObjEntity: $sObjLink<br />
             $to_user = get_object_vars($t_user);
             $from_user = get_object_vars($f_user);
                 
-            $message  = (is_emp($from_user['role'])?"Заказчик":"Фрилансер") . " {$from_user['uname']} {$from_user['usurname']} [{$from_user['login']}] оставил вам отзыв. ";
-            $message .= "Вы можете ознакомиться с ним, а затем принять или отказаться от данного отзыва на вкладке «Отзывы» в вашем аккаунте.";
+            $message  = (is_emp($from_user['role'])?"Р—Р°РєР°Р·С‡РёРє":"Р¤СЂРёР»Р°РЅСЃРµСЂ") . " {$from_user['uname']} {$from_user['usurname']} [{$from_user['login']}] РѕСЃС‚Р°РІРёР» РІР°Рј РѕС‚Р·С‹РІ. ";
+            $message .= "Р’С‹ РјРѕР¶РµС‚Рµ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РЅРёРј, Р° Р·Р°С‚РµРј РїСЂРёРЅСЏС‚СЊ РёР»Рё РѕС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ РґР°РЅРЅРѕРіРѕ РѕС‚Р·С‹РІР° РЅР° РІРєР»Р°РґРєРµ В«РћС‚Р·С‹РІС‹В» РІ РІР°С€РµРј Р°РєРєР°СѓРЅС‚Рµ.";
                 
             $this->message   = $this->GetHtml( $to_user['uname'], $message, array('header'=>'default', 'footer'=>'default'), array('login' => $to_user['login']));
             $this->recipient = $to_user['uname'].' '.$to_user['usurname'].' ['.$to_user['login'].'] <'.$to_user['email'].'>';
@@ -3514,7 +3514,7 @@ $sObjEntity: $sObjLink<br />
 	}
 	
 	/**
-	 * Изменение статуса платной рекомендации
+	 * РР·РјРµРЅРµРЅРёРµ СЃС‚Р°С‚СѓСЃР° РїР»Р°С‚РЅРѕР№ СЂРµРєРѕРјРµРЅРґР°С†РёРё
 	 *
 	 * @param array $events
 	 */
@@ -3534,24 +3534,24 @@ $sObjEntity: $sObjLink<br />
             $from_user = get_object_vars($f_user);
             
             if($mod_status == paid_advices::MOD_STATUS_ACCEPTED ) {
-                $this->subject = "Ваш отзыв прошел модерацию";  
-                $message  = "Отзыв от ". (is_emp($from_user['role'])?"Заказчика":"Фрилансера") . " {$from_user['uname']} {$from_user['usurname']} [{$from_user['login']}], отправленный вами на проверку, одобрен модератором.";
-                $message .= " Для того чтобы отзыв появился на вкладке «Отзывы» вашего аккаунта и стал видна всем пользователям сайта, вам необходимо его <a href='{$GLOBALS['host']}/users/{$to_user['login']}/opinions/{$this->_addUrlParams('b')}#n_{$id_advice}'>оплатить</a>.";        
+                $this->subject = "Р’Р°С€ РѕС‚Р·С‹РІ РїСЂРѕС€РµР» РјРѕРґРµСЂР°С†РёСЋ";  
+                $message  = "РћС‚Р·С‹РІ РѕС‚ ". (is_emp($from_user['role'])?"Р—Р°РєР°Р·С‡РёРєР°":"Р¤СЂРёР»Р°РЅСЃРµСЂР°") . " {$from_user['uname']} {$from_user['usurname']} [{$from_user['login']}], РѕС‚РїСЂР°РІР»РµРЅРЅС‹Р№ РІР°РјРё РЅР° РїСЂРѕРІРµСЂРєСѓ, РѕРґРѕР±СЂРµРЅ РјРѕРґРµСЂР°С‚РѕСЂРѕРј.";
+                $message .= " Р”Р»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ РѕС‚Р·С‹РІ РїРѕСЏРІРёР»СЃСЏ РЅР° РІРєР»Р°РґРєРµ В«РћС‚Р·С‹РІС‹В» РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р° Рё СЃС‚Р°Р» РІРёРґРЅР° РІСЃРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј СЃР°Р№С‚Р°, РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РµРіРѕ <a href='{$GLOBALS['host']}/users/{$to_user['login']}/opinions/{$this->_addUrlParams('b')}#n_{$id_advice}'>РѕРїР»Р°С‚РёС‚СЊ</a>.";        
             } else if($mod_status == paid_advices::MOD_STATUS_DECLINED && $status == paid_advices::STATUS_BLOCKED) {
-                $this->subject = "Отзыв удален модератором";
+                $this->subject = "РћС‚Р·С‹РІ СѓРґР°Р»РµРЅ РјРѕРґРµСЂР°С‚РѕСЂРѕРј";
                 $paid_advice = new paid_advices();
                 $advice = $paid_advice->getAdviceById($id_advice);
                 $message = 
-                "Отзыв, отправленный вами на модерацию, был удален по причине: 
+                "РћС‚Р·С‹РІ, РѕС‚РїСЂР°РІР»РµРЅРЅС‹Р№ РІР°РјРё РЅР° РјРѕРґРµСЂР°С†РёСЋ, Р±С‹Р» СѓРґР°Р»РµРЅ РїРѕ РїСЂРёС‡РёРЅРµ: 
                 <br/>-----<br/>
                 ".nl2br($advice['mod_msg'])."
                 <br/>-----<br/><br/>
-                Благодарим за понимание!<br/><br/>
-                По всем возникающим вопросам вы можете обращаться в нашу <a href='https://feedback.fl.ru/{$this->_addUrlParams('b', '?')}'>службу поддержки</a>.";
+                Р‘Р»Р°РіРѕРґР°СЂРёРј Р·Р° РїРѕРЅРёРјР°РЅРёРµ!<br/><br/>
+                РџРѕ РІСЃРµРј РІРѕР·РЅРёРєР°СЋС‰РёРј РІРѕРїСЂРѕСЃР°Рј РІС‹ РјРѕР¶РµС‚Рµ РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РІ РЅР°С€Сѓ <a href='https://feedback.fl.ru/{$this->_addUrlParams('b', '?')}'>СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.";
             } else if($mod_status == paid_advices::MOD_STATUS_DECLINED ) {
-                $this->subject = "Ваш отзыв не прошел модерацию";
-                $message  = "Отзыв от ". (is_emp($from_user['role'])?"Заказчика":"Фрилансера") . " {$from_user['uname']} {$from_user['usurname']} [{$from_user['login']}], отправленный вами на проверку модераторам, не одобрен.";
-                $message .= " Вам необходимо устранить причину, указанную модераторами в качестве основания отказа для принятия отзыва. После этого вы можете отправить отзыв на повторную модерацию.";
+                $this->subject = "Р’Р°С€ РѕС‚Р·С‹РІ РЅРµ РїСЂРѕС€РµР» РјРѕРґРµСЂР°С†РёСЋ";
+                $message  = "РћС‚Р·С‹РІ РѕС‚ ". (is_emp($from_user['role'])?"Р—Р°РєР°Р·С‡РёРєР°":"Р¤СЂРёР»Р°РЅСЃРµСЂР°") . " {$from_user['uname']} {$from_user['usurname']} [{$from_user['login']}], РѕС‚РїСЂР°РІР»РµРЅРЅС‹Р№ РІР°РјРё РЅР° РїСЂРѕРІРµСЂРєСѓ РјРѕРґРµСЂР°С‚РѕСЂР°Рј, РЅРµ РѕРґРѕР±СЂРµРЅ.";
+                $message .= " Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ СѓСЃС‚СЂР°РЅРёС‚СЊ РїСЂРёС‡РёРЅСѓ, СѓРєР°Р·Р°РЅРЅСѓСЋ РјРѕРґРµСЂР°С‚РѕСЂР°РјРё РІ РєР°С‡РµСЃС‚РІРµ РѕСЃРЅРѕРІР°РЅРёСЏ РѕС‚РєР°Р·Р° РґР»СЏ РїСЂРёРЅСЏС‚РёСЏ РѕС‚Р·С‹РІР°. РџРѕСЃР»Рµ СЌС‚РѕРіРѕ РІС‹ РјРѕР¶РµС‚Рµ РѕС‚РїСЂР°РІРёС‚СЊ РѕС‚Р·С‹РІ РЅР° РїРѕРІС‚РѕСЂРЅСѓСЋ РјРѕРґРµСЂР°С†РёСЋ.";
             }
             
             $this->message   = $this->GetHtml( $to_user['uname'], $message, array('header'=>'default', 'footer'=>'default'), array('login' => $to_user['login']));
@@ -3562,22 +3562,22 @@ $sObjEntity: $sObjLink<br />
     
     
     /**
-     * Рассылка для неактивных фрилансеров, рассылается из hourly.php
+     * Р Р°СЃСЃС‹Р»РєР° РґР»СЏ РЅРµР°РєС‚РёРІРЅС‹С… С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, СЂР°СЃСЃС‹Р»Р°РµС‚СЃСЏ РёР· hourly.php
      * 
-     * @return integer  количество пользователей получивших рассылку
+     * @return integer  РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РїРѕР»СѓС‡РёРІС€РёС… СЂР°СЃСЃС‹Р»РєСѓ
      */
     function noActiveFreelancers() {
         $DB = new DB('master');
         require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/users.php';
         
         $message = "<p>
-&nbsp;&nbsp;&nbsp;&nbsp;Мы заметили, что вы давно не заходили на <a href='{$GLOBALS['host']}/?utm_source=newsletter4&utm_medium=rassilka&utm_campaign=freelancers_comeback'>FL.ru</a>.<br/> 
-&nbsp;&nbsp;&nbsp;&nbsp;<br/>Если вы не можете часто посещать наш сайт, рекомендуем приобрести <a href='{$GLOBALS['host']}/payed/?utm_source=newsletter4&utm_medium=rassilka&utm_campaign=freelancers_comeback'>аккаунт PRO</a>: ваша контактная информация будет видна всем работодателям, и они смогут связаться с вами в любое время.
-&nbsp;&nbsp;&nbsp;&nbsp;<br/>Тем временем, на сайте публикуется около 40 000 проектов в месяц, а средняя стоимость проекта составляет 25000 рублей. Наверняка, многие из этих проектов будут вам интересны.
-&nbsp;&nbsp;&nbsp;&nbsp;Напоминаем, что искать работу на <a href='{$GLOBALS['host']}/?utm_source=newsletter4&utm_medium=rassilka&utm_campaign=freelancers_comeback'>FL.ru</a> очень просто. Вы можете подписаться на ежедневные рассылки предложений работодателей или установить на свой компьютер программу <a href='{$GLOBALS['host']}/promo/freetray/?utm_source=newsletter4&utm_medium=rassilka&utm_campaign=freelancers_comeback'>Free Tray</a>.<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href='{$GLOBALS['host']}/?utm_source=newsletter4&utm_medium=rassilka&utm_campaign=freelancers_comeback'>Перейти на FL.ru</a>
+&nbsp;&nbsp;&nbsp;&nbsp;РњС‹ Р·Р°РјРµС‚РёР»Рё, С‡С‚Рѕ РІС‹ РґР°РІРЅРѕ РЅРµ Р·Р°С…РѕРґРёР»Рё РЅР° <a href='{$GLOBALS['host']}/?utm_source=newsletter4&utm_medium=rassilka&utm_campaign=freelancers_comeback'>FL.ru</a>.<br/> 
+&nbsp;&nbsp;&nbsp;&nbsp;<br/>Р•СЃР»Рё РІС‹ РЅРµ РјРѕР¶РµС‚Рµ С‡Р°СЃС‚Рѕ РїРѕСЃРµС‰Р°С‚СЊ РЅР°С€ СЃР°Р№С‚, СЂРµРєРѕРјРµРЅРґСѓРµРј РїСЂРёРѕР±СЂРµСЃС‚Рё <a href='{$GLOBALS['host']}/payed/?utm_source=newsletter4&utm_medium=rassilka&utm_campaign=freelancers_comeback'>Р°РєРєР°СѓРЅС‚ PRO</a>: РІР°С€Р° РєРѕРЅС‚Р°РєС‚РЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ Р±СѓРґРµС‚ РІРёРґРЅР° РІСЃРµРј СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏРј, Рё РѕРЅРё СЃРјРѕРіСѓС‚ СЃРІСЏР·Р°С‚СЊСЃСЏ СЃ РІР°РјРё РІ Р»СЋР±РѕРµ РІСЂРµРјСЏ.
+&nbsp;&nbsp;&nbsp;&nbsp;<br/>РўРµРј РІСЂРµРјРµРЅРµРј, РЅР° СЃР°Р№С‚Рµ РїСѓР±Р»РёРєСѓРµС‚СЃСЏ РѕРєРѕР»Рѕ 40 000 РїСЂРѕРµРєС‚РѕРІ РІ РјРµСЃСЏС†, Р° СЃСЂРµРґРЅСЏСЏ СЃС‚РѕРёРјРѕСЃС‚СЊ РїСЂРѕРµРєС‚Р° СЃРѕСЃС‚Р°РІР»СЏРµС‚ 25000 СЂСѓР±Р»РµР№. РќР°РІРµСЂРЅСЏРєР°, РјРЅРѕРіРёРµ РёР· СЌС‚РёС… РїСЂРѕРµРєС‚РѕРІ Р±СѓРґСѓС‚ РІР°Рј РёРЅС‚РµСЂРµСЃРЅС‹.
+&nbsp;&nbsp;&nbsp;&nbsp;РќР°РїРѕРјРёРЅР°РµРј, С‡С‚Рѕ РёСЃРєР°С‚СЊ СЂР°Р±РѕС‚Сѓ РЅР° <a href='{$GLOBALS['host']}/?utm_source=newsletter4&utm_medium=rassilka&utm_campaign=freelancers_comeback'>FL.ru</a> РѕС‡РµРЅСЊ РїСЂРѕСЃС‚Рѕ. Р’С‹ РјРѕР¶РµС‚Рµ РїРѕРґРїРёСЃР°С‚СЊСЃСЏ РЅР° РµР¶РµРґРЅРµРІРЅС‹Рµ СЂР°СЃСЃС‹Р»РєРё РїСЂРµРґР»РѕР¶РµРЅРёР№ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ РёР»Рё СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РЅР° СЃРІРѕР№ РєРѕРјРїСЊСЋС‚РµСЂ РїСЂРѕРіСЂР°РјРјСѓ <a href='{$GLOBALS['host']}/promo/freetray/?utm_source=newsletter4&utm_medium=rassilka&utm_campaign=freelancers_comeback'>Free Tray</a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href='{$GLOBALS['host']}/?utm_source=newsletter4&utm_medium=rassilka&utm_campaign=freelancers_comeback'>РџРµСЂРµР№С‚Рё РЅР° FL.ru</a>
 </p>";
-        $this->subject   = "Приглашаем вас вновь посетить FL.ru";
+        $this->subject   = "РџСЂРёРіР»Р°С€Р°РµРј РІР°СЃ РІРЅРѕРІСЊ РїРѕСЃРµС‚РёС‚СЊ FL.ru";
         $this->recipient = '';
         $this->message   = $this->GetHtml( 
             '', 
@@ -3620,20 +3620,20 @@ $sObjEntity: $sObjLink<br />
     
     
     /**
-     * @todo: отключено в hourly, при использовании исправить текст
+     * @todo: РѕС‚РєР»СЋС‡РµРЅРѕ РІ hourly, РїСЂРё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё РёСЃРїСЂР°РІРёС‚СЊ С‚РµРєСЃС‚
      * 
-     * Рассылка для неактивных работодателей, рассылается из hourly.php
+     * Р Р°СЃСЃС‹Р»РєР° РґР»СЏ РЅРµР°РєС‚РёРІРЅС‹С… СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№, СЂР°СЃСЃС‹Р»Р°РµС‚СЃСЏ РёР· hourly.php
      * 
-     * @return integer  количество пользователей получивших рассылку
+     * @return integer  РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РїРѕР»СѓС‡РёРІС€РёС… СЂР°СЃСЃС‹Р»РєСѓ
      */
     function noActiveEmployers() {
         $DB = new DB('master');
         require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/users.php';
         $eHost = $GLOBALS['host'];        
-        $message = "<p>Мы заметили, что вы давно не заходили на <a href=\"{$eHost}/?utm_source=newsletter4&utm_medium=rassilka&utm_campaign=clients_comeback\" target=\"_blank\">FL.ru</a>. Тем временем, ваших заказов ждут более 1 миллиона профессиональных исполнителей – дизайнеров, веб-мастеров, программистов, разработчиков, копирайтеров, переводчиков, менеджеров и консультантов. </p>
-<p>Напоминаем, что работать на FL.ru легко и удобно. Всегда к вашим услугам <a href=\"{$eHost}/manager/?utm_source=newsletter4&utm_medium=rassilka&utm_content=manager&utm_campaign=clients_comeback\" target=\"_blank\">менеджеры</a>, которые возьмут на себя все обязанности по подбору нужного вам специалиста, а сервис «<a href=\"{$eHost}/promo/" . sbr::NEW_TEMPLATE_SBR . "/?utm_source=newsletter4&utm_medium=rassilka&utm_content=manager&utm_campaign=clients_comeback\" target=\"_blank\">Безопасная Сделка</a>» обеспечит полную безопасность вашего сотрудничества с фрилансерами на всех этапах выполнения ваших проектов.</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"{$eHost}/?utm_source=newsletter4&utm_medium=rassilka&utm_campaign=clients_comeback\" target=\"_blank\">Перейти на FL.ru</a></p>";
-        $this->subject   = "Приглашаем вас вновь посетить FL.ru";
+        $message = "<p>РњС‹ Р·Р°РјРµС‚РёР»Рё, С‡С‚Рѕ РІС‹ РґР°РІРЅРѕ РЅРµ Р·Р°С…РѕРґРёР»Рё РЅР° <a href=\"{$eHost}/?utm_source=newsletter4&utm_medium=rassilka&utm_campaign=clients_comeback\" target=\"_blank\">FL.ru</a>. РўРµРј РІСЂРµРјРµРЅРµРј, РІР°С€РёС… Р·Р°РєР°Р·РѕРІ Р¶РґСѓС‚ Р±РѕР»РµРµ 1 РјРёР»Р»РёРѕРЅР° РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹С… РёСЃРїРѕР»РЅРёС‚РµР»РµР№ вЂ“ РґРёР·Р°Р№РЅРµСЂРѕРІ, РІРµР±-РјР°СЃС‚РµСЂРѕРІ, РїСЂРѕРіСЂР°РјРјРёСЃС‚РѕРІ, СЂР°Р·СЂР°Р±РѕС‚С‡РёРєРѕРІ, РєРѕРїРёСЂР°Р№С‚РµСЂРѕРІ, РїРµСЂРµРІРѕРґС‡РёРєРѕРІ, РјРµРЅРµРґР¶РµСЂРѕРІ Рё РєРѕРЅСЃСѓР»СЊС‚Р°РЅС‚РѕРІ. </p>
+<p>РќР°РїРѕРјРёРЅР°РµРј, С‡С‚Рѕ СЂР°Р±РѕС‚Р°С‚СЊ РЅР° FL.ru Р»РµРіРєРѕ Рё СѓРґРѕР±РЅРѕ. Р’СЃРµРіРґР° Рє РІР°С€РёРј СѓСЃР»СѓРіР°Рј <a href=\"{$eHost}/manager/?utm_source=newsletter4&utm_medium=rassilka&utm_content=manager&utm_campaign=clients_comeback\" target=\"_blank\">РјРµРЅРµРґР¶РµСЂС‹</a>, РєРѕС‚РѕСЂС‹Рµ РІРѕР·СЊРјСѓС‚ РЅР° СЃРµР±СЏ РІСЃРµ РѕР±СЏР·Р°РЅРЅРѕСЃС‚Рё РїРѕ РїРѕРґР±РѕСЂСѓ РЅСѓР¶РЅРѕРіРѕ РІР°Рј СЃРїРµС†РёР°Р»РёСЃС‚Р°, Р° СЃРµСЂРІРёСЃ В«<a href=\"{$eHost}/promo/" . sbr::NEW_TEMPLATE_SBR . "/?utm_source=newsletter4&utm_medium=rassilka&utm_content=manager&utm_campaign=clients_comeback\" target=\"_blank\">Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°</a>В» РѕР±РµСЃРїРµС‡РёС‚ РїРѕР»РЅСѓСЋ Р±РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ РІР°С€РµРіРѕ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР° СЃ С„СЂРёР»Р°РЅСЃРµСЂР°РјРё РЅР° РІСЃРµС… СЌС‚Р°РїР°С… РІС‹РїРѕР»РЅРµРЅРёСЏ РІР°С€РёС… РїСЂРѕРµРєС‚РѕРІ.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"{$eHost}/?utm_source=newsletter4&utm_medium=rassilka&utm_campaign=clients_comeback\" target=\"_blank\">РџРµСЂРµР№С‚Рё РЅР° FL.ru</a></p>";
+        $this->subject   = "РџСЂРёРіР»Р°С€Р°РµРј РІР°СЃ РІРЅРѕРІСЊ РїРѕСЃРµС‚РёС‚СЊ FL.ru";
         $this->recipient = '';
         $this->message   = $this->GetHtml( 
             $user['uname'], 
@@ -3676,19 +3676,19 @@ $sObjEntity: $sObjLink<br />
     
     
     /**
-     * Рассылка для фрилансеров с незаполненным профилем. Рассылается с hourly.php
+     * Р Р°СЃСЃС‹Р»РєР° РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ СЃ РЅРµР·Р°РїРѕР»РЅРµРЅРЅС‹Рј РїСЂРѕС„РёР»РµРј. Р Р°СЃСЃС‹Р»Р°РµС‚СЃСЏ СЃ hourly.php
      * 
-     * @return integer  количество пользователей получивших рассылку
+     * @return integer  РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РїРѕР»СѓС‡РёРІС€РёС… СЂР°СЃСЃС‹Р»РєСѓ
      */
     function withoutProfileFrelancers() {
         $DB = new DB('master');
         $this->recipient = '';
-        $this->subject   = "Как получить больше заказов на FL.ru";//"Напоминание от FL.ru: вы теряете заказчиков!";
+        $this->subject   = "РљР°Рє РїРѕР»СѓС‡РёС‚СЊ Р±РѕР»СЊС€Рµ Р·Р°РєР°Р·РѕРІ РЅР° FL.ru";//"РќР°РїРѕРјРёРЅР°РЅРёРµ РѕС‚ FL.ru: РІС‹ С‚РµСЂСЏРµС‚Рµ Р·Р°РєР°Р·С‡РёРєРѕРІ!";
         $message = "<p>
-&nbsp;&nbsp;&nbsp;&nbsp;Мы заметили, что у вас не заполнен раздел «Портфолио». По статистике, 95% работодателей обращают внимание на фрилансеров с выбранной специализацией, заполненным портфолио и опытом работы. Когда вы не предоставляете полную информацию о себе как о специалисте, не демонстрируете уровень своих работ, заказчики не могут в полной мере оценить ваш профессионализм и в таком случае нередко отказываются от сотрудничества.<br/><br/>            
-&nbsp;&nbsp;&nbsp;&nbsp;Мы рекомендуем вам заполнить портфолио примерами выполненных вами работ. Это поможет вам быстрее найти интересный и выгодный проект.<br/><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;Полная инструкция по заполнению портфолио находится <a href='https://feedback.fl.ru/'>здесь</a>. Вы можете ознакомиться с ней в любое время<br/><br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<a href='{$GLOBALS['host']}'>Перейти на FL.ru</a>";
+&nbsp;&nbsp;&nbsp;&nbsp;РњС‹ Р·Р°РјРµС‚РёР»Рё, С‡С‚Рѕ Сѓ РІР°СЃ РЅРµ Р·Р°РїРѕР»РЅРµРЅ СЂР°Р·РґРµР» В«РџРѕСЂС‚С„РѕР»РёРѕВ». РџРѕ СЃС‚Р°С‚РёСЃС‚РёРєРµ, 95% СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ РѕР±СЂР°С‰Р°СЋС‚ РІРЅРёРјР°РЅРёРµ РЅР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ СЃ РІС‹Р±СЂР°РЅРЅРѕР№ СЃРїРµС†РёР°Р»РёР·Р°С†РёРµР№, Р·Р°РїРѕР»РЅРµРЅРЅС‹Рј РїРѕСЂС‚С„РѕР»РёРѕ Рё РѕРїС‹С‚РѕРј СЂР°Р±РѕС‚С‹. РљРѕРіРґР° РІС‹ РЅРµ РїСЂРµРґРѕСЃС‚Р°РІР»СЏРµС‚Рµ РїРѕР»РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃРµР±Рµ РєР°Рє Рѕ СЃРїРµС†РёР°Р»РёСЃС‚Рµ, РЅРµ РґРµРјРѕРЅСЃС‚СЂРёСЂСѓРµС‚Рµ СѓСЂРѕРІРµРЅСЊ СЃРІРѕРёС… СЂР°Р±РѕС‚, Р·Р°РєР°Р·С‡РёРєРё РЅРµ РјРѕРіСѓС‚ РІ РїРѕР»РЅРѕР№ РјРµСЂРµ РѕС†РµРЅРёС‚СЊ РІР°С€ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»РёР·Рј Рё РІ С‚Р°РєРѕРј СЃР»СѓС‡Р°Рµ РЅРµСЂРµРґРєРѕ РѕС‚РєР°Р·С‹РІР°СЋС‚СЃСЏ РѕС‚ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР°.<br/><br/>            
+&nbsp;&nbsp;&nbsp;&nbsp;РњС‹ СЂРµРєРѕРјРµРЅРґСѓРµРј РІР°Рј Р·Р°РїРѕР»РЅРёС‚СЊ РїРѕСЂС‚С„РѕР»РёРѕ РїСЂРёРјРµСЂР°РјРё РІС‹РїРѕР»РЅРµРЅРЅС‹С… РІР°РјРё СЂР°Р±РѕС‚. Р­С‚Рѕ РїРѕРјРѕР¶РµС‚ РІР°Рј Р±С‹СЃС‚СЂРµРµ РЅР°Р№С‚Рё РёРЅС‚РµСЂРµСЃРЅС‹Р№ Рё РІС‹РіРѕРґРЅС‹Р№ РїСЂРѕРµРєС‚.<br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;РџРѕР»РЅР°СЏ РёРЅСЃС‚СЂСѓРєС†РёСЏ РїРѕ Р·Р°РїРѕР»РЅРµРЅРёСЋ РїРѕСЂС‚С„РѕР»РёРѕ РЅР°С…РѕРґРёС‚СЃСЏ <a href='https://feedback.fl.ru/'>Р·РґРµСЃСЊ</a>. Р’С‹ РјРѕР¶РµС‚Рµ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РЅРµР№ РІ Р»СЋР±РѕРµ РІСЂРµРјСЏ<br/><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href='{$GLOBALS['host']}'>РџРµСЂРµР№С‚Рё РЅР° FL.ru</a>";
         $this->message = $this->GetHtml( 
             '', 
             $message,
@@ -3740,18 +3740,18 @@ $sObjEntity: $sObjLink<br />
        
     
     /**
-     * Рассылка для работодателей с незаполненным профилем. Рассылается с hourly.php
+     * Р Р°СЃСЃС‹Р»РєР° РґР»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ СЃ РЅРµР·Р°РїРѕР»РЅРµРЅРЅС‹Рј РїСЂРѕС„РёР»РµРј. Р Р°СЃСЃС‹Р»Р°РµС‚СЃСЏ СЃ hourly.php
      * 
-     * @return integer  количество пользователей получивших рассылку
+     * @return integer  РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РїРѕР»СѓС‡РёРІС€РёС… СЂР°СЃСЃС‹Р»РєСѓ
      */
     function withoutProfileEmployers() {
         $DB = new DB('master');
         $this->recipient = '';
-        $this->subject   = "Напоминание от FL.ru: пожалуйста, заполните свой профиль";
+        $this->subject   = "РќР°РїРѕРјРёРЅР°РЅРёРµ РѕС‚ FL.ru: РїРѕР¶Р°Р»СѓР№СЃС‚Р°, Р·Р°РїРѕР»РЅРёС‚Рµ СЃРІРѕР№ РїСЂРѕС„РёР»СЊ";
         $message = "<p>
-&nbsp;&nbsp;&nbsp;&nbsp;Мы заметили, что у вас не полностью заполнен профиль. Однако именно на заполненность профиля работодателя обращают внимание ответственные и профессиональные фрилансеры. Мы рекомендуем вам добавить больше информации о себе. Это поможет вам быстрее найти нужного исполнителя на ваши проекты.<br />
-&nbsp;&nbsp;&nbsp;&nbsp;Полная инструкция по заполнению профиля находится <a href='https://feedback.fl.ru/'>здесь</a>. Вы можете ознакомиться с ней в любое время.<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href='{$GLOBALS['host']}'>Будем рады видеть вас на FL.ru</a>!
+&nbsp;&nbsp;&nbsp;&nbsp;РњС‹ Р·Р°РјРµС‚РёР»Рё, С‡С‚Рѕ Сѓ РІР°СЃ РЅРµ РїРѕР»РЅРѕСЃС‚СЊСЋ Р·Р°РїРѕР»РЅРµРЅ РїСЂРѕС„РёР»СЊ. РћРґРЅР°РєРѕ РёРјРµРЅРЅРѕ РЅР° Р·Р°РїРѕР»РЅРµРЅРЅРѕСЃС‚СЊ РїСЂРѕС„РёР»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ РѕР±СЂР°С‰Р°СЋС‚ РІРЅРёРјР°РЅРёРµ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅС‹Рµ Рё РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Рµ С„СЂРёР»Р°РЅСЃРµСЂС‹. РњС‹ СЂРµРєРѕРјРµРЅРґСѓРµРј РІР°Рј РґРѕР±Р°РІРёС‚СЊ Р±РѕР»СЊС€Рµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃРµР±Рµ. Р­С‚Рѕ РїРѕРјРѕР¶РµС‚ РІР°Рј Р±С‹СЃС‚СЂРµРµ РЅР°Р№С‚Рё РЅСѓР¶РЅРѕРіРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЏ РЅР° РІР°С€Рё РїСЂРѕРµРєС‚С‹.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;РџРѕР»РЅР°СЏ РёРЅСЃС‚СЂСѓРєС†РёСЏ РїРѕ Р·Р°РїРѕР»РЅРµРЅРёСЋ РїСЂРѕС„РёР»СЏ РЅР°С…РѕРґРёС‚СЃСЏ <a href='https://feedback.fl.ru/'>Р·РґРµСЃСЊ</a>. Р’С‹ РјРѕР¶РµС‚Рµ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РЅРµР№ РІ Р»СЋР±РѕРµ РІСЂРµРјСЏ.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href='{$GLOBALS['host']}'>Р‘СѓРґРµРј СЂР°РґС‹ РІРёРґРµС‚СЊ РІР°СЃ РЅР° FL.ru</a>!
 </p>";
         $this->message = $this->GetHtml( 
             '', 
@@ -3814,142 +3814,142 @@ $sObjEntity: $sObjLink<br />
     
     
     /**
-     * Рассылка работодателям, которые зарегистрировались менее 30 дней назад
-     * (вызывается из nsync)
+     * Р Р°СЃСЃС‹Р»РєР° СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏРј, РєРѕС‚РѕСЂС‹Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°Р»РёСЃСЊ РјРµРЅРµРµ 30 РґРЅРµР№ РЅР°Р·Р°Рґ
+     * (РІС‹Р·С‹РІР°РµС‚СЃСЏ РёР· nsync)
      * 
-     * @param  integer $msgid       id личного сообщения
-     * @param  integer $spamid      id рассылки или NULL, если рассылку нужно создать
-     * @param  array   $recipients  массив с uid пользователей для рассылки
-     * @return integer              id сообщения или 0 в случае ошибки
+     * @param  integer $msgid       id Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
+     * @param  integer $spamid      id СЂР°СЃСЃС‹Р»РєРё РёР»Рё NULL, РµСЃР»Рё СЂР°СЃСЃС‹Р»РєСѓ РЅСѓР¶РЅРѕ СЃРѕР·РґР°С‚СЊ
+     * @param  array   $recipients  РјР°СЃСЃРёРІ СЃ uid РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РґР»СЏ СЂР°СЃСЃС‹Р»РєРё
+     * @return integer              id СЃРѕРѕР±С‰РµРЅРёСЏ РёР»Рё 0 РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
      */
     public function empRegLess30($msgid, $spamid, $recipients ) {
-       $subject = 'Как быстро найти исполнителя на FL.ru';
+       $subject = 'РљР°Рє Р±С‹СЃС‚СЂРѕ РЅР°Р№С‚Рё РёСЃРїРѕР»РЅРёС‚РµР»СЏ РЅР° FL.ru';
         return $this->_nsyncMasssend($msgid, $spamid, $recipients, $subject);
     }
 
  
     /**
-     * Рассылка фрилансерам, которые зарегистрировались на сайте менее 30 дней назад и не купили никакой ПРО
-     * (вызывается из nsync)
+     * Р Р°СЃСЃС‹Р»РєР° С„СЂРёР»Р°РЅСЃРµСЂР°Рј, РєРѕС‚РѕСЂС‹Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°Р»РёСЃСЊ РЅР° СЃР°Р№С‚Рµ РјРµРЅРµРµ 30 РґРЅРµР№ РЅР°Р·Р°Рґ Рё РЅРµ РєСѓРїРёР»Рё РЅРёРєР°РєРѕР№ РџР Рћ
+     * (РІС‹Р·С‹РІР°РµС‚СЃСЏ РёР· nsync)
      * 
-     * @param  integer $msgid       id личного сообщения
-     * @param  integer $spamid      id рассылки или NULL, если рассылку нужно создать
-     * @param  array   $recipients  массив с uid пользователей для рассылки
-     * @return integer              id сообщения или 0 в случае ошибки
+     * @param  integer $msgid       id Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
+     * @param  integer $spamid      id СЂР°СЃСЃС‹Р»РєРё РёР»Рё NULL, РµСЃР»Рё СЂР°СЃСЃС‹Р»РєСѓ РЅСѓР¶РЅРѕ СЃРѕР·РґР°С‚СЊ
+     * @param  array   $recipients  РјР°СЃСЃРёРІ СЃ uid РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РґР»СЏ СЂР°СЃСЃС‹Р»РєРё
+     * @return integer              id СЃРѕРѕР±С‰РµРЅРёСЏ РёР»Рё 0 РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
      */
     public function frlNotBuyPro($msgid, $spamid, $recipients) {
-       $subject = 'Пора зарабатывать на FL.ru!';
+       $subject = 'РџРѕСЂР° Р·Р°СЂР°Р±Р°С‚С‹РІР°С‚СЊ РЅР° FL.ru!';
         return $this->_nsyncMasssend($msgid, $spamid, $recipients, $subject);
     }
     
 
     /**
-     * Рассылка фрилансерам, которые купили тестовый ПРО и не купили обычный ПРО в течение месяца
-     * (вызывается из nsync)
+     * Р Р°СЃСЃС‹Р»РєР° С„СЂРёР»Р°РЅСЃРµСЂР°Рј, РєРѕС‚РѕСЂС‹Рµ РєСѓРїРёР»Рё С‚РµСЃС‚РѕРІС‹Р№ РџР Рћ Рё РЅРµ РєСѓРїРёР»Рё РѕР±С‹С‡РЅС‹Р№ РџР Рћ РІ С‚РµС‡РµРЅРёРµ РјРµСЃСЏС†Р°
+     * (РІС‹Р·С‹РІР°РµС‚СЃСЏ РёР· nsync)
      * 
-     * @param  integer $msgid       id личного сообщения
-     * @param  integer $spamid      id рассылки или NULL, если рассылку нужно создать
-     * @param  array   $recipients  массив с uid пользователей для рассылки
-     * @return integer              id сообщения или 0 в случае ошибки
+     * @param  integer $msgid       id Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
+     * @param  integer $spamid      id СЂР°СЃСЃС‹Р»РєРё РёР»Рё NULL, РµСЃР»Рё СЂР°СЃСЃС‹Р»РєСѓ РЅСѓР¶РЅРѕ СЃРѕР·РґР°С‚СЊ
+     * @param  array   $recipients  РјР°СЃСЃРёРІ СЃ uid РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РґР»СЏ СЂР°СЃСЃС‹Р»РєРё
+     * @return integer              id СЃРѕРѕР±С‰РµРЅРёСЏ РёР»Рё 0 РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
      */
     public function frlBuyTestPro($msgid, $spamid, $recipients) {
-       $subject = 'Зарабатывайте больше на FL.ru!';
+       $subject = 'Р—Р°СЂР°Р±Р°С‚С‹РІР°Р№С‚Рµ Р±РѕР»СЊС€Рµ РЅР° FL.ru!';
         return $this->_nsyncMasssend($msgid, $spamid, $recipients, $subject);
     }
     
     
     /**
-     * Рассылка фрилансерам, которые купили тестовый ПРО и после него только однажды купили обычный
-     * (вызывается из nsync)
+     * Р Р°СЃСЃС‹Р»РєР° С„СЂРёР»Р°РЅСЃРµСЂР°Рј, РєРѕС‚РѕСЂС‹Рµ РєСѓРїРёР»Рё С‚РµСЃС‚РѕРІС‹Р№ РџР Рћ Рё РїРѕСЃР»Рµ РЅРµРіРѕ С‚РѕР»СЊРєРѕ РѕРґРЅР°Р¶РґС‹ РєСѓРїРёР»Рё РѕР±С‹С‡РЅС‹Р№
+     * (РІС‹Р·С‹РІР°РµС‚СЃСЏ РёР· nsync)
      * 
-     * @param  integer $msgid       id личного сообщения
-     * @param  integer $spamid      id рассылки или NULL, если рассылку нужно создать
-     * @param  array   $recipients  массив с uid пользователей для рассылки
-     * @return integer              id сообщения или 0 в случае ошибки
+     * @param  integer $msgid       id Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
+     * @param  integer $spamid      id СЂР°СЃСЃС‹Р»РєРё РёР»Рё NULL, РµСЃР»Рё СЂР°СЃСЃС‹Р»РєСѓ РЅСѓР¶РЅРѕ СЃРѕР·РґР°С‚СЊ
+     * @param  array   $recipients  РјР°СЃСЃРёРІ СЃ uid РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РґР»СЏ СЂР°СЃСЃС‹Р»РєРё
+     * @return integer              id СЃРѕРѕР±С‰РµРЅРёСЏ РёР»Рё 0 РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
      */
     public function frlBuyProOnce($msgid, $spamid, $recipients) {
-       $subject = 'Зарабатывайте больше на FL.ru!';
+       $subject = 'Р—Р°СЂР°Р±Р°С‚С‹РІР°Р№С‚Рµ Р±РѕР»СЊС€Рµ РЅР° FL.ru!';
         return $this->_nsyncMasssend($msgid, $spamid, $recipients, $subject);
     }
     
     
     /**
-     * Рассылка фрилансерам, у которых через 2 недели заканчивается про на 6 или 12 месяцев.
-     * (вызывается из nsync)
+     * Р Р°СЃСЃС‹Р»РєР° С„СЂРёР»Р°РЅСЃРµСЂР°Рј, Сѓ РєРѕС‚РѕСЂС‹С… С‡РµСЂРµР· 2 РЅРµРґРµР»Рё Р·Р°РєР°РЅС‡РёРІР°РµС‚СЃСЏ РїСЂРѕ РЅР° 6 РёР»Рё 12 РјРµСЃСЏС†РµРІ.
+     * (РІС‹Р·С‹РІР°РµС‚СЃСЏ РёР· nsync)
      * 
-     * @param  integer $msgid       id личного сообщения
-     * @param  integer $spamid      id рассылки или NULL, если рассылку нужно создать
-     * @param  array   $recipients  массив с uid пользователей для рассылки
-     * @return integer              id сообщения или 0 в случае ошибки
+     * @param  integer $msgid       id Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
+     * @param  integer $spamid      id СЂР°СЃСЃС‹Р»РєРё РёР»Рё NULL, РµСЃР»Рё СЂР°СЃСЃС‹Р»РєСѓ РЅСѓР¶РЅРѕ СЃРѕР·РґР°С‚СЊ
+     * @param  array   $recipients  РјР°СЃСЃРёРІ СЃ uid РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РґР»СЏ СЂР°СЃСЃС‹Р»РєРё
+     * @return integer              id СЃРѕРѕР±С‰РµРЅРёСЏ РёР»Рё 0 РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
      */
     public function frlEndingPro($msgid, $spamid, $recipients) {
-       $subject = 'FL.ru: последние дни с аккаунтом PRO';
+       $subject = 'FL.ru: РїРѕСЃР»РµРґРЅРёРµ РґРЅРё СЃ Р°РєРєР°СѓРЅС‚РѕРј PRO';
         return $this->_nsyncMasssend($msgid, $spamid, $recipients, $subject);
     }
     
     
     /**
-     * Рассылка работодателям опубликовавшим платный проект или конкурс в течение 30 дней
-     * (вызывается из nsync)
+     * Р Р°СЃСЃС‹Р»РєР° СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏРј РѕРїСѓР±Р»РёРєРѕРІР°РІС€РёРј РїР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚ РёР»Рё РєРѕРЅРєСѓСЂСЃ РІ С‚РµС‡РµРЅРёРµ 30 РґРЅРµР№
+     * (РІС‹Р·С‹РІР°РµС‚СЃСЏ РёР· nsync)
      * 
-     * @param  integer $msgid       id личного сообщения
-     * @param  integer $spamid      id рассылки или NULL, если рассылку нужно создать
-     * @param  array   $recipients  массив с uid пользователей для рассылки
-     * @return integer              id сообщения или 0 в случае ошибки
+     * @param  integer $msgid       id Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
+     * @param  integer $spamid      id СЂР°СЃСЃС‹Р»РєРё РёР»Рё NULL, РµСЃР»Рё СЂР°СЃСЃС‹Р»РєСѓ РЅСѓР¶РЅРѕ СЃРѕР·РґР°С‚СЊ
+     * @param  array   $recipients  РјР°СЃСЃРёРІ СЃ uid РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РґР»СЏ СЂР°СЃСЃС‹Р»РєРё
+     * @return integer              id СЃРѕРѕР±С‰РµРЅРёСЏ РёР»Рё 0 РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
      */
     public function empPubPrj30Days($msgid, $spamid, $recipients) {
-       $subject = 'Как найти подходящего исполнителя на FL.ru';
+       $subject = 'РљР°Рє РЅР°Р№С‚Рё РїРѕРґС…РѕРґСЏС‰РµРіРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЏ РЅР° FL.ru';
         return $this->_nsyncMasssend($msgid, $spamid, $recipients, $subject);
     }
  
     
     /**
-     * Рассылка работодателям купившим рассылку в течение 30 дней
-     * (вызывается из nsync)
+     * Р Р°СЃСЃС‹Р»РєР° СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏРј РєСѓРїРёРІС€РёРј СЂР°СЃСЃС‹Р»РєСѓ РІ С‚РµС‡РµРЅРёРµ 30 РґРЅРµР№
+     * (РІС‹Р·С‹РІР°РµС‚СЃСЏ РёР· nsync)
      * 
-     * @param  integer $msgid       id личного сообщения
-     * @param  integer $spamid      id рассылки или NULL, если рассылку нужно создать
-     * @param  array   $recipients  массив с uid пользователей для рассылки
-     * @return integer              id сообщения или 0 в случае ошибки
+     * @param  integer $msgid       id Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
+     * @param  integer $spamid      id СЂР°СЃСЃС‹Р»РєРё РёР»Рё NULL, РµСЃР»Рё СЂР°СЃСЃС‹Р»РєСѓ РЅСѓР¶РЅРѕ СЃРѕР·РґР°С‚СЊ
+     * @param  array   $recipients  РјР°СЃСЃРёРІ СЃ uid РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РґР»СЏ СЂР°СЃСЃС‹Р»РєРё
+     * @return integer              id СЃРѕРѕР±С‰РµРЅРёСЏ РёР»Рё 0 РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
      */
     public function empBuyMass30Days($msgid, $spamid, $recipients) {
-       $subject = 'Как найти подходящего исполнителя на FL.ru';
+       $subject = 'РљР°Рє РЅР°Р№С‚Рё РїРѕРґС…РѕРґСЏС‰РµРіРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЏ РЅР° FL.ru';
         return $this->_nsyncMasssend($msgid, $spamid, $recipients, $subject);
     }
     
     
     /**
-     * Рассылка работодателям активным за 30 дней, но не публиковавшим проектов.
-     * (вызывается из nsync)
+     * Р Р°СЃСЃС‹Р»РєР° СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏРј Р°РєС‚РёРІРЅС‹Рј Р·Р° 30 РґРЅРµР№, РЅРѕ РЅРµ РїСѓР±Р»РёРєРѕРІР°РІС€РёРј РїСЂРѕРµРєС‚РѕРІ.
+     * (РІС‹Р·С‹РІР°РµС‚СЃСЏ РёР· nsync)
      * 
-     * @param  integer $msgid       id личного сообщения
-     * @param  integer $spamid      id рассылки или NULL, если рассылку нужно создать
-     * @param  array   $recipients  массив с uid пользователей для рассылки
-     * @return integer              id сообщения или 0 в случае ошибки
+     * @param  integer $msgid       id Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
+     * @param  integer $spamid      id СЂР°СЃСЃС‹Р»РєРё РёР»Рё NULL, РµСЃР»Рё СЂР°СЃСЃС‹Р»РєСѓ РЅСѓР¶РЅРѕ СЃРѕР·РґР°С‚СЊ
+     * @param  array   $recipients  РјР°СЃСЃРёРІ СЃ uid РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РґР»СЏ СЂР°СЃСЃС‹Р»РєРё
+     * @return integer              id СЃРѕРѕР±С‰РµРЅРёСЏ РёР»Рё 0 РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
      */
     public function empNotPubPrj($msgid, $spamid, $recipients) {
-       $subject = 'Публикация проекта – простой способ найти исполнителя';
+       $subject = 'РџСѓР±Р»РёРєР°С†РёСЏ РїСЂРѕРµРєС‚Р° вЂ“ РїСЂРѕСЃС‚РѕР№ СЃРїРѕСЃРѕР± РЅР°Р№С‚Рё РёСЃРїРѕР»РЅРёС‚РµР»СЏ';
         return $this->_nsyncMasssend($msgid, $spamid, $recipients, $subject);
     }
     
     
     /**
-     * Рассылка работодателям  у которых на счету есть 35+ бонусных FM.
+     * Р Р°СЃСЃС‹Р»РєР° СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏРј  Сѓ РєРѕС‚РѕСЂС‹С… РЅР° СЃС‡РµС‚Сѓ РµСЃС‚СЊ 35+ Р±РѕРЅСѓСЃРЅС‹С… FM.
      * 
-     * @param  integer $msgid       id личного сообщения
-     * @param  integer $spamid      id рассылки или NULL, если рассылку нужно создать
-     * @param  array   $recipients  массив с uid пользователей для рассылки
-     * @return integer              id сообщения или 0 в случае ошибки
+     * @param  integer $msgid       id Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
+     * @param  integer $spamid      id СЂР°СЃСЃС‹Р»РєРё РёР»Рё NULL, РµСЃР»Рё СЂР°СЃСЃС‹Р»РєСѓ РЅСѓР¶РЅРѕ СЃРѕР·РґР°С‚СЊ
+     * @param  array   $recipients  РјР°СЃСЃРёРІ СЃ uid РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РґР»СЏ СЂР°СЃСЃС‹Р»РєРё
+     * @return integer              id СЃРѕРѕР±С‰РµРЅРёСЏ РёР»Рё 0 РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
      */
     public function empBonusFm($msgid, $spamid, $recipients) {
-        $subject = 'Бонусы от FL.ru';
+        $subject = 'Р‘РѕРЅСѓСЃС‹ РѕС‚ FL.ru';
         return $this->_nsyncMasssend($msgid, $spamid, $recipients, $subject);
     }
     
     /**
-     * Уведомление об удалении поста или комментария в блогах
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ РѕР± СѓРґР°Р»РµРЅРёРё РїРѕСЃС‚Р° РёР»Рё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ РІ Р±Р»РѕРіР°С…
      * 
-     * @param mixed $mId ID блога / массив ID блогов
+     * @param mixed $mId ID Р±Р»РѕРіР° / РјР°СЃСЃРёРІ ID Р±Р»РѕРіРѕРІ
      */
     function blogDeleteNotification( $mId = 0 ) {
         $sId    = !is_array($mId) ? array($mId) : $mId;
@@ -3964,15 +3964,15 @@ $sObjEntity: $sObjLink<br />
             require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/messages.php' );
             
             foreach ( $aBlogs as $blog ) {
-                $message = 'Здравствуйте, '. $blog['uname'] .' '. $blog['usurname'] .'
+                $message = 'Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, '. $blog['uname'] .' '. $blog['usurname'] .'
 
-Сожалеем, но модераторы сайта вынуждены были удалить ваш пост в сообществе'. ( trim($blog["title"]) ? ' &laquo;' . ($blog["title"]) . '&raquo;' : '' ) . ' от ' . date( 'd.m.Y', strtotimeEx($blog['post_time']) ) .'
+РЎРѕР¶Р°Р»РµРµРј, РЅРѕ РјРѕРґРµСЂР°С‚РѕСЂС‹ СЃР°Р№С‚Р° РІС‹РЅСѓР¶РґРµРЅС‹ Р±С‹Р»Рё СѓРґР°Р»РёС‚СЊ РІР°С€ РїРѕСЃС‚ РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ'. ( trim($blog["title"]) ? ' &laquo;' . ($blog["title"]) . '&raquo;' : '' ) . ' РѕС‚ ' . date( 'd.m.Y', strtotimeEx($blog['post_time']) ) .'
 
-Просим вас впредь быть внимательнее при публикации и соблюдать Правила сайта. 
+РџСЂРѕСЃРёРј РІР°СЃ РІРїСЂРµРґСЊ Р±С‹С‚СЊ РІРЅРёРјР°С‚РµР»СЊРЅРµРµ РїСЂРё РїСѓР±Р»РёРєР°С†РёРё Рё СЃРѕР±Р»СЋРґР°С‚СЊ РџСЂР°РІРёР»Р° СЃР°Р№С‚Р°. 
 
-Это сообщение было отправлено автоматически и не требует ответа. 
+Р­С‚Рѕ СЃРѕРѕР±С‰РµРЅРёРµ Р±С‹Р»Рѕ РѕС‚РїСЂР°РІР»РµРЅРѕ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё Рё РЅРµ С‚СЂРµР±СѓРµС‚ РѕС‚РІРµС‚Р°. 
 
-Надеемся на понимание, Команда FL.ru
+РќР°РґРµРµРјСЃСЏ РЅР° РїРѕРЅРёРјР°РЅРёРµ, РљРѕРјР°РЅРґР° FL.ru
 ';
                 
                 messages::Add( users::GetUid($err, 'admin'), $blog['login'], $message, '', 1 );
@@ -3981,9 +3981,9 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Уведомление об удалении предложения в конкурсе
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ РѕР± СѓРґР°Р»РµРЅРёРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ РІ РєРѕРЅРєСѓСЂСЃРµ
      * 
-     * @param mixed $mId ID предложения / массив ID предложений
+     * @param mixed $mId ID РїСЂРµРґР»РѕР¶РµРЅРёСЏ / РјР°СЃСЃРёРІ ID РїСЂРµРґР»РѕР¶РµРЅРёР№
      */
     function contestOfferDeleteNotification( $mId ) {
         $sId    = !is_array($mId) ? array($mId) : $mId;
@@ -4002,16 +4002,16 @@ $sObjEntity: $sObjLink<br />
                 
                 $aOne['name'] = htmlspecialchars($aOne['name'], ENT_QUOTES, 'CP1251', false);
                 
-                $sMessage = 'Здравствуйте, '. $aOne['uname'] .' '. $aOne['usurname'] .'
+                $sMessage = 'Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, '. $aOne['uname'] .' '. $aOne['usurname'] .'
 
-Сожалеем, но из-за нарушения Правил модераторы сайта вынуждены были удалить вашу работу в конкурсе &laquo;'. $aOne['name'] .'&raquo;
+РЎРѕР¶Р°Р»РµРµРј, РЅРѕ РёР·-Р·Р° РЅР°СЂСѓС€РµРЅРёСЏ РџСЂР°РІРёР» РјРѕРґРµСЂР°С‚РѕСЂС‹ СЃР°Р№С‚Р° РІС‹РЅСѓР¶РґРµРЅС‹ Р±С‹Р»Рё СѓРґР°Р»РёС‚СЊ РІР°С€Сѓ СЂР°Р±РѕС‚Сѓ РІ РєРѕРЅРєСѓСЂСЃРµ &laquo;'. $aOne['name'] .'&raquo;
 '. $GLOBALS['host'] . getFriendlyURL('project', $aOne['project_id']) .'?offer='. $aOne['id'] .'#offer-'. $aOne['id'] .'
 
-Просим вас впредь быть внимательнее при публикации работ и соблюдать Правила сайта. 
+РџСЂРѕСЃРёРј РІР°СЃ РІРїСЂРµРґСЊ Р±С‹С‚СЊ РІРЅРёРјР°С‚РµР»СЊРЅРµРµ РїСЂРё РїСѓР±Р»РёРєР°С†РёРё СЂР°Р±РѕС‚ Рё СЃРѕР±Р»СЋРґР°С‚СЊ РџСЂР°РІРёР»Р° СЃР°Р№С‚Р°. 
 
-Это сообщение было отправлено автоматически и не требует ответа. 
+Р­С‚Рѕ СЃРѕРѕР±С‰РµРЅРёРµ Р±С‹Р»Рѕ РѕС‚РїСЂР°РІР»РµРЅРѕ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё Рё РЅРµ С‚СЂРµР±СѓРµС‚ РѕС‚РІРµС‚Р°. 
 
-Надеемся на понимание, Команда FL.ru
+РќР°РґРµРµРјСЃСЏ РЅР° РїРѕРЅРёРјР°РЅРёРµ, РљРѕРјР°РЅРґР° FL.ru
 ';
                 
                 messages::Add( users::GetUid($err, 'admin'), $aOne['login'], $sMessage, '', 1 );
@@ -4020,9 +4020,9 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Уведомление об удалении комментария к работе в конкурсе
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ РѕР± СѓРґР°Р»РµРЅРёРё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ Рє СЂР°Р±РѕС‚Рµ РІ РєРѕРЅРєСѓСЂСЃРµ
      * 
-     * @param mixed $mId ID комментария / массив ID комментариев
+     * @param mixed $mId ID РєРѕРјРјРµРЅС‚Р°СЂРёСЏ / РјР°СЃСЃРёРІ ID РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
      */
     function contestMessageDeleteNotification( $mId ) {
         $sId    = !is_array($mId) ? array($mId) : $mId;
@@ -4042,16 +4042,16 @@ $sObjEntity: $sObjLink<br />
                 
                 $aOne['name'] = htmlspecialchars($aOne['name'], ENT_QUOTES, 'CP1251', false);
                 
-                $sMessage = 'Здравствуйте, '. $aOne['uname'] .' '. $aOne['usurname'] .'
+                $sMessage = 'Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, '. $aOne['uname'] .' '. $aOne['usurname'] .'
 
-Сожалеем, но из-за нарушения Правил модераторы сайта вынуждены были удалить ваш комментарий к работе в конкурсе &laquo;'. $aOne['name'] .'&raquo;
+РЎРѕР¶Р°Р»РµРµРј, РЅРѕ РёР·-Р·Р° РЅР°СЂСѓС€РµРЅРёСЏ РџСЂР°РІРёР» РјРѕРґРµСЂР°С‚РѕСЂС‹ СЃР°Р№С‚Р° РІС‹РЅСѓР¶РґРµРЅС‹ Р±С‹Р»Рё СѓРґР°Р»РёС‚СЊ РІР°С€ РєРѕРјРјРµРЅС‚Р°СЂРёР№ Рє СЂР°Р±РѕС‚Рµ РІ РєРѕРЅРєСѓСЂСЃРµ &laquo;'. $aOne['name'] .'&raquo;
 '. $GLOBALS['host'] . getFriendlyURL('project', $aOne['project_id']) .'?offer='. $aOne['id'] .'#offer-'. $aOne['id'] .'
 
-Просим вас впредь быть внимательнее при публикации комментариев и соблюдать Правила сайта. 
+РџСЂРѕСЃРёРј РІР°СЃ РІРїСЂРµРґСЊ Р±С‹С‚СЊ РІРЅРёРјР°С‚РµР»СЊРЅРµРµ РїСЂРё РїСѓР±Р»РёРєР°С†РёРё РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ Рё СЃРѕР±Р»СЋРґР°С‚СЊ РџСЂР°РІРёР»Р° СЃР°Р№С‚Р°. 
 
-Это сообщение было отправлено автоматически и не требует ответа. 
+Р­С‚Рѕ СЃРѕРѕР±С‰РµРЅРёРµ Р±С‹Р»Рѕ РѕС‚РїСЂР°РІР»РµРЅРѕ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё Рё РЅРµ С‚СЂРµР±СѓРµС‚ РѕС‚РІРµС‚Р°. 
 
-Надеемся на понимание, Команда FL.ru
+РќР°РґРµРµРјСЃСЏ РЅР° РїРѕРЅРёРјР°РЅРёРµ, РљРѕРјР°РЅРґР° FL.ru
 ';
                 
                 messages::Add( users::GetUid($err, 'admin'), $aOne['login'], $sMessage, '', 1 );
@@ -4060,9 +4060,9 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Уведомление об удалении предложений фрилансеров
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ РѕР± СѓРґР°Р»РµРЅРёРё РїСЂРµРґР»РѕР¶РµРЅРёР№ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
      * 
-     * @param mixed $mId ID предложения фрилансера / массив ID предложений фрилансеров
+     * @param mixed $mId ID РїСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂР° / РјР°СЃСЃРёРІ ID РїСЂРµРґР»РѕР¶РµРЅРёР№ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
      */
     function freelancerOfferBlockedNotification( $mId ) {
         $sId    = !is_array($mId) ? array($mId) : $mId;
@@ -4077,17 +4077,17 @@ $sObjEntity: $sObjLink<br />
             require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/messages.php' );
             
             foreach ( $aOffers as $aOne ) {
-                $sMessage = 'Здравствуйте, '. $aOne['uname'] .' '. $aOne['usurname'] .'
+                $sMessage = 'Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, '. $aOne['uname'] .' '. $aOne['usurname'] .'
 
-Сожалеем, но из-за нарушения Правил модераторы сайта вынуждены были заблокировать вашу услугу &laquo;'. $aOne['title'] .'&raquo;  от '. date('d.m.Y', strtotimeEx($aOne['post_date'])) .' в разделе &laquo;Сделаю&raquo;
+РЎРѕР¶Р°Р»РµРµРј, РЅРѕ РёР·-Р·Р° РЅР°СЂСѓС€РµРЅРёСЏ РџСЂР°РІРёР» РјРѕРґРµСЂР°С‚РѕСЂС‹ СЃР°Р№С‚Р° РІС‹РЅСѓР¶РґРµРЅС‹ Р±С‹Р»Рё Р·Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РІР°С€Сѓ СѓСЃР»СѓРіСѓ &laquo;'. $aOne['title'] .'&raquo;  РѕС‚ '. date('d.m.Y', strtotimeEx($aOne['post_date'])) .' РІ СЂР°Р·РґРµР»Рµ &laquo;РЎРґРµР»Р°СЋ&raquo;
 
-Причина блокировки: '. $aOne['reason'] .'
+РџСЂРёС‡РёРЅР° Р±Р»РѕРєРёСЂРѕРІРєРё: '. $aOne['reason'] .'
 
-Просим вас впредь быть внимательнее при публикации услуг и соблюдать Правила сайта. 
+РџСЂРѕСЃРёРј РІР°СЃ РІРїСЂРµРґСЊ Р±С‹С‚СЊ РІРЅРёРјР°С‚РµР»СЊРЅРµРµ РїСЂРё РїСѓР±Р»РёРєР°С†РёРё СѓСЃР»СѓРі Рё СЃРѕР±Р»СЋРґР°С‚СЊ РџСЂР°РІРёР»Р° СЃР°Р№С‚Р°. 
 
-Это сообщение было отправлено автоматически и не требует ответа. 
+Р­С‚Рѕ СЃРѕРѕР±С‰РµРЅРёРµ Р±С‹Р»Рѕ РѕС‚РїСЂР°РІР»РµРЅРѕ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё Рё РЅРµ С‚СЂРµР±СѓРµС‚ РѕС‚РІРµС‚Р°. 
 
-Надеемся на понимание, Команда FL.ru
+РќР°РґРµРµРјСЃСЏ РЅР° РїРѕРЅРёРјР°РЅРёРµ, РљРѕРјР°РЅРґР° FL.ru
 ';
                 
                 messages::Add( users::GetUid($err, 'admin'), $aOne['login'], $sMessage, '', 1 );
@@ -4096,9 +4096,9 @@ $sObjEntity: $sObjLink<br />
     }
         
     /**
-	 * Посылаем уведомление пользователю о его некорректном проекте исходя из жалоб пользователей
+	 * РџРѕСЃС‹Р»Р°РµРј СѓРІРµРґРѕРјР»РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ Рѕ РµРіРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРј РїСЂРѕРµРєС‚Рµ РёСЃС…РѕРґСЏ РёР· Р¶Р°Р»РѕР± РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
 	 *
-	 * @param array $ids имеет вид array('1-2') где 1 - ИД проекта, 2 - Тип жалобы
+	 * @param array $ids РёРјРµРµС‚ РІРёРґ array('1-2') РіРґРµ 1 - РР” РїСЂРѕРµРєС‚Р°, 2 - РўРёРї Р¶Р°Р»РѕР±С‹
 	 */
 	function ProjectComplainsSend($ids, $connect = NULL) {
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/projects.php");
@@ -4113,7 +4113,7 @@ $sObjEntity: $sObjLink<br />
             $complains[$project_id][] = $type;
         }
         
-        // Рассылаем
+        // Р Р°СЃСЃС‹Р»Р°РµРј
         foreach($complains as $project_id => $types) {
             $project = new projects();
             $prj     = $project->GetPrj(0, $project_id, 1);
@@ -4127,26 +4127,26 @@ $sObjEntity: $sObjLink<br />
             foreach($types as $type) {
                 switch($type) {
                     case '6':
-                        $this->subject = "Отредактируйте свой проект на FL.ru";
+                        $this->subject = "РћС‚СЂРµРґР°РєС‚РёСЂСѓР№С‚Рµ СЃРІРѕР№ РїСЂРѕРµРєС‚ РЅР° FL.ru";
                         
-                        $message  = "Пожалуйста, измените раздел/подраздел, в котором опубликован ваш проект «<a href='{$GLOBALS['host']}" . getFriendlyURL("project", $project_id) . $this->_addUrlParams('e')."'>{$prj['name']}</a>». По сообщениям пользователей, проект размещен неверно: задание не соответствует специализации фрилансеров, которую вы указали.<br/><br/>"; 
-                        $message .= "<a href='{$GLOBALS['host']}/public/?step=1&public={$project_id}" . $this->_addUrlParams('e') . "'>Перейти к редактированию проекта</a><br/><br/>";
-                        $message .= "Шансы найти подходящего исполнителя выше, если ваш проект опубликован правильно. Вы можете ознакомиться с инструкцией по <a href='http://feedback.fl.ru/" . $this->_addUrlParams('e') ."'>редактированию</a> проектов в нашем сообществе поддержки.";
+                        $message  = "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РёР·РјРµРЅРёС‚Рµ СЂР°Р·РґРµР»/РїРѕРґСЂР°Р·РґРµР», РІ РєРѕС‚РѕСЂРѕРј РѕРїСѓР±Р»РёРєРѕРІР°РЅ РІР°С€ РїСЂРѕРµРєС‚ В«<a href='{$GLOBALS['host']}" . getFriendlyURL("project", $project_id) . $this->_addUrlParams('e')."'>{$prj['name']}</a>В». РџРѕ СЃРѕРѕР±С‰РµРЅРёСЏРј РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, РїСЂРѕРµРєС‚ СЂР°Р·РјРµС‰РµРЅ РЅРµРІРµСЂРЅРѕ: Р·Р°РґР°РЅРёРµ РЅРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, РєРѕС‚РѕСЂСѓСЋ РІС‹ СѓРєР°Р·Р°Р»Рё.<br/><br/>"; 
+                        $message .= "<a href='{$GLOBALS['host']}/public/?step=1&public={$project_id}" . $this->_addUrlParams('e') . "'>РџРµСЂРµР№С‚Рё Рє СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЋ РїСЂРѕРµРєС‚Р°</a><br/><br/>";
+                        $message .= "РЁР°РЅСЃС‹ РЅР°Р№С‚Рё РїРѕРґС…РѕРґСЏС‰РµРіРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЏ РІС‹С€Рµ, РµСЃР»Рё РІР°С€ РїСЂРѕРµРєС‚ РѕРїСѓР±Р»РёРєРѕРІР°РЅ РїСЂР°РІРёР»СЊРЅРѕ. Р’С‹ РјРѕР¶РµС‚Рµ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РёРЅСЃС‚СЂСѓРєС†РёРµР№ РїРѕ <a href='http://feedback.fl.ru/" . $this->_addUrlParams('e') ."'>СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЋ</a> РїСЂРѕРµРєС‚РѕРІ РІ РЅР°С€РµРј СЃРѕРѕР±С‰РµСЃС‚РІРµ РїРѕРґРґРµСЂР¶РєРё.";
                         break;
                     case '7':
-                        $this->subject = "Укажите дополнительную информацию по вашему проекту на FL.ru";
+                        $this->subject = "РЈРєР°Р¶РёС‚Рµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ РїРѕ РІР°С€РµРјСѓ РїСЂРѕРµРєС‚Сѓ РЅР° FL.ru";
                         
-                        $message  = "По сообщениям пользователей, вы указали недостаточно информации при публикации проекта «<a href='{$GLOBALS['host']}" . getFriendlyURL("project", $project_id) . $this->_addUrlParams('e')."'>{$prj['name']}</a>». Возможно, вам стоит описать подробнее суть задачи, дополнить техническое задание, указать сроки выполнения работы.<br/><br/>";
-                        $message .= "<a href='{$GLOBALS['host']}/public/?step=1&public={$project_id}" . $this->_addUrlParams('e') . "'>Перейти к редактированию проекта</a><br/><br/>";
-                        $message .= "Вы можете ознакомиться с инструкцией по <a href='http://feedback.fl.ru/" . $this->_addUrlParams('e') ."'>редактированию</a> проектов в нашем сообществе поддержки. ";
+                        $message  = "РџРѕ СЃРѕРѕР±С‰РµРЅРёСЏРј РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, РІС‹ СѓРєР°Р·Р°Р»Рё РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РёРЅС„РѕСЂРјР°С†РёРё РїСЂРё РїСѓР±Р»РёРєР°С†РёРё РїСЂРѕРµРєС‚Р° В«<a href='{$GLOBALS['host']}" . getFriendlyURL("project", $project_id) . $this->_addUrlParams('e')."'>{$prj['name']}</a>В». Р’РѕР·РјРѕР¶РЅРѕ, РІР°Рј СЃС‚РѕРёС‚ РѕРїРёСЃР°С‚СЊ РїРѕРґСЂРѕР±РЅРµРµ СЃСѓС‚СЊ Р·Р°РґР°С‡Рё, РґРѕРїРѕР»РЅРёС‚СЊ С‚РµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ, СѓРєР°Р·Р°С‚СЊ СЃСЂРѕРєРё РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹.<br/><br/>";
+                        $message .= "<a href='{$GLOBALS['host']}/public/?step=1&public={$project_id}" . $this->_addUrlParams('e') . "'>РџРµСЂРµР№С‚Рё Рє СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЋ РїСЂРѕРµРєС‚Р°</a><br/><br/>";
+                        $message .= "Р’С‹ РјРѕР¶РµС‚Рµ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РёРЅСЃС‚СЂСѓРєС†РёРµР№ РїРѕ <a href='http://feedback.fl.ru/" . $this->_addUrlParams('e') ."'>СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЋ</a> РїСЂРѕРµРєС‚РѕРІ РІ РЅР°С€РµРј СЃРѕРѕР±С‰РµСЃС‚РІРµ РїРѕРґРґРµСЂР¶РєРё. ";
                         break;
                     case '8':
-                        $this->subject = "Укажите бюджет вашего проекта на FL.ru";
+                        $this->subject = "РЈРєР°Р¶РёС‚Рµ Р±СЋРґР¶РµС‚ РІР°С€РµРіРѕ РїСЂРѕРµРєС‚Р° РЅР° FL.ru";
                         
-                        $message  = "По сообщениям пользователей, вы не указали размер гонорара исполнителя в вашем проекте «<a href='{$GLOBALS['host']}" . getFriendlyURL("project", $project_id) . $this->_addUrlParams('e')."'>{$prj['name']}</a>».<br/><br/>";
-                        $message .= "Для того чтобы фрилансеры могли оценить соотношение «объем работы/оплата» и принять решение о подаче заявки на выполнение проекта, им необходимо знать бюджет. Пожалуйста, заполните поле «Бюджет» в форме редактирования проекта.<br/><br/>";
-                        $message .= "<a href='{$GLOBALS['host']}/public/?step=1&public={$project_id}" . $this->_addUrlParams('e') . "'>Перейти к редактированию проекта</a><br/><br/>";
-                        $message .= "Вы можете ознакомиться с инструкцией по <a href='http://feedback.fl.ru/" . $this->_addUrlParams('e') ."'>редактированию</a> проектов в нашем сообществе поддержки. ";
+                        $message  = "РџРѕ СЃРѕРѕР±С‰РµРЅРёСЏРј РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, РІС‹ РЅРµ СѓРєР°Р·Р°Р»Рё СЂР°Р·РјРµСЂ РіРѕРЅРѕСЂР°СЂР° РёСЃРїРѕР»РЅРёС‚РµР»СЏ РІ РІР°С€РµРј РїСЂРѕРµРєС‚Рµ В«<a href='{$GLOBALS['host']}" . getFriendlyURL("project", $project_id) . $this->_addUrlParams('e')."'>{$prj['name']}</a>В».<br/><br/>";
+                        $message .= "Р”Р»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ С„СЂРёР»Р°РЅСЃРµСЂС‹ РјРѕРіР»Рё РѕС†РµРЅРёС‚СЊ СЃРѕРѕС‚РЅРѕС€РµРЅРёРµ В«РѕР±СЉРµРј СЂР°Р±РѕС‚С‹/РѕРїР»Р°С‚Р°В» Рё РїСЂРёРЅСЏС‚СЊ СЂРµС€РµРЅРёРµ Рѕ РїРѕРґР°С‡Рµ Р·Р°СЏРІРєРё РЅР° РІС‹РїРѕР»РЅРµРЅРёРµ РїСЂРѕРµРєС‚Р°, РёРј РЅРµРѕР±С…РѕРґРёРјРѕ Р·РЅР°С‚СЊ Р±СЋРґР¶РµС‚. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, Р·Р°РїРѕР»РЅРёС‚Рµ РїРѕР»Рµ В«Р‘СЋРґР¶РµС‚В» РІ С„РѕСЂРјРµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РїСЂРѕРµРєС‚Р°.<br/><br/>";
+                        $message .= "<a href='{$GLOBALS['host']}/public/?step=1&public={$project_id}" . $this->_addUrlParams('e') . "'>РџРµСЂРµР№С‚Рё Рє СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЋ РїСЂРѕРµРєС‚Р°</a><br/><br/>";
+                        $message .= "Р’С‹ РјРѕР¶РµС‚Рµ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РёРЅСЃС‚СЂСѓРєС†РёРµР№ РїРѕ <a href='http://feedback.fl.ru/" . $this->_addUrlParams('e') ."'>СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЋ</a> РїСЂРѕРµРєС‚РѕРІ РІ РЅР°С€РµРј СЃРѕРѕР±С‰РµСЃС‚РІРµ РїРѕРґРґРµСЂР¶РєРё. ";
                         break;
                     default:
                         continue;
@@ -4163,10 +4163,10 @@ $sObjEntity: $sObjLink<br />
     }
     
     /**
-     * Отсылаем уведомление о бане пользователя в сообществе
+     * РћС‚СЃС‹Р»Р°РµРј СѓРІРµРґРѕРјР»РµРЅРёРµ Рѕ Р±Р°РЅРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ
      * @see trigger "aIU commune_members/mail"
      * 
-     * @param array $ids     Список заблокированных
+     * @param array $ids     РЎРїРёСЃРѕРє Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹С…
      * @param type $connect
      */
     public function CommuneMemberBan($ids, $connect = NULL) {
@@ -4185,10 +4185,10 @@ $sObjEntity: $sObjLink<br />
             $comm_link = $GLOBALS['host'].'/commune/?id='.$commune_id;
             
             $comm = commune::getCommuneInfoForFriendlyURL($commune_id);
-            $this->subject  = "Вас заблокировали в сообществе ";
-            $body = $this->subject . ' «<a href="'.$comm_link.$this->_addUrlParams('b', '&').'">'.$this->ToHtml($comm['name'], 1).'</a>». ';
-            $this->subject .= "«{$comm['name']}»";
-            $body .= "К сожалению, теперь вы не можете создавать новые темы и оставлять комментарии в сообществе.";
+            $this->subject  = "Р’Р°СЃ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°Р»Рё РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ ";
+            $body = $this->subject . ' В«<a href="'.$comm_link.$this->_addUrlParams('b', '&').'">'.$this->ToHtml($comm['name'], 1).'</a>В». ';
+            $this->subject .= "В«{$comm['name']}В»";
+            $body .= "Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, С‚РµРїРµСЂСЊ РІС‹ РЅРµ РјРѕР¶РµС‚Рµ СЃРѕР·РґР°РІР°С‚СЊ РЅРѕРІС‹Рµ С‚РµРјС‹ Рё РѕСЃС‚Р°РІР»СЏС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёРё РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ.";
             
             $this->recipient = $user->uname.' '.$user->usurname.' ['.$user->login.'] <'.$user->email.'>';
             $this->message = $this->GetHtml($user->uname, $body, array('header' => 'default', 'footer' => 'default'), array('login'=>$user->login));
@@ -4199,10 +4199,10 @@ $sObjEntity: $sObjLink<br />
     }
 
     /**
-     * Посылает уведомление о том что включено автооплата с перечислением того что будет автоплачивать
-     * Включение одного или нескольких автопродлений вместе с активацией способа оплаты
+     * РџРѕСЃС‹Р»Р°РµС‚ СѓРІРµРґРѕРјР»РµРЅРёРµ Рѕ С‚РѕРј С‡С‚Рѕ РІРєР»СЋС‡РµРЅРѕ Р°РІС‚РѕРѕРїР»Р°С‚Р° СЃ РїРµСЂРµС‡РёСЃР»РµРЅРёРµРј С‚РѕРіРѕ С‡С‚Рѕ Р±СѓРґРµС‚ Р°РІС‚РѕРїР»Р°С‡РёРІР°С‚СЊ
+     * Р’РєР»СЋС‡РµРЅРёРµ РѕРґРЅРѕРіРѕ РёР»Рё РЅРµСЃРєРѕР»СЊРєРёС… Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёР№ РІРјРµСЃС‚Рµ СЃ Р°РєС‚РёРІР°С†РёРµР№ СЃРїРѕСЃРѕР±Р° РѕРїР»Р°С‚С‹
      *
-     * @param $uids         Список ИД пользователей
+     * @param $uids         РЎРїРёСЃРѕРє РР” РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
      * @param null $connect
      * @return int
      */
@@ -4213,24 +4213,24 @@ $sObjEntity: $sObjLink<br />
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/wallet/wallet.php';
 
         foreach($uids as $uid) {
-            if((int)$uid <= 0) continue; // Мало ли
+            if((int)$uid <= 0) continue; // РњР°Р»Рѕ Р»Рё
             $bill   = new billing((int)$uid);
             if( substr($bill->user['subscr'],15,1) !='1' ) continue;
             $autopay = billing::getAllAutoPayed($uid);
-            if(empty($autopay)) continue; // Автопродление не включено
+            if(empty($autopay)) continue; // РђРІС‚РѕРїСЂРѕРґР»РµРЅРёРµ РЅРµ РІРєР»СЋС‡РµРЅРѕ
 
             $wallet     = walletTypes::initWalletByType($uid);
-            if(!walletTypes::checkWallet($wallet)) continue;  // Метод оплаты уже не действителен
+            if(!walletTypes::checkWallet($wallet)) continue;  // РњРµС‚РѕРґ РѕРїР»Р°С‚С‹ СѓР¶Рµ РЅРµ РґРµР№СЃС‚РІРёС‚РµР»РµРЅ
             $walletName = str_replace("%WALLET%", $wallet->getWalletBySecure(), walletTypes::getNameWallet($wallet->data['type'], 2));
 
-            $message  = "Вы подключили {$walletName} в качестве средства оплаты при автопродлении следующих услуг:<br/><br/>";
+            $message  = "Р’С‹ РїРѕРґРєР»СЋС‡РёР»Рё {$walletName} РІ РєР°С‡РµСЃС‚РІРµ СЃСЂРµРґСЃС‚РІР° РѕРїР»Р°С‚С‹ РїСЂРё Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёРё СЃР»РµРґСѓСЋС‰РёС… СѓСЃР»СѓРі:<br/><br/>";
             foreach($autopay as $payed) {
-                $message .= "-&nbsp;{$payed['name']} ({$payed['cost']} руб.)<br/>";
+                $message .= "-&nbsp;{$payed['name']} ({$payed['cost']} СЂСѓР±.)<br/>";
             }
             $message .= "<br/>";
-            $message .= "Информацию о способах оплаты и автопродлении услуг, а также ответы на все интересующие вопросы вы можете найти в нашем <a href='http://feedback.fl.ru/{$this->_addUrlParams('b', '?')}'>сообществе поддержки</a>.";
+            $message .= "РРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃРїРѕСЃРѕР±Р°С… РѕРїР»Р°С‚С‹ Рё Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёРё СѓСЃР»СѓРі, Р° С‚Р°РєР¶Рµ РѕС‚РІРµС‚С‹ РЅР° РІСЃРµ РёРЅС‚РµСЂРµСЃСѓСЋС‰РёРµ РІРѕРїСЂРѕСЃС‹ РІС‹ РјРѕР¶РµС‚Рµ РЅР°Р№С‚Рё РІ РЅР°С€РµРј <a href='http://feedback.fl.ru/{$this->_addUrlParams('b', '?')}'>СЃРѕРѕР±С‰РµСЃС‚РІРµ РїРѕРґРґРµСЂР¶РєРё</a>.";
 
-            $this->subject   = "FL.ru: Подключение нового способа оплаты";
+            $this->subject   = "FL.ru: РџРѕРґРєР»СЋС‡РµРЅРёРµ РЅРѕРІРѕРіРѕ СЃРїРѕСЃРѕР±Р° РѕРїР»Р°С‚С‹";
             $this->recipient = "{$bill->user['uname']} {$bill->user['usurname']} [{$bill->user['login']}] <{$bill->user['email']}>";
             $this->message   = $this->GetHtml($bill->user['uname'], $message, array('header' => 'default', 'footer' => 'default'), array('login'=>$bill->user['login']));
 

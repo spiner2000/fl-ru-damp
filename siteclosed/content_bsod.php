@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta content="text/html; charset=windows-1251" http-equiv="Content-Type"/>
-		<title>Удаленная работа (фри-ланс) на Free-lance.ru</title>
+		<title>РЈРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° (С„СЂРё-Р»Р°РЅСЃ) РЅР° Free-lance.ru</title>
 		<style type="text/css">
 			*{
 				margin: 0;

@@ -39,7 +39,7 @@ if (get_uid(false)) {
                     <tr class="b-layout__tr">
                         <td class="b-layout__one" colspan="5">
                             <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_left">
-                                <a class="b-layout__link" href="/clients">Клиенты фрилансеров</a>
+                                <a class="b-layout__link" href="/clients">РљР»РёРµРЅС‚С‹ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</a>
                             </div>
                         </td>
                     </tr>

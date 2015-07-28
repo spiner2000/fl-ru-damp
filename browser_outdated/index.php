@@ -4,9 +4,9 @@ session_start();
 get_uid(false);
 
 $page_content = array(0);
-$name = false; // название браузера
-$version = false; // версия браузера
-// информация о браузерах
+$name = false; // РЅР°Р·РІР°РЅРёРµ Р±СЂР°СѓР·РµСЂР°
+$version = false; // РІРµСЂСЃРёСЏ Р±СЂР°СѓР·РµСЂР°
+// РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ Р±СЂР°СѓР·РµСЂР°С…
 $browsers = array(
     'opera' => array (
         'fullname' => 'Opera',
@@ -91,7 +91,7 @@ $browser_outdated = browserCompat($name, $version);
 
 $browser = $browsers[$name];
 $page_content['name_version'] = $browser['fullname'] . ' ' . $version[1];
-// годы жизни
+// РіРѕРґС‹ Р¶РёР·РЅРё
 $vers = floor($version[1]);
 $page_content['born'] = $browser[$vers][0];
 $page_content['die'] = $browser[$vers][1];

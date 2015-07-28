@@ -54,7 +54,7 @@ $categories = professions::GetAllGroupsLite(true, true);
 $sub_categories = professions::GetProfList();
 ?>
 <script type="text/javascript">
-var CATEGORIES={<? // категории/подкатегории: {ид_кат:{имя_кат:{ид_подкат:имя_подкат,ид_подкат:...}},ид_кат:...}
+var CATEGORIES={<? // РєР°С‚РµРіРѕСЂРёРё/РїРѕРґРєР°С‚РµРіРѕСЂРёРё: {РёРґ_РєР°С‚:{РёРјСЏ_РєР°С‚:{РёРґ_РїРѕРґРєР°С‚:РёРјСЏ_РїРѕРґРєР°С‚,РёРґ_РїРѕРґРєР°С‚:...}},РёРґ_РєР°С‚:...}
 foreach($sub_categories as $sc) {
     $cc = $sc['prof_group'];
     $ccname = $categories[$cc]['name'];
@@ -85,12 +85,12 @@ foreach($specs as $i=>$prof) {
 <div class="b-layout b-layout_padtop_20">
     <? if($specs) { ?>
         <? if($is_pro) { ?>
-          <div class="b-layout__txt b-layout__txt_padbot_10">У вас есть возможность выбрать <?=$all_cnt.ending($all_cnt, ' дополнительную специализацию', ' дополнительные специализации', ' дополнительных специализаций')?><?=($paid_cnt ? ', включая '.$paid_cnt.ending($paid_cnt, ' платную', ' платные', ' платных') : '')?>:</div>
+          <div class="b-layout__txt b-layout__txt_padbot_10">РЈ РІР°СЃ РµСЃС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РІС‹Р±СЂР°С‚СЊ <?=$all_cnt.ending($all_cnt, ' РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅСѓСЋ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ', ' РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё', ' РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… СЃРїРµС†РёР°Р»РёР·Р°С†РёР№')?><?=($paid_cnt ? ', РІРєР»СЋС‡Р°СЏ '.$paid_cnt.ending($paid_cnt, ' РїР»Р°С‚РЅСѓСЋ', ' РїР»Р°С‚РЅС‹Рµ', ' РїР»Р°С‚РЅС‹С…') : '')?>:</div>
         <? } else { ?>
-          <div class="b-layout__txt b-layout__txt_padbot_10">У вас есть возможность выбрать <?=$paid_cnt.ending($paid_cnt, ' дополнительную специализацию', ' дополнительные специализации', ' дополнительных специализаций')?>:</div>
+          <div class="b-layout__txt b-layout__txt_padbot_10">РЈ РІР°СЃ РµСЃС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РІС‹Р±СЂР°С‚СЊ <?=$paid_cnt.ending($paid_cnt, ' РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅСѓСЋ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ', ' РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё', ' РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… СЃРїРµС†РёР°Р»РёР·Р°С†РёР№')?>:</div>
         <? } ?>
 
-        <form action=".#page" method="post" id="saveSpecFrm" onsubmit="if(this.oldprof_id.value==0&&this.prof_id.value==0){alert('Необходимо выбрать специализацию.');return false;}">
+        <form action=".#page" method="post" id="saveSpecFrm" onsubmit="if(this.oldprof_id.value==0&&this.prof_id.value==0){alert('РќРµРѕР±С…РѕРґРёРјРѕ РІС‹Р±СЂР°С‚СЊ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ.');return false;}">
         <div>
             <table class="tbl-eight-specs" id="specsTbl">
                 <?
@@ -99,28 +99,28 @@ foreach($specs as $i=>$prof) {
                 <tr>
                     <td class="es-c1"><span class="b-page__desktop"><?=($i+1)?>.</span></td>
                     <td class="es-c2"><span class="b-page__ipad b-page__iphone"><?=($i+1)?>.</span>
-                        <a href="javascript:;" onclick="moveSpec(this, -1)" style="display:<?= $prof['top'] ? '' : 'none' ?>;"><img src="/images/arrow2-top.png" alt="Вверх" /></a><?
-                        ?><img style="display:<?= $prof['top'] ? 'none' : '' ?>;" src="/images/arrow2-top-a.png" alt="Вверх" /><?
-                        ?><a href="javascript:;" onclick="moveSpec(this, +1)" style="display:<?= $prof['bot'] ? '' : 'none' ?>;"><img src="/images/arrow2-bottom.png" alt="Вниз" /></a><?
-                        ?><img style="display:<?=$prof['bot'] ? 'none': ''?>;" src="/images/arrow2-bottom-a.png" alt="Вниз" />
+                        <a href="javascript:;" onclick="moveSpec(this, -1)" style="display:<?= $prof['top'] ? '' : 'none' ?>;"><img src="/images/arrow2-top.png" alt="Р’РІРµСЂС…" /></a><?
+                        ?><img style="display:<?= $prof['top'] ? 'none' : '' ?>;" src="/images/arrow2-top-a.png" alt="Р’РІРµСЂС…" /><?
+                        ?><a href="javascript:;" onclick="moveSpec(this, +1)" style="display:<?= $prof['bot'] ? '' : 'none' ?>;"><img src="/images/arrow2-bottom.png" alt="Р’РЅРёР·" /></a><?
+                        ?><img style="display:<?=$prof['bot'] ? 'none': ''?>;" src="/images/arrow2-bottom-a.png" alt="Р’РЅРёР·" />
                     </td>
                     <? if($prof['prof_id']) { ?>
                       <td><strong><?=$prof['group_name']?></strong></td>
                       <td><a href="/freelancers/?prof=<?=$prof['prof_id']?>"><?=$prof['name']?></a></td>
                     <? } else { ?>
-                      <td colspan="2"><em>Дополнительная специализация не указана, <a href="javascript:;" onclick="editSpec(this)" class="lnk-dot-blue">выберите из списка</a>.</em></td>
+                      <td colspan="2"><em>Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏ РЅРµ СѓРєР°Р·Р°РЅР°, <a href="javascript:;" onclick="editSpec(this)" class="lnk-dot-blue">РІС‹Р±РµСЂРёС‚Рµ РёР· СЃРїРёСЃРєР°</a>.</em></td>
                     <? } ?>
-                    <td class="es-c6"><a href="javascript:;" onclick="editSpec(this)"><img src="/images/btn-edit2.png" alt="Редактировать" /></a></td>
+                    <td class="es-c6"><a href="javascript:;" onclick="editSpec(this)"><img src="/images/btn-edit2.png" alt="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" /></a></td>
                 </tr>
                 <? } ?>
                 <tr id="editspec_box" style="display:none">
                     <td class="es-c1">&nbsp;</td>
-                    <td class="es-c2"><a href=""><img src="/images/arrow2-top-a.png" alt="Вверх" /></a><a href=""><img src="/images/arrow2-bottom.png" alt="Вниз" /></a></td>
+                    <td class="es-c2"><a href=""><img src="/images/arrow2-top-a.png" alt="Р’РІРµСЂС…" /></a><a href=""><img src="/images/arrow2-bottom.png" alt="Р’РЅРёР·" /></a></td>
                     <td></td>
                     <td id="subcat_box"></td>
                     <td>
-                        <input type="submit" value="Сохранить изменения" class="i-bold i-btn" name="savespec_btn" />
-                        <input type="button" value="Отменить" class="i-btn" onclick="cleanEdit()" />
+                        <input type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ" class="i-bold i-btn" name="savespec_btn" />
+                        <input type="button" value="РћС‚РјРµРЅРёС‚СЊ" class="i-btn" onclick="cleanEdit()" />
                     </td>
                 </tr>
             </table>
@@ -129,9 +129,9 @@ foreach($specs as $i=>$prof) {
             <input type="hidden" name="action" value="save_spec_add" />
         </div>
         </form>
-        <?/* #0022795 <p>Купить еще больше дополнительных специализаций или продлить действие уже существующих, вы можете на <a href="/payed/">странице управления платными услугами</a>.</p> */?>
+        <?/* #0022795 <p>РљСѓРїРёС‚СЊ РµС‰Рµ Р±РѕР»СЊС€Рµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… СЃРїРµС†РёР°Р»РёР·Р°С†РёР№ РёР»Рё РїСЂРѕРґР»РёС‚СЊ РґРµР№СЃС‚РІРёРµ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёС…, РІС‹ РјРѕР¶РµС‚Рµ РЅР° <a href="/payed/">СЃС‚СЂР°РЅРёС†Рµ СѓРїСЂР°РІР»РµРЅРёСЏ РїР»Р°С‚РЅС‹РјРё СѓСЃР»СѓРіР°РјРё</a>.</p> */?>
     <? } /*#0022795else { ?>
-        <p>Сейчас у вас нет дополнительных специализаций. Вы можете приобрести их на <a href="/payed/">странице управления платными услугами</a>.</p>
+        <p>РЎРµР№С‡Р°СЃ Сѓ РІР°СЃ РЅРµС‚ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… СЃРїРµС†РёР°Р»РёР·Р°С†РёР№. Р’С‹ РјРѕР¶РµС‚Рµ РїСЂРёРѕР±СЂРµСЃС‚Рё РёС… РЅР° <a href="/payed/">СЃС‚СЂР°РЅРёС†Рµ СѓРїСЂР°РІР»РµРЅРёСЏ РїР»Р°С‚РЅС‹РјРё СѓСЃР»СѓРіР°РјРё</a>.</p>
     <? } */?>
-    <div class="b-layout__txt">Если у вас возникли вопросы &ndash; обратитесь в <a href="https://feedback.fl.ru/">Службу поддержки</a>. С удовольствием ответим.</div>
+    <div class="b-layout__txt">Р•СЃР»Рё Сѓ РІР°СЃ РІРѕР·РЅРёРєР»Рё РІРѕРїСЂРѕСЃС‹ &ndash; РѕР±СЂР°С‚РёС‚РµСЃСЊ РІ <a href="https://feedback.fl.ru/">РЎР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>. РЎ СѓРґРѕРІРѕР»СЊСЃС‚РІРёРµРј РѕС‚РІРµС‚РёРј.</div>
 </div>

@@ -10,20 +10,20 @@
       <table class="b-layout__table b-layout__table_margbot_40 b-layout__table_width_full">
          <tr class="b-layout__tr">
             <td class="b-layout__one">
-                    <h2 class="b-shadow__title b-shadow__title_padbot_30 b-shadow__title_fontsize_22">Вас нет в каталоге фрилансеров</h2>
+                    <h2 class="b-shadow__title b-shadow__title_padbot_30 b-shadow__title_fontsize_22">Р’Р°СЃ РЅРµС‚ РІ РєР°С‚Р°Р»РѕРіРµ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</h2>
 						
-                    <div class="b-layout__txt b-layout__txt_padbot_30 b-layout__txt_fontsize_15"><a class="b-layout__link" href="/users/<?= $_SESSION['login'] ?>/setup/specsetup/">Выберите специализацию</a>, чтобы ссылка на ваш профиль<br />
-                       появилась в каталоге фрилансеров.<br />
-                       Полностью заполненный профиль (специализация, имя, <br />
-                       возраст, город, страна и хотя бы одна работа в портфолио) <br />
-                       добавят 100 баллов к вашему рейтингу.
+                    <div class="b-layout__txt b-layout__txt_padbot_30 b-layout__txt_fontsize_15"><a class="b-layout__link" href="/users/<?= $_SESSION['login'] ?>/setup/specsetup/">Р’С‹Р±РµСЂРёС‚Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ</a>, С‡С‚РѕР±С‹ СЃСЃС‹Р»РєР° РЅР° РІР°С€ РїСЂРѕС„РёР»СЊ<br />
+                       РїРѕСЏРІРёР»Р°СЃСЊ РІ РєР°С‚Р°Р»РѕРіРµ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ.<br />
+                       РџРѕР»РЅРѕСЃС‚СЊСЋ Р·Р°РїРѕР»РЅРµРЅРЅС‹Р№ РїСЂРѕС„РёР»СЊ (СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏ, РёРјСЏ, <br />
+                       РІРѕР·СЂР°СЃС‚, РіРѕСЂРѕРґ, СЃС‚СЂР°РЅР° Рё С…РѕС‚СЏ Р±С‹ РѕРґРЅР° СЂР°Р±РѕС‚Р° РІ РїРѕСЂС‚С„РѕР»РёРѕ) <br />
+                       РґРѕР±Р°РІСЏС‚ 100 Р±Р°Р»Р»РѕРІ Рє РІР°С€РµРјСѓ СЂРµР№С‚РёРЅРіСѓ.
                     </div>
                        <div class="b-layout__txt b-layout__txt_padbot_30 b-layout__txt_fontsize_11">
-                       Пожалуйста, выберите и укажите одну специализацию.<br />
-                       Владельцы аккаунта PRO могут выбирать до 5 специализаций. 
+                       РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІС‹Р±РµСЂРёС‚Рµ Рё СѓРєР°Р¶РёС‚Рµ РѕРґРЅСѓ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ.<br />
+                       Р’Р»Р°РґРµР»СЊС†С‹ Р°РєРєР°СѓРЅС‚Р° PRO РјРѕРіСѓС‚ РІС‹Р±РёСЂР°С‚СЊ РґРѕ 5 СЃРїРµС†РёР°Р»РёР·Р°С†РёР№. 
                        </div>
                        <div class="b-layout__txt b-layout__txt_relative b-layout__txt_italic b-layout__txt_fontsize_15 b-layout__txt_color_6db335 b-layout__txt_padleft_150">
-                       Укажите специализацию &mdash;<br /> попадите в каталог <span class="b-promo__arrow" style="top:-30px; right:20px;"></span>
+                       РЈРєР°Р¶РёС‚Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ &mdash;<br /> РїРѕРїР°РґРёС‚Рµ РІ РєР°С‚Р°Р»РѕРі <span class="b-promo__arrow" style="top:-30px; right:20px;"></span>
                        </div>
             </td>
             <td class="b-layout__one b-layout__one_width_170"><img class="b-layout__pic" src="/images/cat.png" alt="" width="155" height="289" /></td>
@@ -37,7 +37,7 @@
 						<div class="b-buttons b-buttons_padtb_30 b-buttons_bg_6fb400 b-buttons_center b-buttons_marglr_-20 b-buttons_margbot_-20">
                           <a class="b-button b-button_round_green" href="/users/<?= $_SESSION['login'] ?>/setup/specsetup/">
                               <span class="b-button__b1">
-                                  <span class="b-button__b2"><span class="b-button__txt">Выбрать специализацию</span></span>
+                                  <span class="b-button__b2"><span class="b-button__txt">Р’С‹Р±СЂР°С‚СЊ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ</span></span>
                               </span>
                           </a>
                         </div>        					

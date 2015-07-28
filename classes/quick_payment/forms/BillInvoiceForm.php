@@ -4,9 +4,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/Form/View.php");
 
 class BillInvoiceForm extends Form_View
 {
-    //Ïóòü ê âüşøêàì ıëåìåíòîâ
+    //ĞŸÑƒÑ‚ÑŒ Ğº Ğ²ÑŒÑÑˆĞºĞ°Ğ¼ ÑĞ»ĞµĞ¼ĞµĞ½Ñ‚Ğ¾Ğ²
     //protected $viewScriptPrefixPath = 'classes/Form/Templates/Horizontal';
-    //Ïóòü âüşøêàì ôîğì
+    //ĞŸÑƒÑ‚ÑŒ Ğ²ÑŒÑÑˆĞºĞ°Ğ¼ Ñ„Ğ¾Ñ€Ğ¼
     protected $viewScriptFormPrefixPath = 'templates/quick_payment/forms';
     
     public function loadDefaultDecorators()
@@ -29,12 +29,12 @@ class BillInvoiceForm extends Form_View
         $this->addElement(
            new Zend_Form_Element_Text('sum', array(
                'label_width' => 160,
-               'label' => 'Ñóììà ïîïîëíåíèÿ',
-               'unit' => 'ğóá.',
+               'label' => 'Ğ¡ÑƒĞ¼Ğ¼Ğ° Ğ¿Ğ¾Ğ¿Ğ¾Ğ»Ğ½ĞµĞ½Ğ¸Ñ',
+               'unit' => 'Ñ€ÑƒĞ±.',
                'width' => 80,
                'maxlength' => 7,
                'required' => true,
-               //'padbot' => 20, // îòñòóï ñíèçó
+               //'padbot' => 20, // Ğ¾Ñ‚ÑÑ‚ÑƒĞ¿ ÑĞ½Ğ¸Ğ·Ñƒ
                'filters' => array('StripTags'),
                'validators' => array(
                    array('Digits', true),

@@ -14,7 +14,7 @@ class quickPaymentPopupMasssending extends quickPaymentPopup
     {
         parent::__construct();
         
-        //Äîïóñêàåì îïëàòó ñ ëè÷íîãî ñ÷åòà
+        //Ð”Ð¾Ð¿ÑƒÑÐºÐ°ÐµÐ¼ Ð¾Ð¿Ð»Ð°Ñ‚Ñƒ Ñ Ð»Ð¸Ñ‡Ð½Ð¾Ð³Ð¾ ÑÑ‡ÐµÑ‚Ð°
         $this->options['payments'][self::PAYMENT_TYPE_ACCOUNT] = array();
     }
     
@@ -28,11 +28,11 @@ class quickPaymentPopupMasssending extends quickPaymentPopup
         $options = array(
             'popup_title_class_bg'      => 'b-fon b-fon_bg_soap',
             'popup_title_class_icon'    => 'b-icon__soap',
-            'popup_title'               => 'Ïîêóïêà ðàññûëêè ïî ðàçäåëàì',
-            'popup_subtitle'            => 'Ïàðàìåòðû ðàññûëêè',
+            'popup_title'               => 'ÐŸÐ¾ÐºÑƒÐ¿ÐºÐ° Ñ€Ð°ÑÑÑ‹Ð»ÐºÐ¸ Ð¿Ð¾ Ñ€Ð°Ð·Ð´ÐµÐ»Ð°Ð¼',
+            'popup_subtitle'            => 'ÐŸÐ°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹ Ñ€Ð°ÑÑÑ‹Ð»ÐºÐ¸',
             'popup_id'                  => $this->ID,
             'unic_name'                 => $this->UNIC_NAME,
-            'payments_title'            => 'Ñóììà è ñïîñîá îïëàòû',
+            'payments_title'            => 'Ð¡ÑƒÐ¼Ð¼Ð° Ð¸ ÑÐ¿Ð¾ÑÐ¾Ð± Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹',
             'payments_exclude'          => array(
                 self::PAYMENT_TYPE_BANK,
                 self::PAYMENT_TYPE_PLATIPOTOM
@@ -46,12 +46,12 @@ class quickPaymentPopupMasssending extends quickPaymentPopup
             'promo_code' => $promoCodes->render(PromoCodes::SERVICE_MASSSENDING)
         );
         
-        //Îáÿçàòåëüíî ïåðåäàåì ðîäèòåëþ
+        //ÐžÐ±ÑÐ·Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ð¿ÐµÑ€ÐµÐ´Ð°ÐµÐ¼ Ñ€Ð¾Ð´Ð¸Ñ‚ÐµÐ»ÑŽ
         parent::init($options);
         
         
-        //Äîáàâëÿåì ñâîéñòâî ê îäíîìó ñïîñîáó îïëàòû
-        $this->options['payments'][self::PAYMENT_TYPE_CARD]['wait'] = 'Æäèòå ....';
+        //Ð”Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼ ÑÐ²Ð¾Ð¹ÑÑ‚Ð²Ð¾ Ðº Ð¾Ð´Ð½Ð¾Ð¼Ñƒ ÑÐ¿Ð¾ÑÐ¾Ð±Ñƒ Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹
+        $this->options['payments'][self::PAYMENT_TYPE_CARD]['wait'] = 'Ð–Ð´Ð¸Ñ‚Ðµ ....';
         
     }
     

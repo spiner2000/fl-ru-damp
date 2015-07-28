@@ -8,7 +8,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/tu/models/TServiceMsgModel.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/tu/models/TServiceOrderModel.php');
 
 /**
- * класс для генерации высплывающих сообщений для юзербара 
+ * РєР»Р°СЃСЃ РґР»СЏ РіРµРЅРµСЂР°С†РёРё РІС‹СЃРїР»С‹РІР°СЋС‰РёС… СЃРѕРѕР±С‰РµРЅРёР№ РґР»СЏ СЋР·РµСЂР±Р°СЂР° 
  */
 class notifications
 {
@@ -17,30 +17,30 @@ class notifications
     
     
     /**
-     * Получение подсказки из нескольких источников
-     * для отображения в обьедененной кнопке "Проекты и заказы"
-     * Обработка в поряке очереди.
+     * РџРѕР»СѓС‡РµРЅРёРµ РїРѕРґСЃРєР°Р·РєРё РёР· РЅРµСЃРєРѕР»СЊРєРёС… РёСЃС‚РѕС‡РЅРёРєРѕРІ
+     * РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РІ РѕР±СЊРµРґРµРЅРµРЅРЅРѕР№ РєРЅРѕРїРєРµ "РџСЂРѕРµРєС‚С‹ Рё Р·Р°РєР°Р·С‹"
+     * РћР±СЂР°Р±РѕС‚РєР° РІ РїРѕСЂСЏРєРµ РѕС‡РµСЂРµРґРё.
      * 
      * @return array
      */
     static public function getFrlGroupTip()
     {
-        //по умолчанию ссылаемся на список проектов или заказов
+        //РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЃСЃС‹Р»Р°РµРјСЃСЏ РЅР° СЃРїРёСЃРѕРє РїСЂРѕРµРєС‚РѕРІ РёР»Рё Р·Р°РєР°Р·РѕРІ
         $default = array(
             'count' => 0,
-            'tip' => 'Список проектов и заказов',
+            'tip' => 'РЎРїРёСЃРѕРє РїСЂРѕРµРєС‚РѕРІ Рё Р·Р°РєР°Р·РѕРІ',
             'link' => (@$_SESSION['po_count'])?'/proj/?p=list':'/tu-orders/'
         );
         
-        //есть
+        //РµСЃС‚СЊ
         $projectsTip = self::getProjectsTipFrl();
-        //@todo: нужно доработать метод выше
+        //@todo: РЅСѓР¶РЅРѕ РґРѕСЂР°Р±РѕС‚Р°С‚СЊ РјРµС‚РѕРґ РІС‹С€Рµ
         if(isset($projectsTip['count']) && $projectsTip['count'] > 0)
         {
             $default = $projectsTip;
         }
         
-        //есть ли события по заказам ТУ
+        //РµСЃС‚СЊ Р»Рё СЃРѕР±С‹С‚РёСЏ РїРѕ Р·Р°РєР°Р·Р°Рј РўРЈ
         $tservicesOrdersTip = self::getTServicesOrdersTip();
         if(isset($tservicesOrdersTip['count']) && $tservicesOrdersTip['count'] > 0)
         {
@@ -55,22 +55,22 @@ class notifications
     
     static public function getEmpGroupTip()
     {
-        //по умолчанию ссылаемся на список проектов
+        //РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЃСЃС‹Р»Р°РµРјСЃСЏ РЅР° СЃРїРёСЃРѕРє РїСЂРѕРµРєС‚РѕРІ
         $default = array(
             'count' => 0,
-            'tip' => 'Список проектов и заказов',
+            'tip' => 'РЎРїРёСЃРѕРє РїСЂРѕРµРєС‚РѕРІ Рё Р·Р°РєР°Р·РѕРІ',
             'link' => "/users/{$_SESSION['login']}/setup/projects/"
         );
         
-        //есть
+        //РµСЃС‚СЊ
         $projectsTip = self::getProjectsTipEmp();
-        //@todo: нужно доработать метод выше
+        //@todo: РЅСѓР¶РЅРѕ РґРѕСЂР°Р±РѕС‚Р°С‚СЊ РјРµС‚РѕРґ РІС‹С€Рµ
         if(isset($projectsTip['count']) && $projectsTip['count'] > 0)
         {
             $default = $projectsTip;
         }
         
-        //есть ли события по заказам ТУ
+        //РµСЃС‚СЊ Р»Рё СЃРѕР±С‹С‚РёСЏ РїРѕ Р·Р°РєР°Р·Р°Рј РўРЈ
         $tservicesOrdersTip = self::getTServicesOrdersTip();
         if(isset($tservicesOrdersTip['count']) && $tservicesOrdersTip['count'] > 0)
         {
@@ -90,7 +90,7 @@ class notifications
     
 
     /**
-     * События в заказе ТУ
+     * РЎРѕР±С‹С‚РёСЏ РІ Р·Р°РєР°Р·Рµ РўРЈ
      * 
      * @return array
      */
@@ -100,20 +100,20 @@ class notifications
         $is_emp = is_emp();
         
         $tips = array(
-            "Новое сообщение в заказе",
-            "В заказах %d %s",
-            "Новое событие в заказе",
-            "В заказах %d %s и %d %s"
+            "РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РІ Р·Р°РєР°Р·Рµ",
+            "Р’ Р·Р°РєР°Р·Р°С… %d %s",
+            "РќРѕРІРѕРµ СЃРѕР±С‹С‚РёРµ РІ Р·Р°РєР°Р·Рµ",
+            "Р’ Р·Р°РєР°Р·Р°С… %d %s Рё %d %s"
         );
         
-        $msg_ending = array("новое сообщение", "новых сообщения", "новых сообщений");
-        $event_ending = array("новое событие", "новых события", "новых событий");
+        $msg_ending = array("РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ", "РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ", "РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№");
+        $event_ending = array("РЅРѕРІРѕРµ СЃРѕР±С‹С‚РёРµ", "РЅРѕРІС‹С… СЃРѕР±С‹С‚РёСЏ", "РЅРѕРІС‹С… СЃРѕР±С‹С‚РёР№");
         
-        $tip = 'Мои заказы';
+        $tip = 'РњРѕРё Р·Р°РєР°Р·С‹';
         $link = '';
         
-        //@todo: здесь используются каунты без кеша 
-        //по мере заполнения БД они будут тормозить. Нужно переделать!
+        //@todo: Р·РґРµСЃСЊ РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ РєР°СѓРЅС‚С‹ Р±РµР· РєРµС€Р° 
+        //РїРѕ РјРµСЂРµ Р·Р°РїРѕР»РЅРµРЅРёСЏ Р‘Р” РѕРЅРё Р±СѓРґСѓС‚ С‚РѕСЂРјРѕР·РёС‚СЊ. РќСѓР¶РЅРѕ РїРµСЂРµРґРµР»Р°С‚СЊ!
         $tserviceMsgModel = TServiceMsgModel::model();
         $newTserviceMsgCount = $tserviceMsgModel->countNew($uid);
         
@@ -157,9 +157,9 @@ class notifications
 
     
     /**
-     * возвращает подсказку для кнопки "Проекты" для работодателя
-     * в виде массива ((int)count, (string)tip)
-     * null - в случае ошибки
+     * РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕРґСЃРєР°Р·РєСѓ РґР»СЏ РєРЅРѕРїРєРё "РџСЂРѕРµРєС‚С‹" РґР»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ
+     * РІ РІРёРґРµ РјР°СЃСЃРёРІР° ((int)count, (string)tip)
+     * null - РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
      */
     static public function getProjectsTipEmp ()
     {
@@ -169,13 +169,13 @@ class notifications
         }
         $newMessCount = $newOffersCount = $newPrjEvents = 0;
 
-        // количество ответов и сообщений в проектах
+        // РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РІРµС‚РѕРІ Рё СЃРѕРѕР±С‰РµРЅРёР№ РІ РїСЂРѕРµРєС‚Р°С…
         $complexCount = projects_offers_dialogue::CountMessagesForEmp($uid, true, true);
         
         $newOffersCount = (int)$complexCount['offers'];
         $newMessCount = (int)$complexCount['messages'];
         
-        // новые события
+        // РЅРѕРІС‹Рµ СЃРѕР±С‹С‚РёСЏ
         $newPrjEvents = 0; //projects_offers::CountNewPrjEventsForEmp($_SESSION['uid']); #0020922
 
         if (($newOffersCount + $newMessCount) == 1) {
@@ -189,7 +189,7 @@ class notifications
         if ($newMessCount === null || $newPrjEvents === null) {
             return array(
                 'count'     => 0,
-                'tip'       => 'Список проектов',
+                'tip'       => 'РЎРїРёСЃРѕРє РїСЂРѕРµРєС‚РѕРІ',
                 'link'  => "/users/" . $_SESSION['login'] . "/projects/"
             );
         }
@@ -197,16 +197,16 @@ class notifications
         //$news = $newMessCount + $newPrjEvents;
         
         /*if ((int)$newMessCount === 0 && (int)$newPrjEvents === 1) {
-            $tip = 'Новое событие в вашем проекте';
+            $tip = 'РќРѕРІРѕРµ СЃРѕР±С‹С‚РёРµ РІ РІР°С€РµРј РїСЂРѕРµРєС‚Рµ';
         } elseif ((int)$newMessCount === 1 && (int)$newPrjEvents === 0) {
-            $tip = "Новый ответ на ваш проект";
+            $tip = "РќРѕРІС‹Р№ РѕС‚РІРµС‚ РЅР° РІР°С€ РїСЂРѕРµРєС‚";
         } else*/if (($newOffersCount + $newMessCount + $newPrjEvents) > 0) {
-            $tip = "В ваших проектах ";
-            $tip .= $newOffersCount > 0 ? $newOffersCount . ending($newOffersCount, " новый ответ", " новых ответа", " новых ответов") : "";
-            $tip .= ($newOffersCount > 0 && $newMessCount > 0) ? " и " : "";
-            $tip .= $newMessCount > 0 ? $newMessCount . ending($newMessCount, " новое сообщение", " новых сообщения", " новых сообщений") : "";
+            $tip = "Р’ РІР°С€РёС… РїСЂРѕРµРєС‚Р°С… ";
+            $tip .= $newOffersCount > 0 ? $newOffersCount . ending($newOffersCount, " РЅРѕРІС‹Р№ РѕС‚РІРµС‚", " РЅРѕРІС‹С… РѕС‚РІРµС‚Р°", " РЅРѕРІС‹С… РѕС‚РІРµС‚РѕРІ") : "";
+            $tip .= ($newOffersCount > 0 && $newMessCount > 0) ? " Рё " : "";
+            $tip .= $newMessCount > 0 ? $newMessCount . ending($newMessCount, " РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ", " РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ", " РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№") : "";
             
-            $tip .= $newPrjEvents > 0 ? $newPrjEvents . ending($newPrjEvents, " новое событие", " новых события", " новых событий") : "";
+            $tip .= $newPrjEvents > 0 ? $newPrjEvents . ending($newPrjEvents, " РЅРѕРІРѕРµ СЃРѕР±С‹С‚РёРµ", " РЅРѕРІС‹С… СЃРѕР±С‹С‚РёСЏ", " РЅРѕРІС‹С… СЃРѕР±С‹С‚РёР№") : "";
         }
         return array(
             'count'     => $newOffersCount + $newMessCount + $newPrjEvents,
@@ -216,9 +216,9 @@ class notifications
     }
     
     /**
-     * возвращает подсказку для кнопки "Проекты" для фрилансера
-     * в виде массива ((int)count, (string)tip)
-     * null - в случае ошибки
+     * РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕРґСЃРєР°Р·РєСѓ РґР»СЏ РєРЅРѕРїРєРё "РџСЂРѕРµРєС‚С‹" РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂР°
+     * РІ РІРёРґРµ РјР°СЃСЃРёРІР° ((int)count, (string)tip)
+     * null - РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
      */
     static public function getProjectsTipFrl ()
     {
@@ -227,15 +227,15 @@ class notifications
             return null;
         }
         $newEventsCount = $newMessCount = 0;
-        // количество новых событий
+        // РєРѕР»РёС‡РµСЃС‚РІРѕ РЅРѕРІС‹С… СЃРѕР±С‹С‚РёР№
         $newEventsCount = projects_offers::GetNewFrlEventsCount($uid, false);
-        // сколько новых сообщений
+        // СЃРєРѕР»СЊРєРѕ РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№
         $newMessCount = projects_offers_dialogue::CountMessagesForFrl($uid, true, false);
         
         if ($newEventsCount === null || $newMessCount === null) {
             return array(
                 'count' => 0,
-                'tip'   => 'Список проектов',
+                'tip'   => 'РЎРїРёСЃРѕРє РїСЂРѕРµРєС‚РѕРІ',
                 'link' => '/proj/?p=list'
             );
         }
@@ -245,15 +245,15 @@ class notifications
         $newAnsCount = $newEventsCount + $newMessCount;
         
         if ((int)$newMessCount === 0 && (int)$newEventsCount === 1) {
-            $tip = 'Новое событие к вашему ответу в проекте';
+            $tip = 'РќРѕРІРѕРµ СЃРѕР±С‹С‚РёРµ Рє РІР°С€РµРјСѓ РѕС‚РІРµС‚Сѓ РІ РїСЂРѕРµРєС‚Рµ';
         } elseif ((int)$newMessCount === 1 && (int)$newEventsCount === 0) {
-            $tip = "Новое сообщение к вашему ответу в проекте";
+            $tip = "РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ Рє РІР°С€РµРјСѓ РѕС‚РІРµС‚Сѓ РІ РїСЂРѕРµРєС‚Рµ";
         } elseif (($newMessCount + $newEventsCount) > 0) {
             $tip = "";
-            $tip .= $newMessCount > 0 ? $newMessCount . ending($newMessCount, " новое сообщение", " новых сообщения", " новых сообщений") : "";
-            $tip .= ($newMessCount > 0 && $newEventsCount > 0) ? " и " : "";
-            $tip .= $newEventsCount > 0 ? $newEventsCount . ending($newEventsCount, " новое событие", " новых события", " новых событий") : "";
-            $tip .= $newEventsCount > 0 ? " к вашим ответам в проектах" : " на ваши ответы в проектах";
+            $tip .= $newMessCount > 0 ? $newMessCount . ending($newMessCount, " РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ", " РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ", " РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№") : "";
+            $tip .= ($newMessCount > 0 && $newEventsCount > 0) ? " Рё " : "";
+            $tip .= $newEventsCount > 0 ? $newEventsCount . ending($newEventsCount, " РЅРѕРІРѕРµ СЃРѕР±С‹С‚РёРµ", " РЅРѕРІС‹С… СЃРѕР±С‹С‚РёСЏ", " РЅРѕРІС‹С… СЃРѕР±С‹С‚РёР№") : "";
+            $tip .= $newEventsCount > 0 ? " Рє РІР°С€РёРј РѕС‚РІРµС‚Р°Рј РІ РїСЂРѕРµРєС‚Р°С…" : " РЅР° РІР°С€Рё РѕС‚РІРµС‚С‹ РІ РїСЂРѕРµРєС‚Р°С…";
         }
         
         return array(
@@ -265,11 +265,11 @@ class notifications
     
     
     /**
-     * возвращает подсказку для кнопки "Сообщения"
-     * в виде массива ((int)count, (string)tip)
-     * null - в случае ошибки
+     * РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕРґСЃРєР°Р·РєСѓ РґР»СЏ РєРЅРѕРїРєРё "РЎРѕРѕР±С‰РµРЅРёСЏ"
+     * РІ РІРёРґРµ РјР°СЃСЃРёРІР° ((int)count, (string)tip)
+     * null - РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
      * 
-     * @param boolean $ajax вызов функции ajax'ом
+     * @param boolean $ajax РІС‹Р·РѕРІ С„СѓРЅРєС†РёРё ajax'РѕРј
      */
     static public function getMessTip ($ajax = false)
     {
@@ -288,14 +288,14 @@ class notifications
         if ($newMessCount === null) {
             return null;
         } elseif ((int)$newMessCount === 0) {
-            $tip = 'Мои сообщения и переписка';
+            $tip = 'РњРѕРё СЃРѕРѕР±С‰РµРЅРёСЏ Рё РїРµСЂРµРїРёСЃРєР°';
         } elseif ((int)$newMessCount === 1) {
             /*$mess = new messages;
             if ( empty($_SESSION['newMsgSender']) ) {
                 $user = $mess->GetLastMessageContact($uid);
                 $_SESSION['newMsgSender'] = $user['uname'] . ' ' . $user['usurname'] . ' [' . $user['login'] . ']';
             }
-            $tip = 'Новое сообщение от пользователя ' . $_SESSION['newMsgSender'];*/
+            $tip = 'РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ ' . $_SESSION['newMsgSender'];*/
             $newMsgSender = $mem->get("msgsNewSender{$uid}");
             if ($newMsgSender === false || trim($newMsgSender) == '[]') {
                 $mess = new messages;
@@ -305,9 +305,9 @@ class notifications
                     $mem->set("msgsNewSender{$uid}", $newMsgSender, 3600, 'msgsNewSenderID' . $sender['uid']);
                 }
             }
-            $tip = 'Новое сообщение от пользователя ' . $newMsgSender;
+            $tip = 'РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ ' . $newMsgSender;
         } else {
-            $tip = $newMessCount . ' ' . ending($newMessCount, 'непрочитанное сообщение', 'непрочитанных сообщения', 'непрочитанных сообщений');
+            $tip = $newMessCount . ' ' . ending($newMessCount, 'РЅРµРїСЂРѕС‡РёС‚Р°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРµРїСЂРѕС‡РёС‚Р°РЅРЅС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРµРїСЂРѕС‡РёС‚Р°РЅРЅС‹С… СЃРѕРѕР±С‰РµРЅРёР№');
         }
         
         return array(
@@ -317,12 +317,12 @@ class notifications
     }
     
     /**
-     * возвращает подсказку для кнопки "Сообщения"
-     * в виде массива ((int)count, (string)tip)
-     * null - в случае ошибки
+     * РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕРґСЃРєР°Р·РєСѓ РґР»СЏ РєРЅРѕРїРєРё "РЎРѕРѕР±С‰РµРЅРёСЏ"
+     * РІ РІРёРґРµ РјР°СЃСЃРёРІР° ((int)count, (string)tip)
+     * null - РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
      * 
-     * @param  string  $interface События какого интерфейса брать (старой СБР. или новой СБР) @todo Убрать когда закончатся старые СБР
-     * @param boolean $ajax вызов функции ajax'ом
+     * @param  string  $interface РЎРѕР±С‹С‚РёСЏ РєР°РєРѕРіРѕ РёРЅС‚РµСЂС„РµР№СЃР° Р±СЂР°С‚СЊ (СЃС‚Р°СЂРѕР№ РЎР‘Р . РёР»Рё РЅРѕРІРѕР№ РЎР‘Р ) @todo РЈР±СЂР°С‚СЊ РєРѕРіРґР° Р·Р°РєРѕРЅС‡Р°С‚СЃСЏ СЃС‚Р°СЂС‹Рµ РЎР‘Р 
+     * @param boolean $ajax РІС‹Р·РѕРІ С„СѓРЅРєС†РёРё ajax'РѕРј
      */
     static public function getSbrTip ($interface = 'new')
     {
@@ -344,18 +344,18 @@ class notifications
         
         $totalCount = $eventCount; // + $messCount;
         if ((int)$totalCount === 0) {
-            if(isset($_SESSION[$name_session])) { // Для того чтобы моргало хотя бы один раз если пользователь находится сразу на странице СБР и обновляет страницу
+            if(isset($_SESSION[$name_session])) { // Р”Р»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ РјРѕСЂРіР°Р»Рѕ С…РѕС‚СЏ Р±С‹ РѕРґРёРЅ СЂР°Р· РµСЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅР°С…РѕРґРёС‚СЃСЏ СЃСЂР°Р·Сѓ РЅР° СЃС‚СЂР°РЅРёС†Рµ РЎР‘Р  Рё РѕР±РЅРѕРІР»СЏРµС‚ СЃС‚СЂР°РЅРёС†Сѓ
                 $tip = $_SESSION[$name_session];
                 unset($_SESSION[$name_session]);
                 return $tip;
             }
-            $tip = 'Список Безопасных сделок';
+            $tip = 'РЎРїРёСЃРѕРє Р‘РµР·РѕРїР°СЃРЅС‹С… СЃРґРµР»РѕРє';
             $alert = false;
         } elseif ((int)$totalCount === 1) {
-            $tip = 'Новое событие в «Безопасной Сделке»';
+            $tip = 'РќРѕРІРѕРµ СЃРѕР±С‹С‚РёРµ РІ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµВ»';
             $alert = true;
         } else {
-            $tip = $totalCount . ' ' . ending($totalCount, 'новое событие', 'новых события', 'новых событий') . ' в ваших «Безопасных Сделках»';
+            $tip = $totalCount . ' ' . ending($totalCount, 'РЅРѕРІРѕРµ СЃРѕР±С‹С‚РёРµ', 'РЅРѕРІС‹С… СЃРѕР±С‹С‚РёСЏ', 'РЅРѕРІС‹С… СЃРѕР±С‹С‚РёР№') . ' РІ РІР°С€РёС… В«Р‘РµР·РѕРїР°СЃРЅС‹С… РЎРґРµР»РєР°С…В»';
             $alert = false;
         }
         
@@ -369,7 +369,7 @@ class notifications
     
     
     /**
-     * Обьединяем события по старой и новой безопасных сделок
+     * РћР±СЊРµРґРёРЅСЏРµРј СЃРѕР±С‹С‚РёСЏ РїРѕ СЃС‚Р°СЂРѕР№ Рё РЅРѕРІРѕР№ Р±РµР·РѕРїР°СЃРЅС‹С… СЃРґРµР»РѕРє
      * 
      * @return string
      */
@@ -377,7 +377,7 @@ class notifications
     {
         $default = array(
             'count' => 0,
-            'tip'   => 'Список Безопасных сделок',
+            'tip'   => 'РЎРїРёСЃРѕРє Р‘РµР·РѕРїР°СЃРЅС‹С… СЃРґРµР»РѕРє',
             'alert' => FALSE
         );
         
@@ -392,12 +392,12 @@ class notifications
         
         if ((int)$default['count'] === 1) 
         {
-            $default['tip'] = 'Новое событие в «Безопасной Сделке»';
+            $default['tip'] = 'РќРѕРІРѕРµ СЃРѕР±С‹С‚РёРµ РІ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµВ»';
             $default['alert'] = TRUE;
         } 
         elseif($default['count'] > 1) 
         {
-            $default['tip'] = $default['count'] . ' ' . ending($default['count'], 'новое событие', 'новых события', 'новых событий') . ' в ваших «Безопасных Сделках»';
+            $default['tip'] = $default['count'] . ' ' . ending($default['count'], 'РЅРѕРІРѕРµ СЃРѕР±С‹С‚РёРµ', 'РЅРѕРІС‹С… СЃРѕР±С‹С‚РёСЏ', 'РЅРѕРІС‹С… СЃРѕР±С‹С‚РёР№') . ' РІ РІР°С€РёС… В«Р‘РµР·РѕРїР°СЃРЅС‹С… РЎРґРµР»РєР°С…В»';
         }
         
         return $default;

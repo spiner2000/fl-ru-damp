@@ -41,12 +41,12 @@ $yt_replace_data = array();
   if(!($joinedComms = commune::GetCommunes(NULL, NULL, $uid, commune::OM_CM_JOINED)))
     $joinedComms = array();
 
-  // Все сообщества, доступные пользователю.
+  // Р’СЃРµ СЃРѕРѕР±С‰РµСЃС‚РІР°, РґРѕСЃС‚СѓРїРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ.
   $communes = array();
   foreach($myComms as $comm) $communes[] = $comm;
   foreach($joinedComms as $comm) $communes[] = $comm;
 
-  // Блоги
+  // Р‘Р»РѕРіРё
   if(!($blog_grs=blogs::GetThemes($error, 1)))
     $blog_grs = array();
 
@@ -64,8 +64,8 @@ $yt_replace_data = array();
   $cms=NULL;
   $user_comm_mods = array();
 
-  // Отбираем среди выбранных ранее сообществ в ленте, те которые до сих пор остаются
-  // доступными ему для просмотра в ленте (его могли удалить или забанить). А также заполняем массив user_mod-ов на каждое из сообществ.
+  // РћС‚Р±РёСЂР°РµРј СЃСЂРµРґРё РІС‹Р±СЂР°РЅРЅС‹С… СЂР°РЅРµРµ СЃРѕРѕР±С‰РµСЃС‚РІ РІ Р»РµРЅС‚Рµ, С‚Рµ РєРѕС‚РѕСЂС‹Рµ РґРѕ СЃРёС… РїРѕСЂ РѕСЃС‚Р°СЋС‚СЃСЏ
+  // РґРѕСЃС‚СѓРїРЅС‹РјРё РµРјСѓ РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° РІ Р»РµРЅС‚Рµ (РµРіРѕ РјРѕРіР»Рё СѓРґР°Р»РёС‚СЊ РёР»Рё Р·Р°Р±Р°РЅРёС‚СЊ). Рђ С‚Р°РєР¶Рµ Р·Р°РїРѕР»РЅСЏРµРј РјР°СЃСЃРёРІ user_mod-РѕРІ РЅР° РєР°Р¶РґРѕРµ РёР· СЃРѕРѕР±С‰РµСЃС‚РІ.
   if($lenta && $lenta['communes'] && !empty($lenta['communes']))
   {
     $i=0;
@@ -122,7 +122,7 @@ $yt_replace_data = array();
                             foreach($items as $item) {
                                 switch ($item['item_type']) {
                                     case '2':
-                                    // Сообщества
+                                    // РЎРѕРѕР±С‰РµСЃС‚РІР°
                                     $top = $item;
                                     $user_mod = $user_comm_mods[$top['commune_id']];
                                     if( ($top['member_is_banned'] && !($user_mod & (commune::MOD_ADMIN | commune::MOD_COMM_AUTHOR | commune::MOD_COMM_MANAGER)))
@@ -151,7 +151,7 @@ margin-right: 0px;
 									<ul class="lo-p">
 										<li class="lo-s">
 											<div class="b-layout_bordrad_3">
-												<a href="/commune" class="lnk-dot-666">Сообщества</a>
+												<a href="/commune" class="lnk-dot-666">РЎРѕРѕР±С‰РµСЃС‚РІР°</a>
 											</div>
 										</li>
 										<li class="post-f-fav">
@@ -168,7 +168,7 @@ margin-right: 0px;
 <? print(  __LentaPrntUsrInfo($top,'user_','','',false,true))?>
 										<h3>
                                         <?php if($top['is_private'] == 't') { ?>
-                                        <img src="/images/icons/eye-hidden.png" alt="Скрытый пост" title="Скрытый пост">&nbsp;	            
+                                        <img src="/images/icons/eye-hidden.png" alt="РЎРєСЂС‹С‚С‹Р№ РїРѕСЃС‚" title="РЎРєСЂС‹С‚С‹Р№ РїРѕСЃС‚">&nbsp;	            
                                         <?php }//if?>
                                         <?php $sTitle   = /*$top['moderator_status'] === '0' ? $stop_words->replace($top['title']) :*/ $top['title']; ?>
                                         <?php $sMessage = /*$top['moderator_status'] === '0' ? $stop_words->replace($top['msgtext']) :*/ $top['msgtext']; ?>
@@ -181,7 +181,7 @@ margin-right: 0px;
 				<div class="commune-poll-theme"><?=reformat($top['question'], 43, 0, 1)?></div>
 				<div id="poll-answers-<?=$top['theme_id']?>">
 				<? if ($top['poll_closed'] == 't') { ?><table class="b-layout__table b-layout__table_width_full"><? } ?>
-                <? // если надо вывести только количество ответов
+                <? // РµСЃР»Рё РЅР°РґРѕ РІС‹РІРµСЃС‚Рё С‚РѕР»СЊРєРѕ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РІРµС‚РѕРІ
                 $showAnswers = $top['poll_votes'] || !$user_id || $top['commune_blocked'] == 't' || $top['user_is_banned'] || $top['member_is_banned'] || !$is_member;
                 if ($showAnswers) { ?><table class="poll-variants"><? } ?>
 				<?
@@ -237,9 +237,9 @@ margin-right: 0px;
                 
                 <div class="b-buttons b-buttons_inline-block">
                     <span id="poll-btn-vote-<?=$top['theme_id']?>">
-                        <a class="b-button b-button_flat b-button_flat_grey" href="javascript: return false;" onclick="poll.vote('Commune', <?=$top['theme_id']?>); return false;">Ответить</a>&nbsp;&nbsp;&nbsp;                
+                        <a class="b-button b-button_flat b-button_flat_grey" href="javascript: return false;" onclick="poll.vote('Commune', <?=$top['theme_id']?>); return false;">РћС‚РІРµС‚РёС‚СЊ</a>&nbsp;&nbsp;&nbsp;                
                     </span>                
-					<span id="poll-btn-result-<?=$top['theme_id']?>" ><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showResult('Commune', <?=$top['theme_id']?>); return false;">Посмотреть результаты</a></span>
+					<span id="poll-btn-result-<?=$top['theme_id']?>" ><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showResult('Commune', <?=$top['theme_id']?>); return false;">РџРѕСЃРјРѕС‚СЂРµС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹</a></span>
                 </div>
 				<? } else { ?>
 				<span id="poll-btn-vote-<?=$top['theme_id']?>"></span>
@@ -300,14 +300,14 @@ if($top['yt_link']) {
                                         $post_year = dateFormat('Y', $top['post_time']);
                                         ?>
                                         <li class="lo-i-cm">
-                                            <a href="<?=getFriendlyURL('commune', $top['id'])?>" <?=($top['current_count']==NULL && intval($top['count_comments'])!=0 ? 'style="font-weight:bold;"' : '')?>><?=($top['closed_comments']=='t'?"Комментирование закрыто":"Комментарии (".intval($top['count_comments']).")")?></a>
+                                            <a href="<?=getFriendlyURL('commune', $top['id'])?>" <?=($top['current_count']==NULL && intval($top['count_comments'])!=0 ? 'style="font-weight:bold;"' : '')?>><?=($top['closed_comments']=='t'?"РљРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ Р·Р°РєСЂС‹С‚Рѕ":"РљРѕРјРјРµРЅС‚Р°СЂРёРё (".intval($top['count_comments']).")")?></a>
                                             <? if($top['closed_comments']=='f') {
                                                 $top['current_count'] = $top['current_count'] == '' ? $top['a_count']-1 : $top['current_count'];
                                                 if($top['a_count'] > 1)
                                                 $unread = ($top['a_count']-1) - $top['current_count'];
                                                 if($unread > 0) {
                                                 ?>
-                                                <a href="<?=getFriendlyURL('commune', $top['id'])?>#unread" style="color:#6BA813; font-weight:bold;">(<?=$unread?> <?=(($unread==1)?"новый":"новых")?>)</a>
+                                                <a href="<?=getFriendlyURL('commune', $top['id'])?>#unread" style="color:#6BA813; font-weight:bold;">(<?=$unread?> <?=(($unread==1)?"РЅРѕРІС‹Р№":"РЅРѕРІС‹С…")?>)</a>
                                                 <?
                                                 }
                                                 $unread = 0;
@@ -322,7 +322,7 @@ if($top['yt_link']) {
                             <?
                                     break;
                                     case '1':
-                                      // Портфолио
+                                      // РџРѕСЂС‚С„РѕР»РёРѕ
                                       $work = $item;
                                       if ($work['work_is_blocked']) {
                                            continue;
@@ -334,7 +334,7 @@ if($top['yt_link']) {
 									<ul class="lo-p">
 										<li class="lo-s">
 											<div class="b-layout_bordrad_3">
-												<a href="/portfolio" class="lnk-dot-666">Работы</a>
+												<a href="/portfolio" class="lnk-dot-666">Р Р°Р±РѕС‚С‹</a>
 											</div>
 										</li>
 										<li class="post-f-fav">
@@ -376,7 +376,7 @@ if($top['yt_link']) {
                                 break;
 
                             case '4':
-                            // Блоги
+                            // Р‘Р»РѕРіРё
                                     $item['thread_id'] = $item['theme_id'];
 									$item['answers'] = $DB->rows("SELECT * FROM blogs_poll_answers WHERE thread_id IN (?l) ORDER BY id", array($item['thread_id']));
                                     $GLOBALS[LINK_INSTANCE_NAME] = new links('blogs');
@@ -386,7 +386,7 @@ if($top['yt_link']) {
 									<ul class="lo-p">
 										<li class="lo-s">
 											<div class="b-layout_bordrad_3">
-												<a href="/blogs" class="lnk-dot-666">Блоги</a>
+												<a href="/blogs" class="lnk-dot-666">Р‘Р»РѕРіРё</a>
 											</div>
 										</li>
 										<li class="post-f-fav">
@@ -459,10 +459,10 @@ if($top['yt_link']) {
 				<? if (!$item['poll_votes'] && $user_id && $item['poll_closed'] != 't') { ?>
                 <div class="b-buttons b-buttons_inline-block">
                     <span id="poll-btn-vote-<?=$item['thread_id']?>">
-                        <a class="b-button b-button_flat b-button_flat_grey" href="javascript: return false;"  onclick="poll.vote('Blogs', <?=$item['thread_id']?>); return false;">Ответить</a>                
+                        <a class="b-button b-button_flat b-button_flat_grey" href="javascript: return false;"  onclick="poll.vote('Blogs', <?=$item['thread_id']?>); return false;">РћС‚РІРµС‚РёС‚СЊ</a>                
                         &nbsp;&nbsp;&nbsp;
                     </span>                
-                    <span id="poll-btn-result-<?=$item['thread_id']?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showResult('Blogs', <?=$item['thread_id']?>); return false;">Посмотреть результаты</a>&nbsp;&nbsp;&nbsp;</span>
+                    <span id="poll-btn-result-<?=$item['thread_id']?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showResult('Blogs', <?=$item['thread_id']?>); return false;">РџРѕСЃРјРѕС‚СЂРµС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹</a>&nbsp;&nbsp;&nbsp;</span>
                 </div>
 				<? } else { ?>
 				<span id="poll-btn-vote-<?=$item['thread_id']?>"></span>
@@ -517,18 +517,18 @@ if($item['yt_link']) {
                                         $post_year = dateFormat('Y', $item['post_time']);
                                         ?>
                                         <li class="lo-i-cm">
-                                            <a href="<?=getFriendlyURL("blog", $item['theme_id'])?>" <?=($item['current_count']==NULL && intval($item['count_comments'])!=0 ? 'style="font-weight:bold;"' : '')?>><?=($item['closed_comments']=='t'?"Комментирование закрыто":"Комментарии (".intval($item['count_comments']).")")?></a>
+                                            <a href="<?=getFriendlyURL("blog", $item['theme_id'])?>" <?=($item['current_count']==NULL && intval($item['count_comments'])!=0 ? 'style="font-weight:bold;"' : '')?>><?=($item['closed_comments']=='t'?"РљРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ Р·Р°РєСЂС‹С‚Рѕ":"РљРѕРјРјРµРЅС‚Р°СЂРёРё (".intval($item['count_comments']).")")?></a>
                                             <?php
                                             if (isset($item['status_comments']) && $item['count_comments'] > 0 && $item['status_comments'] < $item['count_comments'] && $item['status_comments'] != -100 && $item['closed_comments']=='f')
                                             {
                                               $new_comments_num = $item['count_comments'] - $item['status_comments'];
                                               ?>
-                                              <a href="<?=getFriendlyURL("blog", $item['theme_id'])?>#unread" style="color:#6BA813; font-weight:bold;">(<?=$new_comments_num?> <?=(($new_comments_num==1)?"новый":"новых")?>)</a>
+                                              <a href="<?=getFriendlyURL("blog", $item['theme_id'])?>#unread" style="color:#6BA813; font-weight:bold;">(<?=$new_comments_num?> <?=(($new_comments_num==1)?"РЅРѕРІС‹Р№":"РЅРѕРІС‹С…")?>)</a>
                                               <?
                                             } else if(isset($item['status_comments']) && $item['count_comments'] > 0 && $item['status_comments'] < $item['count_comments'] && $item['status_comments'] == -100 && $item['closed_comments']=='f') {
                                                 $new_comments_num = $item['count_comments'];
                                               ?>
-                                              <a href="<?=getFriendlyURL("blog", $item['theme_id'])?>#unread" style="color:#6BA813; font-weight:bold;">(<?=$new_comments_num?> <?=(($new_comments_num==1)?"новый":"новых")?>)</a>
+                                              <a href="<?=getFriendlyURL("blog", $item['theme_id'])?>#unread" style="color:#6BA813; font-weight:bold;">(<?=$new_comments_num?> <?=(($new_comments_num==1)?"РЅРѕРІС‹Р№":"РЅРѕРІС‹С…")?>)</a>
                                               <?    
                                             }
                                             ?>
@@ -553,7 +553,7 @@ if($item['yt_link']) {
 <br/>
                         <?
 
-    	                // Страницы
+    	                // РЎС‚СЂР°РЅРёС†С‹
 
                         $count = 4;
     	                $pages = ceil(($allWorkCount + $allThemesCount) / lenta::MAX_ON_PAGE);
@@ -598,7 +598,7 @@ if($item['yt_link']) {
             $html .= '</ul>';
         }
         echo $html.'</div>';
-    	                        // Страницы закончились?>
+    	                        // РЎС‚СЂР°РЅРёС†С‹ Р·Р°РєРѕРЅС‡РёР»РёСЃСЊ?>
     	                  
           
 <?
@@ -701,7 +701,7 @@ function Lenta_AddFav($fav_id, $pfx, $user_id, $undo=0, $priority=0) {
                 if(favBlock) {
                     if(favBlock.innerHTML.match(/<LI[^>]*>/i)==null) {
                       $('lenta_fav_sort_by').setStyle('display','none');
-                      favBlock.innerHTML = 'Нет закладок';
+                      favBlock.innerHTML = 'РќРµС‚ Р·Р°РєР»Р°РґРѕРє';
                     }
                 }
               ");
@@ -712,7 +712,7 @@ function Lenta_AddFav($fav_id, $pfx, $user_id, $undo=0, $priority=0) {
 }
 
 /**
- * Сортируем закладки
+ * РЎРѕСЂС‚РёСЂСѓРµРј Р·Р°РєР»Р°РґРєРё
  *
  */
 function Lenta_SortFav($sort="date", $om) {
@@ -784,8 +784,8 @@ function Lenta_EditFav($msg_id, $priority = 0, $title = "", $action = "edit", $p
 			$outHTML .= "<INPUT id='currtitle' type='hidden' value='".$editfav['title']."'>";
 			$outHTML .= "<textarea rows=\"3\" cols=\"7\" id='favtext".$pfx.$msg_id."'>{$editfav['title']}</textarea>";
 			$outHTML .= "<div class=\"fav-one-edit-btns\">";									
-			$outHTML .= "<INPUT type='button' value='Сохранить' onClick='if(document.getElementById(\"favtext".$pfx.$msg_id."\").value.length>128){alert(\"Слишком длинное название закладки!\");return false;}else{xajax_Lenta_EditFav(".$msg_id.", document.getElementById(\"favpriority".$pfx.$msg_id."\").value, document.getElementById(\"favtext".$pfx.$msg_id."\").value, \"update\", \"$pfx\");}'>";
-			$outHTML .= "<INPUT type='button' value='Отмена' onClick='xajax_Lenta_EditFav(".$msg_id.", ".$editfav['priority'].", document.getElementById(\"currtitle\").value, \"default\", \"$pfx\");'>";									
+			$outHTML .= "<INPUT type='button' value='РЎРѕС…СЂР°РЅРёС‚СЊ' onClick='if(document.getElementById(\"favtext".$pfx.$msg_id."\").value.length>128){alert(\"РЎР»РёС€РєРѕРј РґР»РёРЅРЅРѕРµ РЅР°Р·РІР°РЅРёРµ Р·Р°РєР»Р°РґРєРё!\");return false;}else{xajax_Lenta_EditFav(".$msg_id.", document.getElementById(\"favpriority".$pfx.$msg_id."\").value, document.getElementById(\"favtext".$pfx.$msg_id."\").value, \"update\", \"$pfx\");}'>";
+			$outHTML .= "<INPUT type='button' value='РћС‚РјРµРЅР°' onClick='xajax_Lenta_EditFav(".$msg_id.", ".$editfav['priority'].", document.getElementById(\"currtitle\").value, \"default\", \"$pfx\");'>";									
 			$outHTML .= "</div></td></tr></tbody></table>";									
 
 //$outHTML = "<li class=\"fav-one-edit c\">";
@@ -799,7 +799,7 @@ $outHTML .= "<div class=\"fav-one-edit-txt\">";
 $outHTML .= "<INPUT id='favpriority".$pfx.$msg_id."' type='hidden' value='".$editfav['priority']."'>";
 $outHTML .= "<INPUT id='currtitle' type='hidden' value='".$editfav['title']."'>";
 $outHTML .= "<textarea rows=\"3\" cols=\"7\" id='favtext".$pfx.$msg_id."'>{$editfav['title']}</textarea>";
-$outHTML .= "<div class=\"fav-one-edit-btns\"><input type=\"button\" value=\"Сохранить\" onClick='if(document.getElementById(\"favtext".$pfx.$msg_id."\").value.length>128){alert(\"Слишком длинное название закладки!\");return false;}else{xajax_Lenta_EditFav(".$msg_id.", document.getElementById(\"favpriority".$pfx.$msg_id."\").value, document.getElementById(\"favtext".$pfx.$msg_id."\").value, \"update\", \"$pfx\"); \$(\"fav".$pfx.$msg_id."edit\").dispose();}'/> <input type=\"button\" value=\"Отмена\" onClick='xajax_Lenta_EditFav(".$msg_id.", ".$editfav['priority'].", document.getElementById(\"currtitle\").value, \"default\", \"$pfx\"); \$(\"fav".$pfx.$msg_id."edit\").dispose();' /></div>";
+$outHTML .= "<div class=\"fav-one-edit-btns\"><input type=\"button\" value=\"РЎРѕС…СЂР°РЅРёС‚СЊ\" onClick='if(document.getElementById(\"favtext".$pfx.$msg_id."\").value.length>128){alert(\"РЎР»РёС€РєРѕРј РґР»РёРЅРЅРѕРµ РЅР°Р·РІР°РЅРёРµ Р·Р°РєР»Р°РґРєРё!\");return false;}else{xajax_Lenta_EditFav(".$msg_id.", document.getElementById(\"favpriority".$pfx.$msg_id."\").value, document.getElementById(\"favtext".$pfx.$msg_id."\").value, \"update\", \"$pfx\"); \$(\"fav".$pfx.$msg_id."edit\").dispose();}'/> <input type=\"button\" value=\"РћС‚РјРµРЅР°\" onClick='xajax_Lenta_EditFav(".$msg_id.", ".$editfav['priority'].", document.getElementById(\"currtitle\").value, \"default\", \"$pfx\"); \$(\"fav".$pfx.$msg_id."edit\").dispose();' /></div>";
 $outHTML .= "</div>";
 //$outHTML .= "</li>";
 

@@ -1,9 +1,9 @@
 <?php
-// Тестовая оплата услуг через Плати потом
+// РўРµСЃС‚РѕРІР°СЏ РѕРїР»Р°С‚Р° СѓСЃР»СѓРі С‡РµСЂРµР· РџР»Р°С‚Рё РїРѕС‚РѕРј
 
 define('NO_CSRF', 1);
 
-//Данные платежной формы
+//Р”Р°РЅРЅС‹Рµ РїР»Р°С‚РµР¶РЅРѕР№ С„РѕСЂРјС‹
 $paypost = $_POST;
 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
@@ -14,7 +14,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/payment_keys.php");
 if(is_release()) exit;
 
 
-if(isset($_GET['cancel'])) { //Отказ от платежа
+if(isset($_GET['cancel'])) { //РћС‚РєР°Р· РѕС‚ РїР»Р°С‚РµР¶Р°
     header("Location: /bill/fail");
     exit;
 } elseif($_GET['success']) {
@@ -23,9 +23,9 @@ if(isset($_GET['cancel'])) { //Отказ от платежа
     $payment = $_SESSION['post_payment'];
     
     $request = array(
-        'orderid' => $payment['orderid'], //Уникальный идентификатор заказа в базе магазина.
-        'subid' => $payment['subid'], //Уникальный идентификатор пользователя
-        'sig' => $platipotom->getSig($payment['price'], $payment['orderid'], $payment['subid']) //Подпись платежа.
+        'orderid' => $payment['orderid'], //РЈРЅРёРєР°Р»СЊРЅС‹Р№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РєР°Р·Р° РІ Р±Р°Р·Рµ РјР°РіР°Р·РёРЅР°.
+        'subid' => $payment['subid'], //РЈРЅРёРєР°Р»СЊРЅС‹Р№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+        'sig' => $platipotom->getSig($payment['price'], $payment['orderid'], $payment['subid']) //РџРѕРґРїРёСЃСЊ РїР»Р°С‚РµР¶Р°.
     );
     $get = '?';
     foreach ($request as $param => $value) {
@@ -40,26 +40,26 @@ if(isset($_GET['cancel'])) { //Отказ от платежа
     $res = curl_exec($ch);
     $complete = ob_get_clean();
     
-    echo "<p>Результат <strong>нотификации</strong>:</p>";
+    echo "<p>Р РµР·СѓР»СЊС‚Р°С‚ <strong>РЅРѕС‚РёС„РёРєР°С†РёРё</strong>:</p>";
     echo '<pre>';
     print_r(htmlspecialchars($complete));
     echo '</pre>';
-    echo '<p><a href="/bill/success/">Вернуться в магазин</a></p>';
+    echo '<p><a href="/bill/success/">Р’РµСЂРЅСѓС‚СЊСЃСЏ РІ РјР°РіР°Р·РёРЅ</a></p>';
     exit;
 } else {
-    //Сохраняем в сессию, т.к. яндекс это помнит при двух последующих запросах
+    //РЎРѕС…СЂР°РЅСЏРµРј РІ СЃРµСЃСЃРёСЋ, С‚.Рє. СЏРЅРґРµРєСЃ СЌС‚Рѕ РїРѕРјРЅРёС‚ РїСЂРё РґРІСѓС… РїРѕСЃР»РµРґСѓСЋС‰РёС… Р·Р°РїСЂРѕСЃР°С…
     $_SESSION['post_payment'] = $paypost;
 }
 ?>
 
-<h2>Тестовая оплата Плати Потом</h2>
+<h2>РўРµСЃС‚РѕРІР°СЏ РѕРїР»Р°С‚Р° РџР»Р°С‚Рё РџРѕС‚РѕРј</h2>
 <p>
-    Оплата услуг аккаунт <strong>#<?= intval($paypost['subid'])?></strong><br />
-    Cумма оплаты <strong><?= to_money($paypost['price'], 2)?> рублей</strong><br />
+    РћРїР»Р°С‚Р° СѓСЃР»СѓРі Р°РєРєР°СѓРЅС‚ <strong>#<?= intval($paypost['subid'])?></strong><br />
+    CСѓРјРјР° РѕРїР»Р°С‚С‹ <strong><?= to_money($paypost['price'], 2)?> СЂСѓР±Р»РµР№</strong><br />
 </p>
 
 <form method="GET" >
-    <input type="submit" name="success" value="Успешно оплатить" />
-    <input type="submit" name="cancel" value="Вернуться в магазин" />
+    <input type="submit" name="success" value="РЈСЃРїРµС€РЅРѕ РѕРїР»Р°С‚РёС‚СЊ" />
+    <input type="submit" name="cancel" value="Р’РµСЂРЅСѓС‚СЊСЃСЏ РІ РјР°РіР°Р·РёРЅ" />
     <input type="hidden" name="u_token_key" value="<?=$_SESSION['rand']?>"/>
 </form>

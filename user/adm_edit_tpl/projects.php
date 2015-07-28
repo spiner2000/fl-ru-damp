@@ -1,10 +1,10 @@
 <?php
 /**
- * Шаблон попап формы быстрого редактирования проектов и конкурсов (пока только файлы)
+ * РЁР°Р±Р»РѕРЅ РїРѕРїР°Рї С„РѕСЂРјС‹ Р±С‹СЃС‚СЂРѕРіРѕ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РїСЂРѕРµРєС‚РѕРІ Рё РєРѕРЅРєСѓСЂСЃРѕРІ (РїРѕРєР° С‚РѕР»СЊРєРѕ С„Р°Р№Р»С‹)
  * @author Max 'BlackHawk' Yastrembovich
  */
 if ( !defined('IN_STDF') ) { 
-    header("HTTP/1.0 404 Not Found"); // ибо нефиг
+    header("HTTP/1.0 404 Not Found"); // РёР±Рѕ РЅРµС„РёРі
     exit();
 }
 ?>
@@ -17,10 +17,10 @@ if ( !defined('IN_STDF') ) {
 
 <div class="b-menu b-menu_rubric b-menu_padbot_10">
     <ul class="b-menu__list">
-        <li id="adm_edit_tab_i1" class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">Основное</span></span></li>
-        <li id="adm_edit_tab_i2" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(2); return false;">Файлы</a></li>
-        <li id="adm_edit_tab_i3" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(3); return false;">Платные услуги</a></li>
-        <li id="adm_edit_tab_i4" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(4); return false;">Причина редактирования</a></li>
+        <li id="adm_edit_tab_i1" class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">РћСЃРЅРѕРІРЅРѕРµ</span></span></li>
+        <li id="adm_edit_tab_i2" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(2); return false;">Р¤Р°Р№Р»С‹</a></li>
+        <li id="adm_edit_tab_i3" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(3); return false;">РџР»Р°С‚РЅС‹Рµ СѓСЃР»СѓРіРё</a></li>
+        <li id="adm_edit_tab_i4" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(4); return false;">РџСЂРёС‡РёРЅР° СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ</a></li>
     </ul>
 </div>
 
@@ -32,11 +32,11 @@ if ( !defined('IN_STDF') ) {
 
 <?=_parseHiddenParams($aParams)?>
 
-<?php // Основное ?>
+<?php // РћСЃРЅРѕРІРЅРѕРµ ?>
 <div id="adm_edit_tab_div1">
-    <?php // Заголовок ?>
+    <?php // Р—Р°РіРѕР»РѕРІРѕРє ?>
     <div class="b-form">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_name">Заголовок</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_name">Р—Р°РіРѕР»РѕРІРѕРє</label>
         <div class="b-input b-input_inline-block b-input_width_545">
             <input type="text" id="adm_edit_name" name="name" value="<?=$prj['name']?>" class="b-input__text" size="80" onfocus="adm_edit_content.hideError('name')">
         </div>
@@ -52,9 +52,9 @@ if ( !defined('IN_STDF') ) {
         </div>
     </div>
     
-    <?php // Текст ?>
+    <?php // РўРµРєСЃС‚ ?>
     <div class="b-form">
-        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_descr">Текст</label>
+        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_descr">РўРµРєСЃС‚</label>
         <div class="b-textarea b-textarea_inline-block b-textarea_width_550">
             <textarea id="adm_edit_descr_source" style="display:none" cols="50" rows="20"><?=input_ref($prj['descr'])?></textarea>
             <textarea id="adm_edit_descr" name="descr" class="b-textarea__textarea b-textarea__textarea_width_full b-textarea__textarea__height_70" cols="77" rows="5" onfocus="adm_edit_content.hideError('descr')"></textarea>
@@ -71,12 +71,12 @@ if ( !defined('IN_STDF') ) {
         </div>
     </div>
     
-    <?php // Папка ?>
+    <?php // РџР°РїРєР° ?>
     <div class="b-form">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">Папка</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">РџР°РїРєР°</label>
         <div class="b-input_inline-block b-input_width_545">
             <select id="adm_edit_folder_id" name="folder_id" class="b-select__select b-select__select_width_full">
-                <option value="0">Корневая</option>
+                <option value="0">РљРѕСЂРЅРµРІР°СЏ</option>
                 <?php
                 if ( is_array($aFolders) && count($aFolders) ) {
                     foreach ( $aFolders as $aOne ) {
@@ -89,15 +89,15 @@ if ( !defined('IN_STDF') ) {
         </div>
     </div>
     
-    <?php // Раздел ?>
+    <?php // Р Р°Р·РґРµР» ?>
     <div class="b-form">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">Раздел</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">Р Р°Р·РґРµР»</label>
         <div class="b-input_inline-block b-input_width_545" id="adm_edit_professions">
         <?php 
         foreach ( $project_categories as $project_category ) { ?>
             <div id="category_line">
                 <select name="categories[]" class="b-select__select b-select__select_width_180" onchange="adm_edit_content.prjSubCategory(this);adm_edit_content.hideError('categories');">
-                    <option value="0">Выберите раздел</option>
+                    <option value="0">Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»</option>
             <?php
             foreach ( $categories as $cat ) {
                 if ( $cat['id'] <=0 ) {
@@ -109,7 +109,7 @@ if ( !defined('IN_STDF') ) {
             ?>
                 </select>
                 <select name="subcategories[]" class="b-select__select b-select__select_width_180" onchange="adm_edit_content.hideError('categories')">
-                    <option value='0' <?=($project_category['subcategory_id']==0 ? ' selected' : '')?>>Все специализации</option>
+                    <option value='0' <?=($project_category['subcategory_id']==0 ? ' selected' : '')?>>Р’СЃРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё</option>
             <?php                    
             $categories_specs = $professions[$project_category['category_id']];
             
@@ -134,25 +134,25 @@ if ( !defined('IN_STDF') ) {
         </div>
     </div>
     
-    <?php // Закладка "Проекты/В офис" только для проектов 
+    <?php // Р—Р°РєР»Р°РґРєР° "РџСЂРѕРµРєС‚С‹/Р’ РѕС„РёСЃ" С‚РѕР»СЊРєРѕ РґР»СЏ РїСЂРѕРµРєС‚РѕРІ 
     if ( $prj['kind'] != 7 ) {
     ?>
     <div class="b-form">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">Закладка</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">Р—Р°РєР»Р°РґРєР°</label>
         <div class="b-input_inline-block b-input_width_545">
             <div class="b-check b-check_padtop_3">
                 <input id="adm_edit_kind1" class="b-check__input" type="radio" name="kind" value="1" <?=($prj['kind'] == 1 ? 'checked="checked"' : '')?> onchange="adm_edit_content.prjChangeKind()" />
-                <label class="b-check__label" for="adm_edit_kind1" id="label_close_comments"><span class="b-radio__bold">Проекты</span> — Разовые проекты с фиксированной оплатой</label>
+                <label class="b-check__label" for="adm_edit_kind1" id="label_close_comments"><span class="b-radio__bold">РџСЂРѕРµРєС‚С‹</span> вЂ” Р Р°Р·РѕРІС‹Рµ РїСЂРѕРµРєС‚С‹ СЃ С„РёРєСЃРёСЂРѕРІР°РЅРЅРѕР№ РѕРїР»Р°С‚РѕР№</label>
             </div>
             <div class="b-check b-check_padtop_3">
                 <input id="adm_edit_kind4" class="b-check__input" type="radio" name="kind" value="4" <?=($prj['kind'] == 4 ? 'checked="checked"' : '')?> onchange="adm_edit_content.prjChangeKind()" />
-                <label class="b-check__label" for="adm_edit_kind4" id="label_is_private"><span class="b-radio__bold">Вакансии</span> — Вакансии на постоянную или попроектную работу в офисе</label>
+                <label class="b-check__label" for="adm_edit_kind4" id="label_is_private"><span class="b-radio__bold">Р’Р°РєР°РЅСЃРёРё</span> вЂ” Р’Р°РєР°РЅСЃРёРё РЅР° РїРѕСЃС‚РѕСЏРЅРЅСѓСЋ РёР»Рё РїРѕРїСЂРѕРµРєС‚РЅСѓСЋ СЂР°Р±РѕС‚Сѓ РІ РѕС„РёСЃРµ</label>
             </div>
             
             <div id="adm_edit_location" class="b-form_padtop_10" <?=($prj['kind'] == 1 ? 'style="display: none;"' : '')?>>
                 <div>
                     <select name="country" onchange="adm_edit_content.prjCityUpd(this.value);adm_edit_content.hideError('country')" class="flt-p-sel">
-                        <option value="0">Страна</option>
+                        <option value="0">РЎС‚СЂР°РЅР°</option>
                         <?php foreach( $countries as $country_id => $country ) { ?>
                         <option value="<?=$country_id?>" <?=($country_id == $prj['country'] ? 'selected' : '')?>><?=$country?></option>
                         <?php } ?>
@@ -160,7 +160,7 @@ if ( !defined('IN_STDF') ) {
                 </div>
                 <div id="frm_city" class="b-form_padtop_10">
                     <select name="pf_city" class="flt-p-sel" onchange="adm_edit_content.hideError('country')">
-                        <option value='0'>Город</option>
+                        <option value='0'>Р“РѕСЂРѕРґ</option>
                         <?php if ( $cities ) {
                             foreach ( $cities as $city_id=> $city ) { ?>
                                 <option value="<?=$city_id?>" <?=($city_id == $prj['city'] ? 'selected' : '')?>><?=$city?></option>
@@ -183,11 +183,11 @@ if ( !defined('IN_STDF') ) {
     </div>
     <? } ?>
     
-    <?php // Даты проведения только для конкурсов 
+    <?php // Р”Р°С‚С‹ РїСЂРѕРІРµРґРµРЅРёСЏ С‚РѕР»СЊРєРѕ РґР»СЏ РєРѕРЅРєСѓСЂСЃРѕРІ 
     if ( $prj['kind'] == 7 ) {
     ?>
     <div class="b-form">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">Окончание конкурса</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">РћРєРѕРЅС‡Р°РЅРёРµ РєРѕРЅРєСѓСЂСЃР°</label>
         <div class="b-input b-input_inline-block b-input_width_545">
             <input type="text" id="adm_edit_end_date" name="end_date" value="<?=date('d-m-Y',strtotime($prj['end_date']))?>" class="b-input__text"  size="10" maxlength="10" onfocus="adm_edit_content.hideError('end_date')">
             <div id="end_date_btn" class="b-input__cal"></div>
@@ -205,7 +205,7 @@ if ( !defined('IN_STDF') ) {
     </div>
     
     <div class="b-form">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">Объявление победителей</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">РћР±СЉСЏРІР»РµРЅРёРµ РїРѕР±РµРґРёС‚РµР»РµР№</label>
         <div class="b-input b-input_inline-block b-input_width_545">
             <input type="text" id="adm_edit_win_date" name="win_date" value="<?=date('d-m-Y',strtotime($prj['win_date']))?>" class="b-input__text"  size="10" maxlength="10" onfocus="adm_edit_content.hideError('win_date')">
             <div id="win_date_btn" class="b-input__cal"></div>
@@ -223,15 +223,15 @@ if ( !defined('IN_STDF') ) {
     </div>
     <? } ?>
     
-    <?php // Бюджет 
+    <?php // Р‘СЋРґР¶РµС‚ 
     $bAgreement = (isset($prj['cost']) && intval($prj['cost']) == 0);
     ?>
     <div class="b-form">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">Бюджет</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">Р‘СЋРґР¶РµС‚</label>
         <div class="b-input_inline-block b-input_width_545">
             <div class="b-check b-check_padtop_3">
                 <input id="adm_edit_agreement" class="b-check__input" type="checkbox" name="agreement" value="1" <?=($bAgreement ? 'checked="checked"' : '')?> onchange="adm_edit_content.prjAgreement()" onchange="adm_edit_content.hideError('cost')" />
-                <label class="b-check__label" for="adm_edit_agreement" id="label_close_comments">По договоренности</label>
+                <label class="b-check__label" for="adm_edit_agreement" id="label_close_comments">РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</label>
             </div>
         </div>
     </div>
@@ -243,19 +243,19 @@ if ( !defined('IN_STDF') ) {
         </div>
         <div class="b-input_inline-block b-input_width_150">
             <select name="currency" id="adm_edit_currency" class="b-select__select b-select__select_width_full" <?=($bAgreement ? ' disabled' : '' )?> onchange="adm_edit_content.hideError('cost')">
-                <option value="-1">Выберите валюту</option>
-                <option value="2"<?= ($prj['currency'] == 2 && !(isset($prj['cost']) && intval($prj['cost']) == 0) ? ' selected="selected"' : '') ?>>Руб</option>
+                <option value="-1">Р’С‹Р±РµСЂРёС‚Рµ РІР°Р»СЋС‚Сѓ</option>
+                <option value="2"<?= ($prj['currency'] == 2 && !(isset($prj['cost']) && intval($prj['cost']) == 0) ? ' selected="selected"' : '') ?>>Р СѓР±</option>
                 <option value="0"<?= ($prj['currency'] === '0' && !(isset($prj['cost']) && intval($prj['cost']) == 0) ? ' selected="selected"' : '') ?>>USD</option>
                 <option value="1"<?= ($prj['currency'] == 1 && !(isset($prj['cost']) && intval($prj['cost']) == 0) ? ' selected="selected"' : '') ?>>Euro</option>
             </select>
         </div>
         <div class="b-input_inline-block b-input_width_180">
             <select name="priceby" id="adm_edit_priceby" class="b-select__select b-select__select_width_full" <?=($bAgreement ? ' disabled' : '' )?> onchange="adm_edit_content.hideError('cost')">
-                <option value="-1">Выберите из списка</option>
-                <option value="1"<?= ($prj['priceby'] == 1 ? ' selected="selected"' : '') ?>>цена за час</option>
-                <option value="2"<?= ($prj['priceby'] == 2 ? ' selected="selected"' : '') ?>>цена за день</option>
-                <option value="3"<?= ($prj['priceby'] == 3 ? ' selected="selected"' : '') ?>>цена за месяц</option>
-                <option value="4"<?= ($prj['priceby'] == 4 ? ' selected="selected"' : '') ?>>цена за проект</option>
+                <option value="-1">Р’С‹Р±РµСЂРёС‚Рµ РёР· СЃРїРёСЃРєР°</option>
+                <option value="1"<?= ($prj['priceby'] == 1 ? ' selected="selected"' : '') ?>>С†РµРЅР° Р·Р° С‡Р°СЃ</option>
+                <option value="2"<?= ($prj['priceby'] == 2 ? ' selected="selected"' : '') ?>>С†РµРЅР° Р·Р° РґРµРЅСЊ</option>
+                <option value="3"<?= ($prj['priceby'] == 3 ? ' selected="selected"' : '') ?>>С†РµРЅР° Р·Р° РјРµСЃСЏС†</option>
+                <option value="4"<?= ($prj['priceby'] == 4 ? ' selected="selected"' : '') ?>>С†РµРЅР° Р·Р° РїСЂРѕРµРєС‚</option>
             </select>
         </div>
         
@@ -270,61 +270,61 @@ if ( !defined('IN_STDF') ) {
         </div>
     </div>
     
-    <?php // Отвечать на проект могут только пользователи с аккаунтом ?>
+    <?php // РћС‚РІРµС‡Р°С‚СЊ РЅР° РїСЂРѕРµРєС‚ РјРѕРіСѓС‚ С‚РѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ Р°РєРєР°СѓРЅС‚РѕРј ?>
     <div class="b-form">
         <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">&nbsp;</label>
         <div class="b-input_inline-block b-input_width_545">
             <div class="b-check b-check_padtop_3">
                 <input id="adm_edit_pro_only" class="b-check__input" type="checkbox" name="pro_only" value="1" <?=($prj['pro_only'] == 't' ? 'checked="checked"' : '')?> />
-                <label class="b-check__label" for="adm_edit_pro_only" id="label_close_comments">Отвечать на проект могут только пользователи с аккаунтом</label>
+                <label class="b-check__label" for="adm_edit_pro_only" id="label_close_comments">РћС‚РІРµС‡Р°С‚СЊ РЅР° РїСЂРѕРµРєС‚ РјРѕРіСѓС‚ С‚РѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ Р°РєРєР°СѓРЅС‚РѕРј</label>
             </div>
         </div>
     </div>
 </div>
 
-<?php // Файлы ?>
+<?php // Р¤Р°Р№Р»С‹ ?>
 <div id="adm_edit_tab_div2" style="display: none;">
     <div class="b-form">
         <div id="adm_edit_attachedfiles" class="b-fon" style="width:635px"></div>
     </div>
 </div>
 
-<?php // Платные услуги ?>
+<?php // РџР»Р°С‚РЅС‹Рµ СѓСЃР»СѓРіРё ?>
 <div id="adm_edit_tab_div3" style="display: none;">
     <table class="b-layout__table" cellpadding="0" cellspacing="0" border="0">
     <tr class="b-layout__tr">
         <td class="b-layout__left b-layout__left_width_300 b-layout__left_padleft_15">
-            <?php // Закрепление наверху ?>
+            <?php // Р—Р°РєСЂРµРїР»РµРЅРёРµ РЅР°РІРµСЂС…Сѓ ?>
             <div class="b-check b-check_padbot_10">
                 <input class="b-check__input" id="adm_edit_top_ok" name="<?=(!$remTPeriod ? 'top_ok' : 'top_fake')?>" type="checkbox" value="1" <?=($remTPeriod ? ' checked disabled ' : '')?> />
-                <label for="adm_edit_top_ok" class="b-check__label b-check__label_margleft_5">Закрепить наверху страницы<span id="popup_qedit_prj_top_ok_icon" class="b-check__pin" <?=(!$remTPeriod ? 'style="display:none"' : '')?>></span></label>
+                <label for="adm_edit_top_ok" class="b-check__label b-check__label_margleft_5">Р—Р°РєСЂРµРїРёС‚СЊ РЅР°РІРµСЂС…Сѓ СЃС‚СЂР°РЅРёС†С‹<span id="popup_qedit_prj_top_ok_icon" class="b-check__pin" <?=(!$remTPeriod ? 'style="display:none"' : '')?>></span></label>
             </div>
             <?=($remTPeriod ? '<div class="b-input_inline-block b-check_margleft_25 b-check__over">'.$remtverb.' '.$remTPeriod.'</div>' : '')?>
             <div class="b-check b-check_padbot_10 b-check_margleft_25">
-                <?=($remTPeriod ? '<input class="b-check__input"  id="adm_edit_top_ok2" name="top_ok" type="checkbox" value="1" />' : '')?><label <?=($remTPeriod ? ' for="adm_edit_top_ok2" ' : '')?> class="b-check__label"><?=(!$remTPeriod ? 'На' : 'Продлить на')?></label>
+                <?=($remTPeriod ? '<input class="b-check__input"  id="adm_edit_top_ok2" name="top_ok" type="checkbox" value="1" />' : '')?><label <?=($remTPeriod ? ' for="adm_edit_top_ok2" ' : '')?> class="b-check__label"><?=(!$remTPeriod ? 'РќР°' : 'РџСЂРѕРґР»РёС‚СЊ РЅР°')?></label>
                 <div class="b-form b-form_inline-block b-check__form">
                     <div class="b-input b-input_inline-block"><input class="b-input__text b-input__text_width_25 b-input__text_fontsize_11" name="top_days" type="text" value="1" /></div> 
-                    <label class="b-form__name b-form__name_padtop_2">&nbsp;дней</label>
+                    <label class="b-form__name b-form__name_padtop_2">&nbsp;РґРЅРµР№</label>
                 </div>
             </div>
             
-            <?php // Выделить цветом ?>
+            <?php // Р’С‹РґРµР»РёС‚СЊ С†РІРµС‚РѕРј ?>
             <div class="b-check b-check_padbot_10">
                 <input id="adm_edit_is_color" class="b-check__input" type="checkbox" name="is_color" value="1" <?=($prj['is_color'] == 't' ? 'checked="checked"' : '')?> />
-                <label class="b-check__label" for="adm_edit_is_color" id="label_close_comments">Выделить цветом</label>
+                <label class="b-check__label" for="adm_edit_is_color" id="label_close_comments">Р’С‹РґРµР»РёС‚СЊ С†РІРµС‚РѕРј</label>
             </div>
             
-            <?php // Выделить жирным ?>
+            <?php // Р’С‹РґРµР»РёС‚СЊ Р¶РёСЂРЅС‹Рј ?>
             <div class="b-check b-check_padbot_10">
                 <input id="adm_edit_is_bold" class="b-check__input" type="checkbox" name="is_bold" value="1" <?=($prj['is_bold'] == 't' ? 'checked="checked"' : '')?> />
-                <label class="b-check__label" for="adm_edit_is_bold" id="label_close_comments">Выделить жирным</label>
+                <label class="b-check__label" for="adm_edit_is_bold" id="label_close_comments">Р’С‹РґРµР»РёС‚СЊ Р¶РёСЂРЅС‹Рј</label>
             </div>
         </td>
         <td class="b-layout__right b-layout__left_width_300 b-layout__right_padleft_15">
-            <?php // Загрузить логотип со ссылкой ?>
+            <?php // Р—Р°РіСЂСѓР·РёС‚СЊ Р»РѕРіРѕС‚РёРї СЃРѕ СЃСЃС‹Р»РєРѕР№ ?>
             <div class="b-check b-check_padbot_10">
                 <input id="adm_edit_logo_ok" class="b-check__input" type="checkbox" name="logo_ok" value="1" <?=($prj['logo_id'] ? 'checked="checked" disabled' : '')?> />
-                <label class="b-check__label" for="adm_edit_logo_ok" id="label_close_comments">Загрузить логотип со ссылкой</label>
+                <label class="b-check__label" for="adm_edit_logo_ok" id="label_close_comments">Р—Р°РіСЂСѓР·РёС‚СЊ Р»РѕРіРѕС‚РёРї СЃРѕ СЃСЃС‹Р»РєРѕР№</label>
             </div>
             
             <div class="b-check b-check_padbot_10">
@@ -338,12 +338,12 @@ if ( !defined('IN_STDF') ) {
                     $sHref = WDCPREFIX . '/' . $logo['path'] . $logo['name'];
                 }
                 ?>
-                <div class="b-layout__txt b-layout__txt_fontsize_11" id="adm_edit_span_logo" style="display: <?=( $prj['logo_id'] ? 'block' : 'none' )?>"><a href="<?=$sHref?>" class="blue" target="_blank">Посмотреть загруженный файл</a>&nbsp;&nbsp;<input type="checkbox" class="b-check__input" id="adm_edit_del_logo" name="del_logo" value="1" /><label class="b-check__label" for="adm_edit_del_logo">Удалить файл</label></div>
-                <div class="b-layout__txt b-layout__txt_fontsize_11">Не более 50 Кб.<br/>150 пикселей в ширину, до 150 в высоту.<br/>(gif, jpeg, png).</div>
+                <div class="b-layout__txt b-layout__txt_fontsize_11" id="adm_edit_span_logo" style="display: <?=( $prj['logo_id'] ? 'block' : 'none' )?>"><a href="<?=$sHref?>" class="blue" target="_blank">РџРѕСЃРјРѕС‚СЂРµС‚СЊ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Р№ С„Р°Р№Р»</a>&nbsp;&nbsp;<input type="checkbox" class="b-check__input" id="adm_edit_del_logo" name="del_logo" value="1" /><label class="b-check__label" for="adm_edit_del_logo">РЈРґР°Р»РёС‚СЊ С„Р°Р№Р»</label></div>
+                <div class="b-layout__txt b-layout__txt_fontsize_11">РќРµ Р±РѕР»РµРµ 50 РљР±.<br/>150 РїРёРєСЃРµР»РµР№ РІ С€РёСЂРёРЅСѓ, РґРѕ 150 РІ РІС‹СЃРѕС‚Сѓ.<br/>(gif, jpeg, png).</div>
             </div>
             
             <div class="b-check b-check_padbot_10">
-                <label for="adm_edit_top_ok2" class="b-check__label">Ссылка</label>
+                <label for="adm_edit_top_ok2" class="b-check__label">РЎСЃС‹Р»РєР°</label>
                 <div class="b-form b-form_inline-block b-check__form">
                     <div class="b-input b-input_inline-block">
                         <input class="b-input__text b-input__text_width_180 b-input__text_fontsize_11" name="link" type="text" value="<?=$prj['link']?>" />

@@ -7,8 +7,8 @@ $profs = $prfs->GetAllProfessionsSpec(0);
 
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
-	<td align="left"><strong>Статистика</strong></td>
-	<td align="right"><a href="/siteadmin/stats/index.php">Таблица</a></td>
+	<td align="left"><strong>РЎС‚Р°С‚РёСЃС‚РёРєР°</strong></td>
+	<td align="right"><a href="/siteadmin/stats/index.php">РўР°Р±Р»РёС†Р°</a></td>
 </tr>
 </table>
 
@@ -30,7 +30,7 @@ function getspec(RXGroup) {
 </script>
 
 <center>
-<a href="#" onClick="if(document.getElementById('mspec').style.display=='none') { document.getElementById('mspec').style.display='block'; } else { document.getElementById('mspec').style.display='none'; } return false;">Показать/скрыть выбор специализации</a>
+<a href="#" onClick="if(document.getElementById('mspec').style.display=='none') { document.getElementById('mspec').style.display='block'; } else { document.getElementById('mspec').style.display='none'; } return false;">РџРѕРєР°Р·Р°С‚СЊ/СЃРєСЂС‹С‚СЊ РІС‹Р±РѕСЂ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё</a>
 <br><br>
 <form method="post" name="mspec_frm" id="mspec_frm" onSubmit="document.getElementById('g_mspec').src = 'c_mspec.php?y='+document.getElementById('mspec_year').value+'&m='+document.getElementById('mspec_month').options[document.getElementById('mspec_month').selectedIndex].value+'&rnd='+Math.random(1000)+'&s='+getspec('spec_main'); return false;">
 
@@ -83,18 +83,18 @@ function getspec(RXGroup) {
 <br>
 
 <select name="mspec_month" id="mspec_month">
-	<option value="01" <? if (date('m') == '01') print "SELECTED"?>>январь</option>
-	<option value="02" <? if (date('m') == '02') print "SELECTED"?>>февраль</option>
-	<option value="03" <? if (date('m') == '03') print "SELECTED"?>>март</option>
-	<option value="04" <? if (date('m') == '04') print "SELECTED"?>>апрель</option>
-	<option value="05" <? if (date('m') == '05') print "SELECTED"?>>май</option>
-	<option value="06" <? if (date('m') == '06') print "SELECTED"?>>июнь</option>
-	<option value="07" <? if (date('m') == '07') print "SELECTED"?>>июль</option>
-	<option value="08" <? if (date('m') == '08') print "SELECTED"?>>август</option>
-	<option value="09" <? if (date('m') == '09') print "SELECTED"?>>сентябрь</option>
-	<option value="10" <? if (date('m') == '10') print "SELECTED"?>>октябрь</option>
-	<option value="11" <? if (date('m') == '11') print "SELECTED"?>>ноябрь</option>
-	<option value="12" <? if (date('m') == '12') print "SELECTED"?>>декабрь</option>
+	<option value="01" <? if (date('m') == '01') print "SELECTED"?>>СЏРЅРІР°СЂСЊ</option>
+	<option value="02" <? if (date('m') == '02') print "SELECTED"?>>С„РµРІСЂР°Р»СЊ</option>
+	<option value="03" <? if (date('m') == '03') print "SELECTED"?>>РјР°СЂС‚</option>
+	<option value="04" <? if (date('m') == '04') print "SELECTED"?>>Р°РїСЂРµР»СЊ</option>
+	<option value="05" <? if (date('m') == '05') print "SELECTED"?>>РјР°Р№</option>
+	<option value="06" <? if (date('m') == '06') print "SELECTED"?>>РёСЋРЅСЊ</option>
+	<option value="07" <? if (date('m') == '07') print "SELECTED"?>>РёСЋР»СЊ</option>
+	<option value="08" <? if (date('m') == '08') print "SELECTED"?>>Р°РІРіСѓСЃС‚</option>
+	<option value="09" <? if (date('m') == '09') print "SELECTED"?>>СЃРµРЅС‚СЏР±СЂСЊ</option>
+	<option value="10" <? if (date('m') == '10') print "SELECTED"?>>РѕРєС‚СЏР±СЂСЊ</option>
+	<option value="11" <? if (date('m') == '11') print "SELECTED"?>>РЅРѕСЏР±СЂСЊ</option>
+	<option value="12" <? if (date('m') == '12') print "SELECTED"?>>РґРµРєР°Р±СЂСЊ</option>
 </select>
 <input type="text" name="mspec_year" id="mspec_year" size="4" maxlength="4" value="<?=date('Y')?>">
 
@@ -102,7 +102,7 @@ function getspec(RXGroup) {
 
 
 
-<input type="submit" value="Ага!"><br>
+<input type="submit" value="РђРіР°!"><br>
 </form>
 
 <img src="c_mspec.php?m=<?=date('m')?>&y=<?=date('Y')?>&s=0" id="g_mspec">
@@ -111,7 +111,7 @@ function getspec(RXGroup) {
 <br><br><br><br><br>
 
 
-<a href="#" onClick="if(document.getElementById('aspec').style.display=='none') { document.getElementById('aspec').style.display='block'; } else { document.getElementById('aspec').style.display='none'; } return false;">Показать/скрыть выбор специализации</a>
+<a href="#" onClick="if(document.getElementById('aspec').style.display=='none') { document.getElementById('aspec').style.display='block'; } else { document.getElementById('aspec').style.display='none'; } return false;">РџРѕРєР°Р·Р°С‚СЊ/СЃРєСЂС‹С‚СЊ РІС‹Р±РѕСЂ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё</a>
 <br><br>
 <form method="post" name="aspec_frm" id="aspec_frm" onSubmit="document.getElementById('g_aspec').src = 'c_aspec.php?y='+document.getElementById('aspec_year').value+'&m='+document.getElementById('aspec_month').options[document.getElementById('aspec_month').selectedIndex].value+'&rnd='+Math.random(1000)+'&s='+getspec('spec_add'); return false;">
 
@@ -164,18 +164,18 @@ function getspec(RXGroup) {
 <br>
 
 <select name="aspec_month" id="aspec_month">
-	<option value="01" <? if (date('m') == '01') print "SELECTED"?>>январь</option>
-	<option value="02" <? if (date('m') == '02') print "SELECTED"?>>февраль</option>
-	<option value="03" <? if (date('m') == '03') print "SELECTED"?>>март</option>
-	<option value="04" <? if (date('m') == '04') print "SELECTED"?>>апрель</option>
-	<option value="05" <? if (date('m') == '05') print "SELECTED"?>>май</option>
-	<option value="06" <? if (date('m') == '06') print "SELECTED"?>>июнь</option>
-	<option value="07" <? if (date('m') == '07') print "SELECTED"?>>июль</option>
-	<option value="08" <? if (date('m') == '08') print "SELECTED"?>>август</option>
-	<option value="09" <? if (date('m') == '09') print "SELECTED"?>>сентябрь</option>
-	<option value="10" <? if (date('m') == '10') print "SELECTED"?>>октябрь</option>
-	<option value="11" <? if (date('m') == '11') print "SELECTED"?>>ноябрь</option>
-	<option value="12" <? if (date('m') == '12') print "SELECTED"?>>декабрь</option>
+	<option value="01" <? if (date('m') == '01') print "SELECTED"?>>СЏРЅРІР°СЂСЊ</option>
+	<option value="02" <? if (date('m') == '02') print "SELECTED"?>>С„РµРІСЂР°Р»СЊ</option>
+	<option value="03" <? if (date('m') == '03') print "SELECTED"?>>РјР°СЂС‚</option>
+	<option value="04" <? if (date('m') == '04') print "SELECTED"?>>Р°РїСЂРµР»СЊ</option>
+	<option value="05" <? if (date('m') == '05') print "SELECTED"?>>РјР°Р№</option>
+	<option value="06" <? if (date('m') == '06') print "SELECTED"?>>РёСЋРЅСЊ</option>
+	<option value="07" <? if (date('m') == '07') print "SELECTED"?>>РёСЋР»СЊ</option>
+	<option value="08" <? if (date('m') == '08') print "SELECTED"?>>Р°РІРіСѓСЃС‚</option>
+	<option value="09" <? if (date('m') == '09') print "SELECTED"?>>СЃРµРЅС‚СЏР±СЂСЊ</option>
+	<option value="10" <? if (date('m') == '10') print "SELECTED"?>>РѕРєС‚СЏР±СЂСЊ</option>
+	<option value="11" <? if (date('m') == '11') print "SELECTED"?>>РЅРѕСЏР±СЂСЊ</option>
+	<option value="12" <? if (date('m') == '12') print "SELECTED"?>>РґРµРєР°Р±СЂСЊ</option>
 </select>
 <input type="text" name="aspec_year" id="aspec_year" size="4" maxlength="4" value="<?=date('Y')?>">
 
@@ -183,7 +183,7 @@ function getspec(RXGroup) {
 
 
 
-<input type="submit" value="Ага!"><br>
+<input type="submit" value="РђРіР°!"><br>
 </form>
 
 <img src="c_aspec.php?m=<?=date('m')?>&y=<?=date('Y')?>&s=0" id="g_aspec">

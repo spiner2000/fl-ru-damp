@@ -9,10 +9,10 @@ if ($login) {
     
     if ($uid) {
         $DB->query('DELETE FROM users_social WHERE user_id = ?i', $uid);
-        echo '<p>Удаление успешно.</p>';
+        echo '<p>РЈРґР°Р»РµРЅРёРµ СѓСЃРїРµС€РЅРѕ.</p>';
     }
 }
 
 
-echo '<p>Отвязывает пользователя от аккаунта социальной сети</p>';
-echo '<p><strong>Например,</strong> /test/registration/remove_facebook?login=username</p>';
+echo '<p>РћС‚РІСЏР·С‹РІР°РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РѕС‚ Р°РєРєР°СѓРЅС‚Р° СЃРѕС†РёР°Р»СЊРЅРѕР№ СЃРµС‚Рё</p>';
+echo '<p><strong>РќР°РїСЂРёРјРµСЂ,</strong> /test/registration/remove_facebook?login=username</p>';

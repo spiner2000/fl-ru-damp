@@ -7,7 +7,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 	<head>
-        <script type="text/javascript" src="<?=WDCPREFIX?>/scripts/swfobject.js"></script> <? // äîëæåí áûòü ëèíê íà ïàïêó /scripts â ïàïêå âåáäàâà ?>
+        <script type="text/javascript" src="<?=WDCPREFIX?>/scripts/swfobject.js"></script> <? // Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ Ð»Ð¸Ð½Ðº Ð½Ð° Ð¿Ð°Ð¿ÐºÑƒ /scripts Ð² Ð¿Ð°Ð¿ÐºÐµ Ð²ÐµÐ±Ð´Ð°Ð²Ð° ?>
 		<style>
 			*{
 				margin: 0;

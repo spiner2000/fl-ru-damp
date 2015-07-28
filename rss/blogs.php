@@ -10,11 +10,11 @@ $t = trim(__paramInit('string', 't'));
 if (!$t) $base = 0; else $base = 1;
 $page = intval(trim($_GET['page']));
 $from = intval(trim($_GET['from']));
-$from = 0; //а нафига вообще тут это нужно?
+$from = 0; //Р° РЅР°С„РёРіР° РІРѕРѕР±С‰Рµ С‚СѓС‚ СЌС‚Рѕ РЅСѓР¶РЅРѕ?
 if (!$page) $page = 1;
 
 if($login) {
-    // Личный блог пользователя
+    // Р›РёС‡РЅС‹Р№ Р±Р»РѕРі РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     $login = pg_escape_string($login);
     $user = new users();
     $user->GetUser($login);
@@ -34,16 +34,16 @@ if($login) {
             $themes = $blog->GetMsgs($user->uid, $page, $num_msgs, $error, 1);
         }
     }
-    $rss_title = "Личные блоги на FL.ru ({$user->login})";
+    $rss_title = "Р›РёС‡РЅС‹Рµ Р±Р»РѕРіРё РЅР° FL.ru ({$user->login})";
     $rss_link = $host."/rss/blogs.php?user={$user->login}";
-    $rss_description = "Личные блоги на сайте www.fl.ru ({$user->login})";
-    $gr_name = "Личные блоги";
+    $rss_description = "Р›РёС‡РЅС‹Рµ Р±Р»РѕРіРё РЅР° СЃР°Р№С‚Рµ www.fl.ru ({$user->login})";
+    $gr_name = "Р›РёС‡РЅС‹Рµ Р±Р»РѕРіРё";
 } else {
-    // Общие блоги
+    // РћР±С‰РёРµ Р±Р»РѕРіРё
     $themes = $blog->GetGroup($gr, $gr_name, $num_msgs, $page, $err, 0, 1, $from, $read_only, "new", false);
-    $rss_title = "Блоги на FL.ru ({$gr_name})";
+    $rss_title = "Р‘Р»РѕРіРё РЅР° FL.ru ({$gr_name})";
     $rss_link = $host."/rss/blogs.php?gr={$gr}";
-    $rss_description = "Блоги на сайте www.fl.ru ({$gr_name})";
+    $rss_description = "Р‘Р»РѕРіРё РЅР° СЃР°Р№С‚Рµ www.fl.ru ({$gr_name})";
 }
 
 
@@ -66,7 +66,7 @@ echo "<?xml version=\"1.0\" encoding=\"windows-1251\"?>
 <ttl>30</ttl> 
 <image>
 	<url><?=$host?>/images/free-lance_logo.jpg</url>
-	<title>Блоги на FL.ru (<?=$gr_name?>)</title>
+	<title>Р‘Р»РѕРіРё РЅР° FL.ru (<?=$gr_name?>)</title>
 	<link><?=$host?></link> 
 	<width>113</width>
 	<height>18</height>

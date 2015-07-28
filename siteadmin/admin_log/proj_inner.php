@@ -11,11 +11,11 @@ var filter_specs = new Array();
 </script>
 <?php include_once('comments.php') ?>
 
-<?php if ( $sPrjId && $log ) { // просмотр истории конкретного проекта старт
+<?php if ( $sPrjId && $log ) { // РїСЂРѕСЃРјРѕС‚СЂ РёСЃС‚РѕСЂРёРё РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РїСЂРѕРµРєС‚Р° СЃС‚Р°СЂС‚
 
 $aOne = $log[0];
 
-$sObjName  = $aOne['object_name'] ? $aOne['object_name'] : '<без названия>';
+$sObjName  = $aOne['object_name'] ? $aOne['object_name'] : '<Р±РµР· РЅР°Р·РІР°РЅРёСЏ>';
 $sObjLink  = $aOne['object_link'] ? $aOne['object_link'] : 'javascript:void(0);';
 $sActClass = '';
 $nRowSpan  = $aOne['admin_comment'] ? 6 : 5;
@@ -27,43 +27,43 @@ elseif ( in_array($aOne['act_id'], $aGreen) ) {
     $sActClass = 'color-45a300';
 }
 ?>
-<h3>Действия / История проекта</h3>
+<h3>Р”РµР№СЃС‚РІРёСЏ / РСЃС‚РѕСЂРёСЏ РїСЂРѕРµРєС‚Р°</h3>
 <div class="plashka">
-	<span><a href="<?=$_SESSION['admin_log_proj']?>">Назад</a></span>
+	<span><a href="<?=$_SESSION['admin_log_proj']?>">РќР°Р·Р°Рґ</a></span>
 </div>
 
 <div class="admin-lenta">
     <table class="lenta-project">
 	<tr>
     	<td class="cell-number"><h4>#<?=$aOne['object_id']?></h4></td>
-    	<td class="cell-body"><h4>Проект: <a href="<?=$sObjLink?>"><?=hyphen_words(reformat($sObjName, 60), true)?></a></h4></td>
+    	<td class="cell-body"><h4>РџСЂРѕРµРєС‚: <a href="<?=$sObjLink?>"><?=hyphen_words(reformat($sObjName, 60), true)?></a></h4></td>
     	<td rowspan="<?=$nRowSpan?>" class="cell-blocking">
-    	   <span><?php if ( $aOne['act_time'] ) { ?><?=date('d.m.Y H:i', strtotime($aOne['act_time']))?><?php } else { ?>не известно<?php } ?></span>[<?php if ( $aOne['adm_login'] ) { ?><a target="_blank" href="/users/<?=$aOne['adm_login']?>"><?=$aOne['adm_login']?></a><?php } else { ?>не известно<?php } ?>]
+    	   <span><?php if ( $aOne['act_time'] ) { ?><?=date('d.m.Y H:i', strtotime($aOne['act_time']))?><?php } else { ?>РЅРµ РёР·РІРµСЃС‚РЅРѕ<?php } ?></span>[<?php if ( $aOne['adm_login'] ) { ?><a target="_blank" href="/users/<?=$aOne['adm_login']?>"><?=$aOne['adm_login']?></a><?php } else { ?>РЅРµ РёР·РІРµСЃС‚РЅРѕ<?php } ?>]
     	</td>
     </tr>
     <tr>
         <td class="cell-number">&nbsp;</td>
-    	<td class="cell-body">Первоначальная версия: <strong><?=hyphen_words(reformat($project_history['name'], 30, 0, 1), true)?></strong></td>
+    	<td class="cell-body">РџРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅР°СЏ РІРµСЂСЃРёСЏ: <strong><?=hyphen_words(reformat($project_history['name'], 30, 0, 1), true)?></strong></td>
     </tr>
 	<tr>
-    	<td class="cell-number">Раздел:</td>
+    	<td class="cell-number">Р Р°Р·РґРµР»:</td>
     	<td class="cell-body"><?=projects::getSpecsStr($aOne['object_id'],' / ', ', ', true);?></td>
    	</tr>
 	<tr>
-    	<td class="cell-number">Автор:</td>
-    	<td class="cell-body"><a href="/users/<?=$aOne['aut_login']?>" class="cell-autor"><?=$aOne['aut_uname']?> <?=$aOne['aut_usurname']?> [<?=$aOne['aut_login']?>]</a><?php if ($aOne['warn_cnt']) { ?>  <a onclick="xajax_getUserWarns(<?=$aOne['user_id']?>,'admin_log_page','');" href="javascript:void(0);" class="notice">Предупреждения: <span id="warn_<?=$aOne['user_id']?>_<?=$aOne['id']?>" class="warncount-<?=$aOne['user_id']?>"><?=$aOne['warn_cnt']?></span><?php } ?></a></td>
+    	<td class="cell-number">РђРІС‚РѕСЂ:</td>
+    	<td class="cell-body"><a href="/users/<?=$aOne['aut_login']?>" class="cell-autor"><?=$aOne['aut_uname']?> <?=$aOne['aut_usurname']?> [<?=$aOne['aut_login']?>]</a><?php if ($aOne['warn_cnt']) { ?>  <a onclick="xajax_getUserWarns(<?=$aOne['user_id']?>,'admin_log_page','');" href="javascript:void(0);" class="notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ: <span id="warn_<?=$aOne['user_id']?>_<?=$aOne['id']?>" class="warncount-<?=$aOne['user_id']?>"><?=$aOne['warn_cnt']?></span><?php } ?></a></td>
    	</tr>
    	<tr>
-    	<td class="cell-number">Текст:</td>
+    	<td class="cell-number">РўРµРєСЃС‚:</td>
     	<td class="cell-body"><?=hyphen_words(reformat($project['descr'],30,0,1), true)?></td>
    	</tr>
    	<tr>
         <td class="cell-number">&nbsp;</td>
-    	<td class="cell-body"><strong>Первоначальная версия:</strong><br/><br/><?=hyphen_words(reformat($project_history['descr'], 70, 0, 0, 1), true)?></td>
+    	<td class="cell-body"><strong>РџРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅР°СЏ РІРµСЂСЃРёСЏ:</strong><br/><br/><?=hyphen_words(reformat($project_history['descr'], 70, 0, 0, 1), true)?></td>
     </tr>
     <?php if ( $project_attach || $project_history['attach'] ) { ?>
     <tr>
-    	<td class="cell-number">Файлы:</td>
+    	<td class="cell-number">Р¤Р°Р№Р»С‹:</td>
     	<td class="cell-body">
     	<?php 
     	if ( is_array($project_attach) ) { 
@@ -76,7 +76,7 @@ elseif ( in_array($aOne['act_id'], $aGreen) ) {
             }
     	} 
     	else {
-    	    echo 'Нет прикрепленных файлов';
+    	    echo 'РќРµС‚ РїСЂРёРєСЂРµРїР»РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ';
     	}
     	?>
     	</td>
@@ -85,7 +85,7 @@ elseif ( in_array($aOne['act_id'], $aGreen) ) {
    	<tr>
         <td class="cell-number">&nbsp;</td>
     	<td class="cell-body">
-            <strong>Первоначальная версия:</strong><br/><br/>
+            <strong>РџРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅР°СЏ РІРµСЂСЃРёСЏ:</strong><br/><br/>
             <?php
             $nn = 1;
             foreach ($project_history['attach'] as $attach) {
@@ -99,7 +99,7 @@ elseif ( in_array($aOne['act_id'], $aGreen) ) {
    	    <?php } ?>
    	<?php } ?>
    	<tr>
-    	<td class="cell-number">Действие:</td>
+    	<td class="cell-number">Р”РµР№СЃС‚РІРёРµ:</td>
     	<td class="<?=$sActClass?>">
     	<?=$aOne['act_name']?>
     	<?php if ( in_array($aOne['act_id'], $aReasonData) ) { 
@@ -110,7 +110,7 @@ elseif ( in_array($aOne['act_id'], $aGreen) ) {
    	</tr>
    	<?php if ( $aOne['admin_comment'] ) { ?>
 	<tr>
-    	<td class="cell-number">Причина:</td>
+    	<td class="cell-number">РџСЂРёС‡РёРЅР°:</td>
     	<td class="cell-body"><?=hyphen_words(reformat($aOne['admin_comment'], 45), true)?></td>
    	</tr>
    	<?php } ?>
@@ -119,16 +119,16 @@ elseif ( in_array($aOne['act_id'], $aGreen) ) {
     	<td class="cell-body" id="prj_<?=$aOne['object_id']?>_log_<?=$aOne['id']?>">
             <?php if ( $aOne['object_deleted'] != 't' ) { ?>
 			<ul class="admin-links">
-            	<li><a href="/public/?step=1&public=<?=$aOne['object_id']?>&red=<?=urlencode($_SERVER['REQUEST_URI'])?>" class="lnk-dot-666">Редактировать</a></li>
+            	<li><a href="/public/?step=1&public=<?=$aOne['object_id']?>&red=<?=urlencode($_SERVER['REQUEST_URI'])?>" class="lnk-dot-666">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></li>
             	<?php if ( $aOne['last_act'] && !in_array($aOne['last_act'], $aRed) ) { 
-            	    // если проект разблокирован - можно блокировать из последней записи ?>
-            	<li><a onclick="adminLogGetProjBlock(<?=$aOne['object_id']?>,<?=$nProjCnt?>,10,0,0);" href="javascript:void(0);" class="lnk-dot-red">Заблокировать</a></li>
+            	    // РµСЃР»Рё РїСЂРѕРµРєС‚ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°РЅ - РјРѕР¶РЅРѕ Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РёР· РїРѕСЃР»РµРґРЅРµР№ Р·Р°РїРёСЃРё ?>
+            	<li><a onclick="adminLogGetProjBlock(<?=$aOne['object_id']?>,<?=$nProjCnt?>,10,0,0);" href="javascript:void(0);" class="lnk-dot-red">Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ</a></li>
             	<?php 
             	}
             	elseif ( $aOne['src_id'] ) {
-            	    // если проект заблокирован - можно редактировать или снимать только текущую блокировку ?>
-            	<li><a onclick="adminLogGetProjBlock(<?=$aOne['object_id']?>,<?=$nProjCnt?>,9,<?=$aOne['src_id']?>,0);" href="javascript:void(0);" class="lnk-dot-red">Разблокировать</a></li>
-            	<li><a onclick="adminLogGetProjBlock(<?=$aOne['object_id']?>,<?=$nProjCnt?>,9,<?=$aOne['src_id']?>,1);" href="javascript:void(0);" class="lnk-dot-red">Изменить причину блокировки</a></li>
+            	    // РµСЃР»Рё РїСЂРѕРµРєС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ - РјРѕР¶РЅРѕ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РёР»Рё СЃРЅРёРјР°С‚СЊ С‚РѕР»СЊРєРѕ С‚РµРєСѓС‰СѓСЋ Р±Р»РѕРєРёСЂРѕРІРєСѓ ?>
+            	<li><a onclick="adminLogGetProjBlock(<?=$aOne['object_id']?>,<?=$nProjCnt?>,9,<?=$aOne['src_id']?>,0);" href="javascript:void(0);" class="lnk-dot-red">Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ</a></li>
+            	<li><a onclick="adminLogGetProjBlock(<?=$aOne['object_id']?>,<?=$nProjCnt?>,9,<?=$aOne['src_id']?>,1);" href="javascript:void(0);" class="lnk-dot-red">РР·РјРµРЅРёС‚СЊ РїСЂРёС‡РёРЅСѓ Р±Р»РѕРєРёСЂРѕРІРєРё</a></li>
             	<?php }
                 ?>
             </ul>
@@ -141,7 +141,7 @@ elseif ( in_array($aOne['act_id'], $aGreen) ) {
    	</tr>
     </table>
     
-    <h4 class="history">История проекта:</h4>
+    <h4 class="history">РСЃС‚РѕСЂРёСЏ РїСЂРѕРµРєС‚Р°:</h4>
     
     <table>
     <?php for ( $i = 0; $i < count($log); $i++ ) { 
@@ -165,8 +165,8 @@ elseif ( in_array($aOne['act_id'], $aGreen) ) {
     <tr id="tr_<?=$aOne['id']?>" onclick="window.location.href='<?=$sHref?>'">
         <td class="cell-action cell-top <?=$sActClass?>"><a name="lid_<?=$aOne['id']?>"></a><?=$aOne['act_name']?></td>
         <td class="cell-descript cell-top"><a href="<?=$sHref?>" class="lnk-dot-666"><?=hyphen_words(reformat($aOne['admin_comment'], 45), true)?></a></td>
-        <td class="cell-who cell-top"><?php if ( $aOne['adm_login'] ) { ?><a target="_blank" href="/users/<?=$aOne['adm_login']?>">[<?=$aOne['adm_login']?>]</a><?php } else { ?>[не известно]<?php } ?></td>
-        <td class="cell-date cell-top"><?php if ( $aOne['act_time'] ) { ?><?=date('d.m.Y H:i', strtotime($aOne['act_time']))?><?php } else { ?>не известно<?php } ?></td>
+        <td class="cell-who cell-top"><?php if ( $aOne['adm_login'] ) { ?><a target="_blank" href="/users/<?=$aOne['adm_login']?>">[<?=$aOne['adm_login']?>]</a><?php } else { ?>[РЅРµ РёР·РІРµСЃС‚РЅРѕ]<?php } ?></td>
+        <td class="cell-date cell-top"><?php if ( $aOne['act_time'] ) { ?><?=date('d.m.Y H:i', strtotime($aOne['act_time']))?><?php } else { ?>РЅРµ РёР·РІРµСЃС‚РЅРѕ<?php } ?></td>
         <td class="cell-com"><?=$sComments?></td>
     </tr>
     <tr>
@@ -182,17 +182,17 @@ elseif ( in_array($aOne['act_id'], $aGreen) ) {
 
 <?php
     
-} // просмотр истории конкретного проекта стоп
-else { // список действий над проектами старт
+} // РїСЂРѕСЃРјРѕС‚СЂ РёСЃС‚РѕСЂРёРё РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РїСЂРѕРµРєС‚Р° СЃС‚РѕРї
+else { // СЃРїРёСЃРѕРє РґРµР№СЃС‚РІРёР№ РЅР°Рґ РїСЂРѕРµРєС‚Р°РјРё СЃС‚Р°СЂС‚
     
 ?>
-<h3>Действия / Проекты и конкурсы</h3>
-<!-- Фильтр старт -->
+<h3>Р”РµР№СЃС‚РІРёСЏ / РџСЂРѕРµРєС‚С‹ Рё РєРѕРЅРєСѓСЂСЃС‹</h3>
+<!-- Р¤РёР»СЊС‚СЂ СЃС‚Р°СЂС‚ -->
 <div class="form form-acnew">
 	<b class="b1"></b>
 	<b class="b2"></b>
 	<div class="form-in">
-        <h4 class="toggle"><a href="javascript:void(0);" onclick="var mySlide = new Fx.Slide('slideBlock').toggle();" class="lnk-dot-666">Фильтр</a></h4>
+        <h4 class="toggle"><a href="javascript:void(0);" onclick="var mySlide = new Fx.Slide('slideBlock').toggle();" class="lnk-dot-666">Р¤РёР»СЊС‚СЂ</a></h4>
         <div id="slideBlock" class="slideBlock">
             <form name="frm_filter" id="frm_filter" method="GET" onsubmit="return checkDateFilter();">
             <input type="hidden" id="cmd" name="cmd" value="filter">
@@ -200,7 +200,7 @@ else { // список действий над проектами старт
             <input type="hidden" id="log_pp" name="log_pp" value="<?=$log_pp?>">
             <div class="form-block first">
                 <div class="form-el form-date">
-                    <label class="form-l">Дата:</label>
+                    <label class="form-l">Р”Р°С‚Р°:</label>
                     <div class="form-value">
                         <select name="from_d" id="from_d" class="sel-year">
                             <option value=""></option>
@@ -253,10 +253,10 @@ else { // список действий над проектами старт
                     </div>
                 </div>
                 <div class="form-el">
-                    <label class="form-l">Действие:</label>
+                    <label class="form-l">Р”РµР№СЃС‚РІРёРµ:</label>
                     <div class="form-value fvs">
                         <select name="act" id="act" class="sw205">
-                            <option value="0">Все</option>
+                            <option value="0">Р’СЃРµ</option>
                             <?php foreach ( $actions as $aOne ) { 
                                 $sSel = ($aOne['id'] == $act) ? ' selected' : '';
                             ?>
@@ -266,10 +266,10 @@ else { // список действий над проектами старт
                     </div>
                 </div>
                 <div class="form-el">
-                    <label class="form-l">Модератор:</label>
+                    <label class="form-l">РњРѕРґРµСЂР°С‚РѕСЂ:</label>
                     <div class="form-value fvs">
                         <select name="adm" id="adm" class="sw205">
-                            <option value="0">Все</option>
+                            <option value="0">Р’СЃРµ</option>
                             <?php foreach ( $admins as $aOne ) { 
                                 $sSel = ($aOne['uid'] == $adm) ? ' selected' : '';
                             ?>
@@ -279,10 +279,10 @@ else { // список действий над проектами старт
                     </div>
                 </div>
                 <div class="form-el">
-                    <label class="form-l">Раздел:</label>
+                    <label class="form-l">Р Р°Р·РґРµР»:</label>
                     <div class="form-value fvs">
                         <select name="category" id="category" onChange="adminLogSubCatFilter(this.value, 0)">
-                            <option value="0">Все категории</option>
+                            <option value="0">Р’СЃРµ РєР°С‚РµРіРѕСЂРёРё</option>
                             <?php foreach ( $categories as $aOne ) { 
                                 if ( $aOne['id']<=0) continue;
                                 $sSel = ( $aOne['id'] == $category ) ? ' selected' : '';
@@ -291,12 +291,12 @@ else { // список действий над проектами старт
                              <?php } ?>
                         </select>&nbsp;
                         <select name="sub_category" id="sub_category" class="flt-p-sel">
-                            <option value="0">Все подкатегории</option>
+                            <option value="0">Р’СЃРµ РїРѕРґРєР°С‚РµРіРѕСЂРёРё</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-el">
-                    <label class="form-l">Поиск:</label>
+                    <label class="form-l">РџРѕРёСЃРє:</label>
                     <div class="form-value fvs">
                         <input value="<?=$search?>" name="search" id="search" type="text" class="i-txt fvsi" />
                     </div>
@@ -304,8 +304,8 @@ else { // список действий над проектами старт
             </div>
             <div class="form-block last">
                 <div class="form-el form-btns">
-                    <button type="submit">Отфильтровать</button>
-                    <a href="javascript:void(0);" onclick="adminLogClearFilter('<?=date('j')?>', '<?=date('m')?>', '<?=date('Y')?>');" class="lnk-dot-grey">Очистить</a>
+                    <button type="submit">РћС‚С„РёР»СЊС‚СЂРѕРІР°С‚СЊ</button>
+                    <a href="javascript:void(0);" onclick="adminLogClearFilter('<?=date('j')?>', '<?=date('m')?>', '<?=date('Y')?>');" class="lnk-dot-grey">РћС‡РёСЃС‚РёС‚СЊ</a>
                 </div>
             </div>
             </form>
@@ -314,7 +314,7 @@ else { // список действий над проектами старт
 	<b class="b2"></b>
 	<b class="b1"></b>
 </div>
-<!-- Фильтр стоп -->
+<!-- Р¤РёР»СЊС‚СЂ СЃС‚РѕРї -->
 
 <div class="admin-lenta">
     <?php if ( $log ) { 
@@ -326,11 +326,11 @@ else { // список действий над проектами старт
 	<table class="lenta-project">
 	<tr>
         <?php $href = $sHref . '&sort=num&dir='. ($order=='num' ? ($direction == 'asc' ? 'desc' : 'asc') : 'asc'); ?>
-    	<th class="cell-number"><a href="<?=$href?>" class="lnk-dot-666">Номер</a><? if ($order == 'num') { ?><a href="<?=$href?>"><img src="<?=$sSrc?>" alt=""  /></a><? } ?></th>
+    	<th class="cell-number"><a href="<?=$href?>" class="lnk-dot-666">РќРѕРјРµСЂ</a><? if ($order == 'num') { ?><a href="<?=$href?>"><img src="<?=$sSrc?>" alt=""  /></a><? } ?></th>
     	<?php $href = $sHref . '&sort=name&dir='. ($order=='name' ? ($direction == 'asc' ? 'desc' : 'asc') : 'asc'); ?>
-    	<th class="cell-body"><a href="<?=$href?>" class="lnk-dot-666">Название</a><? if ($order == 'name') { ?><a href="<?=$href?>"><img src="<?=$sSrc?>" alt=""  /></a><? } ?></th>
+    	<th class="cell-body"><a href="<?=$href?>" class="lnk-dot-666">РќР°Р·РІР°РЅРёРµ</a><? if ($order == 'name') { ?><a href="<?=$href?>"><img src="<?=$sSrc?>" alt=""  /></a><? } ?></th>
     	<?php $href = $sHref . '&sort=date&dir='. ($order=='date' ? ($direction == 'asc' ? 'desc' : 'asc') : 'asc'); ?>
-    	<th class="cell-blocking"><a href="<?=$href?>" class="lnk-dot-666">Дата</a><? if ($order == 'date') { ?><a href="<?=$href?>"><img src="<?=$sSrc?>" alt=""  /></a><? } ?></th>
+    	<th class="cell-blocking"><a href="<?=$href?>" class="lnk-dot-666">Р”Р°С‚Р°</a><? if ($order == 'date') { ?><a href="<?=$href?>"><img src="<?=$sSrc?>" alt=""  /></a><? } ?></th>
     </tr>
     </table>
     
@@ -338,7 +338,7 @@ else { // список действий над проектами старт
     $aCategory = array();
     
     foreach ( $log as $aOne ) {  
-        $sObjName  = $aOne['object_name'] ? $aOne['object_name'] : '<без названия>';
+        $sObjName  = $aOne['object_name'] ? $aOne['object_name'] : '<Р±РµР· РЅР°Р·РІР°РЅРёСЏ>';
         $sObjLink  = $aOne['object_link'] ? $aOne['object_link'] : 'javascript:void(0);';
         $sActClass = '';
         $nRowSpan  = $aOne['admin_comment'] ? 6 : 5;
@@ -359,21 +359,21 @@ else { // список действий над проектами старт
     <table class="lenta-project">
 	<tr>
     	<td class="cell-number"><h4>#<?=$aOne['object_id']?></h4></td>
-    	<td class="cell-body"><h4>Проект: <a href="<?=$sObjLink?>"><?=hyphen_words(reformat($sObjName, 60), true)?></a></h4></td>
+    	<td class="cell-body"><h4>РџСЂРѕРµРєС‚: <a href="<?=$sObjLink?>"><?=hyphen_words(reformat($sObjName, 60), true)?></a></h4></td>
     	<td rowspan="<?=$nRowSpan?>" class="cell-blocking">
-    	   <span><?php if ( $aOne['act_time'] ) { ?><?=date('d.m.Y H:i:s', strtotime($aOne['act_time']))?><?php } else { ?>не известно<?php } ?></span>[<?php if ( $aOne['adm_login'] ) { ?><a target="_blank" href="/users/<?=$aOne['adm_login']?>"><?=$aOne['adm_login']?></a><?php } else { ?>не известно<?php } ?>]
+    	   <span><?php if ( $aOne['act_time'] ) { ?><?=date('d.m.Y H:i:s', strtotime($aOne['act_time']))?><?php } else { ?>РЅРµ РёР·РІРµСЃС‚РЅРѕ<?php } ?></span>[<?php if ( $aOne['adm_login'] ) { ?><a target="_blank" href="/users/<?=$aOne['adm_login']?>"><?=$aOne['adm_login']?></a><?php } else { ?>РЅРµ РёР·РІРµСЃС‚РЅРѕ<?php } ?>]
     	</td>
     </tr>
 	<tr>
-    	<td class="cell-number">Раздел:</td>
+    	<td class="cell-number">Р Р°Р·РґРµР»:</td>
     	<td class="cell-body"><?=$sCategory?></td>
    	</tr>
 	<tr>
-    	<td class="cell-number">Автор:</td>
-    	<td class="cell-body"><a href="/users/<?=$aOne['aut_login']?>" class="cell-autor"><?=$aOne['aut_uname']?> <?=$aOne['aut_usurname']?> [<?=$aOne['aut_login']?>]</a><?php if ($aOne['warn_cnt']) { ?>  <a onclick="xajax_getUserWarns(<?=$aOne['user_id']?>,'admin_log_page','');" href="javascript:void(0);" class="notice">Предупреждения: <span id="warn_<?=$aOne['user_id']?>_<?=$aOne['id']?>" class="warncount-<?=$aOne['user_id']?>"><?=$aOne['warn_cnt']?></span></a><?php } ?></td>
+    	<td class="cell-number">РђРІС‚РѕСЂ:</td>
+    	<td class="cell-body"><a href="/users/<?=$aOne['aut_login']?>" class="cell-autor"><?=$aOne['aut_uname']?> <?=$aOne['aut_usurname']?> [<?=$aOne['aut_login']?>]</a><?php if ($aOne['warn_cnt']) { ?>  <a onclick="xajax_getUserWarns(<?=$aOne['user_id']?>,'admin_log_page','');" href="javascript:void(0);" class="notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ: <span id="warn_<?=$aOne['user_id']?>_<?=$aOne['id']?>" class="warncount-<?=$aOne['user_id']?>"><?=$aOne['warn_cnt']?></span></a><?php } ?></td>
    	</tr>
    	<tr>
-    	<td class="cell-number">Действие:</td>
+    	<td class="cell-number">Р”РµР№СЃС‚РІРёРµ:</td>
     	<td class="<?=$sActClass?>">
     	<?=$aOne['act_name']?>
     	<?php if ( in_array($aOne['act_id'], $aReasonData) ) { 
@@ -384,7 +384,7 @@ else { // список действий над проектами старт
    	</tr>
    	<?php if ( $aOne['admin_comment'] ) { ?>
 	<tr>
-    	<td class="cell-number">Причина:</td>
+    	<td class="cell-number">РџСЂРёС‡РёРЅР°:</td>
     	<td class="cell-body"><?=hyphen_words(reformat($aOne['admin_comment'], 45), true)?></td>
    	</tr>
    	<?php } ?>
@@ -392,18 +392,18 @@ else { // список действий над проектами старт
     	<td class="cell-number">&nbsp;</td>
     	<td class="cell-body" id="prj_<?=$aOne['object_id']?>_log_<?=$aOne['id']?>">
 			<ul class="admin-links">
-                <li><a href="/siteadmin/admin_log/?site=proj&pid=<?=$aOne['object_id']?>" class="lnk-dot-666">История</a></li>
+                <li><a href="/siteadmin/admin_log/?site=proj&pid=<?=$aOne['object_id']?>" class="lnk-dot-666">РСЃС‚РѕСЂРёСЏ</a></li>
                 <?php if ( $aOne['object_deleted'] != 't' ) { ?>
-            	<li><a href="/public/?step=1&public=<?=$aOne['object_id']?>&red=<?=urlencode($_SERVER['REQUEST_URI'])?>" class="lnk-dot-666">Редактировать</a></li>
+            	<li><a href="/public/?step=1&public=<?=$aOne['object_id']?>&red=<?=urlencode($_SERVER['REQUEST_URI'])?>" class="lnk-dot-666">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></li>
             	<?php if ( $aOne['last_act'] && !in_array($aOne['last_act'], $aRed) ) { 
-            	    // если проект разблокирован - можно блокировать из последней записи ?>
-            	<li><a onclick="adminLogGetProjBlock(<?=$aOne['object_id']?>,<?=$nProjCnt?>,10,0,0);" href="javascript:void(0);" class="lnk-dot-red">Заблокировать</a></li>
+            	    // РµСЃР»Рё РїСЂРѕРµРєС‚ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°РЅ - РјРѕР¶РЅРѕ Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РёР· РїРѕСЃР»РµРґРЅРµР№ Р·Р°РїРёСЃРё ?>
+            	<li><a onclick="adminLogGetProjBlock(<?=$aOne['object_id']?>,<?=$nProjCnt?>,10,0,0);" href="javascript:void(0);" class="lnk-dot-red">Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ</a></li>
             	<?php 
             	}
             	elseif ( $aOne['src_id'] ) {
-            	    // если проект заблокирован - можно редактировать или снимать только текущую блокировку ?>
-            	<li><a onclick="adminLogGetProjBlock(<?=$aOne['object_id']?>,<?=$nProjCnt?>,9,<?=$aOne['src_id']?>,0);" href="javascript:void(0);" class="lnk-dot-red">Разблокировать</a></li>
-            	<li><a onclick="adminLogGetProjBlock(<?=$aOne['object_id']?>,<?=$nProjCnt?>,9,<?=$aOne['src_id']?>,1);" href="javascript:void(0);" class="lnk-dot-red">Изменить причину блокировки</a></li>
+            	    // РµСЃР»Рё РїСЂРѕРµРєС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ - РјРѕР¶РЅРѕ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РёР»Рё СЃРЅРёРјР°С‚СЊ С‚РѕР»СЊРєРѕ С‚РµРєСѓС‰СѓСЋ Р±Р»РѕРєРёСЂРѕРІРєСѓ ?>
+            	<li><a onclick="adminLogGetProjBlock(<?=$aOne['object_id']?>,<?=$nProjCnt?>,9,<?=$aOne['src_id']?>,0);" href="javascript:void(0);" class="lnk-dot-red">Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ</a></li>
+            	<li><a onclick="adminLogGetProjBlock(<?=$aOne['object_id']?>,<?=$nProjCnt?>,9,<?=$aOne['src_id']?>,1);" href="javascript:void(0);" class="lnk-dot-red">РР·РјРµРЅРёС‚СЊ РїСЂРёС‡РёРЅСѓ Р±Р»РѕРєРёСЂРѕРІРєРё</a></li>
             	<?php }
                 ?>
             	<?php } ?>
@@ -431,7 +431,7 @@ else { // список действий над проектами старт
     }
     else {
     ?>
-    Нет действий, удовлетворяющих условиям выборки
+    РќРµС‚ РґРµР№СЃС‚РІРёР№, СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё
     <?php
     }
     ?>
@@ -448,12 +448,12 @@ alert('<?=$error?>');
 <?php } ?>
 
 <?php
-} // список действий над проектами стоп
+} // СЃРїРёСЃРѕРє РґРµР№СЃС‚РІРёР№ РЅР°Рґ РїСЂРѕРµРєС‚Р°РјРё СЃС‚РѕРї
 ?>
 
 
 
-<!-- Блокировка/Разблокировка старт -->
+<!-- Р‘Р»РѕРєРёСЂРѕРІРєР°/Р Р°Р·Р±Р»РѕРєРёСЂРѕРІРєР° СЃС‚Р°СЂС‚ -->
 <div id="ov-notice3" class="overlay ov-out" style="display: none;">
      <b class="c1"></b>
      <b class="c2"></b>
@@ -466,35 +466,35 @@ alert('<?=$error?>');
                     <div class="form-value" style="padding: 3px 10px 0 10px;" id="block_name" title=""></div>
 				</div>
              	<div class="form-el">
-                    <label class="form-l">Действие:</label>
+                    <label class="form-l">Р”РµР№СЃС‚РІРёРµ:</label>
                     <div class="form-radios" style="padding: 0 10px 0 10px;">
                         <div class="form-value" id="dr1"> 
-                            <label id="lr1">Разблокировать</label>
+                            <label id="lr1">Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ</label>
                         </div>
                     </div>
 				</div>
-				<?php /* // !!!срока блокировки проекта раньше не было. пока оставим
+				<?php /* // !!!СЃСЂРѕРєР° Р±Р»РѕРєРёСЂРѕРІРєРё РїСЂРѕРµРєС‚Р° СЂР°РЅСЊС€Рµ РЅРµ Р±С‹Р»Рѕ. РїРѕРєР° РѕСЃС‚Р°РІРёРј
                  <div class="form-el">
-                	<label class="form-l">Срок:</label>
+                	<label class="form-l">РЎСЂРѕРє:</label>
                     <div class="form-value form-date">
-                       <input type="text" maxlength="2" size="2" /> <select class="sel-month"><option>Сентября</option></select> <select class="sel-year"><option>2010</option></select>
+                       <input type="text" maxlength="2" size="2" /> <select class="sel-month"><option>РЎРµРЅС‚СЏР±СЂСЏ</option></select> <select class="sel-year"><option>2010</option></select>
                     </div>
                     <div class="form-value form-check">
                     	<input type="checkbox" value="" name="" id="r3" />
-                        <label for="r3">Бессрочно</label>
+                        <label for="r3">Р‘РµСЃСЃСЂРѕС‡РЅРѕ</label>
                     </div>
                 </div>
                 */ ?>
 				<div class="form-el">
-					<label class="form-l">Причина:</label>
+					<label class="form-l">РџСЂРёС‡РёРЅР°:</label>
 					<div class="form-value reason" id="prj_ban_div" style="padding: 0 10px 0 10px;">
-                        <div id="bfrm_div_sel_0"><select disabled><option>Подождите...</option></select></div>
+                        <div id="bfrm_div_sel_0"><select disabled><option>РџРѕРґРѕР¶РґРёС‚Рµ...</option></select></div>
                         <textarea name="" cols="" rows=""></textarea>
                     </div>
 				</div>                                         
                 <div class="ov-btns">
-                     <input type="button" id="adminLogSetProjBlock" onclick="adminLogSetProjBlock();" class="i-btn i-bold" value="Сохранить" />
-                     <a href="javascript:void(0);" onclick="adminLogOverlayClose();" class="lnk-dot-grey">Отмена</a>
+                     <input type="button" id="adminLogSetProjBlock" onclick="adminLogSetProjBlock();" class="i-btn i-bold" value="РЎРѕС…СЂР°РЅРёС‚СЊ" />
+                     <a href="javascript:void(0);" onclick="adminLogOverlayClose();" class="lnk-dot-grey">РћС‚РјРµРЅР°</a>
                  </div>
              </div>
          </div>
@@ -503,22 +503,22 @@ alert('<?=$error?>');
      <b class="c3"></b>
      <b class="c4"></b>
  </div>
- <!-- Блокировка/Разблокировка стоп -->
+ <!-- Р‘Р»РѕРєРёСЂРѕРІРєР°/Р Р°Р·Р±Р»РѕРєРёСЂРѕРІРєР° СЃС‚РѕРї -->
  
-<!-- список предупреждений пользователя старт -->
+<!-- СЃРїРёСЃРѕРє РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃС‚Р°СЂС‚ -->
 <?php
 include_once( $_SERVER['DOCUMENT_ROOT'] . '/siteadmin/admin_log/warn_overlay.php' );
 ?>
-<!-- список предупреждений пользователя стоп -->
+<!-- СЃРїРёСЃРѕРє РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃС‚РѕРї -->
  
- <!-- редактирование бана старт -->
+ <!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±Р°РЅР° СЃС‚Р°СЂС‚ -->
  <?php
  include_once( $_SERVER['DOCUMENT_ROOT'] . '/user/ban_overlay.php' );
  ?>
- <!-- редактирование бана стоп -->
+ <!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±Р°РЅР° СЃС‚РѕРї -->
 
-<!-- редактирование предупреждения старт -->
+<!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ СЃС‚Р°СЂС‚ -->
 <?php
 include_once( $_SERVER['DOCUMENT_ROOT'] . '/user/warn_overlay.php' );
 ?>
-<!-- редактирование предупреждения стоп -->
+<!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ СЃС‚РѕРї -->

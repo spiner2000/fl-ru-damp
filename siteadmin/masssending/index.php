@@ -46,7 +46,7 @@ switch($action)
     if(!$is_accepted) {
       $denied_reason = __paramInit('string', NULL, 'denied_reason');
       if(is_empty_html($denied_reason))
-        $alert[$id]['denied_reason'] = 'Ââåäèòå ïğè÷èíó îòêàçà';
+        $alert[$id]['denied_reason'] = 'Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ¿Ñ€Ğ¸Ñ‡Ğ¸Ğ½Ñƒ Ğ¾Ñ‚ĞºĞ°Ğ·Ğ°';
       else
 		$masssending->Deny($id, $denied_reason);
     }

@@ -3,7 +3,7 @@
 class LoginController extends CController 
 {
     /**
-     * Инициализация контроллера
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєРѕРЅС‚СЂРѕР»Р»РµСЂР°
      */
     public function init() 
     {
@@ -12,7 +12,7 @@ class LoginController extends CController
         $uid = get_uid(false);
         
         if ($uid) {
-            //Если уже авторизован то на главную
+            //Р•СЃР»Рё СѓР¶Рµ Р°РІС‚РѕСЂРёР·РѕРІР°РЅ С‚Рѕ РЅР° РіР»Р°РІРЅСѓСЋ
             $this->redirect('/');
         }
         
@@ -21,7 +21,7 @@ class LoginController extends CController
 
 
     /**
-     * Обработка события до какого-либо экшена
+     * РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ РґРѕ РєР°РєРѕРіРѕ-Р»РёР±Рѕ СЌРєС€РµРЅР°
      * 
      * @param string $action
      * @return bool

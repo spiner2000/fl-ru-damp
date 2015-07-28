@@ -14,12 +14,12 @@ if (!get_uid(0) || !is_emp() || !$months) {
 
 //$weeks = __paramInit('int', 'weeks', null, 0);
 $cost = $months * (payed::PRICE_EMP_PRO);
-$period = $months . " " . ending($months, "μερÿφ", "μερÿφΰ", "μερÿφεβ");
+$period = $months . " " . ending($months, "ΠΌΠµΡΡΡ†", "ΠΌΠµΡΡΡ†Π°", "ΠΌΠµΡΡΡ†ΠµΠ²");
 
 /*if ($month) {
-    $period = $month . " " . ending($month, "μερÿφ", "μερÿφΰ", "μερÿφεβ");
+    $period = $month . " " . ending($month, "ΠΌΠµΡΡΡ†", "ΠΌΠµΡΡΡ†Π°", "ΠΌΠµΡΡΡ†ΠµΠ²");
 } elseif ($weeks) {
-    $period = $weeks . " " . ending($weeks, "νεδελÿ", "νεδελθ", "νεδελό");
+    $period = $weeks . " " . ending($weeks, "Π½ΠµΠ΄ΠµΠ»Ρ", "Π½ΠµΠ΄ΠµΠ»ΠΈ", "Π½ΠµΠ΄ΠµΠ»Ρ");
 }*/
 
 $stretch_page = true;

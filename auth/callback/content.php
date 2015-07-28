@@ -13,7 +13,7 @@ $xajax->printJavascript('/xajax/');
         <div class="b-layout b-layout_padtop_45">
             
             <h1 class="b-layout__title b-layout__title_lh_1 b-layout__title_fs30 b-layout__title_color_333 b-layout__title_padbot_40">
-                Ваши данные для регистрации на FL.ru
+                Р’Р°С€Рё РґР°РЅРЅС‹Рµ РґР»СЏ СЂРµРіРёСЃС‚СЂР°С†РёРё РЅР° FL.ru
             </h1>            
             
             <div class="b-layout b-layout_inline-block b-layout_width_330 b-layout_width_full_iphone">
@@ -60,7 +60,7 @@ $xajax->printJavascript('/xajax/');
                                                id="reg_email" 
                                                name="email" 
                                                class="b-combo__input-text"
-                                               placeholder="Почта"/>
+                                               placeholder="РџРѕС‡С‚Р°"/>
                                         <label class="b-combo__label" for="reg_email"></label>
                                     </div>
                                 </div>
@@ -96,7 +96,7 @@ $xajax->printJavascript('/xajax/');
                                                name="login" 
                                                class="b-combo__input-text" 
                                                autocomplete="off" 
-                                               placeholder="Логин"/>
+                                               placeholder="Р›РѕРіРёРЅ"/>
                                         <label class="b-combo__label" for="reg_login"></label>
                                     </div>
                                 </div>
@@ -123,12 +123,12 @@ $xajax->printJavascript('/xajax/');
                                             data-ga-event="{ec: 'user', ea: 'registration_regbutton2_clicked',el: ''}" 
                                             class="b-button b-button_flat b-button_flat_green b-button_flat_large b-button_flat_width_full">
 
-                                        Зарегистрироваться
+                                        Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ
                                     </button>
                                     <div class="b-layout__txt b-layout__txt_padtop_10 b-layout__txt_fontsize_12 b-layout__txt_color_838383">
-                                        Нажимая на кнопку &laquo;Зарегистрироваться&raquo;, я соглашаюсь с 
-                                        <a href="/about/agreement_site.pdf" class="b-txt__lnk b-txt__lnk_color_0f71c8 b-txt__lnk_underline" target="_blank">публичной офертой ООО «Ваан»</a> 
-                                        и <a href="/about/appendix_2_regulations.pdf" class="b-txt__lnk b-txt__lnk_color_0f71c8 b-txt__lnk_underline" target="_blank">правилами сайта</a>.
+                                        РќР°Р¶РёРјР°СЏ РЅР° РєРЅРѕРїРєСѓ &laquo;Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ&raquo;, СЏ СЃРѕРіР»Р°С€Р°СЋСЃСЊ СЃ 
+                                        <a href="/about/agreement_site.pdf" class="b-txt__lnk b-txt__lnk_color_0f71c8 b-txt__lnk_underline" target="_blank">РїСѓР±Р»РёС‡РЅРѕР№ РѕС„РµСЂС‚РѕР№ РћРћРћ В«Р’Р°Р°РЅВ»</a> 
+                                        Рё <a href="/about/appendix_2_regulations.pdf" class="b-txt__lnk b-txt__lnk_color_0f71c8 b-txt__lnk_underline" target="_blank">РїСЂР°РІРёР»Р°РјРё СЃР°Р№С‚Р°</a>.
                                     </div>
                                 </div>
                             </td>

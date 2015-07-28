@@ -7,7 +7,7 @@ class Backup_Factory
     const SERVICE_PATH = '%s/Service/%s.php';
     
     /**
-     * Создать сервис передаваемоего типа.
+     * РЎРѕР·РґР°С‚СЊ СЃРµСЂРІРёСЃ РїРµСЂРµРґР°РІР°РµРјРѕРµРіРѕ С‚РёРїР°.
      * 
      * @param string $type
      * @return \class

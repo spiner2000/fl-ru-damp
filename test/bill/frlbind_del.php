@@ -54,14 +54,14 @@ $operations = Array (
 );
 
 foreach ($operations as $o) {
-    //Устанавливаем даты начала и окончания
+    //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РґР°С‚С‹ РЅР°С‡Р°Р»Р° Рё РѕРєРѕРЅС‡Р°РЅРёСЏ
     if ($o['op_code'] == 142 || !isset($date_start)) {
         echo '---<br>';
         $date_start = DateTime::createFromFormat("Y-m-d H:i:s.u", $o['complete_time']);
         $date_stop = clone $date_start;
         $date_stop->add(new DateInterval('P'.($o['op_count']*7).'D'));
     } else {
-        //Если продление - продляем дату окончания, обнуляем начало
+        //Р•СЃР»Рё РїСЂРѕРґР»РµРЅРёРµ - РїСЂРѕРґР»СЏРµРј РґР°С‚Сѓ РѕРєРѕРЅС‡Р°РЅРёСЏ, РѕР±РЅСѓР»СЏРµРј РЅР°С‡Р°Р»Рѕ
         if ($o['op_code'] == 148) {
             $date_stop->add(new DateInterval('P'.($o['op_count']*7).'D'));
             

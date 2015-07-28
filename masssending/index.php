@@ -11,7 +11,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/classes/professions.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/project_exrates.php';
 
 /**
- * Форматированный вывод числа, например: 123 456,78
+ * Р¤РѕСЂРјР°С‚РёСЂРѕРІР°РЅРЅС‹Р№ РІС‹РІРѕРґ С‡РёСЃР»Р°, РЅР°РїСЂРёРјРµСЂ: 123 456,78
  *
  */
 function format($number, $precition=2) {
@@ -35,9 +35,9 @@ if (isset($_GET['unset'])) {
 }
 
 $fromSearch = __paramInit('int', 'from_search', null, 0);
-// если пришли сюда из поиска пользователей
+// РµСЃР»Рё РїСЂРёС€Р»Рё СЃСЋРґР° РёР· РїРѕРёСЃРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
 if ($fromSearch === 2) {
-    // количество найденых
+    // РєРѕР»РёС‡РµСЃС‚РІРѕ РЅР°Р№РґРµРЅС‹С…
     $searchCount = __paramInit('int', 'search_count', 'search_count', false);
 }
 
@@ -71,7 +71,7 @@ if (!empty($_GET['p'])) {
 }
 
 //echo '<pre>'; var_dump($_SESSION['r_masssending']); echo '</pre>';
-$page_title = "Рассылка по каталогу - фриланс, удаленная работа на FL.ru";
+$page_title = "Р Р°СЃСЃС‹Р»РєР° РїРѕ РєР°С‚Р°Р»РѕРіСѓ - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
 
 if (isset($_GET['done'])) {
 
@@ -94,7 +94,7 @@ if (isset($_GET['done'])) {
 		if ($params['prof_group']) {
 			$params['professions'][] = intval($params['prof_group']).':'.intval($params['profession']);
 		}
-		// избавляемся от возможных дублей
+		// РёР·Р±Р°РІР»СЏРµРјСЃСЏ РѕС‚ РІРѕР·РјРѕР¶РЅС‹С… РґСѓР±Р»РµР№
 		$tmp = array();
 		foreach ($params['locations'] as $val) {
 			if (!in_array($val, $tmp)) $tmp[] = $val;
@@ -119,7 +119,7 @@ if (isset($_GET['done'])) {
 	
 	if (empty($_POST) || $masssending->error) {
 
-		// восстанавливаем сессию, если она существует и ее время не вышло
+		// РІРѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЃРµСЃСЃРёСЋ, РµСЃР»Рё РѕРЅР° СЃСѓС‰РµСЃС‚РІСѓРµС‚ Рё РµРµ РІСЂРµРјСЏ РЅРµ РІС‹С€Р»Рѕ
 		if (!empty($_SESSION['masssending'])) {
 			$params = $_SESSION['masssending'];
 			if (mktime() - $params['savetime'] > masssending::SESS_TTL) {

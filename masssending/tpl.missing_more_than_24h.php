@@ -34,8 +34,8 @@
                     <tr>
                        <td bgcolor="#f3f3f3" width="20" ></td>
                        <td bgcolor="#f3f3f3" >
-                           <font color="#000000" size="6" face="arial,sans-serif">Проекты и конкурсы дня</font><br>
-                           <font color="#4ea828" size="5" face="arial,sans-serif">интересные, выгодные и самые-самые</font>
+                           <font color="#000000" size="6" face="arial,sans-serif">РџСЂРѕРµРєС‚С‹ Рё РєРѕРЅРєСѓСЂСЃС‹ РґРЅСЏ</font><br>
+                           <font color="#4ea828" size="5" face="arial,sans-serif">РёРЅС‚РµСЂРµСЃРЅС‹Рµ, РІС‹РіРѕРґРЅС‹Рµ Рё СЃР°РјС‹Рµ-СЃР°РјС‹Рµ</font>
                        </td>
                        <td bgcolor="#f3f3f3" width="20" ></td>
                     </tr>
@@ -60,7 +60,7 @@
                       </tr>
                       <tr>
                           <td  bgcolor="#ffffff" width="20"></td>
-                          <td  align="left" ><font color="#000000" size="5" face="arial,sans-serif">Здравствуйте!</font></td>
+                          <td  align="left" ><font color="#000000" size="5" face="arial,sans-serif">Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!</font></td>
                           <td  bgcolor="#ffffff" width="20"></td>
                       </tr>
                       <tr>
@@ -70,7 +70,7 @@
                       </tr>
                       <tr>
                           <td  bgcolor="#ffffff" width="20"></td>
-                          <td  align="left" ><font color="#000000" size="3" face="arial,sans-serif">Пока вас не было, появились новые проекты и конкурсы по вашей специализации. %%%STR%%%</font></td>
+                          <td  align="left" ><font color="#000000" size="3" face="arial,sans-serif">РџРѕРєР° РІР°СЃ РЅРµ Р±С‹Р»Рѕ, РїРѕСЏРІРёР»РёСЃСЊ РЅРѕРІС‹Рµ РїСЂРѕРµРєС‚С‹ Рё РєРѕРЅРєСѓСЂСЃС‹ РїРѕ РІР°С€РµР№ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё. %%%STR%%%</font></td>
                           <td  bgcolor="#ffffff" width="20"></td>
                     </tr>
                       <tr>
@@ -90,7 +90,7 @@
                       </tr>
                       <tr>
                           <td bgcolor="#ffffff" width="20"></td>
-                          <td align="left"><font size="3" face="arial,sans-serif"><a style="color:#0f71c8" target="_blank" href="<?=$pHost?>?utm_source=newsletter4&utm_medium=email&utm_campaign=notif_ed_all">Перейти на сайт и найти еще больше интересных проектов и конкурсов</a></font></td>
+                          <td align="left"><font size="3" face="arial,sans-serif"><a style="color:#0f71c8" target="_blank" href="<?=$pHost?>?utm_source=newsletter4&utm_medium=email&utm_campaign=notif_ed_all">РџРµСЂРµР№С‚Рё РЅР° СЃР°Р№С‚ Рё РЅР°Р№С‚Рё РµС‰Рµ Р±РѕР»СЊС€Рµ РёРЅС‚РµСЂРµСЃРЅС‹С… РїСЂРѕРµРєС‚РѕРІ Рё РєРѕРЅРєСѓСЂСЃРѕРІ</a></font></td>
                           <td bgcolor="#ffffff" width="20"></td>
                       </tr>
                       <tr>
@@ -114,7 +114,7 @@
                     <tr>
                        <td bgcolor="#f3f3f3" width="20" ></td>
                        <td bgcolor="#f3f3f3" >
-                           <font color="#808080" size="1" face="arial,sans-serif">По всем возникающим вопросам обращайтесь в нашу службу поддержки.<br>Вы можете отключить уведомления на <a style="color:#0f71c8" target="_blank" href="%%%UNSUBSCRIBE_LINK%%%">этой странице</a>.</font><br>
+                           <font color="#808080" size="1" face="arial,sans-serif">РџРѕ РІСЃРµРј РІРѕР·РЅРёРєР°СЋС‰РёРј РІРѕРїСЂРѕСЃР°Рј РѕР±СЂР°С‰Р°Р№С‚РµСЃСЊ РІ РЅР°С€Сѓ СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё.<br>Р’С‹ РјРѕР¶РµС‚Рµ РѕС‚РєР»СЋС‡РёС‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ РЅР° <a style="color:#0f71c8" target="_blank" href="%%%UNSUBSCRIBE_LINK%%%">СЌС‚РѕР№ СЃС‚СЂР°РЅРёС†Рµ</a>.</font><br>
                        </td>
                        <td bgcolor="#f3f3f3" width="20" ></td>
                     </tr>

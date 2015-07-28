@@ -5,16 +5,16 @@ if(!defined('IN_STDF')) {
 }
 
 /**
- * Разметка страницы с правым сайдбаром
+ * Р Р°Р·РјРµС‚РєР° СЃС‚СЂР°РЅРёС†С‹ СЃ РїСЂР°РІС‹Рј СЃР°Р№РґР±Р°СЂРѕРј
  */
 
-// @var CController $this        контролер страницы
-// @var string $content          основная часть страницы
+// @var CController $this        РєРѕРЅС‚СЂРѕР»РµСЂ СЃС‚СЂР°РЅРёС†С‹
+// @var string $content          РѕСЃРЅРѕРІРЅР°СЏ С‡Р°СЃС‚СЊ СЃС‚СЂР°РЅРёС†С‹
 
 
-// @var int $prof_id      код категории для таргетинга блочной рекламы по категориям работ
-// @var int $g_page_id    уникальный код страницы для таргетинга блочной рекламы по страницам
-global $g_page_id; // уникальный код страницы для таргетинга блочной рекламы по страницам
+// @var int $prof_id      РєРѕРґ РєР°С‚РµРіРѕСЂРёРё РґР»СЏ С‚Р°СЂРіРµС‚РёРЅРіР° Р±Р»РѕС‡РЅРѕР№ СЂРµРєР»Р°РјС‹ РїРѕ РєР°С‚РµРіРѕСЂРёСЏРј СЂР°Р±РѕС‚
+// @var int $g_page_id    СѓРЅРёРєР°Р»СЊРЅС‹Р№ РєРѕРґ СЃС‚СЂР°РЅРёС†С‹ РґР»СЏ С‚Р°СЂРіРµС‚РёРЅРіР° Р±Р»РѕС‡РЅРѕР№ СЂРµРєР»Р°РјС‹ РїРѕ СЃС‚СЂР°РЅРёС†Р°Рј
+global $g_page_id; // СѓРЅРёРєР°Р»СЊРЅС‹Р№ РєРѕРґ СЃС‚СЂР°РЅРёС†С‹ РґР»СЏ С‚Р°СЂРіРµС‚РёРЅРіР° Р±Р»РѕС‡РЅРѕР№ СЂРµРєР»Р°РјС‹ РїРѕ СЃС‚СЂР°РЅРёС†Р°Рј
 
 $uid = get_uid(false);
 
@@ -30,7 +30,7 @@ include (ABS_PATH . '/templates/top/new_project_button.php');
 <div class="b-layout__one b-layout__one_width_25ps b-layout__one_float_right b-page__desktop">
     <?php if(!isset($new_project_button_is_visible) && (is_emp() || !$uid)):  ?>
         <div class="b-layout b-layout_padbot_20">
-            <a class="b-button b-button_flat b-button_flat_orange2 b-button_block b-button_margtop_-1" href="/public/?step=1&kind=1&red=">Бесплатно опубликовать задание</a>
+            <a class="b-button b-button_flat b-button_flat_orange2 b-button_block b-button_margtop_-1" href="/public/?step=1&kind=1&red=">Р‘РµСЃРїР»Р°С‚РЅРѕ РѕРїСѓР±Р»РёРєРѕРІР°С‚СЊ Р·Р°РґР°РЅРёРµ</a>
         </div>
     <?php endif; ?>
 

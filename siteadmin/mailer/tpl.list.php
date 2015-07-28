@@ -3,7 +3,7 @@
         <td class="b-layout__one b-layout__one_width_100 b-layout__one_padbot_10 b-layout__one_valign_bot">
             <?php list($link, $img) = mailer_sort_url(1, 2, $filter['sort']);?>
             <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bordbot_double_ccc">
-                <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_italic b-layout__link_bordbot_dot_41" href="<?= $link?>">Получатели</a>
+                <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_italic b-layout__link_bordbot_dot_41" href="<?= $link?>">РџРѕР»СѓС‡Р°С‚РµР»Рё</a>
                 <?php if($img) {?>
                 &#160;<a class="b-layout__link" href="<?= $link?>"><img src="<?=$img?>" alt="" /></a>
                 <?php }?>
@@ -12,7 +12,7 @@
         <td class="b-layout__one b-layout__one_padbot_10 b-layout__one_valign_bot">
             <?php list($link, $img) = mailer_sort_url(3, 4, $filter['sort']);?>
             <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bordbot_double_ccc">
-                <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_italic b-layout__link_bordbot_dot_41" href="<?= $link?>">Тема письма</a>
+                <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_italic b-layout__link_bordbot_dot_41" href="<?= $link?>">РўРµРјР° РїРёСЃСЊРјР°</a>
                 <?php if($img) {?>
                 &#160;<a class="b-layout__link" href="<?= $link?>"><img src="<?=$img?>" alt="" /></a>
                 <?php }?>
@@ -21,7 +21,7 @@
         <td class="b-layout__one b-layout__one_width_130 b-layout__one_padbot_10 b-layout__one_valign_bot">
             <?php list($link, $img) = mailer_sort_url(5, 6, $filter['sort']);?>
             <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bordbot_double_ccc">
-                <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_italic b-layout__link_bordbot_dot_41" href="<?= $link?>">Отправитель</a>
+                <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_italic b-layout__link_bordbot_dot_41" href="<?= $link?>">РћС‚РїСЂР°РІРёС‚РµР»СЊ</a>
                 <?php if($img) {?>
                 &#160;<a class="b-layout__link" href="<?= $link?>"><img src="<?=$img?>" alt="" /></a>
                 <?php }?>
@@ -30,7 +30,7 @@
         <td class="b-layout__one b-layout__one_width_130 b-layout__one_padbot_10 b-layout__one_valign_bot">
             <?php list($link, $img) = mailer_sort_url(7, 8, $filter['sort']);?>
             <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bordbot_double_ccc">
-                <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_italic b-layout__link_bordbot_dot_41" href="<?= $link?>">Дата и время</a>
+                <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_italic b-layout__link_bordbot_dot_41" href="<?= $link?>">Р”Р°С‚Р° Рё РІСЂРµРјСЏ</a>
                 <?php if($img) {?>
                 &#160;<a class="b-layout__link" href="<?= $link?>"><img src="<?=$img?>" alt="" /></a>
                 <?php }?>
@@ -70,7 +70,7 @@
     } elseif($content['status_message'] == 0 && $content['status_sending'] != 2) {
         $link = "?action=edit&id={$content['id']}";
     } else {
-        $link = "javascript:alert('Идет рассылка')";
+        $link = "javascript:alert('РРґРµС‚ СЂР°СЃСЃС‹Р»РєР°')";
     }
     
     $sum = $mailer->calcSumRecipientsCount($content, array($content['count_rec_emp'], $content['count_rec_frl']));
@@ -80,7 +80,7 @@
             <div class="b-layout__txt b-layout__txt_padright_20">
                 <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_valign_middle">
                     <?php if ($content['filter_file']) { ?>
-                        <a href="<?=WDCPREFIX.'/mailer/'.$content['filter_file']?>" target="_blank">файл</a>
+                        <a href="<?=WDCPREFIX.'/mailer/'.$content['filter_file']?>" target="_blank">С„Р°Р№Р»</a>
                     <?php } else echo number_format( ($content['is_digest'] !== null ? $sum_digest : $sum ), 0, ",", " "); ?>
                 </span>&#160;<span class="b-username b-username__role b-username__role_valign_middle <?=$class_role?>"></span></div>
         </td>
@@ -99,7 +99,7 @@
             <div class="b-layout__txt b-layout__txt_padright_10"><a class="b-layout__link b-layout__link_fontsize_11" href="/users/<?=$content['login']?>/"><?= $content['login']?></a></div>
         </td>
         <td class="b-layout__one b-layout__one_padbot_5 b-layout__one_padtop_2 ">
-            <div class="b-layout__txt b-layout__txt_fontsize_11"><?= date('Y.m.d в H:i', $mailer->getDateSubscr($content))?></div>
+            <div class="b-layout__txt b-layout__txt_fontsize_11"><?= date('Y.m.d РІ H:i', $mailer->getDateSubscr($content))?></div>
         </td>
     </tr>
     <?php }//foreach?>

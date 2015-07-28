@@ -1,12 +1,12 @@
-<h2 class="b-layout__title b-layout__title_padbot_30">Оплата с помощью Яндекс.Деньги</h2>
+<h2 class="b-layout__title b-layout__title_padbot_30">РћРїР»Р°С‚Р° СЃ РїРѕРјРѕС‰СЊСЋ РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё</h2>
 <table class="b-layout__table b-layout__table_width_full">
     <tbody>
         <tr class="b-layout__tr">
             <td class="b-layout__td b-layout__td_padright_20">
                 <div class="b-fon b-fon_bg_fff9bf b-fon_pad_10 b-fon_padleft_35">
-                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold"><span class="b-icon b-icon_sbr_oattent b-icon_margleft_-20"></span>Обратите внимание</div>
-                    <div class="b-layout__txt b-layout__txt_fontsize_11">— Оплата услуг производится в течение 2-3 минут.</div> 
-                    <div class="b-layout__txt b-layout__txt_fontsize_11">— После нажатия на кнопку Оплатить вы будете перенаправлены на сайт Яндекс.Деньги.</div> 
+                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold"><span class="b-icon b-icon_sbr_oattent b-icon_margleft_-20"></span>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_11">вЂ” РћРїР»Р°С‚Р° СѓСЃР»СѓРі РїСЂРѕРёР·РІРѕРґРёС‚СЃСЏ РІ С‚РµС‡РµРЅРёРµ 2-3 РјРёРЅСѓС‚.</div> 
+                    <div class="b-layout__txt b-layout__txt_fontsize_11">вЂ” РџРѕСЃР»Рµ РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ РћРїР»Р°С‚РёС‚СЊ РІС‹ Р±СѓРґРµС‚Рµ РїРµСЂРµРЅР°РїСЂР°РІР»РµРЅС‹ РЅР° СЃР°Р№С‚ РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё.</div> 
                 </div>
                 <form id="<?= $type_payment ?>" name="<?= $type_payment ?>"  method="post" action="<?= is_release() ? "https://money.yandex.ru/eshop.xml" : "/bill/test/ydpay.php" ?>">
                     <input class="wide" name="scid" value="2200" type="hidden" />

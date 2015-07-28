@@ -1,24 +1,24 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="15">
 <tr valign="top">
 	<td height="400" valign="top" bgcolor="#FFFFFF" class="box2">
-	<h1>Неправильный логин или пароль</h1>
+	<h1>РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ</h1>
 			<? 
 				if ($action == "send" && !$error) { ?>
 			<table cellspacing="0" cellpadding="0" border="0">
 			<tr>
 				<td width="25" height="20"><img src="/images/ico_ok.gif" alt="" width="19" height="18" border="0"></td>
-				<td>На Ваш электронный ящик были высланы логин и пароль</td>
+				<td>РќР° Р’Р°С€ СЌР»РµРєС‚СЂРѕРЅРЅС‹Р№ СЏС‰РёРє Р±С‹Р»Рё РІС‹СЃР»Р°РЅС‹ Р»РѕРіРёРЅ Рё РїР°СЂРѕР»СЊ</td>
 			</tr>
 			</table>
 			<? }  else { ?>
-			Вы ввели неправильный логин или пароль.<br><br>
-			Если вы забыли логин или пароль, введите Ваш электронный адрес, указанный при регистрации, в поле ниже, и логин с паролем будет выслан на него.
+			Р’С‹ РІРІРµР»Рё РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ.<br><br>
+			Р•СЃР»Рё РІС‹ Р·Р°Р±С‹Р»Рё Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ, РІРІРµРґРёС‚Рµ Р’Р°С€ СЌР»РµРєС‚СЂРѕРЅРЅС‹Р№ Р°РґСЂРµСЃ, СѓРєР°Р·Р°РЅРЅС‹Р№ РїСЂРё СЂРµРіРёСЃС‚СЂР°С†РёРё, РІ РїРѕР»Рµ РЅРёР¶Рµ, Рё Р»РѕРіРёРЅ СЃ РїР°СЂРѕР»РµРј Р±СѓРґРµС‚ РІС‹СЃР»Р°РЅ РЅР° РЅРµРіРѕ.
 			<form action="/wrongpass.php" method="post">
 			<input type="hidden" name="action" value="send">
 			<table cellspacing="0" cellpadding="0" border="0">
 			<tr>
-				<td width="115">Электронная почта:</td>
-				<td><input type="text" name="email" value="<?=$s_email?>" size="33"> &nbsp;<input type="submit" name="btn" class="btn" value="Выслать"></td>
+				<td width="115">Р­Р»РµРєС‚СЂРѕРЅРЅР°СЏ РїРѕС‡С‚Р°:</td>
+				<td><input type="text" name="email" value="<?=$s_email?>" size="33"> &nbsp;<input type="submit" name="btn" class="btn" value="Р’С‹СЃР»Р°С‚СЊ"></td>
 			</tr>
 			<? if ($error) { ?>
 			<tr>

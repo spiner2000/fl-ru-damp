@@ -6,7 +6,7 @@ require_once(__DIR__ . '/../models/GuestNewVacancyForm.php');
 class GuestHelper {
     
     /**
-     * Преобразует данные из массива
+     * РџСЂРµРѕР±СЂР°Р·СѓРµС‚ РґР°РЅРЅС‹Рµ РёР· РјР°СЃСЃРёРІР°
      * 
      * @param array $post
      * @return array
@@ -21,7 +21,7 @@ class GuestHelper {
                 ? new GuestNewVacancyForm(array('is_adm' => false))
                 : new GuestNewProjectForm(array('is_adm' => false));
 
-        //MultiDropdown работает только с $_POST
+        //MultiDropdown СЂР°Р±РѕС‚Р°РµС‚ С‚РѕР»СЊРєРѕ СЃ $_POST
         if (isset($post['el-location_columns'])) {
             $_POST['el-location_columns'] = $post['el-location_columns'];
         }
@@ -64,7 +64,7 @@ class GuestHelper {
     
     
     /**
-     * Преобразует данные из строки
+     * РџСЂРµРѕР±СЂР°Р·СѓРµС‚ РґР°РЅРЅС‹Рµ РёР· СЃС‚СЂРѕРєРё
      * 
      * @param string $query
      * @return array

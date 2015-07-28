@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/payment_keys.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/log.php");
 /**
  *
- * Класс для покупки FM с помощью банковских карт.
+ * РљР»Р°СЃСЃ РґР»СЏ РїРѕРєСѓРїРєРё FM СЃ РїРѕРјРѕС‰СЊСЋ Р±Р°РЅРєРѕРІСЃРєРёС… РєР°СЂС‚.
  *
  */
 class cardpay extends account {
@@ -13,37 +13,37 @@ class cardpay extends account {
 	const MERCHANT_ID = '691486';
 	const TESTMODE = 0;
 	
-	// Адреса сервисов.
-	const URL_RESULTBYDATE = 'https://payments.paysecure.ru/resultbydate/resultbydate.cfm'; // для запроса операций за период.
-	const URL_ORDER        = 'https://payments100.paysecure.ru/pay/order.cfm'; // для запросо операций по номеру заказа.
+	// РђРґСЂРµСЃР° СЃРµСЂРІРёСЃРѕРІ.
+	const URL_RESULTBYDATE = 'https://payments.paysecure.ru/resultbydate/resultbydate.cfm'; // РґР»СЏ Р·Р°РїСЂРѕСЃР° РѕРїРµСЂР°С†РёР№ Р·Р° РїРµСЂРёРѕРґ.
+	const URL_ORDER        = 'https://payments100.paysecure.ru/pay/order.cfm'; // РґР»СЏ Р·Р°РїСЂРѕСЃРѕ РѕРїРµСЂР°С†РёР№ РїРѕ РЅРѕРјРµСЂСѓ Р·Р°РєР°Р·Р°.
 	
-	// Коды ошибок (для нас).
+	// РљРѕРґС‹ РѕС€РёР±РѕРє (РґР»СЏ РЅР°СЃ).
     const ERR_MERCHANT_ID = 1;
     const ERR_HASH        = 2;
     const ERR_ORDERNUM    = 3;
     const ERR_DEPOSIT     = 4;
     
 	/**
-	 * Логин для авторизации в ASSIST
+	 * Р›РѕРіРёРЅ РґР»СЏ Р°РІС‚РѕСЂРёР·Р°С†РёРё РІ ASSIST
 	 *
 	 * @var string
 	 */
 	private $_login = 'freelance_sale';
 
 	/**
-	 * Пароль для авторизации в ASSIST
+	 * РџР°СЂРѕР»СЊ РґР»СЏ Р°РІС‚РѕСЂРёР·Р°С†РёРё РІ ASSIST
 	 * @var string
 	 */
 	private $_password = ASSIST_PASSWD;
 	
 	/**
-	 * Ключ для проверки хеша входящих запросов от assist.
+	 * РљР»СЋС‡ РґР»СЏ РїСЂРѕРІРµСЂРєРё С…РµС€Р° РІС…РѕРґСЏС‰РёС… Р·Р°РїСЂРѕСЃРѕРІ РѕС‚ assist.
 	 * @var string
 	 */
 	private $_secret = ASSIST_SECRET;
 	
 	/**
-	 * Лог
+	 * Р›РѕРі
 	 * @var log
 	 */
 	public $log;
@@ -55,12 +55,12 @@ class cardpay extends account {
 	}
 
 	/**
-	 * Принимает от assist результаты платежа, производит зачисление.
+	 * РџСЂРёРЅРёРјР°РµС‚ РѕС‚ assist СЂРµР·СѓР»СЊС‚Р°С‚С‹ РїР»Р°С‚РµР¶Р°, РїСЂРѕРёР·РІРѕРґРёС‚ Р·Р°С‡РёСЃР»РµРЅРёРµ.
 	 *
-	 * @param array $req   массив $_POST с данными.
+	 * @param array $req   РјР°СЃСЃРёРІ $_POST СЃ РґР°РЅРЅС‹РјРё.
 	 */
 	function checkdeposit($req) {
-	    $this->log->writeln('Поступление платежа.');
+	    $this->log->writeln('РџРѕСЃС‚СѓРїР»РµРЅРёРµ РїР»Р°С‚РµР¶Р°.');
 	    $this->log->writevar($req);
         if($req['merchant_id'] != self::MERCHANT_ID) {
             $this->fail(self::ERR_MERCHANT_ID);
@@ -79,9 +79,9 @@ class cardpay extends account {
             }
 
             $amm   = $req['orderamount'];
-            $descr = "CARD номер счета в ассисте {$req['billnumber']} с карты {$req['meantypename']} {$req['meannumber']} "
-                   . "сумма - {$req['orderamount']} {$req['ordercurrency']}, "
-                   . "обработан {$req['packetdate']}, номер покупки - {$req['ordernumber']}";
+            $descr = "CARD РЅРѕРјРµСЂ СЃС‡РµС‚Р° РІ Р°СЃСЃРёСЃС‚Рµ {$req['billnumber']} СЃ РєР°СЂС‚С‹ {$req['meantypename']} {$req['meannumber']} "
+                   . "СЃСѓРјРјР° - {$req['orderamount']} {$req['ordercurrency']}, "
+                   . "РѕР±СЂР°Р±РѕС‚Р°РЅ {$req['packetdate']}, РЅРѕРјРµСЂ РїРѕРєСѓРїРєРё - {$req['ordernumber']}";
             if($error = $this->deposit($op_id, $billing_no, $amm, $descr, 6, $req['orderamount'])) {
                 $this->fail(self::ERR_DEPOSIT, $error);
             }
@@ -90,13 +90,13 @@ class cardpay extends account {
 	}
 	
 	/**
-	 * Набросок функции для запроса у assist операций за определенный период.
-	 * @todo реализовать парамтеры для более гибких периодов, разных статусов и т.п.
+	 * РќР°Р±СЂРѕСЃРѕРє С„СѓРЅРєС†РёРё РґР»СЏ Р·Р°РїСЂРѕСЃР° Сѓ assist РѕРїРµСЂР°С†РёР№ Р·Р° РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РїРµСЂРёРѕРґ.
+	 * @todo СЂРµР°Р»РёР·РѕРІР°С‚СЊ РїР°СЂР°РјС‚РµСЂС‹ РґР»СЏ Р±РѕР»РµРµ РіРёР±РєРёС… РїРµСЂРёРѕРґРѕРІ, СЂР°Р·РЅС‹С… СЃС‚Р°С‚СѓСЃРѕРІ Рё С‚.Рї.
 	 *
 	 * @return string
 	 */
 	function checkResultsByDate() {
-	    $this->log->writeln('Проверка результатов операций.');
+	    $this->log->writeln('РџСЂРѕРІРµСЂРєР° СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РѕРїРµСЂР°С†РёР№.');
         $card_account = new card_account();
         $req['Merchant_ID'] = self::MERCHANT_ID;
         $req['Login'] = $this->_login;
@@ -107,11 +107,11 @@ class cardpay extends account {
 	}
 	
 	/**
-	 * Выполняет запрос в assist
+	 * Р’С‹РїРѕР»РЅСЏРµС‚ Р·Р°РїСЂРѕСЃ РІ assist
 	 *
-	 * @param array $req   параметры запроса [ключ:значение]
-	 * @param string $url   адрес сервиса.
-	 * @return string   ответ.
+	 * @param array $req   РїР°СЂР°РјРµС‚СЂС‹ Р·Р°РїСЂРѕСЃР° [РєР»СЋС‡:Р·РЅР°С‡РµРЅРёРµ]
+	 * @param string $url   Р°РґСЂРµСЃ СЃРµСЂРІРёСЃР°.
+	 * @return string   РѕС‚РІРµС‚.
 	 */
 	function request($req, $url) {
 	    echo http_build_query($req, '', '&');
@@ -125,10 +125,10 @@ class cardpay extends account {
 	}
 	
 	/**
-	 * Формирует ошибочный ответ на неудавшийся платеж.
+	 * Р¤РѕСЂРјРёСЂСѓРµС‚ РѕС€РёР±РѕС‡РЅС‹Р№ РѕС‚РІРµС‚ РЅР° РЅРµСѓРґР°РІС€РёР№СЃСЏ РїР»Р°С‚РµР¶.
 	 *
-	 * @param integer $code   внутренний (наш) код ошибки.
-	 * @param string $msg   описание ошибки (тоже для нас).
+	 * @param integer $code   РІРЅСѓС‚СЂРµРЅРЅРёР№ (РЅР°С€) РєРѕРґ РѕС€РёР±РєРё.
+	 * @param string $msg   РѕРїРёСЃР°РЅРёРµ РѕС€РёР±РєРё (С‚РѕР¶Рµ РґР»СЏ РЅР°СЃ).
 	 */
 	function fail($code, $msg = NULL) {
 	    switch($code) {
@@ -140,15 +140,15 @@ class cardpay extends account {
 	    
         $ret = '<?xml version="1.0" encoding="UTF-8"?>'
              . '<pushpaymentresult firstcode="' . $fc . '" secondcode="' . $sc . '" />';
-        $this->log->writeln("ОШИБКА: code={$code} firstcode={$fc} secondcode={$sc} msg={$msg}");
+        $this->log->writeln("РћРЁРР‘РљРђ: code={$code} firstcode={$fc} secondcode={$sc} msg={$msg}");
         die($ret);
 	}
 	
 	/**
-	 * Формирует успешный ответ на платеж.
+	 * Р¤РѕСЂРјРёСЂСѓРµС‚ СѓСЃРїРµС€РЅС‹Р№ РѕС‚РІРµС‚ РЅР° РїР»Р°С‚РµР¶.
 	 *
-	 * @param integer $billnumber   номер операции в системе Assist.
-	 * @param string $packetdate   дата операции по Assist.
+	 * @param integer $billnumber   РЅРѕРјРµСЂ РѕРїРµСЂР°С†РёРё РІ СЃРёСЃС‚РµРјРµ Assist.
+	 * @param string $packetdate   РґР°С‚Р° РѕРїРµСЂР°С†РёРё РїРѕ Assist.
 	 */
 	function success($billnumber, $packetdate) {
         $ret = '<?xml version="1.0" encoding="UTF-8"?>'
@@ -158,7 +158,7 @@ class cardpay extends account {
              . '<packetdate>'.$packetdate.'</packetdate>'		
              . '</order>'
              . '</pushpaymentresult>';
-	    $this->log->writeln('ОК');
+	    $this->log->writeln('РћРљ');
         die($ret);
 	}
 	

@@ -3,20 +3,20 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/wallet/wallet.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/wallet/API_OAuth.php");
 /**
- * Класс для работы с кошельком WebMoney для автоматической оплаты услуг
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РєРѕС€РµР»СЊРєРѕРј WebMoney РґР»СЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕР№ РѕРїР»Р°С‚С‹ СѓСЃР»СѓРі
  *
  */
 class walletAlpha extends Wallet
 {
     /**
-     * Задаем тип платежного метода
+     * Р—Р°РґР°РµРј С‚РёРї РїР»Р°С‚РµР¶РЅРѕРіРѕ РјРµС‚РѕРґР°
      *
      * @var int
      */
     protected $_type = WalletTypes::WALLET_ALPHA;
 
     /**
-     * Содержит объект класса через который пишем логи
+     * РЎРѕРґРµСЂР¶РёС‚ РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° С‡РµСЂРµР· РєРѕС‚РѕСЂС‹Р№ РїРёС€РµРј Р»РѕРіРё
      *
      * @var log
      */
@@ -25,39 +25,39 @@ class walletAlpha extends Wallet
     public $orderNumber;
 
     /**
-     * Инициализация заказа
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ Р·Р°РєР°Р·Р°
      */
     const STATE_INIT = 'init';
 
     /**
-     * Заказа инициирован в данном случае следует перенаправлять на страницу оплаты
+     * Р—Р°РєР°Р·Р° РёРЅРёС†РёРёСЂРѕРІР°РЅ РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ СЃР»РµРґСѓРµС‚ РїРµСЂРµРЅР°РїСЂР°РІР»СЏС‚СЊ РЅР° СЃС‚СЂР°РЅРёС†Сѓ РѕРїР»Р°С‚С‹
      */
     const STATE_NEW = 'new';
 
     /**
-     * Статус возврата
+     * РЎС‚Р°С‚СѓСЃ РІРѕР·РІСЂР°С‚Р°
      */
     const STATUS_REFUND = 'refund';
 
     /**
-     * Статус проведения платежа, чекаем платеж раз в 3 минуты
+     * РЎС‚Р°С‚СѓСЃ РїСЂРѕРІРµРґРµРЅРёСЏ РїР»Р°С‚РµР¶Р°, С‡РµРєР°РµРј РїР»Р°С‚РµР¶ СЂР°Р· РІ 3 РјРёРЅСѓС‚С‹
      */
     const STATUS_PROGRESS = 'progress';
 
     /**
-     * Статус успешного проведенного платежа
+     * РЎС‚Р°С‚СѓСЃ СѓСЃРїРµС€РЅРѕРіРѕ РїСЂРѕРІРµРґРµРЅРЅРѕРіРѕ РїР»Р°С‚РµР¶Р°
      */
     const STATUS_SUCCESS = 'complete';
 
     /**
-     * Конструктор класса необходимо задать ИД пользователя
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР° РЅРµРѕР±С…РѕРґРёРјРѕ Р·Р°РґР°С‚СЊ РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      *
-     * @param integer $uid ИД пользователя
+     * @param integer $uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      */
     public function __construct($uid = null) {
         parent::__construct($uid);
 
-        // Если есть код авторизации все гуд
+        // Р•СЃР»Рё РµСЃС‚СЊ РєРѕРґ Р°РІС‚РѕСЂРёР·Р°С†РёРё РІСЃРµ РіСѓРґ
         if($this->getAccessToken() !== false) {
             $this->api = new API_AlphaBank($this->getAccessToken());
         } else {
@@ -68,7 +68,7 @@ class walletAlpha extends Wallet
     }
 
     /**
-     * Инициализирует срок действия ключа
+     * РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ СЃСЂРѕРє РґРµР№СЃС‚РІРёСЏ РєР»СЋС‡Р°
      */
     public function initValidity() {
         return;
@@ -90,10 +90,10 @@ class walletAlpha extends Wallet
     }
 
     /**
-     * Обновляем данные заказа
+     * РћР±РЅРѕРІР»СЏРµРј РґР°РЅРЅС‹Рµ Р·Р°РєР°Р·Р°
      *
-     * @param $id       ИД заказа
-     * @param $update   Данные на обновление
+     * @param $id       РР” Р·Р°РєР°Р·Р°
+     * @param $update   Р”Р°РЅРЅС‹Рµ РЅР° РѕР±РЅРѕРІР»РµРЅРёРµ
      */
     public function updateOrder($id, $update) {
         global $DB;
@@ -102,7 +102,7 @@ class walletAlpha extends Wallet
     }
 
     /**
-     * Возвращает заказ
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р°РєР°Р·
      *
      * @param null $id
      * @param array $filter
@@ -129,7 +129,7 @@ class walletAlpha extends Wallet
     }
 
     /**
-     * Автооплата услуги
+     * РђРІС‚РѕРѕРїР»Р°С‚Р° СѓСЃР»СѓРіРё
      *
      * @param $sum
      * @return bool|mixed
@@ -159,7 +159,7 @@ class walletAlpha extends Wallet
                     $update['state'] = $this->deposit($this->account, $this->account->id, $status, $this->data['wallet'], $this->orderNumber, $sum);
                     $this->updateOrder($this->orderNumber, $update);
                     break;
-                default:  // Ошибка оплаты
+                default:  // РћС€РёР±РєР° РѕРїР»Р°С‚С‹
                     ob_start();
                     var_dump($result);
                     var_dump($payment);
@@ -183,7 +183,7 @@ class walletAlpha extends Wallet
     }
 
     /**
-     * Зачисление денег
+     * Р—Р°С‡РёСЃР»РµРЅРёРµ РґРµРЅРµРі
      *
      * @param $account
      * @param $account_id
@@ -194,9 +194,9 @@ class walletAlpha extends Wallet
      * @return string
      */
     public function deposit($account, $account_id,  $status, $wallet, $orderNumber, $sum) {
-        if($status['OrderStatus'] == API_AlphaBank::STATUS_SUCCESS_PAYMENT) { // Оплата уже прошла успешно
+        if($status['OrderStatus'] == API_AlphaBank::STATUS_SUCCESS_PAYMENT) { // РћРїР»Р°С‚Р° СѓР¶Рµ РїСЂРѕС€Р»Р° СѓСЃРїРµС€РЅРѕ
             $paymentDateTime = date('d.m.Y H:i');
-            $descr = "Оплата с карты {$wallet} сумма - {$sum}, обработан {$paymentDateTime}, номер покупки - {$orderNumber}";
+            $descr = "РћРїР»Р°С‚Р° СЃ РєР°СЂС‚С‹ {$wallet} СЃСѓРјРјР° - {$sum}, РѕР±СЂР°Р±РѕС‚Р°РЅ {$paymentDateTime}, РЅРѕРјРµСЂ РїРѕРєСѓРїРєРё - {$orderNumber}";
             $account->deposit($op_id, $account_id, $sum, $descr, 6, $sum, 12);
             return walletAlpha::STATUS_SUCCESS;
         } else {
@@ -205,7 +205,7 @@ class walletAlpha extends Wallet
     }
 
     /**
-     * Авторизация в системе для последующих платежей
+     * РђРІС‚РѕСЂРёР·Р°С†РёСЏ РІ СЃРёСЃС‚РµРјРµ РґР»СЏ РїРѕСЃР»РµРґСѓСЋС‰РёС… РїР»Р°С‚РµР¶РµР№
      *
      * @return mixed
      */
@@ -215,12 +215,12 @@ class walletAlpha extends Wallet
     }
 
     /**
-     * Проверка на зачисление денег
+     * РџСЂРѕРІРµСЂРєР° РЅР° Р·Р°С‡РёСЃР»РµРЅРёРµ РґРµРЅРµРі
      */
     static public function checkProgressOrders() {
         global $DB;
 
-        // Проверяем в течении часа
+        // РџСЂРѕРІРµСЂСЏРµРј РІ С‚РµС‡РµРЅРёРё С‡Р°СЃР°
         $sql  = "SELECT * FROM alphabank_orders WHERE state = ? AND create_time + '1 hour'::interval > now()";
         $rows = $DB->rows($sql, self::STATUS_PROGRESS);
 
@@ -228,7 +228,7 @@ class walletAlpha extends Wallet
             $api  = new API_AlphaBank();
             $api->getAccessData('autopay');
 
-            // @todo нужно как-то оптимизировать
+            // @todo РЅСѓР¶РЅРѕ РєР°Рє-С‚Рѕ РѕРїС‚РёРјРёР·РёСЂРѕРІР°С‚СЊ
             foreach($rows as $order) {
                 $status = $api->getOrderStatus($order['order_id']);
                 $update['state'] = self::deposit(new account(), $order['account_id'], $status, $order['pan'], $order['id'], $order['amount']);
@@ -241,7 +241,7 @@ class walletAlpha extends Wallet
 class API_AlphaBank {
 
     /**
-     * Настройки по умолчанию для запроса
+     * РќР°СЃС‚СЂРѕР№РєРё РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РґР»СЏ Р·Р°РїСЂРѕСЃР°
      *
      * @var array
      */
@@ -259,41 +259,41 @@ class API_AlphaBank {
     const STATUS_SUCCESS_PAYMENT = 2;
 
     /**
-     * Код после оплаты
+     * РљРѕРґ РїРѕСЃР»Рµ РѕРїР»Р°С‚С‹
      */
     const STATUS_SUCCESS = 0;
 
     /**
-     * Кодировки используемые в системе
+     * РљРѕРґРёСЂРѕРІРєРё РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ РІ СЃРёСЃС‚РµРјРµ
      */
     const SERVER_ENCODING = 'CP1251';
 
     /**
-     * Кодировка используемая для отправления запросов
+     * РљРѕРґРёСЂРѕРІРєР° РёСЃРїРѕР»СЊР·СѓРµРјР°СЏ РґР»СЏ РѕС‚РїСЂР°РІР»РµРЅРёСЏ Р·Р°РїСЂРѕСЃРѕРІ
      */
     const SEND_ENCODING   = 'UTF-8';
 
     /**
-     * Адрес API с которым взаимодействуем после авторизации
+     * РђРґСЂРµСЃ API СЃ РєРѕС‚РѕСЂС‹Рј РІР·Р°РёРјРѕРґРµР№СЃС‚РІСѓРµРј РїРѕСЃР»Рµ Р°РІС‚РѕСЂРёР·Р°С†РёРё
      */
     const API_URI  = 'https://engine.paymentgate.ru/payment/rest/';
 
     /**
-     * Адрес API с которым взаимодействуем после авторизации
+     * РђРґСЂРµСЃ API СЃ РєРѕС‚РѕСЂС‹Рј РІР·Р°РёРјРѕРґРµР№СЃС‚РІСѓРµРј РїРѕСЃР»Рµ Р°РІС‚РѕСЂРёР·Р°С†РёРё
      */
     const API_BETA_URI  = 'https://test.paymentgate.ru/testpayment/rest/';
 
     /**
-     * Код валюты платежа ISO 4217, рубли
+     * РљРѕРґ РІР°Р»СЋС‚С‹ РїР»Р°С‚РµР¶Р° ISO 4217, СЂСѓР±Р»Рё
      */
     const CURRENCY_RUB  = 810;
 
     /**
-     * Язык в кодировке ISO 639-1.
+     * РЇР·С‹Рє РІ РєРѕРґРёСЂРѕРІРєРµ ISO 639-1.
      */
     const LANGUAGE = 'ru';
 
-    // @todo вынести в отдельный файл убрать парольки с беты и альфы
+    // @todo РІС‹РЅРµСЃС‚Рё РІ РѕС‚РґРµР»СЊРЅС‹Р№ С„Р°Р№Р» СѓР±СЂР°С‚СЊ РїР°СЂРѕР»СЊРєРё СЃ Р±РµС‚С‹ Рё Р°Р»СЊС„С‹
     const LOGIN_BINDING  = 'freelance_binding-api';
     const PASSWD_TEST_BINDING = 'freelance';
     const PASSWD_BINDING = ALPHA_SECURE_PASSWD;
@@ -312,14 +312,14 @@ class API_AlphaBank {
     const RETURN_URL = 'https://www.fl.ru/income/auto-card.php';
 
     /**
-     * Сумма списываемая при регистрации
+     * РЎСѓРјРјР° СЃРїРёСЃС‹РІР°РµРјР°СЏ РїСЂРё СЂРµРіРёСЃС‚СЂР°С†РёРё
      */
     const REGISTER_SUM = 10;
 
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      *
-     * @param string $code            ИД Привязки
+     * @param string $code            РР” РџСЂРёРІСЏР·РєРё
      */
     public function __construct($accessToken = null) {
         $this->setAccessToken($accessToken);
@@ -328,7 +328,7 @@ class API_AlphaBank {
     }
 
     /**
-     * Задаем код для проведения операций
+     * Р—Р°РґР°РµРј РєРѕРґ РґР»СЏ РїСЂРѕРІРµРґРµРЅРёСЏ РѕРїРµСЂР°С†РёР№
      *
      * @param $accessToken
      */
@@ -337,7 +337,7 @@ class API_AlphaBank {
     }
 
     /**
-     * Возвращаем код для проведения операций
+     * Р’РѕР·РІСЂР°С‰Р°РµРј РєРѕРґ РґР»СЏ РїСЂРѕРІРµРґРµРЅРёСЏ РѕРїРµСЂР°С†РёР№
      *
      * @param $accessToken
      */
@@ -346,7 +346,7 @@ class API_AlphaBank {
     }
 
     /**
-     * Возвращает ИД приложения
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РР” РїСЂРёР»РѕР¶РµРЅРёСЏ
      *
      * @return string
      */
@@ -355,7 +355,7 @@ class API_AlphaBank {
     }
 
     /**
-     * Возвращает адрес редиректа приложения
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р°РґСЂРµСЃ СЂРµРґРёСЂРµРєС‚Р° РїСЂРёР»РѕР¶РµРЅРёСЏ
      *
      * @return string
      */
@@ -364,7 +364,7 @@ class API_AlphaBank {
     }
 
     /**
-     * Возвращает конфигурацию запроса
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕРЅС„РёРіСѓСЂР°С†РёСЋ Р·Р°РїСЂРѕСЃР°
      *
      * @return array
      */
@@ -393,10 +393,10 @@ class API_AlphaBank {
     }
 
     /**
-     * Инициализация и подготовка данных для запроса
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ Рё РїРѕРґРіРѕС‚РѕРІРєР° РґР°РЅРЅС‹С… РґР»СЏ Р·Р°РїСЂРѕСЃР°
      *
-     * @param $uri          Адресс запроса
-     * @param $method       Метод запроса (POST, GET) @see http://pear.php.net/package/HTTP_Request2/
+     * @param $uri          РђРґСЂРµСЃСЃ Р·Р°РїСЂРѕСЃР°
+     * @param $method       РњРµС‚РѕРґ Р·Р°РїСЂРѕСЃР° (POST, GET) @see http://pear.php.net/package/HTTP_Request2/
      * @return HTTP_Request2
      */
     public function initRequest($uri, $method = HTTP_Request2::METHOD_POST) {
@@ -408,11 +408,11 @@ class API_AlphaBank {
     }
 
     /**
-     * Делаем запрос
+     * Р”РµР»Р°РµРј Р·Р°РїСЂРѕСЃ
      *
-     * @param string $uri    Адресс запроса
-     * @param array  $req    POST данные если есть
-     * @param $method        Метод запроса (по умолчанию POST)
+     * @param string $uri    РђРґСЂРµСЃСЃ Р·Р°РїСЂРѕСЃР°
+     * @param array  $req    POST РґР°РЅРЅС‹Рµ РµСЃР»Рё РµСЃС‚СЊ
+     * @param $method        РњРµС‚РѕРґ Р·Р°РїСЂРѕСЃР° (РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ POST)
      * @return mixed
      */
     public function request($uri, $req = array(), $method = HTTP_Request2::METHOD_POST) {
@@ -436,7 +436,7 @@ class API_AlphaBank {
 
     public function getAuthorizeUri($orderId, $accountId) {
         $this->error = false;
-        $data = $this->register(API_AlphaBank::REGISTER_SUM, $orderId, $accountId, 'Привязка пластиковой карты');
+        $data = $this->register(API_AlphaBank::REGISTER_SUM, $orderId, $accountId, 'РџСЂРёРІСЏР·РєР° РїР»Р°СЃС‚РёРєРѕРІРѕР№ РєР°СЂС‚С‹');
         if($data['errorCode'] > 0) {
             $this->error = true;
             return $data;
@@ -446,9 +446,9 @@ class API_AlphaBank {
     }
 
     /**
-     * Получаем данные в форме массива
+     * РџРѕР»СѓС‡Р°РµРј РґР°РЅРЅС‹Рµ РІ С„РѕСЂРјРµ РјР°СЃСЃРёРІР°
      *
-     * @param HTTP_Request2 $resp     Объект запроса
+     * @param HTTP_Request2 $resp     РћР±СЉРµРєС‚ Р·Р°РїСЂРѕСЃР°
      * @return array
      */
     public function getBodyArray($resp) {
@@ -462,7 +462,7 @@ class API_AlphaBank {
         $post = array(
             'userName'    => $this->userName,
             'password'    => $this->password,
-            'amount'      => $sum * 100, // сумма в копейках
+            'amount'      => $sum * 100, // СЃСѓРјРјР° РІ РєРѕРїРµР№РєР°С…
             'returnUrl'   => API_AlphaBank::getReturnURL(),
             'orderNumber' => $orderId,
             'clientId'    => $accountId,
@@ -478,7 +478,7 @@ class API_AlphaBank {
         $post = array(
             'userName'    => $this->userName,
             'password'    => $this->password,
-            'amount'      => $sum * 100,  // сумма в копейках
+            'amount'      => $sum * 100,  // СЃСѓРјРјР° РІ РєРѕРїРµР№РєР°С…
             'orderId'     => $orderId,
         );
 
@@ -536,7 +536,7 @@ class API_AlphaBank {
     }
 
     /**
-     * Проверяем действует ли выданный токен
+     * РџСЂРѕРІРµСЂСЏРµРј РґРµР№СЃС‚РІСѓРµС‚ Р»Рё РІС‹РґР°РЅРЅС‹Р№ С‚РѕРєРµРЅ
      *
      * @return bool|mixed
      */

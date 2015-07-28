@@ -73,19 +73,19 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
         <? if (!$_COOKIE['master_auth']) { ?>
         <div class="b-fon b-fon_inline-block b-fon_padbot_20" id="wizard_reg_succ">
             <div class="b-fon__body b-fon__body_pad_15  b-fon__body_padleft_30 b-fon__body_padright_40 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf b-fon__body_nowrap">
-                <span class="b-fon__ok"></span>Вы успешно зарегистрированы. Теперь вы — часть Free-lance.ru :) 
+                <span class="b-fon__ok"></span>Р’С‹ СѓСЃРїРµС€РЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅС‹. РўРµРїРµСЂСЊ РІС‹ вЂ”В С‡Р°СЃС‚СЊ Free-lance.ru :) 
             </div>
             <span class="b-fon__close b-fon__close_top_20" id="wizard_reg_succ_close"></span>
         </div>
         <? } ?>
         
         <?php if($type_role == step_wizard_registration::TYPE_WIZARD_EMP) { ?>
-        <div class="b-layout__txt b-layout__txt_padbot_40">Free-lance.ru – это не только поиск исполнителей, но и большое сообщество пользователей, работодателей и фрилансеров, готовых поделиться опытом, дать совет в трудной ситуации или ответить на все ваши вопросы. Для того чтобы общение на сайте было более продуктивным, пожалуйста, заполните информацию о себе.</div>		
+        <div class="b-layout__txt b-layout__txt_padbot_40">Free-lance.ru вЂ“ СЌС‚Рѕ РЅРµ С‚РѕР»СЊРєРѕ РїРѕРёСЃРє РёСЃРїРѕР»РЅРёС‚РµР»РµР№, РЅРѕ Рё Р±РѕР»СЊС€РѕРµ СЃРѕРѕР±С‰РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ Рё С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, РіРѕС‚РѕРІС‹С… РїРѕРґРµР»РёС‚СЊСЃСЏ РѕРїС‹С‚РѕРј, РґР°С‚СЊ СЃРѕРІРµС‚ РІ С‚СЂСѓРґРЅРѕР№ СЃРёС‚СѓР°С†РёРё РёР»Рё РѕС‚РІРµС‚РёС‚СЊ РЅР° РІСЃРµ РІР°С€Рё РІРѕРїСЂРѕСЃС‹. Р”Р»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ РѕР±С‰РµРЅРёРµ РЅР° СЃР°Р№С‚Рµ Р±С‹Р»Рѕ Р±РѕР»РµРµ РїСЂРѕРґСѓРєС‚РёРІРЅС‹Рј, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, Р·Р°РїРѕР»РЅРёС‚Рµ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃРµР±Рµ.</div>		
         <?php } else { //if?>
-        <div class="b-layout__txt b-layout__txt_padbot_40">Free-lance.ru – это не только поиск работы, но и большое сообщество пользователей, работодателей и фрилансеров, готовых поделиться опытом, дать совет в трудной ситуации или ответить на все ваши вопросы. Для того чтобы общение на сайте было более продуктивным, пожалуйста, заполните информацию о себе.</div>
+        <div class="b-layout__txt b-layout__txt_padbot_40">Free-lance.ru вЂ“ СЌС‚Рѕ РЅРµ С‚РѕР»СЊРєРѕ РїРѕРёСЃРє СЂР°Р±РѕС‚С‹, РЅРѕ Рё Р±РѕР»СЊС€РѕРµ СЃРѕРѕР±С‰РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ Рё С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, РіРѕС‚РѕРІС‹С… РїРѕРґРµР»РёС‚СЊСЃСЏ РѕРїС‹С‚РѕРј, РґР°С‚СЊ СЃРѕРІРµС‚ РІ С‚СЂСѓРґРЅРѕР№ СЃРёС‚СѓР°С†РёРё РёР»Рё РѕС‚РІРµС‚РёС‚СЊ РЅР° РІСЃРµ РІР°С€Рё РІРѕРїСЂРѕСЃС‹. Р”Р»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ РѕР±С‰РµРЅРёРµ РЅР° СЃР°Р№С‚Рµ Р±С‹Р»Рѕ Р±РѕР»РµРµ РїСЂРѕРґСѓРєС‚РёРІРЅС‹Рј, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, Р·Р°РїРѕР»РЅРёС‚Рµ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃРµР±Рµ.</div>
         <?php }//else?>
         
-        <h2 class="b-layout__title b-layout__title_padbot_20">Личная информация</h2>
+        <h2 class="b-layout__title b-layout__title_padbot_20">Р›РёС‡РЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ</h2>
         <? if ( $error['save'] ) { ?>
         <div class="b-layout__txt b-layout__txt_color_c4271f b-layout__txt_padbot_10">
             <span class="b-form__error"></span> <?= $error['save']?>
@@ -95,7 +95,7 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
         <div class="b-layout b-layout_margleft_-110">
             <table class="b-layout__table b-layout__table_width_full" border="0" cellpadding="0" cellspacing="0">
                 <tr class="b-layout__tr">
-                    <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">Ваше имя</div></td>
+                    <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">Р’Р°С€Рµ РёРјСЏ</div></td>
                     <td class="b-layout__middle b-layout__middle_padbot_20 b-layout__middle_width_270">
                         <div class="b-combo">
                             <div class="b-combo__input b-combo__input_width_260">
@@ -106,7 +106,7 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
                     <td class="b-layout__one b-layout__one_padbot_20 b-layout__one_width_30 b-layout__one_center">&#160;</td>
                     <td class="b-layout__right b-layout__right_padbot_20">
                         <div class="b-eye_inline-block">
-                           <span class="b-eye__icon b-eye__icon_open b-eye__icon_margright_5"></span><span class="b-eye__txt b-eye__txt_fontsize_11">Эту информацию видят все</span>
+                           <span class="b-eye__icon b-eye__icon_open b-eye__icon_margright_5"></span><span class="b-eye__txt b-eye__txt_fontsize_11">Р­С‚Сѓ РёРЅС„РѕСЂРјР°С†РёСЋ РІРёРґСЏС‚ РІСЃРµ</span>
                         </div>
                     </td>
                 </tr>
@@ -121,7 +121,7 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
                 </tr>
                 <? } ?>
                 <tr class="b-layout__tr">
-                    <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">Фамилия</div></td>
+                    <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">Р¤Р°РјРёР»РёСЏ</div></td>
                     <td class="b-layout__middle b-layout__middle_padbot_20 b-layout__middle_width_270">
                         <div class="b-combo">
                             <div class="b-combo__input b-combo__input_width_260">
@@ -132,7 +132,7 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
                     <td class="b-layout__one b-layout__one_padbot_20 b-layout__one_width_30 b-layout__one_center">&#160;</td>
                     <td class="b-layout__right b-layout__right_padbot_20">
                         <div class="b-eye_inline-block">
-                           <span class="b-eye__icon b-eye__icon_open b-eye__icon_margright_5"></span><span class="b-eye__txt b-eye__txt_fontsize_11">Эту информацию видят все</span>
+                           <span class="b-eye__icon b-eye__icon_open b-eye__icon_margright_5"></span><span class="b-eye__txt b-eye__txt_fontsize_11">Р­С‚Сѓ РёРЅС„РѕСЂРјР°С†РёСЋ РІРёРґСЏС‚ РІСЃРµ</span>
                         </div>
                     </td>
                 </tr>
@@ -147,7 +147,7 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
                 </tr>
                 <? } ?>
                 <tr class="b-layout__tr">
-                    <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">День рождения</div></td>
+                    <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">Р”РµРЅСЊ СЂРѕР¶РґРµРЅРёСЏ</div></td>
                     <td class="b-layout__middle b-layout__middle_padbot_20 b-layout__middle_width_270">
                         <div class="b-combo b-combo_inline-block b-combo_margright_5">
                             <div class="b-combo__input b-combo__input_width_25 numeric_min_1 numeric_max_31">
@@ -177,7 +177,7 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
                     <td class="b-layout__right b-layout__right_padbot_20">
                         <div class="b-eye b-eye_inline-block">
                             <a href="javascript:void(0)" class="b-eye__link <?= $info_for_reg['birthday'] == 1 ? "b-eye__link_bordbot_dot_808080"  : "b-eye__link_bordbot_dot_0f71c8"?> b-eye-enable">
-                                <span class="b-eye__icon <?= $info_for_reg['birthday'] == 1 ? "b-eye__icon_close"  : "b-eye__icon_open"?> b-eye__icon_margright_5"></span><span class="b-eye__txt"><?= $info_for_reg['birthday'] == 1 ? "Видят только зарегистрированные" : "Видят все"?></span>
+                                <span class="b-eye__icon <?= $info_for_reg['birthday'] == 1 ? "b-eye__icon_close"  : "b-eye__icon_open"?> b-eye__icon_margright_5"></span><span class="b-eye__txt"><?= $info_for_reg['birthday'] == 1 ? "Р’РёРґСЏС‚ С‚РѕР»СЊРєРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Рµ" : "Р’РёРґСЏС‚ РІСЃРµ"?></span>
                             </a>
                             <input type="hidden" name="info_for_reg[birthday]" value="<?= $info_for_reg['birthday'] == 1 ? $info_for_reg['birthday'] : 0?>">
                         </div>
@@ -194,16 +194,16 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
                 </tr>
                 <? } ?>
                 <tr class="b-layout__tr">
-                    <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt">Пол</div></td>
+                    <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt">РџРѕР»</div></td>
                     <td class="b-layout__middle b-layout__middle_padbot_20 b-layout__middle_width_270">
                         <div class="b-radio b-radio_layout_horizontal">
                             <div class="b-radio__item b-radio__item_width_100">
                                 <input type="radio" value="1" <?= $sex === 1?'checked="checked"':""?> name="sex"  class="b-radio__input" id="b-radio__input4" onfocus="clearErrorBlock(this)">
-                                <label for="b-radio__input4" class="b-radio__label b-radio__label_fontsize_13">Мужской</label>
+                                <label for="b-radio__input4" class="b-radio__label b-radio__label_fontsize_13">РњСѓР¶СЃРєРѕР№</label>
                             </div>
                             <div class="b-radio__item b-radio__item_width_100">
                                 <input type="radio" value="0" <?= $sex === 0?'checked="checked"':""?> name="sex" class="b-radio__input" id="b-radio__input5" onfocus="clearErrorBlock(this)">
-                                <label for="b-radio__input5" class="b-radio__label b-radio__label_fontsize_13">Женский</label>
+                                <label for="b-radio__input5" class="b-radio__label b-radio__label_fontsize_13">Р–РµРЅСЃРєРёР№</label>
                             </div>
                         </div>
                     </td>
@@ -211,17 +211,17 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
                     <td class="b-layout__right b-layout__right_padbot_20">
                         <div class="b-eye b-eye_inline-block">
                             <a href="javascript:void(0)" class="b-eye__link <?= $info_for_reg['sex']== 1 ? "b-eye__link_bordbot_dot_808080"  : "b-eye__link_bordbot_dot_0f71c8"?> b-eye-enable">
-                                <span class="b-eye__icon <?= $info_for_reg['sex']== 1 ? "b-eye__icon_close"  : "b-eye__icon_open"?> b-eye__icon_margright_5"></span><span class="b-eye__txt"><?= $info_for_reg['sex'] == 1 ? "Видят только зарегистрированные" : "Видят все"?></span>
+                                <span class="b-eye__icon <?= $info_for_reg['sex']== 1 ? "b-eye__icon_close"  : "b-eye__icon_open"?> b-eye__icon_margright_5"></span><span class="b-eye__txt"><?= $info_for_reg['sex'] == 1 ? "Р’РёРґСЏС‚ С‚РѕР»СЊРєРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Рµ" : "Р’РёРґСЏС‚ РІСЃРµ"?></span>
                             </a>
                             <input type="hidden" name="info_for_reg[sex]" value="<?= $info_for_reg['sex'] == 1 ? $info_for_reg['sex'] : 0?>">
                         </div>
                     </td>
                 </tr>
                 <tr class="b-layout__tr">
-                    <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">Страна</div></td>
+                    <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">РЎС‚СЂР°РЅР°</div></td>
                     <td class="b-layout__middle b-layout__middle_padbot_20 b-layout__middle_width_270">
                         <div class="b-combo b-combo_inline-block">
-                            <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_245 b-combo__input_resize b-combo__input_arrow_yes  b-combo__input_on_load_request_id_getrelevantcountries  b-combo__input_max-width_450 all_value_id_0_0_Все+страны exclude_value_1_0 drop_down_default_<?= $country ? $country : 0?> multi_drop_down_default_column_0<?= $error['country'] ? " b-combo__input_error" : "" ?>">
+                            <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_245 b-combo__input_resize b-combo__input_arrow_yes  b-combo__input_on_load_request_id_getrelevantcountries  b-combo__input_max-width_450 all_value_id_0_0_Р’СЃРµ+СЃС‚СЂР°РЅС‹ exclude_value_1_0 drop_down_default_<?= $country ? $country : 0?> multi_drop_down_default_column_0<?= $error['country'] ? " b-combo__input_error" : "" ?>">
                                 <input type="text" id="country" class="b-combo__input-text b-combo__input-text_fontsize_15" name="country" size="80" value="<?= stripslashes($country_value)?>" onchange="loadCities()">
                                 <label class="b-combo__label" for="country"></label>
                                 <span class="b-combo__arrow"></span>
@@ -234,7 +234,7 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
                     <td class="b-layout__right b-layout__right_padbot_20">
                         <div class="b-eye b-eye_inline-block">
                             <a href="javascript:void(0)" class="b-eye__link <?= $info_for_reg['country']== 1 ? "b-eye__link_bordbot_dot_808080"  : "b-eye__link_bordbot_dot_0f71c8"?> b-eye-enable">
-                                <span class="b-eye__icon <?= $info_for_reg['country']== 1 ? "b-eye__icon_close"  : "b-eye__icon_open"?> b-eye__icon_margright_5"></span><span class="b-eye__txt"><?= $info_for_reg['country'] == 1 ? "Видят только зарегистрированные" : "Видят все"?></span>
+                                <span class="b-eye__icon <?= $info_for_reg['country']== 1 ? "b-eye__icon_close"  : "b-eye__icon_open"?> b-eye__icon_margright_5"></span><span class="b-eye__txt"><?= $info_for_reg['country'] == 1 ? "Р’РёРґСЏС‚ С‚РѕР»СЊРєРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Рµ" : "Р’РёРґСЏС‚ РІСЃРµ"?></span>
                             </a>
                             <input type="hidden" name="info_for_reg[country]" value="<?= $info_for_reg['country'] == 1 ? $info_for_reg['country'] : 0?>">
                         </div>
@@ -242,10 +242,10 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
                 </tr>
 
                 <tr class="b-layout__tr">
-                    <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">Город</div></td>
+                    <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">Р“РѕСЂРѕРґ</div></td>
                     <td class="b-layout__middle b-layout__middle_padbot_20 b-layout__middle_width_270" id="city_content">
                         <div class="b-combo b-combo_inline-block">
-                            <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_245 b-combo__input_resize b-combo__input_arrow_yes  b-combo__input_max-width_450 override_value_id_0_0_Все+города drop_down_default_<?= $city ? $city : 0?> multi_drop_down_default_column_0<?= $error['city'] ? " b-combo__input_error" : "" ?>">
+                            <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_245 b-combo__input_resize b-combo__input_arrow_yes  b-combo__input_max-width_450 override_value_id_0_0_Р’СЃРµ+РіРѕСЂРѕРґР° drop_down_default_<?= $city ? $city : 0?> multi_drop_down_default_column_0<?= $error['city'] ? " b-combo__input_error" : "" ?>">
                                 <input type="text" id="city" class="b-combo__input-text b-combo__input-text_fontsize_15" name="city" size="80" value="<?= stripslashes($city_value)?>">
                                 <label class="b-combo__label" for="city"></label>
                                 <span class="b-combo__arrow" id="city_arrow"></span>
@@ -258,7 +258,7 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
                     <td class="b-layout__right b-layout__right_padbot_20">
                         <div class="b-eye b-eye_inline-block">
                             <a href="javascript:void(0)" class="b-eye__link <?= $info_for_reg['city'] == 1 ? "b-eye__link_bordbot_dot_808080"  : "b-eye__link_bordbot_dot_0f71c8"?> b-eye-enable">
-                                <span class="b-eye__icon <?= $info_for_reg['city'] == 1 ? "b-eye__icon_close"  : "b-eye__icon_open"?> b-eye__icon_margright_5"></span><span class="b-eye__txt"><?= $info_for_reg['city'] == 1 ? "Видят только зарегистрированные" : "Видят все"?></span>
+                                <span class="b-eye__icon <?= $info_for_reg['city'] == 1 ? "b-eye__icon_close"  : "b-eye__icon_open"?> b-eye__icon_margright_5"></span><span class="b-eye__txt"><?= $info_for_reg['city'] == 1 ? "Р’РёРґСЏС‚ С‚РѕР»СЊРєРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Рµ" : "Р’РёРґСЏС‚ РІСЃРµ"?></span>
                             </a>
                             <input type="hidden" name="info_for_reg[city]" value="<?= $info_for_reg['city'] == 1 ? $info_for_reg['city'] : 0?>">
                         </div>
@@ -266,7 +266,7 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
                 </tr>
                 <?php if($type_role == step_wizard_registration::TYPE_WIZARD_EMP) { ?>
                 <tr class="b-layout__tr">
-                    <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">Компания</div></td>
+                    <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">РљРѕРјРїР°РЅРёСЏ</div></td>
                     <td class="b-layout__middle b-layout__middle_padbot_20 b-layout__middle_width_270">
                         <div class="b-combo b-combo_inline-block">
                             <div class="b-combo__input b-combo__input_width_260">
@@ -279,7 +279,7 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
                     <td class="b-layout__right b-layout__right_padbot_20">
                         <div class="b-eye b-eye_inline-block">
                             <a href="javascript:void(0)" class="b-eye__link <?= $info_for_reg['company'] == 1 ? "b-eye__link_bordbot_dot_808080"  : "b-eye__link_bordbot_dot_0f71c8"?> b-eye-enable">
-                                <span class="b-eye__icon <?= $info_for_reg['company'] == 1 ? "b-eye__icon_close"  : "b-eye__icon_open"?> b-eye__icon_margright_5"></span><span class="b-eye__txt"><?= $info_for_reg['company']== 1 ? "Видят только зарегистрированные" : "Видят все"?></span>
+                                <span class="b-eye__icon <?= $info_for_reg['company'] == 1 ? "b-eye__icon_close"  : "b-eye__icon_open"?> b-eye__icon_margright_5"></span><span class="b-eye__txt"><?= $info_for_reg['company']== 1 ? "Р’РёРґСЏС‚ С‚РѕР»СЊРєРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Рµ" : "Р’РёРґСЏС‚ РІСЃРµ"?></span>
                             </a>
                             <input type="hidden" name="info_for_reg[company]" value="<?= $info_for_reg['company'] == 1 ? $info_for_reg['company'] : 0?>">
                         </div>
@@ -291,7 +291,7 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
             <?php if($type_role == step_wizard_registration::TYPE_WIZARD_EMP) { ?>
             <table class="b-layout__table b-layout__table_width_full" border="0" cellpadding="0" cellspacing="0">
                 <tr class="b-layout__tr">
-                    <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_10">Логотип <span class="b-icon b-icon__pro b-icon__pro_e"></span></div></td>
+                    <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_10">Р›РѕРіРѕС‚РёРї <span class="b-icon b-icon__pro b-icon__pro_e"></span></div></td>
                     <td class="b-layout__middle b-layout__middle_padbot_20">
                         <table class="b-layout__table" border="0" cellpadding="0" cellspacing="0">
                             <tr class="b-layout__tr">
@@ -303,7 +303,7 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
                                         <a class="b-button b-button_rectangle_color_transparent" href="#">
                                             <span class="b-button__b1">
                                                 <span class="b-button__b2">
-                                                    <span class="b-button__txt">Прикрепить файлы</span>
+                                                    <span class="b-button__txt">РџСЂРёРєСЂРµРїРёС‚СЊ С„Р°Р№Р»С‹</span>
                                                 </span>
                                             </span>
                                         </a>
@@ -321,14 +321,14 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
                                     <iframe style="width:1px;height:1px;visibility: hidden;" scrolling="no" id="fupload" name="fupload" src="about:blank" frameborder="0"></iframe>
                                 </td>
                                 <td class="b-layout__right">
-                                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_10">Если вы станете обладателем профессионального аккаунта, логотип будет отображаться на вашей личной странице и в каталоге работодателей.</div>
+                                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_10">Р•СЃР»Рё РІС‹ СЃС‚Р°РЅРµС‚Рµ РѕР±Р»Р°РґР°С‚РµР»РµРј РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°, Р»РѕРіРѕС‚РёРї Р±СѓРґРµС‚ РѕС‚РѕР±СЂР°Р¶Р°С‚СЊСЃСЏ РЅР° РІР°С€РµР№ Р»РёС‡РЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ Рё РІ РєР°С‚Р°Р»РѕРіРµ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№.</div>
                                 </td>
                             </tr>
                         </table>					
                     </td>
                 </tr>
                 <tr class="b-layout__tr">
-                    <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_1">О компании</div></td>
+                    <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_1">Рћ РєРѕРјРїР°РЅРёРё</div></td>
                     <td class="b-layout__middle b-layout__middle_padbot_20">
                         <div class="b-textarea">
                             <textarea class="b-textarea__textarea b-textarea__textarea_height_70 tawl" rel="350" name="about_company" cols="" rows="" onfocus="clearErrorBlock(this)"><?= stripslashes($about_company);?></textarea>
@@ -354,7 +354,7 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
                     <td class="b-layout__middle b-layout__middle_padbot_10 b-layout__middle_width_270">
                         <div class="b-layout__txt i-button">
                             <a href="javascript:void(0)" onclick="add_option_field(this, 'site')" class="b-button b-button_poll_plus"></a>&nbsp;
-                            <a href="javascript:void(0)" onclick="add_option_field(this, 'site')" class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle b-layout__link_lineheight_15">Сайт</a>
+                            <a href="javascript:void(0)" onclick="add_option_field(this, 'site')" class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle b-layout__link_lineheight_15">РЎР°Р№С‚</a>
                         </div>						
                     </td>
                     <td class="b-layout__one b-layout__one_padbot_10 b-layout__one_width_30 b-layout__one_center">&#160;</td>
@@ -376,7 +376,7 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
                     <td class="b-layout__middle b-layout__middle_padbot_10 b-layout__middle_width_270">
                         <div class="b-layout__txt i-button">
                             <a href="javascript:void(0)" onclick="add_option_field(this, 'phone')" class="b-button b-button_poll_plus"></a>&nbsp;
-                            <a href="javascript:void(0)" onclick="add_option_field(this, 'phone')" class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle b-layout__link_lineheight_15">Телефон</a>
+                            <a href="javascript:void(0)" onclick="add_option_field(this, 'phone')" class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle b-layout__link_lineheight_15">РўРµР»РµС„РѕРЅ</a>
                         </div>						
                     </td>
                     <td class="b-layout__one b-layout__one_padbot_10 b-layout__one_width_30 b-layout__one_center">&#160;</td>
@@ -440,13 +440,13 @@ function tplStepInfoPhp_onChangeMonth(evt, callFromYear) {
             <a href="javascript:void(0)" onclick="$('frm').submit();" class="b-button b-button_rectangle_color_green">
                 <span class="b-button__b1">
                     <span class="b-button__b2 b-button__b2_padlr_15">
-                        <span class="b-button__txt">Продолжить</span>
+                        <span class="b-button__txt">РџСЂРѕРґРѕР»Р¶РёС‚СЊ</span>
                     </span>
                 </span>
             </a>&#160;&#160;
-            <?/*<a href="/wizard/registration/?action=next&complited=1" class="b-buttons__link">пропустить этот шаг</a>*/?>
-            <span class="b-buttons__txt">&#160;или&#160;</span>
-            <a href="/wizard/registration/?action=exit" class="b-buttons__link b-buttons__link_color_c10601">выйти из мастера</a>
+            <?/*<a href="/wizard/registration/?action=next&complited=1" class="b-buttons__link">РїСЂРѕРїСѓСЃС‚РёС‚СЊ СЌС‚РѕС‚ С€Р°Рі</a>*/?>
+            <span class="b-buttons__txt">&#160;РёР»Рё&#160;</span>
+            <a href="/wizard/registration/?action=exit" class="b-buttons__link b-buttons__link_color_c10601">РІС‹Р№С‚Рё РёР· РјР°СЃС‚РµСЂР°</a>
         </div>
 
     </form>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Редатирование пользовательского контента модератором
+ * Р РµРґР°С‚РёСЂРѕРІР°РЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РєРѕРЅС‚РµРЅС‚Р° РјРѕРґРµСЂР°С‚РѕСЂРѕРј
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
@@ -13,13 +13,13 @@ session_start();
 get_uid(false);
 
 /**
- * Редактирование Личные сообщения
+ * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р›РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ
  * 
- * @param  string $sId идентификатор записи
- * @param  int $nEdit флаг редактирования
- * @param  array $aForm данные формы редактирования
- * @param  string $sDrawFunc имя функции для выполнения после сохранения
- * @param  string $sParams JSON кодированные дополнительные параметры с UID отправителя
+ * @param  string $sId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  int $nEdit С„Р»Р°Рі СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  array $aForm РґР°РЅРЅС‹Рµ С„РѕСЂРјС‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
+ * @param  string $sParams JSON РєРѕРґРёСЂРѕРІР°РЅРЅС‹Рµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ СЃ UID РѕС‚РїСЂР°РІРёС‚РµР»СЏ
  * @return xajaxResponse 
  */
 function admEditContacts( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc = '', $sParams = '' ) {
@@ -51,13 +51,13 @@ function admEditContacts( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc = 
 }
 
 /**
- * Сохранение Личные сообщения
+ * РЎРѕС…СЂР°РЅРµРЅРёРµ Р›РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ
  * 
  * @param object $objResponse xajaxResponse
- * @param string $rec_id идентификатор записи
- * @param string $rec_type тип записи
- * @param array $aForm массив данных
- * @param string $sDrawFunc имя функции для выполнения после сохранения
+ * @param string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param array $aForm РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
+ * @param string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
  */
 function _admEditContactsSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $aForm = array(), $sDrawFunc = '' ) {
     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/messages.php' );
@@ -73,12 +73,12 @@ function _admEditContactsSaveForm( &$objResponse, $rec_id = '', $rec_type = '', 
     
     if ( (!$msg || trim($msg) == '') && !$attachedfiles_info['count'] ) {
         $bValid = false;
-        $objResponse->script( "$('adm_edit_err_msg').set('html', 'Поле заполнено некорректно.'); ");
+        $objResponse->script( "$('adm_edit_err_msg').set('html', 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ.'); ");
         $objResponse->script( "$('div_adm_edit_err_msg').setStyle('display', '');" );
     } 
     elseif ( $msg && strlen($msg) > messages::MAX_MSG_LENGTH ) {
         $bValid = false;
-        $objResponse->script( "$('adm_edit_err_msg').set('html', 'Вы ввели слишком большое сообщение. Текст сообщения не должен превышать 20 000 символов.'); ");
+        $objResponse->script( "$('adm_edit_err_msg').set('html', 'Р’С‹ РІРІРµР»Рё СЃР»РёС€РєРѕРј Р±РѕР»СЊС€РѕРµ СЃРѕРѕР±С‰РµРЅРёРµ. РўРµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ РЅРµ РґРѕР»Р¶РµРЅ РїСЂРµРІС‹С€Р°С‚СЊ 20 000 СЃРёРјРІРѕР»РѕРІ.'); ");
         $objResponse->script( "$('div_adm_edit_err_msg').setStyle('display', '');" );
     }
     
@@ -91,7 +91,7 @@ function _admEditContactsSaveForm( &$objResponse, $rec_id = '', $rec_type = '', 
         messages::messageModifiedNotification( $aForm['p_from_id'], $aForm['to_id'], $msg, $sReason );
         $objResponse->script( $sParent.'adm_edit_content.cancel();' );
         
-        if ( $sDrawFunc == 'stream0' || $sDrawFunc == 'stream1' || $sDrawFunc == 'stream2' ) { // если случаев будет больше - вынести в отдельную функцию
+        if ( $sDrawFunc == 'stream0' || $sDrawFunc == 'stream1' || $sDrawFunc == 'stream2' ) { // РµСЃР»Рё СЃР»СѓС‡Р°РµРІ Р±СѓРґРµС‚ Р±РѕР»СЊС€Рµ - РІС‹РЅРµСЃС‚Рё РІ РѕС‚РґРµР»СЊРЅСѓСЋ С„СѓРЅРєС†РёСЋ
             if ( $sDrawFunc != 'stream1' ) {
                 resolveContent( user_content::MODER_MSSAGES, $aForm['p_stream_id'], user_content::MODER_MSSAGES .'_'. $rec_id .'_0', 1, $aForm['p_from_id'], $aForm['p_content_cnt'], $aForm['p_status'], $aForm['p_is_sent'], '', $objResponse );
             }
@@ -99,14 +99,14 @@ function _admEditContactsSaveForm( &$objResponse, $rec_id = '', $rec_type = '', 
                 $objResponse->script( 'window.location.reload(true)' );
             }
         }
-        elseif ( $sDrawFunc == 'blocked' ) { // из админки "заблокированные"
+        elseif ( $sDrawFunc == 'blocked' ) { // РёР· Р°РґРјРёРЅРєРё "Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ"
             global $user_content;
             
             $user_content->resolveMessages( $_SESSION['uid'], $aForm['p_from_id'], $rec_id, 0, 1 );
             $objResponse->script( "$('my_div_content_{$rec_id}').destroy();" );
             $objResponse->script('user_content.spinner.hide();');
         }
-        else { // действие после редактирования по умолчанию
+        else { // РґРµР№СЃС‚РІРёРµ РїРѕСЃР»Рµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
             $objResponse->script( 'window.location.reload(true)' );
         }
     }
@@ -116,12 +116,12 @@ function _admEditContactsSaveForm( &$objResponse, $rec_id = '', $rec_type = '', 
 }
 
 /**
- * Отдает HTML для Редактирование Личные сообщения
+ * РћС‚РґР°РµС‚ HTML РґР»СЏ Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р›РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ
  * 
  * @param  object $objResponse xajaxResponse
- * @param  string $rec_id идентификатор записи
- * @param  string $rec_type тип записи
- * @param  array $aParams дополнительные параметры с UID отправителя. остальные - опционально
+ * @param  string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aParams РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ СЃ UID РѕС‚РїСЂР°РІРёС‚РµР»СЏ. РѕСЃС‚Р°Р»СЊРЅС‹Рµ - РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ
  * @return string
  */
 function _admEditContactsParseForm( &$objResponse, $rec_id = '', $rec_type = '', $aParams = array() ) {
@@ -135,30 +135,30 @@ function _admEditContactsParseForm( &$objResponse, $rec_id = '', $rec_type = '',
     $sHtml = ob_get_contents();
     ob_end_clean();
     
-    // аттачи
+    // Р°С‚С‚Р°С‡Рё
     $sAttach = getAttachedFilesJs( $msg['files'], messages::MAX_FILES, messages::MAX_FILE_SIZE, 'contacts' );
     
-    // текст
+    // С‚РµРєСЃС‚
     $sOnReady = "if(document.getElementById('adm_edit_msg')) document.getElementById('adm_edit_msg').value = ($('adm_edit_msg_source')? $('adm_edit_msg_source').value : null);";
     
-    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Редактировать сообщение' );
+    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ' );
     $objResponse->assign( 'div_adm_edit', 'innerHTML', $sHtml );
     $objResponse->script( $sAttach );
     $objResponse->script( $sOnReady );
     $objResponse->script( "$('div_adm_reason').setStyle('display', 'none');" );
-    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'Сообщение', 'Файлы'];" );
+    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'РЎРѕРѕР±С‰РµРЅРёРµ', 'Р¤Р°Р№Р»С‹'];" );
     $objResponse->script( 'adm_edit_content.edit();' );
     $objResponse->script( 'xajax_getAdmEditReasons('. admin_log::ACT_ID_EDIT_MSSAGES .');');
 }
 
 /**
- * Редактирование Блоги: посты и комментарии
+ * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р‘Р»РѕРіРё: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё
  * 
- * @param  string $sId идентификатор записи
- * @param  int $nEdit флаг редактирования
- * @param  array $aForm данные формы редактирования
- * @param  string $sDrawFunc имя функции для выполнения после сохранения
- * @param  string $sParams JSON кодированные дополнительные параметры
+ * @param  string $sId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  int $nEdit С„Р»Р°Рі СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  array $aForm РґР°РЅРЅС‹Рµ С„РѕСЂРјС‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
+ * @param  string $sParams JSON РєРѕРґРёСЂРѕРІР°РЅРЅС‹Рµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹
  * @return xajaxResponse 
  */
 function admEditBlogs( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc = '', $sParams = '' ) {
@@ -187,13 +187,13 @@ function admEditBlogs( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc = '',
 }
 
 /**
- * Сохранение Блоги: посты и комментарии
+ * РЎРѕС…СЂР°РЅРµРЅРёРµ Р‘Р»РѕРіРё: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё
  * 
  * @param object $objResponse xajaxResponse
- * @param string $rec_id идентификатор записи
- * @param string $rec_type тип записи
- * @param array $aForm массив данных
- * @param string $sDrawFunc имя функции для выполнения после сохранения
+ * @param string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param array $aForm РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
+ * @param string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
  */
 function _admEditBlogsSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $aForm = array(), $sDrawFunc = '' ) {
     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/attachedfiles.php' );
@@ -202,39 +202,39 @@ function _admEditBlogsSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $aF
     
     $mod            = hasPermissions('blogs') ? 0 : 1;
     $alert          = array();
-    $olduserlogin   = $aForm['olduserlogin'];                 // логин автора блога
-    $close_comments = $aForm['close_comments'] ? 't' : 'f';   // запретить комментирование
-    $is_private     = $aForm['is_private']     ? 't' : 'f';   // показывать только мне
-    $ontop          = $aForm['ontop']          ? 't' : 'f';   // закрепить тему наверху
-    $categ          = change_q_x( $aForm['category'], true ); // раздел
+    $olduserlogin   = $aForm['olduserlogin'];                 // Р»РѕРіРёРЅ Р°РІС‚РѕСЂР° Р±Р»РѕРіР°
+    $close_comments = $aForm['close_comments'] ? 't' : 'f';   // Р·Р°РїСЂРµС‚РёС‚СЊ РєРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ
+    $is_private     = $aForm['is_private']     ? 't' : 'f';   // РїРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ РјРЅРµ
+    $ontop          = $aForm['ontop']          ? 't' : 'f';   // Р·Р°РєСЂРµРїРёС‚СЊ С‚РµРјСѓ РЅР°РІРµСЂС…Сѓ
+    $categ          = change_q_x( $aForm['category'], true ); // СЂР°Р·РґРµР»
     $close_comments = $rec_type == 2 ? 'n' : $close_comments;
     $is_private     = $rec_type == 2 ? 'n' : $is_private;
     list( $gr, $t ) = explode( '|', $categ );
     
-    // название, текст
+    // РЅР°Р·РІР°РЅРёРµ, С‚РµРєСЃС‚
     if ( strlen($aForm['msg']) > blogs::MAX_DESC_CHARS ) {
         $error_flag = 1;
-        $alert[1]   = 'Максимальный размер сообщения '. blogs::MAX_DESC_CHARS .' символов!';
+        $alert[1]   = 'РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ СЃРѕРѕР±С‰РµРЅРёСЏ '. blogs::MAX_DESC_CHARS .' СЃРёРјРІРѕР»РѕРІ!';
     }
     
     $msg  = change_q_x(antispam($aForm['msg']), false, false, 'b|br|i|p|ul|li|cut|s|h[1-6]{1}', false, false);
     $name = substr_entity(change_q_x(antispam($aForm['name']), true, false), 0, 96, true);
     
-    // ссылка на youtube
+    // СЃСЃС‹Р»РєР° РЅР° youtube
     $yt_link = $aForm['yt_link'] ? $aForm['yt_link'] : '';
 
     if ( $yt_link != '' ) {
         $v_yt_link = video_validate( $yt_link );
         
         if ( !$v_yt_link ) {
-            $alert[4]   = 'Неверная ссылка.';
+            $alert[4]   = 'РќРµРІРµСЂРЅР°СЏ СЃСЃС‹Р»РєР°.';
         } 
         else {
             $yt_link = $v_yt_link;
         }
     }
     
-    // опросы 
+    // РѕРїСЂРѕСЃС‹ 
     $question = substr_entity(change_q_x( antispam( trim((string) $aForm['question']) ), false, false, ''), 0, blogs::MAX_POLL_CHARS, true);
     $multiple = (bool) $aForm['multiple'];
     $answers  = array();
@@ -260,14 +260,14 @@ function _admEditBlogsSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $aF
     }
     
     if ( $i > 0 && $question === '' ) {
-        $alert[5] = 'Введите текст вопроса';
+        $alert[5] = 'Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚ РІРѕРїСЂРѕСЃР°';
     } else if ( $i > blogs::MAX_POLL_ANSWERS ) {
-        $alert[5] = 'Вы можете указать максимум ' . blogs::MAX_POLL_ANSWERS . ' отетов';
+        $alert[5] = 'Р’С‹ РјРѕР¶РµС‚Рµ СѓРєР°Р·Р°С‚СЊ РјР°РєСЃРёРјСѓРј ' . blogs::MAX_POLL_ANSWERS . ' РѕС‚РµС‚РѕРІ';
     } else if ( $i < 2 && $question !== '' ) {
-        $alert[5] = 'Нужно указать минимум 2 варианта ответа в голосовании';
+        $alert[5] = 'РќСѓР¶РЅРѕ СѓРєР°Р·Р°С‚СЊ РјРёРЅРёРјСѓРј 2 РІР°СЂРёР°РЅС‚Р° РѕС‚РІРµС‚Р° РІ РіРѕР»РѕСЃРѕРІР°РЅРёРё';
     }
     
-    // файлы 
+    // С„Р°Р№Р»С‹ 
     $files_session = $aForm['attachedfiles_session'];
     
     if ( !$files_session ) {
@@ -284,7 +284,7 @@ function _admEditBlogsSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $aF
     $files_info = $attachedfiles->calcFiles();
     
     if ( $msg === '' && $question === '' && empty($alert[5]) && !$files_info['count'] && $yt_link === '' ) {
-        $alert[1] = 'Сообщение не должно быть пустым';
+        $alert[1] = 'РЎРѕРѕР±С‰РµРЅРёРµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј';
     }
     
     if ( !$alert ) {
@@ -314,12 +314,12 @@ function _admEditBlogsSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $aF
 }
 
 /**
- * Отдает HTML для Редактирование Блоги: посты и комментарии
+ * РћС‚РґР°РµС‚ HTML РґР»СЏ Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р‘Р»РѕРіРё: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё
  * 
  * @param  object $objResponse xajaxResponse
- * @param  string $rec_id идентификатор записи
- * @param  string $rec_type тип записи
- * @param  array $aParams дополнительные параметры. остальные
+ * @param  string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aParams РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹. РѕСЃС‚Р°Р»СЊРЅС‹Рµ
  * @return string
  */
 function _admEditBlogsParseForm( &$objResponse, $rec_id = '', $rec_type = '', $aParams = array() ) {
@@ -337,10 +337,10 @@ function _admEditBlogsParseForm( &$objResponse, $rec_id = '', $rec_type = '', $a
     $sHtml = ob_get_contents();
     ob_end_clean();
     
-    // аттачи
+    // Р°С‚С‚Р°С‡Рё
     $sAttach = getAttachedFilesJs( blogs::getAttachedFiles($rec_id), blogs::MAX_FILES, blogs::MAX_FILE_SIZE, 'blog' );
     
-    // текст блога и опрос
+    // С‚РµРєСЃС‚ Р±Р»РѕРіР° Рё РѕРїСЂРѕСЃ
     $sOnReady = "if (document.getElementById('adm_edit_question')) {
         document.getElementById('adm_edit_question').value = document.getElementById('adm_edit_question_source').value;
         if(document.getElementById('adm_edit_msg')) 
@@ -353,10 +353,10 @@ function _admEditBlogsParseForm( &$objResponse, $rec_id = '', $rec_type = '', $a
             document.getElementById('adm_edit_msg').value = ($('adm_edit_msg_source')? $('adm_edit_msg_source').value : null);
     }";
     
-    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Редактировать ' . ($rec_type == '2' ? 'комментарий' : 'сообщение') );
+    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ ' . ($rec_type == '2' ? 'РєРѕРјРјРµРЅС‚Р°СЂРёР№' : 'СЃРѕРѕР±С‰РµРЅРёРµ') );
     $objResponse->assign( 'div_adm_edit', 'innerHTML', $sHtml );
     $objResponse->script( "$('div_adm_reason').setStyle('display', 'none');" );
-    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'Основное', 'Файлы'" . ($rec_type == 1 ? ", 'Опрос'" : '')."];" );
+    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'РћСЃРЅРѕРІРЅРѕРµ', 'Р¤Р°Р№Р»С‹'" . ($rec_type == 1 ? ", 'РћРїСЂРѕСЃ'" : '')."];" );
     $objResponse->script( 'adm_edit_content.edit();' );
     $objResponse->script( $sAttach );
     $objResponse->script( $sOnReady );
@@ -364,13 +364,13 @@ function _admEditBlogsParseForm( &$objResponse, $rec_id = '', $rec_type = '', $a
 }
 
 /**
- * Редактирование постов и комментариев в сообществах
+ * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїРѕСЃС‚РѕРІ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ РІ СЃРѕРѕР±С‰РµСЃС‚РІР°С…
  * 
- * @param  string $sId идентификатор записи
- * @param  int $nEdit флаг редактирования
- * @param  array $aForm данные формы редактирования
- * @param  string $sDrawFunc имя функции для выполнения после сохранения
- * @param  string $sParams JSON кодированные дополнительные параметры
+ * @param  string $sId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  int $nEdit С„Р»Р°Рі СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  array $aForm РґР°РЅРЅС‹Рµ С„РѕСЂРјС‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
+ * @param  string $sParams JSON РєРѕРґРёСЂРѕРІР°РЅРЅС‹Рµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹
  * @return xajaxResponse 
  */
 function admEditCommunity( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc = '', $sParams = '' ) {
@@ -387,7 +387,7 @@ function admEditCommunity( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc =
             }
         }
         
-        if ( $rec_type == 1 ) { // посты
+        if ( $rec_type == 1 ) { // РїРѕСЃС‚С‹
             if ( $nEdit ) {
                 _admEditCommunityPostSaveForm( $objResponse, $rec_id, $rec_type, $aForm, $sDrawFunc );
             }
@@ -395,7 +395,7 @@ function admEditCommunity( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc =
                 _admEditCommunityPostParseForm( $objResponse, $rec_id, $rec_type, $aParams );
             }
         }
-        else { // комментарии
+        else { // РєРѕРјРјРµРЅС‚Р°СЂРёРё
             if ( $nEdit ) {
                 _admEditCommunityCommSaveForm( $objResponse, $rec_id, $rec_type, $aForm, $sDrawFunc );
             }
@@ -409,16 +409,16 @@ function admEditCommunity( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc =
 }
 
 /**
- * Сохранение поста в сообществах
+ * РЎРѕС…СЂР°РЅРµРЅРёРµ РїРѕСЃС‚Р° РІ СЃРѕРѕР±С‰РµСЃС‚РІР°С…
  * 
  * @param object $objResponse xajaxResponse
- * @param string $rec_id идентификатор записи
- * @param string $rec_type тип записи
- * @param array $aForm массив данных
- * @param string $sDrawFunc имя функции для выполнения после сохранения
+ * @param string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param array $aForm РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
+ * @param string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
  */
 function _admEditCommunityPostSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $aForm = array(), $sDrawFunc = '' ) {
-    // инициализация
+    // РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ
     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/commune.php' );
     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/attachedfiles.php' );
     
@@ -474,9 +474,9 @@ function _admEditCommunityPostSaveForm( &$objResponse, $rec_id = '', $rec_type =
         $question = substr( $question, 0, $len - ($rlen - commune::POLL_QUESTION_CHARS_MAX) );
     }
     
-    // валидация
+    // РІР°Р»РёРґР°С†РёСЏ
     if( strlen($_POST['title']) > commune::MSG_TITLE_MAX_LENGTH ) {
-        $alert[1] = 'Количество символов превышает допустимое ('.commune::MSG_TITLE_MAX_LENGTH.')';
+        $alert[1] = 'РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ РїСЂРµРІС‹С€Р°РµС‚ РґРѕРїСѓСЃС‚РёРјРѕРµ ('.commune::MSG_TITLE_MAX_LENGTH.')';
     }
     
     if ( $aForm['youtube_link'] != '' ) {
@@ -484,28 +484,28 @@ function _admEditCommunityPostSaveForm( &$objResponse, $rec_id = '', $rec_type =
             $aForm['youtube_link'] = $video;
         } 
         else {
-            $alert[2] = 'Неверная ссылка';
+            $alert[2] = 'РќРµРІРµСЂРЅР°СЏ СЃСЃС‹Р»РєР°';
         }
     }
     
     if ( $acount > 0 && $question == '' ) {
-        $alert[3] = 'Введите текст вопроса';
+        $alert[3] = 'Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚ РІРѕРїСЂРѕСЃР°';
     } 
     elseif ( $acount > commune::POLL_ANSWERS_MAX && $question != '' ) {
-        $alert[3] = 'Вы можете указать максимум '.commune::POLL_ANSWERS_MAX.' ответов';
+        $alert[3] = 'Р’С‹ РјРѕР¶РµС‚Рµ СѓРєР°Р·Р°С‚СЊ РјР°РєСЃРёРјСѓРј '.commune::POLL_ANSWERS_MAX.' РѕС‚РІРµС‚РѕРІ';
     } 
     elseif ( $acount < 2 && $question != '' ) {
-        $alert[3] = 'Нужно указать минимум 2 варианта ответа';
+        $alert[3] = 'РќСѓР¶РЅРѕ СѓРєР°Р·Р°С‚СЊ РјРёРЅРёРјСѓРј 2 РІР°СЂРёР°РЅС‚Р° РѕС‚РІРµС‚Р°';
     }
     
     $files_info = $attachedfiles->calcFiles();
     
     if ( is_empty_html($aForm['msgtext']) && $question == '' && empty($alert) && !$files_info['count'] && $aForm['youtube_link'] == '' ) {
-        $alert[4] = 'Поле заполнено некорректно';
+        $alert[4] = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
         $aForm['msgtext'] = '';
     }
     elseif ( strlen($aForm['msgtext']) > commune::MSG_TEXT_MAX_LENGTH ) {
-        $alert[4] = 'Количество символов превышает допустимое';
+        $alert[4] = 'РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ РїСЂРµРІС‹С€Р°РµС‚ РґРѕРїСѓСЃС‚РёРјРѕРµ';
     }
     
     if ( !$alert ) {
@@ -515,7 +515,7 @@ function _admEditCommunityPostSaveForm( &$objResponse, $rec_id = '', $rec_type =
         commune::CreateMessage( $aForm, $aForm['commune_id'], $_SESSION['uid'], $rec_id, null, $question, $answers, $answers_exists, $multiple );
         commune::DeleteMarkedAttach( $rec_id );
 
-        // прикрепленные файлы
+        // РїСЂРёРєСЂРµРїР»РµРЅРЅС‹Рµ С„Р°Р№Р»С‹
         $attachedfiles_files = $attachedfiles->getFiles( array(1, 3, 4) );
         commune::addAttachedFiles( $attachedfiles_files, $rec_id, $aForm['user_login'], false );
         $attachedfiles->clear();
@@ -535,12 +535,12 @@ function _admEditCommunityPostSaveForm( &$objResponse, $rec_id = '', $rec_type =
 }
 
 /**
- * Отдает HTML для Редактирование поста в сообществах
+ * РћС‚РґР°РµС‚ HTML РґР»СЏ Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїРѕСЃС‚Р° РІ СЃРѕРѕР±С‰РµСЃС‚РІР°С…
  * 
  * @param  object $objResponse xajaxResponse
- * @param  string $rec_id идентификатор записи
- * @param  string $rec_type тип записи
- * @param  array $aParams дополнительные параметры с UID отправителя. остальные - опционально
+ * @param  string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aParams РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ СЃ UID РѕС‚РїСЂР°РІРёС‚РµР»СЏ. РѕСЃС‚Р°Р»СЊРЅС‹Рµ - РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ
  * @return string
  */
 function _admEditCommunityPostParseForm( &$objResponse, $rec_id = '', $rec_type = '', $aParams = array() ) {
@@ -558,17 +558,17 @@ function _admEditCommunityPostParseForm( &$objResponse, $rec_id = '', $rec_type 
     $is_comm_admin = $user_mod & ( commune::MOD_COMM_ADMIN | commune::MOD_COMM_MODERATOR );
     $is_author     = $user_mod & ( commune::MOD_COMM_AUTHOR );
     
-    $_SESSION['wysiwyg_inline_files'] = array(); // !!!TODO: что то сделать, когда будут готовы новые сообщества
+    $_SESSION['wysiwyg_inline_files'] = array(); // !!!TODO: С‡С‚Рѕ С‚Рѕ СЃРґРµР»Р°С‚СЊ, РєРѕРіРґР° Р±СѓРґСѓС‚ РіРѕС‚РѕРІС‹ РЅРѕРІС‹Рµ СЃРѕРѕР±С‰РµСЃС‚РІР°
     
     ob_start();
     include_once( $_SERVER['DOCUMENT_ROOT'] . '/user/adm_edit_tpl/community.php' );
     $sHtml = ob_get_contents();
     ob_end_clean();
     
-    // аттачи 
+    // Р°С‚С‚Р°С‡Рё 
     $sAttach = getAttachedFilesJs( commune::getAttachedFiles($rec_id), commune::MAX_FILES, commune::MAX_FILE_SIZE, 'commune' );
     
-    // опрос
+    // РѕРїСЂРѕСЃ
     $sOnReady = "
         if(document.getElementById('adm_edit_msg')) document.getElementById('adm_edit_msg').value = ($('adm_edit_msg_source')? $('adm_edit_msg_source').value : null);
         parent.window['adm_edit_ckeditor'] = CKEDITOR.replace('adm_edit_msg');
@@ -576,10 +576,10 @@ function _admEditCommunityPostParseForm( &$objResponse, $rec_id = '', $rec_type 
         poll.init('Blogs', document.getElementById('div_adm_edit'), ". commune::POLL_ANSWERS_MAX .", '". $_SESSION['rand'] ."');
         maxChars('adm_edit_question', 'adm_edit_question_warn', ". commune::POLL_ANSWER_CHARS_MAX .");";
     
-    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Редактировать сообщение' );
+    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ' );
     $objResponse->assign( 'div_adm_edit', 'innerHTML', $sHtml );
     $objResponse->script( "$('div_adm_reason').setStyle('display', 'none');" );
-    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'Основное', 'Файлы', 'Опрос'];" );
+    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'РћСЃРЅРѕРІРЅРѕРµ', 'Р¤Р°Р№Р»С‹', 'РћРїСЂРѕСЃ'];" );
     $objResponse->script( 'adm_edit_content.edit();' );
     $objResponse->script( $sAttach );
     $objResponse->script( $sOnReady );
@@ -587,13 +587,13 @@ function _admEditCommunityPostParseForm( &$objResponse, $rec_id = '', $rec_type 
 }
 
 /**
- * Сохранение комментария в сообществах
+ * РЎРѕС…СЂР°РЅРµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ РІ СЃРѕРѕР±С‰РµСЃС‚РІР°С…
  * 
  * @param object $objResponse xajaxResponse
- * @param string $rec_id идентификатор записи
- * @param string $rec_type тип записи
- * @param array $aForm массив данных
- * @param string $sDrawFunc имя функции для выполнения после сохранения
+ * @param string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param array $aForm РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
+ * @param string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
  */
 function _admEditCommunityCommSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $aForm = array(), $sDrawFunc = '' ) {
     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/messages.php' );
@@ -616,19 +616,19 @@ function _admEditCommunityCommSaveForm( &$objResponse, $rec_id = '', $rec_type =
 }
 
 /**
- * Отдает HTML для Редактирование комментария в сообществах
+ * РћС‚РґР°РµС‚ HTML РґР»СЏ Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ РІ СЃРѕРѕР±С‰РµСЃС‚РІР°С…
  * 
  * @param  object $objResponse xajaxResponse
- * @param  string $rec_id идентификатор записи
- * @param  string $rec_type тип записи
- * @param  array $aParams дополнительные параметры с UID отправителя. остальные - опционально
+ * @param  string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aParams РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ СЃ UID РѕС‚РїСЂР°РІРёС‚РµР»СЏ. РѕСЃС‚Р°Р»СЊРЅС‹Рµ - РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ
  * @return string
  */
 function _admEditCommunityCommParseForm( &$objResponse, $rec_id = '', $rec_type = '', $aParams = array() ) {
     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/attachedfiles.php' );
     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/comments/CommentsCommune.php' );
     
-    // получение данных комментария
+    // РїРѕР»СѓС‡РµРЅРёРµ РґР°РЅРЅС‹С… РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
     $oComments = new CommentsCommune();
     $mess      = $oComments->getData( $rec_id );
     $aModel    = $oComments->model();
@@ -640,27 +640,27 @@ function _admEditCommunityCommParseForm( &$objResponse, $rec_id = '', $rec_type 
     $sHtml = ob_get_contents();
     ob_end_clean();
     
-    // аттачи 
+    // Р°С‚С‚Р°С‡Рё 
     $aAttach = _getCommentFilesIds( $mess, $aModel );
     $sAttach = getAttachedFilesJs( $aAttach, TComments::MAX_FILE_COUNT, TComments::MAX_FILE_SIZE, 'commune' );
     
-    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Редактировать комментарий' );
+    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№' );
     $objResponse->assign( 'div_adm_edit', 'innerHTML', $sHtml );
     $objResponse->script( "$('div_adm_reason').setStyle('display', 'none');" );
-    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'Файлы'];" );
+    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'Р¤Р°Р№Р»С‹'];" );
     $objResponse->script( 'adm_edit_content.edit();' );
     $objResponse->script( $sAttach );
     $objResponse->script( 'xajax_getAdmEditReasons('. admin_log::ACT_ID_EDIT_COMMUNITY .');');
 }
 
 /**
- * Редактирование проектов и конкурсов
+ * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРѕРµРєС‚РѕРІ Рё РєРѕРЅРєСѓСЂСЃРѕРІ
  * 
- * @param  string $sId идентификатор записи
- * @param  int $nEdit флаг редактирования
- * @param  array $aForm данные формы редактирования
- * @param  string $sDrawFunc имя функции для выполнения после сохранения
- * @param  string $sParams JSON кодированные дополнительные параметры
+ * @param  string $sId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  int $nEdit С„Р»Р°Рі СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  array $aForm РґР°РЅРЅС‹Рµ С„РѕСЂРјС‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
+ * @param  string $sParams JSON РєРѕРґРёСЂРѕРІР°РЅРЅС‹Рµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹
  * @return xajaxResponse 
  */
 function admEditProjects( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc = '', $sParams = '' ) {
@@ -689,13 +689,13 @@ function admEditProjects( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc = 
 }
 
 /**
- * Сохранение проектов и конкурсов
+ * РЎРѕС…СЂР°РЅРµРЅРёРµ РїСЂРѕРµРєС‚РѕРІ Рё РєРѕРЅРєСѓСЂСЃРѕРІ
  * 
  * @param object $objResponse xajaxResponse
- * @param string $rec_id идентификатор записи
- * @param string $rec_type тип записи
- * @param array $aForm массив данных
- * @param string $sDrawFunc имя функции для выполнения после сохранения
+ * @param string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param array $aForm РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
+ * @param string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
  */
 function _admEditProjectsSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $aForm = array(), $sDrawFunc = '' ) {
     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/projects.php' );
@@ -737,12 +737,12 @@ function _admEditProjectsSaveForm( &$objResponse, $rec_id = '', $rec_type = '', 
         $tmpPrj->setProjectField('win_date', change_q_x($aForm['win_date'], TRUE) );
     }
     
-    // разделы
+    // СЂР°Р·РґРµР»С‹
     $c  = $aForm['categories'];
     $sc = $aForm['subcategories'];
     
     if ( empty($c) || (sizeof($c)==1 && $c[0] == 0) ) {
-        $alert[3] = 'Не выбран раздел';
+        $alert[3] = 'РќРµ РІС‹Р±СЂР°РЅ СЂР°Р·РґРµР»';
     } 
     else {
         $cats = array();
@@ -777,28 +777,28 @@ function _admEditProjectsSaveForm( &$objResponse, $rec_id = '', $rec_type = '', 
     $prj = $tmpPrj->getProject();
     $descr_limit = 5000;
     
-    if ( $prj['cost'] < 0 ) $alert[7] = 'Введите положительную сумму';
-    if ( $prj['cost'] > 999999 ) $alert[7] = 'Слишком большая сумма';
-    if ( $prj['cost'] > 0 && ($prj['currency'] < 0 || $prj['currency'] > 3) ) $alert[7] = 'Валюта не определена';
-    if ( is_empty_html($prj['name']) ) $alert[1] = 'Поле не заполнено';
-    if ( is_empty_html($prj['descr']) ) $alert[2] = 'Поле не заполнено';
-    if ( strlen_real($prj['descr']) > $descr_limit ) $alert[2] = "Исчерпан лимит символов ($descr_limit)";
+    if ( $prj['cost'] < 0 ) $alert[7] = 'Р’РІРµРґРёС‚Рµ РїРѕР»РѕР¶РёС‚РµР»СЊРЅСѓСЋ СЃСѓРјРјСѓ';
+    if ( $prj['cost'] > 999999 ) $alert[7] = 'РЎР»РёС€РєРѕРј Р±РѕР»СЊС€Р°СЏ СЃСѓРјРјР°';
+    if ( $prj['cost'] > 0 && ($prj['currency'] < 0 || $prj['currency'] > 3) ) $alert[7] = 'Р’Р°Р»СЋС‚Р° РЅРµ РѕРїСЂРµРґРµР»РµРЅР°';
+    if ( is_empty_html($prj['name']) ) $alert[1] = 'РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ';
+    if ( is_empty_html($prj['descr']) ) $alert[2] = 'РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ';
+    if ( strlen_real($prj['descr']) > $descr_limit ) $alert[2] = "РСЃС‡РµСЂРїР°РЅ Р»РёРјРёС‚ СЃРёРјРІРѕР»РѕРІ ($descr_limit)";
     
     if ( $prj['kind'] == 7 ) {
         if ( !preg_match("/^([0-9]{1,2})\-([0-9]{1,2})\-([0-9]{4})$/", $prj['end_date'], $o1) || !checkdate($o1[2], $o1[1], $o1[3]) )
-            $alert[5] = 'Неправильная дата';
+            $alert[5] = 'РќРµРїСЂР°РІРёР»СЊРЅР°СЏ РґР°С‚Р°';
         
         if ( !preg_match("/^([0-9]{1,2})\-([0-9]{1,2})\-([0-9]{4})$/", $prj['win_date'], $o2) || !checkdate($o2[2], $o2[1], $o2[3]) )
-            $alert[6] = 'Неправильная дата';
+            $alert[6] = 'РќРµРїСЂР°РІРёР»СЊРЅР°СЏ РґР°С‚Р°';
         
         if ( !$alert[5] && mktime(0, 0, 0, $o1[2], $o1[1], $o1[3]) <= mktime(0, 0, 0) )
-            $alert[5] = 'Дата окончания конкурса не может находиться  в прошлом';
+            $alert[5] = 'Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР° РЅРµ РјРѕР¶РµС‚ РЅР°С…РѕРґРёС‚СЊСЃСЏ  РІ РїСЂРѕС€Р»РѕРј';
         
         if ( !$alert[6] && mktime(0, 0, 0, $o2[2], $o2[1], $o2[3]) <= mktime(0, 0, 0, $o1[2], $o1[1], $o1[3]) )
-            $alert[6] = 'Дата определения победителя должна быть больше даты окончания конкурса';
+            $alert[6] = 'Р”Р°С‚Р° РѕРїСЂРµРґРµР»РµРЅРёСЏ РїРѕР±РµРґРёС‚РµР»СЏ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РґР°С‚С‹ РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР°';
     }
     /*elseif ( $prj['kind'] == 4 && ($prj['country'] == 0 || $prj['city'] == 0) ) {
-        $alert[4] = 'Укажите местонахождение';
+        $alert[4] = 'РЈРєР°Р¶РёС‚Рµ РјРµСЃС‚РѕРЅР°С…РѕР¶РґРµРЅРёРµ';
     }*/
     
     if ( isset($aForm['top_ok']) ) {
@@ -808,7 +808,7 @@ function _admEditProjectsSaveForm( &$objResponse, $rec_id = '', $rec_type = '', 
             $tmpPrj->setAddedTopDays( $nDays );
         }
         else {
-            $alert[8] = 'Укажите корректное количество дней нверху';
+            $alert[8] = 'РЈРєР°Р¶РёС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РґРЅРµР№ РЅРІРµСЂС…Сѓ';
         }
     }
     else {
@@ -817,7 +817,7 @@ function _admEditProjectsSaveForm( &$objResponse, $rec_id = '', $rec_type = '', 
     
     if ( !isset($alert[8]) && isset($aForm['logo_ok']) ) {
         if ( empty($aForm['logo_id']) ) {
-            $alert[8] = 'Необходимо выбрать файл';
+            $alert[8] = 'РќРµРѕР±С…РѕРґРёРјРѕ РІС‹Р±СЂР°С‚СЊ С„Р°Р№Р»';
         }
     }
     
@@ -862,12 +862,12 @@ function _admEditProjectsSaveForm( &$objResponse, $rec_id = '', $rec_type = '', 
 }
 
 /**
- * Отдает HTML для Редактирование проектов и конкурсов
+ * РћС‚РґР°РµС‚ HTML РґР»СЏ Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРѕРµРєС‚РѕРІ Рё РєРѕРЅРєСѓСЂСЃРѕРІ
  * 
  * @param  object $objResponse xajaxResponse
- * @param  string $rec_id идентификатор записи
- * @param  string $rec_type тип записи
- * @param  array $aParams дополнительные параметры с UID отправителя. остальные - опционально
+ * @param  string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aParams РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ СЃ UID РѕС‚РїСЂР°РІРёС‚РµР»СЏ. РѕСЃС‚Р°Р»СЊРЅС‹Рµ - РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ
  * @return string
  */
 function _admEditProjectsParseForm( &$objResponse, $rec_id = '', $rec_type = '', $aParams = array() ) {
@@ -882,17 +882,17 @@ function _admEditProjectsParseForm( &$objResponse, $rec_id = '', $rec_type = '',
     $prj     = $tmpPrj->init( 1, $rec_id );
     $tmpPrj->fix();
     
-    // $aFolders   = projects::getUserFolders( $prj['user_id'] ); // папки
-    $remTPeriod = $tmpPrj->getRemainingTopPeriod( $remTD, $remTH, $remTM, $remtverb ); // закрепление
+    // $aFolders   = projects::getUserFolders( $prj['user_id'] ); // РїР°РїРєРё
+    $remTPeriod = $tmpPrj->getRemainingTopPeriod( $remTD, $remTH, $remTM, $remtverb ); // Р·Р°РєСЂРµРїР»РµРЅРёРµ
     
-    // страны и города
+    // СЃС‚СЂР°РЅС‹ Рё РіРѕСЂРѕРґР°
     $countries = country::GetCountries();
     
     if( $prj['country'] ) {
         $cities = city::GetCities( $prj['country'] );
     }
     
-    // разделы
+    // СЂР°Р·РґРµР»С‹
     $categories  = professions::GetAllGroupsLite();
     $professions = professions::GetAllProfessions();
     array_group( $professions, 'groupid' );
@@ -908,24 +908,24 @@ function _admEditProjectsParseForm( &$objResponse, $rec_id = '', $rec_type = '',
     $sHtml = ob_get_contents();
     ob_end_clean();
     
-    // текст
+    // С‚РµРєСЃС‚
     $sOnReady = "if(document.getElementById('adm_edit_descr')) 
         document.getElementById('adm_edit_descr').value = ($('adm_edit_descr_source')? $('adm_edit_descr_source').value : null);";
         
-    // аттачи 
+    // Р°С‚С‚Р°С‡Рё 
     $sAttach = getAttachedFilesJs( projects::GetAllAttach($rec_id), tmp_project::MAX_FILE_COUNT, tmp_project::MAX_FILE_SIZE, 'project' );
     
-    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Редактировать ' . ($rec_type == '7' ? 'конкурс' : 'проект') );
+    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ ' . ($rec_type == '7' ? 'РєРѕРЅРєСѓСЂСЃ' : 'РїСЂРѕРµРєС‚') );
     $objResponse->assign( 'div_adm_edit', 'innerHTML', $sHtml );
     $objResponse->script( "$('div_adm_reason').setStyle('display', 'none');" );
-    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'Основное', 'Файлы', 'Платные услуги'];" );
+    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'РћСЃРЅРѕРІРЅРѕРµ', 'Р¤Р°Р№Р»С‹', 'РџР»Р°С‚РЅС‹Рµ СѓСЃР»СѓРіРё'];" );
     $objResponse->script( 'adm_edit_content.edit();' );
     $objResponse->script( $sAttach );
     $objResponse->script( $sOnReady );
     $objResponse->script("var mx = new MultiInput('adm_edit_professions','category_line'); mx.init();");
     $objResponse->script( 'xajax_getAdmEditReasons('. admin_log::ACT_ID_EDIT_PROJECTS .');');
     
-    // для конкурса даты окончания и определения победителей
+    // РґР»СЏ РєРѕРЅРєСѓСЂСЃР° РґР°С‚С‹ РѕРєРѕРЅС‡Р°РЅРёСЏ Рё РѕРїСЂРµРґРµР»РµРЅРёСЏ РїРѕР±РµРґРёС‚РµР»РµР№
     if ( $prj['kind'] == 7 ) {
         $objResponse->script( "new tcal ({ 'formname': 'adm_edit_frm', 'controlname': 'adm_edit_end_date', 'iconId': 'end_date_btn', 'clickEvent': function(){ adm_edit_content.hideError('end_date'); } });" );
         $objResponse->script( "new tcal ({ 'formname': 'adm_edit_frm', 'controlname': 'adm_edit_win_date', 'iconId': 'win_date_btn', 'clickEvent': function(){ adm_edit_content.hideError('win_date'); } });" );
@@ -933,13 +933,13 @@ function _admEditProjectsParseForm( &$objResponse, $rec_id = '', $rec_type = '',
 }
 
 /**
- * Редактирование предложений по проектам и конкурсам
+ * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёР№ РїРѕ РїСЂРѕРµРєС‚Р°Рј Рё РєРѕРЅРєСѓСЂСЃР°Рј
  * 
- * @param  string $sId идентификатор записи
- * @param  int $nEdit флаг редактирования
- * @param  array $aForm данные формы редактирования
- * @param  string $sDrawFunc имя функции для выполнения после сохранения
- * @param  string $sParams JSON кодированные дополнительные параметры
+ * @param  string $sId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  int $nEdit С„Р»Р°Рі СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  array $aForm РґР°РЅРЅС‹Рµ С„РѕСЂРјС‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
+ * @param  string $sParams JSON РєРѕРґРёСЂРѕРІР°РЅРЅС‹Рµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹
  * @return xajaxResponse 
  */
 function admEditPrjOffers( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc = '', $sParams = '' ) {
@@ -956,7 +956,7 @@ function admEditPrjOffers( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc =
             }
         }
         
-        if ( $rec_type == 7 ) { // предложения по конкурсам
+        if ( $rec_type == 7 ) { // РїСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РєРѕРЅРєСѓСЂСЃР°Рј
             if ( $nEdit ) {
                 _admEditContestOfferSaveForm( $objResponse, $rec_id, $rec_type, $aForm, $sDrawFunc );
             }
@@ -964,7 +964,7 @@ function admEditPrjOffers( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc =
                 _admEditContestOfferParseForm( $objResponse, $rec_id, $rec_type, $aParams );
             }
         }
-        else { // предложения по проектам
+        else { // РїСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РїСЂРѕРµРєС‚Р°Рј
             if ( $nEdit ) {
                 _admEditPrjOfferSaveForm( $objResponse, $rec_id, $rec_type, $aForm, $sDrawFunc );
             }
@@ -978,13 +978,13 @@ function admEditPrjOffers( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc =
 }
 
 /**
- * Сохранение предложения по конкурсам
+ * РЎРѕС…СЂР°РЅРµРЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РєРѕРЅРєСѓСЂСЃР°Рј
  * 
  * @param object $objResponse xajaxResponse
- * @param string $rec_id идентификатор записи
- * @param string $rec_type тип записи
- * @param array $aForm массив данных
- * @param string $sDrawFunc имя функции для выполнения после сохранения
+ * @param string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param array $aForm РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
+ * @param string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
  */
 function _admEditContestOfferSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $aForm = array(), $sDrawFunc = '' ) {
     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/contest.php' );
@@ -1005,12 +1005,12 @@ function _admEditContestOfferSaveForm( &$objResponse, $rec_id = '', $rec_type = 
 }
 
 /**
- * Отдает HTML для Редактирование предложения по конкурсам
+ * РћС‚РґР°РµС‚ HTML РґР»СЏ Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РєРѕРЅРєСѓСЂСЃР°Рј
  * 
  * @param  object $objResponse xajaxResponse
- * @param  string $rec_id идентификатор записи
- * @param  string $rec_type тип записи
- * @param  array $aParams дополнительные параметры с UID отправителя. остальные - опционально
+ * @param  string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aParams РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ СЃ UID РѕС‚РїСЂР°РІРёС‚РµР»СЏ. РѕСЃС‚Р°Р»СЊРЅС‹Рµ - РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ
  * @return string
  */
 function _admEditContestOfferParseForm( &$objResponse, $rec_id = '', $rec_type = '', $aParams = array() ) {
@@ -1024,7 +1024,7 @@ function _admEditContestOfferParseForm( &$objResponse, $rec_id = '', $rec_type =
     $sHtml = ob_get_contents();
     ob_end_clean();
     
-    // аттачи -----------------------------------
+    // Р°С‚С‚Р°С‡Рё -----------------------------------
     $sAttach = 'files = [];';
     
     if ($contest->offer['attach']) { 
@@ -1035,7 +1035,7 @@ function _admEditContestOfferParseForm( &$objResponse, $rec_id = '', $rec_type =
                 filename: '{$file['fname']}',
                 displayname: '".addslashes($file['orig_name'])."',
                 preview: '{$file['prev_fname']}',
-                time: '".date('Добавлено d.m.Y в H:i', strtotime($file['modified']))."',
+                time: '".date('Р”РѕР±Р°РІР»РµРЅРѕ d.m.Y РІ H:i', strtotime($file['modified']))."',
                 dir: '{$file['upload_login']}',
                 fileID: 'o{$file['id']}'
             };";
@@ -1050,14 +1050,14 @@ function _admEditContestOfferParseForm( &$objResponse, $rec_id = '', $rec_type =
 	$sAttach .= 'boxes.add();';
     //-------------------------------------------
     
-    // текст
+    // С‚РµРєСЃС‚
     $sOnReady = "if(document.getElementById('adm_edit_descr')) 
         document.getElementById('adm_edit_descr').value = ($('adm_edit_descr_source')? $('adm_edit_descr_source').value : null);";
     
-    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Редактировать конкурсную работу' );
+    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РєРѕРЅРєСѓСЂСЃРЅСѓСЋ СЂР°Р±РѕС‚Сѓ' );
     $objResponse->assign( 'div_adm_edit', 'innerHTML', $sHtml );
     $objResponse->script( "$('div_adm_reason').setStyle('display', 'none');" );
-    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'Основное', 'Файлы'];" );
+    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'РћСЃРЅРѕРІРЅРѕРµ', 'Р¤Р°Р№Р»С‹'];" );
     $objResponse->script( 'adm_edit_content.edit();' );
     $objResponse->script( $sAttach );
     $objResponse->script( $sOnReady );
@@ -1065,13 +1065,13 @@ function _admEditContestOfferParseForm( &$objResponse, $rec_id = '', $rec_type =
 }
 
 /**
- * Сохранение предложения по проектам
+ * РЎРѕС…СЂР°РЅРµРЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РїСЂРѕРµРєС‚Р°Рј
  * 
  * @param object $objResponse xajaxResponse
- * @param string $rec_id идентификатор записи
- * @param string $rec_type тип записи
- * @param array $aForm массив данных
- * @param string $sDrawFunc имя функции для выполнения после сохранения
+ * @param string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param array $aForm РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
+ * @param string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
  */
 function _admEditPrjOfferSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $aForm = array(), $sDrawFunc = '' ) {
     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/messages.php' );
@@ -1085,7 +1085,7 @@ function _admEditPrjOfferSaveForm( &$objResponse, $rec_id = '', $rec_type = '', 
     if ( $aForm['is_color'] && !$payed_color ) {
         $account = new account;
         $transaction_id = $account->start_transaction(get_uid());
-        $error_buy = $account->Buy($billing_id, $transaction_id, $answers->color_op_code, get_uid(), "Выделение ответа на проект цветом", "Выделение <a href='". (getFriendlyURL("project", $project['id'])) . "#freelancer_{$_SESSION['uid']}' target='_blank'>предложения</a> цветом", 1, 1);
+        $error_buy = $account->Buy($billing_id, $transaction_id, $answers->color_op_code, get_uid(), "Р’С‹РґРµР»РµРЅРёРµ РѕС‚РІРµС‚Р° РЅР° РїСЂРѕРµРєС‚ С†РІРµС‚РѕРј", "Р’С‹РґРµР»РµРЅРёРµ <a href='". (getFriendlyURL("project", $project['id'])) . "#freelancer_{$_SESSION['uid']}' target='_blank'>РїСЂРµРґР»РѕР¶РµРЅРёСЏ</a> С†РІРµС‚РѕРј", 1, 1);
         $payed_items = '1';
         
         if ( $error_buy ) {
@@ -1111,7 +1111,7 @@ function _admEditPrjOfferSaveForm( &$objResponse, $rec_id = '', $rec_type = '', 
     }
     
     if ( $error ) {
-        $objResponse->alert('Ошибка сохранения предложения'.$error);
+        $objResponse->alert('РћС€РёР±РєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ РїСЂРµРґР»РѕР¶РµРЅРёСЏ'.$error);
         $sParent = ( $sDrawFunc == 'stream0' || $sDrawFunc == 'stream1' || $sDrawFunc == 'stream2' ) ? 'parent.' : '';
         $objResponse->script("{$sParent}adm_edit_content.disabled = false; {$sParent}adm_edit_content.button();");
     }
@@ -1125,12 +1125,12 @@ function _admEditPrjOfferSaveForm( &$objResponse, $rec_id = '', $rec_type = '', 
 }
 
 /**
- * Отдает HTML для Редактирование предложения по проектам
+ * РћС‚РґР°РµС‚ HTML РґР»СЏ Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РїСЂРѕРµРєС‚Р°Рј
  * 
  * @param  object $objResponse xajaxResponse
- * @param  string $rec_id идентификатор записи
- * @param  string $rec_type тип записи
- * @param  array $aParams дополнительные параметры с UID отправителя. остальные - опционально
+ * @param  string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aParams РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ СЃ UID РѕС‚РїСЂР°РІРёС‚РµР»СЏ. РѕСЃС‚Р°Р»СЊРЅС‹Рµ - РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ
  * @return string
  */
 function _admEditPrjOfferParseForm( &$objResponse, $rec_id = '', $rec_type = '', $aParams = array() ) {
@@ -1166,10 +1166,10 @@ function _admEditPrjOfferParseForm( &$objResponse, $rec_id = '', $rec_type = '',
     $sHtml = ob_get_contents();
     ob_end_clean();
     
-    // текст
+    // С‚РµРєСЃС‚
     $sOnReady = "if(document.getElementById('adm_edit_descr')) document.getElementById('adm_edit_descr').value = ($('adm_edit_descr_source')? $('adm_edit_descr_source').value : null);";
     
-    // работы -----------------------------------
+    // СЂР°Р±РѕС‚С‹ -----------------------------------
     $offer['portfolio_work_1_id'] = $offer['portf_id1'];
     $offer['portfolio_work_2_id'] = $offer['portf_id2'];
     $offer['portfolio_work_3_id'] = $offer['portf_id3'];
@@ -1217,10 +1217,10 @@ function _admEditPrjOfferParseForm( &$objResponse, $rec_id = '', $rec_type = '',
     if ( $offer['portfolio_work_3'] != '' ) { $sWorks .= "adm_edit_content.prjOfferAddWork({$offer['portfolio_work_3_id']}, '{$offer['portfolio_work_3']}', '{$offer['portfolio_work_3_prev_pict']}');"; } 
     //-------------------------------------------
     
-    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Редактировать предложения по проекту' );
+    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РїСЂРѕРµРєС‚Сѓ' );
     $objResponse->assign( 'div_adm_edit', 'innerHTML', $sHtml );
     $objResponse->script( "$('div_adm_reason').setStyle('display', 'none');" );
-    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'Основное', 'Файлы'];" );
+    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'РћСЃРЅРѕРІРЅРѕРµ', 'Р¤Р°Р№Р»С‹'];" );
     $objResponse->script( 'adm_edit_content.edit();' );
     $objResponse->script( "adm_edit_content.userLogin = '{$user->login}';" );
     $objResponse->script( $sOnReady );
@@ -1229,10 +1229,10 @@ function _admEditPrjOfferParseForm( &$objResponse, $rec_id = '', $rec_type = '',
 }
 
 /**
- * Отдает список работ пользователя для прикрепления к предложению 
+ * РћС‚РґР°РµС‚ СЃРїРёСЃРѕРє СЂР°Р±РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РґР»СЏ РїСЂРёРєСЂРµРїР»РµРЅРёСЏ Рє РїСЂРµРґР»РѕР¶РµРЅРёСЋ 
  * 
- * @param int $prof_id ID профессии
- * @param int $user_id UID пользователя
+ * @param int $prof_id ID РїСЂРѕС„РµСЃСЃРёРё
+ * @param int $user_id UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
  * @return xajaxResponse 
  */
 function admEditPrjOffersLoadWorks( $prof_id = 0, $user_id = 0 ) {
@@ -1271,13 +1271,13 @@ function admEditPrjOffersLoadWorks( $prof_id = 0, $user_id = 0 ) {
 
 
 /**
- * Редактирование Комментарии к статьям
+ * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє СЃС‚Р°С‚СЊСЏРј
  * 
- * @param  string $sId идентификатор записи
- * @param  int $nEdit флаг редактирования
- * @param  array $aForm данные формы редактирования
- * @param  string $sDrawFunc имя функции для выполнения после сохранения
- * @param  string $sParams JSON кодированные дополнительные параметры
+ * @param  string $sId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  int $nEdit С„Р»Р°Рі СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  array $aForm РґР°РЅРЅС‹Рµ С„РѕСЂРјС‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
+ * @param  string $sParams JSON РєРѕРґРёСЂРѕРІР°РЅРЅС‹Рµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹
  * @return xajaxResponse 
  */
 function admEditArtCom( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc = '', $sParams = '' ) {
@@ -1306,13 +1306,13 @@ function admEditArtCom( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc = ''
 }
 
 /**
- * Сохранение комментария к статьям
+ * РЎРѕС…СЂР°РЅРµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ Рє СЃС‚Р°С‚СЊСЏРј
  * 
  * @param object $objResponse xajaxResponse
- * @param string $rec_id идентификатор записи
- * @param string $rec_type тип записи
- * @param array $aForm массив данных
- * @param string $sDrawFunc имя функции для выполнения после сохранения
+ * @param string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param array $aForm РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
+ * @param string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
  */
 function _admEditArtComSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $aForm = array(), $sDrawFunc = '' ) {
     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/messages.php' );
@@ -1335,19 +1335,19 @@ function _admEditArtComSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $a
 }
 
 /**
- * Отдает HTML для комментариев к статьям
+ * РћС‚РґР°РµС‚ HTML РґР»СЏ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ Рє СЃС‚Р°С‚СЊСЏРј
  * 
  * @param  object $objResponse xajaxResponse
- * @param  string $rec_id идентификатор записи
- * @param  string $rec_type тип записи
- * @param  array $aParams массив дополнительных параметров
+ * @param  string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aParams РјР°СЃСЃРёРІ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ
  * @return string
  */
 function _admEditArtComParseForm( &$objResponse, $rec_id = '', $rec_type = '', $aParams = array() ) {
     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/attachedfiles.php' );
     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/comments/CommentsArticles.php' );
     
-    // получение данных комментария
+    // РїРѕР»СѓС‡РµРЅРёРµ РґР°РЅРЅС‹С… РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
     $oComments = new CommentsArticles();
     $mess      = $oComments->getData( $rec_id );
     $aModel    = $oComments->model();
@@ -1357,27 +1357,27 @@ function _admEditArtComParseForm( &$objResponse, $rec_id = '', $rec_type = '', $
     $sHtml = ob_get_contents();
     ob_end_clean();
     
-    // аттачи 
+    // Р°С‚С‚Р°С‡Рё 
     $aAttach = _getCommentFilesIds( $mess, $aModel );
     $sAttach = getAttachedFilesJs( $aAttach, TComments::MAX_FILE_COUNT, TComments::MAX_FILE_SIZE, 'commune' );
     
-    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Редактировать комментарий' );
+    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№' );
     $objResponse->assign( 'div_adm_edit', 'innerHTML', $sHtml );
     $objResponse->script( "$('div_adm_reason').setStyle('display', 'none');" );
-    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'Файлы'];" );
+    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'Р¤Р°Р№Р»С‹'];" );
     $objResponse->script( 'adm_edit_content.edit();' );
     $objResponse->script( $sAttach );
     $objResponse->script( 'xajax_getAdmEditReasons('. admin_log::ACT_ID_EDIT_ART_COM .');');
 }
 
 /**
- * Редактирование профиля юзера
+ * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРѕС„РёР»СЏ СЋР·РµСЂР°
  * 
- * @param  string $sId идентификатор записи
- * @param  int $nEdit флаг редактирования
- * @param  array $aForm данные формы редактирования
- * @param  string $sDrawFunc имя функции для выполнения после сохранения
- * @param  string $sParams JSON кодированные дополнительные параметры
+ * @param  string $sId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  int $nEdit С„Р»Р°Рі СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  array $aForm РґР°РЅРЅС‹Рµ С„РѕСЂРјС‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
+ * @param  string $sParams JSON РєРѕРґРёСЂРѕРІР°РЅРЅС‹Рµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹
  * @return xajaxResponse 
  */
 function admEditProfile( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc = '', $sParams = '' ) {
@@ -1412,13 +1412,13 @@ function admEditProfile( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc = '
 }
 
 /**
- * Сохранение профиля юзера
+ * РЎРѕС…СЂР°РЅРµРЅРёРµ РїСЂРѕС„РёР»СЏ СЋР·РµСЂР°
  * 
  * @param object $objResponse xajaxResponse
- * @param string $rec_id идентификатор записи
- * @param string $rec_type тип записи
- * @param array $aForm массив данных
- * @param string $sDrawFunc имя функции для выполнения после сохранения
+ * @param string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param array $aForm РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
+ * @param string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
  */
 function _admEditProfileSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $aForm = array(), $sDrawFunc = '' ) {
     $error = '';
@@ -1429,11 +1429,11 @@ function _admEditProfileSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $
     switch ( $aForm['p_ucolumn'] ) {
         case 'uname':
             $new_val = change_q( substr(trim($aForm['new_val']), 0, 21), true );
-            if ( !preg_match("/^[-a-zA-Zа-яёА-ЯЁ]+$/", $new_val) ) { $error = 'Поле заполнено некорректно'; }
+            if ( !preg_match("/^[-a-zA-ZР°-СЏС‘Рђ-РЇРЃ]+$/", $new_val) ) { $error = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ'; }
             break;
         case 'usurname':
             $new_val = change_q( substr(trim($aForm['new_val']), 0, 21), true );
-            if ( !preg_match("/^[-a-zA-Zа-яёА-ЯЁ]+$/", $new_val) ) { $error = 'Поле заполнено некорректно'; }
+            if ( !preg_match("/^[-a-zA-ZР°-СЏС‘Рђ-РЇРЃ]+$/", $new_val) ) { $error = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ'; }
             break;
         case 'pname':
             $new_val = change_q( substr(trim(stripslashes($aForm['new_val'])), 0, 100), true );
@@ -1449,7 +1449,7 @@ function _admEditProfileSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $
             $new_val       = change_q_x_a( substr($new_val, 0, $ab_text_max_length + $newlines), false, false, "b|i|p|ul|li{1}" );
             
             if ( strlen($original_text) > $ab_text_max_length + $newlines ) {
-                $error = 'Допустимо максимум '.$ab_text_max_length.' знаков.';
+                $error = 'Р”РѕРїСѓСЃС‚РёРјРѕ РјР°РєСЃРёРјСѓРј '.$ab_text_max_length.' Р·РЅР°РєРѕРІ.';
             }
             break;
         case 'resume_file':
@@ -1472,24 +1472,24 @@ function _admEditProfileSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $
                 }
             }
             else {
-                // админ нажал "Сохранить" не зааплоадив файл - считаем что утвердил тот что есть
+                // Р°РґРјРёРЅ РЅР°Р¶Р°Р» "РЎРѕС…СЂР°РЅРёС‚СЊ" РЅРµ Р·Р°Р°РїР»РѕР°РґРёРІ С„Р°Р№Р» - СЃС‡РёС‚Р°РµРј С‡С‚Рѕ СѓС‚РІРµСЂРґРёР» С‚РѕС‚ С‡С‚Рѕ РµСЃС‚СЊ
                 $bNew = false;
             }
             break;
         case 'resume':
             $new_val = str_replace( "\r\n", "\r", $aForm['new_val'] );
             
-            if ( strlen($new_val) > 4000 ) { $error = 'Допустимо максимум 4000 знаков.'; }
+            if ( strlen($new_val) > 4000 ) { $error = 'Р”РѕРїСѓСЃС‚РёРјРѕ РјР°РєСЃРёРјСѓРј 4000 Р·РЅР°РєРѕРІ.'; }
             
             $new_val = change_q( substr(trim($new_val), 0, 4000), false, 25 );
             break;
         case 'konk':
-            if ( strlen($aForm['new_val']) > 4000 ) { $error = 'Допустимо максимум 4000 знаков.'; }
+            if ( strlen($aForm['new_val']) > 4000 ) { $error = 'Р”РѕРїСѓСЃС‚РёРјРѕ РјР°РєСЃРёРјСѓРј 4000 Р·РЅР°РєРѕРІ.'; }
             
             $new_val = change_q( substr(trim($aForm['new_val']), 0, 4000), false, 90 );
             break;
         case 'company':
-            if ( strlen($aForm['new_val']) > 500 ) { $error = 'Допустимо максимум 500 знаков.'; }
+            if ( strlen($aForm['new_val']) > 500 ) { $error = 'Р”РѕРїСѓСЃС‚РёРјРѕ РјР°РєСЃРёРјСѓРј 500 Р·РЅР°РєРѕРІ.'; }
             
             $new_val = substr( change_q_x($aForm['new_val'], false, true, null, false, false), 0, 500 );
             break;
@@ -1527,7 +1527,7 @@ function _admEditProfileSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $
             $objResponse->script( 'parent.adm_edit_content.cancel();' );
             resolveContent( $aForm['p_content_id'], $aForm['p_stream_id'], user_content::MODER_PROFILE .'_'. $aForm['p_change_id'] .'_0', 1, $rec_id, $aForm['p_content_cnt'], $aForm['p_status'], $aForm['p_is_sent'], '', $objResponse );
         }
-        else { // действие после редактирования по умолчанию
+        else { // РґРµР№СЃС‚РІРёРµ РїРѕСЃР»Рµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
             if ( $bNew ) {
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/'. $aForm['p_utable'] .'.php' );
 
@@ -1539,7 +1539,7 @@ function _admEditProfileSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $
                 $user->Update( $rec_id, $res );
             }
             
-            if ( $sDrawFunc == 'suspect' ) { // шерстим все профили на наличие контактов в админке
+            if ( $sDrawFunc == 'suspect' ) { // С€РµСЂСЃС‚РёРј РІСЃРµ РїСЂРѕС„РёР»Рё РЅР° РЅР°Р»РёС‡РёРµ РєРѕРЅС‚Р°РєС‚РѕРІ РІ Р°РґРјРёРЅРєРµ
                 $objResponse->script( "window.location = '/siteadmin/suspicious_contacts/?site={$aForm['p_site']}&action=resolve&sid={$aForm['p_sid']}&page={$aForm['p_page']}'" );
                 return 0;
             }
@@ -1556,12 +1556,12 @@ function _admEditProfileSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $
 }
 
 /**
- * Отдает HTML для Редактирование профиля юзера
+ * РћС‚РґР°РµС‚ HTML РґР»СЏ Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРѕС„РёР»СЏ СЋР·РµСЂР°
  * 
  * @param  object $objResponse xajaxResponse
- * @param  string $rec_id идентификатор записи
- * @param  string $rec_type тип записи
- * @param  array $aParams дополнительные параметры
+ * @param  string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aParams РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹
  * @return string
  */
 function _admEditProfileParseForm( &$objResponse, $rec_id = '', $rec_type = '', $aParams = array() ) {
@@ -1580,12 +1580,12 @@ function _admEditProfileParseForm( &$objResponse, $rec_id = '', $rec_type = '', 
     $sHtml = ob_get_contents();
     ob_end_clean();
     
-    // текст
+    // С‚РµРєСЃС‚
     if ( in_array($ucolumn, $aTextArea) ) {
         $sOnReady = "if(document.getElementById('adm_edit_msg')) document.getElementById('adm_edit_msg').value = ($('adm_edit_msg_source')? $('adm_edit_msg_source').value : null);";
     }
     
-    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Редактировать профиль' );
+    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РїСЂРѕС„РёР»СЊ' );
     $objResponse->assign( 'div_adm_edit', 'innerHTML', $sHtml );
     
     if ( in_array($ucolumn, $aTextArea) ) {
@@ -1599,13 +1599,13 @@ function _admEditProfileParseForm( &$objResponse, $rec_id = '', $rec_type = '', 
 }
 
 /**
- * Редактирование комментариев к предложениям по проектам
+ * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РїРѕ РїСЂРѕРµРєС‚Р°Рј
  * 
- * @param  string $sId идентификатор записи
- * @param  int $nEdit флаг редактирования
- * @param  array $aForm данные формы редактирования
- * @param  string $sDrawFunc имя функции для выполнения после сохранения
- * @param  string $sParams JSON кодированные дополнительные параметры
+ * @param  string $sId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  int $nEdit С„Р»Р°Рі СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  array $aForm РґР°РЅРЅС‹Рµ С„РѕСЂРјС‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
+ * @param  string $sParams JSON РєРѕРґРёСЂРѕРІР°РЅРЅС‹Рµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹
  * @return xajaxResponse 
  */
 function admEditPrjDialog( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc = '', $sParams = '' ) {
@@ -1634,13 +1634,13 @@ function admEditPrjDialog( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc =
 }
 
 /**
- * Сохранение комментария к предложениям по проектам
+ * РЎРѕС…СЂР°РЅРµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РїРѕ РїСЂРѕРµРєС‚Р°Рј
  * 
  * @param object $objResponse xajaxResponse
- * @param string $rec_id идентификатор записи
- * @param string $rec_type тип записи
- * @param array $aForm массив данных
- * @param string $sDrawFunc имя функции для выполнения после сохранения
+ * @param string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param array $aForm РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
+ * @param string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
  */
 function _admEditPrjDialogSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $aForm = array(), $sDrawFunc = '' ) {
     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/projects_offers_dialogue.php' );
@@ -1652,7 +1652,7 @@ function _admEditPrjDialogSaveForm( &$objResponse, $rec_id = '', $rec_type = '',
     if ( !trim($aForm['post_text']) ) {
         $bValid = false;
         $sParent = ( $sDrawFunc == 'stream0' || $sDrawFunc == 'stream1' || $sDrawFunc == 'stream2' ) ? 'parent.' : '';
-        $objResponse->script( "$sParent$('adm_edit_err_msg').set('html', 'Поле заполнено некорректно.'); ");
+        $objResponse->script( "$sParent$('adm_edit_err_msg').set('html', 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ.'); ");
         $objResponse->script( "$sParent$('div_adm_edit_err_msg').setStyle('display', '');" );
         $objResponse->script("{$sParent}adm_edit_content.disabled = false; {$sParent}adm_edit_content.button();");
     }
@@ -1673,12 +1673,12 @@ function _admEditPrjDialogSaveForm( &$objResponse, $rec_id = '', $rec_type = '',
 }
 
 /**
- * Отдает HTML для комментариев к предложениям по проектам
+ * РћС‚РґР°РµС‚ HTML РґР»СЏ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РїРѕ РїСЂРѕРµРєС‚Р°Рј
  * 
  * @param  object $objResponse xajaxResponse
- * @param  string $rec_id идентификатор записи
- * @param  string $rec_type тип записи
- * @param  array $aParams массив дополнительных параметров
+ * @param  string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aParams РјР°СЃСЃРёРІ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ
  * @return string
  */
 function _admEditPrjDialogParseForm( &$objResponse, $rec_id = '', $rec_type = '', $aParams = array() ) {
@@ -1691,10 +1691,10 @@ function _admEditPrjDialogParseForm( &$objResponse, $rec_id = '', $rec_type = ''
     $sHtml = ob_get_contents();
     ob_end_clean();
     
-    // текст
+    // С‚РµРєСЃС‚
     $sOnReady = "if(document.getElementById('adm_edit_msg')) document.getElementById('adm_edit_msg').value = ($('adm_edit_msg_source')? $('adm_edit_msg_source').value : null);";
     
-    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Редактировать комментарий' );
+    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№' );
     $objResponse->assign( 'div_adm_edit', 'innerHTML', $sHtml );
     $objResponse->script( $sOnReady );
     $objResponse->script( "$('div_adm_reason').setStyle('display', '');" );
@@ -1703,13 +1703,13 @@ function _admEditPrjDialogParseForm( &$objResponse, $rec_id = '', $rec_type = ''
 }
 
 /**
- * Редактирование комментариев к работе в конкурсе
+ * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ Рє СЂР°Р±РѕС‚Рµ РІ РєРѕРЅРєСѓСЂСЃРµ
  * 
- * @param  string $sId идентификатор записи
- * @param  int $nEdit флаг редактирования
- * @param  array $aForm данные формы редактирования
- * @param  string $sDrawFunc имя функции для выполнения после сохранения
- * @param  string $sParams JSON кодированные дополнительные параметры
+ * @param  string $sId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  int $nEdit С„Р»Р°Рі СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  array $aForm РґР°РЅРЅС‹Рµ С„РѕСЂРјС‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
+ * @param  string $sParams JSON РєРѕРґРёСЂРѕРІР°РЅРЅС‹Рµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹
  * @return xajaxResponse 
  */
 function admEditContestCom( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc = '', $sParams = '' ) {
@@ -1738,20 +1738,20 @@ function admEditContestCom( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc 
 }
 
 /**
- * Сохранение комментария к работе в конкурсе
+ * РЎРѕС…СЂР°РЅРµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ Рє СЂР°Р±РѕС‚Рµ РІ РєРѕРЅРєСѓСЂСЃРµ
  * 
  * @param object $objResponse xajaxResponse
- * @param string $rec_id идентификатор записи
- * @param string $rec_type тип записи
- * @param array $aForm массив данных
- * @param string $sDrawFunc имя функции для выполнения после сохранения
+ * @param string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param array $aForm РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
+ * @param string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
  */
 function _admEditContestComSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $aForm = array(), $sDrawFunc = '' ) {
     $alert   = array();
     $comment = $aForm['msg'];
     
     if ( !trim($comment) ) {
-        $alert[1] = 'Комментарий не может быть пустым';
+        $alert[1] = 'РљРѕРјРјРµРЅС‚Р°СЂРёР№ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј';
     }
     
     if ( !$alert ) {
@@ -1777,12 +1777,12 @@ function _admEditContestComSaveForm( &$objResponse, $rec_id = '', $rec_type = ''
 }
 
 /**
- * Отдает HTML для комментариев к работе в конкурсе
+ * РћС‚РґР°РµС‚ HTML РґР»СЏ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ Рє СЂР°Р±РѕС‚Рµ РІ РєРѕРЅРєСѓСЂСЃРµ
  * 
  * @param  object $objResponse xajaxResponse
- * @param  string $rec_id идентификатор записи
- * @param  string $rec_type тип записи
- * @param  array $aParams массив дополнительных параметров
+ * @param  string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aParams РјР°СЃСЃРёРІ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ
  * @return string
  */
 function _admEditContestComParseForm( &$objResponse, $rec_id = '', $rec_type = '', $aParams = array() ) {
@@ -1795,10 +1795,10 @@ function _admEditContestComParseForm( &$objResponse, $rec_id = '', $rec_type = '
     $sHtml = ob_get_contents();
     ob_end_clean();
     
-    // текст
+    // С‚РµРєСЃС‚
     $sOnReady = "if($('adm_edit_msg')) $('adm_edit_msg').set('value', ($('adm_edit_msg_source')? $('adm_edit_msg_source').get('value') : null));";
     
-    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Редактировать комментарий' );
+    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№' );
     $objResponse->assign( 'div_adm_edit', 'innerHTML', $sHtml );
     $objResponse->script( $sOnReady );
     $objResponse->script( "$('div_adm_reason').setStyle('display', '');" );
@@ -1807,13 +1807,13 @@ function _admEditContestComParseForm( &$objResponse, $rec_id = '', $rec_type = '
 }
 
 /**
- * Редактирование уточнения к разделам в портфолио
+ * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ СѓС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
  * 
- * @param  string $sId идентификатор записи
- * @param  int $nEdit флаг редактирования
- * @param  array $aForm данные формы редактирования
- * @param  string $sDrawFunc имя функции для выполнения после сохранения
- * @param  string $sParams JSON кодированные дополнительные параметры с ID профессии
+ * @param  string $sId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  int $nEdit С„Р»Р°Рі СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  array $aForm РґР°РЅРЅС‹Рµ С„РѕСЂРјС‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
+ * @param  string $sParams JSON РєРѕРґРёСЂРѕРІР°РЅРЅС‹Рµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ СЃ ID РїСЂРѕС„РµСЃСЃРёРё
  * @return xajaxResponse 
  */
 function admEditPortfChoice( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc = '', $sParams = '' ) {
@@ -1846,13 +1846,13 @@ function admEditPortfChoice( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc
 }
 
 /**
- * Сохранение уточнения к разделам в портфолио
+ * РЎРѕС…СЂР°РЅРµРЅРёРµ СѓС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
  * 
  * @param object $objResponse xajaxResponse
- * @param  string $user_id UID пользователя
- * @param string $rec_type тип записи
- * @param array $aForm массив данных
- * @param string $sDrawFunc имя функции для выполнения после сохранения
+ * @param  string $user_id UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param array $aForm РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
+ * @param string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
  */
 function _admEditPortfChoiceSaveForm( &$objResponse, $user_id = '', $rec_type = '', $aForm = array(), $sDrawFunc = '' ) {
     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/professions.php' );
@@ -1901,14 +1901,14 @@ function _admEditPortfChoiceSaveForm( &$objResponse, $user_id = '', $rec_type = 
         messages::portfChoiceModifiedNotification( $user_id, $aForm['prof_id'], $sReason );
         $objResponse->script( 'adm_edit_content.cancel();' );
         
-        if ( $sDrawFunc == 'stream0' || $sDrawFunc == 'stream1' || $sDrawFunc == 'stream2' ) { // если случаев будет больше - вынести в отдельную функцию
+        if ( $sDrawFunc == 'stream0' || $sDrawFunc == 'stream1' || $sDrawFunc == 'stream2' ) { // РµСЃР»Рё СЃР»СѓС‡Р°РµРІ Р±СѓРґРµС‚ Р±РѕР»СЊС€Рµ - РІС‹РЅРµСЃС‚Рё РІ РѕС‚РґРµР»СЊРЅСѓСЋ С„СѓРЅРєС†РёСЋ
             $objResponse->script( 'parent.adm_edit_content.cancel();' );
             $objResponse->script('user_content.getContents()');
         }
-        elseif ( $sDrawFunc == 'suspect' ) { // шерстим все профили на наличие контактов в админке
+        elseif ( $sDrawFunc == 'suspect' ) { // С€РµСЂСЃС‚РёРј РІСЃРµ РїСЂРѕС„РёР»Рё РЅР° РЅР°Р»РёС‡РёРµ РєРѕРЅС‚Р°РєС‚РѕРІ РІ Р°РґРјРёРЅРєРµ
             $objResponse->script( "window.location = '/siteadmin/suspicious_contacts/?site={$aForm['p_site']}&action=resolve&sid={$aForm['p_sid']}&page={$aForm['p_page']}'" );
         }
-        else { // действие после редактирования по умолчанию
+        else { // РґРµР№СЃС‚РІРёРµ РїРѕСЃР»Рµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
             $objResponse->script( 'window.location.reload(true)' );
         }
     }
@@ -1921,12 +1921,12 @@ function _admEditPortfChoiceSaveForm( &$objResponse, $user_id = '', $rec_type = 
 }
 
 /**
- * Отдает HTML для Редактирование Личные сообщения
+ * РћС‚РґР°РµС‚ HTML РґР»СЏ Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р›РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ
  * 
  * @param  object $objResponse xajaxResponse
- * @param  string $user_id UID пользователя
- * @param  string $rec_type тип записи
- * @param  array $aParams ID профессии
+ * @param  string $user_id UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param  string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aParams ID РїСЂРѕС„РµСЃСЃРёРё
  * @return string
  */
 function _admEditPortfChoiceParseForm( &$objResponse, $user_id = '', $rec_type = '', $aParams = array() ) {
@@ -1947,26 +1947,26 @@ function _admEditPortfChoiceParseForm( &$objResponse, $user_id = '', $rec_type =
     $sHtml = ob_get_contents();
     ob_end_clean();
     
-    // текст
+    // С‚РµРєСЃС‚
     $sOnReady = "if(document.getElementById('adm_edit_msg')) document.getElementById('adm_edit_msg').value = ($('adm_edit_msg_source')? $('adm_edit_msg_source').value : null);";
     
-    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Редактировать уточнения к разделу в портфолио' );
+    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СѓС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Сѓ РІ РїРѕСЂС‚С„РѕР»РёРѕ' );
     $objResponse->assign( 'div_adm_edit', 'innerHTML', $sHtml );
     $objResponse->script( $sOnReady );
     $objResponse->script( "$('div_adm_reason').setStyle('display', 'none');" );
-    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'Основное'];" );
+    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'РћСЃРЅРѕРІРЅРѕРµ'];" );
     $objResponse->script( 'adm_edit_content.edit();' );
     $objResponse->script( 'xajax_getAdmEditReasons('. admin_log::ACT_ID_EDIT_PORTF_CHOISE .');');
 }
 
 /**
- * Редактирование работы в портфолио
+ * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ СЂР°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ
  * 
- * @param  string $sId идентификатор записи
- * @param  int $nEdit флаг редактирования
- * @param  array $aForm данные формы редактирования
- * @param  string $sDrawFunc имя функции для выполнения после сохранения
- * @param  string $sParams JSON кодированные дополнительные параметры
+ * @param  string $sId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  int $nEdit С„Р»Р°Рі СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  array $aForm РґР°РЅРЅС‹Рµ С„РѕСЂРјС‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
+ * @param  string $sParams JSON РєРѕРґРёСЂРѕРІР°РЅРЅС‹Рµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹
  * @return xajaxResponse 
  */
 function admEditPortfolio( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc = '', $sParams = '' ) {
@@ -1995,13 +1995,13 @@ function admEditPortfolio( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc =
 }
 
 /**
- * Сохранение работы в портфолио
+ * РЎРѕС…СЂР°РЅРµРЅРёРµ СЂР°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ
  * 
  * @param object $objResponse xajaxResponse
- * @param string $rec_id идентификатор записи
- * @param string $rec_type тип записи
- * @param array $aForm массив данных
- * @param string $sDrawFunc имя функции для выполнения после сохранения
+ * @param string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param array $aForm РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
+ * @param string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
  */
 function _admEditPortfolioSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $aForm = array(), $sDrawFunc = '' ) {
     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/user_content.php' );
@@ -2011,7 +2011,7 @@ function _admEditPortfolioSaveForm( &$objResponse, $rec_id = '', $rec_type = '',
     
     $max_time_value = 100;
     
-    //стоимость работы из портфолио
+    //СЃС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹ РёР· РїРѕСЂС‚С„РѕР»РёРѕ
     $max_portf_cost[0] = 100000;  // usd
     $max_portf_cost[1] = 100000;  // euro
     $max_portf_cost[2] = 5000000; // rur
@@ -2020,7 +2020,7 @@ function _admEditPortfolioSaveForm( &$objResponse, $rec_id = '', $rec_type = '',
     $user = new users();
     $user->GetUserByUID( $aForm['user_id'] );
     
-    // инициализация
+    // РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ
     $aPortf            = portfolio::GetPortfById( $rec_id );
     $alert             = array();
     $maxlen            = $aForm['is_video'] ? 80 : 120;
@@ -2068,37 +2068,37 @@ function _admEditPortfolioSaveForm( &$objResponse, $rec_id = '', $rec_type = '',
         }
     } 
     
-    // валидация (нумерация алертов как в первоначальном варианте радактирования и новый нулевой)
+    // РІР°Р»РёРґР°С†РёСЏ (РЅСѓРјРµСЂР°С†РёСЏ Р°Р»РµСЂС‚РѕРІ РєР°Рє РІ РїРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅРѕРј РІР°СЂРёР°РЅС‚Рµ СЂР°РґР°РєС‚РёСЂРѕРІР°РЅРёСЏ Рё РЅРѕРІС‹Р№ РЅСѓР»РµРІРѕР№)
     
-    if ( !$name || (strlen(trim(stripslashes($aForm['pname']))) > 80) ) { $alert[1] = 'Поле заполнено некорректно'; }
+    if ( !$name || (strlen(trim(stripslashes($aForm['pname']))) > 80) ) { $alert[1] = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ'; }
     
-    if ( $link!='' && !url_validate($link, true) ) { $alert[6] = 'Поле заполнено некорректно'; }
+    if ( $link!='' && !url_validate($link, true) ) { $alert[6] = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ'; }
     
     if ( $is_video == 't' ) {
         $v_video_link = video_validate( $video_link );
         
         if ( !$v_video_link ) {
-            $alert[206] = "Поле заполнено некорректно";
+            $alert[206] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
         } else {
             $video_link = preg_replace( "/^http:\/\//", '', $v_video_link );
         }
     }
     
     if ( $cost < 0 || $cost > $max_portf_cost[$cost_type] ) {
-        $alert[4] = 'Стоимость должна быть в пределе от 0 ' . view_range_cost2(0, $max_portf_cost[$cost_type], '', '', false, $cost_type) . ($cost_type != 2 ? '.' : '');
+        $alert[4] = 'РЎС‚РѕРёРјРѕСЃС‚СЊ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РІ РїСЂРµРґРµР»Рµ РѕС‚ 0 ' . view_range_cost2(0, $max_portf_cost[$cost_type], '', '', false, $cost_type) . ($cost_type != 2 ? '.' : '');
     }
     
     if ( $time_value < 0 || $time_value > $max_time_value ) {
-        $alert[5] = 'Временные затраты должны быть в пределе от 0 до ' . $max_time_value . '.';
+        $alert[5] = 'Р’СЂРµРјРµРЅРЅС‹Рµ Р·Р°С‚СЂР°С‚С‹ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РІ РїСЂРµРґРµР»Рµ РѕС‚ 0 РґРѕ ' . $max_time_value . '.';
     }
     
     if ( $new_prof != $prof && ( $new_prof == professions::CLIENTS_PROF_ID || $new_prof == professions::BEST_PROF_ID ) 
         && portfolio::CountAll($aForm['user_id'], $new_prof, true) >= portfolio::MAX_BEST_WORKS 
     ) {
-        $alert[0] = 'Превышено количество работ в этом разделе';
+        $alert[0] = 'РџСЂРµРІС‹С€РµРЅРѕ РєРѕР»РёС‡РµСЃС‚РІРѕ СЂР°Р±РѕС‚ РІ СЌС‚РѕРј СЂР°Р·РґРµР»Рµ';
     }
     
-    // сохраняем
+    // СЃРѕС…СЂР°РЅСЏРµРј
     if ( !$alert ) {
         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/messages.php' );
         
@@ -2126,11 +2126,11 @@ function _admEditPortfolioSaveForm( &$objResponse, $rec_id = '', $rec_type = '',
 }
 
 /**
- * Отдает HTML для Редактирование работы в портфолио
+ * РћС‚РґР°РµС‚ HTML РґР»СЏ Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ СЂР°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ
  * 
  * @param  object $objResponse xajaxResponse
- * @param  string $rec_id идентификатор записи
- * @param  string $rec_type тип записи
+ * @param  string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  string $rec_type С‚РёРї Р·Р°РїРёСЃРё
  * @return string
  */
 function _admEditPortfolioParseForm( &$objResponse, $rec_id = '', $rec_type = '', $aParams = array() ) {
@@ -2141,7 +2141,7 @@ function _admEditPortfolioParseForm( &$objResponse, $rec_id = '', $rec_type = ''
     
     $portf = portfolio::GetPortfById( $rec_id );
     $user  = new users();
-    $sH4   = $portf['is_video'] == 't' ? 'Изменить видео' : 'Редактировать работу';
+    $sH4   = $portf['is_video'] == 't' ? 'РР·РјРµРЅРёС‚СЊ РІРёРґРµРѕ' : 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СЂР°Р±РѕС‚Сѓ';
 
     $user->GetUserByUID( $portf['user_id'] );
     
@@ -2150,9 +2150,9 @@ function _admEditPortfolioParseForm( &$objResponse, $rec_id = '', $rec_type = ''
     $sHtml = ob_get_contents();
     ob_end_clean();
     
-    // текст
+    // С‚РµРєСЃС‚
     $sOnReady   = "if(document.getElementById('adm_edit_msg')) document.getElementById('adm_edit_msg').value = ($('adm_edit_msg_source')? $('adm_edit_msg_source').value : null);";
-    $sMenuItems = "['', 'Основное', 'Файлы']";
+    $sMenuItems = "['', 'РћСЃРЅРѕРІРЅРѕРµ', 'Р¤Р°Р№Р»С‹']";
     
     $objResponse->assign( 'h4_adm_edit', 'innerHTML', $sH4 );
     $objResponse->assign( 'div_adm_edit', 'innerHTML', $sHtml );
@@ -2165,13 +2165,13 @@ function _admEditPortfolioParseForm( &$objResponse, $rec_id = '', $rec_type = ''
 }
 
 /**
- * Редактирование предложений фрилансеров Сделаю
+ * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёР№ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РЎРґРµР»Р°СЋ
  * 
- * @param  string $sId идентификатор записи
- * @param  int $nEdit флаг редактирования
- * @param  array $aForm данные формы редактирования
- * @param  string $sDrawFunc имя функции для выполнения после сохранения
- * @param  string $sParams JSON кодированные дополнительные параметры
+ * @param  string $sId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  int $nEdit С„Р»Р°Рі СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  array $aForm РґР°РЅРЅС‹Рµ С„РѕСЂРјС‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
+ * @param  string $sParams JSON РєРѕРґРёСЂРѕРІР°РЅРЅС‹Рµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹
  * @return xajaxResponse 
  */
 function admEditSdelau( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc = '', $sParams = '' ) {
@@ -2200,13 +2200,13 @@ function admEditSdelau( $sId = '', $nEdit = 0, $aForm = array(), $sDrawFunc = ''
 }
 
 /**
- * Сохранение предложений фрилансеров Сделаю
+ * РЎРѕС…СЂР°РЅРµРЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёР№ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РЎРґРµР»Р°СЋ
  * 
  * @param object $objResponse xajaxResponse
- * @param string $rec_id идентификатор записи
- * @param string $rec_type тип записи
- * @param array $aForm массив данных
- * @param string $sDrawFunc имя функции для выполнения после сохранения
+ * @param string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param array $aForm РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
+ * @param string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
  */
 function _admEditSdelauSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $aForm = array(), $sDrawFunc = '' ) {
     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/freelancer_offers.php' );
@@ -2214,21 +2214,21 @@ function _admEditSdelauSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $a
     $alert = array();
     
     if ( trim($aForm['name']) == '' ) {
-        $alert[1] = 'Поле не заполнено';
+        $alert[1] = 'РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ';
     }
     elseif ( strlen($aForm['name']) > freelancer_offers::MAX_SIZE_TITLE ) {
-        $alert[1] = 'Максимальное количество символов ' . freelancer_offers::MAX_SIZE_TITLE;
+        $alert[1] = 'РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ ' . freelancer_offers::MAX_SIZE_TITLE;
     }
     
     if ( trim($aForm['msg']) == '' ) {
-        $alert[2] = 'Поле не заполнено';
+        $alert[2] = 'РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ';
     }
     elseif ( strlen_real($aForm['msg']) > freelancer_offers::MAX_SIZE_DESCRIPTION ) {
-        $alert[2] = 'Максимальное количество символов ' . freelancer_offers::MAX_SIZE_DESCRIPTION;
+        $alert[2] = 'РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ ' . freelancer_offers::MAX_SIZE_DESCRIPTION;
     }
 
     if ( $aForm['categories'] == 0 ) {
-        $alert[3] = 'Не выбран раздел и подраздел';
+        $alert[3] = 'РќРµ РІС‹Р±СЂР°РЅ СЂР°Р·РґРµР» Рё РїРѕРґСЂР°Р·РґРµР»';
     }
     
     if ( !$alert ) {
@@ -2259,12 +2259,12 @@ function _admEditSdelauSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $a
 }
 
 /**
- * Отдает HTML для предложений фрилансеров Сделаю
+ * РћС‚РґР°РµС‚ HTML РґР»СЏ РїСЂРµРґР»РѕР¶РµРЅРёР№ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РЎРґРµР»Р°СЋ
  * 
  * @param  object $objResponse xajaxResponse
- * @param  string $rec_id идентификатор записи
- * @param  string $rec_type тип записи
- * @param  array $aParams массив дополнительных параметров
+ * @param  string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aParams РјР°СЃСЃРёРІ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ
  * @return string
  */
 function _admEditSdelauParseForm( &$objResponse, $rec_id = '', $rec_type = '', $aParams = array() ) {
@@ -2277,7 +2277,7 @@ function _admEditSdelauParseForm( &$objResponse, $rec_id = '', $rec_type = '', $
     $objUser = new users();
     $objUser->GetUserByUID( $offer['user_id'] );
     
-    // разделы
+    // СЂР°Р·РґРµР»С‹
     $categories  = professions::GetAllGroupsLite();
     $professions = professions::GetAllProfessions();
     array_group( $professions, 'groupid' );
@@ -2288,34 +2288,34 @@ function _admEditSdelauParseForm( &$objResponse, $rec_id = '', $rec_type = '', $
     $sHtml = ob_get_contents();
     ob_end_clean();
     
-    // текст
+    // С‚РµРєСЃС‚
     $sOnReady = "if($('adm_edit_msg')) $('adm_edit_msg').set('value', ($('adm_edit_msg_source')? $('adm_edit_msg_source').get('value') : null));";
     
-    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Редактировать предложение' );
+    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РїСЂРµРґР»РѕР¶РµРЅРёРµ' );
     $objResponse->assign( 'div_adm_edit', 'innerHTML', $sHtml );
     $objResponse->script( $sOnReady );
     $objResponse->script( "$('div_adm_reason').setStyle('display', 'none');" );
-    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'Основное'];" );
+    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'РћСЃРЅРѕРІРЅРѕРµ'];" );
     $objResponse->script( 'adm_edit_content.edit();' );
     $objResponse->script( 'xajax_getAdmEditReasons('. admin_log::ACT_ID_EDIT_SDELAU .');');
 }
 
 
 /**
- * Сохранение Платные места
+ * РЎРѕС…СЂР°РЅРµРЅРёРµ РџР»Р°С‚РЅС‹Рµ РјРµСЃС‚Р°
  * 
  * @param object $objResponse xajaxResponse
- * @param string $rec_id идентификатор записи
- * @param string $rec_type тип записи
- * @param array $aForm массив данных
- * @param string $sDrawFunc имя функции для выполнения после сохранения
+ * @param string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param array $aForm РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
+ * @param string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
  */
 function _admEditCarouselSaveForm( &$objResponse, $rec_id = '', $rec_type = '', $aForm = array(), $sDrawFunc = '' ) {
     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/pay_place.php' );
     
     if ( $sDrawFunc == 'adm_first_page' ) {
         if ( !pay_place::checkModeration($rec_id) ) {
-            $objResponse->alert( 'Пользователь удалил или изменил данные.' );
+            $objResponse->alert( 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓРґР°Р»РёР» РёР»Рё РёР·РјРµРЅРёР» РґР°РЅРЅС‹Рµ.' );
             $objResponse->script( 'adm_edit_content.cancel();' );
             $objResponse->script( "$('my_div_content_{$rec_id}').destroy();" );
             return false;
@@ -2329,17 +2329,17 @@ function _admEditCarouselSaveForm( &$objResponse, $rec_id = '', $rec_type = '', 
     $sDelImg = change_q_x( $aForm['del_prev'], true );
     
     if ( !$sHeader ) {
-        $alert[1] = 'Заполните заголовок объявления';
+        $alert[1] = 'Р—Р°РїРѕР»РЅРёС‚Рµ Р·Р°РіРѕР»РѕРІРѕРє РѕР±СЉСЏРІР»РµРЅРёСЏ';
     }
     elseif ( strlen($sHeader) > pay_place::MAX_HEADER_SIZE ) {
-        $alert[1] = 'Превышен максимальный размер заголовка';
+        $alert[1] = 'РџСЂРµРІС‹С€РµРЅ РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ Р·Р°РіРѕР»РѕРІРєР°';
     }
     
     if ( !$sText ) {
-        $alert[2] = 'Заполните текст объявления';
+        $alert[2] = 'Р—Р°РїРѕР»РЅРёС‚Рµ С‚РµРєСЃС‚ РѕР±СЉСЏРІР»РµРЅРёСЏ';
     }
     elseif ( strlen($sText) > pay_place::MAX_TEXT_SIZE ) {
-        $alert[2] = 'Превышен максимальный размер текста';
+        $alert[2] = 'РџСЂРµРІС‹С€РµРЅ РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С‚РµРєСЃС‚Р°';
     }
     
     if ( !$alert ) {
@@ -2369,13 +2369,13 @@ function _admEditCarouselSaveForm( &$objResponse, $rec_id = '', $rec_type = '', 
 }
 
 /**
- * Отдает HTML для Платные места
+ * РћС‚РґР°РµС‚ HTML РґР»СЏ РџР»Р°С‚РЅС‹Рµ РјРµСЃС‚Р°
  * 
  * @param  object $objResponse xajaxResponse
- * @param  string $rec_id идентификатор записи
- * @param  string $rec_type тип записи
- * @param  array $aParams массив дополнительных параметров
- * @param string $sDrawFunc имя функции для выполнения после сохранения
+ * @param  string $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  string $rec_type С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aParams РјР°СЃСЃРёРІ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ
+ * @param string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
  * @return string
  */
 function _admEditCarouselParseForm( &$objResponse, $rec_id = '', $rec_type = '', $aParams = array(), $sDrawFunc = '' ) {
@@ -2384,7 +2384,7 @@ function _admEditCarouselParseForm( &$objResponse, $rec_id = '', $rec_type = '',
     
     if ( $sDrawFunc == 'adm_first_page' ) {
         if ( !pay_place::checkModeration($rec_id) ) {
-            $objResponse->alert( 'Пользователь удалил или изменил данные.' );
+            $objResponse->alert( 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓРґР°Р»РёР» РёР»Рё РёР·РјРµРЅРёР» РґР°РЅРЅС‹Рµ.' );
             $objResponse->script( 'adm_edit_content.cancel();' );
             $objResponse->script( "$('my_div_content_". user_content::MODER_CAROUSEL ."_{$rec_id}').destroy();" );
             return false;
@@ -2401,24 +2401,24 @@ function _admEditCarouselParseForm( &$objResponse, $rec_id = '', $rec_type = '',
     $sHtml = ob_get_contents();
     ob_end_clean();
     
-    // текст
+    // С‚РµРєСЃС‚
     $sOnReady = "if(document.getElementById('adm_edit_txt')){document.getElementById('adm_edit_txt').value=($('adm_edit_txt_source')?$('adm_edit_txt_source').value:null);}";
     
-    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Редактировать карусель' );
+    $objResponse->assign( 'h4_adm_edit', 'innerHTML', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РєР°СЂСѓСЃРµР»СЊ' );
     $objResponse->assign( 'div_adm_edit', 'innerHTML', $sHtml );
     $objResponse->script( $sOnReady );
     $objResponse->script( "$('div_adm_reason').setStyle('display', 'none');" );
-    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'Основное'];" );
+    $objResponse->script( "adm_edit_content.editMenuItems = ['', 'РћСЃРЅРѕРІРЅРѕРµ'];" );
     $objResponse->script( "adm_edit_content.userLogin = '{$place['login']}';" );
     $objResponse->script( 'adm_edit_content.edit();' );
     $objResponse->script( 'xajax_getAdmEditReasons('. admin_log::ACT_ID_EDIT_FIRST_PAGE .');');
 }
 
 /**
- * Возвращает массив id файлов, прикрепленных к комментарию (которыне на общем движке)
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ id С„Р°Р№Р»РѕРІ, РїСЂРёРєСЂРµРїР»РµРЅРЅС‹С… Рє РєРѕРјРјРµРЅС‚Р°СЂРёСЋ (РєРѕС‚РѕСЂС‹РЅРµ РЅР° РѕР±С‰РµРј РґРІРёР¶РєРµ)
  * 
- * @param  array $aComment массив с данными по комментарию
- * @param  array $aModel Конфиг данных для комментариев @see TComments::model();
+ * @param  array $aComment РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РїРѕ РєРѕРјРјРµРЅС‚Р°СЂРёСЋ
+ * @param  array $aModel РљРѕРЅС„РёРі РґР°РЅРЅС‹С… РґР»СЏ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ @see TComments::model();
  * @return array 
  */
 function _getCommentFilesIds( $aComment = array(), $aModel = array() ) {
@@ -2435,15 +2435,15 @@ function _getCommentFilesIds( $aComment = array(), $aModel = array() ) {
 }
 
 /**
- * Дополнительные действия, выполняемые перед редактированием в потоках
+ * Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РґРµР№СЃС‚РІРёСЏ, РІС‹РїРѕР»РЅСЏРµРјС‹Рµ РїРµСЂРµРґ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµРј РІ РїРѕС‚РѕРєР°С…
  * 
  * @param  object $objResponse xajaxResponse
- * @param  int $nEdit флаг редактирования
- * @param  array $aForm данные формы редактирования
- * @param  string $aParams дополнительные параметры
- * @param  int $nContentId идентификатор сущности из admin_contents
- * @param  string $sId идентификатор записи
- * @param  string $sDrawFunc имя функции для выполнения после сохранения
+ * @param  int $nEdit С„Р»Р°Рі СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  array $aForm РґР°РЅРЅС‹Рµ С„РѕСЂРјС‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+ * @param  string $aParams РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹
+ * @param  int $nContentId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+ * @param  string $sId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
  */
 function _admEditBeforeStreams( &$objResponse, $nEdit = 0, $aForm = array(), $aParams = array(), $nContentId = 0, $sId = '', $sDrawFunc = '' ) {
     global $user_content;
@@ -2457,14 +2457,14 @@ function _admEditBeforeStreams( &$objResponse, $nEdit = 0, $aForm = array(), $aP
 
     if ( !$user_content->checkStream($sContentId, $sStreamId, $_SESSION['uid']) ) {
         $objResponse->script( $sParent.'adm_edit_content.cancel();' );
-        $objResponse->script( "{$sChild}$('my_div_all').set('html','<div class=\"b-post b-post_pad_10_15_15\"><span style=\"color: #cc4642; font-weight: bold;\">Поток потерян либо перехвачен</span></div>');" );
+        $objResponse->script( "{$sChild}$('my_div_all').set('html','<div class=\"b-post b-post_pad_10_15_15\"><span style=\"color: #cc4642; font-weight: bold;\">РџРѕС‚РѕРє РїРѕС‚РµСЂСЏРЅ Р»РёР±Рѕ РїРµСЂРµС…РІР°С‡РµРЅ</span></div>');" );
 
         return false;
     }
     
     if ( !$user_content->checkContent( $nContentId, $sStreamId, $rec_id) ) {
         $objResponse->script( $sParent.'adm_edit_content.cancel();' );
-        $objResponse->alert( "Пользователь удалил или изменил данные.\nЛибо запись заблокирована." );
+        $objResponse->alert( "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓРґР°Р»РёР» РёР»Рё РёР·РјРµРЅРёР» РґР°РЅРЅС‹Рµ.\nР›РёР±Рѕ Р·Р°РїРёСЃСЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅР°." );
 
         if ( $sDrawFunc == 'stream0' ) {
             $objResponse->script( $sChild . 'user_content.getContents();' );
@@ -2481,19 +2481,19 @@ function _admEditBeforeStreams( &$objResponse, $nEdit = 0, $aForm = array(), $aP
 }
 
 /**
- * Дополнительные действия, выполняемые после редактирования
+ * Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РґРµР№СЃС‚РІРёСЏ, РІС‹РїРѕР»РЅСЏРµРјС‹Рµ РїРѕСЃР»Рµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
  * 
  * @param  object $objResponse xajaxResponse
- * @param  int $content_id идентификатор сущности из admin_contents
- * @param  int $rec_id идентификатор записи
- * @param  int $rec_type тип записи 
- * @param  string $sDrawFunc имя функции для выполнения после сохранения
- * @param  array $aForm массив данных
+ * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+ * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  int $rec_type С‚РёРї Р·Р°РїРёСЃРё 
+ * @param  string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
+ * @param  array $aForm РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
  */
 function _admEditAfterAll( &$objResponse, $content_id = 0, $rec_id = 0, $rec_type = 0, $sDrawFunc = '', $aForm = array() ) {
     $objResponse->script( 'adm_edit_content.cancel();' );
 
-    if ( $sDrawFunc == 'stream0' || $sDrawFunc == 'stream1' || $sDrawFunc == 'stream2' ) { // из потоков
+    if ( $sDrawFunc == 'stream0' || $sDrawFunc == 'stream1' || $sDrawFunc == 'stream2' ) { // РёР· РїРѕС‚РѕРєРѕРІ
         $objResponse->script( 'parent.adm_edit_content.cancel();' );
 
         if ( $sDrawFunc != 'stream1' ) {
@@ -2503,7 +2503,7 @@ function _admEditAfterAll( &$objResponse, $content_id = 0, $rec_id = 0, $rec_typ
             $objResponse->script( 'window.location.reload(true)' );
         }
     }
-    elseif ( $sDrawFunc == 'blocked' ) { // из админки "заблокированные"
+    elseif ( $sDrawFunc == 'blocked' ) { // РёР· Р°РґРјРёРЅРєРё "Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ"
         global $user_content;
 
         $sid = $content_id .'_'. $rec_id .'_'. $rec_type;
@@ -2512,25 +2512,25 @@ function _admEditAfterAll( &$objResponse, $content_id = 0, $rec_id = 0, $rec_typ
         $objResponse->script( "$('my_div_content_{$sid}').destroy();" );
         $objResponse->script('user_content.spinner.hide();');
     }
-    elseif ( $sDrawFunc == 'suspect' ) { // шерстим все профили на наличие контактов в админке
+    elseif ( $sDrawFunc == 'suspect' ) { // С€РµСЂСЃС‚РёРј РІСЃРµ РїСЂРѕС„РёР»Рё РЅР° РЅР°Р»РёС‡РёРµ РєРѕРЅС‚Р°РєС‚РѕРІ РІ Р°РґРјРёРЅРєРµ
         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/user_content.php' );
         
         if ( $content_id == user_content::MODER_PORTFOLIO ) {
             $objResponse->script( "window.location = '/siteadmin/suspicious_contacts/?site={$aForm['p_site']}&action=resolve&sid={$aForm['p_sid']}&page={$aForm['p_page']}'" );
         }
     }
-    else { // действие после редактирования по умолчанию
+    else { // РґРµР№СЃС‚РІРёРµ РїРѕСЃР»Рµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
         $objResponse->script( 'window.location.reload(true)' );
     }
 }
 
 /**
- * Устанавливает сообщения об ошибках в окне редактирования
+ * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ СЃРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕС€РёР±РєР°С… РІ РѕРєРЅРµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
  * 
  * @param object $objResponse xajaxResponse
- * @param array $alert массив с сообщениями об ошибках
- * @param array $aError массив соответствий ошибок элементам на странице
- * @param string $sDrawFunc имя функции для выполнения после сохранения
+ * @param array $alert РјР°СЃСЃРёРІ СЃ СЃРѕРѕР±С‰РµРЅРёСЏРјРё РѕР± РѕС€РёР±РєР°С…
+ * @param array $aError РјР°СЃСЃРёРІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёР№ РѕС€РёР±РѕРє СЌР»РµРјРµРЅС‚Р°Рј РЅР° СЃС‚СЂР°РЅРёС†Рµ
+ * @param string $sDrawFunc РёРјСЏ С„СѓРЅРєС†РёРё РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕСЃР»Рµ СЃРѕС…СЂР°РЅРµРЅРёСЏ
  */
 function _setErrors( &$objResponse, $alert = array(), $aError = array(), $sDrawFunc = '' ) {
     $sParent = ( $sDrawFunc == 'stream0' || $sDrawFunc == 'stream1' || $sDrawFunc == 'stream2' ) ? 'parent.' : '';
@@ -2543,13 +2543,13 @@ function _setErrors( &$objResponse, $alert = array(), $aError = array(), $sDrawF
     }
     
     $objResponse->script("{$sParent}adm_edit_content.disabled = false; {$sParent}adm_edit_content.button();");
-    $objResponse->alert('Не все поля заполнены верно');
+    $objResponse->alert('РќРµ РІСЃРµ РїРѕР»СЏ Р·Р°РїРѕР»РЅРµРЅС‹ РІРµСЂРЅРѕ');
 }
 
 /**
- * Устанавливает опции в селекте выбора причины действия администратора
+ * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РѕРїС†РёРё РІ СЃРµР»РµРєС‚Рµ РІС‹Р±РѕСЂР° РїСЂРёС‡РёРЅС‹ РґРµР№СЃС‚РІРёСЏ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°
  * 
- * @param  int $actId код действия
+ * @param  int $actId РєРѕРґ РґРµР№СЃС‚РІРёСЏ
  * @return object xajaxResponse
  */
 function getAdmEditReasons( $actId ) {
@@ -2576,13 +2576,13 @@ function getAdmEditReasons( $actId ) {
 }
 
 /**
- * Возвращает HTML код с опциями причины действия администратора
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ HTML РєРѕРґ СЃ РѕРїС†РёСЏРјРё РїСЂРёС‡РёРЅС‹ РґРµР№СЃС‚РІРёСЏ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°
  * 
- * @param  int $actId код действия
- * @return string HTML код 
+ * @param  int $actId РєРѕРґ РґРµР№СЃС‚РІРёСЏ
+ * @return string HTML РєРѕРґ 
  */
 function _getAdmEditReasonOptions( $actId ) {
-    $sOut = '<option value="" style="color: #777;" selected>Указать вручную</option>';
+    $sOut = '<option value="" style="color: #777;" selected>РЈРєР°Р·Р°С‚СЊ РІСЂСѓС‡РЅСѓСЋ</option>';
     
     $aReasons = admin_log::getAdminReasons( $actId );
     
@@ -2597,9 +2597,9 @@ function _getAdmEditReasonOptions( $actId ) {
 }
 
 /**
- * Устанавливает полный текст причины действия администратора в поле формы
+ * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РїРѕР»РЅС‹Р№ С‚РµРєСЃС‚ РїСЂРёС‡РёРЅС‹ РґРµР№СЃС‚РІРёСЏ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР° РІ РїРѕР»Рµ С„РѕСЂРјС‹
  * 
- * @param  int $reasonId ID причины, полный текст которой нужно установить
+ * @param  int $reasonId ID РїСЂРёС‡РёРЅС‹, РїРѕР»РЅС‹Р№ С‚РµРєСЃС‚ РєРѕС‚РѕСЂРѕР№ РЅСѓР¶РЅРѕ СѓСЃС‚Р°РЅРѕРІРёС‚СЊ
  * @return object xajaxResponse
  */
 function getAdmEditReasonText( $reasonId ) {
@@ -2622,10 +2622,10 @@ function getAdmEditReasonText( $reasonId ) {
 }
 
 /**
- * Парсит текст причины редактирования для отравки уведомления
+ * РџР°СЂСЃРёС‚ С‚РµРєСЃС‚ РїСЂРёС‡РёРЅС‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РґР»СЏ РѕС‚СЂР°РІРєРё СѓРІРµРґРѕРјР»РµРЅРёСЏ
  * 
- * @param  int $user_id UID пользователя
- * @param  string $adm_edit_text текст причины
+ * @param  int $user_id UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param  string $adm_edit_text С‚РµРєСЃС‚ РїСЂРёС‡РёРЅС‹
  * @return string 
  */
 function _parseReason( $user_id = 0, $adm_edit_text = '' ) {
@@ -2641,9 +2641,9 @@ function _parseReason( $user_id = 0, $adm_edit_text = '' ) {
 }
 
 /**
- * Парсит скрытые поля с дополнительными параметрами
+ * РџР°СЂСЃРёС‚ СЃРєСЂС‹С‚С‹Рµ РїРѕР»СЏ СЃ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё
  * 
- * @param  array $aParams массив с дополнительными параметрами
+ * @param  array $aParams РјР°СЃСЃРёРІ СЃ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё
  * @return string
  */
 function _parseHiddenParams( $aParams = array() ) {
@@ -2659,7 +2659,7 @@ function _parseHiddenParams( $aParams = array() ) {
 }
 
 /**
- * Перемещает проект в вакансии
+ * РџРµСЂРµРјРµС‰Р°РµС‚ РїСЂРѕРµРєС‚ РІ РІР°РєР°РЅСЃРёРё
  * @global type $user_content
  * @param type $sid
  * @return \xajaxResponse
@@ -2678,20 +2678,20 @@ function makeVacancy($stream_id = '', $sid = '') {
 
         $project = new_projects::initData(new_projects::getPrj($rec_id));
         if ($project->isAllowMovedToVacancy()) {
-            // Делаем проект вакансией
+            // Р”РµР»Р°РµРј РїСЂРѕРµРєС‚ РІР°РєР°РЅСЃРёРµР№
             $project->movedToVacancy();
 
             $user_content->markProjectBlocked($stream_id, $rec_id);
             
-            // Отсылаем письмо заказчику о переносе его проекта в раздел вакансии
+            // РћС‚СЃС‹Р»Р°РµРј РїРёСЃСЊРјРѕ Р·Р°РєР°Р·С‡РёРєСѓ Рѕ РїРµСЂРµРЅРѕСЃРµ РµРіРѕ РїСЂРѕРµРєС‚Р° РІ СЂР°Р·РґРµР» РІР°РєР°РЅСЃРёРё
             $mail = new smtp();
-            $mail->subject   = 'Ваш проект перенесен в раздел Вакансии и ожидает публикации';  // заголовок письма
+            $mail->subject   = 'Р’Р°С€ РїСЂРѕРµРєС‚ РїРµСЂРµРЅРµСЃРµРЅ РІ СЂР°Р·РґРµР» Р’Р°РєР°РЅСЃРёРё Рё РѕР¶РёРґР°РµС‚ РїСѓР±Р»РёРєР°С†РёРё';  // Р·Р°РіРѕР»РѕРІРѕРє РїРёСЃСЊРјР°
             $mail->message = Template::render($_SERVER['DOCUMENT_ROOT'] . '/templates/mail/projects/makevacancy.tpl.php',array(
                 'title' => $project->_project['name'],
                 'project_id' => $project->_project['id']
             ));
 
-            $mail->recipient = "{$project->_project['email']} <{$project->_project['email']}>"; // получатель
+            $mail->recipient = "{$project->_project['email']} <{$project->_project['email']}>"; // РїРѕР»СѓС‡Р°С‚РµР»СЊ
             $mail->SmtpMail('text/html');
         }
         

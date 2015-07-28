@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Êîíñüþìåð ðàáîòàåò ñ ñåðâèñîì Azure Blob
+ * ÐšÐ¾Ð½ÑÑŒÑŽÐ¼ÐµÑ€ Ñ€Ð°Ð±Ð¾Ñ‚Ð°ÐµÑ‚ Ñ ÑÐµÑ€Ð²Ð¸ÑÐ¾Ð¼ Azure Blob
  */
 
 ini_set('display_errors',0);
@@ -52,11 +52,11 @@ class PGQDaemonBackup extends PGQConsumer
         $this->loglevel = $config["LOGLEVEL"];
         $this->delay    = $config["DELAY"];
         
-        //ïåðâûé çàïóñê ðîòàöèè
+        //Ð¿ÐµÑ€Ð²Ñ‹Ð¹ Ð·Ð°Ð¿ÑƒÑÐº Ñ€Ð¾Ñ‚Ð°Ñ†Ð¸Ð¸
         $this->logRotate();
         //$this->logfile  = $config["LOGFILE"];
         
-        //Íàñòðîéêè ñåðâèñà
+        //ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ ÑÐµÑ€Ð²Ð¸ÑÐ°
         if(!isset($BACKUP_SERVICE)) {
             $this->log->error('Not found backup config.');
             $this->stop();
@@ -64,7 +64,7 @@ class PGQDaemonBackup extends PGQConsumer
 
         try
         {
-            //ñîçäàåì óêàçàííûé îáüåêò äëÿ ðàáîòû ñ ñåðâèñîì
+            //ÑÐ¾Ð·Ð´Ð°ÐµÐ¼ ÑƒÐºÐ°Ð·Ð°Ð½Ð½Ñ‹Ð¹ Ð¾Ð±ÑŒÐµÐºÑ‚ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ ÑÐµÑ€Ð²Ð¸ÑÐ¾Ð¼
             $this->backupServiceInstance = Backup_Factory::getInstance(
                     $BACKUP_SERVICE['type'], 
                     $BACKUP_SERVICE['options']);
@@ -78,7 +78,7 @@ class PGQDaemonBackup extends PGQConsumer
     //--------------------------------------------------------------------------
     
     /**
-     * Ìåòîä ðîòàöèè ëîãîâ ïî ìåñÿöàì
+     * ÐœÐµÑ‚Ð¾Ð´ Ñ€Ð¾Ñ‚Ð°Ñ†Ð¸Ð¸ Ð»Ð¾Ð³Ð¾Ð² Ð¿Ð¾ Ð¼ÐµÑÑÑ†Ð°Ð¼
      */
     public function logRotate()
     {
@@ -103,7 +103,7 @@ class PGQDaemonBackup extends PGQConsumer
 
     public function process() 
     {
-        //îáÿçàòåëüíûé âûçîâ äëÿ ðîòàöèè ëîãîâ
+        //Ð¾Ð±ÑÐ·Ð°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¹ Ð²Ñ‹Ð·Ð¾Ð² Ð´Ð»Ñ Ñ€Ð¾Ñ‚Ð°Ñ†Ð¸Ð¸ Ð»Ð¾Ð³Ð¾Ð²
         $this->logRotate();
         
         parent::process();
@@ -163,7 +163,7 @@ class PGQDaemonBackup extends PGQConsumer
         catch(Exception $e)
         {
             $this->log->notice($e->getMessage());
-            //Åñëè ïðîáëåìû ñî ñâÿçüþ òî ïðîñèì ïîâòîðèòü
+            //Ð•ÑÐ»Ð¸ Ð¿Ñ€Ð¾Ð±Ð»ÐµÐ¼Ñ‹ ÑÐ¾ ÑÐ²ÑÐ·ÑŒÑŽ Ñ‚Ð¾ Ð¿Ñ€Ð¾ÑÐ¸Ð¼ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÑŒ
             if(in_array($e->getCode(), array(500,503))) {
                 return PGQ_EVENT_RETRY;
             }

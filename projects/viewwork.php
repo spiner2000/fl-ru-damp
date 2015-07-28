@@ -18,7 +18,7 @@ $uid = $user_obj->GetUid($error, $name);
 $proj = array();
 $proj = (array)$user_obj;
 
-// Ïğîåêò.
+// ĞŸÑ€Ğ¾ĞµĞºÑ‚.
 $obj_project = new projects();
 $project = $obj_project->GetPrjCust($pid);
 
@@ -26,7 +26,7 @@ if (!$project || !$user_obj->uid) {
     $fpath = "../"; include("../404.php");
     exit;
 } else {
-    // Ïğåäëîæåíèÿ ïî äàííîìó ïğîåêòó.
+    // ĞŸÑ€ĞµĞ´Ğ»Ğ¾Ğ¶ĞµĞ½Ğ¸Ñ Ğ¿Ğ¾ Ğ´Ğ°Ğ½Ğ½Ğ¾Ğ¼Ñƒ Ğ¿Ñ€Ğ¾ĞµĞºÑ‚Ñƒ.
     $obj_offer = new projects_offers();
     $offer = $obj_offer->GetPrjOffer($pid, $user_obj->uid);
     

@@ -1,6 +1,6 @@
 <div class="b-layout">
 		<div class="b-layout__right b-layout__right_width_72ps b-layout__right_float_right">
-				<h1 class="b-page__title b-page__title_padbot_30">Добро пожаловать на Free-lance.ru</h1>
+				<h1 class="b-page__title b-page__title_padbot_30">Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РЅР° Free-lance.ru</h1>
 		</div>
 
 		
@@ -8,16 +8,16 @@
 		<div class="b-layout__right b-layout__right_width_72ps b-layout__right_float_right">
 			<div class="b-fon b-fon_inline-block b-fon_padbot_20">
 					<div class="b-fon__body b-fon__body_pad_15  b-fon__body_padleft_30 b-fon__body_padright_40 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-					<span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Вы успешно зарегистрированы, и теперь вам доступны все бесплатные функции сайта.
+					<span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Р’С‹ СѓСЃРїРµС€РЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅС‹, Рё С‚РµРїРµСЂСЊ РІР°Рј РґРѕСЃС‚СѓРїРЅС‹ РІСЃРµ Р±РµСЃРїР»Р°С‚РЅС‹Рµ С„СѓРЅРєС†РёРё СЃР°Р№С‚Р°.
 				</div>
 			</div>
 					
-			<div class="b-layout__txt b-layout__txt_fontsize_22">&mdash; Перейти на <a class="b-layout__link" href="/">главную страницу</a></div>
-			<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_30 b-layout__txt_padbot_40">к списку опубликованных проектов</div>
-			<div class="b-layout__txt b-layout__txt_fontsize_22">&mdash; Перейти в <a class="b-layout__link" href="/users/<?= get_login(get_uid(0)) ?>/">профиль</a></div>
-			<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_30 b-layout__txt_padbot_40">и наполнить его профессиональной информацией</div>
-			<div class="b-layout__txt b-layout__txt_fontsize_22">&mdash; Опубликовать <a class="b-layout__link" href="/public/">проект</a></div>
-			<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_30 b-layout__txt_padbot_40">и начать поиск исполнителя самостоятельно</div>
+			<div class="b-layout__txt b-layout__txt_fontsize_22">&mdash; РџРµСЂРµР№С‚Рё РЅР° <a class="b-layout__link" href="/">РіР»Р°РІРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ</a></div>
+			<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_30 b-layout__txt_padbot_40">Рє СЃРїРёСЃРєСѓ РѕРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹С… РїСЂРѕРµРєС‚РѕРІ</div>
+			<div class="b-layout__txt b-layout__txt_fontsize_22">&mdash; РџРµСЂРµР№С‚Рё РІ <a class="b-layout__link" href="/users/<?= get_login(get_uid(0)) ?>/">РїСЂРѕС„РёР»СЊ</a></div>
+			<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_30 b-layout__txt_padbot_40">Рё РЅР°РїРѕР»РЅРёС‚СЊ РµРіРѕ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРµР№</div>
+			<div class="b-layout__txt b-layout__txt_fontsize_22">&mdash; РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ <a class="b-layout__link" href="/public/">РїСЂРѕРµРєС‚</a></div>
+			<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_30 b-layout__txt_padbot_40">Рё РЅР°С‡Р°С‚СЊ РїРѕРёСЃРє РёСЃРїРѕР»РЅРёС‚РµР»СЏ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ</div>
 			
 			
 			

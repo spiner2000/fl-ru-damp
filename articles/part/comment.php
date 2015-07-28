@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Один коммент
+ * РћРґРёРЅ РєРѕРјРјРµРЅС‚
  * 
- * @param array $data Массив данных для коммента
- * @param integer $uid ид пользователя
- * @param boolean $first TRUE- комментарий является первым в ветке.
+ * @param array $data РњР°СЃСЃРёРІ РґР°РЅРЅС‹С… РґР»СЏ РєРѕРјРјРµРЅС‚Р°
+ * @param integer $uid РёРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param boolean $first TRUE- РєРѕРјРјРµРЅС‚Р°СЂРёР№ СЏРІР»СЏРµС‚СЃСЏ РїРµСЂРІС‹Рј РІ РІРµС‚РєРµ.
  */
 function commentHTML($data, $uid, $attaches, $lvt, $wordlength = 45, $has_child = false, $is_hidden = false) {
     global $session;
@@ -27,14 +27,14 @@ function commentHTML($data, $uid, $attaches, $lvt, $wordlength = 45, $has_child 
             <li class="cl-time"><?=date('d.m.Y H:i', strtotime($data['created_time']))?></li>
             <li class="p-edited">
                 <? if($data['modified_id'] && $data['modified_id'] == $data['from_id']) { ?>
-                <img src="/images/ico-e-u.png" alt="Отредактировано пользователем" title="Внесены изменения <?=date('d.m.Y в H:i', strtotime($data['modified_time']))?>" />
+                <img src="/images/ico-e-u.png" alt="РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј" title="Р’РЅРµСЃРµРЅС‹ РёР·РјРµРЅРµРЅРёСЏ <?=date('d.m.Y РІ H:i', strtotime($data['modified_time']))?>" />
                 <? } ?>
                 <? if($data['modified_id'] && $data['modified_id'] != $data['from_id'] ) {
                     $moduser = (hasPermissions('articles')) ? " ({$data['mod_login']} : {$data['mod_uname']} {$data['mod_usurname']})" : "";
                     ?>
                 <img src="/images/ico-e-a.png"
-                         alt="Отредактировано модератором"
-                         title="Отредактировано модератором<?=$moduser?>: <?=date('d.m.Y в H:i', strtotime($data['modified_time']))?>" />
+                         alt="РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј"
+                         title="РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј<?=$moduser?>: <?=date('d.m.Y РІ H:i', strtotime($data['modified_time']))?>" />
                 <? } ?>
             </li>
         </ul>
@@ -72,22 +72,22 @@ function commentHTML($data, $uid, $attaches, $lvt, $wordlength = 45, $has_child 
                     <?= viewattachListNew ($attaches, 'upload') ?>
                 <? } ?>
             <? } else { ?>
-                Комментарий удален <?=$data['deleted_id'] == $data['from_id'] ? 'автором' : 'модератором'?>
+                РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ <?=$data['deleted_id'] == $data['from_id'] ? 'Р°РІС‚РѕСЂРѕРј' : 'РјРѕРґРµСЂР°С‚РѕСЂРѕРј'?>
             <? } ?>
             </div>
             
             <ul class="cl-o">
                 <? if($uid && $data['deleted_id'] === NULL) { ?>
-                    <li class="cl-com first"><a href="javascript:void(0)" onclick="commentAdd(this)">Комментировать</a></li>
+                    <li class="cl-com first"><a href="javascript:void(0)" onclick="commentAdd(this)">РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ</a></li>
                     <? if($uid == $data['from_id'] || hasPermissions('articles')) { ?>
-                        <li class="cl-edit"><a href="javascript:void(0)" onclick="commentEdit(this)">Редактировать</a></li>
-                        <li class="cl-del"><a href="./?task=del-comment&id=<?=$data['id']?>" onclick="return (confirm('Вы уверены?'));">Удалить</a></li>
+                        <li class="cl-edit"><a href="javascript:void(0)" onclick="commentEdit(this)">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></li>
+                        <li class="cl-del"><a href="./?task=del-comment&id=<?=$data['id']?>" onclick="return (confirm('Р’С‹ СѓРІРµСЂРµРЅС‹?'));">РЈРґР°Р»РёС‚СЊ</a></li>
                     <? } ?>
                 <? } elseif(hasPermissions('articles')) { ?>
-                        <li class="cl-del"><a href="./?task=restore-comment&id=<?=$data['id']?>" onclick="return (confirm('Вы уверены?'));">Восстановить</a></li>
+                        <li class="cl-del"><a href="./?task=restore-comment&id=<?=$data['id']?>" onclick="return (confirm('Р’С‹ СѓРІРµСЂРµРЅС‹?'));">Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ</a></li>
                 <? } ?>
                 <? if($has_child) { ?>
-                <li class="last"><a href="" class="cl-thread-toggle"><?=$is_hidden ? 'Развернуть ' : 'Свернуть '?> ветвь</a></li>
+                <li class="last"><a href="" class="cl-thread-toggle"><?=$is_hidden ? 'Р Р°Р·РІРµСЂРЅСѓС‚СЊ ' : 'РЎРІРµСЂРЅСѓС‚СЊ '?> РІРµС‚РІСЊ</a></li>
                 <? } ?>
             </ul>
         </div>

@@ -5,16 +5,16 @@ if(!defined('IN_STDF')) {
 }
 
 /**
- * Представление для виджета TServiceFilter
+ * РџСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ РґР»СЏ РІРёРґР¶РµС‚Р° TServiceFilter
  *
  * @var TServiceFilter $this
  */
 
-/** @var bool $filter_show показывать ли фильтр */
+/** @var bool $filter_show РїРѕРєР°Р·С‹РІР°С‚СЊ Р»Рё С„РёР»СЊС‚СЂ */
 $filter_show = true;
 $validators = '';
 
-/** @var string $category_field_id ID поля категории */
+/** @var string $category_field_id ID РїРѕР»СЏ РєР°С‚РµРіРѕСЂРёРё */
 $category_field_id = 'category_id';
 $category_selector = '';
 $category_value = '';
@@ -34,12 +34,12 @@ elseif ($this->filter->category_group)
 }
 
 
-/** @var array $prices цены */
+/** @var array $prices С†РµРЅС‹ */
 $prices_enabled = true;
 $prices_error = false;
 $prices = $this->getPriceRanges();
 
-/** @var string $location_field_id ID поля местоположения */
+/** @var string $location_field_id ID РїРѕР»СЏ РјРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёСЏ */
 $location_field_id = 'location_id';
 $location_selector = '';
 $location_value = '';
@@ -55,12 +55,12 @@ if ($this->filter->city)
 	$location_value = $this->getCountryTitle();
 }
 
-/** @var array $keyword_enabled ключевые слова */
+/** @var array $keyword_enabled РєР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР° */
 $keyword_enabled = true;
 $keyword_error = false;
 $keywords = $this->filter->keywords;
 
-/** @var int - Цена до */
+/** @var int - Р¦РµРЅР° РґРѕ */
 $price_max = ($this->filter->price_max > 0)?$this->filter->price_max:'';
 
 ?>
@@ -74,17 +74,17 @@ $price_max = ($this->filter->price_max > 0)?$this->filter->price_max:'';
             <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_30 b-layout_margbot_20_ipad">
                <tr class="b-layout__tr">
                   <td class="b-layout__td b-layout__td_padright_10 b-layout__td_valign_bot">
-                      <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5"><?php if(!(get_uid(false) && !is_emp())){  ?>Что вы хотите заказать<?php } else {?>Поиск услуг<?php } ?></div>
+                      <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5"><?php if(!(get_uid(false) && !is_emp())){  ?>Р§С‚Рѕ РІС‹ С…РѕС‚РёС‚Рµ Р·Р°РєР°Р·Р°С‚СЊ<?php } else {?>РџРѕРёСЃРє СѓСЃР»СѓРі<?php } ?></div>
                       <div class="b-combo">
                           <div class="b-combo__input b-combo__input_height_35">
-                              <input tabindex="9" id="keywords" type="text" placeholder="Например, дизайн визитки" value="<?=$keywords?>" class="b-combo__input-text" name="keywords" maxlength="255" />
+                              <input tabindex="9" id="keywords" type="text" placeholder="РќР°РїСЂРёРјРµСЂ, РґРёР·Р°Р№РЅ РІРёР·РёС‚РєРё" value="<?=$keywords?>" class="b-combo__input-text" name="keywords" maxlength="255" />
                           </div>
                       </div>
                   </td>
                   <td class="b-layout__td b-layout__td_padright_10 b-layout__td_width_200 b-layout__td_valign_bot">
                       
                       <?php if(false): ?>
-                      <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">Специализация</div>
+                      <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ</div>
                       <div class="b-combo b-combo_shadow_width_280_ipad b-combo_overflow-x_yes">
                           <div class="
                                  b-combo__input
@@ -95,35 +95,35 @@ $price_max = ($this->filter->price_max > 0)?$this->filter->price_max:'';
                                  b-combo__input_visible_height_200
                                  <?php //b-combo__input_on_load_request_id_gettucategories ?>
                                  b-combo__input_init_tuCategories
-                                 override_value_id_0_0_Все+категории
+                                 override_value_id_0_0_Р’СЃРµ+РєР°С‚РµРіРѕСЂРёРё
                                  <?=$category_selector?>
                                  <?php if (!$category_enabled) { ?>b-combo__input_disabled<?php } ?>
                                  <?php if ($category_error) { ?> b-combo__input_error<?php } ?>
                                  ">
-                              <input tabindex="1" data-validators="<?=$validators?>" id="<?=$category_field_id?>" class="b-combo__input-text" name="<?=$category_field_id?>" type="text" size="80" value="<?=$category_value?$category_value:'Все категории'?>" />
+                              <input tabindex="1" data-validators="<?=$validators?>" id="<?=$category_field_id?>" class="b-combo__input-text" name="<?=$category_field_id?>" type="text" size="80" value="<?=$category_value?$category_value:'Р’СЃРµ РєР°С‚РµРіРѕСЂРёРё'?>" />
                               <label for="<?=$category_field_id?>" class="b-combo__label"><?=$category_value?></label>
                               <span class="b-combo__arrow"></span>
                           </div>
                       </div>
                       <?php else: ?>
-                      <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">Цена до (руб.)</div>
+                      <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">Р¦РµРЅР° РґРѕ (СЂСѓР±.)</div>
                       <div class="b-combo">
                           <div class="b-combo__input b-combo__input_height_35">
-                              <input tabindex="10" id="price_max" type="text" pattern="\d*" title="Введите сумму в рублях" placeholder="Например, 1000" value="<?=$price_max?>" class="b-combo__input-text" name="price_max" maxlength="7" />
+                              <input tabindex="10" id="price_max" type="text" pattern="\d*" title="Р’РІРµРґРёС‚Рµ СЃСѓРјРјСѓ РІ СЂСѓР±Р»СЏС…" placeholder="РќР°РїСЂРёРјРµСЂ, 1000" value="<?=$price_max?>" class="b-combo__input-text" name="price_max" maxlength="7" />
                           </div>
                       </div>                      
                       <?php endif; ?>
                       
                   </td>
                   <td class="b-layout__td b-layout__td_width_120 b-layout__td_valign_bot">
-                      <button class="b-button b-button_flat b-button_flat_orange b-button_padlr_10 b-button_block" type="submit">Найти услугу</button>
+                      <button class="b-button b-button_flat b-button_flat_orange b-button_padlr_10 b-button_block" type="submit">РќР°Р№С‚Рё СѓСЃР»СѓРіСѓ</button>
                   </td>
                   <?php if(!is_emp()){ ?>
                   <td class="b-layout__td b-layout__td_width_140 b-layout__td_padleft_10 b-layout__td_valign_bot b-layout__td_pad_null_ipad">
 				      <?php if(!get_uid(false)){  ?>
-                          <a class="b-button b-button_flat b-button_flat_green b-button_padlr_10 b-button_nowrap b-button_block" href="/registration/?user_action=new_tu">Добавить услугу</a>
+                          <a class="b-button b-button_flat b-button_flat_green b-button_padlr_10 b-button_nowrap b-button_block" href="/registration/?user_action=new_tu">Р”РѕР±Р°РІРёС‚СЊ СѓСЃР»СѓРіСѓ</a>
 					  <?php } else {?>
-                          <a href="<?php echo sprintf(tservices_helper::url('new'),$_SESSION['login']); ?>" class="b-button b-button_flat b-button_flat_green b-button_padlr_10 b-button_nowrap b-button_block" onClick="yaCounter6051055.reachGoal('add_new_tu');">Добавить услугу</a>
+                          <a href="<?php echo sprintf(tservices_helper::url('new'),$_SESSION['login']); ?>" class="b-button b-button_flat b-button_flat_green b-button_padlr_10 b-button_nowrap b-button_block" onClick="yaCounter6051055.reachGoal('add_new_tu');">Р”РѕР±Р°РІРёС‚СЊ СѓСЃР»СѓРіСѓ</a>
 					  <?php } ?>
                   </td>
 				  <?php } ?>
@@ -133,7 +133,7 @@ $price_max = ($this->filter->price_max > 0)?$this->filter->price_max:'';
 </div>
 <?php  /*
             <div class="b-frm-filtr__item"> 	
-                    <div class="b-frm-fltr__title">Цена</div> 	
+                    <div class="b-frm-fltr__title">Р¦РµРЅР°</div> 	
                     <?php foreach($prices as $i => $price) { ?> 	
                             <div class="b-check b-check_padbot_10"> 	
                                     <input tabindex="<?php echo $i+1 ?>" type="checkbox" name="<?=$price['id']?>" value="<?=$price['value']?>" class="b-check__input" id="<?=$price['id']?>" <?= ($price['checked']) ? 'checked="checked"': '' ?>> 	
@@ -158,13 +158,13 @@ $price_max = ($this->filter->price_max > 0)?$this->filter->price_max:'';
 							b-combo__input_arrow_yes
 							b-combo__input_init_citiesList
 							b-combo__input_on_click_request_id_getcities
-							override_value_id_0_0_Все+страны
-							override_value_id_1_0_Все+города
+							override_value_id_0_0_Р’СЃРµ+СЃС‚СЂР°РЅС‹
+							override_value_id_1_0_Р’СЃРµ+РіРѕСЂРѕРґР°
 							<?=$location_selector?>
 							<?php if (!$location_enabled) { ?>b-combo__input_disabled<?php } ?>
 							<?php if ($location_error) { ?> b-combo__input_error<?php } ?>
 							">
-						<input tabindex="8" id="<?=$location_field_id?>" class="b-combo__input-text" name="<?=$location_field_id?>" type="text" size="80" value="<?=$location_value?$location_value:'Все страны'?>" />
+						<input tabindex="8" id="<?=$location_field_id?>" class="b-combo__input-text" name="<?=$location_field_id?>" type="text" size="80" value="<?=$location_value?$location_value:'Р’СЃРµ СЃС‚СЂР°РЅС‹'?>" />
 						<label class="b-combo__label" for="<?=$location_field_id?>"></label>
 						<span class="b-combo__arrow"></span>
 					  </div>
@@ -175,14 +175,14 @@ $price_max = ($this->filter->price_max > 0)?$this->filter->price_max:'';
 			<div class="b-frm-filtr__item">
 				<div class="b-combo">
 					<div class="b-combo__input">
-						<input tabindex="9" id="keywords" type="text" placeholder="Ключевые слова" value="<?=$keywords?>" class="b-combo__input-text" name="keywords" maxlength="255" />
+						<input tabindex="9" id="keywords" type="text" placeholder="РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°" value="<?=$keywords?>" class="b-combo__input-text" name="keywords" maxlength="255" />
 					</div>
 				</div>
 			</div>
                     
 			<div class="b-buttons">
-				<button onclick="$('frm').submit();" class="b-button b-button_flat b-button_flat_green" type="submit">Применить</button>&nbsp;&nbsp;
-				<a onclick="TServices_Catalog.clearFilterForm(this);" class="b-buttons__link b-buttons__link_margleft_10 b-buttons__link_dot_0f71c8">Очистить</a>
+				<button onclick="$('frm').submit();" class="b-button b-button_flat b-button_flat_green" type="submit">РџСЂРёРјРµРЅРёС‚СЊ</button>&nbsp;&nbsp;
+				<a onclick="TServices_Catalog.clearFilterForm(this);" class="b-buttons__link b-buttons__link_margleft_10 b-buttons__link_dot_0f71c8">РћС‡РёСЃС‚РёС‚СЊ</a>
 			</div>
 		</div> <!-- / div#filtrToggle -->
 	</form>

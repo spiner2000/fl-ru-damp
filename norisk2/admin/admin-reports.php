@@ -16,13 +16,13 @@ var SBR; window.addEvent('domready', function() { SBR = new Sbr('adminFrm'); } )
                 <div>
                     <div class="form-block first">
                         <div class="form-el">
-                            <label class="form-label">Ïåðèîä</label>
+                            <label class="form-label">ÐŸÐµÑ€Ð¸Ð¾Ð´</label>
                             <span class="form-input">
                                 <? include($_SERVER['DOCUMENT_ROOT'].'/norisk2/tpl.filter-period.php') ?>
                             </span>
                         </div>
                         <div class="form-el">
-                            <label class="form-label">Âàëþòà</label>
+                            <label class="form-label">Ð’Ð°Ð»ÑŽÑ‚Ð°</label>
                             <ul class="form-input c">
                                 <? foreach($EXRATE_CODES as $ex_code=>$ex) { if( !($ex_code==exrates::BANK||$ex_code==exrates::YM||$ex_code==exrates::WMR) ) continue; ?>
                                 <li>
@@ -35,10 +35,10 @@ var SBR; window.addEvent('domready', function() { SBR = new Sbr('adminFrm'); } )
                     </div>
                     <div class="form-block last">
                         <div class="form-el form-btn">
-                            <input type="submit" class="i-btn" value="Ïîñòðîèòü âûãðóçêè" />
-                            <input type="submit" name="ndfl" class="i-btn" value="Âûãðóçèòü ÍÄÔË" />
-                            <input type="submit" name="act_rev" class="i-btn" value="Àêò ñâåðêè" />
-                            <input type="submit" name="yd_report" class="i-btn" value="Âûïëàòû ßÄ" />
+                            <input type="submit" class="i-btn" value="ÐŸÐ¾ÑÑ‚Ñ€Ð¾Ð¸Ñ‚ÑŒ Ð²Ñ‹Ð³Ñ€ÑƒÐ·ÐºÐ¸" />
+                            <input type="submit" name="ndfl" class="i-btn" value="Ð’Ñ‹Ð³Ñ€ÑƒÐ·Ð¸Ñ‚ÑŒ ÐÐ”Ð¤Ð›" />
+                            <input type="submit" name="act_rev" class="i-btn" value="ÐÐºÑ‚ ÑÐ²ÐµÑ€ÐºÐ¸" />
+                            <input type="submit" name="yd_report" class="i-btn" value="Ð’Ñ‹Ð¿Ð»Ð°Ñ‚Ñ‹ Ð¯Ð”" />
                         </div>
                     </div>
                     <input type="hidden" name="site" value="<?=$site?>" />

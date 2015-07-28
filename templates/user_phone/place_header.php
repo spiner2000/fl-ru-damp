@@ -4,8 +4,8 @@
 			<div class="l-header-inside">
 				<section class="l-header-section l-header-second-section">
 					<div class="b-general-notification">
-						<a href="javascript:void(0);" onclick="User_Phone.showPopup();return false;" class="b-general-notification-link b-general-notification-employee-link">Привяжите телефон</a> 
-						к аккаунту и получайте SMS-уведомления о предложенных вам заказах и проектах
+						<a href="javascript:void(0);" onclick="User_Phone.showPopup();return false;" class="b-general-notification-link b-general-notification-employee-link">РџСЂРёРІСЏР¶РёС‚Рµ С‚РµР»РµС„РѕРЅ</a> 
+						Рє Р°РєРєР°СѓРЅС‚Сѓ Рё РїРѕР»СѓС‡Р°Р№С‚Рµ SMS-СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РїСЂРµРґР»РѕР¶РµРЅРЅС‹С… РІР°Рј Р·Р°РєР°Р·Р°С… Рё РїСЂРѕРµРєС‚Р°С…
 					</div>
 				</section> 
 			</div>

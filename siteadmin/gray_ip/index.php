@@ -1,6 +1,6 @@
 <?php
 /**
- * Ñåðûé ñïèñîê IP
+ * Ð¡ÐµÑ€Ñ‹Ð¹ ÑÐ¿Ð¸ÑÐ¾Ðº IP
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */

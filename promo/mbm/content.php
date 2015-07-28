@@ -2,11 +2,11 @@
                <tr class="b-layout__tr">
                   <td class="b-layout__td b-layout__td_width_33ps">
                      <a class="b-layout__link" href="http://www.mbm.ru/" target="_blank"><img class="b-pic" src="<?=WDCPREFIX?>/images/mdm/1.png" width="58" height="62"></a>
-                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_10">ГБУ<br>МАЛЫЙ БИЗНЕС<br><span class="b-layout__bold">МОСКВЫ</span></div>
+                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_10">Р“Р‘РЈ<br>РњРђР›Р«Р™ Р‘РР—РќР•РЎ<br><span class="b-layout__bold">РњРћРЎРљР’Р«</span></div>
                   </td>
                   <td class="b-layout__td b-layout__td_padleft_20 b-layout__td_padright_20">
                      <a class="b-layout__link" href="http://dnpp.mos.ru/" target="_blank"><img class="b-pic" src="<?=WDCPREFIX?>/images/mdm/2.png" width="59" height="62"></a>
-                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_10 b-layout__txt_fontsize_11">ДЕПАРТАМЕНТ НАУКИ,<br>ПРОМЫШЛЕННОЙ ПОЛИТИКИ<br>И ПРЕДПРИНИМАТЕЛЬСТВА<br><span class="b-layout__bold">ГОРОДА МОСКВЫ</span></div>
+                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_10 b-layout__txt_fontsize_11">Р”Р•РџРђР РўРђРњР•РќРў РќРђРЈРљР,<br>РџР РћРњР«РЁР›Р•РќРќРћР™ РџРћР›РРўРРљР<br>Р РџР Р•Р”РџР РРќРРњРђРўР•Р›Р¬РЎРўР’Рђ<br><span class="b-layout__bold">Р“РћР РћР”Рђ РњРћРЎРљР’Р«</span></div>
                   </td>
                   <td class="b-layout__td b-layout__td_width_33ps">
                      <div class="b-layout b-layout_float_right">
@@ -19,27 +19,27 @@
             
             <img class="b-pic b-pic_center b-layout_margbot_20" src="<?=WDCPREFIX?>/images/mdm/fon.png" width="898" height="439">
 
-            <h1 class="b-layout__title b-layout__title_center b-layout__txt_color_f5921d b-layout__title_padbot_30">ПРОГРАММЫ ДЛЯ ФРИЛАНСЕРОВ</h1>
+            <h1 class="b-layout__title b-layout__title_center b-layout__txt_color_f5921d b-layout__title_padbot_30">РџР РћР“Р РђРњРњР« Р”Р›РЇ Р¤Р РР›РђРќРЎР•Р РћР’</h1>
 
             <table class="b-layout__table b-layout__table_width_full">
                <tr class="b-layout__tr">
                   <td class="b-layout__td b-layout__td_width_50ps b-layout__td_padbot_30">
                      <a href="#a1" class="b-layout__link"><img class="b-pic b-pic_valign_mid" src="<?=WDCPREFIX?>/images/mdm/p1.png" width="97" height="98"></a>
-                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_20 b-layout__txt_fontsize_16 b-layout__txt_valign_middle"><a href="#a1" class="b-layout__link b-layout__link_color_f5921d">Бесплатное<br>многопрофильное обучение</a></div>
+                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_20 b-layout__txt_fontsize_16 b-layout__txt_valign_middle"><a href="#a1" class="b-layout__link b-layout__link_color_f5921d">Р‘РµСЃРїР»Р°С‚РЅРѕРµ<br>РјРЅРѕРіРѕРїСЂРѕС„РёР»СЊРЅРѕРµ РѕР±СѓС‡РµРЅРёРµ</a></div>
                   </td>
                   <td class="b-layout__td b-layout__td_padleft_20 b-layout__td_padbot_30">
                      <a href="#a2" class="b-layout__link"><img class="b-pic b-pic_valign_mid" src="<?=WDCPREFIX?>/images/mdm/p2.png" width="97" height="97"></a>
-                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_20 b-layout__txt_color_f5921d b-layout__txt_fontsize_16 b-layout__txt_valign_middle"><a href="#a2" class="b-layout__link b-layout__link_color_f5921d">Поддержка и сопровождение<br>в получении госзаказа</a></div>
+                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_20 b-layout__txt_color_f5921d b-layout__txt_fontsize_16 b-layout__txt_valign_middle"><a href="#a2" class="b-layout__link b-layout__link_color_f5921d">РџРѕРґРґРµСЂР¶РєР° Рё СЃРѕРїСЂРѕРІРѕР¶РґРµРЅРёРµ<br>РІ РїРѕР»СѓС‡РµРЅРёРё РіРѕСЃР·Р°РєР°Р·Р°</a></div>
                   </td>
                </tr>
                <tr class="b-layout__tr">
                   <td class="b-layout__td b-layout__td_width_50ps b-layout__td_padbot_40">
                      <a href="#a3" class="b-layout__link"><img class="b-pic b-pic_valign_mid" src="<?=WDCPREFIX?>/images/mdm/p3.png" width="97" height="98"></a>
-                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_20 b-layout__txt_color_f5921d b-layout__txt_fontsize_16 b-layout__txt_valign_middle"><a href="#a3" class="b-layout__link b-layout__link_color_f5921d">Бесплатные коворкинги</a></div>
+                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_20 b-layout__txt_color_f5921d b-layout__txt_fontsize_16 b-layout__txt_valign_middle"><a href="#a3" class="b-layout__link b-layout__link_color_f5921d">Р‘РµСЃРїР»Р°С‚РЅС‹Рµ РєРѕРІРѕСЂРєРёРЅРіРё</a></div>
                   </td>
                   <td class="b-layout__td b-layout__td_padleft_20 b-layout__td_padbot_40">
                      <a href="#a4" class="b-layout__link"><img class="b-pic b-pic_valign_mid" src="<?=WDCPREFIX?>/images/mdm/p4.png" width="97" height="97"></a>
-                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_20 b-layout__txt_color_f5921d b-layout__txt_fontsize_16 b-layout__txt_valign_middle"><a href="#a4" class="b-layout__link b-layout__link_color_f5921d">Бесплатные<br>юридические консультации</a></div>
+                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_20 b-layout__txt_color_f5921d b-layout__txt_fontsize_16 b-layout__txt_valign_middle"><a href="#a4" class="b-layout__link b-layout__link_color_f5921d">Р‘РµСЃРїР»Р°С‚РЅС‹Рµ<br>СЋСЂРёРґРёС‡РµСЃРєРёРµ РєРѕРЅСЃСѓР»СЊС‚Р°С†РёРё</a></div>
                   </td>
                </tr>
             </table>
@@ -47,12 +47,12 @@
             <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_30">
                <tr class="b-layout__tr">
                   <td class="b-layout__td b-layout__td_padbot_10 b-layout__td_width_125"></td>
-                  <td class="b-layout__td b-layout__td_padbot_10"><h2 class="b-layout__title b-layout__txt_color_f5921d">КТО ПРЕДОСТАВЛЯЕТ?</h2></td>
+                  <td class="b-layout__td b-layout__td_padbot_10"><h2 class="b-layout__title b-layout__txt_color_f5921d">РљРўРћ РџР Р•Р”РћРЎРўРђР’Р›РЇР•Рў?</h2></td>
                </tr>
                <tr class="b-layout__tr">
                   <td class="b-layout__td b-layout__td_padbot_30 b-layout__td_width_125 b-layout__td_center"><a class="b-layout__link b-layout__link_color_f5921d" target="_blank" href="http://www.mbm.ru/"><img class="b-pic" src="<?=WDCPREFIX?>/images/mdm/3.png" width="89" height="95"></a></td>
                   <td class="b-layout__td b-layout__td_padbot_30 b-layout__td_valign_mid b-layout__td_padright_20">
-                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_color_f5921d b-layout__txt_fontsize_16">ГБУ &laquo;Малый бизнес Москвы&raquo; при содействии Правительства Москвы, а также «Департамента науки, промышленной политики и предпринимательства».<br>Деятельность ГБУ МБМ направлена на улучшение привлекательности города Москвы для ведения бизнеса, увеличение доходов компаний, рост налоговых поступлений от их деятельности, а также повышение количества создаваемых рабочих мест. <a class="b-layout__link b-layout__link_color_f5921d" href="http://www.mbm.ru/about/" target="_blank">Подробнее</a>.</div>
+                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_color_f5921d b-layout__txt_fontsize_16">Р“Р‘РЈ &laquo;РњР°Р»С‹Р№ Р±РёР·РЅРµСЃ РњРѕСЃРєРІС‹&raquo; РїСЂРё СЃРѕРґРµР№СЃС‚РІРёРё РџСЂР°РІРёС‚РµР»СЊСЃС‚РІР° РњРѕСЃРєРІС‹, Р° С‚Р°РєР¶Рµ В«Р”РµРїР°СЂС‚Р°РјРµРЅС‚Р° РЅР°СѓРєРё, РїСЂРѕРјС‹С€Р»РµРЅРЅРѕР№ РїРѕР»РёС‚РёРєРё Рё РїСЂРµРґРїСЂРёРЅРёРјР°С‚РµР»СЊСЃС‚РІР°В».<br>Р”РµСЏС‚РµР»СЊРЅРѕСЃС‚СЊ Р“Р‘РЈ РњР‘Рњ РЅР°РїСЂР°РІР»РµРЅР° РЅР° СѓР»СѓС‡С€РµРЅРёРµ РїСЂРёРІР»РµРєР°С‚РµР»СЊРЅРѕСЃС‚Рё РіРѕСЂРѕРґР° РњРѕСЃРєРІС‹ РґР»СЏ РІРµРґРµРЅРёСЏ Р±РёР·РЅРµСЃР°, СѓРІРµР»РёС‡РµРЅРёРµ РґРѕС…РѕРґРѕРІ РєРѕРјРїР°РЅРёР№, СЂРѕСЃС‚ РЅР°Р»РѕРіРѕРІС‹С… РїРѕСЃС‚СѓРїР»РµРЅРёР№ РѕС‚ РёС… РґРµСЏС‚РµР»СЊРЅРѕСЃС‚Рё, Р° С‚Р°РєР¶Рµ РїРѕРІС‹С€РµРЅРёРµ РєРѕР»РёС‡РµСЃС‚РІР° СЃРѕР·РґР°РІР°РµРјС‹С… СЂР°Р±РѕС‡РёС… РјРµСЃС‚. <a class="b-layout__link b-layout__link_color_f5921d" href="http://www.mbm.ru/about/" target="_blank">РџРѕРґСЂРѕР±РЅРµРµ</a>.</div>
                   </td>
                </tr>
             </table>
@@ -61,12 +61,12 @@
             <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_30">
                <tr class="b-layout__tr">
                   <td class="b-layout__td b-layout__td_width_125"></td>
-                  <td class="b-layout__td"><h2 class="b-layout__title b-layout__txt_color_fff">ПРОГРАММЫ ОБУЧЕНИЯ</h2></td>
+                  <td class="b-layout__td"><h2 class="b-layout__title b-layout__txt_color_fff">РџР РћР“Р РђРњРњР« РћР‘РЈР§Р•РќРРЇ</h2></td>
                </tr>
                <tr class="b-layout__tr">
                   <td class="b-layout__td b-layout__td_padbot_30 b-layout__td_width_125 b-layout__td_center"><img class="b-pic" src="<?=WDCPREFIX?>/images/mdm/p5.png" width="97" height="97"></td>
                   <td class="b-layout__td b-layout__td_padbot_30 b-layout__td_valign_mid b-layout__td_padright_20">
-                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_color_fff b-layout__txt_fontsize_16">Программы обучения рассчитаны на начинающих и опытных предпринимателей, а также  фрилансеров, желающих расширить свои знания в выбранной области, повысить квалификацию или обзавестись полезными контактами в профессиональной среде. С программами обучения можно ознакомиться <a class="b-layout__link b-layout__link_color_fff" href="http://www.mbm.ru/education/learning/" target="_blank">здесь</a>. Также возможно и <a class="b-layout__link b-layout__link_color_fff" href="http://www.mbm.ru/education/mediateka/" target="_blank">on-line обучение</a>.</div>
+                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_color_fff b-layout__txt_fontsize_16">РџСЂРѕРіСЂР°РјРјС‹ РѕР±СѓС‡РµРЅРёСЏ СЂР°СЃСЃС‡РёС‚Р°РЅС‹ РЅР° РЅР°С‡РёРЅР°СЋС‰РёС… Рё РѕРїС‹С‚РЅС‹С… РїСЂРµРґРїСЂРёРЅРёРјР°С‚РµР»РµР№, Р° С‚Р°РєР¶Рµ  С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, Р¶РµР»Р°СЋС‰РёС… СЂР°СЃС€РёСЂРёС‚СЊ СЃРІРѕРё Р·РЅР°РЅРёСЏ РІ РІС‹Р±СЂР°РЅРЅРѕР№ РѕР±Р»Р°СЃС‚Рё, РїРѕРІС‹СЃРёС‚СЊ РєРІР°Р»РёС„РёРєР°С†РёСЋ РёР»Рё РѕР±Р·Р°РІРµСЃС‚РёСЃСЊ РїРѕР»РµР·РЅС‹РјРё РєРѕРЅС‚Р°РєС‚Р°РјРё РІ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅРѕР№ СЃСЂРµРґРµ. РЎ РїСЂРѕРіСЂР°РјРјР°РјРё РѕР±СѓС‡РµРЅРёСЏ РјРѕР¶РЅРѕ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ <a class="b-layout__link b-layout__link_color_fff" href="http://www.mbm.ru/education/learning/" target="_blank">Р·РґРµСЃСЊ</a>. РўР°РєР¶Рµ РІРѕР·РјРѕР¶РЅРѕ Рё <a class="b-layout__link b-layout__link_color_fff" href="http://www.mbm.ru/education/mediateka/" target="_blank">on-line РѕР±СѓС‡РµРЅРёРµ</a>.</div>
                   </td>
                </tr>
             </table>
@@ -75,12 +75,12 @@
             <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_30">
                <tr class="b-layout__tr">
                   <td class="b-layout__td b-layout__td_padbot_10 b-layout__td_width_125"></td>
-                  <td class="b-layout__td b-layout__td_padbot_10"><h2 class="b-layout__title b-layout__txt_color_f5921d">КОВОРКИНГИ</h2></td>
+                  <td class="b-layout__td b-layout__td_padbot_10"><h2 class="b-layout__title b-layout__txt_color_f5921d">РљРћР’РћР РљРРќР“Р</h2></td>
                </tr>
                <tr class="b-layout__tr">
                   <td class="b-layout__td b-layout__td_padbot_30 b-layout__td_width_125 b-layout__td_center"><img class="b-pic" src="<?=WDCPREFIX?>/images/mdm/p3.png" width="97" height="98"></td>
                   <td class="b-layout__td b-layout__td_padbot_30 b-layout__td_valign_mid b-layout__td_padright_20">
-                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_color_f5921d b-layout__txt_fontsize_16">Коворкинг &mdash; это специальное пространство, созданное для тех, кто не хочет работать ни в офисе, ни дома. Помимо комфортного места для работы, в коворкинге можно найти единомышленников, обменяться опытом и развить свои идеи. <a class="b-layout__link b-layout__link_color_f5921d" href="http://www.mbm.ru/room/beginner/coworkingvao/" target="_blank">Коворкинги ГБУ "МБМ"</a>. Специально для фрилансеров сайта FL.ru в каждом из коворкингов зарезервированы бесплатные рабочие места.</div>
+                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_color_f5921d b-layout__txt_fontsize_16">РљРѕРІРѕСЂРєРёРЅРі &mdash; СЌС‚Рѕ СЃРїРµС†РёР°Р»СЊРЅРѕРµ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІРѕ, СЃРѕР·РґР°РЅРЅРѕРµ РґР»СЏ С‚РµС…, РєС‚Рѕ РЅРµ С…РѕС‡РµС‚ СЂР°Р±РѕС‚Р°С‚СЊ РЅРё РІ РѕС„РёСЃРµ, РЅРё РґРѕРјР°. РџРѕРјРёРјРѕ РєРѕРјС„РѕСЂС‚РЅРѕРіРѕ РјРµСЃС‚Р° РґР»СЏ СЂР°Р±РѕС‚С‹, РІ РєРѕРІРѕСЂРєРёРЅРіРµ РјРѕР¶РЅРѕ РЅР°Р№С‚Рё РµРґРёРЅРѕРјС‹С€Р»РµРЅРЅРёРєРѕРІ, РѕР±РјРµРЅСЏС‚СЊСЃСЏ РѕРїС‹С‚РѕРј Рё СЂР°Р·РІРёС‚СЊ СЃРІРѕРё РёРґРµРё. <a class="b-layout__link b-layout__link_color_f5921d" href="http://www.mbm.ru/room/beginner/coworkingvao/" target="_blank">РљРѕРІРѕСЂРєРёРЅРіРё Р“Р‘РЈ "РњР‘Рњ"</a>. РЎРїРµС†РёР°Р»СЊРЅРѕ РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ СЃР°Р№С‚Р° FL.ru РІ РєР°Р¶РґРѕРј РёР· РєРѕРІРѕСЂРєРёРЅРіРѕРІ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹ Р±РµСЃРїР»Р°С‚РЅС‹Рµ СЂР°Р±РѕС‡РёРµ РјРµСЃС‚Р°.</div>
                   </td>
                </tr>
             </table>
@@ -89,12 +89,12 @@
             <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_30">
                <tr class="b-layout__tr">
                   <td class="b-layout__td b-layout__td_padbot_10 b-layout__td_width_125"></td>
-                  <td class="b-layout__td b-layout__td_padbot_10"><h2 class="b-layout__title b-layout__txt_color_f5921d">ПОДДЕРЖКА И СОПРОВОЖДЕНИЕ В ПОЛУЧЕНИИ ГОСЗАКАЗА:</h2></td>
+                  <td class="b-layout__td b-layout__td_padbot_10"><h2 class="b-layout__title b-layout__txt_color_f5921d">РџРћР”Р”Р•Р Р–РљРђ Р РЎРћРџР РћР’РћР–Р”Р•РќРР• Р’ РџРћР›РЈР§Р•РќРР Р“РћРЎР—РђРљРђР—Рђ:</h2></td>
                </tr>
                <tr class="b-layout__tr">
                   <td class="b-layout__td b-layout__td_padbot_30 b-layout__td_width_125 b-layout__td_center"><img class="b-pic" src="<?=WDCPREFIX?>/images/mdm/p2.png" width="97" height="97"></td>
                   <td class="b-layout__td b-layout__td_padbot_30 b-layout__td_valign_mid b-layout__td_padright_20">
-                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_color_f5921d b-layout__txt_fontsize_16">В Москве сформирован <a class="b-layout__link b-layout__link_color_f5921d" href="http://www.mbm.ru/government-orders/beginner/single_point/" target="_blank">Единый центр госзаказа</a>, в рамках которого представители малого и среднего предпринимательства, а также фрилансеры могут получить бесплатное информационное сопровождение.</div>
+                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_color_f5921d b-layout__txt_fontsize_16">Р’ РњРѕСЃРєРІРµ СЃС„РѕСЂРјРёСЂРѕРІР°РЅ <a class="b-layout__link b-layout__link_color_f5921d" href="http://www.mbm.ru/government-orders/beginner/single_point/" target="_blank">Р•РґРёРЅС‹Р№ С†РµРЅС‚СЂ РіРѕСЃР·Р°РєР°Р·Р°</a>, РІ СЂР°РјРєР°С… РєРѕС‚РѕСЂРѕРіРѕ РїСЂРµРґСЃС‚Р°РІРёС‚РµР»Рё РјР°Р»РѕРіРѕ Рё СЃСЂРµРґРЅРµРіРѕ РїСЂРµРґРїСЂРёРЅРёРјР°С‚РµР»СЊСЃС‚РІР°, Р° С‚Р°РєР¶Рµ С„СЂРёР»Р°РЅСЃРµСЂС‹ РјРѕРіСѓС‚ РїРѕР»СѓС‡РёС‚СЊ Р±РµСЃРїР»Р°С‚РЅРѕРµ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРµ СЃРѕРїСЂРѕРІРѕР¶РґРµРЅРёРµ.</div>
                   </td>
                </tr>
             </table>
@@ -103,12 +103,12 @@
             <table class="b-layout__table b-layout__table_width_full">
                <tr class="b-layout__tr">
                   <td class="b-layout__td b-layout__td_width_125"></td>
-                  <td class="b-layout__td"><h2 class="b-layout__title b-layout__txt_color_fff">БЕСПЛАТНЫЕ ЮРИДИЧЕСКИЕ КОНСУЛЬТАЦИИ:</h2></td>
+                  <td class="b-layout__td"><h2 class="b-layout__title b-layout__txt_color_fff">Р‘Р•РЎРџР›РђРўРќР«Р• Р®Р РР”РР§Р•РЎРљРР• РљРћРќРЎРЈР›Р¬РўРђР¦РР:</h2></td>
                </tr>
                <tr class="b-layout__tr">
                   <td class="b-layout__td b-layout__td_padbot_30 b-layout__td_width_125 b-layout__td_center"><img class="b-pic" src="<?=WDCPREFIX?>/images/mdm/p6.png" width="97" height="97"></td>
                   <td class="b-layout__td b-layout__td_padbot_30 b-layout__td_valign_mid  b-layout__td_padright_20">
-                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_color_fff b-layout__txt_fontsize_16">Предлагаются бесплатные <a class="b-layout__link b-layout__link_color_fff" href="http://www.mbm.ru/government-support/beginner/legal-support/" target="_blank">юридические консультации</a> по бизнесу от юристов ГБУ "МБМ", включая консультации по вопросам организации развития бизнеса, текущей хозяйственной деятельности, экспортных сделок и т.п.</div>
+                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_color_fff b-layout__txt_fontsize_16">РџСЂРµРґР»Р°РіР°СЋС‚СЃСЏ Р±РµСЃРїР»Р°С‚РЅС‹Рµ <a class="b-layout__link b-layout__link_color_fff" href="http://www.mbm.ru/government-support/beginner/legal-support/" target="_blank">СЋСЂРёРґРёС‡РµСЃРєРёРµ РєРѕРЅСЃСѓР»СЊС‚Р°С†РёРё</a> РїРѕ Р±РёР·РЅРµСЃСѓ РѕС‚ СЋСЂРёСЃС‚РѕРІ Р“Р‘РЈ "РњР‘Рњ", РІРєР»СЋС‡Р°СЏ РєРѕРЅСЃСѓР»СЊС‚Р°С†РёРё РїРѕ РІРѕРїСЂРѕСЃР°Рј РѕСЂРіР°РЅРёР·Р°С†РёРё СЂР°Р·РІРёС‚РёСЏ Р±РёР·РЅРµСЃР°, С‚РµРєСѓС‰РµР№ С…РѕР·СЏР№СЃС‚РІРµРЅРЅРѕР№ РґРµСЏС‚РµР»СЊРЅРѕСЃС‚Рё, СЌРєСЃРїРѕСЂС‚РЅС‹С… СЃРґРµР»РѕРє Рё С‚.Рї.</div>
                   </td>
                </tr>
             </table>

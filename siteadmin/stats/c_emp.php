@@ -51,7 +51,7 @@ $Test->drawCubicCurve($DataSet->GetData(),$DataSet->GetDataDescription());
 
 // Finish the graph
 $Test->setFontProperties("Fonts/tahoma.ttf",10);
-$Test->drawTitle(50,22,"Работадатели",50,50,50,585);
+$Test->drawTitle(50,22,"Р Р°Р±РѕС‚Р°РґР°С‚РµР»Рё",50,50,50,585);
 $Test->Stroke();
 ?>
 

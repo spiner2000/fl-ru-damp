@@ -1,10 +1,10 @@
 <?php
 /**
- * Шаблон попап формы быстрого редактирования Платные места
+ * РЁР°Р±Р»РѕРЅ РїРѕРїР°Рї С„РѕСЂРјС‹ Р±С‹СЃС‚СЂРѕРіРѕ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РџР»Р°С‚РЅС‹Рµ РјРµСЃС‚Р°
  * @author Max 'BlackHawk' Yastrembovich
  */
 if ( !defined('IN_STDF') ) { 
-    header("HTTP/1.0 404 Not Found"); // ибо нефиг
+    header("HTTP/1.0 404 Not Found"); // РёР±Рѕ РЅРµС„РёРі
     exit();
 }
 
@@ -20,18 +20,18 @@ $sHref = '';
 
 <div class="b-menu b-menu_rubric b-menu_padbot_10">
     <ul class="b-menu__list">
-        <li id="adm_edit_tab_i1" class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">Основное</span></span></li>
-        <li id="adm_edit_tab_i2" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(2); return false;">Причина редактирования</a></li>
+        <li id="adm_edit_tab_i1" class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">РћСЃРЅРѕРІРЅРѕРµ</span></span></li>
+        <li id="adm_edit_tab_i2" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(2); return false;">РџСЂРёС‡РёРЅР° СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ</a></li>
     </ul>
 </div>
 
 <div id="adm_edit_tab_div1">
-    <?php // Заголовок ?>
+    <?php // Р—Р°РіРѕР»РѕРІРѕРє ?>
     <div class="b-form">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_header">Заголовок</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_header">Р—Р°РіРѕР»РѕРІРѕРє</label>
         <div class="b-input b-input_inline-block b-input_width_545">
             <input type="text" id="adm_edit_header" name="header" value="<?=($place['ad_header'] ? $place['ad_header'] : $place['title'])?>" class="b-input__text" size="80" onfocus="adm_edit_content.hideError('header')">
-            <label class="b-check__label" style="padding-top: 3px;">Максимум <?=pay_place::MAX_HEADER_SIZE?> <?=ending(pay_place::MAX_HEADER_SIZE, 'символ', 'символа', 'символов')?>.</label>
+            <label class="b-check__label" style="padding-top: 3px;">РњР°РєСЃРёРјСѓРј <?=pay_place::MAX_HEADER_SIZE?> <?=ending(pay_place::MAX_HEADER_SIZE, 'СЃРёРјРІРѕР»', 'СЃРёРјРІРѕР»Р°', 'СЃРёРјРІРѕР»РѕРІ')?>.</label>
         </div>
         
         <div id="div_adm_edit_err_header" class="b-fon b-fon_bg_ff6d2d b-fon_margtop_10 b-fon_padtop_10 b-fon_padleft_80" style="display: none">
@@ -45,29 +45,29 @@ $sHref = '';
         </div>
     </div>
     
-    <?php // Текст ?>
+    <?php // РўРµРєСЃС‚ ?>
     <div class="b-form b-form_padtop_10">
-        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_txt">Текст</label>
+        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_txt">РўРµРєСЃС‚</label>
         <div class="b-textarea_inline-block b-textarea_width_550">
             <textarea id="adm_edit_txt_source" style="display:none" cols="50" rows="20"><?=($place['ad_text'] ? $place['ad_text'] : $place['descr'])?></textarea>
             <textarea id="adm_edit_txt" name="txt" onfocus="adm_edit_content.hideError('txt')" class="b-textarea__textarea_width_full b-textarea__textarea_height_70" cols="77" rows="5"></textarea>
-            <label class="b-check__label">Максимум <?=pay_place::MAX_TEXT_SIZE?> <?=ending(pay_place::MAX_TEXT_SIZE, 'символ', 'символа', 'символов')?>.</label>
+            <label class="b-check__label">РњР°РєСЃРёРјСѓРј <?=pay_place::MAX_TEXT_SIZE?> <?=ending(pay_place::MAX_TEXT_SIZE, 'СЃРёРјРІРѕР»', 'СЃРёРјРІРѕР»Р°', 'СЃРёРјРІРѕР»РѕРІ')?>.</label>
         </div>
         
         <div id="div_adm_edit_err_txt" class="b-fon b-fon_bg_ff6d2d b-fon_padtop_10 b-fon_padleft_80" style="display: none">
             <b class="b-fon__b1"></b>
             <b class="b-fon__b2"></b>
             <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13 ">
-                <span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20" id="adm_edit_err_txt">Поле заполнено некорректно</div>
+                <span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20" id="adm_edit_err_txt">РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ</div>
             </div>
             <b class="b-fon__b2"></b>
             <b class="b-fon__b1"></b>
         </div>
     </div>
     
-    <?php // Файл ?>
+    <?php // Р¤Р°Р№Р» ?>
     <div class="b-form b-form_padtop_10">
-        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">Файл</label>
+        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">Р¤Р°Р№Р»</label>
         <iframe style="width:550px;height:45px;" scrolling="no" id="fupload" name="fupload" src="/upload.php?type=carusellogo&uid=<?=$place['uid']?>" frameborder="0"></iframe>
         <input type="hidden" id="new_val" name="new_val" value="">
         <input type="hidden" id="old_val" name="old_val" value="<?=$place['ad_img_file_name']?>">
@@ -77,7 +77,7 @@ $sHref = '';
             $sHref = WDCPREFIX . '/users/' . $place['login'] . '/foto/' . $place['ad_img_file_name'];
         }
         ?>
-        <br/><span id="span_new_val"><?php if ( $sHref ) { ?><a href="<?=$sHref?>" class="blue" target="_blank">Посмотреть загруженный файл</a>&nbsp;&nbsp;<input type="checkbox" class="b-check__input" id="adm_edit_del_prev" name="del_prev" value="1"><label class="b-check__label" for="adm_edit_del_prev">Удалить файл</label><?php } ?></span>
-        <div class="b-shadow__txt b-shadow__txt_fontsize_11 b-shadow__txt_padbot_5">Разрешенные форматы: jpg, png, размером не более 1000х1000 пикс объемом не более 1 Мб.</div>
+        <br/><span id="span_new_val"><?php if ( $sHref ) { ?><a href="<?=$sHref?>" class="blue" target="_blank">РџРѕСЃРјРѕС‚СЂРµС‚СЊ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Р№ С„Р°Р№Р»</a>&nbsp;&nbsp;<input type="checkbox" class="b-check__input" id="adm_edit_del_prev" name="del_prev" value="1"><label class="b-check__label" for="adm_edit_del_prev">РЈРґР°Р»РёС‚СЊ С„Р°Р№Р»</label><?php } ?></span>
+        <div class="b-shadow__txt b-shadow__txt_fontsize_11 b-shadow__txt_padbot_5">Р Р°Р·СЂРµС€РµРЅРЅС‹Рµ С„РѕСЂРјР°С‚С‹: jpg, png, СЂР°Р·РјРµСЂРѕРј РЅРµ Р±РѕР»РµРµ 1000С…1000 РїРёРєСЃ РѕР±СЉРµРјРѕРј РЅРµ Р±РѕР»РµРµ 1 РњР±.</div>
     </div>
 </div>

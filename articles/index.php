@@ -1,6 +1,6 @@
 <?php
 /**
- * Статьи
+ * РЎС‚Р°С‚СЊРё
  *
  */
 $grey_articles = 1;
@@ -32,25 +32,25 @@ if (__paramInit('string', null, 'action') == "wysiwygUploadImage") {
             $fname = $cfile->MoveUploadedFile($_SESSION['login']."/upload");
             if ($cfile->image_size['width'] > articles::MAX_IMAGE_WIDTH || $cfile->image_size['height'] > articles::MAX_IMAGE_HEIGHT) {
                 $cfile->Delete($cfile->id);
-                echo "status=fileTooBig&msg=Размер изображения превышает максимально допустимый: ".articles::MAX_IMAGE_WIDTH." x ".articles::MAX_IMAGE_HEIGHT;
+                echo "status=fileTooBig&msg=Р Р°Р·РјРµСЂ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РїСЂРµРІС‹С€Р°РµС‚ РјР°РєСЃРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјС‹Р№: ".articles::MAX_IMAGE_WIDTH." x ".articles::MAX_IMAGE_HEIGHT;
                 exit;
             }
             if ($fname) {
-                //добавить данные о файле
+                //РґРѕР±Р°РІРёС‚СЊ РґР°РЅРЅС‹Рµ Рѕ С„Р°Р№Р»Рµ
                 articles::addWysiwygFile($cfile);
-                //запомнить идентификатор временного файла
+                //Р·Р°РїРѕРјРЅРёС‚СЊ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РІСЂРµРјРµРЅРЅРѕРіРѕ С„Р°Р№Р»Р°
                 session_start();                                                                        
                 $_SESSION['wysiwyg_inline_files'][$cfile->id] = $cfile->id;
                 $link = WDCPREFIX."/users/".substr($_SESSION['login'], 0, 2)."/".$_SESSION['login']."/upload/".$fname;
                 echo "status=uploadSuccess&url={$link}";
             }else {                       
-                echo "status=uploadFailed&msg=Ошибка загрузки файла";
+                echo "status=uploadFailed&msg=РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»Р°";
                 exit;
             }
         }else {
-            echo "status=wrongFormat&msg=Загрузите изображение формата gif, png или jpg";
+            echo "status=wrongFormat&msg=Р—Р°РіСЂСѓР·РёС‚Рµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ С„РѕСЂРјР°С‚Р° gif, png РёР»Рё jpg";
         }
-    }else echo "status=fail&msg=У вас недостаточно прав, чтобы оставить этот комментарий";
+    }else echo "status=fail&msg=РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ, С‡С‚РѕР±С‹ РѕСЃС‚Р°РІРёС‚СЊ СЌС‚РѕС‚ РєРѕРјРјРµРЅС‚Р°СЂРёР№";
     exit;
   }
 
@@ -124,15 +124,15 @@ if($year) {
 $tab = $_page;
 $task = __paramInit('string', 'task', 'task');
 $pop_tags = articles::getPopularTags();
-$page_title = "Статьи - фриланс, удаленная работа на FL.ru";
-$page_descr = "Статьи - фриланс, удаленная работа на FL.ru";
+$page_title = "РЎС‚Р°С‚СЊРё - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
+$page_descr = "РЎС‚Р°С‚СЊРё - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
 
 if(get_uid()) $is_approved = articles::isApprovedArticles(get_uid());
 
 //var_dump($task, $_page); die();
 switch ($task) {
     
-    /* Добавление статьи */
+    /* Р”РѕР±Р°РІР»РµРЅРёРµ СЃС‚Р°С‚СЊРё */
     case 'add-article':
         if(!$uid) exit();
 
@@ -153,17 +153,17 @@ switch ($task) {
 
 
         if(trim($short) == '') {
-            $alert['short'] = 'Поле не должно быть пустым!';
+            $alert['short'] = 'РџРѕР»Рµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј!';
         }
         if(trim($msgtext) == '') {
-            $alert['msgtext'] = 'Поле не должно быть пустым!';
+            $alert['msgtext'] = 'РџРѕР»Рµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј!';
         }
         if(trim($title) == '') {
-            $alert['title'] = 'Поле не должно быть пустым!';
+            $alert['title'] = 'РџРѕР»Рµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј!';
         }
 
         if(!$image) {
-            $alert['logo'] = 'Необходимо загрузить файл';
+            $alert['logo'] = 'РќРµРѕР±С…РѕРґРёРјРѕ Р·Р°РіСЂСѓР·РёС‚СЊ С„Р°Р№Р»';
         }
         $_POST['kword'] = iconv('UTF-8', 'CP1251', $_POST['kword']);
         $kwords = explode(",", $_POST['kword']);
@@ -181,7 +181,7 @@ switch ($task) {
             if(count($kwords) > 0 && $newid) {
                 articles::addArticleTags($newid, $kwords);
             }
-            if(!$newid) $alert['alert'] = 'Ошибка при добавлении статьи';
+            if(!$newid) $alert['alert'] = 'РћС€РёР±РєР° РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё СЃС‚Р°С‚СЊРё';
         }
 
         if(isset($alert)) {
@@ -198,7 +198,7 @@ switch ($task) {
         exit();
         break;
 
-    /* Редактирование статьи */
+    /* Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ СЃС‚Р°С‚СЊРё */
     case 'edit-article':
         
         if(!hasPermissions('articles')) exit();
@@ -229,16 +229,16 @@ switch ($task) {
         $page_view = __paramInit('html', null, 'page_view');
 
         if(trim($short) == '') {
-            $alert['short'] = 'Поле не должно быть пустым!';
+            $alert['short'] = 'РџРѕР»Рµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј!';
         }
         if(trim($msgtext) == '') {
-            $alert['msgtext'] = 'Поле не должно быть пустым!';
+            $alert['msgtext'] = 'РџРѕР»Рµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј!';
         }
         if(trim($title) == '') {
-            $alert['title'] = 'Поле не должно быть пустым!';
+            $alert['title'] = 'РџРѕР»Рµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј!';
         }
         if(!$image && !$logo) {
-            $alert['logo'] = 'Вы должны загрузить изображение!';
+            $alert['logo'] = 'Р’С‹ РґРѕР»Р¶РЅС‹ Р·Р°РіСЂСѓР·РёС‚СЊ РёР·РѕР±СЂР°Р¶РµРЅРёРµ!';
         }
         
         if(!$image && $logo) $image = $article['logo'];
@@ -268,7 +268,7 @@ switch ($task) {
             } else {
                 articles::clearArticleTags($article['id']);
             }
-            if(!$res) $alert['alert'] = 'Ошибка при обновлении статьи';
+            if(!$res) $alert['alert'] = 'РћС€РёР±РєР° РїСЂРё РѕР±РЅРѕРІР»РµРЅРёРё СЃС‚Р°С‚СЊРё';
         }
 
         if(isset($alert)) {
@@ -306,7 +306,7 @@ switch ($task) {
         exit();
         break;
     
-    /* получение одной статьи (для редактирования)*/
+    /* РїРѕР»СѓС‡РµРЅРёРµ РѕРґРЅРѕР№ СЃС‚Р°С‚СЊРё (РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ)*/
     case 'get-article' :
         $result = array();
 
@@ -395,7 +395,7 @@ switch ($task) {
         $thread = __paramInit('int', 'id');
 
         if(!$msg || is_empty_html($msg)) {
-            $alert[1] = 'Поле не должно быть пустым';
+            $alert[1] = 'РџРѕР»Рµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј';
         } else {
             $msg = preg_replace("/(li|ol|ul)>[\n]+/iU", "$1>", $msg);
 
@@ -411,7 +411,7 @@ switch ($task) {
         if ($yt_link != '') {
             $v_yt_link = video_validate($yt_link);
             if(!$v_yt_link) {
-                $alert[3] = "Неверная ссылка.";
+                $alert[3] = "РќРµРІРµСЂРЅР°СЏ СЃСЃС‹Р»РєР°.";
             } else {
                 $yt_link = $v_yt_link;
             }
@@ -419,7 +419,7 @@ switch ($task) {
             $yt_link = null;
         }
 
-        // загрузка файлов
+        // Р·Р°РіСЂСѓР·РєР° С„Р°Р№Р»РѕРІ
         $files = array();
         $attach = $_FILES['attach'];
         if (is_array($attach) && !empty($attach['name'])) {
@@ -479,7 +479,7 @@ switch ($task) {
         }
 
         if(!$msg || is_empty_html($msg)) {
-            $alert[1] = 'Поле не должно быть пустым';
+            $alert[1] = 'РџРѕР»Рµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј';
         } else {
             $msg = preg_replace("/(li|ol|ul)>[\n]+/iU", "$1>", $msg);
             
@@ -495,7 +495,7 @@ switch ($task) {
         if ($yt_link != '') {
             $v_yt_link = video_validate($yt_link);
             if(!$v_yt_link) {
-                $alert[3] = "Неверная ссылка.";
+                $alert[3] = "РќРµРІРµСЂРЅР°СЏ СЃСЃС‹Р»РєР°.";
             } else {
                 $yt_link = $v_yt_link;
             }
@@ -503,7 +503,7 @@ switch ($task) {
             $yt_link = null;
         }
 
-        // загрузка файлов
+        // Р·Р°РіСЂСѓР·РєР° С„Р°Р№Р»РѕРІ
         $files = array();
         $attach = $_FILES['attach'];
         if (is_array($attach) && !empty($attach['name'])) {
@@ -628,13 +628,13 @@ switch ($task) {
             $adm = new users();
             $adm->getUser('admin');
             
-            $text = "Здравствуйте, {$article['uname']}. \r\n\r\n";         
-            $text .= "Ваша статья «{$article['title']}» поступила на модерацию в раздел «Статьи и интервью» сайта Free-lance.ru. ";
-            $text .= "К сожалению, ее формат не подходит для публикации в этом разделе. \r\n\r\n";
-            $text .= "Вы можете опубликовать свою работу в блогах для ознакомления или в своем портфолио по инструкции http://feedback.free-lance.ru/article/details/id/204 . \r\n";
-            $text .= "Команда Free-lance.ru благодарит вас за участие в жизни нашего портала. \r\n\r\n";
-            $text .= "С уважением, \r\n";
-            $text .= "Алена, редактор Free-lance.ru";
+            $text = "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, {$article['uname']}. \r\n\r\n";         
+            $text .= "Р’Р°С€Р° СЃС‚Р°С‚СЊСЏ В«{$article['title']}В» РїРѕСЃС‚СѓРїРёР»Р° РЅР° РјРѕРґРµСЂР°С†РёСЋ РІ СЂР°Р·РґРµР» В«РЎС‚Р°С‚СЊРё Рё РёРЅС‚РµСЂРІСЊСЋВ» СЃР°Р№С‚Р° Free-lance.ru. ";
+            $text .= "Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, РµРµ С„РѕСЂРјР°С‚ РЅРµ РїРѕРґС…РѕРґРёС‚ РґР»СЏ РїСѓР±Р»РёРєР°С†РёРё РІ СЌС‚РѕРј СЂР°Р·РґРµР»Рµ. \r\n\r\n";
+            $text .= "Р’С‹ РјРѕР¶РµС‚Рµ РѕРїСѓР±Р»РёРєРѕРІР°С‚СЊ СЃРІРѕСЋ СЂР°Р±РѕС‚Сѓ РІ Р±Р»РѕРіР°С… РґР»СЏ РѕР·РЅР°РєРѕРјР»РµРЅРёСЏ РёР»Рё РІ СЃРІРѕРµРј РїРѕСЂС‚С„РѕР»РёРѕ РїРѕ РёРЅСЃС‚СЂСѓРєС†РёРё http://feedback.free-lance.ru/article/details/id/204 . \r\n";
+            $text .= "РљРѕРјР°РЅРґР° Free-lance.ru Р±Р»Р°РіРѕРґР°СЂРёС‚ РІР°СЃ Р·Р° СѓС‡Р°СЃС‚РёРµ РІ Р¶РёР·РЅРё РЅР°С€РµРіРѕ РїРѕСЂС‚Р°Р»Р°. \r\n\r\n";
+            $text .= "РЎ СѓРІР°Р¶РµРЅРёРµРј, \r\n";
+            $text .= "РђР»РµРЅР°, СЂРµРґР°РєС‚РѕСЂ Free-lance.ru";
             
             messages::Add($adm->uid, $article['login'], addslashes($text));
             
@@ -707,7 +707,7 @@ switch ($task) {
 
             $f_name = $file->MoveUploadedFile("about/articles/");
             if (!isNulArray($file->error)) {
-                $alert = "Файл не удовлетворяет условиям загрузки";
+                $alert = "Р¤Р°Р№Р» РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё";
                 $error_flag = 1;
             }
 
@@ -716,7 +716,7 @@ switch ($task) {
             $filename = $file->name;
 //
 //            if(!$error_flag && !$file->img_to_small('sm_' . $f_name, array('width' => 100, 'height' => 100))) {
-//                $alert = "Невозможно уменьшить изображение";
+//                $alert = "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ РёР·РѕР±СЂР°Р¶РµРЅРёРµ";
 //                $error_flag = 1;
 //            }
         }
@@ -753,13 +753,13 @@ switch($_page) {
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             if(trim($short) == '') {
-                $alert[1] = 'Поле не должно быть пустым!';
+                $alert[1] = 'РџРѕР»Рµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј!';
             }
             if(trim($msgtext) == '') {
-                $alert[2] = 'Поле не должно быть пустым!';
+                $alert[2] = 'РџРѕР»Рµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј!';
             }
             if(trim($title) == '') {
-                $alert[0] = 'Поле не должно быть пустым!';
+                $alert[0] = 'РџРѕР»Рµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј!';
             }
             $file = new CFile($_FILES['attach']);
             if ($file->tmp_name) {
@@ -773,7 +773,7 @@ switch($_page) {
 
                 $f_name = $file->MoveUploadedFile("about/articles/");
                 if (!isNulArray($file->error)) {
-                    $alert[3] = "Файл не удовлетворяет условиям загрузки";
+                    $alert[3] = "Р¤Р°Р№Р» РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё";
                     $error_flag = 1;
                 }
 
@@ -782,13 +782,13 @@ switch($_page) {
                 $filename = $file->name;
 //
 //                if(!$file->img_to_small('sm_' . $f_name, array('width' => 100, 'height' => 100))) {
-//                    $alert[3] = "Невозможно уменьшить изображение";
+//                    $alert[3] = "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ РёР·РѕР±СЂР°Р¶РµРЅРёРµ";
 //                    $error_flag = 1;
 //                }
             }
 
             if(!$fileid) {
-                $alert[3] = 'Необходимо загрузить файл.';
+                $alert[3] = 'РќРµРѕР±С…РѕРґРёРјРѕ Р·Р°РіСЂСѓР·РёС‚СЊ С„Р°Р№Р».';
             }
 
             if(!isset($alert)) {
@@ -828,8 +828,8 @@ switch($_page) {
         }
 
         if ( $article['title'] ) {
-            $page_title = "{$article['title']} - фриланс, удаленная работа на FL.ru";
-            $page_descr = "{$article['title']} - фриланс, удаленная работа на FL.ru";
+            $page_title = "{$article['title']} - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
+            $page_descr = "{$article['title']} - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
         }
 
         $hidden = array();
@@ -924,7 +924,7 @@ switch($_page) {
         }
 
         break;
-    /* Рейтинг */
+    /* Р РµР№С‚РёРЅРі */
     case 'rate':
         if(!$uid) {
             header('Location: /fbd.php');
@@ -954,7 +954,7 @@ switch($_page) {
         exit();
         break;
 
-    /* Закладки */
+    /* Р—Р°РєР»Р°РґРєРё */
     case 'bookmark':
         if(!$uid && !isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest')
             exit();
@@ -975,7 +975,7 @@ switch($_page) {
         exit();
         break;
 
-    /* Удаление закладки */
+    /* РЈРґР°Р»РµРЅРёРµ Р·Р°РєР»Р°РґРєРё */
     case 'delbm':
         if(!$uid && !isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest')
             exit();
@@ -994,7 +994,7 @@ switch($_page) {
         exit();
         break;
 
-    /* Редактирование закладки */
+    /* Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р·Р°РєР»Р°РґРєРё */
     case 'editbm':
         if(!$uid && !isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest')
             exit();

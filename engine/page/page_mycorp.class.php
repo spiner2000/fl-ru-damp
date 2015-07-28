@@ -65,17 +65,17 @@ class page_mycorp extends page_base {
         if(($str = trim($form['title'])) && mb_strlen($str)>=3) {
             $save['title'] = change_q_x_a(antispam($str), 0, 96);
         } else {
-            $validate_errors['title'] = 'Заголовок короче 3 символов';            
+            $validate_errors['title'] = 'Р—Р°РіРѕР»РѕРІРѕРє РєРѕСЂРѕС‡Рµ 3 СЃРёРјРІРѕР»РѕРІ';            
         }
         
         if(($str = trim($form['msg'])) && mb_strlen($str)>=3) {
             $save['msg'] = change_q_x_a(antispam($str), false, false);
         } else {
-            $validate_errors['msg'] = 'Текст короче 3 символов';            
+            $validate_errors['msg'] = 'РўРµРєСЃС‚ РєРѕСЂРѕС‡Рµ 3 СЃРёРјРІРѕР»РѕРІ';            
         }
         
         if (strlen($form['msg']) > blogs::MAX_DESC_CHARS) {
-            $validate_errors['msg'] = "Максимальный размер сообщения ".blogs::MAX_DESC_CHARS." символов!";;            
+            $validate_errors['msg'] = "РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ СЃРѕРѕР±С‰РµРЅРёСЏ ".blogs::MAX_DESC_CHARS." СЃРёРјРІРѕР»РѕРІ!";;            
         } else {
             $save['msg'] = change_q_x_a(antispam($form['msg']), false, false);
         }
@@ -85,7 +85,7 @@ class page_mycorp extends page_base {
             if ((strpos($yt_link, 'http://ru.youtube.com/v/') !== 0)
             && (strpos($yt_link, 'http://youtube.com/v/') !== 0)
             && (strpos($yt_link, 'http://www.youtube.com/v/') !== 0)) {
-                $validate_errors['yt_link'] = "Неверная ссылка.";
+                $validate_errors['yt_link'] = "РќРµРІРµСЂРЅР°СЏ СЃСЃС‹Р»РєР°.";
             }
         }
         
@@ -174,19 +174,19 @@ class page_mycorp extends page_base {
                     if (! isNulArray($file->error)) {
                       //  $error_flag = 1;
                         //print_r($file->error);
-                        $alert[3] = "Один или несколько файлов не удовлетворяют условиям загрузки.";
+                        $alert[3] = "РћРґРёРЅ РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ С„Р°Р№Р»РѕРІ РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё.";
                        // break;
                     } else {
                         if ($is_image && $ext != 'swf' && $ext != 'flv') {
                             if (! $b_file->image_size['width'] || ! $b_file->image_size['height']) {
                                // $error_flag = 1;
-                                $alert[3] = 'Невозможно уменьшить картинку';
+                                $alert[3] = 'РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ';
                                 break;
                             }
                             if (! $error_flag && ($b_file->image_size['width'] > $max_image_size['width'] || $b_file->image_size['height'] > $max_image_size['height'])) {
                                 if (! $b_file->img_to_small("sm_" . $file->id, $max_image_size)) {
                                   //  $error_flag = 1;
-                                    $alert[3] = 'Невозможно уменьшить картинку.';
+                                    $alert[3] = 'РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ.';
                                     break;
                                 } else {
                                     $b_file->tn = 2;
@@ -289,7 +289,7 @@ class page_mycorp extends page_base {
             if ((strpos($yt_link, 'http://ru.youtube.com/v/') !== 0)
             && (strpos($yt_link, 'http://youtube.com/v/') !== 0)
             && (strpos($yt_link, 'http://www.youtube.com/v/') !== 0)) {
-                echo json_encode(array("valid"=>false, "reason"=>"Неверная ссылка"));
+                echo json_encode(array("valid"=>false, "reason"=>"РќРµРІРµСЂРЅР°СЏ СЃСЃС‹Р»РєР°"));
                 return;
             }
         }
@@ -348,10 +348,10 @@ class page_mycorp extends page_base {
         return $sort;
     }
     /**
-     * Выборка блогов из таблицы
+     * Р’С‹Р±РѕСЂРєР° Р±Р»РѕРіРѕРІ РёР· С‚Р°Р±Р»РёС†С‹
      *
-     * @param int $page страница
-     * @param int $count количество на странице
+     * @param int $page СЃС‚СЂР°РЅРёС†Р°
+     * @param int $count РєРѕР»РёС‡РµСЃС‚РІРѕ РЅР° СЃС‚СЂР°РЅРёС†Рµ
      */
     function getCorporateBlog($page=1, $count=10) {
         $total = front::og("db")->select("SELECT COUNT(*) FROM corporative_blog WHERE id_blog = 0  AND (id_deleted IS NULL OR id_deleted = 0)")->fetchOne();

@@ -1,6 +1,6 @@
 <?php
 
-//@todo: Îòêëþ÷àåò ëèøíþþ îáåðòêó â template3
+//@todo: ÐžÑ‚ÐºÐ»ÑŽÑ‡Ð°ÐµÑ‚ Ð»Ð¸ÑˆÐ½ÑŽÑŽ Ð¾Ð±ÐµÑ€Ñ‚ÐºÑƒ Ð² template3
 $stretch_page = true;
 $g_page_id = "0|35";
 

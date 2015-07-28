@@ -4,8 +4,8 @@
 		<b class="b1"></b>
 		<b class="b2"></b>
 		<div class="form-in">
-			<h2>Спешите знакомиться, влюбляться и приглашать на ужин при свечах.</h2>
-			<p>Этот раздел блогов будет скрыт через&nbsp; <span class="ic-o"><span><span id="big_timer">00 часов 00 минут 00 секунд</span></span></span>&nbsp;&nbsp;<a href="<?=($_SESSION['login']? '#bottom': '/fbd.php')?>" class="lnk-dot-grey">Не упустите свой шанс!</a></p>
+			<h2>РЎРїРµС€РёС‚Рµ Р·РЅР°РєРѕРјРёС‚СЊСЃСЏ, РІР»СЋР±Р»СЏС‚СЊСЃСЏ Рё РїСЂРёРіР»Р°С€Р°С‚СЊ РЅР° СѓР¶РёРЅ РїСЂРё СЃРІРµС‡Р°С….</h2>
+			<p>Р­С‚РѕС‚ СЂР°Р·РґРµР» Р±Р»РѕРіРѕРІ Р±СѓРґРµС‚ СЃРєСЂС‹С‚ С‡РµСЂРµР·&nbsp; <span class="ic-o"><span><span id="big_timer">00 С‡Р°СЃРѕРІ 00 РјРёРЅСѓС‚ 00 СЃРµРєСѓРЅРґ</span></span></span>&nbsp;&nbsp;<a href="<?=($_SESSION['login']? '#bottom': '/fbd.php')?>" class="lnk-dot-grey">РќРµ СѓРїСѓСЃС‚РёС‚Рµ СЃРІРѕР№ С€Р°РЅСЃ!</a></p>
 		</div>
 		<b class="b2"></b>
 		<b class="b1"></b>

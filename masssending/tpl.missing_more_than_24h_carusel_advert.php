@@ -17,7 +17,7 @@
                       </tr>
                       <tr>
                           <td bgcolor="#ffffff" width="20"></td>
-                          <td align="left"><font color="#000000" size="3" face="arial,sans-serif">«<a style="color:#0f71c8" target="_blank" href="<?=$pHost ?>/pay_place/top_payed.php?utm_source=newsletter4&utm_medium=email&utm_campaign=notif_ed_tp">Карусель</a>» на главной странице привлечет для вас новых клиентов. Каждый месяц главную страницу сайта просматривают свыше 1 млн пользователей. Не упускайте такую возможность. </font></td>
+                          <td align="left"><font color="#000000" size="3" face="arial,sans-serif">В«<a style="color:#0f71c8" target="_blank" href="<?=$pHost ?>/pay_place/top_payed.php?utm_source=newsletter4&utm_medium=email&utm_campaign=notif_ed_tp">РљР°СЂСѓСЃРµР»СЊ</a>В» РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ РїСЂРёРІР»РµС‡РµС‚ РґР»СЏ РІР°СЃ РЅРѕРІС‹С… РєР»РёРµРЅС‚РѕРІ. РљР°Р¶РґС‹Р№ РјРµСЃСЏС† РіР»Р°РІРЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ СЃР°Р№С‚Р° РїСЂРѕСЃРјР°С‚СЂРёРІР°СЋС‚ СЃРІС‹С€Рµ 1 РјР»РЅ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№. РќРµ СѓРїСѓСЃРєР°Р№С‚Рµ С‚Р°РєСѓСЋ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ. </font></td>
                           <td bgcolor="#ffffff" width="20"></td>
                       </tr>
                       <tr>
@@ -27,7 +27,7 @@
                       </tr>
                       <tr>
                           <td bgcolor="#ffffff" width="20"></td>
-                          <td align="left"><i><font color="808080" size="3" face="arial,sans-serif">Приятной работы с FL.ru!</font></i></td>
+                          <td align="left"><i><font color="808080" size="3" face="arial,sans-serif">РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹ СЃ FL.ru!</font></i></td>
                           <td bgcolor="#ffffff" width="20"></td>
                       </tr>
                       <tr>

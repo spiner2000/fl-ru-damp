@@ -1,5 +1,5 @@
 <?php
-// Тестовая оплата услуг через Яндекс.Кассу
+// РўРµСЃС‚РѕРІР°СЏ РѕРїР»Р°С‚Р° СѓСЃР»СѓРі С‡РµСЂРµР· РЇРЅРґРµРєСЃ.РљР°СЃСЃСѓ
 
 define('NO_CSRF', 1);
 
@@ -28,11 +28,11 @@ $_SERVER['HTTP_X_REAL_IP'] = '77.75.157.166';
 
 $payment = $_GET;
 
-//Что нам говорит яндекс
+//Р§С‚Рѕ РЅР°Рј РіРѕРІРѕСЂРёС‚ СЏРЅРґРµРєСЃ
 $post = array(
     'requestDatetime' => date('c'),
     'action' =>	'checkOrder',
-    'shopId' => $payment['ShopID'],//yandex_kassa::SHOPID_DEPOSIT, //Нужно выяснить, что платеж через БС - и тогда ставить SHOPID_DEPOSIT
+    'shopId' => $payment['ShopID'],//yandex_kassa::SHOPID_DEPOSIT, //РќСѓР¶РЅРѕ РІС‹СЏСЃРЅРёС‚СЊ, С‡С‚Рѕ РїР»Р°С‚РµР¶ С‡РµСЂРµР· Р‘РЎ - Рё С‚РѕРіРґР° СЃС‚Р°РІРёС‚СЊ SHOPID_DEPOSIT
     'invoiceId' => $payment['invoiceId'],
     'customerNumber' => $payment['customerNumber'],
     'orderCreatedDatetime' => date('c'),
@@ -101,7 +101,7 @@ $host .= ($q)?"?{$q}":"?scid=52128&ShopID=17004&Sum=399&customerNumber=179&payme
 echo "<p><a href='{$host}'>{$host}</a></p>";
 */
 
-echo "<p>Результат <strong>paymentAviso</strong>:</p>";
+echo "<p>Р РµР·СѓР»СЊС‚Р°С‚ <strong>paymentAviso</strong>:</p>";
 echo '<pre>';
 print_r(htmlspecialchars($complete));
 echo '</pre>';
@@ -129,7 +129,7 @@ $key = 'post_payment_' . $uid;
 $memBuff = new memBuff();
 
 
-if(isset($_GET['cancel'])) { //Отказ от платежа
+if(isset($_GET['cancel'])) { //РћС‚РєР°Р· РѕС‚ РїР»Р°С‚РµР¶Р°
     header("Location: /bill/fail");
     exit;
 } elseif(isset($_GET['success'])) {
@@ -143,11 +143,11 @@ if(isset($_GET['cancel'])) { //Отказ от платежа
     
     $invoceId    = (isset($payment['invoiceId']))?$payment['invoiceId']:rand(1, 50000);
     
-    //Что нам говорит яндекс
+    //Р§С‚Рѕ РЅР°Рј РіРѕРІРѕСЂРёС‚ СЏРЅРґРµРєСЃ
     $post = array(
         'requestDatetime' => date('c'),
         'action' =>	'checkOrder',
-        'shopId' => $payment['ShopID'],//yandex_kassa::SHOPID_DEPOSIT, //Нужно выяснить, что платеж через БС - и тогда ставить SHOPID_DEPOSIT
+        'shopId' => $payment['ShopID'],//yandex_kassa::SHOPID_DEPOSIT, //РќСѓР¶РЅРѕ РІС‹СЏСЃРЅРёС‚СЊ, С‡С‚Рѕ РїР»Р°С‚РµР¶ С‡РµСЂРµР· Р‘РЎ - Рё С‚РѕРіРґР° СЃС‚Р°РІРёС‚СЊ SHOPID_DEPOSIT
         'invoiceId' => $invoceId,
         'customerNumber' => $payment['customerNumber'],
         'orderCreatedDatetime' => date('c'),
@@ -185,7 +185,7 @@ if(isset($_GET['cancel'])) { //Отказ от платежа
     $res = curl_exec($ch);
     $complete = ob_get_clean();
     
-    echo "<p>Результат <strong>checkOrder</strong>:</p>";
+    echo "<p>Р РµР·СѓР»СЊС‚Р°С‚ <strong>checkOrder</strong>:</p>";
     echo '<pre>';
     print_r(htmlspecialchars($complete));
     echo '</pre>';
@@ -202,8 +202,8 @@ if(isset($_GET['cancel'])) { //Отказ от платежа
     
     $xmlObj = @simplexml_load_string($complete);
     
-    //делаем уведомление подтверждения 
-    //если запрос небыл отвергнут сайтом
+    //РґРµР»Р°РµРј СѓРІРµРґРѕРјР»РµРЅРёРµ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ 
+    //РµСЃР»Рё Р·Р°РїСЂРѕСЃ РЅРµР±С‹Р» РѕС‚РІРµСЂРіРЅСѓС‚ СЃР°Р№С‚РѕРј
     if($xmlObj && (int)$xmlObj->attributes()->code === 0)
     {
         sleep(2);
@@ -229,45 +229,45 @@ if(isset($_GET['cancel'])) { //Отказ от платежа
         $res = curl_exec($ch);
         $complete = ob_get_clean();
         
-        echo "<p>Результат <strong>paymentAviso</strong>:</p>";
+        echo "<p>Р РµР·СѓР»СЊС‚Р°С‚ <strong>paymentAviso</strong>:</p>";
         echo '<pre>';
         print_r(htmlspecialchars($complete));
         echo '</pre>';
     }
     
-    echo '<p><a href="/bill/success/">Вернуться в магазин</a></p>';
+    echo '<p><a href="/bill/success/">Р’РµСЂРЅСѓС‚СЊСЃСЏ РІ РјР°РіР°Р·РёРЅ</a></p>';
     exit;
     
     
 } else {
-    //Данные платежной формы
+    //Р”Р°РЅРЅС‹Рµ РїР»Р°С‚РµР¶РЅРѕР№ С„РѕСЂРјС‹
     $paypost = $_POST;
-    //Сохраняем в сессию, т.к. яндекс 
-    //это помнит при двух последующих запросах
+    //РЎРѕС…СЂР°РЅСЏРµРј РІ СЃРµСЃСЃРёСЋ, С‚.Рє. СЏРЅРґРµРєСЃ 
+    //СЌС‚Рѕ РїРѕРјРЅРёС‚ РїСЂРё РґРІСѓС… РїРѕСЃР»РµРґСѓСЋС‰РёС… Р·Р°РїСЂРѕСЃР°С…
     $memBuff->set($key, $paypost);
 }
 
 $payway = array(
-    yandex_kassa::PAYMENT_YD => "Яндекс.Деньги",
-    yandex_kassa::PAYMENT_AC => "Карта",
+    yandex_kassa::PAYMENT_YD => "РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё",
+    yandex_kassa::PAYMENT_AC => "РљР°СЂС‚Р°",
     yandex_kassa::PAYMENT_WM => "Webmoney",
-    yandex_kassa::PAYMENT_AB => "Альфа-Клик",
-    yandex_kassa::PAYMENT_SB => "Сбербанк Онлайн"
+    yandex_kassa::PAYMENT_AB => "РђР»СЊС„Р°-РљР»РёРє",
+    yandex_kassa::PAYMENT_SB => "РЎР±РµСЂР±Р°РЅРє РћРЅР»Р°Р№РЅ"
 );
 ?>
 
-<h2>Тестовая оплата Яндекс.Касса</h2>
+<h2>РўРµСЃС‚РѕРІР°СЏ РѕРїР»Р°С‚Р° РЇРЅРґРµРєСЃ.РљР°СЃСЃР°</h2>
 <p>
-    Оплата услуг аккаунт <strong>#<?= intval($paypost['customerNumber'])?></strong><br />
-    Cумма оплаты <strong><?= to_money($paypost['Sum'], 2)?> рублей</strong><br />
-    Cпособ оплаты <strong><?= $payway[$paypost['paymentType']]?></strong><br />
-    IP cервера Яндекса <strong><?=getRemoteIp()?></strong><br />
+    РћРїР»Р°С‚Р° СѓСЃР»СѓРі Р°РєРєР°СѓРЅС‚ <strong>#<?= intval($paypost['customerNumber'])?></strong><br />
+    CСѓРјРјР° РѕРїР»Р°С‚С‹ <strong><?= to_money($paypost['Sum'], 2)?> СЂСѓР±Р»РµР№</strong><br />
+    CРїРѕСЃРѕР± РѕРїР»Р°С‚С‹ <strong><?= $payway[$paypost['paymentType']]?></strong><br />
+    IP cРµСЂРІРµСЂР° РЇРЅРґРµРєСЃР° <strong><?=getRemoteIp()?></strong><br />
     ShopID <strong><?=$paypost['ShopID']?></strong><br />
     Bill reserve ID: <strong><?=@$paypost['orderId']?></strong>
 </p>
 
 <form method="GET" action="ykassa.php" >
-    <input type="submit" name="success" value="Успешно оплатить" />
-    <input type="submit" name="cancel" value="Вернуться в магазин" />
+    <input type="submit" name="success" value="РЈСЃРїРµС€РЅРѕ РѕРїР»Р°С‚РёС‚СЊ" />
+    <input type="submit" name="cancel" value="Р’РµСЂРЅСѓС‚СЊСЃСЏ РІ РјР°РіР°Р·РёРЅ" />
     <input type="hidden" name="u_token_key" value="<?=$_SESSION['rand']?>"/>
 </form>

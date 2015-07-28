@@ -8,30 +8,30 @@ class projects_status
     const SOLT = 'L29r9sF4ez63G6H';
     
     /**
-     * Возможные стаусы проекта
+     * Р’РѕР·РјРѕР¶РЅС‹Рµ СЃС‚Р°СѓСЃС‹ РїСЂРѕРµРєС‚Р°
      */
-    const STATUS_NEW        =  0;//Исполнитель выбран но не подтвердил участие
-    const STATUS_DECLINE    = -1;//Исполнитель отказался от проекта
-    const STATUS_CANCEL     = -2;//Заказчик отменил предложение только выставляется в записи предложения
-    const STATUS_ACCEPT     = 1;//Проект в работе
-    const STATUS_FRLCLOSE   = 2;//Исполнитель закрыл проект
-    const STATUS_EMPCLOSE   = 3;//Заказчик закрыл проект
+    const STATUS_NEW        =  0;//РСЃРїРѕР»РЅРёС‚РµР»СЊ РІС‹Р±СЂР°РЅ РЅРѕ РЅРµ РїРѕРґС‚РІРµСЂРґРёР» СѓС‡Р°СЃС‚РёРµ
+    const STATUS_DECLINE    = -1;//РСЃРїРѕР»РЅРёС‚РµР»СЊ РѕС‚РєР°Р·Р°Р»СЃСЏ РѕС‚ РїСЂРѕРµРєС‚Р°
+    const STATUS_CANCEL     = -2;//Р—Р°РєР°Р·С‡РёРє РѕС‚РјРµРЅРёР» РїСЂРµРґР»РѕР¶РµРЅРёРµ С‚РѕР»СЊРєРѕ РІС‹СЃС‚Р°РІР»СЏРµС‚СЃСЏ РІ Р·Р°РїРёСЃРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+    const STATUS_ACCEPT     = 1;//РџСЂРѕРµРєС‚ РІ СЂР°Р±РѕС‚Рµ
+    const STATUS_FRLCLOSE   = 2;//РСЃРїРѕР»РЅРёС‚РµР»СЊ Р·Р°РєСЂС‹Р» РїСЂРѕРµРєС‚
+    const STATUS_EMPCLOSE   = 3;//Р—Р°РєР°Р·С‡РёРє Р·Р°РєСЂС‹Р» РїСЂРѕРµРєС‚
     
     
-    //Возможные статусы заказа у заказчика
+    //Р’РѕР·РјРѕР¶РЅС‹Рµ СЃС‚Р°С‚СѓСЃС‹ Р·Р°РєР°Р·Р° Сѓ Р·Р°РєР°Р·С‡РёРєР°
     protected $STATUS_EMP_LIST = array(
         'cancel' => self::STATUS_CANCEL,
         'close' => self::STATUS_EMPCLOSE
     );
     
-    //Возможные статусы заказа у исполнителя
+    //Р’РѕР·РјРѕР¶РЅС‹Рµ СЃС‚Р°С‚СѓСЃС‹ Р·Р°РєР°Р·Р° Сѓ РёСЃРїРѕР»РЅРёС‚РµР»СЏ
     protected $STATUS_FRL_LIST = array(
         'decline' => self::STATUS_DECLINE,
         'accept' => self::STATUS_ACCEPT,
         'close' => self::STATUS_FRLCLOSE
     );
     
-    //В какое состояние статус заказа может переходить
+    //Р’ РєР°РєРѕРµ СЃРѕСЃС‚РѕСЏРЅРёРµ СЃС‚Р°С‚СѓСЃ Р·Р°РєР°Р·Р° РјРѕР¶РµС‚ РїРµСЂРµС…РѕРґРёС‚СЊ
     protected $STATUS_NEXT = array(
         self::STATUS_NEW => array(
             self::STATUS_ACCEPT,
@@ -79,7 +79,7 @@ class projects_status
     
     
    /**
-    * Нет ошибок?
+    * РќРµС‚ РѕС€РёР±РѕРє?
     * 
     * @return type
     */ 
@@ -90,7 +90,7 @@ class projects_status
 
    
    /**
-    * Проверка очередного параметра
+    * РџСЂРѕРІРµСЂРєР° РѕС‡РµСЂРµРґРЅРѕРіРѕ РїР°СЂР°РјРµС‚СЂР°
     * 
     * @param string $key
     * @param mix $value
@@ -124,7 +124,7 @@ class projects_status
     
     
     /**
-     * Фильтр для входных данных
+     * Р¤РёР»СЊС‚СЂ РґР»СЏ РІС…РѕРґРЅС‹С… РґР°РЅРЅС‹С…
      * 
      * @param string $key
      * @param mix $value
@@ -139,7 +139,7 @@ class projects_status
     
 
     /**
-     * Инициализация или получение аттрибутов класса
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РёР»Рё РїРѕР»СѓС‡РµРЅРёРµ Р°С‚С‚СЂРёР±СѓС‚РѕРІ РєР»Р°СЃСЃР°
      * 
      * @param array $attributes
      * @return type
@@ -175,7 +175,7 @@ class projects_status
     
     
     /**
-     * Необходима ли новому статусу работа с ответами
+     * РќРµРѕР±С…РѕРґРёРјР° Р»Рё РЅРѕРІРѕРјСѓ СЃС‚Р°С‚СѓСЃСѓ СЂР°Р±РѕС‚Р° СЃ РѕС‚РІРµС‚Р°РјРё
      * 
      * @param string $status
      * @return boolean
@@ -191,7 +191,7 @@ class projects_status
     //--------------------------------------------------------------------------
     
     /**
-     * Переход проекта в другой возможный стастус
+     * РџРµСЂРµС…РѕРґ РїСЂРѕРµРєС‚Р° РІ РґСЂСѓРіРѕР№ РІРѕР·РјРѕР¶РЅС‹Р№ СЃС‚Р°СЃС‚СѓСЃ
      * 
      * @param string $new_status
      * @return boolean
@@ -200,50 +200,50 @@ class projects_status
     {
         $list = ($this->is_emp)?$this->STATUS_EMP_LIST:$this->STATUS_FRL_LIST;
         $next = $this->STATUS_NEXT;
-        //Существует ли новый статус
+        //РЎСѓС‰РµСЃС‚РІСѓРµС‚ Р»Рё РЅРѕРІС‹Р№ СЃС‚Р°С‚СѓСЃ
         if(!isset($list[$new_status])) return FALSE;
         $status = $list[$new_status];
-        //Есть ли принадлежность для него?
+        //Р•СЃС‚СЊ Р»Рё РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚СЊ РґР»СЏ РЅРµРіРѕ?
         if(!isset($this->current_table[$status])) return FALSE;      
         $prop = $this->current_table[$status][1];
         $current_status = @$this->{$prop}['status'];
-        //Есть ли текущий статус и возможен ли переход в новый
+        //Р•СЃС‚СЊ Р»Рё С‚РµРєСѓС‰РёР№ СЃС‚Р°С‚СѓСЃ Рё РІРѕР·РјРѕР¶РµРЅ Р»Рё РїРµСЂРµС…РѕРґ РІ РЅРѕРІС‹Р№
         if(!isset($next[$current_status]) || 
            !in_array($list[$new_status], $next[$current_status])) return FALSE;
 
         $data = array('status' => $status);
         $time = time();
         
-        //Действия перед сменой статуса
+        //Р”РµР№СЃС‚РІРёСЏ РїРµСЂРµРґ СЃРјРµРЅРѕР№ СЃС‚Р°С‚СѓСЃР°
         switch($status)
         {
             case self::STATUS_DECLINE:
             case self::STATUS_CANCEL:
-                //Нельзя отказаться если уже согласился
+                //РќРµР»СЊР·СЏ РѕС‚РєР°Р·Р°С‚СЊСЃСЏ РµСЃР»Рё СѓР¶Рµ СЃРѕРіР»Р°СЃРёР»СЃСЏ
                 if($this->project['status'] == self::STATUS_ACCEPT) return FALSE;
 
-                //Убираем из исполнителей
+                //РЈР±РёСЂР°РµРј РёР· РёСЃРїРѕР»РЅРёС‚РµР»РµР№
                 $obj_project = new projects();
                 $err = $obj_project->ClearExecutor($this->project['id'],$this->project['user_id']);
                 if(!empty($err)) return FALSE;
                 
                 $obj_offer = new projects_offers();
                 if ($this->project['kind'] == 9) {
-                    //У персонального проекта переводим в отказ
+                    //РЈ РїРµСЂСЃРѕРЅР°Р»СЊРЅРѕРіРѕ РїСЂРѕРµРєС‚Р° РїРµСЂРµРІРѕРґРёРј РІ РѕС‚РєР°Р·
                     if ($status == self::STATUS_CANCEL) {
 						$obj_offer->SetRefused($this->offer['id'], $this->project['id'], $this->project['exec_id']);
 					} else {
 						$this->db()->update(self::TABLE_OFFERS,array('status' => -1),'id = ?i',$this->offer['id']);
 					}
                 } else {
-                    //Переводим в кандидаты
+                    //РџРµСЂРµРІРѕРґРёРј РІ РєР°РЅРґРёРґР°С‚С‹
                     $obj_offer->SetSelected($this->offer['id'], $this->project['id'], $this->project['exec_id'], true);
                 }
 
                 $this->project['exec_id'] = NULL;
                 
-                //Если это персональный проект
-                //то закрываем его после отказа
+                //Р•СЃР»Рё СЌС‚Рѕ РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹Р№ РїСЂРѕРµРєС‚
+                //С‚Рѕ Р·Р°РєСЂС‹РІР°РµРј РµРіРѕ РїРѕСЃР»Рµ РѕС‚РєР°Р·Р°
                 if($this->project['kind'] == 9)
                 {
                     $this->project['close_date'] = date('Y-m-d H:i:s', $time);
@@ -263,8 +263,8 @@ class projects_status
                 $this->db()->update(self::TABLE_PROJECTS,array('accept_date' => $now),'id = ?i',$this->project['id']);
                 $this->offer['status'] = 0;
                 
-                //@todo: как снять проект с публикации???
-                //будем учитывать этатус = 0 в выборках
+                //@todo: РєР°Рє СЃРЅСЏС‚СЊ РїСЂРѕРµРєС‚ СЃ РїСѓР±Р»РёРєР°С†РёРё???
+                //Р±СѓРґРµРј СѓС‡РёС‚С‹РІР°С‚СЊ СЌС‚Р°С‚СѓСЃ = 0 РІ РІС‹Р±РѕСЂРєР°С…
                 
             break;
         
@@ -288,10 +288,10 @@ class projects_status
         {
             $this->{$prop}['status'] = $status;
             
-            //Высылаем уведомления о смене статуса
+            //Р’С‹СЃС‹Р»Р°РµРј СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ СЃРјРµРЅРµ СЃС‚Р°С‚СѓСЃР°
             $mes = new projects_smail();
             
-            //Действия после успешной смены статуса
+            //Р”РµР№СЃС‚РІРёСЏ РїРѕСЃР»Рµ СѓСЃРїРµС€РЅРѕР№ СЃРјРµРЅС‹ СЃС‚Р°С‚СѓСЃР°
             switch($status)
             {
                 case self::STATUS_ACCEPT:
@@ -308,7 +308,7 @@ class projects_status
                 
                 case self::STATUS_EMPCLOSE:
                 case self::STATUS_FRLCLOSE:
-                    //Нет смысла тут пытаться уведомлять не имея еще отзыва!
+                    //РќРµС‚ СЃРјС‹СЃР»Р° С‚СѓС‚ РїС‹С‚Р°С‚СЊСЃСЏ СѓРІРµРґРѕРјР»СЏС‚СЊ РЅРµ РёРјРµСЏ РµС‰Рµ РѕС‚Р·С‹РІР°!
                     //$mes->onFinish($this->project, $this->is_emp);
                     break;
                  
@@ -341,7 +341,7 @@ class projects_status
 
 
     /**
-     * Создаем сами себя
+     * РЎРѕР·РґР°РµРј СЃР°РјРё СЃРµР±СЏ
      * @return TServiceModel
      */
     public static function model() 

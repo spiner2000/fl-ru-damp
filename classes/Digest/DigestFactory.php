@@ -11,27 +11,27 @@ require_once 'DigestBlockListFreelancer.php';
 require_once 'DigestBlockListInterview.php';
 
 /**
- * Класс для работы с блоками дайджеста
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р»РѕРєР°РјРё РґР°Р№РґР¶РµСЃС‚Р°
  * 
  */
 class DigestFactory {
     
     /**
-     * Переменная содержить блоки дайджеста 
+     * РџРµСЂРµРјРµРЅРЅР°СЏ СЃРѕРґРµСЂР¶РёС‚СЊ Р±Р»РѕРєРё РґР°Р№РґР¶РµСЃС‚Р° 
      * 
      * @var array 
      */
     private $_blocks = array();
     
     /**
-     * Количество созданных блоков в классе
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕР·РґР°РЅРЅС‹С… Р±Р»РѕРєРѕРІ РІ РєР»Р°СЃСЃРµ
      * 
      * @var integer
      */
     private $_current_position = 0;
     
     /**
-     * Допустимые типы блоков
+     * Р”РѕРїСѓСЃС‚РёРјС‹Рµ С‚РёРїС‹ Р±Р»РѕРєРѕРІ
      * 
      * @var array
      */
@@ -50,7 +50,7 @@ class DigestFactory {
     );
     
     /**
-     * Сортировка блоков по позиции
+     * РЎРѕСЂС‚РёСЂРѕРІРєР° Р±Р»РѕРєРѕРІ РїРѕ РїРѕР·РёС†РёРё
      * 
      * @param DigestBlock $a   
      * @param DigestBlock $b
@@ -64,9 +64,9 @@ class DigestFactory {
     }
     
     /**
-     * Сортируем блоки по позиции
+     * РЎРѕСЂС‚РёСЂСѓРµРј Р±Р»РѕРєРё РїРѕ РїРѕР·РёС†РёРё
      * 
-     * @param boolean $reverse Перевернуть блок после сортировки или нет
+     * @param boolean $reverse РџРµСЂРµРІРµСЂРЅСѓС‚СЊ Р±Р»РѕРє РїРѕСЃР»Рµ СЃРѕСЂС‚РёСЂРѕРІРєРё РёР»Рё РЅРµС‚
      */
     public function sort($reverse = false) {
         usort($this->_blocks, array('DigestFactory', 'sortPosition'));
@@ -76,7 +76,7 @@ class DigestFactory {
     }
     
     /**
-     * Текущая позиция
+     * РўРµРєСѓС‰Р°СЏ РїРѕР·РёС†РёСЏ
      * 
      * @return integer
      */
@@ -85,21 +85,21 @@ class DigestFactory {
     }
     
     /**
-     * Увеличиваем текущую позиция на единицу
+     * РЈРІРµР»РёС‡РёРІР°РµРј С‚РµРєСѓС‰СѓСЋ РїРѕР·РёС†РёСЏ РЅР° РµРґРёРЅРёС†Сѓ
      */
     public function increasePosition() {
         $this->_current_position++;
     }
     
     /**
-     * Уменьшаем текущую позиция на единицу
+     * РЈРјРµРЅСЊС€Р°РµРј С‚РµРєСѓС‰СѓСЋ РїРѕР·РёС†РёСЏ РЅР° РµРґРёРЅРёС†Сѓ
      */
     public function decreasePosition() {
         $this->_current_position--;
     }
     
     /**
-     * Вспомогательная функция, при вставке блока в середину изменяет позицию следующих за ним блоков
+     * Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ, РїСЂРё РІСЃС‚Р°РІРєРµ Р±Р»РѕРєР° РІ СЃРµСЂРµРґРёРЅСѓ РёР·РјРµРЅСЏРµС‚ РїРѕР·РёС†РёСЋ СЃР»РµРґСѓСЋС‰РёС… Р·Р° РЅРёРј Р±Р»РѕРєРѕРІ
      * 
      * @param DigestBlock $a
      * @return DigestBlock
@@ -110,7 +110,7 @@ class DigestFactory {
     }
     
     /**
-     * Создает блоки которые используются по умолчанию
+     * РЎРѕР·РґР°РµС‚ Р±Р»РѕРєРё РєРѕС‚РѕСЂС‹Рµ РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
      */
     public function createDefaultBlocks() {
         $blocks[] = new DigestBlockText();
@@ -127,10 +127,10 @@ class DigestFactory {
     }
     
     /**
-     * Создает дополнительные блоки такого же типа как есть в системе
+     * РЎРѕР·РґР°РµС‚ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ Р±Р»РѕРєРё С‚Р°РєРѕРіРѕ Р¶Рµ С‚РёРїР° РєР°Рє РµСЃС‚СЊ РІ СЃРёСЃС‚РµРјРµ
      * 
-     * @param DigestBlock $obj      Блок для создания
-     * @param integer     $size     Количество блоков которые необходимо создать
+     * @param DigestBlock $obj      Р‘Р»РѕРє РґР»СЏ СЃРѕР·РґР°РЅРёСЏ
+     * @param integer     $size     РљРѕР»РёС‡РµСЃС‚РІРѕ Р±Р»РѕРєРѕРІ РєРѕС‚РѕСЂС‹Рµ РЅРµРѕР±С…РѕРґРёРјРѕ СЃРѕР·РґР°С‚СЊ
      */
     public function createAdditionBlocks($obj, $size = 1) {
         for($i=0; $i < $size; $i++) {
@@ -142,9 +142,9 @@ class DigestFactory {
     }
     
     /**
-     * Создание блоков
+     * РЎРѕР·РґР°РЅРёРµ Р±Р»РѕРєРѕРІ
      * 
-     * @param array $blocks Массив созданных блоков @see DigestBlock
+     * @param array $blocks РњР°СЃСЃРёРІ СЃРѕР·РґР°РЅРЅС‹С… Р±Р»РѕРєРѕРІ @see DigestBlock
      */
     public function createBlocks($blocks) {
         foreach($blocks as $block) {
@@ -153,10 +153,10 @@ class DigestFactory {
     }
     
     /**
-     * Создает блок в системе
+     * РЎРѕР·РґР°РµС‚ Р±Р»РѕРє РІ СЃРёСЃС‚РµРјРµ
      * 
-     * @param DigestBlock $block        Блок
-     * @param integer     $position     Позиция блока, если null присваивается автоматически
+     * @param DigestBlock $block        Р‘Р»РѕРє
+     * @param integer     $position     РџРѕР·РёС†РёСЏ Р±Р»РѕРєР°, РµСЃР»Рё null РїСЂРёСЃРІР°РёРІР°РµС‚СЃСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё
      */
     public function createBlock(DigestBlock $block, $position = null) {
         if($position == null || $position <= 0) {
@@ -176,11 +176,11 @@ class DigestFactory {
     }
     
     /**
-     * Сохраняем в базу данных данные о блоках
+     * РЎРѕС…СЂР°РЅСЏРµРј РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С… РґР°РЅРЅС‹Рµ Рѕ Р±Р»РѕРєР°С…
      * 
-     * @global DB $DB Подключение к БД
+     * @global DB $DB РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”
      * 
-     * @param integer $mailer_id Ид созданной рассылки @see table.mailer_messages.id  
+     * @param integer $mailer_id РРґ СЃРѕР·РґР°РЅРЅРѕР№ СЂР°СЃСЃС‹Р»РєРё @see table.mailer_messages.id  
      * @return boolean
      */
     public function saveDigestBlocks($mailer_id) {
@@ -196,10 +196,10 @@ class DigestFactory {
     }
     
     /**
-     * Обновляем данные о блоках
+     * РћР±РЅРѕРІР»СЏРµРј РґР°РЅРЅС‹Рµ Рѕ Р±Р»РѕРєР°С…
      * 
      * @global DB $DB
-     * @param integer $mailer_id Ид созданной рассылки @see table.mailer_messages.id  
+     * @param integer $mailer_id РРґ СЃРѕР·РґР°РЅРЅРѕР№ СЂР°СЃСЃС‹Р»РєРё @see table.mailer_messages.id  
      * @return type
      */
     public function updateDigestBlocks($mailer_id) {
@@ -214,7 +214,7 @@ class DigestFactory {
     }
     
     /**
-     * На основе блоков собирает полную картину сообщения в HTML
+     * РќР° РѕСЃРЅРѕРІРµ Р±Р»РѕРєРѕРІ СЃРѕР±РёСЂР°РµС‚ РїРѕР»РЅСѓСЋ РєР°СЂС‚РёРЅСѓ СЃРѕРѕР±С‰РµРЅРёСЏ РІ HTML
      * 
      * @return string 
      */
@@ -236,7 +236,7 @@ class DigestFactory {
     }
     
     /**
-     * Возвращает блоки созданные в системе
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р±Р»РѕРєРё СЃРѕР·РґР°РЅРЅС‹Рµ РІ СЃРёСЃС‚РµРјРµ
      * 
      * @return array
      */

@@ -1,5 +1,5 @@
 <?
-header ("Location: /404.php"); exit; // пользуемся /siteadmin/admin/
+header ("Location: /404.php"); exit; // РїРѕР»СЊР·СѓРµРјСЃСЏ /siteadmin/admin/
 $no_banner = 1;
 	$rpath = "../../";
 	require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/messages.php");

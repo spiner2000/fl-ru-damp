@@ -57,30 +57,30 @@ function setSex() {
 					<div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_15">
                 <div id="ov-sex-q">
                     <form method="post" action="/" id="form_sex_choice" onsubmit="return false">
-                    <h4 class="b-shadow__title b-shadow__title_padbot_15">Определились?</h4>
-                    <div class="b-shadow__txt b-shadow__txt_padbot_10">Ой, мы случайно нажали кнопку, которая делает обязательным заполнение поля "пол", простите нас, пожалуйста, но мы оставили вам выбор:</div>
+                    <h4 class="b-shadow__title b-shadow__title_padbot_15">РћРїСЂРµРґРµР»РёР»РёСЃСЊ?</h4>
+                    <div class="b-shadow__txt b-shadow__txt_padbot_10">РћР№, РјС‹ СЃР»СѓС‡Р°Р№РЅРѕ РЅР°Р¶Р°Р»Рё РєРЅРѕРїРєСѓ, РєРѕС‚РѕСЂР°СЏ РґРµР»Р°РµС‚ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рј Р·Р°РїРѕР»РЅРµРЅРёРµ РїРѕР»СЏ "РїРѕР»", РїСЂРѕСЃС‚РёС‚Рµ РЅР°СЃ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, РЅРѕ РјС‹ РѕСЃС‚Р°РІРёР»Рё РІР°Рј РІС‹Р±РѕСЂ:</div>
 										<div id="ov-sex-list" class="b-radio b-radio_layout_vertical">
 											<div class="b-radio__item b-radio__item_padbot_10">
 												<input id="m_sex" class="b-radio__input" name="ov-sex" type="radio" value="1" />
-												<label class="b-radio__label" for="m_sex">Мужской</label>
+												<label class="b-radio__label" for="m_sex">РњСѓР¶СЃРєРѕР№</label>
 											</div>
 											<div class="b-radio__item b-radio__item_padbot_10">
 												<input id="f_sex" class="b-radio__input" name="ov-sex" type="radio" value="1" />
-												<label class="b-radio__label" for="f_sex">Женский</label>
+												<label class="b-radio__label" for="f_sex">Р–РµРЅСЃРєРёР№</label>
 											</div>
 										</div>
 										<a class="b-button b-button_rectangle_color_disable" onclick="setSex(); return false;" href="javascript:void(0);">
 												<span class="b-button__b1">
 														<span class="b-button__b2">
-																<span class="b-button__txt">Продолжить</span>
+																<span class="b-button__txt">РџСЂРѕРґРѕР»Р¶РёС‚СЊ</span>
 														</span>
 												</span>
 										</a>
                     </form>
                 </div>
                 <div id="ov-sex-a" style="display:none">
-                    <h4 class="b-shadow__title b-shadow__title_padbot_15">Спасибо!</h4>
-                    <div class="b-shadow__txt">Вы можете продолжить работу на сайте.</div>
+                    <h4 class="b-shadow__title b-shadow__title_padbot_15">РЎРїР°СЃРёР±Рѕ!</h4>
+                    <div class="b-shadow__txt">Р’С‹ РјРѕР¶РµС‚Рµ РїСЂРѕРґРѕР»Р¶РёС‚СЊ СЂР°Р±РѕС‚Сѓ РЅР° СЃР°Р№С‚Рµ.</div>
                 </div>
 					</div>
 				</div>

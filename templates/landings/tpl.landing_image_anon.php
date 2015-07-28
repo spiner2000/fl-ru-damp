@@ -13,7 +13,7 @@
                  b-page__title_padbot_10_ipad 
                  b-layout__txt_padbot_null_iphone 
                  b-page__title_size55">
-          СТАНЬ ФРИЛАНСЕРОМ<br/>И ЗАРАБАТЫВАЙ НА FL.RU
+          РЎРўРђРќР¬ Р¤Р РР›РђРќРЎР•Р РћРњ<br/>Р Р—РђР РђР‘РђРўР«Р’РђР™ РќРђ FL.RU
       </h1>
       <h2 class="b-page__title 
                  b-page__title_center 
@@ -21,7 +21,7 @@
                  b-page__title_color_fff 
                  b-page__title_padbot_45 
                  b-page__title_size18_iphone g-hide_iphone">
-          или найди фрилансера, чтобы выполнить работу
+          РёР»Рё РЅР°Р№РґРё С„СЂРёР»Р°РЅСЃРµСЂР°, С‡С‚РѕР±С‹ РІС‹РїРѕР»РЅРёС‚СЊ СЂР°Р±РѕС‚Сѓ
       </h2>       
         
         
@@ -45,17 +45,17 @@
                                    b-button_flat_fs_25 
                                    b-button_flat_width_270 
                                    b-button_marglr_10_10">
-                            Я фрилансер
+                            РЇ С„СЂРёР»Р°РЅСЃРµСЂ
                         </a>
                         <div class="b-layout__txt b-layout__txt_lineheight_24 b-layout__txt_color_fff b-layout__txt_fontsize_20 b-layout__txt_pad_20 b-layout__txt_hide_iphone">
-                            Получай заказы с гарантией оплаты<br/>
-                            от лучших заказчиков рунета, и зарабатывай<br/>
-                            на постоянном потоке заказов
+                            РџРѕР»СѓС‡Р°Р№ Р·Р°РєР°Р·С‹ СЃ РіР°СЂР°РЅС‚РёРµР№ РѕРїР»Р°С‚С‹<br/>
+                            РѕС‚ Р»СѓС‡С€РёС… Р·Р°РєР°Р·С‡РёРєРѕРІ СЂСѓРЅРµС‚Р°, Рё Р·Р°СЂР°Р±Р°С‚С‹РІР°Р№<br/>
+                            РЅР° РїРѕСЃС‚РѕСЏРЅРЅРѕРј РїРѕС‚РѕРєРµ Р·Р°РєР°Р·РѕРІ
                         </div>
                         <div class="b-layout__txt b-layout__txt_lineheight_24 b-layout__txt_color_fff b-layout__txt_fontsize_20 b-layout__txt_padtop_20 b-layout__txt_padbot_20 b-layout__txt_hide b-layout__txt_show_iphone">
-                            Получай заказы с гарантией оплаты 
-                            от лучших заказчиков рунета, и зарабатывай 
-                            на постоянном потоке заказов
+                            РџРѕР»СѓС‡Р°Р№ Р·Р°РєР°Р·С‹ СЃ РіР°СЂР°РЅС‚РёРµР№ РѕРїР»Р°С‚С‹ 
+                            РѕС‚ Р»СѓС‡С€РёС… Р·Р°РєР°Р·С‡РёРєРѕРІ СЂСѓРЅРµС‚Р°, Рё Р·Р°СЂР°Р±Р°С‚С‹РІР°Р№ 
+                            РЅР° РїРѕСЃС‚РѕСЏРЅРЅРѕРј РїРѕС‚РѕРєРµ Р·Р°РєР°Р·РѕРІ
                         </div> 
                   </div>
               </td>
@@ -78,7 +78,7 @@
                                    b-page__title_padbot_45 
                                    b-page__title_padbot_20_iphone 
                                    g-hidden g-show_iphone">
-                            или найди фрилансера, чтобы выполнить работу
+                            РёР»Рё РЅР°Р№РґРё С„СЂРёР»Р°РЅСЃРµСЂР°, С‡С‚РѕР±С‹ РІС‹РїРѕР»РЅРёС‚СЊ СЂР°Р±РѕС‚Сѓ
                         </h2> 
 
                         <a data-ga-event="{ec: 'user', ea: 'main_customerbutton_clicked',el: 'customer'}" 
@@ -90,17 +90,17 @@
                                   b-button_flat_fs_25 
                                   b-button_flat_width_270 
                                   b-button_marglr_10_10">
-                            Я заказчик
+                            РЇ Р·Р°РєР°Р·С‡РёРє
                         </a>
                         <div class="b-layout__txt b-layout__txt_lineheight_24 b-layout__txt_color_fff b-layout__txt_fontsize_20 b-layout__txt_pad_20 b-layout__txt_hide_iphone">
-                            Лучшие исполнители с гарантией<br/>
-                            выполнения работы в срок<br/>
-                            через безопасную сделку
+                            Р›СѓС‡С€РёРµ РёСЃРїРѕР»РЅРёС‚РµР»Рё СЃ РіР°СЂР°РЅС‚РёРµР№<br/>
+                            РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹ РІ СЃСЂРѕРє<br/>
+                            С‡РµСЂРµР· Р±РµР·РѕРїР°СЃРЅСѓСЋ СЃРґРµР»РєСѓ
                         </div>
                         <div class="b-layout__txt b-layout__txt_lineheight_24 b-layout__txt_color_fff b-layout__txt_fontsize_20 b-layout__txt_padtop_20 b-layout__txt_padbot_20 b-layout__txt_hide b-layout__txt_show_iphone">
-                            Лучшие исполнители с гарантией 
-                            выполнения работы в срок 
-                            через безопасную сделку
+                            Р›СѓС‡С€РёРµ РёСЃРїРѕР»РЅРёС‚РµР»Рё СЃ РіР°СЂР°РЅС‚РёРµР№ 
+                            РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹ РІ СЃСЂРѕРє 
+                            С‡РµСЂРµР· Р±РµР·РѕРїР°СЃРЅСѓСЋ СЃРґРµР»РєСѓ
                         </div> 
                  </div>
               </td>
@@ -117,13 +117,13 @@
                <a <?php if (!$uid): ?>data-ga-event="{ec: 'user', ea: 'main_customerbutton_clicked',el: 'customer'}"<?php endif; ?>
                   href="<?=$new_project_url?>" 
                   class="b-button b-button_flat b-button_flat_green b-button_flat_big b-button_flat_width_220 b-button_marglr_10_10 b-button_margbot_10_ipad">
-                   Найти исполнителя
+                   РќР°Р№С‚Рё РёСЃРїРѕР»РЅРёС‚РµР»СЏ
                </a>
                <?php if (!$uid): ?>
                <a  data-ga-event="{ec: 'user', ea: 'main_freelancerbutton_clicked',el: 'freelancer'}" 
                    href="/registration/" 
                    class="b-button b-button_flat b-button_flat_orange b-button_flat_big b-button_flat_width_220 b-button_marglr_10_10 b-button_margbot_10_ipad">
-                   Найти работу
+                   РќР°Р№С‚Рё СЂР°Р±РѕС‚Сѓ
                </a>
                <?php endif; ?>
            </div>
@@ -132,7 +132,7 @@
        
         <div class="b-layout b-layout_padleft_20 b-layout_padright_20 b-layout__txt_center">
             <div class="b-menu__banner b-menu__banner_ln1 b-menu__banner_inline">
-                <a target="_blank" href="/promo/bezopasnaya-sdelka/" class="b-menu__link-banner b-menu__link-banner_margtopnull"><span class="b-icon b-icon__shield"></span>Работайте с гарантией через Безопасную сделку</a>
+                <a target="_blank" href="/promo/bezopasnaya-sdelka/" class="b-menu__link-banner b-menu__link-banner_margtopnull"><span class="b-icon b-icon__shield"></span>Р Р°Р±РѕС‚Р°Р№С‚Рµ СЃ РіР°СЂР°РЅС‚РёРµР№ С‡РµСЂРµР· Р‘РµР·РѕРїР°СЃРЅСѓСЋ СЃРґРµР»РєСѓ</a>
             </div>
         </div>
 

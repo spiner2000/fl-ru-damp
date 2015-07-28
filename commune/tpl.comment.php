@@ -11,15 +11,15 @@
 
             if ($is_deleted) {
                 if ($comment['deleted_id'] == $comment['user_id'])
-                    print('<br><br>Комментарий удален автором ');
+                    print('<br><br>РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ Р°РІС‚РѕСЂРѕРј ');
                 else if ($comment['deleted_id'] == $top['user_id'])
-                    print('<br><br>Комментарий удален автором темы ');
+                    print('<br><br>РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ Р°РІС‚РѕСЂРѕРј С‚РµРјС‹ ');
                 else if ($comment['deleted_id'] == $top['commune_author_id'])
-                    print('<br><br>Комментарий удален создателем сообщества ');
+                    print('<br><br>РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ СЃРѕР·РґР°С‚РµР»РµРј СЃРѕРѕР±С‰РµСЃС‚РІР° ');
                 else if ($comment['deleted_by_commune_admin'])
-                    print('<br><br>Комментарий удален администратором сообщества ');
+                    print('<br><br>РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј СЃРѕРѕР±С‰РµСЃС‚РІР° ');
                 else {
-                    print('<br><br>Комментарий удален модератором ');
+                    print('<br><br>РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ РјРѕРґРµСЂР°С‚РѕСЂРѕРј ');
                     if ($mod & commune::MOD_MODER)
                         print(' ( ' . $comment['deleted_login'] . ' : ' . $comment['deleted_usurname'] . ' ' . $comment['deleted_uname'] . ' ) ');
                 }
@@ -28,16 +28,16 @@
             else if ($comment['modified_id']) {
                 print(' &nbsp;');
                 if ($comment['modified_id'] == $comment['user_id'])
-                    print('[внесены изменения: ');
+                    print('[РІРЅРµСЃРµРЅС‹ РёР·РјРµРЅРµРЅРёСЏ: ');
                 else if ($comment['modified_id'] == $top['commune_author_id'])
-                    print('Отредактировано создателем сообщества [');
+                    print('РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ СЃРѕР·РґР°С‚РµР»РµРј СЃРѕРѕР±С‰РµСЃС‚РІР° [');
                 else if ($comment['modified_by_commune_admin'])
-                    print('Отредактировано администратором сообщества [');
+                    print('РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј СЃРѕРѕР±С‰РµСЃС‚РІР° [');
                 else {
-                    print('Отредактировано модератором');
+                    print('РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј');
                     if ($mod & commune::MOD_MODER)
                         print(' ( ' . $comment['modified_login'] . ' : ' . $comment['modified_usurname'] . ' ' . $comment['modified_uname'] . ' )');
-                    print(' [');  // !!! Каким модератором.
+                    print(' [');  // !!! РљР°РєРёРј РјРѕРґРµСЂР°С‚РѕСЂРѕРј.
                 }
                 print(dateFormat("d.m.Y | H:i]", $comment['modified_time']));
             }
@@ -47,13 +47,13 @@
 
                 if (($comment['member_is_banned'] || $comment['user_is_banned'])
                         && !($mod & (commune::MOD_MODER))) { // | commune::MOD_COMM_MODERATOR | commune::MOD_COMM_AUTHOR)))
-                    print('Ответ от заблокированного пользователя');
+                    print('РћС‚РІРµС‚ РѕС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ');
                 } else {
                     if ($is_deleted)
                         print('<font class="del-color">');
 
                     if ($comment['user_is_banned'] || $comment['member_is_banned'])
-                        print('<font color="#000000"><b>Пользователь забанен' . (!$top['user_is_banned'] ? ' в сообществе' : '') . '.</b></font><br/><br/>');
+                        print('<font color="#000000"><b>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°Р±Р°РЅРµРЅ' . (!$top['user_is_banned'] ? ' РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ' : '') . '.</b></font><br/><br/>');
 
                     if ($comment['title'])
                         print('<font class="bl_name">' . reformat2($comment['title'], 25, 0, 1) . '</font><br>');
@@ -93,13 +93,13 @@
                                         <a href="javascript:void(0)"
                                            onclick="if(warning(1))
                                                xajax_DeleteComment('idMessage_<?= $comment['id'] ?>', <?= $comment['id'] ?>, <?= $user_id ?>, <?= $mod ?>, <?= $om ?>, <?= $level ?>, <?= $is_last ?>);">
-    														Удалить
+    														РЈРґР°Р»РёС‚СЊ
                             </a> |
                         <?
                         } if (($comment['user_id'] == $user_id && $comment['member_is_accepted'])
                                 || ($mod & (commune::MOD_ADMIN | commune::MOD_COMM_MODERATOR | commune::MOD_COMM_AUTHOR))) {
                         ?>
-                         <a href="javascript:void(0);" onclick="__commCF(<?= $comment['id'] ?>, <?= $top['id'] ?>, <?= $commune_id ?>, <?= $om ?>, 0, 'Edit.post', <?= $mod ?>, <?= count($comment['attach']) ?>)">Редактировать</a> |
+                         <a href="javascript:void(0);" onclick="__commCF(<?= $comment['id'] ?>, <?= $top['id'] ?>, <?= $commune_id ?>, <?= $om ?>, 0, 'Edit.post', <?= $mod ?>, <?= count($comment['attach']) ?>)">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> |
 <? } ?>
                         <? if ($top['close_comments'] == 'f' || $top['user_id'] == $user_id) {
  ?>
@@ -107,14 +107,14 @@
                             <a <? if (!$user_id) {
                         ?>href="/fbd.php"<?
                             } else if (!($mod & (commune::MOD_ADMIN | commune::MOD_COMM_ACCEPTED | commune::MOD_COMM_AUTHOR))) {
-                        ?>href="error" onclick="alert('Вы не являетесь членом данного сообщества. Данная функция Вам недоступна.'); return false;"<?
+                        ?>href="error" onclick="alert('Р’С‹ РЅРµ СЏРІР»СЏРµС‚РµСЃСЊ С‡Р»РµРЅРѕРј РґР°РЅРЅРѕРіРѕ СЃРѕРѕР±С‰РµСЃС‚РІР°. Р”Р°РЅРЅР°СЏ С„СѓРЅРєС†РёСЏ Р’Р°Рј РЅРµРґРѕСЃС‚СѓРїРЅР°.'); return false;"<?
                             } else {
                         ?>href="javascript:void(0)" onclick="__commCF(<?= $comment['id'] ?>, <?= $top['id'] ?>, <?= $commune_id ?>, <?= $om ?>, 0, 'Create.post', <?= $mod ?>);"
                             <? } ?>
-                            >Комментировать</a> |
+                            >РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ</a> |
 
                             <? } ?>
-                        <a href="?id=<?= $commune_id ?>&site=Topic&post=<?= $top['id'] ?>.<?= $comment['id'] ?><?= ($om ? '&om='.$om : '') ?>#o<?= $comment['id'] ?>">Ссылка</a>
+                        <a href="?id=<?= $commune_id ?>&site=Topic&post=<?= $top['id'] ?>.<?= $comment['id'] ?><?= ($om ? '&om='.$om : '') ?>#o<?= $comment['id'] ?>">РЎСЃС‹Р»РєР°</a>
                     </td>
                     <td NOWRAP>
                         <?
@@ -134,9 +134,9 @@
                                 <a class="red-link vv" <?= $onclick ?> href="<?= $href ?>">
                         <?
                                 if ($top['member_warn_count'] < 3)
-                                    print("Сделать предупреждение ({$comment['member_warn_count']})");
+                                    print("РЎРґРµР»Р°С‚СЊ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ ({$comment['member_warn_count']})");
                                 else
-                                    print("Забанить!");
+                                    print("Р—Р°Р±Р°РЅРёС‚СЊ!");
                         ?>
                             </a>
                             <? } ?>

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Øàáëîí "ïëèòêà" ÒÓ
+ * Ð¨Ð°Ð±Ð»Ð¾Ð½ "Ð¿Ð»Ð¸Ñ‚ÐºÐ°" Ð¢Ð£
  */
 
 if ($tservices):
@@ -13,7 +13,7 @@ foreach($tservices as $key => $tservice):
     $tservice_url = sprintf('/tu/%d/%s.html', $tservice['id'], tservices_helper::translit($tservice['title']));
     $tservice_title = LenghtFormatEx(reformat($tservice['title'], 20, 0, 1),80);
     $alt = $tservice_title;
-    $title = sprintf("Óñëóãè ôðèëàíñåðà %s: %s", $tservice['login'], $tservice_title);
+    $title = sprintf("Ð£ÑÐ»ÑƒÐ³Ð¸ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð° %s: %s", $tservice['login'], $tservice_title);
 
     if (!empty($tservice['file'])) {
         $image_url = tservices_helper::image_src($tservice['file'], $tservice['login']);
@@ -23,7 +23,7 @@ foreach($tservices as $key => $tservice):
     }
 
     $hasVideo = !empty($tservice['videos']) && count($tservice['videos']);
-    // Ïîêà ñôèíñê íå ñ÷èòàåò âñå ïîêóïêè, áóäåì áðàòü îòçûâû. #0026584
+    // ÐŸÐ¾ÐºÐ° ÑÑ„Ð¸Ð½ÑÐº Ð½Ðµ ÑÑ‡Ð¸Ñ‚Ð°ÐµÑ‚ Ð²ÑÐµ Ð¿Ð¾ÐºÑƒÐ¿ÐºÐ¸, Ð±ÑƒÐ´ÐµÐ¼ Ð±Ñ€Ð°Ñ‚ÑŒ Ð¾Ñ‚Ð·Ñ‹Ð²Ñ‹. #0026584
     $sold_count = isset($tservice['count_sold']) ? $tservice['count_sold'] : $tservice['total_feedbacks']; 
 ?>
     <div class="i-pic i-pic_port i-pic_port_z-index_inherit i-pic_pad_10 i-pic_height_220 i-pic_bord_green_hover">
@@ -36,7 +36,7 @@ foreach($tservices as $key => $tservice):
             </a>
             <a class="b-pic__price-box b-pic__price-box_pay b-pic__price-box b-pic__price-box_noline" href="javascript:void(0);" data-url="<?=$tservice_url?>" onclick="TServices_Catalog.orderNow(this);"><?=tservices_helper::cost_format($tservice['price'],true)?>			
 			<?php if ($sold_count > 0): ?>
-                <span title="Êîëè÷åñòâî ïðîäàæ óñëóãè"><span class="b-icon b-icon__tu2 b-icon_top_2"></span> <?=number_format($sold_count, 0, '', ' ')?></span>
+                <span title="ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¿Ñ€Ð¾Ð´Ð°Ð¶ ÑƒÑÐ»ÑƒÐ³Ð¸"><span class="b-icon b-icon__tu2 b-icon_top_2"></span> <?=number_format($sold_count, 0, '', ' ')?></span>
             <?php endif; ?>
             </a>
         </div>

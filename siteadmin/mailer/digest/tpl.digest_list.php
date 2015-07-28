@@ -33,7 +33,7 @@
                     <a class="b-button b-button_rectangle_color_transparent" href="javascript:void(0)" onclick="xajax_setAutoComplete('<?= $this->__toString();?>', $(this).getParent('span').getElement('input[type=checkbox]').checked)">
                         <span class="b-button__b1">
                             <span class="b-button__b2">
-                                <span class="b-button__txt">Заполнить автоматически</span>
+                                <span class="b-button__txt">Р—Р°РїРѕР»РЅРёС‚СЊ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё</span>
                             </span>
                         </span>
                     </a>
@@ -47,10 +47,10 @@
             <? }//for?>
         </table>
         <? if($this->isAdditionFields()) { ?>
-        <div class="b-layout__txt b-layout__txt_padleft_150 block_add_fld"><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_fontsize_11" href="javascript:void(0)">Добавить</a></div>
+        <div class="b-layout__txt b-layout__txt_padleft_150 block_add_fld"><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_fontsize_11" href="javascript:void(0)">Р”РѕР±Р°РІРёС‚СЊ</a></div>
         <? }//if?>
     </div>
     <div class="b-layout__txt b-layout__txt_float_right block_create_action">
-        <a class="b-layout__link b-layout_hide b-layout__link_bordbot_dot_0f71c8 b-layout__link_fontsize_11" href="javascript:void(0)">Добавить блок</a>
+        <a class="b-layout__link b-layout_hide b-layout__link_bordbot_dot_0f71c8 b-layout__link_fontsize_11" href="javascript:void(0)">Р”РѕР±Р°РІРёС‚СЊ Р±Р»РѕРє</a>
     </div>
 </div> 

@@ -10,59 +10,59 @@ if(!defined('COMPRESS_STATIC')) {
 define('JAVA_PATH', $_SERVER['DOCUMENT_ROOT'] . '/classes/java');
 
 /**
- * Класс для сжатия и кеширования .css и .js файлов
+ * РљР»Р°СЃСЃ РґР»СЏ СЃР¶Р°С‚РёСЏ Рё РєРµС€РёСЂРѕРІР°РЅРёСЏ .css Рё .js С„Р°Р№Р»РѕРІ
  * 		  
  */
 class static_compress {
 	
 	/**
-	 * Максимальное время жизни данных в мемкеше.
+	 * РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РІСЂРµРјСЏ Р¶РёР·РЅРё РґР°РЅРЅС‹С… РІ РјРµРјРєРµС€Рµ.
 	 */
     const GC_LIFE = 14400;
     
-    const MEM_LOCK_LIFE = 25; // время блокировки процесса формирования пакета.
+    const MEM_LOCK_LIFE = 25; // РІСЂРµРјСЏ Р±Р»РѕРєРёСЂРѕРІРєРё РїСЂРѕС†РµСЃСЃР° С„РѕСЂРјРёСЂРѕРІР°РЅРёСЏ РїР°РєРµС‚Р°.
     const MEM_BATCHES_VERSION_KEY = 'static_batch_version';
-    const STATIC_PATH = '/static'; // (deprecated) папка для хранения сжатых .js и.css на локальном сервере 
-    const STATIC_WDPATH = 'wdstatic'; // папка для хранения сжатых .js и.css на WebDAV
-    const BEM_SRC_PATH = '/css/block/style.css'; // точка входа в исходники БЭМ.
+    const STATIC_PATH = '/static'; // (deprecated) РїР°РїРєР° РґР»СЏ С…СЂР°РЅРµРЅРёСЏ СЃР¶Р°С‚С‹С… .js Рё.css РЅР° Р»РѕРєР°Р»СЊРЅРѕРј СЃРµСЂРІРµСЂРµ 
+    const STATIC_WDPATH = 'wdstatic'; // РїР°РїРєР° РґР»СЏ С…СЂР°РЅРµРЅРёСЏ СЃР¶Р°С‚С‹С… .js Рё.css РЅР° WebDAV
+    const BEM_SRC_PATH = '/css/block/style.css'; // С‚РѕС‡РєР° РІС…РѕРґР° РІ РёСЃС…РѕРґРЅРёРєРё Р‘Р­Рњ.
     const BEM_SRC_PATH_MAIN = '/css/block/style-main.css';
-    const BEM_DEST_PATH = '/css/block/_compressed.css'; // конечный (собранный в один) файл БЕМ-стилей.
-    const MAX_CSSSIZE_IE = 240; // максимальный размер .css файла для IE в килобайтах.
+    const BEM_DEST_PATH = '/css/block/_compressed.css'; // РєРѕРЅРµС‡РЅС‹Р№ (СЃРѕР±СЂР°РЅРЅС‹Р№ РІ РѕРґРёРЅ) С„Р°Р№Р» Р‘Р•Рњ-СЃС‚РёР»РµР№.
+    const MAX_CSSSIZE_IE = 240; // РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ .css С„Р°Р№Р»Р° РґР»СЏ IE РІ РєРёР»РѕР±Р°Р№С‚Р°С….
 
     /**
-     * Разделитель имен файлов в $seed (раскодированное base64 содержимое параметра ?t).
+     * Р Р°Р·РґРµР»РёС‚РµР»СЊ РёРјРµРЅ С„Р°Р№Р»РѕРІ РІ $seed (СЂР°СЃРєРѕРґРёСЂРѕРІР°РЅРЅРѕРµ base64 СЃРѕРґРµСЂР¶РёРјРѕРµ РїР°СЂР°РјРµС‚СЂР° ?t).
      */
     const SEED_SEP = ':';
 
     /**
-     * Индекс типа файла CSS.
+     * РРЅРґРµРєСЃ С‚РёРїР° С„Р°Р№Р»Р° CSS.
      */
     const TYPE_CSS = 0;
 
     /**
-     * Индекс типа файла JS.
+     * РРЅРґРµРєСЃ С‚РёРїР° С„Р°Р№Р»Р° JS.
      */
     const TYPE_JS  = 1;
     
     
     /**
-     * Индекс файла JS обернутого в php
+     * РРЅРґРµРєСЃ С„Р°Р№Р»Р° JS РѕР±РµСЂРЅСѓС‚РѕРіРѕ РІ php
      */
     const TYPE_PHP_JS = 2;
     
     /**
-     * Индекс типа файла JS который необходимо выдать в кодировке UTF-8.
+     * РРЅРґРµРєСЃ С‚РёРїР° С„Р°Р№Р»Р° JS РєРѕС‚РѕСЂС‹Р№ РЅРµРѕР±С…РѕРґРёРјРѕ РІС‹РґР°С‚СЊ РІ РєРѕРґРёСЂРѕРІРєРµ UTF-8.
      */
     const TYPE_JS_UTF8  = 3;
     
     /**
-     * Служит для проверки, был ли добавлен файл в любом из экземпляров класса, чтобы исключить дубли.
+     * РЎР»СѓР¶РёС‚ РґР»СЏ РїСЂРѕРІРµСЂРєРё, Р±С‹Р» Р»Рё РґРѕР±Р°РІР»РµРЅ С„Р°Р№Р» РІ Р»СЋР±РѕРј РёР· СЌРєР·РµРјРїР»СЏСЂРѕРІ РєР»Р°СЃСЃР°, С‡С‚РѕР±С‹ РёСЃРєР»СЋС‡РёС‚СЊ РґСѓР±Р»Рё.
      * @var array
      */
     private static $_allAddedFiles = array();
     
     /**
-     * Типы файлов.
+     * РўРёРїС‹ С„Р°Р№Р»РѕРІ.
      * 
      * @var array
      */
@@ -76,21 +76,21 @@ class static_compress {
 
 
     /**
-     *  Массивы имен файлов (от корня), индексированные типом файлов.
+     *  РњР°СЃСЃРёРІС‹ РёРјРµРЅ С„Р°Р№Р»РѕРІ (РѕС‚ РєРѕСЂРЅСЏ), РёРЅРґРµРєСЃРёСЂРѕРІР°РЅРЅС‹Рµ С‚РёРїРѕРј С„Р°Р№Р»РѕРІ.
      * 
      * @var array
      */
     private $files;
 	
 	/**
-	 * Переменная для подключения мемкеша
+	 * РџРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РїРѕРґРєР»СЋС‡РµРЅРёСЏ РјРµРјРєРµС€Р°
 	 * 
 	 * @var memBuff
 	 */
 	private $memBuff;
 	
 	/**
-	 * Надо ли жать файлы
+	 * РќР°РґРѕ Р»Рё Р¶Р°С‚СЊ С„Р°Р№Р»С‹
 	 * 
 	 * @var memBuff
 	 */
@@ -108,7 +108,7 @@ class static_compress {
     private $_batches;
  
  /**
-  * Массивы с временем изменения файлов, индексированные типом.
+  * РњР°СЃСЃРёРІС‹ СЃ РІСЂРµРјРµРЅРµРј РёР·РјРµРЅРµРЅРёСЏ С„Р°Р№Р»РѕРІ, РёРЅРґРµРєСЃРёСЂРѕРІР°РЅРЅС‹Рµ С‚РёРїРѕРј.
   * 
   * @var array 
   */
@@ -117,7 +117,7 @@ class static_compress {
  private $_root;
 	
 	/**
-	 * Конструктор. Инициализация переменных
+	 * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ. РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїРµСЂРµРјРµРЅРЅС‹С…
 	 */
 	function static_compress($enabled = COMPRESS_STATIC, $options = array()){
         if (isset($options['bem']) && $options['bem']) {
@@ -145,10 +145,10 @@ class static_compress {
 	}
 	
 	/**
-     * Добавление нового файла (стилей, ява-скрипта, др) перед вызовом static_compress::send().
+     * Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ С„Р°Р№Р»Р° (СЃС‚РёР»РµР№, СЏРІР°-СЃРєСЂРёРїС‚Р°, РґСЂ) РїРµСЂРµРґ РІС‹Р·РѕРІРѕРј static_compress::send().
      * @see static_compress::send()
 	 * 
-     * @param string $fname   путь к файлу.
+     * @param string $fname   РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ.
 	 */
     function add($fname, $utf8 = false) {
         if($this->isAdded($fname)) {
@@ -171,7 +171,7 @@ class static_compress {
                     if($fsize > $maxsize) {
                         $this->_log->writeln("ERROR! {$fname} size is {$fsize} bytes (limit is $maxsize)");
                         if(!is_release()) {
-                            die("static_compress: ERROR! {$fname} size is {$fsize} bytes (limit is $maxsize). Необходимо разбить файл на более мелкие.");
+                            die("static_compress: ERROR! {$fname} size is {$fsize} bytes (limit is $maxsize). РќРµРѕР±С…РѕРґРёРјРѕ СЂР°Р·Р±РёС‚СЊ С„Р°Р№Р» РЅР° Р±РѕР»РµРµ РјРµР»РєРёРµ.");
                         }
                     }
                     if($this->_cssSize && $this->_cssSize + $fsize > $maxsize) {
@@ -188,10 +188,10 @@ class static_compress {
     }
 
     /**
-     * Регистрирует файл в массивах класса.
+     * Р РµРіРёСЃС‚СЂРёСЂСѓРµС‚ С„Р°Р№Р» РІ РјР°СЃСЃРёРІР°С… РєР»Р°СЃСЃР°.
      *
-     * @param int $type   тип файла.
-     * @param string $fname   путь к файлу.
+     * @param int $type   С‚РёРї С„Р°Р№Р»Р°.
+     * @param string $fname   РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ.
      */
     private function _add($type, $fname) {
         $this->files[$type][] = $fname;
@@ -199,8 +199,8 @@ class static_compress {
     }
 
     /**
-     * Проверяет, был ли добавлен файл в любом из экземпляров класса.
-     * @param string $fname   путь к файлу.
+     * РџСЂРѕРІРµСЂСЏРµС‚, Р±С‹Р» Р»Рё РґРѕР±Р°РІР»РµРЅ С„Р°Р№Р» РІ Р»СЋР±РѕРј РёР· СЌРєР·РµРјРїР»СЏСЂРѕРІ РєР»Р°СЃСЃР°.
+     * @param string $fname   РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ.
      * @return boolean
      */
     function isAdded($fname) {
@@ -208,22 +208,22 @@ class static_compress {
     }
 
     /**
-     * Формирует параметр ?t по типу файлов и их именам.
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ РїР°СЂР°РјРµС‚СЂ ?t РїРѕ С‚РёРїСѓ С„Р°Р№Р»РѕРІ Рё РёС… РёРјРµРЅР°Рј.
      * 
-     * @param int $type   тип файла.
-     * @return string   закодированная строка.
+     * @param int $type   С‚РёРї С„Р°Р№Р»Р°.
+     * @return string   Р·Р°РєРѕРґРёСЂРѕРІР°РЅРЅР°СЏ СЃС‚СЂРѕРєР°.
      */
     private function _encodeSeed($type) {
         return base64_encode($type . self::SEED_SEP . $this->_root . self::SEED_SEP . implode(self::SEED_SEP, $this->files[$type]));
     }
 
     /**
-     * Раскодирует $seed (параметр ?t). Инициализирует $this->files.
+     * Р Р°СЃРєРѕРґРёСЂСѓРµС‚ $seed (РїР°СЂР°РјРµС‚СЂ ?t). РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ $this->files.
      * @see static_compress::_encodeSeed()
      * 
-     * @param string $seed   закодировнная строка.
-     * @param boolean $seed_expired   флаг устаревшего $seed (например, запрашивается уже удаленный файл).
-     * @return integer|boolean $type   тип файла или FALSE.
+     * @param string $seed   Р·Р°РєРѕРґРёСЂРѕРІРЅРЅР°СЏ СЃС‚СЂРѕРєР°.
+     * @param boolean $seed_expired   С„Р»Р°Рі СѓСЃС‚Р°СЂРµРІС€РµРіРѕ $seed (РЅР°РїСЂРёРјРµСЂ, Р·Р°РїСЂР°С€РёРІР°РµС‚СЃСЏ СѓР¶Рµ СѓРґР°Р»РµРЅРЅС‹Р№ С„Р°Р№Р»).
+     * @return integer|boolean $type   С‚РёРї С„Р°Р№Р»Р° РёР»Рё FALSE.
      */
     private function _decodeSeed($seed, &$seed_expired = false) {
         $seed_expired = false;
@@ -258,9 +258,9 @@ class static_compress {
     }
     
     /**
-     * Получаем инфо о пакетах из кэша.
-     * Что делать если кэш отвалился? 
-     * @todo сделать альтернативу в БД.
+     * РџРѕР»СѓС‡Р°РµРј РёРЅС„Рѕ Рѕ РїР°РєРµС‚Р°С… РёР· РєСЌС€Р°.
+     * Р§С‚Рѕ РґРµР»Р°С‚СЊ РµСЃР»Рё РєСЌС€ РѕС‚РІР°Р»РёР»СЃСЏ? 
+     * @todo СЃРґРµР»Р°С‚СЊ Р°Р»СЊС‚РµСЂРЅР°С‚РёРІСѓ РІ Р‘Р”.
      *
      * @return array
      */ 
@@ -268,9 +268,9 @@ class static_compress {
         if (!$this->_batches) {
             if (!$this->_batches = $this->memBuff->get(self::MEM_BATCHES_VERSION_KEY)) {
                 $this->_batches = array(
-                    'version'   => time(),                  // версия кэша
-                    'batches'   => array(),                 // массив с версиями сборок (id сборки => версия кэша)
-                    'bem_count' => 0                        // кол-во получившихся БЭМ-файлов (для IE).
+                    'version'   => time(),                  // РІРµСЂСЃРёСЏ РєСЌС€Р°
+                    'batches'   => array(),                 // РјР°СЃСЃРёРІ СЃ РІРµСЂСЃРёСЏРјРё СЃР±РѕСЂРѕРє (id СЃР±РѕСЂРєРё => РІРµСЂСЃРёСЏ РєСЌС€Р°)
+                    'bem_count' => 0                        // РєРѕР»-РІРѕ РїРѕР»СѓС‡РёРІС€РёС…СЃСЏ Р‘Р­Рњ-С„Р°Р№Р»РѕРІ (РґР»СЏ IE).
                 );
             }
         }
@@ -278,8 +278,8 @@ class static_compress {
     }
 
     /**
-     * Сохраняет инфо о пакетах в мемкэш.
-     * @param array $batches   см. getBatchesInfo()
+     * РЎРѕС…СЂР°РЅСЏРµС‚ РёРЅС„Рѕ Рѕ РїР°РєРµС‚Р°С… РІ РјРµРјРєСЌС€.
+     * @param array $batches   СЃРј. getBatchesInfo()
      */ 
     function setBatchesInfo($batches) {
         $this->_batches = NULL;
@@ -291,16 +291,16 @@ class static_compress {
     
     
     /**
-     * Получает версию конкретного пакета. При необходимости кэширует в общий массив, чтобы не делать лишних обращений в мемкэш.
+     * РџРѕР»СѓС‡Р°РµС‚ РІРµСЂСЃРёСЋ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РїР°РєРµС‚Р°. РџСЂРё РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РєСЌС€РёСЂСѓРµС‚ РІ РѕР±С‰РёР№ РјР°СЃСЃРёРІ, С‡С‚РѕР±С‹ РЅРµ РґРµР»Р°С‚СЊ Р»РёС€РЅРёС… РѕР±СЂР°С‰РµРЅРёР№ РІ РјРµРјРєСЌС€.
      *
-     * @param integer $batch_id   ид. пакета.
-     * @return integer   версия.
+     * @param integer $batch_id   РёРґ. РїР°РєРµС‚Р°.
+     * @return integer   РІРµСЂСЃРёСЏ.
      */ 
     function getBatchVersion($batch_id) {
         $batch_version = (int)$this->_batches[$batch_id];
         if($batch_version < $this->_batches['version']) {
             $batch_version = (int)$this->memBuff->get(self::MEM_BATCHES_VERSION_KEY.$batch_id);
-            if($batch_version >= $this->_batches['version']) { // пакет сформирован.
+            if($batch_version >= $this->_batches['version']) { // РїР°РєРµС‚ СЃС„РѕСЂРјРёСЂРѕРІР°РЅ.
                 $this->_batches[$batch_id] = $batch_version;
                 $this->setBatchesInfo($this->_batches);
             }
@@ -309,18 +309,18 @@ class static_compress {
     }
 
     /**
-     * Сохраняет версию конкретного пакета. Дополнительно кэширует в общий массив,
-     * чтобы не делать лишних обращений в мемкэш.
+     * РЎРѕС…СЂР°РЅСЏРµС‚ РІРµСЂСЃРёСЋ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РїР°РєРµС‚Р°. Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ РєСЌС€РёСЂСѓРµС‚ РІ РѕР±С‰РёР№ РјР°СЃСЃРёРІ,
+     * С‡С‚РѕР±С‹ РЅРµ РґРµР»Р°С‚СЊ Р»РёС€РЅРёС… РѕР±СЂР°С‰РµРЅРёР№ РІ РјРµРјРєСЌС€.
      *
-     * @param integer $batch_id   ид. пакета.
-     * @param integer $batch_version   версия.
-     * @return boolean   успешно?
+     * @param integer $batch_id   РёРґ. РїР°РєРµС‚Р°.
+     * @param integer $batch_version   РІРµСЂСЃРёСЏ.
+     * @return boolean   СѓСЃРїРµС€РЅРѕ?
      */ 
     function setBatchVersion($batch_id, $batch_version) {
         if($this->memBuff->set(self::MEM_BATCHES_VERSION_KEY.$batch_id, $batch_version, 0)) {
             $batches = $this->getBatchesInfo();
             $batches[$batch_id] = $batch_version;
-            $this->setBatchesInfo($batches); // тут есть вероятность того, что параллельный скрипт затрет данные, тогда запись будет в getBatchVersion()
+            $this->setBatchesInfo($batches); // С‚СѓС‚ РµСЃС‚СЊ РІРµСЂРѕСЏС‚РЅРѕСЃС‚СЊ С‚РѕРіРѕ, С‡С‚Рѕ РїР°СЂР°Р»Р»РµР»СЊРЅС‹Р№ СЃРєСЂРёРїС‚ Р·Р°С‚СЂРµС‚ РґР°РЅРЅС‹Рµ, С‚РѕРіРґР° Р·Р°РїРёСЃСЊ Р±СѓРґРµС‚ РІ getBatchVersion()
             return true;
         }
         return false;
@@ -328,12 +328,12 @@ class static_compress {
 
     
     /**
-     * Обновляет версию статики глобально.
-     * После чего файлы формируются заново.
-     * Запускается автоматом (при коммите на бете/альфе, при синхе на релизе)
-     * @todo сделать чистку от старых файлов.
+     * РћР±РЅРѕРІР»СЏРµС‚ РІРµСЂСЃРёСЋ СЃС‚Р°С‚РёРєРё РіР»РѕР±Р°Р»СЊРЅРѕ.
+     * РџРѕСЃР»Рµ С‡РµРіРѕ С„Р°Р№Р»С‹ С„РѕСЂРјРёСЂСѓСЋС‚СЃСЏ Р·Р°РЅРѕРІРѕ.
+     * Р—Р°РїСѓСЃРєР°РµС‚СЃСЏ Р°РІС‚РѕРјР°С‚РѕРј (РїСЂРё РєРѕРјРјРёС‚Рµ РЅР° Р±РµС‚Рµ/Р°Р»СЊС„Рµ, РїСЂРё СЃРёРЅС…Рµ РЅР° СЂРµР»РёР·Рµ)
+     * @todo СЃРґРµР»Р°С‚СЊ С‡РёСЃС‚РєСѓ РѕС‚ СЃС‚Р°СЂС‹С… С„Р°Р№Р»РѕРІ.
      *
-     * @param integer $version   версия (timestamp), если NULL, то текущее время.
+     * @param integer $version   РІРµСЂСЃРёСЏ (timestamp), РµСЃР»Рё NULL, С‚Рѕ С‚РµРєСѓС‰РµРµ РІСЂРµРјСЏ.
      */
     function updateBatchesVersion($version = NULL) {
         $log = $this->_log;
@@ -355,31 +355,31 @@ class static_compress {
     }
 
     /**
-     * Формирует имя лок-файла
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ РёРјСЏ Р»РѕРє-С„Р°Р№Р»Р°
      * @see static_compressor::_lock()
      * @deprecated
      *
-     * @param string $batch_id    ид. пакета (md5 имен файлов, см. send()) 
-     * @param string $type        тип файлов в пакете
-     * @return boolean   ок?
+     * @param string $batch_id    РёРґ. РїР°РєРµС‚Р° (md5 РёРјРµРЅ С„Р°Р№Р»РѕРІ, СЃРј. send()) 
+     * @param string $type        С‚РёРї С„Р°Р№Р»РѕРІ РІ РїР°РєРµС‚Рµ
+     * @return boolean   РѕРє?
      */ 
     private function _lfname($batch_id, $type) {
         return "/{$batch_id}.{$this->types[$type]}.lock";
     }
 
     /**
-     * Блокирует пакет от других процессов.
-     * info: LOCK_EX не катит на боевой, т.к. все процессы один и тот же экземпляр используют, поэтому такой способ.
-     *       (есть еще метод с мемкэшем.)
+     * Р‘Р»РѕРєРёСЂСѓРµС‚ РїР°РєРµС‚ РѕС‚ РґСЂСѓРіРёС… РїСЂРѕС†РµСЃСЃРѕРІ.
+     * info: LOCK_EX РЅРµ РєР°С‚РёС‚ РЅР° Р±РѕРµРІРѕР№, С‚.Рє. РІСЃРµ РїСЂРѕС†РµСЃСЃС‹ РѕРґРёРЅ Рё С‚РѕС‚ Р¶Рµ СЌРєР·РµРјРїР»СЏСЂ РёСЃРїРѕР»СЊР·СѓСЋС‚, РїРѕСЌС‚РѕРјСѓ С‚Р°РєРѕР№ СЃРїРѕСЃРѕР±.
+     *       (РµСЃС‚СЊ РµС‰Рµ РјРµС‚РѕРґ СЃ РјРµРјРєСЌС€РµРј.)
      * @see static_compressor::send()
      * @deprecated
      *
-     * @param string $batch_id    ид. пакета (md5 имен файлов, см. send()) 
-     * @param string $type        тип файлов в пакете
-     * @return boolean   ок?
+     * @param string $batch_id    РёРґ. РїР°РєРµС‚Р° (md5 РёРјРµРЅ С„Р°Р№Р»РѕРІ, СЃРј. send()) 
+     * @param string $type        С‚РёРї С„Р°Р№Р»РѕРІ РІ РїР°РєРµС‚Рµ
+     * @return boolean   РѕРє?
      */ 
     private function _lock($batch_id, $type) {
-        // info: LOCK_EX не катит на боевой, т.к. все процессы один и тот же экземпляр используют.
+        // info: LOCK_EX РЅРµ РєР°С‚РёС‚ РЅР° Р±РѕРµРІРѕР№, С‚.Рє. РІСЃРµ РїСЂРѕС†РµСЃСЃС‹ РѕРґРёРЅ Рё С‚РѕС‚ Р¶Рµ СЌРєР·РµРјРїР»СЏСЂ РёСЃРїРѕР»СЊР·СѓСЋС‚.
         $this->_lock = NULL;
         $lfname = $this->_lfname($batch_id, $type);
         if($f = @fopen($lfname, 'x')) {
@@ -389,23 +389,23 @@ class static_compress {
     }
 
     /**
-     * Проверяет, заблокирован ли пакет. Если процесс натыкается на блок, то вместо пакетного файла получает sendUncompress().
+     * РџСЂРѕРІРµСЂСЏРµС‚, Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ Р»Рё РїР°РєРµС‚. Р•СЃР»Рё РїСЂРѕС†РµСЃСЃ РЅР°С‚С‹РєР°РµС‚СЃСЏ РЅР° Р±Р»РѕРє, С‚Рѕ РІРјРµСЃС‚Рѕ РїР°РєРµС‚РЅРѕРіРѕ С„Р°Р№Р»Р° РїРѕР»СѓС‡Р°РµС‚ sendUncompress().
      * @see static_compressor::send()
      * @deprecated
      *
-     * @param string $batch_id    ид. пакета (md5 имен файлов, см. send()) 
-     * @param string $type        тип файлов в пакете
-     * @return boolean   ок?
+     * @param string $batch_id    РёРґ. РїР°РєРµС‚Р° (md5 РёРјРµРЅ С„Р°Р№Р»РѕРІ, СЃРј. send()) 
+     * @param string $type        С‚РёРї С„Р°Р№Р»РѕРІ РІ РїР°РєРµС‚Рµ
+     * @return boolean   РѕРє?
      */ 
     function _islock($batch_id, $type) {
         return file_exists($this->_lfname($batch_id, $type));
     }
 
     /**
-     * Снимает блок с последнего заблокированного пакета.
+     * РЎРЅРёРјР°РµС‚ Р±Р»РѕРє СЃ РїРѕСЃР»РµРґРЅРµРіРѕ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅРѕРіРѕ РїР°РєРµС‚Р°.
      * @see static_compressor::_lock()
      * @deprecated
-     * @return boolean   ок?
+     * @return boolean   РѕРє?
      */ 
     private function _unlock() {
         if($this->_lock) {
@@ -417,9 +417,9 @@ class static_compress {
     }
     
     /**
-     * Задает имя ключа для блокировки процесса генерации пакета.
-     * @param string $batch_id   ид (хеш) пакета
-     * @param string $batch_version   текущая версия статики, блок действует только в этой версии.
+     * Р—Р°РґР°РµС‚ РёРјСЏ РєР»СЋС‡Р° РґР»СЏ Р±Р»РѕРєРёСЂРѕРІРєРё РїСЂРѕС†РµСЃСЃР° РіРµРЅРµСЂР°С†РёРё РїР°РєРµС‚Р°.
+     * @param string $batch_id   РёРґ (С…РµС€) РїР°РєРµС‚Р°
+     * @param string $batch_version   С‚РµРєСѓС‰Р°СЏ РІРµСЂСЃРёСЏ СЃС‚Р°С‚РёРєРё, Р±Р»РѕРє РґРµР№СЃС‚РІСѓРµС‚ С‚РѕР»СЊРєРѕ РІ СЌС‚РѕР№ РІРµСЂСЃРёРё.
      * @return string
      */ 
     private function _createBatchLockKey($batch_id, $batch_version) {
@@ -427,12 +427,12 @@ class static_compress {
     }
 
     /**
-     * Печатает html-блоки (<script ...>, <link ...>, др.) для обращения к статическому контенту.
-     * Собирает статику каждого типа (js|css) в один файл, вида:
+     * РџРµС‡Р°С‚Р°РµС‚ html-Р±Р»РѕРєРё (<script ...>, <link ...>, РґСЂ.) РґР»СЏ РѕР±СЂР°С‰РµРЅРёСЏ Рє СЃС‚Р°С‚РёС‡РµСЃРєРѕРјСѓ РєРѕРЅС‚РµРЅС‚Сѓ.
+     * РЎРѕР±РёСЂР°РµС‚ СЃС‚Р°С‚РёРєСѓ РєР°Р¶РґРѕРіРѕ С‚РёРїР° (js|css) РІ РѕРґРёРЅ С„Р°Р№Р», РІРёРґР°:
      * %batchid%_%version%.%type%
-     * который сохраняет на сервере. При следующем обращении, если версия не устарела, то просто печатаем тег с адресом этого файла.
-     * Если версия устарела, то сначала генерируем файл заново. При этом блокируем запись файла от других процессов.
-     * Если процесс натыкается на блок, то выдаем ему статику "online" -- через static_compressor::output().
+     * РєРѕС‚РѕСЂС‹Р№ СЃРѕС…СЂР°РЅСЏРµС‚ РЅР° СЃРµСЂРІРµСЂРµ. РџСЂРё СЃР»РµРґСѓСЋС‰РµРј РѕР±СЂР°С‰РµРЅРёРё, РµСЃР»Рё РІРµСЂСЃРёСЏ РЅРµ СѓСЃС‚Р°СЂРµР»Р°, С‚Рѕ РїСЂРѕСЃС‚Рѕ РїРµС‡Р°С‚Р°РµРј С‚РµРі СЃ Р°РґСЂРµСЃРѕРј СЌС‚РѕРіРѕ С„Р°Р№Р»Р°.
+     * Р•СЃР»Рё РІРµСЂСЃРёСЏ СѓСЃС‚Р°СЂРµР»Р°, С‚Рѕ СЃРЅР°С‡Р°Р»Р° РіРµРЅРµСЂРёСЂСѓРµРј С„Р°Р№Р» Р·Р°РЅРѕРІРѕ. РџСЂРё СЌС‚РѕРј Р±Р»РѕРєРёСЂСѓРµРј Р·Р°РїРёСЃСЊ С„Р°Р№Р»Р° РѕС‚ РґСЂСѓРіРёС… РїСЂРѕС†РµСЃСЃРѕРІ.
+     * Р•СЃР»Рё РїСЂРѕС†РµСЃСЃ РЅР°С‚С‹РєР°РµС‚СЃСЏ РЅР° Р±Р»РѕРє, С‚Рѕ РІС‹РґР°РµРј РµРјСѓ СЃС‚Р°С‚РёРєСѓ "online" -- С‡РµСЂРµР· static_compressor::output().
      */
     function send() {
         global $DB;
@@ -472,45 +472,45 @@ class static_compress {
                     $log->writeln('lock not exist, try set it...');
                     if($batch_locked = !$this->memBuff->add($lock_key, 1, self::MEM_LOCK_LIFE)) {
                         $log->writeln('lock already added');
-                    } else if($batch_locked = !$this->memBuff->set($lock_key, 1, self::MEM_LOCK_LIFE)) {  // какая-то фигня с add(), но зато блокирует другие add().
+                    } else if($batch_locked = !$this->memBuff->set($lock_key, 1, self::MEM_LOCK_LIFE)) {  // РєР°РєР°СЏ-С‚Рѕ С„РёРіРЅСЏ СЃ add(), РЅРѕ Р·Р°С‚Рѕ Р±Р»РѕРєРёСЂСѓРµС‚ РґСЂСѓРіРёРµ add().
                         $log->writeln('lock setting failed');
                     }
                 }
 
-                if( !$batch_locked ) { // т.е. именно этот процесс будет формировать пакет.
+                if( !$batch_locked ) { // С‚.Рµ. РёРјРµРЅРЅРѕ СЌС‚РѕС‚ РїСЂРѕС†РµСЃСЃ Р±СѓРґРµС‚ С„РѕСЂРјРёСЂРѕРІР°С‚СЊ РїР°РєРµС‚.
                     $lock_cnt = (int)$this->memBuff->get($lock_key.'.counter');
                     if( $lock_cnt > 0
                         || !$DB->query("SELECT pgq.insert_event('share', 'static_compress.createBatchBySeed', ?)",
                                        'seed='.$this->_encodeSeed($type)) )
                     {
-                        // Сжимаем рантайм (но лайт):
-                        // а) если прошло уже достаточно времени для формирования пакета, но его так и нет -- считаем, что отвалился pgq
-                        //    (один $lock_cnt значит, что прошло self::MEM_LOCK_LIFE секунд);
-                        // б) в случае, если pgq сработал, но возникла ошибка в createBatch() (например, при сжатии);
-                        // в) в случае неудачи инсерта в очередь.
+                        // РЎР¶РёРјР°РµРј СЂР°РЅС‚Р°Р№Рј (РЅРѕ Р»Р°Р№С‚):
+                        // Р°) РµСЃР»Рё РїСЂРѕС€Р»Рѕ СѓР¶Рµ РґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РІСЂРµРјРµРЅРё РґР»СЏ С„РѕСЂРјРёСЂРѕРІР°РЅРёСЏ РїР°РєРµС‚Р°, РЅРѕ РµРіРѕ С‚Р°Рє Рё РЅРµС‚ -- СЃС‡РёС‚Р°РµРј, С‡С‚Рѕ РѕС‚РІР°Р»РёР»СЃСЏ pgq
+                        //    (РѕРґРёРЅ $lock_cnt Р·РЅР°С‡РёС‚, С‡С‚Рѕ РїСЂРѕС€Р»Рѕ self::MEM_LOCK_LIFE СЃРµРєСѓРЅРґ);
+                        // Р±) РІ СЃР»СѓС‡Р°Рµ, РµСЃР»Рё pgq СЃСЂР°Р±РѕС‚Р°Р», РЅРѕ РІРѕР·РЅРёРєР»Р° РѕС€РёР±РєР° РІ createBatch() (РЅР°РїСЂРёРјРµСЂ, РїСЂРё СЃР¶Р°С‚РёРё);
+                        // РІ) РІ СЃР»СѓС‡Р°Рµ РЅРµСѓРґР°С‡Рё РёРЅСЃРµСЂС‚Р° РІ РѕС‡РµСЂРµРґСЊ.
                         $batch_locked = $this->_createBatch($type, $batch_id, $this->_batches['version'], $filename, true);
                     } else {
-                        $batch_locked = 100; // просто отдадим пока старую версию.
+                        $batch_locked = 100; // РїСЂРѕСЃС‚Рѕ РѕС‚РґР°РґРёРј РїРѕРєР° СЃС‚Р°СЂСѓСЋ РІРµСЂСЃРёСЋ.
                     }
                     
                     $this->memBuff->set($lock_key.'.counter', $lock_cnt + 1, self::MEM_LOCK_LIFE * 10);
                 }
                 
                 if( $batch_locked ) {
-                    if($old_batch_version) { // старый файл точно есть.
-                        // 1. Отдаем старую версию.
+                    if($old_batch_version) { // СЃС‚Р°СЂС‹Р№ С„Р°Р№Р» С‚РѕС‡РЅРѕ РµСЃС‚СЊ.
+                        // 1. РћС‚РґР°РµРј СЃС‚Р°СЂСѓСЋ РІРµСЂСЃРёСЋ.
                         // $log->writeln("sending old version: batch file {$filename} is locked/failed ($batch_locked)\n");
                         $filename = $old_filename;
                     } else {
-                        // 2. Если использовать только этот вариант, то он жутко грузит апачи при перегенерации.
-                        // Поэтому только в случае отсутствия старого файла.
+                        // 2. Р•СЃР»Рё РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ С‚РѕР»СЊРєРѕ СЌС‚РѕС‚ РІР°СЂРёР°РЅС‚, С‚Рѕ РѕРЅ Р¶СѓС‚РєРѕ РіСЂСѓР·РёС‚ Р°РїР°С‡Рё РїСЂРё РїРµСЂРµРіРµРЅРµСЂР°С†РёРё.
+                        // РџРѕСЌС‚РѕРјСѓ С‚РѕР»СЊРєРѕ РІ СЃР»СѓС‡Р°Рµ РѕС‚СЃСѓС‚СЃС‚РІРёСЏ СЃС‚Р°СЂРѕРіРѕ С„Р°Р№Р»Р°.
                         // $log->writeln("sending uncompressed: batch file {$filename} is locked/failed ($batch_locked)\n");
                         $filename = '/static.php?t='.$this->_encodeSeed($type);
                         $fileurl = '';
                     }
                     
-                    // 3. Либо такой вариант. Но в таком случае рискуем выдать юзеру серверный устаревший кэш. 
-                    // 08.2012: уже не катит совсем из-за IE+БЭМ.
+                    // 3. Р›РёР±Рѕ С‚Р°РєРѕР№ РІР°СЂРёР°РЅС‚. РќРѕ РІ С‚Р°РєРѕРј СЃР»СѓС‡Р°Рµ СЂРёСЃРєСѓРµРј РІС‹РґР°С‚СЊ СЋР·РµСЂСѓ СЃРµСЂРІРµСЂРЅС‹Р№ СѓСЃС‚Р°СЂРµРІС€РёР№ РєСЌС€. 
+                    // 08.2012: СѓР¶Рµ РЅРµ РєР°С‚РёС‚ СЃРѕРІСЃРµРј РёР·-Р·Р° IE+Р‘Р­Рњ.
                     // $this->sendUncomressed($type, $this->_batches['version']);
                     // continue;
                 }
@@ -526,9 +526,9 @@ class static_compress {
     }
     
     /**
-     * Определяем кодировку по типам
+     * РћРїСЂРµРґРµР»СЏРµРј РєРѕРґРёСЂРѕРІРєСѓ РїРѕ С‚РёРїР°Рј
      * 
-     * @param integer $type    Тип файла
+     * @param integer $type    РўРёРї С„Р°Р№Р»Р°
      * @return string
      */
     public static function getCharsetType($type) {
@@ -545,7 +545,7 @@ class static_compress {
     }
 
     /**
-     * Печатает html-блоки для запроса несжатого контента.
+     * РџРµС‡Р°С‚Р°РµС‚ html-Р±Р»РѕРєРё РґР»СЏ Р·Р°РїСЂРѕСЃР° РЅРµСЃР¶Р°С‚РѕРіРѕ РєРѕРЅС‚РµРЅС‚Р°.
      */
     function sendUncomressed($onlytype = -1, $version = NULL) {
         if(!$version) {
@@ -560,10 +560,10 @@ class static_compress {
     }
 
     /**
-     * Печатает содержимое файлов, при запросе /static.php?t=$seed.
-     * Сжимает содержимое, контролирует кэширование на сервере и клиенте.
+     * РџРµС‡Р°С‚Р°РµС‚ СЃРѕРґРµСЂР¶РёРјРѕРµ С„Р°Р№Р»РѕРІ, РїСЂРё Р·Р°РїСЂРѕСЃРµ /static.php?t=$seed.
+     * РЎР¶РёРјР°РµС‚ СЃРѕРґРµСЂР¶РёРјРѕРµ, РєРѕРЅС‚СЂРѕР»РёСЂСѓРµС‚ РєСЌС€РёСЂРѕРІР°РЅРёРµ РЅР° СЃРµСЂРІРµСЂРµ Рё РєР»РёРµРЅС‚Рµ.
      *
-     * @param string $seed   закодировнная строка (параметр ?t).
+     * @param string $seed   Р·Р°РєРѕРґРёСЂРѕРІРЅРЅР°СЏ СЃС‚СЂРѕРєР° (РїР°СЂР°РјРµС‚СЂ ?t).
      */
     function output($seed) {
         $log = $this->_log;
@@ -600,10 +600,10 @@ class static_compress {
     }
 
     /**
-     * Получает время последнего изменения текущей группы файлов заданного типа.
+     * РџРѕР»СѓС‡Р°РµС‚ РІСЂРµРјСЏ РїРѕСЃР»РµРґРЅРµРіРѕ РёР·РјРµРЅРµРЅРёСЏ С‚РµРєСѓС‰РµР№ РіСЂСѓРїРїС‹ С„Р°Р№Р»РѕРІ Р·Р°РґР°РЅРЅРѕРіРѕ С‚РёРїР°.
      *
-     * @param int $type   тип файлов.
-     * @return int   время изменения.
+     * @param int $type   С‚РёРї С„Р°Р№Р»РѕРІ.
+     * @return int   РІСЂРµРјСЏ РёР·РјРµРЅРµРЅРёСЏ.
      */
     function getLastModified($type) {
         $lastmod = 0;
@@ -616,11 +616,11 @@ class static_compress {
     }
     
     /**
-     * Создает пакет по $seed (список имен файлов). Вызывается асинхронно через PgQ.
+     * РЎРѕР·РґР°РµС‚ РїР°РєРµС‚ РїРѕ $seed (СЃРїРёСЃРѕРє РёРјРµРЅ С„Р°Р№Р»РѕРІ). Р’С‹Р·С‹РІР°РµС‚СЃСЏ Р°СЃРёРЅС…СЂРѕРЅРЅРѕ С‡РµСЂРµР· PgQ.
      *
-     * @param string $seed   закодированный список имен файлов (см. self::_encodeSeed()).
-     * @param boolean $light   true, если сжимаем по облегченному варианту (сжатие быстрое, но не полное).
-     * @return int   код ошибки или 0.
+     * @param string $seed   Р·Р°РєРѕРґРёСЂРѕРІР°РЅРЅС‹Р№ СЃРїРёСЃРѕРє РёРјРµРЅ С„Р°Р№Р»РѕРІ (СЃРј. self::_encodeSeed()).
+     * @param boolean $light   true, РµСЃР»Рё СЃР¶РёРјР°РµРј РїРѕ РѕР±Р»РµРіС‡РµРЅРЅРѕРјСѓ РІР°СЂРёР°РЅС‚Сѓ (СЃР¶Р°С‚РёРµ Р±С‹СЃС‚СЂРѕРµ, РЅРѕ РЅРµ РїРѕР»РЅРѕРµ).
+     * @return int   РєРѕРґ РѕС€РёР±РєРё РёР»Рё 0.
      */
     function createBatchBySeed($seed, $light = false) {
         $type = $this->_decodeSeed($seed, $seed_expired);
@@ -631,14 +631,14 @@ class static_compress {
     }
     
     /**
-     * Создает пакет.
+     * РЎРѕР·РґР°РµС‚ РїР°РєРµС‚.
      *
-     * @param integer $type   тип пакета (TYPE_CSS|TYPE_JS|TYPE_PHP_JS|TYPE_JS_UTF8)
-     * @param string $batch_id   ид. (хеш) пакета
-     * @param string $batch_version   устанавливаемая версия пакета (текущая версия всей статики).
-     * @param string $filename   вернется имя файла пакета
-     * @param boolean $light   true, если сжимаем по облегченному варианту (сжатие быстрое, но не полное).
-     * @return int   код ошибки или 0.
+     * @param integer $type   С‚РёРї РїР°РєРµС‚Р° (TYPE_CSS|TYPE_JS|TYPE_PHP_JS|TYPE_JS_UTF8)
+     * @param string $batch_id   РёРґ. (С…РµС€) РїР°РєРµС‚Р°
+     * @param string $batch_version   СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРјР°СЏ РІРµСЂСЃРёСЏ РїР°РєРµС‚Р° (С‚РµРєСѓС‰Р°СЏ РІРµСЂСЃРёСЏ РІСЃРµР№ СЃС‚Р°С‚РёРєРё).
+     * @param string $filename   РІРµСЂРЅРµС‚СЃСЏ РёРјСЏ С„Р°Р№Р»Р° РїР°РєРµС‚Р°
+     * @param boolean $light   true, РµСЃР»Рё СЃР¶РёРјР°РµРј РїРѕ РѕР±Р»РµРіС‡РµРЅРЅРѕРјСѓ РІР°СЂРёР°РЅС‚Сѓ (СЃР¶Р°С‚РёРµ Р±С‹СЃС‚СЂРѕРµ, РЅРѕ РЅРµ РїРѕР»РЅРѕРµ).
+     * @return int   РєРѕРґ РѕС€РёР±РєРё РёР»Рё 0.
      */
     private function _createBatch($type, $batch_id, $batch_version, &$filename, $light = false) {
         $log = $this->_log;
@@ -647,7 +647,7 @@ class static_compress {
         $filename = self::STATIC_WDPATH . '/' . $this->createFileName($batch_id, $batch_version, $this->types[$type]);
         $lock_key = $this->_createBatchLockKey($batch_id, $batch_version);
 
-        if( !$light || !$cfile->CheckPath($filename, false) ) { // проверка на случай, если pgq переполнится.
+        if( !$light || !$cfile->CheckPath($filename, false) ) { // РїСЂРѕРІРµСЂРєР° РЅР° СЃР»СѓС‡Р°Р№, РµСЃР»Рё pgq РїРµСЂРµРїРѕР»РЅРёС‚СЃСЏ.
             $log->writeln("creating new batch file {$filename}, compressing content...");
             if($content = $this->_compress($type, $light)) {
                 $cfile->exclude_reserved_wdc = true;
@@ -678,11 +678,11 @@ class static_compress {
     
 
     /**
-     * Сжимает содержимое файлов по заданному типу.
+     * РЎР¶РёРјР°РµС‚ СЃРѕРґРµСЂР¶РёРјРѕРµ С„Р°Р№Р»РѕРІ РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ С‚РёРїСѓ.
      *
-     * @param int $type   тип файлов.
-     * @param boolean $light   true, если сжимаем по облегченному варианту (сжатие быстрое, но не полное).
-     * @return string   сжатый и объединенный контент.
+     * @param int $type   С‚РёРї С„Р°Р№Р»РѕРІ.
+     * @param boolean $light   true, РµСЃР»Рё СЃР¶РёРјР°РµРј РїРѕ РѕР±Р»РµРіС‡РµРЅРЅРѕРјСѓ РІР°СЂРёР°РЅС‚Сѓ (СЃР¶Р°С‚РёРµ Р±С‹СЃС‚СЂРѕРµ, РЅРѕ РЅРµ РїРѕР»РЅРѕРµ).
+     * @return string   СЃР¶Р°С‚С‹Р№ Рё РѕР±СЉРµРґРёРЅРµРЅРЅС‹Р№ РєРѕРЅС‚РµРЅС‚.
      */
     private function _compress($type, $light = false) {
         if($func = $this->_getTypeFunc('_compress', $type))
@@ -690,10 +690,10 @@ class static_compress {
     }
 	
 	/**
-	 * Сжимает ява-скрипт
+	 * РЎР¶РёРјР°РµС‚ СЏРІР°-СЃРєСЂРёРїС‚
 	 * 
-     * @param boolean $light   true, если сжимаем по облегченному варианту (сжатие быстрое, но не полное).
-	 * @return string	сжатый и объединенный файл скриптов
+     * @param boolean $light   true, РµСЃР»Рё СЃР¶РёРјР°РµРј РїРѕ РѕР±Р»РµРіС‡РµРЅРЅРѕРјСѓ РІР°СЂРёР°РЅС‚Сѓ (СЃР¶Р°С‚РёРµ Р±С‹СЃС‚СЂРѕРµ, РЅРѕ РЅРµ РїРѕР»РЅРѕРµ).
+	 * @return string	СЃР¶Р°С‚С‹Р№ Рё РѕР±СЉРµРґРёРЅРµРЅРЅС‹Р№ С„Р°Р№Р» СЃРєСЂРёРїС‚РѕРІ
 	 */
     private function _compressJs($light = false, $charset = 'windows-1251') {
         if($charset == 'windows-1251') {
@@ -705,12 +705,12 @@ class static_compress {
 	
 
     /**
-     * Возвращает сжатое содержимое переданных файлов.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃР¶Р°С‚РѕРµ СЃРѕРґРµСЂР¶РёРјРѕРµ РїРµСЂРµРґР°РЅРЅС‹С… С„Р°Р№Р»РѕРІ.
      * 
-     * @param array $files   массив имен файлов (с путями от корня).
-     * @param string $root   путь до корня.
-     * @param boolean $light   true, если сжимаем по облегченному варианту (сжатие быстрое, но не полное).
-     * @return string   сжатый js.
+     * @param array $files   РјР°СЃСЃРёРІ РёРјРµРЅ С„Р°Р№Р»РѕРІ (СЃ РїСѓС‚СЏРјРё РѕС‚ РєРѕСЂРЅСЏ).
+     * @param string $root   РїСѓС‚СЊ РґРѕ РєРѕСЂРЅСЏ.
+     * @param boolean $light   true, РµСЃР»Рё СЃР¶РёРјР°РµРј РїРѕ РѕР±Р»РµРіС‡РµРЅРЅРѕРјСѓ РІР°СЂРёР°РЅС‚Сѓ (СЃР¶Р°С‚РёРµ Р±С‹СЃС‚СЂРѕРµ, РЅРѕ РЅРµ РїРѕР»РЅРѕРµ).
+     * @return string   СЃР¶Р°С‚С‹Р№ js.
      */
     function compressJsFiles($files, $root = NULL, $light = false, $charset='windows-1251') {
         $out = '';
@@ -737,9 +737,9 @@ class static_compress {
 	}
 
 	/**
-     * Сжимает ява-скрипт
+     * РЎР¶РёРјР°РµС‚ СЏРІР°-СЃРєСЂРёРїС‚
      * 
-     * @return string	сжатый и объединенный файл скриптов
+     * @return string	СЃР¶Р°С‚С‹Р№ Рё РѕР±СЉРµРґРёРЅРµРЅРЅС‹Р№ С„Р°Р№Р» СЃРєСЂРёРїС‚РѕРІ
      */
     private function _compressPHP($light = false) {
         $out = '';
@@ -750,8 +750,8 @@ class static_compress {
             $exp = explode('=', $parse['query']);
             $_GET[$exp[0]] = $exp[1];
             ob_start();
-            //@todo: уязвимость при подключении через static.php
-            //необходимо в первую очередь избавиться от его использования
+            //@todo: СѓСЏР·РІРёРјРѕСЃС‚СЊ РїСЂРё РїРѕРґРєР»СЋС‡РµРЅРёРё С‡РµСЂРµР· static.php
+            //РЅРµРѕР±С…РѕРґРёРјРѕ РІ РїРµСЂРІСѓСЋ РѕС‡РµСЂРµРґСЊ РёР·Р±Р°РІРёС‚СЊСЃСЏ РѕС‚ РµРіРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ
             //include($this->root($parse['path']));
             $contents = ob_get_clean();
             if($light) {
@@ -766,9 +766,9 @@ class static_compress {
     }
 	
 	/**
-	 * Сжимает файлы стилей
+	 * РЎР¶РёРјР°РµС‚ С„Р°Р№Р»С‹ СЃС‚РёР»РµР№
 	 * 
-	 * @return string	сжатый и объединенный файл стилей	
+	 * @return string	СЃР¶Р°С‚С‹Р№ Рё РѕР±СЉРµРґРёРЅРµРЅРЅС‹Р№ С„Р°Р№Р» СЃС‚РёР»РµР№	
 	 */
     private function _compressCss() {
         $out='';
@@ -794,10 +794,10 @@ class static_compress {
 	
 
     /**
-     * Печатает html-блок, запрашивающий контент файла по заданному типу.
+     * РџРµС‡Р°С‚Р°РµС‚ html-Р±Р»РѕРє, Р·Р°РїСЂР°С€РёРІР°СЋС‰РёР№ РєРѕРЅС‚РµРЅС‚ С„Р°Р№Р»Р° РїРѕ Р·Р°РґР°РЅРЅРѕРјСѓ С‚РёРїСѓ.
      *
-     * @param string $file   имя файла.
-     * @param string $type   тип файла.
+     * @param string $file   РёРјСЏ С„Р°Р№Р»Р°.
+     * @param string $type   С‚РёРї С„Р°Р№Р»Р°.
      */
     function printTags($file, $type, $version = NULL) {
         if($func = $this->_getTypeFunc('printTags', $type)) {
@@ -807,27 +807,27 @@ class static_compress {
     }
 	
     /**
-     * Выводит тэг HTML подключения CSS файла
+     * Р’С‹РІРѕРґРёС‚ С‚СЌРі HTML РїРѕРґРєР»СЋС‡РµРЅРёСЏ CSS С„Р°Р№Р»Р°
      * 
-     * @param string $file путь к файлу
+     * @param string $file РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ
      */
     function printTagsCss($file, $charset) {
         print "<link type=\"text/css\" href=\"{$file}\" rel=\"stylesheet\" charset=\"{$charset}\"/>\n";
 	}
 	
 	/**
-     * Выводит тэг HTML подключения JS файла
+     * Р’С‹РІРѕРґРёС‚ С‚СЌРі HTML РїРѕРґРєР»СЋС‡РµРЅРёСЏ JS С„Р°Р№Р»Р°
      * 
-     * @param string $file путь к файлу
+     * @param string $file РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ
      */
     function printTagsJs($file, $charset){
         print "<script type=\"text/javascript\" src=\"{$file}\" charset=\"{$charset}\"></script>\n";
 	}
 	
 	/**
-     * Выводит тэг HTML подключения JS файла обернутого через PHP
+     * Р’С‹РІРѕРґРёС‚ С‚СЌРі HTML РїРѕРґРєР»СЋС‡РµРЅРёСЏ JS С„Р°Р№Р»Р° РѕР±РµСЂРЅСѓС‚РѕРіРѕ С‡РµСЂРµР· PHP
      * 
-     * @param string $file путь к файлу
+     * @param string $file РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ
      */
     function printTagsPHP($file, $charset){
         print "<script type=\"text/javascript\" src=\"{$file}\" charset=\"{$charset}\"></script>\n";
@@ -835,11 +835,11 @@ class static_compress {
 
 
     /**
-     * Возвращает имя метода данного класса, для заданного типа файлов.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРјСЏ РјРµС‚РѕРґР° РґР°РЅРЅРѕРіРѕ РєР»Р°СЃСЃР°, РґР»СЏ Р·Р°РґР°РЅРЅРѕРіРѕ С‚РёРїР° С„Р°Р№Р»РѕРІ.
      * 
-     * @param string $pfx   префикс метода.
-     * @param int $type   тип файла.
-     * @return string   имя метода.
+     * @param string $pfx   РїСЂРµС„РёРєСЃ РјРµС‚РѕРґР°.
+     * @param int $type   С‚РёРї С„Р°Р№Р»Р°.
+     * @return string   РёРјСЏ РјРµС‚РѕРґР°.
      */
     private function _getTypeFunc($pfx, $type) {
         $func = $pfx . ucwords($this->types[$type]);
@@ -850,11 +850,11 @@ class static_compress {
     }
     
     /**
-     * Функция собирает из всех CSS иденое целое (заменяет все импорты на содержимое файла)
+     * Р¤СѓРЅРєС†РёСЏ СЃРѕР±РёСЂР°РµС‚ РёР· РІСЃРµС… CSS РёРґРµРЅРѕРµ С†РµР»РѕРµ (Р·Р°РјРµРЅСЏРµС‚ РІСЃРµ РёРјРїРѕСЂС‚С‹ РЅР° СЃРѕРґРµСЂР¶РёРјРѕРµ С„Р°Р№Р»Р°)
      *
-     * @param string $path_style Путь до файла стилей (вида - "/css/block/style.css" - Обязательный слеш в начале пути)
-     * @param boolean $unique Выдать сразу уникальный контент (удаляются повторяющиеся классы) 
-     * @return strine Чистый CSS без @import 
+     * @param string $path_style РџСѓС‚СЊ РґРѕ С„Р°Р№Р»Р° СЃС‚РёР»РµР№ (РІРёРґР° - "/css/block/style.css" - РћР±СЏР·Р°С‚РµР»СЊРЅС‹Р№ СЃР»РµС€ РІ РЅР°С‡Р°Р»Рµ РїСѓС‚Рё)
+     * @param boolean $unique Р’С‹РґР°С‚СЊ СЃСЂР°Р·Сѓ СѓРЅРёРєР°Р»СЊРЅС‹Р№ РєРѕРЅС‚РµРЅС‚ (СѓРґР°Р»СЏСЋС‚СЃСЏ РїРѕРІС‚РѕСЂСЏСЋС‰РёРµСЃСЏ РєР»Р°СЃСЃС‹) 
+     * @return strine Р§РёСЃС‚С‹Р№ CSS Р±РµР· @import 
      */
     public function collectBem($path_style, $unique = false) {
         $glob_dir =  dirname($path_style);
@@ -864,19 +864,19 @@ class static_compress {
         foreach($exp as $i=>$k) if($k == ".." && isset($exp[$i-1])) unset($exp[$i-1], $exp[$i]);
         $dir = dirname(implode("/", $exp));
         $css = preg_replace("/url\(((?!(data:))[^\"|^\/].*?)\)/mix", "url(\"{$dir}/$1\")", $css);
-        $css = preg_replace("/@import\s*url\(\"(.*?)\"\);/mix", "@import url(\"$glob_dir/$1\");", $css); // заменяем все пути на полные
-        $css = preg_replace_callback("/(@import\s*url\(\"(.*?)\"\);)/mix", create_function('$matches','return static_compress::collectBem($matches[2]);'), $css); // заменяем импорт на файл
+        $css = preg_replace("/@import\s*url\(\"(.*?)\"\);/mix", "@import url(\"$glob_dir/$1\");", $css); // Р·Р°РјРµРЅСЏРµРј РІСЃРµ РїСѓС‚Рё РЅР° РїРѕР»РЅС‹Рµ
+        $css = preg_replace_callback("/(@import\s*url\(\"(.*?)\"\);)/mix", create_function('$matches','return static_compress::collectBem($matches[2]);'), $css); // Р·Р°РјРµРЅСЏРµРј РёРјРїРѕСЂС‚ РЅР° С„Р°Р№Р»
         return $unique?self::getUniqueBemSource($css):$css;
     }
     
     /**
-     * Чистим содержимое CSS от дублирубщих классов
+     * Р§РёСЃС‚РёРј СЃРѕРґРµСЂР¶РёРјРѕРµ CSS РѕС‚ РґСѓР±Р»РёСЂСѓР±С‰РёС… РєР»Р°СЃСЃРѕРІ
      *
-     * @param string $css_source    Содержимое CSS  
-     * @return string Результат чистки 
+     * @param string $css_source    РЎРѕРґРµСЂР¶РёРјРѕРµ CSS  
+     * @return string Р РµР·СѓР»СЊС‚Р°С‚ С‡РёСЃС‚РєРё 
      */
     public function getUniqueBemSource($css_source) {
-        // Удалеям из текста все лишнее, что будет мешать при поиске в регулярке
+        // РЈРґР°Р»РµСЏРј РёР· С‚РµРєСЃС‚Р° РІСЃРµ Р»РёС€РЅРµРµ, С‡С‚Рѕ Р±СѓРґРµС‚ РјРµС€Р°С‚СЊ РїСЂРё РїРѕРёСЃРєРµ РІ СЂРµРіСѓР»СЏСЂРєРµ
         $css_source = str_replace(array("\r", "\n"), "", $css_source);
         $css_source = str_replace(array("\t"), " ", $css_source);
         $css_source = trim(preg_replace("/\/\*.*?\*\//", "", $css_source));
@@ -922,11 +922,11 @@ class static_compress {
     }
 
     /**
-     * Сохраняет весь БЭМ-контент в файл(ы). Это не конечные файлы, они будут подключены через метод Add() и сжаты в один (или несколько для IE).
+     * РЎРѕС…СЂР°РЅСЏРµС‚ РІРµСЃСЊ Р‘Р­Рњ-РєРѕРЅС‚РµРЅС‚ РІ С„Р°Р№Р»(С‹). Р­С‚Рѕ РЅРµ РєРѕРЅРµС‡РЅС‹Рµ С„Р°Р№Р»С‹, РѕРЅРё Р±СѓРґСѓС‚ РїРѕРґРєР»СЋС‡РµРЅС‹ С‡РµСЂРµР· РјРµС‚РѕРґ Add() Рё СЃР¶Р°С‚С‹ РІ РѕРґРёРЅ (РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ РґР»СЏ IE).
      * @see static_compress::collectBem()
      *
-     * @param boolean $unique   для collectBem(): Выдать сразу уникальный контент (удаляются повторяющиеся классы) 
-     * @return integer   возвращает кол-во получившихся файлов.
+     * @param boolean $unique   РґР»СЏ collectBem(): Р’С‹РґР°С‚СЊ СЃСЂР°Р·Сѓ СѓРЅРёРєР°Р»СЊРЅС‹Р№ РєРѕРЅС‚РµРЅС‚ (СѓРґР°Р»СЏСЋС‚СЃСЏ РїРѕРІС‚РѕСЂСЏСЋС‰РёРµСЃСЏ РєР»Р°СЃСЃС‹) 
+     * @return integer   РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»-РІРѕ РїРѕР»СѓС‡РёРІС€РёС…СЃСЏ С„Р°Р№Р»РѕРІ.
      */
     function createBemBatchFiles($unique = true) {
         $this->_log->writeln('generating BEM batch file...');
@@ -951,7 +951,7 @@ class static_compress {
                 }
                 $cnt++;
             }
-            // Удаляем старые файлы, если остались, чтобы потом не подключить лишнее (см. addBem())
+            // РЈРґР°Р»СЏРµРј СЃС‚Р°СЂС‹Рµ С„Р°Р№Р»С‹, РµСЃР»Рё РѕСЃС‚Р°Р»РёСЃСЊ, С‡С‚РѕР±С‹ РїРѕС‚РѕРј РЅРµ РїРѕРґРєР»СЋС‡РёС‚СЊ Р»РёС€РЅРµРµ (СЃРј. addBem())
             $i = $cnt;
             while(file_exists($this->bemFilePath($i))) {
                 unlink($this->bemFilePath($i++));
@@ -971,10 +971,10 @@ class static_compress {
     }
 
     /**
-     * Добавляет суффикс к имени бэм-файла в зависимости от номера файла в пакете.
+     * Р”РѕР±Р°РІР»СЏРµС‚ СЃСѓС„С„РёРєСЃ Рє РёРјРµРЅРё Р±СЌРј-С„Р°Р№Р»Р° РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РЅРѕРјРµСЂР° С„Р°Р№Р»Р° РІ РїР°РєРµС‚Рµ.
      *
-     * @param intger $num   номер файла
-     * @return string   готовое имя файла
+     * @param intger $num   РЅРѕРјРµСЂ С„Р°Р№Р»Р°
+     * @return string   РіРѕС‚РѕРІРѕРµ РёРјСЏ С„Р°Р№Р»Р°
      */
     function bemFilePath($num = 0, $abs = true) {
         $sfx = $num ? '-'.$num : '';
@@ -983,7 +983,7 @@ class static_compress {
     }
 
     /**
-     * Метод add() для БЭМ. Специфика в том, что бэм может быть разбит автоматически на несколько файлов.
+     * РњРµС‚РѕРґ add() РґР»СЏ Р‘Р­Рњ. РЎРїРµС†РёС„РёРєР° РІ С‚РѕРј, С‡С‚Рѕ Р±СЌРј РјРѕР¶РµС‚ Р±С‹С‚СЊ СЂР°Р·Р±РёС‚ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РЅР° РЅРµСЃРєРѕР»СЊРєРѕ С„Р°Р№Р»РѕРІ.
      * @see static_compress::createBemBatchFiles()
      * @see static_compress::add()
      */
@@ -994,7 +994,7 @@ class static_compress {
         $i = 0;
         $this->getBatchesInfo();
         $bcnt = (int)$this->_batches['bem_count'];
-        if(!$bcnt && !file_exists($this->bemFilePath())) { // ни разу не выполнился updateBatchesVersion()
+        if(!$bcnt && !file_exists($this->bemFilePath())) { // РЅРё СЂР°Р·Сѓ РЅРµ РІС‹РїРѕР»РЅРёР»СЃСЏ updateBatchesVersion()
             $this->createBemBatchFiles();
         }
         do {
@@ -1003,8 +1003,8 @@ class static_compress {
     }
     
     /**
-     * Сборщик мусора, удаляем все кроме последней и предыдущей версии 
-     * запускается в 6 часов утра каждый день @see hourly.php 
+     * РЎР±РѕСЂС‰РёРє РјСѓСЃРѕСЂР°, СѓРґР°Р»СЏРµРј РІСЃРµ РєСЂРѕРјРµ РїРѕСЃР»РµРґРЅРµР№ Рё РїСЂРµРґС‹РґСѓС‰РµР№ РІРµСЂСЃРёРё 
+     * Р·Р°РїСѓСЃРєР°РµС‚СЃСЏ РІ 6 С‡Р°СЃРѕРІ СѓС‚СЂР° РєР°Р¶РґС‹Р№ РґРµРЅСЊ @see hourly.php 
      *
      * @return boolean
      */
@@ -1045,10 +1045,10 @@ class static_compress {
     
     
     /**
-     * Разбирает имя пакета на части
+     * Р Р°Р·Р±РёСЂР°РµС‚ РёРјСЏ РїР°РєРµС‚Р° РЅР° С‡Р°СЃС‚Рё
      * 
-     * @param string $filename    имя файла пакета
-     * @param integer $ret_mode   какую составляющую вернуть: -1:все в массиве, 0:ид. пакета (md5), 1:версия пакета, 2:расширение
+     * @param string $filename    РёРјСЏ С„Р°Р№Р»Р° РїР°РєРµС‚Р°
+     * @param integer $ret_mode   РєР°РєСѓСЋ СЃРѕСЃС‚Р°РІР»СЏСЋС‰СѓСЋ РІРµСЂРЅСѓС‚СЊ: -1:РІСЃРµ РІ РјР°СЃСЃРёРІРµ, 0:РёРґ. РїР°РєРµС‚Р° (md5), 1:РІРµСЂСЃРёСЏ РїР°РєРµС‚Р°, 2:СЂР°СЃС€РёСЂРµРЅРёРµ
      * @return mixed
      */
     function parseFileName($filename, $ret_mode = -1) {

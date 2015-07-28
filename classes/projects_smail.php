@@ -10,13 +10,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/projects_sms.php");
 
 
 /**
- * Директория шаблонов писем
+ * Р”РёСЂРµРєС‚РѕСЂРёСЏ С€Р°Р±Р»РѕРЅРѕРІ РїРёСЃРµРј
  */
 define('PROJECTS_TPL_MAIL_PATH', $_SERVER['DOCUMENT_ROOT'] . '/templates/mail/projects/');
 
 /**
  * Class tservices_smail
- * Класс для работы с отправкой писем для ТУ
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РѕС‚РїСЂР°РІРєРѕР№ РїРёСЃРµРј РґР»СЏ РўРЈ
  */
 class projects_smail extends smail {
 
@@ -30,10 +30,10 @@ class projects_smail extends smail {
     }
 
     /**
-     * Скрываем вызов некоторых методов чтобы при их вызове проверить 
-     * в каком окружении запускается рассылка и если на локале то игнорим ее
+     * РЎРєСЂС‹РІР°РµРј РІС‹Р·РѕРІ РЅРµРєРѕС‚РѕСЂС‹С… РјРµС‚РѕРґРѕРІ С‡С‚РѕР±С‹ РїСЂРё РёС… РІС‹Р·РѕРІРµ РїСЂРѕРІРµСЂРёС‚СЊ 
+     * РІ РєР°РєРѕРј РѕРєСЂСѓР¶РµРЅРёРё Р·Р°РїСѓСЃРєР°РµС‚СЃСЏ СЂР°СЃСЃС‹Р»РєР° Рё РµСЃР»Рё РЅР° Р»РѕРєР°Р»Рµ С‚Рѕ РёРіРЅРѕСЂРёРј РµРµ
      * 
-     * @todo: Если мешает достаточно закоментить проверку на локальность ;)
+     * @todo: Р•СЃР»Рё РјРµС€Р°РµС‚ РґРѕСЃС‚Р°С‚РѕС‡РЅРѕ Р·Р°РєРѕРјРµРЅС‚РёС‚СЊ РїСЂРѕРІРµСЂРєСѓ РЅР° Р»РѕРєР°Р»СЊРЅРѕСЃС‚СЊ ;)
      * 
      * @param string $method
      * @param type $arguments
@@ -51,7 +51,7 @@ class projects_smail extends smail {
     }
 
     /**
-     * Уведомление фрилансера о выборе его исполнителем
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ С„СЂРёР»Р°РЅСЃРµСЂР° Рѕ РІС‹Р±РѕСЂРµ РµРіРѕ РёСЃРїРѕР»РЅРёС‚РµР»РµРј
      * 
      * @param type $project
      */
@@ -62,7 +62,7 @@ class projects_smail extends smail {
         $emp = new employer();
         $emp->GetUserByUID($project['user_id']);
 
-        $this->subject = "Вам предложили стать исполнителем по проекту на сайте FL.ru";
+        $this->subject = "Р’Р°Рј РїСЂРµРґР»РѕР¶РёР»Рё СЃС‚Р°С‚СЊ РёСЃРїРѕР»РЅРёС‚РµР»РµРј РїРѕ РїСЂРѕРµРєС‚Сѓ РЅР° СЃР°Р№С‚Рµ FL.ru";
         $this->recipient = $this->_formatFullname($frl, true);
         $this->message = Template::render(
             PROJECTS_TPL_MAIL_PATH . 'set_executor_frl.tpl.php', array(
@@ -78,7 +78,7 @@ class projects_smail extends smail {
     }
     
     /**
-     * Уведомление заказчику о создании заказа услуги
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ Р·Р°РєР°Р·С‡РёРєСѓ Рѕ СЃРѕР·РґР°РЅРёРё Р·Р°РєР°Р·Р° СѓСЃР»СѓРіРё
      * 
      * @param type $project
      */
@@ -89,7 +89,7 @@ class projects_smail extends smail {
         $emp = new employer();
         $emp->GetUserByUID($project['user_id']);
 
-        $this->subject = "Ожидается ответ от выбранного вами исполнителя в проекте";
+        $this->subject = "РћР¶РёРґР°РµС‚СЃСЏ РѕС‚РІРµС‚ РѕС‚ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РІР°РјРё РёСЃРїРѕР»РЅРёС‚РµР»СЏ РІ РїСЂРѕРµРєС‚Рµ";
         $this->recipient = $this->_formatFullname($emp, true);
         $this->message = Template::render(
             PROJECTS_TPL_MAIL_PATH . 'set_executor_emp.tpl.php', array(
@@ -104,7 +104,7 @@ class projects_smail extends smail {
     }
     
     /**
-     * Уведомление исполнителю о старте работ
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ РёСЃРїРѕР»РЅРёС‚РµР»СЋ Рѕ СЃС‚Р°СЂС‚Рµ СЂР°Р±РѕС‚
      * 
      * @param type $project
      */
@@ -116,7 +116,7 @@ class projects_smail extends smail {
         //$emp = new employer();
         //$emp->GetUserByUID($project['user_id']);
 
-        $this->subject = "Начало работ по проекту";
+        $this->subject = "РќР°С‡Р°Р»Рѕ СЂР°Р±РѕС‚ РїРѕ РїСЂРѕРµРєС‚Сѓ";
         $this->recipient = $this->_formatFullname(&$offer, true);
         $this->message = Template::render(
             PROJECTS_TPL_MAIL_PATH . 'start_working_frl.tpl.php', array(
@@ -130,7 +130,7 @@ class projects_smail extends smail {
     }
     
     /**
-     * Уведомление заказчику о подтверждении проекта и старте работ
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ Р·Р°РєР°Р·С‡РёРєСѓ Рѕ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРё РїСЂРѕРµРєС‚Р° Рё СЃС‚Р°СЂС‚Рµ СЂР°Р±РѕС‚
      * 
      * @param type $project
      */
@@ -142,7 +142,7 @@ class projects_smail extends smail {
         //$emp = new employer();
         //$emp->GetUserByUID($project['user_id']);
 
-        $this->subject = "Исполнитель начал выполнение работ по проекту";
+        $this->subject = "РСЃРїРѕР»РЅРёС‚РµР»СЊ РЅР°С‡Р°Р» РІС‹РїРѕР»РЅРµРЅРёРµ СЂР°Р±РѕС‚ РїРѕ РїСЂРѕРµРєС‚Сѓ";
         $this->recipient = $this->_formatFullname(&$project, true);
         $this->message = Template::render(
             PROJECTS_TPL_MAIL_PATH . 'start_working_emp.tpl.php', array(
@@ -158,7 +158,7 @@ class projects_smail extends smail {
     
     
     /**
-     * Групируем уведомления о начале работы над проектом
+     * Р“СЂСѓРїРёСЂСѓРµРј СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅР°С‡Р°Р»Рµ СЂР°Р±РѕС‚С‹ РЅР°Рґ РїСЂРѕРµРєС‚РѕРј
      * 
      * @param type $project
      * @param type $offer
@@ -168,7 +168,7 @@ class projects_smail extends smail {
         $ret_frl = $this->onStartWorkingFrl($project, $offer);
         $ret_emp = $this->onStartWorkingEmp($project, $offer);
         
-        //Отправить СМС заказчику о подтверждении и начале работ исполнителем
+        //РћС‚РїСЂР°РІРёС‚СЊ РЎРњРЎ Р·Р°РєР°Р·С‡РёРєСѓ Рѕ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРё Рё РЅР°С‡Р°Р»Рµ СЂР°Р±РѕС‚ РёСЃРїРѕР»РЅРёС‚РµР»РµРј
         ProjectsSms::model($project['user_id'])->sendStatus($project['status'], $project['id'], $project['kind']);
         
         return $ret_frl && $ret_emp;
@@ -177,7 +177,7 @@ class projects_smail extends smail {
     
 
     /**
-     * Уведомление заказчику об отказе от проекта со стороны исполнителя
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ Р·Р°РєР°Р·С‡РёРєСѓ РѕР± РѕС‚РєР°Р·Рµ РѕС‚ РїСЂРѕРµРєС‚Р° СЃРѕ СЃС‚РѕСЂРѕРЅС‹ РёСЃРїРѕР»РЅРёС‚РµР»СЏ
      * 
      * @param type $project
      */
@@ -189,7 +189,7 @@ class projects_smail extends smail {
         //$emp = new employer();
         //$emp->GetUserByUID($project['user_id']);
 
-        $this->subject = "Исполнитель отказался от выполнения вашего проекта";
+        $this->subject = "РСЃРїРѕР»РЅРёС‚РµР»СЊ РѕС‚РєР°Р·Р°Р»СЃСЏ РѕС‚ РІС‹РїРѕР»РЅРµРЅРёСЏ РІР°С€РµРіРѕ РїСЂРѕРµРєС‚Р°";
         $this->recipient = $this->_formatFullname(&$project, true);
         $this->message = Template::render(
             PROJECTS_TPL_MAIL_PATH . 'refuse_emp.tpl.php', array(
@@ -202,20 +202,20 @@ class projects_smail extends smail {
         
         $ret = $this->send('text/html');
         
-        //Отправить СМС заказчику
+        //РћС‚РїСЂР°РІРёС‚СЊ РЎРњРЎ Р·Р°РєР°Р·С‡РёРєСѓ
         ProjectsSms::model($project['user_id'])->sendStatus($offer['status'], $project['id'], $project['kind']);
         
         return $ret;
     }
     
     /**
-     * Уведомление исполнителю об отмене проекта со стороны заказчика
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ РёСЃРїРѕР»РЅРёС‚РµР»СЋ РѕР± РѕС‚РјРµРЅРµ РїСЂРѕРµРєС‚Р° СЃРѕ СЃС‚РѕСЂРѕРЅС‹ Р·Р°РєР°Р·С‡РёРєР°
      * 
      * @param type $project
      */
     public function _onRefuseFrl($project, $offer) {
         
-        //@todo: нет необходимости тк инфо о заказчике передается в project а о исполнителе в $offer
+        //@todo: РЅРµС‚ РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё С‚Рє РёРЅС„Рѕ Рѕ Р·Р°РєР°Р·С‡РёРєРµ РїРµСЂРµРґР°РµС‚СЃСЏ РІ project Р° Рѕ РёСЃРїРѕР»РЅРёС‚РµР»Рµ РІ $offer
         
         //$frl = new freelancer();
         //$frl->GetUserByUID($project['exec_id']);
@@ -223,7 +223,7 @@ class projects_smail extends smail {
         //$emp = new employer();
         //$emp->GetUserByUID($project['user_id']);
         
-        $this->subject = "Заказчик отменил свое предложение по проекту";
+        $this->subject = "Р—Р°РєР°Р·С‡РёРє РѕС‚РјРµРЅРёР» СЃРІРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ РїРѕ РїСЂРѕРµРєС‚Сѓ";
         $this->recipient = $this->_formatFullname(&$offer, true);
         $this->message = Template::render(
             PROJECTS_TPL_MAIL_PATH . 'refuse_frl.tpl.php', array(
@@ -236,14 +236,14 @@ class projects_smail extends smail {
                 
         $ret = $this->send('text/html');
         
-        //Отправить СМС фрилансеру
+        //РћС‚РїСЂР°РІРёС‚СЊ РЎРњРЎ С„СЂРёР»Р°РЅСЃРµСЂСѓ
         ProjectsSms::model($offer['user_id'])->sendStatus($offer['status'], $project['id'], $project['kind']);
         
         return $ret;
     }
     
     /**
-     * Уведомление второй стороны о завершении проекта
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ РІС‚РѕСЂРѕР№ СЃС‚РѕСЂРѕРЅС‹ Рѕ Р·Р°РІРµСЂС€РµРЅРёРё РїСЂРѕРµРєС‚Р°
      * 
      * @param type $project
      */
@@ -259,22 +259,22 @@ class projects_smail extends smail {
         $emp = new employer();
         $emp->GetUserByUID($project['user_id']);
         
-        if ($to_frl) { //Письмо отправляем исполнителю
+        if ($to_frl) { //РџРёСЃСЊРјРѕ РѕС‚РїСЂР°РІР»СЏРµРј РёСЃРїРѕР»РЅРёС‚РµР»СЋ
             $recipient = $this->_formatFullname($frl, true);
             $params['emp_login'] = $emp->login;
             $params['emp_fullname'] = $this->_formatFullname($emp);
             $params['opinions_url'] = $GLOBALS['host'].'/users/'.$emp->login.'/opinions/';
             
-            $subject = "Заказчик завершил сотрудничество по проекту";
-            $template = 'finish_no_fb_frl.tpl.php'; //Без отзыва
+            $subject = "Р—Р°РєР°Р·С‡РёРє Р·Р°РІРµСЂС€РёР» СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ РїРѕ РїСЂРѕРµРєС‚Сѓ";
+            $template = 'finish_no_fb_frl.tpl.php'; //Р‘РµР· РѕС‚Р·С‹РІР°
             if (isset($project['emp_feedback']) && isset($project['emp_rating'])) {
                 $params['rating'] = $project['emp_rating'];
                 $params['opinions_url'] = $GLOBALS['host'].'/users/'.$frl->login.'/opinions/';
                 $params['text'] = $project['emp_feedback'];
-                $subject = "Заказчик завершил сотрудничество по проекту и оставил вам отзыв";
-                $template = 'finish_fb_frl.tpl.php'; //С отзывом
+                $subject = "Р—Р°РєР°Р·С‡РёРє Р·Р°РІРµСЂС€РёР» СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ РїРѕ РїСЂРѕРµРєС‚Сѓ Рё РѕСЃС‚Р°РІРёР» РІР°Рј РѕС‚Р·С‹РІ";
+                $template = 'finish_fb_frl.tpl.php'; //РЎ РѕС‚Р·С‹РІРѕРј
                 if ($project['emp_rating'] == 1 && $frl->is_pro != 't') {
-                    $template = 'finish_pos_fb_frl.tpl.php'; //Не-ПРО с положительным отзывом
+                    $template = 'finish_pos_fb_frl.tpl.php'; //РќРµ-РџР Рћ СЃ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рј РѕС‚Р·С‹РІРѕРј
                 }
             }
         } else {
@@ -283,13 +283,13 @@ class projects_smail extends smail {
             $params['frl_fullname'] = $this->_formatFullname($frl);
             $params['opinions_url'] = $GLOBALS['host'].'/users/'.$frl->login.'/opinions/';
             
-            $subject = "Исполнитель завершил работу по вашему проекту";
-            $template = 'finish_no_fb_emp.tpl.php'; //Без отзыва
-            if (isset($project['frl_feedback']) && isset($project['frl_rating'])) {//С отзывом
+            $subject = "РСЃРїРѕР»РЅРёС‚РµР»СЊ Р·Р°РІРµСЂС€РёР» СЂР°Р±РѕС‚Сѓ РїРѕ РІР°С€РµРјСѓ РїСЂРѕРµРєС‚Сѓ";
+            $template = 'finish_no_fb_emp.tpl.php'; //Р‘РµР· РѕС‚Р·С‹РІР°
+            if (isset($project['frl_feedback']) && isset($project['frl_rating'])) {//РЎ РѕС‚Р·С‹РІРѕРј
                 $params['rating'] = $project['frl_rating'];
                 $params['opinions_url'] = $GLOBALS['host'].'/users/'.$emp->login.'/opinions/';
                 $params['text'] = $project['frl_feedback'];
-                $subject = "Исполнитель завершил работу по вашему проекту и оставил вам отзыв";
+                $subject = "РСЃРїРѕР»РЅРёС‚РµР»СЊ Р·Р°РІРµСЂС€РёР» СЂР°Р±РѕС‚Сѓ РїРѕ РІР°С€РµРјСѓ РїСЂРѕРµРєС‚Сѓ Рё РѕСЃС‚Р°РІРёР» РІР°Рј РѕС‚Р·С‹РІ";
                 $template = 'finish_fb_emp.tpl.php'; 
             }
         }
@@ -300,7 +300,7 @@ class projects_smail extends smail {
         $ret = $this->send('text/html');
         
         
-        //Отправляем СМС
+        //РћС‚РїСЂР°РІР»СЏРµРј РЎРњРЎ
         $status = $project['status'];
         $user_id = ($to_frl) ? $project['exec_id'] : $project['user_id'];
 
@@ -317,7 +317,7 @@ class projects_smail extends smail {
     }
     
     /**
-     * Уведомление второй стороны о новом отзыве
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ РІС‚РѕСЂРѕР№ СЃС‚РѕСЂРѕРЅС‹ Рѕ РЅРѕРІРѕРј РѕС‚Р·С‹РІРµ
      * 
      * @param type $project
      */
@@ -333,22 +333,22 @@ class projects_smail extends smail {
         $emp = new employer();
         $emp->GetUserByUID($project['user_id']);
         
-        if ($to_frl) { //Письмо отправляем исполнителю
+        if ($to_frl) { //РџРёСЃСЊРјРѕ РѕС‚РїСЂР°РІР»СЏРµРј РёСЃРїРѕР»РЅРёС‚РµР»СЋ
             $recipient = $this->_formatFullname($frl, true);
-            $subject = "Заказчик оставил вам отзыв о сотрудничестве в проекте";
+            $subject = "Р—Р°РєР°Р·С‡РёРє РѕСЃС‚Р°РІРёР» РІР°Рј РѕС‚Р·С‹РІ Рѕ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРµ РІ РїСЂРѕРµРєС‚Рµ";
 
             $params['emp_login'] = $emp->login;
             $params['emp_fullname'] = $this->_formatFullname($emp);
             $params['rating'] = $project['emp_rating'];
             $params['opinions_url'] = $GLOBALS['host'].'/users/'.$frl->login.'/opinions/';
             $params['text'] = $project['emp_feedback'];
-            $template = 'fb_frl.tpl.php'; //С отзывом
+            $template = 'fb_frl.tpl.php'; //РЎ РѕС‚Р·С‹РІРѕРј
             if ($project['emp_rating'] == 1 && $frl->is_pro != 't') {
-                $template = 'pos_fb_frl.tpl.php'; //Не-ПРО с положительным отзывом
+                $template = 'pos_fb_frl.tpl.php'; //РќРµ-РџР Рћ СЃ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рј РѕС‚Р·С‹РІРѕРј
             }
         } else {
             $recipient = $this->_formatFullname($emp, true);
-            $subject = "Исполнитель оставил вам отзыв о сотрудничестве в проекте";
+            $subject = "РСЃРїРѕР»РЅРёС‚РµР»СЊ РѕСЃС‚Р°РІРёР» РІР°Рј РѕС‚Р·С‹РІ Рѕ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРµ РІ РїСЂРѕРµРєС‚Рµ";
             
             $params['frl_login'] = $frl->login;
             $params['frl_fullname'] = $this->_formatFullname($frl);
@@ -366,7 +366,7 @@ class projects_smail extends smail {
         
         
         
-        //Отправляем СМС
+        //РћС‚РїСЂР°РІР»СЏРµРј РЎРњРЎ
         if($to_frl && isset($project['emp_feedback']))
         {
             $status = null;
@@ -388,7 +388,7 @@ class projects_smail extends smail {
     }
     
     /**
-     * Уведомление исполнителю об успешной публикации ранее скрытых отзывов
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ РёСЃРїРѕР»РЅРёС‚РµР»СЋ РѕР± СѓСЃРїРµС€РЅРѕР№ РїСѓР±Р»РёРєР°С†РёРё СЂР°РЅРµРµ СЃРєСЂС‹С‚С‹С… РѕС‚Р·С‹РІРѕРІ
      * 
      * @param type $frl_id
      */
@@ -396,7 +396,7 @@ class projects_smail extends smail {
         $frl = new freelancer();
         $frl->GetUserByUID($frl_id);
 
-        $this->subject = "Успешно опубликованы ранее скрытые отзывы о сотрудничестве в проектах";
+        $this->subject = "РЈСЃРїРµС€РЅРѕ РѕРїСѓР±Р»РёРєРѕРІР°РЅС‹ СЂР°РЅРµРµ СЃРєСЂС‹С‚С‹Рµ РѕС‚Р·С‹РІС‹ Рѕ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРµ РІ РїСЂРѕРµРєС‚Р°С…";
         $this->recipient = $this->_formatFullname($frl, true);
         $this->message = Template::render(
             PROJECTS_TPL_MAIL_PATH . 'public_frl.tpl.php', array(
@@ -407,8 +407,8 @@ class projects_smail extends smail {
     }
 
     /**
-     * Форматтер имени юзера
-     * @todo Не лучшее место для этого?
+     * Р¤РѕСЂРјР°С‚С‚РµСЂ РёРјРµРЅРё СЋР·РµСЂР°
+     * @todo РќРµ Р»СѓС‡С€РµРµ РјРµСЃС‚Рѕ РґР»СЏ СЌС‚РѕРіРѕ?
      * 
      * @param type $user
      * @param type $with_email

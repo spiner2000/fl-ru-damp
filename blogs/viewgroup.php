@@ -116,7 +116,7 @@ if ( empty($draft_id) ) {
     $draft_id = null;
 }
 
-if($PDA) $blogspp = 20; // Для ПДА выводим 5
+if($PDA) $blogspp = 20; // Р”Р»СЏ РџР”Рђ РІС‹РІРѕРґРёРј 5
 
 if ($ban_where != 1)
 switch ($action){
@@ -141,7 +141,7 @@ switch ($action){
         //$msg = change_q_x($_POST['msg'], false);
         if (strlen($_POST['msg']) > blogs::MAX_DESC_CHARS) {
             $error_flag = 1;
-            $alert[2] = "Максимальный размер сообщения ".blogs::MAX_DESC_CHARS." символов!";
+            $alert[2] = "РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ СЃРѕРѕР±С‰РµРЅРёСЏ ".blogs::MAX_DESC_CHARS." СЃРёРјРІРѕР»РѕРІ!";
             $msg =& $_POST['msg'];
         } else {
         	if ((trim($_POST['question']) != '')&&is_array($_POST['answers'])) {
@@ -166,13 +166,13 @@ switch ($action){
         if ($yt_link != '') {
             $v_yt_link = video_validate($yt_link);
             if(!$v_yt_link) {
-                $error_flag = 1; $alert[4] = "Неверная ссылка.";
+                $error_flag = 1; $alert[4] = "РќРµРІРµСЂРЅР°СЏ СЃСЃС‹Р»РєР°.";
             } else {
                 $yt_link = $v_yt_link;
             }
         }
 
-		// опросы
+		// РѕРїСЂРѕСЃС‹
 		$multiple = (bool) $_POST['multiple'];
 		$question = '';
 		$answers  = array();
@@ -188,13 +188,13 @@ switch ($action){
 		}
 		if ($i > 0 && $question === '') {
 			$error_flag = 1;
-			$alert[5] = 'Введите текст вопроса';
+			$alert[5] = 'Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚ РІРѕРїСЂРѕСЃР°';
 		} else if ($i > blogs::MAX_POLL_ANSWERS) {
 			$error_flag = 1;
-			$alert[5] = 'Вы можете указать максимум ' . blogs::MAX_POLL_ANSWERS . ' отетов';
+			$alert[5] = 'Р’С‹ РјРѕР¶РµС‚Рµ СѓРєР°Р·Р°С‚СЊ РјР°РєСЃРёРјСѓРј ' . blogs::MAX_POLL_ANSWERS . ' РѕС‚РµС‚РѕРІ';
 		} else if ($i < 2 && $question !== '') {
 			$error_flag = 1;
-			$alert[5] = 'Нужно указать минимум 2 варианта ответа в голосовании';
+			$alert[5] = 'РќСѓР¶РЅРѕ СѓРєР°Р·Р°С‚СЊ РјРёРЅРёРјСѓРј 2 РІР°СЂРёР°РЅС‚Р° РѕС‚РІРµС‚Р° РІ РіРѕР»РѕСЃРѕРІР°РЅРёРё';
 		}
 		
         if(!($gr = intvalPgSql($gr))) {
@@ -209,7 +209,7 @@ switch ($action){
 
         if (!$t) $base = 0; else $base = 1;
 
-        // загрузка файлов
+        // Р·Р°РіСЂСѓР·РєР° С„Р°Р№Р»РѕРІ
         $attach = $_FILES['attach'];
         $files  = array();
         $countfiles = 0;
@@ -232,12 +232,12 @@ switch ($action){
                 
                 if ( $nTotalSize > blogs::MAX_FILE_SIZE ) {
                 	$error_flag = 1;
-                	$alert[3]   = 'Максимальный объем прикрепленных файлов: ' . (blogs::MAX_FILE_SIZE / (1024*1024))." Мб";
+                	$alert[3]   = 'РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РѕР±СЉРµРј РїСЂРёРєСЂРµРїР»РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ: ' . (blogs::MAX_FILE_SIZE / (1024*1024))." РњР±";
                 	break;
                 }
                 if(in_array($files[0]->getext($attach['name'][$key]), $GLOBALS['disallowed_array'])) {
                     $error_flag = 1;
-                    $alert[3] = "Недопустимый формат файла";
+                    $alert[3] = "РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ С„РѕСЂРјР°С‚ С„Р°Р№Р»Р°";
                     break;
                 }
             }
@@ -245,7 +245,7 @@ switch ($action){
         
         if ( count($files) > blogs::MAX_FILES ) { 
 			$error_flag = 1; 
-			$alert[3]   = "Максимальное кол-во файлов для загрузки: " . blogs::MAX_FILES;
+			$alert[3]   = "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»-РІРѕ С„Р°Р№Р»РѕРІ РґР»СЏ Р·Р°РіСЂСѓР·РєРё: " . blogs::MAX_FILES;
 		}
 
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/attachedfiles.php");
@@ -260,7 +260,7 @@ switch ($action){
         $attachedfiles_info = $attachedfiles->calcFiles();
 
         if ($msg==='' && $question==='' && empty($alert[5]) && !$countfiles && $yt_link==='' && !$attachedfiles_info['count']) {
-            $error_flag = 1; $alert[2] = "Поле заполнено некорректно";
+            $error_flag = 1; $alert[2] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
         }
        
         if (($msg!=='' || $attach['name'][0] || $question!=='' || $yt_link!='' || $attachedfiles_info['count']) && get_uid() && !$error_flag) {
@@ -271,7 +271,7 @@ switch ($action){
                 $attachedfiles_files = $attachedfiles->getFiles(array(1,3,4));
                 $blog_obj->addAttachedFiles($attachedfiles_files, $msg_id, NULL, ($draft_id ? true : false)); 
                 $attachedfiles->clear();
-                //$blog_obj->insertIntoModeration( $msg_id, $nStopWordsCnt ); // больше не модерируем
+                //$blog_obj->insertIntoModeration( $msg_id, $nStopWordsCnt ); // Р±РѕР»СЊС€Рµ РЅРµ РјРѕРґРµСЂРёСЂСѓРµРј
             }
 
             if($draft_id && !($alert1 || $error || $error_flag)) {
@@ -316,7 +316,7 @@ switch ($action){
           unset($name);
           unset($msg);
           require_once(ABS_PATH . "/classes/yaping.php");
-          $yaping = new yaping(); //??? не используется
+          $yaping = new yaping(); //??? РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
           //$out = $yaping->doping($gr);
           if ($requestedCategory == 7) {
               header("Location: /users/".$_SESSION['login']."/journal/?tr=-last");
@@ -399,7 +399,7 @@ switch ($action){
 		$yaping = new yaping();
 		//$out = $yaping->doping($gr);
         $gr = ($ord == 'my')? $o_gr: $gr;
-        $back_gr = __paramInit('string', 'back_gr'); // в какую группу вернуться после удаления
+        $back_gr = __paramInit('string', 'back_gr'); // РІ РєР°РєСѓСЋ РіСЂСѓРїРїСѓ РІРµСЂРЅСѓС‚СЊСЃСЏ РїРѕСЃР»Рµ СѓРґР°Р»РµРЅРёСЏ
         if ($back_gr !== null) $gr = $back_gr;
         if($_GET['r']) {
             header("Location: ".$_SERVER["HTTP_REFERER"]);
@@ -456,7 +456,7 @@ switch ($action){
         
         if (blogs::isTopicDeleted($thread)) {
             $error_flag = 1;
-            $alert[2] = "Нельзя редактировать удаленный топик!";
+            $alert[2] = "РќРµР»СЊР·СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СѓРґР°Р»РµРЅРЅС‹Р№ С‚РѕРїРёРє!";
         }
         
         if ( hasPermissions('blogs') ) {
@@ -469,7 +469,7 @@ switch ($action){
         //$msg = change_q_x($_POST['msg'], false);
         if (strlen($_POST['msg']) > blogs::MAX_DESC_CHARS) {
             $error_flag = 1;
-            $alert[2] = "Максимальный размер сообщения ".blogs::MAX_DESC_CHARS." символов!";
+            $alert[2] = "РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ СЃРѕРѕР±С‰РµРЅРёСЏ ".blogs::MAX_DESC_CHARS." СЃРёРјРІРѕР»РѕРІ!";
             $msg =& $_POST['msg'];
         } else {
             if ((trim($_POST['question']) != '')&&is_array($_POST['answers_exists'])) {
@@ -493,13 +493,13 @@ switch ($action){
         if ($yt_link != '') {
             $v_yt_link = video_validate($yt_link);
             if(!$v_yt_link) {
-                $error_flag = 1; $alert[4] = "Неверная ссылка.";
+                $error_flag = 1; $alert[4] = "РќРµРІРµСЂРЅР°СЏ СЃСЃС‹Р»РєР°.";
             } else {
                 $yt_link = $v_yt_link;
             }
         }
 		
-		// опросы
+		// РѕРїСЂРѕСЃС‹
 		$question = substr_entity(change_q_x( antispam( preg_replace('/&/','&amp;',trim((string) $_POST['question'])) ), false, false, ''), 0, blogs::MAX_POLL_CHARS, true);
 		$answers = array();
 		$answers_exists = array();
@@ -523,13 +523,13 @@ switch ($action){
 		}
 		if ($i > 0 && $question === '') {
 			$error_flag = 1;
-			$alert[5] = 'Введите текст вопроса';
+			$alert[5] = 'Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚ РІРѕРїСЂРѕСЃР°';
 		} else if ($i > blogs::MAX_POLL_ANSWERS) {
 			$error_flag = 1;
-			$alert[5] = 'Вы можете указать максимум ' . blogs::MAX_POLL_ANSWERS . ' ответов';
+			$alert[5] = 'Р’С‹ РјРѕР¶РµС‚Рµ СѓРєР°Р·Р°С‚СЊ РјР°РєСЃРёРјСѓРј ' . blogs::MAX_POLL_ANSWERS . ' РѕС‚РІРµС‚РѕРІ';
 		} else if ($i < 2 && $question !== '') {
 			$error_flag = 1;
-			$alert[5] = 'Нужно указать минимум 2 варианта ответа в голосовании';
+			$alert[5] = 'РќСѓР¶РЅРѕ СѓРєР°Р·Р°С‚СЊ РјРёРЅРёРјСѓРј 2 РІР°СЂРёР°РЅС‚Р° РѕС‚РІРµС‚Р° РІ РіРѕР»РѕСЃРѕРІР°РЅРёРё';
 		}
         if(!($gr = intvalPgSql($gr)) && !( $ord == 'my' || $PDA)) {
         	include ABS_PATH."/404.php"; exit;
@@ -586,7 +586,7 @@ switch ($action){
                     
                     if ( $nTotalSize > blogs::MAX_FILE_SIZE ) {
                     	$error_flag = 1;
-                    	$alert[3]   = 'Максимальный объем прикрепленных файлов: ' . (blogs::MAX_FILE_SIZE / (1024*1024))." Мб";
+                    	$alert[3]   = 'РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РѕР±СЉРµРј РїСЂРёРєСЂРµРїР»РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ: ' . (blogs::MAX_FILE_SIZE / (1024*1024))." РњР±";
                     	break;
                     }
                 }
@@ -597,7 +597,7 @@ switch ($action){
         
         if ( $countfiles > blogs::MAX_FILES) {
             $error_flag = 1;
-            $alert[3] = "Максимальное кол-во файлов для загрузки: " . blogs::MAX_FILES;
+            $alert[3] = "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»-РІРѕ С„Р°Р№Р»РѕРІ РґР»СЏ Р·Р°РіСЂСѓР·РєРё: " . blogs::MAX_FILES;
         }
 
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/attachedfiles.php");
@@ -617,7 +617,7 @@ switch ($action){
         if($attachedfiles_session) $countfiles = 0;
 
         if ( $msg==='' && $question === '' && empty($alert[5]) && !($countfiles || $attachedfiles_info['count']) && $yt_link==='') {
-            $error_flag = 1; $alert[2] = "Ошибка. Сообщение не должно быть пустым!";
+            $error_flag = 1; $alert[2] = "РћС€РёР±РєР°. РЎРѕРѕР±С‰РµРЅРёРµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј!";
 		} elseif (!$error && !$error_flag && ($msg!=='' || $attach['name'] || $attach_have || $attach_delete || $question || $yt_link || $attachedfiles_info['count'])){
 		    $blog_obj->Edit($_SESSION['uid'], $thread, $msg, $msg_name, $files, getRemoteIP(), $err, $mod, NULL, $gr, $t, $attach_delete, $olduserlogin, $yt_link, $close_comments, $is_private, $ontop, null, $question, $answers, $answers_exists, $multiple);
             //$nStopWordsCnt = $stop_words->calculate( $msg, $msg_name, $question, $answers, $answers_exists );
@@ -625,7 +625,7 @@ switch ($action){
             $blog_obj->addAttachedFiles($attachedfiles_files, $thread, $olduserlogin,($draft_id ? true : false)); 
             $attachedfiles->clear();
             
-            //$blog_obj->insertIntoModeration( $thread, $nStopWordsCnt ); // больше не модерируем
+            //$blog_obj->insertIntoModeration( $thread, $nStopWordsCnt ); // Р±РѕР»СЊС€Рµ РЅРµ РјРѕРґРµСЂРёСЂСѓРµРј
 
 		    if ($err) $alert = $alert + $err;
             if($draft_id && !($alert || $error || $error_flag)) {
@@ -702,8 +702,8 @@ switch ($action){
                 $thread_id = $thread;
             }
 
-            // с учетом того, что при смене флага "Запретить комментирование" мы меняем раздел
-            // нужно вычислять в какой раздел и на какую страницу редиректить юзера
+            // СЃ СѓС‡РµС‚РѕРј С‚РѕРіРѕ, С‡С‚Рѕ РїСЂРё СЃРјРµРЅРµ С„Р»Р°РіР° "Р—Р°РїСЂРµС‚РёС‚СЊ РєРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ" РјС‹ РјРµРЅСЏРµРј СЂР°Р·РґРµР»
+            // РЅСѓР¶РЅРѕ РІС‹С‡РёСЃР»СЏС‚СЊ РІ РєР°РєРѕР№ СЂР°Р·РґРµР» Рё РЅР° РєР°РєСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ СЂРµРґРёСЂРµРєС‚РёС‚СЊ СЋР·РµСЂР°
             if ($prev_gr <> $gr) {
                 $aData = blogs::getGroupAndPos( $thread_id, get_uid(false), $t_ord );
                 $page  = ceil( $aData['pos'] / $blogspp );
@@ -753,7 +753,7 @@ if (!$item_page) {
 $ord = trim($_GET['ord']);
 if ($ord != "best" && $ord != "my" && $ord != "relevant" && $ord != "favs") $ord = "new";
 
-// определяем подраздел
+// РѕРїСЂРµРґРµР»СЏРµРј РїРѕРґСЂР°Р·РґРµР»
 if( $ord == "my" || $ord == "favs" ) {
     if ( !get_uid() ) {
         header("Location: /fbd.php");
@@ -764,11 +764,11 @@ if( $ord == "my" || $ord == "favs" ) {
         
         if ( $sub_ord ) {
             if ( $ord == "my" ) {
-            	// вкладка "Мои"
+            	// РІРєР»Р°РґРєР° "РњРѕРё"
             	$sub_ord = ( in_array($sub_ord, blogs::$nav_my) ) ? $sub_ord : blogs::$nav_my[0];
             }
             else {
-                // вкладка "Закладки" (других таких пока нет)
+                // РІРєР»Р°РґРєР° "Р—Р°РєР»Р°РґРєРё" (РґСЂСѓРіРёС… С‚Р°РєРёС… РїРѕРєР° РЅРµС‚)
                 $sub_ord = ( in_array($sub_ord, blogs::$nav_favs) ) ? $sub_ord : blogs::$nav_favs[0];
             }
             
@@ -783,7 +783,7 @@ else {
     $sub_ord = $ord;
 }
 
-// определяем дополнительные условия сортировки
+// РѕРїСЂРµРґРµР»СЏРµРј РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СѓСЃР»РѕРІРёСЏ СЃРѕСЂС‚РёСЂРѕРІРєРё
 if ( $_GET['order'] ) {
 	$order = $_GET['order'];
 	$_SESSION["blogs_{$ord}_order"] = $order ;
@@ -820,7 +820,7 @@ if (!$gr_name) {
 	include ABS_PATH."/404.php"; exit;
 }
 
-$additional_header = "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"Блоги на FL.ru (".$gr_name.")\" href=\"/rss/blogs.php?gr=".$gr."&amp;t=".$t."\" />";
+$additional_header = "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"Р‘Р»РѕРіРё РЅР° FL.ru (".$gr_name.")\" href=\"/rss/blogs.php?gr=".$gr."&amp;t=".$t."\" />";
 
 if(empty($additional_header)) $additional_header = '';
       $om_clean_uri = array();
@@ -849,7 +849,7 @@ if ($uid) {
 
 $footer = $rpath."footer.html";
 
-// определяем шаблон контента
+// РѕРїСЂРµРґРµР»СЏРµРј С€Р°Р±Р»РѕРЅ РєРѕРЅС‚РµРЅС‚Р°
 if($PDA && isset($_GET['editcnt'])) {
     $content = "edit_cnt.php"; // PDA
 }
@@ -873,20 +873,20 @@ else {
 }
 
 switch ( $ord ) {
-    case 'best':     $sOrd = 'Популярные'; break;
-    case 'relevant': $sOrd = 'Актуальные'; break;
-    case 'my':       $sOrd = 'Мои';        break;
-    case 'favs':     $sOrd = 'Закладки';  break;
-    default:         $sOrd = 'Новые';      break;
+    case 'best':     $sOrd = 'РџРѕРїСѓР»СЏСЂРЅС‹Рµ'; break;
+    case 'relevant': $sOrd = 'РђРєС‚СѓР°Р»СЊРЅС‹Рµ'; break;
+    case 'my':       $sOrd = 'РњРѕРё';        break;
+    case 'favs':     $sOrd = 'Р—Р°РєР»Р°РґРєРё';  break;
+    default:         $sOrd = 'РќРѕРІС‹Рµ';      break;
 }
 $bp = ($page>1?"&bp=".$page:"").($gr?"&b=".$gr:"&b=all");
-if (!$gr_name) $gr_name = "Ошибка";
+if (!$gr_name) $gr_name = "РћС€РёР±РєР°";
 if($ord=='favs') {
-    $page_title = $page_keyw = "Закладки в блогах раздела > $gr_name < - " . ( $item_page > 1 ? " - Страница $item_page - " : '' ) . "фриланс, удаленная работа на FL.ru";
-    $page_descr = "Закладки в блогах раздела $gr_name на FL.ru";
+    $page_title = $page_keyw = "Р—Р°РєР»Р°РґРєРё РІ Р±Р»РѕРіР°С… СЂР°Р·РґРµР»Р° > $gr_name < - " . ( $item_page > 1 ? " - РЎС‚СЂР°РЅРёС†Р° $item_page - " : '' ) . "С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
+    $page_descr = "Р—Р°РєР»Р°РґРєРё РІ Р±Р»РѕРіР°С… СЂР°Р·РґРµР»Р° $gr_name РЅР° FL.ru";
 } else {
-    $page_title = $page_keyw = "$sOrd публикации в блогах раздела > $gr_name < - " . ( $item_page > 1 ? "Страница $item_page - " : '' ) . "фриланс, удаленная работа на FL.ru";
-    $page_descr = "$sOrd публикации в блогах раздела $gr_name на FL.ru";
+    $page_title = $page_keyw = "$sOrd РїСѓР±Р»РёРєР°С†РёРё РІ Р±Р»РѕРіР°С… СЂР°Р·РґРµР»Р° > $gr_name < - " . ( $item_page > 1 ? "РЎС‚СЂР°РЅРёС†Р° $item_page - " : '' ) . "С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
+    $page_descr = "$sOrd РїСѓР±Р»РёРєР°С†РёРё РІ Р±Р»РѕРіР°С… СЂР°Р·РґРµР»Р° $gr_name РЅР° FL.ru";
 }
 
 include ($rpath."template.php");

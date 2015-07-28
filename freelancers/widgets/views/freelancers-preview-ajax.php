@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Øàáëîí ïğåâüş ğàáîò/óñëóã äëÿ êàòàëîãà ôğèëàíñåğîâ
+ * Ğ¨Ğ°Ğ±Ğ»Ğ¾Ğ½ Ğ¿Ñ€ĞµĞ²ÑŒÑ Ñ€Ğ°Ğ±Ğ¾Ñ‚/ÑƒÑĞ»ÑƒĞ³ Ğ´Ğ»Ñ ĞºĞ°Ñ‚Ğ°Ğ»Ğ¾Ğ³Ğ° Ñ„Ñ€Ğ¸Ğ»Ğ°Ğ½ÑĞµÑ€Ğ¾Ğ²
  */
 
 if ($list):
@@ -25,7 +25,7 @@ if ($list):
                 </a>
             </h4>
             <a href="<?=$item->getUrl()?>" target="_blank" title="<?=$item->getAttrTitle()?>"><?=$item->getThumbnail()?></a>
-            <?php if(false): //@todo: íåïîíÿòíî çà÷åì íà êàæäîé êàğòèíêå îäèí è òîò æå òåêñò? ?>
+            <?php if(false): //@todo: Ğ½ĞµĞ¿Ğ¾Ğ½ÑÑ‚Ğ½Ğ¾ Ğ·Ğ°Ñ‡ĞµĞ¼ Ğ½Ğ° ĞºĞ°Ğ¶Ğ´Ğ¾Ğ¹ ĞºĞ°Ñ€Ñ‚Ğ¸Ğ½ĞºĞµ Ğ¾Ğ´Ğ¸Ğ½ Ğ¸ Ñ‚Ğ¾Ñ‚ Ğ¶Ğµ Ñ‚ĞµĞºÑÑ‚? ?>
             <span class="b-layout_hide" itemprop="description"><?=SeoTags::getInstance()->getImageDescription() ?></span>   
             <?php endif; ?>
 <?php        
@@ -46,7 +46,7 @@ if ($list):
                     </a>
                     <a class="b-pic__price-box b-pic__price-box_pay b-pic__price-box b-pic__price-box_noline" href="javascript:void(0);" data-url="<?=$item->getUrl()?>" onclick="TServices_Catalog.orderNow(this);"><?=$item->getPrice()?>			
                     <?php if (($sold_count = $item->getSoldCount()) > 0): ?>
-                        <span title="Êîëè÷åñòâî ïğîäàæ óñëóãè"><span class="b-icon b-icon__tu2 b-icon_top_2"></span> <?=$sold_count?></span>
+                        <span title="ĞšĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ Ğ¿Ñ€Ğ¾Ğ´Ğ°Ğ¶ ÑƒÑĞ»ÑƒĞ³Ğ¸"><span class="b-icon b-icon__tu2 b-icon_top_2"></span> <?=$sold_count?></span>
                     <?php endif; ?>
                     </a>
                 </div>

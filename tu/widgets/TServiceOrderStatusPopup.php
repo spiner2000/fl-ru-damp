@@ -2,7 +2,7 @@
 
 /**
  * Class TServiceOrderStatusPopup
- * Âèäæåò ïîêàçûâàåò ïîïàï ôğèëàíñåğó ïåğåä ñìåíîé ñòàòóñà ñ çàêàçå ÒÓ
+ * Ğ’Ğ¸Ğ´Ğ¶ĞµÑ‚ Ğ¿Ğ¾ĞºĞ°Ğ·Ñ‹Ğ²Ğ°ĞµÑ‚ Ğ¿Ğ¾Ğ¿Ğ°Ğ¿ Ñ„Ñ€Ğ¸Ğ»Ğ°Ğ½ÑĞµÑ€Ñƒ Ğ¿ĞµÑ€ĞµĞ´ ÑĞ¼ĞµĞ½Ğ¾Ğ¹ ÑÑ‚Ğ°Ñ‚ÑƒÑĞ° Ñ Ğ·Ğ°ĞºĞ°Ğ·Ğµ Ğ¢Ğ£
  */
 
 class TServiceOrderStatusPopup extends CWidget 
@@ -17,7 +17,7 @@ class TServiceOrderStatusPopup extends CWidget
 
     public function run() 
     {
-        //ñîáèğàåì øàáëîí
+        //ÑĞ¾Ğ±Ğ¸Ñ€Ğ°ĞµĞ¼ ÑˆĞ°Ğ±Ğ»Ğ¾Ğ½
         $this->render("t-service-order-status-frl-popup", $this->data);
     }
 }

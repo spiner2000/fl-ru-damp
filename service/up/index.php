@@ -8,7 +8,7 @@ include($rpath . '404.php');
 exit;
 $stretch_page = true;
 $showMainDiv  = true;
-$page_title = "Поднятие проекта - фриланс, удаленная работа на FL.ru";
+$page_title = "РџРѕРґРЅСЏС‚РёРµ РїСЂРѕРµРєС‚Р° - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
 $header   = "$rpath/header.php";
 $content  = 'content.php';
 $footer   = "$rpath/footer.html";

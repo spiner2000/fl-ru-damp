@@ -21,7 +21,7 @@ switch($site) {
             $cancel = __paramInit('bool', NULL, 'cancel');
             if($resolve) {
                 if(!($iagree = __paramInit('bool', NULL, 'iagree')))
-                    $stage->error['arbitrage']['iagree'] = 'Íåîáõîäèìî ïîäòâåðæäåíèå';
+                    $stage->error['arbitrage']['iagree'] = 'ÐÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ðµ';
                 else {
                     if($stage->arbResolve($_POST)) {
                         $frl_percent = $stage->request['frl_percent'] / 100;

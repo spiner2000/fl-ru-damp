@@ -9,7 +9,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/tservices/tservices.php");
 
 $tservices_categories = new tservices_categories();
 $result = $tservices_categories->getTitleAndSubtitle(10);
-assert('$result == array("spec_title" => "Âåá-ïðîãðàììèðîâàíèå", "group_title" => "Ðàçðàáîòêà ñàéòîâ")');
+assert('$result == array("spec_title" => "Ð’ÐµÐ±-Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ", "group_title" => "Ð Ð°Ð·Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ° ÑÐ°Ð¹Ñ‚Ð¾Ð²")');
 
 
 $result = $tservices_categories->getCategoryParentId(10);
@@ -18,7 +18,7 @@ assert('$result == 7');
 
 $tservices_tags = new tservices_tags();
 $result = $tservices_tags->getsByTServiceId(39);
-assert('$result == array( 0 => "àëüáîì", 1 => "áðîíèðîâàòü", 2 => "çàáðîíèðîâàòü", 3 => "çàêàçàòü", 4 => "çàêàçûâàòü", 5 => "çàðåçåðâèðîâàòü" )');
+assert('$result == array( 0 => "Ð°Ð»ÑŒÐ±Ð¾Ð¼", 1 => "Ð±Ñ€Ð¾Ð½Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ", 2 => "Ð·Ð°Ð±Ñ€Ð¾Ð½Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ", 3 => "Ð·Ð°ÐºÐ°Ð·Ð°Ñ‚ÑŒ", 4 => "Ð·Ð°ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ", 5 => "Ð·Ð°Ñ€ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ" )');
 
 
 $tservices = new tservices(2);

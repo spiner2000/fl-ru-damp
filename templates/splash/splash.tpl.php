@@ -1,5 +1,5 @@
 <?
-// êíîïêà "Çàêðûòü" íóæíà íå íà êàæäîì ñïëýøå
+// ÐºÐ½Ð¾Ð¿ÐºÐ° "Ð—Ð°ÐºÑ€Ñ‹Ñ‚ÑŒ" Ð½ÑƒÐ¶Ð½Ð° Ð½Ðµ Ð½Ð° ÐºÐ°Ð¶Ð´Ð¾Ð¼ ÑÐ¿Ð»ÑÑˆÐµ
 $closeButton = !strpos($tpl_splash, "splash-messages.tpl.php");
 ?>
 <div id="i-shad_wrap" class="i-shadow i-shadow_zindex_110 ">

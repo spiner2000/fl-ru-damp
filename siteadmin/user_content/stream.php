@@ -1,6 +1,6 @@
 <?php
 /**
- * Модерирование пользовательского контента. Контроллер.
+ * РњРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РєРѕРЅС‚РµРЅС‚Р°. РљРѕРЅС‚СЂРѕР»Р»РµСЂ.
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
@@ -44,7 +44,7 @@ switch ($sMode) {
             $oToUser = new users();
             $oToUser->GetUserByUID( $nToId );
             
-            $page_title = 'Переписка ' . $oFromUser->login . ' с ' . $oToUser->login;
+            $page_title = 'РџРµСЂРµРїРёСЃРєР° ' . $oFromUser->login . ' СЃ ' . $oToUser->login;
         }
 
         ob_start();
@@ -79,7 +79,7 @@ switch ($sMode) {
             }
         }
         
-        $page_title = $sContentName . ', поток ' . $aStream['title_num'];
+        $page_title = $sContentName . ', РїРѕС‚РѕРє ' . $aStream['title_num'];
         
         ob_start();
         include_once( 'stream_inner.php' );

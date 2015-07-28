@@ -52,7 +52,7 @@ class TServicesPopular extends CWidget
         $this->tservices = $list['list'];
         
         if ($this->tservices) {
-            //ðàñøèðåíèå ñâåäåíèé î òèïîâûõ óñëóãàõ
+            //Ñ€Ð°ÑÑˆÐ¸Ñ€ÐµÐ½Ð¸Ðµ ÑÐ²ÐµÐ´ÐµÐ½Ð¸Ð¹ Ð¾ Ñ‚Ð¸Ð¿Ð¾Ð²Ñ‹Ñ… ÑƒÑÐ»ÑƒÐ³Ð°Ñ…
             $tserviceModel = new TServiceModel();
             $tserviceModel->addOwnerInfo()->extend($this->tservices, 'id');
         }
@@ -84,7 +84,7 @@ class TServicesPopular extends CWidget
             $category_stitle = $this->options['category_stitle'];
         }
         
-        //ñîáèðàåì øàáëîí
+        //ÑÐ¾Ð±Ð¸Ñ€Ð°ÐµÐ¼ ÑˆÐ°Ð±Ð»Ð¾Ð½
         $this->render('t-service-popular', array(
             'tservices' => $this->tservices,
             'category_title' => $category_title,

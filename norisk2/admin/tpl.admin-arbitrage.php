@@ -17,12 +17,12 @@
                     <thead>
                         <tr>
                             <th><a href="javascript:SBR.changeFormDir(0,'DESC')"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $dir_col == 0 && $dir == 'DESC' ? '-a' : '' ?>.png"></a> <a href="javascript:SBR.changeFormDir(0,'ASC')"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $dir_col == 0 && $dir == 'ASC' ? '-a' : '' ?>.png"></a> </th>
-                            <th> Договор <a href="javascript:SBR.changeFormDir(1,'DESC')"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $dir_col == 1 && $dir == 'DESC' ? '-a' : '' ?>.png"></a> <a href="javascript:SBR.changeFormDir(1,'ASC')"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $dir_col == 1 && $dir == 'ASC' ? '-a' : '' ?>.png"></a> </th>
-                            <th> Проект <a href="javascript:SBR.changeFormDir(2,'DESC')"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $dir_col == 2 && $dir == 'DESC' ? '-a' : '' ?>.png"></a> <a href="javascript:SBR.changeFormDir(2,'ASC')"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $dir_col == 2 && $dir == 'ASC' ? '-a' : '' ?>.png"></a> </th>
-                            <th> Время посл. ответа <a href="javascript:SBR.changeFormDir(3,'DESC')"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $dir_col == 3 && $dir == 'DESC' ? '-a' : '' ?>.png"></a> <a href="javascript:SBR.changeFormDir(3,'ASC')"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $dir_col == 3 && $dir == 'ASC' ? '-a' : '' ?>.png"></a> </th>
-                            <th> Ожидаем до <a href="javascript:SBR.changeFormDir(4,'DESC')"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $dir_col == 4 && $dir == 'DESC' ? '-a' : '' ?>.png"></a> <a href="javascript:SBR.changeFormDir(4,'ASC')"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $dir_col == 4 && $dir == 'ASC' ? '-a' : '' ?>.png"></a> </th>
-                            <th> Арбитр <a href="javascript:SBR.changeFormDir(5,'DESC')"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $dir_col == 5 && $dir == 'DESC' ? '-a' : '' ?>.png"></a> <a href="javascript:SBR.changeFormDir(5,'ASC')"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $dir_col == 5 && $dir == 'ASC' ? '-a' : '' ?>.png"></a> </th>
-                            <th> Срок арбитража <a href="javascript:SBR.changeFormDir(6,'DESC')"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $dir_col == 6 && $dir == 'DESC' ? '-a' : '' ?>.png"></a> <a href="javascript:SBR.changeFormDir(6,'ASC')"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $dir_col == 6 && $dir == 'ASC' ? '-a' : '' ?>.png"></a> </th>
+                            <th> Р”РѕРіРѕРІРѕСЂ <a href="javascript:SBR.changeFormDir(1,'DESC')"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $dir_col == 1 && $dir == 'DESC' ? '-a' : '' ?>.png"></a> <a href="javascript:SBR.changeFormDir(1,'ASC')"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $dir_col == 1 && $dir == 'ASC' ? '-a' : '' ?>.png"></a> </th>
+                            <th> РџСЂРѕРµРєС‚ <a href="javascript:SBR.changeFormDir(2,'DESC')"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $dir_col == 2 && $dir == 'DESC' ? '-a' : '' ?>.png"></a> <a href="javascript:SBR.changeFormDir(2,'ASC')"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $dir_col == 2 && $dir == 'ASC' ? '-a' : '' ?>.png"></a> </th>
+                            <th> Р’СЂРµРјСЏ РїРѕСЃР». РѕС‚РІРµС‚Р° <a href="javascript:SBR.changeFormDir(3,'DESC')"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $dir_col == 3 && $dir == 'DESC' ? '-a' : '' ?>.png"></a> <a href="javascript:SBR.changeFormDir(3,'ASC')"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $dir_col == 3 && $dir == 'ASC' ? '-a' : '' ?>.png"></a> </th>
+                            <th> РћР¶РёРґР°РµРј РґРѕ <a href="javascript:SBR.changeFormDir(4,'DESC')"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $dir_col == 4 && $dir == 'DESC' ? '-a' : '' ?>.png"></a> <a href="javascript:SBR.changeFormDir(4,'ASC')"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $dir_col == 4 && $dir == 'ASC' ? '-a' : '' ?>.png"></a> </th>
+                            <th> РђСЂР±РёС‚СЂ <a href="javascript:SBR.changeFormDir(5,'DESC')"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $dir_col == 5 && $dir == 'DESC' ? '-a' : '' ?>.png"></a> <a href="javascript:SBR.changeFormDir(5,'ASC')"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $dir_col == 5 && $dir == 'ASC' ? '-a' : '' ?>.png"></a> </th>
+                            <th> РЎСЂРѕРє Р°СЂР±РёС‚СЂР°Р¶Р° <a href="javascript:SBR.changeFormDir(6,'DESC')"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $dir_col == 6 && $dir == 'DESC' ? '-a' : '' ?>.png"></a> <a href="javascript:SBR.changeFormDir(6,'ASC')"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $dir_col == 6 && $dir == 'ASC' ? '-a' : '' ?>.png"></a> </th>
                         </tr>
                         <tr class="pd">
                             <td>&nbsp;</td>
@@ -67,13 +67,13 @@
                         <?
                         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/LocalDateTime.php';
                         foreach ($sbr_all['data'] as $sbr_data) {
-                            // в какой цвет покрасить строку таблицы
+                            // РІ РєР°РєРѕР№ С†РІРµС‚ РїРѕРєСЂР°СЃРёС‚СЊ СЃС‚СЂРѕРєСѓ С‚Р°Р±Р»РёС†С‹
                             if (!$sbr_data['last_msg_id_arbitr']) {
-                                $color = 'color_fd6c30'; // красный
+                                $color = 'color_fd6c30'; // РєСЂР°СЃРЅС‹Р№
                             } elseif ($sbr_data['last_msg_id_users'] && $sbr_data['last_msg_id_arbitr'] && $sbr_data['last_msg_id_users'] > $sbr_data['last_msg_id_arbitr']) {
-                                $color = 'color_00b0f0'; // синий
+                                $color = 'color_00b0f0'; // СЃРёРЅРёР№
                             } else {
-                                $color = ''; // черный
+                                $color = ''; // С‡РµСЂРЅС‹Р№
                             }
                             ?>
                             <tr class="<?= (++$i%2==0 ? 'even' : 'odd')?> <?= $color ?>">
@@ -82,10 +82,10 @@
                                 <td class="adm-prj">
                                     <span><a href="?access=A&site=Stage&id=<?= $sbr_data['stage_id'] ?>">#<?= sbr_stages::getOuterNum($sbr_data['stage_id'], $sbr_data['num']) ?> <?= reformat($sbr_data['name'], 30, 0, 1) ?></a></span>
                                 </td>
-                                <td class="adm-center"><?= $sbr_data['last_msg_post_date'] ? ago_arbitrage_answered(strtotime($sbr_data['last_msg_post_date'])) : 'Нет комментариев' ?></td>
+                                <td class="adm-center"><?= $sbr_data['last_msg_post_date'] ? ago_arbitrage_answered(strtotime($sbr_data['last_msg_post_date'])) : 'РќРµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ' ?></td>
                                 <td class="adm-center"><?= date('d.m.Y', strtotime($sbr_data['date_to_answer_'])) ?></td>
                                 <td class="adm-center"><?= $sbr_data['arbitr_name'] ?></td>
-                                <td class="adm-center"><?= $sbr_data['days_to_end'] . ' ' . ending($sbr_data['days_to_end'], 'день', 'дня', 'дней') ?></td>
+                                <td class="adm-center"><?= $sbr_data['days_to_end'] . ' ' . ending($sbr_data['days_to_end'], 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№') ?></td>
                             </tr>
                         <? } ?>
                     </tbody>

@@ -18,10 +18,10 @@
                     <div class="b-layout__txt b-layout__txt_padleft_35 b-layout__txt_fontsize_15 b-layout__txt_lineheight_18 "><a class="b-layout__link b-layout__link_bold<?= $extraLinkStyle ?>" href="?site=Stage&id=<?=$stage->data['id']?>"><?=reformat($stage->data['name'], 24, 0, 1)?></a></div>
                 </td>
                 <td class="b-layout__middle b-layout__middle_width_175">
-                    <div class="b-layout__txt"><?= $stage->data['int_work_time']?> <?=ending(abs($stage->data['int_work_time']), 'день', 'дня', 'дней')?> на этап</div>
+                    <div class="b-layout__txt"><?= $stage->data['int_work_time']?> <?=ending(abs($stage->data['int_work_time']), 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№')?> РЅР° СЌС‚Р°Рї</div>
                 </td>
                 <td class="b-layout__right b-layout__right_width_400">
-                    <div class="b-layout__txt b-layout__txt_right_0 b-layout__txt_absolute b-layout__txt_padright_15 b-layout__txt_relative b-layout__txt_zindex_1 <?= sbr_notification::isReaction($stage->notification) ? '' : 'b-layout__txt_hide'?>"><a class="b-layout__link" href="?site=Stage&id=<?=$stage->data['id']?>"><?= sbr_notification::isReaction($stage->notification) ? "Посмотреть" : "Перейти в этап"?></a></div>
+                    <div class="b-layout__txt b-layout__txt_right_0 b-layout__txt_absolute b-layout__txt_padright_15 b-layout__txt_relative b-layout__txt_zindex_1 <?= sbr_notification::isReaction($stage->notification) ? '' : 'b-layout__txt_hide'?>"><a class="b-layout__link" href="?site=Stage&id=<?=$stage->data['id']?>"><?= sbr_notification::isReaction($stage->notification) ? "РџРѕСЃРјРѕС‚СЂРµС‚СЊ" : "РџРµСЂРµР№С‚Рё РІ СЌС‚Р°Рї"?></a></div>
                     <div class="b-layout__txt b-layout__txt_relative <?= $stage->getStatusColor()?>"><span class="b-icon b-icon_top_1 <?= $stage->getStatusICO()?>"></span><?= $stage->getStatusName();?><span class="b-layout__hider" style="display:none;"></span></div>
                 </td>
             </tr>

@@ -1,6 +1,6 @@
 <div class="b-menu b-menu_tabs b-menu_padtop_20">
     <ul class="b-menu__list b-menu__list_padleft_10"  data-menu-descriptor="search-nav" data-menu="true">
-<? // последний элемент массива
+<? // РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР°
 $last_elem = end($search_tabs);
 $last_name = $last_elem['name'];
 ?>
@@ -20,6 +20,6 @@ $last_name = $last_elem['name'];
 </div>   
 
 <? 
-// Нужно последнему пункту li добавить класс b-menu__item_last
+// РќСѓР¶РЅРѕ РїРѕСЃР»РµРґРЅРµРјСѓ РїСѓРЅРєС‚Сѓ li РґРѕР±Р°РІРёС‚СЊ РєР»Р°СЃСЃ b-menu__item_last
 ?>
 

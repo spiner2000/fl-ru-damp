@@ -3,8 +3,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/xajax/seo.common.php';
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/seo.php");
 
 /**
- * Загрузка списка доступных позиций
- * @param  integer  $parent_section   ID родителя раздела
+ * Р—Р°РіСЂСѓР·РєР° СЃРїРёСЃРєР° РґРѕСЃС‚СѓРїРЅС‹С… РїРѕР·РёС†РёР№
+ * @param  integer  $parent_section   ID СЂРѕРґРёС‚РµР»СЏ СЂР°Р·РґРµР»Р°
  * @param  integer  $direct_id
  * @return object xajaxResponse
  */
@@ -26,7 +26,7 @@ function getPositions($parent_section = false, $direct_id = null) {
     $html .= "<option value={$n}>{$section_num}.{$n}</option>";
   }
   if($positions) {
-    $html .= "<option value=-1 selected>Последний</option>";
+    $html .= "<option value=-1 selected>РџРѕСЃР»РµРґРЅРёР№</option>";
   } else {
     $html .= "<option value=1>{$section_num}.1</option>";
   }
@@ -36,9 +36,9 @@ function getPositions($parent_section = false, $direct_id = null) {
 }
 
 /**
- * Загрузка формы для создания/редактирования раздела
+ * Р—Р°РіСЂСѓР·РєР° С„РѕСЂРјС‹ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ/СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ СЂР°Р·РґРµР»Р°
  *
- * @param integer|boolean $parent_section если не false - загрузка формы создания подраздела
+ * @param integer|boolean $parent_section РµСЃР»Рё РЅРµ false - Р·Р°РіСЂСѓР·РєР° С„РѕСЂРјС‹ СЃРѕР·РґР°РЅРёСЏ РїРѕРґСЂР°Р·РґРµР»Р°
  * @return object xajaxResponse
  */
 function loadForm($parent_section = false, $direct_id = null) {
@@ -73,10 +73,10 @@ function loadForm($parent_section = false, $direct_id = null) {
 }
 
 /**
- * Загрузка формы для редактирования раздела (подраздела)
+ * Р—Р°РіСЂСѓР·РєР° С„РѕСЂРјС‹ РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ СЂР°Р·РґРµР»Р° (РїРѕРґСЂР°Р·РґРµР»Р°)
  *  
- * @param integer $section_id      ИД Раздела
- * @param integer $parent_section  ИД родителя если есть (для подразделов)
+ * @param integer $section_id      РР” Р Р°Р·РґРµР»Р°
+ * @param integer $parent_section  РР” СЂРѕРґРёС‚РµР»СЏ РµСЃР»Рё РµСЃС‚СЊ (РґР»СЏ РїРѕРґСЂР°Р·РґРµР»РѕРІ)
  * @return object xajaxResponse
  */
 function loadFormEdit($section_id, $parent_section=false, $direct_id = null) {
@@ -113,9 +113,9 @@ function loadFormEdit($section_id, $parent_section=false, $direct_id = null) {
 }
 
 /**
- * Создание раздела/подраздела
+ * РЎРѕР·РґР°РЅРёРµ СЂР°Р·РґРµР»Р°/РїРѕРґСЂР°Р·РґРµР»Р°
  *
- * @param array $info Данные создания
+ * @param array $info Р”Р°РЅРЅС‹Рµ СЃРѕР·РґР°РЅРёСЏ
  * @return object xajaxResponse
  */
 function createSection($info, $action = 'create') {
@@ -151,30 +151,30 @@ function createSection($info, $action = 'create') {
    if ($info['direct_id']) {
        $section['direct_id'] = $info['direct_id'];
    } else {
-       $objResponse->script("alert('Не указано направление');"); 
+       $objResponse->script("alert('РќРµ СѓРєР°Р·Р°РЅРѕ РЅР°РїСЂР°РІР»РµРЅРёРµ');"); 
        $objResponse->script("$('s_direction').focus();"); 
        return $objResponse;
    }
 
    if($info['is_subcategory'] && $info['subdomain'] == 0) {
-       $objResponse->script("alert('Не указан регион');"); 
+       $objResponse->script("alert('РќРµ СѓРєР°Р·Р°РЅ СЂРµРіРёРѕРЅ');"); 
        return $objResponse;
    }
    
    if(trim($info['name_section']) == "") {
-       $objResponse->script("alert('Введите название раздела');"); 
+       $objResponse->script("alert('Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ СЂР°Р·РґРµР»Р°');"); 
        $objResponse->script("$('name_section').focus();"); 
        return $objResponse;
    }
    
    if(preg_match('/[^A-Za-z0-9_\-]/', $info['name_section_link'])) {
-       $objResponse->script("alert('Название ссылки раздела должно содержать только латинские буквы, цифры, нижнее подчеркивание или тире');"); 
+       $objResponse->script("alert('РќР°Р·РІР°РЅРёРµ СЃСЃС‹Р»РєРё СЂР°Р·РґРµР»Р° РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ С‚РѕР»СЊРєРѕ Р»Р°С‚РёРЅСЃРєРёРµ Р±СѓРєРІС‹, С†РёС„СЂС‹, РЅРёР¶РЅРµРµ РїРѕРґС‡РµСЂРєРёРІР°РЅРёРµ РёР»Рё С‚РёСЂРµ');"); 
        $objResponse->script("$('name_section_link').focus();"); 
        return $objResponse;
    }
 
    if($seo->checkLink('section', $section['name_section_link'], $info['direct_id'], $info['parent'], $info['id'], $info['subdomain'])) {
-        $objResponse->script("alert('В выбранном разделе уже есть элемент с такой ссылкой');");
+        $objResponse->script("alert('Р’ РІС‹Р±СЂР°РЅРЅРѕРј СЂР°Р·РґРµР»Рµ СѓР¶Рµ РµСЃС‚СЊ СЌР»РµРјРµРЅС‚ СЃ С‚Р°РєРѕР№ СЃСЃС‹Р»РєРѕР№');");
         $objResponse->script("$('name_section_link').focus();");
         return $objResponse;
    }
@@ -200,10 +200,10 @@ function createSection($info, $action = 'create') {
            }
 
            if($info['is_subcategory']) {
-              $success_text  = "Подраздел успешно добавлен";
+              $success_text  = "РџРѕРґСЂР°Р·РґРµР» СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅ";
               $url['msgok'] = 5;
            } else {
-              $success_text  = "Раздел успешно добавлен";
+              $success_text  = "Р Р°Р·РґРµР» СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅ";
               $url['msgok'] = 1;
            }
            break;
@@ -240,10 +240,10 @@ function createSection($info, $action = 'create') {
            $section['id'] = $info['id'];
 
            if($info['is_subcategory']) {
-              $success_text  = "Подраздел успешно изменен";
+              $success_text  = "РџРѕРґСЂР°Р·РґРµР» СѓСЃРїРµС€РЅРѕ РёР·РјРµРЅРµРЅ";
               $url['msgok'] = 6;
            } else {
-              $success_text  = "Раздел успешно изменен";
+              $success_text  = "Р Р°Р·РґРµР» СѓСЃРїРµС€РЅРѕ РёР·РјРµРЅРµРЅ";
               $url['msgok'] = 2;
            }
            break;
@@ -278,11 +278,11 @@ function createSection($info, $action = 'create') {
 
    if($info['parent'] != 0) {
        $objResponse->assign("section_{$info['parent']}", "innerHTML", $html);
-       $objResponse->script("init_collapse_button('section_{$section['id']}');"); // активируем кнопку разворачивания подменю
+       $objResponse->script("init_collapse_button('section_{$section['id']}');"); // Р°РєС‚РёРІРёСЂСѓРµРј РєРЅРѕРїРєСѓ СЂР°Р·РІРѕСЂР°С‡РёРІР°РЅРёСЏ РїРѕРґРјРµРЅСЋ
        $objResponse->script("$('section_{$info['parent']}').addClass('active');"); 
    } else if ($action == 'update') {
        $objResponse->assign("section_{$section['id']}", "innerHTML", $html);
-       $objResponse->script("init_collapse_button('section_{$section['id']}');"); // активируем кнопку разворачивания подменю
+       $objResponse->script("init_collapse_button('section_{$section['id']}');"); // Р°РєС‚РёРІРёСЂСѓРµРј РєРЅРѕРїРєСѓ СЂР°Р·РІРѕСЂР°С‡РёРІР°РЅРёСЏ РїРѕРґРјРµРЅСЋ
        $objResponse->script("$('section_{$section['id']}').addClass('active');"); 
    } else {
        $objResponse->script("var section = new Element('li#section_{$section['id']}');
@@ -300,7 +300,7 @@ function createSection($info, $action = 'create') {
        $html = ob_get_clean();
         
        $objResponse->assign("section_{$info['old_parent']}", "innerHTML", $html);
-       $objResponse->script("init_collapse_button('section_{$info['old_parent']}');"); // активируем кнопку разворачивания подменю
+       $objResponse->script("init_collapse_button('section_{$info['old_parent']}');"); // Р°РєС‚РёРІРёСЂСѓРµРј РєРЅРѕРїРєСѓ СЂР°Р·РІРѕСЂР°С‡РёРІР°РЅРёСЏ РїРѕРґРјРµРЅСЋ
        $objResponse->script("$('section_{$info['old_parent']}').removeClass('active');"); 
    }
    
@@ -311,10 +311,10 @@ function createSection($info, $action = 'create') {
 }
 
 /**
- * Удаление разделов (подразделов)
+ * РЈРґР°Р»РµРЅРёРµ СЂР°Р·РґРµР»РѕРІ (РїРѕРґСЂР°Р·РґРµР»РѕРІ)
  *
- * @param integer $section_id ИД раздела
- * @param inetger $sub        ИД родителя подраздела (для удаления подразделов)
+ * @param integer $section_id РР” СЂР°Р·РґРµР»Р°
+ * @param inetger $sub        РР” СЂРѕРґРёС‚РµР»СЏ РїРѕРґСЂР°Р·РґРµР»Р° (РґР»СЏ СѓРґР°Р»РµРЅРёСЏ РїРѕРґСЂР°Р·РґРµР»РѕРІ)
  * @return object xajaxResponse
  */
 function deleteSection($section_id, $sub=false) {
@@ -337,7 +337,7 @@ function deleteSection($section_id, $sub=false) {
         $html = ob_get_clean();
         
         $objResponse->assign("section_{$sub}", "innerHTML", $html);
-        $objResponse->script("init_collapse_button('section_{$sub}');"); // активируем кнопку разворачивания подменю
+        $objResponse->script("init_collapse_button('section_{$sub}');"); // Р°РєС‚РёРІРёСЂСѓРµРј РєРЅРѕРїРєСѓ СЂР°Р·РІРѕСЂР°С‡РёРІР°РЅРёСЏ РїРѕРґРјРµРЅСЋ
     } else {
         $objResponse->script("location.href = '/catalog/admin/?direction={$direction[0]['name_section_link']}'");
     }
@@ -346,9 +346,9 @@ function deleteSection($section_id, $sub=false) {
 }
 
 /**
- * Загрузка формы редактирования содержания поддомена (региона)
+ * Р—Р°РіСЂСѓР·РєР° С„РѕСЂРјС‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ СЃРѕРґРµСЂР¶Р°РЅРёСЏ РїРѕРґРґРѕРјРµРЅР° (СЂРµРіРёРѕРЅР°)
  *
- * @param integer $subdomain   ИД поддомена (региона)
+ * @param integer $subdomain   РР” РїРѕРґРґРѕРјРµРЅР° (СЂРµРіРёРѕРЅР°)
  * @return object xajaxResponse
  */
 function loadMainForm($subdomain, $is_save=false, $msgtext='') {
@@ -362,9 +362,9 @@ function loadMainForm($subdomain, $is_save=false, $msgtext='') {
 }
 
 /**
- * Редактированеи содержания поддомена (региона)
+ * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРµРё СЃРѕРґРµСЂР¶Р°РЅРёСЏ РїРѕРґРґРѕРјРµРЅР° (СЂРµРіРёРѕРЅР°)
  *
- * @param array $info    Данные поддомена (региона)
+ * @param array $info    Р”Р°РЅРЅС‹Рµ РїРѕРґРґРѕРјРµРЅР° (СЂРµРіРёРѕРЅР°)
  * @return object xajaxResponse
  */
 function updateContentSubdomain($info) {
@@ -378,7 +378,7 @@ function updateContentSubdomain($info) {
     $seo = new seo((int)$info['subdomain']);
     $seo->updateContentSubdomain($update, $info['subdomain']);
     
-    /* @todo Зарефакторить надо */
+    /* @todo Р—Р°СЂРµС„Р°РєС‚РѕСЂРёС‚СЊ РЅР°РґРѕ */
     $seo->subdomain['meta_description'] = $info['meta_description'];
     $seo->subdomain['meta_keywords']    = $info['meta_keywords'];
     $seo->subdomain['content']          = $info['content'];
@@ -396,9 +396,9 @@ function setTranslit($text) {
 
 
 /**
- * Загрузка формы для создания/редактирования направления
+ * Р—Р°РіСЂСѓР·РєР° С„РѕСЂРјС‹ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ/СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РЅР°РїСЂР°РІР»РµРЅРёСЏ
  *
- * @param integer $id если не null - загрузка формы создания редактирования
+ * @param integer $id РµСЃР»Рё РЅРµ null - Р·Р°РіСЂСѓР·РєР° С„РѕСЂРјС‹ СЃРѕР·РґР°РЅРёСЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
  * @return object xajaxResponse
  */
 function loadDirectForm($id = null, $is_save = null) {
@@ -424,9 +424,9 @@ function loadDirectForm($id = null, $is_save = null) {
 }
 
 /**
- * Сохраняет/редактирует направление
+ * РЎРѕС…СЂР°РЅСЏРµС‚/СЂРµРґР°РєС‚РёСЂСѓРµС‚ РЅР°РїСЂР°РІР»РµРЅРёРµ
  *
- * @param array $info - данные
+ * @param array $info - РґР°РЅРЅС‹Рµ
  * @return object xajaxResponse
  */
 function saveDirectForm($info) {
@@ -439,19 +439,19 @@ function saveDirectForm($info) {
     $seo = new seo($_SESSION['subdomain']);    
 
     if (trim($info['name_section']) == "") {
-        $objResponse->script("alert('Введите название направления');");
+        $objResponse->script("alert('Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РЅР°РїСЂР°РІР»РµРЅРёСЏ');");
         $objResponse->script("$('name_section').focus();");
         return $objResponse;
     }
 
     if (preg_match('/[^A-Za-z0-9_\-]/', $info['name_section_link']) || trim($info['name_section_link']) == "") {
-        $objResponse->script("alert('Название ссылки должно содержать только латинские буквы, цифры, нижнее подчеркивание или тире');");
+        $objResponse->script("alert('РќР°Р·РІР°РЅРёРµ СЃСЃС‹Р»РєРё РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ С‚РѕР»СЊРєРѕ Р»Р°С‚РёРЅСЃРєРёРµ Р±СѓРєРІС‹, С†РёС„СЂС‹, РЅРёР¶РЅРµРµ РїРѕРґС‡РµСЂРєРёРІР°РЅРёРµ РёР»Рё С‚РёСЂРµ');");
         $objResponse->script("$('name_section_link').focus();");
         return $objResponse;
     }
 
     if($seo->checkLink('direct', $info['name_section_link'], $info['id'])) {
-        $objResponse->script("alert('Направление с такой ссылкой уже есть');");
+        $objResponse->script("alert('РќР°РїСЂР°РІР»РµРЅРёРµ СЃ С‚Р°РєРѕР№ СЃСЃС‹Р»РєРѕР№ СѓР¶Рµ РµСЃС‚СЊ');");
         $objResponse->script("$('name_section_link').focus();");
         return $objResponse;
     }
@@ -496,7 +496,7 @@ function saveDirectForm($info) {
         $url = "/catalog/admin/?" . http_build_query($url);
         $objResponse->redirect($url);
     } else {
-        $objResponse->alert('Ошибка');
+        $objResponse->alert('РћС€РёР±РєР°');
     }
     
     return $objResponse;
@@ -511,13 +511,13 @@ function deleteDirection($id) {
     $id = intval($id);
     
     if (!$id) {
-       $objResponse->alert('Идентификатор направления не указан');
+       $objResponse->alert('РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РЅР°РїСЂР°РІР»РµРЅРёСЏ РЅРµ СѓРєР°Р·Р°РЅ');
        return $objResponse;
     }
     
     $seo = new seo();
     if (!$seo->deleteDirection($id)) {
-       $objResponse->alert('Ошибка удаления');
+       $objResponse->alert('РћС€РёР±РєР° СѓРґР°Р»РµРЅРёСЏ');
        return $objResponse;
     }
     

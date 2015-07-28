@@ -2,11 +2,11 @@
 <div id="quick_prj_win_main_ok" class="b-shadow b-shadow_center b-shadow_width_520 b-shadow__quick  b-shadow_zindex_11 b-shadow_bg_eeffe5 <?= $_GET['quickprj_ok'] ? '' : 'b-shadow_hide' ?>" style="display:block;">
     <div class="b-shadow__body b-shadow__body_pad_15_20">
        <div class="b-fon b-fon_bg_po">
-          <div class="b-layout__title b-layout__title_padbot_5"><span class="b-icon b-icon__po b-icon_float_left b-icon_top_4 b-page__desktop b-page__ipad"></span>Вы успешно купили платные опции<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_1 b-page__desktop b-page__ipad">с привлечением лучших исполнителей на выгодных условиях</div></div>
+          <div class="b-layout__title b-layout__title_padbot_5"><span class="b-icon b-icon__po b-icon_float_left b-icon_top_4 b-page__desktop b-page__ipad"></span>Р’С‹ СѓСЃРїРµС€РЅРѕ РєСѓРїРёР»Рё РїР»Р°С‚РЅС‹Рµ РѕРїС†РёРё<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_1 b-page__desktop b-page__ipad">СЃ РїСЂРёРІР»РµС‡РµРЅРёРµРј Р»СѓС‡С€РёС… РёСЃРїРѕР»РЅРёС‚РµР»РµР№ РЅР° РІС‹РіРѕРґРЅС‹С… СѓСЃР»РѕРІРёСЏС…</div></div>
        </div>
-       <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_11">Спасибо за покупку.<br>Желаем вам успешной работы на сайте и хороших исполнителей проекта!</div>
+       <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_11">РЎРїР°СЃРёР±Рѕ Р·Р° РїРѕРєСѓРїРєСѓ.<br>Р–РµР»Р°РµРј РІР°Рј СѓСЃРїРµС€РЅРѕР№ СЂР°Р±РѕС‚С‹ РЅР° СЃР°Р№С‚Рµ Рё С…РѕСЂРѕС€РёС… РёСЃРїРѕР»РЅРёС‚РµР»РµР№ РїСЂРѕРµРєС‚Р°!</div>
        <div class="b-buttons b-buttons_padbot_10">
-          <a class="b-button b-button_flat b-button_flat_green" href="" onClick="$('quick_prj_win_main_ok').addClass('b-shadow_hide'); return false;">Закрыть</a>
+          <a class="b-button b-button_flat b-button_flat_green" href="" onClick="$('quick_prj_win_main_ok').addClass('b-shadow_hide'); return false;">Р—Р°РєСЂС‹С‚СЊ</a>
        </div>
    </div>
    <span class="b-shadow__icon b-shadow__icon_close"></span>
@@ -24,64 +24,64 @@
 <div id="quick_prj_win_main" class="b-shadow b-shadow_center b-shadow_width_520 b-shadow_hide b-shadow__quick" style="display:block;">
     <div class="b-shadow__body b-shadow__body_pad_15_20">
         <div class="b-fon b-fon_bg_fpro">
-            <div class="b-layout__title b-layout__title_padbot_5"><span class="b-icon b-icon__po b-icon_float_left b-icon_margtop_4 b-page__desktop b-page__ipad"></span>Покупка платных опций в проекте <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_1 b-page__desktop b-page__ipad">с привлечением лучших исполнителей на выгодных условиях</div></div>
+            <div class="b-layout__title b-layout__title_padbot_5"><span class="b-icon b-icon__po b-icon_float_left b-icon_margtop_4 b-page__desktop b-page__ipad"></span>РџРѕРєСѓРїРєР° РїР»Р°С‚РЅС‹С… РѕРїС†РёР№ РІ РїСЂРѕРµРєС‚Рµ <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_1 b-page__desktop b-page__ipad">СЃ РїСЂРёРІР»РµС‡РµРЅРёРµРј Р»СѓС‡С€РёС… РёСЃРїРѕР»РЅРёС‚РµР»РµР№ РЅР° РІС‹РіРѕРґРЅС‹С… СѓСЃР»РѕРІРёСЏС…</div></div>
         </div>
     
         <div id="quick_pro_div_main">
-            <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_fontsize_15">Выбранные вами платные опции</div>
+            <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_fontsize_15">Р’С‹Р±СЂР°РЅРЅС‹Рµ РІР°РјРё РїР»Р°С‚РЅС‹Рµ РѕРїС†РёРё</div>
     
             <input type="hidden" id="quick_pro_f_account_sum" value="<?= round($_SESSION['ac_sum'], 2)<0 ? 0 : round($_SESSION['ac_sum'], 2) ?>"/>
     
             <div id="quick_prj_f_d_vacancy" class="b-check b-check_padbot_10 b-check_padleft_20 b-check_inline-block b-check_width_200">
-                <label class="b-check__label b-check__label_fontsize_13 b-check__label_color_6db335"><span class="b-layout__bold">Публикация вакансии</span> <div class="b-layout__txt b-layout__txt_fontsize_11 b-check__label_color_6db335 "><?=$priceVacancy ? $priceVacancy.' руб.' : ''?></div></label>
+                <label class="b-check__label b-check__label_fontsize_13 b-check__label_color_6db335"><span class="b-layout__bold">РџСѓР±Р»РёРєР°С†РёСЏ РІР°РєР°РЅСЃРёРё</span> <div class="b-layout__txt b-layout__txt_fontsize_11 b-check__label_color_6db335 "><?=$priceVacancy ? $priceVacancy.' СЂСѓР±.' : ''?></div></label>
             </div>
     
             <div id="quick_prj_f_d_contest" class="b-check b-check_padbot_10 b-check_padleft_20 b-check_inline-block b-check_width_200">
-                <label class="b-check__label b-check__label_fontsize_13 b-check__label_color_6db335"><span class="b-layout__bold">Публикация конкурса</span> <div class="b-layout__txt b-layout__txt_fontsize_11 b-check__label_color_6db335 "><?=$priceContest ? $priceContest.' руб.' : ''?></div></label>
+                <label class="b-check__label b-check__label_fontsize_13 b-check__label_color_6db335"><span class="b-layout__bold">РџСѓР±Р»РёРєР°С†РёСЏ РєРѕРЅРєСѓСЂСЃР°</span> <div class="b-layout__txt b-layout__txt_fontsize_11 b-check__label_color_6db335 "><?=$priceContest ? $priceContest.' СЂСѓР±.' : ''?></div></label>
             </div>
     
             <div id="quick_prj_f_d_ontop" class="b-check b-check_padbot_10 b-check_padleft_20 b-check_inline-block b-check_width_200">
                 <input type="checkbox" value="" name="" class="b-check__input" id="quick_prj_f_ontop">
-                <label class="b-check__label b-check__label_fontsize_13" for="quick_prj_f_ontop"><span class="b-layout__bold">Закрепление <? if($project['kind']==7) { ?>конкурса<? } elseif($project['kind']==4) { ?>вакансии<? } else {?>проекта<?} ?></span> <div class="b-layout__txt b-layout__txt_fontsize_11">на <span id="quick_prj_t_d"></span>, <span id="quick_prj_t_d_p"></span> руб.</div></label>
+                <label class="b-check__label b-check__label_fontsize_13" for="quick_prj_f_ontop"><span class="b-layout__bold">Р—Р°РєСЂРµРїР»РµРЅРёРµ <? if($project['kind']==7) { ?>РєРѕРЅРєСѓСЂСЃР°<? } elseif($project['kind']==4) { ?>РІР°РєР°РЅСЃРёРё<? } else {?>РїСЂРѕРµРєС‚Р°<?} ?></span> <div class="b-layout__txt b-layout__txt_fontsize_11">РЅР° <span id="quick_prj_t_d"></span>, <span id="quick_prj_t_d_p"></span> СЂСѓР±.</div></label>
             </div>
     
             <div id="quick_prj_f_d_logo" class="b-check b-check_padbot_10 b-check_padleft_20 b-check_inline-block b-check_width_200">
                 <input type="checkbox" value="" name="" class="b-check__input" id="quick_prj_f_logo">
-                <label class="b-check__label b-check__label_fontsize_13" for="quick_prj_f_logo"><span class="b-layout__bold">Логотип и ссылка на сайт</span> <div class="b-layout__txt b-layout__txt_fontsize_11"><?=$priceLogo ? $priceLogo.' руб.' : ''?></div></label>
+                <label class="b-check__label b-check__label_fontsize_13" for="quick_prj_f_logo"><span class="b-layout__bold">Р›РѕРіРѕС‚РёРї Рё СЃСЃС‹Р»РєР° РЅР° СЃР°Р№С‚</span> <div class="b-layout__txt b-layout__txt_fontsize_11"><?=$priceLogo ? $priceLogo.' СЂСѓР±.' : ''?></div></label>
             </div>
     
             <div id="quick_prj_f_d_urgent" class="b-check b-check_padbot_10 b-check_padleft_20 b-check_inline-block b-check_width_200">
                 <input type="checkbox" value="" name="" class="b-check__input" id="quick_prj_f_urgent">
-                <label class="b-check__label b-check__label_fontsize_13" for="quick_prj_f_urgent"><span class="b-layout__bold">Опция "Срочный проект"</span> <div class="b-layout__txt b-layout__txt_fontsize_11"><?=$urgentPrice ? $urgentPrice.' руб.' : ''?></div></label>
+                <label class="b-check__label b-check__label_fontsize_13" for="quick_prj_f_urgent"><span class="b-layout__bold">РћРїС†РёСЏ "РЎСЂРѕС‡РЅС‹Р№ РїСЂРѕРµРєС‚"</span> <div class="b-layout__txt b-layout__txt_fontsize_11"><?=$urgentPrice ? $urgentPrice.' СЂСѓР±.' : ''?></div></label>
             </div>
     
             <div id="quick_prj_f_d_hide" class="b-check b-check_padbot_10 b-check_padleft_20 b-check_inline-block b-check_width_200">
                 <input type="checkbox" value="" name="" class="b-check__input" id="quick_prj_f_hide">
-                <label class="b-check__label b-check__label_fontsize_13" for="quick_prj_f_hide"><span class="b-layout__bold">Опция "Скрытый проект"</span> <div class="b-layout__txt b-layout__txt_fontsize_11"><?=$hidePrice ? $hidePrice.' руб.' : ''?></div></label>
+                <label class="b-check__label b-check__label_fontsize_13" for="quick_prj_f_hide"><span class="b-layout__bold">РћРїС†РёСЏ "РЎРєСЂС‹С‚С‹Р№ РїСЂРѕРµРєС‚"</span> <div class="b-layout__txt b-layout__txt_fontsize_11"><?=$hidePrice ? $hidePrice.' СЂСѓР±.' : ''?></div></label>
             </div>
     
             <div id="quick_prj_f_d_ontop2" class="b-check b-check_padbot_10 b-check_padleft_20 b-check_inline-block b-check_width_200">
                 <input type="checkbox" value="" name="" class="b-check__input" id="quick_prj_f_ontop2">
-                <label class="b-check__label b-check__label_fontsize_13" for="quick_prj_f_ontop2"><span class="b-layout__bold">Продление закрепления</span> <div class="b-layout__txt b-layout__txt_fontsize_11">на ХХ дней, 3000 руб.</div></label>
+                <label class="b-check__label b-check__label_fontsize_13" for="quick_prj_f_ontop2"><span class="b-layout__bold">РџСЂРѕРґР»РµРЅРёРµ Р·Р°РєСЂРµРїР»РµРЅРёСЏ</span> <div class="b-layout__txt b-layout__txt_fontsize_11">РЅР° РҐРҐ РґРЅРµР№, 3000 СЂСѓР±.</div></label>
             </div>
     
-            <div class="b-layout__txt b-layout__txt_padtb_10 b-layout__txt_fontsize_15">Сумма и способ оплаты</div>
+            <div class="b-layout__txt b-layout__txt_padtb_10 b-layout__txt_fontsize_15">РЎСѓРјРјР° Рё СЃРїРѕСЃРѕР± РѕРїР»Р°С‚С‹</div>
     
             <div id="quick_pro_div_error" class="b-fon b-fon_margbot_20 b-fon_marglr_20 b-layout_hide">
                 <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeee"> 
                     <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-20"></span>
-                    <span id="quick_pro_div_error_txt">К сожалению, в процессе оплаты произошла ошибка, и платеж не был завершен. Попробуйте провести оплату еще раз.</span>
+                    <span id="quick_pro_div_error_txt">Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, РІ РїСЂРѕС†РµСЃСЃРµ РѕРїР»Р°С‚С‹ РїСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°, Рё РїР»Р°С‚РµР¶ РЅРµ Р±С‹Р» Р·Р°РІРµСЂС€РµРЅ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РїСЂРѕРІРµСЃС‚Рё РѕРїР»Р°С‚Сѓ РµС‰Рµ СЂР°Р·.</span>
                 </div>
             </div>
     
             <?=$promoCodesForm?>
     
             <div class="b-layout__txt b-layout__txt_padleft_20 b-layout__txt_fontsize_11">
-                Сумма к оплате: <span id="quick_pro_sum_pay"></span> руб.<br>
+                РЎСѓРјРјР° Рє РѕРїР»Р°С‚Рµ: <span id="quick_pro_sum_pay"></span> СЂСѓР±.<br>
             </div>
             <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_padleft_20 b-layout__txt_fontsize_11">
                 <span id="quick_pro_sum_span_4">
-                <span id="quick_pro_sum_span_2">Часть суммы (<span id="quick_pro_sum_span_7"></span> руб.)</span><span id="quick_pro_sum_span_3">Она</span> будет списана с личного счета, на нем 
+                <span id="quick_pro_sum_span_2">Р§Р°СЃС‚СЊ СЃСѓРјРјС‹ (<span id="quick_pro_sum_span_7"></span> СЂСѓР±.)</span><span id="quick_pro_sum_span_3">РћРЅР°</span> Р±СѓРґРµС‚ СЃРїРёСЃР°РЅР° СЃ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р°, РЅР° РЅРµРј 
                 <span id="quick_pro_sum_account1" class="b-layout__bold">
                     <?php setlocale(LC_NUMERIC,'en_US');?>
                     <? if (round($_SESSION['bn_sum'] + $_SESSION['ac_sum'], 2) > 0) { ?>
@@ -90,28 +90,28 @@
                         0
                     <? } ?>
                 </span>
-                 руб.<br>
+                 СЂСѓР±.<br>
                  <span id="quick_pro_sum_span_5">
-                Остаток (<span id="quick_pro_sum_span_6"></span> руб.) вам нужно оплатить одним из способов:
+                РћСЃС‚Р°С‚РѕРє (<span id="quick_pro_sum_span_6"></span> СЂСѓР±.) РІР°Рј РЅСѓР¶РЅРѕ РѕРїР»Р°С‚РёС‚СЊ РѕРґРЅРёРј РёР· СЃРїРѕСЃРѕР±РѕРІ:
                 </span>
                 </span>
-                <span id="quick_pro_sum_span_1">Ее вы можете оплатить одним из способов:</span>
+                <span id="quick_pro_sum_span_1">Р•Рµ РІС‹ РјРѕР¶РµС‚Рµ РѕРїР»Р°С‚РёС‚СЊ РѕРґРЅРёРј РёР· СЃРїРѕСЃРѕР±РѕРІ:</span>
                 <span id="quick_pro_sum_account2"></span>
             </div>
     
     
             <div id="quick_pro_block_1">
                 <div class="b-buttons b-buttons_padleft_20 b-buttons_padbot_10"> 
-                    <a class="b-button b-button__pm b-button__pm_green b-button__pm_card b-button_margbot_5" href="#" onClick="quickPRJ_process('dolcard', 1); return false;"><span class="b-button__txt">Пластиковые<br>карты</span></a> 
-                    <a class="b-button b-button__pm b-button__pm_green b-button__pm_yd b-button_margbot_5" href="#" onClick="quickPRJ_process('ya', 1); return false;"><span class="b-button__txt">Яндекс.Деньги</span></a> 
+                    <a class="b-button b-button__pm b-button__pm_green b-button__pm_card b-button_margbot_5" href="#" onClick="quickPRJ_process('dolcard', 1); return false;"><span class="b-button__txt">РџР»Р°СЃС‚РёРєРѕРІС‹Рµ<br>РєР°СЂС‚С‹</span></a> 
+                    <a class="b-button b-button__pm b-button__pm_green b-button__pm_yd b-button_margbot_5" href="#" onClick="quickPRJ_process('ya', 1); return false;"><span class="b-button__txt">РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё</span></a> 
                     <a class="b-button b-button__pm b-button__pm_green b-button__pm_wm b-button_margbot_5" href="#" onClick="quickPRJ_process('webmoney', 1); return false;"><span class="b-button__txt">WebMoney</span></a> 
-                    <a class="b-button b-button__pm b-button__pm_green b-button__pm_sber b-button_margbot_5" data-maxprice="<?=yandex_kassa::MAX_PAYMENT_SB?>" href="#" onClick="quickPRJ_process('sberbank', 1); return false;"><span class="b-button__txt">Сбербанк<br />Онлайн</span></a> 
-                    <a class="b-button b-button__pm b-button__pm_green b-button__pm_alfa b-button_margbot_5" data-maxprice="<?=yandex_kassa::MAX_PAYMENT_ALFA?>" href="#" onClick="quickPRJ_process('alfaclick', 1); return false;"><span class="b-button__txt">Альфа Клик</span></a> 
+                    <a class="b-button b-button__pm b-button__pm_green b-button__pm_sber b-button_margbot_5" data-maxprice="<?=yandex_kassa::MAX_PAYMENT_SB?>" href="#" onClick="quickPRJ_process('sberbank', 1); return false;"><span class="b-button__txt">РЎР±РµСЂР±Р°РЅРє<br />РћРЅР»Р°Р№РЅ</span></a> 
+                    <a class="b-button b-button__pm b-button__pm_green b-button__pm_alfa b-button_margbot_5" data-maxprice="<?=yandex_kassa::MAX_PAYMENT_ALFA?>" href="#" onClick="quickPRJ_process('alfaclick', 1); return false;"><span class="b-button__txt">РђР»СЊС„Р° РљР»РёРє</span></a> 
                 </div>
             </div>
     
             <div id="quick_pro_block_2" class="b-buttons">
-                <div class="b-buttons b-buttons_padleft_20 b-buttons_padbot_10"> <a id="quick_pro_block_2_btn" class="b-button b-button_flat b-button_flat_green" href="#" onClick="quickPRJ_process('account', 1); return false;">Оплатить 3588 руб.</a> </div>
+                <div class="b-buttons b-buttons_padleft_20 b-buttons_padbot_10"> <a id="quick_pro_block_2_btn" class="b-button b-button_flat b-button_flat_green" href="#" onClick="quickPRJ_process('account', 1); return false;">РћРїР»Р°С‚РёС‚СЊ 3588 СЂСѓР±.</a> </div>
             </div>
     
             <div id="quick_pro_div_wait" class="b-layout__wait b-layout__txt_fontsize_15 b-layout__txt_color_<?= is_emp() ? '6db335' : 'fd6c30'?> b-layout_hide">
@@ -174,7 +174,7 @@ function QuickPRJ_Recalc() {
         }
         if ($('project_top_ok').get('checked')) {
             quickPRJ_prices.top = $('project_top_days').get('value') * Public.topDayPrice;
-            $('quick_prj_t_d').set('html', $('project_top_days').get('value') + ' ' +  ending($('project_top_days').get('value'), 'день', 'дня', 'дней'));
+            $('quick_prj_t_d').set('html', $('project_top_days').get('value') + ' ' +  ending($('project_top_days').get('value'), 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№'));
             $('quick_prj_t_d_p').set('html', quickPRJ_prices.top);
             $('quick_prj_f_d_ontop').show();
             $('quick_prj_f_ontop').set('checked', true);
@@ -233,7 +233,7 @@ function quickPRJ_show() {
         }
         if ($('project_top_ok') && $('project_top_ok').get('checked')) {
             quickPRJ_prices.top = $('project_top_days').get('value') * Public.topDayPrice;
-            $('quick_prj_t_d').set('html', $('project_top_days').get('value') + ' ' +  ending($('project_top_days').get('value'), 'день', 'дня', 'дней'));
+            $('quick_prj_t_d').set('html', $('project_top_days').get('value') + ' ' +  ending($('project_top_days').get('value'), 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№'));
             $('quick_prj_t_d_p').set('html', quickPRJ_prices.top);
             $('quick_prj_f_d_ontop').show();
             $('quick_prj_f_ontop').set('checked', true);
@@ -286,7 +286,7 @@ function quickPRJ_select(sum) {
 }
 
 /**
- * Проверяет допустимость оплаты через платежные системы
+ * РџСЂРѕРІРµСЂСЏРµС‚ РґРѕРїСѓСЃС‚РёРјРѕСЃС‚СЊ РѕРїР»Р°С‚С‹ С‡РµСЂРµР· РїР»Р°С‚РµР¶РЅС‹Рµ СЃРёСЃС‚РµРјС‹
  */
 function quickPRJ_checkPaymentTypes (price)
 {
@@ -385,12 +385,12 @@ function quickPRJ_applyPromo()
         }
         quickPRJ_changePrice(newPrice);
     } else {
-        var allPrice = 0; //Сумма без скидок
-        var discountSum = 0; //Сумма скидки в рублях
-        var maxDiscountPrice = 0; //Максимальная скидка в рублях
+        var allPrice = 0; //РЎСѓРјРјР° Р±РµР· СЃРєРёРґРѕРє
+        var discountSum = 0; //РЎСѓРјРјР° СЃРєРёРґРєРё РІ СЂСѓР±Р»СЏС…
+        var maxDiscountPrice = 0; //РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЃРєРёРґРєР° РІ СЂСѓР±Р»СЏС…
         for (i in quickPRJ_prices) {
-            //если есть услуга и скидка для нее, то прибавить 
-            //к общей стоимости цену со скидкой
+            //РµСЃР»Рё РµСЃС‚СЊ СѓСЃР»СѓРіР° Рё СЃРєРёРґРєР° РґР»СЏ РЅРµРµ, С‚Рѕ РїСЂРёР±Р°РІРёС‚СЊ 
+            //Рє РѕР±С‰РµР№ СЃС‚РѕРёРјРѕСЃС‚Рё С†РµРЅСѓ СЃРѕ СЃРєРёРґРєРѕР№
             var elemPrice = quickPRJ_prices[i];
             
             var useElem = "0";
@@ -426,7 +426,7 @@ function quickPRJ_applyPromo()
         newPrice = allPrice - discountSum;
         
         if (discountSum > 0) {
-            promo_code_info.set('text', "Скидка " + discountSum + " руб.");
+            promo_code_info.set('text', "РЎРєРёРґРєР° " + discountSum + " СЂСѓР±.");
         }
         quickPRJ_changePrice(newPrice);
     }
@@ -461,7 +461,7 @@ quickPRJ_changePrice = function(sum)
         $('quick_pro_sum_span_3').show();
         $('quick_pro_sum_span_5').hide();
         $('quick_pro_block_2').show();
-        // денег хватает
+        // РґРµРЅРµРі С…РІР°С‚Р°РµС‚
     } else {
         $('quick_pro_block_2').hide();
         $('quick_pro_sum_span_1').hide();
@@ -489,11 +489,11 @@ quickPRJ_changePrice = function(sum)
             quickPRJ_checkPaymentTypes(s);
         }
     }
-    $('quick_pro_block_2_btn').set('html', 'Купить за '+sum+' рублей');
+    $('quick_pro_block_2_btn').set('html', 'РљСѓРїРёС‚СЊ Р·Р° '+sum+' СЂСѓР±Р»РµР№');
 }
 
 
-var limit = 1200; // в секундах
+var limit = 1200; // РІ СЃРµРєСѓРЅРґР°С…
 var timeout_id = null;
 
 function resetTimer() {
@@ -512,17 +512,17 @@ function processTimer(id){
     $("quick_pro_div_main").removeClass("b-layout_waiting");
   }
 
-  var limit_div = parseInt(limit/60); // минуты
-  var limit_mod = limit - limit_div*60; // секунды
+  var limit_div = parseInt(limit/60); // РјРёРЅСѓС‚С‹
+  var limit_mod = limit - limit_div*60; // СЃРµРєСѓРЅРґС‹
   
-  // строка с оставшимся временем
+  // СЃС‚СЂРѕРєР° СЃ РѕСЃС‚Р°РІС€РёРјСЃСЏ РІСЂРµРјРµРЅРµРј
   limit_str = "&nbsp;&nbsp;";
   if (limit_div < 10) limit_str = limit_str + "0";
   limit_str = limit_str + limit_div + ":";
   if (limit_mod < 10) limit_str = limit_str + "0";
   limit_str = limit_str + limit_mod + "&nbsp;&nbsp;";      
   
-  // вывод времени
+  // РІС‹РІРѕРґ РІСЂРµРјРµРЅРё
   el_timer = document.getElementById("timer");
   if (el_timer) el_timer.innerHTML = limit_str;
 }

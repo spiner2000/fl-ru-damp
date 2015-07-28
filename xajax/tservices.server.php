@@ -32,9 +32,9 @@ function tservices_order_auth($email, $name, $surname, $options)
 {
     $objResponse = &new xajaxResponse();
 
-    $name    = substr(strip_tags(trim(stripslashes($name))),0,21); //Для регистрации
-    $surname = substr(strip_tags(trim(stripslashes($surname))),0,21); //Для регистрации
-    $email = substr(strip_tags(trim(stripslashes($email))),0,64); //Для регистрации и авторизации
+    $name    = substr(strip_tags(trim(stripslashes($name))),0,21); //Р”Р»СЏ СЂРµРіРёСЃС‚СЂР°С†РёРё
+    $surname = substr(strip_tags(trim(stripslashes($surname))),0,21); //Р”Р»СЏ СЂРµРіРёСЃС‚СЂР°С†РёРё
+    $email = substr(strip_tags(trim(stripslashes($email))),0,64); //Р”Р»СЏ СЂРµРіРёСЃС‚СЂР°С†РёРё Рё Р°РІС‚РѕСЂРёР·Р°С†РёРё
     
     $tu_id = intval(@$options['tu_id']);
 
@@ -45,9 +45,9 @@ function tservices_order_auth($email, $name, $surname, $options)
     if (is_email($email)) 
     {
 
-        //Забираем только нужные нам ключи
+        //Р—Р°Р±РёСЂР°РµРј С‚РѕР»СЊРєРѕ РЅСѓР¶РЅС‹Рµ РЅР°Рј РєР»СЋС‡Рё
         $options = array_intersect_key($options, array('extra' => '','is_express' => '','paytype' => ''));
-        //Проверка входных параметров
+        //РџСЂРѕРІРµСЂРєР° РІС…РѕРґРЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ
         $is_valid_extra = !isset($options['extra']) || (isset($options['extra']) && (count(array_intersect(array_keys($tService['extra']), $options['extra'])) == count($options['extra'])));
         $is_valid_express = !isset($options['is_express']) || (isset($options['is_express']) && $options['is_express'] == '1' && $tService['is_express'] == 't');
         $is_valid_paytype = isset($options['paytype']) && in_array($options['paytype'], array('0','1'));
@@ -57,10 +57,10 @@ function tservices_order_auth($email, $name, $surname, $options)
         
         $user = new users();
         $user->GetUser($email, true, true);
-        //Проверяем на всякий случай там точно мыло совпало а то может логин
+        //РџСЂРѕРІРµСЂСЏРµРј РЅР° РІСЃСЏРєРёР№ СЃР»СѓС‡Р°Р№ С‚Р°Рј С‚РѕС‡РЅРѕ РјС‹Р»Рѕ СЃРѕРІРїР°Р»Рѕ Р° С‚Рѕ РјРѕР¶РµС‚ Р»РѕРіРёРЅ
         $is_email = ($user->email == $email);
 
-        //Создаем хеш для ссылки активации
+        //РЎРѕР·РґР°РµРј С…РµС€ РґР»СЏ СЃСЃС‹Р»РєРё Р°РєС‚РёРІР°С†РёРё
         $code = TServiceOrderModel::model()->newOrderActivation(array(
             'user_id' => ($user->uid > 0)?$user->uid:NULL,
             'tu_id' => $tService['id'],
@@ -70,31 +70,31 @@ function tservices_order_auth($email, $name, $surname, $options)
             'options' => $options
         ));
         
-        // Пользователь найден, ведь у него есть email. А как еще проверить?
+        // РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅР°Р№РґРµРЅ, РІРµРґСЊ Сѓ РЅРµРіРѕ РµСЃС‚СЊ email. Рђ РєР°Рє РµС‰Рµ РїСЂРѕРІРµСЂРёС‚СЊ?
         if (($user->uid > 0) && $is_email) 
         { 
             
             if (is_emp($user->role)) 
             {
                 $tservices_auth_smail->orderByOldUser($email, $tService, $code);
-                $objResponse->call('TServices_Order_Auth.showSuccess', "На указанную вами почту отправлено письмо со ссылкой-подтверждением. Пожалуйста, перейдите по ней для завершения процесса заказа услуги.");
+                $objResponse->call('TServices_Order_Auth.showSuccess', "РќР° СѓРєР°Р·Р°РЅРЅСѓСЋ РІР°РјРё РїРѕС‡С‚Сѓ РѕС‚РїСЂР°РІР»РµРЅРѕ РїРёСЃСЊРјРѕ СЃРѕ СЃСЃС‹Р»РєРѕР№-РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµРј. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРµСЂРµР№РґРёС‚Рµ РїРѕ РЅРµР№ РґР»СЏ Р·Р°РІРµСЂС€РµРЅРёСЏ РїСЂРѕС†РµСЃСЃР° Р·Р°РєР°Р·Р° СѓСЃР»СѓРіРё.");
             } 
             else 
             {
-                $objResponse->call('TServices_Order_Auth.showError', 'email', 'Данный e-mail принадлежит фрилансеру');
+                $objResponse->call('TServices_Order_Auth.showError', 'email', 'Р”Р°РЅРЅС‹Р№ e-mail РїСЂРёРЅР°РґР»РµР¶РёС‚ С„СЂРёР»Р°РЅСЃРµСЂСѓ');
             }
             
         } 
         else 
         {
             $tservices_auth_smail->orderByNewUser($email, $tService, $code);
-            $objResponse->call('TServices_Order_Auth.showSuccess', "На указанную вами почту отправлено письмо со ссылкой-подтверждением. Пожалуйста, перейдите по ней для завершения процесса заказа услуги.");
+            $objResponse->call('TServices_Order_Auth.showSuccess', "РќР° СѓРєР°Р·Р°РЅРЅСѓСЋ РІР°РјРё РїРѕС‡С‚Сѓ РѕС‚РїСЂР°РІР»РµРЅРѕ РїРёСЃСЊРјРѕ СЃРѕ СЃСЃС‹Р»РєРѕР№-РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµРј. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРµСЂРµР№РґРёС‚Рµ РїРѕ РЅРµР№ РґР»СЏ Р·Р°РІРµСЂС€РµРЅРёСЏ РїСЂРѕС†РµСЃСЃР° Р·Р°РєР°Р·Р° СѓСЃР»СѓРіРё.");
         }
         
     }
     else 
     {
-        $objResponse->call('TServices_Order_Auth.showError', 'email', 'Неверно указана почта');
+        $objResponse->call('TServices_Order_Auth.showError', 'email', 'РќРµРІРµСЂРЅРѕ СѓРєР°Р·Р°РЅР° РїРѕС‡С‚Р°');
     }
     
     return $objResponse;

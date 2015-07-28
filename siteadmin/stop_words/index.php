@@ -1,6 +1,6 @@
 <?php
 /**
- * Ñòîï-ñëîâà. Êîíòðîëëåð.
+ * Ð¡Ñ‚Ð¾Ð¿-ÑÐ»Ð¾Ð²Ð°. ÐšÐ¾Ð½Ñ‚Ñ€Ð¾Ð»Ð»ÐµÑ€.
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
@@ -18,7 +18,7 @@ if ( !in_array($site, stop_words::$site_allow) ) {
     exit;
 }
 
-if ( !hasPermissions('all') ) { // TODO: ñäåëàòü ðàçãðàíè÷åíèå ïðàâ
+if ( !hasPermissions('all') ) { // TODO: ÑÐ´ÐµÐ»Ð°Ñ‚ÑŒ Ñ€Ð°Ð·Ð³Ñ€Ð°Ð½Ð¸Ñ‡ÐµÐ½Ð¸Ðµ Ð¿Ñ€Ð°Ð²
     header_location_exit( '/404.php' );
     exit;
 }
@@ -29,7 +29,7 @@ $cmd   = __paramInit( 'string', null, 'cmd',   '' );
 $stop_words = new stop_words( true );
 
 if ( $site == 'words' ) {
-    // Ïîäîçðèòåëüíûå ñëîâà
+    // ÐŸÐ¾Ð´Ð¾Ð·Ñ€Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ ÑÐ»Ð¾Ð²Ð°
     if ( $cmd == 'go' ) {
         $sStopWords = clearInputText( __paramInit('array', null, 'words', '') );
         
@@ -39,7 +39,7 @@ if ( $site == 'words' ) {
             exit;
         }
         else {
-            $error = 'Îøèáêà ïðè ñîõðàíåèè ñòîï-ñëîâ';
+            $error = 'ÐžÑˆÐ¸Ð±ÐºÐ° Ð¿Ñ€Ð¸ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ¸Ð¸ ÑÑ‚Ð¾Ð¿-ÑÐ»Ð¾Ð²';
         }
     }
     else {
@@ -47,7 +47,7 @@ if ( $site == 'words' ) {
     }
 }
 else {
-    // Çàïðåùåííûå âûðàæåíèÿ
+    // Ð—Ð°Ð¿Ñ€ÐµÑ‰ÐµÐ½Ð½Ñ‹Ðµ Ð²Ñ‹Ñ€Ð°Ð¶ÐµÐ½Ð¸Ñ
     if ( $cmd == 'go' ) {
         $sStopRegex = clearInputText( __paramInit('array', null, 'regex', '') );
         $sTestText  = clearInputText( __paramInit('array', null, 'test', '') );
@@ -63,7 +63,7 @@ else {
                     exit;
                 }
                 else {
-                    $error = 'Îøèáêà ïðè ñîõðàíåèè ñòîï-ñëîâ';
+                    $error = 'ÐžÑˆÐ¸Ð±ÐºÐ° Ð¿Ñ€Ð¸ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ¸Ð¸ ÑÑ‚Ð¾Ð¿-ÑÐ»Ð¾Ð²';
                 }
             }
             else {
@@ -74,7 +74,7 @@ else {
             }
         }
         else {
-            $error = 'Âûðàæåíèå "' . $sBadRegex . '" íå êîððåêòíî';
+            $error = 'Ð’Ñ‹Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ "' . $sBadRegex . '" Ð½Ðµ ÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ð¾';
         }
     }
     else {

@@ -1,6 +1,6 @@
 <?php
 /**
- * Модерирование пользовательского контента. Смены. Контроллер.
+ * РњРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РєРѕРЅС‚РµРЅС‚Р°. РЎРјРµРЅС‹. РљРѕРЅС‚СЂРѕР»Р»РµСЂ.
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
@@ -22,19 +22,19 @@ if ( $cmd == 'go' ) {
     
     if ( !empty($aExId) || !empty($aExFrom) || !empty($aExTo) ) {
         if ( !$user_content->matchCount($aExId, $aExFrom, $aExTo) ) {
-            $error = 'Ошибка сохранения смен';
+            $error = 'РћС€РёР±РєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ СЃРјРµРЅ';
         }
         elseif ( !$user_content->validTimes($aExFrom) || !$user_content->validTimes($aExTo)  ) {
-            $error = 'Не все смены указаны корректно';
+            $error = 'РќРµ РІСЃРµ СЃРјРµРЅС‹ СѓРєР°Р·Р°РЅС‹ РєРѕСЂСЂРµРєС‚РЅРѕ';
         }
     }
     
     if ( empty($error) && !empty($aAddFrom) && !empty($aAddTo) ) {
         if ( !$user_content->matchCount($aAddFrom, $aAddTo) ) {
-            $error = 'Ошибка сохранения смен';
+            $error = 'РћС€РёР±РєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ СЃРјРµРЅ';
         }
         elseif ( !$user_content->validTimes($aAddFrom) || !$user_content->validTimes($aAddTo)  ) {
-            $error = 'Не все смены указаны корректно';
+            $error = 'РќРµ РІСЃРµ СЃРјРµРЅС‹ СѓРєР°Р·Р°РЅС‹ РєРѕСЂСЂРµРєС‚РЅРѕ';
         }
     }
     

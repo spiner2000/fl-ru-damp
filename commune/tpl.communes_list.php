@@ -4,19 +4,19 @@ $groupCommCnt = isset($groupCommCnt) ? $groupCommCnt : 0;
 $comm_is_ajax = false;
 
 if (is_array($communes) && count($communes)) {
-    // начало нумерации сообществ для своей сортировки
+    // РЅР°С‡Р°Р»Рѕ РЅСѓРјРµСЂР°С†РёРё СЃРѕРѕР±С‰РµСЃС‚РІ РґР»СЏ СЃРІРѕРµР№ СЃРѕСЂС‚РёСЂРѕРІРєРё
     $comm_limit          = commune::MAX_ON_PAGE;
     $comm_start_position = ($page - 1) * $comm_limit;
     $i = 0;
     foreach ($communes as $comm) {
         $i++;
-        // заголовок
+        // Р·Р°РіРѕР»РѕРІРѕРє
         $comm_url = getFriendlyURL('commune_commune', $comm['id']);
         $comm_name = "<a href='".$comm_url."' class='b-post__link'>" . ($search !== NULL ? highlight(reformat2($comm['name'], 25, 1, 1), $search, 20) : reformat2($comm['name'], 25, 1, 1)) . "</a>";
         $comm_descr = ($search !== NULL ? highlight(reformat2($comm['descr'], 25, 1), $search) : reformat2($comm['descr'], 25, 1));
-        // Сколько участников.
-        $mAcceptedCnt = $comm['a_count'] - $comm['w_count'] + 1; // +1 -- создатель
-        $mCnt = $mAcceptedCnt . ' участник' . getSymbolicName($mAcceptedCnt, 'man');
+        // РЎРєРѕР»СЊРєРѕ СѓС‡Р°СЃС‚РЅРёРєРѕРІ.
+        $mAcceptedCnt = $comm['a_count'] - $comm['w_count'] + 1; // +1 -- СЃРѕР·РґР°С‚РµР»СЊ
+        $mCnt = $mAcceptedCnt . ' СѓС‡Р°СЃС‚РЅРёРє' . getSymbolicName($mAcceptedCnt, 'man');
         ?>
         <div class="b-post b-post_padbot_20">
             <div class="b-post__body b-post__body_bordbot_solid_f0  b-post__body_padbot_30 b-layout">
@@ -39,7 +39,7 @@ if (is_array($communes) && count($communes)) {
 																					*/ ?>
 																								
                         <td class="b-layout__left b-layout__left_width_220">
-                            <? // картинка сообщества
+                            <? // РєР°СЂС‚РёРЅРєР° СЃРѕРѕР±С‰РµСЃС‚РІР°
                             seo_start();
                             $img_file = $comm['image'];
                             $img_src = WDCPREFIX."/users/" . $comm['author_login'] . "/upload/" . $img_file;
@@ -54,11 +54,11 @@ if (is_array($communes) && count($communes)) {
                         </td>
                         <td class="b-layout__right">
                             <div class="b-post__content i-button">
-                                <? // блок голосования ?>
+                                <? // Р±Р»РѕРє РіРѕР»РѕСЃРѕРІР°РЅРёСЏ ?>
                                 <? if($comm['id']!=5100) { ?>
                                 <div id="idCommRating_<?= $comm['id'] ?>" class="b-voting b-voting_float_right">
                                         <script type="text/javascript">var lockRating<?=$comm['id']?>=0;</script>
-                                        <? // блок голосования
+                                        <? // Р±Р»РѕРє РіРѕР»РѕСЃРѕРІР°РЅРёСЏ
                                         $rate_uid = get_uid(false);
                                         $rate_rating = $comm['yeas'] - $comm['noes'];
                                         if ($rate_uid) {
@@ -94,13 +94,13 @@ if (is_array($communes) && count($communes)) {
                                         <span class="b-voting__mid b-voting__mid<?=$classname?>" id="idCommRatingValue_<?=$comm['id']?>"><?= ($rate_rating > 0 ? '+' : ($rate_rating < 0 ? '&minus;' : '')) . abs(intval($rate_rating))?></span>                    
                                 </div>
                                 <? } ?>
-                                <? // название сообщества ?>
+                                <? // РЅР°Р·РІР°РЅРёРµ СЃРѕРѕР±С‰РµСЃС‚РІР° ?>
                                 <h3 class="b-post__title b-post__title_padbot_15"><?= $comm_name ?></h3>
-                                <? // описание сообщества ?>
+                                <? // РѕРїРёСЃР°РЅРёРµ СЃРѕРѕР±С‰РµСЃС‚РІР° ?>
                                 <div class="b-post__txt b-post__txt_padbot_20"><?= $comm_descr ?></div>
-                                <? // инфа о сообществе ?>
+                                <? // РёРЅС„Р° Рѕ СЃРѕРѕР±С‰РµСЃС‚РІРµ ?>
                                 <div class="b-post__foot">
-                                    <? // количество участников и постов ?>
+                                    <? // РєРѕР»РёС‡РµСЃС‚РІРѕ СѓС‡Р°СЃС‚РЅРёРєРѕРІ Рё РїРѕСЃС‚РѕРІ ?>
                                     <div class="b-post__txt b-post__txt_padbot_10 b-post__txt_fontsize_11">
                                         <a class="b-post__link b-post__link_fontsize_11 b-post__link_float_right" href="<?= $comm_url ?>">
                                             <?
@@ -114,16 +114,16 @@ if (is_array($communes) && count($communes)) {
                                             }
                                             $for_admin = ($comm['author_id'] == uid || hasPermissions('communes')) ? true : false;
                                             ?>
-                                            <?= $themes_count.' '.ending($themes_count, 'пост', 'поста', 'постов') ?>
+                                            <?= $themes_count.' '.ending($themes_count, 'РїРѕСЃС‚', 'РїРѕСЃС‚Р°', 'РїРѕСЃС‚РѕРІ') ?>
                                         </a>
-                                        <?= $mAcceptedCnt.' '.ending($mAcceptedCnt, 'участник', 'участника', 'участников') ?>
+                                        <?= $mAcceptedCnt.' '.ending($mAcceptedCnt, 'СѓС‡Р°СЃС‚РЅРёРє', 'СѓС‡Р°СЃС‚РЅРёРєР°', 'СѓС‡Р°СЃС‚РЅРёРєРѕРІ') ?>
                                     </div>
-                                    <? // дата создания ?>
-                                    <div class="b-post__txt b-post__txt_padbot_10 b-post__txt_fontsize_11">Создано 
+                                    <? // РґР°С‚Р° СЃРѕР·РґР°РЅРёСЏ ?>
+                                    <div class="b-post__txt b-post__txt_padbot_10 b-post__txt_fontsize_11">РЎРѕР·РґР°РЅРѕ 
                                         <?= __commPrntAgeEx($comm) ?>
                                     </div>
-                                    <? // создатель ?>
-                                    <div class="b-post__txt b-post__txt_padbot_30 b-post__txt_fontsize_11">Создатель 
+                                    <? // СЃРѕР·РґР°С‚РµР»СЊ ?>
+                                    <div class="b-post__txt b-post__txt_padbot_30 b-post__txt_fontsize_11">РЎРѕР·РґР°С‚РµР»СЊ 
                                         <span class="b-username b-username_bold b-username_fontsize_11">
                                             <?//= __commPrntUsrInfo($comm, 'author_', '', '', false) ?>
                                             <?
@@ -169,55 +169,55 @@ if (is_array($communes) && count($communes)) {
                                                 
                                         </span>
                                     </div>
-                                    <? // информация о блокировке сообщества
+                                    <? // РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ Р±Р»РѕРєРёСЂРѕРІРєРµ СЃРѕРѕР±С‰РµСЃС‚РІР°
                                     if($comm['is_blocked'] == 't') {
                                         echo __commPrntBlockedBlock($comm['blocked_reason'], $comm['blocked_time'], $comm['admin_login'], "{$comm['admin_name']} {$comm['admin_uname']}");
                                     } ?>
-                                    <? // вступить в сообщество ?>
+                                    <? // РІСЃС‚СѓРїРёС‚СЊ РІ СЃРѕРѕР±С‰РµСЃС‚РІРѕ ?>
                                     <? if ($uid = get_uid(false)) { ?>
                                         <span id="commSubscrButton_<?= $comm['id'] ?>">
                                             <?//= __commPrntSubmitButton($comm, $uid, null, 'green') ?>
-                                            <? // подписка на рассылку
+                                            <? // РїРѕРґРїРёСЃРєР° РЅР° СЂР°СЃСЃС‹Р»РєСѓ
                                             $subs_mode = 'green';
                                             $subs_a_style = 'b-button b-button_flat b-button_flat_grey b-button_margbot_10_ipad';
                                             $subs_span_style = 'b-button__txt';
                                             if (!$subs_mode) { ?>&nbsp;&nbsp;<? }
                                             if ($comm['is_banned'] === 't' || ($comm['current_user_join_status'] != commune::JOIN_STATUS_ACCEPTED && $comm['author_uid'] != $uid)) {
-                                                // если пользователь забанен или еще не вступил в сообщество
+                                                // РµСЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°Р±Р°РЅРµРЅ РёР»Рё РµС‰Рµ РЅРµ РІСЃС‚СѓРїРёР» РІ СЃРѕРѕР±С‰РµСЃС‚РІРѕ
                                             } else {
                                                 if (commune::isCommuneSubscribed($comm['id'],$uid)) {
                                                     $subs_onclick = "xajax_SubscribeCommune(".$comm['id'].",false,'$subs_mode'); return false;"; ?>
-                                                    <a href="javascript:void(0)" onclick="<?= $subs_onclick ?>" class="<?= $subs_a_style ?>">Отписаться</a>
+                                                    <a href="javascript:void(0)" onclick="<?= $subs_onclick ?>" class="<?= $subs_a_style ?>">РћС‚РїРёСЃР°С‚СЊСЃСЏ</a>
                                                 <? } else { 
                                                     $subs_onclick = "xajax_SubscribeCommune(".$comm['id'].",true,'$subs_mode'); return false";
                                                     if ($subs_mode == 'green') { ?>
-                                                        <a href="javascript:void(0)" onclick="<?= $subs_onclick ?>" class="<?= $subs_a_style ?>">Подписаться</a>
+                                                        <a href="javascript:void(0)" onclick="<?= $subs_onclick ?>" class="<?= $subs_a_style ?>">РџРѕРґРїРёСЃР°С‚СЊСЃСЏ</a>
                                                     <? } else { ?>   
-                                                        <a href="javascript:void(0)" onclick="<?= $subs_onclick ?>" class="<?= $subs_a_style ?>">Подписаться</a>
+                                                        <a href="javascript:void(0)" onclick="<?= $subs_onclick ?>" class="<?= $subs_a_style ?>">РџРѕРґРїРёСЃР°С‚СЊСЃСЏ</a>
                                                     <? } ?>
                                                 <? }
                                             } ?>
                                         </span>
-                                        <? // __commPrntJoinButton($comm, $uid, null, 1) // кнопка ВСУПИТЬ В СООБЩЕСТВО ?>
-                                        <? // кнопка ВСТУПИТЬ/ВЫЙТИ из сообщества
+                                        <? // __commPrntJoinButton($comm, $uid, null, 1) // РєРЅРѕРїРєР° Р’РЎРЈРџРРўР¬ Р’ РЎРћРћР‘Р©Р•РЎРўР’Рћ ?>
+                                        <? // РєРЅРѕРїРєР° Р’РЎРўРЈРџРРўР¬/Р’Р«Р™РўР РёР· СЃРѕРѕР±С‰РµСЃС‚РІР°
                                         $join_async = 1;
                                         $join_a_style = "b-button b-button_flat b-button_flat_grey b-button_margbot_10_ipad";
                                         $join_span_style = "b-button__txt";
                                         if ($comm['author_uid']==$uid || !get_uid(false)) {
-                                            // если пользователь = автор сообщества или неавторизован
+                                            // РµСЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ = Р°РІС‚РѕСЂ СЃРѕРѕР±С‰РµСЃС‚РІР° РёР»Рё РЅРµР°РІС‚РѕСЂРёР·РѕРІР°РЅ
                                         } elseif ($comm['is_banned'] === 't') { ?>
                                             <div class="b-fon b-fon_width_full b-fon_padtop_20">
                                                 <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_padleft_30 b-fon__body_bg_ff6d2d">
                                                     <span class="b-fon__attent_white"></span>
-                                                    <span class="b-fon__txt b-fon__txt_bold">Вы заблокированы в этом сообществе</span>
+                                                    <span class="b-fon__txt b-fon__txt_bold">Р’С‹ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹ РІ СЌС‚РѕРј СЃРѕРѕР±С‰РµСЃС‚РІРµ</span>
                                                 </div>
                                             </div>                                            
                                         <? } elseif ($comm['current_user_join_status'] == commune::JOIN_STATUS_NOT || $comm['current_user_join_status'] == commune::JOIN_STATUS_DELETED) { ?>
-                                            <a href="javascript:void(0)" onclick="xajax_JoinCommune(<?= $comm["id"] ?>, <?= $join_async ?>); return false;" class="<?= $join_a_style ?>">Вступить в сообщество</a>
+                                            <a href="javascript:void(0)" onclick="xajax_JoinCommune(<?= $comm["id"] ?>, <?= $join_async ?>); return false;" class="<?= $join_a_style ?>">Р’СЃС‚СѓРїРёС‚СЊ РІ СЃРѕРѕР±С‰РµСЃС‚РІРѕ</a>
                                         <? } elseif ($comm['current_user_join_status'] == commune::JOIN_STATUS_ASKED) { ?>
-                                            <a href="javascript:void(0)" onclick="xajax_OutCommune(<?= $comm["id"] ?>, <?= $join_async ?>); return false;" class="<?= $join_a_style ?>">Отозвать заявку</a>
+                                            <a href="javascript:void(0)" onclick="xajax_OutCommune(<?= $comm["id"] ?>, <?= $join_async ?>); return false;" class="<?= $join_a_style ?>">РћС‚РѕР·РІР°С‚СЊ Р·Р°СЏРІРєСѓ</a>
                                         <? } elseif ($comm['current_user_join_status'] == commune::JOIN_STATUS_ACCEPTED) { ?>
-                                            <a href="javascript:void(0)" onclick="xajax_OutCommune(<?= $comm["id"] ?>, <?= $join_async ?>); return false;" class="<?= $join_a_style ?>">Выйти из сообщества</a>
+                                            <a href="javascript:void(0)" onclick="xajax_OutCommune(<?= $comm["id"] ?>, <?= $join_async ?>); return false;" class="<?= $join_a_style ?>">Р’С‹Р№С‚Рё РёР· СЃРѕРѕР±С‰РµСЃС‚РІР°</a>
                                         <? } ?>
                                     <? } ?>
                                 </div>
@@ -229,9 +229,9 @@ if (is_array($communes) && count($communes)) {
                                     <div class="ov-r">
                                         <div class="ov-l">
                                             <div class="ov-in">
-                                                <label>Позиция</label> <input type="text" id="position_time_<?= $comm['id'] ?>" name="position_time_<?= $comm['id'] ?>" size="3">&nbsp;
-                                                <button onclick="xajax_CommuneSetPosition(<?= $comm['id'] ?>, <?= $comm_start_position+$i ?>, $('position_time_<?= $comm['id'] ?>').get('value'), <?= $groupCommCnt ?>, <?= $group_id?$group_id:0 ?>, 10, <?= $page ?>);">Применить</button>&nbsp;
-                                                <a href="javascript:void(0);" onclick="$(this).getParent('.overlay').setStyle('display', 'none');" class="lnk-dot-666">Отменить</a>
+                                                <label>РџРѕР·РёС†РёСЏ</label> <input type="text" id="position_time_<?= $comm['id'] ?>" name="position_time_<?= $comm['id'] ?>" size="3">&nbsp;
+                                                <button onclick="xajax_CommuneSetPosition(<?= $comm['id'] ?>, <?= $comm_start_position+$i ?>, $('position_time_<?= $comm['id'] ?>').get('value'), <?= $groupCommCnt ?>, <?= $group_id?$group_id:0 ?>, 10, <?= $page ?>);">РџСЂРёРјРµРЅРёС‚СЊ</button>&nbsp;
+                                                <a href="javascript:void(0);" onclick="$(this).getParent('.overlay').setStyle('display', 'none');" class="lnk-dot-666">РћС‚РјРµРЅРёС‚СЊ</a>
                                             </div>
                                         </div>
                                     </div>

@@ -19,7 +19,7 @@ class GuestActivationModel extends CModel
     
     
     /**
-     * Àêòèâàöèÿ è ïóáëèêàöèÿ ñğàçó ïî äàííûì èç ìàñòåğà
+     * ĞĞºÑ‚Ğ¸Ğ²Ğ°Ñ†Ğ¸Ñ Ğ¸ Ğ¿ÑƒĞ±Ğ»Ğ¸ĞºĞ°Ñ†Ğ¸Ñ ÑÑ€Ğ°Ğ·Ñƒ Ğ¿Ğ¾ Ğ´Ğ°Ğ½Ğ½Ñ‹Ğ¼ Ğ¸Ğ· Ğ¼Ğ°ÑÑ‚ĞµÑ€Ğ°
      * 
      * @param type $uid
      * @param type $email
@@ -59,7 +59,7 @@ class GuestActivationModel extends CModel
     {
         $data['code'] = md5( self::SOLT . serialize($data) . uniqid(mt_rand(), TRUE) );
         
-        //Åñëè åñòü ññûëêà òî ôèñêèğóåì ïğèãëàøåíèå
+        //Ğ•ÑĞ»Ğ¸ ĞµÑÑ‚ÑŒ ÑÑÑ‹Ğ»ĞºĞ° Ñ‚Ğ¾ Ñ„Ğ¸ÑĞºĞ¸Ñ€ÑƒĞµĞ¼ Ğ¿Ñ€Ğ¸Ğ³Ğ»Ğ°ÑˆĞµĞ½Ğ¸Ğµ
         if (isset($data['dataForm']['link'])) {
             $guestInviteModel = new GuestInviteModel();
             $data['invite_id'] = $guestInviteModel->addInvite(
@@ -104,10 +104,10 @@ class GuestActivationModel extends CModel
             require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/registration.php");
             $registration = new registration();
             $user_data = $registration->autoRegistationAndLogin(array(
-                //Åñëè åñòü ìîæíî ïğîñòî àâòîğèçîâàòü şçåğà
+                //Ğ•ÑĞ»Ğ¸ ĞµÑÑ‚ÑŒ Ğ¼Ğ¾Ğ¶Ğ½Ğ¾ Ğ¿Ñ€Ğ¾ÑÑ‚Ğ¾ Ğ°Ğ²Ñ‚Ğ¾Ñ€Ğ¸Ğ·Ğ¾Ğ²Ğ°Ñ‚ÑŒ ÑĞ·ĞµÑ€Ğ°
                 'uid' => $activation_data['user_id'],
-                'role' => 1,//çàêàç÷èê!
-                //îáÿçàòåëüíîå ïîëå ıòî email
+                'role' => 1,//Ğ·Ğ°ĞºĞ°Ğ·Ñ‡Ğ¸Ğº!
+                //Ğ¾Ğ±ÑĞ·Ğ°Ñ‚ĞµĞ»ÑŒĞ½Ğ¾Ğµ Ğ¿Ğ¾Ğ»Ğµ ÑÑ‚Ğ¾ email
                 'email' => $activation_data['email'],
                 'uname' => $activation_data['uname'],
                 'usurname' => $activation_data['usurname']
@@ -182,8 +182,8 @@ class GuestActivationModel extends CModel
                     
                     $src_id = $prj['id'];
                     
-                    //Åñëè ïğîåêò áûë ñîçäàí ïğè ïåğåõîäå ñ ëåíäèíãà 
-                    //òî ïğèâÿçûâàåì åãî äëÿ ñòàòèñòèêè
+                    //Ğ•ÑĞ»Ğ¸ Ğ¿Ñ€Ğ¾ĞµĞºÑ‚ Ğ±Ñ‹Ğ» ÑĞ¾Ğ·Ğ´Ğ°Ğ½ Ğ¿Ñ€Ğ¸ Ğ¿ĞµÑ€ĞµÑ…Ğ¾Ğ´Ğµ Ñ Ğ»ĞµĞ½Ğ´Ğ¸Ğ½Ğ³Ğ° 
+                    //Ñ‚Ğ¾ Ğ¿Ñ€Ğ¸Ğ²ÑĞ·Ñ‹Ğ²Ğ°ĞµĞ¼ ĞµĞ³Ğ¾ Ğ´Ğ»Ñ ÑÑ‚Ğ°Ñ‚Ğ¸ÑÑ‚Ğ¸ĞºĞ¸
                     if (isset($data['landingProjectId'])) {
                         require_once(ABS_PATH . '/classes/LandingProjects.php');
                         LandingProjects::model()->linkWithProject(
@@ -197,7 +197,7 @@ class GuestActivationModel extends CModel
         }
         
         
-        //Îáíîâëÿåì ïğèãëàøåíèå
+        //ĞĞ±Ğ½Ğ¾Ğ²Ğ»ÑĞµĞ¼ Ğ¿Ñ€Ğ¸Ğ³Ğ»Ğ°ÑˆĞµĞ½Ğ¸Ğµ
         if (isset($activation_data['invite_id']) && 
             $activation_data['invite_id'] > 0) {
 
@@ -209,7 +209,7 @@ class GuestActivationModel extends CModel
         }
         
         
-        //Ìåññàãà ñ ïàğîëÿìè äëÿ íîâåíüêèõ
+        //ĞœĞµÑÑĞ°Ğ³Ğ° Ñ Ğ¿Ğ°Ñ€Ğ¾Ğ»ÑĞ¼Ğ¸ Ğ´Ğ»Ñ Ğ½Ğ¾Ğ²ĞµĞ½ÑŒĞºĞ¸Ñ…
         if (!$activation_data['user_id'] && !$current_uid) {
             require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/Helpers/SubBarNotificationHelper.php");
             SubBarNotificationHelper::getInstance()->setMessage(

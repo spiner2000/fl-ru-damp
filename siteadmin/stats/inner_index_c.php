@@ -1,8 +1,8 @@
 <?php if ( !defined('IS_SITE_ADMIN') ) { header('Location: /404.php'); exit; } ?>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
-	<td align="left"><strong>Статистика</strong></td>
-	<td align="right"><a href="/siteadmin/stats/charts.php">График</a></td>
+	<td align="left"><strong>РЎС‚Р°С‚РёСЃС‚РёРєР°</strong></td>
+	<td align="right"><a href="/siteadmin/stats/charts.php">Р“СЂР°С„РёРє</a></td>
 </tr>
 </table>
 
@@ -15,9 +15,9 @@
 
 <table width="100%" cellspacing="2" cellpadding="2" border="0">
 <tr>
-	<td style="padding: 5px;"><b>Страны</b></td>
-	<td style="padding: 5px;"><b>Города</b></td>
-    <td style="padding: 5px;"><b>Возраст</b></td>
+	<td style="padding: 5px;"><b>РЎС‚СЂР°РЅС‹</b></td>
+	<td style="padding: 5px;"><b>Р“РѕСЂРѕРґР°</b></td>
+    <td style="padding: 5px;"><b>Р’РѕР·СЂР°СЃС‚</b></td>
 </tr>
 <tr>
 	<td valign="top" style="padding: 5px;">
@@ -57,7 +57,7 @@
         $ages = $DB->rows($sql);
 			foreach($ages as $ikey=>$age){
                 if($age['_year']=='') {
-                    $tage = 'Не указано';
+                    $tage = 'РќРµ СѓРєР°Р·Р°РЅРѕ';
                 } else {
                     $tage = date('Y')-$age['_year'];
                 }
@@ -72,5 +72,5 @@
 </tr>
 </table>
 
-<a href="geo.php">Все города, страны и возраст</a>
+<a href="geo.php">Р’СЃРµ РіРѕСЂРѕРґР°, СЃС‚СЂР°РЅС‹ Рё РІРѕР·СЂР°СЃС‚</a>
 

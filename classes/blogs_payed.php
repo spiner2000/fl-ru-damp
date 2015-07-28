@@ -1,18 +1,18 @@
 <?
 /**
- * Подключаем файл для работы с блогами
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р»РѕРіР°РјРё
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/blogs_proto.php");
 /**
- * Класс для работы с сообщениями оплаты
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЃРѕРѕР±С‰РµРЅРёСЏРјРё РѕРїР»Р°С‚С‹
  *
  */
 class blogs_payed extends blogs_proto
 {
 	/**
-     * Выборка треда сообщения
+     * Р’С‹Р±РѕСЂРєР° С‚СЂРµРґР° СЃРѕРѕР±С‰РµРЅРёСЏ
      *
-     * @param string $error  Возвращает сообщение об ошибке
+     * @param string $error  Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
      * @return integer 0;
      */
 	function GetThread(&$error){
@@ -34,11 +34,11 @@ class blogs_payed extends blogs_proto
 		return 0;
 	}
 	/**
-	 * Получение дополнительной информации о сообщении
+	 * РџРѕР»СѓС‡РµРЅРёРµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃРѕРѕР±С‰РµРЅРёРё
 	 *
-	 * @param integer $msg_id  ИД сообщения
-	 * @param string  $error   Возвращает сообщение об ошибке
-	 * @return array  $ret     Информация выборки
+	 * @param integer $msg_id  РР” СЃРѕРѕР±С‰РµРЅРёСЏ
+	 * @param string  $error   Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
+	 * @return array  $ret     РРЅС„РѕСЂРјР°С†РёСЏ РІС‹Р±РѕСЂРєРё
 	 */
 	function GetMsgInfo($msg_id, &$error){
 		$curname = get_class($this);
@@ -49,7 +49,7 @@ class blogs_payed extends blogs_proto
         $error = pg_errormessage();
         if (!$error && pg_num_rows($res) > 0){
             $ret = pg_fetch_assoc($res);
-           //Определить $kind
+           //РћРїСЂРµРґРµР»РёС‚СЊ $kind
 			$ret['kind'] = $kind;
         }
         return $ret;

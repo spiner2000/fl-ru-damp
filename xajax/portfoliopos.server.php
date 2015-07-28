@@ -216,7 +216,7 @@ function ChangePortfPrice($proj_id, $cost, $cost_type, $time_type, $time_value)
 		document.getElementById('prj_time_type_$proj_id').value = $time_type;
 		document.getElementById('prj_time_value_$proj_id').value = $time_value;";
   	$objResponse->script($script);
-		$objResponse->assign("prj_msg_$proj_id","innerHTML",view_info('Äàííûå ñîõðàíåíû'));
+		$objResponse->assign("prj_msg_$proj_id","innerHTML",view_info('Ð”Ð°Ð½Ð½Ñ‹Ðµ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½Ñ‹'));
 	}
 	else
 	{
@@ -227,12 +227,12 @@ function ChangePortfPrice($proj_id, $cost, $cost_type, $time_type, $time_value)
 
 
     /**
-     * Èçìåíÿåò êîëè÷åñòâî âûäåëåííûõ ðàáîò ïðè ðåäàêòèðîâàíèè â ðàçäåëå ïîðòôîëèî
+     * Ð˜Ð·Ð¼ÐµÐ½ÑÐµÑ‚ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð²Ñ‹Ð´ÐµÐ»ÐµÐ½Ð½Ñ‹Ñ… Ñ€Ð°Ð±Ð¾Ñ‚ Ð¿Ñ€Ð¸ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ð¸ Ð² Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ Ð¿Ð¾Ñ€Ñ‚Ñ„Ð¾Ð»Ð¸Ð¾
      *
-     * @param integer $profid		id ñïåöèàëèçàöèè
-     * @param integer $wcnt		êîëè÷åñòâî âûäåëåííûõ ðàáîò
-     * @param integer $action		óäàëèëè èëè äîáàâèëè ðàáîòó â îáùèé ìàññèâ (add/delete)
-     * @param integer $projid		id ðàáîòû
+     * @param integer $profid		id ÑÐ¿ÐµÑ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ð¸
+     * @param integer $wcnt		ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð²Ñ‹Ð´ÐµÐ»ÐµÐ½Ð½Ñ‹Ñ… Ñ€Ð°Ð±Ð¾Ñ‚
+     * @param integer $action		ÑƒÐ´Ð°Ð»Ð¸Ð»Ð¸ Ð¸Ð»Ð¸ Ð´Ð¾Ð±Ð°Ð²Ð¸Ð»Ð¸ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ Ð² Ð¾Ð±Ñ‰Ð¸Ð¹ Ð¼Ð°ÑÑÐ¸Ð² (add/delete)
+     * @param integer $projid		id Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹
      *
      * @return str
      */
@@ -246,9 +246,9 @@ function ChangeProfCountSelected($profid, $wcnt, $action, $projid)
 
 	if ($wcnt >= 11 && $wcnt <= 19)
 	{
-		$works_str = "Âûäåëåíî $wcnt ðàáîò";
-		$delete_str = "Âû äåéñòâèòåëüíî õîòèòå óäàëèòü $wcnt ðàáîò?";
-		$move_str = "Âû äåéñòâèòåëüíî õîòèòå ïåðåìåñòèòü $wcnt ðàáîò?";
+		$works_str = "Ð’Ñ‹Ð´ÐµÐ»ÐµÐ½Ð¾ $wcnt Ñ€Ð°Ð±Ð¾Ñ‚";
+		$delete_str = "Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ $wcnt Ñ€Ð°Ð±Ð¾Ñ‚?";
+		$move_str = "Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¿ÐµÑ€ÐµÐ¼ÐµÑÑ‚Ð¸Ñ‚ÑŒ $wcnt Ñ€Ð°Ð±Ð¾Ñ‚?";
 	}
 	else
 	{
@@ -256,21 +256,21 @@ function ChangeProfCountSelected($profid, $wcnt, $action, $projid)
 
 		if ($wcnt_tmp == 1)
 		{
-			$works_str = "Âûäåëåíà $wcnt ðàáîòà";
-			$delete_str = "Âû äåéñòâèòåëüíî õîòèòå óäàëèòü ðàáîòó?";
-			$move_str = "Âû äåéñòâèòåëüíî õîòèòå ïåðåìåñòèòü ðàáîòó?";
+			$works_str = "Ð’Ñ‹Ð´ÐµÐ»ÐµÐ½Ð° $wcnt Ñ€Ð°Ð±Ð¾Ñ‚Ð°";
+			$delete_str = "Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ?";
+			$move_str = "Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¿ÐµÑ€ÐµÐ¼ÐµÑÑ‚Ð¸Ñ‚ÑŒ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ?";
 		}
 		elseif ($wcnt_tmp >= 2 && $wcnt_tmp <= 4)
 		{
-			$works_str = "Âûäåëåíî $wcnt ðàáîòû";
-			$delete_str = "Âû äåéñòâèòåëüíî õîòèòå óäàëèòü $wcnt ðàáîòû?";
-			$move_str = "Âû äåéñòâèòåëüíî õîòèòå ïåðåìåñòèòü $wcnt ðàáîòû?";
+			$works_str = "Ð’Ñ‹Ð´ÐµÐ»ÐµÐ½Ð¾ $wcnt Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹";
+			$delete_str = "Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ $wcnt Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹?";
+			$move_str = "Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¿ÐµÑ€ÐµÐ¼ÐµÑÑ‚Ð¸Ñ‚ÑŒ $wcnt Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹?";
 		}
 		else
 		{
-			$works_str = "Âûäåëåíî $wcnt ðàáîò";
-			$delete_str = "Âû äåéñòâèòåëüíî õîòèòå óäàëèòü $wcnt ðàáîò?";
-			$move_str = "Âû äåéñòâèòåëüíî õîòèòå ïåðåìåñòèòü $wcnt ðàáîò?";
+			$works_str = "Ð’Ñ‹Ð´ÐµÐ»ÐµÐ½Ð¾ $wcnt Ñ€Ð°Ð±Ð¾Ñ‚";
+			$delete_str = "Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ $wcnt Ñ€Ð°Ð±Ð¾Ñ‚?";
+			$move_str = "Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ Ð¿ÐµÑ€ÐµÐ¼ÐµÑÑ‚Ð¸Ñ‚ÑŒ $wcnt Ñ€Ð°Ð±Ð¾Ñ‚?";
 		}
 	}
 

@@ -39,17 +39,17 @@ window.addEvent('domready',
 });
 </script>
 
-<h2 class="b-layout__title b-layout__title_padbot_30">Новый дайджест&#160;&#160;&#160;<a class="b-layout__link b-layout__link_fontsize_13" href="/siteadmin/mailer/">Все рассылки</a></h2>
+<h2 class="b-layout__title b-layout__title_padbot_30">РќРѕРІС‹Р№ РґР°Р№РґР¶РµСЃС‚&#160;&#160;&#160;<a class="b-layout__link b-layout__link_fontsize_13" href="/siteadmin/mailer/">Р’СЃРµ СЂР°СЃСЃС‹Р»РєРё</a></h2>
 <div class="b-fon b-fon_padbot_20">
     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffebbf">
-        <span class="b-icon b-icon_sbr_oattent b-icon_margleft_-25"></span>Будте внимательны при работе с массовой рассылкой! Перепроверяйте содержание и настройки рассылки очень внимательно: выполненная рассылка не может быть отменена или изменена. 
+        <span class="b-icon b-icon_sbr_oattent b-icon_margleft_-25"></span>Р‘СѓРґС‚Рµ РІРЅРёРјР°С‚РµР»СЊРЅС‹ РїСЂРё СЂР°Р±РѕС‚Рµ СЃ РјР°СЃСЃРѕРІРѕР№ СЂР°СЃСЃС‹Р»РєРѕР№! РџРµСЂРµРїСЂРѕРІРµСЂСЏР№С‚Рµ СЃРѕРґРµСЂР¶Р°РЅРёРµ Рё РЅР°СЃС‚СЂРѕР№РєРё СЂР°СЃСЃС‹Р»РєРё РѕС‡РµРЅСЊ РІРЅРёРјР°С‚РµР»СЊРЅРѕ: РІС‹РїРѕР»РЅРµРЅРЅР°СЏ СЂР°СЃСЃС‹Р»РєР° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚РјРµРЅРµРЅР° РёР»Рё РёР·РјРµРЅРµРЅР°. 
     </div>
 </div>    
 
 <? if($_SESSION['is_save_digest']) { unset($_SESSION['is_save_digest']);?>
 <div class="b-fon b-fon_padbot_20">
     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-        <span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Данные успешно сохранены
+        <span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Р”Р°РЅРЅС‹Рµ СѓСЃРїРµС€РЅРѕ СЃРѕС…СЂР°РЅРµРЅС‹
     </div>
 </div>    
 <? }//if?>
@@ -69,27 +69,27 @@ window.addEvent('domready',
                 <td class="b-layout__left b-layout__left_width_55"></td>
                 <td colspan="2" class="">
                     <div class="b-layout__txt b-layout__txt_color_c4271f b-layout__txt_padbot_10">
-                        <span class="b-form__error"></span> Необходимо выбрать хотя бы одного получателя
+                        <span class="b-form__error"></span> РќРµРѕР±С…РѕРґРёРјРѕ РІС‹Р±СЂР°С‚СЊ С…РѕС‚СЏ Р±С‹ РѕРґРЅРѕРіРѕ РїРѕР»СѓС‡Р°С‚РµР»СЏ
                     </div>
                 </td>
             </tr>
             <? } ?>
             
             <tr class="b-layout__tr">
-                <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_150"><div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_13">Получатели</div></td>
+                <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_150"><div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_13">РџРѕР»СѓС‡Р°С‚РµР»Рё</div></td>
                 <td class="b-layout__right b-layout__right_padbot_20"><div class="b-check b-check_padbot_10">
                         <input onchange="checkRecipients();" id="chk_frl" class="b-check__input" name="freelancers" type="checkbox" value="1" <?= $digest['filter_frl'] !== null ? "checked" : ""?> onclick="if($('error_check_recipient')) $('error_check_recipient').destroy();"/>
-                        <label for="chk_frl" class="b-check__label"><span class="b-username b-username__role b-username__role_valign_top b-username__role_frl"></span>Фрилансеры</label>
+                        <label for="chk_frl" class="b-check__label"><span class="b-username b-username__role b-username__role_valign_top b-username__role_frl"></span>Р¤СЂРёР»Р°РЅСЃРµСЂС‹</label>
                     </div>
                     <div class="b-check">
                         <input onchange="checkRecipients();" id="chk_emp" class="b-check__input" name="employers" type="checkbox" value="1" <?= $digest['filter_emp'] !== null ? "checked" : ""?> onclick="if($('error_check_recipient')) $('error_check_recipient').destroy();"/>
-                        <label for="chk_emp" class="b-check__label"><span class="b-username b-username__role b-username__role_valign_top b-username__role_emp"></span>Работодатели</label>
+                        <label for="chk_emp" class="b-check__label"><span class="b-username b-username__role b-username__role_valign_top b-username__role_emp"></span>Р Р°Р±РѕС‚РѕРґР°С‚РµР»Рё</label>
                     </div>
                 </td>
             </tr>
             
             <tr class="b-layout__tr">
-                <td class="b-layout__left b-layout__left_padbot_10 b-layout__left_width_150"><div class="b-layout__txt b-layout__txt_padtop_7 b-layout__txt_fontsize_11 b-layout__txt_lineheight_13">Тема письма:</div></td>
+                <td class="b-layout__left b-layout__left_padbot_10 b-layout__left_width_150"><div class="b-layout__txt b-layout__txt_padtop_7 b-layout__txt_fontsize_11 b-layout__txt_lineheight_13">РўРµРјР° РїРёСЃСЊРјР°:</div></td>
                 <td class="b-layout__right b-layout__right_padbot_10">
                     <div class="b-combo">
                         <div class="b-combo__input <?= $_error['title_mail'] ? "b-combo__input_error" : ""?>">
@@ -113,7 +113,7 @@ window.addEvent('domready',
 
 <? if($_error['block']) { ?>
 <div class="b-layout__txt b-layout__txt_color_c4271f b-layout__txt_padbot_10" id="error_blocks_select">
-    <span class="b-form__error"></span> Необходимо выбрать хотя бы один отображаемый блок
+    <span class="b-form__error"></span> РќРµРѕР±С…РѕРґРёРјРѕ РІС‹Р±СЂР°С‚СЊ С…РѕС‚СЏ Р±С‹ РѕРґРёРЅ РѕС‚РѕР±СЂР°Р¶Р°РµРјС‹Р№ Р±Р»РѕРє
 </div>    
 <? }//if?>
     
@@ -127,12 +127,12 @@ window.addEvent('domready',
     <div class="b-fon__body b-fon__body_pad_20">
         <table class="b-layout__table b-layout__table_width_full" border="0" cellpadding="0" cellspacing="0">
             <tr class="b-layout__tr">
-                <td class="b-layout__left b-layout__left_padbot_10 b-layout__left_width_150"><div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_13">Время рассылки:</div></td>
+                <td class="b-layout__left b-layout__left_padbot_10 b-layout__left_width_150"><div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_13">Р’СЂРµРјСЏ СЂР°СЃСЃС‹Р»РєРё:</div></td>
                 <td class="b-layout__right b-layout__right_padbot_10">
                     <div class="b-radio b-radio_layout_vertical">
                         <div class="b-radio__item b-radio__item_padbot_10">
                             <input id="send_now" class="b-radio__input" name="send_type" type="radio" value="1" <?= ($send_type == 1 || $send_type == null ? "checked" : ""); ?> />
-                            <label class="b-radio__label b-radio__label_fontsize_13" for="send_now">Мгновенно</label> 
+                            <label class="b-radio__label b-radio__label_fontsize_13" for="send_now">РњРіРЅРѕРІРµРЅРЅРѕ</label> 
                         </div>
                         <div class="b-radio__item b-radio__item_padbot_10">
                             <input id="send_time" class="b-radio__input b-radio__input_top_5 b-radio__input_valign_top" name="send_type" type="radio" value="2" <?= ($send_type == 2 ? "checked" : ""); ?> />
@@ -143,7 +143,7 @@ window.addEvent('domready',
                                         <span class="b-combo__arrow-date"></span>
                                     </div>
                                 </div>
-                                <span class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_2">&nbsp;&nbsp;&nbsp;Время&nbsp;</span>
+                                <span class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_2">&nbsp;&nbsp;&nbsp;Р’СЂРµРјСЏ&nbsp;</span>
                             </label>
                             <div class="b-select b-select_inline-block ">
                                 <select id="time_sending" name="time_sending">
@@ -158,7 +158,7 @@ window.addEvent('domready',
                     <?/*
                     <div class="b-check">
                         <input id="regular_week" class="b-check__input" name="regular_week" type="checkbox" value="1" <?= ( $regular ? "checked" : "" ) ;?>  <?= ( $send_type == 2 ? "" : "disabled" );?> />
-                        <label for="regular_week" class="b-check__label b-check__label_fontsize_13">Еженедельно</label>
+                        <label for="regular_week" class="b-check__label b-check__label_fontsize_13">Р•Р¶РµРЅРµРґРµР»СЊРЅРѕ</label>
                     </div>
                      */ ?>
                 </td>
@@ -170,15 +170,15 @@ window.addEvent('domready',
 
 <div class="b-fon">
     <div class="b-fon__body b-fon__body_pad_10_20">
-        <div class="b-layout__txt b-layout__txt_fontsize_15">Итого получателей: <span class="b-layout__bold" id="count_recipient"></span></div>
+        <div class="b-layout__txt b-layout__txt_fontsize_15">РС‚РѕРіРѕ РїРѕР»СѓС‡Р°С‚РµР»РµР№: <span class="b-layout__bold" id="count_recipient"></span></div>
     </div>
 </div>
 
 <div class="b-buttons b-buttons_padtop_40">
-    <a class="b-button b-button_flat b-button_flat_green"  href="javascript:void(0)" onClick="if(confirm('Перепроверяйте содержание и настройки рассылки очень внимательно: выполненная рассылка не может быть отменена или изменена. Отправить рассылку?')) { $('draft').set('value', '0'); $('preview').set('value', '0');  $('digest_post').submit(); }">Отправить рассылку</a>
-    &#160;&#160;&#160;&#160;<a class="b-buttons__link b-buttons__link_color_c10601" href="javascript:void(0)" onclick="$('draft').set('value', '1'); $('digest_post').submit();"><?= $is_edit ? 'Сохранить в черновики' : 'Поместить в черновики'?></a>
+    <a class="b-button b-button_flat b-button_flat_green"  href="javascript:void(0)" onClick="if(confirm('РџРµСЂРµРїСЂРѕРІРµСЂСЏР№С‚Рµ СЃРѕРґРµСЂР¶Р°РЅРёРµ Рё РЅР°СЃС‚СЂРѕР№РєРё СЂР°СЃСЃС‹Р»РєРё РѕС‡РµРЅСЊ РІРЅРёРјР°С‚РµР»СЊРЅРѕ: РІС‹РїРѕР»РЅРµРЅРЅР°СЏ СЂР°СЃСЃС‹Р»РєР° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚РјРµРЅРµРЅР° РёР»Рё РёР·РјРµРЅРµРЅР°. РћС‚РїСЂР°РІРёС‚СЊ СЂР°СЃСЃС‹Р»РєСѓ?')) { $('draft').set('value', '0'); $('preview').set('value', '0');  $('digest_post').submit(); }">РћС‚РїСЂР°РІРёС‚СЊ СЂР°СЃСЃС‹Р»РєСѓ</a>
+    &#160;&#160;&#160;&#160;<a class="b-buttons__link b-buttons__link_color_c10601" href="javascript:void(0)" onclick="$('draft').set('value', '1'); $('digest_post').submit();"><?= $is_edit ? 'РЎРѕС…СЂР°РЅРёС‚СЊ РІ С‡РµСЂРЅРѕРІРёРєРё' : 'РџРѕРјРµСЃС‚РёС‚СЊ РІ С‡РµСЂРЅРѕРІРёРєРё'?></a>
     <span class="b-buttons__txt">&#160;&#160;&#160;&#160;</span>	
-    <a class="b-buttons__link" href="javascript:void(0)" onclick="$('draft').set('value', '1'); $('preview').set('value', '1'); $('digest_post').submit();">Предпросмотр рассылки</a>	
+    <a class="b-buttons__link" href="javascript:void(0)" onclick="$('draft').set('value', '1'); $('preview').set('value', '1'); $('digest_post').submit();">РџСЂРµРґРїСЂРѕСЃРјРѕС‚СЂ СЂР°СЃСЃС‹Р»РєРё</a>	
 </div>
     
 </form>

@@ -3,7 +3,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/sbr.php';
 
 /**
- * Êëàññ äëÿ ðàáîòû ñ ÑÁÐ ñî ñòîðîíû ðàáîòîäàòåëÿ. Ò.å. ÷òîáû ñîâåðøàòü äåéñòâèÿ îò ðàáîòîäàòåëÿ îáúåêò äîëæåí áûòü èìåííî ýòîãî òèïà. Òî æå ñ îñòàëüíûìè.
+ * ÐšÐ»Ð°ÑÑ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ Ð¡Ð‘Ð  ÑÐ¾ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñ‹ Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»Ñ. Ð¢.Ðµ. Ñ‡Ñ‚Ð¾Ð±Ñ‹ ÑÐ¾Ð²ÐµÑ€ÑˆÐ°Ñ‚ÑŒ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ Ð¾Ñ‚ Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»Ñ Ð¾Ð±ÑŠÐµÐºÑ‚ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ Ð¸Ð¼ÐµÐ½Ð½Ð¾ ÑÑ‚Ð¾Ð³Ð¾ Ñ‚Ð¸Ð¿Ð°. Ð¢Ð¾ Ð¶Ðµ Ñ Ð¾ÑÑ‚Ð°Ð»ÑŒÐ½Ñ‹Ð¼Ð¸.
  */
 class sbr_emp extends sbr
 {
@@ -16,19 +16,19 @@ class sbr_emp extends sbr
 
 
     /**
-     * Ìàññèâ äëÿ õðàíåíèÿ ðåêâèçèòîâ þçåðà, èíäåêñèðîâàííûé òèïîì ëèöà (self::FT_JURI|self::FT_PHYS).
+     * ÐœÐ°ÑÑÐ¸Ð² Ð´Ð»Ñ Ñ…Ñ€Ð°Ð½ÐµÐ½Ð¸Ñ Ñ€ÐµÐºÐ²Ð¸Ð·Ð¸Ñ‚Ð¾Ð² ÑŽÐ·ÐµÑ€Ð°, Ð¸Ð½Ð´ÐµÐºÑÐ¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ñ‚Ð¸Ð¿Ð¾Ð¼ Ð»Ð¸Ñ†Ð° (self::FT_JURI|self::FT_PHYS).
      * @var array
      */
     public $reqv = array();
 
     /**
-     * Ñóììà ê ðåçåðâèðîâàíèþ.
+     * Ð¡ÑƒÐ¼Ð¼Ð° Ðº Ñ€ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸ÑŽ.
      * @var array
      */
     public $reserve_sum;
 
     /**
-     * Óäàëåííûå ýòàïû â ïðîöåññå ðåäàêòèðîâàíèÿ.
+     * Ð£Ð´Ð°Ð»ÐµÐ½Ð½Ñ‹Ðµ ÑÑ‚Ð°Ð¿Ñ‹ Ð² Ð¿Ñ€Ð¾Ñ†ÐµÑÑÐµ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ.
      * @var array
      */
     private $_delstages;
@@ -37,8 +37,8 @@ class sbr_emp extends sbr
 
 
     /**
-     * Ïðîâåðÿåò åñòü ëè ó ðàáîòîäàòåëÿ ÷åðíîâèêè.
-     * @return boolean   åñòü/íåò.
+     * ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÑ‚ ÐµÑÑ‚ÑŒ Ð»Ð¸ Ñƒ Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»Ñ Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸ÐºÐ¸.
+     * @return boolean   ÐµÑÑ‚ÑŒ/Ð½ÐµÑ‚.
      */
     function draftExists() {
         $sql = "SELECT 1 FROM sbr WHERE emp_id = ?i AND is_draft = true LIMIT 1";
@@ -49,11 +49,11 @@ class sbr_emp extends sbr
     }
 
     /**
-     * Ïðîâåðÿåò, ìîæíî ëè ïî äàííîìó ïðîåêòó (òàáëèöà projects) íà÷àòü ÑÁÐ.
-     * Èíèöèàëèçèðóåò $this->projects èíôîðìàöèåé î ïðîåêòå.
+     * ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÑ‚, Ð¼Ð¾Ð¶Ð½Ð¾ Ð»Ð¸ Ð¿Ð¾ Ð´Ð°Ð½Ð½Ð¾Ð¼Ñƒ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ (Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ð° projects) Ð½Ð°Ñ‡Ð°Ñ‚ÑŒ Ð¡Ð‘Ð .
+     * Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€ÑƒÐµÑ‚ $this->projects Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÐµÐ¹ Ð¾ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ðµ.
      * 
-     * @param integer $project_id   èä. ïðîåêòà.
-     * @return array   èíôîðìàöèÿ î ïðîåêòå.
+     * @param integer $project_id   Ð¸Ð´. Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°.
+     * @return array   Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¾ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ðµ.
      */
     function checkProject($project_id) {
         $project_id = intvalPgSql($project_id);
@@ -61,20 +61,20 @@ class sbr_emp extends sbr
             return $this->project;
         if($this->project = new_projects::getPrj($project_id)) {
             if($this->project['uid'] != $this->uid)
-                $this->error['project_id'] = 'Âû íå ìîæåòå íà÷àòü «Áåçîïàñíóþ Ñäåëêó» â ÷óæîì ïðîåêòå';
+                $this->error['project_id'] = 'Ð’Ñ‹ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚Ðµ Ð½Ð°Ñ‡Ð°Ñ‚ÑŒ Â«Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½ÑƒÑŽ Ð¡Ð´ÐµÐ»ÐºÑƒÂ» Ð² Ñ‡ÑƒÐ¶Ð¾Ð¼ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ðµ';
             else if($this->project['is_blocked']=='t')
-                $this->error['project_id'] = 'Ïðîåêò çàáëîêèðîâàí! Íåâîçìîæíî íà÷àòü «Áåçîïàñíóþ Ñäåëêó» â çàáëîêèðîâàííîì ïðîåêòå';
-            else if($this->project['no_risk']=='t') // !!! òðèããåð ñäåëàòü + ïðîâåðèòü ðàáîòàåò ëè ôëàã â ñòàðûõ ÑÁÐ
-                $this->error['project_id'] = 'Äàííûé ïðîåêò óæå ó÷àñòâóåò â äðóãîé «Áåçîïàñíîé Ñäåëêå»'; // !!! òóò, ìîæåò, ïðîñòî íå ïðèâÿçûâàòü ê ïðîåêòó...
-            elseif ($this->project['kind'] == 7 && !$this->project['exec_id']) { // åñëè ñîçäàåòñÿ ñäåëêà èç êîíêóðñà, òî îáÿçàòåëüíî äîëæåí áûòü âûáðàí ïîáåäèòåëü
-                $this->error['project_id'] = 'Ñïåðâà íóæíî âûáðàòü ïîáåäèòåëÿ';
+                $this->error['project_id'] = 'ÐŸÑ€Ð¾ÐµÐºÑ‚ Ð·Ð°Ð±Ð»Ð¾ÐºÐ¸Ñ€Ð¾Ð²Ð°Ð½! ÐÐµÐ²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ Ð½Ð°Ñ‡Ð°Ñ‚ÑŒ Â«Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½ÑƒÑŽ Ð¡Ð´ÐµÐ»ÐºÑƒÂ» Ð² Ð·Ð°Ð±Ð»Ð¾ÐºÐ¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾Ð¼ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ðµ';
+            else if($this->project['no_risk']=='t') // !!! Ñ‚Ñ€Ð¸Ð³Ð³ÐµÑ€ ÑÐ´ÐµÐ»Ð°Ñ‚ÑŒ + Ð¿Ñ€Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÑŒ Ñ€Ð°Ð±Ð¾Ñ‚Ð°ÐµÑ‚ Ð»Ð¸ Ñ„Ð»Ð°Ð³ Ð² ÑÑ‚Ð°Ñ€Ñ‹Ñ… Ð¡Ð‘Ð 
+                $this->error['project_id'] = 'Ð”Ð°Ð½Ð½Ñ‹Ð¹ Ð¿Ñ€Ð¾ÐµÐºÑ‚ ÑƒÐ¶Ðµ ÑƒÑ‡Ð°ÑÑ‚Ð²ÑƒÐµÑ‚ Ð² Ð´Ñ€ÑƒÐ³Ð¾Ð¹ Â«Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ð¾Ð¹ Ð¡Ð´ÐµÐ»ÐºÐµÂ»'; // !!! Ñ‚ÑƒÑ‚, Ð¼Ð¾Ð¶ÐµÑ‚, Ð¿Ñ€Ð¾ÑÑ‚Ð¾ Ð½Ðµ Ð¿Ñ€Ð¸Ð²ÑÐ·Ñ‹Ð²Ð°Ñ‚ÑŒ Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ...
+            elseif ($this->project['kind'] == 7 && !$this->project['exec_id']) { // ÐµÑÐ»Ð¸ ÑÐ¾Ð·Ð´Ð°ÐµÑ‚ÑÑ ÑÐ´ÐµÐ»ÐºÐ° Ð¸Ð· ÐºÐ¾Ð½ÐºÑƒÑ€ÑÐ°, Ñ‚Ð¾ Ð¾Ð±ÑÐ·Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ Ð²Ñ‹Ð±Ñ€Ð°Ð½ Ð¿Ð¾Ð±ÐµÐ´Ð¸Ñ‚ÐµÐ»ÑŒ
+                $this->error['project_id'] = 'Ð¡Ð¿ÐµÑ€Ð²Ð° Ð½ÑƒÐ¶Ð½Ð¾ Ð²Ñ‹Ð±Ñ€Ð°Ñ‚ÑŒ Ð¿Ð¾Ð±ÐµÐ´Ð¸Ñ‚ÐµÐ»Ñ';
             } else {
                 if($this->project['attach'] = projects::getAllAttach($this->project['id']))
                     array_walk($this->project['attach'], create_function('&$m, $k', '$m["source_type"] = '.sbr_stages::ATTACH_SOURCE_PRJ.';'));
             }
         }
         else {
-            $this->error['project_id'] = 'Ïðîåêò íå íàéäåí';
+            $this->error['project_id'] = 'ÐŸÑ€Ð¾ÐµÐºÑ‚ Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½';
         }
         //print_r($this->error);
         if($this->error)
@@ -83,9 +83,9 @@ class sbr_emp extends sbr
     }
 
     /**
-     * Èíèöèàëèçèðóåò ôîðìó íîâîé ÑÁÐ ïî çàäàííîìó ïðîåêòó (èç òàáëèöû projects).
-     * @param integer $project_id   èä. ïðîåêòà.
-     * @param inetger $exec_id      ÈÄ Èñïîëíèòåëÿ ÑÁÐ
+     * Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€ÑƒÐµÑ‚ Ñ„Ð¾Ñ€Ð¼Ñƒ Ð½Ð¾Ð²Ð¾Ð¹ Ð¡Ð‘Ð  Ð¿Ð¾ Ð·Ð°Ð´Ð°Ð½Ð½Ð¾Ð¼Ñƒ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ (Ð¸Ð· Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ‹ projects).
+     * @param integer $project_id   Ð¸Ð´. Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°.
+     * @param inetger $exec_id      Ð˜Ð” Ð˜ÑÐ¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»Ñ Ð¡Ð‘Ð 
      */
     function initFromProject($project_id, $exec_id = false) {
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/professions.php';
@@ -109,7 +109,7 @@ class sbr_emp extends sbr
             $stage->data['category'] = $allSpecs[0]['category_id'];//$this->project['category'];
             $stage->data['sub_category'] = $allSpecs[0]['subcategory_id'];//$this->project['subcategory'];
             $cost = $this->project['cost'];
-            $cex = array(project_exrates::USD, project_exrates::EUR, project_exrates::RUR, project_exrates::FM); // êîíâåðòåð êîäà projects.currency â êîäû project_exrates.
+            $cex = array(project_exrates::USD, project_exrates::EUR, project_exrates::RUR, project_exrates::FM); // ÐºÐ¾Ð½Ð²ÐµÑ€Ñ‚ÐµÑ€ ÐºÐ¾Ð´Ð° projects.currency Ð² ÐºÐ¾Ð´Ñ‹ project_exrates.
             $ccex = $cex[$this->project['currency']];
             switch($ccex) {
                 case project_exrates::RUR : $cost_sys = exrates::BANK; break;
@@ -140,8 +140,8 @@ class sbr_emp extends sbr
     
     
     /**
-     * Ïðîâåðêà ìîæíî ëè ïî äàííîé òèïîâîé óñëóãå íà÷àòü ÑÁÐ ñäåëêó
-     * Âîçâðàùàåì ðåçóëüòàò çàïðîñà
+     * ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð¼Ð¾Ð¶Ð½Ð¾ Ð»Ð¸ Ð¿Ð¾ Ð´Ð°Ð½Ð½Ð¾Ð¹ Ñ‚Ð¸Ð¿Ð¾Ð²Ð¾Ð¹ ÑƒÑÐ»ÑƒÐ³Ðµ Ð½Ð°Ñ‡Ð°Ñ‚ÑŒ Ð¡Ð‘Ð  ÑÐ´ÐµÐ»ÐºÑƒ
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÐ¼ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°
      * 
      * @global type $DB
      * @param type $service_id
@@ -188,7 +188,7 @@ class sbr_emp extends sbr
     
     
     /**
-     * Ãåíåðèðóåì õåø äëÿ ïðîâåðêè íà ïîäìåíó id
+     * Ð“ÐµÐ½ÐµÑ€Ð¸Ñ€ÑƒÐµÐ¼ Ñ…ÐµÑˆ Ð´Ð»Ñ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ¸ Ð½Ð° Ð¿Ð¾Ð´Ð¼ÐµÐ½Ñƒ id
      * 
      * @param type $service_id
      * @return type
@@ -200,7 +200,7 @@ class sbr_emp extends sbr
 
     
     /**
-     * Äîáàâëÿåì ñâÿçü ñäåëêè ñ òèïîâîé óñëóãîé
+     * Ð”Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼ ÑÐ²ÑÐ·ÑŒ ÑÐ´ÐµÐ»ÐºÐ¸ Ñ Ñ‚Ð¸Ð¿Ð¾Ð²Ð¾Ð¹ ÑƒÑÐ»ÑƒÐ³Ð¾Ð¹
      * 
      * @param type $stage_id
      * @return boolean
@@ -223,7 +223,7 @@ class sbr_emp extends sbr
 
 
     /**
-     * Èíèöèàëèçèðóåò ôîðìó íîâîé ÑÁÐ èç òèïîâîé óñëóãè (òàáëèöà tservices)
+     * Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€ÑƒÐµÑ‚ Ñ„Ð¾Ñ€Ð¼Ñƒ Ð½Ð¾Ð²Ð¾Ð¹ Ð¡Ð‘Ð  Ð¸Ð· Ñ‚Ð¸Ð¿Ð¾Ð²Ð¾Ð¹ ÑƒÑÐ»ÑƒÐ³Ð¸ (Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ð° tservices)
      * 
      * 
      * @global type $DB
@@ -238,7 +238,7 @@ class sbr_emp extends sbr
             $cost_format = function($cost){return str_replace(',00', '', number_format(round($cost, 2), 2, ',', ' ')) . ' p.';};
             
             $this->data['tservice_id'] = $service['id'];
-            //Õåø ÷òîáû íå ïîäñóíóëè äðóãîé ïàðàìåòð
+            //Ð¥ÐµÑˆ Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð½Ðµ Ð¿Ð¾Ð´ÑÑƒÐ½ÑƒÐ»Ð¸ Ð´Ñ€ÑƒÐ³Ð¾Ð¹ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€
             $this->data['tservice_hash'] = $this->tserviceHash($service['id']);
             
             $this->data['name'] = $service['title'];
@@ -250,17 +250,17 @@ class sbr_emp extends sbr
             
             $this->data['cost_sys'] = exrates::BANK;
             
-            //Ïîóìîë÷àíèþ
+            //ÐŸÐ¾ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ
             $stage->data['work_days'] = intval($service['days']);
             $stage->data['cost'] = intval($service['price']);
             
-            //Îïèñàíèå
+            //ÐžÐ¿Ð¸ÑÐ°Ð½Ð¸Ðµ
             $stage->data['name'] = $service['title'];
-            $stage->data['descr'] = "×òî âû ïîëó÷èòå:\n" . 
+            $stage->data['descr'] = "Ð§Ñ‚Ð¾ Ð²Ñ‹ Ð¿Ð¾Ð»ÑƒÑ‡Ð¸Ñ‚Ðµ:\n" . 
                                     $service['description'] . 
-                                    "\n\n×òî íóæíî, ÷òîáû íà÷àòü:\n" . 
+                                    "\n\nÐ§Ñ‚Ð¾ Ð½ÑƒÐ¶Ð½Ð¾, Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð½Ð°Ñ‡Ð°Ñ‚ÑŒ:\n" . 
                                     $service['requirement'] . 
-                                    "\n\nÑòîèìîñòü òèïîâîé óñëóãè: " . 
+                                    "\n\nÐ¡Ñ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ñ‚Ð¸Ð¿Ð¾Ð²Ð¾Ð¹ ÑƒÑÐ»ÑƒÐ³Ð¸: " . 
                                     $cost_format($service['price']);
             
             
@@ -278,7 +278,7 @@ class sbr_emp extends sbr
             
 
             $is_express = FALSE;
-            //Åñëè ïðèøåë ïàðàìåòð íàäáàâêà çà ñðî÷íîñòü
+            //Ð•ÑÐ»Ð¸ Ð¿Ñ€Ð¸ÑˆÐµÐ» Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€ Ð½Ð°Ð´Ð±Ð°Ð²ÐºÐ° Ð·Ð° ÑÑ€Ð¾Ñ‡Ð½Ð¾ÑÑ‚ÑŒ
             if(isset($request['is_express']) && 
                $request['is_express'] == 1 && 
                $service['is_express'] == 't')
@@ -292,7 +292,7 @@ class sbr_emp extends sbr
             
             $extras = $service['extra'];
             $is_extras = FALSE;
-            //Åñëè ïðèøëè ïàðàìåòðû äîïîëíèòåëüíûõ óñëóã
+            //Ð•ÑÐ»Ð¸ Ð¿Ñ€Ð¸ÑˆÐ»Ð¸ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹ Ð´Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… ÑƒÑÐ»ÑƒÐ³
             if(isset($request['extra']) && 
                is_array($request['extra']) && 
                $extras)
@@ -315,8 +315,8 @@ class sbr_emp extends sbr
                     $_price = abs($_price);                    
 
                     $_txt_days = ($_extra['days'] > 0 && !$is_express)?
-                            '+ ' . $_extra['days'] . ' ' . ending($_extra['days'], 'äåíü', 'äíÿ', 'äíåé') . ' è ' . (($is_negative)?'- ':''):
-                            'â òîò æå ñðîê '.(($is_negative)?'- ':'+ ');
+                            '+ ' . $_extra['days'] . ' ' . ending($_extra['days'], 'Ð´ÐµÐ½ÑŒ', 'Ð´Ð½Ñ', 'Ð´Ð½ÐµÐ¹') . ' Ð¸ ' . (($is_negative)?'- ':''):
+                            'Ð² Ñ‚Ð¾Ñ‚ Ð¶Ðµ ÑÑ€Ð¾Ðº '.(($is_negative)?'- ':'+ ');
                     
                     $_txt_price = $cost_format($_price);
 
@@ -329,7 +329,7 @@ class sbr_emp extends sbr
                 
                 if(!empty($_txt)) 
                 {
-                    $stage->data['descr'] .= "\n\nÄîïîëíèòåëüíî:" . $_txt;
+                    $stage->data['descr'] .= "\n\nÐ”Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾:" . $_txt;
                     if(!$is_express) $stage->data['work_days'] += $_days;
                     $stage->data['cost'] += $_cost;
                     
@@ -337,25 +337,25 @@ class sbr_emp extends sbr
                 }
             }
             
-            //Ïîäïèñûâàåì ñóììó íà ñðî÷íîñòü äëÿ íàãëÿäíîñòè
+            //ÐŸÐ¾Ð´Ð¿Ð¸ÑÑ‹Ð²Ð°ÐµÐ¼ ÑÑƒÐ¼Ð¼Ñƒ Ð½Ð° ÑÑ€Ð¾Ñ‡Ð½Ð¾ÑÑ‚ÑŒ Ð´Ð»Ñ Ð½Ð°Ð³Ð»ÑÐ´Ð½Ð¾ÑÑ‚Ð¸
             if($is_express)
             {
-                $stage->data['descr'] .= "\n\nÑðî÷íîñòü: + " . $cost_format($service['express_price']);
+                $stage->data['descr'] .= "\n\nÐ¡Ñ€Ð¾Ñ‡Ð½Ð¾ÑÑ‚ÑŒ: + " . $cost_format($service['express_price']);
             }
 
             
-            //Èòîãî
-            if($is_extras || $is_express) $stage->data['descr'] .= "\n\nÈòîãî: " . $cost_format($stage->data['cost']);
-            //Óêàæèì ñðîêè
-            $stage->data['descr'] .= "\nÑðîê: " . $stage->data['work_days'] . ' ' . ending($stage->data['work_days'], 'äåíü', 'äíÿ', 'äíåé');
+            //Ð˜Ñ‚Ð¾Ð³Ð¾
+            if($is_extras || $is_express) $stage->data['descr'] .= "\n\nÐ˜Ñ‚Ð¾Ð³Ð¾: " . $cost_format($stage->data['cost']);
+            //Ð£ÐºÐ°Ð¶Ð¸Ð¼ ÑÑ€Ð¾ÐºÐ¸
+            $stage->data['descr'] .= "\nÐ¡Ñ€Ð¾Ðº: " . $stage->data['work_days'] . ' ' . ending($stage->data['work_days'], 'Ð´ÐµÐ½ÑŒ', 'Ð´Ð½Ñ', 'Ð´Ð½ÐµÐ¹');
             
 
             return true;
         }
         else
         {
-            //×òî ñ îøèáêàìè îíè íå îáðàáàòûâàþòñÿ?
-            $this->error['project_id'] = 'Òèïîâàÿ óñëóãà íå íàéäåíà';
+            //Ð§Ñ‚Ð¾ Ñ Ð¾ÑˆÐ¸Ð±ÐºÐ°Ð¼Ð¸ Ð¾Ð½Ð¸ Ð½Ðµ Ð¾Ð±Ñ€Ð°Ð±Ð°Ñ‚Ñ‹Ð²Ð°ÑŽÑ‚ÑÑ?
+            $this->error['project_id'] = 'Ð¢Ð¸Ð¿Ð¾Ð²Ð°Ñ ÑƒÑÐ»ÑƒÐ³Ð° Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð°';
         }
         
 
@@ -375,20 +375,20 @@ class sbr_emp extends sbr
 
 
     /**
-     * Ïðîâåðÿåò ÿâëÿåòñÿ ëè òåêóùàÿ ñäåëêà ÷åðíîâèêîì.
-     * @return boolean   äà/íåò.
+     * ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÑ‚ ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ð»Ð¸ Ñ‚ÐµÐºÑƒÑ‰Ð°Ñ ÑÐ´ÐµÐ»ÐºÐ° Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸ÐºÐ¾Ð¼.
+     * @return boolean   Ð´Ð°/Ð½ÐµÑ‚.
      */
     function isDraft() {
         return $this->data['is_draft'] == 't';
     }
 
     /**
-     * Ïðîâåðÿåò ïîëüçîâàòåëüñêèé çàïðîñ íà ñîçäàíèå/ðåäàêòèðîâàíèå ÑÁÐ. Èíèöèàëèçèðóåò äàííûå â ñîîòâåòñòâèè ñ ïåðåäàííûìè çíà÷åíèÿìè.
+     * ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÑ‚ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÑÐºÐ¸Ð¹ Ð·Ð°Ð¿Ñ€Ð¾Ñ Ð½Ð° ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ðµ/Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¡Ð‘Ð . Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€ÑƒÐµÑ‚ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð² ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²Ð¸Ð¸ Ñ Ð¿ÐµÑ€ÐµÐ´Ð°Ð½Ð½Ñ‹Ð¼Ð¸ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸ÑÐ¼Ð¸.
      * 
-     * @param array $request   äàííûå çàïðîñà (ãåò, ïîñò).
-     * @param array $files   ìàññèâ $_FILES ñ âëîæåíèÿìè ê êàæäîìó ýòàïó.
-     * @param sbr $old   ñòàðûé ýêçåìïëÿð ñäåëêè. Ïåðåäàåòñÿ ïðè ðåäàêòèðîâàíèè.
-     * @return boolean   íåò îøèáîê?
+     * @param array $request   Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° (Ð³ÐµÑ‚, Ð¿Ð¾ÑÑ‚).
+     * @param array $files   Ð¼Ð°ÑÑÐ¸Ð² $_FILES Ñ Ð²Ð»Ð¾Ð¶ÐµÐ½Ð¸ÑÐ¼Ð¸ Ðº ÐºÐ°Ð¶Ð´Ð¾Ð¼Ñƒ ÑÑ‚Ð°Ð¿Ñƒ.
+     * @param sbr $old   ÑÑ‚Ð°Ñ€Ñ‹Ð¹ ÑÐºÐ·ÐµÐ¼Ð¿Ð»ÑÑ€ ÑÐ´ÐµÐ»ÐºÐ¸. ÐŸÐµÑ€ÐµÐ´Ð°ÐµÑ‚ÑÑ Ð¿Ñ€Ð¸ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ð¸.
+     * @return boolean   Ð½ÐµÑ‚ Ð¾ÑˆÐ¸Ð±Ð¾Ðº?
      */
     function initFromRequest($request, $files = NULL, $old = NULL) {
         $this->data['is_draft'] = $request['draft'] ? 't' : 'f';
@@ -412,14 +412,14 @@ class sbr_emp extends sbr
                 
                 case 'name' :
                     if(is_empty_html($value))
-                        $this->error[$field] = 'Ïîæàëóéñòà, çàïîëíèòå ýòî ïîëå';
+                        $this->error[$field] = 'ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð·Ð°Ð¿Ð¾Ð»Ð½Ð¸Ñ‚Ðµ ÑÑ‚Ð¾ Ð¿Ð¾Ð»Ðµ';
                     $value = substr($value, 0, self::NAME_LENGTH);
                     break;
 
                 case 'frl_login_added' :
                     if(!$this->isDraft()) {
-                        if(!$value || $value=='ëîãèí')
-                            $this->error['frl_login'] = 'Íåîáõîäèìî äîáàâèòü èñïîëíèòåëÿ';
+                        if(!$value || $value=='Ð»Ð¾Ð³Ð¸Ð½')
+                            $this->error['frl_login'] = 'ÐÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð¸ÑÐ¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»Ñ';
                     }
                     if(!$this->error['frl_login']) {
                         $frl = new freelancer();
@@ -433,11 +433,11 @@ class sbr_emp extends sbr
                     $value = is_array($value) ? (int)current($value) : NULL;
                     $reqvs = $this->getUserReqvs();
                     if( !in_array($value, array(exrates::YM, exrates::WMR, exrates::BANK)) ) {
-                        $this->error['cost_sys_err'] = 'Íåäîïóñòèìàÿ âàëþòà ðåçåðâèðîâàíèÿ';
+                        $this->error['cost_sys_err'] = 'ÐÐµÐ´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ð°Ñ Ð²Ð°Ð»ÑŽÑ‚Ð° Ñ€ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ';
                         $value = exrates::BANK;
                     }
                     if(($value == exrates::YM || $value == exrates::WMR) && $reqvs['form_type'] == sbr::FT_JURI)
-                        $this->error['cost_sys_err'] = 'Ðåçåðâèðîâàíèå ÷åðåç ßíäåêñ.Äåíüãè èëè WebMoney äîñòóïíî òîëüêî ôèçè÷åñêèì ëèöàì';
+                        $this->error['cost_sys_err'] = 'Ð ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ñ‡ÐµÑ€ÐµÐ· Ð¯Ð½Ð´ÐµÐºÑ.Ð”ÐµÐ½ÑŒÐ³Ð¸ Ð¸Ð»Ð¸ WebMoney Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ„Ð¸Ð·Ð¸Ñ‡ÐµÑÐºÐ¸Ð¼ Ð»Ð¸Ñ†Ð°Ð¼';
                     break;
 
                 case 'project_id' :
@@ -451,7 +451,7 @@ class sbr_emp extends sbr
                 case 'scheme_type' :
                     $value = intvalPgSql($value);
                     if($value && (!self::$scheme_types[$value] || $value == self::SCHEME_OLD && (!$old || $old->scheme_type != self::SCHEME_OLD))) {
-                        $this->error['scheme_type_err'] = 'Íåâåðíûé òèï äîãîâîðà';
+                        $this->error['scheme_type_err'] = 'ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ Ñ‚Ð¸Ð¿ Ð´Ð¾Ð³Ð¾Ð²Ð¾Ñ€Ð°';
                     }
                     break;
 
@@ -480,7 +480,7 @@ class sbr_emp extends sbr
                     $cost += $s->cost;
                 $cost_rur = $cost * $this->cost2rur();
                 if($cost_rur > $this->maxNorezCost())
-                    $this->error['cost_sys_err_tbl'] = 'Ïðåâûøåíà ìàêñèìàëüíàÿ ñóììà ñäåëêè &mdash; ' . sbr::MAX_COST_USD . ' USD (èëè ' . sbr_meta::view_cost($this->maxNoRezCost(), exrates::BANK) .')';
+                    $this->error['cost_sys_err_tbl'] = 'ÐŸÑ€ÐµÐ²Ñ‹ÑˆÐµÐ½Ð° Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð°Ñ ÑÑƒÐ¼Ð¼Ð° ÑÐ´ÐµÐ»ÐºÐ¸ &mdash; ' . sbr::MAX_COST_USD . ' USD (Ð¸Ð»Ð¸ ' . sbr_meta::view_cost($this->maxNoRezCost(), exrates::BANK) .')';
             }
 
         }
@@ -489,9 +489,9 @@ class sbr_emp extends sbr
     }
     
     /**
-     * Èùåì ïî ÈÄ ñäåëêè ñäåëêó â äàííûõ êîòîðûå óæå ïîäãðóæåíû
+     * Ð˜Ñ‰ÐµÐ¼ Ð¿Ð¾ Ð˜Ð” ÑÐ´ÐµÐ»ÐºÐ¸ ÑÐ´ÐµÐ»ÐºÑƒ Ð² Ð´Ð°Ð½Ð½Ñ‹Ñ… ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ ÑƒÐ¶Ðµ Ð¿Ð¾Ð´Ð³Ñ€ÑƒÐ¶ÐµÐ½Ñ‹
      * 
-     * @param integer $id   ÈÄ Ñäåëêè
+     * @param integer $id   Ð˜Ð” Ð¡Ð´ÐµÐ»ÐºÐ¸
      * @return object sbr_stages
      */
     function getStageByIdForData($id) {
@@ -501,13 +501,13 @@ class sbr_emp extends sbr
     }
 
     /**
-     * Íîâàÿ ÑÁÐ
-     * Ïðîâåðÿåò ïîëüçîâàòåëüñêèé çàïðîñ íà ñîçäàíèå/ðåäàêòèðîâàíèå ÑÁÐ. Èíèöèàëèçèðóåò äàííûå â ñîîòâåòñòâèè ñ ïåðåäàííûìè çíà÷åíèÿìè.
+     * ÐÐ¾Ð²Ð°Ñ Ð¡Ð‘Ð 
+     * ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÑ‚ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÑÐºÐ¸Ð¹ Ð·Ð°Ð¿Ñ€Ð¾Ñ Ð½Ð° ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ðµ/Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¡Ð‘Ð . Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€ÑƒÐµÑ‚ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð² ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²Ð¸Ð¸ Ñ Ð¿ÐµÑ€ÐµÐ´Ð°Ð½Ð½Ñ‹Ð¼Ð¸ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸ÑÐ¼Ð¸.
      * 
-     * @param array $request   äàííûå çàïðîñà (ãåò, ïîñò).
-     * @param array $files   ìàññèâ $_FILES ñ âëîæåíèÿìè ê êàæäîìó ýòàïó.
-     * @param sbr $old   ñòàðûé ýêçåìïëÿð ñäåëêè. Ïåðåäàåòñÿ ïðè ðåäàêòèðîâàíèè.
-     * @return boolean   íåò îøèáîê?
+     * @param array $request   Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° (Ð³ÐµÑ‚, Ð¿Ð¾ÑÑ‚).
+     * @param array $files   Ð¼Ð°ÑÑÐ¸Ð² $_FILES Ñ Ð²Ð»Ð¾Ð¶ÐµÐ½Ð¸ÑÐ¼Ð¸ Ðº ÐºÐ°Ð¶Ð´Ð¾Ð¼Ñƒ ÑÑ‚Ð°Ð¿Ñƒ.
+     * @param sbr $old   ÑÑ‚Ð°Ñ€Ñ‹Ð¹ ÑÐºÐ·ÐµÐ¼Ð¿Ð»ÑÑ€ ÑÐ´ÐµÐ»ÐºÐ¸. ÐŸÐµÑ€ÐµÐ´Ð°ÐµÑ‚ÑÑ Ð¿Ñ€Ð¸ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ð¸.
+     * @return boolean   Ð½ÐµÑ‚ Ð¾ÑˆÐ¸Ð±Ð¾Ðº?
      */
     function _new_initFromRequest($request, $files = NULL, $old = NULL) {
         $is_now_draft = $this->data['is_draft'];
@@ -531,10 +531,10 @@ class sbr_emp extends sbr
         else if($request['project_id'])
                 $this->checkProject($request['project_id']);
 
-        // åñëè ñäåëêà ñîçäàåòñÿ èç êîíêóðñà, òî èñïîëíèòåëåì ìîæåò áûòü òîëüêî ïîáåäèòåëü êîíêóðñà
+        // ÐµÑÐ»Ð¸ ÑÐ´ÐµÐ»ÐºÐ° ÑÐ¾Ð·Ð´Ð°ÐµÑ‚ÑÑ Ð¸Ð· ÐºÐ¾Ð½ÐºÑƒÑ€ÑÐ°, Ñ‚Ð¾ Ð¸ÑÐ¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÐµÐ¼ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¿Ð¾Ð±ÐµÐ´Ð¸Ñ‚ÐµÐ»ÑŒ ÐºÐ¾Ð½ÐºÑƒÑ€ÑÐ°
         if ($request['project_id'] && isset($request['frl_db_id']) && $this->project['kind'] == 7 && $this->project['exec_id'] != $request['frl_db_id']) {
             $request['frl_db_id'] = $this->project['exec_id'];
-            $this->error['frl'] = "Èñïîëíèòåëåì ýòîé ñäåëêè ìîæåò áûòü òîëüêî ïîáåäèòåëü êîíêóðñà";
+            $this->error['frl'] = "Ð˜ÑÐ¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÐµÐ¼ ÑÑ‚Ð¾Ð¹ ÑÐ´ÐµÐ»ÐºÐ¸ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¿Ð¾Ð±ÐµÐ´Ð¸Ñ‚ÐµÐ»ÑŒ ÐºÐ¾Ð½ÐºÑƒÑ€ÑÐ°";
         }
 
         
@@ -558,14 +558,14 @@ class sbr_emp extends sbr
                         $nowStage = $this->getStageByIdForData($stage['id']);
                         $value[$pos]['descr'] = htmlspecialchars($stage['descr']);
                         if( ($request['scheme_type'] == sbr::SCHEME_PDRD || $request['scheme_type'] == sbr::SCHEME_PDRD2 ) && $stage['cost'] < sbr_stages::MIN_COST_RUR_PDRD) {
-                            $this->error['cost'][$nowStage->data['num']] = 'Ïîëå çàïîëíåííî íåêîðåêòíî';
+                            $this->error['cost'][$nowStage->data['num']] = 'ÐŸÐ¾Ð»Ðµ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð½Ð¾ Ð½ÐµÐºÐ¾Ñ€ÐµÐºÑ‚Ð½Ð¾';
                         }
 
                         if($request['scheme_type'] == sbr::SCHEME_LC && $is_now_draft != 't' && $stage['cost'] < sbr_stages::MIN_COST_RUR && $stage['cost'] != $nowStage->data['cost']) {
-                            $this->error['cost'][$nowStage->data['num']] = 'Ïîëå çàïîëíåííî íåêîðåêòíî';
+                            $this->error['cost'][$nowStage->data['num']] = 'ÐŸÐ¾Ð»Ðµ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð½Ð¾ Ð½ÐµÐºÐ¾Ñ€ÐµÐºÑ‚Ð½Ð¾';
                         }
                         if($request['scheme_type'] == sbr::SCHEME_LC && $is_now_draft == 't' && $stage['cost'] < sbr_stages::MIN_COST_RUR) {
-                            $this->error['cost'][$nowStage->data['num']] = 'Ïîëå çàïîëíåííî íåêîðåêòíî';
+                            $this->error['cost'][$nowStage->data['num']] = 'ÐŸÐ¾Ð»Ðµ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð½Ð¾ Ð½ÐµÐºÐ¾Ñ€ÐµÐºÑ‚Ð½Ð¾';
                         }
                         
                         if($this->data['reserved_id'] && (int) $stage['work_time_add'] == 0) {
@@ -583,41 +583,41 @@ class sbr_emp extends sbr
                     break;
                 case 'name' :
                     if(is_empty_html($value))
-                        $this->error[$field] = 'Ïîæàëóéñòà, çàïîëíèòå ýòî ïîëå';
+                        $this->error[$field] = 'ÐŸÐ¾Ð¶Ð°Ð»ÑƒÐ¹ÑÑ‚Ð°, Ð·Ð°Ð¿Ð¾Ð»Ð½Ð¸Ñ‚Ðµ ÑÑ‚Ð¾ Ð¿Ð¾Ð»Ðµ';
                     $value = substr($value, 0, self::NAME_LENGTH);
                     break;
 
                 case 'frl_db_id' :
                     if(!$this->isDraft()) {
-                        if(!$value || $value=='ëîãèí')
-                            $this->error['frl_db_id'] = 'Íåîáõîäèìî äîáàâèòü èñïîëíèòåëÿ';
+                        if(!$value || $value=='Ð»Ð¾Ð³Ð¸Ð½')
+                            $this->error['frl_db_id'] = 'ÐÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð¸ÑÐ¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»Ñ';
                     }
                     if(!$this->error['frl_db_id'] && $value != '') {
                         $frl = new freelancer();
                         $frl->GetUserByUID($value);
                         if($frl->is_banned == 1) {
-                            $this->error['frl_db_id'] = 'Äàííûé ïîëüçîâàòåëü çàáëîêèðîâàí';
-                            $this->error['frl_ban'] = 'Äàííûé ïîëüçîâàòåëü çàáëîêèðîâàí';
+                            $this->error['frl_db_id'] = 'Ð”Ð°Ð½Ð½Ñ‹Ð¹ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð·Ð°Ð±Ð»Ð¾ÐºÐ¸Ñ€Ð¾Ð²Ð°Ð½';
+                            $this->error['frl_ban'] = 'Ð”Ð°Ð½Ð½Ñ‹Ð¹ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð·Ð°Ð±Ð»Ð¾ÐºÐ¸Ñ€Ð¾Ð²Ð°Ð½';
                         }
                         $this->data['frl_id'] = $frl->uid;
                     }
                     break;
                     
-                // ñïåöèàëüíîñòü
+                // ÑÐ¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ð¾ÑÑ‚ÑŒ
                 case 'profession0_db_id':
                     if (!$value) {
-                        $this->error['profession0_db_id'] = 'Íåîáõîäèìî âûáðàòü ñïåöèàëüíîñòü';
+                        $this->error['profession0_db_id'] = 'ÐÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ Ð²Ñ‹Ð±Ñ€Ð°Ñ‚ÑŒ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»ÑŒÐ½Ð¾ÑÑ‚ÑŒ';
                     }
                     break;
 
                 case 'cost_sys' :
                     $reqvs = $this->getUserReqvs();
                     if( !in_array($value, array(exrates::YM, exrates::WMR, exrates::BANK)) ) {
-                        $this->error['cost_sys_err'] = 'Íåäîïóñòèìàÿ âàëþòà ðåçåðâèðîâàíèÿ';
+                        $this->error['cost_sys_err'] = 'ÐÐµÐ´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ð°Ñ Ð²Ð°Ð»ÑŽÑ‚Ð° Ñ€ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ';
                         $value = exrates::BANK;
                     }
                     if(($value == exrates::YM || $value == exrates::WMR) && $reqvs['form_type'] == sbr::FT_JURI)
-                        $this->error['cost_sys_err'] = 'Ðåçåðâèðîâàíèå ÷åðåç ßíäåêñ.Äåíüãè èëè WebMoney äîñòóïíî òîëüêî ôèçè÷åñêèì ëèöàì';
+                        $this->error['cost_sys_err'] = 'Ð ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ñ‡ÐµÑ€ÐµÐ· Ð¯Ð½Ð´ÐµÐºÑ.Ð”ÐµÐ½ÑŒÐ³Ð¸ Ð¸Ð»Ð¸ WebMoney Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ„Ð¸Ð·Ð¸Ñ‡ÐµÑÐºÐ¸Ð¼ Ð»Ð¸Ñ†Ð°Ð¼';
                     break;
 
                 case 'project_id' :
@@ -631,7 +631,7 @@ class sbr_emp extends sbr
                 case 'scheme_type' :
                     $value = intvalPgSql($value);
                     if($value && (!self::$scheme_types[$value] || $value == self::SCHEME_OLD && (!$old || $old->scheme_type != self::SCHEME_OLD))) {
-                        $this->error['scheme_type_err'] = 'Íåâåðíûé òèï äîãîâîðà';
+                        $this->error['scheme_type_err'] = 'ÐÐµÐ²ÐµÑ€Ð½Ñ‹Ð¹ Ñ‚Ð¸Ð¿ Ð´Ð¾Ð³Ð¾Ð²Ð¾Ñ€Ð°';
                     }
                     break;
 
@@ -704,9 +704,9 @@ class sbr_emp extends sbr
                 $cost_rur = $cost * $this->cost2rur();
                 if($cost_rur > $this->maxNorezCost()) {
                     foreach($this->stages as $p=>$s) {
-                        $this->error['cost'][$pos] = 'Ïîëå çàïîëíåííî íåêîðåêòíî';
+                        $this->error['cost'][$pos] = 'ÐŸÐ¾Ð»Ðµ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð½Ð¾ Ð½ÐµÐºÐ¾Ñ€ÐµÐºÑ‚Ð½Ð¾';
                     }
-                    $this->error['cost_sys_err_tbl'] = 'Ïðåâûøåíà ìàêñèìàëüíàÿ ñóììà ñäåëêè &mdash; ' . sbr::MAX_COST_USD . ' USD (èëè ' . sbr_meta::view_cost($this->maxNoRezCost(), exrates::BANK) .')';
+                    $this->error['cost_sys_err_tbl'] = 'ÐŸÑ€ÐµÐ²Ñ‹ÑˆÐµÐ½Ð° Ð¼Ð°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð°Ñ ÑÑƒÐ¼Ð¼Ð° ÑÐ´ÐµÐ»ÐºÐ¸ &mdash; ' . sbr::MAX_COST_USD . ' USD (Ð¸Ð»Ð¸ ' . sbr_meta::view_cost($this->maxNoRezCost(), exrates::BANK) .')';
                 }
             }
 
@@ -719,12 +719,12 @@ class sbr_emp extends sbr
     }
 
     /**
-     * Èíèöèàëèçèðóåò ýòàïû ñäåëêè äëÿ ðåäàêòèðîâàíèÿ/ñîçäàíèÿ èç ïîëüçîâàòåëüñêîãî çàïðîñà.
-     * Çàãðóæàåò âëîæåíèÿ íà ñåðâåð. Ó÷èòûâàåò óäàëåíèå ýòàïîâ.
+     * Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€ÑƒÐµÑ‚ ÑÑ‚Ð°Ð¿Ñ‹ ÑÐ´ÐµÐ»ÐºÐ¸ Ð´Ð»Ñ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ/ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ Ð¸Ð· Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÑÐºÐ¾Ð³Ð¾ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°.
+     * Ð—Ð°Ð³Ñ€ÑƒÐ¶Ð°ÐµÑ‚ Ð²Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ð½Ð° ÑÐµÑ€Ð²ÐµÑ€. Ð£Ñ‡Ð¸Ñ‚Ñ‹Ð²Ð°ÐµÑ‚ ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ðµ ÑÑ‚Ð°Ð¿Ð¾Ð².
      * 
-     * @param array $tstages   ìàññèâ ýòàïîâ. Ìîæåò ñîäåðæàòü íîâûå ýòàïû è ñòàðûå, îòðåäàêòèðîâàííûå.
-     * @param array $files   ìàññèâ $_FILES ñ âëîæåíèÿìè ê êàæäîìó ýòàïó.
-     * @param integer $mode   0: ñîçäàåòñÿ, 1: ðåäàêòèðóåòñÿ âñÿ ñäåëêà, 2: ðåäàêòèðóåòñÿ îäèí ýòàï.
+     * @param array $tstages   Ð¼Ð°ÑÑÐ¸Ð² ÑÑ‚Ð°Ð¿Ð¾Ð². ÐœÐ¾Ð¶ÐµÑ‚ ÑÐ¾Ð´ÐµÑ€Ð¶Ð°Ñ‚ÑŒ Ð½Ð¾Ð²Ñ‹Ðµ ÑÑ‚Ð°Ð¿Ñ‹ Ð¸ ÑÑ‚Ð°Ñ€Ñ‹Ðµ, Ð¾Ñ‚Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ðµ.
+     * @param array $files   Ð¼Ð°ÑÑÐ¸Ð² $_FILES Ñ Ð²Ð»Ð¾Ð¶ÐµÐ½Ð¸ÑÐ¼Ð¸ Ðº ÐºÐ°Ð¶Ð´Ð¾Ð¼Ñƒ ÑÑ‚Ð°Ð¿Ñƒ.
+     * @param integer $mode   0: ÑÐ¾Ð·Ð´Ð°ÐµÑ‚ÑÑ, 1: Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€ÑƒÐµÑ‚ÑÑ Ð²ÑÑ ÑÐ´ÐµÐ»ÐºÐ°, 2: Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€ÑƒÐµÑ‚ÑÑ Ð¾Ð´Ð¸Ð½ ÑÑ‚Ð°Ð¿.
      */
     private function _initStagesFromRequest($tstages, $files, $mode) {
         $tstages_attach = array();
@@ -732,7 +732,7 @@ class sbr_emp extends sbr
         $stages_attach = array();
         $fcnt = self::MAX_FILES;
 
-        // Ôîðìèðóåì ìàññèâ âëîæåíèé, èíäåêñèðîâàííûé íîìåðîì ýòàïà.
+        // Ð¤Ð¾Ñ€Ð¼Ð¸Ñ€ÑƒÐµÐ¼ Ð¼Ð°ÑÑÐ¸Ð² Ð²Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¹, Ð¸Ð½Ð´ÐµÐºÑÐ¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ð½Ð¾Ð¼ÐµÑ€Ð¾Ð¼ ÑÑ‚Ð°Ð¿Ð°.
         if($files) {
             foreach($files['name'] as $num=>$attarray) {
                 foreach($attarray['attach'] as $idx=>$aname) {
@@ -745,7 +745,7 @@ class sbr_emp extends sbr
             }
         }
 
-        // Ôîðìèðóåì ìàññèâ óäàëåííûõ ýòàïîâ. Óìåíüøàåì îáùèé áþäæåò ñäåëêè.
+        // Ð¤Ð¾Ñ€Ð¼Ð¸Ñ€ÑƒÐµÐ¼ Ð¼Ð°ÑÑÐ¸Ð² ÑƒÐ´Ð°Ð»ÐµÐ½Ð½Ñ‹Ñ… ÑÑ‚Ð°Ð¿Ð¾Ð². Ð£Ð¼ÐµÐ½ÑŒÑˆÐ°ÐµÐ¼ Ð¾Ð±Ñ‰Ð¸Ð¹ Ð±ÑŽÐ´Ð¶ÐµÑ‚ ÑÐ´ÐµÐ»ÐºÐ¸.
         if($this->data['delstages']) {
             foreach($this->data['delstages'] as $id=>$ds) {
                 if($dds = $this->getStageById($id)) {
@@ -755,8 +755,8 @@ class sbr_emp extends sbr
             }
         }
 
-        // Óïîðÿäî÷èâàåì ìàññèâ ýòàïîâ â íîâîé ïîñëåäîâàòåëüíîñòè, íà ñëó÷àé åñëè áûëè óäàëåíèÿ/äîáàâëåíèÿ è âñå ïåðåìåøàëîñü.
-        // Åñëè ðåäàêòèðóåòñÿ òîëüêî îäèí ýòàï, òî îí íå ìåíÿåò íîìåð íè ïðè êàêèõ îáñòîÿòåëüñòâàõ.
+        // Ð£Ð¿Ð¾Ñ€ÑÐ´Ð¾Ñ‡Ð¸Ð²Ð°ÐµÐ¼ Ð¼Ð°ÑÑÐ¸Ð² ÑÑ‚Ð°Ð¿Ð¾Ð² Ð² Ð½Ð¾Ð²Ð¾Ð¹ Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚Ð¸, Ð½Ð° ÑÐ»ÑƒÑ‡Ð°Ð¹ ÐµÑÐ»Ð¸ Ð±Ñ‹Ð»Ð¸ ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ñ/Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ñ Ð¸ Ð²ÑÐµ Ð¿ÐµÑ€ÐµÐ¼ÐµÑˆÐ°Ð»Ð¾ÑÑŒ.
+        // Ð•ÑÐ»Ð¸ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€ÑƒÐµÑ‚ÑÑ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¾Ð´Ð¸Ð½ ÑÑ‚Ð°Ð¿, Ñ‚Ð¾ Ð¾Ð½ Ð½Ðµ Ð¼ÐµÐ½ÑÐµÑ‚ Ð½Ð¾Ð¼ÐµÑ€ Ð½Ð¸ Ð¿Ñ€Ð¸ ÐºÐ°ÐºÐ¸Ñ… Ð¾Ð±ÑÑ‚Ð¾ÑÑ‚ÐµÐ»ÑŒÑÑ‚Ð²Ð°Ñ….
         $num=0;
         foreach($tstages as $rnum=>$ts) {
             if($ts['id']) {
@@ -771,7 +771,7 @@ class sbr_emp extends sbr
         }
         unset($tstages, $tstages_attach);
 
-        // Èíèöèàëèçèðóåì $this->stages.
+        // Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€ÑƒÐµÐ¼ $this->stages.
         $stage_cnt = count($stages);
         $new_stages = 0;
         $dnum = 0;
@@ -788,7 +788,7 @@ class sbr_emp extends sbr
             $this->data['cost'] -= $this->stages[$num]->cost;
             $data_exists = $this->stages[$num]->initFromRequest($stg) || $stages_attach[$num];
             $this->data['cost'] += $this->stages[$num]->cost;
-            // Åñëè ïåðåäàí ïóñòîé ýòàï òî ðåøàåì, ÷òî ñ íèì äåëàòü:
+            // Ð•ÑÐ»Ð¸ Ð¿ÐµÑ€ÐµÐ´Ð°Ð½ Ð¿ÑƒÑÑ‚Ð¾Ð¹ ÑÑ‚Ð°Ð¿ Ñ‚Ð¾ Ñ€ÐµÑˆÐ°ÐµÐ¼, Ñ‡Ñ‚Ð¾ Ñ Ð½Ð¸Ð¼ Ð´ÐµÐ»Ð°Ñ‚ÑŒ:
             if( !$data_exists && $stage_cnt > 1 && ($mode==0 || $mode==1 && $this->isDraft()) ) {
                 array_splice($this->stages, $num, 1);
                 array_splice($stages_attach, $num, 1);
@@ -802,7 +802,7 @@ class sbr_emp extends sbr
         $this->data['stages_cnt'] += $d;
         while(++$d<=0)array_pop($this->stages);
 
-        // Çàãðóæàåì âëîæåíèÿ íà ñåðâåð.
+        // Ð—Ð°Ð³Ñ€ÑƒÐ¶Ð°ÐµÐ¼ Ð²Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ð½Ð° ÑÐµÑ€Ð²ÐµÑ€.
         if(!$this->error) {
             $this->getUploadDir();
             foreach($stages_attach as $num=>$atts) {
@@ -824,13 +824,13 @@ class sbr_emp extends sbr
 
 
     /**
-     * Íîâàÿ ÑÁÐ
-     * Èíèöèàëèçèðóåò ýòàïû ñäåëêè äëÿ ðåäàêòèðîâàíèÿ/ñîçäàíèÿ èç ïîëüçîâàòåëüñêîãî çàïðîñà.
-     * Çàãðóæàåò âëîæåíèÿ íà ñåðâåð. Ó÷èòûâàåò óäàëåíèå ýòàïîâ.
+     * ÐÐ¾Ð²Ð°Ñ Ð¡Ð‘Ð 
+     * Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€ÑƒÐµÑ‚ ÑÑ‚Ð°Ð¿Ñ‹ ÑÐ´ÐµÐ»ÐºÐ¸ Ð´Ð»Ñ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ/ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ Ð¸Ð· Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÑÐºÐ¾Ð³Ð¾ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°.
+     * Ð—Ð°Ð³Ñ€ÑƒÐ¶Ð°ÐµÑ‚ Ð²Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ð½Ð° ÑÐµÑ€Ð²ÐµÑ€. Ð£Ñ‡Ð¸Ñ‚Ñ‹Ð²Ð°ÐµÑ‚ ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ðµ ÑÑ‚Ð°Ð¿Ð¾Ð².
      * 
-     * @param array $tstages            ìàññèâ ýòàïîâ. Ìîæåò ñîäåðæàòü íîâûå ýòàïû è ñòàðûå, îòðåäàêòèðîâàííûå.
-     * @param array $attached_session   èä ñåññèè àâòîçàãðóç÷èêà
-     * @param integer $mode   0: ñîçäàåòñÿ, 1: ðåäàêòèðóåòñÿ âñÿ ñäåëêà, 2: ðåäàêòèðóåòñÿ îäèí ýòàï.
+     * @param array $tstages            Ð¼Ð°ÑÑÐ¸Ð² ÑÑ‚Ð°Ð¿Ð¾Ð². ÐœÐ¾Ð¶ÐµÑ‚ ÑÐ¾Ð´ÐµÑ€Ð¶Ð°Ñ‚ÑŒ Ð½Ð¾Ð²Ñ‹Ðµ ÑÑ‚Ð°Ð¿Ñ‹ Ð¸ ÑÑ‚Ð°Ñ€Ñ‹Ðµ, Ð¾Ñ‚Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ðµ.
+     * @param array $attached_session   Ð¸Ð´ ÑÐµÑÑÐ¸Ð¸ Ð°Ð²Ñ‚Ð¾Ð·Ð°Ð³Ñ€ÑƒÐ·Ñ‡Ð¸ÐºÐ°
+     * @param integer $mode   0: ÑÐ¾Ð·Ð´Ð°ÐµÑ‚ÑÑ, 1: Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€ÑƒÐµÑ‚ÑÑ Ð²ÑÑ ÑÐ´ÐµÐ»ÐºÐ°, 2: Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€ÑƒÐµÑ‚ÑÑ Ð¾Ð´Ð¸Ð½ ÑÑ‚Ð°Ð¿.
      */
     private function _new_initStagesFromRequest($tstages, $tstages_attach, $mode) {
 //        $tstages_attach = array();
@@ -838,7 +838,7 @@ class sbr_emp extends sbr
         $stages_attach = array();
         $fcnt = self::MAX_FILES;
         
-        // Ôîðìèðóåì ìàññèâ óäàëåííûõ ýòàïîâ. Óìåíüøàåì îáùèé áþäæåò ñäåëêè.
+        // Ð¤Ð¾Ñ€Ð¼Ð¸Ñ€ÑƒÐµÐ¼ Ð¼Ð°ÑÑÐ¸Ð² ÑƒÐ´Ð°Ð»ÐµÐ½Ð½Ñ‹Ñ… ÑÑ‚Ð°Ð¿Ð¾Ð². Ð£Ð¼ÐµÐ½ÑŒÑˆÐ°ÐµÐ¼ Ð¾Ð±Ñ‰Ð¸Ð¹ Ð±ÑŽÐ´Ð¶ÐµÑ‚ ÑÐ´ÐµÐ»ÐºÐ¸.
         if($this->data['delstages']) {
             foreach($this->data['delstages'] as $id=>$ds) {
                 if($dds = $this->getStageById($id)) {
@@ -848,8 +848,8 @@ class sbr_emp extends sbr
             }
         }
 
-        // Óïîðÿäî÷èâàåì ìàññèâ ýòàïîâ â íîâîé ïîñëåäîâàòåëüíîñòè, íà ñëó÷àé åñëè áûëè óäàëåíèÿ/äîáàâëåíèÿ è âñå ïåðåìåøàëîñü.
-        // Åñëè ðåäàêòèðóåòñÿ òîëüêî îäèí ýòàï, òî îí íå ìåíÿåò íîìåð íè ïðè êàêèõ îáñòîÿòåëüñòâàõ.
+        // Ð£Ð¿Ð¾Ñ€ÑÐ´Ð¾Ñ‡Ð¸Ð²Ð°ÐµÐ¼ Ð¼Ð°ÑÑÐ¸Ð² ÑÑ‚Ð°Ð¿Ð¾Ð² Ð² Ð½Ð¾Ð²Ð¾Ð¹ Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚Ð¸, Ð½Ð° ÑÐ»ÑƒÑ‡Ð°Ð¹ ÐµÑÐ»Ð¸ Ð±Ñ‹Ð»Ð¸ ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ñ/Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ñ Ð¸ Ð²ÑÐµ Ð¿ÐµÑ€ÐµÐ¼ÐµÑˆÐ°Ð»Ð¾ÑÑŒ.
+        // Ð•ÑÐ»Ð¸ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€ÑƒÐµÑ‚ÑÑ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¾Ð´Ð¸Ð½ ÑÑ‚Ð°Ð¿, Ñ‚Ð¾ Ð¾Ð½ Ð½Ðµ Ð¼ÐµÐ½ÑÐµÑ‚ Ð½Ð¾Ð¼ÐµÑ€ Ð½Ð¸ Ð¿Ñ€Ð¸ ÐºÐ°ÐºÐ¸Ñ… Ð¾Ð±ÑÑ‚Ð¾ÑÑ‚ÐµÐ»ÑŒÑÑ‚Ð²Ð°Ñ….
         $num=0;
         foreach($tstages as $rnum=>$ts) {
             if($ts['id']) {
@@ -864,7 +864,7 @@ class sbr_emp extends sbr
         }
         unset($tstages, $tstages_attach);
 
-        // Èíèöèàëèçèðóåì $this->stages.
+        // Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€ÑƒÐµÐ¼ $this->stages.
         $stage_cnt = count($stages);
         $new_stages = 0;
         $dnum = 0;
@@ -882,7 +882,7 @@ class sbr_emp extends sbr
             $this->data['cost'] -= $this->stages[$num]->cost;
             $data_exists = $this->stages[$num]->initFromRequest($stg) || $stages[$num]['attached'];
             $this->data['cost'] += $this->stages[$num]->cost;
-            // Åñëè ïåðåäàí ïóñòîé ýòàï òî ðåøàåì, ÷òî ñ íèì äåëàòü:
+            // Ð•ÑÐ»Ð¸ Ð¿ÐµÑ€ÐµÐ´Ð°Ð½ Ð¿ÑƒÑÑ‚Ð¾Ð¹ ÑÑ‚Ð°Ð¿ Ñ‚Ð¾ Ñ€ÐµÑˆÐ°ÐµÐ¼, Ñ‡Ñ‚Ð¾ Ñ Ð½Ð¸Ð¼ Ð´ÐµÐ»Ð°Ñ‚ÑŒ:
             if( !$data_exists && $stage_cnt > 1 && ($mode==0 || $mode==1 && $this->isDraft()) ) {
                 array_splice($this->stages, $num, 1);
 //                array_splice($stages_attach, $num, 1);
@@ -891,13 +891,13 @@ class sbr_emp extends sbr
             } else if($this->stages[$num]->error) {
                 $this->error['stages'][$num] = $this->stages[$num]->error;
             }
-            // @todo ôàéëû ïðè ðåäàêòèðîâàíèè
+            // @todo Ñ„Ð°Ð¹Ð»Ñ‹ Ð¿Ñ€Ð¸ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ð¸
         }
         $d = $new_stages - count($this->_delstages);
         $this->data['stages_cnt'] += $d;
         while(++$d<=0)array_pop($this->stages);
         
-        // Çàãðóæàåì âëîæåíèÿ íà ñåðâåð.
+        // Ð—Ð°Ð³Ñ€ÑƒÐ¶Ð°ÐµÐ¼ Ð²Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ð½Ð° ÑÐµÑ€Ð²ÐµÑ€.
         if(!$this->error) {
             $dest = $this->getUploadDir();
             foreach($stages as $num=>$stage) {
@@ -920,8 +920,8 @@ class sbr_emp extends sbr
 
 
     /**
-     * Ïðåîáðàáîòêà äàííûõ ñäåëêè ïåðåä çàïèñüþ â áàçó.
-     * @return array   îáðàáîòàííàÿ êîïèÿ $this->data
+     * ÐŸÑ€ÐµÐ¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐ° Ð´Ð°Ð½Ð½Ñ‹Ñ… ÑÐ´ÐµÐ»ÐºÐ¸ Ð¿ÐµÑ€ÐµÐ´ Ð·Ð°Ð¿Ð¸ÑÑŒÑŽ Ð² Ð±Ð°Ð·Ñƒ.
+     * @return array   Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚Ð°Ð½Ð½Ð°Ñ ÐºÐ¾Ð¿Ð¸Ñ $this->data
      */
     function _preSql() {
         $data = $this->data;
@@ -942,11 +942,11 @@ class sbr_emp extends sbr
 
 
     /**
-     * Ñîçäàåò íîâóþ ñäåëêó ïî äàííûì ïîëüçîâàòåëüñêîã çàïðîñà.
+     * Ð¡Ð¾Ð·Ð´Ð°ÐµÑ‚ Ð½Ð¾Ð²ÑƒÑŽ ÑÐ´ÐµÐ»ÐºÑƒ Ð¿Ð¾ Ð´Ð°Ð½Ð½Ñ‹Ð¼ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÑÐºÐ¾Ð³ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°.
      * 
-     * @param array $request   äàííûå çàïðîñà (ãåò, ïîñò).
-     * @param array $files   ìàññèâ $_FILES ñ âëîæåíèÿìè ê êàæäîìó ýòàïó.
-     * @return boolean   óñïåøíî?
+     * @param array $request   Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° (Ð³ÐµÑ‚, Ð¿Ð¾ÑÑ‚).
+     * @param array $files   Ð¼Ð°ÑÑÐ¸Ð² $_FILES Ñ Ð²Ð»Ð¾Ð¶ÐµÐ½Ð¸ÑÐ¼Ð¸ Ðº ÐºÐ°Ð¶Ð´Ð¾Ð¼Ñƒ ÑÑ‚Ð°Ð¿Ñƒ.
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     function create($request, $files) {
         if(!$this->initFromRequest($request, $files))
@@ -987,11 +987,11 @@ class sbr_emp extends sbr
 
 
     /**
-     * Ñîçäàåò íîâóþ ñäåëêó ïî äàííûì ïîëüçîâàòåëüñêîã çàïðîñà.
+     * Ð¡Ð¾Ð·Ð´Ð°ÐµÑ‚ Ð½Ð¾Ð²ÑƒÑŽ ÑÐ´ÐµÐ»ÐºÑƒ Ð¿Ð¾ Ð´Ð°Ð½Ð½Ñ‹Ð¼ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÑÐºÐ¾Ð³ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°.
      * 
-     * @param array $request   äàííûå çàïðîñà (ãåò, ïîñò).
+     * @param array $request   Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° (Ð³ÐµÑ‚, Ð¿Ð¾ÑÑ‚).
      * @param attachedfiles $files   
-     * @return boolean   óñïåøíî?
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     function _new_create($request, attachedfiles $files) {
         if($request['scheme_type'] == sbr::SCHEME_PDRD2) return false;
@@ -1034,7 +1034,7 @@ class sbr_emp extends sbr
                 unset($this->data['id']);
                 return false;
             }
-            //Äîáàâëÿåì ñâÿçü 1 ýòàïà ñ òèïîâîé óñëóãîé åñëè ýòî âîçìîæíî
+            //Ð”Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼ ÑÐ²ÑÐ·ÑŒ 1 ÑÑ‚Ð°Ð¿Ð° Ñ Ñ‚Ð¸Ð¿Ð¾Ð²Ð¾Ð¹ ÑƒÑÐ»ÑƒÐ³Ð¾Ð¹ ÐµÑÐ»Ð¸ ÑÑ‚Ð¾ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾
             else if($num == 0){
                 $this->addRefTService($stage->id);
             }
@@ -1059,7 +1059,7 @@ class sbr_emp extends sbr
             }
         }
         
-        // çàïèñûâàåì ïðîôåññèþ ñäåëêè
+        // Ð·Ð°Ð¿Ð¸ÑÑ‹Ð²Ð°ÐµÐ¼ Ð¿Ñ€Ð¾Ñ„ÐµÑÑÐ¸ÑŽ ÑÐ´ÐµÐ»ÐºÐ¸
         $this->saveProfessions();
         
         $this->_commitXact();
@@ -1070,12 +1070,12 @@ class sbr_emp extends sbr
     }
 
     /**
-     * Ðåäàêòèðóåò ñäåëêó ïî äàííûì ïîëüçîâàòåëüñêîãî çàïðîñà.
-     * Ïðè îøèáêå âîçâðàùàåò ñòàòóñ ñäåëêè â ÷åðíîâèê, åñëè ðåäàêòèðîâàëñÿ ÷åðíîâèê.
+     * Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€ÑƒÐµÑ‚ ÑÐ´ÐµÐ»ÐºÑƒ Ð¿Ð¾ Ð´Ð°Ð½Ð½Ñ‹Ð¼ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÑÐºÐ¾Ð³Ð¾ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°.
+     * ÐŸÑ€Ð¸ Ð¾ÑˆÐ¸Ð±ÐºÐµ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ ÑÑ‚Ð°Ñ‚ÑƒÑ ÑÐ´ÐµÐ»ÐºÐ¸ Ð² Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸Ðº, ÐµÑÐ»Ð¸ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð»ÑÑ Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸Ðº.
      * 
-     * @param array $request   äàííûå çàïðîñà (ãåò, ïîñò).
-     * @param array $files   ìàññèâ $_FILES ñ âëîæåíèÿìè ê êàæäîìó ýòàïó.
-     * @return boolean   óñïåøíî?
+     * @param array $request   Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° (Ð³ÐµÑ‚, Ð¿Ð¾ÑÑ‚).
+     * @param array $files   Ð¼Ð°ÑÑÐ¸Ð² $_FILES Ñ Ð²Ð»Ð¾Ð¶ÐµÐ½Ð¸ÑÐ¼Ð¸ Ðº ÐºÐ°Ð¶Ð´Ð¾Ð¼Ñƒ ÑÑ‚Ð°Ð¿Ñƒ.
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     function edit($request, $files) {
         if(!$ret = $this->_edit($request, $files, $old)) {
@@ -1085,12 +1085,12 @@ class sbr_emp extends sbr
     }
     
     /**
-     * Ðåäàêòèðóåò ñäåëêó ïî äàííûì ïîëüçîâàòåëüñêîãî çàïðîñà.
-     * Ïðè îøèáêå âîçâðàùàåò ñòàòóñ ñäåëêè â ÷åðíîâèê, åñëè ðåäàêòèðîâàëñÿ ÷åðíîâèê.
+     * Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€ÑƒÐµÑ‚ ÑÐ´ÐµÐ»ÐºÑƒ Ð¿Ð¾ Ð´Ð°Ð½Ð½Ñ‹Ð¼ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÑÐºÐ¾Ð³Ð¾ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°.
+     * ÐŸÑ€Ð¸ Ð¾ÑˆÐ¸Ð±ÐºÐµ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ ÑÑ‚Ð°Ñ‚ÑƒÑ ÑÐ´ÐµÐ»ÐºÐ¸ Ð² Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸Ðº, ÐµÑÐ»Ð¸ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð»ÑÑ Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸Ðº.
      * 
-     * @param array $request   äàííûå çàïðîñà (ãåò, ïîñò).
-     * @param array $files   ìàññèâ $_FILES ñ âëîæåíèÿìè ê êàæäîìó ýòàïó.
-     * @return boolean   óñïåøíî?
+     * @param array $request   Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° (Ð³ÐµÑ‚, Ð¿Ð¾ÑÑ‚).
+     * @param array $files   Ð¼Ð°ÑÑÐ¸Ð² $_FILES Ñ Ð²Ð»Ð¾Ð¶ÐµÐ½Ð¸ÑÐ¼Ð¸ Ðº ÐºÐ°Ð¶Ð´Ð¾Ð¼Ñƒ ÑÑ‚Ð°Ð¿Ñƒ.
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     function _new_edit($request, attachedfiles $files) {
         if(!$ret = $this->__new_edit($request, $files, $old)) {
@@ -1100,12 +1100,12 @@ class sbr_emp extends sbr
     }
     
     /**
-     * Ðåäàêòèðóåò ñäåëêó ïî äàííûì ïîëüçîâàòåëüñêîãî çàïðîñà.
+     * Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€ÑƒÐµÑ‚ ÑÐ´ÐµÐ»ÐºÑƒ Ð¿Ð¾ Ð´Ð°Ð½Ð½Ñ‹Ð¼ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÑÐºÐ¾Ð³Ð¾ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°.
      * @see sbr_emp::initFromRequest()
      * 
-     * @param array $request   äàííûå çàïðîñà (ãåò, ïîñò).
-     * @param array $files   ìàññèâ $_FILES ñ âëîæåíèÿìè ê êàæäîìó ýòàïó.
-     * @return boolean   óñïåøíî?
+     * @param array $request   Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° (Ð³ÐµÑ‚, Ð¿Ð¾ÑÑ‚).
+     * @param array $files   Ð¼Ð°ÑÑÐ¸Ð² $_FILES Ñ Ð²Ð»Ð¾Ð¶ÐµÐ½Ð¸ÑÐ¼Ð¸ Ðº ÐºÐ°Ð¶Ð´Ð¾Ð¼Ñƒ ÑÑ‚Ð°Ð¿Ñƒ.
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     private function __new_edit($request, attachedfiles $files, &$old) {
         $old = clone $this;
@@ -1143,7 +1143,7 @@ class sbr_emp extends sbr
             $this->_abortXact();
             return false;
         }
-        // Ñèòóàöèÿ êîãäà ðåäàêòèðóåì ñäåëêó (îòïðàâëÿåì èç ÷åðíîâèêîâ) à â íåé íåò îôôåðò, òîãäà ïðîñòî ãåíåðèðóåì èõ
+        // Ð¡Ð¸Ñ‚ÑƒÐ°Ñ†Ð¸Ñ ÐºÐ¾Ð³Ð´Ð° Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€ÑƒÐµÐ¼ ÑÐ´ÐµÐ»ÐºÑƒ (Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÐµÐ¼ Ð¸Ð· Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸ÐºÐ¾Ð²) Ð° Ð² Ð½ÐµÐ¹ Ð½ÐµÑ‚ Ð¾Ñ„Ñ„ÐµÑ€Ñ‚, Ñ‚Ð¾Ð³Ð´Ð° Ð¿Ñ€Ð¾ÑÑ‚Ð¾ Ð³ÐµÐ½ÐµÑ€Ð¸Ñ€ÑƒÐµÐ¼ Ð¸Ñ…
         if($this->scheme_type == sbr::SCHEME_LC) {
             $docs = $this->getDocs();
             foreach($docs as $doc) {
@@ -1154,7 +1154,7 @@ class sbr_emp extends sbr
             
             if(count($offers_doc) != 2) {
                 $doc_delete = current($offers_doc);
-                // Óäàëÿåì, åñëè îäíà îôåðòà ñãåíåðèðîâàëàñü óæå, à âòîðàÿ íåò
+                // Ð£Ð´Ð°Ð»ÑÐµÐ¼, ÐµÑÐ»Ð¸ Ð¾Ð´Ð½Ð° Ð¾Ñ„ÐµÑ€Ñ‚Ð° ÑÐ³ÐµÐ½ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð»Ð°ÑÑŒ ÑƒÐ¶Ðµ, Ð° Ð²Ñ‚Ð¾Ñ€Ð°Ñ Ð½ÐµÑ‚
                 if($doc_delete) {
                     $doc_file = CFile($doc_delete);
                     $doc_file->delete();
@@ -1197,8 +1197,8 @@ class sbr_emp extends sbr
             }
         }
         
-        // çàïèñûâàåì ïðîôåññèþ ñäåëêè
-        //$this->saveProfessions(); ïðè ðåäàêòèðîâàíèè íè÷åãî íå çàïèñûâàåì
+        // Ð·Ð°Ð¿Ð¸ÑÑ‹Ð²Ð°ÐµÐ¼ Ð¿Ñ€Ð¾Ñ„ÐµÑÑÐ¸ÑŽ ÑÐ´ÐµÐ»ÐºÐ¸
+        //$this->saveProfessions(); Ð¿Ñ€Ð¸ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ð¸ Ð½Ð¸Ñ‡ÐµÐ³Ð¾ Ð½Ðµ Ð·Ð°Ð¿Ð¸ÑÑ‹Ð²Ð°ÐµÐ¼
 
         $this->_commitXact();
         
@@ -1206,12 +1206,12 @@ class sbr_emp extends sbr
     }
 
     /**
-     * Ðåäàêòèðóåò ñäåëêó ïî äàííûì ïîëüçîâàòåëüñêîãî çàïðîñà.
+     * Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€ÑƒÐµÑ‚ ÑÐ´ÐµÐ»ÐºÑƒ Ð¿Ð¾ Ð´Ð°Ð½Ð½Ñ‹Ð¼ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÑÐºÐ¾Ð³Ð¾ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°.
      * @see sbr_emp::initFromRequest()
      * 
-     * @param array $request   äàííûå çàïðîñà (ãåò, ïîñò).
-     * @param array $files   ìàññèâ $_FILES ñ âëîæåíèÿìè ê êàæäîìó ýòàïó.
-     * @return boolean   óñïåøíî?
+     * @param array $request   Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° (Ð³ÐµÑ‚, Ð¿Ð¾ÑÑ‚).
+     * @param array $files   Ð¼Ð°ÑÑÐ¸Ð² $_FILES Ñ Ð²Ð»Ð¾Ð¶ÐµÐ½Ð¸ÑÐ¼Ð¸ Ðº ÐºÐ°Ð¶Ð´Ð¾Ð¼Ñƒ ÑÑ‚Ð°Ð¿Ñƒ.
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     private function _edit($request, $files, &$old) {
         $old = clone $this;
@@ -1268,26 +1268,26 @@ class sbr_emp extends sbr
 
 
     /**
-     * Âîçâðàùåò âñå ÷åðíîâèêè.
-     * @return array   ìàññèâ îáúåêòîâ sbr, èíäåêñèðîâàííûé èä. ñäåëîê.
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰ÐµÑ‚ Ð²ÑÐµ Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸ÐºÐ¸.
+     * @return array   Ð¼Ð°ÑÑÐ¸Ð² Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð² sbr, Ð¸Ð½Ð´ÐµÐºÑÐ¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ð¸Ð´. ÑÐ´ÐµÐ»Ð¾Ðº.
      */
     function getDrafts() {
         return $this->_getAllCommon(NULL, true, false, true);
     }
     
     /**
-     * Âîçâðàùåò âñå ÷åðíîâèêè.
-     * @return array   ìàññèâ îáúåêòîâ sbr, èíäåêñèðîâàííûé èä. ñäåëîê.
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰ÐµÑ‚ Ð²ÑÐµ Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸ÐºÐ¸.
+     * @return array   Ð¼Ð°ÑÑÐ¸Ð² Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð² sbr, Ð¸Ð½Ð´ÐµÐºÑÐ¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ð¸Ð´. ÑÐ´ÐµÐ»Ð¾Ðº.
      */
     function _new_getDrafts($limit = false) {
         return $this->_new_getAllCommon(NULL, true, false, true, false, false, false, false, $limit);
     }
     
     /**
-     * Âîçâðàùåò ñïèñîê ÷åðíîâèêîâ.
-     * @param integer $limit ëèìèò
-     * @param integer $excludeID ID ÷åðíîâèêà êîòîðûé íå äîëæåí ïîïàñòü â âûäà÷ó
-     * @return array ìàññèâ îáúåêòîâ sbr, èíäåêñèðîâàííûé èä. ñäåëîê.
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰ÐµÑ‚ ÑÐ¿Ð¸ÑÐ¾Ðº Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸ÐºÐ¾Ð².
+     * @param integer $limit Ð»Ð¸Ð¼Ð¸Ñ‚
+     * @param integer $excludeID ID Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸ÐºÐ° ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð½Ðµ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð¿Ð¾Ð¿Ð°ÑÑ‚ÑŒ Ð² Ð²Ñ‹Ð´Ð°Ñ‡Ñƒ
+     * @return array Ð¼Ð°ÑÑÐ¸Ð² Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð² sbr, Ð¸Ð½Ð´ÐµÐºÑÐ¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ð¸Ð´. ÑÐ´ÐµÐ»Ð¾Ðº.
      */
     function getDraftsList($limit = false, $excludeID = false) {
         global $DB;
@@ -1308,8 +1308,8 @@ class sbr_emp extends sbr
     }
 
     /**
-     * Ïðîâåðÿåò, ìîæíî ëè îòïðàâèòü ÷åðíîâèê íà óòâåðæäåíèå èñïîëíèòåëþ.
-     * @return boolean   äà/íåò.
+     * ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÑ‚, Ð¼Ð¾Ð¶Ð½Ð¾ Ð»Ð¸ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸Ðº Ð½Ð° ÑƒÑ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ðµ Ð¸ÑÐ¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŽ.
+     * @return boolean   Ð´Ð°/Ð½ÐµÑ‚.
      */
     function checkSendReady() {
         if(!$this->frl_id) return false;
@@ -1324,31 +1324,31 @@ class sbr_emp extends sbr
 
 
     /**
-     * Çàíîâî îòïðàâëÿåò ðàíåå îòêëîíåííóþ/îòìåíåííóþ ñäåëêó íà óòâåðæäåíèå èñïîëíèòåëþ.
-     * @param integer $sbr_id   èä. ñäåëêè.
-     * @return boolean   óñïåøíî?
+     * Ð—Ð°Ð½Ð¾Ð²Ð¾ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÐµÑ‚ Ñ€Ð°Ð½ÐµÐµ Ð¾Ñ‚ÐºÐ»Ð¾Ð½ÐµÐ½Ð½ÑƒÑŽ/Ð¾Ñ‚Ð¼ÐµÐ½ÐµÐ½Ð½ÑƒÑŽ ÑÐ´ÐµÐ»ÐºÑƒ Ð½Ð° ÑƒÑ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ðµ Ð¸ÑÐ¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŽ.
+     * @param integer $sbr_id   Ð¸Ð´. ÑÐ´ÐµÐ»ÐºÐ¸.
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     function resendCanceled($sbr_id) {
         $this->_cleaningStages($sbr_id);
-        // !!! â òðèããåðå äàòó îòêðûòèÿ îáíîâëÿòü. Åñëè äàòó îáíîâëÿòü, òî êàê áûòü ñ êîììåíòàìè, êîòîðûå îò íåå çàâèñþò.
+        // !!! Ð² Ñ‚Ñ€Ð¸Ð³Ð³ÐµÑ€Ðµ Ð´Ð°Ñ‚Ñƒ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ñ Ð¾Ð±Ð½Ð¾Ð²Ð»ÑÑ‚ÑŒ. Ð•ÑÐ»Ð¸ Ð´Ð°Ñ‚Ñƒ Ð¾Ð±Ð½Ð¾Ð²Ð»ÑÑ‚ÑŒ, Ñ‚Ð¾ ÐºÐ°Ðº Ð±Ñ‹Ñ‚ÑŒ Ñ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ð¼Ð¸, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð¾Ñ‚ Ð½ÐµÐµ Ð·Ð°Ð²Ð¸ÑÑŽÑ‚.
         $sql = "UPDATE sbr SET status = " . self::STATUS_NEW . " WHERE id = {$sbr_id} AND emp_id = {$this->uid} AND status IN (" . self::STATUS_REFUSED . ',' . self::STATUS_CANCELED . ')';
         return $this->_eventQuery($sql);
     }
 
 
     /**
-     * Çàêàç÷èê îòìåíÿåò ñäåëêó.
-     * @param integer $sbr_id   èä. ñäåëêè.
-     * @return boolean   óñïåøíî?
+     * Ð—Ð°ÐºÐ°Ð·Ñ‡Ð¸Ðº Ð¾Ñ‚Ð¼ÐµÐ½ÑÐµÑ‚ ÑÐ´ÐµÐ»ÐºÑƒ.
+     * @param integer $sbr_id   Ð¸Ð´. ÑÐ´ÐµÐ»ÐºÐ¸.
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     function cancel($sbr_id) {
         $this->initFromId($sbr_id, false, false);
         $project_null = '';
         if($this->data['project_id'] > 0) {
-            //×èñòèì ïðîåêò
+            //Ð§Ð¸ÑÑ‚Ð¸Ð¼ Ð¿Ñ€Ð¾ÐµÐºÑ‚
             require_once $_SERVER['DOCUMENT_ROOT'].'/classes/projects.php';
             projects::SetExecutor($this->data['project_id'], null, $this->uid);
-            projects::SwitchStatusPrj($this->uid, $this->data['project_id'], false); // Âñåãäà îòêðûâàåì
+            projects::SwitchStatusPrj($this->uid, $this->data['project_id'], false); // Ð’ÑÐµÐ³Ð´Ð° Ð¾Ñ‚ÐºÑ€Ñ‹Ð²Ð°ÐµÐ¼
             $project_null = ', project_id = NULL';
         }
         $sql = "UPDATE sbr SET status = " . self::STATUS_CANCELED . " {$project_null} WHERE id = {$sbr_id} AND emp_id = {$this->uid} AND reserved_id IS NULL";
@@ -1356,11 +1356,11 @@ class sbr_emp extends sbr
     }
 
     /**
-     * Îòïðàâèòü îäèí èëè íåñêîëüêî ÷åðíîâèêîâ èñïîëíèòåëþ.
-     * Åñëè õîòÿ áû îäíà íå ãîòîâà ê îòïðàâêå, âûõîäèì.
+     * ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ Ð¾Ð´Ð¸Ð½ Ð¸Ð»Ð¸ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸ÐºÐ¾Ð² Ð¸ÑÐ¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŽ.
+     * Ð•ÑÐ»Ð¸ Ñ…Ð¾Ñ‚Ñ Ð±Ñ‹ Ð¾Ð´Ð½Ð° Ð½Ðµ Ð³Ð¾Ñ‚Ð¾Ð²Ð° Ðº Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐµ, Ð²Ñ‹Ñ…Ð¾Ð´Ð¸Ð¼.
      *
-     * @param array $ids   èä. ÷åðíîâèêîâ.
-     * @return boolean   óñïåøíî?
+     * @param array $ids   Ð¸Ð´. Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸ÐºÐ¾Ð².
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     function send($ids) {
         foreach($ids as $id) {
@@ -1372,10 +1372,10 @@ class sbr_emp extends sbr
     }
 
     /**
-     * Ïåðåìåñòèòü ñäåëêó (èëè íåñêîëüêî) â ÷åðíîâèêè.
+     * ÐŸÐµÑ€ÐµÐ¼ÐµÑÑ‚Ð¸Ñ‚ÑŒ ÑÐ´ÐµÐ»ÐºÑƒ (Ð¸Ð»Ð¸ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾) Ð² Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸ÐºÐ¸.
      * 
-     * @param integer|array $ids   èä. ñäåëîê.
-     * @return boolean   óñïåøíî?
+     * @param integer|array $ids   Ð¸Ð´. ÑÐ´ÐµÐ»Ð¾Ðº.
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     function draft($ids) {
         $draft = $this->_draft($ids, TRUE);
@@ -1387,9 +1387,9 @@ class sbr_emp extends sbr
     }
 
     /**
-     * ×èñòèì äàííûå ïî ýòàïàì (åñëè èñïîëíèòåëü íà÷àë ïðîõîäèòü ìàñòåð òàì îñòàþòñÿ îò íåãî äàííûå) 
+     * Ð§Ð¸ÑÑ‚Ð¸Ð¼ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð¿Ð¾ ÑÑ‚Ð°Ð¿Ð°Ð¼ (ÐµÑÐ»Ð¸ Ð¸ÑÐ¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒ Ð½Ð°Ñ‡Ð°Ð» Ð¿Ñ€Ð¾Ñ…Ð¾Ð´Ð¸Ñ‚ÑŒ Ð¼Ð°ÑÑ‚ÐµÑ€ Ñ‚Ð°Ð¼ Ð¾ÑÑ‚Ð°ÑŽÑ‚ÑÑ Ð¾Ñ‚ Ð½ÐµÐ³Ð¾ Ð´Ð°Ð½Ð½Ñ‹Ðµ) 
      * 
-     * @todo òàêèå äàííûå íàâåðíîå íàäî âûíåñòè èç òàáëèöû
+     * @todo Ñ‚Ð°ÐºÐ¸Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð½Ð°Ð²ÐµÑ€Ð½Ð¾Ðµ Ð½Ð°Ð´Ð¾ Ð²Ñ‹Ð½ÐµÑÑ‚Ð¸ Ð¸Ð· Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ‹
      */
     private function _cleaningStages($ids) {
         $ids = intarrPgSql($ids);
@@ -1406,11 +1406,11 @@ class sbr_emp extends sbr
     }
     
     /**
-     * Ïåðåìåñòèòü â ÷åðíîâèê èëè îáðàòíî.
+     * ÐŸÐµÑ€ÐµÐ¼ÐµÑÑ‚Ð¸Ñ‚ÑŒ Ð² Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸Ðº Ð¸Ð»Ð¸ Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾.
      * 
-     * @param integer|array $ids   èä. ñäåëîê.
-     * @param boolean $is_draft   true: â ÷åðíîâèê, false:îòïðàâèòü íà óòâåðæäåíèå.
-     * @return boolean   óñïåøíî?
+     * @param integer|array $ids   Ð¸Ð´. ÑÐ´ÐµÐ»Ð¾Ðº.
+     * @param boolean $is_draft   true: Ð² Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸Ðº, false:Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ Ð½Ð° ÑƒÑ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ðµ.
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
 
      */
     private function _draft($ids, $draft = false) {
@@ -1426,10 +1426,10 @@ class sbr_emp extends sbr
     }
 
     /**
-     * Óäàëèòü ÷åðíîâèêè.
+     * Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸ÐºÐ¸.
      * 
-     * @param integer|array $ids   èä. ñäåëîê.
-     * @return boolean   true, åñëè óñïåøíî è ñäåëêè äåéñòâèòåëüíî áûëè óäàëåíû èç áàçû (íåëüçÿ óäàëÿòü íå ÷åðíîâèêè).
+     * @param integer|array $ids   Ð¸Ð´. ÑÐ´ÐµÐ»Ð¾Ðº.
+     * @return boolean   true, ÐµÑÐ»Ð¸ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð¸ ÑÐ´ÐµÐ»ÐºÐ¸ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ð±Ñ‹Ð»Ð¸ ÑƒÐ´Ð°Ð»ÐµÐ½Ñ‹ Ð¸Ð· Ð±Ð°Ð·Ñ‹ (Ð½ÐµÐ»ÑŒÐ·Ñ ÑƒÐ´Ð°Ð»ÑÑ‚ÑŒ Ð½Ðµ Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸ÐºÐ¸).
      */
     function delete($ids) {
         if ($this->uid != get_uid(false)) {
@@ -1443,14 +1443,14 @@ class sbr_emp extends sbr
     }
 
     /**
-     * Ðåçåðâèðîâàíèå äåíåã â òåêóùåé ÑÁÐ äëÿ òåñòåðîâ.
+     * Ð ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð´ÐµÐ½ÐµÐ³ Ð² Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¹ Ð¡Ð‘Ð  Ð´Ð»Ñ Ñ‚ÐµÑÑ‚ÐµÑ€Ð¾Ð².
      * 
-     * @param account $account   èíèöèàëèçèðîâàííûé ýêçåìïëÿð êëàññà account.
-     * @return boolean   óñïåøíî?
+     * @param account $account   Ð¸Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ ÑÐºÐ·ÐµÐ¼Ð¿Ð»ÑÑ€ ÐºÐ»Ð°ÑÑÐ° account.
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     function testReserve($account) {
         if($this->getReserveSum()) {
-            $err = $account->deposit($op_id, $account->id, 0, "Òåñòîâîå ðåçåðâèðâàíèå íà ñ÷åò ÑÁÐ, {$GLOBALS['EXRATE_CODES'][$this->cost_sys][2]}", $this->cost_sys-1, $this->reserve_sum, self::OP_RESERVE, $this->id);
+            $err = $account->deposit($op_id, $account->id, 0, "Ð¢ÐµÑÑ‚Ð¾Ð²Ð¾Ðµ Ñ€ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð²Ð°Ð½Ð¸Ðµ Ð½Ð° ÑÑ‡ÐµÑ‚ Ð¡Ð‘Ð , {$GLOBALS['EXRATE_CODES'][$this->cost_sys][2]}", $this->cost_sys-1, $this->reserve_sum, self::OP_RESERVE, $this->id);
         }
         if($err) echo $err;
         return !$err;
@@ -1458,12 +1458,12 @@ class sbr_emp extends sbr
 
 
     /**
-     * Óñòàíàâëèâàåò ñäåëêó â ñîñòîÿíèå çàðåçåðâèðîâàííîé ïîñëå óñïåøíîé îïåðàöèè ðåçåðâèðîâàíèÿ íà ñ÷åòå.
-     * Äîáàâëÿåò ê îïåðàöèè ïîäðîáíûé êîììåíòàðèé.
+     * Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÑ‚ ÑÐ´ÐµÐ»ÐºÑƒ Ð² ÑÐ¾ÑÑ‚Ð¾ÑÐ½Ð¸Ðµ Ð·Ð°Ñ€ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾Ð¹ Ð¿Ð¾ÑÐ»Ðµ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾Ð¹ Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¸ Ñ€ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð½Ð° ÑÑ‡ÐµÑ‚Ðµ.
+     * Ð”Ð¾Ð±Ð°Ð²Ð»ÑÐµÑ‚ Ðº Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¸ Ð¿Ð¾Ð´Ñ€Ð¾Ð±Ð½Ñ‹Ð¹ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¹.
      * @see account::deposit().
      * 
-     * @param integer $reserved_id   èä. îïåðàöèè ðåçåðâèðîâàíèÿ (account_operations.id).
-     * @return boolean   óñïåøíî?
+     * @param integer $reserved_id   Ð¸Ð´. Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¸ Ñ€ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ (account_operations.id).
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     function reserve($reserved_id) {
         if(!$this->_openXact(TRUE))
@@ -1479,7 +1479,7 @@ class sbr_emp extends sbr
         $comments = sbr_meta::view_cost($this->getReserveSum(), $this->cost_sys)
                   . ', ' . $this->getContractNum() . ', '
                   . round(($tax_emp / $this->cost) * 100)
-                  . '% çà óñëóãó ñåðâèñà ÑÁÐ è Áàíêà - '
+                  . '% Ð·Ð° ÑƒÑÐ»ÑƒÐ³Ñƒ ÑÐµÑ€Ð²Ð¸ÑÐ° Ð¡Ð‘Ð  Ð¸ Ð‘Ð°Ð½ÐºÐ° - '
                   . sbr_meta::view_cost($tax_emp, $this->cost_sys);
         $sql = "
           UPDATE sbr SET reserved_id = ?i WHERE id = ?i;
@@ -1540,13 +1540,13 @@ class sbr_emp extends sbr
     }
 
     /**
-     * Èíèöèàëèçèðóåò ðåêâèçèòû ïîëüçîâàòåëÿ, èùåò ñàìûå ïîäõîäÿùèå â ñîîòâåñòâèè ñ òåêóùèì òèïîì ëèöà (þð/ôèç), ðàíåå
-     * âûñòàâëåííûìè ñ÷åòàìè è èíôîðìàöèåé îòêóäà ïðåäïî÷òèòåëüíåå èõ áðàòü.
+     * Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€ÑƒÐµÑ‚ Ñ€ÐµÐºÐ²Ð¸Ð·Ð¸Ñ‚Ñ‹ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ, Ð¸Ñ‰ÐµÑ‚ ÑÐ°Ð¼Ñ‹Ðµ Ð¿Ð¾Ð´Ñ…Ð¾Ð´ÑÑ‰Ð¸Ðµ Ð² ÑÐ¾Ð¾Ñ‚Ð²ÐµÑÑ‚Ð²Ð¸Ð¸ Ñ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¼ Ñ‚Ð¸Ð¿Ð¾Ð¼ Ð»Ð¸Ñ†Ð° (ÑŽÑ€/Ñ„Ð¸Ð·), Ñ€Ð°Ð½ÐµÐµ
+     * Ð²Ñ‹ÑÑ‚Ð°Ð²Ð»ÐµÐ½Ð½Ñ‹Ð¼Ð¸ ÑÑ‡ÐµÑ‚Ð°Ð¼Ð¸ Ð¸ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÐµÐ¹ Ð¾Ñ‚ÐºÑƒÐ´Ð° Ð¿Ñ€ÐµÐ´Ð¿Ð¾Ñ‡Ñ‚Ð¸Ñ‚ÐµÐ»ÑŒÐ½ÐµÐµ Ð¸Ñ… Ð±Ñ€Ð°Ñ‚ÑŒ.
      * 
-     * @param integer $form_type   1:þð. ëèöî, 2:ôèç. ëèöî. Åñëè NULL, òî íåèçâåñòíî è áóäåò îïðåäåëåíî èç ïîñëåäíèõ îïåðàöèé ïî áåçíàëó.
-     * @param integer $reqv_mode   îòêóäà ïðåäïî÷òèòåëüíåå âçÿòü ðåêâèèçòû (-1:íåïîíÿòíî îòêóäà áðàòü, 1:èç Ôèíàíñîâ, 2:ñàìûå ïîñëåäíèå).
+     * @param integer $form_type   1:ÑŽÑ€. Ð»Ð¸Ñ†Ð¾, 2:Ñ„Ð¸Ð·. Ð»Ð¸Ñ†Ð¾. Ð•ÑÐ»Ð¸ NULL, Ñ‚Ð¾ Ð½ÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ð¾ Ð¸ Ð±ÑƒÐ´ÐµÑ‚ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð¾ Ð¸Ð· Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ð¸Ñ… Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¹ Ð¿Ð¾ Ð±ÐµÐ·Ð½Ð°Ð»Ñƒ.
+     * @param integer $reqv_mode   Ð¾Ñ‚ÐºÑƒÐ´Ð° Ð¿Ñ€ÐµÐ´Ð¿Ð¾Ñ‡Ñ‚Ð¸Ñ‚ÐµÐ»ÑŒÐ½ÐµÐµ Ð²Ð·ÑÑ‚ÑŒ Ñ€ÐµÐºÐ²Ð¸Ð¸Ð·Ñ‚Ñ‹ (-1:Ð½ÐµÐ¿Ð¾Ð½ÑÑ‚Ð½Ð¾ Ð¾Ñ‚ÐºÑƒÐ´Ð° Ð±Ñ€Ð°Ñ‚ÑŒ, 1:Ð¸Ð· Ð¤Ð¸Ð½Ð°Ð½ÑÐ¾Ð², 2:ÑÐ°Ð¼Ñ‹Ðµ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ð¸Ðµ).
      */
-    function getInvoiceReqv(&$form_type, &$reqv_mode = -1) { // -1:íåïîíÿòíî îòêóäà áðàòü, 1:èç Ôèíàíñîâ, 2:ñàìûå ïîñëåäíèå.
+    function getInvoiceReqv(&$form_type, &$reqv_mode = -1) { // -1:Ð½ÐµÐ¿Ð¾Ð½ÑÑ‚Ð½Ð¾ Ð¾Ñ‚ÐºÑƒÐ´Ð° Ð±Ñ€Ð°Ñ‚ÑŒ, 1:Ð¸Ð· Ð¤Ð¸Ð½Ð°Ð½ÑÐ¾Ð², 2:ÑÐ°Ð¼Ñ‹Ðµ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ð¸Ðµ.
         if($reqv_mode != 1) {
             if(!$this->reqv[sbr::FT_JURI]) {
                 $this->reqv[sbr::FT_JURI] = new reqv_ordered();
@@ -1592,7 +1592,7 @@ class sbr_emp extends sbr
 
         $reqv_mode = 2;
         if($form_type === NULL) {
-            // ïîäáèðàåì ïîñëåäíèå ðåêâèçèòû (ôèç èëè þð).
+            // Ð¿Ð¾Ð´Ð±Ð¸Ñ€Ð°ÐµÐ¼ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ð¸Ðµ Ñ€ÐµÐºÐ²Ð¸Ð·Ð¸Ñ‚Ñ‹ (Ñ„Ð¸Ð· Ð¸Ð»Ð¸ ÑŽÑ€).
             $form_type = self::FT_JURI;
             if(!$this->reqv[sbr::FT_PHYS]->user_id) $form_type = self::FT_JURI;
             else if(!$this->reqv[sbr::FT_JURI]->user_id) $form_type = self::FT_PHYS;
@@ -1604,10 +1604,10 @@ class sbr_emp extends sbr
     }
 
     /**
-     * Ïå÷àòàåò ñ÷åò äëÿ ðåçåðâèðîâàíèÿ ïî áåçíàëó.
+     * ÐŸÐµÑ‡Ð°Ñ‚Ð°ÐµÑ‚ ÑÑ‡ÐµÑ‚ Ð´Ð»Ñ Ñ€ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¿Ð¾ Ð±ÐµÐ·Ð½Ð°Ð»Ñƒ.
      * 
-     * @param integer $form_type   1:þð. ëèöî, 2:ôèç. ëèöî.
-     * @param account $account   èíèöèàëèçèðîâàííûé ýêçåìïëÿð êëàññà account òåêóùåãî ïîëüçîâàòåëÿ.
+     * @param integer $form_type   1:ÑŽÑ€. Ð»Ð¸Ñ†Ð¾, 2:Ñ„Ð¸Ð·. Ð»Ð¸Ñ†Ð¾.
+     * @param account $account   Ð¸Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ ÑÐºÐ·ÐµÐ¼Ð¿Ð»ÑÑ€ ÐºÐ»Ð°ÑÑÐ° account Ñ‚ÐµÐºÑƒÑ‰ÐµÐ³Ð¾ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ.
      */
     function showInvoiced($form_type, $account) {
         $this->getInvoiceReqv($form_type);
@@ -1620,7 +1620,7 @@ class sbr_emp extends sbr
             $ord_num = $reqv->id;
             $sum = $reqv->ammount;
             $sbr_nds = $this->getCommNds($sbr_comm);
-            $billCode = "Á-{$contract_num}";
+            $billCode = "Ð‘-{$contract_num}";
             include($_SERVER['DOCUMENT_ROOT'].'/engine/templates/bill/bill_transfer.tpl');
         }
         else {
@@ -1642,7 +1642,7 @@ class sbr_emp extends sbr
         
         
         $sbr_comm = 
-        $billCode = "Á-{$contract_num}";
+        $billCode = "Ð‘-{$contract_num}";
         
         $pskb = new pskb($this);
         $lc = $pskb->getLC();
@@ -1659,7 +1659,7 @@ class sbr_emp extends sbr
         $sum = $lc['sum'] + $tax_total;
         
         $ord_num = $lc['id'];
-        // Çàìåíÿåì äàííûìè ïî êîòîðûì èíèöèðîâàí àêêðåäèòèâ
+        // Ð—Ð°Ð¼ÐµÐ½ÑÐµÐ¼ Ð´Ð°Ð½Ð½Ñ‹Ð¼Ð¸ Ð¿Ð¾ ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¼ Ð¸Ð½Ð¸Ñ†Ð¸Ñ€Ð¾Ð²Ð°Ð½ Ð°ÐºÐºÑ€ÐµÐ´Ð¸Ñ‚Ð¸Ð²
         $reqv['full_name'] = $lc['nameCust']; 
         $reqv['phone']     = $lc['numCust'];
         $reqv['invoiced_time'] = $lc['created'];
@@ -1672,12 +1672,12 @@ class sbr_emp extends sbr
     }
 
     /**
-     * Âûïèñûâàåò ñ÷åò äëÿ ðåçåðâèðîâàíèÿ ïî áåçíàëó. Åñëè ñ÷åò íà äàííóþ ñäåëêó óæå ñóùåñòâóåò è åùå íå ïðèíÿò, òî ðåêâèçèòû ïðîñòî îáíîâëÿþòñÿ.
+     * Ð’Ñ‹Ð¿Ð¸ÑÑ‹Ð²Ð°ÐµÑ‚ ÑÑ‡ÐµÑ‚ Ð´Ð»Ñ Ñ€ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¿Ð¾ Ð±ÐµÐ·Ð½Ð°Ð»Ñƒ. Ð•ÑÐ»Ð¸ ÑÑ‡ÐµÑ‚ Ð½Ð° Ð´Ð°Ð½Ð½ÑƒÑŽ ÑÐ´ÐµÐ»ÐºÑƒ ÑƒÐ¶Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚ Ð¸ ÐµÑ‰Ðµ Ð½Ðµ Ð¿Ñ€Ð¸Ð½ÑÑ‚, Ñ‚Ð¾ Ñ€ÐµÐºÐ²Ð¸Ð·Ð¸Ñ‚Ñ‹ Ð¿Ñ€Ð¾ÑÑ‚Ð¾ Ð¾Ð±Ð½Ð¾Ð²Ð»ÑÑŽÑ‚ÑÑ.
      * 
-     * @param integer $form_type   1:þð. ëèöî, 2:ôèç. ëèöî.
-     * @param array $request   äàííûå ñ ðåêâèçèòàìè ñ÷åòà.
-     * @param account $account   èíèöèàëèçèðîâàííûé ýêçåìïëÿð êëàññà account òåêóùåãî ïîëüçîâàòåëÿ.
-     * @return boolean   óñïåøíî?
+     * @param integer $form_type   1:ÑŽÑ€. Ð»Ð¸Ñ†Ð¾, 2:Ñ„Ð¸Ð·. Ð»Ð¸Ñ†Ð¾.
+     * @param array $request   Ð´Ð°Ð½Ð½Ñ‹Ðµ Ñ Ñ€ÐµÐºÐ²Ð¸Ð·Ð¸Ñ‚Ð°Ð¼Ð¸ ÑÑ‡ÐµÑ‚Ð°.
+     * @param account $account   Ð¸Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ ÑÐºÐ·ÐµÐ¼Ð¿Ð»ÑÑ€ ÐºÐ»Ð°ÑÑÐ° account Ñ‚ÐµÐºÑƒÑ‰ÐµÐ³Ð¾ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ.
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     function invoiceBank($form_type, $request, $account) {
         if($form_type==self::FT_JURI) {
@@ -1704,7 +1704,7 @@ class sbr_emp extends sbr
 
             if(!($this->error['reqv'] = $reqv->CheckInput(true))) {
                 $bank = $reqv->GetBank($reqv->bank_code);
-                $reqv->bill_num = $bank['prefix'].'-'.$this->getContractNum(); // îáíîâëÿåì íîìåð, ò.ê. ñõåìà ìîæåò ïîìåíÿòüñÿ.
+                $reqv->bill_num = $bank['prefix'].'-'.$this->getContractNum(); // Ð¾Ð±Ð½Ð¾Ð²Ð»ÑÐµÐ¼ Ð½Ð¾Ð¼ÐµÑ€, Ñ‚.Ðº. ÑÑ…ÐµÐ¼Ð° Ð¼Ð¾Ð¶ÐµÑ‚ Ð¿Ð¾Ð¼ÐµÐ½ÑÑ‚ÑŒÑÑ.
                 $done = false;
                 if(!$reqv->id) {
 
@@ -1712,7 +1712,7 @@ class sbr_emp extends sbr
                     $reqv->op_code = self::OP_RESERVE;
                     $reqv->sbr_id = $this->id;
                     @$reqv->id = $reqv->Add($error, TRUE);
-                    if($error || $reqv->id <= 0) { // êîíôëèêò êëþ÷åé, ïûòàåìñÿ îáíîâèòü (ñ äâóõ áðàóçåðîâ ìîæíî âîñïðîèçâåñòè).
+                    if($error || $reqv->id <= 0) { // ÐºÐ¾Ð½Ñ„Ð»Ð¸ÐºÑ‚ ÐºÐ»ÑŽÑ‡ÐµÐ¹, Ð¿Ñ‹Ñ‚Ð°ÐµÐ¼ÑÑ Ð¾Ð±Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ (Ñ Ð´Ð²ÑƒÑ… Ð±Ñ€Ð°ÑƒÐ·ÐµÑ€Ð¾Ð² Ð¼Ð¾Ð¶Ð½Ð¾ Ð²Ð¾ÑÐ¿Ñ€Ð¾Ð¸Ð·Ð²ÐµÑÑ‚Ð¸).
 
                         $reqv->id = NULL;
                         $this->getInvoiceReqv($form_type);
@@ -1732,11 +1732,11 @@ class sbr_emp extends sbr
         }
         $this->reqv[(int)$form_type] = $reqv;
         if($this->error['reqv']['address']) {
-            $this->error['reqv']['address'] = array ('Íà ýòîò àäðåñ áóäóò âûñëàíû âñå äîêóìåíòû', 'Ïðèìåð: óë. Ñàìîêàòíàÿ, 1, ñòð. 21');
+            $this->error['reqv']['address'] = array ('ÐÐ° ÑÑ‚Ð¾Ñ‚ Ð°Ð´Ñ€ÐµÑ Ð±ÑƒÐ´ÑƒÑ‚ Ð²Ñ‹ÑÐ»Ð°Ð½Ñ‹ Ð²ÑÐµ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ñ‹', 'ÐŸÑ€Ð¸Ð¼ÐµÑ€: ÑƒÐ». Ð¡Ð°Ð¼Ð¾ÐºÐ°Ñ‚Ð½Ð°Ñ, 1, ÑÑ‚Ñ€. 21');
         }
         if(!$this->error['reqv'] && $request['save_finance']) {
-            //@todo: çàïðåùàåì èçìåíÿòü ôèíàíñû â ñòàðîé ÑÁÐ #29196
-            $err = 'Ïðåêðàùåíà ïîääåðæêà ÑÁÐ.';//parent::setUserReqv($this->uid, NULL, $form_type, $request['ft'.$form_type], $this->checkChangeFT());
+            //@todo: Ð·Ð°Ð¿Ñ€ÐµÑ‰Ð°ÐµÐ¼ Ð¸Ð·Ð¼ÐµÐ½ÑÑ‚ÑŒ Ñ„Ð¸Ð½Ð°Ð½ÑÑ‹ Ð² ÑÑ‚Ð°Ñ€Ð¾Ð¹ Ð¡Ð‘Ð  #29196
+            $err = 'ÐŸÑ€ÐµÐºÑ€Ð°Ñ‰ÐµÐ½Ð° Ð¿Ð¾Ð´Ð´ÐµÑ€Ð¶ÐºÐ° Ð¡Ð‘Ð .';//parent::setUserReqv($this->uid, NULL, $form_type, $request['ft'.$form_type], $this->checkChangeFT());
             if($err) {
                 $this->error['reqv'] = $err;
             }
@@ -1746,14 +1746,14 @@ class sbr_emp extends sbr
 
 
     /**
-     * Ïå÷àòàåò ôîðìó äëÿ çàïîëíåíèÿ ðåêâèçèòîâ äëÿ ðåçåðâèðîâàíèÿ ïî áåçíàëó.
+     * ÐŸÐµÑ‡Ð°Ñ‚Ð°ÐµÑ‚ Ñ„Ð¾Ñ€Ð¼Ñƒ Ð´Ð»Ñ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ Ñ€ÐµÐºÐ²Ð¸Ð·Ð¸Ñ‚Ð¾Ð² Ð´Ð»Ñ Ñ€ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¿Ð¾ Ð±ÐµÐ·Ð½Ð°Ð»Ñƒ.
      * 
-     * @param integer $stage_id   èä. ýòàïà, â êîòîðîì íóæíî âûâåñòè ôîðìó.
-     * @param integer $form_type   òåêóùèé òèï ëèöà þçåðà (1:þð. ëèöî, 2:ôèç. ëèöî).
+     * @param integer $stage_id   Ð¸Ð´. ÑÑ‚Ð°Ð¿Ð°, Ð² ÐºÐ¾Ñ‚Ð¾Ñ€Ð¾Ð¼ Ð½ÑƒÐ¶Ð½Ð¾ Ð²Ñ‹Ð²ÐµÑÑ‚Ð¸ Ñ„Ð¾Ñ€Ð¼Ñƒ.
+     * @param integer $form_type   Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ñ‚Ð¸Ð¿ Ð»Ð¸Ñ†Ð° ÑŽÐ·ÐµÑ€Ð° (1:ÑŽÑ€. Ð»Ð¸Ñ†Ð¾, 2:Ñ„Ð¸Ð·. Ð»Ð¸Ñ†Ð¾).
 
-     * @param integer $reqv_mode   îòêóäà ïðåäïî÷òèòåëüíåå âçÿòü ðåêâèèçòû (-1:íåïîíÿòíî îòêóäà áðàòü, 1:èç Ôèíàíñîâ, 2:ñàìûå ïîñëåäíèå).
-     * @param boolean $save_finance   óñòàíîâèòü ãàëêó "Âíåñòè èçìåíåíèÿ â îñíîâíûå ðåêâèçèòû"?
-     * @return string   html-òåêñò ñ ôîðìîé.
+     * @param integer $reqv_mode   Ð¾Ñ‚ÐºÑƒÐ´Ð° Ð¿Ñ€ÐµÐ´Ð¿Ð¾Ñ‡Ñ‚Ð¸Ñ‚ÐµÐ»ÑŒÐ½ÐµÐµ Ð²Ð·ÑÑ‚ÑŒ Ñ€ÐµÐºÐ²Ð¸Ð¸Ð·Ñ‚Ñ‹ (-1:Ð½ÐµÐ¿Ð¾Ð½ÑÑ‚Ð½Ð¾ Ð¾Ñ‚ÐºÑƒÐ´Ð° Ð±Ñ€Ð°Ñ‚ÑŒ, 1:Ð¸Ð· Ð¤Ð¸Ð½Ð°Ð½ÑÐ¾Ð², 2:ÑÐ°Ð¼Ñ‹Ðµ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ð¸Ðµ).
+     * @param boolean $save_finance   ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð¸Ñ‚ÑŒ Ð³Ð°Ð»ÐºÑƒ "Ð’Ð½ÐµÑÑ‚Ð¸ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ñ Ð² Ð¾ÑÐ½Ð¾Ð²Ð½Ñ‹Ðµ Ñ€ÐµÐºÐ²Ð¸Ð·Ð¸Ñ‚Ñ‹"?
+     * @return string   html-Ñ‚ÐµÐºÑÑ‚ Ñ Ñ„Ð¾Ñ€Ð¼Ð¾Ð¹.
      */
     function view_invoice_form($stage_id, $form_type, $reqv_mode=1, $save_finance = false) {
         $sbr = $this;
@@ -1767,16 +1767,16 @@ class sbr_emp extends sbr
 
 
     /**
-     * Ïðîâåðÿåò, ìîæåò ëè â äàííûé ìîìåíò ðàáîòîäàòåëü ñìåíèòü ëèöî (þð/ôèç).
+     * ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÑ‚, Ð¼Ð¾Ð¶ÐµÑ‚ Ð»Ð¸ Ð² Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¼Ð¾Ð¼ÐµÐ½Ñ‚ Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»ÑŒ ÑÐ¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð»Ð¸Ñ†Ð¾ (ÑŽÑ€/Ñ„Ð¸Ð·).
      *
-     * @return integer   0: ìîæåò,
-     *                   1: íå ìîæåò, ïîòîìó ÷òî åñòü íåçàâåðøåííûå çàðåçåðâèðîâàííûå ñäåëêè,
-     *                   2: íå ìîæåò, ïîòîìó ÷òî â îäíîé èç ñîçäàííûõ èì ñäåëîê âûáðàí ßÄ, äîñòóïíûé òîëüêî ôèçèêàì.
+     * @return integer   0: Ð¼Ð¾Ð¶ÐµÑ‚,
+     *                   1: Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚, Ð¿Ð¾Ñ‚Ð¾Ð¼Ñƒ Ñ‡Ñ‚Ð¾ ÐµÑÑ‚ÑŒ Ð½ÐµÐ·Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ‹Ðµ Ð·Ð°Ñ€ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ðµ ÑÐ´ÐµÐ»ÐºÐ¸,
+     *                   2: Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚, Ð¿Ð¾Ñ‚Ð¾Ð¼Ñƒ Ñ‡Ñ‚Ð¾ Ð² Ð¾Ð´Ð½Ð¾Ð¹ Ð¸Ð· ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð¸Ð¼ ÑÐ´ÐµÐ»Ð¾Ðº Ð²Ñ‹Ð±Ñ€Ð°Ð½ Ð¯Ð”, Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ñ‹Ð¹ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ„Ð¸Ð·Ð¸ÐºÐ°Ð¼.
      */
     function checkChangeFT() {
         if(($sbr_info = sbr_meta::getUserInfo($this->uid)) && $sbr_info['all_cnt']) {
             if($this->getProcessings())
-                return 1;                              // !!! ïðîâåðêè ìåñòàìè ïîìåíÿòü, ðåçåðâû â öèêëå ïîñìîòðåòü.
+                return 1;                              // !!! Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÐ¸ Ð¼ÐµÑÑ‚Ð°Ð¼Ð¸ Ð¿Ð¾Ð¼ÐµÐ½ÑÑ‚ÑŒ, Ñ€ÐµÐ·ÐµÑ€Ð²Ñ‹ Ð² Ñ†Ð¸ÐºÐ»Ðµ Ð¿Ð¾ÑÐ¼Ð¾Ñ‚Ñ€ÐµÑ‚ÑŒ.
             if($sbr_actives = $this->getActives()) {
                 foreach($sbr_actives as $s) {
                     if($s->cost_sys == exrates::YM || $s->cost_sys == exrates::WMR)
@@ -1789,9 +1789,9 @@ class sbr_emp extends sbr
     
     
     /**
-     * Âîçâðàùàåò uid ïîëüçîâàòåëåé ñ êîòîðûìè áûëè ñäåëêè ó òåêóùåãî ($this->uid) ïîëüçîâàòåëÿ
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ uid Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÐµÐ¹ Ñ ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¼Ð¸ Ð±Ñ‹Ð»Ð¸ ÑÐ´ÐµÐ»ÐºÐ¸ Ñƒ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ³Ð¾ ($this->uid) Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
      * 
-     * @return array  ìàññèâ ñ uid ïàðòåðîâ
+     * @return array  Ð¼Ð°ÑÑÐ¸Ð² Ñ uid Ð¿Ð°Ñ€Ñ‚ÐµÑ€Ð¾Ð²
      */
     function getPartersId() {
         global $DB;
@@ -1809,9 +1809,9 @@ class sbr_emp extends sbr
     }
     
     /**
-     * Âîçâðàùàåò êîòàêòû ñáð äëÿ áûñòðî÷àòà
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ ÐºÐ¾Ñ‚Ð°ÐºÑ‚Ñ‹ ÑÐ±Ñ€ Ð´Ð»Ñ Ð±Ñ‹ÑÑ‚Ñ€Ð¾Ñ‡Ð°Ñ‚Ð°
      * 
-     * @return array    ìàññèâ ñ ðåçóëüòàòàìè (ïîëÿ òàáëèöû users)
+     * @return array    Ð¼Ð°ÑÑÐ¸Ð² Ñ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð°Ð¼Ð¸ (Ð¿Ð¾Ð»Ñ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ‹ users)
      */
     function getContacts() {
         global $DB;
@@ -1844,7 +1844,7 @@ class sbr_emp extends sbr
     }
     
     /**
-     * ÑÁÐ â ïðîöåññå ðåçåðâèðîâàíèÿ
+     * Ð¡Ð‘Ð  Ð² Ð¿Ñ€Ð¾Ñ†ÐµÑÑÐµ Ñ€ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ
      * 
      * @return boolean
      */
@@ -1853,10 +1853,10 @@ class sbr_emp extends sbr
     }
     
     /**
-     * ñîõðàíÿåò äàííûå î ïðîôåññèÿõ ÑÁÐ â òàáëèöó sbr_to_spec
-     * íî ñíà÷àëà óäàëÿþòñÿ âñå çàïèñè äëÿ ýòîé ñäåëêè
-     * ãðóïïà áåðåòñÿ èç $this->data['professions'][x]['category_id']
-     * ïðîôåññèÿ áåðåòñÿ èç $this->data['professions'][x]['subcategory_id']
+     * ÑÐ¾Ñ…Ñ€Ð°Ð½ÑÐµÑ‚ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð¾ Ð¿Ñ€Ð¾Ñ„ÐµÑÑÐ¸ÑÑ… Ð¡Ð‘Ð  Ð² Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñƒ sbr_to_spec
+     * Ð½Ð¾ ÑÐ½Ð°Ñ‡Ð°Ð»Ð° ÑƒÐ´Ð°Ð»ÑÑŽÑ‚ÑÑ Ð²ÑÐµ Ð·Ð°Ð¿Ð¸ÑÐ¸ Ð´Ð»Ñ ÑÑ‚Ð¾Ð¹ ÑÐ´ÐµÐ»ÐºÐ¸
+     * Ð³Ñ€ÑƒÐ¿Ð¿Ð° Ð±ÐµÑ€ÐµÑ‚ÑÑ Ð¸Ð· $this->data['professions'][x]['category_id']
+     * Ð¿Ñ€Ð¾Ñ„ÐµÑÑÐ¸Ñ Ð±ÐµÑ€ÐµÑ‚ÑÑ Ð¸Ð· $this->data['professions'][x]['subcategory_id']
      * @global type $DB
      */
     function saveProfessions(){
@@ -1876,7 +1876,7 @@ class sbr_emp extends sbr
     }
     
     /**
-     * äîñòàåò ïðîôåññèè èç sbr_to_spec è ïîìåùàåò èõ â $this->data['professions']
+     * Ð´Ð¾ÑÑ‚Ð°ÐµÑ‚ Ð¿Ñ€Ð¾Ñ„ÐµÑÑÐ¸Ð¸ Ð¸Ð· sbr_to_spec Ð¸ Ð¿Ð¾Ð¼ÐµÑ‰Ð°ÐµÑ‚ Ð¸Ñ… Ð² $this->data['professions']
      */
     function retrieveProfession () {
         require_once $_SERVER['DOCUMENT_ROOT'].'/classes/professions.php';

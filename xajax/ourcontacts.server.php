@@ -4,9 +4,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/ourcontacts.common.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/contacts.php");
 
 /**
-* Получить информацию о контакте
+* РџРѕР»СѓС‡РёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РєРѕРЅС‚Р°РєС‚Рµ
 *
-* @param    integer $id     идентификатор контакта
+* @param    integer $id     РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РєРѕРЅС‚Р°РєС‚Р°
 */
 function GetContactInfo($id) {
 	session_start();
@@ -59,9 +59,9 @@ function GetContactInfo($id) {
 }
 
 /**
-* Добавление контакта
+* Р”РѕР±Р°РІР»РµРЅРёРµ РєРѕРЅС‚Р°РєС‚Р°
 *
-* @param    array   $frm    Данные контакта
+* @param    array   $frm    Р”Р°РЅРЅС‹Рµ РєРѕРЅС‚Р°РєС‚Р°
 */
 function AddContact($frm) {
 	session_start();
@@ -76,17 +76,17 @@ function AddContact($frm) {
 
         if($name=='' || strlen($name)>250) {
             $error = 1;
-            $objResponse->script("alert('Имя не может быть пустым и должно быть менее 250 символов');");
+            $objResponse->script("alert('РРјСЏ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј Рё РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РјРµРЅРµРµ 250 СЃРёРјРІРѕР»РѕРІ');");
         }
 
         if($surname=='' || strlen($surname)>250) {
             $error = 1;
-            $objResponse->script("alert('Фамилия не может быть пустым и должно быть менее 250 символов');");
+            $objResponse->script("alert('Р¤Р°РјРёР»РёСЏ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј Рё РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РјРµРЅРµРµ 250 СЃРёРјРІРѕР»РѕРІ');");
         }
 
         if($group<1) {
             $error = 1;
-            $objResponse->script("alert('Вы не выбрали группу');");
+            $objResponse->script("alert('Р’С‹ РЅРµ РІС‹Р±СЂР°Р»Рё РіСЂСѓРїРїСѓ');");
         }
 
 
@@ -100,12 +100,12 @@ function AddContact($frm) {
         reset($emails);
         if(!$emails) {
             $error = 1;
-            $objResponse->script("alert('Email не может быть пустым');");
+            $objResponse->script("alert('Email РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј');");
         }
         foreach($emails as $email) {
             if(!is_email($email)) {
                 $error = 1;
-                $objResponse->script("alert('Неправильно введен email');");
+                $objResponse->script("alert('РќРµРїСЂР°РІРёР»СЊРЅРѕ РІРІРµРґРµРЅ email');");
             }
         }    
 
@@ -153,16 +153,16 @@ function AddContact($frm) {
             $contact['icqs'] = $icqs;
             $contact['others'] = $others;
             contacts::addContact($contact);
-            $objResponse->script("alert('Контакт успешно добавлен'); window.location='/siteadmin/contacts';");
+            $objResponse->script("alert('РљРѕРЅС‚Р°РєС‚ СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅ'); window.location='/siteadmin/contacts';");
         }
     }
 	return $objResponse;
 }
 
 /**
-* Редактирование контакта
+* Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РєРѕРЅС‚Р°РєС‚Р°
 *
-* @param    array   $frm    Данные контакта
+* @param    array   $frm    Р”Р°РЅРЅС‹Рµ РєРѕРЅС‚Р°РєС‚Р°
 */
 function EditContact($frm) {
 	session_start();
@@ -177,17 +177,17 @@ function EditContact($frm) {
 
         if($name=='' || strlen($name)>250) {
             $error = 1;
-            $objResponse->script("alert('Имя не может быть пустым и должно быть менее 250 символов');");
+            $objResponse->script("alert('РРјСЏ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј Рё РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РјРµРЅРµРµ 250 СЃРёРјРІРѕР»РѕРІ');");
         }
 
         if($surname=='' || strlen($surname)>250) {
             $error = 1;
-            $objResponse->script("alert('Фамилия не может быть пустым и должно быть менее 250 символов');");
+            $objResponse->script("alert('Р¤Р°РјРёР»РёСЏ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј Рё РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РјРµРЅРµРµ 250 СЃРёРјРІРѕР»РѕРІ');");
         }
 
         if($group<1) {
             $error = 1;
-            $objResponse->script("alert('Вы не выбралю группу');");
+            $objResponse->script("alert('Р’С‹ РЅРµ РІС‹Р±СЂР°Р»СЋ РіСЂСѓРїРїСѓ');");
         }
 
 
@@ -201,12 +201,12 @@ function EditContact($frm) {
         reset($emails);
         if(!$emails) {
             $error = 1;
-            $objResponse->script("alert('Email не может быть пустым');");
+            $objResponse->script("alert('Email РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј');");
         }
         foreach($emails as $email) {
             if(!is_email($email)) {
                 $error = 1;
-                $objResponse->script("alert('Неправильно введен email');");
+                $objResponse->script("alert('РќРµРїСЂР°РІРёР»СЊРЅРѕ РІРІРµРґРµРЅ email');");
             }
         }    
 
@@ -255,31 +255,31 @@ function EditContact($frm) {
             $contact['icqs'] = $icqs;
             $contact['others'] = $others;
             contacts::editContact($contact);
-            $objResponse->script("alert('Контакт успешно сохранен'); window.location='/siteadmin/contacts';");
+            $objResponse->script("alert('РљРѕРЅС‚Р°РєС‚ СѓСЃРїРµС€РЅРѕ СЃРѕС…СЂР°РЅРµРЅ'); window.location='/siteadmin/contacts';");
         }
     }
 	return $objResponse;
 }
 
 /**
-* Удаление контакта
+* РЈРґР°Р»РµРЅРёРµ РєРѕРЅС‚Р°РєС‚Р°
 *
-* @param    integer $contact_id идентификатор контакта
+* @param    integer $contact_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РєРѕРЅС‚Р°РєС‚Р°
 */
 function DeleteContact($contact_id) {
 	session_start();
 	$objResponse = new xajaxResponse();
     if(hasPermissions('ourcontacts')) {
         contacts::deleteContact($contact_id);
-        $objResponse->script("alert('Контакт успешно удален'); window.location = '/siteadmin/contacts';");
+        $objResponse->script("alert('РљРѕРЅС‚Р°РєС‚ СѓСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅ'); window.location = '/siteadmin/contacts';");
     }
     return $objResponse;
 }
 
 /**
-* Удаление контактов
+* РЈРґР°Р»РµРЅРёРµ РєРѕРЅС‚Р°РєС‚РѕРІ
 *
-* @param    integer $contacts_id идентификаторы контактов для удаления
+* @param    integer $contacts_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РєРѕРЅС‚Р°РєС‚РѕРІ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ
 */
 function DeleteContacts($contacts_id) {
 	session_start();
@@ -294,15 +294,15 @@ function DeleteContacts($contacts_id) {
         foreach($contacts_id as $k=>$v) {
             contacts::deleteContact($v);
         }
-        $objResponse->script("alert('Контакты успешно удалены'); window.location = '/siteadmin/contacts';");
+        $objResponse->script("alert('РљРѕРЅС‚Р°РєС‚С‹ СѓСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅС‹'); window.location = '/siteadmin/contacts';");
     }
     return $objResponse;
 }
 
 /**
-* Добавление контактов в рассылку
+* Р”РѕР±Р°РІР»РµРЅРёРµ РєРѕРЅС‚Р°РєС‚РѕРІ РІ СЂР°СЃСЃС‹Р»РєСѓ
 *
-* @param    integer $contacts_id идентификаторы контактов
+* @param    integer $contacts_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РєРѕРЅС‚Р°РєС‚РѕРІ
 */
 function AddContactsForMail($contacts_id) {
 	session_start();
@@ -334,15 +334,15 @@ function AddContactsForMail($contacts_id) {
         $str_ids = preg_replace("/,$/", "", $str_ids);
         $objResponse->assign('frm_fld_count_contacts', 'innerHTML', count($_SESSION['mailer_contacts']));
         $objResponse->assign('fld_mailer_contacts_id', 'value', $str_ids);
-        $objResponse->script("alert('Контакты успешно добавлены в рассылку');");
+        $objResponse->script("alert('РљРѕРЅС‚Р°РєС‚С‹ СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅС‹ РІ СЂР°СЃСЃС‹Р»РєСѓ');");
     }
     return $objResponse;
 }
 
 /**
-* Сохранение контактов для рассылки
+* РЎРѕС…СЂР°РЅРµРЅРёРµ РєРѕРЅС‚Р°РєС‚РѕРІ РґР»СЏ СЂР°СЃСЃС‹Р»РєРё
 *
-* @param    array $data идентификаторы контактов и групп
+* @param    array $data РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РєРѕРЅС‚Р°РєС‚РѕРІ Рё РіСЂСѓРїРї
 */
 function SaveContactsMailer($data) {
 	session_start();
@@ -377,9 +377,9 @@ function SaveContactsMailer($data) {
 }
 
 /**
-* Добавление контактов в рассылку по группе
+* Р”РѕР±Р°РІР»РµРЅРёРµ РєРѕРЅС‚Р°РєС‚РѕРІ РІ СЂР°СЃСЃС‹Р»РєСѓ РїРѕ РіСЂСѓРїРїРµ
 *
-* @param    integer $groups_id идентификаторы групп
+* @param    integer $groups_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РіСЂСѓРїРї
 */
 function AddContactsByGroupsForMail($groups_id) {
 	session_start();
@@ -439,13 +439,13 @@ function AddContactsByGroupsForMail($groups_id) {
         $str_ids = preg_replace("/,$/", "", $str_ids);
         $objResponse->assign('frm_fld_count_contacts', 'innerHTML', count($_SESSION['mailer_contacts']));
         $objResponse->assign('fld_mailer_contacts_id', 'value', $str_ids);
-        $objResponse->script("alert('Контакты из выбранных групп успешно добавлены в рассылку');");
+        $objResponse->script("alert('РљРѕРЅС‚Р°РєС‚С‹ РёР· РІС‹Р±СЂР°РЅРЅС‹С… РіСЂСѓРїРї СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅС‹ РІ СЂР°СЃСЃС‹Р»РєСѓ');");
     }
     return $objResponse;
 }
 
 /**
-* Получить список групп
+* РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РіСЂСѓРїРї
 */
 function GetGroups() {
 	session_start();
@@ -458,12 +458,12 @@ function GetGroups() {
             foreach($groups as $group) {
                 $contacts = contacts::getContacts($group['id']);
                 $html .= "<li>\n";
-                $html .= '<span class="mc-g-del"><input type="button" value="Удалить" class="i-btn" onClick="xajax_DeleteGroup('.$group['id'].');" />&nbsp; <a href="javascript:void(0);" onclick="$(this).getParent(\'li\').removeClass(\'li-d\');" class="lnk-dot-666">Отменить</a>&nbsp; </span>'."\n";
-                $html .= "<span class='mc-g-o'>".count($contacts)."&nbsp;&nbsp; <a href='' onClick=\"xajax_GetGroupTitle({$group['id']}); $(this).getParent('li').addClass('li-e'); return false;\"><img src='/images/ico-e-u.png' alt='Редактировать'></a>&nbsp;&nbsp; <a href='' onclick=\"".(!count($contacts)?"\$(this).getParent('li').addClass('li-d');":"")." return false;\"><img src='/images/btn-remove2.png' alt='Удалить'></a>&nbsp;&nbsp;</span>\n";
+                $html .= '<span class="mc-g-del"><input type="button" value="РЈРґР°Р»РёС‚СЊ" class="i-btn" onClick="xajax_DeleteGroup('.$group['id'].');" />&nbsp; <a href="javascript:void(0);" onclick="$(this).getParent(\'li\').removeClass(\'li-d\');" class="lnk-dot-666">РћС‚РјРµРЅРёС‚СЊ</a>&nbsp; </span>'."\n";
+                $html .= "<span class='mc-g-o'>".count($contacts)."&nbsp;&nbsp; <a href='' onClick=\"xajax_GetGroupTitle({$group['id']}); $(this).getParent('li').addClass('li-e'); return false;\"><img src='/images/ico-e-u.png' alt='Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ'></a>&nbsp;&nbsp; <a href='' onclick=\"".(!count($contacts)?"\$(this).getParent('li').addClass('li-d');":"")." return false;\"><img src='/images/btn-remove2.png' alt='РЈРґР°Р»РёС‚СЊ'></a>&nbsp;&nbsp;</span>\n";
                 $html .= "<span class='i-chk'><input type='checkbox' id='all_groups_{$group['id']}' name='all_groups[]' value='{$group['id']}' class='groups_id'></span>\n";
                 $html .= "<span class='num'>{$n}.</span>\n";
                 $html .= "<label for=''>{$group['title']}</label>\n";
-                $html .= '<span class="edit"><input type="text" class="i-txt" value="" id="tab_edit_group_'.$group['id'].'"/> <input type="button" value="Сохранить" class="i-btn" onClick="ContactsUpdateGroup('.$group['id'].'); $(this).getParent(\'li\').removeClass(\'li-e\');" />&nbsp; <a href="javascript:void(0);" onclick="$(this).getParent(\'li\').removeClass(\'li-e\');" class="lnk-dot-666">Отменить</a></span>'."\n";
+                $html .= '<span class="edit"><input type="text" class="i-txt" value="" id="tab_edit_group_'.$group['id'].'"/> <input type="button" value="РЎРѕС…СЂР°РЅРёС‚СЊ" class="i-btn" onClick="ContactsUpdateGroup('.$group['id'].'); $(this).getParent(\'li\').removeClass(\'li-e\');" />&nbsp; <a href="javascript:void(0);" onclick="$(this).getParent(\'li\').removeClass(\'li-e\');" class="lnk-dot-666">РћС‚РјРµРЅРёС‚СЊ</a></span>'."\n";
                 $html .= "</li>\n";
                 $n++;
             }
@@ -475,7 +475,7 @@ function GetGroups() {
 }
 
 /**
-* Получить список групп для диалога рассылки
+* РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РіСЂСѓРїРї РґР»СЏ РґРёР°Р»РѕРіР° СЂР°СЃСЃС‹Р»РєРё
 */
 function GetGroupsForMailerDialog() {
 	session_start();
@@ -499,10 +499,10 @@ function GetGroupsForMailerDialog() {
 }
 
 /**
-* Ставит/убирает выделение контактов для рассылки
+* РЎС‚Р°РІРёС‚/СѓР±РёСЂР°РµС‚ РІС‹РґРµР»РµРЅРёРµ РєРѕРЅС‚Р°РєС‚РѕРІ РґР»СЏ СЂР°СЃСЃС‹Р»РєРё
 *
-* @param    integer $group_id   илентификатор группы
-* @param    string  $action     действие check/uncheck
+* @param    integer $group_id   РёР»РµРЅС‚РёС„РёРєР°С‚РѕСЂ РіСЂСѓРїРїС‹
+* @param    string  $action     РґРµР№СЃС‚РІРёРµ check/uncheck
 */
 function MailerToggleContacts($group_id, $action) {
 	session_start();
@@ -528,10 +528,10 @@ function MailerToggleContacts($group_id, $action) {
 }
 
 /**
-* Получить список групп в виде SELECT
+* РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РіСЂСѓРїРї РІ РІРёРґРµ SELECT
 *
-* @param    integer $selected_group_id  ID выбранной группы
-* @param    string  $element_id         ID <SELECT> для которого надо получить группы
+* @param    integer $selected_group_id  ID РІС‹Р±СЂР°РЅРЅРѕР№ РіСЂСѓРїРїС‹
+* @param    string  $element_id         ID <SELECT> РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ РЅР°РґРѕ РїРѕР»СѓС‡РёС‚СЊ РіСЂСѓРїРїС‹
 */
 function GetGroupsForSelect($selected_group_id=0, $element_id) {
 	session_start();
@@ -558,9 +558,9 @@ function GetGroupsForSelect($selected_group_id=0, $element_id) {
 }
 
 /**
-* Удаление группы
+* РЈРґР°Р»РµРЅРёРµ РіСЂСѓРїРїС‹
 *
-* @param    integer идентификатор группы
+* @param    integer РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РіСЂСѓРїРїС‹
 */
 function DeleteGroup($group_id) {
     session_start();
@@ -568,15 +568,15 @@ function DeleteGroup($group_id) {
     if(hasPermissions('ourcontacts')) {
         contacts::deleteGroup($group_id);
         $objResponse->script("xajax_GetGroups();");
-        $objResponse->script("alert('Группа успешно удалена');");
+        $objResponse->script("alert('Р“СЂСѓРїРїР° СѓСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅР°');");
     }
     return $objResponse;
 }
 
 /**
-* Добавление новой группы
+* Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕР№ РіСЂСѓРїРїС‹
 *
-* @param    string  $title  название группы
+* @param    string  $title  РЅР°Р·РІР°РЅРёРµ РіСЂСѓРїРїС‹
 */
 function AddGroup($title) {
     session_start();
@@ -584,21 +584,21 @@ function AddGroup($title) {
     if(hasPermissions('ourcontacts')) {
         $title = trim(strip_tags(stripslashes($title)));
         if($title=='' || strlen($title)>50) {
-            $objResponse->script("alert('Название группы не может быть пустым и должно быть менее 50 символов');");
+            $objResponse->script("alert('РќР°Р·РІР°РЅРёРµ РіСЂСѓРїРїС‹ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј Рё РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РјРµРЅРµРµ 50 СЃРёРјРІРѕР»РѕРІ');");
         } else {
             contacts::addGroup($title);
             $objResponse->script("xajax_GetGroups();");
             $objResponse->assign("tab_groups_new_group_name", "value", "");
-            $objResponse->script("alert('Группа успешно добавлена');");
+            $objResponse->script("alert('Р“СЂСѓРїРїР° СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅР°');");
         }
     }
     return $objResponse;
 }
 
 /**
-* Получить название группы
+* РџРѕР»СѓС‡РёС‚СЊ РЅР°Р·РІР°РЅРёРµ РіСЂСѓРїРїС‹
 *
-* @param    integer $group_id   идентификатор группы
+* @param    integer $group_id   РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РіСЂСѓРїРїС‹
 */
 function GetGroupTitle($group_id) {
     session_start();
@@ -611,10 +611,10 @@ function GetGroupTitle($group_id) {
 }
 
 /**
-* Изменение группы
+* РР·РјРµРЅРµРЅРёРµ РіСЂСѓРїРїС‹
 *
-* @param    integer $id     идентификатор группы
-* @param    string  $title  название группы
+* @param    integer $id     РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РіСЂСѓРїРїС‹
+* @param    string  $title  РЅР°Р·РІР°РЅРёРµ РіСЂСѓРїРїС‹
 */
 function UpdateGroup($id, $title) {
     session_start();
@@ -622,11 +622,11 @@ function UpdateGroup($id, $title) {
     if(hasPermissions('ourcontacts')) {
         $title = trim(strip_tags(stripslashes($title)));
         if($title=='' || strlen($title)>50) {
-            $objResponse->script("alert('Название группы не может быть пустым и должно быть менее 50 символов');");
+            $objResponse->script("alert('РќР°Р·РІР°РЅРёРµ РіСЂСѓРїРїС‹ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј Рё РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РјРµРЅРµРµ 50 СЃРёРјРІРѕР»РѕРІ');");
         } else {
             contacts::updateGroup($id,$title);
             $objResponse->script("xajax_GetGroups();");
-            $objResponse->script("alert('Группа успешно сохранена');");
+            $objResponse->script("alert('Р“СЂСѓРїРїР° СѓСЃРїРµС€РЅРѕ СЃРѕС…СЂР°РЅРµРЅР°');");
         }
     }
     return $objResponse;

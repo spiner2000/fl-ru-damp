@@ -21,7 +21,7 @@ if(!defined('IN_STDF'))
         <a class="b-txt__lnk" href="/payed-emp/" title="PRO"><span class="b-icon b-icon__pro b-icon__pro_e b-icon_top_3"></span></a>
         <?php } ?>
         <?php if($feedback['is_verify'] == 't'){ ?>
-        <a class="b-txt__lnk" href="/promo/verification/" title="Паспортные данные подтверждены"><span class="b-icon b-icon__ver b-icon_top_2"></span></a>
+        <a class="b-txt__lnk" href="/promo/verification/" title="РџР°СЃРїРѕСЂС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ РїРѕРґС‚РІРµСЂР¶РґРµРЅС‹"><span class="b-icon b-icon__ver b-icon_top_2"></span></a>
         <?php } ?>
         
         <?php if($feedback['country']){ ?>

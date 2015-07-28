@@ -7,20 +7,20 @@ $count = banner_ef::getCountStat();
 $stats = banner_ef::getStat();
 ?>
 
-<strong>Статистика баннера EF</strong>
+<strong>РЎС‚Р°С‚РёСЃС‚РёРєР° Р±Р°РЅРЅРµСЂР° EF</strong>
 
 <br><br><br>
-<strong>Всего показов:</strong> <?=intval($count['views'])?>
+<strong>Р’СЃРµРіРѕ РїРѕРєР°Р·РѕРІ:</strong> <?=intval($count['views'])?>
 <br/>
-<strong>Всего кликов:</strong> <?=intval($count['clicks'])?>
+<strong>Р’СЃРµРіРѕ РєР»РёРєРѕРІ:</strong> <?=intval($count['clicks'])?>
 
 <? if($stats) { ?>
     <br><br>
     <table border="1">
         <tr>
-            <td width="100">&nbsp;<strong>Дата</strong></td>
-            <td width="50">&nbsp;<strong>Показы</strong></td>
-            <td width="50">&nbsp;<strong>Клики</strong></td>
+            <td width="100">&nbsp;<strong>Р”Р°С‚Р°</strong></td>
+            <td width="50">&nbsp;<strong>РџРѕРєР°Р·С‹</strong></td>
+            <td width="50">&nbsp;<strong>РљР»РёРєРё</strong></td>
         </tr>
         <? foreach($stats as $stat ) { ?>
             <tr>

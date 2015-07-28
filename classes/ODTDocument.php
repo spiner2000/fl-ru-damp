@@ -1,19 +1,19 @@
 <?php
 
 /**
- * Êëàññ äëÿ ğàáîòû ñ äîêóìåíòàìè ODT
+ * ĞšĞ»Ğ°ÑÑ Ğ´Ğ»Ñ Ñ€Ğ°Ğ±Ğ¾Ñ‚Ñ‹ Ñ Ğ´Ğ¾ĞºÑƒĞ¼ĞµĞ½Ñ‚Ğ°Ğ¼Ğ¸ ODT
  */
 class ODTDocument extends odt2pdf 
 {
     /**
-     * Àäàïòåğ äëÿ ğàáîòû ñ äàííûìè øàáëîíà
+     * ĞĞ´Ğ°Ğ¿Ñ‚ĞµÑ€ Ğ´Ğ»Ñ Ñ€Ğ°Ğ±Ğ¾Ñ‚Ñ‹ Ñ Ğ´Ğ°Ğ½Ğ½Ñ‹Ğ¼Ğ¸ ÑˆĞ°Ğ±Ğ»Ğ¾Ğ½Ğ°
      * 
      * @var type 
      */
     protected $_adapter;
     
     /**
-     * Óñòàíàâëèâàåì àäàïòåğ
+     * Ğ£ÑÑ‚Ğ°Ğ½Ğ°Ğ²Ğ»Ğ¸Ğ²Ğ°ĞµĞ¼ Ğ°Ğ´Ğ°Ğ¿Ñ‚ĞµÑ€
      * 
      * @param ODTDocumentAdapter $adapter
      */
@@ -22,7 +22,7 @@ class ODTDocument extends odt2pdf
     }
     
     /**
-     * Âîçâğàùàåò àäàïòåğ
+     * Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ĞµÑ‚ Ğ°Ğ´Ğ°Ğ¿Ñ‚ĞµÑ€
      * 
      * @return ODTDocumentAdapter
      */
@@ -31,7 +31,7 @@ class ODTDocument extends odt2pdf
     }
     
     /**
-     * Âîçâğàùàåò äàííûå äîêóìåíòà
+     * Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ĞµÑ‚ Ğ´Ğ°Ğ½Ğ½Ñ‹Ğµ Ğ´Ğ¾ĞºÑƒĞ¼ĞµĞ½Ñ‚Ğ°
      * 
      * @return type
      */
@@ -41,9 +41,9 @@ class ODTDocument extends odt2pdf
     }
     
     /**
-     * Ãåíåğèğóåì íîâûé äîêóìåíò
+     * Ğ“ĞµĞ½ĞµÑ€Ğ¸Ñ€ÑƒĞµĞ¼ Ğ½Ğ¾Ğ²Ñ‹Ğ¹ Ğ´Ğ¾ĞºÑƒĞ¼ĞµĞ½Ñ‚
      * 
-     * @param boolean $save    Ñîõàğíèòü äîêóìåíò íà ñàéòå èëè íåò
+     * @param boolean $save    Ğ¡Ğ¾Ñ…Ğ°Ñ€Ğ½Ğ¸Ñ‚ÑŒ Ğ´Ğ¾ĞºÑƒĞ¼ĞµĞ½Ñ‚ Ğ½Ğ° ÑĞ°Ğ¹Ñ‚Ğµ Ğ¸Ğ»Ğ¸ Ğ½ĞµÑ‚
      * @return boolean
      */
     public function generateDocument($save = false) {
@@ -64,7 +64,7 @@ class ODTDocument extends odt2pdf
     }
     
     /**
-     * Ñîõğàíÿåì äîêóìåíò íà ñàéòå 
+     * Ğ¡Ğ¾Ñ…Ñ€Ğ°Ğ½ÑĞµĞ¼ Ğ´Ğ¾ĞºÑƒĞ¼ĞµĞ½Ñ‚ Ğ½Ğ° ÑĞ°Ğ¹Ñ‚Ğµ 
      * 
      * @return \CFile
      */
@@ -83,7 +83,7 @@ class ODTDocument extends odt2pdf
 }
 
 /**
- * Èíòåğôåéñå àäàïòåğà äîêóìåíòîâ
+ * Ğ˜Ğ½Ñ‚ĞµÑ€Ñ„ĞµĞ¹ÑĞµ Ğ°Ğ´Ğ°Ğ¿Ñ‚ĞµÑ€Ğ° Ğ´Ğ¾ĞºÑƒĞ¼ĞµĞ½Ñ‚Ğ¾Ğ²
  */
 interface ODTDocumentAdapter 
 {
@@ -91,7 +91,7 @@ interface ODTDocumentAdapter
 }
 
 /**
- * Êëàññ äëÿ ãåíåğàöèè ôàéëîâ ÈÒÎ
+ * ĞšĞ»Ğ°ÑÑ Ğ´Ğ»Ñ Ğ³ĞµĞ½ĞµÑ€Ğ°Ñ†Ğ¸Ğ¸ Ñ„Ğ°Ğ¹Ğ»Ğ¾Ğ² Ğ˜Ğ¢Ğ
  */
 class ODTDocument_ITO implements ODTDocumentAdapter
 {
@@ -99,7 +99,7 @@ class ODTDocument_ITO implements ODTDocumentAdapter
     public $xpath;
     
     /**
-     * Çàäàåì ïåğèîä ïîèñêà äàííûõ äëÿ ãåíåğàöèè äîêóìåíòà
+     * Ğ—Ğ°Ğ´Ğ°ĞµĞ¼ Ğ¿ĞµÑ€Ğ¸Ğ¾Ğ´ Ğ¿Ğ¾Ğ¸ÑĞºĞ° Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ… Ğ´Ğ»Ñ Ğ³ĞµĞ½ĞµÑ€Ğ°Ñ†Ğ¸Ğ¸ Ğ´Ğ¾ĞºÑƒĞ¼ĞµĞ½Ñ‚Ğ°
      * 
      * @param array $period (01-01-2012,30-01-2012)
      */
@@ -108,7 +108,7 @@ class ODTDocument_ITO implements ODTDocumentAdapter
     }
     
     /**
-     * Êîäèğóåì òåêñò â UTF8
+     * ĞšĞ¾Ğ´Ğ¸Ñ€ÑƒĞµĞ¼ Ñ‚ĞµĞºÑÑ‚ Ğ² UTF8
      * 
      * @param string $val
      * @return type
@@ -118,9 +118,9 @@ class ODTDocument_ITO implements ODTDocumentAdapter
     }
     
     /**
-     * Ïàğñèì äàííûå äîêóìåíòà è èçìåíÿåì èõ åñëè íóæíî
+     * ĞŸĞ°Ñ€ÑĞ¸Ğ¼ Ğ´Ğ°Ğ½Ğ½Ñ‹Ğµ Ğ´Ğ¾ĞºÑƒĞ¼ĞµĞ½Ñ‚Ğ° Ğ¸ Ğ¸Ğ·Ğ¼ĞµĞ½ÑĞµĞ¼ Ğ¸Ñ… ĞµÑĞ»Ğ¸ Ğ½ÑƒĞ¶Ğ½Ğ¾
      * 
-     * @param string $content   Äàííûå äîêóìåíòà (îáû÷íî ıòî content.xml èç øàáëîíà äîêóìåíòà ODT)
+     * @param string $content   Ğ”Ğ°Ğ½Ğ½Ñ‹Ğµ Ğ´Ğ¾ĞºÑƒĞ¼ĞµĞ½Ñ‚Ğ° (Ğ¾Ğ±Ñ‹Ñ‡Ğ½Ğ¾ ÑÑ‚Ğ¾ content.xml Ğ¸Ğ· ÑˆĞ°Ğ±Ğ»Ğ¾Ğ½Ğ° Ğ´Ğ¾ĞºÑƒĞ¼ĞµĞ½Ñ‚Ğ° ODT)
      * 
      * @return type
      */
@@ -137,7 +137,7 @@ class ODTDocument_ITO implements ODTDocumentAdapter
             $from_date = date('d.m.Y', strtotime($this->period[0]));
             $to_date   = date('d.m.Y', strtotime($this->period[1]));
             
-            $new_period = $this->dom->createElement('text:p', iconv("windows-1251", "utf-8", "çà ïåğèîä ñ {$from_date} ïî {$to_date}") );
+            $new_period = $this->dom->createElement('text:p', iconv("windows-1251", "utf-8", "Ğ·Ğ° Ğ¿ĞµÑ€Ğ¸Ğ¾Ğ´ Ñ {$from_date} Ğ¿Ğ¾ {$to_date}") );
             $new_period->setAttribute('text:style-name', 'period');
             $period->parentNode->replaceChild($new_period, $period);
         }
@@ -153,15 +153,15 @@ class ODTDocument_ITO implements ODTDocumentAdapter
                 $table_row = $this->dom->createElement('table:table-row');
 
                 $name_emp = $this->_enc($data['nameCust']);
-                $sbr_id   = $this->_enc("¹ {$data['sbr_id']}, ".date('d.m.Y H:i', strtotime($data['covered'])));
-                $lc_id    = $this->_enc("¹ {$data['lc_id']}");
+                $sbr_id   = $this->_enc("â„– {$data['sbr_id']}, ".date('d.m.Y H:i', strtotime($data['covered'])));
+                $lc_id    = $this->_enc("â„– {$data['lc_id']}");
                 $cost     = $this->_enc(number_format($data['cost'], 2, ',', ' '));
 
-                $table_row->appendChild($this->createTableCell($i)); // ï/ï
-                $table_row->appendChild($this->createTableCell($name_emp)); // Íàèìåíîâàíèå Çàêàç÷èêà
-                $table_row->appendChild($this->createTableCell($sbr_id)); // Ñîãëàøåíèå (¹, äàòà)
-                $table_row->appendChild($this->createTableCell($lc_id)); // Èäåíòèôèêàòîğ àêêğåäèòèâà
-                $table_row->appendChild($this->createTableCell($cost)); // Ñóììà ğåçåğâèğîâàíèÿ
+                $table_row->appendChild($this->createTableCell($i)); // Ğ¿/Ğ¿
+                $table_row->appendChild($this->createTableCell($name_emp)); // ĞĞ°Ğ¸Ğ¼ĞµĞ½Ğ¾Ğ²Ğ°Ğ½Ğ¸Ğµ Ğ—Ğ°ĞºĞ°Ğ·Ñ‡Ğ¸ĞºĞ°
+                $table_row->appendChild($this->createTableCell($sbr_id)); // Ğ¡Ğ¾Ğ³Ğ»Ğ°ÑˆĞµĞ½Ğ¸Ğµ (â„–, Ğ´Ğ°Ñ‚Ğ°)
+                $table_row->appendChild($this->createTableCell($lc_id)); // Ğ˜Ğ´ĞµĞ½Ñ‚Ğ¸Ñ„Ğ¸ĞºĞ°Ñ‚Ğ¾Ñ€ Ğ°ĞºĞºÑ€ĞµĞ´Ğ¸Ñ‚Ğ¸Ğ²Ğ°
+                $table_row->appendChild($this->createTableCell($cost)); // Ğ¡ÑƒĞ¼Ğ¼Ğ° Ñ€ĞµĞ·ĞµÑ€Ğ²Ğ¸Ñ€Ğ¾Ğ²Ğ°Ğ½Ğ¸Ñ
 
                 $i++;
 
@@ -171,24 +171,24 @@ class ODTDocument_ITO implements ODTDocumentAdapter
             }
         }
         
-        // Äîáàâëÿåì Èòîãî
+        // Ğ”Ğ¾Ğ±Ğ°Ğ²Ğ»ÑĞµĞ¼ Ğ˜Ñ‚Ğ¾Ğ³Ğ¾
         $table_row = $this->dom->createElement('table:table-row');
-        $table_row->appendChild($this->createTableCell($this->_enc('Èòîãî çà îò÷åòíûé ïåğèîä:'), 4, 'p_1'));
-        $table_row->appendChild($this->dom->createElement('table:covered-table-cell')); // Íàèìåíîâàíèå Çàêàç÷èêà
-        $table_row->appendChild($this->dom->createElement('table:covered-table-cell')); // Ñîãëàøåíèå (¹, äàòà)
-        $table_row->appendChild($this->dom->createElement('table:covered-table-cell')); // Èäåíòèôèêàòîğ àêêğåäèòèâà
-        $table_row->appendChild($this->createTableCell(number_format($sum, 2, ',', ' '))); // Èòîãî
+        $table_row->appendChild($this->createTableCell($this->_enc('Ğ˜Ñ‚Ğ¾Ğ³Ğ¾ Ğ·Ğ° Ğ¾Ñ‚Ñ‡ĞµÑ‚Ğ½Ñ‹Ğ¹ Ğ¿ĞµÑ€Ğ¸Ğ¾Ğ´:'), 4, 'p_1'));
+        $table_row->appendChild($this->dom->createElement('table:covered-table-cell')); // ĞĞ°Ğ¸Ğ¼ĞµĞ½Ğ¾Ğ²Ğ°Ğ½Ğ¸Ğµ Ğ—Ğ°ĞºĞ°Ğ·Ñ‡Ğ¸ĞºĞ°
+        $table_row->appendChild($this->dom->createElement('table:covered-table-cell')); // Ğ¡Ğ¾Ğ³Ğ»Ğ°ÑˆĞµĞ½Ğ¸Ğµ (â„–, Ğ´Ğ°Ñ‚Ğ°)
+        $table_row->appendChild($this->dom->createElement('table:covered-table-cell')); // Ğ˜Ğ´ĞµĞ½Ñ‚Ğ¸Ñ„Ğ¸ĞºĞ°Ñ‚Ğ¾Ñ€ Ğ°ĞºĞºÑ€ĞµĞ´Ğ¸Ñ‚Ğ¸Ğ²Ğ°
+        $table_row->appendChild($this->createTableCell(number_format($sum, 2, ',', ' '))); // Ğ˜Ñ‚Ğ¾Ğ³Ğ¾
         $table->appendChild($table_row);
 
         return $this->dom->saveXML();
     }
     
     /**
-     * Ñîçäàåì ÿ÷åéêó òàáëèöû
+     * Ğ¡Ğ¾Ğ·Ğ´Ğ°ĞµĞ¼ ÑÑ‡ĞµĞ¹ĞºÑƒ Ñ‚Ğ°Ğ±Ğ»Ğ¸Ñ†Ñ‹
      * 
-     * @param string  $content     Äàííûå ÿ÷åéêè
-     * @param integer $col         Îáúåäèíåíèå êîëîíîê (1 -- íåò îáúåäèíåíèÿ)      
-     * @param string  $text_style  Íàçâàíèå ñòèëÿ äàííûõ
+     * @param string  $content     Ğ”Ğ°Ğ½Ğ½Ñ‹Ğµ ÑÑ‡ĞµĞ¹ĞºĞ¸
+     * @param integer $col         ĞĞ±ÑŠĞµĞ´Ğ¸Ğ½ĞµĞ½Ğ¸Ğµ ĞºĞ¾Ğ»Ğ¾Ğ½Ğ¾Ğº (1 -- Ğ½ĞµÑ‚ Ğ¾Ğ±ÑŠĞµĞ´Ğ¸Ğ½ĞµĞ½Ğ¸Ñ)      
+     * @param string  $text_style  ĞĞ°Ğ·Ğ²Ğ°Ğ½Ğ¸Ğµ ÑÑ‚Ğ¸Ğ»Ñ Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ…
      * @return DOMNode
      */
     public function createTableCell($content, $col=1, $text_style = 'P1') {
@@ -208,7 +208,7 @@ class ODTDocument_ITO implements ODTDocumentAdapter
     }
     
     /**
-     * Çàäàåì ñòèëè äëÿ ÿ÷ååê òàáëèöû
+     * Ğ—Ğ°Ğ´Ğ°ĞµĞ¼ ÑÑ‚Ğ¸Ğ»Ğ¸ Ğ´Ğ»Ñ ÑÑ‡ĞµĞµĞº Ñ‚Ğ°Ğ±Ğ»Ğ¸Ñ†Ñ‹
      */
     public function setStyleTable() {
         $styles = $this->xpath->query('//office:automatic-styles', $this->dom->documentElement)->item(0);

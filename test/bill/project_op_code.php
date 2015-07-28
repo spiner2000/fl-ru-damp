@@ -23,12 +23,12 @@ $_SESSION['ac_sum_rub'] = $account->sum_rub;
 $_SESSION['bn_sum'] = $account->bonus_sum;
 
 
-//Формируем проект
+//Р¤РѕСЂРјРёСЂСѓРµРј РїСЂРѕРµРєС‚
 $tmpPrj = new tmp_project('key');
 $tmpPrj->setEdit(true);
 $tmpPrj->setProjectField('kind', 1);
-$tmpPrj->setProjectField('descr', 'Описание проекта для оплаты с разными op_code');
-$tmpPrj->setProjectField('name', 'Проект для оплаты с разными op_code');
+$tmpPrj->setProjectField('descr', 'РћРїРёСЃР°РЅРёРµ РїСЂРѕРµРєС‚Р° РґР»СЏ РѕРїР»Р°С‚С‹ СЃ СЂР°Р·РЅС‹РјРё op_code');
+$tmpPrj->setProjectField('name', 'РџСЂРѕРµРєС‚ РґР»СЏ РѕРїР»Р°С‚С‹ СЃ СЂР°Р·РЅС‹РјРё op_code');
 $tmpPrj->setProjectField('agreement', 1);
 $tmpPrj->setProjectField('priceby', 1);
 $tmpPrj->setProjectField('budget_type', 1);
@@ -38,21 +38,21 @@ $cats[] = array(
 );
 $tmpPrj->setCategories($cats);
 
-//Добавляем ему купленную опцию Срочный
+//Р”РѕР±Р°РІР»СЏРµРј РµРјСѓ РєСѓРїР»РµРЅРЅСѓСЋ РѕРїС†РёСЋ РЎСЂРѕС‡РЅС‹Р№
 $tmpPrj->setProjectField('urgent', 't');
 
-//Другие платные услуги
+//Р”СЂСѓРіРёРµ РїР»Р°С‚РЅС‹Рµ СѓСЃР»СѓРіРё
 if (false) {
     $tmpPrj->setAddedTopDays(4);
 }
 
-//Таким проект был в базе
+//РўР°РєРёРј РїСЂРѕРµРєС‚ Р±С‹Р» РІ Р±Р°Р·Рµ
 $project = $tmpPrj->getProject();
 
-//Юзер пытается купить скрытый
+//Р®Р·РµСЂ РїС‹С‚Р°РµС‚СЃСЏ РєСѓРїРёС‚СЊ СЃРєСЂС‹С‚С‹Р№
 $tmpPrj->setProjectField('hide', 't');
 
-//Записываются данные о скрытом и срочном. будут сохранены в кэш при $tmpPrj->fix()
+//Р—Р°РїРёСЃС‹РІР°СЋС‚СЃСЏ РґР°РЅРЅС‹Рµ Рѕ СЃРєСЂС‹С‚РѕРј Рё СЃСЂРѕС‡РЅРѕРј. Р±СѓРґСѓС‚ СЃРѕС…СЂР°РЅРµРЅС‹ РІ РєСЌС€ РїСЂРё $tmpPrj->fix()
 $oproject = $project;
 if ($tmpPrj->isEdit()) {
     $tmpPrj->setProjectField('o_hide', $oproject['hide']);
@@ -68,11 +68,11 @@ $account_bonus_sum = $account->bonus_sum;
 $bill = new billing($uid);
 $bill->cancelAllNewAndReserved();
 
-//Здесь впервые считается цена
+//Р—РґРµСЃСЊ РІРїРµСЂРІС‹Рµ СЃС‡РёС‚Р°РµС‚СЃСЏ С†РµРЅР°
 if ($tmpPrj->getAmmount()) {
     $tmpProject = $tmpPrj->getProject();
 
-    //Цена считается повторно, в $items формируется список услуг
+    //Р¦РµРЅР° СЃС‡РёС‚Р°РµС‚СЃСЏ РїРѕРІС‚РѕСЂРЅРѕ, РІ $items С„РѕСЂРјРёСЂСѓРµС‚СЃСЏ СЃРїРёСЃРѕРє СѓСЃР»СѓРі
     $price = $tmpPrj->getPrice($items, $__temp, true);
     $option = array(
         'is_edit' => $tmpPrj->isEdit(),
@@ -93,7 +93,7 @@ if ($tmpPrj->getAmmount()) {
             $items['contest']["no_pro"] = $tmpPrj->isEdit() ? 0 : new_projects::getContestTax($cost, is_pro());
             $items['contest']["pro"] = $tmpPrj->isEdit() ? 0 : new_projects::getContestTax($cost, true);
         } else {
-            //Здесь счет создастся при редактировании конкурса
+            //Р—РґРµСЃСЊ СЃС‡РµС‚ СЃРѕР·РґР°СЃС‚СЃСЏ РїСЂРё СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРё РєРѕРЅРєСѓСЂСЃР°
             $items['contest']["no_pro"] = $tmpPrj->isEdit() ? 0 : 3300;
             $items['contest']["pro"] = $tmpPrj->isEdit() ? 0 : 3000;
             $op_code = is_pro() ? new_projects::OPCODE_KON : new_projects::OPCODE_KON_NOPRO;
@@ -108,7 +108,7 @@ if ($tmpPrj->getAmmount()) {
         $bill->start();
 
 
-        // Конкурс
+        // РљРѕРЅРєСѓСЂСЃ
         if ($items['contest'] > 0) {
             $option['items'] = array('contest' => $items['contest']);
             $bill->setOptions($option);
@@ -116,7 +116,7 @@ if ($tmpPrj->getAmmount()) {
             $items['contest'] = 0;
         }
 
-        // Создаем услуги по отдельности
+        // РЎРѕР·РґР°РµРј СѓСЃР»СѓРіРё РїРѕ РѕС‚РґРµР»СЊРЅРѕСЃС‚Рё
         foreach ($items as $opt => $value) {
 
             if (is_array($value) && $value["no_pro"] <= 0) {
@@ -126,9 +126,9 @@ if ($tmpPrj->getAmmount()) {
                 continue;
             }
 
-            /* Почему-то этот код здесь был. Не купятся услуги, если при редактировании не покупается логотип
-             * Проверка на наличие ранее купленных должна быть именно тут, до создания счета
-             * Делалось, видимо, чтобы деньги не списывались при редактировании, но отказ обрабатывать - не выход
+            /* РџРѕС‡РµРјСѓ-С‚Рѕ СЌС‚РѕС‚ РєРѕРґ Р·РґРµСЃСЊ Р±С‹Р». РќРµ РєСѓРїСЏС‚СЃСЏ СѓСЃР»СѓРіРё, РµСЃР»Рё РїСЂРё СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРё РЅРµ РїРѕРєСѓРїР°РµС‚СЃСЏ Р»РѕРіРѕС‚РёРї
+             * РџСЂРѕРІРµСЂРєР° РЅР° РЅР°Р»РёС‡РёРµ СЂР°РЅРµРµ РєСѓРїР»РµРЅРЅС‹С… РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РёРјРµРЅРЅРѕ С‚СѓС‚, РґРѕ СЃРѕР·РґР°РЅРёСЏ СЃС‡РµС‚Р°
+             * Р”РµР»Р°Р»РѕСЃСЊ, РІРёРґРёРјРѕ, С‡С‚РѕР±С‹ РґРµРЅСЊРіРё РЅРµ СЃРїРёСЃС‹РІР°Р»РёСЃСЊ РїСЂРё СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРё, РЅРѕ РѕС‚РєР°Р· РѕР±СЂР°Р±Р°С‚С‹РІР°С‚СЊ - РЅРµ РІС‹С…РѕРґ
               if($opt == 'hide' && $tmpPrj->isEdit()) {
               continue;
               }
@@ -142,7 +142,7 @@ if ($tmpPrj->getAmmount()) {
             $option['items'] = array($opt => $value);
             $bill->setOptions($option);
 
-            //Берем код услуги и применяем его, если найден
+            //Р‘РµСЂРµРј РєРѕРґ СѓСЃР»СѓРіРё Рё РїСЂРёРјРµРЅСЏРµРј РµРіРѕ, РµСЃР»Рё РЅР°Р№РґРµРЅ
             $ownOpCode = new_projects::getOpCodeByService($opt);
             if ($ownOpCode) {
                 $op_code_pay = $ownOpCode;
@@ -157,7 +157,7 @@ if ($tmpPrj->getAmmount()) {
             $bill->rollback();
         } else {
             $bill->commit();
-            // Сохраним данные проекта при этом убираем платные плюшки
+            // РЎРѕС…СЂР°РЅРёРј РґР°РЅРЅС‹Рµ РїСЂРѕРµРєС‚Р° РїСЂРё СЌС‚РѕРј СѓР±РёСЂР°РµРј РїР»Р°С‚РЅС‹Рµ РїР»СЋС€РєРё
             if ($tmpPrj->isEdit()) {
                 if ($items['logo'] > 0) {
                     $tmpPrj->clearLogo();
@@ -170,16 +170,16 @@ if ($tmpPrj->getAmmount()) {
                 $error = $tmpPrj->saveProject(hasPermissions('projects') ? $uid : NULL, $proj);
             }
             
-            //Продолжаем на выход
-            echo 'Счета созданы<br />';
+            //РџСЂРѕРґРѕР»Р¶Р°РµРј РЅР° РІС‹С…РѕРґ
+            echo 'РЎС‡РµС‚Р° СЃРѕР·РґР°РЅС‹<br />';
         }
     }
 }
 
 if (!($error['buy'] = $tmpPrj->saveProject(hasPermissions('projects') ? $uid : NULL, $proj))) {
-    //Здесь удаляем черновик
+    //Р—РґРµСЃСЊ СѓРґР°Р»СЏРµРј С‡РµСЂРЅРѕРІРёРє
     //$drafts->DeleteDraft($draft_id, $uid, 1);
 
-    echo 'Сохранено без платных опций<br />';
+    echo 'РЎРѕС…СЂР°РЅРµРЅРѕ Р±РµР· РїР»Р°С‚РЅС‹С… РѕРїС†РёР№<br />';
 }                       
                         

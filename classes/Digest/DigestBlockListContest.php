@@ -5,7 +5,7 @@ require_once 'DigestBlockListProject.php';
 class DigestBlockListContest extends DigestBlockListProject {
     
     /**
-     * Тип проекта
+     * РўРёРї РїСЂРѕРµРєС‚Р°
      */
     const PROJECT_KIND = 7;
     
@@ -13,17 +13,17 @@ class DigestBlockListContest extends DigestBlockListProject {
      * @see parent::$title
      * @var string 
      */
-    public $title = '<a class="b-layout__link" href="/konkurs/" target="_blank">Топ %s конкурсов</a> с наиболее большим бюджетом за неделю';
+    public $title = '<a class="b-layout__link" href="/konkurs/" target="_blank">РўРѕРї %s РєРѕРЅРєСѓСЂСЃРѕРІ</a> СЃ РЅР°РёР±РѕР»РµРµ Р±РѕР»СЊС€РёРј Р±СЋРґР¶РµС‚РѕРј Р·Р° РЅРµРґРµР»СЋ';
     
     /**
      * @see parent::$hint
      * @var string 
      */
-    public $hint  = 'Например: http://www.free-lance.ru/projects/5/example.html';
+    public $hint  = 'РќР°РїСЂРёРјРµСЂ: http://www.free-lance.ru/projects/5/example.html';
     
     /**
      * @see parent::$title_field
      * @var string 
      */
-    public $title_field = 'Ссылки на конкурсы:';
+    public $title_field = 'РЎСЃС‹Р»РєРё РЅР° РєРѕРЅРєСѓСЂСЃС‹:';
 }

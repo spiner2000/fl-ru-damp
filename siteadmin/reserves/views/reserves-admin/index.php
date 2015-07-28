@@ -66,7 +66,7 @@ $dir_col = $form->getElement('dir_col')->getValue();
             </tr>
             <?php if ($summary): ?>
             <tr class="nr-a-tbl_tr_summary">
-                <td colspan="5"><strong>»ÚÓ„Ó:</strong></td>
+                <td colspan="5"><strong>–ò—Ç–æ–≥–æ:</strong></td>
                 <td class="nr-a-td-sum"><?=$summary?></td>
                 <td colspan="5">&nbsp;</td>
             </tr>
@@ -88,21 +88,21 @@ $dir_col = $form->getElement('dir_col')->getValue();
                 <td class="nr-a-td-sum"><?=$reserve->getSrcPrice()?></td>
                 <td class="nr-a-td-val" style="text-align: center;">
                     <?php if($reserve->isStatusReserved() || $reserve->isInvoice()): ?>
-                        <?php if(!$reserve->isReserveByService()): ?>¡Õ<?php else: ?>ﬂ <?php endif; ?>
+                        <?php if(!$reserve->isReserveByService()): ?>–ë–ù<?php else: ?>–Ø–ö<?php endif; ?>
                     <?php else: ?>
                         &mdash; 
                     <?php endif; ?>
                 </td>
                 <td class="nr-a-td-val" style="text-align: center;">
                     <?php if($reserve->isStatusPayPayed()): ?>
-                        <?php if(!$reserve->isPayoutByService()): ?>¡Õ<?php else: ?>ﬂ <?php endif; ?>
+                        <?php if(!$reserve->isPayoutByService()): ?>–ë–ù<?php else: ?>–Ø–ö<?php endif; ?>
                     <?php else: ?>
                         &mdash; 
                     <?php endif; ?>
                 </td>
                 <td class="nr-a-td-val" style="text-align: center;">
                     <?php if($reserve->isStatusBackPayed()): ?>
-                        <?php if(!$reserve->isReserveByService() && $reserve->isInvoice()): ?>¡Õ<?php else: ?>ﬂ <?php endif; ?>
+                        <?php if(!$reserve->isReserveByService() && $reserve->isInvoice()): ?>–ë–ù<?php else: ?>–Ø–ö<?php endif; ?>
                     <?php else: ?>
                         &mdash; 
                     <?php endif; ?>                    

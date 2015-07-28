@@ -32,7 +32,7 @@ switch ($filter_page) {
             $prmd = "?prof=$prof_id&";
 }
 
-//создаем массив специализаций (для фильтра на главной он уже есть в $prfs, для фильтра в проектах фрилансера его нет, поэтому делаем проверку на существование
+//СЃРѕР·РґР°РµРј РјР°СЃСЃРёРІ СЃРїРµС†РёР°Р»РёР·Р°С†РёР№ (РґР»СЏ С„РёР»СЊС‚СЂР° РЅР° РіР»Р°РІРЅРѕР№ РѕРЅ СѓР¶Рµ РµСЃС‚СЊ РІ $prfs, РґР»СЏ С„РёР»СЊС‚СЂР° РІ РїСЂРѕРµРєС‚Р°С… С„СЂРёР»Р°РЅСЃРµСЂР° РµРіРѕ РЅРµС‚, РїРѕСЌС‚РѕРјСѓ РґРµР»Р°РµРј РїСЂРѕРІРµСЂРєСѓ РЅР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ
 if (!sizeof($profs)) {
     $all_specs = professions::GetAllProfessions("", 0, 1);
 } else {
@@ -80,8 +80,8 @@ for ($i = 0; $i < sizeof($all_specs); $i++) {
     }
 }
 
-$cost_type = array(1 => "За месяц", 2 => "За 1000 знаков", 3 => "За Проект", 4 => "За час");
-$curr_type = array("USD", "Euro", "Руб", "FM");
+$cost_type = array(1 => "Р—Р° РјРµСЃСЏС†", 2 => "Р—Р° 1000 Р·РЅР°РєРѕРІ", 3 => "Р—Р° РџСЂРѕРµРєС‚", 4 => "Р—Р° С‡Р°СЃ");
+$curr_type = array("USD", "Euro", "Р СѓР±", "FM");
 ?>
 <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/classes/freelancers_filter.php";?>
         var filter_mirror_specs = <?=freelancers_filters::getMirroredSpecsJsObject($all_mirrored_specs); ?>; 
@@ -122,7 +122,7 @@ if (sizeof($gFilter)) {
 }
 ?>
 
-//Функция обновления списка подкатегорий в зависимости от выбранной категории в фильтре
+//Р¤СѓРЅРєС†РёСЏ РѕР±РЅРѕРІР»РµРЅРёСЏ СЃРїРёСЃРєР° РїРѕРґРєР°С‚РµРіРѕСЂРёР№ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РІС‹Р±СЂР°РЅРЅРѕР№ РєР°С‚РµРіРѕСЂРёРё РІ С„РёР»СЊС‚СЂРµ
 function RefreshSubCategory(ele, without_sa)
 {
    var category = ele.value;
@@ -135,10 +135,10 @@ function RefreshSubCategory(ele, without_sa)
   var ft = true;
   if(!without_sa){
       if (curFBulletsBox == 2){
-        objSel.options[objSel.options.length] = new Option('Все специализации', 0, ft, ft);
+        objSel.options[objSel.options.length] = new Option('Р’СЃРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё', 0, ft, ft);
         ft = false;
       } else {
-        objSel.options[objSel.options.length] = new Option('Выберите подраздел', 0);
+        objSel.options[objSel.options.length] = new Option('Р’С‹Р±РµСЂРёС‚Рµ РїРѕРґСЂР°Р·РґРµР»', 0);
       }
   }
   if(category == 0) {

@@ -6,15 +6,15 @@ if (!$_in_setup) {header ("HTTP/1.0 403 Forbidden"); exit;}
 	<tr>
 		<td style="width:19px" rowspan="6">&nbsp;</td>
 		<td style="vertical-align:bottom; height:30px" class="red">
-			<strong>Удалить аккаунт</strong>
+			<strong>РЈРґР°Р»РёС‚СЊ Р°РєРєР°СѓРЅС‚</strong>
 		</td>
 		<td style="width:19px" rowspan="6">&nbsp;</td>
 	</tr>
 	<tr>
-		<td style="height:30px">Вы действительно хотите удалить аккаунт?</td>
+		<td style="height:30px">Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ Р°РєРєР°СѓРЅС‚?</td>
 	</tr>
 	<tr>
-		<td>Введите пароль</td>
+		<td>Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ</td>
 	</tr>
 	<tr>
 		<td style="vertical-align:top; height:40px">
@@ -24,7 +24,7 @@ if (!$_in_setup) {header ("HTTP/1.0 403 Forbidden"); exit;}
 	</tr>
 	<tr>
 		<td style="text-align:right">
-			<input type="hidden" name="action" value="delete" /><input type="submit" name="btn" class="btn" value="Удалить" />
+			<input type="hidden" name="action" value="delete" /><input type="submit" name="btn" class="btn" value="РЈРґР°Р»РёС‚СЊ" />
 		</td>
 	</tr>
 	<tr><td colspan="3">&nbsp;</td></tr>

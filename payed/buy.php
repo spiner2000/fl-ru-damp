@@ -43,14 +43,14 @@ $tr_id = $_REQUEST['transaction_id'];
 
 if (!$tr_id) {
 	$account = new account();
-	$account -> view_error("Íåâîçìîæíî çàâåðøèòü òðàíçàêöèþ. Ïîïðîáóéòå ïîâòîðèòü îïåðàöèþ ñ ñàìîãî íà÷àëà.");
+	$account -> view_error("ÐÐµÐ²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ Ð·Ð°Ð²ÐµÑ€ÑˆÐ¸Ñ‚ÑŒ Ñ‚Ñ€Ð°Ð½Ð·Ð°ÐºÑ†Ð¸ÑŽ. ÐŸÐ¾Ð¿Ñ€Ð¾Ð±ÑƒÐ¹Ñ‚Ðµ Ð¿Ð¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚ÑŒ Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸ÑŽ Ñ ÑÐ°Ð¼Ð¾Ð³Ð¾ Ð½Ð°Ñ‡Ð°Ð»Ð°.");
 }
 
 if($mnth > 0) {
    $oppro = intval(trim($_POST['oppro']));
    if($oppro <= 0)
        $oppro = is_emp()?15:48;
-   $ok = $prof->SetOrderedTarif($user_id, $tr_id, $mnth, "Àêêàóíò PRO", $oppro, $error);
+   $ok = $prof->SetOrderedTarif($user_id, $tr_id, $mnth, "ÐÐºÐºÐ°ÑƒÐ½Ñ‚ PRO", $oppro, $error);
 }
 
 
@@ -72,27 +72,27 @@ if($_SESSION['pro_last']['is_freezed']) {
 $_SESSION['pro_last'] = $_SESSION['pro_last']['is_freezed'] ? false : $_SESSION['pro_last']['cnt'];
 $userdata = new users();
 $_SESSION['pro_test'] = $userdata->GetField($user_id, $error2, 'is_pro_test', false);
-// öåíû íà PRO
+// Ñ†ÐµÐ½Ñ‹ Ð½Ð° PRO
 $prices = $prof->GetProPrice(true);
-// òåêóùàÿ ñóììà îïëàòû
+// Ñ‚ÐµÐºÑƒÑ‰Ð°Ñ ÑÑƒÐ¼Ð¼Ð° Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹
 $cost = $prices[$oppro] * $mnth;
 
 if($ok) {
     payed::UpdateProUsers();
-    // PRO äëÿ ðàáîòòîäàòåëÿ
+    // PRO Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»Ñ
     if (is_emp()) {
         header("Location: /payed-emp/pro_payed.php?months=$mnth");
         exit;
-    // òåñòîâûé PRO
+    // Ñ‚ÐµÑÑ‚Ð¾Ð²Ñ‹Ð¹ PRO
     } elseif ($oppro == 47 || $oppro == 114) {
         header("Location: /payed/pro_test_payed.php");
         exit;
-    // PRO äëÿ ôðèëàíñåðà
+    // PRO Ð´Ð»Ñ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð°
     } else {
         if ($oppro == 76) {
             $params = "weeks=$mnth&cost=$cost";
         } else {
-            // ñðîê PRO (ìåñÿöåâ)
+            // ÑÑ€Ð¾Ðº PRO (Ð¼ÐµÑÑÑ†ÐµÐ²)
             $periods = array('48'=>1,'49'=>3,'50'=>6,'51'=>12);
             $months = $periods[$oppro];
             $params = "months=$months&cost=$cost";

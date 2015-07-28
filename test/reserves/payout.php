@@ -83,15 +83,15 @@ $depositionRequest->setSkrDestinationCardSynonim('df37dc6cdebbb0b8e181a069d6604c
 
 
 /*
-$depositionRequest->setBankName('Отделение N8624 Сбербанка России');
-$depositionRequest->setBankCity(' г. Пенза');
+$depositionRequest->setBankName('РћС‚РґРµР»РµРЅРёРµ N8624 РЎР±РµСЂР±Р°РЅРєР° Р РѕСЃСЃРёРё');
+$depositionRequest->setBankCity(' Рі. РџРµРЅР·Р°');
 $depositionRequest->setBankBIK('045655635');
 $depositionRequest->setBankCorAccount('30101810000000000635');
 $depositionRequest->setBankKPP('583402001');
 $depositionRequest->setRubAccount('40817810148005008823');
-$depositionRequest->setTmpFirstName('Сергей');
-$depositionRequest->setTmpMiddleName('Дмитриевич');
-$depositionRequest->setTmpLastName('Сурков');
+$depositionRequest->setTmpFirstName('РЎРµСЂРіРµР№');
+$depositionRequest->setTmpMiddleName('Р”РјРёС‚СЂРёРµРІРёС‡');
+$depositionRequest->setTmpLastName('РЎСѓСЂРєРѕРІ');
 */
 
 

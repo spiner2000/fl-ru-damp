@@ -1,5 +1,5 @@
 <?
-/*Òåñòèðóåì êèâè ñîàï*/
+/*Ð¢ÐµÑÑ‚Ð¸Ñ€ÑƒÐµÐ¼ ÐºÐ¸Ð²Ð¸ ÑÐ¾Ð°Ð¿*/
 require_once("../classes/stdf.php");
 require_once("../classes/exchrates.php");
 require_once("../classes/memBuff.php");

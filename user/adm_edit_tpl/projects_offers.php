@@ -1,16 +1,16 @@
 <?php
 /**
- * Шаблон попап формы быстрого редактирования предложения по проектам (!не конкурс)
+ * РЁР°Р±Р»РѕРЅ РїРѕРїР°Рї С„РѕСЂРјС‹ Р±С‹СЃС‚СЂРѕРіРѕ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РїСЂРѕРµРєС‚Р°Рј (!РЅРµ РєРѕРЅРєСѓСЂСЃ)
  * @author Max 'BlackHawk' Yastrembovich
  */
 if ( !defined('IN_STDF') ) { 
-    header("HTTP/1.0 404 Not Found"); // ибо нефиг
+    header("HTTP/1.0 404 Not Found"); // РёР±Рѕ РЅРµС„РёРі
     exit();
 }
 
 $sPostText = rtrim(input_ref(strip_tags($offer['dialogue'][0]['post_text'])));
 ?>
-<?php // TODO: решить что то со стилями ?>
+<?php // TODO: СЂРµС€РёС‚СЊ С‡С‚Рѕ С‚Рѕ СЃРѕ СЃС‚РёР»СЏРјРё ?>
 <style>
     .works
 {
@@ -52,20 +52,20 @@ $sPostText = rtrim(input_ref(strip_tags($offer['dialogue'][0]['post_text'])));
 
 <div class="b-menu b-menu_rubric b-menu_padbot_10">
     <ul class="b-menu__list">
-        <li id="adm_edit_tab_i1" class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">Основное</span></span></li>
-        <li id="adm_edit_tab_i2" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(2); return false;">Файлы</a></li>
-        <li id="adm_edit_tab_i3" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(3); return false;">Причина редактирования</a></li>
+        <li id="adm_edit_tab_i1" class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">РћСЃРЅРѕРІРЅРѕРµ</span></span></li>
+        <li id="adm_edit_tab_i2" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(2); return false;">Р¤Р°Р№Р»С‹</a></li>
+        <li id="adm_edit_tab_i3" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(3); return false;">РџСЂРёС‡РёРЅР° СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ</a></li>
     </ul>
 </div>
 
 <div id="adm_edit_tab_div1">
     <div class="b-form">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">Бюджет</label>
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_padtop_3" for="adm_edit_cost_from">от&nbsp;</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">Р‘СЋРґР¶РµС‚</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_padtop_3" for="adm_edit_cost_from">РѕС‚&nbsp;</label>
         <div class="b-input b-input_inline-block b-input_width_60">
             <input type="text" id="adm_edit_cost_from" name="ps_cost_from" value="<?=$offer['cost_from']?>" class="b-input__text" maxlength="8">
         </div>
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_padtop_3" for="adm_edit_cost_to">&nbsp;до&nbsp;</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_padtop_3" for="adm_edit_cost_to">&nbsp;РґРѕ&nbsp;</label>
         <div class="b-input b-input_inline-block b-input_width_60">
             <input type="text" id="adm_edit_cost_to" name="ps_cost_to" value="<?=$offer['cost_to']?>" class="b-input__text" maxlength="8">
         </div>
@@ -73,7 +73,7 @@ $sPostText = rtrim(input_ref(strip_tags($offer['dialogue'][0]['post_text'])));
         <div class="b-input_inline-block b-input_width_60">
             <select id="adm_edit_cost_type" name="ps_cost_type" class="b-select__select b-select__select_width_full">
                 <option value="0" <?=($offer['cost_type'] == 0 ? 'selected' : '')?>>USD</option>
-                <option value="2" <?=($offer['cost_type'] == 2 ? 'selected' : '')?>>Руб</option>
+                <option value="2" <?=($offer['cost_type'] == 2 ? 'selected' : '')?>>Р СѓР±</option>
                 <option value="1" <?=($offer['cost_type'] == 1 ? 'selected' : '')?>>Euro</option>
                 <option value="3" <?=($offer['cost_type'] == 3 ? 'selected' : '')?>>FM</option>
             </select>
@@ -81,27 +81,27 @@ $sPostText = rtrim(input_ref(strip_tags($offer['dialogue'][0]['post_text'])));
     </div>
     
     <div class="b-form">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">Сроки</label>
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_padtop_3" for="adm_edit_time_from">от&nbsp;</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">РЎСЂРѕРєРё</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_padtop_3" for="adm_edit_time_from">РѕС‚&nbsp;</label>
         <div class="b-input b-input_inline-block b-input_width_60">
             <input type="text" id="adm_edit_time_from" name="ps_time_from" value="<?=$offer['time_from']?>" class="b-input__text" maxlength="8">
         </div>
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_padtop_3" for="adm_edit_time_to">&nbsp;до&nbsp;</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_padtop_3" for="adm_edit_time_to">&nbsp;РґРѕ&nbsp;</label>
         <div class="b-input b-input_inline-block b-input_width_60">
             <input type="text" id="adm_edit_time_to" name="ps_time_to" value="<?=$offer['time_to']?>" class="b-input__text" maxlength="8">
         </div>
         <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_padtop_3">&nbsp;</label>
         <div class="b-input_inline-block b-input_width_90">
             <select id="adm_edit_time_type" name="ps_time_type" class="b-select__select b-select__select_width_full">
-                <option value="0"<? if ($offer['time_type'] == 0) { ?> selected<? } ?>>в часах</option>
-                <option value="1"<? if ($offer['time_type'] == 1) { ?> selected<? } ?>>в днях</option>
-                <option value="2"<? if ($offer['time_type'] == 2) { ?> selected<? } ?>>в месяцах</option>
+                <option value="0"<? if ($offer['time_type'] == 0) { ?> selected<? } ?>>РІ С‡Р°СЃР°С…</option>
+                <option value="1"<? if ($offer['time_type'] == 1) { ?> selected<? } ?>>РІ РґРЅСЏС…</option>
+                <option value="2"<? if ($offer['time_type'] == 2) { ?> selected<? } ?>>РІ РјРµСЃСЏС†Р°С…</option>
             </select>
         </div>
     </div>
     
     <div class="b-form">
-        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_msg">Текст</label>
+        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_msg">РўРµРєСЃС‚</label>
         <div class="b-textarea_inline-block b-textarea_width_550">
             <textarea id="adm_edit_descr_source" style="display:none" cols="50" rows="20"><?=$sPostText?></textarea>
             <textarea id="adm_edit_descr" name="ps_text" class="b-textarea__textarea_width_full b-textarea__textarea_height_70" cols="77" rows="5"></textarea>
@@ -112,7 +112,7 @@ $sPostText = rtrim(input_ref(strip_tags($offer['dialogue'][0]['post_text'])));
 <div id="adm_edit_tab_div2" style="display: none;">
     <?php 
     if ( $user->is_pro == 'f' ) { 
-        ?><div class="b-form">Функция доступна только для предложений от владельцев аккаунта PRO</div><? 
+        ?><div class="b-form">Р¤СѓРЅРєС†РёСЏ РґРѕСЃС‚СѓРїРЅР° С‚РѕР»СЊРєРѕ РґР»СЏ РїСЂРµРґР»РѕР¶РµРЅРёР№ РѕС‚ РІР»Р°РґРµР»СЊС†РµРІ Р°РєРєР°СѓРЅС‚Р° PRO</div><? 
     } 
     else {
     ?>
@@ -159,7 +159,7 @@ $sPostText = rtrim(input_ref(strip_tags($offer['dialogue'][0]['post_text'])));
     </table>
     
     <div class="b-form b-form_padtop_10" id="adm_edit_work_ctrl1">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_60 b-form__name_padtop_3">Работы</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_60 b-form__name_padtop_3">Р Р°Р±РѕС‚С‹</label>
         <div class="b-input_inline-block b-input_width_545">
             <select id="adm_edit_prof" name="professions" onchange="adm_edit_content.prjOfferLoadWorks();" class="b-select__select b-select__select_width_220" tabindex="300">
             <?php if ( $professions ) {
@@ -178,18 +178,18 @@ $sPostText = rtrim(input_ref(strip_tags($offer['dialogue'][0]['post_text'])));
                 } ?>
                 </select>
             </div>
-            <input type="button" onclick="adm_edit_content.prjOfferAddWork($('adm_edit_works').get('value'));" id="adm_edit_pict_add" name="adm_edit_pict_add" value="Подгрузить">
+            <input type="button" onclick="adm_edit_content.prjOfferAddWork($('adm_edit_works').get('value'));" id="adm_edit_pict_add" name="adm_edit_pict_add" value="РџРѕРґРіСЂСѓР·РёС‚СЊ">
         </div>
     </div>
     
     <div class="b-form b-form_padtop_10" id="adm_edit_work_ctrl2">
         <iframe style="width:626px;height:45px;" scrolling="no" id="fupload" name="fupload" src="/projects/upload.php?pid=<?=$offer['project_id']?>&uid=<?=$offer['user_id']?>&onload=adm_edit_content" frameborder="0"></iframe><br />
-        С помощью этого поля возможно загрузить файл.<br />
-        Максимальный размер файла: 2 Мб.<br />
-        Файлы следующих форматов запрещены к загрузке: <?=implode(', ', $GLOBALS['disallowed_array'])?>
+        РЎ РїРѕРјРѕС‰СЊСЋ СЌС‚РѕРіРѕ РїРѕР»СЏ РІРѕР·РјРѕР¶РЅРѕ Р·Р°РіСЂСѓР·РёС‚СЊ С„Р°Р№Р».<br />
+        РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°: 2 РњР±.<br />
+        Р¤Р°Р№Р»С‹ СЃР»РµРґСѓСЋС‰РёС… С„РѕСЂРјР°С‚РѕРІ Р·Р°РїСЂРµС‰РµРЅС‹ Рє Р·Р°РіСЂСѓР·РєРµ: <?=implode(', ', $GLOBALS['disallowed_array'])?>
     </div>
     
-    <div class="b-form" id="adm_edit_work_msg" style="display: none;">Чтобы добавить другие работы, удалите одну из выбранных</div>
+    <div class="b-form" id="adm_edit_work_msg" style="display: none;">Р§С‚РѕР±С‹ РґРѕР±Р°РІРёС‚СЊ РґСЂСѓРіРёРµ СЂР°Р±РѕС‚С‹, СѓРґР°Р»РёС‚Рµ РѕРґРЅСѓ РёР· РІС‹Р±СЂР°РЅРЅС‹С…</div>
     <?php
     }
     ?>

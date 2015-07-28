@@ -16,8 +16,8 @@ $descr = '';
 $image = '';
 $group_id = NULL;
 $restrict_type = 0;
-$author_id = NULL;    // Создатель сообщества.
-$author_login = NULL; // Чтоб в него загрузить картинку.
+$author_id = NULL;    // РЎРѕР·РґР°С‚РµР»СЊ СЃРѕРѕР±С‰РµСЃС‚РІР°.
+$author_login = NULL; // Р§С‚РѕР± РІ РЅРµРіРѕ Р·Р°РіСЂСѓР·РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ.
 
 if (isset($request)) {        // do...
     $name = stripslashes($request['name']);
@@ -42,9 +42,9 @@ if (!($commune_groups = commune::GetGroups()))
 
 $action = str_replace('do.', '', $action);
 $limit = commune::GetUserCommunesLimits(get_uid());
-$count = $limit['user_communes_count'] ? "(у вас уже есть {$limit['user_communes_count']})" : '';
+$count = $limit['user_communes_count'] ? "(Сѓ РІР°СЃ СѓР¶Рµ РµСЃС‚СЊ {$limit['user_communes_count']})" : '';
 
-$header = $action == 'Create' ? 'Создание вашего сообщества' : '<a style="color:#666" href="?id=' . $comm['id'] . '">Сообщество &laquo;' . $comm['name'] . '&raquo;</a>';
+$header = $action == 'Create' ? 'РЎРѕР·РґР°РЅРёРµ РІР°С€РµРіРѕ СЃРѕРѕР±С‰РµСЃС‚РІР°' : '<a style="color:#666" href="?id=' . $comm['id'] . '">РЎРѕРѕР±С‰РµСЃС‚РІРѕ &laquo;' . $comm['name'] . '&raquo;</a>';
 
 $aCommExts = explode( ',', commune::IMAGE_EXTENSIONS );
 $sCommExts = "var aCommExts = ['". implode("','", $aCommExts) ."'];";
@@ -86,39 +86,39 @@ function commCreate( frm ) {
                         <col/>
                         <tr valign="top">
                             <td colspan="3" style="padding-bottom:25px">
-                                - Сообщества могут создавать только пользователи с аккаунтом <?= view_pro() ?><br/>
-                                - Созданное сообщество невозможно удалить.<br/>
-                                - Можно создать не более 5-ти сообществ.<br/>
-                                - <a href="<?=WDCPREFIX?>/about/documents/appendix_2_regulations.pdf" class="blue">Правила поведения в сообществах</a><br/>
+                                - РЎРѕРѕР±С‰РµСЃС‚РІР° РјРѕРіСѓС‚ СЃРѕР·РґР°РІР°С‚СЊ С‚РѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ Р°РєРєР°СѓРЅС‚РѕРј <?= view_pro() ?><br/>
+                                - РЎРѕР·РґР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµСЃС‚РІРѕ РЅРµРІРѕР·РјРѕР¶РЅРѕ СѓРґР°Р»РёС‚СЊ.<br/>
+                                - РњРѕР¶РЅРѕ СЃРѕР·РґР°С‚СЊ РЅРµ Р±РѕР»РµРµ 5-С‚Рё СЃРѕРѕР±С‰РµСЃС‚РІ.<br/>
+                                - <a href="<?=WDCPREFIX?>/about/documents/appendix_2_regulations.pdf" class="blue">РџСЂР°РІРёР»Р° РїРѕРІРµРґРµРЅРёСЏ РІ СЃРѕРѕР±С‰РµСЃС‚РІР°С…</a><br/>
                             </td>
                         </tr>
                         <tr valign="baseline">
                             <td>
-                                <b>Название:</b>
+                                <b>РќР°Р·РІР°РЅРёРµ:</b>
                             </td>
                             <td>
                                 <input type="text" maxlength="<?= commune::NAME_MAX_LENGTH ?>" size="50" name="name" value="<?= $name ?>" style="border: 1px solid #CCC; width: 500px; padding: 2px 1px;" />
 <?= (isset($alert['name']) ? view_error($alert['name']) : '') ?>
                             </td>
                             <td style="padding:0 0 0 20px">
-                                <b><?= commune::NAME_MAX_LENGTH ?> символов</b>
+                                <b><?= commune::NAME_MAX_LENGTH ?> СЃРёРјРІРѕР»РѕРІ</b>
                             </td>
                         </tr>
                         <tr valign="top">
                             <td style="padding-top:40px">
-                                <b>Описание:</b>
+                                <b>РћРїРёСЃР°РЅРёРµ:</b>
                             </td>
                             <td style="padding-top:40px">
                                 <textarea name="descr" class="descr" style="border: 1px solid #CCC; width: 500px; height: 90px; padding: 2px 1px;"><?= $descr ?></textarea>
 <?= (isset($alert['descr']) ? view_error($alert['descr']) : '') ?>
                         </td>
                         <td style="padding:40px 0 0 20px">
-                            <b><?= commune::DESCR_MAX_LENGTH ?> символов</b>
+                            <b><?= commune::DESCR_MAX_LENGTH ?> СЃРёРјРІРѕР»РѕРІ</b>
                         </td>
                     </tr>
                     <tr valign="baseline">
                         <td style="padding-top:40px">
-                            <b>Раздел:</b>
+                            <b>Р Р°Р·РґРµР»:</b>
                         </td>
                         <td style="padding-top:40px">
                             <select style="height:17px;" name="group_id">
@@ -132,18 +132,18 @@ function commCreate( frm ) {
                     </tr>
                     <tr valign="baseline">
                         <td style="padding-top:40px">
-                            <b>Картинка:</b>
+                            <b>РљР°СЂС‚РёРЅРєР°:</b>
                         </td>
                         <td style="padding-top:40px">
 
 <? if ($image) { ?>
                             <div id="idImage_<?= $id ?>">
                                 <input type="hidden" name="ext_file" id="ext_file" value="1">
-                                <a href="<?= WDCPREFIX ?>/users/<?= $author_login ?>/upload/<?= $image ?>" target="_blank">Присоединенный файл</a>
+                                <a href="<?= WDCPREFIX ?>/users/<?= $author_login ?>/upload/<?= $image ?>" target="_blank">РџСЂРёСЃРѕРµРґРёРЅРµРЅРЅС‹Р№ С„Р°Р№Р»</a>
                                 &nbsp;&nbsp;(<a href='javascript:void(0)'
                                                 onclick="xajax_DeleteAttach( 'idImage_<?= $id ?>',
                                                         '<?= $id ?>', '<?= $image ?>',
-                                                        '<?= $author_login ?>', '__commPrntCommImgBox');">удалить</a>)
+                                                        '<?= $author_login ?>', '__commPrntCommImgBox');">СѓРґР°Р»РёС‚СЊ</a>)
                                 </div>
 <?
                             } else {
@@ -154,39 +154,39 @@ function commCreate( frm ) {
                     </tr>
                     <tr valign="baseline">
                         <td style="padding-top:40px">
-                            <b>Тип:</b>
+                            <b>РўРёРї:</b>
                         </td>
                         <td style="padding-top:40px">
                             <div>
                                 <input type="radio" id="idJoin_0" name="restrict_join" value="0"
 <?= (($restrict_type & commune::RESTRICT_JOIN_MASK) ? '' : ' checked') ?>
                                        />
-                                <label for="idJoin_0"> Любой может вступить</label>
+                                <label for="idJoin_0"> Р›СЋР±РѕР№ РјРѕР¶РµС‚ РІСЃС‚СѓРїРёС‚СЊ</label>
                             </div>
                             <div>
                                 <input type="radio" id="idJoin_1" name="restrict_join" value="1"
 <?= (($restrict_type & commune::RESTRICT_JOIN_MASK) ? ' checked' : '') ?>
                                        />
-                                <label for="idJoin_1"> Создатель определяет, кто может вступить</label>
+                                <label for="idJoin_1"> РЎРѕР·РґР°С‚РµР»СЊ РѕРїСЂРµРґРµР»СЏРµС‚, РєС‚Рѕ РјРѕР¶РµС‚ РІСЃС‚СѓРїРёС‚СЊ</label>
                             </div>
                             <br/>
                             <div>
                                 <input type="radio" id="idRead_0" name="restrict_read" value="0"
 <?= (($restrict_type & commune::RESTRICT_READ_MASK) ? '' : ' checked') ?>
                                        />
-                                <label for="idRead_0"> Любой может читать</label>
+                                <label for="idRead_0"> Р›СЋР±РѕР№ РјРѕР¶РµС‚ С‡РёС‚Р°С‚СЊ</label>
                             </div>
                             <div>
                                 <input type="radio" id="idRead_1" name="restrict_read" value="1"
 <?= (($restrict_type & commune::RESTRICT_READ_MASK) ? ' checked' : '') ?>
                                        />
-                                <label for="idRead_1"> Читать могут только члены сообщества</label>
+                                <label for="idRead_1"> Р§РёС‚Р°С‚СЊ РјРѕРіСѓС‚ С‚РѕР»СЊРєРѕ С‡Р»РµРЅС‹ СЃРѕРѕР±С‰РµСЃС‚РІР°</label>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td align="right" colspan="2" style="padding-top:50px">
-                            <input style="width:100px" type="submit" value="<?= ($action == 'Edit' ? 'Сохранить' : 'Создать') ?>"/>
+                            <input style="width:100px" type="submit" value="<?= ($action == 'Edit' ? 'РЎРѕС…СЂР°РЅРёС‚СЊ' : 'РЎРѕР·РґР°С‚СЊ') ?>"/>
                         </td>
                     </tr>
                 </table>
@@ -197,7 +197,7 @@ function commCreate( frm ) {
                     <input type="hidden" name="id" value="<?= $id ?>"/>
                                         <input type="hidden" name="site" value="<?= $site ?>"/>
                                         <input type="hidden" name="action" value="Delete"/>
-                                        <input style="width:150px" type="submit" value="Удалить сообщество"/>
+                                        <input style="width:150px" type="submit" value="РЈРґР°Р»РёС‚СЊ СЃРѕРѕР±С‰РµСЃС‚РІРѕ"/>
                                     </form>
                                 </div>
 <? } ?>
@@ -214,7 +214,7 @@ function commCreate( frm ) {
                     <input type="hidden" name="author_id" value="<?= $author_id ?>"/>
                     <input type="hidden" name="action" value="do.<?= $action ?>"/>
 
-                    <h2>Создание вашего сообщества</h2>
+                    <h2>РЎРѕР·РґР°РЅРёРµ РІР°С€РµРіРѕ СЃРѕРѕР±С‰РµСЃС‚РІР°</h2>
                     <div class="page-commune-create c">
                         <div class="page-in">
                             <div class="form fs-o p-cc-inf">
@@ -222,10 +222,10 @@ function commCreate( frm ) {
                                 <b class="b2"></b>
                                 <div class="form-in">
                                     <ul>
-                                        <li>- <strong>Сообщества могут создавать только пользователи с аккаунтом  <?= view_pro() ?></strong></li>
-                                        <li>- <strong>Можно создать не более 5-ти сообществ</strong> <?= $count;?></li>
-                                        <li>- <strong>Созданное сообщество невозможно удалить</strong></li>
-                                        <li>- <strong><a href="<?=WDCPREFIX?>/about/documents/appendix_2_regulations.pdf">Правила поведения в сообществах</a></strong></li>
+                                        <li>- <strong>РЎРѕРѕР±С‰РµСЃС‚РІР° РјРѕРіСѓС‚ СЃРѕР·РґР°РІР°С‚СЊ С‚РѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ Р°РєРєР°СѓРЅС‚РѕРј  <?= view_pro() ?></strong></li>
+                                        <li>- <strong>РњРѕР¶РЅРѕ СЃРѕР·РґР°С‚СЊ РЅРµ Р±РѕР»РµРµ 5-С‚Рё СЃРѕРѕР±С‰РµСЃС‚РІ</strong> <?= $count;?></li>
+                                        <li>- <strong>РЎРѕР·РґР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµСЃС‚РІРѕ РЅРµРІРѕР·РјРѕР¶РЅРѕ СѓРґР°Р»РёС‚СЊ</strong></li>
+                                        <li>- <strong><a href="<?=WDCPREFIX?>/about/documents/appendix_2_regulations.pdf">РџСЂР°РІРёР»Р° РїРѕРІРµРґРµРЅРёСЏ РІ СЃРѕРѕР±С‰РµСЃС‚РІР°С…</a></strong></li>
                                     </ul>
                                 </div>
                                 <b class="b2"></b>
@@ -237,36 +237,36 @@ function commCreate( frm ) {
                                 <div class="form-in">
                                     <div class="form-block first">
                                         <div class="form-el">
-                                            <label class="form-label">Название</label>
+                                            <label class="form-label">РќР°Р·РІР°РЅРёРµ</label>
                                             <div class="form-cntrl">
                                                 <input type="text" maxlength="<?= commune::NAME_MAX_LENGTH ?>" size="50" name="name" value="<?= $name ?>" class="i-txt" />
 <?= (isset($alert['name']) ? view_error($alert['name']) : '') ?>
                                             </div>
                                             <div class="form-hint">
-                												До 50 символов
+                												Р”Рѕ 50 СЃРёРјРІРѕР»РѕРІ
                                             </div>
                                         </div>
                                         <div class="form-el">
-                                            <label class="form-label">Описание</label>
+                                            <label class="form-label">РћРїРёСЃР°РЅРёРµ</label>
                                             <div class="form-cntrl">
                                                 <textarea name="descr" rows="7" cols="20"><?= $descr ?></textarea>
 <?= (isset($alert['descr']) ? view_error($alert['descr']) : '') ?>
                                             </div>
                                             <div class="form-hint">
-                												До 1000 символов
+                												Р”Рѕ 1000 СЃРёРјРІРѕР»РѕРІ
                                             </div>
                                         </div>
                                         <div class="form-el">
-                                            <label class="form-label">Картинка</label>
+                                            <label class="form-label">РљР°СЂС‚РёРЅРєР°</label>
                                             <div class="form-cntrl">
  <? if ($image) { ?>
                             <div id="idImage_<?= $id ?>">
                                 <input type="hidden" name="ext_file" id="ext_file" value="1">
-                                <a href="<?= WDCPREFIX ?>/users/<?= $author_login ?>/upload/<?= $image ?>" target="_blank">Присоединенный файл</a>
+                                <a href="<?= WDCPREFIX ?>/users/<?= $author_login ?>/upload/<?= $image ?>" target="_blank">РџСЂРёСЃРѕРµРґРёРЅРµРЅРЅС‹Р№ С„Р°Р№Р»</a>
                                 &nbsp;&nbsp;(<a href='javascript:void(0)'
                                                 onclick="xajax_DeleteAttach( 'idImage_<?= $id ?>',
                                                         '<?= $id ?>', '<?= $image ?>',
-                                                        '<?= $author_login ?>', '__commPrntCommImgBox');">удалить</a>)
+                                                        '<?= $author_login ?>', '__commPrntCommImgBox');">СѓРґР°Р»РёС‚СЊ</a>)
                                 </div>
 <?
                             } else {
@@ -275,11 +275,11 @@ function commCreate( frm ) {
 ?>
                                             </div>
                                             <div class="form-hint">
-         												<?=implode(', ', $aCommExts)?>. 200x400 пикселей
+         												<?=implode(', ', $aCommExts)?>. 200x400 РїРёРєСЃРµР»РµР№
                                             </div>
                                         </div>
                                         <div class="form-el">
-                                            <label class="form-label">Раздел</label>
+                                            <label class="form-label">Р Р°Р·РґРµР»</label>
                                             <div class="form-cntrl">
                                                 <ul class="form-list">
 
@@ -291,35 +291,35 @@ function commCreate( frm ) {
                                             </div>
                                         </div>
                                         <div class="form-el">
-                                            <label class="form-label">Вступление</label>
+                                            <label class="form-label">Р’СЃС‚СѓРїР»РµРЅРёРµ</label>
                                             <div class="form-cntrl">
                                                 <ul class="form-list">
                                                     <li><label><span class="i-radio"><input type="radio" id="idJoin_0" name="restrict_join" value="0"
 <?= (($restrict_type & commune::RESTRICT_JOIN_MASK) ? '' : ' checked') ?>
-                                       /></span> Любой может вступить</label></li>
+                                       /></span> Р›СЋР±РѕР№ РјРѕР¶РµС‚ РІСЃС‚СѓРїРёС‚СЊ</label></li>
                                                     <li><label><span class="i-radio"><input type="radio" id="idJoin_1" name="restrict_join" value="1"
 <?= (($restrict_type & commune::RESTRICT_JOIN_MASK) ? ' checked' : '') ?>
-                                       /></span> Создатель определяет, кто может вступить</label></li>
+                                       /></span> РЎРѕР·РґР°С‚РµР»СЊ РѕРїСЂРµРґРµР»СЏРµС‚, РєС‚Рѕ РјРѕР¶РµС‚ РІСЃС‚СѓРїРёС‚СЊ</label></li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="form-el">
-                                            <label class="form-label">Просмотр</label>
+                                            <label class="form-label">РџСЂРѕСЃРјРѕС‚СЂ</label>
                                             <div class="form-cntrl">
                                                 <ul class="form-list">
                                                     <li><label><span class="i-radio"><input type="radio" id="idRead_0" name="restrict_read" value="0"
 <?= (($restrict_type & commune::RESTRICT_READ_MASK) ? '' : ' checked') ?>
-                                       /></span> Любой может читать</label></li>
+                                       /></span> Р›СЋР±РѕР№ РјРѕР¶РµС‚ С‡РёС‚Р°С‚СЊ</label></li>
                                                     <li><label><span class="i-radio"><input type="radio" id="idRead_1" name="restrict_read" value="1"
 <?= (($restrict_type & commune::RESTRICT_READ_MASK) ? ' checked' : '') ?>
-                                       /></span> Читать могут только члены сообщества</label></li>
+                                       /></span> Р§РёС‚Р°С‚СЊ РјРѕРіСѓС‚ С‚РѕР»СЊРєРѕ С‡Р»РµРЅС‹ СЃРѕРѕР±С‰РµСЃС‚РІР°</label></li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-block last">
                                         <div class="form-el form-btns">
-                                            <a href="#" onclick="commCreate($('form_add_comm')); return false;" class="b-button b-button_flat b-button_flat_green"><?= $action == 'Edit' ? 'Изменить' : 'Создать';?> сообщество</a>
+                                            <a href="#" onclick="commCreate($('form_add_comm')); return false;" class="b-button b-button_flat b-button_flat_green"><?= $action == 'Edit' ? 'РР·РјРµРЅРёС‚СЊ' : 'РЎРѕР·РґР°С‚СЊ';?> СЃРѕРѕР±С‰РµСЃС‚РІРѕ</a>
                                         </div>
                                     </div>
                                 </div>

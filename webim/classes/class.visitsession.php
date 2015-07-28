@@ -1,11 +1,11 @@
 <?php
 /* 
  * 
- * Данный файл является частью проекта Веб Мессенджер.
+ * Р”Р°РЅРЅС‹Р№ С„Р°Р№Р» СЏРІР»СЏРµС‚СЃСЏ С‡Р°СЃС‚СЊСЋ РїСЂРѕРµРєС‚Р° Р’РµР± РњРµСЃСЃРµРЅРґР¶РµСЂ.
  * 
- * Все права защищены. (c) 2005-2009 ООО "ТОП".
- * Данное программное обеспечение и все сопутствующие материалы
- * предоставляются на условиях лицензии, доступной по адресу
+ * Р’СЃРµ РїСЂР°РІР° Р·Р°С‰РёС‰РµРЅС‹. (c) 2005-2009 РћРћРћ "РўРћРџ".
+ * Р”Р°РЅРЅРѕРµ РїСЂРѕРіСЂР°РјРјРЅРѕРµ РѕР±РµСЃРїРµС‡РµРЅРёРµ Рё РІСЃРµ СЃРѕРїСѓС‚СЃС‚РІСѓСЋС‰РёРµ РјР°С‚РµСЂРёР°Р»С‹
+ * РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‚СЃСЏ РЅР° СѓСЃР»РѕРІРёСЏС… Р»РёС†РµРЅР·РёРё, РґРѕСЃС‚СѓРїРЅРѕР№ РїРѕ Р°РґСЂРµСЃСѓ
  * http://webim.ru/license.html
  * 
  */
@@ -146,7 +146,7 @@ class VisitSession {
     public function setVisitSessionCurrentPage($visitorid, $url, $title) {
         $file = self::getVisitorCurrentPageFilename($visitorid);
         
-        // папка online в мэмкэш --------------------
+        // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
         //create_basedir( $file );
         //file_put_contents( $file, serialize(array($url, $title)), LOCK_EX );
         $GLOBALS['mem_buff']->set( $file, serialize(array($url, $title)), 3600 * 6 );
@@ -155,7 +155,7 @@ class VisitSession {
   public function deleteVisitSessionCurrentPageFile($visitorid) {
     $file = self::getVisitorCurrentPageFilename($visitorid);
     
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     /*if(file_exists($file)) {
       unlink($file);  
     }*/
@@ -165,7 +165,7 @@ class VisitSession {
   public function getVisitSessionCurrentPage($visitorid) {
     $file = self::getVisitorCurrentPageFilename($visitorid);
     
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     /*if(!file_exists($file))
       return null;
       

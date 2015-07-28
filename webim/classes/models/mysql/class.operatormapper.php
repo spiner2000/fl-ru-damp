@@ -1,11 +1,11 @@
 <?php
 /* 
  * 
- * Данный файл является частью проекта Веб Мессенджер.
+ * Р”Р°РЅРЅС‹Р№ С„Р°Р№Р» СЏРІР»СЏРµС‚СЃСЏ С‡Р°СЃС‚СЊСЋ РїСЂРѕРµРєС‚Р° Р’РµР± РњРµСЃСЃРµРЅРґР¶РµСЂ.
  * 
- * Все права защищены. (c) 2005-2009 ООО "ТОП".
- * Данное программное обеспечение и все сопутствующие материалы
- * предоставляются на условиях лицензии, доступной по адресу
+ * Р’СЃРµ РїСЂР°РІР° Р·Р°С‰РёС‰РµРЅС‹. (c) 2005-2009 РћРћРћ "РўРћРџ".
+ * Р”Р°РЅРЅРѕРµ РїСЂРѕРіСЂР°РјРјРЅРѕРµ РѕР±РµСЃРїРµС‡РµРЅРёРµ Рё РІСЃРµ СЃРѕРїСѓС‚СЃС‚РІСѓСЋС‰РёРµ РјР°С‚РµСЂРёР°Р»С‹
+ * РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‚СЃСЏ РЅР° СѓСЃР»РѕРІРёСЏС… Р»РёС†РµРЅР·РёРё, РґРѕСЃС‚СѓРїРЅРѕР№ РїРѕ Р°РґСЂРµСЃСѓ
  * http://webim.ru/license.html
  * 
  */
@@ -671,13 +671,13 @@ class OperatorMapper extends BaseMapper {
   	}
         
     /**
-     * Сохраняет данные по оператору
-     * А именно начальную метку времени для определения статуса online в countOnlineOperators и getOnlineOperators
+     * РЎРѕС…СЂР°РЅСЏРµС‚ РґР°РЅРЅС‹Рµ РїРѕ РѕРїРµСЂР°С‚РѕСЂСѓ
+     * Рђ РёРјРµРЅРЅРѕ РЅР°С‡Р°Р»СЊРЅСѓСЋ РјРµС‚РєСѓ РІСЂРµРјРµРЅРё РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ СЃС‚Р°С‚СѓСЃР° online РІ countOnlineOperators Рё getOnlineOperators
      * 
-     * Альтернатива папке online_stats
+     * РђР»СЊС‚РµСЂРЅР°С‚РёРІР° РїР°РїРєРµ online_stats
      * 
-     * @param  int $operatorid ID оператора
-     * @return bool true - успех, false - провал
+     * @param  int $operatorid ID РѕРїРµСЂР°С‚РѕСЂР°
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     public function insertOperatorTime( $operatorid ) {
         $sQuery = 'INSERT INTO {operatortime} (operatorid, operatortime) VALUES (:operatorid, 0)
@@ -693,13 +693,13 @@ class OperatorMapper extends BaseMapper {
     }
     
     /**
-     * Сохраняет данные по оператору
-     * А именно текущую метку времени для определения статуса online в countOnlineOperators и getOnlineOperators
+     * РЎРѕС…СЂР°РЅСЏРµС‚ РґР°РЅРЅС‹Рµ РїРѕ РѕРїРµСЂР°С‚РѕСЂСѓ
+     * Рђ РёРјРµРЅРЅРѕ С‚РµРєСѓС‰СѓСЋ РјРµС‚РєСѓ РІСЂРµРјРµРЅРё РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ СЃС‚Р°С‚СѓСЃР° online РІ countOnlineOperators Рё getOnlineOperators
      * 
-     * Альтернатива папке online_stats
+     * РђР»СЊС‚РµСЂРЅР°С‚РёРІР° РїР°РїРєРµ online_stats
      * 
-     * @param  int $operatorid ID оператора
-     * @return bool true - успех, false - провал
+     * @param  int $operatorid ID РѕРїРµСЂР°С‚РѕСЂР°
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     public function updateOperatorTime( $operatorid ) {
         $sQuery = 'UPDATE {operatortime} SET operatortime = ? WHERE operatorid = ?';
@@ -714,10 +714,10 @@ class OperatorMapper extends BaseMapper {
     }
     
     /**
-     * Возвращает данные по оераторам
-     * Отделы, локали, метки времени
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ РїРѕ РѕРµСЂР°С‚РѕСЂР°Рј
+     * РћС‚РґРµР»С‹, Р»РѕРєР°Р»Рё, РјРµС‚РєРё РІСЂРµРјРµРЅРё
      * 
-     * Альтернатива папке online_stats
+     * РђР»СЊС‚РµСЂРЅР°С‚РёРІР° РїР°РїРєРµ online_stats
      * 
      * @return array
      */

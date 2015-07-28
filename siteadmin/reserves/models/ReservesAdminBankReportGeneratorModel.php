@@ -4,7 +4,7 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/DocGen/Formatter/DocGenReservesFormatter.php');
 
 /**
- * Генерирует xls-файл Отчеты по выплатам
+ * Р“РµРЅРµСЂРёСЂСѓРµС‚ xls-С„Р°Р№Р» РћС‚С‡РµС‚С‹ РїРѕ РІС‹РїР»Р°С‚Р°Рј
  */
 
 class ReservesAdminBankReportGeneratorModel {
@@ -26,10 +26,10 @@ class ReservesAdminBankReportGeneratorModel {
 
     /**
      * @deprecated since version 70171
-     * Проблема с Office 2010 - #0028695, теперь используем generate2
-     * Основной метод генерации файла
-     * @param type $payouts Массив с данными по выплатам
-     * @param type $paybacks Массив с данными по возвратам
+     * РџСЂРѕР±Р»РµРјР° СЃ Office 2010 - #0028695, С‚РµРїРµСЂСЊ РёСЃРїРѕР»СЊР·СѓРµРј generate2
+     * РћСЃРЅРѕРІРЅРѕР№ РјРµС‚РѕРґ РіРµРЅРµСЂР°С†РёРё С„Р°Р№Р»Р°
+     * @param type $payouts РњР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РїРѕ РІС‹РїР»Р°С‚Р°Рј
+     * @param type $paybacks РњР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РїРѕ РІРѕР·РІСЂР°С‚Р°Рј
      * @return type
      */
     public function generate($payouts, $paybacks)
@@ -56,13 +56,13 @@ class ReservesAdminBankReportGeneratorModel {
         ));
         $fmtM->setTextWrap();
 
-        $worksheet->write(0, 0, "№", $fmtT);
-        $worksheet->write(0, 1, "Номер сделки", $fmtT);
-        $worksheet->write(0, 2, "Исполнитель (ФИО)", $fmtT);
-        $worksheet->write(0, 3, "Сумма выплаты", $fmtT);
-        $worksheet->write(0, 4, "Реквизиты", $fmtT);
-        $worksheet->write(0, 5, "Заказчик (ФИО)", $fmtT);
-        $worksheet->write(0, 6, "Информационное письмо\nисполнителю", $fmtT);
+        $worksheet->write(0, 0, "в„–", $fmtT);
+        $worksheet->write(0, 1, "РќРѕРјРµСЂ СЃРґРµР»РєРё", $fmtT);
+        $worksheet->write(0, 2, "РСЃРїРѕР»РЅРёС‚РµР»СЊ (Р¤РРћ)", $fmtT);
+        $worksheet->write(0, 3, "РЎСѓРјРјР° РІС‹РїР»Р°С‚С‹", $fmtT);
+        $worksheet->write(0, 4, "Р РµРєРІРёР·РёС‚С‹", $fmtT);
+        $worksheet->write(0, 5, "Р—Р°РєР°Р·С‡РёРє (Р¤РРћ)", $fmtT);
+        $worksheet->write(0, 6, "РРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРµ РїРёСЃСЊРјРѕ\nРёСЃРїРѕР»РЅРёС‚РµР»СЋ", $fmtT);
         $worksheet->setRow(0, 30);
         
         $worksheet->setColumn(0, 0, 5);
@@ -92,13 +92,13 @@ class ReservesAdminBankReportGeneratorModel {
         
         $n += 3;
         
-        $worksheet->write($n, 0, "№", $fmtT);
-        $worksheet->write($n, 1, "Номер сделки", $fmtT);
-        $worksheet->write($n, 2, "Исполнитель (ФИО)", $fmtT);
-        $worksheet->write($n, 3, "Сумма выплаты", $fmtT);
-        $worksheet->write($n, 4, "Реквизиты", $fmtT);
-        $worksheet->write($n, 5, "Заказчик (ФИО)", $fmtT);
-        $worksheet->write($n, 6, "Отчет об арбитражном рассмотрении", $fmtT);
+        $worksheet->write($n, 0, "в„–", $fmtT);
+        $worksheet->write($n, 1, "РќРѕРјРµСЂ СЃРґРµР»РєРё", $fmtT);
+        $worksheet->write($n, 2, "РСЃРїРѕР»РЅРёС‚РµР»СЊ (Р¤РРћ)", $fmtT);
+        $worksheet->write($n, 3, "РЎСѓРјРјР° РІС‹РїР»Р°С‚С‹", $fmtT);
+        $worksheet->write($n, 4, "Р РµРєРІРёР·РёС‚С‹", $fmtT);
+        $worksheet->write($n, 5, "Р—Р°РєР°Р·С‡РёРє (Р¤РРћ)", $fmtT);
+        $worksheet->write($n, 6, "РћС‚С‡РµС‚ РѕР± Р°СЂР±РёС‚СЂР°Р¶РЅРѕРј СЂР°СЃСЃРјРѕС‚СЂРµРЅРёРё", $fmtT);
         $worksheet->setRow($n, 30);
         
         $n++;
@@ -124,10 +124,10 @@ class ReservesAdminBankReportGeneratorModel {
     }
     
     /**
-     * Основной метод генерации файла
-     * @param type $payouts Массив с данными по выплатам
-     * @param type $paybacks Массив с данными по возвратам
-     * @return string Путь к файлу
+     * РћСЃРЅРѕРІРЅРѕР№ РјРµС‚РѕРґ РіРµРЅРµСЂР°С†РёРё С„Р°Р№Р»Р°
+     * @param type $payouts РњР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РїРѕ РІС‹РїР»Р°С‚Р°Рј
+     * @param type $paybacks РњР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РїРѕ РІРѕР·РІСЂР°С‚Р°Рј
+     * @return string РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ
      */
     public function generate2($payouts, $paybacks)
     {
@@ -145,18 +145,18 @@ class ReservesAdminBankReportGeneratorModel {
         $sheet->getColumnDimension('F')->setAutoSize(true);
         $sheet->getColumnDimension('G')->setAutoSize(true);
         
-        //Шапка первой таблицы
+        //РЁР°РїРєР° РїРµСЂРІРѕР№ С‚Р°Р±Р»РёС†С‹
         $row = 1;
-        $sheet->setCellValueByColumnAndRow(0, $row, iconv("windows-1251", "utf-8", "№"));
-        $sheet->setCellValueByColumnAndRow(1, $row, iconv("windows-1251", "utf-8", "Номер сделки"));
-        $sheet->setCellValueByColumnAndRow(2, $row, iconv("windows-1251", "utf-8", "Исполнитель (ФИО)"));
-        $sheet->setCellValueByColumnAndRow(3, $row, iconv("windows-1251", "utf-8", "Сумма выплаты"));
-        $sheet->setCellValueByColumnAndRow(4, $row, iconv("windows-1251", "utf-8", "Реквизиты"));
-        $sheet->setCellValueByColumnAndRow(5, $row, iconv("windows-1251", "utf-8", "Заказчик (ФИО)"));
-        $sheet->setCellValueByColumnAndRow(6, $row, iconv("windows-1251", "utf-8", "Информационное письмо исполнителю"));
+        $sheet->setCellValueByColumnAndRow(0, $row, iconv("windows-1251", "utf-8", "в„–"));
+        $sheet->setCellValueByColumnAndRow(1, $row, iconv("windows-1251", "utf-8", "РќРѕРјРµСЂ СЃРґРµР»РєРё"));
+        $sheet->setCellValueByColumnAndRow(2, $row, iconv("windows-1251", "utf-8", "РСЃРїРѕР»РЅРёС‚РµР»СЊ (Р¤РРћ)"));
+        $sheet->setCellValueByColumnAndRow(3, $row, iconv("windows-1251", "utf-8", "РЎСѓРјРјР° РІС‹РїР»Р°С‚С‹"));
+        $sheet->setCellValueByColumnAndRow(4, $row, iconv("windows-1251", "utf-8", "Р РµРєРІРёР·РёС‚С‹"));
+        $sheet->setCellValueByColumnAndRow(5, $row, iconv("windows-1251", "utf-8", "Р—Р°РєР°Р·С‡РёРє (Р¤РРћ)"));
+        $sheet->setCellValueByColumnAndRow(6, $row, iconv("windows-1251", "utf-8", "РРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРµ РїРёСЃСЊРјРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЋ"));
         $sheet->getRowDimension($row)->setRowHeight(20);
         
-        //Содержимое первой таблицы
+        //РЎРѕРґРµСЂР¶РёРјРѕРµ РїРµСЂРІРѕР№ С‚Р°Р±Р»РёС†С‹
         foreach ($payouts as $key => $el) {
             $row++;
             
@@ -178,17 +178,17 @@ class ReservesAdminBankReportGeneratorModel {
 
         $row += 3;
 
-        //Шапка второй таблицы
-        $sheet->setCellValueByColumnAndRow(0, $row, iconv("windows-1251", "utf-8", "№"));
-        $sheet->setCellValueByColumnAndRow(1, $row, iconv("windows-1251", "utf-8", "Номер сделки"));
-        $sheet->setCellValueByColumnAndRow(2, $row, iconv("windows-1251", "utf-8", "Исполнитель (ФИО)"));
-        $sheet->setCellValueByColumnAndRow(3, $row, iconv("windows-1251", "utf-8", "Сумма выплаты"));
-        $sheet->setCellValueByColumnAndRow(4, $row, iconv("windows-1251", "utf-8", "Реквизиты"));
-        $sheet->setCellValueByColumnAndRow(5, $row, iconv("windows-1251", "utf-8", "Заказчик (ФИО)"));
-        $sheet->setCellValueByColumnAndRow(6, $row, iconv("windows-1251", "utf-8", "Отчет об арбитражном рассмотрении"));
+        //РЁР°РїРєР° РІС‚РѕСЂРѕР№ С‚Р°Р±Р»РёС†С‹
+        $sheet->setCellValueByColumnAndRow(0, $row, iconv("windows-1251", "utf-8", "в„–"));
+        $sheet->setCellValueByColumnAndRow(1, $row, iconv("windows-1251", "utf-8", "РќРѕРјРµСЂ СЃРґРµР»РєРё"));
+        $sheet->setCellValueByColumnAndRow(2, $row, iconv("windows-1251", "utf-8", "РСЃРїРѕР»РЅРёС‚РµР»СЊ (Р¤РРћ)"));
+        $sheet->setCellValueByColumnAndRow(3, $row, iconv("windows-1251", "utf-8", "РЎСѓРјРјР° РІС‹РїР»Р°С‚С‹"));
+        $sheet->setCellValueByColumnAndRow(4, $row, iconv("windows-1251", "utf-8", "Р РµРєРІРёР·РёС‚С‹"));
+        $sheet->setCellValueByColumnAndRow(5, $row, iconv("windows-1251", "utf-8", "Р—Р°РєР°Р·С‡РёРє (Р¤РРћ)"));
+        $sheet->setCellValueByColumnAndRow(6, $row, iconv("windows-1251", "utf-8", "РћС‚С‡РµС‚ РѕР± Р°СЂР±РёС‚СЂР°Р¶РЅРѕРј СЂР°СЃСЃРјРѕС‚СЂРµРЅРёРё"));
         $sheet->getRowDimension($row)->setRowHeight(20);
         
-        //Содержимое второй таблицы
+        //РЎРѕРґРµСЂР¶РёРјРѕРµ РІС‚РѕСЂРѕР№ С‚Р°Р±Р»РёС†С‹
         foreach ($paybacks as $key => $el) {
             $row++;
             
@@ -216,7 +216,7 @@ class ReservesAdminBankReportGeneratorModel {
     }
 
     /**
-     * Возвращяет имя файла
+     * Р’РѕР·РІСЂР°С‰СЏРµС‚ РёРјСЏ С„Р°Р№Р»Р°
      * @return string
      */
     private function getTempFileName()
@@ -226,7 +226,7 @@ class ReservesAdminBankReportGeneratorModel {
     }
     
     /**
-     * Сохраняет файл в базу и постоянную директорию
+     * РЎРѕС…СЂР°РЅСЏРµС‚ С„Р°Р№Р» РІ Р±Р°Р·Сѓ Рё РїРѕСЃС‚РѕСЏРЅРЅСѓСЋ РґРёСЂРµРєС‚РѕСЂРёСЋ
      * @param type $filename
      * @return boolean
      */
@@ -248,16 +248,16 @@ class ReservesAdminBankReportGeneratorModel {
     }
     
     /**
-     * Форматирует номер сделки
+     * Р¤РѕСЂРјР°С‚РёСЂСѓРµС‚ РЅРѕРјРµСЂ СЃРґРµР»РєРё
      * @param type $oid
      * @return type
      */
     protected function formatOrderName($oid) {
-        return 'БС#'.str_pad($oid, 7, '0', STR_PAD_LEFT);        
+        return 'Р‘РЎ#'.str_pad($oid, 7, '0', STR_PAD_LEFT);        
     }
     
     /**
-     * Возвращает полную путь к документу
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РїРѕР»РЅСѓСЋ РїСѓС‚СЊ Рє РґРѕРєСѓРјРµРЅС‚Сѓ
      * @param type $dir
      * @param type $filename
      * @return type

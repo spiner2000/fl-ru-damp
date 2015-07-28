@@ -14,7 +14,7 @@ $cur_prof = $promo_profs = null;
 $prfs  = new professions();
 $profs = $prfs->GetAllProfessions("",0, 1);
 
-// ищем текущую профессию
+// РёС‰РµРј С‚РµРєСѓС‰СѓСЋ РїСЂРѕС„РµСЃСЃРёСЋ
 foreach ($profs as $key => $value) {
     if ($value['id'] == $prof_id) {
         $cur_prof = $value;
@@ -23,7 +23,7 @@ foreach ($profs as $key => $value) {
 } 
 
 if (!$cur_prof) {
-    //Ищем профессии для блока
+    //РС‰РµРј РїСЂРѕС„РµСЃСЃРёРё РґР»СЏ Р±Р»РѕРєР°
     foreach ($profs as $key => $value) {
         $case = $prof_group_id ? $value['groupid'] == $prof_group_id : false;
         if ($case) {
@@ -33,11 +33,11 @@ if (!$cur_prof) {
 }
 
 
-// Сортировка категорий профессий по названию
+// РЎРѕСЂС‚РёСЂРѕРІРєР° РєР°С‚РµРіРѕСЂРёР№ РїСЂРѕС„РµСЃСЃРёР№ РїРѕ РЅР°Р·РІР°РЅРёСЋ
 //usort($profs, function($a, $b) { return strcmp($a['groupname'], $b['groupname']);});
 
 
-// Сортировка подкатегорий профессий по названию
+// РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕРґРєР°С‚РµРіРѕСЂРёР№ РїСЂРѕС„РµСЃСЃРёР№ РїРѕ РЅР°Р·РІР°РЅРёСЋ
 /*
 if ($promo_profs) {
     usort($promo_profs, function($a, $b) { return strcmp($a['profname'], $b['profname']);});
@@ -67,17 +67,17 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                         <?php
                         $crumbs = array();
                         if($cur_prof) {
-                            $crumbs[] = array("title"=>"Каталог фрилансеров", "url"=>"/freelancers/");
+                            $crumbs[] = array("title"=>"РљР°С‚Р°Р»РѕРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ", "url"=>"/freelancers/");
                             $crumbs[] = array("title"=>$cur_prof['groupname'], "url"=>"/freelancers/".$cur_prof['grouplink'].'/');
                             $crumbs[] = array("title"=>$cur_prof['profname'], "url"=>"");
                             $pageTitle = $cur_prof['groupname'] . " / " . $cur_prof['profname'];
                         } elseif ($prof_group_id && $prof_name) {
-                            $crumbs[] = array("title"=>"Каталог фрилансеров", "url"=>"/freelancers/");
+                            $crumbs[] = array("title"=>"РљР°С‚Р°Р»РѕРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ", "url"=>"/freelancers/");
                             $crumbs[] = array("title"=>$prof_name, "url"=>"");
                             $pageTitle = $prof_name;
                         } else {
-                            //$crumbs[] = array("title"=>"Все фрилансеры", "url"=>"");
-                            $pageTitle = 'Каталог фрилансеров';
+                            //$crumbs[] = array("title"=>"Р’СЃРµ С„СЂРёР»Р°РЅСЃРµСЂС‹", "url"=>"");
+                            $pageTitle = 'РљР°С‚Р°Р»РѕРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ';
                         }
                         ?>
     
@@ -90,7 +90,7 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
         </span>
         <?= (isset($page_h1) && $page_h1)?$page_h1:$pageTitle ?>
     </h1>
-    <?php // Категории (профессии) для фильтрации ?>
+    <?php // РљР°С‚РµРіРѕСЂРёРё (РїСЂРѕС„РµСЃСЃРёРё) РґР»СЏ С„РёР»СЊС‚СЂР°С†РёРё ?>
     <?php include (dirname(__FILE__).'/tpl.categories_top.php'); ?>
                         <?
                         if($f_country_id && $cur_prof['id']) {
@@ -100,7 +100,7 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                         ?>
 
                         <?php
-                            // если пользователь неавторизован и на страницу попали с Директа или AdWords, то не показываем рекламный блок
+                            // РµСЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµР°РІС‚РѕСЂРёР·РѕРІР°РЅ Рё РЅР° СЃС‚СЂР°РЅРёС†Сѓ РїРѕРїР°Р»Рё СЃ Р”РёСЂРµРєС‚Р° РёР»Рё AdWords, С‚Рѕ РЅРµ РїРѕРєР°Р·С‹РІР°РµРј СЂРµРєР»Р°РјРЅС‹Р№ Р±Р»РѕРє
                             $utm_source = $_GET['utm_source'];
                             if ( !( (get_uid(0) < 1) && ($utm_source === "yandex" || $utm_source === "google") ) ):
                         ?>
@@ -110,7 +110,7 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
 			<?php endif; ?>
                         
                         
-						<!-- Дополнительный фильтр -->
+						<!-- Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ С„РёР»СЊС‚СЂ -->
 						<?php
 						$aLinks = $freelancer_seo->fseoGetLinksBlock( 1, $prof_id );
 						?>
@@ -119,8 +119,8 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
 							<b class="b1"></b>
 							<b class="b2"></b>
 							<div class="flt-bar">
-								<a href="javascript: void(0);" class="flt-tgl-lnk">Развернуть</a>
-								<h3>Дополнительный фильтр <span id="flt-hide-cnt"></span></h3>
+								<a href="javascript: void(0);" class="flt-tgl-lnk">Р Р°Р·РІРµСЂРЅСѓС‚СЊ</a>
+								<h3>Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ С„РёР»СЊС‚СЂ <span id="flt-hide-cnt"></span></h3>
 							</div>
 							<div class="flt-cnt" id="flt-hide-content">
 								<div class="flt-block flt-b-fc flt-b-lc">
@@ -146,7 +146,7 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
 							<b class="b1"></b>
 						</div>
 						<?php endif; ?>
-						<!-- конец Дополнительный фильтр -->
+						<!-- РєРѕРЅРµС† Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ С„РёР»СЊС‚СЂ -->
                                                 
                                                 
                                                 
@@ -160,7 +160,7 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                             
                             if(false):
                             
-                            $region_filter_txt = '<strong>Все</strong>';
+                            $region_filter_txt = '<strong>Р’СЃРµ</strong>';
                             if($filter_apply) {
                                 $region_filter_country_id = $mFilter['country'];
                                 $region_filter_city_id = $mFilter['city'];
@@ -196,7 +196,7 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                             ?>
                                 
                             <?php if(false): ?>    
-                            <div class="region_choose">Регион: <?=$region_filter_txt?> &nbsp; <a href="#" onClick="$('popup_region_filter').toggleClass('b-shadow_hide'); return false;">Изменить</a></div>
+                            <div class="region_choose">Р РµРіРёРѕРЅ: <?=$region_filter_txt?> &nbsp; <a href="#" onClick="$('popup_region_filter').toggleClass('b-shadow_hide'); return false;">РР·РјРµРЅРёС‚СЊ</a></div>
                             <?php endif; ?>
                             
                             
@@ -204,11 +204,11 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                             <div class="b-menu b-menu_padbot_10"  data-accordion="true" data-accordion-descriptor="worktype">
                             <ul class="b-menu__list">
                                 <? seo_start();?>
-                                <li class="b-menu__item <?php if ($show_all_freelancers):?>b-menu__item_active <?php endif;?>" <?php if ($show_all_freelancers):?> data-accordion-opener="true" data-accordion-descriptor="worktype"<?php endif;?>><a class="b-menu__link" href="/freelancers/<?=($prof_link ? $prof_link : '')?>" title="Все фрилансеры"><span class="b-menu__b1">Все фрилансеры</span></a></li>
-				<li class="b-menu__item"><a class="b-menu__link" href="/portfolio/<?=($prof_id ? '?prof='.$prof_id : '')?>" title="Работы"><span class="b-menu__b1">Работы</span></a></li>
-				<li class="b-menu__item"><a class="b-menu__link" href="/clients/<?=($prof_id)?'?prof='.$prof_id:""?>" title="Клиенты"><span class="b-menu__b1">Клиенты</span></a></li>
+                                <li class="b-menu__item <?php if ($show_all_freelancers):?>b-menu__item_active <?php endif;?>" <?php if ($show_all_freelancers):?> data-accordion-opener="true" data-accordion-descriptor="worktype"<?php endif;?>><a class="b-menu__link" href="/freelancers/<?=($prof_link ? $prof_link : '')?>" title="Р’СЃРµ С„СЂРёР»Р°РЅСЃРµСЂС‹"><span class="b-menu__b1">Р’СЃРµ С„СЂРёР»Р°РЅСЃРµСЂС‹</span></a></li>
+				<li class="b-menu__item"><a class="b-menu__link" href="/portfolio/<?=($prof_id ? '?prof='.$prof_id : '')?>" title="Р Р°Р±РѕС‚С‹"><span class="b-menu__b1">Р Р°Р±РѕС‚С‹</span></a></li>
+				<li class="b-menu__item"><a class="b-menu__link" href="/clients/<?=($prof_id)?'?prof='.$prof_id:""?>" title="РљР»РёРµРЅС‚С‹"><span class="b-menu__b1">РљР»РёРµРЅС‚С‹</span></a></li>
 				<li class="b-menu__item b-menu__item_last b-page__ipad b-page__iphone"><a class="b-menu__link" href="/profi/"><span class="b-menu__b1">PROFI</span></a></li>
-				<li class="b-menu__item b-menu__item_padbot_null b-page__desktop"><a class="b-menu__link" href="/profi/"><span class="b-icon b-icon__profi b-icon_valign_bas" data-profi-txt="Лучшие фрилансеры сайта FL.ru. Работают на сайте более 2-х лет, прошли верификацию личности и имеют не менее 98% положительных отзывов."></span>
+				<li class="b-menu__item b-menu__item_padbot_null b-page__desktop"><a class="b-menu__link" href="/profi/"><span class="b-icon b-icon__profi b-icon_valign_bas" data-profi-txt="Р›СѓС‡С€РёРµ С„СЂРёР»Р°РЅСЃРµСЂС‹ СЃР°Р№С‚Р° FL.ru. Р Р°Р±РѕС‚Р°СЋС‚ РЅР° СЃР°Р№С‚Рµ Р±РѕР»РµРµ 2-С… Р»РµС‚, РїСЂРѕС€Р»Рё РІРµСЂРёС„РёРєР°С†РёСЋ Р»РёС‡РЅРѕСЃС‚Рё Рё РёРјРµСЋС‚ РЅРµ РјРµРЅРµРµ 98% РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… РѕС‚Р·С‹РІРѕРІ."></span>
 </a></li>
                                 <?= seo_end(); ?>
                                 
@@ -257,42 +257,42 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                                     </th>
                                     <th class="<? if (!isset($order) || $order == '' || $order == 'gnr') { ?> cf-sort-active cf-lc <? } else { ?> cf-sortable cf-lc <? } ?> <? if (!isset($order) || $order == '' || $order == 'gnr') { ?><? if (isset($direction) && $direction == 1) { ?>cf-sort-desc<? } else { ?>cf-sort-asc<? } ?><? } ?>">
 
-                                    <a href=".?order=gnr<?=$hhf_prm?><? if (!isset($order) || $order == '' || $order == 'gnr') { ?>&dir=<?if ($direction == 1) { ?>0<? } else { ?>1<? } } ?><?=($fav_show)?"&fs=".$fav_show:""?><?=($page>1)?"&page=".$page:""?><?=($keyword)?"&keyword=".$keyword:""?><?=($user_info['login'])?"&login=".$user_info['login']:""?><?=($user_info['uname'])?"&uname=".$user_info['uname']:""?><?=($user_info['usurname'])?"&usurname=".$user_info['usurname']:""?><?=($user_info['site'])?"&site=".$user_info['site']:""?><?=($user_info['icq'])?"&icq=".$user_info['icq']:""?><?=($user_info['phone'])?"&phone=".$user_info['phone']:""?><?=($user_info['ljuser'])?"&ljuser=".$user_info['ljuser']:""?><?=($user_info['servises'])?"&servises=".$user_info['servises']:""?><?=($excl['city'])?"&city=".$excl['city']:""?><?=($excl['country'])?"&country=".$excl['country']:""?>">Рейтинг</a></th>
+                                    <a href=".?order=gnr<?=$hhf_prm?><? if (!isset($order) || $order == '' || $order == 'gnr') { ?>&dir=<?if ($direction == 1) { ?>0<? } else { ?>1<? } } ?><?=($fav_show)?"&fs=".$fav_show:""?><?=($page>1)?"&page=".$page:""?><?=($keyword)?"&keyword=".$keyword:""?><?=($user_info['login'])?"&login=".$user_info['login']:""?><?=($user_info['uname'])?"&uname=".$user_info['uname']:""?><?=($user_info['usurname'])?"&usurname=".$user_info['usurname']:""?><?=($user_info['site'])?"&site=".$user_info['site']:""?><?=($user_info['icq'])?"&icq=".$user_info['icq']:""?><?=($user_info['phone'])?"&phone=".$user_info['phone']:""?><?=($user_info['ljuser'])?"&ljuser=".$user_info['ljuser']:""?><?=($user_info['servises'])?"&servises=".$user_info['servises']:""?><?=($excl['city'])?"&city=".$excl['city']:""?><?=($excl['country'])?"&country=".$excl['country']:""?>">Р РµР№С‚РёРЅРі</a></th>
 
                                     <th class="<? if (isset($order) && $order == 'sbr') { ?> cf-sort-active <? } else { ?> cf-sortable <? } ?> <? if (isset($order) && $order == 'sbr') { ?><? if (isset($direction) && $direction == 1) { ?>cf-sort-desc<? } else { ?>cf-sort-asc<? } ?><? } ?>">
 
-                                    <a href=".?order=sbr<?=$hhf_prm?><? if (isset($order) && $order == 'sbr') { ?>&dir=<? if ($direction == 1) { ?>0<? } else { ?>1<? } } ?><?=($fav_show)?"&fs=".$fav_show:""?><?=($page>1)?"&page=".$page:""?><?=($keyword)?"&keyword=".$keyword:""?><?=($user_info['login'])?"&login=".$user_info['login']:""?><?=($user_info['uname'])?"&uname=".$user_info['uname']:""?><?=($user_info['usurname'])?"&usurname=".$user_info['usurname']:""?><?=($user_info['site'])?"&site=".$user_info['site']:""?><?=($user_info['icq'])?"&icq=".$user_info['icq']:""?><?=($user_info['phone'])?"&phone=".$user_info['phone']:""?><?=($user_info['ljuser'])?"&ljuser=".$user_info['ljuser']:""?><?=($user_info['servises'])?"&servises=".$user_info['servises']:""?><?=($excl['city'])?"&city=".$excl['city']:""?><?=($excl['country'])?"&country=".$excl['country']:""?>">Рекомен-<br />дации</a></th>    
+                                    <a href=".?order=sbr<?=$hhf_prm?><? if (isset($order) && $order == 'sbr') { ?>&dir=<? if ($direction == 1) { ?>0<? } else { ?>1<? } } ?><?=($fav_show)?"&fs=".$fav_show:""?><?=($page>1)?"&page=".$page:""?><?=($keyword)?"&keyword=".$keyword:""?><?=($user_info['login'])?"&login=".$user_info['login']:""?><?=($user_info['uname'])?"&uname=".$user_info['uname']:""?><?=($user_info['usurname'])?"&usurname=".$user_info['usurname']:""?><?=($user_info['site'])?"&site=".$user_info['site']:""?><?=($user_info['icq'])?"&icq=".$user_info['icq']:""?><?=($user_info['phone'])?"&phone=".$user_info['phone']:""?><?=($user_info['ljuser'])?"&ljuser=".$user_info['ljuser']:""?><?=($user_info['servises'])?"&servises=".$user_info['servises']:""?><?=($excl['city'])?"&city=".$excl['city']:""?><?=($excl['country'])?"&country=".$excl['country']:""?>">Р РµРєРѕРјРµРЅ-<br />РґР°С†РёРё</a></th>    
                                     
                                     <th class="<? if (isset($order) && $order == 'ops') { ?> cf-sort-active <? } else { ?> cf-sortable <? } ?> <? if (isset($order) && $order == 'ops') { ?><? if (isset($direction) && $direction == 1) { ?>cf-sort-desc<? } else { ?>cf-sort-asc<? } ?><? } ?>">
 
-                                    <a href=".?order=ops<?=$hhf_prm?><? if (isset($order) && $order == 'ops') { ?>&dir=<? if ($direction == 1) { ?>0<? } else { ?>1<? } } ?><?=($fav_show)?"&fs=".$fav_show:""?><?=($page>1)?"&page=".$page:""?><?=($keyword)?"&keyword=".$keyword:""?><?=($user_info['login'])?"&login=".$user_info['login']:""?><?=($user_info['uname'])?"&uname=".$user_info['uname']:""?><?=($user_info['usurname'])?"&usurname=".$user_info['usurname']:""?><?=($user_info['site'])?"&site=".$user_info['site']:""?><?=($user_info['icq'])?"&icq=".$user_info['icq']:""?><?=($user_info['phone'])?"&phone=".$user_info['phone']:""?><?=($user_info['ljuser'])?"&ljuser=".$user_info['ljuser']:""?><?=($user_info['servises'])?"&servises=".$user_info['servises']:""?><?=($excl['city'])?"&city=".$excl['city']:""?><?=($excl['country'])?"&country=".$excl['country']:""?>">Мнения</a></th>
+                                    <a href=".?order=ops<?=$hhf_prm?><? if (isset($order) && $order == 'ops') { ?>&dir=<? if ($direction == 1) { ?>0<? } else { ?>1<? } } ?><?=($fav_show)?"&fs=".$fav_show:""?><?=($page>1)?"&page=".$page:""?><?=($keyword)?"&keyword=".$keyword:""?><?=($user_info['login'])?"&login=".$user_info['login']:""?><?=($user_info['uname'])?"&uname=".$user_info['uname']:""?><?=($user_info['usurname'])?"&usurname=".$user_info['usurname']:""?><?=($user_info['site'])?"&site=".$user_info['site']:""?><?=($user_info['icq'])?"&icq=".$user_info['icq']:""?><?=($user_info['phone'])?"&phone=".$user_info['phone']:""?><?=($user_info['ljuser'])?"&ljuser=".$user_info['ljuser']:""?><?=($user_info['servises'])?"&servises=".$user_info['servises']:""?><?=($excl['city'])?"&city=".$excl['city']:""?><?=($excl['country'])?"&country=".$excl['country']:""?>">РњРЅРµРЅРёСЏ</a></th>
                                     <th class="<? if (isset($order) && $order == 'pph') { ?> cf-sort-active <? } else { ?> cf-sortable <? } ?> <? if (isset($order) && $order == 'pph') { ?><? if (isset($direction) && $direction == 1) { ?>cf-sort-desc<? } else { ?>cf-sort-asc<? } ?><? } ?>">
 
-                                    <a href=".?order=pph<?=$hhf_prm?><? if (isset($order) && $order == 'pph') { ?>&dir=<? if ($direction == 1) { ?>0<? } else { ?>1<? } } else { ?>&dir=1<? } ?><?=($fav_show)?"&fs=".$fav_show:""?><?=($page>1)?"&page=".$page:""?><?=($keyword)?"&keyword=".$keyword:""?><?=($user_info['login'])?"&login=".$user_info['login']:""?><?=($user_info['uname'])?"&uname=".$user_info['uname']:""?><?=($user_info['usurname'])?"&usurname=".$user_info['usurname']:""?><?=($user_info['site'])?"&site=".$user_info['site']:""?><?=($user_info['icq'])?"&icq=".$user_info['icq']:""?><?=($user_info['phone'])?"&phone=".$user_info['phone']:""?><?=($user_info['ljuser'])?"&ljuser=".$user_info['ljuser']:""?><?=($user_info['servises'])?"&servises=".$user_info['servises']:""?><?=($excl['city'])?"&city=".$excl['city']:""?><?=($excl['country'])?"&country=".$excl['country']:""?>">Цена <br />за час</a></th>
+                                    <a href=".?order=pph<?=$hhf_prm?><? if (isset($order) && $order == 'pph') { ?>&dir=<? if ($direction == 1) { ?>0<? } else { ?>1<? } } else { ?>&dir=1<? } ?><?=($fav_show)?"&fs=".$fav_show:""?><?=($page>1)?"&page=".$page:""?><?=($keyword)?"&keyword=".$keyword:""?><?=($user_info['login'])?"&login=".$user_info['login']:""?><?=($user_info['uname'])?"&uname=".$user_info['uname']:""?><?=($user_info['usurname'])?"&usurname=".$user_info['usurname']:""?><?=($user_info['site'])?"&site=".$user_info['site']:""?><?=($user_info['icq'])?"&icq=".$user_info['icq']:""?><?=($user_info['phone'])?"&phone=".$user_info['phone']:""?><?=($user_info['ljuser'])?"&ljuser=".$user_info['ljuser']:""?><?=($user_info['servises'])?"&servises=".$user_info['servises']:""?><?=($excl['city'])?"&city=".$excl['city']:""?><?=($excl['country'])?"&country=".$excl['country']:""?>">Р¦РµРЅР° <br />Р·Р° С‡Р°СЃ</a></th>
 
                                     <? if ($prof_type) { ?>
 
                                     <th class="<? if (isset($order) && $order == 'pp1') { ?> cf-sort-active <? } else { ?> cf-sortable <? } ?> <? if (isset($order) && $order == 'pp1') { ?><? if (isset($direction) && $direction == 1) { ?>cf-sort-desc<? } else { ?>cf-sort-asc<? } ?><? } ?>">
 
-                                    <a href=".?order=pp1<?=$hhf_prm?><? if (isset($order) && $order == 'pp1') { ?>&dir=<? if ($direction == 1) { ?>0<? } else { ?>1<? } } else { ?>&dir=1<? } ?><?=($fav_show)?"&fs=".$fav_show:""?><?=($page>1)?"&page=".$page:""?><?=($keyword)?"&keyword=".$keyword:""?><?=($user_info['login'])?"&login=".$user_info['login']:""?><?=($user_info['uname'])?"&uname=".$user_info['uname']:""?><?=($user_info['usurname'])?"&usurname=".$user_info['usurname']:""?><?=($user_info['site'])?"&site=".$user_info['site']:""?><?=($user_info['icq'])?"&icq=".$user_info['icq']:""?><?=($user_info['phone'])?"&phone=".$user_info['phone']:""?><?=($user_info['ljuser'])?"&ljuser=".$user_info['ljuser']:""?><?=($user_info['servises'])?"&servises=".$user_info['servises']:""?><?=($excl['city'])?"&city=".$excl['city']:""?><?=($excl['country'])?"&country=".$excl['country']:""?>">Цена за<br />1000 зн.</a></th>
+                                    <a href=".?order=pp1<?=$hhf_prm?><? if (isset($order) && $order == 'pp1') { ?>&dir=<? if ($direction == 1) { ?>0<? } else { ?>1<? } } else { ?>&dir=1<? } ?><?=($fav_show)?"&fs=".$fav_show:""?><?=($page>1)?"&page=".$page:""?><?=($keyword)?"&keyword=".$keyword:""?><?=($user_info['login'])?"&login=".$user_info['login']:""?><?=($user_info['uname'])?"&uname=".$user_info['uname']:""?><?=($user_info['usurname'])?"&usurname=".$user_info['usurname']:""?><?=($user_info['site'])?"&site=".$user_info['site']:""?><?=($user_info['icq'])?"&icq=".$user_info['icq']:""?><?=($user_info['phone'])?"&phone=".$user_info['phone']:""?><?=($user_info['ljuser'])?"&ljuser=".$user_info['ljuser']:""?><?=($user_info['servises'])?"&servises=".$user_info['servises']:""?><?=($excl['city'])?"&city=".$excl['city']:""?><?=($excl['country'])?"&country=".$excl['country']:""?>">Р¦РµРЅР° Р·Р°<br />1000 Р·РЅ.</a></th>
 
                                     <? } else { ?>
 
                                     <th class="<? if (isset($order) && $order == 'ppp') { ?> cf-sort-active <? } else { ?> cf-sortable <? } ?>  <? if (isset($order) && $order == 'ppp') { ?><? if (isset($direction) && $direction == 1) { ?>cf-sort-desc<? } else { ?>cf-sort-asc<? } ?><? } ?>">
 
-                                    <a href=".?order=ppp<?=$hhf_prm?><? if (isset($order) && $order == 'ppp') { ?>&dir=<? if ($direction == 1) { ?>0<? } else { ?>1<? } } else { ?>&dir=1<? } ?><?=($fav_show)?"&fs=".$fav_show:""?><?=($page>1)?"&page=".$page:""?><?=($keyword)?"&keyword=".$keyword:""?><?=($user_info['login'])?"&login=".$user_info['login']:""?><?=($user_info['uname'])?"&uname=".$user_info['uname']:""?><?=($user_info['usurname'])?"&usurname=".$user_info['usurname']:""?><?=($user_info['site'])?"&site=".$user_info['site']:""?><?=($user_info['icq'])?"&icq=".$user_info['icq']:""?><?=($user_info['phone'])?"&phone=".$user_info['phone']:""?><?=($user_info['ljuser'])?"&ljuser=".$user_info['ljuser']:""?><?=($user_info['servises'])?"&servises=".$user_info['servises']:""?><?=($excl['city'])?"&city=".$excl['city']:""?><?=($excl['country'])?"&country=".$excl['country']:""?>">Цена <br />за проект</a></th>
+                                    <a href=".?order=ppp<?=$hhf_prm?><? if (isset($order) && $order == 'ppp') { ?>&dir=<? if ($direction == 1) { ?>0<? } else { ?>1<? } } else { ?>&dir=1<? } ?><?=($fav_show)?"&fs=".$fav_show:""?><?=($page>1)?"&page=".$page:""?><?=($keyword)?"&keyword=".$keyword:""?><?=($user_info['login'])?"&login=".$user_info['login']:""?><?=($user_info['uname'])?"&uname=".$user_info['uname']:""?><?=($user_info['usurname'])?"&usurname=".$user_info['usurname']:""?><?=($user_info['site'])?"&site=".$user_info['site']:""?><?=($user_info['icq'])?"&icq=".$user_info['icq']:""?><?=($user_info['phone'])?"&phone=".$user_info['phone']:""?><?=($user_info['ljuser'])?"&ljuser=".$user_info['ljuser']:""?><?=($user_info['servises'])?"&servises=".$user_info['servises']:""?><?=($excl['city'])?"&city=".$excl['city']:""?><?=($excl['country'])?"&country=".$excl['country']:""?>">Р¦РµРЅР° <br />Р·Р° РїСЂРѕРµРєС‚</a></th>
 
                                     <? } ?>
 
                                     <th class="<? if (isset($order) && $order == 'ppm') { ?> cf-sort-active cf-rc <? } else { ?> cf-sortable cf-rc <? } ?> <? if (isset($order) && $order == 'ppm') { ?><? if (isset($direction) && $direction == 1) { ?>cf-sort-desc<? } else { ?>cf-sort-asc<? } ?><? } ?>">
 
-                                    <a href=".?order=ppm<?=$hhf_prm?><? if (isset($order) && $order == 'ppm') { ?>&dir=<? if ($direction == 1) { ?>0<? } else { ?>1<? } } else { ?>&dir=1<? } ?><?=($fav_show)?"&fs=".$fav_show:""?><?=($page>1)?"&page=".$page:""?><?=($keyword)?"&keyword=".$keyword:""?><?=($user_info['login'])?"&login=".$user_info['login']:""?><?=($user_info['uname'])?"&uname=".$user_info['uname']:""?><?=($user_info['usurname'])?"&usurname=".$user_info['usurname']:""?><?=($user_info['site'])?"&site=".$user_info['site']:""?><?=($user_info['icq'])?"&icq=".$user_info['icq']:""?><?=($user_info['phone'])?"&phone=".$user_info['phone']:""?><?=($user_info['ljuser'])?"&ljuser=".$user_info['ljuser']:""?><?=($user_info['servises'])?"&servises=".$user_info['servises']:""?><?=($excl['city'])?"&city=".$excl['city']:""?><?=($excl['country'])?"&country=".$excl['country']:""?>">Цена <br />в месяц</a></th>
+                                    <a href=".?order=ppm<?=$hhf_prm?><? if (isset($order) && $order == 'ppm') { ?>&dir=<? if ($direction == 1) { ?>0<? } else { ?>1<? } } else { ?>&dir=1<? } ?><?=($fav_show)?"&fs=".$fav_show:""?><?=($page>1)?"&page=".$page:""?><?=($keyword)?"&keyword=".$keyword:""?><?=($user_info['login'])?"&login=".$user_info['login']:""?><?=($user_info['uname'])?"&uname=".$user_info['uname']:""?><?=($user_info['usurname'])?"&usurname=".$user_info['usurname']:""?><?=($user_info['site'])?"&site=".$user_info['site']:""?><?=($user_info['icq'])?"&icq=".$user_info['icq']:""?><?=($user_info['phone'])?"&phone=".$user_info['phone']:""?><?=($user_info['ljuser'])?"&ljuser=".$user_info['ljuser']:""?><?=($user_info['servises'])?"&servises=".$user_info['servises']:""?><?=($excl['city'])?"&city=".$excl['city']:""?><?=($excl['country'])?"&country=".$excl['country']:""?>">Р¦РµРЅР° <br />РІ РјРµСЃСЏС†</a></th>
                                 </tr>
                             </thead>
                                 <?else:?>
                                 <thead>
                                 <tr>
-                                    <th class="cf-getpro"><?if( $_SESSION['login'] && !is_pro() ):?><a href="/payed/">Получить аккаунт</a> <a href="/payed/"><?=is_emp()?view_pro_emp():view_pro(false,false,false)?></a><?endif;?></th>      
+                                    <th class="cf-getpro"><?if( $_SESSION['login'] && !is_pro() ):?><a href="/payed/">РџРѕР»СѓС‡РёС‚СЊ Р°РєРєР°СѓРЅС‚</a> <a href="/payed/"><?=is_emp()?view_pro_emp():view_pro(false,false,false)?></a><?endif;?></th>      
                                     
                                 </tr> 
                                 </thead>
@@ -306,10 +306,10 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                                         <td colspan="7" class="">
                                             <div class="cat-add b-layout__txt b-layout__txt_center b-layout__txt_bold b-layout_pad_5">
                                                 <div class="b-icon b-icon__cat_add b-icon_absolute b-icon_left_-30"></div>
-                                                Ваш профиль временно скрыт в этом разделе &mdash; для его восстановления 
-                                                <a class="b-layout__link b-layout__link_bold b-layout__link_no-decorat" href="/users/<?=$_SESSION['login']?>/setup/specaddsetup/">измените специализацию</a> 
+                                                Р’Р°С€ РїСЂРѕС„РёР»СЊ РІСЂРµРјРµРЅРЅРѕ СЃРєСЂС‹С‚ РІ СЌС‚РѕРј СЂР°Р·РґРµР»Рµ &mdash; РґР»СЏ РµРіРѕ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ 
+                                                <a class="b-layout__link b-layout__link_bold b-layout__link_no-decorat" href="/users/<?=$_SESSION['login']?>/setup/specaddsetup/">РёР·РјРµРЅРёС‚Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ</a> 
                                                 <?php if (!is_pro()): ?>
-                                                    или <a class="b-layout__link b-layout__link_bold b-layout__link_no-decorat" href="/payed/">купите аккаунт PRO</a>
+                                                    РёР»Рё <a class="b-layout__link b-layout__link_bold b-layout__link_no-decorat" href="/payed/">РєСѓРїРёС‚Рµ Р°РєРєР°СѓРЅС‚ PRO</a>
                                                 <?php endif; ?>
                                             </div>
                                         </td>
@@ -327,9 +327,9 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
        <div class="cat-add b-layout__txt b-layout__txt_center b-layout__txt_bold b-layout_pad_5">
            <div class="b-icon b-icon__cat_add b-icon_absolute b-icon_left_-30"></div>
            <a class="b-layout__link b-layout__link_bold b-layout__link_no-decorat" onClick="$('quick_payment_frlbind').toggleClass('b-shadow_hide');return false;" href="#">
-               Закрепите профиль сверху на неделю за <?=view_cost_format(quickPaymentPopupFrlbind::getInstance()->getPrice(),false);?> руб.
+               Р—Р°РєСЂРµРїРёС‚Рµ РїСЂРѕС„РёР»СЊ СЃРІРµСЂС…Сѓ РЅР° РЅРµРґРµР»СЋ Р·Р° <?=view_cost_format(quickPaymentPopupFrlbind::getInstance()->getPrice(),false);?> СЂСѓР±.
            </a> 
-           &mdash; будьте первым и самым заметным для Заказчиков!
+           &mdash; Р±СѓРґСЊС‚Рµ РїРµСЂРІС‹Рј Рё СЃР°РјС‹Рј Р·Р°РјРµС‚РЅС‹Рј РґР»СЏ Р—Р°РєР°Р·С‡РёРєРѕРІ!
        </div>
    </td>
 </tr> 
@@ -344,14 +344,14 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
    <td colspan="7" class="">
        <div class="cat-add b-layout__txt b-layout__txt_center b-layout__txt_bold b-layout_pad_5">
            <div class="b-icon b-icon__cat_add b-icon_absolute b-icon_left_-30"></div>
-           Ваш профиль закреплен до <?=dateFormat('d.m.Y H:i', $binded_to)?> &mdash;
+           Р’Р°С€ РїСЂРѕС„РёР»СЊ Р·Р°РєСЂРµРїР»РµРЅ РґРѕ <?=dateFormat('d.m.Y H:i', $binded_to)?> &mdash;
            <a class="b-layout__link b-layout__link_bold b-layout__link_no-decorat" onClick="$('quick_payment_frlbind').toggleClass('b-shadow_hide');return false;" href="#">
-               продлите срок закрепления
+               РїСЂРѕРґР»РёС‚Рµ СЃСЂРѕРє Р·Р°РєСЂРµРїР»РµРЅРёСЏ
            </a> 
            <?php if (!$is_bind_first): ?>
-           или 
+           РёР»Рё 
            <a class="b-layout__link b-layout__link_bold b-layout__link_no-decorat" onClick="$('quick_payment_frlbindup').toggleClass('b-shadow_hide');return false;" href="#">
-               поднимите профиль на первое место
+               РїРѕРґРЅРёРјРёС‚Рµ РїСЂРѕС„РёР»СЊ РЅР° РїРµСЂРІРѕРµ РјРµСЃС‚Рѕ
            </a> 
            <?php endif; ?>
        </div>
@@ -368,7 +368,7 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                             <tbody>  
                                 <?if(!$frls):?>
                                 <tr>
-                                    <td ><?=$filter_apply?"Попробуйте изменить критерии поиска":"Фрилансеров не найдено"?> </td>
+                                    <td ><?=$filter_apply?"РџРѕРїСЂРѕР±СѓР№С‚Рµ РёР·РјРµРЅРёС‚СЊ РєСЂРёС‚РµСЂРёРё РїРѕРёСЃРєР°":"Р¤СЂРёР»Р°РЅСЃРµСЂРѕРІ РЅРµ РЅР°Р№РґРµРЅРѕ"?> </td>
                                 </tr>  
                                 <?endif;?>
                             
@@ -393,7 +393,7 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                     $userOnPage = (($uid == $frl['uid']) && ($frl['is_pro'] == 't'));
                 endif;
                 
-                //Фрилансер смотрит свою позицию в каталоге
+                //Р¤СЂРёР»Р°РЅСЃРµСЂ СЃРјРѕС‚СЂРёС‚ СЃРІРѕСЋ РїРѕР·РёС†РёСЋ РІ РєР°С‚Р°Р»РѕРіРµ
                 $is_owner = $frl['uid'] == $uid && $frl['is_pro'] == 't';
         ?>
 
@@ -417,7 +417,7 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                                             print(view_user2($frl,'','freelancer-name','','?f='.stat_collector::REFID_CATALOG.'&stamp='.$_SESSION['stamp'].$kw_param.'#'.$anchor,TRUE, TRUE, "yaCounter6051055.reachGoal('frl_cat_ref');"));
                                             ?>
                                             <span class="cf-spec">
-                                                <?=((!$section && $prof_id <= 0) || $frl['its_his_main_spec']=='t' ? 'Специализация' : 'Дополнительная специализация')?>: <?=$prof_id > 0 ? $prof_name : $frl['profname']?>
+                                                <?=((!$section && $prof_id <= 0) || $frl['its_his_main_spec']=='t' ? 'РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ' : 'Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏ')?>: <?=$prof_id > 0 ? $prof_name : $frl['profname']?>
                                                 <?php
                                                 $frl_info_for_reg =unserialize($frl['info_for_reg']); 
                                                 $str_location = '';
@@ -434,7 +434,7 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                                                     }
                                                 }
                                                 if($str_location) {
-                                                    echo "<br>Регион: {$str_location}";
+                                                    echo "<br>Р РµРіРёРѕРЅ: {$str_location}";
                                                 }
                                                 ?>
                                             </span>
@@ -461,7 +461,7 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                                         <?= seo_end(); ?>
                                     </td>
                                     <td style="width:65px;"><?=view_cost2($frl['frl_cost_hour'], '', '', true, $frl['frl_cost_type_hour'])?></td>
-                                    <td class="price_prj" style="width:70px;"><? if ($prof_type) { ?><?=view_cost2($frl['cost_1000'], '', '', true, $frl['cost_type'])?><? } else { ?><?=view_cost2($frl['cost_from'], 'от', '', true, $frl['cost_type'])?><? } ?></td>
+                                    <td class="price_prj" style="width:70px;"><? if ($prof_type) { ?><?=view_cost2($frl['cost_1000'], '', '', true, $frl['cost_type'])?><? } else { ?><?=view_cost2($frl['cost_from'], 'РѕС‚', '', true, $frl['cost_type'])?><? } ?></td>
                                     <td style="width:65px;"><?=view_cost2($frl['cost_month'], '', '', true, $frl['cost_type_month'])?></td>
                                 </tr>
                                 <tr>
@@ -479,13 +479,13 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
 <?php                                
           } elseif (isset($works[$frl['uid']])
                    // && $ff['show_preview'] == '1'
-                    && $table == 0 // ПРО-юзеры
+                    && $table == 0 // РџР Рћ-СЋР·РµСЂС‹
                     && substr($frl['tabs'], 0, 1) == 1)
                 {
                       $is_preview = false;
                       $j = 0;
                 ?>
-<?// Работы в каталоге ?>
+<?// Р Р°Р±РѕС‚С‹ РІ РєР°С‚Р°Р»РѕРіРµ ?>
                                 <tr class="cf-preview"><td colspan="7">
                                         <table class="cat-txt-prew" cellpadding="0" cellspacing="0" border="0" width="100%">
                                          <tr>
@@ -507,7 +507,7 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                                                             <?=viewdescr($frl['login'], reformat2($work['descr'], 42, 0, 1))?>
                                                         <?php if($is_owner): ?>
                                                         </div>
-                                                        <a href="javascript:void(0);" data-preview-pos="<?=$j?>" data-popup="<?=FreelancersPreviewEditorPopup::getInstance()->getPopupId()?>">Изменить</a>
+                                                        <a href="javascript:void(0);" data-preview-pos="<?=$j?>" data-popup="<?=FreelancersPreviewEditorPopup::getInstance()->getPopupId()?>">РР·РјРµРЅРёС‚СЊ</a>
                                                         <?php endif; ?>
                                                     </td>
                                                 <?php } else {//if?> 
@@ -522,7 +522,7 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                                                             <span class="b-layout_hide" itemprop="description"><?=SeoTags::getInstance()->getImageDescription() ?></span>
                                                        <?php if($is_owner): ?>
                                                        </div>
-                                                       <a href="javascript:void(0);" data-preview-pos="<?=$j?>" data-popup="<?=FreelancersPreviewEditorPopup::getInstance()->getPopupId()?>">Изменить</a>
+                                                       <a href="javascript:void(0);" data-preview-pos="<?=$j?>" data-popup="<?=FreelancersPreviewEditorPopup::getInstance()->getPopupId()?>">РР·РјРµРЅРёС‚СЊ</a>
                                                        <?php endif; ?>
                                                     </td>
                                                 <?php }//else?>  
@@ -532,7 +532,7 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
                                                 <td>
                                                     <?php if ($is_owner): ?>
                                                     <div id="preview_pos_<?=$i?>"><?=str_repeat('<br/>', 6);?></div>
-                                                    <a href="javascript:void(0);" data-preview-pos="<?=$i?>" data-popup="<?=FreelancersPreviewEditorPopup::getInstance()->getPopupId()?>">Изменить</a>
+                                                    <a href="javascript:void(0);" data-preview-pos="<?=$i?>" data-popup="<?=FreelancersPreviewEditorPopup::getInstance()->getPopupId()?>">РР·РјРµРЅРёС‚СЊ</a>
                                                     <?php else: ?>
                                                     &nbsp;
                                                     <?php endif; ?>
@@ -567,19 +567,19 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
 <? if (is_emp()) { ?>
     <div class="b-banner b-banner_pf b-banner_margbot_20">
         <?php if(!is_pro()) { ?>
-        <a class="b-banner__link" href="/payed/" title="Хотите связываться с фрилансерами напрямую? Приобретите аккаунт PRO"><img class="b-banner__pf" src="/images/banners/1.png" alt="Хотите связываться с фрилансерами напрямую? Приобретите аккаунт PRO"/></a>
+        <a class="b-banner__link" href="/payed/" title="РҐРѕС‚РёС‚Рµ СЃРІСЏР·С‹РІР°С‚СЊСЃСЏ СЃ С„СЂРёР»Р°РЅСЃРµСЂР°РјРё РЅР°РїСЂСЏРјСѓСЋ? РџСЂРёРѕР±СЂРµС‚РёС‚Рµ Р°РєРєР°СѓРЅС‚ PRO"><img class="b-banner__pf" src="/images/banners/1.png" alt="РҐРѕС‚РёС‚Рµ СЃРІСЏР·С‹РІР°С‚СЊСЃСЏ СЃ С„СЂРёР»Р°РЅСЃРµСЂР°РјРё РЅР°РїСЂСЏРјСѓСЋ? РџСЂРёРѕР±СЂРµС‚РёС‚Рµ Р°РєРєР°СѓРЅС‚ PRO"/></a>
         <?php }?>
     </div>
 <? } elseif (!get_uid()) { ?>
     <div class="b-banner b-banner_pf b-banner_margbot_20">
-        <a class="b-banner__link" href="/promo/<?= sbr::NEW_TEMPLATE_SBR;?>" title="Воспользуйтесь сервисом «Безопасная Сделка»"><img class="b-banner__pf" src="/css/block/b-banner/b-banner__sbr.png" alt="«Безопасная Сделка»"/></a>
+        <a class="b-banner__link" href="/promo/<?= sbr::NEW_TEMPLATE_SBR;?>" title="Р’РѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ СЃРµСЂРІРёСЃРѕРј В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В»"><img class="b-banner__pf" src="/css/block/b-banner/b-banner__sbr.png" alt="В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В»"/></a>
     </div>
 <? }//if?>
 
 
                     <? 
-                    // Страницы
-                    $pages = ceil( $count_frl_catalog / $frl_pp ); // альфа-костыль.
+                    // РЎС‚СЂР°РЅРёС†С‹
+                    $pages = ceil( $count_frl_catalog / $frl_pp ); // Р°Р»СЊС„Р°-РєРѕСЃС‚С‹Р»СЊ.
                     
                    echo new_paginator($page, $pages, 3, $sHref, "href");
                     ?>
@@ -617,7 +617,7 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
 
 <?php if(!isset($new_project_button_is_visible) && (is_emp()||!get_uid(false))) { ?>
 <div class="b-buttons b-buttons_padbot_20">
-    <a class="b-button b-button_flat b-button_flat_orange2 b-button_block __ga__sidebar__add_project" href="/public/?step=1&kind=1">Бесплатно опубликовать задание</a>
+    <a class="b-button b-button_flat b-button_flat_orange2 b-button_block __ga__sidebar__add_project" href="/public/?step=1&kind=1">Р‘РµСЃРїР»Р°С‚РЅРѕ РѕРїСѓР±Р»РёРєРѕРІР°С‚СЊ Р·Р°РґР°РЅРёРµ</a>
 </div>
 <?php } ?>
                                                 

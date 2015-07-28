@@ -35,7 +35,7 @@ if($uid && substr($_SESSION['role'], 0, 1)==1) {
     $js_file = array( 'payed.js', 'billing.js' );
     
     $user = new freelancer();
-    // Изменяем авто продление PRO, если нужно
+    // РР·РјРµРЅСЏРµРј Р°РІС‚Рѕ РїСЂРѕРґР»РµРЅРёРµ PRO, РµСЃР»Рё РЅСѓР¶РЅРѕ
     if (strtolower($_POST['pro_auto_prolong']) == 'on') {
         $user->setPROAutoProlong('on', $uid);
         $result['success'] = true;
@@ -72,7 +72,7 @@ if($uid && substr($_SESSION['role'], 0, 1)==1) {
         $account = new account();
         $ok = $account->GetInfo($uid, true);
 
-        $u_is_pro_auto_prolong = $user->GetField($uid, $e, 'is_pro_auto_prolong', false); // Включено ли у юзера автоматическое продление PRO
+        $u_is_pro_auto_prolong = $user->GetField($uid, $e, 'is_pro_auto_prolong', false); // Р’РєР»СЋС‡РµРЅРѕ Р»Рё Сѓ СЋР·РµСЂР° Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРµ РїСЂРѕРґР»РµРЅРёРµ PRO
         $is_user_was_pro = $bill->IsUserWasPro(array(billing::STATUS_RESERVE, billing::STATUS_NEW));//payed::IsUserWasPro($uid);
 
         $dateFrozenMaxLimit = "date_max_limit_" . date('Y_m_d', strtotime($_SESSION['pro_last'] ? $_SESSION['pro_last'] : ($is_user_was_pro ? "+30 day" : "+ 7 day") ));
@@ -93,7 +93,7 @@ if($uid && substr($_SESSION['role'], 0, 1)==1) {
         include_once('freeze.php');
         
         
-        //Инициализация попапа оплаты
+        //РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїРѕРїР°РїР° РѕРїР»Р°С‚С‹
         require_once(ABS_PATH . '/classes/quick_payment/quickPaymentPopupPro.php');
         quickPaymentPopupPro::getInstance()->init();
     }
@@ -102,7 +102,7 @@ if($uid && substr($_SESSION['role'], 0, 1)==1) {
 }
 
 
-$page_title = "Профессиональный аккаунт - фриланс, удаленная работа на FL.ru";
+$page_title = "РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚ - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
 
 $css_file = array(
     '/css/block/b-promo/__buy/b-promo__buy.css'

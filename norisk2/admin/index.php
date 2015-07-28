@@ -123,11 +123,11 @@ case 'Stage':
         $cancel = __paramInit('bool', NULL, 'cancel');
         if($resolve) {
             if(!($iagree = __paramInit('bool', NULL, 'iagree')))
-                $stage->error['arbitrage']['iagree'] = 'Необходимо подтверждение';
+                $stage->error['arbitrage']['iagree'] = 'РќРµРѕР±С…РѕРґРёРјРѕ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ';
             else {
                 if($stage->arbResolve($_POST)) {
                     $frl_percent = $stage->request['frl_percent'] / 100;
-                    $stage->getArbitrage(false, false); // Раз вынесли решение берем арбитраж, для корректного расчета процентов
+                    $stage->getArbitrage(false, false); // Р Р°Р· РІС‹РЅРµСЃР»Рё СЂРµС€РµРЅРёРµ Р±РµСЂРµРј Р°СЂР±РёС‚СЂР°Р¶, РґР»СЏ РєРѕСЂСЂРµРєС‚РЅРѕРіРѕ СЂР°СЃС‡РµС‚Р° РїСЂРѕС†РµРЅС‚РѕРІ
                     if($frl_percent != 1 && $stage->sbr->scheme_type == sbr::SCHEME_LC ) {
                         $pskb = new pskb($stage->sbr);
                         $lc = $pskb->getLC();
@@ -186,7 +186,7 @@ case 'docs':
     $sbr->getDocs();
     break;
 
-// куда может ходить
+// РєСѓРґР° РјРѕР¶РµС‚ С…РѕРґРёС‚СЊ
 case 'history':
     break;
 }

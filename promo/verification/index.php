@@ -1,6 +1,6 @@
 <?php
 
-//Åñëè ïðèøëè îò WM îòêëþ÷àåì ïðîâåðêó CSRF  
+//Ð•ÑÐ»Ð¸ Ð¿Ñ€Ð¸ÑˆÐ»Ð¸ Ð¾Ñ‚ WM Ð¾Ñ‚ÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÐºÑƒ CSRF  
 if (isset($_POST['WmLogin_WMID'])) {
     $allow_fp = true;
     define('NO_CSRF', 1);
@@ -17,7 +17,7 @@ session_start();
 $uid = get_uid();
 $rpath = "../../";
 
-$page_title = "Âåðèôèêàöèÿ - ôðèëàíñ, óäàëåííàÿ ðàáîòà íà FL.ru";
+$page_title = "Ð’ÐµÑ€Ð¸Ñ„Ð¸ÐºÐ°Ñ†Ð¸Ñ - Ñ„Ñ€Ð¸Ð»Ð°Ð½Ñ, ÑƒÐ´Ð°Ð»ÐµÐ½Ð½Ð°Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ð° Ð½Ð° FL.ru";
 $header = "../../header.php";
 $footer = "../../footer.html";
 $content = "content.php";

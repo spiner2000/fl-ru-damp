@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/tservices/tservices_categorie
 /**
  * Class TServiceNavigation
  *
- * Âèäæåò - Áëîê c çàãîëîâêîì è íàâèãàöèåé
+ * Ð’Ð¸Ð´Ð¶ÐµÑ‚ - Ð‘Ð»Ð¾Ðº c Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²ÐºÐ¾Ð¼ Ð¸ Ð½Ð°Ð²Ð¸Ð³Ð°Ñ†Ð¸ÐµÐ¹
  */
 class TServiceNavigation extends CWidget 
 {
@@ -27,7 +27,7 @@ class TServiceNavigation extends CWidget
                 }
             }
 
-            //ñîáèðàåì øàáëîí
+            //ÑÐ¾Ð±Ð¸Ñ€Ð°ÐµÐ¼ ÑˆÐ°Ð±Ð»Ð¾Ð½
             $this->render('t-service-navigation', array(
                 'is_crumbs' => $this->category_group,
                 'cur_cat' => $cur_category,

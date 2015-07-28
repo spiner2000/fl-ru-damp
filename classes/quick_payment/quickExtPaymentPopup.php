@@ -4,7 +4,7 @@ require_once('quickPaymentPopup.php');
 
 /**
  * Class quickExtPaymentPopup
- * Êëàññ ðàñøèðÿåò âîçìîæíîñòè è óïðîùàåò îïèñàíèå äëÿ äî÷åðíèõ êëàññîâ
+ * ÐšÐ»Ð°ÑÑ Ñ€Ð°ÑÑˆÐ¸Ñ€ÑÐµÑ‚ Ð²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ÑÑ‚Ð¸ Ð¸ ÑƒÐ¿Ñ€Ð¾Ñ‰Ð°ÐµÑ‚ Ð¾Ð¿Ð¸ÑÐ°Ð½Ð¸Ðµ Ð´Ð»Ñ Ð´Ð¾Ñ‡ÐµÑ€Ð½Ð¸Ñ… ÐºÐ»Ð°ÑÑÐ¾Ð²
  */
 class quickExtPaymentPopup extends quickPaymentPopup
 {
@@ -34,7 +34,7 @@ class quickExtPaymentPopup extends quickPaymentPopup
         $this->options['acc_sum'] = (isset($_SESSION['ac_sum']) && $_SESSION['ac_sum'] > 0)? $_SESSION['ac_sum'] : 0;
         $this->options['payment_account'] = static::PAYMENT_TYPE_ACCOUNT;
         $this->options['minimum_payed_sum'] = static::MINIMUM_PAYED_SUM;
-        //Äîïóñêàåì îïëàòó ñ ëè÷íîãî ñ÷åòà
+        //Ð”Ð¾Ð¿ÑƒÑÐºÐ°ÐµÐ¼ Ð¾Ð¿Ð»Ð°Ñ‚Ñƒ Ñ Ð»Ð¸Ñ‡Ð½Ð¾Ð³Ð¾ ÑÑ‡ÐµÑ‚Ð°
         $this->options['payments'][static::PAYMENT_TYPE_ACCOUNT] = array();
     }
     

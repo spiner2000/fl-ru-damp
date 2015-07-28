@@ -81,7 +81,7 @@ class TServiceOrderFeedbackModel extends atservices_model
 
 
         /**
-         * Инициализация или получение аттрибутов класса
+         * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РёР»Рё РїРѕР»СѓС‡РµРЅРёРµ Р°С‚С‚СЂРёР±СѓС‚РѕРІ РєР»Р°СЃСЃР°
          * 
          * @param array $attributes
          * @return type

@@ -18,7 +18,7 @@ function buildNavigation($iCurrent, $iStart, $iAll, $sHref) {
 
 <p>&nbsp;</p>
 
-<? if (empty($communes)) { print "<center><div style='font: bold 16px Tahoma'>Нет сообществ.</div></center>"; return; } ?>
+<? if (empty($communes)) { print "<center><div style='font: bold 16px Tahoma'>РќРµС‚ СЃРѕРѕР±С‰РµСЃС‚РІ.</div></center>"; return; } ?>
 
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -26,12 +26,12 @@ function buildNavigation($iCurrent, $iStart, $iAll, $sHref) {
 $i = 0; 
 foreach($communes as $comm) {
     $i++;
-    // Название.
+    // РќР°Р·РІР°РЅРёРµ.
     $name = "<a href='/commune/?id={$comm['id']}' class='blue' style='font-size:20px'>".($search!==NULL ? highlight(reformat2(YellowLine($comm['name']), 25, 1), $search) : reformat2(YellowLine($comm['name']), 25, 1))."</a>";
     $descr = ($search!==NULL ? highlight(reformat2($comm['descr'], 25, 1), $search) : reformat2($comm['descr'], 25, 1));
-    // Сколько участников.
-    $mAcceptedCnt = $comm['a_count'] - $comm['w_count'] + 1; // +1 -- создатель
-    $mCnt = $mAcceptedCnt.' участник'.getSymbolicName($mAcceptedCnt, 'man');
+    // РЎРєРѕР»СЊРєРѕ СѓС‡Р°СЃС‚РЅРёРєРѕРІ.
+    $mAcceptedCnt = $comm['a_count'] - $comm['w_count'] + 1; // +1 -- СЃРѕР·РґР°С‚РµР»СЊ
+    $mCnt = $mAcceptedCnt.' СѓС‡Р°СЃС‚РЅРёРє'.getSymbolicName($mAcceptedCnt, 'man');
 ?>
 
 <tr valign="top">
@@ -58,7 +58,7 @@ foreach($communes as $comm) {
 <tr valign="top">
     <td style="padding:0 0 0 20px">
     <div>
-        <div style="padding-bottom:10px"><b>Создатель:</b></div>
+        <div style="padding-bottom:10px"><b>РЎРѕР·РґР°С‚РµР»СЊ:</b></div>
             <div style="float:left; margin-right:10px">
             <?=__commPrntUsrAvtr($comm, '')?>
         </div>
@@ -71,7 +71,7 @@ foreach($communes as $comm) {
     </div>
     </td>
 
-    <td style="vertical-align:bottom; text-align:right" ><a id="unlock_comm_<?=$comm['id']?>" href="./?mode=<?=$mode?><?=($page? "&p=$page": '')?><?=($search? "&search=$search": '')?><?=($sort? "&sort=$sort": '')?><?=($admin? "&admin=$admin": '')?>&action=unblocked&comm=<?=$comm['id']?>" onclick="return addTokenToLink('unlock_comm_<?=$comm['id']?>', 'Уверены, что хотите разблокировать сообщество?')" class="blue" style="font-weight: bold">Разблокировать</a>&nbsp;</td>
+    <td style="vertical-align:bottom; text-align:right" ><a id="unlock_comm_<?=$comm['id']?>" href="./?mode=<?=$mode?><?=($page? "&p=$page": '')?><?=($search? "&search=$search": '')?><?=($sort? "&sort=$sort": '')?><?=($admin? "&admin=$admin": '')?>&action=unblocked&comm=<?=$comm['id']?>" onclick="return addTokenToLink('unlock_comm_<?=$comm['id']?>', 'РЈРІРµСЂРµРЅС‹, С‡С‚Рѕ С…РѕС‚РёС‚Рµ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ СЃРѕРѕР±С‰РµСЃС‚РІРѕ?')" class="blue" style="font-weight: bold">Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ</a>&nbsp;</td>
 </tr>
 
 <tr>
@@ -93,7 +93,7 @@ foreach($communes as $comm) {
     <td align="left" width="100%">
     <div id="fl2_paginator"><?
 
-        // Страницы
+        // РЎС‚СЂР°РЅРёС†С‹
         $pages = ceil($nums / commune::MAX_ON_PAGE);
         if ($pages > 1) {
             $maxpages = $pages;
@@ -110,13 +110,13 @@ foreach($communes as $comm) {
 
             $sBox = '<table width="100%"><tr>';
             if ($page == 1) {
-                $sBox .= '<td><div id="nav_pre_not_active"><span>предыдущая</span></div></td>';
+                $sBox .= '<td><div id="nav_pre_not_active"><span>РїСЂРµРґС‹РґСѓС‰Р°СЏ</span></div></td>';
             } else {
                 $sBox .= "<input type=\"hidden\" id=\"pre_navigation_link\" value=\"".($sHref.($page-1))."\">";
-                $sBox .= "<td><div id=\"nav_pre_not_active\"><a href=\"".($sHref.($page-1))."\" style=\"color: #717171\">предыдущая</a></div></td>";
+                $sBox .= "<td><div id=\"nav_pre_not_active\"><a href=\"".($sHref.($page-1))."\" style=\"color: #717171\">РїСЂРµРґС‹РґСѓС‰Р°СЏ</a></div></td>";
             }
             $sBox .= '<td width="90%" align="center">';
-            //в начале
+            //РІ РЅР°С‡Р°Р»Рµ
             if ($page <= 10) {
                 $sBox .= buildNavigation($page, 1, ($pages>10)?($page+4):$pages, $sHref);
                 if ($pages > 15) {
@@ -124,7 +124,7 @@ foreach($communes as $comm) {
                     //$sBox .= buildNavigation($page, $pages-5, $pages, $sHref);
                 }
             }
-            //в конце
+            //РІ РєРѕРЅС†Рµ
             elseif ($page >= $pages-10) {
                 $sBox .= buildNavigation($page, 1, 5, $sHref);
                 $sBox .= '<span style="padding-right: 5px">...</span>';
@@ -139,17 +139,17 @@ foreach($communes as $comm) {
             }
             $sBox .= '</td>';
             if ($page == $pages) {
-                $sBox .= "<td><div id=\"nav_next_not_active\"><span>следующая</span></div></td>";
+                $sBox .= "<td><div id=\"nav_next_not_active\"><span>СЃР»РµРґСѓСЋС‰Р°СЏ</span></div></td>";
             } else {
                 $sBox .= "<input type=\"hidden\" id=\"next_navigation_link\" value=\"".($sHref.($page+1))."\">";
-                $sBox .= "<td><div id=\"nav_next_not_active\"><a href=\"".($sHref.($page+1))."\" style=\"color: #717171\">следующая</a></div></td>";
+                $sBox .= "<td><div id=\"nav_next_not_active\"><a href=\"".($sHref.($page+1))."\" style=\"color: #717171\">СЃР»РµРґСѓСЋС‰Р°СЏ</a></div></td>";
             }
             $sBox .= '</tr>';
             $sBox .= '</table>';
         }
         $sBox .= '</div>';
         echo $sBox;
-        // Страницы закончились
+        // РЎС‚СЂР°РЅРёС†С‹ Р·Р°РєРѕРЅС‡РёР»РёСЃСЊ
     ?></td>
 
 </tr>

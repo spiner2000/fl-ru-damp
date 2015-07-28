@@ -11,7 +11,7 @@ if (!hasPermissions('sbr')) {
     header_location_exit( '/404.php' );
 }
 
-$months = array(1=>'январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь');
+$months = array(1=>'СЏРЅРІР°СЂСЊ', 'С„РµРІСЂР°Р»СЊ', 'РјР°СЂС‚', 'Р°РїСЂРµР»СЊ', 'РјР°Р№', 'РёСЋРЅСЊ', 'РёСЋР»СЊ', 'Р°РІРіСѓСЃС‚', 'СЃРµРЅС‚СЏР±СЂСЊ', 'РѕРєС‚СЏР±СЂСЊ', 'РЅРѕСЏР±СЂСЊ', 'РґРµРєР°Р±СЂСЊ');
 
 $menu_item   = 4;
 $rpath       = '../../';
@@ -50,7 +50,7 @@ if($cmd == 'upload') {
         if($ext != 'odt' && $ext != 'xlsx') {
             ?>
             <script>
-                alert('Формат загружаемого файла должен быть xlsx или odt');
+                alert('Р¤РѕСЂРјР°С‚ Р·Р°РіСЂСѓР¶Р°РµРјРѕРіРѕ С„Р°Р№Р»Р° РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ xlsx РёР»Рё odt');
                 window.top.document.body.style.cursor = 'default';
             </script>    
             <?
@@ -69,18 +69,18 @@ if($cmd == 'upload') {
             $file_name_id = "file_name_" . date('Yn', strtotime($date));
             $link = WDCPREFIX."/{$cFile->path}{$cFile->name}";
             
-            $name = 'Скачать ИТО за ' . $months[date('n', strtotime($ito['date_period']))] . ' ' . date('Y', strtotime($ito['date_period'])) . '.' . $ext;
+            $name = 'РЎРєР°С‡Р°С‚СЊ РРўРћ Р·Р° ' . $months[date('n', strtotime($ito['date_period']))] . ' ' . date('Y', strtotime($ito['date_period'])) . '.' . $ext;
             ?>
             <script>
                 window.top.successUploadFile('<?= $date_create_id?>', '<?= $file_name_id;?>', '<?= date("d.m.Y H:i")?>', '<?=$link?>', '<?=$name?>');
-                alert('Файл загружен');
+                alert('Р¤Р°Р№Р» Р·Р°РіСЂСѓР¶РµРЅ');
             </script>    
             <?
             
         } else {
             ?>
             <script>
-                alert('Ошибка загрузки файла');
+                alert('РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»Р°');
             </script>    
             <?
         }
@@ -88,7 +88,7 @@ if($cmd == 'upload') {
     } else {
         ?>
         <script>
-            alert('Ошибка загрузки файла');
+            alert('РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»Р°');
         </script>    
         <?
     }

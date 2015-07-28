@@ -4,12 +4,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/Verification.php");
 
 switch($quick_verification_type) {
   case 'promo':
-    $qver_title = 'Верификация';
-    $qver_btn = 'Закрыть';
+    $qver_title = 'Р’РµСЂРёС„РёРєР°С†РёСЏ';
+    $qver_btn = 'Р—Р°РєСЂС‹С‚СЊ';
     break;
   case 'project':
-    $qver_title = 'Верификация для ответа на проект';
-    $qver_btn = 'Закрыть и ответить на проект';
+    $qver_title = 'Р’РµСЂРёС„РёРєР°С†РёСЏ РґР»СЏ РѕС‚РІРµС‚Р° РЅР° РїСЂРѕРµРєС‚';
+    $qver_btn = 'Р—Р°РєСЂС‹С‚СЊ Рё РѕС‚РІРµС‚РёС‚СЊ РЅР° РїСЂРѕРµРєС‚';
     break;
 }
 $quser = new users();
@@ -34,14 +34,14 @@ $_yd_uri_auth = Verification::getYDUriAuth($quick_verification_type=='project'?$
             <div id="quick_ver_big_1">
 
                 <div class="b-layout__txt b-layout__txt_padbot_30">
-                    Верификация — это подтверждение личности без передачи персональных данных. 
-                    Укажите свои имя и фамилию и привяжите свой аккаунт в одной из платёжных систем.
+                    Р’РµСЂРёС„РёРєР°С†РёСЏ вЂ” СЌС‚Рѕ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ Р»РёС‡РЅРѕСЃС‚Рё Р±РµР· РїРµСЂРµРґР°С‡Рё РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹С… РґР°РЅРЅС‹С…. 
+                    РЈРєР°Р¶РёС‚Рµ СЃРІРѕРё РёРјСЏ Рё С„Р°РјРёР»РёСЋ Рё РїСЂРёРІСЏР¶РёС‚Рµ СЃРІРѕР№ Р°РєРєР°СѓРЅС‚ РІ РѕРґРЅРѕР№ РёР· РїР»Р°С‚С‘Р¶РЅС‹С… СЃРёСЃС‚РµРј.
                 </div>
 
                 <div id="quick_ver_main">
 
                     <div id="quick_ver_waiting_1" class="b-layout__wait b-layout_hide">
-                        Ожидается завершение верификации через 
+                        РћР¶РёРґР°РµС‚СЃСЏ Р·Р°РІРµСЂС€РµРЅРёРµ РІРµСЂРёС„РёРєР°С†РёРё С‡РµСЂРµР· 
                         <span id="quick_ver_waiting_1_txt"></span><br/>
                         <img src="/images/load.gif" width="26" height="6">
                     </div>
@@ -49,14 +49,14 @@ $_yd_uri_auth = Verification::getYDUriAuth($quick_verification_type=='project'?$
                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padbot_30">
                         <div class="b-combo b-combo_inline-block">
                             <div class="b-combo__input b-combo__input_width_200">
-                                <input id="quick_ver_f_fname" type="text"  size="21" value="<?= $_SESSION['quick_ver_fname'] ? $_SESSION['quick_ver_fname'] : $quser->uname ?>" maxlength="21" class="b-combo__input-text" placeholder="Введите имя" onkeydown="quickVerCheckFIO();" onkeyup="quickVerCheckFIO();" onkeypress="quickVerCheckLetterOnly(event);">
+                                <input id="quick_ver_f_fname" type="text"  size="21" value="<?= $_SESSION['quick_ver_fname'] ? $_SESSION['quick_ver_fname'] : $quser->uname ?>" maxlength="21" class="b-combo__input-text" placeholder="Р’РІРµРґРёС‚Рµ РёРјСЏ" onkeydown="quickVerCheckFIO();" onkeyup="quickVerCheckFIO();" onkeypress="quickVerCheckLetterOnly(event);">
                             </div>
                         </div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">Не более 21 символа
+                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">РќРµ Р±РѕР»РµРµ 21 СЃРёРјРІРѕР»Р°
                             <div class="i-shadow i-shadow_inline-block">
                                 <span class="b-shadow__icon b-shadow__icon_quest b-shadow__icon_margbot_-2" onclick="this.getNext().toggleClass('b-layout_hide')"></span>
                                 <div class="b-shadow b-shadow_m b-shadow_width_200 b-shadow_pad_10 b-shadow_left_-110 b-shadow_top_15 b-layout_hide">
-                                    <div class="b-layout__txt b-layout__txt_fontsize_11">Если ваше имя больше чем 21 символ попробуйте его сократить.</div>
+                                    <div class="b-layout__txt b-layout__txt_fontsize_11">Р•СЃР»Рё РІР°С€Рµ РёРјСЏ Р±РѕР»СЊС€Рµ С‡РµРј 21 СЃРёРјРІРѕР» РїРѕРїСЂРѕР±СѓР№С‚Рµ РµРіРѕ СЃРѕРєСЂР°С‚РёС‚СЊ.</div>
                                     <span class="b-shadow__icon b-shadow__icon_nosik"></span>
                                 </div>
                             </div>
@@ -65,14 +65,14 @@ $_yd_uri_auth = Verification::getYDUriAuth($quick_verification_type=='project'?$
                     <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padbot_30">
                         <div class="b-combo b-combo_inline-block">
                             <div class="b-combo__input b-combo__input_width_200">
-                                <input id="quick_ver_f_lname" type="text"  size="21" maxlength="21" value="<?= $_SESSION['quick_ver_lname'] ? $_SESSION['quick_ver_lname'] : $quser->usurname ?>" class="b-combo__input-text" placeholder="Введите фамилию" onkeydown="quickVerCheckFIO();" onkeyup="quickVerCheckFIO();" onkeypress="quickVerCheckLetterOnly(event);">
+                                <input id="quick_ver_f_lname" type="text"  size="21" maxlength="21" value="<?= $_SESSION['quick_ver_lname'] ? $_SESSION['quick_ver_lname'] : $quser->usurname ?>" class="b-combo__input-text" placeholder="Р’РІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ" onkeydown="quickVerCheckFIO();" onkeyup="quickVerCheckFIO();" onkeypress="quickVerCheckLetterOnly(event);">
                             </div>
                         </div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">Не более 21 символа
+                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">РќРµ Р±РѕР»РµРµ 21 СЃРёРјРІРѕР»Р°
                             <div class="i-shadow i-shadow_inline-block">
                                 <span class="b-shadow__icon b-shadow__icon_quest b-shadow__icon_margbot_-2" onclick="this.getNext().toggleClass('b-layout_hide')"></span>
                                 <div class="b-shadow b-shadow_m b-shadow_width_200 b-shadow_pad_10 b-shadow_left_-110 b-shadow_top_15 b-layout_hide">
-                                    <div class="b-layout__txt b-layout__txt_fontsize_11">Если ваша фамилия больше чем 21 символ попробуйте ее сократить.</div>
+                                    <div class="b-layout__txt b-layout__txt_fontsize_11">Р•СЃР»Рё РІР°С€Р° С„Р°РјРёР»РёСЏ Р±РѕР»СЊС€Рµ С‡РµРј 21 СЃРёРјРІРѕР» РїРѕРїСЂРѕР±СѓР№С‚Рµ РµРµ СЃРѕРєСЂР°С‚РёС‚СЊ.</div>
                                     <span class="b-shadow__icon b-shadow__icon_nosik"></span>
                                 </div>
                             </div>
@@ -80,34 +80,34 @@ $_yd_uri_auth = Verification::getYDUriAuth($quick_verification_type=='project'?$
                     </div>
 
                     <div class="b-layout__txt b-layout__txt_padbot_20">
-                        Выберите один из вариантов верификации:
+                        Р’С‹Р±РµСЂРёС‚Рµ РѕРґРёРЅ РёР· РІР°СЂРёР°РЅС‚РѕРІ РІРµСЂРёС„РёРєР°С†РёРё:
                     </div>
 
                     <div id="quick_ver_error_1" class="b-fon b-fon_padbot_20 b-layout_hide">
                         <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb">
                             <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span>
                             <span id="quick_ver_error_txt_1">
-                                Произошла ошибка при верификации. Попробуйте ещё раз.
+                                РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° РїСЂРё РІРµСЂРёС„РёРєР°С†РёРё. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·.
                             </span>
                         </div>
                     </div>
 
                     <div id="quick_ver_block_1">
-                        <a class="b-button b-button__pay b-button__pay_wm b-button_width_126 b-button_disabled" href="#" onClick="quickVerStartWebmoney(1, this); return false;">Требуется WM-аттестат<br>не ниже начального</a>
-                        <a class="b-button b-button__pay b-button__pay_card b-button_width_126 b-button_disabled" href="#" onClick="quickVerStartYandexKassaAC(this); return false;">Банковской картой<br>Visa или Mastercard<br>Баланс должен быть не менее 10 р.</a>
-                        <a class="b-button b-button__pay b-button__pay_yd b-button_width_126 b-button_disabled" href="#" onClick="quickVerStartYandex(1, this); return false;">Требуется идентифици-<br>рованный кошелек</a>
+                        <a class="b-button b-button__pay b-button__pay_wm b-button_width_126 b-button_disabled" href="#" onClick="quickVerStartWebmoney(1, this); return false;">РўСЂРµР±СѓРµС‚СЃСЏ WM-Р°С‚С‚РµСЃС‚Р°С‚<br>РЅРµ РЅРёР¶Рµ РЅР°С‡Р°Р»СЊРЅРѕРіРѕ</a>
+                        <a class="b-button b-button__pay b-button__pay_card b-button_width_126 b-button_disabled" href="#" onClick="quickVerStartYandexKassaAC(this); return false;">Р‘Р°РЅРєРѕРІСЃРєРѕР№ РєР°СЂС‚РѕР№<br>Visa РёР»Рё Mastercard<br>Р‘Р°Р»Р°РЅСЃ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РЅРµ РјРµРЅРµРµ 10 СЂ.</a>
+                        <a class="b-button b-button__pay b-button__pay_yd b-button_width_126 b-button_disabled" href="#" onClick="quickVerStartYandex(1, this); return false;">РўСЂРµР±СѓРµС‚СЃСЏ РёРґРµРЅС‚РёС„РёС†Рё-<br>СЂРѕРІР°РЅРЅС‹Р№ РєРѕС€РµР»РµРє</a>
                     </div>
 
                     <div id="quick_ver_block_2" style="display: none;">
                         <span class="b-button b-button__pay b-button__pay_padtop_15 b-button_width_196 b-button_disabled">
                             <div class="b-combo b-combo_padbot_15">
                                 <div class="b-combo__input b-combo__wm">
-                                    <input id="quick_ver_f_wmid" type="text" value="" size="12" name="" class="b-combo__input-text b-combo__input-text_color_67" maxlength="12" placeholder="Введите ваш WMID" onkeypress="quickVerCheckNumOnly(event);">
+                                    <input id="quick_ver_f_wmid" type="text" value="" size="12" name="" class="b-combo__input-text b-combo__input-text_color_67" maxlength="12" placeholder="Р’РІРµРґРёС‚Рµ РІР°С€ WMID" onkeypress="quickVerCheckNumOnly(event);">
                                 </div>
                             </div>
-                            <a href="#" class="b-button b-button_flat b-button_flat_green underline" onClick="quickVerStartWebmoney(2, this); return false;">Проверить аттестат</a>
+                            <a href="#" class="b-button b-button_flat b-button_flat_green underline" onClick="quickVerStartWebmoney(2, this); return false;">РџСЂРѕРІРµСЂРёС‚СЊ Р°С‚С‚РµСЃС‚Р°С‚</a>
                         </span>
-                        <a class="b-button b-button__pay b-button__pay_yd b-button_width_196 underline" href="#" onClick="quickVerStartYandex(1); return false;">Требуется идентифици-<br>рованный кошелек</a>
+                        <a class="b-button b-button__pay b-button__pay_yd b-button_width_196 underline" href="#" onClick="quickVerStartYandex(1); return false;">РўСЂРµР±СѓРµС‚СЃСЏ РёРґРµРЅС‚РёС„РёС†Рё-<br>СЂРѕРІР°РЅРЅС‹Р№ РєРѕС€РµР»РµРє</a>
                     </div>
 
                 </div> 
@@ -115,7 +115,7 @@ $_yd_uri_auth = Verification::getYDUriAuth($quick_verification_type=='project'?$
             </div>
 
             <?php if ($quick_verification_type == 'project'): ?>
-            <div class="b-layout__txt b-layout__txt_padtop_20"><a class="b-layout__link underline" href="/">Посмотреть другие проекты</a>, отложив верификацию</div>
+            <div class="b-layout__txt b-layout__txt_padtop_20"><a class="b-layout__link underline" href="/">РџРѕСЃРјРѕС‚СЂРµС‚СЊ РґСЂСѓРіРёРµ РїСЂРѕРµРєС‚С‹</a>, РѕС‚Р»РѕР¶РёРІ РІРµСЂРёС„РёРєР°С†РёСЋ</div>
             <?php endif; ?>
 
          </td>
@@ -132,15 +132,15 @@ $_yd_uri_auth = Verification::getYDUriAuth($quick_verification_type=='project'?$
              <span class="b-icon b-icon__ver-big"></span>
          </td>
          <td class="b-layout__td">
-             <h2 class="b-shadow__title b-shadow__title_padbot_10">Вы успешно верифицированы</h2>
+             <h2 class="b-shadow__title b-shadow__title_padbot_10">Р’С‹ СѓСЃРїРµС€РЅРѕ РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅС‹</h2>
               <div class="b-layout__txt b-layout__txt_padbot_20">
                 <?php if (!is_emp()): ?>
-                Теперь вы можете отвечать на все проекты, помеченные как «Только для верифицированных».
+                РўРµРїРµСЂСЊ РІС‹ РјРѕР¶РµС‚Рµ РѕС‚РІРµС‡Р°С‚СЊ РЅР° РІСЃРµ РїСЂРѕРµРєС‚С‹, РїРѕРјРµС‡РµРЅРЅС‹Рµ РєР°Рє В«РўРѕР»СЊРєРѕ РґР»СЏ РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹С…В».
                 <?php endif; ?>
                 <?php if($_GET['vuse'] == 'card'): ?>
                 <br/>
-                Обратите внимание: для верификации с вашей карты было списано 10 рублей. 
-                Эта сумма будет возвращена вам на карту в течение суток.
+                РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ: РґР»СЏ РІРµСЂРёС„РёРєР°С†РёРё СЃ РІР°С€РµР№ РєР°СЂС‚С‹ Р±С‹Р»Рѕ СЃРїРёСЃР°РЅРѕ 10 СЂСѓР±Р»РµР№. 
+                Р­С‚Р° СЃСѓРјРјР° Р±СѓРґРµС‚ РІРѕР·РІСЂР°С‰РµРЅР° РІР°Рј РЅР° РєР°СЂС‚Сѓ РІ С‚РµС‡РµРЅРёРµ СЃСѓС‚РѕРє.
                 <?php endif; ?>
               </div>
              <div class="b-buttons b-buttons_padtop_10">

@@ -1,5 +1,5 @@
 <?php 
-// !!! нумерация подсветки пунктов меню: заняты номера 1-24 и 100
+// !!! РЅСѓРјРµСЂР°С†РёСЏ РїРѕРґСЃРІРµС‚РєРё РїСѓРЅРєС‚РѕРІ РјРµРЅСЋ: Р·Р°РЅСЏС‚С‹ РЅРѕРјРµСЂР° 1-24 Рё 100
 
 if ( !defined('IS_SITE_ADMIN') ) { header('Location: /404.php'); exit; } 
   require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/masssending.php");
@@ -10,11 +10,11 @@ if ( !defined('IS_SITE_ADMIN') ) { header('Location: /404.php'); exit; }
   $s = 'style="color: #666;"';
   $c = 'class="blue"';
   
-  // количество жалоб о спаме
+  // РєРѕР»РёС‡РµСЃС‚РІРѕ Р¶Р°Р»РѕР± Рѕ СЃРїР°РјРµ
   require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/messages_spam.php' );
   $nMessagesSpamCount = messages_spam::getSpamCount();
   
-  // количество жалоб на проекты
+  // РєРѕР»РёС‡РµСЃС‚РІРѕ Р¶Р°Р»РѕР± РЅР° РїСЂРѕРµРєС‚С‹
   if ( !isset($nComplainProjectsCount) ) {
       require_once $_SERVER['DOCUMENT_ROOT'].'/classes/projects.php';
       $nComplainProjectsCount = projects::GetComplainPrjsCount();
@@ -23,7 +23,7 @@ if ( !defined('IS_SITE_ADMIN') ) { header('Location: /404.php'); exit; }
 
 <div class="admin-menu">
 
-    <h3>Модераторская</h3>
+    <h3>РњРѕРґРµСЂР°С‚РѕСЂСЃРєР°СЏ</h3>
     <?php  
 
     if ( !isset($aPermissions) ) {
@@ -40,163 +40,163 @@ if ( !defined('IS_SITE_ADMIN') ) { header('Location: /404.php'); exit; }
     <?php if ( $bHasAll || $bHasAdm ) { ?>
 
         <?php if ( $bHasAll || $bHasUsers || $bHasProjects || $bHasBlogs || $bHasCommunes ) { ?>
-        - Действия<br/>
+        - Р”РµР№СЃС‚РІРёСЏ<br/>
         <?php if ( $bHasAll || $bHasUsers || $bHasProjects || $bHasBlogs || $bHasCommunes ) { ?>
-        -- <a <?=($menu_item == 1 ? $s : $c)?> href="/siteadmin/admin_log/?site=log">Лента действий</a><br/>
+        -- <a <?=($menu_item == 1 ? $s : $c)?> href="/siteadmin/admin_log/?site=log">Р›РµРЅС‚Р° РґРµР№СЃС‚РІРёР№</a><br/>
         <?php } ?>
         <?php if ( $bHasAll || $bHasUsers ) { ?>
-        -- <a <?=($menu_item == 2 ? $s : $c)?> href="/siteadmin/admin_log/?site=user">Нарушители</a><br/>
+        -- <a <?=($menu_item == 2 ? $s : $c)?> href="/siteadmin/admin_log/?site=user">РќР°СЂСѓС€РёС‚РµР»Рё</a><br/>
         <?php } ?>
         <?php if ( $bHasAll || $bHasProjects ) { ?>
-        -- <a <?=($menu_item == 3 ? $s : $c)?> href="/siteadmin/admin_log/?site=proj">Проекты и конкурсы</a><br/>
+        -- <a <?=($menu_item == 3 ? $s : $c)?> href="/siteadmin/admin_log/?site=proj">РџСЂРѕРµРєС‚С‹ Рё РєРѕРЅРєСѓСЂСЃС‹</a><br/>
         <?php } ?>
         <?php } ?>
 
         <?php if ( $bHasAll || $bHasUsers ) { ?>
-        <br/>- <a <?=($menu_item == 4 ? $s : $c)?> href="/siteadmin/user_search/">Пользователи</a><br/>
+        <br/>- <a <?=($menu_item == 4 ? $s : $c)?> href="/siteadmin/user_search/">РџРѕР»СЊР·РѕРІР°С‚РµР»Рё</a><br/>
         <? } ?>
         <?php if ( $bHasAll || $bHasGrayip ) { ?>
-        -- <a <?=($menu_item == 5 ? $s : $c)?> href="/siteadmin/gray_ip">Серый список IP</a><br/>
+        -- <a <?=($menu_item == 5 ? $s : $c)?> href="/siteadmin/gray_ip">РЎРµСЂС‹Р№ СЃРїРёСЃРѕРє IP</a><br/>
         <? } ?>
         <?php if ( $bHasAll || $bHasUsers ) { ?>
-        -- <a href="/siteadmin/ban-razban/?mode=users" class="blue">Пользователи</a><br/>
+        -- <a href="/siteadmin/ban-razban/?mode=users" class="blue">РџРѕР»СЊР·РѕРІР°С‚РµР»Рё</a><br/>
         <? } ?>
         <?php if ( $bHasAll || $bHasSuspicioususers ) { ?>
-        -- <a href="/siteadmin/suspicious-users/" class="blue">Подозрительные пользователи<? $countSuspiciousUsers=users::GetCountSuspiciousUsers(); echo ($countSuspiciousUsers?" ({$countSuspiciousUsers})":'') ?></a><br/>
+        -- <a href="/siteadmin/suspicious-users/" class="blue">РџРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё<? $countSuspiciousUsers=users::GetCountSuspiciousUsers(); echo ($countSuspiciousUsers?" ({$countSuspiciousUsers})":'') ?></a><br/>
         <? } ?>
         <?php if ( $bHasAll || $bHasSuspiciousip ) { ?>
-        -- <a href="/siteadmin/suspicious-ip/" class="blue">Подозрительные IP</a><br/>
+        -- <a href="/siteadmin/suspicious-ip/" class="blue">РџРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹Рµ IP</a><br/>
         <? } ?>
         <?php if ( $bHasAll || $bHasUsers ) { ?>
-        -- <a href="/siteadmin/users/" class="blue">Пользователи (вся база)</a><br/>
+        -- <a href="/siteadmin/users/" class="blue">РџРѕР»СЊР·РѕРІР°С‚РµР»Рё (РІСЃСЏ Р±Р°Р·Р°)</a><br/>
         <? } ?>
         <?php if ( $bHasAll || $bHasUnreadsmsg ) { ?>
-        -- <a href="/siteadmin/unreads/" class="blue">Непрочитанные сообщения</a><br/>
+        -- <a href="/siteadmin/unreads/" class="blue">РќРµРїСЂРѕС‡РёС‚Р°РЅРЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ</a><br/>
         <? } ?>
         <?php if ( $bHasAll || $bHasUserphone ) { ?>
-        -- <a href="/siteadmin/user_phone/" class="blue">Мобильные телефоны (финансы)</a><br/>
+        -- <a href="/siteadmin/user_phone/" class="blue">РњРѕР±РёР»СЊРЅС‹Рµ С‚РµР»РµС„РѕРЅС‹ (С„РёРЅР°РЅСЃС‹)</a><br/>
         <? } ?>
 
         <?php if ( $bHasAll || $bHasProjects || $bHasUsers ) { ?>
-        <br/>- Жалобы<br/>
+        <br/>- Р–Р°Р»РѕР±С‹<br/>
         <?php if ( $bHasAll || $bHasProjects ) { ?>
-        -- <a <?=($menu_item == 12  ? $s : $c)?> href="/siteadmin/ban-razban/?mode=complain">Жалобы на проекты<?=( !empty($nComplainProjectsCount) ? " ($nComplainProjectsCount)" : '' )?></a><br/>
-        -- <a <?=($menu_item == 23  ? $s : $c)?> href="/siteadmin/ban-razban/?mode=complain_types">Типы жалоб на проекты</a><br/>
+        -- <a <?=($menu_item == 12  ? $s : $c)?> href="/siteadmin/ban-razban/?mode=complain">Р–Р°Р»РѕР±С‹ РЅР° РїСЂРѕРµРєС‚С‹<?=( !empty($nComplainProjectsCount) ? " ($nComplainProjectsCount)" : '' )?></a><br/>
+        -- <a <?=($menu_item == 23  ? $s : $c)?> href="/siteadmin/ban-razban/?mode=complain_types">РўРёРїС‹ Р¶Р°Р»РѕР± РЅР° РїСЂРѕРµРєС‚С‹</a><br/>
         <?php } ?>
         <?php if ( $bHasAll || $bHasUsers ) { ?>
-        -- <a <?=($menu_item == 11 ? $s : $c)?> href="/siteadmin/messages_spam">Жалобы на спам<?=( !empty($nMessagesSpamCount) ? " ($nMessagesSpamCount)" : '' )?></a><br/>
-        -- <a <?=($menu_item == 20 ? $s : $c)?> href="/siteadmin/messages_archive_spam/">Архив жалоб на спам</a><br/>
-        -- <a <?=($menu_item == 24  ? $s : $c)?> href="/siteadmin/complaints_stats/">Статистика жалоб</a><br/>
+        -- <a <?=($menu_item == 11 ? $s : $c)?> href="/siteadmin/messages_spam">Р–Р°Р»РѕР±С‹ РЅР° СЃРїР°Рј<?=( !empty($nMessagesSpamCount) ? " ($nMessagesSpamCount)" : '' )?></a><br/>
+        -- <a <?=($menu_item == 20 ? $s : $c)?> href="/siteadmin/messages_archive_spam/">РђСЂС…РёРІ Р¶Р°Р»РѕР± РЅР° СЃРїР°Рј</a><br/>
+        -- <a <?=($menu_item == 24  ? $s : $c)?> href="/siteadmin/complaints_stats/">РЎС‚Р°С‚РёСЃС‚РёРєР° Р¶Р°Р»РѕР±</a><br/>
         <?php } ?>
         <?php } ?>
         
         <?php if ( $bHasAll || $bHasUsers || $bHasProjects || $bHasBlogs || $bHasCommunes  || $bHasArticles ) { ?>
-        <br/>- Пользовательский контент<br/>
-        -- <a <?=($menu_item == 15 ? $s : $c)?> href="/siteadmin/user_content/?site=choose">Выбрать поток</a><br/>
+        <br/>- РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ РєРѕРЅС‚РµРЅС‚<br/>
+        -- <a <?=($menu_item == 15 ? $s : $c)?> href="/siteadmin/user_content/?site=choose">Р’С‹Р±СЂР°С‚СЊ РїРѕС‚РѕРє</a><br/>
             <?php if ( $bHasAll || $bHasUsers ) { ?>
-        -- <a <?=($menu_item == 18 ? $s : $c)?> href="/siteadmin/user_content/?site=blocked">Заблокированные</a><br/>
+        -- <a <?=($menu_item == 18 ? $s : $c)?> href="/siteadmin/user_content/?site=blocked">Р—Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ</a><br/>
             <?php } ?>
             <?php if ( $bHasAll ) { ?>
-        -- <a <?=($menu_item == 16 ? $s : $c)?> href="/siteadmin/user_content/?site=shifts">Смены</a><br/>
-        -- <a <?=($menu_item == 17 ? $s : $c)?> href="/siteadmin/user_content/?site=streams">Настройка потоков</a><br/>
-        -- <a <?=($menu_item == 14 ? $s : $c)?> href="/siteadmin/stop_words">Стоп-слова</a><br/>
+        -- <a <?=($menu_item == 16 ? $s : $c)?> href="/siteadmin/user_content/?site=shifts">РЎРјРµРЅС‹</a><br/>
+        -- <a <?=($menu_item == 17 ? $s : $c)?> href="/siteadmin/user_content/?site=streams">РќР°СЃС‚СЂРѕР№РєР° РїРѕС‚РѕРєРѕРІ</a><br/>
+        -- <a <?=($menu_item == 14 ? $s : $c)?> href="/siteadmin/stop_words">РЎС‚РѕРї-СЃР»РѕРІР°</a><br/>
             <?php } ?>
         <?php } ?>
         
         <br/>
     <?php } ?>
        
-    <? if (hasPermissions('communes')) { ?>- <a href="/siteadmin/ban-razban/?mode=commune" class="blue">Сообщества</a><br/><? } ?>
+    <? if (hasPermissions('communes')) { ?>- <a href="/siteadmin/ban-razban/?mode=commune" class="blue">РЎРѕРѕР±С‰РµСЃС‚РІР°</a><br/><? } ?>
     <br/>
 
     
-    <h3>Администрирование</h3>
-    <? if ( $bHasAll || $bHasChangelogin ) { ?>- <a href="/siteadmin/login/" class="blue">Изменение логина</a><br/><? } ?>
-    <? if ( $bHasAll || $bHasUsers || $bHasProjects || $bHasBlogs || $bHasCommunes ) { ?>- <a href="/siteadmin/proj_reasons/" class="blue">Причины действий мод.</a><br/><br/><? } ?>
+    <h3>РђРґРјРёРЅРёСЃС‚СЂРёСЂРѕРІР°РЅРёРµ</h3>
+    <? if ( $bHasAll || $bHasChangelogin ) { ?>- <a href="/siteadmin/login/" class="blue">РР·РјРµРЅРµРЅРёРµ Р»РѕРіРёРЅР°</a><br/><? } ?>
+    <? if ( $bHasAll || $bHasUsers || $bHasProjects || $bHasBlogs || $bHasCommunes ) { ?>- <a href="/siteadmin/proj_reasons/" class="blue">РџСЂРёС‡РёРЅС‹ РґРµР№СЃС‚РІРёР№ РјРѕРґ.</a><br/><br/><? } ?>
     
-    <?php if ($bHasAll) { ?>- <a href="/siteadmin/promo_codes/" class="blue">Промо-коды</a><br/><br/><?php } ?>
+    <?php if ($bHasAll) { ?>- <a href="/siteadmin/promo_codes/" class="blue">РџСЂРѕРјРѕ-РєРѕРґС‹</a><br/><br/><?php } ?>
     
     <?php if (hasPermissions('adm') && hasPermissions('meta')) { ?>
-    - SEO-данные<br/>
-    -- <a href="/siteadmin/seo/">Мета-теги разделов</a><br/><br/>
+    - SEO-РґР°РЅРЅС‹Рµ<br/>
+    -- <a href="/siteadmin/seo/">РњРµС‚Р°-С‚РµРіРё СЂР°Р·РґРµР»РѕРІ</a><br/><br/>
     <?php } ?>
 
     <?if(hasPermissions('adm') && hasPermissions('ratinglog')){?>
-    - <a href="/siteadmin/rating_log/" class="blue">Рейтинг логи</a><br/>
+    - <a href="/siteadmin/rating_log/" class="blue">Р РµР№С‚РёРЅРі Р»РѕРіРё</a><br/>
     <?}?>
     
     <? if (hasPermissions('adm') && hasPermissions('permissions')) { ?>
-    <br/>- Права доступа<br/>
-    -- <a href="/siteadmin/permissions/?action=group_list" class="blue">Группы</a><br/>
-    -- <a href="/siteadmin/permissions/?action=user_list" class="blue">Пользователи</a><br/>
+    <br/>- РџСЂР°РІР° РґРѕСЃС‚СѓРїР°<br/>
+    -- <a href="/siteadmin/permissions/?action=group_list" class="blue">Р“СЂСѓРїРїС‹</a><br/>
+    -- <a href="/siteadmin/permissions/?action=user_list" class="blue">РџРѕР»СЊР·РѕРІР°С‚РµР»Рё</a><br/>
     <? } ?>
     
     <? if (hasPermissions('adm') && (hasPermissions('sbr') || hasPermissions('sbr_finance') || hasPermissions('tmppayments') )) { ?>
-	  <br/>- Документооборот (СБР)<br/>
+	  <br/>- Р”РѕРєСѓРјРµРЅС‚РѕРѕР±РѕСЂРѕС‚ (РЎР‘Р )<br/>
     <? } ?>
       
     <? if (hasPermissions('adm') && (hasPermissions('sbr') || hasPermissions('sbr_finance')  )) { ?>
-        --- <a href="/siteadmin/norisk2/?site=docsflow&scheme=1" class="<?=htmlspecialchars($_GET['site'])==docsflow&&$_GET['scheme']==1 ? 'inherit' : 'blue'?>">Агент</a><br/>
-        --- <a href="/siteadmin/norisk2/?site=docsflow&scheme=2" class="<?=htmlspecialchars($_GET['site'])==docsflow&&$_GET['scheme']==2 ? 'inherit' : 'blue'?>">Подряд</a><br/>
-        --- <a href="/siteadmin/norisk2/?site=docsflow&scheme=0" class="<?=htmlspecialchars($_GET['site'])==docsflow&&!$_GET['scheme'] ? ' inherit' : 'blue'?>">Все</a><br/>
-        --- <a href="/siteadmin/norisk2/?site=stat" class="<?=htmlspecialchars($_GET['site'])=='stat' ? 'inherit' : 'blue'?>">Статистика</a><br/>
-        --- <a href="/siteadmin/norisk2/?site=arbitrage" class="<?=htmlspecialchars($_GET['site'])=='arbitrage' ? 'inherit' : 'blue'?>">Арбитраж</a><br/>
-        --- <a href="/siteadmin/norisk2/?site=docsflow&scheme=-1" class="<?=htmlspecialchars($_GET['site'])==docsflow&&$_GET['scheme']==-1 ? ' inherit' : 'blue'?>">Архив</a><br/>
-        --- <a href="/siteadmin/norisk2/?site=1c" class="<?=htmlspecialchars($_GET['site'])=='1c' ? 'inherit' : 'blue'?>">Экспорт в CSV</a><br/>
-        --- <a href="/siteadmin/sbr_ito/">ИТО</a><br/>
-        --- <a href="/siteadmin/norisk2/?site=invoice" class="<?=htmlspecialchars($_GET['site'])=='invoice' ? 'inherit' : 'blue'?>">Акты и Счет-фактуры</a><br/>
+        --- <a href="/siteadmin/norisk2/?site=docsflow&scheme=1" class="<?=htmlspecialchars($_GET['site'])==docsflow&&$_GET['scheme']==1 ? 'inherit' : 'blue'?>">РђРіРµРЅС‚</a><br/>
+        --- <a href="/siteadmin/norisk2/?site=docsflow&scheme=2" class="<?=htmlspecialchars($_GET['site'])==docsflow&&$_GET['scheme']==2 ? 'inherit' : 'blue'?>">РџРѕРґСЂСЏРґ</a><br/>
+        --- <a href="/siteadmin/norisk2/?site=docsflow&scheme=0" class="<?=htmlspecialchars($_GET['site'])==docsflow&&!$_GET['scheme'] ? ' inherit' : 'blue'?>">Р’СЃРµ</a><br/>
+        --- <a href="/siteadmin/norisk2/?site=stat" class="<?=htmlspecialchars($_GET['site'])=='stat' ? 'inherit' : 'blue'?>">РЎС‚Р°С‚РёСЃС‚РёРєР°</a><br/>
+        --- <a href="/siteadmin/norisk2/?site=arbitrage" class="<?=htmlspecialchars($_GET['site'])=='arbitrage' ? 'inherit' : 'blue'?>">РђСЂР±РёС‚СЂР°Р¶</a><br/>
+        --- <a href="/siteadmin/norisk2/?site=docsflow&scheme=-1" class="<?=htmlspecialchars($_GET['site'])==docsflow&&$_GET['scheme']==-1 ? ' inherit' : 'blue'?>">РђСЂС…РёРІ</a><br/>
+        --- <a href="/siteadmin/norisk2/?site=1c" class="<?=htmlspecialchars($_GET['site'])=='1c' ? 'inherit' : 'blue'?>">Р­РєСЃРїРѕСЂС‚ РІ CSV</a><br/>
+        --- <a href="/siteadmin/sbr_ito/">РРўРћ</a><br/>
+        --- <a href="/siteadmin/norisk2/?site=invoice" class="<?=htmlspecialchars($_GET['site'])=='invoice' ? 'inherit' : 'blue'?>">РђРєС‚С‹ Рё РЎС‡РµС‚-С„Р°РєС‚СѓСЂС‹</a><br/>
     <? } ?>
 
     <? if (hasPermissions('adm') && (hasPermissions('sbr') || hasPermissions('sbr_finance') || hasPermissions('tmppayments') )) { ?>
-      -- <a href="/siteadmin/sbr_stat/" class="blue">Статистика по СБР</a><br/>
+      -- <a href="/siteadmin/sbr_stat/" class="blue">РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РЎР‘Р </a><br/>
     <? } ?>
     <? if (hasPermissions('adm') && (hasPermissions('sbr') || hasPermissions('sbr_finance') )) { ?>
-      -- <a href="/siteadmin/sbr_reestr" class="blue">Реестры для 1С</a><br/>
-      -- <a href="/siteadmin/sbr_reestr?action=import" class="blue">Реестры для сайта</a><br/>
+      -- <a href="/siteadmin/sbr_reestr" class="blue">Р РµРµСЃС‚СЂС‹ РґР»СЏ 1РЎ</a><br/>
+      -- <a href="/siteadmin/sbr_reestr?action=import" class="blue">Р РµРµСЃС‚СЂС‹ РґР»СЏ СЃР°Р№С‚Р°</a><br/>
 	  <br/>
 	<? } ?>
 	
 	<? if(hasPermissions('adm') && hasPermissions('teamfl')) {?>
-	  - <a href="/siteadmin/team/" class="blue">Команда Free-lance.ru</a><br/><br/>
+	  - <a href="/siteadmin/team/" class="blue">РљРѕРјР°РЅРґР° Free-lance.ru</a><br/><br/>
     <? } ?>
     <? if (hasPermissions('communes')) { ?>
-      - <a href="/siteadmin/commune/" class="blue">Сообщества</a><br/><br/>
+      - <a href="/siteadmin/commune/" class="blue">РЎРѕРѕР±С‰РµСЃС‚РІР°</a><br/><br/>
     <? } ?>
 
 	<? if (hasPermissions('adminspam')) { ?>
-	- <a href="/siteadmin/admin/" class="blue">Администрация (спам)</a><br/>
+	- <a href="/siteadmin/admin/" class="blue">РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ (СЃРїР°Рј)</a><br/>
     <? } ?>
     <? if (hasPermissions('mailer')) { ?>
-    - <a href="/siteadmin/mailer/" class="blue">Новая рассылка</a><br/><br/>
+    - <a href="/siteadmin/mailer/" class="blue">РќРѕРІР°СЏ СЂР°СЃСЃС‹Р»РєР°</a><br/><br/>
     <? } ?>
     <? if (hasPermissions('stats') || hasPermissions('tmppayments')) { ?>
-	- <a href="/siteadmin/stats/" class="blue">Статистика</a><br/><br/>
+	- <a href="/siteadmin/stats/" class="blue">РЎС‚Р°С‚РёСЃС‚РёРєР°</a><br/><br/>
 	<? } ?>
 
 	<? if (hasPermissions('masssending')) { ?>		
-	- <a href="/siteadmin/masssending/" class="blue">Заявки на рассылку по разделам<?=($mass_sending_new_cnt ? " ($mass_sending_new_cnt)" : '')?></a><br/><br/>
+	- <a href="/siteadmin/masssending/" class="blue">Р—Р°СЏРІРєРё РЅР° СЂР°СЃСЃС‹Р»РєСѓ РїРѕ СЂР°Р·РґРµР»Р°Рј<?=($mass_sending_new_cnt ? " ($mass_sending_new_cnt)" : '')?></a><br/><br/>
 	<? } ?>
 
 	<? if (hasPermissions('adm') && hasPermissions('seo')) { ?>
-	- <a href="/siteadmin/search_kwords/" class="blue">Поиск по сайту</a><br/><br/>
+	- <a href="/siteadmin/search_kwords/" class="blue">РџРѕРёСЃРє РїРѕ СЃР°Р№С‚Сѓ</a><br/><br/>
 	<? } ?>
 	
     <? if (hasPermissions('adm')  && (hasPermissions('statsaccounts') || hasPermissions('tmppayments')) ) { ?>
-	- <a href="/siteadmin/account/" class="blue">Статистика (счета)</a><br/>
+	- <a href="/siteadmin/account/" class="blue">РЎС‚Р°С‚РёСЃС‚РёРєР° (СЃС‡РµС‚Р°)</a><br/>
     <? } ?>
     <? if (hasPermissions('adm')  && hasPermissions('ouraccounts')) { ?>
-	- <a href="/siteadmin/staff/" class="blue">Свои аккаунты</a><br/><br/>
+	- <a href="/siteadmin/staff/" class="blue">РЎРІРѕРё Р°РєРєР°СѓРЅС‚С‹</a><br/><br/>
 	<? } ?>
 	
 
 <? if ($bHasAll || $bHasBank) { ?>
-- Безнал<br/>
+- Р‘РµР·РЅР°Р»<br/>
 <? } ?>	
 <? if ($bHasAll || $bHasBankalpha) { ?>
--- <a href="/siteadmin/alpha/" class="blue">альфа-банк</a><br/>
+-- <a href="/siteadmin/alpha/" class="blue">Р°Р»СЊС„Р°-Р±Р°РЅРє</a><br/>
 <? } ?> 
 <? if ($bHasAll || $bHasPayments) { ?>
--- <a href="/siteadmin/billinvoices/" class="blue">Заказчики пополнение ЛС</a><br/>
+-- <a href="/siteadmin/billinvoices/" class="blue">Р—Р°РєР°Р·С‡РёРєРё РїРѕРїРѕР»РЅРµРЅРёРµ Р›РЎ</a><br/>
 <? } ?>
 <? if ($bHasAll || $bHasBank || $bHasPayments || $bHasBankalpha) { ?>
 <br/>
@@ -204,45 +204,45 @@ if ( !defined('IS_SITE_ADMIN') ) { header('Location: /404.php'); exit; }
 
 
 <? if ($bHasAll || $bHasPayservices) { ?>
-- <a href="/siteadmin/rating/" class="blue">Рейтинг</a><br/>
+- <a href="/siteadmin/rating/" class="blue">Р РµР№С‚РёРЅРі</a><br/>
 <br/>
 <? } ?>
 
 <? if ($bHasAll || $bHasAdvstat) { ?>
-- Рекламная ст-ка<br/>
--- <a href="/siteadmin/ban_promo/" class="blue">Промо баннеры</a><br/>
+- Р РµРєР»Р°РјРЅР°СЏ СЃС‚-РєР°<br/>
+-- <a href="/siteadmin/ban_promo/" class="blue">РџСЂРѕРјРѕ Р±Р°РЅРЅРµСЂС‹</a><br/>
 <br/>
 <? } ?>
 
 
 <? if ($bHasAll || $bHasLetters) { ?>
-- <a href="/siteadmin/letters/" class="blue">Корреспонденция</a><br/>
--- <a href="/siteadmin/letters/?mode=company" class="blue">Стороны</a><br/>
--- <a href="/siteadmin/letters/?mode=templates" class="blue">Шаблоны</a><br/>
+- <a href="/siteadmin/letters/" class="blue">РљРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС†РёСЏ</a><br/>
+-- <a href="/siteadmin/letters/?mode=company" class="blue">РЎС‚РѕСЂРѕРЅС‹</a><br/>
+-- <a href="/siteadmin/letters/?mode=templates" class="blue">РЁР°Р±Р»РѕРЅС‹</a><br/>
 <br/>
 <? } ?>
 
 
 <? if ($bHasAll || $bHasOffdocuments) { ?>
-<a href="/siteadmin/davupload/?mode=files" class="blue">Загрузка файлов на DAV</a><br/>
+<a href="/siteadmin/davupload/?mode=files" class="blue">Р—Р°РіСЂСѓР·РєР° С„Р°Р№Р»РѕРІ РЅР° DAV</a><br/>
 <br/>
 <? }//if?>
 
 
 <? if ($bHasAll || $bHasTservices) { ?>
-- Типовые услуги<br/>
--- <a href="/siteadmin/tservices/?mode=orders" class="blue">Заказы ТУ</a><br/>
+- РўРёРїРѕРІС‹Рµ СѓСЃР»СѓРіРё<br/>
+-- <a href="/siteadmin/tservices/?mode=orders" class="blue">Р—Р°РєР°Р·С‹ РўРЈ</a><br/>
 <br/>
 <? } ?>
 
 <? if ($bHasAll || $bHasNewsletter ) { ?>
-- <a href="/siteadmin/newsletter/" class="blue">Баннеры для ежедневной рассылки о новых проектах</a>
+- <a href="/siteadmin/newsletter/" class="blue">Р‘Р°РЅРЅРµСЂС‹ РґР»СЏ РµР¶РµРґРЅРµРІРЅРѕР№ СЂР°СЃСЃС‹Р»РєРё Рѕ РЅРѕРІС‹С… РїСЂРѕРµРєС‚Р°С…</a>
 <br/>
 <? } ?>
 
 <? if ($bHasAll || $bHasUsers ) { ?>
 <br/>
-- <a href="/siteadmin/adriver/" class="blue">Справочник ключевых слов для AdRiver</a>
+- <a href="/siteadmin/adriver/" class="blue">РЎРїСЂР°РІРѕС‡РЅРёРє РєР»СЋС‡РµРІС‹С… СЃР»РѕРІ РґР»СЏ AdRiver</a>
 <br/>
 <? } ?>
 

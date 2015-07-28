@@ -2,7 +2,7 @@
 
 global $session;
 global $page_title;
-$page_title = 'Предложить заказ';
+$page_title = 'РџСЂРµРґР»РѕР¶РёС‚СЊ Р·Р°РєР°Р·';
 
 
 ?>
@@ -16,7 +16,7 @@ $page_title = 'Предложить заказ';
         <tr class="b-layout__tr">
             <td class="b-layout__td b-layout__td_padbot_20">
                 <div class="b-layout__txt b-layout__txt_fontsize_15">
-                    Исполнитель
+                    РСЃРїРѕР»РЅРёС‚РµР»СЊ
                 </div>
             </td>
             <td class="b-layout__td b-layout__td_padbot_20">

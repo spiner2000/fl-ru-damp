@@ -5,14 +5,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/bill/models/BillInvoicesModel.php');
 class BillInvoicesAdminModel extends BillInvoicesModel
 {
     /**
-     * Массив фильтра
+     * РњР°СЃСЃРёРІ С„РёР»СЊС‚СЂР°
      * @var array
      */
     protected $filter = array();
 
     
     /**
-     * Установить массив фильтра
+     * РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РјР°СЃСЃРёРІ С„РёР»СЊС‚СЂР°
      * 
      * @param type $filter
      * @return \BillInvoicesAdminModel
@@ -24,7 +24,7 @@ class BillInvoicesAdminModel extends BillInvoicesModel
     }
 
     /**
-     * Собирает SQL запрос по фильтру
+     * РЎРѕР±РёСЂР°РµС‚ SQL Р·Р°РїСЂРѕСЃ РїРѕ С„РёР»СЊС‚СЂСѓ
      * 
      * @param type $filter
      * @return type
@@ -54,7 +54,7 @@ class BillInvoicesAdminModel extends BillInvoicesModel
     
     
     /**
-     * Получить список счетов с учетом фильтра
+     * РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє СЃС‡РµС‚РѕРІ СЃ СѓС‡РµС‚РѕРј С„РёР»СЊС‚СЂР°
      * 
      * @param type $filter
      * @return type
@@ -89,7 +89,7 @@ class BillInvoicesAdminModel extends BillInvoicesModel
     
     
     /**
-     * Кол-во счетов с учетом фильтра
+     * РљРѕР»-РІРѕ СЃС‡РµС‚РѕРІ СЃ СѓС‡РµС‚РѕРј С„РёР»СЊС‚СЂР°
      * 
      * @return type
      */
@@ -126,7 +126,7 @@ class BillInvoicesAdminModel extends BillInvoicesModel
     }
     
     /**
-     * Обновить файл счет-фактуры
+     * РћР±РЅРѕРІРёС‚СЊ С„Р°Р№Р» СЃС‡РµС‚-С„Р°РєС‚СѓСЂС‹
      * @param type $invoice_id
      * @param type $file
      */
@@ -165,7 +165,7 @@ class BillInvoicesAdminModel extends BillInvoicesModel
 
 
     /**
-     * Сченерировать счет-фактуру
+     * РЎС‡РµРЅРµСЂРёСЂРѕРІР°С‚СЊ СЃС‡РµС‚-С„Р°РєС‚СѓСЂСѓ
      * 
      * @param type $nums
      * @param type $dates

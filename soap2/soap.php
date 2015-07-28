@@ -14,45 +14,45 @@ class FLTrayService {
         $project_temp='<html><head><style> td, span, div, .std{ font-family: Tahoma; font-size: 11px; color: #666666; font-weight: normal; } .frlname11{ font-size: 11px; color: #666666; font-weight: bold; } img.pro{ background-color:none;	width: 26px; height: 11px; border-width:0px; margin-right: 3px; } .freelancerU img.pro{ width: 26px; height: 11px; border-width:0px; } .cl9{ color: #909090; } .c_grey{ color: #909090; font-weight:bold; display:block; } .freelancerU_content a.blue { font-weight:bold; display:block; color:#003399; } .u_active{ font-size: 80%; color: #ff6b3d; margin-right:16px; } .u_inactive{ font-size: 80%; color: #477ad9; margin-right:16px; } .prj_bold { font-weight:bold; color: #000000; } .prj_a { color: #000000; text-decoration: none; font-family: Tahoma; font-size: 11px; color: #666666; font-weight: normal; } .user_blue {   font-family: Tahoma; font-size: 10px; font-weight:bold; color:#003399; } </style></head><body><div class="prj_bold">@HEAD@</div><div class="prj_bold">@BUDGET@ @BUDGETB@</div>  <a target="_blank" class="prj_a" href="'.$GLOBALS["host"].'/blogs/view.php?tr=@THREAD@">@TEXT@</a><br><a target="_blank" class="user_blue" href="'.$GLOBALS["host"].'/users/@LOGIN@/">@UNAME@ @USURNAME@ [@LOGIN@]</a><br></body></html>';
 
         $log=fopen("sql.log","a");
-        if (!$login) { return array('result' => mb_convert_encoding('Нет логина', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>'');  }
+        if (!$login) { return array('result' => mb_convert_encoding('РќРµС‚ Р»РѕРіРёРЅР°', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>'');  }
         $login= trim($login);
         $login = mysql_real_escape_string($login);
         $password= trim(mb_convert_encoding($password, "windows-1251", "UTF-8"));
         $session = trim($session);
         $auth=0;
         $update_sess=0;
-        // проверяем наличие других сессий
+        // РїСЂРѕРІРµСЂСЏРµРј РЅР°Р»РёС‡РёРµ РґСЂСѓРіРёС… СЃРµСЃСЃРёР№
         $res = mysql_query("SELECT * FROM sessions WHERE is_tray=1 AND session_login='".$login."'", DBMyConnect());
         fwrite($log,"\n".date("Y.m.d h:i:s")." "."SELECT * FROM sessions WHERE is_tray=1 AND session_login='".$login."'");
         $sess_rows=mysql_num_rows($res);
-        // сессий больше чем одна выбиваем обоих
+        // СЃРµСЃСЃРёР№ Р±РѕР»СЊС€Рµ С‡РµРј РѕРґРЅР° РІС‹Р±РёРІР°РµРј РѕР±РѕРёС…
         if ($sess_rows>1)  {
             $res = mysql_query("DELETE FROM sessions WHERE is_tray=1 AND session_login='".$login."'", DBMyConnect());
             fwrite($log,"\n".date("Y.m.d h:i:s")." "."DELETE FROM sessions WHERE is_tray=1 AND session_login='".$login."'");
-            return array('result' => mb_convert_encoding('Две сессии. Возможно еще кто-то под Вашим именем в сети. Перелогиньтесь с введением логина и пароля', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>'');
+            return array('result' => mb_convert_encoding('Р”РІРµ СЃРµСЃСЃРёРё. Р’РѕР·РјРѕР¶РЅРѕ РµС‰Рµ РєС‚Рѕ-С‚Рѕ РїРѕРґ Р’Р°С€РёРј РёРјРµРЅРµРј РІ СЃРµС‚Рё. РџРµСЂРµР»РѕРіРёРЅСЊС‚РµСЃСЊ СЃ РІРІРµРґРµРЅРёРµРј Р»РѕРіРёРЅР° Рё РїР°СЂРѕР»СЏ', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>'');
         }
         elseif (!$session) {
 
-            // удаляем все предыдущие сессии
+            // СѓРґР°Р»СЏРµРј РІСЃРµ РїСЂРµРґС‹РґСѓС‰РёРµ СЃРµСЃСЃРёРё
             $res = mysql_query("DELETE FROM sessions WHERE is_tray=1 AND session_login='".$login."'", DBMyConnect());
             fwrite($log,"\n".date("Y.m.d h:i:s")." "."DELETE FROM sessions WHERE is_tray=1 AND session_login='".$login."'");
-            //  проверяем логин-пароль и все остальное
+            //  РїСЂРѕРІРµСЂСЏРµРј Р»РѕРіРёРЅ-РїР°СЂРѕР»СЊ Рё РІСЃРµ РѕСЃС‚Р°Р»СЊРЅРѕРµ
             $res_pass = $DB->query("SELECT uid, login, is_pro, is_banned, active FROM users WHERE lower(login)=? AND passwd=? LIMIT 1", strtolower($login), $password);
             fwrite($log,"\n".date("Y.m.d h:i:s")." "."SELECT uid, login, is_pro, is_banned, active FROM users WHERE lower(login)='".strtolower($login)."' AND passwd='".$password."' LIMIT 1");
             if (pg_numrows($res_pass)){
-                // ок
+                // РѕРє
                 $user_arr=pg_fetch_assoc($res_pass);
-                if ($user_arr["is_pro"]=="f") { return array('result' => mb_convert_encoding('Доступно только для PRO', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>''); }
-                if ($user_arr["active"]=="f") { return array('result' => mb_convert_encoding('А активировать аккаунт Пушкин будет?', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>''); }
-                if ($user_arr["is_banned"]) { return array('result' => mb_convert_encoding('Забанены вы нафих', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>''); }
+                if ($user_arr["is_pro"]=="f") { return array('result' => mb_convert_encoding('Р”РѕСЃС‚СѓРїРЅРѕ С‚РѕР»СЊРєРѕ РґР»СЏ PRO', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>''); }
+                if ($user_arr["active"]=="f") { return array('result' => mb_convert_encoding('Рђ Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊ Р°РєРєР°СѓРЅС‚ РџСѓС€РєРёРЅ Р±СѓРґРµС‚?', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>''); }
+                if ($user_arr["is_banned"]) { return array('result' => mb_convert_encoding('Р—Р°Р±Р°РЅРµРЅС‹ РІС‹ РЅР°С„РёС…', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>''); }
                 $auth=1;
                 $uid=$user_arr["uid"];
                 $login=$user_arr["login"];
             }
-            else { return array('result' => mb_convert_encoding('Не правильный логин-пароль', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>''); }
+            else { return array('result' => mb_convert_encoding('РќРµ РїСЂР°РІРёР»СЊРЅС‹Р№ Р»РѕРіРёРЅ-РїР°СЂРѕР»СЊ', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>''); }
         }
         else {
-            // если передана сессия - пытаемся  по ней зарегится
+            // РµСЃР»Рё РїРµСЂРµРґР°РЅР° СЃРµСЃСЃРёСЏ - РїС‹С‚Р°РµРјСЃСЏ  РїРѕ РЅРµР№ Р·Р°СЂРµРіРёС‚СЃСЏ
             $res_sess = mysql_query("SELECT * FROM sessions WHERE is_tray=1 AND session_id='".$session."'", DBMyConnect());
             fwrite($log,"\n".date("Y.m.d h:i:s")." "."SELECT * FROM sessions WHERE is_tray=1 AND session_id='".$session."'");
 
@@ -61,21 +61,21 @@ class FLTrayService {
                 $res_pass = $DB->query("SELECT uid, login, is_pro, is_banned, active FROM users WHERE uid=? LIMIT 1", $sess_auth["session_uid"]);
                 fwrite($log,"\n".date("Y.m.d h:i:s")." "."SELECT uid, login, is_pro, is_banned, active FROM users WHERE uid='".$sess_auth["session_uid"]."' LIMIT 1");
                 if (pg_numrows($res_pass)){
-                    // ок
+                    // РѕРє
                     $user_arr=pg_fetch_assoc($res_pass);
-                    if ($user_arr["is_pro"]=="f") { return array('result' => mb_convert_encoding('Доступно только для PRO', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>''); }
-                    if ($user_arr["active"]=="f") { return array('result' => mb_convert_encoding('А активировать аккаунт Пушкин будет?', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>''); }
-                    if ($user_arr["is_banned"]) { return array('result' => mb_convert_encoding('Забанены вы нафих', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>''); }
+                    if ($user_arr["is_pro"]=="f") { return array('result' => mb_convert_encoding('Р”РѕСЃС‚СѓРїРЅРѕ С‚РѕР»СЊРєРѕ РґР»СЏ PRO', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>''); }
+                    if ($user_arr["active"]=="f") { return array('result' => mb_convert_encoding('Рђ Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊ Р°РєРєР°СѓРЅС‚ РџСѓС€РєРёРЅ Р±СѓРґРµС‚?', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>''); }
+                    if ($user_arr["is_banned"]) { return array('result' => mb_convert_encoding('Р—Р°Р±Р°РЅРµРЅС‹ РІС‹ РЅР°С„РёС…', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>''); }
                     $auth=1;
                     $uid=$user_arr["uid"];
                     $login=$user_arr["login"];
                 }
-                else { return array('result' => mb_convert_encoding('Не могу вас найти', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>''); }
+                else { return array('result' => mb_convert_encoding('РќРµ РјРѕРіСѓ РІР°СЃ РЅР°Р№С‚Рё', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>''); }
                 $update_sess=1;
             }
-            else { return array('result' => mb_convert_encoding('Ошибка авторизации по сессии. Перелогиньтесь с введением логина и пароля', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>''); }
+            else { return array('result' => mb_convert_encoding('РћС€РёР±РєР° Р°РІС‚РѕСЂРёР·Р°С†РёРё РїРѕ СЃРµСЃСЃРёРё. РџРµСЂРµР»РѕРіРёРЅСЊС‚РµСЃСЊ СЃ РІРІРµРґРµРЅРёРµРј Р»РѕРіРёРЅР° Рё РїР°СЂРѕР»СЏ', "UTF-8", "windows-1251"), 'cookie'=> '', 'message_template'=>'', 'project_template'=>''); }
         }
-        // все оки - логиним
+        // РІСЃРµ РѕРєРё - Р»РѕРіРёРЅРёРј
         if ($auth) {
             if  ($update_sess) {
                 mysql_query("UPDATE sessions
@@ -87,7 +87,7 @@ class FLTrayService {
                 return array('result' => '', 'cookie'=> $session, 'message_template'=>$message_temp, 'project_template'=>$project_temp );
             }
             else {
-                //надо сессию сгенерить
+                //РЅР°РґРѕ СЃРµСЃСЃРёСЋ СЃРіРµРЅРµСЂРёС‚СЊ
                 do {
                     $session=GetSession();
                     $res = mysql_query("SELECT * FROM sessions WHERE session_id = '".$session."' LIMIT 1", DBMyConnect());
@@ -121,21 +121,21 @@ class FLTrayService {
     list ($money)=@pg_fetch_row($res);
     return array('result' => '', 'money' =>$money , 'unreadmessage'=> $mescount );
     }
-    else return array('result' => mb_convert_encoding('Ошибка:'.$error, "UTF-8", "windows-1251"), 'money' => 0 , 'unreadmessage'=> 0 );
+    else return array('result' => mb_convert_encoding('РћС€РёР±РєР°:'.$error, "UTF-8", "windows-1251"), 'money' => 0 , 'unreadmessage'=> 0 );
     }
 
-    формат фильтра
+    С„РѕСЂРјР°С‚ С„РёР»СЊС‚СЂР°
     $filter
-    [0] - включен? = 0
-    [1] - бюджет от = 0
-    [2] - бюджет до = 0
-    [3] - Показывать с неуказанным бюджетом = 1
-    [4] - разработка сайтов = 1 (2 Разработка сайта)
-    [5] - программирование = 1 (1 Программирование)
-    [6] - Переводы тексты = 1 (3 Тексты, переводы)
-    [7] - Дизайнарт = 1 (4 Дизайн)
-    [8] - реклама-маркетинг = 1 (5 Реклама, маркетинг)
-    [9] - прочее = 1 (6 Прочее)
+    [0] - РІРєР»СЋС‡РµРЅ? = 0
+    [1] - Р±СЋРґР¶РµС‚ РѕС‚ = 0
+    [2] - Р±СЋРґР¶РµС‚ РґРѕ = 0
+    [3] - РџРѕРєР°Р·С‹РІР°С‚СЊ СЃ РЅРµСѓРєР°Р·Р°РЅРЅС‹Рј Р±СЋРґР¶РµС‚РѕРј = 1
+    [4] - СЂР°Р·СЂР°Р±РѕС‚РєР° СЃР°Р№С‚РѕРІ = 1 (2 Р Р°Р·СЂР°Р±РѕС‚РєР° СЃР°Р№С‚Р°)
+    [5] - РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ = 1 (1 РџСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ)
+    [6] - РџРµСЂРµРІРѕРґС‹ С‚РµРєСЃС‚С‹ = 1 (3 РўРµРєСЃС‚С‹, РїРµСЂРµРІРѕРґС‹)
+    [7] - Р”РёР·Р°Р№РЅР°СЂС‚ = 1 (4 Р”РёР·Р°Р№РЅ)
+    [8] - СЂРµРєР»Р°РјР°-РјР°СЂРєРµС‚РёРЅРі = 1 (5 Р РµРєР»Р°РјР°, РјР°СЂРєРµС‚РёРЅРі)
+    [9] - РїСЂРѕС‡РµРµ = 1 (6 РџСЂРѕС‡РµРµ)
     [10] - 0 - free
     [11] - 1 - office
     [12] - 2 - koncurs
@@ -179,7 +179,7 @@ LEFT JOIN account ON account.uid=users.uid LEFT JOIN freelancer ON freelancer.fi
             if ($get[1]) { $result_prj = GetNewProjects ($sess_ar["uid"], $filter, $id, $login, $uname, $usurname, $text, $picname, $thread, $pro, $online, $time, $head, $budget, $b_type, $type, $role, $lastprj); }
             return array ('result'=>'', 'id'=>$id, 'login'=>$login, 'uname'=>$uname,'usurname'=> $usurname,'text'=> $text, 'picname'=>$picname, 'thread'=>$thread, 'pro'=>$pro, 'online'=>$online, 'time'=>$time, 'head'=>$head, 'budget'=>$budget, 'b_type'=>$b_type, 'money'=>$money,  'lastprj'=>$lastprj, 'rating' =>round($rating*10), 'hits'=>$hits, 'type'=>$type, 'role'=>$role, 'lastmes' =>$lastmes);
         }
-        else return array('result' => mb_convert_encoding('Ошибка: '.$error, "UTF-8", "windows-1251"), 'id'=>$id, 'login'=>$login, 'uname'=>$uname,'usurname'=> $usurname,'text'=> $text, 'picname'=>$picname, 'thread'=>$thread, 'pro'=>$pro, 'online'=>$online, 'time'=>$time, 'head'=>$head, 'budget'=>$budget, 'b_type'=>$b_type, 'money'=>0,  'lastprj'=>0, 'rating' =>0, 'hits'=>0, 'type'=>$type,'role'=>$role, 'lastmes' =>$lastmes  );
+        else return array('result' => mb_convert_encoding('РћС€РёР±РєР°: '.$error, "UTF-8", "windows-1251"), 'id'=>$id, 'login'=>$login, 'uname'=>$uname,'usurname'=> $usurname,'text'=> $text, 'picname'=>$picname, 'thread'=>$thread, 'pro'=>$pro, 'online'=>$online, 'time'=>$time, 'head'=>$head, 'budget'=>$budget, 'b_type'=>$b_type, 'money'=>0,  'lastprj'=>0, 'rating' =>0, 'hits'=>0, 'type'=>$type,'role'=>$role, 'lastmes' =>$lastmes  );
     }
 
     function ReadMess ($session,$mess_id) {
@@ -197,7 +197,7 @@ LEFT JOIN account ON account.uid=users.uid LEFT JOIN freelancer ON freelancer.fi
                 return '';
             }
         }
-        else return  mb_convert_encoding('Ошибка: '.$error, "UTF-8", "windows-1251");
+        else return  mb_convert_encoding('РћС€РёР±РєР°: '.$error, "UTF-8", "windows-1251");
     }
     function CheckVersion($version) {
         GLOBAL $lversion;
@@ -215,7 +215,7 @@ LEFT JOIN account ON account.uid=users.uid LEFT JOIN freelancer ON freelancer.fi
             $message=strip_tags(mb_convert_encoding($message, "windows-1251", "UTF-8"));
             $message=preg_replace("|\n|Uis","<br>",$message);
             switch ($type) {
-                // ответ на личное сообщение
+                // РѕС‚РІРµС‚ РЅР° Р»РёС‡РЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ
                 case 1:
                     // get id
                     $sql = "SELECT from_id from messages WHERE id=?";
@@ -225,7 +225,7 @@ LEFT JOIN account ON account.uid=users.uid LEFT JOIN freelancer ON freelancer.fi
                         $sql = "SELECT target_id from ignor WHERE (user_id=? AND target_id=? )";
                         $res = $DB->query($sql, $sess_ar["uid"], $to_id);
                         if (@pg_num_rows($res) > 0  || $to_id == 103) {
-                            return  mb_convert_encoding('Пользователь запретил отправлять ему сообщения', "UTF-8", "windows-1251");
+                            return  mb_convert_encoding('РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°РїСЂРµС‚РёР» РѕС‚РїСЂР°РІР»СЏС‚СЊ РµРјСѓ СЃРѕРѕР±С‰РµРЅРёСЏ', "UTF-8", "windows-1251");
                         }
                         else {
                             $user_id= $sess_ar["uid"];
@@ -239,10 +239,10 @@ LEFT JOIN account ON account.uid=users.uid LEFT JOIN freelancer ON freelancer.fi
                             $error .= $DB->error;
                         }
                     }
-                    else return mb_convert_encoding('Ошибка', "UTF-8", "windows-1251");
+                    else return mb_convert_encoding('РћС€РёР±РєР°', "UTF-8", "windows-1251");
 
                     break;
-                    // ответ на проект в блоги
+                    // РѕС‚РІРµС‚ РЅР° РїСЂРѕРµРєС‚ РІ Р±Р»РѕРіРё
                 case 2:
                     $sql = "SELECT blogs_msgs.id,blogs_themes.thread_id from blogs_themes LEFT JOIN blogs_msgs ON blogs_msgs.thread_id=blogs_themes.thread_id AND blogs_msgs.reply_to is NULL WHERE id_gr=?";
                     $res = $DB->query($sql, intval($id));
@@ -255,9 +255,9 @@ LEFT JOIN account ON account.uid=users.uid LEFT JOIN freelancer ON freelancer.fi
                         $res = $DB->query($sql);
 
                     }
-                    else return mb_convert_encoding('Ошибка', "UTF-8", "windows-1251");
+                    else return mb_convert_encoding('РћС€РёР±РєР°', "UTF-8", "windows-1251");
                     break;
-                    // ответ на проект в личку
+                    // РѕС‚РІРµС‚ РЅР° РїСЂРѕРµРєС‚ РІ Р»РёС‡РєСѓ
                 case  3:
                     $sql = "SELECT user_id from projects WHERE id=?";
                     $to_id = $DB->val($sql, intval($id));
@@ -266,7 +266,7 @@ LEFT JOIN account ON account.uid=users.uid LEFT JOIN freelancer ON freelancer.fi
                         $sql = "SELECT target_id from ignor WHERE (user_id=? AND target_id=? )";
                         $res = $DB->query($sql, $sess_ar["uid"], $to_id);
                         if (@pg_num_rows($res) > 0  || $to_id == 103) {
-                            return  mb_convert_encoding('Пользователь запретил отправлять ему сообщения', "UTF-8", "windows-1251");
+                            return  mb_convert_encoding('РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°РїСЂРµС‚РёР» РѕС‚РїСЂР°РІР»СЏС‚СЊ РµРјСѓ СЃРѕРѕР±С‰РµРЅРёСЏ', "UTF-8", "windows-1251");
                         }
                         else {
                             $user_id= $sess_ar["uid"];
@@ -280,9 +280,9 @@ LEFT JOIN account ON account.uid=users.uid LEFT JOIN freelancer ON freelancer.fi
                             $error .= $DB->error;
                         }
                     }
-                    else return mb_convert_encoding('Ошибка', "UTF-8", "windows-1251");
+                    else return mb_convert_encoding('РћС€РёР±РєР°', "UTF-8", "windows-1251");
                     break;
-                    // ответ в  блоги
+                    // РѕС‚РІРµС‚ РІ  Р±Р»РѕРіРё
                 case  4:
                     $sql = "SELECT user_id from projects WHERE id=?";
                     $to_id = $DB->val($sql, intval($id));
@@ -291,7 +291,7 @@ LEFT JOIN account ON account.uid=users.uid LEFT JOIN freelancer ON freelancer.fi
                         $sql = "SELECT target_id from ignor WHERE (user_id=? AND target_id=? )";
                         $res = $DB->query($sql, $sess_ar["uid"], $to_id);
                         if (@pg_num_rows($res) > 0  || $to_id == 103) {
-                            return  mb_convert_encoding('Пользователь запретил отправлять ему сообщения', "UTF-8", "windows-1251");
+                            return  mb_convert_encoding('РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°РїСЂРµС‚РёР» РѕС‚РїСЂР°РІР»СЏС‚СЊ РµРјСѓ СЃРѕРѕР±С‰РµРЅРёСЏ', "UTF-8", "windows-1251");
                         }
                         else {
                             $user_id= $sess_ar["uid"];
@@ -305,12 +305,12 @@ LEFT JOIN account ON account.uid=users.uid LEFT JOIN freelancer ON freelancer.fi
                             $error .= $DB->error;
                         }
                     }
-                    else return mb_convert_encoding('Ошибка', "UTF-8", "windows-1251");
+                    else return mb_convert_encoding('РћС€РёР±РєР°', "UTF-8", "windows-1251");
                     break;
             }
             return '';
         }
-        else return  mb_convert_encoding('Ошибка: '.$error, "UTF-8", "windows-1251");
+        else return  mb_convert_encoding('РћС€РёР±РєР°: '.$error, "UTF-8", "windows-1251");
     }
 }
 

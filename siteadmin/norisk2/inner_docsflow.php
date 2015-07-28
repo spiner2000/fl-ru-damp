@@ -43,10 +43,10 @@ function ShowFinInfo(type, id) {
     }
 }
 </script>
-<h3>Документооборот / <?=$scheme==sbr::SCHEME_AGNT ? 'Агент' : ($scheme==sbr::SCHEME_PDRD || $scheme==sbr::SCHEME_PDRD2 ? 'Подряд' : ($scheme == -1 ? 'Архив' : 'Все'))?></h3>
+<h3>Р”РѕРєСѓРјРµРЅС‚РѕРѕР±РѕСЂРѕС‚ / <?=$scheme==sbr::SCHEME_AGNT ? 'РђРіРµРЅС‚' : ($scheme==sbr::SCHEME_PDRD || $scheme==sbr::SCHEME_PDRD2 ? 'РџРѕРґСЂСЏРґ' : ($scheme == -1 ? 'РђСЂС…РёРІ' : 'Р’СЃРµ'))?></h3>
 <? if(!$scheme) { ?>
   <div style="padding: 13px 13px 13px 15px;background: #FFE5E5 !important;">
-    Здесь выводятся все завершенные сделки (люди) за всю историю СБР, даже если они уже ушли в выплаты или выплачены.
+    Р—РґРµСЃСЊ РІС‹РІРѕРґСЏС‚СЃСЏ РІСЃРµ Р·Р°РІРµСЂС€РµРЅРЅС‹Рµ СЃРґРµР»РєРё (Р»СЋРґРё) Р·Р° РІСЃСЋ РёСЃС‚РѕСЂРёСЋ РЎР‘Р , РґР°Р¶Рµ РµСЃР»Рё РѕРЅРё СѓР¶Рµ СѓС€Р»Рё РІ РІС‹РїР»Р°С‚С‹ РёР»Рё РІС‹РїР»Р°С‡РµРЅС‹.
   </div>
   <br/>
 <? } ?>
@@ -61,14 +61,14 @@ function ShowFinInfo(type, id) {
                         bx.toggleClass('form-hide');
                         d.setMonth(d.getMonth()+1);
                         document.cookie='ccNrAdmFlt='+(bx.hasClass('form-hide')-0)+'; expires='+d.toGMTString();
-                      ">Фильтр</a>
+                      ">Р¤РёР»СЊС‚СЂ</a>
                 </div>
                 <div class="form-b">
                     <div class="form-block first">
                     	<table class="b-layout__table b-layout__table_width_full" cellpadding="0" cellspacing="0" border="0">
                         	<tr class="b-layout__tr">
                             	<td class="b-layout__left b-layout__left_width_90">
-                            		<label class="b-layout__txt b-layout__txt_block b-layout__txt_fontsize_11 b-layout__txt_padtop_3" for="filter[user]">ФИО или логин:</label>
+                            		<label class="b-layout__txt b-layout__txt_block b-layout__txt_fontsize_11 b-layout__txt_padtop_3" for="filter[user]">Р¤РРћ РёР»Рё Р»РѕРіРёРЅ:</label>
                                 </td>
                                 <td class="b-layout__right b-layout__right_padbot_10">
                                   <div class="b-input">
@@ -78,7 +78,7 @@ function ShowFinInfo(type, id) {
                             </tr>
                         	<tr class="b-layout__tr">
                             	<td class="b-layout__left b-layout__left_width_90">
-                            		<label class="b-layout__txt b-layout__txt_block b-layout__txt_fontsize_11 b-layout__txt_padtop_3" for="filter[contract_num]">Номер СБР</label>
+                            		<label class="b-layout__txt b-layout__txt_block b-layout__txt_fontsize_11 b-layout__txt_padtop_3" for="filter[contract_num]">РќРѕРјРµСЂ РЎР‘Р </label>
                                 </td>
                                 <td class="b-layout__right b-layout__right_padbot_10">
                                   <div class="b-input b-input_width_200">
@@ -88,7 +88,7 @@ function ShowFinInfo(type, id) {
                             </tr>
                         	<tr class="b-layout__tr">
                             	<td class="b-layout__left b-layout__left_width_90">
-                            		<label class="b-layout__txt b-layout__txt_block b-layout__txt_fontsize_11 b-layout__txt_padtop_3" for="filter[name]">Название СБР:</label>
+                            		<label class="b-layout__txt b-layout__txt_block b-layout__txt_fontsize_11 b-layout__txt_padtop_3" for="filter[name]">РќР°Р·РІР°РЅРёРµ РЎР‘Р :</label>
                                 </td>
                                 <td class="b-layout__right b-layout__right_padbot_10">
                                   <div class="b-input">
@@ -98,7 +98,7 @@ function ShowFinInfo(type, id) {
                             </tr>
                         	<tr class="b-layout__tr">
                             	<td class="b-layout__left b-layout__left_width_90">
-                            		<label class="b-layout__txt b-layout__txt_block b-layout__txt_fontsize_11 b-layout__txt_padtop_3" for="filter[act_sum]">Сумма акта:</label>
+                            		<label class="b-layout__txt b-layout__txt_block b-layout__txt_fontsize_11 b-layout__txt_padtop_3" for="filter[act_sum]">РЎСѓРјРјР° Р°РєС‚Р°:</label>
                                 </td>
                                 <td class="b-layout__right b-layout__right_padbot_10">
                                   <div class="b-input b-input_width_200 b-input_inline-block">
@@ -116,13 +116,13 @@ function ShowFinInfo(type, id) {
                             </tr>
                         	<tr class="b-layout__tr">
                             	<td class="b-layout__left b-layout__left_width_90">
-                            		<label class="b-layout__txt b-layout__txt_fontsize_11">Документы:</label>
+                            		<label class="b-layout__txt b-layout__txt_fontsize_11">Р”РѕРєСѓРјРµРЅС‚С‹:</label>
                                 </td>
                                 <td class="b-layout__right b-layout__right_padbot_10">
                                     <div class="b-radio b-radio_layout_horizontal b-radio_padtop_2">
-                                        <? for($a='0tf',$w='получены',$f='has_docs',$j=0,$i=0; $j<3; $j++,$i=$a[$j]) { ?>
+                                        <? for($a='0tf',$w='РїРѕР»СѓС‡РµРЅС‹',$f='has_docs',$j=0,$i=0; $j<3; $j++,$i=$a[$j]) { ?>
                                         	<div class="b-radio__item">
-                                           		<input id="filter[<?=$f?>]_<?=$j?>" class="b-radio__input" type="radio" name="filter[<?=$f?>]" value="<?=$i?>"<?=$i==$filter[$f] ? ' checked="checked"' : ''?> /><label class="b-radio__label" for="filter[<?=$f?>]_<?=$j?>"><?=($i=='0' ? 'не важно' : ($i=='f' ? 'не ' : '').$w)?></label>
+                                           		<input id="filter[<?=$f?>]_<?=$j?>" class="b-radio__input" type="radio" name="filter[<?=$f?>]" value="<?=$i?>"<?=$i==$filter[$f] ? ' checked="checked"' : ''?> /><label class="b-radio__label" for="filter[<?=$f?>]_<?=$j?>"><?=($i=='0' ? 'РЅРµ РІР°Р¶РЅРѕ' : ($i=='f' ? 'РЅРµ ' : '').$w)?></label>
                                            </div>
                                         <? } ?>
                                     </div>
@@ -130,13 +130,13 @@ function ShowFinInfo(type, id) {
                             </tr>
                         	<tr class="b-layout__tr">
                             	<td class="b-layout__left b-layout__left_width_90">
-                            		<label class="b-layout__txt b-layout__txt_fontsize_11">Акт услуг:</label>
+                            		<label class="b-layout__txt b-layout__txt_fontsize_11">РђРєС‚ СѓСЃР»СѓРі:</label>
                                 </td>
                                 <td class="b-layout__right b-layout__right_padbot_10">
                                     <div class="b-radio b-radio_layout_horizontal b-radio_padtop_2">
-                                        <? for($a='0tf',$w='загружен&nbsp;',$f='has_act',$j=0,$i=0; $j<3; $j++,$i=$a[$j]) { ?>
+                                        <? for($a='0tf',$w='Р·Р°РіСЂСѓР¶РµРЅ&nbsp;',$f='has_act',$j=0,$i=0; $j<3; $j++,$i=$a[$j]) { ?>
                                         	<div class="b-radio__item">
-                                           		<input id="filter[<?=$f?>]__<?=$j?>" class="b-radio__input" type="radio" name="filter[<?=$f?>]" value="<?=$i?>"<?=$i==$filter[$f] ? ' checked="checked"' : ''?> /><label class="b-radio__label" for="filter[<?=$f?>]__<?=$j?>"><?=($i=='0' ? 'не важно' : ($i=='f' ? 'не ' : '').$w)?></label>
+                                           		<input id="filter[<?=$f?>]__<?=$j?>" class="b-radio__input" type="radio" name="filter[<?=$f?>]" value="<?=$i?>"<?=$i==$filter[$f] ? ' checked="checked"' : ''?> /><label class="b-radio__label" for="filter[<?=$f?>]__<?=$j?>"><?=($i=='0' ? 'РЅРµ РІР°Р¶РЅРѕ' : ($i=='f' ? 'РЅРµ ' : '').$w)?></label>
                                            </div>
                                         <? } ?>
                                     </div>
@@ -144,13 +144,13 @@ function ShowFinInfo(type, id) {
                             </tr>
                         	<tr class="b-layout__tr">
                             	<td class="b-layout__left b-layout__left_width_90">
-                            		<label class="b-layout__txt b-layout__txt_fontsize_11">Счет-фактура:</label>
+                            		<label class="b-layout__txt b-layout__txt_fontsize_11">РЎС‡РµС‚-С„Р°РєС‚СѓСЂР°:</label>
                                 </td>
                                 <td class="b-layout__right b-layout__right_padbot_10">
                                     <div class="b-radio b-radio_layout_horizontal b-radio_padtop_2">
-                                        <? for($a='0tf',$w='загружена',$f='has_fct',$j=0,$i=0; $j<3; $j++,$i=$a[$j]) { ?>
+                                        <? for($a='0tf',$w='Р·Р°РіСЂСѓР¶РµРЅР°',$f='has_fct',$j=0,$i=0; $j<3; $j++,$i=$a[$j]) { ?>
                                         	<div class="b-radio__item">
-                                           		<input id="filter[<?=$f?>]_-<?=$j?>" class="b-radio__input" type="radio" name="filter[<?=$f?>]" value="<?=$i?>"<?=$i==$filter[$f] ? ' checked="checked"' : ''?> /><label class="b-radio__label" for="filter[<?=$f?>]_-<?=$j?>"><?=($i=='0' ? 'не важно' : ($i=='f' ? 'не ' : '').$w)?></label>
+                                           		<input id="filter[<?=$f?>]_-<?=$j?>" class="b-radio__input" type="radio" name="filter[<?=$f?>]" value="<?=$i?>"<?=$i==$filter[$f] ? ' checked="checked"' : ''?> /><label class="b-radio__label" for="filter[<?=$f?>]_-<?=$j?>"><?=($i=='0' ? 'РЅРµ РІР°Р¶РЅРѕ' : ($i=='f' ? 'РЅРµ ' : '').$w)?></label>
                                            </div>
                                         <? } ?>
                                     </div>
@@ -158,13 +158,13 @@ function ShowFinInfo(type, id) {
                             </tr>
                         	<tr class="b-layout__tr">
                             	<td class="b-layout__left b-layout__left_width_90">
-                            		<label class="b-layout__txt b-layout__txt_fontsize_11">Реквизиты:</label>
+                            		<label class="b-layout__txt b-layout__txt_fontsize_11">Р РµРєРІРёР·РёС‚С‹:</label>
                                 </td>
                                 <td class="b-layout__right b-layout__right_padbot_10">
                                     <div class="b-radio b-radio_layout_horizontal b-radio_padtop_2">
-                                        <? for($a='0tf',$w='заполены&nbsp;',$f='has_reqv',$j=0,$i=0; $j<3; $j++,$i=$a[$j]) { ?>
+                                        <? for($a='0tf',$w='Р·Р°РїРѕР»РµРЅС‹&nbsp;',$f='has_reqv',$j=0,$i=0; $j<3; $j++,$i=$a[$j]) { ?>
                                         	<div class="b-radio__item">
-                                           		<input id="filter[<?=$f?>]-_<?=$j?>" class="b-radio__input" type="radio" name="filter[<?=$f?>]" value="<?=$i?>"<?=$i==$filter[$f] ? ' checked="checked"' : ''?> /><label class="b-radio__label" for="filter[<?=$f?>]-_<?=$j?>"><?=($i=='0' ? 'не важно' : ($i=='f' ? 'не ' : '').$w)?></label>
+                                           		<input id="filter[<?=$f?>]-_<?=$j?>" class="b-radio__input" type="radio" name="filter[<?=$f?>]" value="<?=$i?>"<?=$i==$filter[$f] ? ' checked="checked"' : ''?> /><label class="b-radio__label" for="filter[<?=$f?>]-_<?=$j?>"><?=($i=='0' ? 'РЅРµ РІР°Р¶РЅРѕ' : ($i=='f' ? 'РЅРµ ' : '').$w)?></label>
                                            </div>
                                         <? } ?>
                                     </div>
@@ -173,13 +173,13 @@ function ShowFinInfo(type, id) {
                         <? if(!(int)$scheme) { ?>
                         	<tr class="b-layout__tr">
                             	<td class="b-layout__left b-layout__left_width_90">
-                            		<label class="b-layout__txt b-layout__txt_fontsize_11">Статус:</label>
+                            		<label class="b-layout__txt b-layout__txt_fontsize_11">РЎС‚Р°С‚СѓСЃ:</label>
                                 </td>
                                 <td class="b-layout__right b-layout__right_padbot_10">
                                     <div class="b-radio b-radio_layout_horizontal b-radio_padtop_2">
-                                        <? for($a='0tf',$w='удалены&nbsp;',$f='is_removed',$j=0,$i=0; $j<3; $j++,$i=$a[$j]) { ?>
+                                        <? for($a='0tf',$w='СѓРґР°Р»РµРЅС‹&nbsp;',$f='is_removed',$j=0,$i=0; $j<3; $j++,$i=$a[$j]) { ?>
                                         	<div class="b-radio__item">
-                                           		<input id="filter[<?=$f?>]-_-<?=$j?>" class="b-radio__input" type="radio" name="filter[<?=$f?>]" value="<?=$i?>"<?=$i==$filter[$f] ? ' checked="checked"' : ''?> /><label class="b-radio__label" for="filter[<?=$f?>]-_-<?=$j?>"><?=($i=='0' ? 'не важно' : ($i=='f' ? 'не ' : '').$w)?></label>
+                                           		<input id="filter[<?=$f?>]-_-<?=$j?>" class="b-radio__input" type="radio" name="filter[<?=$f?>]" value="<?=$i?>"<?=$i==$filter[$f] ? ' checked="checked"' : ''?> /><label class="b-radio__label" for="filter[<?=$f?>]-_-<?=$j?>"><?=($i=='0' ? 'РЅРµ РІР°Р¶РЅРѕ' : ($i=='f' ? 'РЅРµ ' : '').$w)?></label>
                                            </div>
                                         <? } ?>
                                     </div>
@@ -189,13 +189,13 @@ function ShowFinInfo(type, id) {
                         <? if(!(int)$scheme) { ?>
                         	<tr class="b-layout__tr">
                             	<td class="b-layout__left b-layout__left_width_90">
-                            		<label class="b-layout__txt b-layout__txt_fontsize_11">Архив:</label>
+                            		<label class="b-layout__txt b-layout__txt_fontsize_11">РђСЂС…РёРІ:</label>
                                 </td>
                                 <td class="b-layout__right b-layout__right_padbot_10">
                                     <div class="b-radio b-radio_layout_horizontal b-radio_padtop_2">
-                                        <? for($a='0tf',$w='в архиве&nbsp;',$f='archive',$j=0,$i=0; $j<3; $j++,$i=$a[$j]) { ?>
+                                        <? for($a='0tf',$w='РІ Р°СЂС…РёРІРµ&nbsp;',$f='archive',$j=0,$i=0; $j<3; $j++,$i=$a[$j]) { ?>
                                         	<div class="b-radio__item">
-                                           		<input id="filter[<?=$f?>]-__<?=$j?>" class="b-radio__input" type="radio" name="filter[<?=$f?>]" value="<?=$i?>"<?=$i==$filter[$f] ? ' checked="checked"' : ''?> /><label class="b-radio__label" for="filter[<?=$f?>]-__<?=$j?>"><?=($i=='0' ? 'не важно' : ($i=='f' ? 'не ' : '').$w)?></label>
+                                           		<input id="filter[<?=$f?>]-__<?=$j?>" class="b-radio__input" type="radio" name="filter[<?=$f?>]" value="<?=$i?>"<?=$i==$filter[$f] ? ' checked="checked"' : ''?> /><label class="b-radio__label" for="filter[<?=$f?>]-__<?=$j?>"><?=($i=='0' ? 'РЅРµ РІР°Р¶РЅРѕ' : ($i=='f' ? 'РЅРµ ' : '').$w)?></label>
                                            </div>
                                         <? } ?>
                                     </div>
@@ -204,7 +204,7 @@ function ShowFinInfo(type, id) {
                         <? } ?>
                         	<tr class="b-layout__tr">
                             	<td class="b-layout__left b-layout__left_width_90">
-                            		<label class="b-layout__txt b-layout__txt_block b-layout__txt_fontsize_11 b-layout__txt_padtop_3">Дата:</label>
+                            		<label class="b-layout__txt b-layout__txt_block b-layout__txt_fontsize_11 b-layout__txt_padtop_3">Р”Р°С‚Р°:</label>
                                 </td>
                                 <td class="b-layout__right b-layout__right_padbot_10">
 									<? include($_SERVER['DOCUMENT_ROOT'].'/norisk2/tpl.filter-period.php') ?>
@@ -218,7 +218,7 @@ function ShowFinInfo(type, id) {
                         	<tr class="b-layout__tr">
                             	<td class="b-layout__left b-layout__left_width_90">&#160;</td>
                                 <td class="b-layout__right b-layout__right_padbot_10">
-                                    <input type="submit" value="Отфильтровать" />
+                                    <input type="submit" value="РћС‚С„РёР»СЊС‚СЂРѕРІР°С‚СЊ" />
                                 </td>
                             </tr>
                         </table>
@@ -233,11 +233,11 @@ function ShowFinInfo(type, id) {
         <span class="i-chk">
             <input type="checkbox" onclick="SBR.setAllChecked(this, 'suids[]')" />
         </span>
-        <input type="submit" name="recv_docs" value="Пришли документы" />
-        <input type="submit" name="unrecv_docs" value="Документы ожидаются" />
+        <input type="submit" name="recv_docs" value="РџСЂРёС€Р»Рё РґРѕРєСѓРјРµРЅС‚С‹" />
+        <input type="submit" name="unrecv_docs" value="Р”РѕРєСѓРјРµРЅС‚С‹ РѕР¶РёРґР°СЋС‚СЃСЏ" />
         <?php } //if?>
         <span class="sel">
-            Сортировать по
+            РЎРѕСЂС‚РёСЂРѕРІР°С‚СЊ РїРѕ
             <select onchange="SBR.changeFormDir(this.options[this.selectedIndex].value, 'DESC')">
               <? foreach($sbr->form_cols[$site] as $idx=>$val) { ?>
                 <option value="<?=$idx?>"<?=$dir_col==$idx ? ' selected="true"' : ''?>><?=$val[0]?></option>
@@ -254,7 +254,7 @@ function ShowFinInfo(type, id) {
             <a name="<?=$item_id?>"></a>
             <ul class="nr-stat2-one-i c">
                 <li class="nr-stat-date"><?=date('d.m.Y H:i', strtotime($stg['act_upload_time']))?></li>
-                <li class="nr-stat-cat"><a href="javascript:;" onclick="if(window.lstfw)window.lstfw.style.display='none';(window.lstfw=document.getElementById('finwin<?=$item_id?>')).style.display='block'">Страница финансов</a></li>
+                <li class="nr-stat-cat"><a href="javascript:;" onclick="if(window.lstfw)window.lstfw.style.display='none';(window.lstfw=document.getElementById('finwin<?=$item_id?>')).style.display='block'">РЎС‚СЂР°РЅРёС†Р° С„РёРЅР°РЅСЃРѕРІ</a></li>
                 <li class="nr-stat-chk">
                   <? if(!is_emp($stg['role']) && $is_edit_access) { ?>
                     <input type="checkbox" name="suids[]" value="<?=$stg['id'].'-'.$stg['user_id']?>" onclick="SBR.incChecked(this.checked, !this.checked)" />
@@ -263,24 +263,24 @@ function ShowFinInfo(type, id) {
                 <li>
                 <a href="/users/<?=$stg['login']?>/" class="<?=is_emp($stg['role']) ? 'employer' : 'freelancer'?>-name" target="_blank"><?=$stg['uname']?> <?=$stg['usurname']?> [<?=$stg['login']?>]</a>
                 <?php if($form_type[$m] == sbr::FT_JURI && ( $stg['scheme_type'] == sbr::SCHEME_PDRD || $stg['scheme_type'] == sbr::SCHEME_PDRD2 ) && !is_emp($stg['role'])) { ?>
-                <span class="red">(Юридическое лицо)</span>
+                <span class="red">(Р®СЂРёРґРёС‡РµСЃРєРѕРµ Р»РёС†Рѕ)</span>
                 <?php }?>
                 </li>
             </ul>
             <h4>
-              <?php if($is_edit_access){ ?><img style="cursor: pointer;" src="/images/flt-<?= $stg['is_removed'] == 'f' ? 'close' : 'on'?>.png" align="right" onclick="SBR.setRemoved('<?=$item_id?>', null, this)" title="<?= $stg['is_removed'] == 'f' ? 'Удалить' : 'Восстановить'?>" /><?php }//?>
+              <?php if($is_edit_access){ ?><img style="cursor: pointer;" src="/images/flt-<?= $stg['is_removed'] == 'f' ? 'close' : 'on'?>.png" align="right" onclick="SBR.setRemoved('<?=$item_id?>', null, this)" title="<?= $stg['is_removed'] == 'f' ? 'РЈРґР°Р»РёС‚СЊ' : 'Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ'?>" /><?php }//?>
               <strong><?=$sbr->getContractNum($stg['sbr_id'], $stg['scheme_type'], false)?></strong><br/>
-              Этап <?=$stg['sbr_id'].'-'.($stg['num']+1)?>: <a href="/norisk2/?site=Stage&id=<?=$stg['id']?>&access=A"><?=reformat($stg['name'], 40, 0, 1)?></a><br/><br/>
+              Р­С‚Р°Рї <?=$stg['sbr_id'].'-'.($stg['num']+1)?>: <a href="/norisk2/?site=Stage&id=<?=$stg['id']?>&access=A"><?=reformat($stg['name'], 40, 0, 1)?></a><br/><br/>
             </h4>
             <? if(!is_emp($stg['role']) && $stg['form_type']==sbr::FT_JURI && $stg['rez_type']==sbr::RT_UABYKZ && $stg['act_notnp']=='t') { // deprecated block ?>
                 <div class="form fs-p rez-check">
                     <b class="b1"></b>
                     <b class="b2"></b>
                     <div class="form-in">
-                        <label><input type="checkbox" class="i-chk" checked="true" onclick="if(!window.confirm('После отмены данного параметра необходимо будет заново загрузить Акт и пересчитать сумму выплаты. Продолжить?')) return false; SBR.setNotNp(this, <?=$stg['user_id']?>, <?=$stg['id']?>, false)"/>
-                          Налог на прибыль исключен из Акта, взамен на отправку 
+                        <label><input type="checkbox" class="i-chk" checked="true" onclick="if(!window.confirm('РџРѕСЃР»Рµ РѕС‚РјРµРЅС‹ РґР°РЅРЅРѕРіРѕ РїР°СЂР°РјРµС‚СЂР° РЅРµРѕР±С…РѕРґРёРјРѕ Р±СѓРґРµС‚ Р·Р°РЅРѕРІРѕ Р·Р°РіСЂСѓР·РёС‚СЊ РђРєС‚ Рё РїРµСЂРµСЃС‡РёС‚Р°С‚СЊ СЃСѓРјРјСѓ РІС‹РїР»Р°С‚С‹. РџСЂРѕРґРѕР»Р¶РёС‚СЊ?')) return false; SBR.setNotNp(this, <?=$stg['user_id']?>, <?=$stg['id']?>, false)"/>
+                          РќР°Р»РѕРі РЅР° РїСЂРёР±С‹Р»СЊ РёСЃРєР»СЋС‡РµРЅ РёР· РђРєС‚Р°, РІР·Р°РјРµРЅ РЅР° РѕС‚РїСЂР°РІРєСѓ 
                         </label>
-                        <a href="/users/<?=$stg['login']?>/setup/finance/" target="_blank">справки о резиденстве</a>
+                        <a href="/users/<?=$stg['login']?>/setup/finance/" target="_blank">СЃРїСЂР°РІРєРё Рѕ СЂРµР·РёРґРµРЅСЃС‚РІРµ</a>
                     </div>
                     <b class="b2"></b>
                     <b class="b1"></b>
@@ -289,13 +289,13 @@ function ShowFinInfo(type, id) {
             <table>
                 <thead>
                     <tr>
-                        <th class="first">Сумма СБР</th>
-                        <th>Сумма акта</th>
-                        <th><?=((float)$stg['act_lnp'] ? 'Налог на прибыль' : 'Сумма НДФЛ')?></th>
+                        <th class="first">РЎСѓРјРјР° РЎР‘Р </th>
+                        <th>РЎСѓРјРјР° Р°РєС‚Р°</th>
+                        <th><?=((float)$stg['act_lnp'] ? 'РќР°Р»РѕРі РЅР° РїСЂРёР±С‹Р»СЊ' : 'РЎСѓРјРјР° РќР”Р¤Р›')?></th>
                         <th>5%</th>
-                        <th>Процент за обмен</th>
-                        <th>Итого ООО "ВААН"</th>
-                        <th class="last">Сумма к выплате</th>
+                        <th>РџСЂРѕС†РµРЅС‚ Р·Р° РѕР±РјРµРЅ</th>
+                        <th>РС‚РѕРіРѕ РћРћРћ "Р’РђРђРќ"</th>
+                        <th class="last">РЎСѓРјРјР° Рє РІС‹РїР»Р°С‚Рµ</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -328,9 +328,9 @@ function ShowFinInfo(type, id) {
                     ?>
                       <td class="nr-stat-docs1">
                         <?php if ( $stg['docs_received']=='t' ) { ?>
-                          Документы получены&nbsp; <?php if ($is_edit_access) { ?><a href="javascript:;" class="lnk-dot-666" onclick="SBR.setRecvDocs(this, '<?=$item_id?>', 0)">Отменить</a><?php } //if?>
+                          Р”РѕРєСѓРјРµРЅС‚С‹ РїРѕР»СѓС‡РµРЅС‹&nbsp; <?php if ($is_edit_access) { ?><a href="javascript:;" class="lnk-dot-666" onclick="SBR.setRecvDocs(this, '<?=$item_id?>', 0)">РћС‚РјРµРЅРёС‚СЊ</a><?php } //if?>
                         <?php } else { ?>
-                          Документы ожидаются <?php if ($is_edit_access) { ?><input type="button" value="Пришли" onclick="SBR.setRecvDocs(this, '<?=$item_id?>', 1)" /><?php } //if?>
+                          Р”РѕРєСѓРјРµРЅС‚С‹ РѕР¶РёРґР°СЋС‚СЃСЏ <?php if ($is_edit_access) { ?><input type="button" value="РџСЂРёС€Р»Рё" onclick="SBR.setRecvDocs(this, '<?=$item_id?>', 1)" /><?php } //if?>
                         <? } ?>
                       </td>
                     <?php } ?>
@@ -402,7 +402,7 @@ function ShowFinInfo(type, id) {
                     <?php } ?>
                     <?php if ( $nCol == 3 ) { $nCol = 0; echo '</tr><tr style="height:35px">'; } ?>
                       
-                    <?php // заявление о выплате ЯД физики нерезиденты
+                    <?php // Р·Р°СЏРІР»РµРЅРёРµ Рѕ РІС‹РїР»Р°С‚Рµ РЇР” С„РёР·РёРєРё РЅРµСЂРµР·РёРґРµРЅС‚С‹
                     if(!is_emp($stg['role']) && $stg['form_type'] == sbr::FT_PHYS && $stg['uploaded_docs_a'][sbr::DOCS_TYPE_YM_APPL]) {
                         $nCol++;
                     ?>
@@ -428,22 +428,22 @@ function ShowFinInfo(type, id) {
                 <div class="ov-l">
                     <div class="ov-in">
                         <div class="ov-h">
-                            <a href="javascript:;" title="Закрыть" onclick="document.getElementById('finwin<?=$item_id?>').style.display='none'" class="ov-close"><img src="/images/flt-close.png" alt="Закрыть" /></a>
-                            Страница финансов <a href="/users/<?=$stg['login']?>/setup/finance/" class="<?=is_emp($stg['role']) ? 'employer' : 'freelancer'?>-name" target="_blank"><?=$stg['uname']?> <?=$stg['usurname']?> [<?=$stg['login']?>]</a>
+                            <a href="javascript:;" title="Р—Р°РєСЂС‹С‚СЊ" onclick="document.getElementById('finwin<?=$item_id?>').style.display='none'" class="ov-close"><img src="/images/flt-close.png" alt="Р—Р°РєСЂС‹С‚СЊ" /></a>
+                            РЎС‚СЂР°РЅРёС†Р° С„РёРЅР°РЅСЃРѕРІ <a href="/users/<?=$stg['login']?>/setup/finance/" class="<?=is_emp($stg['role']) ? 'employer' : 'freelancer'?>-name" target="_blank"><?=$stg['uname']?> <?=$stg['usurname']?> [<?=$stg['login']?>]</a>
                             <div style="float:right;padding-right:25px">
-                              <a href="javascript:;" onclick="SBR.printFinWin('finblock<?=$item_id?>')" class="lnk-dot-666">Печать</a>
+                              <a href="javascript:;" onclick="SBR.printFinWin('finblock<?=$item_id?>')" class="lnk-dot-666">РџРµС‡Р°С‚СЊ</a>
                             </div>
                         </div>
                         <div class="ov-fin-data" id="finblock<?=$item_id?>">
-                            <a href="" id="finblock_h_c<?=$item_id?>" style="font-weight: bold;" onClick="ShowFinInfo('c', '<?=$item_id?>'); return false;">Текущая</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="" id="finblock_h_b<?=$item_id?>" onClick="ShowFinInfo('b', '<?=$item_id?>'); return false;">Начало СБР</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="" id="finblock_h_e<?=$item_id?>"  onClick="ShowFinInfo('e', '<?=$item_id?>'); return false;">Конец СБР</a>
+                            <a href="" id="finblock_h_c<?=$item_id?>" style="font-weight: bold;" onClick="ShowFinInfo('c', '<?=$item_id?>'); return false;">РўРµРєСѓС‰Р°СЏ</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="" id="finblock_h_b<?=$item_id?>" onClick="ShowFinInfo('b', '<?=$item_id?>'); return false;">РќР°С‡Р°Р»Рѕ РЎР‘Р </a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="" id="finblock_h_e<?=$item_id?>"  onClick="ShowFinInfo('e', '<?=$item_id?>'); return false;">РљРѕРЅРµС† РЎР‘Р </a>
                             <table id="fininfo_c<?=$item_id?>">
                                 <tr>
-                                    <th>Лицо:</th>
-                                    <td><?=($stg['form_type']==sbr::FT_JURI ? 'Юридическое' : ($stg['form_type']==sbr::FT_PHYS ? 'Физическое' : 'Не задано'))?></td>
+                                    <th>Р›РёС†Рѕ:</th>
+                                    <td><?=($stg['form_type']==sbr::FT_JURI ? 'Р®СЂРёРґРёС‡РµСЃРєРѕРµ' : ($stg['form_type']==sbr::FT_PHYS ? 'Р¤РёР·РёС‡РµСЃРєРѕРµ' : 'РќРµ Р·Р°РґР°РЅРѕ'))?></td>
                                 </tr>
                                 <tr>
-                                    <th>Резидент:</th>
-                                    <td><?=($stg['rez_type']==sbr::RT_RU ? 'РФ' : ($stg['rez_type']==sbr::RT_UABYKZ ? 'СНГ' : 'не задано'))?></td>
+                                    <th>Р РµР·РёРґРµРЅС‚:</th>
+                                    <td><?=($stg['rez_type']==sbr::RT_RU ? 'Р Р¤' : ($stg['rez_type']==sbr::RT_UABYKZ ? 'РЎРќР“' : 'РЅРµ Р·Р°РґР°РЅРѕ'))?></td>
                                 </tr>
                                 <?
                                   if($stg['form_type']==sbr::FT_JURI) {
@@ -458,7 +458,7 @@ function ShowFinInfo(type, id) {
                                       }
                                   }
                                   if ( !empty($stg['attaches']) ) {
-                                      ?><tr><th>Загруженные документы:</th><td><?
+                                      ?><tr><th>Р—Р°РіСЂСѓР¶РµРЅРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹:</th><td><?
                                       $sh = '';
                                       foreach ( $stg['attaches'] as $v ) {
                                           $sh .= "<a href='".WDCPREFIX."/users/".$stg['login']."/upload/".$v['name']."' target='_blank'>" . $v['orig_name'] . "</a> ";
@@ -470,12 +470,12 @@ function ShowFinInfo(type, id) {
                             </table>
                             <table id="fininfo_b<?=$item_id?>" style="display:none;">
                                 <tr>
-                                    <th>Лицо:</th>
-                                    <td><?=($stg['reqv_history']['b']['form_type']==sbr::FT_JURI ? 'Юридическое' : ($stg['reqv_history']['b']['form_type']==sbr::FT_PHYS ? 'Физическое' : 'Не задано'))?></td>
+                                    <th>Р›РёС†Рѕ:</th>
+                                    <td><?=($stg['reqv_history']['b']['form_type']==sbr::FT_JURI ? 'Р®СЂРёРґРёС‡РµСЃРєРѕРµ' : ($stg['reqv_history']['b']['form_type']==sbr::FT_PHYS ? 'Р¤РёР·РёС‡РµСЃРєРѕРµ' : 'РќРµ Р·Р°РґР°РЅРѕ'))?></td>
                                 </tr>
                                 <tr>
-                                    <th>Резидент:</th>
-                                    <td><?=($stg['reqv_history']['b']['rez_type']==sbr::RT_RU ? 'РФ' : ($stg['reqv_history']['b']['rez_type']==sbr::RT_UABYKZ ? 'СНГ' : 'не задано'))?></td>
+                                    <th>Р РµР·РёРґРµРЅС‚:</th>
+                                    <td><?=($stg['reqv_history']['b']['rez_type']==sbr::RT_RU ? 'Р Р¤' : ($stg['reqv_history']['b']['rez_type']==sbr::RT_UABYKZ ? 'РЎРќР“' : 'РЅРµ Р·Р°РґР°РЅРѕ'))?></td>
                                 </tr>
                                 <?
                                   if($stg['reqv_history']['b']['form_type']==sbr::FT_JURI) {
@@ -490,7 +490,7 @@ function ShowFinInfo(type, id) {
                                       }
                                   }
                                   if ( !empty($stg['reqv_history']['b']['attaches'])) {
-                                      ?><tr><th>Загруженные документы:</th><td><?
+                                      ?><tr><th>Р—Р°РіСЂСѓР¶РµРЅРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹:</th><td><?
                                       $sh = '';
                                       foreach ( $stg['reqv_history']['b']['attaches'] as $v ) {
                                           $sh .= "<a href='".WDCPREFIX."/users/".$stg['login']."/upload/".$v['name']."' target='_blank'>" . $v['orig_name'] . "</a> ";
@@ -502,12 +502,12 @@ function ShowFinInfo(type, id) {
                             </table>
                             <table id="fininfo_e<?=$item_id?>" style="display:none;">
                                 <tr>
-                                    <th>Лицо:</th>
-                                    <td><?=($stg['reqv_history']['e']['form_type']==sbr::FT_JURI ? 'Юридическое' : ($stg['reqv_history']['e']['form_type']==sbr::FT_PHYS ? 'Физическое' : 'Не задано'))?></td>
+                                    <th>Р›РёС†Рѕ:</th>
+                                    <td><?=($stg['reqv_history']['e']['form_type']==sbr::FT_JURI ? 'Р®СЂРёРґРёС‡РµСЃРєРѕРµ' : ($stg['reqv_history']['e']['form_type']==sbr::FT_PHYS ? 'Р¤РёР·РёС‡РµСЃРєРѕРµ' : 'РќРµ Р·Р°РґР°РЅРѕ'))?></td>
                                 </tr>
                                 <tr>
-                                    <th>Резидент:</th>
-                                    <td><?=($stg['reqv_history']['e']['rez_type']==sbr::RT_RU ? 'РФ' : ($stg['reqv_history']['e']['rez_type']==sbr::RT_UABYKZ ? 'СНГ' : 'не задано'))?></td>
+                                    <th>Р РµР·РёРґРµРЅС‚:</th>
+                                    <td><?=($stg['reqv_history']['e']['rez_type']==sbr::RT_RU ? 'Р Р¤' : ($stg['reqv_history']['e']['rez_type']==sbr::RT_UABYKZ ? 'РЎРќР“' : 'РЅРµ Р·Р°РґР°РЅРѕ'))?></td>
                                 </tr>
                                 <?
                                   if($stg['form_type']==sbr::FT_JURI) {
@@ -522,7 +522,7 @@ function ShowFinInfo(type, id) {
                                       }
                                   }
                                   if ( !empty($stg['reqv_history']['e']['attaches'])) {
-                                      ?><tr><th>Загруженные документы:</th><td><?
+                                      ?><tr><th>Р—Р°РіСЂСѓР¶РµРЅРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹:</th><td><?
                                       $sh = '';
                                       foreach ( $stg['reqv_history']['e']['attaches'] as $v ) {
                                           $sh .= "<a href='".WDCPREFIX."/users/".$stg['login']."/upload/".$v['name']."' target='_blank'>" . $v['orig_name'] . "</a> ";

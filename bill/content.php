@@ -3,7 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/bill.common.php");
 $xajax->printJavascript('/xajax/');
 ?>
 
-    <h1 class="b-page__title">Управление услугами</h1>
+    <h1 class="b-page__title">РЈРїСЂР°РІР»РµРЅРёРµ СѓСЃР»СѓРіР°РјРё</h1>
     <div class="b-layout__one b-layout__one_width_25ps b-layout__one_padbot_30 b-layout__right_float_right b-layout__one_width_full_ipad b-layout_padbot_10_ipad">
        <?php include($_SERVER['DOCUMENT_ROOT'] . "/bill/widget/tpl.score.php"); ?>
     </div>
@@ -14,7 +14,7 @@ $xajax->printJavascript('/xajax/');
         
         if( !empty($bill->list_types_services['active']) ) {
             $is_active = true;
-            ?><h2 class="b-layout__title">Подключенные</h2><?
+            ?><h2 class="b-layout__title">РџРѕРґРєР»СЋС‡РµРЅРЅС‹Рµ</h2><?
              
             foreach($bill->list_types_services['active'] as $service) {
                 include ($_SERVER['DOCUMENT_ROOT'] . "/bill/services/" . billing::getTemplateByService($service['service']));
@@ -23,7 +23,7 @@ $xajax->printJavascript('/xajax/');
         
         if( !empty($bill->list_types_services['lately']) ) { 
             $is_lately = true;
-            ?><h2 class="b-layout__title <?= !$is_active?"":"b-layout__title_padtop_50"?>">Вы недавно покупали</h2><?
+            ?><h2 class="b-layout__title <?= !$is_active?"":"b-layout__title_padtop_50"?>">Р’С‹ РЅРµРґР°РІРЅРѕ РїРѕРєСѓРїР°Р»Рё</h2><?
             
             foreach($bill->list_types_services['lately'] as $service) {
                 include ($_SERVER['DOCUMENT_ROOT'] . "/bill/services/" . billing::getTemplateByService($service['service']));
@@ -31,7 +31,7 @@ $xajax->printJavascript('/xajax/');
         }//if
         
         if( !empty($bill->list_types_services['notused']) ) {
-            $notusedText = (empty($bill->list_types_services['active']) && empty($bill->list_types_services['lately'])) ? 'Вы можете заказать' : 'Вы также можете заказать'
+            $notusedText = (empty($bill->list_types_services['active']) && empty($bill->list_types_services['lately'])) ? 'Р’С‹ РјРѕР¶РµС‚Рµ Р·Р°РєР°Р·Р°С‚СЊ' : 'Р’С‹ С‚Р°РєР¶Рµ РјРѕР¶РµС‚Рµ Р·Р°РєР°Р·Р°С‚СЊ'
             ?><h2 class="b-layout__title <?= !($is_active||$is_lately)?"":"b-layout__title_padtop_50"?>"><?= $notusedText ?></h2><?
 
             foreach($bill->list_types_services['notused'] as $service) {

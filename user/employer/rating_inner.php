@@ -39,32 +39,32 @@
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margtop_15 b-layout__table_margbot_40">
         	<tr class="b-layout__one_bordbot_cec">
         		<td class="b-layout__td_width_240 b-layout__one_padbot_20">
-        			<p class="b-layout__txt_fontsize_20"><?= ( !$is_owner ? "Общий рейтинг" : "Ваш рейтинг")?></p></td>
+        			<p class="b-layout__txt_fontsize_20"><?= ( !$is_owner ? "РћР±С‰РёР№ СЂРµР№С‚РёРЅРі" : "Р’Р°С€ СЂРµР№С‚РёРЅРі")?></p></td>
         		<td colspan="2" class="b-layout__one_padbot_20">
-        			<p class="b-layout__txt_float_right b-layout__mail-icon_top_4"><noindex><a rel="nofollow" href="https://feedback.fl.ru/topic/397655-opisanie-sistemyi-rejtinga-rabotodatel/" class="b-layout__link" target="_blank">Подробнее о рейтинге</a></noindex></p>
+        			<p class="b-layout__txt_float_right b-layout__mail-icon_top_4"><noindex><a rel="nofollow" href="https://feedback.fl.ru/topic/397655-opisanie-sistemyi-rejtinga-rabotodatel/" class="b-layout__link" target="_blank">РџРѕРґСЂРѕР±РЅРµРµ Рѕ СЂРµР№С‚РёРЅРіРµ</a></noindex></p>
         			<p class="b-layout__txt_float_left b-layout__txt_fontsize_20 b-text__bold"><?= rating::round($r_data['total']) ?></p>
-        			<p class="b-layout_clear_both b-layout__title_color_4e"><?= rating::round($r_data['max']) ?> максимальный</p>
+        			<p class="b-layout_clear_both b-layout__title_color_4e"><?= rating::round($r_data['max']) ?> РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№</p>
         		</td>
         	</tr>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Заполненность профиля</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Р—Р°РїРѕР»РЅРµРЅРЅРѕСЃС‚СЊ РїСЂРѕС„РёР»СЏ</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <? if(get_uid(false)!=$user->uid && !hasPermissions('users')) { ?>
-                    закрытая информация
+                    Р·Р°РєСЂС‹С‚Р°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ
                     <? } else { $feature_inf_factor = 100 - rating::round($r_data['o_inf_factor']); ?>
                     <?= rating::round($r_data['o_inf_factor']) ?>
                     <? } ?>
                 </td>
         		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle">
                     <? if($is_owner) { ?>
-                    <noindex><a rel="nofollow" href="https://feedback.fl.ru/topic/397551-zakladka-informatsiya-opisanie-razdelov-instruktsiya-po-zapolneniyu-frilanser-i-rabotodatel/" class="b-layout__link">Подробнее о заполнении профиля</a></noindex>
+                    <noindex><a rel="nofollow" href="https://feedback.fl.ru/topic/397551-zakladka-informatsiya-opisanie-razdelov-instruktsiya-po-zapolneniyu-frilanser-i-rabotodatel/" class="b-layout__link">РџРѕРґСЂРѕР±РЅРµРµ Рѕ Р·Р°РїРѕР»РЅРµРЅРёРё РїСЂРѕС„РёР»СЏ</a></noindex>
                     <? } else {?>
                     &nbsp;
                     <? } ?>
                 </td>
         	</tr>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Общие опубликованные проекты</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РћР±С‰РёРµ РѕРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹Рµ РїСЂРѕРµРєС‚С‹</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?= rating::round($r_data['o_prj_posted'])?>
                 </td>
@@ -77,7 +77,7 @@
                 </td>
         	</tr>
             <tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Опубликованные платные проекты</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РћРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹Рµ РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?=rating::round($r_data['o_prj_payed'])?>
                 </td>
@@ -90,7 +90,7 @@
                 </td>
         	</tr>
             <tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Опубликованные конкурсы</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РћРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹Рµ РєРѕРЅРєСѓСЂСЃС‹</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?=rating::round($r_data['o_contest_posted'])?>
                 </td>
@@ -103,7 +103,7 @@
                 </td>
         	</tr>
             <tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Успешно закрытые проекты</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РЈСЃРїРµС€РЅРѕ Р·Р°РєСЂС‹С‚С‹Рµ РїСЂРѕРµРєС‚С‹</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?=rating::round($r_data['o_prj_closed'])?>
                 </td>
@@ -116,7 +116,7 @@
                 </td>
         	</tr>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Безопасные сделки</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Р‘РµР·РѕРїР°СЃРЅС‹Рµ СЃРґРµР»РєРё</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?=rating::round($r_data['o_sbr_factor'])?>
                 </td>
@@ -125,7 +125,7 @@
         	</tr>
             <?php if($r_data['o_opi_factor'] > 0) { ?>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Мнения пользователей</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РњРЅРµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?= rating::round($r_data['o_opi_factor'])?>
                 </td>
@@ -140,7 +140,7 @@
             <?php } ?>
             <?php if($r_data['o_manager_contacts'] > 0) { ?>
             <tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Услуга «Подбор фрилансеров»</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РЈСЃР»СѓРіР° В«РџРѕРґР±РѕСЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІВ»</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?=rating::round($r_data['o_manager_contacts'])?>
                 </td>
@@ -154,27 +154,27 @@
         	</tr>
             <?php } ?>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Посещение сайта fl.ru</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РџРѕСЃРµС‰РµРЅРёРµ СЃР°Р№С‚Р° fl.ru</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <? if(get_uid(false)!=$user->uid && !hasPermissions('users')) { ?>
-                    закрытая информация
+                    Р·Р°РєСЂС‹С‚Р°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ
                     <? } else { ?>
                     <?= rating::round($r_data['o_act_factor']) ?>
                     <? } ?>
                 </td>
         		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__txt_color_a7a7a6 b-layout__one_valign_middle">
                     <? if($is_owner) {?>
-                    1 балл в день
+                    1 Р±Р°Р»Р» РІ РґРµРЅСЊ
                     <? } else {?>
                     &nbsp;
                     <? } ?>
                 </td>
         	</tr>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Деньги, потраченные на сервис</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Р”РµРЅСЊРіРё, РїРѕС‚СЂР°С‡РµРЅРЅС‹Рµ РЅР° СЃРµСЂРІРёСЃ</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <? if(get_uid(false)!=$user->uid && !hasPermissions('users')) { ?>
-                    закрытая информация
+                    Р·Р°РєСЂС‹С‚Р°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ
                     <? } else { ?>
                     <?= rating::round($r_data['o_mny_factor']) ?>
                     <? } ?>
@@ -188,7 +188,7 @@
                 </td>
         	</tr>
             <tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Другие факторы </td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Р”СЂСѓРіРёРµ С„Р°РєС‚РѕСЂС‹ </td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?= ( rating::round($r_data['o_oth_factor']) + rating::round($r_data['o_commune_entered']) );?>
                 </td>
@@ -197,7 +197,7 @@
             <? if ($user->is_pro=='t' || $user->is_pro_test=='t') { ?>
             <tr class="b-layout__one_bordbot_cec">
         		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">
-                    Аккаунт &nbsp;<span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_4" title="PRO"></span> x 1.2
+                    РђРєРєР°СѓРЅС‚ &nbsp;<span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_4" title="PRO"></span> x 1.2
                 </td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?= abs(rating::round(abs(($r_data['f_total']*rating::PRO_FACTOR)) - abs($r_data['f_total']))) ?>
@@ -208,7 +208,7 @@
             <? if ($user->is_verify=='t') { ?>
             <tr class="b-layout__one_bordbot_cec">
         		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">
-                    Верификация &nbsp;<span class="b-icon b-icon__ver b-icon_top_2"></span> x 1.2
+                    Р’РµСЂРёС„РёРєР°С†РёСЏ &nbsp;<span class="b-icon b-icon__ver b-icon_top_2"></span> x 1.2
                 </td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?= abs(rating::round(abs(($r_data['f_total']*rating::VERIFY_FACTOR)) - abs($r_data['f_total']))) ?>
@@ -235,86 +235,86 @@
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margtop_15 b-layout__table_margbot_40">
         	<tr class="b-layout__one_bordbot_cec">
         		<td class="b-layout__td_width_240 b-layout__one_padbot_20">
-        			<p class="b-layout__txt_fontsize_20">А хотите &rarr;</p></td>
+        			<p class="b-layout__txt_fontsize_20">Рђ С…РѕС‚РёС‚Рµ &rarr;</p></td>
         		<td colspan="2" class="b-layout__one_padbot_20">
         			<p class="b-layout__txt_float_left b-layout__txt_fontsize_20 b-text__bold b-layout__txt_color_6db335"><?= $feature_total;?></p>
-        			<p class="b-layout_clear_both b-layout__title_color_4e">такой рейтинг как минимум</p>
+        			<p class="b-layout_clear_both b-layout__title_color_4e">С‚Р°РєРѕР№ СЂРµР№С‚РёРЅРі РєР°Рє РјРёРЅРёРјСѓРј</p>
         		</td>
         	</tr>
             <? if ($user->is_pro != 't' && $user->is_pro_test != 't') { ?>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Аккаунт &nbsp;<span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_4" title="PRO"></span> x 1.2</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РђРєРєР°СѓРЅС‚ &nbsp;<span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_4" title="PRO"></span> x 1.2</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold b-layout__txt_color_6db335">
                     <?= abs(rating::round(abs(($feature_total_after_pro_verify*rating::PRO_FACTOR)) - abs($feature_total_after_pro_verify))) ?>
                 </td>
-        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/payed/" target="_blank" class="b-layout__link">Купить</a> &nbsp;<?= view_pro(); ?></td>
+        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/payed/" target="_blank" class="b-layout__link">РљСѓРїРёС‚СЊ</a> &nbsp;<?= view_pro(); ?></td>
         	</tr>
             <? }//if?>
             <? if($user->is_verify != 't') { ?>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Верификация &nbsp;<span class="b-icon b-icon__ver b-icon_top_2"></span> x 1.2</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Р’РµСЂРёС„РёРєР°С†РёСЏ &nbsp;<span class="b-icon b-icon__ver b-icon_top_2"></span> x 1.2</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold b-layout__txt_color_6db335">
                     <?= abs(rating::round(abs(($feature_total_after_pro_verify*rating::VERIFY_FACTOR)) - abs($feature_total_after_pro_verify))) ?>
                 </td>
-        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/promo/verification/" target="_blank" class="b-layout__link">Пройти верификацию</a></td>
+        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/promo/verification/" target="_blank" class="b-layout__link">РџСЂРѕР№С‚Рё РІРµСЂРёС„РёРєР°С†РёСЋ</a></td>
         	</tr>
             <? }//if?>
             <? if($feature_inf_factor != 0) {?>
             <tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Заполненность профиля</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Р—Р°РїРѕР»РЅРµРЅРЅРѕСЃС‚СЊ РїСЂРѕС„РёР»СЏ</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold b-layout__txt_color_6db335">
                     <?= $feature_inf_factor;?>
                 </td>
-        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/users/<?=$user->login; ?>/setup/info/" target="_blank" class="b-layout__link">Заполнить профиль</a></td>
+        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/users/<?=$user->login; ?>/setup/info/" target="_blank" class="b-layout__link">Р—Р°РїРѕР»РЅРёС‚СЊ РїСЂРѕС„РёР»СЊ</a></td>
         	</tr>
             <? }//if?>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Безопасные Сделки</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Р‘РµР·РѕРїР°СЃРЅС‹Рµ РЎРґРµР»РєРё</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt"><span class="b-layout__infin">&infin;</span></td>
         		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"></td>
         	</tr>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Общие опубликованные проекты</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РћР±С‰РёРµ РѕРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹Рµ РїСЂРѕРµРєС‚С‹</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt"><span class="b-layout__infin">&infin;</span></td>
-        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/public/?step=1&kind=1&red=" target="_blank" class="b-layout__link">Опубликовать проект</a></td>
+        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/public/?step=1&kind=1&red=" target="_blank" class="b-layout__link">РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ РїСЂРѕРµРєС‚</a></td>
         	</tr>
             <tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Опубликованные платные проекты</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РћРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹Рµ РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt"><span class="b-layout__infin">&infin;</span></td>
-        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/public/?step=1&kind=4&red=" target="_blank" class="b-layout__link">Опубликовать платный проект</a></td>
+        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/public/?step=1&kind=4&red=" target="_blank" class="b-layout__link">РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ РїР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚</a></td>
         	</tr>
             <tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Опубликованные конкурсы</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РћРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹Рµ РєРѕРЅРєСѓСЂСЃС‹</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt"><span class="b-layout__infin">&infin;</span></td>
-        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/public/?step=1&kind=7" target="_blank" class="b-layout__link">Опубликовать конкурс</a></td>
+        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/public/?step=1&kind=7" target="_blank" class="b-layout__link">РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ РєРѕРЅРєСѓСЂСЃ</a></td>
         	</tr>
             <tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Успешно закрытые проекты</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РЈСЃРїРµС€РЅРѕ Р·Р°РєСЂС‹С‚С‹Рµ РїСЂРѕРµРєС‚С‹</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt"><span class="b-layout__infin">&infin;</span></td>
-        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/user/<?= $user->login; ?>/setup/projects/" target="_blank" class="b-layout__link">Перейти в раздел Мои проекты</a></td>
+        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/user/<?= $user->login; ?>/setup/projects/" target="_blank" class="b-layout__link">РџРµСЂРµР№С‚Рё РІ СЂР°Р·РґРµР» РњРѕРё РїСЂРѕРµРєС‚С‹</a></td>
         	</tr>
             <tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Деньги, потраченные на сервис</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Р”РµРЅСЊРіРё, РїРѕС‚СЂР°С‡РµРЅРЅС‹Рµ РЅР° СЃРµСЂРІРёСЃ</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt"><span class="b-layout__infin">&infin;</span></td>
         		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"></td>
         	</tr>
             <tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Посещение сайта fl.ru</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РџРѕСЃРµС‰РµРЅРёРµ СЃР°Р№С‚Р° fl.ru</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt"><span class="b-layout__infin">&infin;</span></td>
-        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__txt_color_a7a7a6 b-layout__one_valign_middle">1 балл в день</td>
+        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__txt_color_a7a7a6 b-layout__one_valign_middle">1 Р±Р°Р»Р» РІ РґРµРЅСЊ</td>
         	</tr>
         </table>
-<!-- // таблица с рейтингами -->
+<!-- // С‚Р°Р±Р»РёС†Р° СЃ СЂРµР№С‚РёРЅРіР°РјРё -->
         <? }//if?>
          
         
         <? if($user->uid==get_uid(false)) { ?>
         <select name="ratingmode">
-            <option value="month">в этом месяце</option>
-            <option value="prev">в прошлом месяце</option>
-            <option value="year">за год</option>
+            <option value="month">РІ СЌС‚РѕРј РјРµСЃСЏС†Рµ</option>
+            <option value="prev">РІ РїСЂРѕС€Р»РѕРј РјРµСЃСЏС†Рµ</option>
+            <option value="year">Р·Р° РіРѕРґ</option>
         </select>
-        <h3>График изменений рейтинга</h3>
+        <h3>Р“СЂР°С„РёРє РёР·РјРµРЅРµРЅРёР№ СЂРµР№С‚РёРЅРіР°</h3>
             
         <div id="raph"></div>
         <? } ?>
@@ -323,8 +323,8 @@
         
     <div>
         <div class="page-rate-info">
-            <p>В разделе помощи подробно описано, <noindex><a rel="nofollow" href="https://feedback.fl.ru/topic/397655-opisanie-sistemyi-rejtinga-rabotodatel/" target="_blank">как считается рейтинг</a></noindex>.</p>
-            <p>Если у вас возникли вопросы – обратитесь в <noindex><a rel="nofollow" href="https://feedback.fl.ru/" target="_blank">Службу поддержки</a></noindex>. С удовольствием ответим.</p>
+            <p>Р’ СЂР°Р·РґРµР»Рµ РїРѕРјРѕС‰Рё РїРѕРґСЂРѕР±РЅРѕ РѕРїРёСЃР°РЅРѕ, <noindex><a rel="nofollow" href="https://feedback.fl.ru/topic/397655-opisanie-sistemyi-rejtinga-rabotodatel/" target="_blank">РєР°Рє СЃС‡РёС‚Р°РµС‚СЃСЏ СЂРµР№С‚РёРЅРі</a></noindex>.</p>
+            <p>Р•СЃР»Рё Сѓ РІР°СЃ РІРѕР·РЅРёРєР»Рё РІРѕРїСЂРѕСЃС‹ вЂ“ РѕР±СЂР°С‚РёС‚РµСЃСЊ РІ <noindex><a rel="nofollow" href="https://feedback.fl.ru/" target="_blank">РЎР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a></noindex>. РЎ СѓРґРѕРІРѕР»СЊСЃС‚РІРёРµРј РѕС‚РІРµС‚РёРј.</p>
         </div>
     </div>
         

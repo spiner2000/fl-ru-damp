@@ -9,7 +9,7 @@ $prefix = $isFeedback ? 'feedback_' : '';
         </div>
         <div class="b-post__content b-post__content_margleft_60 b-post__content_overflow_hidden">
             <div class="b-post__time b-post__time_float_right"> 
-                <a class="b-post__anchor b-post__anchor_margright_10"  onclick="hlAnchor('c', <?= $opID ?>);" href="#c_<?= $opID ?>" title="Ссылка на эту рекомендацию"></a> <?= date('d.m.Y в H:i', strtotime($comment['date_create']))?> 
+                <a class="b-post__anchor b-post__anchor_margright_10"  onclick="hlAnchor('c', <?= $opID ?>);" href="#c_<?= $opID ?>" title="РЎСЃС‹Р»РєР° РЅР° СЌС‚Сѓ СЂРµРєРѕРјРµРЅРґР°С†РёСЋ"></a> <?= date('d.m.Y РІ H:i', strtotime($comment['date_create']))?> 
             </div>
             <div class="b-username b-username_padbot_5 b-username_bold">
                 <?= view_user3($aUser)?>
@@ -19,8 +19,8 @@ $prefix = $isFeedback ? 'feedback_' : '';
             </div>
             <?php if($comment['user_id'] == $_SESSION['uid'] || hasPermissions('users')) {?>
             <div class="b-post__foot b-post__foot_padtop_10 ">
-                <a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" id="<?= $prefix ?>opinion_btn_edit_comment_<?= $opID ?>" onclick="if(!this.disabled) { this.disabled = true; xajax_AddOpComentForm('<?= $opID ?>', '<?=$ops_type?>' <?= $isFeedback ? ', true' : '' ?>); } return false;">Редактировать</a> &#160;&#160; 
-                <a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" onclick="if (confirm('Вы действительно хотите удалить комментарий?')) xajax_DeleteOpinionComm('<?= $opID ?>', '<?=$comment['id']?>', '<?=$ops_type?>' <?= $isFeedback ? ', true' : '' ?>); return false;">Удалить</a>
+                <a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" id="<?= $prefix ?>opinion_btn_edit_comment_<?= $opID ?>" onclick="if(!this.disabled) { this.disabled = true; xajax_AddOpComentForm('<?= $opID ?>', '<?=$ops_type?>' <?= $isFeedback ? ', true' : '' ?>); } return false;">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> &#160;&#160; 
+                <a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0)" onclick="if (confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№?')) xajax_DeleteOpinionComm('<?= $opID ?>', '<?=$comment['id']?>', '<?=$ops_type?>' <?= $isFeedback ? ', true' : '' ?>); return false;">РЈРґР°Р»РёС‚СЊ</a>
             </div>
             <?php }//if?>
         </div>

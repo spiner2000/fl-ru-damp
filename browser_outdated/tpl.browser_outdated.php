@@ -1,17 +1,17 @@
 <div class="b-promo">
-            <h1 class="b-page__title b-page__title_padbot_20">Ваш браузер устарел</h1>
-        <div class="b-txt b-txt_padbot_40">Браузер —&nbsp;это программа, с помощью которой вы просматриваете сайты в интернете. Используя устаревший браузер, вы рискуете пострадать от злоумышленников и некорректной работы сайта.</div>
+            <h1 class="b-page__title b-page__title_padbot_20">Р’Р°С€ Р±СЂР°СѓР·РµСЂ СѓСЃС‚Р°СЂРµР»</h1>
+        <div class="b-txt b-txt_padbot_40">Р‘СЂР°СѓР·РµСЂ вЂ”&nbsp;СЌС‚Рѕ РїСЂРѕРіСЂР°РјРјР°, СЃ РїРѕРјРѕС‰СЊСЋ РєРѕС‚РѕСЂРѕР№ РІС‹ РїСЂРѕСЃРјР°С‚СЂРёРІР°РµС‚Рµ СЃР°Р№С‚С‹ РІ РёРЅС‚РµСЂРЅРµС‚Рµ. РСЃРїРѕР»СЊР·СѓСЏ СѓСЃС‚Р°СЂРµРІС€РёР№ Р±СЂР°СѓР·РµСЂ, РІС‹ СЂРёСЃРєСѓРµС‚Рµ РїРѕСЃС‚СЂР°РґР°С‚СЊ РѕС‚ Р·Р»РѕСѓРјС‹С€Р»РµРЅРЅРёРєРѕРІ Рё РЅРµРєРѕСЂСЂРµРєС‚РЅРѕР№ СЂР°Р±РѕС‚С‹ СЃР°Р№С‚Р°.</div>
 
-        <h2 class="b-txt__title">Вы используете браузер <span class="b-txt_color_eb0000"><?= $page_content['name_version'] ?></span></h2>
-        <div class="b-txt b-txt_padbot_20">Эта версия браузера была выпущена в <?= $page_content['born'] ?> году и к настоящему моменту технически и морально устарела. Вот лишь некоторые слабые стороны этой программы:</div>
-        <div class="b-txt b-txt_color_eb0000 b-txt_padbot_5"><span class="b-icon b-icon_top_2 b-icon_sbr_rattent"></span> Слабая защищённость от вирусов.</div>
-        <div class="b-txt b-txt_fs_11 b-txt_padbot_20 b-txt_padleft_25">Используя бреши в <?= $page_content['name_version'] ?>, злоумышленники могут получить все ваши пароли.</div>
-        <div class="b-txt b-txt_color_eb0000 b-txt_padbot_5"><span class="b-icon b-icon_top_2 b-icon_sbr_rattent"></span> Низкая скорость работы.</div>
-        <div class="b-txt b-txt_fs_11 b-txt_padbot_20 b-txt_padleft_25">Современные браузеры работают гораздо быстрее, с ними вы будете терять меньше времени.</div>
-        <div class="b-txt b-txt_color_eb0000 b-txt_padbot_5"><span class="b-icon b-icon_top_2 b-icon_sbr_rattent"></span> Некорректная работа многих сайтов.</div>
-        <div class="b-txt b-txt_fs_11 b-txt_padleft_25 b-txt_padbot_40">Поскольку этот браузер был выпущен очень давно, а технологии в интернете шагнули далеко вперёд, то всё больше и больше разработчиков отказываются от поддержки этого браузера. В результате чего многие сайты могут работать некорректно.</div>
-        <h2 class="b-txt__title">Выход —&nbsp;обновить браузер</h2>
-        <div class="b-txt b-txt_padbot_20">Вот список самых новых браузеров, обеспечивающих быструю, надёжную и безопасную работу в интернете:</div>
+        <h2 class="b-txt__title">Р’С‹ РёСЃРїРѕР»СЊР·СѓРµС‚Рµ Р±СЂР°СѓР·РµСЂ <span class="b-txt_color_eb0000"><?= $page_content['name_version'] ?></span></h2>
+        <div class="b-txt b-txt_padbot_20">Р­С‚Р° РІРµСЂСЃРёСЏ Р±СЂР°СѓР·РµСЂР° Р±С‹Р»Р° РІС‹РїСѓС‰РµРЅР° РІ <?= $page_content['born'] ?> РіРѕРґСѓ Рё Рє РЅР°СЃС‚РѕСЏС‰РµРјСѓ РјРѕРјРµРЅС‚Сѓ С‚РµС…РЅРёС‡РµСЃРєРё Рё РјРѕСЂР°Р»СЊРЅРѕ СѓСЃС‚Р°СЂРµР»Р°. Р’РѕС‚ Р»РёС€СЊ РЅРµРєРѕС‚РѕСЂС‹Рµ СЃР»Р°Р±С‹Рµ СЃС‚РѕСЂРѕРЅС‹ СЌС‚РѕР№ РїСЂРѕРіСЂР°РјРјС‹:</div>
+        <div class="b-txt b-txt_color_eb0000 b-txt_padbot_5"><span class="b-icon b-icon_top_2 b-icon_sbr_rattent"></span> РЎР»Р°Р±Р°СЏ Р·Р°С‰РёС‰С‘РЅРЅРѕСЃС‚СЊ РѕС‚ РІРёСЂСѓСЃРѕРІ.</div>
+        <div class="b-txt b-txt_fs_11 b-txt_padbot_20 b-txt_padleft_25">РСЃРїРѕР»СЊР·СѓСЏ Р±СЂРµС€Рё РІ <?= $page_content['name_version'] ?>, Р·Р»РѕСѓРјС‹С€Р»РµРЅРЅРёРєРё РјРѕРіСѓС‚ РїРѕР»СѓС‡РёС‚СЊ РІСЃРµ РІР°С€Рё РїР°СЂРѕР»Рё.</div>
+        <div class="b-txt b-txt_color_eb0000 b-txt_padbot_5"><span class="b-icon b-icon_top_2 b-icon_sbr_rattent"></span> РќРёР·РєР°СЏ СЃРєРѕСЂРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹.</div>
+        <div class="b-txt b-txt_fs_11 b-txt_padbot_20 b-txt_padleft_25">РЎРѕРІСЂРµРјРµРЅРЅС‹Рµ Р±СЂР°СѓР·РµСЂС‹ СЂР°Р±РѕС‚Р°СЋС‚ РіРѕСЂР°Р·РґРѕ Р±С‹СЃС‚СЂРµРµ, СЃ РЅРёРјРё РІС‹ Р±СѓРґРµС‚Рµ С‚РµСЂСЏС‚СЊ РјРµРЅСЊС€Рµ РІСЂРµРјРµРЅРё.</div>
+        <div class="b-txt b-txt_color_eb0000 b-txt_padbot_5"><span class="b-icon b-icon_top_2 b-icon_sbr_rattent"></span> РќРµРєРѕСЂСЂРµРєС‚РЅР°СЏ СЂР°Р±РѕС‚Р° РјРЅРѕРіРёС… СЃР°Р№С‚РѕРІ.</div>
+        <div class="b-txt b-txt_fs_11 b-txt_padleft_25 b-txt_padbot_40">РџРѕСЃРєРѕР»СЊРєСѓ СЌС‚РѕС‚ Р±СЂР°СѓР·РµСЂ Р±С‹Р» РІС‹РїСѓС‰РµРЅ РѕС‡РµРЅСЊ РґР°РІРЅРѕ, Р° С‚РµС…РЅРѕР»РѕРіРёРё РІ РёРЅС‚РµСЂРЅРµС‚Рµ С€Р°РіРЅСѓР»Рё РґР°Р»РµРєРѕ РІРїРµСЂС‘Рґ, С‚Рѕ РІСЃС‘ Р±РѕР»СЊС€Рµ Рё Р±РѕР»СЊС€Рµ СЂР°Р·СЂР°Р±РѕС‚С‡РёРєРѕРІ РѕС‚РєР°Р·С‹РІР°СЋС‚СЃСЏ РѕС‚ РїРѕРґРґРµСЂР¶РєРё СЌС‚РѕРіРѕ Р±СЂР°СѓР·РµСЂР°. Р’ СЂРµР·СѓР»СЊС‚Р°С‚Рµ С‡РµРіРѕ РјРЅРѕРіРёРµ СЃР°Р№С‚С‹ РјРѕРіСѓС‚ СЂР°Р±РѕС‚Р°С‚СЊ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ.</div>
+        <h2 class="b-txt__title">Р’С‹С…РѕРґ вЂ”&nbsp;РѕР±РЅРѕРІРёС‚СЊ Р±СЂР°СѓР·РµСЂ</h2>
+        <div class="b-txt b-txt_padbot_20">Р’РѕС‚ СЃРїРёСЃРѕРє СЃР°РјС‹С… РЅРѕРІС‹С… Р±СЂР°СѓР·РµСЂРѕРІ, РѕР±РµСЃРїРµС‡РёРІР°СЋС‰РёС… Р±С‹СЃС‚СЂСѓСЋ, РЅР°РґС‘Р¶РЅСѓСЋ Рё Р±РµР·РѕРїР°СЃРЅСѓСЋ СЂР°Р±РѕС‚Сѓ РІ РёРЅС‚РµСЂРЅРµС‚Рµ:</div>
         <table class="b-layout__table b-layout__table_width_full">
                 <tbody><tr class="b-layout__tr">
                         <td class="b-layout__td b-layout__td_center b-layout__td_width_25ps">
@@ -30,7 +30,7 @@
         </tbody></table>
 <!--
     <div class="b-layout__left b-layout__left_width_26ps b-layout__left_padtop_40">
-            <div class="b-promo__kamen">Ваш<br>браузер<div style="font-size:11px; padding-top:5px;"><?= $page_content['born'] ?><div style="height:5px; position:relative; top:-5px">~</div><?= $page_content['die'] ?></div></div>
+            <div class="b-promo__kamen">Р’Р°С€<br>Р±СЂР°СѓР·РµСЂ<div style="font-size:11px; padding-top:5px;"><?= $page_content['born'] ?><div style="height:5px; position:relative; top:-5px">~</div><?= $page_content['die'] ?></div></div>
     </div>	
 -->	
 </div>

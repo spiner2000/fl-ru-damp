@@ -74,18 +74,18 @@ class PGQDaemonReserves extends PGQConsumer
             {
                 case 'payback':
                     $is_repeat = !ReservesPayback::getInstance()->doPayback($reserve_id);
-                    if(!$is_repeat) $message = 'Ñğåäñòâà âîçâğàùåíû.';
+                    if(!$is_repeat) $message = 'Ğ¡Ñ€ĞµĞ´ÑÑ‚Ğ²Ğ° Ğ²Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰ĞµĞ½Ñ‹.';
                     break;
                       
                 case 'payout':
                     $is_repeat = !ReservesPayout::getInstance()->doPayout($reserve_id);
-                    if(!$is_repeat) $message = 'Ñğåäñòâà âûïëà÷åíû.';
+                    if(!$is_repeat) $message = 'Ğ¡Ñ€ĞµĞ´ÑÑ‚Ğ²Ğ° Ğ²Ñ‹Ğ¿Ğ»Ğ°Ñ‡ĞµĞ½Ñ‹.';
                     break;   
             }
         }
         catch(ReservesPayException $e)
         {
-            $message = 'Îøèáêà: ' . $e->getMessage();
+            $message = 'ĞÑˆĞ¸Ğ±ĞºĞ°: ' . $e->getMessage();
             $is_repeat = $e->isRepeat();
         }
         

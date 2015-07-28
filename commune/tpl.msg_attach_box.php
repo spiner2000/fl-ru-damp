@@ -10,12 +10,12 @@
           <input type="hidden" name="MAX_FILE_SIZE" value="<?=commune::MSG_FILE_MAX_SIZE?>"/>
           <input type="file" style="width:100%" name="file"/> */ ?>
 
-        С помощью этого поля возможно загрузить:
+        РЎ РїРѕРјРѕС‰СЊСЋ СЌС‚РѕРіРѕ РїРѕР»СЏ РІРѕР·РјРѕР¶РЅРѕ Р·Р°РіСЂСѓР·РёС‚СЊ:
         <ul>
-            <li>Картинку: <?= commune::MSG_IMAGE_MAX_WIDTH ?>x<?= commune::MSG_IMAGE_MAX_HEIGHT ?> пикселей. <?= (commune::MSG_IMAGE_MAX_SIZE / 1024) ?> Кб. </li>
+            <li>РљР°СЂС‚РёРЅРєСѓ: <?= commune::MSG_IMAGE_MAX_WIDTH ?>x<?= commune::MSG_IMAGE_MAX_HEIGHT ?> РїРёРєСЃРµР»РµР№. <?= (commune::MSG_IMAGE_MAX_SIZE / 1024) ?> РљР±. </li>
             <li>
-                Вы можете прикрепить до <?=commune::MAX_FILES ?> файлов общим объемом не более <?=(commune::MAX_FILE_SIZE / (1024*1024))?> Мб.<br/>
-                Файлы следующих форматов запрещены к загрузке: <?=implode(', ', $GLOBALS['disallowed_array'])?>
+                Р’С‹ РјРѕР¶РµС‚Рµ РїСЂРёРєСЂРµРїРёС‚СЊ РґРѕ <?=commune::MAX_FILES ?> С„Р°Р№Р»РѕРІ РѕР±С‰РёРј РѕР±СЉРµРјРѕРј РЅРµ Р±РѕР»РµРµ <?=(commune::MAX_FILE_SIZE / (1024*1024))?> РњР±.<br/>
+                Р¤Р°Р№Р»С‹ СЃР»РµРґСѓСЋС‰РёС… С„РѕСЂРјР°С‚РѕРІ Р·Р°РїСЂРµС‰РµРЅС‹ Рє Р·Р°РіСЂСѓР·РєРµ: <?=implode(', ', $GLOBALS['disallowed_array'])?>
             </li>
         </ul>
     </div>

@@ -3,15 +3,15 @@
 
 ?>
     <h1 class="b-layout__title b-layout__title_fs30 b-layout__title_color_333 b-layout__title_padbot_37">
-        Фрилансеры зарабатывают из <strong>любого места</strong><br/>
-        и <strong>в удобное для себя время</strong>
+        Р¤СЂРёР»Р°РЅСЃРµСЂС‹ Р·Р°СЂР°Р±Р°С‚С‹РІР°СЋС‚ РёР· <strong>Р»СЋР±РѕРіРѕ РјРµСЃС‚Р°</strong><br/>
+        Рё <strong>РІ СѓРґРѕР±РЅРѕРµ РґР»СЏ СЃРµР±СЏ РІСЂРµРјСЏ</strong>
     </h1>
     <img class="b-pic i-pic_padbot_35" width="264" height="146" src="<?=WDCPREFIX?>/images/welcome/fs1.png" /> 
     <h2 class="b-layout__title b-layout__title_fs20 b-layout__title_color_333 b-layout__title_padbot_37">
-        Выполняя задания заказчиков, опытные фрилансеры<br/>
-        зарабатывают 120 000–150 000 рублей в месяц
+        Р’С‹РїРѕР»РЅСЏСЏ Р·Р°РґР°РЅРёСЏ Р·Р°РєР°Р·С‡РёРєРѕРІ, РѕРїС‹С‚РЅС‹Рµ С„СЂРёР»Р°РЅСЃРµСЂС‹<br/>
+        Р·Р°СЂР°Р±Р°С‚С‹РІР°СЋС‚ 120 000вЂ“150 000 СЂСѓР±Р»РµР№ РІ РјРµСЃСЏС†
     </h2>
     <a href="/welcome/freelancer/2/" 
        class="b-button b-button_flat b-button_flat_green b-button_flat_med">
-        Узнай, как зарабатывать на fl.ru <span class="b-icon b-icon__rarr b-icon_margleft_20 b-icon_top_2"></span>
+        РЈР·РЅР°Р№, РєР°Рє Р·Р°СЂР°Р±Р°С‚С‹РІР°С‚СЊ РЅР° fl.ru <span class="b-icon b-icon__rarr b-icon_margleft_20 b-icon_top_2"></span>
     </a>

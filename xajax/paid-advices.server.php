@@ -13,25 +13,25 @@ function NewAdvice($to_user, $msgtext) {
     $isReqvsFilled = !$sbr->checkUserReqvs();
     
     if($isReqvsFilled && !is_emp($_SESSION['role'])) {
-        $objResponse->call('alert', 'Заполните раздел «Финансы»');
+        $objResponse->call('alert', 'Р—Р°РїРѕР»РЅРёС‚Рµ СЂР°Р·РґРµР» В«Р¤РёРЅР°РЅСЃС‹В»');
         $objResponse->script("$$('a.advice-new').store('lock', 0);");
         return $objResponse;    
     }
     
     if (!$to_user) {
-        $objResponse->call('alert', 'Ошибка');
+        $objResponse->call('alert', 'РћС€РёР±РєР°');
         $objResponse->script("$$('a.advice-new').store('lock', 0);");
         return $objResponse;
     }
     
     if(is_empty_html($msgtext)) {
-        $objResponse->call('alert', 'Вы не заполнили форму.');
+        $objResponse->call('alert', 'Р’С‹ РЅРµ Р·Р°РїРѕР»РЅРёР»Рё С„РѕСЂРјСѓ.');
         $objResponse->script("$$('a.advice-new').store('lock', 0);");
         return $objResponse;    
     }
     
     if(strlen_real($msgtext) > paid_advices::MAX_DESCR_ADVICE) {
-        $objResponse->call('alert', 'Рекомендация не должна быть больше ' . paid_advices::MAX_DESCR_ADVICE . ' символов');
+        $objResponse->call('alert', 'Р РµРєРѕРјРµРЅРґР°С†РёСЏ РЅРµ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ ' . paid_advices::MAX_DESCR_ADVICE . ' СЃРёРјРІРѕР»РѕРІ');
         $objResponse->script("$$('a.advice-new').store('lock', 0);");
         return $objResponse; 
     }
@@ -39,7 +39,7 @@ function NewAdvice($to_user, $msgtext) {
     $advice = new paid_advices();
     $new = $advice->add($to_user, $msgtext);
     if($new === false) {
-        $objResponse->call('alert', 'Ошибка отправки рекомендации.');
+        $objResponse->call('alert', 'РћС€РёР±РєР° РѕС‚РїСЂР°РІРєРё СЂРµРєРѕРјРµРЅРґР°С†РёРё.');
         $objResponse->script("$$('a.advice-new').store('lock', 0);");
         return $objResponse;  
     }
@@ -52,7 +52,7 @@ function AcceptedAdvice($id_advice) {
     
     $id_advice = intval($id_advice);
     if (!$id_advice) {
-        $objResponse->call('alert', 'Ошибка');
+        $objResponse->call('alert', 'РћС€РёР±РєР°');
         return $objResponse;
     }
     
@@ -70,7 +70,7 @@ function DeclineAdvice($id_advice, $status) {
     $status = intval($status);
     $id_advice = intval($id_advice);
     if (!$id_advice) {
-        $objResponse->call('alert', 'Ошибка');
+        $objResponse->call('alert', 'РћС€РёР±РєР°');
         return $objResponse;
     }
     
@@ -78,7 +78,7 @@ function DeclineAdvice($id_advice, $status) {
     
     $advice->decline($id_advice);
     
-    $html = 'Вы отказались от рекомендации. <a class="b-fon__link b-fon__link_fontsize_13 b-fon__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="xajax_RestoreAdvice('.(int) $id_advice.', '.(int) $status.')">Вернуть рекомендацию</a>';
+    $html = 'Р’С‹ РѕС‚РєР°Р·Р°Р»РёСЃСЊ РѕС‚ СЂРµРєРѕРјРµРЅРґР°С†РёРё. <a class="b-fon__link b-fon__link_fontsize_13 b-fon__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="xajax_RestoreAdvice('.(int) $id_advice.', '.(int) $status.')">Р’РµСЂРЅСѓС‚СЊ СЂРµРєРѕРјРµРЅРґР°С†РёСЋ</a>';
     
     $objResponse->call("adviceRespBlock", $id_advice, $html);
     
@@ -90,7 +90,7 @@ function DeleteAdvice($id_advice) {
     
     $id_advice = intval($id_advice);
     if (!$id_advice) {
-        $objResponse->call('alert', 'Ошибка');
+        $objResponse->call('alert', 'РћС€РёР±РєР°');
         return $objResponse;
     }
     
@@ -102,7 +102,7 @@ function DeleteAdvice($id_advice) {
     }
     $advice->delete($id_advice);
     
-    $html = 'Рекомендация удалена.';
+    $html = 'Р РµРєРѕРјРµРЅРґР°С†РёСЏ СѓРґР°Р»РµРЅР°.';
     
     $objResponse->call("adviceRespBlockDel", $id_advice, $html);
     
@@ -114,7 +114,7 @@ function RefuseAdvice($id_advice) {
     
     $id_advice = intval($id_advice);
     if (!$id_advice) {
-        $objResponse->call('alert', 'Ошибка');
+        $objResponse->call('alert', 'РћС€РёР±РєР°');
         return $objResponse;
     } 
     
@@ -131,7 +131,7 @@ function RestoreAdvice($id_advice, $status) {
     
     $id_advice = intval($id_advice);
     if (!$id_advice) {
-        $objResponse->call('alert', 'Ошибка');
+        $objResponse->call('alert', 'РћС€РёР±РєР°');
         return $objResponse;
     }
     
@@ -166,7 +166,7 @@ function CalcPaidAdvice($sum, $scheme) {
         $FM = round(($sum * paid_advices::PAID_COMMISION), 2);
         $RT = $advice->getSBRRating($sum);
         
-        $html_rt = 'и получите <strong>' . $RT . '</strong>&#160;' . ending($RT, "балл", "балла", "баллов") . ' рейтинга';
+        $html_rt = 'Рё РїРѕР»СѓС‡РёС‚Рµ <strong>' . $RT . '</strong>&#160;' . ending($RT, "Р±Р°Р»Р»", "Р±Р°Р»Р»Р°", "Р±Р°Р»Р»РѕРІ") . ' СЂРµР№С‚РёРЅРіР°';
         if($sum < sbr_stages::MIN_COST_RUR_PDRD) {
             $objResponse->script("$('error_budget').show();");
         } else {
@@ -179,7 +179,7 @@ function CalcPaidAdvice($sum, $scheme) {
         $sum_fm = round($RUB, 2);
         $RT = $advice->getSBRRating($sum);
         
-        $html_rt = 'и получите <strong>' . $RT . '</strong>&#160;' . ending($RT, "балл", "балла", "баллов") . ' рейтинга';
+        $html_rt = 'Рё РїРѕР»СѓС‡РёС‚Рµ <strong>' . $RT . '</strong>&#160;' . ending($RT, "Р±Р°Р»Р»", "Р±Р°Р»Р»Р°", "Р±Р°Р»Р»РѕРІ") . ' СЂРµР№С‚РёРЅРіР°';
         if($RUB < sbr_stages::MIN_COST_RUR_PDRD) {
             $objResponse->script("$('error_budget').show();");
         } else {
@@ -210,14 +210,14 @@ function ModDeclinedAdvice($id_advice, $msg, $type = 1) {
     $objResponse = new xajaxResponse();
     if(!(hasPermissions('users') || hasPermissions('paidadvice'))) return $objResponse;
     if (is_empty_html($msg)) {
-        $objResponse->call('alert', 'Укажите причину отказа.');
+        $objResponse->call('alert', 'РЈРєР°Р¶РёС‚Рµ РїСЂРёС‡РёРЅСѓ РѕС‚РєР°Р·Р°.');
         return $objResponse;
     } 
     $id_advice = intval($id_advice);
     $paid_advice = new paid_advices(); 
     $msg = stripslashes($msg);
     if($paid_advice->getAdviceStatus($id_advice) == paid_advices::STATUS_PAYED) {
-        $objResponse->call('alert', 'Пользователь уже оплатил рекомендацию, вы не можете отклонить её');
+        $objResponse->call('alert', 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓР¶Рµ РѕРїР»Р°С‚РёР» СЂРµРєРѕРјРµРЅРґР°С†РёСЋ, РІС‹ РЅРµ РјРѕР¶РµС‚Рµ РѕС‚РєР»РѕРЅРёС‚СЊ РµС‘');
         return $objResponse;
     }
     if($type == 1) {

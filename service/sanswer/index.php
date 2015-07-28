@@ -1,7 +1,7 @@
 <?php
 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
-// èäåò â ðåëèç èç-çà ñâÿçåé, ïîýòîìó ïîêà 404
+// Ð¸Ð´ÐµÑ‚ Ð² Ñ€ÐµÐ»Ð¸Ð· Ð¸Ð·-Ð·Ð° ÑÐ²ÑÐ·ÐµÐ¹, Ð¿Ð¾ÑÑ‚Ð¾Ð¼Ñƒ Ð¿Ð¾ÐºÐ° 404
 header_location_exit('/404.php');
 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/projects_offers_answers.php");
@@ -9,7 +9,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/projects_offers_answers.php")
 $rpath    = "../../";
 $stretch_page       = true;
 $showMainDiv        = true;
-$page_title = "Âûäåëåíèå îòâåòà â ïðîåêòå - ôðèëàíñ, óäàëåííàÿ ðàáîòà íà FL.ru";
+$page_title = "Ð’Ñ‹Ð´ÐµÐ»ÐµÐ½Ð¸Ðµ Ð¾Ñ‚Ð²ÐµÑ‚Ð° Ð² Ð¿Ñ€Ð¾ÐµÐºÑ‚Ðµ - Ñ„Ñ€Ð¸Ð»Ð°Ð½Ñ, ÑƒÐ´Ð°Ð»ÐµÐ½Ð½Ð°Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ð° Ð½Ð° FL.ru";
 $header   = "$rpath/header.php";
 $content  = 'content.php';
 $footer   = "$rpath/footer.html";

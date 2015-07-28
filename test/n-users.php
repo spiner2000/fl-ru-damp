@@ -63,19 +63,19 @@ if (isset($_GET['users'])) {
 ?><HTML>
 
 <HEAD>
-	<TITLE>Пользователи с 3-мя и более отрицательными отзывами</TITLE>
+	<TITLE>РџРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ 3-РјСЏ Рё Р±РѕР»РµРµ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹РјРё РѕС‚Р·С‹РІР°РјРё</TITLE>
 </HEAD>
 
 <BODY>
 
 	<form method="get" action="<?=$_SERVER['PHP_SELF']?>">
 		<input type="hidden" name="users" value="freelancers">
-		<input type="submit" value="Фрилансеры">
+		<input type="submit" value="Р¤СЂРёР»Р°РЅСЃРµСЂС‹">
 	</form>
 
 	<form method="get" action="<?=$_SERVER['PHP_SELF']?>">
 		<input type="hidden" name="users" value="employers">
-		<input type="submit" value="Работодатели">
+		<input type="submit" value="Р Р°Р±РѕС‚РѕРґР°С‚РµР»Рё">
 	</form>
 
 </BODY>

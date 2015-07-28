@@ -10,8 +10,8 @@
         $end = $page + $count;
         if($end>$pages) $end = $pages;
         
-        if($page < $pages) {$html .= sprintf($href, '<span class="page-next"><a href=', $page+1, '>следующая</a>&nbsp;&nbsp;&rarr;</span>');} 
-        if($page > 1) {$html .= sprintf($href, '<span class="page-back">&larr;&nbsp;&nbsp;<a href=', $page-1 ,'>предыдущая</a></span>');} //$page-1
+        if($page < $pages) {$html .= sprintf($href, '<span class="page-next"><a href=', $page+1, '>СЃР»РµРґСѓСЋС‰Р°СЏ</a>&nbsp;&nbsp;&rarr;</span>');} 
+        if($page > 1) {$html .= sprintf($href, '<span class="page-back">&larr;&nbsp;&nbsp;<a href=', $page-1 ,'>РїСЂРµРґС‹РґСѓС‰Р°СЏ</a></span>');} //$page-1
         //$page+1
         
         for($i=$start;$i<=$end;$i++) {

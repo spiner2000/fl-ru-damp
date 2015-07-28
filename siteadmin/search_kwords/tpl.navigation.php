@@ -1,15 +1,15 @@
 <?php if ( !defined('IS_SITE_ADMIN') ) { header('Location: /404.php'); exit; } ?>
 <div class="m-cl-bar-sort3">
     <a name="#tabs"></a>
-    <a href="./" class="lnk-dot-666">Поисковые запросы</a></strong>
+    <a href="./" class="lnk-dot-666">РџРѕРёСЃРєРѕРІС‹Рµ Р·Р°РїСЂРѕСЃС‹</a></strong>
     &nbsp;&nbsp;&nbsp;
-    <a href="./?tab=filters" class="lnk-dot-666">Фильтры</a>
+    <a href="./?tab=filters" class="lnk-dot-666">Р¤РёР»СЊС‚СЂС‹</a>
     &nbsp;&nbsp;&nbsp;
-    <a href="./?tab=rules" class="lnk-dot-666">Условия фильтрации</a>
+    <a href="./?tab=rules" class="lnk-dot-666">РЈСЃР»РѕРІРёСЏ С„РёР»СЊС‚СЂР°С†РёРё</a>
     &nbsp;&nbsp;&nbsp;
-    <a href="./?tab=top" class="lnk-dot-666">Топ запросов</a>
+    <a href="./?tab=top" class="lnk-dot-666">РўРѕРї Р·Р°РїСЂРѕСЃРѕРІ</a>
     &nbsp;&nbsp;&nbsp;
-    <a href="javascript:void(0)" onclick="$('settingsBlock').toggle()" class="lnk-dot-666">Настройки</a>
+    <a href="javascript:void(0)" onclick="$('settingsBlock').toggle()" class="lnk-dot-666">РќР°СЃС‚СЂРѕР№РєРё</a>
 </div>
 
 <div id="settingsBlock" style="display: <?= $action == 'save_settings' ? 'block' : 'none'?>;">
@@ -21,21 +21,21 @@
             <b class="b2"></b>
             <div class="form-in">
                 <div class="form-block first">
-                    <h3>Настройки</h3>
+                    <h3>РќР°СЃС‚СЂРѕР№РєРё</h3>
                     <div class="form-el">
-                        <label class="form-l">Лимит:</label>
+                        <label class="form-l">Р›РёРјРёС‚:</label>
                         <div class="form-value">
                             <input type="text" name="min_cnt" class="sw205" value="<?= intval($settings['min_cnt']) ?>"/>
                         </div>
                     </div>
                     <div class="form-el">
-                        В итоговую таблицу будут попадать только те запросы, значение коэффициента (кол-во повторов * кол-во совпадений) которых БОЛЬШЕ указанного лимита.
+                        Р’ РёС‚РѕРіРѕРІСѓСЋ С‚Р°Р±Р»РёС†Сѓ Р±СѓРґСѓС‚ РїРѕРїР°РґР°С‚СЊ С‚РѕР»СЊРєРѕ С‚Рµ Р·Р°РїСЂРѕСЃС‹, Р·РЅР°С‡РµРЅРёРµ РєРѕСЌС„С„РёС†РёРµРЅС‚Р° (РєРѕР»-РІРѕ РїРѕРІС‚РѕСЂРѕРІ * РєРѕР»-РІРѕ СЃРѕРІРїР°РґРµРЅРёР№) РєРѕС‚РѕСЂС‹С… Р‘РћР›Р¬РЁР• СѓРєР°Р·Р°РЅРЅРѕРіРѕ Р»РёРјРёС‚Р°.
                     </div>
                 </div>
                 <div class="form-block last">
                     <div class="form-el form-btns flm">
-                        <button type="submit">Сохранить</button>
-                        <button onclick="$('settingsBlock').toggle();return false;">Закрыть</button>
+                        <button type="submit">РЎРѕС…СЂР°РЅРёС‚СЊ</button>
+                        <button onclick="$('settingsBlock').toggle();return false;">Р—Р°РєСЂС‹С‚СЊ</button>
                     </div>
                 </div>
             </div>

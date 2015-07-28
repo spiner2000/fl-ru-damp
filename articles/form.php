@@ -40,54 +40,54 @@ if ( hasPermissions('articles') ) {
 </script>
 <div class="form js-form ai-form <?=isset($id) ? 'article-one-' : 'articles-'?>edit" style="display:none;">
     <div class="<?=isset($id) ? 'ai-form-in' : ''?>">
-    <h3><?=!isset($id) ? 'Добавить' : 'Редактировать'?> статью</h3>
+    <h3><?=!isset($id) ? 'Р”РѕР±Р°РІРёС‚СЊ' : 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ'?> СЃС‚Р°С‚СЊСЋ</h3>
     <form action="" method="post" name="interviewForm" onsubmit="return false;" id="frm">
         <fieldset>
             <input type="hidden" name="task" value="add"/>
             <input type="hidden" name="id" value=""/>
             <input type="hidden" name="page_view" value="<?=$_page?>"/>
             <div class="form-el">
-                <label class="form-label3">Название:</label>
+                <label class="form-label3">РќР°Р·РІР°РЅРёРµ:</label>
                 <span><input type="text" size="40" class="i-a-title" name="title" /></span>
             </div>
             <div class="form-el">
-                <label class="form-label3">Анонс:</label>
+                <label class="form-label3">РђРЅРѕРЅСЃ:</label>
                 <div class="form-edit form-fck<?=!isset($id) ? 1 : 2?>">
                     <textarea rows="10" cols="100" name="short"></textarea>
                 </div>
             </div>
             <div class="form-el">
-                <label class="form-label3">Текст статьи:</label>
+                <label class="form-label3">РўРµРєСЃС‚ СЃС‚Р°С‚СЊРё:</label>
                 <div class="form-edit form-fck<?=!isset($id) ? 1 : 2?>">
                     <textarea rows="10" cols="100" name="msgtext"></textarea>
                 </div>
             </div>
             
             <div class="form-el" style="position:relative; z-index:1;">
-                <label class="form-label3">Темы:</label>
+                <label class="form-label3">РўРµРјС‹:</label>
                 <div class="form-edit form-fck<?=!isset($id) ? 1 : 2?>">
                     <div class="b-input-hint b-input-hint_height_20">
                         <div id="body_1" class="b-input">
                             <input id="kword_se" class="b-input__text " type="text" name="kword"  />
                         </div>
                     </div>
-                    <div class="b-form__txt b-form__txt_fontsize_11">Ключевые слова вводятся через запятую.</div>
+                    <div class="b-form__txt b-form__txt_fontsize_11">РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР° РІРІРѕРґСЏС‚СЃСЏ С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ.</div>
                 </div>
             </div>
 						
             <div class="form-el">
-                <label class="form-label3">Изображение:</label>
+                <label class="form-label3">РР·РѕР±СЂР°Р¶РµРЅРёРµ:</label>
                 <div class="form-el-in">
                     <ul class="form-files-added add-f" style="display:none;">
                         <li>
                             <input type="hidden" name="logo" />
                             <input type="hidden" name="rmlogo" />
-                            <a href="javascript:void(0)" title="Удалить" onclick="delArticleAttach(this)"><img src="/images/btn-remove2.png" alt="" /></a>
+                            <a href="javascript:void(0)" title="РЈРґР°Р»РёС‚СЊ" onclick="delArticleAttach(this)"><img src="/images/btn-remove2.png" alt="" /></a>
                             <a href=""></a>
                         </li>
                     </ul>
                     <div class="form-file-add c">
-                        <span>100х100px, JPG, GIF, PNG</span>
+                        <span>100С…100px, JPG, GIF, PNG</span>
                         <input type="file" size="25" name="attach" onchange="if($(this).getParent().getParent().getParent().getElement('.errorBox') != undefined) $(this).getParent().getParent().getParent().getElement('.errorBox').set('html', '');"/>
                     </div>
                 </div>
@@ -104,15 +104,15 @@ if ( hasPermissions('articles') ) {
 																		<a class="b-button b-button_rectangle_transparent_small" onclick="return false" href="#">
 																			<span class="b-button__b1">
 																				<span class="b-button__b2">
-																					Выбрать файл
+																					Р’С‹Р±СЂР°С‚СЊ С„Р°Р№Р»
 																				</span>
 																			</span>
 																		</a>
 																	</div>
 															</td>
 															<td class="b-file__text">
-																		<p class="b-file__descript b-file__descript_bold">Максимальный размер файла 1 Мб.</p>
-																		<p class="b-file__descript">Картинка 100х100рх, gif, jpg, jpeg, png</p>
+																		<p class="b-file__descript b-file__descript_bold">РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р° 1 РњР±.</p>
+																		<p class="b-file__descript">РљР°СЂС‚РёРЅРєР° 100С…100СЂС…, gif, jpg, jpeg, png</p>
 																</td>
 														</tr>
 												</table>
@@ -133,11 +133,11 @@ if ( hasPermissions('articles') ) {
 								<a href="javascript:void(0)" onclick="saveArticle($('frm'))" class="b-button b-button_rectangle_color_transparent" id="save_article">
 										<span class="b-button__b1">
 												<span class="b-button__b2">
-														<span class="b-button__txt" id="btn_name">Отправить на модерацию</span>
+														<span class="b-button__txt" id="btn_name">РћС‚РїСЂР°РІРёС‚СЊ РЅР° РјРѕРґРµСЂР°С†РёСЋ</span>
 												</span>
 										</span>
 								</a>
-							<div class="b-buttons__txt b-buttons__txt_padleft_10">Ваша статья должна быть проверена перед публикацией.<br />Срок прохождения модерации &mdash; 1 неделя.</div>
+							<div class="b-buttons__txt b-buttons__txt_padleft_10">Р’Р°С€Р° СЃС‚Р°С‚СЊСЏ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РїСЂРѕРІРµСЂРµРЅР° РїРµСЂРµРґ РїСѓР±Р»РёРєР°С†РёРµР№.<br />РЎСЂРѕРє РїСЂРѕС…РѕР¶РґРµРЅРёСЏ РјРѕРґРµСЂР°С†РёРё &mdash; 1 РЅРµРґРµР»СЏ.</div>
 						</div>
 						
         </fieldset>

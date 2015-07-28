@@ -17,17 +17,17 @@ if (isset($is_show_tizer) && $is_show_tizer == true):
                <a id="carusel_tizer_close" class="b-pay-tu__close" href="javascript:void(0);"></a>
                <a class="b-pay-tu__link b-pay-tu__link_color_6db335" data-popup="<?=$popupId?>" href="javascript:void(0);">
                    <?php if((@$payPlaceUserRequest['num'] == 0) && ($pos === false || $pos >= 5)): ?>
-                   <span class="b-pay-tu__decor">Добавьте рекламу своих услуг</span><br/>и заявите о себе за <?=pay_place::getPrice()?> руб.
+                   <span class="b-pay-tu__decor">Р”РѕР±Р°РІСЊС‚Рµ СЂРµРєР»Р°РјСѓ СЃРІРѕРёС… СѓСЃР»СѓРі</span><br/>Рё Р·Р°СЏРІРёС‚Рµ Рѕ СЃРµР±Рµ Р·Р° <?=pay_place::getPrice()?> СЂСѓР±.
                    <?php elseif(($payPlaceUserRequest['num'] == 0) && ($pos < 5)): ?>
-                   <span class="b-pay-tu__decor">Купите несколько объявлений</span><br/>
-                   размещайтесь автоматически
+                   <span class="b-pay-tu__decor">РљСѓРїРёС‚Рµ РЅРµСЃРєРѕР»СЊРєРѕ РѕР±СЉСЏРІР»РµРЅРёР№</span><br/>
+                   СЂР°Р·РјРµС‰Р°Р№С‚РµСЃСЊ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё
                    <?php else: ?>
                    <span class="b-pay-tu__txt_fontsize_12">
                        <?php
                             $next_date = strtotime($payPlaceUserRequest['next_date_published']);
                        ?>
-                       Осталось <?=$payPlaceUserRequest['num']?> <?=ending($payPlaceUserRequest['num'], 'размещение', 'размещения', 'размещений')?> 
-                       <span class="b-pay-tu__hidden">(<span class="b-pay-tu__decor">добавить</span>)</span><br/>ближайшее будет в <?=date('H:i',$next_date)?>
+                       РћСЃС‚Р°Р»РѕСЃСЊ <?=$payPlaceUserRequest['num']?> <?=ending($payPlaceUserRequest['num'], 'СЂР°Р·РјРµС‰РµРЅРёРµ', 'СЂР°Р·РјРµС‰РµРЅРёСЏ', 'СЂР°Р·РјРµС‰РµРЅРёР№')?> 
+                       <span class="b-pay-tu__hidden">(<span class="b-pay-tu__decor">РґРѕР±Р°РІРёС‚СЊ</span>)</span><br/>Р±Р»РёР¶Р°Р№С€РµРµ Р±СѓРґРµС‚ РІ <?=date('H:i',$next_date)?>
                    </span>
                    <?php endif; ?>
                </a>  
@@ -71,13 +71,13 @@ if (is_array($ppAds)) {
                 <p class="b-carusel__txt b-carusel__txt_padtop_5"><?= $adText ?></p>
             <? }else{ ?>
                 <a class="b-carusel__piclink" href="<?= $adLink ?>"  onClick="<?=$yaM?>"><?= $adImg ?></a>
-                <h3 class="b-carusel__title">Нет данных</h3>
-                <p class="b-carusel__txt">Нет данных</p>
+                <h3 class="b-carusel__title">РќРµС‚ РґР°РЅРЅС‹С…</h3>
+                <p class="b-carusel__txt">РќРµС‚ РґР°РЅРЅС‹С…</p>
             <? } ?>
         </li>
     <? }
 } else { ?>
 	<li class="b-carusel__item">
-		<p class="b-carusel__txt b-carusel__txt_padtop_5">Нет пользователей</p>
+		<p class="b-carusel__txt b-carusel__txt_padtop_5">РќРµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</p>
 	</li>
 <? } ?>

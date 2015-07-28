@@ -4,7 +4,7 @@
             <div class="b-shadow__top">
                 <div class="b-shadow__bottom">
                     <div class="b-shadow__body b-shadow__body_pad_15 b-shadow__body_bg_fff">
-                        <h3 class="b-shadow__title b-shadow__title_padbot_15">Новый файл</h3>
+                        <h3 class="b-shadow__title b-shadow__title_padbot_15">РќРѕРІС‹Р№ С„Р°Р№Р»</h3>
                         <? if($doc['id']) { ?>
                         <table class="b-layout__table" cellpadding="0" cellspacing="0" border="0">
                             <tr class="b-layout__tr">
@@ -22,7 +22,7 @@
                         </div>                  
                         <table class="b-layout__table" cellpadding="0" cellspacing="0" border="0">
                             <tr class="b-layout__tr">
-                                <td class="b-layout__one b-layout__one_padright_10"><div class="b-layout__txt">Название документа:</div></td>
+                                <td class="b-layout__one b-layout__one_padright_10"><div class="b-layout__txt">РќР°Р·РІР°РЅРёРµ РґРѕРєСѓРјРµРЅС‚Р°:</div></td>
                                 <td class="b-layout__one">
                                     <div class="b-input b-input_inline-block b-input_width_360">
                                         <input id="doc_name<?=$doc['id']?>" name="doc_name" class="b-input__text" type="text" value="<?= $doc['name']; ?>" />
@@ -30,7 +30,7 @@
                                 </td>
                             </tr>
                             <tr class="b-layout__tr">
-                                <td class="b-layout__one b-layout__one_padright_10"><div class="b-layout__txt">Тип документа:</div></td>
+                                <td class="b-layout__one b-layout__one_padright_10"><div class="b-layout__txt">РўРёРї РґРѕРєСѓРјРµРЅС‚Р°:</div></td>
                                 <td class="b-layout__one">
                                     <div class="b-form__txt b-check_padbot_15">
                                         <span class="nra-doc-sel">
@@ -47,24 +47,24 @@
                                 </td>
                             </tr>
                             <tr class="b-layout__tr">
-                                <td class="b-layout__one b-layout__one_padright_10"><div class="b-layout__txt">Файл видит:</div></td>
+                                <td class="b-layout__one b-layout__one_padright_10"><div class="b-layout__txt">Р¤Р°Р№Р» РІРёРґРёС‚:</div></td>
                                 <td class="b-layout__one">
                                     <div class="b-check b-check_padbot_15 b-check_padtop_3">
                                         <input id="doc_access_frl<?= $doc['id'];?>" value="<?= sbr::DOCS_ACCESS_FRL?>" name="doc_access_frl" class="b-check__input" type="checkbox" <?= ( in_array($doc['access_role'], array(sbr::DOCS_ACCESS_ALL, sbr::DOCS_ACCESS_FRL))  ? "checked" : ""); ?> />
-                                        <label class="b-check__label" for="doc_access_frl<?= $doc['id'];?>">Исполнитель</label>
+                                        <label class="b-check__label" for="doc_access_frl<?= $doc['id'];?>">РСЃРїРѕР»РЅРёС‚РµР»СЊ</label>
                                     </div>
                                     <div class="b-check b-check_padbot_15">
                                         <input id="doc_access_emp<?= $doc['id'];?>" value="<?= sbr::DOCS_ACCESS_EMP?>" name="doc_access_emp" class="b-check__input" type="checkbox" <?= ( in_array($doc['access_role'], array(sbr::DOCS_ACCESS_ALL, sbr::DOCS_ACCESS_EMP)) ? "checked" : ""); ?> />
-                                        <label class="b-check__label" for="doc_access_emp<?= $doc['id'];?>">Заказчик</label>
+                                        <label class="b-check__label" for="doc_access_emp<?= $doc['id'];?>">Р—Р°РєР°Р·С‡РёРє</label>
                                     </div>
                                 </td>
                             </tr>
                             
                         </table>
                         <div class="b-buttons">
-                            <a class="b-button b-button_flat b-button_flat_green" href="javascript:void(0)" onclick="sendDataDocument(<?=$stage->id?>, '<?=$doc['id']?>');">Сохранить</a>&#160;&#160;&#160;
-                            <span class="b-buttons__txt">или</span>
-                            <a href="javascript:void(0)" class="b-buttons__link b-buttons__link_dot_0f71c8" onclick="$('popup_admin_files<?= $doc['id']?>').addClass('b-shadow_hide');">отменить</a>
+                            <a class="b-button b-button_flat b-button_flat_green" href="javascript:void(0)" onclick="sendDataDocument(<?=$stage->id?>, '<?=$doc['id']?>');">РЎРѕС…СЂР°РЅРёС‚СЊ</a>&#160;&#160;&#160;
+                            <span class="b-buttons__txt">РёР»Рё</span>
+                            <a href="javascript:void(0)" class="b-buttons__link b-buttons__link_dot_0f71c8" onclick="$('popup_admin_files<?= $doc['id']?>').addClass('b-shadow_hide');">РѕС‚РјРµРЅРёС‚СЊ</a>
                         </div>                        
 
                     </div>
@@ -102,7 +102,7 @@
         }
         
         if(type == 0) {
-            alert('Выберите тип документа из списка');
+            alert('Р’С‹Р±РµСЂРёС‚Рµ С‚РёРї РґРѕРєСѓРјРµРЅС‚Р° РёР· СЃРїРёСЃРєР°');
             return;
         }
         

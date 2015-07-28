@@ -9,7 +9,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/tu/models/TServiceFilterForm.php');
 /**
  * Class TServiceFilter
  *
- * Виджет - фильтр типовых услуг
+ * Р’РёРґР¶РµС‚ - С„РёР»СЊС‚СЂ С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі
  */
 class TServiceFilter extends CWidget {
 
@@ -27,7 +27,7 @@ class TServiceFilter extends CWidget {
         protected $_order;
         
         /*
-         * Константы сортировки
+         * РљРѕРЅСЃС‚Р°РЅС‚С‹ СЃРѕСЂС‚РёСЂРѕРІРєРё
          */
         const ORDER_RELEVANT = 'relevant';
         const ORDER_TAX_SUM = 'tax-sum';
@@ -49,7 +49,7 @@ class TServiceFilter extends CWidget {
 	}
 
 	/**
-	 * Возвращает диапазоны цен
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґРёР°РїР°Р·РѕРЅС‹ С†РµРЅ
 	 * @return array
 	 */
 	public function getPriceRanges()
@@ -101,7 +101,7 @@ class TServiceFilter extends CWidget {
 	}
 
 	/**
-	 * Возвращает название текущей категории
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РЅР°Р·РІР°РЅРёРµ С‚РµРєСѓС‰РµР№ РєР°С‚РµРіРѕСЂРёРё
 	 * @return string
 	 */
 	public function getCategoryTitle()
@@ -111,7 +111,7 @@ class TServiceFilter extends CWidget {
 	}
 
 	/**
-	 * Возвращает название текущей группы категорий
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РЅР°Р·РІР°РЅРёРµ С‚РµРєСѓС‰РµР№ РіСЂСѓРїРїС‹ РєР°С‚РµРіРѕСЂРёР№
 	 * @return string
 	 */
 	public function getCategoryGroupTitle()
@@ -121,7 +121,7 @@ class TServiceFilter extends CWidget {
 	}
 
 	/**
-	 * Возвращает совмещённое название текущей категории и группы категорий
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРІРјРµС‰С‘РЅРЅРѕРµ РЅР°Р·РІР°РЅРёРµ С‚РµРєСѓС‰РµР№ РєР°С‚РµРіРѕСЂРёРё Рё РіСЂСѓРїРїС‹ РєР°С‚РµРіРѕСЂРёР№
 	 * @return string
 	 */
 	public function getCategoryAngGroupTitle($sep = ': ')
@@ -134,7 +134,7 @@ class TServiceFilter extends CWidget {
 	}
 
 	/**
-	 * Возвращает название текущего населённого пункта
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РЅР°Р·РІР°РЅРёРµ С‚РµРєСѓС‰РµРіРѕ РЅР°СЃРµР»С‘РЅРЅРѕРіРѕ РїСѓРЅРєС‚Р°
 	 * @return mixed
 	 */
 	public function getCityTitle()
@@ -152,7 +152,7 @@ class TServiceFilter extends CWidget {
 	}
 
 	/**
-	 * Возвращает название текущей страны
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РЅР°Р·РІР°РЅРёРµ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅС‹
 	 * @return mixed
 	 */
 	public function getCountryTitle()
@@ -163,18 +163,18 @@ class TServiceFilter extends CWidget {
 			if ($this->filter->country)
 			{
 				$countryModel = new country;
-				$this->_country = $countryModel->getCountryName($this->filter->country) . ": Все города";
+				$this->_country = $countryModel->getCountryName($this->filter->country) . ": Р’СЃРµ РіРѕСЂРѕРґР°";
 			}
 		}
 		return $this->_country;
 	}
 
 	/**
-	 * Разбирает параметры, переданные через URL или форму фильтра и инициализирует параметры фильтра
+	 * Р Р°Р·Р±РёСЂР°РµС‚ РїР°СЂР°РјРµС‚СЂС‹, РїРµСЂРµРґР°РЅРЅС‹Рµ С‡РµСЂРµР· URL РёР»Рё С„РѕСЂРјСѓ С„РёР»СЊС‚СЂР° Рё РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РїР°СЂР°РјРµС‚СЂС‹ С„РёР»СЊС‚СЂР°
 	 */
 	protected function setFilterAttributes()
 	{
-		// виджету не запрещено обращаться к URL запроса
+		// РІРёРґР¶РµС‚Сѓ РЅРµ Р·Р°РїСЂРµС‰РµРЅРѕ РѕР±СЂР°С‰Р°С‚СЊСЃСЏ Рє URL Р·Р°РїСЂРѕСЃР°
 
 		$attributes = $def_attributes = array(
 			'category' => '',
@@ -187,7 +187,7 @@ class TServiceFilter extends CWidget {
             'price_max' => 0
 		);
 
-		if ($category_link = __paramInit('string','category',NULL,0)) // параметр "категория" из URL '/tu/<category>/'
+		if ($category_link = __paramInit('string','category',NULL,0)) // РїР°СЂР°РјРµС‚СЂ "РєР°С‚РµРіРѕСЂРёСЏ" РёР· URL '/tu/<category>/'
 		{
 			$categoryModel = new tservices_categories;
 			$category = $categoryModel->getCategoryByLink($category_link);
@@ -250,8 +250,8 @@ class TServiceFilter extends CWidget {
 		$this->filter->attributes($attributes);
 
 		// override URL parameters
-		// если данные прислали методом POST, то они имеют выше приоритет на параметрами GET
-		if (''!=__paramInit('string', null, 'action')) // что-то прислали "постом"
+		// РµСЃР»Рё РґР°РЅРЅС‹Рµ РїСЂРёСЃР»Р°Р»Рё РјРµС‚РѕРґРѕРј POST, С‚Рѕ РѕРЅРё РёРјРµСЋС‚ РІС‹С€Рµ РїСЂРёРѕСЂРёС‚РµС‚ РЅР° РїР°СЂР°РјРµС‚СЂР°РјРё GET
+		if (''!=__paramInit('string', null, 'action')) // С‡С‚Рѕ-С‚Рѕ РїСЂРёСЃР»Р°Р»Рё "РїРѕСЃС‚РѕРј"
 		{
 			$attributes = $def_attributes;
 /*
@@ -265,7 +265,7 @@ $_POST = array
 
     [category_id_column_id] => 0
     [category_id_db_id] => 1
-    [category_id] => Менеджмент
+    [category_id] => РњРµРЅРµРґР¶РјРµРЅС‚
     [price] => Array
         (
             [3] => 3
@@ -280,13 +280,13 @@ $_POST = array
 
     [location_id_column_id] => 0
     [location_id_db_id] => 1
-    [location_id] => Россия
+    [location_id] => Р РѕСЃСЃРёСЏ
 
-    [keywords] => 'альбом, наклейки'
+    [keywords] => 'Р°Р»СЊР±РѕРј, РЅР°РєР»РµР№РєРё'
 )
  */
 			/*
-			 * Логично юзать эти поля еслибы контрол работал корректно :)
+			 * Р›РѕРіРёС‡РЅРѕ СЋР·Р°С‚СЊ СЌС‚Рё РїРѕР»СЏ РµСЃР»РёР±С‹ РєРѕРЅС‚СЂРѕР» СЂР°Р±РѕС‚Р°Р» РєРѕСЂСЂРµРєС‚РЅРѕ :)
 			if (isset($_POST['category_id_columns']))
 			{
 				$_category_id_columns = (array)$_POST['category_id_columns'];
@@ -318,7 +318,7 @@ $_POST = array
 			}
 
 			/*
-			 * Тут тоже самое но сложность в том чтобы понять какое ID города или страны?
+			 * РўСѓС‚ С‚РѕР¶Рµ СЃР°РјРѕРµ РЅРѕ СЃР»РѕР¶РЅРѕСЃС‚СЊ РІ С‚РѕРј С‡С‚РѕР±С‹ РїРѕРЅСЏС‚СЊ РєР°РєРѕРµ ID РіРѕСЂРѕРґР° РёР»Рё СЃС‚СЂР°РЅС‹?
 			 *
 			if (isset($_POST['location_id_db_id']))
 			{
@@ -377,7 +377,7 @@ $_POST = array
         }
          
         unset($attributes['category'], $attributes['category_group']);
-        if ($attributes['order'] == self::ORDER_RELEVANT) //Сортировка по релевантности выбрана по умолчанию
+        if ($attributes['order'] == self::ORDER_RELEVANT) //РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ СЂРµР»РµРІР°РЅС‚РЅРѕСЃС‚Рё РІС‹Р±СЂР°РЅР° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
         {
             unset($attributes['order']);
         }
@@ -387,7 +387,7 @@ $_POST = array
 		{
 			if (is_array($values))
 			{
-				if ('prices' == $key) // опция "Все цены" уже и так считается выбранной
+				if ('prices' == $key) // РѕРїС†РёСЏ "Р’СЃРµ С†РµРЅС‹" СѓР¶Рµ Рё С‚Р°Рє СЃС‡РёС‚Р°РµС‚СЃСЏ РІС‹Р±СЂР°РЅРЅРѕР№
 				{
 					unset($values[tservices_catalog::ANY_PRICE_RANGE]);
 				}
@@ -406,19 +406,19 @@ $_POST = array
 	}
 
         /**
-         * Возвращает список допустимых сортировок
+         * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РґРѕРїСѓСЃС‚РёРјС‹С… СЃРѕСЂС‚РёСЂРѕРІРѕРє
          * 
-         * @param bool $asValues Только ключи или со значениями. По умолчанию - ключи
+         * @param bool $asValues РўРѕР»СЊРєРѕ РєР»СЋС‡Рё РёР»Рё СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё. РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - РєР»СЋС‡Рё
          */
         public function getAllowedOrders($asValues = false) {
             $noResponse = !$this->filter->keywords && !$this->filter->price_max;
             $orders = array(
-                self::ORDER_RELEVANT => $noResponse ? 'последней покупке' : 'соответствию запросу',
-                self::ORDER_TAX_SUM => 'сумме продаж',
-                self::ORDER_PRICE_ASC => 'возрастанию цены',
-                self::ORDER_PRICE_DESC => 'убыванию цены',
-                self::ORDER_FEEDBACK => 'отзывам',
-                self::ORDER_SOLD => 'количеству покупок'
+                self::ORDER_RELEVANT => $noResponse ? 'РїРѕСЃР»РµРґРЅРµР№ РїРѕРєСѓРїРєРµ' : 'СЃРѕРѕС‚РІРµС‚СЃС‚РІРёСЋ Р·Р°РїСЂРѕСЃСѓ',
+                self::ORDER_TAX_SUM => 'СЃСѓРјРјРµ РїСЂРѕРґР°Р¶',
+                self::ORDER_PRICE_ASC => 'РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ С†РµРЅС‹',
+                self::ORDER_PRICE_DESC => 'СѓР±С‹РІР°РЅРёСЋ С†РµРЅС‹',
+                self::ORDER_FEEDBACK => 'РѕС‚Р·С‹РІР°Рј',
+                self::ORDER_SOLD => 'РєРѕР»РёС‡РµСЃС‚РІСѓ РїРѕРєСѓРїРѕРє'
             );
             return $asValues ? $orders : array_keys($orders);
         }
