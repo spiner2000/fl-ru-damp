@@ -5,7 +5,7 @@ define('NO_CSRF', 1);
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/ydpay.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/log.php");
-if( !is_release() ) { // Для прохода тестовых платежей через ЯД на бете
+if( !is_release() ) { // Р”Р»СЏ РїСЂРѕС…РѕРґР° С‚РµСЃС‚РѕРІС‹С… РїР»Р°С‚РµР¶РµР№ С‡РµСЂРµР· РЇР” РЅР° Р±РµС‚Рµ
     $_SERVER['HTTP_X_REAL_IP'] = '77.75.157.168';
     $_SERVER['REMOTE_ADDR'] = '77.75.157.168';
 }

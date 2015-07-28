@@ -6,7 +6,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/Form/Element/GuestProjectUplo
 
 /**
  * Class CustomerNewProjectForm
- * Форма нового проекта
+ * Р¤РѕСЂРјР° РЅРѕРІРѕРіРѕ РїСЂРѕРµРєС‚Р°
  */
 class CustomerNewProjectForm  extends Form_View
 {   
@@ -39,7 +39,7 @@ class CustomerNewProjectForm  extends Form_View
     
     
     /**
-     * Общая вьюшка для форм
+     * РћР±С‰Р°СЏ РІСЊСЋС€РєР° РґР»СЏ С„РѕСЂРј
      */
     public function loadDefaultDecorators()
     {
@@ -52,7 +52,7 @@ class CustomerNewProjectForm  extends Form_View
     
     
     /**
-     * Инициализация формы
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ С„РѕСЂРјС‹
      */
     public function init()
     {
@@ -63,36 +63,36 @@ class CustomerNewProjectForm  extends Form_View
                    'td_class' => 'b-layout__td_width_full',
                    'label_class' => 'b-layout__txt_fontsize_20 b-layout__txt_padbot_5',
                    'class' => 'b-combo_large',
-                   'label' => 'Дайте проекту название',
-                   'padbot' => 35, // отступ снизу
+                   'label' => 'Р”Р°Р№С‚Рµ РїСЂРѕРµРєС‚Сѓ РЅР°Р·РІР°РЅРёРµ',
+                   'padbot' => 35, // РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ
                    'required' => true,
                    'maxlength' => 60,
                    'filters' => $this->filtersAll,
                    'validators' => array(
                        array('StringLength',true,array('max' => 60,'min' => 4))
                     ),
-                   'placeholder' => 'Дизайн баннера'
+                   'placeholder' => 'Р”РёР·Р°Р№РЅ Р±Р°РЅРЅРµСЂР°'
             )));        
 
             $this->addElement(
               new Zend_Form_Element_Textarea('descr', array(
                   'label_class' => 'b-layout__txt_fontsize_20 b-layout__txt_padbot_5',
-                  'label' => 'Описание',
-                  'padbot' => 35, // отступ снизу
+                  'label' => 'РћРїРёСЃР°РЅРёРµ',
+                  'padbot' => 35, // РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ
                   'required' => true,
-                  'placeholder' => 'Сделать дизайн',
+                  'placeholder' => 'РЎРґРµР»Р°С‚СЊ РґРёР·Р°Р№РЅ',
                   'filters' => $this->filtersAll,
                   'validators' => array(
                       array('StringLength', true, array('max' => 5000, 'min' => 4))
                    )
             )));        
 
-            //@todo: элемент требует проработки
+            //@todo: СЌР»РµРјРµРЅС‚ С‚СЂРµР±СѓРµС‚ РїСЂРѕСЂР°Р±РѕС‚РєРё
             $this->addElement(
               new Form_Element_GuestProjectUploader('IDResource' , array(
                   'label_class' => 'b-layout__txt_fontsize_20',
-                  'padbot' => 35, // отступ снизу
-                  'label' => 'Загрузите файлы, которые хотите передать потенциальному исполнителю'
+                  'padbot' => 35, // РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ
+                  'label' => 'Р—Р°РіСЂСѓР·РёС‚Рµ С„Р°Р№Р»С‹, РєРѕС‚РѕСЂС‹Рµ С…РѕС‚РёС‚Рµ РїРµСЂРµРґР°С‚СЊ РїРѕС‚РµРЅС†РёР°Р»СЊРЅРѕРјСѓ РёСЃРїРѕР»РЅРёС‚РµР»СЋ'
               ))
             ); 
 
@@ -101,12 +101,12 @@ class CustomerNewProjectForm  extends Form_View
             $this->addElement(
               new Form_Element_BudgetExt('cost', array(
                   'label_class' => 'b-layout__txt_fontsize_20 b-layout__txt_padbot_5',
-                  'label' => 'Установите бюджет',
+                  'label' => 'РЈСЃС‚Р°РЅРѕРІРёС‚Рµ Р±СЋРґР¶РµС‚',
                   'class' => 'b-combo_large',
                   'td1_class' => 'b-layout__td_nowrap',
                   'td2_class' => 'b-layout__td_nowrap b-layout__td_padtop_20',
                   'hide_or' => true,
-                  'padbot' => 35, // отступ снизу
+                  'padbot' => 35, // РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ
                   'filters' => $this->filters,
                   'budget_width' => 110,
                   'currency_width' => 100,
@@ -120,23 +120,23 @@ class CustomerNewProjectForm  extends Form_View
             $this->addElement(
                 new Zend_Form_Element_Radio('prefer_sbr',array(
                     'label_class' => 'b-layout__txt_fontsize_20 b-layout__txt_padbot_5',
-                    'label' => 'Выберите способ оплаты',
+                    'label' => 'Р’С‹Р±РµСЂРёС‚Рµ СЃРїРѕСЃРѕР± РѕРїР»Р°С‚С‹',
                     'radio_label_class' => 'b-radio__label_bold b-radio__label_width_90ps',
                     'value' => 1,
-                    'padbot' => 35, // отступ снизу
+                    'padbot' => 35, // РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ
                     'required' => true,
                     'attr' => array(
                         1 => 'data-show-class="#order_status_indicator_1" data-hide-class="#order_status_indicator_0"',
                         0 => 'data-show-class="#order_status_indicator_0" data-hide-class="#order_status_indicator_1"'
                     ),
                     'multiOptions' => array(
-                        1 => 'Безопасная сделка (с резервированием бюджета) &#160;<a class="b-layout__link" href="/promo/bezopasnaya-sdelka/" target="_blank"><span class="b-shadow__icon b-shadow__icon_quest2 b-icon_top_2"></span></a>',
-                        0 => 'Прямая оплата Исполнителю на его кошелек/счет'
+                        1 => 'Р‘РµР·РѕРїР°СЃРЅР°СЏ СЃРґРµР»РєР° (СЃ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРµРј Р±СЋРґР¶РµС‚Р°) &#160;<a class="b-layout__link" href="/promo/bezopasnaya-sdelka/" target="_blank"><span class="b-shadow__icon b-shadow__icon_quest2 b-icon_top_2"></span></a>',
+                        0 => 'РџСЂСЏРјР°СЏ РѕРїР»Р°С‚Р° РСЃРїРѕР»РЅРёС‚РµР»СЋ РЅР° РµРіРѕ РєРѕС€РµР»РµРє/СЃС‡РµС‚'
                     ),
                     'subTitles' => array(
-                        1 => 'Безопасное сотрудничество с гарантией возврата средств. Вы резервируете бюджет заказа на сайте FL.ru - а мы гарантируем вам возврат суммы, если работа будет выполнена Исполнителем некачественно или не в срок.',
-                        0 => 'Сотрудничество без участия сайта в процессе оплаты. Вы сами договариваетесь с Исполнителем о способе и порядке оплаты. 
-                              И самостоятельно регулируете все претензии, связанные с качеством и сроками выполнения работы.'
+                        1 => 'Р‘РµР·РѕРїР°СЃРЅРѕРµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ СЃ РіР°СЂР°РЅС‚РёРµР№ РІРѕР·РІСЂР°С‚Р° СЃСЂРµРґСЃС‚РІ. Р’С‹ СЂРµР·РµСЂРІРёСЂСѓРµС‚Рµ Р±СЋРґР¶РµС‚ Р·Р°РєР°Р·Р° РЅР° СЃР°Р№С‚Рµ FL.ru - Р° РјС‹ РіР°СЂР°РЅС‚РёСЂСѓРµРј РІР°Рј РІРѕР·РІСЂР°С‚ СЃСѓРјРјС‹, РµСЃР»Рё СЂР°Р±РѕС‚Р° Р±СѓРґРµС‚ РІС‹РїРѕР»РЅРµРЅР° РСЃРїРѕР»РЅРёС‚РµР»РµРј РЅРµРєР°С‡РµСЃС‚РІРµРЅРЅРѕ РёР»Рё РЅРµ РІ СЃСЂРѕРє.',
+                        0 => 'РЎРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ Р±РµР· СѓС‡Р°СЃС‚РёСЏ СЃР°Р№С‚Р° РІ РїСЂРѕС†РµСЃСЃРµ РѕРїР»Р°С‚С‹. Р’С‹ СЃР°РјРё РґРѕРіРѕРІР°СЂРёРІР°РµС‚РµСЃСЊ СЃ РСЃРїРѕР»РЅРёС‚РµР»РµРј Рѕ СЃРїРѕСЃРѕР±Рµ Рё РїРѕСЂСЏРґРєРµ РѕРїР»Р°С‚С‹. 
+                              Р СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ СЂРµРіСѓР»РёСЂСѓРµС‚Рµ РІСЃРµ РїСЂРµС‚РµРЅР·РёРё, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ РєР°С‡РµСЃС‚РІРѕРј Рё СЃСЂРѕРєР°РјРё РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹.'
                     )
                 ))
             );
@@ -150,7 +150,7 @@ class CustomerNewProjectForm  extends Form_View
                'parent_class' => 'b-buttons_center',
                'class' => 'b-button_flat_med',
                'padbot' => 10,
-               'label' => ($this->step == 3?'Далее ':'Опубликовать проект на fl.ru').'<span class="b-icon b-icon__rarr b-icon_margleft_20 b-icon_top_2"></span>'
+               'label' => ($this->step == 3?'Р”Р°Р»РµРµ ':'РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ РїСЂРѕРµРєС‚ РЅР° fl.ru').'<span class="b-icon b-icon__rarr b-icon_margleft_20 b-icon_top_2"></span>'
         )));
         
     }

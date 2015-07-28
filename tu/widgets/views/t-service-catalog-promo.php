@@ -5,14 +5,14 @@ if(!defined('IN_STDF')) {
 }
 
 /**
- * Представление для виджета TServiceCatalogPromo
+ * РџСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ РґР»СЏ РІРёРґР¶РµС‚Р° TServiceCatalogPromo
  *
  *
  * @var TServiceCatalogPromo $this
  * @var users $user
  */
 
-//Текущий пользователь фрилансер?
+//РўРµРєСѓС‰РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ С„СЂРёР»Р°РЅСЃРµСЂ?
 $is_frl = (get_uid(false) && !is_emp());
 
 ?>
@@ -22,19 +22,19 @@ $is_frl = (get_uid(false) && !is_emp());
     <div class="b-pic-tu-banner__content">
       <?php if($is_frl){ ?>
         <p>
-            Новый раздел FL.ru с фиксированными услугами по фиксированной цене
+            РќРѕРІС‹Р№ СЂР°Р·РґРµР» FL.ru СЃ С„РёРєСЃРёСЂРѕРІР°РЅРЅС‹РјРё СѓСЃР»СѓРіР°РјРё РїРѕ С„РёРєСЃРёСЂРѕРІР°РЅРЅРѕР№ С†РµРЅРµ
         </p> 
         <br/>
-        <a class="b-pic-tu-banner__content-btn" href="<?php echo tservices_helper::new_url()?>" onClick="yaCounter6051055.reachGoal('add_new_tu');">Опубликовать услугу</a>  
+        <a class="b-pic-tu-banner__content-btn" href="<?php echo tservices_helper::new_url()?>" onClick="yaCounter6051055.reachGoal('add_new_tu');">РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ СѓСЃР»СѓРіСѓ</a>  
       <?php }else{ ?>
         <p class="b-txt_margbot_null">
-            Новый раздел FL.ru с фиксированными услугами по фиксированной цене
+            РќРѕРІС‹Р№ СЂР°Р·РґРµР» FL.ru СЃ С„РёРєСЃРёСЂРѕРІР°РЅРЅС‹РјРё СѓСЃР»СѓРіР°РјРё РїРѕ С„РёРєСЃРёСЂРѕРІР°РЅРЅРѕР№ С†РµРЅРµ
         </p>
       <?php } ?>
     </div>
     <div class="b-pic-tu-banner__cloud">
-      Сочиню песню про что угодно и кого угодно
-      <p class="b-pic-tu-banner__cloud-price">за 600 р. и 2 дня</p>
+      РЎРѕС‡РёРЅСЋ РїРµСЃРЅСЋ РїСЂРѕ С‡С‚Рѕ СѓРіРѕРґРЅРѕ Рё РєРѕРіРѕ СѓРіРѕРґРЅРѕ
+      <p class="b-pic-tu-banner__cloud-price">Р·Р° 600 СЂ. Рё 2 РґРЅСЏ</p>
       <div class="b-pic-tu-banner__cloud-corner"></div>
     </div>
 </div>

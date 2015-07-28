@@ -37,51 +37,51 @@ if ($err || !$gr_name) {
     require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/blogs.common.php");
 	$xajax->printJavascript('/xajax/');
     ?>
-<table border="0" width="100%" cellpadding="0" cellspacing="0"><tr valign="middle"><td align="left"><h1>Блоги</h1></td><td align="right"><a class="b-button b-button_round_green b-button_float_right" href="<?=($_SESSION['login']? '#bottom': '/fbd.php')?>"><span class="b-button__b1"><span class="b-button__b2"><span class="b-button__txt">Написать сообщение</span></span></span></a></td></tr></table>
+<table border="0" width="100%" cellpadding="0" cellspacing="0"><tr valign="middle"><td align="left"><h1>Р‘Р»РѕРіРё</h1></td><td align="right"><a class="b-button b-button_round_green b-button_float_right" href="<?=($_SESSION['login']? '#bottom': '/fbd.php')?>"><span class="b-button__b1"><span class="b-button__b2"><span class="b-button__txt">РќР°РїРёСЃР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ</span></span></span></a></td></tr></table>
 
 <div class="b-menu b-menu_tabs">
     <ul class="b-menu__list b-menu__list_overflow_hidden b-menu__list_padleft_28ps">
         <li class="b-menu__item <?php  ($ord != "best" && $ord != "my" && $ord != "relevant" && $ord != "favs") ? print 'b-menu__item_active': print '';?>">
 				<?php if (!($ord != "best" && $ord != "my" && $ord != "relevant" && $ord != "favs")) { ?>
-						<a class="b-menu__link" href="<?php print $href.($sHref ? '&' : '?').'ord=new' ?>" title="Новые">
+						<a class="b-menu__link" href="<?php print $href.($sHref ? '&' : '?').'ord=new' ?>" title="РќРѕРІС‹Рµ">
 				<?php } else print '<span class="b-menu__b2">'?>
-								<span class="b-menu__b1">Новые</span>
+								<span class="b-menu__b1">РќРѕРІС‹Рµ</span>
 				<?php if (!($ord != "best" && $ord != "my" && $ord != "relevant" && $ord != "favs")) { ?>
 						</a>
 				<?php } else print '</span>' ?>
 				</li>
         <li class="b-menu__item <?php  ($ord == "best") ? print 'b-menu__item_active': print '';?>">
 				<?php if (!($ord == "best")) { ?>
-						<a class="b-menu__link" href="<?php print  $href.($sHref ? '&' : '?').'ord=best' ?>" title="Популярные">
+						<a class="b-menu__link" href="<?php print  $href.($sHref ? '&' : '?').'ord=best' ?>" title="РџРѕРїСѓР»СЏСЂРЅС‹Рµ">
 				<?php } else print '<span class="b-menu__b2">'?>
-								<span class="b-menu__b1">Популярные</span>
+								<span class="b-menu__b1">РџРѕРїСѓР»СЏСЂРЅС‹Рµ</span>
 				<?php if (!($ord == "best")) { ?>
 						</a>
 				<?php } else print '</span>' ?>
 				</li>
         <li class="b-menu__item <?php  ($ord == "relevant") ? print 'b-menu__item_active': print '';?>">
 				<?php if (!($ord == "relevant")) { ?>
-						<a class="b-menu__link" href="<?php print  $href.($sHref ? '&' : '?').'ord=relevant' ?>" title="Актуальные">
+						<a class="b-menu__link" href="<?php print  $href.($sHref ? '&' : '?').'ord=relevant' ?>" title="РђРєС‚СѓР°Р»СЊРЅС‹Рµ">
 				<?php } else print '<span class="b-menu__b2">'?>
-								<span class="b-menu__b1">Актуальные</span>
+								<span class="b-menu__b1">РђРєС‚СѓР°Р»СЊРЅС‹Рµ</span>
 				<?php if (!($ord == "relevant")) { ?>
 						</a>
 				<?php } else print '</span>' ?>
 				</li>
         <li class="b-menu__item <?php  ($ord == "my") ? print 'b-menu__item_active': print '';?>">
 				<?php if (!($ord == "my")) { ?>
-						<a class="b-menu__link" href="<?php print  $href.($sHref ? '&' : '?').'ord=my' ?>" title="Мои">
+						<a class="b-menu__link" href="<?php print  $href.($sHref ? '&' : '?').'ord=my' ?>" title="РњРѕРё">
 				<?php } else print '<span class="b-menu__b2">'?>
-								<span class="b-menu__b1">Мои</span>
+								<span class="b-menu__b1">РњРѕРё</span>
 				<?php if (!($ord == "my")) { ?>
 						</a>
 				<?php } else print '</span>' ?>
 				</li>
         <li class="b-menu__item b-menu__item_last <?php  ($ord == "favs") ? print 'b-menu__item_active': print '';?>">
 				<?php if (!($ord == "favs")) { ?>
-						<a class="b-menu__link" href="<?php print  $href.($sHref ? '&' : '?').'ord=favs' ?>" title="Закладки">
+						<a class="b-menu__link" href="<?php print  $href.($sHref ? '&' : '?').'ord=favs' ?>" title="Р—Р°РєР»Р°РґРєРё">
 				<?php } else print '<span class="b-menu__b2">'?>
-								<span class="b-menu__b1">Закладки</span>
+								<span class="b-menu__b1">Р—Р°РєР»Р°РґРєРё</span>
 				<?php if (!($ord == "favs")) { ?>
 						</a>
 				<?php } else print '</span>' ?>
@@ -99,27 +99,27 @@ if ($err || !$gr_name) {
         $href = getFriendlyURL('blog_group', $gr) . "?ord=favs" . ($base ? "&t=prof" : "");
         ?>
         <div class="b-layout__txt b-layout__txt_float_right b-layout__txt_width_225">
-        	<span class="b-layout__txt b-layout__txt_padtop_2  b-layout__txt_inline-block">Упорядочить:</span>
+        	<span class="b-layout__txt b-layout__txt_padtop_2  b-layout__txt_inline-block">РЈРїРѕСЂСЏРґРѕС‡РёС‚СЊ:</span>
          <div class="b-select b-select_width_140 b-select_float_right">
         	<select id="sel_blogs_favs_sort" class="b-select__select" name="sel_blogs_favs_sort" onchange="window.location='<?=$href?>&order='+this.value;">
-        		<option value="date" <?php echo (! $order || $order == 'date') ? ' selected="selected"' : ''?>>по дате добавления</option>
-        		<option value="priority" <?php echo ($order == 'priority') ? ' selected="selected"' : ''?>>по важности</option>
-        		<option value="abc" <?php echo ($order == 'abc') ? ' selected="selected"' : ''?>>по алфавиту</option>
+        		<option value="date" <?php echo (! $order || $order == 'date') ? ' selected="selected"' : ''?>>РїРѕ РґР°С‚Рµ РґРѕР±Р°РІР»РµРЅРёСЏ</option>
+        		<option value="priority" <?php echo ($order == 'priority') ? ' selected="selected"' : ''?>>РїРѕ РІР°Р¶РЅРѕСЃС‚Рё</option>
+        		<option value="abc" <?php echo ($order == 'abc') ? ' selected="selected"' : ''?>>РїРѕ Р°Р»С„Р°РІРёС‚Сѓ</option>
         	</select>
          </div>
         </div>
         
         <ul class="tabs-sort-nav">
             <?php if ( $sub_ord == 'favs_std' ): ?>
-        	<li class="active">Стандартный</li>
+        	<li class="active">РЎС‚Р°РЅРґР°СЂС‚РЅС‹Р№</li>
         	<?php else: ?>
-            <li><a href="<?=$href?>&sub_ord=favs_std" class="lnk-dot-666">Стандартный</a></li>
+            <li><a href="<?=$href?>&sub_ord=favs_std" class="lnk-dot-666">РЎС‚Р°РЅРґР°СЂС‚РЅС‹Р№</a></li>
         	<?php endif; ?>
         	
         	<?php if ( $sub_ord == 'favs_list' ): ?>
-        	<li class="active">Списком</li>
+        	<li class="active">РЎРїРёСЃРєРѕРј</li>
         	<?php else: ?>
-            <li><a href="<?=$href?>&sub_ord=favs_list" class="lnk-dot-666">Списком</a></li>
+            <li><a href="<?=$href?>&sub_ord=favs_list" class="lnk-dot-666">РЎРїРёСЃРєРѕРј</a></li>
         	<?php endif; ?>
         </ul>
         
@@ -131,12 +131,12 @@ if ($err || !$gr_name) {
             
                 <li id="fav<?=$theme['thread_id']?>">
                     <span class="opt">
-            			<img onClick="xajax_EditFavBlog(<?=$theme['thread_id']?>, <?=$gr?>)" src="/images/ico-e-u.png" alt="Редактировать" style="cursor: pointer;">&nbsp;&nbsp;
-            			<img onClick="xajax_DelFavBlog(<?=$theme['thread_id']?>, <?=$gr?>)" src="/images/btn-remove2.png" alt="Удалить" style="cursor: pointer;">
+            			<img onClick="xajax_EditFavBlog(<?=$theme['thread_id']?>, <?=$gr?>)" src="/images/ico-e-u.png" alt="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" style="cursor: pointer;">&nbsp;&nbsp;
+            			<img onClick="xajax_DelFavBlog(<?=$theme['thread_id']?>, <?=$gr?>)" src="/images/btn-remove2.png" alt="РЈРґР°Р»РёС‚СЊ" style="cursor: pointer;">
             		</span>
             		<span class="stat"><img src="/images/bookmarks/<?=blogs::$priority_img[ $theme['priority'] ]?>" alt=""> <?=blogs::$priority_name[ $theme['priority'] ]?></span>
                     <?php $sTitle  = /*( $theme['calc_title'] && $theme['moderator_status'] === '0' && $theme['payed'] != 't') ? $stop_words->replace($theme['calc_title']) :*/ $theme['calc_title'];  ?>
-            		<a href="<?=getFriendlyURL("blog", $theme['thread_id'])?>"><?=( $theme['calc_title'] ? reformat($sTitle, 37, 0, 1) : '<без темы>' )?></a>
+            		<a href="<?=getFriendlyURL("blog", $theme['thread_id'])?>"><?=( $theme['calc_title'] ? reformat($sTitle, 37, 0, 1) : '<Р±РµР· С‚РµРјС‹>' )?></a>
             		<input type="hidden" id="favpriority<?=$theme['thread_id']?>" value="<?=$theme['priority']?>">
                 </li>
             
@@ -146,7 +146,7 @@ if ($err || !$gr_name) {
         
         <?php else: ?>
         
-        <div style="width: 100%; text-align: center; clear:both;"><h2>Сообщений нет</h2></div>
+        <div style="width: 100%; text-align: center; clear:both;"><h2>РЎРѕРѕР±С‰РµРЅРёР№ РЅРµС‚</h2></div>
         
         <?php endif;?>
 
@@ -171,7 +171,7 @@ if ($err || !$gr_name) {
               <a id="fl2_search_submit" onclick="$('search_frm').submit();" class="b-button b-button_rectangle_color_transparent" href="#" >
                   <span class="b-button__b1">
                       <span class="b-button__b2">
-                          <span class="b-button__txt">Найти</span>
+                          <span class="b-button__txt">РќР°Р№С‚Рё</span>
                       </span>
                   </span>
               </a>
@@ -194,7 +194,7 @@ if ($err || !$gr_name) {
     
     <? $ban_cat = 3; include ($_SERVER['DOCUMENT_ROOT'] . "/banner_under_cat.php")?>
     
-        <h2>Раздел</h2>
+        <h2>Р Р°Р·РґРµР»</h2>
         <ul class="group">
             <?
             $size = sizeof($groups);
@@ -204,7 +204,7 @@ if ($err || !$gr_name) {
                 $theme = $groups[$i];
                 if( in_array($theme['id'], blogs::$copiny_group) ) {
                     $feedback_copiny[] = $theme;
-                    continue; // Перенесли в архив #0023264
+                    continue; // РџРµСЂРµРЅРµСЃР»Рё РІ Р°СЂС…РёРІ #0023264
                 }
                 $love = (int)$theme['id'] == 55;
                 
@@ -217,12 +217,12 @@ if ($err || !$gr_name) {
                 $sum = $sum + $theme['num'];
             } 
             ?>
-            <li><? if ($gr) {?><a href="/blogs/viewgroup.php<?=($ord)?"?ord=$ord":""?>" title="Все вместе"><? } ?><strong>Все вместе</strong> (<?=$sum?>)<? if ($gr) {?></a><? } ?></li>
+            <li><? if ($gr) {?><a href="/blogs/viewgroup.php<?=($ord)?"?ord=$ord":""?>" title="Р’СЃРµ РІРјРµСЃС‚Рµ"><? } ?><strong>Р’СЃРµ РІРјРµСЃС‚Рµ</strong> (<?=$sum?>)<? if ($gr) {?></a><? } ?></li>
             <?=$group_line?>
         </ul>
         <? if(!empty($feedback_copiny)) { ?>
       <div class="group_copini">
-        <div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_padbot_5 b-layout__txt_padleft_5 b-layout__txt_fontsize_11 b-layout__txt_bold">Сообщество поддержки</div>
+        <div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_padbot_5 b-layout__txt_padleft_5 b-layout__txt_fontsize_11 b-layout__txt_bold">РЎРѕРѕР±С‰РµСЃС‚РІРѕ РїРѕРґРґРµСЂР¶РєРё</div>
         <ul class="group">
             <?php foreach($feedback_copiny as $theme) { ?>
                 <li><a href="https://feedback.fl.ru/" target="_blank"><?= $theme['t_name']; ?></a></li>

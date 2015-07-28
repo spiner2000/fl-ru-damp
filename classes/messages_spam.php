@@ -1,43 +1,43 @@
 <?php
 /**
- * Подключаем предка
+ * РџРѕРґРєР»СЋС‡Р°РµРј РїСЂРµРґРєР°
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/admin_parent.php");
 
 /**
- * Класс для пометки о спаме в личных сообщениях
+ * РљР»Р°СЃСЃ РґР»СЏ РїРѕРјРµС‚РєРё Рѕ СЃРїР°РјРµ РІ Р»РёС‡РЅС‹С… СЃРѕРѕР±С‰РµРЅРёСЏС…
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
 class messages_spam extends admin_parent {    
     /**
-     * Текстовая константа
+     * РўРµРєСЃС‚РѕРІР°СЏ РєРѕРЅСЃС‚Р°РЅС‚Р°
      */
-    const COMPLAINT_PENDING_TXT = 'Ваша жалоба на рассмотрении';
+    const COMPLAINT_PENDING_TXT = 'Р’Р°С€Р° Р¶Р°Р»РѕР±Р° РЅР° СЂР°СЃСЃРјРѕС‚СЂРµРЅРёРё';
     
     public $resolve = array(
-        0 => 'Еще не решили', 
-        1 => 'Это не спам',
-        2 => 'Предупреждение',
-        3 => 'Заблокирован',
+        0 => 'Р•С‰Рµ РЅРµ СЂРµС€РёР»Рё', 
+        1 => 'Р­С‚Рѕ РЅРµ СЃРїР°Рј',
+        2 => 'РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ',
+        3 => 'Р—Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ',
     );
     
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      * 
-     * @param int $items_pp Количество пользователей на странице
+     * @param int $items_pp РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РЅР° СЃС‚СЂР°РЅРёС†Рµ
      */
     function __construct( $items_pp = 0 ) {
         parent::__construct($items_pp);
     }
     
     /**
-     * Сохраняет жалобу на спам в личных сообщениях
+     * РЎРѕС…СЂР°РЅСЏРµС‚ Р¶Р°Р»РѕР±Сѓ РЅР° СЃРїР°Рј РІ Р»РёС‡РЅС‹С… СЃРѕРѕР±С‰РµРЅРёСЏС…
      * 
-     * @param  string $sSpamerId UID спамера
-     * @param  string $sUserId UID пожаловавшегося пользователя
-     * @param  string $aParams массив параметров жалобы на спам
-     * @return bool true - успех, false - провал
+     * @param  string $sSpamerId UID СЃРїР°РјРµСЂР°
+     * @param  string $sUserId UID РїРѕР¶Р°Р»РѕРІР°РІС€РµРіРѕСЃСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  string $aParams РјР°СЃСЃРёРІ РїР°СЂР°РјРµС‚СЂРѕРІ Р¶Р°Р»РѕР±С‹ РЅР° СЃРїР°Рј
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function addSpamComplaint( $sSpamerId = '', $sUserId = '', $aParams = array() ) {
         $DB      = new DB('plproxy'); // plproxy
@@ -60,11 +60,11 @@ class messages_spam extends admin_parent {
     }
     
     /**
-     * Помечает все жалобы на спамера удаленными (решение админа)
+     * РџРѕРјРµС‡Р°РµС‚ РІСЃРµ Р¶Р°Р»РѕР±С‹ РЅР° СЃРїР°РјРµСЂР° СѓРґР°Р»РµРЅРЅС‹РјРё (СЂРµС€РµРЅРёРµ Р°РґРјРёРЅР°)
      * 
-     * @param  array $aSpamerId массив UID спамеров или строка с одним
-     * @param  int $nResolve Решение админа: 0 - еще не решил, 1 - это не спам, 2 - предупреждение, 3 - бан
-     * @return bool true - успех, false - провал
+     * @param  array $aSpamerId РјР°СЃСЃРёРІ UID СЃРїР°РјРµСЂРѕРІ РёР»Рё СЃС‚СЂРѕРєР° СЃ РѕРґРЅРёРј
+     * @param  int $nResolve Р РµС€РµРЅРёРµ Р°РґРјРёРЅР°: 0 - РµС‰Рµ РЅРµ СЂРµС€РёР», 1 - СЌС‚Рѕ РЅРµ СЃРїР°Рј, 2 - РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ, 3 - Р±Р°РЅ
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function deleteSpamBySpamer( $aSpamerId = array(), $nResolve = 0 ) {
         $bRet = false;
@@ -88,12 +88,12 @@ class messages_spam extends admin_parent {
     }
     
     /**
-     * Помечает все жалобы на сообщение удаленными (решение админа)
+     * РџРѕРјРµС‡Р°РµС‚ РІСЃРµ Р¶Р°Р»РѕР±С‹ РЅР° СЃРѕРѕР±С‰РµРЅРёРµ СѓРґР°Р»РµРЅРЅС‹РјРё (СЂРµС€РµРЅРёРµ Р°РґРјРёРЅР°)
      * 
-     * @param  int $nSpamerId UID спамера
-     * @param  string $sMsgMd5 MD5 хэш текста сообщения
-     * @param  int $nResolve Решение админа: 0 - еще не решил, 1 - это не спам, 2 - предупреждение, 3 - бан
-     * @return bool true - успех, false - провал
+     * @param  int $nSpamerId UID СЃРїР°РјРµСЂР°
+     * @param  string $sMsgMd5 MD5 С…СЌС€ С‚РµРєСЃС‚Р° СЃРѕРѕР±С‰РµРЅРёСЏ
+     * @param  int $nResolve Р РµС€РµРЅРёРµ Р°РґРјРёРЅР°: 0 - РµС‰Рµ РЅРµ СЂРµС€РёР», 1 - СЌС‚Рѕ РЅРµ СЃРїР°Рј, 2 - РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ, 3 - Р±Р°РЅ
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function deleteSpamByMsg( $nSpamerId = 0, $sMsgMd5 = '', $nResolve = 0 ) {
         $bRet = false;
@@ -124,9 +124,9 @@ class messages_spam extends admin_parent {
     }
     
     /**
-     * Возвращает список жалоб от определенного пользователя.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє Р¶Р°Р»РѕР± РѕС‚ РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
      * 
-     * @param  string $sUid UID пожаловавшегося пользователя
+     * @param  string $sUid UID РїРѕР¶Р°Р»РѕРІР°РІС€РµРіРѕСЃСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * @return array
      */
     function getComplaintsByUser( $sUid = '' ) {
@@ -135,10 +135,10 @@ class messages_spam extends admin_parent {
     }
     
     /**
-     * Возвращает список жалоб на спам для личного сообщения.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє Р¶Р°Р»РѕР± РЅР° СЃРїР°Рј РґР»СЏ Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ.
      * 
-     * @param  int $nSpamerId UID спамера
-     * @param  string $sMsgMd5 MD5 хэш текста сообщения
+     * @param  int $nSpamerId UID СЃРїР°РјРµСЂР°
+     * @param  string $sMsgMd5 MD5 С…СЌС€ С‚РµРєСЃС‚Р° СЃРѕРѕР±С‰РµРЅРёСЏ
      * @return array
      */
     function getSpamComplaints( $nSpamerId = 0, $sMsgMd5 = '' ) {
@@ -147,13 +147,13 @@ class messages_spam extends admin_parent {
     }
     
     /**
-     * Возвращает список жалоб о спаме, удовлетворяющих условиям выборки
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє Р¶Р°Р»РѕР± Рѕ СЃРїР°РјРµ, СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё
      * 
-     * Оберточная функция
+     * РћР±РµСЂС‚РѕС‡РЅР°СЏ С„СѓРЅРєС†РёСЏ
      *
-     * @param  int $count возвращает количество записей удовлтворяющих условиям выборки
-     * @param  array $filter фильтр
-     * @param  int $page номер текущей страницы
+     * @param  int $count РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ СѓРґРѕРІР»С‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё
+     * @param  array $filter С„РёР»СЊС‚СЂ
+     * @param  int $page РЅРѕРјРµСЂ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹
      * @return array
      */
     function getSpam( &$count, $filter, $page = 1 ) {
@@ -162,9 +162,9 @@ class messages_spam extends admin_parent {
     }
     
     /**
-     * Возвращает количество жалоб о спаме, удовлетворяющих условиям выборки
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ Р¶Р°Р»РѕР± Рѕ СЃРїР°РјРµ, СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё
      * 
-     * @param  array $filter фильтр
+     * @param  array $filter С„РёР»СЊС‚СЂ
      * @return int
      */
     function getSpamCount( $filter = array() ) {
@@ -195,15 +195,15 @@ class messages_spam extends admin_parent {
     }
     
     /**
-     * Возвращает список жалоб о спаме, удовлетворяющих условиям выборки
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє Р¶Р°Р»РѕР± Рѕ СЃРїР°РјРµ, СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё
      * 
-     * Внутренняя функция
+     * Р’РЅСѓС‚СЂРµРЅРЅСЏСЏ С„СѓРЅРєС†РёСЏ
      * 
-     * @param  int $count возвращает количество записей удовлтворяющих условиям выборки
-     * @param  int $page номер текущей страницы
-     * @param  string order тип сортировки
-     * @param  int $direction порядок сортировки: 0 - по убыванию, не 0 - по возрастанию
-     * @param  bool $unlimited опционально. установить в true если нужно получить все записи (без постраничного вывода)
+     * @param  int $count РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ СѓРґРѕРІР»С‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё
+     * @param  int $page РЅРѕРјРµСЂ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹
+     * @param  string order С‚РёРї СЃРѕСЂС‚РёСЂРѕРІРєРё
+     * @param  int $direction РїРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё: 0 - РїРѕ СѓР±С‹РІР°РЅРёСЋ, РЅРµ 0 - РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ
+     * @param  bool $unlimited РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РІ true РµСЃР»Рё РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ РІСЃРµ Р·Р°РїРёСЃРё (Р±РµР· РїРѕСЃС‚СЂР°РЅРёС‡РЅРѕРіРѕ РІС‹РІРѕРґР°)
      * @return array
      */
     function _getSpam( &$count, $page = 1, $order = 'general', $direction = 0, $unlimited = false ) {
@@ -212,7 +212,7 @@ class messages_spam extends admin_parent {
         $this->aSQL = array();
         $offset     = $this->items_pp * ($page - 1);
         
-        // строим запрос
+        // СЃС‚СЂРѕРёРј Р·Р°РїСЂРѕСЃ
         $this->_setSpamOrderBy( $order, $direction );
         
         if ( is_array($this->filter) && count($this->filter) ) {
@@ -233,7 +233,7 @@ class messages_spam extends admin_parent {
         
         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/messages.php' );
         
-        // прикрепленные файлы 
+        // РїСЂРёРєСЂРµРїР»РµРЅРЅС‹Рµ С„Р°Р№Р»С‹ 
         messages::getMessagesAttaches( $aSpam, 'msg_id' );
         
         $sQuery = 'SELECT messages_spam_get_count(?a)';
@@ -244,10 +244,10 @@ class messages_spam extends admin_parent {
     }
     
     /**
-     * Собирает ORDER BY часть SQL запроса
+     * РЎРѕР±РёСЂР°РµС‚ ORDER BY С‡Р°СЃС‚СЊ SQL Р·Р°РїСЂРѕСЃР°
      *
-     * @param string $order тип сортировки
-     * @param int $direction порядок сортировки: 0 - по убыванию, не 0 - по возрастанию
+     * @param string $order С‚РёРї СЃРѕСЂС‚РёСЂРѕРІРєРё
+     * @param int $direction РїРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё: 0 - РїРѕ СѓР±С‹РІР°РЅРёСЋ, РЅРµ 0 - РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ
      */
     function _setSpamOrderBy( $order = 'general', $direction = 0 ) {
         $dirSql = ( !$direction ? 'DESC' : 'ASC' );
@@ -268,16 +268,16 @@ class messages_spam extends admin_parent {
     ////////////////////////////////////////////////////////
     
     /**
-     * Возвращает даты (период)
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°С‚С‹ (РїРµСЂРёРѕРґ)
      * 
-     * @param  string $error возвращет сообщение об ошибке или пустую строку
-     * @param  string $prefix префикс к полям фильтра
-     * @param  string $fromD день 
-     * @param  string $fromM месяц 
-     * @param  string $fromY год 
-     * @param  string $toD день 
-     * @param  string $toM месяц 
-     * @param  string $toY год 
+     * @param  string $error РІРѕР·РІСЂР°С‰РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚СѓСЋ СЃС‚СЂРѕРєСѓ
+     * @param  string $prefix РїСЂРµС„РёРєСЃ Рє РїРѕР»СЏРј С„РёР»СЊС‚СЂР°
+     * @param  string $fromD РґРµРЅСЊ 
+     * @param  string $fromM РјРµСЃСЏС† 
+     * @param  string $fromY РіРѕРґ 
+     * @param  string $toD РґРµРЅСЊ 
+     * @param  string $toM РјРµСЃСЏС† 
+     * @param  string $toY РіРѕРґ 
      * @return array
      */
     function getDatePeriod( &$error, $prefix = '', $fromD = '', $fromM = '', $fromY = '', $toD = '', $toM = '', $toY = '' ) {
@@ -289,13 +289,13 @@ class messages_spam extends admin_parent {
         }
         else {
             if ( $fromD == '' || $fromM == '' || $fromY == '' ) {
-            	$error = 'Укажите начальную дату';
+            	$error = 'РЈРєР°Р¶РёС‚Рµ РЅР°С‡Р°Р»СЊРЅСѓСЋ РґР°С‚Сѓ';
             }
             else {
                 $fromDate = $fromY.'-'.$fromM.'-'.(strlen($fromD) > 1 ? $fromD : '0'.$fromD);
                 
                 if ( ($fromRes = strtotime($fromDate)) === false ) {
-                    $error = 'Укажите корректную начальную дату';
+                    $error = 'РЈРєР°Р¶РёС‚Рµ РєРѕСЂСЂРµРєС‚РЅСѓСЋ РЅР°С‡Р°Р»СЊРЅСѓСЋ РґР°С‚Сѓ';
                 }
             }
         }
@@ -306,20 +306,20 @@ class messages_spam extends admin_parent {
             }
             else {
                 if ( $toD == '' || $toM == '' || $toY == '' ) {
-                	$error = 'Укажите конечную дату';
+                	$error = 'РЈРєР°Р¶РёС‚Рµ РєРѕРЅРµС‡РЅСѓСЋ РґР°С‚Сѓ';
                 }
                 else {
                     $toDate = $toY.'-'.$toM.'-'.(strlen($toD) > 1 ? $toD : '0'.$toD);
                     
                     if ( ($toRes = strtotime($toDate)) === false ) {
-                        $error = 'Укажите корректную конечную дату';
+                        $error = 'РЈРєР°Р¶РёС‚Рµ РєРѕСЂСЂРµРєС‚РЅСѓСЋ РєРѕРЅРµС‡РЅСѓСЋ РґР°С‚Сѓ';
                     }
                 }
             }
             
             if ( !$error && $fromDate && $toDate ) {
                 if ( $toRes < $fromRes ) {
-                	$error = 'Конечная дата не может быть меньше начальной';
+                	$error = 'РљРѕРЅРµС‡РЅР°СЏ РґР°С‚Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ РЅР°С‡Р°Р»СЊРЅРѕР№';
                 }
             }
         }

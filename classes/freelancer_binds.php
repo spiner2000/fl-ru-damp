@@ -6,7 +6,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/billing.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/op_codes.php');
 
 /**
- * Работа с закреплениями фрилансеров в каталоге
+ * Р Р°Р±РѕС‚Р° СЃ Р·Р°РєСЂРµРїР»РµРЅРёСЏРјРё С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РІ РєР°С‚Р°Р»РѕРіРµ
  *
  * @author danil
  */
@@ -15,7 +15,7 @@ class freelancer_binds {
     private $TABLE = 'freelancer_binds';
     
     /**
-     * Стоимость размещения
+     * РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р·РјРµС‰РµРЅРёСЏ
      */
     const PRICE_CATALOG = 5000;
     const PRICE_PROFGROUP = 3000;
@@ -29,8 +29,8 @@ class freelancer_binds {
     const OP_CODE_PROLONG_PROF = 150;
     
     /**
-     * Стоимость продления
-     * @todo: не использовать и в дальнейшем убрать
+     * РЎС‚РѕРёРјРѕСЃС‚СЊ РїСЂРѕРґР»РµРЅРёСЏ
+     * @todo: РЅРµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ Рё РІ РґР°Р»СЊРЅРµР№С€РµРј СѓР±СЂР°С‚СЊ
      */
     const PRICE_UP_CATALOG = 1000;
     const PRICE_UP_PROFGROUP = 600;
@@ -42,23 +42,23 @@ class freelancer_binds {
     const OP_CODE_UP_BUFFER = 194;
     
     /**
-     * Тексты для истории заказов
+     * РўРµРєСЃС‚С‹ РґР»СЏ РёСЃС‚РѕСЂРёРё Р·Р°РєР°Р·РѕРІ
      */
-    const DESCR = 'Закрепление в %s каталога фрилансеров';
-    const DESCR_PROLONG = 'Продление закрепления в %s каталога фрилансеров';
-    const DESCR_UP = 'Поднятие закрепления на 1 место в %s в каталоге фрилансеров';
-    const DESCR_CATALOG = 'общем разделе';
-    const DESCR_PROFGROUP = 'разделе %s';
-    const DESCR_PROF = 'разделе %s &mdash; %s';
-    const COMMENT = 'до %s';
+    const DESCR = 'Р—Р°РєСЂРµРїР»РµРЅРёРµ РІ %s РєР°С‚Р°Р»РѕРіР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ';
+    const DESCR_PROLONG = 'РџСЂРѕРґР»РµРЅРёРµ Р·Р°РєСЂРµРїР»РµРЅРёСЏ РІ %s РєР°С‚Р°Р»РѕРіР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ';
+    const DESCR_UP = 'РџРѕРґРЅСЏС‚РёРµ Р·Р°РєСЂРµРїР»РµРЅРёСЏ РЅР° 1 РјРµСЃС‚Рѕ РІ %s РІ РєР°С‚Р°Р»РѕРіРµ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ';
+    const DESCR_CATALOG = 'РѕР±С‰РµРј СЂР°Р·РґРµР»Рµ';
+    const DESCR_PROFGROUP = 'СЂР°Р·РґРµР»Рµ %s';
+    const DESCR_PROF = 'СЂР°Р·РґРµР»Рµ %s &mdash; %s';
+    const COMMENT = 'РґРѕ %s';
     
     /**
-     * Экземпляр Базы Данных
+     * Р­РєР·РµРјРїР»СЏСЂ Р‘Р°Р·С‹ Р”Р°РЅРЅС‹С…
      */
     private $db = null;
     
     /**
-     * Коды операций, доступные для закрепления по его коду
+     * РљРѕРґС‹ РѕРїРµСЂР°С†РёР№, РґРѕСЃС‚СѓРїРЅС‹Рµ РґР»СЏ Р·Р°РєСЂРµРїР»РµРЅРёСЏ РїРѕ РµРіРѕ РєРѕРґСѓ
      * @var type 
      */
     private $op_code_groups = array(
@@ -80,13 +80,13 @@ class freelancer_binds {
     );
     
     /**
-     * Данные для вставки
+     * Р”Р°РЅРЅС‹Рµ РґР»СЏ РІСЃС‚Р°РІРєРё
      * @var type 
      */
     private $bind_data = array();
 
     /**
-     * Данные для операции
+     * Р”Р°РЅРЅС‹Рµ РґР»СЏ РѕРїРµСЂР°С†РёРё
      * @var type 
      */
     public $bind_info = array();
@@ -101,7 +101,7 @@ class freelancer_binds {
     
     
     /**
-     * Обьекты биллинга для пользователей
+     * РћР±СЊРµРєС‚С‹ Р±РёР»Р»РёРЅРіР° РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
      * 
      * @var type 
      */
@@ -110,7 +110,7 @@ class freelancer_binds {
 
     
     /**
-     * Получить обьект биллинга для указанного пользователя
+     * РџРѕР»СѓС‡РёС‚СЊ РѕР±СЊРµРєС‚ Р±РёР»Р»РёРЅРіР° РґР»СЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * 
      * @param type $uid
      * @return type
@@ -129,11 +129,11 @@ class freelancer_binds {
     
     
     /**
-     * Определяет, доступно ли пользователю закрепление в указанном разделе
+     * РћРїСЂРµРґРµР»СЏРµС‚, РґРѕСЃС‚СѓРїРЅРѕ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ Р·Р°РєСЂРµРїР»РµРЅРёРµ РІ СѓРєР°Р·Р°РЅРЅРѕРј СЂР°Р·РґРµР»Рµ
      * 
-     * @param type $uid ИД пользователя
-     * @param type $prof_id ИД раздела
-     * @param type $is_spec Флаг специализация или раздел
+     * @param type $uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param type $prof_id РР” СЂР°Р·РґРµР»Р°
+     * @param type $is_spec Р¤Р»Р°Рі СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏ РёР»Рё СЂР°Р·РґРµР»
      */
     public function isAllowBind($uid, $prof_id, $is_spec, $check_exist = true) 
     {
@@ -146,11 +146,11 @@ class freelancer_binds {
         }
         
         if ($prof_id) {
-            //Специализация должна быть из списка выбранных специализаций пользователя
+            //РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РёР· СЃРїРёСЃРєР° РІС‹Р±СЂР°РЅРЅС‹С… СЃРїРµС†РёР°Р»РёР·Р°С†РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
             $user = new freelancer();
             $user->GetUserByUID($uid);
             
-            //Все специализации с зеркалами
+            //Р’СЃРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё СЃ Р·РµСЂРєР°Р»Р°РјРё
             $user_profs = professions::GetProfessionsByUser($user->uid, true, true);
             
             if ($is_spec) {
@@ -169,7 +169,7 @@ class freelancer_binds {
         }
 
         if ($check_exist) {
-            // не допускается повторная покупка
+            // РЅРµ РґРѕРїСѓСЃРєР°РµС‚СЃСЏ РїРѕРІС‚РѕСЂРЅР°СЏ РїРѕРєСѓРїРєР°
             $allow &= !$this->isUserBinded($uid, $prof_id, $is_spec);
         }
 
@@ -178,11 +178,11 @@ class freelancer_binds {
     
     
     /**
-     * Определяет, имеет ли пользователь закрепление в указанном разделе
+     * РћРїСЂРµРґРµР»СЏРµС‚, РёРјРµРµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°РєСЂРµРїР»РµРЅРёРµ РІ СѓРєР°Р·Р°РЅРЅРѕРј СЂР°Р·РґРµР»Рµ
      * 
-     * @param type $uid ИД юзера
-     * @param type $prof_id ИД раздела
-     * @param type $is_spec Флаг специализация или раздел
+     * @param type $uid РР” СЋР·РµСЂР°
+     * @param type $prof_id РР” СЂР°Р·РґРµР»Р°
+     * @param type $is_spec Р¤Р»Р°Рі СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏ РёР»Рё СЂР°Р·РґРµР»
      */
     public function isUserBinded ($uid, $prof_id, $is_spec)
     {
@@ -203,7 +203,7 @@ class freelancer_binds {
     }
     
     /**
-     * Возвращает дату окончания закрепления
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°С‚Сѓ РѕРєРѕРЅС‡Р°РЅРёСЏ Р·Р°РєСЂРµРїР»РµРЅРёСЏ
      * @param type $uid
      * @param type $prof_id
      * @param type $is_spec
@@ -219,7 +219,7 @@ class freelancer_binds {
     }
     
     /**
-     * Возвращает цену за неделю
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ С†РµРЅСѓ Р·Р° РЅРµРґРµР»СЋ
      * 
      * @param type $prof_id
      * @param type $is_spec
@@ -229,7 +229,7 @@ class freelancer_binds {
     {
         $opCode = $this->getOpCode($prof_id, $is_spec, $is_prolong);
         
-        //Пробуем получить скидку для конкретного пользователя
+        //РџСЂРѕР±СѓРµРј РїРѕР»СѓС‡РёС‚СЊ СЃРєРёРґРєСѓ РґР»СЏ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
         if($uid > 0) {
             $bill = self::getBilling($uid);
             $opCode = $bill->getDiscountOpCode($opCode);
@@ -241,7 +241,7 @@ class freelancer_binds {
     
     
     /**
-     * Возвращает цену за подняние
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ С†РµРЅСѓ Р·Р° РїРѕРґРЅСЏРЅРёРµ
      * 
      * @param type $prof_id
      * @param type $is_spec
@@ -251,7 +251,7 @@ class freelancer_binds {
     {
         $opCode = $this->getOpCodeUp($prof_id, $is_spec);
         
-        //Пробуем получить скидку для конкретного пользователя
+        //РџСЂРѕР±СѓРµРј РїРѕР»СѓС‡РёС‚СЊ СЃРєРёРґРєСѓ РґР»СЏ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
         if($uid > 0) {
             $bill = self::getBilling($uid);
             $opCode = $bill->getDiscountOpCode($opCode);
@@ -289,7 +289,7 @@ class freelancer_binds {
     }
     
     /**
-     * Подготовка данных для вставки в таблицу и получение информации для платежа по закреплению
+     * РџРѕРґРіРѕС‚РѕРІРєР° РґР°РЅРЅС‹С… РґР»СЏ РІСЃС‚Р°РІРєРё РІ С‚Р°Р±Р»РёС†Сѓ Рё РїРѕР»СѓС‡РµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё РґР»СЏ РїР»Р°С‚РµР¶Р° РїРѕ Р·Р°РєСЂРµРїР»РµРЅРёСЋ
      * @param type $uid
      * @param type $prof_id
      * @param type $is_spec
@@ -316,7 +316,7 @@ class freelancer_binds {
     }
     
     /**
-     * Получение информации для платежа по продлению
+     * РџРѕР»СѓС‡РµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё РґР»СЏ РїР»Р°С‚РµР¶Р° РїРѕ РїСЂРѕРґР»РµРЅРёСЋ
      * @param type $uid
      * @param type $prof_id
      * @param type $is_spec
@@ -340,7 +340,7 @@ class freelancer_binds {
     }
     
     /**
-     * Получение информации для платежа по поднятию
+     * РџРѕР»СѓС‡РµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё РґР»СЏ РїР»Р°С‚РµР¶Р° РїРѕ РїРѕРґРЅСЏС‚РёСЋ
      * @param type $uid
      * @param type $prof_id
      * @param type $is_spec
@@ -355,16 +355,16 @@ class freelancer_binds {
     }
     
     /**
-     * Создает запись в таблице
+     * РЎРѕР·РґР°РµС‚ Р·Р°РїРёСЃСЊ РІ С‚Р°Р±Р»РёС†Рµ
      * @return type
      */
     public function create()
     {
         if ($this->bind_data['is_spec']) {
             $add_prof = $this->needAddProf($this->bind_data['user_id'], $this->bind_data['prof_id']);
-            if ($add_prof == 1) { //Добавляем доп.специализацию
+            if ($add_prof == 1) { //Р”РѕР±Р°РІР»СЏРµРј РґРѕРї.СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ
                 professions::UpdateProfsAddSpec($this->bind_data['user_id'], 0, $this->bind_data['prof_id'], 0);
-            } elseif ($add_prof == 2) { //Устанавливаем основную специализацию
+            } elseif ($add_prof == 2) { //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РѕСЃРЅРѕРІРЅСѓСЋ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ
                 $frl = new freelancer;
                 $frl->spec = $this->bind_data['prof_id'];
                 $frl->spec_orig = $this->bind_data['prof_id'];
@@ -383,10 +383,10 @@ class freelancer_binds {
     }
     
     /**
-     * Определяет, нужно ли добавлять специализацию в профиль
-     * @param type $uid ИД пользователя
-     * @param type $prof_id ИД специализации
-     * @return int 0 если не нужно, 1 если доп. специализацию, 2 если основную спец-ю
+     * РћРїСЂРµРґРµР»СЏРµС‚, РЅСѓР¶РЅРѕ Р»Рё РґРѕР±Р°РІР»СЏС‚СЊ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ РІ РїСЂРѕС„РёР»СЊ
+     * @param type $uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param type $prof_id РР” СЃРїРµС†РёР°Р»РёР·Р°С†РёРё
+     * @return int 0 РµСЃР»Рё РЅРµ РЅСѓР¶РЅРѕ, 1 РµСЃР»Рё РґРѕРї. СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ, 2 РµСЃР»Рё РѕСЃРЅРѕРІРЅСѓСЋ СЃРїРµС†-СЋ
      */
     public function needAddProf($uid, $prof_id) {
         $user_profs = professions::GetProfessionsByUser($uid, true, true);
@@ -402,7 +402,7 @@ class freelancer_binds {
     }
     
     /**
-     * Возвращает название раздела для истории платежей
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РЅР°Р·РІР°РЅРёРµ СЂР°Р·РґРµР»Р° РґР»СЏ РёСЃС‚РѕСЂРёРё РїР»Р°С‚РµР¶РµР№
      * @param type $prof_id
      * @param type $is_spec
      * @return type
@@ -427,7 +427,7 @@ class freelancer_binds {
     }
     
     /**
-     * Определяет, находится ли закрепление на первом месте
+     * РћРїСЂРµРґРµР»СЏРµС‚, РЅР°С…РѕРґРёС‚СЃСЏ Р»Рё Р·Р°РєСЂРµРїР»РµРЅРёРµ РЅР° РїРµСЂРІРѕРј РјРµСЃС‚Рµ
      * @param type $uid
      * @param type $prof_id
      * @param type $is_spec
@@ -452,9 +452,9 @@ class freelancer_binds {
     }
     
     /**
-     * Продляет закрепление
-     * @param int $id ИД закрепления
-     * @param int $weeks Количество недель
+     * РџСЂРѕРґР»СЏРµС‚ Р·Р°РєСЂРµРїР»РµРЅРёРµ
+     * @param int $id РР” Р·Р°РєСЂРµРїР»РµРЅРёСЏ
+     * @param int $weeks РљРѕР»РёС‡РµСЃС‚РІРѕ РЅРµРґРµР»СЊ
      */
     public function prolong($id, $weeks, $prof_id, $is_spec)
     {
@@ -472,8 +472,8 @@ class freelancer_binds {
     }
     
     /**
-     * Обновляет дату начала закрепления на текущую
-     * @param int $id ИД закрепления
+     * РћР±РЅРѕРІР»СЏРµС‚ РґР°С‚Сѓ РЅР°С‡Р°Р»Р° Р·Р°РєСЂРµРїР»РµРЅРёСЏ РЅР° С‚РµРєСѓС‰СѓСЋ
+     * @param int $id РР” Р·Р°РєСЂРµРїР»РµРЅРёСЏ
      */
     public function up($id, $prof_id, $is_spec)
     {
@@ -488,7 +488,7 @@ class freelancer_binds {
     }
     
     /**
-     * Получаем пользователей, у которых в течение суток истекает срок размещения
+     * РџРѕР»СѓС‡Р°РµРј РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, Сѓ РєРѕС‚РѕСЂС‹С… РІ С‚РµС‡РµРЅРёРµ СЃСѓС‚РѕРє РёСЃС‚РµРєР°РµС‚ СЃСЂРѕРє СЂР°Р·РјРµС‰РµРЅРёСЏ
      * @global type $DB
      * @param type $param
      * @return boolean
@@ -516,7 +516,7 @@ class freelancer_binds {
     }
     
     /**
-     * Возвращает записи, которые опустились на 4 место и ниже
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р°РїРёСЃРё, РєРѕС‚РѕСЂС‹Рµ РѕРїСѓСЃС‚РёР»РёСЃСЊ РЅР° 4 РјРµСЃС‚Рѕ Рё РЅРёР¶Рµ
      * @global type $DB
      * @return type
      */
@@ -539,13 +539,13 @@ class freelancer_binds {
     
     
     /**
-     * Помечает флаг после отправки соответствующего уведомления (о продлении или поднятии)
+     * РџРѕРјРµС‡Р°РµС‚ С„Р»Р°Рі РїРѕСЃР»Рµ РѕС‚РїСЂР°РІРєРё СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРіРѕ СѓРІРµРґРѕРјР»РµРЅРёСЏ (Рѕ РїСЂРѕРґР»РµРЅРёРё РёР»Рё РїРѕРґРЅСЏС‚РёРё)
      * @global type $DB
-     * @param string $type Тип уведомления prolong|up
-     * @param type $uid ИД юзера
-     * @param type $profession ИД профессии
-     * @param type $tarif Тариф (для определения вложенности раздела)
-     * @return boolean true если успешно
+     * @param string $type РўРёРї СѓРІРµРґРѕРјР»РµРЅРёСЏ prolong|up
+     * @param type $uid РР” СЋР·РµСЂР°
+     * @param type $profession РР” РїСЂРѕС„РµСЃСЃРёРё
+     * @param type $tarif РўР°СЂРёС„ (РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РІР»РѕР¶РµРЅРЅРѕСЃС‚Рё СЂР°Р·РґРµР»Р°)
+     * @return boolean true РµСЃР»Рё СѓСЃРїРµС€РЅРѕ
      */
     public static function markSent($type, $uid, $profession, $is_spec)
     {
@@ -563,16 +563,16 @@ class freelancer_binds {
         );        
     }
     
-    /** Удаление закрепления по id в account_operations
+    /** РЈРґР°Р»РµРЅРёРµ Р·Р°РєСЂРµРїР»РµРЅРёСЏ РїРѕ id РІ account_operations
      * @see account::DelByOpid()
      *
-     * @param  intr $uid uid пользователя
-     * @param  int $opid id операции в биллинге
+     * @param  intr $uid uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $opid id РѕРїРµСЂР°С†РёРё РІ Р±РёР»Р»РёРЅРіРµ
      * @return int 0
      */
     public function DelByOpid($uid, $opid)
     {
-        //Получаем информацию об удаляемом платеже
+        //РџРѕР»СѓС‡Р°РµРј РёРЅС„РѕСЂРјР°С†РёСЋ РѕР± СѓРґР°Р»СЏРµРјРѕРј РїР»Р°С‚РµР¶Рµ
         $sql = "SELECT bq.id, bq.op_count, bq.src_id, ao.op_code
             FROM account_operations ao
             INNER JOIN bill_reserve br ON br.uid = ?i
@@ -593,7 +593,7 @@ class freelancer_binds {
                 $is_spec = true;
             case self::OP_CODE_CATALOG:
             case self::OP_CODE_PROFGROUP:
-                //Убираем запись о закреплении из базы
+                //РЈР±РёСЂР°РµРј Р·Р°РїРёСЃСЊ Рѕ Р·Р°РєСЂРµРїР»РµРЅРёРё РёР· Р±Р°Р·С‹
                 $ok = $this->db->query("DELETE FROM {$this->TABLE} WHERE user_id = ?i AND prof_id = ?i AND is_spec = ?b", 
                         $uid, $operation['src_id'], $is_spec);
                 break;
@@ -605,9 +605,9 @@ class freelancer_binds {
             case self::OP_CODE_PROLONG_PROFGROUP:
             case self::OP_CODE_UP_CATALOG:
             case self::OP_CODE_UP_PROFGROUP:
-                //пересчитать сроки начала срока действия закрепления с учетом 
-                //удаления покупки - чтобы закрепление вернулось 
-                //на то место в каталоге, с которого был подъем
+                //РїРµСЂРµСЃС‡РёС‚Р°С‚СЊ СЃСЂРѕРєРё РЅР°С‡Р°Р»Р° СЃСЂРѕРєР° РґРµР№СЃС‚РІРёСЏ Р·Р°РєСЂРµРїР»РµРЅРёСЏ СЃ СѓС‡РµС‚РѕРј 
+                //СѓРґР°Р»РµРЅРёСЏ РїРѕРєСѓРїРєРё - С‡С‚РѕР±С‹ Р·Р°РєСЂРµРїР»РµРЅРёРµ РІРµСЂРЅСѓР»РѕСЃСЊ 
+                //РЅР° С‚Рѕ РјРµСЃС‚Рѕ РІ РєР°С‚Р°Р»РѕРіРµ, СЃ РєРѕС‚РѕСЂРѕРіРѕ Р±С‹Р» РїРѕРґСЉРµРј
                 
                 $bind_id = $this->isUserBinded($uid, $operation['src_id'], $is_spec);
                 if ($bind_id) {
@@ -628,14 +628,14 @@ class freelancer_binds {
     }
     
     /**
-     * Пересчитывает даты начала и окончания закрепления по операции
+     * РџРµСЂРµСЃС‡РёС‚С‹РІР°РµС‚ РґР°С‚С‹ РЅР°С‡Р°Р»Р° Рё РѕРєРѕРЅС‡Р°РЅРёСЏ Р·Р°РєСЂРµРїР»РµРЅРёСЏ РїРѕ РѕРїРµСЂР°С†РёРё
      * @param type $operation
      * @param type $uid
      * @return type
      */
     private function recalcBindDates($operation, $uid)
     {
-        //Получаем коды операций, которые могли быть применены по данному закреплению
+        //РџРѕР»СѓС‡Р°РµРј РєРѕРґС‹ РѕРїРµСЂР°С†РёР№, РєРѕС‚РѕСЂС‹Рµ РјРѕРіР»Рё Р±С‹С‚СЊ РїСЂРёРјРµРЅРµРЅС‹ РїРѕ РґР°РЅРЅРѕРјСѓ Р·Р°РєСЂРµРїР»РµРЅРёСЋ
         $op_codes_allow = array();
         foreach ($this->op_code_groups as $group) {
             $op_codes_in_group = billing::extendOpCodes($group);
@@ -644,7 +644,7 @@ class freelancer_binds {
             }
         }
 
-        //Получаем информацию об остальных платежах по данному закреплению
+        //РџРѕР»СѓС‡Р°РµРј РёРЅС„РѕСЂРјР°С†РёСЋ РѕР± РѕСЃС‚Р°Р»СЊРЅС‹С… РїР»Р°С‚РµР¶Р°С… РїРѕ РґР°РЅРЅРѕРјСѓ Р·Р°РєСЂРµРїР»РµРЅРёСЋ
         $sql2 = "SELECT bq.op_code, bq.op_count, br.complete_time::timestamp as date
             FROM bill_queue bq
             INNER JOIN bill_reserve br ON bq.reserve_id = br.id
@@ -658,18 +658,18 @@ class freelancer_binds {
         $operations = $this->db->rows($sql2, $uid, $uid, $operation['src_id'], $op_codes_allow, $operation['id']);
 
         foreach ($operations as $operation){
-            //Устанавливаем даты начала при любой операции
+            //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РґР°С‚С‹ РЅР°С‡Р°Р»Р° РїСЂРё Р»СЋР±РѕР№ РѕРїРµСЂР°С†РёРё
             $date_start = DateTime::createFromFormat("Y-m-d H:i:s.u", $operation['date']);
             $operation['op_code'] = billing::getOpCodeByDiscount($operation['op_code']);
             
             if (in_array($operation['op_code'], 
                     array(self::OP_CODE_CATALOG, self::OP_CODE_PROFGROUP, self::OP_CODE_PROF)
                 ) || !isset($date_stop)) {
-                //Если покупка, то дату окончания считаем от даты покупки
+                //Р•СЃР»Рё РїРѕРєСѓРїРєР°, С‚Рѕ РґР°С‚Сѓ РѕРєРѕРЅС‡Р°РЅРёСЏ СЃС‡РёС‚Р°РµРј РѕС‚ РґР°С‚С‹ РїРѕРєСѓРїРєРё
                 $date_stop = clone $date_start;
                 $date_stop->add(new DateInterval('P'.($operation['op_count']*7).'D'));
             } else {
-                //Если продление - продляем дату окончания
+                //Р•СЃР»Рё РїСЂРѕРґР»РµРЅРёРµ - РїСЂРѕРґР»СЏРµРј РґР°С‚Сѓ РѕРєРѕРЅС‡Р°РЅРёСЏ
                 if (in_array($operation['op_code'], 
                         array(self::OP_CODE_PROLONG_CATALOG, self::OP_CODE_PROLONG_PROFGROUP, self::OP_CODE_PROLONG_PROF)
                 )) {

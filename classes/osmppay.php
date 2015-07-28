@@ -1,89 +1,89 @@
 <?
 /**
- * Подключаем файл для работы с аккаунтом
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р°РєРєР°СѓРЅС‚РѕРј
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
 /**
- * Подключаем файл для работы с пользователем
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
  */
 require_once ($_SERVER['DOCUMENT_ROOT']."/classes/users.php");
 
 /**
- * Класс для работы с пополнение счета через ОСМП
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РїРѕРїРѕР»РЅРµРЅРёРµ СЃС‡РµС‚Р° С‡РµСЂРµР· РћРЎРњРџ
  *
  */
 class osmppay extends account
 {
 	/**
-	 * Курс валюты по отношению к FM.
+	 * РљСѓСЂСЃ РІР°Р»СЋС‚С‹ РїРѕ РѕС‚РЅРѕС€РµРЅРёСЋ Рє FM.
 	 *
 	 * @var string
 	 */
 	public $exch = EXCH_OSMP;
 	
 	/**
-	 * Проверка данных оплаты
+	 * РџСЂРѕРІРµСЂРєР° РґР°РЅРЅС‹С… РѕРїР»Р°С‚С‹
 	 *
-	 * @param integer $err_code      Возвращает Код ошибки 
-	 * @param string  $login         Логин оплатившего
-	 * @param integer $operation_id  Ид операции
-	 * @param integer $ammount       Сумма оплаты
-	 * @return string Сообщение об ошибке
+	 * @param integer $err_code      Р’РѕР·РІСЂР°С‰Р°РµС‚ РљРѕРґ РѕС€РёР±РєРё 
+	 * @param string  $login         Р›РѕРіРёРЅ РѕРїР»Р°С‚РёРІС€РµРіРѕ
+	 * @param integer $operation_id  РРґ РѕРїРµСЂР°С†РёРё
+	 * @param integer $ammount       РЎСѓРјРјР° РѕРїР»Р°С‚С‹
+	 * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function prepare(&$err_code, $login, $operation_id, $ammount){
-		if (floatval($ammount) <= 0) { $err_code = 241; return "Неверная сумма!";}
-		if (!$operation_id) {$err_code = 300; return "Неверный идентификатор операции!";}
-	    if (!preg_match("/^[a-zA-Z0-9]+[-a-zA-Z0-9_]{2,}$/", $login)) {$err_code = 4; return "Неверный логин на сайте!";}
+		if (floatval($ammount) <= 0) { $err_code = 241; return "РќРµРІРµСЂРЅР°СЏ СЃСѓРјРјР°!";}
+		if (!$operation_id) {$err_code = 300; return "РќРµРІРµСЂРЅС‹Р№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРїРµСЂР°С†РёРё!";}
+	    if (!preg_match("/^[a-zA-Z0-9]+[-a-zA-Z0-9_]{2,}$/", $login)) {$err_code = 4; return "РќРµРІРµСЂРЅС‹Р№ Р»РѕРіРёРЅ РЅР° СЃР°Р№С‚Рµ!";}
 		$user = new users();
 		$uid = $user->GetUid($error, $login);
-		if (!$uid) {$err_code = 5; $error = "Неверный логин на сайте!";}
-		elseif (!$this->GetInfo($uid)) {$err_code = 79; $error = "Счет абонента не активен.";}
+		if (!$uid) {$err_code = 5; $error = "РќРµРІРµСЂРЅС‹Р№ Р»РѕРіРёРЅ РЅР° СЃР°Р№С‚Рµ!";}
+		elseif (!$this->GetInfo($uid)) {$err_code = 79; $error = "РЎС‡РµС‚ Р°Р±РѕРЅРµРЅС‚Р° РЅРµ Р°РєС‚РёРІРµРЅ.";}
 		return $error;
 	}
 	
 	/**
-	 * Проверка депозита и зачисление денег на счет.
+	 * РџСЂРѕРІРµСЂРєР° РґРµРїРѕР·РёС‚Р° Рё Р·Р°С‡РёСЃР»РµРЅРёРµ РґРµРЅРµРі РЅР° СЃС‡РµС‚.
 	 *
-	 * @param integer $op_id        Возвращает Код операции
-	 * @param integer $err_code     Возвращает Код ошибки
-	 * @param integer $ammount      Возвращает Сумма депозита
-	 * @param string $login         Логин депозитчика
-	 * @param integer $operation_id ИД Операции
-	 * @param string $op_date       Дата операции
-	 * @return string Сообщение об ошибке
+	 * @param integer $op_id        Р’РѕР·РІСЂР°С‰Р°РµС‚ РљРѕРґ РѕРїРµСЂР°С†РёРё
+	 * @param integer $err_code     Р’РѕР·РІСЂР°С‰Р°РµС‚ РљРѕРґ РѕС€РёР±РєРё
+	 * @param integer $ammount      Р’РѕР·РІСЂР°С‰Р°РµС‚ РЎСѓРјРјР° РґРµРїРѕР·РёС‚Р°
+	 * @param string $login         Р›РѕРіРёРЅ РґРµРїРѕР·РёС‚С‡РёРєР°
+	 * @param integer $operation_id РР” РћРїРµСЂР°С†РёРё
+	 * @param string $op_date       Р”Р°С‚Р° РѕРїРµСЂР°С†РёРё
+	 * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function checkdeposit(&$op_id, &$err_code, &$ammount, $login, $operation_id, $op_date){
 		
-		if (floatval($ammount) <= 0) { $err_code = 241; return "Неверная сумма!";}
+		if (floatval($ammount) <= 0) { $err_code = 241; return "РќРµРІРµСЂРЅР°СЏ СЃСѓРјРјР°!";}
 		
-		if (!$operation_id) return "Неверный идентификатор операции!";
+		if (!$operation_id) return "РќРµРІРµСЂРЅС‹Р№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРїРµСЂР°С†РёРё!";
 		
-		if (!$op_date) { $err_code = 300; return "Неверная дата операции!";}
+		if (!$op_date) { $err_code = 300; return "РќРµРІРµСЂРЅР°СЏ РґР°С‚Р° РѕРїРµСЂР°С†РёРё!";}
 
 		$date_arr=strptime($op_date,"%Y%m%d%H%M%S");
 		$date = ($date_arr['tm_year']+1900)."-".($date_arr['tm_mon']+1)."-".$date_arr['tm_mday']." ".$date_arr['tm_hour'].
 			":".$date_arr['tm_min'].":".$date_arr['tm_sec'];
-		if (strtotime($date) == -1) { $err_code = 300; return "Неверная дата операции!";}
+		if (strtotime($date) == -1) { $err_code = 300; return "РќРµРІРµСЂРЅР°СЏ РґР°С‚Р° РѕРїРµСЂР°С†РёРё!";}
 		
 		$user = new users();
 		$uid = $user->GetUid($error, $login);
-		if (!$uid) {$err_code = 5; $error = "Неверный счет на сайте!";}
-		elseif (!$this->GetInfo($uid)) {$err_code = 79; $error = "Счет абонента не активен.";}
+		if (!$uid) {$err_code = 5; $error = "РќРµРІРµСЂРЅС‹Р№ СЃС‡РµС‚ РЅР° СЃР°Р№С‚Рµ!";}
+		elseif (!$this->GetInfo($uid)) {$err_code = 79; $error = "РЎС‡РµС‚ Р°Р±РѕРЅРµРЅС‚Р° РЅРµ Р°РєС‚РёРІРµРЅ.";}
 		
-		$descr = "ОСМП от $date сумма - $ammount, номер покупки ОСМП $operation_id";
+		$descr = "РћРЎРњРџ РѕС‚ $date СЃСѓРјРјР° - $ammount, РЅРѕРјРµСЂ РїРѕРєСѓРїРєРё РћРЎРњРџ $operation_id";
 		
 		$op_id = 0;
 		$op_code = 12;
 		$amm = $ammount;
 		
-		$old_payment = $this->SearchPaymentByDescr("номер покупки ОСМП $operation_id");
+		$old_payment = $this->SearchPaymentByDescr("РЅРѕРјРµСЂ РїРѕРєСѓРїРєРё РћРЎРњРџ $operation_id");
 		if ($old_payment){
 			$op_id = $old_payment['id'];
 			$ammount = $old_payment['trs_sum'];							
 		} else {
 			$error = $this->deposit($op_id, $this->id, $amm, $descr, 8, $ammount, $op_code, 0, $date);
 			if ($error) {
-			    $error = "Невозможно завершить оплату. Повторите позже";
+			    $error = "РќРµРІРѕР·РјРѕР¶РЅРѕ Р·Р°РІРµСЂС€РёС‚СЊ РѕРїР»Р°С‚Сѓ. РџРѕРІС‚РѕСЂРёС‚Рµ РїРѕР·Р¶Рµ";
 			    $err_code = 1;
 			}
 		}

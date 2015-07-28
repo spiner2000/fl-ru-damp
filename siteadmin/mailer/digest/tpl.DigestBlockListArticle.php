@@ -4,7 +4,7 @@
             <td  bgcolor="#ffffff" width="20" height="40" valign="top"></td>
             <td  width="20"></td>
             <td >
-                <font color="#444444" size="3" face="arial,sans-serif"><a href="<?= $this->host . '/articles/'?>" style="color:#0F71C8" target="_blank"><b>Статьи</b></a></font>
+                <font color="#444444" size="3" face="arial,sans-serif"><a href="<?= $this->host . '/articles/'?>" style="color:#0F71C8" target="_blank"><b>РЎС‚Р°С‚СЊРё</b></a></font>
 
             </td>
             <td  width="20"></td>

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Êîíñüşìåğ äëÿ âîçâğàòà ñğåäñòâ ÷åğåç ßÄ MWS API
+ * ĞšĞ¾Ğ½ÑÑŒÑĞ¼ĞµÑ€ Ğ´Ğ»Ñ Ğ²Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‚Ğ° ÑÑ€ĞµĞ´ÑÑ‚Ğ² Ñ‡ĞµÑ€ĞµĞ· Ğ¯Ğ” MWS API
  */
 
 ini_set('display_errors',1);
@@ -26,7 +26,7 @@ require_once(ABS_PATH . '/classes/billing/BillPayback.php');
 
 
 $config["LOGLEVEL"] = NOTICE;
-//@todo: åñòü ğîòàöèÿ ëîãîâ ñì íèæå
+//@todo: ĞµÑÑ‚ÑŒ Ñ€Ğ¾Ñ‚Ğ°Ñ†Ğ¸Ñ Ğ»Ğ¾Ğ³Ğ¾Ğ² ÑĞ¼ Ğ½Ğ¸Ğ¶Ğµ
 //$config["LOGFILE"]  = ABS_PATH . '/classes/pgq/logs/payback.pgq';
 $config["DELAY"]    = 5;
 
@@ -51,7 +51,7 @@ class PGQDaemonPayback extends PGQConsumer
         $this->loglevel = $config["LOGLEVEL"];
         $this->delay    = $config["DELAY"];
         
-        //ïåğâûé çàïóñê ğîòàöèè
+        //Ğ¿ĞµÑ€Ğ²Ñ‹Ğ¹ Ğ·Ğ°Ğ¿ÑƒÑĞº Ñ€Ğ¾Ñ‚Ğ°Ñ†Ğ¸Ğ¸
         $this->logRotate();
         //$this->logfile  = $config["LOGFILE"];
     }
@@ -59,7 +59,7 @@ class PGQDaemonPayback extends PGQConsumer
     //--------------------------------------------------------------------------
     
     /**
-     * Ìåòîä ğîòàöèè ëîãîâ ïî ìåñÿöàì
+     * ĞœĞµÑ‚Ğ¾Ğ´ Ñ€Ğ¾Ñ‚Ğ°Ñ†Ğ¸Ğ¸ Ğ»Ğ¾Ğ³Ğ¾Ğ² Ğ¿Ğ¾ Ğ¼ĞµÑÑÑ†Ğ°Ğ¼
      */
     public function logRotate()
     {
@@ -84,7 +84,7 @@ class PGQDaemonPayback extends PGQConsumer
 
     public function process() 
     {
-        //îáÿçàòåëüíûé âûçîâ äëÿ ğîòàöèè ëîãîâ
+        //Ğ¾Ğ±ÑĞ·Ğ°Ñ‚ĞµĞ»ÑŒĞ½Ñ‹Ğ¹ Ğ²Ñ‹Ğ·Ğ¾Ğ² Ğ´Ğ»Ñ Ñ€Ğ¾Ñ‚Ğ°Ñ†Ğ¸Ğ¸ Ğ»Ğ¾Ğ³Ğ¾Ğ²
         $this->logRotate();
         
         parent::process();
@@ -119,11 +119,11 @@ class PGQDaemonPayback extends PGQConsumer
         try
         {
             $is_repeat = !BillPayback::getInstance()->doPayback($id);
-            if(!$is_repeat) $message = 'Ñğåäñòâà âîçâğàùåíû.';
+            if(!$is_repeat) $message = 'Ğ¡Ñ€ĞµĞ´ÑÑ‚Ğ²Ğ° Ğ²Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰ĞµĞ½Ñ‹.';
         }
         catch(BillPaybackException $e)
         {
-            $message = 'Îøèáêà: ' . $e->getMessage();
+            $message = 'ĞÑˆĞ¸Ğ±ĞºĞ°: ' . $e->getMessage();
             $is_repeat = $e->isRepeat();
         }
         

@@ -52,14 +52,14 @@ $arrow_asked = $field == 'asked' ? ($direction == 'asc' ? '<img src="/images/sor
 
 
 
-					<h2 class="b-layout__title b-layout__title_padbot_30">Участники сообщества &laquo;<a href="/commune/?id=<?= $comm['id'];?>" class="inherit"><?=$comm['name']?></a>&raquo;</h2>
+					<h2 class="b-layout__title b-layout__title_padbot_30">РЈС‡Р°СЃС‚РЅРёРєРё СЃРѕРѕР±С‰РµСЃС‚РІР° &laquo;<a href="/commune/?id=<?= $comm['id'];?>" class="inherit"><?=$comm['name']?></a>&raquo;</h2>
 					<div class="b-menu b-menu_line">
 						<ul class="b-menu__list">
 							<li class="b-menu__item <?= $mode == 'Asked' ? '' : ' b-menu__item_active';?>">
-								<a class="b-menu__link" href="<?= $uri_joined;?>" title="Все участники">Все участники (<?=($joinedCnt + $adminCnt + 1)?>)</a>
+								<a class="b-menu__link" href="<?= $uri_joined;?>" title="Р’СЃРµ СѓС‡Р°СЃС‚РЅРёРєРё">Р’СЃРµ СѓС‡Р°СЃС‚РЅРёРєРё (<?=($joinedCnt + $adminCnt + 1)?>)</a>
 							</li>
 							<li class="b-menu__item <?= $mode == 'Asked' ? ' b-menu__item_active' : '';?>">
-								<a class="b-menu__link" href="<?= $uri_ask;?>" title="Хотят вступить">Хотят вступить (<?=$comm['w_count']?>)</a>
+								<a class="b-menu__link" href="<?= $uri_ask;?>" title="РҐРѕС‚СЏС‚ РІСЃС‚СѓРїРёС‚СЊ">РҐРѕС‚СЏС‚ РІСЃС‚СѓРїРёС‚СЊ (<?=$comm['w_count']?>)</a>
 							</li>
 						</ul>
 					</div>
@@ -73,18 +73,18 @@ $arrow_asked = $field == 'asked' ? ($direction == 'asc' ? '<img src="/images/sor
                                                                         <input type="hidden" name="id" value="<?=$id?>"/>
                                                                         <input type="hidden" name="site" value="Admin.members"/>
                                                                         <input type="hidden" name="mode" value="<?=$mode?>"/>
-									<label>Показать:</label>
+									<label>РџРѕРєР°Р·Р°С‚СЊ:</label>
 									<?php if($mode == 'Asked') {?>
 									<input type="hidden" name="type" value="0">
 									<?php } else { //if?>
                                                                         <select name="type">
-                                                                            <option value="0" <?= !$user_filter ? 'selected="selected"' : '';?>>Все пользователи</option>
-                                                                            <option value="2" <?= $user_filter == 2 ? 'selected="selected"' : '';?>>Пользователи</option>
-                                                                            <option value="1" <?= $user_filter == 1 ? 'selected="selected"' : '';?>>Администраторы</option>
+                                                                            <option value="0" <?= !$user_filter ? 'selected="selected"' : '';?>>Р’СЃРµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё</option>
+                                                                            <option value="2" <?= $user_filter == 2 ? 'selected="selected"' : '';?>>РџРѕР»СЊР·РѕРІР°С‚РµР»Рё</option>
+                                                                            <option value="1" <?= $user_filter == 1 ? 'selected="selected"' : '';?>>РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂС‹</option>
                                                                         </select>
                                     <?php }//else?>                                   
                                                                         <input type="text" name="search" value="<?=$user_login?>"/>
-                                                                        <input type="submit" value="Найти" class="i-btn"/>
+                                                                        <input type="submit" value="РќР°Р№С‚Рё" class="i-btn"/>
                                                                     </form>
 
 

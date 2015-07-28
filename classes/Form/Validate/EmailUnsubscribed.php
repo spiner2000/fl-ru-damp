@@ -6,8 +6,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/guest/models/GuestInviteUnsubscribeMo
 /**
  * Class Form_Validate_NoUserExists
  * 
- * Валидатор проверяет наличие указанного типа пользователя 
- * по одному из входных параметров. 
+ * Р’Р°Р»РёРґР°С‚РѕСЂ РїСЂРѕРІРµСЂСЏРµС‚ РЅР°Р»РёС‡РёРµ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С‚РёРїР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ 
+ * РїРѕ РѕРґРЅРѕРјСѓ РёР· РІС…РѕРґРЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ. 
  */
 class Form_Validate_EmailUnsubscribed extends Zend_Validate_Abstract 
 {
@@ -15,7 +15,7 @@ class Form_Validate_EmailUnsubscribed extends Zend_Validate_Abstract
     
     
     protected $_messageTemplates = array(
-        self::ERROR_USER_UNSUBSCRIBED => 'Пользователь с этим e-mail адресом запретил отправку ему приглашений'
+        self::ERROR_USER_UNSUBSCRIBED => 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ СЌС‚РёРј e-mail Р°РґСЂРµСЃРѕРј Р·Р°РїСЂРµС‚РёР» РѕС‚РїСЂР°РІРєСѓ РµРјСѓ РїСЂРёРіР»Р°С€РµРЅРёР№'
     );
     
     public function isValid($value) 

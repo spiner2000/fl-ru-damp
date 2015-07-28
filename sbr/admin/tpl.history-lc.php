@@ -3,12 +3,12 @@
         <thead>
             <tr>
                 <th>#ID</th>
-                <th>Статус</th>
-                <th>Дата</th>
-                <th>Сделка</th>
-                <th>Цель</th>
-                <th>Сумма</th>
-                <th>Номер</th>
+                <th>РЎС‚Р°С‚СѓСЃ</th>
+                <th>Р”Р°С‚Р°</th>
+                <th>РЎРґРµР»РєР°</th>
+                <th>Р¦РµР»СЊ</th>
+                <th>РЎСѓРјРјР°</th>
+                <th>РќРѕРјРµСЂ</th>
             </tr>
         </thead>
         <tbody>
@@ -18,7 +18,7 @@
                 <td><?= $pskb_lc->state?></td>
                 <td><?= $pskb_lc->date ? date('d.m.Y H:i', strtotime($pskb_lc->date)) : ' - ' ?></td>
                 <td><?= $pskb_lc->uid?></td>
-                <td><?= $pskb_lc->target == true ? 'Исполнитель' : 'Заказчик'?></td>
+                <td><?= $pskb_lc->target == true ? 'РСЃРїРѕР»РЅРёС‚РµР»СЊ' : 'Р—Р°РєР°Р·С‡РёРє'?></td>
                 <td><?= $pskb_lc->sum?></td>
                 <td><?= $pskb_lc->account?></td>
             </tr>
@@ -26,6 +26,6 @@
         </tbody>
     </table>
 <?php } else { ?>
-Истории нет
+РСЃС‚РѕСЂРёРё РЅРµС‚
 <?php }//else?>
 

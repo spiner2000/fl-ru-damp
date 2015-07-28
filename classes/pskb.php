@@ -8,21 +8,21 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/multi_log.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/LocalDateTime.php");
 
 /**
- * Соглашения о вызове
+ * РЎРѕРіР»Р°С€РµРЅРёСЏ Рѕ РІС‹Р·РѕРІРµ
  * 
- * Веб-кошелек предоставляет Free Lance(далее FL) API для работы с аккредитивами(далее LC). API
- * представляет собой набор функций, к которым FL может совершать запросы и получать ответы.
- * Взаимодействие происходит по протоколу HTTP.
+ * Р’РµР±-РєРѕС€РµР»РµРє РїСЂРµРґРѕСЃС‚Р°РІР»СЏРµС‚ Free Lance(РґР°Р»РµРµ FL) API РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р°РєРєСЂРµРґРёС‚РёРІР°РјРё(РґР°Р»РµРµ LC). API
+ * РїСЂРµРґСЃС‚Р°РІР»СЏРµС‚ СЃРѕР±РѕР№ РЅР°Р±РѕСЂ С„СѓРЅРєС†РёР№, Рє РєРѕС‚РѕСЂС‹Рј FL РјРѕР¶РµС‚ СЃРѕРІРµСЂС€Р°С‚СЊ Р·Р°РїСЂРѕСЃС‹ Рё РїРѕР»СѓС‡Р°С‚СЊ РѕС‚РІРµС‚С‹.
+ * Р’Р·Р°РёРјРѕРґРµР№СЃС‚РІРёРµ РїСЂРѕРёСЃС…РѕРґРёС‚ РїРѕ РїСЂРѕС‚РѕРєРѕР»Сѓ HTTP.
  * 
- * Все вызовы API это POST запросы к URL https://werbpay.pscb.ru/apiLCPlace/methodName, 
- * где methodName это имя API - функции. Параметры передаются стандартным для POST - запроса
- * образом. В случае, если параметр не является простым типом, он кодируется по правилам JSON. Для
- * передачи текстовых значений параметров должна использоваться кодировка UTF-8. Дата должна
- * передаваться в формате dd.mm.yyyy.
+ * Р’СЃРµ РІС‹Р·РѕРІС‹ API СЌС‚Рѕ POST Р·Р°РїСЂРѕСЃС‹ Рє URL https://werbpay.pscb.ru/apiLCPlace/methodName, 
+ * РіРґРµ methodName СЌС‚Рѕ РёРјСЏ API - С„СѓРЅРєС†РёРё. РџР°СЂР°РјРµС‚СЂС‹ РїРµСЂРµРґР°СЋС‚СЃСЏ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Рј РґР»СЏ POST - Р·Р°РїСЂРѕСЃР°
+ * РѕР±СЂР°Р·РѕРј. Р’ СЃР»СѓС‡Р°Рµ, РµСЃР»Рё РїР°СЂР°РјРµС‚СЂ РЅРµ СЏРІР»СЏРµС‚СЃСЏ РїСЂРѕСЃС‚С‹Рј С‚РёРїРѕРј, РѕРЅ РєРѕРґРёСЂСѓРµС‚СЃСЏ РїРѕ РїСЂР°РІРёР»Р°Рј JSON. Р”Р»СЏ
+ * РїРµСЂРµРґР°С‡Рё С‚РµРєСЃС‚РѕРІС‹С… Р·РЅР°С‡РµРЅРёР№ РїР°СЂР°РјРµС‚СЂРѕРІ РґРѕР»Р¶РЅР° РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ РєРѕРґРёСЂРѕРІРєР° UTF-8. Р”Р°С‚Р° РґРѕР»Р¶РЅР°
+ * РїРµСЂРµРґР°РІР°С‚СЊСЃСЏ РІ С„РѕСЂРјР°С‚Рµ dd.mm.yyyy.
  * 
- * Ответ возвращается сервером в формате JSON.
+ * РћС‚РІРµС‚ РІРѕР·РІСЂР°С‰Р°РµС‚СЃСЏ СЃРµСЂРІРµСЂРѕРј РІ С„РѕСЂРјР°С‚Рµ JSON.
  * 
- * Все функции возвращают реквизиты LC в структуре LC (см. класс pskb_lc):
+ * Р’СЃРµ С„СѓРЅРєС†РёРё РІРѕР·РІСЂР°С‰Р°СЋС‚ СЂРµРєРІРёР·РёС‚С‹ LC РІ СЃС‚СЂСѓРєС‚СѓСЂРµ LC (СЃРј. РєР»Р°СЃСЃ pskb_lc):
  * 
  */
 class pskb {
@@ -33,7 +33,7 @@ class pskb {
 
     const CARD = 63;
     const WW = 199;
-    const WMR = 2;      //ид плат.системы WMR для передачи в банк (pskb_lc.ps[Cust|Perf])
+    const WMR = 2;      //РёРґ РїР»Р°С‚.СЃРёСЃС‚РµРјС‹ WMR РґР»СЏ РїРµСЂРµРґР°С‡Рё РІ Р±Р°РЅРє (pskb_lc.ps[Cust|Perf])
     
     const WW_ONLY_SUM = 15000;
     const MAX_YD_SUM  = 15000;
@@ -43,13 +43,13 @@ class pskb {
     const DATE_END_DELAY =      0;
     
     /**
-     * За сколько дней до окончания аккредитива, можно подать заявку в арбитраж
+     * Р—Р° СЃРєРѕР»СЊРєРѕ РґРЅРµР№ РґРѕ РѕРєРѕРЅС‡Р°РЅРёСЏ Р°РєРєСЂРµРґРёС‚РёРІР°, РјРѕР¶РЅРѕ РїРѕРґР°С‚СЊ Р·Р°СЏРІРєСѓ РІ Р°СЂР±РёС‚СЂР°Р¶
      */
     const ARBITRAGE_PERIOD_DAYS = 2;
     
     /**
-     * Время выделяемое каждому этапу ( 5 дней на проверку акта + 2 дня на введение кода ) 
-     * Раньше было еще + 10 дней на арбитраж - отменили тут #0023494
+     * Р’СЂРµРјСЏ РІС‹РґРµР»СЏРµРјРѕРµ РєР°Р¶РґРѕРјСѓ СЌС‚Р°РїСѓ ( 5 РґРЅРµР№ РЅР° РїСЂРѕРІРµСЂРєСѓ Р°РєС‚Р° + 2 РґРЅСЏ РЅР° РІРІРµРґРµРЅРёРµ РєРѕРґР° ) 
+     * Р Р°РЅСЊС€Рµ Р±С‹Р»Рѕ РµС‰Рµ + 10 РґРЅРµР№ РЅР° Р°СЂР±РёС‚СЂР°Р¶ - РѕС‚РјРµРЅРёР»Рё С‚СѓС‚ #0023494
      */
     const TEMP_STAGE_DELAY = 7;
     
@@ -80,15 +80,15 @@ class pskb {
     const URL_CARD_FRAME = 'https://webpay.pscb.ru/apiCard/list?lc=';
     const URL_CARD_FRAME_TEST = '/sbr/pskb_cards_test.php?lc=';
     /**
-     * Срок на резервирование средств (дней)
+     * РЎСЂРѕРє РЅР° СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ СЃСЂРµРґСЃС‚РІ (РґРЅРµР№)
      */
     const PERIOD_RESERVED = 5;
     /**
-     * Срок который дается на забирание денег фрилансеру после завершения сделки (дней) 
+     * РЎСЂРѕРє РєРѕС‚РѕСЂС‹Р№ РґР°РµС‚СЃСЏ РЅР° Р·Р°Р±РёСЂР°РЅРёРµ РґРµРЅРµРі С„СЂРёР»Р°РЅСЃРµСЂСѓ РїРѕСЃР»Рµ Р·Р°РІРµСЂС€РµРЅРёСЏ СЃРґРµР»РєРё (РґРЅРµР№) 
      */
     const PERIOD_FRL_EXEC = 2;
     /**
-     * Срок для принятия решения по сделке если время выделенное на сделку кончилось (дней)
+     * РЎСЂРѕРє РґР»СЏ РїСЂРёРЅСЏС‚РёСЏ СЂРµС€РµРЅРёСЏ РїРѕ СЃРґРµР»РєРµ РµСЃР»Рё РІСЂРµРјСЏ РІС‹РґРµР»РµРЅРЅРѕРµ РЅР° СЃРґРµР»РєСѓ РєРѕРЅС‡РёР»РѕСЃСЊ (РґРЅРµР№)
      */
     const PERIOD_EXP = 5;
     
@@ -102,71 +102,71 @@ class pskb {
     const ADM_PAGE_SIZE = 30;
     
     /**
-     * Активация проверк платежей через supercheck
+     * РђРєС‚РёРІР°С†РёСЏ РїСЂРѕРІРµСЂРє РїР»Р°С‚РµР¶РµР№ С‡РµСЂРµР· supercheck
      */
     const PSKB_SUPERCHECK = true;
-    const SUPERCHECK_LIMIT_ID_REQUEST = 300; // 300 ид в одном запросе (с их стороны длинна POST запроса 4000)
+    const SUPERCHECK_LIMIT_ID_REQUEST = 300; // 300 РёРґ РІ РѕРґРЅРѕРј Р·Р°РїСЂРѕСЃРµ (СЃ РёС… СЃС‚РѕСЂРѕРЅС‹ РґР»РёРЅРЅР° POST Р·Р°РїСЂРѕСЃР° 4000)
     
 //    const SECRET_CARDS = '0v4EB9tbk%y904JG*8dbV2Srrpb3w9V@';
     const SECRET_CARDS = 'H4fInVOoaVuuGLp0SPxhrbot4agtkgz6';
     
     public static $state_messages = array(
-        self::STATE_PASSED =>   'Требуется подписание акта',
-        self::STATE_TRANS =>    'Идет выплата средств.',
-        self::STATE_END =>      'Выплата была произведена',
-        self::STATE_COVER =>    'Выплата была произведена',
-        self::PAYOUT_END =>     'Выплата была произведена',
-        self::STATE_ERR =>      'Ошибка выплаты',
+        self::STATE_PASSED =>   'РўСЂРµР±СѓРµС‚СЃСЏ РїРѕРґРїРёСЃР°РЅРёРµ Р°РєС‚Р°',
+        self::STATE_TRANS =>    'РРґРµС‚ РІС‹РїР»Р°С‚Р° СЃСЂРµРґСЃС‚РІ.',
+        self::STATE_END =>      'Р’С‹РїР»Р°С‚Р° Р±С‹Р»Р° РїСЂРѕРёР·РІРµРґРµРЅР°',
+        self::STATE_COVER =>    'Р’С‹РїР»Р°С‚Р° Р±С‹Р»Р° РїСЂРѕРёР·РІРµРґРµРЅР°',
+        self::PAYOUT_END =>     'Р’С‹РїР»Р°С‚Р° Р±С‹Р»Р° РїСЂРѕРёР·РІРµРґРµРЅР°',
+        self::STATE_ERR =>      'РћС€РёР±РєР° РІС‹РїР»Р°С‚С‹',
     );
     
     public static $state_adm_messages = array(
-        self::STATE_NEW => 'Новый',
-        self::STATE_FORM => 'Проверка реквизитов',
-        self::STATE_PASSED =>   'Требуется подписание акта',
-        self::STATE_TRANS =>    'Идет выплата средств.',
-        self::STATE_END =>      'Завершен',
-        self::STATE_COVER =>    'Покрыт',
-        self::STATE_ERR =>      'Ошибка',
-        self::STATE_EXP_COVER =>'Прошла дата покрытия',
-        self::STATE_EXP_END =>  'Прошла дата аккредитива',
-        self::STATE_EXP_EXEC => 'Прошла дата подписания',
+        self::STATE_NEW => 'РќРѕРІС‹Р№',
+        self::STATE_FORM => 'РџСЂРѕРІРµСЂРєР° СЂРµРєРІРёР·РёС‚РѕРІ',
+        self::STATE_PASSED =>   'РўСЂРµР±СѓРµС‚СЃСЏ РїРѕРґРїРёСЃР°РЅРёРµ Р°РєС‚Р°',
+        self::STATE_TRANS =>    'РРґРµС‚ РІС‹РїР»Р°С‚Р° СЃСЂРµРґСЃС‚РІ.',
+        self::STATE_END =>      'Р—Р°РІРµСЂС€РµРЅ',
+        self::STATE_COVER =>    'РџРѕРєСЂС‹С‚',
+        self::STATE_ERR =>      'РћС€РёР±РєР°',
+        self::STATE_EXP_COVER =>'РџСЂРѕС€Р»Р° РґР°С‚Р° РїРѕРєСЂС‹С‚РёСЏ',
+        self::STATE_EXP_END =>  'РџСЂРѕС€Р»Р° РґР°С‚Р° Р°РєРєСЂРµРґРёС‚РёРІР°',
+        self::STATE_EXP_EXEC => 'РџСЂРѕС€Р»Р° РґР°С‚Р° РїРѕРґРїРёСЃР°РЅРёСЏ',
     );
     
     public static $state_po_messages = array(
-        self::STATE_COVER =>    'Требуется подписание акта',
-        self::STATE_PASSED =>   'Требуется подписание акта',
-        self::STATE_TRANS =>    'Идет выплата средств.',
-        self::PAYOUT_END =>     'Выплата произведена',
-        self::PAYOUT_ERR =>     'Зачислено в Веб-кошелек',
+        self::STATE_COVER =>    'РўСЂРµР±СѓРµС‚СЃСЏ РїРѕРґРїРёСЃР°РЅРёРµ Р°РєС‚Р°',
+        self::STATE_PASSED =>   'РўСЂРµР±СѓРµС‚СЃСЏ РїРѕРґРїРёСЃР°РЅРёРµ Р°РєС‚Р°',
+        self::STATE_TRANS =>    'РРґРµС‚ РІС‹РїР»Р°С‚Р° СЃСЂРµРґСЃС‚РІ.',
+        self::PAYOUT_END =>     'Р’С‹РїР»Р°С‚Р° РїСЂРѕРёР·РІРµРґРµРЅР°',
+        self::PAYOUT_ERR =>     'Р—Р°С‡РёСЃР»РµРЅРѕ РІ Р’РµР±-РєРѕС€РµР»РµРє',
     );
     
     public static $ps_str = array(
-        onlinedengi::BANK_YL =>   'БН',
+        onlinedengi::BANK_YL =>   'Р‘Рќ',
         onlinedengi::WMR =>   'WMR',
-        onlinedengi::YD =>   'ЯД',
-        onlinedengi::CARD =>   'БК',
-        self::WW => 'ВК',
+        onlinedengi::YD =>   'РЇР”',
+        onlinedengi::CARD =>   'Р‘Рљ',
+        self::WW => 'Р’Рљ',
         self::WMR =>   'WMR',
-        self::CARD =>   'БК',
+        self::CARD =>   'Р‘Рљ',
     );
 
         /**
-     * Коды доступных платежных методов
+     * РљРѕРґС‹ РґРѕСЃС‚СѓРїРЅС‹С… РїР»Р°С‚РµР¶РЅС‹С… РјРµС‚РѕРґРѕРІ
      * 
      * @var array 
      */
     public static $psys = array(
         self::USER_EMP => array(
-            onlinedengi::BANK_YL => 'Банковский перевод',
-            onlinedengi::WMR =>     'Webmoney, рубли',
-            onlinedengi::YD =>      'Яндекс.Деньги',
-            onlinedengi::CARD =>    'Банковская карта',
+            onlinedengi::BANK_YL => 'Р‘Р°РЅРєРѕРІСЃРєРёР№ РїРµСЂРµРІРѕРґ',
+            onlinedengi::WMR =>     'Webmoney, СЂСѓР±Р»Рё',
+            onlinedengi::YD =>      'РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё',
+            onlinedengi::CARD =>    'Р‘Р°РЅРєРѕРІСЃРєР°СЏ РєР°СЂС‚Р°',
         ),
         self::USER_FRL => array(
-            onlinedengi::BANK_YL => 'Банковский перевод',
-            onlinedengi::WMR =>     'Webmoney, рубли',
-            onlinedengi::YD =>      'Яндекс.Деньги',
-            self::WW =>             'Веб-кошелек',
+            onlinedengi::BANK_YL => 'Р‘Р°РЅРєРѕРІСЃРєРёР№ РїРµСЂРµРІРѕРґ',
+            onlinedengi::WMR =>     'Webmoney, СЂСѓР±Р»Рё',
+            onlinedengi::YD =>      'РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё',
+            self::WW =>             'Р’РµР±-РєРѕС€РµР»РµРє',
         )
     );
     
@@ -178,47 +178,47 @@ class pskb {
     public static $exrates_map = array(
         onlinedengi::BANK_YL => exrates::BANK,
         onlinedengi::WMR => exrates::WMR,
-        2 => exrates::WMR,   // Старый ИД
+        2 => exrates::WMR,   // РЎС‚Р°СЂС‹Р№ РР”
         onlinedengi::YD => exrates::YM,
         onlinedengi::CARD => exrates::CARD,
         self::WW => exrates::WEBM,
     );
 
     public static $psys_dest = array(
-        onlinedengi::BANK_YL => 'на Банковский счет',
-        onlinedengi::WMR => 'на счет в системе Webmoney',
-        onlinedengi::YD => 'на счет в системе Яндекс.Деньги',
-        self::WW => 'на счет в системе <a class="b-layout__link" href="https://webpay.pscb.ru/login/auth" target="_blank">Веб-кошелек</a> <a href="https://feedback.fl.ru/topic/397421-veb-koshelek-obschaya-informatsiya/" target="_blank" class="b-shadow__icon b-shadow__icon_top_-1 b-shadow__icon_valign_middle b-shadow__icon_quest b-shadow__icon_quest_no_event"></a>',
+        onlinedengi::BANK_YL => 'РЅР° Р‘Р°РЅРєРѕРІСЃРєРёР№ СЃС‡РµС‚',
+        onlinedengi::WMR => 'РЅР° СЃС‡РµС‚ РІ СЃРёСЃС‚РµРјРµ Webmoney',
+        onlinedengi::YD => 'РЅР° СЃС‡РµС‚ РІ СЃРёСЃС‚РµРјРµ РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё',
+        self::WW => 'РЅР° СЃС‡РµС‚ РІ СЃРёСЃС‚РµРјРµ <a class="b-layout__link" href="https://webpay.pscb.ru/login/auth" target="_blank">Р’РµР±-РєРѕС€РµР»РµРє</a> <a href="https://feedback.fl.ru/topic/397421-veb-koshelek-obschaya-informatsiya/" target="_blank" class="b-shadow__icon b-shadow__icon_top_-1 b-shadow__icon_valign_middle b-shadow__icon_quest b-shadow__icon_quest_no_event"></a>',
     );
 
     /**
-     * коды ошибок возвращенные банком, и соответствующие им описания
+     * РєРѕРґС‹ РѕС€РёР±РѕРє РІРѕР·РІСЂР°С‰РµРЅРЅС‹Рµ Р±Р°РЅРєРѕРј, Рё СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРµ РёРј РѕРїРёСЃР°РЅРёСЏ
      */
     public static $psys_error_codes = array(
-        '0' => 'Ошибка',
-        '100' => 'Просрочена дата покрытия',
-        '101' => 'Просрочена дата сдачи',
-        '102' => 'Истек срок действия аккредитива',
+        '0' => 'РћС€РёР±РєР°',
+        '100' => 'РџСЂРѕСЃСЂРѕС‡РµРЅР° РґР°С‚Р° РїРѕРєСЂС‹С‚РёСЏ',
+        '101' => 'РџСЂРѕСЃСЂРѕС‡РµРЅР° РґР°С‚Р° СЃРґР°С‡Рё',
+        '102' => 'РСЃС‚РµРє СЃСЂРѕРє РґРµР№СЃС‚РІРёСЏ Р°РєРєСЂРµРґРёС‚РёРІР°',
 
-        '200' => 'Пользователи уже имеют аккредитив',
+        '200' => 'РџРѕР»СЊР·РѕРІР°С‚РµР»Рё СѓР¶Рµ РёРјРµСЋС‚ Р°РєРєСЂРµРґРёС‚РёРІ',
 
-        '300' => 'Ошибка проверки реквизитов',
-        '301' => 'Недопустимое имя пользователя',
-        '302' => 'Ошибка: невозможно создать аккаунт',
-        '303' => 'Возвращают, если исполнитель указал некорректный номер',
-        '304' => 'Если заказчик',
-        '305' => 'Если оба номера некорректные',
+        '300' => 'РћС€РёР±РєР° РїСЂРѕРІРµСЂРєРё СЂРµРєРІРёР·РёС‚РѕРІ',
+        '301' => 'РќРµРґРѕРїСѓСЃС‚РёРјРѕРµ РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ',
+        '302' => 'РћС€РёР±РєР°: РЅРµРІРѕР·РјРѕР¶РЅРѕ СЃРѕР·РґР°С‚СЊ Р°РєРєР°СѓРЅС‚',
+        '303' => 'Р’РѕР·РІСЂР°С‰Р°СЋС‚, РµСЃР»Рё РёСЃРїРѕР»РЅРёС‚РµР»СЊ СѓРєР°Р·Р°Р» РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РЅРѕРјРµСЂ',
+        '304' => 'Р•СЃР»Рё Р·Р°РєР°Р·С‡РёРє',
+        '305' => 'Р•СЃР»Рё РѕР±Р° РЅРѕРјРµСЂР° РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Рµ',
 
-        '500' => 'Не обнаружен ID',
-        '501' => 'Не обнаружено входных данных или данные неверны',
-        '502' => 'Неверный ID',
-        '503' => 'Неверный статус',
-        '504' => 'Недостаточная сумма аккредитива',
-        '505' => 'Неверный код подтверждения',
-        '506' => 'Код не валиден для запроса',
-        '507' => 'Не валиден для закрытия',
-        '599' => 'Сервис временно не доступен',
-        '600' => 'Ошибка зачисления, зачислено на счет веб-кошелька',
+        '500' => 'РќРµ РѕР±РЅР°СЂСѓР¶РµРЅ ID',
+        '501' => 'РќРµ РѕР±РЅР°СЂСѓР¶РµРЅРѕ РІС…РѕРґРЅС‹С… РґР°РЅРЅС‹С… РёР»Рё РґР°РЅРЅС‹Рµ РЅРµРІРµСЂРЅС‹',
+        '502' => 'РќРµРІРµСЂРЅС‹Р№ ID',
+        '503' => 'РќРµРІРµСЂРЅС‹Р№ СЃС‚Р°С‚СѓСЃ',
+        '504' => 'РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅР°СЏ СЃСѓРјРјР° Р°РєРєСЂРµРґРёС‚РёРІР°',
+        '505' => 'РќРµРІРµСЂРЅС‹Р№ РєРѕРґ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ',
+        '506' => 'РљРѕРґ РЅРµ РІР°Р»РёРґРµРЅ РґР»СЏ Р·Р°РїСЂРѕСЃР°',
+        '507' => 'РќРµ РІР°Р»РёРґРµРЅ РґР»СЏ Р·Р°РєСЂС‹С‚РёСЏ',
+        '599' => 'РЎРµСЂРІРёСЃ РІСЂРµРјРµРЅРЅРѕ РЅРµ РґРѕСЃС‚СѓРїРµРЅ',
+        '600' => 'РћС€РёР±РєР° Р·Р°С‡РёСЃР»РµРЅРёСЏ, Р·Р°С‡РёСЃР»РµРЅРѕ РЅР° СЃС‡РµС‚ РІРµР±-РєРѕС€РµР»СЊРєР°',
     );    
     
     /**
@@ -265,7 +265,7 @@ class pskb {
     private $_log;
     
     /**
-     * Писать логи в таблицу _pskb_log ?
+     * РџРёСЃР°С‚СЊ Р»РѕРіРё РІ С‚Р°Р±Р»РёС†Сѓ _pskb_log ?
      * 
      * @var type 
      */
@@ -276,94 +276,94 @@ class pskb {
 //    private static $_instance;
     
     /**
-     * Период проверки статуса у банковского перевода 
+     * РџРµСЂРёРѕРґ РїСЂРѕРІРµСЂРєРё СЃС‚Р°С‚СѓСЃР° Сѓ Р±Р°РЅРєРѕРІСЃРєРѕРіРѕ РїРµСЂРµРІРѕРґР° 
      */
     const PERIOD_BANK_CHECK = '7 days';
     /**
-     * Список реквизитов, которые могут потребоваться для работы с банком.
+     * РЎРїРёСЃРѕРє СЂРµРєРІРёР·РёС‚РѕРІ, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ РїРѕС‚СЂРµР±РѕРІР°С‚СЊСЃСЏ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р°РЅРєРѕРј.
      * 
      * @var type 
      */
     public static $reqvs_fields = array(
-        'mob_phone' =>  array('Мобильный телефон', array( 'all' ), array('all')),
-        'full_name' =>  array('Полное название организации', array( onlinedengi::BANK_YL), array(sbr::FT_JURI) ) ,
-        'address_jry'=> array('Юридический адрес', array('all'), array(sbr::FT_JURI)),
-        'fio' =>        array('Фамилия, имя, отчество', array( 'all' ), array(sbr::FT_PHYS)),
-        'inn' =>        array('ИНН', array( onlinedengi::BANK_YL ), array(sbr::FT_JURI)),
-        'bank_bik' =>   array('БИК банка', array( onlinedengi::BANK_YL ), array('all')),
-        'bank_rs' =>    array('Расчетный счет', array( onlinedengi::BANK_YL), array('all')),
-        'el_yd' =>      array('Яндекс.Деньги', array( onlinedengi::YD ), array(sbr::FT_PHYS)),
+        'mob_phone' =>  array('РњРѕР±РёР»СЊРЅС‹Р№ С‚РµР»РµС„РѕРЅ', array( 'all' ), array('all')),
+        'full_name' =>  array('РџРѕР»РЅРѕРµ РЅР°Р·РІР°РЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё', array( onlinedengi::BANK_YL), array(sbr::FT_JURI) ) ,
+        'address_jry'=> array('Р®СЂРёРґРёС‡РµСЃРєРёР№ Р°РґСЂРµСЃ', array('all'), array(sbr::FT_JURI)),
+        'fio' =>        array('Р¤Р°РјРёР»РёСЏ, РёРјСЏ, РѕС‚С‡РµСЃС‚РІРѕ', array( 'all' ), array(sbr::FT_PHYS)),
+        'inn' =>        array('РРќРќ', array( onlinedengi::BANK_YL ), array(sbr::FT_JURI)),
+        'bank_bik' =>   array('Р‘РРљ Р±Р°РЅРєР°', array( onlinedengi::BANK_YL ), array('all')),
+        'bank_rs' =>    array('Р Р°СЃС‡РµС‚РЅС‹Р№ СЃС‡РµС‚', array( onlinedengi::BANK_YL), array('all')),
+        'el_yd' =>      array('РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё', array( onlinedengi::YD ), array(sbr::FT_PHYS)),
         'el_wmr' =>     array('WMR', array( onlinedengi::WMR ), array(sbr::FT_PHYS)),
     );
     
     /**
-     * Список реквизитов, которые могут потребоваться для работы с банком для НЕ резидентов
+     * РЎРїРёСЃРѕРє СЂРµРєРІРёР·РёС‚РѕРІ, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ РїРѕС‚СЂРµР±РѕРІР°С‚СЊСЃСЏ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р°РЅРєРѕРј РґР»СЏ РќР• СЂРµР·РёРґРµРЅС‚РѕРІ
      * 
      * @var type 
      */
     public static $reqvs_fields_rez = array(
-        'mob_phone' =>  array('Мобильный телефон', array( 'all' ), array('all')),
-        'full_name' =>  array('Полное название организации', array( onlinedengi::BANK_YL), array(sbr::FT_JURI) ) ,
-        'address_fct'=> array('Адрес фактического пребывания', array(onlinedengi::BANK_YL), array(sbr::FT_JURI)),
-        //'address_jry'=> array('Юридический адрес', array('all'), array(sbr::FT_JURI)),
-        'fio' =>        array('Фамилия, имя, отчество', array( 'all' ), array(sbr::FT_PHYS)),
-        'rnn' =>        array('Регистрационный номер в налоговом органе', array( onlinedengi::BANK_YL ), array('all')),
-        'bank_rf_bik'=> array('БИК уполномоченного банка в РФ', array( onlinedengi::BANK_YL ), array('all')),
-        'bank_rs' =>    array('Расчетный счет', array( onlinedengi::BANK_YL), array('all')),
-        'bank_ks' =>    array('Корреспондентский счет', array( onlinedengi::BANK_YL), array('all')),
-        'bank_name'=>   array('Название банка из реестра банков', array( onlinedengi::BANK_YL ) , array('all')  ),
-        //'bank_rf_ks'=>  array('Корреспондентский счет уполномоченного банка в РФ', array( onlinedengi::BANK_YL ), array('all') ),
-        'bank_city'    => array('Город банка', array( onlinedengi::BANK_YL ) , array('all')  ),
-        'bank_country' => array('Страна банка', array( onlinedengi::BANK_YL ) , array('all')  ),
+        'mob_phone' =>  array('РњРѕР±РёР»СЊРЅС‹Р№ С‚РµР»РµС„РѕРЅ', array( 'all' ), array('all')),
+        'full_name' =>  array('РџРѕР»РЅРѕРµ РЅР°Р·РІР°РЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё', array( onlinedengi::BANK_YL), array(sbr::FT_JURI) ) ,
+        'address_fct'=> array('РђРґСЂРµСЃ С„Р°РєС‚РёС‡РµСЃРєРѕРіРѕ РїСЂРµР±С‹РІР°РЅРёСЏ', array(onlinedengi::BANK_YL), array(sbr::FT_JURI)),
+        //'address_jry'=> array('Р®СЂРёРґРёС‡РµСЃРєРёР№ Р°РґСЂРµСЃ', array('all'), array(sbr::FT_JURI)),
+        'fio' =>        array('Р¤Р°РјРёР»РёСЏ, РёРјСЏ, РѕС‚С‡РµСЃС‚РІРѕ', array( 'all' ), array(sbr::FT_PHYS)),
+        'rnn' =>        array('Р РµРіРёСЃС‚СЂР°С†РёРѕРЅРЅС‹Р№ РЅРѕРјРµСЂ РІ РЅР°Р»РѕРіРѕРІРѕРј РѕСЂРіР°РЅРµ', array( onlinedengi::BANK_YL ), array('all')),
+        'bank_rf_bik'=> array('Р‘РРљ СѓРїРѕР»РЅРѕРјРѕС‡РµРЅРЅРѕРіРѕ Р±Р°РЅРєР° РІ Р Р¤', array( onlinedengi::BANK_YL ), array('all')),
+        'bank_rs' =>    array('Р Р°СЃС‡РµС‚РЅС‹Р№ СЃС‡РµС‚', array( onlinedengi::BANK_YL), array('all')),
+        'bank_ks' =>    array('РљРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС‚СЃРєРёР№ СЃС‡РµС‚', array( onlinedengi::BANK_YL), array('all')),
+        'bank_name'=>   array('РќР°Р·РІР°РЅРёРµ Р±Р°РЅРєР° РёР· СЂРµРµСЃС‚СЂР° Р±Р°РЅРєРѕРІ', array( onlinedengi::BANK_YL ) , array('all')  ),
+        //'bank_rf_ks'=>  array('РљРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС‚СЃРєРёР№ СЃС‡РµС‚ СѓРїРѕР»РЅРѕРјРѕС‡РµРЅРЅРѕРіРѕ Р±Р°РЅРєР° РІ Р Р¤', array( onlinedengi::BANK_YL ), array('all') ),
+        'bank_city'    => array('Р“РѕСЂРѕРґ Р±Р°РЅРєР°', array( onlinedengi::BANK_YL ) , array('all')  ),
+        'bank_country' => array('РЎС‚СЂР°РЅР° Р±Р°РЅРєР°', array( onlinedengi::BANK_YL ) , array('all')  ),
         'bank_swift'=>  array('S.W.I.F.T.', array( onlinedengi::BANK_YL ), array('all') ),
-        'el_yd' =>      array('Яндекс.Деньги', array( onlinedengi::YD ), array(sbr::FT_PHYS)),
+        'el_yd' =>      array('РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё', array( onlinedengi::YD ), array(sbr::FT_PHYS)),
         'el_wmr' =>     array('WMR', array( onlinedengi::WMR ), array(sbr::FT_PHYS)),
     );
     
     /**
-     * Список реквизитов, которые могут потребоваться для работы с банком
-     * для обоих (и резидентов и нерезидентов)
+     * РЎРїРёСЃРѕРє СЂРµРєРІРёР·РёС‚РѕРІ, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ РїРѕС‚СЂРµР±РѕРІР°С‚СЊСЃСЏ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р°РЅРєРѕРј
+     * РґР»СЏ РѕР±РѕРёС… (Рё СЂРµР·РёРґРµРЅС‚РѕРІ Рё РЅРµСЂРµР·РёРґРµРЅС‚РѕРІ)
      * 
      * @var type 
      */
     public static $reqvs_fields_both = array(
-        'mob_phone' =>  array('Мобильный телефон', array( 'all' ), array('all')),
-        'full_name' =>  array('Полное название организации', array( onlinedengi::BANK_YL), array(sbr::FT_JURI) ) ,
-        'address_jry'=> array('Юридический адрес', array('rezident'), array(sbr::FT_JURI)),
-        'address_fct'=> array('Адрес фактического пребывания', array('not_rezident'), array(sbr::FT_JURI)),
-        'fio' =>        array('Фамилия, имя, отчество', array( 'all' ), array(sbr::FT_PHYS)),
-        'inn' =>        array('ИНН', array( onlinedengi::BANK_YL, 'rezident' ), array(sbr::FT_JURI)),
-        'bank_bik' =>   array('БИК банка', array( onlinedengi::BANK_YL, 'rezident' ), array('all')),
-        'rnn' =>        array('Регистрационный номер в налоговом органе', array( onlinedengi::BANK_YL, 'not_rezident' ), array('all')),
-        'bank_rf_bik'=> array('БИК уполномоченного банка в РФ', array( onlinedengi::BANK_YL, 'not_rezident' ), array('all')),
-        'bank_rs' =>    array('Расчетный счет', array( onlinedengi::BANK_YL), array('all')),
-        'bank_name'=>   array('Название банка из реестра банков', array( onlinedengi::BANK_YL, 'not_rezident' ) , array('all')),
-        'bank_ks'=>     array('Корреспондентский счет', array( onlinedengi::BANK_YL, 'not_rezident' ), array('all')),
+        'mob_phone' =>  array('РњРѕР±РёР»СЊРЅС‹Р№ С‚РµР»РµС„РѕРЅ', array( 'all' ), array('all')),
+        'full_name' =>  array('РџРѕР»РЅРѕРµ РЅР°Р·РІР°РЅРёРµ РѕСЂРіР°РЅРёР·Р°С†РёРё', array( onlinedengi::BANK_YL), array(sbr::FT_JURI) ) ,
+        'address_jry'=> array('Р®СЂРёРґРёС‡РµСЃРєРёР№ Р°РґСЂРµСЃ', array('rezident'), array(sbr::FT_JURI)),
+        'address_fct'=> array('РђРґСЂРµСЃ С„Р°РєС‚РёС‡РµСЃРєРѕРіРѕ РїСЂРµР±С‹РІР°РЅРёСЏ', array('not_rezident'), array(sbr::FT_JURI)),
+        'fio' =>        array('Р¤Р°РјРёР»РёСЏ, РёРјСЏ, РѕС‚С‡РµСЃС‚РІРѕ', array( 'all' ), array(sbr::FT_PHYS)),
+        'inn' =>        array('РРќРќ', array( onlinedengi::BANK_YL, 'rezident' ), array(sbr::FT_JURI)),
+        'bank_bik' =>   array('Р‘РРљ Р±Р°РЅРєР°', array( onlinedengi::BANK_YL, 'rezident' ), array('all')),
+        'rnn' =>        array('Р РµРіРёСЃС‚СЂР°С†РёРѕРЅРЅС‹Р№ РЅРѕРјРµСЂ РІ РЅР°Р»РѕРіРѕРІРѕРј РѕСЂРіР°РЅРµ', array( onlinedengi::BANK_YL, 'not_rezident' ), array('all')),
+        'bank_rf_bik'=> array('Р‘РРљ СѓРїРѕР»РЅРѕРјРѕС‡РµРЅРЅРѕРіРѕ Р±Р°РЅРєР° РІ Р Р¤', array( onlinedengi::BANK_YL, 'not_rezident' ), array('all')),
+        'bank_rs' =>    array('Р Р°СЃС‡РµС‚РЅС‹Р№ СЃС‡РµС‚', array( onlinedengi::BANK_YL), array('all')),
+        'bank_name'=>   array('РќР°Р·РІР°РЅРёРµ Р±Р°РЅРєР° РёР· СЂРµРµСЃС‚СЂР° Р±Р°РЅРєРѕРІ', array( onlinedengi::BANK_YL, 'not_rezident' ) , array('all')),
+        'bank_ks'=>     array('РљРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС‚СЃРєРёР№ СЃС‡РµС‚', array( onlinedengi::BANK_YL, 'not_rezident' ), array('all')),
         'bank_swift'=>  array('S.W.I.F.T.', array( onlinedengi::BANK_YL, 'not_rezident' ), array('all')),
-        'el_yd' =>      array('Яндекс.Деньги', array( onlinedengi::YD ), array(sbr::FT_PHYS)),
+        'el_yd' =>      array('РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё', array( onlinedengi::YD ), array(sbr::FT_PHYS)),
         'el_wmr' =>     array('WMR', array( onlinedengi::WMR ), array(sbr::FT_PHYS)),
     );
     
     public static $card_messages = array(
-        0 =>        'Платеж обработан успешно',
-        1 =>        'Платеж находится в обработке, авторизация успешна',
-        2 =>        'Платеж ожидает подтверждения одноразовым паролем',
-        -1 =>       'Транзакция отвергнута ПЦ',
-        -2 =>       'Транзакция отвергнута ПСКБ',
-        -3 =>       'Неверные параметры платежа, платеж не прошел проверку у поставщика услуги',
-        -4 =>       'Карта не привязана: возникает, если карта, с которой пытаются сделать оплату, не привязана к веб-кошельку или услуге, а это требуется, согласно настройке услуги',
-        -5 =>       'Неизвестная ошибка, транзакция отвергнута',
-        -17 =>      'Подпись не верна',
-        -18 =>      'Нарушение лимитов ПСКБ',
-        -19 =>      'Попытка фрода',
-        -999 =>     'Запрос не подписан либо не указан аккредитив',
+        0 =>        'РџР»Р°С‚РµР¶ РѕР±СЂР°Р±РѕС‚Р°РЅ СѓСЃРїРµС€РЅРѕ',
+        1 =>        'РџР»Р°С‚РµР¶ РЅР°С…РѕРґРёС‚СЃСЏ РІ РѕР±СЂР°Р±РѕС‚РєРµ, Р°РІС‚РѕСЂРёР·Р°С†РёСЏ СѓСЃРїРµС€РЅР°',
+        2 =>        'РџР»Р°С‚РµР¶ РѕР¶РёРґР°РµС‚ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ РѕРґРЅРѕСЂР°Р·РѕРІС‹Рј РїР°СЂРѕР»РµРј',
+        -1 =>       'РўСЂР°РЅР·Р°РєС†РёСЏ РѕС‚РІРµСЂРіРЅСѓС‚Р° РџР¦',
+        -2 =>       'РўСЂР°РЅР·Р°РєС†РёСЏ РѕС‚РІРµСЂРіРЅСѓС‚Р° РџРЎРљР‘',
+        -3 =>       'РќРµРІРµСЂРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ РїР»Р°С‚РµР¶Р°, РїР»Р°С‚РµР¶ РЅРµ РїСЂРѕС€РµР» РїСЂРѕРІРµСЂРєСѓ Сѓ РїРѕСЃС‚Р°РІС‰РёРєР° СѓСЃР»СѓРіРё',
+        -4 =>       'РљР°СЂС‚Р° РЅРµ РїСЂРёРІСЏР·Р°РЅР°: РІРѕР·РЅРёРєР°РµС‚, РµСЃР»Рё РєР°СЂС‚Р°, СЃ РєРѕС‚РѕСЂРѕР№ РїС‹С‚Р°СЋС‚СЃСЏ СЃРґРµР»Р°С‚СЊ РѕРїР»Р°С‚Сѓ, РЅРµ РїСЂРёРІСЏР·Р°РЅР° Рє РІРµР±-РєРѕС€РµР»СЊРєСѓ РёР»Рё СѓСЃР»СѓРіРµ, Р° СЌС‚Рѕ С‚СЂРµР±СѓРµС‚СЃСЏ, СЃРѕРіР»Р°СЃРЅРѕ РЅР°СЃС‚СЂРѕР№РєРµ СѓСЃР»СѓРіРё',
+        -5 =>       'РќРµРёР·РІРµСЃС‚РЅР°СЏ РѕС€РёР±РєР°, С‚СЂР°РЅР·Р°РєС†РёСЏ РѕС‚РІРµСЂРіРЅСѓС‚Р°',
+        -17 =>      'РџРѕРґРїРёСЃСЊ РЅРµ РІРµСЂРЅР°',
+        -18 =>      'РќР°СЂСѓС€РµРЅРёРµ Р»РёРјРёС‚РѕРІ РџРЎРљР‘',
+        -19 =>      'РџРѕРїС‹С‚РєР° С„СЂРѕРґР°',
+        -999 =>     'Р—Р°РїСЂРѕСЃ РЅРµ РїРѕРґРїРёСЃР°РЅ Р»РёР±Рѕ РЅРµ СѓРєР°Р·Р°РЅ Р°РєРєСЂРµРґРёС‚РёРІ',
     );
     
     
     /**
      * 
-     * @param pskb_user $emp    Реквизиты заказчика в структуре объекта pskb_user
-     * @param pskb_user $frl    Реквизиты исполнителя в структуре объекта pskb_user
+     * @param pskb_user $emp    Р РµРєРІРёР·РёС‚С‹ Р·Р°РєР°Р·С‡РёРєР° РІ СЃС‚СЂСѓРєС‚СѓСЂРµ РѕР±СЉРµРєС‚Р° pskb_user
+     * @param pskb_user $frl    Р РµРєРІРёР·РёС‚С‹ РёСЃРїРѕР»РЅРёС‚РµР»СЏ РІ СЃС‚СЂСѓРєС‚СѓСЂРµ РѕР±СЉРµРєС‚Р° pskb_user
      */
     public function __construct (sbr $sbr = null) {        
         if (defined('PSKB_TEST_MODE')) {
@@ -381,17 +381,17 @@ class pskb {
     }
     
     /**
-     * Хэш данных на отправку ДОЛ
+     * РҐСЌС€ РґР°РЅРЅС‹С… РЅР° РѕС‚РїСЂР°РІРєСѓ Р”РћР›
      * 
-     * @param array  $lc      Массив с данными
-     * @param string $pfx     Префикс ('', 'Cust', 'Perf')    
+     * @param array  $lc      РњР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё
+     * @param string $pfx     РџСЂРµС„РёРєСЃ ('', 'Cust', 'Perf')    
      * @return string
      */
     public function getMd5Reqvs($lc, $pfx = '') {
         $check_params = array('tag', 'alien', 'name', 'num', 'ps', 'acc', 'inn', 'nameBank', 'swift', 'cityBank', 'cntrBank', 'corAccbank');
         $string_param = '';
         foreach($check_params as $check) {
-            if($check == 'num') $lc[$check.$pfx] = str_replace('+', '', $lc[$check.$pfx]); // В таблице pskb_lc идет без плюса а в pskb_users с плюсом
+            if($check == 'num') $lc[$check.$pfx] = str_replace('+', '', $lc[$check.$pfx]); // Р’ С‚Р°Р±Р»РёС†Рµ pskb_lc РёРґРµС‚ Р±РµР· РїР»СЋСЃР° Р° РІ pskb_users СЃ РїР»СЋСЃРѕРј
             $string_param .= (string) $lc[$check.$pfx];
         }
         return md5($string_param);
@@ -403,9 +403,9 @@ class pskb {
     }
     
     /**
-     * Возвращает заполненные данные пользователя
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р°РїРѕР»РЅРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * 
-     * @param integer $ps   Тип оплаты
+     * @param integer $ps   РўРёРї РѕРїР»Р°С‚С‹
      * @return boolean|\pskb_user
      */
     public function initPskbUser($ps) {
@@ -419,16 +419,16 @@ class pskb {
         return $user;
     }
     /**
-     * Подготавливаем запись LC.
-     * Проверяем доступность платежной системы в соответствии с указанными реквизитами.
-     * Если реквизитов достаточно, регистрируем их в таблице pskb_lc
+     * РџРѕРґРіРѕС‚Р°РІР»РёРІР°РµРј Р·Р°РїРёСЃСЊ LC.
+     * РџСЂРѕРІРµСЂСЏРµРј РґРѕСЃС‚СѓРїРЅРѕСЃС‚СЊ РїР»Р°С‚РµР¶РЅРѕР№ СЃРёСЃС‚РµРјС‹ РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ СѓРєР°Р·Р°РЅРЅС‹РјРё СЂРµРєРІРёР·РёС‚Р°РјРё.
+     * Р•СЃР»Рё СЂРµРєРІРёР·РёС‚РѕРІ РґРѕСЃС‚Р°С‚РѕС‡РЅРѕ, СЂРµРіРёСЃС‚СЂРёСЂСѓРµРј РёС… РІ С‚Р°Р±Р»РёС†Рµ pskb_lc
      * 
-     * @param type $ps          Выбранная платежная система
+     * @param type $ps          Р’С‹Р±СЂР°РЅРЅР°СЏ РїР»Р°С‚РµР¶РЅР°СЏ СЃРёСЃС‚РµРјР°
      * @return type
      */
     public function prepareLC ($ps) {
         if (!$ps) {
-            $this->_setError('Ошибка запроса.');
+            $this->_setError('РћС€РёР±РєР° Р·Р°РїСЂРѕСЃР°.');
             return false;
         }
         
@@ -449,11 +449,11 @@ class pskb {
         $user = new pskb_user($this->_sbr->$reqv_fn(), intval($this->_sbr->isEmp()));
         if ($user->checkPsys($ps, null, true)) {
             if ($this->_sbr->isEmp()) {
-                $err_txt = 'перевода';
+                $err_txt = 'РїРµСЂРµРІРѕРґР°';
             } else {
-                $err_txt = 'получения';
+                $err_txt = 'РїРѕР»СѓС‡РµРЅРёСЏ';
             }
-            $this->_setError("Указанный способ {$err_txt} денег не доступен. Не хватает данных на странице Финансы.");
+            $this->_setError("РЈРєР°Р·Р°РЅРЅС‹Р№ СЃРїРѕСЃРѕР± {$err_txt} РґРµРЅРµРі РЅРµ РґРѕСЃС‚СѓРїРµРЅ. РќРµ С…РІР°С‚Р°РµС‚ РґР°РЅРЅС‹С… РЅР° СЃС‚СЂР°РЅРёС†Рµ Р¤РёРЅР°РЅСЃС‹.");
             return false;
         }
         
@@ -474,7 +474,7 @@ class pskb {
           
         $lc = $this->getLC();
         if ($lc['lc_id'] && $lc['state'] == self::STATE_NEW) {
-            $this->_setError('Аккредитив уже создан. Ожидается оплата.');
+            $this->_setError('РђРєРєСЂРµРґРёС‚РёРІ СѓР¶Рµ СЃРѕР·РґР°РЅ. РћР¶РёРґР°РµС‚СЃСЏ РѕРїР»Р°С‚Р°.');
             return false;
         }
         if (!$this->_sbr->isEmp() && !$lc['id']) {
@@ -487,10 +487,10 @@ class pskb {
     }
     
     /**
-     * Создает аккредитив. Регистрирует, если необходимо, кошельки для пользователей.
-     * В случае создания кошельков банк отправляет пользователям смс с временным паролем.
+     * РЎРѕР·РґР°РµС‚ Р°РєРєСЂРµРґРёС‚РёРІ. Р РµРіРёСЃС‚СЂРёСЂСѓРµС‚, РµСЃР»Рё РЅРµРѕР±С…РѕРґРёРјРѕ, РєРѕС€РµР»СЊРєРё РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
+     * Р’ СЃР»СѓС‡Р°Рµ СЃРѕР·РґР°РЅРёСЏ РєРѕС€РµР»СЊРєРѕРІ Р±Р°РЅРє РѕС‚РїСЂР°РІР»СЏРµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј СЃРјСЃ СЃ РІСЂРµРјРµРЅРЅС‹Рј РїР°СЂРѕР»РµРј.
      * 
-     * @param type $sum         Сумма резерва
+     * @param type $sum         РЎСѓРјРјР° СЂРµР·РµСЂРІР°
      * 
      * @return pskb_lc
      */
@@ -506,7 +506,7 @@ class pskb {
                 if($this->not_different_finance) {
                     return 'no_different';
                 } else {
-                    $this->upLC(array('lc_id' => null), $lc['lc_id']); // Нужен новый аккредитив, изменились данные резерва
+                    $this->upLC(array('lc_id' => null), $lc['lc_id']); // РќСѓР¶РµРЅ РЅРѕРІС‹Р№ Р°РєРєСЂРµРґРёС‚РёРІ, РёР·РјРµРЅРёР»РёСЃСЊ РґР°РЅРЅС‹Рµ СЂРµР·РµСЂРІР°
                     $lc['lc_id'] = null;
                 }
             } elseif($lc_ch->state == self::STATE_COVER) {
@@ -517,12 +517,12 @@ class pskb {
         }
         
         if (!$lc) {
-            $this->_setError('Ошибка запроса.');
+            $this->_setError('РћС€РёР±РєР° Р·Р°РїСЂРѕСЃР°.');
             return false;
         }
         
         if ($lc['lc_id'] && $lc['state'] == self::STATE_NEW) {
-            $this->_setError('Аккредитив уже создан. Ожидается оплата.');
+            $this->_setError('РђРєРєСЂРµРґРёС‚РёРІ СѓР¶Рµ СЃРѕР·РґР°РЅ. РћР¶РёРґР°РµС‚СЃСЏ РѕРїР»Р°С‚Р°.');
             return false;
         }
         $cdate = new LocalDateTime();
@@ -538,7 +538,7 @@ class pskb {
             $work_time += $cdate->getCountDays();
         }
         
-        // Считаем 5 рабочих дней
+        // РЎС‡РёС‚Р°РµРј 5 СЂР°Р±РѕС‡РёС… РґРЅРµР№
         $cdate->getWorkForDay(self::DATE_COVER_DELAY, true);
         $cover_time = $cdate->getTimestamp();
         $exec_time = $cover_time + 3600*24*$work_time;
@@ -602,7 +602,7 @@ class pskb {
             
             $res = $this->upLC($data, $this->_sbr->data['id'], 'sbr_id');
         } else {
-            $this->_setError('Ошибка создания аккредитива.');
+            $this->_setError('РћС€РёР±РєР° СЃРѕР·РґР°РЅРёСЏ Р°РєРєСЂРµРґРёС‚РёРІР°.');
             $resp = false;
         }
         
@@ -610,13 +610,13 @@ class pskb {
     }
     
     /**
-     * Запрос на раскрытие аккредитива.
-     * Банк отправляет пользователю СМС с кодом.
+     * Р—Р°РїСЂРѕСЃ РЅР° СЂР°СЃРєСЂС‹С‚РёРµ Р°РєРєСЂРµРґРёС‚РёРІР°.
+     * Р‘Р°РЅРє РѕС‚РїСЂР°РІР»СЏРµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ РЎРњРЎ СЃ РєРѕРґРѕРј.
      * 
      * @param sbr_stages $stage 
-     * @param type $sumCust     Сумма к раскрытию заказчику
-     * @param type $sumPerf     Сумма к раскрытию исполнителю. ВАЖНО!! Сумму требуется указывать без учета нашей комиссии!!!
-     * @return pskb_lc          Описание аккредитива в структуре pskb_lc или false, если ошибка
+     * @param type $sumCust     РЎСѓРјРјР° Рє СЂР°СЃРєСЂС‹С‚РёСЋ Р·Р°РєР°Р·С‡РёРєСѓ
+     * @param type $sumPerf     РЎСѓРјРјР° Рє СЂР°СЃРєСЂС‹С‚РёСЋ РёСЃРїРѕР»РЅРёС‚РµР»СЋ. Р’РђР–РќРћ!! РЎСѓРјРјСѓ С‚СЂРµР±СѓРµС‚СЃСЏ СѓРєР°Р·С‹РІР°С‚СЊ Р±РµР· СѓС‡РµС‚Р° РЅР°С€РµР№ РєРѕРјРёСЃСЃРёРё!!!
+     * @return pskb_lc          РћРїРёСЃР°РЅРёРµ Р°РєРєСЂРµРґРёС‚РёРІР° РІ СЃС‚СЂСѓРєС‚СѓСЂРµ pskb_lc РёР»Рё false, РµСЃР»Рё РѕС€РёР±РєР°
      */
     public function payoutOpen (sbr_stages $stage, $sumCust, $sumPerf) {
 //        $stage = $this->_sbr->getStageById($stage_id);
@@ -650,26 +650,26 @@ class pskb {
     }
     
     /**
-     * Подтверждение запроса на выплату средств
+     * РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ Р·Р°РїСЂРѕСЃР° РЅР° РІС‹РїР»Р°С‚Сѓ СЃСЂРµРґСЃС‚РІ
      * 
      * @param type $code
-     * @return pskb_lc      Описание аккредитива в структуре pskb_lc или false, если ошибка
+     * @return pskb_lc      РћРїРёСЃР°РЅРёРµ Р°РєРєСЂРµРґРёС‚РёРІР° РІ СЃС‚СЂСѓРєС‚СѓСЂРµ pskb_lc РёР»Рё false, РµСЃР»Рё РѕС€РёР±РєР°
      */
     public function payoutConfirm ($code, $stage_id) {
         $lc = $this->getLC();
         
         if (!$lc) {
-            $this->_setError('Аккредитив не найден.');
+            $this->_setError('РђРєРєСЂРµРґРёС‚РёРІ РЅРµ РЅР°Р№РґРµРЅ.');
             return false;
         }
         
         if ($lc['state'] != 'passed') {
-            $this->_setError('Недопустимый статус аккредитива.');
+            $this->_setError('РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ СЃС‚Р°С‚СѓСЃ Р°РєРєСЂРµРґРёС‚РёРІР°.');
             return false;
         }
         
         $resp = $this->_subOpenLC($lc['lc_id'], $code);
-        if($resp->state != 'trans') $resp->state = 'err'; // Тут ожидаем от state либо trans либо err, все остальное считаем err
+        if($resp->state != 'trans') $resp->state = 'err'; // РўСѓС‚ РѕР¶РёРґР°РµРј РѕС‚ state Р»РёР±Рѕ trans Р»РёР±Рѕ err, РІСЃРµ РѕСЃС‚Р°Р»СЊРЅРѕРµ СЃС‡РёС‚Р°РµРј err
         if (!$resp->id || ($resp->state == 'err' && $resp->stateReason) ) {
             $this->_setError($resp->stateReason, true);
             return false;
@@ -688,7 +688,7 @@ class pskb {
     
     public function prolongLC ($id, $days) {        
         if ($days <= 0) {
-            $this->_setError('Даты аккредитива можно изменить только в сторону увеличения.');
+            $this->_setError('Р”Р°С‚С‹ Р°РєРєСЂРµРґРёС‚РёРІР° РјРѕР¶РЅРѕ РёР·РјРµРЅРёС‚СЊ С‚РѕР»СЊРєРѕ РІ СЃС‚РѕСЂРѕРЅСѓ СѓРІРµР»РёС‡РµРЅРёСЏ.');
             return false;
         }
         
@@ -698,12 +698,12 @@ class pskb {
         }
         
         if (!$lc) {
-            $this->_setError('Аккредитив не найден.');
+            $this->_setError('РђРєРєСЂРµРґРёС‚РёРІ РЅРµ РЅР°Р№РґРµРЅ.');
             return false;
         }
         
         if (preg_match('/^exp/', $lc['state']) || in_array($lc['state'], array(pskb::STATE_END, pskb::STATE_ERR))) {
-            $this->_setError('Недопустимый статус аккредитива.');
+            $this->_setError('РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ СЃС‚Р°С‚СѓСЃ Р°РєРєСЂРµРґРёС‚РёРІР°.');
             return false;
         }
         
@@ -714,13 +714,13 @@ class pskb {
         $dateExecLCtime = mktime(0, 0, 0, date('m', $dateExecLCtime), date('d', $dateExecLCtime)+$days, date('Y', $dateExecLCtime) );
         $dateEndLCtime = mktime(0, 0, 0, date('m', $dateEndLCtime), date('d', $dateEndLCtime)+$days, date('Y', $dateEndLCtime) );
         
-        $dateCoverLC = date('d.m.Y', $dateCoverLCtime); // дату покрытия не меняем
+        $dateCoverLC = date('d.m.Y', $dateCoverLCtime); // РґР°С‚Сѓ РїРѕРєСЂС‹С‚РёСЏ РЅРµ РјРµРЅСЏРµРј
         $dateExecLC = date('d.m.Y', $dateExecLCtime);
         $dateEndLC = date('d.m.Y', $dateEndLCtime);
         
         $resp = $this->_changeDateLC($id, $dateExecLC, $dateEndLC, $dateCoverLC);
         if (!$resp->id) {
-            $this->_setError('Недопустимый ответ сервера');
+            $this->_setError('РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ РѕС‚РІРµС‚ СЃРµСЂРІРµСЂР°');
             return false;
         }
         if ($resp->state == 'err') {
@@ -744,7 +744,7 @@ class pskb {
         $lc = $this->getLC();
         
         if (!$lc) {
-            $this->_setError('Аккредитив не найден.');
+            $this->_setError('РђРєРєСЂРµРґРёС‚РёРІ РЅРµ РЅР°Р№РґРµРЅ.');
             return false;
         }
         
@@ -768,8 +768,8 @@ class pskb {
             $sumCust = round($stage->data['cost'] * $emp_percent, 2);
             $sumPerf = round($stage->data['cost'] * $frl_percent, 2);
             
-            if( ($sumCust + $sumPerf)  != $this->data['cost'] && $sumCust > 0) { // Не сходится изза округления, обычно одна копейка не сходится
-                $sumCust -= 0.01; // Работодатель получит меньше. 
+            if( ($sumCust + $sumPerf)  != $this->data['cost'] && $sumCust > 0) { // РќРµ СЃС…РѕРґРёС‚СЃСЏ РёР·Р·Р° РѕРєСЂСѓРіР»РµРЅРёСЏ, РѕР±С‹С‡РЅРѕ РѕРґРЅР° РєРѕРїРµР№РєР° РЅРµ СЃС…РѕРґРёС‚СЃСЏ
+                $sumCust -= 0.01; // Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ РїРѕР»СѓС‡РёС‚ РјРµРЅСЊС€Рµ. 
             }
             
             $idAct   = $stage->getOuterNum();
@@ -791,7 +791,7 @@ class pskb {
         }
         
         if ($lc['state'] != 'passed') {
-            $this->_setError('Недопустимый статус аккредитива.');
+            $this->_setError('РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ СЃС‚Р°С‚СѓСЃ Р°РєРєСЂРµРґРёС‚РёРІР°.');
             return false;
         }
         
@@ -812,12 +812,12 @@ class pskb {
     public function checkNew () {
         $lc = $this->getLC();
         if (!$lc) {
-            $this->_setError('Аккредитив не найден.');
+            $this->_setError('РђРєРєСЂРµРґРёС‚РёРІ РЅРµ РЅР°Р№РґРµРЅ.');
             return 'err';
         }
         
         if ($lc['state'] != 'form') {
-            $this->_setError('Указанный статус не поддерживается.');
+            $this->_setError('РЈРєР°Р·Р°РЅРЅС‹Р№ СЃС‚Р°С‚СѓСЃ РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ.');
             return 'err';
         }
         
@@ -845,7 +845,7 @@ class pskb {
                 return $lc->state;
                 break;
             default:
-                $this->_setError('Указанный статус не поддерживается.');
+                $this->_setError('РЈРєР°Р·Р°РЅРЅС‹Р№ СЃС‚Р°С‚СѓСЃ РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ.');
                 return 'err';
         }
         
@@ -856,14 +856,14 @@ class pskb {
         $lc = $this->getLC();
         
         if (!$lc) {
-            $this->_setError('Аккредитив не найден.');
+            $this->_setError('РђРєРєСЂРµРґРёС‚РёРІ РЅРµ РЅР°Р№РґРµРЅ.');
             return false;
         }
         
         $pskb_lc = $this->_checkLC($lc['lc_id']);
         
         if (!$pskb_lc->id) {
-            $this->_setError('Аккредитив не найден, либо проблемы с каналом связи.');
+            $this->_setError('РђРєРєСЂРµРґРёС‚РёРІ РЅРµ РЅР°Р№РґРµРЅ, Р»РёР±Рѕ РїСЂРѕР±Р»РµРјС‹ СЃ РєР°РЅР°Р»РѕРј СЃРІСЏР·Рё.');
             return false;
         }
         
@@ -900,8 +900,8 @@ class pskb {
     }
     
     /**
-     * Проверяет обновления аккредитивов в статусах form|new.
-     * Если статус изменился на cover, отмечает резерв в соответствующей сделке
+     * РџСЂРѕРІРµСЂСЏРµС‚ РѕР±РЅРѕРІР»РµРЅРёСЏ Р°РєРєСЂРµРґРёС‚РёРІРѕРІ РІ СЃС‚Р°С‚СѓСЃР°С… form|new.
+     * Р•СЃР»Рё СЃС‚Р°С‚СѓСЃ РёР·РјРµРЅРёР»СЃСЏ РЅР° cover, РѕС‚РјРµС‡Р°РµС‚ СЂРµР·РµСЂРІ РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµР№ СЃРґРµР»РєРµ
      * 
      * @param type $cntIn       
      * @param type $cntOut
@@ -948,7 +948,7 @@ class pskb {
             
             switch ($lc->state) {
                 case self::STATE_NEW:
-                    // справедливо только для статуса form
+                    // СЃРїСЂР°РІРµРґР»РёРІРѕ С‚РѕР»СЊРєРѕ РґР»СЏ СЃС‚Р°С‚СѓСЃР° form
                     if ($row['state'] != pskb::STATE_FORM) {
                         continue;
                     }
@@ -958,7 +958,7 @@ class pskb {
                     $up_data['created'] = 'NOW()';
                     break;
                 case self::STATE_COVER:
-                    // покрыть можно только из статуса new
+                    // РїРѕРєСЂС‹С‚СЊ РјРѕР¶РЅРѕ С‚РѕР»СЊРєРѕ РёР· СЃС‚Р°С‚СѓСЃР° new
                     if ($row['state'] != pskb::STATE_NEW) {
                         continue;
                     }
@@ -966,9 +966,9 @@ class pskb {
                     $time = time();
                     $date = date('c', $time);
 
-                    $descr = "ПСКБ аккредитив #{$row['lc_id']};"
-                           . " платежная cистема пользователя #{$row['ps_emp']}: сумма оплаты {$row['sum']} руб.;"
-                           . " обработан {$date}";
+                    $descr = "РџРЎРљР‘ Р°РєРєСЂРµРґРёС‚РёРІ #{$row['lc_id']};"
+                           . " РїР»Р°С‚РµР¶РЅР°СЏ cРёСЃС‚РµРјР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ #{$row['ps_emp']}: СЃСѓРјРјР° РѕРїР»Р°С‚С‹ {$row['sum']} СЂСѓР±.;"
+                           . " РѕР±СЂР°Р±РѕС‚Р°РЅ {$date}";
 
                     $account = new account();
                     $account->GetInfo($row['emp_id'], true);
@@ -976,7 +976,7 @@ class pskb {
                     $ammount = $row['sum'];
                     $op_code = sbr::OP_RESERVE;
                     $amm = 0;
-                    $descr .= ' СбР #' . $row['sbr_id'];
+                    $descr .= ' РЎР±Р  #' . $row['sbr_id'];
                     $error = $account->deposit($op_id, $account->id, $amm, $descr, onlinedengi::PAYMENT_SYS, $ammount, $op_code, $row['sbr_id']);
                     
                     $up_data['covered'] = 'NOW()';
@@ -1000,13 +1000,13 @@ class pskb {
             $cntOut++;
         }
         
-        // отметить резерв
+        // РѕС‚РјРµС‚РёС‚СЊ СЂРµР·РµСЂРІ
         
         return true;
     }
 
     /**
-     * Фиксим дату выплат сделок
+     * Р¤РёРєСЃРёРј РґР°С‚Сѓ РІС‹РїР»Р°С‚ СЃРґРµР»РѕРє
      */
     public static function fixStagePayoutsCompleted() {
         $db = new DB('master');
@@ -1062,16 +1062,16 @@ class pskb {
         }
 
         $pskb = new pskb();
-        $pskb->_SuperCheck($list); // Супер пупер чек
+        $pskb->_SuperCheck($list); // РЎСѓРїРµСЂ РїСѓРїРµСЂ С‡РµРє
         return false;
     }
      
     /**
-     * Берем из наше БД, то что они нам записали в нее
+     * Р‘РµСЂРµРј РёР· РЅР°С€Рµ Р‘Р”, С‚Рѕ С‡С‚Рѕ РѕРЅРё РЅР°Рј Р·Р°РїРёСЃР°Р»Рё РІ РЅРµРµ
      * 
-     * @param type $lc_id       ИД аккредитива
-     * @param type $uid         ИД сделки (9000-1) где 9000 - ИД СБР 1 - номер этапа
-     * @param type $target      true - исполнитель false - заказчик
+     * @param type $lc_id       РР” Р°РєРєСЂРµРґРёС‚РёРІР°
+     * @param type $uid         РР” СЃРґРµР»РєРё (9000-1) РіРґРµ 9000 - РР” РЎР‘Р  1 - РЅРѕРјРµСЂ СЌС‚Р°РїР°
+     * @param type $target      true - РёСЃРїРѕР»РЅРёС‚РµР»СЊ false - Р·Р°РєР°Р·С‡РёРє
      * @return boolean|\pskb_lc
      */
     public function getSuperCheckLocal($lc_id, $uid, $target) {
@@ -1099,11 +1099,11 @@ class pskb {
     }
     
     /**
-     * Функция проверки статуса оплаченности этапа сделки
+     * Р¤СѓРЅРєС†РёСЏ РїСЂРѕРІРµСЂРєРё СЃС‚Р°С‚СѓСЃР° РѕРїР»Р°С‡РµРЅРЅРѕСЃС‚Рё СЌС‚Р°РїР° СЃРґРµР»РєРё
      * 
-     * @param array     $ids     ИД этапов
-     * @param integer   $cntIn   Количество обрабатываемых запросов
-     * @param integer   $cntOut  Количество обработанных запросов
+     * @param array     $ids     РР” СЌС‚Р°РїРѕРІ
+     * @param integer   $cntIn   РљРѕР»РёС‡РµСЃС‚РІРѕ РѕР±СЂР°Р±Р°С‚С‹РІР°РµРјС‹С… Р·Р°РїСЂРѕСЃРѕРІ
+     * @param integer   $cntOut  РљРѕР»РёС‡РµСЃС‚РІРѕ РѕР±СЂР°Р±РѕС‚Р°РЅРЅС‹С… Р·Р°РїСЂРѕСЃРѕРІ
      * @return boolean 
      */
     public static function checkStagePayouts( $ids = array(), &$cntIn = 0, &$cntOut = 0) {
@@ -1153,7 +1153,7 @@ class pskb {
                 continue;
             }
             
-            // Если выплата уже прошла но они не обновили статус сделки в checks -- тогда спрашиваем еще раз позже в ПСКБ
+            // Р•СЃР»Рё РІС‹РїР»Р°С‚Р° СѓР¶Рµ РїСЂРѕС€Р»Р° РЅРѕ РѕРЅРё РЅРµ РѕР±РЅРѕРІРёР»Рё СЃС‚Р°С‚СѓСЃ СЃРґРµР»РєРё РІ checks -- С‚РѕРіРґР° СЃРїСЂР°С€РёРІР°РµРј РµС‰Рµ СЂР°Р· РїРѕР·Р¶Рµ РІ РџРЎРљР‘
             if (!isset($resp[$row['lc_id']])) {
                 continue;
             }
@@ -1165,9 +1165,9 @@ class pskb {
             }
             
             switch ($pskb_lc->state) {
-                case self::PAYOUT_END: // отправлено по реквизитам
-                case self::PAYOUT_ERR: // зачислено в ВК
-                    // выплачено
+                case self::PAYOUT_END: // РѕС‚РїСЂР°РІР»РµРЅРѕ РїРѕ СЂРµРєРІРёР·РёС‚Р°Рј
+                case self::PAYOUT_ERR: // Р·Р°С‡РёСЃР»РµРЅРѕ РІ Р’Рљ
+                    // РІС‹РїР»Р°С‡РµРЅРѕ
                     $sbr = new sbr($row['emp_id']);
                     $stage = $sbr->getStage($row['stage_id']);
                     $stage->getArbitrage(false, false);
@@ -1214,7 +1214,7 @@ class pskb {
     }
     
     /**
-     * Обновляем старые сделки 
+     * РћР±РЅРѕРІР»СЏРµРј СЃС‚Р°СЂС‹Рµ СЃРґРµР»РєРё 
      */
     public static function checkStagePayoutsCompleted() {
         $db = new DB('master');
@@ -1241,7 +1241,7 @@ class pskb {
     }
     
     /**
-     * Обновляем банковское время покрытия  
+     * РћР±РЅРѕРІР»СЏРµРј Р±Р°РЅРєРѕРІСЃРєРѕРµ РІСЂРµРјСЏ РїРѕРєСЂС‹С‚РёСЏ  
      */
     public static function checkBankCovered() {
         $db = new DB('master');
@@ -1268,8 +1268,8 @@ class pskb {
     }
     
     /**
-     * Проверяет обновления аккредитивов в статусах trans.
-     * Если статус изменился на cover или end, отмечает выплату в соответствующей сделке
+     * РџСЂРѕРІРµСЂСЏРµС‚ РѕР±РЅРѕРІР»РµРЅРёСЏ Р°РєРєСЂРµРґРёС‚РёРІРѕРІ РІ СЃС‚Р°С‚СѓСЃР°С… trans.
+     * Р•СЃР»Рё СЃС‚Р°С‚СѓСЃ РёР·РјРµРЅРёР»СЃСЏ РЅР° cover РёР»Рё end, РѕС‚РјРµС‡Р°РµС‚ РІС‹РїР»Р°С‚Сѓ РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµР№ СЃРґРµР»РєРµ
      * 
      * @param type $cntIn       
      * @param type $cntOut
@@ -1315,7 +1315,7 @@ class pskb {
             switch ($lc->state) {
                 case self::STATE_COVER:
                 case self::STATE_END:
-                    // выплачено
+                    // РІС‹РїР»Р°С‡РµРЅРѕ
                     $sbr = new sbr($row['emp_id']);
                     $stage = $sbr->getStage($row['stage_id']);
                     $stage->getArbitrage(false, false);
@@ -1352,7 +1352,7 @@ class pskb {
     }
     
     /**
-     * Проверяет аккредитивы, даты которых истекли.
+     * РџСЂРѕРІРµСЂСЏРµС‚ Р°РєРєСЂРµРґРёС‚РёРІС‹, РґР°С‚С‹ РєРѕС‚РѕСЂС‹С… РёСЃС‚РµРєР»Рё.
      * 
      * @param type $cntIn       
      * @param type $cntOut
@@ -1406,7 +1406,7 @@ class pskb {
     }
     
     /**
-     * Продление сроков на сутки для приостановленных сделок (пауза/арбитраж)
+     * РџСЂРѕРґР»РµРЅРёРµ СЃСЂРѕРєРѕРІ РЅР° СЃСѓС‚РєРё РґР»СЏ РїСЂРёРѕСЃС‚Р°РЅРѕРІР»РµРЅРЅС‹С… СЃРґРµР»РѕРє (РїР°СѓР·Р°/Р°СЂР±РёС‚СЂР°Р¶)
      */
     public function prolongPaused(&$cntIn = 0, &$cntOut = 0) {
         $db = new DB('master');
@@ -1599,7 +1599,7 @@ class pskb {
     
     
     /**
-     * Удаляем запись о резерве (обычно удаляем если сделка идет в черновики)
+     * РЈРґР°Р»СЏРµРј Р·Р°РїРёСЃСЊ Рѕ СЂРµР·РµСЂРІРµ (РѕР±С‹С‡РЅРѕ СѓРґР°Р»СЏРµРј РµСЃР»Рё СЃРґРµР»РєР° РёРґРµС‚ РІ С‡РµСЂРЅРѕРІРёРєРё)
      * 
      * @return boolean 
      */
@@ -1640,29 +1640,29 @@ class pskb {
     }
 
     /**
-     * Добавление нового аккредитива
+     * Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ Р°РєРєСЂРµРґРёС‚РёРІР°
      * 
-     * @param type $sum             сумма
-     * @param type $numDog          номер догора (акта)
-     * @param type $dateExecLC      дата подачи документов
-     * @param type $dateEndLC       дата окончания LC
-     * @param type $dateCoverLC     дата покрытия LC
-     * @param type $tagCust         признак Заказчика юр. лица(например 1)
-     * @param type $nameCust        наименование Заказчика(ФИО или наименование юр.лица)
-     * @param type $numCust         номер телефона Заказчика
-     * @param type $psCust          наименование ПС(платежной системы) Заказчика (БИК в случаи безналичного перечисления)
-     * @param type $accCust         аккаунт(банковский счет) Заказчика в ПС
-     * @param type $innCust         ИНН Заказчика
-     * @param type $kppCust         КПП Заказчика
-     * @param type $tagPerf         признак Исполнителя юр. лица(например 1)
-     * @param type $namePerf        наименование Исполнителя(ФИО или наименование юр.лица)
-     * @param type $numPerf         номер телефона Исполнителя
-     * @param type $psPerf          наименование ПС(платежной системы Исполнителя)
-     * @param type $accPerf         аккаунт Исполнителя в ПС
-     * @param type $innPerf         ИНН Исполнителя
-     * @param type $kppPerf         КПП Исполнителя
-     * @param type $sumPlanned      Сумма без процентов
-     * @return pskb_lc              При успешном завершении - функция возвращает описание LC в структуре LC со статусом new
+     * @param type $sum             СЃСѓРјРјР°
+     * @param type $numDog          РЅРѕРјРµСЂ РґРѕРіРѕСЂР° (Р°РєС‚Р°)
+     * @param type $dateExecLC      РґР°С‚Р° РїРѕРґР°С‡Рё РґРѕРєСѓРјРµРЅС‚РѕРІ
+     * @param type $dateEndLC       РґР°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ LC
+     * @param type $dateCoverLC     РґР°С‚Р° РїРѕРєСЂС‹С‚РёСЏ LC
+     * @param type $tagCust         РїСЂРёР·РЅР°Рє Р—Р°РєР°Р·С‡РёРєР° СЋСЂ. Р»РёС†Р°(РЅР°РїСЂРёРјРµСЂ 1)
+     * @param type $nameCust        РЅР°РёРјРµРЅРѕРІР°РЅРёРµ Р—Р°РєР°Р·С‡РёРєР°(Р¤РРћ РёР»Рё РЅР°РёРјРµРЅРѕРІР°РЅРёРµ СЋСЂ.Р»РёС†Р°)
+     * @param type $numCust         РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° Р—Р°РєР°Р·С‡РёРєР°
+     * @param type $psCust          РЅР°РёРјРµРЅРѕРІР°РЅРёРµ РџРЎ(РїР»Р°С‚РµР¶РЅРѕР№ СЃРёСЃС‚РµРјС‹) Р—Р°РєР°Р·С‡РёРєР° (Р‘РРљ РІ СЃР»СѓС‡Р°Рё Р±РµР·РЅР°Р»РёС‡РЅРѕРіРѕ РїРµСЂРµС‡РёСЃР»РµРЅРёСЏ)
+     * @param type $accCust         Р°РєРєР°СѓРЅС‚(Р±Р°РЅРєРѕРІСЃРєРёР№ СЃС‡РµС‚) Р—Р°РєР°Р·С‡РёРєР° РІ РџРЎ
+     * @param type $innCust         РРќРќ Р—Р°РєР°Р·С‡РёРєР°
+     * @param type $kppCust         РљРџРџ Р—Р°РєР°Р·С‡РёРєР°
+     * @param type $tagPerf         РїСЂРёР·РЅР°Рє РСЃРїРѕР»РЅРёС‚РµР»СЏ СЋСЂ. Р»РёС†Р°(РЅР°РїСЂРёРјРµСЂ 1)
+     * @param type $namePerf        РЅР°РёРјРµРЅРѕРІР°РЅРёРµ РСЃРїРѕР»РЅРёС‚РµР»СЏ(Р¤РРћ РёР»Рё РЅР°РёРјРµРЅРѕРІР°РЅРёРµ СЋСЂ.Р»РёС†Р°)
+     * @param type $numPerf         РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РСЃРїРѕР»РЅРёС‚РµР»СЏ
+     * @param type $psPerf          РЅР°РёРјРµРЅРѕРІР°РЅРёРµ РџРЎ(РїР»Р°С‚РµР¶РЅРѕР№ СЃРёСЃС‚РµРјС‹ РСЃРїРѕР»РЅРёС‚РµР»СЏ)
+     * @param type $accPerf         Р°РєРєР°СѓРЅС‚ РСЃРїРѕР»РЅРёС‚РµР»СЏ РІ РџРЎ
+     * @param type $innPerf         РРќРќ РСЃРїРѕР»РЅРёС‚РµР»СЏ
+     * @param type $kppPerf         РљРџРџ РСЃРїРѕР»РЅРёС‚РµР»СЏ
+     * @param type $sumPlanned      РЎСѓРјРјР° Р±РµР· РїСЂРѕС†РµРЅС‚РѕРІ
+     * @return pskb_lc              РџСЂРё СѓСЃРїРµС€РЅРѕРј Р·Р°РІРµСЂС€РµРЅРёРё - С„СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ РѕРїРёСЃР°РЅРёРµ LC РІ СЃС‚СЂСѓРєС‚СѓСЂРµ LC СЃРѕ СЃС‚Р°С‚СѓСЃРѕРј new
      */
     protected function _addLC ($sum, $numDog, $dateExecLC, $dateEndLC, $dateCoverLC, 
         $tagCust, $alienCust, $nameCust, $numCust, $psCust, $accCust, $innCust, $nameBankCust, $swiftCust, $corAccbankCust, $emailCust, $cityBankCust, $cntrBankCust,  
@@ -1714,7 +1714,7 @@ class pskb {
         return $this->_checkLC($id);
     }
     /**
-     * Проверка аккредитива
+     * РџСЂРѕРІРµСЂРєР° Р°РєРєСЂРµРґРёС‚РёРІР°
      * 
      * @param type $id
      * @return pskb_lc
@@ -1726,10 +1726,10 @@ class pskb {
     }
     
     /**
-     * Проверка наличия кошелька по номеру телефона.
-     * Если кошелька нет - он будет создан, а по данному номеру прийдет смс для активации
+     * РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ РєРѕС€РµР»СЊРєР° РїРѕ РЅРѕРјРµСЂСѓ С‚РµР»РµС„РѕРЅР°.
+     * Р•СЃР»Рё РєРѕС€РµР»СЊРєР° РЅРµС‚ - РѕРЅ Р±СѓРґРµС‚ СЃРѕР·РґР°РЅ, Р° РїРѕ РґР°РЅРЅРѕРјСѓ РЅРѕРјРµСЂСѓ РїСЂРёР№РґРµС‚ СЃРјСЃ РґР»СЏ Р°РєС‚РёРІР°С†РёРё
      * 
-     * @param  string    $num   номер телефона в формате +79213247716
+     * @param  string    $num   РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РІ С„РѕСЂРјР°С‚Рµ +79213247716
      * @return pskb_lc
      */
     protected function _checkOrCreateWallet ($num) {
@@ -1741,9 +1741,9 @@ class pskb {
     }
     
     /**
-     * Публичный метод для self::_checkOrCreateWallet()
+     * РџСѓР±Р»РёС‡РЅС‹Р№ РјРµС‚РѕРґ РґР»СЏ self::_checkOrCreateWallet()
      * 
-     * @param  string    $num   номер телефона в формате +79213247716
+     * @param  string    $num   РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РІ С„РѕСЂРјР°С‚Рµ +79213247716
      * @return pskb_lc
      */
     public function checkOrCreateWallet ($num) {
@@ -1751,9 +1751,9 @@ class pskb {
     }
     
     /**
-     * Возвращает аккредитивы по id
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р°РєРєСЂРµРґРёС‚РёРІС‹ РїРѕ id
      * 
-     * @param string $ids     json объект в формате {"id": [1,2,...n]}    
+     * @param string $ids     json РѕР±СЉРµРєС‚ РІ С„РѕСЂРјР°С‚Рµ {"id": [1,2,...n]}    
      * @return array
      */
     public function _checks ($ids) {
@@ -1770,12 +1770,12 @@ class pskb {
     }
 
     /**
-     * Изменение срока LC
+     * РР·РјРµРЅРµРЅРёРµ СЃСЂРѕРєР° LC
      * 
-     * @param type $id          ид аккредитива
-     * @param type $dateExecLC      дата подачи документов
-     * @param type $dateEndLC       дата окончания LC
-     * @param type $dateCoverLC     дата покрытия LC
+     * @param type $id          РёРґ Р°РєРєСЂРµРґРёС‚РёРІР°
+     * @param type $dateExecLC      РґР°С‚Р° РїРѕРґР°С‡Рё РґРѕРєСѓРјРµРЅС‚РѕРІ
+     * @param type $dateEndLC       РґР°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ LC
+     * @param type $dateCoverLC     РґР°С‚Р° РїРѕРєСЂС‹С‚РёСЏ LC
      * @return pskb_lc 
      */
     protected function _changeDateLC ($id, $dateExecLC, $dateEndLC, $dateCoverLC) {
@@ -1788,14 +1788,14 @@ class pskb {
     }
 
     /**
-     * Раскрытие LC
+     * Р Р°СЃРєСЂС‹С‚РёРµ LC
      * 
-     * @param type $ID          ид аккредитива
-     * @param type $sum         сумма LC не раскрытая (перечисляется Заказчику)
-     * @param type $sumOpen     сумма LC раскрытая(перечисляется Исполнителю)
-     * @param type $numCust     номер телефона Исполнителя
-     * @param type $dateAct     дата подписания акта о выполненной работе
-     * @param type $idAct       уникальный идентификатор Акта о выполненной работе
+     * @param type $ID          РёРґ Р°РєРєСЂРµРґРёС‚РёРІР°
+     * @param type $sum         СЃСѓРјРјР° LC РЅРµ СЂР°СЃРєСЂС‹С‚Р°СЏ (РїРµСЂРµС‡РёСЃР»СЏРµС‚СЃСЏ Р—Р°РєР°Р·С‡РёРєСѓ)
+     * @param type $sumOpen     СЃСѓРјРјР° LC СЂР°СЃРєСЂС‹С‚Р°СЏ(РїРµСЂРµС‡РёСЃР»СЏРµС‚СЃСЏ РСЃРїРѕР»РЅРёС‚РµР»СЋ)
+     * @param type $numCust     РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РСЃРїРѕР»РЅРёС‚РµР»СЏ
+     * @param type $dateAct     РґР°С‚Р° РїРѕРґРїРёСЃР°РЅРёСЏ Р°РєС‚Р° Рѕ РІС‹РїРѕР»РЅРµРЅРЅРѕР№ СЂР°Р±РѕС‚Рµ
+     * @param type $idAct       СѓРЅРёРєР°Р»СЊРЅС‹Р№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РђРєС‚Р° Рѕ РІС‹РїРѕР»РЅРµРЅРЅРѕР№ СЂР°Р±РѕС‚Рµ
      * @return pskb_lc 
      */
     protected function _openLC ($ID, $sumCust, $sumPerf, $dateAct, $idAct) {
@@ -1809,10 +1809,10 @@ class pskb {
     }
 
     /**
-     * Подписание акта Исполнителем с суммой к раскрытию и суммой к возврату LC
+     * РџРѕРґРїРёСЃР°РЅРёРµ Р°РєС‚Р° РСЃРїРѕР»РЅРёС‚РµР»РµРј СЃ СЃСѓРјРјРѕР№ Рє СЂР°СЃРєСЂС‹С‚РёСЋ Рё СЃСѓРјРјРѕР№ Рє РІРѕР·РІСЂР°С‚Сѓ LC
      * 
-     * @param type $ID          ид аккредитива
-     * @param type $asp         код введенный пользователем в личном кабинете FL
+     * @param type $ID          РёРґ Р°РєРєСЂРµРґРёС‚РёРІР°
+     * @param type $asp         РєРѕРґ РІРІРµРґРµРЅРЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј РІ Р»РёС‡РЅРѕРј РєР°Р±РёРЅРµС‚Рµ FL
      * @return pskb_lc 
      */
     protected function _subOpenLC ($ID, $asp) {
@@ -1823,10 +1823,10 @@ class pskb {
     }
 
     /**
-     * Повторное перечисление средств LC
-     * Приемлемо только для LC в статусе err.
+     * РџРѕРІС‚РѕСЂРЅРѕРµ РїРµСЂРµС‡РёСЃР»РµРЅРёРµ СЃСЂРµРґСЃС‚РІ LC
+     * РџСЂРёРµРјР»РµРјРѕ С‚РѕР»СЊРєРѕ РґР»СЏ LC РІ СЃС‚Р°С‚СѓСЃРµ err.
      * 
-     * @param type $id          ид аккредитива
+     * @param type $id          РёРґ Р°РєРєСЂРµРґРёС‚РёРІР°
      * @return pskb_lc 
      */
     protected function _transLC ($id) {
@@ -1836,10 +1836,10 @@ class pskb {
     }
     
     /**
-     * Запрос SMS кода для акта по LC
+     * Р—Р°РїСЂРѕСЃ SMS РєРѕРґР° РґР»СЏ Р°РєС‚Р° РїРѕ LC
      * 
-     * @param type $id          ид аккредитива
-     * @param type $num         Номер для смс
+     * @param type $id          РёРґ Р°РєРєСЂРµРґРёС‚РёРІР°
+     * @param type $num         РќРѕРјРµСЂ РґР»СЏ СЃРјСЃ
      * @return pskb_lc
      */
     protected function _reqCode ($id) {
@@ -1849,10 +1849,10 @@ class pskb {
     }
     
     /**
-     * Закрытие LC
+     * Р—Р°РєСЂС‹С‚РёРµ LC
      * 
-     * @param type $id          ид аккредитива
-     * @param type $num         Номер для смс
+     * @param type $id          РёРґ Р°РєРєСЂРµРґРёС‚РёРІР°
+     * @param type $num         РќРѕРјРµСЂ РґР»СЏ СЃРјСЃ
      * @return pskb_lc
      */
     protected function _closeLC ($id) {
@@ -1874,7 +1874,7 @@ class pskb {
     }
     
     /**
-     * Функция для заполнения суперчека
+     * Р¤СѓРЅРєС†РёСЏ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ СЃСѓРїРµСЂС‡РµРєР°
      * 
      * @global type $DB
      * @return type
@@ -1912,9 +1912,9 @@ class pskb {
             $url_rejoin = $_host . $url_rejoin;
         }
         
-        $url_rejoin .= "?key=".pskb::KEY_CHECK_AUTH; // Авторизация на  нашей стороне
+        $url_rejoin .= "?key=".pskb::KEY_CHECK_AUTH; // РђРІС‚РѕСЂРёР·Р°С†РёСЏ РЅР°  РЅР°С€РµР№ СЃС‚РѕСЂРѕРЅРµ
         
-        // Так как у товарищей лимит на входящий запрос в 4000 символов делим идишники на части
+        // РўР°Рє РєР°Рє Сѓ С‚РѕРІР°СЂРёС‰РµР№ Р»РёРјРёС‚ РЅР° РІС…РѕРґСЏС‰РёР№ Р·Р°РїСЂРѕСЃ РІ 4000 СЃРёРјРІРѕР»РѕРІ РґРµР»РёРј РёРґРёС€РЅРёРєРё РЅР° С‡Р°СЃС‚Рё
         $parts_ids = array_chunk($ids, pskb::SUPERCHECK_LIMIT_ID_REQUEST);
         foreach($parts_ids as $lc_ids) {
             $req = array(
@@ -1928,11 +1928,11 @@ class pskb {
     }
     
     /**
-     * Возвращает историю и состояние выплат по LC, либо по одной выплате
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РёСЃС‚РѕСЂРёСЋ Рё СЃРѕСЃС‚РѕСЏРЅРёРµ РІС‹РїР»Р°С‚ РїРѕ LC, Р»РёР±Рѕ РїРѕ РѕРґРЅРѕР№ РІС‹РїР»Р°С‚Рµ
      * 
-     * @param type $id          ид аккредитива
-     * @param type $uid         номер договора, переданный в openLC
-     * @param type $target      направление выплаты (false - заказчику, true - исполнителю)
+     * @param type $id          РёРґ Р°РєРєСЂРµРґРёС‚РёРІР°
+     * @param type $uid         РЅРѕРјРµСЂ РґРѕРіРѕРІРѕСЂР°, РїРµСЂРµРґР°РЅРЅС‹Р№ РІ openLC
+     * @param type $target      РЅР°РїСЂР°РІР»РµРЅРёРµ РІС‹РїР»Р°С‚С‹ (false - Р·Р°РєР°Р·С‡РёРєСѓ, true - РёСЃРїРѕР»РЅРёС‚РµР»СЋ)
      */
     protected function _historyLC($id, $uid = null, $target = null) {
         $req['id'] = $id;
@@ -2030,13 +2030,13 @@ class pskb {
         return $msg;
     }
     /**
-     * Записываем текущую ошибку
-     * @param string  $msg              Текст ошибки
-     * @param boolean $prepareError     Обработка ошибок перед записью
+     * Р—Р°РїРёСЃС‹РІР°РµРј С‚РµРєСѓС‰СѓСЋ РѕС€РёР±РєСѓ
+     * @param string  $msg              РўРµРєСЃС‚ РѕС€РёР±РєРё
+     * @param boolean $prepareError     РћР±СЂР°Р±РѕС‚РєР° РѕС€РёР±РѕРє РїРµСЂРµРґ Р·Р°РїРёСЃСЊСЋ
      */
     private function _setError( $msg , $prepareError = false) {
         if (!trim($msg)) {
-            $msg = 'Сервис временно не доступен.';
+            $msg = 'РЎРµСЂРІРёСЃ РІСЂРµРјРµРЅРЅРѕ РЅРµ РґРѕСЃС‚СѓРїРµРЅ.';
         }
         if($prepareError) {
             $msg = $this->_prepareError($msg);
@@ -2096,9 +2096,9 @@ class pskb {
     }
     
     /**
-     * Берем список обязательных полей, они отличаются в зависимоти от резиденства пользователя
+     * Р‘РµСЂРµРј СЃРїРёСЃРѕРє РѕР±СЏР·Р°С‚РµР»СЊРЅС‹С… РїРѕР»РµР№, РѕРЅРё РѕС‚Р»РёС‡Р°СЋС‚СЃСЏ РІ Р·Р°РІРёСЃРёРјРѕС‚Рё РѕС‚ СЂРµР·РёРґРµРЅСЃС‚РІР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * 
-     * @param integer $rez_type    Тип резидентства пользователя @see sbr::RT_*
+     * @param integer $rez_type    РўРёРї СЂРµР·РёРґРµРЅС‚СЃС‚РІР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ @see sbr::RT_*
      * @return array
      */
     public static function getReqvsFields($rez_type = null) {
@@ -2124,9 +2124,9 @@ class pskb {
     }
     
     /**
-     * Обработка реквизита для его частичного вывода с целью защиты
+     * РћР±СЂР°Р±РѕС‚РєР° СЂРµРєРІРёР·РёС‚Р° РґР»СЏ РµРіРѕ С‡Р°СЃС‚РёС‡РЅРѕРіРѕ РІС‹РІРѕРґР° СЃ С†РµР»СЊСЋ Р·Р°С‰РёС‚С‹
      * 
-     * @param string $reqv Реквизит (банковский счет, номер кошелька)
+     * @param string $reqv Р РµРєРІРёР·РёС‚ (Р±Р°РЅРєРѕРІСЃРєРёР№ СЃС‡РµС‚, РЅРѕРјРµСЂ РєРѕС€РµР»СЊРєР°)
      * @return string
      */
     public static function preparePayedReqvs($reqv) {
@@ -2135,10 +2135,10 @@ class pskb {
     }
     
     /**
-     * Возвращает массив для вывода реквизитов
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ РґР»СЏ РІС‹РІРѕРґР° СЂРµРєРІРёР·РёС‚РѕРІ
      * 
-     * @param array  $lc    Данные по аккредитиву
-     * @param string $type  Тип пользователя по которому необходимы реквизиты
+     * @param array  $lc    Р”Р°РЅРЅС‹Рµ РїРѕ Р°РєРєСЂРµРґРёС‚РёРІСѓ
+     * @param string $type  РўРёРї РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РЅРµРѕР±С…РѕРґРёРјС‹ СЂРµРєРІРёР·РёС‚С‹
      * @return type 
      */
     public static function getPayedReqvs($lc, $type = 'emp') {
@@ -2149,23 +2149,23 @@ class pskb {
             case onlinedengi::BANK_FL:
             case onlinedengi::BANK_YL:
                 if($lc['nameBank'.$lc_type]) {
-                    $reqv['Банк:'] = $lc['nameBank'.$lc_type];
+                    $reqv['Р‘Р°РЅРє:'] = $lc['nameBank'.$lc_type];
                 }
-                $reqv['Счет:'] = self::preparePayedReqvs($lc['acc'.$lc_type]);
+                $reqv['РЎС‡РµС‚:'] = self::preparePayedReqvs($lc['acc'.$lc_type]);
                 break;
-            case 2: // Старый ИД ВМР 
+            case 2: // РЎС‚Р°СЂС‹Р№ РР” Р’РњР  
             case onlinedengi::WMR:
             case onlinedengi::YD:
-                $reqv['Кошелек:'] = self::preparePayedReqvs($lc['acc'.$lc_type]);
+                $reqv['РљРѕС€РµР»РµРє:'] = self::preparePayedReqvs($lc['acc'.$lc_type]);
                 break;
             case onlinedengi::CARD:
-                $reqv['Карта:'] = self::preparePayedReqvs($lc['acc'.$lc_type]);
+                $reqv['РљР°СЂС‚Р°:'] = self::preparePayedReqvs($lc['acc'.$lc_type]);
                 break;
             case self::WW:
-                $reqv['Кошелек:'] = self::preparePayedReqvs($lc['num'.$lc_type]);
+                $reqv['РљРѕС€РµР»РµРє:'] = self::preparePayedReqvs($lc['num'.$lc_type]);
                 break;
             default:
-                $reqv['Счет:'] = self::preparePayedReqvs($lc['acc'.$lc_type]);
+                $reqv['РЎС‡РµС‚:'] = self::preparePayedReqvs($lc['acc'.$lc_type]);
         }
         
         return $reqv;
@@ -2196,12 +2196,12 @@ class pskb {
                                     continue;
                                 }
                                 
-                                // Пытаемся определить uid если он пустой, подходит только для одноэтапной сделки
-                                // @todo с многоэтапными тоже что-то придумать надо
+                                // РџС‹С‚Р°РµРјСЃСЏ РѕРїСЂРµРґРµР»РёС‚СЊ uid РµСЃР»Рё РѕРЅ РїСѓСЃС‚РѕР№, РїРѕРґС…РѕРґРёС‚ С‚РѕР»СЊРєРѕ РґР»СЏ РѕРґРЅРѕСЌС‚Р°РїРЅРѕР№ СЃРґРµР»РєРё
+                                // @todo СЃ РјРЅРѕРіРѕСЌС‚Р°РїРЅС‹РјРё С‚РѕР¶Рµ С‡С‚Рѕ-С‚Рѕ РїСЂРёРґСѓРјР°С‚СЊ РЅР°РґРѕ
                                 if($pskb_lc->uid == '' || $pskb_lc->uid == null) {
                                     $sql = "SELECT s.id FROM pskb_lc pl
                                             INNER JOIN sbr s ON s.id = pl.sbr_id
-                                            WHERE pl.lc_id = ? AND stages_cnt = 1"; // Запрос делаем что-бы точно проверить что этап в сделке один единственный
+                                            WHERE pl.lc_id = ? AND stages_cnt = 1"; // Р—Р°РїСЂРѕСЃ РґРµР»Р°РµРј С‡С‚Рѕ-Р±С‹ С‚РѕС‡РЅРѕ РїСЂРѕРІРµСЂРёС‚СЊ С‡С‚Рѕ СЌС‚Р°Рї РІ СЃРґРµР»РєРµ РѕРґРёРЅ РµРґРёРЅСЃС‚РІРµРЅРЅС‹Р№
                                     $sbr_id = $DB->val($sql, $pskb_req->id);
                                     if($sbr_id > 0) {
                                         $pskb_lc->uid = "{$sbr_id}-1";
@@ -2210,7 +2210,7 @@ class pskb {
                                 
                                 if($DB->val("SELECT id FROM pskb_lc_supercheck WHERE lc_id = ? AND uid = ? AND state = ? AND date = ? AND target = ?b", 
                                             $pskb_req->id, "{$pskb_lc->uid}", $pskb_lc->state, $pskb_lc->date, $pskb_lc->target ? true : false) > 0) {
-                                    continue; // В базе уже есть идентичная запись
+                                    continue; // Р’ Р±Р°Р·Рµ СѓР¶Рµ РµСЃС‚СЊ РёРґРµРЅС‚РёС‡РЅР°СЏ Р·Р°РїРёСЃСЊ
                                 }
                                 
                                 $insert = array(
@@ -2227,7 +2227,7 @@ class pskb {
                                 $DB->insert('pskb_lc_supercheck', $insert);
                                 continue;
                                 /**
-                                 * @deprecated Пока все что ниже работать не должно просто пишем в базу историю которую возвращают
+                                 * @deprecated РџРѕРєР° РІСЃРµ С‡С‚Рѕ РЅРёР¶Рµ СЂР°Р±РѕС‚Р°С‚СЊ РЅРµ РґРѕР»Р¶РЅРѕ РїСЂРѕСЃС‚Рѕ РїРёС€РµРј РІ Р±Р°Р·Сѓ РёСЃС‚РѕСЂРёСЋ РєРѕС‚РѕСЂСѓСЋ РІРѕР·РІСЂР°С‰Р°СЋС‚
                                  */
                                 $stg = sbr_meta::getStatePayout(explode('-', $pskb_lc->uid));
                                 if ($pskb_lc->state == $stg['state']) {
@@ -2235,9 +2235,9 @@ class pskb {
                                 }
                                 
                                 switch ($pskb_lc->state) {
-                                    case self::PAYOUT_END: // отправлено по реквизитам
-                                    case self::PAYOUT_ERR: // зачислено в ВК
-                                        // выплачено
+                                    case self::PAYOUT_END: // РѕС‚РїСЂР°РІР»РµРЅРѕ РїРѕ СЂРµРєРІРёР·РёС‚Р°Рј
+                                    case self::PAYOUT_ERR: // Р·Р°С‡РёСЃР»РµРЅРѕ РІ Р’Рљ
+                                        // РІС‹РїР»Р°С‡РµРЅРѕ
                                         $sbr = new sbr($stg['emp_id']);
                                         $stage = $sbr->getStage($stg['stage_id']);
                                         $stage->getArbitrage(false, false);
@@ -2326,81 +2326,81 @@ class pskb {
 
 
 /**
- * Описание структуры объекта аккредитива, возвращаемой нам ПСКБ
+ * РћРїРёСЃР°РЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РѕР±СЉРµРєС‚Р° Р°РєРєСЂРµРґРёС‚РёРІР°, РІРѕР·РІСЂР°С‰Р°РµРјРѕР№ РЅР°Рј РџРЎРљР‘
  * 
- * id, stateReason – создаются в системе Веб-кошелька ПСКБ(далее WW).
- * sum соответствует сумме денежных нераскрытого аккредитива(денежные средства Заказчика)
- * sumOpen соответствует сумме денежных средств перечисленных Исполнителю.
+ * id, stateReason вЂ“ СЃРѕР·РґР°СЋС‚СЃСЏ РІ СЃРёСЃС‚РµРјРµ Р’РµР±-РєРѕС€РµР»СЊРєР° РџРЎРљР‘(РґР°Р»РµРµ WW).
+ * sum СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ СЃСѓРјРјРµ РґРµРЅРµР¶РЅС‹С… РЅРµСЂР°СЃРєСЂС‹С‚РѕРіРѕ Р°РєРєСЂРµРґРёС‚РёРІР°(РґРµРЅРµР¶РЅС‹Рµ СЃСЂРµРґСЃС‚РІР° Р—Р°РєР°Р·С‡РёРєР°)
+ * sumOpen СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ СЃСѓРјРјРµ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ РїРµСЂРµС‡РёСЃР»РµРЅРЅС‹С… РСЃРїРѕР»РЅРёС‚РµР»СЋ.
  */
 class pskb_lc {
 
     /**
-     * уникальный идентификатор LC в кошельке
+     * СѓРЅРёРєР°Р»СЊРЅС‹Р№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ LC РІ РєРѕС€РµР»СЊРєРµ
      * 
      * @var int 
      */
     public $id;
     
     /**
-     * номер договор переданный из FL
+     * РЅРѕРјРµСЂ РґРѕРіРѕРІРѕСЂ РїРµСЂРµРґР°РЅРЅС‹Р№ РёР· FL
      * 
      * @var int 
      */
     public $numDog;
     
     /**
-     * статус LC
+     * СЃС‚Р°С‚СѓСЃ LC
      * 
-     * LC может находится в одном из следующих состояний:
-     * new -    Новый
-     * cover -  Покрыт
-     * exp -    Просрочен(с указанием причины expCover, expExec, expEnd)
-     * end -    Исполнен
-     * passed - Сдается
-     * ret -    Отказ
-     * err -    Ошибка
+     * LC РјРѕР¶РµС‚ РЅР°С…РѕРґРёС‚СЃСЏ РІ РѕРґРЅРѕРј РёР· СЃР»РµРґСѓСЋС‰РёС… СЃРѕСЃС‚РѕСЏРЅРёР№:
+     * new -    РќРѕРІС‹Р№
+     * cover -  РџРѕРєСЂС‹С‚
+     * exp -    РџСЂРѕСЃСЂРѕС‡РµРЅ(СЃ СѓРєР°Р·Р°РЅРёРµРј РїСЂРёС‡РёРЅС‹ expCover, expExec, expEnd)
+     * end -    РСЃРїРѕР»РЅРµРЅ
+     * passed - РЎРґР°РµС‚СЃСЏ
+     * ret -    РћС‚РєР°Р·
+     * err -    РћС€РёР±РєР°
      * 
      * @var string 
      */
     public $state;
     
     /**
-     * сумма LC не раскрытая
+     * СЃСѓРјРјР° LC РЅРµ СЂР°СЃРєСЂС‹С‚Р°СЏ
      * 
      * @var type 
      */
     public $sum;
     
     /**
-     * сумма LC раскрытая
+     * СЃСѓРјРјР° LC СЂР°СЃРєСЂС‹С‚Р°СЏ
      * 
      * @var float 
      */
     public $sumOpen;
     
     /**
-     * обоснование статуса
+     * РѕР±РѕСЃРЅРѕРІР°РЅРёРµ СЃС‚Р°С‚СѓСЃР°
      * 
      * @var float 
      */
     public $stateReason;
     
     /**
-     * Банковская дата покрытия
+     * Р‘Р°РЅРєРѕРІСЃРєР°СЏ РґР°С‚Р° РїРѕРєСЂС‹С‚РёСЏ
      * 
      * @var string 
      */
     public $cover;
     
     /**
-     * Банковская дата выплаты исполнителю
+     * Р‘Р°РЅРєРѕРІСЃРєР°СЏ РґР°С‚Р° РІС‹РїР»Р°С‚С‹ РёСЃРїРѕР»РЅРёС‚РµР»СЋ
      * 
      * @var string
      */
     public $date;
     
     /**
-     * для тестового интерфейса
+     * РґР»СЏ С‚РµСЃС‚РѕРІРѕРіРѕ РёРЅС‚РµСЂС„РµР№СЃР°
      */
     public $sms;
     public $dateExecLC;
@@ -2467,7 +2467,7 @@ class pskb_user {
     public $_reqvs;
     
     /**
-     * Тип резидентства пользователя @see sbr::RT_*
+     * РўРёРї СЂРµР·РёРґРµРЅС‚СЃС‚РІР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ @see sbr::RT_*
      * 
      * @var integer 
      */
@@ -2505,9 +2505,9 @@ class pskb_user {
 
 
     /**
-     * Получение списка платежных систем, доступных пользователю
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° РїР»Р°С‚РµР¶РЅС‹С… СЃРёСЃС‚РµРј, РґРѕСЃС‚СѓРїРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ
      * 
-     * @param int $tag      Признак физ/юрлица
+     * @param int $tag      РџСЂРёР·РЅР°Рє С„РёР·/СЋСЂР»РёС†Р°
      */
     public function getPsystems () {
         $pslist = pskb::$psys[$this->_is_emp];
@@ -2564,7 +2564,7 @@ class pskb_user {
                     if ( (!$reqvs['full_name'] || !$reqvs['bank_rs'] || !$reqvs['bank_bik'] || !$reqvs['inn'] || !$reqvs['address_jry']) && $this->_rez_type == sbr::RT_RU ) {
                         $_disabled = $psys;
                     }
-                    // Для нерезидентов должна быть другая проверка реквизитов
+                    // Р”Р»СЏ РЅРµСЂРµР·РёРґРµРЅС‚РѕРІ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РґСЂСѓРіР°СЏ РїСЂРѕРІРµСЂРєР° СЂРµРєРІРёР·РёС‚РѕРІ
                     if($this->_rez_type == sbr::RT_UABYKZ) {
                         $_req = pskb::getRequiredFieldsForType(pskb::$reqvs_fields_rez, onlinedengi::BANK_YL, sbr::FT_JURI);
                         if($_req) {
@@ -2581,7 +2581,7 @@ class pskb_user {
                     if ( (!$reqvs['fio'] || !$reqvs['bank_rs'] || !$reqvs['bank_bik']) && $this->_rez_type == sbr::RT_RU ) {
                         $_disabled = $psys;
                     }
-                    // Для нерезидентов должна быть другая проверка реквизитов
+                    // Р”Р»СЏ РЅРµСЂРµР·РёРґРµРЅС‚РѕРІ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РґСЂСѓРіР°СЏ РїСЂРѕРІРµСЂРєР° СЂРµРєРІРёР·РёС‚РѕРІ
                     if($this->_rez_type == sbr::RT_UABYKZ) {
                         $_req = pskb::getRequiredFieldsForType(pskb::$reqvs_fields_rez, onlinedengi::BANK_YL, sbr::FT_PHYS);
                         if($_req) {
@@ -2629,8 +2629,8 @@ class pskb_user {
             $_disabled = $psys;
             $_hidden = $psys;
         }
-        // Доп проверка (Пример срабатывания: может быть 3 этапа по 10к то есть любая выплата по этапу идет на Веб-кошелек)
-        // Сама проверка _only_ww - осуществляется снаружи класса через $sbr->stages
+        // Р”РѕРї РїСЂРѕРІРµСЂРєР° (РџСЂРёРјРµСЂ СЃСЂР°Р±Р°С‚С‹РІР°РЅРёСЏ: РјРѕР¶РµС‚ Р±С‹С‚СЊ 3 СЌС‚Р°РїР° РїРѕ 10Рє С‚Рѕ РµСЃС‚СЊ Р»СЋР±Р°СЏ РІС‹РїР»Р°С‚Р° РїРѕ СЌС‚Р°РїСѓ РёРґРµС‚ РЅР° Р’РµР±-РєРѕС€РµР»РµРє)
+        // РЎР°РјР° РїСЂРѕРІРµСЂРєР° _only_ww - РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ СЃРЅР°СЂСѓР¶Рё РєР»Р°СЃСЃР° С‡РµСЂРµР· $sbr->stages
         if($this->_only_ww && $psys != pskb::WW && !$this->_is_emp && $form_type == sbr::FT_PHYS) {
             $_disabled = $psys;
             $_hidden = $psys;
@@ -2645,7 +2645,7 @@ class pskb_user {
             $this->tag = 0;
             $this->alien = $rez_type;
             $this->num = $reqvs['mob_phone'];
-            $this->email = $this->_user->email; // E-mail в системе
+            $this->email = $this->_user->email; // E-mail РІ СЃРёСЃС‚РµРјРµ
             $this->name = $reqvs['fio'];
             $this->ps = $psys;
             
@@ -2729,7 +2729,7 @@ class pskb_user {
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/memBuff.php");
 
 /**
- * Сильно упрощенный вариант сервера ПСКБ =)
+ * РЎРёР»СЊРЅРѕ СѓРїСЂРѕС‰РµРЅРЅС‹Р№ РІР°СЂРёР°РЅС‚ СЃРµСЂРІРµСЂР° РџРЎРљР‘ =)
  */
 class pskb_server {
     
@@ -2753,35 +2753,35 @@ class pskb_server {
                 
                 $num = $params['num'];
                 
-                //имитация
+                //РёРјРёС‚Р°С†РёСЏ
                 $test['+71234567890'] = array(
                     "state" => "EXIST",
-                    "message" => "Уже создан +71234567890",
-                    "fio" => "Власов Павел Владимирович",
+                    "message" => "РЈР¶Рµ СЃРѕР·РґР°РЅ +71234567890",
+                    "fio" => "Р’Р»Р°СЃРѕРІ РџР°РІРµР» Р’Р»Р°РґРёРјРёСЂРѕРІРёС‡",
                     "verified" => TRUE,
                     "identified" => false
                 );
                 
                 $test['+79272540217'] = array(
                     "state" => "EXIST",
-                    "message" => "Cоздан +79272540217",
-                    "fio" => "Власов Павел Владимирович",
+                    "message" => "CРѕР·РґР°РЅ +79272540217",
+                    "fio" => "Р’Р»Р°СЃРѕРІ РџР°РІРµР» Р’Р»Р°РґРёРјРёСЂРѕРІРёС‡",
                     "verified" => TRUE,
                     "identified" => TRUE
                 );
                 
                 $test['+380664848120'] = array(
                     "state" => "EXIST",
-                    "message" => "Уже создан +380664848120",
-                    "fio" => "Власов Павел Владимирович",
+                    "message" => "РЈР¶Рµ СЃРѕР·РґР°РЅ +380664848120",
+                    "fio" => "Р’Р»Р°СЃРѕРІ РџР°РІРµР» Р’Р»Р°РґРёРјРёСЂРѕРІРёС‡",
                     "verified" => FALSE,
                     "identified" => TRUE
                 );
                 
                 $test['+79034731235'] = array(
                     "state" => "EXIST",
-                    "message" => "Уже создан +79034731235",
-                    "fio" => "Власов Павел Владимирович",
+                    "message" => "РЈР¶Рµ СЃРѕР·РґР°РЅ +79034731235",
+                    "fio" => "Р’Р»Р°СЃРѕРІ РџР°РІРµР» Р’Р»Р°РґРёРјРёСЂРѕРІРёС‡",
                     "verified" => TRUE,
                     "identified" => TRUE
                 );                
@@ -2789,8 +2789,8 @@ class pskb_server {
                 /*
                 $test['+380664848120'] = array(
                     "state" => "EXIST",
-                    "message" => "Уже создан +380664848120",
-                    "fio" => "Власов Павел Владимирович",
+                    "message" => "РЈР¶Рµ СЃРѕР·РґР°РЅ +380664848120",
+                    "fio" => "Р’Р»Р°СЃРѕРІ РџР°РІРµР» Р’Р»Р°РґРёРјРёСЂРѕРІРёС‡",
                     "verified" => TRUE,
                     "identified" => false
                 );                 
@@ -2803,11 +2803,11 @@ class pskb_server {
                 else
                 {
                     $lc = array(
-                        //поумолчанию имитирую отсутвие веб-кошелька
+                        //РїРѕСѓРјРѕР»С‡Р°РЅРёСЋ РёРјРёС‚РёСЂСѓСЋ РѕС‚СЃСѓС‚РІРёРµ РІРµР±-РєРѕС€РµР»СЊРєР°
                         /*
                         "state" => "EXIST",
-                        "message" => "Уже создан +71234567890", 
-                        "fio" => "Власов Павел Владимирович", 
+                        "message" => "РЈР¶Рµ СЃРѕР·РґР°РЅ +71234567890", 
+                        "fio" => "Р’Р»Р°СЃРѕРІ РџР°РІРµР» Р’Р»Р°РґРёРјРёСЂРѕРІРёС‡", 
                         "verified" => false,
                         "identified" => false
                          */
@@ -2830,7 +2830,7 @@ class pskb_server {
                 $lcs = $this->getRows($ids);
                 
                 if (!$lc) {
-                    $lc = $this->_err('Ошибка. Счет не найден.');
+                    $lc = $this->_err('РћС€РёР±РєР°. РЎС‡РµС‚ РЅРµ РЅР°Р№РґРµРЅ.');
                 }
                 
                 $pskb = new pskb();
@@ -2893,7 +2893,7 @@ class pskb_server {
                 $lc = $this->get($id);
                 
                 if (!$lc) {
-                    $lc = $this->_err('Ошибка. Счет не найден.');
+                    $lc = $this->_err('РћС€РёР±РєР°. РЎС‡РµС‚ РЅРµ РЅР°Р№РґРµРЅ.');
                 }
                 
                 if ($lc->state == 'trans') {
@@ -2926,7 +2926,7 @@ class pskb_server {
                 $lc = $this->get($id);
                 
                 if (!$lc) {
-                    $lc = $this->_err('Ошибка. Счет не найден.');
+                    $lc = $this->_err('РћС€РёР±РєР°. РЎС‡РµС‚ РЅРµ РЅР°Р№РґРµРЅ.');
                 }
                 
 //                $m = new memBuff();
@@ -2959,7 +2959,7 @@ class pskb_server {
                 $lc = $this->getRows($ids);
                 
                 if (!$lc) {
-                    $lc[] = $this->_err('Ошибка. Счет не найден.');
+                    $lc[] = $this->_err('РћС€РёР±РєР°. РЎС‡РµС‚ РЅРµ РЅР°Р№РґРµРЅ.');
                 }
                 
                 break;
@@ -2970,12 +2970,12 @@ class pskb_server {
                 $lc = $this->get($id);
                 
                 if (!$lc) {
-                    $lc = $this->_err('Ошибка. Счет не найден.');
+                    $lc = $this->_err('РћС€РёР±РєР°. РЎС‡РµС‚ РЅРµ РЅР°Р№РґРµРЅ.');
                     break;
                 }
                 
                 if ($lc->status == 'end') {
-                    $lc = $this->_err('Ошибка. Счет не найден.');
+                    $lc = $this->_err('РћС€РёР±РєР°. РЎС‡РµС‚ РЅРµ РЅР°Р№РґРµРЅ.');
                     break;
                 }
                 
@@ -2993,12 +2993,12 @@ class pskb_server {
                 $lc = $this->get($id);
                 
                 if (!$lc) {
-                    $lc = $this->_err('Ошибка. Счет не найден.');
+                    $lc = $this->_err('РћС€РёР±РєР°. РЎС‡РµС‚ РЅРµ РЅР°Р№РґРµРЅ.');
                     break;
                 }
                 
                 if ($lc->status == 'end') {
-                    $lc = $this->_err('Ошибка. Счет не найден.');
+                    $lc = $this->_err('РћС€РёР±РєР°. РЎС‡РµС‚ РЅРµ РЅР°Р№РґРµРЅ.');
                     break;
                 }
                 
@@ -3015,17 +3015,17 @@ class pskb_server {
                 $code = $params['asp'];
                 
                 if (!$lc) {
-                    $lc = $this->_err('Ошибка. Счет не найден.');
+                    $lc = $this->_err('РћС€РёР±РєР°. РЎС‡РµС‚ РЅРµ РЅР°Р№РґРµРЅ.');
                     break;
                 }
                 
                 if ($lc->status == 'end') {
-                    $lc = $this->_err('Ошибка. Счет не найден.');
+                    $lc = $this->_err('РћС€РёР±РєР°. РЎС‡РµС‚ РЅРµ РЅР°Р№РґРµРЅ.');
                     break;
                 }
                 
                 if ($code != $lc->sms) {
-                    $lc = $this->_err('Неверный код подтверждения.');
+                    $lc = $this->_err('РќРµРІРµСЂРЅС‹Р№ РєРѕРґ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ.');
                     break;
                 }
                 
@@ -3045,12 +3045,12 @@ class pskb_server {
                 $lc = $this->get($id);
                 
                 if (!$lc) {
-                    $lc = $this->_err('Ошибка. Счет не найден.');
+                    $lc = $this->_err('РћС€РёР±РєР°. РЎС‡РµС‚ РЅРµ РЅР°Р№РґРµРЅ.');
                     break;
                 }
                 
                 if ($lc->state != 'err') {
-                    $lc = $this->_err('Ошибка. Приемлемо только для LC в статусе err.');
+                    $lc = $this->_err('РћС€РёР±РєР°. РџСЂРёРµРјР»РµРјРѕ С‚РѕР»СЊРєРѕ РґР»СЏ LC РІ СЃС‚Р°С‚СѓСЃРµ err.');
                     break;
                 }
                 
@@ -3065,12 +3065,12 @@ class pskb_server {
                 $lc = $this->get($id);
                 
                 if (!$lc) {
-                    $lc = $this->_err('Ошибка. Счет не найден.');
+                    $lc = $this->_err('РћС€РёР±РєР°. РЎС‡РµС‚ РЅРµ РЅР°Р№РґРµРЅ.');
                     break;
                 }
                 
                 if ($lc->state != 'passed') {
-                    $lc = $this->_err('Ошибка. Приемлемо только для LC в статусе passed.');
+                    $lc = $this->_err('РћС€РёР±РєР°. РџСЂРёРµРјР»РµРјРѕ С‚РѕР»СЊРєРѕ РґР»СЏ LC РІ СЃС‚Р°С‚СѓСЃРµ passed.');
                     break;
                 }
                 
@@ -3081,7 +3081,7 @@ class pskb_server {
                 break;
             
             default:
-                $lc = $this->_err('Ошибка запроса.');
+                $lc = $this->_err('РћС€РёР±РєР° Р·Р°РїСЂРѕСЃР°.');
         }
         
         echo json_encode($lc);

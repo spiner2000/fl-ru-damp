@@ -30,7 +30,7 @@ $orders = $DB->rows($sql_3);
 
 $count = 0;
 foreach ($orders as $order) {
-    //Проверяем, была ли покупка после этой операции
+    //РџСЂРѕРІРµСЂСЏРµРј, Р±С‹Р»Р° Р»Рё РїРѕРєСѓРїРєР° РїРѕСЃР»Рµ СЌС‚РѕР№ РѕРїРµСЂР°С†РёРё
     $sql_4 = 'SELECT id FROM bill_queue WHERE uid = ?i AND create_time > ?';
     $operation_after = $DB->val($sql_4, $order['uid'], $order['create_time']);
     
@@ -43,7 +43,7 @@ foreach ($orders as $order) {
             $date->modify('+1 minutes');
             $op_date = $date->format("Y-m-d H:i:s");
 
-            //Пока не обновляем, а просто смотрим данные
+            //РџРѕРєР° РЅРµ РѕР±РЅРѕРІР»СЏРµРј, Р° РїСЂРѕСЃС‚Рѕ СЃРјРѕС‚СЂРёРј РґР°РЅРЅС‹Рµ
             if ($update) {
                 $id = $DB->insert('account_operations', array(
                         'billing_id'  => $ac_op['billing_id'],

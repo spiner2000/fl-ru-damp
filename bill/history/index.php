@@ -23,29 +23,29 @@ $page = __paramInit('int', 'page', null, 1);
 $page = $page < 1 ? 1 : $page;
 
 $itemsPerPage = 20;
-$todayEnd = mktime(23, 59, 59); // конец сегодняшнего дня
+$todayEnd = mktime(23, 59, 59); // РєРѕРЅРµС† СЃРµРіРѕРґРЅСЏС€РЅРµРіРѕ РґРЅСЏ
 switch ($period) {
-    case 0: // за последнюю неделю
+    case 0: // Р·Р° РїРѕСЃР»РµРґРЅСЋСЋ РЅРµРґРµР»СЋ
         $startTime = strtotime('- 1 week', $todayEnd);
         break;
-    case 1: // за последний месяц
+    case 1: // Р·Р° РїРѕСЃР»РµРґРЅРёР№ РјРµСЃСЏС†
         $startTime = strtotime('- 1 month', $todayEnd);
         break;
-    case 2: // за последний год
+    case 2: // Р·Р° РїРѕСЃР»РµРґРЅРёР№ РіРѕРґ
         $startTime = strtotime('- 1 year', $todayEnd);
         break;
-    case 3: // за все время
+    case 3: // Р·Р° РІСЃРµ РІСЂРµРјСЏ
         $startTime = null;
         break;
 }
 
 $history = account::getBillHistory($page, $itemsPerPage, $startTime, $event);
 
-//Идентификаторы СБР для получения признака новая или старая
+//РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РЎР‘Р  РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РїСЂРёР·РЅР°РєР° РЅРѕРІР°СЏ РёР»Рё СЃС‚Р°СЂР°СЏ
 $sbrIds = array(); $nSbr = 0;
 foreach ($history['items'] as &$historyItem) {
     if (in_array($historyItem['op_code'], array(sbr::OP_RESERVE, sbr::OP_DEBIT, sbr::OP_CREDIT))) {
-        if (preg_match('~(?:СБР|БС)-(\d+)-[ТАПБ]/О~', $historyItem['comments'], $m)) {
+        if (preg_match('~(?:РЎР‘Р |Р‘РЎ)-(\d+)-[РўРђРџР‘]/Рћ~', $historyItem['comments'], $m)) {
             if ((int)$m[1]) {
                 $sbrIds[] = (int)$m[1];
                 $historyItem['sbrId'] = (int)$m[1];
@@ -67,7 +67,7 @@ if ($nSbr) {
 }
 unset($historyItem);
 
-// делаем уведомления прочитанными
+// РґРµР»Р°РµРј СѓРІРµРґРѕРјР»РµРЅРёСЏ РїСЂРѕС‡РёС‚Р°РЅРЅС‹РјРё
 $barNotify = new bar_notify($_SESSION['uid']);
 $barNotify->delNotifies( array('page'=>'bill') );
 
@@ -91,13 +91,13 @@ if ($isAllowAddFunds) {
     ));
 }
 
-//Пользователь юрик с заполненными реквизитами?
+//РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЋСЂРёРє СЃ Р·Р°РїРѕР»РЅРµРЅРЅС‹РјРё СЂРµРєРІРёР·РёС‚Р°РјРё?
 $isAllowBillInvoice = $is_jury;
 
 if ($isAllowBillInvoice) {
     $isValidBillInvoice = sbr_meta::isValidUserReqvs($uid, $is_emp);
     if($isValidBillInvoice){
-        //Попап пополнения счета по безналу путем генерации счета
+        //РџРѕРїР°Рї РїРѕРїРѕР»РЅРµРЅРёСЏ СЃС‡РµС‚Р° РїРѕ Р±РµР·РЅР°Р»Сѓ РїСѓС‚РµРј РіРµРЅРµСЂР°С†РёРё СЃС‡РµС‚Р°
         require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/quick_payment/quickPaymentPopupBillInvoice.php');
         require_once($_SERVER['DOCUMENT_ROOT'] . '/bill/models/BillInvoicesModel.php');
 

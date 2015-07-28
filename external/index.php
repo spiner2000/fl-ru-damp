@@ -1,5 +1,5 @@
 <?php
-if(!$EXTERNAL_REQ) { // çàøëè íàïðÿìóþ.
+if(!$EXTERNAL_REQ) { // Ð·Ð°ÑˆÐ»Ð¸ Ð½Ð°Ð¿Ñ€ÑÐ¼ÑƒÑŽ.
    include('content.php');
    exit;
 }

@@ -9,28 +9,28 @@ $xajax->printJavascript('/xajax/');
 $projectIsEdit = $tmpPrj->isEdit();
 
 if ($project['kind'] == 7) {
-    $title = $project['id'] ? 'Конкурс' : 'Новый конкурс';
+    $title = $project['id'] ? 'РљРѕРЅРєСѓСЂСЃ' : 'РќРѕРІС‹Р№ РєРѕРЅРєСѓСЂСЃ';
     $isContest = true;
     $isVacancy = false;
-    $titleHint = 'Цель конкурса. Например: Придумать логотип';
-    $descrHint = 'Подробно опишите условия конкурса, сроки, другие условия участия.';
-    // новая система расчета стоимости публикации конкурса (текущая дата больше даты ввода новой системы, а также это не редактируется проект опубликованный до ввода новой системы)
+    $titleHint = 'Р¦РµР»СЊ РєРѕРЅРєСѓСЂСЃР°. РќР°РїСЂРёРјРµСЂ: РџСЂРёРґСѓРјР°С‚СЊ Р»РѕРіРѕС‚РёРї';
+    $descrHint = 'РџРѕРґСЂРѕР±РЅРѕ РѕРїРёС€РёС‚Рµ СѓСЃР»РѕРІРёСЏ РєРѕРЅРєСѓСЂСЃР°, СЃСЂРѕРєРё, РґСЂСѓРіРёРµ СѓСЃР»РѕРІРёСЏ СѓС‡Р°СЃС‚РёСЏ.';
+    // РЅРѕРІР°СЏ СЃРёСЃС‚РµРјР° СЂР°СЃС‡РµС‚Р° СЃС‚РѕРёРјРѕСЃС‚Рё РїСѓР±Р»РёРєР°С†РёРё РєРѕРЅРєСѓСЂСЃР° (С‚РµРєСѓС‰Р°СЏ РґР°С‚Р° Р±РѕР»СЊС€Рµ РґР°С‚С‹ РІРІРѕРґР° РЅРѕРІРѕР№ СЃРёСЃС‚РµРјС‹, Р° С‚Р°РєР¶Рµ СЌС‚Рѕ РЅРµ СЂРµРґР°РєС‚РёСЂСѓРµС‚СЃСЏ РїСЂРѕРµРєС‚ РѕРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹Р№ РґРѕ РІРІРѕРґР° РЅРѕРІРѕР№ СЃРёСЃС‚РµРјС‹)
     $newContestBudget = new_projects::isNewContestBudget($project['post_date']);
     $minBudget = $newContestBudget ? new_projects::NEW_CONTEST_MIN_BUDGET : new_projects::CONTEST_MIN_BUDGET;
 } elseif ($project['kind'] == 4) {
-    $title = $project['id'] ? 'Вакансия' : 'Новая вакансия';
+    $title = $project['id'] ? 'Р’Р°РєР°РЅСЃРёСЏ' : 'РќРѕРІР°СЏ РІР°РєР°РЅСЃРёСЏ';
     $isContest = false;
     $isVacancy = true;
-    $titleHint = 'Специалист какой квалификации и на какие задачи вам требуется. Например: Дизайнер иконок на проект';
-    $descrHint = 'Подробно опишите задачу, сроки выполнения, другие условия работы.';
+    $titleHint = 'РЎРїРµС†РёР°Р»РёСЃС‚ РєР°РєРѕР№ РєРІР°Р»РёС„РёРєР°С†РёРё Рё РЅР° РєР°РєРёРµ Р·Р°РґР°С‡Рё РІР°Рј С‚СЂРµР±СѓРµС‚СЃСЏ. РќР°РїСЂРёРјРµСЂ: Р”РёР·Р°Р№РЅРµСЂ РёРєРѕРЅРѕРє РЅР° РїСЂРѕРµРєС‚';
+    $descrHint = 'РџРѕРґСЂРѕР±РЅРѕ РѕРїРёС€РёС‚Рµ Р·Р°РґР°С‡Сѓ, СЃСЂРѕРєРё РІС‹РїРѕР»РЅРµРЅРёСЏ, РґСЂСѓРіРёРµ СѓСЃР»РѕРІРёСЏ СЂР°Р±РѕС‚С‹.';
 } else {
     $title = $exec 
-		? ($project['id'] ? 'Персональный проект' : 'Новый персональный проект') 
-		: ($project['id'] ? 'Проект' : 'Новый проект (задание на разовую работу)');
+		? ($project['id'] ? 'РџРµСЂСЃРѕРЅР°Р»СЊРЅС‹Р№ РїСЂРѕРµРєС‚' : 'РќРѕРІС‹Р№ РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹Р№ РїСЂРѕРµРєС‚') 
+		: ($project['id'] ? 'РџСЂРѕРµРєС‚' : 'РќРѕРІС‹Р№ РїСЂРѕРµРєС‚ (Р·Р°РґР°РЅРёРµ РЅР° СЂР°Р·РѕРІСѓСЋ СЂР°Р±РѕС‚Сѓ)');
     $isContest = false;
     $isVacancy = false;
-    $titleHint = 'Что требуется сделать. Например: Дизайн для интернет-магазина детской одежды';
-    $descrHint = 'Подробно опишите задачу, сроки выполнения, другие условия работы.';
+    $titleHint = 'Р§С‚Рѕ С‚СЂРµР±СѓРµС‚СЃСЏ СЃРґРµР»Р°С‚СЊ. РќР°РїСЂРёРјРµСЂ: Р”РёР·Р°Р№РЅ РґР»СЏ РёРЅС‚РµСЂРЅРµС‚-РјР°РіР°Р·РёРЅР° РґРµС‚СЃРєРѕР№ РѕРґРµР¶РґС‹';
+    $descrHint = 'РџРѕРґСЂРѕР±РЅРѕ РѕРїРёС€РёС‚Рµ Р·Р°РґР°С‡Сѓ, СЃСЂРѕРєРё РІС‹РїРѕР»РЅРµРЅРёСЏ, РґСЂСѓРіРёРµ СѓСЃР»РѕРІРёСЏ СЂР°Р±РѕС‚С‹.';
 }
 
 $project['end_date'] = $project['end_date'] ? date('d.m.Y', strtotime($project['end_date'])) : '';
@@ -45,10 +45,10 @@ $isVacancyPayed = $tmpPrj->isNotPayedVacancy() == false;
 $addedPrc = is_pro() ? 0 : new_projects::PRICE_ADDED;
 
 $priceVacancy = new_projects::getProjectInOfficePrice(is_pro());
-$priceVacancy = ($project['id'] && $isVacancyPayed)  ? 0 : $priceVacancy; // если вакансия уже оплачена
+$priceVacancy = ($project['id'] && $isVacancyPayed)  ? 0 : $priceVacancy; // РµСЃР»Рё РІР°РєР°РЅСЃРёСЏ СѓР¶Рµ РѕРїР»Р°С‡РµРЅР°
 
 $priceContest = new_projects::getKonkursPrice(is_pro());
-$priceContest = $project['id'] ? 0 : $priceContest; // если конкурс уже оплачен
+$priceContest = $project['id'] ? 0 : $priceContest; // РµСЃР»Рё РєРѕРЅРєСѓСЂСЃ СѓР¶Рµ РѕРїР»Р°С‡РµРЅ
 
 if ($isContest) {
     $priceTopDay = is_pro() ? new_projects::PRICE_CONTEST_TOP1DAY_PRO : new_projects::PRICE_CONTEST_TOP1DAY;
@@ -62,11 +62,11 @@ $hidePrice = new_projects::PRICE_HIDE;
 
 $priceLogo = is_pro() ? new_projects::PRICE_LOGO : new_projects::PRICE_LOGO_NOPRO;
 //$priceLogo += $addedPrc;
-$priceLogo = ($project['id'] && $project['logo_id']) ? 0 : $priceLogo; // если логотип уже оплачен
+$priceLogo = ($project['id'] && $project['logo_id']) ? 0 : $priceLogo; // РµСЃР»Рё Р»РѕРіРѕС‚РёРї СѓР¶Рµ РѕРїР»Р°С‡РµРЅ
 
 $pExrates = project_exrates::getAll();
 
-//Поля название и цена пробуем заполнить из сессии
+//РџРѕР»СЏ РЅР°Р·РІР°РЅРёРµ Рё С†РµРЅР° РїСЂРѕР±СѓРµРј Р·Р°РїРѕР»РЅРёС‚СЊ РёР· СЃРµСЃСЃРёРё
 if (!$project['name'] && isset($_SESSION['new_project_name'])) {
 	$project['name'] = $_SESSION['new_project_name'];
 	unset($_SESSION['new_project_name']);
@@ -91,10 +91,10 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
     //Public.attachLogoFiles = <?//= json_encode($attachLogoFiles) ?>;
     
     Public.userIsPro = <?= (int)(bool)is_pro() ?>;
-    // сколько денег у пользователя
+    // СЃРєРѕР»СЊРєРѕ РґРµРЅРµРі Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     Public.accSum = <?= round($_SESSION['ac_sum'], 2) ?>;
     Public.bonSum = <?= round($_SESSION['bn_sum'], 2) ?>;
-    // стоимость платных услуг
+    // СЃС‚РѕРёРјРѕСЃС‚СЊ РїР»Р°С‚РЅС‹С… СѓСЃР»СѓРі
     Public.vacancyPrice = <?= $priceVacancy ?>;
     Public.topDayPrice = <?= $priceTopDay ?>;
     Public.logoPrice = <?= $priceLogo ?>;
@@ -105,24 +105,24 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
     Public.isVacancyPayed = <?= (int)$isVacancyPayed ?>;
     
     Public.pExrates = {};
-    Public.pExrates.usd = <?= (float)$pExrates[24] ?>; // сколько рублей за один доллар
-    Public.pExrates.euro = <?= (float)$pExrates[34] ?>; // сколько рублей за один евро
+    Public.pExrates.usd = <?= (float)$pExrates[24] ?>; // СЃРєРѕР»СЊРєРѕ СЂСѓР±Р»РµР№ Р·Р° РѕРґРёРЅ РґРѕР»Р»Р°СЂ
+    Public.pExrates.euro = <?= (float)$pExrates[34] ?>; // СЃРєРѕР»СЊРєРѕ СЂСѓР±Р»РµР№ Р·Р° РѕРґРёРЅ РµРІСЂРѕ
     
     Public.isContest = <?= (int)$isContest ?>;
     Public.isVacancy = <?= (int)$isVacancy ?>;
 	Public.isPersonal = <?= (int)$is_personal ?>;
     
-    Public.nameMaxLength = 60; // максимальная длина названия проекта
-    Public.descrMaxLength = 5000; // максимальная длина описания проекта
+    Public.nameMaxLength = 60; // РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° РЅР°Р·РІР°РЅРёСЏ РїСЂРѕРµРєС‚Р°
+    Public.descrMaxLength = 5000; // РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° РѕРїРёСЃР°РЅРёСЏ РїСЂРѕРµРєС‚Р°
     
     Public.minBudget = <?= (int)$minBudget ?>;
     
     Public.isEdit = <?= (int)$projectIsEdit ?>;
     
-    // если false, то это значит что публиковать бесплатные проекты бельше нельзя
+    // РµСЃР»Рё false, С‚Рѕ СЌС‚Рѕ Р·РЅР°С‡РёС‚ С‡С‚Рѕ РїСѓР±Р»РёРєРѕРІР°С‚СЊ Р±РµСЃРїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹ Р±РµР»СЊС€Рµ РЅРµР»СЊР·СЏ
     Public.ablePublic = <?= (int)$ablePublic ?>;
     
-    // минимальный бюджет безопасной сделки
+    // РјРёРЅРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ Р±РµР·РѕРїР°СЃРЅРѕР№ СЃРґРµР»РєРё
     Public.minSbrBudget = <?= (int)sbr_stages::MIN_COST_RUR ?>;
     
     Public.newTemplate = 1;
@@ -171,23 +171,23 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
         <td class="b-layout__td b-layout__td_padright_20">
             <h1 id="project_title" class="b-page__title b-page__title_padbot_10">
                 <?php if ($step > 1): ?>
-                    <?= $title ?> &laquo;<?=$project['name']?>&raquo; опубликован<?php if($isVacancy):?>a<?php endif; ?>.
+                    <?= $title ?> &laquo;<?=$project['name']?>&raquo; РѕРїСѓР±Р»РёРєРѕРІР°РЅ<?php if($isVacancy):?>a<?php endif; ?>.
                 <?php else: ?>
                     <?= $title ?>
                 <?php endif; ?>
             </h1>
             <?php if ($step > 1): ?>
                 <div class="b-layout__txt b-layout__txt_fontsize_18 b-layout__txt_padbot_20">
-                    Выделите <?php if($isVacancy):?>вакансию<? elseif ($isContest):?>конкурс<?php else: ?>проект<?php endif; ?> в ленте и получите больше откликов от лучших исполнителей.
+                    Р’С‹РґРµР»РёС‚Рµ <?php if($isVacancy):?>РІР°РєР°РЅСЃРёСЋ<? elseif ($isContest):?>РєРѕРЅРєСѓСЂСЃ<?php else: ?>РїСЂРѕРµРєС‚<?php endif; ?> РІ Р»РµРЅС‚Рµ Рё РїРѕР»СѓС‡РёС‚Рµ Р±РѕР»СЊС€Рµ РѕС‚РєР»РёРєРѕРІ РѕС‚ Р»СѓС‡С€РёС… РёСЃРїРѕР»РЅРёС‚РµР»РµР№.
                 </div>
             <?php else: ?>
                 <?php if(($isVacancy || !$isContest) && hasPermissions('projects')): ?>
                     <div class="b-layout__txt b-layout__txt_fontsize_18 b-layout__txt_padbot_20">
-                        <a href="/guest/new/<?=($isVacancy)?'vacancy':'project'?>/" class="b-layout__link">Опубликовать от имени другого работодателя</a>
+                        <a href="/guest/new/<?=($isVacancy)?'vacancy':'project'?>/" class="b-layout__link">РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ РѕС‚ РёРјРµРЅРё РґСЂСѓРіРѕРіРѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ</a>
                     </div>
                 <?php endif; ?>
                 <? if (!$isVacancy) { ?>
-                    <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_15">Для найма Исполнителя на регулярную работу &mdash; <a href="/public/?step=1&kind=4" class="b-layout__link">разместите вакансию</a></div>
+                    <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_15">Р”Р»СЏ РЅР°Р№РјР° РСЃРїРѕР»РЅРёС‚РµР»СЏ РЅР° СЂРµРіСѓР»СЏСЂРЅСѓСЋ СЂР°Р±РѕС‚Сѓ &mdash; <a href="/public/?step=1&kind=4" class="b-layout__link">СЂР°Р·РјРµСЃС‚РёС‚Рµ РІР°РєР°РЅСЃРёСЋ</a></div>
                 <?php } ?>
             <?php endif; ?>
         </td>
@@ -198,8 +198,8 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                         <tr class="b-layout__tr">
                            <td class="b-layout__td b-layout__td_width_60 b-layout__td_center"><img class="b-pic" src="/images/project-logo.png" width="33" height="45"></td>
                            <td class="b-layout__td b-layout__td_padleft_10">
-                              <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_15">Для поиска онлайн-исполнителя на разовую работу</div>
-                              <a class="b-button b-button_flat b-button_flat_green b-button_nowrap" href="?step=1&kind=1">Добавьте проект</a>
+                              <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_15">Р”Р»СЏ РїРѕРёСЃРєР° РѕРЅР»Р°Р№РЅ-РёСЃРїРѕР»РЅРёС‚РµР»СЏ РЅР° СЂР°Р·РѕРІСѓСЋ СЂР°Р±РѕС‚Сѓ</div>
+                              <a class="b-button b-button_flat b-button_flat_green b-button_nowrap" href="?step=1&kind=1">Р”РѕР±Р°РІСЊС‚Рµ РїСЂРѕРµРєС‚</a>
                            </td>
                         </tr>
                      </table>
@@ -210,8 +210,8 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                            <tr class="b-layout__tr">
                               <td class="b-layout__td b-layout__td_width_60 b-layout__td_center"><img class="b-pic" src="/images/contest-logo.png" width="45" height="44"></td>
                               <td class="b-layout__td b-layout__td_padleft_10">
-                                 <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_15">Для выбора лучшего<br>результата из нескольких</div>
-                                 <a class="b-button b-button_flat b-button_flat_green b-button_nowrap" href="?step=1&kind=7">Устройте конкурс</a>
+                                 <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_15">Р”Р»СЏ РІС‹Р±РѕСЂР° Р»СѓС‡С€РµРіРѕ<br>СЂРµР·СѓР»СЊС‚Р°С‚Р° РёР· РЅРµСЃРєРѕР»СЊРєРёС…</div>
+                                 <a class="b-button b-button_flat b-button_flat_green b-button_nowrap" href="?step=1&kind=7">РЈСЃС‚СЂРѕР№С‚Рµ РєРѕРЅРєСѓСЂСЃ</a>
                               </td>
                            </tr>
                         </table>
@@ -222,8 +222,8 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                            <tr class="b-layout__tr">
                               <td class="b-layout__td b-layout__td_width_60 b-layout__td_center"><img class="b-pic" src="/images/vacancy-logo.png" width="45" height="52"></td>
                               <td class="b-layout__td b-layout__td_padleft_10">
-                                 <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_15">Для найма Исполнителя<br>на регулярную работу</div>
-                                 <a class="b-button b-button_flat b-button_flat_green b-button_nowrap" href="?step=1&kind=4">Разместите вакансию</a>
+                                 <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_15">Р”Р»СЏ РЅР°Р№РјР° РСЃРїРѕР»РЅРёС‚РµР»СЏ<br>РЅР° СЂРµРіСѓР»СЏСЂРЅСѓСЋ СЂР°Р±РѕС‚Сѓ</div>
+                                 <a class="b-button b-button_flat b-button_flat_green b-button_nowrap" href="?step=1&kind=4">Р Р°Р·РјРµСЃС‚РёС‚Рµ РІР°РєР°РЅСЃРёСЋ</a>
                               </td>
                            </tr>
                         </table>
@@ -236,8 +236,8 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                            <tr class="b-layout__tr">
                               <td class="b-layout__td b-layout__td_width_60 b-layout__td_center"><img class="b-pic" src="/images/vacancy-logo.png" width="45" height="52"></td>
                               <td class="b-layout__td b-layout__td_padleft_10">
-                                 <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_15">Для найма Исполнителя<br>на регулярную работу</div>
-                                 <a class="b-button b-button_flat b-button_flat_green b-button_nowrap" href="?step=1&kind=4">Разместите вакансию</a>
+                                 <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_15">Р”Р»СЏ РЅР°Р№РјР° РСЃРїРѕР»РЅРёС‚РµР»СЏ<br>РЅР° СЂРµРіСѓР»СЏСЂРЅСѓСЋ СЂР°Р±РѕС‚Сѓ</div>
+                                 <a class="b-button b-button_flat b-button_flat_green b-button_nowrap" href="?step=1&kind=4">Р Р°Р·РјРµСЃС‚РёС‚Рµ РІР°РєР°РЅСЃРёСЋ</a>
                               </td>
                            </tr>
                         </table>
@@ -247,8 +247,8 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                            <tr class="b-layout__tr">
                               <td class="b-layout__td b-layout__td_width_60 b-layout__td_center"><img class="b-pic" src="/images/contest-logo.png" width="45" height="44"></td>
                               <td class="b-layout__td b-layout__td_padleft_10">
-                                 <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_15">Для выбора лучшего<br>результата из нескольких</div>
-                                 <a class="b-button b-button_flat b-button_flat_green b-button_nowrap" href="?step=1&kind=7">Устройте конкурс</a>
+                                 <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_15">Р”Р»СЏ РІС‹Р±РѕСЂР° Р»СѓС‡С€РµРіРѕ<br>СЂРµР·СѓР»СЊС‚Р°С‚Р° РёР· РЅРµСЃРєРѕР»СЊРєРёС…</div>
+                                 <a class="b-button b-button_flat b-button_flat_green b-button_nowrap" href="?step=1&kind=7">РЈСЃС‚СЂРѕР№С‚Рµ РєРѕРЅРєСѓСЂСЃ</a>
                               </td>
                            </tr>
                         </table>
@@ -281,7 +281,7 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
 					<?php if ($freelancer) { ?>
 					<tr class="b-layout__tr">
 						<td class="b-layout__one b-layout__one_padbot_20">
-                     <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">Исполнитель</div>
+                     <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">РСЃРїРѕР»РЅРёС‚РµР»СЊ</div>
 							<div class="b-layout__txt b-layout__txt_bold">
 								<?=$freelancer->uname?> <?=$freelancer->usurname?> [<?=$freelancer->login?>] 
 								<?= view_mark_user(array(
@@ -297,10 +297,10 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
 					<?php } ?>
                     <tr class="b-layout__tr">
                         <td class="b-layout__one b-layout__one_padbot_20">
-                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">Название <? if ($project['kind'] == 4) { ?>вакансии<?php } else if($project['kind'] == 7) { ?>конкурса<?php } else { ?>проекта<?php } ?></div>
+                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">РќР°Р·РІР°РЅРёРµ <? if ($project['kind'] == 4) { ?>РІР°РєР°РЅСЃРёРё<?php } else if($project['kind'] == 7) { ?>РєРѕРЅРєСѓСЂСЃР°<?php } else { ?>РїСЂРѕРµРєС‚Р°<?php } ?></div>
                             <div class="b-combo">
                                 <div class="b-combo__input b-combo__input_height_35">
-                                    <input autofocus class="b-combo__input-text" name="name" id="project_name" type="text" size="80" maxlength="60" value="<?= str_replace('"', "&quot;", $project['name']) ?>" placeholder="Кого вы ищете и какую работу нужно выполнить" />
+                                    <input autofocus class="b-combo__input-text" name="name" id="project_name" type="text" size="80" maxlength="60" value="<?= str_replace('"', "&quot;", $project['name']) ?>" placeholder="РљРѕРіРѕ РІС‹ РёС‰РµС‚Рµ Рё РєР°РєСѓСЋ СЂР°Р±РѕС‚Сѓ РЅСѓР¶РЅРѕ РІС‹РїРѕР»РЅРёС‚СЊ" />
                                 </div>
                             </div>
                             <div id="project_name_error" class="b-layout__txt b-layout__txt_padtop_3 b-layout__txt_color_c10600 b-layout_hide">
@@ -315,9 +315,9 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
             
                     <tr class="b-layout__tr">
                         <td class="b-layout__one b-layout__one_padbot_5">
-                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">Подробно опишите задание</div>
+                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">РџРѕРґСЂРѕР±РЅРѕ РѕРїРёС€РёС‚Рµ Р·Р°РґР°РЅРёРµ</div>
                             <div class="b-textarea">
-                                <textarea class="b-textarea__textarea b-textarea__textarea_min-height_200" id="f2" name="descr" cols="80" rows="5" placeholder="Укажите требования к исполнителю и результату, сроки выполнения и другие условия работы"><?= $project['descr'] ?></textarea>
+                                <textarea class="b-textarea__textarea b-textarea__textarea_min-height_200" id="f2" name="descr" cols="80" rows="5" placeholder="РЈРєР°Р¶РёС‚Рµ С‚СЂРµР±РѕРІР°РЅРёСЏ Рє РёСЃРїРѕР»РЅРёС‚РµР»СЋ Рё СЂРµР·СѓР»СЊС‚Р°С‚Сѓ, СЃСЂРѕРєРё РІС‹РїРѕР»РЅРµРЅРёСЏ Рё РґСЂСѓРіРёРµ СѓСЃР»РѕРІРёСЏ СЂР°Р±РѕС‚С‹"><?= $project['descr'] ?></textarea>
                             </div>
                             <div id="project_descr_error" class="b-layout__txt b-layout__txt_padtop_3 b-layout__txt_color_c10600 b-layout_hide">
                                 <span class="b-icon b-icon_sbr_rattent"></span><span id="project_descr_error_text"></span>
@@ -350,7 +350,7 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
 					<?php if (!$is_personal) { ?>
                     <tr class="b-layout__tr">
                         <td class="b-layout__one b-layout__one_padbot_10">
-                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">Специализация <? if ($project['kind'] == 4) { ?>вакансии<?php } else if($project['kind'] == 7) { ?>конкурса<?php } else { ?>проекта<?php } ?></div>
+                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ <? if ($project['kind'] == 4) { ?>РІР°РєР°РЅСЃРёРё<?php } else if($project['kind'] == 7) { ?>РєРѕРЅРєСѓСЂСЃР°<?php } else { ?>РїСЂРѕРµРєС‚Р°<?php } ?></div>
                             <?php
                                 
                                 for ($i = 0; $i < (is_pro() ? 3 : 1); $i++) { 
@@ -380,7 +380,7 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
 
                                          <input id="project_profession<?= $i ?>"
                                                 type="text" 
-                                                placeholder="Выберите раздел" 
+                                                placeholder="Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»" 
                                                 value="<?=@$group_name?>" 
                                                 name="profession0[group]" 
                                                 class="b-combo__input-text"/>
@@ -418,7 +418,7 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                                                    value="<?=@$prof_name?>"
                                                    id="project_profession<?= $i ?>_spec" 
                                                    name="profession0[spec]" 
-                                                   placeholder="Выберите специализацию (не обязательно)"
+                                                   placeholder="Р’С‹Р±РµСЂРёС‚Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ (РЅРµ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ)"
                                                    class="b-combo__input-text"/>
                                             <span class="b-combo__arrow" id="city_arrow"></span>
                                         </div>
@@ -428,16 +428,16 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                                 
                                 <? if ($i === 0) { ?>
                                 <div id="project_profession_error" class="b-layout__txt b-layout__txt_padtop_3 b-layout__txt_color_c10600 b-layout_hide">
-                                    <span class="b-icon b-icon_sbr_rattent"></span><span>Необходимо выбрать хотя бы одну специализацию</span>
+                                    <span class="b-icon b-icon_sbr_rattent"></span><span>РќРµРѕР±С…РѕРґРёРјРѕ РІС‹Р±СЂР°С‚СЊ С…РѕС‚СЏ Р±С‹ РѕРґРЅСѓ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ</span>
                                 </div>
                                 <? } ?>
                             <? } ?>
                             <div id="project_double_profession_error" class="b-layout__txt b-layout__txt_padtop_3 b-layout__txt_color_c10600 b-layout_hide">
-                                <span class="b-icon b-icon_sbr_rattent"></span><span>У вас несколько раз выбрана одна профессия</span>
+                                <span class="b-icon b-icon_sbr_rattent"></span><span>РЈ РІР°СЃ РЅРµСЃРєРѕР»СЊРєРѕ СЂР°Р· РІС‹Р±СЂР°РЅР° РѕРґРЅР° РїСЂРѕС„РµСЃСЃРёСЏ</span>
                             </div>
                             <?if (is_pro()) { ?>
                             <div class="b-layout__txt b-layout__txt_inline-block <?= $prj_categories[0] && $prj_categories[1] && $prj_categories[2] ? 'b-layout_hide' : '' ?>" style="margin-top: 8px;" id="project_add_prof">
-                                <a href="javascript:void(0)" class="b-button b-button_poll_plus"></a> <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)">Добавить раздел</a>
+                                <a href="javascript:void(0)" class="b-button b-button_poll_plus"></a> <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)">Р”РѕР±Р°РІРёС‚СЊ СЂР°Р·РґРµР»</a>
                             </div>
                             <? } ?>
                         </td>
@@ -451,7 +451,7 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                     <? if ($isVacancy) { ?>
                     <tr class="b-layout__tr">
                         <td class="b-layout__one b-layout__one_padbot_20">
-                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">Нужен исполнитель из&hellip;</div>
+                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">РќСѓР¶РµРЅ РёСЃРїРѕР»РЅРёС‚РµР»СЊ РёР·&hellip;</div>
                             <div id="project_location_wrap" class="b-combo b-combo_inline-block b-combo_margright_20 b-combo_zindex_2">
                                 <div class="b-combo__input b-combo__input_height_35
                                      b-combo__input_multi_dropdown 
@@ -461,20 +461,20 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                                      b-combo__input_arrow_yes 
                                      b-combo__input_init_citiesList 
                                      b-combo__input_on_click_request_id_getcities 
-                                     override_value_id_0_0_Все+страны 
-                                     override_value_id_1_0_Все+города">
+                                     override_value_id_0_0_Р’СЃРµ+СЃС‚СЂР°РЅС‹ 
+                                     override_value_id_1_0_Р’СЃРµ+РіРѕСЂРѕРґР°">
                                     <input type="hidden" name="project_location_columns[0]" value="<?= $project['country'] ?>">
                                     <input type="hidden" name="project_location_columns[1]" value="<?= $project['city'] ?>">
-                                    <input id="project_location" class="b-combo__input-text" name="location" type="text" size="80" value="<?= $project['location'] ? $project['location'] : 'Все страны' ?>" autocomplete="off">
+                                    <input id="project_location" class="b-combo__input-text" name="location" type="text" size="80" value="<?= $project['location'] ? $project['location'] : 'Р’СЃРµ СЃС‚СЂР°РЅС‹' ?>" autocomplete="off">
                                     <label class="b-combo__label" for="project_location"></label>
                                     <span class="b-combo__arrow"></span>
                                 </div>
                             </div>
                             <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_3">
-                                Если предполагается работа в офисе - укажите, в каком городе он находится.
+                                Р•СЃР»Рё РїСЂРµРґРїРѕР»Р°РіР°РµС‚СЃСЏ СЂР°Р±РѕС‚Р° РІ РѕС„РёСЃРµ - СѓРєР°Р¶РёС‚Рµ, РІ РєР°РєРѕРј РіРѕСЂРѕРґРµ РѕРЅ РЅР°С…РѕРґРёС‚СЃСЏ.
                             </div>
                             <div id="project_location_error" class="b-layout__txt b-layout__txt_padtop_3 b-layout__txt_color_c10600 b-layout_hide">
-                                <span class="b-icon b-icon_sbr_rattent"></span><span>Необходимо выбрать страну и город</span>
+                                <span class="b-icon b-icon_sbr_rattent"></span><span>РќРµРѕР±С…РѕРґРёРјРѕ РІС‹Р±СЂР°С‚СЊ СЃС‚СЂР°РЅСѓ Рё РіРѕСЂРѕРґ</span>
                             </div>
                         </td>
                         <td class="b-layout__one b-layout__one_width_70 b-layout__one_padbot_20">&#160;</td>
@@ -485,23 +485,23 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                     <?php if(!$isContest): ?>
                     <tr class="b-layout__tr b-project-create-budget">
                         <td class="b-layout__one b-layout__one_padbot_20" colspan="2">
-                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5 b-layout__txt_padtop_10">Бюджет</div>
+                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5 b-layout__txt_padtop_10">Р‘СЋРґР¶РµС‚</div>
                            <table class="b-layout__table b-layout__table_width_full">
                               <tr class="b-layout__tr">
                                  <td class="b-layout__td b-layout__td_width_340 b-layout__td_ipad">
                             <div class="b-combo b-combo_inline-block b-combo_margright_10">
                                 <div class="b-combo__input b-combo__input_width_160 b-combo__input_height_35 <?= $newContestBudget && $projectIsEdit ? 'b-combo__input_disabled' : '' ?>">
-                                    <input id="project_cost" class="b-combo__input-text" name="cost" type="text" size="10" maxlength="6" value="<?= $project['cost'] ? $project['cost'] : $minBudget ?>" placeholder="Укажите сумму оплаты" />
+                                    <input id="project_cost" class="b-combo__input-text" name="cost" type="text" size="10" maxlength="6" value="<?= $project['cost'] ? $project['cost'] : $minBudget ?>" placeholder="РЈРєР°Р¶РёС‚Рµ СЃСѓРјРјСѓ РѕРїР»Р°С‚С‹" />
                                 </div>
                             </div>
-                            <script type="text/javascript">var currencyList = {0:"USD", 1:"Евро", 2:"Руб"}</script>
+                            <script type="text/javascript">var currencyList = {0:"USD", 1:"Р•РІСЂРѕ", 2:"Р СѓР±"}</script>
                             <div class="b-combo b-combo_inline-block b-combo_margright_10">
                                 <div class="b-combo__input b-combo__input_width_60 b-combo__input_height_35 b-combo__input_arrow_yes b-combo__input_multi_dropdown drop_down_default_<?= (isset($project['cost']) && intval($project['cost']) !== 0) ? (int)$project['currency'] : 2 ?> b-combo__input_init_currencyList reverse_list <?= $newContestBudget && $projectIsEdit ? 'b-combo__input_disabled' : '' ?>">
                                     <input id="project_currency" class="b-combo__input-text" name="currency" type="text" size="80" readonly="readonly"/>
                                     <span class="b-combo__arrow"></span>
                                 </div>
                             </div>
-                              <script type="text/javascript">var pricebyList = {1:"за час", 2:"за день", 3:"за месяц", 4:"за проект"}</script>
+                              <script type="text/javascript">var pricebyList = {1:"Р·Р° С‡Р°СЃ", 2:"Р·Р° РґРµРЅСЊ", 3:"Р·Р° РјРµСЃСЏС†", 4:"Р·Р° РїСЂРѕРµРєС‚"}</script>
                               <div class="b-combo b-combo_inline-block">
                                   <div class="b-combo__input b-combo__input_width_85 b-combo__input_height_35 b-combo__input_arrow_yes b-combo__input_multi_dropdown drop_down_default_<?= (isset($project['cost']) && intval($project['priceby']) !== 0) ? (int)$project['priceby'] : 4 ?> b-combo__input_init_pricebyList">
                                       <input id="project_priceby" class="b-combo__input-text" name="priceby" type="text" size="10" value="" readonly="readonly" />
@@ -510,10 +510,10 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                               </div>
                                  </td>
                                  <td class="b-layout__td">
-                                    <span class="b-txt b-txt_inline-block b-txt_padtop_10 b-txt_padright_10 b-txt_padleft_10"> или </span> 
+                                    <span class="b-txt b-txt_inline-block b-txt_padtop_10 b-txt_padright_10 b-txt_padleft_10"> РёР»Рё </span> 
                                     <div class="b-check b-check_inline-block b-check_padtop_12">
                                         <input id="project_agreement" class="b-check__input" name="agreement" type="checkbox" value="1" <?= isset($project['cost']) && intval($project['cost']) === 0 ? 'checked' : '' ?> />
-                                        <label for="project_agreement" class="b-check__label b-check__label_fontsize_13">По договоренности</label>
+                                        <label for="project_agreement" class="b-check__label b-check__label_fontsize_13">РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</label>
                                     </div>
                                  </td>
                               </tr>
@@ -522,30 +522,30 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                                 <span class="b-icon b-icon_sbr_rattent"></span><span id="project_cost_error_text"></span>
                             </div>
                             
-                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5 b-layout__txt_padtop_20">Способ оплаты</div>
+                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5 b-layout__txt_padtop_20">РЎРїРѕСЃРѕР± РѕРїР»Р°С‚С‹</div>
                             
                             <div id="block_payment" <?php if ($choose_bs): ?>data-choosebs="1" <?php endif; ?>class="b-radio b-radio_padtop_20 b-radio_layout_vertical b-fon b-fon_pad_10 b-fon_bg_fa">
                                 <div class="b-radio__item b-radio__item_padbot_10">
                                     <input type="radio" value="1" name="prefer_sbr" class="b-radio__input" id="el-pay_type-0" <?= $project['prefer_sbr'] === 't' ? 'checked':'' ?>>
                                     <label for="el-pay_type-0" class="b-radio__label b-radio__label_fontsize_15 b-radio__label_margtop_-1">
-                                        Безопасная сделка (с резервированием бюджета) &nbsp;<a target="_blank" href="/promo/bezopasnaya-sdelka/" class="b-layout__link"><span class="b-shadow__icon b-shadow__icon_quest2 b-icon_top_2"></span></a>            
+                                        Р‘РµР·РѕРїР°СЃРЅР°СЏ СЃРґРµР»РєР° (СЃ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРµРј Р±СЋРґР¶РµС‚Р°) &nbsp;<a target="_blank" href="/promo/bezopasnaya-sdelka/" class="b-layout__link"><span class="b-shadow__icon b-shadow__icon_quest2 b-icon_top_2"></span></a>            
                                     </label>
                                     <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_20 b-layout__txt_color_808080">
-                                        Безопасное сотрудничество с гарантией возврата средств. 
-                                        Вы резервируете бюджет заказа на сайте FL.ru - а мы гарантируем 
-                                        вам возврат суммы, если работа будет выполнена Исполнителем некачественно или не в срок.            
+                                        Р‘РµР·РѕРїР°СЃРЅРѕРµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ СЃ РіР°СЂР°РЅС‚РёРµР№ РІРѕР·РІСЂР°С‚Р° СЃСЂРµРґСЃС‚РІ. 
+                                        Р’С‹ СЂРµР·РµСЂРІРёСЂСѓРµС‚Рµ Р±СЋРґР¶РµС‚ Р·Р°РєР°Р·Р° РЅР° СЃР°Р№С‚Рµ FL.ru - Р° РјС‹ РіР°СЂР°РЅС‚РёСЂСѓРµРј 
+                                        РІР°Рј РІРѕР·РІСЂР°С‚ СЃСѓРјРјС‹, РµСЃР»Рё СЂР°Р±РѕС‚Р° Р±СѓРґРµС‚ РІС‹РїРѕР»РЅРµРЅР° РСЃРїРѕР»РЅРёС‚РµР»РµРј РЅРµРєР°С‡РµСЃС‚РІРµРЅРЅРѕ РёР»Рё РЅРµ РІ СЃСЂРѕРє.            
                                     </div>
                                 </div>        
                                 <div class="b-radio__item">
                                     <input type="radio" value="0" name="prefer_sbr" class="b-radio__input" id="el-pay_type-1" <?= $project['prefer_sbr'] === 'f' ? 'checked':'' ?>>
                                     <label for="el-pay_type-1" class="b-radio__label b-radio__label_fontsize_15 b-radio__label_margtop_-1">
-                                        Прямая оплата Исполнителю на его кошелек/счет            
+                                        РџСЂСЏРјР°СЏ РѕРїР»Р°С‚Р° РСЃРїРѕР»РЅРёС‚РµР»СЋ РЅР° РµРіРѕ РєРѕС€РµР»РµРє/СЃС‡РµС‚            
                                     </label>
                                     <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padleft_20 b-layout__txt_color_808080">
-                                        Сотрудничество без участия сайта в процессе оплаты. 
-                                        Вы сами договариваетесь с Исполнителем о способе и порядке оплаты. 
-                                        И самостоятельно регулируете все претензии, связанные с качеством 
-                                        и сроками выполнения работы.                                       
+                                        РЎРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ Р±РµР· СѓС‡Р°СЃС‚РёСЏ СЃР°Р№С‚Р° РІ РїСЂРѕС†РµСЃСЃРµ РѕРїР»Р°С‚С‹. 
+                                        Р’С‹ СЃР°РјРё РґРѕРіРѕРІР°СЂРёРІР°РµС‚РµСЃСЊ СЃ РСЃРїРѕР»РЅРёС‚РµР»РµРј Рѕ СЃРїРѕСЃРѕР±Рµ Рё РїРѕСЂСЏРґРєРµ РѕРїР»Р°С‚С‹. 
+                                        Р СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ СЂРµРіСѓР»РёСЂСѓРµС‚Рµ РІСЃРµ РїСЂРµС‚РµРЅР·РёРё, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ РєР°С‡РµСЃС‚РІРѕРј 
+                                        Рё СЃСЂРѕРєР°РјРё РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹.                                       
                                     </div>
                                 </div>        
                             </div>
@@ -560,16 +560,16 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                     <?php else: ?>
                     <tr class="b-layout__tr b-project-create-budget">
                         <td class="b-layout__one b-layout__one_padbot_20" colspan="2">
-                           <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5"><? if ($project['kind'] == 4) { ?>Бюджет<?php } else { ?>Призовой бюджет<?php } ?></div>
+                           <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5"><? if ($project['kind'] == 4) { ?>Р‘СЋРґР¶РµС‚<?php } else { ?>РџСЂРёР·РѕРІРѕР№ Р±СЋРґР¶РµС‚<?php } ?></div>
                            <table class="b-layout__table b-layout__table_width_full">
                               <tr class="b-layout__tr">
                                  <td class="b-layout__td b-layout__td_width_340 b-layout__td_ipad" <? if ($isContest) { ?>colspan="2"<?php } ?>>
                             <div class="b-combo b-combo_inline-block b-combo_margright_10">
                                 <div class="b-combo__input b-combo__input_width_160 b-combo__input_height_35 <?= $newContestBudget && $projectIsEdit ? 'b-combo__input_disabled' : '' ?>">
-                                    <input id="project_cost" class="b-combo__input-text" name="cost" type="text" size="10" maxlength="6" value="<?= $project['cost'] ? $project['cost'] : $minBudget ?>"  placeholder="Укажите сумму оплаты" />
+                                    <input id="project_cost" class="b-combo__input-text" name="cost" type="text" size="10" maxlength="6" value="<?= $project['cost'] ? $project['cost'] : $minBudget ?>"  placeholder="РЈРєР°Р¶РёС‚Рµ СЃСѓРјРјСѓ РѕРїР»Р°С‚С‹" />
                                 </div>
                             </div>
-                            <script type="text/javascript">var currencyList = {0:"USD", 1:"Евро", 2:"Руб"}</script>
+                            <script type="text/javascript">var currencyList = {0:"USD", 1:"Р•РІСЂРѕ", 2:"Р СѓР±"}</script>
                             <div class="b-combo b-combo_inline-block b-combo_margright_10 b-combo_valign_mid">
                                 <div class="b-combo__input b-combo__input_width_60 b-combo__input_height_35 b-combo__input_arrow_yes b-combo__input_multi_dropdown drop_down_default_<?= (isset($project['cost']) && intval($project['cost']) !== 0) ? (int)$project['currency'] : 2 ?> b-combo__input_init_currencyList reverse_list <?= $newContestBudget && $projectIsEdit ? 'b-combo__input_disabled' : '' ?>">
                                     <input id="project_currency" class="b-combo__input-text" name="currency" type="text" size="80" readonly="readonly"/>
@@ -577,7 +577,7 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                                 </div>
                             </div>
                             <? if (!$isContest) { ?>
-                              <script type="text/javascript">var pricebyList = {1:"за час", 2:"за день", 3:"за месяц", 4:"за проект"}</script>
+                              <script type="text/javascript">var pricebyList = {1:"Р·Р° С‡Р°СЃ", 2:"Р·Р° РґРµРЅСЊ", 3:"Р·Р° РјРµСЃСЏС†", 4:"Р·Р° РїСЂРѕРµРєС‚"}</script>
                               <div class="b-combo b-combo_inline-block b-combo_valign_mid">
                                   <div class="b-combo__input b-combo__input_width_85 b-combo__input_height_35 b-combo__input_arrow_yes b-combo__input_multi_dropdown drop_down_default_<?= (isset($project['cost']) && intval($project['priceby']) !== 0) ? (int)$project['priceby'] : 4 ?> b-combo__input_init_pricebyList">
                                       <input id="project_priceby" class="b-combo__input-text" name="priceby" type="text" size="10" value="" readonly="readonly" />
@@ -587,19 +587,19 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                             <? } ?>
                             <? if ($isContest && !($newContestBudget && $projectIsEdit)) { ?>
                             <div class="b-layout b-layout_inline-block">
-                                <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_2">Минимальный бюджет &mdash; <?= $minBudget ?> руб (не включает в себя стоимость публикации конкурса на сайте).</div>
+                                <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_2">РњРёРЅРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ &mdash; <?= $minBudget ?> СЂСѓР± (РЅРµ РІРєР»СЋС‡Р°РµС‚ РІ СЃРµР±СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ РїСѓР±Р»РёРєР°С†РёРё РєРѕРЅРєСѓСЂСЃР° РЅР° СЃР°Р№С‚Рµ).</div>
                                 <? if ($newContestBudget && !$projectIsEdit) { ?>
-                                <div class="b-layout__txt padtop_10" id="contest_tax_wrap" style="display:none;">Стоимость публикации конкурса <span class="b-layout__txt b-layout__txt_lineheight_1 b-layout__txt_color_fd6c30"><span id="contest_tax"></span> руб.</span></div>
+                                <div class="b-layout__txt padtop_10" id="contest_tax_wrap" style="display:none;">РЎС‚РѕРёРјРѕСЃС‚СЊ РїСѓР±Р»РёРєР°С†РёРё РєРѕРЅРєСѓСЂСЃР° <span class="b-layout__txt b-layout__txt_lineheight_1 b-layout__txt_color_fd6c30"><span id="contest_tax"></span> СЂСѓР±.</span></div>
                                 <? } ?>
                              </div>
                             <? } ?>
                                  </td>
 												 <? if (!$isContest) { ?>
                                  <td class="b-layout__td b-layout__td_ipad">
-                                     <span class="b-txt b-txt_inline-block b-txt_padtop_10 b-txt_padright_10 b-txt_padleft_10"> или </span> 
+                                     <span class="b-txt b-txt_inline-block b-txt_padtop_10 b-txt_padright_10 b-txt_padleft_10"> РёР»Рё </span> 
                                      <div class="b-check b-check_inline-block b-check_padtop_12">
                                          <input id="project_agreement" class="b-check__input" name="agreement" type="checkbox" value="1" <?= isset($project['cost']) && intval($project['cost']) === 0 ? 'checked' : '' ?> />
-                                         <label for="project_agreement" class="b-check__label b-check__label_fontsize_13">По договоренности</label>
+                                         <label for="project_agreement" class="b-check__label b-check__label_fontsize_13">РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</label>
                                      </div>
                                  </td>
                                      <? } ?>
@@ -615,7 +615,7 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                     <? if ($isContest) { ?>
                     <tr class="b-layout__tr">
                         <td class="b-layout__one b-layout__one_padbot_20">
-                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">Дата окончания конкурса</div>
+                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР°</div>
                             <div class="b-combo">
                                 <div class="b-combo__input b-combo__input_width_150 b-combo__input_height_35 b-combo__input_arrow-date_yes b-combo__input_calendar b-combo__input_resize b-combo__input_arrow_yes date_format_use_dot use_past_date <?=($project['end_date'] == '' ? 'no_set_date_on_load' : '')?> year_min_limit_1900">
                                     <input id="project_end_date" class="b-combo__input-text" name="end_date" type="text" size="10" value="<?= str_replace('-', '.', $project['end_date']) ?>" />
@@ -630,7 +630,7 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                     </tr>
                     <tr class="b-layout__tr">
                         <td class="b-layout__one b-layout__one_padbot_20">
-                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">Дата награждения победителей</div>
+                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">Р”Р°С‚Р° РЅР°РіСЂР°Р¶РґРµРЅРёСЏ РїРѕР±РµРґРёС‚РµР»РµР№</div>
                             <div class="b-combo">
                                 <div class="b-combo__input b-combo__input_width_150 b-combo__input_height_35 b-combo__input_arrow-date_yes b-combo__input_calendar b-combo__input_resize b-combo__input_arrow_yes date_format_use_dot use_past_date no_set_date_on_load year_min_limit_1900">
                                     <input id="project_win_date" class="b-combo__input-text" name="win_date" type="text" size="10" value="<?= str_replace('-', '.', $project['win_date']) ?>" />
@@ -653,16 +653,16 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
 					<tr class="b-layout__tr b-project-create-filter">
                         
                         <td class="b-layout__one b-layout__one_padtop_2 b-layout__one_padbot_20">
-                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">Ответить на <? if ($project['kind'] == 4) { ?>вакансию<?php } else if($project['kind'] == 7) { ?>конкурс<?php } else { ?>проект<?php } ?> могут только&hellip;</div>
+                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">РћС‚РІРµС‚РёС‚СЊ РЅР° <? if ($project['kind'] == 4) { ?>РІР°РєР°РЅСЃРёСЋ<?php } else if($project['kind'] == 7) { ?>РєРѕРЅРєСѓСЂСЃ<?php } else { ?>РїСЂРѕРµРєС‚<?php } ?> РјРѕРіСѓС‚ С‚РѕР»СЊРєРѕ&hellip;</div>
                             <div class="b-fon b-fon_pad_10 b-fon_bg_fa">
                                 <div class="b-check">
                                     <input id="project_pro_only" class="b-check__input" name="pro_only" type="checkbox" value="1" <?= $project['pro_only'] === 't' ? 'checked' : ($project['pro_only'] === 'f' ? '' : 'checked') ?> />
-                                    <label for="project_pro_only" class="b-check__label b-check__label_fontsize_13">Фрилансеры с аккаунтом <a href="/profi/" target="_blank" class="b-layout__link"><span class="b-icon b-icon__lprofi b-icon_top_2" data-profi-txt="Лучшие фрилансеры сайта FL.ru. Работают на сайте более 2-х лет, прошли верификацию личности и имеют не менее 98% положительных отзывов."></span></a> или  <span title="Пользователи с платным аккаунтом" class="b-icon b-icon__pro b-icon__pro_f b-icon_top_3"></span></label>
+                                    <label for="project_pro_only" class="b-check__label b-check__label_fontsize_13">Р¤СЂРёР»Р°РЅСЃРµСЂС‹ СЃ Р°РєРєР°СѓРЅС‚РѕРј <a href="/profi/" target="_blank" class="b-layout__link"><span class="b-icon b-icon__lprofi b-icon_top_2" data-profi-txt="Р›СѓС‡С€РёРµ С„СЂРёР»Р°РЅСЃРµСЂС‹ СЃР°Р№С‚Р° FL.ru. Р Р°Р±РѕС‚Р°СЋС‚ РЅР° СЃР°Р№С‚Рµ Р±РѕР»РµРµ 2-С… Р»РµС‚, РїСЂРѕС€Р»Рё РІРµСЂРёС„РёРєР°С†РёСЋ Р»РёС‡РЅРѕСЃС‚Рё Рё РёРјРµСЋС‚ РЅРµ РјРµРЅРµРµ 98% РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… РѕС‚Р·С‹РІРѕРІ."></span></a> РёР»Рё  <span title="РџРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ РїР»Р°С‚РЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј" class="b-icon b-icon__pro b-icon__pro_f b-icon_top_3"></span></label>
                                 </div>
                                 <?php if(false): ?>
                                 <div class="b-check b-check_padtop_10">
                                     <input id="project_ver_only" class="b-check__input" name="verify_only" type="checkbox" value="1" <?= ($project['verify_only'] === 't') ? 'checked' : '' ?> />
-                                    <label for="project_ver_only" class="b-check__label b-check__label_fontsize_13">Фрилансеры с верификацией <?= view_verify('Верификация - процесс подтверждения личности с привязкой аккаунта к одной из платежных систем.') ?></label>
+                                    <label for="project_ver_only" class="b-check__label b-check__label_fontsize_13">Р¤СЂРёР»Р°РЅСЃРµСЂС‹ СЃ РІРµСЂРёС„РёРєР°С†РёРµР№ <?= view_verify('Р’РµСЂРёС„РёРєР°С†РёСЏ - РїСЂРѕС†РµСЃСЃ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ Р»РёС‡РЅРѕСЃС‚Рё СЃ РїСЂРёРІСЏР·РєРѕР№ Р°РєРєР°СѓРЅС‚Р° Рє РѕРґРЅРѕР№ РёР· РїР»Р°С‚РµР¶РЅС‹С… СЃРёСЃС‚РµРј.') ?></label>
                                 </div>
                                 <?php endif; ?>
                              </div>
@@ -678,26 +678,26 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                     <?php if (!$is_personal) { ?>
 					<tr class="b-layout__tr b-project-create-filter">
                         <td class="b-layout__one b-layout__one_padbot_20">
-                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">Ответить на <? if ($project['kind'] == 4) { ?>вакансию<?php } else if($project['kind'] == 7) { ?>конкурс<?php } else { ?>проект<?php } ?> могут только&hellip;</div>
+                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_5">РћС‚РІРµС‚РёС‚СЊ РЅР° <? if ($project['kind'] == 4) { ?>РІР°РєР°РЅСЃРёСЋ<?php } else if($project['kind'] == 7) { ?>РєРѕРЅРєСѓСЂСЃ<?php } else { ?>РїСЂРѕРµРєС‚<?php } ?> РјРѕРіСѓС‚ С‚РѕР»СЊРєРѕ&hellip;</div>
                             <div class="b-fon b-fon_pad_10 b-fon_bg_fa">
                                 
                                 
                                 
                             <div class="b-check">
                                 <input id="project_pro_only" class="b-check__input" name="pro_only" type="checkbox" value="1" <?= $project['pro_only'] === 't' ? 'checked' : ($project['pro_only'] === 'f' ? '' : 'checked') ?> />
-                                <label for="project_pro_only" class="b-check__label b-check__label_fontsize_13">Фрилансеры с аккаунтом <a href="/profi/" target="_blank" class="b-layout__link"><span class="b-icon b-icon__lprofi b-icon_top_2" data-profi-txt="Лучшие фрилансеры сайта FL.ru. Работают на сайте более 2-х лет, прошли верификацию личности и имеют не менее 98% положительных отзывов."></span></a> или  <span title="Пользователи с платным аккаунтом" class="b-icon b-icon__pro b-icon__pro_f b-icon_top_3"></span></label>
+                                <label for="project_pro_only" class="b-check__label b-check__label_fontsize_13">Р¤СЂРёР»Р°РЅСЃРµСЂС‹ СЃ Р°РєРєР°СѓРЅС‚РѕРј <a href="/profi/" target="_blank" class="b-layout__link"><span class="b-icon b-icon__lprofi b-icon_top_2" data-profi-txt="Р›СѓС‡С€РёРµ С„СЂРёР»Р°РЅСЃРµСЂС‹ СЃР°Р№С‚Р° FL.ru. Р Р°Р±РѕС‚Р°СЋС‚ РЅР° СЃР°Р№С‚Рµ Р±РѕР»РµРµ 2-С… Р»РµС‚, РїСЂРѕС€Р»Рё РІРµСЂРёС„РёРєР°С†РёСЋ Р»РёС‡РЅРѕСЃС‚Рё Рё РёРјРµСЋС‚ РЅРµ РјРµРЅРµРµ 98% РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… РѕС‚Р·С‹РІРѕРІ."></span></a> РёР»Рё  <span title="РџРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ РїР»Р°С‚РЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј" class="b-icon b-icon__pro b-icon__pro_f b-icon_top_3"></span></label>
                             </div>
                             <?php if(false): ?>
                                 <? if (strtotime('2013-07-09 00:00:00') > time()) { ?>
                                     <div class="b-check b-check_padtop_10">
                                         <input type="hidden" name="verify_only" value="0" />
                                         <input id="project_ver_only" class="b-check__input" type="checkbox" disabled="disabled" />
-                                        <label for="project_ver_only" class="b-check__label b-check__label_fontsize_13">Только для <?= view_verify('верифицированных пользователей') ?><br> (будет доступно в июле)</label>
+                                        <label for="project_ver_only" class="b-check__label b-check__label_fontsize_13">РўРѕР»СЊРєРѕ РґР»СЏ <?= view_verify('РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№') ?><br> (Р±СѓРґРµС‚ РґРѕСЃС‚СѓРїРЅРѕ РІ РёСЋР»Рµ)</label>
                                     </div>
                                 <? } else { ?>
                                     <div class="b-check b-check_padtop_10">
                                         <input id="project_ver_only" class="b-check__input" name="verify_only" type="checkbox" value="1" <?= ($project['verify_only'] === 't') ? 'checked' : '' ?> />
-                                        <label for="project_ver_only" class="b-check__label b-check__label_fontsize_13">Фрилансеры с верификацией <?= view_verify('Верификация - процесс подтверждения личности с привязкой аккаунта к одной из платежных систем.') ?></label>
+                                        <label for="project_ver_only" class="b-check__label b-check__label_fontsize_13">Р¤СЂРёР»Р°РЅСЃРµСЂС‹ СЃ РІРµСЂРёС„РёРєР°С†РёРµР№ <?= view_verify('Р’РµСЂРёС„РёРєР°С†РёСЏ - РїСЂРѕС†РµСЃСЃ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ Р»РёС‡РЅРѕСЃС‚Рё СЃ РїСЂРёРІСЏР·РєРѕР№ Р°РєРєР°СѓРЅС‚Р° Рє РѕРґРЅРѕР№ РёР· РїР»Р°С‚РµР¶РЅС‹С… СЃРёСЃС‚РµРј.') ?></label>
                                     </div>
                                 <? } ?>
                             <?php endif; ?>
@@ -705,7 +705,7 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                             <? if (!$isVacancy) { ?>
                             <div class="b-check b-check_padtop_10" id="project_prefer_sbr_wrap" <?= $isContest || $project['cost'] == 0 || $project['cost'] >= sbr_stages::MIN_COST_RUR ? '' : 'style="display:none;"' ?>>
                                 <input id="project_prefer_sbr" name="prefer_sbr" class="b-check__input" type="checkbox" value="1" <?= $project['prefer_sbr'] === 't' ? 'checked' : ($project['prefer_sbr'] === 'f' ? '' : 'checked') ?> />
-                                <label for="project_prefer_sbr" class="b-check__label b-check__label_fontsize_13"><?= $project['kind'] != 7 ? 'Предпочитаю оплату работы через' : 'Выплата вознаграждения через' ?> <a href="/promo/bezopasnaya-sdelka/" target="_blank" class="b-layout__link">Безопасную Сделку</a> <?= view_sbr_shield('', 'b-icon_top_2') ?></label>
+                                <label for="project_prefer_sbr" class="b-check__label b-check__label_fontsize_13"><?= $project['kind'] != 7 ? 'РџСЂРµРґРїРѕС‡РёС‚Р°СЋ РѕРїР»Р°С‚Сѓ СЂР°Р±РѕС‚С‹ С‡РµСЂРµР·' : 'Р’С‹РїР»Р°С‚Р° РІРѕР·РЅР°РіСЂР°Р¶РґРµРЅРёСЏ С‡РµСЂРµР·' ?> <a href="/promo/bezopasnaya-sdelka/" target="_blank" class="b-layout__link">Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ</a> <?= view_sbr_shield('', 'b-icon_top_2') ?></label>
                             </div>
                             <? } ?>
                             </div>
@@ -721,10 +721,10 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                     <? if(!$is_personal && hasPermissions('projects')) { ?>
                     <tr class="b-layout__tr">
                         <td class="b-layout__one b-layout__one_padbot_20">
-                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10">Опции для администраторов</div>
+                            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10">РћРїС†РёРё РґР»СЏ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРІ</div>
                             <div class="b-combo">
                                 <div class="b-combo__input b-combo__input_height_35">
-                                    <input class="b-combo__input-text" name="videolnk" id="project_videolnk" type="text" size="80" maxlength="60" value="<?= str_replace('"', "&quot;", $project['videolnk']) ?>" placeholder="Добавьте ссылку на видео" />
+                                    <input class="b-combo__input-text" name="videolnk" id="project_videolnk" type="text" size="80" maxlength="60" value="<?= str_replace('"', "&quot;", $project['videolnk']) ?>" placeholder="Р”РѕР±Р°РІСЊС‚Рµ СЃСЃС‹Р»РєСѓ РЅР° РІРёРґРµРѕ" />
                                 </div>
                             </div>
                             <div id="project_videolnk_error" class="b-layout__txt b-layout__txt_padtop_3 b-layout__txt_color_c10600 b-layout_hide">
@@ -735,7 +735,7 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                             <? if(hasPermissions('projects')) { ?>
                                 <div class="b-check b-check_padtop_10 b-check_padleft_10">
                                     <input id="project_strong_top" name="strong_top" class="b-check__input" type="checkbox" value="1" />
-                                    <label for="project_strong_top" class="b-check__label b-check__label_fontsize_13">Закрепить железно наверху ленты</label>
+                                    <label for="project_strong_top" class="b-check__label b-check__label_fontsize_13">Р—Р°РєСЂРµРїРёС‚СЊ Р¶РµР»РµР·РЅРѕ РЅР°РІРµСЂС…Сѓ Р»РµРЅС‚С‹</label>
                                 </div>
                             <? }//if?>
                             
@@ -753,7 +753,7 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
 				<? $projectOnTop = time() < strtotime($project['top_to']); ?>
                 <?php if ($step < 2): ?>
                 <h2 id="pay_services" class="b-layout__title<?php if ($scrollToPay): ?> autoscroll<?php endif; ?> b-layout__txt_color_6db335 b-layout__txt_padtop_15 b-layout__title_padbot_20">
-                    Выделите <? if ($project['kind'] == 4) { ?>вакансию<?php } else if($project['kind'] == 7) { ?>конкурс<?php } else { ?>проект<?php } ?> и привлеките лучших Исполнителей
+                    Р’С‹РґРµР»РёС‚Рµ <? if ($project['kind'] == 4) { ?>РІР°РєР°РЅСЃРёСЋ<?php } else if($project['kind'] == 7) { ?>РєРѕРЅРєСѓСЂСЃ<?php } else { ?>РїСЂРѕРµРєС‚<?php } ?> Рё РїСЂРёРІР»РµРєРёС‚Рµ Р»СѓС‡С€РёС… РСЃРїРѕР»РЅРёС‚РµР»РµР№
                 </h2>
                 <?php endif; ?>
                  <label for="project_top_ok"></label>
@@ -767,23 +767,23 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                                <span class="b-icon b-icon__knpk b-icon_center"></span>
                            </td>
                            <td class="b-layout__td b-layout__td_valign_mid">
-                             <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bold"><? if($projectOnTop) { ?>Продлить закрепление<?php } else { ?>Закрепите <? if ($project['kind'] == 4) { ?>вакансию<?php } else if($project['kind'] == 7) { ?>конкурс<?php } else { ?>проект<?php } ?> в ленте<?php } ?></div>
-                             <div id="project_top_ok_s_info" class="b-layout__txt b-layout__txt_fontsize_11">После закрепления <? if ($project['kind'] == 4) { ?>ваша вакансия<?php } else if($project['kind'] == 7) { ?>ваш конкурс<?php } else { ?>ваш проект<?php } ?> окажется на самом верху ленты проектов.<br><? if ($project['kind'] == 4) { ?>ее<?php } else { ?>его<?php } ?> увидит большее число потенциальных исполнителей.</div>
-                             <div id="project_top_ok_s_days" class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_5 <?= $project['top_days']>0 ? '' : 'b-layout_hide' ?>"><?= $projectOnTop ? 'Продлить ' : '' ?>на
+                             <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bold"><? if($projectOnTop) { ?>РџСЂРѕРґР»РёС‚СЊ Р·Р°РєСЂРµРїР»РµРЅРёРµ<?php } else { ?>Р—Р°РєСЂРµРїРёС‚Рµ <? if ($project['kind'] == 4) { ?>РІР°РєР°РЅСЃРёСЋ<?php } else if($project['kind'] == 7) { ?>РєРѕРЅРєСѓСЂСЃ<?php } else { ?>РїСЂРѕРµРєС‚<?php } ?> РІ Р»РµРЅС‚Рµ<?php } ?></div>
+                             <div id="project_top_ok_s_info" class="b-layout__txt b-layout__txt_fontsize_11">РџРѕСЃР»Рµ Р·Р°РєСЂРµРїР»РµРЅРёСЏ <? if ($project['kind'] == 4) { ?>РІР°С€Р° РІР°РєР°РЅСЃРёСЏ<?php } else if($project['kind'] == 7) { ?>РІР°С€ РєРѕРЅРєСѓСЂСЃ<?php } else { ?>РІР°С€ РїСЂРѕРµРєС‚<?php } ?> РѕРєР°Р¶РµС‚СЃСЏ РЅР° СЃР°РјРѕРј РІРµСЂС…Сѓ Р»РµРЅС‚С‹ РїСЂРѕРµРєС‚РѕРІ.<br><? if ($project['kind'] == 4) { ?>РµРµ<?php } else { ?>РµРіРѕ<?php } ?> СѓРІРёРґРёС‚ Р±РѕР»СЊС€РµРµ С‡РёСЃР»Рѕ РїРѕС‚РµРЅС†РёР°Р»СЊРЅС‹С… РёСЃРїРѕР»РЅРёС‚РµР»РµР№.</div>
+                             <div id="project_top_ok_s_days" class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_5 <?= $project['top_days']>0 ? '' : 'b-layout_hide' ?>"><?= $projectOnTop ? 'РџСЂРѕРґР»РёС‚СЊ ' : '' ?>РЅР°
                                 <div class="b-combo b-combo_valign_mid b-combo_inline-block">
                                     <div class="b-combo__input b-combo__input_width_50">
                                         <input id="project_top_days" type="text" name="top_days" maxlength="2" value="<?= $project['top_days'] ? $project['top_days'] : 1 ?>" size="80"  class="b-combo__input-text b-combo__input-text_center">
                                     </div>
                                 </div> 
-                                <span id="project_top_days_text">дня</span>
+                                <span id="project_top_days_text">РґРЅСЏ</span>
          
                                 <? if ($projectOnTop) { ?>
-                                <br/><br/>Проект уже закреплен до <?= date('d/m/Y', strtotime($project['top_to'])) ?>
+                                <br/><br/>РџСЂРѕРµРєС‚ СѓР¶Рµ Р·Р°РєСЂРµРїР»РµРЅ РґРѕ <?= date('d/m/Y', strtotime($project['top_to'])) ?>
                                 <? } ?>                           
                             </div>
                            </td>
                            <td class="b-layout__td b-layout__td_valign_mid b-layout__td_width_120">
-                              <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_ff7f27 b-layout__txt_lineheight_1"><span id="project_top_days_price_2"><?= $priceTopDay ?> руб.<br>в день</span><span id="project_top_days_price" style="display: none;"><?= $priceTopDay ?></span></div>
+                              <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_ff7f27 b-layout__txt_lineheight_1"><span id="project_top_days_price_2"><?= $priceTopDay ?> СЂСѓР±.<br>РІ РґРµРЅСЊ</span><span id="project_top_days_price" style="display: none;"><?= $priceTopDay ?></span></div>
                            </td>
                         </tr>
                      </table>
@@ -806,10 +806,10 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                                      </div>                            
                                  </td>
                                  <td class="b-layout__td b-layout__td_valign_mid">
-                                     <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bold">Добавьте логотип компании и ссылку на нее</div>
-                                     <div id="project_logo_2" class="b-layout__txt b-layout__txt_fontsize_11" style="display: <?= $logoFile ? 'none' : 'block' ?>"><? if ($project['kind'] == 4) { ?>Вакансия<?php } else if($project['kind'] == 7) { ?>Конкурс<?php } else { ?>Проект<?php } ?> с логотипом выделяется в ленте проектов,<br>привлекает больше внимания исполнителей, и на <? if ($project['kind'] == 4) { ?>нее<?php } else { ?>него<?php } ?> отвечают чаще.</div>
+                                     <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bold">Р”РѕР±Р°РІСЊС‚Рµ Р»РѕРіРѕС‚РёРї РєРѕРјРїР°РЅРёРё Рё СЃСЃС‹Р»РєСѓ РЅР° РЅРµРµ</div>
+                                     <div id="project_logo_2" class="b-layout__txt b-layout__txt_fontsize_11" style="display: <?= $logoFile ? 'none' : 'block' ?>"><? if ($project['kind'] == 4) { ?>Р’Р°РєР°РЅСЃРёСЏ<?php } else if($project['kind'] == 7) { ?>РљРѕРЅРєСѓСЂСЃ<?php } else { ?>РџСЂРѕРµРєС‚<?php } ?> СЃ Р»РѕРіРѕС‚РёРїРѕРј РІС‹РґРµР»СЏРµС‚СЃСЏ РІ Р»РµРЅС‚Рµ РїСЂРѕРµРєС‚РѕРІ,<br>РїСЂРёРІР»РµРєР°РµС‚ Р±РѕР»СЊС€Рµ РІРЅРёРјР°РЅРёСЏ РёСЃРїРѕР»РЅРёС‚РµР»РµР№, Рё РЅР° <? if ($project['kind'] == 4) { ?>РЅРµРµ<?php } else { ?>РЅРµРіРѕ<?php } ?> РѕС‚РІРµС‡Р°СЋС‚ С‡Р°С‰Рµ.</div>
                                      <div id="project-logo-btn-del" class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_3 b-layout_float_left" style="display:<?= !$logoFile ? 'none' : 'block' ?>">
-                                         <a id="project_logo_img_del" class="b-layout__link b-layout__link_bordbot_dot_c7271e" href="#">Удалить логотип</a>&nbsp;&nbsp;
+                                         <a id="project_logo_img_del" class="b-layout__link b-layout__link_bordbot_dot_c7271e" href="#">РЈРґР°Р»РёС‚СЊ Р»РѕРіРѕС‚РёРї</a>&nbsp;&nbsp;
                                      </div> 
                                      <div id="project_logo" class="b-layout_inline-block" style="display: none;">
                                          <div id="project_logo_file" class="b-file project_logo_file_template">
@@ -828,13 +828,13 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
 
                                              <div id="project-logo-btn" class="b-file__wrap b-layout_inline-block">
                                                  <input id="project_logo_input" type="file" class="b-file__input" name="attachedfiles_file">
-                                                 <a id="project_logo_file_btn" class="b-button b-button_flat b-button_flat_grey b-button_block attachedfiles_button" href="javascript:void(0);">Загрузить файл логотипа</a>
+                                                 <a id="project_logo_file_btn" class="b-button b-button_flat b-button_flat_grey b-button_block attachedfiles_button" href="javascript:void(0);">Р—Р°РіСЂСѓР·РёС‚СЊ С„Р°Р№Р» Р»РѕРіРѕС‚РёРїР°</a>
                                              </div>
                                              
                                              <div id="project_logo_error" class="i-shadow">
                                                  <div class="b-shadow b-shadow_m b-shadow_top_0 b-shadow_pad_10 b-shadow_hide">
                                                      <div class="b-layout__txt b-layout__txt_nowrap b-layout__txt_padright_15 b-layout__txt_color_c4271f">
-                                                         <span class="b-icon b-icon_sbr_rattent"></span><span id="project_logo_error_txt">Обязательно прикрепите файл</span>
+                                                         <span class="b-icon b-icon_sbr_rattent"></span><span id="project_logo_error_txt">РћР±СЏР·Р°С‚РµР»СЊРЅРѕ РїСЂРёРєСЂРµРїРёС‚Рµ С„Р°Р№Р»</span>
                                                      </div>
                                                      <span class="b-shadow__icon b-shadow__icon_close b-shadow__icon_right_12 b-shadow__icon_top_12" onClick="$('project_logo_error').getChildren().addClass('b-shadow_hide');"></span>
                                                      <span class="b-shadow__icon b-shadow__icon_nosik b-shadow__icon_left_100"></span>
@@ -845,12 +845,12 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                                      </div>
                                      <div id="project_logo_link_block" class="b-combo b-combo_inline-block b-combo_padbot_5"<?= !$logoFile ? 'style="display:none"' : '' ?>>
                                          <div class="b-combo__input b-combo__input_width_180">
-                                             <input id="project_logo_link" type="text" size="80" name="link" class="b-combo__input-text b-combo__input-text_color_67" value="<?= $project['link'] ? $project['link'] : '' ?>" placeholder="Адрес сайта по желанию">
+                                             <input id="project_logo_link" type="text" size="80" name="link" class="b-combo__input-text b-combo__input-text_color_67" value="<?= $project['link'] ? $project['link'] : '' ?>" placeholder="РђРґСЂРµСЃ СЃР°Р№С‚Р° РїРѕ Р¶РµР»Р°РЅРёСЋ">
                                          </div>
                                      </div> 
                                  </td>
                                  <td class="b-layout__td b-layout__td_valign_mid b-layout__td_width_120">
-                                     <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_ff7f27 b-layout__txt_lineheight_1"><?= $priceLogo ?> руб.</div>
+                                     <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_ff7f27 b-layout__txt_lineheight_1"><?= $priceLogo ?> СЂСѓР±.</div>
                                  </td>
                              </tr>
                      </table>
@@ -867,11 +867,11 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                                <span class="b-icon b-icon__bfire"></span>
                            </td>
                            <td class="b-layout__td b-layout__td_valign_mid">
-                               <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bold">Выделите меткой &laquo;Срочно&raquo;</div>
-                               <div class="b-layout__txt b-layout__txt_fontsize_11"><? if ($project['kind'] == 4) { ?>Вакансия будет отмечена в качестве срочной и выделена в ленте красным значком.<br>Это стимулирует фрилансеров отвечать быстрее именно на вашу вакансию.<?php } else if($project['kind'] == 7) { ?>Конкурс будет отмечен в качестве срочного и выделен в ленте красным значком.<br>Это стимулирует фрилансеров отвечать быстрее именно на ваш конкурс.<?php } else { ?>Проект будет отмечен в качестве срочного и выделен в ленте красным значком.<br>Это стимулирует фрилансеров отвечать быстрее именно на ваш проект.<?php } ?></div>
+                               <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bold">Р’С‹РґРµР»РёС‚Рµ РјРµС‚РєРѕР№ &laquo;РЎСЂРѕС‡РЅРѕ&raquo;</div>
+                               <div class="b-layout__txt b-layout__txt_fontsize_11"><? if ($project['kind'] == 4) { ?>Р’Р°РєР°РЅСЃРёСЏ Р±СѓРґРµС‚ РѕС‚РјРµС‡РµРЅР° РІ РєР°С‡РµСЃС‚РІРµ СЃСЂРѕС‡РЅРѕР№ Рё РІС‹РґРµР»РµРЅР° РІ Р»РµРЅС‚Рµ РєСЂР°СЃРЅС‹Рј Р·РЅР°С‡РєРѕРј.<br>Р­С‚Рѕ СЃС‚РёРјСѓР»РёСЂСѓРµС‚ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РѕС‚РІРµС‡Р°С‚СЊ Р±С‹СЃС‚СЂРµРµ РёРјРµРЅРЅРѕ РЅР° РІР°С€Сѓ РІР°РєР°РЅСЃРёСЋ.<?php } else if($project['kind'] == 7) { ?>РљРѕРЅРєСѓСЂСЃ Р±СѓРґРµС‚ РѕС‚РјРµС‡РµРЅ РІ РєР°С‡РµСЃС‚РІРµ СЃСЂРѕС‡РЅРѕРіРѕ Рё РІС‹РґРµР»РµРЅ РІ Р»РµРЅС‚Рµ РєСЂР°СЃРЅС‹Рј Р·РЅР°С‡РєРѕРј.<br>Р­С‚Рѕ СЃС‚РёРјСѓР»РёСЂСѓРµС‚ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РѕС‚РІРµС‡Р°С‚СЊ Р±С‹СЃС‚СЂРµРµ РёРјРµРЅРЅРѕ РЅР° РІР°С€ РєРѕРЅРєСѓСЂСЃ.<?php } else { ?>РџСЂРѕРµРєС‚ Р±СѓРґРµС‚ РѕС‚РјРµС‡РµРЅ РІ РєР°С‡РµСЃС‚РІРµ СЃСЂРѕС‡РЅРѕРіРѕ Рё РІС‹РґРµР»РµРЅ РІ Р»РµРЅС‚Рµ РєСЂР°СЃРЅС‹Рј Р·РЅР°С‡РєРѕРј.<br>Р­С‚Рѕ СЃС‚РёРјСѓР»РёСЂСѓРµС‚ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РѕС‚РІРµС‡Р°С‚СЊ Р±С‹СЃС‚СЂРµРµ РёРјРµРЅРЅРѕ РЅР° РІР°С€ РїСЂРѕРµРєС‚.<?php } ?></div>
                            </td>
                            <td class="b-layout__td b-layout__td_valign_mid b-layout__td_width_120">
-                               <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_ff7f27 b-layout__txt_lineheight_1">300 руб.</div>
+                               <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_ff7f27 b-layout__txt_lineheight_1">300 СЂСѓР±.</div>
                            </td>
                         </tr>
                      </table>
@@ -888,11 +888,11 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
                                <span class="b-icon b-icon__beye"></span>
                            </td>
                            <td class="b-layout__td b-layout__td_valign_mid">
-                               <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bold">Скройте <? if ($project['kind'] == 4) { ?>вакансию<?php } else if($project['kind'] == 7) { ?>конкурс<?php } else { ?>проект<?php } ?> от поисковых систем</div>
-                               <div class="b-layout__txt b-layout__txt_fontsize_11"><? if ($project['kind'] == 4) { ?>Текст скрытой вакансии не индексируется поисковыми системами. <br>И виден он только авторизованным пользователям сайта FL.ru.<?php } else if($project['kind'] == 7) { ?>Текст скрытого конкурса не индексируется поисковыми системами.<br>И виден он только авторизованным пользователям сайта FL.ru.<?php } else { ?>Текст скрытого проекта не индексируется поисковыми системами.<br>И виден он только авторизованным пользователям сайта FL.ru.<?php } ?></div>
+                               <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bold">РЎРєСЂРѕР№С‚Рµ <? if ($project['kind'] == 4) { ?>РІР°РєР°РЅСЃРёСЋ<?php } else if($project['kind'] == 7) { ?>РєРѕРЅРєСѓСЂСЃ<?php } else { ?>РїСЂРѕРµРєС‚<?php } ?> РѕС‚ РїРѕРёСЃРєРѕРІС‹С… СЃРёСЃС‚РµРј</div>
+                               <div class="b-layout__txt b-layout__txt_fontsize_11"><? if ($project['kind'] == 4) { ?>РўРµРєСЃС‚ СЃРєСЂС‹С‚РѕР№ РІР°РєР°РЅСЃРёРё РЅРµ РёРЅРґРµРєСЃРёСЂСѓРµС‚СЃСЏ РїРѕРёСЃРєРѕРІС‹РјРё СЃРёСЃС‚РµРјР°РјРё. <br>Р РІРёРґРµРЅ РѕРЅ С‚РѕР»СЊРєРѕ Р°РІС‚РѕСЂРёР·РѕРІР°РЅРЅС‹Рј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј СЃР°Р№С‚Р° FL.ru.<?php } else if($project['kind'] == 7) { ?>РўРµРєСЃС‚ СЃРєСЂС‹С‚РѕРіРѕ РєРѕРЅРєСѓСЂСЃР° РЅРµ РёРЅРґРµРєСЃРёСЂСѓРµС‚СЃСЏ РїРѕРёСЃРєРѕРІС‹РјРё СЃРёСЃС‚РµРјР°РјРё.<br>Р РІРёРґРµРЅ РѕРЅ С‚РѕР»СЊРєРѕ Р°РІС‚РѕСЂРёР·РѕРІР°РЅРЅС‹Рј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј СЃР°Р№С‚Р° FL.ru.<?php } else { ?>РўРµРєСЃС‚ СЃРєСЂС‹С‚РѕРіРѕ РїСЂРѕРµРєС‚Р° РЅРµ РёРЅРґРµРєСЃРёСЂСѓРµС‚СЃСЏ РїРѕРёСЃРєРѕРІС‹РјРё СЃРёСЃС‚РµРјР°РјРё.<br>Р РІРёРґРµРЅ РѕРЅ С‚РѕР»СЊРєРѕ Р°РІС‚РѕСЂРёР·РѕРІР°РЅРЅС‹Рј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј СЃР°Р№С‚Р° FL.ru.<?php } ?></div>
                            </td>
                            <td class="b-layout__td b-layout__td_valign_mid b-layout__td_width_120">
-                               <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_ff7f27 b-layout__txt_lineheight_1">300 руб.</div>
+                               <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_ff7f27 b-layout__txt_lineheight_1">300 СЂСѓР±.</div>
                            </td>
                         </tr>
                      </table>
@@ -901,7 +901,7 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
 				<?php } ?>
              </form>
              
-           <div class="b-layout__txt_fontsize_18 b-layout__txt_bold b-page__ipad b-page__iphone">Рекомендуем услуги</div>
+           <div class="b-layout__txt_fontsize_18 b-layout__txt_bold b-page__ipad b-page__iphone">Р РµРєРѕРјРµРЅРґСѓРµРј СѓСЃР»СѓРіРё</div>
         </td>
      </tr>
  </table>   
@@ -909,7 +909,7 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
 <?php if ($is_personal) { ?>
 
 	<div class="b-buttons b-buttons_padleft_90">
-		<a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green" id="project_save_btn">Предложить проект</a>
+		<a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green" id="project_save_btn">РџСЂРµРґР»РѕР¶РёС‚СЊ РїСЂРѕРµРєС‚</a>
 	</div>
 
 <?php } else { ?>
@@ -925,19 +925,19 @@ $hideSaveBtn = !$ablePublic || ($project['kind'] == 4 && !$isVacancyPayed && $pr
             <?php if ($step > 1): ?> 
             &#160;
             <a class="b-layout__link b-layout__link_fontsize_13" href="/projects/<?=$project['id']?>/">
-                Перейти к <?php if($isVacancy):?>вакансии<? elseif ($isContest):?>конкурсу<?php else: ?>проекту<?php endif; ?>
+                РџРµСЂРµР№С‚Рё Рє <?php if($isVacancy):?>РІР°РєР°РЅСЃРёРё<? elseif ($isContest):?>РєРѕРЅРєСѓСЂСЃСѓ<?php else: ?>РїСЂРѕРµРєС‚Сѓ<?php endif; ?>
             </a>
             <?php endif;  ?>
 		  </td>
 		  <td class="b-layout__one b-layout__one_padtop_9">
-			<span id="project_need_money" style="display:none"><span class="b-buttons__txt b-buttons__txt_color_ee1d16" id="project_need_money_text"></span>&#160;&#160;<a class="b-buttons__link" href="/bill/" target="_blank" id="top-payed-bill" style="display:hide">пополнить счёт</a></span>
+			<span id="project_need_money" style="display:none"><span class="b-buttons__txt b-buttons__txt_color_ee1d16" id="project_need_money_text"></span>&#160;&#160;<a class="b-buttons__link" href="/bill/" target="_blank" id="top-payed-bill" style="display:hide">РїРѕРїРѕР»РЅРёС‚СЊ СЃС‡С‘С‚</a></span>
 			<a id="project_save_to_draft_btn" class="b-buttons__link" href="javascript:void(0)"></a>&#160;&#160;&#160;&#160;  
 			<span id="draft_time_save" class="b-buttons__txt time-save" style="float:none; display: none;"></span>
 		  </td>
 		</tr>
 	  </table>
 	</div>
-   <?php if($project['kind'] == 7) { ?><div class="b-layout__txt b-layout__txt_padtop_20 b-layout__txt_fontsize_11 b-layout__txt_color_80">Обратите внимание: при публикации вы оплачиваете только стоимость размещения конкурса на сайте.<br>Призовые суммы выплачиваются вами отдельно после определения победителей.</div><?php } ?>
+   <?php if($project['kind'] == 7) { ?><div class="b-layout__txt b-layout__txt_padtop_20 b-layout__txt_fontsize_11 b-layout__txt_color_80">РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ: РїСЂРё РїСѓР±Р»РёРєР°С†РёРё РІС‹ РѕРїР»Р°С‡РёРІР°РµС‚Рµ С‚РѕР»СЊРєРѕ СЃС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р·РјРµС‰РµРЅРёСЏ РєРѕРЅРєСѓСЂСЃР° РЅР° СЃР°Р№С‚Рµ.<br>РџСЂРёР·РѕРІС‹Рµ СЃСѓРјРјС‹ РІС‹РїР»Р°С‡РёРІР°СЋС‚СЃСЏ РІР°РјРё РѕС‚РґРµР»СЊРЅРѕ РїРѕСЃР»Рµ РѕРїСЂРµРґРµР»РµРЅРёСЏ РїРѕР±РµРґРёС‚РµР»РµР№.</div><?php } ?>
 
 <?php } ?>
 

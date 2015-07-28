@@ -68,14 +68,14 @@
                     case 1: 
                         if ($for && $fort){
                             $account->depositEx($account->id, $sum, $scomment, $ucomment, 12, $for, $fort, $op_date);
-                        } else $error = "Укажите исходные валюты! Валюту в FM указывать не обязательно!";
+                        } else $error = "РЈРєР°Р¶РёС‚Рµ РёСЃС…РѕРґРЅС‹Рµ РІР°Р»СЋС‚С‹! Р’Р°Р»СЋС‚Сѓ РІ FM СѓРєР°Р·С‹РІР°С‚СЊ РЅРµ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ!";
                         break;
                     case 2: 
                          $account->depositBonusEx($account->id, $sum, $scomment, $ucomment, 13, $op_date); break;
                     case 3: 
                         if ($for && $fort && $nrid){
                         $account->deposit($op_id, $account->id, $sum, $ucomment, $fort, $for, 36, $nrid, $op_date);
-                        } else $error = "Укажите исходные валюты и номер СбР!";
+                        } else $error = "РЈРєР°Р¶РёС‚Рµ РёСЃС…РѕРґРЅС‹Рµ РІР°Р»СЋС‚С‹ Рё РЅРѕРјРµСЂ РЎР±Р !";
                 }
                 header('Location: /siteadmin/bill/?login='.$login);
                 exit;
@@ -117,64 +117,64 @@
 .ba, tr.ba td   {border:1px solid #d0d0d0}
 .ac, tr.ac td   {text-align:center}
 </style>
-<h2>История платежей</h2>
-Аккаунт: <a href="/users/<?=$user->login?>" class="blue"><?=$user->uname?> <?=$user->usurname?> [<?=$user->login?>]</a><br>
-Номер счета: <?=$account->id?>
-<h3 style="margin-bottom:0px;">На счету <?= round($account->sum, 2);?> руб.</h3>
-<strong>на бонусном счету - <?=zin(round($account->bonus_sum, 2))?> руб.</strong><br /><br />
+<h2>РСЃС‚РѕСЂРёСЏ РїР»Р°С‚РµР¶РµР№</h2>
+РђРєРєР°СѓРЅС‚: <a href="/users/<?=$user->login?>" class="blue"><?=$user->uname?> <?=$user->usurname?> [<?=$user->login?>]</a><br>
+РќРѕРјРµСЂ СЃС‡РµС‚Р°: <?=$account->id?>
+<h3 style="margin-bottom:0px;">РќР° СЃС‡РµС‚Сѓ <?= round($account->sum, 2);?> СЂСѓР±.</h3>
+<strong>РЅР° Р±РѕРЅСѓСЃРЅРѕРј СЃС‡РµС‚Сѓ - <?=zin(round($account->bonus_sum, 2))?> СЂСѓР±.</strong><br /><br />
 
 <? if ( !is_release() || in_array($_SESSION['login'], $GLOBALS['balanceCanChangeAdmins']) ) { ?>
 <form action="." method="post">
-Изменить счет пользователя
+РР·РјРµРЅРёС‚СЊ СЃС‡РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 <table cellspacing="2" cellpadding="2" border="0">
 <tr>
-	<td>на сумму(руб):</td>
+	<td>РЅР° СЃСѓРјРјСѓ(СЂСѓР±):</td>
 	<td><input type="text" name="val"></td>
 </tr>
 <tr>
-	<td>комментарий (для пользователя)</td>
+	<td>РєРѕРјРјРµРЅС‚Р°СЂРёР№ (РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ)</td>
 	<td><textarea cols="50" rows="" name="ucomment"></textarea></td>
 </tr>
 <tr>
-	<td>комментарий (для системы)</td>
+	<td>РєРѕРјРјРµРЅС‚Р°СЂРёР№ (РґР»СЏ СЃРёСЃС‚РµРјС‹)</td>
 	<td><textarea cols="50" rows="" name="scomment"></textarea></td>
 </tr>
 <tr>
-	<td>дата операции</td>
+	<td>РґР°С‚Р° РѕРїРµСЂР°С†РёРё</td>
 	<td><input type="text" name="date" value="<?=date('d.m.Y H:i:s')?>"></td>
 </tr>
 <tr>
-	<td>Валюта</td>
+	<td>Р’Р°Р»СЋС‚Р°</td>
 	<td><input type="text" name="for"> 
 	<select name="fort">
-		<option value="0" SELECTED>нет</option>
+		<option value="0" SELECTED>РЅРµС‚</option>
 		<option value="1">WMZ</option>
 		<option value="2">WMR</option>
-		<option value="3">ЯД</option>
-		<option value="4">Безнал (ЮЛ)</option>
-		<option value="5">Безнал (ФЛ)</option>
+		<option value="3">РЇР”</option>
+		<option value="4">Р‘РµР·РЅР°Р» (Р®Р›)</option>
+		<option value="5">Р‘РµР·РЅР°Р» (Р¤Р›)</option>
 		<option value="6">ASSIST</option>
-		<option value="8">ОСМП</option>
-		<option value="7">СМС</option>
+		<option value="8">РћРЎРњРџ</option>
+		<option value="7">РЎРњРЎ</option>
 	</select> </td>
 </tr>
 <tr>
-	<td>Вид операции</td>
+	<td>Р’РёРґ РѕРїРµСЂР°С†РёРё</td>
 	<td><select name="op_type">
-		<option value="0" SELECTED>Другая операция</option>
-		<option value="1">Изменение счета</option>
-		<option value="2">Изменение бонусного счета</option>
-		<option value="3">Резерв под СбР</option>
+		<option value="0" SELECTED>Р”СЂСѓРіР°СЏ РѕРїРµСЂР°С†РёСЏ</option>
+		<option value="1">РР·РјРµРЅРµРЅРёРµ СЃС‡РµС‚Р°</option>
+		<option value="2">РР·РјРµРЅРµРЅРёРµ Р±РѕРЅСѓСЃРЅРѕРіРѕ СЃС‡РµС‚Р°</option>
+		<option value="3">Р РµР·РµСЂРІ РїРѕРґ РЎР±Р </option>
 	</select></td>
 </tr>
 <tr>
-	<td>Номер СбР (id)</td>
+	<td>РќРѕРјРµСЂ РЎР±Р  (id)</td>
 	<td><input type="text" name="nrid"></td>
 </tr>
 </table>
 <input type="hidden" name="action" value="modify">
 <input type="hidden" name="login" value="<?=$user->login?>">
-<input type="submit" value="Ага!">
+<input type="submit" value="РђРіР°!">
 </form>
 <? } ?>
 
@@ -184,22 +184,22 @@ $limit_options = array(10,20,50,100);
 <form name="frm" id="frm" method="POST">
 <input type="hidden" name="action" value="filter">
 <div class="money-filtr">
-    <div class="form "> <!-- fs-dg, для перепопределения -->
+    <div class="form "> <!-- fs-dg, РґР»СЏ РїРµСЂРµРїРѕРїСЂРµРґРµР»РµРЅРёСЏ -->
       <b class="b1"></b>
       <b class="b2"></b>
       <div class="form-in">
-      	<h4>Фильтр</h4>
+      	<h4>Р¤РёР»СЊС‚СЂ</h4>
         <div class="form-block first">
             <table>
                 <tr>
                     <td>
                     	<table>
                         	<tr>
-                            	<td width="90">№</td>
-                                <td class="expl"><input name="num_operation" type="text" class="form-text" value="<?= htmlspecialchars($_POST['num_operation'])?>"/> &#160;&#160;&#160;&#160;Например: 74*</td>
+                            	<td width="90">в„–</td>
+                                <td class="expl"><input name="num_operation" type="text" class="form-text" value="<?= htmlspecialchars($_POST['num_operation'])?>"/> &#160;&#160;&#160;&#160;РќР°РїСЂРёРјРµСЂ: 74*</td>
                             </tr>
                         	<tr>
-                            	<td>Дата:</td>
+                            	<td>Р”Р°С‚Р°:</td>
                                 <td>
                                     <div class="form-value">
                                     <input name="date_from" id="date_form" type="text" value="<?= htmlspecialchars($_POST['date_from'])?>" class="form-text" readonly="readonly" />
@@ -211,12 +211,12 @@ $limit_options = array(10,20,50,100);
                                 </td>
                             </tr>
                         	<tr>
-                            	<td>Сортировать:</td>
+                            	<td>РЎРѕСЂС‚РёСЂРѕРІР°С‚СЊ:</td>
                                 <td>
                                   <select name="sort">
-                                    <option value="1" <?= ($_POST['sort'] == 1?'selected="selected"':'');?>>По дате</option>
-                                    <option value="2" <?= ($_POST['sort'] == 2?'selected="selected"':'');?>>По номеру</option>
-                                    <option value="3" <?= ($_POST['sort'] == 3?'selected="selected"':'');?>>По сумме</option>
+                                    <option value="1" <?= ($_POST['sort'] == 1?'selected="selected"':'');?>>РџРѕ РґР°С‚Рµ</option>
+                                    <option value="2" <?= ($_POST['sort'] == 2?'selected="selected"':'');?>>РџРѕ РЅРѕРјРµСЂСѓ</option>
+                                    <option value="3" <?= ($_POST['sort'] == 3?'selected="selected"':'');?>>РџРѕ СЃСѓРјРјРµ</option>
                                   </select>
                                 </td>
                             </tr>
@@ -226,14 +226,14 @@ $limit_options = array(10,20,50,100);
                     <td>
                     	<table>
                         	<tr>
-                            	<td width="90">Сумма:</td>
+                            	<td width="90">РЎСѓРјРјР°:</td>
                                 <td><input name="sum_from" type="text" class="form-text" value="<?= htmlspecialchars($_POST['sum_from'])?>"/> &mdash; <input name="sum_to" type="text" class="form-text" value="<?= htmlspecialchars($_POST['sum_to'])?>"/></td>
                             </tr>
                         	<tr>
-                            	<td>Событие:</td>
+                            	<td>РЎРѕР±С‹С‚РёРµ:</td>
                                 <td>
                                     <select name="event">
-                                      <option value="0">Все события</option>
+                                      <option value="0">Р’СЃРµ СЃРѕР±С‹С‚РёСЏ</option>
                                       <?php foreach($events as $event) {?>
                                       <option value="<?= $event['id']?>" <?= ($_POST['event'] == $event['id']?'selected="selected"':'');?>><?= $event['op_name']?></option>
                                       <?php } //foreach?>
@@ -241,10 +241,10 @@ $limit_options = array(10,20,50,100);
                                 </td>
                             </tr>
                         	<tr>
-                            	<td>Вывести:</td>
+                            	<td>Р’С‹РІРµСЃС‚Рё:</td>
                                 <td class="how">
                                     <select name="limit">
-                                        <option value="0">Все</option>
+                                        <option value="0">Р’СЃРµ</option>
                                         <?php foreach($limit_options as $limit) {?>
                                         <option value="<?= $limit?>" <?= ($_POST['limit'] == $limit?'selected="selected"':'');?>><?= $limit?></option>
                                         <?php }//foreach?>
@@ -258,8 +258,8 @@ $limit_options = array(10,20,50,100);
         </div>
         <div class="form-block last">
         	<div class="form-el form-btns flm">
-				<input name="submit" value="Применить" type="submit" />
-                <a href="javascript:void(0)" onClick="FilterClearForm();">Сбросить фильтр</a>
+				<input name="submit" value="РџСЂРёРјРµРЅРёС‚СЊ" type="submit" />
+                <a href="javascript:void(0)" onClick="FilterClearForm();">РЎР±СЂРѕСЃРёС‚СЊ С„РёР»СЊС‚СЂ</a>
 			</div>
         </div>
       </div>
@@ -297,12 +297,12 @@ function FilterClearForm()
 	<td colspan="6" class="small">&nbsp;</td>
 </tr>
 <tr>
-	<td width="100">№</td>
-    <td width="120">Дата</td>
-    <td width="80">Баланс</td>
-    <td width="80">Сумма</td>
-    <td width="220">Событие</td>
-    <td>Комментарии</td>
+	<td width="100">в„–</td>
+    <td width="120">Р”Р°С‚Р°</td>
+    <td width="80">Р‘Р°Р»Р°РЅСЃ</td>
+    <td width="80">РЎСѓРјРјР°</td>
+    <td width="220">РЎРѕР±С‹С‚РёРµ</td>
+    <td>РљРѕРјРјРµРЅС‚Р°СЂРёРё</td>
 </tr>
 <? 
   foreach($history as $ikey => $hist) {
@@ -321,15 +321,15 @@ function FilterClearForm()
 	<td><?=(($hist['ammount'] > 0)?"+":"") . ( round($hist['ammount'],2) )?></td>
 	<td><?=str_replace( '%username%', $user->login, $hist['op_name'] )?><br><br>
 	<?php if(!in_array($hist['op_code'], array(12,23))) { ?>
-	<a href=".?action=delete&login=<?=$user->login?>&opid=<?=$hist['id']?>&op_code=<?=$hist['op_code']?>" class="blue">Удалить</a> | <a href="" class="blue">Изменить</a> 
+	<a href=".?action=delete&login=<?=$user->login?>&opid=<?=$hist['id']?>&op_code=<?=$hist['op_code']?>" class="blue">РЈРґР°Р»РёС‚СЊ</a> | <a href="" class="blue">РР·РјРµРЅРёС‚СЊ</a> 
 	<?php } //if?>
-	<? if($hist['op_code'] == 23 && !($hist['is_blocked']>0)): ?> <a href="#" id="lock_<?=$hist['id']?>" onclick="xajax_BlockOperation(<?=$hist['id']?>); return false;" style="color:red;">Заблокировать</a><? endif; ?>
-	<? if($hist['is_blocked']>0): ?>| <a href="#" id="lock_<?=$hist['id']?>" onclick="xajax_UnBlockOperation(<?=$hist['id']?>); return false;" style="color:red;">Разблокировать<? endif; ?>
+	<? if($hist['op_code'] == 23 && !($hist['is_blocked']>0)): ?> <a href="#" id="lock_<?=$hist['id']?>" onclick="xajax_BlockOperation(<?=$hist['id']?>); return false;" style="color:red;">Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ</a><? endif; ?>
+	<? if($hist['is_blocked']>0): ?>| <a href="#" id="lock_<?=$hist['id']?>" onclick="xajax_UnBlockOperation(<?=$hist['id']?>); return false;" style="color:red;">Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ<? endif; ?>
 	</td>
 	<td><?=($comments ? (stripslashes(reformat($comments, 35, 0, 1)).'<br/>'):'')?>
 	<?	if ($hist['op_code'] < 7 || $hist['op_code'] == 12 || $hist['op_code'] == 8 || $hist['op_code'] == 10 || $hist['op_code'] == 11 || $hist['op_code'] == 23
 	         || $hist['op_code'] ==131 || $hist['op_code'] ==132 || $hist['op_code'] >= 48 && $hist['op_code'] <= 51 || $hist['op_code'] == 19 || $hist['op_code'] == 20 || $hist['op_code'] == 52 || $hist['op_code'] == 63 || $hist['op_code'] == 64 || $hist['op_code'] == 76) { ?>
-	 <a class="blue" style="cursor: pointer" onclick="xajax_ShowBillComms(<?=$hist['id']?>, <?=$uid?>, 2);">Подробнее</a>
+	 <a class="blue" style="cursor: pointer" onclick="xajax_ShowBillComms(<?=$hist['id']?>, <?=$uid?>, 2);">РџРѕРґСЂРѕР±РЅРµРµ</a>
 	 <div id="bil<?=$hist['id']?>" class="small"></div>
 	  <? } ?>
 	</td>
@@ -337,5 +337,5 @@ function FilterClearForm()
 <? }?>
 </table>
 <? } else { ?>
-<div style="margin: 10px 0 0 5px;">Платежей нет</div>
+<div style="margin: 10px 0 0 5px;">РџР»Р°С‚РµР¶РµР№ РЅРµС‚</div>
 <? } ?>

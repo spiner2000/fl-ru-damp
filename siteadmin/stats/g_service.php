@@ -4,10 +4,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
 	session_start();
 	get_uid(false);
 if (!(hasPermissions('adm') && (hasPermissions('stats') || hasPermissions('tmppayments') ) )) { exit; }
-$idMonth = date('m'); //дефолтный месяц
-$idYear = date('Y'); //дефотлный год
-$iBarWidth = (is_numeric(InGet('y')) && !is_numeric(InGet('m')))?30:20; //ширина ячейки
-$iHeight = 20; //отступ снизу
+$idMonth = date('m'); //РґРµС„РѕР»С‚РЅС‹Р№ РјРµСЃСЏС†
+$idYear = date('Y'); //РґРµС„РѕС‚Р»РЅС‹Р№ РіРѕРґ
+$iBarWidth = (is_numeric(InGet('y')) && !is_numeric(InGet('m')))?30:20; //С€РёСЂРёРЅР° СЏС‡РµР№РєРё
+$iHeight = 20; //РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ
 $sFont = ABS_PATH.'/siteadmin/account/Aricyr.ttf';
 $graphStyle = array();
 $DB = new DB('master');
@@ -68,8 +68,8 @@ else {
 	$iYear = $idYear;
 }
 
-$iMaxDays = $iMax = ($bYear)?12:date('t',mktime(0,0,0, $iMonth, 1, $iYear)); //Вычисление максимального количества дней\месяцев в текущем месяце\годе
-$iFMperPX = (!$bYear)?30:(30*10); //масштаб
+$iMaxDays = $iMax = ($bYear)?12:date('t',mktime(0,0,0, $iMonth, 1, $iYear)); //Р’С‹С‡РёСЃР»РµРЅРёРµ РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ РєРѕР»РёС‡РµСЃС‚РІР° РґРЅРµР№\РјРµСЃСЏС†РµРІ РІ С‚РµРєСѓС‰РµРј РјРµСЃСЏС†Рµ\РіРѕРґРµ
+$iFMperPX = (!$bYear)?30:(30*10); //РјР°СЃС€С‚Р°Р±
 
 for ($i=1; $i<=19; $i++) {
 	for ($j=0; $j<=$iMaxDays; $j++) {
@@ -129,7 +129,7 @@ for ($i=1; $i<=count($graphStyle); $i++) {
 		for ($j=0; $j<count($aTemp); $j++) {
 			$iAmount = abs($aTemp[$j]['sum']/$iFMperPX);
 			if ($iAmount > $graphStyle[$i]['max']) {
-				$graphStyle[$i]['max'] = $iAmount; //Вычисляем максимальную высоту всего графика
+				$graphStyle[$i]['max'] = $iAmount; //Р’С‹С‡РёСЃР»СЏРµРј РјР°РєСЃРёРјР°Р»СЊРЅСѓСЋ РІС‹СЃРѕС‚Сѓ РІСЃРµРіРѕ РіСЂР°С„РёРєР°
 			}
 
             $graphValues[$i][$aTemp[$j]['_day']-1] = $iAmount;
@@ -170,54 +170,54 @@ for ($i=0; $i<=$iMaxDays; $i++) {
 	$k++;
 }
 //print_r($graphValues2);
-$imgHeight += $graphStyle[0]['max'] + count($graphValues)*30; //прибавляем промежутки к максимальной высоте графика
+$imgHeight += $graphStyle[0]['max'] + count($graphValues)*30; //РїСЂРёР±Р°РІР»СЏРµРј РїСЂРѕРјРµР¶СѓС‚РєРё Рє РјР°РєСЃРёРјР°Р»СЊРЅРѕР№ РІС‹СЃРѕС‚Рµ РіСЂР°С„РёРєР°
 $imgWidth = $iMax*$iBarWidth+100;
 
 
-$image=imagecreate($imgWidth, $imgHeight); //создаем график с учетом максимальной высоты и ширины.
+$image=imagecreate($imgWidth, $imgHeight); //СЃРѕР·РґР°РµРј РіСЂР°С„РёРє СЃ СѓС‡РµС‚РѕРј РјР°РєСЃРёРјР°Р»СЊРЅРѕР№ РІС‹СЃРѕС‚С‹ Рё С€РёСЂРёРЅС‹.
 imagecolorallocate($image, 255, 255, 255);
 
-$graphStyle[0]['color'] = imagecolorallocate($image, 0, 0, 0); //Сумма
-$graphStyle[1]['color'] = imagecolorallocate($image, 103, 135, 179); //Перевели денег
-$graphStyle[2]['color'] = imagecolorallocate($image, 111, 177, 92); //Подняли проект
-$graphStyle[3]['color'] = imagecolorallocate($image, 111, 177, 92); //Конкурсы
-$graphStyle[4]['color'] = imagecolorallocate($image, 140, 140, 140); //Перемешения
-$graphStyle[5]['color'] = imagecolorallocate($image, 140, 140, 140); //Места внутри кат.
-$graphStyle[6]['color'] = imagecolorallocate($image, 140, 140, 140); //Места в каталоге
-$graphStyle[7]['color'] = imagecolorallocate($image, 140, 140, 140); //Места на первой
-$graphStyle[8]['color'] = imagecolorallocate($image, 103, 135, 179); //Подарки
-$graphStyle[9]['color'] = imagecolorallocate($image, 111, 177, 92); //Платные проекты, логотип
-$graphStyle[10]['color'] = imagecolorallocate($image, 111, 177, 92); //Платные проекты, подсветка фоном
-$graphStyle[11]['color'] = imagecolorallocate($image, 111, 177, 92); //Платные проекты, жирный шрифт
-$graphStyle[12]['color'] = imagecolorallocate($image, 111, 177, 92); //Платные проекты, закрепление наверху
-$graphStyle[13]['color'] = imagecolorallocate($image, 111, 177, 92); //Платные проекты
-$graphStyle[14]['color'] = imagecolorallocate($image, 0, 103, 56); //PRO работодатели
+$graphStyle[0]['color'] = imagecolorallocate($image, 0, 0, 0); //РЎСѓРјРјР°
+$graphStyle[1]['color'] = imagecolorallocate($image, 103, 135, 179); //РџРµСЂРµРІРµР»Рё РґРµРЅРµРі
+$graphStyle[2]['color'] = imagecolorallocate($image, 111, 177, 92); //РџРѕРґРЅСЏР»Рё РїСЂРѕРµРєС‚
+$graphStyle[3]['color'] = imagecolorallocate($image, 111, 177, 92); //РљРѕРЅРєСѓСЂСЃС‹
+$graphStyle[4]['color'] = imagecolorallocate($image, 140, 140, 140); //РџРµСЂРµРјРµС€РµРЅРёСЏ
+$graphStyle[5]['color'] = imagecolorallocate($image, 140, 140, 140); //РњРµСЃС‚Р° РІРЅСѓС‚СЂРё РєР°С‚.
+$graphStyle[6]['color'] = imagecolorallocate($image, 140, 140, 140); //РњРµСЃС‚Р° РІ РєР°С‚Р°Р»РѕРіРµ
+$graphStyle[7]['color'] = imagecolorallocate($image, 140, 140, 140); //РњРµСЃС‚Р° РЅР° РїРµСЂРІРѕР№
+$graphStyle[8]['color'] = imagecolorallocate($image, 103, 135, 179); //РџРѕРґР°СЂРєРё
+$graphStyle[9]['color'] = imagecolorallocate($image, 111, 177, 92); //РџР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹, Р»РѕРіРѕС‚РёРї
+$graphStyle[10]['color'] = imagecolorallocate($image, 111, 177, 92); //РџР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹, РїРѕРґСЃРІРµС‚РєР° С„РѕРЅРѕРј
+$graphStyle[11]['color'] = imagecolorallocate($image, 111, 177, 92); //РџР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹, Р¶РёСЂРЅС‹Р№ С€СЂРёС„С‚
+$graphStyle[12]['color'] = imagecolorallocate($image, 111, 177, 92); //РџР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹, Р·Р°РєСЂРµРїР»РµРЅРёРµ РЅР°РІРµСЂС…Сѓ
+$graphStyle[13]['color'] = imagecolorallocate($image, 111, 177, 92); //РџР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹
+$graphStyle[14]['color'] = imagecolorallocate($image, 0, 103, 56); //PRO СЂР°Р±РѕС‚РѕРґР°С‚РµР»Рё
 $graphStyle[15]['color'] = imagecolorallocate($image, 179, 36, 36); //PRO
-$graphStyle[16]['color'] = imagecolorallocate($image, 247, 128, 90); //PRO тестовое
-$graphStyle[17]['color'] = imagecolorallocate($image, 147, 128, 90); //Ответы на проекты
-$graphStyle[18]['color'] = imagecolorallocate($image, 90, 60, 90); //Карусел
-$graphStyle[19]['color'] = imagecolorallocate($image, 60, 90, 60); //Смена логина
+$graphStyle[16]['color'] = imagecolorallocate($image, 247, 128, 90); //PRO С‚РµСЃС‚РѕРІРѕРµ
+$graphStyle[17]['color'] = imagecolorallocate($image, 147, 128, 90); //РћС‚РІРµС‚С‹ РЅР° РїСЂРѕРµРєС‚С‹
+$graphStyle[18]['color'] = imagecolorallocate($image, 90, 60, 90); //РљР°СЂСѓСЃРµР»
+$graphStyle[19]['color'] = imagecolorallocate($image, 60, 90, 60); //РЎРјРµРЅР° Р»РѕРіРёРЅР°
 
-$graphStyle[0]['text'] 	= 'Сумма';
-$graphStyle[1]['text'] 	= 'Перевели денег';
-$graphStyle[2]['text'] 	= 'Подняли проект';
-$graphStyle[3]['text'] 	= 'Конкурсы';
-$graphStyle[4]['text'] 	= 'Перемешения';
-$graphStyle[5]['text'] 	= 'Места внутри кат.';
-$graphStyle[6]['text'] 	= 'Места в каталоге';
-$graphStyle[7]['text'] 	= 'Места на первой';
-$graphStyle[8]['text'] 	= 'Подарки';
-$graphStyle[9]['text'] 	= '- логотип';
-$graphStyle[10]['text'] = '- фон';
-$graphStyle[11]['text'] = '- шрифт';
-$graphStyle[12]['text'] = '- закрепление';
-$graphStyle[13]['text'] 	= 'Платные проекты';
-$graphStyle[14]['text'] = 'PRO р-тель';
-$graphStyle[15]['text'] = 'PRO фрилансер';
-$graphStyle[16]['text'] = 'PRO тест';
-$graphStyle[17]['text'] = 'Ответы на проекты';
-$graphStyle[18]['text'] = 'Карусель';
-$graphStyle[19]['text'] = 'Смена логина';
+$graphStyle[0]['text'] 	= 'РЎСѓРјРјР°';
+$graphStyle[1]['text'] 	= 'РџРµСЂРµРІРµР»Рё РґРµРЅРµРі';
+$graphStyle[2]['text'] 	= 'РџРѕРґРЅСЏР»Рё РїСЂРѕРµРєС‚';
+$graphStyle[3]['text'] 	= 'РљРѕРЅРєСѓСЂСЃС‹';
+$graphStyle[4]['text'] 	= 'РџРµСЂРµРјРµС€РµРЅРёСЏ';
+$graphStyle[5]['text'] 	= 'РњРµСЃС‚Р° РІРЅСѓС‚СЂРё РєР°С‚.';
+$graphStyle[6]['text'] 	= 'РњРµСЃС‚Р° РІ РєР°С‚Р°Р»РѕРіРµ';
+$graphStyle[7]['text'] 	= 'РњРµСЃС‚Р° РЅР° РїРµСЂРІРѕР№';
+$graphStyle[8]['text'] 	= 'РџРѕРґР°СЂРєРё';
+$graphStyle[9]['text'] 	= '- Р»РѕРіРѕС‚РёРї';
+$graphStyle[10]['text'] = '- С„РѕРЅ';
+$graphStyle[11]['text'] = '- С€СЂРёС„С‚';
+$graphStyle[12]['text'] = '- Р·Р°РєСЂРµРїР»РµРЅРёРµ';
+$graphStyle[13]['text'] 	= 'РџР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹';
+$graphStyle[14]['text'] = 'PRO СЂ-С‚РµР»СЊ';
+$graphStyle[15]['text'] = 'PRO С„СЂРёР»Р°РЅСЃРµСЂ';
+$graphStyle[16]['text'] = 'PRO С‚РµСЃС‚';
+$graphStyle[17]['text'] = 'РћС‚РІРµС‚С‹ РЅР° РїСЂРѕРµРєС‚С‹';
+$graphStyle[18]['text'] = 'РљР°СЂСѓСЃРµР»СЊ';
+$graphStyle[19]['text'] = 'РЎРјРµРЅР° Р»РѕРіРёРЅР°';
 
 
 $colorWhite=imagecolorallocate($image, 255, 255, 255);
@@ -225,13 +225,13 @@ $colorGrey=imagecolorallocate($image, 192, 192, 192);
 $colorDarkBlue=imagecolorallocate($image, 153, 153, 153);
 
 for ($i=0; $i<count($graphValues); $i++) {
-	//вычисляем откуда начать прорисовку графика
+	//РІС‹С‡РёСЃР»СЏРµРј РѕС‚РєСѓРґР° РЅР°С‡Р°С‚СЊ РїСЂРѕСЂРёСЃРѕРІРєСѓ РіСЂР°С„РёРєР°
 	if ($i) {
 		$iMaxHeight = $graphValues[$i-1][0];
 		for ($k=1; $k<count($graphValues[$i-1]); $k++) {
 			$iMaxHeight = ($graphValues[$i-1][$k] > $iMaxHeight)?$graphValues[$i-1][$k]:$iMaxHeight;
 		}
-		$iHeight += $iMaxHeight+25; // +15 - расстояние между строчками
+		$iHeight += $iMaxHeight+25; // +15 - СЂР°СЃСЃС‚РѕСЏРЅРёРµ РјРµР¶РґСѓ СЃС‚СЂРѕС‡РєР°РјРё
 	}
 
 	for ($j=0; $j<count($graphValues[$i]); $j++) {
@@ -244,8 +244,8 @@ for ($i=0; $i<count($graphValues); $i++) {
 
         if ($graphValues2[$i][$j]) {
 			imagefilledrectangle($image, $j*$iBarWidth+2 + 100, ($imgHeight-$iHeight-round($graphValues[$i][$j])), ($j+1)*$iBarWidth + 100, $imgHeight-$iHeight, $graphStyle[$i]['color']);
-			//надпись количества FM
-			$addD = ($i == 8)?2:1; ///Если подарки, то результат делим на 2
+			//РЅР°РґРїРёСЃСЊ РєРѕР»РёС‡РµСЃС‚РІР° FM
+			$addD = ($i == 8)?2:1; ///Р•СЃР»Рё РїРѕРґР°СЂРєРё, С‚Рѕ СЂРµР·СѓР»СЊС‚Р°С‚ РґРµР»РёРј РЅР° 2
             $color = (!$i)?$graphStyle[$i]['color']:$colorDarkBlue;
             if($i!=0) {
                 imagefttext($image, '7', 0, $j*$iBarWidth + 100+2, $imgHeight-$iHeight-$graphValues[$i][$j]-12, $color, $sFont, round($graphValues2[$i][$j]/$addD)."\n".$graphValues3[$i][$j]);
@@ -268,26 +268,26 @@ for ($i=0; $i<count($graphValues); $i++) {
 }
 
 
-$aMonthes[1] = 'Январь';
-$aMonthes[2] = 'Февраль';
-$aMonthes[3] = 'Март';
-$aMonthes[4] = 'Апрель';
-$aMonthes[5] = 'Май';
-$aMonthes[6] = 'Июнь';
-$aMonthes[7] = 'Июль';
-$aMonthes[8] = 'Август';
-$aMonthes[9] = 'Сентябрь';
-$aMonthes[10] = 'Октябрь';
-$aMonthes[11] = 'Ноябрь';
-$aMonthes[12] = 'Декабрь';
+$aMonthes[1] = 'РЇРЅРІР°СЂСЊ';
+$aMonthes[2] = 'Р¤РµРІСЂР°Р»СЊ';
+$aMonthes[3] = 'РњР°СЂС‚';
+$aMonthes[4] = 'РђРїСЂРµР»СЊ';
+$aMonthes[5] = 'РњР°Р№';
+$aMonthes[6] = 'РСЋРЅСЊ';
+$aMonthes[7] = 'РСЋР»СЊ';
+$aMonthes[8] = 'РђРІРіСѓСЃС‚';
+$aMonthes[9] = 'РЎРµРЅС‚СЏР±СЂСЊ';
+$aMonthes[10] = 'РћРєС‚СЏР±СЂСЊ';
+$aMonthes[11] = 'РќРѕСЏР±СЂСЊ';
+$aMonthes[12] = 'Р”РµРєР°Р±СЂСЊ';
 
-$sString = 'Продажи сервисов';
+$sString = 'РџСЂРѕРґР°Р¶Рё СЃРµСЂРІРёСЃРѕРІ';
 imagefttext($image, '18', 0, 100, 20, $colorGrey, $sFont, $sString);
 
 /*header("Pragma: no-cache");
 header("Cache-Control: no-cache, must-revalidate");
-header("Expires: Sun, 1 Jan 1995 01:00:00 GMT"); // Это какая-нибудь давно прошедшая дата
-header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); // это строчка говорит, что наш скрипт всегда изменен
+header("Expires: Sun, 1 Jan 1995 01:00:00 GMT"); // Р­С‚Рѕ РєР°РєР°СЏ-РЅРёР±СѓРґСЊ РґР°РІРЅРѕ РїСЂРѕС€РµРґС€Р°СЏ РґР°С‚Р°
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); // СЌС‚Рѕ СЃС‚СЂРѕС‡РєР° РіРѕРІРѕСЂРёС‚, С‡С‚Рѕ РЅР°С€ СЃРєСЂРёРїС‚ РІСЃРµРіРґР° РёР·РјРµРЅРµРЅ
 header("Content-type: image/png");*/
 imagepng($image);
 imagedestroy($image);

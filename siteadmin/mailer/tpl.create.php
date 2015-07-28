@@ -25,7 +25,7 @@ window.addEvent('domready',
         JSScroll('i_<?= $error_name; ?>');
     <?php }//if?>  
         /*
-         * @todo: пока отключаю визуальный редактор
+         * @todo: РїРѕРєР° РѕС‚РєР»СЋС‡Р°СЋ РІРёР·СѓР°Р»СЊРЅС‹Р№ СЂРµРґР°РєС‚РѕСЂ
         CKEDITOR.replace( 'main_message', {
             customConfig: '/scripts/ckedit/config_admin.js'
         });*/
@@ -39,20 +39,20 @@ window.addEvent('domready',
 
 <div class="b-layout">	
     <h2 class="b-layout__title b-layout__title_padbot_30">
-        Новая рассылка&#160;&#160;&#160;<a class="b-layout__link b-layout__link_fontsize_13" href="/siteadmin/mailer/">Все рассылки</a>
-        <a class="b-layout_link b-layout__link_fontsize_13 b-layout__link_float_right" href="javascript:void(0);" onclick="preview();">Предпросмотр</a>
+        РќРѕРІР°СЏ СЂР°СЃСЃС‹Р»РєР°&#160;&#160;&#160;<a class="b-layout__link b-layout__link_fontsize_13" href="/siteadmin/mailer/">Р’СЃРµ СЂР°СЃСЃС‹Р»РєРё</a>
+        <a class="b-layout_link b-layout__link_fontsize_13 b-layout__link_float_right" href="javascript:void(0);" onclick="preview();">РџСЂРµРґРїСЂРѕСЃРјРѕС‚СЂ</a>
     </h2>
      <?php if($is_update_mailer) {?>
      <div class="b-fon b-fon_width_full b-fon_padbot_17">
         <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_35 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf b-fon__body_bordbot_dfedcf">
-            <span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Рассылка сохранена.
+            <span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Р Р°СЃСЃС‹Р»РєР° СЃРѕС…СЂР°РЅРµРЅР°.
         </div>
      </div>
     <?php }//if?>
     <?php if($is_sending_me) {?>
      <div class="b-fon b-fon_width_full b-fon_padbot_17">
         <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_35 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf b-fon__body_bordbot_dfedcf">
-            <span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Рассылка была выслана автору.
+            <span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Р Р°СЃСЃС‹Р»РєР° Р±С‹Р»Р° РІС‹СЃР»Р°РЅР° Р°РІС‚РѕСЂСѓ.
         </div>
      </div>
     <?php }//if?>
@@ -74,7 +74,7 @@ window.addEvent('domready',
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_130">
-                    <div class="b-layout__txt">Тема письма</div>
+                    <div class="b-layout__txt">РўРµРјР° РїРёСЃСЊРјР°</div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-combo">
@@ -89,7 +89,7 @@ window.addEvent('domready',
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_40" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_130">
-                    <div class="b-layout__txt">Текст письма</div>
+                    <div class="b-layout__txt">РўРµРєСЃС‚ РїРёСЃСЊРјР°</div>
                 </td>
                 <td class="b-layout__right">
                     <span id="i_message"></span>
@@ -104,7 +104,7 @@ window.addEvent('domready',
                     
                     <?php if(mailer::$LINKS_HINT) { ?>
                     <?php foreach(mailer::$LINKS_HINT as $hint=>$descr) { ?>
-                    <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11"><a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bold b-layout__link_bordbot_dot_000" href="javascript:void(0)" onclick="setPlaceholderWysiwyg(this); return false;" title="<?=$hint?>"><?= $hint?></a> — <?= $descr?></div>    
+                    <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11"><a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bold b-layout__link_bordbot_dot_000" href="javascript:void(0)" onclick="setPlaceholderWysiwyg(this); return false;" title="<?=$hint?>"><?= $hint?></a> вЂ” <?= $descr?></div>    
                     <?php }//foreach?>
                     <?php }//if?>
                     <div id="attachedfiles" class="b-fon b-fon_width_full"></div>
@@ -167,7 +167,7 @@ window.addEvent('domready',
                                             <a class="b-button b-button_rectangle_color_transparent" href="#">
                                                 <span class="b-button__b1">
                                                     <span class="b-button__b2">
-                                                            <span class="b-button__txt">Прикрепить файлы</span>
+                                                            <span class="b-button__txt">РџСЂРёРєСЂРµРїРёС‚СЊ С„Р°Р№Р»С‹</span>
                                                     </span>
                                                 </span>
                                             </a>
@@ -175,16 +175,16 @@ window.addEvent('domready',
                                     </td>
                                     <td class="b-file__text">
                                         <div class="b-filter" style="z-index: 10;">
-                                            <div class="b-filter__body b-filter__body_padtop_10"><a class="b-filter__link b-filter__link_fontsize_11 b-filter__link_dot_41" href="#">Требования к файлам</a></div>
+                                            <div class="b-filter__body b-filter__body_padtop_10"><a class="b-filter__link b-filter__link_fontsize_11 b-filter__link_dot_41" href="#">РўСЂРµР±РѕРІР°РЅРёСЏ Рє С„Р°Р№Р»Р°Рј</a></div>
                                             <div class="b-shadow b-filter__toggle b-shadow__margleft_-110 b-shadow__margtop_10 b-filter__toggle_hide">
                                                 <div class="b-shadow__right">
                                                     <div class="b-shadow__left">
                                                         <div class="b-shadow__top">
                                                             <div class="b-shadow__bottom">
                                                                 <div class="b-shadow__body b-shadow__body_pad_15 b-shadow_width_270 b-shadow__body_bg_fff">
-                                                                    <div class="b-shadow__txt b-shadow__txt_fontsize_11 b-shadow__txt_padbot_5">Разрешается добавлять не более <span class="b-shadow__txt b-shadow__txt_bold">10 файлов</span> общим объемом не более 5 МБ.</div>
-                                                                    <div class="b-shadow__txt b-shadow__txt_fontsize_11 b-shadow__txt_padbot_5">jpg и gif размером <span class="b-shadow__txt b-shadow__txt_bold">600х1000 пикс.</span> и весом не более 300 КБ будут вставлены в текст поста, остальные файлы будут приложены к нему.</div>
-                                                                    <div class="b-shadow__txt b-shadow__txt_fontsize_11">Запрещенные форматы: ade, adp, chm, cmd, com, cpl, exe, hta, ins, isp, jse, lib, mde, msk, msp, mst, pif, scr, sct, shb, sys, vb, vbe, vbs, vxd, wsc, wsf, wsh</div>
+                                                                    <div class="b-shadow__txt b-shadow__txt_fontsize_11 b-shadow__txt_padbot_5">Р Р°Р·СЂРµС€Р°РµС‚СЃСЏ РґРѕР±Р°РІР»СЏС‚СЊ РЅРµ Р±РѕР»РµРµ <span class="b-shadow__txt b-shadow__txt_bold">10 С„Р°Р№Р»РѕРІ</span> РѕР±С‰РёРј РѕР±СЉРµРјРѕРј РЅРµ Р±РѕР»РµРµ 5 РњР‘.</div>
+                                                                    <div class="b-shadow__txt b-shadow__txt_fontsize_11 b-shadow__txt_padbot_5">jpg Рё gif СЂР°Р·РјРµСЂРѕРј <span class="b-shadow__txt b-shadow__txt_bold">600С…1000 РїРёРєСЃ.</span> Рё РІРµСЃРѕРј РЅРµ Р±РѕР»РµРµ 300 РљР‘ Р±СѓРґСѓС‚ РІСЃС‚Р°РІР»РµРЅС‹ РІ С‚РµРєСЃС‚ РїРѕСЃС‚Р°, РѕСЃС‚Р°Р»СЊРЅС‹Рµ С„Р°Р№Р»С‹ Р±СѓРґСѓС‚ РїСЂРёР»РѕР¶РµРЅС‹ Рє РЅРµРјСѓ.</div>
+                                                                    <div class="b-shadow__txt b-shadow__txt_fontsize_11">Р—Р°РїСЂРµС‰РµРЅРЅС‹Рµ С„РѕСЂРјР°С‚С‹: ade, adp, chm, cmd, com, cpl, exe, hta, ins, isp, jse, lib, mde, msk, msp, mst, pif, scr, sct, shb, sys, vb, vbe, vbs, vxd, wsc, wsf, wsh</div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -212,7 +212,7 @@ window.addEvent('domready',
                 <td class="b-layout__left b-layout__left_width_130">&#160;</td>
                 <td class="b-layout__right">
                     <?php $sum = $mailer->calcSumRecipientsCount($message, array($rec_emp_count, $rec_frl_count));?>
-                    <div class="b-layout__txt b-layout__txt_bold b-layout__txt_fontsize_15">Получатели &mdash; <span id="all_recipients_count"><?= number_format($sum, 0, ",", " ");?> человек</span> &#160;&#160;<a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="calcRecpient();">Пересчитать</a></div>
+                    <div class="b-layout__txt b-layout__txt_bold b-layout__txt_fontsize_15">РџРѕР»СѓС‡Р°С‚РµР»Рё &mdash; <span id="all_recipients_count"><?= number_format($sum, 0, ",", " ");?> С‡РµР»РѕРІРµРє</span> &#160;&#160;<a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="calcRecpient();">РџРµСЂРµСЃС‡РёС‚Р°С‚СЊ</a></div>
                 </td>
             </tr>
         </table>
@@ -221,11 +221,11 @@ window.addEvent('domready',
             <input id="emp_check1" class="b-check__input" name="filter_emp" type="checkbox" value="1" <?= ($message['filter_emp'] ? "checked" : "")?>/>
             <label class="b-check__label b-check__label_fontsize_13" for="emp_check1">
                 <span class="b-username__role b-username__role_emp"></span>
-                <span class="b-username__txt b-username__txt_color_6db335">Работодатели</span> &mdash; <span id="emp_recipients_count"><?= number_format(($message['count_rec_emp']>0 ? $message['count_rec_emp'] : $rec_emp_count), 0, ",", " ")?></span>
+                <span class="b-username__txt b-username__txt_color_6db335">Р Р°Р±РѕС‚РѕРґР°С‚РµР»Рё</span> &mdash;В <span id="emp_recipients_count"><?= number_format(($message['count_rec_emp']>0 ? $message['count_rec_emp'] : $rec_emp_count), 0, ",", " ")?></span>
             </label>
             <span class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_5 b-layout__txt_top_-1">
                 <span class="b-layout__ygol  b-layout__ygol_hide"></span>
-                <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8 show-filter" href="#">Показать фильтры</a>
+                <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8 show-filter" href="#">РџРѕРєР°Р·Р°С‚СЊ С„РёР»СЊС‚СЂС‹</a>
             </span>
         </div>
         <? include ("tpl.filter.emp.php"); ?>	
@@ -234,11 +234,11 @@ window.addEvent('domready',
             <input id="frl_check2" class="b-check__input" name="filter_frl" type="checkbox" value="1" <?= ($message['filter_frl'] ? "checked" : "")?>/>
             <label class="b-check__label b-check__label_fontsize_13" for="frl_check2">
                 <span class="b-username__role b-username__role_frl"></span>
-                <span class="b-username__txt b-username__txt_color_fd6c30">Фрилансеры</span> &mdash; <span id="frl_recipients_count"><?= number_format(($message['count_rec_frl']>0 ? $message['count_rec_frl'] : $rec_frl_count), 0, ",", " ")?></span>
+                <span class="b-username__txt b-username__txt_color_fd6c30">Р¤СЂРёР»Р°РЅСЃРµСЂС‹</span> &mdash;В <span id="frl_recipients_count"><?= number_format(($message['count_rec_frl']>0 ? $message['count_rec_frl'] : $rec_frl_count), 0, ",", " ")?></span>
             </label> 
             <span class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_5 b-layout__txt_top_-1">
                 <span class="b-layout__ygol  b-layout__ygol_hide"></span>
-                <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8 show-filter" href="#">Показать фильтры</a>
+                <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8 show-filter" href="#">РџРѕРєР°Р·Р°С‚СЊ С„РёР»СЊС‚СЂС‹</a>
             </span>
         </div>
         <? include ("tpl.filter.frl.php"); ?>
@@ -247,11 +247,11 @@ window.addEvent('domready',
             <input id="file_check3" class="b-check__input" name="filter_file" type="checkbox" value="1" <?= ($message['filter_file'] ? "checked" : "")?>/>
             <label class="b-check__label b-check__label_fontsize_13" for="file_check3">
                 <span class="b-username__role b-username__role_all"></span>
-                <span class="b-username__txt">Из файла по списку</span>
+                <span class="b-username__txt">РР· С„Р°Р№Р»Р° РїРѕ СЃРїРёСЃРєСѓ</span>
             </label> 
             <span class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_5 b-layout__txt_top_-1">
                 <span class="b-layout__ygol  b-layout__ygol_hide"></span>
-                <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8 show-filter" href="#">Загрузить файл</a>
+                <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8 show-filter" href="#">Р—Р°РіСЂСѓР·РёС‚СЊ С„Р°Р№Р»</a>
             </span>
         </div>
         <? include ("tpl.filter.file.php"); ?>
@@ -259,16 +259,16 @@ window.addEvent('domready',
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margtop_30" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_130">
-                    <div class="b-layout__txt">Отправить</div>
+                    <div class="b-layout__txt">РћС‚РїСЂР°РІРёС‚СЊ</div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-check b-check_padbot_10 b-check_padtop_3">
                         <input id="check3" class="b-check__input" name="type_sending[0]" type="checkbox" value="1" <?= ( (int) $message['type_sending'][0] == 1 ? "checked" : ( isset($message['type_sending']) ? "" : "checked" ) )?>/>
-                        <label class="b-check__label b-check__label_fontsize_13" for="check3">Личным сообщением</label>
+                        <label class="b-check__label b-check__label_fontsize_13" for="check3">Р›РёС‡РЅС‹Рј СЃРѕРѕР±С‰РµРЅРёРµРј</label>
                     </div>
                     <div class="b-check">
                         <input id="check4" class="b-check__input" name="type_sending[1]" type="checkbox" value="1" <?= ( (int) $message['type_sending'][1] == 1 ? "checked" : ( isset($message['type_sending']) ? "" : "checked" ) )?>/>
-                        <label class="b-check__label b-check__label_fontsize_13" for="check4">Письмом на почту</label>
+                        <label class="b-check__label b-check__label_fontsize_13" for="check4">РџРёСЃСЊРјРѕРј РЅР° РїРѕС‡С‚Сѓ</label>
                     </div>
                 </td>
             </tr>
@@ -276,7 +276,7 @@ window.addEvent('domready',
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margtop_30" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_130">
-                    <div class="b-layout__txt">Регулярность</div>
+                    <div class="b-layout__txt">Р РµРіСѓР»СЏСЂРЅРѕСЃС‚СЊ</div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-select">
@@ -292,7 +292,7 @@ window.addEvent('domready',
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margtop_30 <?= !$is_sub_regular?"b-layout_hide":""?>" id="repeat_type" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_130">
-                    <div class="b-layout__txt">Повторять</div>
+                    <div class="b-layout__txt">РџРѕРІС‚РѕСЂСЏС‚СЊ</div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-select">
@@ -302,7 +302,7 @@ window.addEvent('domready',
                             <option value="<?=$id_sub_reg?>" <?= ($id_sub_reg == $message['type_send_regular']?'selected':'')?>><?=$sub_regular?></option>
                             <?php }//foreach?>
                             <?php } else {//if?>
-                            <option value="1">Каждое первое число</option>
+                            <option value="1">РљР°Р¶РґРѕРµ РїРµСЂРІРѕРµ С‡РёСЃР»Рѕ</option>
                             <?php }//else?>
                         </select>
                     </div>
@@ -313,7 +313,7 @@ window.addEvent('domready',
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margtop_30" cellpadding="0" cellspacing="0" border="0">
             <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_130">
-                    <div class="b-layout__txt b-layout__txt_lineheight_13">Дата и время<br />отправления</div>
+                    <div class="b-layout__txt b-layout__txt_lineheight_13">Р”Р°С‚Р° Рё РІСЂРµРјСЏ<br />РѕС‚РїСЂР°РІР»РµРЅРёСЏ</div>
                 </td>
                 <td class="b-layout__right">
                     <span id="i_date_sending"></span>
@@ -324,7 +324,7 @@ window.addEvent('domready',
                             <span class="b-combo__arrow-date"></span>
                         </div>
                     </div>
-                    <span class="b-layout__txt b-layout__txt_padtop_3 <?= ($is_sub_regular?"b-layout_hide":"b-layout__txt_inline-block"); ?>" id="str_date_sending">&#160;в&#160;</span>
+                    <span class="b-layout__txt b-layout__txt_padtop_3 <?= ($is_sub_regular?"b-layout_hide":"b-layout__txt_inline-block"); ?>" id="str_date_sending">&#160;РІ&#160;</span>
                     <span id="i_time_sending"></span>
                     <div class="b-select b-select_inline-block">
                         <select id="time_sending" name="time_sending">
@@ -341,13 +341,13 @@ window.addEvent('domready',
         </table>
 
         <div class="b-buttons b-buttons_padtop_40 b-buttons_padleft_132">
-            <a class="b-button b-button_flat b-button_flat_green"  href="javascript:void(0)" onClick="$('draft').set('value', '0'); $('create_form').submit();">Поставить в очередь</a>
-            &#160;&#160;<a class="b-buttons__link" href="javascript:void(0)" onclick="$('draft').set('value', '1'); $('create_form').submit();">сохранить как черновик</a>
+            <a class="b-button b-button_flat b-button_flat_green"  href="javascript:void(0)" onClick="$('draft').set('value', '0'); $('create_form').submit();">РџРѕСЃС‚Р°РІРёС‚СЊ РІ РѕС‡РµСЂРµРґСЊ</a>
+            &#160;&#160;<a class="b-buttons__link" href="javascript:void(0)" onclick="$('draft').set('value', '1'); $('create_form').submit();">СЃРѕС…СЂР°РЅРёС‚СЊ РєР°Рє С‡РµСЂРЅРѕРІРёРє</a>
             <span class="b-buttons__txt">,</span>	
-            <a class="b-buttons__link" href="javascript:void(0)" onclick="$('draft').set('value', '1'); $('action').set('value', '<?=$is_created?'create_and_sendme':'edit_and_sendme'?>'); $('create_form').submit();">выслать сначала мне</a>	
+            <a class="b-buttons__link" href="javascript:void(0)" onclick="$('draft').set('value', '1'); $('action').set('value', '<?=$is_created?'create_and_sendme':'edit_and_sendme'?>'); $('create_form').submit();">РІС‹СЃР»Р°С‚СЊ СЃРЅР°С‡Р°Р»Р° РјРЅРµ</a>	
             <?php if(!$is_created) {?>
-            <span class="b-buttons__txt">или</span>	
-            <a class="b-buttons__link b-buttons__link_color_c10601" href="javascript:void(0)" onclick="$('action').set('value', 'delete'); $('create_form').submit();">удалить</a>
+            <span class="b-buttons__txt">РёР»Рё</span>	
+            <a class="b-buttons__link b-buttons__link_color_c10601" href="javascript:void(0)" onclick="$('action').set('value', 'delete'); $('create_form').submit();">СѓРґР°Р»РёС‚СЊ</a>
             <?php }//if?>
         </div>
 	</form>

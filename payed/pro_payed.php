@@ -14,9 +14,9 @@ if (!get_uid(0) || is_emp() || !($months || $weeks)) {
 }
 
 if ($months) {
-    $period = $months . " " . ending($months, "μερÿφ", "μερÿφΰ", "μερÿφεβ");
+    $period = $months . " " . ending($months, "ΠΌΠµΡΡΡ†", "ΠΌΠµΡΡΡ†Π°", "ΠΌΠµΡΡΡ†ΠµΠ²");
 } elseif ($weeks) {
-    $period = $weeks . " " . ending($weeks, "νεδελώ", "νεδελθ", "νεδελό");
+    $period = $weeks . " " . ending($weeks, "Π½ΠµΠ΄ΠµΠ»Ρ", "Π½ΠµΠ΄ΠµΠ»ΠΈ", "Π½ΠµΠ΄ΠµΠ»Ρ");
 }
 
 $stretch_page = true;

@@ -1,167 +1,167 @@
 <?php
 /**
- * Подключаем предка
+ * РџРѕРґРєР»СЋС‡Р°РµРј РїСЂРµРґРєР°
  */
 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/admin_parent.php' );
 
 /**
- * 0023233: Фиксация трафика, учет статистики. Модель.
+ * 0023233: Р¤РёРєСЃР°С†РёСЏ С‚СЂР°С„РёРєР°, СѓС‡РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєРё. РњРѕРґРµР»СЊ.
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
 class traffic_stat extends admin_parent {
     /**
-     * Домены с которых мы ведем статистику
+     * Р”РѕРјРµРЅС‹ СЃ РєРѕС‚РѕСЂС‹С… РјС‹ РІРµРґРµРј СЃС‚Р°С‚РёСЃС‚РёРєСѓ
      * 
      * @var array 
      */
     private $aDomains = array();
     
     /**
-     * Объект класса memBuff
+     * РћР±СЉРµРєС‚ РєР»Р°СЃСЃР° memBuff
      * 
      * @var object
      */
     private $oMemBuff = null;
     
     /**
-     * Объект базы данных статистики
+     * РћР±СЉРµРєС‚ Р±Р°Р·С‹ РґР°РЅРЅС‹С… СЃС‚Р°С‚РёСЃС‚РёРєРё
      * 
      * @var object 
      */
     private $oStatDB = null;
     
     /**
-     * Список доменов. ID домена
+     * РЎРїРёСЃРѕРє РґРѕРјРµРЅРѕРІ. ID РґРѕРјРµРЅР°
      * 
      * @var string 
      */
     private $sDomainId = '';
     
     /**
-     * Список доменов. Ошибка валидации ID домена $sDomainId
+     * РЎРїРёСЃРѕРє РґРѕРјРµРЅРѕРІ. РћС€РёР±РєР° РІР°Р»РёРґР°С†РёРё ID РґРѕРјРµРЅР° $sDomainId
      * 
      * @var string 
      */
     private $sDomainIdError = '';
     
     /**
-     * Список доменов. Домен
+     * РЎРїРёСЃРѕРє РґРѕРјРµРЅРѕРІ. Р”РѕРјРµРЅ
      * 
      * @var string 
      */
     private $sDomainName = '';
     
     /**
-     * Список доменов. Ошибка валидации домена $sDomainName
+     * РЎРїРёСЃРѕРє РґРѕРјРµРЅРѕРІ. РћС€РёР±РєР° РІР°Р»РёРґР°С†РёРё РґРѕРјРµРЅР° $sDomainName
      * 
      * @var string 
      */
     private $sDomainNameError = '';
     
     /**
-     * Список доменов. Используется ли домен в данный момент
+     * РЎРїРёСЃРѕРє РґРѕРјРµРЅРѕРІ. РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ Р»Рё РґРѕРјРµРЅ РІ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚
      * 
      * @var string 
      */
     private $sDomainActive = 't';
 
     /**
-     * Список доменов. Признак того, что поля класса установлены для сохранения
+     * РЎРїРёСЃРѕРє РґРѕРјРµРЅРѕРІ. РџСЂРёР·РЅР°Рє С‚РѕРіРѕ, С‡С‚Рѕ РїРѕР»СЏ РєР»Р°СЃСЃР° СѓСЃС‚Р°РЅРѕРІР»РµРЅС‹ РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ
      * 
      * @var type 
      */
     private $bDomainSet = false;
     
     /**
-     * Фильтр статистики. ID домена. 0 - все домены
+     * Р¤РёР»СЊС‚СЂ СЃС‚Р°С‚РёСЃС‚РёРєРё. ID РґРѕРјРµРЅР°. 0 - РІСЃРµ РґРѕРјРµРЅС‹
      * 
      * @var int 
      */
     private $nFilterDomainId = 0;
     
     /**
-     * Фильтр статистики. Ошибка ID домена
+     * Р¤РёР»СЊС‚СЂ СЃС‚Р°С‚РёСЃС‚РёРєРё. РћС€РёР±РєР° ID РґРѕРјРµРЅР°
      * 
      * @var int 
      */
     private $sFilterDomainIdError = '';
 
     /**
-     * Фильтр статистики. За какой период выводить статистику
+     * Р¤РёР»СЊС‚СЂ СЃС‚Р°С‚РёСЃС‚РёРєРё. Р—Р° РєР°РєРѕР№ РїРµСЂРёРѕРґ РІС‹РІРѕРґРёС‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ
      * 
      * @var string
      */
     private $sPeriod = 'today';
     
     /**
-     * Фильтр статистики. Начальная дата периода
+     * Р¤РёР»СЊС‚СЂ СЃС‚Р°С‚РёСЃС‚РёРєРё. РќР°С‡Р°Р»СЊРЅР°СЏ РґР°С‚Р° РїРµСЂРёРѕРґР°
      * 
      * @var string 
      */
     private $sDateFrom = 0;
     
     /**
-     * Фильтр статистики. Конечная дата периода
+     * Р¤РёР»СЊС‚СЂ СЃС‚Р°С‚РёСЃС‚РёРєРё. РљРѕРЅРµС‡РЅР°СЏ РґР°С‚Р° РїРµСЂРёРѕРґР°
      * 
      * @var string 
      */
     private $sDateTo = 0;
     
     /**
-     * Фильтр статистики. Ошибка валидации дат в фильтре
+     * Р¤РёР»СЊС‚СЂ СЃС‚Р°С‚РёСЃС‚РёРєРё. РћС€РёР±РєР° РІР°Р»РёРґР°С†РёРё РґР°С‚ РІ С„РёР»СЊС‚СЂРµ
      * 
      * @var string 
      */
     private $sDateError = '';
     
     /**
-     * Фильтр статистики. Ошибка валидации дат в фильтре. Начальная
+     * Р¤РёР»СЊС‚СЂ СЃС‚Р°С‚РёСЃС‚РёРєРё. РћС€РёР±РєР° РІР°Р»РёРґР°С†РёРё РґР°С‚ РІ С„РёР»СЊС‚СЂРµ. РќР°С‡Р°Р»СЊРЅР°СЏ
      * 
      * @var string 
      */
     private $sDateFromError = '';
     
     /**
-     * Фильтр статистики. Ошибка валидации дат в фильтре. Конечная
+     * Р¤РёР»СЊС‚СЂ СЃС‚Р°С‚РёСЃС‚РёРєРё. РћС€РёР±РєР° РІР°Р»РёРґР°С†РёРё РґР°С‚ РІ С„РёР»СЊС‚СЂРµ. РљРѕРЅРµС‡РЅР°СЏ
      * 
      * @var string 
      */
     private $sDateToError = '';
     
     /**
-     * Массив со статистикой
+     * РњР°СЃСЃРёРІ СЃРѕ СЃС‚Р°С‚РёСЃС‚РёРєРѕР№
      * 
      * @var array 
      */
     private $aStats = array();
     
     /**
-     * Часть запроса с UID юзеров которые не нужно учитывать в статистике
+     * Р§Р°СЃС‚СЊ Р·Р°РїСЂРѕСЃР° СЃ UID СЋР·РµСЂРѕРІ РєРѕС‚РѕСЂС‹Рµ РЅРµ РЅСѓР¶РЅРѕ СѓС‡РёС‚С‹РІР°С‚СЊ РІ СЃС‚Р°С‚РёСЃС‚РёРєРµ
      * 
      * @var string 
      */
     private $sIgnoreInStats = '';
     
     /**
-     * Кода операций из op_codes для PRO
+     * РљРѕРґР° РѕРїРµСЂР°С†РёР№ РёР· op_codes РґР»СЏ PRO
      * 
      * @var array 
      */
     static $aProCode = array( 1, 2, 3, 4, 5, 6, 15, 48, 49, 50, 51, 76 );
 
     /**
-     * Время жизни мэмкэша в секундах
+     * Р’СЂРµРјСЏ Р¶РёР·РЅРё РјСЌРјРєСЌС€Р° РІ СЃРµРєСѓРЅРґР°С…
      */
     const MEMBUFF_TTL = 86400;
     
     /**
-     * Время жизни cookie, по которой определяется регистрация с домена, в секундах: 7 дней
+     * Р’СЂРµРјСЏ Р¶РёР·РЅРё cookie, РїРѕ РєРѕС‚РѕСЂРѕР№ РѕРїСЂРµРґРµР»СЏРµС‚СЃСЏ СЂРµРіРёСЃС‚СЂР°С†РёСЏ СЃ РґРѕРјРµРЅР°, РІ СЃРµРєСѓРЅРґР°С…: 7 РґРЅРµР№
      */
     const COOKIE_TTL = 604800;
 
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      */
     function __construct() {
         parent::__construct( 0 );
@@ -171,7 +171,7 @@ class traffic_stat extends admin_parent {
         //$this->oMemBuff->delete( 'traffic_stat_domains' );
         $this->aDomains = $this->oMemBuff->get( 'traffic_stat_domains' );
         
-        // если в мемкеше потерялось, читаем с базы
+        // РµСЃР»Рё РІ РјРµРјРєРµС€Рµ РїРѕС‚РµСЂСЏР»РѕСЃСЊ, С‡РёС‚Р°РµРј СЃ Р±Р°Р·С‹
         if ( $this->aDomains === false ) {
             $aDomains = $GLOBALS['DB']->rows('SELECT * FROM traffic_stat_domains ORDER BY id');
             
@@ -186,7 +186,7 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Возвращает статистику
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ
      * 
      * @return array
      */
@@ -194,57 +194,57 @@ class traffic_stat extends admin_parent {
         if ( $this->aDomains && !$this->sFilterDomainIdError && !$this->sDateError 
             && !$this->sDateFromError && !$this->sDateToError 
         ) {
-            $this->_getIgnoreInStats();                    // вспомогательное действие
-            $this->_getStatsIp();                          // переходы
-            $this->_getStatsRegistration();                // регистраци
-            $this->_getStatOPProject( '' );                // платные проекты. все
-            $this->_getStatOPProject( 0 );                 // платные проекты. логотип и ссылка
-            //$this->_getStatOPProject( 1 );               // платные проекты. выделение цветом
-            //$this->_getStatOPProject( 2 );               // платные проекты. выделение жирным
-            $this->_getStatOPProject( 3 );                 // платные проекты. закрепить наверху ленты
-            $this->_getStatOPProject( 4 );                 // платные проекты. в офис
-            //$this->_getStatOPProject( '', false, true ); // платные проекты (бонус). все 
-            //$this->_getStatOPProject( 0, false, true );  // платные проекты (бонус). логотип и ссылка
-            //$this->_getStatOPProject( 1, false, true );  // платные проекты (бонус). выделение цветом
-            //$this->_getStatOPProject( 2, false, true );  // платные проекты (бонус). выделение жирным
-            //$this->_getStatOPProject( 3, false, true );  // платные проекты (бонус). закрепить наверху ленты
-            //$this->_getStatOPProject( 4, false, true );  // платные проекты (бонус). в офис
-            $this->_getStatOPProject( '', true );          // платные конкурсы. все 
-            $this->_getStatOPProject( 0, true );           // платные конкурсы. логотип и ссылка
-            //$this->_getStatOPProject( 1, true );         // платные конкурсы. выделение цветом
-            //$this->_getStatOPProject( 2, true );         // платные конкурсы. выделение жирным 
-            $this->_getStatOPProject( 3, true );           // платные конкурсы. закрепить наверху ленты
-            //$this->_getStatOPProject( '', true, true );  // платные конкурсы (бонус). все
-            //$this->_getStatOPProject( 0, true, true );   // платные конкурсы (бонус). логотип и ссылка
-            //$this->_getStatOPProject( 1, true, true );   // платные конкурсы (бонус). выделение цветом
-            //$this->_getStatOPProject( 2, true, true );   // платные конкурсы (бонус). выделение жирным
-            //$this->_getStatOPProject( 3, true, true );   // платные конкурсы (бонус). закрепить наверху ленты
-            $this->_getStatIncome();                       // приход средств по всем платежным системам
+            $this->_getIgnoreInStats();                    // РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅРѕРµ РґРµР№СЃС‚РІРёРµ
+            $this->_getStatsIp();                          // РїРµСЂРµС…РѕРґС‹
+            $this->_getStatsRegistration();                // СЂРµРіРёСЃС‚СЂР°С†Рё
+            $this->_getStatOPProject( '' );                // РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹. РІСЃРµ
+            $this->_getStatOPProject( 0 );                 // РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹. Р»РѕРіРѕС‚РёРї Рё СЃСЃС‹Р»РєР°
+            //$this->_getStatOPProject( 1 );               // РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹. РІС‹РґРµР»РµРЅРёРµ С†РІРµС‚РѕРј
+            //$this->_getStatOPProject( 2 );               // РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹. РІС‹РґРµР»РµРЅРёРµ Р¶РёСЂРЅС‹Рј
+            $this->_getStatOPProject( 3 );                 // РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹. Р·Р°РєСЂРµРїРёС‚СЊ РЅР°РІРµСЂС…Сѓ Р»РµРЅС‚С‹
+            $this->_getStatOPProject( 4 );                 // РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹. РІ РѕС„РёСЃ
+            //$this->_getStatOPProject( '', false, true ); // РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹ (Р±РѕРЅСѓСЃ). РІСЃРµ 
+            //$this->_getStatOPProject( 0, false, true );  // РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹ (Р±РѕРЅСѓСЃ). Р»РѕРіРѕС‚РёРї Рё СЃСЃС‹Р»РєР°
+            //$this->_getStatOPProject( 1, false, true );  // РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹ (Р±РѕРЅСѓСЃ). РІС‹РґРµР»РµРЅРёРµ С†РІРµС‚РѕРј
+            //$this->_getStatOPProject( 2, false, true );  // РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹ (Р±РѕРЅСѓСЃ). РІС‹РґРµР»РµРЅРёРµ Р¶РёСЂРЅС‹Рј
+            //$this->_getStatOPProject( 3, false, true );  // РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹ (Р±РѕРЅСѓСЃ). Р·Р°РєСЂРµРїРёС‚СЊ РЅР°РІРµСЂС…Сѓ Р»РµРЅС‚С‹
+            //$this->_getStatOPProject( 4, false, true );  // РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹ (Р±РѕРЅСѓСЃ). РІ РѕС„РёСЃ
+            $this->_getStatOPProject( '', true );          // РїР»Р°С‚РЅС‹Рµ РєРѕРЅРєСѓСЂСЃС‹. РІСЃРµ 
+            $this->_getStatOPProject( 0, true );           // РїР»Р°С‚РЅС‹Рµ РєРѕРЅРєСѓСЂСЃС‹. Р»РѕРіРѕС‚РёРї Рё СЃСЃС‹Р»РєР°
+            //$this->_getStatOPProject( 1, true );         // РїР»Р°С‚РЅС‹Рµ РєРѕРЅРєСѓСЂСЃС‹. РІС‹РґРµР»РµРЅРёРµ С†РІРµС‚РѕРј
+            //$this->_getStatOPProject( 2, true );         // РїР»Р°С‚РЅС‹Рµ РєРѕРЅРєСѓСЂСЃС‹. РІС‹РґРµР»РµРЅРёРµ Р¶РёСЂРЅС‹Рј 
+            $this->_getStatOPProject( 3, true );           // РїР»Р°С‚РЅС‹Рµ РєРѕРЅРєСѓСЂСЃС‹. Р·Р°РєСЂРµРїРёС‚СЊ РЅР°РІРµСЂС…Сѓ Р»РµРЅС‚С‹
+            //$this->_getStatOPProject( '', true, true );  // РїР»Р°С‚РЅС‹Рµ РєРѕРЅРєСѓСЂСЃС‹ (Р±РѕРЅСѓСЃ). РІСЃРµ
+            //$this->_getStatOPProject( 0, true, true );   // РїР»Р°С‚РЅС‹Рµ РєРѕРЅРєСѓСЂСЃС‹ (Р±РѕРЅСѓСЃ). Р»РѕРіРѕС‚РёРї Рё СЃСЃС‹Р»РєР°
+            //$this->_getStatOPProject( 1, true, true );   // РїР»Р°С‚РЅС‹Рµ РєРѕРЅРєСѓСЂСЃС‹ (Р±РѕРЅСѓСЃ). РІС‹РґРµР»РµРЅРёРµ С†РІРµС‚РѕРј
+            //$this->_getStatOPProject( 2, true, true );   // РїР»Р°С‚РЅС‹Рµ РєРѕРЅРєСѓСЂСЃС‹ (Р±РѕРЅСѓСЃ). РІС‹РґРµР»РµРЅРёРµ Р¶РёСЂРЅС‹Рј
+            //$this->_getStatOPProject( 3, true, true );   // РїР»Р°С‚РЅС‹Рµ РєРѕРЅРєСѓСЂСЃС‹ (Р±РѕРЅСѓСЃ). Р·Р°РєСЂРµРїРёС‚СЊ РЅР°РІРµСЂС…Сѓ Р»РµРЅС‚С‹
+            $this->_getStatIncome();                       // РїСЂРёС…РѕРґ СЃСЂРµРґСЃС‚РІ РїРѕ РІСЃРµРј РїР»Р°С‚РµР¶РЅС‹Рј СЃРёСЃС‚РµРјР°Рј
             
-            $this->_getStatByOpCode( self::$aProCode, 'pro', true ); // pro фрилансеры, pro работодатели
-            //$this->_getStatByOpCode( array(114), 'testpro1fm' );   // test-pro 1fm фрилансеры
-            $this->_getStatByOpCode( array(47), 'testpro' );         // test-pro фрилансеры
-            $this->_getStatByOpCode( array(117), 'verify' );         // верификация через ff
-            $this->_getStatByOpCode( array(10, 11), 'first' );       // место на первой
-            $this->_getStatByOpCode( array(19), 'first_cat' );       // место в общем каталоге
-            $this->_getStatByOpCode( array(20), 'first_cat_in' );    // место внутри каталога
-            $this->_getStatByOpCode( array(21), 'first_cho' );       // изменение позиции платного размещения
-            $this->_getStatByOpCode( array(65), 'ppfm' );            // карусель на главной (руб)
-            $this->_getStatByOpCode( array(55), 'ppsms' );           // карусель на главной (sms)
-            $this->_getStatByOpCode( array(73,109, 111), 'ppcfm' );  // карусель в каталоге
-            $this->_getStatByOpCode( array(70), 'login' );           // платное изменение логина
-            $this->_getStatByOpCode( array(74), 'unlock' );          // платная разблокировка
-            $this->_getStatByOpCode( array(45), 'mass_accept' );     // платная рассылка. принятые
-            $this->_getStatByOpCode( array(46), 'mass_reject', false, false ); // платная рассылка. отказанные
-            $this->_getStatByOpCode( array(45), 'mass_new', false, false ); // платная рассылка. новые
-            $this->_getStatByOpCode( array(71), 'pwsms', false, false ); // восстановление пароля (sms)
+            $this->_getStatByOpCode( self::$aProCode, 'pro', true ); // pro С„СЂРёР»Р°РЅСЃРµСЂС‹, pro СЂР°Р±РѕС‚РѕРґР°С‚РµР»Рё
+            //$this->_getStatByOpCode( array(114), 'testpro1fm' );   // test-pro 1fm С„СЂРёР»Р°РЅСЃРµСЂС‹
+            $this->_getStatByOpCode( array(47), 'testpro' );         // test-pro С„СЂРёР»Р°РЅСЃРµСЂС‹
+            $this->_getStatByOpCode( array(117), 'verify' );         // РІРµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· ff
+            $this->_getStatByOpCode( array(10, 11), 'first' );       // РјРµСЃС‚Рѕ РЅР° РїРµСЂРІРѕР№
+            $this->_getStatByOpCode( array(19), 'first_cat' );       // РјРµСЃС‚Рѕ РІ РѕР±С‰РµРј РєР°С‚Р°Р»РѕРіРµ
+            $this->_getStatByOpCode( array(20), 'first_cat_in' );    // РјРµСЃС‚Рѕ РІРЅСѓС‚СЂРё РєР°С‚Р°Р»РѕРіР°
+            $this->_getStatByOpCode( array(21), 'first_cho' );       // РёР·РјРµРЅРµРЅРёРµ РїРѕР·РёС†РёРё РїР»Р°С‚РЅРѕРіРѕ СЂР°Р·РјРµС‰РµРЅРёСЏ
+            $this->_getStatByOpCode( array(65), 'ppfm' );            // РєР°СЂСѓСЃРµР»СЊ РЅР° РіР»Р°РІРЅРѕР№ (СЂСѓР±)
+            $this->_getStatByOpCode( array(55), 'ppsms' );           // РєР°СЂСѓСЃРµР»СЊ РЅР° РіР»Р°РІРЅРѕР№ (sms)
+            $this->_getStatByOpCode( array(73,109, 111), 'ppcfm' );  // РєР°СЂСѓСЃРµР»СЊ РІ РєР°С‚Р°Р»РѕРіРµ
+            $this->_getStatByOpCode( array(70), 'login' );           // РїР»Р°С‚РЅРѕРµ РёР·РјРµРЅРµРЅРёРµ Р»РѕРіРёРЅР°
+            $this->_getStatByOpCode( array(74), 'unlock' );          // РїР»Р°С‚РЅР°СЏ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІРєР°
+            $this->_getStatByOpCode( array(45), 'mass_accept' );     // РїР»Р°С‚РЅР°СЏ СЂР°СЃСЃС‹Р»РєР°. РїСЂРёРЅСЏС‚С‹Рµ
+            $this->_getStatByOpCode( array(46), 'mass_reject', false, false ); // РїР»Р°С‚РЅР°СЏ СЂР°СЃСЃС‹Р»РєР°. РѕС‚РєР°Р·Р°РЅРЅС‹Рµ
+            $this->_getStatByOpCode( array(45), 'mass_new', false, false ); // РїР»Р°С‚РЅР°СЏ СЂР°СЃСЃС‹Р»РєР°. РЅРѕРІС‹Рµ
+            $this->_getStatByOpCode( array(71), 'pwsms', false, false ); // РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РїР°СЂРѕР»СЏ (sms)
         }
         
         return $this->aStats;
     }
     
     /**
-     * Считает количества переходов за прошлый день и кладет их в базу одной записью
+     * РЎС‡РёС‚Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІР° РїРµСЂРµС…РѕРґРѕРІ Р·Р° РїСЂРѕС€Р»С‹Р№ РґРµРЅСЊ Рё РєР»Р°РґРµС‚ РёС… РІ Р±Р°Р·Сѓ РѕРґРЅРѕР№ Р·Р°РїРёСЃСЊСЋ
      */
     function calculateStatsIp() {
         $this->sDateFrom = strtotime('-1 day');
@@ -268,7 +268,7 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Считает статистику по переходам
+     * РЎС‡РёС‚Р°РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕ РїРµСЂРµС…РѕРґР°Рј
      * 
      * @return array
      */
@@ -296,7 +296,7 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Считает статистику по регистрациям
+     * РЎС‡РёС‚Р°РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕ СЂРµРіРёСЃС‚СЂР°С†РёСЏРј
      * 
      * @return array
      */
@@ -329,12 +329,12 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Считает статистику по платным проектам (платные проекты, платные проекты по бонусу, конкурсы, конкурсы по бонусу)
+     * РЎС‡РёС‚Р°РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕ РїР»Р°С‚РЅС‹Рј РїСЂРѕРµРєС‚Р°Рј (РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹, РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹ РїРѕ Р±РѕРЅСѓСЃСѓ, РєРѕРЅРєСѓСЂСЃС‹, РєРѕРЅРєСѓСЂСЃС‹ РїРѕ Р±РѕРЅСѓСЃСѓ)
      * 
-     * @param  integer $type Тип платной услуги (0 - логотип, 1 - фон, 2 - выделение текста, 3 - поднятие проекта)
-     * @param  boolean $is_konkurs Берем данные по конкурсу или нет
-     * @param  boolean $is_bonus Берем данные по бонусам или нет
-     * @return array [сумма в FM, кол-во операций]
+     * @param  integer $type РўРёРї РїР»Р°С‚РЅРѕР№ СѓСЃР»СѓРіРё (0 - Р»РѕРіРѕС‚РёРї, 1 - С„РѕРЅ, 2 - РІС‹РґРµР»РµРЅРёРµ С‚РµРєСЃС‚Р°, 3 - РїРѕРґРЅСЏС‚РёРµ РїСЂРѕРµРєС‚Р°)
+     * @param  boolean $is_konkurs Р‘РµСЂРµРј РґР°РЅРЅС‹Рµ РїРѕ РєРѕРЅРєСѓСЂСЃСѓ РёР»Рё РЅРµС‚
+     * @param  boolean $is_bonus Р‘РµСЂРµРј РґР°РЅРЅС‹Рµ РїРѕ Р±РѕРЅСѓСЃР°Рј РёР»Рё РЅРµС‚
+     * @return array [СЃСѓРјРјР° РІ FM, РєРѕР»-РІРѕ РѕРїРµСЂР°С†РёР№]
      */
     private function _getStatOPProject( $type = '', $is_konkurs = false, $is_bonus = false ) {
         $sWhere = $this->_getStatsWhere( 'ac.op_date' );
@@ -409,9 +409,9 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Считает статистику по приходу средств по всем платежным системам
+     * РЎС‡РёС‚Р°РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕ РїСЂРёС…РѕРґСѓ СЃСЂРµРґСЃС‚РІ РїРѕ РІСЃРµРј РїР»Р°С‚РµР¶РЅС‹Рј СЃРёСЃС‚РµРјР°Рј
      * 
-     * @return array [сумма в валюте платежной системы, сумма в FM]
+     * @return array [СЃСѓРјРјР° РІ РІР°Р»СЋС‚Рµ РїР»Р°С‚РµР¶РЅРѕР№ СЃРёСЃС‚РµРјС‹, СЃСѓРјРјР° РІ FM]
      */
     private function _getStatIncome() {
         $sWhere = $this->_getStatsWhere( 'ac.op_date' );
@@ -450,12 +450,12 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Считает статистику по определенным операциям
+     * РЎС‡РёС‚Р°РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕ РѕРїСЂРµРґРµР»РµРЅРЅС‹Рј РѕРїРµСЂР°С†РёСЏРј
      * 
-     * @param mixed $mOpCode строка через запяту коды операций из op_codes или массив кодов
-     * @param string $sKey ключ под которым положить данные в общий массив статтистики
-     * @param bool $bSepFreeEmp установить в true если нужно считать отдельно по фрилансерам и работодателям
-     * @param bool $bSpent накапливать суму в общий расход по домену
+     * @param mixed $mOpCode СЃС‚СЂРѕРєР° С‡РµСЂРµР· Р·Р°РїСЏС‚Сѓ РєРѕРґС‹ РѕРїРµСЂР°С†РёР№ РёР· op_codes РёР»Рё РјР°СЃСЃРёРІ РєРѕРґРѕРІ
+     * @param string $sKey РєР»СЋС‡ РїРѕРґ РєРѕС‚РѕСЂС‹Рј РїРѕР»РѕР¶РёС‚СЊ РґР°РЅРЅС‹Рµ РІ РѕР±С‰РёР№ РјР°СЃСЃРёРІ СЃС‚Р°С‚С‚РёСЃС‚РёРєРё
+     * @param bool $bSepFreeEmp СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РІ true РµСЃР»Рё РЅСѓР¶РЅРѕ СЃС‡РёС‚Р°С‚СЊ РѕС‚РґРµР»СЊРЅРѕ РїРѕ С„СЂРёР»Р°РЅСЃРµСЂР°Рј Рё СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏРј
+     * @param bool $bSpent РЅР°РєР°РїР»РёРІР°С‚СЊ СЃСѓРјСѓ РІ РѕР±С‰РёР№ СЂР°СЃС…РѕРґ РїРѕ РґРѕРјРµРЅСѓ
      */
     private function _getStatByOpCode( $mOpCode = '0', $sKey = '', $bSepFreeEmp = false, $bSpent = true ) {
         if ( !is_array($mOpCode) ) {
@@ -514,7 +514,7 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Формирует часть запроса с UID юзеров которые не нужно учитывать в статистике
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ С‡Р°СЃС‚СЊ Р·Р°РїСЂРѕСЃР° СЃ UID СЋР·РµСЂРѕРІ РєРѕС‚РѕСЂС‹Рµ РЅРµ РЅСѓР¶РЅРѕ СѓС‡РёС‚С‹РІР°С‚СЊ РІ СЃС‚Р°С‚РёСЃС‚РёРєРµ
      */
     private function _getIgnoreInStats() {
         $aUids = $GLOBALS['DB']->col( 'SELECT uid FROM users WHERE ignore_in_stats = TRUE' );
@@ -525,7 +525,7 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Возвращает список доменов для запроса по получению статистики
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РґРѕРјРµРЅРѕРІ РґР»СЏ Р·Р°РїСЂРѕСЃР° РїРѕ РїРѕР»СѓС‡РµРЅРёСЋ СЃС‚Р°С‚РёСЃС‚РёРєРё
      * 
      * @return type
      */
@@ -534,10 +534,10 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Возвращает часть WHERE для запроса по получению статистики
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ С‡Р°СЃС‚СЊ WHERE РґР»СЏ Р·Р°РїСЂРѕСЃР° РїРѕ РїРѕР»СѓС‡РµРЅРёСЋ СЃС‚Р°С‚РёСЃС‚РёРєРё
      * 
-     * @param  string $sDateField название поля с датой
-     * @param  string $sAnd название поля с датой
+     * @param  string $sDateField РЅР°Р·РІР°РЅРёРµ РїРѕР»СЏ СЃ РґР°С‚РѕР№
+     * @param  string $sAnd РЅР°Р·РІР°РЅРёРµ РїРѕР»СЏ СЃ РґР°С‚РѕР№
      * @return string
      */
     private function _getStatsWhere( $sDateField = 'reg_date', $sAnd = '' ) {
@@ -559,8 +559,8 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Проверяет не было ли перехода с домена по которому ведется статистика
-     * Если был переход - обрабатывает его
+     * РџСЂРѕРІРµСЂСЏРµС‚ РЅРµ Р±С‹Р»Рѕ Р»Рё РїРµСЂРµС…РѕРґР° СЃ РґРѕРјРµРЅР° РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РІРµРґРµС‚СЃСЏ СЃС‚Р°С‚РёСЃС‚РёРєР°
+     * Р•СЃР»Рё Р±С‹Р» РїРµСЂРµС…РѕРґ - РѕР±СЂР°Р±Р°С‚С‹РІР°РµС‚ РµРіРѕ
      */
     function checkReferer() {
         preg_match( '#^(?:https?://)?([^/]+)#i', $_SERVER['HTTP_REFERER'], $aMatches );
@@ -580,8 +580,8 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Проверяет не было ли регистрации после перехода с домена по которому ведется статистика
-     * Если была регистрация - обрабатывает ее
+     * РџСЂРѕРІРµСЂСЏРµС‚ РЅРµ Р±С‹Р»Рѕ Р»Рё СЂРµРіРёСЃС‚СЂР°С†РёРё РїРѕСЃР»Рµ РїРµСЂРµС…РѕРґР° СЃ РґРѕРјРµРЅР° РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РІРµРґРµС‚СЃСЏ СЃС‚Р°С‚РёСЃС‚РёРєР°
+     * Р•СЃР»Рё Р±С‹Р»Р° СЂРµРіРёСЃС‚СЂР°С†РёСЏ - РѕР±СЂР°Р±Р°С‚С‹РІР°РµС‚ РµРµ
      * 
      * @param int $name Description
      */
@@ -600,11 +600,11 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Удаляет домен и всю статистику для него
+     * РЈРґР°Р»СЏРµС‚ РґРѕРјРµРЅ Рё РІСЃСЋ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РґР»СЏ РЅРµРіРѕ
      * 
-     * Перед вызовом нужно установить поля класса, например $traffic_stat->initDomainFromDB()
+     * РџРµСЂРµРґ РІС‹Р·РѕРІРѕРј РЅСѓР¶РЅРѕ СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РїРѕР»СЏ РєР»Р°СЃСЃР°, РЅР°РїСЂРёРјРµСЂ $traffic_stat->initDomainFromDB()
      * 
-     * @return bool true - успех, false - провал
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function deleteDomain() {
         $GLOBALS['DB']->query( 'DELETE FROM traffic_stat_domains WHERE id = ?i', $this->sDomainId );
@@ -621,16 +621,16 @@ class traffic_stat extends admin_parent {
 
 
     /**
-     * Сохраняет домен в базу данных.
+     * РЎРѕС…СЂР°РЅСЏРµС‚ РґРѕРјРµРЅ РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С….
      * 
-     * Перед вызовом нужно установить поля класса, например $traffic_stat->initDomainFromParams()
+     * РџРµСЂРµРґ РІС‹Р·РѕРІРѕРј РЅСѓР¶РЅРѕ СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РїРѕР»СЏ РєР»Р°СЃСЃР°, РЅР°РїСЂРёРјРµСЂ $traffic_stat->initDomainFromParams()
      * 
-     * @return bool true - успех, false - провал
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function saveDomain() {
         $bRet = false;
         
-        if ( $this->bDomainSet && empty($this->sDomainNameError) ) { // поля установлены без ошибок
+        if ( $this->bDomainSet && empty($this->sDomainNameError) ) { // РїРѕР»СЏ СѓСЃС‚Р°РЅРѕРІР»РµРЅС‹ Р±РµР· РѕС€РёР±РѕРє
             $aSqlData = array( 'name' => $this->sDomainName, 'is_active' => $this->sDomainActive );
             
             if ( !empty($this->sDomainId) ) {
@@ -653,36 +653,36 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Инициализирует поля класса данными из базы, которые на деле уже есть в $this->aDomains
+     * РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РїРѕР»СЏ РєР»Р°СЃСЃР° РґР°РЅРЅС‹РјРё РёР· Р±Р°Р·С‹, РєРѕС‚РѕСЂС‹Рµ РЅР° РґРµР»Рµ СѓР¶Рµ РµСЃС‚СЊ РІ $this->aDomains
      * 
-     * @param int $sDomainId ID домена в базе
+     * @param int $sDomainId ID РґРѕРјРµРЅР° РІ Р±Р°Р·Рµ
      */
     function initDomainFromDB( $sDomainId = 0 ) {
         $this->bDomainSet = false;
         
         if ( in_array($sDomainId, array_keys($this->aDomains) ) ) {
-            $this->bDomainSet       = true;                                     // флаг установки полей
-            $this->sDomainNameError = '';                                       // Сообщение об ошибке
-            $this->sDomainIdError   = '';                                       // Сообщение об ошибке
-            $this->sDomainId        = $sDomainId;                               // ID домена при редактировании
-            $this->sDomainName      = $this->aDomains[$sDomainId]['name'];      // Домен
-            $this->sDomainActive    = $this->aDomains[$sDomainId]['is_active']; // Используется в данный момент
+            $this->bDomainSet       = true;                                     // С„Р»Р°Рі СѓСЃС‚Р°РЅРѕРІРєРё РїРѕР»РµР№
+            $this->sDomainNameError = '';                                       // РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
+            $this->sDomainIdError   = '';                                       // РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
+            $this->sDomainId        = $sDomainId;                               // ID РґРѕРјРµРЅР° РїСЂРё СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРё
+            $this->sDomainName      = $this->aDomains[$sDomainId]['name'];      // Р”РѕРјРµРЅ
+            $this->sDomainActive    = $this->aDomains[$sDomainId]['is_active']; // РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚
         }
         else {
-            $this->sDomainIdError = 'Домен не существует';
+            $this->sDomainIdError = 'Р”РѕРјРµРЅ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚';
         }
     }
     
     /**
-     * Инициализирует поля класса входящими параметрами и выполняет валидацию данных
+     * РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РїРѕР»СЏ РєР»Р°СЃСЃР° РІС…РѕРґСЏС‰РёРјРё РїР°СЂР°РјРµС‚СЂР°РјРё Рё РІС‹РїРѕР»РЅСЏРµС‚ РІР°Р»РёРґР°С†РёСЋ РґР°РЅРЅС‹С…
      */
     function initDomainFromParams() {
-        $this->bDomainSet       = true;                                              // флаг установки полей
-        $this->sDomainNameError = '';                                                // Сообщение об ошибке
-        $this->sDomainIdError   = '';                                                // Сообщение об ошибке
-        $this->sDomainId        = __paramInit( 'int', 'id', 'id', 0 );               // ID домена при редактировании
-        $this->sDomainName      = trim( __paramInit('string', 'name', 'name', '') ); // Домен
-        $this->sDomainActive    = __paramInit( 'int', 'is_active', 'is_active', 0 ); // Используется в данный момент
+        $this->bDomainSet       = true;                                              // С„Р»Р°Рі СѓСЃС‚Р°РЅРѕРІРєРё РїРѕР»РµР№
+        $this->sDomainNameError = '';                                                // РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
+        $this->sDomainIdError   = '';                                                // РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
+        $this->sDomainId        = __paramInit( 'int', 'id', 'id', 0 );               // ID РґРѕРјРµРЅР° РїСЂРё СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРё
+        $this->sDomainName      = trim( __paramInit('string', 'name', 'name', '') ); // Р”РѕРјРµРЅ
+        $this->sDomainActive    = __paramInit( 'int', 'is_active', 'is_active', 0 ); // РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚
         $this->sDomainActive    = $this->sDomainActive ? 't' : 'f';
         
         preg_match( '#^(?:https?://)?([^/]+)#i', $this->sDomainName, $aMatches );
@@ -690,20 +690,20 @@ class traffic_stat extends admin_parent {
         $this->sDomainName = $aMatches[1];
         
         if ( empty($this->sDomainName) || !url_validate($this->sDomainName) ) {
-            $this->sDomainNameError = 'Поле заполнено некорректно';
+            $this->sDomainNameError = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
         }
         else {
             $sQuery = 'SELECT id FROM traffic_stat_domains WHERE name = ? AND id <> ?i';
             
             if ( $GLOBALS['DB']->val($sQuery, $this->sDomainName, $this->sDomainId) ) {
-                $this->sDomainNameError = 'Такой домен уже существует';
+                $this->sDomainNameError = 'РўР°РєРѕР№ РґРѕРјРµРЅ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚';
             }
         }
     }
     
     /**
-     * Фильтр статистики
-     * Инициализирует поля класса входящими параметрами и выполняет валидацию данных
+     * Р¤РёР»СЊС‚СЂ СЃС‚Р°С‚РёСЃС‚РёРєРё
+     * РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РїРѕР»СЏ РєР»Р°СЃСЃР° РІС…РѕРґСЏС‰РёРјРё РїР°СЂР°РјРµС‚СЂР°РјРё Рё РІС‹РїРѕР»РЅСЏРµС‚ РІР°Р»РёРґР°С†РёСЋ РґР°РЅРЅС‹С…
      */
     function initFilterFromParams() {
         $this->nFilterDomainId = __paramInit( 'int', 'domain_id', null, 0 );
@@ -726,36 +726,36 @@ class traffic_stat extends admin_parent {
                 case 'year':
                     $this->sDateFrom = strtotime( '-1 year' );
                     break;
-                case 'alltime': // чтобы default не сработал
+                case 'alltime': // С‡С‚РѕР±С‹ default РЅРµ СЃСЂР°Р±РѕС‚Р°Р»
                     break;
                 case 'custom':
                     $aFrom = explode( '.', __paramInit('string', 'custom_period_from', null, '') );
                     $aTo   = explode( '.', __paramInit('string', 'custom_period_to', null, '') );
 
                     if ( count($aFrom) != 3 || ($this->sDateFrom = strtotime(implode('-', array_reverse($aFrom)))) === false ) {
-                        $this->sDateFromError = 'Укажите корректную начальную дату';
+                        $this->sDateFromError = 'РЈРєР°Р¶РёС‚Рµ РєРѕСЂСЂРµРєС‚РЅСѓСЋ РЅР°С‡Р°Р»СЊРЅСѓСЋ РґР°С‚Сѓ';
                     }
 
                     if ( count($aTo) != 3 || ($this->sDateTo = strtotime(implode('-', array_reverse($aTo)))) === false ) {
-                        $this->sDateToError = 'Укажите корректную конечную дату';
+                        $this->sDateToError = 'РЈРєР°Р¶РёС‚Рµ РєРѕСЂСЂРµРєС‚РЅСѓСЋ РєРѕРЅРµС‡РЅСѓСЋ РґР°С‚Сѓ';
                     }
 
                     if ( !$this->sDateFromError && !$this->sDateToError && $this->sDateFrom > $this->sDateTo ) {
-                        $this->sDateError = 'Конечная дата не может быть меньше начальной';
+                        $this->sDateError = 'РљРѕРЅРµС‡РЅР°СЏ РґР°С‚Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ РЅР°С‡Р°Р»СЊРЅРѕР№';
                     }
                     break;
                 default:
-                    $this->sDateError = 'Укажите период';
+                    $this->sDateError = 'РЈРєР°Р¶РёС‚Рµ РїРµСЂРёРѕРґ';
                     break;
             }
         }
         else {
-            $this->sFilterDomainIdError = 'Домен не существует';
+            $this->sFilterDomainIdError = 'Р”РѕРјРµРЅ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚';
         }
     }
     
     /**
-     * Возвращает домены с которых мы ведем статистику
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґРѕРјРµРЅС‹ СЃ РєРѕС‚РѕСЂС‹С… РјС‹ РІРµРґРµРј СЃС‚Р°С‚РёСЃС‚РёРєСѓ
      * 
      * @return array 
      */
@@ -764,7 +764,7 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Возвращает ошибку валидации ID домена $sDomainId
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕС€РёР±РєСѓ РІР°Р»РёРґР°С†РёРё ID РґРѕРјРµРЅР° $sDomainId
      * 
      * @return string
      */
@@ -773,7 +773,7 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Возвращает поле имя домена
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РїРѕР»Рµ РёРјСЏ РґРѕРјРµРЅР°
      * 
      * @return string
      */
@@ -782,7 +782,7 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Возвращает ошибку валидации домена $sDomainName
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕС€РёР±РєСѓ РІР°Р»РёРґР°С†РёРё РґРѕРјРµРЅР° $sDomainName
      * 
      * @return string
      */
@@ -791,7 +791,7 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Возвращает поле используется ли домен в данный момент
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РїРѕР»Рµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ Р»Рё РґРѕРјРµРЅ РІ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚
      * 
      * @return string
      */
@@ -800,7 +800,7 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Возвращает ID домена для фильтра статистики
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ ID РґРѕРјРµРЅР° РґР»СЏ С„РёР»СЊС‚СЂР° СЃС‚Р°С‚РёСЃС‚РёРєРё
      * 
      * @return int 
      */
@@ -809,7 +809,7 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Возвращает за какой период выводить статистику
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р° РєР°РєРѕР№ РїРµСЂРёРѕРґ РІС‹РІРѕРґРёС‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ
      * 
      * @return string
      */
@@ -818,7 +818,7 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Возвращает начальную дата периода в формате d.m.Y
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РЅР°С‡Р°Р»СЊРЅСѓСЋ РґР°С‚Р° РїРµСЂРёРѕРґР° РІ С„РѕСЂРјР°С‚Рµ d.m.Y
      * 
      * @return string
      */
@@ -829,7 +829,7 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Возвращает конечную дата периода в формате d.m.Y
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕРЅРµС‡РЅСѓСЋ РґР°С‚Р° РїРµСЂРёРѕРґР° РІ С„РѕСЂРјР°С‚Рµ d.m.Y
      * 
      * @return string
      */
@@ -840,7 +840,7 @@ class traffic_stat extends admin_parent {
     }
     
     /**
-     * Возвращает сообщение об ошибке в фильтре для javascript alert()
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РІ С„РёР»СЊС‚СЂРµ РґР»СЏ javascript alert()
      * 
      * @return string
      */

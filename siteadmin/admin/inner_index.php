@@ -24,14 +24,14 @@ function checkexts() {
 </style>
 
 
-<strong>Администрация</strong><br><br>
+<strong>РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ</strong><br><br>
   <? if ($_GET['result']=='success') { ?>
     <div style="margin:10px 0 20px 0">
-      <img src="/images/ico_ok.gif" alt="" border="0" height="18" width="19"/>&nbsp;Сообщение отправлено!
+      <img src="/images/ico_ok.gif" alt="" border="0" height="18" width="19"/>&nbsp;РЎРѕРѕР±С‰РµРЅРёРµ РѕС‚РїСЂР°РІР»РµРЅРѕ!
     </div>
   <? } ?>
 	<? if ($error) print(view_error($error));?>
-<form id="idForm" action="/siteadmin/admin/" method="post" enctype="multipart/form-data" onSubmit="if(!checkexts()) return false; if(!warning()) return false; this.btn.value='Подождите'; beforeSubmit(); this.btn.disabled=true;">
+<form id="idForm" action="/siteadmin/admin/" method="post" enctype="multipart/form-data" onSubmit="if(!checkexts()) return false; if(!warning()) return false; this.btn.value='РџРѕРґРѕР¶РґРёС‚Рµ'; beforeSubmit(); this.btn.disabled=true;">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr valign="bottom">
     <td>
@@ -47,7 +47,7 @@ function checkexts() {
             newProf.childNodes[0].options[0].text=" ------------------------";
             newProf.childNodes[0].options[0].value = 'empty';
             newProf.childNodes[1].innerHTML='&ndash;';
-            newProf.childNodes[1].title = 'Удалить элемент';
+            newProf.childNodes[1].title = 'РЈРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚';
           }
           else 
             itm.parentNode.parentNode.removeChild(itm.parentNode);
@@ -112,7 +112,7 @@ function checkexts() {
               color = addDelCOlor;
               cursor = addDelCursor;
             }
-            addDel.title = (curDisabled==false ? (!i ? 'Добавить' : 'Удалить')+' элемент' : '');
+            addDel.title = (curDisabled==false ? (!i ? 'Р”РѕР±Р°РІРёС‚СЊ' : 'РЈРґР°Р»РёС‚СЊ')+' СЌР»РµРјРµРЅС‚' : '');
           }
         }
       </script>
@@ -124,40 +124,40 @@ function checkexts() {
               <col/>
               <tr valign="baseline">
                 <td>
-                  Отправить сообщение:
+                  РћС‚РїСЂР°РІРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ:
                 </td>
                 <td align="right">
                  <input<?=($toEmail?' checked':'')?> id="idToEmail" name="toEmail" type="checkbox"/>
-                 <label for="idToEmail">С рассылкой уведомлений?</label>
+                 <label for="idToEmail">РЎ СЂР°СЃСЃС‹Р»РєРѕР№ СѓРІРµРґРѕРјР»РµРЅРёР№?</label>
                 </td>
               </tr>
             </table>
             <br/>
             <div style="padding:6px;">
-              <input<?=(($toWrk || $toFrl)?'':' checked')?> id="idToAll" type="radio" name="toAll" onclick="idToWrk.checked=false;idToFrl.checked=false;idToLogins.checked=false;onOffFrlUI(document.getElementById('idToFrl'));"/><LABEL for="idToAll">&nbsp;Всем</LABEL>
+              <input<?=(($toWrk || $toFrl)?'':' checked')?> id="idToAll" type="radio" name="toAll" onclick="idToWrk.checked=false;idToFrl.checked=false;idToLogins.checked=false;onOffFrlUI(document.getElementById('idToFrl'));"/><LABEL for="idToAll">&nbsp;Р’СЃРµРј</LABEL>
             </div>
             <div style="margin:0 6px;border-bottom:1px solid #c0c0c0;"></div>
             <div style="padding:6px;">
-              <input<?=($toWrk?' checked':'')?> id="idToWrk" type="radio" name="toWrk" onclick="idToAll.checked=false;idToFrl.checked=false;idToLogins.checked=false;onOffFrlUI(document.getElementById('idToFrl'));"/><LABEL for="idToWrk">&nbsp;Работодателям</LABEL>
+              <input<?=($toWrk?' checked':'')?> id="idToWrk" type="radio" name="toWrk" onclick="idToAll.checked=false;idToFrl.checked=false;idToLogins.checked=false;onOffFrlUI(document.getElementById('idToFrl'));"/><LABEL for="idToWrk">&nbsp;Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЏРј</LABEL>
             </div>
             <div style="margin:0 6px;border-bottom:1px solid #c0c0c0;"></div>
             <div style="padding:6px;">
               <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
                 <tr valign="baseline">
                   <td>
-                    <input<?=($toFrl?' checked':'')?> id="idToFrl" type="radio" name="toFrl" onclick="onOffFrlUI(this);idToAll.checked=false; idToWrk.checked=false;idToLogins.checked=false;"/><LABEL for="idToFrl">&nbsp;Фрилансерам</LABEL>&nbsp;&nbsp;&nbsp;
+                    <input<?=($toFrl?' checked':'')?> id="idToFrl" type="radio" name="toFrl" onclick="onOffFrlUI(this);idToAll.checked=false; idToWrk.checked=false;idToLogins.checked=false;"/><LABEL for="idToFrl">&nbsp;Р¤СЂРёР»Р°РЅСЃРµСЂР°Рј</LABEL>&nbsp;&nbsp;&nbsp;
                   </td>
                   <td>
                    <nobr>
                     <input <?=($toPro?' checked':'')?> <?=($toFrl?'':' disabled')?> id="idToPro" type="checkbox" name="toPro" onclick="if(!idToNotPro.checked) idToNotPro.checked=true;"/><LABEL for="idToPro">&nbsp;PRO</LABEL>&nbsp;&nbsp;
-                    <input<?=($toNotPro?' checked':'')?> <?=($toFrl?'':' disabled')?> id="idToNotPro" type="checkbox" name="toNotPro" onclick="if(!idToPro.checked) idToPro.checked=true;"/><LABEL for="idToNotPro">&nbsp;без&nbsp;PRO</LABEL>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input<?=($toNotPro?' checked':'')?> <?=($toFrl?'':' disabled')?> id="idToNotPro" type="checkbox" name="toNotPro" onclick="if(!idToPro.checked) idToPro.checked=true;"/><LABEL for="idToNotPro">&nbsp;Р±РµР·&nbsp;PRO</LABEL>&nbsp;&nbsp;&nbsp;&nbsp;
                     </nobr>
                   </td>
                   <td>
                     <? $i=0; foreach($selectedProfs as $selProf) { ?>
-                    <div <?// Специально ><SELECT, чтобы не было лишнего текстового Child-а ?>
+                    <div <?// РЎРїРµС†РёР°Р»СЊРЅРѕ ><SELECT, С‡С‚РѕР±С‹ РЅРµ Р±С‹Р»Рѕ Р»РёС€РЅРµРіРѕ С‚РµРєСЃС‚РѕРІРѕРіРѕ Child-Р° ?>
                       ><select<?=($toFrl?'':' disabled')?> id="idProf" name="prof[]">
-                        <option style='color:black'<?=($selProf=='NULL' || $selProf=='empty'?' selected':'')?> value="<?=($selProf=='empty'?'empty':'NULL')?>">&nbsp;<?=($i?'------------------------':'Все специализации')?></option>
+                        <option style='color:black'<?=($selProf=='NULL' || $selProf=='empty'?' selected':'')?> value="<?=($selProf=='empty'?'empty':'NULL')?>">&nbsp;<?=($i?'------------------------':'Р’СЃРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё')?></option>
                         <?
                           $curGroup = NULL;
                           foreach($profs as $prof)
@@ -169,23 +169,23 @@ function checkexts() {
                             print("<option".($selProf==$prof['id'] ? ' selected' : '')." value='{$prof['id']}'>&nbsp;{$prof['groupname']}::{$prof['profname']}</option>");
                           }
                         ?>
-                      </select <?// Специально ><SPAN, чтобы не было лишнего текстового Child-а ?>
+                      </select <?// РЎРїРµС†РёР°Р»СЊРЅРѕ ><SPAN, С‡С‚РѕР±С‹ РЅРµ Р±С‹Р»Рѕ Р»РёС€РЅРµРіРѕ С‚РµРєСЃС‚РѕРІРѕРіРѕ Child-Р° ?>
                       ><span style="margin-left:5px;width:24px;<?=($toFrl?'cursor:hand;color:#666':'cursor:default;color:#c0c0c0')?>;font-size:18px;text-align:center; font-weight:bold"
-                             title="<?=($toFrl?($i==0?'Добавить элемент':'Удалить элемент'):'')?>" onclick="addProfElm(this)"><?=($i==0?'+':'&ndash;')?></SPAN>
+                             title="<?=($toFrl?($i==0?'Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚':'РЈРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚'):'')?>" onclick="addProfElm(this)"><?=($i==0?'+':'&ndash;')?></SPAN>
                     </div>
                     <? $i++; } ?>
                   </td>
                   <td align="right" style="width:20px">
                     <a style="cursor:hand;color:#909090;font-size:18px;font-weight:bold" href="javascript:void(0)" onclick="alert(this.getAttribute('titl'))"
                           titl="
-Элемент управления позволяет выбирать специализации или целые разделы.
-Если выбран раздел, то сообщение будет отправлено всем фрилансерам, у которых определена хотя бы одна из подчиненных этому разделу специализаций.
+Р­Р»РµРјРµРЅС‚ СѓРїСЂР°РІР»РµРЅРёСЏ РїРѕР·РІРѕР»СЏРµС‚ РІС‹Р±РёСЂР°С‚СЊ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё РёР»Рё С†РµР»С‹Рµ СЂР°Р·РґРµР»С‹.
+Р•СЃР»Рё РІС‹Р±СЂР°РЅ СЂР°Р·РґРµР», С‚Рѕ СЃРѕРѕР±С‰РµРЅРёРµ Р±СѓРґРµС‚ РѕС‚РїСЂР°РІР»РµРЅРѕ РІСЃРµРј С„СЂРёР»Р°РЅСЃРµСЂР°Рј, Сѓ РєРѕС‚РѕСЂС‹С… РѕРїСЂРµРґРµР»РµРЅР° С…РѕС‚СЏ Р±С‹ РѕРґРЅР° РёР· РїРѕРґС‡РёРЅРµРЅРЅС‹С… СЌС‚РѕРјСѓ СЂР°Р·РґРµР»Сѓ СЃРїРµС†РёР°Р»РёР·Р°С†РёР№.
 
-Если хотя бы в одном из элементов выбора стоит 'Все специализации', то сообщение будет отправлено всем, независимо от специализации.
+Р•СЃР»Рё С…РѕС‚СЏ Р±С‹ РІ РѕРґРЅРѕРј РёР· СЌР»РµРјРµРЅС‚РѕРІ РІС‹Р±РѕСЂР° СЃС‚РѕРёС‚ 'Р’СЃРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё', С‚Рѕ СЃРѕРѕР±С‰РµРЅРёРµ Р±СѓРґРµС‚ РѕС‚РїСЂР°РІР»РµРЅРѕ РІСЃРµРј, РЅРµР·Р°РІРёСЃРёРјРѕ РѕС‚ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё.
 
-Дубли исключены. Не будет ошибкой создать несколько элементов и выбрать в них одну и ту же специализацию.
+Р”СѓР±Р»Рё РёСЃРєР»СЋС‡РµРЅС‹. РќРµ Р±СѓРґРµС‚ РѕС€РёР±РєРѕР№ СЃРѕР·РґР°С‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ СЌР»РµРјРµРЅС‚РѕРІ Рё РІС‹Р±СЂР°С‚СЊ РІ РЅРёС… РѕРґРЅСѓ Рё С‚Сѓ Р¶Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ.
 
-Не нужно забывать и про смежные специализации (например, Разработка сайтов::Веб-программирование и Программирование::Веб-программирование). Если указана одна из таких специализаций, то сообщение увидят и представители другой (смежной) специализации.
+РќРµ РЅСѓР¶РЅРѕ Р·Р°Р±С‹РІР°С‚СЊ Рё РїСЂРѕ СЃРјРµР¶РЅС‹Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё (РЅР°РїСЂРёРјРµСЂ, Р Р°Р·СЂР°Р±РѕС‚РєР° СЃР°Р№С‚РѕРІ::Р’РµР±-РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ Рё РџСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ::Р’РµР±-РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ). Р•СЃР»Рё СѓРєР°Р·Р°РЅР° РѕРґРЅР° РёР· С‚Р°РєРёС… СЃРїРµС†РёР°Р»РёР·Р°С†РёР№, С‚Рѕ СЃРѕРѕР±С‰РµРЅРёРµ СѓРІРёРґСЏС‚ Рё РїСЂРµРґСЃС‚Р°РІРёС‚РµР»Рё РґСЂСѓРіРѕР№ (СЃРјРµР¶РЅРѕР№) СЃРїРµС†РёР°Р»РёР·Р°С†РёРё.
 "
                     >?</a>
                   </td>
@@ -194,7 +194,7 @@ function checkexts() {
             </div>
             <div style="margin:0 6px;border-bottom:1px solid #c0c0c0;"></div>
             <div style="padding:6px;">
-              <input<?=($toLogins?' checked':'')?> id="idToLogins" type="radio" name="toLogins" onclick="idToAll.checked=false;idToFrl.checked=false;idToWrk.checked=false;onOffFrlUI(document.getElementById('idToFrl'));"/><LABEL for="idToLogins" title="Список логинов через запятую">&nbsp;Адресатам:</LABEL>
+              <input<?=($toLogins?' checked':'')?> id="idToLogins" type="radio" name="toLogins" onclick="idToAll.checked=false;idToFrl.checked=false;idToWrk.checked=false;onOffFrlUI(document.getElementById('idToFrl'));"/><LABEL for="idToLogins" title="РЎРїРёСЃРѕРє Р»РѕРіРёРЅРѕРІ С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ">&nbsp;РђРґСЂРµСЃР°С‚Р°Рј:</LABEL>
               &nbsp;<input name="logins" style='width: 630px' type="text">
             </div>
           </td>
@@ -204,19 +204,19 @@ function checkexts() {
   </tr>
   <tr valign="top">
     <td style="padding:10px 0 10px 0">
-      <textarea cols="10" rows="8" name="msg" class="ckeditor" id="msg_texarea" conf="admin"><?=($msg ? $msg : ($FROM == 'admin' ? 'Здравствуйте, %USER_NAME%!' : '') )?></textarea>
+      <textarea cols="10" rows="8" name="msg" class="ckeditor" id="msg_texarea" conf="admin"><?=($msg ? $msg : ($FROM == 'admin' ? 'Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, %USER_NAME%!' : '') )?></textarea>
       <? if ($alert[2]) print(view_error($alert[2])) ?><br/>
       <?php if ( $FROM == 'admin' ): ?>
-        В тексте письма можно использовать следующие переменные:<br/>
-        &#37;USER_NAME&#37; - Имя пользователя<br/>
-        &#37;USER_SURNAME&#37; - Фамилия пользователя<br/>
-        &#37;USER_LOGIN&#37; - Логин пользователя<br/>
+        Р’ С‚РµРєСЃС‚Рµ РїРёСЃСЊРјР° РјРѕР¶РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЃР»РµРґСѓСЋС‰РёРµ РїРµСЂРµРјРµРЅРЅС‹Рµ:<br/>
+        &#37;USER_NAME&#37; - РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ<br/>
+        &#37;USER_SURNAME&#37; - Р¤Р°РјРёР»РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ<br/>
+        &#37;USER_LOGIN&#37; - Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ<br/>
       <?php endif; ?>
     </td>
   </tr>
   <tr>
     <td valign="top">
-      Загрузить:
+      Р—Р°РіСЂСѓР·РёС‚СЊ:
     </td>
   </tr>
   <tr>
@@ -233,22 +233,22 @@ function checkexts() {
 		new mAttach(document.getElementById('attaches'), <?=messages::MAX_FILES?>);
 	</script>
 	  <? if ($alert[1]) print(view_error($alert[1])) ?>
-	  Файлы следующих форматов запрещены к загрузке: <?=implode(', ', $GLOBALS['disallowed_array'])?>
+	  Р¤Р°Р№Р»С‹ СЃР»РµРґСѓСЋС‰РёС… С„РѕСЂРјР°С‚РѕРІ Р·Р°РїСЂРµС‰РµРЅС‹ Рє Р·Р°РіСЂСѓР·РєРµ: <?=implode(', ', $GLOBALS['disallowed_array'])?>
 	  <?php /*
-      С помощью этого поля возможно загрузить:
-      <ul><li>Картинку.<br>
-      Картинка публикуется ниже комментария.<br>
-      Формат: gif, jpeg.<br>
-      Максимальный размер картинки: 440x600 пикселей; 300 Кб.</li>
-      <li>Файл.<br>
-      Файл размещается под кнопкой &laquo;Загрузить&raquo; ниже комментария.<br>
-      Формат: zip, rar.</li></ul> */ ?>
+      РЎ РїРѕРјРѕС‰СЊСЋ СЌС‚РѕРіРѕ РїРѕР»СЏ РІРѕР·РјРѕР¶РЅРѕ Р·Р°РіСЂСѓР·РёС‚СЊ:
+      <ul><li>РљР°СЂС‚РёРЅРєСѓ.<br>
+      РљР°СЂС‚РёРЅРєР° РїСѓР±Р»РёРєСѓРµС‚СЃСЏ РЅРёР¶Рµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ.<br>
+      Р¤РѕСЂРјР°С‚: gif, jpeg.<br>
+      РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ РєР°СЂС‚РёРЅРєРё: 440x600 РїРёРєСЃРµР»РµР№; 300 РљР±.</li>
+      <li>Р¤Р°Р№Р».<br>
+      Р¤Р°Р№Р» СЂР°Р·РјРµС‰Р°РµС‚СЃСЏ РїРѕРґ РєРЅРѕРїРєРѕР№ &laquo;Р—Р°РіСЂСѓР·РёС‚СЊ&raquo; РЅРёР¶Рµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ.<br>
+      Р¤РѕСЂРјР°С‚: zip, rar.</li></ul> */ ?>
     </td>
   </tr>
   <tr>
     <td align="right"><input type="hidden" name="MAX_FILE_SIZE" value="100000">
       <input type="hidden" name="action" value="post_msg">
-      <input type="submit" name="btn" class="btn" value="Отправить">
+      <input type="submit" name="btn" class="btn" value="РћС‚РїСЂР°РІРёС‚СЊ">
     </td>
   </tr>
   <tr><td colspan="3">&nbsp;</td></tr>

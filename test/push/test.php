@@ -24,11 +24,11 @@ require_once($_SERVER['DOCUMENT_ROOT']."/classes/external/api/mobile.php");
 
 /*
 $text = '
-    F??©d?ration Camerounaise de Football
+    F??В©d?ration Camerounaise de Football
     when it is rendered on the browser it displays J???lio C?
 ';*/
 
-$text = 'Привет как дела???';
+$text = 'РџСЂРёРІРµС‚ РєР°Рє РґРµР»Р°???';
 
 $from_uid = 237958;
 $uid = 238766;

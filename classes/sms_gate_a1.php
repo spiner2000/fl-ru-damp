@@ -5,12 +5,12 @@ if(!defined("SMS_GATE_AUTH")) {
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/sms_gate.php");
 
 /**
- * Êëàññ äëÿ ğàáîòû ñ ÑÌÑ Øëşçîì A1
+ * ĞšĞ»Ğ°ÑÑ Ğ´Ğ»Ñ Ñ€Ğ°Ğ±Ğ¾Ñ‚Ñ‹ Ñ Ğ¡ĞœĞ¡ Ğ¨Ğ»ÑĞ·Ğ¾Ğ¼ A1
  */
 class sms_gate_a1 extends sms_gate
 {
     /**
-     * Àäğåñ ñåğâåğà
+     * ĞĞ´Ñ€ĞµÑ ÑĞµÑ€Ğ²ĞµÑ€Ğ°
      * 
      * @var string
      */
@@ -25,7 +25,7 @@ class sms_gate_a1 extends sms_gate
     
     private   $_limit_is_exceed = false;
     /**
-     * Ïîğò
+     * ĞŸĞ¾Ñ€Ñ‚
      * 
      * @var integer 
      */
@@ -38,7 +38,7 @@ class sms_gate_a1 extends sms_gate
 
         list($this->_login, $this->_password) = explode(":", SMS_GATE_AUTH);
         
-        // if($msisdn[0] == '7' && $msisdn[1] != '7') {// Êîä ñòğàíû Ğîññèÿ, âòîğàÿ 7 ıòî Êàçàõñòàí çíà÷èò íå Ğîññèÿ
+        // if($msisdn[0] == '7' && $msisdn[1] != '7') {// ĞšĞ¾Ğ´ ÑÑ‚Ñ€Ğ°Ğ½Ñ‹ Ğ Ğ¾ÑÑĞ¸Ñ, Ğ²Ñ‚Ğ¾Ñ€Ğ°Ñ 7 ÑÑ‚Ğ¾ ĞšĞ°Ğ·Ğ°Ñ…ÑÑ‚Ğ°Ğ½ Ğ·Ğ½Ğ°Ñ‡Ğ¸Ñ‚ Ğ½Ğµ Ğ Ğ¾ÑÑĞ¸Ñ
         //    list($this->_login, $this->_password) = explode(":", SMS_GATE_AUTH);
         // } else {
         //    $this->_password = 'i7Sfr6G8';
@@ -47,10 +47,10 @@ class sms_gate_a1 extends sms_gate
     }
     
     /**
-     * Îòïğàâêà ñîîáùåíèÿ àáîíåíòó
+     * ĞÑ‚Ğ¿Ñ€Ğ°Ğ²ĞºĞ° ÑĞ¾Ğ¾Ğ±Ñ‰ĞµĞ½Ğ¸Ñ Ğ°Ğ±Ğ¾Ğ½ĞµĞ½Ñ‚Ñƒ
      * 
-     * @param string  $message  Òåêñò ñîîáùåíèÿ àáîíåíòó
-     * @param integer $sms_id   Èäåíòèôèêàòîğ ñîîáùåíèÿ â ñèñòåìå Ïëàñòèê, íà êîòîğûé îòïğàâëÿåòñÿ îòâåò (åñëè null òî ñîîáùåíèå íå îòâåòíîå à íîâîå)
+     * @param string  $message  Ğ¢ĞµĞºÑÑ‚ ÑĞ¾Ğ¾Ğ±Ñ‰ĞµĞ½Ğ¸Ñ Ğ°Ğ±Ğ¾Ğ½ĞµĞ½Ñ‚Ñƒ
+     * @param integer $sms_id   Ğ˜Ğ´ĞµĞ½Ñ‚Ğ¸Ñ„Ğ¸ĞºĞ°Ñ‚Ğ¾Ñ€ ÑĞ¾Ğ¾Ğ±Ñ‰ĞµĞ½Ğ¸Ñ Ğ² ÑĞ¸ÑÑ‚ĞµĞ¼Ğµ ĞŸĞ»Ğ°ÑÑ‚Ğ¸Ğº, Ğ½Ğ° ĞºĞ¾Ñ‚Ğ¾Ñ€Ñ‹Ğ¹ Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²Ğ»ÑĞµÑ‚ÑÑ Ğ¾Ñ‚Ğ²ĞµÑ‚ (ĞµÑĞ»Ğ¸ null Ñ‚Ğ¾ ÑĞ¾Ğ¾Ğ±Ñ‰ĞµĞ½Ğ¸Ğµ Ğ½Ğµ Ğ¾Ñ‚Ğ²ĞµÑ‚Ğ½Ğ¾Ğµ Ğ° Ğ½Ğ¾Ğ²Ğ¾Ğµ)
      * @return boolean
      */
     public function sendSMS($message = "", $type= "text", $sms_id = null) {
@@ -63,7 +63,7 @@ class sms_gate_a1 extends sms_gate
             'shortcode' => $this->getISNN(),
             'text'      => $message
         );
-        //0024839 - íå äàåì îòïğàâèòü ñìñ íà îäèí è òîò æå íîìåğ áîëåå N ğàç â ñóòêè
+        //0024839 - Ğ½Ğµ Ğ´Ğ°ĞµĞ¼ Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²Ğ¸Ñ‚ÑŒ ÑĞ¼Ñ Ğ½Ğ° Ğ¾Ğ´Ğ¸Ğ½ Ğ¸ Ñ‚Ğ¾Ñ‚ Ğ¶Ğµ Ğ½Ğ¾Ğ¼ĞµÑ€ Ğ±Ğ¾Ğ»ĞµĞµ N Ñ€Ğ°Ğ· Ğ² ÑÑƒÑ‚ĞºĞ¸
         $this->_limit_is_exceed = $this->limitSmsOnNumberIsExceed($params["msisdn"], $recId, $count, $message);
         if ( $this->_limit_is_exceed ) {
             return false;
@@ -79,7 +79,7 @@ class sms_gate_a1 extends sms_gate
     }
     
     /**
-     * Ïğîâåğÿåì ñòàòóñ îòïğàâêèñ ñîáùåíèÿ
+     * ĞŸÑ€Ğ¾Ğ²ĞµÑ€ÑĞµĞ¼ ÑÑ‚Ğ°Ñ‚ÑƒÑ Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²ĞºĞ¸Ñ ÑĞ¾Ğ±Ñ‰ĞµĞ½Ğ¸Ñ
      * 
      * @param integer $id
      * @return string
@@ -98,7 +98,7 @@ class sms_gate_a1 extends sms_gate
     }
     
      /**
-     * Îòïğàâêà ïàêåòà ñîîáùåíèÿ ÷åğåç ÑÌÑ-Øëşç
+     * ĞÑ‚Ğ¿Ñ€Ğ°Ğ²ĞºĞ° Ğ¿Ğ°ĞºĞµÑ‚Ğ° ÑĞ¾Ğ¾Ğ±Ñ‰ĞµĞ½Ğ¸Ñ Ñ‡ĞµÑ€ĞµĞ· Ğ¡ĞœĞ¡-Ğ¨Ğ»ÑĞ·
      * 
      * @param type $params
      * @return integer
@@ -117,8 +117,8 @@ class sms_gate_a1 extends sms_gate
             var_dump($params);
             $out = ob_get_clean();
             $this->_log->writeln($out);
-            $this->_log->writeln('Îøèáêà ïàğàìåòğîâ äëÿ çàïğîñà');
-            $this->_setError('Îøèáêà ïàğàìåòğîâ äëÿ çàïğîñà');
+            $this->_log->writeln('ĞÑˆĞ¸Ğ±ĞºĞ° Ğ¿Ğ°Ñ€Ğ°Ğ¼ĞµÑ‚Ñ€Ğ¾Ğ² Ğ´Ğ»Ñ Ğ·Ğ°Ğ¿Ñ€Ğ¾ÑĞ°');
+            $this->_setError('ĞÑˆĞ¸Ğ±ĞºĞ° Ğ¿Ğ°Ñ€Ğ°Ğ¼ĞµÑ‚Ñ€Ğ¾Ğ² Ğ´Ğ»Ñ Ğ·Ğ°Ğ¿Ñ€Ğ¾ÑĞ°');
             return false;
         }
         
@@ -139,9 +139,9 @@ class sms_gate_a1 extends sms_gate
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
         
         $res = curl_exec($ch);
-        if(!is_numeric($res) && $params['operation'] == 'send') { // Ïğîèçîøëà îøèáêà
+        if(!is_numeric($res) && $params['operation'] == 'send') { // ĞŸÑ€Ğ¾Ğ¸Ğ·Ğ¾ÑˆĞ»Ğ° Ğ¾ÑˆĞ¸Ğ±ĞºĞ°
             $this->_http_code = 500;
-            $this->_setError('Îøèáêà çàïğîñà');
+            $this->_setError('ĞÑˆĞ¸Ğ±ĞºĞ° Ğ·Ğ°Ğ¿Ñ€Ğ¾ÑĞ°');
             $this->_log->writeln("Error: {$res}");
         } else {
             $this->_http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -160,12 +160,12 @@ class sms_gate_a1 extends sms_gate
     }
 
     /**
-    * @desc Ïğîâåğêà ïğåâûøåíèÿ ëèìèòà â SMS_ON_NUMBER_PER_24_HOURS SMS íà íîìåğ $msisdn
-    * Âîçâğàùàåò true åñëè ïğåäåë ïğåâûøåí
-    * @param $msisdn - íîìåğ
-    * @param int &$recordId - çàïèñûâàåò íîìåğ çàïèñè èëè 0, â çàâèñèìîñòè îò ñóùåñòâîâàíèÿ çàïèñè â òàáëèöå sms_log
-    * @param int &$count - ñêîëüêî ğàç óæå îòïğàâëåíî
-    * @param string &$message - ñîîáùåíèå "Îñòàëîñü N ïîïûòîê"
+    * @desc ĞŸÑ€Ğ¾Ğ²ĞµÑ€ĞºĞ° Ğ¿Ñ€ĞµĞ²Ñ‹ÑˆĞµĞ½Ğ¸Ñ Ğ»Ğ¸Ğ¼Ğ¸Ñ‚Ğ° Ğ² SMS_ON_NUMBER_PER_24_HOURS SMS Ğ½Ğ° Ğ½Ğ¾Ğ¼ĞµÑ€ $msisdn
+    * Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ĞµÑ‚ true ĞµÑĞ»Ğ¸ Ğ¿Ñ€ĞµĞ´ĞµĞ» Ğ¿Ñ€ĞµĞ²Ñ‹ÑˆĞµĞ½
+    * @param $msisdn - Ğ½Ğ¾Ğ¼ĞµÑ€
+    * @param int &$recordId - Ğ·Ğ°Ğ¿Ğ¸ÑÑ‹Ğ²Ğ°ĞµÑ‚ Ğ½Ğ¾Ğ¼ĞµÑ€ Ğ·Ğ°Ğ¿Ğ¸ÑĞ¸ Ğ¸Ğ»Ğ¸ 0, Ğ² Ğ·Ğ°Ğ²Ğ¸ÑĞ¸Ğ¼Ğ¾ÑÑ‚Ğ¸ Ğ¾Ñ‚ ÑÑƒÑ‰ĞµÑÑ‚Ğ²Ğ¾Ğ²Ğ°Ğ½Ğ¸Ñ Ğ·Ğ°Ğ¿Ğ¸ÑĞ¸ Ğ² Ñ‚Ğ°Ğ±Ğ»Ğ¸Ñ†Ğµ sms_log
+    * @param int &$count - ÑĞºĞ¾Ğ»ÑŒĞºĞ¾ Ñ€Ğ°Ğ· ÑƒĞ¶Ğµ Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²Ğ»ĞµĞ½Ğ¾
+    * @param string &$message - ÑĞ¾Ğ¾Ğ±Ñ‰ĞµĞ½Ğ¸Ğµ "ĞÑÑ‚Ğ°Ğ»Ğ¾ÑÑŒ N Ğ¿Ğ¾Ğ¿Ñ‹Ñ‚Ğ¾Ğº"
     * @return bool
     **/
     public function limitSmsOnNumberIsExceed($msisdn, &$recordId, &$count, &$message) {
@@ -190,10 +190,10 @@ class sms_gate_a1 extends sms_gate
     }
 
    /**
-    * @desc Èíêğåìåíò êîëè÷åñòâà îòïğàâëåííûõ ñìñ íà íîìåğ $msisdn
-    * @param $msisdn - íîìåğ
-    * @param bool    $update èñïîëüçîâàòü îáíîâëåíèå èëè âñòàâêó
-    * @param integer $recId = 0  íîìåğ çàïèñè äëÿ îáíîâëåíèÿ
+    * @desc Ğ˜Ğ½ĞºÑ€ĞµĞ¼ĞµĞ½Ñ‚ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ° Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²Ğ»ĞµĞ½Ğ½Ñ‹Ñ… ÑĞ¼Ñ Ğ½Ğ° Ğ½Ğ¾Ğ¼ĞµÑ€ $msisdn
+    * @param $msisdn - Ğ½Ğ¾Ğ¼ĞµÑ€
+    * @param bool    $update Ğ¸ÑĞ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ÑŒ Ğ¾Ğ±Ğ½Ğ¾Ğ²Ğ»ĞµĞ½Ğ¸Ğµ Ğ¸Ğ»Ğ¸ Ğ²ÑÑ‚Ğ°Ğ²ĞºÑƒ
+    * @param integer $recId = 0  Ğ½Ğ¾Ğ¼ĞµÑ€ Ğ·Ğ°Ğ¿Ğ¸ÑĞ¸ Ğ´Ğ»Ñ Ğ¾Ğ±Ğ½Ğ¾Ğ²Ğ»ĞµĞ½Ğ¸Ñ
     * @return bool
     **/
     private function incrementSmsCounter($msisdn, $update, $recId = 0) {
@@ -213,8 +213,8 @@ class sms_gate_a1 extends sms_gate
     
     
     /**
-    * @desc Âîçâğàùàåò ñîîáùåíèå îá îñòàâøåìñÿ êîëè÷åñòâå ïîïûòîê îòïğàâêè ñìñ íà íîìåğ
-    * @param int &$count - êîëè÷åñòâî óæå îòïğàâëåííûõ íà íîìåğ ñîîáùåíèé
+    * @desc Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ĞµÑ‚ ÑĞ¾Ğ¾Ğ±Ñ‰ĞµĞ½Ğ¸Ğµ Ğ¾Ğ± Ğ¾ÑÑ‚Ğ°Ğ²ÑˆĞµĞ¼ÑÑ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğµ Ğ¿Ğ¾Ğ¿Ñ‹Ñ‚Ğ¾Ğº Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²ĞºĞ¸ ÑĞ¼Ñ Ğ½Ğ° Ğ½Ğ¾Ğ¼ĞµÑ€
+    * @param int &$count - ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ÑƒĞ¶Ğµ Ğ¾Ñ‚Ğ¿Ñ€Ğ°Ğ²Ğ»ĞµĞ½Ğ½Ñ‹Ñ… Ğ½Ğ° Ğ½Ğ¾Ğ¼ĞµÑ€ ÑĞ¾Ğ¾Ğ±Ñ‰ĞµĞ½Ğ¸Ğ¹
     * @return string s
     **/
     public function getLimitMessage(&$count) {
@@ -223,7 +223,7 @@ class sms_gate_a1 extends sms_gate
     }
     
     /**
-    * @desc Âîçâğàùàåò true åñëè êîëè÷åñòâî ñìñ íà íîìåğ ïğåâûñèëî äîïóñòèìûé ïğåäåë 
+    * @desc Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ĞµÑ‚ true ĞµÑĞ»Ğ¸ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ÑĞ¼Ñ Ğ½Ğ° Ğ½Ğ¾Ğ¼ĞµÑ€ Ğ¿Ñ€ĞµĞ²Ñ‹ÑĞ¸Ğ»Ğ¾ Ğ´Ğ¾Ğ¿ÑƒÑÑ‚Ğ¸Ğ¼Ñ‹Ğ¹ Ğ¿Ñ€ĞµĞ´ĞµĞ» 
     * @return string s
     **/
     public function limitIsExceed() {
@@ -231,7 +231,7 @@ class sms_gate_a1 extends sms_gate
     }
     
     /**
-    * @desc Âîçâğàùàåò ñîîáùåíèå "Îñòàëîñü N ïîïûòîê" 
+    * @desc Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ĞµÑ‚ ÑĞ¾Ğ¾Ğ±Ñ‰ĞµĞ½Ğ¸Ğµ "ĞÑÑ‚Ğ°Ğ»Ğ¾ÑÑŒ N Ğ¿Ğ¾Ğ¿Ñ‹Ñ‚Ğ¾Ğº" 
     * @return string s
     **/
     public function getSmsLimitMessage($count) {
@@ -242,7 +242,7 @@ class sms_gate_a1 extends sms_gate
                 $s = sms_gate::LIMIT_EXCEED_LINK_TEXT;
                 break;
             default:
-                $s = "îñòàëîñü {$c} " . ending($c, 'ïîïûòêà', 'ïîïûòêè', 'ïîïûòîê');
+                $s = "Ğ¾ÑÑ‚Ğ°Ğ»Ğ¾ÑÑŒ {$c} " . ending($c, 'Ğ¿Ğ¾Ğ¿Ñ‹Ñ‚ĞºĞ°', 'Ğ¿Ğ¾Ğ¿Ñ‹Ñ‚ĞºĞ¸', 'Ğ¿Ğ¾Ğ¿Ñ‹Ñ‚Ğ¾Ğº');
         }
         $this->_limit_message = $s;
         $this->_count_sent_message = $count;

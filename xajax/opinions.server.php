@@ -18,9 +18,9 @@ function AddOpinion($source_uid, $dest_uid, $message, $rating, $counter, $from =
 	$message     = trim($message);
 	
         if(!in_array($rating,array(-1,0,1))){
-            $objResponse->assign("rating_error","innerHTML",'Вы не выбрали категорию отзыва');
+            $objResponse->assign("rating_error","innerHTML",'Р’С‹ РЅРµ РІС‹Р±СЂР°Р»Рё РєР°С‚РµРіРѕСЂРёСЋ РѕС‚Р·С‹РІР°');
         }elseif(opinions::CheckUserCanPost($source_uid, $dest_uid) != 0){
-            // левый пользователь
+            // Р»РµРІС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ
         }
         elseif ( $message == '' ) {
             $objResponse->script( "opinionFormError('error_msg');" );
@@ -73,7 +73,7 @@ function EditOpinion($op_id, $message, $rating, $counter, $from = 'frl'){
 	$message     = trim($message);
 	
         if(!in_array($rating,array(-1,0,1))){
-            $objResponse->assign("rating_error","innerHTML",'Вы не выбрали категорию отзыва');
+            $objResponse->assign("rating_error","innerHTML",'Р’С‹ РЅРµ РІС‹Р±СЂР°Р»Рё РєР°С‚РµРіРѕСЂРёСЋ РѕС‚Р·С‹РІР°');
         }
         elseif ( $message == '' ) {
             $objResponse->script( "opinionFormError('error_edit_msg_{$op_id}');" );
@@ -92,7 +92,7 @@ function EditOpinion($op_id, $message, $rating, $counter, $from = 'frl'){
             if (get_uid(0) == $msg['fromuser_id'] || hasPermissions('users')) {
                 $error = opinions::Edit($msg['fromuser_id'], $op_id, $message, $rating, getRemoteIP(), hasPermissions('users'), get_uid(0));
             } else {
-                $error = "Ошибка";
+                $error = "РћС€РёР±РєР°";
             }
             if(!$error){
                 $msg = opinions::GetMessageById($op_id);
@@ -142,7 +142,7 @@ function EditOpinionForm($op_id,$from='frl'){
  * 
  * @param type $op_id
  * @param type $from
- * @param type $isFeedback если true значит это отзыв из СБР, если false - мнение
+ * @param type $isFeedback РµСЃР»Рё true Р·РЅР°С‡РёС‚ СЌС‚Рѕ РѕС‚Р·С‹РІ РёР· РЎР‘Р , РµСЃР»Рё false - РјРЅРµРЅРёРµ
  * @return \xajaxResponse
  */
 function AddOpComentForm($op_id, $from='frl', $isFeedback = false){
@@ -188,7 +188,7 @@ function EditOpinionComm($op_id, $comm_id, $text, $from='frl', $isFeedback = fal
         
         $prefix = $isFeedback ? 'feedback_' : '';
     
-        if ( (int)$comm_id > 0 ) { // Редактируем
+        if ( (int)$comm_id > 0 ) { // Р РµРґР°РєС‚РёСЂСѓРµРј
             if ($isFeedback) {
                 opinions::editCommentFeedback($text, get_uid(false), $comm_id, $msg['fromuser_id']);
             } else {
@@ -201,7 +201,7 @@ function EditOpinionComm($op_id, $comm_id, $text, $from='frl', $isFeedback = fal
             $html = opinions::printCommentOpinions($op_id, $isFeedback);
             $objResponse->script("$('" . $prefix . "comment_cont_{$op_id}').empty()");
             $objResponse->append($prefix . "comment_cont_{$op_id}", "innerHTML", $html);
-        } else { // Добавляем
+        } else { // Р”РѕР±Р°РІР»СЏРµРј
             if ($isFeedback) {
                 opinions::newCommentFeedback($text, get_uid(false), $op_id);
             } else {
@@ -227,7 +227,7 @@ function DeleteOpinion($op_id,$from='frl'){
     if (get_uid(0) == $msg['fromuser_id'] || hasPermissions('users')) {
         $error = opinions::DeleteMsg($msg['fromuser_id'], $op_id, hasPermissions('users'));
     } else {
-        $error = "Вы не можете удалить мнение об этом пользователе.";
+        $error = "Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ СѓРґР°Р»РёС‚СЊ РјРЅРµРЅРёРµ РѕР± СЌС‚РѕРј РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ.";
     }
     if(!$error){
         //$user = new users();
@@ -250,11 +250,11 @@ function DeleteOpinion($op_id,$from='frl'){
 }
 
 /**
- * удаляет комментарий к мнению, отзыву
+ * СѓРґР°Р»СЏРµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёР№ Рє РјРЅРµРЅРёСЋ, РѕС‚Р·С‹РІСѓ
  * @param type $op_id
  * @param type $comm_id
  * @param type $from
- * @param type $isFeedback если true - это отзыв
+ * @param type $isFeedback РµСЃР»Рё true - СЌС‚Рѕ РѕС‚Р·С‹РІ
  * @return \xajaxResponse
  */
 function DeleteOpinionComm($op_id, $comm_id, $from='frl', $isFeedback = false){
@@ -268,7 +268,7 @@ function DeleteOpinionComm($op_id, $comm_id, $from='frl', $isFeedback = false){
     if (get_uid(0) == $msg['touser_id'] || hasPermissions('users')) {
         $error = opinions::deleteComment($comm_id, get_uid(false), hasPermissions('users'), $isFeedback);
     } else {
-        $error = 'Вы не можете удалить комментарий.';
+        $error = 'Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ СѓРґР°Р»РёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№.';
     }
     
     $prefix = $isFeedback ? 'feedback_' : '';

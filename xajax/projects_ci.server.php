@@ -1,5 +1,5 @@
 <?
-// так же в /projects/index.php
+// С‚Р°Рє Р¶Рµ РІ /projects/index.php
 define('MAX_WORKS_IN_LIST', 30);
 
 $rpath = "../";
@@ -18,11 +18,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/projects_sms.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/tservices/tservices_helper.php');
 
 /**
- * Установка исполнителя проекта
+ * РЈСЃС‚Р°РЅРѕРІРєР° РёСЃРїРѕР»РЅРёС‚РµР»СЏ РїСЂРѕРµРєС‚Р°
  *
- * @param integer $po_id           id предложения к проекту
- * @param unknown_type $prj_id     id проекта
- * @param unknown_type $user_id    id юзера-исполнителя
+ * @param integer $po_id           id РїСЂРµРґР»РѕР¶РµРЅРёСЏ Рє РїСЂРѕРµРєС‚Сѓ
+ * @param unknown_type $prj_id     id РїСЂРѕРµРєС‚Р°
+ * @param unknown_type $user_id    id СЋР·РµСЂР°-РёСЃРїРѕР»РЅРёС‚РµР»СЏ
  * @return                         xajax response
  */
 function SelectProjectExecutor($po_id, $prj_id, $user_id, $type, $exec_po_id = 0)
@@ -46,7 +46,7 @@ function SelectProjectExecutor($po_id, $prj_id, $user_id, $type, $exec_po_id = 0
     
     $pod = new projects_offers_dialogue();
     $pod->markReadEmp(array($po_id), $emp_id);
-    //Не позволяем производить действия с заблокированным проектом
+    //РќРµ РїРѕР·РІРѕР»СЏРµРј РїСЂРѕРёР·РІРѕРґРёС‚СЊ РґРµР№СЃС‚РІРёСЏ СЃ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рј РїСЂРѕРµРєС‚РѕРј
     if (projects::CheckBlocked(intval($prj_id))) {
         $objResponse->script("document.location.href='/projects/index.php?pid=".intval($prj_id)."'");
         return $objResponse;
@@ -56,7 +56,7 @@ function SelectProjectExecutor($po_id, $prj_id, $user_id, $type, $exec_po_id = 0
     
     if(tservices_helper::isAllowOrderReserve())
     {
-        //@todo: отправляем на форму нового заказа на базе проекта для текущего предложения фрилансера
+        //@todo: РѕС‚РїСЂР°РІР»СЏРµРј РЅР° С„РѕСЂРјСѓ РЅРѕРІРѕРіРѕ Р·Р°РєР°Р·Р° РЅР° Р±Р°Р·Рµ РїСЂРѕРµРєС‚Р° РґР»СЏ С‚РµРєСѓС‰РµРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂР°
         $objResponse->script("document.location.href='/new-project-order/{$po_id}/'");
         return $objResponse;
     }
@@ -68,12 +68,12 @@ function SelectProjectExecutor($po_id, $prj_id, $user_id, $type, $exec_po_id = 0
     $project['exec_id'] = $user_id;
     
     
-    //Отправляем уведомления участникам сделки
+    //РћС‚РїСЂР°РІР»СЏРµРј СѓРІРµРґРѕРјР»РµРЅРёСЏ СѓС‡Р°СЃС‚РЅРёРєР°Рј СЃРґРµР»РєРё
     $smail = new projects_smail();
     $smail->onSetExecutorFrl($project);
     $smail->onSetExecutorEmp($project);
     
-    //Отправляем СМС уведомление
+    //РћС‚РїСЂР°РІР»СЏРµРј РЎРњРЎ СѓРІРµРґРѕРјР»РµРЅРёРµ
     ProjectsSms::model($project['exec_id'])->sendStatus($project['status'], $project['id'], $project['kind']);
     
     
@@ -83,8 +83,8 @@ function SelectProjectExecutor($po_id, $prj_id, $user_id, $type, $exec_po_id = 0
     externalApi_Mobile::addPushMsg($user_id, 'prj_select_performer', array('from_user_id'=>$project['user_id'], 'name'=>$project['name'], 'project_id'=>$project['id']));
 
 
-    // Если находимся в "Не определен", тогда предыдущий исполнитель (если он был) сам попадает в "Не определен".
-    // Перезагружаем в этом случае страницу.
+    // Р•СЃР»Рё РЅР°С…РѕРґРёРјСЃСЏ РІ "РќРµ РѕРїСЂРµРґРµР»РµРЅ", С‚РѕРіРґР° РїСЂРµРґС‹РґСѓС‰РёР№ РёСЃРїРѕР»РЅРёС‚РµР»СЊ (РµСЃР»Рё РѕРЅ Р±С‹Р») СЃР°Рј РїРѕРїР°РґР°РµС‚ РІ "РќРµ РѕРїСЂРµРґРµР»РµРЅ".
+    // РџРµСЂРµР·Р°РіСЂСѓР¶Р°РµРј РІ СЌС‚РѕРј СЃР»СѓС‡Р°Рµ СЃС‚СЂР°РЅРёС†Сѓ.
     if($type == 'o' && $project['exec_id']) {
         $objResponse->script("document.location.href=document.location.href.replace(/(&v=\d*)?#offers$/,'&v=".mt_rand(1,99999)."#offers')");
         return $objResponse;
@@ -93,7 +93,7 @@ function SelectProjectExecutor($po_id, $prj_id, $user_id, $type, $exec_po_id = 0
     list($po_offers_count, $msg_offers_count) = $prj_offer->CountPrjOffers($prj_id, 'offers');
     $objResponse->assign("po_offers_count", "innerHTML", $po_offers_count);
     if ($msg_offers_count > 0) {
-        $objResponse->assign("op_count_offers_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_offers_count .' '. ending($msg_offers_count, 'новое сообщение', 'новых сообщения', 'новых сообщений'));
+        $objResponse->assign("op_count_offers_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_offers_count .' '. ending($msg_offers_count, 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№'));
     } else {
         $objResponse->assign("op_count_offers_new_msgs", "innerHTML", '');
         if ($type == 'o') {
@@ -104,7 +104,7 @@ function SelectProjectExecutor($po_id, $prj_id, $user_id, $type, $exec_po_id = 0
     list($po_executor_count, $msg_executor_count) = $prj_offer->CountPrjOffers($prj_id, 'executor');
     $objResponse->assign("po_executor_count", "innerHTML", $po_executor_count);
     if ($msg_executor_count > 0) {
-        $objResponse->assign("op_count_executor_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_executor_count .' '. ending($msg_executor_count, 'новое сообщение', 'новых сообщения', 'новых сообщений'));
+        $objResponse->assign("op_count_executor_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_executor_count .' '. ending($msg_executor_count, 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№'));
     } else {
         $objResponse->assign("op_count_executor_new_msgs", "innerHTML", '');
         if ($type == 'i') {
@@ -115,7 +115,7 @@ function SelectProjectExecutor($po_id, $prj_id, $user_id, $type, $exec_po_id = 0
     list($po_candidate_count, $msg_candidate_count) = $prj_offer->CountPrjOffers($prj_id, 'candidate');
     $objResponse->assign("po_candidate_count", "innerHTML", $po_candidate_count);
     if ($msg_candidate_count > 0) {
-        $objResponse->assign("op_count_candidate_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_candidate_count .' '. ending($msg_candidate_count, 'новое сообщение', 'новых сообщения', 'новых сообщений'));
+        $objResponse->assign("op_count_candidate_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_candidate_count .' '. ending($msg_candidate_count, 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№'));
     } else {
         $objResponse->assign("op_count_candidate_new_msgs", "innerHTML", '');
         if ($type == 'c') {
@@ -126,7 +126,7 @@ function SelectProjectExecutor($po_id, $prj_id, $user_id, $type, $exec_po_id = 0
     list($po_refuse_count, $msg_refuse_count) = $prj_offer->CountPrjOffers($prj_id, 'refuse');
     $objResponse->assign("po_refuse_count", "innerHTML", $po_refuse_count);
     if ($msg_refuse_count > 0) {
-        $objResponse->assign("op_count_refuse_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_refuse_count .' '. ending($msg_refuse_count, 'новое сообщение', 'новых сообщения', 'новых сообщений'));
+        $objResponse->assign("op_count_refuse_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_refuse_count .' '. ending($msg_refuse_count, 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№'));
     } else {
         $objResponse->assign("op_count_refuse_new_msgs", "innerHTML", '');
         if ($type == 'r') {
@@ -135,11 +135,11 @@ function SelectProjectExecutor($po_id, $prj_id, $user_id, $type, $exec_po_id = 0
     }
 
     if ($exec_po_id > 0) {
-        //$objResponse->assign("po_b_exec_" . $exec_po_id, "innerHTML", '<a id="po_img_exec_' . $exec_po_id . '" class="b-button-multi__link" onclick="xajax_SelectProjectExecutor(' . $exec_po_id . ', ' . $prj_id . ', ' . $user_id . ', ' . "'" . $type . "'" . ', ' . $po_id . ');" href="javascript:void(0)" title="Буду работать с этим человеком."><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_green"></span><span class="b-button-multi__txt">Исполнитель</span></span></a>');
+        //$objResponse->assign("po_b_exec_" . $exec_po_id, "innerHTML", '<a id="po_img_exec_' . $exec_po_id . '" class="b-button-multi__link" onclick="xajax_SelectProjectExecutor(' . $exec_po_id . ', ' . $prj_id . ', ' . $user_id . ', ' . "'" . $type . "'" . ', ' . $po_id . ');" href="javascript:void(0)" title="Р‘СѓРґСѓ СЂР°Р±РѕС‚Р°С‚СЊ СЃ СЌС‚РёРј С‡РµР»РѕРІРµРєРѕРј."><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_green"></span><span class="b-button-multi__txt">РСЃРїРѕР»РЅРёС‚РµР»СЊ</span></span></a>');
     }
-    //$objResponse->assign("po_b_exec_" . $po_id, "innerHTML", '<a id="po_img_exec_' . $po_id . '" class="b-button-multi__link" href="javascript:void(0)" title="Буду работать с этим человеком."><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_green"></span><span class="b-button-multi__txt">Исполнитель</span></span></a>');
-    //$objResponse->assign("po_b_select_" . $po_id, "innerHTML", '<a id="po_img_select_' . $po_id . '" class="b-button-multi__link" onclick="xajax_SelectProjectOffer(' . $po_id . ', ' . $prj_id . ', ' . $user_id . ', ' . "'" . $type . "'" . ');" href="javascript:void(0)" title="Прошел предварительный отбор. Может быть исполнителем"><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_blue"></span><span class="b-button-multi__txt">Кандидат</span></span></a>');
-   // $objResponse->assign("po_b_refuse_" . $po_id, "innerHTML", '<a id="po_img_refuse_' . $po_id . '" class="b-button-multi__link" onclick="show_fpopup(' . "'po_b_refuse_" . $po_id . "', 'po_m_refuse_" . $po_id . "'" . ');" href="javascript:void(0)" title="Этот человек мне не подходит. Может быть в следующий раз."><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_red"></span><span class="b-button-multi__txt">Отказать</span></span></a>');
+    //$objResponse->assign("po_b_exec_" . $po_id, "innerHTML", '<a id="po_img_exec_' . $po_id . '" class="b-button-multi__link" href="javascript:void(0)" title="Р‘СѓРґСѓ СЂР°Р±РѕС‚Р°С‚СЊ СЃ СЌС‚РёРј С‡РµР»РѕРІРµРєРѕРј."><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_green"></span><span class="b-button-multi__txt">РСЃРїРѕР»РЅРёС‚РµР»СЊ</span></span></a>');
+    //$objResponse->assign("po_b_select_" . $po_id, "innerHTML", '<a id="po_img_select_' . $po_id . '" class="b-button-multi__link" onclick="xajax_SelectProjectOffer(' . $po_id . ', ' . $prj_id . ', ' . $user_id . ', ' . "'" . $type . "'" . ');" href="javascript:void(0)" title="РџСЂРѕС€РµР» РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Р№ РѕС‚Р±РѕСЂ. РњРѕР¶РµС‚ Р±С‹С‚СЊ РёСЃРїРѕР»РЅРёС‚РµР»РµРј"><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_blue"></span><span class="b-button-multi__txt">РљР°РЅРґРёРґР°С‚</span></span></a>');
+   // $objResponse->assign("po_b_refuse_" . $po_id, "innerHTML", '<a id="po_img_refuse_' . $po_id . '" class="b-button-multi__link" onclick="show_fpopup(' . "'po_b_refuse_" . $po_id . "', 'po_m_refuse_" . $po_id . "'" . ');" href="javascript:void(0)" title="Р­С‚РѕС‚ С‡РµР»РѕРІРµРє РјРЅРµ РЅРµ РїРѕРґС…РѕРґРёС‚. РњРѕР¶РµС‚ Р±С‹С‚СЊ РІ СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·."><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_red"></span><span class="b-button-multi__txt">РћС‚РєР°Р·Р°С‚СЊ</span></span></a>');
 
     $objResponse->script("removeNoteBar('{$user_name['login']}');");
     $objResponse->remove("po_" . $po_id);
@@ -162,13 +162,13 @@ function SelectProjectExecutor($po_id, $prj_id, $user_id, $type, $exec_po_id = 0
 }
 
 /**
-* Добавляет жалобу на проект
+* Р”РѕР±Р°РІР»СЏРµС‚ Р¶Р°Р»РѕР±Сѓ РЅР° РїСЂРѕРµРєС‚
 *
-* @param    integer     $project_id     ID проекта
-* @param    integer     $user_id        ID пользователя
-* @param    integer     $type           тип жалобы
-* @param    string      $msg            текст жалобы
-* @param    string      $files          имена загруженных скриншотов
+* @param    integer     $project_id     ID РїСЂРѕРµРєС‚Р°
+* @param    integer     $user_id        ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+* @param    integer     $type           С‚РёРї Р¶Р°Р»РѕР±С‹
+* @param    string      $msg            С‚РµРєСЃС‚ Р¶Р°Р»РѕР±С‹
+* @param    string      $files          РёРјРµРЅР° Р·Р°РіСЂСѓР¶РµРЅРЅС‹С… СЃРєСЂРёРЅС€РѕС‚РѕРІ
 * @return                               xajax responce
 */
 function SendComplain($project_id, $type, $msg, $files) {
@@ -211,7 +211,7 @@ function SendComplain($project_id, $type, $msg, $files) {
     }
     if(!$files) $files = "";
     
-    if(projects::IsHaveComplainType($project_id, $user_id, $type)) { // Уже жаловался
+    if(projects::IsHaveComplainType($project_id, $user_id, $type)) { // РЈР¶Рµ Р¶Р°Р»РѕРІР°Р»СЃСЏ
         return $objResponse;
     }
     
@@ -249,7 +249,7 @@ function SendComplain($project_id, $type, $msg, $files) {
         $upl = array(
             'umask' => uploader::umask('prj_abuse'),
             'validation' => array('allowedExtensions' => array('jpg', 'gif', 'png', 'jpeg'), 'restrictedExtensions' => array()),
-            'text' => array('uploadButton' => iconv('cp1251', 'utf8', 'Прикрепить файлы'))
+            'text' => array('uploadButton' => iconv('cp1251', 'utf8', 'РџСЂРёРєСЂРµРїРёС‚СЊ С„Р°Р№Р»С‹'))
         );
         
         $objResponse->script("
@@ -293,7 +293,7 @@ function SelectProjectOffer($po_id, $prj_id, $user_id, $type)
     
 	$objResponse = new xajaxResponse();
 
-    //Не позволяем производить действия с заблокированным проектом
+    //РќРµ РїРѕР·РІРѕР»СЏРµРј РїСЂРѕРёР·РІРѕРґРёС‚СЊ РґРµР№СЃС‚РІРёСЏ СЃ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рј РїСЂРѕРµРєС‚РѕРј
     if (projects::CheckBlocked(intval($prj_id)))
     {
         $objResponse->script("document.location.href='/projects/index.php?pid=".intval($prj_id)."'");
@@ -318,7 +318,7 @@ function SelectProjectOffer($po_id, $prj_id, $user_id, $type)
 		list($po_offers_count, $msg_offers_count) = $prj_offer->CountPrjOffers($prj_id, 'offers');
 		$objResponse->assign("po_offers_count", "innerHTML", $po_offers_count);
 		if ($msg_offers_count > 0) {
-		    $objResponse->assign("op_count_offers_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_offers_count .' '. ending($msg_offers_count, 'новое сообщение', 'новых сообщения', 'новых сообщений'));
+		    $objResponse->assign("op_count_offers_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_offers_count .' '. ending($msg_offers_count, 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№'));
 		} else {
 		    $objResponse->assign("op_count_offers_new_msgs", "innerHTML", '');
 		    if ($type == 'o') {
@@ -329,7 +329,7 @@ function SelectProjectOffer($po_id, $prj_id, $user_id, $type)
 		list($po_executor_count, $msg_executor_count) = $prj_offer->CountPrjOffers($prj_id, 'executor');
 		$objResponse->assign("po_executor_count", "innerHTML", $po_executor_count);
 		if ($msg_executor_count > 0) {
-		    $objResponse->assign("op_count_executor_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_executor_count .' '. ending($msg_executor_count, 'новое сообщение', 'новых сообщения', 'новых сообщений'));
+		    $objResponse->assign("op_count_executor_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_executor_count .' '. ending($msg_executor_count, 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№'));
 		} else {
 		    $objResponse->assign("op_count_executor_new_msgs", "innerHTML", '');
 		    if ($type == 'i') {
@@ -340,7 +340,7 @@ function SelectProjectOffer($po_id, $prj_id, $user_id, $type)
 	    list($po_candidate_count, $msg_candidate_count) = $prj_offer->CountPrjOffers($prj_id, 'candidate');
 		$objResponse->assign("po_candidate_count", "innerHTML", $po_candidate_count);
 		if ($msg_candidate_count > 0) {
-		    $objResponse->assign("op_count_candidate_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_candidate_count .' '. ending($msg_candidate_count, 'новое сообщение', 'новых сообщения', 'новых сообщений'));
+		    $objResponse->assign("op_count_candidate_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_candidate_count .' '. ending($msg_candidate_count, 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№'));
 		} else {
 		    $objResponse->assign("op_count_candidate_new_msgs", "innerHTML", '');
 		    if ($type == 'c') {
@@ -351,7 +351,7 @@ function SelectProjectOffer($po_id, $prj_id, $user_id, $type)
 	    list($po_refuse_count, $msg_refuse_count) = $prj_offer->CountPrjOffers($prj_id, 'refuse');
 		$objResponse->assign("po_refuse_count", "innerHTML", $po_refuse_count);
 		if ($msg_refuse_count > 0) {
-		    $objResponse->assign("op_count_refuse_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_refuse_count .' '. ending($msg_refuse_count, 'новое сообщение', 'новых сообщения', 'новых сообщений'));
+		    $objResponse->assign("op_count_refuse_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_refuse_count .' '. ending($msg_refuse_count, 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№'));
 		} else {
 		    $objResponse->assign("op_count_refuse_new_msgs", "innerHTML", '');
 		    if ($type == 'r') {
@@ -359,9 +359,9 @@ function SelectProjectOffer($po_id, $prj_id, $user_id, $type)
 		    }
 		}
 
-		//$objResponse->assign("po_b_exec_" . $po_id, "innerHTML", '<a id="po_img_exec_' . $po_id . '" class="b-button-multi__link" onclick="xajax_SelectProjectExecutor(' . $po_id . ', ' . $prj_id . ', ' . $user_id . ', ' . "'" . $type . "'" . ', ' . 0 . ');" href="javascript:void(0)" title="Буду работать с этим человеком."><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_green"></span><span class="b-button-multi__txt">Исполнитель</span></span></a>');
-		//$objResponse->assign("po_b_select_" . $po_id, "innerHTML", '<a id="po_img_select_' . $po_id . '" class="b-button-multi__link"  href="javascript:void(0)" title="Прошел предварительный отбор. Может быть исполнителем"><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_blue"></span><span class="b-button-multi__txt">Кандидат</span></span></a>');
-		//$objResponse->assign("po_b_refuse_" . $po_id, "innerHTML", '<a id="po_img_refuse_' . $po_id . '" class="b-button-multi__link" onclick="show_fpopup(\'po_b_refuse_' . $po_id . '\', \'po_m_refuse_' . $po_id . '\');" href="javascript:void(0)" title="Этот человек мне не подходит.  Может быть в следующий раз."><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_red"></span><span class="b-button-multi__txt">Отказать</span></span></a>');
+		//$objResponse->assign("po_b_exec_" . $po_id, "innerHTML", '<a id="po_img_exec_' . $po_id . '" class="b-button-multi__link" onclick="xajax_SelectProjectExecutor(' . $po_id . ', ' . $prj_id . ', ' . $user_id . ', ' . "'" . $type . "'" . ', ' . 0 . ');" href="javascript:void(0)" title="Р‘СѓРґСѓ СЂР°Р±РѕС‚Р°С‚СЊ СЃ СЌС‚РёРј С‡РµР»РѕРІРµРєРѕРј."><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_green"></span><span class="b-button-multi__txt">РСЃРїРѕР»РЅРёС‚РµР»СЊ</span></span></a>');
+		//$objResponse->assign("po_b_select_" . $po_id, "innerHTML", '<a id="po_img_select_' . $po_id . '" class="b-button-multi__link"  href="javascript:void(0)" title="РџСЂРѕС€РµР» РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Р№ РѕС‚Р±РѕСЂ. РњРѕР¶РµС‚ Р±С‹С‚СЊ РёСЃРїРѕР»РЅРёС‚РµР»РµРј"><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_blue"></span><span class="b-button-multi__txt">РљР°РЅРґРёРґР°С‚</span></span></a>');
+		//$objResponse->assign("po_b_refuse_" . $po_id, "innerHTML", '<a id="po_img_refuse_' . $po_id . '" class="b-button-multi__link" onclick="show_fpopup(\'po_b_refuse_' . $po_id . '\', \'po_m_refuse_' . $po_id . '\');" href="javascript:void(0)" title="Р­С‚РѕС‚ С‡РµР»РѕРІРµРє РјРЅРµ РЅРµ РїРѕРґС…РѕРґРёС‚.  РњРѕР¶РµС‚ Р±С‹С‚СЊ РІ СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·."><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_red"></span><span class="b-button-multi__txt">РћС‚РєР°Р·Р°С‚СЊ</span></span></a>');
 
   $objResponse->script("removeNoteBar('{$user_name['login']}');");
 		$objResponse->remove("po_" . $po_id);
@@ -404,7 +404,7 @@ function RefuseProjectOffer($po_id, $prj_id, $user_id, $type, $po_reason = 0)
     
 	$objResponse = new xajaxResponse();
 
-    //Не позволяем производить действия с заблокированным проектом
+    //РќРµ РїРѕР·РІРѕР»СЏРµРј РїСЂРѕРёР·РІРѕРґРёС‚СЊ РґРµР№СЃС‚РІРёСЏ СЃ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рј РїСЂРѕРµРєС‚РѕРј
     if (projects::CheckBlocked(intval($prj_id)))
     {
         $objResponse->script("document.location.href='/projects/index.php?pid=".intval($prj_id)."'");
@@ -430,7 +430,7 @@ function RefuseProjectOffer($po_id, $prj_id, $user_id, $type, $po_reason = 0)
 		list($po_offers_count, $msg_offers_count) = $prj_offer->CountPrjOffers($prj_id, 'offers');
 		$objResponse->assign("po_offers_count", "innerHTML", $po_offers_count);
 		if ($msg_offers_count > 0) {
-		    $objResponse->assign("op_count_offers_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_offers_count .' '. ending($msg_offers_count, 'новое сообщение', 'новых сообщения', 'новых сообщений'));
+		    $objResponse->assign("op_count_offers_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_offers_count .' '. ending($msg_offers_count, 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№'));
 		} else {
 		    $objResponse->assign("op_count_offers_new_msgs", "innerHTML", '');
 		    if ($type == 'o') {
@@ -441,7 +441,7 @@ function RefuseProjectOffer($po_id, $prj_id, $user_id, $type, $po_reason = 0)
 	    list($po_executor_count, $msg_executor_count) = $prj_offer->CountPrjOffers($prj_id, 'executor');
 		$objResponse->assign("po_executor_count", "innerHTML", $po_executor_count);
 		if ($msg_executor_count > 0) {
-		    $objResponse->assign("op_count_executor_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_executor_count .' '. ending($msg_executor_count, 'новое сообщение', 'новых сообщения', 'новых сообщений'));
+		    $objResponse->assign("op_count_executor_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_executor_count .' '. ending($msg_executor_count, 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№'));
 		} else {
 		    $objResponse->assign("op_count_executor_new_msgs", "innerHTML", '');
 		    if ($type == 'i') {
@@ -452,7 +452,7 @@ function RefuseProjectOffer($po_id, $prj_id, $user_id, $type, $po_reason = 0)
 		list($po_candidate_count, $msg_candidate_count) = $prj_offer->CountPrjOffers($prj_id, 'candidate');
 		$objResponse->assign("po_candidate_count", "innerHTML", $po_candidate_count);
 		if ($msg_candidate_count > 0) {
-		    $objResponse->assign("op_count_candidate_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_candidate_count .' '. ending($msg_candidate_count, 'новое сообщение', 'новых сообщения', 'новых сообщений'));
+		    $objResponse->assign("op_count_candidate_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_candidate_count .' '. ending($msg_candidate_count, 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№'));
 		} else {
 		    $objResponse->assign("op_count_candidate_new_msgs", "innerHTML", '');
 		    if ($type == 'c') {
@@ -463,7 +463,7 @@ function RefuseProjectOffer($po_id, $prj_id, $user_id, $type, $po_reason = 0)
 		list($po_refuse_count, $msg_refuse_count) = $prj_offer->CountPrjOffers($prj_id, 'refuse');
 		$objResponse->assign("po_refuse_count", "innerHTML", $po_refuse_count);
 		if ($msg_refuse_count > 0) {
-		    $objResponse->assign("op_count_refuse_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_refuse_count .' '. ending($msg_refuse_count, 'новое сообщение', 'новых сообщения', 'новых сообщений'));
+		    $objResponse->assign("op_count_refuse_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_refuse_count .' '. ending($msg_refuse_count, 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№'));
 		} else {
 		    if ($type == 'r') {
     		    $objResponse->remove('sort_box');
@@ -471,9 +471,9 @@ function RefuseProjectOffer($po_id, $prj_id, $user_id, $type, $po_reason = 0)
 		    $objResponse->assign("op_count_refuse_new_msgs", "innerHTML", '');
 		}
 
-		//$objResponse->assign("po_b_exec_" . $po_id, "innerHTML", '<a id="po_img_exec_' . $po_id . '" class="b-button-multi__link" onclick="xajax_SelectProjectExecutor(' . $po_id . ', ' . $prj_id . ', ' . $user_id . ', ' . "'" . $type . "'" . ', ' . 0 . ');" href="javascript:void(0)" title="Буду работать с этим человеком."><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_green"></span><span class="b-button-multi__txt">Исполнитель</span></span></a>');
-		//$objResponse->assign("po_b_select_" . $po_id, "innerHTML", '<a id="po_img_select_' . $po_id . '" class="b-button-multi__link" onclick="xajax_SelectProjectOffer(' . $po_id . ', ' . $prj_id . ', ' . $user_id  . ', ' . "'" . $type . "'" . ');" href="javascript:void(0)" title="Прошел предварительный отбор. Может быть исполнителем"><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_blue"></span><span class="b-button-multi__txt">Кандидат</span></span></a>');
-		//$objResponse->assign("po_b_refuse_" . $po_id, "innerHTML", '<a id="po_img_refuse_' . $po_id . '" class="b-button-multi__link"  href="javascript:void(0)" title="Этот человек мне не подходит.  Может быть в следующий раз."><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_red"></span><span class="b-button-multi__txt">Отказано</span></span></a>');
+		//$objResponse->assign("po_b_exec_" . $po_id, "innerHTML", '<a id="po_img_exec_' . $po_id . '" class="b-button-multi__link" onclick="xajax_SelectProjectExecutor(' . $po_id . ', ' . $prj_id . ', ' . $user_id . ', ' . "'" . $type . "'" . ', ' . 0 . ');" href="javascript:void(0)" title="Р‘СѓРґСѓ СЂР°Р±РѕС‚Р°С‚СЊ СЃ СЌС‚РёРј С‡РµР»РѕРІРµРєРѕРј."><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_green"></span><span class="b-button-multi__txt">РСЃРїРѕР»РЅРёС‚РµР»СЊ</span></span></a>');
+		//$objResponse->assign("po_b_select_" . $po_id, "innerHTML", '<a id="po_img_select_' . $po_id . '" class="b-button-multi__link" onclick="xajax_SelectProjectOffer(' . $po_id . ', ' . $prj_id . ', ' . $user_id  . ', ' . "'" . $type . "'" . ');" href="javascript:void(0)" title="РџСЂРѕС€РµР» РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Р№ РѕС‚Р±РѕСЂ. РњРѕР¶РµС‚ Р±С‹С‚СЊ РёСЃРїРѕР»РЅРёС‚РµР»РµРј"><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_blue"></span><span class="b-button-multi__txt">РљР°РЅРґРёРґР°С‚</span></span></a>');
+		//$objResponse->assign("po_b_refuse_" . $po_id, "innerHTML", '<a id="po_img_refuse_' . $po_id . '" class="b-button-multi__link"  href="javascript:void(0)" title="Р­С‚РѕС‚ С‡РµР»РѕРІРµРє РјРЅРµ РЅРµ РїРѕРґС…РѕРґРёС‚.  РњРѕР¶РµС‚ Р±С‹С‚СЊ РІ СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р·."><span class="b-button-multi__inner"><span class="b-button-multi__icon b-button-multi__icon_red"></span><span class="b-button-multi__txt">РћС‚РєР°Р·Р°РЅРѕ</span></span></a>');
 
   $objResponse->script("removeNoteBar('{$user_name['login']}');");
 		$objResponse->remove("po_" . $po_id);
@@ -501,7 +501,7 @@ function AddDialogueMessage($form)
     $objResponse = new xajaxResponse();
     $offerIsBlocked = projects_offers::isOfferBlocked(false, get_uid(), $form['prj_id']);
     if ($offerIsBlocked) {
-        $objResponse->alert("Ваше предложение заблокировано, вы не можете отправить это сообщение");        
+        $objResponse->alert("Р’Р°С€Рµ РїСЂРµРґР»РѕР¶РµРЅРёРµ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРѕ, РІС‹ РЅРµ РјРѕР¶РµС‚Рµ РѕС‚РїСЂР°РІРёС‚СЊ СЌС‚Рѕ СЃРѕРѕР±С‰РµРЅРёРµ");        
         return $objResponse;
     }
     $prj = new projects();    
@@ -517,17 +517,17 @@ function AddDialogueMessage($form)
     }
 
     if($project['pro_only'] == 't' && !$is_pro && $project['user_id']!=get_uid() && !hasPermissions('projects')) {
-        $objResponse->alert("Данная функция доступна только пользователям с аккаунтом PRO.");
+        $objResponse->alert("Р”Р°РЅРЅР°СЏ С„СѓРЅРєС†РёСЏ РґРѕСЃС‚СѓРїРЅР° С‚РѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј СЃ Р°РєРєР°СѓРЅС‚РѕРј PRO.");
         $objResponse->script("$('savebtn').set('disabled', false);");
         return $objResponse;
     } elseif ($project['verify_only'] == 't' && !($_SESSION['is_verify'] == 't') && $project['user_id']!=get_uid() && !hasPermissions('projects')) {
-        $objResponse->alert("Данная функция доступна только верифицированным пользователям.");
+        $objResponse->alert("Р”Р°РЅРЅР°СЏ С„СѓРЅРєС†РёСЏ РґРѕСЃС‚СѓРїРЅР° С‚РѕР»СЊРєРѕ РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹Рј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј.");
         $objResponse->script("$('savebtn').set('disabled', false);");
         return $objResponse;
     }
 
     if(!trim($form['po_text'])) {
-        $objResponse->alert("Невозможно отправить пустое сообщение.");
+        $objResponse->alert("РќРµРІРѕР·РјРѕР¶РЅРѕ РѕС‚РїСЂР°РІРёС‚СЊ РїСѓСЃС‚РѕРµ СЃРѕРѕР±С‰РµРЅРёРµ.");
         $objResponse->script("
             $('savebtn').set('disabled', false);
         ");
@@ -537,17 +537,17 @@ function AddDialogueMessage($form)
         $objResponse->script("
             $('savebtn').set('disabled', false);
         ");
-        $objResponse->alert("Невозможно отправить сообщение. Вы вышли из аккаунта работодателя.");
+        $objResponse->alert("РќРµРІРѕР·РјРѕР¶РЅРѕ РѕС‚РїСЂР°РІРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ. Р’С‹ РІС‹С€Р»Рё РёР· Р°РєРєР°СѓРЅС‚Р° СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ.");
         return $objResponse;
     } elseif (is_emp() && $form['from'] == 'frl') {
         $objResponse->script("
             $('savebtn').set('disabled', false);
         ");
-        $objResponse->alert("Невозможно отправить сообщение. Вы вышли из аккаунта фрилансера.");
+        $objResponse->alert("РќРµРІРѕР·РјРѕР¶РЅРѕ РѕС‚РїСЂР°РІРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ. Р’С‹ РІС‹С€Р»Рё РёР· Р°РєРєР°СѓРЅС‚Р° С„СЂРёР»Р°РЅСЃРµСЂР°.");
         return $objResponse;
     }
     
-    //Не позволяем производить действия с заблокированным проектом
+    //РќРµ РїРѕР·РІРѕР»СЏРµРј РїСЂРѕРёР·РІРѕРґРёС‚СЊ РґРµР№СЃС‚РІРёСЏ СЃ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рј РїСЂРѕРµРєС‚РѕРј
     if (projects::CheckBlocked(intval($form['prj_id'])))
     {
         $objResponse->script("document.location.href='/projects/index.php?pid=".intval($form['prj_id'])."'");
@@ -592,7 +592,7 @@ function AddDialogueMessage($form)
 		$error = $pod->AddDialogueMessage($po_id, $user_id, $po_text, $frl_read, $emp_read);
 		$last_comment = $pod->GetLastDialogueMessage($user_id, $po_id);
 		$objResponse->script("last_commentid={$last_comment};");
-		$objResponse->script("edit_block[$po_id] = '&nbsp;&nbsp;<span><a href=\"javascript:void(null)\" onClick=\"answer($po_id, $last_comment);markRead(\'$po_id\');\" class=\"internal\">Редактировать</a></span>';");
+		$objResponse->script("edit_block[$po_id] = '&nbsp;&nbsp;<span><a href=\"javascript:void(null)\" onClick=\"answer($po_id, $last_comment);markRead(\'$po_id\');\" class=\"internal\">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></span>';");
 //		$objResponse->script("alert(last_commentid);");
 //		$objResponse->script("alert(edit_block);");
 	}
@@ -602,7 +602,7 @@ function AddDialogueMessage($form)
 
 		if ($error == 1)
 		{
-			$objResponse->alert("Вы не можете редактировать комментарий, так как на него уже ответили.");
+			$objResponse->alert("Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№, С‚Р°Рє РєР°Рє РЅР° РЅРµРіРѕ СѓР¶Рµ РѕС‚РІРµС‚РёР»Рё.");
 			return $objResponse;
 		}
 	}
@@ -657,13 +657,13 @@ function AddDialogueMessage($form)
 	}
 	else
 	{
-		$objResponse->alert("Ошибка сохранения.");
+		$objResponse->alert("РћС€РёР±РєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ.");
 	}
 
     }
     else
     {
-	$objResponse->alert("Ошибка сохранения. Авторизируйтесь на сайте.");
+	$objResponse->alert("РћС€РёР±РєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ. РђРІС‚РѕСЂРёР·РёСЂСѓР№С‚РµСЃСЊ РЅР° СЃР°Р№С‚Рµ.");
     }
     
     return $objResponse;
@@ -680,14 +680,14 @@ function ChangePortfByProf($curr_prof_id, $prof_id, $id1 = 0, $id2 = 0, $id3 = 0
 	$curr_prof_id = intval($curr_prof_id);
 	$user_id = get_uid(false);
 
-	// Работы.
+	// Р Р°Р±РѕС‚С‹.
 	$obj_portfolio = new portfolio();
 	$portf_works = $obj_portfolio->GetPortfProf(get_uid(false), $prof_id);
 	if (!$portf_works)
 	{
 		$portf_works = array();
 	}
-	// Признак того, что работ > 30
+	// РџСЂРёР·РЅР°Рє С‚РѕРіРѕ, С‡С‚Рѕ СЂР°Р±РѕС‚ > 30
 	$portf_more = (count($portf_works) > 30);
 
 	$html_works = '';
@@ -731,10 +731,10 @@ function ChangePortfByProf($curr_prof_id, $prof_id, $id1 = 0, $id2 = 0, $id3 = 0
 	if ($i >= MAX_WORKS_IN_LIST + 1)
 	{
 		$html_works .= '</div>';
-		$html_works .= '<div id="show_more_works" style="font-size:100%;margin-top:12px;"><a href="javascript:void(null)" onClick="document.getElementById(\'show_more_works\').style.display=\'none\';document.getElementById(\'more_works\').style.display=\'block\';" class="blue" style="font-weight:bold;"><img src="/images/triangle_grey.gif" alt="" width="4" height="11" border="0" style="margin-right:4px;" />Остальные работы</a>';
+		$html_works .= '<div id="show_more_works" style="font-size:100%;margin-top:12px;"><a href="javascript:void(null)" onClick="document.getElementById(\'show_more_works\').style.display=\'none\';document.getElementById(\'more_works\').style.display=\'block\';" class="blue" style="font-weight:bold;"><img src="/images/triangle_grey.gif" alt="" width="4" height="11" border="0" style="margin-right:4px;" />РћСЃС‚Р°Р»СЊРЅС‹Рµ СЂР°Р±РѕС‚С‹</a>';
 	}
 
-	// Профессии
+	// РџСЂРѕС„РµСЃСЃРёРё
 	$obj_profession = new professions();
 	$prof_names = $obj_profession->GetChangeProfNames($curr_prof_id, $prof_id);
 
@@ -784,7 +784,7 @@ function ReadAllOffers($prj_id)
 			$objResponse->assign("op_count_refuse_new_msgs", "innerHTML", '');
 			$objResponse->assign("prj_chk_all", "innerHTML", '');
 			
-			// Обновляем количество новых сообщений в заголовке.
+			// РћР±РЅРѕРІР»СЏРµРј РєРѕР»РёС‡РµСЃС‚РІРѕ РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№ РІ Р·Р°РіРѕР»РѕРІРєРµ.
 			$cnt_emp_new_messages = projects_offers_dialogue::CountMessagesForEmp($_SESSION['uid'], true);
 			if ($cnt_emp_new_messages > 0) {
 				$last_emp_new_messages_pid = projects_offers_dialogue::FindLastMessageProjectForEmp($_SESSION['uid']);
@@ -794,7 +794,7 @@ function ReadAllOffers($prj_id)
 			$ndm_html = '';
 			$sScript  = "$$('.b-userbar__prjic').addClass('b-userbar__prjic_hide');$$('.b-userbar__icprj').removeClass('b-userbar__icprj_hide');";
 			if ($last_emp_new_messages_pid) {
-				$ndm_html = '(<a class="b-userbar__toplink" href="/projects/?pid='.$last_emp_new_messages_pid.'" title="Есть новые сообщения">'.$cnt_emp_new_messages.'</a>)';
+				$ndm_html = '(<a class="b-userbar__toplink" href="/projects/?pid='.$last_emp_new_messages_pid.'" title="Р•СЃС‚СЊ РЅРѕРІС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ">'.$cnt_emp_new_messages.'</a>)';
 				$sScript  = "$$('.b-userbar__prjic').removeClass('b-userbar__prjic_hide');$$('.b-userbar__icprj').addClass('b-userbar__icprj_hide');";
 			}
 			$objResponse->assign("new_dialogue_messages", "innerHTML", $ndm_html);
@@ -839,7 +839,7 @@ function ReadOfferDialogue($po_id, $prj_id = 0, $fldr = '')
                 case 'o':
             		list($po_offers_count, $msg_offers_count) = $prj_offer->CountPrjOffers($prj_id, 'offers');
             		if ($msg_offers_count > 0) {
-            		    $objResponse->assign("op_count_offers_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_offers_count . ending($msg_offers_count, 'новое сообщение', 'новых сообщения', 'новых сообщений'));
+            		    $objResponse->assign("op_count_offers_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_offers_count . ending($msg_offers_count, 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№'));
             		} else {
     //              $objResponse->script($script);
             		    $objResponse->assign("op_count_offers_new_msgs", "innerHTML", '');
@@ -848,7 +848,7 @@ function ReadOfferDialogue($po_id, $prj_id = 0, $fldr = '')
                 case 'i':
             		list($po_executor_count, $msg_executor_count) = $prj_offer->CountPrjOffers($prj_id, 'executor');
             		if ($msg_executor_count > 0) {
-            		    $objResponse->assign("op_count_executor_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_executor_count . ending($msg_executor_count, 'новое сообщение', 'новых сообщения', 'новых сообщений'));
+            		    $objResponse->assign("op_count_executor_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_executor_count . ending($msg_executor_count, 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№'));
             		} else {
     //              $objResponse->script($script);
             		    $objResponse->assign("op_count_executor_new_msgs", "innerHTML", '');
@@ -857,7 +857,7 @@ function ReadOfferDialogue($po_id, $prj_id = 0, $fldr = '')
                 case 'c':
                     list($po_candidate_count, $msg_candidate_count) = $prj_offer->CountPrjOffers($prj_id, 'candidate');
                 	if ($msg_candidate_count > 0) {
-                	    $objResponse->assign("op_count_candidate_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_candidate_count . ending($msg_candidate_count, 'новое сообщение', 'новых сообщения', 'новых сообщений'));
+                	    $objResponse->assign("op_count_candidate_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_candidate_count . ending($msg_candidate_count, 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№'));
                 	} else {
     //                 $objResponse->script($script);
                 	    $objResponse->assign("op_count_candidate_new_msgs", "innerHTML", '');
@@ -866,7 +866,7 @@ function ReadOfferDialogue($po_id, $prj_id = 0, $fldr = '')
                 case 'r':
             	    list($po_refuse_count, $msg_refuse_count) = $prj_offer->CountPrjOffers($prj_id, 'refuse');
             		if ($msg_refuse_count > 0) {
-            		    $objResponse->assign("op_count_refuse_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_refuse_count . ending($msg_refuse_count, 'новое сообщение', 'новых сообщения', 'новых сообщений'));
+            		    $objResponse->assign("op_count_refuse_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_refuse_count . ending($msg_refuse_count, 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№'));
             		} else {
     //              $objResponse->script($script);
             		    $objResponse->assign("op_count_refuse_new_msgs", "innerHTML", '');
@@ -876,7 +876,7 @@ function ReadOfferDialogue($po_id, $prj_id = 0, $fldr = '')
                 case 'fr':
             	    list($po_refuse_count, $msg_refuse_count) = $prj_offer->CountPrjOffers($prj_id, 'frl_refuse');
             		if ($msg_refuse_count > 0) {
-            		    $objResponse->assign("op_count_frl_refuse_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_refuse_count . ending($msg_refuse_count, 'новое сообщение', 'новых сообщения', 'новых сообщений'));
+            		    $objResponse->assign("op_count_frl_refuse_new_msgs", "innerHTML", '<img src="/images/ico_envelop.gif" alt="" width="10" height="8" border="0"> ' . $msg_refuse_count . ending($msg_refuse_count, 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№'));
             		} else {
             		    $objResponse->assign("op_count_frl_refuse_new_msgs", "innerHTML", '');
             		}
@@ -884,7 +884,7 @@ function ReadOfferDialogue($po_id, $prj_id = 0, $fldr = '')
                 	break;
             }
     
-            // Обновляем количество новых сообщений в заголовке.
+            // РћР±РЅРѕРІР»СЏРµРј РєРѕР»РёС‡РµСЃС‚РІРѕ РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№ РІ Р·Р°РіРѕР»РѕРІРєРµ.
             $cnt_emp_new_messages = projects_offers_dialogue::CountMessagesForEmp($_SESSION['uid'], true);
             if ($cnt_emp_new_messages > 0) {
                 $last_emp_new_messages_pid = projects_offers_dialogue::FindLastMessageProjectForEmp($_SESSION['uid']);
@@ -894,7 +894,7 @@ function ReadOfferDialogue($po_id, $prj_id = 0, $fldr = '')
             $ndm_html = '';
             $sScript  = "$$('.b-userbar__prjic').addClass('b-userbar__prjic_hide');$$('.b-userbar__icprj').removeClass('b-userbar__icprj_hide');";
             if ($last_emp_new_messages_pid) {
-                $ndm_html = '(<a class="b-userbar__toplink" href="/projects/?pid='.$last_emp_new_messages_pid.'" title="Есть новые сообщения">'.$cnt_emp_new_messages.'</a>)';
+                $ndm_html = '(<a class="b-userbar__toplink" href="/projects/?pid='.$last_emp_new_messages_pid.'" title="Р•СЃС‚СЊ РЅРѕРІС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ">'.$cnt_emp_new_messages.'</a>)';
                 $sScript  = "$$('.b-userbar__prjic').removeClass('b-userbar__prjic_hide');$$('.b-userbar__icprj').addClass('b-userbar__icprj_hide');";
             }
             $objResponse->assign("new_dialogue_messages", "innerHTML", $ndm_html);
@@ -903,7 +903,7 @@ function ReadOfferDialogue($po_id, $prj_id = 0, $fldr = '')
         }
         else {
             $pod->markReadFrl($po_id, $user_id);
-            // обновляем мигающий значек проекта
+            // РѕР±РЅРѕРІР»СЏРµРј РјРёРіР°СЋС‰РёР№ Р·РЅР°С‡РµРє РїСЂРѕРµРєС‚Р°
             if (!projects_offers::CheckNewFrlEvents($user_id, false) && !projects_offers_dialogue::CountMessagesForFrl($user_id, true, false)) {
                 $objResponse->script("$('new_offers_messages').getElement('img').addClass('b-userbar__prjic_hide'); 
                                       $('new_offers_messages').getElement('i').removeClass('b-userbar__icprj_hide'); ");
@@ -937,7 +937,7 @@ function FrlRefuse($pid){
         $objResponse->assign ("add_dialog_{$uid}", 'innerHTML', '&nbsp;');
         $objResponse->assign ("add_dialog_{$pid}", 'innerHTML', '&nbsp;');
         $objResponse->script("$$('.add_dialog_user').set('html', '&nbsp;');");
-        $objResponse->script("$$('.opinions1_{$uid}').set('html', 'Вы отказались от проекта').addClass('refusal-prj'); $$('.opinions2_{$uid}').destroy();");
+        $objResponse->script("$$('.opinions1_{$uid}').set('html', 'Р’С‹ РѕС‚РєР°Р·Р°Р»РёСЃСЊ РѕС‚ РїСЂРѕРµРєС‚Р°').addClass('refusal-prj'); $$('.opinions2_{$uid}').destroy();");
     }
     return $objResponse;
 }
@@ -950,17 +950,17 @@ function getStatProject($id, $payed_to, $now, $payed, $post_date, $kind, $comm_c
     $page = floor($counte / $GLOBALS["prjspp"]) + 1;
     $counte_page = $counte % $GLOBALS["prjspp"];
     
-    $html  = 'Ваше объявление &ndash; <a class="public_blue" href="/projects/?kind='.$kind.'&page='.$page.'#prj'.$id.'">'.$counte_page.'-е по счету ('.$page.'-я страница)</a><br />';
+    $html  = 'Р’Р°С€Рµ РѕР±СЉСЏРІР»РµРЅРёРµ &ndash; <a class="public_blue" href="/projects/?kind='.$kind.'&page='.$page.'#prj'.$id.'">'.$counte_page.'-Рµ РїРѕ СЃС‡РµС‚Сѓ ('.$page.'-СЏ СЃС‚СЂР°РЅРёС†Р°)</a><br />';
     
     if(hasPermissions('projects')) {
         $aWatch = projects::getProjectWatch($id);
-        $html .= "Просмотров " . (int)$aWatch['view_cnt'] . " (" . (int)$aWatch['today_view_cnt'] . " за сегодня)<br />";
+        $html .= "РџСЂРѕСЃРјРѕС‚СЂРѕРІ " . (int)$aWatch['view_cnt'] . " (" . (int)$aWatch['today_view_cnt'] . " Р·Р° СЃРµРіРѕРґРЅСЏ)<br />";
     }
     
     if(is_new_prj($post_date) && $comm_count>0) {
-        $html .= "{$comm_count} ".ending($comm_count, "предложение", "предложения", "предложений");
+        $html .= "{$comm_count} ".ending($comm_count, "РїСЂРµРґР»РѕР¶РµРЅРёРµ", "РїСЂРµРґР»РѕР¶РµРЅРёСЏ", "РїСЂРµРґР»РѕР¶РµРЅРёР№");
     } elseif($offers_count>0) {
-        $html .= "{$offers_count} ".ending($offers_count, "предложение", "предложения", "предложений");
+        $html .= "{$offers_count} ".ending($offers_count, "РїСЂРµРґР»РѕР¶РµРЅРёРµ", "РїСЂРµРґР»РѕР¶РµРЅРёСЏ", "РїСЂРµРґР»РѕР¶РµРЅРёР№");
     }
     
     $objResponse->assign("prj_pos_{$id}", "innerHTML", $html);
@@ -1017,7 +1017,7 @@ function mass_Calc($frm)
     }
     $params['professions'] = $cats_data;
 
-    //Помимо основного общего расчета нам отдельно нужно кол-во ПРО остальные способы расчета отключаются
+    //РџРѕРјРёРјРѕ РѕСЃРЅРѕРІРЅРѕРіРѕ РѕР±С‰РµРіРѕ СЂР°СЃС‡РµС‚Р° РЅР°Рј РѕС‚РґРµР»СЊРЅРѕ РЅСѓР¶РЅРѕ РєРѕР»-РІРѕ РџР Рћ РѕСЃС‚Р°Р»СЊРЅС‹Рµ СЃРїРѕСЃРѕР±С‹ СЂР°СЃС‡РµС‚Р° РѕС‚РєР»СЋС‡Р°СЋС‚СЃСЏ
     $calc = $masssending->setCalcMethods('pro')->Calculate($uid, $params);
 
     $objResponse->assign("mass_find_count", "innerHTML", $calc['count']);

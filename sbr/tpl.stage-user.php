@@ -1,6 +1,6 @@
 <?php if($sbr->isAdmin() || $sbr->isAdminFinance()) { ?>
 <div class="b-username b-username_bold b-username_padbot_35">
-    <span class="b-username__txt">Исполнитель</span>&#160;
+    <span class="b-username__txt">РСЃРїРѕР»РЅРёС‚РµР»СЊ</span>&#160;
     <?= $session->view_online_status($sbr->data['frl_login'], false, '&nbsp;', $activity) ?><a href="/users/<?= $sbr->data['frl_login'] ?>/" class="b-username__link b-username__link_color_f2922a" target="_blank"><?= ($sbr->data['frl_uname'] . ' ' . $sbr->data['frl_usurname']); ?></a> 
     <span class="b-username__login b-username__login_color_f2922a">
         [<a href="/users/<?= $sbr->data['frl_login'] ?>/" target="_blank" class="b-username__link"><?= $sbr->data['frl_login'] ?></a>] 
@@ -11,10 +11,10 @@
     $user = new users();
     $user_banned = ($user->GetField($sbr->data['frl_id'], $ban_error, "is_banned", false) > 0) ? true : false;
     if ($user_banned) { ?>
-        <span style="color:#000" ><b>Пользователь заблокирован.</b></span>
+        <span style="color:#000" ><b>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ.</b></span>
     <? } ?>
     <br/>
-    <span class="b-username__txt">Заказчик</span>&#160;
+    <span class="b-username__txt">Р—Р°РєР°Р·С‡РёРє</span>&#160;
     <?= $session->view_online_status($sbr->data['emp_login'], false, '&nbsp;', $activity) ?><a href="/users/<?= $sbr->data['emp_login'] ?>/" class="b-username__link b-username__link_color_6db335" target="_blank"><?= ($sbr->data['emp_uname'] . ' ' . $sbr->data['emp_usurname']); ?></a> 
     <span class="b-username__login b-username__login_color_6db335 ">
         [<a href="/users/<?= $sbr->data['emp_login'] ?>/" target="_blank" class="b-username__link"><?= $sbr->data['emp_login'] ?></a>] 
@@ -24,12 +24,12 @@
     <? 
     $user_banned = ($user->GetField($sbr->data['emp_id'], $ban_error, "is_banned", false) > 0) ? true : false;
     if ($user_banned) { ?>
-        <span style="color:#000" ><b>Пользователь заблокирован.</b></span>
+        <span style="color:#000" ><b>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ.</b></span>
     <? } ?>
 </div>
 <?php } else {?>
 <div class="b-username b-username_bold b-username_padbot_35">
-    <span class="b-username__txt"><?= $sbr->isEmp() ? "Исполнитель" : "Заказчик"?></span>&#160;
+    <span class="b-username__txt"><?= $sbr->isEmp() ? "РСЃРїРѕР»РЅРёС‚РµР»СЊ" : "Р—Р°РєР°Р·С‡РёРє"?></span>&#160;
     <a href="/users/<?= $sbr->data[$sbr->apfx . 'login'] ?>/" class="b-username__link <?= $sbr->isEmp() ? "b-username__link_color_f2922a" : "b-username__link_color_6db335"?>" target="_blank"><?= ($sbr->data[$sbr->apfx . 'uname'] . ' ' . $sbr->data[$sbr->apfx . 'usurname']); ?></a> 
     <span class="b-username__login <?= $sbr->isEmp() ? "b-username__login_color_f2922a" : "b-username__login_color_6db335"?>">
         [<a href="/users/<?= $sbr->data[$sbr->apfx . 'login'] ?>/" target="_blank" class="b-username__link"><?= $sbr->data[$sbr->apfx . 'login'] ?></a>] 

@@ -31,9 +31,9 @@ if (!$no_answers) {$xajax->printJavascript('/xajax/');}
 
 <p>&nbsp;</p>
 
-<? if (empty($projects)) { print "<center><div style='font: bold 16px Tahoma'>Нет проектов.</div></center>"; return; } ?>
+<? if (empty($projects)) { print "<center><div style='font: bold 16px Tahoma'>РќРµС‚ РїСЂРѕРµРєС‚РѕРІ.</div></center>"; return; } ?>
 
-<!-- Это временно, когда будет везде в админке новый дизайн - эти стили удалить -->
+<!-- Р­С‚Рѕ РІСЂРµРјРµРЅРЅРѕ, РєРѕРіРґР° Р±СѓРґРµС‚ РІРµР·РґРµ РІ Р°РґРјРёРЅРєРµ РЅРѕРІС‹Р№ РґРёР·Р°Р№РЅ - СЌС‚Рё СЃС‚РёР»Рё СѓРґР°Р»РёС‚СЊ -->
 <style type="text/css">
 .project-offers{
 	font-weight:bold;
@@ -131,9 +131,9 @@ if (!$no_answers) {$xajax->printJavascript('/xajax/');}
 									</div> 
 									<ul class="project-info"> 
 										<li><?=ago_pub_x(strtotimeEx($prj['post_date']))?></li> 
-										<li>Автор: <?=(($prj['is_pro'] == 't')?' '.view_pro_emp(false, 8):'')?> <a href="/users/<?=$prj['login']?>/"><?=YellowLine($prj['uname'])?> <?=YellowLine($prj['usurname'])?></a> [<a href="/users/<?=$prj['login']?>/"><?=YellowLine($prj['login'])?></a>]</li> 
-										<li class="last">Категория: <?= projects::printCategories($prj['categories']);?></li>
-										<li class="last"><div class="project-offers"><a href="<?=getFriendlyURL("project", $prj['id'])?>">Предложения (<?=(int) $prj['offers_count']?>)</a></div></li>
+										<li>РђРІС‚РѕСЂ: <?=(($prj['is_pro'] == 't')?' '.view_pro_emp(false, 8):'')?> <a href="/users/<?=$prj['login']?>/"><?=YellowLine($prj['uname'])?> <?=YellowLine($prj['usurname'])?></a> [<a href="/users/<?=$prj['login']?>/"><?=YellowLine($prj['login'])?></a>]</li> 
+										<li class="last">РљР°С‚РµРіРѕСЂРёСЏ: <?= projects::printCategories($prj['categories']);?></li>
+										<li class="last"><div class="project-offers"><a href="<?=getFriendlyURL("project", $prj['id'])?>">РџСЂРµРґР»РѕР¶РµРЅРёСЏ (<?=(int) $prj['offers_count']?>)</a></div></li>
 									</ul> 
                                     <br clear="all" />
                                         
@@ -156,7 +156,7 @@ if (!$no_answers) {$xajax->printJavascript('/xajax/');}
     											<?=dateFormat("d.m.Y", $prj['date'])?> <a href="/users/<?=$prj['c_login']?>/"><?=$prj['c_uname']?> <?=$prj['c_usurname']?> [<?=$prj['c_login']?>]</a>  
     											<?if($prj['is_satisfied']):?>
     											<div class="br-from">
-                        							<?=(($prj['is_satisfied'] == 't') ? 'Принято' : 'Отклонено')?> админом <?=dateFormat("d.m.Y", $prj['processed_at'])?> <a href="/users/<?=$prj['admin_login']?>/"><?=$prj['admin_uname'].' '.$prj['admin_usurname']?> [<?=$prj['admin_login']?>]</a>
+                        							<?=(($prj['is_satisfied'] == 't') ? 'РџСЂРёРЅСЏС‚Рѕ' : 'РћС‚РєР»РѕРЅРµРЅРѕ')?> Р°РґРјРёРЅРѕРј <?=dateFormat("d.m.Y", $prj['processed_at'])?> <a href="/users/<?=$prj['admin_login']?>/"><?=$prj['admin_uname'].' '.$prj['admin_usurname']?> [<?=$prj['admin_login']?>]</a>
                         						</div>
     											<?endif?>
     										</div> 
@@ -167,12 +167,12 @@ if (!$no_answers) {$xajax->printJavascript('/xajax/');}
                                     <div id="project-reason-<?=$prj['id']?>" style="margin-top: 10px; display: none">&nbsp;</div>
 									<div class="project-offers"> 
                                         <?php if ( $prj['complain_cnt'] > 1 ) { ?>
-                            			<a onclick="getProjectComplaints(<?=$prj['id']?>, '<?=$group?>');" href="javascript:void(0);">Все жалобы (<?=(int) $prj['complain_cnt']?>)</a>
+                            			<a onclick="getProjectComplaints(<?=$prj['id']?>, '<?=$group?>');" href="javascript:void(0);">Р’СЃРµ Р¶Р°Р»РѕР±С‹ (<?=(int) $prj['complain_cnt']?>)</a>
                             				<?if($group == 'new'):?> | <?endif?>
                             			<?php } ?>
                             			<?if($group == 'new'):?>
-										<a id="prj_<?=$prj['id']?>" href="./?mode=<?=$mode?><?=($page? "&p=$page": '')?><?=($search? "&search=$search": '')?><?=($sort? "&sort=$sort": '')?><?=($admin? "&admin=$admin": '')?><?=($group? "&group=$group": '')?>&action=not_satisfycomplain&pid=<?=$prj['id']?>" style="font-weight:bold; color: #999;" onclick="return addTokenToLink('prj_<?=$prj['id']?>', 'Уверены, что хотите удалить все жалобы на проект?');">Снять все жалобы</a> | 
-										<a href="javascript:;" class="lnk-br-block" onclick="banned.blockedProjectWithComplains(<?=$prj['id']?>);">Заблокировать</a>
+										<a id="prj_<?=$prj['id']?>" href="./?mode=<?=$mode?><?=($page? "&p=$page": '')?><?=($search? "&search=$search": '')?><?=($sort? "&sort=$sort": '')?><?=($admin? "&admin=$admin": '')?><?=($group? "&group=$group": '')?>&action=not_satisfycomplain&pid=<?=$prj['id']?>" style="font-weight:bold; color: #999;" onclick="return addTokenToLink('prj_<?=$prj['id']?>', 'РЈРІРµСЂРµРЅС‹, С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РІСЃРµ Р¶Р°Р»РѕР±С‹ РЅР° РїСЂРѕРµРєС‚?');">РЎРЅСЏС‚СЊ РІСЃРµ Р¶Р°Р»РѕР±С‹</a> | 
+										<a href="javascript:;" class="lnk-br-block" onclick="banned.blockedProjectWithComplains(<?=$prj['id']?>);">Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ</a>
 										<?endif?>
 									</div> 
 								</li> 
@@ -186,7 +186,7 @@ if (!$no_answers) {$xajax->printJavascript('/xajax/');}
     <td align="left" width="100%">
     <div id="fl2_paginator"><?
 
-        // Страницы
+        // РЎС‚СЂР°РЅРёС†С‹
         $pages = ceil($num_threads / $log_pp);
         if ($pages > 1) {
             $maxpages = $pages;
@@ -203,13 +203,13 @@ if (!$no_answers) {$xajax->printJavascript('/xajax/');}
 
             $sBox = '<table width="100%"><tr>';
             if ($page == 1) {
-                $sBox .= '<td><div id="nav_pre_not_active"><span>предыдущая</span></div></td>';
+                $sBox .= '<td><div id="nav_pre_not_active"><span>РїСЂРµРґС‹РґСѓС‰Р°СЏ</span></div></td>';
             } else {
                 $sBox .= "<input type=\"hidden\" id=\"pre_navigation_link\" value=\"".($sHref.($page-1))."\">";
-                $sBox .= "<td><div id=\"nav_pre_not_active\"><a href=\"".($sHref.($page-1))."\" style=\"color: #717171\">предыдущая</a></div></td>";
+                $sBox .= "<td><div id=\"nav_pre_not_active\"><a href=\"".($sHref.($page-1))."\" style=\"color: #717171\">РїСЂРµРґС‹РґСѓС‰Р°СЏ</a></div></td>";
             }
             $sBox .= '<td width="90%" align="center">';
-            //в начале
+            //РІ РЅР°С‡Р°Р»Рµ
             if ($page <= 10) {
                 $sBox .= buildNavigation($page, 1, ($pages>10)?($page+4):$pages, $sHref);
                 if ($pages > 15) {
@@ -217,7 +217,7 @@ if (!$no_answers) {$xajax->printJavascript('/xajax/');}
                     //$sBox .= buildNavigation($page, $pages-5, $pages, $sHref);
                 }
             }
-            //в конце
+            //РІ РєРѕРЅС†Рµ
             elseif ($page >= $pages-10) {
                 $sBox .= buildNavigation($page, 1, 5, $sHref);
                 $sBox .= '<span style="padding-right: 5px">...</span>';
@@ -232,17 +232,17 @@ if (!$no_answers) {$xajax->printJavascript('/xajax/');}
             }
             $sBox .= '</td>';
             if ($page == $pages) {
-                $sBox .= "<td><div id=\"nav_next_not_active\"><span>следующая</span></div></td>";
+                $sBox .= "<td><div id=\"nav_next_not_active\"><span>СЃР»РµРґСѓСЋС‰Р°СЏ</span></div></td>";
             } else {
                 $sBox .= "<input type=\"hidden\" id=\"next_navigation_link\" value=\"".($sHref.($page+1))."\">";
-                $sBox .= "<td><div id=\"nav_next_not_active\"><a href=\"".($sHref.($page+1))."\" style=\"color: #717171\">следующая</a></div></td>";
+                $sBox .= "<td><div id=\"nav_next_not_active\"><a href=\"".($sHref.($page+1))."\" style=\"color: #717171\">СЃР»РµРґСѓСЋС‰Р°СЏ</a></div></td>";
             }
             $sBox .= '</tr>';
             $sBox .= '</table>';
         }
         $sBox .= '</div>';
         echo $sBox;
-        // Страницы закончились
+        // РЎС‚СЂР°РЅРёС†С‹ Р·Р°РєРѕРЅС‡РёР»РёСЃСЊ
         
         echo printPerPageSelect( $log_pp, 'p' );
     ?></td>
@@ -297,11 +297,11 @@ function getProjectComplaints( id, group ) {
                         	</div>';
 
                         if(resp.data[i].status) {
-                            if(resp.data[i].status == 1) var action_string = 'Принято';
-                            else if(resp.data[i].status == 2) var action_string = 'Отклонено';
+                            if(resp.data[i].status == 1) var action_string = 'РџСЂРёРЅСЏС‚Рѕ';
+                            else if(resp.data[i].status == 2) var action_string = 'РћС‚РєР»РѕРЅРµРЅРѕ';
                             
                         	html += '<div class="br-from">\
-                        		' + action_string + ' админом ' + resp.data[i].pdate + ' <a href="/users/' + resp.data[i].admin_login + '/">' + resp.data[i].admin_uname + ' ' + resp.data[i].admin_usurname + ' [' + resp.data[i].admin_login + ']</a>\
+                        		' + action_string + ' Р°РґРјРёРЅРѕРј ' + resp.data[i].pdate + ' <a href="/users/' + resp.data[i].admin_login + '/">' + resp.data[i].admin_uname + ' ' + resp.data[i].admin_usurname + ' [' + resp.data[i].admin_login + ']</a>\
                         	</div>';
                         }
 
@@ -314,7 +314,7 @@ function getProjectComplaints( id, group ) {
                     $('div_compliant_'+id).setStyle('display','none');
                 }
                 else {
-                    alert('Ошибка получения данных');
+                    alert('РћС€РёР±РєР° РїРѕР»СѓС‡РµРЅРёСЏ РґР°РЅРЅС‹С…');
                 }
             }
         }).post({

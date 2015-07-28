@@ -19,8 +19,8 @@ if (isset($_SESSION['rand'])) {
 }
 
 if (!empty($_SESSION['uid']) && !empty($_POST['op']) ) {
-    $old_pro = is_pro(); // Òî ÷òî â ñåcñèè ëåæèò
-    $pro = is_pro(true); // Òî ÷òî íà ñàìîì äåëå, ïðîâåðÿåì ïðî çàíîãî
+    $old_pro = is_pro(); // Ð¢Ð¾ Ñ‡Ñ‚Ð¾ Ð² ÑÐµcÑÐ¸Ð¸ Ð»ÐµÐ¶Ð¸Ñ‚
+    $pro = is_pro(true); // Ð¢Ð¾ Ñ‡Ñ‚Ð¾ Ð½Ð° ÑÐ°Ð¼Ð¾Ð¼ Ð´ÐµÐ»Ðµ, Ð¿Ñ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ Ð¿Ñ€Ð¾ Ð·Ð°Ð½Ð¾Ð³Ð¾
     if($pro == 0 && $old_pro > 0 && !$_SESSION['is_freezed']) {
         unset($_SESSION['pro_last']);
         $out['pro']['action'] = 'done';
@@ -28,7 +28,7 @@ if (!empty($_SESSION['uid']) && !empty($_POST['op']) ) {
     }
     $op  = explode('|', $_POST['op']);
     
-    // Íîâûå ñîáûòèÿ â çàêàçàõ ÒÓ
+    // ÐÐ¾Ð²Ñ‹Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð² Ð·Ð°ÐºÐ°Ð·Ð°Ñ… Ð¢Ð£
     if ( in_array('tu', $op) ) {
         $tip = notifications::getTServicesOrdersTip();
 
@@ -43,7 +43,7 @@ if (!empty($_SESSION['uid']) && !empty($_POST['op']) ) {
         }
     }
     
-    // íîâûå ñîáûòèÿ â ïðîåêòàõ
+    // Ð½Ð¾Ð²Ñ‹Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð² Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°Ñ…
     if ( in_array('prj', $op) ) {
         if(is_emp()) {
             $tip = notifications::getProjectsTipEmp();
@@ -62,7 +62,7 @@ if (!empty($_SESSION['uid']) && !empty($_POST['op']) ) {
         }
     }
     
-    // íîâûå ñîîáùåíèÿ
+    // Ð½Ð¾Ð²Ñ‹Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ
     if ( in_array('msg', $op) ) {
         $out['msg'] = array();
         $tip = notifications::getMessTip(true);
@@ -77,7 +77,7 @@ if (!empty($_SESSION['uid']) && !empty($_POST['op']) ) {
         }
     }
 
-    // ñîáûòèÿ â ñáð
+    // ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ Ð² ÑÐ±Ñ€
     if ( in_array('sbr', $op) ) {
         $tip = notifications::getAllSbrTip();
         if ($tip === null) {
@@ -91,7 +91,7 @@ if (!empty($_SESSION['uid']) && !empty($_POST['op']) ) {
         }
     }
 
-    // íîâûå ñîáûòèÿ ÷åðåç êëàññ bar_notify
+    // Ð½Ð¾Ð²Ñ‹Ðµ ÑÐ¾Ð±Ñ‹Ñ‚Ð¸Ñ Ñ‡ÐµÑ€ÐµÐ· ÐºÐ»Ð°ÑÑ bar_notify
     $barNotify = new bar_notify(get_uid(0));
     $barNotifies = $barNotify->getNotifies();
     if (in_array('bill', $op)) {

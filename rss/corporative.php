@@ -10,19 +10,19 @@ echo "<?xml version=\"1.0\" encoding=\"windows-1251\"?>
 " ; ?>
 <rss version="2.0">
 <channel>
-<title>Корпоративный блог на FL.ru</title>
+<title>РљРѕСЂРїРѕСЂР°С‚РёРІРЅС‹Р№ Р±Р»РѕРі РЅР° FL.ru</title>
 <link><?=$host?>/rss/corporative.php</link> 
-<description>Корпоративный блог на сайте www.fl.ru</description> 
+<description>РљРѕСЂРїРѕСЂР°С‚РёРІРЅС‹Р№ Р±Р»РѕРі РЅР° СЃР°Р№С‚Рµ www.fl.ru</description> 
 <language>ru-ru</language> 
 <pubDate><?=gmdate("D, d M Y H:i:s")?></pubDate>
 <lastBuildDate><?=gmdate("D, d M Y H:i:s",strtotimeEx($themes[0]['date_create']))?></lastBuildDate> 
 <docs>http://blogs.law.harvard.edu/tech/rss</docs> 
 <generator>FL.ru RSS Generator</generator>
-<category>Корпоративный блог</category>
+<category>РљРѕСЂРїРѕСЂР°С‚РёРІРЅС‹Р№ Р±Р»РѕРі</category>
 <ttl>30</ttl> 
 <image>
 	<url><?=$host?>/images/free-lance_logo.jpg</url>
-	<title>Корпоративный блог на FL.ru</title>
+	<title>РљРѕСЂРїРѕСЂР°С‚РёРІРЅС‹Р№ Р±Р»РѕРі РЅР° FL.ru</title>
 	<link><?=$host?></link> 
 	<width>113</width>
 	<height>18</height>

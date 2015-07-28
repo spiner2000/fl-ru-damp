@@ -44,7 +44,7 @@
                     <div class="i-shadow">
                         <div class="b-shadow b-shadow_m b-shadow_top_0 b-shadow_left_310 b-shadow_hide auth_mob_alert">
                                             <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_10">
-                                                <div class="b-layout__txt b-layout__txt_padright_15 b-layout__txt_color_c4271f" id="auth_mob_alert_content">Необходимо активировать телефон</div>
+                                                <div class="b-layout__txt b-layout__txt_padright_15 b-layout__txt_color_c4271f" id="auth_mob_alert_content">РќРµРѕР±С…РѕРґРёРјРѕ Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊ С‚РµР»РµС„РѕРЅ</div>
                                             </div>
                             <span class="b-shadow__icon b-shadow__icon_nosik-left b-shadow__icon_top_20 b-shadow__icon_left_5"></span>
                         </div>                                
@@ -91,10 +91,10 @@
                         <div class="b-layout b-layout_inline-block b-layout_padtop_10_iphone b-layout_block_iphone">
                             <?php if($setting['field'] == 'phone' && !$setting['auth'] && $reqvs[$form_type][$key] != '' && !$bDisabled) { ?>
                             <span class="c_sms_main">
-                                <a href="javascript:void(0)"class="b-button b-button_flat b-button_flat_grey" data-phone="<?=html_attr($reqvs[$form_type][$key])?>">Активировать</a>
+                                <a href="javascript:void(0)"class="b-button b-button_flat b-button_flat_grey" data-phone="<?=html_attr($reqvs[$form_type][$key])?>">РђРєС‚РёРІРёСЂРѕРІР°С‚СЊ</a>
                             </span>
                             <?php } elseif($setting['field'] == 'phone' && $setting['auth']) {//if?>
-                            <div class="b-layout__txt b-layout__txt_padtop_7 b-layout__txt_nowrap b-layout__txt_inline-block"><span class="b-icon b-icon_sbr_gok b-icon_top_2"></span>Активирован <a href="/users/<?=$_SESSION["login"] ?>/setup/main/" target="_blank" >Изменить номер телефона</a></div>
+                            <div class="b-layout__txt b-layout__txt_padtop_7 b-layout__txt_nowrap b-layout__txt_inline-block"><span class="b-icon b-icon_sbr_gok b-icon_top_2"></span>РђРєС‚РёРІРёСЂРѕРІР°РЅ <a href="/users/<?=$_SESSION["login"] ?>/setup/main/" target="_blank" >РР·РјРµРЅРёС‚СЊ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°</a></div>
                             <?php }//elseif?>
                         </div>
                         <?php }//elseif?>
@@ -103,7 +103,7 @@
                         <? if(in_array($field['pos'], array_keys($setting['subdescr'])) && $setting['subdescr'][$field['pos']] != '') { ?>
                             <?= $setting['subdescr'][$field['pos']]?>
                         <? } elseif($field['example'] && $setting['field'] != 'phone') { //if?>
-                            Например:  <?= $field['example']; ?>
+                            РќР°РїСЂРёРјРµСЂ:  <?= $field['example']; ?>
                         <? }//else?>
                         <?= $tbl_header ?>
                     </div>
@@ -116,7 +116,7 @@
     <?php if($setting['abbr_block'] == 'docs') { ?>
 				<div class="b-check b-check_padleft_185 b-check_padbot_15">
 					<input type="checkbox" value="1" name="is_agree_view_doc" id="is_agree_view_doc" class="b-check__input" <?= $reqvs['is_agree_view_sbr'] == 't' ? 'checked="checked"' : ''?>>
-					<label for="is_agree_view_doc" class="b-check__label b-check__label_fontsize_13">&nbsp;Разрешаю использовать мои паспортные данные в документах сервиса &laquo;Безопасная Сделка&raquo;</label>
+					<label for="is_agree_view_doc" class="b-check__label b-check__label_fontsize_13">&nbsp;Р Р°Р·СЂРµС€Р°СЋ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РјРѕРё РїР°СЃРїРѕСЂС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ РІ РґРѕРєСѓРјРµРЅС‚Р°С… СЃРµСЂРІРёСЃР° &laquo;Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°&raquo;</label>
 				</div>
     <?php }//if?>
 </span>

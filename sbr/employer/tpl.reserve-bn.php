@@ -4,7 +4,7 @@ $sbr->getInvoiceReqv($form_type, $reqv_mode);
 ?>
 <div class="b-menu b-menu_crumbs">
     <ul class="b-menu__list">
-								<li class="b-menu__item"><a class="b-menu__link" href="/<?= sbr::NEW_TEMPLATE_SBR; ?>">«Мои Сделки»</a>&#160;&rarr;&#160;</li>
+								<li class="b-menu__item"><a class="b-menu__link" href="/<?= sbr::NEW_TEMPLATE_SBR; ?>">В«РњРѕРё РЎРґРµР»РєРёВ»</a>&#160;&rarr;&#160;</li>
     </ul>
 </div>			
 <h1 class="b-page__title b-page__title_padnull"><?= reformat2($sbr->data['name']) ?></h1>
@@ -23,7 +23,7 @@ $sbr->getInvoiceReqv($form_type, $reqv_mode);
             <td class="b-layout__left b-layout__left_width_72ps">
                 <div class="b-fon b-fon_width_full b-fon_padbot_30">
                     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb">
-                        <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-20"></span>Исполнитель не приступит к работе, пока вы не зарезервируете деньги под сделку.
+                        <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-20"></span>РСЃРїРѕР»РЅРёС‚РµР»СЊ РЅРµ РїСЂРёСЃС‚СѓРїРёС‚ Рє СЂР°Р±РѕС‚Рµ, РїРѕРєР° РІС‹ РЅРµ Р·Р°СЂРµР·РµСЂРІРёСЂСѓРµС‚Рµ РґРµРЅСЊРіРё РїРѕРґ СЃРґРµР»РєСѓ.
                     </div>
                 </div>	
 
@@ -34,12 +34,12 @@ $sbr->getInvoiceReqv($form_type, $reqv_mode);
                             <div class="b-layout__txt b-layout__txt_bold b-layout__txt_fontsize_15"><a class="b-layout__link" href="?site=Stage&id=<?= $stage->data['id'] ?>"><?= reformat($stage->data['name'], 35, 0, 1) ?></a></div>
                         </td>
                         <td class="b-layout__middle b-layout__middle_width_200"><div class="b-layout__txt b-layout__txt_padtop_2 b-layout__txt_bold"><?= sbr_meta::view_cost($stage->data['cost'], exrates::BANK ) ?></div></td>
-                        <td class="b-layout__right b-layout__right_width_250"><div class="b-layout__txt b-layout__txt_padtop_2"><span class="b-layout__bold"><?= $stage->data['work_days'] ?> <?= ending(abs($stage->data['work_days']), 'день', 'дня', 'дней') ?></span> на задачу</div></td>
+                        <td class="b-layout__right b-layout__right_width_250"><div class="b-layout__txt b-layout__txt_padtop_2"><span class="b-layout__bold"><?= $stage->data['work_days'] ?> <?= ending(abs($stage->data['work_days']), 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№') ?></span> РЅР° Р·Р°РґР°С‡Сѓ</div></td>
                     </tr>
                 <? } ?>
                 </table>
 
-                <h2 class="b-layout__title b-layout__title_padtop_50">Резервирование денег</h2>
+                <h2 class="b-layout__title b-layout__title_padtop_50">Р РµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ РґРµРЅРµРі</h2>
                 
                 <? if ($sbr->scheme_type == sbr::SCHEME_PDRD2) {
                     $t = $sbr->data['cost'];
@@ -47,12 +47,12 @@ $sbr->getInvoiceReqv($form_type, $reqv_mode);
                 <table class="b-layout__table" cellpadding="0" cellspacing="0" border="0">
                     <tr class="b-layout__tr">
                         <td class="b-layout__left b-layout__left_width_160">
-                            <div class="b-layout__txt">Способ оплаты</div>
+                            <div class="b-layout__txt">РЎРїРѕСЃРѕР± РѕРїР»Р°С‚С‹</div>
                         </td>
                         <td class="b-layout__right b-layout__right_padbot_10 b-layout__right_width_200">
                             <div class="b-radio b-radio_layout_vertical b-radio_float_left" id="type_payments_btn">
                                 <div class="b-radio__item b-radio__item_padbot_10">
-                                    <label class="b-radio__label b-radio__label_fontsize_13" for="bank"><strong>Банковский перевод</strong></label>
+                                    <label class="b-radio__label b-radio__label_fontsize_13" for="bank"><strong>Р‘Р°РЅРєРѕРІСЃРєРёР№ РїРµСЂРµРІРѕРґ</strong></label>
                                 </div>
                             </div>
                         </td>
@@ -126,13 +126,13 @@ $sbr->getInvoiceReqv($form_type, $reqv_mode);
                 
                 <? }//if?>
 
-                <div class="b-layout__txt b-layout__txt_color_a0763b b-layout__txt_padtop_20 b-layout__txt_padleft_20"><span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_oattent"></span>После резервирования вернуть деньги можно будет только через арбитраж.</div>									
-                <div id="finance-err" class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_padleft_20 b-layout__txt_padtop_30 b-layout_hide"><span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_rattent"></span>Произошла ошибка. <span id="finance-err-txt"></span></div>
+                <div class="b-layout__txt b-layout__txt_color_a0763b b-layout__txt_padtop_20 b-layout__txt_padleft_20"><span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_oattent"></span>РџРѕСЃР»Рµ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ РІРµСЂРЅСѓС‚СЊ РґРµРЅСЊРіРё РјРѕР¶РЅРѕ Р±СѓРґРµС‚ С‚РѕР»СЊРєРѕ С‡РµСЂРµР· Р°СЂР±РёС‚СЂР°Р¶.</div>									
+                <div id="finance-err" class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_padleft_20 b-layout__txt_padtop_30 b-layout_hide"><span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_rattent"></span>РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°. <span id="finance-err-txt"></span></div>
                 <div class="b-buttons b-buttons_padtop_40 b-buttons_padleft_20">
-                    <a href="javascript:void(0)" onclick="if(!$(this).hasClass('b-button_disabled')) submitForm($('reserveFrm'), {action:'invoice'});" class="b-button b-button_flat b-button_flat_green" id="send_btn">Выписать счет
+                    <a href="javascript:void(0)" onclick="if(!$(this).hasClass('b-button_disabled')) submitForm($('reserveFrm'), {action:'invoice'});" class="b-button b-button_flat b-button_flat_green" id="send_btn">Р’С‹РїРёСЃР°С‚СЊ СЃС‡РµС‚
                                 <img width="26" height="6" alt="" src="/css/block/b-button/b-button__load.gif" class="b-button__load b-layout_hide"></a>
-                    <span id="finance-btns"><span class="b-buttons__txt b-buttons__txt_padleft_10">или</span> <a class="b-buttons__link b-buttons__link_dot_c10601" href="javascript:void(0)" onclick="if(confirm('Отменить сделку?')) { submitForm($('actionSbrForm'), {action: 'status_action', cancel:1}); }">отменить сделку</a>	</span>
-                    <span id="finance-btns-spinn" class="b-buttons__txt b-buttons__txt_padleft_10" style="display: none;">идет подготовка к резервированию, это может занять от нескольких секунд до минуты…</span>
+                    <span id="finance-btns"><span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё</span> <a class="b-buttons__link b-buttons__link_dot_c10601" href="javascript:void(0)" onclick="if(confirm('РћС‚РјРµРЅРёС‚СЊ СЃРґРµР»РєСѓ?')) { submitForm($('actionSbrForm'), {action: 'status_action', cancel:1}); }">РѕС‚РјРµРЅРёС‚СЊ СЃРґРµР»РєСѓ</a>	</span>
+                    <span id="finance-btns-spinn" class="b-buttons__txt b-buttons__txt_padleft_10" style="display: none;">РёРґРµС‚ РїРѕРґРіРѕС‚РѕРІРєР° Рє СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЋ, СЌС‚Рѕ РјРѕР¶РµС‚ Р·Р°РЅСЏС‚СЊ РѕС‚ РЅРµСЃРєРѕР»СЊРєРёС… СЃРµРєСѓРЅРґ РґРѕ РјРёРЅСѓС‚С‹вЂ¦</span>
                 </div>
             </td>
             <td class="b-layout__right"></td>
@@ -162,8 +162,8 @@ $sbr->getInvoiceReqv($form_type, $reqv_mode);
 <? }//if?>
     
 <div id="reserve-error-box" class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb" style="display:none;">
-    <div class="b-layout__txt b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span>Ошибка.</div>
-    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_10">Платеж был отменен, либо произошла ошибка обработки платежа.</div>
-    <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-fon__link" href="javascript:void(0)" onclick="this.getParent('#reserve-error-box').hide(); if ($('reserveForm')) { $('reserveForm').show(); $('reserveForm').removeClass('b-layout_hide'); }">Выбрать другой тип оплаты</a></div>
-    <div class="b-layout__txt">По всем вопросам обращайтесь в <a class="b-layout__link" href="/about/feedback/">службу поддержки</a> или к <?= webim_button(2, 'консультанту', 'b-layout__link') ?>.</div>
+    <div class="b-layout__txt b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span>РћС€РёР±РєР°.</div>
+    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_10">РџР»Р°С‚РµР¶ Р±С‹Р» РѕС‚РјРµРЅРµРЅ, Р»РёР±Рѕ РїСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° РѕР±СЂР°Р±РѕС‚РєРё РїР»Р°С‚РµР¶Р°.</div>
+    <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-fon__link" href="javascript:void(0)" onclick="this.getParent('#reserve-error-box').hide(); if ($('reserveForm')) { $('reserveForm').show(); $('reserveForm').removeClass('b-layout_hide'); }">Р’С‹Р±СЂР°С‚СЊ РґСЂСѓРіРѕР№ С‚РёРї РѕРїР»Р°С‚С‹</a></div>
+    <div class="b-layout__txt">РџРѕ РІСЃРµРј РІРѕРїСЂРѕСЃР°Рј РѕР±СЂР°С‰Р°Р№С‚РµСЃСЊ РІ <a class="b-layout__link" href="/about/feedback/">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a> РёР»Рё Рє <?= webim_button(2, 'РєРѕРЅСЃСѓР»СЊС‚Р°РЅС‚Сѓ', 'b-layout__link') ?>.</div>
 </div>

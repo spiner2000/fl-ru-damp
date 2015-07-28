@@ -1,21 +1,21 @@
 <?php
 /**
- * Шаблон попап формы быстрого редактирования блогов
+ * РЁР°Р±Р»РѕРЅ РїРѕРїР°Рї С„РѕСЂРјС‹ Р±С‹СЃС‚СЂРѕРіРѕ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ Р±Р»РѕРіРѕРІ
  * @author Max 'BlackHawk' Yastrembovich
  */
 if ( !defined('IN_STDF') ) { 
-    header("HTTP/1.0 404 Not Found"); // ибо нефиг
+    header("HTTP/1.0 404 Not Found"); // РёР±Рѕ РЅРµС„РёРі
     exit();
 }
 ?>
 <div class="b-menu b-menu_rubric b-menu_padbot_10">
     <ul class="b-menu__list">
-        <li id="adm_edit_tab_i1" class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">Основное</span></span></li>
-        <li id="adm_edit_tab_i2" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(2); return false;">Файлы</a></li>
+        <li id="adm_edit_tab_i1" class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">РћСЃРЅРѕРІРЅРѕРµ</span></span></li>
+        <li id="adm_edit_tab_i2" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(2); return false;">Р¤Р°Р№Р»С‹</a></li>
         <?php if ( $rec_type == 1 ) { ?>
-        <li id="adm_edit_tab_i3" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(3); return false;">Опрос</a></li>
+        <li id="adm_edit_tab_i3" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(3); return false;">РћРїСЂРѕСЃ</a></li>
         <?php } ?>
-        <li id="adm_edit_tab_i<?=( $rec_type == 1 ? 4 : 3 )?>" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(<?=( $rec_type == 1 ? 4 : 3 )?>); return false;">Причина редактирования</a></li>
+        <li id="adm_edit_tab_i<?=( $rec_type == 1 ? 4 : 3 )?>" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(<?=( $rec_type == 1 ? 4 : 3 )?>); return false;">РџСЂРёС‡РёРЅР° СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ</a></li>
     </ul>
 </div>
 
@@ -32,14 +32,14 @@ if ( !defined('IN_STDF') ) {
 
 <div id="adm_edit_tab_div1">
     <div class="b-form">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_name">Заголовок</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_name">Р—Р°РіРѕР»РѕРІРѕРє</label>
         <div class="b-input b-input_inline-block b-input_width_545">
             <input type="text" id="adm_edit_name" name="name" value="<?=$edit_msg['title']?>" class="b-input__text" size="80">
         </div>
     </div>
 
     <div class="b-form">
-        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_msg">Текст</label>
+        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_msg">РўРµРєСЃС‚</label>
         <div class="b-textarea_inline-block b-textarea_width_550">
             <textarea id="adm_edit_msg_source" style="display:none" cols="50" rows="20"><?=input_ref($edit_msg['msgtext'])?></textarea>
             <textarea id="adm_edit_msg" name="msg" class="b-textarea__textarea_width_full b-textarea__textarea_height_70" cols="77" rows="5"></textarea>
@@ -75,25 +75,25 @@ if ( !defined('IN_STDF') ) {
 
     <?php if ( $rec_type == 1 ) { ?>
     <div class="b-form">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">Настройки</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">РќР°СЃС‚СЂРѕР№РєРё</label>
         <div class="b-input_inline-block b-input_width_545">
             <div class="b-check b-check_padtop_3">
                 <input id="adm_edit_ch_close_comments" class="b-check__input" type="checkbox" name="close_comments" value="1" <?=(($edit_msg['close_comments']=="t")?"checked='checked'":"")?> />
-                <label class="b-check__label" for="adm_edit_ch_close_comments" id="label_close_comments">Запретить комментирование (тема будет перенесена в раздел "Личные блоги")</label>
+                <label class="b-check__label" for="adm_edit_ch_close_comments" id="label_close_comments">Р—Р°РїСЂРµС‚РёС‚СЊ РєРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ (С‚РµРјР° Р±СѓРґРµС‚ РїРµСЂРµРЅРµСЃРµРЅР° РІ СЂР°Р·РґРµР» "Р›РёС‡РЅС‹Рµ Р±Р»РѕРіРё")</label>
             </div>
             <div class="b-check b-check_padtop_3">
                 <input id="adm_edit_ch_is_private" class="b-check__input" type="checkbox" name="is_private" value="1" <?=(($edit_msg['is_private']=="t")?"checked='checked'":"")?> />
-                <label class="b-check__label" for="adm_edit_ch_is_private" id="label_is_private">Показывать только мне (скрытые от пользователей темы видны модераторам)</label>
+                <label class="b-check__label" for="adm_edit_ch_is_private" id="label_is_private">РџРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ РјРЅРµ (СЃРєСЂС‹С‚С‹Рµ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ С‚РµРјС‹ РІРёРґРЅС‹ РјРѕРґРµСЂР°С‚РѕСЂР°Рј)</label>
             </div>
             <div class="b-check b-check_padtop_3">
                 <input class="b-check__input" type="checkbox" id="adm_edit_ontopid" name="ontop" value="1" <?=(($edit_msg['ontop']=='t')? 'checked="checked"': '')?> />
-                <label class="b-check__label b-check__label_fontsize_11" for="adm_edit_ontopid">Закрепить тему наверху</label>
+                <label class="b-check__label b-check__label_fontsize_11" for="adm_edit_ontopid">Р—Р°РєСЂРµРїРёС‚СЊ С‚РµРјСѓ РЅР°РІРµСЂС…Сѓ</label>
             </div>
         </div>
     </div>
     
     <div class="b-form b-form_padtop_10">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">Раздел</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">Р Р°Р·РґРµР»</label>
         <div class="b-input_inline-block b-input_width_545">
             <select id="adm_edit_category" name="category" class="b-select__select b-select__select_width_full" tabindex="300">
             <?php if ( $groups ) {
@@ -122,7 +122,7 @@ if ( !defined('IN_STDF') ) {
 <?php if ( $rec_type == 1 ) { ?>
 <div id="adm_edit_tab_div3" style="display: none;">
     <div class="b-form">
-        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_question">Вопрос</label>
+        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_question">Р’РѕРїСЂРѕСЃ</label>
         <div class="b-textarea_inline-block b-textarea_width_550">
             <textarea cols="50" rows="20" id="adm_edit_question_source" style="display: none"><?=$edit_msg['poll_question']?></textarea>
             <textarea id="adm_edit_question" name="question" class="b-textarea__textarea_width_full b-textarea__textarea_height_70" cols="77" rows="5"></textarea>
@@ -141,16 +141,16 @@ if ( !defined('IN_STDF') ) {
     </div>
     
     <div class="b-form">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">Тип опроса</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">РўРёРї РѕРїСЂРѕСЃР°</label>
         <div class="b-input_inline-block b-input_width_545">
             <div class="b-radio  b-radio_layout_horizontal">
                 <div class="b-radio__item">
                     <input id="fmultiple0" class="b-radio__input" type="radio" name="multiple" value="0" <?=($edit_msg['poll_multiple'] != 't' ? "checked='checked'": "")?> />
-                    <label class="b-radio__label" for="fmultiple0">Один вариант ответа&nbsp;&nbsp;&nbsp;</label>
+                    <label class="b-radio__label" for="fmultiple0">РћРґРёРЅ РІР°СЂРёР°РЅС‚ РѕС‚РІРµС‚Р°&nbsp;&nbsp;&nbsp;</label>
                 </div>
                 <div class="b-radio__item">
                     <input id="fmultiple1" class="b-radio__input" type="radio" name="multiple" value="1" <?=($edit_msg['poll_multiple'] == 't' ? "checked='checked'": "")?> />
-                    <label class="b-radio__label" for="fmultiple1">Несколько вариантов ответа</label>
+                    <label class="b-radio__label" for="fmultiple1">РќРµСЃРєРѕР»СЊРєРѕ РІР°СЂРёР°РЅС‚РѕРІ РѕС‚РІРµС‚Р°</label>
                 </div>
             </div>
         </div>
@@ -167,14 +167,14 @@ if ( !defined('IN_STDF') ) {
             <tr valign="top" class="poll-line" id="poll-<?=$i?>">
                 <td class="b-form__name_width_80">
                     <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">
-                        Ответ #<span class="poll-num"><?=($i + 1)?></span>
+                        РћС‚РІРµС‚ #<span class="poll-num"><?=($i + 1)?></span>
                     </label>
                 </td>
                 <td>
                     <table cellpadding="0" cellspacing="0" border="0" style="width:100%;">
                     <tr>
                         <td><input maxlength="<?=blogs::MAX_POLL_ANSWER_CHARS?>" class="poll-answer" type="text" value="<?=$answer['answer']?>" <?=($answer['id'] ? "name='answers_exists[{$answer['id']}]'" : "name='answers[]'")?> tabindex="20<?=$i?>" style="width: 99%;" /></td>
-                        <td class="poll-btn" style="width: 20px; text-align: right; padding-top: 4px;"><a class="poll-del" href="javascript: return false" onclick="poll.del('Blogs', <?=($i++)?>); return false;"><img src="/images/delpoll.png" width="15" height="15"  alt="Удалить ответ" title="Удалить ответ" /></a></td>
+                        <td class="poll-btn" style="width: 20px; text-align: right; padding-top: 4px;"><a class="poll-del" href="javascript: return false" onclick="poll.del('Blogs', <?=($i++)?>); return false;"><img src="/images/delpoll.png" width="15" height="15"  alt="РЈРґР°Р»РёС‚СЊ РѕС‚РІРµС‚" title="РЈРґР°Р»РёС‚СЊ РѕС‚РІРµС‚" /></a></td>
                         <td class="poll-btn" style="width: 20px; text-align: right; padding-top: 4px;"><span class="poll-add">&nbsp;</span></td>
                     </tr>
                     </table>

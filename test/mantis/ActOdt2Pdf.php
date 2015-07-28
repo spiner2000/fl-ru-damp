@@ -33,17 +33,17 @@ class ActOdt2Pdf extends odt2pdf
                 $this->zip->close();
                 $this->execConvert();
 //                if($exec != '') {
-//                    $this->log->writeln("unoconv закончил работу -- {$exec}");
+//                    $this->log->writeln("unoconv Р·Р°РєРѕРЅС‡РёР» СЂР°Р±РѕС‚Сѓ -- {$exec}");
 //                }
 //                if(!file_exists($this->outputpath . $this->convert_file . ".pdf")) {
 //                    $this->log->writeln("Template: {$this->doc}");
-//                    $this->log->writeln("Ошибка конвертации unoconv (проверте работоспособность unoconv или soffice) (file not exists -- {$this->outputpath}{$this->convert_file}.pdf)");
+//                    $this->log->writeln("РћС€РёР±РєР° РєРѕРЅРІРµСЂС‚Р°С†РёРё unoconv (РїСЂРѕРІРµСЂС‚Рµ СЂР°Р±РѕС‚РѕСЃРїРѕСЃРѕР±РЅРѕСЃС‚СЊ unoconv РёР»Рё soffice) (file not exists -- {$this->outputpath}{$this->convert_file}.pdf)");
 //                    unlink($this->file_path);
 //                    return false;
 //                }
 //                $this->output = $this->getOutput();
                 if($this->output == '') {
-                    $this->log->writeln("Ошибка конвертации шаблона (проверте шаблон на повержденные участки (не валидный xml внутри шаблона) -- {$this->doc})");
+                    $this->log->writeln("РћС€РёР±РєР° РєРѕРЅРІРµСЂС‚Р°С†РёРё С€Р°Р±Р»РѕРЅР° (РїСЂРѕРІРµСЂС‚Рµ С€Р°Р±Р»РѕРЅ РЅР° РїРѕРІРµСЂР¶РґРµРЅРЅС‹Рµ СѓС‡Р°СЃС‚РєРё (РЅРµ РІР°Р»РёРґРЅС‹Р№ xml РІРЅСѓС‚СЂРё С€Р°Р±Р»РѕРЅР°) -- {$this->doc})");
                 }
                 
                 if(!$this->_stop_remove){
@@ -55,11 +55,11 @@ class ActOdt2Pdf extends odt2pdf
                 }
             } else {
                 $this->log->writeln("Template: {$this->doc}");
-                $this->log->writeln("Ошибка открытия архива -- {$this->file_path}");
+                $this->log->writeln("РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ Р°СЂС…РёРІР° -- {$this->file_path}");
             }
         } else {
             $fname = $this->getFolder() . $this->doc;
-            $this->log->writeln("Ошибка клонирования файла шаблона -- {$fname}");
+            $this->log->writeln("РћС€РёР±РєР° РєР»РѕРЅРёСЂРѕРІР°РЅРёСЏ С„Р°Р№Р»Р° С€Р°Р±Р»РѕРЅР° -- {$fname}");
         }
     }
     

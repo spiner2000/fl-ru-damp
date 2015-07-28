@@ -27,7 +27,7 @@ class OpauthModel {
     private $type_names = array(
         self::TYPE_FACEBOOK => 'Facebook',
         self::TYPE_VK => 'VKontakte',
-        self::TYPE_ODNOKLASSNIKI => 'Одноклассники'
+        self::TYPE_ODNOKLASSNIKI => 'РћРґРЅРѕРєР»Р°СЃСЃРЅРёРєРё'
     );
     
     private $url_prefixes = array(
@@ -86,7 +86,7 @@ class OpauthModel {
     }
     
     /**
-     * Возвращает тип соцсети, у которой включена двухэтапная аунтификация
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ С‚РёРї СЃРѕС†СЃРµС‚Рё, Сѓ РєРѕС‚РѕСЂРѕР№ РІРєР»СЋС‡РµРЅР° РґРІСѓС…СЌС‚Р°РїРЅР°СЏ Р°СѓРЅС‚РёС„РёРєР°С†РёСЏ
      * @param type $user_id
      * @return array|boolean
      */
@@ -107,7 +107,7 @@ class OpauthModel {
     
     
     /**
-     * Добавляет флаг двухэтапной аутентификации 
+     * Р”РѕР±Р°РІР»СЏРµС‚ С„Р»Р°Рі РґРІСѓС…СЌС‚Р°РїРЅРѕР№ Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёРё 
      * @param type $user_id
      * @param type $type
      * @return type
@@ -120,7 +120,7 @@ class OpauthModel {
     
     
     /**
-     * Удаляет флаг двухэтапной аутентификации
+     * РЈРґР°Р»СЏРµС‚ С„Р»Р°Рі РґРІСѓС…СЌС‚Р°РїРЅРѕР№ Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёРё
      * @param type $user_id
      */
     public function removeMultilevel($user_id)

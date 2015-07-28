@@ -44,7 +44,7 @@ $emp_redirect = OpauthHelper::getEmpRedirect();
 
 $user = $opauthModel->getUser();
 if ($user) {
-    //Уже есть привязка
+    //РЈР¶Рµ РµСЃС‚СЊ РїСЂРёРІСЏР·РєР°
     unset($_SESSION['opauth']);
     if ($type == OpauthHelper::ACTION_REGISTER) {
         
@@ -58,7 +58,7 @@ if ($user) {
             if (!empty($customRedirect)) {
                 $_SESSION['2fa_redirect'] = array('redirectUri' => $customRedirect);
             }
-            //Редирект на 2ой атап авторизации
+            //Р РµРґРёСЂРµРєС‚ РЅР° 2РѕР№ Р°С‚Р°Рї Р°РІС‚РѕСЂРёР·Р°С†РёРё
             $back_url = '/auth/second/';
         } elseif (!$back_url) {
             $back_url = (is_emp() ? '/' : '/projects/');
@@ -66,10 +66,10 @@ if ($user) {
         
         
         
-        //Успешная авторизация
+        //РЈСЃРїРµС€РЅР°СЏ Р°РІС‚РѕСЂРёР·Р°С†РёСЏ
         if ($id > 0) {
             
-            //Отправляем в очередь событие об успешной авторизации
+            //РћС‚РїСЂР°РІР»СЏРµРј РІ РѕС‡РµСЂРµРґСЊ СЃРѕР±С‹С‚РёРµ РѕР± СѓСЃРїРµС€РЅРѕР№ Р°РІС‚РѕСЂРёР·Р°С†РёРё
             if ($type = $opauthModel->getShortType()) {
                 require_once(ABS_PATH . '/classes/statistic/StatisticFactory.php');
                 $ga = StatisticFactory::getInstance('GA');
@@ -85,7 +85,7 @@ if ($user) {
         }
         
     } else {
-        $_SESSION['opauth_error'] = "Данный аккаунт социальной сети уже привязан к другому пользователю";
+        $_SESSION['opauth_error'] = "Р”Р°РЅРЅС‹Р№ Р°РєРєР°СѓРЅС‚ СЃРѕС†РёР°Р»СЊРЅРѕР№ СЃРµС‚Рё СѓР¶Рµ РїСЂРёРІСЏР·Р°РЅ Рє РґСЂСѓРіРѕРјСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ";
     }
     
     header("Location: {$back_url}");

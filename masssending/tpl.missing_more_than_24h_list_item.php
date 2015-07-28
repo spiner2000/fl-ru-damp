@@ -18,7 +18,7 @@
                       </tr>
                       <tr>
                           <td  bgcolor="#ffffff" width="20"></td>
-                          <td  align="left" ><b><font color="#4ea828" size="3" face="arial,sans-serif"><?=$p["cost"] > 0 ? to_money($p["cost"]) : '' ?> <?=$p["measure"] /* р./проект */?></font></b></td>
+                          <td  align="left" ><b><font color="#4ea828" size="3" face="arial,sans-serif"><?=$p["cost"] > 0 ? to_money($p["cost"]) : '' ?> <?=$p["measure"] /* СЂ./РїСЂРѕРµРєС‚ */?></font></b></td>
                           <td  bgcolor="#ffffff" width="20"></td>
                       </tr>
                       <tr>

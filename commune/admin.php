@@ -3,8 +3,8 @@
 
    global $id, $comm, $alert, $user_mod;
 
-  // Все админы (модераторы, упрявляторы).
-  if(!($admins = commune::GetMembers($id, commune::MEMBER_ADMIN | commune::JOIN_STATUS_ACCEPTED))) // Хотя модераторы всегда is_accepted.
+  // Р’СЃРµ Р°РґРјРёРЅС‹ (РјРѕРґРµСЂР°С‚РѕСЂС‹, СѓРїСЂСЏРІР»СЏС‚РѕСЂС‹).
+  if(!($admins = commune::GetMembers($id, commune::MEMBER_ADMIN | commune::JOIN_STATUS_ACCEPTED))) // РҐРѕС‚СЏ РјРѕРґРµСЂР°С‚РѕСЂС‹ РІСЃРµРіРґР° is_accepted.
     $admins = array();
 
   $adminCnt = count($admins);
@@ -13,7 +13,7 @@
   <table border="0" width="100%" cellpadding="0" cellspacing="0">
     <tr valign="middle">
       <td>
-        <h1><a style="color:#666" href="?id=<?=$comm['id']?>">Сообщество &laquo;<?=$comm['name']?>&raquo;</a></h1>
+        <h1><a style="color:#666" href="?id=<?=$comm['id']?>">РЎРѕРѕР±С‰РµСЃС‚РІРѕ &laquo;<?=$comm['name']?>&raquo;</a></h1>
       </td>
     </tr>
   </table>
@@ -26,10 +26,10 @@
           <col/>
           <tr valign="top">
             <td>
-              <b>Администрация</b>
-              <? if($user_mod & (commune::MOD_ADMIN | commune::MOD_COMM_AUTHOR | commune::MOD_COMM_MANAGER)) { ?> <?// Хотя comm_manager сюда не попадет. На всякий случай... ?>
+              <b>РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ</b>
+              <? if($user_mod & (commune::MOD_ADMIN | commune::MOD_COMM_AUTHOR | commune::MOD_COMM_MANAGER)) { ?> <?// РҐРѕС‚СЏ comm_manager СЃСЋРґР° РЅРµ РїРѕРїР°РґРµС‚. РќР° РІСЃСЏРєРёР№ СЃР»СѓС‡Р°Р№... ?>
                 <br/><br/>
-                <a class="blue" href="?id=<?=$id?>&site=Admin.members"><b>Участники</b></a>
+                <a class="blue" href="?id=<?=$id?>&site=Admin.members"><b>РЈС‡Р°СЃС‚РЅРёРєРё</b></a>
               <? } ?>
             </td>
             <td style="padding-left:40px">
@@ -42,10 +42,10 @@
                   <tr valign="top">
                     <td colspan="4" style="padding:0 0 50px 10px">
                       <div>
-                        <b>Добавить в администрацию</b> <? // !!! А если забанен?>
+                        <b>Р”РѕР±Р°РІРёС‚СЊ РІ Р°РґРјРёРЅРёСЃС‚СЂР°С†РёСЋ</b> <? // !!! Рђ РµСЃР»Рё Р·Р°Р±Р°РЅРµРЅ?>
                       </div>
                       <div style="padding-top:2px">
-                        Не больше шести человек
+                        РќРµ Р±РѕР»СЊС€Рµ С€РµСЃС‚Рё С‡РµР»РѕРІРµРє
                       </div>
                       <div style="padding-top:10px">
                         <form action="." method="get">
@@ -53,7 +53,7 @@
                           <input type="hidden" name="site" value="Admin"/>
                           <input type="hidden" name="action" value="do.Add.admin"/>
                           <input type="text" name="user_login" style="width:200px"/>&nbsp;&nbsp;
-                          <input type="submit" style="width:90px" value="Добавить"/>
+                          <input type="submit" style="width:90px" value="Р”РѕР±Р°РІРёС‚СЊ"/>
                           <?=(isset($alert['user_login']) ? view_error($alert['user_login']) : '')?>
                         </form>
                       </div>
@@ -64,11 +64,11 @@
                   <tr valign="middle">
                     <td align="center">&nbsp;</td>
                     <td align="center">
-                      <b>Модерирование</b>
+                      <b>РњРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ</b>
                     </td>
                     <td align="center">
-                      <b>Управление людьми</b><br/>
-                      Бан/Приглашения/Удаления
+                      <b>РЈРїСЂР°РІР»РµРЅРёРµ Р»СЋРґСЊРјРё</b><br/>
+                      Р‘Р°РЅ/РџСЂРёРіР»Р°С€РµРЅРёСЏ/РЈРґР°Р»РµРЅРёСЏ
                     </td>
                     <td align="center">&nbsp;</td>
                   </tr>
@@ -111,13 +111,13 @@
                           /><input name="is_manager[]" type="hidden" value="<?=($adm['is_manager']=='t' ? 1 : 0)?>"/>
                         </td>
                         <td style="border-top: 1px solid #DCDBD9;" align="center">
-                          <a class="blue" href="?id=<?=$id?>&site=Admin&m=<?=$adm['id']?>&action=do.Remove.admin"><b>Удалить</b></a>
+                          <a class="blue" href="?id=<?=$id?>&site=Admin&m=<?=$adm['id']?>&action=do.Remove.admin"><b>РЈРґР°Р»РёС‚СЊ</b></a>
                         </td>
                       </tr>
                     <? } ?>
                     <tr valign="top">
                       <td colspan="4" style="padding:50px 0 25px 10px">
-                        <input type="submit" style="width:110px" value="Сохранить"/>
+                        <input type="submit" style="width:110px" value="РЎРѕС…СЂР°РЅРёС‚СЊ"/>
                       </td>
                     </tr>
                   </form>

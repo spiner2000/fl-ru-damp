@@ -28,7 +28,7 @@ $stop_words = new stop_words( true );
     $pages = ceil($deniedCnt/$per_page);  
   }
   
-  function chel($num){return('человек'.((($num%100>=11&&$num%100<=14)||$num%10>4||!($num%10)||$num%10==1)?'':'а'));}
+  function chel($num){return('С‡РµР»РѕРІРµРє'.((($num%100>=11&&$num%100<=14)||$num%10>4||!($num%10)||$num%10==1)?'':'Р°'));}
 /*
   function __prntUsrInfo(
    $user,
@@ -80,7 +80,7 @@ function masssendingSave() {
 
 <? if ($_GET['result']=='success') { ?>
   <div>
-    <img src="/images/ico_ok.gif" alt="" border="0" height="18" width="19"/>&nbsp;&nbsp;Готово!
+    <img src="/images/ico_ok.gif" alt="" border="0" height="18" width="19"/>&nbsp;&nbsp;Р“РѕС‚РѕРІРѕ!
     <br/>
     <br/>
   </div>
@@ -98,15 +98,15 @@ function masssendingSave() {
       <table border="0" cellspacing="0" cellpadding="4">
         <tr>
           <td class="bm<?=($om==masssending::OM_NEW?'-active':'')?>">
-            <a href="?om=<?=masssending::OM_NEW?>">Новые</a>&nbsp;<span class="bm-num"><?=$newCnt?></span>
+            <a href="?om=<?=masssending::OM_NEW?>">РќРѕРІС‹Рµ</a>&nbsp;<span class="bm-num"><?=$newCnt?></span>
           </td>
           <td style="width:5px">&nbsp;</td>
           <td class="bm<?=($om==masssending::OM_ACCEPTED?'-active':'')?>">
-            <a href="?om=<?=masssending::OM_ACCEPTED?>">Разрешенные</a>&nbsp;<span class="bm-num"><?=$acceptedCnt?></span>
+            <a href="?om=<?=masssending::OM_ACCEPTED?>">Р Р°Р·СЂРµС€РµРЅРЅС‹Рµ</a>&nbsp;<span class="bm-num"><?=$acceptedCnt?></span>
           </td>
           <td style="width:5px">&nbsp;</td>
           <td class="bm<?=($om==masssending::OM_DENIED?'-active':'')?>">
-            <a href="?om=<?=masssending::OM_DENIED?>">Отказанные</a>&nbsp;<span class="bm-num"><?=$deniedCnt?></span>
+            <a href="?om=<?=masssending::OM_DENIED?>">РћС‚РєР°Р·Р°РЅРЅС‹Рµ</a>&nbsp;<span class="bm-num"><?=$deniedCnt?></span>
           </td>
         </tr>
       </table>
@@ -114,19 +114,19 @@ function masssendingSave() {
     <td style="width:190px;height:100px" class="black">
       <form action="/siteadmin/masssending/" method="post">
         <div style="position:absolute;margin-top:-10px;margin-left:-4px;background:#f0f0f0;text-align:right;padding:10px 40px 10px 40px">
-          <div align="left">Цена за человека</div>
+          <div align="left">Р¦РµРЅР° Р·Р° С‡РµР»РѕРІРµРєР°</div>
           <div style="margin-top:10px">
-            <label for="idNoPro">без <img src="/images/icons/f-pro.png" class="pro"></label>
+            <label for="idNoPro">Р±РµР· <img src="/images/icons/f-pro.png" class="pro"></label>
             <input id="idNoPro" type="text" name="no_pro" value="<?=preg_replace('/\.00$/','',$tariff['no_pro'])?>" style="width:40px;text-align:right;padding-right:3px" />
-            руб.
+            СЂСѓР±.
           </div>
           <div style="margin-top:2px">
-            <label for="idPro">с <img src="/images/icons/f-pro.png" class="pro"></label>
+            <label for="idPro">СЃ <img src="/images/icons/f-pro.png" class="pro"></label>
             <input id="idPro" type="text" name="pro" value="<?=preg_replace('/\.00$/','',$tariff['pro'])?>" style="width:40px;text-align:right;padding-right:3px" />
-            руб.
+            СЂСѓР±.
           </div>
           <div style="margin:10px 15px 0 0">
-            <input type="submit" value="Сохранить" style="width:90px" />
+            <input type="submit" value="РЎРѕС…СЂР°РЅРёС‚СЊ" style="width:90px" />
           </div>
         </div>
         <input name="om" type="hidden" value="<?=$om?>"/>
@@ -157,7 +157,7 @@ function masssendingSave() {
 				$fl .= '<div class = "flw_offer_attach">'.viewattachLeft( null, $file['fname'], $file['path'], $file, 0, 0, 0, 0, 0, 0, $nn )."</div>";
 			}
       $fl .= '</div>';
-			echo "<b>Файлы:</b></br>" . $fl;
+			echo "<b>Р¤Р°Р№Р»С‹:</b></br>" . $fl;
 		}
 		?>
 		</div>
@@ -169,13 +169,13 @@ function masssendingSave() {
         <table border="0" cellspacing="0" cellpadding="0" width="100%">
           <tr valign="middle">
             <td  style="padding:15px 0 15px 0;width:160px;background:#f0f0f0;font-size:18px; text-align:center">
-              <span>Сумма:</span>
-              <span style="color:#6bb24b"><?=preg_replace('/\.00$/','',round($ps['pre_sum'],2))?>&nbsp;руб.</span>
+              <span>РЎСѓРјРјР°:</span>
+              <span style="color:#6bb24b"><?=preg_replace('/\.00$/','',round($ps['pre_sum'],2))?>&nbsp;СЂСѓР±.</span>
               <div style="padding-top:2px"><?=$ps['all_count'].'&nbsp;'.chel($ps['all_count'])?></div>
             </td>
             <td style="width:12px">&nbsp;</td>
             <td style="padding:5px 5px 8px 10px;background:#f0f0f0">
-              <div style="padding-bottom:5px"><b>Рассылка в разделы:</b></div>
+              <div style="padding-bottom:5px"><b>Р Р°СЃСЃС‹Р»РєР° РІ СЂР°Р·РґРµР»С‹:</b></div>
               <ul style="margin:0;padding-left:15px">
                 <?
                   if($ps['prof_names'] && ($prof_names = explode(',', $ps['prof_names']))) {
@@ -183,7 +183,7 @@ function masssendingSave() {
                       print("<li>{$name}</li>");
                   }
                   else
-                    print("<li>Все разделы</li>");
+                    print("<li>Р’СЃРµ СЂР°Р·РґРµР»С‹</li>");
                 ?>
               </ul>
             </td>
@@ -195,10 +195,10 @@ function masssendingSave() {
             <table border="0" cellspacing="0" cellpadding="0" width="100%" style="margin-top:30px">
               <tr valign="middle">
                 <td style="padding-left:5px;width:340px;background:#f4fde1;color:black">
-                  Все нормально
+                  Р’СЃРµ РЅРѕСЂРјР°Р»СЊРЅРѕ
                 </td>
                 <td style="padding-left:10px">
-                  <input type="image" name="Accept" src="/images/accept_rassilka.png" onclick="if(confirm('Разрешаем рассылку?')){document.getElementById('status-<?=$ps['id']?>').value='Accept';}else{return false;}" style="cursor: hand;" />
+                  <input type="image" name="Accept" src="/images/accept_rassilka.png" onclick="if(confirm('Р Р°Р·СЂРµС€Р°РµРј СЂР°СЃСЃС‹Р»РєСѓ?')){document.getElementById('status-<?=$ps['id']?>').value='Accept';}else{return false;}" style="cursor: hand;" />
                 </td>
               </tr>
               <tr valign="top">
@@ -209,7 +209,7 @@ function masssendingSave() {
                   <?=(isset($alert[$ps['id']]['denied_reason']) ? view_error($alert[$ps['id']]['denied_reason']) : '')?>
                 </td>
                 <td style="padding-top:5px; padding-left:10px;">
-                  <input type="image" name="Deny" src="/images/deny_rassilka.jpg" onclick="if(confirm('Отменяем рассылку?')){document.getElementById('status-<?=$ps['id']?>').value='Deny';}else{return false;}" style="cursor: hand;" />
+                  <input type="image" name="Deny" src="/images/deny_rassilka.jpg" onclick="if(confirm('РћС‚РјРµРЅСЏРµРј СЂР°СЃСЃС‹Р»РєСѓ?')){document.getElementById('status-<?=$ps['id']?>').value='Deny';}else{return false;}" style="cursor: hand;" />
                   <input type="image" name="Change" src="/images/edit-mass.gif" style="margin-top:5px !important; display:block; cursor: hand;" onClick="masssendingEdit(<?=$ps['id']?>); return false;">
                 </td>
               </tr>
@@ -218,7 +218,7 @@ function masssendingSave() {
             <input name="action" type="hidden" value="Decide"/>
           </form>
         <? } else if($om==masssending::OM_DENIED && $ps['denied_reason']) { ?>
-          <div style="margin:25px 0 2px 0"><b>Причина отказа:</b></div>
+          <div style="margin:25px 0 2px 0"><b>РџСЂРёС‡РёРЅР° РѕС‚РєР°Р·Р°:</b></div>
           <div><?=reformat2($ps['denied_reason'],30,0,1)?></div>
         <? } ?>
       </td>
@@ -253,8 +253,8 @@ function masssendingSave() {
         </div>
          <div class="b-popup__foot">
           <div class="b-buttons b-buttons_padtop_10">
-            <a href="#" onclick="masssendingSave(); return false;" class="b-button b-button_flat b-button_flat_green">Сохранить изменения</a>
-            <a href="#" class="b-buttons__link b-buttons__link_dot_0f71c8 b-popup__close">Закрыть без изменений</a>
+            <a href="#" onclick="masssendingSave(); return false;" class="b-button b-button_flat b-button_flat_green">РЎРѕС…СЂР°РЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ</a>
+            <a href="#" class="b-buttons__link b-buttons__link_dot_0f71c8 b-popup__close">Р—Р°РєСЂС‹С‚СЊ Р±РµР· РёР·РјРµРЅРµРЅРёР№</a>
           </div>
          </div>
        </div>

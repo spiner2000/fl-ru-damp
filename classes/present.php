@@ -1,17 +1,17 @@
 <?
 /**
- * Подключаем файл с основными функциями системы
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» СЃ РѕСЃРЅРѕРІРЅС‹РјРё С„СѓРЅРєС†РёСЏРјРё СЃРёСЃС‚РµРјС‹
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
- * Класс для работы с подарками (переводами) 
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РїРѕРґР°СЂРєР°РјРё (РїРµСЂРµРІРѕРґР°РјРё) 
  *
  */
 class present 
 {
 	/**
-	 * Получить информацию о подарке по id подарка (используется при переходе по ссылке "Вам подарок")
+	 * РџРѕР»СѓС‡РёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РїРѕРґР°СЂРєРµ РїРѕ id РїРѕРґР°СЂРєР° (РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РїСЂРё РїРµСЂРµС…РѕРґРµ РїРѕ СЃСЃС‹Р»РєРµ "Р’Р°Рј РїРѕРґР°СЂРѕРє")
 	 *
 	 * @param integer $id
 	 * @return array
@@ -27,8 +27,8 @@ class present
 	}
 	
 	/**
-	 * Получить id последнего подарка, подаренного юзеру по его UID и еще не просмотренного этим юзером (используется при переходе по ссылке "Вам подарок")
-	 * заодно возвращает op_code подарка (идентификатор типа подарка)
+	 * РџРѕР»СѓС‡РёС‚СЊ id РїРѕСЃР»РµРґРЅРµРіРѕ РїРѕРґР°СЂРєР°, РїРѕРґР°СЂРµРЅРЅРѕРіРѕ СЋР·РµСЂСѓ РїРѕ РµРіРѕ UID Рё РµС‰Рµ РЅРµ РїСЂРѕСЃРјРѕС‚СЂРµРЅРЅРѕРіРѕ СЌС‚РёРј СЋР·РµСЂРѕРј (РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РїСЂРё РїРµСЂРµС…РѕРґРµ РїРѕ СЃСЃС‹Р»РєРµ "Р’Р°Рј РїРѕРґР°СЂРѕРє")
+	 * Р·Р°РѕРґРЅРѕ РІРѕР·РІСЂР°С‰Р°РµС‚ op_code РїРѕРґР°СЂРєР° (РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚РёРїР° РїРѕРґР°СЂРєР°)
 	 *
 	 * @param integer $op_code
 	 * @param integer $uid
@@ -48,14 +48,14 @@ class present
     }
 
    /**
-    * Получить информацию о последнем не просмотренном подарке по UID получателя
+    * РџРѕР»СѓС‡РёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РїРѕСЃР»РµРґРЅРµРј РЅРµ РїСЂРѕСЃРјРѕС‚СЂРµРЅРЅРѕРј РїРѕРґР°СЂРєРµ РїРѕ UID РїРѕР»СѓС‡Р°С‚РµР»СЏ
     *
     * @param integer $uid
     * @return integer
     */
     function GetLastGiftByUid($uid) {
         global $DB;
-        // в ammount_from выводится сумма которую потратил даритель
+        // РІ ammount_from РІС‹РІРѕРґРёС‚СЃСЏ СЃСѓРјРјР° РєРѕС‚РѕСЂСѓСЋ РїРѕС‚СЂР°С‚РёР» РґР°СЂРёС‚РµР»СЊ
         $sql = "SELECT present.id, acop.op_code, oc.op_name,
                     uname, usurname, login, role, sex, acop.ammount, acop.trs_sum, acop_from.ammount as ammount_from
                 FROM present
@@ -73,11 +73,11 @@ class present
     }
 	
 	/**
-	 * Делает отметку о получении подарка(просмотре подарка) по id подарка и UID
+	 * Р”РµР»Р°РµС‚ РѕС‚РјРµС‚РєСѓ Рѕ РїРѕР»СѓС‡РµРЅРёРё РїРѕРґР°СЂРєР°(РїСЂРѕСЃРјРѕС‚СЂРµ РїРѕРґР°СЂРєР°) РїРѕ id РїРѕРґР°СЂРєР° Рё UID
 	 *
 	 * @param integer $gid
 	 * @param integer $uid
-	 * @return integer		возвращает всегда 0
+	 * @return integer		РІРѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµРіРґР° 0
 	 */
 	function SetGiftResv($gid, $uid){
         global $DB;
@@ -87,10 +87,10 @@ class present
 	}
 	
 	/**
-	 * Взять информацию об операциях о подарке (От кого или для кого был данный подарок)
+	 * Р’Р·СЏС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ РѕР± РѕРїРµСЂР°С†РёСЏС… Рѕ РїРѕРґР°СЂРєРµ (РћС‚ РєРѕРіРѕ РёР»Рё РґР»СЏ РєРѕРіРѕ Р±С‹Р» РґР°РЅРЅС‹Р№ РїРѕРґР°СЂРѕРє)
 	 * 
-	 * @param integer $bill_id ИД биллинга
-	 * @param integer $uid     ИД Юзера
+	 * @param integer $bill_id РР” Р±РёР»Р»РёРЅРіР°
+	 * @param integer $uid     РР” Р®Р·РµСЂР°
 	 * @return string
 	 */
 	function GetOrderInfo($bill_id, $uid){
@@ -102,16 +102,16 @@ class present
 		
 		extract( $DB->row($sql, $bill_id, $uid, $uid) );
 		
-		if ($ammount < 0) $out = "Перевод для <a href=\"/users/".$login."\" class=\"blue\">".$uname." ".$usurname." [".$login."]</a>";
-		else  $out = "Перевод от <a href=\"/users/".$login."\" class=\"blue\">".$uname." ".$usurname." [".$login."]</a>";
+		if ($ammount < 0) $out = "РџРµСЂРµРІРѕРґ РґР»СЏ <a href=\"/users/".$login."\" class=\"blue\">".$uname." ".$usurname." [".$login."]</a>";
+		else  $out = "РџРµСЂРµРІРѕРґ РѕС‚ <a href=\"/users/".$login."\" class=\"blue\">".$uname." ".$usurname." [".$login."]</a>";
 		return $out;
 	}
 	
 	/**
-	 * Удалить операцию о подарке
+	 * РЈРґР°Р»РёС‚СЊ РѕРїРµСЂР°С†РёСЋ Рѕ РїРѕРґР°СЂРєРµ
 	 *
-	 * @param integer $uid   ИД пользователя
-	 * @param integer $opid  ИД операции
+	 * @param integer $uid   РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param integer $opid  РР” РѕРїРµСЂР°С†РёРё
 	 */
 	function DelByOpId($uid, $opid){
 	    global $DB;
@@ -137,27 +137,27 @@ class present
 	}
 	
 	/**
-	 * Заблокировать операцию
+	 * Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РѕРїРµСЂР°С†РёСЋ
 	 *
-	 * @param integer $uid   ИД пользователя который производит блокировку
-	 * @param integer $opid  ИД операции
-	 * @return string Сообщение об ошибке
+	 * @param integer $uid   РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕС‚РѕСЂС‹Р№ РїСЂРѕРёР·РІРѕРґРёС‚ Р±Р»РѕРєРёСЂРѕРІРєСѓ
+	 * @param integer $opid  РР” РѕРїРµСЂР°С†РёРё
+	 * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function BlockedByOpId($uid, $opid) {
-		// Проверяем было ли ранее блокировано данная операция
+		// РџСЂРѕРІРµСЂСЏРµРј Р±С‹Р»Рѕ Р»Рё СЂР°РЅРµРµ Р±Р»РѕРєРёСЂРѕРІР°РЅРѕ РґР°РЅРЅР°СЏ РѕРїРµСЂР°С†РёСЏ
 		global $DB;
 		$sql  = "SELECT user_blocked FROM account_operations_blocked WHERE operation_id = ?";
 		$usid = $DB->val( $sql, $opid );
 		
 		if($usid>0) return false;
 		
-		// Выясняем обе операции которые необходимо заблокировать
+		// Р’С‹СЏСЃРЅСЏРµРј РѕР±Рµ РѕРїРµСЂР°С†РёРё РєРѕС‚РѕСЂС‹Рµ РЅРµРѕР±С…РѕРґРёРјРѕ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ
 		$sql = "SELECT billing_from_id AS bill_fid, billing_to_id AS bill_tid, from_uid AS fuid, to_uid AS tuid 
             FROM present WHERE billing_from_id = ? OR billing_to_id = ?";
 		
 		extract( $DB->row($sql, $opid, $opid) );
 		
-		// Блокируем обе операции
+		// Р‘Р»РѕРєРёСЂСѓРµРј РѕР±Рµ РѕРїРµСЂР°С†РёРё
 		$data = array( 
     		array('operation_id' => $bill_fid, 'user_blocked'=> $uid),  
     		array('operation_id' => $bill_tid, 'user_blocked'=> $uid) 
@@ -167,21 +167,21 @@ class present
 	}
 	
 	/**
-	 * Разблокировать заблокированную операцию
+	 * Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅСѓСЋ РѕРїРµСЂР°С†РёСЋ
 	 *
-	 * @param integer $uid   ИД пользователя который производит блокировку
-	 * @param integer $opid  ИД операции
-	 * @return string Сообщение об ошибке
+	 * @param integer $uid   РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕС‚РѕСЂС‹Р№ РїСЂРѕРёР·РІРѕРґРёС‚ Р±Р»РѕРєРёСЂРѕРІРєСѓ
+	 * @param integer $opid  РР” РѕРїРµСЂР°С†РёРё
+	 * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function unBlockedByOpId($uid, $opid) {
-		// Выясняем обе операции которые необходимо разблокировать
+		// Р’С‹СЏСЃРЅСЏРµРј РѕР±Рµ РѕРїРµСЂР°С†РёРё РєРѕС‚РѕСЂС‹Рµ РЅРµРѕР±С…РѕРґРёРјРѕ СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ
 		global $DB;
 		$sql = "SELECT billing_from_id, billing_to_id, from_uid, to_uid FROM present WHERE billing_from_id = ?i OR billing_to_id = ?i";
 		
 		extract( $DB->row($sql, $opid, $opid) );
 		
 		if ( !$DB->error ) {
-		    // Разблокируем обе операции
+		    // Р Р°Р·Р±Р»РѕРєРёСЂСѓРµРј РѕР±Рµ РѕРїРµСЂР°С†РёРё
 		    $sql = "DELETE FROM account_operations_blocked WHERE operation_id IN (?i, ?i)";
 		    return !!$DB->query( $sql, $billing_from_id, $billing_to_id );
 		}
@@ -189,19 +189,19 @@ class present
 	}
 	
 	/**
-	 * Информация о успешно прошедшей операции
+	 * РРЅС„РѕСЂРјР°С†РёСЏ Рѕ СѓСЃРїРµС€РЅРѕ РїСЂРѕС€РµРґС€РµР№ РѕРїРµСЂР°С†РёРё
 	 * 
-	 * @param array $data - Информация об операции
-	 * @return array информация
+	 * @param array $data - РРЅС„РѕСЂРјР°С†РёСЏ РѕР± РѕРїРµСЂР°С†РёРё
+	 * @return array РёРЅС„РѕСЂРјР°С†РёСЏ
 	 */
 	function getSuccessInfo($data) {
         $bill_col = 'billing_from_id';
         $user_col = 'to_uid';
-        $pfx = 'пользователю';
+        $pfx = 'РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ';
 	    if($data['ammount'] > 0) {
 	        $bill_col = 'billing_to_id';
 	        $user_col = 'from_uid';
-            $pfx = 'от пользователя';
+            $pfx = 'РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ';
 	    }
 	    global $DB;
         $sql = "SELECT u.login, u.uname, u.usurname FROM present p JOIN users u ON u.uid = p.{$user_col} WHERE p.{$bill_col} = ?i";
@@ -211,7 +211,7 @@ class present
     	    $suc = array("date"  => $data['op_date'],
     	                 "name"  => $data['op_name'],
     	                 "descr" => $pfx.' <a href="/users/'.$user['login'].'/">'.$user['login'].'</a>',
-    	                 "sum"   => abs($data['trs_sum']).' руб.'); 
+    	                 "sum"   => abs($data['trs_sum']).' СЂСѓР±.'); 
     	}
 	    return $suc;                        
 	}

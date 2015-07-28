@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Авторизация, точка входа
+ * РђРІС‚РѕСЂРёР·Р°С†РёСЏ, С‚РѕС‡РєР° РІС…РѕРґР°
  */
 
 define('IS_USER_ACTION', 1);
@@ -14,10 +14,10 @@ require_once(__DIR__ . '/controllers/LoginController.php');
 $module = new CModule('login');
 $module->setBasePath(dirname(__FILE__));
 $controller = new LoginController('login', $module);
-$controller->init(); // инициализация контролера
-$controller->run('index'); // запуск обработчика
+$controller->init(); // РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєРѕРЅС‚СЂРѕР»РµСЂР°
+$controller->run('index'); // Р·Р°РїСѓСЃРє РѕР±СЂР°Р±РѕС‚С‡РёРєР°
 
-//@todo: Отключает лишнюю обертку в template3
+//@todo: РћС‚РєР»СЋС‡Р°РµС‚ Р»РёС€РЅСЋСЋ РѕР±РµСЂС‚РєСѓ РІ template3
 $stretch_page = true;
 $registration_page = $registration_folder = true;
 $footer_registration = true;

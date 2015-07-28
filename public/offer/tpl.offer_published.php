@@ -6,16 +6,16 @@
             </td>
             <td class="b-layout__right b-layout__right_width_72ps">
 
-                <h1 class="b-page__title">Объявление «Сделаю» опубликовано</h1>
+                <h1 class="b-page__title">РћР±СЉСЏРІР»РµРЅРёРµ В«РЎРґРµР»Р°СЋВ» РѕРїСѓР±Р»РёРєРѕРІР°РЅРѕ</h1>
 
                 <div class="b-fon b-fon_padbot_30">
                 <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-                    <div class="b-fon__txt b-fon__txt_padbot_5"><span class="b-fon__ok"></span>Ваше объявление успешно опубликовано. <a class="b-fon__link" href="<?= $offer_url ?>">Перейти к объявлению</a>.</div>
-                    <div class="b-fon__txt">Если у вас возникнут вопросы, обращайтесь в <a class="b-fon__link" href="https://feedback.fl.ru/">службу поддержки</a>.</div>
+                    <div class="b-fon__txt b-fon__txt_padbot_5"><span class="b-fon__ok"></span>Р’Р°С€Рµ РѕР±СЉСЏРІР»РµРЅРёРµ СѓСЃРїРµС€РЅРѕ РѕРїСѓР±Р»РёРєРѕРІР°РЅРѕ. <a class="b-fon__link" href="<?= $offer_url ?>">РџРµСЂРµР№С‚Рё Рє РѕР±СЉСЏРІР»РµРЅРёСЋ</a>.</div>
+                    <div class="b-fon__txt">Р•СЃР»Рё Сѓ РІР°СЃ РІРѕР·РЅРёРєРЅСѓС‚ РІРѕРїСЂРѕСЃС‹, РѕР±СЂР°С‰Р°Р№С‚РµСЃСЊ РІ <a class="b-fon__link" href="https://feedback.fl.ru/">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.</div>
                 </div>
                 </div>                          
 
-                <div class="b-layout__txt b-layout__txt_padbot_5">Объявление стоило <span class="b-layout__txt b-layout__txt_bold b-layout__txt_color_fd6c30">1 FM</span></div>
+                <div class="b-layout__txt b-layout__txt_padbot_5">РћР±СЉСЏРІР»РµРЅРёРµ СЃС‚РѕРёР»Рѕ <span class="b-layout__txt b-layout__txt_bold b-layout__txt_color_fd6c30">1 FM</span></div>
 
 
                 <?

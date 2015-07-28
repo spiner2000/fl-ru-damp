@@ -7,8 +7,8 @@
             <div class="ov-in">
                 <h4 id="ov_msg"></h4>
                 <div class="ov-btns">
-                    <input id="ov_submit_btn" type="button" value="Да" class="i-btn i-bold">&nbsp;
-                    <a href="" class="lnk-dot-666" onclick="$(this).getParent('div.overlay').setStyle('display', 'none'); return false;">Нет</a>
+                    <input id="ov_submit_btn" type="button" value="Р”Р°" class="i-btn i-bold">&nbsp;
+                    <a href="" class="lnk-dot-666" onclick="$(this).getParent('div.overlay').setStyle('display', 'none'); return false;">РќРµС‚</a>
                 </div>
             </div>
         </div>

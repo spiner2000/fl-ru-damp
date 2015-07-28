@@ -1,7 +1,7 @@
 <?php
 /**
- * Шаблон по-умолчанию popup-окна нецелевого пополнения счета.
- * Не путать с погашение задолженности
+ * РЁР°Р±Р»РѕРЅ РїРѕ-СѓРјРѕР»С‡Р°РЅРёСЋ popup-РѕРєРЅР° РЅРµС†РµР»РµРІРѕРіРѕ РїРѕРїРѕР»РЅРµРЅРёСЏ СЃС‡РµС‚Р°.
+ * РќРµ РїСѓС‚Р°С‚СЊ СЃ РїРѕРіР°С€РµРЅРёРµ Р·Р°РґРѕР»Р¶РµРЅРЅРѕСЃС‚Рё
  */
 ?>
 <div id="<?= @$popup_id ?>" data-quick-payment="<?= $unic_name ?>" class="b-shadow b-shadow_block b-shadow_vertical-center b-shadow_width_520 <?= (!@$is_show) ? 'b-shadow_hide' : '' ?> b-shadow__quick">
@@ -27,13 +27,13 @@
                                     data-minimum="<?=$min_price?>" data-maximum="<?=$max_price?>">
                             </div>
                         </div>
-                        <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_width_60">руб.</div> 
+                        <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_width_60">СЂСѓР±.</div> 
                     </form>
                 </td>
                 <td class="b-layout__td">
                     <div class="b-layout__txt b-layout__txt_fontsize_11">
-                        Минимум <?=view_cost_format($min_price, false)?> руб.<br />
-                        Максимум <?=view_cost_format($max_price, false)?> руб.
+                        РњРёРЅРёРјСѓРј <?=view_cost_format($min_price, false)?> СЂСѓР±.<br />
+                        РњР°РєСЃРёРјСѓРј <?=view_cost_format($max_price, false)?> СЂСѓР±.
                     </div>
                 </td>
             </tr>

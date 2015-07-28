@@ -48,7 +48,7 @@ class TestOfLiveBrowser extends UnitTestCase {
         $browser = &new SimpleBrowser();
         $browser->addHeader('User-Agent: SimpleTest ' . SimpleTest::getVersion());
         $browser->get($this->samples() . 'link_confirm.php');
-        $this->assertTrue($browser->clickLink("märcêl kiek'eboe"));
+        $this->assertTrue($browser->clickLink("mÐ´rcÐºl kiek'eboe"));
         $this->assertPattern('/target for the SimpleTest/', $browser->getContent());
     }
     

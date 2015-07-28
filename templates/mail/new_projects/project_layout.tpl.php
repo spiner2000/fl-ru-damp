@@ -15,8 +15,8 @@
             <td width="20"></td>
             <td>
                 <font color="#7e7e7e" size="2" face="arial">
-                    Чтобы не пропустить ни одного письма от команды FL.ru, добавьте наш адрес no_reply@free-lance.ru в вашу адресную книгу. 
-                    <a href="https://feedback.fl.ru/topic/532678-instruktsiya-po-dobavleniyu-email-adresa-flru-v-spisok-kontaktov/">Инструкция</a>
+                    Р§С‚РѕР±С‹ РЅРµ РїСЂРѕРїСѓСЃС‚РёС‚СЊ РЅРё РѕРґРЅРѕРіРѕ РїРёСЃСЊРјР° РѕС‚ РєРѕРјР°РЅРґС‹ FL.ru, РґРѕР±Р°РІСЊС‚Рµ РЅР°С€ Р°РґСЂРµСЃ no_reply@free-lance.ru РІ РІР°С€Сѓ Р°РґСЂРµСЃРЅСѓСЋ РєРЅРёРіСѓ. 
+                    <a href="https://feedback.fl.ru/topic/532678-instruktsiya-po-dobavleniyu-email-adresa-flru-v-spisok-kontaktov/">РРЅСЃС‚СЂСѓРєС†РёСЏ</a>
                 </font>
             </td>
             <td width="20"></td>
@@ -31,7 +31,7 @@
         <td valign="top" width="70" ><a href="<?=$host?>" target="_blank"><img src="<?=$host?>/images/logo_50x50.png" width="55" height="55" border="0"></a></td>
         <td valign="middle" >
             <font color="#000000" size="6" face="arial">
-                <?=$title?> за <?=date( 'j', $date ) . ' ' . monthtostr(date('n', $date),true);?>
+                <?=$title?> Р·Р° <?=date( 'j', $date ) . ' ' . monthtostr(date('n', $date),true);?>
             </font>
         </td>
         <td  bgcolor="#ffffff" width="20"></td>
@@ -50,8 +50,8 @@
         <td  bgcolor="#ffffff" width="20"></td>
         <td valign="top">
               <font color="#7e7e7e" size="1" face="arial">
-                Это письмо сформировано вам автоматически, потому что вы подписаны на ежедневную рассылку проектов - отвечать на него не нужно.
-                Вы можете <a  style="color:#006ed6" target="_blank" href="<?=$host?><?=$unsubscribe_url?>">отписаться и больше не получать эту рассылку</a>
+                Р­С‚Рѕ РїРёСЃСЊРјРѕ СЃС„РѕСЂРјРёСЂРѕРІР°РЅРѕ РІР°Рј Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё, РїРѕС‚РѕРјСѓ С‡С‚Рѕ РІС‹ РїРѕРґРїРёСЃР°РЅС‹ РЅР° РµР¶РµРґРЅРµРІРЅСѓСЋ СЂР°СЃСЃС‹Р»РєСѓ РїСЂРѕРµРєС‚РѕРІ - РѕС‚РІРµС‡Р°С‚СЊ РЅР° РЅРµРіРѕ РЅРµ РЅСѓР¶РЅРѕ.
+                Р’С‹ РјРѕР¶РµС‚Рµ <a  style="color:#006ed6" target="_blank" href="<?=$host?><?=$unsubscribe_url?>">РѕС‚РїРёСЃР°С‚СЊСЃСЏ Рё Р±РѕР»СЊС€Рµ РЅРµ РїРѕР»СѓС‡Р°С‚СЊ СЌС‚Сѓ СЂР°СЃСЃС‹Р»РєСѓ</a>
               </font>
         </td>
         <td  bgcolor="#ffffff" width="20"></td>

@@ -38,7 +38,7 @@ $objLanguageManager->register('de', array(
 	'CMPRSAIO:WTERR:01' => 'Naar het xajax gecomprimeerde bestand <b>',
 	'CMPRSAIO:WTERR:02' => '/xajaxAIO.inc.php</b> kon niet worden geschreven.  Fout ',
 	'DTCTURI:01' => 'xajax Fout: xajax kon de Request URI niet automatisch identificeren.',
-	'DTCTURI:02' => 'Alstublieft, specificeer de Request URI expliciet bij het initiëren van het xajax object.',
+	'DTCTURI:02' => 'Alstublieft, specificeer de Request URI expliciet bij het initiГ«ren van het xajax object.',
 	'ARGMGR:ERR:01' => 'Misvormd object argument ontvangen: ',
 	'ARGMGR:ERR:02' => ' <==> ',
 	'ARGMGR:ERR:03' => 'De binnenkomende xajax data kon niet wordt geconverteerd van UTF-8.',

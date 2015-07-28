@@ -44,11 +44,11 @@ if (!defined ('XAJAX_PROCESSING_EVENT_BEFORE')) define ('XAJAX_PROCESSING_EVENT_
 if (!defined ('XAJAX_PROCESSING_EVENT_AFTER')) define ('XAJAX_PROCESSING_EVENT_AFTER', 'afterProcessing');
 if (!defined ('XAJAX_PROCESSING_EVENT_INVALID')) define ('XAJAX_PROCESSING_EVENT_INVALID', 'invalidRequest');
 
-// Разрешаем только POST (0015158)
+// Р Р°Р·СЂРµС€Р°РµРј С‚РѕР»СЊРєРѕ POST (0015158)
 if(isset($_GET['xjxfun'])) {
     $_GET = array();
 }
-include_once($_SERVER['DOCUMENT_ROOT']."/classes/stdf.php"); // для CSRF защиты!!!
+include_once($_SERVER['DOCUMENT_ROOT']."/classes/stdf.php"); // РґР»СЏ CSRF Р·Р°С‰РёС‚С‹!!!
 /*
 	Class: xajax
 

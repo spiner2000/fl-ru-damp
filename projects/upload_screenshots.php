@@ -41,11 +41,11 @@ if(isset($_POST['project_id']) && isset($_POST['emp_id']) && is_array($_FILES['a
                     $err = $attach->error;
                     $error = true;
                     if($attach->size > $attach->max_size) {
-                        $err = 'Недопустимый размер файла';
+                        $err = 'РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°';
                     }
                 } else {
                     if(!in_array($attach->getext(), array_merge($GLOBALS['graf_array'], array('doc', 'docx', 'txt', 'xls', 'xlsx')))) {
-                        $err = 'Недопустимый тип файла';
+                        $err = 'РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ С‚РёРї С„Р°Р№Р»Р°';
               		    $error = true;
                         continue;
                     } else {

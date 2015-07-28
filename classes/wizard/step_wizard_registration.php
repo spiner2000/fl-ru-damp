@@ -3,42 +3,42 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/wizard/step_wizard.php';
 
 /**
- * Общие шаги мастера регистрации
+ * РћР±С‰РёРµ С€Р°РіРё РјР°СЃС‚РµСЂР° СЂРµРіРёСЃС‚СЂР°С†РёРё
  */
 class step_wizard_registration extends step_wizard
 {
     /**
-     * Тип мастера работодателя 
+     * РўРёРї РјР°СЃС‚РµСЂР° СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ 
      */
     const TYPE_WIZARD_EMP = 1;
     
     /**
-     * Тип мастера фрилансера 
+     * РўРёРї РјР°СЃС‚РµСЂР° С„СЂРёР»Р°РЅСЃРµСЂР° 
      */
     const TYPE_WIZARD_FRL = 2;
     
     /**
-     * Типы валют и его идентификатор
+     * РўРёРїС‹ РІР°Р»СЋС‚ Рё РµРіРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ
      * 
      * @var array
      */
     public $CURRENCY_TYPE = array(
-        2 => "Руб",
+        2 => "Р СѓР±",
         0 => "USD",
-        1 => "Евро",
+        1 => "Р•РІСЂРѕ",
         3 => "FM"
     );
     
     /**
-     * цена за ....
+     * С†РµРЅР° Р·Р° ....
      * 
      * @var array
      */
     public $PRICEBY_TYPE = array(
-        1 => "цена за час",
-        2 => "цена за день",
-        3 => "цена за месяц",
-        4 => "цена за проект",
+        1 => "С†РµРЅР° Р·Р° С‡Р°СЃ",
+        2 => "С†РµРЅР° Р·Р° РґРµРЅСЊ",
+        3 => "С†РµРЅР° Р·Р° РјРµСЃСЏС†",
+        4 => "С†РµРЅР° Р·Р° РїСЂРѕРµРєС‚",
     );
     
     public function registration($type_wizard = step_wizard_registration::TYPE_WIZARD_EMP) {
@@ -72,7 +72,7 @@ class step_wizard_registration extends step_wizard
                 $_SESSION['w_reg_captcha_num'] = $captchanum;
                 $captcha = new captcha($captchanum);
                 if (!$captcha->checkNumber($num)) {
-                    $error['captcha'] = 'Неверный код. Попробуйте еще раз';
+                    $error['captcha'] = 'РќРµРІРµСЂРЅС‹Р№ РєРѕРґ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·';
                     unset($_SESSION['w_reg_captcha_num']);
                 }
             }
@@ -86,36 +86,36 @@ class step_wizard_registration extends step_wizard
             $agree  = trim(__paramInit('string', null, 'agree'));
             $phone  = trim(__paramInit('string', null, 'phone'));
             $smscode  = trim(__paramInit('string', null, 'smscode'));
-            // пароль берем напрямую из $_POST, а то __paramInit режет спецсимволы (пароль хешируется - SQL инъекция невозможна)
+            // РїР°СЂРѕР»СЊ Р±РµСЂРµРј РЅР°РїСЂСЏРјСѓСЋ РёР· $_POST, Р° С‚Рѕ __paramInit СЂРµР¶РµС‚ СЃРїРµС†СЃРёРјРІРѕР»С‹ (РїР°СЂРѕР»СЊ С…РµС€РёСЂСѓРµС‚СЃСЏ - SQL РёРЅСЉРµРєС†РёСЏ РЅРµРІРѕР·РјРѕР¶РЅР°)
             $passwd = $_POST['password'];
 
             if (!$agree) {
-                $error['agree'] = 'Прочтите и согласитесь с правилами';
+                $error['agree'] = 'РџСЂРѕС‡С‚РёС‚Рµ Рё СЃРѕРіР»Р°СЃРёС‚РµСЃСЊ СЃ РїСЂР°РІРёР»Р°РјРё';
             }
             if ($passwd == '') {
-                $error['pwd'] = 'Введите пароль';
+                $error['pwd'] = 'Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ';
             }
             if (!preg_match("/^[a-zA-Z0-9]+[-a-zA-Z0-9_]{2,}$/", $login)) {
-                $error['login'] = 'От 3 до 15 символов. Может содержать латинские буквы, цифры, подчёркивание (_) и дефис (-)';
+                $error['login'] = 'РћС‚ 3 РґРѕ 15 СЃРёРјРІРѕР»РѕРІ. РњРѕР¶РµС‚ СЃРѕРґРµСЂР¶Р°С‚СЊ Р»Р°С‚РёРЅСЃРєРёРµ Р±СѓРєРІС‹, С†РёС„СЂС‹, РїРѕРґС‡С‘СЂРєРёРІР°РЅРёРµ (_) Рё РґРµС„РёСЃ (-)';
             }
             if (in_array(strtolower($login), $GLOBALS['disallowUserLogins'])) {
-                $error['login'] = 'Извините, такой логин использовать нельзя';
+                $error['login'] = 'РР·РІРёРЅРёС‚Рµ, С‚Р°РєРѕР№ Р»РѕРіРёРЅ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РЅРµР»СЊР·СЏ';
             }
 
             if (!is_email($email)) {
-                $error['email'] = 'Поле заполнено некорректно';
+                $error['email'] = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
             }
             if ($smscode != $_SESSION["smsCode"]) {
-                $error['smscode'] = 'Код не совпал';
+                $error['smscode'] = 'РљРѕРґ РЅРµ СЃРѕРІРїР°Р»';
             }
             if ($phone != $_SESSION["reg_phone"]) {
-                $error['phone'] = 'Вы вводили другой номер при запросе кода';
+                $error['phone'] = 'Р’С‹ РІРІРѕРґРёР»Рё РґСЂСѓРіРѕР№ РЅРѕРјРµСЂ РїСЂРё Р·Р°РїСЂРѕСЃРµ РєРѕРґР°';
             }
             $phone = preg_replace("#^\+#", "", $_SESSION["reg_phone"]);
             if (empty($error['login'])) {
                 $sql = "SELECT uid FROM users WHERE lower(login) = ?";
                 if ($this->_db->val($sql, strtolower($login))) {
-                    $error['login'] = 'Извините, такой логин уже существует';
+                    $error['login'] = 'РР·РІРёРЅРёС‚Рµ, С‚Р°РєРѕР№ Р»РѕРіРёРЅ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚';
                 }
             }
 
@@ -123,11 +123,11 @@ class step_wizard_registration extends step_wizard
                 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/temp_email.php");
 
                 if (temp_email::isTempEmail($email)) {
-                    $error['email'] = 'К сожалению, регистрация аккаунта на указанный адрес электронной почты невозможна. Пожалуйста, для регистрации воспользуйтесь почтовым адресом другого домена';
+                    $error['email'] = 'Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, СЂРµРіРёСЃС‚СЂР°С†РёСЏ Р°РєРєР°СѓРЅС‚Р° РЅР° СѓРєР°Р·Р°РЅРЅС‹Р№ Р°РґСЂРµСЃ СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ РїРѕС‡С‚С‹ РЅРµРІРѕР·РјРѕР¶РЅР°. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РґР»СЏ СЂРµРіРёСЃС‚СЂР°С†РёРё РІРѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ РїРѕС‡С‚РѕРІС‹Рј Р°РґСЂРµСЃРѕРј РґСЂСѓРіРѕРіРѕ РґРѕРјРµРЅР°';
                 } else {
                     $sql = "SELECT uid FROM users WHERE lower(email) = ?";
                     if ($this->_db->val($sql, strtolower($email))) {
-                        $error['email'] = 'Указанная вами электронная почта уже зарегистрирована. Авторизуйтесь на сайте или укажите другую электронную почту.';
+                        $error['email'] = 'РЈРєР°Р·Р°РЅРЅР°СЏ РІР°РјРё СЌР»РµРєС‚СЂРѕРЅРЅР°СЏ РїРѕС‡С‚Р° СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅР°. РђРІС‚РѕСЂРёР·СѓР№С‚РµСЃСЊ РЅР° СЃР°Р№С‚Рµ РёР»Рё СѓРєР°Р¶РёС‚Рµ РґСЂСѓРіСѓСЋ СЌР»РµРєС‚СЂРѕРЅРЅСѓСЋ РїРѕС‡С‚Сѓ.';
                     }
                 }
             }
@@ -162,33 +162,33 @@ class step_wizard_registration extends step_wizard
 
                     $smail = new smail();
                     $bSuspect = users::isSuspiciousUser($id, $newuser->login, '', $newuser->uname, '', $newuser->usurname, '');
-                    $sPasswd = ( $bSuspect ) ? $newuser->passwd : ''; // чтобы из админки можно было выслать $smail->NewUser
+                    $sPasswd = ( $bSuspect ) ? $newuser->passwd : ''; // С‡С‚РѕР±С‹ РёР· Р°РґРјРёРЅРєРё РјРѕР¶РЅРѕ Р±С‹Р»Рѕ РІС‹СЃР»Р°С‚СЊ $smail->NewUser
                     $code = activate_code::Create($id, $newuser->login, $sPasswd, $error);
 
                     if (!$bSuspect) {
                         $_SESSION['suspect'] = false;
-                        // юзер не подозрительный - сразу отпавляем юзеру письмо с кодом активации
+                        // СЋР·РµСЂ РЅРµ РїРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹Р№ - СЃСЂР°Р·Сѓ РѕС‚РїР°РІР»СЏРµРј СЋР·РµСЂСѓ РїРёСЃСЊРјРѕ СЃ РєРѕРґРѕРј Р°РєС‚РёРІР°С†РёРё
                         $smail->NewUser($newuser->login, false, $code, $this->getWizardUserID(), ($newuser->role? 'emp': 'frl'));
                     } else {
                         $_SESSION['suspect'] = true;
-                        // отправляем уведомление админу о том, что зарегистрировался подозрительный юзер
-                        // если админ его одобрит - то письмо с кодом активации уйдет из админки
+                        // РѕС‚РїСЂР°РІР»СЏРµРј СѓРІРµРґРѕРјР»РµРЅРёРµ Р°РґРјРёРЅСѓ Рѕ С‚РѕРј, С‡С‚Рѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°Р»СЃСЏ РїРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹Р№ СЋР·РµСЂ
+                        // РµСЃР»Рё Р°РґРјРёРЅ РµРіРѕ РѕРґРѕР±СЂРёС‚ - С‚Рѕ РїРёСЃСЊРјРѕ СЃ РєРѕРґРѕРј Р°РєС‚РёРІР°С†РёРё СѓР№РґРµС‚ РёР· Р°РґРјРёРЅРєРё
                         $smail->adminNewSuspectUser($newuser->login, $newuser->uname, $newuser->usurname);
                     }
-                    //Записываем подтвержденный номер телефона в финансы
+                    //Р—Р°РїРёСЃС‹РІР°РµРј РїРѕРґС‚РІРµСЂР¶РґРµРЅРЅС‹Р№ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РІ С„РёРЅР°РЅСЃС‹
                     require_once $_SERVER['DOCUMENT_ROOT']."/classes/sms_gate.php";
                     $phone = '+' . preg_replace("#^\+#", "", $_SESSION["reg_phone"]);
                     unset($_SESSION["regform_captcha_entered"]);
                     sms_gate::saveSmsInfo($phone, $_SESSION["reg_sms_isnn"], $_SESSION["smsCode"], $_SESION["reg_sms_date_send"], $id);
-                    // стираем куку, чтобы показался блок "Вы успешно зарегистрировались"
+                    // СЃС‚РёСЂР°РµРј РєСѓРєСѓ, С‡С‚РѕР±С‹ РїРѕРєР°Р·Р°Р»СЃСЏ Р±Р»РѕРє "Р’С‹ СѓСЃРїРµС€РЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°Р»РёСЃСЊ"
                     setcookie('master_auth', "", time()-3600, '/');
 
-                    // Серый список IP ----------------------
+                    // РЎРµСЂС‹Р№ СЃРїРёСЃРѕРє IP ----------------------
                     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/gray_ip.php' );
 
                     $aGrayList = gray_ip::getGrayListByRegIp(getRemoteIP());
 
-                    if ($aGrayList) { // есть записи в списке первичных IP
+                    if ($aGrayList) { // РµСЃС‚СЊ Р·Р°РїРёСЃРё РІ СЃРїРёСЃРєРµ РїРµСЂРІРёС‡РЅС‹С… IP
                         gray_ip::addSecondaryIp($id, $newuser->login, $newuser->role, $aGrayList);
                     }
                     //---------------------------------------
@@ -206,7 +206,7 @@ class step_wizard_registration extends step_wizard
     }
     
     /**
-     * авторизация в мастере
+     * Р°РІС‚РѕСЂРёР·Р°С†РёСЏ РІ РјР°СЃС‚РµСЂРµ
      */
     public function authorization (&$login) {
         $alert = array();
@@ -214,29 +214,29 @@ class step_wizard_registration extends step_wizard
         $user = new users;
         $role = $user->GetRole($login, $error);
         if ($error || !$role) {
-            $alert['login'] = 'Пользователя с таким логином не существует';
+            $alert['login'] = 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ С‚Р°РєРёРј Р»РѕРіРёРЅРѕРј РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚';
             return $alert;
         }
-        // проверяем совпадают ли роли в мастере и у пользователя
-        $role = $role == '000000' ? 2 : 1; // 2 - фрилансер, 1 - работодатель - роль зарегистрированного пользователя
+        // РїСЂРѕРІРµСЂСЏРµРј СЃРѕРІРїР°РґР°СЋС‚ Р»Рё СЂРѕР»Рё РІ РјР°СЃС‚РµСЂРµ Рё Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+        $role = $role == '000000' ? 2 : 1; // 2 - С„СЂРёР»Р°РЅСЃРµСЂ, 1 - СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ - СЂРѕР»СЊ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
         $wr = new wizard_registration;
-        $masterRole = (int)$wr->getRole(); // роль в мастере
+        $masterRole = (int)$wr->getRole(); // СЂРѕР»СЊ РІ РјР°СЃС‚РµСЂРµ
         if ($role !== $masterRole) {
             if ($masterRole === 1) {
-                $alert['login'] = 'На этом этапе войти можно только работодателем';
+                $alert['login'] = 'РќР° СЌС‚РѕРј СЌС‚Р°РїРµ РІРѕР№С‚Рё РјРѕР¶РЅРѕ С‚РѕР»СЊРєРѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµРј';
             } else {
-                $alert['login'] = 'На этом этапе войти можно только фрилансером';
+                $alert['login'] = 'РќР° СЌС‚РѕРј СЌС‚Р°РїРµ РІРѕР№С‚Рё РјРѕР¶РЅРѕ С‚РѕР»СЊРєРѕ С„СЂРёР»Р°РЅСЃРµСЂРѕРј';
             }
             return $alert;
         }
-        // хэш пароля
+        // С…СЌС€ РїР°СЂРѕР»СЏ
         $passwd = users::hashPasswd(trim($_POST['auth_password']));
         $id = login($login, $passwd, 0, true);
         if (!$id) {
-            $alert['password'] = 'Неверный пароль';
+            $alert['password'] = 'РќРµРІРµСЂРЅС‹Р№ РїР°СЂРѕР»СЊ';
             return $alert;
         }
-        // запоминаем в куках что авторизовались
+        // Р·Р°РїРѕРјРёРЅР°РµРј РІ РєСѓРєР°С… С‡С‚Рѕ Р°РІС‚РѕСЂРёР·РѕРІР°Р»РёСЃСЊ
         setcookie('master_auth', true, time()+1800, '/');
         
         $this->parent->saveActionWizard($this, step_wizard::STATUS_COMPLITED);
@@ -262,18 +262,18 @@ class step_wizard_registration extends step_wizard
         $themes_commune = commune::getRandomCommunes(3);
         
         $month = array(
-            '1'  => 'января',
-            '2'  => 'февраля',
-            '3'  => 'марта',
-            '4'  => 'апреля',
-            '5'  => 'мая',
-            '6'  => 'июня',
-            '7'  => 'июля',
-            '8'  => 'августа',
-            '9'  => 'сентября',
-            '10' => 'октября',
-            '11' => 'ноября',
-            '12' => 'декабря'
+            '1'  => 'СЏРЅРІР°СЂСЏ',
+            '2'  => 'С„РµРІСЂР°Р»СЏ',
+            '3'  => 'РјР°СЂС‚Р°',
+            '4'  => 'Р°РїСЂРµР»СЏ',
+            '5'  => 'РјР°СЏ',
+            '6'  => 'РёСЋРЅСЏ',
+            '7'  => 'РёСЋР»СЏ',
+            '8'  => 'Р°РІРіСѓСЃС‚Р°',
+            '9'  => 'СЃРµРЅС‚СЏР±СЂСЏ',
+            '10' => 'РѕРєС‚СЏР±СЂСЏ',
+            '11' => 'РЅРѕСЏР±СЂСЏ',
+            '12' => 'РґРµРєР°Р±СЂСЏ'
         );
         
         if($type_role == step_wizard_registration::TYPE_WIZARD_EMP) {
@@ -376,25 +376,25 @@ class step_wizard_registration extends step_wizard
             $usurname = __paramInit('string', null, 'usurname', null, 21);
             
             if($uname == '') {
-                $error['uname'] = "Поле заполнено некорректно"; 
+                $error['uname'] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; 
             }
             
             if($usurname == '') {
-                $error['usurname'] = "Поле заполнено некорректно"; 
+                $error['usurname'] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; 
             }
             
-            if (!preg_match("/^[-a-zA-Zа-яёА-ЯЁ]+$/", $uname)) {
-                $error['uname'] = "Поле заполнено некорректно";  
+            if (!preg_match("/^[-a-zA-ZР°-СЏС‘Рђ-РЇРЃ]+$/", $uname)) {
+                $error['uname'] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";  
             } else {
                 $user->uname = $uname;
             }
-            if (!preg_match("/^[-a-zA-Zа-яёА-ЯЁ]+$/", $usurname)) {
-                $error['usurname'] = "Поле заполнено некорректно";  
+            if (!preg_match("/^[-a-zA-ZР°-СЏС‘Рђ-РЇРЃ]+$/", $usurname)) {
+                $error['usurname'] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";  
             } else {
                 $user->usurname = $usurname;
             }
             
-            $sex  = __paramInit('int', null, 'sex', 1); // по умолчанию мужской пол
+            $sex  = __paramInit('int', null, 'sex', 1); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РјСѓР¶СЃРєРѕР№ РїРѕР»
             
             $user->sex = ($sex == 1 ? 't' : 'f');
 
@@ -405,7 +405,7 @@ class step_wizard_registration extends step_wizard
             
             if($bday != null && $byear != null) {
                 if (!is_numeric($bday) || !is_numeric($byear) || !checkdate($bmonth, $bday, $byear) || $byear < 1945 || $byear > date('Y') ) {
-                    $error['birthday'] = "Поле заполнено некорректно";
+                    $error['birthday'] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
                 } else {
                     $user->birthday = dateFormat("Y-m-d", $byear."-".$bmonth."-".$bday);
                 }
@@ -414,7 +414,7 @@ class step_wizard_registration extends step_wizard
             }
             
             if (!$error['birthday'] && $user->birthday && (date("Y", strtotime($user->birthday)) >= date("Y"))) {
-                $error['birthday'] = "Поле заполнено некорректно";
+                $error['birthday'] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
             }
 
             $city = __paramInit('int', null, 'city_db_id', 0);
@@ -423,10 +423,10 @@ class step_wizard_registration extends step_wizard
             $country_value = __paramInit('string', null, 'country', false);
             
             if ($city == 0 && strlen($city_value) != 0) {
-                $error['city'] = 'Поле заполнено некорректно';
+                $error['city'] = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
             }
             if ($country == 0 && strlen($country_value) != 0) {
-                $error['country'] = 'Поле заполнено некорректно';
+                $error['country'] = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
             }
             
             $user->country = $country;
@@ -437,7 +437,7 @@ class step_wizard_registration extends step_wizard
             
             $user->compname =  $company;
             if(strlen($about_company) > 500) {
-                $error['company'] = "Количество знаков в тексте о компании превышает допустимое значение";
+                $error['company'] = "РљРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°РєРѕРІ РІ С‚РµРєСЃС‚Рµ Рѕ РєРѕРјРїР°РЅРёРё РїСЂРµРІС‹С€Р°РµС‚ РґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ";
             } else {
                 $user->company = $about_company;
             }
@@ -460,7 +460,7 @@ class step_wizard_registration extends step_wizard
                 foreach($info['site'] as $i=>$value) {
                     $name = 'site'.($i!=0?"_{$i}":"");
                     if ( !url_validate(addhttp($value), true) && trimhttp($value) != '') {
-                        $error[$name] = "Поле заполнено некорректно";
+                        $error[$name] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
                     } else {
                         $user->$name = addhttp($value);
                     }
@@ -476,7 +476,7 @@ class step_wizard_registration extends step_wizard
                     }
                     $name = 'email'.($i!=0?"_{$i}":"");
                     if ( !is_email($value) && $value != '') {
-                        $error[$name] = "Поле заполнено некорректно";
+                        $error[$name] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
                     } else {
                         $user->$name_save = $value;
                     }
@@ -487,7 +487,7 @@ class step_wizard_registration extends step_wizard
                 foreach($info['phone'] as $i=>$value) {
                     $name = 'phone'.($i!=0?"_{$i}":"");
                     if ( !preg_match("/^[-+0-9)( #]*$/", $value) ) {
-                        $error[$name] = "Поле заполнено некорректно";
+                        $error[$name] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
                     } else {
                         $user->$name = $value;
                     }
@@ -498,7 +498,7 @@ class step_wizard_registration extends step_wizard
                 foreach($info['icq'] as $i=>$value) {
                     $name = 'icq'.($i!=0?"_{$i}":"");
                     if ( !preg_match("/^[-0-9\s]*$/", $value) && !is_email($value) ) {
-                        $error[$name] = "Поле заполнено некорректно";
+                        $error[$name] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
                     } else {
                         $user->$name = $value;
                     }
@@ -516,7 +516,7 @@ class step_wizard_registration extends step_wizard
                 foreach($info['jabber'] as $i=>$value) {
                     $name = 'jabber'.($i!=0?"_{$i}":"");
                     if ( strlen($value) > 255) {
-                        $error[$name] = "Количество знаков превышает допустимое значение";
+                        $error[$name] = "РљРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°РєРѕРІ РїСЂРµРІС‹С€Р°РµС‚ РґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ";
                     } else {
                         $user->$name = $value;
                     }
@@ -532,7 +532,7 @@ class step_wizard_registration extends step_wizard
                     }
                     $name = 'lj'.($i!=0?"_{$i}":"");
                     if ( !preg_match("/^[a-zA-Z0-9_-]*$/", $value)) {
-                        $error[$name] = "Поле заполнено некорректно";
+                        $error[$name] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
                     } else {
                         $user->$name_save = $value;
                     }
@@ -609,7 +609,7 @@ class step_wizard_registration extends step_wizard
                             $this->_db->query($sql, step_wizard::getWizardUserID(), step_employer::OP_CODE_PRO);
                         }
                     } else {
-                        // Чистим
+                        // Р§РёСЃС‚РёРј
                         $sql = "DELETE FROM wizard_billing WHERE wiz_uid = ? AND op_code IN (?l)";
                         $this->_db->query($sql, step_wizard::getWizardUserID(), step_freelancer::getOperationCodePRO());
                         
@@ -643,7 +643,7 @@ class step_wizard_registration extends step_wizard
     }
     
     /**
-     * Проверка ПРО у пользователей
+     * РџСЂРѕРІРµСЂРєР° РџР Рћ Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
      * 
      * @return type 
      */
@@ -654,7 +654,7 @@ class step_wizard_registration extends step_wizard
     }
     
     /**
-     * Обработка полей которых может быть несколько (icq, skype, etc)
+     * РћР±СЂР°Р±РѕС‚РєР° РїРѕР»РµР№ РєРѕС‚РѕСЂС‹С… РјРѕР¶РµС‚ Р±С‹С‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ (icq, skype, etc)
      * 
      * @param type $fname
      * @param type $name
@@ -677,7 +677,7 @@ class step_wizard_registration extends step_wizard
     }
     
     /**
-     * Инициализация полей 
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїРѕР»РµР№ 
      * 
      * @param type $name
      * @param type $itr
@@ -718,12 +718,12 @@ class step_wizard_registration extends step_wizard
     }
     
     /**
-     * Перенос файлов в рабочие папки сайта
+     * РџРµСЂРµРЅРѕСЃ С„Р°Р№Р»РѕРІ РІ СЂР°Р±РѕС‡РёРµ РїР°РїРєРё СЃР°Р№С‚Р°
      * 
-     * @param array  $files   Массив файлов
-     * @param string $table   Таблица для переноса
-     * @param string $dir     Директория для переноса
-     * @param bool = true $newName  Генерировать новое имя файла
+     * @param array  $files   РњР°СЃСЃРёРІ С„Р°Р№Р»РѕРІ
+     * @param string $table   РўР°Р±Р»РёС†Р° РґР»СЏ РїРµСЂРµРЅРѕСЃР°
+     * @param string $dir     Р”РёСЂРµРєС‚РѕСЂРёСЏ РґР»СЏ РїРµСЂРµРЅРѕСЃР°
+     * @param bool = true $newName  Р“РµРЅРµСЂРёСЂРѕРІР°С‚СЊ РЅРѕРІРѕРµ РёРјСЏ С„Р°Р№Р»Р°
      * @return array 
      */
     function transferFiles($files, $table, $dir, $newName = true) {

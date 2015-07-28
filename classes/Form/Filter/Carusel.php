@@ -7,8 +7,8 @@ class Form_Filter_Carusel implements Zend_Filter_Interface
     public function filter($value)
     {
         $value = change_q_x($value, TRUE, FALSE);
-        $value = strtolower( strtr ( $value, '¨ÉÖÓÊÅÍÃØÙÇÕÚÔÛÂÀÏĞÎËÄÆİß×ÑÌÈÒÜÁŞ', '¸éöóêåíãøùçõúôûâàïğîëäæıÿ÷ñìèòüáş' ) );
-        $value = preg_replace('/(^|[.!?]\s+)([a-zà-ÿ])/ie',"'$1'.strtoupper(strtr ( '$2', '¸éöóêåíãøùçõúôûâàïğîëäæıÿ÷ñìèòüáş', '¨ÉÖÓÊÅÍÃØÙÇÕÚÔÛÂÀÏĞÎËÄÆİß×ÑÌÈÒÜÁŞ' ))", $value);
+        $value = strtolower( strtr ( $value, 'ĞĞ™Ğ¦Ğ£ĞšĞ•ĞĞ“Ğ¨Ğ©Ğ—Ğ¥ĞªĞ¤Ğ«Ğ’ĞĞŸĞ ĞĞ›Ğ”Ğ–Ğ­Ğ¯Ğ§Ğ¡ĞœĞ˜Ğ¢Ğ¬Ğ‘Ğ®', 'Ñ‘Ğ¹Ñ†ÑƒĞºĞµĞ½Ğ³ÑˆÑ‰Ğ·Ñ…ÑŠÑ„Ñ‹Ğ²Ğ°Ğ¿Ñ€Ğ¾Ğ»Ğ´Ğ¶ÑÑÑ‡ÑĞ¼Ğ¸Ñ‚ÑŒĞ±Ñ' ) );
+        $value = preg_replace('/(^|[.!?]\s+)([a-zĞ°-Ñ])/ie',"'$1'.strtoupper(strtr ( '$2', 'Ñ‘Ğ¹Ñ†ÑƒĞºĞµĞ½Ğ³ÑˆÑ‰Ğ·Ñ…ÑŠÑ„Ñ‹Ğ²Ğ°Ğ¿Ñ€Ğ¾Ğ»Ğ´Ğ¶ÑÑÑ‡ÑĞ¼Ğ¸Ñ‚ÑŒĞ±Ñ', 'ĞĞ™Ğ¦Ğ£ĞšĞ•ĞĞ“Ğ¨Ğ©Ğ—Ğ¥ĞªĞ¤Ğ«Ğ’ĞĞŸĞ ĞĞ›Ğ”Ğ–Ğ­Ğ¯Ğ§Ğ¡ĞœĞ˜Ğ¢Ğ¬Ğ‘Ğ®' ))", $value);
         $value = str_replace("\r\n", "\n", $value);
         return $value;
     }

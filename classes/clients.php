@@ -1,23 +1,23 @@
 <?php
 
 /**
- * Подключаем файл основных функиця системы
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» РѕСЃРЅРѕРІРЅС‹С… С„СѓРЅРєРёС†СЏ СЃРёСЃС‚РµРјС‹
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
- * Класс для работы с клиентами
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РєР»РёРµРЅС‚Р°РјРё
  *
  */
 class clients
 {
     /**
-     * Создать нового клиента
+     * РЎРѕР·РґР°С‚СЊ РЅРѕРІРѕРіРѕ РєР»РёРµРЅС‚Р°
      *
-     * @param string $name  Название клиента
-     * @param string $link  Ссылка на сайт клиента   
-     * @param object $logo  Логотип клиента
-     * @param string $error Возвращает сообщение об ошибке если она есть
+     * @param string $name  РќР°Р·РІР°РЅРёРµ РєР»РёРµРЅС‚Р°
+     * @param string $link  РЎСЃС‹Р»РєР° РЅР° СЃР°Р№С‚ РєР»РёРµРЅС‚Р°   
+     * @param object $logo  Р›РѕРіРѕС‚РёРї РєР»РёРµРЅС‚Р°
+     * @param string $error Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РµСЃР»Рё РѕРЅР° РµСЃС‚СЊ
      */
     function newClient($name, $link, $logo, &$error) {
         global $DB;
@@ -39,16 +39,16 @@ class clients
     }
     
     /**
-     * Редактирование клиента
+     * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РєР»РёРµРЅС‚Р°
      *
-     * @param string $name  Название клиента
-     * @param string $link  Ссылка на сайт клиента   
-     * @param object $logo  Логотип клиента
-     * @param string $error Возвращает сообщение об ошибке если она есть
+     * @param string $name  РќР°Р·РІР°РЅРёРµ РєР»РёРµРЅС‚Р°
+     * @param string $link  РЎСЃС‹Р»РєР° РЅР° СЃР°Р№С‚ РєР»РёРµРЅС‚Р°   
+     * @param object $logo  Р›РѕРіРѕС‚РёРї РєР»РёРµРЅС‚Р°
+     * @param string $error Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РµСЃР»Рё РѕРЅР° РµСЃС‚СЊ
      */
     function editClient($name, $link, $logo, $id, &$error) {
         global $DB;
-        if(!$id) { $error = "Ошибка"; return false; }
+        if(!$id) { $error = "РћС€РёР±РєР°"; return false; }
         
         if ($logo) {
             $logo->max_size       = 100000;
@@ -65,15 +65,15 @@ class clients
             if($logo) $logo_client =  ", logo = '{$logo_client}'";
             $sql   = "UPDATE clients SET name_client = ?, link_client = ? {$logo_client} WHERE id = ?i;";
             $ret = $DB->query($sql, $name, $link, $id);
-            if($ret == null) $error = "Ошибка обработки информации";
+            if($ret == null) $error = "РћС€РёР±РєР° РѕР±СЂР°Р±РѕС‚РєРё РёРЅС„РѕСЂРјР°С†РёРё";
         }    
     }
     
     /**
-     * Удаление клиента по его ИД
+     * РЈРґР°Р»РµРЅРёРµ РєР»РёРµРЅС‚Р° РїРѕ РµРіРѕ РР”
      *
-     * @param integer $cid Ид Клиента
-     * @return string Ошибка если есть
+     * @param integer $cid РРґ РљР»РёРµРЅС‚Р°
+     * @return string РћС€РёР±РєР° РµСЃР»Рё РµСЃС‚СЊ
      */
     function deleteClient($cid) {
         global $DB;
@@ -82,11 +82,11 @@ class clients
     }
     
     /**
-     * Берем всех клиентов
+     * Р‘РµСЂРµРј РІСЃРµС… РєР»РёРµРЅС‚РѕРІ
      *
-     * @param string  $rand    Тип сортировки 
-     * @param integer $limit   Лимит показа
-     * @return array Данные клиенты
+     * @param string  $rand    РўРёРї СЃРѕСЂС‚РёСЂРѕРІРєРё 
+     * @param integer $limit   Р›РёРјРёС‚ РїРѕРєР°Р·Р°
+     * @return array Р”Р°РЅРЅС‹Рµ РєР»РёРµРЅС‚С‹
      */
     function getClients($rand = "RANDOM()", $limit = 90) {
         global $DB;
@@ -95,12 +95,12 @@ class clients
     }
     
     /**
-     * Берем клиентов для админки (без рандомной сортировки, с пагинацией и количеством клиентов)
+     * Р‘РµСЂРµРј РєР»РёРµРЅС‚РѕРІ РґР»СЏ Р°РґРјРёРЅРєРё (Р±РµР· СЂР°РЅРґРѕРјРЅРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРё, СЃ РїР°РіРёРЅР°С†РёРµР№ Рё РєРѕР»РёС‡РµСЃС‚РІРѕРј РєР»РёРµРЅС‚РѕРІ)
      *
-     * @param integer $page     Текущая страница
-     * @param integer $count    Возвращает общее количество клиентов
-     * @param integer $limit    Лимит показа
-     * @return array Данные клиентов
+     * @param integer $page     РўРµРєСѓС‰Р°СЏ СЃС‚СЂР°РЅРёС†Р°
+     * @param integer $count    Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РєР»РёРµРЅС‚РѕРІ
+     * @param integer $limit    Р›РёРјРёС‚ РїРѕРєР°Р·Р°
+     * @return array Р”Р°РЅРЅС‹Рµ РєР»РёРµРЅС‚РѕРІ
      */
     function getAdminClients($page=0, &$count, $limit=10) {
         global $DB;

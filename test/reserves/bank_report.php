@@ -11,9 +11,9 @@ $payouts = array(array(
     'path' => '/dir/',
     'fname' => 'file.pdf',
     'order_id' => 42,
-    'frl_fio' => 'Леонид Агутин',
+    'frl_fio' => 'Р›РµРѕРЅРёРґ РђРіСѓС‚РёРЅ',
     'price' => 5000,
-    'emp_fio' => 'Анжелика Варум'
+    'emp_fio' => 'РђРЅР¶РµР»РёРєР° Р’Р°СЂСѓРј'
 ));
 
 $paybacks = array(array(
@@ -22,9 +22,9 @@ $paybacks = array(array(
     'path' => '/newdir/',
     'fname' => 'file2.pdf',
     'order_id' => 47,
-    'frl_fio' => 'Леонид Агутин',
+    'frl_fio' => 'Р›РµРѕРЅРёРґ РђРіСѓС‚РёРЅ',
     'price' => 500,
-    'emp_fio' => 'Анжелика Варум'
+    'emp_fio' => 'РђРЅР¶РµР»РёРєР° Р’Р°СЂСѓРј'
 ));
 
-echo '<a href="'.WDCPREFIX . $reservesAdminBankReportGeneratorModel->generate2($payouts, $paybacks).'">Файл</a>';
+echo '<a href="'.WDCPREFIX . $reservesAdminBankReportGeneratorModel->generate2($payouts, $paybacks).'">Р¤Р°Р№Р»</a>';

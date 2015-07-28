@@ -1,6 +1,6 @@
 <?php
 define('IS_PGQ', 1);
-define('DEBUG_DAEMON', 0); // ÷òîáû ïðîòåñòèòü ðàáîòó ñàìîãî äåìîíà, à íå êîícþìåðà.
+define('DEBUG_DAEMON', 0); // Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¿Ñ€Ð¾Ñ‚ÐµÑÑ‚Ð¸Ñ‚ÑŒ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ ÑÐ°Ð¼Ð¾Ð³Ð¾ Ð´ÐµÐ¼Ð¾Ð½Ð°, Ð° Ð½Ðµ ÐºÐ¾Ð½cÑŽÐ¼ÐµÑ€Ð°.
 
 require("conf/plproxy-msync.php");
 require_once ABS_PATH . "/classes/globals.php";

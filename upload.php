@@ -1,6 +1,6 @@
 <?php
 /*
- * Çàãðóçêà ôàéëîâ äëÿ ðàáîòû â ïîðòôîëèî, àâàòàð, ëîãî ðàáîòîäàòåëÿ è ðåçþìå ôðèëàíñåðà (ïîêà)
+ * Ð—Ð°Ð³Ñ€ÑƒÐ·ÐºÐ° Ñ„Ð°Ð¹Ð»Ð¾Ð² Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ð² Ð¿Ð¾Ñ€Ñ‚Ñ„Ð¾Ð»Ð¸Ð¾, Ð°Ð²Ð°Ñ‚Ð°Ñ€, Ð»Ð¾Ð³Ð¾ Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»Ñ Ð¸ Ñ€ÐµÐ·ÑŽÐ¼Ðµ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð° (Ð¿Ð¾ÐºÐ°)
  */
 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/stdf.php' );
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/static_compress.php");
@@ -15,7 +15,7 @@ $err    = '';
 $pkey   = InGetPost( 'pkey' );
 $imageTypes = array();
 
-// ÷òîáû àäìèí ìîã ðåäàêòèðîâàòü
+// Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð°Ð´Ð¼Ð¸Ð½ Ð¼Ð¾Ð³ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ
 if ( hasPermissions('users') && InGetPost('uid') ) {
      $uid    = InGetPost('uid');
      $is_adm = true;
@@ -24,19 +24,19 @@ if ( hasPermissions('users') && InGetPost('uid') ) {
 if ( isset($_POST['action']) && ($_POST['action'] == 'add_pic') && is_array($_FILES['attach']) ) {
     $file = new CFile( $_FILES['attach'] );
     
-    if ( $file->error[0] && $file->name ) { $err = 'Ñëèøêîì áîëüøîé ôàéë'; }
+    if ( $file->error[0] && $file->name ) { $err = 'Ð¡Ð»Ð¸ÑˆÐºÐ¾Ð¼ Ð±Ð¾Ð»ÑŒÑˆÐ¾Ð¹ Ñ„Ð°Ð¹Ð»'; }
     
     if ( $file->size > 0 ) {
         $pict_added = true;
         
         if ( $type == 'work_prev' && $file->size > 102400 ) { 
-            $err = 'Ñëèøêîì áîëüøîé ôàéë ïðåâüþ. Çàãðóçèòå ïðåâüþ ìåíüøåãî îáúåìà.'; 
+            $err = 'Ð¡Ð»Ð¸ÑˆÐºÐ¾Ð¼ Ð±Ð¾Ð»ÑŒÑˆÐ¾Ð¹ Ñ„Ð°Ð¹Ð» Ð¿Ñ€ÐµÐ²ÑŒÑŽ. Ð—Ð°Ð³Ñ€ÑƒÐ·Ð¸Ñ‚Ðµ Ð¿Ñ€ÐµÐ²ÑŒÑŽ Ð¼ÐµÐ½ÑŒÑˆÐµÐ³Ð¾ Ð¾Ð±ÑŠÐµÐ¼Ð°.'; 
         }
         
         if ( !$err && $type != 'prj_logo' ) {
             $dir = get_login( $uid );
 
-            // ÷òîáû àäìèí ìîã ðåäàêòèðîâàòü
+            // Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð°Ð´Ð¼Ð¸Ð½ Ð¼Ð¾Ð³ Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ
             if ( $is_adm ) {
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/users.php' );
                 $user = new users;
@@ -72,7 +72,7 @@ if ( isset($_POST['action']) && ($_POST['action'] == 'add_pic') && is_array($_FI
                 $file->allowed_ext = $GLOBALS['graf_array'];
             }
             elseif ( $type == 'carusellogo' ) {
-                $file->max_size = 1024 * 1024; // 1 ìá
+                $file->max_size = 1024 * 1024; // 1 Ð¼Ð±
                 $imageTypes = array( 2, 3 );
                 $file->max_image_size = array('width' => 50, 'height' => 50, 'less' => 0);
                 $file->resize = 1;
@@ -88,13 +88,13 @@ if ( isset($_POST['action']) && ($_POST['action'] == 'add_pic') && is_array($_FI
                 $file->max_size         = 102400;
             }
             
-            // åñëè çàäàíû òèïû ãðàôè÷åñêèõ ôàéëîâ
+            // ÐµÑÐ»Ð¸ Ð·Ð°Ð´Ð°Ð½Ñ‹ Ñ‚Ð¸Ð¿Ñ‹ Ð³Ñ€Ð°Ñ„Ð¸Ñ‡ÐµÑÐºÐ¸Ñ… Ñ„Ð°Ð¹Ð»Ð¾Ð²
             if ( $imageTypes ) {
-                // òî ôàéë äîëæåí áûòü ãðàôè÷åñêèì
+                // Ñ‚Ð¾ Ñ„Ð°Ð¹Ð» Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ Ð³Ñ€Ð°Ñ„Ð¸Ñ‡ÐµÑÐºÐ¸Ð¼
                 $file->_getImageSize( $file->tmp_name );
                 
                 if ( !$file->image_size['type'] || !in_array($file->image_size['type'], $imageTypes) ) {
-                    $err = 'Íåäîïóñòèìûé ôîðìàò ôàéëà';
+                    $err = 'ÐÐµÐ´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚ Ñ„Ð°Ð¹Ð»Ð°';
                 }                    
             }
             
@@ -108,18 +108,18 @@ if ( isset($_POST['action']) && ($_POST['action'] == 'add_pic') && is_array($_FI
                         || strtolower($file->getext()) == 'swf' 
                         || strtolower($file->getext()) == 'flv' ) 
                 ) {
-                    $err = 'Íåäîïóñòèìûé òèï ôàéëà';
+                    $err = 'ÐÐµÐ´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ñ‚Ð¸Ð¿ Ñ„Ð°Ð¹Ð»Ð°';
                 }
 
                 if ( $type == 'photo' || $type == 'logo' ) {
                     if ( !$err && !$file->img_to_small('sm_'.$filename, array('width' => 50, 'height' => 50)) ) {
-                        $err .= 'Íåâîçìîæíî óìåíüøèòü êàðòèíêó.';
+                        $err .= 'ÐÐµÐ²Ð¾Ð·Ð¼Ð¾Ð¶Ð½Ð¾ ÑƒÐ¼ÐµÐ½ÑŒÑˆÐ¸Ñ‚ÑŒ ÐºÐ°Ñ€Ñ‚Ð¸Ð½ÐºÑƒ.';
                     }
                 }
             }
         }
         elseif ( !$err ) {
-            // ëîãîòèï ïðîåêòà
+            // Ð»Ð¾Ð³Ð¾Ñ‚Ð¸Ð¿ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°
             require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/projects.php");
             $tmpPrj = new tmp_project( $pkey );
             $prj    = $tmpPrj->init( 1 );
@@ -167,7 +167,7 @@ if ( isset($_POST['action']) && ($_POST['action'] == 'add_pic') && is_array($_FI
   <input type="hidden" name="u_token_key" value="<?=$_SESSION['rand']?>">
   <input type="hidden" name="action" value="add_pic" />
   <input type="file" name="attach" />
-  <input type="submit" value="Ïîäãðóçèòü" />
+  <input type="submit" value="ÐŸÐ¾Ð´Ð³Ñ€ÑƒÐ·Ð¸Ñ‚ÑŒ" />
   <?php if ( $err ) { ?>
   <?=view_error($err)?><br/>
   <?php } ?>

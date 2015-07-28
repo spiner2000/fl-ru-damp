@@ -26,7 +26,7 @@ for ($is=0; $is<sizeof($all_mirrored_specs); $is++) {
     $mirrored_specs[$all_mirrored_specs[$is]['mirror_prof']] = $all_mirrored_specs[$is]['main_prof'];
 }
 
-//создаем массив специализаций (для фильтра на главной он уже есть в $prfs, для фильтра в проектах фрилансера его нет, поэтому делаем проверку на существование
+//СЃРѕР·РґР°РµРј РјР°СЃСЃРёРІ СЃРїРµС†РёР°Р»РёР·Р°С†РёР№ (РґР»СЏ С„РёР»СЊС‚СЂР° РЅР° РіР»Р°РІРЅРѕР№ РѕРЅ СѓР¶Рµ РµСЃС‚СЊ РІ $prfs, РґР»СЏ С„РёР»СЊС‚СЂР° РІ РїСЂРѕРµРєС‚Р°С… С„СЂРёР»Р°РЅСЃРµСЂР° РµРіРѕ РЅРµС‚, РїРѕСЌС‚РѕРјСѓ РґРµР»Р°РµРј РїСЂРѕРІРµСЂРєСѓ РЅР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ
 if (!sizeof($profs)) {
     $all_specs = professions::GetAllProfessions("", 0, 1);
 } else {
@@ -45,17 +45,17 @@ var vsbr = 0;
 
 function FilterCatalogAddCategoryType() {
   if ($('pf_subcategory').value == 0) {
-    //добавляем категорию
+    //РґРѕР±Р°РІР»СЏРµРј РєР°С‚РµРіРѕСЂРёСЋ
    if(Number($('pf_category').value) > 0) FilterAddBullet(0, $('pf_category').value, $('pf_category').options[$('pf_category').selectedIndex].text, 0);
   }
   else {
-    //добавляем подкатегорию
+    //РґРѕР±Р°РІР»СЏРµРј РїРѕРґРєР°С‚РµРіРѕСЂРёСЋ
     if(Number($('pf_category').value) > 0) FilterAddBullet(1, $('pf_subcategory').value, $('pf_subcategory').options[$('pf_subcategory').selectedIndex].text, $('pf_category').value);
   }
 }
 
-//1 = фильтр проектов
-//2 = фильтр фрилансеров
+//1 = С„РёР»СЊС‚СЂ РїСЂРѕРµРєС‚РѕРІ
+//2 = С„РёР»СЊС‚СЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
 var curFBulletsBox = 2;
 
 var maxCostBlock = 12;
@@ -87,8 +87,8 @@ for ($i=0; $i<sizeof($all_specs); $i++) {
     else {echo ",";}
 }
 
-$cost_type = array(1 => "За месяц", 2 => "За 1000 знаков", 3 => "За Проект", 4 => "За час");
-$curr_type = array('2' => "Руб", '0' => "USD", '1' => "Euro");
+$cost_type = array(1 => "Р—Р° РјРµСЃСЏС†", 2 => "Р—Р° 1000 Р·РЅР°РєРѕРІ", 3 => "Р—Р° РџСЂРѕРµРєС‚", 4 => "Р—Р° С‡Р°СЃ");
+$curr_type = array('2' => "Р СѓР±", '0' => "USD", '1' => "Euro");
 ?>
 <?php require_once $_SERVER["DOCUMENT_ROOT"] . "/classes/freelancers_filter.php";?>
 var filter_mirror_specs = <?=freelancers_filters::getMirroredSpecsJsObject($all_mirrored_specs); ?>; 
@@ -192,11 +192,11 @@ function addCost(o, inp, def) {
     if(cost_count < maxCostBlock && def == 0) {
         bSpan.className = "flt-add";
         bSpan.onclick=addCost;
-        bSpan.innerHTML = '<span class="flt-spec"><span class="flt-s-in"><a href="javascript: void(0);"><img src="/images/flt-add.png" alt="" width="15" height="15" /><span>Добавить еще</span></a></span></span>';
+        bSpan.innerHTML = '<span class="flt-spec"><span class="flt-s-in"><a href="javascript: void(0);"><img src="/images/flt-add.png" alt="" width="15" height="15" /><span>Р”РѕР±Р°РІРёС‚СЊ РµС‰Рµ</span></a></span></span>';
     } else {
         bSpan.className = "flt-remove";
         bSpan.onclick=delCost;
-        bSpan.innerHTML = '<span class="flt-spec"><span class="flt-s-in"><a href="javascript: void(0);"><img src="/images/flt-close.png" alt="" width="15" height="15" /><span>Убрать</span></a></span></span>';
+        bSpan.innerHTML = '<span class="flt-spec"><span class="flt-s-in"><a href="javascript: void(0);"><img src="/images/flt-close.png" alt="" width="15" height="15" /><span>РЈР±СЂР°С‚СЊ</span></a></span></span>';
     }
     
     var mSpan = document.createElement("span");
@@ -244,22 +244,22 @@ function delCost(o) {
 }
 
 function add2del(o) {
-    var a = o.childNodes[0].childNodes[0].childNodes[0]; // Ссылка
-    var i = a.childNodes[0]; // Картинка
-    var t = a.childNodes[1]; // Текст
+    var a = o.childNodes[0].childNodes[0].childNodes[0]; // РЎСЃС‹Р»РєР°
+    var i = a.childNodes[0]; // РљР°СЂС‚РёРЅРєР°
+    var t = a.childNodes[1]; // РўРµРєСЃС‚
     
     if(o.className == "flt-add") { 
         o.onclick = delCost;
         o.className = "flt-remove";
         a.href = "javascript: void(1)";
         i.src = "/images/flt-close.png";
-        t.innerHTML = "Убрать";
+        t.innerHTML = "РЈР±СЂР°С‚СЊ";
     } else {
         o.onclick = addCost;
         o.className = "flt-add";
         a.href = "javascript: void(0)";
         i.src = "/images/flt-add.png";
-        t.innerHTML = "Добавить еще";
+        t.innerHTML = "Р”РѕР±Р°РІРёС‚СЊ РµС‰Рµ";
     }                        
 }
 
@@ -268,17 +268,17 @@ function add2del(o) {
 <fieldset class="flt-cnt flt-usr" id="advanced-search" style="display:<?= $is_show_adv?"block":"none";?>; padding:0 15px;">
 
     <div class="flt-block c">
-        <label class="flt-lbl">Специализации:</label>
+        <label class="flt-lbl">РЎРїРµС†РёР°Р»РёР·Р°С†РёРё:</label>
         <div class="flt-b-in">
             <span class="flt-add">
                 <span class="flt-spec">
-                    <span class="flt-s-in"><a href="javascript: void(0);" onclick="FilterCatalogAddCategoryType();"><img width="15" height="15" src="/images/flt-add.png" alt="" /><span>Добавить еще</span></a></span>
+                    <span class="flt-s-in"><a href="javascript: void(0);" onclick="FilterCatalogAddCategoryType();"><img width="15" height="15" src="/images/flt-add.png" alt="" /><span>Р”РѕР±Р°РІРёС‚СЊ РµС‰Рµ</span></a></span>
                 </span>
             </span>
             <div class="flt-b-row">
                 <span class="flt-prm">
                     <select class="flt-p-sel" name="pf_category" id="pf_category" onChange="FilterSubCategory(this.value)">
-                        <option value="0">Все разделы</option>
+                        <option value="0">Р’СЃРµ СЂР°Р·РґРµР»С‹</option>
                         <?php foreach($categories as $category) { if($category['id']<=0) continue; ?>
                         <option value="<?=$category['id']?>"><?=$category['name']?></option>
                         <?php } //foreach ?>
@@ -286,7 +286,7 @@ function add2del(o) {
                 </span>
                 <span class="flt-prm" >
                     <select class="flt-p-sel" name="pf_subcategory" id="pf_subcategory"  disabled="disabled">
-                        <option value="0">Все подкатегории</option>
+                        <option value="0">Р’СЃРµ РїРѕРґРєР°С‚РµРіРѕСЂРёРё</option>
                     </select>
                 </span>
             </div>
@@ -294,17 +294,17 @@ function add2del(o) {
         </div>
     </div>
     <?/*<div class="flt-block c">
-        <label class="flt-lbl">Ключевые слова:</label>
+        <label class="flt-lbl">РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°:</label>
         <div class="flt-b-in" >
             <span class="flt-prm6">
                 <textarea  class="flt-prm7" cols="10" name="kword" rows="2"><?= stripslashes($filter['kwords'])?></textarea>
             </span>
-            <a class="lnk-dot-blue" href="/help/?q=948">Помощь</a>
-            <br /><br /><br />Ключевые слова вводятся через запятую.
+            <a class="lnk-dot-blue" href="/help/?q=948">РџРѕРјРѕС‰СЊ</a>
+            <br /><br /><br />РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР° РІРІРѕРґСЏС‚СЃСЏ С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ.
         </div>
     </div>*/?>
     <div class="flt-block flt-block-btmp c">
-        <label class="flt-lbl">Стоимость:</label>
+        <label class="flt-lbl">РЎС‚РѕРёРјРѕСЃС‚СЊ:</label>
         <div id="cost_box" class="flt-b-in" ></div>
         <script type="text/javascript">
         <?php if($cFilter) { ?>
@@ -325,29 +325,29 @@ function add2del(o) {
         </script>
     </div>
     <div class="flt-block c" >
-        <label class="flt-lbl">Опыт работы:</label>
+        <label class="flt-lbl">РћРїС‹С‚ СЂР°Р±РѕС‚С‹:</label>
         <div class="flt-b-in" >
             <span class="flt-prm11">
                 <span class="flt-prm">
                     <input type="text" class="flt-prm3" maxlength="3" value="<?= $filter['exp_from'] == 0 ? '' : $filter['exp_from']?>" name="exp[]" size="10" /> &mdash; 
-                    <input type="text" class="flt-prm3" maxlength="3" value="<?= $filter['exp_to']   == 0 ? '' : $filter['exp_to']?>" name="exp[]" size="10" />&nbsp; лет
+                    <input type="text" class="flt-prm3" maxlength="3" value="<?= $filter['exp_to']   == 0 ? '' : $filter['exp_to']?>" name="exp[]" size="10" />&nbsp; Р»РµС‚
                 </span>
-                <span class="flt-prm">Возраст: 
+                <span class="flt-prm">Р’РѕР·СЂР°СЃС‚: 
                    <span class="age_block">
                         <input type="text" class="flt-prm3" value="<?= $filter['age_from'] == 0 ? '' : $filter['age_from']?>" name="age[]" maxlength="3" size="10" /> &mdash; 
-                        <input type="text" class="flt-prm3" value="<?= $filter['age_to']   == 0 ? '' : $filter['age_to']?>" name="age[]" maxlength="3" size="10" />&nbsp; лет
+                        <input type="text" class="flt-prm3" value="<?= $filter['age_to']   == 0 ? '' : $filter['age_to']?>" name="age[]" maxlength="3" size="10" />&nbsp; Р»РµС‚
                    </span>
                  </span>
              </span>
         </div>
     </div>
     <div class="flt-block c" >
-        <label class="flt-lbl">Месторасположение:</label>
+        <label class="flt-lbl">РњРµСЃС‚РѕСЂР°СЃРїРѕР»РѕР¶РµРЅРёРµ:</label>
         <div class="flt-b-in" >
             <div class="flt-b-row" >
                 <span class="flt-prm">
                     <select onchange="xajax_GetCitysByCid(this.value);" name="pf_country" id="pf_country" class="flt-p-sel">
-                        <option value="0">Все страны</option>
+                        <option value="0">Р’СЃРµ СЃС‚СЂР°РЅС‹</option>
                         <?php foreach ($countries as $country_id => $country_name) { ?>
                         <option value="<?= $country_id?>" <?= $country_id == $filter['country']?'selected="selected"':'';?>><?= $country_name?></option>
                         <?php } //foreach ?>
@@ -355,7 +355,7 @@ function add2del(o) {
                 </span>
                 <span id="frm_city" class="flt-prm">
                     <select name="pf_city" class="flt-p-sel">
-                        <option value="0">Все города</option>
+                        <option value="0">Р’СЃРµ РіРѕСЂРѕРґР°</option>
                         <?php if($cities) {?>
                             <?php foreach ($cities as $city_id => $city_name) { ?>
                             <option value="<?= $city_id?>" <?= $city_id == $filter['city'] ? 'selected=" selected"':'';?>><?= $city_name?></option>
@@ -366,66 +366,66 @@ function add2del(o) {
             </div>
             <div class="b-check b-check_padtop_10" >
                <input id="in_office" type="checkbox" value="1" name="in_office" class="b-check__input" <?= ($filter['in_office'] ? 'checked="checked"' : '');?> />
-               <label for="in_office" class="b-check__label">Ищет работу в офисе</label>
+               <label for="in_office" class="b-check__label">РС‰РµС‚ СЂР°Р±РѕС‚Сѓ РІ РѕС„РёСЃРµ</label>
             </div>
         </div>
     </div>
     
     <div class="flt-block c" >
-        <label class="flt-lbl">Дополнительно:</label>
+        <label class="flt-lbl">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ:</label>
         <div class="flt-b-in" >
             <ul class="flt-more c">
                 <?php if($_SESSION['uid']) {?>
                    <li>
                       <div class="b-check">
                           <input id="in_fav" class="b-check__input" type="checkbox" name="in_fav" value="1" <?=    ($filter['in_fav']    ? 'checked="checked"' : '')?> /> 
-                          <label for="in_fav" class="b-check__label" for="in_fav">У меня в избранных</label>
+                          <label for="in_fav" class="b-check__label" for="in_fav">РЈ РјРµРЅСЏ РІ РёР·Р±СЂР°РЅРЅС‹С…</label>
                       </div>
                    </li> 
 																<?php }//if?>
                 <li>
                    <div class="b-check">
                        <input id="only_free" class="b-check__input" type="checkbox" name="only_free" value="1" <?= ($filter['only_free'] ? 'checked="checked"' : '')?> /> 
-                       <label for="only_free" class="b-check__label" for="only_free">Только свободные</label>
+                       <label for="only_free" class="b-check__label" for="only_free">РўРѕР»СЊРєРѕ СЃРІРѕР±РѕРґРЅС‹Рµ</label>
                    </div>
                 </li>
                 <li class="flt-more-b">
                    <div class="b-check">
                        <input id="is_pro" class="b-check__input" type="checkbox" name="is_pro" value="1" <?= ($filter['is_pro'] ?'checked="checked"':'')?> /> 
-                       <label for="is_pro" class="b-check__label" for="is_pro">С <a class="b-layout__link" href="../payed/"><span class="b-icon b-icon__pro b-icon__pro_f" title="Платный аккаунт" alt="Платный аккаунт"></span></a> аккаунтом</label>
+                       <label for="is_pro" class="b-check__label" for="is_pro">РЎ <a class="b-layout__link" href="../payed/"><span class="b-icon b-icon__pro b-icon__pro_f" title="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" alt="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚"></span></a> Р°РєРєР°СѓРЅС‚РѕРј</label>
                    </div>
                 </li>
                 <li class="flt-more-b">
                    <div class="b-check">
                       <input id="is_verify" class="b-check__input" type="checkbox" name="is_verify" value="1" <?= ($filter['is_verify'] ?'checked="checked"':'')?> /> 
-                      <label for="is_verify" class="b-check__label" for="is_verify">С <span class="b-icon b-icon__ver" title="верифицированым" alt="верифицированым"></span> аккаунтом</label>
+                      <label for="is_verify" class="b-check__label" for="is_verify">РЎ <span class="b-icon b-icon__ver" title="РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅС‹Рј" alt="РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅС‹Рј"></span> Р°РєРєР°СѓРЅС‚РѕРј</label>
                    </div>
                 </li>
                 <li>
                    <div class="b-check">
                       <input id="is_preview" class="b-check__input" type="checkbox" name="is_preview" value="1" <?=   ($filter['is_preview']   ? 'checked="checked"' : '')?> /> 
-                      <label for="is_preview" class="b-check__label" for="is_preview">Только с примерами работ</label>
+                      <label for="is_preview" class="b-check__label" for="is_preview">РўРѕР»СЊРєРѕ СЃ РїСЂРёРјРµСЂР°РјРё СЂР°Р±РѕС‚</label>
                    </div>
                 </li>
                 <li>
                    <div class="b-check">
                        <input id="sbr_is_positive" class="b-check__input" type="checkbox" name="sbr_is_positive" value="1" <?=($filter['sbr_is_positive']?'checked="checked"':'')?>/> 
-                       <label for="sbr_is_positive" class="b-check__label" for="sbr_is_positive">С положительными рекомендациями</label>
+                       <label for="sbr_is_positive" class="b-check__label" for="sbr_is_positive">РЎ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹РјРё СЂРµРєРѕРјРµРЅРґР°С†РёСЏРјРё</label>
                    </div>
                 </li>
                 <li>
                    <div class="b-check">
                        <input id="sbr_not_negative" class="b-check__input" type="checkbox" name="sbr_not_negative" value="1" <?=($filter['sbr_not_negative']?'checked="checked"':'')?>/> 
-                       <label for="sbr_not_negative" class="b-check__label" for="sbr_not_negative">Без отрицательных рекомендаций</label>
+                       <label for="sbr_not_negative" class="b-check__label" for="sbr_not_negative">Р‘РµР· РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹С… СЂРµРєРѕРјРµРЅРґР°С†РёР№</label>
                    </div>
                 </li>
-                <?/*<li><label><input class="i-chk" type="checkbox" name="opi_is_positive" value="1" <?=($filter['opi_is_positive']?'checked="checked"':'')?>/> С положительными мнениями</label></li>
-                <li><label><input class="i-chk" type="checkbox" name="opi_not_negative" value="1" <?=($filter['opi_not_negative']?'checked="checked"':'')?>/> Без отрицательных мнений</label></li>*/?>
+                <?/*<li><label><input class="i-chk" type="checkbox" name="opi_is_positive" value="1" <?=($filter['opi_is_positive']?'checked="checked"':'')?>/> РЎ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹РјРё РјРЅРµРЅРёСЏРјРё</label></li>
+                <li><label><input class="i-chk" type="checkbox" name="opi_not_negative" value="1" <?=($filter['opi_not_negative']?'checked="checked"':'')?>/> Р‘РµР· РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹С… РјРЅРµРЅРёР№</label></li>*/?>
             </ul>
         </div>
     </div>
             <div class="b-buttons b-buttons_padbot_30 b-buttons_padtop_20">
-                <a class="b-button b-button_flat b-button_flat_grey" href="javascript:void(0)" onclick="FilterCatalogAddCategoryType(); $('search-action').set('value', 'search_advanced'); $('main-search-form').submit();">Найти с учетом параметров</a><span class="center_clear"><a class="flt-lnk"  href="javascript: void(0);" onclick="FilterCatalogClearForm()">Очистить форму</a></span>
+                <a class="b-button b-button_flat b-button_flat_grey" href="javascript:void(0)" onclick="FilterCatalogAddCategoryType(); $('search-action').set('value', 'search_advanced'); $('main-search-form').submit();">РќР°Р№С‚Рё СЃ СѓС‡РµС‚РѕРј РїР°СЂР°РјРµС‚СЂРѕРІ</a><span class="center_clear"><a class="flt-lnk"  href="javascript: void(0);" onclick="FilterCatalogClearForm()">РћС‡РёСЃС‚РёС‚СЊ С„РѕСЂРјСѓ</a></span>
             </div>
    
 </fieldset>   

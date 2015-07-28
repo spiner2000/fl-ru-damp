@@ -23,7 +23,7 @@ if ($specs_add) {
 	}
 	$specs_add_string = join(", ", $specs_add_array);
 } else {
-    $specs_add_string = "Нет";
+    $specs_add_string = "РќРµС‚";
 }
 
 $html_keyword_js = '<a href="/freelancers/?word=$1" class="inherit">$2</a>';
@@ -32,7 +32,7 @@ $html_keyword = preg_replace('/\$\d/', '%s', $html_keyword_js);
 if($prjs) {
     $i = $block = 0;
     $size_block = 3;
-    // Рассортировываем портфолио
+    // Р Р°СЃСЃРѕСЂС‚РёСЂРѕРІС‹РІР°РµРј РїРѕСЂС‚С„РѕР»РёРѕ
     foreach($prjs as $prj) {
         if ($prj['is_blocked'] == 't' && $user->uid != get_uid(false) && !hasPermissions('users')) continue;
         if($i >= $size_block || $prj['prof_id'] != $old_prof) {
@@ -62,11 +62,11 @@ if($prjs) {
     <?php if($user->is_pro!='t' && (int) $user->spec == 0) { ?>
         <div class="b-fon b-fon_pad_20">
             <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb">
-                <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span><a class="b-layout__link" href="/users/<?= $user->login; ?>/setup/specsetup/">Выберите специализацию</a>. Это небходимо, чтобы попасть в каталог фрилансеров, в котором вас найдут заказчики
+                <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span><a class="b-layout__link" href="/users/<?= $user->login; ?>/setup/specsetup/">Р’С‹Р±РµСЂРёС‚Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ</a>. Р­С‚Рѕ РЅРµР±С…РѕРґРёРјРѕ, С‡С‚РѕР±С‹ РїРѕРїР°СЃС‚СЊ РІ РєР°С‚Р°Р»РѕРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, РІ РєРѕС‚РѕСЂРѕРј РІР°СЃ РЅР°Р№РґСѓС‚ Р·Р°РєР°Р·С‡РёРєРё
             </div>
         </div>
     <?php } elseif($user->is_pro!='t' && (int) $user->spec != 0) { ?>
-        <?php print view_error4('Внимание! Вы отображаетесь в каталоге только по своей специализации. Чтобы увеличить количество специализаций, необходимо перейти на аккаунт ' . view_pro()); ?>
+        <?php print view_error4('Р’РЅРёРјР°РЅРёРµ! Р’С‹ РѕС‚РѕР±СЂР°Р¶Р°РµС‚РµСЃСЊ РІ РєР°С‚Р°Р»РѕРіРµ С‚РѕР»СЊРєРѕ РїРѕ СЃРІРѕРµР№ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё. Р§С‚РѕР±С‹ СѓРІРµР»РёС‡РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёР№, РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµР№С‚Рё РЅР° Р°РєРєР°СѓРЅС‚ ' . view_pro()); ?>
     <?php } ?>
 <? } ?>
 
@@ -77,30 +77,30 @@ if($prjs) {
         <p><?=reformat2( $sSpecText, 50, 0,  0 )?></p>
         
         <?php if ( hasPermissions('users') ) { ?>
-        <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'spec_text', 'utable': 'freelancer'})">Редактировать</a>
+        <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'spec_text', 'utable': 'freelancer'})">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
         <?php } ?>
     </div>
     <div class="prtfl-l">
-        <p>Специализация:&nbsp;&nbsp;<?=professions::GetProfNameWP($user->spec,' / ', "Нет специализации")?></p>
-        <p>Дополнительные специализации:&nbsp;&nbsp;<?=$specs_add_string?></p>
+        <p>РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ:&nbsp;&nbsp;<?=professions::GetProfNameWP($user->spec,' / ', "РќРµС‚ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё")?></p>
+        <p>Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё:&nbsp;&nbsp;<?=$specs_add_string?></p>
         <?php if($user->exp > 0) {?>
-        <p style="padding-top:10px; border-top:1px solid #d7dadc">Опыт работы:&nbsp;&nbsp;<?=view_exp($user->exp)?></p>
+        <p style="padding-top:10px; border-top:1px solid #d7dadc">РћРїС‹С‚ СЂР°Р±РѕС‚С‹:&nbsp;&nbsp;<?=view_exp($user->exp)?></p>
         <?php } //if?>
         <?php if($user->in_office == 't') { ?>
-        <p><strong>Ищу долгосрочную работу <span class="run-men" >в офисе</span></strong></p>
+        <p><strong>РС‰Сѓ РґРѕР»РіРѕСЃСЂРѕС‡РЅСѓСЋ СЂР°Р±РѕС‚Сѓ <span class="run-men" >РІ РѕС„РёСЃРµ</span></strong></p>
         <?php } //if?>
         <?php /* #0019741 if($user->prefer_sbr == 't') { ?>
-        <p><strong>Предпочитаю работать через сервис <span class="sbr-ic"><a href="/promo/sbr/" class="inherit_underline" style="color: #666666;">Сделка без риска</a></span></strong></p>
+        <p><strong>РџСЂРµРґРїРѕС‡РёС‚Р°СЋ СЂР°Р±РѕС‚Р°С‚СЊ С‡РµСЂРµР· СЃРµСЂРІРёСЃ <span class="sbr-ic"><a href="/promo/sbr/" class="inherit_underline" style="color: #666666;">РЎРґРµР»РєР° Р±РµР· СЂРёСЃРєР°</a></span></strong></p>
         <?php } *///if?>
         <?php if ($user->cost_hour > 0) { ?>
-        <p><strong>Стоимость часа работы</strong> &mdash; <span class="money"><?=view_cost2($user->cost_hour, '', '', false, $user->cost_type_hour)?></span></p>
+        <p><strong>РЎС‚РѕРёРјРѕСЃС‚СЊ С‡Р°СЃР° СЂР°Р±РѕС‚С‹</strong> &mdash; <span class="money"><?=view_cost2($user->cost_hour, '', '', false, $user->cost_type_hour)?></span></p>
         <?php } //if?>
         <?php if ($user->cost_month > 0) { ?>
-        <p><strong>Стоимость месяца работы</strong> &mdash; <span class="money"><?=view_cost2($user->cost_month, '', '', false, $user->cost_type_month)?></span></p>
+        <p><strong>РЎС‚РѕРёРјРѕСЃС‚СЊ РјРµСЃСЏС†Р° СЂР°Р±РѕС‚С‹</strong> &mdash; <span class="money"><?=view_cost2($user->cost_month, '', '', false, $user->cost_type_month)?></span></p>
         <?php } //if?>
     </div>         
     <?php if ($_SESSION['login'] == $user->login) { ?>
-    <div class="change"><div style="padding-right:19px;"><a href="/users/<?=$_SESSION['login']?>/setup/portfolio/"><img src="/images/ico_setup.gif" alt="" width="6" height="9" /></a>&nbsp;<a href="/users/<?=$_SESSION['login']?>/setup/portfolio/">Изменить</a></div></div>
+    <div class="change"><div style="padding-right:19px;"><a href="/users/<?=$_SESSION['login']?>/setup/portfolio/"><img src="/images/ico_setup.gif" alt="" width="6" height="9" /></a>&nbsp;<a href="/users/<?=$_SESSION['login']?>/setup/portfolio/">РР·РјРµРЅРёС‚СЊ</a></div></div>
     <?php } //if ?>
 </div>
 <?php
@@ -159,35 +159,35 @@ foreach($pp as $prof_id=>$prjs) {
                  echo implode(", ", $links_keyword);
                  if($kword_count > kwords::MAX_KWORDS_PORTFOLIO ) { 
               ?><span class="prtfl-hellip">&hellip;</span
-                ><span class="prfl-tags"><a href="javascript:void(0)">Все <?=$kword_count?> <?=ending($kword_count, 'тег', 'тега', 'тегов')?></a></span
+                ><span class="prfl-tags"><a href="javascript:void(0)">Р’СЃРµ <?=$kword_count?> <?=ending($kword_count, 'С‚РµРі', 'С‚РµРіР°', 'С‚РµРіРѕРІ')?></a></span
                 ><span class="prfl-tags-more" style="display:none"><?=implode(',', $links_keyword_hide)?></span>
               <? } ?>
             </p>
             <?php } //if?>
             <?php if ($pinfo['proftext'] == 't') { ?>
                 <?php if($cost_text != '') {?>
-                <p>Стоимость тысячи знаков: <span class="money"><?= $cost_text?></span></p>
+                <p>РЎС‚РѕРёРјРѕСЃС‚СЊ С‚С‹СЃСЏС‡Рё Р·РЅР°РєРѕРІ: <span class="money"><?= $cost_text?></span></p>
                 <?php } //if?>
                 <?php if($cost_hour_text != '') {?>
-                <p>Оценка часа работы: <span class="money"><?= $cost_hour_text?></span></p>
+                <p>РћС†РµРЅРєР° С‡Р°СЃР° СЂР°Р±РѕС‚С‹: <span class="money"><?= $cost_hour_text?></span></p>
                 <?php } //if?>
             <?php } else { //if?>
                 <?php if(($cost_to_text != '') || ($cost_from_text != '')) { 
-                    $from = $cost_from_text != '' ? "от ".$cost_from_text : "";
-                    $to   = $cost_to_text   != '' ? "до ".$cost_to_text   : "";?>
-                <p>Стоимость работ: <span class="money"><?= $from." ".$to?></span></p>
+                    $from = $cost_from_text != '' ? "РѕС‚ ".$cost_from_text : "";
+                    $to   = $cost_to_text   != '' ? "РґРѕ ".$cost_to_text   : "";?>
+                <p>РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚: <span class="money"><?= $from." ".$to?></span></p>
                 <?php } //if?>
                 <?php if($cost_hour_text != '') {?>
-                <p>Оценка часа работы: <span class="money"><?= $cost_hour_text?></span></p>
+                <p>РћС†РµРЅРєР° С‡Р°СЃР° СЂР°Р±РѕС‚С‹: <span class="money"><?= $cost_hour_text?></span></p>
                 <?php } //if?>
                 <?php if($time_text != '') {?>
-                <p>Сроки: <?= $time_text?></p>
+                <p>РЎСЂРѕРєРё: <?= $time_text?></p>
                 <?php } //if?>
             <?php } // else?>
                 
             <?php if ( hasPermissions('users') ) { ?>
             <br/>
-            <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditPortfChoice', '<?=$user->uid?>_0', 0, '', {'sProfId': <?=$prof_id?>})">Редактировать</a>
+            <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditPortfChoice', '<?=$user->uid?>_0', 0, '', {'sProfId': <?=$prof_id?>})">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
             <?php } ?>
         </div>
     </div>
@@ -195,7 +195,7 @@ foreach($pp as $prof_id=>$prjs) {
     <table width="100%" cellspacing="0" cellpadding="0"  >
     <tr>
     	<td style="width:14px" >&nbsp;</td>
-    	<? // если $iWantPro == true значит находимся в режиме показа ПРО для НЕПРО
+    	<? // РµСЃР»Рё $iWantPro == true Р·РЅР°С‡РёС‚ РЅР°С…РѕРґРёРјСЃСЏ РІ СЂРµР¶РёРјРµ РїРѕРєР°Р·Р° РџР Рћ РґР»СЏ РќР•РџР Рћ
         if($pinfo['gr_prevs'] == 't' || $iWantPro) {?>
     	<td>
         	<?php foreach($prjs as $in=>$blocks) { ?>
@@ -224,7 +224,7 @@ foreach($pp as $prof_id=>$prjs) {
                                 <?php 
                                 if($prj['prj_prev_type']) {
                                     $sDescr = /*$prj['moderator_status'] === '0' ? $stop_words->replace($prj['descr']) :*/ $prj['descr'];
-                                    print("<p style='padding-bottom:7px'>".reformat2($sDescr,25,0,1)."</p>"); // Для текста нужен свой блок <p> с отступом вконце @todo
+                                    print("<p style='padding-bottom:7px'>".reformat2($sDescr,25,0,1)."</p>"); // Р”Р»СЏ С‚РµРєСЃС‚Р° РЅСѓР¶РµРЅ СЃРІРѕР№ Р±Р»РѕРє <p> СЃ РѕС‚СЃС‚СѓРїРѕРј РІРєРѕРЅС†Рµ @todo
                                 } else { //if 
                                     $sName = /*$prj['moderator_status'] === '0' ? $stop_words->replace($prj['name'], 'plain', false) :*/ $prj['name'];
                                     ?>
@@ -243,9 +243,9 @@ foreach($pp as $prof_id=>$prjs) {
                                         <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13">
                                             <span class="b-fon__attent"></span>
                                             <div class="b-fon__txt b-fon__txt_margleft_20">
-                                                    <span class="b-fon__txt_bold">Работа заблокирована</span>. <?= reformat($prj['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>Служба поддержки</a>
-                                                    <div class='b-fon__txt'><?php if ( hasPermissions('users') ) { ?><?= ($prj['admin_login'] ? "Заблокировал: <a class='b-fon__link' href='/users/{$prj['admin_login']}'>{$prj['admin_uname']} {$prj['admin_usurname']} [{$prj['admin_login']}]</a><br />": '') ?><?php } ?>
-                                                    Дата блокировки: <?= dateFormat('d.m.Y H:i', $prj['blocked_time']) ?></div>
+                                                    <span class="b-fon__txt_bold">Р Р°Р±РѕС‚Р° Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅР°</span>. <?= reformat($prj['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё</a>
+                                                    <div class='b-fon__txt'><?php if ( hasPermissions('users') ) { ?><?= ($prj['admin_login'] ? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°Р»: <a class='b-fon__link' href='/users/{$prj['admin_login']}'>{$prj['admin_uname']} {$prj['admin_usurname']} [{$prj['admin_login']}]</a><br />": '') ?><?php } ?>
+                                                    Р”Р°С‚Р° Р±Р»РѕРєРёСЂРѕРІРєРё: <?= dateFormat('d.m.Y H:i', $prj['blocked_time']) ?></div>
                                             </div>
                                         </div>
                                         <b class="b-fon__b2"></b>
@@ -256,8 +256,8 @@ foreach($pp as $prof_id=>$prjs) {
                                 
                                 <?php if ( hasPermissions('users') ) { ?>
                                 <div id="portfolio-button-<?= $prj['id'] ?>">
-                                    <a class="admn" href="javascript:void(0);" onclick="banned.<?=($prj['is_blocked']=='t'? 'unblockedPortfolio': 'blockedPortfolio')?>(<?=$prj['id']?>)"><?= $prj['is_blocked']=='f' ? "Заблокировать" : "Разблокировать"; ?></a><br/>
-                                    <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditPortfolio', '<?=$prj['id']?>_0', 0, '')">Редактировать</a>
+                                    <a class="admn" href="javascript:void(0);" onclick="banned.<?=($prj['is_blocked']=='t'? 'unblockedPortfolio': 'blockedPortfolio')?>(<?=$prj['id']?>)"><?= $prj['is_blocked']=='f' ? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ" : "Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ"; ?></a><br/>
+                                    <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditPortfolio', '<?=$prj['id']?>_0', 0, '')">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
                                 </div>
                                 <?php 
                                 }
@@ -293,9 +293,9 @@ foreach($pp as $prof_id=>$prjs) {
                                 <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13">
                                     <span class="b-fon__attent"></span>
                                     <div class="b-fon__txt b-fon__txt_margleft_20">
-                                            <span class="b-fon__txt_bold">Работа заблокирована</span>. <?= reformat($prj['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>Служба поддержки</a>
-                                            <div class='b-fon__txt'><?php if ( hasPermissions('users') ) { ?><?= ($prj['admin_login'] ? "Заблокировал: <a class='b-fon__link' href='/users/{$prj['admin_login']}'>{$prj['admin_uname']} {$prj['admin_usurname']} [{$prj['admin_login']}]</a><br />": '') ?><?php } ?>
-                                            Дата блокировки: <?= dateFormat('d.m.Y H:i', $prj['blocked_time']) ?></div>
+                                            <span class="b-fon__txt_bold">Р Р°Р±РѕС‚Р° Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅР°</span>. <?= reformat($prj['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё</a>
+                                            <div class='b-fon__txt'><?php if ( hasPermissions('users') ) { ?><?= ($prj['admin_login'] ? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°Р»: <a class='b-fon__link' href='/users/{$prj['admin_login']}'>{$prj['admin_uname']} {$prj['admin_usurname']} [{$prj['admin_login']}]</a><br />": '') ?><?php } ?>
+                                            Р”Р°С‚Р° Р±Р»РѕРєРёСЂРѕРІРєРё: <?= dateFormat('d.m.Y H:i', $prj['blocked_time']) ?></div>
                                     </div>
                                 </div>
                                 <b class="b-fon__b2"></b>
@@ -309,10 +309,10 @@ foreach($pp as $prof_id=>$prjs) {
                         <div id="portfolio-button-<?= $prj['id'] ?>">
                             <div class="b-layout__txt b-layout__txt_lineheight_1 b-layout__txt_margleft_-15 b-layout__txt_nowrap">
                                <span class="b-layout__txt b-layout__txt_fontsize_22 b-layout__txt_color_808080 b-layout__txt_valign_middle">&#43;</span>
-                               <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_bold b-layout__link_fontsize_11" href="#">Добавить работу</a>
+                               <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_bold b-layout__link_fontsize_11" href="#">Р”РѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚Сѓ</a>
                             </div>
-                            <a class="admn" href="javascript:void(0);" onclick="banned.<?=($prj['is_blocked']=='t'? 'unblockedPortfolio': 'blockedPortfolio')?>(<?=$prj['id']?>)"><?= $prj['is_blocked']=='f' ? "Заблокировать" : "Разблокировать"; ?></a><br/>
-                            <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditPortfolio', '<?=$prj['id']?>_0', 0, '')">Редактировать</a>
+                            <a class="admn" href="javascript:void(0);" onclick="banned.<?=($prj['is_blocked']=='t'? 'unblockedPortfolio': 'blockedPortfolio')?>(<?=$prj['id']?>)"><?= $prj['is_blocked']=='f' ? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ" : "Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ"; ?></a><br/>
+                            <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditPortfolio', '<?=$prj['id']?>_0', 0, '')">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
                         </div>
                         <?php 
                         }
@@ -340,10 +340,10 @@ if(!$is_count_project) {
         ?>
     
         <div class="add-work-b">
-        	<p>В вашем портфолио сейчас нет ни одной работы</p><br/>
-            <a class="b-button b-button_flat b-button_flat_green" href="<?= $aHref?>">Добавить работу</a>
+        	<p>Р’ РІР°С€РµРј РїРѕСЂС‚С„РѕР»РёРѕ СЃРµР№С‡Р°СЃ РЅРµС‚ РЅРё РѕРґРЅРѕР№ СЂР°Р±РѕС‚С‹</p><br/>
+            <a class="b-button b-button_flat b-button_flat_green" href="<?= $aHref?>">Р”РѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚Сѓ</a>
         </div>
     <?php } else {//if?>
-        <h2 style="text-align: center;"><?= ($user->tab_name_id == "1"?"Нет услуг":"Нет работ")?></h2>
+        <h2 style="text-align: center;"><?= ($user->tab_name_id == "1"?"РќРµС‚ СѓСЃР»СѓРі":"РќРµС‚ СЂР°Р±РѕС‚")?></h2>
     <?php } //else?>
 <?php } //if ?>

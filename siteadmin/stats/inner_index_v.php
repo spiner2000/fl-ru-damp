@@ -4,13 +4,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
 $DB = new DB('master');
 $sql = "SELECT * FROM stat_login ORDER BY date DESC";
 $stats = $DB->rows($sql);
-$monthName = array(1=>"Январь", 2=>"Февраль", 3=>"Март", 4=>"Апрель", 5=>"Май", 6=>"Июнь", 7=>"Июль", 8=>"Август", 9=>"Сентябрь", 10=>"Октябрь", 11=>"Ноябрь", 12=>"Декабрь")
+$monthName = array(1=>"РЇРЅРІР°СЂСЊ", 2=>"Р¤РµРІСЂР°Р»СЊ", 3=>"РњР°СЂС‚", 4=>"РђРїСЂРµР»СЊ", 5=>"РњР°Р№", 6=>"РСЋРЅСЊ", 7=>"РСЋР»СЊ", 8=>"РђРІРіСѓСЃС‚", 9=>"РЎРµРЅС‚СЏР±СЂСЊ", 10=>"РћРєС‚СЏР±СЂСЊ", 11=>"РќРѕСЏР±СЂСЊ", 12=>"Р”РµРєР°Р±СЂСЊ")
 ?>
 
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
-	<td align="left"><strong>Статистика</strong></td>
-	<td align="right"><a href="/siteadmin/stats/charts.php">График</a></td>
+	<td align="left"><strong>РЎС‚Р°С‚РёСЃС‚РёРєР°</strong></td>
+	<td align="right"><a href="/siteadmin/stats/charts.php">Р“СЂР°С„РёРє</a></td>
 </tr>
 </table>
 
@@ -61,41 +61,41 @@ for ($i = 0; $i < $forms_cnt; $i++){
 	$fdate = $fyear[$i] . "-". $fmnth[$i] ."-" .$fday[$i];
 	$tdate = $tyear[$i] . "-". $tmnth[$i] ."-" .$tday[$i];
 ?>
-с&nbsp;&nbsp;
+СЃ&nbsp;&nbsp;
 <input type="text" name="fday[]" size="2" maxlength="2" value="<?=$fday[$i]?>">
 <select name="fmnth[]">
-	<option value="1" <? if ($fmnth[$i] == 1) print "SELECTED"?>>января</option>
-	<option value="2" <? if ($fmnth[$i] == 2) print "SELECTED"?>>февраля</option>
-	<option value="3" <? if ($fmnth[$i] == 3) print "SELECTED"?>>марта</option>
-	<option value="4" <? if ($fmnth[$i] == 4) print "SELECTED"?>>апреля</option>
-	<option value="5" <? if ($fmnth[$i] == 5) print "SELECTED"?>>мая</option>
-	<option value="6" <? if ($fmnth[$i] == 6) print "SELECTED"?>>июня</option>
-	<option value="7" <? if ($fmnth[$i] == 7) print "SELECTED"?>>июля</option>
-	<option value="8" <? if ($fmnth[$i] == 8) print "SELECTED"?>>августа</option>
-	<option value="9" <? if ($fmnth[$i] == 9) print "SELECTED"?>>сентября</option>
-	<option value="10" <? if ($fmnth[$i] == 10) print "SELECTED"?>>октября</option>
-	<option value="11" <? if ($fmnth[$i] == 11) print "SELECTED"?>>ноября</option>
-	<option value="12" <? if ($fmnth[$i] == 12) print "SELECTED"?>>декабря</option>
+	<option value="1" <? if ($fmnth[$i] == 1) print "SELECTED"?>>СЏРЅРІР°СЂСЏ</option>
+	<option value="2" <? if ($fmnth[$i] == 2) print "SELECTED"?>>С„РµРІСЂР°Р»СЏ</option>
+	<option value="3" <? if ($fmnth[$i] == 3) print "SELECTED"?>>РјР°СЂС‚Р°</option>
+	<option value="4" <? if ($fmnth[$i] == 4) print "SELECTED"?>>Р°РїСЂРµР»СЏ</option>
+	<option value="5" <? if ($fmnth[$i] == 5) print "SELECTED"?>>РјР°СЏ</option>
+	<option value="6" <? if ($fmnth[$i] == 6) print "SELECTED"?>>РёСЋРЅСЏ</option>
+	<option value="7" <? if ($fmnth[$i] == 7) print "SELECTED"?>>РёСЋР»СЏ</option>
+	<option value="8" <? if ($fmnth[$i] == 8) print "SELECTED"?>>Р°РІРіСѓСЃС‚Р°</option>
+	<option value="9" <? if ($fmnth[$i] == 9) print "SELECTED"?>>СЃРµРЅС‚СЏР±СЂСЏ</option>
+	<option value="10" <? if ($fmnth[$i] == 10) print "SELECTED"?>>РѕРєС‚СЏР±СЂСЏ</option>
+	<option value="11" <? if ($fmnth[$i] == 11) print "SELECTED"?>>РЅРѕСЏР±СЂСЏ</option>
+	<option value="12" <? if ($fmnth[$i] == 12) print "SELECTED"?>>РґРµРєР°Р±СЂСЏ</option>
 </select>
 <input type="text" name="fyear[]" size="4" maxlength="4" value="<?=$fyear[$i]?>">&nbsp;&nbsp;
-по&nbsp;&nbsp;
+РїРѕ&nbsp;&nbsp;
 <input type="text" name="tday[]" size="2" maxlength="2" value="<?=$tday[$i]?>">
 <select name="tmnth[]">
-	<option value="1" <? if ($tmnth[$i] == 1) print "SELECTED"?>>января</option>
-	<option value="2" <? if ($tmnth[$i] == 2) print "SELECTED"?>>февраля</option>
-	<option value="3" <? if ($tmnth[$i] == 3) print "SELECTED"?>>марта</option>
-	<option value="4" <? if ($tmnth[$i] == 4) print "SELECTED"?>>апреля</option>
-	<option value="5" <? if ($tmnth[$i] == 5) print "SELECTED"?>>мая</option>
-	<option value="6" <? if ($tmnth[$i] == 6) print "SELECTED"?>>июня</option>
-	<option value="7" <? if ($tmnth[$i] == 7) print "SELECTED"?>>июля</option>
-	<option value="8" <? if ($tmnth[$i] == 8) print "SELECTED"?>>августа</option>
-	<option value="9" <? if ($tmnth[$i] == 9) print "SELECTED"?>>сентября</option>
-	<option value="10" <? if ($tmnth[$i] == 10) print "SELECTED"?>>октября</option>
-	<option value="11" <? if ($tmnth[$i] == 11) print "SELECTED"?>>ноября</option>
-	<option value="12" <? if ($tmnth[$i] == 12) print "SELECTED"?>>декабря</option>
+	<option value="1" <? if ($tmnth[$i] == 1) print "SELECTED"?>>СЏРЅРІР°СЂСЏ</option>
+	<option value="2" <? if ($tmnth[$i] == 2) print "SELECTED"?>>С„РµРІСЂР°Р»СЏ</option>
+	<option value="3" <? if ($tmnth[$i] == 3) print "SELECTED"?>>РјР°СЂС‚Р°</option>
+	<option value="4" <? if ($tmnth[$i] == 4) print "SELECTED"?>>Р°РїСЂРµР»СЏ</option>
+	<option value="5" <? if ($tmnth[$i] == 5) print "SELECTED"?>>РјР°СЏ</option>
+	<option value="6" <? if ($tmnth[$i] == 6) print "SELECTED"?>>РёСЋРЅСЏ</option>
+	<option value="7" <? if ($tmnth[$i] == 7) print "SELECTED"?>>РёСЋР»СЏ</option>
+	<option value="8" <? if ($tmnth[$i] == 8) print "SELECTED"?>>Р°РІРіСѓСЃС‚Р°</option>
+	<option value="9" <? if ($tmnth[$i] == 9) print "SELECTED"?>>СЃРµРЅС‚СЏР±СЂСЏ</option>
+	<option value="10" <? if ($tmnth[$i] == 10) print "SELECTED"?>>РѕРєС‚СЏР±СЂСЏ</option>
+	<option value="11" <? if ($tmnth[$i] == 11) print "SELECTED"?>>РЅРѕСЏР±СЂСЏ</option>
+	<option value="12" <? if ($tmnth[$i] == 12) print "SELECTED"?>>РґРµРєР°Р±СЂСЏ</option>
 </select>
 <input type="text" name="tyear[]" size="4" maxlength="4" value="<?=$tyear[$i]?>">
-<input type="submit" value="Ага!"><br><br>
+<input type="submit" value="РђРіР°!"><br><br>
 
 
 
@@ -103,7 +103,7 @@ for ($i = 0; $i < $forms_cnt; $i++){
 
 <?php
 
-// Неуспешно
+// РќРµСѓСЃРїРµС€РЅРѕ
 $verify_wm[$i]['emp'] = Verification::getStatVerify($fdate,$tdate, 'wm', false, false);
 $verify_ffpro[$i]['emp'] = Verification::getStatVerify($fdate,$tdate, 'ffpro', false, false);
 $verify_ffnopro[$i]['emp'] = Verification::getStatVerify($fdate,$tdate, 'ffnopro', false, false);
@@ -117,7 +117,7 @@ $verify_yd[$i]['frl'] = Verification::getStatVerify($fdate,$tdate, 'yd', false, 
 $verify_pskb[$i]['frl'] = Verification::getStatVerify($fdate,$tdate, 'pskb', false, true);
 $verify_okpay[$i]['frl'] = Verification::getStatVerify($fdate,$tdate, 'okpay', false, true);
 
-// Успешно
+// РЈСЃРїРµС€РЅРѕ
 $verify_wm_compl[$i]['emp'] = Verification::getStatVerify($fdate,$tdate, 'wm', true, false);
 $verify_ffpro_compl[$i]['emp'] = Verification::getStatVerify($fdate,$tdate, 'ffpro', true, false);
 $verify_ffnopro_compl[$i]['emp'] = Verification::getStatVerify($fdate,$tdate, 'ffnopro', true, false);
@@ -131,21 +131,21 @@ $verify_yd_compl[$i]['frl'] = Verification::getStatVerify($fdate,$tdate, 'yd', t
 $verify_pskb_compl[$i]['frl'] = Verification::getStatVerify($fdate,$tdate, 'pskb', true, true);
 $verify_okpay_compl[$i]['frl'] = Verification::getStatVerify($fdate,$tdate, 'okpay', true, true);
 
-// Успешно - по странам
+// РЈСЃРїРµС€РЅРѕ - РїРѕ СЃС‚СЂР°РЅР°Рј
 $verify_wm_compl[$i]['country']   = Verification::getStatVerify($fdate,$tdate, 'wm_country', true);
 $verify_ff_compl[$i]['country']   = Verification::getStatVerify($fdate,$tdate, 'ff_country', true);
 $verify_yd_compl[$i]['country']   = Verification::getStatVerify($fdate,$tdate, 'yd_country', true);
 $verify_pskb_compl[$i]['country'] = Verification::getStatVerify($fdate,$tdate, 'pskb_country', true);
 $verify_okpay_compl[$i]['country'] = Verification::getStatVerify($fdate,$tdate, 'okpay_country', true);
 
-// Не успешно - по странам
+// РќРµ СѓСЃРїРµС€РЅРѕ - РїРѕ СЃС‚СЂР°РЅР°Рј
 $verify_wm[$i]['country']   = Verification::getStatVerify($fdate,$tdate, 'wm_country', false);
 $verify_ff[$i]['country']   = Verification::getStatVerify($fdate,$tdate, 'ff_country', false);
 $verify_yd[$i]['country']   = Verification::getStatVerify($fdate,$tdate, 'yd_country', false);
 $verify_pskb[$i]['country'] = Verification::getStatVerify($fdate,$tdate, 'pskb_country', false);
 $verify_okpay[$i]['country'] = Verification::getStatVerify($fdate,$tdate, 'okpay_country', false);
 
-// Общая по странам
+// РћР±С‰Р°СЏ РїРѕ СЃС‚СЂР°РЅР°Рј
 $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
 
 ?>
@@ -153,7 +153,7 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
 
 
 <?if(count($stats) == 0) { ?>
-<strong>Статистика пустая</strong>
+<strong>РЎС‚Р°С‚РёСЃС‚РёРєР° РїСѓСЃС‚Р°СЏ</strong>
 <?} else {?>
 
 <table  border="1" cellspacing="2" cellpadding="2">
@@ -162,7 +162,7 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
         <col />
     </colgroup>
     <tr>
-        <td colspan=2 style="padding:10px"><strong>Верифицировано через Вебмани:</strong></td>
+        <td colspan=2 style="padding:10px"><strong>Р’РµСЂРёС„РёС†РёСЂРѕРІР°РЅРѕ С‡РµСЂРµР· Р’РµР±РјР°РЅРё:</strong></td>
     </tr>
 <tr>
 	<td colspan="2">
@@ -176,13 +176,13 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
             </colgroup>
             <tr>
                 <td></td>
-                <td>Успешно</td>
-                <td>Успешно - страны</td>
-                <td>Не успешно</td>
-                <td>Не успешно - страны</td>
+                <td>РЈСЃРїРµС€РЅРѕ</td>
+                <td>РЈСЃРїРµС€РЅРѕ - СЃС‚СЂР°РЅС‹</td>
+                <td>РќРµ СѓСЃРїРµС€РЅРѕ</td>
+                <td>РќРµ СѓСЃРїРµС€РЅРѕ - СЃС‚СЂР°РЅС‹</td>
             </tr>
             <tr>
-                <td>Фрилансеров</td>
+                <td>Р¤СЂРёР»Р°РЅСЃРµСЂРѕРІ</td>
                 <td><?= $verify_wm_compl[$i]['frl']['cnt']?></td>
                 <td rowspan = "3"><?
                     foreach($verify_wm_compl[$i]['country'] as $stat) { ?>
@@ -197,21 +197,21 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
                 </td>
             </tr>
             <tr>
-                <td>Работодателей</td>
+                <td>Р Р°Р±РѕС‚РѕРґР°С‚РµР»РµР№</td>
                 <td><?= $verify_wm_compl[$i]['emp']['cnt']?></td>
                 <td><?= $verify_wm[$i]['emp']['cnt']?></td>
             </tr>
             <tr>
-                <td>Всего</td>
+                <td>Р’СЃРµРіРѕ</td>
                 <td><?= ($verify_wm_compl[$i]['frl']['cnt'] + $verify_wm_compl[$i]['emp']['cnt'])?></td>
                 <td><?= ($verify_wm[$i]['frl']['cnt'] + $verify_wm[$i]['emp']['cnt'])?></td>
             </tr>
         </table>
     </td>
-	<!-- <td><span title="Количество пользователей прошедших верификацию"><?= $verify_wm_compl[$i]['cnt']?></span> (<span title="Количество пользователей не закончивших проходить верификацию"><?=$verify_wm[$i]['cnt']?></span>)</td> -->
+	<!-- <td><span title="РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РїСЂРѕС€РµРґС€РёС… РІРµСЂРёС„РёРєР°С†РёСЋ"><?= $verify_wm_compl[$i]['cnt']?></span> (<span title="РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РЅРµ Р·Р°РєРѕРЅС‡РёРІС€РёС… РїСЂРѕС…РѕРґРёС‚СЊ РІРµСЂРёС„РёРєР°С†РёСЋ"><?=$verify_wm[$i]['cnt']?></span>)</td> -->
 </tr>
 <tr>
-    <td colspan=2 style="padding:10px"><strong>Верифицировано ПРО через FF:</strong></td>
+    <td colspan=2 style="padding:10px"><strong>Р’РµСЂРёС„РёС†РёСЂРѕРІР°РЅРѕ РџР Рћ С‡РµСЂРµР· FF:</strong></td>
 </tr>
 <tr>
 	<td colspan="2">
@@ -225,13 +225,13 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
             </colgroup>
             <tr>
                 <td></td>
-                <td>Успешно</td>
-                <td>Успешно - страны</td>
-                <td>Не успешно</td>
-                <td>Не успешно - страны</td>
+                <td>РЈСЃРїРµС€РЅРѕ</td>
+                <td>РЈСЃРїРµС€РЅРѕ - СЃС‚СЂР°РЅС‹</td>
+                <td>РќРµ СѓСЃРїРµС€РЅРѕ</td>
+                <td>РќРµ СѓСЃРїРµС€РЅРѕ - СЃС‚СЂР°РЅС‹</td>
             </tr>
             <tr>
-                <td>Фрилансеров</td>
+                <td>Р¤СЂРёР»Р°РЅСЃРµСЂРѕРІ</td>
                 <td><?= $verify_ffpro_compl[$i]['frl']['cnt']?></td>
                 <td rowspan = "3"><?
                     foreach($verify_ff_compl[$i]['country'] as $stat) { 
@@ -248,21 +248,21 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
                 </td>
             </tr>
             <tr>
-                <td>Работодателей</td>
+                <td>Р Р°Р±РѕС‚РѕРґР°С‚РµР»РµР№</td>
                 <td><?= $verify_ffpro_compl[$i]['emp']['cnt']?></td>
                 <td><?= $verify_ffpro[$i]['emp']['cnt']?></td>
             </tr>
             <tr>
-                <td>Всего</td>
+                <td>Р’СЃРµРіРѕ</td>
                 <td><?= ($verify_ffpro_compl[$i]['frl']['cnt'] + $verify_ffpro_compl[$i]['emp']['cnt'])?></td>
                 <td><?= ($verify_ffpro[$i]['frl']['cnt'] + $verify_ffpro[$i]['emp']['cnt'])?></td>
             </tr>
         </table>
     </td>
-	<!-- <td><span title="Количество пользователей прошедших верификацию"><?=$verify_ffpro_compl[$i]['cnt']?></span> (<span title="Количество пользователей не закончивших проходить верификацию"><?=$verify_ffpro[$i]['cnt']?></span>)</td> -->
+	<!-- <td><span title="РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РїСЂРѕС€РµРґС€РёС… РІРµСЂРёС„РёРєР°С†РёСЋ"><?=$verify_ffpro_compl[$i]['cnt']?></span> (<span title="РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РЅРµ Р·Р°РєРѕРЅС‡РёРІС€РёС… РїСЂРѕС…РѕРґРёС‚СЊ РІРµСЂРёС„РёРєР°С†РёСЋ"><?=$verify_ffpro[$i]['cnt']?></span>)</td> -->
 </tr>
 <tr>
-    <td colspan=2 style="padding:10px"><strong>Верифицировано неПРО через FF:</strong></td>
+    <td colspan=2 style="padding:10px"><strong>Р’РµСЂРёС„РёС†РёСЂРѕРІР°РЅРѕ РЅРµРџР Рћ С‡РµСЂРµР· FF:</strong></td>
 </tr>
 <tr>
 	<td colspan="2">
@@ -276,13 +276,13 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
             </colgroup>
             <tr>
                 <td></td>
-                <td>Успешно</td>
-                <td>Успешно - страны</td>
-                <td>Не успешно</td>
-                <td>Не успешно - страны</td>
+                <td>РЈСЃРїРµС€РЅРѕ</td>
+                <td>РЈСЃРїРµС€РЅРѕ - СЃС‚СЂР°РЅС‹</td>
+                <td>РќРµ СѓСЃРїРµС€РЅРѕ</td>
+                <td>РќРµ СѓСЃРїРµС€РЅРѕ - СЃС‚СЂР°РЅС‹</td>
             </tr>
             <tr>
-                <td>Фрилансеров</td>
+                <td>Р¤СЂРёР»Р°РЅСЃРµСЂРѕРІ</td>
                 <td><?= $verify_ffnopro_compl[$i]['frl']['cnt']?></td>
                 <td rowspan = "3"><?
                     foreach($verify_ff_compl[$i]['country'] as $stat) { 
@@ -299,20 +299,20 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
                 </td>
             </tr>
             <tr>
-                <td>Работодателей</td>
+                <td>Р Р°Р±РѕС‚РѕРґР°С‚РµР»РµР№</td>
                 <td><?= $verify_ffnopro_compl[$i]['emp']['cnt']?></td>
                 <td><?= $verify_ffnopro[$i]['emp']['cnt']?></td>
             </tr>
             <tr>
-                <td>Всего</td>
+                <td>Р’СЃРµРіРѕ</td>
                 <td><?= ($verify_ffnopro_compl[$i]['frl']['cnt'] + $verify_ffnopro_compl[$i]['emp']['cnt'])?></td>
                 <td><?= ($verify_ffnopro[$i]['frl']['cnt'] + $verify_ffnopro[$i]['emp']['cnt'])?></td>
             </tr>
         </table>
     </td>
-	<!-- <td><span title="Количество пользователей прошедших верификацию"><?=$verify_ffnopro_compl[$i]['cnt']?></span> (<span title="Количество пользователей не закончивших проходить верификацию"><?=$verify_ffnopro[$i]['cnt']?></span>)</td> -->
+	<!-- <td><span title="РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РїСЂРѕС€РµРґС€РёС… РІРµСЂРёС„РёРєР°С†РёСЋ"><?=$verify_ffnopro_compl[$i]['cnt']?></span> (<span title="РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РЅРµ Р·Р°РєРѕРЅС‡РёРІС€РёС… РїСЂРѕС…РѕРґРёС‚СЊ РІРµСЂРёС„РёРєР°С†РёСЋ"><?=$verify_ffnopro[$i]['cnt']?></span>)</td> -->
 </tr><tr>
-    <td colspan=2 style="padding:10px"><strong>Верифицировано через Яндекс.Деньги:</strong></td>
+    <td colspan=2 style="padding:10px"><strong>Р’РµСЂРёС„РёС†РёСЂРѕРІР°РЅРѕ С‡РµСЂРµР· РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё:</strong></td>
 </tr>
 <tr>
 	<td colspan="2">
@@ -326,13 +326,13 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
             </colgroup>
             <tr>
                 <td></td>
-                <td>Успешно</td>
-                <td>Успешно - страны</td>
-                <td>Не успешно</td>
-                <td>Не успешно - страны</td>
+                <td>РЈСЃРїРµС€РЅРѕ</td>
+                <td>РЈСЃРїРµС€РЅРѕ - СЃС‚СЂР°РЅС‹</td>
+                <td>РќРµ СѓСЃРїРµС€РЅРѕ</td>
+                <td>РќРµ СѓСЃРїРµС€РЅРѕ - СЃС‚СЂР°РЅС‹</td>
             </tr>
             <tr>
-                <td>Фрилансеров</td>
+                <td>Р¤СЂРёР»Р°РЅСЃРµСЂРѕРІ</td>
                 <td><?= $verify_yd_compl[$i]['frl']['cnt']?></td>
                 <td rowspan = "3"><?
                     foreach($verify_yd_compl[$i]['country'] as $stat) { ?>
@@ -347,12 +347,12 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
                 </td>
             </tr>
             <tr>
-                <td>Работодателей</td>
+                <td>Р Р°Р±РѕС‚РѕРґР°С‚РµР»РµР№</td>
                 <td><?= $verify_yd_compl[$i]['emp']['cnt']?></td>
                 <td><?= $verify_yd[$i]['emp']['cnt']?></td>
             </tr>
             <tr>
-                <td>Всего</td>
+                <td>Р’СЃРµРіРѕ</td>
                 <td><?= ($verify_yd_compl[$i]['frl']['cnt'] + $verify_yd_compl[$i]['emp']['cnt'])?></td>
                 <td><?= ($verify_yd[$i]['frl']['cnt'] + $verify_yd[$i]['emp']['cnt'])?></td>
             </tr>
@@ -360,7 +360,7 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
     </td>
 </tr>
 </tr><tr>
-    <td colspan=2 style="padding:10px"><strong>Верифицировано через Вебкошелёк:</strong></td>
+    <td colspan=2 style="padding:10px"><strong>Р’РµСЂРёС„РёС†РёСЂРѕРІР°РЅРѕ С‡РµСЂРµР· Р’РµР±РєРѕС€РµР»С‘Рє:</strong></td>
 </tr>
 <tr>
 	<td colspan="2">
@@ -374,13 +374,13 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
             </colgroup>
             <tr>
                 <td></td>
-                <td>Успешно</td>
-                <td>Успешно - страны</td>
-                <td>Не успешно</td>
-                <td>Не успешно - страны</td>
+                <td>РЈСЃРїРµС€РЅРѕ</td>
+                <td>РЈСЃРїРµС€РЅРѕ - СЃС‚СЂР°РЅС‹</td>
+                <td>РќРµ СѓСЃРїРµС€РЅРѕ</td>
+                <td>РќРµ СѓСЃРїРµС€РЅРѕ - СЃС‚СЂР°РЅС‹</td>
             </tr>
             <tr>
-                <td>Фрилансеров</td>
+                <td>Р¤СЂРёР»Р°РЅСЃРµСЂРѕРІ</td>
                 <td><?= $verify_pskb_compl[$i]['frl']['cnt']?></td>
                 <td rowspan = "3"><?
                     foreach($verify_pskb_compl[$i]['country'] as $stat) { ?>
@@ -395,19 +395,19 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
                 </td>
             </tr>
             <tr>
-                <td>Работодателей</td>
+                <td>Р Р°Р±РѕС‚РѕРґР°С‚РµР»РµР№</td>
                 <td><?= $verify_pskb_compl[$i]['emp']['cnt']?></td>
                 <td><?= $verify_pskb[$i]['emp']['cnt']?></td>
             </tr>
             <tr>
-                <td>Всего</td>
+                <td>Р’СЃРµРіРѕ</td>
                 <td><?= ($verify_pskb_compl[$i]['frl']['cnt'] + $verify_pskb_compl[$i]['emp']['cnt'])?></td>
                 <td><?= ($verify_pskb[$i]['frl']['cnt'] + $verify_pskb[$i]['emp']['cnt'])?></td>
             </tr>
         </table>
     </td>
 </tr><tr>
-    <td colspan=2 style="padding:10px"><strong>Верифицировано через OKPAY:</strong></td>
+    <td colspan=2 style="padding:10px"><strong>Р’РµСЂРёС„РёС†РёСЂРѕРІР°РЅРѕ С‡РµСЂРµР· OKPAY:</strong></td>
 </tr>
 <tr>
     <td colspan="2">
@@ -421,13 +421,13 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
             </colgroup>
             <tr>
                 <td></td>
-                <td>Успешно</td>
-                <td>Успешно - страны</td>
-                <td>Не успешно</td>
-                <td>Не успешно - страны</td>
+                <td>РЈСЃРїРµС€РЅРѕ</td>
+                <td>РЈСЃРїРµС€РЅРѕ - СЃС‚СЂР°РЅС‹</td>
+                <td>РќРµ СѓСЃРїРµС€РЅРѕ</td>
+                <td>РќРµ СѓСЃРїРµС€РЅРѕ - СЃС‚СЂР°РЅС‹</td>
             </tr>
             <tr>
-                <td>Фрилансеров</td>
+                <td>Р¤СЂРёР»Р°РЅСЃРµСЂРѕРІ</td>
                 <td><?= $verify_okpay_compl[$i]['frl']['cnt']?></td>
                 <td rowspan = "3"><?
                     foreach($verify_okpay_compl[$i]['country'] as $stat) { ?>
@@ -442,19 +442,19 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
                 </td>
             </tr>
             <tr>
-                <td>Работодателей</td>
+                <td>Р Р°Р±РѕС‚РѕРґР°С‚РµР»РµР№</td>
                 <td><?= $verify_okpay_compl[$i]['emp']['cnt']?></td>
                 <td><?= $verify_okpay[$i]['emp']['cnt']?></td>
             </tr>
             <tr>
-                <td>Всего</td>
+                <td>Р’СЃРµРіРѕ</td>
                 <td><?= ($verify_okpay_compl[$i]['frl']['cnt'] + $verify_okpay_compl[$i]['emp']['cnt'])?></td>
                 <td><?= ($verify_okpay[$i]['frl']['cnt'] + $verify_okpay[$i]['emp']['cnt'])?></td>
             </tr>
         </table>
     </td>
 </tr>
-<tr><td colspan=2 style="padding:10px"><strong>Страны (верифицированных)</strong></td></tr>
+<tr><td colspan=2 style="padding:10px"><strong>РЎС‚СЂР°РЅС‹ (РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹С…)</strong></td></tr>
 
 <tr>
 	<td colspan="2">
@@ -477,7 +477,7 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
         <? } ?>
     </td>
 </tr>
-<tr><td colspan=2 style="padding:10px"><strong>Всего:</strong></td></tr>
+<tr><td colspan=2 style="padding:10px"><strong>Р’СЃРµРіРѕ:</strong></td></tr>
 <tr>
 	<td colspan="2">
         <table style="width:100%" class="brd-tbl">
@@ -488,11 +488,11 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
             </colgroup>
             <tr>
                 <td></td>
-                <td>Успешно</td>
-                <td>Не успешно</td>
+                <td>РЈСЃРїРµС€РЅРѕ</td>
+                <td>РќРµ СѓСЃРїРµС€РЅРѕ</td>
             </tr>
             <tr>
-                <td>Фрилансеров</td>
+                <td>Р¤СЂРёР»Р°РЅСЃРµСЂРѕРІ</td>
                 <td><?= ($frl_all_c = (
                     $verify_wm_compl[$i]['frl']['cnt']
                     + $verify_ffpro_compl[$i]['frl']['cnt']
@@ -509,7 +509,7 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
                 ))?></td>
             </tr>
             <tr>
-                <td>Работодателей</td>
+                <td>Р Р°Р±РѕС‚РѕРґР°С‚РµР»РµР№</td>
                 <td><?= ($emp_all_c = (
                     $verify_wm_compl[$i]['emp']['cnt'] 
                     + $verify_ffpro_compl[$i]['emp']['cnt'] 
@@ -526,13 +526,13 @@ $verify_country[$i] = Verification::getStatVerify($fdate,$tdate, 'country');
                 ))?></td>
             </tr>
             <tr>
-                <td>Всего</td>
+                <td>Р’СЃРµРіРѕ</td>
                 <td><?= ($frl_all_c + $emp_all_c)?></td>
                 <td><?= ($frl_all + $emp_all)?></td>
             </tr>
         </table>
     </td>
-	<!-- <td><span title="Количество пользователей прошедших верификацию"><?= ( $verify_wm_compl[$i]['cnt'] + $verify_ffpro_compl[$i]['cnt'] + $verify_ffnopro_compl[$i]['cnt'] )?></span> (<span title="Количество пользователей не закончивших проходить верификацию"><?= ( $verify_wm[$i]['cnt'] + $verify_ffpro[$i]['cnt'] + $verify_ffnopro[$i]['cnt'] )?></span>)</td> -->
+	<!-- <td><span title="РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РїСЂРѕС€РµРґС€РёС… РІРµСЂРёС„РёРєР°С†РёСЋ"><?= ( $verify_wm_compl[$i]['cnt'] + $verify_ffpro_compl[$i]['cnt'] + $verify_ffnopro_compl[$i]['cnt'] )?></span> (<span title="РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РЅРµ Р·Р°РєРѕРЅС‡РёРІС€РёС… РїСЂРѕС…РѕРґРёС‚СЊ РІРµСЂРёС„РёРєР°С†РёСЋ"><?= ( $verify_wm[$i]['cnt'] + $verify_ffpro[$i]['cnt'] + $verify_ffnopro[$i]['cnt'] )?></span>)</td> -->
 </tr>
 </table>
 <?}?>

@@ -9,7 +9,7 @@
                 <td class="b-layout__right b-layout__right_padleft_10">
                     <div class="b-post__price <?php if($project['cost'] != 0) { ?>b-post__price_fontsize_15 b-post__price_bold<?} else {?> b-post__price_fontsize_13 <?} ?>">
                         <?php if($project['cost'] == 0) { ?>
-                            По договоренности
+                            РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё
                         <?php } else { $priceby_str = getPricebyProject($project['priceby']); //if?>
                             <?= CurToChar($project['cost'], $project['currency']) ?><?= $priceby_str?>
                         <?php }//else?>
@@ -22,7 +22,7 @@
     <?php if($k == 0 && !$dont_show_hint) {?>
     <div class="i-prompt">
         <div class="b-prompt b-prompt_left_-270 b-prompt_width_180">
-            <div class="b-prompt__txt b-prompt__txt_color_fd6c30 b-prompt__txt_italic">Кликните на заголовок для просмотра подробностей</div>
+            <div class="b-prompt__txt b-prompt__txt_color_fd6c30 b-prompt__txt_italic">РљР»РёРєРЅРёС‚Рµ РЅР° Р·Р°РіРѕР»РѕРІРѕРє РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° РїРѕРґСЂРѕР±РЅРѕСЃС‚РµР№</div>
             <div class="b-prompt__arrow b-prompt__arrow_4 b-prompt__arrow_left_40 b-prompt__arrow_top_-50"></div>
         </div>
     </div>
@@ -47,16 +47,16 @@
     <div class="b-post__foot b-post__foot_padtop_15">
         <div class="b-post__txt b-post__txt_fontsize_11">
             <span class="b-post__bold">
-                <?= ( $project['kind'] == 1 ? "Фри-ланс" : ($project['kind'] == 7?"Конкурс":"Вакансии") )?><?= $project['country'] > 0? ", {$project['country_name']}" : ""?><?= $project['city'] > 0?", {$project['city_name']}":""?>
+                <?= ( $project['kind'] == 1 ? "Р¤СЂРё-Р»Р°РЅСЃ" : ($project['kind'] == 7?"РљРѕРЅРєСѓСЂСЃ":"Р’Р°РєР°РЅСЃРёРё") )?><?= $project['country'] > 0? ", {$project['country_name']}" : ""?><?= $project['city'] > 0?", {$project['city_name']}":""?>
                 <?php if($project['pro_only'] == 't') {?>
-                &#160; только <span class="b-icon b-icon__pro b-icon__pro_f"></span>
+                &#160; С‚РѕР»СЊРєРѕ <span class="b-icon b-icon__pro b-icon__pro_f"></span>
                 <?php }?>
             </span>
         </div>
         <?php if($k > 0 && $project['pro_only'] == 't' && !$is_pro_prompt && !$dont_show_hint) { $is_pro_prompt = true;?>
         <div class="i-prompt">
             <div class="b-prompt b-prompt_left_-270 b-prompt_top_-55 b-prompt_width_200">
-                <div class="b-prompt__txt b-prompt__txt_color_fd6c30 b-prompt__txt_italic">Для ответа на этот проект необходимо приобрести аккаунт <span class="b-icon b-icon__pro b-icon__pro_f"></span></div>
+                <div class="b-prompt__txt b-prompt__txt_color_fd6c30 b-prompt__txt_italic">Р”Р»СЏ РѕС‚РІРµС‚Р° РЅР° СЌС‚РѕС‚ РїСЂРѕРµРєС‚ РЅРµРѕР±С…РѕРґРёРјРѕ РїСЂРёРѕР±СЂРµСЃС‚Рё Р°РєРєР°СѓРЅС‚ <span class="b-icon b-icon__pro b-icon__pro_f"></span></div>
                 <div class="b-prompt__arrow b-prompt__arrow_3 b-prompt__arrow_left_80"></div>
             </div>
         </div>

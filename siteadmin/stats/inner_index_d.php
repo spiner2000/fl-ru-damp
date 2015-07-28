@@ -8,7 +8,7 @@ $DB = new DB('master');
 
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
-	<td align="left"><strong>Статистика</strong></td>
+	<td align="left"><strong>РЎС‚Р°С‚РёСЃС‚РёРєР°</strong></td>
 </tr>
 </table>
 
@@ -61,41 +61,41 @@ for ($i = 0; $i < $forms_cnt; $i++){
 	$fdate = $fyear[$i] . "-". $fmnth[$i] ."-" .$fday[$i];
 	$tdate = $tyear[$i] . "-". $tmnth[$i] ."-" .$tday[$i];
 ?>
-с&nbsp;&nbsp;
+СЃ&nbsp;&nbsp;
 <input type="text" name="fday[]" size="2" maxlength="2" value="<?=$fday[$i]?>">
 <select name="fmnth[]">
-	<option value="1" <? if ($fmnth[$i] == 1) print "SELECTED"?>>января</option>
-	<option value="2" <? if ($fmnth[$i] == 2) print "SELECTED"?>>февраля</option>
-	<option value="3" <? if ($fmnth[$i] == 3) print "SELECTED"?>>марта</option>
-	<option value="4" <? if ($fmnth[$i] == 4) print "SELECTED"?>>апреля</option>
-	<option value="5" <? if ($fmnth[$i] == 5) print "SELECTED"?>>мая</option>
-	<option value="6" <? if ($fmnth[$i] == 6) print "SELECTED"?>>июня</option>
-	<option value="7" <? if ($fmnth[$i] == 7) print "SELECTED"?>>июля</option>
-	<option value="8" <? if ($fmnth[$i] == 8) print "SELECTED"?>>августа</option>
-	<option value="9" <? if ($fmnth[$i] == 9) print "SELECTED"?>>сентября</option>
-	<option value="10" <? if ($fmnth[$i] == 10) print "SELECTED"?>>октября</option>
-	<option value="11" <? if ($fmnth[$i] == 11) print "SELECTED"?>>ноября</option>
-	<option value="12" <? if ($fmnth[$i] == 12) print "SELECTED"?>>декабря</option>
+	<option value="1" <? if ($fmnth[$i] == 1) print "SELECTED"?>>СЏРЅРІР°СЂСЏ</option>
+	<option value="2" <? if ($fmnth[$i] == 2) print "SELECTED"?>>С„РµРІСЂР°Р»СЏ</option>
+	<option value="3" <? if ($fmnth[$i] == 3) print "SELECTED"?>>РјР°СЂС‚Р°</option>
+	<option value="4" <? if ($fmnth[$i] == 4) print "SELECTED"?>>Р°РїСЂРµР»СЏ</option>
+	<option value="5" <? if ($fmnth[$i] == 5) print "SELECTED"?>>РјР°СЏ</option>
+	<option value="6" <? if ($fmnth[$i] == 6) print "SELECTED"?>>РёСЋРЅСЏ</option>
+	<option value="7" <? if ($fmnth[$i] == 7) print "SELECTED"?>>РёСЋР»СЏ</option>
+	<option value="8" <? if ($fmnth[$i] == 8) print "SELECTED"?>>Р°РІРіСѓСЃС‚Р°</option>
+	<option value="9" <? if ($fmnth[$i] == 9) print "SELECTED"?>>СЃРµРЅС‚СЏР±СЂСЏ</option>
+	<option value="10" <? if ($fmnth[$i] == 10) print "SELECTED"?>>РѕРєС‚СЏР±СЂСЏ</option>
+	<option value="11" <? if ($fmnth[$i] == 11) print "SELECTED"?>>РЅРѕСЏР±СЂСЏ</option>
+	<option value="12" <? if ($fmnth[$i] == 12) print "SELECTED"?>>РґРµРєР°Р±СЂСЏ</option>
 </select>
 <input type="text" name="fyear[]" size="4" maxlength="4" value="<?=$fyear[$i]?>">&nbsp;&nbsp;
-по&nbsp;&nbsp;
+РїРѕ&nbsp;&nbsp;
 <input type="text" name="tday[]" size="2" maxlength="2" value="<?=$tday[$i]?>">
 <select name="tmnth[]">
-	<option value="1" <? if ($tmnth[$i] == 1) print "SELECTED"?>>января</option>
-	<option value="2" <? if ($tmnth[$i] == 2) print "SELECTED"?>>февраля</option>
-	<option value="3" <? if ($tmnth[$i] == 3) print "SELECTED"?>>марта</option>
-	<option value="4" <? if ($tmnth[$i] == 4) print "SELECTED"?>>апреля</option>
-	<option value="5" <? if ($tmnth[$i] == 5) print "SELECTED"?>>мая</option>
-	<option value="6" <? if ($tmnth[$i] == 6) print "SELECTED"?>>июня</option>
-	<option value="7" <? if ($tmnth[$i] == 7) print "SELECTED"?>>июля</option>
-	<option value="8" <? if ($tmnth[$i] == 8) print "SELECTED"?>>августа</option>
-	<option value="9" <? if ($tmnth[$i] == 9) print "SELECTED"?>>сентября</option>
-	<option value="10" <? if ($tmnth[$i] == 10) print "SELECTED"?>>октября</option>
-	<option value="11" <? if ($tmnth[$i] == 11) print "SELECTED"?>>ноября</option>
-	<option value="12" <? if ($tmnth[$i] == 12) print "SELECTED"?>>декабря</option>
+	<option value="1" <? if ($tmnth[$i] == 1) print "SELECTED"?>>СЏРЅРІР°СЂСЏ</option>
+	<option value="2" <? if ($tmnth[$i] == 2) print "SELECTED"?>>С„РµРІСЂР°Р»СЏ</option>
+	<option value="3" <? if ($tmnth[$i] == 3) print "SELECTED"?>>РјР°СЂС‚Р°</option>
+	<option value="4" <? if ($tmnth[$i] == 4) print "SELECTED"?>>Р°РїСЂРµР»СЏ</option>
+	<option value="5" <? if ($tmnth[$i] == 5) print "SELECTED"?>>РјР°СЏ</option>
+	<option value="6" <? if ($tmnth[$i] == 6) print "SELECTED"?>>РёСЋРЅСЏ</option>
+	<option value="7" <? if ($tmnth[$i] == 7) print "SELECTED"?>>РёСЋР»СЏ</option>
+	<option value="8" <? if ($tmnth[$i] == 8) print "SELECTED"?>>Р°РІРіСѓСЃС‚Р°</option>
+	<option value="9" <? if ($tmnth[$i] == 9) print "SELECTED"?>>СЃРµРЅС‚СЏР±СЂСЏ</option>
+	<option value="10" <? if ($tmnth[$i] == 10) print "SELECTED"?>>РѕРєС‚СЏР±СЂСЏ</option>
+	<option value="11" <? if ($tmnth[$i] == 11) print "SELECTED"?>>РЅРѕСЏР±СЂСЏ</option>
+	<option value="12" <? if ($tmnth[$i] == 12) print "SELECTED"?>>РґРµРєР°Р±СЂСЏ</option>
 </select>
 <input type="text" name="tyear[]" size="4" maxlength="4" value="<?=$tyear[$i]?>">
-<input type="submit" value="Ага!"><br><br>
+<input type="submit" value="РђРіР°!"><br><br>
 
 
 
@@ -125,14 +125,14 @@ $transf[$i] = account::GetStatOP(array(23), $fdate, $tdate);
 $testbuypro[$i] = account::GetStatTestBuyPro($fdate,$tdate);
 $bonuses[$i] = account::GetStatBonuses($fdate,$tdate);
 
-// Статистика по регистрациям и привязке мобильных телефонов
+// РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕ СЂРµРіРёСЃС‚СЂР°С†РёСЏРј Рё РїСЂРёРІСЏР·РєРµ РјРѕР±РёР»СЊРЅС‹С… С‚РµР»РµС„РѕРЅРѕРІ
 $regs = stats::getRegStats($fdate, $tdate);
 
 ?>
 
 <table  border="1" cellspacing="2" cellpadding="2"  class="brd-tbl">
 <tr>
-	<td width=200><strong>Проекты:</strong></td>
+	<td width=200><strong>РџСЂРѕРµРєС‚С‹:</strong></td>
 	<td>
         <?php
         $sql = "SELECT COUNT(*) as cnt FROM projects WHERE kind != 9 AND post_date >= ? AND post_date - '1 day'::interval < ?";
@@ -142,7 +142,7 @@ $regs = stats::getRegStats($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td width=200><strong>Проекты (заблокированно):</strong></td>
+	<td width=200><strong>РџСЂРѕРµРєС‚С‹ (Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅРѕ):</strong></td>
 	<td>
         <?php
         $sql = "SELECT COUNT(*) AS cnt FROM projects p INNER JOIN projects_blocked pb ON pb.project_id=p.id WHERE p.post_date >= ? AND p.post_date - '1 day'::interval < ?";
@@ -152,7 +152,7 @@ $regs = stats::getRegStats($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td width=200><strong>Проекты (для ПРО):</strong></td>
+	<td width=200><strong>РџСЂРѕРµРєС‚С‹ (РґР»СЏ РџР Рћ):</strong></td>
 	<td>
         <?php
         $sql = "SELECT COUNT(*) as cnt FROM projects WHERE pro_only='t' AND post_date >= ? AND post_date - '1 day'::interval < ?";
@@ -162,7 +162,7 @@ $regs = stats::getRegStats($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td width=200><strong>Среднее кол-во ответов на проекты (для ПРО):</strong></td>
+	<td width=200><strong>РЎСЂРµРґРЅРµРµ РєРѕР»-РІРѕ РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚С‹ (РґР»СЏ РџР Рћ):</strong></td>
 	<td>
         <?php
         $c_projectoffers = 0;
@@ -176,7 +176,7 @@ $regs = stats::getRegStats($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td width=200><strong>Кол-во ответов на проекты:</strong></td>
+	<td width=200><strong>РљРѕР»-РІРѕ РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚С‹:</strong></td>
 	<td>
         <?php
         $sql = "SELECT COUNT(*) as cnt FROM projects_offers WHERE post_date >= ? AND post_date - '1 day'::interval < ?";
@@ -186,7 +186,7 @@ $regs = stats::getRegStats($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td width=200><strong>Среднее кол-во проектов:</strong></td>
+	<td width=200><strong>РЎСЂРµРґРЅРµРµ РєРѕР»-РІРѕ РїСЂРѕРµРєС‚РѕРІ:</strong></td>
 	<td>
         <?
         list($fyd, $fmd, $fdd) = preg_split("/-/",$fdate);
@@ -197,7 +197,7 @@ $regs = stats::getRegStats($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td width=200><strong>Среднее кол-во ответов на проект:</strong></td>
+	<td width=200><strong>РЎСЂРµРґРЅРµРµ РєРѕР»-РІРѕ РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚:</strong></td>
 	<td>
         <?php
         $sql = "select count(1) as cnt from projects_offers where post_date >= ? AND post_date - '1 day'::interval < ?";
@@ -208,7 +208,7 @@ $regs = stats::getRegStats($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td width=200><strong>Кол-во проектов для верифицированных:</strong></td>
+	<td width=200><strong>РљРѕР»-РІРѕ РїСЂРѕРµРєС‚РѕРІ РґР»СЏ РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹С…:</strong></td>
 	<td>
         <?php
         $sql = "select count(1) as cnt from projects where verify_only = true AND post_date >= ? AND post_date - '1 day'::interval < ?";
@@ -219,7 +219,7 @@ $regs = stats::getRegStats($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td width=200><strong>Среднее кол-во ответов на проект для верифицированных:</strong></td>
+	<td width=200><strong>РЎСЂРµРґРЅРµРµ РєРѕР»-РІРѕ РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚ РґР»СЏ РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹С…:</strong></td>
 	<td>
         <?php
         $sql = "SELECT count(1) as cnt FROM projects p
@@ -231,7 +231,7 @@ $regs = stats::getRegStats($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td width=200><strong>Кол-во проектов для верифицированных и ПРО:</strong></td>
+	<td width=200><strong>РљРѕР»-РІРѕ РїСЂРѕРµРєС‚РѕРІ РґР»СЏ РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹С… Рё РџР Рћ:</strong></td>
 	<td>
         <?php
         $sql = "select count(1) as cnt from projects WHERE (verify_only = true AND pro_only = true) AND post_date >= ? AND post_date - '1 day'::interval < ?";
@@ -242,7 +242,7 @@ $regs = stats::getRegStats($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td width=200><strong>Среднее кол-во ответов на проект для верифицированных и ПРО:</strong></td>
+	<td width=200><strong>РЎСЂРµРґРЅРµРµ РєРѕР»-РІРѕ РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚ РґР»СЏ РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹С… Рё РџР Рћ:</strong></td>
 	<td>
         <?php
         $sql = "SELECT count(1) as cnt FROM projects p
@@ -254,7 +254,7 @@ $regs = stats::getRegStats($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td width=200><strong>Количество переносов в вакансии:</strong></td>
+	<td width=200><strong>РљРѕР»РёС‡РµСЃС‚РІРѕ РїРµСЂРµРЅРѕСЃРѕРІ РІ РІР°РєР°РЅСЃРёРё:</strong></td>
 	<td>
         <?php
         $sql = "SELECT count(1) FROM projects p
@@ -265,7 +265,7 @@ $regs = stats::getRegStats($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td width=200>Из них оплачено:</td>
+	<td width=200>РР· РЅРёС… РѕРїР»Р°С‡РµРЅРѕ:</td>
 	<td>
         <?php
         $sql = "SELECT count(1) as cnt FROM projects p
@@ -276,7 +276,7 @@ $regs = stats::getRegStats($fdate, $tdate);
     </td>
 </tr>
 <tr>
-	<td width=200>Из них бесплатные у PRO</td>
+	<td width=200>РР· РЅРёС… Р±РµСЃРїР»Р°С‚РЅС‹Рµ Сѓ PRO</td>
 	<td>
         <?php
         $sql = "SELECT count(1) as cnt FROM projects p
@@ -286,17 +286,17 @@ $regs = stats::getRegStats($fdate, $tdate);
         <?=$s_project_moved_vacancy_pro?>
     </td>
 </tr>
-<tr><td colspan=2><strong>Регистрации</strong></td></tr>
+<tr><td colspan=2><strong>Р РµРіРёСЃС‚СЂР°С†РёРё</strong></td></tr>
 <tr>
-	<td>- Фрилансеры:</td>
+	<td>- Р¤СЂРёР»Р°РЅСЃРµСЂС‹:</td>
 	<td>  <?=$regs['reg']['frl']?>  </td>
 </tr>
 <tr>
-	<td>- Работадатели:</td>
+	<td>- Р Р°Р±РѕС‚Р°РґР°С‚РµР»Рё:</td>
 	<td>  <?=$regs['reg']['emp']?>  </td>
 </tr>
 <tr>
-	<td>- Всего:</td>
+	<td>- Р’СЃРµРіРѕ:</td>
 	<td>  <?=$regs['reg']['all']?>  </td>
 </tr>
 

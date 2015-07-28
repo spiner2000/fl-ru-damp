@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/quick_payment/quickPaymentPop
 
 
 /**
- * Виджет - Тизер закрепления услуг
+ * Р’РёРґР¶РµС‚ - РўРёР·РµСЂ Р·Р°РєСЂРµРїР»РµРЅРёСЏ СѓСЃР»СѓРі
  */
 class TServiceBindTeaser {
     
@@ -21,7 +21,7 @@ class TServiceBindTeaser {
     protected $data;
     
     /**
-     * Инициализация тизера
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ С‚РёР·РµСЂР°
      * @global array $js_file
      * @param array $options [kind, uid]
      */
@@ -58,26 +58,26 @@ class TServiceBindTeaser {
         }
 
         if ($countBindedTu = $tservices_binds->countBindedTu($this->uid, (int)$this->prof_id)) {
-            $binded_text = ending($countBindedTu, 'ваша услуга', 'ваши услуги', 'ваших услуг');
-            $tu_bind_teaser['subtitle'] = $countBindedTu . ' ' . $binded_text. ' уже <br>закреплен'.($countBindedTu>1?'ы':'а').' в этом разделе';
+            $binded_text = ending($countBindedTu, 'РІР°С€Р° СѓСЃР»СѓРіР°', 'РІР°С€Рё СѓСЃР»СѓРіРё', 'РІР°С€РёС… СѓСЃР»СѓРі');
+            $tu_bind_teaser['subtitle'] = $countBindedTu . ' ' . $binded_text. ' СѓР¶Рµ <br>Р·Р°РєСЂРµРїР»РµРЅ'.($countBindedTu>1?'С‹':'Р°').' РІ СЌС‚РѕРј СЂР°Р·РґРµР»Рµ';
             if ($tservices_class->hasUnbindedTservices($this->kind, $this->uid, $profs)) {
                 $use_bind_popup = true;
-                $tu_bind_teaser['title'] = 'Закрепите еще одну услугу';
-                $tu_bind_teaser['btn_text'] = 'Закрепить';
+                $tu_bind_teaser['title'] = 'Р—Р°РєСЂРµРїРёС‚Рµ РµС‰Рµ РѕРґРЅСѓ СѓСЃР»СѓРіСѓ';
+                $tu_bind_teaser['btn_text'] = 'Р—Р°РєСЂРµРїРёС‚СЊ';
             } else {
-                $tu_bind_teaser['title'] = 'Добавьте еще одну услугу<br>и закрепите ее здесь';
+                $tu_bind_teaser['title'] = 'Р”РѕР±Р°РІСЊС‚Рµ РµС‰Рµ РѕРґРЅСѓ СѓСЃР»СѓРіСѓ<br>Рё Р·Р°РєСЂРµРїРёС‚Рµ РµРµ Р·РґРµСЃСЊ';
                 $tu_bind_teaser['href'] = '/users/'.$_SESSION['login'].'/tu/new/';
-                $tu_bind_teaser['btn_text'] = 'Добавить';
+                $tu_bind_teaser['btn_text'] = 'Р”РѕР±Р°РІРёС‚СЊ';
             }        
         } else {
             if ($tservices_class->hasUserTservice(true, $profs)) {
                 $use_bind_popup = true;
-                $tu_bind_teaser['title'] = 'Закрепите здесь услугу';
-                $tu_bind_teaser['btn_text'] = 'Закрепить';
+                $tu_bind_teaser['title'] = 'Р—Р°РєСЂРµРїРёС‚Рµ Р·РґРµСЃСЊ СѓСЃР»СѓРіСѓ';
+                $tu_bind_teaser['btn_text'] = 'Р—Р°РєСЂРµРїРёС‚СЊ';
             } else {
-                $tu_bind_teaser['title'] = 'Добавьте свою услугу<br>и закрепите ее здесь';
+                $tu_bind_teaser['title'] = 'Р”РѕР±Р°РІСЊС‚Рµ СЃРІРѕСЋ СѓСЃР»СѓРіСѓ<br>Рё Р·Р°РєСЂРµРїРёС‚Рµ РµРµ Р·РґРµСЃСЊ';
                 $tu_bind_teaser['href'] = '/users/'.$_SESSION['login'].'/tu/new/';
-                $tu_bind_teaser['btn_text'] = 'Добавить';
+                $tu_bind_teaser['btn_text'] = 'Р”РѕР±Р°РІРёС‚СЊ';
             }
         }
 

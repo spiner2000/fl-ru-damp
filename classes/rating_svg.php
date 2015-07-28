@@ -1,125 +1,125 @@
 <?php
 /*
- * Основной класс для построения svg графика
+ * РћСЃРЅРѕРІРЅРѕР№ РєР»Р°СЃСЃ РґР»СЏ РїРѕСЃС‚СЂРѕРµРЅРёСЏ svg РіСЂР°С„РёРєР°
  *
  */
 
 abstract class Rating_Svg {
 
     /**
-     * Массив с данными
+     * РњР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё
      *
      * @var array 
      */
     public $_data;
 
     /**
-     * Размеры svg-объекта (ширина, высота)
+     * Р Р°Р·РјРµСЂС‹ svg-РѕР±СЉРµРєС‚Р° (С€РёСЂРёРЅР°, РІС‹СЃРѕС‚Р°)
      *
      * @var array
      */
     public $_canvasSize = array(744, 180);
 
     /**
-     * Размеры графика (ширина, высота)
+     * Р Р°Р·РјРµСЂС‹ РіСЂР°С„РёРєР° (С€РёСЂРёРЅР°, РІС‹СЃРѕС‚Р°)
      *
      * @var array
      */
     public $_graphSize = array(744, 140);
 
     /**
-     * Коэффициент, определяющий максимальную высоту графика по вертикали
+     * РљРѕСЌС„С„РёС†РёРµРЅС‚, РѕРїСЂРµРґРµР»СЏСЋС‰РёР№ РјР°РєСЃРёРјР°Р»СЊРЅСѓСЋ РІС‹СЃРѕС‚Сѓ РіСЂР°С„РёРєР° РїРѕ РІРµСЂС‚РёРєР°Р»Рё
      *
      * @var float
      */
     public $_zoom = 0.95;
 
     /**
-     * Радиус точек
+     * Р Р°РґРёСѓСЃ С‚РѕС‡РµРє
      *
      * @var int
      */
     public $_dotsRadius = 3;
 
     /**
-     * Массив с периодами, когда у пользователя был оплачен ПРО аккаунт
+     * РњР°СЃСЃРёРІ СЃ РїРµСЂРёРѕРґР°РјРё, РєРѕРіРґР° Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р±С‹Р» РѕРїР»Р°С‡РµРЅ РџР Рћ Р°РєРєР°СѓРЅС‚
      *
      * @var array
      */
     public $_pro = array();
 
     /**
-     * Цвет линии
+     * Р¦РІРµС‚ Р»РёРЅРёРё
      *
      * @var string
      */
     public $_stroke = '#5f5f5f';
 
     /**
-     * Цвет линии для ПРО
+     * Р¦РІРµС‚ Р»РёРЅРёРё РґР»СЏ РџР Рћ
      *
      * @var string
      */
     public $_strokePro = '#ff6d1b';
 
     /**
-     * Цвет нижней заливки
+     * Р¦РІРµС‚ РЅРёР¶РЅРµР№ Р·Р°Р»РёРІРєРё
      *
      * @var string
      */
     public $_fill = '#BDBDBD';
 
     /**
-     * Цвет нижней заливки для ПРО
+     * Р¦РІРµС‚ РЅРёР¶РЅРµР№ Р·Р°Р»РёРІРєРё РґР»СЏ РџР Рћ
      *
      * @var string
      */
     public $_fillPro = '#FFEBAF';
 
     /**
-     * Цвет основного фона
+     * Р¦РІРµС‚ РѕСЃРЅРѕРІРЅРѕРіРѕ С„РѕРЅР°
      *
      * @var string
      */
     public $_bg = '#eeeeee';
 
     /**
-     * Цвет основного фона для ПРО
+     * Р¦РІРµС‚ РѕСЃРЅРѕРІРЅРѕРіРѕ С„РѕРЅР° РґР»СЏ РџР Рћ
      *
      * @var string
      */
     public $_bgPro = '#FFF9E7';
 
     /**
-     * Количество сегментов по горизонтали
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРµРіРјРµРЅС‚РѕРІ РїРѕ РіРѕСЂРёР·РѕРЅС‚Р°Р»Рё
      *
      * @var int
      */
     public $_columns;
 
     /**
-     * Время в формате unix timestamp
+     * Р’СЂРµРјСЏ РІ С„РѕСЂРјР°С‚Рµ unix timestamp
      *
      * @var int
      */
     public $_time;
 
     /**
-     * Максимальное значение рейтинга
+     * РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ СЂРµР№С‚РёРЅРіР°
      *
      * @var float
      */
     public $_max = null;
 
     /**
-     * Минимальное значение рейтинга
+     * РњРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ СЂРµР№С‚РёРЅРіР°
      *
      * @var float
      */
     public $_min = null;
 
     /**
-     * Ширина сегмента
+     * РЁРёСЂРёРЅР° СЃРµРіРјРµРЅС‚Р°
      *
      * @var integer
      */
@@ -132,38 +132,38 @@ abstract class Rating_Svg {
 
 
     /**
-     * Массив с координатами пути
+     * РњР°СЃСЃРёРІ СЃ РєРѕРѕСЂРґРёРЅР°С‚Р°РјРё РїСѓС‚Рё
      *
      * @var array
      */
     public $_path = array();
 
     /**
-     * Массив с координатами пути в формате SVG
+     * РњР°СЃСЃРёРІ СЃ РєРѕРѕСЂРґРёРЅР°С‚Р°РјРё РїСѓС‚Рё РІ С„РѕСЂРјР°С‚Рµ SVG
      *
      * @var array
      */
     public $_pathCoord = array();
 
     /**
-     * Массив с координатами нижней заливки в формате SVG
+     * РњР°СЃСЃРёРІ СЃ РєРѕРѕСЂРґРёРЅР°С‚Р°РјРё РЅРёР¶РЅРµР№ Р·Р°Р»РёРІРєРё РІ С„РѕСЂРјР°С‚Рµ SVG
      *
      * @var array
      */
     public $_fillCoord = array();
 
     /**
-     * Массив с координатами точек на графике
+     * РњР°СЃСЃРёРІ СЃ РєРѕРѕСЂРґРёРЅР°С‚Р°РјРё С‚РѕС‡РµРє РЅР° РіСЂР°С„РёРєРµ
      *
      * @var array
      */
     public $_dots = array();
 
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      *
-     * @param integer $_time Время графика в формате unix timestamp
-     * @param array $_data Массив с данными
+     * @param integer $_time Р’СЂРµРјСЏ РіСЂР°С„РёРєР° РІ С„РѕСЂРјР°С‚Рµ unix timestamp
+     * @param array $_data РњР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё
      */
     public function __construct($_time, $_data) {
         $this->_time = $_time;
@@ -174,10 +174,10 @@ abstract class Rating_Svg {
     }
 
     /**
-     * Добавляет сетку к графику
+     * Р”РѕР±Р°РІР»СЏРµС‚ СЃРµС‚РєСѓ Рє РіСЂР°С„РёРєСѓ
      */
     public function addGrid() {
-        // сетка
+        // СЃРµС‚РєР°
         $g = $this->doc->createElement('g');
 //        $g->setAttribute('opacity', '0.5');
         $this->svg->appendChild($g);
@@ -193,13 +193,13 @@ abstract class Rating_Svg {
     }
 
     /**
-     * Создает SVG документ и базовые элементы
+     * РЎРѕР·РґР°РµС‚ SVG РґРѕРєСѓРјРµРЅС‚ Рё Р±Р°Р·РѕРІС‹Рµ СЌР»РµРјРµРЅС‚С‹
      */
     public function createDocument() {
 
         $this->_columnWidth = $this->_graphSize[0] / $this->_columns;
 
-        // документ
+        // РґРѕРєСѓРјРµРЅС‚
         $this->doc = new DOMDocument('1.0', 'utf-8');
         $this->doc->formatOutput = true;
         $this->svg = $this->doc->createElement('svg');
@@ -218,7 +218,7 @@ abstract class Rating_Svg {
         $js->appendChild($this->doc->createCDATASection(file_get_contents("{$_SERVER['DOCUMENT_ROOT']}/scripts/rating.js")));
         $this->svg->appendChild($js);
 
-        // основной фон
+        // РѕСЃРЅРѕРІРЅРѕР№ С„РѕРЅ
         $bg = $this->doc->createElement('rect');
         $bg->setAttribute('width', $this->_graphSize[0]);
         $bg->setAttribute('height', $this->_graphSize[1]);
@@ -227,12 +227,12 @@ abstract class Rating_Svg {
     }
 
     /**
-     * Добавляет текстовый элемент
+     * Р”РѕР±Р°РІР»СЏРµС‚ С‚РµРєСЃС‚РѕРІС‹Р№ СЌР»РµРјРµРЅС‚
      *
      * @param integer $x
      * @param integer $y
-     * @param string $_text Текст
-     * @param array $params Массив с параметрами (опционально)
+     * @param string $_text РўРµРєСЃС‚
+     * @param array $params РњР°СЃСЃРёРІ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё (РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ)
      * @return DOMElement
      */
     public function addText($x, $y, $_text, $params = array()) {
@@ -257,7 +257,7 @@ abstract class Rating_Svg {
         
         $this->svg->appendChild($text);
 
-        // число
+        // С‡РёСЃР»Рѕ
         $tspan = $this->doc->createElement('tspan');
         $tspan->appendChild($this->doc->createTextNode($_text));
         $text->appendChild($tspan);
@@ -266,13 +266,13 @@ abstract class Rating_Svg {
     }
 
     /**
-     * Добавляет прямоугольник
+     * Р”РѕР±Р°РІР»СЏРµС‚ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє
      *
      * @param <type> $x
      * @param <type> $y
-     * @param <type> $width ширина
-     * @param <type> $height высота
-     * @param <type> $params Массив с параметрами (опционально)
+     * @param <type> $width С€РёСЂРёРЅР°
+     * @param <type> $height РІС‹СЃРѕС‚Р°
+     * @param <type> $params РњР°СЃСЃРёРІ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё (РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ)
      * @return DOMElement
      */
     public function addRect($x, $y = 0, $width, $height, $params = array()) {
@@ -306,7 +306,7 @@ abstract class Rating_Svg {
     }
 
     /**
-     * Создает тултип )
+     * РЎРѕР·РґР°РµС‚ С‚СѓР»С‚РёРї )
      */
     public function addTooltip() {
         $g = $this->doc->createElement('g');
@@ -324,7 +324,7 @@ abstract class Rating_Svg {
 
         $g->appendChild($t);
 
-        $rating = $this->addText(50, 16, 'Рейтинг: 1');
+        $rating = $this->addText(50, 16, 'Р РµР№С‚РёРЅРі: 1');
         $g->appendChild($rating);
         $date = $this->addText(50, 30.5, '01.01.2010', array(
             'fill' => $this->_strokePro,
@@ -334,11 +334,11 @@ abstract class Rating_Svg {
     }
 
     /**
-     * Добавляет точку
+     * Р”РѕР±Р°РІР»СЏРµС‚ С‚РѕС‡РєСѓ
      *
      * @param <type> $x
      * @param <type> $y
-     * @param <type> $params Массив с параметрами (опционально)
+     * @param <type> $params РњР°СЃСЃРёРІ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё (РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ)
      * @return DOMElement
      */
     public function addCircle($x, $y, $params = array()) {
@@ -364,11 +364,11 @@ abstract class Rating_Svg {
     }
 
     /**
-     * Рисует кусок графика (линию и заливку снизу) на основании координат,
-     * указанных в массиве $this->_pathCoord.
-     * Очищает массив $this->_pathCoord
+     * Р РёСЃСѓРµС‚ РєСѓСЃРѕРє РіСЂР°С„РёРєР° (Р»РёРЅРёСЋ Рё Р·Р°Р»РёРІРєСѓ СЃРЅРёР·Сѓ) РЅР° РѕСЃРЅРѕРІР°РЅРёРё РєРѕРѕСЂРґРёРЅР°С‚,
+     * СѓРєР°Р·Р°РЅРЅС‹С… РІ РјР°СЃСЃРёРІРµ $this->_pathCoord.
+     * РћС‡РёС‰Р°РµС‚ РјР°СЃСЃРёРІ $this->_pathCoord
      *
-     * @param <type> $isPro Выделять или нет цветом ПРО данный кусок графика
+     * @param <type> $isPro Р’С‹РґРµР»СЏС‚СЊ РёР»Рё РЅРµС‚ С†РІРµС‚РѕРј РџР Рћ РґР°РЅРЅС‹Р№ РєСѓСЃРѕРє РіСЂР°С„РёРєР°
      * @param <type> $drawBg
      */
     public function drawPart($isPro = false, $drawBg = true) {
@@ -384,7 +384,7 @@ abstract class Rating_Svg {
         }
 
 
-        // нижняя заливка
+        // РЅРёР¶РЅСЏСЏ Р·Р°Р»РёРІРєР°
         if ($this->_fillCoord) {
             $path = $this->doc->createElement('path');
             $path->setAttribute('fill', ($isPro ? $this->_fillPro : $this->_fill));
@@ -396,7 +396,7 @@ abstract class Rating_Svg {
             $this->svg->appendChild($path);
         }
         
-        // линия
+        // Р»РёРЅРёСЏ
         $path = $this->doc->createElement('path');
         $path->setAttribute('fill', 'none');
         $path->setAttribute('stroke', ($isPro ? $this->_strokePro : $this->_stroke));
@@ -411,7 +411,7 @@ abstract class Rating_Svg {
     }
 
     /**
-     * Устанавливает периоды ПРО
+     * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РїРµСЂРёРѕРґС‹ РџР Рћ
      *
      * @param array $arr
      */
@@ -420,7 +420,7 @@ abstract class Rating_Svg {
     }
 
     /**
-     * Генерирует график и возвращает результат в виде xml
+     * Р“РµРЅРµСЂРёСЂСѓРµС‚ РіСЂР°С„РёРє Рё РІРѕР·РІСЂР°С‰Р°РµС‚ СЂРµР·СѓР»СЊС‚Р°С‚ РІ РІРёРґРµ xml
      *
      * @return string
      */
@@ -434,7 +434,7 @@ abstract class Rating_Svg {
     }
 
     /**
-     * Возвращает минимальный рейтинг
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РјРёРЅРёРјР°Р»СЊРЅС‹Р№ СЂРµР№С‚РёРЅРі
      * 
      * @return int
      */
@@ -454,8 +454,8 @@ abstract class Rating_Svg {
     }
 
     /**
-     * Метод, в котором должны быть расчитаны координаты
-     * линий и заливки в графике. ($_pathCoord, $_fillCoord)
+     * РњРµС‚РѕРґ, РІ РєРѕС‚РѕСЂРѕРј РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ СЂР°СЃС‡РёС‚Р°РЅС‹ РєРѕРѕСЂРґРёРЅР°С‚С‹
+     * Р»РёРЅРёР№ Рё Р·Р°Р»РёРІРєРё РІ РіСЂР°С„РёРєРµ. ($_pathCoord, $_fillCoord)
      */
     abstract public function createGraph();
 }

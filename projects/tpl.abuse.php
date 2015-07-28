@@ -6,7 +6,7 @@ foreach ($complain as $compl) {
 ?>
 <input type="hidden" name="project_id" id="project_id_abuse" value="<?= $project['id'] ?>">
 <input type="hidden" name="prj_abuse_id" id="prj_abuse_id" value="0">
-<!-- окно для работодателей -->
+<!-- РѕРєРЅРѕ РґР»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ -->
 <div class="b-shadow b-shadow_hide b-shadow_top_30 b-shadow_width_400 b-shadow_zindex_11 b-shadow_left_-68" id="abuse_employer_project_popup">
     <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20">
     <?php foreach ($complainTypes as $abuse) {
@@ -26,9 +26,9 @@ foreach ($complain as $compl) {
     <span class="b-shadow__icon b-shadow__icon_close"></span>
     <span class="b-shadow__icon  b-shadow__icon_nosik" style=" left:270px"></span>
 </div>
-<!-- // окно для работодателей -->
+<!-- // РѕРєРЅРѕ РґР»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ -->
 
-<!-- окно для модераторов -->                           
+<!-- РѕРєРЅРѕ РґР»СЏ РјРѕРґРµСЂР°С‚РѕСЂРѕРІ -->                           
 <div class="b-shadow b-shadow_hide b-shadow_top_30 b-shadow_width_400 b-shadow_zindex_11 b-shadow_left_-68" id="abuse_moderator_project_popup">
     <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20">
 
@@ -38,14 +38,14 @@ foreach ($complain as $compl) {
             </div>
             <span id="abuse_uploader"></span>
             <div class="b-buttons b-buttons_padbot_20">   
-                <a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green abuse-btn-send">Пожаловаться</a>
+                <a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green abuse-btn-send">РџРѕР¶Р°Р»РѕРІР°С‚СЊСЃСЏ</a>
             </div>
         </span>
 
         <?php if ($is_project_complain_sent): ?>
         
         <div class="b-layout__txt b-layout__txt_fontsize_15">
-            На проект уже отправлена жалоба модераторам.
+            РќР° РїСЂРѕРµРєС‚ СѓР¶Рµ РѕС‚РїСЂР°РІР»РµРЅР° Р¶Р°Р»РѕР±Р° РјРѕРґРµСЂР°С‚РѕСЂР°Рј.
         </div>
         
         <?php else: ?>
@@ -75,11 +75,11 @@ foreach ($complain as $compl) {
         <?php endif; ?>
         
         <div id="abuse-cause-error" class="b-layout__txt b-layout__txt_hide b-layout__txt_padtop_10 b-layout__txt_bold b-layout__txt_lineheight_1 b-layout__txt_color_red">
-            Не удалось отправить жалобу, попробуйте еще раз.
+            РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РїСЂР°РІРёС‚СЊ Р¶Р°Р»РѕР±Сѓ, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·.
         </div>
         
     </div>
     <span class="b-shadow__icon b-shadow__icon_close"></span>
     <span class="b-shadow__icon b-shadow__icon_right_32 b-shadow__icon_nosik"></span>
 </div>
-<!-- // окно для модераторов -->
+<!-- // РѕРєРЅРѕ РґР»СЏ РјРѕРґРµСЂР°С‚РѕСЂРѕРІ -->

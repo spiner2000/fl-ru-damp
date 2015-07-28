@@ -19,25 +19,25 @@ if($_SESSION['uid']) {
   
   switch($mode)
   {
-    case 1:  // В избранном у работодателей.
+    case 1:  // Р’ РёР·Р±СЂР°РЅРЅРѕРј Сѓ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№.
       if(!is_emp($user->role) && ($user->blocks[3] || $uid==$user->uid)) $recs = $recoms->teamsInEmpFavorites($user->login, $error);
       if(is_emp($user->role) && ($user->blocks[4] || $uid==$user->uid)) $recs = $recoms->teamsInEmpFavorites($user->login, $error);
-      $head = "<a href='/users/".$user->login."/'>".$user->uname." ".$user->usurname."</a> [<a href='/users/".$user->login."/'>".$user->login."</a>] в избранном у работодателей";
+      $head = "<a href='/users/".$user->login."/'>".$user->uname." ".$user->usurname."</a> [<a href='/users/".$user->login."/'>".$user->login."</a>] РІ РёР·Р±СЂР°РЅРЅРѕРј Сѓ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№";
       break;
-    case 2:  // В избранном у фрилансеров.
+    case 2:  // Р’ РёР·Р±СЂР°РЅРЅРѕРј Сѓ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ.
       if(!is_emp($user->role) && ($user->blocks[4] || $uid==$user->uid)) $recs = $recoms->teamsInFrlFavorites($user->login, $error);
       if(is_emp($user->role) && ($user->blocks[5] || $uid==$user->uid)) $recs = $recoms->teamsInFrlFavorites($user->login, $error);
-      $head = "<a href='/users/".$user->login."/'>".$user->uname." ".$user->usurname."</a> [<a href='/users/".$user->login."/'>".$user->login."</a>] в избранном у фрилансеров";
+      $head = "<a href='/users/".$user->login."/'>".$user->uname." ".$user->usurname."</a> [<a href='/users/".$user->login."/'>".$user->login."</a>] РІ РёР·Р±СЂР°РЅРЅРѕРј Сѓ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ";
       break;
-    case 3:  // Избранные.
+    case 3:  // РР·Р±СЂР°РЅРЅС‹Рµ.
       if($user->blocks[5] || $uid==$user->uid)
         $recs = $recoms->teamsFavorites($user->login, $error, true);
-      $head = "Избранные <a href='/users/".$user->login."/'>".$user->uname." ".$user->usurname."</a> [<a href='/users/".$user->login."/'>".$user->login."</a>]";
+      $head = "РР·Р±СЂР°РЅРЅС‹Рµ <a href='/users/".$user->login."/'>".$user->uname." ".$user->usurname."</a> [<a href='/users/".$user->login."/'>".$user->login."</a>]";
       break;
-    case 4:  // Моя команда
+    case 4:  // РњРѕСЏ РєРѕРјР°РЅРґР°
       if($user->blocks[1] || $uid==$user->uid)
         $recs = $recoms->teamsFavorites($user->login, $error, true);
-      $head = "Избранные <a href='/users/".$user->login."/'>".$user->uname." ".$user->usurname."</a> [<a href='/users/".$user->login."/'>".$user->login."</a>]";
+      $head = "РР·Р±СЂР°РЅРЅС‹Рµ <a href='/users/".$user->login."/'>".$user->uname." ".$user->usurname."</a> [<a href='/users/".$user->login."/'>".$user->login."</a>]";
       break;
   }
 
@@ -46,7 +46,7 @@ if($_SESSION['uid']) {
   
   
   
-  //Получаем is_profi
+  //РџРѕР»СѓС‡Р°РµРј is_profi
   $ids = array();
   if ($recs) {
       foreach($recs as $rec) {
@@ -101,12 +101,12 @@ if($_SESSION['uid']) {
                     <span class="<?=$cls?>name11"><a href="/users/<?=$rec['login']?>/" class="<?=$cls?>name11" title="<?=($rec['uname']." ".$rec['usurname'])?>"><?=($rec['uname']." ".$rec['usurname'])?></a> [<a href="/users/<?=$rec['login']?>/" class="<?=$cls?>name11" title="<?=$rec['login']?>"><?=$rec['login']?></a>]</span> <?= view_mark_user($rec);?>
                   </span>
                   <?php if(!is_emp($rec['role'])) {?>
-                        Специализация: <?= professions::GetProfNameWP($rec['spec'], ' / ', "не указано", "lnk-666", true)?>
+                        РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ: <?= professions::GetProfNameWP($rec['spec'], ' / ', "РЅРµ СѓРєР°Р·Р°РЅРѕ", "lnk-666", true)?>
                     <?php }//if?>
                   <?php if($_SESSION['uid'] && $_SESSION['uid'] != $rec['uid']) {?>
                   <div class="userFav_<?=$rec['uid']?>">
                         <?php if($note === false) { ?>
-                        <div class="sent-mark"><a href="javascript:void(0)" onclick="xajax_getNotesForm(<?= $rec['uid']?>, false, <?= $type?>);">Оставить заметку</a>&nbsp;<span></span></div>
+                        <div class="sent-mark"><a href="javascript:void(0)" onclick="xajax_getNotesForm(<?= $rec['uid']?>, false, <?= $type?>);">РћСЃС‚Р°РІРёС‚СЊ Р·Р°РјРµС‚РєСѓ</a>&nbsp;<span></span></div>
                         <?php } else { //if ?>
                             <?php include ("tpl.notes-textitem.php"); ?>
                         <?php } //else ?>

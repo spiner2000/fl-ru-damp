@@ -1,7 +1,7 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/pskb.php");
-// для беты и альфы
+// РґР»СЏ Р±РµС‚С‹ Рё Р°Р»СЊС„С‹
 if (is_release()) {
     header_location_exit('/404.php');
 }
@@ -41,9 +41,9 @@ $defaults2['sign'] = pskb::signCardRequest($defaults2);
         </form>
         <div class="b-layout" style="text-align:center; padding-top:150px;">
             <div class="b-layout__txt b-layout__txt_padbot_30">
-                <a href="javascript:void(0)" onclick="document.getElementById('res_frm_1').submit();" class="b-button b-button_fla b-button_flat_green">Оплатил</a>
-                или
-                <a href="javascript:void(0)" onclick="document.getElementById('res_frm_2').submit();" class="b-button b-button_flat b-button_flat_red">Не оплатил или ошибка</a>
+                <a href="javascript:void(0)" onclick="document.getElementById('res_frm_1').submit();" class="b-button b-button_fla b-button_flat_green">РћРїР»Р°С‚РёР»</a>
+                РёР»Рё
+                <a href="javascript:void(0)" onclick="document.getElementById('res_frm_2').submit();" class="b-button b-button_flat b-button_flat_red">РќРµ РѕРїР»Р°С‚РёР» РёР»Рё РѕС€РёР±РєР°</a>
             </div>
         </div>
     </body>

@@ -1,11 +1,11 @@
 <?php
 /* 
  * 
- * Данный файл является частью проекта Веб Мессенджер.
+ * Р”Р°РЅРЅС‹Р№ С„Р°Р№Р» СЏРІР»СЏРµС‚СЃСЏ С‡Р°СЃС‚СЊСЋ РїСЂРѕРµРєС‚Р° Р’РµР± РњРµСЃСЃРµРЅРґР¶РµСЂ.
  * 
- * Все права защищены. (c) 2005-2009 ООО "ТОП".
- * Данное программное обеспечение и все сопутствующие материалы
- * предоставляются на условиях лицензии, доступной по адресу
+ * Р’СЃРµ РїСЂР°РІР° Р·Р°С‰РёС‰РµРЅС‹. (c) 2005-2009 РћРћРћ "РўРћРџ".
+ * Р”Р°РЅРЅРѕРµ РїСЂРѕРіСЂР°РјРјРЅРѕРµ РѕР±РµСЃРїРµС‡РµРЅРёРµ Рё РІСЃРµ СЃРѕРїСѓС‚СЃС‚РІСѓСЋС‰РёРµ РјР°С‚РµСЂРёР°Р»С‹
+ * РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‚СЃСЏ РЅР° СѓСЃР»РѕРІРёСЏС… Р»РёС†РµРЅР·РёРё, РґРѕСЃС‚СѓРїРЅРѕР№ РїРѕ Р°РґСЂРµСЃСѓ
  * http://webim.ru/license.html
  * 
  */
@@ -43,7 +43,7 @@ class Operator  {
 		  }
 	  } 
     
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     $aOperator = $GLOBALS['mem_buff']->get( 'OPERATOR_ONLINE_FILES_DIR' );
     
     if ( !$aOperator ) {
@@ -58,11 +58,11 @@ class Operator  {
 	  			$operator['operatorid'] . "." . OPERATOR_ONLINE_FILE_EXT;
 	  				
 			if($status == OPERATOR_STATUS_ONLINE) {
-			    // папка online в мэмкэш --------
+			    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------
 				//touch_online_file($filename);
 				$aOperator[ $filename ] = time();
 			} else {
-			    // папка online в мэмкэш --------
+			    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------
 			    //@unlink($filename);
 			    unset( $aOperator[$filename] );
 			}	
@@ -76,11 +76,11 @@ class Operator  {
     				$d['departmentkey'] . DIRECTORY_SEPARATOR . 
 	    			$operator['operatorid'] . "." . OPERATOR_ONLINE_FILE_EXT;
 	    		if($status == OPERATOR_STATUS_ONLINE) {
-	    		    // папка online в мэмкэш ----
+	    		    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ ----
 		      		//touch_online_file($filename);
 		      		$aOperator[ $filename ] = time();
 				} else {
-				    // папка online в мэмкэш ----
+				    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ ----
 		      		//@unlink($filename);
 		      		unset( $aOperator[$filename] );
 		    	}	
@@ -88,7 +88,7 @@ class Operator  {
     	}
     }
     
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     $GLOBALS['mem_buff']->set( 'OPERATOR_ONLINE_FILES_DIR', $aOperator, 3600 );*/
   }  
 
@@ -153,7 +153,7 @@ class Operator  {
   }
   
   public function loadOnlineStatsIntoDB() {
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     /*$dh = @opendir(OPERATOR_ONLINE_STATS_FILES_DIR);
     if(!$dh)
       return;
@@ -182,7 +182,7 @@ class Operator  {
   private function updateOperatorOnlineTime($operatorid, $threadid = -1) {
     $stats = array();
     
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     /*$filename = self::OperatorOnlineStatsFilename($operatorid);
     if(file_exists($filename)) {*/
       //$data = @file_get_contents($filename);
@@ -194,7 +194,7 @@ class Operator  {
           $stats = $tmp;  
         }
       }
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     /*} else {
       create_basedir($filename);
     }*/
@@ -215,19 +215,19 @@ class Operator  {
     
     $stats[$threadid][$cur_date]['updated'] = time();
     
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     //@file_put_contents($filename, serialize($stats), LOCK_EX);
     $data = smarticonv( 'UTF-8', 'CP1251', serialize($stats) );
     
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     //if(filesize($filename) > OPERATOR_ONLINE_STATS_FILE_MAX_SIZE) {
     if ( strlen($data) > OPERATOR_ONLINE_STATS_FILE_MAX_SIZE ) {
-      // папка online в мэмкэш --------------------
+      // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
       //$this->pushOnlineStatsToDB($operatorid);
       MapperFactory::getMapper("OperatorOnline")->delOperatorMemStats($operatorid);
       MapperFactory::getMapper("OperatorOnline")->pushOnlineStatsForOperator($operatorid, $stats);
     }
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     else {
         MapperFactory::getMapper('OperatorOnline')->setOperatorMemStats($operatorid, $data);
     }
@@ -239,8 +239,8 @@ class Operator  {
   }
   
   public function countOnlineOperators($operatorToSkip = null, $departmentkey = null, $locale = null) {
-    // папка online в DB ------------------------
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ DB ------------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     //$operators = $this->getOnlineOperatorsFromFiles($operatorToSkip, $departmentkey, $locale);
     //$operators = $this->getOnlineOperatorsFromMemBuff($operatorToSkip, $departmentkey, $locale);
     $operators = $this->getOnlineOperatorsFromDB($operatorToSkip, $departmentkey, $locale);
@@ -250,8 +250,8 @@ class Operator  {
   
   public function getOnlineOperators($operatorToSkip = NULL, $departmentkey = null, $locale = null) {
     $onlineOperators = array();
-    // папка online в DB ------------------------
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ DB ------------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     //$operators = $this->getOnlineOperatorsFromFiles($operatorToSkip, $departmentkey, $locale);
     //$operators = $this->getOnlineOperatorsFromMemBuff($operatorToSkip, $departmentkey, $locale);
     $operators = $this->getOnlineOperatorsFromDB($operatorToSkip, $departmentkey, $locale);
@@ -272,14 +272,14 @@ class Operator  {
   
   
    /**
-     * Операторы онлайн
+     * РћРїРµСЂР°С‚РѕСЂС‹ РѕРЅР»Р°Р№РЅ
      * 
-     * Аналог getOnlineOperatorsFromFiles только для работы с базой данных
+     * РђРЅР°Р»РѕРі getOnlineOperatorsFromFiles С‚РѕР»СЊРєРѕ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р°Р·РѕР№ РґР°РЅРЅС‹С…
      * 
-     * @param  int $operatorIdToSkip опционально. ID оператора, которого не нужно включать в итогоовый список
-     * @param  string $departmentkey опционально. ключ департамента оператора
-     * @param  string $locale опционально. локаль (ru, en) оператора
-     * @return array массив ID операторов, соответствующих входящим параметрам 
+     * @param  int $operatorIdToSkip РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. ID РѕРїРµСЂР°С‚РѕСЂР°, РєРѕС‚РѕСЂРѕРіРѕ РЅРµ РЅСѓР¶РЅРѕ РІРєР»СЋС‡Р°С‚СЊ РІ РёС‚РѕРіРѕРѕРІС‹Р№ СЃРїРёСЃРѕРє
+     * @param  string $departmentkey РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. РєР»СЋС‡ РґРµРїР°СЂС‚Р°РјРµРЅС‚Р° РѕРїРµСЂР°С‚РѕСЂР°
+     * @param  string $locale РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. Р»РѕРєР°Р»СЊ (ru, en) РѕРїРµСЂР°С‚РѕСЂР°
+     * @return array РјР°СЃСЃРёРІ ID РѕРїРµСЂР°С‚РѕСЂРѕРІ, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёС… РІС…РѕРґСЏС‰РёРј РїР°СЂР°РјРµС‚СЂР°Рј 
      */
     public function getOnlineOperatorsFromDB( $operatorIdToSkip = null, $departmentkey = null, $locale = null ) {
         $aReturn   = array();
@@ -312,14 +312,14 @@ class Operator  {
     }
   
     /**
-     * Операторы онлайн
+     * РћРїРµСЂР°С‚РѕСЂС‹ РѕРЅР»Р°Р№РЅ
      * 
-     * Аналог getOnlineOperatorsFromFiles только для работы с мэмкэш
+     * РђРЅР°Р»РѕРі getOnlineOperatorsFromFiles С‚РѕР»СЊРєРѕ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РјСЌРјРєСЌС€
      * 
-     * @param  int $operatorIdToSkip опционально. ID оператора, которого не нужно включать в итогоовый список
-     * @param  string $departmentkey опционально. ключ департамента оператора
-     * @param  string $locale опционально. локаль (ru, en) оператора
-     * @return array массив ID операторов, соответствующих входящим параметрам 
+     * @param  int $operatorIdToSkip РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. ID РѕРїРµСЂР°С‚РѕСЂР°, РєРѕС‚РѕСЂРѕРіРѕ РЅРµ РЅСѓР¶РЅРѕ РІРєР»СЋС‡Р°С‚СЊ РІ РёС‚РѕРіРѕРѕРІС‹Р№ СЃРїРёСЃРѕРє
+     * @param  string $departmentkey РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. РєР»СЋС‡ РґРµРїР°СЂС‚Р°РјРµРЅС‚Р° РѕРїРµСЂР°С‚РѕСЂР°
+     * @param  string $locale РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. Р»РѕРєР°Р»СЊ (ru, en) РѕРїРµСЂР°С‚РѕСЂР°
+     * @return array РјР°СЃСЃРёРІ ID РѕРїРµСЂР°С‚РѕСЂРѕРІ, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёС… РІС…РѕРґСЏС‰РёРј РїР°СЂР°РјРµС‚СЂР°Рј 
      */
     public function getOnlineOperatorsFromMemBuff( $operatorIdToSkip = null, $departmentkey = null, $locale = null ) {
         $aReturn   = array();
@@ -372,16 +372,16 @@ class Operator  {
     }
     
     /**
-     * Оператор онлайн
+     * РћРїРµСЂР°С‚РѕСЂ РѕРЅР»Р°Р№РЅ
      * 
-     * Аналог processOnlineFile только для работы с мэмкэш
+     * РђРЅР°Р»РѕРі processOnlineFile С‚РѕР»СЊРєРѕ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РјСЌРјРєСЌС€
      * 
-     * @param  int $time текущая метка времени
-     * @param  int $operator_id_to_skip ID оператора, которого не нужно включать в итогоовый список
-     * @param  string $file "имя файла"
-     * @param  string $file_time метка времени из мэмкэш
-     * @param  bool $expire возвращает true, если оператор оффлайн
-     * @return int ID оператора, если он онлайн и его не нужно пропускать, или 0
+     * @param  int $time С‚РµРєСѓС‰Р°СЏ РјРµС‚РєР° РІСЂРµРјРµРЅРё
+     * @param  int $operator_id_to_skip ID РѕРїРµСЂР°С‚РѕСЂР°, РєРѕС‚РѕСЂРѕРіРѕ РЅРµ РЅСѓР¶РЅРѕ РІРєР»СЋС‡Р°С‚СЊ РІ РёС‚РѕРіРѕРѕРІС‹Р№ СЃРїРёСЃРѕРє
+     * @param  string $file "РёРјСЏ С„Р°Р№Р»Р°"
+     * @param  string $file_time РјРµС‚РєР° РІСЂРµРјРµРЅРё РёР· РјСЌРјРєСЌС€
+     * @param  bool $expire РІРѕР·РІСЂР°С‰Р°РµС‚ true, РµСЃР»Рё РѕРїРµСЂР°С‚РѕСЂ РѕС„С„Р»Р°Р№РЅ
+     * @return int ID РѕРїРµСЂР°С‚РѕСЂР°, РµСЃР»Рё РѕРЅ РѕРЅР»Р°Р№РЅ Рё РµРіРѕ РЅРµ РЅСѓР¶РЅРѕ РїСЂРѕРїСѓСЃРєР°С‚СЊ, РёР»Рё 0
      */
     private function _processOnlineMemBuff( $time, $operator_id_to_skip, $file, $file_time, &$expire ) {
         $ext = pathinfo( $file, PATHINFO_EXTENSION );
@@ -485,7 +485,7 @@ class Operator  {
   }
   
   function GetAllAccessedOperators() {
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     //$accesses = $this->getOnlineOperatorsFromFiles();
     $accesses = $this->getOnlineOperatorsFromMemBuff();
     $res = array();
@@ -773,7 +773,7 @@ class Operator  {
   }
   
   function hasViewTrackerOperators() {
-      // папка online в мэмкэш --------------------
+      // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
 	  //$time = get_modified_time(OPERATOR_VIEW_TRACKER_FILE);
 	  if ( ($time = $GLOBALS['mem_buff']->get( 'OPERATOR_VIEW_TRACKER_FILE' )) === false ) {
 	      return false;

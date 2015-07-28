@@ -1,15 +1,15 @@
 <?
 /**
- * Подключаем файл с основными функциями
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» СЃ РѕСЃРЅРѕРІРЅС‹РјРё С„СѓРЅРєС†РёСЏРјРё
  *
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/memBuff2.php");
 
 /**
- * Класс работы с PROMO баннерами
+ * РљР»Р°СЃСЃ СЂР°Р±РѕС‚С‹ СЃ PROMO Р±Р°РЅРЅРµСЂР°РјРё
  * 
- * В базе на текущий момент (ID|NAME)
+ * Р’ Р±Р°Р·Рµ РЅР° С‚РµРєСѓС‰РёР№ РјРѕРјРµРЅС‚ (ID|NAME)
  * 
  * 1 - EF
  * 2 - QIWI
@@ -19,61 +19,61 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/memBuff2.php");
 class banner_promo
 {
     /**
-     * Название таблицы статистики баннера
+     * РќР°Р·РІР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ СЃС‚Р°С‚РёСЃС‚РёРєРё Р±Р°РЅРЅРµСЂР°
      *
      * @var string
      */
     public $tbl_name= "ban_promo"; 
     
     /**
-     * Тип баннера (ef, smiar, qiwi, etc...)
+     * РўРёРї Р±Р°РЅРЅРµСЂР° (ef, smiar, qiwi, etc...)
      *
      * @var string
      */
     public $type_banner; 
     
     /**
-     * Текст ошибки ввода даты
+     * РўРµРєСЃС‚ РѕС€РёР±РєРё РІРІРѕРґР° РґР°С‚С‹
      *
      * @var string
      */
     public $dateError;
         
     /**
-     *  Дата начала показа
+     *  Р”Р°С‚Р° РЅР°С‡Р°Р»Р° РїРѕРєР°Р·Р°
      *
      * @var string
      */
     public $from;
     /**
-     *  Дата окончания показа
+     *  Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РїРѕРєР°Р·Р°
      *
      * @var string
      */
     public $to;
     /**
-     * Имена файлов для всех страниц и дефиле
+     * РРјРµРЅР° С„Р°Р№Р»РѕРІ РґР»СЏ РІСЃРµС… СЃС‚СЂР°РЅРёС† Рё РґРµС„РёР»Рµ
      *
      * @var string
      */
     public $files;
     /**
-     * Ссылка
+     * РЎСЃС‹Р»РєР°
      *
      * @var string
      */
     public $link;
     
     public static $type_ban = array(
-        'image' => 'Изображение',
-        'code' => 'Код'
+        'image' => 'РР·РѕР±СЂР°Р¶РµРЅРёРµ',
+        'code' => 'РљРѕРґ'
     );
     
     public static $target_page = array(
-        '0|0'  => 'Все страницы',
-        '0|1' => 'Только главная',
-        '0|103' => 'Только список проектов',
-        '0|21' => 'Только страница проекта'
+        '0|0'  => 'Р’СЃРµ СЃС‚СЂР°РЅРёС†С‹',
+        '0|1' => 'РўРѕР»СЊРєРѕ РіР»Р°РІРЅР°СЏ',
+        '0|103' => 'РўРѕР»СЊРєРѕ СЃРїРёСЃРѕРє РїСЂРѕРµРєС‚РѕРІ',
+        '0|21' => 'РўРѕР»СЊРєРѕ СЃС‚СЂР°РЅРёС†Р° РїСЂРѕРµРєС‚Р°'
     );
     
     function __construct($type = false, $tbl_name = false) {
@@ -87,10 +87,10 @@ class banner_promo
         }
     }
     /**
-     * Выборка записи из таблицы ban_promo по идентификатору или по вхождению текущей даты в интервал показа
-     * @param int $type    - идентификатор баннера из таблицы ban_promo
-     * @param int $nocache - использовать ли кеширование при выборке из БД
-     * @return идентификатор записи
+     * Р’С‹Р±РѕСЂРєР° Р·Р°РїРёСЃРё РёР· С‚Р°Р±Р»РёС†С‹ ban_promo РїРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂСѓ РёР»Рё РїРѕ РІС…РѕР¶РґРµРЅРёСЋ С‚РµРєСѓС‰РµР№ РґР°С‚С‹ РІ РёРЅС‚РµСЂРІР°Р» РїРѕРєР°Р·Р°
+     * @param int $type    - РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р±Р°РЅРЅРµСЂР° РёР· С‚Р°Р±Р»РёС†С‹ ban_promo
+     * @param int $nocache - РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ Р»Рё РєРµС€РёСЂРѕРІР°РЅРёРµ РїСЂРё РІС‹Р±РѕСЂРєРµ РёР· Р‘Р”
+     * @return РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
      **/
     function setType($type = NULL, $nocache = false) {
         global $DB;        
@@ -120,7 +120,7 @@ class banner_promo
     }
     
     /**
-     * Выборка записи из таблицы ban_promo_types по типу страницы
+     * Р’С‹Р±РѕСЂРєР° Р·Р°РїРёСЃРё РёР· С‚Р°Р±Р»РёС†С‹ ban_promo_types РїРѕ С‚РёРїСѓ СЃС‚СЂР°РЅРёС†С‹
      * setTypeByPage
      * @param type $target
      */
@@ -161,13 +161,13 @@ class banner_promo
     }
     
     /**
-     * Записать в статистику показ баннера
+     * Р—Р°РїРёСЃР°С‚СЊ РІ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕРєР°Р· Р±Р°РЅРЅРµСЂР°
      *
      */
     function writeViewStat() {
         global $DB;
         $date = date("Y-m-d");
-        $sql = "UPDATE {$this->tbl_name} SET views = views+1 WHERE c_date = DATE ? AND type_id = ?i"; // !!! могут локи быть
+        $sql = "UPDATE {$this->tbl_name} SET views = views+1 WHERE c_date = DATE ? AND type_id = ?i"; // !!! РјРѕРіСѓС‚ Р»РѕРєРё Р±С‹С‚СЊ
         $res = $DB->query($sql, $date, $this->type_banner);
         if($res && !pg_affected_rows($res)) {
             $sql = "INSERT INTO {$this->tbl_name}(views, clicks, c_date, type_id) VALUES(1, 0, ?, ?i)";
@@ -176,7 +176,7 @@ class banner_promo
     }
 
     /**
-     * Записать в статистику клик на баннере
+     * Р—Р°РїРёСЃР°С‚СЊ РІ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РєР»РёРє РЅР° Р±Р°РЅРЅРµСЂРµ
      *
      */
     function writeClickStat() {
@@ -187,9 +187,9 @@ class banner_promo
     }
 
     /**
-     * Получить общее кол-во просмотров и кликов на баннер
+     * РџРѕР»СѓС‡РёС‚СЊ РѕР±С‰РµРµ РєРѕР»-РІРѕ РїСЂРѕСЃРјРѕС‚СЂРѕРІ Рё РєР»РёРєРѕРІ РЅР° Р±Р°РЅРЅРµСЂ
      *
-     * @return  array   Кол-во кликов и просмотров баннера
+     * @return  array   РљРѕР»-РІРѕ РєР»РёРєРѕРІ Рё РїСЂРѕСЃРјРѕС‚СЂРѕРІ Р±Р°РЅРЅРµСЂР°
      */
     function getCountStat() {
         global $DB;
@@ -198,9 +198,9 @@ class banner_promo
     }
 
     /**
-     * Получить статистику баннера по дням
+     * РџРѕР»СѓС‡РёС‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ Р±Р°РЅРЅРµСЂР° РїРѕ РґРЅСЏРј
      *
-     * @return  array   Кол-во кликов и просмотров баннера по дням
+     * @return  array   РљРѕР»-РІРѕ РєР»РёРєРѕРІ Рё РїСЂРѕСЃРјРѕС‚СЂРѕРІ Р±Р°РЅРЅРµСЂР° РїРѕ РґРЅСЏРј
      */
     function getStat() {
         global $DB;
@@ -209,7 +209,7 @@ class banner_promo
     }
     
     /**
-     * Берем информацию по всем баннерам которые есть в системе
+     * Р‘РµСЂРµРј РёРЅС„РѕСЂРјР°С†РёСЋ РїРѕ РІСЃРµРј Р±Р°РЅРЅРµСЂР°Рј РєРѕС‚РѕСЂС‹Рµ РµСЃС‚СЊ РІ СЃРёСЃС‚РµРјРµ
      *
      */
     function getInfoBanners() {
@@ -219,20 +219,20 @@ class banner_promo
     }
     
     /**
-     * Сохраняем информацию
+     * РЎРѕС…СЂР°РЅСЏРµРј РёРЅС„РѕСЂРјР°С†РёСЋ
      * 
-     * @param inetger $id               ИД баннера
-     * @param string  $name             Название баннера
-     * @param string  $from_date        Дата начала размещения
-     * @param string  $to_date          Дата конца размещения
-     * @param string  $location         Месторасположение
-     * @param integer $is_activity      Активен или нет
-     * @param string  $name_img         Название картинки баннера
-     * @param string  $img_style        Стиль картинки
-     * @param string  $img_title        Заголовок картинки
-     * @param string  $link_style       Стиль ссылки
-     * @param string  $advertising      Рекламная ли ссылка
-     * @param string  $text             Текст ссылки
+     * @param inetger $id               РР” Р±Р°РЅРЅРµСЂР°
+     * @param string  $name             РќР°Р·РІР°РЅРёРµ Р±Р°РЅРЅРµСЂР°
+     * @param string  $from_date        Р”Р°С‚Р° РЅР°С‡Р°Р»Р° СЂР°Р·РјРµС‰РµРЅРёСЏ
+     * @param string  $to_date          Р”Р°С‚Р° РєРѕРЅС†Р° СЂР°Р·РјРµС‰РµРЅРёСЏ
+     * @param string  $location         РњРµСЃС‚РѕСЂР°СЃРїРѕР»РѕР¶РµРЅРёРµ
+     * @param integer $is_activity      РђРєС‚РёРІРµРЅ РёР»Рё РЅРµС‚
+     * @param string  $name_img         РќР°Р·РІР°РЅРёРµ РєР°СЂС‚РёРЅРєРё Р±Р°РЅРЅРµСЂР°
+     * @param string  $img_style        РЎС‚РёР»СЊ РєР°СЂС‚РёРЅРєРё
+     * @param string  $img_title        Р—Р°РіРѕР»РѕРІРѕРє РєР°СЂС‚РёРЅРєРё
+     * @param string  $link_style       РЎС‚РёР»СЊ СЃСЃС‹Р»РєРё
+     * @param string  $advertising      Р РµРєР»Р°РјРЅР°СЏ Р»Рё СЃСЃС‹Р»РєР°
+     * @param string  $text             РўРµРєСЃС‚ СЃСЃС‹Р»РєРё
      * @return boolean
      */
     function saveInfoBanner($id, $name, $from_date, $to_date, $location, $is_activity, $name_img, $img_style, $img_title, $banner_link, $link_style, $advertising, $text, $type_ban = 'image', $code_txt = '', $login_access = '', $is_pro = '11', $is_role = '11', $page_target = '0|0') {
@@ -262,9 +262,9 @@ class banner_promo
     }
     
     /**
-     * Удаление баннера
+     * РЈРґР°Р»РµРЅРёРµ Р±Р°РЅРЅРµСЂР°
      *
-     * @param integer $id  ИД Баннера
+     * @param integer $id  РР” Р‘Р°РЅРЅРµСЂР°
      * @return boolean
      */
     function deleteBanner($id) {
@@ -281,20 +281,20 @@ class banner_promo
     }
         
     /**
-     * Создание промо баннера
+     * РЎРѕР·РґР°РЅРёРµ РїСЂРѕРјРѕ Р±Р°РЅРЅРµСЂР°
      *
-     * @param string  $name             Название баннера
-     * @param string  $from_date        Дата начала размещения
-     * @param string  $to_date          Дата конца размещения
-     * @param string  $location         Месторасположение
-     * @param integer $is_activity      Активен или нет
-     * @param string  $name_img         Короткое имя файла
-     * @param string  $img_style        Стиль картинки
-     * @param string  $img_title        Заголовок картинки
-     * @param string  $banner_link      Ссылка
-     * @param string  $link_style       Стиль ссылки
-     * @param string  $advertising      Рекламная ли ссылка
-     * @param string  $text             Текст ссылки
+     * @param string  $name             РќР°Р·РІР°РЅРёРµ Р±Р°РЅРЅРµСЂР°
+     * @param string  $from_date        Р”Р°С‚Р° РЅР°С‡Р°Р»Р° СЂР°Р·РјРµС‰РµРЅРёСЏ
+     * @param string  $to_date          Р”Р°С‚Р° РєРѕРЅС†Р° СЂР°Р·РјРµС‰РµРЅРёСЏ
+     * @param string  $location         РњРµСЃС‚РѕСЂР°СЃРїРѕР»РѕР¶РµРЅРёРµ
+     * @param integer $is_activity      РђРєС‚РёРІРµРЅ РёР»Рё РЅРµС‚
+     * @param string  $name_img         РљРѕСЂРѕС‚РєРѕРµ РёРјСЏ С„Р°Р№Р»Р°
+     * @param string  $img_style        РЎС‚РёР»СЊ РєР°СЂС‚РёРЅРєРё
+     * @param string  $img_title        Р—Р°РіРѕР»РѕРІРѕРє РєР°СЂС‚РёРЅРєРё
+     * @param string  $banner_link      РЎСЃС‹Р»РєР°
+     * @param string  $link_style       РЎС‚РёР»СЊ СЃСЃС‹Р»РєРё
+     * @param string  $advertising      Р РµРєР»Р°РјРЅР°СЏ Р»Рё СЃСЃС‹Р»РєР°
+     * @param string  $text             РўРµРєСЃС‚ СЃСЃС‹Р»РєРё
      * @return boolean
      */
     function createBanner($name, $from_date, $to_date, $location, $is_activity, $name_img, $img_style, $img_title, $banner_link, $link_style, $advertising, $text, $type_ban = 'image', $code_txt = '', $login_access = '', $is_pro = '11', $is_role = '11', $page_target='0|0') {
@@ -315,7 +315,7 @@ class banner_promo
         return $ok;
     }
     /**
-     * Берем Ид активного баннера
+     * Р‘РµСЂРµРј РРґ Р°РєС‚РёРІРЅРѕРіРѕ Р±Р°РЅРЅРµСЂР°
      *
      * @return integer
      */
@@ -325,10 +325,10 @@ class banner_promo
         return $DB->val($sql);
     }    
     /**
-     * Если $_FILES не пуст, сохраняет изображение на DAV сервере и возвращает путь к файлу.
-     * Иначе проверяет, существуют ли name_img в папке images если да, то возвращает в полях объекта пути к ним
-     * @param &$err    - текст ошибки
-     * @return stdObject->name (путь к файлу  для остальных страниц) или false
+     * Р•СЃР»Рё $_FILES РЅРµ РїСѓСЃС‚, СЃРѕС…СЂР°РЅСЏРµС‚ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РЅР° DAV СЃРµСЂРІРµСЂРµ Рё РІРѕР·РІСЂР°С‰Р°РµС‚ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ.
+     * РРЅР°С‡Рµ РїСЂРѕРІРµСЂСЏРµС‚, СЃСѓС‰РµСЃС‚РІСѓСЋС‚ Р»Рё name_img РІ РїР°РїРєРµ images РµСЃР»Рё РґР°, С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ РІ РїРѕР»СЏС… РѕР±СЉРµРєС‚Р° РїСѓС‚Рё Рє РЅРёРј
+     * @param &$err    - С‚РµРєСЃС‚ РѕС€РёР±РєРё
+     * @return stdObject->name (РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ  РґР»СЏ РѕСЃС‚Р°Р»СЊРЅС‹С… СЃС‚СЂР°РЅРёС†) РёР»Рё false
      * */
     public function saveImg(&$err) {
         $obj = new StdClass();
@@ -341,7 +341,7 @@ class banner_promo
             $this->info["name_img"] = $_POST["name_img"];
             $obj->name = str_replace(WDCPREFIX, "", $_POST["name_img"]);        
         }else {
-            $err = "Изображение не найдено";
+            $err = "РР·РѕР±СЂР°Р¶РµРЅРёРµ РЅРµ РЅР°Р№РґРµРЅРѕ";
         }
         if ($_FILES["file_main"]["tmp_name"] !== '') {        
             $name   = $this->_moveUploadedFile("file_main", $err);
@@ -353,10 +353,10 @@ class banner_promo
         return $obj;
     }
     /**
-     * Перемещает загруженный файл изображения на dav сервер если высота файла менее 30 px
-     * @param $id           - ключ массива информации о файле в $_FILES
-     * @param &$err         - текстовое сообщение об ошибке    
-     * @return string       - путь к файлу от корня dav сервера без WDCSERVER или пустая строка
+     * РџРµСЂРµРјРµС‰Р°РµС‚ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Р№ С„Р°Р№Р» РёР·РѕР±СЂР°Р¶РµРЅРёСЏ РЅР° dav СЃРµСЂРІРµСЂ РµСЃР»Рё РІС‹СЃРѕС‚Р° С„Р°Р№Р»Р° РјРµРЅРµРµ 30 px
+     * @param $id           - РєР»СЋС‡ РјР°СЃСЃРёРІР° РёРЅС„РѕСЂРјР°С†РёРё Рѕ С„Р°Р№Р»Рµ РІ $_FILES
+     * @param &$err         - С‚РµРєСЃС‚РѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ    
+     * @return string       - РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ РѕС‚ РєРѕСЂРЅСЏ dav СЃРµСЂРІРµСЂР° Р±РµР· WDCSERVER РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°
      * */
     private function  _moveUploadedFile($id, &$err) {
         if (count($_FILES[$id])) {
@@ -366,14 +366,14 @@ class banner_promo
             if (strpos($mime, "png")||strpos($mime, "jpg")||strpos($mime, "gif")||strpos($mime, "jpeg")) {
                 $sz = getimagesize($data["tmp_name"]);
                 if ($sz[1] > 30) {
-                    $err = "Размер файла превышает 30 пикселей";
+                    $err = "Р Р°Р·РјРµСЂ С„Р°Р№Р»Р° РїСЂРµРІС‹С€Р°РµС‚ 30 РїРёРєСЃРµР»РµР№";
                     return '';
                 }   	    	    
                 $cfile = new CFile($data);
                 $name = $cfile->MoveUploadedFile("images");
                 return ("/".$cfile->path.$name); 
             }else {
-                $err = "Недопустимый тип файла";
+                $err = "РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ С‚РёРї С„Р°Р№Р»Р°";
                 return '';
             }
         }

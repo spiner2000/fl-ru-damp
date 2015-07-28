@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/tservices/tservices_order_his
 /**
  * Class TServiceOrderHistory
  *
- * Âèäæåò - Áëîê èíôîðìàöèè îá èñòîðèè èçìåíåíèé çàêàçà
+ * Ð’Ð¸Ð´Ð¶ÐµÑ‚ - Ð‘Ð»Ð¾Ðº Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ð¸ Ð¾Ð± Ð¸ÑÑ‚Ð¾Ñ€Ð¸Ð¸ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ð¹ Ð·Ð°ÐºÐ°Ð·Ð°
  */
 class TServiceOrderFiles extends CWidget 
 {
@@ -12,7 +12,7 @@ class TServiceOrderFiles extends CWidget
 
         public function run() 
         {
-            //ñîáèðàåì øàáëîí
+            //ÑÐ¾Ð±Ð¸Ñ€Ð°ÐµÐ¼ ÑˆÐ°Ð±Ð»Ð¾Ð½
             $this->render('t-service-order-files', array(
                 'files' => $this->order_files
             ));

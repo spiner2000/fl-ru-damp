@@ -1,6 +1,6 @@
 <?php
 /**
- * Ñêðèïò êîïèðóåò âñå ôàéëû èç ïàïêè /about â ïàïêó íà dav ñåðâåðå about/documents
+ * Ð¡ÐºÑ€Ð¸Ð¿Ñ‚ ÐºÐ¾Ð¿Ð¸Ñ€ÑƒÐµÑ‚ Ð²ÑÐµ Ñ„Ð°Ð¹Ð»Ñ‹ Ð¸Ð· Ð¿Ð°Ð¿ÐºÐ¸ /about Ð² Ð¿Ð°Ð¿ÐºÑƒ Ð½Ð° dav ÑÐµÑ€Ð²ÐµÑ€Ðµ about/documents
 **/
 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/stdf.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/CFile.php';

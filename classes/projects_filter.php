@@ -2,31 +2,31 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
- * Класс управления фильтрами проектов
+ * РљР»Р°СЃСЃ СѓРїСЂР°РІР»РµРЅРёСЏ С„РёР»СЊС‚СЂР°РјРё РїСЂРѕРµРєС‚РѕРІ
  *
  */
 class projects_filters {
     
     /**
-     * Сохранение данных фильтра для последующего его создания или обновления
+     * РЎРѕС…СЂР°РЅРµРЅРёРµ РґР°РЅРЅС‹С… С„РёР»СЊС‚СЂР° РґР»СЏ РїРѕСЃР»РµРґСѓСЋС‰РµРіРѕ РµРіРѕ СЃРѕР·РґР°РЅРёСЏ РёР»Рё РѕР±РЅРѕРІР»РµРЅРёСЏ
      *
-     * @param integer $filter_id          id пользователя
-     * @param integer $cost_from          бюджет ОТ
-     * @param integer $cost_to            бюджет ДО
-     * @param integer $currency           id валюты поиска (0 - все)
-     * @param boolean $wo_cost            поиск по проектам с неуказанным бюджетом
-     * @param array $categories           массив с категориями/профессиями
-     * @param integer $country            id страны
-     * @param integer $city               id города
-     * @param integer $keywords           поисковые слова
-     * @param boolean $my_specs           использовать поиск только по специализациям пользователя
-     * @param integer $page               id страницы фильтра
-     * @param boolean $nogeo              обновлять или нет текущие город и страну в фильтре
+     * @param integer $filter_id          id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param integer $cost_from          Р±СЋРґР¶РµС‚ РћРў
+     * @param integer $cost_to            Р±СЋРґР¶РµС‚ Р”Рћ
+     * @param integer $currency           id РІР°Р»СЋС‚С‹ РїРѕРёСЃРєР° (0 - РІСЃРµ)
+     * @param boolean $wo_cost            РїРѕРёСЃРє РїРѕ РїСЂРѕРµРєС‚Р°Рј СЃ РЅРµСѓРєР°Р·Р°РЅРЅС‹Рј Р±СЋРґР¶РµС‚РѕРј
+     * @param array $categories           РјР°СЃСЃРёРІ СЃ РєР°С‚РµРіРѕСЂРёСЏРјРё/РїСЂРѕС„РµСЃСЃРёСЏРјРё
+     * @param integer $country            id СЃС‚СЂР°РЅС‹
+     * @param integer $city               id РіРѕСЂРѕРґР°
+     * @param integer $keywords           РїРѕРёСЃРєРѕРІС‹Рµ СЃР»РѕРІР°
+     * @param boolean $my_specs           РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РїРѕРёСЃРє С‚РѕР»СЊРєРѕ РїРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param integer $page               id СЃС‚СЂР°РЅРёС†С‹ С„РёР»СЊС‚СЂР°
+     * @param boolean $nogeo              РѕР±РЅРѕРІР»СЏС‚СЊ РёР»Рё РЅРµС‚ С‚РµРєСѓС‰РёРµ РіРѕСЂРѕРґ Рё СЃС‚СЂР°РЅСѓ РІ С„РёР»СЊС‚СЂРµ
      * 
-     * @param string $konkursEndDaysFrom  конкурс заканчивается через столько дней - нижняя граница
-     * @param string $konkursEndDaysTo    конкурс заканчивается через столько дней - верхняя граница
+     * @param string $konkursEndDaysFrom  РєРѕРЅРєСѓСЂСЃ Р·Р°РєР°РЅС‡РёРІР°РµС‚СЃСЏ С‡РµСЂРµР· СЃС‚РѕР»СЊРєРѕ РґРЅРµР№ - РЅРёР¶РЅСЏСЏ РіСЂР°РЅРёС†Р°
+     * @param string $konkursEndDaysTo    РєРѕРЅРєСѓСЂСЃ Р·Р°РєР°РЅС‡РёРІР°РµС‚СЃСЏ С‡РµСЂРµР· СЃС‚РѕР»СЊРєРѕ РґРЅРµР№ - РІРµСЂС…РЅСЏСЏ РіСЂР°РЅРёС†Р°
      * 
-     * @param  bool $use_main_filter опционально. Для page равно 2 "API мобильного приложения". Если true использвать фильтр page равно 0 "Главная страница"
+     * @param  bool $use_main_filter РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. Р”Р»СЏ page СЂР°РІРЅРѕ 2 "API РјРѕР±РёР»СЊРЅРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ". Р•СЃР»Рё true РёСЃРїРѕР»СЊР·РІР°С‚СЊ С„РёР»СЊС‚СЂ page СЂР°РІРЅРѕ 0 "Р“Р»Р°РІРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°"
      * @return string
      */
     function Save($user_id, $cost_from, $cost_to, $currency, $wo_cost, $categories, $country, $city, $keywords, $my_specs, &$rerror, &$error, $force=0, $page=0, $nogeo=false,
@@ -50,7 +50,7 @@ class projects_filters {
         $use_main_filter = $use_main_filter ? 't' : 'f';
         $konkursEndDaysFrom = $konkursEndDaysFrom || $konkursEndDaysFrom === '0' ? (intval($konkursEndDaysFrom) >= 0 ? intval($konkursEndDaysFrom) : 0) : null;
         $konkursEndDaysTo = $konkursEndDaysTo || $konkursEndDaysTo === '0' ? (intval($konkursEndDaysTo) >= 0 ? intval($konkursEndDaysTo) : 0) : null;
-        // если первая дата больше второй, то меняем их местами
+        // РµСЃР»Рё РїРµСЂРІР°СЏ РґР°С‚Р° Р±РѕР»СЊС€Рµ РІС‚РѕСЂРѕР№, С‚Рѕ РјРµРЅСЏРµРј РёС… РјРµСЃС‚Р°РјРё
         if ($konkursEndDaysFrom !== null && $konkursEndDaysTo !== null && $konkursEndDaysFrom > $konkursEndDaysTo) {
             list($konkursEndDaysFrom, $konkursEndDaysTo) = array($konkursEndDaysTo, $konkursEndDaysFrom);
         }
@@ -99,7 +99,7 @@ class projects_filters {
     }
     
     /**
-     * Сохранение фильтра неавторизированного пользоваля при авторизации
+     * РЎРѕС…СЂР°РЅРµРЅРёРµ С„РёР»СЊС‚СЂР° РЅРµР°РІС‚РѕСЂРёР·РёСЂРѕРІР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°Р»СЏ РїСЂРё Р°РІС‚РѕСЂРёР·Р°С†РёРё
      */
     function SaveFromAnon() {
         global $DB;
@@ -139,8 +139,8 @@ class projects_filters {
     }
     
     /**
-     * Обрабатывает ввод пользователя в фильтр бюджета, поля "От" и "До".
-     * Меняет местами если нужно.
+     * РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ РІРІРѕРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ С„РёР»СЊС‚СЂ Р±СЋРґР¶РµС‚Р°, РїРѕР»СЏ "РћС‚" Рё "Р”Рѕ".
+     * РњРµРЅСЏРµС‚ РјРµСЃС‚Р°РјРё РµСЃР»Рё РЅСѓР¶РЅРѕ.
      */
     static function preCosts($cost_from, $cost_to) {
         $cost_from = intval($cost_from);
@@ -158,24 +158,24 @@ class projects_filters {
 
 
     /**
-     * Создание фильтра
+     * РЎРѕР·РґР°РЅРёРµ С„РёР»СЊС‚СЂР°
      *
-     * @param integer $filter_id          id пользователя
-     * @param integer $cost_from          бюджет ОТ
-     * @param integer $cost_to            бюджет ДО
-     * @param integer $currency           id валюты поиска (0 - все)
-     * @param boolean $wo_cost            поиск по проектам с неуказанным бюджетом
-     * @param array $categories           массив с категориями/профессиями
-     * @param integer $country            id страны
-     * @param integer $city               id города
-     * @param integer $keywords           поисковые слова
-     * @param boolean $my_specs           использовать поиск только по специализациям пользователя
-     * @param integer $page               id страницы фильтра
+     * @param integer $filter_id          id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param integer $cost_from          Р±СЋРґР¶РµС‚ РћРў
+     * @param integer $cost_to            Р±СЋРґР¶РµС‚ Р”Рћ
+     * @param integer $currency           id РІР°Р»СЋС‚С‹ РїРѕРёСЃРєР° (0 - РІСЃРµ)
+     * @param boolean $wo_cost            РїРѕРёСЃРє РїРѕ РїСЂРѕРµРєС‚Р°Рј СЃ РЅРµСѓРєР°Р·Р°РЅРЅС‹Рј Р±СЋРґР¶РµС‚РѕРј
+     * @param array $categories           РјР°СЃСЃРёРІ СЃ РєР°С‚РµРіРѕСЂРёСЏРјРё/РїСЂРѕС„РµСЃСЃРёСЏРјРё
+     * @param integer $country            id СЃС‚СЂР°РЅС‹
+     * @param integer $city               id РіРѕСЂРѕРґР°
+     * @param integer $keywords           РїРѕРёСЃРєРѕРІС‹Рµ СЃР»РѕРІР°
+     * @param boolean $my_specs           РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РїРѕРёСЃРє С‚РѕР»СЊРєРѕ РїРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param integer $page               id СЃС‚СЂР°РЅРёС†С‹ С„РёР»СЊС‚СЂР°
      *
-     * @param string $konkurs_end_days_from  конкурс заканчивается через столько дней - нижняя граница
-     * @param string $konkurs_end_days_to    конкурс заканчивается через столько дней - верхняя граница
+     * @param string $konkurs_end_days_from  РєРѕРЅРєСѓСЂСЃ Р·Р°РєР°РЅС‡РёРІР°РµС‚СЃСЏ С‡РµСЂРµР· СЃС‚РѕР»СЊРєРѕ РґРЅРµР№ - РЅРёР¶РЅСЏСЏ РіСЂР°РЅРёС†Р°
+     * @param string $konkurs_end_days_to    РєРѕРЅРєСѓСЂСЃ Р·Р°РєР°РЅС‡РёРІР°РµС‚СЃСЏ С‡РµСЂРµР· СЃС‚РѕР»СЊРєРѕ РґРЅРµР№ - РІРµСЂС…РЅСЏСЏ РіСЂР°РЅРёС†Р°
      * 
-     * @param bool $use_main_filter опционально. Для page равно 2 "API мобильного приложения". Если true использвать фильтр page равно 0 "Главная страница"
+     * @param bool $use_main_filter РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. Р”Р»СЏ page СЂР°РІРЅРѕ 2 "API РјРѕР±РёР»СЊРЅРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ". Р•СЃР»Рё true РёСЃРїРѕР»СЊР·РІР°С‚СЊ С„РёР»СЊС‚СЂ page СЂР°РІРЅРѕ 0 "Р“Р»Р°РІРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°"
      * @return array
      */
     function Add($user_id, $cost_from, $cost_to, $currency, $wo_cost, $categories, $country, $city, $keywords, $my_specs, $page=0, $only_sbr, 
@@ -215,25 +215,25 @@ class projects_filters {
 
 
     /**
-     * Обновление данных фильтра
+     * РћР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… С„РёР»СЊС‚СЂР°
      *
-     * @param integer $filter_id          id пользователя
-     * @param integer $cost_from          бюджет ОТ
-     * @param integer $cost_to            бюджет ДО
-     * @param integer $currency           id валюты поиска (0 - все)
-     * @param boolean $wo_cost            поиск по проектам с неуказанным бюджетом
-     * @param array $categories           массив с категориями/профессиями
-     * @param integer $country            id страны
-     * @param integer $city               id города
-     * @param integer $keywords           поисковые слова
-     * @param boolean $my_specs           использовать поиск только по специализациям пользователя
-     * @param integer $page               id страницы фильтра
-     * @param boolean $nogeo              обновлять или нет текущие город и страну в фильтре
+     * @param integer $filter_id          id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param integer $cost_from          Р±СЋРґР¶РµС‚ РћРў
+     * @param integer $cost_to            Р±СЋРґР¶РµС‚ Р”Рћ
+     * @param integer $currency           id РІР°Р»СЋС‚С‹ РїРѕРёСЃРєР° (0 - РІСЃРµ)
+     * @param boolean $wo_cost            РїРѕРёСЃРє РїРѕ РїСЂРѕРµРєС‚Р°Рј СЃ РЅРµСѓРєР°Р·Р°РЅРЅС‹Рј Р±СЋРґР¶РµС‚РѕРј
+     * @param array $categories           РјР°СЃСЃРёРІ СЃ РєР°С‚РµРіРѕСЂРёСЏРјРё/РїСЂРѕС„РµСЃСЃРёСЏРјРё
+     * @param integer $country            id СЃС‚СЂР°РЅС‹
+     * @param integer $city               id РіРѕСЂРѕРґР°
+     * @param integer $keywords           РїРѕРёСЃРєРѕРІС‹Рµ СЃР»РѕРІР°
+     * @param boolean $my_specs           РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РїРѕРёСЃРє С‚РѕР»СЊРєРѕ РїРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param integer $page               id СЃС‚СЂР°РЅРёС†С‹ С„РёР»СЊС‚СЂР°
+     * @param boolean $nogeo              РѕР±РЅРѕРІР»СЏС‚СЊ РёР»Рё РЅРµС‚ С‚РµРєСѓС‰РёРµ РіРѕСЂРѕРґ Рё СЃС‚СЂР°РЅСѓ РІ С„РёР»СЊС‚СЂРµ
      *
-     * @param string $konkurs_end_days_from  конкурс заканчивается через столько дней - нижняя граница
-     * @param string $konkurs_end_days_to    конкурс заканчивается через столько дней - верхняя граница
+     * @param string $konkurs_end_days_from  РєРѕРЅРєСѓСЂСЃ Р·Р°РєР°РЅС‡РёРІР°РµС‚СЃСЏ С‡РµСЂРµР· СЃС‚РѕР»СЊРєРѕ РґРЅРµР№ - РЅРёР¶РЅСЏСЏ РіСЂР°РЅРёС†Р°
+     * @param string $konkurs_end_days_to    РєРѕРЅРєСѓСЂСЃ Р·Р°РєР°РЅС‡РёРІР°РµС‚СЃСЏ С‡РµСЂРµР· СЃС‚РѕР»СЊРєРѕ РґРЅРµР№ - РІРµСЂС…РЅСЏСЏ РіСЂР°РЅРёС†Р°
      * 
-     * @param bool $use_main_filter опционально. Для page равно 2 "API мобильного приложения". Если true использвать фильтр page равно 0 "Главная страница"
+     * @param bool $use_main_filter РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. Р”Р»СЏ page СЂР°РІРЅРѕ 2 "API РјРѕР±РёР»СЊРЅРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ". Р•СЃР»Рё true РёСЃРїРѕР»СЊР·РІР°С‚СЊ С„РёР»СЊС‚СЂ page СЂР°РІРЅРѕ 0 "Р“Р»Р°РІРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°"
      * @return string
      */
     function Update($filter_id, $cost_from, $cost_to, $currency, $wo_cost, $categories, $country, $city, $keywords, $my_specs, $page=0, $nogeo = false, $only_sbr, 
@@ -289,10 +289,10 @@ class projects_filters {
 
 
     /**
-     * Получение данных филтьтра
+     * РџРѕР»СѓС‡РµРЅРёРµ РґР°РЅРЅС‹С… С„РёР»С‚СЊС‚СЂР°
      *
-     * @param integer $user_id          id пользователя
-     * @param integer $page             id страницы фильтра
+     * @param integer $user_id          id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param integer $page             id СЃС‚СЂР°РЅРёС†С‹ С„РёР»СЊС‚СЂР°
      *
      * @return array
      */
@@ -345,10 +345,10 @@ class projects_filters {
 
 
     /**
-     * Удаление фильтра
+     * РЈРґР°Р»РµРЅРёРµ С„РёР»СЊС‚СЂР°
      *
-     * @param integer $user_id          id пользователя
-     * @param integer $page             id страницы фильтра
+     * @param integer $user_id          id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param integer $page             id СЃС‚СЂР°РЅРёС†С‹ С„РёР»СЊС‚СЂР°
      *
      * @return string
      */
@@ -369,10 +369,10 @@ class projects_filters {
 
 
     /**
-     * Активация фильтра
+     * РђРєС‚РёРІР°С†РёСЏ С„РёР»СЊС‚СЂР°
      *
-     * @param integer $user_id          id пользователя
-     * @param integer $page             id страницы фильтра
+     * @param integer $user_id          id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param integer $page             id СЃС‚СЂР°РЅРёС†С‹ С„РёР»СЊС‚СЂР°
      *
      * @return string
      */
@@ -395,12 +395,12 @@ class projects_filters {
 
 
     /**
-     * Проверка существования фильтра конкретного юзера
+     * РџСЂРѕРІРµСЂРєР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ С„РёР»СЊС‚СЂР° РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ СЋР·РµСЂР°
      *
-     * @param integer $user_id          id пользователя
-     * @param integer $page             id страницы фильтра
+     * @param integer $user_id          id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param integer $page             id СЃС‚СЂР°РЅРёС†С‹ С„РёР»СЊС‚СЂР°
      *
-     * @return boolean true, если фмльтр существует, false, если нет
+     * @return boolean true, РµСЃР»Рё С„РјР»СЊС‚СЂ СЃСѓС‰РµСЃС‚РІСѓРµС‚, false, РµСЃР»Рё РЅРµС‚
      */
     function IsFilter($user_id, $page=0)
     {
@@ -420,13 +420,13 @@ class projects_filters {
 
 
     /**
-     * Отображение блока скрытых платных проектов в фильтре на главной странице.
+     * РћС‚РѕР±СЂР°Р¶РµРЅРёРµ Р±Р»РѕРєР° СЃРєСЂС‹С‚С‹С… РїР»Р°С‚РЅС‹С… РїСЂРѕРµРєС‚РѕРІ РІ С„РёР»СЊС‚СЂРµ РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ.
      *
-     * @param integer $kind   текущая закладка (см. new_projects:getProjects()).
-     * @param integer $page   номер текущей страницы.
-     * @param integer $filter   используется ли фильтр сейчас (1=Да; 0=Нет).
+     * @param integer $kind   С‚РµРєСѓС‰Р°СЏ Р·Р°РєР»Р°РґРєР° (СЃРј. new_projects:getProjects()).
+     * @param integer $page   РЅРѕРјРµСЂ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹.
+     * @param integer $filter   РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ Р»Рё С„РёР»СЊС‚СЂ СЃРµР№С‡Р°СЃ (1=Р”Р°; 0=РќРµС‚).
      *
-     * @return string   html-блок с называниями проектов.
+     * @return string   html-Р±Р»РѕРє СЃ РЅР°Р·С‹РІР°РЅРёСЏРјРё РїСЂРѕРµРєС‚РѕРІ.
      */
     function ShowClosedProjects($kind, $page, $filter) {
         $closed_name = '';
@@ -435,7 +435,7 @@ class projects_filters {
         if($_SESSION['ph']) {
             foreach($_SESSION['ph'] as $id=>$name)
             {
-                $closed_name .= "<li><a href=\"/projects/{$id}\">".base64_decode($name)."</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript: void();\" onclick=\"xajax_HideProject({$id}, 'unhide', '{$kind}', '{$page}', {$filter}); return false;\" class=\"flt-lnk\">Восстановить</a></li>";
+                $closed_name .= "<li><a href=\"/projects/{$id}\">".base64_decode($name)."</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript: void();\" onclick=\"xajax_HideProject({$id}, 'unhide', '{$kind}', '{$page}', {$filter}); return false;\" class=\"flt-lnk\">Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ</a></li>";
             }
 
             $str .= "<div class=\"flt-ppc-div\"><ol class=\"flt-ppc\">{$closed_name}</ol></div>";
@@ -444,10 +444,10 @@ class projects_filters {
         $str .= '<div class="flt-ppc-opt">';
 
         if ($closed_name)
-            $str .= "<span id=\"flt-hide-restore-all\"><a href=\"javascript: void();\" onclick=\"xajax_HideProject('all', 'unhide', '{$kind}', '{$page}', {$filter}); return false;\" class=\"flt-lnk\">Восстановить все</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+            $str .= "<span id=\"flt-hide-restore-all\"><a href=\"javascript: void();\" onclick=\"xajax_HideProject('all', 'unhide', '{$kind}', '{$page}', {$filter}); return false;\" class=\"flt-lnk\">Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РІСЃРµ</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
         if ($_SESSION['top_payed'])
-            $str .= "<span id=\"flt-hide-remove-all\"><a href=\"javascript: void();\" onclick=\"xajax_HideProject('all', 'hide', '{$kind}', '{$page}', {$filter}); return false;\"  class=\"flt-lnk\">Скрыть все платные проекты</a></span>";
+            $str .= "<span id=\"flt-hide-remove-all\"><a href=\"javascript: void();\" onclick=\"xajax_HideProject('all', 'hide', '{$kind}', '{$page}', {$filter}); return false;\"  class=\"flt-lnk\">РЎРєСЂС‹С‚СЊ РІСЃРµ РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹</a></span>";
 
         $str .= '</div>';
         $str .= '</div>';
@@ -457,18 +457,18 @@ class projects_filters {
 
 
     /**
-     * Инициализирует сессию массивом закрытых платных (закрепленных наверху) проектов для фильтра.
-     * Если у проекта срок закрепления закончился, либо он был снят с публикации, либо удален,
-     * то он удаляется из массива.
-     * Сразу сохраняет имена проектов, чтобы лишний раз из базы не запрашивать.
-     * Нужно запускать когда headers_sent()==false.
+     * РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ СЃРµСЃСЃРёСЋ РјР°СЃСЃРёРІРѕРј Р·Р°РєСЂС‹С‚С‹С… РїР»Р°С‚РЅС‹С… (Р·Р°РєСЂРµРїР»РµРЅРЅС‹С… РЅР°РІРµСЂС…Сѓ) РїСЂРѕРµРєС‚РѕРІ РґР»СЏ С„РёР»СЊС‚СЂР°.
+     * Р•СЃР»Рё Сѓ РїСЂРѕРµРєС‚Р° СЃСЂРѕРє Р·Р°РєСЂРµРїР»РµРЅРёСЏ Р·Р°РєРѕРЅС‡РёР»СЃСЏ, Р»РёР±Рѕ РѕРЅ Р±С‹Р» СЃРЅСЏС‚ СЃ РїСѓР±Р»РёРєР°С†РёРё, Р»РёР±Рѕ СѓРґР°Р»РµРЅ,
+     * С‚Рѕ РѕРЅ СѓРґР°Р»СЏРµС‚СЃСЏ РёР· РјР°СЃСЃРёРІР°.
+     * РЎСЂР°Р·Сѓ СЃРѕС…СЂР°РЅСЏРµС‚ РёРјРµРЅР° РїСЂРѕРµРєС‚РѕРІ, С‡С‚РѕР±С‹ Р»РёС€РЅРёР№ СЂР°Р· РёР· Р±Р°Р·С‹ РЅРµ Р·Р°РїСЂР°С€РёРІР°С‚СЊ.
+     * РќСѓР¶РЅРѕ Р·Р°РїСѓСЃРєР°С‚СЊ РєРѕРіРґР° headers_sent()==false.
      */
     function initClosedProjects() {
         $uid = $_SESSION['uid'];
         if(!$uid) return;
         $ccph = $_COOKIE['ph'][$uid];
         if(!$_SESSION['ph'] && $ccph) {
-            if(!isset($ccph[0])) { // старый вариант, удаляем куки (убить обработку в 2011 году).
+            if(!isset($ccph[0])) { // СЃС‚Р°СЂС‹Р№ РІР°СЂРёР°РЅС‚, СѓРґР°Р»СЏРµРј РєСѓРєРё (СѓР±РёС‚СЊ РѕР±СЂР°Р±РѕС‚РєСѓ РІ 2011 РіРѕРґСѓ).
                 $_SESSION['ph'] = $ccph;
                 foreach($_SESSION['ph'] as $key => $value)
                     setcookie("ph[{$uid}][{$key}]", '', time()+60*60*24*30, '/');                
@@ -490,8 +490,8 @@ class projects_filters {
                         unset($_SESSION['ph'][$id]);
                     }
                     else {
-                        // Сохраняем/обновляем заголовок проекта. Кодируем в base64, иначе со спец. символами может
-                        // проблема возникнуть при записи сессии.
+                        // РЎРѕС…СЂР°РЅСЏРµРј/РѕР±РЅРѕРІР»СЏРµРј Р·Р°РіРѕР»РѕРІРѕРє РїСЂРѕРµРєС‚Р°. РљРѕРґРёСЂСѓРµРј РІ base64, РёРЅР°С‡Рµ СЃРѕ СЃРїРµС†. СЃРёРјРІРѕР»Р°РјРё РјРѕР¶РµС‚
+                        // РїСЂРѕР±Р»РµРјР° РІРѕР·РЅРёРєРЅСѓС‚СЊ РїСЂРё Р·Р°РїРёСЃРё СЃРµСЃСЃРёРё.
                         $_SESSION['ph'][$id] = base64_encode($aph[$id]);
                     }
                 }
@@ -570,8 +570,8 @@ class projects_filters_pda extends projects_filters {
     }
     
     /**
-     * валидация цены проекта для фильтра
-     * если превышает максимально допустимое значение, то возвращает максимально допустимое значение
+     * РІР°Р»РёРґР°С†РёСЏ С†РµРЅС‹ РїСЂРѕРµРєС‚Р° РґР»СЏ С„РёР»СЊС‚СЂР°
+     * РµСЃР»Рё РїСЂРµРІС‹С€Р°РµС‚ РјР°РєСЃРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ, С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ РјР°РєСЃРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ
      * @param int $cost 
      * 
      * @return int 

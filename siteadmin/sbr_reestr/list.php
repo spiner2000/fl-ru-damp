@@ -1,4 +1,4 @@
-<h4>Ранее созданные реестры</h4>
+<h4>Р Р°РЅРµРµ СЃРѕР·РґР°РЅРЅС‹Рµ СЂРµРµСЃС‚СЂС‹</h4>
 <?php
 if (count($data)) {
     foreach($data as $date_start => $subdata) {
@@ -12,7 +12,7 @@ if (count($data)) {
     foreach ($keys as $key) { 
         if (isset($info['reestr'.$key])) {
     ?>    
-      <a class="b-layout__link" href="<?=WDCPREFIX.$dir.$info['reestr'.$key]?>">Реестр <?=$key?></a>&nbsp;
+      <a class="b-layout__link" href="<?=WDCPREFIX.$dir.$info['reestr'.$key]?>">Р РµРµСЃС‚СЂ <?=$key?></a>&nbsp;
     <?php }} ?>
     </div>
 <?php
@@ -20,7 +20,7 @@ if (count($data)) {
     }
 } else { 
 ?>
-<p>Ни одного файла реестра еще не создано</p>
+<p>РќРё РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р° СЂРµРµСЃС‚СЂР° РµС‰Рµ РЅРµ СЃРѕР·РґР°РЅРѕ</p>
 <?php 
 
 }

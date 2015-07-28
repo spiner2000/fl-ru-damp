@@ -24,10 +24,10 @@ if ($uid && ($ban = $user->GetBan($uid))) {
 </div>
 <div class="b-layout__left b-layout__left_margright_270">
 <? if ($ban['reason'] == 4) {?>
-<h1 class="b-page__title">Аккаунт был удален</h1>
+<h1 class="b-page__title">РђРєРєР°СѓРЅС‚ Р±С‹Р» СѓРґР°Р»РµРЅ</h1>
 <? } else {?>
-<h1 class="b-page__title">Аккаунт заблокирован <?=($ban["to"] ? "до ".date("d.m.Y  H:i",strtotimeEx($ban["to"])) : "")?></h1>
-<div class="b-layout__txt b-layout__txt_padbot_20">Причина блокировки: <? $data = admin_log::getAdminReason($ban["reason"]); print strlen($data['reason_name']) > 0?$data['reason_name']:$ban["comment"]; }?></div>
+<h1 class="b-page__title">РђРєРєР°СѓРЅС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ <?=($ban["to"] ? "РґРѕ ".date("d.m.Y  H:i",strtotimeEx($ban["to"])) : "")?></h1>
+<div class="b-layout__txt b-layout__txt_padbot_20">РџСЂРёС‡РёРЅР° Р±Р»РѕРєРёСЂРѕРІРєРё: <? $data = admin_log::getAdminReason($ban["reason"]); print strlen($data['reason_name']) > 0?$data['reason_name']:$ban["comment"]; }?></div>
 <? } ?>
-<div class="b-layout__txt b-layout__txt_padbot_20">Если вы хотите продолжить работу на сайте и восстановить аккаунт &mdash; обратитесь в <a href="http://feedback.fl.ru" target="_blank">службу поддержки</a></div>
+<div class="b-layout__txt b-layout__txt_padbot_20">Р•СЃР»Рё РІС‹ С…РѕС‚РёС‚Рµ РїСЂРѕРґРѕР»Р¶РёС‚СЊ СЂР°Р±РѕС‚Сѓ РЅР° СЃР°Р№С‚Рµ Рё РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ Р°РєРєР°СѓРЅС‚ &mdash; РѕР±СЂР°С‚РёС‚РµСЃСЊ РІ <a href="http://feedback.fl.ru" target="_blank">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a></div>
 </div>

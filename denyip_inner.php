@@ -4,6 +4,6 @@
     <!-- end of Banner 240x400 -->
 </div>
 <div class="b-layout__left b-layout__left_margright_270">
-<h1 class="b-page__title b-page__title_color_c10600">В авторизации отказано!</h1>
-<div class="b-layout__txt">Ваш текущий <strong class="b-layout__txt b-layout__txt_bold b-layout__txt_color_c10600">IP адрес не соответствует</strong> установленному в настройках безопасности для логина <strong class="b-layout__txt b-layout__txt_bold"><?=strip_tags(trim(stripcslashes($_GET['login'])))?></strong>.<br />Если вы считаете это ошибкой, пожалуйста, обратитесь в <a class="b-layout__link" href="/about/feedback/">службу поддержки</a>.</div>
+<h1 class="b-page__title b-page__title_color_c10600">Р’ Р°РІС‚РѕСЂРёР·Р°С†РёРё РѕС‚РєР°Р·Р°РЅРѕ!</h1>
+<div class="b-layout__txt">Р’Р°С€ С‚РµРєСѓС‰РёР№ <strong class="b-layout__txt b-layout__txt_bold b-layout__txt_color_c10600">IP Р°РґСЂРµСЃ РЅРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚</strong> СѓСЃС‚Р°РЅРѕРІР»РµРЅРЅРѕРјСѓ РІ РЅР°СЃС‚СЂРѕР№РєР°С… Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё РґР»СЏ Р»РѕРіРёРЅР° <strong class="b-layout__txt b-layout__txt_bold"><?=strip_tags(trim(stripcslashes($_GET['login'])))?></strong>.<br />Р•СЃР»Рё РІС‹ СЃС‡РёС‚Р°РµС‚Рµ СЌС‚Рѕ РѕС€РёР±РєРѕР№, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕР±СЂР°С‚РёС‚РµСЃСЊ РІ <a class="b-layout__link" href="/about/feedback/">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.</div>
 </div>

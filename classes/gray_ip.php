@@ -1,38 +1,38 @@
 <?php
 /**
- * Подключаем предка
+ * РџРѕРґРєР»СЋС‡Р°РµРј РїСЂРµРґРєР°
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/admin_parent.php");
 
 /**
- * Класс для работы с серым списком IP
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЃРµСЂС‹Рј СЃРїРёСЃРєРѕРј IP
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
 class gray_ip extends admin_parent {
     /**
-     * Сообщения об ошибках
+     * РЎРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕС€РёР±РєР°С…
      * 
      * @var array
      */
     static $error = array(
-        'fromIP' => '<div style="color: red; padding-top: 10px;">Начальный IP должен состоять из чисел от 0 до 255.<br/>Начинаться с числа. Вместо пропущенных чисел будут подставлены 0</div>',
-        'toIP'   => '<div style="color: red; padding-top: 10px;">Конечный IP должен состоять из чисел от 0 до 255.<br/>Начинаться с числа. Вместо пропущенных чисел будут подставлены 255</div>'
+        'fromIP' => '<div style="color: red; padding-top: 10px;">РќР°С‡Р°Р»СЊРЅС‹Р№ IP РґРѕР»Р¶РµРЅ СЃРѕСЃС‚РѕСЏС‚СЊ РёР· С‡РёСЃРµР» РѕС‚ 0 РґРѕ 255.<br/>РќР°С‡РёРЅР°С‚СЊСЃСЏ СЃ С‡РёСЃР»Р°. Р’РјРµСЃС‚Рѕ РїСЂРѕРїСѓС‰РµРЅРЅС‹С… С‡РёСЃРµР» Р±СѓРґСѓС‚ РїРѕРґСЃС‚Р°РІР»РµРЅС‹ 0</div>',
+        'toIP'   => '<div style="color: red; padding-top: 10px;">РљРѕРЅРµС‡РЅС‹Р№ IP РґРѕР»Р¶РµРЅ СЃРѕСЃС‚РѕСЏС‚СЊ РёР· С‡РёСЃРµР» РѕС‚ 0 РґРѕ 255.<br/>РќР°С‡РёРЅР°С‚СЊСЃСЏ СЃ С‡РёСЃР»Р°. Р’РјРµСЃС‚Рѕ РїСЂРѕРїСѓС‰РµРЅРЅС‹С… С‡РёСЃРµР» Р±СѓРґСѓС‚ РїРѕРґСЃС‚Р°РІР»РµРЅС‹ 255</div>'
     );
     
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      * 
-     * @param int $items_pp Количество элементов на странице
+     * @param int $items_pp РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РЅР° СЃС‚СЂР°РЅРёС†Рµ
      */
     function __construct( $items_pp ) {
         parent::__construct( $items_pp );
     }
     
     /**
-     * Возвращает список админов, которые добавляли IP в серый список
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє Р°РґРјРёРЅРѕРІ, РєРѕС‚РѕСЂС‹Рµ РґРѕР±Р°РІР»СЏР»Рё IP РІ СЃРµСЂС‹Р№ СЃРїРёСЃРѕРє
      * 
-     * @param  int $objCode опционально. код объекта
+     * @param  int $objCode РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. РєРѕРґ РѕР±СЉРµРєС‚Р°
      * @return array
      */
     function getAdmins() {
@@ -44,9 +44,9 @@ class gray_ip extends admin_parent {
     }
     
     /**
-     * Возвращает адреса пользователя из серого списка IP
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р°РґСЂРµСЃР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР· СЃРµСЂРѕРіРѕ СЃРїРёСЃРєР° IP
      * 
-     * @param  int $nUid UID пользователя
+     * @param  int $nUid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * @return array
      */
     function getPrimaryIpByUid( $nUid = 0 ) {
@@ -54,13 +54,13 @@ class gray_ip extends admin_parent {
     }
     
     /**
-     * Добавляет адреса пользователя в серый список IP
+     * Р”РѕР±Р°РІР»СЏРµС‚ Р°РґСЂРµСЃР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ СЃРµСЂС‹Р№ СЃРїРёСЃРѕРє IP
      * 
-     * @param  int $nUserId UID пользователя которого добавляем в серый список
-     * @param  string $sUserLogin Логин пользователя которого добавляем в серый список
-     * @param  int $nAdminId UID админа
-     * @param  array $aIp массив IP адресов или строка с одним IP адресом
-     * @return bool true - успех, false - провал
+     * @param  int $nUserId UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕС‚РѕСЂРѕРіРѕ РґРѕР±Р°РІР»СЏРµРј РІ СЃРµСЂС‹Р№ СЃРїРёСЃРѕРє
+     * @param  string $sUserLogin Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕС‚РѕСЂРѕРіРѕ РґРѕР±Р°РІР»СЏРµРј РІ СЃРµСЂС‹Р№ СЃРїРёСЃРѕРє
+     * @param  int $nAdminId UID Р°РґРјРёРЅР°
+     * @param  array $aIp РјР°СЃСЃРёРІ IP Р°РґСЂРµСЃРѕРІ РёР»Рё СЃС‚СЂРѕРєР° СЃ РѕРґРЅРёРј IP Р°РґСЂРµСЃРѕРј
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function addPrimaryIp( $nUserId = 0, $sUserLogin = '', $nAdminId = 0, $aIp = array() ) {
         $bRet  = true;
@@ -88,11 +88,11 @@ class gray_ip extends admin_parent {
     }
     
     /**
-     * Удаляет адреса пользователя из серого списка IP
+     * РЈРґР°Р»СЏРµС‚ Р°РґСЂРµСЃР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР· СЃРµСЂРѕРіРѕ СЃРїРёСЃРєР° IP
      * 
-     * @param  int $nUserId UID пользователя
-     * @param  array $aIp массив IP адресов или строка с одним IP адресом
-     * @return bool true - успех, false - провал
+     * @param  int $nUserId UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  array $aIp РјР°СЃСЃРёРІ IP Р°РґСЂРµСЃРѕРІ РёР»Рё СЃС‚СЂРѕРєР° СЃ РѕРґРЅРёРј IP Р°РґСЂРµСЃРѕРј
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function deletePrimaryIp( $nUserId = 0, $aIp = array() ) {
         $bRet = true;
@@ -110,18 +110,18 @@ class gray_ip extends admin_parent {
     }
     
     /**
-     * Обновляет адреса пользователя в сером списке IP
+     * РћР±РЅРѕРІР»СЏРµС‚ Р°РґСЂРµСЃР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ СЃРµСЂРѕРј СЃРїРёСЃРєРµ IP
      * 
-     * Сюда передается новый список адресов. Функция сравнивает новый список со старым.
-     * Не нужные адреса из старого списка удаляются - больше не отслеживаются, новые добавляются.
-     * Общие для старого и нового списков - не трогаются так как за ними уже могут числиться подозрительные регистрации.
+     * РЎСЋРґР° РїРµСЂРµРґР°РµС‚СЃСЏ РЅРѕРІС‹Р№ СЃРїРёСЃРѕРє Р°РґСЂРµСЃРѕРІ. Р¤СѓРЅРєС†РёСЏ СЃСЂР°РІРЅРёРІР°РµС‚ РЅРѕРІС‹Р№ СЃРїРёСЃРѕРє СЃРѕ СЃС‚Р°СЂС‹Рј.
+     * РќРµ РЅСѓР¶РЅС‹Рµ Р°РґСЂРµСЃР° РёР· СЃС‚Р°СЂРѕРіРѕ СЃРїРёСЃРєР° СѓРґР°Р»СЏСЋС‚СЃСЏ - Р±РѕР»СЊС€Рµ РЅРµ РѕС‚СЃР»РµР¶РёРІР°СЋС‚СЃСЏ, РЅРѕРІС‹Рµ РґРѕР±Р°РІР»СЏСЋС‚СЃСЏ.
+     * РћР±С‰РёРµ РґР»СЏ СЃС‚Р°СЂРѕРіРѕ Рё РЅРѕРІРѕРіРѕ СЃРїРёСЃРєРѕРІ - РЅРµ С‚СЂРѕРіР°СЋС‚СЃСЏ С‚Р°Рє РєР°Рє Р·Р° РЅРёРјРё СѓР¶Рµ РјРѕРіСѓС‚ С‡РёСЃР»РёС‚СЊСЃСЏ РїРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹Рµ СЂРµРіРёСЃС‚СЂР°С†РёРё.
      * 
-     * @param  int $nUserId UID пользователя
-     * @param  string $sUserLogin Логин пользователя
-     * @param  int $nAdminId UID админа
-     * @param  array $aIp массив IP адресов или строка с одним IP адресом
-     * @param  bool $bDel возвращает было ли удаление адресов
-     * @return bool true - успех, false - провал
+     * @param  int $nUserId UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  string $sUserLogin Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $nAdminId UID Р°РґРјРёРЅР°
+     * @param  array $aIp РјР°СЃСЃРёРІ IP Р°РґСЂРµСЃРѕРІ РёР»Рё СЃС‚СЂРѕРєР° СЃ РѕРґРЅРёРј IP Р°РґСЂРµСЃРѕРј
+     * @param  bool $bDel РІРѕР·РІСЂР°С‰Р°РµС‚ Р±С‹Р»Рѕ Р»Рё СѓРґР°Р»РµРЅРёРµ Р°РґСЂРµСЃРѕРІ
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function updatePrimaryIp( $nUserId = 0, $sUserLogin = '', $nAdminId = 0, $aIp = array(), &$bDel ) {
         $bRet = true;
@@ -150,19 +150,19 @@ class gray_ip extends admin_parent {
     }
     
     /**
-     * Убрать все IP пользователя из серого списка и убрать все его пдозрительные регистрации
+     * РЈР±СЂР°С‚СЊ РІСЃРµ IP РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР· СЃРµСЂРѕРіРѕ СЃРїРёСЃРєР° Рё СѓР±СЂР°С‚СЊ РІСЃРµ РµРіРѕ РїРґРѕР·СЂРёС‚РµР»СЊРЅС‹Рµ СЂРµРіРёСЃС‚СЂР°С†РёРё
      * 
-     * @param  int $nUserId UID пользователя
-     * @return bool true - успех, false - провал
+     * @param  int $nUserId UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function deletePrimaryUser( $nUserId = 0 ) {
         return self::updatePrimaryIp( $nUserId, '', -1, array() );
     }
     
     /**
-     * Возвращает список ID записей из серого списка которые совпадают с IP регистрации пользователя
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє ID Р·Р°РїРёСЃРµР№ РёР· СЃРµСЂРѕРіРѕ СЃРїРёСЃРєР° РєРѕС‚РѕСЂС‹Рµ СЃРѕРІРїР°РґР°СЋС‚ СЃ IP СЂРµРіРёСЃС‚СЂР°С†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * 
-     * @param  string $sRegIp IP адрес при регистрации пользователя
+     * @param  string $sRegIp IP Р°РґСЂРµСЃ РїСЂРё СЂРµРіРёСЃС‚СЂР°С†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * @return array
      */
     function getGrayListByRegIp( $sRegIp ) {
@@ -172,13 +172,13 @@ class gray_ip extends admin_parent {
     }
     
     /**
-     * Добавить пользователя зарегистрированного с IP из серого списка
+     * Р”РѕР±Р°РІРёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅРѕРіРѕ СЃ IP РёР· СЃРµСЂРѕРіРѕ СЃРїРёСЃРєР°
      * 
-     * @param  int $nUserId UID пользователя
-     * @param  string $sUserLogin Логин пользователя
-     * @param  int $sUserRole Роль пользователя: 1 - работодатель, 0 - фрилансер
-     * @param  array $aPrimaryId массив ID записей из серого списка @see self::getGrayListByRegIp
-     * @return bool true - успех, false - провал
+     * @param  int $nUserId UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  string $sUserLogin Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $sUserRole Р РѕР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ: 1 - СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ, 0 - С„СЂРёР»Р°РЅСЃРµСЂ
+     * @param  array $aPrimaryId РјР°СЃСЃРёРІ ID Р·Р°РїРёСЃРµР№ РёР· СЃРµСЂРѕРіРѕ СЃРїРёСЃРєР° @see self::getGrayListByRegIp
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function addSecondaryIp( $nUserId = 0, $sUserLogin = '', $sUserRole = '', $aPrimaryId = array() ) {
         $bRet  = true;
@@ -207,10 +207,10 @@ class gray_ip extends admin_parent {
     }
     
     /**
-     * Удалить определенные подозрительые регистрации
+     * РЈРґР°Р»РёС‚СЊ РѕРїСЂРµРґРµР»РµРЅРЅС‹Рµ РїРѕРґРѕР·СЂРёС‚РµР»СЊС‹Рµ СЂРµРіРёСЃС‚СЂР°С†РёРё
      * 
-     * @param  array $aSecondaryId массив UID пользователей из gray_ip_secondary или строка с одним UID
-     * @return bool true - успех, false - провал
+     * @param  array $aSecondaryId РјР°СЃСЃРёРІ UID РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РёР· gray_ip_secondary РёР»Рё СЃС‚СЂРѕРєР° СЃ РѕРґРЅРёРј UID
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function deleteSecondaryIp( $aSecondaryId = array() ) {
         $bRet = true;
@@ -228,10 +228,10 @@ class gray_ip extends admin_parent {
     }
     
     /**
-     * Удалить все подозрительые регистрации определенного первичного IP
+     * РЈРґР°Р»РёС‚СЊ РІСЃРµ РїРѕРґРѕР·СЂРёС‚РµР»СЊС‹Рµ СЂРµРіРёСЃС‚СЂР°С†РёРё РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ РїРµСЂРІРёС‡РЅРѕРіРѕ IP
      * 
-     * @param  array $aSecondaryId массив UID пользователей из gray_ip_secondary
-     * @return bool true - успех, false - провал
+     * @param  array $aSecondaryId РјР°СЃСЃРёРІ UID РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РёР· gray_ip_secondary
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function deleteSecondaryIpByPrimary( $aSecondaryId = 0 ) {
         $GLOBALS['DB']->query( 'DELETE FROM gray_ip_secondary WHERE user_id IN (?l)', $aSecondaryId );
@@ -239,11 +239,11 @@ class gray_ip extends admin_parent {
     }
     
     /**
-     * Возвращает серый список IP
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРµСЂС‹Р№ СЃРїРёСЃРѕРє IP
      * 
-     * @param  int $count возвращает количество записей удовлтворяющих условиям выборки
-     * @param  array $filter Параметры фильтра лога
-     * @param  int $page номер текущей страницы
+     * @param  int $count РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ СѓРґРѕРІР»С‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё
+     * @param  array $filter РџР°СЂР°РјРµС‚СЂС‹ С„РёР»СЊС‚СЂР° Р»РѕРіР°
+     * @param  int $page РЅРѕРјРµСЂ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹
      * @return array
      */
     function getGrayIpList( &$count, $filter, $page = 1 ) {
@@ -253,24 +253,24 @@ class gray_ip extends admin_parent {
     }
     
     /**
-     * Возвращает серый список IP
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРµСЂС‹Р№ СЃРїРёСЃРѕРє IP
      * 
-     * @param  int $count возвращает количество записей удовлтворяющих условиям выборки
-     * @param  int $page номер текущей страницы
-     * @param  string order тип сортировки
-     * @param  int $direction порядок сортировки: 0 - по убыванию, не 0 - по возрастанию
-     * @param  bool $unlimited опционально. установить в true если нужно получить все записи (без постраничного вывода)
+     * @param  int $count РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ СѓРґРѕРІР»С‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё
+     * @param  int $page РЅРѕРјРµСЂ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹
+     * @param  string order С‚РёРї СЃРѕСЂС‚РёСЂРѕРІРєРё
+     * @param  int $direction РїРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё: 0 - РїРѕ СѓР±С‹РІР°РЅРёСЋ, РЅРµ 0 - РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ
+     * @param  bool $unlimited РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РІ true РµСЃР»Рё РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ РІСЃРµ Р·Р°РїРёСЃРё (Р±РµР· РїРѕСЃС‚СЂР°РЅРёС‡РЅРѕРіРѕ РІС‹РІРѕРґР°)
      * @return array
      */
     function getGrayIp( &$count, $page = 1, $order = 'general', $direction = 0, $unlimited = false ) {
         $this->aSQL = array();
         $offset     = $this->items_pp * ($page - 1);
         
-        // строим запрос
+        // СЃС‚СЂРѕРёРј Р·Р°РїСЂРѕСЃ
         $this->_setWhere();
         $this->_setOrderBy( $order, $direction );
         
-        // выбираем историю админских действий
+        // РІС‹Р±РёСЂР°РµРј РёСЃС‚РѕСЂРёСЋ Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
         $sQuery = 'SELECT p.id AS p_id, p.user_id AS p_uid, p.ip, p.user_login AS p_login, 
             s.id AS s_id, s.user_id AS s_uid, date_trunc(\'day\', s.reg_date) AS reg_date, s.user_login AS s_login, s.is_emp 
             FROM ( SELECT gp.id, MAX(gs.reg_date) AS max_date FROM gray_ip_primary gp 
@@ -289,7 +289,7 @@ class gray_ip extends admin_parent {
             return array();
         }
         
-        // получаем общее количество админских действий
+        // РїРѕР»СѓС‡Р°РµРј РѕР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
         $sQuery = 'SELECT COUNT(gp.id) FROM gray_ip_primary gp '
             . ( $this->aSQL['where'] ? ' WHERE ' . implode(' AND ', $this->aSQL['where']) : '' ) ;
             
@@ -300,7 +300,7 @@ class gray_ip extends admin_parent {
     }
     
     /**
-     * Собирает WHERE часть SQL запроса серого списка IP
+     * РЎРѕР±РёСЂР°РµС‚ WHERE С‡Р°СЃС‚СЊ SQL Р·Р°РїСЂРѕСЃР° СЃРµСЂРѕРіРѕ СЃРїРёСЃРєР° IP
      */
     function _setWhere() {
         $this->aSQL['where'][] = 'secondary_cnt > 0';
@@ -330,10 +330,10 @@ class gray_ip extends admin_parent {
     }
     
     /**
-     * Собирает ORDER BY часть SQL запроса серого списка IP
+     * РЎРѕР±РёСЂР°РµС‚ ORDER BY С‡Р°СЃС‚СЊ SQL Р·Р°РїСЂРѕСЃР° СЃРµСЂРѕРіРѕ СЃРїРёСЃРєР° IP
      *
-     * @param string $order тип сортировки - не используется
-     * @param int $direction порядок сортировки: 0 - по убыванию, не 0 - по возрастанию - не используется
+     * @param string $order С‚РёРї СЃРѕСЂС‚РёСЂРѕРІРєРё - РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
+     * @param int $direction РїРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё: 0 - РїРѕ СѓР±С‹РІР°РЅРёСЋ, РЅРµ 0 - РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ - РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
      */
     function _setOrderBy( $order = "general", $direction = 0 ) {
         $dirSql = ( !$direction ? 'DESC' : 'ASC' );

@@ -47,8 +47,8 @@ $results['GetInfo'] = (int)$ok;
 if($ok)
 {
     $sum = 14320;
-    $scomment = 'Ïîïîëíåíèå ñ÷åòà';
-    $ucomment = 'Ïîïîëíåíèå ñ÷åòà';
+    $scomment = 'ĞŸĞ¾Ğ¿Ğ¾Ğ»Ğ½ĞµĞ½Ğ¸Ğµ ÑÑ‡ĞµÑ‚Ğ°';
+    $ucomment = 'ĞŸĞ¾Ğ¿Ğ¾Ğ»Ğ½ĞµĞ½Ğ¸Ğµ ÑÑ‡ĞµÑ‚Ğ°';
     $trs_sum = $sum;
     $op_date = date('c');//, strtotime($_POST['date']));
             
@@ -64,7 +64,7 @@ if($ok)
     $paymentDateTime = $op_date;
     $orderNumber = 134;
     
-    $descr = "ßÄ ñ êîøåëüêà $fromcode ñóììà - $ammount, îáğàáîòàí $paymentDateTime, íîìåğ ïîêóïêè - $orderNumber";
+    $descr = "Ğ¯Ğ” Ñ ĞºĞ¾ÑˆĞµĞ»ÑŒĞºĞ° $fromcode ÑÑƒĞ¼Ğ¼Ğ° - $ammount, Ğ¾Ğ±Ñ€Ğ°Ğ±Ğ¾Ñ‚Ğ°Ğ½ $paymentDateTime, Ğ½Ğ¾Ğ¼ĞµÑ€ Ğ¿Ğ¾ĞºÑƒĞ¿ĞºĞ¸ - $orderNumber";
     
     
     $results['deposit'] = $account->deposit($op_id, $account->id, $sum, $descr, 3, $sum, 12);

@@ -15,17 +15,17 @@ foreach ( $aPermissions as $sPermission ) {
 
     <?php if ( $bHasAll || $bHasUsers || $bHasProjects || $bHasBlogs || $bHasCommunes ) { ?>
     <div class="admin-menu">
-    	<h3>Действия</h3>
+    	<h3>Р”РµР№СЃС‚РІРёСЏ</h3>
     	<ul>
             <?php if ( $bHasAll || $bHasUsers || $bHasProjects || $bHasBlogs || $bHasCommunes ) { ?>
-    		<li><a <?=($menu_item == 1 ? $s : '')?> href="/siteadmin/admin_log/?site=log">Лента всех действий</a></li>
+    		<li><a <?=($menu_item == 1 ? $s : '')?> href="/siteadmin/admin_log/?site=log">Р›РµРЅС‚Р° РІСЃРµС… РґРµР№СЃС‚РІРёР№</a></li>
     		<?php } ?>
     		<?php if ( $bHasAll || $bHasUsers ) { ?>
-    		<li><a <?=($menu_item == 2 ? $s : '')?> href="/siteadmin/admin_log/?site=user">Нарушители (бан и пред)</a></li>
+    		<li><a <?=($menu_item == 2 ? $s : '')?> href="/siteadmin/admin_log/?site=user">РќР°СЂСѓС€РёС‚РµР»Рё (Р±Р°РЅ Рё РїСЂРµРґ)</a></li>
     		<?php } ?>
     		<?php if ( $bHasAll || $bHasProjects ) { ?>
-    		<li><a <?=($menu_item == 3 ? $s : '')?> href="/siteadmin/admin_log/?site=proj">Проекты и конкурсы</a></li>
-    		<li><a <?=($menu_item == 10 ? $s : '')?> href="/siteadmin/admin_log/?site=offer">Предложения</a></li>
+    		<li><a <?=($menu_item == 3 ? $s : '')?> href="/siteadmin/admin_log/?site=proj">РџСЂРѕРµРєС‚С‹ Рё РєРѕРЅРєСѓСЂСЃС‹</a></li>
+    		<li><a <?=($menu_item == 10 ? $s : '')?> href="/siteadmin/admin_log/?site=offer">РџСЂРµРґР»РѕР¶РµРЅРёСЏ</a></li>
     		<?php } ?>
     	</ul>
     </div>
@@ -33,23 +33,23 @@ foreach ( $aPermissions as $sPermission ) {
     
     <?php if ( $bHasAll || $bHasUsers ) { ?>
     <div class="admin-menu">
-    	<h3>IP-адреса</h3>
+    	<h3>IP-Р°РґСЂРµСЃР°</h3>
     	<ul>
-    		<li><a <?=($menu_item == 4 ? $s : '')?> href="/siteadmin/user_search/">Поиск пользователей</a></li>
-    		<li><a <?=($menu_item == 5 ? $s : '')?> href="/siteadmin/gray_ip">Серый список IP</a></li>
+    		<li><a <?=($menu_item == 4 ? $s : '')?> href="/siteadmin/user_search/">РџРѕРёСЃРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</a></li>
+    		<li><a <?=($menu_item == 5 ? $s : '')?> href="/siteadmin/gray_ip">РЎРµСЂС‹Р№ СЃРїРёСЃРѕРє IP</a></li>
     	</ul>
     </div>
     <?php } ?>
     
     <?php if ( $bHasAll || $bHasProjects || $bHasUsers ) { ?>
     <div class="admin-menu">
-    	<h3>Жалобы</h3>
+    	<h3>Р–Р°Р»РѕР±С‹</h3>
     	<ul>
             <?php if ( $bHasAll || $bHasProjects ) { ?>
-    		<li><a <?=($menu_item == 7  ? $s : '')?> href="/siteadmin/ban-razban/?mode=complain">Жалобы на проекты</a></li>
+    		<li><a <?=($menu_item == 7  ? $s : '')?> href="/siteadmin/ban-razban/?mode=complain">Р–Р°Р»РѕР±С‹ РЅР° РїСЂРѕРµРєС‚С‹</a></li>
     		<?php } ?>
     		<?php if ( $bHasAll || $bHasUsers ) { ?>
-    		<li><a <?=($menu_item == 11 ? $s : '')?> href="/siteadmin/messages_spam">Жалобы на спам</a></li>
+    		<li><a <?=($menu_item == 11 ? $s : '')?> href="/siteadmin/messages_spam">Р–Р°Р»РѕР±С‹ РЅР° СЃРїР°Рј</a></li>
     		<?php } ?>
     	</ul>
     </div>
@@ -57,18 +57,18 @@ foreach ( $aPermissions as $sPermission ) {
     
     <?php if ( $bHasAll ) { ?>
     <div class="admin-menu">
-    	<h3>Модераторы</h3>
+    	<h3>РњРѕРґРµСЂР°С‚РѕСЂС‹</h3>
     	<ul>
-    		<li><a <?=($menu_item == 8 ? $s : '')?> href="/siteadmin/admin_log/?site=stat">Все модераторы</a></li>
+    		<li><a <?=($menu_item == 8 ? $s : '')?> href="/siteadmin/admin_log/?site=stat">Р’СЃРµ РјРѕРґРµСЂР°С‚РѕСЂС‹</a></li>
     	</ul>
     </div>
     <?php } ?>
     
     <?php if ( $bHasAll || $bHasUsers || $bHasProjects ) { ?>
     <div class="admin-menu">
-    	<h3>Настройка</h3>
+    	<h3>РќР°СЃС‚СЂРѕР№РєР°</h3>
     	<ul>
-    		<li><a <?=($menu_item == 9 ? $s : '')?> href="/siteadmin/admin_log/?site=notice">Уведомления</a></li>
+    		<li><a <?=($menu_item == 9 ? $s : '')?> href="/siteadmin/admin_log/?site=notice">РЈРІРµРґРѕРјР»РµРЅРёСЏ</a></li>
     	</ul>
     </div>
     <?php } ?>

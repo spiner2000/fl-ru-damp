@@ -3,7 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/safetyphone.common.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/users.php");
 
 /**
- * Привязать телефон к аккаунту.
+ * РџСЂРёРІСЏР·Р°С‚СЊ С‚РµР»РµС„РѕРЅ Рє Р°РєРєР°СѓРЅС‚Сѓ.
  */
 function SafetyPhoneNow() {
     session_start();
@@ -12,7 +12,7 @@ function SafetyPhoneNow() {
     $aRes = array('success' => false);
     
     if ( trim($_POST['phone']) == '' ) {
-        $aRes['error'] = iconv( 'CP1251', 'UTF-8', 'Вы должны ввести номер телефона');
+        $aRes['error'] = iconv( 'CP1251', 'UTF-8', 'Р’С‹ РґРѕР»Р¶РЅС‹ РІРІРµСЃС‚Рё РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°');
     }
     else {
         $users = new users();
@@ -35,7 +35,7 @@ function SafetyPhoneNow() {
 }
 
 /**
- * Отложить до следующего логина.
+ * РћС‚Р»РѕР¶РёС‚СЊ РґРѕ СЃР»РµРґСѓСЋС‰РµРіРѕ Р»РѕРіРёРЅР°.
  */
 function SafetyPhoneLater() {
     session_start();
@@ -51,7 +51,7 @@ function SafetyPhoneLater() {
 }
 
 /**
- * Больше не показывать это сообщение.
+ * Р‘РѕР»СЊС€Рµ РЅРµ РїРѕРєР°Р·С‹РІР°С‚СЊ СЌС‚Рѕ СЃРѕРѕР±С‰РµРЅРёРµ.
  */
 function SafetyPhoneNever() {
     session_start();

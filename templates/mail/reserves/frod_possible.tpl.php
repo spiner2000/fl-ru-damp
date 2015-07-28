@@ -1,6 +1,6 @@
 <?php
 
-$smail->subject = "Подозрительная сделка на FL.ru";
+$smail->subject = "РџРѕРґРѕР·СЂРёС‚РµР»СЊРЅР°СЏ СЃРґРµР»РєР° РЅР° FL.ru";
 $order_url = $GLOBALS['host'] . tservices_helper::getOrderCardUrl($order_id);
 
 if ($date_reserve) {
@@ -12,10 +12,10 @@ $date_payout = date('d.m.Y H:i:s');
 $price = tservices_helper::cost_format($price);
 
 ?>
-Номер сделки: <a href="<?=$order_url?>"><?=$num?></a><br/>
-Логин и ФИО Заказчика: <?=$emp?><br/>
-Логин и ФИО Исполнителя: <?=$frl?><br/>
+РќРѕРјРµСЂ СЃРґРµР»РєРё: <a href="<?=$order_url?>"><?=$num?></a><br/>
+Р›РѕРіРёРЅ Рё Р¤РРћ Р—Р°РєР°Р·С‡РёРєР°: <?=$emp?><br/>
+Р›РѕРіРёРЅ Рё Р¤РРћ РСЃРїРѕР»РЅРёС‚РµР»СЏ: <?=$frl?><br/>
 Invoice ID: <?=$invoiceId?><br/>
-Дата и время резервирования: <?=$date_reserve?><br/>
-Дата и время запроса на выплату: <?=$date_payout?><br/>
-Сумма платежа: <?=$price?>
+Р”Р°С‚Р° Рё РІСЂРµРјСЏ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ: <?=$date_reserve?><br/>
+Р”Р°С‚Р° Рё РІСЂРµРјСЏ Р·Р°РїСЂРѕСЃР° РЅР° РІС‹РїР»Р°С‚Сѓ: <?=$date_payout?><br/>
+РЎСѓРјРјР° РїР»Р°С‚РµР¶Р°: <?=$price?>

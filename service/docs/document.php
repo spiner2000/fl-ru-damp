@@ -1,10 +1,10 @@
 <?php include('xajax.php');?>
-<h2>Услуги</h2>
+<h2>РЈСЃР»СѓРіРё</h2>
 <div class="docs-block c">
     <div class="docs-content c">
         <div class="docs-cnt">
             <div class="docs-breadcrumb">
-                <a href="/service/docs/">Вернуться на главную</a>
+                <a href="/service/docs/">Р’РµСЂРЅСѓС‚СЊСЃСЏ РЅР° РіР»Р°РІРЅСѓСЋ</a>
             </div>
             <h3><?= htmlspecialchars($section['name']);?></h3>
             <? include('search_form.php');?>
@@ -12,7 +12,7 @@
             
             <div class="docs-one">
                 <h4><?= htmlspecialchars($doc['name']);?></h4>
-                <p><span class="d">Добавлен <?= date("d.m.Y",strtotime($doc['date_create']));?><?php if($doc['date_update']){?>&nbsp;&nbsp;&nbsp;Обновлен <?= date("d.m.Y",strtotime($doc['date_update']));}?></span></p>
+                <p><span class="d">Р”РѕР±Р°РІР»РµРЅ <?= date("d.m.Y",strtotime($doc['date_create']));?><?php if($doc['date_update']){?>&nbsp;&nbsp;&nbsp;РћР±РЅРѕРІР»РµРЅ <?= date("d.m.Y",strtotime($doc['date_update']));}?></span></p>
                 <p><?= htmlspecialchars($doc['desc']);?></p>
                 <ul class="added-files-list">
                     <? if(is_array($doc['attach']) && count($doc['attach'])) foreach($doc['attach'] as $file){?>
@@ -21,7 +21,7 @@
                 </ul>
             </div>
            <?}else{ //if ?>
-            <div style="color:red">Страница не найдена</div>
+            <div style="color:red">РЎС‚СЂР°РЅРёС†Р° РЅРµ РЅР°Р№РґРµРЅР°</div>
             <?php } ?>
         </div>
     </div>

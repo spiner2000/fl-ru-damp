@@ -1,5 +1,5 @@
                     <div class="b-dropdown b-identification-dropdown b-identification-dropdown-hide" data-antiuser="true" data-dropdown="true" data-dropdown-descriptor="identification">
-                        <a href="/registration/" class="b-dropdown-opener" data-dropdown-opener="true" title="Перейти в аккаунт работодателя">Перейти в аккаунт работодателя</a>
+                        <a href="/registration/" class="b-dropdown-opener" data-dropdown-opener="true" title="РџРµСЂРµР№С‚Рё РІ Р°РєРєР°СѓРЅС‚ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ">РџРµСЂРµР№С‚Рё РІ Р°РєРєР°СѓРЅС‚ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ</a>
                         <div class="b-dropdown-concealment" data-dropdown-concealment="true">
                             
                             <form class="b-form b-authorization-form g-cleared" method="post" action="<?= $host ?>/" onsubmit="return Bar_Ext.antiuserSubmit(this,'<?= $anti_login ?>');">
@@ -8,22 +8,22 @@
                                 
                                 <section class="b-form-section b-form-login-section">
                                     <div class="b-text-field">
-                                        <input type="text" name="a_login" value="<?= ($anti_login != 'Логин')?$anti_login:'' ?>" placeholder="Логин" class="b-text-field-entity"  size="80" />
+                                        <input type="text" name="a_login" value="<?= ($anti_login != 'Р›РѕРіРёРЅ')?$anti_login:'' ?>" placeholder="Р›РѕРіРёРЅ" class="b-text-field-entity"  size="80" />
                                     </div>
                                 </section>
 
                                 <section class="b-form-section b-form-password-section">
                                     <div class="b-text-field">
-                                        <input type="password" name="passwd" placeholder="Пароль" class="b-text-field-entity"  size="80" value="<?= ($anti_login != 'Логин')?'******':'' ?>" <?php if($anti_login != 'Логин'): ?>onfocus="if(this.value=='******') {this.value='';}" onblur="if(this.value==''){this.value='******';}"<?php endif; ?> />
+                                        <input type="password" name="passwd" placeholder="РџР°СЂРѕР»СЊ" class="b-text-field-entity"  size="80" value="<?= ($anti_login != 'Р›РѕРіРёРЅ')?'******':'' ?>" <?php if($anti_login != 'Р›РѕРіРёРЅ'): ?>onfocus="if(this.value=='******') {this.value='';}" onblur="if(this.value==''){this.value='******';}"<?php endif; ?> />
                                     </div>
                                 </section>
 
                                 <section class="b-form-section b-form-send-section">
-                                    <input type="submit" value="Перейти" class="b-medium-button b-green-medium-button"  />
+                                    <input type="submit" value="РџРµСЂРµР№С‚Рё" class="b-medium-button b-green-medium-button"  />
                                 </section>
 
                                 <section class="b-form-section b-form-registration-section">
-                                    <a data-toggle-action="antiuser" href="javascript:void(0);" class="b-form-cancellation-link" title="Отмена">Отмена</a>
+                                    <a data-toggle-action="antiuser" href="javascript:void(0);" class="b-form-cancellation-link" title="РћС‚РјРµРЅР°">РћС‚РјРµРЅР°</a>
                                 </section>
                             </form>
 

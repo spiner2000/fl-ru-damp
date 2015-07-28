@@ -9,7 +9,7 @@ if ($action == "send"){
 		$sm = new smail();
 		$error = $sm->remind($email);
 	}
-	else $error = "Поле заполнено некорректно";
+	else $error = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
 }
 
 $no_banner = 1;

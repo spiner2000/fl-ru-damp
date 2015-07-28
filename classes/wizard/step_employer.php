@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/classes/wizard/step_wizard_registration
 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/wizard/wizard_billing.php';
 
 /**
- * Класс для работы с этапами мастера по регистрации работодателей
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЌС‚Р°РїР°РјРё РјР°СЃС‚РµСЂР° РїРѕ СЂРµРіРёСЃС‚СЂР°С†РёРё СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№
  * 
  */
 class step_employer extends step_wizard_registration
@@ -12,55 +12,55 @@ class step_employer extends step_wizard_registration
     public $project_type = 1;
     
     /**
-     * Определение платной опции закрепление наверху страницы в БД
+     * РћРїСЂРµРґРµР»РµРЅРёРµ РїР»Р°С‚РЅРѕР№ РѕРїС†РёРё Р·Р°РєСЂРµРїР»РµРЅРёРµ РЅР°РІРµСЂС…Сѓ СЃС‚СЂР°РЅРёС†С‹ РІ Р‘Р”
      */
     const PROJECT_OPTION_TOP   = 1;
     
     /**
-     * Определение платной опции выделение цветом
+     * РћРїСЂРµРґРµР»РµРЅРёРµ РїР»Р°С‚РЅРѕР№ РѕРїС†РёРё РІС‹РґРµР»РµРЅРёРµ С†РІРµС‚РѕРј
      */
     const PROJECT_OPTION_COLOR = 2;
     
     /**
-     * Определение платной опции выделение текста
+     * РћРїСЂРµРґРµР»РµРЅРёРµ РїР»Р°С‚РЅРѕР№ РѕРїС†РёРё РІС‹РґРµР»РµРЅРёРµ С‚РµРєСЃС‚Р°
      */
     const PROJECT_OPTION_BOLD  = 3;
     
     /**
-     * Определение платной опции логтип 
+     * РћРїСЂРµРґРµР»РµРЅРёРµ РїР»Р°С‚РЅРѕР№ РѕРїС†РёРё Р»РѕРіС‚РёРї 
      */
     const PROJECT_OPTION_LOGO  = 4;
     
     /**
-     * Позиция шага регистрации у работодателей 
+     * РџРѕР·РёС†РёСЏ С€Р°РіР° СЂРµРіРёСЃС‚СЂР°С†РёРё Сѓ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ 
      */
     const STEP_REGISTRATION_CONFIRM = 2;
     
     /**
-     * Тип операции в платных опциях для конкурса 
+     * РўРёРї РѕРїРµСЂР°С†РёРё РІ РїР»Р°С‚РЅС‹С… РѕРїС†РёСЏС… РґР»СЏ РєРѕРЅРєСѓСЂСЃР° 
      */
     const BILL_TYPE_CONTEST = 1;
     
     /**
-     * Тип операции в платных опциях для проекта 
+     * РўРёРї РѕРїРµСЂР°С†РёРё РІ РїР»Р°С‚РЅС‹С… РѕРїС†РёСЏС… РґР»СЏ РїСЂРѕРµРєС‚Р° 
      */
     const BILL_TYPE_PROJECT = 2;
     
     /**
-     * Код операции по покупке PRO 
+     * РљРѕРґ РѕРїРµСЂР°С†РёРё РїРѕ РїРѕРєСѓРїРєРµ PRO 
      */
     const OP_CODE_PRO = 15;
     
     /**
-     * Вывод и обработка информации
+     * Р’С‹РІРѕРґ Рё РѕР±СЂР°Р±РѕС‚РєР° РёРЅС„РѕСЂРјР°С†РёРё
      */
     public function render() {
         switch($this->pos) {
-            // Этап - "Публикация проекта"
+            // Р­С‚Р°Рї - "РџСѓР±Р»РёРєР°С†РёСЏ РїСЂРѕРµРєС‚Р°"
             case 1:
                 $this->actionProjects();
                 break;
-            // Этап - "Регистрация"
+            // Р­С‚Р°Рї - "Р РµРіРёСЃС‚СЂР°С†РёСЏ"
             case 2:
                 if($this->isCompleted()) {
                     $this->parent->setNextStep($this->parent->getPosition() + 1);
@@ -69,15 +69,15 @@ class step_employer extends step_wizard_registration
                 }
                 $this->registration(step_wizard_registration::TYPE_WIZARD_EMP);
                 break;
-             // Этап - "Дополнительные возможности"
+             // Р­С‚Р°Рї - "Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё"
             case 3:
                 $this->completeData(step_wizard_registration::TYPE_WIZARD_EMP);
                 break;  
-            // Этап - "Оплата услуг"
+            // Р­С‚Р°Рї - "РћРїР»Р°С‚Р° СѓСЃР»СѓРі"
             case 4:
                 $this->actionCompletedWizard();
                 break; 
-            // По умолчанию этап - "Публикация проекта"
+            // РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЌС‚Р°Рї - "РџСѓР±Р»РёРєР°С†РёСЏ РїСЂРѕРµРєС‚Р°"
             default:
                 require_once ($_SERVER['DOCUMENT_ROOT'] . "/classes/professions.php");
                 $categories  = professions::GetAllGroupsLite();
@@ -90,7 +90,7 @@ class step_employer extends step_wizard_registration
     }
     
     /**
-     * Обработка информации шага проекты 
+     * РћР±СЂР°Р±РѕС‚РєР° РёРЅС„РѕСЂРјР°С†РёРё С€Р°РіР° РїСЂРѕРµРєС‚С‹ 
      */
     public function actionProjects() {
         $prj_id = $_SESSION['view_wizard_project'];
@@ -119,11 +119,11 @@ class step_employer extends step_wizard_registration
             $action    = __paramInit('string', 'action', 'action', null);
             $attachedfiles_session = __paramInit('string', 'attachedfiles_session', 'attachedfiles_session', false);
             
-            // проверяем есть ли уже созданый проект
+            // РїСЂРѕРІРµСЂСЏРµРј РµСЃС‚СЊ Р»Рё СѓР¶Рµ СЃРѕР·РґР°РЅС‹Р№ РїСЂРѕРµРєС‚
             $projects = $this->getCreatedProjects();
             $existPrjID = count($projects) > 0 ? $projects[0][id] : null;
             
-            // выводим ранее сохраненный проект
+            // РІС‹РІРѕРґРёРј СЂР°РЅРµРµ СЃРѕС…СЂР°РЅРµРЅРЅС‹Р№ РїСЂРѕРµРєС‚
             if ($action != 'create_project' && $existPrjID) {
                 $data = $projects[0];
                 list($category, $subcategory) = explode('|', $data['categories']);
@@ -141,7 +141,7 @@ class step_employer extends step_wizard_registration
                 $option['bold'] = $data['is_bold'] === 't';
                 $option['logo'] = $data['logo_id'] > 0;
                 
-            } elseif ($action == 'create_project') { // сохраняем новый проект или изменяем старый
+            } elseif ($action == 'create_project') { // СЃРѕС…СЂР°РЅСЏРµРј РЅРѕРІС‹Р№ РїСЂРѕРµРєС‚ РёР»Рё РёР·РјРµРЅСЏРµРј СЃС‚Р°СЂС‹Р№
                 $in_office = __paramInit('int', null, 'in_office', 0);
                 $type      = __paramInit('string', null, 'kind');
 
@@ -177,19 +177,19 @@ class step_employer extends step_wizard_registration
                 }
 
                 if (is_empty_html($data['descr'])) {
-                    $error['descr'] = 'Поле не заполнено';
+                    $error['descr'] = 'РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ';
                 }
 
                 if (is_empty_html($data['name'])) {
-                    $error['name'] = 'Поле не заполнено';
+                    $error['name'] = 'РџРѕР»Рµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ';
                 }
-                // проверяем длину необработанной строки, а иначе спецсимволы считаются как несколько символов
+                // РїСЂРѕРІРµСЂСЏРµРј РґР»РёРЅСѓ РЅРµРѕР±СЂР°Р±РѕС‚Р°РЅРЅРѕР№ СЃС‚СЂРѕРєРё, Р° РёРЅР°С‡Рµ СЃРїРµС†СЃРёРјРІРѕР»С‹ СЃС‡РёС‚Р°СЋС‚СЃСЏ РєР°Рє РЅРµСЃРєРѕР»СЊРєРѕ СЃРёРјРІРѕР»РѕРІ
                 if (strlen(stripslashes($_POST['name'])) > 60) {
-                    $error['name'] = 'Превышен лимит - 60 символов';
+                    $error['name'] = 'РџСЂРµРІС‹С€РµРЅ Р»РёРјРёС‚ - 60 СЃРёРјРІРѕР»РѕРІ';
                 }
 
                 if (!$category) {
-                    $error['category'] = 'Не выбран раздел';
+                    $error['category'] = 'РќРµ РІС‹Р±СЂР°РЅ СЂР°Р·РґРµР»';
                 } elseif ($subcategory) {
                     $data['categories'] = "{$category}|{$subcategory}";
                 } else {
@@ -197,37 +197,37 @@ class step_employer extends step_wizard_registration
                 }
 
                 if ($data['cost'] < 0) {
-                    $error['cost'] = 'Введите положительную сумму';
+                    $error['cost'] = 'Р’РІРµРґРёС‚Рµ РїРѕР»РѕР¶РёС‚РµР»СЊРЅСѓСЋ СЃСѓРјРјСѓ';
                 }
 
                 if ($data['cost'] > 999999) {
-                    $error['cost'] = 'Слишком большая сумма';
+                    $error['cost'] = 'РЎР»РёС€РєРѕРј Р±РѕР»СЊС€Р°СЏ СЃСѓРјРјР°';
                 }
 
                 if ($data['cost'] > 0 && ($data['currency'] < 0 || $data['currency'] > 3)) {
-                    $error['currency'] = 'Валюта не определена';
+                    $error['currency'] = 'Р’Р°Р»СЋС‚Р° РЅРµ РѕРїСЂРµРґРµР»РµРЅР°';
                 }
 
                 if ($data['cost'] > 0 && ($data['priceby'] < 1 || $data['priceby'] > 4)) {
-                    $error['priceby'] = 'Вид бюджета не определен';
+                    $error['priceby'] = 'Р’РёРґ Р±СЋРґР¶РµС‚Р° РЅРµ РѕРїСЂРµРґРµР»РµРЅ';
                 }
                 $descr_limit = projects::LIMIT_DESCR;
                 if (strlen_real($data['descr']) > $descr_limit) {
-                    $error['descr'] = "Исчерпан лимит символов ($descr_limit)";
+                    $error['descr'] = "РСЃС‡РµСЂРїР°РЅ Р»РёРјРёС‚ СЃРёРјРІРѕР»РѕРІ ($descr_limit)";
                 }
 
                 if ($data['kind'] == 7) {
                     if (!preg_match("/^([0-9]{1,2})\-([0-9]{1,2})\-([0-9]{4})$/", $data['end_date'], $o1) || !checkdate($o1[2], $o1[1], $o1[3])) {
-                        $error['end_date'] = 'Неправильная дата';
+                        $error['end_date'] = 'РќРµРїСЂР°РІРёР»СЊРЅР°СЏ РґР°С‚Р°';
                     }
                     if (!preg_match("/^([0-9]{1,2})\-([0-9]{1,2})\-([0-9]{4})$/", $data['win_date'], $o2) || !checkdate($o2[2], $o2[1], $o2[3])) {
-                        $error['win_date'] = 'Неправильная дата';
+                        $error['win_date'] = 'РќРµРїСЂР°РІРёР»СЊРЅР°СЏ РґР°С‚Р°';
                     }
                     if (!$error['end_date'] && mktime(0, 0, 0, $o1[2], $o1[1], $o1[3]) <= mktime(0, 0, 0)) {
-                        $error['end_date'] = 'Дата окончания конкурса не может находиться  в прошлом';
+                        $error['end_date'] = 'Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР° РЅРµ РјРѕР¶РµС‚ РЅР°С…РѕРґРёС‚СЊСЃСЏ  РІ РїСЂРѕС€Р»РѕРј';
                     }
                     if (!$error['win_date'] && mktime(0, 0, 0, $o2[2], $o2[1], $o2[3]) <= mktime(0, 0, 0, $o1[2], $o1[1], $o1[3])) {
-                        $error['win_date'] = 'Дата определения победителя должна быть больше даты окончания конкурса';
+                        $error['win_date'] = 'Р”Р°С‚Р° РѕРїСЂРµРґРµР»РµРЅРёСЏ РїРѕР±РµРґРёС‚РµР»СЏ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РґР°С‚С‹ РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР°';
                     }
                 }
 
@@ -237,21 +237,21 @@ class step_employer extends step_wizard_registration
                 $option['bold']      = __paramInit('int', null, 'option_bold', 0);
                 $option['logo']      = __paramInit('int', null, 'option_logo', 0);
 
-                // логотип
+                // Р»РѕРіРѕС‚РёРї
                 if ($option['logo'] == 1) {
                     $data['logo_link'] = str_replace("http://", "", __paramInit('string', null, 'logo_link', null));
                     $data['logo_id'] = __paramInit('int', null, 'logo_id', null);
 
-                    // если выбрана опция "Логотип со ссылкой", то картинка должна быть обязательно
+                    // РµСЃР»Рё РІС‹Р±СЂР°РЅР° РѕРїС†РёСЏ "Р›РѕРіРѕС‚РёРї СЃРѕ СЃСЃС‹Р»РєРѕР№", С‚Рѕ РєР°СЂС‚РёРЅРєР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ
                     if (!$data['logo_id']) {
-                        $error['logo_image'] = 'Отсутствует логотип';
+                        $error['logo_image'] = 'РћС‚СЃСѓС‚СЃС‚РІСѓРµС‚ Р»РѕРіРѕС‚РёРї';
                     }
 
-                    if ($data['logo_link'] === 'Адрес сайта') {
+                    if ($data['logo_link'] === 'РђРґСЂРµСЃ СЃР°Р№С‚Р°') {
                         $data['logo_link'] = '';
                     }                    
                     if ($data['logo_link'] !== '' && !is_url($data['logo_link'])) {
-                        $error['logo_link'] = "Не верно введен адрес";
+                        $error['logo_link'] = "РќРµ РІРµСЂРЅРѕ РІРІРµРґРµРЅ Р°РґСЂРµСЃ";
                     }
                 } else {
                     $data['logo_id'] = null;
@@ -259,7 +259,7 @@ class step_employer extends step_wizard_registration
 
                 $price = 0;
                 
-                // закрепление на верху
+                // Р·Р°РєСЂРµРїР»РµРЅРёРµ РЅР° РІРµСЂС…Сѓ
                 if ($option['top'] == 1 && $option['top_count'] > 0) {
                     if ($option['top_count'] > 999) {
                         $option['top_count'] = 999;
@@ -269,7 +269,7 @@ class step_employer extends step_wizard_registration
                     $pay_option[] = array(
                         "wiz_uid" => $this->getWizardUserID(),
                         "op_code" => new_projects::OPCODE_PAYED,
-                        "option"  => step_employer::PROJECT_OPTION_TOP, // Закрепление проекта
+                        "option"  => step_employer::PROJECT_OPTION_TOP, // Р—Р°РєСЂРµРїР»РµРЅРёРµ РїСЂРѕРµРєС‚Р°
                         "type"    => $data['kind'] == 7 ? step_employer::BILL_TYPE_CONTEST : step_employer::BILL_TYPE_PROJECT,
                         "ammount" => $price
                     );
@@ -277,14 +277,14 @@ class step_employer extends step_wizard_registration
                     $data['top_count'] = 0;
                 }
                 
-                // выделение цветом
+                // РІС‹РґРµР»РµРЅРёРµ С†РІРµС‚РѕРј
                 if ($option['color'] == 1) {
                     $price += (int) $colorPrc;
                     $data['is_color'] = true;
                     $pay_option[] = array(
                         "wiz_uid" => $this->getWizardUserID(),
                         "op_code" => new_projects::OPCODE_PAYED,
-                        "option"  => step_employer::PROJECT_OPTION_COLOR, // Выделение цветом 
+                        "option"  => step_employer::PROJECT_OPTION_COLOR, // Р’С‹РґРµР»РµРЅРёРµ С†РІРµС‚РѕРј 
                         "type"    => $data['kind'] == 7 ? step_employer::BILL_TYPE_CONTEST : step_employer::BILL_TYPE_PROJECT,
                         "ammount" => $colorPrc
                     );
@@ -292,14 +292,14 @@ class step_employer extends step_wizard_registration
                     $data['is_color'] = false;
                 }
                 
-                // выделение жирным
+                // РІС‹РґРµР»РµРЅРёРµ Р¶РёСЂРЅС‹Рј
                 if ($option['bold'] == 1) {
                     $price += (int) $boldPrc;
                     $data['is_bold'] = true;
                     $pay_option[] = array(
                         "wiz_uid" => $this->getWizardUserID(),
                         "op_code" => new_projects::OPCODE_PAYED,
-                        "option"  => step_employer::PROJECT_OPTION_BOLD, // Выделение текста
+                        "option"  => step_employer::PROJECT_OPTION_BOLD, // Р’С‹РґРµР»РµРЅРёРµ С‚РµРєСЃС‚Р°
                         "type"    => $data['kind'] == 7 ? step_employer::BILL_TYPE_CONTEST : step_employer::BILL_TYPE_PROJECT,
                         "ammount" => $boldPrc
                     );
@@ -313,7 +313,7 @@ class step_employer extends step_wizard_registration
                     $pay_option[] = array(
                         "wiz_uid" => $this->getWizardUserID(),
                         "op_code" => new_projects::OPCODE_PAYED,
-                        "option"  => step_employer::PROJECT_OPTION_LOGO, // Логтип
+                        "option"  => step_employer::PROJECT_OPTION_LOGO, // Р›РѕРіС‚РёРї
                         "type"    => $data['kind'] == 7 ? step_employer::BILL_TYPE_CONTEST : step_employer::BILL_TYPE_PROJECT,
                         "ammount" => $logoPrc
                     );
@@ -325,11 +325,11 @@ class step_employer extends step_wizard_registration
 
                 if (!$error) {
                     $data['wiz_uid'] = $this->getWizardUserID();
-                    // если проект уже есть
+                    // РµСЃР»Рё РїСЂРѕРµРєС‚ СѓР¶Рµ РµСЃС‚СЊ
                     if ($existPrjID) {
-                        // то просто обновляем его
+                        // С‚Рѕ РїСЂРѕСЃС‚Рѕ РѕР±РЅРѕРІР»СЏРµРј РµРіРѕ
                         $prj_id = $this->updateProject($data, $existPrjID);
-                        // и очищаем все платные опции для этого проекта
+                        // Рё РѕС‡РёС‰Р°РµРј РІСЃРµ РїР»Р°С‚РЅС‹Рµ РѕРїС†РёРё РґР»СЏ СЌС‚РѕРіРѕ РїСЂРѕРµРєС‚Р°
                         wizard_billing::clearPayedOptions($prj_id);
                     } else {
                         $prj_id = $this->createProject($data);
@@ -366,7 +366,7 @@ class step_employer extends step_wizard_registration
                         header("Location: /wizard/registration/");
                         exit;
                     } else {
-                        $error['project'] = 'Ошибка записи проекта';
+                        $error['project'] = 'РћС€РёР±РєР° Р·Р°РїРёСЃРё РїСЂРѕРµРєС‚Р°';
                     }
                 }
                 
@@ -375,7 +375,7 @@ class step_employer extends step_wizard_registration
 
             }
             
-            // Генерируем данные для вывода ошибок и заполнения полей
+            // Р“РµРЅРµСЂРёСЂСѓРµРј РґР°РЅРЅС‹Рµ РґР»СЏ РІС‹РІРѕРґР° РѕС€РёР±РѕРє Рё Р·Р°РїРѕР»РЅРµРЅРёСЏ РїРѕР»РµР№
             $loc[] = country::GetCountryName($data['country']);
             if ($data['city']) {
                 $loc[] = city::GetCityName($data['city']);
@@ -404,9 +404,9 @@ class step_employer extends step_wizard_registration
     }
     
     /**
-     * Создаем проект в таблице мастера
+     * РЎРѕР·РґР°РµРј РїСЂРѕРµРєС‚ РІ С‚Р°Р±Р»РёС†Рµ РјР°СЃС‚РµСЂР°
      * 
-     * @param array $insert  Данные для создания
+     * @param array $insert  Р”Р°РЅРЅС‹Рµ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ
      * @return type 
      */
     public function createProject($insert) {
@@ -414,9 +414,9 @@ class step_employer extends step_wizard_registration
     }
     
     /**
-     * Создаем проект в таблице мастера
+     * РЎРѕР·РґР°РµРј РїСЂРѕРµРєС‚ РІ С‚Р°Р±Р»РёС†Рµ РјР°СЃС‚РµСЂР°
      * 
-     * @param array $insert  Данные для создания
+     * @param array $insert  Р”Р°РЅРЅС‹Рµ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ
      * @return integer id
      */
     public function updateProject($insert, $prjID) {
@@ -425,9 +425,9 @@ class step_employer extends step_wizard_registration
     }
     
     /**
-     * Возвращает проект созданный в мастере по его ИД
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РїСЂРѕРµРєС‚ СЃРѕР·РґР°РЅРЅС‹Р№ РІ РјР°СЃС‚РµСЂРµ РїРѕ РµРіРѕ РР”
      * 
-     * @param integer $id  ИД проекта
+     * @param integer $id  РР” РїСЂРѕРµРєС‚Р°
      * @return array 
      */
     public function getProjectById($id) {
@@ -435,9 +435,9 @@ class step_employer extends step_wizard_registration
     }
     
     /**
-     * Возвращает файлы приложенные к проекту созданному в мастере
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ С„Р°Р№Р»С‹ РїСЂРёР»РѕР¶РµРЅРЅС‹Рµ Рє РїСЂРѕРµРєС‚Сѓ СЃРѕР·РґР°РЅРЅРѕРјСѓ РІ РјР°СЃС‚РµСЂРµ
      * 
-     * @param integer $id  ИД проекта
+     * @param integer $id  РР” РїСЂРѕРµРєС‚Р°
      * @return array 
      */
     public function getProjectAttach($id) {
@@ -446,7 +446,7 @@ class step_employer extends step_wizard_registration
     }
     
     /**
-     * Вовзвращает все созданные в мастере проекту 
+     * Р’РѕРІР·РІСЂР°С‰Р°РµС‚ РІСЃРµ СЃРѕР·РґР°РЅРЅС‹Рµ РІ РјР°СЃС‚РµСЂРµ РїСЂРѕРµРєС‚Сѓ 
      * 
      * @return array
      */
@@ -456,7 +456,7 @@ class step_employer extends step_wizard_registration
     }
     
     /**
-     * Очищает сессию шага  
+     * РћС‡РёС‰Р°РµС‚ СЃРµСЃСЃРёСЋ С€Р°РіР°  
      */
     public function clearSessionStep() {
         unset($_SESSION['view_wizard_project']);
@@ -489,7 +489,7 @@ class step_employer extends step_wizard_registration
     }
     
     /**
-     * Функция для обработки данных шага Оплата услуг 
+     * Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё РґР°РЅРЅС‹С… С€Р°РіР° РћРїР»Р°С‚Р° СѓСЃР»СѓРі 
      */
     public function actionProcessingCompletedWizard() {
         $options  = $_POST['options'];
@@ -502,18 +502,18 @@ class step_employer extends step_wizard_registration
         }
         $wizard_billing = new wizard_billing();
         $selecting  = $wizard_billing->selectedPaidOption($options, $selected);
-        // Есть выбранные операции переносим
+        // Р•СЃС‚СЊ РІС‹Р±СЂР°РЅРЅС‹Рµ РѕРїРµСЂР°С†РёРё РїРµСЂРµРЅРѕСЃРёРј
         if($selecting) {
             $delete = $wizard_billing->transferPaidOptionsToDraft($selecting);
-            $wizard_billing->deletePaidOptions($delete); // Удаляем все успешно записанные операции, операции которые не записались остаются в базе
+            $wizard_billing->deletePaidOptions($delete); // РЈРґР°Р»СЏРµРј РІСЃРµ СѓСЃРїРµС€РЅРѕ Р·Р°РїРёСЃР°РЅРЅС‹Рµ РѕРїРµСЂР°С†РёРё, РѕРїРµСЂР°С†РёРё РєРѕС‚РѕСЂС‹Рµ РЅРµ Р·Р°РїРёСЃР°Р»РёСЃСЊ РѕСЃС‚Р°СЋС‚СЃСЏ РІ Р±Р°Р·Рµ
         }
 
-        // Публикация проектов и обработка всех остальных данных относящихся к пользователю
+        // РџСѓР±Р»РёРєР°С†РёСЏ РїСЂРѕРµРєС‚РѕРІ Рё РѕР±СЂР°Р±РѕС‚РєР° РІСЃРµС… РѕСЃС‚Р°Р»СЊРЅС‹С… РґР°РЅРЅС‹С… РѕС‚РЅРѕСЃСЏС‰РёС…СЃСЏ Рє РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ
         $error = $this->transferWizardContent();
 
         if(!$error) {
             $this->parent->exitWizard(false);
-            // факт того, что пользователь только что зарегестрировался (сбрасывается на страницах wellcome)
+            // С„Р°РєС‚ С‚РѕРіРѕ, С‡С‚Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ С‚РѕР»СЊРєРѕ С‡С‚Рѕ Р·Р°СЂРµРіРµСЃС‚СЂРёСЂРѕРІР°Р»СЃСЏ (СЃР±СЂР°СЃС‹РІР°РµС‚СЃСЏ РЅР° СЃС‚СЂР°РЅРёС†Р°С… wellcome)
             $_SESSION['is_new_user'] = 1;
             header("Location: /registration/wellcome/employer.php");
             exit;
@@ -521,7 +521,7 @@ class step_employer extends step_wizard_registration
     }
     
     /**
-     * Перенос всех данных введнных в мастере на боевые таблицы
+     * РџРµСЂРµРЅРѕСЃ РІСЃРµС… РґР°РЅРЅС‹С… РІРІРµРґРЅРЅС‹С… РІ РјР°СЃС‚РµСЂРµ РЅР° Р±РѕРµРІС‹Рµ С‚Р°Р±Р»РёС†С‹
      * 
      * @return type 
      */
@@ -529,7 +529,7 @@ class step_employer extends step_wizard_registration
         require_once $_SERVER['DOCUMENT_ROOT']."/classes/log.php";
         $this->log  = new log('wizard/transfer-'.SERVER.'-%d.log', 'a', '%d.%m.%Y %H:%M:%S : ');
         
-        // Сначала переносим проекты
+        // РЎРЅР°С‡Р°Р»Р° РїРµСЂРµРЅРѕСЃРёРј РїСЂРѕРµРєС‚С‹
         $error = $this->transferProjects();
         return $error;
     }
@@ -584,13 +584,13 @@ class step_employer extends step_wizard_registration
                     $cat           = explode("|", $project['categories']);
                     $categories[0] = array('category_id' => intval($cat[0]), 'subcategory_id' => intval($cat[1]));
 
-                    $prj->addPrj($insert, $attach, $categories); // Добавляем проект
+                    $prj->addPrj($insert, $attach, $categories); // Р”РѕР±Р°РІР»СЏРµРј РїСЂРѕРµРєС‚
                     if($insert['id']) {
                         $delete_projects[] = $project['id'];
                     } else {
-                        $error_project[] = "Ошибка создания проекта #{$project['id']}";
+                        $error_project[] = "РћС€РёР±РєР° СЃРѕР·РґР°РЅРёСЏ РїСЂРѕРµРєС‚Р° #{$project['id']}";
                     }
-                    // Проверяем платные опции если есть обновляем в отложенных операциях тк выше все операции выбранные там уже ушли туда
+                    // РџСЂРѕРІРµСЂСЏРµРј РїР»Р°С‚РЅС‹Рµ РѕРїС†РёРё РµСЃР»Рё РµСЃС‚СЊ РѕР±РЅРѕРІР»СЏРµРј РІ РѕС‚Р»РѕР¶РµРЅРЅС‹С… РѕРїРµСЂР°С†РёСЏС… С‚Рє РІС‹С€Рµ РІСЃРµ РѕРїРµСЂР°С†РёРё РІС‹Р±СЂР°РЅРЅС‹Рµ С‚Р°Рј СѓР¶Рµ СѓС€Р»Рё С‚СѓРґР°
                     if($insert['id'] && ($project['is_color'] || $project['is_bold'] || $project['top_count'] > 0 || $project['logo_id'] > 0)) {
                         $update = array("parent_id" => $insert['id']);
                         $this->_db->update("draft_account_operations", $update, "parent_id = ? AND op_type = 'project' AND uid = ?", $project['id'], wizard::getUserIDReg());  
@@ -599,7 +599,7 @@ class step_employer extends step_wizard_registration
                             $this->_db->update("draft_account_operations", $update, "parent_id = ? AND op_type = 'contest' AND option = 'logo' AND uid = ?", $contest['id'], wizard::getUserIDReg());
                         }
                     }
-                // Если это конкурс он сразу идет в черновики
+                // Р•СЃР»Рё СЌС‚Рѕ РєРѕРЅРєСѓСЂСЃ РѕРЅ СЃСЂР°Р·Сѓ РёРґРµС‚ РІ С‡РµСЂРЅРѕРІРёРєРё
                 } else {
                     $draft = new drafts();
                     $cat   = explode("|", $project['categories']);
@@ -629,9 +629,9 @@ class step_employer extends step_wizard_registration
                     if($contest['id']) {
                         $delete_projects[] = $project['id'];
                     } else {
-                        $error_project[] = "ошибка создания конкурса #{$project['id']}";
+                        $error_project[] = "РѕС€РёР±РєР° СЃРѕР·РґР°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР° #{$project['id']}";
                     }
-                    // Проверяем платные опции если есть пишем в отложенные платежи
+                    // РџСЂРѕРІРµСЂСЏРµРј РїР»Р°С‚РЅС‹Рµ РѕРїС†РёРё РµСЃР»Рё РµСЃС‚СЊ РїРёС€РµРј РІ РѕС‚Р»РѕР¶РµРЅРЅС‹Рµ РїР»Р°С‚РµР¶Рё
                     if($contest['id'] && ($project['is_color'] || $project['is_bold'] || $project['top_count'] > 0 || $project['logo_id'] > 0)) {
                         $update = array("parent_id" => $contest['id']);
                         $this->_db->update("draft_account_operations", $update, "parent_id = ? AND op_type = 'contest' AND uid = ?", $project['id'], wizard::getUserIDReg());
@@ -657,7 +657,7 @@ class step_employer extends step_wizard_registration
     }
     
     /**
-     * Инциализируем пути для перекидывания файлов 
+     * РРЅС†РёР°Р»РёР·РёСЂСѓРµРј РїСѓС‚Рё РґР»СЏ РїРµСЂРµРєРёРґС‹РІР°РЅРёСЏ С„Р°Р№Р»РѕРІ 
      */
     public function setPath() {
         require_once $_SERVER['DOCUMENT_ROOT']."/classes/projects.php";

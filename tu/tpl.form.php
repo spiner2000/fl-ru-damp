@@ -17,20 +17,20 @@ if(!defined('IN_STDF'))
         <?php if(false){ ?>
         <li class="b-menu__item">  
             <a class="b-menu__link" href="/users/<?=$user_obj->login ?>/">
-                Профиль</a>&nbsp;&RightArrow;&nbsp;
+                РџСЂРѕС„РёР»СЊ</a>&nbsp;&RightArrow;&nbsp;
         </li>    
         <?php } ?>
         <li class="b-menu__item">
             <a class="b-menu__link" href="/users/<?=$user_obj->login ?>/tu/">
-            <?php if($is_adm){?>Все услуги фрилансера<?php }else{ ?>Мои услуги<?php } ?></a>&nbsp;&RightArrow;&nbsp;
+            <?php if($is_adm){?>Р’СЃРµ СѓСЃР»СѓРіРё С„СЂРёР»Р°РЅСЃРµСЂР°<?php }else{ ?>РњРѕРё СѓСЃР»СѓРіРё<?php } ?></a>&nbsp;&RightArrow;&nbsp;
         </li>
     </ul>
 </div>
 
 <h1 class="b-page__title">
-    Создайте типовую услугу за пару минут
+    РЎРѕР·РґР°Р№С‚Рµ С‚РёРїРѕРІСѓСЋ СѓСЃР»СѓРіСѓ Р·Р° РїР°СЂСѓ РјРёРЅСѓС‚
     <div class="b-txt b-txt_color_80 b-txt_normal">
-        Типовая услуга — фиксированный объем работ, который вы можете выполнить по фиксированной цене
+        РўРёРїРѕРІР°СЏ СѓСЃР»СѓРіР° вЂ” С„РёРєСЃРёСЂРѕРІР°РЅРЅС‹Р№ РѕР±СЉРµРј СЂР°Р±РѕС‚, РєРѕС‚РѕСЂС‹Р№ РІС‹ РјРѕР¶РµС‚Рµ РІС‹РїРѕР»РЅРёС‚СЊ РїРѕ С„РёРєСЃРёСЂРѕРІР°РЅРЅРѕР№ С†РµРЅРµ
     </div>
 </h1>
 
@@ -40,7 +40,7 @@ if(!defined('IN_STDF'))
         <table class="b-layout__table b-layout__table_width_full">
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_30">
-                    <h3 class="b-txt__h3">Название и стоимость услуги <span class="b-txt_color_de2c2c">*</span></h3>
+                    <h3 class="b-txt__h3">РќР°Р·РІР°РЅРёРµ Рё СЃС‚РѕРёРјРѕСЃС‚СЊ СѓСЃР»СѓРіРё <span class="b-txt_color_de2c2c">*</span></h3>
                     <table class="b-layout__table">
                         <tr class="b-layout__tr">
                             <td class="b-layout__td b-layout__td_width_full">
@@ -53,7 +53,7 @@ if(!defined('IN_STDF'))
                                 <?php echo tservices_helper::input_element_error('title', @$errors['title']); ?>
                             </td>
                             <td class="b-layout__td b-layout__txt_nowrap">
-                                <span class="b-txt b-txt_inline-block b-txt_padtop_3 b-txt_padlr_5">&nbsp;за&nbsp;</span>
+                                <span class="b-txt b-txt_inline-block b-txt_padtop_3 b-txt_padlr_5">&nbsp;Р·Р°&nbsp;</span>
                                 <div class="b-combo b-combo_inline-block">
                                     <div class="b-combo__input b-combo__input_width_90<?php if(isset($errors['price'])){ ?> b-combo__input_error<?php } ?>">
                                         <input tabindex="2" maxlength="6" data-validators="price uint" type="text" value="<?php echo ($tservice->price > 0)?$tservice->price:''?>" class="b-combo__input-text" name="price" id="price">
@@ -66,15 +66,15 @@ if(!defined('IN_STDF'))
                         </tr>
                     </table>
                     <div class="b-txt b-txt_padtop_5 b-txt_fs_11">
-                        Например: Дизайн визитки
+                        РќР°РїСЂРёРјРµСЂ: Р”РёР·Р°Р№РЅ РІРёР·РёС‚РєРё
                     </div>
                 </td>
             </tr>    
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_30">
                     <h3 class="b-txt__h3">
-                        Срок выполнения работы <span class="b-txt_color_de2c2c">*</span>
-                        <?php tservices_helper::tooltip('Максимальный срок, в течение которого вы готовы выполнить весь объем работ, указанных в услуге.') ?>
+                        РЎСЂРѕРє РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹ <span class="b-txt_color_de2c2c">*</span>
+                        <?php tservices_helper::tooltip('РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЃСЂРѕРє, РІ С‚РµС‡РµРЅРёРµ РєРѕС‚РѕСЂРѕРіРѕ РІС‹ РіРѕС‚РѕРІС‹ РІС‹РїРѕР»РЅРёС‚СЊ РІРµСЃСЊ РѕР±СЉРµРј СЂР°Р±РѕС‚, СѓРєР°Р·Р°РЅРЅС‹С… РІ СѓСЃР»СѓРіРµ.') ?>
                     </h3>
                     <div class="b-combo">
                         <div class="
@@ -99,7 +99,7 @@ if(!defined('IN_STDF'))
                 </td>
             </tr>
             <?php
-                $value = 'Выберите категорию';
+                $value = 'Р’С‹Р±РµСЂРёС‚Рµ РєР°С‚РµРіРѕСЂРёСЋ';
                 if($tservice->category_id > 0)
                 {
                     $category = new tservices_categories();
@@ -109,7 +109,7 @@ if(!defined('IN_STDF'))
             ?>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_30">
-                   <h3 class="b-txt__h3">Категория <span class="b-txt_color_de2c2c">*</span></h3>
+                   <h3 class="b-txt__h3">РљР°С‚РµРіРѕСЂРёСЏ <span class="b-txt_color_de2c2c">*</span></h3>
                    <div class="b-combo">
                       <div class="
                            b-combo__input 
@@ -121,7 +121,7 @@ if(!defined('IN_STDF'))
                            b-combo__input_visible_height_200 
                            drop_down_default_<?php echo $tservice->category_id ?>
                            multi_drop_down_default_column_0 
-                           override_value_id_0_0_Выберите+категорию 
+                           override_value_id_0_0_Р’С‹Р±РµСЂРёС‚Рµ+РєР°С‚РµРіРѕСЂРёСЋ 
                            sort_cnt 
                            <?php if($is_exist_feedbacks > 0) {?>b-combo__input_disabled<?php } ?> 
                            b-combo__input_on_load_request_id_gettucategories 
@@ -139,7 +139,7 @@ if(!defined('IN_STDF'))
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_30">
                     <h3 class="b-txt__h3">
-                        Ключевые слова <span class="b-txt_color_de2c2c">*</span>
+                        РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР° <span class="b-txt_color_de2c2c">*</span>
                     </h3>
                     <div class="b-combo">
                         <div class="b-combo__input b-combo__input_max-width_500<?php if(isset($errors['tags'])){ ?> b-combo__input_error<?php } ?>">
@@ -149,23 +149,23 @@ if(!defined('IN_STDF'))
                     </div>
                     <?php echo tservices_helper::input_element_error('tags', @$errors['tags']); ?>
                     <div class="b-txt b-txt_padtop_5 b-txt_fs_11">
-                        Можно указать до 10 слов через запятую
+                        РњРѕР¶РЅРѕ СѓРєР°Р·Р°С‚СЊ РґРѕ 10 СЃР»РѕРІ С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ
                     </div>
                 </td>
             </tr>
             
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_30">
-                    <h3 class="b-txt__h3">Превью услуги <span class="b-txt_color_de2c2c">*</span></h3>
+                    <h3 class="b-txt__h3">РџСЂРµРІСЊСЋ СѓСЃР»СѓРіРё <span class="b-txt_color_de2c2c">*</span></h3>
                     <div id="preview_uploader">
                         <div class="qq-uploader-selector">
                         <div class="qq-upload-drop-area-selector b-file b-file_dragdrop b-file_dragdrop_maxwidth_470">
                             <div class="b-txt b-txt_center">
-                                Перетащите файл сюда
+                                РџРµСЂРµС‚Р°С‰РёС‚Рµ С„Р°Р№Р» СЃСЋРґР°
                                 <div style="width:185px; margin:0 auto;">
                                 <div class="b-file__wrap">
                                     <a href="javascript:void(0)" class="qq-upload-button-selector b-txt__lnk_color_0f71c8 b-txt__lnk_outline_none">
-                                        или выберите с диска
+                                        РёР»Рё РІС‹Р±РµСЂРёС‚Рµ СЃ РґРёСЃРєР°
                                     </a>
                                 </div>
 				<?php echo tservices_helper::input_element_error('preview'); ?>
@@ -173,7 +173,7 @@ if(!defined('IN_STDF'))
                             </div>
                         </div>
                         <div class="b-txt b-txt_padtop_5 b-txt_fs_11 b-txt_margbot_20">
-                            Минимальное разрешение 200х150 пикселей в формате jpg, jpeg, png.
+                            РњРёРЅРёРјР°Р»СЊРЅРѕРµ СЂР°Р·СЂРµС€РµРЅРёРµ 200С…150 РїРёРєСЃРµР»РµР№ РІ С„РѕСЂРјР°С‚Рµ jpg, jpeg, png.
                         </div>
                     
                         <ul class="qq-upload-list-selector b-file_attach-files b-file_attach-files_maxwidth_520 b-file_attach-files_pad_0 b-file_attach-files_margleft_null b-file_attach-files_margtop_null">
@@ -183,7 +183,7 @@ if(!defined('IN_STDF'))
                                 </div>
                                 <img class="qq-thumbnail-selector" qq-max-size="60" qq-server-scale="true"/>
                                 <span class="qq-upload-spinner-selector qq-upload-spinner b-file_attach-files_element_spinner"></span>
-                                <a title="Удалить" class="qq-upload-delete-selector b-button b-button_circle_cross b-button_absolute b-button_top_5 b-button_right_5" href="javascript:void(0)"></a>
+                                <a title="РЈРґР°Р»РёС‚СЊ" class="qq-upload-delete-selector b-button b-button_circle_cross b-button_absolute b-button_top_5 b-button_right_5" href="javascript:void(0)"></a>
                             </li>  
                             <?php
                                 if(count($preview_field))
@@ -193,7 +193,7 @@ if(!defined('IN_STDF'))
                             <li class="test b-file_attach-files_element b-file_attach-files_element_width_60 b-file_attach-files_element_height_60 b-file_attach-files_element_bg_e1">
                                 <img class="qq-thumbnail-selector" src="<?php echo $preview_field['src'] ?>" />
                                 <span class="qq-upload-spinner-selector qq-upload-spinner b-file_attach-files_element_spinner b-file_attach-files_hide"></span>
-                                <a data-hash="<?php echo $preview_field['hash'] ?>" data-qquuid="<?php echo $preview_field['qquuid'] ?>" title="Удалить" class="qq-upload-delete-selector b-button b-button_circle_cross b-button_absolute b-button_top_5 b-button_right_5" href="javascript:void(0)"></a>
+                                <a data-hash="<?php echo $preview_field['hash'] ?>" data-qquuid="<?php echo $preview_field['qquuid'] ?>" title="РЈРґР°Р»РёС‚СЊ" class="qq-upload-delete-selector b-button b-button_circle_cross b-button_absolute b-button_top_5 b-button_right_5" href="javascript:void(0)"></a>
                             </li>
                             <?php
                                 }
@@ -207,16 +207,16 @@ if(!defined('IN_STDF'))
             
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_30">
-                    <h3 class="b-txt__h3">Примеры работ (фото и скриншоты)</h3>
+                    <h3 class="b-txt__h3">РџСЂРёРјРµСЂС‹ СЂР°Р±РѕС‚ (С„РѕС‚Рѕ Рё СЃРєСЂРёРЅС€РѕС‚С‹)</h3>
                     <div id="files_uploader">
                         <div class="qq-uploader-selector">
                         <div class="qq-upload-drop-area-selector b-file b-file_dragdrop b-file_dragdrop_maxwidth_470">
                             <div class="b-txt b-txt_center">
-                                Перетащите файл сюда
+                                РџРµСЂРµС‚Р°С‰РёС‚Рµ С„Р°Р№Р» СЃСЋРґР°
                                 <div style="width:185px; margin:0 auto;">
                                 <div class="b-file__wrap">
                                     <a href="javascript:void(0)" class="qq-upload-button-selector b-txt__lnk_color_0f71c8 b-txt__lnk_outline_none">
-                                        или выберите с диска
+                                        РёР»Рё РІС‹Р±РµСЂРёС‚Рµ СЃ РґРёСЃРєР°
                                     </a>
                                 </div>
 								<?php echo tservices_helper::input_element_error('uploader'); ?>
@@ -224,7 +224,7 @@ if(!defined('IN_STDF'))
                             </div>
                         </div>
                         <div class="b-txt b-txt_padtop_5 b-txt_fs_11 b-txt_margbot_20">
-                            Минимальное разрешение 600x600 пикселей в формате jpg, jpeg, png.
+                            РњРёРЅРёРјР°Р»СЊРЅРѕРµ СЂР°Р·СЂРµС€РµРЅРёРµ 600x600 РїРёРєСЃРµР»РµР№ РІ С„РѕСЂРјР°С‚Рµ jpg, jpeg, png.
                         </div>
                     
                         <ul class="qq-upload-list-selector b-file_attach-files b-file_attach-files_maxwidth_520 b-file_attach-files_pad_0 b-file_attach-files_margleft_null b-file_attach-files_margtop_null">
@@ -234,7 +234,7 @@ if(!defined('IN_STDF'))
                                 </div>
                                 <img class="qq-thumbnail-selector" qq-max-size="60" qq-server-scale="true"/>
                                 <span class="qq-upload-spinner-selector qq-upload-spinner b-file_attach-files_element_spinner"></span>
-                                <a title="Удалить" class="qq-upload-delete-selector b-button b-button_circle_cross b-button_absolute b-button_top_5 b-button_right_5" href="javascript:void(0)"></a>
+                                <a title="РЈРґР°Р»РёС‚СЊ" class="qq-upload-delete-selector b-button b-button_circle_cross b-button_absolute b-button_top_5 b-button_right_5" href="javascript:void(0)"></a>
                             </li>  
                             <?php
                                 if(count($uploader_field_element))
@@ -245,7 +245,7 @@ if(!defined('IN_STDF'))
                             <li class="test b-file_attach-files_element b-file_attach-files_element_width_60 b-file_attach-files_element_height_60 b-file_attach-files_element_bg_e1">
                                 <img class="qq-thumbnail-selector" src="<?php echo $el['src'] ?>" />
                                 <span class="qq-upload-spinner-selector qq-upload-spinner b-file_attach-files_element_spinner b-file_attach-files_hide"></span>
-                                <a data-hash="<?php echo $el['hash'] ?>" data-qquuid="<?php echo $el['qquuid'] ?>" title="Удалить" class="qq-upload-delete-selector b-button b-button_circle_cross b-button_absolute b-button_top_5 b-button_right_5" href="javascript:void(0)"></a>
+                                <a data-hash="<?php echo $el['hash'] ?>" data-qquuid="<?php echo $el['qquuid'] ?>" title="РЈРґР°Р»РёС‚СЊ" class="qq-upload-delete-selector b-button b-button_circle_cross b-button_absolute b-button_top_5 b-button_right_5" href="javascript:void(0)"></a>
                             </li>
                             <?php
                                     }
@@ -261,7 +261,7 @@ if(!defined('IN_STDF'))
 
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_30">
-                    <h3 class="b-txt__h3">Примеры работ (видео)</h3>
+                    <h3 class="b-txt__h3">РџСЂРёРјРµСЂС‹ СЂР°Р±РѕС‚ (РІРёРґРµРѕ)</h3>
                     <div id="video_items">
                     <?php
                         if(!$tservice->videos) $tservice->videos = array(array('url' => ''));
@@ -289,16 +289,16 @@ if(!defined('IN_STDF'))
                     <?php } ?>
                     </div>
                     <div class="b-txt b-txt_fs_11">
-                        Ссылка на видео с YouTube, RuTube или Vimeo
+                        РЎСЃС‹Р»РєР° РЅР° РІРёРґРµРѕ СЃ YouTube, RuTube РёР»Рё Vimeo
                     </div>
-                    <a id="add-video" href="javascript:void(0)" class="b-txt__lnk b-txt__lnk_inline-block b-txt__lnk_color_0f71c8 b-txt__lnk_fs_15">+ Добавить еще одно видео</a>
+                    <a id="add-video" href="javascript:void(0)" class="b-txt__lnk b-txt__lnk_inline-block b-txt__lnk_color_0f71c8 b-txt__lnk_fs_15">+ Р”РѕР±Р°РІРёС‚СЊ РµС‰Рµ РѕРґРЅРѕ РІРёРґРµРѕ</a>
                 </td>
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_30">
-                    <h3 class="b-txt__h3">Подробное описание <span class="b-txt_color_de2c2c">*</span></h3>
+                    <h3 class="b-txt__h3">РџРѕРґСЂРѕР±РЅРѕРµ РѕРїРёСЃР°РЅРёРµ <span class="b-txt_color_de2c2c">*</span></h3>
                     <div class="b-textarea b-textarea_max-width_500<?php if(isset($errors['description'])){ ?> b-textarea_error<?php } ?>">
-                        <textarea  tabindex="106" data-validators="required minLength:4 maxLength:5000" id="description" placeholder="Подробно опишите результат, который получит заказчик" class="b-textarea__textarea b-textarea_noresize" name="description"><?php echo $tservice->description ?></textarea>
+                        <textarea  tabindex="106" data-validators="required minLength:4 maxLength:5000" id="description" placeholder="РџРѕРґСЂРѕР±РЅРѕ РѕРїРёС€РёС‚Рµ СЂРµР·СѓР»СЊС‚Р°С‚, РєРѕС‚РѕСЂС‹Р№ РїРѕР»СѓС‡РёС‚ Р·Р°РєР°Р·С‡РёРє" class="b-textarea__textarea b-textarea_noresize" name="description"><?php echo $tservice->description ?></textarea>
                     </div>
                     <?php echo tservices_helper::input_element_error('description', @$errors['description']); ?>
                 </td>
@@ -307,8 +307,8 @@ if(!defined('IN_STDF'))
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_30 b-layout__td_bordbot_c3">
                     <h3 class="b-txt__h3">
-                        Заработайте больше, предлагая сопутствующие услуги
-                        <?php tservices_helper::tooltip('Предложите покупателю вместе с основной услугой дополнительные опции за отдельные оплату и сроки') ?>
+                        Р—Р°СЂР°Р±РѕС‚Р°Р№С‚Рµ Р±РѕР»СЊС€Рµ, РїСЂРµРґР»Р°РіР°СЏ СЃРѕРїСѓС‚СЃС‚РІСѓСЋС‰РёРµ СѓСЃР»СѓРіРё
+                        <?php tservices_helper::tooltip('РџСЂРµРґР»РѕР¶РёС‚Рµ РїРѕРєСѓРїР°С‚РµР»СЋ РІРјРµСЃС‚Рµ СЃ РѕСЃРЅРѕРІРЅРѕР№ СѓСЃР»СѓРіРѕР№ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РѕРїС†РёРё Р·Р° РѕС‚РґРµР»СЊРЅС‹Рµ РѕРїР»Р°С‚Сѓ Рё СЃСЂРѕРєРё') ?>
                     </h3>
                     <?php 
                         if(!$tservice->extra) $tservice->extra = array(array('title' => '','price' => '','days' => 1));
@@ -330,7 +330,7 @@ if(!defined('IN_STDF'))
                                 <?php echo tservices_helper::input_element_error('extra['.$key.'][title]', @$errors['extra'][$key]['title'], 'b-shadow_zindex_3'); ?>
                             </td>
                             <td class="b-layout__td b-layout__txt_nowrap">
-                                <span class="b-txt b-txt_inline-block b-txt_padtop_3 b-txt_padlr_5">&nbsp;за&nbsp;</span>
+                                <span class="b-txt b-txt_inline-block b-txt_padtop_3 b-txt_padlr_5">&nbsp;Р·Р°&nbsp;</span>
                                 <div class="b-combo b-combo_inline-block">
                                     <div class="b-combo__input b-combo__input_width_90<?php if(isset($errors['extra'][$key]['price'])){ ?> b-combo__input_error<?php } ?>">
                                         <input tabindex="108" maxlength="7" data-validators="relation intOrEmpty" data-rel="price:title" type="text" value="<?php echo $field['price'] ?>" class="b-combo__input-text" name="<?php echo 'extra['.$key.'][price]' ?>" id="<?php echo 'extra['.$key.'][price]' ?>"/>
@@ -341,7 +341,7 @@ if(!defined('IN_STDF'))
                                 <?php echo tservices_helper::input_element_error('extra['.$key.'][price]', @$errors['extra'][$key]['price'], 'b-shadow_zindex_3'); ?>
                             </td>
                             <td class="b-layout__td b-layout__txt_nowrap">
-                                <span class="b-txt b-txt_inline-block b-txt_padtop_3 b-txt_padlr_5">&nbsp;за&nbsp;</span>
+                                <span class="b-txt b-txt_inline-block b-txt_padtop_3 b-txt_padlr_5">&nbsp;Р·Р°&nbsp;</span>
                                 <div class="b-combo b-combo_inline-block">
                                     <div class="
                                          b-combo__input 
@@ -354,7 +354,7 @@ if(!defined('IN_STDF'))
                                          b-combo__input_init_tuDayListWithZero  
                                          <?php if(isset($errors['extra'][$key]['days'])){ ?>b-combo__input_error<?php } ?> 
                                          b-combo__input_arrow_yes">
-                                        <input tabindex="109" type="text" value="<?php echo $field['days'] ?> <?php echo ending($field['days'], 'день', 'дня', 'дней') ?>" size="80" readonly="readonly" name="<?php echo 'extra['.$key.'][days]' ?>" id="<?php echo 'extra['.$key.'][days]' ?>" class="b-combo__input-text b-combo__input-text_pointer"/>
+                                        <input tabindex="109" type="text" value="<?php echo $field['days'] ?> <?php echo ending($field['days'], 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№') ?>" size="80" readonly="readonly" name="<?php echo 'extra['.$key.'][days]' ?>" id="<?php echo 'extra['.$key.'][days]' ?>" class="b-combo__input-text b-combo__input-text_pointer"/>
                                         <label class="b-combo__label" for="<?php echo 'extra['.$key.'][days]' ?>"></label>
                                         <span class="b-combo__arrow"></span> 
                                     </div>
@@ -368,7 +368,7 @@ if(!defined('IN_STDF'))
                     </table>
                     <?php } ?>
                     </div>
-                    <a id="add-extra" href="javascript:void(0)" class="b-txt__lnk b-txt__lnk_inline-block b-txt__lnk_color_0f71c8 b-txt__lnk_fs_15">+ Добавить</a>
+                    <a id="add-extra" href="javascript:void(0)" class="b-txt__lnk b-txt__lnk_inline-block b-txt__lnk_color_0f71c8 b-txt__lnk_fs_15">+ Р”РѕР±Р°РІРёС‚СЊ</a>
                 </td>
             </tr>
 
@@ -377,10 +377,10 @@ if(!defined('IN_STDF'))
                     <div class="b-check b-check_inline-block b-check_padtop_5 b-check_padbot_5 b-check_padright_5">
                           <input tabindex="207"<?php if($tservice->is_express == 't'){ ?> checked="checked"<?php } ?> type="checkbox" value="1" name="express_activate" class="b-check__input" id="express_activate"/>
                           <label class="b-check__label b-check__label_ptsans b-page__desktop b-page__ipad" for="express_activate">
-                              Могу выполнить срочно за дополнительные
+                              РњРѕРіСѓ РІС‹РїРѕР»РЅРёС‚СЊ СЃСЂРѕС‡РЅРѕ Р·Р° РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ
                           </label>
                           <label class="b-check__label b-check__label_ptsans b-page__iphone" for="express_activate" style="vertical-align:top;">
-                              Могу выполнить срочно<br>за дополнительные
+                              РњРѕРіСѓ РІС‹РїРѕР»РЅРёС‚СЊ СЃСЂРѕС‡РЅРѕ<br>Р·Р° РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ
                           </label>
                     </div>
                     <span class="b-layout_block_iphone">
@@ -392,7 +392,7 @@ if(!defined('IN_STDF'))
                             <?php echo tservices_helper::input_element_error('express[price]', @$errors['express']['price']); ?>
                         </div>
                         <span class="b-txt b-txt_inline-block b-txt_padtop_3">&nbsp;<?php echo tservices_const::enum('currency', 'rus'); ?></span>
-                        <span class="b-txt b-txt_inline-block b-txt_padtop_3 b-txt_padlr_5">&nbsp;за&nbsp;</span>
+                        <span class="b-txt b-txt_inline-block b-txt_padtop_3 b-txt_padlr_5">&nbsp;Р·Р°&nbsp;</span>
                         <span class="b-layout_block_iphone b-layout_padtop_7">
                             <div class="b-combo b-combo_inline-block">
                                 <div class="
@@ -413,7 +413,7 @@ if(!defined('IN_STDF'))
                                 </div>
                                 <?php echo tservices_helper::input_element_error('express[days]', @$errors['express']['days']); ?>
                             </div>
-                            <?php tservices_helper::tooltip('Укажите сумму доплаты за срочное выполнение всей работы (по услуге и дополнительным опциям)') ?>
+                            <?php tservices_helper::tooltip('РЈРєР°Р¶РёС‚Рµ СЃСѓРјРјСѓ РґРѕРїР»Р°С‚С‹ Р·Р° СЃСЂРѕС‡РЅРѕРµ РІС‹РїРѕР»РЅРµРЅРёРµ РІСЃРµР№ СЂР°Р±РѕС‚С‹ (РїРѕ СѓСЃР»СѓРіРµ Рё РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рј РѕРїС†РёСЏРј)') ?>
                         </span>
                     </span>
                 </td>
@@ -422,10 +422,10 @@ if(!defined('IN_STDF'))
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_30 b-layout__td_padtop_15">
                     <h3 class="b-txt__h3">
-                        Необходимая от заказчика информация <span class="b-txt_color_de2c2c">*</span>
+                        РќРµРѕР±С…РѕРґРёРјР°СЏ РѕС‚ Р·Р°РєР°Р·С‡РёРєР° РёРЅС„РѕСЂРјР°С†РёСЏ <span class="b-txt_color_de2c2c">*</span>
                     </h3>
                     <div class="b-textarea b-textarea_max-width_500<?php if(isset($errors['requirement'])){ ?> b-textarea_error<?php } ?>">
-                        <textarea tabindex="210" data-validators="required minLength:4 maxLength:5000" placeholder="Опишите по пунктам, что должен предоставить заказчик для начала работы" class="b-textarea__textarea b-textarea_noresize" name="requirement" id="requirement"><?php echo $tservice->requirement ?></textarea>
+                        <textarea tabindex="210" data-validators="required minLength:4 maxLength:5000" placeholder="РћРїРёС€РёС‚Рµ РїРѕ РїСѓРЅРєС‚Р°Рј, С‡С‚Рѕ РґРѕР»Р¶РµРЅ РїСЂРµРґРѕСЃС‚Р°РІРёС‚СЊ Р·Р°РєР°Р·С‡РёРє РґР»СЏ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹" class="b-textarea__textarea b-textarea_noresize" name="requirement" id="requirement"><?php echo $tservice->requirement ?></textarea>
                     </div>
                     <?php echo tservices_helper::input_element_error('requirement', @$errors['requirement']); ?>
                 </td>
@@ -435,8 +435,8 @@ if(!defined('IN_STDF'))
                 <td class="b-layout__td b-layout__td_padbot_30">
                     
                     <h3 class="b-txt__h3">
-                        Способ выполнения работы <span class="b-txt_color_de2c2c">*</span>
-                        <?php tservices_helper::tooltip('Готовы ли вы встретиться с заказчиком лично, или работа происходит строго удаленно?') ?>
+                        РЎРїРѕСЃРѕР± РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹ <span class="b-txt_color_de2c2c">*</span>
+                        <?php tservices_helper::tooltip('Р“РѕС‚РѕРІС‹ Р»Рё РІС‹ РІСЃС‚СЂРµС‚РёС‚СЊСЃСЏ СЃ Р·Р°РєР°Р·С‡РёРєРѕРј Р»РёС‡РЅРѕ, РёР»Рё СЂР°Р±РѕС‚Р° РїСЂРѕРёСЃС…РѕРґРёС‚ СЃС‚СЂРѕРіРѕ СѓРґР°Р»РµРЅРЅРѕ?') ?>
                     </h3>
                     
                     <div class="b-radio b-radio_layout_vertical">
@@ -444,13 +444,13 @@ if(!defined('IN_STDF'))
                         <div class="b-radio__item b-radio__item_padbot_10">
                             <input tabindex="211"<?php if($tservice->is_meet == 'f'){ ?> checked="checked"<?php } ?> type="radio" value="1" name="distance" class="b-radio__input" id="distance"/>
                             <label for="distance" class="b-radio__label b-radio__label_ptsans b-radio__label_margtop_-1">
-                                Удаленно
+                                РЈРґР°Р»РµРЅРЅРѕ
                             </label>
                         </div>
                         <div class="b-radio__item">
                             <input tabindex="212"<?php if($tservice->is_meet == 't'){ ?> checked="checked"<?php } ?> type="radio" value="2" name="distance" class="b-radio__input" id="personal">
                             <label for="personal" class="b-radio__label b-radio__label_ptsans b-radio__label_margtop_-1">
-                                Возможна личная встреча
+                                Р’РѕР·РјРѕР¶РЅР° Р»РёС‡РЅР°СЏ РІСЃС‚СЂРµС‡Р°
                             </label>
                             
                             <div class="b-combo b-combo_inline-block b-combo_margtop_-5 b-combo_margleft_15_iphone b-combo_margtop_10_iphone b-combo_block_iphone">
@@ -487,15 +487,15 @@ if(!defined('IN_STDF'))
                         <tr class="b-layout__tr">
                             <td class="b-layout__td b-layout__td_padright_10">
                                 <div class="b-check">
-                                    <input tabindex="214" title="Необходимо согласиться с условиями размещения" data-validators="" type="checkbox" value="1" name="agree" class="b-check__input validate-required-check" id="agree" <?php if($tservice->agree === 't'){ ?>checked="checked"<?php } ?>/>
+                                    <input tabindex="214" title="РќРµРѕР±С…РѕРґРёРјРѕ СЃРѕРіР»Р°СЃРёС‚СЊСЃСЏ СЃ СѓСЃР»РѕРІРёСЏРјРё СЂР°Р·РјРµС‰РµРЅРёСЏ" data-validators="" type="checkbox" value="1" name="agree" class="b-check__input validate-required-check" id="agree" <?php if($tservice->agree === 't'){ ?>checked="checked"<?php } ?>/>
                                 </div>    
                             </td>
                             <td class="b-layout__td">
                                 <label class="b-check__label b-check__label_ptsans b-check__label_color_80 b-check__label_fontsize_14" for="agree">
-                                    Я подтверждаю, что указанная в услуге информация, сроки и цены соответствуют действительности. 
-                                    Подтверждаю готовность оказывать услугу на заявленных условиях и принимаю тот факт, 
-                                    что любой срыв сроков и договоренностей по моей вине может негативно сказаться на рейтинге и отзыве, 
-                                    а также привести к возврату уплаченных средств.
+                                    РЇ РїРѕРґС‚РІРµСЂР¶РґР°СЋ, С‡С‚Рѕ СѓРєР°Р·Р°РЅРЅР°СЏ РІ СѓСЃР»СѓРіРµ РёРЅС„РѕСЂРјР°С†РёСЏ, СЃСЂРѕРєРё Рё С†РµРЅС‹ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‚ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕСЃС‚Рё. 
+                                    РџРѕРґС‚РІРµСЂР¶РґР°СЋ РіРѕС‚РѕРІРЅРѕСЃС‚СЊ РѕРєР°Р·С‹РІР°С‚СЊ СѓСЃР»СѓРіСѓ РЅР° Р·Р°СЏРІР»РµРЅРЅС‹С… СѓСЃР»РѕРІРёСЏС… Рё РїСЂРёРЅРёРјР°СЋ С‚РѕС‚ С„Р°РєС‚, 
+                                    С‡С‚Рѕ Р»СЋР±РѕР№ СЃСЂС‹РІ СЃСЂРѕРєРѕРІ Рё РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚РµР№ РїРѕ РјРѕРµР№ РІРёРЅРµ РјРѕР¶РµС‚ РЅРµРіР°С‚РёРІРЅРѕ СЃРєР°Р·Р°С‚СЊСЃСЏ РЅР° СЂРµР№С‚РёРЅРіРµ Рё РѕС‚Р·С‹РІРµ, 
+                                    Р° С‚Р°РєР¶Рµ РїСЂРёРІРµСЃС‚Рё Рє РІРѕР·РІСЂР°С‚Сѓ СѓРїР»Р°С‡РµРЅРЅС‹С… СЃСЂРµРґСЃС‚РІ.
                                 </label> 
                                 <?php echo tservices_helper::input_element_error('agree', @$errors['agree']); ?>
                             </td>                            
@@ -516,34 +516,34 @@ if(!defined('IN_STDF'))
     <td class="b-layout__td">
     <a href="javascript:void(0)" class="__send_btn b-button b-button_flat b-button_flat_green b-button_margright_20 b-button_margtop_15" onClick="<?=($tuid > 0 && $tservice->active === 't' ? "" : "yaCounter6051055.reachGoal('save_public_tu');")?>">
         <?php if( $tuid > 0 && $tservice->active === 't' ){ ?>
-            Сохранить
+            РЎРѕС…СЂР°РЅРёС‚СЊ
         <?php } else { ?>
-            Опубликовать
+            РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ
         <?php } ?>
     </a>
     <?php if(!$tservice->is_angry){ ?>
     <a href="javascript:void(0)" class="__send_btn __send_without_publish_btn b-button b-button_flat b-button_flat_grey b-button_flat_grey_pad_10_20 b-button_margtop_15 b-button_margright_20 b-button__txt_color_0f71c8" onClick="<?=($tuid > 0 && $tservice->active === 't' ? "yaCounter6051055.reachGoal('save_private_tu');" : "yaCounter6051055.reachGoal('add_private_tu');")?>">
         <?php if( $tuid > 0 && $tservice->active === 't' ){ ?>
-            Снять с публикации
+            РЎРЅСЏС‚СЊ СЃ РїСѓР±Р»РёРєР°С†РёРё
         <?php } else { ?>
-            Сохранить без публикации
+            РЎРѕС…СЂР°РЅРёС‚СЊ Р±РµР· РїСѓР±Р»РёРєР°С†РёРё
         <?php } ?>
     </a>
     <?php }else{ ?>
     <div class="b-txt b-txt_inline-block b-txt_fs_11 b-txt_padtop_10 b-txt_fr">
-        Вы не можете удалить или скрыть услугу при наличии отрицательных отзывов в ней.
+        Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ СѓРґР°Р»РёС‚СЊ РёР»Рё СЃРєСЂС‹С‚СЊ СѓСЃР»СѓРіСѓ РїСЂРё РЅР°Р»РёС‡РёРё РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹С… РѕС‚Р·С‹РІРѕРІ РІ РЅРµР№.
     </div>
     <?php } ?>
     <?php if($tuid > 0 && !$tservice->is_angry){ ?>
         <a href="javascript:void(0)" data-url="<?php echo sprintf(tservices_helper::url('delete'),$user_obj->login) ?>" onclick="yaCounter6051055.reachGoal('del_tu'); TServices.onServiceDeleteSubmit(this,<?php echo $tuid ?>)" class="b-button b-button_flat b-button_flat_red b-button_margtop_15 b-page__iphone">
-            Удалить услугу
+            РЈРґР°Р»РёС‚СЊ СѓСЃР»СѓРіСѓ
         </a>     
     <?php } ?>
     </td>
     <?php if($tuid > 0 && !$tservice->is_angry){ ?>
     <td class="b-layout__td b-layout__td_right b-page__desktop b-page__ipad">
         <a href="javascript:void(0)" data-url="<?php echo sprintf(tservices_helper::url('delete'),$user_obj->login) ?>" onclick="yaCounter6051055.reachGoal('del_tu'); TServices.onServiceDeleteSubmit(this,<?php echo $tuid ?>)" class="b-button b-button_flat b-button_flat_red b-button_margtop_15">
-            Удалить услугу
+            РЈРґР°Р»РёС‚СЊ СѓСЃР»СѓРіСѓ
         </a>
     </td>
     <?php } ?>

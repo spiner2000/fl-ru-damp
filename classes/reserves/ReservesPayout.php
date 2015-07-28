@@ -92,9 +92,9 @@ class ReservesPayout extends BaseModel
     
     
     /**
-     * Сохранить состояние текущих задач 
-     * на выплату и слепок реквизитов в ситорию
-     * Рекомендуется делать после каких-либо операций обновления/добавления.
+     * РЎРѕС…СЂР°РЅРёС‚СЊ СЃРѕСЃС‚РѕСЏРЅРёРµ С‚РµРєСѓС‰РёС… Р·Р°РґР°С‡ 
+     * РЅР° РІС‹РїР»Р°С‚Сѓ Рё СЃР»РµРїРѕРє СЂРµРєРІРёР·РёС‚РѕРІ РІ СЃРёС‚РѕСЂРёСЋ
+     * Р РµРєРѕРјРµРЅРґСѓРµС‚СЃСЏ РґРµР»Р°С‚СЊ РїРѕСЃР»Рµ РєР°РєРёС…-Р»РёР±Рѕ РѕРїРµСЂР°С†РёР№ РѕР±РЅРѕРІР»РµРЅРёСЏ/РґРѕР±Р°РІР»РµРЅРёСЏ.
      * 
      * @param type $reserve_id
      */
@@ -140,7 +140,7 @@ class ReservesPayout extends BaseModel
     
     
     /**
-     * Получить лог для указанного резерва
+     * РџРѕР»СѓС‡РёС‚СЊ Р»РѕРі РґР»СЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ СЂРµР·РµСЂРІР°
      * 
      * @param type $reserve_id
      * @return type
@@ -158,7 +158,7 @@ class ReservesPayout extends BaseModel
 
 
     /**
-     * Пишем в лог локальную ошибку
+     * РџРёС€РµРј РІ Р»РѕРі Р»РѕРєР°Р»СЊРЅСѓСЋ РѕС€РёР±РєСѓ
      * 
      * @param type $reserve_id
      * @param type $message
@@ -180,7 +180,7 @@ class ReservesPayout extends BaseModel
     
     
     /**
-     * Получить обьект для взаимодействия с API выплат 
+     * РџРѕР»СѓС‡РёС‚СЊ РѕР±СЊРµРєС‚ РґР»СЏ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ СЃ API РІС‹РїР»Р°С‚ 
      * 
      * @return YandexMoney3
      */
@@ -207,7 +207,7 @@ class ReservesPayout extends BaseModel
     
 
     /**
-     * Вернуть задачи на выплату через сервис
+     * Р’РµСЂРЅСѓС‚СЊ Р·Р°РґР°С‡Рё РЅР° РІС‹РїР»Р°С‚Сѓ С‡РµСЂРµР· СЃРµСЂРІРёСЃ
      * 
      * @param type $reserve_id
      * @param type $status
@@ -228,7 +228,7 @@ class ReservesPayout extends BaseModel
     
 
     /**
-     * Вернуть слепок реквизитов
+     * Р’РµСЂРЅСѓС‚СЊ СЃР»РµРїРѕРє СЂРµРєРІРёР·РёС‚РѕРІ
      * 
      * @param type $reserve_id
      * @return type
@@ -246,8 +246,8 @@ class ReservesPayout extends BaseModel
     
     
     /**
-     * Выплата через сервис?
-     * иначе по безналу
+     * Р’С‹РїР»Р°С‚Р° С‡РµСЂРµР· СЃРµСЂРІРёСЃ?
+     * РёРЅР°С‡Рµ РїРѕ Р±РµР·РЅР°Р»Сѓ
      * 
      * @param type $reserve_id
      * @return type
@@ -266,7 +266,7 @@ class ReservesPayout extends BaseModel
 
 
     /**
-     * Есть ли для данного резерва слепок реквизитов?
+     * Р•СЃС‚СЊ Р»Рё РґР»СЏ РґР°РЅРЅРѕРіРѕ СЂРµР·РµСЂРІР° СЃР»РµРїРѕРє СЂРµРєРІРёР·РёС‚РѕРІ?
      * 
      * @param type $reserve_id
      * @return type
@@ -284,8 +284,8 @@ class ReservesPayout extends BaseModel
 
     
     /**
-     * Проверить доступность выплаты данному юзеру 
-     * и вернуть его реквизиты
+     * РџСЂРѕРІРµСЂРёС‚СЊ РґРѕСЃС‚СѓРїРЅРѕСЃС‚СЊ РІС‹РїР»Р°С‚С‹ РґР°РЅРЅРѕРјСѓ СЋР·РµСЂСѓ 
+     * Рё РІРµСЂРЅСѓС‚СЊ РµРіРѕ СЂРµРєРІРёР·РёС‚С‹
      * 
      * @param type $uid
      * @param type $type
@@ -314,7 +314,7 @@ class ReservesPayout extends BaseModel
             
             $info = explode(',', @$reqv['address']);
             
-            //попытка получить код ISO
+            //РїРѕРїС‹С‚РєР° РїРѕР»СѓС‡РёС‚СЊ РєРѕРґ ISO
             if ((!isset($reqv['country_iso']) || 
                   empty($reqv['country_iso'])) && 
                   count($info) > 3) {
@@ -330,7 +330,7 @@ class ReservesPayout extends BaseModel
                 }
             } 
             
-            //Если поля mob_phone то пробуем получить из phone
+            //Р•СЃР»Рё РїРѕР»СЏ mob_phone С‚Рѕ РїСЂРѕР±СѓРµРј РїРѕР»СѓС‡РёС‚СЊ РёР· phone
             if(!isset($reqv['mob_phone']) || empty($reqv['mob_phone'])) {
                 $reqv['mob_phone'] = @$reqv['phone'];
             }
@@ -344,7 +344,7 @@ class ReservesPayout extends BaseModel
 
     
     /**
-     * Запросить выплату
+     * Р—Р°РїСЂРѕСЃРёС‚СЊ РІС‹РїР»Р°С‚Сѓ
      * 
      * @param type $reserveInstance
      * @param type $type
@@ -354,12 +354,12 @@ class ReservesPayout extends BaseModel
     {
         switch($type)
         {
-            //Выплата по безналу, формируем запрос
+            //Р’С‹РїР»Р°С‚Р° РїРѕ Р±РµР·РЅР°Р»Сѓ, С„РѕСЂРјРёСЂСѓРµРј Р·Р°РїСЂРѕСЃ
             case ReservesPayoutPopup::PAYMENT_TYPE_BANK: 
                 $substatus = $this->payoutReestr($reserveInstance, $type);
                 break;
 
-            //Выплата через сервис, ставим задачу в очередь на обработку
+            //Р’С‹РїР»Р°С‚Р° С‡РµСЂРµР· СЃРµСЂРІРёСЃ, СЃС‚Р°РІРёРј Р·Р°РґР°С‡Сѓ РІ РѕС‡РµСЂРµРґСЊ РЅР° РѕР±СЂР°Р±РѕС‚РєСѓ
             default:
                 $substatus = $this->requestPayoutByService($reserveInstance, $type);
         }
@@ -371,8 +371,8 @@ class ReservesPayout extends BaseModel
     
     
     /**
-     * Запрос выплаты по сервису 
-     * с постановкой в очередь на обработку
+     * Р—Р°РїСЂРѕСЃ РІС‹РїР»Р°С‚С‹ РїРѕ СЃРµСЂРІРёСЃСѓ 
+     * СЃ РїРѕСЃС‚Р°РЅРѕРІРєРѕР№ РІ РѕС‡РµСЂРµРґСЊ РЅР° РѕР±СЂР°Р±РѕС‚РєСѓ
      * 
      * @param type $reserveInstance
      * @param type $type
@@ -383,7 +383,7 @@ class ReservesPayout extends BaseModel
         $reserve_id = $reserveInstance->getID();
         $sum = $reserveInstance->getPayoutSum();        
         
-        //Подготовка данных/реквизитов для последующей работы с API
+        //РџРѕРґРіРѕС‚РѕРІРєР° РґР°РЅРЅС‹С…/СЂРµРєРІРёР·РёС‚РѕРІ РґР»СЏ РїРѕСЃР»РµРґСѓСЋС‰РµР№ СЂР°Р±РѕС‚С‹ СЃ API
         try {
             
             if ($sum <= 0) {
@@ -396,10 +396,10 @@ class ReservesPayout extends BaseModel
             $is_allow_repeated = $this->isAllowRepeatedRequest($request_list);
             
             if ($is_allow_repeated) {
-                //Это повторный запрос на выплату 
-                //нельзя менять реквизиты!
+                //Р­С‚Рѕ РїРѕРІС‚РѕСЂРЅС‹Р№ Р·Р°РїСЂРѕСЃ РЅР° РІС‹РїР»Р°С‚Сѓ 
+                //РЅРµР»СЊР·СЏ РјРµРЅСЏС‚СЊ СЂРµРєРІРёР·РёС‚С‹!
                 
-                //Если нельзя обновлять реквизиты то читаем из слепка
+                //Р•СЃР»Рё РЅРµР»СЊР·СЏ РѕР±РЅРѕРІР»СЏС‚СЊ СЂРµРєРІРёР·РёС‚С‹ С‚Рѕ С‡РёС‚Р°РµРј РёР· СЃР»РµРїРєР°
                 $data_reqv = $this->getPayoutReqv($reserve_id);
                 if ($data_reqv) {
                     $reqv = mb_unserialize($data_reqv['fields']);
@@ -415,8 +415,8 @@ class ReservesPayout extends BaseModel
                 
                 $is_update = false;
                 
-                //Если нет мобильного у существующих реквизитов 
-                //то пробует получить из обычного телефона
+                //Р•СЃР»Рё РЅРµС‚ РјРѕР±РёР»СЊРЅРѕРіРѕ Сѓ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёС… СЂРµРєРІРёР·РёС‚РѕРІ 
+                //С‚Рѕ РїСЂРѕР±СѓРµС‚ РїРѕР»СѓС‡РёС‚СЊ РёР· РѕР±С‹С‡РЅРѕРіРѕ С‚РµР»РµС„РѕРЅР°
                 if (!isset($reqv['mob_phone']) || empty($reqv['mob_phone'])) {
                     
                     $is_update = true;
@@ -429,7 +429,7 @@ class ReservesPayout extends BaseModel
                 }
                 
 
-                //Если выплата на карту то получаем и сохраняем ее синоним
+                //Р•СЃР»Рё РІС‹РїР»Р°С‚Р° РЅР° РєР°СЂС‚Сѓ С‚Рѕ РїРѕР»СѓС‡Р°РµРј Рё СЃРѕС…СЂР°РЅСЏРµРј РµРµ СЃРёРЅРѕРЅРёРј
                 if ($type == ReservesPayoutPopup::PAYMENT_TYPE_CARD && 
                     !isset($reqv['skr_destinationCardSynonim'])) {
                     
@@ -444,15 +444,15 @@ class ReservesPayout extends BaseModel
                 }
                 
                 
-                //Обновляем реквизиты
+                //РћР±РЅРѕРІР»СЏРµРј СЂРµРєРІРёР·РёС‚С‹
                 if ($is_update) {
                     $this->updateReqv($reserve_id, $reqv);
-                    //Фиксируем остояние в истории
+                    //Р¤РёРєСЃРёСЂСѓРµРј РѕСЃС‚РѕСЏРЅРёРµ РІ РёСЃС‚РѕСЂРёРё
                     $this->saveToHistory($reserve_id);                    
                 }
                 
             } else {
-                //Иначе сознаем новый запрос на выплату
+                //РРЅР°С‡Рµ СЃРѕР·РЅР°РµРј РЅРѕРІС‹Р№ Р·Р°РїСЂРѕСЃ РЅР° РІС‹РїР»Р°С‚Сѓ
                 
                 $reqv = $this->getUserReqvs($uid, $type, $sum);
                 
@@ -463,7 +463,7 @@ class ReservesPayout extends BaseModel
                 }
                 
                 
-                //Если выплата на карту то получаем и сохраняем ее синоним
+                //Р•СЃР»Рё РІС‹РїР»Р°С‚Р° РЅР° РєР°СЂС‚Сѓ С‚Рѕ РїРѕР»СѓС‡Р°РµРј Рё СЃРѕС…СЂР°РЅСЏРµРј РµРµ СЃРёРЅРѕРЅРёРј
                 if ($type == ReservesPayoutPopup::PAYMENT_TYPE_CARD) {
                     
                     $reqv['skr_destinationCardSynonim'] = $this->getDestinationCardSynonim($reqv['el_ccard'], $sum);
@@ -474,7 +474,7 @@ class ReservesPayout extends BaseModel
                     }
                 }
                 
-                //Создаем запросы на выплату если нужно дробим сумму
+                //РЎРѕР·РґР°РµРј Р·Р°РїСЂРѕСЃС‹ РЅР° РІС‹РїР»Р°С‚Сѓ РµСЃР»Рё РЅСѓР¶РЅРѕ РґСЂРѕР±РёРј СЃСѓРјРјСѓ
                 $request_list = $this->calcRequestList($reserve_id, $sum);
                 
                 $this->db()->start();
@@ -489,8 +489,8 @@ class ReservesPayout extends BaseModel
                     }
                 }  
                 
-                //Если при добавлении списка задач или реквизитов возникла ошибка 
-                //то откатываем назад транзакцию и валимся с ошибкой
+                //Р•СЃР»Рё РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё СЃРїРёСЃРєР° Р·Р°РґР°С‡ РёР»Рё СЂРµРєРІРёР·РёС‚РѕРІ РІРѕР·РЅРёРєР»Р° РѕС€РёР±РєР° 
+                //С‚Рѕ РѕС‚РєР°С‚С‹РІР°РµРј РЅР°Р·Р°Рґ С‚СЂР°РЅР·Р°РєС†РёСЋ Рё РІР°Р»РёРјСЃСЏ СЃ РѕС€РёР±РєРѕР№
                 if (!$ok_1 || !$ok_2) {
                     $this->db()->rollback();
                     $request_list = array();
@@ -502,11 +502,11 @@ class ReservesPayout extends BaseModel
                     throw new ReservesPayoutException(ReservesPayoutException::INS_FAIL);
                 }
                 
-                //Если все ок - сохраняем в историю
+                //Р•СЃР»Рё РІСЃРµ РѕРє - СЃРѕС…СЂР°РЅСЏРµРј РІ РёСЃС‚РѕСЂРёСЋ
                 $this->saveToHistory($reserve_id);
             }
             
-            //На всякий пожарный проверяем наличие списка задач на выплату
+            //РќР° РІСЃСЏРєРёР№ РїРѕР¶Р°СЂРЅС‹Р№ РїСЂРѕРІРµСЂСЏРµРј РЅР°Р»РёС‡РёРµ СЃРїРёСЃРєР° Р·Р°РґР°С‡ РЅР° РІС‹РїР»Р°С‚Сѓ
             if (empty($request_list)) {
                 throw new ReservesPayoutException(ReservesPayoutException::RQST_EMPTY);
             }
@@ -516,17 +516,17 @@ class ReservesPayout extends BaseModel
             return ReservesModel::SUBSTATUS_ERR;
         }        
         
-        //Если это локальный сервер то всегда успешная выплата
-        //но! при этом не меняется статус у задач из reserves_payout
+        //Р•СЃР»Рё СЌС‚Рѕ Р»РѕРєР°Р»СЊРЅС‹Р№ СЃРµСЂРІРµСЂ С‚Рѕ РІСЃРµРіРґР° СѓСЃРїРµС€РЅР°СЏ РІС‹РїР»Р°С‚Р°
+        //РЅРѕ! РїСЂРё СЌС‚РѕРј РЅРµ РјРµРЅСЏРµС‚СЃСЏ СЃС‚Р°С‚СѓСЃ Сѓ Р·Р°РґР°С‡ РёР· reserves_payout
         if (!is_release()) {
             return ReservesModel::SUBSTATUS_PAYED;
         }
         
-        //Иначе ставим задачу в очередь на выплату
+        //РРЅР°С‡Рµ СЃС‚Р°РІРёРј Р·Р°РґР°С‡Сѓ РІ РѕС‡РµСЂРµРґСЊ РЅР° РІС‹РїР»Р°С‚Сѓ
         $this->db()->query("SELECT pgq.insert_event('reserves', 'payout', ?)", 
                 http_build_query(array('reserve_id' => $reserve_id)));       
         
-        //Возвращаем статус в ожидании
+        //Р’РѕР·РІСЂР°С‰Р°РµРј СЃС‚Р°С‚СѓСЃ РІ РѕР¶РёРґР°РЅРёРё
         return ReservesModel::SUBSTATUS_INPROGRESS;
     }
     
@@ -536,7 +536,7 @@ class ReservesPayout extends BaseModel
 
 
     /**
-     * Выплата через реестр
+     * Р’С‹РїР»Р°С‚Р° С‡РµСЂРµР· СЂРµРµСЃС‚СЂ
      * 
      * @param type $reserveInstance
      * @param type $type
@@ -581,26 +581,26 @@ class ReservesPayout extends BaseModel
     
     
     /**
-     * Запрос выплаты у сервиса
+     * Р—Р°РїСЂРѕСЃ РІС‹РїР»Р°С‚С‹ Сѓ СЃРµСЂРІРёСЃР°
      * 
      * @param type $reserve_id
      */
     public function doPayout($reserve_id)
     {
-         //Если не существует самого резерва
+         //Р•СЃР»Рё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ СЃР°РјРѕРіРѕ СЂРµР·РµСЂРІР°
         $reserveInstance = ReservesModelFactory::getInstanceById($reserve_id);
         if (!$reserveInstance) {
             throw new ReservesPayoutQueueException(
                     ReservesPayoutQueueException::RESERVE_NOTFOUND);       
         }
         
-        //Если статус БС неподходит
+        //Р•СЃР»Рё СЃС‚Р°С‚СѓСЃ Р‘РЎ РЅРµРїРѕРґС…РѕРґРёС‚
         if (!$reserveInstance->isAllowPayoutForQueue()) {
             throw new ReservesPayoutQueueException(
                     ReservesPayoutQueueException::RESERVE_STATUS_FAIL);            
         }
 
-        //Задачи на выплату
+        //Р—Р°РґР°С‡Рё РЅР° РІС‹РїР»Р°С‚Сѓ
         $request_list = $this->getPayouts($reserve_id);
         
         if (!$request_list) {
@@ -625,9 +625,9 @@ class ReservesPayout extends BaseModel
         }
 
         
-        //Оказывается все уже выплачено
+        //РћРєР°Р·С‹РІР°РµС‚СЃСЏ РІСЃРµ СѓР¶Рµ РІС‹РїР»Р°С‡РµРЅРѕ
         if ($is_done) {
-            //Попытаемся сменить статус
+            //РџРѕРїС‹С‚Р°РµРјСЃСЏ СЃРјРµРЅРёС‚СЊ СЃС‚Р°С‚СѓСЃ
             $reserveInstance->changePayStatus($substatus);
             throw new ReservesPayoutQueueException(
                     ReservesPayoutQueueException::PAYED);             
@@ -637,7 +637,7 @@ class ReservesPayout extends BaseModel
         $type = null;
         $reqv = array();
         
-        //Получаем реквизиты из слепка
+        //РџРѕР»СѓС‡Р°РµРј СЂРµРєРІРёР·РёС‚С‹ РёР· СЃР»РµРїРєР°
         $data_reqv = $this->getPayoutReqv($reserve_id);
         if ($data_reqv) {
             $reqv = mb_unserialize($data_reqv['fields']);
@@ -646,28 +646,28 @@ class ReservesPayout extends BaseModel
             }
         }
 
-        //Есть ли реквизиты для выплаты
+        //Р•СЃС‚СЊ Р»Рё СЂРµРєРІРёР·РёС‚С‹ РґР»СЏ РІС‹РїР»Р°С‚С‹
         if (empty($reqv)) {
             throw new ReservesPayoutException(
                     ReservesPayoutException::REQV_INVALID);
         }          
         
         
-        //Вычисляем тайм аут
+        //Р’С‹С‡РёСЃР»СЏРµРј С‚Р°Р№Рј Р°СѓС‚
         $last = (empty($_work_request['last']))?$_work_request['date']:$_work_request['last'];
         $is_timeout = $this->isTimeout($_work_request['cnt'], $last);
         
         if (!$is_timeout) {
-            //Таймаут еще не вышел нужно поставить в очередь
+            //РўР°Р№РјР°СѓС‚ РµС‰Рµ РЅРµ РІС‹С€РµР» РЅСѓР¶РЅРѕ РїРѕСЃС‚Р°РІРёС‚СЊ РІ РѕС‡РµСЂРµРґСЊ
             return false;
         } elseif ($is_timeout === -1) {
-            //Превышен лимит прерываем цикл для этого запроса
+            //РџСЂРµРІС‹С€РµРЅ Р»РёРјРёС‚ РїСЂРµСЂС‹РІР°РµРј С†РёРєР» РґР»СЏ СЌС‚РѕРіРѕ Р·Р°РїСЂРѕСЃР°
             throw new ReservesPayoutQueueException(
                     ReservesPayoutQueueException::REQUEST_LIMIT);
         }
         
 
-        //Формирование запроса к API сервиса и обработка ответа
+        //Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ Р·Р°РїСЂРѕСЃР° Рє API СЃРµСЂРІРёСЃР° Рё РѕР±СЂР°Р±РѕС‚РєР° РѕС‚РІРµС‚Р°
         try {
         
             $depositionRequest = new DepositionRequest();
@@ -686,13 +686,13 @@ class ReservesPayout extends BaseModel
                 $depositionRequest->setClientOrderId($request['id']);
             
                 
-                //Заполняем общие параметры для платежей
-                //Например реквизиты юзера
+                //Р—Р°РїРѕР»РЅСЏРµРј РѕР±С‰РёРµ РїР°СЂР°РјРµС‚СЂС‹ РґР»СЏ РїР»Р°С‚РµР¶РµР№
+                //РќР°РїСЂРёРјРµСЂ СЂРµРєРІРёР·РёС‚С‹ СЋР·РµСЂР°
                 switch($type) {
                     
                    case ReservesPayoutPopup::PAYMENT_TYPE_RS:
                        
-                        //Реквизиты юзера
+                        //Р РµРєРІРёР·РёС‚С‹ СЋР·РµСЂР°
                         $fio = explode(' ', $reqv['fio']);
                         $depositionRequest->setTmpFirstName(@$fio[1]);
                         $depositionRequest->setTmpMiddleName(@$fio[2]);
@@ -701,7 +701,7 @@ class ReservesPayout extends BaseModel
                         
                    case ReservesPayoutPopup::PAYMENT_TYPE_CARD:   
                         
-                        //Реквизиты юзера
+                        //Р РµРєРІРёР·РёС‚С‹ СЋР·РµСЂР°
                         $fio = explode(' ', $reqv['fio']);
                         $depositionRequest->setPdrFirstName(@$fio[1]);
                         $depositionRequest->setPdrMiddleName(@$fio[2]);
@@ -723,12 +723,12 @@ class ReservesPayout extends BaseModel
                         $depositionRequest->setPdrDocIssuedBy(@$reqv['idcard_by']);
                         
                         $country_iso = @$reqv['country_iso'];
-                        //@todo: если не удалось выявить код то Россия Матушка :D !
+                        //@todo: РµСЃР»Рё РЅРµ СѓРґР°Р»РѕСЃСЊ РІС‹СЏРІРёС‚СЊ РєРѕРґ С‚Рѕ Р РѕСЃСЃРёСЏ РњР°С‚СѓС€РєР° :D !
                         $depositionRequest->setPdrCountry($country_iso?$country_iso:643);
                         
                         
-                        //парсим адрес по формату: 
-                        //127287, Россия, г. Москва, ул. 2-я Хуторская д 38А стр.9
+                        //РїР°СЂСЃРёРј Р°РґСЂРµСЃ РїРѕ С„РѕСЂРјР°С‚Сѓ: 
+                        //127287, Р РѕСЃСЃРёСЏ, Рі. РњРѕСЃРєРІР°, СѓР». 2-СЏ РҐСѓС‚РѕСЂСЃРєР°СЏ Рґ 38Рђ СЃС‚СЂ.9
                         $info = explode(',', @$reqv['address']);
                         
                         if (isset($reqv['index']) && !empty($reqv['index'])) {
@@ -758,7 +758,7 @@ class ReservesPayout extends BaseModel
                 }
                 
                 
-                //Специфика для каждого платежа в отдельности
+                //РЎРїРµС†РёС„РёРєР° РґР»СЏ РєР°Р¶РґРѕРіРѕ РїР»Р°С‚РµР¶Р° РІ РѕС‚РґРµР»СЊРЅРѕСЃС‚Рё
                 switch($type) {
 
                     case ReservesPayoutPopup::PAYMENT_TYPE_YA:
@@ -787,7 +787,7 @@ class ReservesPayout extends BaseModel
                         $depositionRequest->setBankKPP(trim(@$reqv['bank_kpp']));
                         $depositionRequest->setBankINN(trim(@$reqv['bank_inn']));
                         
-                        /*@todo: ЯД меняет формат на ходу, тут устаревший
+                        /*@todo: РЇР” РјРµРЅСЏРµС‚ С„РѕСЂРјР°С‚ РЅР° С…РѕРґСѓ, С‚СѓС‚ СѓСЃС‚Р°СЂРµРІС€РёР№
                         if (isset($reqv['bank_assignment']) && 
                            !empty($reqv['bank_assignment'])) {
                             $depositionRequest->setDepositAccount(@$reqv['bank_rs']);
@@ -811,7 +811,7 @@ class ReservesPayout extends BaseModel
                 
                 
                 $current_substatus = ReservesModel::SUBSTATUS_PAYED;
-                //Запрос к API
+                //Р—Р°РїСЂРѕСЃ Рє API
                 $result = $this->getApiFacade()->testDeposition($depositionRequest);
                 if (!$result->isSuccess() && $result->getError() != 26) {
                     $current_substatus = ReservesModel::SUBSTATUS_ERR;
@@ -838,7 +838,7 @@ class ReservesPayout extends BaseModel
                         'id = ?i', 
                         $result->getClientOrderId());
                 
-                //Не удалось обновить значит ошибка
+                //РќРµ СѓРґР°Р»РѕСЃСЊ РѕР±РЅРѕРІРёС‚СЊ Р·РЅР°С‡РёС‚ РѕС€РёР±РєР°
                 if (!$is_done) {
                     $current_substatus = ReservesModel::SUBSTATUS_ERR;
                 }
@@ -863,7 +863,7 @@ class ReservesPayout extends BaseModel
                 }
             }
             
-            //Сохраняем в историю слепок с последнего ответа
+            //РЎРѕС…СЂР°РЅСЏРµРј РІ РёСЃС‚РѕСЂРёСЋ СЃР»РµРїРѕРє СЃ РїРѕСЃР»РµРґРЅРµРіРѕ РѕС‚РІРµС‚Р°
             $this->saveToHistory($reserve_id);
             
         } catch (Exception $e) {
@@ -871,17 +871,17 @@ class ReservesPayout extends BaseModel
             $substatus = ReservesModel::SUBSTATUS_ERR;            
         }        
         
-        //Нет смысла менять статус так как система уже в таком же статусе
-        //например долгий процесс ожидания        
+        //РќРµС‚ СЃРјС‹СЃР»Р° РјРµРЅСЏС‚СЊ СЃС‚Р°С‚СѓСЃ С‚Р°Рє РєР°Рє СЃРёСЃС‚РµРјР° СѓР¶Рµ РІ С‚Р°РєРѕРј Р¶Рµ СЃС‚Р°С‚СѓСЃРµ
+        //РЅР°РїСЂРёРјРµСЂ РґРѕР»РіРёР№ РїСЂРѕС†РµСЃСЃ РѕР¶РёРґР°РЅРёСЏ        
         if ($reserveInstance->getStatusPay() != $substatus) {
-            //Не удалост сменить статус
+            //РќРµ СѓРґР°Р»РѕСЃС‚ СЃРјРµРЅРёС‚СЊ СЃС‚Р°С‚СѓСЃ
             if (!$reserveInstance->changePayStatus($substatus)) {
                 throw new ReservesPayoutQueueException(
                         ReservesPayoutQueueException::CANT_CHANGE_SUBSTATUS, true); 
             }
         }
         
-        //Ошибки при которых ставить в очередь нет смысла
+        //РћС€РёР±РєРё РїСЂРё РєРѕС‚РѕСЂС‹С… СЃС‚Р°РІРёС‚СЊ РІ РѕС‡РµСЂРµРґСЊ РЅРµС‚ СЃРјС‹СЃР»Р°
         if ($reserveInstance->isStatusPayError()) {
             throw new ReservesPayoutQueueException(
                     ReservesPayoutQueueException::API_CRITICAL_FAIL, $result->getError()); 
@@ -895,8 +895,8 @@ class ReservesPayout extends BaseModel
 
 
     /**
-     * Рекомендуется следующий режим повтора: первый повтор через 1 минуту, 
-     * следующие три с промежутком в 5 минут, далее не чаще чем раз в 30 минут.
+     * Р РµРєРѕРјРµРЅРґСѓРµС‚СЃСЏ СЃР»РµРґСѓСЋС‰РёР№ СЂРµР¶РёРј РїРѕРІС‚РѕСЂР°: РїРµСЂРІС‹Р№ РїРѕРІС‚РѕСЂ С‡РµСЂРµР· 1 РјРёРЅСѓС‚Сѓ, 
+     * СЃР»РµРґСѓСЋС‰РёРµ С‚СЂРё СЃ РїСЂРѕРјРµР¶СѓС‚РєРѕРј РІ 5 РјРёРЅСѓС‚, РґР°Р»РµРµ РЅРµ С‡Р°С‰Рµ С‡РµРј СЂР°Р· РІ 30 РјРёРЅСѓС‚.
      */
     private function isTimeout($cnt, $timeString)
     {
@@ -914,9 +914,9 @@ class ReservesPayout extends BaseModel
 
 
     /**
-     * @deprecated Синхронная выплата, сейчас используется очередь
+     * @deprecated РЎРёРЅС…СЂРѕРЅРЅР°СЏ РІС‹РїР»Р°С‚Р°, СЃРµР№С‡Р°СЃ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РѕС‡РµСЂРµРґСЊ
      * 
-     * Выплата через сервис
+     * Р’С‹РїР»Р°С‚Р° С‡РµСЂРµР· СЃРµСЂРІРёСЃ
      * 
      * @param type $reserveInstance
      * @param type $type
@@ -930,7 +930,7 @@ class ReservesPayout extends BaseModel
         $sum = $reserveInstance->getPayoutSum();
         
         
-        //Подготовка данных/реквизитов для последующей работы с API
+        //РџРѕРґРіРѕС‚РѕРІРєР° РґР°РЅРЅС‹С…/СЂРµРєРІРёР·РёС‚РѕРІ РґР»СЏ РїРѕСЃР»РµРґСѓСЋС‰РµР№ СЂР°Р±РѕС‚С‹ СЃ API
         try {
             
             if ($sum <= 0) {
@@ -942,10 +942,10 @@ class ReservesPayout extends BaseModel
             $is_allow_repeated = $this->isAllowRepeatedRequest($request_list);
             
             if ($is_allow_repeated) {
-                //Это повторный запрос на выплату 
-                //нельзя менять реквизиты!
+                //Р­С‚Рѕ РїРѕРІС‚РѕСЂРЅС‹Р№ Р·Р°РїСЂРѕСЃ РЅР° РІС‹РїР»Р°С‚Сѓ 
+                //РЅРµР»СЊР·СЏ РјРµРЅСЏС‚СЊ СЂРµРєРІРёР·РёС‚С‹!
                 
-                //Если нельзя обновлять реквизиты то читаем из слепка
+                //Р•СЃР»Рё РЅРµР»СЊР·СЏ РѕР±РЅРѕРІР»СЏС‚СЊ СЂРµРєРІРёР·РёС‚С‹ С‚Рѕ С‡РёС‚Р°РµРј РёР· СЃР»РµРїРєР°
                 $data_reqv = $this->getPayoutReqv($reserve_id);
                 if ($data_reqv) {
                     $reqv = mb_unserialize($data_reqv['fields']);
@@ -961,8 +961,8 @@ class ReservesPayout extends BaseModel
                 
                 $is_update = false;
                 
-                //Если нет мобильного у существующих реквизитов 
-                //то пробует получить из обычного телефона
+                //Р•СЃР»Рё РЅРµС‚ РјРѕР±РёР»СЊРЅРѕРіРѕ Сѓ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёС… СЂРµРєРІРёР·РёС‚РѕРІ 
+                //С‚Рѕ РїСЂРѕР±СѓРµС‚ РїРѕР»СѓС‡РёС‚СЊ РёР· РѕР±С‹С‡РЅРѕРіРѕ С‚РµР»РµС„РѕРЅР°
                 if (!isset($reqv['mob_phone']) || empty($reqv['mob_phone'])) {
                     
                     $is_update = true;
@@ -975,7 +975,7 @@ class ReservesPayout extends BaseModel
                 }
                 
 
-                //Если выплата на карту то получаем и сохраняем ее синоним
+                //Р•СЃР»Рё РІС‹РїР»Р°С‚Р° РЅР° РєР°СЂС‚Сѓ С‚Рѕ РїРѕР»СѓС‡Р°РµРј Рё СЃРѕС…СЂР°РЅСЏРµРј РµРµ СЃРёРЅРѕРЅРёРј
                 if ($type == ReservesPayoutPopup::PAYMENT_TYPE_CARD && 
                     !isset($reqv['skr_destinationCardSynonim'])) {
                     
@@ -990,15 +990,15 @@ class ReservesPayout extends BaseModel
                 }
                 
                 
-                //Обновляем реквизиты
+                //РћР±РЅРѕРІР»СЏРµРј СЂРµРєРІРёР·РёС‚С‹
                 if ($is_update) {
                     $this->updateReqv($reserve_id, $reqv);
-                    //Фиксируем остояние в истории
+                    //Р¤РёРєСЃРёСЂСѓРµРј РѕСЃС‚РѕСЏРЅРёРµ РІ РёСЃС‚РѕСЂРёРё
                     $this->saveToHistory($reserve_id);                    
                 }
                 
             } else {
-                //Иначе сознаем новый запрос на выплату
+                //РРЅР°С‡Рµ СЃРѕР·РЅР°РµРј РЅРѕРІС‹Р№ Р·Р°РїСЂРѕСЃ РЅР° РІС‹РїР»Р°С‚Сѓ
                 
                 $reqv = $this->getUserReqvs($uid, $type, $sum);
                 
@@ -1009,7 +1009,7 @@ class ReservesPayout extends BaseModel
                 }
                 
                 
-                //Если выплата на карту то получаем и сохраняем ее синоним
+                //Р•СЃР»Рё РІС‹РїР»Р°С‚Р° РЅР° РєР°СЂС‚Сѓ С‚Рѕ РїРѕР»СѓС‡Р°РµРј Рё СЃРѕС…СЂР°РЅСЏРµРј РµРµ СЃРёРЅРѕРЅРёРј
                 if ($type == ReservesPayoutPopup::PAYMENT_TYPE_CARD) {
                     
                     $reqv['skr_destinationCardSynonim'] = $this->getDestinationCardSynonim($reqv['el_ccard'], $sum);
@@ -1020,7 +1020,7 @@ class ReservesPayout extends BaseModel
                     }
                 }
                 
-                //Создаем запросы на выплату если нужно дробим сумму
+                //РЎРѕР·РґР°РµРј Р·Р°РїСЂРѕСЃС‹ РЅР° РІС‹РїР»Р°С‚Сѓ РµСЃР»Рё РЅСѓР¶РЅРѕ РґСЂРѕР±РёРј СЃСѓРјРјСѓ
                 $request_list = $this->calcRequestList($reserve_id, $sum);
                 
                 $this->db()->start();
@@ -1035,8 +1035,8 @@ class ReservesPayout extends BaseModel
                     }
                 }  
                 
-                //Если при добавлении списка задач или реквизитов возникла ошибка 
-                //то откатываем назад транзакцию и валимся с ошибкой
+                //Р•СЃР»Рё РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё СЃРїРёСЃРєР° Р·Р°РґР°С‡ РёР»Рё СЂРµРєРІРёР·РёС‚РѕРІ РІРѕР·РЅРёРєР»Р° РѕС€РёР±РєР° 
+                //С‚Рѕ РѕС‚РєР°С‚С‹РІР°РµРј РЅР°Р·Р°Рґ С‚СЂР°РЅР·Р°РєС†РёСЋ Рё РІР°Р»РёРјСЃСЏ СЃ РѕС€РёР±РєРѕР№
                 if (!$ok_1 || !$ok_2) {
                     $this->db()->rollback();
                     $request_list = array();
@@ -1048,11 +1048,11 @@ class ReservesPayout extends BaseModel
                     throw new ReservesPayoutException(ReservesPayoutException::INS_FAIL);
                 }
                 
-                //Если все ок - сохраняем в историю
+                //Р•СЃР»Рё РІСЃРµ РѕРє - СЃРѕС…СЂР°РЅСЏРµРј РІ РёСЃС‚РѕСЂРёСЋ
                 $this->saveToHistory($reserve_id);
             }
             
-            //На всякий пожарный проверяем наличие списка задач на выплату
+            //РќР° РІСЃСЏРєРёР№ РїРѕР¶Р°СЂРЅС‹Р№ РїСЂРѕРІРµСЂСЏРµРј РЅР°Р»РёС‡РёРµ СЃРїРёСЃРєР° Р·Р°РґР°С‡ РЅР° РІС‹РїР»Р°С‚Сѓ
             if (empty($request_list)) {
                 throw new ReservesPayoutException(ReservesPayoutException::RQST_EMPTY);
             }
@@ -1066,14 +1066,14 @@ class ReservesPayout extends BaseModel
         
         $substatus = ReservesModel::SUBSTATUS_PAYED;
         
-        //Если это не боевой сервер то всегда успешная выплата
-        //но! при этом не меняется статус у задач из reserves_payout
+        //Р•СЃР»Рё СЌС‚Рѕ РЅРµ Р±РѕРµРІРѕР№ СЃРµСЂРІРµСЂ С‚Рѕ РІСЃРµРіРґР° СѓСЃРїРµС€РЅР°СЏ РІС‹РїР»Р°С‚Р°
+        //РЅРѕ! РїСЂРё СЌС‚РѕРј РЅРµ РјРµРЅСЏРµС‚СЃСЏ СЃС‚Р°С‚СѓСЃ Сѓ Р·Р°РґР°С‡ РёР· reserves_payout
         if (!is_release()) {
             return $substatus;
         }
         
         
-        //Формирование запроса к API сервиса и обработка ответа
+        //Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ Р·Р°РїСЂРѕСЃР° Рє API СЃРµСЂРІРёСЃР° Рё РѕР±СЂР°Р±РѕС‚РєР° РѕС‚РІРµС‚Р°
         try {
         
             $depositionRequest = new DepositionRequest();
@@ -1092,13 +1092,13 @@ class ReservesPayout extends BaseModel
                 $depositionRequest->setClientOrderId($request['id']);
             
                 
-                //Заполняем общие параметры для платежей
-                //Например реквизиты юзера
+                //Р—Р°РїРѕР»РЅСЏРµРј РѕР±С‰РёРµ РїР°СЂР°РјРµС‚СЂС‹ РґР»СЏ РїР»Р°С‚РµР¶РµР№
+                //РќР°РїСЂРёРјРµСЂ СЂРµРєРІРёР·РёС‚С‹ СЋР·РµСЂР°
                 switch($type) {
                     
                    case ReservesPayoutPopup::PAYMENT_TYPE_RS:
                        
-                        //Реквизиты юзера
+                        //Р РµРєРІРёР·РёС‚С‹ СЋР·РµСЂР°
                         $fio = explode(' ', $reqv['fio']);
                         $depositionRequest->setTmpFirstName(@$fio[1]);
                         $depositionRequest->setTmpMiddleName(@$fio[2]);
@@ -1107,7 +1107,7 @@ class ReservesPayout extends BaseModel
                         
                    case ReservesPayoutPopup::PAYMENT_TYPE_CARD:   
                         
-                        //Реквизиты юзера
+                        //Р РµРєРІРёР·РёС‚С‹ СЋР·РµСЂР°
                         $fio = explode(' ', $reqv['fio']);
                         $depositionRequest->setPdrFirstName(@$fio[1]);
                         $depositionRequest->setPdrMiddleName(@$fio[2]);
@@ -1129,12 +1129,12 @@ class ReservesPayout extends BaseModel
                         $depositionRequest->setPdrDocIssuedBy(@$reqv['idcard_by']);
                         
                         $country_iso = @$reqv['country_iso'];
-                        //@todo: если не удалось выявить код то Россия Матушка :D !
+                        //@todo: РµСЃР»Рё РЅРµ СѓРґР°Р»РѕСЃСЊ РІС‹СЏРІРёС‚СЊ РєРѕРґ С‚Рѕ Р РѕСЃСЃРёСЏ РњР°С‚СѓС€РєР° :D !
                         $depositionRequest->setPdrCountry($country_iso?$country_iso:643);
                         
                         
-                        //парсим адрес по формату: 
-                        //127287, Россия, г. Москва, ул. 2-я Хуторская д 38А стр.9
+                        //РїР°СЂСЃРёРј Р°РґСЂРµСЃ РїРѕ С„РѕСЂРјР°С‚Сѓ: 
+                        //127287, Р РѕСЃСЃРёСЏ, Рі. РњРѕСЃРєРІР°, СѓР». 2-СЏ РҐСѓС‚РѕСЂСЃРєР°СЏ Рґ 38Рђ СЃС‚СЂ.9
                         $info = explode(',', @$reqv['address']);
                         
                         if (isset($reqv['index']) && !empty($reqv['index'])) {
@@ -1164,7 +1164,7 @@ class ReservesPayout extends BaseModel
                 }
                 
                 
-                //Специфика для каждого платежа в отдельности
+                //РЎРїРµС†РёС„РёРєР° РґР»СЏ РєР°Р¶РґРѕРіРѕ РїР»Р°С‚РµР¶Р° РІ РѕС‚РґРµР»СЊРЅРѕСЃС‚Рё
                 switch($type) {
 
                     case ReservesPayoutPopup::PAYMENT_TYPE_YA:
@@ -1193,7 +1193,7 @@ class ReservesPayout extends BaseModel
                         $depositionRequest->setBankKPP(trim(@$reqv['bank_kpp']));
                         $depositionRequest->setBankINN(trim(@$reqv['bank_inn']));
                         
-                        /*@todo: ЯД меняет формат на ходу, тут устаревший
+                        /*@todo: РЇР” РјРµРЅСЏРµС‚ С„РѕСЂРјР°С‚ РЅР° С…РѕРґСѓ, С‚СѓС‚ СѓСЃС‚Р°СЂРµРІС€РёР№
                         if (isset($reqv['bank_assignment']) && 
                            !empty($reqv['bank_assignment'])) {
                             $depositionRequest->setDepositAccount(@$reqv['bank_rs']);
@@ -1217,7 +1217,7 @@ class ReservesPayout extends BaseModel
                 
                 
                 $current_substatus = ReservesModel::SUBSTATUS_PAYED;
-                //Запрос к API
+                //Р—Р°РїСЂРѕСЃ Рє API
                 $result = $this->getApiFacade()->testDeposition($depositionRequest);
                 if (!$result->isSuccess() && $result->getError() != 26) {
                     $current_substatus = ReservesModel::SUBSTATUS_ERR;
@@ -1263,7 +1263,7 @@ class ReservesPayout extends BaseModel
                 }
             }
             
-            //Сохраняем в историю слепок с последнего ответа
+            //РЎРѕС…СЂР°РЅСЏРµРј РІ РёСЃС‚РѕСЂРёСЋ СЃР»РµРїРѕРє СЃ РїРѕСЃР»РµРґРЅРµРіРѕ РѕС‚РІРµС‚Р°
             $this->saveToHistory($reserve_id);
             
         } catch (Exception $e) {
@@ -1279,14 +1279,14 @@ class ReservesPayout extends BaseModel
     
     
     /**
-     * Удалить ошибочные и необработанные запросы на выплату по резерву
+     * РЈРґР°Р»РёС‚СЊ РѕС€РёР±РѕС‡РЅС‹Рµ Рё РЅРµРѕР±СЂР°Р±РѕС‚Р°РЅРЅС‹Рµ Р·Р°РїСЂРѕСЃС‹ РЅР° РІС‹РїР»Р°С‚Сѓ РїРѕ СЂРµР·РµСЂРІСѓ
      * 
      * @param type $reserve_id
      * @return boolean
      */
     public function clearInvalidRequest($reserve_id)
     {
-        //Проверка нет ли валидных запросов по этому резерву
+        //РџСЂРѕРІРµСЂРєР° РЅРµС‚ Р»Рё РІР°Р»РёРґРЅС‹С… Р·Р°РїСЂРѕСЃРѕРІ РїРѕ СЌС‚РѕРјСѓ СЂРµР·РµСЂРІСѓ
         $is_exist = $this->db()->val("
             SELECT 1 
             FROM {$this->TABLE} 
@@ -1298,12 +1298,12 @@ class ReservesPayout extends BaseModel
             return false;
         }            
 
-        //Удаляем необработанные и ошибочные запросы
+        //РЈРґР°Р»СЏРµРј РЅРµРѕР±СЂР°Р±РѕС‚Р°РЅРЅС‹Рµ Рё РѕС€РёР±РѕС‡РЅС‹Рµ Р·Р°РїСЂРѕСЃС‹
         $this->db()->query("
             DELETE FROM {$this->TABLE} 
             WHERE reserve_id = ?i", $reserve_id);
         
-        //Удаляем реквизиты
+        //РЈРґР°Р»СЏРµРј СЂРµРєРІРёР·РёС‚С‹
         $this->db()->query("
             DELETE FROM {$this->TABLE_REQV} 
             WHERE reserve_id = ?i", 
@@ -1315,7 +1315,7 @@ class ReservesPayout extends BaseModel
     
 
     /**
-     * Добавить слепок реквизитов
+     * Р”РѕР±Р°РІРёС‚СЊ СЃР»РµРїРѕРє СЂРµРєРІРёР·РёС‚РѕРІ
      * 
      * @param type $reserve_id
      * @param type $type
@@ -1339,7 +1339,7 @@ class ReservesPayout extends BaseModel
     
     
      /**
-     * Обновить слепок реквизитов
+     * РћР±РЅРѕРІРёС‚СЊ СЃР»РµРїРѕРє СЂРµРєРІРёР·РёС‚РѕРІ
      * 
      * @param type $reserve_id
      * @param type $type
@@ -1357,7 +1357,7 @@ class ReservesPayout extends BaseModel
     
     
     /**
-     * Получить синоним карточки
+     * РџРѕР»СѓС‡РёС‚СЊ СЃРёРЅРѕРЅРёРј РєР°СЂС‚РѕС‡РєРё
      * 
      * @param type $card
      * @param type $sum
@@ -1374,7 +1374,7 @@ class ReservesPayout extends BaseModel
                     'skr_successUrl' => ''
                 ));
         
-        //@todo: непонятно почему я должен указывать расположение сертификата поумолчанию, например crul его видит
+        //@todo: РЅРµРїРѕРЅСЏС‚РЅРѕ РїРѕС‡РµРјСѓ СЏ РґРѕР»Р¶РµРЅ СѓРєР°Р·С‹РІР°С‚СЊ СЂР°СЃРїРѕР»РѕР¶РµРЅРёРµ СЃРµСЂС‚РёС„РёРєР°С‚Р° РїРѕСѓРјРѕР»С‡Р°РЅРёСЋ, РЅР°РїСЂРёРјРµСЂ crul РµРіРѕ РІРёРґРёС‚
         $request->setConfig(array(
             //'ssl_verify_peer'   => FALSE,
             //'ssl_verify_host'   => FALSE
@@ -1392,8 +1392,8 @@ class ReservesPayout extends BaseModel
     
     
     /**
-     * Проверить статусы списка задач на предмет
-     * возможности повторного запроса с теми же реквизитами
+     * РџСЂРѕРІРµСЂРёС‚СЊ СЃС‚Р°С‚СѓСЃС‹ СЃРїРёСЃРєР° Р·Р°РґР°С‡ РЅР° РїСЂРµРґРјРµС‚
+     * РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РїРѕРІС‚РѕСЂРЅРѕРіРѕ Р·Р°РїСЂРѕСЃР° СЃ С‚РµРјРё Р¶Рµ СЂРµРєРІРёР·РёС‚Р°РјРё
      * 
      * @param type $request_list
      * @return boolean
@@ -1422,8 +1422,8 @@ class ReservesPayout extends BaseModel
     
     
     /**
-     * Разделить сумму если возможно 
-     * на несколько частей по max_sum
+     * Р Р°Р·РґРµР»РёС‚СЊ СЃСѓРјРјСѓ РµСЃР»Рё РІРѕР·РјРѕР¶РЅРѕ 
+     * РЅР° РЅРµСЃРєРѕР»СЊРєРѕ С‡Р°СЃС‚РµР№ РїРѕ max_sum
      * 
      * @param type $reserve_id
      * @param type $sum
@@ -1458,7 +1458,7 @@ class ReservesPayout extends BaseModel
     
 
     /**
-     * Создаем синглтон
+     * РЎРѕР·РґР°РµРј СЃРёРЅРіР»С‚РѕРЅ
      * @return object
      */
     public static function getInstance() 
@@ -1475,16 +1475,16 @@ class ReservesPayout extends BaseModel
     
     
     /**
-     * @deprecated Не использовать. Выплата делается в очереди PGQ там же и повторяется
+     * @deprecated РќРµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ. Р’С‹РїР»Р°С‚Р° РґРµР»Р°РµС‚СЃСЏ РІ РѕС‡РµСЂРµРґРё PGQ С‚Р°Рј Р¶Рµ Рё РїРѕРІС‚РѕСЂСЏРµС‚СЃСЏ
      * 
-     * Крон переодического опроса API сервиса выплат
-     * по сделкам в статусе ожидания выплаты
+     * РљСЂРѕРЅ РїРµСЂРµРѕРґРёС‡РµСЃРєРѕРіРѕ РѕРїСЂРѕСЃР° API СЃРµСЂРІРёСЃР° РІС‹РїР»Р°С‚
+     * РїРѕ СЃРґРµР»РєР°Рј РІ СЃС‚Р°С‚СѓСЃРµ РѕР¶РёРґР°РЅРёСЏ РІС‹РїР»Р°С‚С‹
      * 
-     * @todo: документация API рекомендует опрашивать с интервалом мах 30 минут
-     * @todo: возможно не лучшее место для этого?
+     * @todo: РґРѕРєСѓРјРµРЅС‚Р°С†РёСЏ API СЂРµРєРѕРјРµРЅРґСѓРµС‚ РѕРїСЂР°С€РёРІР°С‚СЊ СЃ РёРЅС‚РµСЂРІР°Р»РѕРј РјР°С… 30 РјРёРЅСѓС‚
+     * @todo: РІРѕР·РјРѕР¶РЅРѕ РЅРµ Р»СѓС‡С€РµРµ РјРµСЃС‚Рѕ РґР»СЏ СЌС‚РѕРіРѕ?
      * 
-     * @param type $limit - количество сделок обрабатываемых за запуск
-     * @return int - количество успешно обработанных сделок
+     * @param type $limit - РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРґРµР»РѕРє РѕР±СЂР°Р±Р°С‚С‹РІР°РµРјС‹С… Р·Р° Р·Р°РїСѓСЃРє
+     * @return int - РєРѕР»РёС‡РµСЃС‚РІРѕ СѓСЃРїРµС€РЅРѕ РѕР±СЂР°Р±РѕС‚Р°РЅРЅС‹С… СЃРґРµР»РѕРє
      */
     public function cron($limit = 10)
     {

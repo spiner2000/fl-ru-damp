@@ -9,7 +9,7 @@ session_start();
 $stretch_page = true;
 $showMainDiv  = true;
 
-// Формируем JS внизу страницы
+// Р¤РѕСЂРјРёСЂСѓРµРј JS РІРЅРёР·Сѓ СЃС‚СЂР°РЅРёС†С‹
 define('JS_BOTTOM', true);
 
 $css_file = array('/css/nav.css', '/css/block/b-tabs/b-tabs.css');
@@ -27,8 +27,8 @@ $footer = "../footer.html";
 $module = new CModule('tu');
 $module->setBasePath(dirname(__FILE__));
 $controller = new TServiceOrderController('t-service-order', $module);
-$controller->init(); // инициализация контролера
+$controller->init(); // РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєРѕРЅС‚СЂРѕР»РµСЂР°
 $controller->run(__paramInit('string', 'action', 'action', 'index'));
 
-// отрисовка страницы
+// РѕС‚СЂРёСЃРѕРІРєР° СЃС‚СЂР°РЅРёС†С‹
 include ("../template3.php");

@@ -2,23 +2,23 @@
 /**
  * Class TServiceOrderBreadcrumbs
  *
- * Виджет - Блок хлебных крошек
+ * Р’РёРґР¶РµС‚ - Р‘Р»РѕРє С…Р»РµР±РЅС‹С… РєСЂРѕС€РµРє
  */
 class TServiceOrderBreadcrumbs extends CWidget 
 {
-    const ORDER_TEXT = 'Заказ №%d %s(%s)';
-    const TEXT_TSERVICE = '<a class="b-layout__link_no-decorat" href="%s">услуги</a> ';
-    const TEXT_PROJECT = '<a class="b-layout__link_no-decorat" href="/projects/%d">по проекту</a> ';
+    const ORDER_TEXT = 'Р—Р°РєР°Р· в„–%d %s(%s)';
+    const TEXT_TSERVICE = '<a class="b-layout__link_no-decorat" href="%s">СѓСЃР»СѓРіРё</a> ';
+    const TEXT_PROJECT = '<a class="b-layout__link_no-decorat" href="/projects/%d">РїРѕ РїСЂРѕРµРєС‚Сѓ</a> ';
     
-    const PAY_DIRECT = 'с прямой оплатой';
-    const PAY_RESERVE = 'с оплатой через Безопасную сделку';
+    const PAY_DIRECT = 'СЃ РїСЂСЏРјРѕР№ РѕРїР»Р°С‚РѕР№';
+    const PAY_RESERVE = 'СЃ РѕРїР»Р°С‚РѕР№ С‡РµСЂРµР· Р‘РµР·РѕРїР°СЃРЅСѓСЋ СЃРґРµР»РєСѓ';
     
     protected $order;
     protected $is_emp;
 
     public function run() 
     {
-        //собираем шаблон
+        //СЃРѕР±РёСЂР°РµРј С€Р°Р±Р»РѕРЅ
         $this->render('t-service-order-breadcrumbs', array(
             'url_all' => $this->is_emp ? $this->getEmpUrlAll() : '/tu-orders/',
             'order_text' => $this->getOrderText()

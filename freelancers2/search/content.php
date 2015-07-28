@@ -29,10 +29,10 @@ $cur_prof = $promo_profs = null;
 $prfs  = new professions();
 $profs = $prfs->GetAllProfessions("",0, 1);
 
-// Сортировка категорий профессий по названию
+// РЎРѕСЂС‚РёСЂРѕРІРєР° РєР°С‚РµРіРѕСЂРёР№ РїСЂРѕС„РµСЃСЃРёР№ РїРѕ РЅР°Р·РІР°РЅРёСЋ
 usort($profs, function($a, $b) { return strcmp($a['groupname'], $b['groupname']);});
 
-// ищем текущую профессию
+// РёС‰РµРј С‚РµРєСѓС‰СѓСЋ РїСЂРѕС„РµСЃСЃРёСЋ
 foreach ($profs as $key => $value) {
     if ($value['id'] == $prof_id) {
         $cur_prof = $value;
@@ -41,7 +41,7 @@ foreach ($profs as $key => $value) {
 }
 
 if (!$cur_prof) {
-    //Ищем профессии для блока
+    //РС‰РµРј РїСЂРѕС„РµСЃСЃРёРё РґР»СЏ Р±Р»РѕРєР°
     foreach ($profs as $key => $value) {
         $case = $prof_group_id ? $value['groupid'] == $prof_group_id : false;
         if ($case) {
@@ -50,7 +50,7 @@ if (!$cur_prof) {
     }
 }
 
-// Сортировка подкатегорий профессий по названию
+// РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕРґРєР°С‚РµРіРѕСЂРёР№ РїСЂРѕС„РµСЃСЃРёР№ РїРѕ РЅР°Р·РІР°РЅРёСЋ
 if ($promo_profs) {
     usort($promo_profs, function($a, $b) { return strcmp($a['profname'], $b['profname']);});
 }
@@ -78,16 +78,16 @@ var ___WDCPREFIX = '<?=WDCPREFIX?>';
 <?php
 $crumbs = array();
 if($cur_prof) {
-    $crumbs[] = array("title"=>"Каталог фрилансеров", "url"=>"/freelancers/");
+    $crumbs[] = array("title"=>"РљР°С‚Р°Р»РѕРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ", "url"=>"/freelancers/");
     $crumbs[] = array("title"=>$cur_prof['groupname'], "url"=>"/freelancers/".$cur_prof['grouplink'].'/?'.$query_string_cat);
     $crumbs[] = array("title"=>$cur_prof['profname'], "url"=>false);
     $pageTitle = $cur_prof['groupname'] . " / " . $cur_prof['profname'];
 } elseif ($prof_group_id && $prof_name) {
-    $crumbs[] = array("title"=>"Каталог фрилансеров", "url"=>"/freelancers/");
+    $crumbs[] = array("title"=>"РљР°С‚Р°Р»РѕРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ", "url"=>"/freelancers/");
     $crumbs[] = array("title"=>$prof_name, "url"=>"");
     $pageTitle = $prof_name;
 } else {
-    $pageTitle = 'Каталог фрилансеров';
+    $pageTitle = 'РљР°С‚Р°Р»РѕРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ';
 }
 ?>
 
@@ -98,7 +98,7 @@ if($cur_prof) {
 <h1 class="b-page__title"><?= (isset($page_h1) && $page_h1)?$page_h1:$pageTitle ?><span class="b-layout__txt b-layout__txt_float_right b-layout__txt_padtop_10"><?php require_once($_SERVER['DOCUMENT_ROOT'] . "/banner_promo.php"); ?></span></h1>
 </div>
                        
-<?php // Категории (профессии) для фильтрации
+<?php // РљР°С‚РµРіРѕСЂРёРё (РїСЂРѕС„РµСЃСЃРёРё) РґР»СЏ С„РёР»СЊС‚СЂР°С†РёРё
 include (dirname(__FILE__).'/../tpl.categories_top.php');
 ?>
 
@@ -111,7 +111,7 @@ include (dirname(__FILE__).'/../tpl.categories_top.php');
                         ?>
 
                         <?php
-                            // если пользователь неавторизован и на страницу попали с Директа или AdWords, то не показываем рекламный блок
+                            // РµСЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµР°РІС‚РѕСЂРёР·РѕРІР°РЅ Рё РЅР° СЃС‚СЂР°РЅРёС†Сѓ РїРѕРїР°Р»Рё СЃ Р”РёСЂРµРєС‚Р° РёР»Рё AdWords, С‚Рѕ РЅРµ РїРѕРєР°Р·С‹РІР°РµРј СЂРµРєР»Р°РјРЅС‹Р№ Р±Р»РѕРє
                             $utm_source = $_GET['utm_source'];
                             if ( !( (get_uid(0) < 1) && ($utm_source === "yandex" || $utm_source === "google") ) ):
                         ?>
@@ -131,7 +131,7 @@ include (dirname(__FILE__).'/../tpl.categories_top.php');
                             
                             if(false):
                             
-                            $region_filter_txt = '<strong>Все</strong>';
+                            $region_filter_txt = '<strong>Р’СЃРµ</strong>';
                             if($filter_apply) {
                                 $region_filter_country_id = $mFilter['country'];
                                 $region_filter_city_id = $mFilter['city'];
@@ -167,7 +167,7 @@ include (dirname(__FILE__).'/../tpl.categories_top.php');
                             ?>
                                 
                             <?php if(false): ?>    
-                            <div class="region_choose">Регион: <?=$region_filter_txt?> &nbsp; <a href="#" onClick="$('popup_region_filter').toggleClass('b-shadow_hide'); return false;">Изменить</a></div>
+                            <div class="region_choose">Р РµРіРёРѕРЅ: <?=$region_filter_txt?> &nbsp; <a href="#" onClick="$('popup_region_filter').toggleClass('b-shadow_hide'); return false;">РР·РјРµРЅРёС‚СЊ</a></div>
                             <?php endif; ?>
 
                             
@@ -176,11 +176,11 @@ include (dirname(__FILE__).'/../tpl.categories_top.php');
                             
                             <ul class="b-menu__list">
                                 <? seo_start();?>
-                                <li class="b-menu__item <?php if ($show_all_freelancers):?>b-menu__item_active <?php endif;?>" <?php if ($show_all_freelancers):?>data-accordion-opener="true" data-accordion-descriptor="worktype"<?php endif;?>><a class="b-menu__link" href="/freelancers/<?=($prof_link ? $prof_link : '')?>" title="Все фрилансеры"><span class="b-menu__b1">Все фрилансеры</span></a></li>
-				<li class="b-menu__item"><a class="b-menu__link" href="/portfolio/<?=($prof_id ? '?prof='.$prof_id : '')?>" title="Работы"><span class="b-menu__b1">Работы</span></a></li>
-				<li class="b-menu__item"><a class="b-menu__link" href="/clients/<?=($prof_id)?'?prof='.$prof_id:""?>" title="Клиенты"><span class="b-menu__b1">Клиенты</span></a></li>
+                                <li class="b-menu__item <?php if ($show_all_freelancers):?>b-menu__item_active <?php endif;?>" <?php if ($show_all_freelancers):?>data-accordion-opener="true" data-accordion-descriptor="worktype"<?php endif;?>><a class="b-menu__link" href="/freelancers/<?=($prof_link ? $prof_link : '')?>" title="Р’СЃРµ С„СЂРёР»Р°РЅСЃРµСЂС‹"><span class="b-menu__b1">Р’СЃРµ С„СЂРёР»Р°РЅСЃРµСЂС‹</span></a></li>
+				<li class="b-menu__item"><a class="b-menu__link" href="/portfolio/<?=($prof_id ? '?prof='.$prof_id : '')?>" title="Р Р°Р±РѕС‚С‹"><span class="b-menu__b1">Р Р°Р±РѕС‚С‹</span></a></li>
+				<li class="b-menu__item"><a class="b-menu__link" href="/clients/<?=($prof_id)?'?prof='.$prof_id:""?>" title="РљР»РёРµРЅС‚С‹"><span class="b-menu__b1">РљР»РёРµРЅС‚С‹</span></a></li>
 				<li class="b-menu__item b-menu__item_last b-page__ipad b-page__iphone"><a class="b-menu__link" href="/profi/"><span class="b-menu__b1">PROFI</span></a></li>
-				<li class="b-menu__item b-menu__item_padbot_null b-page__desktop"><a class="b-menu__link" href="/profi/"><span class="b-icon b-icon__profi b-icon_valign_bas" data-profi-txt="Лучшие фрилансеры сайта FL.ru. Работают на сайте более 2-х лет, прошли верификацию личности и имеют не менее 98% положительных отзывов."></span></a>
+				<li class="b-menu__item b-menu__item_padbot_null b-page__desktop"><a class="b-menu__link" href="/profi/"><span class="b-icon b-icon__profi b-icon_valign_bas" data-profi-txt="Р›СѓС‡С€РёРµ С„СЂРёР»Р°РЅСЃРµСЂС‹ СЃР°Р№С‚Р° FL.ru. Р Р°Р±РѕС‚Р°СЋС‚ РЅР° СЃР°Р№С‚Рµ Р±РѕР»РµРµ 2-С… Р»РµС‚, РїСЂРѕС€Р»Рё РІРµСЂРёС„РёРєР°С†РёСЋ Р»РёС‡РЅРѕСЃС‚Рё Рё РёРјРµСЋС‚ РЅРµ РјРµРЅРµРµ 98% РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… РѕС‚Р·С‹РІРѕРІ."></span></a>
                                 <?= seo_end(); ?>
                             </ul>
 							</div>							
@@ -221,16 +221,16 @@ include (dirname(__FILE__).'/../tpl.categories_top.php');
                                 <tr>
                                     <th colspan="2" class="cf-getpro">
                                     </th>
-                                    <th class="cf-sortable cf-lc">Рейтинг</th>
-                                    <th class="cf-sortable">Рекомен-<br />дации</th>
-                                    <th class="cf-sortable">Мнения</th>
-                                    <th class="cf-sortable">Цена <br />за час</th>
+                                    <th class="cf-sortable cf-lc">Р РµР№С‚РёРЅРі</th>
+                                    <th class="cf-sortable">Р РµРєРѕРјРµРЅ-<br />РґР°С†РёРё</th>
+                                    <th class="cf-sortable">РњРЅРµРЅРёСЏ</th>
+                                    <th class="cf-sortable">Р¦РµРЅР° <br />Р·Р° С‡Р°СЃ</th>
                                     <?php if ($prof_type): ?>
-                                    <th class="cf-sortable">Цена за<br />1000 зн.</th>
+                                    <th class="cf-sortable">Р¦РµРЅР° Р·Р°<br />1000 Р·РЅ.</th>
                                     <?php else: ?>
-                                    <th class="cf-sortable">Цена <br />за проект</th>
+                                    <th class="cf-sortable">Р¦РµРЅР° <br />Р·Р° РїСЂРѕРµРєС‚</th>
                                     <?php endif; ?>
-                                    <th class="cf-sortable cf-rc">Цена <br />в месяц</th>
+                                    <th class="cf-sortable cf-rc">Р¦РµРЅР° <br />РІ РјРµСЃСЏС†</th>
                                 </tr>
                             </thead>
                             <tbody>    
@@ -238,7 +238,7 @@ include (dirname(__FILE__).'/../tpl.categories_top.php');
                                 <tr>
                                     <th class="cf-getpro">
                                         <?php if( $_SESSION['login'] && !is_pro() ):?>
-                                        <a href="/payed/">Получить аккаунт</a> 
+                                        <a href="/payed/">РџРѕР»СѓС‡РёС‚СЊ Р°РєРєР°СѓРЅС‚</a> 
                                         <a href="/payed/"><?=is_emp()?view_pro_emp():view_pro(false,false,false)?></a>
                                         <?php endif; ?>
                                     </th>
@@ -246,7 +246,7 @@ include (dirname(__FILE__).'/../tpl.categories_top.php');
                             </thead>
                             <tbody>  
                                 <tr>
-                                    <td><?=$filter_apply?"Попробуйте изменить критерии поиска":"Фрилансеров не найдено"?> </td>
+                                    <td><?=$filter_apply?"РџРѕРїСЂРѕР±СѓР№С‚Рµ РёР·РјРµРЅРёС‚СЊ РєСЂРёС‚РµСЂРёРё РїРѕРёСЃРєР°":"Р¤СЂРёР»Р°РЅСЃРµСЂРѕРІ РЅРµ РЅР°Р№РґРµРЅРѕ"?> </td>
                                 </tr>  
                                 <?endif;?>
                             
@@ -283,8 +283,8 @@ include (dirname(__FILE__).'/../tpl.categories_top.php');
                                             print(view_user2($frl,'','freelancer-name','','?f='.stat_collector::REFID_CATALOG.'&stamp='.$_SESSION['stamp'].$kw_param.'#'.$anchor,TRUE, TRUE, "yaCounter6051055.reachGoal('frl_cat_ref');"));
                                             ?>
                                             <span class="cf-spec">
-                                                Специализация: <?php if($frl['name_prof']):?><?=$frl['name_prof']?><?php else: ?>Нет специализации<?php endif; ?>
-                                                <?php if($frl['additional_spec']) {?><br/>Дополнительные специализации: <?=$frl['additional_spec']?><?php }//if?>
+                                                РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ: <?php if($frl['name_prof']):?><?=$frl['name_prof']?><?php else: ?>РќРµС‚ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё<?php endif; ?>
+                                                <?php if($frl['additional_spec']) {?><br/>Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё: <?=$frl['additional_spec']?><?php }//if?>
 
                                                 <?php
                                                 $frl_info_for_reg =unserialize($frl['info_for_reg']); 
@@ -302,7 +302,7 @@ include (dirname(__FILE__).'/../tpl.categories_top.php');
                                                     }
                                                 }
                                                 if($str_location) {
-                                                    echo "<br>Регион: {$str_location}";
+                                                    echo "<br>Р РµРіРёРѕРЅ: {$str_location}";
                                                 }
                                                 ?>
                                             </span>
@@ -328,7 +328,7 @@ include (dirname(__FILE__).'/../tpl.categories_top.php');
                                         <?= seo_end(); ?>
                                     </td>
                                     <td style="width:65px;"><?=view_cost2($frl['frl_cost_hour'], '', '', true, $frl['frl_cost_type_hour'])?></td>
-                                    <td class="price_prj" style="width:70px;"><? if ($prof_type) { ?><?=view_cost2($frl['cost_1000'], '', '', true, $frl['cost_type'])?><? } else { ?><?=view_cost2($frl['cost_from'], 'от', '', true, $frl['cost_type'])?><? } ?></td>
+                                    <td class="price_prj" style="width:70px;"><? if ($prof_type) { ?><?=view_cost2($frl['cost_1000'], '', '', true, $frl['cost_type'])?><? } else { ?><?=view_cost2($frl['cost_from'], 'РѕС‚', '', true, $frl['cost_type'])?><? } ?></td>
                                     <td style="width:65px;"><?=view_cost2($frl['cost_month'], '', '', true, $frl['cost_type_month'])?></td>
                                 </tr>
                                 <tr>
@@ -338,13 +338,13 @@ include (dirname(__FILE__).'/../tpl.categories_top.php');
                 <? 
 		  if (isset($works[$frl['uid']])
                    // && $ff['show_preview'] == '1'
-                    && $table == 0 // ПРО-юзеры
+                    && $table == 0 // РџР Рћ-СЋР·РµСЂС‹
                     && substr($frl['tabs'], 0, 1) == 1)
                 {
                       $is_preview = false;
                       $j = 0;
                 ?>
-<?// Работы в каталоге ?>
+<?// Р Р°Р±РѕС‚С‹ РІ РєР°С‚Р°Р»РѕРіРµ ?>
                                 <tr class="cf-preview">
                                     <td colspan="8">
                                         <table class="cat-txt-prew" cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -398,12 +398,12 @@ include (dirname(__FILE__).'/../tpl.categories_top.php');
 <? if (is_emp()) { ?>
     <div class="b-banner b-banner_pf b-banner_margbot_20">
         <?php if(!is_pro()) { ?>
-        <a class="b-banner__link" href="/payed/" title="Хотите связываться с фрилансерами напрямую? Приобретите аккаунт PRO"><img class="b-banner__pf" src="/images/banners/1.png" alt="Хотите связываться с фрилансерами напрямую? Приобретите аккаунт PRO"/></a>
+        <a class="b-banner__link" href="/payed/" title="РҐРѕС‚РёС‚Рµ СЃРІСЏР·С‹РІР°С‚СЊСЃСЏ СЃ С„СЂРёР»Р°РЅСЃРµСЂР°РјРё РЅР°РїСЂСЏРјСѓСЋ? РџСЂРёРѕР±СЂРµС‚РёС‚Рµ Р°РєРєР°СѓРЅС‚ PRO"><img class="b-banner__pf" src="/images/banners/1.png" alt="РҐРѕС‚РёС‚Рµ СЃРІСЏР·С‹РІР°С‚СЊСЃСЏ СЃ С„СЂРёР»Р°РЅСЃРµСЂР°РјРё РЅР°РїСЂСЏРјСѓСЋ? РџСЂРёРѕР±СЂРµС‚РёС‚Рµ Р°РєРєР°СѓРЅС‚ PRO"/></a>
         <?php }?>
     </div>
 <? } elseif (!get_uid()) { ?>
     <div class="b-banner b-banner_pf b-banner_margbot_20">
-        <a class="b-banner__link" href="/promo/<?= sbr::NEW_TEMPLATE_SBR;?>" title="Воспользуйтесь сервисом «Безопасная Сделка»"><img class="b-banner__pf" src="/css/block/b-banner/b-banner__sbr.png" alt="«Безопасная Сделка»"/></a>
+        <a class="b-banner__link" href="/promo/<?= sbr::NEW_TEMPLATE_SBR;?>" title="Р’РѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ СЃРµСЂРІРёСЃРѕРј В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В»"><img class="b-banner__pf" src="/css/block/b-banner/b-banner__sbr.png" alt="В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В»"/></a>
     </div>
 <? }//if?>
 
@@ -413,10 +413,10 @@ include (dirname(__FILE__).'/../tpl.categories_top.php');
                     <?php 
                     
                     
-                    // Страницы
+                    // РЎС‚СЂР°РЅРёС†С‹
                     
                     /*
-                    $pages = ceil( $count_frl_catalog / $frl_pp ); // альфа-костыль.
+                    $pages = ceil( $count_frl_catalog / $frl_pp ); // Р°Р»СЊС„Р°-РєРѕСЃС‚С‹Р»СЊ.
                     $sHref = "%s?".
                         ($hhf_prm ? str_replace('&','',$hhf_prm).'&' : '').
                         (($order && $order!='gnr')?"order=$order&":"").
@@ -443,7 +443,7 @@ include (dirname(__FILE__).'/../tpl.categories_top.php');
                     
                     
                     /*$count = 100;
-                    // Страницы
+                    // РЎС‚СЂР°РЅРёС†С‹
                     if ($pages > 1){
                         $maxpages = $pages;
                         $i = 1;
@@ -458,20 +458,20 @@ include (dirname(__FILE__).'/../tpl.categories_top.php');
                         }
                         $sBox = '<table width="100%"><tr>';
                         if ($page == 1){
-                            $sBox .= '<td><span class="page-back">предыдущая</span></td>';
+                            $sBox .= '<td><span class="page-back">РїСЂРµРґС‹РґСѓС‰Р°СЏ</span></td>';
                         }else {
                             $sBox .= "<input type=\"hidden\" id=\"pre_navigation_link\" value=\"".($sHref.($page-1))."\">";
-                            $sBox .= "<td><span class=\"page-back\"><a href=\"".($sHref.($page-1))."\">предыдущая</a></span></td>";
+                            $sBox .= "<td><span class=\"page-back\"><a href=\"".($sHref.($page-1))."\">РїСЂРµРґС‹РґСѓС‰Р°СЏ</a></span></td>";
                         }
                         $sBox .= '<td width="90%" align="center">';
-                        //в начале
+                        //РІ РЅР°С‡Р°Р»Рµ
                         if ($page <= 10) {
                             $sBox .= buildNavigation($page, 1, ($pages>10)?($page+4):$pages, $sHref);
                             if ($pages > 15) {
                                 $sBox .= '<span style="padding-right: 5px">...</span>';
                             }
                         }
-                        //в конце
+                        //РІ РєРѕРЅС†Рµ
                         elseif ($page >= $pages-4) {
                             $sBox .= buildNavigation($page, 1, 5, $sHref);
                             $sBox .= '<span>...</span>';
@@ -485,17 +485,17 @@ include (dirname(__FILE__).'/../tpl.categories_top.php');
 
                     $sBox .= '</td>';
                     if ($page == $pages){
-                      $sBox .= "<td><span class=\"page-next\">следующая</span></td>";
+                      $sBox .= "<td><span class=\"page-next\">СЃР»РµРґСѓСЋС‰Р°СЏ</span></td>";
                     }else {
                       $sBox .= "<input type=\"hidden\" id=\"next_navigation_link\" value=\"".($sHref.($page+1))."\">";
-                      $sBox .= "<td><span class=\"page-next\"><a href=\"".($sHref.($page+1))."\">следующая</a></div></td>";
+                      $sBox .= "<td><span class=\"page-next\"><a href=\"".($sHref.($page+1))."\">СЃР»РµРґСѓСЋС‰Р°СЏ</a></div></td>";
                     }
                     $sBox .= '</tr>';
                     $sBox .= '</table>';
                     }
                     echo $sBox;*/
                             
-                    //</div> Страницы закончились
+                    //</div> РЎС‚СЂР°РЅРёС†С‹ Р·Р°РєРѕРЅС‡РёР»РёСЃСЊ
                     ?>
                     
                     
@@ -514,8 +514,8 @@ include (dirname(__FILE__).'/../tpl.categories_top.php');
                         <? // if ($uid) include($_SERVER['DOCUMENT_ROOT'] . '/freelancers/tpl.filter.php'); ?>
                         <? //include($_SERVER['DOCUMENT_ROOT'] . '/freelancers/tpl.catmenu.new.php'); ?>
 <?php if(is_emp()||!get_uid(false)) { ?><div class="b-buttons b-buttons_padbot_20">
-<div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_20">Не нашли подходящего исполнителя?</div>
-<a class="b-button b-button_flat b-button_flat_green b-button_block b-button_margtop_-4" href="/public/?step=1&kind=1" onClick="_gaq.push(['_trackPageview', '/virtual/employer/button_project_create']); ga('send', 'pageview', '/virtual/employer/button_project_create'); yaCounter6051055reachGoal('proekt_dobavlen');">Опубликуйте проект</a>
+<div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_20">РќРµ РЅР°С€Р»Рё РїРѕРґС…РѕРґСЏС‰РµРіРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЏ?</div>
+<a class="b-button b-button_flat b-button_flat_green b-button_block b-button_margtop_-4" href="/public/?step=1&kind=1" onClick="_gaq.push(['_trackPageview', '/virtual/employer/button_project_create']); ga('send', 'pageview', '/virtual/employer/button_project_create'); yaCounter6051055reachGoal('proekt_dobavlen');">РћРїСѓР±Р»РёРєСѓР№С‚Рµ РїСЂРѕРµРєС‚</a>
 </div><?php } ?>
 
                     <!-- Banner 240x400 -->

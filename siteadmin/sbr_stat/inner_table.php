@@ -11,7 +11,7 @@ $totalArray = array();
     <table class="b-layout__table b-layout__table_width_full b-layout__table_bord_ccc" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_bordbot_ccc b-layout__left_pad_5_10 b-layout__left_width_185 b-layout__left_bordright_ccc">
-                <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold">Параметр</div>
+                <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold">РџР°СЂР°РјРµС‚СЂ</div>
             </td>
 
             <td class="b-layout__middle" rowspan="<?= count($sbr_table_types) + 2 ?>">
@@ -45,7 +45,7 @@ $totalArray = array();
             </td>
 
             <td class="b-layout__right b-layout__right_bordbot_ccc b-layout__right_pad_5_10 b-layout__right_right b-layout__right_width_60 b-layout__right_bordleft_ccc ">
-                <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold">Всего</div>
+                <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold">Р’СЃРµРіРѕ</div>
             </td>
         </tr>
         <? foreach ($sbr_table_types as $table_type_data) {

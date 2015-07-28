@@ -1,12 +1,12 @@
 <?php
 /**
- * Шаблон письма уведомление исполнителю об изменении цены и срока заказа
+ * РЁР°Р±Р»РѕРЅ РїРёСЃСЊРјР° СѓРІРµРґРѕРјР»РµРЅРёРµ РёСЃРїРѕР»РЅРёС‚РµР»СЋ РѕР± РёР·РјРµРЅРµРЅРёРё С†РµРЅС‹ Рё СЃСЂРѕРєР° Р·Р°РєР°Р·Р°
  */
 
 /**
- * Тема письма
+ * РўРµРјР° РїРёСЃСЊРјР°
  */
-$smail->subject = "Бюджет и сроки заказа «{$order['title']}» изменены";
+$smail->subject = "Р‘СЋРґР¶РµС‚ Рё СЃСЂРѕРєРё Р·Р°РєР°Р·Р° В«{$order['title']}В» РёР·РјРµРЅРµРЅС‹";
 
 $order_price = tservices_helper::cost_format($order['order_price'], true, false, false);
 $order_days = tservices_helper::days_format($order['order_days']);
@@ -15,11 +15,11 @@ $title = reformat(htmlspecialchars($order['title']), 30, 0, 1);
 $order_url = $GLOBALS['host'] . tservices_helper::getOrderCardUrl($order['id']);
 
 ?>
-Здравствуйте.<br /><br />
-Заказчик <?=$emp_fullname?> отредактировал бюджет и сроки по заказу &laquo;<a href="<?=$order_url?>"><?=$title?></a>&raquo;<br /><br />
-Бюджет – <?=$order_price?><br />
-Срок – <?=$order_days?>.<br /><br />
-<a href="<?=$order_url?>">Перейти к заказу</a><br /><br />
+Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ.<br /><br />
+Р—Р°РєР°Р·С‡РёРє <?=$emp_fullname?> РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°Р» Р±СЋРґР¶РµС‚ Рё СЃСЂРѕРєРё РїРѕ Р·Р°РєР°Р·Сѓ &laquo;<a href="<?=$order_url?>"><?=$title?></a>&raquo;<br /><br />
+Р‘СЋРґР¶РµС‚ вЂ“ <?=$order_price?><br />
+РЎСЂРѕРє вЂ“ <?=$order_days?>.<br /><br />
+<a href="<?=$order_url?>">РџРµСЂРµР№С‚Рё Рє Р·Р°РєР°Р·Сѓ</a><br /><br />
 
-С уважением, 
-команда <a href="<?php echo "{$GLOBALS['host']}/{$params}"; ?>">FL.ru</a>
+РЎ СѓРІР°Р¶РµРЅРёРµРј, 
+РєРѕРјР°РЅРґР° <a href="<?php echo "{$GLOBALS['host']}/{$params}"; ?>">FL.ru</a>

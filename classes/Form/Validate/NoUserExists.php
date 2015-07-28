@@ -5,8 +5,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/users.php");
 /**
  * Class Form_Validate_NoUserExists
  * 
- * Âàëèäàòîð ïðîâåðÿåò íàëè÷èå óêàçàííîãî òèïà ïîëüçîâàòåëÿ 
- * ïî îäíîìó èç âõîäíûõ ïàðàìåòðîâ. 
+ * Ð’Ð°Ð»Ð¸Ð´Ð°Ñ‚Ð¾Ñ€ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÑÐµÑ‚ Ð½Ð°Ð»Ð¸Ñ‡Ð¸Ðµ ÑƒÐºÐ°Ð·Ð°Ð½Ð½Ð¾Ð³Ð¾ Ñ‚Ð¸Ð¿Ð° Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ 
+ * Ð¿Ð¾ Ð¾Ð´Ð½Ð¾Ð¼Ñƒ Ð¸Ð· Ð²Ñ…Ð¾Ð´Ð½Ñ‹Ñ… Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¾Ð². 
  */
 class Form_Validate_NoUserExists extends Zend_Validate_Abstract 
 {
@@ -14,17 +14,17 @@ class Form_Validate_NoUserExists extends Zend_Validate_Abstract
     
     
     protected $_messageTemplates = array(
-        self::ERROR_USER_FOUND => 'Äàííûé %by% ïðèíàäëåæèò %is_emp%'
+        self::ERROR_USER_FOUND => 'Ð”Ð°Ð½Ð½Ñ‹Ð¹ %by% Ð¿Ñ€Ð¸Ð½Ð°Ð´Ð»ÐµÐ¶Ð¸Ñ‚ %is_emp%'
     );
     
     protected $_messageRole = array(
-        false => 'ôðèëàíñåðó',
-        true  => 'çàêàç÷èêó',
-        null  => 'äðóãîìó ïîëüçîâàòåëþ'
+        false => 'Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ñƒ',
+        true  => 'Ð·Ð°ÐºÐ°Ð·Ñ‡Ð¸ÐºÑƒ',
+        null  => 'Ð´Ñ€ÑƒÐ³Ð¾Ð¼Ñƒ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŽ'
     );
 
     protected $_messageBy = array(
-        'login' => 'ëîãèí',
+        'login' => 'Ð»Ð¾Ð³Ð¸Ð½',
         'email' => 'e-mail',
         'uid'   => 'ID'
     );

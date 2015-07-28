@@ -1,27 +1,27 @@
 <?
 
 /**
- * Класс для работы функций в версии ПДА
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ С„СѓРЅРєС†РёР№ РІ РІРµСЂСЃРёРё РџР”Рђ
  *
  */
 class pda
 {
     /**
-	 * Генерирует список присоединенных файлов в HTML-код, который будет отображаться по левому краю (внизу, слева после записи)
+	 * Р“РµРЅРµСЂРёСЂСѓРµС‚ СЃРїРёСЃРѕРє РїСЂРёСЃРѕРµРґРёРЅРµРЅРЅС‹С… С„Р°Р№Р»РѕРІ РІ HTML-РєРѕРґ, РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ РѕС‚РѕР±СЂР°Р¶Р°С‚СЊСЃСЏ РїРѕ Р»РµРІРѕРјСѓ РєСЂР°СЋ (РІРЅРёР·Сѓ, СЃР»РµРІР° РїРѕСЃР»Рµ Р·Р°РїРёСЃРё)
 	 *
-	 * @param string  $ulogin   			Логин пользователя
-	 * @param string  $filename 			Имя файа
-	 * @param string  $dir					директория в которой находится файл	
-	 * @param integer $file					В заданную переменную записывается статус показа файла 
-	 * 										(0 - файл не удовлетворяет условиям, 1 - файл удовлетворяет условиям (для картинок и флеша, 
-	 * 										контроль размера файлов, чтобы те не выезжали за границы верстки))
-	 * @param integer $maxh					Максимально допустимая высота файла
-	 * @param integer $maxw					Максимально допустимая ширина файла
-	 * @param integer $maxpw       			Маскимально допустимый размер файла
-	 * @param integer $show_ico				Показать иконку файла (.txt, .doc, etc...)
-	 * @param integer $is_tn				Показать как ссылку на скачивание файла
-	 * @param integer $show_download_ico   	Показать или нет ссылку на загрузку новых файлов
-	 * @return string HTML-код
+	 * @param string  $ulogin   			Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param string  $filename 			РРјСЏ С„Р°Р№Р°
+	 * @param string  $dir					РґРёСЂРµРєС‚РѕСЂРёСЏ РІ РєРѕС‚РѕСЂРѕР№ РЅР°С…РѕРґРёС‚СЃСЏ С„Р°Р№Р»	
+	 * @param integer $file					Р’ Р·Р°РґР°РЅРЅСѓСЋ РїРµСЂРµРјРµРЅРЅСѓСЋ Р·Р°РїРёСЃС‹РІР°РµС‚СЃСЏ СЃС‚Р°С‚СѓСЃ РїРѕРєР°Р·Р° С„Р°Р№Р»Р° 
+	 * 										(0 - С„Р°Р№Р» РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ СѓСЃР»РѕРІРёСЏРј, 1 - С„Р°Р№Р» СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ СѓСЃР»РѕРІРёСЏРј (РґР»СЏ РєР°СЂС‚РёРЅРѕРє Рё С„Р»РµС€Р°, 
+	 * 										РєРѕРЅС‚СЂРѕР»СЊ СЂР°Р·РјРµСЂР° С„Р°Р№Р»РѕРІ, С‡С‚РѕР±С‹ С‚Рµ РЅРµ РІС‹РµР·Р¶Р°Р»Рё Р·Р° РіСЂР°РЅРёС†С‹ РІРµСЂСЃС‚РєРё))
+	 * @param integer $maxh					РњР°РєСЃРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјР°СЏ РІС‹СЃРѕС‚Р° С„Р°Р№Р»Р°
+	 * @param integer $maxw					РњР°РєСЃРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјР°СЏ С€РёСЂРёРЅР° С„Р°Р№Р»Р°
+	 * @param integer $maxpw       			РњР°СЃРєРёРјР°Р»СЊРЅРѕ РґРѕРїСѓСЃС‚РёРјС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°
+	 * @param integer $show_ico				РџРѕРєР°Р·Р°С‚СЊ РёРєРѕРЅРєСѓ С„Р°Р№Р»Р° (.txt, .doc, etc...)
+	 * @param integer $is_tn				РџРѕРєР°Р·Р°С‚СЊ РєР°Рє СЃСЃС‹Р»РєСѓ РЅР° СЃРєР°С‡РёРІР°РЅРёРµ С„Р°Р№Р»Р°
+	 * @param integer $show_download_ico   	РџРѕРєР°Р·Р°С‚СЊ РёР»Рё РЅРµС‚ СЃСЃС‹Р»РєСѓ РЅР° Р·Р°РіСЂСѓР·РєСѓ РЅРѕРІС‹С… С„Р°Р№Р»РѕРІ
+	 * @return string HTML-РєРѕРґ
 	 */
     function viewattachLeft($ulogin, $filename, $dir, &$file, $maxh=1000, $maxw=450, $maxpw=307200, $show_ico = 0, $is_tn = 0, $show_download_ico = 0) {
         if ($is_tn && in_array($ext, $GLOBALS['graf_array'])) {$fname = $filename; $filename = "sm_".$filename; }
@@ -45,20 +45,20 @@ class pda
         if ($show_download_ico && in_array($ext, $GLOBALS['graf_array']) && ($width <= $maxw && $height <= $maxh || $maxw == -1 && $maxh == -1) && $cfile->size <= $maxpw && $ico != "swf"){
             $pda_content = '<p class="bg-c"><a href="'.$path.$filename.'"><img src="'.$path."/".$filename.'" width="'.$width.'" height="'.$height.'" /></a></p>';    
         } else {
-            $pda_content = '<p><img src="/pda/images/mime/'.$ico.'.png" alt="'.$ext.'">&nbsp;<a href="'.$path.$filename.'" target="_blank">Загрузить</a> | '.$ext.', '.ConvertBtoMB($cfile->size).' </p>';
+            $pda_content = '<p><img src="/pda/images/mime/'.$ico.'.png" alt="'.$ext.'">&nbsp;<a href="'.$path.$filename.'" target="_blank">Р—Р°РіСЂСѓР·РёС‚СЊ</a> | '.$ext.', '.ConvertBtoMB($cfile->size).' </p>';
         }
         
         return $pda_content;
     }
     
     /**
-     * Выводит икону и задданный внешний URL для определенного файла
+     * Р’С‹РІРѕРґРёС‚ РёРєРѕРЅСѓ Рё Р·Р°РґРґР°РЅРЅС‹Р№ РІРЅРµС€РЅРёР№ URL РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ С„Р°Р№Р»Р°
      *
-     * @param string  $ulogin   	Логин пользователя
-     * @param string  $filename 	Имя файла 
-     * @param string  $dir      	Папка файла
-     * @param string  $url		 	Ссылка на файл
-     * @param integer $bigtext  	Вместо иконкки будет большой текст расширения файла(TXT, PDF, etc...) если переменная принимает значение 1
+     * @param string  $ulogin   	Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param string  $filename 	РРјСЏ С„Р°Р№Р»Р° 
+     * @param string  $dir      	РџР°РїРєР° С„Р°Р№Р»Р°
+     * @param string  $url		 	РЎСЃС‹Р»РєР° РЅР° С„Р°Р№Р»
+     * @param integer $bigtext  	Р’РјРµСЃС‚Рѕ РёРєРѕРЅРєРєРё Р±СѓРґРµС‚ Р±РѕР»СЊС€РѕР№ С‚РµРєСЃС‚ СЂР°СЃС€РёСЂРµРЅРёСЏ С„Р°Р№Р»Р°(TXT, PDF, etc...) РµСЃР»Рё РїРµСЂРµРјРµРЅРЅР°СЏ РїСЂРёРЅРёРјР°РµС‚ Р·РЅР°С‡РµРЅРёРµ 1
      * @return string HTML-code
      */
     function viewattachExternal($ulogin, $filename, $dir, $url, $bigtext=0) {
@@ -69,18 +69,18 @@ class pda
         $ico   = getICOFile($ext, true);
         echo $ico;
         $fsize = ConvertBtoMB($cfile->size);
-        return '<p><img src="/pda/images/mime/'.$ico.'.png" alt="'.$ext.'" width="18" height="16"> <a href="'.$url.'" target="_blank">Скачать</a> | '.ucfirst($ext).', '.$fsize.' </p>';
+        return '<p><img src="/pda/images/mime/'.$ico.'.png" alt="'.$ext.'" width="18" height="16"> <a href="'.$url.'" target="_blank">РЎРєР°С‡Р°С‚СЊ</a> | '.ucfirst($ext).', '.$fsize.' </p>';
     }
     
     /**
-     * Пагинатор для PDA
+     * РџР°РіРёРЅР°С‚РѕСЂ РґР»СЏ PDA
      *
-     * @param integer $page    Текущая страница
-     * @param integer $pages   Всего страниц
-     * @param integer $count   Количество вывода идущих подряд страниц, которые необходимо показать из опеределнного количества 
-     * 						   (@example при значении 3 - 1,2,3 при значении 4 1,2,3,4 etc...)
-     * @param string $href     Ссылка на страницу где используется пагинации, ссылка явялется шаблоном и имеет вид (%s/link_href?page=%d&param%s) 
-     * 							    где %d заменяется на страницу в которую необходимо попасть
+     * @param integer $page    РўРµРєСѓС‰Р°СЏ СЃС‚СЂР°РЅРёС†Р°
+     * @param integer $pages   Р’СЃРµРіРѕ СЃС‚СЂР°РЅРёС†
+     * @param integer $count   РљРѕР»РёС‡РµСЃС‚РІРѕ РІС‹РІРѕРґР° РёРґСѓС‰РёС… РїРѕРґСЂСЏРґ СЃС‚СЂР°РЅРёС†, РєРѕС‚РѕСЂС‹Рµ РЅРµРѕР±С…РѕРґРёРјРѕ РїРѕРєР°Р·Р°С‚СЊ РёР· РѕРїРµСЂРµРґРµР»РЅРЅРѕРіРѕ РєРѕР»РёС‡РµСЃС‚РІР° 
+     * 						   (@example РїСЂРё Р·РЅР°С‡РµРЅРёРё 3 - 1,2,3 РїСЂРё Р·РЅР°С‡РµРЅРёРё 4 1,2,3,4 etc...)
+     * @param string $href     РЎСЃС‹Р»РєР° РЅР° СЃС‚СЂР°РЅРёС†Сѓ РіРґРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РїР°РіРёРЅР°С†РёРё, СЃСЃС‹Р»РєР° СЏРІСЏР»РµС‚СЃСЏ С€Р°Р±Р»РѕРЅРѕРј Рё РёРјРµРµС‚ РІРёРґ (%s/link_href?page=%d&param%s) 
+     * 							    РіРґРµ %d Р·Р°РјРµРЅСЏРµС‚СЃСЏ РЅР° СЃС‚СЂР°РЅРёС†Сѓ РІ РєРѕС‚РѕСЂСѓСЋ РЅРµРѕР±С…РѕРґРёРјРѕ РїРѕРїР°СЃС‚СЊ
      * 							    @see sprintf();
      * @return string
      */
@@ -94,8 +94,8 @@ class pda
         $end = $page + $count;
         if($end>$pages) $end = $pages;
         
-        if($page > 1) {$html .= sprintf($href, '<a href=', $page-1 ,'>Предыдущая</a>&nbsp;'); if(!($page < $pages)) $html .= "<br />";}
-        if($page < $pages) {$html .= sprintf($href, '&nbsp;<a href=', $page+1, '>Следующая</a><br />');} 
+        if($page > 1) {$html .= sprintf($href, '<a href=', $page-1 ,'>РџСЂРµРґС‹РґСѓС‰Р°СЏ</a>&nbsp;'); if(!($page < $pages)) $html .= "<br />";}
+        if($page < $pages) {$html .= sprintf($href, '&nbsp;<a href=', $page+1, '>РЎР»РµРґСѓСЋС‰Р°СЏ</a><br />');} 
          
         for($i=$start;$i<=$end;$i++) {
             if($i == $start && $start > 1) {  $html .= sprintf($href, '<a href="', 1 ,'">1</a>&nbsp;');  if($i==3) $html .= sprintf($href, '<a href="', 2 ,'">2</a>&nbsp;'); elseif($i!=2) $html .= "&nbsp;..&nbsp;&nbsp;";}
@@ -108,14 +108,14 @@ class pda
     }
     
     /**
-     * Информация пользователя для ПДА
+     * РРЅС„РѕСЂРјР°С†РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РґР»СЏ РџР”Рђ
      *
-     * @param array   $user      Данные пользователя
-     * @param boolean $is_pro    Про юзер или нет 
-     * @param boolean $is_emp    Работодатель, если нет то фрилансер
-     * @param boolean $is_online Онлайн пользователь или нет
-     * @param string  $addopt    Допольнительная инфморвация 
-     * @return string HTML-код для вывода  
+     * @param array   $user      Р”Р°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param boolean $is_pro    РџСЂРѕ СЋР·РµСЂ РёР»Рё РЅРµС‚ 
+     * @param boolean $is_emp    Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ, РµСЃР»Рё РЅРµС‚ С‚Рѕ С„СЂРёР»Р°РЅСЃРµСЂ
+     * @param boolean $is_online РћРЅР»Р°Р№РЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РёР»Рё РЅРµС‚
+     * @param string  $addopt    Р”РѕРїРѕР»СЊРЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РјРѕСЂРІР°С†РёСЏ 
+     * @return string HTML-РєРѕРґ РґР»СЏ РІС‹РІРѕРґР°  
      */
     function pda_info_user($user, $is_pro, $is_emp, $is_online, $addopt=false, $with_link = true, $is_view_online = true) {
         if($user['photo'] == '') {
@@ -136,8 +136,8 @@ class pda
         if($user['is_team']!='t' && $is_pro && $is_emp) $pda_html .= '<img class="m-pro" src="/pda/images/e_pro.png" alt="pro" width="21" height="9" /> ';           
         elseif($user['is_team']!='t' && $is_pro) $pda_html .= '<img class="m-pro" src="/pda/images/f_pro.png" alt="pro" width="21" height="9" /> '; 
         if($is_view_online) {
-            if($is_online) $pda_html .= '<img class="m-dot" src="/pda/images/dot_a.png" alt="На сайте" width="9" height="9" /> ';
-            else  $pda_html .= '<img class="m-dot" src="/pda/images/dot_ia.png" alt="Нет на сайте" width="9" height="9" /> ';
+            if($is_online) $pda_html .= '<img class="m-dot" src="/pda/images/dot_a.png" alt="РќР° СЃР°Р№С‚Рµ" width="9" height="9" /> ';
+            else  $pda_html .= '<img class="m-dot" src="/pda/images/dot_ia.png" alt="РќРµС‚ РЅР° СЃР°Р№С‚Рµ" width="9" height="9" /> ';
         }
         
         $pda_html .= ($with_link ? "<a {$cls} href=\"/users/{$user['login']}/\">" : '')."<strong {$cls}>".$user['uname'].' '.$user['usurname'] .' ['.$user['login'].']</strong>'.($with_link ? "</a>" : '');
@@ -149,12 +149,12 @@ class pda
         return $pda_html;
     }
     /**
-     * Вид ссылки ведущей на основной сайт
+     * Р’РёРґ СЃСЃС‹Р»РєРё РІРµРґСѓС‰РµР№ РЅР° РѕСЃРЅРѕРІРЅРѕР№ СЃР°Р№С‚
      *
-     * @param string $href        Ссылка 
-     * @param string $href_str    Название ссылки
-     * @param string $size        Размер ссылки
-     * @param string $type        Тип страницы перехода
+     * @param string $href        РЎСЃС‹Р»РєР° 
+     * @param string $href_str    РќР°Р·РІР°РЅРёРµ СЃСЃС‹Р»РєРё
+     * @param string $size        Р Р°Р·РјРµСЂ СЃСЃС‹Р»РєРё
+     * @param string $type        РўРёРї СЃС‚СЂР°РЅРёС†С‹ РїРµСЂРµС…РѕРґР°
      * @return string
      */
     function pda_external_link($href, $href_str='', $size=40, $type=1, $title='') {
@@ -170,7 +170,7 @@ class pda
             $href = urlencode($href);
             $href = "/a.php?a={$href}&type={$type}&title={$title}";
         }
-        return "<a href='{$href}' target='_blank'>{$href_str}</a>&nbsp;<a href='{$href}' target='_blank'><img src='/pda/images/f.png' alt='Переход на основной сайт'></a>";
+        return "<a href='{$href}' target='_blank'>{$href_str}</a>&nbsp;<a href='{$href}' target='_blank'><img src='/pda/images/f.png' alt='РџРµСЂРµС…РѕРґ РЅР° РѕСЃРЅРѕРІРЅРѕР№ СЃР°Р№С‚'></a>";
     }
 }
 ?>

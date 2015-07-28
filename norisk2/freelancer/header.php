@@ -10,11 +10,11 @@ if(hasPermissions('sbr')  && $_SESSION['access']=='A') {
 	</div>
 	<div class="nr-docs">
 		<ul>
-            <li><a href="<?=sbr::$scheme_types[sbr::SCHEME_AGNT][1]?>" target="_blank">Агентский договор</a></li>
-            <li class="first"><a href="/offer_work_free-lancer.pdf" target="_blank">Договор подряда</a></li>
-            <li><a href="/help/?c=41">Помощь по «Безопасной Сделке»</a></li>
+            <li><a href="<?=sbr::$scheme_types[sbr::SCHEME_AGNT][1]?>" target="_blank">РђРіРµРЅС‚СЃРєРёР№ РґРѕРіРѕРІРѕСЂ</a></li>
+            <li class="first"><a href="/offer_work_free-lancer.pdf" target="_blank">Р”РѕРіРѕРІРѕСЂ РїРѕРґСЂСЏРґР°</a></li>
+            <li><a href="/help/?c=41">РџРѕРјРѕС‰СЊ РїРѕ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµВ»</a></li>
             <? if(hasPermissions('sbr') || hasPermissions('sbr_finance')) { ?>
-              <li><a href="?site=admin">Администрирование</a></li>
+              <li><a href="?site=admin">РђРґРјРёРЅРёСЃС‚СЂРёСЂРѕРІР°РЅРёРµ</a></li>
             <? } ?>
 		</ul>
 	</div>

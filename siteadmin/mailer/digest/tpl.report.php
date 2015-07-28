@@ -8,15 +8,15 @@ $xajax->printJavascript('/xajax/');
     <a class="b-button b-button_round_green b-button_float_right close-block "  href="/siteadmin/mailer/?action=digest_edit&id=<?=$message['id']?>">
         <span class="b-button__b1">
             <span class="b-button__b2">
-                <span class="b-button__txt">Повторить рассылку</span>
+                <span class="b-button__txt">РџРѕРІС‚РѕСЂРёС‚СЊ СЂР°СЃСЃС‹Р»РєСѓ</span>
             </span>
         </span>
     </a>*/?>
-    <h2 class="b-layout__title b-layout__title_padbot_30">Отчёт по рассылке  &#160;&#160;&#160;<a class="b-layout__link b-layout__link_fontsize_13" href="/siteadmin/mailer/">Все рассылки</a></h2>
+    <h2 class="b-layout__title b-layout__title_padbot_30">РћС‚С‡С‘С‚ РїРѕ СЂР°СЃСЃС‹Р»РєРµ  &#160;&#160;&#160;<a class="b-layout__link b-layout__link_fontsize_13" href="/siteadmin/mailer/">Р’СЃРµ СЂР°СЃСЃС‹Р»РєРё</a></h2>
     <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_5" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_130">
-                <div class="b-layout__txt">Тема письма</div>
+                <div class="b-layout__txt">РўРµРјР° РїРёСЃСЊРјР°</div>
             </td>
             <td class="b-layout__right">
                 <div class="b-layout__txt b-layout__txt_bold b-layout__txt_fontsize_15"><?= reformat($message['subject'], 30)?></div>
@@ -26,11 +26,11 @@ $xajax->printJavascript('/xajax/');
     <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_130">
-                <div class="b-layout__txt">Текст письма</div>
+                <div class="b-layout__txt">РўРµРєСЃС‚ РїРёСЃСЊРјР°</div>
             </td>
             <td class="b-layout__right">
                 <div class="b-layout__txt b-layout__txt_padbot_10">
-                    <a href="/siteadmin/mailer/?action=digest_edit&id=<?=$message['id']?>&preview=2">Просмотр</a>
+                    <a href="/siteadmin/mailer/?action=digest_edit&id=<?=$message['id']?>&preview=2">РџСЂРѕСЃРјРѕС‚СЂ</a>
                 </div>
             </td>
         </tr>
@@ -38,10 +38,10 @@ $xajax->printJavascript('/xajax/');
     <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_5" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_130">
-                <div class="b-layout__txt">Получатели</div>
+                <div class="b-layout__txt">РџРѕР»СѓС‡Р°С‚РµР»Рё</div>
             </td>
             <td class="b-layout__right">
-                <div class="b-layout__txt b-layout__txt_bold b-layout__txt_fontsize_15"><?= (int) ($sum_rec)?> <?=ending((int) ($sum_rec), "человек", "человека", "человек")?></div>
+                <div class="b-layout__txt b-layout__txt_bold b-layout__txt_fontsize_15"><?= (int) ($sum_rec)?> <?=ending((int) ($sum_rec), "С‡РµР»РѕРІРµРє", "С‡РµР»РѕРІРµРєР°", "С‡РµР»РѕРІРµРє")?></div>
             </td>
         </tr>
     </table>
@@ -49,12 +49,12 @@ $xajax->printJavascript('/xajax/');
     <table class="b-layout__table b-layout__table_width_full b-layout__table_margtop_30" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_130">
-                <div class="b-layout__txt">Отправлено</div>
+                <div class="b-layout__txt">РћС‚РїСЂР°РІР»РµРЅРѕ</div>
             </td>
             <td class="b-layout__right">
-                <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10 b-layout__txt_fontsize_15"><?= date('d.m.Y в H:i', strtotime($message['real_date_sending']))?></div>
+                <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10 b-layout__txt_fontsize_15"><?= date('d.m.Y РІ H:i', strtotime($message['real_date_sending']))?></div>
                 <div class="b-layout__txt b-layout__txt_padbot_5">
-                    <?= ($message['type_regular'] > 1)?"Рассылается регулярно.": ""?>
+                    <?= ($message['type_regular'] > 1)?"Р Р°СЃСЃС‹Р»Р°РµС‚СЃСЏ СЂРµРіСѓР»СЏСЂРЅРѕ.": ""?>
 
                     <?php if($message['type_regular'] > 1) {?>
                     <?=  mailer::$TYPE_REGULAR[$message['type_regular']];?>
@@ -65,8 +65,8 @@ $xajax->printJavascript('/xajax/');
                 <div class="b-layout__txt b-layout__txt_padbot_5">
                     <input type="hidden" id="status_sending" value="<?=$message['status_sending']?>">
                     <span class="b-layout__mail-icon <?= $message['status_sending'] == 1?"b-layout__mail-icon_black":"b-layout__mail-icon_pause"?> b-layout__mail-icon_top_4 b-layout__mail-icon_margleft_-15 b-layout__mail-icon_margright_4"></span>
-                    Следующая рассылка <?=date('d.m.Y в H:i', strtotime($message['date_sending']))?>.&#160;&#160;
-                    <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8 mail-pause" href="javascript:void(0)" onclick="xajax_setStatusSending(<?=(int)$message['id']?>, $('status_sending').get('value'));"><?= $message['status_sending'] == 1?"Поставить на паузу":"Снять с паузы"?></a>
+                    РЎР»РµРґСѓСЋС‰Р°СЏ СЂР°СЃСЃС‹Р»РєР° <?=date('d.m.Y РІ H:i', strtotime($message['date_sending']))?>.&#160;&#160;
+                    <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8 mail-pause" href="javascript:void(0)" onclick="xajax_setStatusSending(<?=(int)$message['id']?>, $('status_sending').get('value'));"><?= $message['status_sending'] == 1?"РџРѕСЃС‚Р°РІРёС‚СЊ РЅР° РїР°СѓР·Сѓ":"РЎРЅСЏС‚СЊ СЃ РїР°СѓР·С‹"?></a>
                 </div>
                 <?php } //if?>
             </td>

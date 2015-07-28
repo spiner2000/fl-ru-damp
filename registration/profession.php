@@ -7,7 +7,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/freelancer.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/professions.php");
 
-// страницу могут смотреть только зарегистрированые фрилансеры
+// СЃС‚СЂР°РЅРёС†Сѓ РјРѕРіСѓС‚ СЃРјРѕС‚СЂРµС‚СЊ С‚РѕР»СЊРєРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅС‹Рµ С„СЂРёР»Р°РЅСЃРµСЂС‹
 $uid = get_uid(false);
 
 if (!$uid || is_emp()) {
@@ -24,7 +24,7 @@ if ($profession_id !== NULL) {
     if ($profession_id > 0) {
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/projects_filter.php");
 
-        //Создаем фильтр для проектов
+        //РЎРѕР·РґР°РµРј С„РёР»СЊС‚СЂ РґР»СЏ РїСЂРѕРµРєС‚РѕРІ
         $f_category[1][$profession_id] = 1;
 
         $prj_filter = new projects_filters();
@@ -57,7 +57,7 @@ if ($profession_id !== NULL) {
 
         setcookie("new_pf0", 1, time()+60*60*24*30, "/");
         
-        //Сохраняем как основную специализацию
+        //РЎРѕС…СЂР°РЅСЏРµРј РєР°Рє РѕСЃРЅРѕРІРЅСѓСЋ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ
         $or_spec=professions::GetProfessionOrigin($profession_id);
         $frl = new freelancer;
         $frl->spec = $profession_id;
@@ -67,7 +67,7 @@ if ($profession_id !== NULL) {
         $_SESSION['specs'] = $frl->GetAllSpecs($uid);
     }
     
-    //Если есть редирект то он приоритетней
+    //Р•СЃР»Рё РµСЃС‚СЊ СЂРµРґРёСЂРµРєС‚ С‚Рѕ РѕРЅ РїСЂРёРѕСЂРёС‚РµС‚РЅРµР№
     if ($_SESSION['ref_uri']) {
         $redirect_to = urldecode($_SESSION['ref_uri']);
     }
@@ -102,10 +102,10 @@ if ($profession_id !== NULL) {
     exit;
 }
 
-//Если есть другой редирект то выставляем этот флаг
+//Р•СЃР»Рё РµСЃС‚СЊ РґСЂСѓРіРѕР№ СЂРµРґРёСЂРµРєС‚ С‚Рѕ РІС‹СЃС‚Р°РІР»СЏРµРј СЌС‚РѕС‚ С„Р»Р°Рі
 $is_other_redirect = isset($_SESSION['ref_uri']) || isset($_REQUEST['user_action']);
 
-//Получить список профессий с указанной сортировкой
+//РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РїСЂРѕС„РµСЃСЃРёР№ СЃ СѓРєР°Р·Р°РЅРЅРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРѕР№
 $professions_data = professions::GetProfessionsAndGroup('gname, name');
 
 $stretch_page = true;

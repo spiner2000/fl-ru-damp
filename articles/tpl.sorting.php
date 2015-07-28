@@ -1,15 +1,15 @@
 <?
 /*
- * блок сортировки в статьях
- * в этом же блоке находится кнопка ДОБАВИТЬ СТАТЬЮ
- * требует глобальную переменную $ord - ключ к массиву $sorting
+ * Р±Р»РѕРє СЃРѕСЂС‚РёСЂРѕРІРєРё РІ СЃС‚Р°С‚СЊСЏС…
+ * РІ СЌС‚РѕРј Р¶Рµ Р±Р»РѕРєРµ РЅР°С…РѕРґРёС‚СЃСЏ РєРЅРѕРїРєР° Р”РћР‘РђР’РРўР¬ РЎРўРђРўР¬Р®
+ * С‚СЂРµР±СѓРµС‚ РіР»РѕР±Р°Р»СЊРЅСѓСЋ РїРµСЂРµРјРµРЅРЅСѓСЋ $ord - РєР»СЋС‡ Рє РјР°СЃСЃРёРІСѓ $sorting
  */
 
 $sorting = array(
-    'date' => 'по дате добавления',
-    'comm' => 'по количеству комментариев',
-    'views' => 'по количеству просмотров',
-    'rating' => 'по оценке',
+    'date' => 'РїРѕ РґР°С‚Рµ РґРѕР±Р°РІР»РµРЅРёСЏ',
+    'comm' => 'РїРѕ РєРѕР»РёС‡РµСЃС‚РІСѓ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ',
+    'views' => 'РїРѕ РєРѕР»РёС‡РµСЃС‚РІСѓ РїСЂРѕСЃРјРѕС‚СЂРѕРІ',
+    'rating' => 'РїРѕ РѕС†РµРЅРєРµ',
 );
 
 ?>
@@ -21,7 +21,7 @@ $sorting = array(
                 <b class="b1"></b>
                 <b class="b2"></b>
                 <span class="i-add-in">
-                    <a href="javascript:void(0)" onclick="addArticleForm(0,1)">Добавить статью</a>
+                    <a href="javascript:void(0)" onclick="addArticleForm(0,1)">Р”РѕР±Р°РІРёС‚СЊ СЃС‚Р°С‚СЊСЋ</a>
                 </span>
                 <b class="b2"></b>
                 <b class="b1"></b>
@@ -32,7 +32,7 @@ $sorting = array(
     <noindex>
 
     <div class="<?=hasPermissions('articles')?"i-sort4":"i-sort3"?>">
-        <strong>Сортировать:</strong>
+        <strong>РЎРѕСЂС‚РёСЂРѕРІР°С‚СЊ:</strong>
         <ul>
             <? foreach($sorting as $k => $label) { ?>
                 <? if($k == $ord) { ?>
@@ -42,7 +42,7 @@ $sorting = array(
                 <? } ?>
             <? } ?>
             <? if(hasPermissions('articles')) { ?>
-            <li><a rel="nofollow" href="?page=declined" class="lnk-dot-red">отклонены</a></li>
+            <li><a rel="nofollow" href="?page=declined" class="lnk-dot-red">РѕС‚РєР»РѕРЅРµРЅС‹</a></li>
             <? } ?>        
         </ul>
     </div>

@@ -24,7 +24,7 @@ switch ($action) {
 
 for ($i = 0; $i < $forms_cnt; $i++) {
     
-    //Обрабатываем даты
+    //РћР±СЂР°Р±Р°С‚С‹РІР°РµРј РґР°С‚С‹
 	$fmnth[$i] = intval(trim($_POST['fmnth'][$i]));
 	$fday[$i] = intval(trim($_POST['fday'][$i]));
 	$fyear[$i] = intval(trim($_POST['fyear'][$i]));
@@ -40,54 +40,54 @@ for ($i = 0; $i < $forms_cnt; $i++) {
 	$tdate = $tyear[$i] . "-". $tmnth[$i] ."-" .$tday[$i];
 
 
-    //Получаем данные оераций
+    //РџРѕР»СѓС‡Р°РµРј РґР°РЅРЅС‹Рµ РѕРµСЂР°С†РёР№
     $sstat = $account->GetStatOPEx($fdate, $tdate, true); 
     
-    //Всего зачислено
+    //Р’СЃРµРіРѕ Р·Р°С‡РёСЃР»РµРЅРѕ
     $inc[$i] = $sstat[12];
 	
-    //ПРО
+    //РџР Рћ
 	$prop[$i]  = $account->GetPROStat($fdate, $tdate, 0);
 	$prop2[$i] = $account->GetPROStat($fdate, $tdate);
 
-    //Платные места
+    //РџР»Р°С‚РЅС‹Рµ РјРµСЃС‚Р°
 	$fpp[$i] = $account->GetStatOP(array(10,11), $fdate, $tdate);
 	$fppc[$i] = $sstat[19];
 	$fppci[$i] = $sstat[20];
     $cho[$i] = $sstat[21];
     
-    //Платные опции проектов
+    //РџР»Р°С‚РЅС‹Рµ РѕРїС†РёРё РїСЂРѕРµРєС‚РѕРІ
     $ppp[$i]      = $account->getStatOPProject($fdate, $tdate);
     $ppp_top[$i]  = $account->getStatOPProject($fdate, $tdate, 3); 
     $ppp_logo[$i] = $account->getStatOPProject($fdate, $tdate, 0);
     $ppp_office[$i] = $account->getStatOPProject($fdate, $tdate, 4);
 
-    //Конкурсы и их платные опции
+    //РљРѕРЅРєСѓСЂСЃС‹ Рё РёС… РїР»Р°С‚РЅС‹Рµ РѕРїС†РёРё
     $konk[$i]      = $account->getStatOPProject($fdate, $tdate, '', true);
 	$konk_top[$i]  = $account->getStatOPProject($fdate, $tdate, 3,  true); 
     $konk_logo[$i] = $account->getStatOPProject($fdate, $tdate, 0,  true);
     
-    // Карусель на главной
+    // РљР°СЂСѓСЃРµР»СЊ РЅР° РіР»Р°РІРЅРѕР№
     $ppfm[$i] =  $sstat[65]; 
 	
-    //Массовая рассылка    
+    //РњР°СЃСЃРѕРІР°СЏ СЂР°СЃСЃС‹Р»РєР°    
     $mass_sending_n[$i] = $account->GetStatOP(array(45), $fdate, $tdate, "NOT ((role&'000010')='000010' OR (role&'000100')='000100') AND mass_sending.is_accepted IS NULL", "LEFT JOIN mass_sending ON account_operations.id=mass_sending.account_op_id LEFT JOIN users ON mass_sending.user_id=users.uid");
     $mass_sending_a[$i] = $account->GetStatOP(array(45), $fdate, $tdate, "NOT ((role&'000010')='000010' OR (role&'000100')='000100') AND mass_sending.is_accepted='t'", "LEFT JOIN mass_sending ON account_operations.id=mass_sending.account_op_id LEFT JOIN users ON mass_sending.user_id=users.uid");
     $mass_sending_r[$i] = $account->GetStatOP(array(46), $fdate, $tdate, "NOT ((role&'000010')='000010' OR (role&'000100')='000100')", "LEFT JOIN account ON account_operations.billing_id=account.id LEFT JOIN users ON account.uid=users.uid");
 
-    //Переводы
+    //РџРµСЂРµРІРѕРґС‹
     $ours_to_alien[$i] = $account->getStatTransferOursAlien( $fdate, $tdate, true );
     $alien_to_ours[$i] = $account->getStatTransferOursAlien( $fdate, $tdate, false );
     
     
-    //Общая статистика сумм
+    //РћР±С‰Р°СЏ СЃС‚Р°С‚РёСЃС‚РёРєР° СЃСѓРјРј
     $aOverall   = $account->getStatOverall( $fdate, $tdate, true );
     $ost_b[$i]  = $aOverall['begin'];
     $ost_e[$i]  = $aOverall['end'];
     $spend[$i]  = $aOverall['spent'];
     $income[$i] = $aOverall['income'];
 
-    //Статистика пополнений счета
+    //РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕРїРѕР»РЅРµРЅРёР№ СЃС‡РµС‚Р°
 	$pstat = $account->GetStatPSEx($fdate, $tdate, array(12,36,38,43));
 
     $yd[$i] = zin($pstat[12][3]);
@@ -101,18 +101,18 @@ for ($i = 0; $i < $forms_cnt; $i++) {
 }
 
 
-$aMonthes[1] = 'январь';
-$aMonthes[2] = 'февраль';
-$aMonthes[3] = 'март';
-$aMonthes[4] = 'апрель';
-$aMonthes[5] = 'май';
-$aMonthes[6] = 'июнь';
-$aMonthes[7] = 'июль';
-$aMonthes[8] = 'август';
-$aMonthes[9] = 'сентябрь';
-$aMonthes[10] = 'октябрь';
-$aMonthes[11] = 'ноябрь';
-$aMonthes[12] = 'декабрь';
+$aMonthes[1] = 'СЏРЅРІР°СЂСЊ';
+$aMonthes[2] = 'С„РµРІСЂР°Р»СЊ';
+$aMonthes[3] = 'РјР°СЂС‚';
+$aMonthes[4] = 'Р°РїСЂРµР»СЊ';
+$aMonthes[5] = 'РјР°Р№';
+$aMonthes[6] = 'РёСЋРЅСЊ';
+$aMonthes[7] = 'РёСЋР»СЊ';
+$aMonthes[8] = 'Р°РІРіСѓСЃС‚';
+$aMonthes[9] = 'СЃРµРЅС‚СЏР±СЂСЊ';
+$aMonthes[10] = 'РѕРєС‚СЏР±СЂСЊ';
+$aMonthes[11] = 'РЅРѕСЏР±СЂСЊ';
+$aMonthes[12] = 'РґРµРєР°Р±СЂСЊ';
 
 $statYears = account::getStatYears(2006);
 $aData = $statYears['data'];
@@ -132,114 +132,114 @@ $ids = $statYears['ids'];
 <form action="." method="post" name="frm" id="frm">
 <input type="hidden" name="action" value="">
 <input type="hidden" name="forms_cnt" value="<?=$forms_cnt?>">
-<strong>Деньги</strong><br><br>
+<strong>Р”РµРЅСЊРіРё</strong><br><br>
 	<? if ($error) print(view_error($error));?>
 
 <? for ($i = 0; $i < $forms_cnt; $i++) {
 	$fdate = $fyear[$i] . "-". $fmnth[$i] ."-" .$fday[$i];
 	$tdate = $tyear[$i] . "-". $tmnth[$i] ."-" .$tday[$i];
 ?>
-с&nbsp;&nbsp;
+СЃ&nbsp;&nbsp;
 <input type="text" name="fday[]" size="2" maxlength="2" value="<?=$fday[$i]?>">
 <select name="fmnth[]">
-	<option value="1" <? if ($fmnth[$i] == 1) print "SELECTED"?>>января</option>
-	<option value="2" <? if ($fmnth[$i] == 2) print "SELECTED"?>>февраля</option>
-	<option value="3" <? if ($fmnth[$i] == 3) print "SELECTED"?>>марта</option>
-	<option value="4" <? if ($fmnth[$i] == 4) print "SELECTED"?>>апреля</option>
-	<option value="5" <? if ($fmnth[$i] == 5) print "SELECTED"?>>мая</option>
-	<option value="6" <? if ($fmnth[$i] == 6) print "SELECTED"?>>июня</option>
-	<option value="7" <? if ($fmnth[$i] == 7) print "SELECTED"?>>июля</option>
-	<option value="8" <? if ($fmnth[$i] == 8) print "SELECTED"?>>августа</option>
-	<option value="9" <? if ($fmnth[$i] == 9) print "SELECTED"?>>сентября</option>
-	<option value="10" <? if ($fmnth[$i] == 10) print "SELECTED"?>>октября</option>
-	<option value="11" <? if ($fmnth[$i] == 11) print "SELECTED"?>>ноября</option>
-	<option value="12" <? if ($fmnth[$i] == 12) print "SELECTED"?>>декабря</option>
+	<option value="1" <? if ($fmnth[$i] == 1) print "SELECTED"?>>СЏРЅРІР°СЂСЏ</option>
+	<option value="2" <? if ($fmnth[$i] == 2) print "SELECTED"?>>С„РµРІСЂР°Р»СЏ</option>
+	<option value="3" <? if ($fmnth[$i] == 3) print "SELECTED"?>>РјР°СЂС‚Р°</option>
+	<option value="4" <? if ($fmnth[$i] == 4) print "SELECTED"?>>Р°РїСЂРµР»СЏ</option>
+	<option value="5" <? if ($fmnth[$i] == 5) print "SELECTED"?>>РјР°СЏ</option>
+	<option value="6" <? if ($fmnth[$i] == 6) print "SELECTED"?>>РёСЋРЅСЏ</option>
+	<option value="7" <? if ($fmnth[$i] == 7) print "SELECTED"?>>РёСЋР»СЏ</option>
+	<option value="8" <? if ($fmnth[$i] == 8) print "SELECTED"?>>Р°РІРіСѓСЃС‚Р°</option>
+	<option value="9" <? if ($fmnth[$i] == 9) print "SELECTED"?>>СЃРµРЅС‚СЏР±СЂСЏ</option>
+	<option value="10" <? if ($fmnth[$i] == 10) print "SELECTED"?>>РѕРєС‚СЏР±СЂСЏ</option>
+	<option value="11" <? if ($fmnth[$i] == 11) print "SELECTED"?>>РЅРѕСЏР±СЂСЏ</option>
+	<option value="12" <? if ($fmnth[$i] == 12) print "SELECTED"?>>РґРµРєР°Р±СЂСЏ</option>
 </select>
 <input type="text" name="fyear[]" size="4" maxlength="4" value="<?=$fyear[$i]?>">&nbsp;&nbsp;
-по&nbsp;&nbsp;
+РїРѕ&nbsp;&nbsp;
 <input type="text" name="tday[]" size="2" maxlength="2" value="<?=$tday[$i]?>">
 <select name="tmnth[]">
-	<option value="1" <? if ($tmnth[$i] == 1) print "SELECTED"?>>января</option>
-	<option value="2" <? if ($tmnth[$i] == 2) print "SELECTED"?>>февраля</option>
-	<option value="3" <? if ($tmnth[$i] == 3) print "SELECTED"?>>марта</option>
-	<option value="4" <? if ($tmnth[$i] == 4) print "SELECTED"?>>апреля</option>
-	<option value="5" <? if ($tmnth[$i] == 5) print "SELECTED"?>>мая</option>
-	<option value="6" <? if ($tmnth[$i] == 6) print "SELECTED"?>>июня</option>
-	<option value="7" <? if ($tmnth[$i] == 7) print "SELECTED"?>>июля</option>
-	<option value="8" <? if ($tmnth[$i] == 8) print "SELECTED"?>>августа</option>
-	<option value="9" <? if ($tmnth[$i] == 9) print "SELECTED"?>>сентября</option>
-	<option value="10" <? if ($tmnth[$i] == 10) print "SELECTED"?>>октября</option>
-	<option value="11" <? if ($tmnth[$i] == 11) print "SELECTED"?>>ноября</option>
-	<option value="12" <? if ($tmnth[$i] == 12) print "SELECTED"?>>декабря</option>
+	<option value="1" <? if ($tmnth[$i] == 1) print "SELECTED"?>>СЏРЅРІР°СЂСЏ</option>
+	<option value="2" <? if ($tmnth[$i] == 2) print "SELECTED"?>>С„РµРІСЂР°Р»СЏ</option>
+	<option value="3" <? if ($tmnth[$i] == 3) print "SELECTED"?>>РјР°СЂС‚Р°</option>
+	<option value="4" <? if ($tmnth[$i] == 4) print "SELECTED"?>>Р°РїСЂРµР»СЏ</option>
+	<option value="5" <? if ($tmnth[$i] == 5) print "SELECTED"?>>РјР°СЏ</option>
+	<option value="6" <? if ($tmnth[$i] == 6) print "SELECTED"?>>РёСЋРЅСЏ</option>
+	<option value="7" <? if ($tmnth[$i] == 7) print "SELECTED"?>>РёСЋР»СЏ</option>
+	<option value="8" <? if ($tmnth[$i] == 8) print "SELECTED"?>>Р°РІРіСѓСЃС‚Р°</option>
+	<option value="9" <? if ($tmnth[$i] == 9) print "SELECTED"?>>СЃРµРЅС‚СЏР±СЂСЏ</option>
+	<option value="10" <? if ($tmnth[$i] == 10) print "SELECTED"?>>РѕРєС‚СЏР±СЂСЏ</option>
+	<option value="11" <? if ($tmnth[$i] == 11) print "SELECTED"?>>РЅРѕСЏР±СЂСЏ</option>
+	<option value="12" <? if ($tmnth[$i] == 12) print "SELECTED"?>>РґРµРєР°Р±СЂСЏ</option>
 </select>
 <input type="text" name="tyear[]" size="4" maxlength="4" value="<?=$tyear[$i]?>">
-<input type="submit" value="Ага!"><br><br>
+<input type="submit" value="РђРіР°!"><br><br>
 
 
-<strong>За указанный период:</strong>
+<strong>Р—Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ:</strong>
 <table width="100%" border="0" cellspacing="0" cellpadding="4" style="margin-top: 10px;" class="tbl-acc">
 <tr align="center" class="box4">
 	<td width="13%" class="box3" style="border-top: 1px solid #C6C6C6;">&nbsp;</td>
-	<td width="12%" style="border-top: 1px solid #C6C6C6;"><strong>ЯД</strong></td>
-	<td style="border-top: 1px solid #C6C6C6;"><strong>WMR-Б</strong></td>
-	<td style="border-top: 1px solid #C6C6C6;"><strong>Б/Н</strong></td>
-	<td style="border-top: 1px solid #C6C6C6;"><strong>СБ</strong></td>
-	<td style="border-top: 1px solid #C6C6C6;"><strong>Карта</strong></td>
-	<td style="border-top: 1px solid #C6C6C6;"><strong>ОСМП</strong></td>
-	<td style="border-top: 1px solid #C6C6C6;"><strong>Альфа</strong></td>
+	<td width="12%" style="border-top: 1px solid #C6C6C6;"><strong>РЇР”</strong></td>
+	<td style="border-top: 1px solid #C6C6C6;"><strong>WMR-Р‘</strong></td>
+	<td style="border-top: 1px solid #C6C6C6;"><strong>Р‘/Рќ</strong></td>
+	<td style="border-top: 1px solid #C6C6C6;"><strong>РЎР‘</strong></td>
+	<td style="border-top: 1px solid #C6C6C6;"><strong>РљР°СЂС‚Р°</strong></td>
+	<td style="border-top: 1px solid #C6C6C6;"><strong>РћРЎРњРџ</strong></td>
+	<td style="border-top: 1px solid #C6C6C6;"><strong>РђР»СЊС„Р°</strong></td>
 </tr>
 <tr align="center" class="box4">
-	<td class="box3"><strong>Счет</strong></td>
-	<td><?=$yd[$i]['sum']?> р<? if ($inc[$i]['sum']) { ?> |  <?=round((zin($yd[$i]['sum'])/$inc[$i]['sum'])*100)?>%<? } ?> 
+	<td class="box3"><strong>РЎС‡РµС‚</strong></td>
+	<td><?=$yd[$i]['sum']?> СЂ<? if ($inc[$i]['sum']) { ?> |  <?=round((zin($yd[$i]['sum'])/$inc[$i]['sum'])*100)?>%<? } ?> 
 	(<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=22" class="blue"><?=$yd[$i]['count']?></a>)
 	</td>
-    <td><?=$wmrw[$i]['sum']?> р<? if ($inc[$i]['sum']) { ?> |  <?=round((zin($wmrw[$i]['sum'])/$inc[$i]['sum'])*100)?>%<? } ?> 
+    <td><?=$wmrw[$i]['sum']?> СЂ<? if ($inc[$i]['sum']) { ?> |  <?=round((zin($wmrw[$i]['sum'])/$inc[$i]['sum'])*100)?>%<? } ?> 
     (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=29" class="blue"><?=$wmrw[$i]['count']?></a>)
     </td>
-	<td><?=$bn[$i]['sum']?> р<? if ($inc[$i]['sum']) { ?> |  <?=round((zin($bn[$i]['sum'])/$inc[$i]['sum'])*100)?>%<? } ?> 
+	<td><?=$bn[$i]['sum']?> СЂ<? if ($inc[$i]['sum']) { ?> |  <?=round((zin($bn[$i]['sum'])/$inc[$i]['sum'])*100)?>%<? } ?> 
     (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=25" class="blue"><?=$bn[$i]['count']?></a>)
     </td>
-	<td><?=$sb[$i]['sum']?> Cр<? if ($inc[$i]['sum']) { ?> |  <?=round((zin($sb[$i]['sum'])/$inc[$i]['sum'])*100)?>%<? } ?> 
+	<td><?=$sb[$i]['sum']?> CСЂ<? if ($inc[$i]['sum']) { ?> |  <?=round((zin($sb[$i]['sum'])/$inc[$i]['sum'])*100)?>%<? } ?> 
     (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=26" class="blue"><?=$sb[$i]['count']?></a>)
     </td>
-	<td><?=$cc[$i]['sum']?> р<? if ($inc[$i]['sum']) { ?> |  <?=round((zin($cc[$i]['sum'])/$inc[$i]['sum'])*100)?>%<? } ?> 
+	<td><?=$cc[$i]['sum']?> СЂ<? if ($inc[$i]['sum']) { ?> |  <?=round((zin($cc[$i]['sum'])/$inc[$i]['sum'])*100)?>%<? } ?> 
     (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=27" class="blue"><?=$cc[$i]['count']?></a>)
     </td>
-	<td><?=$osmp_op[$i]['sum']?> р<? if ($inc[$i]['sum']) { ?> |  <?=round((zin($osmp_op[$i]['sum'])/$inc[$i]['sum'])*100)?>%<? } ?>
+	<td><?=$osmp_op[$i]['sum']?> СЂ<? if ($inc[$i]['sum']) { ?> |  <?=round((zin($osmp_op[$i]['sum'])/$inc[$i]['sum'])*100)?>%<? } ?>
 	(<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=17" class="blue"><?=$osmp_op[$i]['cnt']?></a>)
 	</td>
-	<td><?=$alpha_op[$i]['sum']?> р<? if ($inc[$i]['sum']) { ?> |  <?=round((zin($alpha_op[$i]['sum'])/$inc[$i]['sum'])*100)?>%<? } ?>
+	<td><?=$alpha_op[$i]['sum']?> СЂ<? if ($inc[$i]['sum']) { ?> |  <?=round((zin($alpha_op[$i]['sum'])/$inc[$i]['sum'])*100)?>%<? } ?>
 	(<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=89" class="blue"><?=$alpha_op[$i]['count']?></a>)
 	</td>
 </tr>
 
 <tr>
-    <td colspan="14" class="box3"><strong>&sum;</strong> <?=$yd[$i]['sum']+$wmr[$i]['sum']+$wmrw[$i]['sum']+$bn[$i]['sum']+$sb[$i]['sum']+$cc[$i]['sum']+$osmp_op[$i]['sum']+$alpha_op[$i]['sum']?> р = <strong><?= $inc[$i]['sum'] ?> руб.</strong>
-	 (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>" class="blue">операций: <?=zin($inc[$i]['cnt'])?></a>)</td>
+    <td colspan="14" class="box3"><strong>&sum;</strong> <?=$yd[$i]['sum']+$wmr[$i]['sum']+$wmrw[$i]['sum']+$bn[$i]['sum']+$sb[$i]['sum']+$cc[$i]['sum']+$osmp_op[$i]['sum']+$alpha_op[$i]['sum']?> СЂ = <strong><?= $inc[$i]['sum'] ?> СЂСѓР±.</strong>
+	 (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>" class="blue">РѕРїРµСЂР°С†РёР№: <?=zin($inc[$i]['cnt'])?></a>)</td>
 </tr>
 <tr class="box4">
-	<td colspan="2" colspan="2" class="box3"><strong>Остаток на начало</strong></td>
-	<td colspan="12" title="Изменение счетов всех пользователей c 12 декабря 2000 года до начала периода выборки"><?= $ost_b[$i];?> руб.</td>
+	<td colspan="2" colspan="2" class="box3"><strong>РћСЃС‚Р°С‚РѕРє РЅР° РЅР°С‡Р°Р»Рѕ</strong></td>
+	<td colspan="12" title="РР·РјРµРЅРµРЅРёРµ СЃС‡РµС‚РѕРІ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ c 12 РґРµРєР°Р±СЂСЏ 2000 РіРѕРґР° РґРѕ РЅР°С‡Р°Р»Р° РїРµСЂРёРѕРґР° РІС‹Р±РѕСЂРєРё"><?= $ost_b[$i];?> СЂСѓР±.</td>
 </tr>
 <tr class="box4">
-	<td colspan="2" colspan="2" class="box3"><strong>Остаток на конец</strong></td>
-	<td colspan="12" title="Изменение счетов всех пользователей c 12 декабря 2000 года до окончания периода выборки"><?=$ost_e[$i]?> руб.</td>
+	<td colspan="2" colspan="2" class="box3"><strong>РћСЃС‚Р°С‚РѕРє РЅР° РєРѕРЅРµС†</strong></td>
+	<td colspan="12" title="РР·РјРµРЅРµРЅРёРµ СЃС‡РµС‚РѕРІ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ c 12 РґРµРєР°Р±СЂСЏ 2000 РіРѕРґР° РґРѕ РѕРєРѕРЅС‡Р°РЅРёСЏ РїРµСЂРёРѕРґР° РІС‹Р±РѕСЂРєРё"><?=$ost_e[$i]?> СЂСѓР±.</td>
 </tr>
 <tr class="box4">
-	<td colspan="2" class="box3"><strong>Всего зачислено</strong></td>
-	<td colspan="12"><?=$inc[$i]['sum']?> руб.</td>
+	<td colspan="2" class="box3"><strong>Р’СЃРµРіРѕ Р·Р°С‡РёСЃР»РµРЅРѕ</strong></td>
+	<td colspan="12"><?=$inc[$i]['sum']?> СЂСѓР±.</td>
 </tr>
 <tr class="box4">
-	<td colspan="2" class="box3"><strong>Всего потрачено</strong></td>
-	<td colspan="12"><?=$spend[$i]?> руб.</td>
+	<td colspan="2" class="box3"><strong>Р’СЃРµРіРѕ РїРѕС‚СЂР°С‡РµРЅРѕ</strong></td>
+	<td colspan="12"><?=$spend[$i]?> СЂСѓР±.</td>
 </tr>
 <tr class="box4">
-	<td colspan="2" class="box3"><strong>Переводы от "своих" к "чужим"</strong></td>
-	<td colspan="12"><?=$ours_to_alien[$i]?> руб.</td>
+	<td colspan="2" class="box3"><strong>РџРµСЂРµРІРѕРґС‹ РѕС‚ "СЃРІРѕРёС…" Рє "С‡СѓР¶РёРј"</strong></td>
+	<td colspan="12"><?=$ours_to_alien[$i]?> СЂСѓР±.</td>
 </tr>
 <tr class="box4">
-	<td colspan="2" class="box3"><strong>Переводы от "чужих" к "своим"</strong></td>
-	<td colspan="12"><?=$alien_to_ours[$i]?> руб.</td>
+	<td colspan="2" class="box3"><strong>РџРµСЂРµРІРѕРґС‹ РѕС‚ "С‡СѓР¶РёС…" Рє "СЃРІРѕРёРј"</strong></td>
+	<td colspan="12"><?=$alien_to_ours[$i]?> СЂСѓР±.</td>
 </tr>
 </table>
 
@@ -249,16 +249,16 @@ $ids = $statYears['ids'];
 
 <table width="100%" border="0" cellspacing="0" cellpadding="4" style="margin-top: 10px;" class="tbl-acc">
 <tr class="box4">
-	<td colspan="2" class="box3"><strong>PRO фрилансеры</strong></td>
-	<td colspan="12"><?=zin(abs($prop[$i]['sum']))?> руб. | <?=round((zin(abs($prop[$i]['sum']))/$spend[$i])*100)?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=1" class="blue">операций: <?=zin($prop[$i]['cnt'])?></a>)</td>
+	<td colspan="2" class="box3"><strong>PRO С„СЂРёР»Р°РЅСЃРµСЂС‹</strong></td>
+	<td colspan="12"><?=zin(abs($prop[$i]['sum']))?> СЂСѓР±. | <?=round((zin(abs($prop[$i]['sum']))/$spend[$i])*100)?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=1" class="blue">РѕРїРµСЂР°С†РёР№: <?=zin($prop[$i]['cnt'])?></a>)</td>
 </tr>
 <tr class="box4">
-	<td colspan="2" class="box3"><strong>PRO работодатели</strong></td>
-	<td colspan="12"><?=zin(abs($prop2[$i]['sum']))?> руб. | <?=round((zin(abs($prop2[$i]['sum']))/$spend[$i])*100)?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=11" class="blue">операций: <?=zin($prop2[$i]['cnt'])?></a>)</td>
+	<td colspan="2" class="box3"><strong>PRO СЂР°Р±РѕС‚РѕРґР°С‚РµР»Рё</strong></td>
+	<td colspan="12"><?=zin(abs($prop2[$i]['sum']))?> СЂСѓР±. | <?=round((zin(abs($prop2[$i]['sum']))/$spend[$i])*100)?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=11" class="blue">РѕРїРµСЂР°С†РёР№: <?=zin($prop2[$i]['cnt'])?></a>)</td>
 </tr>
 <tr class="box4">
-	<td colspan="2" class="box3"><strong>Платные проекты</strong></td>
-	<td colspan="12"><?=abs(zin($ppp[$i]['sum']))?> руб. | <?=abs(round((zin($ppp[$i]['sum'])/$spend[$i])*100))?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=101" class="blue">операций: <?=zin($ppp[$i]['cnt'])?></a>)</td>
+	<td colspan="2" class="box3"><strong>РџР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹</strong></td>
+	<td colspan="12"><?=abs(zin($ppp[$i]['sum']))?> СЂСѓР±. | <?=abs(round((zin($ppp[$i]['sum'])/$spend[$i])*100))?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=101" class="blue">РѕРїРµСЂР°С†РёР№: <?=zin($ppp[$i]['cnt'])?></a>)</td>
 </tr>
 
 <?php
@@ -266,38 +266,38 @@ $t_pp_sum[$i] = zin($ppp_top[$i]['sum'])+zin($ppp_logo[$i]['sum'])+zin($ppp_offi
 if($t_pp_sum[$i]==0) $t_pp_sum[$i]=1;
 ?>
 <tr class="box4">
-	<td colspan="2" class="box3">- Проекты В ОФИС</td>
-	<td colspan="12"><?=zin($ppp_office[$i]['sum'])?> руб. | <?=round((zin($ppp_office[$i]['sum'])/$t_pp_sum[$i])*100)?>% (операций: <?=zin($ppp_office[$i]['cnt'])?>)</td>
+	<td colspan="2" class="box3">- РџСЂРѕРµРєС‚С‹ Р’ РћР¤РРЎ</td>
+	<td colspan="12"><?=zin($ppp_office[$i]['sum'])?> СЂСѓР±. | <?=round((zin($ppp_office[$i]['sum'])/$t_pp_sum[$i])*100)?>% (РѕРїРµСЂР°С†РёР№: <?=zin($ppp_office[$i]['cnt'])?>)</td>
 </tr>
 <tr class="box4">
-	<td colspan="2" class="box3">- Закрепить наверху ленты</td>
-	<td colspan="12"><?=zin($ppp_top[$i]['sum'])?> руб. | <?=round((zin($ppp_top[$i]['sum'])/$t_pp_sum[$i])*100)?>% (операций: <?=zin($ppp_top[$i]['cnt'])?>)</td>
+	<td colspan="2" class="box3">- Р—Р°РєСЂРµРїРёС‚СЊ РЅР°РІРµСЂС…Сѓ Р»РµРЅС‚С‹</td>
+	<td colspan="12"><?=zin($ppp_top[$i]['sum'])?> СЂСѓР±. | <?=round((zin($ppp_top[$i]['sum'])/$t_pp_sum[$i])*100)?>% (РѕРїРµСЂР°С†РёР№: <?=zin($ppp_top[$i]['cnt'])?>)</td>
 </tr>
 <tr class="box4">
-	<td colspan="2" class="box3">- Логотип со ссылкой</td>
-	<td colspan="12"><?=zin($ppp_logo[$i]['sum'])?> руб. | <?=round((zin($ppp_logo[$i]['sum'])/$t_pp_sum[$i])*100)?>% (операций: <?=zin($ppp_logo[$i]['cnt'])?>)</td>
+	<td colspan="2" class="box3">- Р›РѕРіРѕС‚РёРї СЃРѕ СЃСЃС‹Р»РєРѕР№</td>
+	<td colspan="12"><?=zin($ppp_logo[$i]['sum'])?> СЂСѓР±. | <?=round((zin($ppp_logo[$i]['sum'])/$t_pp_sum[$i])*100)?>% (РѕРїРµСЂР°С†РёР№: <?=zin($ppp_logo[$i]['cnt'])?>)</td>
 </tr>
 
 
 <tr class="box4">
-	<td colspan="2" class="box3"><strong>Место на первой</strong></td>
-	<td colspan="12"><?=abs(zin($fpp[$i]['sum']))?> руб. | <?=round((zin(abs($fpp[$i]['sum']))/$spend[$i])*100)?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=2" class="blue">операций: <?=zin($fpp[$i]['cnt'])?></a>)</td>
+	<td colspan="2" class="box3"><strong>РњРµСЃС‚Рѕ РЅР° РїРµСЂРІРѕР№</strong></td>
+	<td colspan="12"><?=abs(zin($fpp[$i]['sum']))?> СЂСѓР±. | <?=round((zin(abs($fpp[$i]['sum']))/$spend[$i])*100)?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=2" class="blue">РѕРїРµСЂР°С†РёР№: <?=zin($fpp[$i]['cnt'])?></a>)</td>
 </tr>
 <tr class="box4">
-	<td colspan="2" class="box3"><strong>Место в общем каталоге</strong></td>
-	<td colspan="12"><?=zin(abs($fppc[$i]['sum']))?> руб. | <?=round((zin(abs($fppc[$i]['sum']))/$spend[$i])*100)?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=5" class="blue">операций: <?=zin($fppc[$i]['cnt'])?></a>)</td>
+	<td colspan="2" class="box3"><strong>РњРµСЃС‚Рѕ РІ РѕР±С‰РµРј РєР°С‚Р°Р»РѕРіРµ</strong></td>
+	<td colspan="12"><?=zin(abs($fppc[$i]['sum']))?> СЂСѓР±. | <?=round((zin(abs($fppc[$i]['sum']))/$spend[$i])*100)?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=5" class="blue">РѕРїРµСЂР°С†РёР№: <?=zin($fppc[$i]['cnt'])?></a>)</td>
 </tr>
 <tr class="box4">
-	<td colspan="2" class="box3"><strong>Место внутри каталога</strong></td>
-	<td colspan="12"><?=zin(abs($fppci[$i]['sum']))?> руб. | <?=round((zin(abs($fppci[$i]['sum']))/$spend[$i])*100)?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=6" class="blue">операций: <?=zin($fppci[$i]['cnt'])?></a>)</td>
+	<td colspan="2" class="box3"><strong>РњРµСЃС‚Рѕ РІРЅСѓС‚СЂРё РєР°С‚Р°Р»РѕРіР°</strong></td>
+	<td colspan="12"><?=zin(abs($fppci[$i]['sum']))?> СЂСѓР±. | <?=round((zin(abs($fppci[$i]['sum']))/$spend[$i])*100)?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=6" class="blue">РѕРїРµСЂР°С†РёР№: <?=zin($fppci[$i]['cnt'])?></a>)</td>
 </tr>
 <tr class="box4">
-	<td colspan="2" class="box3"><strong>Перемещения</strong></td>
-	<td colspan="12"><?=zin(abs($cho[$i]['sum']))?> руб. | <?=round((zin(abs($cho[$i]['sum']))/$spend[$i])*100)?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=7" class="blue">операций: <?=zin($cho[$i]['cnt'])?></a>)</td>
+	<td colspan="2" class="box3"><strong>РџРµСЂРµРјРµС‰РµРЅРёСЏ</strong></td>
+	<td colspan="12"><?=zin(abs($cho[$i]['sum']))?> СЂСѓР±. | <?=round((zin(abs($cho[$i]['sum']))/$spend[$i])*100)?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=7" class="blue">РѕРїРµСЂР°С†РёР№: <?=zin($cho[$i]['cnt'])?></a>)</td>
 </tr>
 <tr class="box4">
-	<td colspan="2" class="box3"><strong>Конкурсы</strong></td>
-	<td colspan="12"><?=zin(abs($konk[$i]['sum']))?> руб. | <?=round((zin(abs($konk[$i]['sum']))/$spend[$i])*100)?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=103" class="blue">операций: <?=zin($konk[$i]['cnt'])?></a>)</td>
+	<td colspan="2" class="box3"><strong>РљРѕРЅРєСѓСЂСЃС‹</strong></td>
+	<td colspan="12"><?=zin(abs($konk[$i]['sum']))?> СЂСѓР±. | <?=round((zin(abs($konk[$i]['sum']))/$spend[$i])*100)?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=103" class="blue">РѕРїРµСЂР°С†РёР№: <?=zin($konk[$i]['cnt'])?></a>)</td>
 </tr>
 
 <?php
@@ -305,25 +305,25 @@ $t_kn_sum[$i] = zin($konk_top[$i]['sum'])+zin($konk_logo[$i]['sum']);
 if($t_kn_sum[$i]==0) $t_kn_sum[$i]=1;
 ?>
 <tr class="box4">
-	<td colspan="2" class="box3">- Закрепить наверху ленты</td>
-	<td colspan="12"><?=zin($konk_top[$i]['sum'])?> руб. | <?=round((zin($konk_top[$i]['sum'])/$t_kn_sum[$i])*100)?>% (операций: <?=zin($konk_top[$i]['cnt'])?>)</td>
+	<td colspan="2" class="box3">- Р—Р°РєСЂРµРїРёС‚СЊ РЅР°РІРµСЂС…Сѓ Р»РµРЅС‚С‹</td>
+	<td colspan="12"><?=zin($konk_top[$i]['sum'])?> СЂСѓР±. | <?=round((zin($konk_top[$i]['sum'])/$t_kn_sum[$i])*100)?>% (РѕРїРµСЂР°С†РёР№: <?=zin($konk_top[$i]['cnt'])?>)</td>
 </tr>
 <tr class="box4">
-	<td colspan="2" class="box3">- Логотип со ссылкой</td>
-	<td colspan="12"><?=zin($konk_logo[$i]['sum'])?> руб. | <?=round((zin($konk_logo[$i]['sum'])/$t_kn_sum[$i])*100)?>% (операций: <?=zin($konk_logo[$i]['cnt'])?>)</td>
+	<td colspan="2" class="box3">- Р›РѕРіРѕС‚РёРї СЃРѕ СЃСЃС‹Р»РєРѕР№</td>
+	<td colspan="12"><?=zin($konk_logo[$i]['sum'])?> СЂСѓР±. | <?=round((zin($konk_logo[$i]['sum'])/$t_kn_sum[$i])*100)?>% (РѕРїРµСЂР°С†РёР№: <?=zin($konk_logo[$i]['cnt'])?>)</td>
 </tr>
 <tr class="box4">
-    <td colspan="2" class="box3"><strong>Карусель на главноей (руб.) </strong></td>
-    <td colspan="12"><?=zin(abs($ppfm[$i]['sum']))?> руб. | <?=round((zin(abs($ppfm[$i]['sum']))/$spend[$i])*100)?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=20" class="blue">операций: <?=zin(abs($ppfm[$i]['cnt']))?></a>)</td>
+    <td colspan="2" class="box3"><strong>РљР°СЂСѓСЃРµР»СЊ РЅР° РіР»Р°РІРЅРѕРµР№ (СЂСѓР±.) </strong></td>
+    <td colspan="12"><?=zin(abs($ppfm[$i]['sum']))?> СЂСѓР±. | <?=round((zin(abs($ppfm[$i]['sum']))/$spend[$i])*100)?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?=$fdate?>&tdate=<?=$tdate?>&akop=20" class="blue">РѕРїРµСЂР°С†РёР№: <?=zin(abs($ppfm[$i]['cnt']))?></a>)</td>
 </tr>
 <tr class="box4">
-	<td colspan="2" class="box3"><strong>Платная рассылка</strong></td>
+	<td colspan="2" class="box3"><strong>РџР»Р°С‚РЅР°СЏ СЂР°СЃСЃС‹Р»РєР°</strong></td>
 	<td colspan="12">
-        Новые: <?=zin(abs($mass_sending_n[$i]['sum']))?> руб. (операций: <?=zin(abs($mass_sending_n[$i]['cnt']))?>)
+        РќРѕРІС‹Рµ: <?=zin(abs($mass_sending_n[$i]['sum']))?> СЂСѓР±. (РѕРїРµСЂР°С†РёР№: <?=zin(abs($mass_sending_n[$i]['cnt']))?>)
         <br>
-        Принятые: <?=zin(abs($mass_sending_a[$i]['sum']))?> руб. | <?=round((zin(abs($mass_sending_a[$i]['sum']))/$spend[$i])*100)?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?= $fdate ?>&tdate=<?= $tdate ?>&akop=45" class="blue">операций: <?=zin($mass_sending_a[$i]['cnt'])?></a>)
+        РџСЂРёРЅСЏС‚С‹Рµ: <?=zin(abs($mass_sending_a[$i]['sum']))?> СЂСѓР±. | <?=round((zin(abs($mass_sending_a[$i]['sum']))/$spend[$i])*100)?>% (<a href="/siteadmin/users/?action=selacop&fdate=<?= $fdate ?>&tdate=<?= $tdate ?>&akop=45" class="blue">РѕРїРµСЂР°С†РёР№: <?=zin($mass_sending_a[$i]['cnt'])?></a>)
         <br>
-        Отказанные: <?=zin(abs($mass_sending_r[$i]['sum']))?> руб. (операций: <?=zin(abs($mass_sending_r[$i]['cnt']))?>)
+        РћС‚РєР°Р·Р°РЅРЅС‹Рµ: <?=zin(abs($mass_sending_r[$i]['sum']))?> СЂСѓР±. (РѕРїРµСЂР°С†РёР№: <?=zin(abs($mass_sending_r[$i]['cnt']))?>)
     </td>
 </tr>
 
@@ -335,7 +335,7 @@ if($t_kn_sum[$i]==0) $t_kn_sum[$i]=1;
 
 <div style="margin-bottom: 50px"></div>
 <? } ?>
-<div style="margin-top: 10px"><a href="#" class="blue" onClick="frm.action.value='inc_forms'; frm.submit();">+ Еще разок</a></div>
+<div style="margin-top: 10px"><a href="#" class="blue" onClick="frm.action.value='inc_forms'; frm.submit();">+ Р•С‰Рµ СЂР°Р·РѕРє</a></div>
 
 </form>
 <script type="text/javascript">
@@ -410,7 +410,7 @@ if (count($aData)) {
 	echo '<tr><td></td></tr>';
  } ?>
 <tr>
-    <td style="padding-left: 100px"><a class="dotted_" id="top_all_0" href="javascript: void(0)" onclick="showStats(null,null,'<?= implode(',',$ids) ?>')">Все года</a></td>
+    <td style="padding-left: 100px"><a class="dotted_" id="top_all_0" href="javascript: void(0)" onclick="showStats(null,null,'<?= implode(',',$ids) ?>')">Р’СЃРµ РіРѕРґР°</a></td>
     <td colspan="12"></td>
 </tr>
 <tr>
@@ -445,7 +445,7 @@ if (count($aData)) {
 }
 ?>
 <tr>
-    <td style="padding-left: 100px"><a class="dotted_" id="bottom_all_0" href="javascript: void(0)" onclick="showStats(null,null,'<?= implode(',',$ids) ?>')">Все года</a></td>
+    <td style="padding-left: 100px"><a class="dotted_" id="bottom_all_0" href="javascript: void(0)" onclick="showStats(null,null,'<?= implode(',',$ids) ?>')">Р’СЃРµ РіРѕРґР°</a></td>
     <td colspan="12"></td>
 </tr>
 </table>

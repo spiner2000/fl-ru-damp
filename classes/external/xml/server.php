@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Сервер для работы с API через протокол XML.
+ * РЎРµСЂРІРµСЂ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ API С‡РµСЂРµР· РїСЂРѕС‚РѕРєРѕР» XML.
  */
 class externalServer_XML extends externalBase {
 
@@ -30,10 +30,10 @@ class externalServer_XML extends externalBase {
     public $wHandler = 'setWarning';
 
     /**
-     * Возвращает экземпляр класса в зависимости от версии протокола.
-     * @param array $req   параметры запроса:
-     *                       'protocol-version' => 1.0, -- версия протокола
-     *                       'data' => file_get_contents('php://input') -- тело запроса.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР° РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РІРµСЂСЃРёРё РїСЂРѕС‚РѕРєРѕР»Р°.
+     * @param array $req   РїР°СЂР°РјРµС‚СЂС‹ Р·Р°РїСЂРѕСЃР°:
+     *                       'protocol-version' => 1.0, -- РІРµСЂСЃРёСЏ РїСЂРѕС‚РѕРєРѕР»Р°
+     *                       'data' => file_get_contents('php://input') -- С‚РµР»Рѕ Р·Р°РїСЂРѕСЃР°.
      * @return object
      */
     static function getInst($req) {
@@ -42,8 +42,8 @@ class externalServer_XML extends externalBase {
     }
     
     /**
-     * Конструктор. 
-     * @param string $xml   текст XML-запроса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ. 
+     * @param string $xml   С‚РµРєСЃС‚ XML-Р·Р°РїСЂРѕСЃР°
      */
     function __construct($xml) {
         $this->regErrorHandler();
@@ -54,7 +54,7 @@ class externalServer_XML extends externalBase {
     
     function saveLog($xml) {
     // !!!
-        // @todo Вот не знаю стоит ли тут делать так, или все же легче вызвать self::initReqXml(); но там у нас сессия инициализируется
+        // @todo Р’РѕС‚ РЅРµ Р·РЅР°СЋ СЃС‚РѕРёС‚ Р»Рё С‚СѓС‚ РґРµР»Р°С‚СЊ С‚Р°Рє, РёР»Рё РІСЃРµ Р¶Рµ Р»РµРіС‡Рµ РІС‹Р·РІР°С‚СЊ self::initReqXml(); РЅРѕ С‚Р°Рј Сѓ РЅР°СЃ СЃРµСЃСЃРёСЏ РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚СЃСЏ
         $this->_clientXml = new DOMDocument();
         libxml_use_internal_errors(true);
         if(!$this->_clientXml->loadXML($xml)) {
@@ -75,8 +75,8 @@ class externalServer_XML extends externalBase {
     }
 
     /**
-     * Инициализация, предобработка, валидация XML-документа. Загружает xml-запрос в DOM. Делает проверки, устанавливает флаги инициализирует сессию.
-     * @param string $xml   текст запроса
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ, РїСЂРµРґРѕР±СЂР°Р±РѕС‚РєР°, РІР°Р»РёРґР°С†РёСЏ XML-РґРѕРєСѓРјРµРЅС‚Р°. Р—Р°РіСЂСѓР¶Р°РµС‚ xml-Р·Р°РїСЂРѕСЃ РІ DOM. Р”РµР»Р°РµС‚ РїСЂРѕРІРµСЂРєРё, СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ С„Р»Р°РіРё РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ СЃРµСЃСЃРёСЋ.
+     * @param string $xml   С‚РµРєСЃС‚ Р·Р°РїСЂРѕСЃР°
      */
     function initReqXml() {
         $err = '';
@@ -107,7 +107,7 @@ class externalServer_XML extends externalBase {
 
         // schema validations...
         if($root->localName != self::XML_REQ_ROOT_TAG) {
-            $this->error( EXTERNAL_ERR_WRONG_REQ, 'Неверный тег документа' );
+            $this->error( EXTERNAL_ERR_WRONG_REQ, 'РќРµРІРµСЂРЅС‹Р№ С‚РµРі РґРѕРєСѓРјРµРЅС‚Р°' );
         }
 
         // init session...
@@ -116,8 +116,8 @@ class externalServer_XML extends externalBase {
     
 
     /**
-     * Разбирает атрибут client/@v -- версия клиентского приложения.
-     * @param string $cv   значение атрибута (например, "Freetray 6.7.8 (Windows)").
+     * Р Р°Р·Р±РёСЂР°РµС‚ Р°С‚СЂРёР±СѓС‚ client/@v -- РІРµСЂСЃРёСЏ РєР»РёРµРЅС‚СЃРєРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ.
+     * @param string $cv   Р·РЅР°С‡РµРЅРёРµ Р°С‚СЂРёР±СѓС‚Р° (РЅР°РїСЂРёРјРµСЂ, "Freetray 6.7.8 (Windows)").
      */
     function checkClientVersion($cv) {
         if(!$cv) return;
@@ -135,7 +135,7 @@ class externalServer_XML extends externalBase {
     }
 
     /**
-     * Обработка валидного XML-документа, отправка ответа клиенту.
+     * РћР±СЂР°Р±РѕС‚РєР° РІР°Р»РёРґРЅРѕРіРѕ XML-РґРѕРєСѓРјРµРЅС‚Р°, РѕС‚РїСЂР°РІРєР° РѕС‚РІРµС‚Р° РєР»РёРµРЅС‚Сѓ.
      */
     function handle() {
         $this->initReqXml();
@@ -145,8 +145,8 @@ class externalServer_XML extends externalBase {
     }
 
     /**
-     * Обработка xml-тега внутри корня.
-     * @param DOMNode $t   узел (тег)
+     * РћР±СЂР°Р±РѕС‚РєР° xml-С‚РµРіР° РІРЅСѓС‚СЂРё РєРѕСЂРЅСЏ.
+     * @param DOMNode $t   СѓР·РµР» (С‚РµРі)
      */
     function handleTag($t) {
         if($t->localName == self::XML_REQ_CALL_TAG) {
@@ -161,10 +161,10 @@ class externalServer_XML extends externalBase {
     }                            
 
     /**
-     * Обработка метода. Инициализирует api, соотвествующее пространству имен данного метода,
-     * делает вызов, формирует тег результата.
+     * РћР±СЂР°Р±РѕС‚РєР° РјРµС‚РѕРґР°. РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ api, СЃРѕРѕС‚РІРµСЃС‚РІСѓСЋС‰РµРµ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІСѓ РёРјРµРЅ РґР°РЅРЅРѕРіРѕ РјРµС‚РѕРґР°,
+     * РґРµР»Р°РµС‚ РІС‹Р·РѕРІ, С„РѕСЂРјРёСЂСѓРµС‚ С‚РµРі СЂРµР·СѓР»СЊС‚Р°С‚Р°.
      *
-     * @param DOMNode $m   тег метода.
+     * @param DOMNode $m   С‚РµРі РјРµС‚РѕРґР°.
      */
     function handleMethod($m) {
         static $pos = 1;
@@ -191,8 +191,8 @@ class externalServer_XML extends externalBase {
     }
 
     /**
-     * Буфер ошибок. Регистрирует ошибку, заканчивает работу.
-     * @param mixed $err   описание ошибки (массив -- структурированное описание).
+     * Р‘СѓС„РµСЂ РѕС€РёР±РѕРє. Р РµРіРёСЃС‚СЂРёСЂСѓРµС‚ РѕС€РёР±РєСѓ, Р·Р°РєР°РЅС‡РёРІР°РµС‚ СЂР°Р±РѕС‚Сѓ.
+     * @param mixed $err   РѕРїРёСЃР°РЅРёРµ РѕС€РёР±РєРё (РјР°СЃСЃРёРІ -- СЃС‚СЂСѓРєС‚СѓСЂРёСЂРѕРІР°РЅРЅРѕРµ РѕРїРёСЃР°РЅРёРµ).
      */
     function setError($err) {
         if(!$this->_debug && isset($err['debug']))
@@ -204,8 +204,8 @@ class externalServer_XML extends externalBase {
     }
 
     /**
-     * Регистрирует предупреждение.
-     * @param mixed $warn   описание сообщения (массив -- структурированное описание).
+     * Р РµРіРёСЃС‚СЂРёСЂСѓРµС‚ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ.
+     * @param mixed $warn   РѕРїРёСЃР°РЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ (РјР°СЃСЃРёРІ -- СЃС‚СЂСѓРєС‚СѓСЂРёСЂРѕРІР°РЅРЅРѕРµ РѕРїРёСЃР°РЅРёРµ).
      */
     function setWarning($warn) {
         if(!$this->_debug) return;
@@ -213,7 +213,7 @@ class externalServer_XML extends externalBase {
     }
 
     /**
-     * Формирует ответ, заканчивает работу.
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ РѕС‚РІРµС‚, Р·Р°РєР°РЅС‡РёРІР°РµС‚ СЂР°Р±РѕС‚Сѓ.
      */
     function response() {
         $xmlns=$sess=$err=$warns = '';
@@ -241,9 +241,9 @@ class externalServer_XML extends externalBase {
 
 
     /**
-     * Преобразует xml-переменную в php-переменную.
-     * @param DOMNode $vnode   контейнер сореджимого переменной (<v-p>, <v-r>, <v-x>)
-     * @return mixed   значение переменной.
+     * РџСЂРµРѕР±СЂР°Р·СѓРµС‚ xml-РїРµСЂРµРјРµРЅРЅСѓСЋ РІ php-РїРµСЂРµРјРµРЅРЅСѓСЋ.
+     * @param DOMNode $vnode   РєРѕРЅС‚РµР№РЅРµСЂ СЃРѕСЂРµРґР¶РёРјРѕРіРѕ РїРµСЂРµРјРµРЅРЅРѕР№ (<v-p>, <v-r>, <v-x>)
+     * @return mixed   Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№.
      */
     function varXml2Php($vnode) {
         $pv = NULL;
@@ -265,11 +265,11 @@ class externalServer_XML extends externalBase {
 
 
     /**
-     * Преобразует php-переменную в xml-переменную.
-     * @param mixed $pv   значение переменной.
-     * @param string $vtype   тип контейнера переменной (<v-p>, <v-r>, <v-x>, <v>)
-     * @param string $key   индекс элемента, если переменная находится внутри массива. Используется только с self::XML_VAR_ITM_TAG
-     * @return string   xml-текст переменной.
+     * РџСЂРµРѕР±СЂР°Р·СѓРµС‚ php-РїРµСЂРµРјРµРЅРЅСѓСЋ РІ xml-РїРµСЂРµРјРµРЅРЅСѓСЋ.
+     * @param mixed $pv   Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№.
+     * @param string $vtype   С‚РёРї РєРѕРЅС‚РµР№РЅРµСЂР° РїРµСЂРµРјРµРЅРЅРѕР№ (<v-p>, <v-r>, <v-x>, <v>)
+     * @param string $key   РёРЅРґРµРєСЃ СЌР»РµРјРµРЅС‚Р°, РµСЃР»Рё РїРµСЂРµРјРµРЅРЅР°СЏ РЅР°С…РѕРґРёС‚СЃСЏ РІРЅСѓС‚СЂРё РјР°СЃСЃРёРІР°. РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ С‚РѕР»СЊРєРѕ СЃ self::XML_VAR_ITM_TAG
+     * @return string   xml-С‚РµРєСЃС‚ РїРµСЂРµРјРµРЅРЅРѕР№.
      */
     function varPhp2Xml($pv, $vtype = self::XML_VAR_ANY_TAG, $key = NULL) {
         $katt = $key!==NULL ? ' '.self::XML_VAR_ITM_KEY_ATT.'="'.$key.'"' : '';

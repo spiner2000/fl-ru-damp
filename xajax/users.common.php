@@ -25,7 +25,7 @@ if (!$xajax) {
         $xajax->register(XAJAX_FUNCTION, "getUserPhoto"); 
         $xajax->register(XAJAX_FUNCTION, "GetFreeLogin");
         
-    //Àÿêñ îáðàáîò÷èêè ïîïàïà ïîêóïêè ÏÐÎ
+    //ÐÑÐºÑ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚Ñ‡Ð¸ÐºÐ¸ Ð¿Ð¾Ð¿Ð°Ð¿Ð° Ð¿Ð¾ÐºÑƒÐ¿ÐºÐ¸ ÐŸÐ Ðž
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROPayAccount", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROGetYandexKassaLink", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROGetPlatipotomLink", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));

@@ -91,7 +91,7 @@ try
                 WHERE id = {$reserveInstance->getID()} AND src_id = {$order_id} AND type = 10;
                     
                 INSERT INTO reserves_arbitrage(reserve_id, is_emp, frl_id, emp_id, status, message) 
-                VALUES({$reserveInstance->getID()},true,{$data['frl_id']},{$data['emp_id']},0,'Спорный вопрос по заказу.');
+                VALUES({$reserveInstance->getID()},true,{$data['frl_id']},{$data['emp_id']},0,'РЎРїРѕСЂРЅС‹Р№ РІРѕРїСЂРѕСЃ РїРѕ Р·Р°РєР°Р·Сѓ.');
                     
                 DELETE FROM reserves_payout WHERE reserve_id = {$reserveInstance->getID()};
                 DELETE FROM reserves_payout_reqv WHERE reserve_id = {$reserveInstance->getID()};

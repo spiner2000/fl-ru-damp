@@ -37,7 +37,7 @@ $uid = 33;
 $reqvs = sbr_meta::getUserReqvs($uid);
 $reqv = $reqvs[$reqvs['form_type']];
 
-//Ïðîâåðêà íàëè÷èÿ ðåçåðâà ñðåäñòâ
+//ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð½Ð°Ð»Ð¸Ñ‡Ð¸Ñ Ñ€ÐµÐ·ÐµÑ€Ð²Ð° ÑÑ€ÐµÐ´ÑÑ‚Ð²
 $reserve_id = 3;
 $reserveInstance = ReservesModelFactory::getInstanceById($reserve_id);
 $reserve_data = $reserveInstance->getReserveData();

@@ -68,17 +68,17 @@ if ($objUser->uid > 0) {
 
         $pro_last = payed::ProLast($_SESSION['login']);
 
-        echo "Ваш аккаунт будет заморожен с <b>" . date('d.m.Y', strtotime($from_date)) . "</b> на <b>{$freeze_days} дней</b>" ;
+        echo "Р’Р°С€ Р°РєРєР°СѓРЅС‚ Р±СѓРґРµС‚ Р·Р°РјРѕСЂРѕР¶РµРЅ СЃ <b>" . date('d.m.Y', strtotime($from_date)) . "</b> РЅР° <b>{$freeze_days} РґРЅРµР№</b>" ;
         exit;
         
     //} elseif (strtotime($from_date) > strtotime($_SESSION['pro_last']) || strtotime($from_date) < $fstart) {
-    //    echo 'Неверная дата начала заморозки.';
+    //    echo 'РќРµРІРµСЂРЅР°СЏ РґР°С‚Р° РЅР°С‡Р°Р»Р° Р·Р°РјРѕСЂРѕР·РєРё.';
     } else {
-        echo 'Ошибка, не указана одна из дат.';
+        echo 'РћС€РёР±РєР°, РЅРµ СѓРєР°Р·Р°РЅР° РѕРґРЅР° РёР· РґР°С‚.';
     }
 
 } else {
-    echo 'Пользователь не найден.';
+    echo 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РЅР°Р№РґРµРЅ.';
 }
 
 

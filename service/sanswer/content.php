@@ -1,6 +1,6 @@
 <?
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
-// идет в релиз из-за связей, поэтому пока 404
+// РёРґРµС‚ РІ СЂРµР»РёР· РёР·-Р·Р° СЃРІСЏР·РµР№, РїРѕСЌС‚РѕРјСѓ РїРѕРєР° 404
 header_location_exit('/404.php');
 ?>
 <script type="text/javascript">
@@ -29,37 +29,37 @@ window.addEvent('domready', function() {
 <div class="b-layout__right b-layout__right_relative b-layout__right_width_72ps b-layout__right_float_right">
     <div class="b-menu b-menu_crumbs">
         <ul class="b-menu__list">
-            <li class="b-menu__item"><a href="/service/" class="b-menu__link">Все услуги сайта</a>&#160;&rarr;&#160;</li>
+            <li class="b-menu__item"><a href="/service/" class="b-menu__link">Р’СЃРµ СѓСЃР»СѓРіРё СЃР°Р№С‚Р°</a>&#160;&rarr;&#160;</li>
         </ul>
     </div>
-    <h1 class="b-page__title b-page__title_padbot_17">Выделение ответа в проекте</h1>
+    <h1 class="b-page__title b-page__title_padbot_17">Р’С‹РґРµР»РµРЅРёРµ РѕС‚РІРµС‚Р° РІ РїСЂРѕРµРєС‚Рµ</h1>
     <a name="top"></a>
-    <p class="b-layout__txt b-layout__txt_padbot_40">Увеличьте свои шансы получить проект &mdash; сделайте свой ответ заметнее, чем <br />у всех остальных.</p>
+    <p class="b-layout__txt b-layout__txt_padbot_40">РЈРІРµР»РёС‡СЊС‚Рµ СЃРІРѕРё С€Р°РЅСЃС‹ РїРѕР»СѓС‡РёС‚СЊ РїСЂРѕРµРєС‚ &mdash; СЃРґРµР»Р°Р№С‚Рµ СЃРІРѕР№ РѕС‚РІРµС‚ Р·Р°РјРµС‚РЅРµРµ, С‡РµРј <br />Сѓ РІСЃРµС… РѕСЃС‚Р°Р»СЊРЅС‹С….</p>
 
     <div class="b-layout">
             <table class="b-layout__table">
                 <tr class="b-layuot__tr">
                     <td class="b-layout__left b-layout__left_width_500">
-                        <h2 class="b-promo__h2 b-promo__h2_padbot_40">Стоимость услуги &mdash; <span class="b-promo__txt b-promo__txt_fontsize_22 b-promo__txt_color_fd6c30"><?= number_format(projects_offers_answers::COLOR_FM_COST, 0, ",", "")?> рублей</span>.</h2>
+                        <h2 class="b-promo__h2 b-promo__h2_padbot_40">РЎС‚РѕРёРјРѕСЃС‚СЊ СѓСЃР»СѓРіРё &mdash; <span class="b-promo__txt b-promo__txt_fontsize_22 b-promo__txt_color_fd6c30"><?= number_format(projects_offers_answers::COLOR_FM_COST, 0, ",", "")?> СЂСѓР±Р»РµР№</span>.</h2>
 
-                        <h2 class="b-promo__h2 b-promo__h2_padbot_14">Почему это выгодно</h2>
+                        <h2 class="b-promo__h2 b-promo__h2_padbot_14">РџРѕС‡РµРјСѓ СЌС‚Рѕ РІС‹РіРѕРґРЅРѕ</h2>
                         <ul class="b-promo__list b-promo__list_padbot_37">
-                            <li class="b-promo__item b-promo__item_lineheight_1 b-promo__item_margbot_10"><span class="b-promo__item-number b-promo__item-plus"></span>Ваше объявление заметнее, чем у всех остальных.</li>
-                            <li class="b-promo__item b-promo__item_lineheight_1 b-promo__item_margbot_10"><span class="b-promo__item-number b-promo__item-plus"></span>Вы возвышаетесь в глазах заказчика.</li>
+                            <li class="b-promo__item b-promo__item_lineheight_1 b-promo__item_margbot_10"><span class="b-promo__item-number b-promo__item-plus"></span>Р’Р°С€Рµ РѕР±СЉСЏРІР»РµРЅРёРµ Р·Р°РјРµС‚РЅРµРµ, С‡РµРј Сѓ РІСЃРµС… РѕСЃС‚Р°Р»СЊРЅС‹С….</li>
+                            <li class="b-promo__item b-promo__item_lineheight_1 b-promo__item_margbot_10"><span class="b-promo__item-number b-promo__item-plus"></span>Р’С‹ РІРѕР·РІС‹С€Р°РµС‚РµСЃСЊ РІ РіР»Р°Р·Р°С… Р·Р°РєР°Р·С‡РёРєР°.</li>
                         </ul>
-                        <h2 class="b-promo__h2 b-promo__h2_padbot_14">Как это работает</h2>
+                        <h2 class="b-promo__h2 b-promo__h2_padbot_14">РљР°Рє СЌС‚Рѕ СЂР°Р±РѕС‚Р°РµС‚</h2>
                         <ul class="b-promo__list b-promo__list_padbot_37">
-                            <li class="b-promo__item b-promo__item_lineheight_1 b-promo__item_margbot_10"><span class="b-promo__item-number b-promo__item-number_1"></span>Найдите интересующий вас <a class="b-promo__link" href="/" target="_blank">проект</a>.</li>
-                            <li class="b-promo__item b-promo__item_lineheight_1 b-promo__item_margbot_10"><span class="b-promo__item-number b-promo__item-number_2"></span>Добавьте свое предложение.</li>
-                            <li class="b-promo__item b-promo__item_lineheight_1 b-promo__item_margbot_10"><span class="b-promo__item-number b-promo__item-number_3"></span>Поставьте галочку &laquo;Выделить предложение цветом&raquo;
+                            <li class="b-promo__item b-promo__item_lineheight_1 b-promo__item_margbot_10"><span class="b-promo__item-number b-promo__item-number_1"></span>РќР°Р№РґРёС‚Рµ РёРЅС‚РµСЂРµСЃСѓСЋС‰РёР№ РІР°СЃ <a class="b-promo__link" href="/" target="_blank">РїСЂРѕРµРєС‚</a>.</li>
+                            <li class="b-promo__item b-promo__item_lineheight_1 b-promo__item_margbot_10"><span class="b-promo__item-number b-promo__item-number_2"></span>Р”РѕР±Р°РІСЊС‚Рµ СЃРІРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ.</li>
+                            <li class="b-promo__item b-promo__item_lineheight_1 b-promo__item_margbot_10"><span class="b-promo__item-number b-promo__item-number_3"></span>РџРѕСЃС‚Р°РІСЊС‚Рµ РіР°Р»РѕС‡РєСѓ &laquo;Р’С‹РґРµР»РёС‚СЊ РїСЂРµРґР»РѕР¶РµРЅРёРµ С†РІРµС‚РѕРј&raquo;
                                 <img class="b-promo__answer b-promo__answer_margtop_10" src="/css/block/b-promo/b-promo__answer.png" alt="" width="391" height="38" /></li>
                         </ul>
                     </td>
                     <td class="b-layout__right">
-                        <h2 class="b-promo__h2 b-promo__h2_padbot_14">Попробуйте</h2>
+                        <h2 class="b-promo__h2 b-promo__h2_padbot_14">РџРѕРїСЂРѕР±СѓР№С‚Рµ</h2>
                         <div id="answer-select" class="b-check b-check_padbot_10">
                             <input id="answer" class="b-check__input" name="" type="checkbox" value="" />
-                            <label class="b-check__label b-check__label_fontsize_13" for="answer">выделить предложение цветом</label>
+                            <label class="b-check__label b-check__label_fontsize_13" for="answer">РІС‹РґРµР»РёС‚СЊ РїСЂРµРґР»РѕР¶РµРЅРёРµ С†РІРµС‚РѕРј</label>
                         </div>
                         <div id="promo_answer_slider1" class="b-promo__answer_slider"><div id="promo_answer_slider2" class="b-promo__answer_slider b-promo__answer_slider2" style="display:none; opacity: 0;"></div></div>
 					</td>

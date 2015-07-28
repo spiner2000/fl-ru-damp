@@ -7,9 +7,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/banner_promo.php");
 session_start();
 get_uid();
 /**
-  * Проверка заполнености полей
-  * @param banner_promo &$bannerData - объект класса с информацией о баннере  
-  * @param $id                       - идентификатор редактируемой записи 
+  * РџСЂРѕРІРµСЂРєР° Р·Р°РїРѕР»РЅРµРЅРѕСЃС‚Рё РїРѕР»РµР№
+  * @param banner_promo &$bannerData - РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° СЃ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ Р±Р°РЅРЅРµСЂРµ  
+  * @param $id                       - РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЂРµРґР°РєС‚РёСЂСѓРµРјРѕР№ Р·Р°РїРёСЃРё 
   * */
 function b_promo_validate(&$bannerData, $recId = 0) {
 
@@ -20,12 +20,12 @@ function b_promo_validate(&$bannerData, $recId = 0) {
         $code_txt = __paramInit("string", null, "code_txt");
         $bannerData->files = $file = $bannerData->saveImg($err);
         if ($type == 'image' && (trim($text) == "")&&(trim($file->name) == "")) {
-            $errObject->entityError = "Нужно ввести текст ссылки или загрузить изображение.";
+            $errObject->entityError = "РќСѓР¶РЅРѕ РІРІРµСЃС‚Рё С‚РµРєСЃС‚ СЃСЃС‹Р»РєРё РёР»Рё Р·Р°РіСЂСѓР·РёС‚СЊ РёР·РѕР±СЂР°Р¶РµРЅРёРµ.";
             if ($err) $errObject->entityError .= "<br/>$err";            
             $error = 1;
         }
         if($type == 'code' && trim($code_txt) == "") {
-            $errObject->entityError = "Нужно ввести текст кода.";
+            $errObject->entityError = "РќСѓР¶РЅРѕ РІРІРµСЃС‚Рё С‚РµРєСЃС‚ РєРѕРґР°.";
             if ($err) $errObject->entityError .= "<br/>$err";            
             $error = 1;
         }
@@ -43,7 +43,7 @@ function b_promo_validate(&$bannerData, $recId = 0) {
         
         $pattern   = "#[0-9]{4}\-[0-9]{2}\-[0-9]{2}#";        
         if (!preg_match($pattern, $from, $m)||!preg_match($pattern, $to, $m)) {
-            $errObject->dateError = "Ошибка при вводе даты";
+            $errObject->dateError = "РћС€РёР±РєР° РїСЂРё РІРІРѕРґРµ РґР°С‚С‹";
             $error = 1;
         }
         $data  = explode("-", $from);
@@ -51,7 +51,7 @@ function b_promo_validate(&$bannerData, $recId = 0) {
         $data  = explode("-", $to);
         $toT   = mktime(0, 0, 0, $data[1], $data[2], $data[0]);
         if ($toT <= $fromT) {
-            $errObject->dateError = "Дата начала не должна быть позже даты окончания";
+            $errObject->dateError = "Р”Р°С‚Р° РЅР°С‡Р°Р»Р° РЅРµ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РїРѕР·Р¶Рµ РґР°С‚С‹ РѕРєРѕРЅС‡Р°РЅРёСЏ";
             $error = 1;
         }
         $adv = __paramInit("bool", null, "advertising");
@@ -68,14 +68,14 @@ function b_promo_validate(&$bannerData, $recId = 0) {
             global $DB;
             $n = $DB->val($query, $page_target);
             if ($n) {
-                $errObject->dateError = "В указанный период времени уже размещена рекламная ссылка";
+                $errObject->dateError = "Р’ СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ РІСЂРµРјРµРЅРё СѓР¶Рµ СЂР°Р·РјРµС‰РµРЅР° СЂРµРєР»Р°РјРЅР°СЏ СЃСЃС‹Р»РєР°";
                 $error = 1;
             }
         }
         $link = __paramInit("string", null, "banner_link");
         if (!trim($link)) {
         	$error = 1;
-        	$errObject->linkError = "Поле обязательно для заполнения";
+        	$errObject->linkError = "РџРѕР»Рµ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ";
         }
         if ($errObject->linkError == '') {
             $link = addhttp($link);
@@ -86,7 +86,7 @@ function b_promo_validate(&$bannerData, $recId = 0) {
         $name = __paramInit("string", null, "name");
         if (!trim($name)) {
         	$error = 1;
-        	$errObject->nameError = "Поле обязательно для заполнения";
+        	$errObject->nameError = "РџРѕР»Рµ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ";
         }
         if (!$error) $errObject = $error;
         return $errObject;
@@ -99,7 +99,7 @@ $inner_page = "inner_menu.php";
 $css_file = array('payed.css','moderation.css','nav.css','calendar.css');
 $js_file    = array( 'calendar.js' );
 
-//просмотр информации о статистике баннера
+//РїСЂРѕСЃРјРѕС‚СЂ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃС‚Р°С‚РёСЃС‚РёРєРµ Р±Р°РЅРЅРµСЂР°
 if(isset($_GET['type'])) {
     $type = $bpromo->setType(intval($_GET['type']), true);
     if($type > 0) {
@@ -113,7 +113,7 @@ if(isset($_GET['type'])) {
     $banners = $bpromo->getInfoBanners();
 }
 	
-//редактирование
+//СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ
 if(isset($_GET['edit'])) {
     $edit = intval($_GET['edit']);
     $bpromo->setType($edit, true);
@@ -127,7 +127,7 @@ if(isset($_GET['edit'])) {
     if ($bpromo->info['is_role'][1] == '1') $isEmpChecked = 'checked="checked"';
     $inner_page = "inner_edit.php";
     if(isset($_POST['save'])) {
-        // проверка на заполненность полей
+        // РїСЂРѕРІРµСЂРєР° РЅР° Р·Р°РїРѕР»РЅРµРЅРЅРѕСЃС‚СЊ РїРѕР»РµР№
         $error = b_promo_validate($bpromo, (int)$_POST['id']);
         if (__paramInit("bool", null, "advertising")) $advChecked    = 'checked="checked"';        
         if (__paramInit("bool", null, "is_activity")) $activeChecked = 'checked="checked"';
@@ -147,7 +147,7 @@ if(isset($_GET['edit'])) {
                                             $_POST['img_title'], $bpromo->link,  $_POST['link_style'], __paraminit("bool", null, 'advertising'), $_POST['text'], $_POST['type_ban'], $_POST['code_text'],
                                             $login_access, $is_pro, $is_role, $_POST['page_target']);
             if($edit) {
-            	$success_string = "Изменения сохранены";//header("Location: /siteadmin/ban_promo/?edit=".$_POST['id']);
+            	$success_string = "РР·РјРµРЅРµРЅРёСЏ СЃРѕС…СЂР°РЅРµРЅС‹";//header("Location: /siteadmin/ban_promo/?edit=".$_POST['id']);
             	$advChecked    = '';
                 $activeChecked = '';
                 $isPROChecked  = '';
@@ -165,7 +165,7 @@ if(isset($_GET['edit'])) {
     }
 }
 
-//удаление
+//СѓРґР°Р»РµРЅРёРµ
 if(isset($_GET['delete'])) {
     if ( $_SESSION["rand"] != $_POST["u_token_key"] ) {
         header ("Location: /404.php");
@@ -177,13 +177,13 @@ if(isset($_GET['delete'])) {
     if($deleted) header("Location: /siteadmin/ban_promo/");
 }
 
-//создание
+//СЃРѕР·РґР°РЅРёРµ
 if(isset($_GET['new'])) {
     $advChecked    = '';
     $activeChecked = '';
     $inner_page = "inner_new.php";
     if(isset($_POST['new'])) {
-        // проверка на заполненность полей
+        // РїСЂРѕРІРµСЂРєР° РЅР° Р·Р°РїРѕР»РЅРµРЅРЅРѕСЃС‚СЊ РїРѕР»РµР№
         $error = b_promo_validate($bpromo);        
         if (__paramInit("bool", null, "advertising")) $advChecked    = 'checked="checked"';        
         if (__paramInit("bool", null, "is_activity")) $activeChecked = 'checked="checked"'; 

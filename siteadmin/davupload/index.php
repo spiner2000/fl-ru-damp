@@ -9,10 +9,10 @@ if (!(hasPermissions('admin'))) {
     exit;
 }
 
-$mode   = __paramInit( 'string', 'mode',   null,     '' ); // раздел
-$action = __paramInit( 'string', 'action', 'action', '' ); // текущее действие
-$view = __paramInit( 'string', 'view', 'view', '' );     // запрос шаблона
-// где находимся
+$mode   = __paramInit( 'string', 'mode',   null,     '' ); // СЂР°Р·РґРµР»
+$action = __paramInit( 'string', 'action', 'action', '' ); // С‚РµРєСѓС‰РµРµ РґРµР№СЃС‚РІРёРµ
+$view = __paramInit( 'string', 'view', 'view', '' );     // Р·Р°РїСЂРѕСЃ С€Р°Р±Р»РѕРЅР°
+// РіРґРµ РЅР°С…РѕРґРёРјСЃСЏ
 if ( !in_array($mode, array('files')) ) {
     header ("Location: /404.php"); 
     exit;

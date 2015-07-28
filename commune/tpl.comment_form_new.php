@@ -53,12 +53,12 @@ $is_author = $user_mod & (commune::MOD_COMM_AUTHOR);
 <input type="hidden" name="action" value="do.<?= $action ?>"/>
 <input type="hidden" name="cat" value="<?= $cat ?>"/>
 
-<? // заголовок ?>
+<? // Р·Р°РіРѕР»РѕРІРѕРє ?>
 <div class="b-form b-form_padbot_20 b-layout">
     <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table b-layout__table_width_full">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_90">
-                <label class="b-form__name b-form__name_padtop_5 b-form__name_fontsize_13 b-form__name_width_90">Заголовок</label>
+                <label class="b-form__name b-form__name_padtop_5 b-form__name_fontsize_13 b-form__name_width_90">Р—Р°РіРѕР»РѕРІРѕРє</label>
             </td>
             <td class="b-layout__right">
                 <div class="b-combo">
@@ -70,12 +70,12 @@ $is_author = $user_mod & (commune::MOD_COMM_AUTHOR);
         </tr>
     </table>
 </div>
-<? // текстовое поле ?>
+<? // С‚РµРєСЃС‚РѕРІРѕРµ РїРѕР»Рµ ?>
 <div class="b-form b-form_padleft_90<?= !empty($alert['msgtext']) ? ' b-combo__input_error' : '' ?>">
     <textarea id="msg_source" name="msgtext_source" style="display:none;height:200px"><?= $msgtext ?></textarea>
     <textarea class="wysiwyg" style="height:200px" onfocus="if($('msgtext_error')) $('msgtext_error').style.display = 'none';" id="msg" name="msgtext" rows="5" cols="10"><?= $msgtext ?></textarea>
 </div>
-<? // загрузка файлов ?>
+<? // Р·Р°РіСЂСѓР·РєР° С„Р°Р№Р»РѕРІ ?>
 <div class="b-form b-form_padleft_90 b-file">
     <table class="b-file_layout" cellpadding="0" cellspacing="0" border="0">
         <tr>
@@ -85,7 +85,7 @@ $is_author = $user_mod & (commune::MOD_COMM_AUTHOR);
                     <a href="#" class="b-button b-button_rectangle_color_transparent">
                         <span class="b-button__b1">
                             <span class="b-button__b2">
-                                <span class="b-button__txt">Загрузить файлы</span>
+                                <span class="b-button__txt">Р—Р°РіСЂСѓР·РёС‚СЊ С„Р°Р№Р»С‹</span>
                             </span>
                         </span>
                     </a>
@@ -94,13 +94,13 @@ $is_author = $user_mod & (commune::MOD_COMM_AUTHOR);
             <td class="b-file__text">
                 <div class="b-filter">
                     <div class="b-filter__body b-filter__body_padtop_10">
-                        <a href="#" class="b-filter__link b-filter__link_fontsize_11 b-filter__link_dot_41">Требования к файлам</a>
+                        <a href="#" class="b-filter__link b-filter__link_fontsize_11 b-filter__link_dot_41">РўСЂРµР±РѕРІР°РЅРёСЏ Рє С„Р°Р№Р»Р°Рј</a>
                     </div>
                     <div class="b-shadow b-filter__toggle b-filter__toggle_hide b-shadow__margleft_-110  b-shadow_top_30">
                                         <div class="b-shadow__body b-shadow__body_pad_15 b-shadow_width_270 b-shadow__body_bg_fff">
-                                            <div class="b-shadow__txt b-shadow__txt_fontsize_11 b-shadow__txt_padbot_5">Разрешается добавлять не более <span class="b-shadow__txt b-shadow__txt_bold">10 файлов</span> общим объемом не более 5 МБ.</div>
-                                            <div class="b-shadow__txt b-shadow__txt_fontsize_11 b-shadow__txt_padbot_5">jpg и gif размером <span class="b-shadow__txt b-shadow__txt_bold">600х1000 пикс.</span> и весом не более 300 КБ будут вставлены в текст поста, остальные файлы будут приложены к нему.</div>
-                                            <div class="b-shadow__txt b-shadow__txt_fontsize_11">Запрещенные форматы: ade, adp, chm, cmd, com, cpl, exe, hta, ins, isp, jse, lib, mde, msk, msp, mst, pif, scr, sct, shb, sys, vb, vbe, vbs, vxd, wsc, wsf, wsh</div>
+                                            <div class="b-shadow__txt b-shadow__txt_fontsize_11 b-shadow__txt_padbot_5">Р Р°Р·СЂРµС€Р°РµС‚СЃСЏ РґРѕР±Р°РІР»СЏС‚СЊ РЅРµ Р±РѕР»РµРµ <span class="b-shadow__txt b-shadow__txt_bold">10 С„Р°Р№Р»РѕРІ</span> РѕР±С‰РёРј РѕР±СЉРµРјРѕРј РЅРµ Р±РѕР»РµРµ 5 РњР‘.</div>
+                                            <div class="b-shadow__txt b-shadow__txt_fontsize_11 b-shadow__txt_padbot_5">jpg Рё gif СЂР°Р·РјРµСЂРѕРј <span class="b-shadow__txt b-shadow__txt_bold">600С…1000 РїРёРєСЃ.</span> Рё РІРµСЃРѕРј РЅРµ Р±РѕР»РµРµ 300 РљР‘ Р±СѓРґСѓС‚ РІСЃС‚Р°РІР»РµРЅС‹ РІ С‚РµРєСЃС‚ РїРѕСЃС‚Р°, РѕСЃС‚Р°Р»СЊРЅС‹Рµ С„Р°Р№Р»С‹ Р±СѓРґСѓС‚ РїСЂРёР»РѕР¶РµРЅС‹ Рє РЅРµРјСѓ.</div>
+                                            <div class="b-shadow__txt b-shadow__txt_fontsize_11">Р—Р°РїСЂРµС‰РµРЅРЅС‹Рµ С„РѕСЂРјР°С‚С‹: ade, adp, chm, cmd, com, cpl, exe, hta, ins, isp, jse, lib, mde, msk, msp, mst, pif, scr, sct, shb, sys, vb, vbe, vbs, vxd, wsc, wsf, wsh</div>
                                         </div>
                         <div class="b-shadow__icon_nosik"></div>
                         <div class="b-shadow__icon_close"></div>
@@ -110,11 +110,11 @@ $is_author = $user_mod & (commune::MOD_COMM_AUTHOR);
         </tr>
     </table>
 </div>
-<? // добавить видео ?>
+<? // РґРѕР±Р°РІРёС‚СЊ РІРёРґРµРѕ ?>
 <div class="b-form b-form_padleft_90" id="add_yt_box">
     <a href="#" class="b-button b-button_m_add" id="add_yt_box1"></a>
     <div class="b-form__txt b-form__txt_padleft_5">
-        <a id="add_yt_box2" class="b-form__link b-form__link_dot_0f71c8" href="#">Добавить видео</a>
+        <a id="add_yt_box2" class="b-form__link b-form__link_dot_0f71c8" href="#">Р”РѕР±Р°РІРёС‚СЊ РІРёРґРµРѕ</a>
     </div>
 </div>
 <div class="b-form b-form_padleft_90 b-form_padbot_20" id="yt_box" style="display:<?= $youtube_link ? 'block' : 'none' ?>">
@@ -125,7 +125,7 @@ $is_author = $user_mod & (commune::MOD_COMM_AUTHOR);
                     <td class="b-layout__left">
                         <div class="b-combo">
                             <div class="b-combo__input<?= !empty($alert['youtube']) ? ' b-combo__input_error' : '' ?>">
-                                <input class="b-combo__input-text b-combo__input-text_color_a7" name="youtube_link" id="youtube_link" type="text" size="80" value="<?= $youtube_link ? $youtube_link : 'Ссылка на видео-ролик Youtube, Rutube или Vimeo' ?>" onfocus="checkYouTube();">
+                                <input class="b-combo__input-text b-combo__input-text_color_a7" name="youtube_link" id="youtube_link" type="text" size="80" value="<?= $youtube_link ? $youtube_link : 'РЎСЃС‹Р»РєР° РЅР° РІРёРґРµРѕ-СЂРѕР»РёРє Youtube, Rutube РёР»Рё Vimeo' ?>" onfocus="checkYouTube();">
                             </div>
                         </div>
                     </td>
@@ -137,11 +137,11 @@ $is_author = $user_mod & (commune::MOD_COMM_AUTHOR);
         </div>
     </div>
 </div>
-<? // добавить опрос ?>
+<? // РґРѕР±Р°РІРёС‚СЊ РѕРїСЂРѕСЃ ?>
 <div class="b-form b-form_padleft_90 b-form_padbot_20" id="add_poll">
     <a id="add_poll1" class="b-button b-button_m_add" href="#"></a>
     <div class="b-form__txt b-form__txt_padleft_5">
-        <a id="add_poll2" class="b-form__link b-form__link_dot_0f71c8" href="#">Добавить опрос</a>
+        <a id="add_poll2" class="b-form__link b-form__link_dot_0f71c8" href="#">Р”РѕР±Р°РІРёС‚СЊ РѕРїСЂРѕСЃ</a>
     </div>
 </div>
 <div class="b-form b-form_padleft_90 b-form_padbot_20" style="display:<?= $question || $alert['polls'] ? 'block' : 'none' ?>" id="pool_box">
@@ -163,16 +163,16 @@ $is_author = $user_mod & (commune::MOD_COMM_AUTHOR);
             <div>
                 <div id="poll-radio"<? if (!(empty($multiple) || $multiple == 0)) { ?> style="display:none"<? } ?> class="b-menu b-menu_rubric b-menu_padtop_10">
                     <ul class="b-menu__list b-menu__list_margleft_0">
-                        <li class="b-menu__item"><div class="b-menu__txt b-menu__txt_padtop_3">Можно выбрать</div></li>
-                        <li class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">только один вариант ответа</span></span></li>
-                        <li class="b-menu__item"><a href="#" class="b-menu__link b-menu__link_bordbot_dot_0f71c8">несколько вариантов ответа</a></li>
+                        <li class="b-menu__item"><div class="b-menu__txt b-menu__txt_padtop_3">РњРѕР¶РЅРѕ РІС‹Р±СЂР°С‚СЊ</div></li>
+                        <li class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">С‚РѕР»СЊРєРѕ РѕРґРёРЅ РІР°СЂРёР°РЅС‚ РѕС‚РІРµС‚Р°</span></span></li>
+                        <li class="b-menu__item"><a href="#" class="b-menu__link b-menu__link_bordbot_dot_0f71c8">РЅРµСЃРєРѕР»СЊРєРѕ РІР°СЂРёР°РЅС‚РѕРІ РѕС‚РІРµС‚Р°</a></li>
                     </ul>
                 </div>
                 <div id="poll-check"<? if (!(!empty($multiple) || $multiple == 1)) { ?> style="display:none"<? } ?> class="b-menu b-menu_rubric b-menu_padtop_10">
                     <ul class="b-menu__list b-menu__list_margleft_0">
-                        <li class="b-menu__item"><div class="b-menu__txt b-menu__txt_padtop_3">Можно выбрать</div></li>
-                        <li class="b-menu__item"><a href="#" class="b-menu__link b-menu__link_bordbot_dot_0f71c8">только один вариант ответа</a></li>
-                        <li class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">несколько вариантов ответа</span></span></li>
+                        <li class="b-menu__item"><div class="b-menu__txt b-menu__txt_padtop_3">РњРѕР¶РЅРѕ РІС‹Р±СЂР°С‚СЊ</div></li>
+                        <li class="b-menu__item"><a href="#" class="b-menu__link b-menu__link_bordbot_dot_0f71c8">С‚РѕР»СЊРєРѕ РѕРґРёРЅ РІР°СЂРёР°РЅС‚ РѕС‚РІРµС‚Р°</a></li>
+                        <li class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">РЅРµСЃРєРѕР»СЊРєРѕ РІР°СЂРёР°РЅС‚РѕРІ РѕС‚РІРµС‚Р°</span></span></li>
                     </ul>
                 </div>
 
@@ -228,12 +228,12 @@ $is_author = $user_mod & (commune::MOD_COMM_AUTHOR);
     </div>
 </div>
         
-<? // разделы ?>
+<? // СЂР°Р·РґРµР»С‹ ?>
 <div class="b-form  b-form_padbot_20">
-    <label class="b-form__name b-form__name_padtop_2 b-form__name_fontsize_13 b-form__name_width_90">Раздел</label>
+    <label class="b-form__name b-form__name_padtop_2 b-form__name_fontsize_13 b-form__name_width_90">Р Р°Р·РґРµР»</label>
     <div class="b-select b-select_inline-block ">
         <select id="b-select__select" name="category_id" class="b-select__select b-select__select_width_180">
-            <option>Все разделы</option>
+            <option>Р’СЃРµ СЂР°Р·РґРµР»С‹</option>
             <?php foreach($sub_cat as $sc){ if($sc['is_only_for_admin'] == 't' && !($is_author || $is_comm_admin)) continue;?>
             <option <?= $mess['category_id'] == $sc['id'] ? 'selected="selected"' : '';?> value="<?= $sc['id'];?>"><?= LenghtFormatEx($sc['name'],commune::MAX_CATEGORY_NAME_SIZE);?></option>
             <? } ?>
@@ -241,33 +241,33 @@ $is_author = $user_mod & (commune::MOD_COMM_AUTHOR);
     </div>
 </div>
 
-<? // запретить комментирование ?>
+<? // Р·Р°РїСЂРµС‚РёС‚СЊ РєРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ ?>
 <div class="b-form b-form_padleft_90">
     <div class="b-check">
         <input id="b-check1" class="b-check__input" type="checkbox" value="1" name="close_comments" <?= ($close_comments ? 'checked="checked"' : '') ?> />
-        <label for="b-check1" class="b-check__label b-check__label_fontsize_13">Запретить комментирование</label>
+        <label for="b-check1" class="b-check__label b-check__label_fontsize_13">Р—Р°РїСЂРµС‚РёС‚СЊ РєРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ</label>
     </div>
 </div>
         
-<? // показывать только мне ?>
+<? // РїРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ РјРЅРµ ?>
 <div class="b-form b-form_padleft_90">
     <div class="b-check">
         <input id="b-check2" class="b-check__input" type="checkbox" value="1" name="is_private" <?= ($is_private ? 'checked="checked"' : '') ?> />
-        <label for="b-check2" class="b-check__label b-check__label_fontsize_13">Показывать только мне</label>
+        <label for="b-check2" class="b-check__label b-check__label_fontsize_13">РџРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ РјРЅРµ</label>
     </div>
 </div>
         
-<? // закрепить на верху ?>
-<? if (!$parent_id && ($mod & (commune::MOD_COMM_AUTHOR | commune::MOD_COMM_ADMIN)) || hasGroupPermissions('administrator')) { // только для админов и модеров сайта/сообщества ?>
+<? // Р·Р°РєСЂРµРїРёС‚СЊ РЅР° РІРµСЂС…Сѓ ?>
+<? if (!$parent_id && ($mod & (commune::MOD_COMM_AUTHOR | commune::MOD_COMM_ADMIN)) || hasGroupPermissions('administrator')) { // С‚РѕР»СЊРєРѕ РґР»СЏ Р°РґРјРёРЅРѕРІ Рё РјРѕРґРµСЂРѕРІ СЃР°Р№С‚Р°/СЃРѕРѕР±С‰РµСЃС‚РІР° ?>
     <div class="b-form b-form_padleft_90">
         <div class="b-check">
             <input class="b-check__input" type="checkbox" id="idTPos<?= $iid ?>" name="pos" value="1" <?= ($pos ? ' checked' : '') ?> />
-            <label for="b-check2" class="b-check__label b-check__label_fontsize_13">Закрепить тему наверху</label>
+            <label for="b-check2" class="b-check__label b-check__label_fontsize_13">Р—Р°РєСЂРµРїРёС‚СЊ С‚РµРјСѓ РЅР°РІРµСЂС…Сѓ</label>
         </div>
     </div>
 <? } ?>
 
-<? // сообщение об ошибке ?>
+<? // СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ ?>
 <? if (!empty($alert)) { 
     foreach($alert as $al) {?>
         <div class="b-form b-form_padbot_null b-form_padtop_20 b-form_padleft_90">
@@ -280,15 +280,15 @@ $is_author = $user_mod & (commune::MOD_COMM_AUTHOR);
     <a href="#" onclick="checkYouTube();<?= ($alert ? 'if(submitFlag) { $(\'idAlertedCommentForm\').submit(); $(this).addClass(\'btnr-disabled\');} submitFlag = 0; return false' : 'if(submitFlag) { $(\'msg_form\').submit(); $(this).addClass(\'btnr-disabled\');} submitFlag = 0; return false') ?>" class="b-button b-button_rectangle_color_green b-button_margright_10">
         <span class="b-button__b1">
             <span class="b-button__b2">
-                <span class="b-button__txt">Опубликовать</span>
+                <span class="b-button__txt">РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ</span>
             </span>
         </span>
     </a>
     <input type="hidden" id="draft_id" name="draft_id" value="<?=intval($draft_id)?>" />
     <input type="hidden" id="draft_post_id" name="draft_post_id" value="<?=$message_id?>" />
     <a class="b-buttons__link b-buttons__link_color_0f71c8" href="javascript:DraftSave();" onclick="this.blur();"></a>
-    <span class="b-buttons__txt">или</span>
-    <a class="b-buttons__link b-buttons__link_color_c10601" href="#">просто выйти</a>
+    <span class="b-buttons__txt">РёР»Рё</span>
+    <a class="b-buttons__link b-buttons__link_color_c10601" href="#">РїСЂРѕСЃС‚Рѕ РІС‹Р№С‚Рё</a>
 </div>
 
 <input type="hidden" name="u_token_key" value="<?=$_SESSION['rand']?>">

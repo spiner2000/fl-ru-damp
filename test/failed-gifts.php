@@ -13,7 +13,7 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/classes/account.php');
 class failed_gift extends account {
     
     /**
-     * Начисление неначисленных подарков)
+     * РќР°С‡РёСЃР»РµРЅРёРµ РЅРµРЅР°С‡РёСЃР»РµРЅРЅС‹С… РїРѕРґР°СЂРєРѕРІ)
      * 
      */
     public function failedGifts() {
@@ -32,10 +32,10 @@ class failed_gift extends account {
             $dep_id = $row['billing_id'];
             $is_emp = $row['is_emp'];
 
-            // акция с Webmoney ---------------------
+            // Р°РєС†РёСЏ СЃ Webmoney ---------------------
             if ($op_code == 12) {
                 if ($payment_sys == 10 || $payment_sys == 2) { // WMR
-                    if (!$is_emp) { // подарок фрилансеру
+                    if (!$is_emp) { // РїРѕРґР°СЂРѕРє С„СЂРёР»Р°РЅСЃРµСЂСѓ
                         if ($trs_sum >= 2000 && $trs_sum < 5000) {
                             require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/payed.php' );
 
@@ -43,7 +43,7 @@ class failed_gift extends account {
                             $bill_id = $gift_id = 0;
                             $tr_id = $this->start_transaction($admin_uid);
 
-                            $payed->GiftOrderedTarif($bill_id, $gift_id, $gid, $admin_uid, $tr_id, '1', 'Аккаунт PRO в подарок при пополнении счета с помощью WebMoney', 91);
+                            $payed->GiftOrderedTarif($bill_id, $gift_id, $gid, $admin_uid, $tr_id, '1', 'РђРєРєР°СѓРЅС‚ PRO РІ РїРѕРґР°СЂРѕРє РїСЂРё РїРѕРїРѕР»РЅРµРЅРёРё СЃС‡РµС‚Р° СЃ РїРѕРјРѕС‰СЊСЋ WebMoney', 91);
                         } elseif ($trs_sum >= 5000) {
                             require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/firstpage.php' );
 
@@ -51,9 +51,9 @@ class failed_gift extends account {
                             $tr_id = $this->start_transaction($admin_uid);
                             $payed = new firstpage();
 
-                            $payed->GiftOrdered($bill_id, $gift_id, $gid, $admin_uid, $tr_id, '1 week', 93, 'Первая страница в подарок при пополнении счета с помощью WebMoney', 'Первая страница в подарок при пополнении счета с помощью WebMoney');
+                            $payed->GiftOrdered($bill_id, $gift_id, $gid, $admin_uid, $tr_id, '1 week', 93, 'РџРµСЂРІР°СЏ СЃС‚СЂР°РЅРёС†Р° РІ РїРѕРґР°СЂРѕРє РїСЂРё РїРѕРїРѕР»РЅРµРЅРёРё СЃС‡РµС‚Р° СЃ РїРѕРјРѕС‰СЊСЋ WebMoney', 'РџРµСЂРІР°СЏ СЃС‚СЂР°РЅРёС†Р° РІ РїРѕРґР°СЂРѕРє РїСЂРё РїРѕРїРѕР»РЅРµРЅРёРё СЃС‡РµС‚Р° СЃ РїРѕРјРѕС‰СЊСЋ WebMoney');
                         }
-                    } else { // подарок работодателю
+                    } else { // РїРѕРґР°СЂРѕРє СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЋ
                         if ($trs_sum >= 1000 && $trs_sum < 5000) {
                             require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/payed.php' );
 
@@ -61,15 +61,15 @@ class failed_gift extends account {
                             $bill_id = $gift_id = 0;
                             $tr_id = $this->start_transaction($admin_uid);
 
-                            $payed->GiftOrderedTarif($bill_id, $gift_id, $gid, $admin_uid, $tr_id, '1', 'Аккаунт PRO в подарок при пополнении счета с помощью WebMoney', 92);
+                            $payed->GiftOrderedTarif($bill_id, $gift_id, $gid, $admin_uid, $tr_id, '1', 'РђРєРєР°СѓРЅС‚ PRO РІ РїРѕРґР°СЂРѕРє РїСЂРё РїРѕРїРѕР»РЅРµРЅРёРё СЃС‡РµС‚Р° СЃ РїРѕРјРѕС‰СЊСЋ WebMoney', 92);
                         } elseif ($trs_sum >= 5000) {
                             $bill_id = $gift_id = 0;
                             $tr_id = $this->start_transaction($admin_uid);
 
-                            $error = $this->Gift($bill_id, $gift_id, $tr_id, 93, $admin_uid, $gid, 'Платный проект в подарок при пополнении счета с помощью WebMoney', '');
+                            $error = $this->Gift($bill_id, $gift_id, $tr_id, 93, $admin_uid, $gid, 'РџР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚ РІ РїРѕРґР°СЂРѕРє РїСЂРё РїРѕРїРѕР»РЅРµРЅРёРё СЃС‡РµС‚Р° СЃ РїРѕРјРѕС‰СЊСЋ WebMoney', '');
                             if ($error === 0) {
-                                // Добавляем подарочное бабло на бонусный счет.
-                                $this->depositBonusEx($dep_id, 85, 'Начисление денег на платный проект в подарок', '', 40);
+                                // Р”РѕР±Р°РІР»СЏРµРј РїРѕРґР°СЂРѕС‡РЅРѕРµ Р±Р°Р±Р»Рѕ РЅР° Р±РѕРЅСѓСЃРЅС‹Р№ СЃС‡РµС‚.
+                                $this->depositBonusEx($dep_id, 85, 'РќР°С‡РёСЃР»РµРЅРёРµ РґРµРЅРµРі РЅР° РїР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚ РІ РїРѕРґР°СЂРѕРє', '', 40);
                             }
                         }
                     }
@@ -79,16 +79,16 @@ class failed_gift extends account {
 
 
 
-                    // WMZ - пока нет
+                    // WMZ - РїРѕРєР° РЅРµС‚
                 }
             }
 
-            //акция банк/сбер
+            //Р°РєС†РёСЏ Р±Р°РЅРє/СЃР±РµСЂ
             if ($op_code == 12 && ($payment_sys == 4 || $payment_sys == 5)) {
 
-                $_opstr = $payment_sys == 5 ? "через квитанцию Сбербанка" : "через безналичный расчет";
+                $_opstr = $payment_sys == 5 ? "С‡РµСЂРµР· РєРІРёС‚Р°РЅС†РёСЋ РЎР±РµСЂР±Р°РЅРєР°" : "С‡РµСЂРµР· Р±РµР·РЅР°Р»РёС‡РЅС‹Р№ СЂР°СЃС‡РµС‚";
 
-                if (!$is_emp) { // подарок фрилансеру
+                if (!$is_emp) { // РїРѕРґР°СЂРѕРє С„СЂРёР»Р°РЅСЃРµСЂСѓ
                     if ($trs_sum >= 2000 && $trs_sum < 5000) {
                         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/payed.php' );
 
@@ -98,7 +98,7 @@ class failed_gift extends account {
                         $bill_id = $gift_id = 0;
                         $tr_id = $this->start_transaction($admin_uid);
 
-                        $payed->GiftOrderedTarif($bill_id, $gift_id, $gid, $admin_uid, $tr_id, '1', "Аккаунт PRO в подарок при пополнении счета {$_opstr}", $_opcode);
+                        $payed->GiftOrderedTarif($bill_id, $gift_id, $gid, $admin_uid, $tr_id, '1', "РђРєРєР°СѓРЅС‚ PRO РІ РїРѕРґР°СЂРѕРє РїСЂРё РїРѕРїРѕР»РЅРµРЅРёРё СЃС‡РµС‚Р° {$_opstr}", $_opcode);
                     } elseif ($trs_sum >= 5000) {
                         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/firstpage.php' );
 
@@ -108,9 +108,9 @@ class failed_gift extends account {
                         $tr_id = $this->start_transaction($admin_uid);
                         $payed = new firstpage();
 
-                        $payed->GiftOrdered($bill_id, $gift_id, $gid, $admin_uid, $tr_id, '1 week', $_opcode, "Первая страница в подарок при пополнении счета {$_opstr}", "Первая страница в подарок при пополнении счета {$_opstr}");
+                        $payed->GiftOrdered($bill_id, $gift_id, $gid, $admin_uid, $tr_id, '1 week', $_opcode, "РџРµСЂРІР°СЏ СЃС‚СЂР°РЅРёС†Р° РІ РїРѕРґР°СЂРѕРє РїСЂРё РїРѕРїРѕР»РЅРµРЅРёРё СЃС‡РµС‚Р° {$_opstr}", "РџРµСЂРІР°СЏ СЃС‚СЂР°РЅРёС†Р° РІ РїРѕРґР°СЂРѕРє РїСЂРё РїРѕРїРѕР»РЅРµРЅРёРё СЃС‡РµС‚Р° {$_opstr}");
                     }
-                } else {    // подарок работодателю
+                } else {    // РїРѕРґР°СЂРѕРє СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЋ
                     if ($trs_sum >= 1000 && $trs_sum < 5000) {
                         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/payed.php' );
 
@@ -120,17 +120,17 @@ class failed_gift extends account {
                         $bill_id = $gift_id = 0;
                         $tr_id = $this->start_transaction($admin_uid);
 
-                        $payed->GiftOrderedTarif($bill_id, $gift_id, $gid, $admin_uid, $tr_id, '1', "Аккаунт PRO в подарок при пополнении счета {$_opstr}", $_opcode);
+                        $payed->GiftOrderedTarif($bill_id, $gift_id, $gid, $admin_uid, $tr_id, '1', "РђРєРєР°СѓРЅС‚ PRO РІ РїРѕРґР°СЂРѕРє РїСЂРё РїРѕРїРѕР»РЅРµРЅРёРё СЃС‡РµС‚Р° {$_opstr}", $_opcode);
                     } elseif ($trs_sum >= 5000) {
                         $bill_id = $gift_id = 0;
                         $tr_id = $this->start_transaction($admin_uid);
 
                         $_opcode = $payment_sys == 5 ? 97 : 101;
 
-                        $error = $this->Gift($bill_id, $gift_id, $tr_id, $_opcode, $admin_uid, $gid, "Платный проект в подарок при пополнении счета {$_opstr}", "Платный проект в подарок при пополнении счета {$_opstr}");
+                        $error = $this->Gift($bill_id, $gift_id, $tr_id, $_opcode, $admin_uid, $gid, "РџР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚ РІ РїРѕРґР°СЂРѕРє РїСЂРё РїРѕРїРѕР»РЅРµРЅРёРё СЃС‡РµС‚Р° {$_opstr}", "РџР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚ РІ РїРѕРґР°СЂРѕРє РїСЂРё РїРѕРїРѕР»РЅРµРЅРёРё СЃС‡РµС‚Р° {$_opstr}");
                         if ($error === 0) {
-                            // Добавляем подарочное бабло на бонусный счет.
-                            $this->depositBonusEx($dep_id, 85, 'Начисление денег на платный проект в подарок', '', 40);
+                            // Р”РѕР±Р°РІР»СЏРµРј РїРѕРґР°СЂРѕС‡РЅРѕРµ Р±Р°Р±Р»Рѕ РЅР° Р±РѕРЅСѓСЃРЅС‹Р№ СЃС‡РµС‚.
+                            $this->depositBonusEx($dep_id, 85, 'РќР°С‡РёСЃР»РµРЅРёРµ РґРµРЅРµРі РЅР° РїР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚ РІ РїРѕРґР°СЂРѕРє', '', 40);
                         }
                     }
                 }

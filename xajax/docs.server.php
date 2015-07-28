@@ -13,7 +13,7 @@ function AddSection($name) {
     if(hasPermissions('docs')) {
         $name = trim($name);
         if(!$name) {
-            $objResponse->script("alert('Вы должны указать имя раздела');");
+            $objResponse->script("alert('Р’С‹ РґРѕР»Р¶РЅС‹ СѓРєР°Р·Р°С‚СЊ РёРјСЏ СЂР°Р·РґРµР»Р°');");
             return $objResponse;
         }
         $error = false;
@@ -52,7 +52,7 @@ function UpdateSection($id, $name) {
     if(hasPermissions('docs')) {
         $name = trim($name);
         if(!$name) {
-            $objResponse->script("alert('Вы должны указать имя раздела');");
+            $objResponse->script("alert('Р’С‹ РґРѕР»Р¶РЅС‹ СѓРєР°Р·Р°С‚СЊ РёРјСЏ СЂР°Р·РґРµР»Р°');");
             return $objResponse;
         }
         $error = false;
@@ -116,7 +116,7 @@ function AddDoc($name, $desc, $section_id) {
     if(hasPermissions('docs')) {
         $name = trim($name);
         if(!$name) {
-            $objResponse->script("alert('Вы должны указать имя документа');");
+            $objResponse->script("alert('Р’С‹ РґРѕР»Р¶РЅС‹ СѓРєР°Р·Р°С‚СЊ РёРјСЏ РґРѕРєСѓРјРµРЅС‚Р°');");
             return $objResponse;
         }
         $error = false;
@@ -141,7 +141,7 @@ function UpdateDoc($name, $desc, $section_id) {
     if(hasPermissions('docs')) {
         $name = trim($name);
         if(!$name) {
-            $objResponse->script("alert('Вы должны указать имя документа');");
+            $objResponse->script("alert('Р’С‹ РґРѕР»Р¶РЅС‹ СѓРєР°Р·Р°С‚СЊ РёРјСЏ РґРѕРєСѓРјРµРЅС‚Р°');");
             return $objResponse;
         }
         $error = false;
@@ -169,7 +169,7 @@ function EditDocFormPrepare($doc_id) {
             $objResponse->assign('dosc_id_f', 'value', $doc_id);
             $objResponse->assign('frm_name', 'value', trim($doc['name']));
             $objResponse->assign('frm_desc', 'value', $doc['desc']);
-            $objResponse->assign('doc_save_btn', 'value', 'Сохранить');
+            $objResponse->assign('doc_save_btn', 'value', 'РЎРѕС…СЂР°РЅРёС‚СЊ');
             $objResponse->assign('action_form', 'value', 'edit');
             $objResponse->script('$("attach_files_box").destroy();');
             $objResponse->script('$("docs_files_error").destroy();');
@@ -207,7 +207,7 @@ function FileMoveTo($id, $direction = 'up') {
             ob_end_clean();
             $objResponse->assign('form_files_added', 'innerHTML', $html);
         } else {
-            $objResponse->assign('form_files_added', 'innerHTML', 'Не возожно получить список файлов');
+            $objResponse->assign('form_files_added', 'innerHTML', 'РќРµ РІРѕР·РѕР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє С„Р°Р№Р»РѕРІ');
         }
     }
     return $objResponse;
@@ -219,7 +219,7 @@ function DeleteFile($id) {
         if (!($error = docs_files::Delete($id))) {
             $objResponse->script('$("file_'.$id.'").destroy()');
         } else {
-            $objResponse->assign('form_files_added', 'innerHTML', 'Ошибка при удалении файла');
+            $objResponse->assign('form_files_added', 'innerHTML', 'РћС€РёР±РєР° РїСЂРё СѓРґР°Р»РµРЅРёРё С„Р°Р№Р»Р°');
         }
     }
     return $objResponse;    
@@ -257,7 +257,7 @@ function RefreshUploadedFiles($doc_id) {
             ob_end_clean();
             $objResponse->assign('form_files_added', 'innerHTML', $html);
         } else {
-            $objResponse->assign('form_files_added', 'innerHTML', 'Не возожно получить список файлов');
+            $objResponse->assign('form_files_added', 'innerHTML', 'РќРµ РІРѕР·РѕР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє С„Р°Р№Р»РѕРІ');
         }
     }
     return $objResponse;
@@ -352,7 +352,7 @@ function MoveDocs($docs,$section) {
 }
 
 /**
- * Удаляет документы
+ * РЈРґР°Р»СЏРµС‚ РґРѕРєСѓРјРµРЅС‚С‹
  *
  * @param unknown_type $doc_id
  * @param unknown_type $doc_section_id

@@ -1,6 +1,6 @@
 <?php
 
-// просто запустить в браузере
+// РїСЂРѕСЃС‚Рѕ Р·Р°РїСѓСЃС‚РёС‚СЊ РІ Р±СЂР°СѓР·РµСЂРµ
 
 require_once '../classes/stdf.php';
 
@@ -19,8 +19,8 @@ pg_query(DBConnect(),"ALTER SEQUENCE opros_answers_id_seq RESTART WITH ".($m['ma
 pg_query(DBConnect(), "START TRANSACTION");
 
 $res = pg_query(DBConnect(), "INSERT INTO opros (name, descr, flags, is_active, is_multi_page, content) VALUES (
-'Фултайм VS Фри-ланс',
-'<p>Привет!</p> <p>Мы вас любим и интересуемся вашей жизнью и успехами во фри-лансе. Пожалуйста, поучаствуйте в опросе. Это займет 3-5 минут вашего времени.</p>',
+'Р¤СѓР»С‚Р°Р№Рј VS Р¤СЂРё-Р»Р°РЅСЃ',
+'<p>РџСЂРёРІРµС‚!</p> <p>РњС‹ РІР°СЃ Р»СЋР±РёРј Рё РёРЅС‚РµСЂРµСЃСѓРµРјСЃСЏ РІР°С€РµР№ Р¶РёР·РЅСЊСЋ Рё СѓСЃРїРµС…Р°РјРё РІРѕ С„СЂРё-Р»Р°РЅСЃРµ. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕСѓС‡Р°СЃС‚РІСѓР№С‚Рµ РІ РѕРїСЂРѕСЃРµ. Р­С‚Рѕ Р·Р°Р№РјРµС‚ 3-5 РјРёРЅСѓС‚ РІР°С€РµРіРѕ РІСЂРµРјРµРЅРё.</p>',
 B'1111',
 TRUE,
 TRUE,
@@ -29,169 +29,169 @@ TRUE,
 list($opros_id) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_questions (name, opros_id, max_answer, page_num, num, type) VALUES
-('Вы работали раньше на фултайме в компании?', $opros_id, 0, 1, 1, 2)
+('Р’С‹ СЂР°Р±РѕС‚Р°Р»Рё СЂР°РЅСЊС€Рµ РЅР° С„СѓР»С‚Р°Р№РјРµ РІ РєРѕРјРїР°РЅРёРё?', $opros_id, 0, 1, 1, 2)
 RETURNING id");
 list($question_1) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_questions (name, opros_id, max_answer, page_num, num, type) VALUES
-('Хотели бы вы вернуться в офис?', $opros_id, 0, 1, 2, 2)
+('РҐРѕС‚РµР»Рё Р±С‹ РІС‹ РІРµСЂРЅСѓС‚СЊСЃСЏ РІ РѕС„РёСЃ?', $opros_id, 0, 1, 2, 2)
 RETURNING id");
 list($question_2) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_questions (name, opros_id, max_answer, page_num, num, type) VALUES
-('Какие, по вашему мнению, преимущества у фри-ланса перед офисной работой?', $opros_id, 0, 1, 3, 1)
+('РљР°РєРёРµ, РїРѕ РІР°С€РµРјСѓ РјРЅРµРЅРёСЋ, РїСЂРµРёРјСѓС‰РµСЃС‚РІР° Сѓ С„СЂРё-Р»Р°РЅСЃР° РїРµСЂРµРґ РѕС„РёСЃРЅРѕР№ СЂР°Р±РѕС‚РѕР№?', $opros_id, 0, 1, 3, 1)
 RETURNING id");
 list($question_3) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_questions (name, opros_id, max_answer, page_num, num, type) VALUES
-('Какие преимущества офисной работы перед фри-лансом?', $opros_id, 0, 1, 4, 1)
+('РљР°РєРёРµ РїСЂРµРёРјСѓС‰РµСЃС‚РІР° РѕС„РёСЃРЅРѕР№ СЂР°Р±РѕС‚С‹ РїРµСЂРµРґ С„СЂРё-Р»Р°РЅСЃРѕРј?', $opros_id, 0, 1, 4, 1)
 RETURNING id");
 list($question_4) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_questions (name, opros_id, max_answer, page_num, num, type) VALUES
-('Вам тяжело не иметь стабильного места работы в компании?', $opros_id, 0, 1, 5, 2)
+('Р’Р°Рј С‚СЏР¶РµР»Рѕ РЅРµ РёРјРµС‚СЊ СЃС‚Р°Р±РёР»СЊРЅРѕРіРѕ РјРµСЃС‚Р° СЂР°Р±РѕС‚С‹ РІ РєРѕРјРїР°РЅРёРё?', $opros_id, 0, 1, 5, 2)
 RETURNING id");
 list($question_5) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_questions (name, opros_id, max_answer, page_num, num, type) VALUES
-('Вы бы пошли работать в офис, если бы:', $opros_id, 0, 1, 6, 2)
+('Р’С‹ Р±С‹ РїРѕС€Р»Рё СЂР°Р±РѕС‚Р°С‚СЊ РІ РѕС„РёСЃ, РµСЃР»Рё Р±С‹:', $opros_id, 0, 1, 6, 2)
 RETURNING id");
 list($question_6) = pg_fetch_row($res);
 
 
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Да', $question_1, 1, 1, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Р”Р°', $question_1, 1, 1, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_1) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Нет', $question_1, 2, 2, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('РќРµС‚', $question_1, 2, 2, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_2) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Да', $question_2, 3, 3, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Р”Р°', $question_2, 3, 3, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_3) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Нет', $question_2, 4, 4, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('РќРµС‚', $question_2, 4, 4, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_4) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Можно делать только то, что нравится', $question_3, 5, 5, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('РњРѕР¶РЅРѕ РґРµР»Р°С‚СЊ С‚РѕР»СЊРєРѕ С‚Рѕ, С‡С‚Рѕ РЅСЂР°РІРёС‚СЃСЏ', $question_3, 5, 5, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_5) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Работа более творческая', $question_3, 6, 6, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Р Р°Р±РѕС‚Р° Р±РѕР»РµРµ С‚РІРѕСЂС‡РµСЃРєР°СЏ', $question_3, 6, 6, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_6) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Все время разные проекты', $question_3, 7, 7, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Р’СЃРµ РІСЂРµРјСЏ СЂР°Р·РЅС‹Рµ РїСЂРѕРµРєС‚С‹', $question_3, 7, 7, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_7) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Свободный рабочий день', $question_3, 8, 8, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('РЎРІРѕР±РѕРґРЅС‹Р№ СЂР°Р±РѕС‡РёР№ РґРµРЅСЊ', $question_3, 8, 8, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_8) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Нет необходимости ездить в офис, можно работать где угодно', $question_3, 9, 9, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('РќРµС‚ РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РµР·РґРёС‚СЊ РІ РѕС„РёСЃ, РјРѕР¶РЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ РіРґРµ СѓРіРѕРґРЅРѕ', $question_3, 9, 9, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_9) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Больше свободного времени', $question_3, 10, 10, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Р‘РѕР»СЊС€Рµ СЃРІРѕР±РѕРґРЅРѕРіРѕ РІСЂРµРјРµРЅРё', $question_3, 10, 10, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_10) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Менее нервная работа', $question_3, 11, 11, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('РњРµРЅРµРµ РЅРµСЂРІРЅР°СЏ СЂР°Р±РѕС‚Р°', $question_3, 11, 11, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_11) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Ваш вариант', $question_3, 12, 12, TRUE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Р’Р°С€ РІР°СЂРёР°РЅС‚', $question_3, 12, 12, TRUE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_12) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Стабильность в оплате и уверенность в работе', $question_4, 13, 13, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('РЎС‚Р°Р±РёР»СЊРЅРѕСЃС‚СЊ РІ РѕРїР»Р°С‚Рµ Рё СѓРІРµСЂРµРЅРЅРѕСЃС‚СЊ РІ СЂР°Р±РѕС‚Рµ', $question_4, 13, 13, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_13) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Коллектив, общение с коллегами', $question_4, 14, 14, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('РљРѕР»Р»РµРєС‚РёРІ, РѕР±С‰РµРЅРёРµ СЃ РєРѕР»Р»РµРіР°РјРё', $question_4, 14, 14, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_14) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Нет необходимости искать работу', $question_4, 15, 15, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('РќРµС‚ РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РёСЃРєР°С‚СЊ СЂР°Р±РѕС‚Сѓ', $question_4, 15, 15, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_15) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Идет трудовой стаж', $question_4, 16, 16, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('РРґРµС‚ С‚СЂСѓРґРѕРІРѕР№ СЃС‚Р°Р¶', $question_4, 16, 16, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_16) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Накапливается пенсия', $question_4, 17, 17, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('РќР°РєР°РїР»РёРІР°РµС‚СЃСЏ РїРµРЅСЃРёСЏ', $question_4, 17, 17, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_17) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Социальный пакет', $question_4, 18, 18, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('РЎРѕС†РёР°Р»СЊРЅС‹Р№ РїР°РєРµС‚', $question_4, 18, 18, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_18) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Оплачиваемый отпуск', $question_4, 19, 19, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('РћРїР»Р°С‡РёРІР°РµРјС‹Р№ РѕС‚РїСѓСЃРє', $question_4, 19, 19, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_19) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('В офисе легче работать, чем дома', $question_4, 20, 20, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Р’ РѕС„РёСЃРµ Р»РµРіС‡Рµ СЂР°Р±РѕС‚Р°С‚СЊ, С‡РµРј РґРѕРјР°', $question_4, 20, 20, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_20) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Ваш вариант', $question_4, 21, 21, TRUE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Р’Р°С€ РІР°СЂРёР°РЅС‚', $question_4, 21, 21, TRUE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_21) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Да, это напрягает, нет уверенности', $question_5, 22, 22, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Р”Р°, СЌС‚Рѕ РЅР°РїСЂСЏРіР°РµС‚, РЅРµС‚ СѓРІРµСЂРµРЅРЅРѕСЃС‚Рё', $question_5, 22, 22, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_22) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Нет, для меня это намного комфортнее', $question_5, 23, 23, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('РќРµС‚, РґР»СЏ РјРµРЅСЏ СЌС‚Рѕ РЅР°РјРЅРѕРіРѕ РєРѕРјС„РѕСЂС‚РЅРµРµ', $question_5, 23, 23, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_23) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Вам предложили очень высокую зарплату', $question_6, 24, 24, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Р’Р°Рј РїСЂРµРґР»РѕР¶РёР»Рё РѕС‡РµРЅСЊ РІС‹СЃРѕРєСѓСЋ Р·Р°СЂРїР»Р°С‚Сѓ', $question_6, 24, 24, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_24) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Вас назначили большим начальником', $question_6, 25, 25, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Р’Р°СЃ РЅР°Р·РЅР°С‡РёР»Рё Р±РѕР»СЊС€РёРј РЅР°С‡Р°Р»СЊРЅРёРєРѕРј', $question_6, 25, 25, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_25) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Вам предложили интересный проект', $question_6, 26, 26, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Р’Р°Рј РїСЂРµРґР»РѕР¶РёР»Рё РёРЅС‚РµСЂРµСЃРЅС‹Р№ РїСЂРѕРµРєС‚', $question_6, 26, 26, FALSE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_26) = pg_fetch_row($res);
 
 $res = pg_query(DBConnect(), "INSERT INTO opros_answers (name, question_id, value, num, is_m_other, move_question_id, orig_answer_id, is_m_block, block_questions, is_m_number, block_answer) VALUES
-('Ваш вариант', $question_6, 27, 27, TRUE, NULL, NULL, FALSE, NULL, NULL, NULL)
+('Р’Р°С€ РІР°СЂРёР°РЅС‚', $question_6, 27, 27, TRUE, NULL, NULL, FALSE, NULL, NULL, NULL)
 RETURNING id");
 list($answer_27) = pg_fetch_row($res);
 

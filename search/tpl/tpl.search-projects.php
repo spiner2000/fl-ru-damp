@@ -20,7 +20,7 @@ if($result['kind'] == 2 || $result['kind'] == 7) $result['offers_count'] -= $res
         <?php if ($result['cost']) { ?>
         <span class="search-price"><?= CurToChar($result['cost'], (int)$result['currency']) ?><?= $priceby_str?></span>
         <?php } else { //if?>
-        <span class="bujet-dogovor">По договоренности</span>
+        <span class="bujet-dogovor">РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</span>
         <?php } //else?>
         <?if($result['logo_path'] != '') { ?>
         <? if ($result['link'] != "") { ?>
@@ -36,42 +36,42 @@ if($result['kind'] == 2 || $result['kind'] == 7) $result['offers_count'] -= $res
         <img class="search-tp" src="/images/tp.png" width="17" height="20">
         <?php }//if?>
         <?php /* #0019741 if($result['prefer_sbr'] == 't'){ ?>
-        <img src="/images/sbr_p.png" class="sbr_p" title="Работодатель&nbsp;хочет&nbsp;работать&nbsp;через&nbsp;Cделку&nbsp;без&nbsp;риска" alt="Работодатель хочет работать через Cделку без риска">
+        <img src="/images/sbr_p.png" class="sbr_p" title="Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ&nbsp;С…РѕС‡РµС‚&nbsp;СЂР°Р±РѕС‚Р°С‚СЊ&nbsp;С‡РµСЂРµР·&nbsp;CРґРµР»РєСѓ&nbsp;Р±РµР·&nbsp;СЂРёСЃРєР°" alt="Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ С…РѕС‡РµС‚ СЂР°Р±РѕС‚Р°С‚СЊ С‡РµСЂРµР· CРґРµР»РєСѓ Р±РµР· СЂРёСЃРєР°">
         <?php } *///if?>
         <a href="<?=getFriendlyURL("project", $result['id'])?>"><?= reformat(strip_tags($name, "<em><br>"), 40, 0, 1);?></a></h3>
         <p><?= reformat(strip_tags(deleteHiddenURLFacebook($descr), "<em><br>"), 40, 0, 1)?></p>
         <?if($result['pro_only'] == 't' && $result['verify_only'] != 't') { ?>
         <ul class="project-info">
-            <li><br />Только для <a class="b-layout__link" href="/payed/"><span title="владельцев платного аккаунта" alt="владельцев платного аккаунта" class="b-icon b-icon__pro b-icon__pro_f"></span></a></li>
+            <li><br />РўРѕР»СЊРєРѕ РґР»СЏ <a class="b-layout__link" href="/payed/"><span title="РІР»Р°РґРµР»СЊС†РµРІ РїР»Р°С‚РЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°" alt="РІР»Р°РґРµР»СЊС†РµРІ РїР»Р°С‚РЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°" class="b-icon b-icon__pro b-icon__pro_f"></span></a></li>
         </ul>
         <?php } elseif($result['verify_only'] == 't' && $result['pro_only'] != 't') { ?> 
         <ul class="project-info">
-            <li><br />Только для<?=view_verify() ?></li>
+            <li><br />РўРѕР»СЊРєРѕ РґР»СЏ<?=view_verify() ?></li>
         </ul>
         <?php } elseif($result['verify_only'] == 't' && $result['pro_only'] == 't') { ?> 
         <ul class="project-info">
-            <li><br />Отвечать на проект могут только пользователи с аккаунтом <?=view_pro()?> и верифицированным аккаунтом<?=view_verify() ?></li>
+            <li><br />РћС‚РІРµС‡Р°С‚СЊ РЅР° РїСЂРѕРµРєС‚ РјРѕРіСѓС‚ С‚РѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ Р°РєРєР°СѓРЅС‚РѕРј <?=view_pro()?> Рё РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј<?=view_verify() ?></li>
         </ul>
         <?php }//if?>
         
         <div class="search-meta-bl"> 
             <?php if($result['exec_id'] > 0) {?>
-            <span class="search-answer"><a href="<?= getFriendlyURL("project", $result['id']) ?>"><?= ($result['kind'] == 7 || $result['kind'] == 2 ?"Победитель":"Исполнитель")?> определён</a></span>
+            <span class="search-answer"><a href="<?= getFriendlyURL("project", $result['id']) ?>"><?= ($result['kind'] == 7 || $result['kind'] == 2 ?"РџРѕР±РµРґРёС‚РµР»СЊ":"РСЃРїРѕР»РЅРёС‚РµР»СЊ")?> РѕРїСЂРµРґРµР»С‘РЅ</a></span>
             <?php } else {?>
             <span class="search-answer"><a href="<?= getFriendlyURL("project", $result['id']) ?>"><?=project_status_link($result['kind'], $result['offers_count'])?></a></span>
             <?php }//else?>
             <ul class="search-meta">
-                <?php if($result['payed'] && ($result['kind'] != 2 && $result['kind'] != 7)) { ?><li><strong>Платный проект</strong></li><?php } //if?>
+                <?php if($result['payed'] && ($result['kind'] != 2 && $result['kind'] != 7)) { ?><li><strong>РџР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚</strong></li><?php } //if?>
                 <?php if($result['kind'] == 2 || $result['kind'] == 7) { ?>
-                <li class="red">Конкурс</li>
+                <li class="red">РљРѕРЅРєСѓСЂСЃ</li>
                 <?php } else if ($result['kind'] == 4) { //if?>
-                <li class="pi-office">Вакансия <?= (($result['country']) ? "(".$result['country_name'] . (($result['city']) ? ", " . $result['city_name'] : "" ) . ")" : "") ?></li>
+                <li class="pi-office">Р’Р°РєР°РЅСЃРёСЏ <?= (($result['country']) ? "(".$result['country_name'] . (($result['city']) ? ", " . $result['city_name'] : "" ) . ")" : "") ?></li>
                 <?php } //else if?>
                 <?php if($result['kind'] == 2 || $result['kind'] == 7) { ?>
                     <?if(strtotime($result['end_date']) > time()) { ?>
-                    <li>до окончания осталось: <?= ago_pub_x(strtotime($result['end_date']), "ynjGx") ?></li> 
+                    <li>РґРѕ РѕРєРѕРЅС‡Р°РЅРёСЏ РѕСЃС‚Р°Р»РѕСЃСЊ: <?= ago_pub_x(strtotime($result['end_date']), "ynjGx") ?></li> 
                     <? } else {?>
-                    <li>завершен</li>
+                    <li>Р·Р°РІРµСЂС€РµРЅ</li>
                     <? }?>
                 <?php } else { //if?>
                     <li><?= ago_pub_x(strtotime($result['create_date']), "ynjGx", 0, true) ?></li>

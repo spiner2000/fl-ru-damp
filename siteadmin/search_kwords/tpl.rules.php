@@ -1,9 +1,9 @@
 <?php if ( !defined('IS_SITE_ADMIN') ) { header('Location: /404.php'); exit; } ?>
-<h2>Поиск</h2>
+<h2>РџРѕРёСЃРє</h2>
 <div class="admin">
 <div class="lm-col">
     <div class="admin-menu">
-        <h3>Поиск</h3>
+        <h3>РџРѕРёСЃРє</h3>
 
         <? include ($rpath . "/siteadmin/leftmenu.php") ?>
 
@@ -12,7 +12,7 @@
 </div>
 <div class="r-col">
     <div class="ban-razban">
-        <h3>Условия фильтрации</h3>
+        <h3>РЈСЃР»РѕРІРёСЏ С„РёР»СЊС‚СЂР°С†РёРё</h3>
         <? include_once ('tpl.navigation.php'); ?>
         <br/>
 
@@ -23,23 +23,23 @@
                 <b class="b2"></b>
                 <div class="form-in">
                     <div class="form-block first">
-                        <h3>Новое условие</h3>
+                        <h3>РќРѕРІРѕРµ СѓСЃР»РѕРІРёРµ</h3>
                         <div class="form-el">
-                            <label class="form-l">Имя:</label>
+                            <label class="form-l">РРјСЏ:</label>
                             <div class="form-value">
                                 <input type="text" name="rule_name" class="sw205"/>
                             </div>
                         </div>
                         <div class="form-el">
-                            <label class="form-l">Условие:</label>
+                            <label class="form-l">РЈСЃР»РѕРІРёРµ:</label>
                             <div class="form-value">
-                                <input type="text" name="pattern" class="sw205"/> для подстановки фильтра используется <strong>%s</strong>
+                                <input type="text" name="pattern" class="sw205"/> РґР»СЏ РїРѕРґСЃС‚Р°РЅРѕРІРєРё С„РёР»СЊС‚СЂР° РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ <strong>%s</strong>
                             </div>
                         </div>
                     </div>
                     <div class="form-block last">
                         <div class="form-el form-btns flm">
-                            <button type="submit">Сохранить</button>
+                            <button type="submit">РЎРѕС…СЂР°РЅРёС‚СЊ</button>
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                 <b class="b1"></b>
             </div>
         </form>
-        <!-- Таблица клиентов и кампаний -->
+        <!-- РўР°Р±Р»РёС†Р° РєР»РёРµРЅС‚РѕРІ Рё РєР°РјРїР°РЅРёР№ -->
         <table class="tbl-cnc">
             <thead>
                 <tr>
@@ -55,10 +55,10 @@
                         #
                     </th>
                     <th>
-                        Имя
+                        РРјСЏ
                     </th>
                     <th>
-                        Условие
+                        РЈСЃР»РѕРІРёРµ
                     </th>
                     <th>&nbsp;</th>
                 </tr>
@@ -75,7 +75,7 @@
                         <td><?= $row['pattern'] ?></td>
 
                         <td class="c-prd <?= $order == 'act' ? 'c-id' : '' ?>">
-                            <a href="./?tab=rules&action=delete_rule&id=<?= $row['id'] ?>" onclick="return confirm('Точно удалить?')">Удалить</a>
+                            <a href="./?tab=rules&action=delete_rule&id=<?= $row['id'] ?>" onclick="return confirm('РўРѕС‡РЅРѕ СѓРґР°Р»РёС‚СЊ?')">РЈРґР°Р»РёС‚СЊ</a>
                         </td>
                     </tr>
                 <? } ?>

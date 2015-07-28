@@ -61,7 +61,7 @@ for ($i=0; $i<count($n); $i++) {
 $NODEMASK = count($nodes)-1;
 
 
-// тест всех подключений
+// С‚РµСЃС‚ РІСЃРµС… РїРѕРґРєР»СЋС‡РµРЅРёР№
 $p = $master->val("SELECT 'Master is connect'");
 if ($p) {
 	mess($p);
@@ -87,7 +87,7 @@ mess("All connects is OK.");
 
 /**
  *
- * Синхронизация freelancer, employer, users_uid между нодами и базой freelance
+ * РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ freelancer, employer, users_uid РјРµР¶РґСѓ РЅРѕРґР°РјРё Рё Р±Р°Р·РѕР№ freelance
  *
  */
 $tables = array(
@@ -125,7 +125,7 @@ foreach ($tables as $table) {
 
 /**
  *
- * Синхронизация сообщений между нодами
+ * РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ СЃРѕРѕР±С‰РµРЅРёР№ РјРµР¶РґСѓ РЅРѕРґР°РјРё
  *
  */
 mess("Start check messages between nodes...");
@@ -137,7 +137,7 @@ foreach ($unodes as $nodenum) {
 	
 	while ($n1_mess = pg_fetch_assoc($res)) {
 
-		// для сообщений массовой рассылки
+		// РґР»СЏ СЃРѕРѕР±С‰РµРЅРёР№ РјР°СЃСЃРѕРІРѕР№ СЂР°СЃСЃС‹Р»РєРё
 		if (($unodes[$n1_mess['from_id'] & $NODEMASK] == $nodenum) && $n1_mess['to_id'] == 0) {
 			for ($i=0; $i<count($unodes); $i++) {
 				if ($unodes[$i] != $nodenum) {
@@ -155,17 +155,17 @@ foreach ($unodes as $nodenum) {
 			continue;
 		}
 
-		// если отправитель и получатель с одном ноде, то пропускаем
+		// РµСЃР»Рё РѕС‚РїСЂР°РІРёС‚РµР»СЊ Рё РїРѕР»СѓС‡Р°С‚РµР»СЊ СЃ РѕРґРЅРѕРј РЅРѕРґРµ, С‚Рѕ РїСЂРѕРїСѓСЃРєР°РµРј
 		if ($unodes[$n1_mess['from_id'] & $NODEMASK] == $unodes[$n1_mess['to_id'] & $NODEMASK] || ($n1_mess['to_id'] == 0)) {
 			continue;
 		}
 
-		// если это нод отправителя (оригинал сообщения)
+		// РµСЃР»Рё СЌС‚Рѕ РЅРѕРґ РѕС‚РїСЂР°РІРёС‚РµР»СЏ (РѕСЂРёРіРёРЅР°Р» СЃРѕРѕР±С‰РµРЅРёСЏ)
 		if ($unodes[$n1_mess['from_id'] & $NODEMASK] == $nodenum) {
 			$n2num = $unodes[$n1_mess['to_id'] & $NODEMASK];
 			$n2 = $nodes[$n2num];
 			$n2_mess = $n2->row("SELECT * FROM messages WHERE id = ?", $n1_mess['id']);
-			// добавление или удаление сообщения в случае несоответсвия (кроме read_time)
+			// РґРѕР±Р°РІР»РµРЅРёРµ РёР»Рё СѓРґР°Р»РµРЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ РІ СЃР»СѓС‡Р°Рµ РЅРµСЃРѕРѕС‚РІРµС‚СЃРІРёСЏ (РєСЂРѕРјРµ read_time)
 			if (empty($n2_mess)) {
 				$n2->insert('messages', $n1_mess);
 				mess("NODE {$n2num}: Insert message with id = {$n1_mess['id']}. PgQ bug.");
@@ -173,21 +173,21 @@ foreach ($unodes as $nodenum) {
 				$n2->update('messages', $diff, "id = ?", $n1_mess['id']);
 				mess("NODE {$n2num}: Update message with id = {$n1_mess['id']}. PgQ bug.");
 			}
-			// проверка read_time
+			// РїСЂРѕРІРµСЂРєР° read_time
 			if (!empty($n2_mess) && ($n1_mess['read_time'] != $n2_mess['read_time']) && ($n2_mess['read_time'] == "1970-01-01 00:00:00")) {
 				$n2->query("UPDATE messages SET read_time = ? WHERE id = ?", $n1_mess['read_time'], $n1_mess['id']);
 				mess("NODE {$n2num}: Update read_time for message with id = {$n1_mess['id']}. Not updated original record. Very bad!!!");
 			}
-		// если это нод получателя (копия сообщения)
+		// РµСЃР»Рё СЌС‚Рѕ РЅРѕРґ РїРѕР»СѓС‡Р°С‚РµР»СЏ (РєРѕРїРёСЏ СЃРѕРѕР±С‰РµРЅРёСЏ)
 		} else if ($unodes[$n1_mess['to_id'] & $NODEMASK] == $nodenum) {
 			$n2num = $unodes[$n1_mess['from_id'] & $NODEMASK];
 			$n2 = $nodes[$n2num];
 			$n2_mess = $n2->row("SELECT * FROM messages WHERE id = ?", $n1_mess['id']);
-			// если копия сообщения есть, а оригинала нет
+			// РµСЃР»Рё РєРѕРїРёСЏ СЃРѕРѕР±С‰РµРЅРёСЏ РµСЃС‚СЊ, Р° РѕСЂРёРіРёРЅР°Р»Р° РЅРµС‚
 			if (empty($n2_mess)) {
 				$n2->insert('messages', $n1_mess);
 				mess("NODE {$n2num}: Insert message with id = {$n1_mess['id']}. Lost original record. Very bad!!!");
-			// проверяем read_time
+			// РїСЂРѕРІРµСЂСЏРµРј read_time
 			} else if (($n1_mess['read_time'] != $n2_mess['read_time']) && ($n2_mess['read_time'] == "1970-01-01 00:00:00")) {
 				$n2->query("UPDATE messages SET read_time = ? WHERE id = ?", $n1_mess['read_time'], $n1_mess['id']);
 				mess("NODE {$n2num}: Update read_time for message with id = {$n1_mess['id']}. PgQ bug.");
@@ -201,7 +201,7 @@ foreach ($unodes as $nodenum) {
 
 /**
  *
- * Синхронизация teams между нодами
+ * РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ teams РјРµР¶РґСѓ РЅРѕРґР°РјРё
  *
  */
 mess("Start check teams between nodes...");
@@ -213,12 +213,12 @@ foreach ($unodes as $nodenum) {
 
 	while ($t1 = pg_fetch_assoc($res)) {
 
-		// если добавивший и добавленный в одном ноде, то пропускаем
+		// РµСЃР»Рё РґРѕР±Р°РІРёРІС€РёР№ Рё РґРѕР±Р°РІР»РµРЅРЅС‹Р№ РІ РѕРґРЅРѕРј РЅРѕРґРµ, С‚Рѕ РїСЂРѕРїСѓСЃРєР°РµРј
 		if ($unodes[$t1['user_id'] & $NODEMASK] == $unodes[$t1['target_id'] & $NODEMASK]) {
 			continue;
 		}
 
-		// если это нод добавившего
+		// РµСЃР»Рё СЌС‚Рѕ РЅРѕРґ РґРѕР±Р°РІРёРІС€РµРіРѕ
 		if (($unodes[$t1['user_id'] & $NODEMASK]) == $nodenum) {
 			$n2num = $unodes[$t1['user_id'] & $NODEMASK];
 			$n2 = $nodes[$n2num];
@@ -230,7 +230,7 @@ foreach ($unodes as $nodenum) {
 				$n2->update('teams', $diff, "user_id = ? AND target_id = ?", $t1['user_id'], $t1['target_id']);
 				mess("NODE {$n2num}: Update teams with user_id = {$t1['user_id']} AND target = {$t1['target_id']}. PgQ bug.");
 			}
-		// если это нод добавленного
+		// РµСЃР»Рё СЌС‚Рѕ РЅРѕРґ РґРѕР±Р°РІР»РµРЅРЅРѕРіРѕ
 		} else if (($unodes[$t1['target_id'] & $NODEMASK]) == $nodenum) {
 			$n2num = $unodes[$t1['user_id'] & $NODEMASK];
 			$n2 = $nodes[$n2num];
@@ -247,7 +247,7 @@ foreach ($unodes as $nodenum) {
 
 /**
  * 
- * Синхронизация сообщений с базой freelance
+ * РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ СЃРѕРѕР±С‰РµРЅРёР№ СЃ Р±Р°Р·РѕР№ freelance
  * 
  * 
  */
@@ -334,7 +334,7 @@ foreach ($unodes as $nodenum) {
 
 /**
  *
- * Синхронизация teams между нодами и базой freelance
+ * РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ teams РјРµР¶РґСѓ РЅРѕРґР°РјРё Рё Р±Р°Р·РѕР№ freelance
  *
  */
 mess("Start check teams from nodes to freelance...");
@@ -346,7 +346,7 @@ foreach ($unodes as $nodenum) {
 
 	while ($t1 = pg_fetch_assoc($res)) {
 
-		// если добавивший из другого нода, то пропускаем
+		// РµСЃР»Рё РґРѕР±Р°РІРёРІС€РёР№ РёР· РґСЂСѓРіРѕРіРѕ РЅРѕРґР°, С‚Рѕ РїСЂРѕРїСѓСЃРєР°РµРј
 		if ($unodes[$t1['user_id'] & $NODEMASK] != $nodenum) {
 			continue;
 		}
@@ -368,7 +368,7 @@ foreach ($unodes as $nodenum) {
 
 /**
  *
- * Синхронизация ignor, notes, mess_folders, mess_ustf между нодами и базой freelance
+ * РЎРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ ignor, notes, mess_folders, mess_ustf РјРµР¶РґСѓ РЅРѕРґР°РјРё Рё Р±Р°Р·РѕР№ freelance
  *
  */
 $tables = array(

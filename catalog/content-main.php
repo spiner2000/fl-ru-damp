@@ -1,10 +1,10 @@
-<h2 class="b-page__title b-page__title_padnull">Направления деятельности фрилансеров</h2>
+<h2 class="b-page__title b-page__title_padnull">РќР°РїСЂР°РІР»РµРЅРёСЏ РґРµСЏС‚РµР»СЊРЅРѕСЃС‚Рё С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</h2>
 <form id="region_frm" action="" method="get">
 	<div class="b-select b-select_padbot_20 b-select_padtop_10">
 		<script type="text/javascript">var host = '<?=preg_replace('~^'.HTTP_PREFIX.'(www\.)?~', '', $host)?>'; var allHost = '<?=(preg_match('~'.HTTP_PREFIX.'www\.~', $host)? 'www.': '')?>' + host; </script>
-		<label class="b-select__label" for="region">Регион:</label>
+		<label class="b-select__label" for="region">Р РµРіРёРѕРЅ:</label>
 		<select id="region" class="b-select__select b-select__select_width_140" name="subdomain" onchange="if($('region').get('value') != '') { if($('region').get('value') == 'all') { url = '<?=HTTP_PREFIX?>'+allHost+'/catalog/'; } else { url = '<?=HTTP_PREFIX?>'+$('region').get('value')+'.'+host+'/catalog/'; }; window.location = url; }">
-				<option value="all" <?=(($seo->subdomain['id'] == -1)?'selected="selected"':'')?>>Все</option>
+				<option value="all" <?=(($seo->subdomain['id'] == -1)?'selected="selected"':'')?>>Р’СЃРµ</option>
 				<?php
 				foreach($countries as $country) {
 					$country_options = "<option value=''>{$country['country_name']}</option>";
@@ -26,7 +26,7 @@
 
 
 
-<div class="b-page__txt b-page__txt_fontsize_13"><p>Нередко работодатели испытывают трудности при поиске грамотных специалистов в той или иной области из-за того, что недостаточно осведомлены о специфике работы фрилансеров. Обладая дополнительной информацией, выбрать подходящего исполнителя для своих проектов намного легче.</p><p>&nbsp;</p><p>В данном разделе собраны статьи, касающиеся различных направлений деятельности удаленных специалистов. Здесь вы можете узнать самое свежее и новое о фрилансерах и рынке фри-ланса в целом.</p><p>&nbsp;</p><p>Развивайтесь вместе с Free-lance.ru!</p></div>
+<div class="b-page__txt b-page__txt_fontsize_13"><p>РќРµСЂРµРґРєРѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»Рё РёСЃРїС‹С‚С‹РІР°СЋС‚ С‚СЂСѓРґРЅРѕСЃС‚Рё РїСЂРё РїРѕРёСЃРєРµ РіСЂР°РјРѕС‚РЅС‹С… СЃРїРµС†РёР°Р»РёСЃС‚РѕРІ РІ С‚РѕР№ РёР»Рё РёРЅРѕР№ РѕР±Р»Р°СЃС‚Рё РёР·-Р·Р° С‚РѕРіРѕ, С‡С‚Рѕ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РѕСЃРІРµРґРѕРјР»РµРЅС‹ Рѕ СЃРїРµС†РёС„РёРєРµ СЂР°Р±РѕС‚С‹ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ. РћР±Р»Р°РґР°СЏ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРµР№, РІС‹Р±СЂР°С‚СЊ РїРѕРґС…РѕРґСЏС‰РµРіРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЏ РґР»СЏ СЃРІРѕРёС… РїСЂРѕРµРєС‚РѕРІ РЅР°РјРЅРѕРіРѕ Р»РµРіС‡Рµ.</p><p>&nbsp;</p><p>Р’ РґР°РЅРЅРѕРј СЂР°Р·РґРµР»Рµ СЃРѕР±СЂР°РЅС‹ СЃС‚Р°С‚СЊРё, РєР°СЃР°СЋС‰РёРµСЃСЏ СЂР°Р·Р»РёС‡РЅС‹С… РЅР°РїСЂР°РІР»РµРЅРёР№ РґРµСЏС‚РµР»СЊРЅРѕСЃС‚Рё СѓРґР°Р»РµРЅРЅС‹С… СЃРїРµС†РёР°Р»РёСЃС‚РѕРІ. Р—РґРµСЃСЊ РІС‹ РјРѕР¶РµС‚Рµ СѓР·РЅР°С‚СЊ СЃР°РјРѕРµ СЃРІРµР¶РµРµ Рё РЅРѕРІРѕРµ Рѕ С„СЂРёР»Р°РЅСЃРµСЂР°С… Рё СЂС‹РЅРєРµ С„СЂРё-Р»Р°РЅСЃР° РІ С†РµР»РѕРј.</p><p>&nbsp;</p><p>Р Р°Р·РІРёРІР°Р№С‚РµСЃСЊ РІРјРµСЃС‚Рµ СЃ Free-lance.ru!</p></div>
 
 <div class="b-layout b-layout_padtop_20 b-layout_padbot_20">
 	<table class="b-layout__table b-layout__table_width_full">
@@ -45,10 +45,10 @@
 				$len = (count($section['subsection'])>5 ? 5 : count($section['subsection']));
 				for($i=0; $i<$len; $i++) {
 					$item = $section['subsection'][$i];
-					echo '<div class="b-layout__txt b-layout__txt_padbot_5">— <a class="b-layout__link" href="'.seo::getFriendlyURL($subdomains[$item['subdomain_id']]['subdomain'], $directions[$item['direct_id']]['name_section_link'], $item['name_section_link'], $section['name_section_link']).'">'.$item['name_section'].'</a></div>';
+					echo '<div class="b-layout__txt b-layout__txt_padbot_5">вЂ” <a class="b-layout__link" href="'.seo::getFriendlyURL($subdomains[$item['subdomain_id']]['subdomain'], $directions[$item['direct_id']]['name_section_link'], $item['name_section_link'], $section['name_section_link']).'">'.$item['name_section'].'</a></div>';
 				}
 				if($len==5) {
-					echo '<div class="b-layout__txt b-layout__txt_padleft_15 b-layout__txt_padbot_40"><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="'.seo::getFriendlyURL($seo->subdomain['subdomain'], $directions[$section['direct_id']]['name_section_link'], '', $section['name_section_link']).'">Остальные статьи</a></div>';
+					echo '<div class="b-layout__txt b-layout__txt_padleft_15 b-layout__txt_padbot_40"><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="'.seo::getFriendlyURL($seo->subdomain['subdomain'], $directions[$section['direct_id']]['name_section_link'], '', $section['name_section_link']).'">РћСЃС‚Р°Р»СЊРЅС‹Рµ СЃС‚Р°С‚СЊРё</a></div>';
 				} else {
 					echo '<div class="b-layout__txt b-layout__txt_padleft_15 b-layout__txt_padbot_40">&nbsp;</div>';					
 				}

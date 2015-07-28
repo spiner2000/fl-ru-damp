@@ -2,12 +2,12 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/search/search_element.php";
 
 /**
- * Класс для поиска по статьям
+ * РљР»Р°СЃСЃ РґР»СЏ РїРѕРёСЃРєР° РїРѕ СЃС‚Р°С‚СЊСЏРј
  *
  */
 class searchElementArticles extends searchElement
 {
-    public $name = 'Статьи и интервью';
+    public $name = 'РЎС‚Р°С‚СЊРё Рё РёРЅС‚РµСЂРІСЊСЋ';
 
     
     public function setResults() {
@@ -41,13 +41,13 @@ class searchElementArticles extends searchElement
                     $link = '/articles/?id='.$id;
                     if($value['logo'])
                         $logo = '<img src="'.WDCPREFIX.'/about/articles/'.$value['logo'].'" width="50" hspace="0"/>';
-                    $title = '<a href="'.$link.'" style="font-weight: bold;" class="blue">' . ($title ? $title : '<Без заголовка>') . '</a>';
-                    $footer = '<div class="little" style="margin-top: 4px;"><span class="topic">Статьи:</span> <a href="'.$link.'">'.$value['title'].'</a> - [' . strftime("%d.%m.%Y | %H:%M", make_timestamp($value['post_time'])) . ']</div>';
+                    $title = '<a href="'.$link.'" style="font-weight: bold;" class="blue">' . ($title ? $title : '<Р‘РµР· Р·Р°РіРѕР»РѕРІРєР°>') . '</a>';
+                    $footer = '<div class="little" style="margin-top: 4px;"><span class="topic">РЎС‚Р°С‚СЊРё:</span> <a href="'.$link.'">'.$value['title'].'</a> - [' . strftime("%d.%m.%Y | %H:%M", make_timestamp($value['post_time'])) . ']</div>';
                 }
                 else {
                     $link = '/interview/?id='.$id;
                     $logo = '<img src="'.WDCPREFIX.'/users/'.$value['login'].'/upload/'.$value['logo'].'" width="50"/>';
-                    $footer = '<div class="little" style="margin-top: 4px;"><span class="topic">Интервью:</span> <a href="'.$link.'">'.$uname.' '.$usurname.'</a> - [<a href="/users/'.$value['login'].'">'.$login.'</a>]</div>';
+                    $footer = '<div class="little" style="margin-top: 4px;"><span class="topic">РРЅС‚РµСЂРІСЊСЋ:</span> <a href="'.$link.'">'.$uname.' '.$usurname.'</a> - [<a href="/users/'.$value['login'].'">'.$login.'</a>]</div>';
                 }
 
                 if($logo)

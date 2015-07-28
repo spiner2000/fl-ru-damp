@@ -13,7 +13,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/reserves/ReservesHelper.php')
 
 
 /**
- * Это методы для разных видов оплаты но сгруппированные в яндекс кассе
+ * Р­С‚Рѕ РјРµС‚РѕРґС‹ РґР»СЏ СЂР°Р·РЅС‹С… РІРёРґРѕРІ РѕРїР»Р°С‚С‹ РЅРѕ СЃРіСЂСѓРїРїРёСЂРѕРІР°РЅРЅС‹Рµ РІ СЏРЅРґРµРєСЃ РєР°СЃСЃРµ
  * 
  * @param type $type
  * @param type $data
@@ -44,7 +44,7 @@ function quickPaymentReserveSberbank($type, $data)
 }
 
 /**
- * Резервирование средств через яндекс кассу
+ * Р РµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ СЃСЂРµРґСЃС‚РІ С‡РµСЂРµР· СЏРЅРґРµРєСЃ РєР°СЃСЃСѓ
  * 
  * @param type $type
  * @param type $data
@@ -78,13 +78,13 @@ function quickPaymentReserveYandexKassa($type, $data)
         return $objResponse;
     }
     
-    //Если уже был платеж то обновляем страницу
+    //Р•СЃР»Рё СѓР¶Рµ Р±С‹Р» РїР»Р°С‚РµР¶ С‚Рѕ РѕР±РЅРѕРІР»СЏРµРј СЃС‚СЂР°РЅРёС†Сѓ
     if(!$reserveInstance->isStatusNew()) {
         $objResponse->script("window.location.reload()");
         return $objResponse;
     }
     
-    //Формируем заказ
+    //Р¤РѕСЂРјРёСЂСѓРµРј Р·Р°РєР°Р·
     $bill = new billing($uid);
     $billReserveId = $bill->addServiceAndCheckout(
             ReservesModel::OPCODE_RESERVE,
@@ -122,9 +122,9 @@ function quickPaymentReserveYandexKassa($type, $data)
 //------------------------------------------------------------------------------
 
 /**
- * Выставяем счет оплаты по безналу для резерва
+ * Р’С‹СЃС‚Р°РІСЏРµРј СЃС‡РµС‚ РѕРїР»Р°С‚С‹ РїРѕ Р±РµР·РЅР°Р»Сѓ РґР»СЏ СЂРµР·РµСЂРІР°
  * 
- * @param string $type - тип платежа (тут всегда bank)
+ * @param string $type - С‚РёРї РїР»Р°С‚РµР¶Р° (С‚СѓС‚ РІСЃРµРіРґР° bank)
  * @param array $data
  * @return \xajaxResponse
  */
@@ -135,12 +135,12 @@ function quickPaymentReserveBank($type, $data)
     $uid = get_uid(false);
     if($uid <= 0) return $objResponse;
     
-    //Проверка на юрика
+    //РџСЂРѕРІРµСЂРєР° РЅР° СЋСЂРёРєР°
     $reqvs = ReservesHelper::getInstance()->getUserReqvs($uid);
     if($reqvs['form_type'] != sbr::FT_JURI) return $objResponse;
     $reqv = $reqvs[$reqvs['form_type']];
     
-    //Проверка наличия резерва средств
+    //РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ СЂРµР·РµСЂРІР° СЃСЂРµРґСЃС‚РІ
     $reserve_id = intval(@$data['quick_payment_reserve_form']);
     $reserveInstance = ReservesModelFactory::getInstanceById($reserve_id);
     if(!$reserveInstance) return $objResponse;
@@ -151,7 +151,7 @@ function quickPaymentReserveBank($type, $data)
         return $objResponse;
     }
        
-    //Если уже был платеж то обновляем страницу
+    //Р•СЃР»Рё СѓР¶Рµ Р±С‹Р» РїР»Р°С‚РµР¶ С‚Рѕ РѕР±РЅРѕРІР»СЏРµРј СЃС‚СЂР°РЅРёС†Сѓ
     if (!$reserveInstance->isStatusNew()) {
         $objResponse->script("window.location.reload()");
         return $objResponse;
@@ -164,14 +164,14 @@ function quickPaymentReserveBank($type, $data)
     if(!$file){
         $objResponse->script("
             var qp_reserve = quick_payment_factory.getQuickPayment('reserve');
-            if(qp_reserve) qp_reserve.show_error('Не удалось создать файл счета. Попробуйте еще раз.');
+            if(qp_reserve) qp_reserve.show_error('РќРµ СѓРґР°Р»РѕСЃСЊ СЃРѕР·РґР°С‚СЊ С„Р°Р№Р» СЃС‡РµС‚Р°. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·.');
         ");
         return $objResponse;
     }
     
-    $success_text = 'Для резервирования суммы на сайте вам был сформирован '
-            . '<a href="'.WDCPREFIX.'/'.$file->path.$file->name.'" target="_blank">счет на оплату</a>.<br />'
-            . 'Счет также доступен вам в заказе в списке загруженных документов.';
+    $success_text = 'Р”Р»СЏ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ СЃСѓРјРјС‹ РЅР° СЃР°Р№С‚Рµ РІР°Рј Р±С‹Р» СЃС„РѕСЂРјРёСЂРѕРІР°РЅ '
+            . '<a href="'.WDCPREFIX.'/'.$file->path.$file->name.'" target="_blank">СЃС‡РµС‚ РЅР° РѕРїР»Р°С‚Сѓ</a>.<br />'
+            . 'РЎС‡РµС‚ С‚Р°РєР¶Рµ РґРѕСЃС‚СѓРїРµРЅ РІР°Рј РІ Р·Р°РєР°Р·Рµ РІ СЃРїРёСЃРєРµ Р·Р°РіСЂСѓР¶РµРЅРЅС‹С… РґРѕРєСѓРјРµРЅС‚РѕРІ.';
     
     $objResponse->script("
         var qp_reserve = quick_payment_factory.getQuickPayment('reserve');

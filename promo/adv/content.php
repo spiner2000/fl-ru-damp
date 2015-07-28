@@ -1,19 +1,19 @@
             <table class="b-layout__table">
                <tr class="b-layout__tr">
                   <td class="b-layout__td" height="60"><img class="b-pic" src="<?=WDCPREFIX?>/images/reclama2/fl-logo.png" width="60" height="60"></td>
-                  <td class="b-layout__td b-layout__td_valign_mid"><div class="b-layout__txt b-layout__txt_color_6db335 b-layout__txt_fontsize_34"> &#160; &mdash; ЭТО ЭФФЕКТИВНАЯ РЕКЛАМА</div>
+                  <td class="b-layout__td b-layout__td_valign_mid"><div class="b-layout__txt b-layout__txt_color_6db335 b-layout__txt_fontsize_34"> &#160; &mdash; Р­РўРћ Р­Р¤Р¤Р•РљРўРР’РќРђРЇ Р Р•РљР›РђРњРђ</div>
                   </td>
                   <td rowspan="2" class="b-layout__td"><img class="b-pic b-pic_zindex_2" src="<?=WDCPREFIX?>/images/reclama2/peaple.png" width="333" height="383"></td>
                </tr>
                <tr class="b-layout__tr">
                   <td class="b-layout__td"></td>
                   <td class="b-layout__td">
-                     <div class="b-layout__txt b-layout__txt_fontsize_34 b-layout__txt_inline-block b-layout__txt_padlr_10 b-fon b-fon_bg_e1 b-fon_rad_5 b-layout__txt_margbot_10">для 100 000 посетителей в день</div><br>
-                     <div class="b-layout__txt b-layout__txt_fontsize_34 b-layout__txt_inline-block b-layout__txt_padlr_10 b-fon b-fon_bg_e1 b-fon_rad_5 b-layout__txt_margbot_10">на 24 миллионах страниц в месяц</div><br>
-                     <div class="b-layout__txt b-layout__txt_fontsize_34 b-layout__txt_inline-block b-layout__txt_padlr_10 b-fon b-fon_bg_e1 b-fon_rad_5 b-layout__txt_margbot_10"><a class="b-layout__link b-layout__link_bordbot_dot_000" href="#btn1">в 6 разных форматах</a></div>
+                     <div class="b-layout__txt b-layout__txt_fontsize_34 b-layout__txt_inline-block b-layout__txt_padlr_10 b-fon b-fon_bg_e1 b-fon_rad_5 b-layout__txt_margbot_10">РґР»СЏ 100 000 РїРѕСЃРµС‚РёС‚РµР»РµР№ РІ РґРµРЅСЊ</div><br>
+                     <div class="b-layout__txt b-layout__txt_fontsize_34 b-layout__txt_inline-block b-layout__txt_padlr_10 b-fon b-fon_bg_e1 b-fon_rad_5 b-layout__txt_margbot_10">РЅР° 24 РјРёР»Р»РёРѕРЅР°С… СЃС‚СЂР°РЅРёС† РІ РјРµСЃСЏС†</div><br>
+                     <div class="b-layout__txt b-layout__txt_fontsize_34 b-layout__txt_inline-block b-layout__txt_padlr_10 b-fon b-fon_bg_e1 b-fon_rad_5 b-layout__txt_margbot_10"><a class="b-layout__link b-layout__link_bordbot_dot_000" href="#btn1">РІ 6 СЂР°Р·РЅС‹С… С„РѕСЂРјР°С‚Р°С…</a></div>
                      <div class="b-buttons b-buttons_padtop_40">
-                        <a class="b-button b-button_flat b-button_flat_green b-button_flat_big" href="mailto:adv@fl.ru?subject=Заказ%20рекламы&body=Здравствуйте!%20Интересует%20размещение%20рекламы%20на%20сайте%20FL.ru.%20Хотелось%20бы%20рассмотреть%20и%20выбрать%20варианты.">ЗАКАЗАТЬ РЕКЛАМУ</a>
-                        <span class="b-layout__txt b-layout__txt_fontsize_16">&#160;&#160;или изучить наши возможности <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="#btn1">подробнее</a>!</span>
+                        <a class="b-button b-button_flat b-button_flat_green b-button_flat_big" href="mailto:adv@fl.ru?subject=Р—Р°РєР°Р·%20СЂРµРєР»Р°РјС‹&body=Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!%20РРЅС‚РµСЂРµСЃСѓРµС‚%20СЂР°Р·РјРµС‰РµРЅРёРµ%20СЂРµРєР»Р°РјС‹%20РЅР°%20СЃР°Р№С‚Рµ%20FL.ru.%20РҐРѕС‚РµР»РѕСЃСЊ%20Р±С‹%20СЂР°СЃСЃРјРѕС‚СЂРµС‚СЊ%20Рё%20РІС‹Р±СЂР°С‚СЊ%20РІР°СЂРёР°РЅС‚С‹.">Р—РђРљРђР—РђРўР¬ Р Р•РљР›РђРњРЈ</a>
+                        <span class="b-layout__txt b-layout__txt_fontsize_16">&#160;&#160;РёР»Рё РёР·СѓС‡РёС‚СЊ РЅР°С€Рё РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="#btn1">РїРѕРґСЂРѕР±РЅРµРµ</a>!</span>
                      </div>
                   </td>
                </tr>
@@ -47,16 +47,16 @@
                <div id="slider">
                   <div class="b-promo__slider-inner uSlider-slides">
                      <div class="b-promo__slider-item">
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_color_6db335">А знали ли вы, что</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padtop_5">FL.ru &mdash; крупнейшая русскоязычная биржа удаленной работы<br>c 1 150 000 зарегистрированных специалистов.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_color_6db335">Рђ Р·РЅР°Р»Рё Р»Рё РІС‹, С‡С‚Рѕ</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padtop_5">FL.ru &mdash; РєСЂСѓРїРЅРµР№С€Р°СЏ СЂСѓСЃСЃРєРѕСЏР·С‹С‡РЅР°СЏ Р±РёСЂР¶Р° СѓРґР°Р»РµРЅРЅРѕР№ СЂР°Р±РѕС‚С‹<br>c 1 150 000 Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹С… СЃРїРµС†РёР°Р»РёСЃС‚РѕРІ.</div>
                      </div>
                      <div class="b-promo__slider-item">
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_color_6db335">А знали ли вы, что</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padtop_5">На FL.ru ежемесячно публикуется свыше 30 000 проектов,<br>вакансий и конкурсов по различным специализациям.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_color_6db335">Рђ Р·РЅР°Р»Рё Р»Рё РІС‹, С‡С‚Рѕ</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padtop_5">РќР° FL.ru РµР¶РµРјРµСЃСЏС‡РЅРѕ РїСѓР±Р»РёРєСѓРµС‚СЃСЏ СЃРІС‹С€Рµ 30 000 РїСЂРѕРµРєС‚РѕРІ,<br>РІР°РєР°РЅСЃРёР№ Рё РєРѕРЅРєСѓСЂСЃРѕРІ РїРѕ СЂР°Р·Р»РёС‡РЅС‹Рј СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏРј.</div>
                      </div>
                      <div class="b-promo__slider-item">
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_color_6db335">А знали ли вы, что</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padtop_5">Аудитория FL.ru &mdash; это активные пользователи Интернета от 20 до 50 лет из 27 стран мира<br>(Россия, Украина, Беларусь, Казахстан и т.д.)</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_color_6db335">Рђ Р·РЅР°Р»Рё Р»Рё РІС‹, С‡С‚Рѕ</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padtop_5">РђСѓРґРёС‚РѕСЂРёСЏ FL.ru &mdash; СЌС‚Рѕ Р°РєС‚РёРІРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё РРЅС‚РµСЂРЅРµС‚Р° РѕС‚ 20 РґРѕ 50 Р»РµС‚ РёР· 27 СЃС‚СЂР°РЅ РјРёСЂР°<br>(Р РѕСЃСЃРёСЏ, РЈРєСЂР°РёРЅР°, Р‘РµР»Р°СЂСѓСЃСЊ, РљР°Р·Р°С…СЃС‚Р°РЅ Рё С‚.Рґ.)</div>
                      </div>
                   </div>
                </div>
@@ -65,7 +65,7 @@
             </div>
             
             <div class="b-anchor"><a class="b-anchor__link" id="btn1"></a></div>                  
-            <div class="b-layout__txt b-layout__txt_color_6db335 b-layout__txt_fontsize_34 b-layout__txt_center b-layout__txt_padbot_30">ВЫБЕРИТЕ МАКСИМАЛЬНО УДОБНЫЙ ВАМ ФОРМАТ:</div>
+            <div class="b-layout__txt b-layout__txt_color_6db335 b-layout__txt_fontsize_34 b-layout__txt_center b-layout__txt_padbot_30">Р’Р«Р‘Р•Р РРўР• РњРђРљРЎРРњРђР›Р¬РќРћ РЈР”РћР‘РќР«Р™ Р’РђРњ Р¤РћР РњРђРў:</div>
             
             <table class="b-layout__table">
                <tr class="b-layout__tr">
@@ -73,14 +73,14 @@
                      <div id="promo_wrap" class="b-layout b-layout_relative">
                         <div id="promo_btns" class="b-menu b-menu_promo">
                            <ul class="b-menu__list">
-                              <li class="b-menu__item b-menu__item_active"><a class="b-menu__link" href="#btn1">Промо-кнопки</a></li>
-                              <li class="b-menu__item"><a class="b-menu__link" href="#btn2">Баннер 240 х  400</a></li>
-                              <li class="b-menu__item"><a class="b-menu__link" href="#btn3">Баннер в email-рассылке</a></li>
-                              <li class="b-menu__item"><a class="b-menu__link" href="#btn4">Пост в сообществе</a></li>
-                              <li class="b-menu__item"><a class="b-menu__link" href="#btn5">Рекламный проект</a></li>
-                              <li class="b-menu__item"><a class="b-menu__link" href="#btn6">Пост в социальных сетях</a></li>
+                              <li class="b-menu__item b-menu__item_active"><a class="b-menu__link" href="#btn1">РџСЂРѕРјРѕ-РєРЅРѕРїРєРё</a></li>
+                              <li class="b-menu__item"><a class="b-menu__link" href="#btn2">Р‘Р°РЅРЅРµСЂ 240 С…  400</a></li>
+                              <li class="b-menu__item"><a class="b-menu__link" href="#btn3">Р‘Р°РЅРЅРµСЂ РІ email-СЂР°СЃСЃС‹Р»РєРµ</a></li>
+                              <li class="b-menu__item"><a class="b-menu__link" href="#btn4">РџРѕСЃС‚ РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ</a></li>
+                              <li class="b-menu__item"><a class="b-menu__link" href="#btn5">Р РµРєР»Р°РјРЅС‹Р№ РїСЂРѕРµРєС‚</a></li>
+                              <li class="b-menu__item"><a class="b-menu__link" href="#btn6">РџРѕСЃС‚ РІ СЃРѕС†РёР°Р»СЊРЅС‹С… СЃРµС‚СЏС…</a></li>
                            </ul>
-                           <div class="b-menu__ask">Есть вопросы или<br>появились идеи?<br>Пишите на<br><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="mailto:adv@fl.ru">adv@fl.ru</a></div>
+                           <div class="b-menu__ask">Р•СЃС‚СЊ РІРѕРїСЂРѕСЃС‹ РёР»Рё<br>РїРѕСЏРІРёР»РёСЃСЊ РёРґРµРё?<br>РџРёС€РёС‚Рµ РЅР°<br><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="mailto:adv@fl.ru">adv@fl.ru</a></div>
                         </div>
                      </div>
                   </td>
@@ -89,78 +89,78 @@
                      <div class="b-layout b-layuot_width_720 b-layout_padbot_30">
                         <img class="b-pic" src="<?=WDCPREFIX?>/images/reclama2/1.png" width="714" height="251">
                         <div class="b-buttons b-buttons_center b-buttons_padbot_30">
-                           <a class="b-button b-button_flat b-button_flat_green b-button_flat_big" href="mailto:adv@fl.ru?subject=Заказ%20промо-кнопки&body=Здравствуйте!%20Интересует%20размещение%20рекламы%20на%20сайте%20FL.ru.%20Хотелось%20бы%20разместить%20промо-кнопку.">ЗАКАЗАТЬ КНОПКУ</a>
-                           <span class="b-layout__txt b-layout__txt_fontsize_16">&#160;&#160;или посмотреть <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="#btn2">на следующий формат</a>!</span>
+                           <a class="b-button b-button_flat b-button_flat_green b-button_flat_big" href="mailto:adv@fl.ru?subject=Р—Р°РєР°Р·%20РїСЂРѕРјРѕ-РєРЅРѕРїРєРё&body=Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!%20РРЅС‚РµСЂРµСЃСѓРµС‚%20СЂР°Р·РјРµС‰РµРЅРёРµ%20СЂРµРєР»Р°РјС‹%20РЅР°%20СЃР°Р№С‚Рµ%20FL.ru.%20РҐРѕС‚РµР»РѕСЃСЊ%20Р±С‹%20СЂР°Р·РјРµСЃС‚РёС‚СЊ%20РїСЂРѕРјРѕ-РєРЅРѕРїРєСѓ.">Р—РђРљРђР—РђРўР¬ РљРќРћРџРљРЈ</a>
+                           <span class="b-layout__txt b-layout__txt_fontsize_16">&#160;&#160;РёР»Рё РїРѕСЃРјРѕС‚СЂРµС‚СЊ <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="#btn2">РЅР° СЃР»РµРґСѓСЋС‰РёР№ С„РѕСЂРјР°С‚</a>!</span>
                         </div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_center">Небольшой текстовый и/или графический баннер, размещенный сверху на самых посещаемых страницах сайта (в каталоге фрилансеров и услуг, в ленте проектов и списке сообществ).</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold">Таргетинг:</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_italic">тип пользователя (фрилансер, работодатель), наличие аккаунта PRO.</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold">Показатели:</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_italic">более 2 млн показов в неделю &mdash; от 2000 переходов;<br>коэффициент переходов (CTR) ~ 0.1%.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_center">РќРµР±РѕР»СЊС€РѕР№ С‚РµРєСЃС‚РѕРІС‹Р№ Рё/РёР»Рё РіСЂР°С„РёС‡РµСЃРєРёР№ Р±Р°РЅРЅРµСЂ, СЂР°Р·РјРµС‰РµРЅРЅС‹Р№ СЃРІРµСЂС…Сѓ РЅР° СЃР°РјС‹С… РїРѕСЃРµС‰Р°РµРјС‹С… СЃС‚СЂР°РЅРёС†Р°С… СЃР°Р№С‚Р° (РІ РєР°С‚Р°Р»РѕРіРµ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ Рё СѓСЃР»СѓРі, РІ Р»РµРЅС‚Рµ РїСЂРѕРµРєС‚РѕРІ Рё СЃРїРёСЃРєРµ СЃРѕРѕР±С‰РµСЃС‚РІ).</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold">РўР°СЂРіРµС‚РёРЅРі:</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_italic">С‚РёРї РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (С„СЂРёР»Р°РЅСЃРµСЂ, СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ), РЅР°Р»РёС‡РёРµ Р°РєРєР°СѓРЅС‚Р° PRO.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold">РџРѕРєР°Р·Р°С‚РµР»Рё:</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_italic">Р±РѕР»РµРµ 2 РјР»РЅ РїРѕРєР°Р·РѕРІ РІ РЅРµРґРµР»СЋ &mdash; РѕС‚ 2000 РїРµСЂРµС…РѕРґРѕРІ;<br>РєРѕСЌС„С„РёС†РёРµРЅС‚ РїРµСЂРµС…РѕРґРѕРІ (CTR) ~ 0.1%.</div>
                      </div>
                      
                      <div class="b-anchor"><a class="b-anchor__link" id="btn2"></a></div>                  
                      <div class="b-layout b-layuot_width_720 b-layout_padbot_30">
                         <img class="b-pic" src="<?=WDCPREFIX?>/images/reclama2/2.png" width="714" height="252">
                         <div class="b-buttons b-buttons_center b-buttons_padbot_30">
-                           <a class="b-button b-button_flat b-button_flat_green b-button_flat_big" href="mailto:adv@fl.ru?subject=Заказ%20баннера&body=Здравствуйте!%20Интересует%20размещение%20рекламы%20на%20сайте%20FL.ru.%20Хотелось%20бы%20разместить%20баннер.">ЗАКАЗАТЬ БАННЕР</a>
-                           <span class="b-layout__txt b-layout__txt_fontsize_16">&#160;&#160;или посмотреть <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="#btn3">на следующий формат</a>!</span>
+                           <a class="b-button b-button_flat b-button_flat_green b-button_flat_big" href="mailto:adv@fl.ru?subject=Р—Р°РєР°Р·%20Р±Р°РЅРЅРµСЂР°&body=Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!%20РРЅС‚РµСЂРµСЃСѓРµС‚%20СЂР°Р·РјРµС‰РµРЅРёРµ%20СЂРµРєР»Р°РјС‹%20РЅР°%20СЃР°Р№С‚Рµ%20FL.ru.%20РҐРѕС‚РµР»РѕСЃСЊ%20Р±С‹%20СЂР°Р·РјРµСЃС‚РёС‚СЊ%20Р±Р°РЅРЅРµСЂ.">Р—РђРљРђР—РђРўР¬ Р‘РђРќРќР•Р </a>
+                           <span class="b-layout__txt b-layout__txt_fontsize_16">&#160;&#160;РёР»Рё РїРѕСЃРјРѕС‚СЂРµС‚СЊ <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="#btn3">РЅР° СЃР»РµРґСѓСЋС‰РёР№ С„РѕСЂРјР°С‚</a>!</span>
                         </div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_center">Статичный или анимированный баннер, размещенный справа или слева на всех основных страницах сайта FL.ru (каталог, профиль, сообщества, проекты, конкурсы и вакансии).</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold">Таргетинг:</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_italic">страна, регион, тип пользователя (фрилансер, работодатель).</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold">Показатели:</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_italic">10 млн показов и 800 тысяч уникальных пользователей в месяц.<br>Коэффициент переходов (CTR) ~ 0.5%.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_center">РЎС‚Р°С‚РёС‡РЅС‹Р№ РёР»Рё Р°РЅРёРјРёСЂРѕРІР°РЅРЅС‹Р№ Р±Р°РЅРЅРµСЂ, СЂР°Р·РјРµС‰РµРЅРЅС‹Р№ СЃРїСЂР°РІР° РёР»Рё СЃР»РµРІР° РЅР° РІСЃРµС… РѕСЃРЅРѕРІРЅС‹С… СЃС‚СЂР°РЅРёС†Р°С… СЃР°Р№С‚Р° FL.ru (РєР°С‚Р°Р»РѕРі, РїСЂРѕС„РёР»СЊ, СЃРѕРѕР±С‰РµСЃС‚РІР°, РїСЂРѕРµРєС‚С‹, РєРѕРЅРєСѓСЂСЃС‹ Рё РІР°РєР°РЅСЃРёРё).</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold">РўР°СЂРіРµС‚РёРЅРі:</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_italic">СЃС‚СЂР°РЅР°, СЂРµРіРёРѕРЅ, С‚РёРї РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (С„СЂРёР»Р°РЅСЃРµСЂ, СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ).</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold">РџРѕРєР°Р·Р°С‚РµР»Рё:</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_italic">10 РјР»РЅ РїРѕРєР°Р·РѕРІ Рё 800 С‚С‹СЃСЏС‡ СѓРЅРёРєР°Р»СЊРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РІ РјРµСЃСЏС†.<br>РљРѕСЌС„С„РёС†РёРµРЅС‚ РїРµСЂРµС…РѕРґРѕРІ (CTR) ~ 0.5%.</div>
                      </div>
                      
                      <div class="b-anchor"><a class="b-anchor__link" id="btn3"></a></div>                  
                      <div class="b-layout b-layuot_width_720 b-layout_padbot_30">
                         <img class="b-pic" src="<?=WDCPREFIX?>/images/reclama2/3.png" width="714" height="252">
                         <div class="b-buttons b-buttons_center b-buttons_padbot_30">
-                           <a class="b-button b-button_flat b-button_flat_green b-button_flat_big" href="mailto:adv@fl.ru?subject=Заказ%20баннера%20в%20рассылке&body=Здравствуйте!%20Интересует%20размещение%20рекламы%20на%20сайте%20FL.ru.%20Хотелось%20бы%20разместить%20баннер%20в%20рассылке.">ЗАКАЗАТЬ БАННЕР</a>
-                           <span class="b-layout__txt b-layout__txt_fontsize_16">&#160;&#160;или посмотреть <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="#btn4">на следующий формат</a>!</span>
+                           <a class="b-button b-button_flat b-button_flat_green b-button_flat_big" href="mailto:adv@fl.ru?subject=Р—Р°РєР°Р·%20Р±Р°РЅРЅРµСЂР°%20РІ%20СЂР°СЃСЃС‹Р»РєРµ&body=Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!%20РРЅС‚РµСЂРµСЃСѓРµС‚%20СЂР°Р·РјРµС‰РµРЅРёРµ%20СЂРµРєР»Р°РјС‹%20РЅР°%20СЃР°Р№С‚Рµ%20FL.ru.%20РҐРѕС‚РµР»РѕСЃСЊ%20Р±С‹%20СЂР°Р·РјРµСЃС‚РёС‚СЊ%20Р±Р°РЅРЅРµСЂ%20РІ%20СЂР°СЃСЃС‹Р»РєРµ.">Р—РђРљРђР—РђРўР¬ Р‘РђРќРќР•Р </a>
+                           <span class="b-layout__txt b-layout__txt_fontsize_16">&#160;&#160;РёР»Рё РїРѕСЃРјРѕС‚СЂРµС‚СЊ <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="#btn4">РЅР° СЃР»РµРґСѓСЋС‰РёР№ С„РѕСЂРјР°С‚</a>!</span>
                         </div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_center">Статичный или анимированный баннер,<br>размещенный сверху в ежедневной рассылке проектов по фрилансерам.</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold">Таргетинг:</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_italic">Все фрилансеры с активной подпиской на рассылку проектов.</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold">Показатели:</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_italic">350 тысяч получателей рассылки, от 700 переходов по баннеру.<br>Коэффициент переходов (CTR) ~ 0.2%.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_center">РЎС‚Р°С‚РёС‡РЅС‹Р№ РёР»Рё Р°РЅРёРјРёСЂРѕРІР°РЅРЅС‹Р№ Р±Р°РЅРЅРµСЂ,<br>СЂР°Р·РјРµС‰РµРЅРЅС‹Р№ СЃРІРµСЂС…Сѓ РІ РµР¶РµРґРЅРµРІРЅРѕР№ СЂР°СЃСЃС‹Р»РєРµ РїСЂРѕРµРєС‚РѕРІ РїРѕ С„СЂРёР»Р°РЅСЃРµСЂР°Рј.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold">РўР°СЂРіРµС‚РёРЅРі:</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_italic">Р’СЃРµ С„СЂРёР»Р°РЅСЃРµСЂС‹ СЃ Р°РєС‚РёРІРЅРѕР№ РїРѕРґРїРёСЃРєРѕР№ РЅР° СЂР°СЃСЃС‹Р»РєСѓ РїСЂРѕРµРєС‚РѕРІ.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold">РџРѕРєР°Р·Р°С‚РµР»Рё:</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_italic">350 С‚С‹СЃСЏС‡ РїРѕР»СѓС‡Р°С‚РµР»РµР№ СЂР°СЃСЃС‹Р»РєРё, РѕС‚ 700 РїРµСЂРµС…РѕРґРѕРІ РїРѕ Р±Р°РЅРЅРµСЂСѓ.<br>РљРѕСЌС„С„РёС†РёРµРЅС‚ РїРµСЂРµС…РѕРґРѕРІ (CTR) ~ 0.2%.</div>
                      </div>
                      
                      <div class="b-anchor"><a class="b-anchor__link" id="btn4"></a></div>                  
                      <div class="b-layout b-layuot_width_720 b-layout_padbot_30">
                         <img class="b-pic" src="<?=WDCPREFIX?>/images/reclama2/4.png" width="714" height="252">
                         <div class="b-buttons b-buttons_center b-buttons_padbot_30">
-                           <a class="b-button b-button_flat b-button_flat_green b-button_flat_big" href="mailto:adv@fl.ru?subject=Заказ%20поста%20в%20сообществе&body=Здравствуйте!%20Интересует%20размещение%20рекламы%20на%20сайте%20FL.ru.%20Хотелось%20бы%20разместить%20пост%20в%20сообществе.">ЗАКАЗАТЬ ПОСТ</a>
-                           <span class="b-layout__txt b-layout__txt_fontsize_16">&#160;&#160;или посмотреть <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="#btn5">на следующий формат</a>!</span>
+                           <a class="b-button b-button_flat b-button_flat_green b-button_flat_big" href="mailto:adv@fl.ru?subject=Р—Р°РєР°Р·%20РїРѕСЃС‚Р°%20РІ%20СЃРѕРѕР±С‰РµСЃС‚РІРµ&body=Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!%20РРЅС‚РµСЂРµСЃСѓРµС‚%20СЂР°Р·РјРµС‰РµРЅРёРµ%20СЂРµРєР»Р°РјС‹%20РЅР°%20СЃР°Р№С‚Рµ%20FL.ru.%20РҐРѕС‚РµР»РѕСЃСЊ%20Р±С‹%20СЂР°Р·РјРµСЃС‚РёС‚СЊ%20РїРѕСЃС‚%20РІ%20СЃРѕРѕР±С‰РµСЃС‚РІРµ.">Р—РђРљРђР—РђРўР¬ РџРћРЎРў</a>
+                           <span class="b-layout__txt b-layout__txt_fontsize_16">&#160;&#160;РёР»Рё РїРѕСЃРјРѕС‚СЂРµС‚СЊ <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="#btn5">РЅР° СЃР»РµРґСѓСЋС‰РёР№ С„РѕСЂРјР°С‚</a>!</span>
                         </div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_center">Рекламное сообщение с графикой и ссылками, размещенное и закрепленное сверху в <a class="b-layout__link" href="/commune/drugoe/5100/ofitsialnoe-soobschestvo-flru/">корпоративном сообществе FL.ru</a> (с перепостом в официальные группы FL в социальных сетях).</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold">Показатели:</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_italic">4300 подписчиков в сообществе и 50 тысяч подписчиков в группах,<br>от 800 переходов по ссылкам в новых постах.<br>Коэффициент переходов (CTR) ~ 1.5%.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_center">Р РµРєР»Р°РјРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ СЃ РіСЂР°С„РёРєРѕР№ Рё СЃСЃС‹Р»РєР°РјРё, СЂР°Р·РјРµС‰РµРЅРЅРѕРµ Рё Р·Р°РєСЂРµРїР»РµРЅРЅРѕРµ СЃРІРµСЂС…Сѓ РІ <a class="b-layout__link" href="/commune/drugoe/5100/ofitsialnoe-soobschestvo-flru/">РєРѕСЂРїРѕСЂР°С‚РёРІРЅРѕРј СЃРѕРѕР±С‰РµСЃС‚РІРµ FL.ru</a> (СЃ РїРµСЂРµРїРѕСЃС‚РѕРј РІ РѕС„РёС†РёР°Р»СЊРЅС‹Рµ РіСЂСѓРїРїС‹ FL РІ СЃРѕС†РёР°Р»СЊРЅС‹С… СЃРµС‚СЏС…).</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold">РџРѕРєР°Р·Р°С‚РµР»Рё:</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_italic">4300 РїРѕРґРїРёСЃС‡РёРєРѕРІ РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ Рё 50 С‚С‹СЃСЏС‡ РїРѕРґРїРёСЃС‡РёРєРѕРІ РІ РіСЂСѓРїРїР°С…,<br>РѕС‚ 800 РїРµСЂРµС…РѕРґРѕРІ РїРѕ СЃСЃС‹Р»РєР°Рј РІ РЅРѕРІС‹С… РїРѕСЃС‚Р°С….<br>РљРѕСЌС„С„РёС†РёРµРЅС‚ РїРµСЂРµС…РѕРґРѕРІ (CTR) ~ 1.5%.</div>
                      </div>
                      
                      <div class="b-anchor"><a class="b-anchor__link" id="btn5"></a></div>                  
                      <div class="b-layout b-layuot_width_720 b-layout_padbot_30">
                         <img class="b-pic" src="<?=WDCPREFIX?>/images/reclama2/5.png" width="714" height="251">
                         <div class="b-buttons b-buttons_center b-buttons_padbot_30">
-                           <a class="b-button b-button_flat b-button_flat_green b-button_flat_big" href="mailto:adv@fl.ru?subject=Заказ%20рекламного%20проекта&body=Здравствуйте!%20Интересует%20размещение%20рекламы%20на%20сайте%20FL.ru.%20Хотелось%20бы%20разместить%20рекламный%20проект.">ЗАКАЗАТЬ ПРОЕКТ</a>
-                           <span class="b-layout__txt b-layout__txt_fontsize_16">&#160;&#160;или посмотреть <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="#btn6">на следующий формат</a>!</span>
+                           <a class="b-button b-button_flat b-button_flat_green b-button_flat_big" href="mailto:adv@fl.ru?subject=Р—Р°РєР°Р·%20СЂРµРєР»Р°РјРЅРѕРіРѕ%20РїСЂРѕРµРєС‚Р°&body=Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!%20РРЅС‚РµСЂРµСЃСѓРµС‚%20СЂР°Р·РјРµС‰РµРЅРёРµ%20СЂРµРєР»Р°РјС‹%20РЅР°%20СЃР°Р№С‚Рµ%20FL.ru.%20РҐРѕС‚РµР»РѕСЃСЊ%20Р±С‹%20СЂР°Р·РјРµСЃС‚РёС‚СЊ%20СЂРµРєР»Р°РјРЅС‹Р№%20РїСЂРѕРµРєС‚.">Р—РђРљРђР—РђРўР¬ РџР РћР•РљРў</a>
+                           <span class="b-layout__txt b-layout__txt_fontsize_16">&#160;&#160;РёР»Рё РїРѕСЃРјРѕС‚СЂРµС‚СЊ <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="#btn6">РЅР° СЃР»РµРґСѓСЋС‰РёР№ С„РѕСЂРјР°С‚</a>!</span>
                         </div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_center">Единичный проект, вакансия или конкурс (с графикой, ссылками и видео),<br>опубликованный и закрепленный сверху на неделю в ленте проектов.</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold">Показатели:</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_italic">60 тысяч фрилансеров, ежедневно просматривающих проекты,<br>от 1500 переходов по ссылкам в проекте, от 50 откликов по заданию.<br>Коэффициент переходов (CTR) ~ 2.5%.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_center">Р•РґРёРЅРёС‡РЅС‹Р№ РїСЂРѕРµРєС‚, РІР°РєР°РЅСЃРёСЏ РёР»Рё РєРѕРЅРєСѓСЂСЃ (СЃ РіСЂР°С„РёРєРѕР№, СЃСЃС‹Р»РєР°РјРё Рё РІРёРґРµРѕ),<br>РѕРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹Р№ Рё Р·Р°РєСЂРµРїР»РµРЅРЅС‹Р№ СЃРІРµСЂС…Сѓ РЅР° РЅРµРґРµР»СЋ РІ Р»РµРЅС‚Рµ РїСЂРѕРµРєС‚РѕРІ.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold">РџРѕРєР°Р·Р°С‚РµР»Рё:</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_italic">60 С‚С‹СЃСЏС‡ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, РµР¶РµРґРЅРµРІРЅРѕ РїСЂРѕСЃРјР°С‚СЂРёРІР°СЋС‰РёС… РїСЂРѕРµРєС‚С‹,<br>РѕС‚ 1500 РїРµСЂРµС…РѕРґРѕРІ РїРѕ СЃСЃС‹Р»РєР°Рј РІ РїСЂРѕРµРєС‚Рµ, РѕС‚ 50 РѕС‚РєР»РёРєРѕРІ РїРѕ Р·Р°РґР°РЅРёСЋ.<br>РљРѕСЌС„С„РёС†РёРµРЅС‚ РїРµСЂРµС…РѕРґРѕРІ (CTR) ~ 2.5%.</div>
                      </div>
                      
                      <div class="b-anchor"><a class="b-anchor__link" id="btn6"></a></div>                  
                      <div class="b-layout b-layuot_width_720 b-layout_padbot_30">
                         <img class="b-pic" src="<?=WDCPREFIX?>/images/reclama2/6.png" width="714" height="252">
                         <div class="b-buttons b-buttons_center b-buttons_padbot_30">
-                           <a class="b-button b-button_flat b-button_flat_green b-button_flat_big" href="mailto:adv@fl.ru?subject=Заказ%20поста%20в%20социальных%20сетях&body=Здравствуйте!%20Интересует%20размещение%20рекламы%20на%20сайте%20FL.ru.%20Хотелось%20бы%20разместить%20пост%20в%20социальных%20сетях.">ЗАКАЗАТЬ ПОСТ</a>
-                           <span class="b-layout__txt b-layout__txt_fontsize_16">&#160;&#160;или <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="mailto:adv@fl.ru">предложить свои идеи</a>!</span>
+                           <a class="b-button b-button_flat b-button_flat_green b-button_flat_big" href="mailto:adv@fl.ru?subject=Р—Р°РєР°Р·%20РїРѕСЃС‚Р°%20РІ%20СЃРѕС†РёР°Р»СЊРЅС‹С…%20СЃРµС‚СЏС…&body=Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!%20РРЅС‚РµСЂРµСЃСѓРµС‚%20СЂР°Р·РјРµС‰РµРЅРёРµ%20СЂРµРєР»Р°РјС‹%20РЅР°%20СЃР°Р№С‚Рµ%20FL.ru.%20РҐРѕС‚РµР»РѕСЃСЊ%20Р±С‹%20СЂР°Р·РјРµСЃС‚РёС‚СЊ%20РїРѕСЃС‚%20РІ%20СЃРѕС†РёР°Р»СЊРЅС‹С…%20СЃРµС‚СЏС….">Р—РђРљРђР—РђРўР¬ РџРћРЎРў</a>
+                           <span class="b-layout__txt b-layout__txt_fontsize_16">&#160;&#160;РёР»Рё <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="mailto:adv@fl.ru">РїСЂРµРґР»РѕР¶РёС‚СЊ СЃРІРѕРё РёРґРµРё</a>!</span>
                         </div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_center">Рекламное сообщение с графикой, видео и ссылками,<br>размещенное во всех официальных группах FL.ru в социальных сетях (<a target="_blank" href="http://vk.com/free_lanceru" class="b-layout__link b-layout__link_no-decorat">Вконтакте</a>, <a target="_blank" href="http://www.facebook.com/freelanceru" class="b-layout__link b-layout__link_no-decorat">Facebook</a>, <a target="_blank" href="https://twitter.com/free_lanceru" class="b-layout__link b-layout__link_no-decorat">Twitter</a>, <a target="_blank" href="https://plus.google.com/+Free-lanceru/" class="b-layout__link b-layout__link_no-decorat">G+</a>, <a target="_blank" href="http://www.odnoklassniki.ru/freelanceru" class="b-layout__link b-layout__link_no-decorat">Odnoklassniki</a>, <a target="_blank" href="https://www.linkedin.com/company/free-lance-ru" class="b-layout__link b-layout__link_no-decorat">LinkedIn</a>).</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold">Показатели:</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_italic">Суммарно 50 тысяч подписчиков, 3000 посетителей в день, от 500 переходов по ссылкам в новых постах. Коэффициент переходов (CTR) ~ 1%.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_center">Р РµРєР»Р°РјРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ СЃ РіСЂР°С„РёРєРѕР№, РІРёРґРµРѕ Рё СЃСЃС‹Р»РєР°РјРё,<br>СЂР°Р·РјРµС‰РµРЅРЅРѕРµ РІРѕ РІСЃРµС… РѕС„РёС†РёР°Р»СЊРЅС‹С… РіСЂСѓРїРїР°С… FL.ru РІ СЃРѕС†РёР°Р»СЊРЅС‹С… СЃРµС‚СЏС… (<a target="_blank" href="http://vk.com/free_lanceru" class="b-layout__link b-layout__link_no-decorat">Р’РєРѕРЅС‚Р°РєС‚Рµ</a>, <a target="_blank" href="http://www.facebook.com/freelanceru" class="b-layout__link b-layout__link_no-decorat">Facebook</a>, <a target="_blank" href="https://twitter.com/free_lanceru" class="b-layout__link b-layout__link_no-decorat">Twitter</a>, <a target="_blank" href="https://plus.google.com/+Free-lanceru/" class="b-layout__link b-layout__link_no-decorat">G+</a>, <a target="_blank" href="http://www.odnoklassniki.ru/freelanceru" class="b-layout__link b-layout__link_no-decorat">Odnoklassniki</a>, <a target="_blank" href="https://www.linkedin.com/company/free-lance-ru" class="b-layout__link b-layout__link_no-decorat">LinkedIn</a>).</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_bold">РџРѕРєР°Р·Р°С‚РµР»Рё:</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_16 b-layout__txt_padbot_20 b-layout__txt_italic">РЎСѓРјРјР°СЂРЅРѕ 50 С‚С‹СЃСЏС‡ РїРѕРґРїРёСЃС‡РёРєРѕРІ, 3000 РїРѕСЃРµС‚РёС‚РµР»РµР№ РІ РґРµРЅСЊ, РѕС‚ 500 РїРµСЂРµС…РѕРґРѕРІ РїРѕ СЃСЃС‹Р»РєР°Рј РІ РЅРѕРІС‹С… РїРѕСЃС‚Р°С…. РљРѕСЌС„С„РёС†РёРµРЅС‚ РїРµСЂРµС…РѕРґРѕРІ (CTR) ~ 1%.</div>
                      </div>
                   </td>
                </tr>

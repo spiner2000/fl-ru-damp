@@ -16,8 +16,8 @@
 			<? } else { ?>
 			<div class="b-post__price b-post__price_padleft_10 b-post__price_padbot_5 b-post__price_fontsize_13 b-post__price_float_right">
 					<?php
-					 if($can_change_prj) { ?><a id="prj_budget_lnk_<?=$row['id']?>" class="b-post__link b-post__link_dot_6db335" href="#" onClick="popupShowChangeBudget(<?=$row['id']?>, '', 2, 1, true, <?=$row['id']?>, 1); return false;">По договоренности</a>
-					<? } else { ?>По договоренности
+					 if($can_change_prj) { ?><a id="prj_budget_lnk_<?=$row['id']?>" class="b-post__link b-post__link_dot_6db335" href="#" onClick="popupShowChangeBudget(<?=$row['id']?>, '', 2, 1, true, <?=$row['id']?>, 1); return false;">РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</a>
+					<? } else { ?>РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё
 					<? } ?>
 					</div>
 			<? } ?>
@@ -31,7 +31,7 @@
 					<a class="b-post__link" id="prj_name_<?=$row['id']?>" name="prj<?= $row['id'] ?>" href="<?= $row['friendly_url'] ?>"><?= reformat2(strip_tags($sTitle),30,0,1) ?></a>
 			</h2>
 			<? /*if (get_uid(false) && $row['t_is_ontop'] && !is_emp()) { ?>
-			<a href="#" title="Скрыть" onclick="xajax_HideProject(<?= $row['id'] ?>, 'hide', '<?= $this->kind ?>', '<?= $this->page ?>', '<?= $this->filter ?>'); return false;" class="b-post__link b-post__link_dot_c10601">скрыть</a>
+			<a href="#" title="РЎРєСЂС‹С‚СЊ" onclick="xajax_HideProject(<?= $row['id'] ?>, 'hide', '<?= $this->kind ?>', '<?= $this->page ?>', '<?= $this->filter ?>'); return false;" class="b-post__link b-post__link_dot_c10601">СЃРєСЂС‹С‚СЊ</a>
 			<? } */?>
 
 			<? seo_start($is_ajax)?>
@@ -65,9 +65,9 @@
 							<div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13">
 								<span class="b-fon__attent"></span>
 								<div class="b-fon__txt b-fon__txt_margleft_20">
-										<span class="b-fon__txt_bold">Проект заблокирован</span>. <?= reformat($row['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>Служба поддержки</a>
-										<div class='b-fon__txt'><?= ($row['admin_login'] ? "Заблокировал: <a class='b-fon__link' href='/users/{$row['admin_login']}'>{$row['admin_uname']} {$row['admin_usurname']} [{$row['admin_login']}]</a><br />": '') ?>
-										Дата блокировки: <?= dateFormat('d.m.Y H:i', $row['blocked_time']) ?></div>
+										<span class="b-fon__txt_bold">РџСЂРѕРµРєС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ</span>. <?= reformat($row['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё</a>
+										<div class='b-fon__txt'><?= ($row['admin_login'] ? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°Р»: <a class='b-fon__link' href='/users/{$row['admin_login']}'>{$row['admin_uname']} {$row['admin_usurname']} [{$row['admin_login']}]</a><br />": '') ?>
+										Р”Р°С‚Р° Р±Р»РѕРєРёСЂРѕРІРєРё: <?= dateFormat('d.m.Y H:i', $row['blocked_time']) ?></div>
 								</div>
 							</div>
 							<b class="b-fon__b2"></b>
@@ -82,27 +82,27 @@
         <div class="b-post__txt b-post__txt_fontsize_11 b-post__txt_overflow_hidden">
            <div class="b-post__txt b-post__txt_fontsize_11 b-post__txt_bold b-post__txt_float_right b-page__desktop <? if (($row['t_pro_only'] == 't')||($row['t_verify_only'] == 't')||($row['urgent'] == 't')||($row['hide'] == 't')){?>b-post__link_margtop_7<?php } ?>">
                <?php if($row['exec_id'] > 0 && !$row['exec_is_banned']) {?>
-               <a class="b-post__link b-post__link_fontsize_11" href="<?= $row['friendly_url'] ?>"><?= ($row['kind'] == 7 || $row['kind'] == 2 ?"Победитель":"Исполнитель")?> определён</a>
+               <a class="b-post__link b-post__link_fontsize_11" href="<?= $row['friendly_url'] ?>"><?= ($row['kind'] == 7 || $row['kind'] == 2 ?"РџРѕР±РµРґРёС‚РµР»СЊ":"РСЃРїРѕР»РЅРёС‚РµР»СЊ")?> РѕРїСЂРµРґРµР»С‘РЅ</a>
                <?php } ?>
                
                <?php if($row['refused'] == 't') {?>
-               &nbsp;&nbsp;Работодатель <a class="b-post__link b-post__link_fontsize_11" href="<?= $row['friendly_url'] ?>#freelancer_<?=$_SESSION['uid']?>">отказал</a> вам
+               &nbsp;&nbsp;Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ <a class="b-post__link b-post__link_fontsize_11" href="<?= $row['friendly_url'] ?>#freelancer_<?=$_SESSION['uid']?>">РѕС‚РєР°Р·Р°Р»</a> РІР°Рј
                <?php } else if($row['selected'] == 't') {?>
-               &nbsp;&nbsp;Работодатель определил вас <a class="b-post__link b-post__link_fontsize_11" href="<?= $row['friendly_url'] ?>#freelancer_<?=$_SESSION['uid']?>">кандидатом</a>
+               &nbsp;&nbsp;Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ РѕРїСЂРµРґРµР»РёР» РІР°СЃ <a class="b-post__link b-post__link_fontsize_11" href="<?= $row['friendly_url'] ?>#freelancer_<?=$_SESSION['uid']?>">РєР°РЅРґРёРґР°С‚РѕРј</a>
                <?php } else if($_SESSION['uid'] && $row['exec_id'] == $_SESSION['uid']) {?>
-               &nbsp;&nbsp;Работодатель определил вас <a class="b-post__link b-post__link_fontsize_11" href="<?= $row['friendly_url'] ?>#freelancer_<?=$_SESSION['uid']?>">исполнителем</a>
+               &nbsp;&nbsp;Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ РѕРїСЂРµРґРµР»РёР» РІР°СЃ <a class="b-post__link b-post__link_fontsize_11" href="<?= $row['friendly_url'] ?>#freelancer_<?=$_SESSION['uid']?>">РёСЃРїРѕР»РЅРёС‚РµР»РµРј</a>
                <?php }//elseif?>
            </div>
             <?php if(!($row['exec_id'] > 0 && !$row['exec_is_banned'])) {?>
                <a class="b-post__link b-post__txt_float_right b-post__link_bold b-post__link_fontsize_11 b-post__link_color_4e b-post__link_color_0f71c8_hover <? if (($row['t_pro_only'] == 't')||($row['t_verify_only'] == 't')||($row['urgent'] == 't')||($row['hide'] == 't')){?>b-post__link_margtop_7<?php } ?> b-page__desktop" href="<?= $row['friendly_url'] ?>"><span class="b-icon b-icon__com b-icon_top_3 b-icon_valign_bas"></span><?=project_status_link($row['kind'], $row['offers_count'])?></a>
                <?php if($row['offer_id']) { ?>
-               <a class="b-post__link b-post__txt_float_right b-post__link_bold b-post__link_fontsize_11 b-post__link_color_0f71c8_hover <? if (($row['t_pro_only'] == 't')||($row['t_verify_only'] == 't')||($row['urgent'] == 't')||($row['hide'] == 't')){?>b-post__link_margtop_7<?php } ?> b-page__desktop" href="<?= $row['friendly_url'] ?>#freelancer_<?=$_SESSION['uid']?>">Ваш ответ&nbsp;&nbsp;</a>
+               <a class="b-post__link b-post__txt_float_right b-post__link_bold b-post__link_fontsize_11 b-post__link_color_0f71c8_hover <? if (($row['t_pro_only'] == 't')||($row['t_verify_only'] == 't')||($row['urgent'] == 't')||($row['hide'] == 't')){?>b-post__link_margtop_7<?php } ?> b-page__desktop" href="<?= $row['friendly_url'] ?>#freelancer_<?=$_SESSION['uid']?>">Р’Р°С€ РѕС‚РІРµС‚&nbsp;&nbsp;</a>
                <?php }//if?>
             <?php }//if?>
             
             <?php if($row['view_cnt'] > 0): ?>
             <span class="b-post__txt b-post__txt_float_right b-post__txt_fontsize_11 b-post__txt_bold <?php if(($row['t_pro_only'] == 't')||($row['t_verify_only'] == 't')||($row['urgent'] == 't')||($row['hide'] == 't')): ?>b-post__link_margtop_7<?php endif; ?>">
-                <span class="b-icon b-icon__counter b-icon_valign_bas" title="Количество просмотров"></span>
+                <span class="b-icon b-icon__counter b-icon_valign_bas" title="РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕСЃРјРѕС‚СЂРѕРІ"></span>
                 <?=(int)$row['view_cnt'] ?>&#160;&#160;&#160;&#160;
             </span>
             <?php endif; ?>
@@ -110,48 +110,48 @@
            
            
             <? if ($row['t_is_payed']  && $row['kind'] != 2 && $row['kind'] != 7) { ?>
-                <span class="b-post__bold b-layout__txt_inline-block">Платный проект</span>&nbsp;&nbsp;
+                <span class="b-post__bold b-layout__txt_inline-block">РџР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚</span>&nbsp;&nbsp;
             <? } else if ($row['kind'] == 2 || $row['kind'] == 7) { ?>
-                <span class="b-post__bold b-layout__txt_inline-block">Конкурс</span>&nbsp;&nbsp;
+                <span class="b-post__bold b-layout__txt_inline-block">РљРѕРЅРєСѓСЂСЃ</span>&nbsp;&nbsp;
             <? } else if ($row['kind'] == 4) { ?>
                 <span class="b-post__bold b-layout__txt_inline-block">
-                    Вакансия&nbsp;<?= (($row['country']) ? "(".$row['country_name'] . (($row['city']) ? ", " . $row['city_name'] : "" ) . ")" : "") ?>
+                    Р’Р°РєР°РЅСЃРёСЏ&nbsp;<?= (($row['country']) ? "(".$row['country_name'] . (($row['city']) ? ", " . $row['city_name'] : "" ) . ")" : "") ?>
                 </span>&nbsp;&nbsp;
             <? } else { ?>
-               <span class="b-post__bold b-layout__txt_inline-block">Проект</span>&nbsp;&nbsp;
+               <span class="b-post__bold b-layout__txt_inline-block">РџСЂРѕРµРєС‚</span>&nbsp;&nbsp;
             <?php } ?>
             <?php if($row['kind'] == 2 || $row['kind'] == 7) { ?>
                 <?if(strtotime($row['end_date']) > time()) { ?>
-                   завершится через <span class="b-page__iphone"><br></span><?= ago_pub_x(strtotime($row['end_date']), "ynjGx") ?>&nbsp;&nbsp; 
+                   Р·Р°РІРµСЂС€РёС‚СЃСЏ С‡РµСЂРµР· <span class="b-page__iphone"><br></span><?= ago_pub_x(strtotime($row['end_date']), "ynjGx") ?>&nbsp;&nbsp; 
                 <? } else {?>
-                   завершен&nbsp;&nbsp;
+                   Р·Р°РІРµСЂС€РµРЅ&nbsp;&nbsp;
                 <? }?>
             <?php } else { //if?>
                 <?= ago_project_created(strtotime($row['post_date'])) ?>&nbsp;&nbsp;
             <?php }//else?> 
-            <? if ($row['t_pro_only'] == 't'){?><span class="b-post__only">Только для <?= view_pro2(false, false, false, 'пользователей с платным аккаунтом') ?></span><? } ?>
-                 <? if ($row['t_verify_only'] == 't'){?><span class="b-post__only">Только для <?= view_verify('верифицированных пользователей') ?></span><? } ?>
-            <? if ($row['hide'] == 't') { ?><span class="b-post__only">Скрытый <span class="b-icon b-icon__eye b-icon_top_1" title="от поисковых систем и неавторизированных пользователей"></span></span><? } ?>
-            <?php if ($row['t_prefer_sbr']) { ?><span class="b-post__only">Оплата через <a class="b-layout__link" href="/promo/bezopasnaya-sdelka/" target="_blank">Безопасную сделку</a> <a class="b-layout__link" href="/promo/bezopasnaya-sdelka/" target="_blank"><span class="b-icon b-icon__shield" title="Оплата через Безопасную сделку"></span></a></span><? } ?>
+            <? if ($row['t_pro_only'] == 't'){?><span class="b-post__only">РўРѕР»СЊРєРѕ РґР»СЏ <?= view_pro2(false, false, false, 'РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ РїР»Р°С‚РЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј') ?></span><? } ?>
+                 <? if ($row['t_verify_only'] == 't'){?><span class="b-post__only">РўРѕР»СЊРєРѕ РґР»СЏ <?= view_verify('РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№') ?></span><? } ?>
+            <? if ($row['hide'] == 't') { ?><span class="b-post__only">РЎРєСЂС‹С‚С‹Р№ <span class="b-icon b-icon__eye b-icon_top_1" title="РѕС‚ РїРѕРёСЃРєРѕРІС‹С… СЃРёСЃС‚РµРј Рё РЅРµР°РІС‚РѕСЂРёР·РёСЂРѕРІР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№"></span></span><? } ?>
+            <?php if ($row['t_prefer_sbr']) { ?><span class="b-post__only">РћРїР»Р°С‚Р° С‡РµСЂРµР· <a class="b-layout__link" href="/promo/bezopasnaya-sdelka/" target="_blank">Р‘РµР·РѕРїР°СЃРЅСѓСЋ СЃРґРµР»РєСѓ</a> <a class="b-layout__link" href="/promo/bezopasnaya-sdelka/" target="_blank"><span class="b-icon b-icon__shield" title="РћРїР»Р°С‚Р° С‡РµСЂРµР· Р‘РµР·РѕРїР°СЃРЅСѓСЋ СЃРґРµР»РєСѓ"></span></a></span><? } ?>
         </div>
 			  <?php if(!($row['exec_id'] > 0 && !$row['exec_is_banned'])) {?>
                    <?php if($row['offer_id']) { ?>
-                   <a class="b-post__link b-post__link_bold b-post__link_fontsize_11 b-post__link_color_0f71c8_hover b-page__ipad b-page__iphone" href="<?= $row['friendly_url'] ?>#freelancer_<?=$_SESSION['uid']?>">Ваш ответ&nbsp;&nbsp;</a>
+                   <a class="b-post__link b-post__link_bold b-post__link_fontsize_11 b-post__link_color_0f71c8_hover b-page__ipad b-page__iphone" href="<?= $row['friendly_url'] ?>#freelancer_<?=$_SESSION['uid']?>">Р’Р°С€ РѕС‚РІРµС‚&nbsp;&nbsp;</a>
                    <?php }//if?>
                    <a class="b-post__link b-post__link_bold b-post__link_fontsize_11 b-post__link_color_4e b-post__link_color_0f71c8_hover b-page__ipad b-page__iphone" href="<?= $row['friendly_url'] ?>"><span class="b-icon b-icon__com b-icon_top_3"></span><?=project_status_link($row['kind'], $row['offers_count'])?></a>
            <?php }//if?>
         <?= seo_end(false, $is_ajax)?>	
            <div class="b-post__txt b-post__txt_fontsize_11 b-post__txt_bold b-page__ipad b-page__iphone">
                <?php if($row['exec_id'] > 0 && !$row['exec_is_banned']) {?>
-               <a class="b-post__link b-post__link_fontsize_11" href="<?= $row['friendly_url'] ?>"><?= ($row['kind'] == 7 || $row['kind'] == 2 ?"Победитель":"Исполнитель")?> определён</a>
+               <a class="b-post__link b-post__link_fontsize_11" href="<?= $row['friendly_url'] ?>"><?= ($row['kind'] == 7 || $row['kind'] == 2 ?"РџРѕР±РµРґРёС‚РµР»СЊ":"РСЃРїРѕР»РЅРёС‚РµР»СЊ")?> РѕРїСЂРµРґРµР»С‘РЅ</a>
                <?php } ?>
                
                <?php if($row['refused'] == 't') {?>
-               &nbsp;&nbsp;Работодатель <a class="b-post__link b-post__link_fontsize_11" href="<?= $row['friendly_url'] ?>#freelancer_<?=$_SESSION['uid']?>">отказал</a> вам
+               &nbsp;&nbsp;Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ <a class="b-post__link b-post__link_fontsize_11" href="<?= $row['friendly_url'] ?>#freelancer_<?=$_SESSION['uid']?>">РѕС‚РєР°Р·Р°Р»</a> РІР°Рј
                <?php } else if($row['selected'] == 't') {?>
-               &nbsp;&nbsp;Работодатель определил вас <a class="b-post__link b-post__link_fontsize_11" href="<?= $row['friendly_url'] ?>#freelancer_<?=$_SESSION['uid']?>">кандидатом</a>
+               &nbsp;&nbsp;Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ РѕРїСЂРµРґРµР»РёР» РІР°СЃ <a class="b-post__link b-post__link_fontsize_11" href="<?= $row['friendly_url'] ?>#freelancer_<?=$_SESSION['uid']?>">РєР°РЅРґРёРґР°С‚РѕРј</a>
                <?php } else if($_SESSION['uid'] && $row['exec_id'] == $_SESSION['uid']) {?>
-               &nbsp;&nbsp;Работодатель определил вас <a class="b-post__link b-post__link_fontsize_11" href="<?= $row['friendly_url'] ?>#freelancer_<?=$_SESSION['uid']?>">исполнителем</a>
+               &nbsp;&nbsp;Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ РѕРїСЂРµРґРµР»РёР» РІР°СЃ <a class="b-post__link b-post__link_fontsize_11" href="<?= $row['friendly_url'] ?>#freelancer_<?=$_SESSION['uid']?>">РёСЃРїРѕР»РЅРёС‚РµР»РµРј</a>
                <?php }//elseif?>
            </div>
 						
@@ -162,38 +162,38 @@
 										<b class="b-fon__b2"></b>
 										<div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_overflow_hidden">
                                                 <?php if($this_edit_mode && $project->isNotPayedVacancy()): ?>
-                                                <span class="b-txt b-txt_bold b-txt_color_de2c2c">Вакансия еще не оплачена</span>
+                                                <span class="b-txt b-txt_bold b-txt_color_de2c2c">Р’Р°РєР°РЅСЃРёСЏ РµС‰Рµ РЅРµ РѕРїР»Р°С‡РµРЅР°</span>
                                                 <?php endif; ?>
 												<ul class="b-post__links b-post__links_float_right">
-																<? // Для админов ?>
+																<? // Р”Р»СЏ Р°РґРјРёРЅРѕРІ ?>
 																<? if ($this_edit_mode) { ?>
 																	<?php if ($project->isAllowMovedToVacancy()): ?>
 																		<li class="b-post__links-item b-post__links-item_padleft_10">
-																			<a onclick="return confirm('Сделать вакансией?');" class="b-post__link b-post__link_dot_c10601" href="/projects/makevacancy/?id=<?=$row['id']?>">Сделать вакансией</a>
+																			<a onclick="return confirm('РЎРґРµР»Р°С‚СЊ РІР°РєР°РЅСЃРёРµР№?');" class="b-post__link b-post__link_dot_c10601" href="/projects/makevacancy/?id=<?=$row['id']?>">РЎРґРµР»Р°С‚СЊ РІР°РєР°РЅСЃРёРµР№</a>
 																		</li>
 																	<?php endif; ?>
 
 																	<li class="b-post__links-item b-post__links-item_padleft_10">
-																			<a class="b-post__link b-post__link_dot_c10601" href="/public/?step=1&public=<?= $row['id'] ?>&red=<?= rawurlencode($_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']) ?>" onClick="popupQEditPrjShow(<?=$row['id']?>, event, true); return false;" >Редактировать</a>
+																			<a class="b-post__link b-post__link_dot_c10601" href="/public/?step=1&public=<?= $row['id'] ?>&red=<?= rawurlencode($_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']) ?>" onClick="popupQEditPrjShow(<?=$row['id']?>, event, true); return false;" >Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
 																	</li>
 																	<li class="b-post__links-item b-post__links-item_padleft_10">
 																			<span id='project-button-<?= $row['id'] ?>'>
-																					<a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0);" onclick="banned.<?= ($row['is_blocked']? 'unblockedProject': 'blockedProject') ?>(<?= $row['id'] ?>)"><?= ($row['is_blocked'] ? 'Разблокировать' : 'Заблокировать') ?></a>
+																					<a class="b-post__link b-post__link_dot_c10601" href="javascript:void(0);" onclick="banned.<?= ($row['is_blocked']? 'unblockedProject': 'blockedProject') ?>(<?= $row['id'] ?>)"><?= ($row['is_blocked'] ? 'Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ' : 'Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ') ?></a>
 																			</span>
 																	</li>
-																<? // Для автора проекта ?>
+																<? // Р”Р»СЏ Р°РІС‚РѕСЂР° РїСЂРѕРµРєС‚Р° ?>
 																<? } elseif ($this_uid == $row['user_id'] && $this_uid && $row['is_blocked'] != 't') { ?>
 																	<? if(!projects::isProjectOfficePostedAfterNewSBR($row)) { ?>
 										            					<?php if($row['kind'] == 2 || $row['kind'] == 7) { ?>
                 															<?php if(strtotime($row['end_date']) > time()) { ?>
-																				<li class="b-post__links-item b-post__links-item_padleft_10"><a href="/public/?step=1&public=<?= $row['id'] ?>&red=<?= rawurlencode($_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']) ?>" class="b-post__link b-post__link_dot_c10601">Редактировать</a></li>
+																				<li class="b-post__links-item b-post__links-item_padleft_10"><a href="/public/?step=1&public=<?= $row['id'] ?>&red=<?= rawurlencode($_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']) ?>" class="b-post__link b-post__link_dot_c10601">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></li>
             																<?php } ?>
             															<?php } else { ?>
-																			<li class="b-post__links-item b-post__links-item_padleft_10"><a href="/public/?step=1&public=<?= $row['id'] ?>&red=<?= rawurlencode($_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']) ?>" class="b-post__link b-post__link_dot_c10601">Редактировать</a></li>
+																			<li class="b-post__links-item b-post__links-item_padleft_10"><a href="/public/?step=1&public=<?= $row['id'] ?>&red=<?= rawurlencode($_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING']) ?>" class="b-post__link b-post__link_dot_c10601">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></li>
 																		<?php } ?>
 																	<? } ?>
 																	<? if($row['kind'] != 2 && $row['kind'] != 7) { ?>
-																	<li class="b-post__links-item b-post__links-item_padleft_10"><a href="/projects/index.php?action=prj_close&pid=<?= $row['id'] ?>&kind=<?= $row['kind'] ?>" onclick="return warning(2)" class="b-post__link b-post__link_dot_c10601">Снять с публикации</a></li>
+																	<li class="b-post__links-item b-post__links-item_padleft_10"><a href="/projects/index.php?action=prj_close&pid=<?= $row['id'] ?>&kind=<?= $row['kind'] ?>" onclick="return warning(2)" class="b-post__link b-post__link_dot_c10601">РЎРЅСЏС‚СЊ СЃ РїСѓР±Р»РёРєР°С†РёРё</a></li>
 																	<? } ?>
 																<? } ?>
 												</ul>

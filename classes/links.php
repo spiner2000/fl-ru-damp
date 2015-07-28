@@ -1,70 +1,70 @@
 <?php
 
 /**
- * Класс для обработки ссылок (SEO).
- * Управляет внутренними ссылками, ведущими на пользователей сайта, их портфолио, отдельные блоги, сообщества и т.д.
- * Например, заменяет контент ссылки на сообщество названием этого сообщества.
- * Всегда инициализируется в переменную $GLOBALS[LINK_INSTANCE_NAME], если в модуле нужна поддержка обработки ссылок.
+ * РљР»Р°СЃСЃ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё СЃСЃС‹Р»РѕРє (SEO).
+ * РЈРїСЂР°РІР»СЏРµС‚ РІРЅСѓС‚СЂРµРЅРЅРёРјРё СЃСЃС‹Р»РєР°РјРё, РІРµРґСѓС‰РёРјРё РЅР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃР°Р№С‚Р°, РёС… РїРѕСЂС‚С„РѕР»РёРѕ, РѕС‚РґРµР»СЊРЅС‹Рµ Р±Р»РѕРіРё, СЃРѕРѕР±С‰РµСЃС‚РІР° Рё С‚.Рґ.
+ * РќР°РїСЂРёРјРµСЂ, Р·Р°РјРµРЅСЏРµС‚ РєРѕРЅС‚РµРЅС‚ СЃСЃС‹Р»РєРё РЅР° СЃРѕРѕР±С‰РµСЃС‚РІРѕ РЅР°Р·РІР°РЅРёРµРј СЌС‚РѕРіРѕ СЃРѕРѕР±С‰РµСЃС‚РІР°.
+ * Р’СЃРµРіРґР° РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚СЃСЏ РІ РїРµСЂРµРјРµРЅРЅСѓСЋ $GLOBALS[LINK_INSTANCE_NAME], РµСЃР»Рё РІ РјРѕРґСѓР»Рµ РЅСѓР¶РЅР° РїРѕРґРґРµСЂР¶РєР° РѕР±СЂР°Р±РѕС‚РєРё СЃСЃС‹Р»РѕРє.
  * @see reformat()
  */
 class links
 {
     /**
-     * Тип ссылки в блоги
+     * РўРёРї СЃСЃС‹Р»РєРё РІ Р±Р»РѕРіРё
      *
      */
     const BLOG_TYPE            = 1;
     
     /**
-     * Тип ссылки на страницу пользователя
+     * РўРёРї СЃСЃС‹Р»РєРё РЅР° СЃС‚СЂР°РЅРёС†Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      *
      */
     const USER_TYPE            = 2;
     
     /**
-     * Тип ссылки на страницу сообщества
+     * РўРёРї СЃСЃС‹Р»РєРё РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЃРѕРѕР±С‰РµСЃС‚РІР°
      *
      */
     const COMMUNE_TYPE         = 3;
     
     /**
-     * Тип ссылки на страницу топика сообщества 
+     * РўРёРї СЃСЃС‹Р»РєРё РЅР° СЃС‚СЂР°РЅРёС†Сѓ С‚РѕРїРёРєР° СЃРѕРѕР±С‰РµСЃС‚РІР° 
      *
      */
     const COMMUNE_TYPE_MESSAGE = 4;
     
     /**
-     * Тип ссылки на страницу работы
+     * РўРёРї СЃСЃС‹Р»РєРё РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЂР°Р±РѕС‚С‹
      *
      */
     const PORTFOLIO_TYPE       = 5;
     
     /**
-     * Тип ссылки на страницу проекта
+     * РўРёРї СЃСЃС‹Р»РєРё РЅР° СЃС‚СЂР°РЅРёС†Сѓ РїСЂРѕРµРєС‚Р°
      *
      */
     const PROJECT_TYPE       = 6;
     
     /**
-     * тип ссылки на страницу статьи
+     * С‚РёРї СЃСЃС‹Р»РєРё РЅР° СЃС‚СЂР°РЅРёС†Сѓ СЃС‚Р°С‚СЊРё
      */
     const ARTICLES_TYPE = 7;
     
     /**
-     * тип ссылки на страницу интервью
+     * С‚РёРї СЃСЃС‹Р»РєРё РЅР° СЃС‚СЂР°РЅРёС†Сѓ РёРЅС‚РµСЂРІСЊСЋ
      */
     const INTERVIEW_TYPE = 8;
     
     /**
-     * Таблица для хранения ссылок в базе. Зависит от модуля, в котором подключается класс (например, есть 'links_blogs').
-     * По умолчанию 'links' -- родительская таблица всех подтаблиц.
+     * РўР°Р±Р»РёС†Р° РґР»СЏ С…СЂР°РЅРµРЅРёСЏ СЃСЃС‹Р»РѕРє РІ Р±Р°Р·Рµ. Р—Р°РІРёСЃРёС‚ РѕС‚ РјРѕРґСѓР»СЏ, РІ РєРѕС‚РѕСЂРѕРј РїРѕРґРєР»СЋС‡Р°РµС‚СЃСЏ РєР»Р°СЃСЃ (РЅР°РїСЂРёРјРµСЂ, РµСЃС‚СЊ 'links_blogs').
+     * РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ 'links' -- СЂРѕРґРёС‚РµР»СЊСЃРєР°СЏ С‚Р°Р±Р»РёС†Р° РІСЃРµС… РїРѕРґС‚Р°Р±Р»РёС†.
      *
      * @var string
      */
     public $table              = "links";
     
     /**
-     * На каком символе обрезать хвост текста ссылки и заменять его на '...'
+     * РќР° РєР°РєРѕРј СЃРёРјРІРѕР»Рµ РѕР±СЂРµР·Р°С‚СЊ С…РІРѕСЃС‚ С‚РµРєСЃС‚Р° СЃСЃС‹Р»РєРё Рё Р·Р°РјРµРЅСЏС‚СЊ РµРіРѕ РЅР° '...'
      *
      * @var integer
      */
@@ -72,9 +72,9 @@ class links
     
     
     /**
-     * Конструктор.
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
      *
-     * @param string $table постфикс таблицы вызывающего модуля.
+     * @param string $table РїРѕСЃС‚С„РёРєСЃ С‚Р°Р±Р»РёС†С‹ РІС‹Р·С‹РІР°СЋС‰РµРіРѕ РјРѕРґСѓР»СЏ.
      */
     function __construct($table=NULL) {
         if($table) $this->table .= "_".$table;
@@ -82,13 +82,13 @@ class links
     
     
     /**
-     * Записать ссылка в таблицу
+     * Р—Р°РїРёСЃР°С‚СЊ СЃСЃС‹Р»РєР° РІ С‚Р°Р±Р»РёС†Сѓ
      *
-     * @param  integer $dst_id   ИД Объекта
-     * @param  integer $dst_type Тип ссылки
-     * @param  string  $title    название ссылки
-     * @param  string  $url      Ссылка
-     * @return string Сообщение об ошибке
+     * @param  integer $dst_id   РР” РћР±СЉРµРєС‚Р°
+     * @param  integer $dst_type РўРёРї СЃСЃС‹Р»РєРё
+     * @param  string  $title    РЅР°Р·РІР°РЅРёРµ СЃСЃС‹Р»РєРё
+     * @param  string  $url      РЎСЃС‹Р»РєР°
+     * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
      */
     function set_link( $dst_id, $dst_type, $title, $url ) {
         global $DB;
@@ -100,9 +100,9 @@ class links
     }
     
     /**
-     * Взять данные ссылки из таблицы
+     * Р’Р·СЏС‚СЊ РґР°РЅРЅС‹Рµ СЃСЃС‹Р»РєРё РёР· С‚Р°Р±Р»РёС†С‹
      *
-     * @param string  $url  Ссылка
+     * @param string  $url  РЎСЃС‹Р»РєР°
      * @return array
      */
     function get_link($url) {
@@ -114,11 +114,11 @@ class links
     }
     
     /**
-     * Функция обработки ссылок и запись из в БД
+     * Р¤СѓРЅРєС†РёСЏ РѕР±СЂР°Р±РѕС‚РєРё СЃСЃС‹Р»РѕРє Рё Р·Р°РїРёСЃСЊ РёР· РІ Р‘Р”
      *
-     * @param array $matches   найденные ссылки в исходном тексте {@link stdf.php reformat()}
-     * @param boolean $is_found   прошла ли обработку или вернулся исходный адрес?
-     * @param integer $max_link_len на каком символе обрезать хвост текста ссылки и заменять его на '...'
+     * @param array $matches   РЅР°Р№РґРµРЅРЅС‹Рµ СЃСЃС‹Р»РєРё РІ РёСЃС…РѕРґРЅРѕРј С‚РµРєСЃС‚Рµ {@link stdf.php reformat()}
+     * @param boolean $is_found   РїСЂРѕС€Р»Р° Р»Рё РѕР±СЂР°Р±РѕС‚РєСѓ РёР»Рё РІРµСЂРЅСѓР»СЃСЏ РёСЃС…РѕРґРЅС‹Р№ Р°РґСЂРµСЃ?
+     * @param integer $max_link_len РЅР° РєР°РєРѕРј СЃРёРјРІРѕР»Рµ РѕР±СЂРµР·Р°С‚СЊ С…РІРѕСЃС‚ С‚РµРєСЃС‚Р° СЃСЃС‹Р»РєРё Рё Р·Р°РјРµРЅСЏС‚СЊ РµРіРѕ РЅР° '...'
      * @return string
      */
     function save_find($matches, &$is_found, $max_link_len = 25) {
@@ -158,7 +158,7 @@ class links
        
         $this->max_link_len = $max_link_len;
 
-        if(isset($url['query'])) parse_str($url['query'], $urlvars); // Разбираем передаваемые данные из ссылки
+        if(isset($url['query'])) parse_str($url['query'], $urlvars); // Р Р°Р·Р±РёСЂР°РµРј РїРµСЂРµРґР°РІР°РµРјС‹Рµ РґР°РЅРЅС‹Рµ РёР· СЃСЃС‹Р»РєРё
         
         $exp  = explode("/", $url['path']);
         $type = $exp[1];
@@ -170,24 +170,24 @@ class links
             $link = self::getHrefLink($result['title'], $URI);
         } else {
             switch(true) {
-                case ($type == "blogs"): // Обработка ссылок на блоги
+                case ($type == "blogs"): // РћР±СЂР°Р±РѕС‚РєР° СЃСЃС‹Р»РѕРє РЅР° Р±Р»РѕРіРё
                     $e = explode('/', $url['path']);
                     $where = isset($urlvars['openlevel'])?"id = ".intval($urlvars['openlevel']) : "thread_id = " . intval($e[3]) . " AND reply_to IS NULL";
                     $link  = self::get_title($where, $URI, links::BLOG_TYPE);
                     break;
-                case ($type == "users" && $exp[3] != "viewproj.php"): // Обработка ссылок на пользователя
-                    $where = "lower(login) = '".strtolower(pg_escape_string($exp[2]))."'"; // Мало ли...
+                case ($type == "users" && $exp[3] != "viewproj.php"): // РћР±СЂР°Р±РѕС‚РєР° СЃСЃС‹Р»РѕРє РЅР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+                    $where = "lower(login) = '".strtolower(pg_escape_string($exp[2]))."'"; // РњР°Р»Рѕ Р»Рё...
                     $link  =  self::get_title($where, $URI, links::USER_TYPE);    
                     break; 
-                case ($type == "users" && $exp[3] == "viewproj.php"): // Обработка ссылок на портфолио
+                case ($type == "users" && $exp[3] == "viewproj.php"): // РћР±СЂР°Р±РѕС‚РєР° СЃСЃС‹Р»РѕРє РЅР° РїРѕСЂС‚С„РѕР»РёРѕ
                     $where = "id = ".intval($urlvars['prjid']);
                     $link  = self::get_title($where, $URI, links::PORTFOLIO_TYPE);
                     break;
-                case ($type == "commune" && !isset($post)): // Обработка ссылок на сообщество
+                case ($type == "commune" && !isset($post)): // РћР±СЂР°Р±РѕС‚РєР° СЃСЃС‹Р»РѕРє РЅР° СЃРѕРѕР±С‰РµСЃС‚РІРѕ
                     $where = "id = ".intval($id);
                     $link  = self::get_title($where, $URI, links::COMMUNE_TYPE);
                     break;
-                case ($type == "commune" && isset($post)): // Обработка ссылок на сообщения в сообществах
+                case ($type == "commune" && isset($post)): // РћР±СЂР°Р±РѕС‚РєР° СЃСЃС‹Р»РѕРє РЅР° СЃРѕРѕР±С‰РµРЅРёСЏ РІ СЃРѕРѕР±С‰РµСЃС‚РІР°С…
                     $e = explode(".", $post);
                     $where = count($e)==2?"id = ".intval($e[1]):"id = ".intval($post);
                     $link  = self::get_title($where, $URI, links::COMMUNE_TYPE_MESSAGE);
@@ -219,11 +219,11 @@ class links
     }
     
     /**
-     * Берем данные по ссылки если ее нет в таблице ссылок
+     * Р‘РµСЂРµРј РґР°РЅРЅС‹Рµ РїРѕ СЃСЃС‹Р»РєРё РµСЃР»Рё РµРµ РЅРµС‚ РІ С‚Р°Р±Р»РёС†Рµ СЃСЃС‹Р»РѕРє
      *
-     * @param string  $where   Условия выбора
-     * @param string  $URI     Полная ссылка
-     * @param integer $type    Тип ссылки
+     * @param string  $where   РЈСЃР»РѕРІРёСЏ РІС‹Р±РѕСЂР°
+     * @param string  $URI     РџРѕР»РЅР°СЏ СЃСЃС‹Р»РєР°
+     * @param integer $type    РўРёРї СЃСЃС‹Р»РєРё
      * @return string
      */
     function get_title($where, $URI, $type) {
@@ -250,7 +250,7 @@ class links
                 $sql = "SELECT title as title, id FROM articles_new WHERE {$where}";
                 break;
             case links::INTERVIEW_TYPE:
-                $sql = "SELECT ('Интервью ' || u.uname || ' ' || u.usurname || ' [' || u.login || ']') as title, i.id
+                $sql = "SELECT ('РРЅС‚РµСЂРІСЊСЋ ' || u.uname || ' ' || u.usurname || ' [' || u.login || ']') as title, i.id
                         FROM interview_new i
                         LEFT JOIN users u
                             ON i.user_id = u.uid
@@ -273,10 +273,10 @@ class links
     }
     
     /**
-     * Обрабатываем ссылку для замены в тексте
+     * РћР±СЂР°Р±Р°С‚С‹РІР°РµРј СЃСЃС‹Р»РєСѓ РґР»СЏ Р·Р°РјРµРЅС‹ РІ С‚РµРєСЃС‚Рµ
      *
-     * @param string $title   Название ссылки
-     * @param string $URI     Ссылка    
+     * @param string $title   РќР°Р·РІР°РЅРёРµ СЃСЃС‹Р»РєРё
+     * @param string $URI     РЎСЃС‹Р»РєР°    
      * @return string
      */
     function getHrefLink($title, $URI) {

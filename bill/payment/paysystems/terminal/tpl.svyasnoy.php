@@ -1,9 +1,9 @@
 <?php if(!$print) { ?>
 <div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_float_right">
-    <a href="/bill/payment/print/?type=svyasnoy" target="_blank" class="b-layout__link">Распечатать страницу</a>
+    <a href="/bill/payment/print/?type=svyasnoy" target="_blank" class="b-layout__link">Р Р°СЃРїРµС‡Р°С‚Р°С‚СЊ СЃС‚СЂР°РЅРёС†Сѓ</a>
 </div>
 <?php }//if?>
-<h2 class="b-layout__title b-layout__title_padbot_30">Оплата в «Связном»</h2>
+<h2 class="b-layout__title b-layout__title_padbot_30">РћРїР»Р°С‚Р° РІ В«РЎРІСЏР·РЅРѕРјВ»</h2>
 <table class="b-layout__table b-layout__table_width_full">
     <tbody>
         <tr class="b-layout__tr">
@@ -13,47 +13,47 @@
             </td>
             <?php }//if?>
             <td class="b-layout__td b-layout__td_padleft_30">
-                <h3 class="b-layout__h3">Инструкция</h3>
+                <h3 class="b-layout__h3">РРЅСЃС‚СЂСѓРєС†РёСЏ</h3>
                 <div class="b-fon b-fon_padbot_20">
                     <b class="b-fon__b1"></b>
                     <b class="b-fon__b2"></b>
                     <div class="b-fon__body b-fon__body_pad_10_20">
-                        <div class="b-layout__txt b-layout__txt_padbot_5">1. Найдите в своем городе любой терминал «Связной».</div>
-                        <div class="b-layout__txt b-layout__txt_padbot_5">2. Зайдите в раздел «Оплата услуг», выберите категорию услуг «Интернет».</div>
-                        <div class="b-layout__txt b-layout__txt_padbot_5">3. Выберите Free-lance.ru среди предложенных компаний (нажмите на значок Free-lance.ru на дисплее автомата). После этого на экране автомата появится виртуальная клавиатура.</div>
-                        <div class="b-layout__txt b-layout__txt_padbot_5">4. Введите ваш логин (который вы используете для входа на сайт) с помощью клавиатуры.</div>
-                        <div class="b-layout__txt b-layout__txt_padbot_5">5. Внесите необходимое количество денег в терминал и нажмите кнопку «Оплатить».</div>
-                        <div class="b-layout__txt b-layout__txt_padbot_5">6. Получите и сохраните квитанцию об оплате до зачисления денежных средств.</div>
-                        <div class="b-layout__txt">7. Деньги будут автоматически перечислены на счет на Free-lance.ru и списаны в оплату услуг.</div>
+                        <div class="b-layout__txt b-layout__txt_padbot_5">1. РќР°Р№РґРёС‚Рµ РІ СЃРІРѕРµРј РіРѕСЂРѕРґРµ Р»СЋР±РѕР№ С‚РµСЂРјРёРЅР°Р» В«РЎРІСЏР·РЅРѕР№В».</div>
+                        <div class="b-layout__txt b-layout__txt_padbot_5">2. Р—Р°Р№РґРёС‚Рµ РІ СЂР°Р·РґРµР» В«РћРїР»Р°С‚Р° СѓСЃР»СѓРіВ», РІС‹Р±РµСЂРёС‚Рµ РєР°С‚РµРіРѕСЂРёСЋ СѓСЃР»СѓРі В«РРЅС‚РµСЂРЅРµС‚В».</div>
+                        <div class="b-layout__txt b-layout__txt_padbot_5">3. Р’С‹Р±РµСЂРёС‚Рµ Free-lance.ru СЃСЂРµРґРё РїСЂРµРґР»РѕР¶РµРЅРЅС‹С… РєРѕРјРїР°РЅРёР№ (РЅР°Р¶РјРёС‚Рµ РЅР° Р·РЅР°С‡РѕРє Free-lance.ru РЅР° РґРёСЃРїР»РµРµ Р°РІС‚РѕРјР°С‚Р°). РџРѕСЃР»Рµ СЌС‚РѕРіРѕ РЅР° СЌРєСЂР°РЅРµ Р°РІС‚РѕРјР°С‚Р° РїРѕСЏРІРёС‚СЃСЏ РІРёСЂС‚СѓР°Р»СЊРЅР°СЏ РєР»Р°РІРёР°С‚СѓСЂР°.</div>
+                        <div class="b-layout__txt b-layout__txt_padbot_5">4. Р’РІРµРґРёС‚Рµ РІР°С€ Р»РѕРіРёРЅ (РєРѕС‚РѕСЂС‹Р№ РІС‹ РёСЃРїРѕР»СЊР·СѓРµС‚Рµ РґР»СЏ РІС…РѕРґР° РЅР° СЃР°Р№С‚) СЃ РїРѕРјРѕС‰СЊСЋ РєР»Р°РІРёР°С‚СѓСЂС‹.</div>
+                        <div class="b-layout__txt b-layout__txt_padbot_5">5. Р’РЅРµСЃРёС‚Рµ РЅРµРѕР±С…РѕРґРёРјРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РґРµРЅРµРі РІ С‚РµСЂРјРёРЅР°Р» Рё РЅР°Р¶РјРёС‚Рµ РєРЅРѕРїРєСѓ В«РћРїР»Р°С‚РёС‚СЊВ».</div>
+                        <div class="b-layout__txt b-layout__txt_padbot_5">6. РџРѕР»СѓС‡РёС‚Рµ Рё СЃРѕС…СЂР°РЅРёС‚Рµ РєРІРёС‚Р°РЅС†РёСЋ РѕР± РѕРїР»Р°С‚Рµ РґРѕ Р·Р°С‡РёСЃР»РµРЅРёСЏ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ.</div>
+                        <div class="b-layout__txt">7. Р”РµРЅСЊРіРё Р±СѓРґСѓС‚ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РїРµСЂРµС‡РёСЃР»РµРЅС‹ РЅР° СЃС‡РµС‚ РЅР° Free-lance.ru Рё СЃРїРёСЃР°РЅС‹ РІ РѕРїР»Р°С‚Сѓ СѓСЃР»СѓРі.</div>
                     </div>
                     <b class="b-fon__b2"></b>
                     <b class="b-fon__b1"></b>
                 </div>     
-                <h3 class="b-layout__h3">Пополнение счета через кассу магазина</h3>
+                <h3 class="b-layout__h3">РџРѕРїРѕР»РЅРµРЅРёРµ СЃС‡РµС‚Р° С‡РµСЂРµР· РєР°СЃСЃСѓ РјР°РіР°Р·РёРЅР°</h3>
                 <div class="b-fon b-fon_padbot_20">
                     <b class="b-fon__b1"></b>
                     <b class="b-fon__b2"></b>
                     <div class="b-fon__body b-fon__body_pad_10_20">
-                        <div class="b-layout__txt b-layout__txt_padbot_5">1. Зайдите в своем городе в любой магазин «Связной».</div>
-                        <div class="b-layout__txt b-layout__txt_padbot_5">2. Сообщите кассиру о необходимости пополнения личного счета на Free-lance.ru.</div>
-                        <div class="b-layout__txt b-layout__txt_padbot_5">3. Назовите ваш логин (который вы используете для входа на сайт) и сумму к оплате.</div>
-                        <div class="b-layout__txt b-layout__txt_padbot_5">4. Подтвердите правильность номера счета подписью в пречеке.</div>
-                        <div class="b-layout__txt b-layout__txt_padbot_5">5. Внесите необходимое количество денежных средств.</div>
-                        <div class="b-layout__txt">6. Сохраните чек до поступления денег на личный счет на Free-lance.ru.</div>
+                        <div class="b-layout__txt b-layout__txt_padbot_5">1. Р—Р°Р№РґРёС‚Рµ РІ СЃРІРѕРµРј РіРѕСЂРѕРґРµ РІ Р»СЋР±РѕР№ РјР°РіР°Р·РёРЅ В«РЎРІСЏР·РЅРѕР№В».</div>
+                        <div class="b-layout__txt b-layout__txt_padbot_5">2. РЎРѕРѕР±С‰РёС‚Рµ РєР°СЃСЃРёСЂСѓ Рѕ РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РїРѕРїРѕР»РЅРµРЅРёСЏ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р° РЅР° Free-lance.ru.</div>
+                        <div class="b-layout__txt b-layout__txt_padbot_5">3. РќР°Р·РѕРІРёС‚Рµ РІР°С€ Р»РѕРіРёРЅ (РєРѕС‚РѕСЂС‹Р№ РІС‹ РёСЃРїРѕР»СЊР·СѓРµС‚Рµ РґР»СЏ РІС…РѕРґР° РЅР° СЃР°Р№С‚) Рё СЃСѓРјРјСѓ Рє РѕРїР»Р°С‚Рµ.</div>
+                        <div class="b-layout__txt b-layout__txt_padbot_5">4. РџРѕРґС‚РІРµСЂРґРёС‚Рµ РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ РЅРѕРјРµСЂР° СЃС‡РµС‚Р° РїРѕРґРїРёСЃСЊСЋ РІ РїСЂРµС‡РµРєРµ.</div>
+                        <div class="b-layout__txt b-layout__txt_padbot_5">5. Р’РЅРµСЃРёС‚Рµ РЅРµРѕР±С…РѕРґРёРјРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ.</div>
+                        <div class="b-layout__txt">6. РЎРѕС…СЂР°РЅРёС‚Рµ С‡РµРє РґРѕ РїРѕСЃС‚СѓРїР»РµРЅРёСЏ РґРµРЅРµРі РЅР° Р»РёС‡РЅС‹Р№ СЃС‡РµС‚ РЅР° Free-lance.ru.</div>
                     </div>
                     <b class="b-fon__b2"></b>
                     <b class="b-fon__b1"></b>
                 </div>     
-                <div class="b-layout__txt b-layout__txt_padbot_15">Обращаем ваше внимание на то, что оплата с помощью терминалов или кассы «Связного» доступна только пользователям, находящимся на территории Российской Федерации.</div>
+                <div class="b-layout__txt b-layout__txt_padbot_15">РћР±СЂР°С‰Р°РµРј РІР°С€Рµ РІРЅРёРјР°РЅРёРµ РЅР° С‚Рѕ, С‡С‚Рѕ РѕРїР»Р°С‚Р° СЃ РїРѕРјРѕС‰СЊСЋ С‚РµСЂРјРёРЅР°Р»РѕРІ РёР»Рё РєР°СЃСЃС‹ В«РЎРІСЏР·РЅРѕРіРѕВ» РґРѕСЃС‚СѓРїРЅР° С‚РѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј, РЅР°С…РѕРґСЏС‰РёРјСЃСЏ РЅР° С‚РµСЂСЂРёС‚РѕСЂРёРё Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё.</div>
                 <div class="b-fon b-fon_bg_fcc b-fon_padbot_20">
                     <b class="b-fon__b1"></b>
                     <b class="b-fon__b2"></b>
-                    <div class="b-fon__body b-fon__body_pad_5"><strong>Внимание:</strong> мы не осуществляем возврат денежных средств при оплате в «Связном».</div>
+                    <div class="b-fon__body b-fon__body_pad_5"><strong>Р’РЅРёРјР°РЅРёРµ:</strong> РјС‹ РЅРµ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµРј РІРѕР·РІСЂР°С‚ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ РїСЂРё РѕРїР»Р°С‚Рµ РІ В«РЎРІСЏР·РЅРѕРјВ».</div>
                     <b class="b-fon__b2"></b>
                     <b class="b-fon__b1"></b>
                 </div>
-                <h3 class="b-layout__h3">Что делать, если деньги не были перечислены на счет?</h3>
-                <div class="b-layout__txt">В случае, если зачисление суммы не произошло, напишите нам в <a class="b-layout__link" href="/about/feedback/">Службу поддержки</a> и пришлите копию чека об оплате (скан). Мы обязательно решим проблему.</div>
+                <h3 class="b-layout__h3">Р§С‚Рѕ РґРµР»Р°С‚СЊ, РµСЃР»Рё РґРµРЅСЊРіРё РЅРµ Р±С‹Р»Рё РїРµСЂРµС‡РёСЃР»РµРЅС‹ РЅР° СЃС‡РµС‚?</h3>
+                <div class="b-layout__txt">Р’ СЃР»СѓС‡Р°Рµ, РµСЃР»Рё Р·Р°С‡РёСЃР»РµРЅРёРµ СЃСѓРјРјС‹ РЅРµ РїСЂРѕРёР·РѕС€Р»Рѕ, РЅР°РїРёС€РёС‚Рµ РЅР°Рј РІ <a class="b-layout__link" href="/about/feedback/">РЎР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a> Рё РїСЂРёС€Р»РёС‚Рµ РєРѕРїРёСЋ С‡РµРєР° РѕР± РѕРїР»Р°С‚Рµ (СЃРєР°РЅ). РњС‹ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ СЂРµС€РёРј РїСЂРѕР±Р»РµРјСѓ.</div>
                 <?php if(!$print) { ?>
                 <form method="POST" action="<?= ( is_release() ? "/bill/payment/?type={$type_payment}" : "/bill/test/osmp.php" )?>" id="<?= $type_payment ?>" name="<?= $type_payment ?>">
                     <input type="hidden" name="action" value="osmp" />

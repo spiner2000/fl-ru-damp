@@ -16,20 +16,20 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/config.php");
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/classes/pskb.php');
 
 /**
- * проверка статуса новых аккредитивов и покрытия
+ * РїСЂРѕРІРµСЂРєР° СЃС‚Р°С‚СѓСЃР° РЅРѕРІС‹С… Р°РєРєСЂРµРґРёС‚РёРІРѕРІ Рё РїРѕРєСЂС‹С‚РёСЏ
  */
 pskb::checkStatus(null, $in, $out);
 
 /**
- * проверка аккредитивов в статусе trans (перечисление денег)
+ * РїСЂРѕРІРµСЂРєР° Р°РєРєСЂРµРґРёС‚РёРІРѕРІ РІ СЃС‚Р°С‚СѓСЃРµ trans (РїРµСЂРµС‡РёСЃР»РµРЅРёРµ РґРµРЅРµРі)
  */
 if (date('i') % 5 == 0) {
     pskb::checkStagePayoputForSuperCheck(null, $in, $out);
 }
 
-if(pskb::PSKB_SUPERCHECK && date('i') % 2 == 0 ) { // сократим до раз в две минуты, раньше смысла нет. Ответ от ПСКБ формируется до 5 минут 
+if(pskb::PSKB_SUPERCHECK && date('i') % 2 == 0 ) { // СЃРѕРєСЂР°С‚РёРј РґРѕ СЂР°Р· РІ РґРІРµ РјРёРЅСѓС‚С‹, СЂР°РЅСЊС€Рµ СЃРјС‹СЃР»Р° РЅРµС‚. РћС‚РІРµС‚ РѕС‚ РџРЎРљР‘ С„РѕСЂРјРёСЂСѓРµС‚СЃСЏ РґРѕ 5 РјРёРЅСѓС‚ 
     pskb::checkStagePayouts(null, $in, $out);
-} elseif(!pskb::PSKB_SUPERCHECK) { // Если отключен суперчек по старому
+} elseif(!pskb::PSKB_SUPERCHECK) { // Р•СЃР»Рё РѕС‚РєР»СЋС‡РµРЅ СЃСѓРїРµСЂС‡РµРє РїРѕ СЃС‚Р°СЂРѕРјСѓ
     pskb::checkStagePayouts(null, $in, $out);
 }
 

@@ -5,7 +5,7 @@ require_once(__DIR__ . '/ReservesPayException.php');
 
 class ReservesPayoutQueueException extends ReservesPayException
 {
-    const NOTFOUND                  = 'Запрос на выплату средств не найден.';
-    const PAYED                     = 'Запрос уже был выплачен ранее.';
-    const CANT_CHANGE_SUBSTATUS     = 'Не удалось сменить статус выплаты.';
+    const NOTFOUND                  = 'Р—Р°РїСЂРѕСЃ РЅР° РІС‹РїР»Р°С‚Сѓ СЃСЂРµРґСЃС‚РІ РЅРµ РЅР°Р№РґРµРЅ.';
+    const PAYED                     = 'Р—Р°РїСЂРѕСЃ СѓР¶Рµ Р±С‹Р» РІС‹РїР»Р°С‡РµРЅ СЂР°РЅРµРµ.';
+    const CANT_CHANGE_SUBSTATUS     = 'РќРµ СѓРґР°Р»РѕСЃСЊ СЃРјРµРЅРёС‚СЊ СЃС‚Р°С‚СѓСЃ РІС‹РїР»Р°С‚С‹.';
 }

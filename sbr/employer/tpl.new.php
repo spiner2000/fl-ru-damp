@@ -36,8 +36,8 @@
 </div>
 <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_1 b-layout__txt_padleft_35">
     <form action="?id=<?= $curr_sbr->id;?>" method="post" id="currentsFrm<?= $curr_sbr->id;?>">
-        Ваша заявка отправлена исполнителю. Подождите, пока он не согласится на сделку.
-        <a class="b-layout__link b-layout__link_color_c10600" href="javascript:void(0)" onclick="if(confirm('Отменить сделку?')) { submitForm(document.getElementById('currentsFrm<?= $curr_sbr->id;?>'), {cancel:1}); }">Отменить сделку</a>
+        Р’Р°С€Р° Р·Р°СЏРІРєР° РѕС‚РїСЂР°РІР»РµРЅР° РёСЃРїРѕР»РЅРёС‚РµР»СЋ. РџРѕРґРѕР¶РґРёС‚Рµ, РїРѕРєР° РѕРЅ РЅРµ СЃРѕРіР»Р°СЃРёС‚СЃСЏ РЅР° СЃРґРµР»РєСѓ.
+        <a class="b-layout__link b-layout__link_color_c10600" href="javascript:void(0)" onclick="if(confirm('РћС‚РјРµРЅРёС‚СЊ СЃРґРµР»РєСѓ?')) { submitForm(document.getElementById('currentsFrm<?= $curr_sbr->id;?>'), {cancel:1}); }">РћС‚РјРµРЅРёС‚СЊ СЃРґРµР»РєСѓ</a>
         <input type="hidden" name="cancel" value="" />
         <input name="id" value="<?= $curr_sbr->id;?>" type="hidden">
         <input name="action" value="status_action" type="hidden">

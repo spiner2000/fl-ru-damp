@@ -3,69 +3,69 @@
 require_once 'DigestBlock.php';
 
 /**
- * Êëàññ äëÿ ğàáîòû ñ áëîêîì ñî ññûëêàìè
+ * ĞšĞ»Ğ°ÑÑ Ğ´Ğ»Ñ Ñ€Ğ°Ğ±Ğ¾Ñ‚Ñ‹ Ñ Ğ±Ğ»Ğ¾ĞºĞ¾Ğ¼ ÑĞ¾ ÑÑÑ‹Ğ»ĞºĞ°Ğ¼Ğ¸
  */
 class DigestBlockList extends DigestBlock {
     
     /**
-     * Äîñòóïíà ëè êíîïêà àâòîçàïîëíåíèÿ ññûëîê
+     * Ğ”Ğ¾ÑÑ‚ÑƒĞ¿Ğ½Ğ° Ğ»Ğ¸ ĞºĞ½Ğ¾Ğ¿ĞºĞ° Ğ°Ğ²Ñ‚Ğ¾Ğ·Ğ°Ğ¿Ğ¾Ğ»Ğ½ĞµĞ½Ğ¸Ñ ÑÑÑ‹Ğ»Ğ¾Ğº
      * 
      * @var boolean 
      */
     const AUTO_COMPLETE = false;
     
     /**
-     * Ìàñêà âàëèäàöèè è ïğîâåğêè ññûëêè
+     * ĞœĞ°ÑĞºĞ° Ğ²Ğ°Ğ»Ğ¸Ğ´Ğ°Ñ†Ğ¸Ğ¸ Ğ¸ Ğ¿Ñ€Ğ¾Ğ²ĞµÑ€ĞºĞ¸ ÑÑÑ‹Ğ»ĞºĞ¸
      * 
      */
     const MASK_LINK = '';
     
     /**
-     * Êîëè÷åñòâî ññûëîê
+     * ĞšĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ÑÑÑ‹Ğ»Ğ¾Ğº
      * 
      * @var integer 
      */
     protected $_list_size = 3;
     
     /**
-     * Ïğè ñîçäàíèè ññûëêè áîëüøå ÷åì èíèöèèğîâàííîå êîëè÷åñòâî, ïîñëåäíÿÿ ññûëêà çàìåùàåòñÿ
+     * ĞŸÑ€Ğ¸ ÑĞ¾Ğ·Ğ´Ğ°Ğ½Ğ¸Ğ¸ ÑÑÑ‹Ğ»ĞºĞ¸ Ğ±Ğ¾Ğ»ÑŒÑˆĞµ Ñ‡ĞµĞ¼ Ğ¸Ğ½Ğ¸Ñ†Ğ¸Ğ¸Ñ€Ğ¾Ğ²Ğ°Ğ½Ğ½Ğ¾Ğµ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾, Ğ¿Ğ¾ÑĞ»ĞµĞ´Ğ½ÑÑ ÑÑÑ‹Ğ»ĞºĞ° Ğ·Ğ°Ğ¼ĞµÑ‰Ğ°ĞµÑ‚ÑÑ
      * @var type 
      */
     protected $_is_replace    = true;
     
     /**
-     * Íàçâàíèå çàãîëîâêà ïîëåé áëîêà
+     * ĞĞ°Ğ·Ğ²Ğ°Ğ½Ğ¸Ğµ Ğ·Ğ°Ğ³Ğ¾Ğ»Ğ¾Ğ²ĞºĞ° Ğ¿Ğ¾Ğ»ĞµĞ¹ Ğ±Ğ»Ğ¾ĞºĞ°
      * 
      * @var string
      */
-    public $title_field = "Ññûëêè";
+    public $title_field = "Ğ¡ÑÑ‹Ğ»ĞºĞ¸";
     
     /**
-     * Ïîäñêàçêà ê ïîëş
+     * ĞŸĞ¾Ğ´ÑĞºĞ°Ğ·ĞºĞ° Ğº Ğ¿Ğ¾Ğ»Ñ
      * 
      * @var string 
      */
     public $hint  = '';
     
     /**
-     * Èíèöèàëèçèğîâàííûé ññûëêè áëîêà
+     * Ğ˜Ğ½Ğ¸Ñ†Ğ¸Ğ°Ğ»Ğ¸Ğ·Ğ¸Ñ€Ğ¾Ğ²Ğ°Ğ½Ğ½Ñ‹Ğ¹ ÑÑÑ‹Ğ»ĞºĞ¸ Ğ±Ğ»Ğ¾ĞºĞ°
      * 
      * @var array
      */
     public $links = array();
     
     /**
-     * Ñâÿçü ññûëîê ñ ğàñïàğñåííûìè äàííûìè
+     * Ğ¡Ğ²ÑĞ·ÑŒ ÑÑÑ‹Ğ»Ğ¾Ğº Ñ Ñ€Ğ°ÑĞ¿Ğ°Ñ€ÑĞµĞ½Ğ½Ñ‹Ğ¼Ğ¸ Ğ´Ğ°Ğ½Ğ½Ñ‹Ğ¼Ğ¸
      * 
      * @var array 
      */
     public $linked = array();
     
     /**
-     * Êîíñòğóêòîğ ïîçâîëÿåò çàäàòü ññûëêè è êîëè÷åñòâî ññûëîê áëîêà
+     * ĞšĞ¾Ğ½ÑÑ‚Ñ€ÑƒĞºÑ‚Ğ¾Ñ€ Ğ¿Ğ¾Ğ·Ğ²Ğ¾Ğ»ÑĞµÑ‚ Ğ·Ğ°Ğ´Ğ°Ñ‚ÑŒ ÑÑÑ‹Ğ»ĞºĞ¸ Ğ¸ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ÑÑÑ‹Ğ»Ğ¾Ğº Ğ±Ğ»Ğ¾ĞºĞ°
      * 
-     * @param integer $size    Êîëè÷åñòâî ññûëîê áëîêà
-     * @param mixed   $link    Ññûëêà(è)
+     * @param integer $size    ĞšĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ÑÑÑ‹Ğ»Ğ¾Ğº Ğ±Ğ»Ğ¾ĞºĞ°
+     * @param mixed   $link    Ğ¡ÑÑ‹Ğ»ĞºĞ°(Ğ¸)
      */
     public function __construct($size = null, $link = null) {
         if($size !== null) {
@@ -77,7 +77,7 @@ class DigestBlockList extends DigestBlock {
     }
     
     /**
-     * Çàäàåò êîëè÷åñòâî ññûëîê â áëîêå
+     * Ğ—Ğ°Ğ´Ğ°ĞµÑ‚ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ÑÑÑ‹Ğ»Ğ¾Ğº Ğ² Ğ±Ğ»Ğ¾ĞºĞµ
      * 
      * @param integer $size
      */
@@ -86,7 +86,7 @@ class DigestBlockList extends DigestBlock {
     }
     
     /**
-     * Âîçâğàùàåò äîïóñòèìîå êîëè÷åñòâî ññûëîê â áëîêå
+     * Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ĞµÑ‚ Ğ´Ğ¾Ğ¿ÑƒÑÑ‚Ğ¸Ğ¼Ğ¾Ğµ ĞºĞ¾Ğ»Ğ¸Ñ‡ĞµÑÑ‚Ğ²Ğ¾ ÑÑÑ‹Ğ»Ğ¾Ğº Ğ² Ğ±Ğ»Ğ¾ĞºĞµ
      * 
      * @return integer
      */
@@ -95,7 +95,7 @@ class DigestBlockList extends DigestBlock {
     }
     
     /**
-     * Ïğîâåğêà íà ğàçğåøåíèå çàìåøàòü ïîñëåäíşş ññûëêó åñëè áëîê óæå çàïîëíåí
+     * ĞŸÑ€Ğ¾Ğ²ĞµÑ€ĞºĞ° Ğ½Ğ° Ñ€Ğ°Ğ·Ñ€ĞµÑˆĞµĞ½Ğ¸Ğµ Ğ·Ğ°Ğ¼ĞµÑˆĞ°Ñ‚ÑŒ Ğ¿Ğ¾ÑĞ»ĞµĞ´Ğ½ÑÑ ÑÑÑ‹Ğ»ĞºÑƒ ĞµÑĞ»Ğ¸ Ğ±Ğ»Ğ¾Ğº ÑƒĞ¶Ğµ Ğ·Ğ°Ğ¿Ğ¾Ğ»Ğ½ĞµĞ½
      * 
      * @return boolean
      */
@@ -104,9 +104,9 @@ class DigestBlockList extends DigestBlock {
     }
     
     /**
-     * Èíèöèàëèçàöèÿ äàííûõ áëîêà
+     * Ğ˜Ğ½Ğ¸Ñ†Ğ¸Ğ°Ğ»Ğ¸Ğ·Ğ°Ñ†Ğ¸Ñ Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ… Ğ±Ğ»Ğ¾ĞºĞ°
      * 
-     * @param mixed $link       Ññûëêè
+     * @param mixed $link       Ğ¡ÑÑ‹Ğ»ĞºĞ¸
      */
     public function initBlock($link = null) {
         if(is_array($link)) {
@@ -120,20 +120,20 @@ class DigestBlockList extends DigestBlock {
             array_push($this->links, $link);
         } elseif($this->isReplace()) {
             $link = stripslashes($link);
-            array_pop($this->links); // Âûòàëêèâàåì ïîñëåäíèé
+            array_pop($this->links); // Ğ’Ñ‹Ñ‚Ğ°Ğ»ĞºĞ¸Ğ²Ğ°ĞµĞ¼ Ğ¿Ğ¾ÑĞ»ĞµĞ´Ğ½Ğ¸Ğ¹
             array_push($this->links, $link);
         }
     }
     
     /**
-     * Îòîáğàæåíèå áëîêà
+     * ĞÑ‚Ğ¾Ğ±Ñ€Ğ°Ğ¶ĞµĞ½Ğ¸Ğµ Ğ±Ğ»Ğ¾ĞºĞ°
      */
     public function displayBlock() {
         include ($_SERVER['DOCUMENT_ROOT'] . self::TEMPLATE_PATH . "/tpl.digest_list.php");
     }
     
     /**
-     * Ïğîâåğêà íà âîçìîæíîñòü àâòîçàïîëåíèÿ áëîêà
+     * ĞŸÑ€Ğ¾Ğ²ĞµÑ€ĞºĞ° Ğ½Ğ° Ğ²Ğ¾Ğ·Ğ¼Ğ¾Ğ¶Ğ½Ğ¾ÑÑ‚ÑŒ Ğ°Ğ²Ñ‚Ğ¾Ğ·Ğ°Ğ¿Ğ¾Ğ»ĞµĞ½Ğ¸Ñ Ğ±Ğ»Ğ¾ĞºĞ°
      * 
      * @return boolean
      */
@@ -143,7 +143,7 @@ class DigestBlockList extends DigestBlock {
     }
     
     /**
-     * Çàäàåì íàçâàíèå çàãîëîâêà ïîëåé áëîêà
+     * Ğ—Ğ°Ğ´Ğ°ĞµĞ¼ Ğ½Ğ°Ğ·Ğ²Ğ°Ğ½Ğ¸Ğµ Ğ·Ğ°Ğ³Ğ¾Ğ»Ğ¾Ğ²ĞºĞ° Ğ¿Ğ¾Ğ»ĞµĞ¹ Ğ±Ğ»Ğ¾ĞºĞ°
      * 
      * @param string $title
      */
@@ -158,7 +158,7 @@ class DigestBlockList extends DigestBlock {
     }
     
     /**
-     * Âîçâğàùàåò íàçâàíèå çàãîëîâêà ïîëåé áëîêà
+     * Ğ’Ğ¾Ğ·Ğ²Ñ€Ğ°Ñ‰Ğ°ĞµÑ‚ Ğ½Ğ°Ğ·Ğ²Ğ°Ğ½Ğ¸Ğµ Ğ·Ğ°Ğ³Ğ¾Ğ»Ğ¾Ğ²ĞºĞ° Ğ¿Ğ¾Ğ»ĞµĞ¹ Ğ±Ğ»Ğ¾ĞºĞ°
      * 
      * @return string
      */
@@ -167,7 +167,7 @@ class DigestBlockList extends DigestBlock {
     }
     
     /**
-     * Èíèöèàëèçàöèÿ áëîêà
+     * Ğ˜Ğ½Ğ¸Ñ†Ğ¸Ğ°Ğ»Ğ¸Ğ·Ğ°Ñ†Ğ¸Ñ Ğ±Ğ»Ğ¾ĞºĞ°
      * 
      * @param array $data
      */
@@ -182,7 +182,7 @@ class DigestBlockList extends DigestBlock {
     }
     
     /**
-     * Ôóíêöèÿ äëÿ àâòîçàïîëíåíèÿ ïîëåé
+     * Ğ¤ÑƒĞ½ĞºÑ†Ğ¸Ñ Ğ´Ğ»Ñ Ğ°Ğ²Ñ‚Ğ¾Ğ·Ğ°Ğ¿Ğ¾Ğ»Ğ½ĞµĞ½Ğ¸Ñ Ğ¿Ğ¾Ğ»ĞµĞ¹
      * 
      * @return boolean
      */
@@ -191,7 +191,7 @@ class DigestBlockList extends DigestBlock {
     }
     
     /**
-     * Ğàçáèğàåì ââåäåííûå ññûëêè
+     * Ğ Ğ°Ğ·Ğ±Ğ¸Ñ€Ğ°ĞµĞ¼ Ğ²Ğ²ĞµĞ´ĞµĞ½Ğ½Ñ‹Ğµ ÑÑÑ‹Ğ»ĞºĞ¸
      * 
      * @return array
      */
@@ -203,7 +203,7 @@ class DigestBlockList extends DigestBlock {
                 $parse[] = stripslashes(__paramValue('string', $match[1]));
                 $this->linked[$match[1]] = $i;
             } else {
-                $this->_error[$i] = 'Ññûëêà íå âàëèäíà';
+                $this->_error[$i] = 'Ğ¡ÑÑ‹Ğ»ĞºĞ° Ğ½Ğµ Ğ²Ğ°Ğ»Ğ¸Ğ´Ğ½Ğ°';
             }
         }
         
@@ -211,10 +211,10 @@ class DigestBlockList extends DigestBlock {
     }
     
     /**
-     * Âûäàåì ññûëêó ïî ğàçîáğàííûì äàííûì
+     * Ğ’Ñ‹Ğ´Ğ°ĞµĞ¼ ÑÑÑ‹Ğ»ĞºÑƒ Ğ¿Ğ¾ Ñ€Ğ°Ğ·Ğ¾Ğ±Ñ€Ğ°Ğ½Ğ½Ñ‹Ğ¼ Ğ´Ğ°Ğ½Ğ½Ñ‹Ğ¼
      * 
-     * @param mixed $id  Èä äàííûõ
-     * @return string Ñâÿçàííàÿ ññûëêà
+     * @param mixed $id  Ğ˜Ğ´ Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ…
+     * @return string Ğ¡Ğ²ÑĞ·Ğ°Ğ½Ğ½Ğ°Ñ ÑÑÑ‹Ğ»ĞºĞ°
      */
     public function getLinkById($id) {
         return $this->links[$this->linked[$id]];

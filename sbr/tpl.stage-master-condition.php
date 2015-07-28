@@ -10,14 +10,14 @@
 <table class="b-layout__table b-layout__table_width_full" cellpadding="0" cellspacing="0" border="0">
     <tr class="b-layout__tr">
         <td class="b-layout__td">
-            <h2 class="b-layout__title b-layout__title_padbot_15 ">Условия вашей работы</h2>
+            <h2 class="b-layout__title b-layout__title_padbot_15 ">РЈСЃР»РѕРІРёСЏ РІР°С€РµР№ СЂР°Р±РѕС‚С‹</h2>
             <div class="b-layout">
                 <div class="b-layout__txt b-layout__txt_color_a0763b b-layout__txt_padbot_30 b-layout__txt_padleft_20 b-layout__txt_width_72ps">
                     <span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_oattent"></span>
                     <? if($sbr->data['scheme_type'] == sbr::SCHEME_LC) { ?>
-                    Заказчик хочет заключить с вами договор с аккредитивной формой расчетов. Выберите, на каких условиях вы согласны работать. Все налоги вы должны будете заплатить самостоятельно.
+                    Р—Р°РєР°Р·С‡РёРє С…РѕС‡РµС‚ Р·Р°РєР»СЋС‡РёС‚СЊ СЃ РІР°РјРё РґРѕРіРѕРІРѕСЂ СЃ Р°РєРєСЂРµРґРёС‚РёРІРЅРѕР№ С„РѕСЂРјРѕР№ СЂР°СЃС‡РµС‚РѕРІ. Р’С‹Р±РµСЂРёС‚Рµ, РЅР° РєР°РєРёС… СѓСЃР»РѕРІРёСЏС… РІС‹ СЃРѕРіР»Р°СЃРЅС‹ СЂР°Р±РѕС‚Р°С‚СЊ. Р’СЃРµ РЅР°Р»РѕРіРё РІС‹ РґРѕР»Р¶РЅС‹ Р±СѓРґРµС‚Рµ Р·Р°РїР»Р°С‚РёС‚СЊ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ.
                     <? } elseif($sbr->data['scheme_type'] == sbr::SCHEME_PDRD2) {//if?>
-                    Заказчик хочет заключить с вами договор подряда. Выберите, на каких условиях вы согласны работать.
+                    Р—Р°РєР°Р·С‡РёРє С…РѕС‡РµС‚ Р·Р°РєР»СЋС‡РёС‚СЊ СЃ РІР°РјРё РґРѕРіРѕРІРѕСЂ РїРѕРґСЂСЏРґР°. Р’С‹Р±РµСЂРёС‚Рµ, РЅР° РєР°РєРёС… СѓСЃР»РѕРІРёСЏС… РІС‹ СЃРѕРіР»Р°СЃРЅС‹ СЂР°Р±РѕС‚Р°С‚СЊ.
                     <? }//elseif?>
                 </div>
 
@@ -26,8 +26,8 @@
                 
                 <?// $sbr->getScheme(); ?>
                 <? if ($sbr->scheme_type == sbr::SCHEME_LC) { ?>             
-                    <div class="b-layout__txt b-layout__txt_color_a0763b b-layout__txt_padbot_10 b-layout__txt_padleft_20 b-layout__txt_width_72ps"><span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_oattent"></span>Соглашаясь с данным Техническим заданием путем нажатия кнопки «Согласиться на сделку», вы заключаете Соглашение о выполнении работы и/или оказании услуги с аккредитивной формой расчетов при использовании онлайн сервиса «Безопасная Сделка». Текст Соглашения расположен на Сайте Free-lance.ru в сети Интернет по адресу: <a class="b-layout__link" href="/agreement_lc.pdf" target="_blank"><?=HTTP_PREFIX?>www.free-lance.ru/agreement_lc.pdf</a>.</div>
-                    <div class="b-layout__txt b-layout__txt_color_a0763b b-layout__txt_padleft_20 b-layout__txt_width_72ps">Настоящим Сайт Free-lance.ru (ООО «Ваан») и ОАО «ПСКБ» предлагает Оферту на заключение Договора об осуществлении безналичных расчетов при использовании онлайн сервиса «Безопасная Сделка» в форме расчетов по аккредитиву. Текст Оферты на заключение Договора об использовании онлайн сервиса «Безопасная Сделка» расположен на Сайте Free-lance.ru в сети Интернет по адресу: <a class="b-layout__link" href="/offer_lc.pdf" target="_blank"><?=HTTP_PREFIX?>www.free-lance.ru/offer_lc.pdf</a>. Нажимая кнопку «Согласиться на сделку», вы принимаете без каких-либо изъятий и ограничений условия Оферты на заключение Договора об осуществлении безналичных расчетов при использовании онлайн сервиса «Безопасная Сделка» в форме расчетов по аккредитиву.</div>				 
+                    <div class="b-layout__txt b-layout__txt_color_a0763b b-layout__txt_padbot_10 b-layout__txt_padleft_20 b-layout__txt_width_72ps"><span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_oattent"></span>РЎРѕРіР»Р°С€Р°СЏСЃСЊ СЃ РґР°РЅРЅС‹Рј РўРµС…РЅРёС‡РµСЃРєРёРј Р·Р°РґР°РЅРёРµРј РїСѓС‚РµРј РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё В«РЎРѕРіР»Р°СЃРёС‚СЊСЃСЏ РЅР° СЃРґРµР»РєСѓВ», РІС‹ Р·Р°РєР»СЋС‡Р°РµС‚Рµ РЎРѕРіР»Р°С€РµРЅРёРµ Рѕ РІС‹РїРѕР»РЅРµРЅРёРё СЂР°Р±РѕС‚С‹ Рё/РёР»Рё РѕРєР°Р·Р°РЅРёРё СѓСЃР»СѓРіРё СЃ Р°РєРєСЂРµРґРёС‚РёРІРЅРѕР№ С„РѕСЂРјРѕР№ СЂР°СЃС‡РµС‚РѕРІ РїСЂРё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё РѕРЅР»Р°Р№РЅ СЃРµСЂРІРёСЃР° В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В». РўРµРєСЃС‚ РЎРѕРіР»Р°С€РµРЅРёСЏ СЂР°СЃРїРѕР»РѕР¶РµРЅ РЅР° РЎР°Р№С‚Рµ Free-lance.ru РІ СЃРµС‚Рё РРЅС‚РµСЂРЅРµС‚ РїРѕ Р°РґСЂРµСЃСѓ: <a class="b-layout__link" href="/agreement_lc.pdf" target="_blank"><?=HTTP_PREFIX?>www.free-lance.ru/agreement_lc.pdf</a>.</div>
+                    <div class="b-layout__txt b-layout__txt_color_a0763b b-layout__txt_padleft_20 b-layout__txt_width_72ps">РќР°СЃС‚РѕСЏС‰РёРј РЎР°Р№С‚ Free-lance.ru (РћРћРћ В«Р’Р°Р°РЅВ») Рё РћРђРћ В«РџРЎРљР‘В» РїСЂРµРґР»Р°РіР°РµС‚ РћС„РµСЂС‚Сѓ РЅР° Р·Р°РєР»СЋС‡РµРЅРёРµ Р”РѕРіРѕРІРѕСЂР° РѕР± РѕСЃСѓС‰РµСЃС‚РІР»РµРЅРёРё Р±РµР·РЅР°Р»РёС‡РЅС‹С… СЂР°СЃС‡РµС‚РѕРІ РїСЂРё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё РѕРЅР»Р°Р№РЅ СЃРµСЂРІРёСЃР° В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В» РІ С„РѕСЂРјРµ СЂР°СЃС‡РµС‚РѕРІ РїРѕ Р°РєРєСЂРµРґРёС‚РёРІСѓ. РўРµРєСЃС‚ РћС„РµСЂС‚С‹ РЅР° Р·Р°РєР»СЋС‡РµРЅРёРµ Р”РѕРіРѕРІРѕСЂР° РѕР± РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё РѕРЅР»Р°Р№РЅ СЃРµСЂРІРёСЃР° В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В» СЂР°СЃРїРѕР»РѕР¶РµРЅ РЅР° РЎР°Р№С‚Рµ Free-lance.ru РІ СЃРµС‚Рё РРЅС‚РµСЂРЅРµС‚ РїРѕ Р°РґСЂРµСЃСѓ: <a class="b-layout__link" href="/offer_lc.pdf" target="_blank"><?=HTTP_PREFIX?>www.free-lance.ru/offer_lc.pdf</a>. РќР°Р¶РёРјР°СЏ РєРЅРѕРїРєСѓ В«РЎРѕРіР»Р°СЃРёС‚СЊСЃСЏ РЅР° СЃРґРµР»РєСѓВ», РІС‹ РїСЂРёРЅРёРјР°РµС‚Рµ Р±РµР· РєР°РєРёС…-Р»РёР±Рѕ РёР·СЉСЏС‚РёР№ Рё РѕРіСЂР°РЅРёС‡РµРЅРёР№ СѓСЃР»РѕРІРёСЏ РћС„РµСЂС‚С‹ РЅР° Р·Р°РєР»СЋС‡РµРЅРёРµ Р”РѕРіРѕРІРѕСЂР° РѕР± РѕСЃСѓС‰РµСЃС‚РІР»РµРЅРёРё Р±РµР·РЅР°Р»РёС‡РЅС‹С… СЂР°СЃС‡РµС‚РѕРІ РїСЂРё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё РѕРЅР»Р°Р№РЅ СЃРµСЂРІРёСЃР° В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В» РІ С„РѕСЂРјРµ СЂР°СЃС‡РµС‚РѕРІ РїРѕ Р°РєРєСЂРµРґРёС‚РёРІСѓ.</div>				 
                 <? }//if?>
             </div>
             <div class="b-buttons b-buttons_padtop_40">
@@ -35,34 +35,34 @@
                     <div class="b-check b-check_padbot_20">
                        <input id="sbr_agree_frl" class="b-check__input" type="checkbox" />
                         <? if ($_SESSION['sex'] === null) {
-                            $agreeText = 'С условиями договора ознакомлен(-а) и согласен(-сна)';
+                            $agreeText = 'РЎ СѓСЃР»РѕРІРёСЏРјРё РґРѕРіРѕРІРѕСЂР° РѕР·РЅР°РєРѕРјР»РµРЅ(-Р°) Рё СЃРѕРіР»Р°СЃРµРЅ(-СЃРЅР°)';
                         } else {
-                            $agreeText = 'С условиями договора ознакомлен' . ($_SESSION['sex'] === 't' ? '' : 'а') . ' и соглас' . ($_SESSION['sex'] === 't' ? 'ен' : 'на');
+                            $agreeText = 'РЎ СѓСЃР»РѕРІРёСЏРјРё РґРѕРіРѕРІРѕСЂР° РѕР·РЅР°РєРѕРјР»РµРЅ' . ($_SESSION['sex'] === 't' ? '' : 'Р°') . ' Рё СЃРѕРіР»Р°СЃ' . ($_SESSION['sex'] === 't' ? 'РµРЅ' : 'РЅР°');
                         } ?>
-                        <label for="sbr_agree_frl" class="b-check__label b-check__label_fontsize_13"><?= $agreeText ?> &#160; &#160;<i class="b-icon b-icon_attach_pdf b-icon_pad_null"></i> <a class="b-layout__link" target="_blank" href="/offer_lc.pdf">Договор аккредитива.pdf</a></label>
+                        <label for="sbr_agree_frl" class="b-check__label b-check__label_fontsize_13"><?= $agreeText ?> &#160; &#160;<i class="b-icon b-icon_attach_pdf b-icon_pad_null"></i> <a class="b-layout__link" target="_blank" href="/offer_lc.pdf">Р”РѕРіРѕРІРѕСЂ Р°РєРєСЂРµРґРёС‚РёРІР°.pdf</a></label>
                     </div>
             
             
             
                 <?
-                // нужно ли деактивировать кнопку
+                // РЅСѓР¶РЅРѕ Р»Рё РґРµР°РєС‚РёРІРёСЂРѕРІР°С‚СЊ РєРЅРѕРїРєСѓ
                 $disableButton = false;
-                // если не заполнены данные в финансах
+                // РµСЃР»Рё РЅРµ Р·Р°РїРѕР»РЅРµРЅС‹ РґР°РЅРЅС‹Рµ РІ С„РёРЅР°РЅСЃР°С…
                 if (!$isReqvsFilled[$sbr->user_reqvs['form_type']] && $sbr->scheme_type == sbr::SCHEME_PDRD2) {
                     $disableButton = true;
                 }
-                // если не выбрано резидентство ПРИ согласии по умолчанию проставляется резиденство РФ
+                // РµСЃР»Рё РЅРµ РІС‹Р±СЂР°РЅРѕ СЂРµР·РёРґРµРЅС‚СЃС‚РІРѕ РџР Р СЃРѕРіР»Р°СЃРёРё РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РїСЂРѕСЃС‚Р°РІР»СЏРµС‚СЃСЏ СЂРµР·РёРґРµРЅСЃС‚РІРѕ Р Р¤
 //                if (!$sbr->user_reqvs['rez_type']) {
 //                    $disableButton = true;
 //                }
-                // если не выбрана форма организации
+                // РµСЃР»Рё РЅРµ РІС‹Р±СЂР°РЅР° С„РѕСЂРјР° РѕСЂРіР°РЅРёР·Р°С†РёРё
                 if(!$sbr->user_reqvs['form_type']) {
                     $disableButton - true;
                 } 
                 ?>
-                <a class="b-button b-button_flat b-button_flat_green b-button_disabled <?//= ($disableButton ? "b-button_disabled" : "")?>" id="agree_btn" href="javascript:void(0)" onclick="if(!$(this).hasClass('b-button_disabled'))submitForm(document.getElementById('currentsFrm<?= $sbr->id;?>'),{ok:1})">Согласиться на сделку
+                <a class="b-button b-button_flat b-button_flat_green b-button_disabled <?//= ($disableButton ? "b-button_disabled" : "")?>" id="agree_btn" href="javascript:void(0)" onclick="if(!$(this).hasClass('b-button_disabled'))submitForm(document.getElementById('currentsFrm<?= $sbr->id;?>'),{ok:1})">РЎРѕРіР»Р°СЃРёС‚СЊСЃСЏ РЅР° СЃРґРµР»РєСѓ
                             <img width="26" height="6" alt="" src="/css/block/b-button/b-button__load.gif" class="b-button__load b-layout_hide"></a>
-                <span class="b-buttons__txt b-buttons__txt_padleft_10">или</span> <a href="javascript:void(0)" onclick="$('rrbox<?=$sbr->data['id']?>').toggleClass('b-shadow_hide'); return false;"  class="b-buttons__link b-buttons__link_dot_c10601">отказаться</a>	
+                <span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё</span> <a href="javascript:void(0)" onclick="$('rrbox<?=$sbr->data['id']?>').toggleClass('b-shadow_hide'); return false;"  class="b-buttons__link b-buttons__link_dot_c10601">РѕС‚РєР°Р·Р°С‚СЊСЃСЏ</a>	
             </div>
         </td>
     </tr>
@@ -86,12 +86,12 @@ $frlReqvs = sbr_meta::getUserReqvs($sbr->data['emp_id']);
     var sbrDisableButton = <?= (int)$disableButton ?>;
 
     var _SBR = {};
-    _SBR.cost = '<?= $sbr->cost ?>',// бюджет сделки
-    _SBR.maxcost = <?= $sbr->maxNorezCost()?>, // максимальный бюджет для сделок с нерезидентом(ами)
-    _SBR.maxcostPhys = <?= (int)$sbr->usd2rur(sbr::MAX_COST_USD_FIZ) ?>, // максимальный бюджет для сделок с нерезидентами когда оба физические лица
-    _SBR.empFormType = <?= (int)$frlReqvs['form_type'] ?>, // юридическая форма заказчика
-    _SBR.empNotRes = <?= (int)($frlReqvs['rez_type'] == sbr::RT_UABYKZ) ?>, // резидентство закзачика
-    _SBR.frlFormType = <?= (int)$sbr->frl_reqvs['form_type'] ?>, // юридическая форма исполнителя
-    _SBR.frlNotRes = <?= (int)($sbr->frl_reqvs['rez_type'] == sbr::RT_UABYKZ) ?>; // резидентство исполнителя
+    _SBR.cost = '<?= $sbr->cost ?>',// Р±СЋРґР¶РµС‚ СЃРґРµР»РєРё
+    _SBR.maxcost = <?= $sbr->maxNorezCost()?>, // РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ РґР»СЏ СЃРґРµР»РѕРє СЃ РЅРµСЂРµР·РёРґРµРЅС‚РѕРј(Р°РјРё)
+    _SBR.maxcostPhys = <?= (int)$sbr->usd2rur(sbr::MAX_COST_USD_FIZ) ?>, // РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ РґР»СЏ СЃРґРµР»РѕРє СЃ РЅРµСЂРµР·РёРґРµРЅС‚Р°РјРё РєРѕРіРґР° РѕР±Р° С„РёР·РёС‡РµСЃРєРёРµ Р»РёС†Р°
+    _SBR.empFormType = <?= (int)$frlReqvs['form_type'] ?>, // СЋСЂРёРґРёС‡РµСЃРєР°СЏ С„РѕСЂРјР° Р·Р°РєР°Р·С‡РёРєР°
+    _SBR.empNotRes = <?= (int)($frlReqvs['rez_type'] == sbr::RT_UABYKZ) ?>, // СЂРµР·РёРґРµРЅС‚СЃС‚РІРѕ Р·Р°РєР·Р°С‡РёРєР°
+    _SBR.frlFormType = <?= (int)$sbr->frl_reqvs['form_type'] ?>, // СЋСЂРёРґРёС‡РµСЃРєР°СЏ С„РѕСЂРјР° РёСЃРїРѕР»РЅРёС‚РµР»СЏ
+    _SBR.frlNotRes = <?= (int)($sbr->frl_reqvs['rez_type'] == sbr::RT_UABYKZ) ?>; // СЂРµР·РёРґРµРЅС‚СЃС‚РІРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЏ
     
 </script>

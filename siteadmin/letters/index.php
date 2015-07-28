@@ -24,13 +24,13 @@ switch($_GET['mode']) {
 	case 'templates':
 		switch($_GET['msg']) {
 			case 'aok':
-				$msgstr = 'Шаблон добавлен';
+				$msgstr = 'РЁР°Р±Р»РѕРЅ РґРѕР±Р°РІР»РµРЅ';
 				break;
 			case 'eok':
-				$msgstr = 'Информация о шаблоне сохранена';
+				$msgstr = 'РРЅС„РѕСЂРјР°С†РёСЏ Рѕ С€Р°Р±Р»РѕРЅРµ СЃРѕС…СЂР°РЅРµРЅР°';
 				break;
 			case 'dok':
-				$msgstr = 'Шаблон удален';
+				$msgstr = 'РЁР°Р±Р»РѕРЅ СѓРґР°Р»РµРЅ';
 				break;
 			default:
 				$msgstr = '';
@@ -58,10 +58,10 @@ switch($_GET['mode']) {
 	case 'company':
 		switch($_GET['msg']) {
 			case 'aok':
-				$msgstr = 'Сторона добавлена';
+				$msgstr = 'РЎС‚РѕСЂРѕРЅР° РґРѕР±Р°РІР»РµРЅР°';
 				break;
 			case 'eok':
-				$msgstr = 'Информация о стороне сохранена';
+				$msgstr = 'РРЅС„РѕСЂРјР°С†РёСЏ Рѕ СЃС‚РѕСЂРѕРЅРµ СЃРѕС…СЂР°РЅРµРЅР°';
 				break;
 			default:
 				$msgstr = '';

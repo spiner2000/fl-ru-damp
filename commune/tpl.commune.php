@@ -7,11 +7,11 @@ global $id, $comm, $uid, $page, $om, $user_mod, $message_id, $request, $alert, $
 $author_id = $uid;
 $adminCnt = 0;
 
-// Но нам нужно вычесть забаненные топики, для вывода "Всего X сообщений".
+// РќРѕ РЅР°Рј РЅСѓР¶РЅРѕ РІС‹С‡РµСЃС‚СЊ Р·Р°Р±Р°РЅРµРЅРЅС‹Рµ С‚РѕРїРёРєРё, РґР»СЏ РІС‹РІРѕРґР° "Р’СЃРµРіРѕ X СЃРѕРѕР±С‰РµРЅРёР№".
 $bannedCount = 0;
 if ($user_mod & commune::MOD_ADMIN) {
     $thCnt = $communeThemesCounts['count'];
-} elseif ($user_mod & (commune::MOD_COMM_AUTHOR | commune::MOD_COMM_MANAGER)) { // если модераторы сообщества
+} elseif ($user_mod & (commune::MOD_COMM_AUTHOR | commune::MOD_COMM_MANAGER)) { // РµСЃР»Рё РјРѕРґРµСЂР°С‚РѕСЂС‹ СЃРѕРѕР±С‰РµСЃС‚РІР°
     $thCnt = $communeThemesCounts['count'] - $communeThemesCounts['admin_hidden_count'];
 } else {
     $thCnt = $communeThemesCounts['count'] - $communeThemesCounts['hidden_count'];
@@ -19,8 +19,8 @@ if ($user_mod & commune::MOD_ADMIN) {
 
 
 
-// Все админы (модераторы, упрявляторы).
-if (!($admins = commune::GetMembers($id, commune::MEMBER_ADMIN | commune::JOIN_STATUS_ACCEPTED))) // Хотя модераторы всегда is_accepted.
+// Р’СЃРµ Р°РґРјРёРЅС‹ (РјРѕРґРµСЂР°С‚РѕСЂС‹, СѓРїСЂСЏРІР»СЏС‚РѕСЂС‹).
+if (!($admins = commune::GetMembers($id, commune::MEMBER_ADMIN | commune::JOIN_STATUS_ACCEPTED))) // РҐРѕС‚СЏ РјРѕРґРµСЂР°С‚РѕСЂС‹ РІСЃРµРіРґР° is_accepted.
     $admins = array();
 
 foreach($admins as $admin) {
@@ -28,28 +28,28 @@ foreach($admins as $admin) {
     if($admin['is_manager'] == 't') $man[$admin['user_id']] = true;
 }
     
-// Трое последних простых участников.
+// РўСЂРѕРµ РїРѕСЃР»РµРґРЅРёС… РїСЂРѕСЃС‚С‹С… СѓС‡Р°СЃС‚РЅРёРєРѕРІ.
 if (!($members = commune::GetMembers($id, commune::MEMBER_SIMPLE | commune::JOIN_STATUS_ACCEPTED, 0, 10)))
     $members = array();
 
-// Темы сообщества.
+// РўРµРјС‹ СЃРѕРѕР±С‰РµСЃС‚РІР°.
 if ((!$uid && $om == commune::OM_TH_MY)
         || !($topics = commune::GetTopMessages($id,
                 ($om == commune::OM_TH_MY ? $uid : NULL), $uid, $user_mod, $om, ($page - 1) * commune::MAX_TOP_ON_PAGE, commune::MAX_TOP_ON_PAGE)))
     $topics = array();
 
-// Стили закладок.
+// РЎС‚РёР»Рё Р·Р°РєР»Р°РґРѕРє.
 $bmCls = getBookmarksStyles(commune::OM_TH_COUNT, $om);
 
-// Сколько участников (вместе с админами тут).
-$mCnt = ($comm['a_count'] - $comm['w_count'] + 1) . ' участник' . getSymbolicName(($comm['a_count'] - $comm['w_count'] + 1), 'man'); // +1
+// РЎРєРѕР»СЊРєРѕ СѓС‡Р°СЃС‚РЅРёРєРѕРІ (РІРјРµСЃС‚Рµ СЃ Р°РґРјРёРЅР°РјРё С‚СѓС‚).
+$mCnt = ($comm['a_count'] - $comm['w_count'] + 1) . ' СѓС‡Р°СЃС‚РЅРёРє' . getSymbolicName(($comm['a_count'] - $comm['w_count'] + 1), 'man'); // +1
 
 //if ($thCnt = $themesCount - $bannedCount)
 //$thCnt = $themesCount - $bannedCount;
 if($om == commune::OM_TH_MY) {
     $thCnt = $themesCount;
 }
-$thCntS = ending($thCnt, 'пост', 'поста', 'постов');
+$thCntS = ending($thCnt, 'РїРѕСЃС‚', 'РїРѕСЃС‚Р°', 'РїРѕСЃС‚РѕРІ');
 
 $sort = $_COOKIE['commune_fav_order'] != "" ? $_COOKIE['commune_fav_order'] : "date";
 
@@ -160,9 +160,9 @@ $stop_words = new stop_words( hasPermissions("communes") );*/
         textarea.onchange = textarea.onkeyup = textarea.onkeydown = function() {
             if (textarea.value.length > max) {
                 if(box.getElement('div div div span strong')) {
-                    box.getElement('div div div span strong').set('html', 'Максимальная длина сообщения ' + max + ' символов!');
+                    box.getElement('div div div span strong').set('html', 'РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° СЃРѕРѕР±С‰РµРЅРёСЏ ' + max + ' СЃРёРјРІРѕР»РѕРІ!');
                 } else {
-                    box.innerHTML = 'Максимальная длина сообщения ' + max + ' символов!';
+                    box.innerHTML = 'РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° СЃРѕРѕР±С‰РµРЅРёСЏ ' + max + ' СЃРёРјРІРѕР»РѕРІ!';
                 }
                 box.style.display = 'block';
                 textarea.value = textarea.value.substr(0, max + 1);
@@ -191,7 +191,7 @@ $stop_words = new stop_words( hasPermissions("communes") );*/
 <? if (!commune::isBannedCommune($user_mod) && !$comm['is_blocked'] && $user_mod & (commune::MOD_COMM_AUTHOR | commune::MOD_ADMIN | commune::MOD_MODER | commune::MOD_COMM_ACCEPTED | commune::MOD_COMM_ADMIN | commune::MOD_COMM_MODERATOR)) { ?>
 <?// seo_start();?>
 <? if( ($comm['id']!=5100 && $comm['id']!=1008) || ($cur_user->is_team=='t' && ($comm['id']==5100 || $comm['id']==1008)) ) { ?>
-<a href="?site=Newtopic" class="b-button b-button_flat b-button_flat_green b-button_float_right b-button_margtop_15 __ga__commune__new_post_<?=is_emp()?'emp':'frl'?>" id="new_post_msg">Написать пост</a>
+<a href="?site=Newtopic" class="b-button b-button_flat b-button_flat_green b-button_float_right b-button_margtop_15 __ga__commune__new_post_<?=is_emp()?'emp':'frl'?>" id="new_post_msg">РќР°РїРёСЃР°С‚СЊ РїРѕСЃС‚</a>
 <?//= seo_end();?>
 <? } ?>
 <? } ?>
@@ -202,7 +202,7 @@ $stop_words = new stop_words( hasPermissions("communes") );*/
 $aGroup = commune::getGroupById( $comm['group_id'] );
 $sGroup = $aGroup['name'];
 $crumbs = array();
-$crumbs[] = array("title"=>"Сообщества", "url"=>"/commune/");
+$crumbs[] = array("title"=>"РЎРѕРѕР±С‰РµСЃС‚РІР°", "url"=>"/commune/");
 if($comm['id'] != commune::COMMUNE_BLOGS_ID) $crumbs[] = array("title"=>$sGroup, "url"=>getFriendlyURL('commune_group', $comm['group_id']));
 if($comm['id'] == commune::COMMUNE_BLOGS_ID) {
     $category_id = __paramInit('int', 'cat', 'cat');
@@ -221,17 +221,17 @@ if($comm['id'] == commune::COMMUNE_BLOGS_ID) {
     <ul class="b-menu__list b-menu__list_padleft_28ps" data-menu="true" data-menu-descriptor="community-discussions">
             <? seo_start();?>
             <li class="b-menu__item <?=($bmCls[commune::OM_TH_NEW] ? 'b-menu__item_active' : '')?>" <?=($bmCls[commune::OM_TH_NEW] ? 'data-menu-opener="true" data-menu-descriptor="community-discussions"' : '')?>>        
-                <a href="?om=<?=__paramInit("int", "cat")?"&cat=".__paramInit("int", "cat"):'' ?>" class="b-menu__link"><span class="b-menu__b1">Новые посты</span></a>
+                <a href="?om=<?=__paramInit("int", "cat")?"&cat=".__paramInit("int", "cat"):'' ?>" class="b-menu__link"><span class="b-menu__b1">РќРѕРІС‹Рµ РїРѕСЃС‚С‹</span></a>
             </li>
             <li class="b-menu__item <?=($bmCls[commune::OM_TH_POPULAR] ? 'b-menu__item_active' : '')?>" <?=($bmCls[commune::OM_TH_POPULAR] ? 'data-menu-opener="true" data-menu-descriptor="community-discussions"' : '')?>>        
-                <a href="?om=<?= commune::OM_TH_POPULAR ?><?=__paramInit("int", "cat")?"&cat=".__paramInit("int", "cat"):'' ?>" class="b-menu__link"><span class="b-menu__b1">Популярные</span></a>
+                <a href="?om=<?= commune::OM_TH_POPULAR ?><?=__paramInit("int", "cat")?"&cat=".__paramInit("int", "cat"):'' ?>" class="b-menu__link"><span class="b-menu__b1">РџРѕРїСѓР»СЏСЂРЅС‹Рµ</span></a>
             </li>
             <li class="b-menu__item <?=($bmCls[commune::OM_TH_ACTUAL] ? 'b-menu__item_active' : '')?>" <?=($bmCls[commune::OM_TH_ACTUAL] ? 'data-menu-opener="true" data-menu-descriptor="community-discussions"' : '')?>>        
-                <a href="?om=<?= commune::OM_TH_ACTUAL ?><?=__paramInit("int", "cat")?"&cat=".__paramInit("int", "cat"):'' ?>" class="b-menu__link"><span class="b-menu__b1">Актуальные</span></a>
+                <a href="?om=<?= commune::OM_TH_ACTUAL ?><?=__paramInit("int", "cat")?"&cat=".__paramInit("int", "cat"):'' ?>" class="b-menu__link"><span class="b-menu__b1">РђРєС‚СѓР°Р»СЊРЅС‹Рµ</span></a>
             </li>
             <? if (get_uid(0)) { ?>
             <li class="b-menu__item <?=($bmCls[commune::OM_TH_MY] ? 'b-menu__item_active' : '')?>" <?=($bmCls[commune::OM_TH_MY] ? 'data-menu-opener="true" data-menu-descriptor="community-discussions"' : '')?>>        
-                <a href="?om=<?= commune::OM_TH_MY ?><?=__paramInit("int", "cat")?"&cat=".__paramInit("int", "cat"):'' ?>" class="b-menu__link"><span class="b-menu__b1">Мои</span></a>
+                <a href="?om=<?= commune::OM_TH_MY ?><?=__paramInit("int", "cat")?"&cat=".__paramInit("int", "cat"):'' ?>" class="b-menu__link"><span class="b-menu__b1">РњРѕРё</span></a>
             </li>
             <? } ?>
             <li class="b-menu__item b-menu__item_promo b-page__desktop"><?php require_once($_SERVER['DOCUMENT_ROOT'] . "/banner_promo.php"); ?></li>
@@ -258,19 +258,19 @@ if($comm['id'] == commune::COMMUNE_BLOGS_ID) {
                 </div>
             </div>
             <? if ($uid = get_uid(false)) { ?>
-            <? // кнопка ВСУПИТЬ В СООБЩЕСТВО ?>
+            <? // РєРЅРѕРїРєР° Р’РЎРЈРџРРўР¬ Р’ РЎРћРћР‘Р©Р•РЎРўР’Рћ ?>
             <div id="join_btn_<?= $comm['id'] ?>">
                 <? if ($uid == $comm['author_uid']) { ?>
                     <div class="b-layout__txt b-layout__txt_fontsize_11 <?= commune::isBannedCommune($user_mod)?"b-layout__txt_padbot_20":""?>">
-                        Вы создатель сообщества
+                        Р’С‹ СЃРѕР·РґР°С‚РµР»СЊ СЃРѕРѕР±С‰РµСЃС‚РІР°
                     </div>
                 <? } else {?>
                     <? if ($comm['current_user_join_status'] == commune::JOIN_STATUS_NOT || $comm['current_user_join_status'] == commune::JOIN_STATUS_DELETED) { ?>
                         <?= __commPrntJoinButton($comm, $uid, null, 2, "b-button b-button_flat b-button_flat_green b-button_block b-button_margbot_20", "b-button__txt b-button__txt_center"); ?>    
                     <? } elseif(!commune::isBannedCommune($user_mod)) { ?>
                         <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_overflow_hidden <?= commune::isBannedCommune($user_mod)?"b-layout__txt_padbot_20":""?>">
-                            <a onclick="xajax_OutCommune(<?= $comm["id"] ?>, 1); return false;" class="b-layout__link b-layout__link_float_right b-layout__link_dot_c10600 b-layout__link_fontsize_11" href="javascript:void(0)">Покинуть</a>
-                            Вы член сообщества
+                            <a onclick="xajax_OutCommune(<?= $comm["id"] ?>, 1); return false;" class="b-layout__link b-layout__link_float_right b-layout__link_dot_c10600 b-layout__link_fontsize_11" href="javascript:void(0)">РџРѕРєРёРЅСѓС‚СЊ</a>
+                            Р’С‹ С‡Р»РµРЅ СЃРѕРѕР±С‰РµСЃС‚РІР°
                         </div>
                     <? } ?>
                 <? } ?>
@@ -278,26 +278,26 @@ if($comm['id'] == commune::COMMUNE_BLOGS_ID) {
             <?php if(commune::isBannedCommune($user_mod)) { ?>
             <div class="b-fon b-fon_padbot_20">
                 <div class="b-fon__body b-fon__body_pad_5 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb">
-                    <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-20"></span>Вы заблокированы в сообществе. 
+                    <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-20"></span>Р’С‹ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹ РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ. 
                     <?php if($comm['id'] == commune::COMMUNE_BLOGS_ID) { ?>
-                    <br><a class="b-layout__link" href="https://feedback.free-lance.ru" target="_blank">Обратиться в службу поддержки</a>
+                    <br><a class="b-layout__link" href="https://feedback.free-lance.ru" target="_blank">РћР±СЂР°С‚РёС‚СЊСЃСЏ РІ СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>
                     <?php }//if?>
                 </div>
             </div>
             <?php }//if?>
-            <? // кнопка ПОДПИСАТЬСЯ/ОТПИСАТЬСЯ ?>
+            <? // РєРЅРѕРїРєР° РџРћР”РџРРЎРђРўР¬РЎРЇ/РћРўРџРРЎРђРўР¬РЎРЇ ?>
             <div id="commSubscrButton_<?= $comm['id'] ?>">
                 <?//= __commPrntSubmitButton($comm, $uid, null, false, 'b-button b-button_flat b-button_flat_green b-button_block b-button_margbot_20', 'b-button__txt b-button__txt_center') ?>
                 <? if (!(commune::isUserBanned($comm['id'],$uid)) && !($comm['current_user_join_status'] != commune::JOIN_STATUS_ACCEPTED && $comm['author_uid']!=$uid)) {
                     if (commune::isCommuneSubscribed($comm['id'],$uid)) { ?>
                     <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_20 ">
-                        <a onclick="xajax_SubscribeCommune(<?= $comm['id'] ?>, false, 1, true);" class="b-layout__link b-layout__link_float_right b-layout__link_dot_c10600 b-layout__link_fontsize_11" href="javascript:void(0)">Отписаться</a>
-                        и подписаны на новые посты
+                        <a onclick="xajax_SubscribeCommune(<?= $comm['id'] ?>, false, 1, true);" class="b-layout__link b-layout__link_float_right b-layout__link_dot_c10600 b-layout__link_fontsize_11" href="javascript:void(0)">РћС‚РїРёСЃР°С‚СЊСЃСЏ</a>
+                        Рё РїРѕРґРїРёСЃР°РЅС‹ РЅР° РЅРѕРІС‹Рµ РїРѕСЃС‚С‹
                     </div> 
                     <? } else { ?>
                     <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_20 ">
-                        <a onclick="xajax_SubscribeCommune(<?= $comm['id'] ?>, true, 1, true);" class="b-layout__link b-layout__link_float_right b-layout__link_dot_c10600 b-layout__link_fontsize_11" href="javascript:void(0)">Подписаться</a>
-                        и не подписаны на новые посты
+                        <a onclick="xajax_SubscribeCommune(<?= $comm['id'] ?>, true, 1, true);" class="b-layout__link b-layout__link_float_right b-layout__link_dot_c10600 b-layout__link_fontsize_11" href="javascript:void(0)">РџРѕРґРїРёСЃР°С‚СЊСЃСЏ</a>
+                        Рё РЅРµ РїРѕРґРїРёСЃР°РЅС‹ РЅР° РЅРѕРІС‹Рµ РїРѕСЃС‚С‹
                     </div>
                     <? } ?>
                 <? } ?>
@@ -315,19 +315,19 @@ if($comm['id'] == commune::COMMUNE_BLOGS_ID) {
                 <ul class="b-menu__list">
                     <?php $href = get_uid() ? "?site=Members" : "?site=Members";//'/fbd.php'; ?>
                     <li class="b-menu__item b-menu__item_padbot_5">
-                        <a href="<?php echo $href; ?>" class="b-menu__link b-menu__link_fontsize_11 b-menu__link_color_c10600">Все</a>
+                        <a href="<?php echo $href; ?>" class="b-menu__link b-menu__link_fontsize_11 b-menu__link_color_c10600">Р’СЃРµ</a>
                     </li>
                     
                     <?php if($is_author || hasPermissions('communes')){ ?>
                         <li class="b-menu__item b-menu__item_padbot_5">
-                            <a href="?site=Edit" class="b-menu__link b-menu__link_fontsize_11 b-menu__link_color_c10600">Настройки сообщества</a>
+                            <a href="?site=Edit" class="b-menu__link b-menu__link_fontsize_11 b-menu__link_color_c10600">РќР°СЃС‚СЂРѕР№РєРё СЃРѕРѕР±С‰РµСЃС‚РІР°</a>
                         </li>
                     <?php } ?>
                     
                     <? if(isset($man[$_SESSION['uid']]) || $is_author || hasPermissions('communes')){
                         $href = "?site=Admin.members"; ?>
                         <li class="b-menu__item b-menu__item_padbot_5">
-                            <a href="<?= $href; ?>" class="b-menu__link b-menu__link_fontsize_11 b-menu__link_color_c10600">Управление людьми</a>
+                            <a href="<?= $href; ?>" class="b-menu__link b-menu__link_fontsize_11 b-menu__link_color_c10600">РЈРїСЂР°РІР»РµРЅРёРµ Р»СЋРґСЊРјРё</a>
                         </li>
                     <?php } ?>                    
 
@@ -335,13 +335,13 @@ if($comm['id'] == commune::COMMUNE_BLOGS_ID) {
                         <?php if($comm['is_blocked'] != 't'){ ?>
                             <li class="b-menu__item b-menu__item_padbot_5">
                                 <span id="blocked-button-<?= $id;?>">
-                                    <a class="b-menu__link b-menu__link_fontsize_11 b-menu__link_color_c10600" href="javascript:void(0);" onclick="banned.blockedCommune(<?=$id?>)">Заблокировать сообщество</a>
+                                    <a class="b-menu__link b-menu__link_fontsize_11 b-menu__link_color_c10600" href="javascript:void(0);" onclick="banned.blockedCommune(<?=$id?>)">Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ СЃРѕРѕР±С‰РµСЃС‚РІРѕ</a>
                                 </span>
                             </li>
                         <?php } else{ ?>
                             <li class="b-menu__item b-menu__item_padbot_5">
                                 <span id="blocked-button-<?= $id;?>">
-                                    <a class="b-menu__link b-menu__link_fontsize_11 b-menu__link_color_c10600" href="javascript:void(0);" onclick="banned.unblockedCommune(<?=$id?>)">Разблокировать сообщество</a>
+                                    <a class="b-menu__link b-menu__link_fontsize_11 b-menu__link_color_c10600" href="javascript:void(0);" onclick="banned.unblockedCommune(<?=$id?>)">Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ СЃРѕРѕР±С‰РµСЃС‚РІРѕ</a>
                                 </span>
                             </li>
                         <?php } ?>
@@ -355,10 +355,10 @@ if($comm['id'] == commune::COMMUNE_BLOGS_ID) {
                 <?= reformat2($comm['descr'], 25, 1) ?>
             </div>
             
-            <? // разделы ?>
+            <? // СЂР°Р·РґРµР»С‹ ?>
             <?php //include_once(dirname(__FILE__).'/categories.php');?>
             <div class="b-menu b-menu_padbot_20 b-menu_vertical">
-                <h3 class="b-menu__title b-menu__title_bold b-menu__title_padbot_10">Разделы</h3>
+                <h3 class="b-menu__title b-menu__title_bold b-menu__title_padbot_10">Р Р°Р·РґРµР»С‹</h3>
                 
                 
                 <? if (!$comm['is_blocked'] && $user_mod & (commune::MOD_COMM_AUTHOR | commune::MOD_COMM_ADMIN | commune::MOD_COMM_MODERATOR) || hasGroupPermissions('administrator')) { ?>
@@ -367,10 +367,10 @@ if($comm['id'] == commune::COMMUNE_BLOGS_ID) {
                     </ul>
                    
                     <span id="categories_edit_edit" class="b-layout__txt b-layout__txt_padright_10">
-                        <a id="categories_edit" class="b-layout__link b-layout__link_fontsize_11 b-layout__link_dot_c10600" href="javascript:void()">Редактировать</a>
+                        <a id="categories_edit" class="b-layout__link b-layout__link_fontsize_11 b-layout__link_dot_c10600" href="javascript:void()">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
                     </span>
                     <div id="categories_edit_add" class="b-menu__txt b-menu__txt_inline i-shadow">
-                        <a id="add_category" class="b-layout__link b-layout__link_fontsize_11 b-layout__link_dot_c10600 b-menu__add" href="javascript:void()">Добавить</a>
+                        <a id="add_category" class="b-layout__link b-layout__link_fontsize_11 b-layout__link_dot_c10600 b-menu__add" href="javascript:void()">Р”РѕР±Р°РІРёС‚СЊ</a>
                         <div id="add_category_block" class="b-shadow b-shadow_width_220 b-shadow_top_15 b-shadow_left_-77 b-shadow_hide">
                             <div class="b-shadow__right">
                                 <div class="b-shadow__left">
@@ -386,9 +386,9 @@ if($comm['id'] == commune::COMMUNE_BLOGS_ID) {
                                                     </div>
                                                     <div class="b-check b-check_padbot_10">
                                                         <input id="commune_fld_add_category_only_for_admin" name="commune_fld_add_category_only_for_admin" class="b-check__input" type="checkbox" value="1" />
-                                                        <label for="b-check1" class="b-check__label b-check__label_fontsize_13">Публикации только<br>администрации</label>
+                                                        <label for="b-check1" class="b-check__label b-check__label_fontsize_13">РџСѓР±Р»РёРєР°С†РёРё С‚РѕР»СЊРєРѕ<br>Р°РґРјРёРЅРёСЃС‚СЂР°С†РёРё</label>
                                                     </div>
-                                                    <a id="category_add_submit" href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green b-button_block">Создать раздел</a>															
+                                                    <a id="category_add_submit" href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green b-button_block">РЎРѕР·РґР°С‚СЊ СЂР°Р·РґРµР»</a>															
                                                 </form>
                                             </div>
                                         </div>
@@ -400,10 +400,10 @@ if($comm['id'] == commune::COMMUNE_BLOGS_ID) {
                         </div>							
                     </div>
                     <span id="categories_edit_save" class="b-layout__txt b-layout__txt_padright_10" style="display:none">
-                        <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_dot_c10600" href="javascript:void(0)">Сохранить</a>
+                        <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_dot_c10600" href="javascript:void(0)">РЎРѕС…СЂР°РЅРёС‚СЊ</a>
                     </span>
                     <span id="categories_edit_cancel" class="b-layout__txt" style="display:none">
-                        <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_dot_c10600" href="javascript:void(0)">Отмена</a>
+                        <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_dot_c10600" href="javascript:void(0)">РћС‚РјРµРЅР°</a>
                     </span>
                     
                 <? } else { ?>
@@ -413,27 +413,27 @@ if($comm['id'] == commune::COMMUNE_BLOGS_ID) {
                 <? } ?>
             </div>
 
-            <? // закладки ?>
+            <? // Р·Р°РєР»Р°РґРєРё ?>
             <?php if(get_uid(false)) { ?>
             <? seo_start();?>
             <div class="b-menu b-menu_padbot_20 b-menu_vertical">
-                <h3 class="b-menu__title b-menu__title_bold b-menu__title_padbot_5">Закладки</h3>
+                <h3 class="b-menu__title b-menu__title_bold b-menu__title_padbot_5">Р—Р°РєР»Р°РґРєРё</h3>
                 <div class="b-menu b-menu_rubric" id="fav_order_menu"<?= !$favs ? ' style="display:none"' : '' ?>>
                     <ul class="b-menu__list b-menu__list_margleft_0" style="padding-bottom:5px;">
                         <li style=" <?= $sort != 'date' ? ' display:none !important' : '' ?>" id="favs_date_sorted1" class="b-menu__item b-menu__item_active">
                             <span class="b-menu__b1">
-                                <span class="b-menu__b2">по дате</span>
+                                <span class="b-menu__b2">РїРѕ РґР°С‚Рµ</span>
                             </span>
                         </li>
                         <li style=" <?= $sort != 'date' ? 'display:none !important' : '' ?>" id="favs_date_sorted2" class="b-menu__item">
-                            <a id="favs_sort_abc" href="javascript:void(0)" class="b-menu__link" data-cid="<?= $comm['id']?>">по алфавиту</a>
+                            <a id="favs_sort_abc" href="javascript:void(0)" class="b-menu__link" data-cid="<?= $comm['id']?>">РїРѕ Р°Р»С„Р°РІРёС‚Сѓ</a>
                         </li>
                         <li style=" <?= $sort == 'date' ? 'display:none !important' : '' ?>" id="favs_abc_sorted1" class="b-menu__item b-menu__item_padleft_10">
-                            <a id="favs_sort_date" href="javascript:void(0)" class="b-menu__link" data-cid="<?= $comm['id']?>">по дате</a>
+                            <a id="favs_sort_date" href="javascript:void(0)" class="b-menu__link" data-cid="<?= $comm['id']?>">РїРѕ РґР°С‚Рµ</a>
                         </li>
                         <li style=" <?= $sort == 'date' ? 'display:none !important' : '' ?>" id="favs_abc_sorted2" class="b-menu__item b-menu__item_active">
                             <span class="b-menu__b1">
-                                <span class="b-menu__b2">по алфавиту</span>
+                                <span class="b-menu__b2">РїРѕ Р°Р»С„Р°РІРёС‚Сѓ</span>
                             </span>
                         </li>
                     </ul>
@@ -441,12 +441,12 @@ if($comm['id'] == commune::COMMUNE_BLOGS_ID) {
                 <ul class="b-menu__list" id="favBlock">
                     <?= __commPrntFavs($favs, $uid, $om) ?>
                 </ul>
-                <div<?= $favs ? ' style="display:none"' : '' ?> id="no_favs">Нет закладок</div>
+                <div<?= $favs ? ' style="display:none"' : '' ?> id="no_favs">РќРµС‚ Р·Р°РєР»Р°РґРѕРє</div>
                 <div id="favs_edit_edit" class="b-menu__txt b-menu__txt_inline" <?= !$favs ? ' style="display:none"' : '' ?>>
-                    <a id="favs_edit_edit_btn" class="b-layout__link b-layout__link_fontsize_11 b-layout__link_dot_c10600" href="javascript:void(0)">Редактировать</a>
+                    <a id="favs_edit_edit_btn" class="b-layout__link b-layout__link_fontsize_11 b-layout__link_dot_c10600" href="javascript:void(0)">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
                 </div>
                 <div id="favs_edit_save" class="b-menu__txt b-menu__txt_inline" style="display:none">
-                    <a id="favs_edit_save_btn" class="b-layout__link b-layout__link_fontsize_11 b-layout__link_dot_c10600" href="javascript:void(0)">Закончить редактирование</a>
+                    <a id="favs_edit_save_btn" class="b-layout__link b-layout__link_fontsize_11 b-layout__link_dot_c10600" href="javascript:void(0)">Р—Р°РєРѕРЅС‡РёС‚СЊ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ</a>
                 </div>
                 <input id="favs_user_id" type="hidden" value="<?= $uid ?>" />
                 <input id="favs_om" type="hidden" value="<?= $om ?>" />
@@ -457,9 +457,9 @@ if($comm['id'] == commune::COMMUNE_BLOGS_ID) {
                 //hlSort('<?= $sort;?>');
            </script>
            <?php  } //if?>
-           <!-- члены сообщества
+           <!-- С‡Р»РµРЅС‹ СЃРѕРѕР±С‰РµСЃС‚РІР°
            <? if (($menCnt = ($comm['a_count'] - $comm['w_count'] - $adminCnt))) { ?>
-                <h4>Участники:</h4>
+                <h4>РЈС‡Р°СЃС‚РЅРёРєРё:</h4>
                 <ul>
                     <?php foreach ($members as $memb) { ?>
                     <li class="">
@@ -487,7 +487,7 @@ if($comm['id'] == commune::COMMUNE_BLOGS_ID) {
                     || ($top['is_private'] == 't' && $top['user_id'] != $uid && !($user_mod & (commune::MOD_ADMIN | commune::MOD_COMM_AUTHOR | commune::MOD_COMM_MANAGER))) ) {
                     continue;
         } ?>
-            <? // печатаем топик
+            <? // РїРµС‡Р°С‚Р°РµРј С‚РѕРїРёРє
             if (!$comm['is_blocked'] || $user_mod & commune::MOD_MODER) { ?>
                 <a name="o<?= ($alert && $message_id ? '' : $top['id']) ?>"></a>
                 <div id='idTop_<?= $top['id'] ?>'>
@@ -497,13 +497,13 @@ if($comm['id'] == commune::COMMUNE_BLOGS_ID) {
         <? } ?>
             
         <?php
-        // пагинатор
+        // РїР°РіРёРЅР°С‚РѕСЂ
         $url_p = "%s?page=%d".($cat?'&cat='.$cat:'').($om?'&om='.$om:'')."%s";
         echo (!$comm['is_blocked'] || $user_mod & commune::MOD_MODER) ? new_paginator($page, $pages, 3,$url_p, 'href') : '';
 
         if(($comm['restrict_type'] === '00') || $user_mod & (commune::MOD_COMM_AUTHOR | commune::MOD_ADMIN | commune::MOD_MODER | commune::MOD_COMM_ACCEPTED | commune::MOD_COMM_ADMIN | commune::MOD_COMM_MODERATOR | commune::MOD_COMM_ADMIN)){ ?>
             <div style="padding:15px 0 20px 0;" class="commune-rss">
-                <a href="/rss/commune.php?id=<?= $id;?>"><img src="/images/ico_rss.gif" border="0" hspace="4"></a><a class="blue" href="/rss/commune.php?id=<?= $id;?>">Фри-ланс</a>
+                <a href="/rss/commune.php?id=<?= $id;?>"><img src="/images/ico_rss.gif" border="0" hspace="4"></a><a class="blue" href="/rss/commune.php?id=<?= $id;?>">Р¤СЂРё-Р»Р°РЅСЃ</a>
             </div>
         <? } ?>
     </div>

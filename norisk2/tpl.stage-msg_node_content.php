@@ -20,7 +20,7 @@
     </div>
     <div class="utxt">
     <? if($msg['deluser_id']) { ?>
-      <p><font color="gray"><small>Комментарий удален <?=($msg['deluser_id'] == $msg['user_id'] ? 'автором' : 'администратором')?>: <?=date('d.m.Y | H:i', strtotime($msg['deleted']))?></small></font></p>
+      <p><font color="gray"><small>РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ <?=($msg['deluser_id'] == $msg['user_id'] ? 'Р°РІС‚РѕСЂРѕРј' : 'Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј')?>: <?=date('d.m.Y | H:i', strtotime($msg['deleted']))?></small></font></p>
     <? } if(!$msg['deluser_id'] || $this->sbr->isAdmin()) { ?>
       <p><?=reformat($msg['msgtext'], 55-$msg['level']*2, 0, 0, 1)?></p>
     <? } ?>
@@ -36,7 +36,7 @@
                             foreach( $msg['attach'] as $id => $a ) {
                                 $aData = getAttachDisplayData(null, $a['name'], $a['path'] );
                     ?>
-                    <li><a <?=$aData['link']?> target="_blank"><?=($a['orig_name'] ? $a['orig_name'] : $a['name'])?></a>, <span><?=ConvertBtoMB($a['size'])?></span><span class="avs-norisk <?=$aData['virus_class']?>" <?=($aData['virus_class'] == 'avs-nocheck' ? 'title="Антивирусом проверяются файлы, загруженные после 1&nbsp;июня&nbsp;2011&nbsp;года"' : '')?>><nobr><?=$aData['virus_msg']?></nobr></span></li>
+                    <li><a <?=$aData['link']?> target="_blank"><?=($a['orig_name'] ? $a['orig_name'] : $a['name'])?></a>, <span><?=ConvertBtoMB($a['size'])?></span><span class="avs-norisk <?=$aData['virus_class']?>" <?=($aData['virus_class'] == 'avs-nocheck' ? 'title="РђРЅС‚РёРІРёСЂСѓСЃРѕРј РїСЂРѕРІРµСЂСЏСЋС‚СЃСЏ С„Р°Р№Р»С‹, Р·Р°РіСЂСѓР¶РµРЅРЅС‹Рµ РїРѕСЃР»Рµ 1&nbsp;РёСЋРЅСЏ&nbsp;2011&nbsp;РіРѕРґР°"' : '')?>><nobr><?=$aData['virus_msg']?></nobr></span></li>
                     <?php
                             }
                     ?>
@@ -52,12 +52,12 @@
     <? } ?>
         <?php if (($this->sbr->isAdmin() || $this->sbr->isEmp() || $this->sbr->isFrl())) { ?>
 					<ul class="cl-o">
-							<li class="cl-com first"><a href="javascript:;" onclick="SBR_STAGE.getMsgForm(<?=$msg['id']?>, 0)">Комментировать</a></li>
+							<li class="cl-com first"><a href="javascript:;" onclick="SBR_STAGE.getMsgForm(<?=$msg['id']?>, 0)">РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ</a></li>
 							<? if($msg['user_id']==$stage->sbr->uid && !$msg['deluser_id'] && $stage->checkMsgEditTime($msg['post_date']) || $this->sbr->isAdmin()) { ?>
-									<li class="cl-edit"><a href="javascript:;" onclick="SBR_STAGE.getMsgForm(<?=$msg['id']?>, 1)">Редактировать</a></li>
-									<li class="cl-del"><a href="javascript:;" onclick="SBR_STAGE.delMsg(<?=$msg['id']?>)">Удалить</a></li> <? // !!! "Вернуть" ?>
+									<li class="cl-edit"><a href="javascript:;" onclick="SBR_STAGE.getMsgForm(<?=$msg['id']?>, 1)">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></li>
+									<li class="cl-del"><a href="javascript:;" onclick="SBR_STAGE.delMsg(<?=$msg['id']?>)">РЈРґР°Р»РёС‚СЊ</a></li> <? // !!! "Р’РµСЂРЅСѓС‚СЊ" ?>
 							<? } ?>
-							<? /* <li class="last"><a href="" class="cl-thread-toggle">Свернуть ветвь</a></li> */ ?>
+							<? /* <li class="last"><a href="" class="cl-thread-toggle">РЎРІРµСЂРЅСѓС‚СЊ РІРµС‚РІСЊ</a></li> */ ?>
 					</ul>
         <?php }//if?>
 </div>

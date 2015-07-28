@@ -8,8 +8,8 @@ if($timer<0) { $timer = 0; }
     <!-- end of Banner 240x400 -->
 </div>
 <div class="b-layout__left b-layout__left_margright_270">
-<h1 class="b-page__title">Неправильный пароль</h1>
-<div class="b-layout__txt">Вы более <?=$max_login_tries?> раз набрали неправильный пароль. Подождите <span id="login_wait_timer"><?=floor($timer/60)?>:<?=( ($timer-floor($timer/60)*60)<10 ? '0'.($timer-floor($timer/60)*60) : ($timer-floor($timer/60)*60))?></span> минут, прежде чем продолжить.</div>
+<h1 class="b-page__title">РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ РїР°СЂРѕР»СЊ</h1>
+<div class="b-layout__txt">Р’С‹ Р±РѕР»РµРµ <?=$max_login_tries?> СЂР°Р· РЅР°Р±СЂР°Р»Рё РЅРµРїСЂР°РІРёР»СЊРЅС‹Р№ РїР°СЂРѕР»СЊ. РџРѕРґРѕР¶РґРёС‚Рµ <span id="login_wait_timer"><?=floor($timer/60)?>:<?=( ($timer-floor($timer/60)*60)<10 ? '0'.($timer-floor($timer/60)*60) : ($timer-floor($timer/60)*60))?></span> РјРёРЅСѓС‚, РїСЂРµР¶РґРµ С‡РµРј РїСЂРѕРґРѕР»Р¶РёС‚СЊ.</div>
 </div>
 <script type="text/javascript">
 document.addEvent('domready', function() {

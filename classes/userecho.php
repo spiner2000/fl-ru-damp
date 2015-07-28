@@ -1,30 +1,30 @@
 <?php
 /**
-* Класс для работы с UserEcho
+* РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ UserEcho
 */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/users.php");
 
 class UserEcho
 {
     /**
-     * ID приватного форума (Helpdesc)
+     * ID РїСЂРёРІР°С‚РЅРѕРіРѕ С„РѕСЂСѓРјР° (Helpdesc)
      */
     const FORUM_ID_HELPDESC = 27458; 
     
     /**
-     * Тип топиков "Жалоба на проект"
+     * РўРёРї С‚РѕРїРёРєРѕРІ "Р–Р°Р»РѕР±Р° РЅР° РїСЂРѕРµРєС‚"
      */
     const TYPE_QUESTIONS = 26343;
     
     /**
-     * Категория "Жалобы на пользователей сайта"
+     * РљР°С‚РµРіРѕСЂРёСЏ "Р–Р°Р»РѕР±С‹ РЅР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃР°Р№С‚Р°"
      */
     const CATEGORY_COMPLAIN = 10901;
     
     
     /**
-    * @param string $api_key API ключ UserEcho
-    * @param string $project_key Ключ UserEcho
+    * @param string $api_key API РєР»СЋС‡ UserEcho
+    * @param string $project_key РљР»СЋС‡ UserEcho
     * @param array $user_info
     * @return SSO KEY
     */
@@ -75,10 +75,10 @@ class UserEcho
     }
     
     /**
-     * Создает новый топик - жалобу
-     * @param string $name Заголовок топика
-     * @param string $message Текст топика
-     * @return string Url топика или 0, если неуспешно
+     * РЎРѕР·РґР°РµС‚ РЅРѕРІС‹Р№ С‚РѕРїРёРє - Р¶Р°Р»РѕР±Сѓ
+     * @param string $name Р—Р°РіРѕР»РѕРІРѕРє С‚РѕРїРёРєР°
+     * @param string $message РўРµРєСЃС‚ С‚РѕРїРёРєР°
+     * @return string Url С‚РѕРїРёРєР° РёР»Рё 0, РµСЃР»Рё РЅРµСѓСЃРїРµС€РЅРѕ
      */
     public function newTopicComplain($name, $message) 
     {
@@ -87,7 +87,7 @@ class UserEcho
         $url = sprintf($url_template, self::FORUM_ID_HELPDESC, $sso_token, USERECHO_API_TOKEN);
         
         $params = array(
-            'header' => iconv('cp1251', 'utf-8', 'Жалоба на проект - '.$name), 
+            'header' => iconv('cp1251', 'utf-8', 'Р–Р°Р»РѕР±Р° РЅР° РїСЂРѕРµРєС‚ - '.$name), 
             'description' => iconv('cp1251', 'utf-8', $message),
             'type' => self::TYPE_QUESTIONS, 
             'category' => self::CATEGORY_COMPLAIN               
@@ -113,7 +113,7 @@ class UserEcho
     }
     
     /**
-     * Формирует текст топика
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ С‚РµРєСЃС‚ С‚РѕРїРёРєР°
      * @param type $project_url
      * @param type $project_name
      * @param type $text
@@ -121,7 +121,7 @@ class UserEcho
      */
     public static function constructMessage($project_url, $project_name, $text, $files = array())
     {
-        $message = "Проект <a href='{$project_url}'>{$project_name}</a><br /><br />";
+        $message = "РџСЂРѕРµРєС‚ <a href='{$project_url}'>{$project_name}</a><br /><br />";
         $message .= str_replace("\n", "<br />", $text);
         if (count($files)) {
             foreach ($files as $file) {

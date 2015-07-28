@@ -1,5 +1,5 @@
 <?php if ( !defined('IS_SITE_ADMIN') ) { header('Location: /404.php'); exit; } ?>
-<h3>IP с которых производилось <?=users::MAX_REG_IP?> регистраций в сутки</h3>
+<h3>IP СЃ РєРѕС‚РѕСЂС‹С… РїСЂРѕРёР·РІРѕРґРёР»РѕСЃСЊ <?=users::MAX_REG_IP?> СЂРµРіРёСЃС‚СЂР°С†РёР№ РІ СЃСѓС‚РєРё</h3>
 
 <?php if ( $nTotal ): ?>
 <table cellpadding="5" cellspacing="1" border="0" style="background-color: #cdcdcd; border-collapse: separate;">

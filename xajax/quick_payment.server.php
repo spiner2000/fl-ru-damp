@@ -14,7 +14,7 @@ session_start();
 
 
 /**
- * Ôóíêöèè îïëàòû
+ * Ð¤ÑƒÐ½ÐºÑ†Ð¸Ð¸ Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹
  * 
  * @param type $process
  * @return type
@@ -46,7 +46,7 @@ function quickPaymentProcess($process, $type, $data)
 {
     $objResponse = &new xajaxResponse();
     
-    //Ïðîâåðêà íà ñóùåñòâîâàíèå ïåðåäàâàåìîãî ñïîñîáà îïëàòû
+    //ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð½Ð° ÑÑƒÑ‰ÐµÑÑ‚Ð²Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿ÐµÑ€ÐµÐ´Ð°Ð²Ð°ÐµÐ¼Ð¾Ð³Ð¾ ÑÐ¿Ð¾ÑÐ¾Ð±Ð° Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹
     if (!quickPaymentPopupFactory::getInstance($process)->isExistPaymentType($type)) {
         return $objResponse;
     }

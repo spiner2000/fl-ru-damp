@@ -13,7 +13,7 @@ class BillInvoicesAdminController extends CController
 
 
     /**
-     * Инициализация контроллера
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєРѕРЅС‚СЂРѕР»Р»РµСЂР°
      */
     public function init($action) 
     {
@@ -25,7 +25,7 @@ class BillInvoicesAdminController extends CController
 
 
     /**
-     * Обработка события до какого-либо экшена
+     * РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ РґРѕ РєР°РєРѕРіРѕ-Р»РёР±Рѕ СЌРєС€РµРЅР°
      * 
      * @param string $action
      * @return bool
@@ -85,7 +85,7 @@ class BillInvoicesAdminController extends CController
                 break;
             
             
-            //Операция зачисления средств по счету
+            //РћРїРµСЂР°С†РёСЏ Р·Р°С‡РёСЃР»РµРЅРёСЏ СЃСЂРµРґСЃС‚РІ РїРѕ СЃС‡РµС‚Сѓ
             case 'pay':
                 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/users.php' );
                 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/account.php' );
@@ -93,14 +93,14 @@ class BillInvoicesAdminController extends CController
                 
                 $sums = __paramInit('array', NULL, 'sum', null);
                 
-                //@todo: слишком толстый контроллер 
-                //все ниже нужно было определить в модель
+                //@todo: СЃР»РёС€РєРѕРј С‚РѕР»СЃС‚С‹Р№ РєРѕРЅС‚СЂРѕР»Р»РµСЂ 
+                //РІСЃРµ РЅРёР¶Рµ РЅСѓР¶РЅРѕ Р±С‹Р»Рѕ РѕРїСЂРµРґРµР»РёС‚СЊ РІ РјРѕРґРµР»СЊ
                 
                 $account = new account();
                 $user  = new users();
                 
                 if($sums) {
-                    $sAdmin  = 'Запись добавил: ' . @$_SESSION['login'];
+                    $sAdmin  = 'Р—Р°РїРёСЃСЊ РґРѕР±Р°РІРёР»: ' . @$_SESSION['login'];
                     $sDate   = date('c');
                     
                     foreach($sums as $user_id => $invoices) {
@@ -125,7 +125,7 @@ class BillInvoicesAdminController extends CController
                                 continue;
                             }
 
-                            $comments  = sprintf("Безналичный перевод по счету Б-%06d", $invoice_id);
+                            $comments  = sprintf("Р‘РµР·РЅР°Р»РёС‡РЅС‹Р№ РїРµСЂРµРІРѕРґ РїРѕ СЃС‡РµС‚Сѓ Р‘-%06d", $invoice_id);
                             
                             if(!$account->depositEx2(
                                     $acc_op_id,
@@ -135,14 +135,14 @@ class BillInvoicesAdminController extends CController
                                     $comments, 
                                     12, 
                                     $sum, 
-                                    4,//безнал 
+                                    4,//Р±РµР·РЅР°Р» 
                                     $sDate)){
 
                                 $this->billInvoicesAdminModel->update($invoice_id, array(
                                     'acc_op_id' => $acc_op_id
                                 ));
                                 
-                                //Автоматическая покупка услуги погашения задолженности
+                                //РђРІС‚РѕРјР°С‚РёС‡РµСЃРєР°СЏ РїРѕРєСѓРїРєР° СѓСЃР»СѓРіРё РїРѕРіР°С€РµРЅРёСЏ Р·Р°РґРѕР»Р¶РµРЅРЅРѕСЃС‚Рё
                                 if ($account_sum < 0) {
                                     $payed_sum = abs($account_sum);
                                     $option = array('acc_sum' => $payed_sum);

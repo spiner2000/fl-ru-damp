@@ -6,7 +6,7 @@ $request = $_POST;
 require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/stdf.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/onlinedengi_cards.php';
 
-// временная мера. нужен рефракторинг
+// РІСЂРµРјРµРЅРЅР°СЏ РјРµСЂР°. РЅСѓР¶РµРЅ СЂРµС„СЂР°РєС‚РѕСЂРёРЅРі
 if ( !empty($request['paymode']) && ($request['paymode'] == 204) ) {
     require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/webpay.php';
     $webpay = new webpay;

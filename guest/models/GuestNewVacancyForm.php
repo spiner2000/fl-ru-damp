@@ -11,21 +11,21 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/projects.php");
 
 /**
  * Class GuestNewVacancyForm
- * Форма новой вакансии
+ * Р¤РѕСЂРјР° РЅРѕРІРѕР№ РІР°РєР°РЅСЃРёРё
  */
 class GuestNewVacancyForm  extends GuestForm
 {
     /**
-     * Инициализация формы
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ С„РѕСЂРјС‹
      */
     public function init()
     {
         $this->addElement(
            new Zend_Form_Element_Text('name', array(
-               'label' => 'Название вакансии',
+               'label' => 'РќР°Р·РІР°РЅРёРµ РІР°РєР°РЅСЃРёРё',
                'required' => true,
-               'placeholder' => 'Кого вы ищете и какую работу нужно выполнить.',
-               'padbot' => 30, // отступ снизу
+               'placeholder' => 'РљРѕРіРѕ РІС‹ РёС‰РµС‚Рµ Рё РєР°РєСѓСЋ СЂР°Р±РѕС‚Сѓ РЅСѓР¶РЅРѕ РІС‹РїРѕР»РЅРёС‚СЊ.',
+               'padbot' => 30, // РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ
                'maxlength' => 60,
                'filters' => $this->filtersAll,
                'validators' => array(
@@ -37,9 +37,9 @@ class GuestNewVacancyForm  extends GuestForm
         if ($this->isAdm()) {
             $this->addElement(
                 new Zend_Form_Element_Text('link', array(
-                    'label' => 'Ссылка на вакансию',
+                    'label' => 'РЎСЃС‹Р»РєР° РЅР° РІР°РєР°РЅСЃРёСЋ',
                     'required' => true,
-                    'padbot' => 30, // отступ снизу
+                    'padbot' => 30, // РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ
                     'filters' => $this->filters,
                     'validators' => array(
                         array('StringLength',true,array('min' => 4)),
@@ -51,10 +51,10 @@ class GuestNewVacancyForm  extends GuestForm
         
         $this->addElement(
           new Zend_Form_Element_Textarea('descr', array(
-              'label' => 'Подробно опишите задание',
+              'label' => 'РџРѕРґСЂРѕР±РЅРѕ РѕРїРёС€РёС‚Рµ Р·Р°РґР°РЅРёРµ',
               'required' => true,
-              'placeholder' => 'Укажите требования к исполнителю и результату, сроки выполнения и другие условия работы.',
-              'padbot' => 5, // отступ снизу
+              'placeholder' => 'РЈРєР°Р¶РёС‚Рµ С‚СЂРµР±РѕРІР°РЅРёСЏ Рє РёСЃРїРѕР»РЅРёС‚РµР»СЋ Рё СЂРµР·СѓР»СЊС‚Р°С‚Сѓ, СЃСЂРѕРєРё РІС‹РїРѕР»РЅРµРЅРёСЏ Рё РґСЂСѓРіРёРµ СѓСЃР»РѕРІРёСЏ СЂР°Р±РѕС‚С‹.',
+              'padbot' => 5, // РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ
               'filters' => $this->filtersAll,
               'validators' => array(
                   array('StringLength', true, array('max' => 5000, 'min' => 4))
@@ -62,49 +62,49 @@ class GuestNewVacancyForm  extends GuestForm
         )));        
         
 
-        //@todo: элемент требует проработки
+        //@todo: СЌР»РµРјРµРЅС‚ С‚СЂРµР±СѓРµС‚ РїСЂРѕСЂР°Р±РѕС‚РєРё
         $this->addElement(
           new Form_Element_GuestProjectUploader('IDResource' , array(
               'hide_label' => true,
-              'label' => 'Файлы',
-              'padbot' => 30 // отступ снизу
+              'label' => 'Р¤Р°Р№Р»С‹',
+              'padbot' => 30 // РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ
           ))
         ); 
         
         
         $this->addElement(
           new Form_Element_ProfessionsDropdown('profession', array(
-              'padbot' => 30, // отступ снизу
-              'label' => 'Специализация проекта',
+              'padbot' => 30, // РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ
+              'label' => 'РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ РїСЂРѕРµРєС‚Р°',
               'required' => true,
               'class'       => 'b-combo__input_width_320',
               'spec_class'  => 'b-combo__input_width_300',
               'sort_type'   => 'sort_cnt',
-              //если нужно по умолчанию
+              //РµСЃР»Рё РЅСѓР¶РЅРѕ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
               /*
               'value' => array(
                   'group_db_id' => 3,
-                  'group' => 'Дизайн',
+                  'group' => 'Р”РёР·Р°Р№РЅ',
                   'spec_db_id' => 46,
-                  'spec' => 'Логотипы'),
+                  'spec' => 'Р›РѕРіРѕС‚РёРїС‹'),
                */
-              'placeholder' => 'Выберите раздел',
-              'spec_placeholder' => 'Выберите специализацию (не обязательно)'
+              'placeholder' => 'Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»',
+              'spec_placeholder' => 'Р’С‹Р±РµСЂРёС‚Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ (РЅРµ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ)'
           ))
         );
         
         
         $this->addElement(
           new Form_Element_MultiDropdown('location', array(
-              'padbot' => 30, // отступ снизу
-              'label' => 'Нужен исполнитель из…',
+              'padbot' => 30, // РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ
+              'label' => 'РќСѓР¶РµРЅ РёСЃРїРѕР»РЅРёС‚РµР»СЊ РёР·вЂ¦',
               'class' => 'b-combo__input_width_250 
                           b-combo__input_visible_height_200 
                           b-combo__input_arrow_yes 
                           b-combo__input_init_citiesList
                           b-combo__input_on_click_request_id_getcities',
-              'suffix' => 'Если предполагается работа в офисе - укажите, в каком городе он находится.',
-              'value' => 'Все страны',
+              'suffix' => 'Р•СЃР»Рё РїСЂРµРґРїРѕР»Р°РіР°РµС‚СЃСЏ СЂР°Р±РѕС‚Р° РІ РѕС„РёСЃРµ - СѓРєР°Р¶РёС‚Рµ, РІ РєР°РєРѕРј РіРѕСЂРѕРґРµ РѕРЅ РЅР°С…РѕРґРёС‚СЃСЏ.',
+              'value' => 'Р’СЃРµ СЃС‚СЂР°РЅС‹',
               'validators' => array(
                   array('Digits', true)
               )
@@ -113,8 +113,8 @@ class GuestNewVacancyForm  extends GuestForm
         
         $this->addElement(
             new Form_Element_BudgetExt('cost', array(
-                'padbot' => 30, // отступ снизу
-                'label' => 'Бюджет',
+                'padbot' => 30, // РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ
+                'label' => 'Р‘СЋРґР¶РµС‚',
                 'required' => true,
                 'filters' => $this->filters,
                 'validators' => array(
@@ -129,12 +129,12 @@ class GuestNewVacancyForm  extends GuestForm
         if (!$this->isAdm()) {
             $this->addElement(
               new Zend_Form_Element_MultiCheckbox('filter', array(
-                  'padbot' => 5, // отступ снизу
-                  'label' => 'Ответить на вакансию могут только ...',
+                  'padbot' => 5, // РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ
+                  'label' => 'РћС‚РІРµС‚РёС‚СЊ РЅР° РІР°РєР°РЅСЃРёСЋ РјРѕРіСѓС‚ С‚РѕР»СЊРєРѕ ...',
                   'value' => 'pro_only',
                   'multiOptions' => array(
-                      'pro_only' => 'Фрилансеры с аккаунтом '.  view_profi() . ' или ' . view_pro(),
-                      //'verify_only' => 'Фрилансеры c верификацией ' . view_verify()
+                      'pro_only' => 'Р¤СЂРёР»Р°РЅСЃРµСЂС‹ СЃ Р°РєРєР°СѓРЅС‚РѕРј '.  view_profi() . ' РёР»Рё ' . view_pro(),
+                      //'verify_only' => 'Р¤СЂРёР»Р°РЅСЃРµСЂС‹ c РІРµСЂРёС„РёРєР°С†РёРµР№ ' . view_verify()
                   )
               ))
             );

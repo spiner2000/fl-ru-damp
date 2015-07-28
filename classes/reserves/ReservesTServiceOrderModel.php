@@ -8,14 +8,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/reserves/ReservesSmail.php");
 
 /**
  * Class ReservesTServiceModel
- * Модель резерва оплаты для заказов ТУ
+ * РњРѕРґРµР»СЊ СЂРµР·РµСЂРІР° РѕРїР»Р°С‚С‹ РґР»СЏ Р·Р°РєР°Р·РѕРІ РўРЈ
  */
 
 class ReservesTServiceOrderModel extends ReservesModel
 {
     const TYPE  = 10;
-    const NUM_FORMAT = "БС#%07d";
-    const BILL_COMM = "За заказ БС#%07d";
+    const NUM_FORMAT = "Р‘РЎ#%07d";
+    const BILL_COMM = "Р—Р° Р·Р°РєР°Р· Р‘РЎ#%07d";
     
     protected $TABLE_TSERVICE_ORDER = 'tservices_orders';
     static public $_TABLE_SRC = 'tservices_orders';
@@ -40,15 +40,15 @@ class ReservesTServiceOrderModel extends ReservesModel
     
    
     static $_reserve_order_status_txt = array(
-        self::ReserveOrderStatus_New            => 'новый',
-        self::ReserveOrderStatus_Negotiation    => 'согласование',
-        self::ReserveOrderStatus_Cancel         => 'отменен',
-        self::ReserveOrderStatus_Reserve        => 'pезервирование',
-        self::ReserveOrderStatus_InWork         => 'в работе',
-        self::ReserveOrderStatus_Done           => 'выполнен',
-        self::ReserveOrderStatus_Arbitrage      => 'арбитраж',
-        self::ReserveOrderStatus_Pay            => 'выплата',
-        self::ReserveOrderStatus_Closed         => 'закрыт'
+        self::ReserveOrderStatus_New            => 'РЅРѕРІС‹Р№',
+        self::ReserveOrderStatus_Negotiation    => 'СЃРѕРіР»Р°СЃРѕРІР°РЅРёРµ',
+        self::ReserveOrderStatus_Cancel         => 'РѕС‚РјРµРЅРµРЅ',
+        self::ReserveOrderStatus_Reserve        => 'pРµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ',
+        self::ReserveOrderStatus_InWork         => 'РІ СЂР°Р±РѕС‚Рµ',
+        self::ReserveOrderStatus_Done           => 'РІС‹РїРѕР»РЅРµРЅ',
+        self::ReserveOrderStatus_Arbitrage      => 'Р°СЂР±РёС‚СЂР°Р¶',
+        self::ReserveOrderStatus_Pay            => 'РІС‹РїР»Р°С‚Р°',
+        self::ReserveOrderStatus_Closed         => 'Р·Р°РєСЂС‹С‚'
     );
 
 
@@ -108,8 +108,8 @@ class ReservesTServiceOrderModel extends ReservesModel
     
     
     /**
-     * Переопределяем вызов формирования счета
-     * для инициализации событий и записи их в историю
+     * РџРµСЂРµРѕРїСЂРµРґРµР»СЏРµРј РІС‹Р·РѕРІ С„РѕСЂРјРёСЂРѕРІР°РЅРёСЏ СЃС‡РµС‚Р°
+     * РґР»СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё СЃРѕР±С‹С‚РёР№ Рё Р·Р°РїРёСЃРё РёС… РІ РёСЃС‚РѕСЂРёСЋ
      * 
      * @param type $options
      * @return type
@@ -123,24 +123,24 @@ class ReservesTServiceOrderModel extends ReservesModel
     
     
     /**
-     * Обрабатываем действия после согласия на БС
+     * РћР±СЂР°Р±Р°С‚С‹РІР°РµРј РґРµР№СЃС‚РІРёСЏ РїРѕСЃР»Рµ СЃРѕРіР»Р°СЃРёСЏ РЅР° Р‘РЎ
      */
     public function afterNewReserve()
     {
         $order = $this->getSrcObject()->getOrderData();
         
-        //Генерируем документы
+        //Р“РµРЅРµСЂРёСЂСѓРµРј РґРѕРєСѓРјРµРЅС‚С‹
         require_once(ABS_PATH . '/classes/DocGen/DocGenReserves.php');
         $doc = new DocGenReserves($order);
-        //Ставим в очередь на генерацию
-        //договора и соглашения
+        //РЎС‚Р°РІРёРј РІ РѕС‡РµСЂРµРґСЊ РЅР° РіРµРЅРµСЂР°С†РёСЋ
+        //РґРѕРіРѕРІРѕСЂР° Рё СЃРѕРіР»Р°С€РµРЅРёСЏ
         $doc->generateOffers();
     }
 
 
 
     /**
-     * Переопределяем события перед сменой статуса
+     * РџРµСЂРµРѕРїСЂРµРґРµР»СЏРµРј СЃРѕР±С‹С‚РёСЏ РїРµСЂРµРґ СЃРјРµРЅРѕР№ СЃС‚Р°С‚СѓСЃР°
      * 
      * @param type $new_status
      * @return boolean
@@ -178,8 +178,8 @@ class ReservesTServiceOrderModel extends ReservesModel
 
 
     /**
-     * Переопределяем события после изменения статуса
-     * резерва оплаты для заказов ТУ
+     * РџРµСЂРµРѕРїСЂРµРґРµР»СЏРµРј СЃРѕР±С‹С‚РёСЏ РїРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ СЃС‚Р°С‚СѓСЃР°
+     * СЂРµР·РµСЂРІР° РѕРїР»Р°С‚С‹ РґР»СЏ Р·Р°РєР°Р·РѕРІ РўРЈ
      * 
      * @param type $new_status
      */
@@ -191,7 +191,7 @@ class ReservesTServiceOrderModel extends ReservesModel
         {
             case self::STATUS_CANCEL:
                 
-                //Отмена заказа заказчиком то отменяем заказ если была попытка зарезервировать
+                //РћС‚РјРµРЅР° Р·Р°РєР°Р·Р° Р·Р°РєР°Р·С‡РёРєРѕРј С‚Рѕ РѕС‚РјРµРЅСЏРµРј Р·Р°РєР°Р· РµСЃР»Рё Р±С‹Р»Р° РїРѕРїС‹С‚РєР° Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°С‚СЊ
                 if ($_SESSION['uid'] == $this->reserve_data['emp_id']) {
                     require_once(ABS_PATH . "/classes/billing.php");
                     $billing = new billing($this->reserve_data['emp_id']);
@@ -211,8 +211,8 @@ class ReservesTServiceOrderModel extends ReservesModel
             
             case self::STATUS_RESERVE:
                 
-                //После успешного резервирования средств 
-                //переводим заказ в статус начала работы
+                //РџРѕСЃР»Рµ СѓСЃРїРµС€РЅРѕРіРѕ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ СЃСЂРµРґСЃС‚РІ 
+                //РїРµСЂРµРІРѕРґРёРј Р·Р°РєР°Р· РІ СЃС‚Р°С‚СѓСЃ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚С‹
                 $src_id = @$this->reserve_data['src_id'];
                 $success = $this->db()->update($this->TABLE_TSERVICE_ORDER, array(
                     'status' => TServiceOrderModel::STATUS_ACCEPT,
@@ -226,7 +226,7 @@ class ReservesTServiceOrderModel extends ReservesModel
                    
                      if ($order) {
                          
-                        //@todo: можно передать просто $this ?
+                        //@todo: РјРѕР¶РЅРѕ РїРµСЂРµРґР°С‚СЊ РїСЂРѕСЃС‚Рѕ $this ?
                         $reserveInstance = ReservesModelFactory::getInstance(ReservesModelFactory::TYPE_TSERVICE_ORDER);
                         if($reserveInstance) {
                             $reserveInstance->setSrcObject($orderModel);
@@ -241,7 +241,7 @@ class ReservesTServiceOrderModel extends ReservesModel
                          $reservesSmail->attributes(array('order' => $order));
                          $reservesSmail->onReserveOrder();
                          
-                         //Генерируем документы
+                         //Р“РµРЅРµСЂРёСЂСѓРµРј РґРѕРєСѓРјРµРЅС‚С‹
                          require_once(ABS_PATH . '/classes/DocGen/DocGenReserves.php');
                          $doc = new DocGenReserves($order);
                          $doc->generateSpecification();
@@ -254,7 +254,7 @@ class ReservesTServiceOrderModel extends ReservesModel
             case self::STATUS_PAYED:
             case self::STATUS_ARBITRAGE:
                 
-                //@todo: генерируем документ когда резерв закрыт после всех выплат
+                //@todo: РіРµРЅРµСЂРёСЂСѓРµРј РґРѕРєСѓРјРµРЅС‚ РєРѕРіРґР° СЂРµР·РµСЂРІ Р·Р°РєСЂС‹С‚ РїРѕСЃР»Рµ РІСЃРµС… РІС‹РїР»Р°С‚
                 $src_id = @$this->reserve_data['src_id'];
                 $orderModel = TServiceOrderModel::model();
                 $order = $orderModel->getShortCard($src_id);
@@ -279,8 +279,8 @@ class ReservesTServiceOrderModel extends ReservesModel
     
     
     /**
-     * Переопределяем обработчик событий после
-     * выплаты исполнителю
+     * РџРµСЂРµРѕРїСЂРµРґРµР»СЏРµРј РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ РїРѕСЃР»Рµ
+     * РІС‹РїР»Р°С‚С‹ РёСЃРїРѕР»РЅРёС‚РµР»СЋ
      * 
      * @param type $new_status
      * @return type
@@ -308,8 +308,8 @@ class ReservesTServiceOrderModel extends ReservesModel
                         $this->getPayoutNDFL(),
                         $this->getPayoutTypeText(true));
                 
-                //Если после успешной выплаты сделка помечена 
-                //как подозрительная то уведомляем
+                //Р•СЃР»Рё РїРѕСЃР»Рµ СѓСЃРїРµС€РЅРѕР№ РІС‹РїР»Р°С‚С‹ СЃРґРµР»РєР° РїРѕРјРµС‡РµРЅР° 
+                //РєР°Рє РїРѕРґРѕР·СЂРёС‚РµР»СЊРЅР°СЏ С‚Рѕ СѓРІРµРґРѕРјР»СЏРµРј
                 if ($this->isFrod()) {
                     $this->getReserveMail()->frodPosible($this->getSrcObject());
                 }
@@ -326,8 +326,8 @@ class ReservesTServiceOrderModel extends ReservesModel
     
     
     /**
-     * Переопределяем обработчик событий после
-     * возврата средств заказчику
+     * РџРµСЂРµРѕРїСЂРµРґРµР»СЏРµРј РѕР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ РїРѕСЃР»Рµ
+     * РІРѕР·РІСЂР°С‚Р° СЃСЂРµРґСЃС‚РІ Р·Р°РєР°Р·С‡РёРєСѓ
      * 
      * @param type $new_status
      * @return type
@@ -420,9 +420,9 @@ class ReservesTServiceOrderModel extends ReservesModel
     }  
     
     /**
-     * Сообщения в заказе до резервирования
-     * @param type $order_id ИД заказа
-     * @param type $date Дата
+     * РЎРѕРѕР±С‰РµРЅРёСЏ РІ Р·Р°РєР°Р·Рµ РґРѕ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ
+     * @param type $order_id РР” Р·Р°РєР°Р·Р°
+     * @param type $date Р”Р°С‚Р°
      */
     public function getReserveMessages($order_id, $date)
     {

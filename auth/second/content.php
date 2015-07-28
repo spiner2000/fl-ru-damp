@@ -20,23 +20,23 @@ if (!defined('IN_STDF')) {
             <td class="b-layout__td">
                 <div class="b-fon b-fon_bg_f2  b-fon_pad_20">
                     <h1 class="b-layout__title b-layout__title_padbot_20">
-                        Авторизация
+                        РђРІС‚РѕСЂРёР·Р°С†РёСЏ
                     </h1>
                     <div class="b-layout__txt b-layout__txt_padbot_20">
                         <?php if ($_2fa_provider > 0): ?>
-                        У вас включена двухэтапная аутентификация, пожалуйста, авторизуйтесь в социальной сети.
+                        РЈ РІР°СЃ РІРєР»СЋС‡РµРЅР° РґРІСѓС…СЌС‚Р°РїРЅР°СЏ Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёСЏ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, Р°РІС‚РѕСЂРёР·СѓР№С‚РµСЃСЊ РІ СЃРѕС†РёР°Р»СЊРЅРѕР№ СЃРµС‚Рё.
                         <?php else: ?>
-                        У вас включена двухэтапная аутентификация, пожалуйста, авторизуйтесь на сайте.    
+                        РЈ РІР°СЃ РІРєР»СЋС‡РµРЅР° РґРІСѓС…СЌС‚Р°РїРЅР°СЏ Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёСЏ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, Р°РІС‚РѕСЂРёР·СѓР№С‚РµСЃСЊ РЅР° СЃР°Р№С‚Рµ.    
                         <?php endif; ?>
                     </div>
                     <?php if ($_2fa_provider > 0): ?>
                     <div class="b-layout__txt">
                         <?php if($_2fa_provider == OpauthModel::TYPE_VK): ?>
-                        <a href="/auth/?param=vkontakte" class="b-auth_btn b-auth_btn_flat b-auth_btn_vk b-auth_btn_h40">ВКонтакте</a>
+                        <a href="/auth/?param=vkontakte" class="b-auth_btn b-auth_btn_flat b-auth_btn_vk b-auth_btn_h40">Р’РљРѕРЅС‚Р°РєС‚Рµ</a>
                         <?php elseif($_2fa_provider == OpauthModel::TYPE_FACEBOOK): ?>
                         <a href="/auth/?param=facebook" class="b-auth_btn b-auth_btn_flat b-auth_btn_facebook b-auth_btn_h40">Facebook</a>
                         <?php else: ?>
-                        <a href="/auth/?param=odnoklassniki" class="b-auth_btn b-auth_btn_flat b-auth_btn_odnoklassniki b-auth_btn_h40">Одноклассники</a>
+                        <a href="/auth/?param=odnoklassniki" class="b-auth_btn b-auth_btn_flat b-auth_btn_odnoklassniki b-auth_btn_h40">РћРґРЅРѕРєР»Р°СЃСЃРЅРёРєРё</a>
                         <?php endif; ?>
                     </div>
                     <?php else: ?>
@@ -53,7 +53,7 @@ if (!defined('IN_STDF')) {
                                     <tr class="b-layout__tr">
                                         <td class="b-layout__td b-layout__td_width_120">
                                             <label class="b-layout__txt b-layout__txt_block b-layout__txt_nowrap b-layout__txt_lineheight_1" for="loginEmail">
-                                                Логин, телефон&#160;<br/>или e-mail
+                                                Р›РѕРіРёРЅ, С‚РµР»РµС„РѕРЅ&#160;<br/>РёР»Рё e-mail
                                             </label>
                                         </td>
                                         <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_width_280">
@@ -69,7 +69,7 @@ if (!defined('IN_STDF')) {
                                     <tr class="b-layout__tr">
                                         <td class="b-layout__td b-layout__txt_nowrap b-layout__td_width_120">
                                                 <label class="b-layout__txt b-layout__txt_block b-layout__txt_padtop_5" for="pass">
-                                                    Пароль
+                                                    РџР°СЂРѕР»СЊ
                                                 </label>
                                         </td>
 
@@ -84,7 +84,7 @@ if (!defined('IN_STDF')) {
                                             <div class="b-check b-check_padtop_10">
                                                 <input id="rem" class="b-check__input" name="autologin" type="checkbox" value="1" />
                                                 <label for="rem" class="b-check__label b-check__label_ptsans_fs_11">
-                                                    Запомнить меня
+                                                    Р—Р°РїРѕРјРЅРёС‚СЊ РјРµРЅСЏ
                                                 </label>
                                             </div>                            
                                         </td>
@@ -95,8 +95,8 @@ if (!defined('IN_STDF')) {
                                         <td class="b-layout__td b-layout__td_width_120"></td>
                                         <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_width_280">
                                             <div class="b-buttons">
-                                                <button class="b-button b-button_flat b-button_flat_green" id="send_btn" onclick="yaCounter6051055reachGoal('avtorizacia'); return true;" type="submit">Войти</button> &#160;&#160;&#160;
-                                                <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_15 b-layout__txt_inline-block">или <a class="b-layout__link" href="/remind/">восстановить пароль</a></div>
+                                                <button class="b-button b-button_flat b-button_flat_green" id="send_btn" onclick="yaCounter6051055reachGoal('avtorizacia'); return true;" type="submit">Р’РѕР№С‚Рё</button> &#160;&#160;&#160;
+                                                <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_15 b-layout__txt_inline-block">РёР»Рё <a class="b-layout__link" href="/remind/">РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїР°СЂРѕР»СЊ</a></div>
                                             </div>
                                         </td>
                                         <td class="b-layout__td">&#160;</td>
@@ -109,7 +109,7 @@ if (!defined('IN_STDF')) {
                 
                 <?php if ($_2fa_provider == 0): ?>
                 <div class="b-layout__txt b-layout__txt_padtop_15">
-                    Номер телефона указывается вместе с кодом страны (в формате +7..., +380... и т.д.)
+                    РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° СѓРєР°Р·С‹РІР°РµС‚СЃСЏ РІРјРµСЃС‚Рµ СЃ РєРѕРґРѕРј СЃС‚СЂР°РЅС‹ (РІ С„РѕСЂРјР°С‚Рµ +7..., +380... Рё С‚.Рґ.)
                 </div>
                 <?php endif; ?>
                 

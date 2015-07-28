@@ -1,17 +1,17 @@
-<h2 class="b-layout__title b-layout__title_padbot_20 b-layout__title_padtop_65">История этапа &#160;&#160;&#160;
+<h2 class="b-layout__title b-layout__title_padbot_20 b-layout__title_padtop_65">РСЃС‚РѕСЂРёСЏ СЌС‚Р°РїР° &#160;&#160;&#160;
     
      <div class="b-filter">
         <div class="b-filter__body">
-            <a class="b-txt__lnk b-txt__lnk_dot_0f71c8 b-txt__lnk_inline-block b-txt__lnk_fs_15 b-filter__sbr_order" href="javascript:void(0)">Последние сообщения <?= $stage->orders == 'DESC' ? 'сверху' : 'снизу'?></a> <span class="b-filter__arrow b-filter__arrow_0f71c8 b-filter__arrow_margtop_6"></span>
+            <a class="b-txt__lnk b-txt__lnk_dot_0f71c8 b-txt__lnk_inline-block b-txt__lnk_fs_15 b-filter__sbr_order" href="javascript:void(0)">РџРѕСЃР»РµРґРЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ <?= $stage->orders == 'DESC' ? 'СЃРІРµСЂС…Сѓ' : 'СЃРЅРёР·Сѓ'?></a> <span class="b-filter__arrow b-filter__arrow_0f71c8 b-filter__arrow_margtop_6"></span>
         </div>
         <div class="b-shadow b-shadow_marg_-5_-11 b-filter__toggle b-filter__toggle_hide">
                             <div class="b-shadow__body b-shadow__body_pad_10 b-shadow__body_bg_fff b-shadow_overflow_hidden">
                                 <ul class="b-filter__list">
                                     <li class="b-filter__item b-filter__item_padbot_10 b-filter__item_lineheight_15 sbr_message_option" data-type="asc">
-                                        <a class="b-txt__lnk b-txt__lnk_fs_15 b-txt__lnk_dot_0f71c8 b-txt__lnk_inline-block" href="javascript:void(0)">Последние сообщения снизу</a> <?= $stage->orders == 'ASC' ? '<span class="b-filter__marker b-filter__marker_top_6 b-filter__marker_galka"></span>' : ''?>
+                                        <a class="b-txt__lnk b-txt__lnk_fs_15 b-txt__lnk_dot_0f71c8 b-txt__lnk_inline-block" href="javascript:void(0)">РџРѕСЃР»РµРґРЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ СЃРЅРёР·Сѓ</a> <?= $stage->orders == 'ASC' ? '<span class="b-filter__marker b-filter__marker_top_6 b-filter__marker_galka"></span>' : ''?>
                                     </li>
                                     <li class="b-filter__item b-filter__item_lineheight_15 sbr_message_option" data-type="descr">
-                                        <a class="b-txt__lnk b-txt__lnk_fs_15 b-txt__lnk_dot_0f71c8 b-txt__lnk_inline-block" href="javascript:void(0)">Последние сообщения сверху</a> <?= $stage->orders == 'DESC' ? '<span class="b-filter__marker b-filter__marker_top_6 b-filter__marker_galka"></span>' : ''?>
+                                        <a class="b-txt__lnk b-txt__lnk_fs_15 b-txt__lnk_dot_0f71c8 b-txt__lnk_inline-block" href="javascript:void(0)">РџРѕСЃР»РµРґРЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ СЃРІРµСЂС…Сѓ</a> <?= $stage->orders == 'DESC' ? '<span class="b-filter__marker b-filter__marker_top_6 b-filter__marker_galka"></span>' : ''?>
                                     </li>
                                 </ul>
                             </div>
@@ -51,11 +51,11 @@ if($stage->orders == 'DESC') {
 }
 
 if ($sbr->isEmp() && $stage->data['tagCust'] == 1) {
-    // ищем запись о завершении этапа
+    // РёС‰РµРј Р·Р°РїРёСЃСЊ Рѕ Р·Р°РІРµСЂС€РµРЅРёРё СЌС‚Р°РїР°
     $eventOffset = 0;
     foreach ($stage->history as $histKey => $hist) {
         $eventOffset++;
-        // добавляем новую запись: справочная информация о документах по сделке
+        // РґРѕР±Р°РІР»СЏРµРј РЅРѕРІСѓСЋ Р·Р°РїРёСЃСЊ: СЃРїСЂР°РІРѕС‡РЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РґРѕРєСѓРјРµРЅС‚Р°С… РїРѕ СЃРґРµР»РєРµ
         if ($hist['sbr_stages.COMPLETED']) {
             $newEvent = array(
                 'sbr_stages.DOCS_NOTE' => array(
@@ -77,7 +77,7 @@ if ($sbr->isEmp() && $stage->data['tagCust'] == 1) {
 
 $started_work_view = 0;
 foreach($stage->history as $xact => $history) { $current = current($history);
-    if( empty(sbr_notification::$history[$current['abbr']]) ) continue; // Если нет названия в истории то не выводим.
+    if( empty(sbr_notification::$history[$current['abbr']]) ) continue; // Р•СЃР»Рё РЅРµС‚ РЅР°Р·РІР°РЅРёСЏ РІ РёСЃС‚РѕСЂРёРё С‚Рѕ РЅРµ РІС‹РІРѕРґРёРј.
     if($reopen && $current['abbr'] == 'sbr.OPEN') $current['abbr'] = 'sbr.REOPEN';
     if($current['abbr'] == 'sbr_stages.STARTED_WORK') $started_work_view++;
     if($current['abbr'] == 'sbr_stages.EMP_MONEY_REFUNDED' && $sbr->isFrl()) continue;
@@ -87,14 +87,14 @@ foreach($stage->history as $xact => $history) { $current = current($history);
         $feedback = $stage->getFeedback($stage->data['frl_feedback_id']);
         $uniq_id = $feedback['id'] * 2 + 1; // @see sbr_meta::getUserFeedbacks();
         $current['additional']  = '<a class="b-post__link b-post__link_color_a0763b" href="/users/'.$stage->sbr->data['emp_login'].'/opinions/#p_'.$uniq_id.'" target="_blank">';
-        $current['additional'] .= ( $feedback['rating'] == 1 ? 'положительный ' : ($feedback['rating'] == 0 ? 'нейтральный' : 'отрицательный' ) ) . ' отзыв';
+        $current['additional'] .= ( $feedback['rating'] == 1 ? 'РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№ ' : ($feedback['rating'] == 0 ? 'РЅРµР№С‚СЂР°Р»СЊРЅС‹Р№' : 'РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№' ) ) . ' РѕС‚Р·С‹РІ';
         $current['additional'] .= '</a>';
     }
     if($current['abbr'] == 'sbr_stages.EMP_FEEDBACK') {
         $feedback = $stage->getFeedback($stage->data['emp_feedback_id']);
         $uniq_id = $feedback['id'] * 2 + 1;
         $current['additional']  = '<a class="b-post__link b-post__link_color_a0763b" href="/users/'.$stage->sbr->data['frl_login'].'/opinions/#p_'.$uniq_id.'" target="_blank">';
-        $current['additional'] .= ( $feedback['rating'] == 1 ? 'положительный' : ($feedback['rating'] == 0 ? 'нейтральный' : 'отрицательный' ) ) . ' отзыв';
+        $current['additional'] .= ( $feedback['rating'] == 1 ? 'РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№' : ($feedback['rating'] == 0 ? 'РЅРµР№С‚СЂР°Р»СЊРЅС‹Р№' : 'РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№' ) ) . ' РѕС‚Р·С‹РІ';
         $current['additional'] .= '</a>';
     }
     
@@ -114,16 +114,16 @@ foreach($stage->history as $xact => $history) { $current = current($history);
    if($current['abbr'] == 'sbr_stages.EMP_MONEY_REFUNDED') {
        $type_payment = $stage->sbr->scheme_type == sbr::SCHEME_LC ? pskb::$exrates_map[$stage->sbr->data['ps_emp']] : ( $stage->sbr->cost_sys == exrates::FM ? $stage->sbr->cost_sys : null );
        if($stage->data['lc_state'] == pskb::PAYOUT_ERR) {
-           $type_payment = exrates::WEBM; // Если происходит ошибка выплаты деньги всегда идут на веб-кошелек
+           $type_payment = exrates::WEBM; // Р•СЃР»Рё РїСЂРѕРёСЃС…РѕРґРёС‚ РѕС€РёР±РєР° РІС‹РїР»Р°С‚С‹ РґРµРЅСЊРіРё РІСЃРµРіРґР° РёРґСѓС‚ РЅР° РІРµР±-РєРѕС€РµР»РµРє
        }
-       $current['additional'] = 'На ' . sbr_meta::view_type_payment($type_payment, ($type_payment == exrates::CARD ? 'вашу ' : 'ваш ')) . ' были переведены ' . sbr_meta::view_cost($stage->getPayoutSum(sbr::EMP), $stage->sbr->cost_sys) . ' Зачисление денежных средств произведено ' . date('d.m.Y в H:i', strtotime($stage->data['lc_date'])) . ' согласно пункту 6.7 <a class="b-layout__link" href="' . $sbr->getDocumentLink('contract') . '">Договора</a>.';
+       $current['additional'] = 'РќР° ' . sbr_meta::view_type_payment($type_payment, ($type_payment == exrates::CARD ? 'РІР°С€Сѓ ' : 'РІР°С€ ')) . ' Р±С‹Р»Рё РїРµСЂРµРІРµРґРµРЅС‹ ' . sbr_meta::view_cost($stage->getPayoutSum(sbr::EMP), $stage->sbr->cost_sys) . ' Р—Р°С‡РёСЃР»РµРЅРёРµ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ РїСЂРѕРёР·РІРµРґРµРЅРѕ ' . date('d.m.Y РІ H:i', strtotime($stage->data['lc_date'])) . ' СЃРѕРіР»Р°СЃРЅРѕ РїСѓРЅРєС‚Сѓ 6.7 <a class="b-layout__link" href="' . $sbr->getDocumentLink('contract') . '">Р”РѕРіРѕРІРѕСЂР°</a>.';
    }
    if($current['abbr'] == 'sbr_stages.MONEY_PAID') {
        $type_payment = $stage->sbr->scheme_type == sbr::SCHEME_LC ? pskb::$exrates_map[$stage->data['ps_frl']] : ( $stage->type_payment == exrates::FM ? $stage->type_payment : null );
        if($stage->data['lc_state'] == pskb::PAYOUT_ERR) {
-           $type_payment = exrates::WEBM; // Если происходит ошибка выплаты деньги всегда идут на веб-кошелек
+           $type_payment = exrates::WEBM; // Р•СЃР»Рё РїСЂРѕРёСЃС…РѕРґРёС‚ РѕС€РёР±РєР° РІС‹РїР»Р°С‚С‹ РґРµРЅСЊРіРё РІСЃРµРіРґР° РёРґСѓС‚ РЅР° РІРµР±-РєРѕС€РµР»РµРє
        }
-       $current['additional'] = 'На ' . sbr_meta::view_type_payment($type_payment, ($type_payment == exrates::CARD ? 'вашу ' : 'ваш ') ) . ' были переведены ' . sbr_meta::view_cost($stage->getPayoutSum(sbr::FRL, $type_payment ), $stage->type_payment == exrates::FM ? $stage->type_payment : $stage->sbr->cost_sys) . ' Зачисление денежных средств произведено '. date('d.m.Y в H:i', strtotime($stage->data['lc_date'])) . ' согласно пункту 6.7 <a class="b-layout__link" href="' . $sbr->getDocumentLink('contract') . '">Договора</a>.';
+       $current['additional'] = 'РќР° ' . sbr_meta::view_type_payment($type_payment, ($type_payment == exrates::CARD ? 'РІР°С€Сѓ ' : 'РІР°С€ ') ) . ' Р±С‹Р»Рё РїРµСЂРµРІРµРґРµРЅС‹ ' . sbr_meta::view_cost($stage->getPayoutSum(sbr::FRL, $type_payment ), $stage->type_payment == exrates::FM ? $stage->type_payment : $stage->sbr->cost_sys) . ' Р—Р°С‡РёСЃР»РµРЅРёРµ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ РїСЂРѕРёР·РІРµРґРµРЅРѕ '. date('d.m.Y РІ H:i', strtotime($stage->data['lc_date'])) . ' СЃРѕРіР»Р°СЃРЅРѕ РїСѓРЅРєС‚Сѓ 6.7 <a class="b-layout__link" href="' . $sbr->getDocumentLink('contract') . '">Р”РѕРіРѕРІРѕСЂР°</a>.';
    }
    
    if($current['abbr'] == 'sbr_stages.STATUS_MODIFIED' && $current['new_val'] == sbr_stages::STATUS_COMPLETED) {
@@ -131,7 +131,7 @@ foreach($stage->history as $xact => $history) { $current = current($history);
    }
    
    if($current['abbr'] == 'sbr_stages.REFUSE' && $current['new_val'] == '') {
-       $current['additional'] =  $sbr->isEmp() ? " и предпочел не указывать причину" : " и предпочли не указывать причину";
+       $current['additional'] =  $sbr->isEmp() ? " Рё РїСЂРµРґРїРѕС‡РµР» РЅРµ СѓРєР°Р·С‹РІР°С‚СЊ РїСЂРёС‡РёРЅСѓ" : " Рё РїСЂРµРґРїРѕС‡Р»Рё РЅРµ СѓРєР°Р·С‹РІР°С‚СЊ РїСЂРёС‡РёРЅСѓ";
    }
    
    if($current['abbr'] == 'sbr_stages.OVERTIME') {
@@ -144,37 +144,37 @@ foreach($stage->history as $xact => $history) { $current = current($history);
    if($current['abbr'] == 'sbr.AGREE' && ( $sbr->isFrl() || $sbr->isAdmin() || $sbr->isAdminFinance() ) ) {
        $type_payment = $stage->sbr->scheme_type == sbr::SCHEME_LC ? pskb::$exrates_map[$stage->data['ps_frl']] : $stage->type_payment ;
        if ($stage->data['ps_frl'] == pskb::WW) {
-           $current['additional'] = '. Способ получения гонорара — <a class="b-post__link" href="https://webpay.pscb.ru/login/auth">Веб-кошелек</a> (№ ' . $sbr->data['numPerf'] . ')';
+           $current['additional'] = '. РЎРїРѕСЃРѕР± РїРѕР»СѓС‡РµРЅРёСЏ РіРѕРЅРѕСЂР°СЂР° вЂ” <a class="b-post__link" href="https://webpay.pscb.ru/login/auth">Р’РµР±-РєРѕС€РµР»РµРє</a> (в„– ' . $sbr->data['numPerf'] . ')';
        } else {
-           $current['additional'] = ', выбрав вывод ' . sbr_meta::view_type_payment($type_payment, 'на ');
+           $current['additional'] = ', РІС‹Р±СЂР°РІ РІС‹РІРѕРґ ' . sbr_meta::view_type_payment($type_payment, 'РЅР° ');
        }
    }
    
     if($current['abbr'] == 'sbr.RESERVE' && ( $sbr->isEmp() || $sbr->isAdmin() || $sbr->isAdminFinance() )) {
        $type_payment = $stage->sbr->scheme_type == sbr::SCHEME_LC ? pskb::$exrates_map[$stage->sbr->data['ps_emp']] : $stage->sbr->cost_sys;
-       $current['additional'] = ' через ' . sbr_meta::view_type_payment($type_payment);
+       $current['additional'] = ' С‡РµСЂРµР· ' . sbr_meta::view_type_payment($type_payment);
    }
    
     if ($current['abbr'] == 'sbr_stages.ARB_RESOLVED') {
-        // пункт договора в зависимости от решения арбитража
-        if ($stage->isByConsent() && $stage->arbitrage['frl_percent'] == 0) { // возврат 100% по договоренности
+        // РїСѓРЅРєС‚ РґРѕРіРѕРІРѕСЂР° РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЂРµС€РµРЅРёСЏ Р°СЂР±РёС‚СЂР°Р¶Р°
+        if ($stage->isByConsent() && $stage->arbitrage['frl_percent'] == 0) { // РІРѕР·РІСЂР°С‚ 100% РїРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё
             $current['additional'] = '9.5.2';
-        } elseif (!$stage->isByConsent() && $stage->arbitrage['frl_percent'] == 0) { // возврат 100% решением арбитража
+        } elseif (!$stage->isByConsent() && $stage->arbitrage['frl_percent'] == 0) { // РІРѕР·РІСЂР°С‚ 100% СЂРµС€РµРЅРёРµРј Р°СЂР±РёС‚СЂР°Р¶Р°
             $current['additional'] = '9.9.3';
-        } elseif (!$stage->isByConsent() && $stage->arbitrage['frl_percent'] == 1) { // выплата 100% решением арбитража
+        } elseif (!$stage->isByConsent() && $stage->arbitrage['frl_percent'] == 1) { // РІС‹РїР»Р°С‚Р° 100% СЂРµС€РµРЅРёРµРј Р°СЂР±РёС‚СЂР°Р¶Р°
             $current['additional'] = '9.9.1';
-        } elseif ($stage->isByAward()) { // разделение по решению арбитража
+        } elseif ($stage->isByAward()) { // СЂР°Р·РґРµР»РµРЅРёРµ РїРѕ СЂРµС€РµРЅРёСЋ Р°СЂР±РёС‚СЂР°Р¶Р°
             $current['additional'] = '9.9.2';
-        } else { // остается только выплата 100% или разделение по договоренности
+        } else { // РѕСЃС‚Р°РµС‚СЃСЏ С‚РѕР»СЊРєРѕ РІС‹РїР»Р°С‚Р° 100% РёР»Рё СЂР°Р·РґРµР»РµРЅРёРµ РїРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё
             $current['additional'] = '9.5.1';
         }
     }
 ?>
 
 <?
-// должно ли событие подсветиться зеленым? учитывается также источник события, то есть не подсвечиваются события которые исходят от просматривающего пользователя
+// РґРѕР»Р¶РЅРѕ Р»Рё СЃРѕР±С‹С‚РёРµ РїРѕРґСЃРІРµС‚РёС‚СЊСЃСЏ Р·РµР»РµРЅС‹Рј? СѓС‡РёС‚С‹РІР°РµС‚СЃСЏ С‚Р°РєР¶Рµ РёСЃС‚РѕС‡РЅРёРє СЃРѕР±С‹С‚РёСЏ, С‚Рѕ РµСЃС‚СЊ РЅРµ РїРѕРґСЃРІРµС‡РёРІР°СЋС‚СЃСЏ СЃРѕР±С‹С‚РёСЏ РєРѕС‚РѕСЂС‹Рµ РёСЃС…РѕРґСЏС‚ РѕС‚ РїСЂРѕСЃРјР°С‚СЂРёРІР°СЋС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 $greenEvent = in_array($current['xact_id'], $stage->active_event) && !(($sbr->isFrl() && $current['own_role'] == 1) || ($sbr->isEmp() && $current['own_role'] == 2));
-// @todo логика верстки не самодостаточна. данные дивы нужны для выделения, хотя можно было сверстать все в одном диве + добавить 1 класс для измненения цвета фона
+// @todo Р»РѕРіРёРєР° РІРµСЂСЃС‚РєРё РЅРµ СЃР°РјРѕРґРѕСЃС‚Р°С‚РѕС‡РЅР°. РґР°РЅРЅС‹Рµ РґРёРІС‹ РЅСѓР¶РЅС‹ РґР»СЏ РІС‹РґРµР»РµРЅРёСЏ, С…РѕС‚СЏ РјРѕР¶РЅРѕ Р±С‹Р»Рѕ СЃРІРµСЂСЃС‚Р°С‚СЊ РІСЃРµ РІ РѕРґРЅРѕРј РґРёРІРµ + РґРѕР±Р°РІРёС‚СЊ 1 РєР»Р°СЃСЃ РґР»СЏ РёР·РјРЅРµРЅРµРЅРёСЏ С†РІРµС‚Р° С„РѕРЅР°
 if ($greenEvent) { ?>
 <div class="b-fon b-fon_marg_-15_-10 b-fon_padbot_30">
     <div class="b-fon__body b-fon__body_pad_5_10_10 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf" id="event_react_<?= $current['xact_id']?>">
@@ -185,10 +185,10 @@ if ($greenEvent) { ?>
                     <div class="b-post">
                         <div class="b-post__body">
                             <div class="b-post__avatar b-post__avatar_padtop_4 b-post__avatar_margright_10 absolute">
-                                <? if ($current['abbr'] == "sbr_stages.COMMENT") { // аватарка для комментариея
-                                    if ($current['foronly_role'] == 1) { // фрилансер ?>
+                                <? if ($current['abbr'] == "sbr_stages.COMMENT") { // Р°РІР°С‚Р°СЂРєР° РґР»СЏ РєРѕРјРјРµРЅС‚Р°СЂРёРµСЏ
+                                    if ($current['foronly_role'] == 1) { // С„СЂРёР»Р°РЅСЃРµСЂ ?>
                                         <a class="b-post__link" href="/users/<?= $sbr->data['frl_login']?>/"><?=view_avatar($sbr->data['frl_login'], $sbr->data['frl_photo'], 1, 1, $cls="b-post__userpic")?></a>
-                                    <? } else { // работодатель ?>
+                                    <? } else { // СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ ?>
                                         <a class="b-post__link" href="/users/<?= $sbr->data['emp_login']?>/"><?=view_avatar($sbr->data['emp_login'], $sbr->data['emp_photo'], 1, 1, $cls="b-post__userpic")?></a>
                                     <? }
                                 } else if($current['abbr'] == "sbr_stages.OVERTIME") { ?>
@@ -229,7 +229,7 @@ if ($greenEvent) { ?>
                                     <? foreach($attach as $src) {?>
                                     <tr class="b-layout__tr">
                                         <td class="b-layout__middle b-layout__middle_padbot_5"><div class="b-layout__txt"><i class="b-icon b-icon_attach_<?=getICOFile(CFile::getext($src['name']))?>"></i> <a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?= $src['path'] . $src['name'] ?>" target="_blank"><?= $src['orig_name']?></a>, <?= ConvertBtoMB($src['size'])?></div></td>
-                                        <td class="b-layout__right b-layout__right_padleft_20 b-layout__right_padbot_5"><div class="b-layout__txt"><a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?= $src['path'] . $src['name'] ?>" target="_blank">Скачать</a></div></td>
+                                        <td class="b-layout__right b-layout__right_padleft_20 b-layout__right_padbot_5"><div class="b-layout__txt"><a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?= $src['path'] . $src['name'] ?>" target="_blank">РЎРєР°С‡Р°С‚СЊ</a></div></td>
                                     </tr>
                                     <? }//foreach?>
                                 </table>
@@ -238,14 +238,14 @@ if ($greenEvent) { ?>
                                     $is_run_comment = true;
                                 }
                                 } elseif($current['abbr'] == 'sbr_stages.ARB_COMMENT') {//if?>
-                                <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_bold">Менеджер арбитража</div>
+                                <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_bold">РњРµРЅРµРґР¶РµСЂ Р°СЂР±РёС‚СЂР°Р¶Р°</div>
                                 <div class="b-post__txt b-post__txt_fontsize_15"><?= reformat2($current['msg'], 40);?></div>
                                 <? if($current['src_id'] > 0) { $attach = $stage->getMsgAttach($current['own_id']);?>
                                 <table class="b-layout__table b-layout__table_margtop_10" cellpadding="0" cellspacing="0" border="0">
                                     <? foreach($attach as $src) {?>
                                     <tr class="b-layout__tr">
                                         <td class="b-layout__middle b-layout__middle_padbot_5"><div class="b-layout__txt"><i class="b-icon b-icon_attach_<?=getICOFile(CFile::getext($src['name']))?>"></i> <a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?= $src['path'] . $src['name'] ?>" target="_blank"><?= $src['orig_name']?></a>, <?= ConvertBtoMB($src['size'])?></div></td>
-                                        <td class="b-layout__right b-layout__right_padleft_20 b-layout__right_padbot_5"><div class="b-layout__txt"><a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?= $src['path'] . $src['name'] ?>" target="_blank">Скачать</a></div></td>
+                                        <td class="b-layout__right b-layout__right_padleft_20 b-layout__right_padbot_5"><div class="b-layout__txt"><a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?= $src['path'] . $src['name'] ?>" target="_blank">РЎРєР°С‡Р°С‚СЊ</a></div></td>
                                     </tr>
                                     <? }//foreach?>
                                 </table>
@@ -262,7 +262,7 @@ if ($greenEvent) { ?>
                                         $current_abbr = $current['abbr'];
                                     }
                                     $historyName = sbr_notification::getHistoryName($current_abbr, ( $sbr->isEmp() ? 0 : ( $sbr->isFrl() ? 1 : 2 ) ), $current['additional']);
-                                    // для определенных типов уведомлений подставляем ссылку на договор
+                                    // РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРЅС‹С… С‚РёРїРѕРІ СѓРІРµРґРѕРјР»РµРЅРёР№ РїРѕРґСЃС‚Р°РІР»СЏРµРј СЃСЃС‹Р»РєСѓ РЅР° РґРѕРіРѕРІРѕСЂ
                                     if (in_array($current['abbr'], array('sbr.COST_SYS_MODIFIED', 'sbr_stages.COST_MODIFIED', 'sbr_stages.TZ_MODIFIED', 'sbr_stages.STATUS_MODIFIED', 'sbr_stages.STATUS_MODIFIED_OK', 'sbr_stages.WORKTIME_MODIFIED', 'sbr_stages.EMP_ARB', 'sbr_stages.FRL_ARB', 'sbr_stages.ARB_RESOLVED'))) {
                                         $contractDocLink = $sbr->getDocumentLink('contract');
                                         $historyName = str_replace('link_offer_lc', $contractDocLink, $historyName);
@@ -281,11 +281,11 @@ if ($greenEvent) { ?>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-post__time b-post__time_float_right">
-                        <a class="b-post__anchor b-post__anchor_margright_10" href="#n_<?=$xact?>" onclick="setTimeout('JSScroll($(\'evn_<?= $xact?>\'));', 100);"></a><?= date('d.m.Y в H:i', strtotime($current['xtime'])); ?>
+                        <a class="b-post__anchor b-post__anchor_margright_10" href="#n_<?=$xact?>" onclick="setTimeout('JSScroll($(\'evn_<?= $xact?>\'));', 100);"></a><?= date('d.m.Y РІ H:i', strtotime($current['xtime'])); ?>
                     </div>
                     <?php if(in_array($current['xact_id'], $stage->active_event) && $sbr->isAdmin()) { ?>
                     <div class="b-post_clear_both b-post_float_right b-post_padtop_10" id="adm_react_link_<?= $current['xact_id'];?>">
-                        <a href="javascript:void(0)" onclick="if(confirm('Вы действительно хотите завершить данное событие?')) xajax_aCompleteEvent('<?=$current['xact_id']; ?>')" class="b-layout__link b-layout__link_color_ee1d16 b-layout__link_bordbot_dot_ee1d16">Завершить</a>
+                        <a href="javascript:void(0)" onclick="if(confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ Р·Р°РІРµСЂС€РёС‚СЊ РґР°РЅРЅРѕРµ СЃРѕР±С‹С‚РёРµ?')) xajax_aCompleteEvent('<?=$current['xact_id']; ?>')" class="b-layout__link b-layout__link_color_ee1d16 b-layout__link_bordbot_dot_ee1d16">Р—Р°РІРµСЂС€РёС‚СЊ</a>
                     </div>
                     <?php }?>
                 </td>

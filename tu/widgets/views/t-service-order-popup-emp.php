@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Попап при заказе ТУ для заказчика
+ * РџРѕРїР°Рї РїСЂРё Р·Р°РєР°Р·Рµ РўРЈ РґР»СЏ Р·Р°РєР°Р·С‡РёРєР°
  */
 
 $title = reformat($title, 30, 0, 1);
 $price = tservices_helper::cost_format($price,true, false, false);
-$days = $days . ' ' . ending($days, 'день', 'дня', 'дней');
+$days = $days . ' ' . ending($days, 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№');
 
 $show_popup = (isset($_POST['popup']));
 
@@ -14,25 +14,25 @@ $show_popup = (isset($_POST['popup']));
 <div id="tservices_orders_status_popup" class="b-shadow b-shadow_center b-shadow_width_520 <?php if(!$show_popup){ ?>b-shadow_hide <?php } ?>b-shadow__quick" style="display:block;">
     <div class="b-shadow__body b-shadow__body_pad_15_20">
         <h2 class="b-layout__title">
-            Заказ услуги
+            Р—Р°РєР°Р· СѓСЃР»СѓРіРё
         </h2>
         <div class="b-layout__txt b-layout__txt_padbot_10">
-            Вы заказываете у исполнителя <b><?=$frl_fullname?></b><br/> 
-            услугу &laquo;<b><?=$title?></b>&raquo;
+            Р’С‹ Р·Р°РєР°Р·С‹РІР°РµС‚Рµ Сѓ РёСЃРїРѕР»РЅРёС‚РµР»СЏ <b><?=$frl_fullname?></b><br/> 
+            СѓСЃР»СѓРіСѓ &laquo;<b><?=$title?></b>&raquo;
             <br/>
-            на сумму <b><span class="__tservice_price2"><?=$price?></span></b> со сроком выполнения <b><span class="__tservice_days"><?=$days?></span></b>.
+            РЅР° СЃСѓРјРјСѓ <b><span class="__tservice_price2"><?=$price?></span></b> СЃРѕ СЃСЂРѕРєРѕРј РІС‹РїРѕР»РЅРµРЅРёСЏ <b><span class="__tservice_days"><?=$days?></span></b>.
             <br/>
-            Не забудьте согласовать с исполнителем все условия сотрудничества и порядок оплаты выполненной работы. 
+            РќРµ Р·Р°Р±СѓРґСЊС‚Рµ СЃРѕРіР»Р°СЃРѕРІР°С‚СЊ СЃ РёСЃРїРѕР»РЅРёС‚РµР»РµРј РІСЃРµ СѓСЃР»РѕРІРёСЏ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР° Рё РїРѕСЂСЏРґРѕРє РѕРїР»Р°С‚С‹ РІС‹РїРѕР»РЅРµРЅРЅРѕР№ СЂР°Р±РѕС‚С‹. 
             <br/>
             <br/>
-            Исполнитель будет уведомлен о заказе, и как только подтвердит его, начнется выполнение работы.
+            РСЃРїРѕР»РЅРёС‚РµР»СЊ Р±СѓРґРµС‚ СѓРІРµРґРѕРјР»РµРЅ Рѕ Р·Р°РєР°Р·Рµ, Рё РєР°Рє С‚РѕР»СЊРєРѕ РїРѕРґС‚РІРµСЂРґРёС‚ РµРіРѕ, РЅР°С‡РЅРµС‚СЃСЏ РІС‹РїРѕР»РЅРµРЅРёРµ СЂР°Р±РѕС‚С‹.
         </div>
         <div class="b-buttons b-buttons_padtop_20">
             <a href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green" onclick="yaCounter6051055.reachGoal('zakaz_tu'); TServices.onSendToCbr(this, '__form_tservice');">
-                <span class="__tservices_orders_feedback_submit_label">Создать заказ и перейти в него</span>
+                <span class="__tservices_orders_feedback_submit_label">РЎРѕР·РґР°С‚СЊ Р·Р°РєР°Р· Рё РїРµСЂРµР№С‚Рё РІ РЅРµРіРѕ</span>
             </a>
-            <span class="b-layout__txt b-layout__txt_fontsize_11">&#160; или 
-                <a class="b-layout__link" href="javascript:void(0);" onclick="TServices.closePopup();">пока не заказывать услугу</a>
+            <span class="b-layout__txt b-layout__txt_fontsize_11">&#160; РёР»Рё 
+                <a class="b-layout__link" href="javascript:void(0);" onclick="TServices.closePopup();">РїРѕРєР° РЅРµ Р·Р°РєР°Р·С‹РІР°С‚СЊ СѓСЃР»СѓРіСѓ</a>
             </span>
         </div>
    </div>    

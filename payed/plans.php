@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Вывод списка тарифов ПРО
+ * Р’С‹РІРѕРґ СЃРїРёСЃРєР° С‚Р°СЂРёС„РѕРІ РџР Рћ
  */
 
 ?>
@@ -17,22 +17,22 @@ $list = payed::getPayedPROList($is_emp?'emp':'frl');
 foreach ($list as $key => $pay):
     
     if ($pay['day']):
-        $txt_time = ending($pay['day'], 'день', 'дня', 'дня');
+        $txt_time = ending($pay['day'], 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅСЏ');
         $days = $pay['day'];
         $title = "{$pay['day']} {$txt_time}";
         $value = $pay['day'];
     elseif ($pay['week']):
-        $txt_time = ending($pay['week'], 'неделя', 'недели', 'недель');
+        $txt_time = ending($pay['week'], 'РЅРµРґРµР»СЏ', 'РЅРµРґРµР»Рё', 'РЅРµРґРµР»СЊ');
         $days = $pay['week']*7;
         $title = "{$pay['week']} {$txt_time}";
         $value = $pay['week'];
     else:
         if ($pay['month'] == 12):
-            $txt_time = 'год';
+            $txt_time = 'РіРѕРґ';
             $title = "1 {$txt_time}";
             $value = 1;
         else:   
-            $txt_time = ending($pay['month'], 'месяц', 'месяца', 'месяцев');
+            $txt_time = ending($pay['month'], 'РјРµСЃСЏС†', 'РјРµСЃСЏС†Р°', 'РјРµСЃСЏС†РµРІ');
             $title = "{$pay['month']} {$txt_time}";
             $value = $pay['month'];
         endif;
@@ -40,9 +40,9 @@ foreach ($list as $key => $pay):
     endif;
 
     //$perday = ($days > 0)?round($pay['cost'] / $days):null;
-    //$txt_perday = ending($perday, 'рубль', 'рубля', 'рублей') . " в день";
+    //$txt_perday = ending($perday, 'СЂСѓР±Р»СЊ', 'СЂСѓР±Р»СЏ', 'СЂСѓР±Р»РµР№') . " РІ РґРµРЅСЊ";
     
-    $txt_total = 'руб.';//ending($pay['cost'], 'рубль', 'рубля', 'рублей');// . (($value > 1)?" за {$value} ":" в ") . $txt_time;
+    $txt_total = 'СЂСѓР±.';//ending($pay['cost'], 'СЂСѓР±Р»СЊ', 'СЂСѓР±Р»СЏ', 'СЂСѓР±Р»РµР№');// . (($value > 1)?" Р·Р° {$value} ":" РІ ") . $txt_time;
     
     $old_perday = null;
     if (isset($pay['old_cost'])):
@@ -75,7 +75,7 @@ foreach ($list as $key => $pay):
                 
                 <?php if (isset($pay['sale'])): ?>
                 <div class="b-layout__txt b-layout__txt_sale">
-                    экономия
+                    СЌРєРѕРЅРѕРјРёСЏ
                     <span class="b-layout__txt_sale__persent"><?= $pay['sale'] ?></span>
                 </div>
                 <?php elseif (isset($pay['sale_txt'])): ?>
@@ -87,7 +87,7 @@ foreach ($list as $key => $pay):
                 <div class="b-buttons b-buttons_center b-buttons_padbot_15">
                     <?php if (isset($disabled_pay_button)): ?>
                     <a class="b-button b-button_flat b-button_flat_green b-button_flat_mid b-button_disabled" href="javascript:void(0)">
-                        Купить
+                        РљСѓРїРёС‚СЊ
                     </a>                    
                     <?php else: ?>
                     <a id="is_enough_<?= $pay['opcode']?>" 
@@ -99,7 +99,7 @@ foreach ($list as $key => $pay):
                        <?php if($is_emp): ?>
                        data-ga-event="{ec: 'customer', ea: 'customer_propage_buybutton_clicked',el: '<?= op_codes::getLabel($pay['opcode']) ?>'}"<?php else: ?>
                        data-ga-event="{ec: 'freelancer', ea: 'freelancer_propage_buybutton_clicked',el: '<?= op_codes::getLabel($pay['opcode']) ?>'}"<?php endif; ?>>
-                        Купить
+                        РљСѓРїРёС‚СЊ
                     </a>
                     <?php endif; ?>
                 </div>

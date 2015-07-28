@@ -1,10 +1,10 @@
 <?php
 /**
- * Шаблон попап формы быстрого редактирования комментариев к работе в конкурсе
+ * РЁР°Р±Р»РѕРЅ РїРѕРїР°Рї С„РѕСЂРјС‹ Р±С‹СЃС‚СЂРѕРіРѕ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ Рє СЂР°Р±РѕС‚Рµ РІ РєРѕРЅРєСѓСЂСЃРµ
  * @author Max 'BlackHawk' Yastrembovich
  */
 if ( !defined('IN_STDF') ) { 
-    header("HTTP/1.0 404 Not Found"); // ибо нефиг
+    header("HTTP/1.0 404 Not Found"); // РёР±Рѕ РЅРµС„РёРі
     exit();
 }
 ?>
@@ -20,7 +20,7 @@ if ( !defined('IN_STDF') ) {
 
 <div id="adm_edit_tab_div1">
     <div class="b-form">
-        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_msg">Текст</label>
+        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_msg">РўРµРєСЃС‚</label>
         <div class="b-textarea_inline-block b-textarea_width_550">
             <textarea id="adm_edit_msg_source" style="display:none" cols="50" rows="20"><?=input_ref($msg['msg'])?></textarea>
             <textarea id="adm_edit_msg" name="msg" onfocus="adm_edit_content.hideError('msg')" class="b-textarea__textarea_width_full b-textarea__textarea_height_70" cols="77" rows="5"></textarea>
@@ -30,7 +30,7 @@ if ( !defined('IN_STDF') ) {
             <b class="b-fon__b1"></b>
             <b class="b-fon__b2"></b>
             <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13 ">
-                <span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20" id="adm_edit_err_msg">Поле заполнено некорректно</div>
+                <span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20" id="adm_edit_err_msg">РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ</div>
             </div>
             <b class="b-fon__b2"></b>
             <b class="b-fon__b1"></b>

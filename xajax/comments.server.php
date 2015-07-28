@@ -4,10 +4,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/xajax/comments.common.php';
 require_once $_SERVER['DOCUMENT_ROOT'] ."/classes/stdf.php";
 
 /**
- * Выводит форму редактировая комментария в админке комментариев
+ * Р’С‹РІРѕРґРёС‚ С„РѕСЂРјСѓ СЂРµРґР°РєС‚РёСЂРѕРІР°СЏ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ РІ Р°РґРјРёРЅРєРµ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
  *
- * @param  integer  $type  Тип группы комментариев
- * @param  integer  $id    id комментария
+ * @param  integer  $type  РўРёРї РіСЂСѓРїРїС‹ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
+ * @param  integer  $id    id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
  * @return xajaxResponse
  */
 function EditComment($type, $id) {
@@ -61,7 +61,7 @@ function RateComment($sname, $item, $dir) {
             require_once $_SERVER['DOCUMENT_ROOT'] ."/classes/comments/CommentsCommune.php";
             $comments = new CommentsCommune($item);
             $data     = $comments->getData($item);
-            if($data['author'] == $uid) return $objResponse; // За свой коммент голосовать нельзя 
+            if($data['author'] == $uid) return $objResponse; // Р—Р° СЃРІРѕР№ РєРѕРјРјРµРЅС‚ РіРѕР»РѕСЃРѕРІР°С‚СЊ РЅРµР»СЊР·СЏ 
             break;
         default:
             return $objResponse;

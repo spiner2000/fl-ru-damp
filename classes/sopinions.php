@@ -2,11 +2,11 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
- * Êëàññ äëÿ ðàáîòû ñ îòçûâàìè ïàðòíåðîâ î íàñ
+ * ÐšÐ»Ð°ÑÑ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ Ð¾Ñ‚Ð·Ñ‹Ð²Ð°Ð¼Ð¸ Ð¿Ð°Ñ€Ñ‚Ð½ÐµÑ€Ð¾Ð² Ð¾ Ð½Ð°Ñ
  */
 class sopinions{
 	/**
-	 * Âîçâðàùàåò îòçûâû ïàðòíåðîâ î íàñ
+	 * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð¾Ñ‚Ð·Ñ‹Ð²Ñ‹ Ð¿Ð°Ñ€Ñ‚Ð½ÐµÑ€Ð¾Ð² Ð¾ Ð½Ð°Ñ
 	 * 
 	 * @return array
 	 */
@@ -15,9 +15,9 @@ class sopinions{
 	}
 	
 	/**
-	 * Âîçâðàùàåò îïðåäåëåííûé îòçûâ 
+	 * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð½Ñ‹Ð¹ Ð¾Ñ‚Ð·Ñ‹Ð² 
 	 *
-	 * @param  int $msg_id ID îòçûâà
+	 * @param  int $msg_id ID Ð¾Ñ‚Ð·Ñ‹Ð²Ð°
 	 * @return array
 	 */
 	function GetMsgInfo( $msg_id ) {
@@ -25,14 +25,14 @@ class sopinions{
 	}
 	
 	/**
-	 * Äîáàâèòü îòçûâ
+	 * Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð¾Ñ‚Ð·Ñ‹Ð²
 	 *
-	 * @param  string $msg Òåêñò îòçûâà
-	 * @param  string $sign Ïîäïèñü
-	 * @param  object $file CFile ôàéë ñ ëîãîòèïîì
-	 * @param  string $link Ññûëêà íà ñàéò òîãî êòî îñòàâèë îòçûâ
-	 * @param  string $from_ip IP àäðåñ òîãî êòî ïèñàë îòçûâ
-	 * @return array ñîîáùåíèÿ îá îøèáêàõ (ôàéë, áàçà)
+	 * @param  string $msg Ð¢ÐµÐºÑÑ‚ Ð¾Ñ‚Ð·Ñ‹Ð²Ð°
+	 * @param  string $sign ÐŸÐ¾Ð´Ð¿Ð¸ÑÑŒ
+	 * @param  object $file CFile Ñ„Ð°Ð¹Ð» Ñ Ð»Ð¾Ð³Ð¾Ñ‚Ð¸Ð¿Ð¾Ð¼
+	 * @param  string $link Ð¡ÑÑ‹Ð»ÐºÐ° Ð½Ð° ÑÐ°Ð¹Ñ‚ Ñ‚Ð¾Ð³Ð¾ ÐºÑ‚Ð¾ Ð¾ÑÑ‚Ð°Ð²Ð¸Ð» Ð¾Ñ‚Ð·Ñ‹Ð²
+	 * @param  string $from_ip IP Ð°Ð´Ñ€ÐµÑ Ñ‚Ð¾Ð³Ð¾ ÐºÑ‚Ð¾ Ð¿Ð¸ÑÐ°Ð» Ð¾Ñ‚Ð·Ñ‹Ð²
+	 * @return array ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐ°Ñ… (Ñ„Ð°Ð¹Ð», Ð±Ð°Ð·Ð°)
 	 */
 	function Add( $msg, $sign, $file, $link, $from_ip ) {
 	    if ($file->tmp_name){
@@ -45,7 +45,7 @@ class sopinions{
             $file->server_root = 1;
         
             $f_name = $file->MoveUploadedFile("about/opinions/");
-    	    if (!isNulArray($file->error)) { $alert[3] = "Ôàéë íå óäîâëåòâîðÿåò óñëîâèÿì çàãðóçêè"; $error_flag = 1;}
+    	    if (!isNulArray($file->error)) { $alert[3] = "Ð¤Ð°Ð¹Ð» Ð½Ðµ ÑƒÐ´Ð¾Ð²Ð»ÐµÑ‚Ð²Ð¾Ñ€ÑÐµÑ‚ ÑƒÑÐ»Ð¾Ð²Ð¸ÑÐ¼ Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ¸"; $error_flag = 1;}
 	    }
 	    if (!$error_flag){
 			$GLOBALS['DB']->insert('sopinions', array(
@@ -60,11 +60,11 @@ class sopinions{
 	}
 	
 	/**
-	 * Óäàëèòü îòçûâ
+	 * Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ Ð¾Ñ‚Ð·Ñ‹Ð²
 	 *
-	 * @param  int $msg ID îòçûâà
-	 * @param  int $admin ßâëÿåòñÿ ëè ïîëüçîâàòåëü àäìèíèñòðàòîðîì 1 - äà, 0 - íåò (òèïà is_admin èç stdf)
-	 * @return array ñîîáùåíèå îá îøèáêå
+	 * @param  int $msg ID Ð¾Ñ‚Ð·Ñ‹Ð²Ð°
+	 * @param  int $admin Ð¯Ð²Ð»ÑÐµÑ‚ÑÑ Ð»Ð¸ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð°Ð´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€Ð¾Ð¼ 1 - Ð´Ð°, 0 - Ð½ÐµÑ‚ (Ñ‚Ð¸Ð¿Ð° is_admin Ð¸Ð· stdf)
+	 * @return array ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
 	 */
 	function Del( $msg, $admin = 0 ) {
 		if (!$admin) {
@@ -78,15 +78,15 @@ class sopinions{
 	}
 	
 	/**
-	 * Èçìåíèòü îòçûâ
+	 * Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¾Ñ‚Ð·Ñ‹Ð²
 	 *
-	 * @param  string $msg Òåêñò îòçûâà
-	 * @param  string $sign Ïîäïèñü
-	 * @param  object $file CFile ôàéë ñ ëîãîòèïîì
-	 * @param  string $link Ññûëêà íà ñàéò òîãî êòî îñòàâèë îòçûâ
-	 * @param  string $from_ip IP àäðåñ òîãî êòî ïèñàë îòçûâ
-	 * @param  int $msgid ID îòçûâà
-	 * @return array ñîîáùåíèÿ îá îøèáêàõ (ôàéë, áàçà)
+	 * @param  string $msg Ð¢ÐµÐºÑÑ‚ Ð¾Ñ‚Ð·Ñ‹Ð²Ð°
+	 * @param  string $sign ÐŸÐ¾Ð´Ð¿Ð¸ÑÑŒ
+	 * @param  object $file CFile Ñ„Ð°Ð¹Ð» Ñ Ð»Ð¾Ð³Ð¾Ñ‚Ð¸Ð¿Ð¾Ð¼
+	 * @param  string $link Ð¡ÑÑ‹Ð»ÐºÐ° Ð½Ð° ÑÐ°Ð¹Ñ‚ Ñ‚Ð¾Ð³Ð¾ ÐºÑ‚Ð¾ Ð¾ÑÑ‚Ð°Ð²Ð¸Ð» Ð¾Ñ‚Ð·Ñ‹Ð²
+	 * @param  string $from_ip IP Ð°Ð´Ñ€ÐµÑ Ñ‚Ð¾Ð³Ð¾ ÐºÑ‚Ð¾ Ð¿Ð¸ÑÐ°Ð» Ð¾Ñ‚Ð·Ñ‹Ð²
+	 * @param  int $msgid ID Ð¾Ñ‚Ð·Ñ‹Ð²Ð°
+	 * @return array ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐ°Ñ… (Ñ„Ð°Ð¹Ð», Ð±Ð°Ð·Ð°)
 	 */
 	function Edit( $msg, $sign, $file, $link, $from_ip, $msgid ) {
 		if ($file) {
@@ -99,7 +99,7 @@ class sopinions{
             $file->server_root = 1;
         
             $f_name = $file->MoveUploadedFile("about/opinions/");
-    	    if (!isNulArray($file->error)) { $alert[3] = "Ôàéë íå óäîâëåòâîðÿåò óñëîâèÿì çàãðóçêè"; $error_flag = 1;}
+    	    if (!isNulArray($file->error)) { $alert[3] = "Ð¤Ð°Ð¹Ð» Ð½Ðµ ÑƒÐ´Ð¾Ð²Ð»ÐµÑ‚Ð²Ð¾Ñ€ÑÐµÑ‚ ÑƒÑÐ»Ð¾Ð²Ð¸ÑÐ¼ Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ¸"; $error_flag = 1;}
 		    if (!$error_flag) {
 				$GLOBALS['DB']->query(
 					"UPDATE sopinions SET msgtext = ?, sign = ?, logo = ?, link = ?, from_ip = ?, modified = NOW() WHERE id = ?",

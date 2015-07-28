@@ -1,8 +1,8 @@
 <?php
-define('DEBUG_DAEMON', 0); // ÷òîáû ïðîòåñòèòü ðàáîòó ñàìîãî äåìîíà, à íå êîícþìåðà.
+define('DEBUG_DAEMON', 0); // Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð¿Ñ€Ð¾Ñ‚ÐµÑÑ‚Ð¸Ñ‚ÑŒ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ ÑÐ°Ð¼Ð¾Ð³Ð¾ Ð´ÐµÐ¼Ð¾Ð½Ð°, Ð° Ð½Ðµ ÐºÐ¾Ð½cÑŽÐ¼ÐµÑ€Ð°.
 define('CONFIGURATION', 'conf/win_pgq_test.php');
 
-// Êóäà-íèáóäü çàïèõàòü.
+// ÐšÑƒÐ´Ð°-Ð½Ð¸Ð±ÑƒÐ´ÑŒ Ð·Ð°Ð¿Ð¸Ñ…Ð°Ñ‚ÑŒ.
 require("../config.php");
 define('SYSDAEMON', (stripos($_SERVER['OS'], 'WINDOWS')!==false ? 'Win' : '').'SystemDaemon');
 $Config["LOGFILE"] = 'logs/'.basename($argv[0]).'.log';

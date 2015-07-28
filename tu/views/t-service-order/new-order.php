@@ -6,20 +6,20 @@ $fullname = "{$freelancer['uname']} {$freelancer['usurname']} [{$freelancer['log
 
 ?>
          <h1 class="b-page__title">
-             Регистрация успешно завершена!
+             Р РµРіРёСЃС‚СЂР°С†РёСЏ СѓСЃРїРµС€РЅРѕ Р·Р°РІРµСЂС€РµРЅР°!
          </h1>
          
          <div class="b-layout b-layout_margright_250">
          
             <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_10">
-                Вы зарегистрировались на сайте в роли заказчика
+                Р’С‹ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°Р»РёСЃСЊ РЅР° СЃР°Р№С‚Рµ РІ СЂРѕР»Рё Р·Р°РєР°Р·С‡РёРєР°
             </div>
              
             <table class="b-layout__table b-layout__table_margbot_10">
                <tr class="b-layout__tr">
                   <td class="b-layout__td b-layout__td_padright_10">
                       <div class="b-layout__txt b-layout__txt_fontsize_15">
-                          Ваш логин:
+                          Р’Р°С€ Р»РѕРіРёРЅ:
                       </div>
                   </td>
                   <td class="b-layout__td">
@@ -31,7 +31,7 @@ $fullname = "{$freelancer['uname']} {$freelancer['usurname']} [{$freelancer['log
                <tr class="b-layout__tr">
                   <td class="b-layout__td b-layout__td_padright_10">
                       <div class="b-layout__txt b-layout__txt_fontsize_15">
-                          Пароль:
+                          РџР°СЂРѕР»СЊ:
                       </div>
                   </td>
                   <td class="b-layout__td">
@@ -43,7 +43,7 @@ $fullname = "{$freelancer['uname']} {$freelancer['usurname']} [{$freelancer['log
             </table>
              
             <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_20">
-                При необходимости вы можете поменять пароль в <a class="b-layout__link" href="<?php echo $settings_url ?>">настройках аккаунта</a>
+                РџСЂРё РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РІС‹ РјРѕР¶РµС‚Рµ РїРѕРјРµРЅСЏС‚СЊ РїР°СЂРѕР»СЊ РІ <a class="b-layout__link" href="<?php echo $settings_url ?>">РЅР°СЃС‚СЂРѕР№РєР°С… Р°РєРєР°СѓРЅС‚Р°</a>
             </div>
          
             <div class="b-fon b-fon_bg_f5 b-fon_pad_10 b-fon_margbot_20 b-fon_overflow_hidden">
@@ -53,16 +53,16 @@ $fullname = "{$freelancer['uname']} {$freelancer['usurname']} [{$freelancer['log
                   </td>
                   <td class="b-layout__td b-layout__td_ipad">
                       <div class="b-layout__txt b-layout__txt_padbot_10">
-                          <?php echo $fullname ?> получил уведомление о заказанной вами услуге.<br/>
-                          Как только он подтвердит заказ, начнется его выполнение. Ожидайте, пожалуйста.
+                          <?php echo $fullname ?> РїРѕР»СѓС‡РёР» СѓРІРµРґРѕРјР»РµРЅРёРµ Рѕ Р·Р°РєР°Р·Р°РЅРЅРѕР№ РІР°РјРё СѓСЃР»СѓРіРµ.<br/>
+                          РљР°Рє С‚РѕР»СЊРєРѕ РѕРЅ РїРѕРґС‚РІРµСЂРґРёС‚ Р·Р°РєР°Р·, РЅР°С‡РЅРµС‚СЃСЏ РµРіРѕ РІС‹РїРѕР»РЅРµРЅРёРµ. РћР¶РёРґР°Р№С‚Рµ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°.
                       </div>
                   </td>
                </table>
             </div>
              
              <div class="b-buttons">
-                   <a href="<?php echo $order_url ?>" class="b-button b-button_flat b-button_flat_green">Открыть заказ</a>
-                   <span class="b-layout__txt b-layout__txt_fontsize_11">&#160; или <a class="b-layout__link" href="<?php echo $contact_url ?>">связаться с исполнителем</a></span>
+                   <a href="<?php echo $order_url ?>" class="b-button b-button_flat b-button_flat_green">РћС‚РєСЂС‹С‚СЊ Р·Р°РєР°Р·</a>
+                   <span class="b-layout__txt b-layout__txt_fontsize_11">&#160; РёР»Рё <a class="b-layout__link" href="<?php echo $contact_url ?>">СЃРІСЏР·Р°С‚СЊСЃСЏ СЃ РёСЃРїРѕР»РЅРёС‚РµР»РµРј</a></span>
              </div>
          
          </div>

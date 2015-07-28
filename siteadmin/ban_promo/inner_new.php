@@ -20,12 +20,12 @@ window.addEvent('domready', function() {
     padding-bottom: 7px;
 }
 </style>
-[<a href="/siteadmin/ban_promo/">назад</a>]<br/><br/>
-<strong>Создание банера</strong><br/><br/>
+[<a href="/siteadmin/ban_promo/">РЅР°Р·Р°Рґ</a>]<br/><br/>
+<strong>РЎРѕР·РґР°РЅРёРµ Р±Р°РЅРµСЂР°</strong><br/><br/>
 <form method="POST" name="frm" id="frm" enctype="multipart/form-data">
     <table cellpadding="5">
         <tr height="30">
-            <td>Название:</td> 
+            <td>РќР°Р·РІР°РЅРёРµ:</td> 
             <td><input type="text" name="name" size="24" value="<?=htmlspecialchars(stripslashes($_POST['name']))?>"></td>
         </tr>
         <?php if($error&&$error->nameError) {?>
@@ -36,7 +36,7 @@ window.addEvent('domready', function() {
         </tr>
         <?php }?>
         <tr height="30">
-            <td>Период размещения:</td>
+            <td>РџРµСЂРёРѕРґ СЂР°Р·РјРµС‰РµРЅРёСЏ:</td>
             <td>
                 <input type="text" size="9" maxlength="9" name="from_date" id="from_date" value="<?=htmlspecialchars(stripslashes($_POST['from_date']))?>" readonly="readonly"> 
                 - <input type="text" name="to_date" id="to_date" size="9" maxlength="9" value="<?=htmlspecialchars(stripslashes($_POST['to_date']))?>" readonly="readonly">
@@ -50,7 +50,7 @@ window.addEvent('domready', function() {
         </tr>
         <?php }?>
         <tr height="30">
-            <td>Ссылка редиректа:</td> 
+            <td>РЎСЃС‹Р»РєР° СЂРµРґРёСЂРµРєС‚Р°:</td> 
             <td><input type="text" name="banner_link" size="44" value="<?=htmlspecialchars(stripslashes($_POST['banner_link']))?>"></td>
         </tr>
         <?php if($error&&$error->linkError) {?>
@@ -61,11 +61,11 @@ window.addEvent('domready', function() {
         </tr>
         <?php }?>
         <tr height="30">
-            <td>Текст ссылки:</td> 
+            <td>РўРµРєСЃС‚ СЃСЃС‹Р»РєРё:</td> 
             <td><input type="text" name="text" size="24" value="<?=htmlspecialchars(stripslashes($_POST['text']))?>"></td>
         </tr>
         <tr height="30">
-            <td>Где показываем</td>
+            <td>Р“РґРµ РїРѕРєР°Р·С‹РІР°РµРј</td>
             <td>
                 <select name="page_target">
                     <? foreach(banner_promo::$target_page as $id=>$name) { ?>
@@ -75,7 +75,7 @@ window.addEvent('domready', function() {
             </td>
         </tr>
         <tr height="30">
-            <td>Тип баннера</td>
+            <td>РўРёРї Р±Р°РЅРЅРµСЂР°</td>
             <td>
                 <select name="type_ban" onchange="change_type_ban(this.value);">
                     <? foreach(banner_promo::$type_ban as $id=>$name) { ?>
@@ -85,16 +85,16 @@ window.addEvent('domready', function() {
             </td>
         </tr>
         <tr height="160" class="type_code ban_types">
-            <td>Код баннера</td>
+            <td>РљРѕРґ Р±Р°РЅРЅРµСЂР°</td>
             <td>
                 <textarea name="code_text" cols="90" rows="10"><?=htmlspecialchars(stripslashes($_POST['code_text']))?></textarea>
             </td>
         </tr>
         <tr height="30" class="type_image ban_types">
-            <td colspan="2"><strong>Файл изображения:</strong></td>
+            <td colspan="2"><strong>Р¤Р°Р№Р» РёР·РѕР±СЂР°Р¶РµРЅРёСЏ:</strong></td>
         </tr>
         <tr height="30" class="type_image ban_types">
-            <td>На сервере:</td> 
+            <td>РќР° СЃРµСЂРІРµСЂРµ:</td> 
             <td>
             <input type="text" name="name_img" size="24" value="<?=htmlspecialchars(stripslashes($_POST['name_img']))?>">
             </td>
@@ -106,7 +106,7 @@ window.addEvent('domready', function() {
             </td>
         </tr>
         <tr height="30" class="type_image ban_types">
-            <td>Загрузить новый:</td> 
+            <td>Р—Р°РіСЂСѓР·РёС‚СЊ РЅРѕРІС‹Р№:</td> 
             <td><input type="file" name="file_main"></td>            
         </tr>
         <?php if($error&&$error->entityError) {?>
@@ -117,47 +117,47 @@ window.addEvent('domready', function() {
         </tr>
         <?php }?>
         <tr height="30" class="type_image ban_types">
-            <td>Title картинки:</td> 
+            <td>Title РєР°СЂС‚РёРЅРєРё:</td> 
             <td><input type="text" name="img_title" size="24" value="<?=htmlspecialchars(stripslashes($_POST['img_title']))?>"></td>
         </tr>
         <tr height="30" class="type_image ban_types">
-            <td>Стиль картинки:</td> 
+            <td>РЎС‚РёР»СЊ РєР°СЂС‚РёРЅРєРё:</td> 
             <td colspan="2"><input type="text" name="img_style" size="44" value="<?=htmlspecialchars(stripslashes($_POST['img_style']))?>"></td>
         </tr>
         <tr height="30" class="type_image ban_types">
-            <td>Стиль ссылки:</td> 
+            <td>РЎС‚РёР»СЊ СЃСЃС‹Р»РєРё:</td> 
             <td colspan="2"><input type="text" name="link_style" size="44" value="<?=htmlspecialchars(stripslashes($_POST['link_style']))?>"></td>
         </tr>
         <tr height="30">
-            <td>Активировать:</td> 
+            <td>РђРєС‚РёРІРёСЂРѕРІР°С‚СЊ:</td> 
             <td><input type="checkbox" name="is_activity" size="24" <?php print $activeChecked ?>></td>
         </tr>
         <tr height="30">
-            <td>Рекламный:</td> 
+            <td>Р РµРєР»Р°РјРЅС‹Р№:</td> 
             <td><input type="checkbox" name="advertising" size="24" <?php print $advChecked ?>></td>
         </tr>
         <tr height="30" class="type_image ban_types">
-            <td colspan="2"><strong>Показывать для пользователей:</strong></td>
+            <td colspan="2"><strong>РџРѕРєР°Р·С‹РІР°С‚СЊ РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№:</strong></td>
         </tr>
         <tr height="30">
-            <td>Только PRO:</td> 
+            <td>РўРѕР»СЊРєРѕ PRO:</td> 
             <td><input type="checkbox" name="is_pro" size="24" <?= $isPROChecked; ?>></td>
         </tr>
         <tr height="30">
-            <td>Только не PRO:</td> 
+            <td>РўРѕР»СЊРєРѕ РЅРµ PRO:</td> 
             <td><input type="checkbox" name="is_not_pro" size="24" <?= $isNotPROChecked; ?>></td>
         </tr>
         <tr height="30">
-            <td>Только фрилансеры:</td> 
+            <td>РўРѕР»СЊРєРѕ С„СЂРёР»Р°РЅСЃРµСЂС‹:</td> 
             <td><input type="checkbox" name="is_frl" size="24" <?= $isFrlChecked; ?>></td>
         </tr>
         <tr height="30">
-            <td>Только работодатели:</td> 
+            <td>РўРѕР»СЊРєРѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»Рё:</td> 
             <td><input type="checkbox" name="is_emp" size="24" <?= $isEmpChecked; ?>></td>
         </tr>
         <tr height="30">
             <td>&nbsp;</td> 
-            <td align="right"><input type="submit" name="new" value="Создать"></td>
+            <td align="right"><input type="submit" name="new" value="РЎРѕР·РґР°С‚СЊ"></td>
         </tr>
     </table>
 </form>

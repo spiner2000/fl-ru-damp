@@ -19,24 +19,24 @@ var rights_orig = new Array();
 var rights_group = new Array();
 </script>
 
-<strong>Права доступа. <?=(($action=='user_add')?'Добавление':'Редактирование')?> пользователя</strong>
+<strong>РџСЂР°РІР° РґРѕСЃС‚СѓРїР°. <?=(($action=='user_add')?'Р”РѕР±Р°РІР»РµРЅРёРµ':'Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ')?> РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</strong>
 
 <br><br>
 
 <form method="POST" action="index.php">
     <input type="hidden" name="action" value="<?=(($action=='user_add')?'user_insert':'user_update')?>">
     <input type="hidden" name="uid" value="<?=$user->uid?>">
-    Пользователь: 
+    РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ: 
     <? if($action=='user_add') { ?>
         <input type="text" id="group_name" name="name" value="">
     <? } else { ?>
         <? $utype = (is_emp($user->role)?'emp':'frl'); ?>
         <?=$session->view_online_status($user->login)?> <a href="/users/<?=$user->login?>" class="<?=$utype?>name11"><?=($user->usurname." ".$user->uname)?></a> [<a href="/users/<?=$user->login?>" class="<?=$utype?>name11"><?=$user->login?></a>] <a href="mailto:<?=$user->email?>"><?=$user->email?></a>
         <br><br>
-        <a href="" onClick="rights_reset(); return false;">Сбросить в исходное состояние</a>
+        <a href="" onClick="rights_reset(); return false;">РЎР±СЂРѕСЃРёС‚СЊ РІ РёСЃС…РѕРґРЅРѕРµ СЃРѕСЃС‚РѕСЏРЅРёРµ</a>
     <? } ?>
     <br><br>
-    Группы: 
+    Р“СЂСѓРїРїС‹: 
     <br>
     <select name="groups" id="rights_group">
         <? foreach($groups as $group) { ?>
@@ -86,7 +86,7 @@ var rights_group = new Array();
     </table>
 
     <br><br>
-    <input type="submit" value=" <?=(($action=='user_add')?'Добавить':'Сохранить')?> ">
+    <input type="submit" value=" <?=(($action=='user_add')?'Р”РѕР±Р°РІРёС‚СЊ':'РЎРѕС…СЂР°РЅРёС‚СЊ')?> ">
 </form>
 
 <script type="text/javascript">

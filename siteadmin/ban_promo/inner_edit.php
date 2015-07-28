@@ -20,8 +20,8 @@ window.addEvent('domready', function() {
     padding-bottom: 7px;
 }
 </style>
-[<a href="/siteadmin/ban_promo/">назад</a>]<br/><br/>
-<strong>Редактирование баннера «<a href="?type=<?=$bpromo->info['id']?>"><?=htmlspecialchars(stripslashes($bpromo->info['name']))?></a>»</strong><br/><br/>
+[<a href="/siteadmin/ban_promo/">РЅР°Р·Р°Рґ</a>]<br/><br/>
+<strong>Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±Р°РЅРЅРµСЂР° В«<a href="?type=<?=$bpromo->info['id']?>"><?=htmlspecialchars(stripslashes($bpromo->info['name']))?></a>В»</strong><br/><br/>
 <div class="b-layout b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_13 b-layout__txt_padbot_10 b-layout__txt_color_c4271f b-layout_hide" id="banner-error"></div>
 <?if($error_string) print(view_error($error_string))."<br/>";?>
 
@@ -33,7 +33,7 @@ function checkLinkWidth() {
     var ls = $('linkpreview').getElements("li.b-menu__banner");
     for (var i = 0; i < ls.length; i++) {
         if (ls[i].clientWidth > maxW) {
-            $('banner-error').set('text', "Ширина ссылки превышает " + maxW + " пикселей").removeClass('b-layout_hide');
+            $('banner-error').set('text', "РЁРёСЂРёРЅР° СЃСЃС‹Р»РєРё РїСЂРµРІС‹С€Р°РµС‚ " + maxW + " РїРёРєСЃРµР»РµР№").removeClass('b-layout_hide');
         }else {
             var wText = 0;
             var links = ls[i].getElements("a.b-menu__link-banner");
@@ -46,7 +46,7 @@ function checkLinkWidth() {
                 wPic = links[0].clientWidth;
             }
             if (wPic + wText > maxW) {
-                $('banner-error').set('text', "Ширина ссылки превышает " + maxW + " пикселей").removeClass('b-layout_hide');
+                $('banner-error').set('text', "РЁРёСЂРёРЅР° СЃСЃС‹Р»РєРё РїСЂРµРІС‹С€Р°РµС‚ " + maxW + " РїРёРєСЃРµР»РµР№").removeClass('b-layout_hide');
             }
         }
     }
@@ -56,7 +56,7 @@ function checkLinkWidth() {
     <input type="hidden" name="id" value="<?=$bpromo->info['id']?>">    
     <table cellpadding="5">
         <tr height="30">
-            <td>Название:</td> 
+            <td>РќР°Р·РІР°РЅРёРµ:</td> 
             <td><input type="text" id="name" name="name" size="24" value="<?=isset($_POST['name']) ? htmlspecialchars(stripslashes($_POST['name'])):htmlspecialchars(stripslashes($bpromo->info['name']))?>"></td>
             <td>&nbsp;</td>
         </tr>
@@ -68,7 +68,7 @@ function checkLinkWidth() {
         </tr>
         <?php }?>
         <tr height="30">
-            <td>Период размещения:</td>
+            <td>РџРµСЂРёРѕРґ СЂР°Р·РјРµС‰РµРЅРёСЏ:</td>
             <td>
                 <input type="text" size="9" maxlength="9" name="from_date" id="from_date" value="<?= isset($_POST['from_date']) ? htmlspecialchars(stripslashes($_POST['from_date'])): date("d-m-Y", strtotime($bpromo->info['from_date']));?>" readonly="readonly"> 
                 - <input type="text" name="to_date" id="to_date" size="9" maxlength="9" value="<?= isset($_POST['to_date']) ? htmlspecialchars(stripslashes($_POST['to_date'])): date("d-m-Y", strtotime($bpromo->info['to_date']));?>" readonly="readonly">
@@ -83,7 +83,7 @@ function checkLinkWidth() {
         </tr>
         <?php }?>
         <tr height="30">
-            <td>Ссылка редиректа:</td> 
+            <td>РЎСЃС‹Р»РєР° СЂРµРґРёСЂРµРєС‚Р°:</td> 
             <td colspan="2"><input type="text" name="banner_link" size="44" value="<?=isset($_POST['banner_link']) ? htmlspecialchars(stripslashes($_POST['banner_link'])):htmlspecialchars(stripslashes($bpromo->info['banner_link']))?>"></td>
         </tr>
         <?php if($error&&$error->linkError) {?>
@@ -94,11 +94,11 @@ function checkLinkWidth() {
         </tr>
         <?php }?>
         <tr height="30">
-            <td>Текст ссылки:</td> 
+            <td>РўРµРєСЃС‚ СЃСЃС‹Р»РєРё:</td> 
             <td><input type="text" id="linktext" name="text" size="24" value="<?=isset($_POST['text']) ? htmlspecialchars(stripslashes($_POST['text'])):htmlspecialchars(stripslashes($bpromo->info['linktext']))?>"></td>
         </tr>
         <tr height="30">
-            <td>Где показываем</td>
+            <td>Р“РґРµ РїРѕРєР°Р·С‹РІР°РµРј</td>
             <td>
                 <select name="page_target">
                     <? foreach(banner_promo::$target_page as $id=>$name) { ?>
@@ -108,7 +108,7 @@ function checkLinkWidth() {
             </td>
         </tr>
         <tr height="30">
-            <td>Тип баннера</td>
+            <td>РўРёРї Р±Р°РЅРЅРµСЂР°</td>
             <td>
                 <select name="type_ban" onchange="change_type_ban(this.value);">
                     <? foreach(banner_promo::$type_ban as $id=>$name) { ?>
@@ -118,22 +118,22 @@ function checkLinkWidth() {
             </td>
         </tr>
         <tr height="30">
-            <td>Доступ (логины)</td>
+            <td>Р”РѕСЃС‚СѓРї (Р»РѕРіРёРЅС‹)</td>
             <td>
                 <input type="text" id="login_access" name="login_access" size="44" value="<?=isset($_POST['login_access']) ? htmlspecialchars(stripslashes($_POST['login_access'])):htmlspecialchars(stripslashes($bpromo->info['login_access']))?>">
             </td>
         </tr>
         <tr height="160" class="type_code ban_types">
-            <td>Код баннера</td>
+            <td>РљРѕРґ Р±Р°РЅРЅРµСЂР°</td>
             <td>
                 <textarea name="code_text" cols="90" rows="10"><?= isset($_POST['code_text']) ? htmlspecialchars(stripslashes($_POST['code_text'])) : $bpromo->info['code_text'] ;?></textarea>
             </td>
         </tr>
         <tr height="30" class="type_image ban_types">
-            <td colspan="2"><strong>Файл изображения:</strong></td>
+            <td colspan="2"><strong>Р¤Р°Р№Р» РёР·РѕР±СЂР°Р¶РµРЅРёСЏ:</strong></td>
         </tr>
         <tr height="30" class="type_image ban_types">
-            <td>На сервере:</td> 
+            <td>РќР° СЃРµСЂРІРµСЂРµ:</td> 
             <td>
             <input type="text" name="name_img" size="24" value="<?=isset($_POST['name_img']) ? htmlspecialchars(stripslashes($_POST['name_img'])):htmlspecialchars(stripslashes($bpromo->info['name_img']))?>">
             </td>
@@ -145,7 +145,7 @@ function checkLinkWidth() {
             </td>
         </tr>
         <tr height="30" class="type_image ban_types">
-            <td>Загрузить новый:</td> 
+            <td>Р—Р°РіСЂСѓР·РёС‚СЊ РЅРѕРІС‹Р№:</td> 
             <td><input type="file" name="file_main"></td>            
         </tr>
         <?php if($error&&$error->entityError) {?>
@@ -156,53 +156,53 @@ function checkLinkWidth() {
         </tr>
         <?php }?>
         <tr height="30" class="type_image ban_types">
-            <td>Title картинки баннера:</td> 
+            <td>Title РєР°СЂС‚РёРЅРєРё Р±Р°РЅРЅРµСЂР°:</td> 
             <td><input type="text" name="img_title" size="24" value="<?=isset($_POST['img_title']) ? htmlspecialchars(stripslashes($_POST['img_title'])):htmlspecialchars(stripslashes($bpromo->info['img_title']))?>"></td>
             <td>&nbsp;</td>
         </tr>
         <tr height="30" class="type_image ban_types">
-            <td>Стиль картинки:</td> 
+            <td>РЎС‚РёР»СЊ РєР°СЂС‚РёРЅРєРё:</td> 
             <td colspan="2"><input type="text" name="img_style" size="44" value="<?=isset($_POST['img_style']) ? htmlspecialchars(stripslashes($_POST['img_style'])): htmlspecialchars(stripslashes($bpromo->info['img_style']))?>"></td>
         </tr>
         <tr height="30" class="type_image ban_types">
-            <td>Стиль ссылки:</td> 
+            <td>РЎС‚РёР»СЊ СЃСЃС‹Р»РєРё:</td> 
             <td colspan="2"><input type="text" name="link_style" size="44" value="<?=isset($_POST['link_style']) ? htmlspecialchars(stripslashes($_POST['link_style'])):htmlspecialchars(stripslashes($bpromo->info['link_style']))?>"></td>
         </tr>
         <tr height="30">
-            <td>Активировать:</td> 
+            <td>РђРєС‚РёРІРёСЂРѕРІР°С‚СЊ:</td> 
             <td><input type="checkbox" name="is_activity" size="24" <? print $activeChecked ?>></td>
             <td>&nbsp;</td>
         </tr>
         <tr height="30">
-            <td>Рекламный:</td> 
+            <td>Р РµРєР»Р°РјРЅС‹Р№:</td> 
             <td><input type="checkbox" name="advertising" size="24" <?php print $advChecked ?>></td>
         </tr>
         <tr height="30" class="type_image ban_types">
-            <td colspan="2"><strong>Показывать для пользователей:</strong></td>
+            <td colspan="2"><strong>РџРѕРєР°Р·С‹РІР°С‚СЊ РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№:</strong></td>
         </tr>
         <tr height="30">
-            <td>Только PRO:</td> 
+            <td>РўРѕР»СЊРєРѕ PRO:</td> 
             <td><input type="checkbox" name="is_pro" size="24" <?= $isPROChecked; ?>></td>
         </tr>
         <tr height="30">
-            <td>Только не PRO:</td> 
+            <td>РўРѕР»СЊРєРѕ РЅРµ PRO:</td> 
             <td><input type="checkbox" name="is_not_pro" size="24" <?= $isNotPROChecked; ?>></td>
         </tr>
         <tr height="30">
-            <td>Только фрилансеры:</td> 
+            <td>РўРѕР»СЊРєРѕ С„СЂРёР»Р°РЅСЃРµСЂС‹:</td> 
             <td><input type="checkbox" name="is_frl" size="24" <?= $isFrlChecked; ?>></td>
         </tr>
         <tr height="30">
-            <td>Только работодатели:</td> 
+            <td>РўРѕР»СЊРєРѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»Рё:</td> 
             <td><input type="checkbox" name="is_emp" size="24" <?= $isEmpChecked; ?>></td>
         </tr>
         
         <tr height="30">
-            <td colspan="3"><input type="submit" name="save" value="Сохранить"></td>
+            <td colspan="3"><input type="submit" name="save" value="РЎРѕС…СЂР°РЅРёС‚СЊ"></td>
         </tr>
     </table>    
 </form>
-<div>Превью</div>
+<div>РџСЂРµРІСЊСЋ</div>
 <div id="linkpreview" style="float:left">
 <?php
 

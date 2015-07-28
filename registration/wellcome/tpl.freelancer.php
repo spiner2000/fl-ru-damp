@@ -1,31 +1,31 @@
 <div class="b-layout">
     <div class="b-layout__right b-layout__right_width_72ps b-layout__right_float_right">
-        <h1 class="b-page__title b-page__title_padbot_30">Добро пожаловать на FL.ru</h1>
+        <h1 class="b-page__title b-page__title_padbot_30">Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РЅР° FL.ru</h1>
     </div>
     <div class="b-layout__right b-layout__right_width_72ps b-layout__right_float_right">
         <? if (!$_COOKIE['master_auth']) { ?>
         <div class="b-fon b-fon_inline-block b-fon_padbot_50">
             <div class="b-fon__body b-fon__body_pad_15  b-fon__body_padleft_30 b-fon__body_padright_40 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-                <span class="b-icon b-icon_sbr_gattent b-icon_margleft_-20 b-icon_top_8"></span>Поздравляем вас с успешной регистрацией на сайте FL.ru!<br>На e-mail, указанный при регистрации, отправлено письмо с логином, паролем и ссылкой для активации аккаунта. Пожалуйста, сохраните эти учетные данные и активируйте аккаунт.
+                <span class="b-icon b-icon_sbr_gattent b-icon_margleft_-20 b-icon_top_8"></span>РџРѕР·РґСЂР°РІР»СЏРµРј РІР°СЃ СЃ СѓСЃРїРµС€РЅРѕР№ СЂРµРіРёСЃС‚СЂР°С†РёРµР№ РЅР° СЃР°Р№С‚Рµ FL.ru!<br>РќР° e-mail, СѓРєР°Р·Р°РЅРЅС‹Р№ РїСЂРё СЂРµРіРёСЃС‚СЂР°С†РёРё, РѕС‚РїСЂР°РІР»РµРЅРѕ РїРёСЃСЊРјРѕ СЃ Р»РѕРіРёРЅРѕРј, РїР°СЂРѕР»РµРј Рё СЃСЃС‹Р»РєРѕР№ РґР»СЏ Р°РєС‚РёРІР°С†РёРё Р°РєРєР°СѓРЅС‚Р°. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, СЃРѕС…СЂР°РЅРёС‚Рµ СЌС‚Рё СѓС‡РµС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ Рё Р°РєС‚РёРІРёСЂСѓР№С‚Рµ Р°РєРєР°СѓРЅС‚.
             </div>
         </div>
         <? } ?>
         <? if($from_blocked_prj==1) { ?>
-        <div class="b-layout__txt b-layout__txt_fontsize_22 b-layout__txt_padbot_40">Найдите интересные <a href="/projects/?kind=1" class="b-layout__link">проекты</a>, <a href="/konkurs/" class="b-layout__link">конкурсы</a> и <a href="/projects/?kind=4" class="b-layout__link">вакансии</a></div>
-        <div class="b-layout__txt b-layout__txt_fontsize_22">Приобретите  <a href="/payed/" class="b-layout__link">аккаунт</a> <a href="/payed/" class="b-layout__link"><span title="PRO" class="b-icon b-icon__spro b-icon__spro_f"></span></a> за <span class="b-layout__txt_through b-layout__txt_color_d7d7d7"><?=payed::getPriceByOpCode(48)?></span> <?=payed::getPriceByOpCode(163)?> рублей</div>
-        <div class="b-layout__txt b-layout__txt_padbot_40">и отвечайте на проекты, конкурсы и вакансии без ограничений</div>
-        <div class="b-layout__txt b-layout__txt_fontsize_22">Заполните <a href="/users/<?= $_SESSION['login']?>/setup/info/" class="b-layout__link">профиль</a>,</div>
-        <div class="b-layout__txt b-layout__txt_padbot_40">чтобы работодатели смогли найти вас в каталоге фрилансеров</div>
-        <div class="b-layout__txt b-layout__txt_fontsize_22">Подтвердите свою   <a href="/promo/verification/" class="b-layout__link">личность</a>,</div>
-        <div class="b-layout__txt b-layout__txt_padbot_40">чтобы вам доверяли Заказчики</div>
+        <div class="b-layout__txt b-layout__txt_fontsize_22 b-layout__txt_padbot_40">РќР°Р№РґРёС‚Рµ РёРЅС‚РµСЂРµСЃРЅС‹Рµ <a href="/projects/?kind=1" class="b-layout__link">РїСЂРѕРµРєС‚С‹</a>, <a href="/konkurs/" class="b-layout__link">РєРѕРЅРєСѓСЂСЃС‹</a> Рё <a href="/projects/?kind=4" class="b-layout__link">РІР°РєР°РЅСЃРёРё</a></div>
+        <div class="b-layout__txt b-layout__txt_fontsize_22">РџСЂРёРѕР±СЂРµС‚РёС‚Рµ  <a href="/payed/" class="b-layout__link">Р°РєРєР°СѓРЅС‚</a> <a href="/payed/" class="b-layout__link"><span title="PRO" class="b-icon b-icon__spro b-icon__spro_f"></span></a> Р·Р° <span class="b-layout__txt_through b-layout__txt_color_d7d7d7"><?=payed::getPriceByOpCode(48)?></span> <?=payed::getPriceByOpCode(163)?> СЂСѓР±Р»РµР№</div>
+        <div class="b-layout__txt b-layout__txt_padbot_40">Рё РѕС‚РІРµС‡Р°Р№С‚Рµ РЅР° РїСЂРѕРµРєС‚С‹, РєРѕРЅРєСѓСЂСЃС‹ Рё РІР°РєР°РЅСЃРёРё Р±РµР· РѕРіСЂР°РЅРёС‡РµРЅРёР№</div>
+        <div class="b-layout__txt b-layout__txt_fontsize_22">Р—Р°РїРѕР»РЅРёС‚Рµ <a href="/users/<?= $_SESSION['login']?>/setup/info/" class="b-layout__link">РїСЂРѕС„РёР»СЊ</a>,</div>
+        <div class="b-layout__txt b-layout__txt_padbot_40">С‡С‚РѕР±С‹ СЂР°Р±РѕС‚РѕРґР°С‚РµР»Рё СЃРјРѕРіР»Рё РЅР°Р№С‚Рё РІР°СЃ РІ РєР°С‚Р°Р»РѕРіРµ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</div>
+        <div class="b-layout__txt b-layout__txt_fontsize_22">РџРѕРґС‚РІРµСЂРґРёС‚Рµ СЃРІРѕСЋ   <a href="/promo/verification/" class="b-layout__link">Р»РёС‡РЅРѕСЃС‚СЊ</a>,</div>
+        <div class="b-layout__txt b-layout__txt_padbot_40">С‡С‚РѕР±С‹ РІР°Рј РґРѕРІРµСЂСЏР»Рё Р—Р°РєР°Р·С‡РёРєРё</div>
         <? } else { ?>
-        <div class="b-layout__txt b-layout__txt_fontsize_22">Приобретите  <a href="/payed/" class="b-layout__link">аккаунт</a> <a href="/payed/" class="b-layout__link"><span title="PRO" class="b-icon b-icon__spro b-icon__spro_f"></span></a> за <span class="b-layout__txt_through b-layout__txt_color_d7d7d7"><?=payed::getPriceByOpCode(48)?></span> <?=payed::getPriceByOpCode(163)?> рублей</div>
-        <div class="b-layout__txt b-layout__txt_padbot_40">и отвечайте на проекты, конкурсы и вакансии без ограничений</div>
-        <div class="b-layout__txt b-layout__txt_fontsize_22">Заполните <a href="/users/<?= $_SESSION['login']?>/setup/info/" class="b-layout__link">профиль</a>,</div>
-        <div class="b-layout__txt b-layout__txt_padbot_40">чтобы работодатели смогли найти вас в каталоге фрилансеров</div>
-        <div class="b-layout__txt b-layout__txt_fontsize_22 b-layout__txt_padbot_40">Найдите интересные <a href="/projects/?kind=1" class="b-layout__link">проекты</a>, <a href="/konkurs/" class="b-layout__link">конкурсы</a> и <a href="/projects/?kind=4" class="b-layout__link">вакансии</a></div>
-        <div class="b-layout__txt b-layout__txt_fontsize_22">Подтвердите свою   <a href="/promo/verification/" class="b-layout__link">личность</a>,</div>
-        <div class="b-layout__txt b-layout__txt_padbot_40">чтобы вам доверяли Заказчики</div>
+        <div class="b-layout__txt b-layout__txt_fontsize_22">РџСЂРёРѕР±СЂРµС‚РёС‚Рµ  <a href="/payed/" class="b-layout__link">Р°РєРєР°СѓРЅС‚</a> <a href="/payed/" class="b-layout__link"><span title="PRO" class="b-icon b-icon__spro b-icon__spro_f"></span></a> Р·Р° <span class="b-layout__txt_through b-layout__txt_color_d7d7d7"><?=payed::getPriceByOpCode(48)?></span> <?=payed::getPriceByOpCode(163)?> СЂСѓР±Р»РµР№</div>
+        <div class="b-layout__txt b-layout__txt_padbot_40">Рё РѕС‚РІРµС‡Р°Р№С‚Рµ РЅР° РїСЂРѕРµРєС‚С‹, РєРѕРЅРєСѓСЂСЃС‹ Рё РІР°РєР°РЅСЃРёРё Р±РµР· РѕРіСЂР°РЅРёС‡РµРЅРёР№</div>
+        <div class="b-layout__txt b-layout__txt_fontsize_22">Р—Р°РїРѕР»РЅРёС‚Рµ <a href="/users/<?= $_SESSION['login']?>/setup/info/" class="b-layout__link">РїСЂРѕС„РёР»СЊ</a>,</div>
+        <div class="b-layout__txt b-layout__txt_padbot_40">С‡С‚РѕР±С‹ СЂР°Р±РѕС‚РѕРґР°С‚РµР»Рё СЃРјРѕРіР»Рё РЅР°Р№С‚Рё РІР°СЃ РІ РєР°С‚Р°Р»РѕРіРµ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</div>
+        <div class="b-layout__txt b-layout__txt_fontsize_22 b-layout__txt_padbot_40">РќР°Р№РґРёС‚Рµ РёРЅС‚РµСЂРµСЃРЅС‹Рµ <a href="/projects/?kind=1" class="b-layout__link">РїСЂРѕРµРєС‚С‹</a>, <a href="/konkurs/" class="b-layout__link">РєРѕРЅРєСѓСЂСЃС‹</a> Рё <a href="/projects/?kind=4" class="b-layout__link">РІР°РєР°РЅСЃРёРё</a></div>
+        <div class="b-layout__txt b-layout__txt_fontsize_22">РџРѕРґС‚РІРµСЂРґРёС‚Рµ СЃРІРѕСЋ   <a href="/promo/verification/" class="b-layout__link">Р»РёС‡РЅРѕСЃС‚СЊ</a>,</div>
+        <div class="b-layout__txt b-layout__txt_padbot_40">С‡С‚РѕР±С‹ РІР°Рј РґРѕРІРµСЂСЏР»Рё Р—Р°РєР°Р·С‡РёРєРё</div>
         <? } ?>
     </div>
 </div>

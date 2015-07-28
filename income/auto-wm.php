@@ -10,7 +10,7 @@ if(!get_uid(false)) {
     exit;
 }
 
-// Получен код авторизации получаем все токены какие нужны для пользователя
+// РџРѕР»СѓС‡РµРЅ РєРѕРґ Р°РІС‚РѕСЂРёР·Р°С†РёРё РїРѕР»СѓС‡Р°РµРј РІСЃРµ С‚РѕРєРµРЅС‹ РєР°РєРёРµ РЅСѓР¶РЅС‹ РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 if(isset($_GET['code'])) {
     $uid          = get_uid(false);
     $walletWebmoney = new walletWebmoney($uid);
@@ -24,7 +24,7 @@ if(isset($_GET['code'])) {
         $walletWebmoney->setAccessToken($result['access_token']);
 
         $walletId = $walletWebmoney->saveWallet();
-        // Токен получен и сохранен отправляем пользователя на страницу
+        // РўРѕРєРµРЅ РїРѕР»СѓС‡РµРЅ Рё СЃРѕС…СЂР°РЅРµРЅ РѕС‚РїСЂР°РІР»СЏРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° СЃС‚СЂР°РЅРёС†Сѓ
         if($walletId > 0) {
             $_SESSION['wallet_success'] = true;
             $redirect = '/bill/';
@@ -36,7 +36,7 @@ if(isset($_GET['code'])) {
             exit;
         }
     } else {
-        $_SESSION['errorPs'] = 'Ошибка привязки кошелька Webmoney';
+        $_SESSION['errorPs'] = 'РћС€РёР±РєР° РїСЂРёРІСЏР·РєРё РєРѕС€РµР»СЊРєР° Webmoney';
         header("Location: /bill/fail_ps/");
         exit;
 //        var_dump($result);

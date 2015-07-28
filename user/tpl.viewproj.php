@@ -34,7 +34,7 @@ $xajax->printJavascript( '/xajax/' );
 														                         "role"        => $user_obj->role
 														                         ))?><br>
 														<?
-														  //время последней активности пользователя
+														  //РІСЂРµРјСЏ РїРѕСЃР»РµРґРЅРµР№ Р°РєС‚РёРІРЅРѕСЃС‚Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
                                                           include_once($_SERVER['DOCUMENT_ROOT'].'/classes/users.php');
                                                           $usr = new users();
                                                           $usr->GetUser($proj['login']);
@@ -50,7 +50,7 @@ $xajax->printJavascript( '/xajax/' );
                                         <td style="padding:10px; border-left: 1px solid #C6C6C6; border-right: 1px solid #C6C6C6; border-bottom: 1px solid #C6C6C6;">
                                             <?php if ( hasPermissions('users') ) { ?>
                                             <div id="portfolio-button-<?= $proj['id'] ?>">
-                                                <a class="admn" href="javascript:void(0);" onclick="banned.<?=($proj['is_blocked']=='t'? 'unblockedPortfolio': 'blockedPortfolio')?>(<?=$proj['id']?>)"><?= $proj['is_blocked']=='f' ? "Заблокировать" : "Разблокировать"; ?></a>
+                                                <a class="admn" href="javascript:void(0);" onclick="banned.<?=($proj['is_blocked']=='t'? 'unblockedPortfolio': 'blockedPortfolio')?>(<?=$proj['id']?>)"><?= $proj['is_blocked']=='f' ? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ" : "Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ"; ?></a>
                                             </div>
                                             <? } ?>
                                             <div id="portfolio-block-<?= $proj['id'] ?>" style="display: <?= ($proj['is_blocked'] ? 'block': 'none') ?>">
@@ -61,9 +61,9 @@ $xajax->printJavascript( '/xajax/' );
                                                     <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13">
                                                         <span class="b-fon__attent"></span>
                                                         <div class="b-fon__txt b-fon__txt_margleft_20">
-                                                                <span class="b-fon__txt_bold">Работа заблокирована</span>. <?= reformat($proj['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>Служба поддержки</a>
-                                                                <div class='b-fon__txt'><?php if ( hasPermissions('users') ) { ?><?= ($proj['admin_login'] ? "Заблокировал: <a class='b-fon__link' href='/users/{$proj['admin_login']}'>{$proj['admin_uname']} {$proj['admin_usurname']} [{$proj['admin_login']}]</a><br />": '') ?><?php } ?>
-                                                                Дата блокировки: <?= dateFormat('d.m.Y H:i', $proj['blocked_time']) ?></div>
+                                                                <span class="b-fon__txt_bold">Р Р°Р±РѕС‚Р° Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅР°</span>. <?= reformat($proj['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё</a>
+                                                                <div class='b-fon__txt'><?php if ( hasPermissions('users') ) { ?><?= ($proj['admin_login'] ? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°Р»: <a class='b-fon__link' href='/users/{$proj['admin_login']}'>{$proj['admin_uname']} {$proj['admin_usurname']} [{$proj['admin_login']}]</a><br />": '') ?><?php } ?>
+                                                                Р”Р°С‚Р° Р±Р»РѕРєРёСЂРѕРІРєРё: <?= dateFormat('d.m.Y H:i', $proj['blocked_time']) ?></div>
                                                         </div>
                                                     </div>
                                                     <b class="b-fon__b2"></b>
@@ -78,7 +78,7 @@ $xajax->printJavascript( '/xajax/' );
 								<table width="100%" cellspacing="0" cellpadding="15" border="0">
 									<tr class="qpr">
 												<td style="white-space:nowrap;padding:10px 24px 10px 10px; border-left: 1px solid #C6C6C6; background:#fafafa;">
-												  <? if ( $prj_prev && $prj_prev != $prjid ) { ?><a href="/users/<?=$proj['login']?>/viewproj.php?prjid=<?=$prj_prev?>" title="Используйте Ctrl &lt;&ndash;" class="blue">Предыдущая работа</a><? } else { ?>Предыдущая работа<? } ?>
+												  <? if ( $prj_prev && $prj_prev != $prjid ) { ?><a href="/users/<?=$proj['login']?>/viewproj.php?prjid=<?=$prj_prev?>" title="РСЃРїРѕР»СЊР·СѓР№С‚Рµ Ctrl &lt;&ndash;" class="blue">РџСЂРµРґС‹РґСѓС‰Р°СЏ СЂР°Р±РѕС‚Р°</a><? } else { ?>РџСЂРµРґС‹РґСѓС‰Р°СЏ СЂР°Р±РѕС‚Р°<? } ?>
 												</td>
 												<td style="text-align:left; padding:10px 10px 10px 20px; background:#fafafa;">
                                                     <?php $sName = /*$proj['moderator_status'] === '0' ? $stop_words->replace($proj['name']) :*/ $proj['name']; ?>
@@ -95,10 +95,10 @@ $xajax->printJavascript( '/xajax/' );
 												?>
 														
                                                 	<div style="padding-top:12px; padding-left:30px;">
-                                                		Дата добавления: <?= $proj['post_date']?>
+                                                		Р”Р°С‚Р° РґРѕР±Р°РІР»РµРЅРёСЏ: <?= $proj['post_date']?>
                                                 		<?php if($proj['edit_date'] && $proj['post_date']!=$proj['edit_date']){?>
                                                 		<br>
-                                                        Дата обновления: <?= $proj['edit_date']?>
+                                                        Р”Р°С‚Р° РѕР±РЅРѕРІР»РµРЅРёСЏ: <?= $proj['edit_date']?>
                                                         <?php } ?>
 													</div>
 
@@ -126,7 +126,7 @@ $xajax->printJavascript( '/xajax/' );
 												<? } ?>
                                                     </td>
 												<td style="text-align:right;white-space:nowrap;padding:10px 10px 10px 24px; border-right: 1px solid #C6C6C6; background:#fafafa;">
-												  <? if ( $prj_next && $prj_next != $prjid ) { ?><a href="/users/<?=$proj['login']?>/viewproj.php?prjid=<?=$prj_next?>" title="Используйте Ctrl &ndash;&gt;" class="blue">Следующая работа</a><? } else { ?>Следующая работа<? } ?>
+												  <? if ( $prj_next && $prj_next != $prjid ) { ?><a href="/users/<?=$proj['login']?>/viewproj.php?prjid=<?=$prj_next?>" title="РСЃРїРѕР»СЊР·СѓР№С‚Рµ Ctrl &ndash;&gt;" class="blue">РЎР»РµРґСѓСЋС‰Р°СЏ СЂР°Р±РѕС‚Р°</a><? } else { ?>РЎР»РµРґСѓСЋС‰Р°СЏ СЂР°Р±РѕС‚Р°<? } ?>
 												</td>
 											</tr>
 											<? if ($proj['pict'] && $file) {?>
@@ -162,7 +162,7 @@ $xajax->printJavascript( '/xajax/' );
 								</table>
 								<? if (hasPermissions('users')) { ?>
 									<div align="right" style="margin: 10px 10px">
-										<a href="./viewproj.php?prjid=<?=$prjid?>&action=delete" class="blue" onclick="return confirm('Вы действительно хотите удалить работу?')">Удалить</a>
+										<a href="./viewproj.php?prjid=<?=$prjid?>&action=delete" class="blue" onclick="return confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЂР°Р±РѕС‚Сѓ?')">РЈРґР°Р»РёС‚СЊ</a>
 									</div>
 								<? } ?>
 							</div>

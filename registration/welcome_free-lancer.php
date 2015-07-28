@@ -3,7 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/registration.php");
 session_start();
 
-// страницу могут смотреть только зарегистрированые работодатели
+// СЃС‚СЂР°РЅРёС†Сѓ РјРѕРіСѓС‚ СЃРјРѕС‚СЂРµС‚СЊ С‚РѕР»СЊРєРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅС‹Рµ СЂР°Р±РѕС‚РѕРґР°С‚РµР»Рё
 if (!get_uid(0) || is_emp()) {
     include $_SERVER['DOCUMENT_ROOT']."/403.php";
     exit;

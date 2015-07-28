@@ -3,19 +3,19 @@
         <input type="hidden" name="rating" id="note_rating" value="0<?//(int)$req['rating']?>">
         <input type="hidden" name="userid" id="note_userid" value="<?= $req['uid']?>">
         <?/*<ul class="izbr-choose">
-            <li <?php if($req['rating'] == 1) print('class="active"');?>><a href="javascript:void(0)" onClick="$('note_rating').set('value', 1);">Положительная</a></li>
-            <li <?php if($req['rating'] == 0) print('class="active"'); else if(strlen($req['rating'])==0) print('class="active"');?>><a href="javascript:void(0)" onClick="$('note_rating').set('value', 0);">Нейтральная</a></li>
-            <li <?php if($req['rating'] == -1) print('class="active"');?>><a href="javascript:void(0)" onClick="$('note_rating').set('value', -1);">Отрицательная</a></li>
+            <li <?php if($req['rating'] == 1) print('class="active"');?>><a href="javascript:void(0)" onClick="$('note_rating').set('value', 1);">РџРѕР»РѕР¶РёС‚РµР»СЊРЅР°СЏ</a></li>
+            <li <?php if($req['rating'] == 0) print('class="active"'); else if(strlen($req['rating'])==0) print('class="active"');?>><a href="javascript:void(0)" onClick="$('note_rating').set('value', 0);">РќРµР№С‚СЂР°Р»СЊРЅР°СЏ</a></li>
+            <li <?php if($req['rating'] == -1) print('class="active"');?>><a href="javascript:void(0)" onClick="$('note_rating').set('value', -1);">РћС‚СЂРёС†Р°С‚РµР»СЊРЅР°СЏ</a></li>
         </ul>*/?>
         <div class="b-textarea">
             <textarea class="b-textarea__textarea" cols="" rows="" id="notesTxt" onkeyup="checknote(this)"><?= $req['n_text']?></textarea>
         </div>
         <div class="b-buttons b-buttons_padtop_10">
             <?php /*if($req['login']){?>
-                <a href="javascript:void(0)" class="btn-del" onclick="if(confirm('Вы действительно хотите удалить заметку?')) xajax_delNote(<?= $_SESSION['uid']?>, <?= $req['uid']?>)">Удалить</a>
+                <a href="javascript:void(0)" class="btn-del" onclick="if(confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ Р·Р°РјРµС‚РєСѓ?')) xajax_delNote(<?= $_SESSION['uid']?>, <?= $req['uid']?>)">РЈРґР°Р»РёС‚СЊ</a>
             <?php } //if */?>
-            <a class="b-button b-button_flat b-button_flat_green" href="javascript:void(0)" onclick="xajax_addNotes($('note_userid').get('value'), $('notesTxt').get('value'), $('note_rating').get('value'),  '<?= ($req['login']?"upd":"add")?>', <?=$type?>); this.addClass('b-button_disabled')">Сохранить</a>
-            <span class="b-buttons__txt"><a href="#" onclick="$(this).getParent('div.b-shadow').setStyle('display', 'none'); return false;" class="b-buttons__link">Отменить</a></span>
+            <a class="b-button b-button_flat b-button_flat_green" href="javascript:void(0)" onclick="xajax_addNotes($('note_userid').get('value'), $('notesTxt').get('value'), $('note_rating').get('value'),  '<?= ($req['login']?"upd":"add")?>', <?=$type?>); this.addClass('b-button_disabled')">РЎРѕС…СЂР°РЅРёС‚СЊ</a>
+            <span class="b-buttons__txt"><a href="#" onclick="$(this).getParent('div.b-shadow').setStyle('display', 'none'); return false;" class="b-buttons__link">РћС‚РјРµРЅРёС‚СЊ</a></span>
         </div>
     </div>
 </div>

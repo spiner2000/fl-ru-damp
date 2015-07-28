@@ -16,7 +16,7 @@
 <div class="b-post b-post_padbot_20">
     <div class="b-post__body b-post__body_bordbot_solid_dfedcf  b-post__body_padbot_20">
         <div class="b-post__time b-post__time_float_right b-page__desktop b-page__ipad">
-            <?=date("d.m.Y в H:i", $created_time) ?>
+            <?=date("d.m.Y РІ H:i", $created_time) ?>
         </div>
         <div class="b-post__avatar b-post__avatar_margright_10">
             <? seo_start($ajax_view); ?>
@@ -34,14 +34,14 @@
                     $alt = '';
                     $img_suf = 'a';
                     if($top['modified_id']==$top['user_id']){
-                        $alt = 'внесены изменения: ';
+                        $alt = 'РІРЅРµСЃРµРЅС‹ РёР·РјРµРЅРµРЅРёСЏ: ';
                         $img_suf = 'u';
                     }else if($top['modified_id'] == $top['commune_author_id']){
-                        $alt = 'Отредактировано создателем сообщества ';
+                        $alt = 'РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ СЃРѕР·РґР°С‚РµР»РµРј СЃРѕРѕР±С‰РµСЃС‚РІР° ';
                     }else if($top['modified_by_commune_admin']){
-                        $alt = 'Отредактировано администратором сообщества ';
+                        $alt = 'РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј СЃРѕРѕР±С‰РµСЃС‚РІР° ';
                     }else { 
-                        $alt = 'Отредактировано модератором ';
+                        $alt = 'РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј ';
                     }
                     if($mod & commune::MOD_MODER){
                         $alt .= ' ( '.$top['modified_login'].' : ' . $top['modified_usurname'] . ' ' . $top['modified_uname'].' ) ';
@@ -53,11 +53,11 @@
                 $user_data = commune::GetUserCommuneRel($top['commune_id'],$top['user_id']);
                 if($is_moder){
                     if($top['member_is_banned'] || $top['user_is_banned'] || $user_data['is_banned']){ ?>
-                        <p><strong style="background: #F2A5A5; paddong: 4px">Пользователь забанен<?php echo $user_data['is_banned'] ? ' в сообществе' : ''?></strong></p>
+                        <p><strong style="background: #F2A5A5; paddong: 4px">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°Р±Р°РЅРµРЅ<?php echo $user_data['is_banned'] ? ' РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ' : ''?></strong></p>
                     <?php } 
 
                 } ?>
-                <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_weight_normal b-layout__txt_lowercase b-layout__txt_padright_10">на сайте <?=ElapsedMnths(strtotime($top['reg_date']))?></span>
+                <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_weight_normal b-layout__txt_lowercase b-layout__txt_padright_10">РЅР° СЃР°Р№С‚Рµ <?=ElapsedMnths(strtotime($top['reg_date']))?></span>
                 <?//= seo_end(false, $ajax_view); ?>
             </div>
             <div id="topicRate_<?= $top['id'];?>">
@@ -66,7 +66,7 @@
 <?php if ($_GET['site'] != 'Topic') { ?>
             <h3 class="b-post__title b-post__title_padbot_15 <?= $actionRating == 'blur' ? 'b-post__title_color_a7a7a6' : ''; ?>">
                 <?php if($top['is_private'] == 't') { ?>
-                <img src="/images/icons/eye-hidden.png" alt="Скрытый пост" title="Скрытый пост">&nbsp;
+                <img src="/images/icons/eye-hidden.png" alt="РЎРєСЂС‹С‚С‹Р№ РїРѕСЃС‚" title="РЎРєСЂС‹С‚С‹Р№ РїРѕСЃС‚">&nbsp;
                 <?php }//if?>
                 <?php $sTitle   = /*$top['moderator_status'] === '0' ? $stop_words->replace($top['title']) :*/ $top['title']; ?>
                 <? if ($site === 'Topic') { ?>
@@ -78,7 +78,7 @@
             </h3>
 <?php } ?>
             <?// seo_start(!$hideInJS)?>
-            <?//Сообщение поста?>
+            <?//РЎРѕРѕР±С‰РµРЅРёРµ РїРѕСЃС‚Р°?>
             <? if (intval($top["deleted_id"])) {
                 $datetime = explode(" ", $top["deleted_time"]);
                 $date = $datetime[0];
@@ -87,15 +87,15 @@
                 $time = $datetime[1];
                 $time = explode(":", $time);
                 $time = $time[0] .':'.$time[1];
-                $user_entity = 'модератором';
+                $user_entity = 'РјРѕРґРµСЂР°С‚РѕСЂРѕРј';
                 if ($top["commune_author_id"] == $top["deleted_id"]) {
-                    $user_entity = 'администратором сообщества';
+                    $user_entity = 'Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј СЃРѕРѕР±С‰РµСЃС‚РІР°';
                 }
                 if ($top["user_id"] == $top["deleted_id"]) {
-                    $user_entity = 'автором темы';
+                    $user_entity = 'Р°РІС‚РѕСЂРѕРј С‚РµРјС‹';
                 }
             ?><div class="b-post__moderator_info">
-                  <span class="b-post__moderator_info_red">Удалено <?=$user_entity ?> [<?=$top["modified_login"] ?>] <?=$top["modified_uname"] ?> <?=$top["modified_usurname"] ?></span> <span class="b-post__moderator_info_gray">[<?=$date ?> | <?=$time ?>]</span>
+                  <span class="b-post__moderator_info_red">РЈРґР°Р»РµРЅРѕ <?=$user_entity ?> [<?=$top["modified_login"] ?>] <?=$top["modified_uname"] ?> <?=$top["modified_usurname"] ?></span> <span class="b-post__moderator_info_gray">[<?=$date ?> | <?=$time ?>]</span>
               </div><?
                } ?>
             <div class="b-post__txt <?=(intval($top["deleted_id"])?'b-post__deleted_txt':'') ?> <?= $actionRating == 'blur' ? "b-post__txt_opacity_3" : ""?>">                
@@ -110,16 +110,16 @@
                     $sMessage = str_replace("<cut>", "<br/>", $sMessage);
                 }
                 
-                // закрываем теги для сообществ перенесенных из блогов
+                // Р·Р°РєСЂС‹РІР°РµРј С‚РµРіРё РґР»СЏ СЃРѕРѕР±С‰РµСЃС‚РІ РїРµСЂРµРЅРµСЃРµРЅРЅС‹С… РёР· Р±Р»РѕРіРѕРІ
                 if (in_array($top['commune_id'], array(5000, 5001))) {
                     $sMessage = close_tags2($sMessage, 'a,p,s,i,b,h1,h2,h3,h4,h5,h6');
                 }
                 ?>
                 <?= reformat($sMessage, $msgtext_max, ($site == 'Topic' ? 0 : 1), -($top['user_is_chuck'] == 't'), 0, 25, true); if ($tiser) {?>
-                <br/><?php if($_GET['site'] != 'Topic') {?><a href="<?=getFriendlyURL('commune', $msg_id)?>">Подробнее</a>                               
+                <br/><?php if($_GET['site'] != 'Topic') {?><a href="<?=getFriendlyURL('commune', $msg_id)?>">РџРѕРґСЂРѕР±РЅРµРµ</a>                               
                          <? }else {?>
                          <div>
-                        <div><a href="javascript:void(0)" class="commentspoiler">Развернуть</a></div>
+                        <div><a href="javascript:void(0)" class="commentspoiler">Р Р°Р·РІРµСЂРЅСѓС‚СЊ</a></div>
                         <div style="border: solid 1px #000;background-color: #FCFCFC; padding:5px;display:none" class="cat">
                             <?=$tiser ?>
                         </div>
@@ -143,14 +143,14 @@
                         $is_tn = (int)($attach['small'] == 't');
                         $aData = getAttachDisplayData( null, $attach['fname'], $attach['path'], commune::MSG_IMAGE_MAX_HEIGHT, commune::_MSG_IMAGE_MAX_WIDTH, commune::MSG_IMAGE_MAX_SIZE, $is_tn );
                         if ( $aData && $aData['success'] ) {
-                            if ( $aData['file_mode'] || $aData['virus_flag'] || $att_ext == "swf") { // Добавил проверку на swf потому что в сообществах и блогах по swf всегда ссылка
+                            if ( $aData['file_mode'] || $aData['virus_flag'] || $att_ext == "swf") { // Р”РѕР±Р°РІРёР» РїСЂРѕРІРµСЂРєСѓ РЅР° swf РїРѕС‚РѕРјСѓ С‡С‚Рѕ РІ СЃРѕРѕР±С‰РµСЃС‚РІР°С… Рё Р±Р»РѕРіР°С… РїРѕ swf РІСЃРµРіРґР° СЃСЃС‹Р»РєР°
                                 $str = viewattachLeft( null, $attach['fname'], $attach['path'], $file, 0, 0, 0, 0, 0, 0, $nn );
                                 //seo_start();
                                 echo '<div class = "flw_offer_attach">', $str, '</div>';
                                 //print seo_end();
                             } 
                             else {
-                                $cur_foto_alt = $foto_alt." фото ".$attach['fname'];
+                                $cur_foto_alt = $foto_alt." С„РѕС‚Рѕ ".$attach['fname'];
                                 if ( $is_tn )
                                     $str = "<div align=\"center\"><a href=\"".WDCPREFIX . '/' . $attach['path'] . $attach['fname']."\" target=\"_blank\" alt=\"".$cur_foto_alt."\" title=\"".$cur_foto_alt."\"><img src=\"".WDCPREFIX.'/'. $attach['path'] .$aData['file_name']."\" alt=\"".$cur_foto_alt."\" title=\"".$cur_foto_alt."\" width=\"{$aData['img_width']}\" height=\"{$aData['img_height']}\" /></a></div>";
                                 else 
@@ -174,12 +174,12 @@
                     $blocked_time = $top['is_blocked_s'] == 't' ? $top['blocked_time_s'] : $top['blocked_time_c'];
                     $moder_login  = $top['is_blocked_s'] == 't' ? $top['admin_login_s'] : $top['admin_login_c'];
                     $moder_name   = $top['is_blocked_s'] == 't' ? $top['admin_uname_s'] . ' '. $top['admin_usurname_s'] : $top['admin_uname_c'] . ' '. $top['admin_usurname_c'];
-                    $moder_type   = $mod & ( commune::MOD_ADMIN | commune::MOD_MODER ) ? ($top['is_blocked_s'] == 't' ? ' администратор сайта' : ' администратор сообщества') : '';
+                    $moder_type   = $mod & ( commune::MOD_ADMIN | commune::MOD_MODER ) ? ($top['is_blocked_s'] == 't' ? ' Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ СЃР°Р№С‚Р°' : ' Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ СЃРѕРѕР±С‰РµСЃС‚РІР°') : '';
                 ?>
                 <div class='b-fon b-fon_width_full b-fon_padtop_20'>
                     <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_padleft_30 b-fon__body_bg_ff6d2d">
                         <span class="b-fon__attent_white"></span>
-                        <span class="b-fon__txt b-fon__txt_bold">Пост заблокирован</span><?php if ($top['is_blocked_s'] == 't') { ?><?= ': ' . str_replace("\n", "<br>", ($top['blocked_reason_s'])) ?><?php } ?>
+                        <span class="b-fon__txt b-fon__txt_bold">РџРѕСЃС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ</span><?php if ($top['is_blocked_s'] == 't') { ?><?= ': ' . str_replace("\n", "<br>", ($top['blocked_reason_s'])) ?><?php } ?>
                     </div>
                 </div>
                 <?php } ?>
@@ -214,8 +214,8 @@
             <? } ?>
         </div>
         <div class="b-post__time b-page__iphone">
-            <?=date("d.m.Y в H:i", $created_time) ?>
+            <?=date("d.m.Y РІ H:i", $created_time) ?>
         </div>
-    </div><!-- конец топика -->
+    </div><!-- РєРѕРЅРµС† С‚РѕРїРёРєР° -->
 </div>
 <style type="text/css">.msie .b-icon__ver{ position:relative; top:2px}</style>

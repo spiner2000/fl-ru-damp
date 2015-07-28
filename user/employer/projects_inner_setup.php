@@ -52,8 +52,8 @@ function upprj(num){
 </script>
 <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0">
 <tr valign="middle">
-<td style="padding-left: 10px; padding-top: 10px;"><?=(!$_GET["open"] && !$_GET["closed"] ? "<b>Все</b> (".$conted_prj["all"].")" : '<a class="blue" href="?"><b>Все</b></a> ('.$conted_prj["all"].')' )?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=($_GET["open"] ? "<b>Открытые</b> (".$conted_prj["open"].")" : '<a class="blue" href="#" onclick="javascript: document.frm.openclose.value=1; document.frm.submit();" ><b>Открытые</b></a> ('.$conted_prj["open"].')' )?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=($_GET["closed"] ? "<b>Закрытые</b> (".$conted_prj["closed"].")" : '<a class="blue" href="#" onclick="javascript: document.frm.openclose.value=2; document.frm.submit();"><b>Закрытые</b></a> ('.$conted_prj["closed"].')' )?></td>
-<td align="right" style="padding:15px 10px 0px 0px;"><a href="/public/"><IMG alt="Публиковать ваш проект" align="absmiddle" src="/images/post_button.gif" width="178" height="28" border="0"></a></td>
+<td style="padding-left: 10px; padding-top: 10px;"><?=(!$_GET["open"] && !$_GET["closed"] ? "<b>Р’СЃРµ</b> (".$conted_prj["all"].")" : '<a class="blue" href="?"><b>Р’СЃРµ</b></a> ('.$conted_prj["all"].')' )?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=($_GET["open"] ? "<b>РћС‚РєСЂС‹С‚С‹Рµ</b> (".$conted_prj["open"].")" : '<a class="blue" href="#" onclick="javascript: document.frm.openclose.value=1; document.frm.submit();" ><b>РћС‚РєСЂС‹С‚С‹Рµ</b></a> ('.$conted_prj["open"].')' )?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?=($_GET["closed"] ? "<b>Р—Р°РєСЂС‹С‚С‹Рµ</b> (".$conted_prj["closed"].")" : '<a class="blue" href="#" onclick="javascript: document.frm.openclose.value=2; document.frm.submit();"><b>Р—Р°РєСЂС‹С‚С‹Рµ</b></a> ('.$conted_prj["closed"].')' )?></td>
+<td align="right" style="padding:15px 10px 0px 0px;"><a href="/public/"><IMG alt="РџСѓР±Р»РёРєРѕРІР°С‚СЊ РІР°С€ РїСЂРѕРµРєС‚" align="absmiddle" src="/images/post_button.gif" width="178" height="28" border="0"></a></td>
 </tr>
 </table>
 <br>
@@ -101,19 +101,19 @@ if ($prjs) {
                 <?} else {?>
                     <img border="0" src="/images/public_your_logo.gif" />
                 <? }?> 
-                <div>Платный проект</div></div><?if ($prj['cost']) {?><div class="fl2_offer_budget">Бюджет: <?=CurToChar($prj['cost'], $prj['currency'])?></div><?}?><div class="fl2_offer_header"> <?if ($prj['ico_closed']=='t') {?><a href="/about/prjrules/" title="Проект закрыт"><img src="/images/ico_closed.gif" alt="Проект закрыт" /></a><?}?>
+                <div>РџР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚</div></div><?if ($prj['cost']) {?><div class="fl2_offer_budget">Р‘СЋРґР¶РµС‚: <?=CurToChar($prj['cost'], $prj['currency'])?></div><?}?><div class="fl2_offer_header"> <?if ($prj['ico_closed']=='t') {?><a href="/about/prjrules/" title="РџСЂРѕРµРєС‚ Р·Р°РєСЂС‹С‚"><img src="/images/ico_closed.gif" alt="РџСЂРѕРµРєС‚ Р·Р°РєСЂС‹С‚" /></a><?}?>
             <? if ($prj["frl_id"]) { ?><a href="/norisk/?prj=<?=$prj['id']?>"><img src="/images/shield_sm.gif"></a><? } ?><a name="/proonly.php" href="<?=$blink?>" class="fl2_offer_header" title=""><?=reformat($prj['name'], 100, 0, 1)?></a></div><div class="fl2_offer_content"><?=ereg_replace("\r","",ereg_replace("\n","",reformat($prj['descr'])))?></div><?
 
             $attach=$projects->GetAllAttach;
-            for ($i=0;$i<count($attach);$i++) {?><div class="flw_offer_attach"><a href="/users/<?=$dir?>/upload/<?=$attach[$i]['name']?>" target="_blank">Загрузить</a> (<?=$attach[$i]['ftype']?>; <?=ConvertBtoMB($attach[$i]['size'])?> )</div><?}?><br><div class="fl2_offer_meta">Прошло времени с момента публикации: <?=ago_pub_x(strtotimeEx($prj['post_date']))?><br />Автор: <a href="/users/<?=$name["login"]?>"><? print $name["uname"]." "; print $name["usurname"]; ?> [<?=$name["login"]?>]</a><br>: <? $category=$proj_groups_by_id[$prj['category']]; print $category; ?><?if ($prj['pro_only']=='t') {?><br /><font  class="fl2_offer_meta2" style="background-color:#fff7ee;">Отвечать на проект могут только пользователи с аккаунтом <a class="b-layout__link" href="/payed/"><span class="b-icon b-icon__pro b-icon__pro_f " title="Платный аккаунт" alt="Платный аккаунт"></span></a></font></div><?}?><div class="fl2_comments_link"><div style="padding:12px 0px 0px 0px;"></div></div>
+            for ($i=0;$i<count($attach);$i++) {?><div class="flw_offer_attach"><a href="/users/<?=$dir?>/upload/<?=$attach[$i]['name']?>" target="_blank">Р—Р°РіСЂСѓР·РёС‚СЊ</a> (<?=$attach[$i]['ftype']?>; <?=ConvertBtoMB($attach[$i]['size'])?> )</div><?}?><br><div class="fl2_offer_meta">РџСЂРѕС€Р»Рѕ РІСЂРµРјРµРЅРё СЃ РјРѕРјРµРЅС‚Р° РїСѓР±Р»РёРєР°С†РёРё: <?=ago_pub_x(strtotimeEx($prj['post_date']))?><br />РђРІС‚РѕСЂ: <a href="/users/<?=$name["login"]?>"><? print $name["uname"]." "; print $name["usurname"]; ?> [<?=$name["login"]?>]</a><br>: <? $category=$proj_groups_by_id[$prj['category']]; print $category; ?><?if ($prj['pro_only']=='t') {?><br /><font  class="fl2_offer_meta2" style="background-color:#fff7ee;">РћС‚РІРµС‡Р°С‚СЊ РЅР° РїСЂРѕРµРєС‚ РјРѕРіСѓС‚ С‚РѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ Р°РєРєР°СѓРЅС‚РѕРј <a class="b-layout__link" href="/payed/"><span class="b-icon b-icon__pro b-icon__pro_f " title="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" alt="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚"></span></a></font></div><?}?><div class="fl2_comments_link"><div style="padding:12px 0px 0px 0px;"></div></div>
             <?php if(!($prj["closed"]=="t"&&!$prj["frl_id"])) { ?>
             <table cellpadding="2" cellspacing="0" border="0">
             <tr valign="middle">
             <td><img src="/images/ico_setup.gif" border="0"></td>
-            <td><a class="public_blue" href="/public/?step=1&public=<?=$prj["id"]?>&red=<?=rawurlencode("/users/".$name["login"]."/setup/projects/")?>">Редактировать</a></td>
+            <td><a class="public_blue" href="/public/?step=1&public=<?=$prj["id"]?>&red=<?=rawurlencode("/users/".$name["login"]."/setup/projects/")?>">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></td>
             <td>&nbsp;&nbsp;&nbsp;</td>
             <td><img src="/images/<?=($prj["closed"]=='t' ? "ico_reopen.gif" : "ico_close_round.gif")?>" border="0"></td>
-            <td><?if ($prj["is_accepted"] == 't') {?><a class="public_black" href="/norisk/?prj=<?=$prj["id"]?>">Безопасная Сделка</a> <? }elseif ($prj["closed"]=='t') {?><a class="public_black" href="#"   onclick="closeprj(<?=$prj["id"]?>);">Публиковать еще раз</a><?} else {?><a class="public_blue" href="#"   onclick="closeprj(<?=$prj["id"]?>);">Снять с публикации</a><?}?></td>
+            <td><?if ($prj["is_accepted"] == 't') {?><a class="public_black" href="/norisk/?prj=<?=$prj["id"]?>">Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°</a> <? }elseif ($prj["closed"]=='t') {?><a class="public_black" href="#"   onclick="closeprj(<?=$prj["id"]?>);">РџСѓР±Р»РёРєРѕРІР°С‚СЊ РµС‰Рµ СЂР°Р·</a><?} else {?><a class="public_blue" href="#"   onclick="closeprj(<?=$prj["id"]?>);">РЎРЅСЏС‚СЊ СЃ РїСѓР±Р»РёРєР°С†РёРё</a><?}?></td>
             </tr>
             </table>
             <?php } ?>
@@ -124,40 +124,40 @@ if ($prjs) {
             <table  cellpadding="2" cellspacing="0" border="0">
             <tr>
                 <td>&nbsp;</td>
-                <td><b>Статистика по объявлению:</b><br><?
+                <td><b>РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РѕР±СЉСЏРІР»РµРЅРёСЋ:</b><br><?
                 if ($prj["closed"]=="t") { ?><? } else {
             $payed=(($prj["payed_to"]>$prj["now"] && $prj["payed"]) ? 1 : 0 );
             $counte=$projects->CountProjectNew($prj['post_date'], $prj['kind'], $prj['top_from'], $prj['top_to'], $prj['strong_top']);
             $page=floor($counte/$GLOBALS["prjspp"])+1;
             $counte_page=$counte % $GLOBALS["prjspp"];
             ?>
-            <a class="public_blue" href="/projects/?kind=<?=$prj['kind']?>&page=<?=$page?>#prj<?=$prj['id']?>"><?=$counte_page?>-е по счету (<?=$page?>-я страница)</a><br>закладка "<?=GetKind($prj["kind"])?>"
+            <a class="public_blue" href="/projects/?kind=<?=$prj['kind']?>&page=<?=$page?>#prj<?=$prj['id']?>"><?=$counte_page?>-Рµ РїРѕ СЃС‡РµС‚Сѓ (<?=$page?>-СЏ СЃС‚СЂР°РЅРёС†Р°)</a><br>Р·Р°РєР»Р°РґРєР° "<?=GetKind($prj["kind"])?>"
             <?}?>
 
 <?
         if (is_new_prj($prj['post_date'])) {
 ?>
-            <br><?=((!$prj["comm_count"] || $prj["comm_count"] % 10==0 || $prj["comm_count"] % 10 >4 || ($prj["comm_count"] >4 &&  $prj["comm_count"]<21)) ?  '<a class="public_blue" href="/blogs/view.php?tr='.$prj['thread_id'].'">'.$prj["comm_count"].' предложений</a>' : (($prj["comm_count"] % 10 == 1 || $prj["comm_count"]==1) ?  '<a class="public_blue" href="/blogs/view.php?tr='.$prj['thread_id'].'">'.$prj["comm_count"].' предложение</a>' : '<a class="public_blue" href="/blogs/view.php?tr='.$prj['thread_id'].'">'.$prj["comm_count"].' предложения</a>'  )   )?><br><br></td>
+            <br><?=((!$prj["comm_count"] || $prj["comm_count"] % 10==0 || $prj["comm_count"] % 10 >4 || ($prj["comm_count"] >4 &&  $prj["comm_count"]<21)) ?  '<a class="public_blue" href="/blogs/view.php?tr='.$prj['thread_id'].'">'.$prj["comm_count"].' РїСЂРµРґР»РѕР¶РµРЅРёР№</a>' : (($prj["comm_count"] % 10 == 1 || $prj["comm_count"]==1) ?  '<a class="public_blue" href="/blogs/view.php?tr='.$prj['thread_id'].'">'.$prj["comm_count"].' РїСЂРµРґР»РѕР¶РµРЅРёРµ</a>' : '<a class="public_blue" href="/blogs/view.php?tr='.$prj['thread_id'].'">'.$prj["comm_count"].' РїСЂРµРґР»РѕР¶РµРЅРёСЏ</a>'  )   )?><br><br></td>
 <?
         }
         else {
 ?>
-            <br><?=((!$prj["offers_count"] || $prj["offers_count"] % 10==0 || $prj["offers_count"] % 10 >4 || ($prj["offers_count"] >4 &&  $prj["offers_count"]<21)) ?  '<a class="public_blue" href="/projects/?pid='.$prj['id'].'&f=1">'.$prj["offers_count"].' предложений</a>' : (($prj["offers_count"] % 10 == 1 || $prj["comm_count"]==1) ?  '<a class="public_blue" href="/projects/?pid='.$prj['id'].'&f=1">'.$prj["offers_count"].' предложение</a>' : '<a class="public_blue" href="/projects/?pid='.$prj['id'].'&f=1">'.$prj["offers_count"].' предложения</a>'  )   )?><br><br></td>
+            <br><?=((!$prj["offers_count"] || $prj["offers_count"] % 10==0 || $prj["offers_count"] % 10 >4 || ($prj["offers_count"] >4 &&  $prj["offers_count"]<21)) ?  '<a class="public_blue" href="/projects/?pid='.$prj['id'].'&f=1">'.$prj["offers_count"].' РїСЂРµРґР»РѕР¶РµРЅРёР№</a>' : (($prj["offers_count"] % 10 == 1 || $prj["comm_count"]==1) ?  '<a class="public_blue" href="/projects/?pid='.$prj['id'].'&f=1">'.$prj["offers_count"].' РїСЂРµРґР»РѕР¶РµРЅРёРµ</a>' : '<a class="public_blue" href="/projects/?pid='.$prj['id'].'&f=1">'.$prj["offers_count"].' РїСЂРµРґР»РѕР¶РµРЅРёСЏ</a>'  )   )?><br><br></td>
 <?
         }
 ?>
             </tr>
             </table>
             </td>
-            <td  class="public_plus_black" align="center" valign="middle"><?=(($prj["closed"]=="t"&&!$prj["frl_id"])? "Снято с публикации" : ($prj["exec_id"] > 0 ? "Исполнитель найден:<br>" . '<a class="blue" href="/users/' . $prj['exec_login'] . '">' . $prj['exec_name'] . ' ' . $prj['exec_surname'] . ' ' . '[' . $prj['exec_login'] . "]" : "Ищется исполнитель"))?><br>
+            <td  class="public_plus_black" align="center" valign="middle"><?=(($prj["closed"]=="t"&&!$prj["frl_id"])? "РЎРЅСЏС‚Рѕ СЃ РїСѓР±Р»РёРєР°С†РёРё" : ($prj["exec_id"] > 0 ? "РСЃРїРѕР»РЅРёС‚РµР»СЊ РЅР°Р№РґРµРЅ:<br>" . '<a class="blue" href="/users/' . $prj['exec_login'] . '">' . $prj['exec_name'] . ' ' . $prj['exec_surname'] . ' ' . '[' . $prj['exec_login'] . "]" : "РС‰РµС‚СЃСЏ РёСЃРїРѕР»РЅРёС‚РµР»СЊ"))?><br>
 			<? 	
-				if ($prj["need_arbiter"] == 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">Проект заморожен арбитражем</a>";
-				elseif (!$prj["frl_id"])  print "<a href=\"".(($prj["exec_id"] > 0)?"/".sbr::NEW_TEMPLATE_SBR."sbr/?prj=".$prj['id']."&login=".$prj['exec_login']:"/".sbr::NEW_TEMPLATE_SBR."/?prj=".$prj['id'])."\" class=\"blue\">Начать «Безопасную Сделку»</a>";
-				elseif ($prj["is_t3_send"] != 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">Тех. задание не отправлено</a>";
-				elseif ($prj["is_accepted"] != 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">Тех. задание не утверждено</a>";
-				elseif ($prj["is_money_reserved"] != 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">Деньги не зарезервированы</a>";
-				elseif ($prj["is_closed"] != 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">Проект в работе</a>";
-				else  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">Проект закончен</a>";
+				if ($prj["need_arbiter"] == 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">РџСЂРѕРµРєС‚ Р·Р°РјРѕСЂРѕР¶РµРЅ Р°СЂР±РёС‚СЂР°Р¶РµРј</a>";
+				elseif (!$prj["frl_id"])  print "<a href=\"".(($prj["exec_id"] > 0)?"/".sbr::NEW_TEMPLATE_SBR."sbr/?prj=".$prj['id']."&login=".$prj['exec_login']:"/".sbr::NEW_TEMPLATE_SBR."/?prj=".$prj['id'])."\" class=\"blue\">РќР°С‡Р°С‚СЊ В«Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓВ»</a>";
+				elseif ($prj["is_t3_send"] != 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">РўРµС…. Р·Р°РґР°РЅРёРµ РЅРµ РѕС‚РїСЂР°РІР»РµРЅРѕ</a>";
+				elseif ($prj["is_accepted"] != 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">РўРµС…. Р·Р°РґР°РЅРёРµ РЅРµ СѓС‚РІРµСЂР¶РґРµРЅРѕ</a>";
+				elseif ($prj["is_money_reserved"] != 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">Р”РµРЅСЊРіРё РЅРµ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹</a>";
+				elseif ($prj["is_closed"] != 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">РџСЂРѕРµРєС‚ РІ СЂР°Р±РѕС‚Рµ</a>";
+				else  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">РџСЂРѕРµРєС‚ Р·Р°РєРѕРЅС‡РµРЅ</a>";
 				?>
 			</td>
             </tr></table>
@@ -183,19 +183,19 @@ if ($prjs) {
 			</div>
 			<div class="clear"></div>
 		</div>
-            <div class="fl2_offer"><?if ($prj['cost']) {?><div class="fl2_offer_budget">Бюджет: <?=CurToChar($prj['cost'], $prj['currency'])?></div><?}?><div class="fl2_offer_header"> <?if ($prj['ico_closed']=='t') {?><a href="/about/prjrules/" title="Проект закрыт"><img src="/images/ico_closed.gif" alt="Проект закрыт" /></a><?}?>
+            <div class="fl2_offer"><?if ($prj['cost']) {?><div class="fl2_offer_budget">Р‘СЋРґР¶РµС‚: <?=CurToChar($prj['cost'], $prj['currency'])?></div><?}?><div class="fl2_offer_header"> <?if ($prj['ico_closed']=='t') {?><a href="/about/prjrules/" title="РџСЂРѕРµРєС‚ Р·Р°РєСЂС‹С‚"><img src="/images/ico_closed.gif" alt="РџСЂРѕРµРєС‚ Р·Р°РєСЂС‹С‚" /></a><?}?>
             <? if ($prj["frl_id"]) { ?><a href="/norisk/?prj=<?=$prj['id']?>"><img src="/images/shield_sm.gif"></a><? } ?><a href="<?=$blink?>"><?=reformat($prj['name'], 100, 0, 1)?></a></div><div class="fl2_offer_content"><?=ereg_replace("\r","",ereg_replace("\n","",reformat($prj['descr'])))?></div><?
 
             $attach=$projects->GetAllAttach;
-            for ($i=0;$i<count($attach);$i++) {?><div class="flw_offer_attach"><a href="/users/<?=$dir?>/upload/<?=$attach[$i]['name']?>" target="_blank">Загрузить</a> (<?=$attach[$i]['ftype']?>; <?=ConvertBtoMB($attach[$i]['size'])?> )</div><?}?><br><div class="fl2_offer_meta">Прошло времени с момента публикации: <?=ago_pub_x(strtotimeEx($prj['post_date']))?><br />Автор: <a href="/users/<?=$name["login"]?>"><? print $name["uname"]." "; print $name["usurname"]; ?> [<?=$name["login"]?>]</a><br />: <? $category=$proj_groups_by_id[$prj['category']]; print $category; ?></div><?if ($prj['pro_only']=='t') {?><br /><font  class="fl2_offer_meta2" style="background-color:#fff7ee;">Отвечать на проект могут только пользователи с аккаунтом <a class="b-layout__link" href="/payed/"><span class="b-icon b-icon__pro b-icon__pro_f " title="Платный аккаунт" alt="Платный аккаунт"></span></a></font></div><?}?><div class="fl2_comments_link"><div style="padding:12px 0px 0px 0px;"></div></div>
+            for ($i=0;$i<count($attach);$i++) {?><div class="flw_offer_attach"><a href="/users/<?=$dir?>/upload/<?=$attach[$i]['name']?>" target="_blank">Р—Р°РіСЂСѓР·РёС‚СЊ</a> (<?=$attach[$i]['ftype']?>; <?=ConvertBtoMB($attach[$i]['size'])?> )</div><?}?><br><div class="fl2_offer_meta">РџСЂРѕС€Р»Рѕ РІСЂРµРјРµРЅРё СЃ РјРѕРјРµРЅС‚Р° РїСѓР±Р»РёРєР°С†РёРё: <?=ago_pub_x(strtotimeEx($prj['post_date']))?><br />РђРІС‚РѕСЂ: <a href="/users/<?=$name["login"]?>"><? print $name["uname"]." "; print $name["usurname"]; ?> [<?=$name["login"]?>]</a><br />: <? $category=$proj_groups_by_id[$prj['category']]; print $category; ?></div><?if ($prj['pro_only']=='t') {?><br /><font  class="fl2_offer_meta2" style="background-color:#fff7ee;">РћС‚РІРµС‡Р°С‚СЊ РЅР° РїСЂРѕРµРєС‚ РјРѕРіСѓС‚ С‚РѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ Р°РєРєР°СѓРЅС‚РѕРј <a class="b-layout__link" href="/payed/"><span class="b-icon b-icon__pro b-icon__pro_f " title="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" alt="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚"></span></a></font></div><?}?><div class="fl2_comments_link"><div style="padding:12px 0px 0px 0px;"></div></div>
             <?php if(!($prj["closed"]=="t"&&!$prj["frl_id"])) { ?>
             <table cellpadding="2" cellspacing="0" border="0">
             <tr valign="middle">
             <td><img src="/images/ico_setup.gif" border="0"></td>
-            <td><a class="public_blue" href="/public/?step=1&public=<?=$prj["id"]?>&red=<?=rawurlencode("/users/".$name["login"]."/setup/projects/")?>">Редактировать</a></td>
+            <td><a class="public_blue" href="/public/?step=1&public=<?=$prj["id"]?>&red=<?=rawurlencode("/users/".$name["login"]."/setup/projects/")?>">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></td>
             <td>&nbsp;&nbsp;&nbsp;</td>
             <td><img src="/images/<?=(($prj["closed"]=='t' || $prj["is_accepted"] =='t') ? "ico_reopen.gif" : "ico_close_round.gif")?>" border="0"></td>
-            <td><?if ($prj["is_accepted"] == 't') {?><a class="public_black" href="/norisk/?prj=<?=$prj["id"]?>">Безопасная Сделка</a> <? }elseif ($prj["closed"]=='t') {?><a class="public_black" href="#"   onclick="closeprj(<?=$prj["id"]?>);">Публиковать еще раз</a><?} else {?><a class="public_blue" href="#"   onclick="closeprj(<?=$prj["id"]?>);">Снять с публикации</a><?}?></td>
+            <td><?if ($prj["is_accepted"] == 't') {?><a class="public_black" href="/norisk/?prj=<?=$prj["id"]?>">Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°</a> <? }elseif ($prj["closed"]=='t') {?><a class="public_black" href="#"   onclick="closeprj(<?=$prj["id"]?>);">РџСѓР±Р»РёРєРѕРІР°С‚СЊ РµС‰Рµ СЂР°Р·</a><?} else {?><a class="public_blue" href="#"   onclick="closeprj(<?=$prj["id"]?>);">РЎРЅСЏС‚СЊ СЃ РїСѓР±Р»РёРєР°С†РёРё</a><?}?></td>
             </tr>
             </table>
             <?php } ?>
@@ -206,24 +206,24 @@ if ($prjs) {
             <table  cellpadding="2" cellspacing="0" border="0">
             <tr>
                 <td>&nbsp;</td>
-                <td><div class="b-layout__txt b-layout__txt_fontsize_11"><b>Статистика по объявлению:</b><br><?
+                <td><div class="b-layout__txt b-layout__txt_fontsize_11"><b>РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РѕР±СЉСЏРІР»РµРЅРёСЋ:</b><br><?
                 if ($prj["closed"]=="t") { ?><? } else {
             $payed=(($prj["payed_to"]>$prj["now"] && $prj["payed"]) ? 1 : 0 );
             $counte=$projects->CountProjectNew($prj['post_date'], $prj['kind'], $prj['top_from'], $prj['top_to'], $prj['strong_top']);
             $page=floor($counte/$GLOBALS["prjspp"])+1;
             $counte_page=$counte % $GLOBALS["prjspp"];
             ?>
-            <a class="public_blue" href="/?kind=<?=$prj['kind']?>&page=<?=$page?>#prj<?=$prj['id']?>"><?=$counte_page?>-е по счету (<?=$page?>-я страница)</a><br>закладка "<?=GetKind($prj["kind"])?>"
+            <a class="public_blue" href="/?kind=<?=$prj['kind']?>&page=<?=$page?>#prj<?=$prj['id']?>"><?=$counte_page?>-Рµ РїРѕ СЃС‡РµС‚Сѓ (<?=$page?>-СЏ СЃС‚СЂР°РЅРёС†Р°)</a><br>Р·Р°РєР»Р°РґРєР° "<?=GetKind($prj["kind"])?>"
             <?}?>
 <?
         if (is_new_prj($prj['post_date'])) {
 ?>
-            <br><?=((!$prj["comm_count"] || $prj["comm_count"] % 10==0 || $prj["comm_count"] % 10 >4 || ($prj["comm_count"] >4 &&  $prj["comm_count"]<21)) ?  '<a class="public_blue" href="/blogs/view.php?tr='.$prj['thread_id'].'">'.$prj["comm_count"].' предложений</a>' : (($prj["comm_count"] % 10 == 1 || $prj["comm_count"]==1) ?  '<a class="public_blue" href="/blogs/view.php?tr='.$prj['thread_id'].'">'.$prj["comm_count"].' предложение</a>' : '<a class="public_blue" href="/blogs/view.php?tr='.$prj['thread_id'].'">'.$prj["comm_count"].' предложения</a>'  )   )?><br><br>
+            <br><?=((!$prj["comm_count"] || $prj["comm_count"] % 10==0 || $prj["comm_count"] % 10 >4 || ($prj["comm_count"] >4 &&  $prj["comm_count"]<21)) ?  '<a class="public_blue" href="/blogs/view.php?tr='.$prj['thread_id'].'">'.$prj["comm_count"].' РїСЂРµРґР»РѕР¶РµРЅРёР№</a>' : (($prj["comm_count"] % 10 == 1 || $prj["comm_count"]==1) ?  '<a class="public_blue" href="/blogs/view.php?tr='.$prj['thread_id'].'">'.$prj["comm_count"].' РїСЂРµРґР»РѕР¶РµРЅРёРµ</a>' : '<a class="public_blue" href="/blogs/view.php?tr='.$prj['thread_id'].'">'.$prj["comm_count"].' РїСЂРµРґР»РѕР¶РµРЅРёСЏ</a>'  )   )?><br><br>
 <?
         }
         else {
 ?>
-            <br><?=((!$prj["offers_count"] || $prj["offers_count"] % 10==0 || $prj["offers_count"] % 10 >4 || ($prj["offers_count"] >4 &&  $prj["offers_count"]<21)) ?  '<a class="public_blue" href="/projects/?pid='.$prj['id'].'&f=1">'.$prj["offers_count"].' предложений</a>' : (($prj["offers_count"] % 10 == 1 || $prj["comm_count"]==1) ?  '<a class="public_blue" href="/projects/?pid='.$prj['id'].'&f=1">'.$prj["offers_count"].' предложение</a>' : '<a class="public_blue" href="/projects/?pid='.$prj['id'].'&f=1">'.$prj["offers_count"].' предложения</a>'  )   )?><br><br>
+            <br><?=((!$prj["offers_count"] || $prj["offers_count"] % 10==0 || $prj["offers_count"] % 10 >4 || ($prj["offers_count"] >4 &&  $prj["offers_count"]<21)) ?  '<a class="public_blue" href="/projects/?pid='.$prj['id'].'&f=1">'.$prj["offers_count"].' РїСЂРµРґР»РѕР¶РµРЅРёР№</a>' : (($prj["offers_count"] % 10 == 1 || $prj["comm_count"]==1) ?  '<a class="public_blue" href="/projects/?pid='.$prj['id'].'&f=1">'.$prj["offers_count"].' РїСЂРµРґР»РѕР¶РµРЅРёРµ</a>' : '<a class="public_blue" href="/projects/?pid='.$prj['id'].'&f=1">'.$prj["offers_count"].' РїСЂРµРґР»РѕР¶РµРЅРёСЏ</a>'  )   )?><br><br>
 <?
         }
 ?>
@@ -232,8 +232,8 @@ if ($prjs) {
 
             <tr valign="top">
             <td style="padding-top: 8px;"></td>
-            <td><div class="public_plus"><a href="/public/?step=2&public=<?=$prj["id"]?>&red=<?=rawurlencode("/users/".$name["login"]."/setup/projects/")?>" class="b-button b-button_flat b-button_flat_green b-button_height_30 b-button_block">Получить еще предложений</a></div>
-            <? /* if (($account->bonus_sum<50) && ($account->sum<50)) {?><table border="0" cellpadding="0" cellspacing="0"><tr><td class="public_grey_alert">ВНИМАНИЕ! У Вас на счету не хватает<b> <?=50-$account->sum?> FM</b>. После нажатия кнопки Вам будет предложено пополнить счет на указанную сумму.</td></tr></table ><?}*/?>
+            <td><div class="public_plus"><a href="/public/?step=2&public=<?=$prj["id"]?>&red=<?=rawurlencode("/users/".$name["login"]."/setup/projects/")?>" class="b-button b-button_flat b-button_flat_green b-button_height_30 b-button_block">РџРѕР»СѓС‡РёС‚СЊ РµС‰Рµ РїСЂРµРґР»РѕР¶РµРЅРёР№</a></div>
+            <? /* if (($account->bonus_sum<50) && ($account->sum<50)) {?><table border="0" cellpadding="0" cellspacing="0"><tr><td class="public_grey_alert">Р’РќРРњРђРќРР•! РЈ Р’Р°СЃ РЅР° СЃС‡РµС‚Сѓ РЅРµ С…РІР°С‚Р°РµС‚<b> <?=50-$account->sum?> FM</b>. РџРѕСЃР»Рµ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё Р’Р°Рј Р±СѓРґРµС‚ РїСЂРµРґР»РѕР¶РµРЅРѕ РїРѕРїРѕР»РЅРёС‚СЊ СЃС‡РµС‚ РЅР° СѓРєР°Р·Р°РЅРЅСѓСЋ СЃСѓРјРјСѓ.</td></tr></table ><?}*/?>
             </td>
             </tr>
 
@@ -246,15 +246,15 @@ if ($prjs) {
             </table>
             <br>
             </td>
-            <td class="public_plus_black" align="center" valign="middle"><div class="b-layout__txt"><?=(($prj["closed"]=="t"&&!$prj["frl_id"]) ? "Снято с публикации" : ($prj["exec_id"] > 0 ? "Исполнитель найден:<br>" . '<a class="blue" href="/users/' . $prj['exec_login'] . '">' . $prj['exec_name'] . ' ' . $prj['exec_surname'] . ' ' . '[' . $prj['exec_login'] . "]" : "Ищется исполнитель"))?><br>
+            <td class="public_plus_black" align="center" valign="middle"><div class="b-layout__txt"><?=(($prj["closed"]=="t"&&!$prj["frl_id"]) ? "РЎРЅСЏС‚Рѕ СЃ РїСѓР±Р»РёРєР°С†РёРё" : ($prj["exec_id"] > 0 ? "РСЃРїРѕР»РЅРёС‚РµР»СЊ РЅР°Р№РґРµРЅ:<br>" . '<a class="blue" href="/users/' . $prj['exec_login'] . '">' . $prj['exec_name'] . ' ' . $prj['exec_surname'] . ' ' . '[' . $prj['exec_login'] . "]" : "РС‰РµС‚СЃСЏ РёСЃРїРѕР»РЅРёС‚РµР»СЊ"))?><br>
 			<? 	
-				if ($prj["need_arbiter"] == 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">Проект заморожен арбитражем</a>";
-				elseif (!$prj["frl_id"])  print "<a href=\"".(($prj["exec_id"] > 0)?"/".sbr::NEW_TEMPLATE_SBR."/step2/?prj=".$prj['id']."&login=".$prj['exec_login']:"/".sbr::NEW_TEMPLATE_SBR."/?prj=".$prj['id'])."\" class=\"blue\">Начать «Безопасную Сделку»</a>";
-				elseif ($prj["is_t3_send"] != 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">Тех. задание не отправлено</a>";
-				elseif ($prj["is_accepted"] != 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">Тех. задание не утверждено</a>";
-				elseif ($prj["is_money_reserved"] != 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">Деньги не зарезервированы</a>";
-				elseif ($prj["is_closed"] != 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">Проект в работе</a>";
-				else  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">Проект закончен</a>";
+				if ($prj["need_arbiter"] == 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">РџСЂРѕРµРєС‚ Р·Р°РјРѕСЂРѕР¶РµРЅ Р°СЂР±РёС‚СЂР°Р¶РµРј</a>";
+				elseif (!$prj["frl_id"])  print "<a href=\"".(($prj["exec_id"] > 0)?"/".sbr::NEW_TEMPLATE_SBR."/step2/?prj=".$prj['id']."&login=".$prj['exec_login']:"/".sbr::NEW_TEMPLATE_SBR."/?prj=".$prj['id'])."\" class=\"blue\">РќР°С‡Р°С‚СЊ В«Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓВ»</a>";
+				elseif ($prj["is_t3_send"] != 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">РўРµС…. Р·Р°РґР°РЅРёРµ РЅРµ РѕС‚РїСЂР°РІР»РµРЅРѕ</a>";
+				elseif ($prj["is_accepted"] != 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">РўРµС…. Р·Р°РґР°РЅРёРµ РЅРµ СѓС‚РІРµСЂР¶РґРµРЅРѕ</a>";
+				elseif ($prj["is_money_reserved"] != 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">Р”РµРЅСЊРіРё РЅРµ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹</a>";
+				elseif ($prj["is_closed"] != 't')  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">РџСЂРѕРµРєС‚ РІ СЂР°Р±РѕС‚Рµ</a>";
+				else  print "<a href=\"/norisk/?prj=".$prj['id']."\" class=\"blue\">РџСЂРѕРµРєС‚ Р·Р°РєРѕРЅС‡РµРЅ</a>";
 				?>
 			</div></td>
             </tr>  </table>

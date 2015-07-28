@@ -17,7 +17,7 @@ $gr_type = $params['type'];
 
 $data = $sbr_data[$index];
 
-// если нечего выводить, то и график не рисуем
+// РµСЃР»Рё РЅРµС‡РµРіРѕ РІС‹РІРѕРґРёС‚СЊ, С‚Рѕ Рё РіСЂР°С„РёРє РЅРµ СЂРёСЃСѓРµРј
 if (count($data) === 0) {
     continue;
 }
@@ -30,17 +30,17 @@ if (count($data) === 0) {
             categories = [],
             data = [],
             series;
-        <? // разделяем на платежные системы, если надо
+        <? // СЂР°Р·РґРµР»СЏРµРј РЅР° РїР»Р°С‚РµР¶РЅС‹Рµ СЃРёСЃС‚РµРјС‹, РµСЃР»Рё РЅР°РґРѕ
         if ($gr_type === 'ps') { ?>
             series = [
                 {data: [], name: 'WebMoney'},
-                {data: [], name: 'Яндекс.Деньги'},
-                {data: [], name: 'Пластик'},
-                {data: [], name: 'Банк'}
+                {data: [], name: 'РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё'},
+                {data: [], name: 'РџР»Р°СЃС‚РёРє'},
+                {data: [], name: 'Р‘Р°РЅРє'}
             ];
             <? if ($index === 3) { ?>
-            series.push({data: [], name: 'Веб Кошелек'});
-            series.push({data: [], name: 'руб.'});
+            series.push({data: [], name: 'Р’РµР± РљРѕС€РµР»РµРє'});
+            series.push({data: [], name: 'СЂСѓР±.'});
             <? } ?>
         <? } elseif ($gr_type === 'normal' || $gr_type === 'avg_perc') { ?>
             series = [
@@ -78,7 +78,7 @@ if (count($data) === 0) {
             xAxis: {
                 categories: categories,
                 title: {
-                    text: 'Дата',
+                    text: 'Р”Р°С‚Р°',
                     style: {
                         color: '<?= $color ?>'
                     }

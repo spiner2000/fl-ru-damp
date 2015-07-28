@@ -5,119 +5,119 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/pskb.php';
 require_once 'HTTP/Request2.php';
 
 /**
- * Класс для верификации пользователей
+ * РљР»Р°СЃСЃ РґР»СЏ РІРµСЂРёС„РёРєР°С†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
  * 
  */
 class Verification {
     /**
-     * минимальный уровень аттестата webmoney необходимый для верификации
+     * РјРёРЅРёРјР°Р»СЊРЅС‹Р№ СѓСЂРѕРІРµРЅСЊ Р°С‚С‚РµСЃС‚Р°С‚Р° webmoney РЅРµРѕР±С…РѕРґРёРјС‹Р№ РґР»СЏ РІРµСЂРёС„РёРєР°С†РёРё
      * 
      */
     const WM_ATTESTAT_LEVEL = 120;
     /**
-     * принимающий url для OAuth от FF.RU
+     * РїСЂРёРЅРёРјР°СЋС‰РёР№ url РґР»СЏ OAuth РѕС‚ FF.RU
      * 
      */
     const FF_REDIRECT_URI = 'https://www.free-lance.ru/income/ff.php';
     /**
-     * код операции оплаты услуги по верификации через FF.RU
+     * РєРѕРґ РѕРїРµСЂР°С†РёРё РѕРїР»Р°С‚С‹ СѓСЃР»СѓРіРё РїРѕ РІРµСЂРёС„РёРєР°С†РёРё С‡РµСЂРµР· FF.RU
      * 
      */
     const FF_OP_CODE = 117;
     
     /**
-     * Верификация через Яндекс.Деньги. URI авторизации
+     * Р’РµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё. URI Р°РІС‚РѕСЂРёР·Р°С†РёРё
      */
     const YD_URI_AUTH = 'https://sp-money.yandex.ru';
     
     /**
-     * Верификация через Яндекс.Деньги. URI API
+     * Р’РµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё. URI API
      */
     const YD_URI_API = 'https://money.yandex.ru/api';
     
     /**
-     * Верификация через Яндекс.Деньги. Идентификатор приложения
+     * Р’РµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё. РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїСЂРёР»РѕР¶РµРЅРёСЏ
      */
     const YD_CLIENT_ID = '9297F3ADF2F2079458C8E61313433DC30DFAFB0C159BCE9326C8316E2562726D';
     
     /**
-     * Верификация через Яндекс.Деньги. URI для передачи результата авторизации приложения
+     * Р’РµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё. URI РґР»СЏ РїРµСЂРµРґР°С‡Рё СЂРµР·СѓР»СЊС‚Р°С‚Р° Р°РІС‚РѕСЂРёР·Р°С†РёРё РїСЂРёР»РѕР¶РµРЅРёСЏ
      */
     const YD_REDIRECT_URI = 'https://www.free-lance.ru/income/wm_verify.php';
     
     /**
-     * Верификация через Яндекс.Деньги. Секретное слово для проверки подлинности приложения
+     * Р’РµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё. РЎРµРєСЂРµС‚РЅРѕРµ СЃР»РѕРІРѕ РґР»СЏ РїСЂРѕРІРµСЂРєРё РїРѕРґР»РёРЅРЅРѕСЃС‚Рё РїСЂРёР»РѕР¶РµРЅРёСЏ
      */
     const YD_CLIENT_SECRET = '7C2E413B2DD451DE61C5D9667A5BD0225A74A719488F39984BB884F88DD8A378075D65A55C029BBD6849AE603688D833172ADC36C44B133808BDDD791D9A6A72'; 
 
     /**
-     * Верификация через OKPAY. URI API
+     * Р’РµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· OKPAY. URI API
      */
     const OKPAY_URI_API = 'https://api.okpay.com/OkPayAPI?wsdl';
 
     /**
-     * Верификация через OKPAY. ID кошелька
+     * Р’РµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· OKPAY. ID РєРѕС€РµР»СЊРєР°
      */
     const OKPAY_WALLETID = 'OK460571733';
 
     /**
-     * Верификация через OKPAY. Секретное слово для проверки подлинности приложения
+     * Р’РµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· OKPAY. РЎРµРєСЂРµС‚РЅРѕРµ СЃР»РѕРІРѕ РґР»СЏ РїСЂРѕРІРµСЂРєРё РїРѕРґР»РёРЅРЅРѕСЃС‚Рё РїСЂРёР»РѕР¶РµРЅРёСЏ
      */
     const OKPAY_CLIENT_SECRET = 'o8M5TtFk93Yme7RCa64Ayb2SK';
     
     /**
-     * Сообщение об ошибке если пользователь не залогинен
+     * РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РµСЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ Р·Р°Р»РѕРіРёРЅРµРЅ
      */
-    const ERROR_NO_AUTH = 'Чтобы пройти верификацию вам нужно <a href="/login/">авторизоваться</a> или <a href="/registration/">зарегистрироваться</a>.';
+    const ERROR_NO_AUTH = 'Р§С‚РѕР±С‹ РїСЂРѕР№С‚Рё РІРµСЂРёС„РёРєР°С†РёСЋ РІР°Рј РЅСѓР¶РЅРѕ <a href="/login/">Р°РІС‚РѕСЂРёР·РѕРІР°С‚СЊСЃСЏ</a> РёР»Рё <a href="/registration/">Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</a>.';
     
     /**
-     * Опкод услуги через ЯКассу по банковской карте
+     * РћРїРєРѕРґ СѓСЃР»СѓРіРё С‡РµСЂРµР· РЇРљР°СЃСЃСѓ РїРѕ Р±Р°РЅРєРѕРІСЃРєРѕР№ РєР°СЂС‚Рµ
      */
     const YKASSA_AC_OP_CODE = 191;
     
 
     
     /**
-     * Ссылка для WebMoney авторизации
+     * РЎСЃС‹Р»РєР° РґР»СЏ WebMoney Р°РІС‚РѕСЂРёР·Р°С†РёРё
      */
     const WMLOGIN_URL = 'https://login.wmtransfer.com/GateKeeper.aspx?RID=%s';
     
 
 
     
-    const ERROR_DEFAULT = 'Произошла ошибка при верификации. Попробуйте ещё раз.';
+    const ERROR_DEFAULT = 'РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° РїСЂРё РІРµСЂРёС„РёРєР°С†РёРё. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·.';
     
     
     
     /**
-     * Содержит тект ошибки в случае неудачи
+     * РЎРѕРґРµСЂР¶РёС‚ С‚РµРєС‚ РѕС€РёР±РєРё РІ СЃР»СѓС‡Р°Рµ РЅРµСѓРґР°С‡Рё
      * 
      * @var string
      */
     public $error = '';
     /**
-     * Этот массив необходимо заполнить данными перед вызвовом $this->verify(int)
+     * Р­С‚РѕС‚ РјР°СЃСЃРёРІ РЅРµРѕР±С…РѕРґРёРјРѕ Р·Р°РїРѕР»РЅРёС‚СЊ РґР°РЅРЅС‹РјРё РїРµСЂРµРґ РІС‹Р·РІРѕРІРѕРј $this->verify(int)
      * 
      * @var array
      */
     public $data = array (
-        'fio'         => '',  // Фамилия Имя Отчество
-        'birthday'    => '',  // Дата рождения (формат YYYY-MM-DD)
-        'idcard_name' => '',  // Название документа
-        'idcard'      => '',  // Серия и номер документа
-        'idcard_from' => '',  // Дата выдачи документа (формат YYYY-MM-DD)
-        'idcard_to'   => '',  // Дата окончания действия документа (формат YYYY-MM-DD)
-        'idcard_by'   => '',  // Орган, выдавший документ 
-        'mob_phone'   => ''   // Номер мобильного телефона
+        'fio'         => '',  // Р¤Р°РјРёР»РёСЏ РРјСЏ РћС‚С‡РµСЃС‚РІРѕ
+        'birthday'    => '',  // Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ (С„РѕСЂРјР°С‚ YYYY-MM-DD)
+        'idcard_name' => '',  // РќР°Р·РІР°РЅРёРµ РґРѕРєСѓРјРµРЅС‚Р°
+        'idcard'      => '',  // РЎРµСЂРёСЏ Рё РЅРѕРјРµСЂ РґРѕРєСѓРјРµРЅС‚Р°
+        'idcard_from' => '',  // Р”Р°С‚Р° РІС‹РґР°С‡Рё РґРѕРєСѓРјРµРЅС‚Р° (С„РѕСЂРјР°С‚ YYYY-MM-DD)
+        'idcard_to'   => '',  // Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РґРµР№СЃС‚РІРёСЏ РґРѕРєСѓРјРµРЅС‚Р° (С„РѕСЂРјР°С‚ YYYY-MM-DD)
+        'idcard_by'   => '',  // РћСЂРіР°РЅ, РІС‹РґР°РІС€РёР№ РґРѕРєСѓРјРµРЅС‚ 
+        'mob_phone'   => ''   // РќРѕРјРµСЂ РјРѕР±РёР»СЊРЅРѕРіРѕ С‚РµР»РµС„РѕРЅР°
     );
     
     
     /**
-     * Верификация через FF.RU.
-     * Шаг 1. Начало верификация и оплата
+     * Р’РµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· FF.RU.
+     * РЁР°Рі 1. РќР°С‡Р°Р»Рѕ РІРµСЂРёС„РёРєР°С†РёСЏ Рё РѕРїР»Р°С‚Р°
      * 
-     * @param  integer  $uid   uid верифицируемого пользователя
-     * @return boolean         успех
+     * @param  integer  $uid   uid РІРµСЂРёС„РёС†РёСЂСѓРµРјРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @return boolean         СѓСЃРїРµС…
      */
     public function ffBegin($uid) {
         global $DB;
@@ -126,11 +126,11 @@ class Verification {
         $billId  = NULL;
         $user->GetUserByUID($uid);
         if ( empty($user->uid) ) {
-            $this->error = 'Вы не авторизованы';
+            $this->error = 'Р’С‹ РЅРµ Р°РІС‚РѕСЂРёР·РѕРІР°РЅС‹';
             return false;
         }
         if ( $user->is_verify == 't' ) {
-            $this->error = 'Вы уже верифицированы';
+            $this->error = 'Р’С‹ СѓР¶Рµ РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅС‹';
             return false;
         }
         $prev = $DB->val("SELECT result FROM verify_ff WHERE user_id = ? ORDER BY req_time DESC LIMIT 1", $uid);
@@ -141,7 +141,7 @@ class Verification {
 //                $sum = round($op_codes->GetField(self::FF_OP_CODE, $err, "sum"), 2);
 //                $ac_sum = round( (float)$_SESSION["ac_sum"], 2);
 //                if ( $sum > $ac_sum ) {
-//                    $this->error = "Недостаточно средств на счету.";
+//                    $this->error = "РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ РЅР° СЃС‡РµС‚Сѓ.";
 //                    return false;
 //                }
 //            }
@@ -152,8 +152,8 @@ class Verification {
     
     
     /**
-     * Верификация через FF.RU.
-     * Шаг 2. Получения кода авторизация и общение с ff.ru
+     * Р’РµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· FF.RU.
+     * РЁР°Рі 2. РџРѕР»СѓС‡РµРЅРёСЏ РєРѕРґР° Р°РІС‚РѕСЂРёР·Р°С†РёСЏ Рё РѕР±С‰РµРЅРёРµ СЃ ff.ru
      * 
      * @global type $DB
      * @param type $uid
@@ -175,17 +175,17 @@ class Verification {
         $user = new users;
         $user->GetUserByUID($uid);
         if ( empty($user->uid) ) {
-            $this->error = 'Вы не авторизованы';
+            $this->error = 'Р’С‹ РЅРµ Р°РІС‚РѕСЂРёР·РѕРІР°РЅС‹';
             return false;
         }
         $prev = $DB->row("SELECT * FROM verify_ff WHERE user_id = ? ORDER BY req_time DESC LIMIT 1", $uid);
         if ( $prev['result'] != 'f' ) {
-            $this->error = 'Вам необходимо использовать такую же учетную запись с который вы начинали верификацию.';
+            $this->error = 'Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ С‚Р°РєСѓСЋ Р¶Рµ СѓС‡РµС‚РЅСѓСЋ Р·Р°РїРёСЃСЊ СЃ РєРѕС‚РѕСЂС‹Р№ РІС‹ РЅР°С‡РёРЅР°Р»Рё РІРµСЂРёС„РёРєР°С†РёСЋ.';
             return false;
         }
-        // Для тестирования на бете/альфе
+        // Р”Р»СЏ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ РЅР° Р±РµС‚Рµ/Р°Р»СЊС„Рµ
         if(is_release()) { 
-            // меняем код авторизации на токен
+            // РјРµРЅСЏРµРј РєРѕРґ Р°РІС‚РѕСЂРёР·Р°С†РёРё РЅР° С‚РѕРєРµРЅ
             $request = new HTTP_Request2('https://ff.ru/oauth/token', HTTP_Request2::METHOD_POST);
             $request->setConfig($requestConfig);
             $request->setHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -198,7 +198,7 @@ class Verification {
             //var_dump($resp); // del
             $body = json_decode(iconv('UTF-8', 'CP1251', $resp->getBody()));
             if ( $resp->getStatus() == 200 ) {
-                // меняем токен на паспортные данные
+                // РјРµРЅСЏРµРј С‚РѕРєРµРЅ РЅР° РїР°СЃРїРѕСЂС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ
                 $request = new HTTP_Request2('https://ff.ru/oauth/userinfo', HTTP_Request2::METHOD_GET);
                 $request->setConfig($requestConfig);
                 $request->setHeader('Authorization', 'Bearer ' . $body->access_token);
@@ -209,14 +209,14 @@ class Verification {
                 $DB->query("UPDATE verify_ff SET body = ? WHERE id = ?", $resp->getBody(), $prev['id']);
                 if ( $resp->getStatus() == 200 ) {
                     if ( empty($body->passport_sn) ) {
-                        $this->error = 'Необходимо подтвердить личность в личном кабинете сайта FF.RU.';
+                        $this->error = 'РќРµРѕР±С…РѕРґРёРјРѕ РїРѕРґС‚РІРµСЂРґРёС‚СЊ Р»РёС‡РЅРѕСЃС‚СЊ РІ Р»РёС‡РЅРѕРј РєР°Р±РёРЅРµС‚Рµ СЃР°Р№С‚Р° FF.RU.';
                         return false;
                     }
                     $fio = $body->last_name . ' ' . $body->first_name . ' ' . $body->patronimic;
                     $this->data = array(
                         'fio'         => iconv('UTF-8', 'CP1251', htmlentities($fio, ENT_QUOTES, "UTF-8")),
                         'birthday'    => dateFormat('Y-m-d', (string) $body->birth_date),
-                        'idcard_name' => 'Паспорт',
+                        'idcard_name' => 'РџР°СЃРїРѕСЂС‚',
                         'idcard'      => $body->passport_sn,
                         'idcard_from' => dateFormat('Y-m-d', (string) $body->passport_date),
                         'idcard_to'   => NULL,
@@ -226,41 +226,41 @@ class Verification {
                     //var_dump($this->data);
                 } else {
                     if ( empty($body->error) ) {
-                        $this->error = 'Ошибка при получении данных с FF.RU.';
+                        $this->error = 'РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё РґР°РЅРЅС‹С… СЃ FF.RU.';
                     } else {
-                        $this->error = 'Ошибка при получении данных с FF.RU (' . $body->error . ' / ' . $body->error_description . '). ';
+                        $this->error = 'РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё РґР°РЅРЅС‹С… СЃ FF.RU (' . $body->error . ' / ' . $body->error_description . '). ';
                     }
                     $this->error .= $resp->getStatus() . '.';
                     return false;
                 }
             } else {
                 if ( empty($body->error) ) {
-                    $this->error = 'Ошибка при подключении к сервису FF.RU.';
+                    $this->error = 'РћС€РёР±РєР° РїСЂРё РїРѕРґРєР»СЋС‡РµРЅРёРё Рє СЃРµСЂРІРёСЃСѓ FF.RU.';
                 } else {
-                    $this->error = 'Ошибка при подключении к сервису FF.RU (' . $body->error . ' / ' . $body->error_description . '). ';
+                    $this->error = 'РћС€РёР±РєР° РїСЂРё РїРѕРґРєР»СЋС‡РµРЅРёРё Рє СЃРµСЂРІРёСЃСѓ FF.RU (' . $body->error . ' / ' . $body->error_description . '). ';
                 }
                 $this->error .= $resp->getStatus() . '.';
                 return false;
             }
         } else {
             $this->data = array(
-                'fio'         => 'Фамилия Имя Отчество',
+                'fio'         => 'Р¤Р°РјРёР»РёСЏ РРјСЏ РћС‚С‡РµСЃС‚РІРѕ',
                 'birthday'    => dateFormat('Y-m-d', (string) '1950-01-01'),
-                'idcard_name' => 'Паспорт',
+                'idcard_name' => 'РџР°СЃРїРѕСЂС‚',
                 'idcard'      => '1900 100001',
                 'idcard_from' => dateFormat('Y-m-d', (string) '2000-01-01'),
                 'idcard_to'   => NULL,
-                'idcard_by'   => 'УВД г. Города',
+                'idcard_by'   => 'РЈР’Р” Рі. Р“РѕСЂРѕРґР°',
                 'mob_phone'   => '+79' . rand(100000000, 900000000)
             );
         }
         $this->is_pro = true;
         if ( $user->is_pro != 't' && empty($prev['bill_id']) ) {
-                //переносим сюда списание средств
+                //РїРµСЂРµРЅРѕСЃРёРј СЃСЋРґР° СЃРїРёСЃР°РЅРёРµ СЃСЂРµРґСЃС‚РІ
                 $account = new account;
 //                $billId  = NULL;
 //                $transactionId = $account->start_transaction($uid);
-//                $description   = 'Верификация через сервис FF.RU';
+//                $description   = 'Р’РµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· СЃРµСЂРІРёСЃ FF.RU';
 //                $buyResult     = $account->Buy($billId, $transactionId, self::FF_OP_CODE, $uid, $description, $description, 1, 0);
 //                if ( $buyResult ) {
 //                    $this->error .= $buyResult;
@@ -272,7 +272,7 @@ class Verification {
                 $create_id = $bill->create(self::FF_OP_CODE);
                 $this->is_pro = false;
                 if(!$create_id) {
-                    $this->error .= 'Ошибка создания услуги';
+                    $this->error .= 'РћС€РёР±РєР° СЃРѕР·РґР°РЅРёСЏ СѓСЃР»СѓРіРё';
                     return false;
                 } else {
                     return true;
@@ -291,10 +291,10 @@ class Verification {
     
     
     /**
-     * Возвращает статус верификации пользователя через FF.ru
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚Р°С‚СѓСЃ РІРµСЂРёС„РёРєР°С†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ С‡РµСЂРµР· FF.ru
      * 
-     * @param  integer  $uid  uid пользователя
-     * @return boolean|int    FALSE - не пробовал верифицироваться, 0 - пробовал, но еще не закончил, 1 - верифицирован
+     * @param  integer  $uid  uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @return boolean|int    FALSE - РЅРµ РїСЂРѕР±РѕРІР°Р» РІРµСЂРёС„РёС†РёСЂРѕРІР°С‚СЊСЃСЏ, 0 - РїСЂРѕР±РѕРІР°Р», РЅРѕ РµС‰Рµ РЅРµ Р·Р°РєРѕРЅС‡РёР», 1 - РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅ
      */
     public function ffStatus($uid) {
         global $DB;
@@ -311,7 +311,7 @@ class Verification {
     
     
     /**
-     * Проверка авторизация и верификация при помощи WebMoney
+     * РџСЂРѕРІРµСЂРєР° Р°РІС‚РѕСЂРёР·Р°С†РёСЏ Рё РІРµСЂРёС„РёРєР°С†РёСЏ РїСЂРё РїРѕРјРѕС‰Рё WebMoney
      * 
      * @global type $DB
      * @param type $uid
@@ -349,7 +349,7 @@ class Verification {
         }
         
         if (empty($this->error)) {
-            $this->error = 'Произошла ошибка во время верификации. Попробуйте ещё раз.';
+            $this->error = 'РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° РІРѕ РІСЂРµРјСЏ РІРµСЂРёС„РёРєР°С†РёРё. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·.';
         }
         
         return false;
@@ -358,10 +358,10 @@ class Verification {
     
     
     /**
-     * Проверка WMID:
-     * - Проверка ввода WMID
-     * - Верифицирован ли уже переданный WMID
-     * - Проверка аттестата у WMID
+     * РџСЂРѕРІРµСЂРєР° WMID:
+     * - РџСЂРѕРІРµСЂРєР° РІРІРѕРґР° WMID
+     * - Р’РµСЂРёС„РёС†РёСЂРѕРІР°РЅ Р»Рё СѓР¶Рµ РїРµСЂРµРґР°РЅРЅС‹Р№ WMID
+     * - РџСЂРѕРІРµСЂРєР° Р°С‚С‚РµСЃС‚Р°С‚Р° Сѓ WMID
      * 
      * @global type $DB
      * @param type $wmid
@@ -372,15 +372,15 @@ class Verification {
     {
         global $DB;
         
-        //Проверка ввода WMID
+        //РџСЂРѕРІРµСЂРєР° РІРІРѕРґР° WMID
         if (!preg_match('/^[0-9]{12}$/', $wmid)) {
-            $this->error = 'Неправильно указан WMID.';
+            $this->error = 'РќРµРїСЂР°РІРёР»СЊРЅРѕ СѓРєР°Р·Р°РЅ WMID.';
             
             return false;
         }
 
         
-        //Верифицирован ли уже переданный WMID
+        //Р’РµСЂРёС„РёС†РёСЂРѕРІР°РЅ Р»Рё СѓР¶Рµ РїРµСЂРµРґР°РЅРЅС‹Р№ WMID
         $ret = $DB->val("
             SELECT 1 
             FROM verify_webmoney 
@@ -388,14 +388,14 @@ class Verification {
             $wmid, $uid);
         
         if ($ret) {
-            $this->error = 'Данный WMID уже используется для верификации другим пользователем сайта.';
+            $this->error = 'Р”Р°РЅРЅС‹Р№ WMID СѓР¶Рµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РІРµСЂРёС„РёРєР°С†РёРё РґСЂСѓРіРёРј РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј СЃР°Р№С‚Р°.';
             
             return false;
         }
         
         require_once ($_SERVER['DOCUMENT_ROOT'] . '/classes/WMXI/WMXI.php');
         
-        //Проверка аттестата у WMID
+        //РџСЂРѕРІРµСЂРєР° Р°С‚С‚РµСЃС‚Р°С‚Р° Сѓ WMID
         $wmxi = new WMXI;
         $key  = array( 'file' => WM_VERIFY_KEYFILE, 'pass' => WM_VERIFY_KEYPASS );
         $wmxi->Classic(WM_VERIFY_WMID, $key);
@@ -404,7 +404,7 @@ class Verification {
         $retval = (int)$res['retval'];
         
         if ($retval > 0) {
-            $this->error = 'Произошла ошибка при проверке аттестата. Попробуйте ещё раз.';
+            $this->error = 'РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° РїСЂРё РїСЂРѕРІРµСЂРєРµ Р°С‚С‚РµСЃС‚Р°С‚Р°. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р·.';
             
             return false;
         }
@@ -412,7 +412,7 @@ class Verification {
         $tid = (int) $res->certinfo->attestat->row['tid'];
         
         if ($tid < self::WM_ATTESTAT_LEVEL) {
-            $this->error = 'Требуется аттестат не ниже начального. Получите <a class="b-layout__link underline" href="https://wiki.webmoney.ru/projects/webmoney/wiki/Аттестаты" target="_blank">начальный аттестат</a> или выберите другой способ верификации.';
+            $this->error = 'РўСЂРµР±СѓРµС‚СЃСЏ Р°С‚С‚РµСЃС‚Р°С‚ РЅРµ РЅРёР¶Рµ РЅР°С‡Р°Р»СЊРЅРѕРіРѕ. РџРѕР»СѓС‡РёС‚Рµ <a class="b-layout__link underline" href="https://wiki.webmoney.ru/projects/webmoney/wiki/РђС‚С‚РµСЃС‚Р°С‚С‹" target="_blank">РЅР°С‡Р°Р»СЊРЅС‹Р№ Р°С‚С‚РµСЃС‚Р°С‚</a> РёР»Рё РІС‹Р±РµСЂРёС‚Рµ РґСЂСѓРіРѕР№ СЃРїРѕСЃРѕР± РІРµСЂРёС„РёРєР°С†РёРё.';
             
             return false;
         }
@@ -423,7 +423,7 @@ class Verification {
 
     
     /**
-     * Вернуть ссылку на авторизацию через WebMoney
+     * Р’РµСЂРЅСѓС‚СЊ СЃСЃС‹Р»РєСѓ РЅР° Р°РІС‚РѕСЂРёР·Р°С†РёСЋ С‡РµСЂРµР· WebMoney
      * 
      * @return type
      */
@@ -435,7 +435,7 @@ class Verification {
 
     
     /**
-     * Вернуть ошибки
+     * Р’РµСЂРЅСѓС‚СЊ РѕС€РёР±РєРё
      * 
      * @return type
      */
@@ -450,10 +450,10 @@ class Verification {
     
     
     /**
-     * Инициализация верификации через Яндекс.Деньги
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РІРµСЂРёС„РёРєР°С†РёРё С‡РµСЂРµР· РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё
      * 
-     * @param  int $uid UID пользователя
-     * @return bool true - успех, false - провал
+     * @param  int $uid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     public function ydBegin( $uid ) {
         $user    = new users;
@@ -465,7 +465,7 @@ class Verification {
         }
         
         if ( $user->is_verify == 't' ) {
-            $this->error = 'Вы уже верифицированы';
+            $this->error = 'Р’С‹ СѓР¶Рµ РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅС‹';
             return false;
         }
         
@@ -482,27 +482,27 @@ class Verification {
 
 
     /**
-     * Проверяет персональные данные пользователя, необходимые для верификации через Яндекс.Деньги
-     * Используется также в self::pskb()
+     * РџСЂРѕРІРµСЂСЏРµС‚ РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹Рµ РґР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РЅРµРѕР±С…РѕРґРёРјС‹Рµ РґР»СЏ РІРµСЂРёС„РёРєР°С†РёРё С‡РµСЂРµР· РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё
+     * РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ С‚Р°РєР¶Рµ РІ self::pskb()
      * 
-     * @param  int $uid UID пользователя
-     * @return bool true - успех, false - провал
+     * @param  int $uid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     public function ydCheckUserReqvs( $uid = 0 ) {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/sbr_meta.php';
         
         $this->error = '';
-        $nError      = 0; // код ошибки см $aError в этой функции ниже. 0 - нет ошибок
+        $nError      = 0; // РєРѕРґ РѕС€РёР±РєРё СЃРј $aError РІ СЌС‚РѕР№ С„СѓРЅРєС†РёРё РЅРёР¶Рµ. 0 - РЅРµС‚ РѕС€РёР±РѕРє
         $aFields     = array(
-            array( 'fio', 'birthday' ),                                  // ФИО и дата рождения
-            array( 'idcard_name', 'idcard', 'idcard_from', 'idcard_by' ) // паспортные данные
+            array( 'fio', 'birthday' ),                                  // Р¤РРћ Рё РґР°С‚Р° СЂРѕР¶РґРµРЅРёСЏ
+            array( 'idcard_name', 'idcard', 'idcard_from', 'idcard_by' ) // РїР°СЃРїРѕСЂС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ
         );
         
         return empty( $nError );
     }
     
     /**
-     * Возвращает URI авторизации для верификации через Яндекс.Деньги
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ URI Р°РІС‚РѕСЂРёР·Р°С†РёРё РґР»СЏ РІРµСЂРёС„РёРєР°С†РёРё С‡РµСЂРµР· РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё
      * 
      * @param  string $scope
      * @return string
@@ -521,11 +521,11 @@ class Verification {
     }
 
     /**
-     * Верификация через кредитные карты
+     * Р’РµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· РєСЂРµРґРёС‚РЅС‹Рµ РєР°СЂС‚С‹
      * 
-     * @param  int $uid UID пользователя
-     * @param  string $card номер карты
-     * @return bool true - успех, false - провал
+     * @param  int $uid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  string $card РЅРѕРјРµСЂ РєР°СЂС‚С‹
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     public function card( $uid, $card ) {
         global $DB;
@@ -539,10 +539,10 @@ class Verification {
     }
     
     /**
-     * Верификация через кредитные карты (через ЯКассу)
+     * Р’РµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· РєСЂРµРґРёС‚РЅС‹Рµ РєР°СЂС‚С‹ (С‡РµСЂРµР· РЇРљР°СЃСЃСѓ)
      * 
-     * @param  int $uid UID пользователя
-     * @return bool true - успех, false - провал
+     * @param  int $uid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     public function cardYK($uid) {
         global $DB;
@@ -557,18 +557,18 @@ class Verification {
     }
 
     /**
-     * Верификация через Яндекс.Деньги
+     * Р’РµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё
      * 
-     * @param  int $uid UID пользователя
-     * @param  string $is_emp является ли пользователь работодателем: 't' или 'f'
-     * @param  string $code временный токен, полученный в ответ на Запрос авторизации в Яндекс.Деньги
-     * @return bool true - успех, false - провал
+     * @param  int $uid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  string $is_emp СЏРІР»СЏРµС‚СЃСЏ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµРј: 't' РёР»Рё 'f'
+     * @param  string $code РІСЂРµРјРµРЅРЅС‹Р№ С‚РѕРєРµРЅ, РїРѕР»СѓС‡РµРЅРЅС‹Р№ РІ РѕС‚РІРµС‚ РЅР° Р—Р°РїСЂРѕСЃ Р°РІС‚РѕСЂРёР·Р°С†РёРё РІ РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     public function ydVerification( $uid = null, $is_emp = 'f', $code = '', $fname='', $lname='' ) {
         $prev = $GLOBALS['DB']->row("SELECT * FROM verify_yd WHERE user_id = ? ORDER BY req_time DESC LIMIT 1", $uid);
         
         
-        $nError        = 0;  // код ошибки см $aError в этой функции ниже. 0 - нет ошибок
+        $nError        = 0;  // РєРѕРґ РѕС€РёР±РєРё СЃРј $aError РІ СЌС‚РѕР№ С„СѓРЅРєС†РёРё РЅРёР¶Рµ. 0 - РЅРµС‚ РѕС€РёР±РѕРє
         $requestConfig = array (
             'adapter'           => 'HTTP_Request2_Adapter_Curl',
             'connect_timeout'   => 20,
@@ -580,7 +580,7 @@ class Verification {
             'ssl_passphrase'    => null
         );
         
-        // меняем код авторизации на токен
+        // РјРµРЅСЏРµРј РєРѕРґ Р°РІС‚РѕСЂРёР·Р°С†РёРё РЅР° С‚РѕРєРµРЅ
         $request = new HTTP_Request2( self::YD_URI_AUTH . '/oauth/token', HTTP_Request2::METHOD_POST );
         $request->setConfig( $requestConfig );
         $request->setHeader( 'Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8' );
@@ -597,7 +597,7 @@ class Verification {
         $GLOBALS['DB']->query( 'UPDATE verify_yd SET log = ? WHERE id = ?', $resp->getBody(), $prev['id'] );
         
         if ( $resp->getStatus() == 200 ) {
-            // получаем информацию о состоянии счета пользователя
+            // РїРѕР»СѓС‡Р°РµРј РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃРѕСЃС‚РѕСЏРЅРёРё СЃС‡РµС‚Р° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
             $request = new HTTP_Request2( self::YD_URI_API . '/account-info', HTTP_Request2::METHOD_POST );
             $request->setConfig( $requestConfig );
             $request->setHeader( 'Authorization', 'Bearer ' . $body->access_token );
@@ -646,7 +646,7 @@ class Verification {
                                 );
                             }
                             else {
-                                return false; // сообщение об ошибках из $this->verify($uid)
+                                return false; // СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєР°С… РёР· $this->verify($uid)
                             }
                         }
                         else {
@@ -668,10 +668,10 @@ class Verification {
         
         if ( $nError ) {
             $aError = array(
-                1 => 'Произошла ошибка во время верификации.',
-                2 => 'Для верификации у вас должен быть идентифицирован кошелек.',
-                3 => 'Данный кошелек уже был использован при верификации кем-то из пользователей.', // два аккаунта: и фрилансер и работодатель
-                4 => 'Данный кошелек уже был использован при верификации кем-то из пользователей.' // один аккаунт с той же ролью
+                1 => 'РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° РІРѕ РІСЂРµРјСЏ РІРµСЂРёС„РёРєР°С†РёРё.',
+                2 => 'Р”Р»СЏ РІРµСЂРёС„РёРєР°С†РёРё Сѓ РІР°СЃ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РёРґРµРЅС‚РёС„РёС†РёСЂРѕРІР°РЅ РєРѕС€РµР»РµРє.',
+                3 => 'Р”Р°РЅРЅС‹Р№ РєРѕС€РµР»РµРє СѓР¶Рµ Р±С‹Р» РёСЃРїРѕР»СЊР·РѕРІР°РЅ РїСЂРё РІРµСЂРёС„РёРєР°С†РёРё РєРµРј-С‚Рѕ РёР· РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.', // РґРІР° Р°РєРєР°СѓРЅС‚Р°: Рё С„СЂРёР»Р°РЅСЃРµСЂ Рё СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ
+                4 => 'Р”Р°РЅРЅС‹Р№ РєРѕС€РµР»РµРє СѓР¶Рµ Р±С‹Р» РёСЃРїРѕР»СЊР·РѕРІР°РЅ РїСЂРё РІРµСЂРёС„РёРєР°С†РёРё РєРµРј-С‚Рѕ РёР· РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.' // РѕРґРёРЅ Р°РєРєР°СѓРЅС‚ СЃ С‚РѕР№ Р¶Рµ СЂРѕР»СЊСЋ
             );
             
             $this->error = $aError[$nError];
@@ -681,15 +681,15 @@ class Verification {
     }
 
     /**
-     * Верификация через OKPAY. 
+     * Р’РµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· OKPAY. 
      * 
-     * @param  integer $uid  uid пользователя
-     * @return boolean       результат операции
+     * @param  integer $uid  uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @return boolean       СЂРµР·СѓР»СЊС‚Р°С‚ РѕРїРµСЂР°С†РёРё
      */
     public function okpay($uid) {
         global $DB;
         if ( empty($uid) ) {
-            $this->error = 'Вы не авторизованы.';
+            $this->error = 'Р’С‹ РЅРµ Р°РІС‚РѕСЂРёР·РѕРІР°РЅС‹.';
             return false;
         }
 
@@ -699,7 +699,7 @@ class Verification {
         $this->aUserReqvs = sbr_meta::getUserReqvs($uid);
 
         if ( empty($this->aUserReqvs[1]['mob_phone']) || $this->aUserReqvs['is_activate_mob'] == 'f' ) {
-            $this->error = 'Для верификации у вас должен быть активирован номер телефона в <a href="/users/'. $_SESSION['login'] .'/setup/main/">основных настройках</a> аккаунта.';
+            $this->error = 'Р”Р»СЏ РІРµСЂРёС„РёРєР°С†РёРё Сѓ РІР°СЃ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ Р°РєС‚РёРІРёСЂРѕРІР°РЅ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РІ <a href="/users/'. $_SESSION['login'] .'/setup/main/">РѕСЃРЅРѕРІРЅС‹С… РЅР°СЃС‚СЂРѕР№РєР°С…</a> Р°РєРєР°СѓРЅС‚Р°.';
             return false;
         }
 
@@ -709,7 +709,7 @@ class Verification {
         $sql = "SELECT COUNT(user_id) FROM sbr_reqv WHERE _1_mob_phone=?";
         $foundPhones = $DB->val($sql, "+".$phone);
         if($foundPhones>1) {
-            $this->error = 'Данный номер телефона уже был использован при верификации кем-то из пользователей.';
+            $this->error = 'Р”Р°РЅРЅС‹Р№ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° СѓР¶Рµ Р±С‹Р» РёСЃРїРѕР»СЊР·РѕРІР°РЅ РїСЂРё РІРµСЂРёС„РёРєР°С†РёРё РєРµРј-С‚Рѕ РёР· РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.';
             return false;
         }
 
@@ -737,7 +737,7 @@ class Verification {
         if($res) {
             $is_verify = true;
         } else {
-            $this->error = 'Для верификации у вас должен быть верифицированный кошелек.';
+            $this->error = 'Р”Р»СЏ РІРµСЂРёС„РёРєР°С†РёРё Сѓ РІР°СЃ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹Р№ РєРѕС€РµР»РµРє.';
             return false;
 
         }
@@ -753,20 +753,20 @@ class Verification {
     }    
     
     /**
-     * Верификация через веб-кошелек ПСКБ. 
-     * Требуется заполненность ФИО, пасспорта и активированного номера телефона
+     * Р’РµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· РІРµР±-РєРѕС€РµР»РµРє РџРЎРљР‘. 
+     * РўСЂРµР±СѓРµС‚СЃСЏ Р·Р°РїРѕР»РЅРµРЅРЅРѕСЃС‚СЊ Р¤РРћ, РїР°СЃСЃРїРѕСЂС‚Р° Рё Р°РєС‚РёРІРёСЂРѕРІР°РЅРЅРѕРіРѕ РЅРѕРјРµСЂР° С‚РµР»РµС„РѕРЅР°
      * 
-     * @param  integer $uid  uid пользователя
-     * @return boolean       результат операции
+     * @param  integer $uid  uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @return boolean       СЂРµР·СѓР»СЊС‚Р°С‚ РѕРїРµСЂР°С†РёРё
      */
     public function pskb($uid) {
         global $DB;
         if ( empty($uid) ) {
-            $this->error = 'Вы не авторизованы.';
+            $this->error = 'Р’С‹ РЅРµ Р°РІС‚РѕСЂРёР·РѕРІР°РЅС‹.';
             return false;
         }
         $logId = $DB->insert('verify_pskb', array('user_id'=>$uid), 'id');
-        // используем проверку на заполненость полей от яндекса, она подходит
+        // РёСЃРїРѕР»СЊР·СѓРµРј РїСЂРѕРІРµСЂРєСѓ РЅР° Р·Р°РїРѕР»РЅРµРЅРѕСЃС‚СЊ РїРѕР»РµР№ РѕС‚ СЏРЅРґРµРєСЃР°, РѕРЅР° РїРѕРґС…РѕРґРёС‚
         if ( empty($this->aUserReqvs) ) {
             if ( !$this->ydCheckUserReqvs($uid) ) {
                 return false;
@@ -777,16 +777,16 @@ class Verification {
         $res   = $pskb->checkOrCreateWallet($phone);
         $DB->update('verify_pskb', array('phone'=>$phone, 'log'=>$res), "id = ?", $logId);
         if ( empty($res) ) {
-            $this->error = 'Ошибка соединения с Веб-кошельком.';
+            $this->error = 'РћС€РёР±РєР° СЃРѕРµРґРёРЅРµРЅРёСЏ СЃ Р’РµР±-РєРѕС€РµР»СЊРєРѕРј.';
             return false;
         }
         $res = json_decode(iconv('cp1251', 'utf8', $res), 1);
         if ( empty($res['state']) || !in_array($res['state'], array('EXIST', 'COMPLETE')) ) {
-            $this->error = 'Веб-кошелек не создан.';
+            $this->error = 'Р’РµР±-РєРѕС€РµР»РµРє РЅРµ СЃРѕР·РґР°РЅ.';
             return false;
         }
         if ( !$res['verified'] ) {
-            $this->error = 'Для верификации у вас должен быть идентифицированный кошелек.';
+            $this->error = 'Р”Р»СЏ РІРµСЂРёС„РёРєР°С†РёРё Сѓ РІР°СЃ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РёРґРµРЅС‚РёС„РёС†РёСЂРѕРІР°РЅРЅС‹Р№ РєРѕС€РµР»РµРє.';
             return false;
         }
         $aFields    = array( 'fio', 'birthday', 'idcard_name', 'idcard', 'idcard_from', 'idcard_by', 'mob_phone' );
@@ -803,11 +803,11 @@ class Verification {
     
     
     /**
-     * Общий метод верификации. После обработки данных и заполнения $this->data через методы webmoney или ff 
-     * они должны вызвать этот метод, чтобы сохранить данные и верифицировать пользователя на нашем сайте
+     * РћР±С‰РёР№ РјРµС‚РѕРґ РІРµСЂРёС„РёРєР°С†РёРё. РџРѕСЃР»Рµ РѕР±СЂР°Р±РѕС‚РєРё РґР°РЅРЅС‹С… Рё Р·Р°РїРѕР»РЅРµРЅРёСЏ $this->data С‡РµСЂРµР· РјРµС‚РѕРґС‹ webmoney РёР»Рё ff 
+     * РѕРЅРё РґРѕР»Р¶РЅС‹ РІС‹Р·РІР°С‚СЊ СЌС‚РѕС‚ РјРµС‚РѕРґ, С‡С‚РѕР±С‹ СЃРѕС…СЂР°РЅРёС‚СЊ РґР°РЅРЅС‹Рµ Рё РІРµСЂРёС„РёС†РёСЂРѕРІР°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° РЅР°С€РµРј СЃР°Р№С‚Рµ
      * 
-     * @param  integer  $uid - uid верифицируемого пользователя
-     * @return boolean       - успех
+     * @param  integer  $uid - uid РІРµСЂРёС„РёС†РёСЂСѓРµРјРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @return boolean       - СѓСЃРїРµС…
      */
     public function verify($uid) 
     {
@@ -815,11 +815,11 @@ class Verification {
         $user = new users;
         $user->GetUserByUID($uid);
         if ( empty($user->uid) ) {
-            $this->error = 'Вы не авторизованы';
+            $this->error = 'Р’С‹ РЅРµ Р°РІС‚РѕСЂРёР·РѕРІР°РЅС‹';
             return false;
         }
         if ( $user->is_verify == 't' ) {
-            $this->error = 'Вы уже верифицированы';
+            $this->error = 'Р’С‹ СѓР¶Рµ РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅС‹';
             return false;
         }
         $DB->hold()->query("UPDATE users SET is_verify = TRUE WHERE uid = ?", $user->uid);
@@ -827,8 +827,8 @@ class Verification {
         if($antiuid) { $DB->hold()->query("UPDATE users SET is_verify='t' WHERE uid=?i", $antiuid); }
 
         if ( !$DB->query() ) {
-            //@todo: такие ошибки в UI не нужны
-            //$this->error = 'Системная ошибка.';
+            //@todo: С‚Р°РєРёРµ РѕС€РёР±РєРё РІ UI РЅРµ РЅСѓР¶РЅС‹
+            //$this->error = 'РЎРёСЃС‚РµРјРЅР°СЏ РѕС€РёР±РєР°.';
             return false;
         }
         
@@ -843,9 +843,9 @@ class Verification {
     
     
     /**
-     * Количество пользователей, прошедших верификацию
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, РїСЂРѕС€РµРґС€РёС… РІРµСЂРёС„РёРєР°С†РёСЋ
      * 
-     * @return integer  кол-во верифицированных пользователей
+     * @return integer  РєРѕР»-РІРѕ РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
      */
     public function verifyCount() {
         return (int) $GLOBALS['DB']->cache(3600)->val("
@@ -875,10 +875,10 @@ class Verification {
     
     
     /**
-     * Возвращает время когда пользователь верифицировался
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЂРµРјСЏ РєРѕРіРґР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІРµСЂРёС„РёС†РёСЂРѕРІР°Р»СЃСЏ
      * 
-     * @param  integer  $user_id  uid пользователя
-     * @return string             время верификации в формате постгриса
+     * @param  integer  $user_id  uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @return string             РІСЂРµРјСЏ РІРµСЂРёС„РёРєР°С†РёРё РІ С„РѕСЂРјР°С‚Рµ РїРѕСЃС‚РіСЂРёСЃР°
      */
     static public function verifyLast($user_id) {
         global $DB;
@@ -904,14 +904,14 @@ class Verification {
     }
     
     /**
-     * Возвращает статистику по верификации пользователей
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕ РІРµСЂРёС„РёРєР°С†РёРё РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
      * 
      * @global type $DB 
-     * @param string  $fromDate    Начальный промежуток даты выборки
-     * @param string  $toDate      Конечный промежуток даты выборки
-     * @param string  $type        Тип выборки
-     * @param boolean $is_verify  Прошли верификацию или нет
-     * @param boolean $role       true - Фрилансер, false - Исполнитель
+     * @param string  $fromDate    РќР°С‡Р°Р»СЊРЅС‹Р№ РїСЂРѕРјРµР¶СѓС‚РѕРє РґР°С‚С‹ РІС‹Р±РѕСЂРєРё
+     * @param string  $toDate      РљРѕРЅРµС‡РЅС‹Р№ РїСЂРѕРјРµР¶СѓС‚РѕРє РґР°С‚С‹ РІС‹Р±РѕСЂРєРё
+     * @param string  $type        РўРёРї РІС‹Р±РѕСЂРєРё
+     * @param boolean $is_verify  РџСЂРѕС€Р»Рё РІРµСЂРёС„РёРєР°С†РёСЋ РёР»Рё РЅРµС‚
+     * @param boolean $role       true - Р¤СЂРёР»Р°РЅСЃРµСЂ, false - РСЃРїРѕР»РЅРёС‚РµР»СЊ
      * @return array
      */
     static public function getStatVerify($fromDate, $toDate, $type = 'wm', $is_verify = false, $role = null) {
@@ -1065,7 +1065,7 @@ class Verification {
         return $DB->row($sql, $fromDate, $toDate, $is_verify);
     }
     /**
-    * @desc Уменьшить количество счетчика авторизаций
+    * @desc РЈРјРµРЅСЊС€РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‡РµС‚С‡РёРєР° Р°РІС‚РѕСЂРёР·Р°С†РёР№
     * @param int $uid
     **/
     static public function decrementStat($uid) {
@@ -1084,9 +1084,9 @@ class Verification {
                 OR    yd.user_id = {$uid}
                 OR    ff.user_id = {$uid}
                 OR    okpay.user_id = {$uid}";
-        //так как на бете много тестовых аккаунтов, в которых есть статистика о верификации одного и того же пользователя через разные системы
-        // и такая ситуация возможна в принципе и на бое
-        // удаляю все идентификаторы этого пользователя из таблиц verify_*  
+        //С‚Р°Рє РєР°Рє РЅР° Р±РµС‚Рµ РјРЅРѕРіРѕ С‚РµСЃС‚РѕРІС‹С… Р°РєРєР°СѓРЅС‚РѕРІ, РІ РєРѕС‚РѕСЂС‹С… РµСЃС‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєР° Рѕ РІРµСЂРёС„РёРєР°С†РёРё РѕРґРЅРѕРіРѕ Рё С‚РѕРіРѕ Р¶Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ С‡РµСЂРµР· СЂР°Р·РЅС‹Рµ СЃРёСЃС‚РµРјС‹
+        // Рё С‚Р°РєР°СЏ СЃРёС‚СѓР°С†РёСЏ РІРѕР·РјРѕР¶РЅР° РІ РїСЂРёРЅС†РёРїРµ Рё РЅР° Р±РѕРµ
+        // СѓРґР°Р»СЏСЋ РІСЃРµ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ СЌС‚РѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР· С‚Р°Р±Р»РёС† verify_*  
         $data = $DB->rows($query);
         $pskb_ids = array();
         $wm_ids   = array();

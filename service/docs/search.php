@@ -1,16 +1,16 @@
 <?php include('xajax.php');?>
-<h2>Услуги</h2>
+<h2>РЈСЃР»СѓРіРё</h2>
 <div class="docs-block c">
     <div class="docs-content c">
         <div class="docs-cnt">
             <div class="docs-breadcrumb">
-                <a href="/service/docs/">Вернуться на главную</a>
+                <a href="/service/docs/">Р’РµСЂРЅСѓС‚СЊСЃСЏ РЅР° РіР»Р°РІРЅСѓСЋ</a>
             </div>
             <h3><?= $section['name'];?></h3>
 <? include('search_form.php');?>
             <?php if(is_array($search_results) && count($search_results)){ ?>
             <div class="help-search-res">
-                <div class="help-search-info">Найдено <?= count($search_results).' '.getTermination(count($search_results), array('совпадение','совпадения','совпадений'));?></div>
+                <div class="help-search-info">РќР°Р№РґРµРЅРѕ <?= count($search_results).' '.getTermination(count($search_results), array('СЃРѕРІРїР°РґРµРЅРёРµ','СЃРѕРІРїР°РґРµРЅРёСЏ','СЃРѕРІРїР°РґРµРЅРёР№'));?></div>
             <ol start="1">
             <?php foreach($search_results as $res){ ?>
 
@@ -25,8 +25,8 @@
             </div>
            <?}else{ //if ?>
             <div class="help-search-fail"> 
-				<strong>Увы, по вашему запросу не найдено совпадений.</strong><br>
-				Пожалуйста, попробуйте сформулировать запрос иначе и повторить поиск. Вы можете обратиться в <a href="https://feedback.fl.ru/">Службу поддержки</a>.
+				<strong>РЈРІС‹, РїРѕ РІР°С€РµРјСѓ Р·Р°РїСЂРѕСЃСѓ РЅРµ РЅР°Р№РґРµРЅРѕ СЃРѕРІРїР°РґРµРЅРёР№.</strong><br>
+				РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРїСЂРѕР±СѓР№С‚Рµ СЃС„РѕСЂРјСѓР»РёСЂРѕРІР°С‚СЊ Р·Р°РїСЂРѕСЃ РёРЅР°С‡Рµ Рё РїРѕРІС‚РѕСЂРёС‚СЊ РїРѕРёСЃРє. Р’С‹ РјРѕР¶РµС‚Рµ РѕР±СЂР°С‚РёС‚СЊСЃСЏ РІ <a href="https://feedback.fl.ru/">РЎР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.
             </div>
             <?php } ?>
         </div>

@@ -64,11 +64,11 @@ function AddFavBlog($thread_id, $priority = 0, $is_inner = 0, $action = "add", $
                 $inner .= 
                 '<li id="fav'.$ikey.'">
                     <span class="opt">
-            			<img onClick="xajax_EditFavBlog('.$ikey.', '.$gr_num.')" src="/images/ico-e-u.png" alt="Редактировать" style="cursor: pointer;">&nbsp;&nbsp;
-            			<img onClick="xajax_DelFavBlog('.$ikey.', '.$gr_num.')" src="/images/btn-remove2.png" alt="Удалить" style="cursor: pointer;">
+            			<img onClick="xajax_EditFavBlog('.$ikey.', '.$gr_num.')" src="/images/ico-e-u.png" alt="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" style="cursor: pointer;">&nbsp;&nbsp;
+            			<img onClick="xajax_DelFavBlog('.$ikey.', '.$gr_num.')" src="/images/btn-remove2.png" alt="РЈРґР°Р»РёС‚СЊ" style="cursor: pointer;">
             		</span>
             		<span class="stat"><img src="/images/bookmarks/'.blogs::$priority_img[ $fav['priority'] ].'" alt=""> '.blogs::$priority_name[ $fav['priority'] ].'</span>
-            		<a href="/blogs/view.php?tr='.$ikey.'">'.( $fav['title'] ? reformat($fav['title'], 37, 0, 1) : '<без темы>' ).'</a>
+            		<a href="/blogs/view.php?tr='.$ikey.'">'.( $fav['title'] ? reformat($fav['title'], 37, 0, 1) : '<Р±РµР· С‚РµРјС‹>' ).'</a>
             		<input type="hidden" id="favpriority'.$ikey.'" value="'.$fav['priority'].'">
                 </li>';
             }
@@ -85,7 +85,7 @@ function AddFavBlog($thread_id, $priority = 0, $is_inner = 0, $action = "add", $
 		else {
 			if (!$is_inner)
 			{
-				if (!$favs) {  $inner.='<div>Нет закладок</div>';	}
+				if (!$favs) {  $inner.='<div>РќРµС‚ Р·Р°РєР»Р°РґРѕРє</div>';	}
 				$objResponse->assign("fav_ul","innerHTML",$inner);
 				$objResponse->assign("favpriority","innerHTML",$priority);	
 			}
@@ -115,10 +115,10 @@ function DelFavBlog( $thread_id, $gr_num = 0 ) {
 	
 	if ( $fav ) {
         $outHTML = '<span class="opt-del">
-			<button onclick="xajax_AddFavBlog('.$thread_id.', 0, 0, \'delete\', '.$gr_num.')">Удалить</button>
-			<a href="javascript:void(0);" onclick="xajax_AddFavBlog('.$thread_id.', 0, 0, \'\', '.$gr_num.')" class="lnk-dot-666">Отмена</a>
+			<button onclick="xajax_AddFavBlog('.$thread_id.', 0, 0, \'delete\', '.$gr_num.')">РЈРґР°Р»РёС‚СЊ</button>
+			<a href="javascript:void(0);" onclick="xajax_AddFavBlog('.$thread_id.', 0, 0, \'\', '.$gr_num.')" class="lnk-dot-666">РћС‚РјРµРЅР°</a>
 		</span>
-		<a href="/blogs/view.php?tr='.$thread_id.'">'.( $fav['title'] ? reformat($fav['title'], 37, 0, 1) : '<без темы>' ).'</a>';
+		<a href="/blogs/view.php?tr='.$thread_id.'">'.( $fav['title'] ? reformat($fav['title'], 37, 0, 1) : '<Р±РµР· С‚РµРјС‹>' ).'</a>';
 		
 		$objResponse->assign( "fav".$thread_id, "innerHTML", $outHTML );
 	}
@@ -159,8 +159,8 @@ function EditFavBlog($thread_id, $gr_num = 0, $priority = 0, $title = "", $actio
                     <option value="2"'.($editfav['priority'] == 2 ? ' selected' : '').'>'.blogs::$priority_name[2].'</option>
                     <option value="3"'.($editfav['priority'] == 3 ? ' selected' : '').'>'.blogs::$priority_name[3].'</option>
     			</select>
-    			<button onClick="if(document.getElementById(\'favtext'.$thread_id.'\').value.length>250){alert(\'Слишком длинное название закладки!\');return false;}else{xajax_EditFavBlog('.$thread_id.', '.$gr_num.', document.getElementById(\'favpriority'.$thread_id.'\').value, document.getElementById(\'favtext'.$thread_id.'\').value, \'update\');}">Ок</button>
-    			<a href="javascript:void(0);" onClick="xajax_EditFavBlog('.$thread_id.', '.$gr_num.', '.$editfav['priority'].', document.getElementById(\'currtitle\').value, \'update\');" class="lnk-dot-666">Отмена</a>
+    			<button onClick="if(document.getElementById(\'favtext'.$thread_id.'\').value.length>250){alert(\'РЎР»РёС€РєРѕРј РґР»РёРЅРЅРѕРµ РЅР°Р·РІР°РЅРёРµ Р·Р°РєР»Р°РґРєРё!\');return false;}else{xajax_EditFavBlog('.$thread_id.', '.$gr_num.', document.getElementById(\'favpriority'.$thread_id.'\').value, document.getElementById(\'favtext'.$thread_id.'\').value, \'update\');}">РћРє</button>
+    			<a href="javascript:void(0);" onClick="xajax_EditFavBlog('.$thread_id.', '.$gr_num.', '.$editfav['priority'].', document.getElementById(\'currtitle\').value, \'update\');" class="lnk-dot-666">РћС‚РјРµРЅР°</a>
     		</span>
     		<input type="text" id="favtext'.$thread_id.'" value="'.$editfav['title'].'" class="i-txt">';
 			$outHTML .= "<input id='favpriority".$thread_id."' type='hidden' value='".$editfav['priority']."'>";
@@ -225,17 +225,17 @@ function openlevel($thread, $mod, $begin, $end, $thispage, $blog_thread, $lastli
   			     $buser_id = array_pop($buser_id);
   			     $buser_id = $buser_id['fromuser_id'];
 			     }
-			     if ($blog->deluser_id == $blog->fromuser_id) { $ret.='<br><br>Комментарий удален автором '.date("[d.m.Y | H:i]",strtotimeEx($blog->deleted)); }
-			     elseif ($blog->deluser_id == $buser_id) { $ret.='<br><br>Комментарий удален автором темы '.date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));
-			     } else { $ret.='<br><br>Комментарий удален модератором';  if (!$mod) { $ret.='( '; 
+			     if ($blog->deluser_id == $blog->fromuser_id) { $ret.='<br><br>РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ Р°РІС‚РѕСЂРѕРј '.date("[d.m.Y | H:i]",strtotimeEx($blog->deleted)); }
+			     elseif ($blog->deluser_id == $buser_id) { $ret.='<br><br>РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ Р°РІС‚РѕСЂРѕРј С‚РµРјС‹ '.date("[d.m.Y | H:i]",strtotimeEx($blog->deleted));
+			     } else { $ret.='<br><br>РљРѕРјРјРµРЅС‚Р°СЂРёР№ СѓРґР°Р»РµРЅ РјРѕРґРµСЂР°С‚РѕСЂРѕРј';  if (!$mod) { $ret.='( '; 
 			     $del_user = $user->GetName($blog->deluser_id, $err); $ret.=($del_user['login'] . ' : ' . $del_user['usurname'] . ' ' . $del_user['uname']); $ret.=' ) '; } $ret.=date("[d.m.Y | H:i]",strtotimeEx($blog->deleted)); } $ret.='<br><br>';
 			   } else {
 			     if ($blog->modified) { $ret.='&nbsp; &nbsp;';
-			       if ($blog->modified_id == $blog->fromuser_id) { $ret.='[внесены изменения: '.date("d.m.Y | H:i]",strtotimeEx($blog->modified)); } 
-      			 else { $ret.='Отредактировано модератором'; 
+			       if ($blog->modified_id == $blog->fromuser_id) { $ret.='[РІРЅРµСЃРµРЅС‹ РёР·РјРµРЅРµРЅРёСЏ: '.date("d.m.Y | H:i]",strtotimeEx($blog->modified)); } 
+      			 else { $ret.='РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј'; 
       			 if (!$mod) { $ret.='( '; $mod_user = $user->GetName($blog->modified_id, $err); $ret.=($mod_user['login'] . ' : ' . $mod_user['usurname'] . ' ' . $mod_user['uname']); $ret.=' ) '; } $ret.=' '.date("[d.m.Y | H:i]",strtotimeEx($blog->modified)); } } 
   			$ret.='<br>';
-  			if ($winner == $blog->id) { $ret.='<font color="#000099" style="font-size:20px">Победитель</font>'; } 
+  			if ($winner == $blog->id) { $ret.='<font color="#000099" style="font-size:20px">РџРѕР±РµРґРёС‚РµР»СЊ</font>'; } 
   			$ret.='<br>';
   			if ($blog->new == 't') { $ret.='<img src="/images/ico_new_blog.gif" alt="" width="44" height="12" border="0"><br>'; } 
   			if ($blog->title) { $ret.=' <font class="bl_name">';
@@ -249,18 +249,18 @@ function openlevel($thread, $mod, $begin, $end, $thispage, $blog_thread, $lastli
   				 else $ret.="</td></tr><tr class=\"qpr\"><td colspan=\"2\"><br>".$str;
   			 } 
   				$ret.='<br>';
-  			if ($gr_base == 5 && !$winner && $parent_login == $_SESSION['login']) { $ret.="<input type=\"submit\" name=\"btn\" value=\"Это победитель\" onClick=\"if (warning(0)) window.location.replace('./view.php?tr=".$thread."&ord='.$ord.'&winner=".$blog->id."'); else return false;\">"; } 
+  			if ($gr_base == 5 && !$winner && $parent_login == $_SESSION['login']) { $ret.="<input type=\"submit\" name=\"btn\" value=\"Р­С‚Рѕ РїРѕР±РµРґРёС‚РµР»СЊ\" onClick=\"if (warning(0)) window.location.replace('./view.php?tr=".$thread."&ord='.$ord.'&winner=".$blog->id."'); else return false;\">"; } 
   			$ret.='<div style="color: #D75A29;font-size:9px;';
   			if ($blog->attach && !$file) { $ret.=' padding-left: '.($padding+60).'px;'; } $ret.='">';
   			if ($blog->login == $_SESSION['login'] || $parent_login == $_SESSION['login'] || $allow_del || !$mod) {
-  			$ret.=' <a href="'.$form_uri.'?id='.$blog->id.'&amp;action=delete&ord='.$ord.'" style="color: #D75A29;" onclick="return warning(1);">Удалить</a> |';
+  			$ret.=' <a href="'.$form_uri.'?id='.$blog->id.'&amp;action=delete&ord='.$ord.'" style="color: #D75A29;" onclick="return warning(1);">РЈРґР°Р»РёС‚СЊ</a> |';
   			} if ($blog->login == $_SESSION['login'] || (!$mod)) {
-  			$ret.='<a href="'.$form_uri.'?id='.$blog->id.'&amp;action=edit&ord='.$ord.'&amp;tr='.$thread.'" style="color: #D75A29;">Редактировать</a> |';
+  			$ret.='<a href="'.$form_uri.'?id='.$blog->id.'&amp;action=edit&ord='.$ord.'&amp;tr='.$thread.'" style="color: #D75A29;">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> |';
   			 } 
   			$ret.="<a href=\"javascript: void(0);\" onclick=\"javascript: answer('".$blog->id."', '".($blog->attach ? $blog->attach : '')."', '".get_login($_SESSION["uid"])."'); document.getElementById('frm').olduser.value = '".$_SESSION["uid"]."'; \" ";
   			
-  			$ret.='style="color: #D75A29">Комментировать</a> |
-  			<a href="/blogs/view.php'."?tr=".$blog_thread.($thispage ? "&pagefrom=".$thispage : "")."&openlevel=".$blog->id."&ord=".$ord."#o".$blog->id.'" style="color: #D75A29">Ссылка</a> 
+  			$ret.='style="color: #D75A29">РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ</a> |
+  			<a href="/blogs/view.php'."?tr=".$blog_thread.($thispage ? "&pagefrom=".$thispage : "")."&openlevel=".$blog->id."&ord=".$ord."#o".$blog->id.'" style="color: #D75A29">РЎСЃС‹Р»РєР°</a> 
   			</div>
 						</td>
 		</tr>
@@ -276,7 +276,7 @@ function openlevel($thread, $mod, $begin, $end, $thispage, $blog_thread, $lastli
 			document.getElementById('frm').olduser.value = '".$_SESSION["uid"]."';
 			document.getElementById('frm').msg_name.value = '".($error_flag)?input_ref_scr($msg_name):input_ref_scr($blog->title)."';
 			document.getElementById('frm').msg.value = '".($error_flag)?input_ref_scr($msg):input_ref_scr($blog->msgtext)."';
-			document.getElementById('frm').btn.value = 'Сохранить';
+			document.getElementById('frm').btn.value = 'РЎРѕС…СЂР°РЅРёС‚СЊ';
 			document.getElementById('frm').action.value = 'change';
 			//-->
 			</script>";
@@ -352,11 +352,11 @@ function searchCorporativeTag($tag, $id) {
 
 /**
  * 
- * HTML для отображения результата, когда проект еще открыт
+ * HTML РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ СЂРµР·СѓР»СЊС‚Р°С‚Р°, РєРѕРіРґР° РїСЂРѕРµРєС‚ РµС‰Рµ РѕС‚РєСЂС‹С‚
  * 
  * @param $objResponse
- * @param $poll          -  массив с вариантами ответов
- * @param $voted         -  пользователь голосовал в этом опросе?
+ * @param $poll          -  РјР°СЃСЃРёРІ СЃ РІР°СЂРёР°РЅС‚Р°РјРё РѕС‚РІРµС‚РѕРІ
+ * @param $voted         -  РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РіРѕР»РѕСЃРѕРІР°Р» РІ СЌС‚РѕРј РѕРїСЂРѕСЃРµ?
  */	
 function BlogsPoll_ShowResult($thread_id, &$objResponse, &$poll, $voted) {
 	$html = '';
@@ -372,18 +372,18 @@ function BlogsPoll_ShowResult($thread_id, &$objResponse, &$poll, $voted) {
 	
 	$objResponse->assign('poll-answers-'.$thread_id, 'innerHTML', "<table class='poll-variants'>$html</table>");
 	$objResponse->assign('poll-btn-vote-'.$thread_id, 'innerHTML', '');
-	$html = $voted? '': '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showPoll(\'Blogs\', '.$thread_id.'); return false;">Скрыть результаты</a>&nbsp;&nbsp;&nbsp;';
+	$html = $voted? '': '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showPoll(\'Blogs\', '.$thread_id.'); return false;">РЎРєСЂС‹С‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹</a>&nbsp;&nbsp;&nbsp;';
 	$objResponse->assign('poll-btn-result-'.$thread_id, 'innerHTML', $html);
-	$objResponse->assign('poll-btn-close-'.$thread_id, 'innerHTML', '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.close(\'Blogs\', '.$thread_id.'); return false;" >Закрыть опрос</a>&nbsp;&nbsp;&nbsp;');
+	$objResponse->assign('poll-btn-close-'.$thread_id, 'innerHTML', '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.close(\'Blogs\', '.$thread_id.'); return false;" >Р—Р°РєСЂС‹С‚СЊ РѕРїСЂРѕСЃ</a>&nbsp;&nbsp;&nbsp;');
 }
 
 /**
  * 
- * HTML для отображения голосования
+ * HTML РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РіРѕР»РѕСЃРѕРІР°РЅРёСЏ
  * 
  * @param $objResponse
- * @param $poll          -  массив с вариантами ответов
- * @param $radio - 1 - один вариант ответа, 0 - несколько вариантов ответа
+ * @param $poll          -  РјР°СЃСЃРёРІ СЃ РІР°СЂРёР°РЅС‚Р°РјРё РѕС‚РІРµС‚РѕРІ
+ * @param $radio - 1 - РѕРґРёРЅ РІР°СЂРёР°РЅС‚ РѕС‚РІРµС‚Р°, 0 - РЅРµСЃРєРѕР»СЊРєРѕ РІР°СЂРёР°РЅС‚РѕРІ РѕС‚РІРµС‚Р°
  */	
 function BlogsPoll_ShowPoll($thread_id, &$objResponse, &$poll, $radio = 1) {
     $sType = ( $radio ) ? 'radio' : 'checkbox';
@@ -416,17 +416,17 @@ function BlogsPoll_ShowPoll($thread_id, &$objResponse, &$poll, $radio = 1) {
 		elseif( $sType == 'checkbox'){
 			$objResponse->assign('poll-answers-'.$thread_id, 'innerHTML', "$html");
 		}
-	$objResponse->assign('poll-btn-vote-'.$thread_id, 'innerHTML', '<a class="b-button b-button_rectangle_color_transparent" href="javascript: return false;" onclick="poll.vote(\'Blogs\', '.$thread_id.'); return false;"><span class="b-button__b1"><span class="b-button__b2"><span class="b-button__txt">Ответить</span></span></span></a>&nbsp;&nbsp;&nbsp;');
-	$objResponse->assign('poll-btn-result-'.$thread_id, 'innerHTML', '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showResult(\'Blogs\', '.$thread_id.'); return false;" >Посмотреть результаты</a>&nbsp;&nbsp;&nbsp;');
-	$objResponse->assign('poll-btn-close-'.$thread_id, 'innerHTML', '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.close(\'Blogs\', '.$thread_id.'); return false;">Закрыть опрос</a>&nbsp;&nbsp;&nbsp;');
+	$objResponse->assign('poll-btn-vote-'.$thread_id, 'innerHTML', '<a class="b-button b-button_rectangle_color_transparent" href="javascript: return false;" onclick="poll.vote(\'Blogs\', '.$thread_id.'); return false;"><span class="b-button__b1"><span class="b-button__b2"><span class="b-button__txt">РћС‚РІРµС‚РёС‚СЊ</span></span></span></a>&nbsp;&nbsp;&nbsp;');
+	$objResponse->assign('poll-btn-result-'.$thread_id, 'innerHTML', '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showResult(\'Blogs\', '.$thread_id.'); return false;" >РџРѕСЃРјРѕС‚СЂРµС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹</a>&nbsp;&nbsp;&nbsp;');
+	$objResponse->assign('poll-btn-close-'.$thread_id, 'innerHTML', '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.close(\'Blogs\', '.$thread_id.'); return false;">Р—Р°РєСЂС‹С‚СЊ РѕРїСЂРѕСЃ</a>&nbsp;&nbsp;&nbsp;');
 }
 
 /**
  * 
- * HTML для отображения результата, когда проект уже закрыт
+ * HTML РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ СЂРµР·СѓР»СЊС‚Р°С‚Р°, РєРѕРіРґР° РїСЂРѕРµРєС‚ СѓР¶Рµ Р·Р°РєСЂС‹С‚
  * 
  * @param $objResponse
- * @param $poll          -  массив с вариантами ответов
+ * @param $poll          -  РјР°СЃСЃРёРІ СЃ РІР°СЂРёР°РЅС‚Р°РјРё РѕС‚РІРµС‚РѕРІ
  */	
 function BlogsPoll_ShowClosed($thread_id, &$objResponse, &$poll) {
 	$max = 0;
@@ -443,15 +443,15 @@ function BlogsPoll_ShowClosed($thread_id, &$objResponse, &$poll) {
 	$objResponse->assign('poll-answers-'.$thread_id, 'innerHTML', "<table class='poll-variants'>$html</table>");
 	$objResponse->assign('poll-btn-vote-'.$thread_id, 'innerHTML', '');
 	$objResponse->assign('poll-btn-result-'.$thread_id, 'innerHTML', '');
-	$objResponse->assign('poll-btn-close-'.$thread_id, 'innerHTML', '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.close(\'Blogs\', '.$thread_id.'); return false;">Открыть опрос</a>&nbsp;&nbsp;&nbsp;');
+	$objResponse->assign('poll-btn-close-'.$thread_id, 'innerHTML', '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.close(\'Blogs\', '.$thread_id.'); return false;">РћС‚РєСЂС‹С‚СЊ РѕРїСЂРѕСЃ</a>&nbsp;&nbsp;&nbsp;');
 }
 
 /**
  * 
- * Проголосовать или показать результат
+ * РџСЂРѕРіРѕР»РѕСЃРѕРІР°С‚СЊ РёР»Рё РїРѕРєР°Р·Р°С‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚
  * 
- * @param integer $thread_id  id треда
- * @param array   $answers    id ответов (если 0, то просто отобразить результат)
+ * @param integer $thread_id  id С‚СЂРµРґР°
+ * @param array   $answers    id РѕС‚РІРµС‚РѕРІ (РµСЃР»Рё 0, С‚Рѕ РїСЂРѕСЃС‚Рѕ РѕС‚РѕР±СЂР°Р·РёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚)
  */	
 function BlogsPoll_Vote($thread_id, $answers, $sess) {
 	require_once $_SERVER['DOCUMENT_ROOT']."/classes/blogs.php";
@@ -473,7 +473,7 @@ function BlogsPoll_Vote($thread_id, $answers, $sess) {
 	$objResponse = new xajaxResponse();
 	$ban_where = $user->GetField($uid, $error, "ban_where");
 	if ($ban_where == 1) {
-		$objResponse->alert('Вам закрыт доступ в блоги');
+		$objResponse->alert('Р’Р°Рј Р·Р°РєСЂС‹С‚ РґРѕСЃС‚СѓРї РІ Р±Р»РѕРіРё');
 		return $objResponse;
 	}
 	$blog = new blogs;
@@ -483,7 +483,7 @@ function BlogsPoll_Vote($thread_id, $answers, $sess) {
 		}
 		if (!$res) {
 			if (!$error) {
-				$error = 'Ошибка <> '. $sess .' <> '. $_SESSION['rand'];
+				$error = 'РћС€РёР±РєР° <> '. $sess .' <> '. $_SESSION['rand'];
 			}
 			$objResponse->alert($error);
 		}
@@ -496,10 +496,10 @@ function BlogsPoll_Vote($thread_id, $answers, $sess) {
 
 /**
  * 
- * Отобразить голосование
+ * РћС‚РѕР±СЂР°Р·РёС‚СЊ РіРѕР»РѕСЃРѕРІР°РЅРёРµ
  * 
- * @param integer $thread_id id треда
- * @param $radio - 1 - один вариант ответа, 0 - несколько вариантов ответа
+ * @param integer $thread_id id С‚СЂРµРґР°
+ * @param $radio - 1 - РѕРґРёРЅ РІР°СЂРёР°РЅС‚ РѕС‚РІРµС‚Р°, 0 - РЅРµСЃРєРѕР»СЊРєРѕ РІР°СЂРёР°РЅС‚РѕРІ РѕС‚РІРµС‚Р°
  */	
 function BlogsPoll_Show($thread_id, $radio = 1) {
 	require_once $_SERVER['DOCUMENT_ROOT']."/classes/blogs.php";
@@ -509,7 +509,7 @@ function BlogsPoll_Show($thread_id, $radio = 1) {
 	$user = new users();
 	$ban_where = $user->GetField($uid, $error, "ban_where");
 	if ($ban_where == 1) {
-		$objResponse->alert('Вам закрыт доступ в блоги');
+		$objResponse->alert('Р’Р°Рј Р·Р°РєСЂС‹С‚ РґРѕСЃС‚СѓРї РІ Р±Р»РѕРіРё');
 		return $objResponse;
 	}
 	$thread_id = intval($thread_id);
@@ -526,9 +526,9 @@ function BlogsPoll_Show($thread_id, $radio = 1) {
 
 /**
  * 
- * Закрыть/Открыть голосование
+ * Р—Р°РєСЂС‹С‚СЊ/РћС‚РєСЂС‹С‚СЊ РіРѕР»РѕСЃРѕРІР°РЅРёРµ
  * 
- * @param integer $thread_id   id треда
+ * @param integer $thread_id   id С‚СЂРµРґР°
  */	
 function BlogsPoll_Close($thread_id) {
 	global $DB;
@@ -539,7 +539,7 @@ function BlogsPoll_Close($thread_id) {
 	$user = new users();
 	$ban_where = $user->GetField($uid, $error, "ban_where");
 	if ($ban_where == 1) {
-		$objResponse->alert('Вам закрыт доступ в блоги');
+		$objResponse->alert('Р’Р°Рј Р·Р°РєСЂС‹С‚ РґРѕСЃС‚СѓРї РІ Р±Р»РѕРіРё');
 		return $objResponse;
 	}
 	$thread_id = intval($thread_id);
@@ -568,9 +568,9 @@ function BlogsPoll_Close($thread_id) {
 
 /**
  * 
- * Удалить голосование
+ * РЈРґР°Р»РёС‚СЊ РіРѕР»РѕСЃРѕРІР°РЅРёРµ
  * 
- * @param integer $thread_id   id треда
+ * @param integer $thread_id   id С‚СЂРµРґР°
  */	
 function BlogsPoll_Remove($thread_id) {
 	global $DB;
@@ -605,7 +605,7 @@ function SetBlogSubscribe($thread_id) {
 	
 	if($uid && $thread_id) {
 	   $blog->SetMail($thread_id, $uid, 't');  
-	   $objResponse->assign("blog_subscribe", "innerHTML", "Отписаться от темы");
+	   $objResponse->assign("blog_subscribe", "innerHTML", "РћС‚РїРёСЃР°С‚СЊСЃСЏ РѕС‚ С‚РµРјС‹");
 	   $objResponse->script("$('blog_subscribe').onclick = function(){ xajax_DelBlogSubscribe({$thread_id}); }");
 	}
 	
@@ -623,7 +623,7 @@ function DelBlogSubscribe($thread_id) {
 	
 	if($uid && $thread_id) {
 	   $blog->SetMail($thread_id, $uid, 'f');  
-	   $objResponse->assign("blog_subscribe", "innerHTML", "Подписаться на тему");
+	   $objResponse->assign("blog_subscribe", "innerHTML", "РџРѕРґРїРёСЃР°С‚СЊСЃСЏ РЅР° С‚РµРјСѓ");
 	   $objResponse->script("$('blog_subscribe').onclick = function(){ xajax_SetBlogSubscribe({$thread_id}); }");
 	}
 	

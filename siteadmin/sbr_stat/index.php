@@ -30,32 +30,32 @@ if ($show_results) {
         $period[0] = date("Y-m-d 00:00:00", time());
         $period[1] = date("Y-m-d 23:59:59", time());
         $groupBy = 'day';
-        $periodText = "за сегодня";
+        $periodText = "Р·Р° СЃРµРіРѕРґРЅСЏ";
     } elseif ($period_param === 'week') {
         $period[0] = date("Y-m-d 00:00:00", time() - (3600 * 24 * 7));
         $period[1] = date("Y-m-d 23:59:59", time());
         $groupBy = 'day';
-        $periodText = "за прошедшую неделю";
+        $periodText = "Р·Р° РїСЂРѕС€РµРґС€СѓСЋ РЅРµРґРµР»СЋ";
     } elseif ($period_param === 'month') {
         $period[0] = date("Y-m-d 00:00:00", time() - (3600 * 24 * 30));
         $period[1] = date("Y-m-d 23:59:59", time());
         $groupBy = 'day';
-        $periodText = "за прошедший месяц";
+        $periodText = "Р·Р° РїСЂРѕС€РµРґС€РёР№ РјРµСЃСЏС†";
     } elseif ($period_param === 'year') {
         $period[0] = date("Y-m-d 00:00:00", time() - (3600 * 24 * 365));
         $period[1] = date("Y-m-d 23:59:59", time());
         $groupBy = 'month';
-        $periodText = "за прошедший год (статистика по месяцам)";
+        $periodText = "Р·Р° РїСЂРѕС€РµРґС€РёР№ РіРѕРґ (СЃС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РјРµСЃСЏС†Р°Рј)";
     } elseif ($period_param === 'alltime') {
         $groupBy = 'year';
-        $periodText = "за все время (статистика по годам)";
+        $periodText = "Р·Р° РІСЃРµ РІСЂРµРјСЏ (СЃС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РіРѕРґР°Рј)";
     } elseif ($period_param === 'custom') {
         $from = explode('.', $custom_period_from);
         $to = explode('.', $custom_period_to);
         $fromTime = mktime(0, 0, 0, $from[1], $from[0], $from[2]);
         $toTime = mktime(0, 0, 0, $to[1], $to[0], $to[2]);
         
-        // дата начала периода не должна быть позже конца периода
+        // РґР°С‚Р° РЅР°С‡Р°Р»Р° РїРµСЂРёРѕРґР° РЅРµ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РїРѕР·Р¶Рµ РєРѕРЅС†Р° РїРµСЂРёРѕРґР°
         if ($fromTime > $toTime) {
             
             $tmpTime = $fromTime;
@@ -71,15 +71,15 @@ if ($show_results) {
         $period[0] = date("Y-m-d 00:00:00", $fromTime);
         $period[1] = date("Y-m-d 23:59:59", $toTime);
         $groupBy = 'day';
-        $periodText = "с $custom_period_from по $custom_period_to";
+        $periodText = "СЃ $custom_period_from РїРѕ $custom_period_to";
     }
     
     
     $sbr_meta = new sbr_meta();
     $sbr_data = $sbr_meta->getSbrStats($period, $groupBy, $akkr_param, $pdrd_param);
     
-    // подготавливаем для таблицы, так как для некоторых графиков могут быть пропущены даты
-    // заодно и дату приведем к нормальному формату
+    // РїРѕРґРіРѕС‚Р°РІР»РёРІР°РµРј РґР»СЏ С‚Р°Р±Р»РёС†С‹, С‚Р°Рє РєР°Рє РґР»СЏ РЅРµРєРѕС‚РѕСЂС‹С… РіСЂР°С„РёРєРѕРІ РјРѕРіСѓС‚ Р±С‹С‚СЊ РїСЂРѕРїСѓС‰РµРЅС‹ РґР°С‚С‹
+    // Р·Р°РѕРґРЅРѕ Рё РґР°С‚Сѓ РїСЂРёРІРµРґРµРј Рє РЅРѕСЂРјР°Р»СЊРЅРѕРјСѓ С„РѕСЂРјР°С‚Сѓ
     $dates = array();
     foreach ($sbr_data as $type => $data) {
         foreach ($data as $date => $values) {
@@ -96,67 +96,67 @@ if ($show_results) {
     }
     ksort($dates);
     
-    // перечень графиков
-    // ключ 'name'  - название графика
-    // ключ 'index' - ключ из массива полученного из функции sbr_meta::getStatsDaysLC
-    // ключ 'value' - какие данные использовать
-    // ключ 'unit'  - единица измерения
-    // ключ 'descr' - описание
-    // ключ 'color' - цвет графика
-    // ключ 'type'  - 'normal' - обычный график, 'ps' - подробные данные по каждой платежной системе, 'avg_perc' - средний процент от сделки
+    // РїРµСЂРµС‡РµРЅСЊ РіСЂР°С„РёРєРѕРІ
+    // РєР»СЋС‡ 'name'  - РЅР°Р·РІР°РЅРёРµ РіСЂР°С„РёРєР°
+    // РєР»СЋС‡ 'index' - РєР»СЋС‡ РёР· РјР°СЃСЃРёРІР° РїРѕР»СѓС‡РµРЅРЅРѕРіРѕ РёР· С„СѓРЅРєС†РёРё sbr_meta::getStatsDaysLC
+    // РєР»СЋС‡ 'value' - РєР°РєРёРµ РґР°РЅРЅС‹Рµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ
+    // РєР»СЋС‡ 'unit'  - РµРґРёРЅРёС†Р° РёР·РјРµСЂРµРЅРёСЏ
+    // РєР»СЋС‡ 'descr' - РѕРїРёСЃР°РЅРёРµ
+    // РєР»СЋС‡ 'color' - С†РІРµС‚ РіСЂР°С„РёРєР°
+    // РєР»СЋС‡ 'type'  - 'normal' - РѕР±С‹С‡РЅС‹Р№ РіСЂР°С„РёРє, 'ps' - РїРѕРґСЂРѕР±РЅС‹Рµ РґР°РЅРЅС‹Рµ РїРѕ РєР°Р¶РґРѕР№ РїР»Р°С‚РµР¶РЅРѕР№ СЃРёСЃС‚РµРјРµ, 'avg_perc' - СЃСЂРµРґРЅРёР№ РїСЂРѕС†РµРЅС‚ РѕС‚ СЃРґРµР»РєРё
     $sbr_data_types = array (
-        array('name' => 'Количество заведенных СБР',                            'index' => 1, 'value' => 'cnt', 'unit' => 'СБР', 'descr' => 'Количество',   'color' => '#89A54E', 'type' => 'normal'),
-        array('name' => 'Общее количество покрытых СБР',                        'index' => 2, 'value' => 'cnt', 'unit' => 'СБР', 'descr' => 'Количество',   'color' => '#89A54E', 'type' => 'normal'),
-        array('name' => 'Количество покрытых СБР для каждой ПС',                'index' => 2, 'value' => 'cnt', 'unit' => 'СБР', 'descr' => 'Количество',   'color' => '#89A54E', 'type' => 'ps'),
-        array('name' => 'Общее количество открытых СБР',                        'index' => 3, 'value' => 'cnt', 'unit' => 'СБР', 'descr' => 'Количество',   'color' => '#89A54E', 'type' => 'normal'),
-        array('name' => 'Количество открытых СБР для каждой ПС',                'index' => 3, 'value' => 'cnt', 'unit' => 'СБР', 'descr' => 'Количество',   'color' => '#89A54E', 'type' => 'ps'),
-        array('name' => 'Количество возвратов по СБР (вернули работодателю)',   'index' => 4, 'value' => 'cnt', 'unit' => 'СБР', 'descr' => 'Количество',   'color' => '#89A54E', 'type' => 'normal'),
-        array('name' => 'Сумма покрытых, общая',                                'index' => 2, 'value' => 'sum', 'unit' => 'руб', 'descr' => 'Сумма',        'color' => '#4572A7', 'type' => 'normal'),
-        array('name' => 'Сумма покрытых для каждой ПС',                         'index' => 2, 'value' => 'sum', 'unit' => 'руб', 'descr' => 'Сумма',        'color' => '#4572A7', 'type' => 'ps'),
-        array('name' => 'Средний бюджет покрытых сделок',                       'index' => 2, 'value' => 'avg', 'unit' => 'руб', 'descr' => 'Сумма',        'color' => '#4572A7', 'type' => 'normal'),
-        array('name' => 'Сумма открытия, общая (исполнителю переведено)',       'index' => 3, 'value' => 'sum', 'unit' => 'руб', 'descr' => 'Сумма',        'color' => '#4572A7', 'type' => 'normal'),
-        array('name' => 'Сумма открытия для каждой ПС (исполнителю переведено)','index' => 3, 'value' => 'sum', 'unit' => 'руб', 'descr' => 'Сумма',        'color' => '#4572A7', 'type' => 'ps'),
-        array('name' => 'Сумма возвратов (вернули работодателю)',               'index' => 4, 'value' => 'sum', 'unit' => 'руб', 'descr' => 'Сумма',        'color' => '#4572A7', 'type' => 'normal'),
-        array('name' => 'Процент от Работодателей',                             'index' => 5, 'value' => 'sum', 'unit' => 'руб', 'descr' => 'Сумма',        'color' => '#4572A7', 'type' => 'normal'),
-        array('name' => 'Процент от Исполнителей',                              'index' => 6, 'value' => 'sum', 'unit' => 'руб', 'descr' => 'Сумма',        'color' => '#4572A7', 'type' => 'normal'),
-        array('name' => 'Средний процент',                                      'index' => 5, 'value' => 'avg', 'unit' => 'руб', 'descr' => 'Cумма',        'color' => '#4572A7', 'type' => 'avg_perc'),
+        array('name' => 'РљРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РІРµРґРµРЅРЅС‹С… РЎР‘Р ',                            'index' => 1, 'value' => 'cnt', 'unit' => 'РЎР‘Р ', 'descr' => 'РљРѕР»РёС‡РµСЃС‚РІРѕ',   'color' => '#89A54E', 'type' => 'normal'),
+        array('name' => 'РћР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕРєСЂС‹С‚С‹С… РЎР‘Р ',                        'index' => 2, 'value' => 'cnt', 'unit' => 'РЎР‘Р ', 'descr' => 'РљРѕР»РёС‡РµСЃС‚РІРѕ',   'color' => '#89A54E', 'type' => 'normal'),
+        array('name' => 'РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕРєСЂС‹С‚С‹С… РЎР‘Р  РґР»СЏ РєР°Р¶РґРѕР№ РџРЎ',                'index' => 2, 'value' => 'cnt', 'unit' => 'РЎР‘Р ', 'descr' => 'РљРѕР»РёС‡РµСЃС‚РІРѕ',   'color' => '#89A54E', 'type' => 'ps'),
+        array('name' => 'РћР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РєСЂС‹С‚С‹С… РЎР‘Р ',                        'index' => 3, 'value' => 'cnt', 'unit' => 'РЎР‘Р ', 'descr' => 'РљРѕР»РёС‡РµСЃС‚РІРѕ',   'color' => '#89A54E', 'type' => 'normal'),
+        array('name' => 'РљРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РєСЂС‹С‚С‹С… РЎР‘Р  РґР»СЏ РєР°Р¶РґРѕР№ РџРЎ',                'index' => 3, 'value' => 'cnt', 'unit' => 'РЎР‘Р ', 'descr' => 'РљРѕР»РёС‡РµСЃС‚РІРѕ',   'color' => '#89A54E', 'type' => 'ps'),
+        array('name' => 'РљРѕР»РёС‡РµСЃС‚РІРѕ РІРѕР·РІСЂР°С‚РѕРІ РїРѕ РЎР‘Р  (РІРµСЂРЅСѓР»Рё СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЋ)',   'index' => 4, 'value' => 'cnt', 'unit' => 'РЎР‘Р ', 'descr' => 'РљРѕР»РёС‡РµСЃС‚РІРѕ',   'color' => '#89A54E', 'type' => 'normal'),
+        array('name' => 'РЎСѓРјРјР° РїРѕРєСЂС‹С‚С‹С…, РѕР±С‰Р°СЏ',                                'index' => 2, 'value' => 'sum', 'unit' => 'СЂСѓР±', 'descr' => 'РЎСѓРјРјР°',        'color' => '#4572A7', 'type' => 'normal'),
+        array('name' => 'РЎСѓРјРјР° РїРѕРєСЂС‹С‚С‹С… РґР»СЏ РєР°Р¶РґРѕР№ РџРЎ',                         'index' => 2, 'value' => 'sum', 'unit' => 'СЂСѓР±', 'descr' => 'РЎСѓРјРјР°',        'color' => '#4572A7', 'type' => 'ps'),
+        array('name' => 'РЎСЂРµРґРЅРёР№ Р±СЋРґР¶РµС‚ РїРѕРєСЂС‹С‚С‹С… СЃРґРµР»РѕРє',                       'index' => 2, 'value' => 'avg', 'unit' => 'СЂСѓР±', 'descr' => 'РЎСѓРјРјР°',        'color' => '#4572A7', 'type' => 'normal'),
+        array('name' => 'РЎСѓРјРјР° РѕС‚РєСЂС‹С‚РёСЏ, РѕР±С‰Р°СЏ (РёСЃРїРѕР»РЅРёС‚РµР»СЋ РїРµСЂРµРІРµРґРµРЅРѕ)',       'index' => 3, 'value' => 'sum', 'unit' => 'СЂСѓР±', 'descr' => 'РЎСѓРјРјР°',        'color' => '#4572A7', 'type' => 'normal'),
+        array('name' => 'РЎСѓРјРјР° РѕС‚РєСЂС‹С‚РёСЏ РґР»СЏ РєР°Р¶РґРѕР№ РџРЎ (РёСЃРїРѕР»РЅРёС‚РµР»СЋ РїРµСЂРµРІРµРґРµРЅРѕ)','index' => 3, 'value' => 'sum', 'unit' => 'СЂСѓР±', 'descr' => 'РЎСѓРјРјР°',        'color' => '#4572A7', 'type' => 'ps'),
+        array('name' => 'РЎСѓРјРјР° РІРѕР·РІСЂР°С‚РѕРІ (РІРµСЂРЅСѓР»Рё СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЋ)',               'index' => 4, 'value' => 'sum', 'unit' => 'СЂСѓР±', 'descr' => 'РЎСѓРјРјР°',        'color' => '#4572A7', 'type' => 'normal'),
+        array('name' => 'РџСЂРѕС†РµРЅС‚ РѕС‚ Р Р°Р±РѕС‚РѕРґР°С‚РµР»РµР№',                             'index' => 5, 'value' => 'sum', 'unit' => 'СЂСѓР±', 'descr' => 'РЎСѓРјРјР°',        'color' => '#4572A7', 'type' => 'normal'),
+        array('name' => 'РџСЂРѕС†РµРЅС‚ РѕС‚ РСЃРїРѕР»РЅРёС‚РµР»РµР№',                              'index' => 6, 'value' => 'sum', 'unit' => 'СЂСѓР±', 'descr' => 'РЎСѓРјРјР°',        'color' => '#4572A7', 'type' => 'normal'),
+        array('name' => 'РЎСЂРµРґРЅРёР№ РїСЂРѕС†РµРЅС‚',                                      'index' => 5, 'value' => 'avg', 'unit' => 'СЂСѓР±', 'descr' => 'CСѓРјРјР°',        'color' => '#4572A7', 'type' => 'avg_perc'),
     );
     
-    // перечень строк в таблице
+    // РїРµСЂРµС‡РµРЅСЊ СЃС‚СЂРѕРє РІ С‚Р°Р±Р»РёС†Рµ
     $sbr_table_types = array (
-        array('type' => 1, 'value' => 'cnt',        'name' => 'Кол-во заведенных'),
-        array('type' => 2, 'value' => 'cnt',        'name' => 'Кол-во покрытых, всего'),
-        array('type' => 2, 'value' => 'cnt_wmr',    'name' => 'Кол-во покрытых, WebMoney'),
-        array('type' => 2, 'value' => 'cnt_yd',     'name' => 'Кол-во покрытых, Я.Деньги'),
-        array('type' => 2, 'value' => 'cnt_card',   'name' => 'Кол-во покрытых, пластик'),
-        array('type' => 2, 'value' => 'cnt_bank',   'name' => 'Кол-во покрытых, банк'),
-        array('type' => 2, 'value' => 'cnt_ww',     'name' => 'Кол-во покрытых, веб-кошел.'),
-        array('type' => 2, 'value' => 'cnt_fm',     'name' => 'Кол-во покрытых, руб.'),
-        array('type' => 3, 'value' => 'cnt',        'name' => 'Кол-во открытых, всего'),
-        array('type' => 3, 'value' => 'cnt_wmr',    'name' => 'Кол-во открытых, WebMoney'),
-        array('type' => 3, 'value' => 'cnt_yd',     'name' => 'Кол-во открытых, Я.Деньги'),
-        array('type' => 3, 'value' => 'cnt_card',   'name' => 'Кол-во открытых, пластик'),
-        array('type' => 3, 'value' => 'cnt_bank',   'name' => 'Кол-во открытых, банк'),
-        array('type' => 3, 'value' => 'cnt_ww',     'name' => 'Кол-во открытых, веб-кошел.'),
-        array('type' => 3, 'value' => 'cnt_fm',     'name' => 'Кол-во открытых, руб.'),
-        array('type' => 4, 'value' => 'cnt',        'name' => 'Кол-во возвратов'),
-        array('type' => 2, 'value' => 'sum',        'name' => 'Сумма покрытия, общая'),
-        array('type' => 2, 'value' => 'sum_wmr',    'name' => 'Сумма покрытия, WebMoney'),
-        array('type' => 2, 'value' => 'sum_yd',     'name' => 'Сумма покрытия, Я.Деньги'),
-        array('type' => 2, 'value' => 'sum_card',   'name' => 'Сумма покрытия, пластик'),
-        array('type' => 2, 'value' => 'sum_bank',   'name' => 'Сумма покрытия, банк'),
-        array('type' => 2, 'value' => 'sum_ww',     'name' => 'Сумма покрытия, веб-кошелек'),
-        array('type' => 2, 'value' => 'sum_fm',     'name' => 'Сумма покрытия, руб.'),
-        array('type' => 3, 'value' => 'sum',        'name' => 'Сумма открытия, общая'),
-        array('type' => 3, 'value' => 'sum_wmr',    'name' => 'Сумма открытия, WebMoney'),
-        array('type' => 3, 'value' => 'sum_yd',     'name' => 'Сумма открытия, Я.Деньги'),
-        array('type' => 3, 'value' => 'sum_card',   'name' => 'Сумма открытия, пластик'),
-        array('type' => 3, 'value' => 'sum_bank',   'name' => 'Сумма открытия, банк'),
-        array('type' => 3, 'value' => 'sum_ww',     'name' => 'Сумма открытия, веб-кошелек'),
-        array('type' => 3, 'value' => 'sum_fm',     'name' => 'Сумма открытия, руб.'),
-        array('type' => 4, 'value' => 'sum',        'name' => 'Сумма возвратов'),
-        array('type' => 5, 'value' => 'sum',        'name' => 'Процент от раб-лей'),
-        array('type' => 6, 'value' => 'sum',        'name' => 'Процент от исп-лей'),
+        array('type' => 1, 'value' => 'cnt',        'name' => 'РљРѕР»-РІРѕ Р·Р°РІРµРґРµРЅРЅС‹С…'),
+        array('type' => 2, 'value' => 'cnt',        'name' => 'РљРѕР»-РІРѕ РїРѕРєСЂС‹С‚С‹С…, РІСЃРµРіРѕ'),
+        array('type' => 2, 'value' => 'cnt_wmr',    'name' => 'РљРѕР»-РІРѕ РїРѕРєСЂС‹С‚С‹С…, WebMoney'),
+        array('type' => 2, 'value' => 'cnt_yd',     'name' => 'РљРѕР»-РІРѕ РїРѕРєСЂС‹С‚С‹С…, РЇ.Р”РµРЅСЊРіРё'),
+        array('type' => 2, 'value' => 'cnt_card',   'name' => 'РљРѕР»-РІРѕ РїРѕРєСЂС‹С‚С‹С…, РїР»Р°СЃС‚РёРє'),
+        array('type' => 2, 'value' => 'cnt_bank',   'name' => 'РљРѕР»-РІРѕ РїРѕРєСЂС‹С‚С‹С…, Р±Р°РЅРє'),
+        array('type' => 2, 'value' => 'cnt_ww',     'name' => 'РљРѕР»-РІРѕ РїРѕРєСЂС‹С‚С‹С…, РІРµР±-РєРѕС€РµР».'),
+        array('type' => 2, 'value' => 'cnt_fm',     'name' => 'РљРѕР»-РІРѕ РїРѕРєСЂС‹С‚С‹С…, СЂСѓР±.'),
+        array('type' => 3, 'value' => 'cnt',        'name' => 'РљРѕР»-РІРѕ РѕС‚РєСЂС‹С‚С‹С…, РІСЃРµРіРѕ'),
+        array('type' => 3, 'value' => 'cnt_wmr',    'name' => 'РљРѕР»-РІРѕ РѕС‚РєСЂС‹С‚С‹С…, WebMoney'),
+        array('type' => 3, 'value' => 'cnt_yd',     'name' => 'РљРѕР»-РІРѕ РѕС‚РєСЂС‹С‚С‹С…, РЇ.Р”РµРЅСЊРіРё'),
+        array('type' => 3, 'value' => 'cnt_card',   'name' => 'РљРѕР»-РІРѕ РѕС‚РєСЂС‹С‚С‹С…, РїР»Р°СЃС‚РёРє'),
+        array('type' => 3, 'value' => 'cnt_bank',   'name' => 'РљРѕР»-РІРѕ РѕС‚РєСЂС‹С‚С‹С…, Р±Р°РЅРє'),
+        array('type' => 3, 'value' => 'cnt_ww',     'name' => 'РљРѕР»-РІРѕ РѕС‚РєСЂС‹С‚С‹С…, РІРµР±-РєРѕС€РµР».'),
+        array('type' => 3, 'value' => 'cnt_fm',     'name' => 'РљРѕР»-РІРѕ РѕС‚РєСЂС‹С‚С‹С…, СЂСѓР±.'),
+        array('type' => 4, 'value' => 'cnt',        'name' => 'РљРѕР»-РІРѕ РІРѕР·РІСЂР°С‚РѕРІ'),
+        array('type' => 2, 'value' => 'sum',        'name' => 'РЎСѓРјРјР° РїРѕРєСЂС‹С‚РёСЏ, РѕР±С‰Р°СЏ'),
+        array('type' => 2, 'value' => 'sum_wmr',    'name' => 'РЎСѓРјРјР° РїРѕРєСЂС‹С‚РёСЏ, WebMoney'),
+        array('type' => 2, 'value' => 'sum_yd',     'name' => 'РЎСѓРјРјР° РїРѕРєСЂС‹С‚РёСЏ, РЇ.Р”РµРЅСЊРіРё'),
+        array('type' => 2, 'value' => 'sum_card',   'name' => 'РЎСѓРјРјР° РїРѕРєСЂС‹С‚РёСЏ, РїР»Р°СЃС‚РёРє'),
+        array('type' => 2, 'value' => 'sum_bank',   'name' => 'РЎСѓРјРјР° РїРѕРєСЂС‹С‚РёСЏ, Р±Р°РЅРє'),
+        array('type' => 2, 'value' => 'sum_ww',     'name' => 'РЎСѓРјРјР° РїРѕРєСЂС‹С‚РёСЏ, РІРµР±-РєРѕС€РµР»РµРє'),
+        array('type' => 2, 'value' => 'sum_fm',     'name' => 'РЎСѓРјРјР° РїРѕРєСЂС‹С‚РёСЏ, СЂСѓР±.'),
+        array('type' => 3, 'value' => 'sum',        'name' => 'РЎСѓРјРјР° РѕС‚РєСЂС‹С‚РёСЏ, РѕР±С‰Р°СЏ'),
+        array('type' => 3, 'value' => 'sum_wmr',    'name' => 'РЎСѓРјРјР° РѕС‚РєСЂС‹С‚РёСЏ, WebMoney'),
+        array('type' => 3, 'value' => 'sum_yd',     'name' => 'РЎСѓРјРјР° РѕС‚РєСЂС‹С‚РёСЏ, РЇ.Р”РµРЅСЊРіРё'),
+        array('type' => 3, 'value' => 'sum_card',   'name' => 'РЎСѓРјРјР° РѕС‚РєСЂС‹С‚РёСЏ, РїР»Р°СЃС‚РёРє'),
+        array('type' => 3, 'value' => 'sum_bank',   'name' => 'РЎСѓРјРјР° РѕС‚РєСЂС‹С‚РёСЏ, Р±Р°РЅРє'),
+        array('type' => 3, 'value' => 'sum_ww',     'name' => 'РЎСѓРјРјР° РѕС‚РєСЂС‹С‚РёСЏ, РІРµР±-РєРѕС€РµР»РµРє'),
+        array('type' => 3, 'value' => 'sum_fm',     'name' => 'РЎСѓРјРјР° РѕС‚РєСЂС‹С‚РёСЏ, СЂСѓР±.'),
+        array('type' => 4, 'value' => 'sum',        'name' => 'РЎСѓРјРјР° РІРѕР·РІСЂР°С‚РѕРІ'),
+        array('type' => 5, 'value' => 'sum',        'name' => 'РџСЂРѕС†РµРЅС‚ РѕС‚ СЂР°Р±-Р»РµР№'),
+        array('type' => 6, 'value' => 'sum',        'name' => 'РџСЂРѕС†РµРЅС‚ РѕС‚ РёСЃРї-Р»РµР№'),
     );
     
 }

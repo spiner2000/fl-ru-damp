@@ -2,30 +2,30 @@
 var sended = false;
 function E(i) {return document.getElementById(i);}
 /**
- * Проверка полей и отправка формы 
+ * РџСЂРѕРІРµСЂРєР° РїРѕР»РµР№ Рё РѕС‚РїСЂР°РІРєР° С„РѕСЂРјС‹ 
  **/
 function diasbleForm() {
     if ( sended ) {
         return false;
     }
     if ( E( "document" ).value.length == 0 ) {
-        E( "uploadError" ).innerHTML = "Необходимо выбрать файл";
+        E( "uploadError" ).innerHTML = "РќРµРѕР±С…РѕРґРёРјРѕ РІС‹Р±СЂР°С‚СЊ С„Р°Р№Р»";
         return false;
     }
     if ( E( "document" ).value.length > 64 ) {
-        E( "uploadError" ).innerHTML = "Слишком длинное имя файла. (max 64 )";
+        E( "uploadError" ).innerHTML = "РЎР»РёС€РєРѕРј РґР»РёРЅРЅРѕРµ РёРјСЏ С„Р°Р№Р»Р°. (max 64 )";
         return false;
     }
     var path = E( "path" ).value.replace(/^\s+/, '').replace(/\s+$/, '');
     if ( path.length == 0 ) {
         E( "path" ).value = '';
         E( "path" ).focus();
-        E( "pathError" ).innerHTML = "Необходимо ввести путь к каталогу";
+        E( "pathError" ).innerHTML = "РќРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё РїСѓС‚СЊ Рє РєР°С‚Р°Р»РѕРіСѓ";
         return false;
     }
     
     if ( ! ( window.parent.allowedExt( E( "document" ).value ) ) ) {
-        E( "uploadError" ).innerHTML = "Недопустимый к загрузке тип файла.";
+        E( "uploadError" ).innerHTML = "РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ Рє Р·Р°РіСЂСѓР·РєРµ С‚РёРї С„Р°Р№Р»Р°.";
         return false;
     }
     sended = true;
@@ -42,10 +42,10 @@ window.onload=function() {
 </div>
 <form method="POST" action="/siteadmin/davupload/?mode=files&view=form" enctype="multipart/form-data" >
 <div style="font-size: 14px" id="uploadform">
-        <div style="padding:5px">Добавить файл</div>
+        <div style="padding:5px">Р”РѕР±Р°РІРёС‚СЊ С„Р°Р№Р»</div>
         <div style="clear: both">&nbsp;</div>
         <div style="float:left; width:20%">
-            <label for="filename" style="padding-right:7px; width:100%">Название файла (необязательно)</label>
+            <label for="filename" style="padding-right:7px; width:100%">РќР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р° (РЅРµРѕР±СЏР·Р°С‚РµР»СЊРЅРѕ)</label>
         </div>
         <div style="float:right; width:80%">
             <input id="filename" type="text" name="filename" style="padding-right:7px; width:100%;" maxlength="59"/><br/>
@@ -56,7 +56,7 @@ window.onload=function() {
         
         <!-- path -->
         <div style="float:left; width:20%">
-            <label for="path" style="padding-right:7px; width:100%">Каталог на dav сервере *</label>
+            <label for="path" style="padding-right:7px; width:100%">РљР°С‚Р°Р»РѕРі РЅР° dav СЃРµСЂРІРµСЂРµ *</label>
         </div>
         <div style="float:right; width:80%">
             <input id="path" type="text" name="path" style="padding-right:7px; width:100%;" value="<?=($path ? $path : "about/documents") ?>"/><br/>
@@ -72,7 +72,7 @@ window.onload=function() {
         </div>
         <div style="clear: both">&nbsp;</div>
         <div style="text-align:right">
-            <input type="submit" id="upload" value="Добавить" onclick="return diasbleForm();"/>
+            <input type="submit" id="upload" value="Р”РѕР±Р°РІРёС‚СЊ" onclick="return diasbleForm();"/>
             <input type="hidden" id="action" name="action" value="upload" />
             <input type="hidden"  name="u_token_key" value="<?=$_SESSION['rand'] ?>" />
             <input type="hidden" name="fid" id="fid" />

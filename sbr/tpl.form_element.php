@@ -27,7 +27,7 @@
 $pos=0; 
 foreach($tbl as $key=>$field) { 
     if (!$field['name']) continue; 
-    if ($key=='idcard_ser') continue; //Серию паспорта показываем при его номере
+    if ($key=='idcard_ser') continue; //РЎРµСЂРёСЋ РїР°СЃРїРѕСЂС‚Р° РїРѕРєР°Р·С‹РІР°РµРј РїСЂРё РµРіРѕ РЅРѕРјРµСЂРµ
     $pos++;
     
     $addit_html = "";
@@ -159,7 +159,7 @@ foreach($tbl as $key=>$field) {
             <td class="b-layout__td b-layout__td_padbot_15 b-layout__td_width_full_iphone">
                 <?php if($field['example'] && !$isStatic): ?>
                     <div class="b-layout__txt <?=$exampleClass?> b-layout__txt_fontsize_11 example-<?=$key?>">
-                        <?=(!in_array($field['pos'], $setting['notexample'])?'Например: ':'').$field['example']?>
+                        <?=(!in_array($field['pos'], $setting['notexample'])?'РќР°РїСЂРёРјРµСЂ: ':'').$field['example']?>
                     </div>
                 <?php endif; ?>
             </td>

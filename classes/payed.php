@@ -1,25 +1,25 @@
 <?
 /**
- * Подключаем файл с основными функциями
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» СЃ РѕСЃРЅРѕРІРЅС‹РјРё С„СѓРЅРєС†РёСЏРјРё
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
- * Класс для работы с оплатой услуг
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РѕРїР»Р°С‚РѕР№ СѓСЃР»СѓРі
  *
  */
 class payed
 {
         static public $date_action_test_pro = array(20130210, 20130221);
         
-        const PRICE_EMP_PRO = 899; // В рублях
+        const PRICE_EMP_PRO = 899; // Р’ СЂСѓР±Р»СЏС…
         const PRICE_FRL_PRO = 899;
     
 	/**
-	 * Рассчет стоимости ПРО 
+	 * Р Р°СЃСЃС‡РµС‚ СЃС‚РѕРёРјРѕСЃС‚Рё РџР Рћ 
 	 *
-	 * @param boolean $get_all Взять все или не все
-	 * @return integer стоимость
+	 * @param boolean $get_all Р’Р·СЏС‚СЊ РІСЃРµ РёР»Рё РЅРµ РІСЃРµ
+	 * @return integer СЃС‚РѕРёРјРѕСЃС‚СЊ
 	 */
 	 function GetProPrice($get_all=FALSE, $op_code = 48) {
 	 	$base = 10;
@@ -41,18 +41,18 @@ class payed
         }
 	
 	/**
-	 * Оплата определенной услуги (Аккаунт ПРО)
+	 * РћРїР»Р°С‚Р° РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ СѓСЃР»СѓРіРё (РђРєРєР°СѓРЅС‚ РџР Рћ)
 	 *
-	 * @param integer $fid              ИД Пользователя
-	 * @param integer $transaction_id   ИД транзакции
-	 * @param string  $time             Время 
-	 * @param string  $comments         Комент заказа
-	 * @param integer $tarif            Тариф заказа
-	 * @return integer|array 0 - если ничего не вышло, иначе данные по заказу
+	 * @param integer $fid              РР” РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param integer $transaction_id   РР” С‚СЂР°РЅР·Р°РєС†РёРё
+	 * @param string  $time             Р’СЂРµРјСЏ 
+	 * @param string  $comments         РљРѕРјРµРЅС‚ Р·Р°РєР°Р·Р°
+	 * @param integer $tarif            РўР°СЂРёС„ Р·Р°РєР°Р·Р°
+	 * @return integer|array 0 - РµСЃР»Рё РЅРёС‡РµРіРѕ РЅРµ РІС‹С€Р»Рѕ, РёРЅР°С‡Рµ РґР°РЅРЅС‹Рµ РїРѕ Р·Р°РєР°Р·Сѓ
 	 */
-	function SetOrderedTarif($fid, $transaction_id, $time, $comments="Все разделы", $tarif = 48, $promo_code = 0, &$error = null){
+	function SetOrderedTarif($fid, $transaction_id, $time, $comments="Р’СЃРµ СЂР°Р·РґРµР»С‹", $tarif = 48, $promo_code = 0, &$error = null){
         global $DB;
-	    //не позволим купить пробный PRO пользователям, которые уже когда-либо им пользовались
+	    //РЅРµ РїРѕР·РІРѕР»РёРј РєСѓРїРёС‚СЊ РїСЂРѕР±РЅС‹Р№ PRO РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј, РєРѕС‚РѕСЂС‹Рµ СѓР¶Рµ РєРѕРіРґР°-Р»РёР±Рѕ РёРј РїРѕР»СЊР·РѕРІР°Р»РёСЃСЊ
 	    if ($this->IsUserWasPro($fid) && ($tarif == 47 || $tarif == 114) )
 	    	return 0;
 		require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
@@ -62,7 +62,7 @@ class payed
             $cost = $time * ( payed::PRICE_EMP_PRO );
         }
 		$is_pro_test = 'false';
-                if($tarif == 114 && self::get_opcode_action_test_pro() != 114) // проверяем не вышло ли время акции
+                if($tarif == 114 && self::get_opcode_action_test_pro() != 114) // РїСЂРѕРІРµСЂСЏРµРј РЅРµ РІС‹С€Р»Рѕ Р»Рё РІСЂРµРјСЏ Р°РєС†РёРё
                     return 0;
 		if ($tarif == 47 || $tarif == 114) {
 			$time = "7 days";
@@ -81,38 +81,38 @@ class payed
 	    elseif ($tarif == 76)   {$time = $time." week";}
         
         
-        //Отменяем заморозку и пересчитываем ПРО
+        //РћС‚РјРµРЅСЏРµРј Р·Р°РјРѕСЂРѕР·РєСѓ Рё РїРµСЂРµСЃС‡РёС‚С‹РІР°РµРј РџР Рћ
         if ($tarif == 164) {
             $data = $this->ProLastById($fid, array($tarif));
             if ($data) {
-                //Если есть или будет заморозка то отменяем
+                //Р•СЃР»Рё РµСЃС‚СЊ РёР»Рё Р±СѓРґРµС‚ Р·Р°РјРѕСЂРѕР·РєР° С‚Рѕ РѕС‚РјРµРЅСЏРµРј
                 if (!empty($data['freeze_from'])) {
                     $this->freezeProDeactivate($fid);
                 }
 
-                //Пересчитываем оставшееся PRO в PROFI
+                //РџРµСЂРµСЃС‡РёС‚С‹РІР°РµРј РѕСЃС‚Р°РІС€РµРµСЃСЏ PRO РІ PROFI
                 $_interval = $this->getProfiDaysFromPro($fid);
 
-                //Обновляем комментарий добавляя дополнительное время
+                //РћР±РЅРѕРІР»СЏРµРј РєРѕРјРјРµРЅС‚Р°СЂРёР№ РґРѕР±Р°РІР»СЏСЏ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕРµ РІСЂРµРјСЏ
                 if ($_interval) {
                     $diff = abs(strtotime('now') - strtotime("+ {$_interval}"));
                     $days = floor($diff / (60*60*24));
 
                     if ($days > 0) {
-                        $comments .= sprintf(" + %s %s компенсация за пересчет ПРО", $days, ending($days, 'день', 'дня', 'дней'));                       
+                        $comments .= sprintf(" + %s %s РєРѕРјРїРµРЅСЃР°С†РёСЏ Р·Р° РїРµСЂРµСЃС‡РµС‚ РџР Рћ", $days, ending($days, 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№'));                       
                     }
                 }
             }
         }
         
         $DB->start();
-		$error = $account->Buy($bill_id, $transaction_id, $tarif, $fid, "Все разделы", $comments, $cost, 0, $promo_code);
+		$error = $account->Buy($bill_id, $transaction_id, $tarif, $fid, "Р’СЃРµ СЂР°Р·РґРµР»С‹", $comments, $cost, 0, $promo_code);
         
         if (!$error) {
             
             $this->account_operation_id = $bill_id;
             
-            //Если есть ПРО то конвертируем в PROFI и добавялем
+            //Р•СЃР»Рё РµСЃС‚СЊ РџР Рћ С‚Рѕ РєРѕРЅРІРµСЂС‚РёСЂСѓРµРј РІ PROFI Рё РґРѕР±Р°РІСЏР»РµРј
             if ($tarif == 164) {
                 if ($data) {
                     if ($_interval) {
@@ -125,7 +125,7 @@ class payed
             $sql = "INSERT INTO orders (from_id, to_date, tarif, ordered, billing_id, payed) VALUES (?, ?, ?, true, ?, true);";
             if ($DB->query($sql, $fid, $time, $tarif, $bill_id)) {
                 
-                //@todo: Это не будет работать при внешних запросах - а сейчас это постоянно!
+                //@todo: Р­С‚Рѕ РЅРµ Р±СѓРґРµС‚ СЂР°Р±РѕС‚Р°С‚СЊ РїСЂРё РІРЅРµС€РЅРёС… Р·Р°РїСЂРѕСЃР°С… - Р° СЃРµР№С‡Р°СЃ СЌС‚Рѕ РїРѕСЃС‚РѕСЏРЅРЅРѕ!
                 if ($fid == $_SESSION['uid'] && !is_pro())
                     $_SESSION['is_pro_new'] = 't';
                 
@@ -141,23 +141,23 @@ class payed
 	}
 	
 	/**
-	 * Взять заявки по определенному тарифу
+	 * Р’Р·СЏС‚СЊ Р·Р°СЏРІРєРё РїРѕ РѕРїСЂРµРґРµР»РµРЅРЅРѕРјСѓ С‚Р°СЂРёС„Сѓ
 	 *
-	 * @param integer $bill_id  	   ИД оплаты
-	 * @param integer $gift_id  	   ИД подарка
-	 * @param integer $gid      	   ИД подарка
-	 * @param integer $fid      	   ИД пользователя
-	 * @param integer $transaction_id  ИД транзакции
-	 * @param integer $time            Время
-	 * @param integer $comments        Комментарий оплаты
-	 * @param integer $tarif           ИД Тарифа (см. таблицу op_codes)
-	 * @return array Данные выборки
+	 * @param integer $bill_id  	   РР” РѕРїР»Р°С‚С‹
+	 * @param integer $gift_id  	   РР” РїРѕРґР°СЂРєР°
+	 * @param integer $gid      	   РР” РїРѕРґР°СЂРєР°
+	 * @param integer $fid      	   РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param integer $transaction_id  РР” С‚СЂР°РЅР·Р°РєС†РёРё
+	 * @param integer $time            Р’СЂРµРјСЏ
+	 * @param integer $comments        РљРѕРјРјРµРЅС‚Р°СЂРёР№ РѕРїР»Р°С‚С‹
+	 * @param integer $tarif           РР” РўР°СЂРёС„Р° (СЃРј. С‚Р°Р±Р»РёС†Сѓ op_codes)
+	 * @return array Р”Р°РЅРЅС‹Рµ РІС‹Р±РѕСЂРєРё
 	 */
-	function GiftOrderedTarif(&$bill_id, &$gift_id, $gid, $fid, $transaction_id, $time, $comments="Аккаунт PRO  в подарок", $tarif = 52){
+	function GiftOrderedTarif(&$bill_id, &$gift_id, $gid, $fid, $transaction_id, $time, $comments="РђРєРєР°СѓРЅС‚ PRO  РІ РїРѕРґР°СЂРѕРє", $tarif = 52){
         global $DB;
 		require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
 		$account = new account();
-		$error = $account->Gift($bill_id, $gift_id, $transaction_id, $tarif, $fid, $gid, "Все разделы", $comments, 10*($tarif==52||$tarif==16 ? $time : 1));
+		$error = $account->Gift($bill_id, $gift_id, $transaction_id, $tarif, $fid, $gid, "Р’СЃРµ СЂР°Р·РґРµР»С‹", $comments, 10*($tarif==52||$tarif==16 ? $time : 1));
 		if(!$error) {
             $sql = "INSERT INTO orders (from_id, to_date, tarif, ordered, billing_id, payed) VALUES (?, ?, ?, true, ?, true)";
             if($DB->query($sql, $gid, (is_numeric($time)? "{$time} month": $time) , $tarif, $bill_id)) {
@@ -182,9 +182,9 @@ class payed
 	
 	
     /**
-     * Возвращает данные по пользователям которые используют тестовые ПРО Аккаунты
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ РїРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј РєРѕС‚РѕСЂС‹Рµ РёСЃРїРѕР»СЊР·СѓСЋС‚ С‚РµСЃС‚РѕРІС‹Рµ РџР Рћ РђРєРєР°СѓРЅС‚С‹
      *
-     * @return array Данные выборки
+     * @return array Р”Р°РЅРЅС‹Рµ РІС‹Р±РѕСЂРєРё
      */
     function GetProTestUsers() {
         global $DB;
@@ -199,15 +199,15 @@ class payed
     }
     
 	/**
-	 * Прием заявки и подтверждение оплаты (из админки)
+	 * РџСЂРёРµРј Р·Р°СЏРІРєРё Рё РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РѕРїР»Р°С‚С‹ (РёР· Р°РґРјРёРЅРєРё)
 	 *
 	 * @deprecated 
 	 * 
-	 * @param integere $id      ИД Оплаты
-	 * @param integer  $ammount Сумма оплаты
-	 * @param string   $date    Дата оплаты
-	 * @param string   $to_date Дата (по какое число действует услуга)
-	 * @return string Сообщение об ошибке
+	 * @param integere $id      РР” РћРїР»Р°С‚С‹
+	 * @param integer  $ammount РЎСѓРјРјР° РѕРїР»Р°С‚С‹
+	 * @param string   $date    Р”Р°С‚Р° РѕРїР»Р°С‚С‹
+	 * @param string   $to_date Р”Р°С‚Р° (РїРѕ РєР°РєРѕРµ С‡РёСЃР»Рѕ РґРµР№СЃС‚РІСѓРµС‚ СѓСЃР»СѓРіР°)
+	 * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function SetPayed($id, $ammount, $date, $to_date){
         global $DB;
@@ -230,10 +230,10 @@ class payed
 	}
 	
 	/**
-	 * Удалить заявку по ее ид.
+	 * РЈРґР°Р»РёС‚СЊ Р·Р°СЏРІРєСѓ РїРѕ РµРµ РёРґ.
 	 *
-	 * @param integer $id Ид заказа
-	 * @return string Сообщение об ошибке
+	 * @param integer $id РРґ Р·Р°РєР°Р·Р°
+	 * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function DeleteOrder($id){
         global $DB;
@@ -244,10 +244,10 @@ class payed
 	}
 	
 	/**
-     * Проверка, является ли пользователь ПРО по логину
+     * РџСЂРѕРІРµСЂРєР°, СЏРІР»СЏРµС‚СЃСЏ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РџР Рћ РїРѕ Р»РѕРіРёРЅСѓ
      *
-     * @param string  $login    Логин пользователя
-     * @return integer ИД пользователя если он существует в таблице, иначе 0
+     * @param string  $login    Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @return integer РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РµСЃР»Рё РѕРЅ СЃСѓС‰РµСЃС‚РІСѓРµС‚ РІ С‚Р°Р±Р»РёС†Рµ, РёРЅР°С‡Рµ 0
      */
 	function CheckPro($login){
         global $DB;
@@ -262,10 +262,10 @@ class payed
     }
 
     /**
-     * Проверка, явялется ли пользователь ПРО по ИД
+     * РџСЂРѕРІРµСЂРєР°, СЏРІСЏР»РµС‚СЃСЏ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РџР Рћ РїРѕ РР”
      *
-     * @param integer $uid ИД пользователя
-     * @return boolean true - если является, иначе false
+     * @param integer $uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @return boolean true - РµСЃР»Рё СЏРІР»СЏРµС‚СЃСЏ, РёРЅР°С‡Рµ false
      */
     function checkProByUid($uid)
     {
@@ -278,9 +278,9 @@ class payed
     }
 
     /**
-     * Пользователи ПРО у которых закончилась дата ПРО, проверка по логину
+     * РџРѕР»СЊР·РѕРІР°С‚РµР»Рё РџР Рћ Сѓ РєРѕС‚РѕСЂС‹С… Р·Р°РєРѕРЅС‡РёР»Р°СЃСЊ РґР°С‚Р° РџР Рћ, РїСЂРѕРІРµСЂРєР° РїРѕ Р»РѕРіРёРЅСѓ
      *
-     * @param string $login  Логин
+     * @param string $login  Р›РѕРіРёРЅ
      * @return integer
      */
     function ProLast($login) {
@@ -310,12 +310,12 @@ class payed
 	
 	
     /**
-     * Информация о наличии ПРО и его состоянии по ID пользователя
-     * Аналог ProLast
+     * РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РЅР°Р»РёС‡РёРё РџР Рћ Рё РµРіРѕ СЃРѕСЃС‚РѕСЏРЅРёРё РїРѕ ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * РђРЅР°Р»РѕРі ProLast
      * 
      * @global DB $DB
-     * @param type $uid - ID пользователя
-     * @param type $_notIn - ID op_codes которые нужно исключить из рассмотрения
+     * @param type $uid - ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param type $_notIn - ID op_codes РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ РёСЃРєР»СЋС‡РёС‚СЊ РёР· СЂР°СЃСЃРјРѕС‚СЂРµРЅРёСЏ
      * @return type
      */
     function ProLastById($uid, $_notIn = array()) 
@@ -361,7 +361,7 @@ class payed
     
     
     /**
-     * Конвертация существующего срока ПРО в PROFI
+     * РљРѕРЅРІРµСЂС‚Р°С†РёСЏ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРіРѕ СЃСЂРѕРєР° РџР Рћ РІ PROFI
      * 
      * @global DB $DB
      * @param type $uid
@@ -397,7 +397,7 @@ class payed
 
 
     /**
-	 * Выборка пользователей которых необходимо предупредить об окончании ПРО услуги
+	 * Р’С‹Р±РѕСЂРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РєРѕС‚РѕСЂС‹С… РЅРµРѕР±С…РѕРґРёРјРѕ РїСЂРµРґСѓРїСЂРµРґРёС‚СЊ РѕР± РѕРєРѕРЅС‡Р°РЅРёРё РџР Рћ СѓСЃР»СѓРіРё
 	 *
 	 * @see smail::SendWarnings();
 	 * 
@@ -426,9 +426,9 @@ class payed
 	}
 	
 	/**
-	 * Количество ПРО аккаунтов
+	 * РљРѕР»РёС‡РµСЃС‚РІРѕ РџР Рћ Р°РєРєР°СѓРЅС‚РѕРІ
 	 *
-	 * @return array [количество]
+	 * @return array [РєРѕР»РёС‡РµСЃС‚РІРѕ]
 	 */
 	function CountPro(){
         global $DB;
@@ -440,10 +440,10 @@ class payed
 	}
 	
 	/**
-	 * Информация о заявке по данным оплаты и ид. пользователя
+	 * РРЅС„РѕСЂРјР°С†РёСЏ Рѕ Р·Р°СЏРІРєРµ РїРѕ РґР°РЅРЅС‹Рј РѕРїР»Р°С‚С‹ Рё РёРґ. РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	 *
-	 * @param integer $bill_id ИД оплаты
-	 * @param integer $uid     Ид пользователя
+	 * @param integer $bill_id РР” РѕРїР»Р°С‚С‹
+	 * @param integer $uid     РРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	 * @return string
 	 */
 	function GetOrderInfo($bill_id, $uid){
@@ -467,11 +467,11 @@ class payed
         $ammount = $res['ammount'];
         $op_code = $res['op_code'];
 		if (in_array($op_code,array(16,52,66,67,68)) && $ammount < 0) {
-			$out = "Аккаунт PRO для <a href=\"/users/".$login."\" class=\"blue\">".$uname." ".$usurname." [".$login."]</a>";
+			$out = "РђРєРєР°СѓРЅС‚ PRO РґР»СЏ <a href=\"/users/".$login."\" class=\"blue\">".$uname." ".$usurname." [".$login."]</a>";
 		} else {
 			
 			if (in_array($op_code,array(16,52,66,67,68))) 
-				$out = "Аккаунт PRO от <a href=\"/users/".$login."\" class=\"blue\">".$uname." ".$usurname." [".$login."]</a><br>";
+				$out = "РђРєРєР°СѓРЅС‚ PRO РѕС‚ <a href=\"/users/".$login."\" class=\"blue\">".$uname." ".$usurname." [".$login."]</a><br>";
 			$sql = "
                 SELECT 
                     from_date, 
@@ -484,19 +484,19 @@ class payed
                 ";
             $row = $DB->row($sql, $bill_id, $uid);
 			if ($row) {
-    		    $out .= "С ".date("d.m.Y | H:i", strtotime($row['from_date']))." по ".date("d.m.Y | H:i", strtotime($row['to_date']));
+    		    $out .= "РЎ ".date("d.m.Y | H:i", strtotime($row['from_date']))." РїРѕ ".date("d.m.Y | H:i", strtotime($row['to_date']));
     		} else {
-                $out .= 'Пересчет срока действия аккаунта PRO/PROFI';
+                $out .= 'РџРµСЂРµСЃС‡РµС‚ СЃСЂРѕРєР° РґРµР№СЃС‚РІРёСЏ Р°РєРєР°СѓРЅС‚Р° PRO/PROFI';
             }
 		}
 		return $out;
 	}
 	
 	/**
-	 * Удалить заявку по ид. пользователя и ид. биллинга 
+	 * РЈРґР°Р»РёС‚СЊ Р·Р°СЏРІРєСѓ РїРѕ РёРґ. РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Рё РёРґ. Р±РёР»Р»РёРЅРіР° 
 	 *
-	 * @param integer $uid ИД пользователя
-	 * @param integer $opid ИД биллинга
+	 * @param integer $uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param integer $opid РР” Р±РёР»Р»РёРЅРіР°
 	 * @return integer
 	 */
 	function DelByOpid($uid, $opid){
@@ -511,7 +511,7 @@ class payed
 	
     
     /**
-     * Занулить периоды для активного ПРО
+     * Р—Р°РЅСѓР»РёС‚СЊ РїРµСЂРёРѕРґС‹ РґР»СЏ Р°РєС‚РёРІРЅРѕРіРѕ РџР Рћ
      * 
      * @global DB $DB
      * @param type $uid
@@ -524,7 +524,7 @@ class payed
         
         $DB->start();
         
-        //Зануляем будущие ПРО
+        //Р—Р°РЅСѓР»СЏРµРј Р±СѓРґСѓС‰РёРµ РџР Рћ
         $ok1 = $DB->query("
             UPDATE orders SET
                 from_date = NOW(),
@@ -535,7 +535,7 @@ class payed
                 AND from_date > NOW()                
         ", $uid, $_tarifNotIn);
         
-        //Прерываем текущее ПРО
+        //РџСЂРµСЂС‹РІР°РµРј С‚РµРєСѓС‰РµРµ РџР Рћ
         $ok2 = $DB->query("
             UPDATE orders SET
                 to_date = (NOW() - from_date)::interval
@@ -557,7 +557,7 @@ class payed
 
     
     /**
-	 * Обновить ПРО пользователей у которых вышло время пользования услугой
+	 * РћР±РЅРѕРІРёС‚СЊ РџР Рћ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ Сѓ РєРѕС‚РѕСЂС‹С… РІС‹С€Р»Рѕ РІСЂРµРјСЏ РїРѕР»СЊР·РѕРІР°РЅРёСЏ СѓСЃР»СѓРіРѕР№
 	 *
 	 * @return integer
 	 */
@@ -583,11 +583,11 @@ class payed
 	
 	
 	/**
-	 * Проверяет, нужно ли установить флаг is_new_pro, действующий с 25.11.2010:
-	 * 1. Находим покупку о ПРО, используемом в данный момент.
-	 * 2. Смотрим, если дата покупки позже или равна 25-му, то устанавливаем флаг.
+	 * РџСЂРѕРІРµСЂСЏРµС‚, РЅСѓР¶РЅРѕ Р»Рё СѓСЃС‚Р°РЅРѕРІРёС‚СЊ С„Р»Р°Рі is_new_pro, РґРµР№СЃС‚РІСѓСЋС‰РёР№ СЃ 25.11.2010:
+	 * 1. РќР°С…РѕРґРёРј РїРѕРєСѓРїРєСѓ Рѕ РџР Рћ, РёСЃРїРѕР»СЊР·СѓРµРјРѕРј РІ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚.
+	 * 2. РЎРјРѕС‚СЂРёРј, РµСЃР»Рё РґР°С‚Р° РїРѕРєСѓРїРєРё РїРѕР·Р¶Рµ РёР»Рё СЂР°РІРЅР° 25-РјСѓ, С‚Рѕ СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„Р»Р°Рі.
 	 *
-	 * @param integer $uid   ид. юзера.
+	 * @param integer $uid   РёРґ. СЋР·РµСЂР°.
 	 * @return boolean
 	 */
 	function checkNewPro($uid) {
@@ -608,14 +608,14 @@ class payed
 	
 	
 	/**
-	 * Рассылка уведомление о том что скоро ПРО закончится
+	 * Р Р°СЃСЃС‹Р»РєР° СѓРІРµРґРѕРјР»РµРЅРёРµ Рѕ С‚РѕРј С‡С‚Рѕ СЃРєРѕСЂРѕ РџР Рћ Р·Р°РєРѕРЅС‡РёС‚СЃСЏ
 	 *
 	 * @return integer
 	 */
     function AlertPROEnding() {
         global $DB;
     	/**
-    	 * Файл для работы с почтой и рассылкой
+    	 * Р¤Р°Р№Р» РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РїРѕС‡С‚РѕР№ Рё СЂР°СЃСЃС‹Р»РєРѕР№
     	 */
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/smail.php");
         $mail = new smail();
@@ -638,7 +638,7 @@ class payed
     }
 
     /**
-     * Уведомления за 3 дня до кончания ПРО у тех у кого не включено автопродление
+     * РЈРІРµРґРѕРјР»РµРЅРёСЏ Р·Р° 3 РґРЅСЏ РґРѕ РєРѕРЅС‡Р°РЅРёСЏ РџР Рћ Сѓ С‚РµС… Сѓ РєРѕРіРѕ РЅРµ РІРєР»СЋС‡РµРЅРѕ Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёРµ
      *
      * @return bool
      */
@@ -667,7 +667,7 @@ class payed
                 INNER JOIN account a ON a.uid = u.uid
                 WHERE (pro_users.date_end>(NOW()+'{$days} day') AND pro_users.date_end<=(NOW()+'{$days} day 1 hour'));";
             $result[$tbl] = $DB->rows($sql, $auto);
-            if(!$result[$tbl]) unset($result[$tbl]); // Если пустой результат
+            if(!$result[$tbl]) unset($result[$tbl]); // Р•СЃР»Рё РїСѓСЃС‚РѕР№ СЂРµР·СѓР»СЊС‚Р°С‚
         }
         
         if($result) {
@@ -676,7 +676,7 @@ class payed
                 $mail->remindTimeleftPRO($users, $days);
                 
                 /*
-                 @todo: автопродления пока нет, все уведомляем обычно
+                 @todo: Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёСЏ РїРѕРєР° РЅРµС‚, РІСЃРµ СѓРІРµРґРѕРјР»СЏРµРј РѕР±С‹С‡РЅРѕ
                 if(!$auto) {
                     $mail->remindTimeleftPRO($users, $days);
                 } else {
@@ -693,8 +693,8 @@ class payed
     }
 
     /**
-     * ищет пользователей у которых до окончания PRO остаются одни сутки и включено автопродление
-     * найденным отправляет соответствующее письмо
+     * РёС‰РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ Сѓ РєРѕС‚РѕСЂС‹С… РґРѕ РѕРєРѕРЅС‡Р°РЅРёСЏ PRO РѕСЃС‚Р°СЋС‚СЃСЏ РѕРґРЅРё СЃСѓС‚РєРё Рё РІРєР»СЋС‡РµРЅРѕ Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёРµ
+     * РЅР°Р№РґРµРЅРЅС‹Рј РѕС‚РїСЂР°РІР»СЏРµС‚ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРµ РїРёСЃСЊРјРѕ
      */
     function checkAutoPro() {
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/billing.php");
@@ -702,12 +702,12 @@ class payed
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/smail.php");
         global $DB;
         foreach( array('freelancer', 'employer') as $tbl ) {
-            // Если в первый раз услугу не получилось купить, пытаемся купить еще раз за час до завершения услуги
+            // Р•СЃР»Рё РІ РїРµСЂРІС‹Р№ СЂР°Р· СѓСЃР»СѓРіСѓ РЅРµ РїРѕР»СѓС‡РёР»РѕСЃСЊ РєСѓРїРёС‚СЊ, РїС‹С‚Р°РµРјСЃСЏ РєСѓРїРёС‚СЊ РµС‰Рµ СЂР°Р· Р·Р° С‡Р°СЃ РґРѕ Р·Р°РІРµСЂС€РµРЅРёСЏ СѓСЃР»СѓРіРё
             $sql = "
                 SELECT pro_users.uid, pro_users.date_end, a.id as acc_id, u.email, u.login, u.uname, u.usurname, u.subscr, substr(u.subscr::text,16,1) = '1' as bill_subscribe,
                 (CASE WHEN (pro_users.date_end > (NOW() + '1 hour') AND pro_users.date_end <= (NOW() + '2 hour')) = true
-                    THEN 2 -- вторая попытка продления
-                    ELSE 1 -- первая попытка продления
+                    THEN 2 -- РІС‚РѕСЂР°СЏ РїРѕРїС‹С‚РєР° РїСЂРѕРґР»РµРЅРёСЏ
+                    ELSE 1 -- РїРµСЂРІР°СЏ РїРѕРїС‹С‚РєР° РїСЂРѕРґР»РµРЅРёСЏ
                 END) as attempt
                 FROM (
                     SELECT uid, MAX(from_date+to_date+COALESCE(freeze_to, '0')::interval) AS date_end
@@ -729,7 +729,7 @@ class payed
                 ;";
 
             $result[$tbl] = $DB->rows($sql);
-            if(!$result[$tbl]) unset($result[$tbl]); // Если пустой результат
+            if(!$result[$tbl]) unset($result[$tbl]); // Р•СЃР»Рё РїСѓСЃС‚РѕР№ СЂРµР·СѓР»СЊС‚Р°С‚
         }
 
         if($result) {
@@ -741,19 +741,19 @@ class payed
                     $billing = new billing($user['uid']);
                     $queueID = $billing->create($op_code, 1);
                     if ($queueID) {
-                        //Проталкиваем дальше автопродление для оплаты
+                        //РџСЂРѕС‚Р°Р»РєРёРІР°РµРј РґР°Р»СЊС€Рµ Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёРµ РґР»СЏ РѕРїР»Р°С‚С‹
                         $billing->preparePayments($price, false, array($queueID));
                         $complete = billing::autoPayed($billing, $price);
 
                         $barNotify = new bar_notify($user['uid']);
                         if($complete) {
-                            $barNotify->addNotify('bill', '', 'Услуга успешно продлена.');
+                            $barNotify->addNotify('bill', '', 'РЈСЃР»СѓРіР° СѓСЃРїРµС€РЅРѕ РїСЂРѕРґР»РµРЅР°.');
                             $mail->successAutoprolong(array('user' => $user, 'sum_cost' => $price), 'pro');
-                        } else if($user['attempt'] == 1) { // Первая попытка
-                            $barNotify->addNotify('bill', '', 'Ошибка списания, услуга не продлена.');
+                        } else if($user['attempt'] == 1) { // РџРµСЂРІР°СЏ РїРѕРїС‹С‚РєР°
+                            $barNotify->addNotify('bill', '', 'РћС€РёР±РєР° СЃРїРёСЃР°РЅРёСЏ, СѓСЃР»СѓРіР° РЅРµ РїСЂРѕРґР»РµРЅР°.');
                             $mail->attemptAutoprolong(array('user' => $user, 'sum_cost' => $price), 'pro');
-                        } else { // Вторая попытка не удачная
-                            $barNotify->addNotify('bill', '', 'Ошибка списания, автопродление отключено.');
+                        } else { // Р’С‚РѕСЂР°СЏ РїРѕРїС‹С‚РєР° РЅРµ СѓРґР°С‡РЅР°СЏ
+                            $barNotify->addNotify('bill', '', 'РћС€РёР±РєР° СЃРїРёСЃР°РЅРёСЏ, Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёРµ РѕС‚РєР»СЋС‡РµРЅРѕ.');
                             $mail->failAutoprolong(array('user' => $user, 'sum_cost' => $price), 'pro');
                         }
                     };
@@ -767,9 +767,9 @@ class payed
     }
 
     /**
-     * для имитация окончания PRO у пользователя
+     * РґР»СЏ РёРјРёС‚Р°С†РёСЏ РѕРєРѕРЅС‡Р°РЅРёСЏ PRO Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      *
-     * @param $attempt текущая попытка продления
+     * @param $attempt С‚РµРєСѓС‰Р°СЏ РїРѕРїС‹С‚РєР° РїСЂРѕРґР»РµРЅРёСЏ
      */
     function checkAutoProTest($login, $attempt = 1) {
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/billing.php");
@@ -800,23 +800,23 @@ class payed
         if (!$queueID) {
             return;
         }
-        //Проталкиваем дальше автопродление для оплаты
+        //РџСЂРѕС‚Р°Р»РєРёРІР°РµРј РґР°Р»СЊС€Рµ Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёРµ РґР»СЏ РѕРїР»Р°С‚С‹
         $billing->preparePayments($price, false, array($queueID));
         $complete = billing::autoPayed($billing, $price);
 
-        // @todo отключать ли автопродление или нет при второй попытке ( по идее на систему никак влиять не будет )
-        // Автопродление не будет куплено уведомляем об этом пользователя
+        // @todo РѕС‚РєР»СЋС‡Р°С‚СЊ Р»Рё Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёРµ РёР»Рё РЅРµС‚ РїСЂРё РІС‚РѕСЂРѕР№ РїРѕРїС‹С‚РєРµ ( РїРѕ РёРґРµРµ РЅР° СЃРёСЃС‚РµРјСѓ РЅРёРєР°Рє РІР»РёСЏС‚СЊ РЅРµ Р±СѓРґРµС‚ )
+        // РђРІС‚РѕРїСЂРѕРґР»РµРЅРёРµ РЅРµ Р±СѓРґРµС‚ РєСѓРїР»РµРЅРѕ СѓРІРµРґРѕРјР»СЏРµРј РѕР± СЌС‚РѕРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
         $barNotify = new bar_notify($user['uid']);
         $mail = new smail();
         if($complete) {
-            $barNotify->addNotify('bill', '', 'Услуга успешно продлена.');
+            $barNotify->addNotify('bill', '', 'РЈСЃР»СѓРіР° СѓСЃРїРµС€РЅРѕ РїСЂРѕРґР»РµРЅР°.');
             $mail->successAutoprolong(array('user' => $user, 'sum_cost' => $price), 'pro');
             //$mail->sendAutoPROEnding(( $user['role'] == 'freelancer' ? 'FRL' : 'EMP' ), array($user));
         } else if($attempt == 1) {
-            $barNotify->addNotify('bill', '', 'Ошибка списания, услуга не продлена.');
+            $barNotify->addNotify('bill', '', 'РћС€РёР±РєР° СЃРїРёСЃР°РЅРёСЏ, СѓСЃР»СѓРіР° РЅРµ РїСЂРѕРґР»РµРЅР°.');
             $mail->attemptAutoprolong(array('user' => $user, 'sum_cost' => $price), 'pro');
         } else {
-            $barNotify->addNotify('bill', '', 'Ошибка списания, автопродление отключено.');
+            $barNotify->addNotify('bill', '', 'РћС€РёР±РєР° СЃРїРёСЃР°РЅРёСЏ, Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёРµ РѕС‚РєР»СЋС‡РµРЅРѕ.');
             $mail->failAutoprolong(array('user' => $user, 'sum_cost' => $price), 'pro');
         }
     }
@@ -824,10 +824,10 @@ class payed
 
 	
 	/**
-	* Проверяет пользовался ли пользователь платными услугами (ПРО, Первая страница) (см. таблицу op_codes) и если пользовался то возвращаем ид заявки
+	* РџСЂРѕРІРµСЂСЏРµС‚ РїРѕР»СЊР·РѕРІР°Р»СЃСЏ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РїР»Р°С‚РЅС‹РјРё СѓСЃР»СѓРіР°РјРё (РџР Рћ, РџРµСЂРІР°СЏ СЃС‚СЂР°РЅРёС†Р°) (СЃРј. С‚Р°Р±Р»РёС†Сѓ op_codes) Рё РµСЃР»Рё РїРѕР»СЊР·РѕРІР°Р»СЃСЏ С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµРј РёРґ Р·Р°СЏРІРєРё
 	* 
-	* @param integer $uid id юзера
-	* @return integer ИД оплаты, иначе 0
+	* @param integer $uid id СЋР·РµСЂР°
+	* @return integer РР” РѕРїР»Р°С‚С‹, РёРЅР°С‡Рµ 0
 	*/
 	function IsUserWasPro($uid)
 	{
@@ -842,7 +842,7 @@ class payed
 	
     
     /**
-     * Покупал ли пользователь ПРО за последнии 90 дней
+     * РџРѕРєСѓРїР°Р» Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РџР Рћ Р·Р° РїРѕСЃР»РµРґРЅРёРё 90 РґРЅРµР№
      * 
      * @global DB $DB
      * @param type $uid
@@ -870,16 +870,16 @@ class payed
 
 
     /**
-	 * Админская функция для раздачи ПРО аккаунта
+	 * РђРґРјРёРЅСЃРєР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ СЂР°Р·РґР°С‡Рё РџР Рћ Р°РєРєР°СѓРЅС‚Р°
 	 *
-	 * @param integer $fid            Кому (ИД Пользователя)
-	 * @param integer $transaction_id Ид транзакции
-	 * @param string  $time           Время
-	 * @param string  $comments       Комент
-	 * @param integer $tarif          Тариф (op_codes)
-	 * @return integer 0 - если не получилось, 1 - если все прошло успешно
+	 * @param integer $fid            РљРѕРјСѓ (РР” РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ)
+	 * @param integer $transaction_id РРґ С‚СЂР°РЅР·Р°РєС†РёРё
+	 * @param string  $time           Р’СЂРµРјСЏ
+	 * @param string  $comments       РљРѕРјРµРЅС‚
+	 * @param integer $tarif          РўР°СЂРёС„ (op_codes)
+	 * @return integer 0 - РµСЃР»Рё РЅРµ РїРѕР»СѓС‡РёР»РѕСЃСЊ, 1 - РµСЃР»Рё РІСЃРµ РїСЂРѕС€Р»Рѕ СѓСЃРїРµС€РЅРѕ
 	 */
-	function AdminAddPRO($fid, $transaction_id, $time, $comments="Аккаунт PRO. Возмещение платного сервиса", $tarif = 63){
+	function AdminAddPRO($fid, $transaction_id, $time, $comments="РђРєРєР°СѓРЅС‚ PRO. Р’РѕР·РјРµС‰РµРЅРёРµ РїР»Р°С‚РЅРѕРіРѕ СЃРµСЂРІРёСЃР°", $tarif = 63){
         global $DB;
 		require_once(ABS_PATH . "/classes/account.php");
 		$account = new account();
@@ -893,10 +893,10 @@ class payed
 	}
 	
 	/**
-	 * Информация о успешно прошедшей операции
+	 * РРЅС„РѕСЂРјР°С†РёСЏ Рѕ СѓСЃРїРµС€РЅРѕ РїСЂРѕС€РµРґС€РµР№ РѕРїРµСЂР°С†РёРё
 	 * 
-	 * @param array $data - Информация об операции
-	 * @return array информация
+	 * @param array $data - РРЅС„РѕСЂРјР°С†РёСЏ РѕР± РѕРїРµСЂР°С†РёРё
+	 * @return array РёРЅС„РѕСЂРјР°С†РёСЏ
 	 */
 	function getSuccessInfo($data) {
         global $DB;
@@ -912,25 +912,25 @@ class payed
 	           
 	    $data['ammount'] = abs($data['ammount']);
 	    $suc = array("date"  => $data['op_date'],
-	                 "name"  => "Аккаунт \"ПРО\" (Срок действия — {$date})",
+	                 "name"  => "РђРєРєР°СѓРЅС‚ \"РџР Рћ\" (РЎСЂРѕРє РґРµР№СЃС‚РІРёСЏ вЂ” {$date})",
 	                 "descr" => "",
-	                 "sum"   => "{$data['ammount']} руб."); 
+	                 "sum"   => "{$data['ammount']} СЂСѓР±."); 
 	    return $suc;                        
 	}
 	
 	/**
-	 * Поднимаем рейтиинг
+	 * РџРѕРґРЅРёРјР°РµРј СЂРµР№С‚РёРёРЅРі
 	 *
-	 * @param integer $fid                ИД Кому поднимаем
-	 * @param integer $transaction_id     ИД Транзакции     
-	 * @param integer $time               Время
-	 * @param string  $comments           Дополнительный комментарий
-	 * @param integer $tarif              Тариф
-	 * @param integer $ammount            Kоличество товара
-	 * @param integer $commit             Завершать ли транзакцию после этой операции.
+	 * @param integer $fid                РР” РљРѕРјСѓ РїРѕРґРЅРёРјР°РµРј
+	 * @param integer $transaction_id     РР” РўСЂР°РЅР·Р°РєС†РёРё     
+	 * @param integer $time               Р’СЂРµРјСЏ
+	 * @param string  $comments           Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ РєРѕРјРјРµРЅС‚Р°СЂРёР№
+	 * @param integer $tarif              РўР°СЂРёС„
+	 * @param integer $ammount            KРѕР»РёС‡РµСЃС‚РІРѕ С‚РѕРІР°СЂР°
+	 * @param integer $commit             Р—Р°РІРµСЂС€Р°С‚СЊ Р»Рё С‚СЂР°РЅР·Р°РєС†РёСЋ РїРѕСЃР»Рµ СЌС‚РѕР№ РѕРїРµСЂР°С†РёРё.
 	 * @return unknown
 	 */
-	function getUpRating($fid, $sum, $transaction_id, $time, $comments="Поднятие рейтинга за FM", $tarif = 75, $ammount=1, $commit = 1) {
+	function getUpRating($fid, $sum, $transaction_id, $time, $comments="РџРѕРґРЅСЏС‚РёРµ СЂРµР№С‚РёРЅРіР° Р·Р° FM", $tarif = 75, $ammount=1, $commit = 1) {
 	    require_once(ABS_PATH . "/classes/account.php");
 		$account = new account();
 		$error = $account->Buy($bill_id, $transaction_id, $tarif, $fid, $comments, $comments, $ammount, $commit);
@@ -939,9 +939,9 @@ class payed
 	}
 
     /**
-     * Возвращает последнюю запись заморозки ПРО
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅСЋСЋ Р·Р°РїРёСЃСЊ Р·Р°РјРѕСЂРѕР·РєРё РџР Рћ
      *
-     * @param integer $uid ИД пользователя
+     * @param integer $uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      */
     function getLastFreeze($uid) {
         global $DB;
@@ -970,11 +970,11 @@ class payed
     }
 
     /**
-     * Добавляет новую запись с данными по заморозке
+     * Р”РѕР±Р°РІР»СЏРµС‚ РЅРѕРІСѓСЋ Р·Р°РїРёСЃСЊ СЃ РґР°РЅРЅС‹РјРё РїРѕ Р·Р°РјРѕСЂРѕР·РєРµ
      *
-     * @param integer $uid ИД пользователя
-     * @param string $from_date Дата начала заморозки
-     * @param string $to_date Дата окончания заморозки
+     * @param integer $uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param string $from_date Р”Р°С‚Р° РЅР°С‡Р°Р»Р° Р·Р°РјРѕСЂРѕР·РєРё
+     * @param string $to_date Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ Р·Р°РјРѕСЂРѕР·РєРё
      * @return boolean
      */
     function freezePro($uid, $from_date, $to_date) {
@@ -992,10 +992,10 @@ class payed
     }
 
     /**
-     * Отмена заморозки
+     * РћС‚РјРµРЅР° Р·Р°РјРѕСЂРѕР·РєРё
      *
-     * @param integer $uid ИД пользователя
-     * @param integer $freeze_id ИД заморозки
+     * @param integer $uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param integer $freeze_id РР” Р·Р°РјРѕСЂРѕР·РєРё
      * @return boolean
      */
     function freezeProCancel($uid, $freeze_id) {
@@ -1014,10 +1014,10 @@ class payed
     }
 
     /**
-     * Досрочная разморозка
+     * Р”РѕСЃСЂРѕС‡РЅР°СЏ СЂР°Р·РјРѕСЂРѕР·РєР°
      *
-     * @param integer $uid ИД пользователя
-     * @param integer $freeze_id ИД заморозки
+     * @param integer $uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param integer $freeze_id РР” Р·Р°РјРѕСЂРѕР·РєРё
      * @return boolean
      */
     function freezeProStop($uid, $freeze_id) {
@@ -1037,7 +1037,7 @@ class payed
 
     
     /**
-     * Деактивация текущей или будущей заморозки ПРО
+     * Р”РµР°РєС‚РёРІР°С†РёСЏ С‚РµРєСѓС‰РµР№ РёР»Рё Р±СѓРґСѓС‰РµР№ Р·Р°РјРѕСЂРѕР·РєРё РџР Рћ
      * 
      * @global DB $DB
      * @param type $uid
@@ -1070,7 +1070,7 @@ class payed
 
 
     /**
-     * Обновляет ПРО пользователей, у которых закончился период заморозки.
+     * РћР±РЅРѕРІР»СЏРµС‚ РџР Рћ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, Сѓ РєРѕС‚РѕСЂС‹С… Р·Р°РєРѕРЅС‡РёР»СЃСЏ РїРµСЂРёРѕРґ Р·Р°РјРѕСЂРѕР·РєРё.
      * @global DB $DB
      * @return boolean
      */
@@ -1093,7 +1093,7 @@ class payed
 
 
     /**
-     * Проверяет статус заморозки ПРО.
+     * РџСЂРѕРІРµСЂСЏРµС‚ СЃС‚Р°С‚СѓСЃ Р·Р°РјРѕСЂРѕР·РєРё РџР Рћ.
      *
      * @return boolean
      */
@@ -1117,10 +1117,10 @@ class payed
     }
 
     /**
-     * Возвращает кол-во дней, 
-     * в которые аккаунт был заморожен в текущем году
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»-РІРѕ РґРЅРµР№, 
+     * РІ РєРѕС‚РѕСЂС‹Рµ Р°РєРєР°СѓРЅС‚ Р±С‹Р» Р·Р°РјРѕСЂРѕР¶РµРЅ РІ С‚РµРєСѓС‰РµРј РіРѕРґСѓ
      *
-     * @param integer $uid ИД пользователя
+     * @param integer $uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      */
     function getFreezedDaysCnt($uid) {
         global $DB;
@@ -1145,7 +1145,7 @@ class payed
     
     
     /**
-     * Поучить список доступный услуг по ПРО и/или ПРОФИ
+     * РџРѕСѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РґРѕСЃС‚СѓРїРЅС‹Р№ СѓСЃР»СѓРі РїРѕ РџР Рћ Рё/РёР»Рё РџР РћР¤Р
      * 
      * @param type $is_emp
      * @return type
@@ -1163,7 +1163,7 @@ class payed
 
 
     /**
-     * Список услуг по ПРОФИ
+     * РЎРїРёСЃРѕРє СѓСЃР»СѓРі РїРѕ РџР РћР¤Р
      * 
      * @return int
      */
@@ -1184,7 +1184,7 @@ class payed
 
 
     /**
-     * Информация по тому что можно купить ( на 1,3,6,12 месяцев) 
+     * РРЅС„РѕСЂРјР°С†РёСЏ РїРѕ С‚РѕРјСѓ С‡С‚Рѕ РјРѕР¶РЅРѕ РєСѓРїРёС‚СЊ ( РЅР° 1,3,6,12 РјРµСЃСЏС†РµРІ) 
      * 
      * @return array
      */
@@ -1193,7 +1193,7 @@ class payed
         if($role == 'frl') {
             $payed = array(
                 /*
-                 * @todo: вырубаем по https://beta.free-lance.ru/mantis/view.php?id=28753
+                 * @todo: РІС‹СЂСѓР±Р°РµРј РїРѕ https://beta.free-lance.ru/mantis/view.php?id=28753
                 0 => array(
                     'day'  => 1,
                     'month'  => 1,
@@ -1210,13 +1210,13 @@ class payed
                     'month'  => 1,
                     'cost'   => 899,
                     'opcode' => 48,
-                    'sale_txt' => 'Легкий старт'
+                    'sale_txt' => 'Р›РµРіРєРёР№ СЃС‚Р°СЂС‚'
                 ),
                 3 => array(
                     'month'  => 3,
                     'cost'   => 2499,
                     'opcode' => 49,
-                    'sale' => '7%', //экономия в %
+                    'sale' => '7%', //СЌРєРѕРЅРѕРјРёСЏ РІ %
                 ),
                 /*
                 4 => array(
@@ -1228,20 +1228,20 @@ class payed
                     'month'  => 12,
                     'cost'   => 8199,
                     'opcode' => 51,
-                    'sale' => '24%' //экономия в %
+                    'sale' => '24%' //СЌРєРѕРЅРѕРјРёСЏ РІ %
                 )
             );            
             
-            //nолько тестовый ПРО на месяц    
+            //nРѕР»СЊРєРѕ С‚РµСЃС‚РѕРІС‹Р№ РџР Рћ РЅР° РјРµСЃСЏС†    
             if (isAllowTestPro()) {
                 $payed[2] = array(
                         'week'  => 0,
                         'month'  => 1,
                         'cost'   => self::getPriceByOpCode(163),
                         'opcode' => 163,
-                        'badge' => 'Акция',
+                        'badge' => 'РђРєС†РёСЏ',
                         'old_cost' => self::getPriceByOpCode(48),
-                        'sale_txt' => 'Легкий старт',
+                        'sale_txt' => 'Р›РµРіРєРёР№ СЃС‚Р°СЂС‚',
                         'class' => 'b-promo__buy_test_pro'
                     );
             }
@@ -1252,28 +1252,28 @@ class payed
                     'month'  => 1,
                     'cost'   => 899,
                     'opcode' => 15,
-                    'sale_txt' => 'Легкий старт',
+                    'sale_txt' => 'Р›РµРіРєРёР№ СЃС‚Р°СЂС‚',
                     //'class' => 'b-promo__buy_min-width_250'
                 ),
                 array(
                     'month'  => 3,
                     'cost'   => 2499,
                     'opcode' => 118,
-                    'sale' => '7%', //экономия в %
+                    'sale' => '7%', //СЌРєРѕРЅРѕРјРёСЏ РІ %
                     //'class' => 'b-promo__buy_min-width_250'
                 ),/*
                 array(
                     'month'  => 6,
                     'cost'   => 4599,
                     'opcode' => 119,
-                    'sale' => '15%', //экономия в %
+                    'sale' => '15%', //СЌРєРѕРЅРѕРјРёСЏ РІ %
                     //'class' => 'b-promo__buy_min-width_250'
                 ),*/
                 array(
                     'month'  => 12,
                     'cost'   => 8199,
                     'opcode' => 120,
-                    'sale' => '24%', //экономия в %
+                    'sale' => '24%', //СЌРєРѕРЅРѕРјРёСЏ РІ %
                     //'class' => 'b-promo__buy_min-width_250'
                 )
             );
@@ -1291,7 +1291,7 @@ class payed
     
     
     /**
-     * Обновляет данные о ПРО в сессии пользователя
+     * РћР±РЅРѕРІР»СЏРµС‚ РґР°РЅРЅС‹Рµ Рѕ РџР Рћ РІ СЃРµСЃСЃРёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * @return boolean
      */
     public static function updateUserSession()

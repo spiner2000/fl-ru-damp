@@ -1,7 +1,7 @@
 <div style="float: right;">
-    <input type="button" value="ЛОГИ" onclick="xajax_aGetLogPSKBInfo(<?= $lc['lc_id'] ?>);"/>
-    <input style="margin-left: 10px !important;" type="button" value="Обновить" onclick="xajax_aGetLCInfo(<?= $lc['sbr_id'] ?>);"/>
-    <input style="margin-left: 10px !important;" type="button" value="Закрыть" onclick="$$('#lc-info-popup, #lc-info-popup .b-shadow').addClass('b-shadow_hide');"/>
+    <input type="button" value="Р›РћР“Р" onclick="xajax_aGetLogPSKBInfo(<?= $lc['lc_id'] ?>);"/>
+    <input style="margin-left: 10px !important;" type="button" value="РћР±РЅРѕРІРёС‚СЊ" onclick="xajax_aGetLCInfo(<?= $lc['sbr_id'] ?>);"/>
+    <input style="margin-left: 10px !important;" type="button" value="Р—Р°РєСЂС‹С‚СЊ" onclick="$$('#lc-info-popup, #lc-info-popup .b-shadow').addClass('b-shadow_hide');"/>
 </div>
 
 <div id="log_pskb_<?= $lc['lc_id']?>" class="i-shadow_center b-shadow_hide" style="z-index:10000">																						
@@ -24,10 +24,10 @@
     </div>
 </div>
 
-<h1>СБР-<?= $sbr->id ?>-Б/О#<?= $lc['lc_id'] ?> (DOL#<?= (int)$lc['dol_paymentid']?>)</h1>
+<h1>РЎР‘Р -<?= $sbr->id ?>-Р‘/Рћ#<?= $lc['lc_id'] ?> (DOL#<?= (int)$lc['dol_paymentid']?>)</h1>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<h3>ДАННЫЕ АККРЕДИТИВА</h3>
+<h3>Р”РђРќРќР«Р• РђРљРљР Р•Р”РРўРР’Рђ</h3>
 <table class="nr-a-opinions" cellspacing="0" style="width: 100%">
     <col width="50" />
     <col width="80" />
@@ -41,19 +41,19 @@
     <thead>
         <tr>
             <th></th>
-            <th>Сумма</th>
-            <th>Сумма (раскр.)</th>
-            <th>Дата покрытия</th>
-            <th>Дата завершения</th>
-            <th>Покрыт</th>
-            <th>Закрыт</th>
-            <th>Статус</th>
-            <th>Сообщение банка</th>
+            <th>РЎСѓРјРјР°</th>
+            <th>РЎСѓРјРјР° (СЂР°СЃРєСЂ.)</th>
+            <th>Р”Р°С‚Р° РїРѕРєСЂС‹С‚РёСЏ</th>
+            <th>Р”Р°С‚Р° Р·Р°РІРµСЂС€РµРЅРёСЏ</th>
+            <th>РџРѕРєСЂС‹С‚</th>
+            <th>Р—Р°РєСЂС‹С‚</th>
+            <th>РЎС‚Р°С‚СѓСЃ</th>
+            <th>РЎРѕРѕР±С‰РµРЅРёРµ Р±Р°РЅРєР°</th>
         </tr>
     </thead>
     <tbody>
         <tr class="odd">
-            <td><strong>Наши</strong></td>
+            <td><strong>РќР°С€Рё</strong></td>
             <td><?= $lc['sum'] ?></td>
             <td> - </td>
             <td><?= date('d.m.Y', strtotime($lc['dateCoverLC'])) ?></td>
@@ -64,7 +64,7 @@
             <td><?= $lc['stateReason'] ? $lc['stateReason'] : ' - ' ?></td>
         </tr>
         <tr class="even">
-            <td><strong>ПСКБ</strong></td>
+            <td><strong>РџРЎРљР‘</strong></td>
             <td><?= $pskb_lc->sum ?></td>
             <td><?= $pskb_lc->sumOpen ?></td>
             <td></td>
@@ -80,7 +80,7 @@
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<h3>РЕКВИЗИТЫ СТОРОН</h3>
+<h3>Р Р•РљР’РР—РРўР« РЎРўРћР РћРќ</h3>
 <table class="nr-a-opinions" cellspacing="0" style="width: 100%">
     <col />
     <col width="180" />
@@ -93,49 +93,49 @@
     <col width="130" />
     <thead>
         <tr>
-            <th>Логин</th>
-            <th>Имя</th>
-            <th>Форма</th>
-            <th>рез.</th>
-            <th>Номер</th>
-            <th>Счет</th>
-            <th>ИНН</th>
-            <th>БИК/id-ПС</th>
-            <th>Банк. реквизиты нерезидента</th>
+            <th>Р›РѕРіРёРЅ</th>
+            <th>РРјСЏ</th>
+            <th>Р¤РѕСЂРјР°</th>
+            <th>СЂРµР·.</th>
+            <th>РќРѕРјРµСЂ</th>
+            <th>РЎС‡РµС‚</th>
+            <th>РРќРќ</th>
+            <th>Р‘РРљ/id-РџРЎ</th>
+            <th>Р‘Р°РЅРє. СЂРµРєРІРёР·РёС‚С‹ РЅРµСЂРµР·РёРґРµРЅС‚Р°</th>
         </tr>
     </thead>
     <tbody>
         <tr class="odd">
             <td><span class="b-username__login b-username__login_color_6db335"><a href="/users/<?= $sbr->data['emp_login'] ?>/" target="_blank" class="b-username__link">[<?= $sbr->data['emp_login'] ?>]</a></span></td>
             <td><?= $lc['nameCust'] ?></td>
-            <td><?= $lc['tagCust'] ? 'юр.' : 'физ.' ?></td>
-            <td><?= $lc['alienCust'] ? 'не-РФ' : 'РФ' ?></td>
+            <td><?= $lc['tagCust'] ? 'СЋСЂ.' : 'С„РёР·.' ?></td>
+            <td><?= $lc['alienCust'] ? 'РЅРµ-Р Р¤' : 'Р Р¤' ?></td>
             <td><?= $lc['numCust'] ?></td>
             <td><?= $lc['accCust'] ?></td>
             <td><?= $lc['innCust'] ?></td>
             <td><?= $lc['psCust'] ?></td>
             <td>
                 <? if ($lc['alienCust'] && $ls['ps_emp'] == onlinedengi::BANK_YL) { ?>
-                Банк: <?= $lc['nameBankCust'] ?><br/>
+                Р‘Р°РЅРє: <?= $lc['nameBankCust'] ?><br/>
                 SWIFT: <?= $lc['swiftCust'] ?><br/>
-                к/с: <?= $lc['corAccbankCust'] ?><br/>
+                Рє/СЃ: <?= $lc['corAccbankCust'] ?><br/>
                 <? } ?>
             </td>
         </tr>
         <tr class="even">
             <td><span class="b-username__login b-username__login_color_f2922a"><a href="/users/<?= $sbr->data['frl_login'] ?>/" target="_blank" class="b-username__link">[<?= $sbr->data['frl_login'] ?>]</a></span></td>
             <td><?= $lc['namePerf'] ?></td>
-            <td><?= $lc['tagPerf'] ? 'юр.' : 'физ.' ?></td>
-            <td><?= $lc['alienPerf'] ? 'не-РФ' : 'РФ' ?></td>
+            <td><?= $lc['tagPerf'] ? 'СЋСЂ.' : 'С„РёР·.' ?></td>
+            <td><?= $lc['alienPerf'] ? 'РЅРµ-Р Р¤' : 'Р Р¤' ?></td>
             <td><?= $lc['numPerf'] ?></td>
             <td><?= $lc['accPerf'] ?></td>
             <td><?= $lc['innPerf'] ?></td>
             <td><?= $lc['psPerf'] ?></td>
             <td>
                 <? if ($lc['alienPerf'] && $ls['ps_frl'] == onlinedengi::BANK_YL) { ?>
-                Банк: <?= $lc['nameBankPerf'] ?><br/>
+                Р‘Р°РЅРє: <?= $lc['nameBankPerf'] ?><br/>
                 SWIFT: <?= $lc['swiftPerf'] ?><br/>
-                к/с: <?= $lc['corAccbankPerf'] ?><br/>
+                Рє/СЃ: <?= $lc['corAccbankPerf'] ?><br/>
                 <? } ?>
             </td>
         </tr>
@@ -145,11 +145,11 @@
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<h3>ВЫПЛАТЫ</h3>
+<h3>Р’Р«РџР›РђРўР«</h3>
 
 <? foreach($sbr->getStages() as $stage) { $sbr_uid = $stage->getOuterNum();?>
 <p>&nbsp;</p>
-<h3>Этап <a href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/?access=A&site=Stage&id=<?= $stage->id ?>"><?= $stage->getOuterNum() ?></a>&nbsp;&nbsp;<input type="button" onclick="xajax_aGetHistoryLC('<?= $lc['lc_id']?>', '<?= $sbr_uid?>')" value="История"/></h3> 
+<h3>Р­С‚Р°Рї <a href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/?access=A&site=Stage&id=<?= $stage->id ?>"><?= $stage->getOuterNum() ?></a>&nbsp;&nbsp;<input type="button" onclick="xajax_aGetHistoryLC('<?= $lc['lc_id']?>', '<?= $sbr_uid?>')" value="РСЃС‚РѕСЂРёСЏ"/></h3> 
 <div id="history_lc_<?= $sbr_uid?>" class="i-shadow_center  b-shadow_hide" style="z-index:10000">																						
     <div class="b-shadow b-shadow_width_950 b-shadow_zindex_11">
         <div class="b-shadow__right">
@@ -189,20 +189,20 @@
     <thead>
         <tr>
             <th></th>
-            <th>Сумма раскрытия</th>
-            <th>Сумма (после %%)</th>
-            <th>Дата формирования</th>
-            <th>Проведено у нас</th>
-            <th>Проведено (в банке)</th>
-            <th>Подписан</th>
-            <th>Статус</th>
+            <th>РЎСѓРјРјР° СЂР°СЃРєСЂС‹С‚РёСЏ</th>
+            <th>РЎСѓРјРјР° (РїРѕСЃР»Рµ %%)</th>
+            <th>Р”Р°С‚Р° С„РѕСЂРјРёСЂРѕРІР°РЅРёСЏ</th>
+            <th>РџСЂРѕРІРµРґРµРЅРѕ Сѓ РЅР°СЃ</th>
+            <th>РџСЂРѕРІРµРґРµРЅРѕ (РІ Р±Р°РЅРєРµ)</th>
+            <th>РџРѕРґРїРёСЃР°РЅ</th>
+            <th>РЎС‚Р°С‚СѓСЃ</th>
         </tr>
     </thead>
     <tbody>
         <? foreach ($payouts[$stage->id] as $i => $po_row) { $target = ($po_row['user_id'] == $sbr->data['emp_id'] ? 0 : 1); ?>
         <tr class="<?= (++$i % 2 == 0 ? 'even' : 'odd') ?>">
             <td>
-                <a href="javascript:void(0)" onclick="xajax_aGetHistoryLC('<?= $lc['lc_id']?>', '<?= $sbr_uid?>', <?= $target;?>)"><?= $po_row['user_id'] == $sbr->data['emp_id'] ? 'Заказчик' : 'Исполнитель' ?></a>
+                <a href="javascript:void(0)" onclick="xajax_aGetHistoryLC('<?= $lc['lc_id']?>', '<?= $sbr_uid?>', <?= $target;?>)"><?= $po_row['user_id'] == $sbr->data['emp_id'] ? 'Р—Р°РєР°Р·С‡РёРє' : 'РСЃРїРѕР»РЅРёС‚РµР»СЊ' ?></a>
                 
                 <div id="user<?= $target; ?>_history_lc_<?= $sbr_uid;?>" class="i-shadow_center  b-shadow_hide" style="z-index:10000">																						
                     <div class="b-shadow b-shadow_width_950 b-shadow_zindex_11">
@@ -239,19 +239,19 @@
 
 
 <? } else { ?>
-Нет информации о выплатах по данному этапу.
+РќРµС‚ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РІС‹РїР»Р°С‚Р°С… РїРѕ РґР°РЅРЅРѕРјСѓ СЌС‚Р°РїСѓ.
 <? } ?>
 <? } ?>
 
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<h3>ДОКУМЕНТЫ</h3>
+<h3>Р”РћРљРЈРњР•РќРўР«</h3>
 <?php 
 foreach($sbr->getStages() as $stage) { 
     ?>
     <p>&nbsp;</p>
-    <h3>Документы этапа <a href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/?access=A&site=Stage&id=<?= $stage->id ?>"><?= $stage->getOuterNum() ?></a></h3>
+    <h3>Р”РѕРєСѓРјРµРЅС‚С‹ СЌС‚Р°РїР° <a href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/?access=A&site=Stage&id=<?= $stage->id ?>"><?= $stage->getOuterNum() ?></a></h3>
     <?
     if (count($payouts[$stage->id])) {
         $doc_act = $sbr->getDocs(NULL, NULL, true, $stage->id, true);
@@ -266,10 +266,10 @@ foreach($sbr->getStages() as $stage) {
             </colgroup>
             <thead>
                 <tr>
-                    <th>Название документа</th>
-                    <th>Дата формирования</th>
-                    <th>Состояние</th>
-                    <th>Операции</th>
+                    <th>РќР°Р·РІР°РЅРёРµ РґРѕРєСѓРјРµРЅС‚Р°</th>
+                    <th>Р”Р°С‚Р° С„РѕСЂРјРёСЂРѕРІР°РЅРёСЏ</th>
+                    <th>РЎРѕСЃС‚РѕСЏРЅРёРµ</th>
+                    <th>РћРїРµСЂР°С†РёРё</th>
                 </tr>
             </thead>
             <tbody id="doc_content_<?=$stage->id?>">
@@ -279,7 +279,7 @@ foreach($sbr->getStages() as $stage) {
         <?php 
         }
     } else {
-        ?>Документы не сформированы<?
+        ?>Р”РѕРєСѓРјРµРЅС‚С‹ РЅРµ СЃС„РѕСЂРјРёСЂРѕРІР°РЅС‹<?
     }
 }
 ?>

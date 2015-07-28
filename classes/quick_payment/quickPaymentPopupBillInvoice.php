@@ -29,22 +29,22 @@ class quickPaymentPopupBillInvoice extends quickExtPaymentPopup
             
             if($rez_type == sbr::RT_RU){
                 $reqvs_data = array(
-                    array('label' => 'ИНН', 'value' => @$reqvs['inn']),
-                    array('label' => 'КПП', 'value' => @$reqvs['kpp'], 'padbot' => 10),
-                    array('label' => 'Расчетный счет', 'value' => @$reqvs['bank_rs']),
-                    array('label' => 'Банк', 'value' => @$reqvs['bank_name']),
-                    array('label' => 'Корр.счет', 'value' => @$reqvs['bank_ks']),
-                    array('label' => 'БИК банка', 'value' => @$reqvs['bank_bik']),
-                    array('label' => 'ИНН банка', 'value' => @$reqvs['bank_inn'])
+                    array('label' => 'РРќРќ', 'value' => @$reqvs['inn']),
+                    array('label' => 'РљРџРџ', 'value' => @$reqvs['kpp'], 'padbot' => 10),
+                    array('label' => 'Р Р°СЃС‡РµС‚РЅС‹Р№ СЃС‡РµС‚', 'value' => @$reqvs['bank_rs']),
+                    array('label' => 'Р‘Р°РЅРє', 'value' => @$reqvs['bank_name']),
+                    array('label' => 'РљРѕСЂСЂ.СЃС‡РµС‚', 'value' => @$reqvs['bank_ks']),
+                    array('label' => 'Р‘РРљ Р±Р°РЅРєР°', 'value' => @$reqvs['bank_bik']),
+                    array('label' => 'РРќРќ Р±Р°РЅРєР°', 'value' => @$reqvs['bank_inn'])
                 );                
             } else {
                 $reqvs_data = array(
-                    array('label' => 'Расчетный счет', 'value' => @$reqvs['bank_rs']),
-                    array('label' => 'Банк', 'value' => @$reqvs['bank_name']),
-                    array('label' => 'Уполномоченный Банк', 'value' => @$reqvs['bank_rf_name']),
-                    array('label' => 'Корр.счет вашего банка в уполномоченном банке', 'value' => @$reqvs['bank_rf_ks']),
-                    array('label' => 'БИК уполномоченного банка', 'value' => @$reqvs['bank_rf_bik']),
-                    array('label' => 'ИНН уполномоченного банка', 'value' => @$reqvs['bank_rf_inn'])
+                    array('label' => 'Р Р°СЃС‡РµС‚РЅС‹Р№ СЃС‡РµС‚', 'value' => @$reqvs['bank_rs']),
+                    array('label' => 'Р‘Р°РЅРє', 'value' => @$reqvs['bank_name']),
+                    array('label' => 'РЈРїРѕР»РЅРѕРјРѕС‡РµРЅРЅС‹Р№ Р‘Р°РЅРє', 'value' => @$reqvs['bank_rf_name']),
+                    array('label' => 'РљРѕСЂСЂ.СЃС‡РµС‚ РІР°С€РµРіРѕ Р±Р°РЅРєР° РІ СѓРїРѕР»РЅРѕРјРѕС‡РµРЅРЅРѕРј Р±Р°РЅРєРµ', 'value' => @$reqvs['bank_rf_ks']),
+                    array('label' => 'Р‘РРљ СѓРїРѕР»РЅРѕРјРѕС‡РµРЅРЅРѕРіРѕ Р±Р°РЅРєР°', 'value' => @$reqvs['bank_rf_bik']),
+                    array('label' => 'РРќРќ СѓРїРѕР»РЅРѕРјРѕС‡РµРЅРЅРѕРіРѕ Р±Р°РЅРєР°', 'value' => @$reqvs['bank_rf_inn'])
                 );
             }
             
@@ -54,13 +54,13 @@ class quickPaymentPopupBillInvoice extends quickExtPaymentPopup
         }
         
         $options = array(
-            'popup_title' => 'Формирование счета',
-             //Оставляем только формирование счета на безнал
+            'popup_title' => 'Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ СЃС‡РµС‚Р°',
+             //РћСЃС‚Р°РІР»СЏРµРј С‚РѕР»СЊРєРѕ С„РѕСЂРјРёСЂРѕРІР°РЅРёРµ СЃС‡РµС‚Р° РЅР° Р±РµР·РЅР°Р»
             'payments' => array(
                 self::PAYMENT_TYPE_BANK => array(
-                    'title' => 'Сформировать счет',
+                    'title' => 'РЎС„РѕСЂРјРёСЂРѕРІР°С‚СЊ СЃС‡РµС‚',
                     'class' => '',
-                    'wait' => 'Идет создание счета'
+                    'wait' => 'РРґРµС‚ СЃРѕР·РґР°РЅРёРµ СЃС‡РµС‚Р°'
                 )                
             ),
             'reqvs' => $reqvs_data,
@@ -76,7 +76,7 @@ class quickPaymentPopupBillInvoice extends quickExtPaymentPopup
         
         /*
         $this->addWaitMessageForAll(
-            //только индикатор
+            //С‚РѕР»СЊРєРѕ РёРЅРґРёРєР°С‚РѕСЂ
         );
         */
         

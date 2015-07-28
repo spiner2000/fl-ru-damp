@@ -1,37 +1,37 @@
 <div style="<? print $style?> color:#000;"><?php    
     if (!$kind) { 
         if (($conted_prj["all"] == 0)&&($conted_prj["open"] == 0)&&($conted_prj["closed"] == 0)) {
-                print "У $entity нет ни одного проекта";
+                print "РЈ $entity РЅРµС‚ РЅРё РѕРґРЅРѕРіРѕ РїСЂРѕРµРєС‚Р°";
         }elseif (($conted_prj["all"] != 0)&&($conted_prj["open"] == 0)) {
-            print "У $entity нет открытых проектов";
+            print "РЈ $entity РЅРµС‚ РѕС‚РєСЂС‹С‚С‹С… РїСЂРѕРµРєС‚РѕРІ";
         }elseif (($conted_prj["closed"] == 0)&&($_GET["closed"] == 1)) {
-            print "У $entity нет закрытых проектов";
+            print "РЈ $entity РЅРµС‚ Р·Р°РєСЂС‹С‚С‹С… РїСЂРѕРµРєС‚РѕРІ";
         }
     }    
     if ($kind == 1) {
         if (($conted_prj["all"] == 0)&&($conted_prj["open"] == 0)&&($conted_prj["closed"] == 0)) {
-            print "У $entity нет ни одного проекта фри-ланс";
+            print "РЈ $entity РЅРµС‚ РЅРё РѕРґРЅРѕРіРѕ РїСЂРѕРµРєС‚Р° С„СЂРё-Р»Р°РЅСЃ";
         }elseif (($conted_prj["all"] != 0)&&($conted_prj["open"] == 0)) {
-            print "У $entity нет открытых проектов фри-ланс";
+            print "РЈ $entity РЅРµС‚ РѕС‚РєСЂС‹С‚С‹С… РїСЂРѕРµРєС‚РѕРІ С„СЂРё-Р»Р°РЅСЃ";
         }elseif (($conted_prj["closed"] == 0)&&($_GET["closed"] == 1)) {
-            print "У $entity нет закрытых проектов фри-ланс";
+            print "РЈ $entity РЅРµС‚ Р·Р°РєСЂС‹С‚С‹С… РїСЂРѕРµРєС‚РѕРІ С„СЂРё-Р»Р°РЅСЃ";
         }
     }
     if ($kind == 2) {
         if (($conted_prj["all"] == 0)&&($conted_prj["open"] == 0)&&($conted_prj["closed"] == 0)) {
-            print "У $entity нет ни одного конкурса";
+            print "РЈ $entity РЅРµС‚ РЅРё РѕРґРЅРѕРіРѕ РєРѕРЅРєСѓСЂСЃР°";
         }elseif (($conted_prj["all"] != 0)&&($conted_prj["open"] == 0)) {
-            print "У $entity нет открытых конкурсов";
+            print "РЈ $entity РЅРµС‚ РѕС‚РєСЂС‹С‚С‹С… РєРѕРЅРєСѓСЂСЃРѕРІ";
         }elseif (($conted_prj["closed"] == 0)&&($_GET["closed"] == 1)) {
-            print "У $entity нет закрытых конкурсов";
+            print "РЈ $entity РЅРµС‚ Р·Р°РєСЂС‹С‚С‹С… РєРѕРЅРєСѓСЂСЃРѕРІ";
         }
     }
     if ($kind == 3) {
         if (($conted_prj["all"] == 0)&&($conted_prj["open"] == 0)&&($conted_prj["closed"] == 0)) {
-            print "У $entity нет ни одного проекта в офис";
+            print "РЈ $entity РЅРµС‚ РЅРё РѕРґРЅРѕРіРѕ РїСЂРѕРµРєС‚Р° РІ РѕС„РёСЃ";
         }elseif (($conted_prj["all"] != 0)&&($conted_prj["open"] == 0)) {
-            print "У $entity нет открытых проектов в офис";
+            print "РЈ $entity РЅРµС‚ РѕС‚РєСЂС‹С‚С‹С… РїСЂРѕРµРєС‚РѕРІ РІ РѕС„РёСЃ";
         }elseif (($conted_prj["closed"] == 0)&&($_GET["closed"] == 1)) {
-            print "У $entity нет закрытых проектов в офис";
+            print "РЈ $entity РЅРµС‚ Р·Р°РєСЂС‹С‚С‹С… РїСЂРѕРµРєС‚РѕРІ РІ РѕС„РёСЃ";
         }
     }?></div>

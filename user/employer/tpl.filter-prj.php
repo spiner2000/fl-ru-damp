@@ -5,33 +5,33 @@
 					<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_10">
                         <span class="b-layout__txt_nowrap">
                         <?php if($kind == 0 && !$_GET["trash"]) { ?>
-                            <b>Все</b>
+                            <b>Р’СЃРµ</b>
                         <?php } else { //if?>
-                            <a class="blue" href="?kind=0"><b>Все</b></a>
+                            <a class="blue" href="?kind=0"><b>Р’СЃРµ</b></a>
                         <?php } //else?>
                             (<?= $conted_prj["kind_all"]?>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </span>
                         <span class="b-layout__txt_nowrap">    
                         <?php if($kind == 1) { ?>
-                            <b>Проекты</b>
+                            <b>РџСЂРѕРµРєС‚С‹</b>
                         <?php } else { //if?>
-                            <a class="blue" href="?kind=1"><b>Проекты</b></a>
+                            <a class="blue" href="?kind=1"><b>РџСЂРѕРµРєС‚С‹</b></a>
                         <?php } //else?> 
                             (<?= intval($conted_prj['kind_prj']) ?>) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                          </span>
                          <span class="b-layout__txt_nowrap">   
                         <?php if($kind == 3) { ?> 
-                            <b>Вакансии</b>
+                            <b>Р’Р°РєР°РЅСЃРёРё</b>
                         <?php } else { //if?>
-                            <a class="blue" href="?kind=3"><b>Вакансии</b></a>
+                            <a class="blue" href="?kind=3"><b>Р’Р°РєР°РЅСЃРёРё</b></a>
                         <?php } //else?>    
                             (<?= intval($conted_prj['kind_office']) ?>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </span>
                         <span class="b-layout__txt_nowrap">    
                         <?php if($kind == 2) { ?>
-                            <b>Конкурсы</b>
+                            <b>РљРѕРЅРєСѓСЂСЃС‹</b>
                         <?php } else { //if?>
-                            <a class="blue" href="?kind=2"><b>Конкурсы</b></a>
+                            <a class="blue" href="?kind=2"><b>РљРѕРЅРєСѓСЂСЃС‹</b></a>
                         <?php } //else?>     
                             (<?= intval($conted_prj['kind_contest']) ?>)
                         </span>
@@ -41,31 +41,31 @@
 					<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_10">
                         <span class="b-layout__txt_nowrap">
                         <?php if(!$_GET["all"] && !$_GET["closed"] && !$_GET["trash"]) {?>
-                            <b>Открытые</b>
+                            <b>РћС‚РєСЂС‹С‚С‹Рµ</b>
                         <?php } else {//if?>
-                            <a class="blue" href="?kind=<?= $kind?>"><b>Открытые</b></a>
+                            <a class="blue" href="?kind=<?= $kind?>"><b>РћС‚РєСЂС‹С‚С‹Рµ</b></a>
                         <?php }//else?>
                             (<?= $conted_prj["open"]?>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </span>
                         <span class="b-layout__txt_nowrap">    
                         <?php if($_GET["closed"]) { ?>
-                            <b>Закрытые</b>
+                            <b>Р—Р°РєСЂС‹С‚С‹Рµ</b>
                         <?php } else { //if?>
-                            <a class="blue" href="?kind=<?= $kind?>&closed=1"><b>Закрытые</b></a>
+                            <a class="blue" href="?kind=<?= $kind?>&closed=1"><b>Р—Р°РєСЂС‹С‚С‹Рµ</b></a>
                         <?php }//else?>
                             (<?= $conted_prj["closed"]?>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </span>
                         <span class="b-layout__txt_nowrap">
                         <?php if($_GET["all"]) { ?>
-                            <b>Все</b>
+                            <b>Р’СЃРµ</b>
                         <?php } else { //if?>
-                            <a class="blue" href="?kind=<?= $kind?>&all=1"><b>Все</b></a>
+                            <a class="blue" href="?kind=<?= $kind?>&all=1"><b>Р’СЃРµ</b></a>
                         <?php }//else?>
                             (<?= $conted_prj["all"]?>)
                         </span>
-                        <?/* (!$_GET["all"] && !$_GET["closed"] ? "<b>Открытые</b> (".$conted_prj["open"].")" : '<a class="blue" href="?"><b>Открытые</b></a> ('.$conted_prj["open"].')' )?>
-                        <?=($_GET["closed"] ? "<b>Закрытые</b> (".$conted_prj["closed"].")" : '<a class="blue" href="?closed=1"><b>Закрытые</b></a> ('.$conted_prj["closed"].')' )?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <?= ($_GET["all"] ? "<b>Все</b> (".$conted_prj["all"].")" : '<a class="blue" href="?all=1"><b>Все</b></a> ('.$conted_prj["all"].')' )*/?>
+                        <?/* (!$_GET["all"] && !$_GET["closed"] ? "<b>РћС‚РєСЂС‹С‚С‹Рµ</b> (".$conted_prj["open"].")" : '<a class="blue" href="?"><b>РћС‚РєСЂС‹С‚С‹Рµ</b></a> ('.$conted_prj["open"].')' )?>
+                        <?=($_GET["closed"] ? "<b>Р—Р°РєСЂС‹С‚С‹Рµ</b> (".$conted_prj["closed"].")" : '<a class="blue" href="?closed=1"><b>Р—Р°РєСЂС‹С‚С‹Рµ</b></a> ('.$conted_prj["closed"].')' )?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <?= ($_GET["all"] ? "<b>Р’СЃРµ</b> (".$conted_prj["all"].")" : '<a class="blue" href="?all=1"><b>Р’СЃРµ</b></a> ('.$conted_prj["all"].')' )*/?>
 					</div>
 				</td>
                 
@@ -74,9 +74,9 @@
 					<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_10">
                         <span class="b-layout__txt_nowrap">
                         <?php if($_GET["trash"]):?>
-                            <b>Корзина</b>
+                            <b>РљРѕСЂР·РёРЅР°</b>
                         <?php else: ?>
-                            <a class="b-layout__link b-layout__link_color_c10600" href="?trash=1"><b>Корзина</b></a>
+                            <a class="b-layout__link b-layout__link_color_c10600" href="?trash=1"><b>РљРѕСЂР·РёРЅР°</b></a>
                         <?php endif; ?>
                             (<?= $conted_prj["trash"]?>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </span>
@@ -87,11 +87,11 @@
                 <?php if(is_emp()||!get_uid()){ ?>
 				<td class="b-layout__td b-layout__td_right b-layout__td_width_full_ipad">
                     <?php if($kind == 3) { ?> 
-                        <a class="b-button b-button_flat b-button_flat_orange b-button_nowrap"  href="/public/?step=1&kind=4" title="Публиковать вакансию">Опубликовать вакансию</a>
+                        <a class="b-button b-button_flat b-button_flat_orange b-button_nowrap"  href="/public/?step=1&kind=4" title="РџСѓР±Р»РёРєРѕРІР°С‚СЊ РІР°РєР°РЅСЃРёСЋ">РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ РІР°РєР°РЅСЃРёСЋ</a>
                     <?php } elseif($kind == 2) {?>    
-                        <a class="b-button b-button_flat b-button_flat_orange b-button_nowrap"  href="/public/?step=1&kind=7" title="Публиковать конкурс">Опубликовать конкурс</a>
+                        <a class="b-button b-button_flat b-button_flat_orange b-button_nowrap"  href="/public/?step=1&kind=7" title="РџСѓР±Р»РёРєРѕРІР°С‚СЊ РєРѕРЅРєСѓСЂСЃ">РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ РєРѕРЅРєСѓСЂСЃ</a>
                     <?php } else { ?>
-                        <a class="b-button b-button_flat b-button_flat_orange b-button_nowrap"  href="/public/?step=1&kind=1" title="Публиковать ваш проект">Опубликовать проект</a>
+                        <a class="b-button b-button_flat b-button_flat_orange b-button_nowrap"  href="/public/?step=1&kind=1" title="РџСѓР±Р»РёРєРѕРІР°С‚СЊ РІР°С€ РїСЂРѕРµРєС‚">РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ РїСЂРѕРµРєС‚</a>
                     <?php } ?>
                 </td>
                     <?php } ?>

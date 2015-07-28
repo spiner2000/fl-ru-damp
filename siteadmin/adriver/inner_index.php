@@ -1,6 +1,6 @@
 <?php if ( !defined('IS_SITE_ADMIN') ) { header('Location: /404.php'); exit; } ?>
 <h1>
-    Справочник ключевых слов для настройки таргетинга в AdRiver
+    РЎРїСЂР°РІРѕС‡РЅРёРє РєР»СЋС‡РµРІС‹С… СЃР»РѕРІ РґР»СЏ РЅР°СЃС‚СЂРѕР№РєРё С‚Р°СЂРіРµС‚РёРЅРіР° РІ AdRiver
 </h1>
 
 
@@ -13,10 +13,10 @@
         <thead>
             <tr>
                 <th class="b-layout__td b-layout__td_pad_10">
-                    <strong>Тип</strong>
+                    <strong>РўРёРї</strong>
                 </th>
                 <th class="b-layout__td b-layout__td_center b-layout__td_pad_10">
-                    <strong>Ключевое слово</strong>
+                    <strong>РљР»СЋС‡РµРІРѕРµ СЃР»РѕРІРѕ</strong>
                 </th>
             </tr>
         </thead>
@@ -25,7 +25,7 @@
                 <td class="b-layout__td b-layout__td_pad_10">
 
                     <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10">
-                        Каталог фрилансеров
+                        РљР°С‚Р°Р»РѕРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
                     </div>
 
                     <div class="b-combo b-combo_inline-block">
@@ -41,7 +41,7 @@
                            ">
                          <input id="fprofession" 
                                 type="text" 
-                                placeholder="Выберите специализацию" 
+                                placeholder="Р’С‹Р±РµСЂРёС‚Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ" 
                                 value="" 
                                 name="fprofession" 
                                 class="b-combo__input-text" />
@@ -61,7 +61,7 @@
                 <td class="b-layout__td b-layout__td_pad_10">
 
                     <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10">
-                        Специализация пользователя
+                        РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
                     </div>
 
                     <div class="b-combo b-combo_inline-block">
@@ -77,7 +77,7 @@
                            ">
                          <input id="uprofession" 
                                 type="text" 
-                                placeholder="Выберите специализацию" 
+                                placeholder="Р’С‹Р±РµСЂРёС‚Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ" 
                                 value="" 
                                 name="uprofession" 
                                 class="b-combo__input-text" />
@@ -97,7 +97,7 @@
                 <td class="b-layout__td b-layout__td_pad_10">
 
                     <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10">
-                        Каталог услуг (ТУ)
+                        РљР°С‚Р°Р»РѕРі СѓСЃР»СѓРі (РўРЈ)
                     </div>
 
                     <div class="b-combo b-combo_inline-block">
@@ -113,7 +113,7 @@
                            ">
                          <input id="tprofession" 
                                 type="text" 
-                                placeholder="Выберите специализацию" 
+                                placeholder="Р’С‹Р±РµСЂРёС‚Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ" 
                                 value="" 
                                 name="tprofession" 
                                 class="b-combo__input-text" />
@@ -132,7 +132,7 @@
             <tr>
                 <td class="b-layout__td b-layout__td_pad_10">
                     <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10">
-                        Фильтр списка проектов
+                        Р¤РёР»СЊС‚СЂ СЃРїРёСЃРєР° РїСЂРѕРµРєС‚РѕРІ
                     </div>
                     <div class="b-combo b-combo_inline-block">
                       <div class="
@@ -147,7 +147,7 @@
                            ">
                          <input id="pprofession" 
                                 type="text" 
-                                placeholder="Выберите специализацию" 
+                                placeholder="Р’С‹Р±РµСЂРёС‚Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ" 
                                 value="" 
                                 name="pprofession" 
                                 class="b-combo__input-text" />

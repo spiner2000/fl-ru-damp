@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Рассылка по личке.
- * Оплата услуги.
+ * Р Р°СЃСЃС‹Р»РєР° РїРѕ Р»РёС‡РєРµ.
+ * РћРїР»Р°С‚Р° СѓСЃР»СѓРіРё.
  */
 
 
@@ -17,7 +17,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/classes/masssending.php';
 
 
 /**
- * Оплата с личного счета
+ * РћРїР»Р°С‚Р° СЃ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р°
  * @param type $type
  * @param array $data (weeks, prof_id, is_spec)
  * @return type
@@ -40,7 +40,7 @@ function quickPaymentMasssendingAccount($type, $data)
     if ($params) {
     
         $bill = new billing(get_uid(false));
-        //Допустимо использование промокодов
+        //Р”РѕРїСѓСЃС‚РёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РїСЂРѕРјРѕРєРѕРґРѕРІ
         $bill->setPromoCodes('SERVICE_MASSSENDING', $promo_code);     
 
         $option = array(
@@ -59,11 +59,11 @@ function quickPaymentMasssendingAccount($type, $data)
         }
     }
 
-    // Показываем предупреждение в случае ошибки
+    // РџРѕРєР°Р·С‹РІР°РµРј РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
     if ($is_error) {
         $objResponse->script("
             var qp = window.quick_payment_factory.getQuickPayment('masssending');
-            if(qp) qp.show_error('Возникла ошибка при оплате рассылки!');
+            if(qp) qp.show_error('Р’РѕР·РЅРёРєР»Р° РѕС€РёР±РєР° РїСЂРё РѕРїР»Р°С‚Рµ СЂР°СЃСЃС‹Р»РєРё!');
         ");
     }
         
@@ -75,7 +75,7 @@ function quickPaymentMasssendingAccount($type, $data)
 
 
 /**
- * Это методы для разных видов оплаты но сгруппированные в яндекс кассе
+ * Р­С‚Рѕ РјРµС‚РѕРґС‹ РґР»СЏ СЂР°Р·РЅС‹С… РІРёРґРѕРІ РѕРїР»Р°С‚С‹ РЅРѕ СЃРіСЂСѓРїРїРёСЂРѕРІР°РЅРЅС‹Рµ РІ СЏРЅРґРµРєСЃ РєР°СЃСЃРµ
  * 
  * @param type $type
  * @param type $data
@@ -110,10 +110,10 @@ function quickPaymentMasssendingSberbank($type, $data)
 
 
 /**
- * Оплата через яндекс кассу
+ * РћРїР»Р°С‚Р° С‡РµСЂРµР· СЏРЅРґРµРєСЃ РєР°СЃСЃСѓ
  * 
- * @param type $type - тип оплаты
- * @param type $data - данные по параметрам покупаемой услуги
+ * @param type $type - С‚РёРї РѕРїР»Р°С‚С‹
+ * @param type $data - РґР°РЅРЅС‹Рµ РїРѕ РїР°СЂР°РјРµС‚СЂР°Рј РїРѕРєСѓРїР°РµРјРѕР№ СѓСЃР»СѓРіРё
  * @return \xajaxResponse
  */
 function quickPaymentMasssendingYandexKassa($type, $data)
@@ -145,7 +145,7 @@ function quickPaymentMasssendingYandexKassa($type, $data)
         $is_error = false;
         
         $bill = new billing(get_uid(false));
-        //Допустимо использование промокодов
+        //Р”РѕРїСѓСЃС‚РёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РїСЂРѕРјРѕРєРѕРґРѕРІ
         $bill->setPromoCodes('SERVICE_MASSSENDING', $promo_code);  
         
         $option = array(
@@ -153,7 +153,7 @@ function quickPaymentMasssendingYandexKassa($type, $data)
             'masssending_id' => $params['id'],
         );
         
-        //Формируем заказ
+        //Р¤РѕСЂРјРёСЂСѓРµРј Р·Р°РєР°Р·
         $billReserveId = $bill->addServiceAndCheckout(
                 masssending::OPER_CODE, 
                 $option);
@@ -175,15 +175,15 @@ function quickPaymentMasssendingYandexKassa($type, $data)
             }
         ");
 
-        //сохранаем в сессию куда перейти при успешной покупке        
+        //СЃРѕС…СЂР°РЅР°РµРј РІ СЃРµСЃСЃРёСЋ РєСѓРґР° РїРµСЂРµР№С‚Рё РїСЂРё СѓСЃРїРµС€РЅРѕР№ РїРѕРєСѓРїРєРµ        
         $_SESSION[quickPaymentPopup::QPP_REDIRECT] = '/bill/history/?period=3';
     }
 
-    // Показываем предупреждение в случае ошибки
+    // РџРѕРєР°Р·С‹РІР°РµРј РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
     if ($is_error) {
         $objResponse->script("
             var qp = window.quick_payment_factory.getQuickPayment('masssending');
-            if(qp) qp.show_error('Возникла ошибка при оплате рассылки!');
+            if(qp) qp.show_error('Р’РѕР·РЅРёРєР»Р° РѕС€РёР±РєР° РїСЂРё РѕРїР»Р°С‚Рµ СЂР°СЃСЃС‹Р»РєРё!');
         ");
     }
         

@@ -3,21 +3,21 @@
         <b class="b1"></b>
         <b class="b2"></b>
         <div class="form-h-in">
-            <h3>Резервирование денег по безналичному расчету.</h3>
+            <h3>Р РµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ РґРµРЅРµРі РїРѕ Р±РµР·РЅР°Р»РёС‡РЅРѕРјСѓ СЂР°СЃС‡РµС‚Сѓ.</h3>
         </div>
     </div>
     <div class="form-in">
         <? if($sbr->reserved_id && ($sbr->reqv[sbr::FT_JURI]->payed_time && $sbr->reqv[sbr::FT_JURI]->sbr_id == $sbr->id || $sbr->reqv[sbr::FT_PHYS]->accepted_time && $sbr->reqv[sbr::FT_PHYS]->sbr_id == $sbr_id)) { ?>
             <div class="form-block first">
                 <div class="form-el">
-                    <p>Вы уже зарезервировали деньги.</p>
+                    <p>Р’С‹ СѓР¶Рµ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°Р»Рё РґРµРЅСЊРіРё.</p>
                 </div>
             </div>
             <div class="form-block last">
                 <div class="form-el">
                     <div class="nr-prj-btns c">
                         <span class="btn-o-green">
-                            <a href="javascript:;" onclick="SBR.sendForm({action:'show_invoiced'},true)" class="btnr btnr-green2"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Выписать счет</span></span></span></a>
+                            <a href="javascript:;" onclick="SBR.sendForm({action:'show_invoiced'},true)" class="btnr btnr-green2"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Р’С‹РїРёСЃР°С‚СЊ СЃС‡РµС‚</span></span></span></a>
                         </span>
                         <input type="hidden" name="form_type" value="<?=$form_type?>" />
                     </div>
@@ -26,22 +26,22 @@
         <? } else { ?>
             <div class="form-block first">
                 <div class="form-el">
-                    <p>Заполните и проверьте правильность заполнения полей, это важно.</p>
+                    <p>Р—Р°РїРѕР»РЅРёС‚Рµ Рё РїСЂРѕРІРµСЂСЊС‚Рµ РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ Р·Р°РїРѕР»РЅРµРЅРёСЏ РїРѕР»РµР№, СЌС‚Рѕ РІР°Р¶РЅРѕ.</p>
                 </div>
             </div>
             <?
             /*
             <div class="form-block">
                 <div class="form-el">
-                    <? if($reqv_mode == 1) { ?><strong>Основные реквизиты</strong><? } else { ?><a href="javascript:;" onclick="SBR.switchReqvMode(<?=$stage_id?>,1)" class="lnk-dot-green">Основные реквизиты</a><? } ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <? if($reqv_mode == 2) { ?><strong>Последние введенные данные</strong><? } else {?><a href="javascript:;" onclick="SBR.switchReqvMode(<?=$stage_id?>,2)" class="lnk-dot-green">Последние введенные данные</a><? } ?>
+                    <? if($reqv_mode == 1) { ?><strong>РћСЃРЅРѕРІРЅС‹Рµ СЂРµРєРІРёР·РёС‚С‹</strong><? } else { ?><a href="javascript:;" onclick="SBR.switchReqvMode(<?=$stage_id?>,1)" class="lnk-dot-green">РћСЃРЅРѕРІРЅС‹Рµ СЂРµРєРІРёР·РёС‚С‹</a><? } ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <? if($reqv_mode == 2) { ?><strong>РџРѕСЃР»РµРґРЅРёРµ РІРІРµРґРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ</strong><? } else {?><a href="javascript:;" onclick="SBR.switchReqvMode(<?=$stage_id?>,2)" class="lnk-dot-green">РџРѕСЃР»РµРґРЅРёРµ РІРІРµРґРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ</a><? } ?>
                 </div>
             </div>
             */?>
             <div class="form-block form-reserv-params">
                 <div class="form-el odd">
-                    <input type="radio" name="form_type" <?=($form_type != sbr::FT_JURI ? ' disabled="true"' : '')?> value="<?=sbr::FT_JURI?>" id="ft<?=sbr::FT_JURI?>" <?=($form_type == sbr::FT_JURI ? ' checked="true"' : '')?> onclick="SBR.switchReqvFT(<?=sbr::FT_JURI?>,<?=sbr::FT_PHYS?>)" /><label for="ft<?=sbr::FT_JURI?>"> Юридическое лицо или ИП</label>&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="form_type" <?=($form_type != sbr::FT_PHYS ? ' disabled="true"' : '')?> value="<?=sbr::FT_PHYS?>" id="ft<?=sbr::FT_PHYS?>" <?=($form_type == sbr::FT_PHYS ? ' checked="true"' : '')?> onclick="SBR.switchReqvFT(<?=sbr::FT_PHYS?>,<?=sbr::FT_JURI?>)" /><label for="ft<?=sbr::FT_PHYS?>"> Физическое лицо</label>
+                    <input type="radio" name="form_type" <?=($form_type != sbr::FT_JURI ? ' disabled="true"' : '')?> value="<?=sbr::FT_JURI?>" id="ft<?=sbr::FT_JURI?>" <?=($form_type == sbr::FT_JURI ? ' checked="true"' : '')?> onclick="SBR.switchReqvFT(<?=sbr::FT_JURI?>,<?=sbr::FT_PHYS?>)" /><label for="ft<?=sbr::FT_JURI?>"> Р®СЂРёРґРёС‡РµСЃРєРѕРµ Р»РёС†Рѕ РёР»Рё РРџ</label>&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="form_type" <?=($form_type != sbr::FT_PHYS ? ' disabled="true"' : '')?> value="<?=sbr::FT_PHYS?>" id="ft<?=sbr::FT_PHYS?>" <?=($form_type == sbr::FT_PHYS ? ' checked="true"' : '')?> onclick="SBR.switchReqvFT(<?=sbr::FT_PHYS?>,<?=sbr::FT_JURI?>)" /><label for="ft<?=sbr::FT_PHYS?>"> Р¤РёР·РёС‡РµСЃРєРѕРµ Р»РёС†Рѕ</label>
                 </div>
             </div>
             <div class="form-block form-reserv-params" id="ft<?=sbr::FT_PHYS?>_set"<?=($sbr->user_reqvs['form_type']==sbr::FT_PHYS ? '' : ' style="display:none"')?>>
@@ -78,11 +78,11 @@
             <div class="form-block last">
                 <div class="form-el">
                     <label class="nr-res-check" style="display:none">
-                        <input type="checkbox" name="save_finance" value="1" checked="true" />&nbsp;Внести изменения в основные реквизиты
+                        <input type="checkbox" name="save_finance" value="1" checked="true" />&nbsp;Р’РЅРµСЃС‚Рё РёР·РјРµРЅРµРЅРёСЏ РІ РѕСЃРЅРѕРІРЅС‹Рµ СЂРµРєРІРёР·РёС‚С‹
                     </label>
                     <div class="nr-prj-btns c">
                         <span class="btn-o-green">
-                            <a href="javascript:;" onclick="SBR.sendForm({action:'invoice'},true)" class="btnr btnr-green2"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Выписать счет</span></span></span></a>
+                            <a href="javascript:;" onclick="SBR.sendForm({action:'invoice'},true)" class="btnr btnr-green2"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Р’С‹РїРёСЃР°С‚СЊ СЃС‡РµС‚</span></span></span></a>
                         </span>
                     </div>
                 </div>

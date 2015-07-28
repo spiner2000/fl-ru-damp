@@ -1,2 +1,2 @@
-<div class="b-layout__txt b-layout__txt_padbot_30">Вы можете заказать рассылку <a class="b-layout__link" href="/search/?type=users">по результатам поиска</a>.<br />Укажите необходимые параметры и разошлите ваше сообщение всем найденным пользователям.</div>
+<div class="b-layout__txt b-layout__txt_padbot_30">Р’С‹ РјРѕР¶РµС‚Рµ Р·Р°РєР°Р·Р°С‚СЊ СЂР°СЃСЃС‹Р»РєСѓ <a class="b-layout__link" href="/search/?type=users">РїРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°Рј РїРѕРёСЃРєР°</a>.<br />РЈРєР°Р¶РёС‚Рµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РїР°СЂР°РјРµС‚СЂС‹ Рё СЂР°Р·РѕС€Р»РёС‚Рµ РІР°С€Рµ СЃРѕРѕР±С‰РµРЅРёРµ РІСЃРµРј РЅР°Р№РґРµРЅРЅС‹Рј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј.</div>
 <img class="b-promo__pic b-promo__pic_center" src="/images/promo-pic/promo-mail.png" alt="" width="744" height="404" />

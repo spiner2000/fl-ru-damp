@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Старица покупки ПРО для новичков
+ * РЎС‚Р°СЂРёС†Р° РїРѕРєСѓРїРєРё РџР Рћ РґР»СЏ РЅРѕРІРёС‡РєРѕРІ
  */
 
 
@@ -23,10 +23,10 @@ var alowLogin = function(){
 </script>
 <? } //else?>
     <h1 id="header_payed_pro" class="b-page__title b-page__title_padbot_30 b-page__title_center b-page__title_padbot_10_ipad">
-        Профессиональный аккаунт фрилансера
+        РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚ С„СЂРёР»Р°РЅСЃРµСЂР°
         <? if ($pro_last) { ?>
             <div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_center b-layout__txt_fontsize_20">
-                Действует до <?= date('d.m.Y', strtotime($pro_last)) ?>
+                Р”РµР№СЃС‚РІСѓРµС‚ РґРѕ <?= date('d.m.Y', strtotime($pro_last)) ?>
             </div>
         <? } ?>
     </h1>
@@ -53,13 +53,13 @@ var alowLogin = function(){
                             
                             <?php if(false): ?>
                             <div class="b-promo__buy b-layout__txt_hide payed_success" id="payed_success_<?=$pay['opcode']?>">
-                                <div class="b-promo__buy-head">Поздравляем</div>
+                                <div class="b-promo__buy-head">РџРѕР·РґСЂР°РІР»СЏРµРј</div>
                                 <div class="b-promo__buy-body">
-                                    <div class="b-layout__txt b-layout__txt_padtop_20">Вы купили аккаунт <span class="b-icon b-icon__pro b-icon__pro_f" title="PRO"></span></div>
-                                    <div class="b-layout__txt b-layout__txt_padbot_20">на <?= $pay['week'] > 0 ? $pay['week'] . " " . ending($pay['week'], 'неделю', 'недели', 'недель') : ($pay['month'] == 12 ? '1 год' : $pay['month'] . " " . ending($pay['month'], 'месяц', 'месяца', 'месяцев') )?> (до <span class="payed_pro_last">20.05.2013</span>)</div>
+                                    <div class="b-layout__txt b-layout__txt_padtop_20">Р’С‹ РєСѓРїРёР»Рё Р°РєРєР°СѓРЅС‚ <span class="b-icon b-icon__pro b-icon__pro_f" title="PRO"></span></div>
+                                    <div class="b-layout__txt b-layout__txt_padbot_20">РЅР° <?= $pay['week'] > 0 ? $pay['week'] . " " . ending($pay['week'], 'РЅРµРґРµР»СЋ', 'РЅРµРґРµР»Рё', 'РЅРµРґРµР»СЊ') : ($pay['month'] == 12 ? '1 РіРѕРґ' : $pay['month'] . " " . ending($pay['month'], 'РјРµСЃСЏС†', 'РјРµСЃСЏС†Р°', 'РјРµСЃСЏС†РµРІ') )?> (РґРѕ <span class="payed_pro_last">20.05.2013</span>)</div>
                                     <div class="b-check b-check_center">
                                         <input id="autolong" class="b-check__input b-check__input_top_-3 auto_prolong" type="checkbox" value="1" name="prolong" <?= $u_is_pro_auto_prolong  == 't' ? 'checked="checked"' : ''?>><br />
-                                        <label class="b-check__label b-check__label_color_41" for="autolong">Автоматически продлевать<br />действие аккаунта PRO<br />каждый месяц</label>
+                                        <label class="b-check__label b-check__label_color_41" for="autolong">РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё РїСЂРѕРґР»РµРІР°С‚СЊ<br />РґРµР№СЃС‚РІРёРµ Р°РєРєР°СѓРЅС‚Р° PRO<br />РєР°Р¶РґС‹Р№ РјРµСЃСЏС†</label>
                                     </div>
                                 </div>
                             </div>
@@ -67,16 +67,16 @@ var alowLogin = function(){
                             
                             <div class="b-promo__buy payed_form" id="payed_form_<?=$pay['opcode']?>">
                                 <div class="b-promo__buy-head <?= $pay['is_test'] ? "b-promo__buy-head_test" : ""?>">
-                                    PRO на 
+                                    PRO РЅР° 
                                     <? if($pay['day']) { ?>
-                                        <?= $pay['day']?> <?= ending($pay['day'], 'день', 'дня', 'дня')?>
+                                        <?= $pay['day']?> <?= ending($pay['day'], 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅСЏ')?>
                                     <? } elseif ($pay['week']) { ?>
-                                        <?= $pay['week']?> <?= ending($pay['week'], 'неделя', 'недели', 'недель')?>
+                                        <?= $pay['week']?> <?= ending($pay['week'], 'РЅРµРґРµР»СЏ', 'РЅРµРґРµР»Рё', 'РЅРµРґРµР»СЊ')?>
                                     <? } else { ?>
                                         <? if($pay['month']==12) { ?>
-                                            1 год
+                                            1 РіРѕРґ
                                         <? } else { ?>
-                                            <?= $pay['month']?> <?= ending($pay['month'], 'месяц', 'месяца', 'месяцев')?>
+                                            <?= $pay['month']?> <?= ending($pay['month'], 'РјРµСЃСЏС†', 'РјРµСЃСЏС†Р°', 'РјРµСЃСЏС†РµРІ')?>
                                         <? } ?>
                                     <? } ?>
                                 </div>
@@ -84,10 +84,10 @@ var alowLogin = function(){
                                     <div class="b-layout b-layout_inline-block b-layout__txt_top_2"><img class="b-layout__pic" src="/images/62.png" width="73" height="50"></div> &#160;&#160;
                                     <div class="b-layout b-layout_inline-block">
                                         <div class="b-layout__txt b-layout__txt_color_fd6c30 b-layout__txt_fontsize_34 b-layout__txt_lineheight_1 b-layout__txt_padtop_30"><?= $pay['cost']?></div>
-                                        <div class="b-layout__txt b-layout__txt_padbot_<?= $eco > 0 ? '10': '30';?>">рублей</div>
+                                        <div class="b-layout__txt b-layout__txt_padbot_<?= $eco > 0 ? '10': '30';?>">СЂСѓР±Р»РµР№</div>
                                     </div>
                                     <div class="b-buttons">
-                                        <a id="is_enough_<?= $pay['opcode']?>" class="b-button b-button_flat b-button_flat_green b-button_block<?php if (get_uid(false)): ?> __ga__pro__frl_buy<?php endif; ?>" href="javascript:void(0)" onclick="<?=  get_uid(false) ? "quickPRO_show(); $('quick_pro_f_item_".$pay['opcode']."').set('checked', 'true'); quickPRO_select($('quick_pro_f_item_".$pay['opcode']."'));" : "window.location = '/registration/?user_action=buypro';"?>">Купить</a>
+                                        <a id="is_enough_<?= $pay['opcode']?>" class="b-button b-button_flat b-button_flat_green b-button_block<?php if (get_uid(false)): ?> __ga__pro__frl_buy<?php endif; ?>" href="javascript:void(0)" onclick="<?=  get_uid(false) ? "quickPRO_show(); $('quick_pro_f_item_".$pay['opcode']."').set('checked', 'true'); quickPRO_select($('quick_pro_f_item_".$pay['opcode']."'));" : "window.location = '/registration/?user_action=buypro';"?>">РљСѓРїРёС‚СЊ</a>
                                     </div>
                                 </div>
                             </div>
@@ -98,15 +98,15 @@ var alowLogin = function(){
                 </table>
             </td>
             <td class="b-layout__td b-layout__td_padtop_20">
-                <div class="b-layout__txt  b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_gok b-icon_top_1"></span>Увеличение рейтинга на 20%.</div>
-                <div class="b-layout__txt  b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_gok b-icon_top_1"></span>Возможность размещения в каталоге фрилансеров по 5 специализациям.</div>
-                <div class="b-layout__txt  b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_gok b-icon_top_1"></span>Вы в каталоге &mdash; выше остальных &mdash; в отдельной зоне PRO.</div>
-                <div class="b-layout__txt  b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_gok b-icon_top_1"></span>Ваши ответы на проекты &mdash; выше остальных &mdash; в зоне ответов PRO.</div>
-                <div class="b-layout__txt  b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_gok b-icon_top_1"></span>Можете загружать работы в ответах на проекты.</div>
-                <div class="b-layout__txt  b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_gok b-icon_top_1"></span>Превью работ в портфолио.</div>
+                <div class="b-layout__txt  b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_gok b-icon_top_1"></span>РЈРІРµР»РёС‡РµРЅРёРµ СЂРµР№С‚РёРЅРіР° РЅР° 20%.</div>
+                <div class="b-layout__txt  b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_gok b-icon_top_1"></span>Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЂР°Р·РјРµС‰РµРЅРёСЏ РІ РєР°С‚Р°Р»РѕРіРµ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РїРѕ 5 СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏРј.</div>
+                <div class="b-layout__txt  b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_gok b-icon_top_1"></span>Р’С‹ РІ РєР°С‚Р°Р»РѕРіРµ &mdash; РІС‹С€Рµ РѕСЃС‚Р°Р»СЊРЅС‹С… &mdash; РІ РѕС‚РґРµР»СЊРЅРѕР№ Р·РѕРЅРµ PRO.</div>
+                <div class="b-layout__txt  b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_gok b-icon_top_1"></span>Р’Р°С€Рё РѕС‚РІРµС‚С‹ РЅР° РїСЂРѕРµРєС‚С‹ &mdash; РІС‹С€Рµ РѕСЃС‚Р°Р»СЊРЅС‹С… &mdash; РІ Р·РѕРЅРµ РѕС‚РІРµС‚РѕРІ PRO.</div>
+                <div class="b-layout__txt  b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_gok b-icon_top_1"></span>РњРѕР¶РµС‚Рµ Р·Р°РіСЂСѓР¶Р°С‚СЊ СЂР°Р±РѕС‚С‹ РІ РѕС‚РІРµС‚Р°С… РЅР° РїСЂРѕРµРєС‚С‹.</div>
+                <div class="b-layout__txt  b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_gok b-icon_top_1"></span>РџСЂРµРІСЊСЋ СЂР°Р±РѕС‚ РІ РїРѕСЂС‚С„РѕР»РёРѕ.</div>
                 
                <div class="b-fon b-fon_pad_10 b-fon_bg_d3f2c0 b-fon__nosik_left">
-                  Теперь можно приобрести аккаунт, оплатив его потом (через сервис <a class="b-layout__link" href="http://PlatiPotom.ru" target="_blank">PlatiPotom.ru</a>).<br>Вы станете PRO сразу, а оплатите его с отсрочкой до 30 дней.
+                  РўРµРїРµСЂСЊ РјРѕР¶РЅРѕ РїСЂРёРѕР±СЂРµСЃС‚Рё Р°РєРєР°СѓРЅС‚, РѕРїР»Р°С‚РёРІ РµРіРѕ РїРѕС‚РѕРј (С‡РµСЂРµР· СЃРµСЂРІРёСЃ <a class="b-layout__link" href="http://PlatiPotom.ru" target="_blank">PlatiPotom.ru</a>).<br>Р’С‹ СЃС‚Р°РЅРµС‚Рµ PRO СЃСЂР°Р·Сѓ, Р° РѕРїР»Р°С‚РёС‚Рµ РµРіРѕ СЃ РѕС‚СЃСЂРѕС‡РєРѕР№ РґРѕ 30 РґРЅРµР№.
                </div>
             </td>            
         </tr>

@@ -1,4 +1,4 @@
-<? if(commune::isBannedCommune($mod)) $top['poll_closed'] = 't'; // Голосование закрыто для заблокированных в сообществе?>
+<? if(commune::isBannedCommune($mod)) $top['poll_closed'] = 't'; // Р“РѕР»РѕСЃРѕРІР°РЅРёРµ Р·Р°РєСЂС‹С‚Рѕ РґР»СЏ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹С… РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ?>
 
 <? if ($top['question'] != '') { ?>
 <?php if($actionRating == 'blur') { ?><div class="b-post__txt b-post__txt_opacity_3"><? }//if?>
@@ -89,16 +89,16 @@
         if (!$top['poll_votes'] && $user_id && $top['poll_closed'] != 't' && $top['commune_blocked'] != 't' && !$top['user_is_banned'] && !$top['member_is_banned'] && $is_member) {
         ?>
             <span id="poll-btn-vote-<?= $top['theme_id'] ?>">
-            	<a class="b-button b-button_flat b-button_flat_grey" href="javascript:void(0)" onclick="poll.vote('Commune', <?= $top['theme_id'] ?>); return false;">Ответить</a>
+            	<a class="b-button b-button_flat b-button_flat_grey" href="javascript:void(0)" onclick="poll.vote('Commune', <?= $top['theme_id'] ?>); return false;">РћС‚РІРµС‚РёС‚СЊ</a>
             </span>&nbsp;&nbsp;&nbsp;
-            <span id="poll-btn-result-<?= $top['theme_id'] ?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript:void(0)" onclick="poll.showResult('Commune', <?= $top['theme_id'] ?>); return false;">Посмотреть результаты</a>&nbsp;&nbsp;&nbsp;</span>
+            <span id="poll-btn-result-<?= $top['theme_id'] ?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript:void(0)" onclick="poll.showResult('Commune', <?= $top['theme_id'] ?>); return false;">РџРѕСЃРјРѕС‚СЂРµС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹</a>&nbsp;&nbsp;&nbsp;</span>
 <? } else { ?>
             <span id="poll-btn-vote-<?= $top['theme_id'] ?>"></span>
             <span id="poll-btn-result-<?= $top['theme_id'] ?>"></span>
         <? } ?>
         <? if (($top['user_id'] == $user_id && $top['commune_blocked'] != 't' && !$top['user_is_banned'] && !$top['member_is_banned']) || $is_moder) { ?>
-            <span id="poll-btn-close-<?= $top['theme_id'] ?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript:void(0)" onclick="poll.close('Commune', <?= $top['theme_id'] ?>); return false;" ><?= (($top['poll_closed'] == 't') ? 'Открыть' : 'Закрыть') ?> опрос</a>&nbsp;&nbsp;&nbsp;</span>
-            <span id="poll-btn-remove-<?= $top['theme_id'] ?>"><a class="b-buttons__link b-buttons__link_dot_c10601" href="javascript:void(0)" onclick="poll.remove('Commune', <?= $top['theme_id'] ?>); return false;" >Удалить опрос</a></span>
+            <span id="poll-btn-close-<?= $top['theme_id'] ?>"><a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript:void(0)" onclick="poll.close('Commune', <?= $top['theme_id'] ?>); return false;" ><?= (($top['poll_closed'] == 't') ? 'РћС‚РєСЂС‹С‚СЊ' : 'Р—Р°РєСЂС‹С‚СЊ') ?> РѕРїСЂРѕСЃ</a>&nbsp;&nbsp;&nbsp;</span>
+            <span id="poll-btn-remove-<?= $top['theme_id'] ?>"><a class="b-buttons__link b-buttons__link_dot_c10601" href="javascript:void(0)" onclick="poll.remove('Commune', <?= $top['theme_id'] ?>); return false;" >РЈРґР°Р»РёС‚СЊ РѕРїСЂРѕСЃ</a></span>
         <? } ?>
     </div>
 </div>

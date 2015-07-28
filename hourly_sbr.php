@@ -17,7 +17,7 @@ $log = new log('hourly_sbr/'.SERVER.'-%d%m%Y[%H].log', 'w');
 $log->writeln('------------ BEGIN hourly_sbr (start time: ' . date('d.m.Y H:i:s') . ') -----');
 
 /**
- * Ïðîâåðÿåì ñäåëêè íà ïðîñðî÷êó 
+ * ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ ÑÐ´ÐµÐ»ÐºÐ¸ Ð½Ð° Ð¿Ñ€Ð¾ÑÑ€Ð¾Ñ‡ÐºÑƒ 
  */
 $sbr_meta = new sbr_meta();
 $sbr_meta->renewalWorkStagesByFrozen();
@@ -29,11 +29,11 @@ if (date('H') == 0 || date('H') == 1) {
     pskb::checkExpired();
 }
 
-if (date('H') % 4 == 0 ) { // ðàç â 4 ÷àñà
+if (date('H') % 4 == 0 ) { // Ñ€Ð°Ð· Ð² 4 Ñ‡Ð°ÑÐ°
     pskb::checkBankCovered();
     pskb::checkStagePayoutsCompleted();
 }
-// Äîëæåí îòðàáîòàòü âñå ñäåëêè äî 15 äåêàáðÿ
+// Ð”Ð¾Ð»Ð¶ÐµÐ½ Ð¾Ñ‚Ñ€Ð°Ð±Ð¾Ñ‚Ð°Ñ‚ÑŒ Ð²ÑÐµ ÑÐ´ÐµÐ»ÐºÐ¸ Ð´Ð¾ 15 Ð´ÐµÐºÐ°Ð±Ñ€Ñ
 $log->TRACE( pskb::fillingSuperCheck() );
 
 if (date('H') == 23) {

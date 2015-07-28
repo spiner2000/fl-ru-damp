@@ -1,40 +1,40 @@
 <?php
 /**
- * Сервер для работы с API через протокол JSON
+ * РЎРµСЂРІРµСЂ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ API С‡РµСЂРµР· РїСЂРѕС‚РѕРєРѕР» JSON
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
 class externalServer_JSON extends externalBase {
     /**
-     * Вызываемое апи
+     * Р’С‹Р·С‹РІР°РµРјРѕРµ Р°РїРё
      * 
      * @var string 
      */
     private $_sApi;
     
     /**
-     * Вызываемый метод
+     * Р’С‹Р·С‹РІР°РµРјС‹Р№ РјРµС‚РѕРґ
      * 
      * @var string 
      */
     private $_sMethod;
     
     /**
-     * Параметры вызова
+     * РџР°СЂР°РјРµС‚СЂС‹ РІС‹Р·РѕРІР°
      * 
      * @var array
      */
     private $_aParams;
     
     /**
-     * Номер ошибки
+     * РќРѕРјРµСЂ РѕС€РёР±РєРё
      * 
      * @var int 
      */
     private $_nErrorNum = EXTERNAL_NO_ERROR;
     
     /**
-     * Возвращаемые данные
+     * Р’РѕР·РІСЂР°С‰Р°РµРјС‹Рµ РґР°РЅРЅС‹Рµ
      * 
      * @var array 
      */
@@ -42,25 +42,25 @@ class externalServer_JSON extends externalBase {
 
 
     /**
-     * Имя метода, обрабатывающего ошибки
+     * РРјСЏ РјРµС‚РѕРґР°, РѕР±СЂР°Р±Р°С‚С‹РІР°СЋС‰РµРіРѕ РѕС€РёР±РєРё
      * 
      * @var string 
      */
     public $eHandler = 'setError';
     
     /**
-     * Имя метода, обрабатывающего предупреждения.
+     * РРјСЏ РјРµС‚РѕРґР°, РѕР±СЂР°Р±Р°С‚С‹РІР°СЋС‰РµРіРѕ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ.
      * 
      * @var string 
      */
     public $wHandler = 'setError';
 
     /**
-     * Возвращает экземпляр класса в зависимости от версии протокола.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР° РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РІРµСЂСЃРёРё РїСЂРѕС‚РѕРєРѕР»Р°.
      * 
-     * @param array $req   параметры запроса:
-     *                       'protocol-version' => 1.0, -- версия протокола
-     *                       'data' => file_get_contents('php://input') -- тело запроса.
+     * @param array $req   РїР°СЂР°РјРµС‚СЂС‹ Р·Р°РїСЂРѕСЃР°:
+     *                       'protocol-version' => 1.0, -- РІРµСЂСЃРёСЏ РїСЂРѕС‚РѕРєРѕР»Р°
+     *                       'data' => file_get_contents('php://input') -- С‚РµР»Рѕ Р·Р°РїСЂРѕСЃР°.
      * @return object
      */
     static function getInst( $req ) {
@@ -69,9 +69,9 @@ class externalServer_JSON extends externalBase {
     }
     
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      * 
-     * @param string $json   текст JSON-запроса
+     * @param string $json   С‚РµРєСЃС‚ JSON-Р·Р°РїСЂРѕСЃР°
      */
     function __construct( $json ) {
         $this->regErrorHandler();
@@ -94,7 +94,7 @@ class externalServer_JSON extends externalBase {
     }
     
     /**
-     * Обработка запроса, отправка ответа клиенту.
+     * РћР±СЂР°Р±РѕС‚РєР° Р·Р°РїСЂРѕСЃР°, РѕС‚РїСЂР°РІРєР° РѕС‚РІРµС‚Р° РєР»РёРµРЅС‚Сѓ.
      */
     function handle() {
         $sName = 'http://www.free-lance.ru/external/api/' . $this->_sApi;
@@ -109,9 +109,9 @@ class externalServer_JSON extends externalBase {
     }
     
     /**
-     * Регистрирует ошибку, заканчивает работу.
+     * Р РµРіРёСЃС‚СЂРёСЂСѓРµС‚ РѕС€РёР±РєСѓ, Р·Р°РєР°РЅС‡РёРІР°РµС‚ СЂР°Р±РѕС‚Сѓ.
      * 
-     * @param mixed $err описание ошибки (массив -- структурированное описание).
+     * @param mixed $err РѕРїРёСЃР°РЅРёРµ РѕС€РёР±РєРё (РјР°СЃСЃРёРІ -- СЃС‚СЂСѓРєС‚СѓСЂРёСЂРѕРІР°РЅРЅРѕРµ РѕРїРёСЃР°РЅРёРµ).
      */
     function setError( $err ) {
         $this->_nErrorNum = $err['code'];
@@ -120,7 +120,7 @@ class externalServer_JSON extends externalBase {
     }
     
     /**
-     * Формирует ответ, заканчивает работу.
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ РѕС‚РІРµС‚, Р·Р°РєР°РЅС‡РёРІР°РµС‚ СЂР°Р±РѕС‚Сѓ.
      */
     function response() {
         $aResult = array( 

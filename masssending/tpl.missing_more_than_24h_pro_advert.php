@@ -19,7 +19,7 @@ $adv_link = "{$pHost}/payed/?utm_source=newsletter4&utm_medium=email&utm_campaig
                       </tr>
                       <tr>
                           <td bgcolor="#ffffff" width="20"></td>
-                          <td align="left"><font color="#000000" size="3" face="arial,sans-serif">Чтобы привлечь заказчиков, получить хорошие позиции в Каталоге фрилансеров и неограниченные ответы на проекты, пользуйтесь <a style="color:#0f71c8" target="_blank" href="<?=$adv_link ?>">аккаунтом PRO</a>. А еще фрилансеры PRO открыты для предложений &mdash; их контакты видны всем пользователям.</font></td>
+                          <td align="left"><font color="#000000" size="3" face="arial,sans-serif">Р§С‚РѕР±С‹ РїСЂРёРІР»РµС‡СЊ Р·Р°РєР°Р·С‡РёРєРѕРІ, РїРѕР»СѓС‡РёС‚СЊ С…РѕСЂРѕС€РёРµ РїРѕР·РёС†РёРё РІ РљР°С‚Р°Р»РѕРіРµ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ Рё РЅРµРѕРіСЂР°РЅРёС‡РµРЅРЅС‹Рµ РѕС‚РІРµС‚С‹ РЅР° РїСЂРѕРµРєС‚С‹, РїРѕР»СЊР·СѓР№С‚РµСЃСЊ <a style="color:#0f71c8" target="_blank" href="<?=$adv_link ?>">Р°РєРєР°СѓРЅС‚РѕРј PRO</a>. Рђ РµС‰Рµ С„СЂРёР»Р°РЅСЃРµСЂС‹ PRO РѕС‚РєСЂС‹С‚С‹ РґР»СЏ РїСЂРµРґР»РѕР¶РµРЅРёР№ &mdash; РёС… РєРѕРЅС‚Р°РєС‚С‹ РІРёРґРЅС‹ РІСЃРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј.</font></td>
                           <td bgcolor="#ffffff" width="20"></td>
                       </tr>
                       <tr>
@@ -29,7 +29,7 @@ $adv_link = "{$pHost}/payed/?utm_source=newsletter4&utm_medium=email&utm_campaig
                       </tr>
                       <tr>
                           <td bgcolor="#ffffff" width="20"></td>
-                          <td align="left"><i><font color="808080" size="3" face="arial,sans-serif">Приятной работы с FL.ru!</font></i></td>
+                          <td align="left"><i><font color="808080" size="3" face="arial,sans-serif">РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹ СЃ FL.ru!</font></i></td>
                           <td bgcolor="#ffffff" width="20"></td>
                       </tr>
                       <tr>

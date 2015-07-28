@@ -14,10 +14,10 @@ if(!$filter) {
 ?>
 <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20 b-layout__txt_padtop_10">
     <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" id="search-advanced-button" href="javascript:void(0);">
-        Расширенный поиск
+        Р Р°СЃС€РёСЂРµРЅРЅС‹Р№ РїРѕРёСЃРє
     </a>
     <span id="search_reset_btn" class="b-layout <?php if(!$is_show_adv): ?>b-layout_hide<?php endif; ?>">
-        (<a class="b-layout__link b-layout__link_dot_c10600 b-layout__link_fontsize_13"  href="javascript:void(0);">сбросить настройки</a>)
+        (<a class="b-layout__link b-layout__link_dot_c10600 b-layout__link_fontsize_13"  href="javascript:void(0);">СЃР±СЂРѕСЃРёС‚СЊ РЅР°СЃС‚СЂРѕР№РєРё</a>)
     </span>
 </div>
 <fieldset id="advanced-search" class="b-fon b-fon_bg_fa b-fon_pad_15 b-fon__as b-fon_margbot_20" style="display:<?= $is_show_adv?"block":"none";?>;">
@@ -25,7 +25,7 @@ if(!$filter) {
    <table class="b-layout__table b-layout__table_width_full">
       <tr class="b-layout__tr">
          <td class="b-layout__td b-layout__td_padbot_30_ipad">
-            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10">Специализация исполнителя</div>
+            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10">РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ РёСЃРїРѕР»РЅРёС‚РµР»СЏ</div>
             <div class="b-combo b-combo_padbot_30">
               <div class="
                    b-combo__input 
@@ -49,7 +49,7 @@ if(!$filter) {
                  <input type="hidden" name="profession_columns[1]" value="<?=@$prof_id ?>" />
                  <input id="profession" 
                         type="text" 
-                        placeholder="Выберите специализацию" 
+                        placeholder="Р’С‹Р±РµСЂРёС‚Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ" 
                         value="<?=(@$cur_prof['groupname'])?$cur_prof['groupname'].((@$cur_prof['profname'])?': ' . $cur_prof['profname']:''):@$prof_name?>" 
                         name="profession" 
                         class="b-combo__input-text" />
@@ -58,7 +58,7 @@ if(!$filter) {
             </div>
             
 
-            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10">Место жительства</div>
+            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10">РњРµСЃС‚Рѕ Р¶РёС‚РµР»СЊСЃС‚РІР°</div>
             
             <div class="b-combo b-combo_inline-block">
                <div class="
@@ -71,8 +71,8 @@ if(!$filter) {
                     b-combo__input_multi_dropdown 
                     b-combo__input_init_citiesList 
                     b-combo__input_on_click_request_id_getcities 
-                    override_value_id_0_0_Все+страны 
-                    override_value_id_1_0_Все+города 
+                    override_value_id_0_0_Р’СЃРµ+СЃС‚СЂР°РЅС‹ 
+                    override_value_id_1_0_Р’СЃРµ+РіРѕСЂРѕРґР° 
                     <?php if(@$filter['city'] > 0): ?>
                     drop_down_default_<?=$filter['city']?>
                     <?php elseif(@$filter['country'] > 0): ?>
@@ -87,7 +87,7 @@ if(!$filter) {
                          type="text" 
                          size="80" 
                          value="<?=@$countryCityName?>" 
-                         placeholder="Любое место жительства"
+                         placeholder="Р›СЋР±РѕРµ РјРµСЃС‚Рѕ Р¶РёС‚РµР»СЊСЃС‚РІР°"
                          autocomplete="off"/>
                   <span class="b-combo__arrow"></span> 
                </div>
@@ -96,49 +96,49 @@ if(!$filter) {
          </td>
          <td class="b-layout__td b-layout__td_width_355 b-layout__td_padright_40 b-layout__td_pad_null_r1200">
             <div class="b-layout b-layout_float_right">
-               <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10">Возраст (в годах)</div>
+               <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10">Р’РѕР·СЂР°СЃС‚ (РІ РіРѕРґР°С…)</div>
                <div class="b-combo b-combo_padbot_30 b-combo_inline-block b-combo_valign_bas">
                   <div class="b-combo__input b-combo__input_height_35 b-combo__input_width_70">
-                     <input class="b-combo__input-text" type="text" value="<?= $filter['age_from'] == 0 ? '' : $filter['age_from']?>" name="age[]" maxlength="3" size="10" placeholder="от" />
+                     <input class="b-combo__input-text" type="text" value="<?= $filter['age_from'] == 0 ? '' : $filter['age_from']?>" name="age[]" maxlength="3" size="10" placeholder="РѕС‚" />
                   </div>
                </div>
                &mdash;
                <div class="b-combo b-combo_padbot_30 b-combo_inline-block b-combo_valign_bas">
                   <div class="b-combo__input b-combo__input_height_35 b-combo__input_width_70">
-                     <input class="b-combo__input-text" type="text" value="<?= $filter['age_to']   == 0 ? '' : $filter['age_to']?>" name="age[]" maxlength="3" size="10" placeholder="до" />
+                     <input class="b-combo__input-text" type="text" value="<?= $filter['age_to']   == 0 ? '' : $filter['age_to']?>" name="age[]" maxlength="3" size="10" placeholder="РґРѕ" />
                   </div>
                </div>
                &#8201;
             </div>
             <div class="b-layout">
-               <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10">Опыт работы (в годах)</div>
+               <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10">РћРїС‹С‚ СЂР°Р±РѕС‚С‹ (РІ РіРѕРґР°С…)</div>
                <div class="b-combo b-combo_padbot_30 b-combo_inline-block b-combo_valign_bas">
                   <div class="b-combo__input b-combo__input_height_35 b-combo__input_width_70">
-                     <input class="b-combo__input-text"  type="text" maxlength="3" value="<?= $filter['exp_from'] == 0 ? '' : $filter['exp_from']?>" name="exp[]" size="10" placeholder="от" />
+                     <input class="b-combo__input-text"  type="text" maxlength="3" value="<?= $filter['exp_from'] == 0 ? '' : $filter['exp_from']?>" name="exp[]" size="10" placeholder="РѕС‚" />
                   </div>
                </div>
                &mdash;
                <div class="b-combo b-combo_padbot_30 b-combo_inline-block b-combo_valign_bas">
                   <div class="b-combo__input b-combo__input_height_35 b-combo__input_width_70">
-                     <input class="b-combo__input-text"  type="text" maxlength="3" value="<?= $filter['exp_to']   == 0 ? '' : $filter['exp_to']?>" name="exp[]" size="10" placeholder="до" />
+                     <input class="b-combo__input-text"  type="text" maxlength="3" value="<?= $filter['exp_to']   == 0 ? '' : $filter['exp_to']?>" name="exp[]" size="10" placeholder="РґРѕ" />
                   </div>
                </div>
             </div>
             
             <div class="b-layout">
-               <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10">Стоимость работы</div>
+               <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10">РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹</div>
                <div class="b-combo b-combo_inline-block b-combo_valign_bas">
                   <div class="b-combo__input b-combo__input_height_35 b-combo__input_width_70">
-                     <input class="b-combo__input-text" name="from_cost" type="text" size="80" value="<?=(@$filter['from_cost']>0)?$filter['from_cost']:''?>" placeholder="от" />
+                     <input class="b-combo__input-text" name="from_cost" type="text" size="80" value="<?=(@$filter['from_cost']>0)?$filter['from_cost']:''?>" placeholder="РѕС‚" />
                   </div>
                </div>
                &mdash;
                <div class="b-combo b-combo_inline-block b-combo_valign_bas">
                   <div class="b-combo__input b-combo__input_height_35 b-combo__input_width_70">
-                     <input class="b-combo__input-text" name="to_cost" type="text" size="80" value="<?=(@$filter['to_cost']>0)?$filter['to_cost']:''?>" placeholder="до" />
+                     <input class="b-combo__input-text" name="to_cost" type="text" size="80" value="<?=(@$filter['to_cost']>0)?$filter['to_cost']:''?>" placeholder="РґРѕ" />
                   </div>
                </div>
-               <script type="text/javascript">var currencyList = {0:"USD", 1:"Евро", 2:"Руб"};</script>
+               <script type="text/javascript">var currencyList = {0:"USD", 1:"Р•РІСЂРѕ", 2:"Р СѓР±"};</script>
                <div class="b-combo b-combo_inline-block">
                   <div class="
                        b-combo__input 
@@ -154,7 +154,7 @@ if(!$filter) {
                      <span class="b-combo__arrow"></span> 
                   </div>
                </div>
-               <script type="text/javascript">var pricebyList = {1:"За месяц", 2:"За 1000 знаков", 3:"За проект", 4:"За час"};</script>
+               <script type="text/javascript">var pricebyList = {1:"Р—Р° РјРµСЃСЏС†", 2:"Р—Р° 1000 Р·РЅР°РєРѕРІ", 3:"Р—Р° РїСЂРѕРµРєС‚", 4:"Р—Р° С‡Р°СЃ"};</script>
                <div class="b-combo b-combo_inline-block">
                   <div class="
                        b-combo__input 
@@ -180,41 +180,41 @@ if(!$filter) {
                      <td class="b-layout__td b-layout__td_width_20 b-layout__td_ipad b-layout__td_width_null_ipad b-layout__td_padright_5_ipad">
                         <input id="in_office" type="checkbox" value="1" name="in_office" class="b-check__input" <?= ($filter['in_office'] ? 'checked="checked"' : '');?> />
                      </td>
-                     <td class="b-layout__td b-layout__td_padright_20 b-layout__td_ipad"><label for="in_office" class="b-check__label b-check__label_fontsize_13">Готов на регулярную работу или работу в офисе</label></td>
+                     <td class="b-layout__td b-layout__td_padright_20 b-layout__td_ipad"><label for="in_office" class="b-check__label b-check__label_fontsize_13">Р“РѕС‚РѕРІ РЅР° СЂРµРіСѓР»СЏСЂРЅСѓСЋ СЂР°Р±РѕС‚Сѓ РёР»Рё СЂР°Р±РѕС‚Сѓ РІ РѕС„РёСЃРµ</label></td>
                   </tr>
                </table>
             </div>
             <div class="b-check b-check_padbot_10">
                <input id="is_pro" class="b-check__input" type="checkbox" name="is_pro" value="1" <?=($filter['is_pro']=="t"?'checked="checked"':'')?>/> 
-               <label for="is_pro" class="b-check__label b-check__label_fontsize_13">С аккаунтом <a href="/profi/" target="_blank" class="b-layout__link"><span class="b-icon b-icon__lprofi b-icon_top_1" data-profi-txt="Лучшие фрилансеры сайта FL.ru. Работают на сайте более 2-х лет, прошли верификацию личности и имеют не менее 98% положительных отзывов."></span></a> или <?= view_pro('', false, true, 'платным аккаунтом')?> </label>
+               <label for="is_pro" class="b-check__label b-check__label_fontsize_13">РЎ Р°РєРєР°СѓРЅС‚РѕРј <a href="/profi/" target="_blank" class="b-layout__link"><span class="b-icon b-icon__lprofi b-icon_top_1" data-profi-txt="Р›СѓС‡С€РёРµ С„СЂРёР»Р°РЅСЃРµСЂС‹ СЃР°Р№С‚Р° FL.ru. Р Р°Р±РѕС‚Р°СЋС‚ РЅР° СЃР°Р№С‚Рµ Р±РѕР»РµРµ 2-С… Р»РµС‚, РїСЂРѕС€Р»Рё РІРµСЂРёС„РёРєР°С†РёСЋ Р»РёС‡РЅРѕСЃС‚Рё Рё РёРјРµСЋС‚ РЅРµ РјРµРЅРµРµ 98% РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹С… РѕС‚Р·С‹РІРѕРІ."></span></a> РёР»Рё <?= view_pro('', false, true, 'РїР»Р°С‚РЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј')?> </label>
             </div>
             <div class="b-check b-check_padbot_10">
                 <input id="is_preview" class="b-check__input" type="checkbox" name="is_preview" value="1" <?=   ($filter['is_preview']   ? 'checked="checked"' : '')?> /> 
-                <label for="is_preview" class="b-check__label b-check__label_fontsize_13">С примерами работ в портфолио</label>
+                <label for="is_preview" class="b-check__label b-check__label_fontsize_13">РЎ РїСЂРёРјРµСЂР°РјРё СЂР°Р±РѕС‚ РІ РїРѕСЂС‚С„РѕР»РёРѕ</label>
             </div>
             <?php if(@$_SESSION['uid']): ?>
                  <div class="b-check">
                      <input id="in_fav" class="b-check__input" type="checkbox" name="in_fav" value="1" <?= ($filter['in_fav'] ? 'checked="checked"' : '') ?> /> 
-                     <label for="in_fav" class="b-check__label b-check__label_fontsize_13">У меня в избранных</label>
+                     <label for="in_fav" class="b-check__label b-check__label_fontsize_13">РЈ РјРµРЅСЏ РІ РёР·Р±СЂР°РЅРЅС‹С…</label>
                  </div>
 		     <?php endif; ?>
          </td>
          <td class="b-layout__td b-layout__td_width_355 b-layout__td_padright_40 b-layout__td_pad_null_r1200">
              <div class="b-check b-check_padbot_20 b-check_padtop_10 b-check_padbot_10_ipad">
                  <input id="only_free" class="b-check__input" type="checkbox" name="only_free" value="1" <?= ($filter['only_free'] ? 'checked="checked"' : '')?> /> 
-                 <label for="only_free" class="b-check__label b-check__label_fontsize_13">Свободен в данный момент</label>
+                 <label for="only_free" class="b-check__label b-check__label_fontsize_13">РЎРІРѕР±РѕРґРµРЅ РІ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚</label>
              </div>
              <div class="b-check b-check_padbot_10">
                 <input id="is_verify" class="b-check__input" type="checkbox" name="is_verify" value="1" <?= ($filter['is_verify'] ?'checked="checked"':'')?> /> 
-                <label for="is_verify" class="b-check__label b-check__label_fontsize_13">С верификацией <span class="b-icon b-icon__ver" title="верифицированым" alt="верифицированым"></span></label>
+                <label for="is_verify" class="b-check__label b-check__label_fontsize_13">РЎ РІРµСЂРёС„РёРєР°С†РёРµР№ <span class="b-icon b-icon__ver" title="РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅС‹Рј" alt="РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅС‹Рј"></span></label>
              </div>
              <div class="b-check b-check_padbot_10">
                  <input id="sbr_is_positive" class="b-check__input" type="checkbox" name="sbr_is_positive" value="1" <?=($filter['sbr_is_positive']?'checked="checked"':'')?>/> 
-                 <label for="sbr_is_positive" class="b-check__label b-check__label_fontsize_13">С отзывами</label>
+                 <label for="sbr_is_positive" class="b-check__label b-check__label_fontsize_13">РЎ РѕС‚Р·С‹РІР°РјРё</label>
              </div>
              <div class="b-check">
                  <input id="sbr_not_negative" class="b-check__input" type="checkbox" name="sbr_not_negative" value="1" <?=($filter['sbr_not_negative']?'checked="checked"':'')?>/> 
-                 <label for="sbr_not_negative" class="b-check__label b-check__label_fontsize_13">Без отрицательных отзывов</label>
+                 <label for="sbr_not_negative" class="b-check__label b-check__label_fontsize_13">Р‘РµР· РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹С… РѕС‚Р·С‹РІРѕРІ</label>
              </div>
          </td>
       </tr>

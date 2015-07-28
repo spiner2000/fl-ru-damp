@@ -4,11 +4,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/notes.common.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/notes.php");
 
 /**
- * Изменение заметки для страницы просмотра профиля пользователя.
- * Добавление, изменение, удаление
+ * РР·РјРµРЅРµРЅРёРµ Р·Р°РјРµС‚РєРё РґР»СЏ СЃС‚СЂР°РЅРёС†С‹ РїСЂРѕСЃРјРѕС‚СЂР° РїСЂРѕС„РёР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
+ * Р”РѕР±Р°РІР»РµРЅРёРµ, РёР·РјРµРЅРµРЅРёРµ, СѓРґР°Р»РµРЅРёРµ
  * 
- * @param  int $login UID пользователя которому пишем заметку
- * @param  string $text Текст заметки
+ * @param  int $login UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕС‚РѕСЂРѕРјСѓ РїРёС€РµРј Р·Р°РјРµС‚РєСѓ
+ * @param  string $text РўРµРєСЃС‚ Р·Р°РјРµС‚РєРё
  * @return object xajaxResponse
  */
 function saveHeaderNote($login, $text, $rating = 0, $fromProject = false) {
@@ -37,7 +37,7 @@ function saveHeaderNote($login, $text, $rating = 0, $fromProject = false) {
             $objResponse->assign('zametkaBD', 'outerHTML', '
                 <div id="zametka" class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_inline-block">
                     <span class="b-icon b-icon__cont b-icon__cont_note"></span>
-																				<a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_fontsize_13" href="javascript:void(0);" onclick="$(\'zametka_fmr\').toggleClass(\'b-layout_hide\');">Оставить заметку</a>
+																				<a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_fontsize_13" href="javascript:void(0);" onclick="$(\'zametka_fmr\').toggleClass(\'b-layout_hide\');">РћСЃС‚Р°РІРёС‚СЊ Р·Р°РјРµС‚РєСѓ</a>
                 </div>
             ');
         }
@@ -48,14 +48,14 @@ function saveHeaderNote($login, $text, $rating = 0, $fromProject = false) {
         $objResponse->assign( 'zametka', 'outerHTML', getHeaderNote($login, $text) );
     }
     $objResponse->script('headerNoteText();');
-    // !!! тут нужен htmlspecialchars_decode - эта переменная хранит исходный код заметки который в текстарию подставляется
+    // !!! С‚СѓС‚ РЅСѓР¶РµРЅ htmlspecialchars_decode - СЌС‚Р° РїРµСЂРµРјРµРЅРЅР°СЏ С…СЂР°РЅРёС‚ РёСЃС…РѕРґРЅС‹Р№ РєРѕРґ Р·Р°РјРµС‚РєРё РєРѕС‚РѕСЂС‹Р№ РІ С‚РµРєСЃС‚Р°СЂРёСЋ РїРѕРґСЃС‚Р°РІР»СЏРµС‚СЃСЏ
     $objResponse->script("headerNote = '". input_ref_scr(htmlspecialchars_decode($text)) ."';");
     
     return $objResponse;
 }
 
 /**
- * то же что saveHeaderNote, только используется из проектов
+ * С‚Рѕ Р¶Рµ С‡С‚Рѕ saveHeaderNote, С‚РѕР»СЊРєРѕ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РёР· РїСЂРѕРµРєС‚РѕРІ
  */
 function saveHeaderNoteFromProject($login, $text, $rating = 0, $fromProject = false) {
     require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/users.php");
@@ -71,7 +71,7 @@ function saveHeaderNoteFromProject($login, $text, $rating = 0, $fromProject = fa
 	$text = strip_only( trim($text), '<script>' );
 	$text = change_q_x( $text, FALSE, TRUE, "", false, false );
 	
-    // если заметка уже есть
+    // РµСЃР»Рё Р·Р°РјРµС‚РєР° СѓР¶Рµ РµСЃС‚СЊ
     if ($aNote) {
     	if ( $text != '' ) {
     	    $error = notes::Update( $_SESSION['uid'], (int)$nTargetId, $text, $rating );
@@ -83,7 +83,7 @@ function saveHeaderNoteFromProject($login, $text, $rating = 0, $fromProject = fa
         $error = notes::Add($_SESSION['uid'], (int)$nTargetId, $text);
         $text = stripslashes($text);
     }
-    // экранируем бэкслэши
+    // СЌРєСЂР°РЅРёСЂСѓРµРј Р±СЌРєСЃР»СЌС€Рё
     $text = str_replace('\\', '\\\\', $text);
     $text = reformat($text, 22, 0, 0, 1, 22);
     $text = str_replace('"', '\"', $text);
@@ -93,14 +93,14 @@ function saveHeaderNoteFromProject($login, $text, $rating = 0, $fromProject = fa
 }
 
 /**
- * Генерирует HTML код заметки для страницы просмотра профиля пользователя.
+ * Р“РµРЅРµСЂРёСЂСѓРµС‚ HTML РєРѕРґ Р·Р°РјРµС‚РєРё РґР»СЏ СЃС‚СЂР°РЅРёС†С‹ РїСЂРѕСЃРјРѕС‚СЂР° РїСЂРѕС„РёР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
  * 
- * @param  int $login UID пользователя которому пишем заметку
- * @param  string $text Текст заметки
- * @return string HTML код
+ * @param  int $login UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕС‚РѕСЂРѕРјСѓ РїРёС€РµРј Р·Р°РјРµС‚РєСѓ
+ * @param  string $text РўРµРєСЃС‚ Р·Р°РјРµС‚РєРё
+ * @return string HTML РєРѕРґ
  *
- * код удаления заметки
- *                           <a href="javascript:void(0);" onclick="if(confirm(\'Вы действительно хотите удалить заметку?\')){xajax_saveHeaderNote(\'' . $login . '\',\'\');}">
+ * РєРѕРґ СѓРґР°Р»РµРЅРёСЏ Р·Р°РјРµС‚РєРё
+ *                           <a href="javascript:void(0);" onclick="if(confirm(\'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ Р·Р°РјРµС‚РєСѓ?\')){xajax_saveHeaderNote(\'' . $login . '\',\'\');}">
  *                              <img src="/images/btn-remove2.png" width="11" height="11" alt="" />
  *                           </a>
  */
@@ -109,7 +109,7 @@ function getHeaderNote( $login, $text ) {
         <div class="bBD" id="zametkaBD">
             <div id="zametka" class="b-layout b-layout_pad_10 b-layout_bord_ffeda9 b-layout_bordrad_1 b-fon_bg_fff9bf_hover b-layout_hover">
 				<a class="b-icon b-icon__edit b-icon_float_right b-layout_hover_show" href="javascript:void(0);" onclick="headerNoteForm();"></a>
-				<div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10">Ваша заметка</div>
+				<div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10">Р’Р°С€Р° Р·Р°РјРµС‚РєР°</div>
 				<div class="b-layout__txt b-layout__txt_fontsize_11">' . reformat($text, 24, 0, 0, 1, 24) . '</div>
             </div>
         </div>
@@ -117,9 +117,9 @@ function getHeaderNote( $login, $text ) {
 }
 
 /**
- * Функция вызывающая форму редактирования и добавления заметки
+ * Р¤СѓРЅРєС†РёСЏ РІС‹Р·С‹РІР°СЋС‰Р°СЏ С„РѕСЂРјСѓ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ Рё РґРѕР±Р°РІР»РµРЅРёСЏ Р·Р°РјРµС‚РєРё
  *
- * @param integer $uid ИД пользователя которому пишем заметку
+ * @param integer $uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕС‚РѕСЂРѕРјСѓ РїРёС€РµРј Р·Р°РјРµС‚РєСѓ
  * @return object xajaxResponse; @see xajax
  */
 function getNotesForm($uid, $to_uid = false, $type=1) {
@@ -172,12 +172,12 @@ function getNotesForm($uid, $to_uid = false, $type=1) {
 }
 
 /**
- * Добавление, редактирование заметки пользователя
+ * Р”РѕР±Р°РІР»РµРЅРёРµ, СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р·Р°РјРµС‚РєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
  *
- * @param integer $uid     ИД пользователя которому пишем заметку
- * @param string  $text    Текст заметки
- * @param integer $rating  Тип заметки (1 - положительная, 0 - нейтральная, -1 - отрицательная)
- * @param string  $act     действие с заметкой (upd - обновление, add - добавление)
+ * @param integer $uid     РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕС‚РѕСЂРѕРјСѓ РїРёС€РµРј Р·Р°РјРµС‚РєСѓ
+ * @param string  $text    РўРµРєСЃС‚ Р·Р°РјРµС‚РєРё
+ * @param integer $rating  РўРёРї Р·Р°РјРµС‚РєРё (1 - РїРѕР»РѕР¶РёС‚РµР»СЊРЅР°СЏ, 0 - РЅРµР№С‚СЂР°Р»СЊРЅР°СЏ, -1 - РѕС‚СЂРёС†Р°С‚РµР»СЊРЅР°СЏ)
+ * @param string  $act     РґРµР№СЃС‚РІРёРµ СЃ Р·Р°РјРµС‚РєРѕР№ (upd - РѕР±РЅРѕРІР»РµРЅРёРµ, add - РґРѕР±Р°РІР»РµРЅРёРµ)
  * @return object xajaxResponse; @see xajax
  */
 function addNotes($uid, $text, $rating, $act, $type) {
@@ -187,11 +187,11 @@ function addNotes($uid, $text, $rating, $act, $type) {
     $text = trim($text);
     
     if($text == "") {
-        $objResponse->script("alert('Заполните заметку')");    
+        $objResponse->script("alert('Р—Р°РїРѕР»РЅРёС‚Рµ Р·Р°РјРµС‚РєСѓ')");    
         return $objResponse; 
     }
     
-    // Режем тег <script>
+    // Р РµР¶РµРј С‚РµРі <script>
 	$text = strip_only(trim($text),'<script>');
 	//$text = stripslashes($text);
 	$text = change_q_x($text, FALSE, TRUE, "", false, false);
@@ -229,15 +229,15 @@ function addNotes($uid, $text, $rating, $act, $type) {
     }
     $html = str_replace("'", "\'", $html);
     if($type == 100) {
-        $html = '<strong class="b-note__bold">Ваша заметка :</strong> '.reformat($text, 30, 0, 0, 1, 30);
+        $html = '<strong class="b-note__bold">Р’Р°С€Р° Р·Р°РјРµС‚РєР° :</strong> '.reformat($text, 30, 0, 0, 1, 30);
         $objResponse->script("$('note_{$uid}').set('html', '$html');");
         $objResponse->script("$('note_user').setStyle('display','none');");
     } elseif ($type == 101) {
-        $html = '<strong class="b-note__bold">Ваша заметка :</strong> '.reformat($text, 30, 0, 0, 1, 30);
+        $html = '<strong class="b-note__bold">Р’Р°С€Р° Р·Р°РјРµС‚РєР° :</strong> '.reformat($text, 30, 0, 0, 1, 30);
         $objResponse->script("$('note_{$uid}').set('html', '$html');");
         $objResponse->script("$('note_user').addClass('b-shadow_hide');");
     } else {
-    // Удаляем все классы
+    // РЈРґР°Р»СЏРµРј РІСЃРµ РєР»Р°СЃСЃС‹
         $objResponse->script("$$('.userFav_{$uid}').getParent('div').removeClass('add-z').removeClass('fs-g').removeClass('fs-p');");
         $objResponse->script("$$('.userFav_{$uid}').set('html', '$html');");
         $objResponse->script("$('ov-izbr-2').destroy();");
@@ -255,7 +255,7 @@ function EditNote($login, $action, $text, $rating = 0) {
     //$text = stripslashes($text);
 	$text = strip_only(trim($text),'<script>');
     $text = change_q_x($text, FALSE, TRUE, "", false, false);
-	// !! кол-во символов также указано в /scripts/note.js
+	// !! РєРѕР»-РІРѕ СЃРёРјРІРѕР»РѕРІ С‚Р°РєР¶Рµ СѓРєР°Р·Р°РЅРѕ РІ /scripts/note.js
     if(strlen($text) > 200)
         $text = substr($text, 0, 200);
 
@@ -321,10 +321,10 @@ function EditNote($login, $action, $text, $rating = 0) {
 }
 
 /**
- * Удаление заметки пользователя
+ * РЈРґР°Р»РµРЅРёРµ Р·Р°РјРµС‚РєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
  *
- * @param integer $uid      ИД пользователя владельца заметки
- * @param inetger $to_uid   ИД пользователя на кого написана заметка
+ * @param integer $uid      РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІР»Р°РґРµР»СЊС†Р° Р·Р°РјРµС‚РєРё
+ * @param inetger $to_uid   РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° РєРѕРіРѕ РЅР°РїРёСЃР°РЅР° Р·Р°РјРµС‚РєР°
  * @return object xajaxResponse; @see xajax
  */
 function delNote($uid, $to_uid, $type) {
@@ -338,12 +338,12 @@ function delNote($uid, $to_uid, $type) {
     if($type == 100) {
         $objResponse->script("$$('.userFav_{$to_uid}').destroy();");
     } else {
-        $html = '<div class="sent-mark"><a href="javascript:void(0)" onclick="xajax_getNotesForm('.$to_uid.', false, '.$type.')">Оставить заметку</a>&nbsp;<span></span></div>';
+        $html = '<div class="sent-mark"><a href="javascript:void(0)" onclick="xajax_getNotesForm('.$to_uid.', false, '.$type.')">РћСЃС‚Р°РІРёС‚СЊ Р·Р°РјРµС‚РєСѓ</a>&nbsp;<span></span></div>';
         // $objResponse->script("$$('.userFav_{$to_uid}').getParent('div').removeClass('fs-g').removeClass('fs-p').addClass('add-z');");
         // $objResponse->script("$$('.userFav_{$to_uid}').getParent('div').removeClass('fs-o').addClass('add-z');");
         $objResponse->script("$$('.userFav_{$to_uid}').set('html', '$html');");
     }
-    //$objResponse->script("$('ov-izbr-2').destroy();"); // Если удаляем с формы
+    //$objResponse->script("$('ov-izbr-2').destroy();"); // Р•СЃР»Рё СѓРґР°Р»СЏРµРј СЃ С„РѕСЂРјС‹
     return $objResponse;  
 }
 

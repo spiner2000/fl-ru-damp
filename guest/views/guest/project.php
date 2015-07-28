@@ -8,7 +8,7 @@
     endif;
 ?>
 <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_15">
-    Для найма Исполнителя на регулярную работу &mdash; 
-    <a href="/guest/new/vacancy/" class="b-layout__link">разместите вакансию</a>
+    Р”Р»СЏ РЅР°Р№РјР° РСЃРїРѕР»РЅРёС‚РµР»СЏ РЅР° СЂРµРіСѓР»СЏСЂРЅСѓСЋ СЂР°Р±РѕС‚Сѓ &mdash; 
+    <a href="/guest/new/vacancy/" class="b-layout__link">СЂР°Р·РјРµСЃС‚РёС‚Рµ РІР°РєР°РЅСЃРёСЋ</a>
 </div>
 <?=$form?>

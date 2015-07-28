@@ -1,11 +1,11 @@
-<h2 class="b-layout__title b-layout__title_padbot_30">Оплата через пластиковую карту</h2>
+<h2 class="b-layout__title b-layout__title_padbot_30">РћРїР»Р°С‚Р° С‡РµСЂРµР· РїР»Р°СЃС‚РёРєРѕРІСѓСЋ РєР°СЂС‚Сѓ</h2>
 <?php if(!$bill->card_merchant) {?>
 <form id="<?= $type_payment ?>" name="<?= $type_payment ?>" action="<?= is_release() ? cardpay::URL_ORDER : "/bill/test/card.php"?>" accept-charset="UTF-8" method="post">
     <input type="hidden" name="Merchant_ID" value="<?= cardpay::MERCHANT_ID?>" />
     <input type="hidden" name="OrderNumber" value="<?= $bill->pm->order_id?>" />
     <input type="hidden" name="OrderAmount" id="ammount" value="<?= $payment_sum; ?>" />
     <input type="hidden" name="OrderCurrency" value="RUR" />
-    <input type="hidden" name="OrderComment" value="Пополнение счета № <?= $bill->acc['id']?>" />
+    <input type="hidden" name="OrderComment" value="РџРѕРїРѕР»РЅРµРЅРёРµ СЃС‡РµС‚Р° в„– <?= $bill->acc['id']?>" />
     <input type="hidden" name="TestMode" value="<?= cardpay::TESTMODE?>" />
     <input name="ieutf" type="hidden" value="&#9760;" />
 <?php } else {//if?>
@@ -19,7 +19,7 @@
 
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Имя</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">РРјСЏ</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10">
                     <div class="b-combo">
@@ -31,7 +31,7 @@
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Фамилия</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Р¤Р°РјРёР»РёСЏ</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10">
                     <div class="b-combo">
@@ -43,7 +43,7 @@
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Электронная почта</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Р­Р»РµРєС‚СЂРѕРЅРЅР°СЏ РїРѕС‡С‚Р°</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10">
                     <div class="b-combo">
@@ -55,7 +55,7 @@
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Город</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Р“РѕСЂРѕРґ</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10">
                     <div class="b-combo">
@@ -67,7 +67,7 @@
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Адрес</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">РђРґСЂРµСЃ</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10">
                     <div class="b-combo">
@@ -79,7 +79,7 @@
             </tr>
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_padbot_20">
-                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Телефон</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">РўРµР»РµС„РѕРЅ</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_padleft_10">
                     <div class="b-combo">
@@ -92,8 +92,8 @@
             <tr class="b-layout__tr">
                 <td class="b-layout__td" colspan="2">
                     <div class="b-fon b-fon_bg_fff9bf b-fon_pad_10 b-fon_padleft_35">
-                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold"><span class="b-icon b-icon_sbr_oattent b-icon_margleft_-20"></span>Обратите внимание</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_11">— Обычно деньги зачисляются сразу. В единичных случаях платеж поступает в срок до 7 рабочих дней.<br>— Подробнее <a class="b-layout__link" href="http://assist.ru/about/security.htm">о безопасности платежей</a>.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold"><span class="b-icon b-icon_sbr_oattent b-icon_margleft_-20"></span>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_11">вЂ” РћР±С‹С‡РЅРѕ РґРµРЅСЊРіРё Р·Р°С‡РёСЃР»СЏСЋС‚СЃСЏ СЃСЂР°Р·Сѓ. Р’ РµРґРёРЅРёС‡РЅС‹С… СЃР»СѓС‡Р°СЏС… РїР»Р°С‚РµР¶ РїРѕСЃС‚СѓРїР°РµС‚ РІ СЃСЂРѕРє РґРѕ 7 СЂР°Р±РѕС‡РёС… РґРЅРµР№.<br>вЂ” РџРѕРґСЂРѕР±РЅРµРµ <a class="b-layout__link" href="http://assist.ru/about/security.htm">Рѕ Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё РїР»Р°С‚РµР¶РµР№</a>.</div>
                     </div>
                     <? $checked = "checkCardFields";?>
                     <? include ( $_SERVER['DOCUMENT_ROOT'] . "/bill/payment/paysystems/tpl.button_buy.php");?>                       
@@ -104,9 +104,9 @@
             <tr class="b-layout__tr">
                 <td class="b-layout__td" colspan="2">
                     <div class="b-fon b-fon_bg_fff9bf b-fon_pad_10 b-fon_padleft_35">
-                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold"><span class="b-icon b-icon_sbr_oattent b-icon_margleft_-20"></span>Обратите внимание</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_11">— Обычно деньги зачисляются сразу. В единичных случаях платеж поступает в срок до 7 рабочих дней.</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_11">— Минимальная сумма платежа 10 рублей.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold"><span class="b-icon b-icon_sbr_oattent b-icon_margleft_-20"></span>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_11">вЂ” РћР±С‹С‡РЅРѕ РґРµРЅСЊРіРё Р·Р°С‡РёСЃР»СЏСЋС‚СЃСЏ СЃСЂР°Р·Сѓ. Р’ РµРґРёРЅРёС‡РЅС‹С… СЃР»СѓС‡Р°СЏС… РїР»Р°С‚РµР¶ РїРѕСЃС‚СѓРїР°РµС‚ РІ СЃСЂРѕРє РґРѕ 7 СЂР°Р±РѕС‡РёС… РґРЅРµР№.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_11">вЂ” РњРёРЅРёРјР°Р»СЊРЅР°СЏ СЃСѓРјРјР° РїР»Р°С‚РµР¶Р° 10 СЂСѓР±Р»РµР№.</div>
                     </div>
                     <? $disabled = ($payment_sum < 10); ?>
                     <? include ( $_SERVER['DOCUMENT_ROOT'] . "/bill/payment/paysystems/tpl.button_buy.php");?>                       

@@ -20,23 +20,23 @@ kword = kword.combine(search_kwords);
                             <td class="b-layout__td b-layout__td_valign_bot ">
                                 <div class="b-combo b-combo_margbot_10_ipad">
                                     <div class="b-combo__input b-combo__input_height_35 b-combo__input_search">
-                                        <input id="search-request" type="text" placeholder="Укажите любые данные об исполнителе" class="b-combo__input-text" autocomplete="off"  name="search_string" value="<?= htmlspecialchars($search_string?str_replace($string_professions, "", $search_string):"")?>" />
+                                        <input id="search-request" type="text" placeholder="РЈРєР°Р¶РёС‚Рµ Р»СЋР±С‹Рµ РґР°РЅРЅС‹Рµ РѕР± РёСЃРїРѕР»РЅРёС‚РµР»Рµ" class="b-combo__input-text" autocomplete="off"  name="search_string" value="<?= htmlspecialchars($search_string?str_replace($string_professions, "", $search_string):"")?>" />
                                         <input id="search-hint" name="search_hint" type="hidden" value="<?=$search_input_hint?>">
                                     </div>
                                 </div>                                 
                             </td>
                             <td class="b-layout__td b-layout__td_width_160 b-layout__td_valign_bot b-layout__td_padleft_10 b-layout__td_width_full_ipad b-layout__td_pad_null_ipad">
                                 <button type="submit" class="b-button b-button_flat b-button_flat_green b-button_nowrap b-button_padlr_10">
-                                    Найти исполнителя
+                                    РќР°Р№С‚Рё РёСЃРїРѕР»РЅРёС‚РµР»СЏ
                                 </button>
                             </td>
                             <?php /*
-                            <td class="b-layout__td b-layout__td_width_180 b-layout__td_valign_bot b-layout__td_width_full_ipad b-layout__td_padleft_10 b-layout__td_pad_null_ipad"><a class="b-button b-button_flat b-button_flat_green b-button_nowrap b-button_padlr_10" href="/masssending/">Рассылка по каталогу</a></td>
-									 скрываем временно 28134 п.15
+                            <td class="b-layout__td b-layout__td_width_180 b-layout__td_valign_bot b-layout__td_width_full_ipad b-layout__td_padleft_10 b-layout__td_pad_null_ipad"><a class="b-button b-button_flat b-button_flat_green b-button_nowrap b-button_padlr_10" href="/masssending/">Р Р°СЃСЃС‹Р»РєР° РїРѕ РєР°С‚Р°Р»РѕРіСѓ</a></td>
+									 СЃРєСЂС‹РІР°РµРј РІСЂРµРјРµРЅРЅРѕ 28134 Рї.15
 									 */ ?>
                         </tr>
                     </table>
-                        <?php if(is_emp()||!get_uid(false)) { ?><a class="b-button b-button_flat b-button_flat_green b-page__ipad b-page__iphone __ga__sidebar__add_project" href="/public/?step=1&kind=1">Опубликуйте проект</a><?php } ?>
+                        <?php if(is_emp()||!get_uid(false)) { ?><a class="b-button b-button_flat b-button_flat_green b-page__ipad b-page__iphone __ga__sidebar__add_project" href="/public/?step=1&kind=1">РћРїСѓР±Р»РёРєСѓР№С‚Рµ РїСЂРѕРµРєС‚</a><?php } ?>
                    
                     
                     
@@ -48,11 +48,11 @@ kword = kword.combine(search_kwords);
                           <div class="b-search <?php if($view_advanced){ ?>b-search_margright_370<?php } else {?>b-search_margright_200<?php } ?> b-search_marg_null_iphone">
                                   <table class="b-search__table" cellpadding="0" cellspacing="0"><tr class="b-search__tr"><td class="b-search__input">
                                       <div id="body_1" class="b-input  b-input_height_24">
-                                              <input id="search-request" class="b-input__text " placeholder="Например, <?=$search_input_hint?>" autocomplete="off"  name="search_string" type="text" value="<?= htmlspecialchars($search_string?str_replace($string_professions, "", $search_string):"")?>" />
+                                              <input id="search-request" class="b-input__text " placeholder="РќР°РїСЂРёРјРµСЂ, <?=$search_input_hint?>" autocomplete="off"  name="search_string" type="text" value="<?= htmlspecialchars($search_string?str_replace($string_professions, "", $search_string):"")?>" />
                                               <input id="search-hint" name="search_hint" type="hidden" value="<?=$search_input_hint?>">
                                       </div>
                                   </td><td class="b-search__button">
-                                  <a id="search-button" class="b-button b-button_flat b-button_flat_grey b-button_margleft_5" href="javascript:void(0)">Найти</a>
+                                  <a id="search-button" class="b-button b-button_flat b-button_flat_grey b-button_margleft_5" href="javascript:void(0)">РќР°Р№С‚Рё</a>
                                   </td></tr>
                                   </table>
                            </div>

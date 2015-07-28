@@ -33,7 +33,7 @@ switch($result['pfx']) {
         <?
         break;
     case "messages":
-        $title = ($result['title']!=""?reformat(strip_tags($title, "<em><br>"), 40, 0, 1):"&lt;Без темы&gt;");
+        $title = ($result['title']!=""?reformat(strip_tags($title, "<em><br>"), 40, 0, 1):"&lt;Р‘РµР· С‚РµРјС‹&gt;");
         ?>
         <h3><a class="search-commune-h" href="/commune/?id=<?=$result['commune_id']?>" target="_blank"><?=strip_tags($result['commune_name'], "<em>")?></a> <span class="search-arrow">&#8594;</span> <a href="/commune/?id=<?=$result['commune_id']?>&site=Topic&post=<?=$result['real_id']?>" target="_blank"><?=$title?></a></h3>
         <p><?= reformat(strip_tags(deleteHiddenURLFacebook($msgtext), "<br>"), 28, 0, 1)?></p>
@@ -46,7 +46,7 @@ switch($result['pfx']) {
         break;
     case "comments":
         $cls = is_emp($result['role'])?"empname11":"frlname11";
-        $result['topic_name'] = ($result['topic_name']!=""?reformat(strip_tags($result['topic_name'], "<em><br>"), 40, 0, 1):"&lt;Без темы&gt;");
+        $result['topic_name'] = ($result['topic_name']!=""?reformat(strip_tags($result['topic_name'], "<em><br>"), 40, 0, 1):"&lt;Р‘РµР· С‚РµРјС‹&gt;");
         ?>
         <h3><a class="search-commune-h" href="/commune/?id=<?=$result['commune_id']?>" target="_blank"><?=strip_tags($result['commune_name'], "<em>")?></a> <span class="search-arrow">&#8594;</span> <a href="/commune/?id=<?=$result['commune_id']?>&site=Topic&post=<?=$result['top_id']?>#c_<?=$result['real_id']?>" target="_blank"><?=$result['topic_name']?></a></h3>
         <a class="search-user-img" href="/users/<?= $result['login']?>/?f=<?=stat_collector::REFID_SEARCH?>&stamp=<?=$_SESSION['stamp']?>" target="_blank"><?=view_avatar($result['login'], $result['photo'], 1, 1, '')?></a>

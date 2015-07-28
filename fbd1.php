@@ -3,7 +3,7 @@
 <html>
 <link href="/styles.css" type="text/css" rel="stylesheet" title="style" />
 <head>
-	<title>Free-lance - действие запрещено</title>
+	<title>Free-lance - РґРµР№СЃС‚РІРёРµ Р·Р°РїСЂРµС‰РµРЅРѕ</title>
 </head>
 
 <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0" marginwidth="0" marginheight="0">
@@ -12,8 +12,8 @@
 <table width="280" border="0" cellspacing="0" cellpadding="8">
 <tr>
 	<td>
-	Извините, эта страница доступна только для зарегистрированных пользователей!<br><br>
-	Залогиньтесь или <a href="#" onClick="opener.location=/registration/; window.close();">зарегистрируйтесь</a>!
+	РР·РІРёРЅРёС‚Рµ, СЌС‚Р° СЃС‚СЂР°РЅРёС†Р° РґРѕСЃС‚СѓРїРЅР° С‚РѕР»СЊРєРѕ РґР»СЏ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№!<br><br>
+	Р—Р°Р»РѕРіРёРЅСЊС‚РµСЃСЊ РёР»Рё <a href="#" onClick="opener.location=/registration/; window.close();">Р·Р°СЂРµРіРёСЃС‚СЂРёСЂСѓР№С‚РµСЃСЊ</a>!
 	</td>
 </tr>
 </table>

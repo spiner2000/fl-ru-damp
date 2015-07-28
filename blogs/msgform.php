@@ -4,12 +4,12 @@
                   if ($ban_where) {
                     $ban=$user->GetBan($_SESSION['uid'],$ban_where);
                         ?><div><a name="bottom"></a>
-                        <h1>Команда Free-lance.ru заблокировала вам возможность оставлять записи в сервисе «Блоги» <?=($ban["to"] ? "до ".date("d.m.Y  H:i",strtotimeEx($ban["to"])).' ' : '')?>по причине: <?=reformat( $ban["comment"], 24, 0, 0, 1, 24 )?></h1>
+                        <h1>РљРѕРјР°РЅРґР° Free-lance.ru Р·Р°Р±Р»РѕРєРёСЂРѕРІР°Р»Р° РІР°Рј РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РѕСЃС‚Р°РІР»СЏС‚СЊ Р·Р°РїРёСЃРё РІ СЃРµСЂРІРёСЃРµ В«Р‘Р»РѕРіРёВ» <?=($ban["to"] ? "РґРѕ ".date("d.m.Y  H:i",strtotimeEx($ban["to"])).' ' : '')?>РїРѕ РїСЂРёС‡РёРЅРµ: <?=reformat( $ban["comment"], 24, 0, 0, 1, 24 )?></h1>
 
 <br />
 <br />
 
-Если у вас возникли вопросы, напишите нам на <a href="mailto:info@free-lance.ru">info@free-lance.ru</a><br />
+Р•СЃР»Рё Сѓ РІР°СЃ РІРѕР·РЅРёРєР»Рё РІРѕРїСЂРѕСЃС‹, РЅР°РїРёС€РёС‚Рµ РЅР°Рј РЅР° <a href="mailto:info@free-lance.ru">info@free-lance.ru</a><br />
 <br />
 
                         </div>
@@ -28,7 +28,7 @@
         <div class="form fs-p drafts-v" id="draft_div_info">
           <b class="b1"></b>
           <b class="b2"></b>
-            <div class="form-in" id="draft_div_info_text"><?='Не забывайте, у вас в черновиках <a href="/drafts/?p=blogs">'.ending($count_drafts, 'сохранен', 'сохранено', 'сохранено').' '.$count_drafts.' '.getSymbolicName($count_drafts, 'blogs').'</a>'?></div>
+            <div class="form-in" id="draft_div_info_text"><?='РќРµ Р·Р°Р±С‹РІР°Р№С‚Рµ, Сѓ РІР°СЃ РІ С‡РµСЂРЅРѕРІРёРєР°С… <a href="/drafts/?p=blogs">'.ending($count_drafts, 'СЃРѕС…СЂР°РЅРµРЅ', 'СЃРѕС…СЂР°РЅРµРЅРѕ', 'СЃРѕС…СЂР°РЅРµРЅРѕ').' '.$count_drafts.' '.getSymbolicName($count_drafts, 'blogs').'</a>'?></div>
         <b class="b2"></b>
         <b class="b1"></b>
       </div>
@@ -44,7 +44,7 @@ $request_uri =  ( $gr ? "?gr={$gr}&" : "?")
 ?>
 
             <?php
-            // Заполнение данных из черновика
+            // Р—Р°РїРѕР»РЅРµРЅРёРµ РґР°РЅРЅС‹С… РёР· С‡РµСЂРЅРѕРІРёРєР°
             $draft_id = intval($_GET['draft_id']);
             $uid = get_uid(false);
             $draft_data = drafts::getDraft($draft_id, $uid, 3);
@@ -80,22 +80,22 @@ $request_uri =  ( $gr ? "?gr={$gr}&" : "?")
                           <input type="hidden" name="thread" value="<?=($edit_msg["id"])?$edit_msg["id"]:$thread?>" /> 
                           <input type="hidden" name="thread_id" value="<?=($edit_msg["thread_id"])?$edit_msg["thread_id"]:$thread_id?>" />
                           <input type="hidden" name="sub_ord" value="<?=$sub_ord?>" />
-                    <? if ($action == "edit") {?><h2>Редактировать:</h2><? } else { ?>
-                    <h2>Создать новое сообщение:</h2> <? } ?><a name="edit" id="edit"></a>
+                    <? if ($action == "edit") {?><h2>Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ:</h2><? } else { ?>
+                    <h2>РЎРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ:</h2> <? } ?><a name="edit" id="edit"></a>
                     <table class="blog-form" border="0" cellspacing="0" cellpadding="0">
                       <col style="width:96px"/>
                       <col style="width:610px"/>
             <tr valign="top">
-                        <td>Заголовок</td>
+                        <td>Р—Р°РіРѕР»РѕРІРѕРє</td>
                         <td><input type="text" id="name" name="name" maxlength="96" value="<?=(empty($_POST['name'])? (($edit_msg['title']!=='')? $edit_msg['title']: $msg_name): str_replace(array("'", '"', '<', '>'), array('&#039;', '&quot;', '&lt;', '&gt;'), stripslashes($_POST['name'])))?>" onfocus="isFocus = true;" onblur="isFocus = false;" style="width:555px" /></td>
                       </tr>
                       <tr valign="top">
-                        <td style="padding-top:5px">Текст</td>
+                        <td style="padding-top:5px">РўРµРєСЃС‚</td>
                         <td style="padding-top:5px">
               <textarea id="msg_source" style="display:none" cols="50" rows="20"><? if($_GET['l']!='') { echo htmlspecialchars($_GET['l']); } else { ?><?=(empty($_POST['msg'])? (($edit_msg['msgtext']!=='')? input_ref($edit_msg['msgtext']): $msg): str_replace(array("'", '"', '<', '>'), array('&#039;', '&quot;', '&lt;', '&gt;'), stripslashes($_POST['msg'])))?><? } ?></textarea>
               <textarea id="msg" name="msg" onfocus="isFocus = true;" onblur="isFocus = false;" cols="50" rows="20"></textarea>
                         <? if ($alert[2])  print(view_error($alert[2])) ?>
-                          <br />Можно использовать &lt;b&gt;&lt;i&gt;&lt;p&gt;&lt;ul&gt;&lt;li&gt;&lt;cut&gt;&lt;h&gt;&lt;s&gt;
+                          <br />РњРѕР¶РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ &lt;b&gt;&lt;i&gt;&lt;p&gt;&lt;ul&gt;&lt;li&gt;&lt;cut&gt;&lt;h&gt;&lt;s&gt;
                         </td>
                       </tr>
 
@@ -177,7 +177,7 @@ $request_uri =  ( $gr ? "?gr={$gr}&" : "?")
 
                       <tr valign="top">
                         <td>&nbsp;</td>
-                        <td><br /><a href="javascript:void(null);" onClick="toggle_yt_link();" style="border-bottom:1px dashed; height:15px; text-decoration:none;">Добавить ссылку на YouTube/RuTube/Vimeo видео</a></td>
+                        <td><br /><a href="javascript:void(null);" onClick="toggle_yt_link();" style="border-bottom:1px dashed; height:15px; text-decoration:none;">Р”РѕР±Р°РІРёС‚СЊ СЃСЃС‹Р»РєСѓ РЅР° YouTube/RuTube/Vimeo РІРёРґРµРѕ</a></td>
                       </tr>
                       <tr valign="top">
                         <td>&nbsp;</td>
@@ -192,7 +192,7 @@ $request_uri =  ( $gr ? "?gr={$gr}&" : "?")
                       <? if ($action != "edit" || !$edit_msg['reply_to'] ) {?>
                       <tr valign="top">
                         <td>&nbsp;</td>
-                        <td><br /><a href="javascript:void(null);" onClick="toggle_settings();" style="border-bottom:1px dashed; height:15px; text-decoration:none;">Дополнительные настройки</a></td>
+                        <td><br /><a href="javascript:void(null);" onClick="toggle_settings();" style="border-bottom:1px dashed; height:15px; text-decoration:none;">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё</a></td>
                       </tr>
                       <tr valign="top">
                         <td>&nbsp;</td>
@@ -203,23 +203,23 @@ $request_uri =  ( $gr ? "?gr={$gr}&" : "?")
                         <td><div id="settings" style="<?=( $bClose || $bPrivate ? '' : 'display:none;' )?>padding-top:4px">
                         <div class="b-check b-check_padtop_3">
                             <input onclick="toggle_close()" id="ch_close_comments" class="b-check__input" type="checkbox" name="close_comments" value="1" <?=( $bClose ? 'checked="checked"' : '' )?> />
-                            <label class="b-check__label" for="ch_close_comments" id="label_close_comments">Запретить комментирование</label>
+                            <label class="b-check__label" for="ch_close_comments" id="label_close_comments">Р—Р°РїСЂРµС‚РёС‚СЊ РєРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ</label>
                         </div>
                         <div class="b-check b-check_padtop_3">
                             <input id="ch_is_private" class="b-check__input" type="checkbox" onclick="toggle_private()" name="is_private" value="1" <?=( $bPrivate ? 'checked="checked"' : '' )?> />
-                            <label class="b-check__label" for="ch_is_private" id="label_is_private">Показывать только мне<?=(($edit_msg['is_private']=="t")?' (скрытые от пользователей темы видны модераторам)':'')?></label>
+                            <label class="b-check__label" for="ch_is_private" id="label_is_private">РџРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ РјРЅРµ<?=(($edit_msg['is_private']=="t")?' (СЃРєСЂС‹С‚С‹Рµ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ С‚РµРјС‹ РІРёРґРЅС‹ РјРѕРґРµСЂР°С‚РѕСЂР°Рј)':'')?></label>
                         </div>
                           </div>
                         </td>
                       </tr>
                       <tr valign="top">
                         <td>&nbsp;</td>
-                        <td><br /><a href="javascript:void(null);" onClick="toggle_pool();" style="border-bottom:1px dashed; height:15px; text-decoration:none;"><?=($edit_msg['poll_question']? 'Редактировать опрос': 'Добавить опрос')?></a></td>
+                        <td><br /><a href="javascript:void(null);" onClick="toggle_pool();" style="border-bottom:1px dashed; height:15px; text-decoration:none;"><?=($edit_msg['poll_question']? 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РѕРїСЂРѕСЃ': 'Р”РѕР±Р°РІРёС‚СЊ РѕРїСЂРѕСЃ')?></a></td>
                       </tr>
             <tr valign="top" id="trpollquestion" class="poll-st"<?=((!empty($alert[5]) || $edit_msg['poll_question'])? '': ' style="display: none"')?>>
-                        <td>Вопрос</td>
+                        <td>Р’РѕРїСЂРѕСЃ</td>
                         <td>
-              <? // этот span, используется в качестве хака, для того, чтобы нормально отображались html сущности и ничего не разъезжалось. в конце страницы, есть javascript, который содержимое в textarea ?>
+              <? // СЌС‚РѕС‚ span, РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ РєР°С‡РµСЃС‚РІРµ С…Р°РєР°, РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ РЅРѕСЂРјР°Р»СЊРЅРѕ РѕС‚РѕР±СЂР°Р¶Р°Р»РёСЃСЊ html СЃСѓС‰РЅРѕСЃС‚Рё Рё РЅРёС‡РµРіРѕ РЅРµ СЂР°Р·СЉРµР·Р¶Р°Р»РѕСЃСЊ. РІ РєРѕРЅС†Рµ СЃС‚СЂР°РЅРёС†С‹, РµСЃС‚СЊ javascript, РєРѕС‚РѕСЂС‹Р№ СЃРѕРґРµСЂР¶РёРјРѕРµ РІ textarea ?>
               <textarea cols="50" rows="20" onfocus="isFocus = true;" onblur="isFocus = false;" id="poll-question-source" style="display: none"><?=(isset($_POST['question'])? str_replace(array('"', "'", "\\", '<', '>'), array('&quot;', '&#039;', '&#92;', '&lt;', '&gt;'), stripslashes($_POST['question'])): ($edit_msg['poll_question']? $edit_msg['poll_question']: ''))?></textarea>
               <? if ($edit_msg['poll_question'] && !(hasPermissions('blogs') || $edit_msg['fromuser_id'] == $uid)) { ?>
               <input type="hidden" name="question" value="<?=(isset($_POST['question'])? str_replace(array('"', "'", "\\"), array('&quot;', '&#039;', '&#92;'), stripslashes($_POST['question'])): ($edit_msg['poll_question']? $edit_msg['poll_question']: ''))?>">
@@ -232,16 +232,16 @@ $request_uri =  ( $gr ? "?gr={$gr}&" : "?")
             </td>
                       </tr>
             <tr id="trpolltype" class="poll-type"<?=((!empty($alert[5]) || $edit_msg['poll_question'])? '': ' style="display: none"')?>>
-              <td>Тип опроса:</td>
+              <td>РўРёРї РѕРїСЂРѕСЃР°:</td>
               <td style="padding-top:5px;">
               	  <div class="b-radio  b-radio_layout_horizontal">
                   	<div class="b-radio__item">
                       <input id="fmultiple0" class="b-radio__input" type="radio" name="multiple" value="0" <?=((($edit_msg['poll_multiple'] != 't') && empty($_POST['multiple']))? "checked='checked'": "")?> />
-                      <label class="b-radio__label" for="fmultiple0">Один вариант ответа&nbsp;&nbsp;&nbsp;</label>
+                      <label class="b-radio__label" for="fmultiple0">РћРґРёРЅ РІР°СЂРёР°РЅС‚ РѕС‚РІРµС‚Р°&nbsp;&nbsp;&nbsp;</label>
                     </div>
                   	<div class="b-radio__item">
                       <input id="fmultiple1" class="b-radio__input" type="radio" name="multiple" value="1" <?=((($edit_msg['poll_multiple'] == 't') || !empty($_POST['multiple']))? "checked='checked'": "")?> />
-                      <label class="b-radio__label">Несколько вариантов ответа</label>
+                      <label class="b-radio__label">РќРµСЃРєРѕР»СЊРєРѕ РІР°СЂРёР°РЅС‚РѕРІ РѕС‚РІРµС‚Р°</label>
                     </div>
                   </div>
               </td>
@@ -250,13 +250,13 @@ $request_uri =  ( $gr ? "?gr={$gr}&" : "?")
             $c = count($answers);
             foreach ($answers as $answer) {
             ?><tr valign="top" class="poll-line" id="poll-<?=$i?>"<?=((!empty($alert[5])  || $edit_msg['poll_question'])? '': ' style="display: none"')?>>
-                        <td>Ответ #<span class="poll-num"><?=($i+1)?></span></td>
+                        <td>РћС‚РІРµС‚ #<span class="poll-num"><?=($i+1)?></span></td>
                         <td>
             <? if ($answer['id'] && !(hasPermissions('blogs') || $edit_msg['fromuser_id'] == $uid)) { ?><input class="poll-answer-exists" type="hidden" name="answers_exists[<?=$answer['id']?>]" value="1"><? } ?>
             <table cellpadding="0" cellspacing="0" border="0" style="width:560px;">
             <tr>
               <td><input onfocus="isFocus = true;" onblur="isFocus = false;" maxlength="<?=blogs::MAX_POLL_ANSWER_CHARS?>" class="poll-answer" type="text" value="<?=$answer['answer']?>" <?=($answer['id']? ((hasPermissions('blogs') || $edit_msg['fromuser_id'] == $uid)? "name='answers_exists[{$answer['id']}]'": 'name="it_no"  disabled'): "name='answers[]'")?> tabindex="20<?=$i?>" /></td>
-              <td class="poll-btn"><a class="poll-del" href="javascript: return false" onclick="poll.del('Blogs', <?=$i++?>); return false;"><img src="/images/delpoll.png" width="15" height="15"  alt="Удалить ответ" title="Удалить ответ" /></a></td>
+              <td class="poll-btn"><a class="poll-del" href="javascript: return false" onclick="poll.del('Blogs', <?=$i++?>); return false;"><img src="/images/delpoll.png" width="15" height="15"  alt="РЈРґР°Р»РёС‚СЊ РѕС‚РІРµС‚" title="РЈРґР°Р»РёС‚СЊ РѕС‚РІРµС‚" /></a></td>
               <td class="poll-btn"><span class="poll-add">&nbsp;</span></td>
             </tr>
             </table>
@@ -264,7 +264,7 @@ $request_uri =  ( $gr ? "?gr={$gr}&" : "?")
                       </tr><?
             }
                       ?><tr valign="top">
-                        <td><br />Раздел</td>
+                        <td><br />Р Р°Р·РґРµР»</td>
                         <td><br />
                               <select id="fcategory" name="category" onfocus="isFocus = true;" onblur="isFocus = false;" tabindex="300">
                               <?
@@ -286,7 +286,7 @@ $request_uri =  ( $gr ? "?gr={$gr}&" : "?")
                       <? if(hasPermissions('blogs')) { ?>
                       <tr valign="top">
                         <td>&nbsp;</td>
-                        <td><br /><div class="b-check"><input class="b-check__input" type="checkbox" id="ontopid" name="ontop" value="t" <?=($edit_msg['ontop']=='t')? 'checked="checked"': ''?> />&nbsp;<label class="b-check__label b-check__label_fontsize_11" for="ontopid">Закрепить тему наверху</label></div></td>
+                        <td><br /><div class="b-check"><input class="b-check__input" type="checkbox" id="ontopid" name="ontop" value="t" <?=($edit_msg['ontop']=='t')? 'checked="checked"': ''?> />&nbsp;<label class="b-check__label b-check__label_fontsize_11" for="ontopid">Р—Р°РєСЂРµРїРёС‚СЊ С‚РµРјСѓ РЅР°РІРµСЂС…Сѓ</label></div></td>
                       </tr>
                       <? } ?>
                       
@@ -297,20 +297,20 @@ $request_uri =  ( $gr ? "?gr={$gr}&" : "?")
                         <td><br />
                     <input type="hidden" name="action" value="<?= ($action == "edit")? "change":"new_tr"?>" />
 <!--
-                    <input type="submit" name="btn" style="width:100px; height:20px;" value="<?= ($action == "edit")? "Сохранить":"Создать"?>" tabindex="301">
+                    <input type="submit" name="btn" style="width:100px; height:20px;" value="<?= ($action == "edit")? "РЎРѕС…СЂР°РЅРёС‚СЊ":"РЎРѕР·РґР°С‚СЊ"?>" tabindex="301">
 -->
 
         <input type="hidden" name="draft_post_id" id="draft_post_id" value="<?=($edit_msg["id"])?$edit_msg["id"]:$thread?>" />
         <input type="hidden" name="draft_id" id="draft_id" value="<?=$draft_id?>" />
         <div class="form-el">
       <span class="todrafts">
-        <span class="time-save" id="draft_time_save" style="display:none;"></span> <a href="javascript:DraftSave();" onclick="this.blur();" class="btnr-mb"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">В черновики</span></span></span></a>
+        <span class="time-save" id="draft_time_save" style="display:none;"></span> <a href="javascript:DraftSave();" onclick="this.blur();" class="btnr-mb"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Р’ С‡РµСЂРЅРѕРІРёРєРё</span></span></span></a>
       </span>
             <span style="float: left;">
-                <a id="btn" class="b-button b-button_rectangle_color_green"  href="javascript: void(0)" onmousedown="return false" onmouseup="if($('btn').get('disabled')==true) { return false; } if(checkexts()) {$('btn_text').set('html','Подождите'); $('btn').set('disabled',true); $('btn' ).addClass('b-button_rectangle_color_disable'); $('btn' ).removeClass('b-button_rectangle_color_green'); submitLock($('frm')); return false; } else return false;">
+                <a id="btn" class="b-button b-button_rectangle_color_green"  href="javascript: void(0)" onmousedown="return false" onmouseup="if($('btn').get('disabled')==true) { return false; } if(checkexts()) {$('btn_text').set('html','РџРѕРґРѕР¶РґРёС‚Рµ'); $('btn').set('disabled',true); $('btn' ).addClass('b-button_rectangle_color_disable'); $('btn' ).removeClass('b-button_rectangle_color_green'); submitLock($('frm')); return false; } else return false;">
                 <span class="b-button__b1">
                     <span class="b-button__b2">
-                        <span class="b-button__txt" id="btn_text"><?= ($action == "edit")? "Сохранить":"Создать"?></span>
+                        <span class="b-button__txt" id="btn_text"><?= ($action == "edit")? "РЎРѕС…СЂР°РЅРёС‚СЊ":"РЎРѕР·РґР°С‚СЊ"?></span>
                     </span>
                 </span>
                 </a>

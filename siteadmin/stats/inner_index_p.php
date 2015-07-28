@@ -6,8 +6,8 @@ $DB = new DB('master');
 
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
-	<td align="left"><strong>Статистика</strong></td>
-	<td align="right"><a href="/siteadmin/stats/charts.php">График</a></td>
+	<td align="left"><strong>РЎС‚Р°С‚РёСЃС‚РёРєР°</strong></td>
+	<td align="right"><a href="/siteadmin/stats/charts.php">Р“СЂР°С„РёРє</a></td>
 </tr>
 </table>
 
@@ -61,41 +61,41 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
 	$fdate = $fyear[$i] . "-". $fmnth[$i] ."-" .$fday[$i];
 	$tdate = $tyear[$i] . "-". $tmnth[$i] ."-" .$tday[$i];
 ?>
-с&nbsp;&nbsp;
+СЃ&nbsp;&nbsp;
 <input type="text" name="fday[]" size="2" maxlength="2" value="<?=$fday[$i]?>">
 <select name="fmnth[]">
-	<option value="1" <? if ($fmnth[$i] == 1) print "SELECTED"?>>января</option>
-	<option value="2" <? if ($fmnth[$i] == 2) print "SELECTED"?>>февраля</option>
-	<option value="3" <? if ($fmnth[$i] == 3) print "SELECTED"?>>марта</option>
-	<option value="4" <? if ($fmnth[$i] == 4) print "SELECTED"?>>апреля</option>
-	<option value="5" <? if ($fmnth[$i] == 5) print "SELECTED"?>>мая</option>
-	<option value="6" <? if ($fmnth[$i] == 6) print "SELECTED"?>>июня</option>
-	<option value="7" <? if ($fmnth[$i] == 7) print "SELECTED"?>>июля</option>
-	<option value="8" <? if ($fmnth[$i] == 8) print "SELECTED"?>>августа</option>
-	<option value="9" <? if ($fmnth[$i] == 9) print "SELECTED"?>>сентября</option>
-	<option value="10" <? if ($fmnth[$i] == 10) print "SELECTED"?>>октября</option>
-	<option value="11" <? if ($fmnth[$i] == 11) print "SELECTED"?>>ноября</option>
-	<option value="12" <? if ($fmnth[$i] == 12) print "SELECTED"?>>декабря</option>
+	<option value="1" <? if ($fmnth[$i] == 1) print "SELECTED"?>>СЏРЅРІР°СЂСЏ</option>
+	<option value="2" <? if ($fmnth[$i] == 2) print "SELECTED"?>>С„РµРІСЂР°Р»СЏ</option>
+	<option value="3" <? if ($fmnth[$i] == 3) print "SELECTED"?>>РјР°СЂС‚Р°</option>
+	<option value="4" <? if ($fmnth[$i] == 4) print "SELECTED"?>>Р°РїСЂРµР»СЏ</option>
+	<option value="5" <? if ($fmnth[$i] == 5) print "SELECTED"?>>РјР°СЏ</option>
+	<option value="6" <? if ($fmnth[$i] == 6) print "SELECTED"?>>РёСЋРЅСЏ</option>
+	<option value="7" <? if ($fmnth[$i] == 7) print "SELECTED"?>>РёСЋР»СЏ</option>
+	<option value="8" <? if ($fmnth[$i] == 8) print "SELECTED"?>>Р°РІРіСѓСЃС‚Р°</option>
+	<option value="9" <? if ($fmnth[$i] == 9) print "SELECTED"?>>СЃРµРЅС‚СЏР±СЂСЏ</option>
+	<option value="10" <? if ($fmnth[$i] == 10) print "SELECTED"?>>РѕРєС‚СЏР±СЂСЏ</option>
+	<option value="11" <? if ($fmnth[$i] == 11) print "SELECTED"?>>РЅРѕСЏР±СЂСЏ</option>
+	<option value="12" <? if ($fmnth[$i] == 12) print "SELECTED"?>>РґРµРєР°Р±СЂСЏ</option>
 </select>
 <input type="text" name="fyear[]" size="4" maxlength="4" value="<?=$fyear[$i]?>">&nbsp;&nbsp;
-по&nbsp;&nbsp;
+РїРѕ&nbsp;&nbsp;
 <input type="text" name="tday[]" size="2" maxlength="2" value="<?=$tday[$i]?>">
 <select name="tmnth[]">
-	<option value="1" <? if ($tmnth[$i] == 1) print "SELECTED"?>>января</option>
-	<option value="2" <? if ($tmnth[$i] == 2) print "SELECTED"?>>февраля</option>
-	<option value="3" <? if ($tmnth[$i] == 3) print "SELECTED"?>>марта</option>
-	<option value="4" <? if ($tmnth[$i] == 4) print "SELECTED"?>>апреля</option>
-	<option value="5" <? if ($tmnth[$i] == 5) print "SELECTED"?>>мая</option>
-	<option value="6" <? if ($tmnth[$i] == 6) print "SELECTED"?>>июня</option>
-	<option value="7" <? if ($tmnth[$i] == 7) print "SELECTED"?>>июля</option>
-	<option value="8" <? if ($tmnth[$i] == 8) print "SELECTED"?>>августа</option>
-	<option value="9" <? if ($tmnth[$i] == 9) print "SELECTED"?>>сентября</option>
-	<option value="10" <? if ($tmnth[$i] == 10) print "SELECTED"?>>октября</option>
-	<option value="11" <? if ($tmnth[$i] == 11) print "SELECTED"?>>ноября</option>
-	<option value="12" <? if ($tmnth[$i] == 12) print "SELECTED"?>>декабря</option>
+	<option value="1" <? if ($tmnth[$i] == 1) print "SELECTED"?>>СЏРЅРІР°СЂСЏ</option>
+	<option value="2" <? if ($tmnth[$i] == 2) print "SELECTED"?>>С„РµРІСЂР°Р»СЏ</option>
+	<option value="3" <? if ($tmnth[$i] == 3) print "SELECTED"?>>РјР°СЂС‚Р°</option>
+	<option value="4" <? if ($tmnth[$i] == 4) print "SELECTED"?>>Р°РїСЂРµР»СЏ</option>
+	<option value="5" <? if ($tmnth[$i] == 5) print "SELECTED"?>>РјР°СЏ</option>
+	<option value="6" <? if ($tmnth[$i] == 6) print "SELECTED"?>>РёСЋРЅСЏ</option>
+	<option value="7" <? if ($tmnth[$i] == 7) print "SELECTED"?>>РёСЋР»СЏ</option>
+	<option value="8" <? if ($tmnth[$i] == 8) print "SELECTED"?>>Р°РІРіСѓСЃС‚Р°</option>
+	<option value="9" <? if ($tmnth[$i] == 9) print "SELECTED"?>>СЃРµРЅС‚СЏР±СЂСЏ</option>
+	<option value="10" <? if ($tmnth[$i] == 10) print "SELECTED"?>>РѕРєС‚СЏР±СЂСЏ</option>
+	<option value="11" <? if ($tmnth[$i] == 11) print "SELECTED"?>>РЅРѕСЏР±СЂСЏ</option>
+	<option value="12" <? if ($tmnth[$i] == 12) print "SELECTED"?>>РґРµРєР°Р±СЂСЏ</option>
 </select>
 <input type="text" name="tyear[]" size="4" maxlength="4" value="<?=$tyear[$i]?>">
-<input type="submit" value="Ага!"><br><br>
+<input type="submit" value="РђРіР°!"><br><br>
 
 
 
@@ -108,78 +108,78 @@ list($frlpp, $emppp) = account::getStatsPRO($fdate, $tdate);
 
 <table  width="100%" border="1" cellspacing="2" cellpadding="2" class="brd-tbl">
     <tr>
-        <td colspan="2"><strong>Фрилансеры:</strong></td>
+        <td colspan="2"><strong>Р¤СЂРёР»Р°РЅСЃРµСЂС‹:</strong></td>
     </tr>
     <tr>
-        <td width=500>- Покупок тестового pro:</td>
+        <td width=500>- РџРѕРєСѓРїРѕРє С‚РµСЃС‚РѕРІРѕРіРѕ pro:</td>
         <td><?=$frlpp['tp']?></td>
     </tr>
     <tr>
-        <td>- Купившие полный pro после тестового pro:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅС‹Р№ pro РїРѕСЃР»Рµ С‚РµСЃС‚РѕРІРѕРіРѕ pro:</td>
         <td><?=$frlpp['fpp_tp']?></td>
     </tr>
     <tr>
-        <td>- Купившие полный pro 2 раза после тестового pro:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅС‹Р№ pro 2 СЂР°Р·Р° РїРѕСЃР»Рµ С‚РµСЃС‚РѕРІРѕРіРѕ pro:</td>
         <td><?=$frlpp['fpp2_tp']?></td>
     </tr>
     <tr>
-        <td>- Купившие полный pro 3 раза после тестового pro:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅС‹Р№ pro 3 СЂР°Р·Р° РїРѕСЃР»Рµ С‚РµСЃС‚РѕРІРѕРіРѕ pro:</td>
         <td><?=$frlpp['fpp3_tp']?></td>
     </tr>
     <tr>
-        <td>- Купившие полный pro 4 раза после тестового pro:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅС‹Р№ pro 4 СЂР°Р·Р° РїРѕСЃР»Рµ С‚РµСЃС‚РѕРІРѕРіРѕ pro:</td>
         <td><?=$frlpp['fpp4_tp']?></td>
     </tr>
     <tr>
-        <td>- Купившие полный pro 5 раз после тестового pro:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅС‹Р№ pro 5 СЂР°Р· РїРѕСЃР»Рµ С‚РµСЃС‚РѕРІРѕРіРѕ pro:</td>
         <td><?=$frlpp['fpp5_tp']?></td>
     </tr>
     <!-- 
     <tr>
-        <td colspan="2"><strong>Фрилансеры:</strong></td>
+        <td colspan="2"><strong>Р¤СЂРёР»Р°РЅСЃРµСЂС‹:</strong></td>
     </tr>-->
     <tr>
-        <td>- Купивших полноценный pro:</td>
+        <td>- РљСѓРїРёРІС€РёС… РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro:</td>
         <td><?=$frlpp['fpp']?></td>
     </tr>
     <tr>
-        <td>- Купившие полноценный pro 2 раза:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro 2 СЂР°Р·Р°:</td>
         <td><?=$frlpp['fpp2']?></td>
     </tr>
     <tr>
-        <td>- Купившие полноценный pro 3 раза:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro 3 СЂР°Р·Р°:</td>
         <td><?=$frlpp['fpp3']?></td>
     </tr>
     <tr>
-        <td>- Купившие полноценный pro 4 раза:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro 4 СЂР°Р·Р°:</td>
         <td><?=$frlpp['fpp4']?></td>
     </tr>
     <tr>
-        <td>- Купившие полноценный pro 5 раз:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro 5 СЂР°Р·:</td>
         <td><?=$frlpp['fpp5']?></td>
     </tr>
     <!-- -->
     <tr>
-        <td colspan="2"><strong>Работодатели:</strong></td>
+        <td colspan="2"><strong>Р Р°Р±РѕС‚РѕРґР°С‚РµР»Рё:</strong></td>
     </tr>
     <tr>
-        <td>- Купивших полноценный pro:</td>
+        <td>- РљСѓРїРёРІС€РёС… РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro:</td>
         <td><?=$emppp['epp']?></td>
     </tr>
     <tr>
-        <td>- Купившие полноценный pro 2 раза:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro 2 СЂР°Р·Р°:</td>
         <td><?=$emppp['epp2']?></td>
     </tr>
     <tr>
-        <td>- Купившие полноценный pro 3 раза:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro 3 СЂР°Р·Р°:</td>
         <td><?=$emppp['epp3']?></td>
     </tr>
     <tr>
-        <td>- Купившие полноценный pro 4 раза:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro 4 СЂР°Р·Р°:</td>
         <td><?=$emppp['epp4']?></td>
     </tr>
     <tr>
-        <td>- Купившие полноценный pro 5 раз:</td>
+        <td>- РљСѓРїРёРІС€РёРµ РїРѕР»РЅРѕС†РµРЅРЅС‹Р№ pro 5 СЂР°Р·:</td>
         <td><?=$emppp['epp5']?></td>
     </tr>
 </table>

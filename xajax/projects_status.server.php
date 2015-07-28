@@ -130,7 +130,7 @@ function projectEditFeedback($feedback_id)
 
 
 /**
- * Ñìåíà ñòàòóñà ïðîåêòà
+ * Ð¡Ð¼ÐµÐ½Ð° ÑÑ‚Ð°Ñ‚ÑƒÑÐ° Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°
  * 
  * @param array $params
  * @return \xajaxResponse
@@ -149,12 +149,12 @@ function changeProjectStatus($params)
     $current_hash = projects_helper::getStatusHash($params);
     if(!($uid > 0) || ($hash !== $current_hash)) return $objResponse;
     
-    // Ïðîåêò.
+    // ÐŸÑ€Ð¾ÐµÐºÑ‚.
     $obj_project = new projects();
     //$project = $obj_project->GetPrjCust($project_id);
-    //Ñäåëàë îòäåëüíûé ìåòîä ïîëó÷àþùèé òîëüêî òî ÷òî íàì íóæíî
-    //ëó÷øå òàê äåëàòü à òî äàëåêî íå âñåãäà ñóùåñòâóþùèå ìåòîäû îïòèìàëüíû
-    //â íèõ âûáèðàåòñÿ ìíîãî ëèøíåãî
+    //Ð¡Ð´ÐµÐ»Ð°Ð» Ð¾Ñ‚Ð´ÐµÐ»ÑŒÐ½Ñ‹Ð¹ Ð¼ÐµÑ‚Ð¾Ð´ Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÑŽÑ‰Ð¸Ð¹ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‚Ð¾ Ñ‡Ñ‚Ð¾ Ð½Ð°Ð¼ Ð½ÑƒÐ¶Ð½Ð¾
+    //Ð»ÑƒÑ‡ÑˆÐµ Ñ‚Ð°Ðº Ð´ÐµÐ»Ð°Ñ‚ÑŒ Ð° Ñ‚Ð¾ Ð´Ð°Ð»ÐµÐºÐ¾ Ð½Ðµ Ð²ÑÐµÐ³Ð´Ð° ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ðµ Ð¼ÐµÑ‚Ð¾Ð´Ñ‹ Ð¾Ð¿Ñ‚Ð¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹
+    //Ð² Ð½Ð¸Ñ… Ð²Ñ‹Ð±Ð¸Ñ€Ð°ÐµÑ‚ÑÑ Ð¼Ð½Ð¾Ð³Ð¾ Ð»Ð¸ÑˆÐ½ÐµÐ³Ð¾
     $project = $obj_project->getProjectWithFeedback($project_id);
     if(!$project || !in_array($project['kind'], array(1,5,9))) return $objResponse;
 
@@ -162,7 +162,7 @@ function changeProjectStatus($params)
     $is_exec = ($project['exec_id'] == $uid);
     if(!($is_project_owner || $is_exec)) return $objResponse; 
     
-    //Ñîõðàíèì òåêóùèé ñòàòóñ
+    //Ð¡Ð¾Ñ…Ñ€Ð°Ð½Ð¸Ð¼ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ ÑÑ‚Ð°Ñ‚ÑƒÑ
     $old_status = $project['status'];
     $is_emp = is_emp();
     $attr = array(
@@ -188,11 +188,11 @@ function changeProjectStatus($params)
     
     if($project['status'] > projects_status::STATUS_ACCEPT && !empty($feedback))
     {
-        //Âðåìÿ âûøëî
+        //Ð’Ñ€ÐµÐ¼Ñ Ð²Ñ‹ÑˆÐ»Ð¾
         if(!projects_feedback::isAllowFeedback($project['close_date'])) return $objResponse;
 
-        //Åñëè îòçûâ îò ðàáîòîäàòåëÿ è ïîëîæèòåëüíûé òî â çàâèñèìîñòè îò ñòàòóñà ÏÐÎ ôðèëàíñåðà îòçûâ ñêðûâàåòñÿ ëèáî ïóáëèêóåòñÿ
-        //Åñëè îòçûâ îò ôðèëàíñåðà òî âñåãäà ïóáëèêóåòñÿ
+        //Ð•ÑÐ»Ð¸ Ð¾Ñ‚Ð·Ñ‹Ð² Ð¾Ñ‚ Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»Ñ Ð¸ Ð¿Ð¾Ð»Ð¾Ð¶Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¹ Ñ‚Ð¾ Ð² Ð·Ð°Ð²Ð¸ÑÐ¸Ð¼Ð¾ÑÑ‚Ð¸ Ð¾Ñ‚ ÑÑ‚Ð°Ñ‚ÑƒÑÐ° ÐŸÐ Ðž Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð° Ð¾Ñ‚Ð·Ñ‹Ð² ÑÐºÑ€Ñ‹Ð²Ð°ÐµÑ‚ÑÑ Ð»Ð¸Ð±Ð¾ Ð¿ÑƒÐ±Ð»Ð¸ÐºÑƒÐµÑ‚ÑÑ
+        //Ð•ÑÐ»Ð¸ Ð¾Ñ‚Ð·Ñ‹Ð² Ð¾Ñ‚ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð° Ñ‚Ð¾ Ð²ÑÐµÐ³Ð´Ð° Ð¿ÑƒÐ±Ð»Ð¸ÐºÑƒÐµÑ‚ÑÑ
         $is_show = ($is_emp && $rating > 0)?($offer['is_pro'] == 't'):TRUE;
         
         $obj_feedback = new projects_feedback();
@@ -216,9 +216,9 @@ function changeProjectStatus($params)
     
     if($project['status'] > projects_status::STATUS_ACCEPT)
     {
-        // Îòïðàâëÿåì ïèñüìà îá îòçûâàõ
+        // ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÑÐµÐ¼ Ð¿Ð¸ÑÑŒÐ¼Ð° Ð¾Ð± Ð¾Ñ‚Ð·Ñ‹Ð²Ð°Ñ…
         $mes = new projects_smail();
-        if($old_status != $project['status']) { //áûëà ñìåíà ñòàòóñà íà çàêðûòèå
+        if($old_status != $project['status']) { //Ð±Ñ‹Ð»Ð° ÑÐ¼ÐµÐ½Ð° ÑÑ‚Ð°Ñ‚ÑƒÑÐ° Ð½Ð° Ð·Ð°ÐºÑ€Ñ‹Ñ‚Ð¸Ðµ
             $mes->onFinish($project, $is_emp);
         } else {
             $mes->onFeedback($project, $is_emp);

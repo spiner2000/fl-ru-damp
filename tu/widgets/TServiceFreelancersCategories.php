@@ -5,21 +5,21 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/professions.php");
 /**
  * Class TServiceFreelancersCategories
  *
- * Âèäæåò - ñïèñîê êàòåãîðèé ñïåöèàëèçàöèé ôðèëàíñåðîâ
+ * Ð’Ð¸Ð´Ð¶ÐµÑ‚ - ÑÐ¿Ð¸ÑÐ¾Ðº ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸Ð¹ ÑÐ¿ÐµÑ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ð¹ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð²
  */
 class TServiceFreelancersCategories extends CWidget {
 
     public function run() 
     {
-        //íà ñëó÷àé åñëè óæå åñòü ãëîáàëüíàÿ 
-        //ïåðåìåííàÿ â íóæíûìè äàííûìè
+        //Ð½Ð° ÑÐ»ÑƒÑ‡Ð°Ð¹ ÐµÑÐ»Ð¸ ÑƒÐ¶Ðµ ÐµÑÑ‚ÑŒ Ð³Ð»Ð¾Ð±Ð°Ð»ÑŒÐ½Ð°Ñ 
+        //Ð¿ÐµÑ€ÐµÐ¼ÐµÐ½Ð½Ð°Ñ Ð² Ð½ÑƒÐ¶Ð½Ñ‹Ð¼Ð¸ Ð´Ð°Ð½Ð½Ñ‹Ð¼Ð¸
         global $profs;
 
         if(!isset($profs))
         {
             $prfs = new professions();
             $profs = $prfs->GetAllProfessions("", 0, 1);
-            //@todo: ïåðåäëàãàþ çàêåøèðîâàòü íàâå÷íî ÷åé÷àñ íà 60 ñåê â ìåòîäå âûøå
+            //@todo: Ð¿ÐµÑ€ÐµÐ´Ð»Ð°Ð³Ð°ÑŽ Ð·Ð°ÐºÐµÑˆÐ¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð½Ð°Ð²ÐµÑ‡Ð½Ð¾ Ñ‡ÐµÐ¹Ñ‡Ð°Ñ Ð½Ð° 60 ÑÐµÐº Ð² Ð¼ÐµÑ‚Ð¾Ð´Ðµ Ð²Ñ‹ÑˆÐµ
         }
         
         $this->render('t-service-freelancers-categories', array(

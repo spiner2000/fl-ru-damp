@@ -22,7 +22,7 @@ Sbr.prototype.ARB_RESULTS={<?
     }
 ?>};
 <?
-// Зависимости в схемах. Используется только на новых СБР #0019924
+// Р—Р°РІРёСЃРёРјРѕСЃС‚Рё РІ СЃС…РµРјР°С…. РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ С‚РѕР»СЊРєРѕ РЅР° РЅРѕРІС‹С… РЎР‘Р  #0019924
 if($stage->sbr->isNewVersionSbr()) {
     $key_init   = array_keys(sbr_stages::getArbInit($stage));
     $key_reason = array_keys(sbr_stages::getArbReasons($stage));
@@ -76,19 +76,19 @@ window.addEvent('domready', function() {
 </script>
 <div class="tabs-in nr-tabs-in2">
     <? include('tpl.stage-header.php') ?>
-    <? if($sbr->isAdmin() && $stage->status == sbr_stages::STATUS_INARBITRAGE) { // !!! функции ?>
+    <? if($sbr->isAdmin() && $stage->status == sbr_stages::STATUS_INARBITRAGE) { // !!! С„СѓРЅРєС†РёРё ?>
 
         <div class="form nr-prj nr-prj-arb">
             <div class="form-h">
                 <b class="b1"></b>
                 <b class="b2"></b>
                 <div class="form-h-in">
-                    <h3>Задача на рассмотрении у Арбитража</h3>
+                    <h3>Р—Р°РґР°С‡Р° РЅР° СЂР°СЃСЃРјРѕС‚СЂРµРЅРёРё Сѓ РђСЂР±РёС‚СЂР°Р¶Р°</h3>
                 </div>
             </div>
             <div class="form-in">
                 <div class="nr-arb-info">
-                    <strong>Причина:</strong>
+                    <strong>РџСЂРёС‡РёРЅР°:</strong>
                     <p><?=reformat($stage->arbitrage['descr'], 70, 0, 1, 1)?></p>
                     <? if($stage->arbitrage['attach']) { ?>
                     <br/>
@@ -97,7 +97,7 @@ window.addEvent('domready', function() {
                             if($a['is_deleted']=='t') continue; 
                             $aData = getAttachDisplayData(null, $a['name'], $a['path'] );
                         ?>
-                        <li><a href="<?=WDCPREFIX.'/'.$a['path'].$a['name']?>" target="_blank"><?=($a['orig_name'] ? $a['orig_name'] : $a['name'])?></a>, <span><?=ConvertBtoMB($a['size'])?></span><span class="avs-norisk <?=$aData['virus_class']?>" <?=($aData['virus_class'] == 'avs-nocheck' ? 'title="Антивирусом проверяются файлы, загруженные после 1&nbsp;июня&nbsp;2011&nbsp;года"' : '')?>><nobr><?=$aData['virus_msg']?></nobr></span></li>
+                        <li><a href="<?=WDCPREFIX.'/'.$a['path'].$a['name']?>" target="_blank"><?=($a['orig_name'] ? $a['orig_name'] : $a['name'])?></a>, <span><?=ConvertBtoMB($a['size'])?></span><span class="avs-norisk <?=$aData['virus_class']?>" <?=($aData['virus_class'] == 'avs-nocheck' ? 'title="РђРЅС‚РёРІРёСЂСѓСЃРѕРј РїСЂРѕРІРµСЂСЏСЋС‚СЃСЏ С„Р°Р№Р»С‹, Р·Р°РіСЂСѓР¶РµРЅРЅС‹Рµ РїРѕСЃР»Рµ 1&nbsp;РёСЋРЅСЏ&nbsp;2011&nbsp;РіРѕРґР°"' : '')?>><nobr><?=$aData['virus_msg']?></nobr></span></li>
                         <? } ?>
                     </ul>
                     <? } ?>
@@ -105,17 +105,17 @@ window.addEvent('domready', function() {
                 <? if($sbr->isAdmin() && $stage->status == sbr_stages::STATUS_INARBITRAGE) { ?>
                     <div class="nr-prj-arb-form">
                         <form action="." method="post" id="arbitragedFrm">
-                            <p class="nr-prj-arb-form-warning">Обратите внимание, любые действия необратимы, пожалуйста, внимательно отнеситесь к принятию решения.</p>
+                            <p class="nr-prj-arb-form-warning">РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ, Р»СЋР±С‹Рµ РґРµР№СЃС‚РІРёСЏ РЅРµРѕР±СЂР°С‚РёРјС‹, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРЅРёРјР°С‚РµР»СЊРЅРѕ РѕС‚РЅРµСЃРёС‚РµСЃСЊ Рє РїСЂРёРЅСЏС‚РёСЋ СЂРµС€РµРЅРёСЏ.</p>
                             <table>
                                 <tr>
-                                    <th>Заказчик:</th>
+                                    <th>Р—Р°РєР°Р·С‡РёРє:</th>
                                     <td><input type="text" disabled="true" id="emp_sum" name="e_sum" style="text-align:right" /> <?=$EXRATE_CODES[$sbr->cost_sys][0]?>
                                     <span><input type="text" maxlength="3" id="emp_percent" name="emp_percent" onchange="SBR.setArbPercent(this,<?=$stage->id?>)" onkeydown="if(event.keyCode==13){SBR.setArbPercent(this,<?=$stage->id?>);return false;}" style="text-align:right" /> <strong>%</strong></span>
                                     <div class="tip tip-t2" style="top:auto;margin-top:-8px;margin-left:100px"></div>
                                     &nbsp;&nbsp;&nbsp;&nbsp;&mdash;&nbsp;&nbsp;&nbsp;&nbsp; <a href="/users/<?=$sbr->emp_login?>/"><?=$sbr->emp_uname?> <?=$sbr->emp_usurname?> [<?=$sbr->emp_login?>]</a></td>
                                 </tr>
                                 <tr>
-                                    <th>Исполнитель:</th>
+                                    <th>РСЃРїРѕР»РЅРёС‚РµР»СЊ:</th>
                                     <td><input type="text" disabled="true" id="frl_sum" name="f_sum" style="text-align:right" /> <?=$EXRATE_CODES[$sbr->cost_sys][0]?>
                                     <span><input type="text" maxlength="3" id="frl_percent" name="frl_percent" onchange="SBR.setArbPercent(this,<?=$stage->id?>)" onkeydown="if(event.keyCode==13){SBR.setArbPercent(this,<?=$stage->id?>);return false;}" value="<?=$stage->request['frl_percent']?>" style="text-align:right" /> <strong>%</strong></span>
                                     <div class="tip tip-t2" style="top:auto;margin-top:-8px;margin-left:100px"></div>
@@ -124,10 +124,10 @@ window.addEvent('domready', function() {
                             </table>
                             <div class="nr-prj-arb-inf">
                                 <div class="nr-prj-arb-inf-sel">
-                                    <label for="">Инициализация:</label>
+                                    <label for="">РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ:</label>
                                     <select onchange="<?= $stage->sbr->scheme_type == sbr::SCHEME_LC ? "SBR.changeRepReasonNew" : "SBR.changeRepReason"; ?>(this, 'bx_arb_init', SBR.ARB_INITS)" name="pp_init">
                                       <? if($stage->sbr->scheme_type != sbr::SCHEME_LC) { ?>
-                                        <option>Другое (указать)</option>
+                                        <option>Р”СЂСѓРіРѕРµ (СѓРєР°Р·Р°С‚СЊ)</option>
                                       <? } else {
                                          $stage->request['init'] =  ($stage->request['init'] == '' ? current(sbr_stages::getArbInit($stage)) : $stage->request['init']);
                                       } ?>  
@@ -140,22 +140,22 @@ window.addEvent('domready', function() {
                                 <div class="tip tip-t2" style="top:auto;margin-top:-7px;z-index:1"></div>
                                 <br />
                                 <div class="nr-prj-arb-inf-sel">
-                                    <label for="">Причина: </label>
+                                    <label for="">РџСЂРёС‡РёРЅР°: </label>
                                     <select onchange="<?= $stage->sbr->scheme_type == sbr::SCHEME_LC ? "SBR.changeRepReasonNew" : "SBR.changeRepReason"; ?>(this, 'bx_arb_reason', SBR.ARB_REASONS)" name="pp_reason" <?=  $disabled_reason ? "disabled" : "";?>>
-                                      <option>Другая причина</option>
+                                      <option>Р”СЂСѓРіР°СЏ РїСЂРёС‡РёРЅР°</option>
                                       <? foreach(sbr_stages::getArbReasons($stage) as $pp=>$r) { ?>
                                          <option value="<?=$pp?>"<?=$stage->request['pp_reason']==$pp ? ' selected="true"' : ''?>><?=$pp?></option>
                                       <? } ?>
                                     </select>
                                 </div>
-                                <span><textarea rows="5" cols="40" <?=  $disabled_reason ? "disabled" : "";?> id="bx_arb_reason" <?= ($stage->sbr->scheme_type == sbr::SCHEME_LC) && ($stage->request['pp_reason'] == 'Другая причина' || $stage->request['pp_reason'] == '') ? 'style="display:none"' : ''; ?> name="reason"><?=$stage->request['reason']?></textarea></span>
+                                <span><textarea rows="5" cols="40" <?=  $disabled_reason ? "disabled" : "";?> id="bx_arb_reason" <?= ($stage->sbr->scheme_type == sbr::SCHEME_LC) && ($stage->request['pp_reason'] == 'Р”СЂСѓРіР°СЏ РїСЂРёС‡РёРЅР°' || $stage->request['pp_reason'] == '') ? 'style="display:none"' : ''; ?> name="reason"><?=$stage->request['reason']?></textarea></span>
                                 <div class="tip tip-t2" style="top:auto;margin-top:-7px;z-index:1"></div>
                                 <br />
                                 <div class="nr-prj-arb-inf-sel">
-                                    <label for="">Решение:</label>
+                                    <label for="">Р РµС€РµРЅРёРµ:</label>
                                     <select onchange="<?= $stage->sbr->scheme_type == sbr::SCHEME_LC ? "SBR.changeRepReasonNew" : "SBR.changeRepReason"; ?>(this, 'bx_arb_result', SBR.ARB_RESULTS)" name="pp_result" <?=  $disabled_result ? "disabled" : "";?>>
                                       <? if($stage->sbr->scheme_type != sbr::SCHEME_LC) { ?>
-                                        <option>Другое (указать)</option>
+                                        <option>Р”СЂСѓРіРѕРµ (СѓРєР°Р·Р°С‚СЊ)</option>
                                       <? } else {
                                           $stage->request['result'] =  ($stage->request['result'] == '' ? current(sbr_stages::getArbResults($stage)) : $stage->request['result']);
                                       }//if?>  
@@ -168,20 +168,20 @@ window.addEvent('domready', function() {
                                 <div class="tip tip-t2" style="top:auto;margin-top:-7px;z-index:1"></div>
                                 <br />
                                 <? if($stage->sbr->scheme_type != sbr::SCHEME_LC) { ?>
-                                <label class="both c"><span class="i-chk"><input type="checkbox" name="by_consent"<?=$stage->request['by_consent'] ? ' checked="true"' : ''?>/></span> По взаимному согласию</label>
+                                <label class="both c"><span class="i-chk"><input type="checkbox" name="by_consent"<?=$stage->request['by_consent'] ? ' checked="true"' : ''?>/></span> РџРѕ РІР·Р°РёРјРЅРѕРјСѓ СЃРѕРіР»Р°СЃРёСЋ</label>
                                 <? } else {?>
                                 <input type="hidden" value="1" name="by_consent"/>
                                 <? }//if?>
                             </div>
                             <div class="nr-prj-arb-txt">
-                                <label for="wfeasz"><strong>Громогласно</strong> прокомментировать:</label>
+                                <label for="wfeasz"><strong>Р“СЂРѕРјРѕРіР»Р°СЃРЅРѕ</strong> РїСЂРѕРєРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ:</label>
                                 <span><textarea rows="5" cols="40" id="" name="descr_arb"><?=$stage->request['descr_arb']?></textarea></span>
                                 <div class="tip tip-t2" style="top:auto;margin-top:-7px"></div>
                             </div>
                             <div class="nr-prj-btns c">
-                                <label><input type="checkbox" name="iagree" onclick="SBR.form.sendform.disabled=!this.checked" /> Подтверждаю, что я в состоянии вынести адекватное решение.</label>
-                                <input type="submit" name="sendform" value="Принять решение (необратимо)" class="i-btn" disabled="true" /> 
-                                <input type="submit" name="cancel" value="Отменить Арбитраж" class="i-btn nr-draft-del" /> 
+                                <label><input type="checkbox" name="iagree" onclick="SBR.form.sendform.disabled=!this.checked" /> РџРѕРґС‚РІРµСЂР¶РґР°СЋ, С‡С‚Рѕ СЏ РІ СЃРѕСЃС‚РѕСЏРЅРёРё РІС‹РЅРµСЃС‚Рё Р°РґРµРєРІР°С‚РЅРѕРµ СЂРµС€РµРЅРёРµ.</label>
+                                <input type="submit" name="sendform" value="РџСЂРёРЅСЏС‚СЊ СЂРµС€РµРЅРёРµ (РЅРµРѕР±СЂР°С‚РёРјРѕ)" class="i-btn" disabled="true" /> 
+                                <input type="submit" name="cancel" value="РћС‚РјРµРЅРёС‚СЊ РђСЂР±РёС‚СЂР°Р¶" class="i-btn nr-draft-del" /> 
                             </div>
                             <input type="hidden" name="site" value="<?=$site?>" /> 
                             <input type="hidden" name="id" value="<?=$stage->id?>" /> 
@@ -214,15 +214,15 @@ window.addEvent('domready', function() {
                 <b class="b1"></b>
                 <b class="b2"></b>
                 <div class="form-h-in">
-                    <h3>Изменения в задаче</h3>
+                    <h3>РР·РјРµРЅРµРЅРёСЏ РІ Р·Р°РґР°С‡Рµ</h3>
                 </div>
             </div>
             <div class="form-in">
                 <? 
                    // !!!
                    $new_dead_time_ex = ($stage->v_data['dead_time'] && $stage->data['dead_time'] && $stage->v_data['dead_time'] != $stage->data['dead_time']);
-                   $old_tm = (!$stage->v_data['dead_time'] ? (int)$stage->v_data['work_time'].' '.ending(abs((int)$stage->v_data['work_time']), 'день', 'дня', 'дней') : date('d '. strtolower($MONTHA[date('n', strtotime($stage->v_data['dead_time']))]). ' Y H:i', strtotime($stage->v_data['dead_time'])));
-                   $new_tm = (!$stage->data['dead_time'] ? (int)$stage->data['work_time'].' '.ending(abs((int)$stage->data['work_time']), 'день', 'дня', 'дней') : date('d '. strtolower($MONTHA[date('n', strtotime($stage->data['dead_time']))]). ' Y H:i', strtotime($stage->data['dead_time'])));
+                   $old_tm = (!$stage->v_data['dead_time'] ? (int)$stage->v_data['work_time'].' '.ending(abs((int)$stage->v_data['work_time']), 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№') : date('d '. strtolower($MONTHA[date('n', strtotime($stage->v_data['dead_time']))]). ' Y H:i', strtotime($stage->v_data['dead_time'])));
+                   $new_tm = (!$stage->data['dead_time'] ? (int)$stage->data['work_time'].' '.ending(abs((int)$stage->data['work_time']), 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№') : date('d '. strtolower($MONTHA[date('n', strtotime($stage->data['dead_time']))]). ' Y H:i', strtotime($stage->data['dead_time'])));
 
                    if($new_tm != $old_tm ) {
                        if(!$new_dead_time_ex)
@@ -237,7 +237,7 @@ window.addEvent('domready', function() {
                             <col />
                             <col />
                             <tr>
-                                <th>Срок</th>
+                                <th>РЎСЂРѕРє</th>
                                 <td class="date-old"><?=$old_tm?></td>
                                 <td><span class="rarr">&nbsp;&nbsp;&nbsp;&rarr;&nbsp;&nbsp;&nbsp;</span></td>
                                 <td><span class="date-new"><?=$new_tm?></span></td>
@@ -256,7 +256,7 @@ window.addEvent('domready', function() {
                             <col />
                             <col />
                             <tr>
-                                <th>Статус</th>
+                                <th>РЎС‚Р°С‚СѓСЃ</th>
                                 <td class="date-old"><?=sbr_stages::$ss_classes[$stage->v_data['status']][1]?></td>
                                 <td><span class="rarr">&nbsp;&nbsp;&nbsp;&rarr;&nbsp;&nbsp;&nbsp;</span></td>
                                 <td><span class="date-new"><?=sbr_stages::$ss_classes[$stage->data['status']][1]?></span></td>
@@ -275,7 +275,7 @@ window.addEvent('domready', function() {
                             <col />
                             <col />
                             <tr>
-                                <th>Бюджет</th>
+                                <th>Р‘СЋРґР¶РµС‚</th>
                                 <td class="date-old"><?=sbr_meta::view_cost($stage->v_data['cost'], $sbr->v_data['cost_sys'])?></td>
                                 <td><span class="rarr">&nbsp;&nbsp;&nbsp;&rarr;&nbsp;&nbsp;&nbsp;</span></td>
                                 <td><span class="date-new"><?=sbr_meta::view_cost($stage->cost, $sbr->cost_sys)?></span></td>
@@ -291,7 +291,7 @@ window.addEvent('domready', function() {
                 <div class="form-block block-new">
                     <span class="nr-prj-ch-num"><?=++$vis_changes?>.</span>
                     <div class="form-el">
-                        <p><strong>Техническое задание (новая версия)</strong></p>
+                        <p><strong>РўРµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ (РЅРѕРІР°СЏ РІРµСЂСЃРёСЏ)</strong></p>
                         <p><?=reformat($stage->data['descr'], 70)?></p>
                         <? if($stage->data['attach']) { ?>
                         <ul class="list-files">
@@ -299,7 +299,7 @@ window.addEvent('domready', function() {
                                     if($a['is_deleted']=='t') continue; 
                                     $aData = getAttachDisplayData(null, $a['name'], $a['path'] );
                             ?>
-                            <li><a href="<?=WDCPREFIX.'/'.$a['path'].$a['name']?>" target="_blank"><?=($a['orig_name'] ? $a['orig_name'] : $a['name'])?></a>, <span><?=ConvertBtoMB($a['size'])?></span><span class="avs-norisk <?=$aData['virus_class']?>" <?=($aData['virus_class'] == 'avs-nocheck' ? 'title="Антивирусом проверяются файлы, загруженные после 1&nbsp;июня&nbsp;2011&nbsp;года"' : '')?>><nobr><?=$aData['virus_msg']?></nobr></span></li>
+                            <li><a href="<?=WDCPREFIX.'/'.$a['path'].$a['name']?>" target="_blank"><?=($a['orig_name'] ? $a['orig_name'] : $a['name'])?></a>, <span><?=ConvertBtoMB($a['size'])?></span><span class="avs-norisk <?=$aData['virus_class']?>" <?=($aData['virus_class'] == 'avs-nocheck' ? 'title="РђРЅС‚РёРІРёСЂСѓСЃРѕРј РїСЂРѕРІРµСЂСЏСЋС‚СЃСЏ С„Р°Р№Р»С‹, Р·Р°РіСЂСѓР¶РµРЅРЅС‹Рµ РїРѕСЃР»Рµ 1&nbsp;РёСЋРЅСЏ&nbsp;2011&nbsp;РіРѕРґР°"' : '')?>><nobr><?=$aData['virus_msg']?></nobr></span></li>
                             <? } ?>
                         </ul>
                         <? } ?>
@@ -307,7 +307,7 @@ window.addEvent('domready', function() {
                 </div>
                 <div class="form-block block-old last <?=$stage->isTzOpened() ? 'flt-show' : 'flt-hide'?>" id="nr-tz" page="<?=$stage->getCCTZKey()?>">
                     <div class="form-el">
-                        <div><strong>Техническое задание<?=($new_descr_ex ? ' (старая версия)' : '')?></strong> <a href="javascript: void(0);" class="lnk-dot-blue flt-tgl-lnk"><?=$stage->isTzOpened() ? 'Скрыть': 'Показать'?></a></div>
+                        <div><strong>РўРµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ<?=($new_descr_ex ? ' (СЃС‚Р°СЂР°СЏ РІРµСЂСЃРёСЏ)' : '')?></strong> <a href="javascript: void(0);" class="lnk-dot-blue flt-tgl-lnk"><?=$stage->isTzOpened() ? 'РЎРєСЂС‹С‚СЊ': 'РџРѕРєР°Р·Р°С‚СЊ'?></a></div>
                         <div class="flt-cnt">
                             <div class="utxt"><p><?=reformat($stage->v_data['descr'], 70, 0, 0, 1)?></p></div>
                             <? if($stage->v_data['attach']) { ?>
@@ -316,7 +316,7 @@ window.addEvent('domready', function() {
                                     if($a['is_deleted']=='t') continue;  
                                     $aData = getAttachDisplayData(null, $a['name'], $a['path'] );
                                 ?>
-                                <li><a href="<?=WDCPREFIX.'/'.$a['path'].$a['name']?>" target="_blank"><?=($a['orig_name'] ? $a['orig_name'] : $a['name'])?></a>, <span><?=ConvertBtoMB($a['size'])?></span><span class="avs-norisk <?=$aData['virus_class']?>" <?=($aData['virus_class'] == 'avs-nocheck' ? 'title="Антивирусом проверяются файлы, загруженные после 1&nbsp;июня&nbsp;2011&nbsp;года"' : '')?>><nobr><?=$aData['virus_msg']?></nobr></span></li>
+                                <li><a href="<?=WDCPREFIX.'/'.$a['path'].$a['name']?>" target="_blank"><?=($a['orig_name'] ? $a['orig_name'] : $a['name'])?></a>, <span><?=ConvertBtoMB($a['size'])?></span><span class="avs-norisk <?=$aData['virus_class']?>" <?=($aData['virus_class'] == 'avs-nocheck' ? 'title="РђРЅС‚РёРІРёСЂСѓСЃРѕРј РїСЂРѕРІРµСЂСЏСЋС‚СЃСЏ С„Р°Р№Р»С‹, Р·Р°РіСЂСѓР¶РµРЅРЅС‹Рµ РїРѕСЃР»Рµ 1&nbsp;РёСЋРЅСЏ&nbsp;2011&nbsp;РіРѕРґР°"' : '')?>><nobr><?=$aData['virus_msg']?></nobr></span></li>
                                 <? } ?>
                             </ul>
                             <? } ?>
@@ -329,8 +329,8 @@ window.addEvent('domready', function() {
                 <? if(!$vis_changes) { ?>
                     <div class="form-block block-new">
                         <div class="form-el">
-                          Видимых изменений нет. Возможно, заказчик передумал и вернул предыдущую версию.<br/>
-                          Пожалуйста, ознакомьтесь с <a href="?site=history&id=<?=$sbr->id?>&filter[stage_id]=<?=$stage->id?>">историей изменений</a> задачи.
+                          Р’РёРґРёРјС‹С… РёР·РјРµРЅРµРЅРёР№ РЅРµС‚. Р’РѕР·РјРѕР¶РЅРѕ, Р·Р°РєР°Р·С‡РёРє РїРµСЂРµРґСѓРјР°Р» Рё РІРµСЂРЅСѓР» РїСЂРµРґС‹РґСѓС‰СѓСЋ РІРµСЂСЃРёСЋ.<br/>
+                          РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕР·РЅР°РєРѕРјСЊС‚РµСЃСЊ СЃ <a href="?site=history&id=<?=$sbr->id?>&filter[stage_id]=<?=$stage->id?>">РёСЃС‚РѕСЂРёРµР№ РёР·РјРµРЅРµРЅРёР№</a> Р·Р°РґР°С‡Рё.
                         </div>
                     </div>
                 <? } ?>
@@ -353,8 +353,8 @@ window.addEvent('domready', function() {
             <b class="b1"></b>
             <b class="b2"></b>
             <div class="flt-bar">
-                <a href="javascript: void(0);" class="flt-tgl-lnk"><?=$stage->isTzOpened() ? 'Скрыть': 'Показать'?></a>
-                <h4>Техническое задание</h4>
+                <a href="javascript: void(0);" class="flt-tgl-lnk"><?=$stage->isTzOpened() ? 'РЎРєСЂС‹С‚СЊ': 'РџРѕРєР°Р·Р°С‚СЊ'?></a>
+                <h4>РўРµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ</h4>
             </div>
             <div class="form-in flt-cnt">
                 <div class="form-block first last">
@@ -368,7 +368,7 @@ window.addEvent('domready', function() {
                                 }
                                 $aData = getAttachDisplayData(null, $a['name'], $a['path'] );
                             ?>
-                            <li><a href="<?=WDCPREFIX.'/'.$a['path'].$a['name']?>" target="_blank"><?=($a['orig_name'] ? $a['orig_name'] : $a['name'])?></a>, <span><?=ConvertBtoMB($a['size'])?></span><span class="avs-norisk <?=$aData['virus_class']?>" <?=($aData['virus_class'] == 'avs-nocheck' ? 'title="Антивирусом проверяются файлы, загруженные после 1&nbsp;июня&nbsp;2011&nbsp;года"' : '')?>><nobr><?=$aData['virus_msg']?></nobr></span></li>
+                            <li><a href="<?=WDCPREFIX.'/'.$a['path'].$a['name']?>" target="_blank"><?=($a['orig_name'] ? $a['orig_name'] : $a['name'])?></a>, <span><?=ConvertBtoMB($a['size'])?></span><span class="avs-norisk <?=$aData['virus_class']?>" <?=($aData['virus_class'] == 'avs-nocheck' ? 'title="РђРЅС‚РёРІРёСЂСѓСЃРѕРј РїСЂРѕРІРµСЂСЏСЋС‚СЃСЏ С„Р°Р№Р»С‹, Р·Р°РіСЂСѓР¶РµРЅРЅС‹Рµ РїРѕСЃР»Рµ 1&nbsp;РёСЋРЅСЏ&nbsp;2011&nbsp;РіРѕРґР°"' : '')?>><nobr><?=$aData['virus_msg']?></nobr></span></li>
                             <? } ?>
                         </ul>
                         <? } ?>
@@ -386,25 +386,25 @@ window.addEvent('domready', function() {
                 <b class="b2"></b>
                 <div class="form-h-in">
                     <? if ($sbr->isEmp() && $stage->status != sbr_stages::STATUS_ARBITRAGED) { ?>
-                        <h3>Поздравляем, вы завершили задачу!</h3>
+                        <h3>РџРѕР·РґСЂР°РІР»СЏРµРј, РІС‹ Р·Р°РІРµСЂС€РёР»Рё Р·Р°РґР°С‡Сѓ!</h3>
                     <? } else { ?>
-                        <h3>Спасибо, ваш отзыв отправлен!</h3>
+                        <h3>РЎРїР°СЃРёР±Рѕ, РІР°С€ РѕС‚Р·С‹РІ РѕС‚РїСЂР°РІР»РµРЅ!</h3>
                     <? } ?>
                 </div>
             </div>
             <div class="form-in">
                 <? if ($sbr->isEmp()) { ?>
                     <? if ($stage->status != sbr_stages::STATUS_ARBITRAGED) { ?>
-                    <em>Спасибо, ваш отзыв отправлен!</em><br /><br />
+                    <em>РЎРїР°СЃРёР±Рѕ, РІР°С€ РѕС‚Р·С‹РІ РѕС‚РїСЂР°РІР»РµРЅ!</em><br /><br />
                     <? } ?>
-                    <em>Обратите внимание:</em> Сделка будет считаться незавершенной до получения всех необходимых документов обеих сторон. Пожалуйста, пришлите необходимые документы, которые будут сформированы и загружены в раздел "<a href="/norisk2/?site=docs&id=<?=$sbr->id?>&sid=<?= $stage->id?>" target="_blank">Документы</a>" вашей сделки сразу после выплаты исполнителю.
+                    <em>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ:</em> РЎРґРµР»РєР° Р±СѓРґРµС‚ СЃС‡РёС‚Р°С‚СЊСЃСЏ РЅРµР·Р°РІРµСЂС€РµРЅРЅРѕР№ РґРѕ РїРѕР»СѓС‡РµРЅРёСЏ РІСЃРµС… РЅРµРѕР±С…РѕРґРёРјС‹С… РґРѕРєСѓРјРµРЅС‚РѕРІ РѕР±РµРёС… СЃС‚РѕСЂРѕРЅ. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїСЂРёС€Р»РёС‚Рµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹, РєРѕС‚РѕСЂС‹Рµ Р±СѓРґСѓС‚ СЃС„РѕСЂРјРёСЂРѕРІР°РЅС‹ Рё Р·Р°РіСЂСѓР¶РµРЅС‹ РІ СЂР°Р·РґРµР» "<a href="/norisk2/?site=docs&id=<?=$sbr->id?>&sid=<?= $stage->id?>" target="_blank">Р”РѕРєСѓРјРµРЅС‚С‹</a>" РІР°С€РµР№ СЃРґРµР»РєРё СЃСЂР°Р·Сѓ РїРѕСЃР»Рµ РІС‹РїР»Р°С‚С‹ РёСЃРїРѕР»РЅРёС‚РµР»СЋ.
                 <? } else { ?>
-                    <strong>Обратите внимание, это очень важно:</strong>
-                    «Безопасная Сделка» считается завершенной только после подписания <a href="/norisk2/?site=docs&id=<?= $sbr->id ?>">Акта</a> каждого из участников сделки. 
+                    <strong>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ, СЌС‚Рѕ РѕС‡РµРЅСЊ РІР°Р¶РЅРѕ:</strong>
+                    В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В» СЃС‡РёС‚Р°РµС‚СЃСЏ Р·Р°РІРµСЂС€РµРЅРЅРѕР№ С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ РїРѕРґРїРёСЃР°РЅРёСЏ <a href="/norisk2/?site=docs&id=<?= $sbr->id ?>">РђРєС‚Р°</a> РєР°Р¶РґРѕРіРѕ РёР· СѓС‡Р°СЃС‚РЅРёРєРѕРІ СЃРґРµР»РєРё. 
                     <? if(!$sbr->checkUserReqvs()) { ?>
-                    Вам необходимо заполнить реквизиты на странице <a href="/users/<?=$sbr->login?>/setup/finance/">Финансов</a>. 
+                    Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ Р·Р°РїРѕР»РЅРёС‚СЊ СЂРµРєРІРёР·РёС‚С‹ РЅР° СЃС‚СЂР°РЅРёС†Рµ <a href="/users/<?=$sbr->login?>/setup/finance/">Р¤РёРЅР°РЅСЃРѕРІ</a>. 
                     <? } ?>
-                    Только после подписания всех необходимых документов вы можете получить денежные средства.
+                    РўРѕР»СЊРєРѕ РїРѕСЃР»Рµ РїРѕРґРїРёСЃР°РЅРёСЏ РІСЃРµС… РЅРµРѕР±С…РѕРґРёРјС‹С… РґРѕРєСѓРјРµРЅС‚РѕРІ РІС‹ РјРѕР¶РµС‚Рµ РїРѕР»СѓС‡РёС‚СЊ РґРµРЅРµР¶РЅС‹Рµ СЃСЂРµРґСЃС‚РІР°.
                 <? } ?>
             </div>
             <b class="b2"></b>

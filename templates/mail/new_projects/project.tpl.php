@@ -29,23 +29,23 @@
         <td  bgcolor="#ffffff" width="20"></td>
         <td  height="20">
             <font color="#a0a0a0" size="1" face="arial">
-                <?php if ($project_kind == 2 || $project_kind == 7): // Конкурс ?>
-                    <b>Конкурс</b> &#160;
-                <?php elseif ($project_kind == 4): // Вакансия ?>
-                    <b>В офис</b> &#160;
+                <?php if ($project_kind == 2 || $project_kind == 7): // РљРѕРЅРєСѓСЂСЃ ?>
+                    <b>РљРѕРЅРєСѓСЂСЃ</b> &#160;
+                <?php elseif ($project_kind == 4): // Р’Р°РєР°РЅСЃРёСЏ ?>
+                    <b>Р’ РѕС„РёСЃ</b> &#160;
                 <?php endif; ?>
 
                 <?php if ($project_kind == 2 || $project_kind == 7){ ?>                  
                     <?php if (strtotime($end_date) > time()){ ?>
-                        до окончания осталось: <?= ago_pub_x(strtotime($end_date), "ynjGx") ?>
+                        РґРѕ РѕРєРѕРЅС‡Р°РЅРёСЏ РѕСЃС‚Р°Р»РѕСЃСЊ: <?= ago_pub_x(strtotime($end_date), "ynjGx") ?>
                     <?php }else{ ?>
-                        завершен
+                        Р·Р°РІРµСЂС€РµРЅ
                     <?php } ?>
                      &#160;   
                 <?php } ?>
                     
                 <?php if ($project_pro_only): ?>
-                    Только для <img src="<?=$host?>/images/letter/pro-f.png" width="25" height="12" style="margin-bottom:-3px;">&nbsp;
+                    РўРѕР»СЊРєРѕ РґР»СЏ <img src="<?=$host?>/images/letter/pro-f.png" width="25" height="12" style="margin-bottom:-3px;">&nbsp;
                 <?php endif; ?>
 
                 <?php if ($project_verify_only): ?>

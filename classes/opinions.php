@@ -3,38 +3,38 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
- * Класс для работы с отзывами на сайте
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РѕС‚Р·С‹РІР°РјРё РЅР° СЃР°Р№С‚Рµ
  *
  */
 class opinions {
 
     /**
-     * Максимальное количество символов в отзыве.
+     * РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ РІ РѕС‚Р·С‹РІРµ.
      *
      * @var int
      */
     public static $opinion_max_length = 1000;
     /**
-     * Максимальное количество символов в комментарии к отзыву.
+     * РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ РІ РєРѕРјРјРµРЅС‚Р°СЂРёРё Рє РѕС‚Р·С‹РІСѓ.
      *
      * @var int
      */
     public static $comment_max_length = 1000;
 
     /**
-     * Получает список отзывов, которые оставили пользователю
+     * РџРѕР»СѓС‡Р°РµС‚ СЃРїРёСЃРѕРє РѕС‚Р·С‹РІРѕРІ, РєРѕС‚РѕСЂС‹Рµ РѕСЃС‚Р°РІРёР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ
      *
-     * @param integer $touser_id        id пользователя, которому написан отзыв
-     * @param unknown $msg_cntr         не используется
-     * @param unknown $page             не используется
-     * @param unknown $num_msgs         не используется
-     * @param string $error             текст ошибки
-     * @param string $users_table       используемая таблица
-     * @param string $sort              тип отзывов, которые следует выбрать (false - все, 1 - положительные, 2 - нейтральные, 3 - отрицательные)
-     * @param integer $period           период за который отображать отзывы: 0 - все, 1 - за год, 2 - за пол года, 3 - за месяц
-     * @param integer $author           0 - от всех пользователей, 1 - от фрилансеров, 2 - от работодателей
+     * @param integer $touser_id        id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂРѕРјСѓ РЅР°РїРёСЃР°РЅ РѕС‚Р·С‹РІ
+     * @param unknown $msg_cntr         РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
+     * @param unknown $page             РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
+     * @param unknown $num_msgs         РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
+     * @param string $error             С‚РµРєСЃС‚ РѕС€РёР±РєРё
+     * @param string $users_table       РёСЃРїРѕР»СЊР·СѓРµРјР°СЏ С‚Р°Р±Р»РёС†Р°
+     * @param string $sort              С‚РёРї РѕС‚Р·С‹РІРѕРІ, РєРѕС‚РѕСЂС‹Рµ СЃР»РµРґСѓРµС‚ РІС‹Р±СЂР°С‚СЊ (false - РІСЃРµ, 1 - РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рµ, 2 - РЅРµР№С‚СЂР°Р»СЊРЅС‹Рµ, 3 - РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рµ)
+     * @param integer $period           РїРµСЂРёРѕРґ Р·Р° РєРѕС‚РѕСЂС‹Р№ РѕС‚РѕР±СЂР°Р¶Р°С‚СЊ РѕС‚Р·С‹РІС‹: 0 - РІСЃРµ, 1 - Р·Р° РіРѕРґ, 2 - Р·Р° РїРѕР» РіРѕРґР°, 3 - Р·Р° РјРµСЃСЏС†
+     * @param integer $author           0 - РѕС‚ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, 1 - РѕС‚ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, 2 - РѕС‚ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№
      * 
-     * @return mixed                    массив отзывов или сообщение об ошибке в случае неуспеха
+     * @return mixed                    РјР°СЃСЃРёРІ РѕС‚Р·С‹РІРѕРІ РёР»Рё СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
     function GetMsgs($touser_id, $msg_cntr, $page, $num_msgs, $error, $users_table = 'users', $sort=false, $period=0, $author = 0) {
         if( !in_array($users_table, array('freelancer', 'employer', 'users')) ) {
@@ -101,17 +101,17 @@ class opinions {
     }
 
     /**
-     * Получает список отзывов, которые оставил пользователь
+     * РџРѕР»СѓС‡Р°РµС‚ СЃРїРёСЃРѕРє РѕС‚Р·С‹РІРѕРІ, РєРѕС‚РѕСЂС‹Рµ РѕСЃС‚Р°РІРёР» РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ
      *
-     * @param integer $fromuser_id      id пользователя, который написал отзыв
-     * @param unknown $msg_cntr         не используется
-     * @param unknown $page             не используется
-     * @param unknown $num_msgs         не используется
-     * @param string $error             текст ошибки
-     * @param string $sort              тип отзывов, которые следует выбрать (false - все, 1 - положительные, 0 - нейтральные, -1 - отрицательные)
-     * @param integer $period           период за который отображать отзывы: 0 - все, 1 - за год, 2 - за пол года, 3 - за месяц
+     * @param integer $fromuser_id      id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂС‹Р№ РЅР°РїРёСЃР°Р» РѕС‚Р·С‹РІ
+     * @param unknown $msg_cntr         РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
+     * @param unknown $page             РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
+     * @param unknown $num_msgs         РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
+     * @param string $error             С‚РµРєСЃС‚ РѕС€РёР±РєРё
+     * @param string $sort              С‚РёРї РѕС‚Р·С‹РІРѕРІ, РєРѕС‚РѕСЂС‹Рµ СЃР»РµРґСѓРµС‚ РІС‹Р±СЂР°С‚СЊ (false - РІСЃРµ, 1 - РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рµ, 0 - РЅРµР№С‚СЂР°Р»СЊРЅС‹Рµ, -1 - РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рµ)
+     * @param integer $period           РїРµСЂРёРѕРґ Р·Р° РєРѕС‚РѕСЂС‹Р№ РѕС‚РѕР±СЂР°Р¶Р°С‚СЊ РѕС‚Р·С‹РІС‹: 0 - РІСЃРµ, 1 - Р·Р° РіРѕРґ, 2 - Р·Р° РїРѕР» РіРѕРґР°, 3 - Р·Р° РјРµСЃСЏС†
      *
-     * @return mixed                    массив отзывов или сообщение об ошибке в случае неуспеха
+     * @return mixed                    РјР°СЃСЃРёРІ РѕС‚Р·С‹РІРѕРІ РёР»Рё СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
     function GetMyMsgs($fromuser_id, $msg_cntr, $page, $num_msgs, $error, $sort = false, $period = 0) {
         //$sql = "SELECT id, fromuser_id, reg_date as ago, touser_id, post_time, msgtext,
@@ -158,12 +158,12 @@ class opinions {
     }
 
     /**
-     * Получает определенный отзыв по его id
+     * РџРѕР»СѓС‡Р°РµС‚ РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РѕС‚Р·С‹РІ РїРѕ РµРіРѕ id
      *
-     * @param integer $msg_id           id отзыва
-     * @param string $error             текст ошибки
+     * @param integer $msg_id           id РѕС‚Р·С‹РІР°
+     * @param string $error             С‚РµРєСЃС‚ РѕС€РёР±РєРё
      *
-     * @return mixed                    отзыв или сообщение об ошибке в случае неуспеха
+     * @return mixed                    РѕС‚Р·С‹РІ РёР»Рё СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
     function GetMsgInfo($msg_id, $error) {
         global $DB;
@@ -178,15 +178,15 @@ class opinions {
     }
 
     /**
-     * Добавление нового отзыва
+     * Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕРіРѕ РѕС‚Р·С‹РІР°
      *
-     * @param integer $fromuser_id      id пользователя, который написал отзыв
-     * @param integer $touser_id        id пользователя, которому написан отзыв
-     * @param string $msg               отзыв
-     * @param integer $rating           оценка (1 - положительный, 0 - нейтральный, -1 - отрицательный)
-     * @param string $from_ip           IP написавшего отзыв
+     * @param integer $fromuser_id      id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂС‹Р№ РЅР°РїРёСЃР°Р» РѕС‚Р·С‹РІ
+     * @param integer $touser_id        id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂРѕРјСѓ РЅР°РїРёСЃР°РЅ РѕС‚Р·С‹РІ
+     * @param string $msg               РѕС‚Р·С‹РІ
+     * @param integer $rating           РѕС†РµРЅРєР° (1 - РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№, 0 - РЅРµР№С‚СЂР°Р»СЊРЅС‹Р№, -1 - РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№)
+     * @param string $from_ip           IP РЅР°РїРёСЃР°РІС€РµРіРѕ РѕС‚Р·С‹РІ
      *
-     * @return string                   текст ошибки в случае неуспеха
+     * @return string                   С‚РµРєСЃС‚ РѕС€РёР±РєРё РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
     function NewMsg($fromuser_id, $touser_id, $msgtext, $rating, $from_ip, &$new_id) {
         if ($fromuser_id == 0) return;
@@ -205,12 +205,12 @@ class opinions {
     }
 
     /**
-     * получаем последний добавленный отзыв, для пользователя $fromuser_id пользователю $touser_id
+     * РїРѕР»СѓС‡Р°РµРј РїРѕСЃР»РµРґРЅРёР№ РґРѕР±Р°РІР»РµРЅРЅС‹Р№ РѕС‚Р·С‹РІ, РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ $fromuser_id РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ $touser_id
      *
-     * @param integer $fromuser_id      id пользователя, который написал отзыв
-     * @param integer $touser_id        id пользователя, которому написан отзыв
+     * @param integer $fromuser_id      id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂС‹Р№ РЅР°РїРёСЃР°Р» РѕС‚Р·С‹РІ
+     * @param integer $touser_id        id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂРѕРјСѓ РЅР°РїРёСЃР°РЅ РѕС‚Р·С‹РІ
      *
-     * @return array                    данные отзыва (или false в случае ошибки)
+     * @return array                    РґР°РЅРЅС‹Рµ РѕС‚Р·С‹РІР° (РёР»Рё false РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё)
      */
     function GetLastMessage($fromuser_id, $touser_id) {
         $sql =
@@ -232,11 +232,11 @@ class opinions {
     }
 
     /**
-     * получаем отзыв по его ID
+     * РїРѕР»СѓС‡Р°РµРј РѕС‚Р·С‹РІ РїРѕ РµРіРѕ ID
      *
-     * @param integer $msg_id      id отзыва
+     * @param integer $msg_id      id РѕС‚Р·С‹РІР°
      *
-     * @return array                    данные отзыва (или false в случае ошибки)
+     * @return array                    РґР°РЅРЅС‹Рµ РѕС‚Р·С‹РІР° (РёР»Рё false РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё)
      */
     function GetMessageById($msg_id) {
         $sql =
@@ -257,13 +257,13 @@ class opinions {
     }
 
     /**
-     * Удаление отзыва
+     * РЈРґР°Р»РµРЅРёРµ РѕС‚Р·С‹РІР°
      *
-     * @param integer $fromuser_id      id пользователя, который написал отзыв
-     * @param integer $msg              id отзыва
-     * @param integer $admin            кто удаляет отзыв (1 - администратор, 0 - пользователь)
+     * @param integer $fromuser_id      id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂС‹Р№ РЅР°РїРёСЃР°Р» РѕС‚Р·С‹РІ
+     * @param integer $msg              id РѕС‚Р·С‹РІР°
+     * @param integer $admin            РєС‚Рѕ СѓРґР°Р»СЏРµС‚ РѕС‚Р·С‹РІ (1 - Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ, 0 - РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ)
      *
-     * @return string                   текст ошибки в случае неуспеха
+     * @return string                   С‚РµРєСЃС‚ РѕС€РёР±РєРё РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
     function DeleteMsg($fromuser_id, $msg, $admin = 0) {
         global $DB;
@@ -294,9 +294,9 @@ class opinions {
     }
 
     /**
-     * Посылает сообщение пользователю о том, что отзыв, оставленный ему удален
+     * РџРѕСЃС‹Р»Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ Рѕ С‚РѕРј, С‡С‚Рѕ РѕС‚Р·С‹РІ, РѕСЃС‚Р°РІР»РµРЅРЅС‹Р№ РµРјСѓ СѓРґР°Р»РµРЅ
      *
-     * @param string $fromuser_login    login пользователя, который написал отзыв
+     * @param string $fromuser_login    login РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂС‹Р№ РЅР°РїРёСЃР°Р» РѕС‚Р·С‹РІ
      *
      * @return mixed                    
      */
@@ -317,17 +317,17 @@ class opinions {
     }
 
     /**
-     * Редактирование отзыва
+     * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РѕС‚Р·С‹РІР°
      *
-     * @param integer $fromuser_id      id пользователя, который написал отзыв
-     * @param integer $msgid            id отзыва
-     * @param string $msg               отзыв
-     * @param integer $rating           оценка (1 - положительный, 0 - нейтральный, -1 - отрицательный)
-     * @param string $from_ip           IP написавшего отзыв
-     * @param integer $admin            кто редактирует отзыв (1 - администратор, 0 - пользователь)
-     * @param integer $modified_id      UID юзера кто редактирует отзыв
+     * @param integer $fromuser_id      id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂС‹Р№ РЅР°РїРёСЃР°Р» РѕС‚Р·С‹РІ
+     * @param integer $msgid            id РѕС‚Р·С‹РІР°
+     * @param string $msg               РѕС‚Р·С‹РІ
+     * @param integer $rating           РѕС†РµРЅРєР° (1 - РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№, 0 - РЅРµР№С‚СЂР°Р»СЊРЅС‹Р№, -1 - РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№)
+     * @param string $from_ip           IP РЅР°РїРёСЃР°РІС€РµРіРѕ РѕС‚Р·С‹РІ
+     * @param integer $admin            РєС‚Рѕ СЂРµРґР°РєС‚РёСЂСѓРµС‚ РѕС‚Р·С‹РІ (1 - Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ, 0 - РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ)
+     * @param integer $modified_id      UID СЋР·РµСЂР° РєС‚Рѕ СЂРµРґР°РєС‚РёСЂСѓРµС‚ РѕС‚Р·С‹РІ
      *
-     * @return string                   текст ошибки в случае неуспеха
+     * @return string                   С‚РµРєСЃС‚ РѕС€РёР±РєРё РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
     function Edit($fromuser_id, $msgid, $msg, $rating, $from_ip, $admin = 0, $modified_id = null) {
         global $DB;
@@ -347,17 +347,17 @@ class opinions {
     
     
     /**
-     * Получает массив с количествм сообщений, разбитых по типам
+     * РџРѕР»СѓС‡Р°РµС‚ РјР°СЃСЃРёРІ СЃ РєРѕР»РёС‡РµСЃС‚РІРј СЃРѕРѕР±С‰РµРЅРёР№, СЂР°Р·Р±РёС‚С‹С… РїРѕ С‚РёРїР°Рј
      *
-     * @param integer $user_id          id пользователя, для которого считаем
-     * @param array $fromType           типы отзывов которых нужно посчитать (сейчас не используется)
+     * @param integer $user_id          id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ СЃС‡РёС‚Р°РµРј
+     * @param array $fromType           С‚РёРїС‹ РѕС‚Р·С‹РІРѕРІ РєРѕС‚РѕСЂС‹С… РЅСѓР¶РЅРѕ РїРѕСЃС‡РёС‚Р°С‚СЊ (СЃРµР№С‡Р°СЃ РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ)
      * 
-     * @todo: $fromType - пережиток от предыдущей верии функции возможно не понадобиться, тогда убрать везде
+     * @todo: $fromType - РїРµСЂРµР¶РёС‚РѕРє РѕС‚ РїСЂРµРґС‹РґСѓС‰РµР№ РІРµСЂРёРё С„СѓРЅРєС†РёРё РІРѕР·РјРѕР¶РЅРѕ РЅРµ РїРѕРЅР°РґРѕР±РёС‚СЊСЃСЏ, С‚РѕРіРґР° СѓР±СЂР°С‚СЊ РІРµР·РґРµ
      *
-     * @return array                    массив данных
-     *      'norisk' - СБР-отзывы, 
-     *      'emp' - от работодателей, 
-     *      'frl' - от фрилансеров
+     * @return array                    РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
+     *      'norisk' - РЎР‘Р -РѕС‚Р·С‹РІС‹, 
+     *      'emp' - РѕС‚ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№, 
+     *      'frl' - РѕС‚ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
      */    
     static function GetCounts($user_id, $fromType = array())
     {
@@ -367,7 +367,7 @@ class opinions {
         
         $ret = array('all' => array('p' => 0, 'n' => 0, 'm' => 0));
         
-        //Сумма по простым типам
+        //РЎСѓРјРјР° РїРѕ РїСЂРѕСЃС‚С‹Рј С‚РёРїР°Рј
         $map = array(
             'all' => array(
                 'p' => array('ops_frl_plus', 'ops_emp_plus'),
@@ -408,7 +408,7 @@ class opinions {
             ),
         );
         
-        //Составные типы
+        //РЎРѕСЃС‚Р°РІРЅС‹Рµ С‚РёРїС‹
         $map_complex = array(
             'total' => array('all', 'norisk', 'tu_orders', 'project_feedbacks', 'paid_advices'),
             'frl_total' => array('frl', 'norisk', 'tu_orders', 'project_feedbacks', 'paid_advices'),
@@ -416,7 +416,7 @@ class opinions {
         );        
         
         
-        //Обнуление всех типов
+        //РћР±РЅСѓР»РµРЅРёРµ РІСЃРµС… С‚РёРїРѕРІ
         $allTypes = array_merge(array_keys($map), array_keys($map_complex));
 
         foreach($allTypes as $type) {
@@ -431,7 +431,7 @@ class opinions {
         $user_id);
         
         if ($data) {
-            //Подсчет простых типов
+            //РџРѕРґСЃС‡РµС‚ РїСЂРѕСЃС‚С‹С… С‚РёРїРѕРІ
             foreach ($map as $type => $item) {
                 foreach ($item as $rateType => $fields) {
                     foreach ($fields as $field) {
@@ -440,7 +440,7 @@ class opinions {
                 }
             }
             
-            //Подсчет составных типов
+            //РџРѕРґСЃС‡РµС‚ СЃРѕСЃС‚Р°РІРЅС‹С… С‚РёРїРѕРІ
             foreach ($map_complex as $complexType => $simpleTypes) {
                 foreach ($simpleTypes as $simpleType) {
                     foreach ($ret[$simpleType] as $rateType => $value ) {
@@ -460,14 +460,14 @@ class opinions {
 
 
     /**
-     * @deprecated см GetCounts
+     * @deprecated СЃРј GetCounts
      * 
-     * Получает массив с количествм сообщений, разбитых по типам
+     * РџРѕР»СѓС‡Р°РµС‚ РјР°СЃСЃРёРІ СЃ РєРѕР»РёС‡РµСЃС‚РІРј СЃРѕРѕР±С‰РµРЅРёР№, СЂР°Р·Р±РёС‚С‹С… РїРѕ С‚РёРїР°Рј
      *
-     * @param integer $user_id          id пользователя, для которого считаем
-     * @param array $fromType           типы отзывов ('norisk' - СБР-отзывы, 'emp' - от работодателей, 'frl' - от фрилансеров, 'my' - мои)
+     * @param integer $user_id          id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РґР»СЏ РєРѕС‚РѕСЂРѕРіРѕ СЃС‡РёС‚Р°РµРј
+     * @param array $fromType           С‚РёРїС‹ РѕС‚Р·С‹РІРѕРІ ('norisk' - РЎР‘Р -РѕС‚Р·С‹РІС‹, 'emp' - РѕС‚ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№, 'frl' - РѕС‚ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, 'my' - РјРѕРё)
      *
-     * @return array                    массив данных
+     * @return array                    РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
      */
     function GetCounts_OLD($user_id, $fromType) 
     {
@@ -625,17 +625,17 @@ class opinions {
     }
     
     /**
-     * возвращает количества отзывов (мнения + рекомендации) для фильтра в разделе ОТЗЫВЫ
-     * количество для разных авторов отзываов (от всех, от фрилансеров, от работодателей)
-     * количество для разных периодов (за все время, за месяц, за полгода ...)
+     * РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІР° РѕС‚Р·С‹РІРѕРІ (РјРЅРµРЅРёСЏ + СЂРµРєРѕРјРµРЅРґР°С†РёРё) РґР»СЏ С„РёР»СЊС‚СЂР° РІ СЂР°Р·РґРµР»Рµ РћРўР—Р«Р’Р«
+     * РєРѕР»РёС‡РµСЃС‚РІРѕ РґР»СЏ СЂР°Р·РЅС‹С… Р°РІС‚РѕСЂРѕРІ РѕС‚Р·С‹РІР°РѕРІ (РѕС‚ РІСЃРµС…, РѕС‚ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, РѕС‚ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№)
+     * РєРѕР»РёС‡РµСЃС‚РІРѕ РґР»СЏ СЂР°Р·РЅС‹С… РїРµСЂРёРѕРґРѕРІ (Р·Р° РІСЃРµ РІСЂРµРјСЏ, Р·Р° РјРµСЃСЏС†, Р·Р° РїРѕР»РіРѕРґР° ...)
      * 
-     * @param integer $userID ID пользователя для чьи отзывы смотрим
-     * @param bool $isEmp true - работодатель, false - фрилансер
-     * @param integer $rating параметр сортировки на странице отзывов (false - все отзывы, 1 - положительные, 2 - нейтральные, 3 - отрицательные)
-     * @param integer $author значение фильтри автор отзыва (false - все отзывы, 1 - от фрилансеров, 2 - от работодателей)
-     * @param integer $period значение фильтра период отзыва (false - за все время, 1 - за последний год, 2 - за последние полгода, 3 - за последний месяц)
+     * @param integer $userID ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РґР»СЏ С‡СЊРё РѕС‚Р·С‹РІС‹ СЃРјРѕС‚СЂРёРј
+     * @param bool $isEmp true - СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ, false - С„СЂРёР»Р°РЅСЃРµСЂ
+     * @param integer $rating РїР°СЂР°РјРµС‚СЂ СЃРѕСЂС‚РёСЂРѕРІРєРё РЅР° СЃС‚СЂР°РЅРёС†Рµ РѕС‚Р·С‹РІРѕРІ (false - РІСЃРµ РѕС‚Р·С‹РІС‹, 1 - РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рµ, 2 - РЅРµР№С‚СЂР°Р»СЊРЅС‹Рµ, 3 - РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рµ)
+     * @param integer $author Р·РЅР°С‡РµРЅРёРµ С„РёР»СЊС‚СЂРё Р°РІС‚РѕСЂ РѕС‚Р·С‹РІР° (false - РІСЃРµ РѕС‚Р·С‹РІС‹, 1 - РѕС‚ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, 2 - РѕС‚ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№)
+     * @param integer $period Р·РЅР°С‡РµРЅРёРµ С„РёР»СЊС‚СЂР° РїРµСЂРёРѕРґ РѕС‚Р·С‹РІР° (false - Р·Р° РІСЃРµ РІСЂРµРјСЏ, 1 - Р·Р° РїРѕСЃР»РµРґРЅРёР№ РіРѕРґ, 2 - Р·Р° РїРѕСЃР»РµРґРЅРёРµ РїРѕР»РіРѕРґР°, 3 - Р·Р° РїРѕСЃР»РµРґРЅРёР№ РјРµСЃСЏС†)
      * 
-     * @return array массив с результатом
+     * @return array РјР°СЃСЃРёРІ СЃ СЂРµР·СѓР»СЊС‚Р°С‚РѕРј
      */
     function getFilterCounts ($userID, $isEmp, $rating = false, $author = false, $period = false) {
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/paid_advices.php");
@@ -662,8 +662,8 @@ class opinions {
             case 2:
                 $opiRating = ' AND o.rating = 0';
                 $recRating = ' AND sf.rating = 0';
-                //У типовых услуг нет нейтрального рейтинга 
-                //посему ничего не выберится
+                //РЈ С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі РЅРµС‚ РЅРµР№С‚СЂР°Р»СЊРЅРѕРіРѕ СЂРµР№С‚РёРЅРіР° 
+                //РїРѕСЃРµРјСѓ РЅРёС‡РµРіРѕ РЅРµ РІС‹Р±РµСЂРёС‚СЃСЏ
                 $tuRating = ' AND fb.rating = 0';
                 $pfbRating = ' AND pfb.rating = 0';
                 break;
@@ -734,7 +734,7 @@ class opinions {
         }
         
         $sql = "
-            -- мнения
+            -- РјРЅРµРЅРёСЏ
             SELECT
             'opi' as type,
             SUM(CASE WHEN TRUE $opiPeriod THEN 1 ELSE 0 END) as from_total,
@@ -752,7 +752,7 @@ class opinions {
                 $opiRating
             
 
-            -- рекомендации
+            -- СЂРµРєРѕРјРµРЅРґР°С†РёРё
             UNION
             SELECT
             'rec' as type,
@@ -788,7 +788,7 @@ class opinions {
 
         if ($rating != 2 && $rating != 3) {
             $sql .= "
-                -- платные рекомендации
+                -- РїР»Р°С‚РЅС‹Рµ СЂРµРєРѕРјРµРЅРґР°С†РёРё
                 UNION
                 SELECT
                 'paid' as type,
@@ -839,7 +839,7 @@ class opinions {
                 
                 
         $sql .= "
-            -- Отзывы по проектам
+            -- РћС‚Р·С‹РІС‹ РїРѕ РїСЂРѕРµРєС‚Р°Рј
             UNION
             SELECT
                 'project_feedbacks' AS type,
@@ -875,12 +875,12 @@ class opinions {
     }
 
     /**
-     * Проверка на возможность пользователя оставлять отзыв
+     * РџСЂРѕРІРµСЂРєР° РЅР° РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РѕСЃС‚Р°РІР»СЏС‚СЊ РѕС‚Р·С‹РІ
      *
-     * @param integer $from_id          id пользователя, который хочет написать отзыв
-     * @param integer $to_id            id пользователя, которому хотят написать отзыз
+     * @param integer $from_id          id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂС‹Р№ С…РѕС‡РµС‚ РЅР°РїРёСЃР°С‚СЊ РѕС‚Р·С‹РІ
+     * @param integer $to_id            id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂРѕРјСѓ С…РѕС‚СЏС‚ РЅР°РїРёСЃР°С‚СЊ РѕС‚Р·С‹Р·
      *
-     * @return integer                  id Ошибки или 3 в случае успеха
+     * @return integer                  id РћС€РёР±РєРё РёР»Рё 3 РІ СЃР»СѓС‡Р°Рµ СѓСЃРїРµС…Р°
      */
     function CheckUserCanPost($from_id, $to_id) {
         if (!$from_id)
@@ -892,7 +892,7 @@ class opinions {
         $sql = "SELECT reg_date FROM users WHERE uid = ?";
         $res = $DB->query( $sql, $from_id );
         list($reg_date) = pg_fetch_row($res);
-        if (ElapsedMnths(strtotime($reg_date)) == "Меньше месяца")
+        if (ElapsedMnths(strtotime($reg_date)) == "РњРµРЅСЊС€Рµ РјРµСЃСЏС†Р°")
             return 2;
         $sql = "SELECT COUNT(*) FROM opinions WHERE fromuser_id = ? AND touser_id = ?";
         $res = $DB->query( $sql, $from_id, $to_id );
@@ -903,15 +903,15 @@ class opinions {
     }
 
     /**
-     * Получение статистики по отзывам для админки
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃС‚Р°С‚РёСЃС‚РёРєРё РїРѕ РѕС‚Р·С‹РІР°Рј РґР»СЏ Р°РґРјРёРЅРєРё
      *
-     * @param string $date              дата начала выборки
-     * @param string $edate             дата окончания выборки
-     * @param string $rating            тип отзыва (NULL - все, 1 - положительные, 0 - нейтральные, -1 - отрицательные)
-     * @param string $login             логин определенного пользователя (NULL - все)
+     * @param string $date              РґР°С‚Р° РЅР°С‡Р°Р»Р° РІС‹Р±РѕСЂРєРё
+     * @param string $edate             РґР°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РІС‹Р±РѕСЂРєРё
+     * @param string $rating            С‚РёРї РѕС‚Р·С‹РІР° (NULL - РІСЃРµ, 1 - РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рµ, 0 - РЅРµР№С‚СЂР°Р»СЊРЅС‹Рµ, -1 - РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рµ)
+     * @param string $login             Р»РѕРіРёРЅ РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (NULL - РІСЃРµ)
      * @global DB    $DB
      * 
-     * @return array                    массив данных
+     * @return array                    РјР°СЃСЃРёРІ РґР°РЅРЅС‹С…
      */
     function getOpinionsData($date, $edate, $rating=NULL, $login=NULL) {
         $date  = date("c", $date);
@@ -970,13 +970,13 @@ class opinions {
     }
 
     /**
-     * Добавление комментария к мнению
+     * Р”РѕР±Р°РІР»РµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ Рє РјРЅРµРЅРёСЋ
      *
-     * @param  string  $comment     текст комментария
-     * @param  integer $user_id     id пользователя, который осавил комментарий
-     * @param  integer $opinion_id  id комментария
+     * @param  string  $comment     С‚РµРєСЃС‚ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+     * @param  integer $user_id     id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂС‹Р№ РѕСЃР°РІРёР» РєРѕРјРјРµРЅС‚Р°СЂРёР№
+     * @param  integer $opinion_id  id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
      *
-     * @return string               текст ошибки в случае неуспеха
+     * @return string               С‚РµРєСЃС‚ РѕС€РёР±РєРё РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
     function newCommentOpinion( $comment, $user_id, $opinion_id ) {
         if (self::isComOpinion($opinion_id) > 0) {
@@ -1001,13 +1001,13 @@ class opinions {
     }
     
     /**
-     * Добавление комментария к отзыву
+     * Р”РѕР±Р°РІР»РµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ Рє РѕС‚Р·С‹РІСѓ
      *
-     * @param  string  $comment     текст комментария
-     * @param  integer $user_id     id пользователя, который осавил комментарий
-     * @param  integer $opinion_id  id комментария
+     * @param  string  $comment     С‚РµРєСЃС‚ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+     * @param  integer $user_id     id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂС‹Р№ РѕСЃР°РІРёР» РєРѕРјРјРµРЅС‚Р°СЂРёР№
+     * @param  integer $opinion_id  id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
      *
-     * @return string               текст ошибки в случае неуспеха
+     * @return string               С‚РµРєСЃС‚ РѕС€РёР±РєРё РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
     function newCommentFeedback( $comment, $user_id, $feedback_id ) {
         /*if (self::isComOpinion($opinion_id) > 0)
@@ -1039,11 +1039,11 @@ class opinions {
     }
 
     /**
-     * Проверка на существование комментрия к отзыву
+     * РџСЂРѕРІРµСЂРєР° РЅР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ РєРѕРјРјРµРЅС‚СЂРёСЏ Рє РѕС‚Р·С‹РІСѓ
      *
-     * @param integer $id             id отзыва
+     * @param integer $id             id РѕС‚Р·С‹РІР°
      *
-     * @return mixed                  id комментария или текст ошибки в случае неуспеха
+     * @return mixed                  id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ РёР»Рё С‚РµРєСЃС‚ РѕС€РёР±РєРё РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
     function isComOpinion($id) {
         global $DB;
@@ -1058,11 +1058,11 @@ class opinions {
     }
 
     /**
-     * Получает комментарии к отзывам от определенного пользователя
+     * РџРѕР»СѓС‡Р°РµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёРё Рє РѕС‚Р·С‹РІР°Рј РѕС‚ РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      *
-     * @param integer $uid             uid отзыва
+     * @param integer $uid             uid РѕС‚Р·С‹РІР°
      *
-     * @return mixed                   массив с комментариями или текст ошибки в случае неуспеха
+     * @return mixed                   РјР°СЃСЃРёРІ СЃ РєРѕРјРјРµРЅС‚Р°СЂРёСЏРјРё РёР»Рё С‚РµРєСЃС‚ РѕС€РёР±РєРё РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
     function getCommentOpinion($uid) {
         global $DB;
@@ -1085,11 +1085,11 @@ class opinions {
     }
 
     /**
-     * Получает комментарии к мнениям
+     * РџРѕР»СѓС‡Р°РµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёРё Рє РјРЅРµРЅРёСЏРј
      *
-     * @param array $ids               массив с id отзывов
+     * @param array $ids               РјР°СЃСЃРёРІ СЃ id РѕС‚Р·С‹РІРѕРІ
      *
-     * @return mixed                   массив с комментариями или текст ошибки в случае неуспеха
+     * @return mixed                   РјР°СЃСЃРёРІ СЃ РєРѕРјРјРµРЅС‚Р°СЂРёСЏРјРё РёР»Рё С‚РµРєСЃС‚ РѕС€РёР±РєРё РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
     function getCommentOpinionById($ids) {
         global $DB;
@@ -1111,11 +1111,11 @@ class opinions {
     }
     
     /**
-     * Получает комментарии к отзывам 
+     * РџРѕР»СѓС‡Р°РµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёРё Рє РѕС‚Р·С‹РІР°Рј 
      *
-     * @param array $ids               массив с id отзывов
+     * @param array $ids               РјР°СЃСЃРёРІ СЃ id РѕС‚Р·С‹РІРѕРІ
      *
-     * @return mixed                   массив с комментариями или текст ошибки в случае неуспеха
+     * @return mixed                   РјР°СЃСЃРёРІ СЃ РєРѕРјРјРµРЅС‚Р°СЂРёСЏРјРё РёР»Рё С‚РµРєСЃС‚ РѕС€РёР±РєРё РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
     function getCommentFeedbackById($ids) {
         global $DB;
@@ -1137,14 +1137,14 @@ class opinions {
     }
 
     /**
-     * Удаление комментария к отзыву
+     * РЈРґР°Р»РµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ Рє РѕС‚Р·С‹РІСѓ
      *
-     * @param integer $id              id комментария
-     * @param integer $uid             id пользователя, оставившего комментарий
-     * @param integer $admin           кто удаляет отзыв (1 - администратор, 0 - пользователь)
-     * @param integer $isFeedback      true - значит это отзыв
+     * @param integer $id              id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+     * @param integer $uid             id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РѕСЃС‚Р°РІРёРІС€РµРіРѕ РєРѕРјРјРµРЅС‚Р°СЂРёР№
+     * @param integer $admin           РєС‚Рѕ СѓРґР°Р»СЏРµС‚ РѕС‚Р·С‹РІ (1 - Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ, 0 - РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ)
+     * @param integer $isFeedback      true - Р·РЅР°С‡РёС‚ СЌС‚Рѕ РѕС‚Р·С‹РІ
      *
-     * @return string                  текст ошибки в случае неуспеха
+     * @return string                  С‚РµРєСЃС‚ РѕС€РёР±РєРё РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
     function deleteComment($id, $uid, $admin = 0, $isFeedback = false) {
         global $DB;
@@ -1168,11 +1168,11 @@ class opinions {
     }
 
     /**
-     * Получает комментрий к отзыву по его id
+     * РџРѕР»СѓС‡Р°РµС‚ РєРѕРјРјРµРЅС‚СЂРёР№ Рє РѕС‚Р·С‹РІСѓ РїРѕ РµРіРѕ id
      *
-     * @param integer $id              id комментария
+     * @param integer $id              id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
      *
-     * @return mixed                   массив с данными комментария или текст ошибки в случае неуспеха
+     * @return mixed                   РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ РёР»Рё С‚РµРєСЃС‚ РѕС€РёР±РєРё РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
     function GetMsgComInfo($msg_id) {
         global $DB;
@@ -1187,13 +1187,13 @@ class opinions {
     }
 
     /**
-     * Редактирование комментария к мнению
+     * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ Рє РјРЅРµРЅРёСЋ
      *
-     * @param string $msg               id комментария
-     * @param integer $uid              id пользователя, редактирующего комментарий
-     * @param integer $id_edit          id комментария
+     * @param string $msg               id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+     * @param integer $uid              id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, СЂРµРґР°РєС‚РёСЂСѓСЋС‰РµРіРѕ РєРѕРјРјРµРЅС‚Р°СЂРёР№
+     * @param integer $id_edit          id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
      *
-     * @return string                   текст ошибки в случае неуспеха
+     * @return string                   С‚РµРєСЃС‚ РѕС€РёР±РєРё РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
     function editCommentOpinion($msg, $uid, $id_edit) {
         global $DB;
@@ -1208,14 +1208,14 @@ class opinions {
     }
     
     /**
-     * Редактирование комментария к отзыву
+     * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ Рє РѕС‚Р·С‹РІСѓ
      *
-     * @param string $msg               id комментария
-     * @param integer $uid              id пользователя, редактирующего комментарий
-     * @param integer $id_edit          id комментария
-     * @param integer $feedbackAuthorID id пользователя оставившего отзыв
+     * @param string $msg               id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+     * @param integer $uid              id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, СЂРµРґР°РєС‚РёСЂСѓСЋС‰РµРіРѕ РєРѕРјРјРµРЅС‚Р°СЂРёР№
+     * @param integer $id_edit          id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+     * @param integer $feedbackAuthorID id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РѕСЃС‚Р°РІРёРІС€РµРіРѕ РѕС‚Р·С‹РІ
      *
-     * @return string                   текст ошибки в случае неуспеха
+     * @return string                   С‚РµРєСЃС‚ РѕС€РёР±РєРё РІ СЃР»СѓС‡Р°Рµ РЅРµСѓСЃРїРµС…Р°
      */
     function editCommentFeedback($msg, $uid, $id_edit, $feedbackAuthorID) {
         global $DB;
@@ -1239,16 +1239,16 @@ class opinions {
     }
 
     /**
-     * Выборка информации о новых отзывах
+     * Р’С‹Р±РѕСЂРєР° РёРЅС„РѕСЂРјР°С†РёРё Рѕ РЅРѕРІС‹С… РѕС‚Р·С‹РІР°С…
      * 
-     * После изменения этой функции, необходимо перезапустить консьюмер /classes/pgq/mail_cons.php на сервере.
-     * Если нет возможности, то сообщить админу.
+     * РџРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ СЌС‚РѕР№ С„СѓРЅРєС†РёРё, РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ РєРѕРЅСЃСЊСЋРјРµСЂ /classes/pgq/mail_cons.php РЅР° СЃРµСЂРІРµСЂРµ.
+     * Р•СЃР»Рё РЅРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё, С‚Рѕ СЃРѕРѕР±С‰РёС‚СЊ Р°РґРјРёРЅСѓ.
      * @see pmail::NewOpinion()
      * @see PGQMailSimpleConsumer::finish_batch()
      *
-     * @param string|array  $ids            Идентификаторы отзывов
-     * @param resource      $connect        Соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return array|mixed                  Если есть ответы к проектам то возвращает массив их, если нет то NULL
+     * @param string|array  $ids            РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РѕС‚Р·С‹РІРѕРІ
+     * @param resource      $connect        РЎРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return array|mixed                  Р•СЃР»Рё РµСЃС‚СЊ РѕС‚РІРµС‚С‹ Рє РїСЂРѕРµРєС‚Р°Рј С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ РёС…, РµСЃР»Рё РЅРµС‚ С‚Рѕ NULL
      */
     public function getNewOpinion($ids, $connect=NULL) {
         if (!$ids)
@@ -1288,12 +1288,12 @@ class opinions {
     //==================HTML_GENERATION==================
     
     /**
-     * Возвращает html заголовка страницы с отзывами в массиве
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ html Р·Р°РіРѕР»РѕРІРєР° СЃС‚СЂР°РЅРёС†С‹ СЃ РѕС‚Р·С‹РІР°РјРё РІ РјР°СЃСЃРёРІРµ
      * 
-     * @param string $from (frl|my|emp|norisk) параметр from
-     * @param users $user пользователь, на странице которого мы в данный момент находимся
-     * @param integer $to_id пользователь, для которго мы готовим вывод
-     * @return array html заголовка страницы с отзывами в массиве
+     * @param string $from (frl|my|emp|norisk) РїР°СЂР°РјРµС‚СЂ from
+     * @param users $user РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ, РЅР° СЃС‚СЂР°РЅРёС†Рµ РєРѕС‚РѕСЂРѕРіРѕ РјС‹ РІ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РЅР°С…РѕРґРёРјСЃСЏ
+     * @param integer $to_id РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ, РґР»СЏ РєРѕС‚РѕСЂРіРѕ РјС‹ РіРѕС‚РѕРІРёРј РІС‹РІРѕРґ
+     * @return array html Р·Р°РіРѕР»РѕРІРєР° СЃС‚СЂР°РЅРёС†С‹ СЃ РѕС‚Р·С‹РІР°РјРё РІ РјР°СЃСЃРёРІРµ
      */
     public static function getHeaderData($from, $user, $to_id) 
     {
@@ -1302,7 +1302,7 @@ class opinions {
         $out = array();
         
         /*
-         * @todo: неиспользуется?
+         * @todo: РЅРµРёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ?
          * 
          * 
         $out['all'] = getSortOpinionLinkEx($from, "users", 1, $user->login, zin($opcount['all']['p']))
@@ -1336,12 +1336,12 @@ class opinions {
     }
 
     /**
-     * Функция возвращает отдельный отзыв
+     * Р¤СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ РѕС‚РґРµР»СЊРЅС‹Р№ РѕС‚Р·С‹РІ
      * 
-     * @param array $theme отзыв
-     * @param string $from (frl|my|emp|norisk) параметр from
-     * @param integer $counter номер отзыва
-     * @param boolean $with_container флаг, указывающий возвращать ли нам div-контейнер
+     * @param array $theme РѕС‚Р·С‹РІ
+     * @param string $from (frl|my|emp|norisk) РїР°СЂР°РјРµС‚СЂ from
+     * @param integer $counter РЅРѕРјРµСЂ РѕС‚Р·С‹РІР°
+     * @param boolean $with_container С„Р»Р°Рі, СѓРєР°Р·С‹РІР°СЋС‰РёР№ РІРѕР·РІСЂР°С‰Р°С‚СЊ Р»Рё РЅР°Рј div-РєРѕРЅС‚РµР№РЅРµСЂ
      * @return string
      */
     public static function printTheme($theme, $from, $counter, $with_container = true) {
@@ -1360,7 +1360,7 @@ class opinions {
         
         $on_site = "";
         if (hasPermissions('users')) {
-            $on_site = "На сайте " . ElapsedMnths(strtotime($user_from->reg_date));
+            $on_site = "РќР° СЃР°Р№С‚Рµ " . ElapsedMnths(strtotime($user_from->reg_date));
         }
 
         $opcomm = opinions::getCommentOpinionById(array($theme['id']));
@@ -1375,7 +1375,7 @@ class opinions {
                 <div class="ops-one-cnt">
                     <ul class="ops-i">';
         if ($op_edited)
-            $html .= '<li><img src="/images/ico-e-u.png" title="Отредактировано ' . $op_edited . '" alt="Отредактировано ' . $op_edited . '" /></li>';
+            $html .= '<li><img src="/images/ico-e-u.png" title="РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ ' . $op_edited . '" alt="РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ ' . $op_edited . '" /></li>';
         $html .= '<li class="ops-time">' . date("d.m.Y H:i", strtotime($theme['post_time'])) . '</li>
                         <li><a href="#o_' . $theme['id'] . '" onclick="hlAnchor(\'o\',' . $theme['id'] . ')" class="ops-anchor">#</a></li>
                     </ul>';
@@ -1395,15 +1395,15 @@ class opinions {
         }
         
         if ( $user_from->is_banned ) { 
-            $html .= ' <div style="color:#000; margin: 0 0 10px 0;" ><b>Пользователь&nbsp;забанен.</b></div>'; 
+            $html .= ' <div style="color:#000; margin: 0 0 10px 0;" ><b>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ&nbsp;Р·Р°Р±Р°РЅРµРЅ.</b></div>'; 
         }
         
         $html .= '<div class="utxt" id="msg_cont_' . $theme['id'] . '"><p id="message_text_' . $theme['id'] . '">' . reformat2($theme['msgtext'], 48, 0, 0, 1) . '</p></div>';
 
-        if (($theme['fromuser_id'] == $_SESSION['uid'] || hasPermissions('users')) && $from != 'norisk') { //Мой комент или я админ
+        if (($theme['fromuser_id'] == $_SESSION['uid'] || hasPermissions('users')) && $from != 'norisk') { //РњРѕР№ РєРѕРјРµРЅС‚ РёР»Рё СЏ Р°РґРјРёРЅ
             $html .= '<ul class="opsa-op" id="edit_block_' . $theme['id'] . '">
-                                <li><a href="#" onclick="if(!window._opiLock) { window._opiLock = true; xajax_EditOpinionForm(' . $theme['id'] . ',\'' . $from . '\'); } return false;" class="lnk-dot-red">Редактировать</a></li>
-                                <li><a href="#" onclick="if (confirm(\'Вы действительно хотите удалить мнение?\')) xajax_DeleteOpinion(' . $theme['id'] . ',\'' . $from . '\'); return false;" class="lnk-dot-red">Удалить</a></li>
+                                <li><a href="#" onclick="if(!window._opiLock) { window._opiLock = true; xajax_EditOpinionForm(' . $theme['id'] . ',\'' . $from . '\'); } return false;" class="lnk-dot-red">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></li>
+                                <li><a href="#" onclick="if (confirm(\'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РјРЅРµРЅРёРµ?\')) xajax_DeleteOpinion(' . $theme['id'] . ',\'' . $from . '\'); return false;" class="lnk-dot-red">РЈРґР°Р»РёС‚СЊ</a></li>
                             </ul>';
         }
 
@@ -1414,7 +1414,7 @@ class opinions {
 									<div id="ops_answer_link_' . $theme['id'] . '">
 										<ul class="ops-i">';
             if ($com_edited)
-                $html .= '<li><img src="/images/ico-e-u.png" title="Отредактировано ' . $com_edited . '" alt="Отредактировано ' . $com_edited . '" /></li>';
+                $html .= '<li><img src="/images/ico-e-u.png" title="РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ ' . $com_edited . '" alt="РћС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ ' . $com_edited . '" /></li>';
             $html .= '<li class="ops-time">' . date("d.m.Y H:i", strtotime($opcomm[$theme['id']]['date_create'])) . '</li>
 											<li><a href="#a_' . $theme['id'] . '" onclick="hlAnchor(\'a\',' . $theme['id'] . ')" class="ops-anchor">#</a></li>
 										</ul>
@@ -1425,8 +1425,8 @@ class opinions {
                                                                          ';
             if ($theme['touser_id'] == $_SESSION['uid'] || hasPermissions('users')) {
                 $html .= '<ul class="opsa-op">
-										<li><a href="#" onclick="if(!window._opiLock) { window._opiLock = true; xajax_AddOpComentForm(' . $theme['id'] . ',\'' . $from . '\'); } return false;" class="lnk-dot-red">Редактировать</a></li>
-										<li><a href="#" onclick="if (confirm(\'Вы действительно хотите удалить комментарий?\'))xajax_DeleteOpinionComm(' . $theme['id'] . ',' . $opcomm[$theme['id']]['id'] . ', \'' . $from . '\'); return false;" class="lnk-dot-red">Удалить</a></li>
+										<li><a href="#" onclick="if(!window._opiLock) { window._opiLock = true; xajax_AddOpComentForm(' . $theme['id'] . ',\'' . $from . '\'); } return false;" class="lnk-dot-red">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></li>
+										<li><a href="#" onclick="if (confirm(\'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№?\'))xajax_DeleteOpinionComm(' . $theme['id'] . ',' . $opcomm[$theme['id']]['id'] . ', \'' . $from . '\'); return false;" class="lnk-dot-red">РЈРґР°Р»РёС‚СЊ</a></li>
 									</ul>';
             }
 
@@ -1437,7 +1437,7 @@ class opinions {
         if ($theme['touser_id'] == $_SESSION['uid'] && empty($opcomm[$theme['id']]) && $from != "my") {
             $html .= '
                                         <div class="ops-answer" id="ops_answer_' . $theme['id'] . '">
-                                            <div class="opsa-lnk-add" id="ops_answer_link_' . $theme['id'] . '"><a href="#" onclick="if(!window._opiLock) { window._opiLock = true; xajax_AddOpComentForm(' . $theme['id'] . ',\'' . $from . '\'); } return false;" class="lnk-dot-666">Добавить комментарий</a></div>
+                                            <div class="opsa-lnk-add" id="ops_answer_link_' . $theme['id'] . '"><a href="#" onclick="if(!window._opiLock) { window._opiLock = true; xajax_AddOpComentForm(' . $theme['id'] . ',\'' . $from . '\'); } return false;" class="lnk-dot-666">Р”РѕР±Р°РІРёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№</a></div>
                                         </div>';
         }
         $html .= '</div></div>';
@@ -1446,12 +1446,12 @@ class opinions {
     }
 
     /**
-     * Генерирует информацию про юзера, по его данным, в HTML-код для страницы отзывов (сдвоенный вывод)
+     * Р“РµРЅРµСЂРёСЂСѓРµС‚ РёРЅС„РѕСЂРјР°С†РёСЋ РїСЂРѕ СЋР·РµСЂР°, РїРѕ РµРіРѕ РґР°РЅРЅС‹Рј, РІ HTML-РєРѕРґ РґР»СЏ СЃС‚СЂР°РЅРёС†С‹ РѕС‚Р·С‹РІРѕРІ (СЃРґРІРѕРµРЅРЅС‹Р№ РІС‹РІРѕРґ)
      *
-     * @global $session Сессия пользователя
+     * @global $session РЎРµСЃСЃРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      *
-     * @param array   $user				Информация о юзере
-     * @return string HTML-код
+     * @param array   $user				РРЅС„РѕСЂРјР°С†РёСЏ Рѕ СЋР·РµСЂРµ
+     * @return string HTML-РєРѕРґ
      */
     public static function printUserInfoMy($user, $direction = 'from') {
         global $session;
@@ -1467,7 +1467,7 @@ class opinions {
         
         $on_site = "";
         if (hasPermissions('users')) {
-            $on_site = "На сайте " . ElapsedMnths(strtotime($user['reg_date']));
+            $on_site = "РќР° СЃР°Р№С‚Рµ " . ElapsedMnths(strtotime($user['reg_date']));
             $on_site = "<i>{$on_site}</i>";
         }
 
@@ -1500,9 +1500,9 @@ class opinions {
     }
 
     /**
-     * Функция возвращает html для формы редактирования определенного отзыва
+     * Р¤СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ html РґР»СЏ С„РѕСЂРјС‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ РѕС‚Р·С‹РІР°
      *
-     * @param integer $op_id ID отзыва
+     * @param integer $op_id ID РѕС‚Р·С‹РІР°
      * @param string $from
      * @return string
      */
@@ -1516,28 +1516,28 @@ class opinions {
                     <div class="ops-add-full ops-add-show">
                         <div class="form ops-form">
                             <div class="form-el" style="height:20px">
-                                <label>Характер мнения:</label>
+                                <label>РҐР°СЂР°РєС‚РµСЂ РјРЅРµРЅРёСЏ:</label>
                                 <input type="hidden" id="rating_edit_' . $msg['id'] . '" value="' . $msg['rating'] . '" />
                                 <ul class="ops-type" id="ops-type">
                                     <li' . ((int) $msg['rating'] == 1 ? ' class="active"' : '') . '>
-                                        <a rel="1" onclick="setRating(this, \'' . $msg['id'] . '\'); return false" href="#" class="lnk-dot-green">Положительный</a>
+                                        <a rel="1" onclick="setRating(this, \'' . $msg['id'] . '\'); return false" href="#" class="lnk-dot-green">РџРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№</a>
                                     </li>
                                     <li' . ((int) $msg['rating'] == 0 ? ' class="active"' : '') . '>
-                                        <a rel="0" onclick="setRating(this, \'' . $msg['id'] . '\'); return false" href="#" class="lnk-dot-666">Нейтральный</a>
+                                        <a rel="0" onclick="setRating(this, \'' . $msg['id'] . '\'); return false" href="#" class="lnk-dot-666">РќРµР№С‚СЂР°Р»СЊРЅС‹Р№</a>
                                     </li>
                                     <li' . ((int) $msg['rating'] == -1 ? ' class="active"' : '') . '>
-                                        <a rel="-1" onclick="setRating(this, \'' . $msg['id'] . '\'); return false" href="#" class="lnk-dot-red">Отрицательный</a>
+                                        <a rel="-1" onclick="setRating(this, \'' . $msg['id'] . '\'); return false" href="#" class="lnk-dot-red">РћС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№</a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="form-el" style="font-size:10px">
-                                <span class="no-more">Не более ' . self::$opinion_max_length . ' символов</span>
+                                <span class="no-more">РќРµ Р±РѕР»РµРµ ' . self::$opinion_max_length . ' СЃРёРјРІРѕР»РѕРІ</span>
                                 <textarea rows="5" id="edit_msg_' . $msg['id'] . '" cols="20" onkeydown="$(\'error_edit_msg_' . $msg['id'] . '\').set(\'html\', \'\');">' . $msg['msgtext'] . '</textarea>
                                 <div id="error_edit_msg_' . $msg['id'] . '"></div>
                             </div>
                             <div class="form-btn">
-                                <a href="javascript:void(0);" onclick="opinionSubmitEditForm(' . $msg['id'] . ', \'' . $from . '\'); return false" class="btnr btnr-t"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Выразить мнение</span></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="javascript:void(0);" onclick="$(this).getParent(\'.ops-add\').setStyle(\'display\', \'none\'); $(\'message_text_' . $msg['id'] . '\').setStyle(\'display\', \'block\'); $(\'edit_block_' . $msg['id'] . '\').setStyle(\'display\', \'block\'); opinionCheckMaxLengthStop(\'edit_msg_' . $msg['id'] . '\');" class="lnk-dot-666">Отменить</a>
+                                <a href="javascript:void(0);" onclick="opinionSubmitEditForm(' . $msg['id'] . ', \'' . $from . '\'); return false" class="btnr btnr-t"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Р’С‹СЂР°Р·РёС‚СЊ РјРЅРµРЅРёРµ</span></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="javascript:void(0);" onclick="$(this).getParent(\'.ops-add\').setStyle(\'display\', \'none\'); $(\'message_text_' . $msg['id'] . '\').setStyle(\'display\', \'block\'); $(\'edit_block_' . $msg['id'] . '\').setStyle(\'display\', \'block\'); opinionCheckMaxLengthStop(\'edit_msg_' . $msg['id'] . '\');" class="lnk-dot-666">РћС‚РјРµРЅРёС‚СЊ</a>
                             </div>
                         </div>
                     </div>
@@ -1550,11 +1550,11 @@ class opinions {
     }
 
     /**
-     * Функция возвращает html для формы редактирования коментария для определенного отзыва
+     * Р¤СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ html РґР»СЏ С„РѕСЂРјС‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РєРѕРјРµРЅС‚Р°СЂРёСЏ РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ РѕС‚Р·С‹РІР°
      *
-     * @param integer $op_id ID отзыва
+     * @param integer $op_id ID РѕС‚Р·С‹РІР°
      * @param string $from
-     * @param bool $isFeedback если true значит отзыв, false - мнение
+     * @param bool $isFeedback РµСЃР»Рё true Р·РЅР°С‡РёС‚ РѕС‚Р·С‹РІ, false - РјРЅРµРЅРёРµ
      * @return string
      */
     public static function printEditComForm($op_id, $from='frl', $isFeedback = false) {
@@ -1599,12 +1599,12 @@ class opinions {
     }
 
     /**
-     * Функция генерирует HTML для формы добавдения отзыва
+     * Р¤СѓРЅРєС†РёСЏ РіРµРЅРµСЂРёСЂСѓРµС‚ HTML РґР»СЏ С„РѕСЂРјС‹ РґРѕР±Р°РІРґРµРЅРёСЏ РѕС‚Р·С‹РІР°
      * 
-     * @param integer $sid пользоваль, от которого будут осталяться сообщения
-     * @param integer $uid пользоваль, которому будут осталяться сообщения
+     * @param integer $sid РїРѕР»СЊР·РѕРІР°Р»СЊ, РѕС‚ РєРѕС‚РѕСЂРѕРіРѕ Р±СѓРґСѓС‚ РѕСЃС‚Р°Р»СЏС‚СЊСЃСЏ СЃРѕРѕР±С‰РµРЅРёСЏ
+     * @param integer $uid РїРѕР»СЊР·РѕРІР°Р»СЊ, РєРѕС‚РѕСЂРѕРјСѓ Р±СѓРґСѓС‚ РѕСЃС‚Р°Р»СЏС‚СЊСЃСЏ СЃРѕРѕР±С‰РµРЅРёСЏ
      * @param string $from (frl|emp|my|norisk)
-     * @return string html формы
+     * @return string html С„РѕСЂРјС‹
      * 
      * 
      * @deprecated #0015627
@@ -1622,9 +1622,9 @@ class opinions {
         }
         $html = '';
         if (!$can_post) {
-            if ($from == 'norisk') {// форма для СБР
+            if ($from == 'norisk') {// С„РѕСЂРјР° РґР»СЏ РЎР‘Р 
                 $html = '<div id="rating-tpl" style="display: none; float: right; margin: 0pt 0pt 0pt 25px; width: 270px;">
-                        <p style="margin: 0 0 11px 0;">Пожалуйста оцените сотрудничество с фрилансером по трем критериям.</p>
+                        <p style="margin: 0 0 11px 0;">РџРѕР¶Р°Р»СѓР№СЃС‚Р° РѕС†РµРЅРёС‚Рµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ СЃ С„СЂРёР»Р°РЅСЃРµСЂРѕРј РїРѕ С‚СЂРµРј РєСЂРёС‚РµСЂРёСЏРј.</p>
                     </div>
                     <div id="message-tpl" style="margin: 0pt 295px 0pt 0pt; display:none;">
                         <form method="POST">
@@ -1641,13 +1641,13 @@ class opinions {
                                 <span></span>
                             </div>
                             <div style="padding: 5px 0 0 0;">
-                                <input type="button" value="Сохрaнить" style="overflow: visible; padding: 0 10px; font-weight: 900; color: #333;" onclick="saveRating()" />
-                                <input type="button" value="Отменить" style="overflow: visible; padding: 0 10px; color: #333;" onclick="closeForm()" />
+                                <input type="button" value="РЎРѕС…СЂaРЅРёС‚СЊ" style="overflow: visible; padding: 0 10px; font-weight: 900; color: #333;" onclick="saveRating()" />
+                                <input type="button" value="РћС‚РјРµРЅРёС‚СЊ" style="overflow: visible; padding: 0 10px; color: #333;" onclick="closeForm()" />
                             </div>
 							</div>
                         </form>
                     </div>';
-            } else { // Форма для простого отзыва
+            } else { // Р¤РѕСЂРјР° РґР»СЏ РїСЂРѕСЃС‚РѕРіРѕ РѕС‚Р·С‹РІР°
                 $html .= '
 <form action="" method="post" name="frm_add" id="frm_add">
 <div>
@@ -1656,33 +1656,33 @@ class opinions {
                         <input type="hidden" name="action" id="action_com" value="new" />
 
                         <div class="ops-add-in">
-                            <a class="btn btn-green3 ops-frm-toggler" href="javascript:void(0);" onclick="showOpinionsForm(this)" ><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Выразить мнение</span></span></span></a>
+                            <a class="btn btn-green3 ops-frm-toggler" href="javascript:void(0);" onclick="showOpinionsForm(this)" ><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Р’С‹СЂР°Р·РёС‚СЊ РјРЅРµРЅРёРµ</span></span></span></a>
                             <div class="ops-add-full " id="add_form_cont">
-                                <p>Если вам приходилось работать с этим человеком, вы можете оставить мнение о нем как о личности и профессионале. Пожалуйста, внимательно отнеситесь к этому полю, так как удалить или изменить мнение сможете только вы. Помните, что своими словами вы влияете на профессиональную репутацию пользователя.</p>
+                                <p>Р•СЃР»Рё РІР°Рј РїСЂРёС…РѕРґРёР»РѕСЃСЊ СЂР°Р±РѕС‚Р°С‚СЊ СЃ СЌС‚РёРј С‡РµР»РѕРІРµРєРѕРј, РІС‹ РјРѕР¶РµС‚Рµ РѕСЃС‚Р°РІРёС‚СЊ РјРЅРµРЅРёРµ Рѕ РЅРµРј РєР°Рє Рѕ Р»РёС‡РЅРѕСЃС‚Рё Рё РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»Рµ. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРЅРёРјР°С‚РµР»СЊРЅРѕ РѕС‚РЅРµСЃРёС‚РµСЃСЊ Рє СЌС‚РѕРјСѓ РїРѕР»СЋ, С‚Р°Рє РєР°Рє СѓРґР°Р»РёС‚СЊ РёР»Рё РёР·РјРµРЅРёС‚СЊ РјРЅРµРЅРёРµ СЃРјРѕР¶РµС‚Рµ С‚РѕР»СЊРєРѕ РІС‹. РџРѕРјРЅРёС‚Рµ, С‡С‚Рѕ СЃРІРѕРёРјРё СЃР»РѕРІР°РјРё РІС‹ РІР»РёСЏРµС‚Рµ РЅР° РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅСѓСЋ СЂРµРїСѓС‚Р°С†РёСЋ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</p>
                                 <div class="form ops-form">
                                     <div class="form-el" style="height:20px">
-                                        <label>Характер мнения:</label>
+                                        <label>РҐР°СЂР°РєС‚РµСЂ РјРЅРµРЅРёСЏ:</label>
                                         <ul class="ops-type" id="ops-type">
                                             <li>
-												<a rel="1" onclick="setRating(this); return false" href="#" class="lnk-dot-green">Положительный</a>
+												<a rel="1" onclick="setRating(this); return false" href="#" class="lnk-dot-green">РџРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№</a>
 											</li>
 											<li>
-												<a rel="0" onclick="setRating(this); return false" href="#" class="lnk-dot-666">Нейтральный</a>
+												<a rel="0" onclick="setRating(this); return false" href="#" class="lnk-dot-666">РќРµР№С‚СЂР°Р»СЊРЅС‹Р№</a>
 											</li>
 											<li>
-												<a rel="-1" onclick="setRating(this); return false" href="#" class="lnk-dot-red">Отрицательный</a>
+												<a rel="-1" onclick="setRating(this); return false" href="#" class="lnk-dot-red">РћС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№</a>
 											</li>
                                         </ul>
                                     </div>
                                     <div class="form-el"  style="font-size:10px">
-                                        <span class="no-more">Не более ' . self::$opinion_max_length . ' символов</span>
+                                        <span class="no-more">РќРµ Р±РѕР»РµРµ ' . self::$opinion_max_length . ' СЃРёРјРІРѕР»РѕРІ</span>
                                         <textarea rows="5" cols="20" id="msg" name="msg" onkeydown="$(\'error_msg\').set(\'html\', \'\');"></textarea>
                                         <div id="error_msg"></div>
                                     </div>
                                     <div id="rating_error" style="display:hidden"></div>
                                                     <div class="form-btn">
-                                                        <a href="javascript:void(0);" id="btn-send-opinions" class="btnr btnr-t" onclick="opinionSubmitAddForm(' . $sid . ', ' . $uid . ', \'' . $from . '\'); return false;"><span class="btn-lc"><span class="btn-m"><span class="btn-txt" id="btn">Выразить мнение</span></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                        <a href="javascript:void(0);" onclick="hideOpinionsForm(this)" class="lnk-dot-666">Отменить</a>
+                                                        <a href="javascript:void(0);" id="btn-send-opinions" class="btnr btnr-t" onclick="opinionSubmitAddForm(' . $sid . ', ' . $uid . ', \'' . $from . '\'); return false;"><span class="btn-lc"><span class="btn-m"><span class="btn-txt" id="btn">Р’С‹СЂР°Р·РёС‚СЊ РјРЅРµРЅРёРµ</span></span></span></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                        <a href="javascript:void(0);" onclick="hideOpinionsForm(this)" class="lnk-dot-666">РћС‚РјРµРЅРёС‚СЊ</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1692,18 +1692,18 @@ class opinions {
             }
             return '<div class="ops-add" id="form_container">' . $html . '</div>';
         } elseif ($can_post != 0 && $from != 'my') {
-            $deny_text = "Вы не можете оставить мнение об этом пользователе:";
+            $deny_text = "Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ РѕСЃС‚Р°РІРёС‚СЊ РјРЅРµРЅРёРµ РѕР± СЌС‚РѕРј РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ:";
             $html = '
                 <div class="ops-add-in"  style="font-size:12px">';
             switch ($can_post) {
                 case 1:
-                    $html .= view_error($deny_text.' Вы не <a href="/registration/">зарегистрированы</a> или не авторизованы.');
+                    $html .= view_error($deny_text.' Р’С‹ РЅРµ <a href="/registration/">Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅС‹</a> РёР»Рё РЅРµ Р°РІС‚РѕСЂРёР·РѕРІР°РЅС‹.');
                     break;
                 case 2:
-                    $html .= view_error($deny_text.' С момента регистрации Вашего аккаунта прошло меньше месяца.');
+                    $html .= view_error($deny_text.' РЎ РјРѕРјРµРЅС‚Р° СЂРµРіРёСЃС‚СЂР°С†РёРё Р’Р°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р° РїСЂРѕС€Р»Рѕ РјРµРЅСЊС€Рµ РјРµСЃСЏС†Р°.');
                     break;
                 case 3:
-                    $html .= view_error('Вы уже выразили свое мнение о данном пользователе.');
+                    $html .= view_error('Р’С‹ СѓР¶Рµ РІС‹СЂР°Р·РёР»Рё СЃРІРѕРµ РјРЅРµРЅРёРµ Рѕ РґР°РЅРЅРѕРј РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ.');
                     break;
             }
             $html .= '</div>';
@@ -1716,10 +1716,10 @@ class opinions {
     }
     
     /**
-     * Возвращает HTML код формы отзыва с СБР
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ HTML РєРѕРґ С„РѕСЂРјС‹ РѕС‚Р·С‹РІР° СЃ РЎР‘Р 
      *
-     * @param  int $op_id ID отзыва
-     * @param  string $mode не используется
+     * @param  int $op_id ID РѕС‚Р·С‹РІР°
+     * @param  string $mode РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
      * @return unknown
      */
     public static function getEditSBREditForm($op_id, $login_user=NULL, $mode = 'f'){
@@ -1753,22 +1753,22 @@ class opinions {
     /**
      * @deprecated https://beta.free-lance.ru/mantis/view.php?id=29288
      * 
-     * Печатает элемент вкладки в шапке страницы отзывов.
-     * @param string $type   тип отзыва (см. ниже).
-     * @param object $user   юзер, на странице которого находимся.
-     * @param int    $sort   текущий параметр группировки отзывов (1:только положительные; 2:нейтральные; 3:отрицательные)
-     * @param int    $period текущий параметр периода, за который выводить отзывы (0-4:все, год, полгода, месяц).
-     * @param boolean $is_active   является ли вкладка активной.
+     * РџРµС‡Р°С‚Р°РµС‚ СЌР»РµРјРµРЅС‚ РІРєР»Р°РґРєРё РІ С€Р°РїРєРµ СЃС‚СЂР°РЅРёС†С‹ РѕС‚Р·С‹РІРѕРІ.
+     * @param string $type   С‚РёРї РѕС‚Р·С‹РІР° (СЃРј. РЅРёР¶Рµ).
+     * @param object $user   СЋР·РµСЂ, РЅР° СЃС‚СЂР°РЅРёС†Рµ РєРѕС‚РѕСЂРѕРіРѕ РЅР°С…РѕРґРёРјСЃСЏ.
+     * @param int    $sort   С‚РµРєСѓС‰РёР№ РїР°СЂР°РјРµС‚СЂ РіСЂСѓРїРїРёСЂРѕРІРєРё РѕС‚Р·С‹РІРѕРІ (1:С‚РѕР»СЊРєРѕ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рµ; 2:РЅРµР№С‚СЂР°Р»СЊРЅС‹Рµ; 3:РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рµ)
+     * @param int    $period С‚РµРєСѓС‰РёР№ РїР°СЂР°РјРµС‚СЂ РїРµСЂРёРѕРґР°, Р·Р° РєРѕС‚РѕСЂС‹Р№ РІС‹РІРѕРґРёС‚СЊ РѕС‚Р·С‹РІС‹ (0-4:РІСЃРµ, РіРѕРґ, РїРѕР»РіРѕРґР°, РјРµСЃСЏС†).
+     * @param boolean $is_active   СЏРІР»СЏРµС‚СЃСЏ Р»Рё РІРєР»Р°РґРєР° Р°РєС‚РёРІРЅРѕР№.
      * @return string
      */
     static function view_op_header_item($type, $user, $sort = 0, $period = 0, $is_active = false) {
         
         switch($type) {
-            case 'norisk' : $title = $user->is_pro == 't'? (is_emp($user->role) ? 'Рекомендации фрилансеров' : 'Рекомендации работодателей'): 'Рекомендации'; $cls = 'first'; break;
-            case 'total'  : $title = $user->is_pro == 't'? (is_emp($user->role) ? 'Отзывы фрилансеров' : 'Отзывы работодателей'): 'Отзывы'; $cls = 'first'; break;
+            case 'norisk' : $title = $user->is_pro == 't'? (is_emp($user->role) ? 'Р РµРєРѕРјРµРЅРґР°С†РёРё С„СЂРёР»Р°РЅСЃРµСЂРѕРІ' : 'Р РµРєРѕРјРµРЅРґР°С†РёРё СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№'): 'Р РµРєРѕРјРµРЅРґР°С†РёРё'; $cls = 'first'; break;
+            case 'total'  : $title = $user->is_pro == 't'? (is_emp($user->role) ? 'РћС‚Р·С‹РІС‹ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ' : 'РћС‚Р·С‹РІС‹ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№'): 'РћС‚Р·С‹РІС‹'; $cls = 'first'; break;
             case 'emp'    :
             case 'frl'    :
-            case 'users'  : $title = 'Мнения пользователей'; $cls = 'last'; break; 
+            case 'users'  : $title = 'РњРЅРµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№'; $cls = 'last'; break; 
         }
         if($is_active) {
             $aL = '<span class="a"><span><span>';
@@ -1791,8 +1791,8 @@ class opinions {
     }
     
     /**
-     * печатает навигационную панель страницы отзывов
-     * @param users $user объект класса users с данными о пользователе
+     * РїРµС‡Р°С‚Р°РµС‚ РЅР°РІРёРіР°С†РёРѕРЅРЅСѓСЋ РїР°РЅРµР»СЊ СЃС‚СЂР°РЅРёС†С‹ РѕС‚Р·С‹РІРѕРІ
+     * @param users $user РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° users СЃ РґР°РЅРЅС‹РјРё Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ
      */
     static function view_op_nav_bar ($user, $sort) {
         global $filter_string, $author_filter_string, $period, $author, $filterCounts;
@@ -1808,9 +1808,9 @@ class opinions {
     }
     
     /**
-     * Конвертируем данные из мнения в данные рекомендации
+     * РљРѕРЅРІРµСЂС‚РёСЂСѓРµРј РґР°РЅРЅС‹Рµ РёР· РјРЅРµРЅРёСЏ РІ РґР°РЅРЅС‹Рµ СЂРµРєРѕРјРµРЅРґР°С†РёРё
      * 
-     * @param array $opinion Мнение
+     * @param array $opinion РњРЅРµРЅРёРµ
      * @return boolean|array  
      */
     static public function converOpinion2Advice($opinion) {
@@ -1846,11 +1846,11 @@ class opinions {
     }
     
     /**
-     * Задаем мнению статуса конвертирования
+     * Р—Р°РґР°РµРј РјРЅРµРЅРёСЋ СЃС‚Р°С‚СѓСЃР° РєРѕРЅРІРµСЂС‚РёСЂРѕРІР°РЅРёСЏ
      * 
      * @global DB $DB
-     * @param integer $opinion_id  ИД мнения
-     * @param boolean $convert     Статус конвертирования null|true  
+     * @param integer $opinion_id  РР” РјРЅРµРЅРёСЏ
+     * @param boolean $convert     РЎС‚Р°С‚СѓСЃ РєРѕРЅРІРµСЂС‚РёСЂРѕРІР°РЅРёСЏ null|true  
      * @return boolean 
      */
     static public function setConvertOpinion($opinion_id, $convert=true) {

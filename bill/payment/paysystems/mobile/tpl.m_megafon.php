@@ -1,11 +1,11 @@
-<h2 class="b-layout__title b-layout__title_padbot_30">Оплата через Мегафон</h2>
+<h2 class="b-layout__title b-layout__title_padbot_30">РћРїР»Р°С‚Р° С‡РµСЂРµР· РњРµРіР°С„РѕРЅ</h2>
 
 <table class="b-layout__table b-layout__table_width_full">
     <tbody>
         <tr class="b-layout__tr">
             <td class="b-layout__td b-layout__td_padright_20">
                 <form method="POST" action="<?= ( is_release() ? "/bill/payment/?type={$type_payment}" : "/bill/test/qiwipurse.php" )?>" id="<?= $type_payment ?>" name="<?= $type_payment ?>">
-                    <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5 b-page__desktop b-page__ipad">Мобильный телефон</div>
+                    <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5 b-page__desktop b-page__ipad">РњРѕР±РёР»СЊРЅС‹Р№ С‚РµР»РµС„РѕРЅ</div>
                     <div class="b-combo b-combo_inline-block b-combo_padbot_20">
                         <div class="b-combo__input <?= $bill->error['phone'] ? "b-combo__input_error" : ""?> b-combo__input_width_170 b-combo__input_tel
                                b-combo__input_phone_countries_dropdown b-combo__input_visible_items_5 use_scroll show_all_records
@@ -38,8 +38,8 @@
                     <input type="hidden" name="sum" value="<?= $payment_sum ?>" />
                 </form>
                 <div class="b-fon b-fon_bg_fff9bf b-fon_pad_10 b-fon_padleft_35">
-                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold"><span class="b-icon b-icon_sbr_oattent b-icon_margleft_-20"></span>Обратите внимание</div>
-                    <div class="b-layout__txt b-layout__txt_fontsize_11">После нажатия на кнопку «Оплатить» на ваш телефон будет отправлено SMS-сообщение для подтверждения платежа.</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold"><span class="b-icon b-icon_sbr_oattent b-icon_margleft_-20"></span>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_11">РџРѕСЃР»Рµ РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ В«РћРїР»Р°С‚РёС‚СЊВ» РЅР° РІР°С€ С‚РµР»РµС„РѕРЅ Р±СѓРґРµС‚ РѕС‚РїСЂР°РІР»РµРЅРѕ SMS-СЃРѕРѕР±С‰РµРЅРёРµ РґР»СЏ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ РїР»Р°С‚РµР¶Р°.</div>
                 </div>
                 <? $checked = "checkMobileSysFields";?>
                 <? include ( $_SERVER['DOCUMENT_ROOT'] . "/bill/payment/paysystems/tpl.button_buy.php");?>                

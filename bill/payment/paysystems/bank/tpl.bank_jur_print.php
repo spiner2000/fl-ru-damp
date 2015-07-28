@@ -27,7 +27,7 @@
     	$reqv_ordered->norisk_id = $no_risk;
         $reqv_ordered->is_gift = false;
     	if ($tid) $ord_num = $reqv_ordered->SetOrdered($tid);
-	    $billCode = 'Б-'.$account->id.'-'. ( sizeof($reqv_ordered->GetByUid($uid)) );
+	    $billCode = 'Р‘-'.$account->id.'-'. ( sizeof($reqv_ordered->GetByUid($uid)) );
   }
   $sum = round($sum,2);
   if($sbr_nds) {
@@ -37,7 +37,7 @@
   $stc = new static_compress;
 ?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML xmlns:math = "http://exslt.org/math" xmlns:date = 
-"http://exslt.org/dates-and-times"><HEAD><TITLE>Free-lance.ru: Счет</TITLE>
+"http://exslt.org/dates-and-times"><HEAD><TITLE>Free-lance.ru: РЎС‡РµС‚</TITLE>
 <META http-equiv=Content-Type content="text/html; charset=windows-1251">
 <?php $stc->Send(); ?>
 </HEAD>
@@ -50,31 +50,31 @@ bgColor=#ffffff topMargin=10 marginheight="20" marginwidth="20">
     </TD>
     <TD vAlign=bottom align=left>&nbsp;</TD>
     <TD vAlign=bottom align=right>
-      <DIV class=header><?=(date("d ").strtolower(monthtostr(date("m"))).date(" Y г."))?><BR><BR></DIV></TD></TR>
+      <DIV class=header><?=(date("d ").strtolower(monthtostr(date("m"))).date(" Y Рі."))?><BR><BR></DIV></TD></TR>
       <? if($contract_num) { ?>
         <TR>
           <TD class=th colSpan=3>
-             <a class="blue" href="/norisk2/?site=Stage&id=<?=(int)$_GET['id']?>&bank=1&ft=<?=(int)$_GET['ft']?>">Вернуться в «Безопасную Сделку»</a>
+             <a class="blue" href="/norisk2/?site=Stage&id=<?=(int)$_GET['id']?>&bank=1&ft=<?=(int)$_GET['ft']?>">Р’РµСЂРЅСѓС‚СЊСЃСЏ РІ В«Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓВ»</a>
           </TD>
         </TR>
      <? } ?>
   <TR align=middle>
     <TD class=th colSpan=3>
-      <H2 class=title>Счет</H2>
+      <H2 class=title>РЎС‡РµС‚</H2>
       </TD></TR>
   <TR>
     <TD colSpan=3>
       <TABLE class=filter cellSpacing=0 cellPadding=10 border=0>
         <TBODY>
         <TR>
-          <TD bgColor=#f2f2f2>Счет №: <B><?=$billCode?></B> от <B><?=(date("d ").strtolower(monthtostr(date("m"))).date(" Y г."))?>
-            </B>, оплата через <B>Банк для юридических лиц</B> </TD>
+          <TD bgColor=#f2f2f2>РЎС‡РµС‚ в„–: <B><?=$billCode?></B> РѕС‚ <B><?=(date("d ").strtolower(monthtostr(date("m"))).date(" Y Рі."))?>
+            </B>, РѕРїР»Р°С‚Р° С‡РµСЂРµР· <B>Р‘Р°РЅРє РґР»СЏ СЋСЂРёРґРёС‡РµСЃРєРёС… Р»РёС†</B> </TD>
           <TD class=user>
             <TABLE cellSpacing=4 cellPadding=0 align=left border=0>
               <TBODY>
               <TR>
-                <TD><img src="/images/ico_printer.gif" alt="Распечатать" width="22" height="19" border="0" title="Распечатать"></TD>
-                <TD><A href="/bill/payment/print/?type=bank_print&order=<?=$ord_num?>" target=blank class="org">Печатная форма</A></TD>
+                <TD><img src="/images/ico_printer.gif" alt="Р Р°СЃРїРµС‡Р°С‚Р°С‚СЊ" width="22" height="19" border="0" title="Р Р°СЃРїРµС‡Р°С‚Р°С‚СЊ"></TD>
+                <TD><A href="/bill/payment/print/?type=bank_print&order=<?=$ord_num?>" target=blank class="org">РџРµС‡Р°С‚РЅР°СЏ С„РѕСЂРјР°</A></TD>
                 </TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
       <TABLE cellSpacing=0 cellPadding=10 width="100%" border=0>
         <TBODY>
@@ -86,42 +86,42 @@ bgColor=#ffffff topMargin=10 marginheight="20" marginwidth="20">
               <TR>
                 <TD>&nbsp;</TD>
                 <TD vAlign=top align=right>
-                  <DIV style="FONT-SIZE: 10pt"><B>129223, Москва, а/я 33</B></DIV></TD></TR></TBODY></TABLE>
+                  <DIV style="FONT-SIZE: 10pt"><B>129223, РњРѕСЃРєРІР°, Р°/СЏ 33</B></DIV></TD></TR></TBODY></TABLE>
             <DIV style="FONT-SIZE: 11pt" align=center 
-            xmlns:str="http://exslt.org/strings"><B>Образец заполнения 
-            платежного поручения</B></DIV><BR 
+            xmlns:str="http://exslt.org/strings"><B>РћР±СЂР°Р·РµС† Р·Р°РїРѕР»РЅРµРЅРёСЏ 
+            РїР»Р°С‚РµР¶РЅРѕРіРѕ РїРѕСЂСѓС‡РµРЅРёСЏ</B></DIV><BR 
             xmlns:str="http://exslt.org/strings">
             <TABLE class=invoice cellSpacing=0 cellPadding=3 width="100%" 
             border=0 xmlns:str="http://exslt.org/strings">
               <TBODY>
               <TR>
-                <TD>Получатель<BR>ИНН 7805399430 / КПП 771401001 ООО &laquo;Ваан&raquo;</TD>
-                <TD align=middle><BR>Сч. №</TD>
+                <TD>РџРѕР»СѓС‡Р°С‚РµР»СЊ<BR>РРќРќ 7805399430 / РљРџРџ 771401001 РћРћРћ &laquo;Р’Р°Р°РЅ&raquo;</TD>
+                <TD align=middle><BR>РЎС‡. в„–</TD>
                 <TD><BR>40702810787880000803</TD></TR>
               <TR>
-                <TD rowSpan=2>Банк получателя<BR>в Московский филиал ОАО АКБ «РОСБАНК» г. Москва
+                <TD rowSpan=2>Р‘Р°РЅРє РїРѕР»СѓС‡Р°С‚РµР»СЏ<BR>РІ РњРѕСЃРєРѕРІСЃРєРёР№ С„РёР»РёР°Р» РћРђРћ РђРљР‘ В«Р РћРЎР‘РђРќРљВ» Рі. РњРѕСЃРєРІР°
 </TD>
-                <TD align=middle>БИК</TD>
+                <TD align=middle>Р‘РРљ</TD>
                 <TD rowSpan=2>044583272<BR>30101810000000000272</TD></TR>
               <TR>
-                <TD align=middle>Сч. №</TD></TR></TBODY></TABLE><BR 
+                <TD align=middle>РЎС‡. в„–</TD></TR></TBODY></TABLE><BR 
             xmlns:str="http://exslt.org/strings"><BR 
             xmlns:str="http://exslt.org/strings">
             <DIV style="FONT-SIZE: 12pt" align=center 
-            xmlns:str="http://exslt.org/strings"><B>Счет № <?=$billCode?> от <?=(date("d ").strtolower(monthtostr(date("m"))).date(" Y г."))?></B></DIV><BR xmlns:str="http://exslt.org/strings">
+            xmlns:str="http://exslt.org/strings"><B>РЎС‡РµС‚ в„– <?=$billCode?> РѕС‚ <?=(date("d ").strtolower(monthtostr(date("m"))).date(" Y Рі."))?></B></DIV><BR xmlns:str="http://exslt.org/strings">
             <TABLE width="100%" border=0 xmlns:str="http://exslt.org/strings">
               <TBODY>
               <TR>
                 <TD width="50%">
-                  <DIV style="FONT-SIZE: 10pt">Заказчик: <?= reformat($reqv->full_name, 28)?></DIV></TD>
+                  <DIV style="FONT-SIZE: 10pt">Р—Р°РєР°Р·С‡РёРє: <?= reformat($reqv->full_name, 28)?></DIV></TD>
                 <TD width="50%">
-                  <DIV style="FONT-SIZE: 10pt">Телефоны: <?=$reqv->phone?></DIV></TD></TR>
+                  <DIV style="FONT-SIZE: 10pt">РўРµР»РµС„РѕРЅС‹: <?=$reqv->phone?></DIV></TD></TR>
               <TR>
                 <TD width="50%">
-                  <DIV style="FONT-SIZE: 10pt">Представитель заказчика: <?=$reqv->fio?>
+                  <DIV style="FONT-SIZE: 10pt">РџСЂРµРґСЃС‚Р°РІРёС‚РµР»СЊ Р·Р°РєР°Р·С‡РёРєР°: <?=$reqv->fio?>
 </DIV></TD>
                 <TD width="50%">
-                  <DIV style="FONT-SIZE: 10pt">Факс: <?=$reqv->fax?>
+                  <DIV style="FONT-SIZE: 10pt">Р¤Р°РєСЃ: <?=$reqv->fax?>
             </DIV></TD></TR></TBODY></TABLE><BR 
             xmlns:str="http://exslt.org/strings">
             <TABLE class=invoice cellSpacing=0 cellPadding=3 width="100%" 
@@ -129,13 +129,13 @@ bgColor=#ffffff topMargin=10 marginheight="20" marginwidth="20">
               <TBODY>
               <TR>
                 <TD align=middle>
-                  <DIV>№</DIV></TD>
+                  <DIV>в„–</DIV></TD>
                 <TD align=middle>
-                  <DIV>№ заказа</DIV></TD>
+                  <DIV>в„– Р·Р°РєР°Р·Р°</DIV></TD>
                 <TD align=middle>
-                  <DIV>Наименование</DIV></TD>
+                  <DIV>РќР°РёРјРµРЅРѕРІР°РЅРёРµ</DIV></TD>
                 <TD align=middle>
-                  <DIV>Сумма, руб.</DIV></TD></TR>
+                  <DIV>РЎСѓРјРјР°, СЂСѓР±.</DIV></TD></TR>
               <TR>
                 <TD align=middle>
                   <DIV>1</DIV></TD>
@@ -144,9 +144,9 @@ bgColor=#ffffff topMargin=10 marginheight="20" marginwidth="20">
                 <TD align=middle>
                   <DIV style="FONT-SIZE: 10pt">
                     <? if($contract_num) { ?>
-                      Оплата по договору-оферте № <?=$contract_num?>
+                      РћРїР»Р°С‚Р° РїРѕ РґРѕРіРѕРІРѕСЂСѓ-РѕС„РµСЂС‚Рµ в„– <?=$contract_num?>
                     <? } else { ?>
-                      Услуги сайта www.Free-lance.ru
+                      РЈСЃР»СѓРіРё СЃР°Р№С‚Р° www.Free-lance.ru
                     <? } ?>
                   </DIV>
                 </TD>  
@@ -158,7 +158,7 @@ bgColor=#ffffff topMargin=10 marginheight="20" marginwidth="20">
                 <TD 
                 style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none" 
                 align=right colSpan=3>
-                  <DIV>Итого:</DIV></TD>
+                  <DIV>РС‚РѕРіРѕ:</DIV></TD>
                 <TD align=right><DIV>
                   <?=number_format($contract_num ? $sum-$sbr_nds : $sum-round($sum*18/118, 2), 2, ',', ' ')?></DIV>
                 </TD>
@@ -168,11 +168,11 @@ bgColor=#ffffff topMargin=10 marginheight="20" marginwidth="20">
                 style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none" 
                 align=right colSpan=3>
                 <? if($contract_num) { ?>
-                  <DIV>НДС<?=$sbr_comm ? ' (с агентского вознаграждения)' : ''?>:</DIV></TD>
+                  <DIV>РќР”РЎ<?=$sbr_comm ? ' (СЃ Р°РіРµРЅС‚СЃРєРѕРіРѕ РІРѕР·РЅР°РіСЂР°Р¶РґРµРЅРёСЏ)' : ''?>:</DIV></TD>
                 <TD align=right>
                   <DIV><?=number_format($sbr_nds, 2, ',', ' ')?></DIV></TD></TR>
                 <? } else { ?>
-                  <DIV>НДС 18%:</DIV></TD>
+                  <DIV>РќР”РЎ 18%:</DIV></TD>
                 <TD align=right>
                   <DIV><?=number_format(round($sum*18/118, 2), 2, ',', ' ')?></DIV></TD></TR>
                 <? } ?>
@@ -180,18 +180,18 @@ bgColor=#ffffff topMargin=10 marginheight="20" marginwidth="20">
                 <TD 
                 style="BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none" 
                 align=right colSpan=3>
-                  <DIV><B>Всего к оплате:</B></DIV></TD>
+                  <DIV><B>Р’СЃРµРіРѕ Рє РѕРїР»Р°С‚Рµ:</B></DIV></TD>
                 <TD align=right>
                   <DIV style="FONT-WEIGHT: bold"><?=number_format($sum, 2, ',', ' ')?></DIV></TD></TR></TBODY></TABLE><BR 
             xmlns:str="http://exslt.org/strings">
             <DIV style="FONT-SIZE: 10pt" 
-            xmlns:str="http://exslt.org/strings"><I><B>К оплате:
+            xmlns:str="http://exslt.org/strings"><I><B>Рљ РѕРїР»Р°С‚Рµ:
             <?=num2str($sum)?><?
                if($contract_num) { ?>. 
               <? if($sbr_nds) { ?>
-                В том числе НДС 18% &mdash; <?=num2str($sbr_nds)?>
+                Р’ С‚РѕРј С‡РёСЃР»Рµ РќР”РЎ 18% &mdash; <?=num2str($sbr_nds)?>
                 <? if($sbr_comm) { ?>
-                  с суммы агентского вознаграждения ООО "Ваан" &mdash; <?=num2str($sbr_comm)?>.
+                  СЃ СЃСѓРјРјС‹ Р°РіРµРЅС‚СЃРєРѕРіРѕ РІРѕР·РЅР°РіСЂР°Р¶РґРµРЅРёСЏ РћРћРћ "Р’Р°Р°РЅ" &mdash; <?=num2str($sbr_comm)?>.
                 <? } ?>
               <? } else { ?>
               <? } ?>
@@ -200,24 +200,24 @@ bgColor=#ffffff topMargin=10 marginheight="20" marginwidth="20">
             </B></I></DIV><BR 
             xmlns:str="http://exslt.org/strings">
             <DIV style="FONT-SIZE: 10pt" 
-            xmlns:str="http://exslt.org/strings">Руководитель 
-            предприятия&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(В.О. Тарханов)</DIV><BR 
+            xmlns:str="http://exslt.org/strings">Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ 
+            РїСЂРµРґРїСЂРёСЏС‚РёСЏ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Р’.Рћ. РўР°СЂС…Р°РЅРѕРІ)</DIV><BR 
             xmlns:str="http://exslt.org/strings"><BR 
             xmlns:str="http://exslt.org/strings">
-            <DIV style="FONT-SIZE: 10pt" class="org"><I><B><U>Условия для 
-            расчетов:</U></B></I><BR>1. Cчет действителен в течение <?=$contract_num ? 'трех' : 'пяти'?>
-            дней.<BR>2. В назначении платежа, пожалуйста, указывайте 
+            <DIV style="FONT-SIZE: 10pt" class="org"><I><B><U>РЈСЃР»РѕРІРёСЏ РґР»СЏ 
+            СЂР°СЃС‡РµС‚РѕРІ:</U></B></I><BR>1. CС‡РµС‚ РґРµР№СЃС‚РІРёС‚РµР»РµРЅ РІ С‚РµС‡РµРЅРёРµ <?=$contract_num ? 'С‚СЂРµС…' : 'РїСЏС‚Рё'?>
+            РґРЅРµР№.<BR>2. Р’ РЅР°Р·РЅР°С‡РµРЅРёРё РїР»Р°С‚РµР¶Р°, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, СѓРєР°Р·С‹РІР°Р№С‚Рµ 
             <? if($contract_num) { ?>
               <? if($sbr_nds) { ?>
-                "<?=$billCode?>. В том числе НДС 18% &mdash; <?=num2strL($sbr_nds)?><? if($sbr_comm) { ?> с суммы агентского вознаграждения ООО "Ваан" &mdash; <?=num2strL($sbr_comm)?><? } ?>".
+                "<?=$billCode?>. Р’ С‚РѕРј С‡РёСЃР»Рµ РќР”РЎ 18% &mdash; <?=num2strL($sbr_nds)?><? if($sbr_comm) { ?> СЃ СЃСѓРјРјС‹ Р°РіРµРЅС‚СЃРєРѕРіРѕ РІРѕР·РЅР°РіСЂР°Р¶РґРµРЅРёСЏ РћРћРћ "Р’Р°Р°РЅ" &mdash; <?=num2strL($sbr_comm)?><? } ?>".
               <? } else { ?>
-                "<?=$billCode?>. НДС не облагается".
+                "<?=$billCode?>. РќР”РЎ РЅРµ РѕР±Р»Р°РіР°РµС‚СЃСЏ".
               <? } ?>
             <? } else { ?>
                "<?=$billCode?>".
             <? } ?>
             <? if($$show_ex_code || $show_ex_code){ ?>
-            <BR/>3. Условия для расчетов: код валютный операции для предоплаты за услуги - 35020
+            <BR/>3. РЈСЃР»РѕРІРёСЏ РґР»СЏ СЂР°СЃС‡РµС‚РѕРІ: РєРѕРґ РІР°Р»СЋС‚РЅС‹Р№ РѕРїРµСЂР°С†РёРё РґР»СЏ РїСЂРµРґРѕРїР»Р°С‚С‹ Р·Р° СѓСЃР»СѓРіРё - 35020
             <? } ?>
             </DIV>
             <DIV>

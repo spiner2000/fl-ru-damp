@@ -17,7 +17,7 @@ if($sbr->frl_id) {
 Sbr.prototype.DEBUG=0;
 var SBR = new Sbr('createFrm');
 window.addEvent('domready', function() { SBR = new Sbr('createFrm'); } );
-Sbr.prototype.CATEGORIES={<? // категории/подкатегории: {ид_кат:{имя_кат:{ид_подкат:имя_подкат,ид_подкат:...}},ид_кат:...}
+Sbr.prototype.CATEGORIES={<? // РєР°С‚РµРіРѕСЂРёРё/РїРѕРґРєР°С‚РµРіРѕСЂРёРё: {РёРґ_РєР°С‚:{РёРјСЏ_РєР°С‚:{РёРґ_РїРѕРґРєР°С‚:РёРјСЏ_РїРѕРґРєР°С‚,РёРґ_РїРѕРґРєР°С‚:...}},РёРґ_РєР°С‚:...}
 foreach($sub_categories as $sc) {
     $cc = $sc['prof_group'];
     $ccname = str_replace("'", "\\'", $categories[$cc]['name']);
@@ -88,9 +88,9 @@ Sbr.prototype.PDRD_DISABLED=<?=($sbr->reserved_id || $pdrd_disabled ? 'true' : '
 </script>
 <div class="tabs-in">
 	<div class="lnk-nr-back">
-        <a href=".">Вернуться в проекты по «Безопасным Сделкам»</a>
+        <a href=".">Р’РµСЂРЅСѓС‚СЊСЃСЏ РІ РїСЂРѕРµРєС‚С‹ РїРѕ В«Р‘РµР·РѕРїР°СЃРЅС‹Рј РЎРґРµР»РєР°РјВ»</a>
 	</div>
-    <h3><?=($sbr->id ? '' : 'Новая &laquo;Безопасная Сделка&raquo;')?></h3>
+    <h3><?=($sbr->id ? '' : 'РќРѕРІР°СЏ &laquo;Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°&raquo;')?></h3>
     <form action="?site=<?=$site?>" method="post" enctype="multipart/form-data" id="createFrm">
         <div class="form nr-form-name">
             <b class="b1"></b>
@@ -98,7 +98,7 @@ Sbr.prototype.PDRD_DISABLED=<?=($sbr->reserved_id || $pdrd_disabled ? 'true' : '
             <div class="form-in">
                 <div class="form-block first last">
                     <div class="form-el">
-                        <label class="form-label" for="sbr_name">Название проекта</label>
+                        <label class="form-label" for="sbr_name">РќР°Р·РІР°РЅРёРµ РїСЂРѕРµРєС‚Р°</label>
                         <span><input type="text" class="nr-i-name" id="sbr_name" name="name" value="<?=html_attr($sbr->data['name'])?>" maxlength="<?=sbr::NAME_LENGTH?>" onfocus="SBR.adErrCls(this)" onkeydown="return SBR.cancelEnter(event)" /></span>
                         <div class="tip tip-t2 tip7"></div>
                     </div>
@@ -117,17 +117,17 @@ Sbr.prototype.PDRD_DISABLED=<?=($sbr->reserved_id || $pdrd_disabled ? 'true' : '
                           <?=sbr_meta::view_frl($frl)?>
                         </div>
                         <? if($site=='create' || $sbr->isDraft() || $sbr->data['status']==sbr::STATUS_CANCELED || $sbr->data['status']==sbr::STATUS_REFUSED) { ?>
-                        <label class="form-label" for="frl_login">Исполнитель</label>
-                        <span><input type="text" id="frl_login" name="frl_login" value="<?=($sbr->data['frl_login_added'] ? $sbr->data['frl_login_added'] : ($sbr->data['frl_login'] ? html_attr($sbr->data['frl_login']) : 'логин'))?>" onfocus="SBR.onfrlfocus(this);this.select()" onkeydown="if(event.keyCode==13){SBR.addFrl();return false;}" onblur="SBR.onfrlblur(this)" class="nr-i-login" />
-                        <input type="button" class="i-btn" value="<?=($frl->uid ? 'Сменить' : 'Добавить')?>" onclick="SBR.addFrl()"/></span>
+                        <label class="form-label" for="frl_login">РСЃРїРѕР»РЅРёС‚РµР»СЊ</label>
+                        <span><input type="text" id="frl_login" name="frl_login" value="<?=($sbr->data['frl_login_added'] ? $sbr->data['frl_login_added'] : ($sbr->data['frl_login'] ? html_attr($sbr->data['frl_login']) : 'Р»РѕРіРёРЅ'))?>" onfocus="SBR.onfrlfocus(this);this.select()" onkeydown="if(event.keyCode==13){SBR.addFrl();return false;}" onblur="SBR.onfrlblur(this)" class="nr-i-login" />
+                        <input type="button" class="i-btn" value="<?=($frl->uid ? 'РЎРјРµРЅРёС‚СЊ' : 'Р”РѕР±Р°РІРёС‚СЊ')?>" onclick="SBR.addFrl()"/></span>
                         <div class="tip tip-t2" style="left:160px;top:14px;z-index:1"></div>
                         <? } ?>
                     </div>
                 </div>
                 <div class="form-block last"<?=($frl && !$frl_rtype ? '' : ' style="display:none"')?> id="unknown_frl_rez">
                     <div class="form-el">
-                        <span class="dred">Обратите внимание, исполнитель не указал свое резиденство. Для резидентов Республики Беларусь, Республики Казахстан или Украины действует особое ограничение &mdash;
-                        максимальный бюджет задачи не может превышать <?=sbr_meta::view_cost($sbr->maxNorezCost(), exrates::BANK)?> (эквивалент <?=sbr::MAX_COST_USD?> USD). Для остальных нерезидентов Российской Федерации «Безопасная Сделка» недоступна.</span>
+                        <span class="dred">РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ, РёСЃРїРѕР»РЅРёС‚РµР»СЊ РЅРµ СѓРєР°Р·Р°Р» СЃРІРѕРµ СЂРµР·РёРґРµРЅСЃС‚РІРѕ. Р”Р»СЏ СЂРµР·РёРґРµРЅС‚РѕРІ Р РµСЃРїСѓР±Р»РёРєРё Р‘РµР»Р°СЂСѓСЃСЊ, Р РµСЃРїСѓР±Р»РёРєРё РљР°Р·Р°С…СЃС‚Р°РЅ РёР»Рё РЈРєСЂР°РёРЅС‹ РґРµР№СЃС‚РІСѓРµС‚ РѕСЃРѕР±РѕРµ РѕРіСЂР°РЅРёС‡РµРЅРёРµ &mdash;
+                        РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ Р·Р°РґР°С‡Рё РЅРµ РјРѕР¶РµС‚ РїСЂРµРІС‹С€Р°С‚СЊ <?=sbr_meta::view_cost($sbr->maxNorezCost(), exrates::BANK)?> (СЌРєРІРёРІР°Р»РµРЅС‚ <?=sbr::MAX_COST_USD?> USD). Р”Р»СЏ РѕСЃС‚Р°Р»СЊРЅС‹С… РЅРµСЂРµР·РёРґРµРЅС‚РѕРІ Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В» РЅРµРґРѕСЃС‚СѓРїРЅР°.</span>
                     </div>
                 </div>
             </div>
@@ -141,9 +141,9 @@ Sbr.prototype.PDRD_DISABLED=<?=($sbr->reserved_id || $pdrd_disabled ? 'true' : '
         ?>
         <fieldset class="nr-task">
             
-            <legend>Задача №<a class="nr-task-anchor" name="stage<?=($num+1)?>" innum="<?=$num?>"><?=($num+1)?></a> <? // !!! переименовать якорь ?>
+            <legend>Р—Р°РґР°С‡Р° в„–<a class="nr-task-anchor" name="stage<?=($num+1)?>" innum="<?=$num?>"><?=($num+1)?></a> <? // !!! РїРµСЂРµРёРјРµРЅРѕРІР°С‚СЊ СЏРєРѕСЂСЊ ?>
               <? if($site=='create' || $sbr->isDraft()) { // !!! !$sbr->reserved_id || ?>
-                <span id="delstage_box<?=$num?>"<?=($num || $sbr->stages_cnt > 1 ? '' : ' style="display:none"')?>>(<a href="javascript:;">удалить</a>)</span>
+                <span id="delstage_box<?=$num?>"<?=($num || $sbr->stages_cnt > 1 ? '' : ' style="display:none"')?>>(<a href="javascript:;">СѓРґР°Р»РёС‚СЊ</a>)</span>
               <? } ?>
             </legend>
             <div class="form">
@@ -152,16 +152,16 @@ Sbr.prototype.PDRD_DISABLED=<?=($sbr->reserved_id || $pdrd_disabled ? 'true' : '
                 <div class="form-in">
                     <div class="form-block first">
                         <div class="form-el">
-                            <label for="name_task" class="form-label">Название задачи:</label>
+                            <label for="name_task" class="form-label">РќР°Р·РІР°РЅРёРµ Р·Р°РґР°С‡Рё:</label>
                             <span class="fprm-p"><input type="text" name="stages[<?=$num?>][name]" id="name_task" class="nr-i-taskname" value="<?=html_attr($stage->data['name'])?>" maxlength="<?=sbr_stages::NAME_LENGTH?>" onfocus="SBR.adErrCls(this)" onkeydown="return SBR.cancelEnter(event)"/></span>
                             <div class="tip tip-t2 tip5"></div>
                         </div>
                         <div class="form-el">
-                            <label for="razdel-choose" class="form-label">Раздел:</label>
+                            <label for="razdel-choose" class="form-label">Р Р°Р·РґРµР»:</label>
                             <span class="nr-task-cat">
                                 <span>
                                   <select id="razdel-choose" name="stages[<?=$num?>][category]" onchange="SBR.getStageByItem(this).changeCat(this.value)">
-                                  <option value="0">&lt;Выберите раздел&gt;</option>
+                                  <option value="0">&lt;Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»&gt;</option>
                                   <? foreach($categories as $cc) { ?>
                                      <option value="<?=$cc['id']?>"<?=($cc['id']==$stage->data['category'] ? ' selected="selected"' : '')?>><?=$cc['name']?></option>
                                   <? } ?>
@@ -173,11 +173,11 @@ Sbr.prototype.PDRD_DISABLED=<?=($sbr->reserved_id || $pdrd_disabled ? 'true' : '
                             </span>
                         </div>
                         <div class="form-el">
-                            <label for="descr-task" class="form-label">Описание задачи:</label>
+                            <label for="descr-task" class="form-label">РћРїРёСЃР°РЅРёРµ Р·Р°РґР°С‡Рё:</label>
                             <div class="nr-task-info">
                                 <span><textarea id="descr-task" rows="5" cols="5" name="stages[<?=$num?>][descr]" onfocus="try{SBR.adErrCls(this)}catch(e){}"><?=$stage->data['descr']?></textarea></span>
                                 <div class="tip tip-t2 tip4"></div>
-                                <!-- Прикрепленные файлы -->
+                                <!-- РџСЂРёРєСЂРµРїР»РµРЅРЅС‹Рµ С„Р°Р№Р»С‹ -->
                                 <div class="form form-files">
                                     <b class="b1"></b>
                                     <b class="b2"></b>
@@ -186,9 +186,9 @@ Sbr.prototype.PDRD_DISABLED=<?=($sbr->reserved_id || $pdrd_disabled ? 'true' : '
                                             <div class="form-el">
                                                 <div class="flt-<?=($stage->data['attach']||$sbr->error['stages'][$num]['err_attach'] ? 'show' : 'hide')?>" id="nr-files1">
                                                     <div class="form-files-tglbar">
-                                                        <a href="javascript: void(0);" class="flt-tgl-lnk lnk-dot-blue">Прикрепленные файлы (<?=($stage->data['attach'] ? 'с' : 'раз')?>вернуть)</a>
+                                                        <a href="javascript: void(0);" class="flt-tgl-lnk lnk-dot-blue">РџСЂРёРєСЂРµРїР»РµРЅРЅС‹Рµ С„Р°Р№Р»С‹ (<?=($stage->data['attach'] ? 'СЃ' : 'СЂР°Р·')?>РІРµСЂРЅСѓС‚СЊ)</a>
                                                     </div>
-                                                    <div class="flt-cnt с">
+                                                    <div class="flt-cnt СЃ">
 																												
 																														<ul class="form-files-added">
 																																<? if($stage->data['attach']) foreach($stage->data['attach'] as $id=>$a) { ?>
@@ -199,7 +199,7 @@ Sbr.prototype.PDRD_DISABLED=<?=($sbr->reserved_id || $pdrd_disabled ? 'true' : '
 																																		<? } if($a['is_deleted']!='t') { ?>
 																																				<li>
 																																						<a href="javascript:;" onclick="SBR.getStageByItem(this).delAttach(this, <?=(int)$id?>)">
-																																							<img src="/images/btn-remove2.png" alt="Удалить">
+																																							<img src="/images/btn-remove2.png" alt="РЈРґР°Р»РёС‚СЊ">
 																																						</a>
 																																						<a href="<?=WDCPREFIX.'/'.$a['path'].$a['name']?>" target="_blank"><?=($a['orig_name'] ? $a['orig_name'] : $a['name'])?></a>
 																																				</li>
@@ -212,10 +212,10 @@ Sbr.prototype.PDRD_DISABLED=<?=($sbr->reserved_id || $pdrd_disabled ? 'true' : '
                                                         <div class="form-files-inf" style="position: relative">
                                                             <span><input type="hidden" name="stages[<?=$num?>][err_attach]" /></span><div class="tip tip-t2" style="top:2px;left:0px;z-index:1"></div>
                                                             <p>
-                                                            Вы можете прикрепить к сообщению:<br />
-                                                            <strong>Файл:</strong> <?=sbr::MAX_FILE_SIZE/1024/1024?> Мб.<br />
-                                                            <strong>Картинку</strong>: 600x1000 пикселей, 300 Кб.<br />
-                                                            Файлы следующих форматов запрещены к загрузке: <?=implode(', ', $GLOBALS['disallowed_array'])?>
+                                                            Р’С‹ РјРѕР¶РµС‚Рµ РїСЂРёРєСЂРµРїРёС‚СЊ Рє СЃРѕРѕР±С‰РµРЅРёСЋ:<br />
+                                                            <strong>Р¤Р°Р№Р»:</strong> <?=sbr::MAX_FILE_SIZE/1024/1024?> РњР±.<br />
+                                                            <strong>РљР°СЂС‚РёРЅРєСѓ</strong>: 600x1000 РїРёРєСЃРµР»РµР№, 300 РљР±.<br />
+                                                            Р¤Р°Р№Р»С‹ СЃР»РµРґСѓСЋС‰РёС… С„РѕСЂРјР°С‚РѕРІ Р·Р°РїСЂРµС‰РµРЅС‹ Рє Р·Р°РіСЂСѓР·РєРµ: <?=implode(', ', $GLOBALS['disallowed_array'])?>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -226,16 +226,16 @@ Sbr.prototype.PDRD_DISABLED=<?=($sbr->reserved_id || $pdrd_disabled ? 'true' : '
                                     <b class="b2"></b>
                                     <b class="b1"></b>
                                 </div>
-                                <!-- конец Прикрепленные файлы -->
+                                <!-- РєРѕРЅРµС† РџСЂРёРєСЂРµРїР»РµРЅРЅС‹Рµ С„Р°Р№Р»С‹ -->
                             </div>
                         </div>
                     </div>
                     <div class="form-block last" style="height:auto">
                         <div class="nr-imp">
-                            <h4>Минимальный бюджет — <?=sbr_stages::MIN_COST_RUR?> руб.</h4>
+                            <h4>РњРёРЅРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ вЂ” <?=sbr_stages::MIN_COST_RUR?> СЂСѓР±.</h4>
                         </div>
                         <div class="form-el form-s-el">
-                            <label for="budjet-prj" class="form-label">Стоимость работы, в т.ч. НДС:</label>
+                            <label for="budjet-prj" class="form-label">РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹, РІ С‚.С‡. РќР”РЎ:</label>
                             <span>
                                 <input id="budjet-prj" name="stages[<?=$num?>][cost]" type="text" style="width:120px"<?=($sbr->reserved_id ? ' disabled="disabled"' : ' onchange="SBR.getStageByItem(this).changeCost(this.value)"')?> value="<?=html_attr($stage->data['cost'])?>" maxlength="12" onfocus="SBR.adErrCls(this); SBR.adErrCls($('cost_sys_err_tbl'))" onkeydown="return SBR.cancelEnter(event)"/>
                                 <? if($num == 0) { ?>
@@ -252,30 +252,30 @@ Sbr.prototype.PDRD_DISABLED=<?=($sbr->reserved_id || $pdrd_disabled ? 'true' : '
                             </span>
                             <div class="tip" style="left:393px"></div>
                             <div class="nr-imp norez_maxcost_block"<?=($frl_rtype!=sbr::RT_UABYKZ ? ' style="display:none"' : '')?>>
-                                <h4>Максимальный бюджет &mdash; <?=sbr_meta::view_cost($sbr->maxNorezCost(), exrates::BANK)?>, поскольку выбранный исполнитель не является резидентом Российской Федерации</h4>
+                                <h4>РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ &mdash; <?=sbr_meta::view_cost($sbr->maxNorezCost(), exrates::BANK)?>, РїРѕСЃРєРѕР»СЊРєСѓ РІС‹Р±СЂР°РЅРЅС‹Р№ РёСЃРїРѕР»РЅРёС‚РµР»СЊ РЅРµ СЏРІР»СЏРµС‚СЃСЏ СЂРµР·РёРґРµРЅС‚РѕРј Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё</h4>
                             </div>
                         </div>
                         <div class="form-el">
-                            <label for="itogo-pay" class="form-label3">Итого к оплате:</label>
+                            <label for="itogo-pay" class="form-label3">РС‚РѕРіРѕ Рє РѕРїР»Р°С‚Рµ:</label>
                             <span>
                                 <input id="itogo-pay" type="text" style="width:120px" name="stages[<?=$num?>][cost_total]"<?=($sbr->reserved_id ? ' disabled="disabled"' : ' onchange="SBR.getStageByItem(this).changeCostTotal(this.value)"')?> value="<?=html_attr($stage->data['cost_total'])?>" maxlength="12" onfocus="SBR.adErrCls(this); SBR.adErrCls($('cost_sys_err_tbl'))" onkeydown="return SBR.cancelEnter(event)"/>
                                 
-                                <span>рублей</span>
+                                <span>СЂСѓР±Р»РµР№</span>
                             </span>
                         </div>
                         <div class="nr-imp" style="margin-top:-20px">
-                            <h4>Отсчет времени начинается с момента резервирования денежных средств</h4>
+                            <h4>РћС‚СЃС‡РµС‚ РІСЂРµРјРµРЅРё РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ РјРѕРјРµРЅС‚Р° СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ</h4>
                         </div>
                         <div class="form-el">
                             <? if(!$sbr->data['reserved_id'] || !$stage->data['dead_time']) { ?>
-                                <label for="time-lavel" class="form-label">Время на этап:</label>
+                                <label for="time-lavel" class="form-label">Р’СЂРµРјСЏ РЅР° СЌС‚Р°Рї:</label>
                                 <span>
                                     <input id="time-lavel" name="stages[<?=$num?>][work_time]" type="text" size="7" value="<?=($stage->data['work_days'] ? html_attr($stage->data['work_days']) : '')?>" maxlength="3" onfocus="SBR.adErrCls(this)" onkeydown="return SBR.cancelEnter(event)"/>
-                                    (дней)
+                                    (РґРЅРµР№)
                                 </span>
                                 <div class="tip tip-t2" style="top:12px;left:160px"></div>
                             <? } else { ?>
-                                <label for="srok-task" class="form-label">Срок задачи:</label>
+                                <label for="srok-task" class="form-label">РЎСЂРѕРє Р·Р°РґР°С‡Рё:</label>
                                 <span class="nr-diedline">
                                     <input id="srok-task" type="text" size="2" name="stages[<?=$num?>][dead_day]" value="<?=date('j',strtotime($stage->data['dead_time']))?>" maxlength="2" onchange="SBR.getStageByItem(this).setWTime()" onkeydown="return SBR.cancelEnter(event)"/>
                                     <select name="stages[<?=$num?>][dead_month]" onchange="SBR.getStageByItem(this).setWTime()">
@@ -286,10 +286,10 @@ Sbr.prototype.PDRD_DISABLED=<?=($sbr->reserved_id || $pdrd_disabled ? 'true' : '
                                     <input name="stages[<?=$num?>][dead_year]" type="text" size="4" value="<?=date('Y',strtotime($stage->data['dead_time']))?>" maxlength="4" onchange="SBR.getStageByItem(this).setWTime()" onkeydown="return SBR.cancelEnter(event)" />
                                     <br /><br />
                                     <select style="width: 121px" name="stages[<?=$num?>][add_wt_switch]" onchange="SBR.getStageByItem(this).setWTime(null,1)">
-                                      <option value="+"<?=($stage->data['add_wt_switch']=='+' ? ' selected="selected"' : '')?>>Добавить</option>
-                                      <option value="-"<?=($stage->data['add_wt_switch']=='-' ? ' selected="selected"' : '')?>>Отнять</option>
+                                      <option value="+"<?=($stage->data['add_wt_switch']=='+' ? ' selected="selected"' : '')?>>Р”РѕР±Р°РІРёС‚СЊ</option>
+                                      <option value="-"<?=($stage->data['add_wt_switch']=='-' ? ' selected="selected"' : '')?>>РћС‚РЅСЏС‚СЊ</option>
                                     </select>
-                                    <input name="stages[<?=$num?>][add_work_time]" type="text" size="4" value="<?=html_attr($stage->data['add_work_time'])?>" maxlength="3" onfocus="SBR.adErrCls(this)" onchange="SBR.getStageByItem(this).setWTime(this.value)" onkeyup="SBR.getStageByItem(this).setWTime(this.value, null, true)" onkeydown="return SBR.cancelEnter(event)"/> (дней)
+                                    <input name="stages[<?=$num?>][add_work_time]" type="text" size="4" value="<?=html_attr($stage->data['add_work_time'])?>" maxlength="3" onfocus="SBR.adErrCls(this)" onchange="SBR.getStageByItem(this).setWTime(this.value)" onkeyup="SBR.getStageByItem(this).setWTime(this.value, null, true)" onkeydown="return SBR.cancelEnter(event)"/> (РґРЅРµР№)
                                 </span>
                             <? } ?>
                         </div>
@@ -301,7 +301,7 @@ Sbr.prototype.PDRD_DISABLED=<?=($sbr->reserved_id || $pdrd_disabled ? 'true' : '
             </div>
                         <? if($site!='editstage' && ($site=='create' || $sbr->isDraft())) { // !!! ?>
                             <div class="form-el-btn">
-                                <input type="button" class="i-btn" value="+ Добавить еще одну задачу" onclick="SBR.addStage()"/>
+                                <input type="button" class="i-btn" value="+ Р”РѕР±Р°РІРёС‚СЊ РµС‰Рµ РѕРґРЅСѓ Р·Р°РґР°С‡Сѓ" onclick="SBR.addStage()"/>
                             </div>
                         <? } ?>
         </fieldset>
@@ -316,19 +316,19 @@ Sbr.prototype.PDRD_DISABLED=<?=($sbr->reserved_id || $pdrd_disabled ? 'true' : '
                             <li>
                                 <label><input name="rez_type" type="radio" value="<?=sbr::RT_RU?>" class="i-radio"<?=($rt_disabled && $rez_type && $rez_type != sbr::RT_RU ? ' disabled="disabled"' : '' )?><?=($rt_checked && $rez_type == sbr::RT_RU ? ' checked="checked"' : '' )?>
                                 onclick="SBR.changeEmpRezType(<?=sbr::RT_RU?>)"/>
-                                  Я подтверждаю, что являюсь резидентом Российской Федерации
+                                  РЇ РїРѕРґС‚РІРµСЂР¶РґР°СЋ, С‡С‚Рѕ СЏРІР»СЏСЋСЃСЊ СЂРµР·РёРґРµРЅС‚РѕРј Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё
                                 </label>
                             </li>
                             <li>
                                 <label><input name="rez_type" type="radio" value="<?=sbr::RT_UABYKZ?>" class="i-radio"<?=($rt_disabled && $rez_type && $rez_type != sbr::RT_UABYKZ ? ' disabled="disabled"' : '' )?><?=($rt_checked && $rez_type == sbr::RT_UABYKZ ? ' checked="checked"' : '' )?>
                                 onclick="SBR.changeEmpRezType(<?=sbr::RT_UABYKZ?>)"/>
-                                  Я подтверждаю, что являюсь резидентом любого другого государства, кроме Российской Федерации
+                                  РЇ РїРѕРґС‚РІРµСЂР¶РґР°СЋ, С‡С‚Рѕ СЏРІР»СЏСЋСЃСЊ СЂРµР·РёРґРµРЅС‚РѕРј Р»СЋР±РѕРіРѕ РґСЂСѓРіРѕРіРѕ РіРѕСЃСѓРґР°СЂСЃС‚РІР°, РєСЂРѕРјРµ Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё
                                 </label>
                                 <div class="form fs-o form-resident-inf"<?=($rt_checked && $rez_type == sbr::RT_UABYKZ ? '' : ' style="display:none"' )?> id="norez_info">
                                     <b class="b1"></b>
                                     <b class="b2"></b>
                                     <div class="form-in">
-                                        Максимальная сумма сделки составляет <?=sbr::MAX_COST_USD?> USD (<?=sbr_meta::view_cost($sbr->maxNorezCost(), exrates::BANK)?>)<br />
+                                        РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЃСѓРјРјР° СЃРґРµР»РєРё СЃРѕСЃС‚Р°РІР»СЏРµС‚ <?=sbr::MAX_COST_USD?> USD (<?=sbr_meta::view_cost($sbr->maxNorezCost(), exrates::BANK)?>)<br />
                                     </div>
                                     <b class="b2"></b>
                                     <b class="b1"></b>
@@ -349,7 +349,7 @@ Sbr.prototype.PDRD_DISABLED=<?=($sbr->reserved_id || $pdrd_disabled ? 'true' : '
                             <span><input type="hidden" name="scheme_type_err" /></span>
                             <div class="tip tip-t2" style="left:17px;top:20px;z-index:1"></div>
                             <? if($pdrd_disabled) { ?>
-                              <span style="color:gray">(в связи со сменой ставки налогов договором подряда можно будет воспользоваться с 1 января)</span>
+                              <span style="color:gray">(РІ СЃРІСЏР·Рё СЃРѕ СЃРјРµРЅРѕР№ СЃС‚Р°РІРєРё РЅР°Р»РѕРіРѕРІ РґРѕРіРѕРІРѕСЂРѕРј РїРѕРґСЂСЏРґР° РјРѕР¶РЅРѕ Р±СѓРґРµС‚ РІРѕСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ СЃ 1 СЏРЅРІР°СЂСЏ)</span>
                             <? } ?>
                             </li>
                         </ul>
@@ -361,7 +361,7 @@ Sbr.prototype.PDRD_DISABLED=<?=($sbr->reserved_id || $pdrd_disabled ? 'true' : '
                                 <col width="125" />
                                 <col width="100" />
                                 <tr>
-                                    <th>Стоимость работы, в т.ч. НДС</th>
+                                    <th>РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹, РІ С‚.С‡. РќР”РЎ</th>
                                     <td style="width: 125px;">&mdash;</td>
                                     <td class="col-sum" id="sch_<?=$sch['type']?>_f"><?=(float)$sbr->data['cost']?></td>
                                 </tr>
@@ -390,8 +390,8 @@ Sbr.prototype.PDRD_DISABLED=<?=($sbr->reserved_id || $pdrd_disabled ? 'true' : '
             <div class="form-in">
                 <div class="form-block first last">
                     <div class="form-el">
-                        <h4>Обратите внимание!</h4>
-                        <p>Резервирование денежных средств происходит после согласования условий с исполнителем. Резервирование денежных средств для «Безопасной Сделки» не может быть осуществлено с помощью личного счета в FM.</p>
+                        <h4>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ!</h4>
+                        <p>Р РµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ РїСЂРѕРёСЃС…РѕРґРёС‚ РїРѕСЃР»Рµ СЃРѕРіР»Р°СЃРѕРІР°РЅРёСЏ СѓСЃР»РѕРІРёР№ СЃ РёСЃРїРѕР»РЅРёС‚РµР»РµРј. Р РµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ РґР»СЏ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ» РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕСЃСѓС‰РµСЃС‚РІР»РµРЅРѕ СЃ РїРѕРјРѕС‰СЊСЋ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р° РІ FM.</p>
                     </div>
                 </div>
             </div>
@@ -404,16 +404,16 @@ Sbr.prototype.PDRD_DISABLED=<?=($sbr->reserved_id || $pdrd_disabled ? 'true' : '
             <div class="form-in">
                 <div class="form-block first last">
                     <div class="form-el">
-                        <p id="schalert<?=sbr::SCHEME_AGNT?>" style="display:none">Отправляя данное Техническое задание на утверждение Исполнителю путем нажатия на кнопку &laquo;Отправить на утверждение исполнителю&raquo;, вы предлагаете Исполнителю заключить Соглашение о выполнении работы и/или оказании услуги с использованием онлайн сервиса &laquo;Безопасная Сделка&raquo;. Текст Соглашения расположен на Сайте Free-lance.ru в сети Интернет по адресу: <a href="/agreement_escrow.pdf" target="_blank"><nobr><?=HTTP_PREFIX?>www.free-lance.ru/agreement_escrow.pdf</nobr></a>.<br/><br/>
-                          Настоящим Сайт Free-lance.ru (ООО "Ваан") предлагает Оферту на заключение Договора об использовании онлайн сервиса &laquo;Безопасная Сделка&raquo;. Текст Оферты на заключение Договора об использовании онлайн сервиса &laquo;«Безопасная Сделка»&raquo; расположен на Сайте Free-lance.ru в сети Интернет по адресу: <a href="<?=sbr::$scheme_types[sbr::SCHEME_AGNT][1]?>" target="_blank"><nobr><?=sbr::$scheme_types[sbr::SCHEME_AGNT][1]?></nobr></a>. Нажимая на кнопку &laquo;Отправить на утверждение исполнителю&raquo;, вы принимаете условия Оферты на заключение Договора об использовании онлайн сервиса &laquo;Безопасная Сделка&raquo;.</p>
-                        <p id="schalert<?=sbr::SCHEME_PDRD?>" style="display:none">Отправляя данное Техническое задание на утверждение Исполнителю путем нажатия на кнопку &laquo;Отправить на утверждение исполнителю&raquo;, вы заключаете Соглашение о выполнении работы и/или оказании услуги с использованием онлайн сервиса &laquo;Безопасная Сделка&raquo;. Текст Соглашения расположен на Сайте Free-lance.ru в сети Интернет по адресу: <a href="/offer_work_employer.pdf" target="_blank"><nobr><?=HTTP_PREFIX?>www.free-lance.ru/offer_work_employer.pdf</nobr></a>. </p>
-                        <input type="submit" name="send" class="i-btn nr-btn-send" value="Отправить на утверждение исполнителю" <?=(!$rt_checked ? ' disabled="disabled"' : '')?> />
+                        <p id="schalert<?=sbr::SCHEME_AGNT?>" style="display:none">РћС‚РїСЂР°РІР»СЏСЏ РґР°РЅРЅРѕРµ РўРµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ РЅР° СѓС‚РІРµСЂР¶РґРµРЅРёРµ РСЃРїРѕР»РЅРёС‚РµР»СЋ РїСѓС‚РµРј РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ &laquo;РћС‚РїСЂР°РІРёС‚СЊ РЅР° СѓС‚РІРµСЂР¶РґРµРЅРёРµ РёСЃРїРѕР»РЅРёС‚РµР»СЋ&raquo;, РІС‹ РїСЂРµРґР»Р°РіР°РµС‚Рµ РСЃРїРѕР»РЅРёС‚РµР»СЋ Р·Р°РєР»СЋС‡РёС‚СЊ РЎРѕРіР»Р°С€РµРЅРёРµ Рѕ РІС‹РїРѕР»РЅРµРЅРёРё СЂР°Р±РѕС‚С‹ Рё/РёР»Рё РѕРєР°Р·Р°РЅРёРё СѓСЃР»СѓРіРё СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј РѕРЅР»Р°Р№РЅ СЃРµСЂРІРёСЃР° &laquo;Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°&raquo;. РўРµРєСЃС‚ РЎРѕРіР»Р°С€РµРЅРёСЏ СЂР°СЃРїРѕР»РѕР¶РµРЅ РЅР° РЎР°Р№С‚Рµ Free-lance.ru РІ СЃРµС‚Рё РРЅС‚РµСЂРЅРµС‚ РїРѕ Р°РґСЂРµСЃСѓ: <a href="/agreement_escrow.pdf" target="_blank"><nobr><?=HTTP_PREFIX?>www.free-lance.ru/agreement_escrow.pdf</nobr></a>.<br/><br/>
+                          РќР°СЃС‚РѕСЏС‰РёРј РЎР°Р№С‚ Free-lance.ru (РћРћРћ "Р’Р°Р°РЅ") РїСЂРµРґР»Р°РіР°РµС‚ РћС„РµСЂС‚Сѓ РЅР° Р·Р°РєР»СЋС‡РµРЅРёРµ Р”РѕРіРѕРІРѕСЂР° РѕР± РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё РѕРЅР»Р°Р№РЅ СЃРµСЂРІРёСЃР° &laquo;Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°&raquo;. РўРµРєСЃС‚ РћС„РµСЂС‚С‹ РЅР° Р·Р°РєР»СЋС‡РµРЅРёРµ Р”РѕРіРѕРІРѕСЂР° РѕР± РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё РѕРЅР»Р°Р№РЅ СЃРµСЂРІРёСЃР° &laquo;В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В»&raquo; СЂР°СЃРїРѕР»РѕР¶РµРЅ РЅР° РЎР°Р№С‚Рµ Free-lance.ru РІ СЃРµС‚Рё РРЅС‚РµСЂРЅРµС‚ РїРѕ Р°РґСЂРµСЃСѓ: <a href="<?=sbr::$scheme_types[sbr::SCHEME_AGNT][1]?>" target="_blank"><nobr><?=sbr::$scheme_types[sbr::SCHEME_AGNT][1]?></nobr></a>. РќР°Р¶РёРјР°СЏ РЅР° РєРЅРѕРїРєСѓ &laquo;РћС‚РїСЂР°РІРёС‚СЊ РЅР° СѓС‚РІРµСЂР¶РґРµРЅРёРµ РёСЃРїРѕР»РЅРёС‚РµР»СЋ&raquo;, РІС‹ РїСЂРёРЅРёРјР°РµС‚Рµ СѓСЃР»РѕРІРёСЏ РћС„РµСЂС‚С‹ РЅР° Р·Р°РєР»СЋС‡РµРЅРёРµ Р”РѕРіРѕРІРѕСЂР° РѕР± РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё РѕРЅР»Р°Р№РЅ СЃРµСЂРІРёСЃР° &laquo;Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°&raquo;.</p>
+                        <p id="schalert<?=sbr::SCHEME_PDRD?>" style="display:none">РћС‚РїСЂР°РІР»СЏСЏ РґР°РЅРЅРѕРµ РўРµС…РЅРёС‡РµСЃРєРѕРµ Р·Р°РґР°РЅРёРµ РЅР° СѓС‚РІРµСЂР¶РґРµРЅРёРµ РСЃРїРѕР»РЅРёС‚РµР»СЋ РїСѓС‚РµРј РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ &laquo;РћС‚РїСЂР°РІРёС‚СЊ РЅР° СѓС‚РІРµСЂР¶РґРµРЅРёРµ РёСЃРїРѕР»РЅРёС‚РµР»СЋ&raquo;, РІС‹ Р·Р°РєР»СЋС‡Р°РµС‚Рµ РЎРѕРіР»Р°С€РµРЅРёРµ Рѕ РІС‹РїРѕР»РЅРµРЅРёРё СЂР°Р±РѕС‚С‹ Рё/РёР»Рё РѕРєР°Р·Р°РЅРёРё СѓСЃР»СѓРіРё СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј РѕРЅР»Р°Р№РЅ СЃРµСЂРІРёСЃР° &laquo;Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°&raquo;. РўРµРєСЃС‚ РЎРѕРіР»Р°С€РµРЅРёСЏ СЂР°СЃРїРѕР»РѕР¶РµРЅ РЅР° РЎР°Р№С‚Рµ Free-lance.ru РІ СЃРµС‚Рё РРЅС‚РµСЂРЅРµС‚ РїРѕ Р°РґСЂРµСЃСѓ: <a href="/offer_work_employer.pdf" target="_blank"><nobr><?=HTTP_PREFIX?>www.free-lance.ru/offer_work_employer.pdf</nobr></a>. </p>
+                        <input type="submit" name="send" class="i-btn nr-btn-send" value="РћС‚РїСЂР°РІРёС‚СЊ РЅР° СѓС‚РІРµСЂР¶РґРµРЅРёРµ РёСЃРїРѕР»РЅРёС‚РµР»СЋ" <?=(!$rt_checked ? ' disabled="disabled"' : '')?> />
                         <? if($sbr->status==sbr::STATUS_CANCELED || $sbr->status==sbr::STATUS_REFUSED) { ?>
-                          <input type="submit" name="save" class="i-btn nr-btn-send" value="&nbsp;Сохранить&nbsp;" <?=(!$rt_checked ? ' disabled="disabled"' : '')?> />
+                          <input type="submit" name="save" class="i-btn nr-btn-send" value="&nbsp;РЎРѕС…СЂР°РЅРёС‚СЊ&nbsp;" <?=(!$rt_checked ? ' disabled="disabled"' : '')?> />
                         <? } if($site!='editstage' && ($site == 'create' || $sbr->isDraft())) { ?>
-                          <input type="submit" name="draft" class="i-btn" value="Сохранить как черновик"<?=(!$rt_checked ? ' disabled="disabled"' : '')?> />
+                          <input type="submit" name="draft" class="i-btn" value="РЎРѕС…СЂР°РЅРёС‚СЊ РєР°Рє С‡РµСЂРЅРѕРІРёРє"<?=(!$rt_checked ? ' disabled="disabled"' : '')?> />
                         <? } else { ?>
-                          <input type="submit" name="cancel" class="i-btn" value="Отменить" />
+                          <input type="submit" name="cancel" class="i-btn" value="РћС‚РјРµРЅРёС‚СЊ" />
                         <? } ?>
                     </div>
                 </div>

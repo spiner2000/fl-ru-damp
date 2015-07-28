@@ -1,10 +1,10 @@
 <?php if ( !defined('IS_SITE_ADMIN') ) { header('Location: /404.php'); exit; } ?>
 <h2>
-    Загрузка баннера для ежедневной рассылки о новых проектах
+    Р—Р°РіСЂСѓР·РєР° Р±Р°РЅРЅРµСЂР° РґР»СЏ РµР¶РµРґРЅРµРІРЅРѕР№ СЂР°СЃСЃС‹Р»РєРё Рѕ РЅРѕРІС‹С… РїСЂРѕРµРєС‚Р°С…
 </h2>
 <br/>
 <h3 id="frl">
-    Для фрилансеров
+    Р”Р»СЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
 </h3>
 <br/>
 <form method="post" action="" enctype="multipart/form-data">
@@ -17,7 +17,7 @@
             <div class="form-block first">
                 <div class="form-el">
                     <label class="form-l">
-                        <b>Файл</b>
+                        <b>Р¤Р°Р№Р»</b>
                     </label>
                     <div class="form-value fvs">
                         <input type="file" name="file"/>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-el">
                     <label class="form-l">
-                        <b>Ссылка</b>
+                        <b>РЎСЃС‹Р»РєР°</b>
                     </label>
                     <div class="form-value">
                         <textarea rows="" cols="100%" name="link"></textarea>
@@ -37,7 +37,7 @@
             </div>
             <div class="form-block last">
                 <div class="form-el form-btns">
-                    <button type="submit">Загрузить</button>
+                    <button type="submit">Р—Р°РіСЂСѓР·РёС‚СЊ</button>
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
             </div>
             <div class="form-block last">
                 <div class="form-el form-btns">
-                    <button type="submit">Удалить</button>
+                    <button type="submit">РЈРґР°Р»РёС‚СЊ</button>
                 </div>
             </div>
         </div>
@@ -81,7 +81,7 @@
 <br/><br/>
 
 <h3 id="emp">
-    Для работодателей
+    Р”Р»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№
 </h3>
 <br/>
 <form method="post" action="" enctype="multipart/form-data">
@@ -94,7 +94,7 @@
             <div class="form-block first">
                 <div class="form-el">
                     <label class="form-l">
-                        <b>Файл</b>
+                        <b>Р¤Р°Р№Р»</b>
                     </label>
                     <div class="form-value fvs">
                         <input type="file" name="file"/>
@@ -105,7 +105,7 @@
                 </div>
                 <div class="form-el">
                     <label class="form-l">
-                        <b>Ссылка</b>
+                        <b>РЎСЃС‹Р»РєР°</b>
                     </label>
                     <div class="form-value">
                         <textarea rows="" cols="100%" name="link"></textarea>
@@ -114,7 +114,7 @@
             </div>
             <div class="form-block last">
                 <div class="form-el form-btns">
-                    <button type="submit">Загрузить</button>
+                    <button type="submit">Р—Р°РіСЂСѓР·РёС‚СЊ</button>
                 </div>
             </div>
         </div>
@@ -143,7 +143,7 @@
             </div>
             <div class="form-block last">
                 <div class="form-el form-btns">
-                    <button type="submit">Удалить</button>
+                    <button type="submit">РЈРґР°Р»РёС‚СЊ</button>
                 </div>
             </div>
         </div>

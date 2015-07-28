@@ -19,7 +19,7 @@ class londiste__inkeys extends londiste {
 
         $rh = $DB->row("SELECT *, f_mod + (f_lag||' seconds')::interval <= now() as expired FROM londiste_helper__inkeys WHERE t_name = ? AND f_name = ?", $t_name, $f_name);
         $db_alias = $this->master_alias . " {$rh['slave_1']} {$rh['slave_2']} {$rh['slave_3']} {$rh['slave_4']}";
-        if($rh && $rh['expired'] != 't') { // expired означает, что записи добавлялись очень давно и можно спокойно брать из слейвов.
+        if($rh && $rh['expired'] != 't') { // expired РѕР·РЅР°С‡Р°РµС‚, С‡С‚Рѕ Р·Р°РїРёСЃРё РґРѕР±Р°РІР»СЏР»РёСЃСЊ РѕС‡РµРЅСЊ РґР°РІРЅРѕ Рё РјРѕР¶РЅРѕ СЃРїРѕРєРѕР№РЅРѕ Р±СЂР°С‚СЊ РёР· СЃР»РµР№РІРѕРІ.
             foreach($values as $v) {
                 if($v >= $rh['v_min']) {
                     $db_alias = $this->master_alias;

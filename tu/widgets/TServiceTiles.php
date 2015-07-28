@@ -14,7 +14,7 @@ class TServiceTiles extends CWidget
     
     public function run($tservices) 
     {
-        //собираем шаблон
+        //СЃРѕР±РёСЂР°РµРј С€Р°Р±Р»РѕРЅ
         $this->render('t-service-tiles', array(
             'tservices' => $tservices
         ));

@@ -18,9 +18,9 @@ if($action) {
                 if($error) $error_login = $error;    
             } else {
                 if($users->is_team == 't') {
-                    $error_login = "Пользователь с логином ".$users->login." уже находится в команде Free-lance.ru";
+                    $error_login = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ Р»РѕРіРёРЅРѕРј ".$users->login." СѓР¶Рµ РЅР°С…РѕРґРёС‚СЃСЏ РІ РєРѕРјР°РЅРґРµ Free-lance.ru";
                 } else {
-                    $error_login = "Пользователя с логином ".$_POST['login']." не существует";
+                    $error_login = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ Р»РѕРіРёРЅРѕРј ".$_POST['login']." РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚";
                 }
             }
             break;
@@ -36,9 +36,9 @@ if($action) {
                 if($error) $error_login = $error;    
             } else {
                 if($users->is_team == 'f') {
-                    $error_login = "Пользователя с логином ".$_POST['login']." нет в команде Free-lance.ru";
+                    $error_login = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ Р»РѕРіРёРЅРѕРј ".$_POST['login']." РЅРµС‚ РІ РєРѕРјР°РЅРґРµ Free-lance.ru";
                 } else {
-                    $error_login = "Пользователя с логином ".$_POST['login']." не существует";
+                    $error_login = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ Р»РѕРіРёРЅРѕРј ".$_POST['login']." РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚";
                 }
             }
             
@@ -68,12 +68,12 @@ $users_team = $users->GetUsers("is_team = 't'", "login ASC");
         background: whitesmoke;
     }
 </style>
-<strong>Команда <a href="/about/team/" target="_blank">Free-lance.ru</a></strong><br/><br/>
+<strong>РљРѕРјР°РЅРґР° <a href="/about/team/" target="_blank">Free-lance.ru</a></strong><br/><br/>
 
 <form method="POST" action=".">
 <input type="hidden" name="action" value="addteam">
-Добавить в команду пользователя<br/>
-Логин: <input type="text" name="login"> <input type="submit" value="Добавить">
+Р”РѕР±Р°РІРёС‚СЊ РІ РєРѕРјР°РЅРґСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ<br/>
+Р›РѕРіРёРЅ: <input type="text" name="login"> <input type="submit" value="Р”РѕР±Р°РІРёС‚СЊ">
 <?php if($error_login) {?><?= view_error(htmlspecialchars($error_login));?><?php } //if?>
 </form>
 
@@ -90,9 +90,9 @@ $users_team = $users->GetUsers("is_team = 't'", "login ASC");
     </colgroup>
     <thead>
         <tr>
-            <td>№</td>
-            <td>Пользователи находящиеся в команде Free-lance.ru</td>
-            <td>Настройка</td>
+            <td>в„–</td>
+            <td>РџРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅР°С…РѕРґСЏС‰РёРµСЃСЏ РІ РєРѕРјР°РЅРґРµ Free-lance.ru</td>
+            <td>РќР°СЃС‚СЂРѕР№РєР°</td>
         </tr>
     </thead>
     <tbody>
@@ -108,12 +108,12 @@ $users_team = $users->GetUsers("is_team = 't'", "login ASC");
                     </tr>
                 </table>
             </td>
-            <td align="center" style="text-align:center">[<a href="javascript:void(0)" onclick="if(confirm('Удалить пользователя из команды?')) {$('login_team').set('value', '<?=$uteam['login']?>'); $('delform').submit(); } else { return false; }" class="public_red">удалить</a>]</td>
+            <td align="center" style="text-align:center">[<a href="javascript:void(0)" onclick="if(confirm('РЈРґР°Р»РёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР· РєРѕРјР°РЅРґС‹?')) {$('login_team').set('value', '<?=$uteam['login']?>'); $('delform').submit(); } else { return false; }" class="public_red">СѓРґР°Р»РёС‚СЊ</a>]</td>
         </tr>
         <?php } //foreach?>
         <?php } else { //if?>
         <tr class="env">
-            <td colspan="3" align="center" style="text-align:center"><strong>Пользователей в команде нет</strong></td>
+            <td colspan="3" align="center" style="text-align:center"><strong>РџРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РІ РєРѕРјР°РЅРґРµ РЅРµС‚</strong></td>
         </tr>
         <?php } // else?>
     </tbody>

@@ -6,7 +6,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/op_codes.php');
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/billing.php');
 
 /**
- * Закрепления услуг в каталогах
+ * Р—Р°РєСЂРµРїР»РµРЅРёСЏ СѓСЃР»СѓРі РІ РєР°С‚Р°Р»РѕРіР°С…
  *
  * @author danil
  */
@@ -24,17 +24,17 @@ class tservices_binds extends atservices_model
 
 
     /**
-     * Типы закреплений
+     * РўРёРїС‹ Р·Р°РєСЂРµРїР»РµРЅРёР№
      */
     const KIND_LANDING = 1;
     const KIND_ROOT = 2;
     const KIND_GROUP = 3;
     const KIND_SPEC = 4;
     
-    const DESCR = 'Закрепление услуги %d %s';
-    const DESCR_PROLONG = 'Продление закрепления услуги %d %s';
-    const DESCR_UP = 'Поднятие услуги %d на 1 место %s';
-    const COMMENT = 'до %s';
+    const DESCR = 'Р—Р°РєСЂРµРїР»РµРЅРёРµ СѓСЃР»СѓРіРё %d %s';
+    const DESCR_PROLONG = 'РџСЂРѕРґР»РµРЅРёРµ Р·Р°РєСЂРµРїР»РµРЅРёСЏ СѓСЃР»СѓРіРё %d %s';
+    const DESCR_UP = 'РџРѕРґРЅСЏС‚РёРµ СѓСЃР»СѓРіРё %d РЅР° 1 РјРµСЃС‚Рѕ %s';
+    const COMMENT = 'РґРѕ %s';
     
     const OP_CODE_LANDING = 155;
     const OP_CODE_ROOT = 156;
@@ -63,7 +63,7 @@ class tservices_binds extends atservices_model
 
 
     /**
-     * Стоимость размещения
+     * РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р·РјРµС‰РµРЅРёСЏ
      */
     private $prices = array(
         self::KIND_LANDING => 7000,
@@ -73,7 +73,7 @@ class tservices_binds extends atservices_model
     );
     
     /**
-     * Стоимость поднятия
+     * РЎС‚РѕРёРјРѕСЃС‚СЊ РїРѕРґРЅСЏС‚РёСЏ
      */
     private $prices_up = array(
         self::KIND_LANDING => 1400,
@@ -83,7 +83,7 @@ class tservices_binds extends atservices_model
     );
     
     /**
-     * Коды операций покупки закреплений/продления (таблица op_codes)
+     * РљРѕРґС‹ РѕРїРµСЂР°С†РёР№ РїРѕРєСѓРїРєРё Р·Р°РєСЂРµРїР»РµРЅРёР№/РїСЂРѕРґР»РµРЅРёСЏ (С‚Р°Р±Р»РёС†Р° op_codes)
      */
     private $op_codes = array(
         self::KIND_LANDING => self::OP_CODE_LANDING,
@@ -93,7 +93,7 @@ class tservices_binds extends atservices_model
     );
     
     /**
-     * Коды операций поднятия закреплений (таблица op_codes)
+     * РљРѕРґС‹ РѕРїРµСЂР°С†РёР№ РїРѕРґРЅСЏС‚РёСЏ Р·Р°РєСЂРµРїР»РµРЅРёР№ (С‚Р°Р±Р»РёС†Р° op_codes)
      */
     private $op_codes_up = array(
         self::KIND_LANDING => self::OP_CODE_UP_LANDING,
@@ -110,31 +110,31 @@ class tservices_binds extends atservices_model
     );
     
     /**
-     * Тип размещения
+     * РўРёРї СЂР°Р·РјРµС‰РµРЅРёСЏ
      * @var int 
      */
     private $kind;
     
     /**
-     * @var int ИД записи, с которой будем работать
+     * @var int РР” Р·Р°РїРёСЃРё, СЃ РєРѕС‚РѕСЂРѕР№ Р±СѓРґРµРј СЂР°Р±РѕС‚Р°С‚СЊ
      */
     private $id;
     
     /**
-     * Данные для вставки
+     * Р”Р°РЅРЅС‹Рµ РґР»СЏ РІСЃС‚Р°РІРєРё
      * @var type 
      */
     private $bind_data = array();
 
     /**
-     * Данные для операции
+     * Р”Р°РЅРЅС‹Рµ РґР»СЏ РѕРїРµСЂР°С†РёРё
      * @var type 
      */
     public $bind_info = array();
     
     
     /**
-     * Обьекты биллинга для пользователей
+     * РћР±СЊРµРєС‚С‹ Р±РёР»Р»РёРЅРіР° РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
      * 
      * @var type 
      */
@@ -142,7 +142,7 @@ class tservices_binds extends atservices_model
 
 
     /**
-     * Получить обьект биллинга для указанного пользователя
+     * РџРѕР»СѓС‡РёС‚СЊ РѕР±СЊРµРєС‚ Р±РёР»Р»РёРЅРіР° РґР»СЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * 
      * @param type $uid
      * @return type
@@ -184,7 +184,7 @@ class tservices_binds extends atservices_model
 
     
     /**
-     * Формирует строку с названием раздела, где будет закрепление
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ СЃС‚СЂРѕРєСѓ СЃ РЅР°Р·РІР°РЅРёРµРј СЂР°Р·РґРµР»Р°, РіРґРµ Р±СѓРґРµС‚ Р·Р°РєСЂРµРїР»РµРЅРёРµ
      * @param type $kind
      * @return string
      */
@@ -202,32 +202,32 @@ class tservices_binds extends atservices_model
             $part_name .= $category['title'];
             
             if ($for_history) {
-                return 'в разделе ' . $part_name . ' каталога ТУ';
+                return 'РІ СЂР°Р·РґРµР»Рµ ' . $part_name . ' РєР°С‚Р°Р»РѕРіР° РўРЈ';
             } else {
                 return $part_name;
             }
         } elseif ($for_history) {
             if ($this->kind == tservices_binds::KIND_LANDING) {
-                return 'на главной странице';
+                return 'РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ';
             } elseif ($this->kind == tservices_binds::KIND_ROOT) {
-                return 'в общем разделе каталога ТУ';
+                return 'РІ РѕР±С‰РµРј СЂР°Р·РґРµР»Рµ РєР°С‚Р°Р»РѕРіР° РўРЈ';
             }
         } else {
             if ($this->kind == tservices_binds::KIND_LANDING) {
-                return 'Главная страница';
+                return 'Р“Р»Р°РІРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°';
             } elseif ($this->kind == tservices_binds::KIND_ROOT) {
-                return 'Общий раздел каталога';
+                return 'РћР±С‰РёР№ СЂР°Р·РґРµР» РєР°С‚Р°Р»РѕРіР°';
             }
         }
     }
     
     /**
-     * Возвращает стоимость покупки или поднятия
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚РѕРёРјРѕСЃС‚СЊ РїРѕРєСѓРїРєРё РёР»Рё РїРѕРґРЅСЏС‚РёСЏ
      * @return type
      */
     public function getPrice($up = false, $uid = 0, $prof_id = null)
     {
-        //кеш для нескольких вызовов в течении сесии
+        //РєРµС€ РґР»СЏ РЅРµСЃРєРѕР»СЊРєРёС… РІС‹Р·РѕРІРѕРІ РІ С‚РµС‡РµРЅРёРё СЃРµСЃРёРё
         static $_cache = array();
         $key = md5(print_r(func_get_args(), true));
         
@@ -237,7 +237,7 @@ class tservices_binds extends atservices_model
         
         $opCode = $this->getOpCode($up);
         
-        //Пробуем получить скидку для конкретного пользователя
+        //РџСЂРѕР±СѓРµРј РїРѕР»СѓС‡РёС‚СЊ СЃРєРёРґРєСѓ РґР»СЏ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
         if ($uid > 0) {
             $bill = self::getBilling($uid);
             $opCode = $bill->getDiscountOpCode($opCode);
@@ -253,7 +253,7 @@ class tservices_binds extends atservices_model
     }
     
     /**
-     * Код операции (таблица op_codes)
+     * РљРѕРґ РѕРїРµСЂР°С†РёРё (С‚Р°Р±Р»РёС†Р° op_codes)
      * @param type $up
      * @return type
      */
@@ -265,7 +265,7 @@ class tservices_binds extends atservices_model
     }
     
     /**
-     * Доступно ли создание закрепления
+     * Р”РѕСЃС‚СѓРїРЅРѕ Р»Рё СЃРѕР·РґР°РЅРёРµ Р·Р°РєСЂРµРїР»РµРЅРёСЏ
      * @param type $uid
      * @param type $tservice_id
      * @param type $kind
@@ -284,7 +284,7 @@ class tservices_binds extends atservices_model
     }
     
     /**
-     * Возвращает данные по конкретному закреплению
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ РїРѕ РєРѕРЅРєСЂРµС‚РЅРѕРјСѓ Р·Р°РєСЂРµРїР»РµРЅРёСЋ
      * @param type $user_id
      * @param type $tservice_id
      * @param type $prof_id
@@ -299,7 +299,7 @@ class tservices_binds extends atservices_model
     }
     
     /**
-     * Возвращает данные по конкретному закреплению по ID
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ РїРѕ РєРѕРЅРєСЂРµС‚РЅРѕРјСѓ Р·Р°РєСЂРµРїР»РµРЅРёСЋ РїРѕ ID
      * @param type $id
      */
     public function getItemById($id)
@@ -312,7 +312,7 @@ class tservices_binds extends atservices_model
     }
     
     /**
-     * Имеет ли пользователь закрепленные услуги в текущем разделе
+     * РРјРµРµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°РєСЂРµРїР»РµРЅРЅС‹Рµ СѓСЃР»СѓРіРё РІ С‚РµРєСѓС‰РµРј СЂР°Р·РґРµР»Рµ
      * @param type $uid
      */
     public function countBindedTu($uid, $prof_id)
@@ -322,7 +322,7 @@ class tservices_binds extends atservices_model
     }
     
     /**
-     * Подготавливает данные для проведения операций
+     * РџРѕРґРіРѕС‚Р°РІР»РёРІР°РµС‚ РґР°РЅРЅС‹Рµ РґР»СЏ РїСЂРѕРІРµРґРµРЅРёСЏ РѕРїРµСЂР°С†РёР№
      * @param type user_id
      * @param type $tservice_id
      * @param type $prof_id
@@ -385,7 +385,7 @@ class tservices_binds extends atservices_model
     }
     
     /**
-     * Подготавливает информацию для платежа по поднятию закрепления
+     * РџРѕРґРіРѕС‚Р°РІР»РёРІР°РµС‚ РёРЅС„РѕСЂРјР°С†РёСЋ РґР»СЏ РїР»Р°С‚РµР¶Р° РїРѕ РїРѕРґРЅСЏС‚РёСЋ Р·Р°РєСЂРµРїР»РµРЅРёСЏ
      * @param type $bind
      */
     public function makeUpInfo($bind)
@@ -407,7 +407,7 @@ class tservices_binds extends atservices_model
     }
     
     /**
-     * Создает запись в таблице
+     * РЎРѕР·РґР°РµС‚ Р·Р°РїРёСЃСЊ РІ С‚Р°Р±Р»РёС†Рµ
      * @return type
      */
     public function create()
@@ -424,7 +424,7 @@ class tservices_binds extends atservices_model
         
             if ($ok) {
                 /**
-                 * @todo почистить кеш
+                 * @todo РїРѕС‡РёСЃС‚РёС‚СЊ РєРµС€
                  */
                 return true;
             }
@@ -435,7 +435,7 @@ class tservices_binds extends atservices_model
     
     
     /**
-     * Выборка закрепленных услуг позиция которых 4 и ниже
+     * Р’С‹Р±РѕСЂРєР° Р·Р°РєСЂРµРїР»РµРЅРЅС‹С… СѓСЃР»СѓРі РїРѕР·РёС†РёСЏ РєРѕС‚РѕСЂС‹С… 4 Рё РЅРёР¶Рµ
      * 
      * @global type $DB
      * @param type $page
@@ -498,7 +498,7 @@ class tservices_binds extends atservices_model
         $sql = implode(' UNION ', $_sql);
         $res = $DB->query($sql);
         
-        //@todo: быстрее чем rows()
+        //@todo: Р±С‹СЃС‚СЂРµРµ С‡РµРј rows()
         $ret = pg_fetch_all($res);
         return $ret;
     }
@@ -507,8 +507,8 @@ class tservices_binds extends atservices_model
 
 
     /**
-     * Выборка закрепленных услуг срок закрепления 
-     * которых истекает через 24 часа
+     * Р’С‹Р±РѕСЂРєР° Р·Р°РєСЂРµРїР»РµРЅРЅС‹С… СѓСЃР»СѓРі СЃСЂРѕРє Р·Р°РєСЂРµРїР»РµРЅРёСЏ 
+     * РєРѕС‚РѕСЂС‹С… РёСЃС‚РµРєР°РµС‚ С‡РµСЂРµР· 24 С‡Р°СЃР°
      * 
      * @global type $DB
      * @param type $page
@@ -545,7 +545,7 @@ class tservices_binds extends atservices_model
             LIMIT ?i OFFSET ?i
         ", $from, $to);
         
-        //@todo: быстрее чем rows()
+        //@todo: Р±С‹СЃС‚СЂРµРµ С‡РµРј rows()
         $ret = pg_fetch_all($res);
         return $ret;
     }
@@ -553,7 +553,7 @@ class tservices_binds extends atservices_model
     
     
     /**
-     * Обновляет запись
+     * РћР±РЅРѕРІР»СЏРµС‚ Р·Р°РїРёСЃСЊ
      * @return type
      */
     public function update()
@@ -564,7 +564,7 @@ class tservices_binds extends atservices_model
         
             if ($ok) {
                 /**
-                 * @todo почистить кеш
+                 * @todo РїРѕС‡РёСЃС‚РёС‚СЊ РєРµС€
                  */
                 return true;
             }
@@ -574,7 +574,7 @@ class tservices_binds extends atservices_model
     
 
     /**
-     * Помечает флаг после отправки соответствующего уведомления (о продлении или поднятии)
+     * РџРѕРјРµС‡Р°РµС‚ С„Р»Р°Рі РїРѕСЃР»Рµ РѕС‚РїСЂР°РІРєРё СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРіРѕ СѓРІРµРґРѕРјР»РµРЅРёСЏ (Рѕ РїСЂРѕРґР»РµРЅРёРё РёР»Рё РїРѕРґРЅСЏС‚РёРё)
      * 
      * @global type $DB
      * @param type $type
@@ -601,11 +601,11 @@ class tservices_binds extends atservices_model
     
     
     
-    /** Удаление закрепления по id в account_operations
+    /** РЈРґР°Р»РµРЅРёРµ Р·Р°РєСЂРµРїР»РµРЅРёСЏ РїРѕ id РІ account_operations
      * @see account::DelByOpid()
      *
-     * @param  intr $uid uid пользователя
-     * @param  int $opid id операции в биллинге
+     * @param  intr $uid uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $opid id РѕРїРµСЂР°С†РёРё РІ Р±РёР»Р»РёРЅРіРµ
      * @return int 0
      */
     public function DelByOpid($uid, $opid)
@@ -666,14 +666,14 @@ class tservices_binds extends atservices_model
     
     
     /**
-     * Пересчитывает даты начала и окончания закрепления по операции
+     * РџРµСЂРµСЃС‡РёС‚С‹РІР°РµС‚ РґР°С‚С‹ РЅР°С‡Р°Р»Р° Рё РѕРєРѕРЅС‡Р°РЅРёСЏ Р·Р°РєСЂРµРїР»РµРЅРёСЏ РїРѕ РѕРїРµСЂР°С†РёРё
      * @param int $uid
      * @param array $params
      * @return type
      */
     private function recalcBindDates($uid, $params)
     {
-        //Получаем коды операций, которые могли быть применены по данному закреплению
+        //РџРѕР»СѓС‡Р°РµРј РєРѕРґС‹ РѕРїРµСЂР°С†РёР№, РєРѕС‚РѕСЂС‹Рµ РјРѕРіР»Рё Р±С‹С‚СЊ РїСЂРёРјРµРЅРµРЅС‹ РїРѕ РґР°РЅРЅРѕРјСѓ Р·Р°РєСЂРµРїР»РµРЅРёСЋ
         $op_codes_allow = array();
         foreach ($this->op_codes_groups as $group) {
             $op_codes_in_group = billing::extendOpCodes($group);
@@ -682,7 +682,7 @@ class tservices_binds extends atservices_model
             }
         }
         
-        //Получаем информацию об остальных платежах по данному закреплению
+        //РџРѕР»СѓС‡Р°РµРј РёРЅС„РѕСЂРјР°С†РёСЋ РѕР± РѕСЃС‚Р°Р»СЊРЅС‹С… РїР»Р°С‚РµР¶Р°С… РїРѕ РґР°РЅРЅРѕРјСѓ Р·Р°РєСЂРµРїР»РµРЅРёСЋ
         $sql2 = "SELECT bq.op_code, bq.op_count, bq.src_id, bq.option, bq.service, br.complete_time::timestamp as date
             FROM bill_queue bq
             INNER JOIN bill_reserve br ON bq.reserve_id = br.id
@@ -698,7 +698,7 @@ class tservices_binds extends atservices_model
         foreach ($operations as $operation) {
             $is_prolong = $is_up = false;
             
-            //Устанавливаем даты начала при любой операции
+            //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РґР°С‚С‹ РЅР°С‡Р°Р»Р° РїСЂРё Р»СЋР±РѕР№ РѕРїРµСЂР°С†РёРё
             $date_start = DateTime::createFromFormat("Y-m-d H:i:s.u", $operation['date']);
             
             if ($operation['service'] == 'tservicebind') {
@@ -712,11 +712,11 @@ class tservices_binds extends atservices_model
             }
             
             if (!$is_prolong && !$is_up || !isset($date_stop)) {
-                //Если покупка, то дату окончания считаем от даты покупки
+                //Р•СЃР»Рё РїРѕРєСѓРїРєР°, С‚Рѕ РґР°С‚Сѓ РѕРєРѕРЅС‡Р°РЅРёСЏ СЃС‡РёС‚Р°РµРј РѕС‚ РґР°С‚С‹ РїРѕРєСѓРїРєРё
                 $date_stop = clone $date_start;
                 $date_stop->add(new DateInterval('P'.($operation['op_count']*7).'D'));
             } elseif ($is_prolong) {
-                //Если продление - продляем дату окончания
+                //Р•СЃР»Рё РїСЂРѕРґР»РµРЅРёРµ - РїСЂРѕРґР»СЏРµРј РґР°С‚Сѓ РѕРєРѕРЅС‡Р°РЅРёСЏ
                 $date_stop->add(new DateInterval('P'.($operation['op_count']*7).'D'));
             }
         }
@@ -733,7 +733,7 @@ class tservices_binds extends atservices_model
     
     
     /**
-     * Закреплена ли указанная услуга
+     * Р—Р°РєСЂРµРїР»РµРЅР° Р»Рё СѓРєР°Р·Р°РЅРЅР°СЏ СѓСЃР»СѓРіР°
      * 
      * @global type $DB
      * @param type $tu_id

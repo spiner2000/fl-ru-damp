@@ -10,8 +10,8 @@ if(!get_uid(false)) {
     exit;
 }
 
-// Получен код авторизации получаем все токены какие нужны для пользователя
-// @todo защита данной страницы
+// РџРѕР»СѓС‡РµРЅ РєРѕРґ Р°РІС‚РѕСЂРёР·Р°С†РёРё РїРѕР»СѓС‡Р°РµРј РІСЃРµ С‚РѕРєРµРЅС‹ РєР°РєРёРµ РЅСѓР¶РЅС‹ РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+// @todo Р·Р°С‰РёС‚Р° РґР°РЅРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹
 if(isset($_GET['code'])) {
     $uid          = get_uid(false);
     $walletYandex = new walletYandex($uid);
@@ -26,7 +26,7 @@ if(isset($_GET['code'])) {
         $walletYandex->setAccessToken($result['access_token']);
 
         $walletId = $walletYandex->saveWallet();
-        // Токен получен и сохранен отправляем пользователя на страницу
+        // РўРѕРєРµРЅ РїРѕР»СѓС‡РµРЅ Рё СЃРѕС…СЂР°РЅРµРЅ РѕС‚РїСЂР°РІР»СЏРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° СЃС‚СЂР°РЅРёС†Сѓ
         if($walletId > 0) {
             $_SESSION['wallet_success'] = true;
             $redirect = '/bill/';
@@ -38,7 +38,7 @@ if(isset($_GET['code'])) {
             exit;
         }
     } else {
-        $_SESSION['errorPs'] = 'Ошибка привязки кошелька Яндекс.Деньги';
+        $_SESSION['errorPs'] = 'РћС€РёР±РєР° РїСЂРёРІСЏР·РєРё РєРѕС€РµР»СЊРєР° РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё';
         header("Location: /bill/fail_ps/");
         exit;
 //        var_dump($result);

@@ -1,11 +1,11 @@
 <?php
 /* 
  * 
- * Данный файл является частью проекта Веб Мессенджер.
+ * Р”Р°РЅРЅС‹Р№ С„Р°Р№Р» СЏРІР»СЏРµС‚СЃСЏ С‡Р°СЃС‚СЊСЋ РїСЂРѕРµРєС‚Р° Р’РµР± РњРµСЃСЃРµРЅРґР¶РµСЂ.
  * 
- * Все права защищены. (c) 2005-2009 ООО "ТОП".
- * Данное программное обеспечение и все сопутствующие материалы
- * предоставляются на условиях лицензии, доступной по адресу
+ * Р’СЃРµ РїСЂР°РІР° Р·Р°С‰РёС‰РµРЅС‹. (c) 2005-2009 РћРћРћ "РўРћРџ".
+ * Р”Р°РЅРЅРѕРµ РїСЂРѕРіСЂР°РјРјРЅРѕРµ РѕР±РµСЃРїРµС‡РµРЅРёРµ Рё РІСЃРµ СЃРѕРїСѓС‚СЃС‚РІСѓСЋС‰РёРµ РјР°С‚РµСЂРёР°Р»С‹
+ * РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‚СЃСЏ РЅР° СѓСЃР»РѕРІРёСЏС… Р»РёС†РµРЅР·РёРё, РґРѕСЃС‚СѓРїРЅРѕР№ РїРѕ Р°РґСЂРµСЃСѓ
  * http://webim.ru/license.html
  * 
  */
@@ -38,22 +38,22 @@ $captcha_num = $v['captcha'];
 $message = get_mandatory_param('message');
 
 $has_errors = false;
-if( count($_POST) == 0 && count($_FILES) == 0 ) { //костыль. при отправке на сервер большого файла приходит пустой request  и files, как по длругому определить, пока не придумал
+if( count($_POST) == 0 && count($_FILES) == 0 ) { //РєРѕСЃС‚С‹Р»СЊ. РїСЂРё РѕС‚РїСЂР°РІРєРµ РЅР° СЃРµСЂРІРµСЂ Р±РѕР»СЊС€РѕРіРѕ С„Р°Р№Р»Р° РїСЂРёС…РѕРґРёС‚ РїСѓСЃС‚РѕР№ request  Рё files, РєР°Рє РїРѕ РґР»СЂСѓРіРѕРјСѓ РѕРїСЂРµРґРµР»РёС‚СЊ, РїРѕРєР° РЅРµ РїСЂРёРґСѓРјР°Р»
     $has_errors = true;
     $errors[0] = 6;
-    $errors[1] = iconv("UTF-8", "WINDOWS-1251//IGNORE", "Файл очень велик");
+    $errors[1] = iconv("UTF-8", "WINDOWS-1251//IGNORE", "Р¤Р°Р№Р» РѕС‡РµРЅСЊ РІРµР»РёРє");
 }elseif(!$captcha->checkNumber($captcha_num)) {
     $has_errors = true;
     $errors[0] = 5;
-    $errors[1] = iconv("UTF-8", "WINDOWS-1251//IGNORE", "Неверно введен текст");
+    $errors[1] = iconv("UTF-8", "WINDOWS-1251//IGNORE", "РќРµРІРµСЂРЅРѕ РІРІРµРґРµРЅ С‚РµРєСЃС‚");
 }elseif (empty($message) || $message == '') {
     $has_errors = true;
     $errors[0] = 4;
-    $errors[1] = iconv("UTF-8", "WINDOWS-1251//IGNORE","Заполните это поле");
+    $errors[1] = iconv("UTF-8", "WINDOWS-1251//IGNORE","Р—Р°РїРѕР»РЅРёС‚Рµ СЌС‚Рѕ РїРѕР»Рµ");
 }elseif (!$department) {
     $has_errors = true;
     $errors[0] = 7;
-    $errors[1] = iconv("UTF-8", "WINDOWS-1251//IGNORE","Неверно введен текст");
+    $errors[1] = iconv("UTF-8", "WINDOWS-1251//IGNORE","РќРµРІРµСЂРЅРѕ РІРІРµРґРµРЅ С‚РµРєСЃС‚");
 }
 
 $fileIndex = 1;
@@ -74,7 +74,7 @@ if (!$has_errors) {
 	                   
 	    if ( $nTotalSize > feedback::MAX_FILE_SIZE ) {
 	    	$has_errors = true;
-	        $errors[1] = iconv("UTF-8", "WINDOWS-1251//IGNORE", 'Максимальный объем прикрепленных файлов: ') . (feedback::MAX_FILE_SIZE / (1024*1024)) . iconv("UTF-8", "WINDOWS-1251//IGNORE", 'Мб.');
+	        $errors[1] = iconv("UTF-8", "WINDOWS-1251//IGNORE", 'РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РѕР±СЉРµРј РїСЂРёРєСЂРµРїР»РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ: ') . (feedback::MAX_FILE_SIZE / (1024*1024)) . iconv("UTF-8", "WINDOWS-1251//IGNORE", 'РњР±.');
 	        $errors[0] = 6;
 	        break;
 	    }
@@ -83,7 +83,7 @@ if (!$has_errors) {
 	                    
 	    if ( count($files) > feedback::MAX_FILES ) {
 	        $has_errors = true;
-	        $errors[1] = iconv("UTF-8", "WINDOWS-1251//IGNORE", "Максимальное кол-во прикрепленных файлов: ") . feedback::MAX_FILES;
+	        $errors[1] = iconv("UTF-8", "WINDOWS-1251//IGNORE", "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»-РІРѕ РїСЂРёРєСЂРµРїР»РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ: ") . feedback::MAX_FILES;
 	        $errors[0] = 6;
 	        break;
 	    }
@@ -96,7 +96,7 @@ if (!$has_errors) {
             $fr = $cfile->MoveUploadedFile('upload/about/feedback/');
             $sFileAlert = is_string( $cfile->error[0] ) ? $cfile->error : $cfile->error[0];
             if ( !$fr && !$sFileAlert ) {
-                $errors[1] = iconv("UTF-8", "WINDOWS-1251//IGNORE", "Ошибка при загрузке файла.");
+                $errors[1] = iconv("UTF-8", "WINDOWS-1251//IGNORE", "РћС€РёР±РєР° РїСЂРё Р·Р°РіСЂСѓР·РєРµ С„Р°Р№Р»Р°.");
 	            $errors[0] = 6;
                 break;
             } else if ( $sFileAlert ) {

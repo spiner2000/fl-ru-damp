@@ -14,7 +14,7 @@ function addFrl($login){
     $err = NULL;
     $frl_ftype = sbr::FT_PHYS;
     if(!$frl->uid)
-        $err = 'Фрилансер не найден';
+        $err = 'Р¤СЂРёР»Р°РЅСЃРµСЂ РЅРµ РЅР°Р№РґРµРЅ';
     else {
         if($frl_reqvs = sbr_meta::getUserReqvs($frl->uid)) {
             $frl_ftype = (int)$frl_reqvs['form_type'];
@@ -80,7 +80,7 @@ function getMsgForm($stage_id, $msg_id, $to_edit)
     if($to_edit)
         $msg = $stage->getMsgs($msg_id);
     else
-        $msg = array('stage_id'=>$stage_id, 'parent_id'=>$msg_id); // !!! ид.
+        $msg = array('stage_id'=>$stage_id, 'parent_id'=>$msg_id); // !!! РёРґ.
     $objResponse->call("SBR_STAGE.getMsgForm", $msg_id, $to_edit, $stage->msg_form($msg), count($msg['attach']), (int)(!!$msg['attach']), (int)(!!$msg['yt_link']));
     return $objResponse;
 }
@@ -166,7 +166,7 @@ function getArbDescr($stage_id)
 }
 
 /**
- * Получение отзыва по СБР
+ * РџРѕР»СѓС‡РµРЅРёРµ РѕС‚Р·С‹РІР° РїРѕ РЎР‘Р 
  */
 function getFeedback($stage_id, $feedback_id, $login) {
     $objResponse = new xajaxResponse();
@@ -180,7 +180,7 @@ function getFeedback($stage_id, $feedback_id, $login) {
 }
 
 /**
- * Простое обновление отзыва  таблице sbr_feedbacks
+ * РџСЂРѕСЃС‚РѕРµ РѕР±РЅРѕРІР»РµРЅРёРµ РѕС‚Р·С‹РІР°  С‚Р°Р±Р»РёС†Рµ sbr_feedbacks
  * @param type $id
  * @param type $descr
  * @param string  $login
@@ -213,7 +213,7 @@ function editFeedbackNew($id, $descr, $login, $stage_id, $vote = null, $sbr_name
     if($login && hasPermissions('sbr')) {
         $user = new users();
         $user->GetUser($login);
-        if(!$user->uid) $error = 'Ошибка';
+        if(!$user->uid) $error = 'РћС€РёР±РєР°';
         $sbr = sbr_meta::getInstance(sbr_meta::ADMIN_ACCESS, $user, is_emp($user->role));
     } else {
         $sbr = sbr_meta::getInstance();
@@ -229,7 +229,7 @@ function editFeedbackNew($id, $descr, $login, $stage_id, $vote = null, $sbr_name
     if($stage) {
         $old_fbk = $stage->getFeedback(intval($id));
         if (strtotime($old_fbk['posted_time'])+3600*24 < time() && !hasPermissions('users')) {
-            $error = "'Ошибка'";
+            $error = "'РћС€РёР±РєР°'";
             $objResponse->script("$('$link_id').setStyle('display', 'block');");
             $objResponse->script("$('$text_id').setStyle('display', 'block');");
             $objResponse->script("$('$ele_id').setStyle('display', 'none');");
@@ -241,7 +241,7 @@ function editFeedbackNew($id, $descr, $login, $stage_id, $vote = null, $sbr_name
                 $objResponse->script("$('stage_name_{$id}').set('text', '{$stage_name}');");
             }
             if($stage->error['feedback'])  {
-                $error = 'Ошибка';
+                $error = 'РћС€РёР±РєР°';
                 if($stage->error['feedback']['descr'])
                     $error = $stage->error['feedback']['descr'];
             }
@@ -300,7 +300,7 @@ function editFeedbackNew($id, $descr, $login, $stage_id, $vote = null, $sbr_name
     return $objResponse;
 }
 /**
- * Сохраняет изменения рейтинга СБР
+ * РЎРѕС…СЂР°РЅСЏРµС‚ РёР·РјРµРЅРµРЅРёСЏ СЂРµР№С‚РёРЅРіР° РЎР‘Р 
  */
 function editFeedback($stage_id, $feedback_id, $ops_type, $mesg, $login) 
 {
@@ -322,7 +322,7 @@ function editFeedback($stage_id, $feedback_id, $ops_type, $mesg, $login)
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/users.php");
         $user = new users();
         $user->GetUser($login);
-        if(!$user->uid) $err = 'Ошибка';
+        if(!$user->uid) $err = 'РћС€РёР±РєР°';
         $sbr = sbr_meta::getInstance(sbr_meta::ADMIN_ACCESS, $user, is_emp($user->role));
     }
     else {
@@ -336,7 +336,7 @@ function editFeedback($stage_id, $feedback_id, $ops_type, $mesg, $login)
         if($feedback = $stage->feedback($request))
             $objResponse->call("saveRating", NULL, $stage->id, $feedback['id'], reformat($feedback['descr'], 30, 0, 1, 1), $feedback['p_rate'], $feedback['n_rate'], $feedback['a_rate']);
         if($stage->error['feedback'])  {
-            $err = 'Ошибка';
+            $err = 'РћС€РёР±РєР°';
             if($stage->error['feedback']['descr'])
                 $err = $stage->error['feedback']['descr'];
         }
@@ -540,7 +540,7 @@ function sbrCalc($frl_type, $rez_type, $scheme_type, $currency, $sbr_cost, $emp_
     $emp_cost = $_POST['xjxargs']['emp_cost'];
     $frl_cost = $_POST['xjxargs']['frl_cost'];
     $usr_type = $_POST['xjxargs']['usr_type'];
-    $_POST['xjxargs'] = array("frl_type" => $frl_type, "rez_type" => $rez_type, "scheme_type" => $scheme_type, "currency" => $currency, "sbr_cost" => $sbr_cost, "emp_cost" => $emp_cost, "frl_cost" => $frl_cost, "usr_type" => $usr_type); // Заплатка для того чтобы работала CSRF xajax
+    $_POST['xjxargs'] = array("frl_type" => $frl_type, "rez_type" => $rez_type, "scheme_type" => $scheme_type, "currency" => $currency, "sbr_cost" => $sbr_cost, "emp_cost" => $emp_cost, "frl_cost" => $frl_cost, "usr_type" => $usr_type); // Р—Р°РїР»Р°С‚РєР° РґР»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ СЂР°Р±РѕС‚Р°Р»Р° CSRF xajax
     $hash = "";
     sbr::setSbrCalc($_POST['xjxargs'], $hash);
     $_POST = $_POST['xjxargs'];
@@ -568,12 +568,12 @@ function sbrCalc($frl_type, $rez_type, $scheme_type, $currency, $sbr_cost, $emp_
     
     if ($sbr_cost && $sbr_cost < sbr_stages::MIN_COST_RUR) {
         $err = 1;
-        $res['msg'] = iconv('CP1251', 'UTF8', 'Минимальный бюджет проекта - ' .sbr_stages::MIN_COST_RUR. ' руб.');
+        $res['msg'] = iconv('CP1251', 'UTF8', 'РњРёРЅРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ РїСЂРѕРµРєС‚Р° - ' .sbr_stages::MIN_COST_RUR. ' СЂСѓР±.');
     }
     
     if ($sbr_cost && $sbr_cost < sbr_stages::MIN_COST_RUR_PDRD && ( $scheme_type == sbr::SCHEME_PDRD || $scheme_type == sbr::SCHEME_PDRD2 ) ) {
         $err = 1;
-        $res['msg'] = iconv('CP1251', 'UTF8', 'Минимальный бюджет проекта - ' .sbr_stages::MIN_COST_RUR_PDRD. ' руб.');
+        $res['msg'] = iconv('CP1251', 'UTF8', 'РњРёРЅРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ РїСЂРѕРµРєС‚Р° - ' .sbr_stages::MIN_COST_RUR_PDRD. ' СЂСѓР±.');
     }
     
     if (!get_uid(false) || $err) {
@@ -637,7 +637,7 @@ function sbrCalc($frl_type, $rez_type, $scheme_type, $currency, $sbr_cost, $emp_
     
     if ($sbr_cost && $sbr_cost < sbr_stages::MIN_COST_RUR) {
         $err = 1;
-        $res['msg'] = iconv('CP1251', 'UTF8', 'Минимальный бюджет проекта - ' .sbr_stages::MIN_COST_RUR. ' руб.');
+        $res['msg'] = iconv('CP1251', 'UTF8', 'РњРёРЅРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ РїСЂРѕРµРєС‚Р° - ' .sbr_stages::MIN_COST_RUR. ' СЂСѓР±.');
         $res['success'] = false;
         echo json_encode($res);
         
@@ -649,7 +649,7 @@ function sbrCalc($frl_type, $rez_type, $scheme_type, $currency, $sbr_cost, $emp_
         $err = 1;
         $sum = sbr_meta::view_cost(sbr::usd2rur(sbr::MAX_COST_USD), exrates::BANK);
         $sum = html_entity_decode($sum);
-        $res['msg'] = iconv('CP1251', 'UTF8', 'Максимальный бюджет ' . $sum . ', поскольку исполнитель не является резидентом Российской Федерации');
+        $res['msg'] = iconv('CP1251', 'UTF8', 'РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ ' . $sum . ', РїРѕСЃРєРѕР»СЊРєСѓ РёСЃРїРѕР»РЅРёС‚РµР»СЊ РЅРµ СЏРІР»СЏРµС‚СЃСЏ СЂРµР·РёРґРµРЅС‚РѕРј Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё');
         $res['success'] = false;
         echo json_encode($res);
         
@@ -700,11 +700,11 @@ function sbrCalc($frl_type, $rez_type, $scheme_type, $currency, $sbr_cost, $emp_
 }
 
 /**
- * Удаляет рекомендацию
+ * РЈРґР°Р»СЏРµС‚ СЂРµРєРѕРјРµРЅРґР°С†РёСЋ
  * @param type $stage_id 
  * @param type $feedback_id
- * @param type $deleteOpinion удалить мнение
- * @param type $reloadPage перезагрузить страницу
+ * @param type $deleteOpinion СѓРґР°Р»РёС‚СЊ РјРЅРµРЅРёРµ
+ * @param type $reloadPage РїРµСЂРµР·Р°РіСЂСѓР·РёС‚СЊ СЃС‚СЂР°РЅРёС†Сѓ
  * @return \xajaxResponse
  */
 function DeleteFeedback ($stage_id, $feedback_id, $reloadPage = false) {
@@ -728,7 +728,7 @@ function DeleteFeedback ($stage_id, $feedback_id, $reloadPage = false) {
     require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/users.php");
     $user = new users();
     $user->GetUserByUID($uid);
-    if(!$user->uid) $err = 'Ошибка';
+    if(!$user->uid) $err = 'РћС€РёР±РєР°';
     $sbr = sbr_meta::getInstance(sbr_meta::ADMIN_ACCESS, $user, is_emp($user->role));
     if (!$sbr) {
         return;
@@ -758,20 +758,20 @@ function DeleteFeedback ($stage_id, $feedback_id, $reloadPage = false) {
     return $objResponse;
 }
 
-// Проверяем заполненость полей при выплате через WM
+// РџСЂРѕРІРµСЂСЏРµРј Р·Р°РїРѕР»РЅРµРЅРѕСЃС‚СЊ РїРѕР»РµР№ РїСЂРё РІС‹РїР»Р°С‚Рµ С‡РµСЂРµР· WM
 function checkWMDoc() {
     session_start();
     $objResponse = new xajaxResponse();
     
     $uid  = $_SESSION['uid'];
     $reqv = sbr_meta::getUserReqvs($uid);
-    // Поля не заполнены
+    // РџРѕР»СЏ РЅРµ Р·Р°РїРѕР»РЅРµРЅС‹
     if(sbr_meta::checkWMDoc($reqv)) {
         
         $html  = '<div class="">';
         $html .= '<b class="b1"></b><b class="b2"></b>';
         $html .= '<div class="form-in">';
-        $html .= 'Для выбора Webmoney в качестве валюты выбора требуется заполнить поля "<a href="/users/' . $_SESSION['login'] . '/setup/finance/#WMDOC">Паспортные данные</a>" в блоке "Электронные кошельки" на странице "<a href="/users/' . $_SESSION['login'] . '/setup/finance/">Финансы</a>"';
+        $html .= 'Р”Р»СЏ РІС‹Р±РѕСЂР° Webmoney РІ РєР°С‡РµСЃС‚РІРµ РІР°Р»СЋС‚С‹ РІС‹Р±РѕСЂР° С‚СЂРµР±СѓРµС‚СЃСЏ Р·Р°РїРѕР»РЅРёС‚СЊ РїРѕР»СЏ "<a href="/users/' . $_SESSION['login'] . '/setup/finance/#WMDOC">РџР°СЃРїРѕСЂС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ</a>" РІ Р±Р»РѕРєРµ "Р­Р»РµРєС‚СЂРѕРЅРЅС‹Рµ РєРѕС€РµР»СЊРєРё" РЅР° СЃС‚СЂР°РЅРёС†Рµ "<a href="/users/' . $_SESSION['login'] . '/setup/finance/">Р¤РёРЅР°РЅСЃС‹</a>"';
         $html .= '</div><b class="b2"></b><b class="b1"></b></div>';
         $objResponse->script("
             if($('wmdoc_alert')) $('wmdoc_alert').dispose();
@@ -1002,8 +1002,8 @@ function checkFrlRezType($frl_id, $emp_rez_type){
 function setReqvs ($sbr_id, $params) {
     
     $objResponse = new xajaxResponse();
-    //@todo: запрещаем изменять финансы в старой СБР #29196
-    $objResponse->alert("Прекращена поддержка СБР.");
+    //@todo: Р·Р°РїСЂРµС‰Р°РµРј РёР·РјРµРЅСЏС‚СЊ С„РёРЅР°РЅСЃС‹ РІ СЃС‚Р°СЂРѕР№ РЎР‘Р  #29196
+    $objResponse->alert("РџСЂРµРєСЂР°С‰РµРЅР° РїРѕРґРґРµСЂР¶РєР° РЎР‘Р .");
     return $objResponse;
     
     $objResponse->script("$('finance-update-btn').removeClass('b-button_disabled');");
@@ -1053,8 +1053,8 @@ function setReqvs ($sbr_id, $params) {
     //    $error = $err;
     //}
     
-    //@todo: запрещаем изменять финансы в старой СБР #29196
-    $error = 'Прекращена поддержка СБР.';
+    //@todo: Р·Р°РїСЂРµС‰Р°РµРј РёР·РјРµРЅСЏС‚СЊ С„РёРЅР°РЅСЃС‹ РІ СЃС‚Р°СЂРѕР№ РЎР‘Р  #29196
+    $error = 'РџСЂРµРєСЂР°С‰РµРЅР° РїРѕРґРґРµСЂР¶РєР° РЎР‘Р .';
     
     if( empty($error) && 
           ( 
@@ -1081,10 +1081,10 @@ function setReqvs ($sbr_id, $params) {
             }
             $callback_js = 'a_sms_act';
             $limitIsExceed = $sms_gate->limitSmsOnNumberIsExceed($params['mob_phone'], $recordId, $count, $message);
-            $linkText = "СМС не пришло";
+            $linkText = "РЎРњРЎ РЅРµ РїСЂРёС€Р»Рѕ";
             $linkStyle = sms_gate_a1::$enable_link_css;
             if ($message) {
-                $linkText = "СМС не пришло ({$message})";
+                $linkText = "РЎРњРЎ РЅРµ РїСЂРёС€Р»Рѕ ({$message})";
             }
             if ($limitIsExceed) {
                 $linkText = sms_gate_a1::LIMIT_EXCEED_LINK_TEXT;
@@ -1104,12 +1104,12 @@ function setReqvs ($sbr_id, $params) {
             return $objResponse;
         }
     } else if ( $oreqvs['is_activate_mob'] == 't' && $reqvs1['mob_phone'] != $oreqvs[$form_type]['mob_phone'] ) {
-    	$error["mob_phone"] = "У вас привязка к другому номеру";
+    	$error["mob_phone"] = "РЈ РІР°СЃ РїСЂРёРІСЏР·РєР° Рє РґСЂСѓРіРѕРјСѓ РЅРѕРјРµСЂСѓ";
     }
     
     
     
-    //Проверка наличия и идентификации веб-кошелька только для физиков!
+    //РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ Рё РёРґРµРЅС‚РёС„РёРєР°С†РёРё РІРµР±-РєРѕС€РµР»СЊРєР° С‚РѕР»СЊРєРѕ РґР»СЏ С„РёР·РёРєРѕРІ!
     if(!$error && !is_emp())
     {
         $phone = $oreqvs[$form_type]['mob_phone'];
@@ -1119,7 +1119,7 @@ function setReqvs ($sbr_id, $params) {
         
         if ( empty($res) ) 
         {
-           $error["mob_phone"] = 'Ошибка соединения с Веб-кошельком.';
+           $error["mob_phone"] = 'РћС€РёР±РєР° СЃРѕРµРґРёРЅРµРЅРёСЏ СЃ Р’РµР±-РєРѕС€РµР»СЊРєРѕРј.';
         }
         else
         {
@@ -1128,14 +1128,14 @@ function setReqvs ($sbr_id, $params) {
             if ( empty($res['state']) || in_array($res['state'], array('COMPLETE')) ) //'EXIST'
             {
                 $error["mob_phone"] = '
-                    Веб-кошелек с указанным номером отсутствует. Для проведения сделки 
-                    зарегистрируйте и идентифицируйте Веб-кошелек на указанный номер.';
+                    Р’РµР±-РєРѕС€РµР»РµРє СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РЅРѕРјРµСЂРѕРј РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚. Р”Р»СЏ РїСЂРѕРІРµРґРµРЅРёСЏ СЃРґРµР»РєРё 
+                    Р·Р°СЂРµРіРёСЃС‚СЂРёСЂСѓР№С‚Рµ Рё РёРґРµРЅС‚РёС„РёС†РёСЂСѓР№С‚Рµ Р’РµР±-РєРѕС€РµР»РµРє РЅР° СѓРєР°Р·Р°РЅРЅС‹Р№ РЅРѕРјРµСЂ.';
             }
             elseif ( !$res['identified'] ) 
             {
                 $error["mob_phone"] = '
-                    Ваш Веб-кошелек не идентифицирован. Для проведения сделки укажите 
-                    другой номер телефона и кошелька или идентифицируйте текущий Веб-кошелек.';
+                    Р’Р°С€ Р’РµР±-РєРѕС€РµР»РµРє РЅРµ РёРґРµРЅС‚РёС„РёС†РёСЂРѕРІР°РЅ. Р”Р»СЏ РїСЂРѕРІРµРґРµРЅРёСЏ СЃРґРµР»РєРё СѓРєР°Р¶РёС‚Рµ 
+                    РґСЂСѓРіРѕР№ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° Рё РєРѕС€РµР»СЊРєР° РёР»Рё РёРґРµРЅС‚РёС„РёС†РёСЂСѓР№С‚Рµ С‚РµРєСѓС‰РёР№ Р’РµР±-РєРѕС€РµР»РµРє.';
             }
         }
     }
@@ -1177,7 +1177,7 @@ function preparePayment($sbr_id, $mode_type) {
     $sbr_id = __paramValue('int', $sbr_id);
     $mode_type = __paramValue('int', $mode_type);
     if (!$sbr_id || !$mode_type) {
-        $objResponse->call('finance_raise_err', 'Запрос не может быть обработан.');
+        $objResponse->call('finance_raise_err', 'Р—Р°РїСЂРѕСЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕР±СЂР°Р±РѕС‚Р°РЅ.');
         return $objResponse;
     }
     
@@ -1189,15 +1189,15 @@ function preparePayment($sbr_id, $mode_type) {
     
     $sbr = sbr_meta::getInstance();
     if(!$sbr->initFromId($sbr_id)) {
-        $objResponse->call('finance_raise_err', 'Запрос не может быть обработан.');
+        $objResponse->call('finance_raise_err', 'Р—Р°РїСЂРѕСЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕР±СЂР°Р±РѕС‚Р°РЅ.');
         return $objResponse;
     }
     if($sbr->status == sbr::STATUS_REFUSED) {
-        $objResponse->call('finance_raise_err', 'Запрос не может быть обработан. Исполнитель отказался от сделки.');
+        $objResponse->call('finance_raise_err', 'Р—Р°РїСЂРѕСЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕР±СЂР°Р±РѕС‚Р°РЅ. РСЃРїРѕР»РЅРёС‚РµР»СЊ РѕС‚РєР°Р·Р°Р»СЃСЏ РѕС‚ СЃРґРµР»РєРё.');
         return $objResponse;
     }
     if ($sbr->data['scheme_type'] != sbr::SCHEME_LC) {
-        $objResponse->call('finance_raise_err', 'Указанная схема не поддерживается.');
+        $objResponse->call('finance_raise_err', 'РЈРєР°Р·Р°РЅРЅР°СЏ СЃС…РµРјР° РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ.');
         return $objResponse;
     }
     
@@ -1227,7 +1227,7 @@ function preparePayment($sbr_id, $mode_type) {
     }
     
     if ($pskb->prepareLC($mode_type) && $pskb_lc = $pskb->reserve()) {
-        if(is_object($pskb_lc)) { // Все идет по плану
+        if(is_object($pskb_lc)) { // Р’СЃРµ РёРґРµС‚ РїРѕ РїР»Р°РЅСѓ
             $objResponse->call('finance_add_fld', 'source', onlinedengi::SOURCE_ID);
             $objResponse->call('finance_add_fld', 'order_id', $pskb_lc->id);
             $objResponse->call('finance_add_fld', 'nickname', $pskb_lc->id);
@@ -1259,7 +1259,7 @@ function checkPayment ($sbr_id, $delay = null) {
     
     $sbr_id = __paramValue('int', $sbr_id);
     if (!$sbr_id) {
-        $objResponse->call('finance_raise_err', 'Запрос не может быть обработан.');
+        $objResponse->call('finance_raise_err', 'Р—Р°РїСЂРѕСЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕР±СЂР°Р±РѕС‚Р°РЅ.');
         return $objResponse;
     }
     
@@ -1271,17 +1271,17 @@ function checkPayment ($sbr_id, $delay = null) {
     
     $sbr = sbr_meta::getInstance();
     if(!$sbr->initFromId($sbr_id)) {
-        $objResponse->call('finance_raise_err', 'Запрос не может быть обработан.');
+        $objResponse->call('finance_raise_err', 'Р—Р°РїСЂРѕСЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕР±СЂР°Р±РѕС‚Р°РЅ.');
         return $objResponse;
     }
     
     if($sbr->status == sbr::STATUS_REFUSED) {
-        $objResponse->call('finance_raise_err', 'Запрос не может быть обработан. Исполнитель отказался от сделки.');
+        $objResponse->call('finance_raise_err', 'Р—Р°РїСЂРѕСЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕР±СЂР°Р±РѕС‚Р°РЅ. РСЃРїРѕР»РЅРёС‚РµР»СЊ РѕС‚РєР°Р·Р°Р»СЃСЏ РѕС‚ СЃРґРµР»РєРё.');
         return $objResponse;
     }
     
     if ($sbr->data['scheme_type'] != sbr::SCHEME_LC) {
-        $objResponse->call('finance_raise_err', 'Указанная схема не поддерживается.');
+        $objResponse->call('finance_raise_err', 'РЈРєР°Р·Р°РЅРЅР°СЏ СЃС…РµРјР° РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ.');
         return $objResponse;
     }
     
@@ -1313,7 +1313,7 @@ function checkPayment ($sbr_id, $delay = null) {
             }
             $stage = current($sbr->stages);
             if($lc['ps_emp'] == onlinedengi::BANK_YL) {
-                if ($doc_file = $stage->generateStatement($doc_err, $lc)) { // формируем заявление на аккредитив
+                if ($doc_file = $stage->generateStatement($doc_err, $lc)) { // С„РѕСЂРјРёСЂСѓРµРј Р·Р°СЏРІР»РµРЅРёРµ РЅР° Р°РєРєСЂРµРґРёС‚РёРІ
                     $doc = array ('file_id'     => $doc_file->id, 
                                   'status'      => sbr::DOCS_STATUS_SIGN, 
                                   'access_role' => sbr::DOCS_ACCESS_EMP, 
@@ -1341,13 +1341,13 @@ function checkPayment ($sbr_id, $delay = null) {
         return $objResponse;
     }
     
-//    $objResponse->call('finance_raise_err', 'Указанная схема не поддерживается.');
+//    $objResponse->call('finance_raise_err', 'РЈРєР°Р·Р°РЅРЅР°СЏ СЃС…РµРјР° РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ.');
     
     return $objResponse;
 }
 
 /**
- * Генерирует заявление асинхронно только в случае если его нет 
+ * Р“РµРЅРµСЂРёСЂСѓРµС‚ Р·Р°СЏРІР»РµРЅРёРµ Р°СЃРёРЅС…СЂРѕРЅРЅРѕ С‚РѕР»СЊРєРѕ РІ СЃР»СѓС‡Р°Рµ РµСЃР»Рё РµРіРѕ РЅРµС‚ 
  */
 function generateStatement($sbr_id) {
     require_once ($_SERVER['DOCUMENT_ROOT'] . '/classes/pskb.php');
@@ -1372,7 +1372,7 @@ function generateStatement($sbr_id) {
             $doc_file->original_name = $doc['name'];
             
             $content_file = '<div class="b-layout__txt"><i class="b-icon b-icon_attach_pdf"></i> <a class="b-layout__link" href="' . WDCPREFIX . '/' . $doc_file->path . $doc_file->name . ' ">' . $doc_file->original_name . '</a>, ' . ConvertBtoMB($doc_file->size) . '</div>';
-            $info_file    = '<div class="b-layout__txt"><a class="b-layout__link" href="' . WDCPREFIX . '/' . $doc_file->path . $doc_file->name . '">Скачать файл</a></div>';
+            $info_file    = '<div class="b-layout__txt"><a class="b-layout__link" href="' . WDCPREFIX . '/' . $doc_file->path . $doc_file->name . '">РЎРєР°С‡Р°С‚СЊ С„Р°Р№Р»</a></div>';
 
             $objResponse->assign('content_statement_doc', "innerHTML",  $content_file);
             $objResponse->assign('info_statement_doc', "innerHTML",  $info_file);
@@ -1381,7 +1381,7 @@ function generateStatement($sbr_id) {
         }
     }
     
-    if ($doc_file = $sbr->stages[0]->generateStatement($doc_err, $lc)) { // формируем заявление на аккредитив
+    if ($doc_file = $sbr->stages[0]->generateStatement($doc_err, $lc)) { // С„РѕСЂРјРёСЂСѓРµРј Р·Р°СЏРІР»РµРЅРёРµ РЅР° Р°РєРєСЂРµРґРёС‚РёРІ
         $doc = array ('file_id'     => $doc_file->id, 
                       'status'      => sbr::DOCS_STATUS_SIGN, 
                       'access_role' => sbr::DOCS_ACCESS_EMP, 
@@ -1392,7 +1392,7 @@ function generateStatement($sbr_id) {
         $doc_file->original_name = $sbr->post_doc['name'];
         
         $content_file = '<div class="b-layout__txt"><i class="b-icon b-icon_attach_pdf"></i> <a class="b-layout__link" href="' . WDCPREFIX . '/' . $doc_file->path . $doc_file->name . ' ">' . $doc_file->original_name . '</a>, ' . ConvertBtoMB($doc_file->size) . '</div>';
-        $info_file    = '<div class="b-layout__txt"><a class="b-layout__link" href="' . WDCPREFIX . '/' . $doc_file->path . $doc_file->name . '">Скачать файл</a></div>';
+        $info_file    = '<div class="b-layout__txt"><a class="b-layout__link" href="' . WDCPREFIX . '/' . $doc_file->path . $doc_file->name . '">РЎРєР°С‡Р°С‚СЊ С„Р°Р№Р»</a></div>';
         
         $objResponse->assign('content_statement_doc', "innerHTML",  $content_file);
         $objResponse->assign('info_statement_doc', "innerHTML",  $info_file);
@@ -1410,7 +1410,7 @@ function subOpen($sbr_id, $code, $stage_id) {
     
     $sbr_id = __paramValue('int', $sbr_id);
     if (!$sbr_id || !$code) {
-        $objResponse->call('_raise_err', 'Запрос не может быть обработан.');
+        $objResponse->call('_raise_err', 'Р—Р°РїСЂРѕСЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕР±СЂР°Р±РѕС‚Р°РЅ.');
         return $objResponse;
     }
     
@@ -1422,11 +1422,11 @@ function subOpen($sbr_id, $code, $stage_id) {
     
     $sbr = sbr_meta::getInstance();
     if(!$sbr->initFromId($sbr_id)) {
-        $objResponse->call('_raise_err', 'Запрос не может быть обработан.');
+        $objResponse->call('_raise_err', 'Р—Р°РїСЂРѕСЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕР±СЂР°Р±РѕС‚Р°РЅ.');
         return $objResponse;
     }
     if ($sbr->data['scheme_type'] != sbr::SCHEME_LC) {
-        $objResponse->call('_raise_err', 'Указанная схема не поддерживается.');
+        $objResponse->call('_raise_err', 'РЈРєР°Р·Р°РЅРЅР°СЏ СЃС…РµРјР° РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚СЃСЏ.');
         return $objResponse;
     }
     
@@ -1454,8 +1454,8 @@ function resendCode ($sbr_id, $stage_id)
     
     if (!$sbr_id) {
         $objResponse->script("$('alert_sms').addClass('b-layout__txt_color_c7271e'); 
-                              $('alert_sms').set('html', 'Запрос не может быть обработан.');");
-        //$objResponse->alert('Запрос не может быть обработан.');
+                              $('alert_sms').set('html', 'Р—Р°РїСЂРѕСЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕР±СЂР°Р±РѕС‚Р°РЅ.');");
+        //$objResponse->alert('Р—Р°РїСЂРѕСЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕР±СЂР°Р±РѕС‚Р°РЅ.');
         return $objResponse;
     }
     
@@ -1464,8 +1464,8 @@ function resendCode ($sbr_id, $stage_id)
     if ($lasttime) {
         $mins = ceil(($lasttime+300 - time())/60);
         $objResponse->script("$('alert_sms').addClass('b-layout__txt_color_c7271e'); 
-                              $('alert_sms').set('html', 'Еще раз выслать код можно будет через {$mins} минут" . ending($mins, 'у', 'ы', '') . ".');");
-        //$objResponse->alert("Повторный запрос можно будет сделать примерно через {$mins} минут" . ending($mins, 'у', 'ы', '') );
+                              $('alert_sms').set('html', 'Р•С‰Рµ СЂР°Р· РІС‹СЃР»Р°С‚СЊ РєРѕРґ РјРѕР¶РЅРѕ Р±СѓРґРµС‚ С‡РµСЂРµР· {$mins} РјРёРЅСѓС‚" . ending($mins, 'Сѓ', 'С‹', '') . ".');");
+        //$objResponse->alert("РџРѕРІС‚РѕСЂРЅС‹Р№ Р·Р°РїСЂРѕСЃ РјРѕР¶РЅРѕ Р±СѓРґРµС‚ СЃРґРµР»Р°С‚СЊ РїСЂРёРјРµСЂРЅРѕ С‡РµСЂРµР· {$mins} РјРёРЅСѓС‚" . ending($mins, 'Сѓ', 'С‹', '') );
         return $objResponse;
     }
     
@@ -1478,39 +1478,39 @@ function resendCode ($sbr_id, $stage_id)
     $sbr = sbr_meta::getInstance();
     if(!$sbr->initFromId($sbr_id)) {
         $objResponse->script("$('alert_sms').addClass('b-layout__txt_color_c7271e'); 
-                              $('alert_sms').set('html', 'Запрос не может быть обработан.');");
+                              $('alert_sms').set('html', 'Р—Р°РїСЂРѕСЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕР±СЂР°Р±РѕС‚Р°РЅ.');");
         return $objResponse;
     }
     
     $stage = $sbr->initFromStage($stage_id, false);
     if(!$stage) {
         $objResponse->script("$('alert_sms').addClass('b-layout__txt_color_c7271e'); 
-                              $('alert_sms').set('html', 'Запрос не может быть обработан.');");
+                              $('alert_sms').set('html', 'Р—Р°РїСЂРѕСЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕР±СЂР°Р±РѕС‚Р°РЅ.');");
         return $objResponse;
     }
     
     if ($uid != $sbr->data['frl_id']) {
         $objResponse->script("$('alert_sms').addClass('b-layout__txt_color_c7271e'); 
-                              $('alert_sms').set('html', 'Запрос не может быть обработан.');");
-        //$objResponse->alert('Запрос не может быть обработан.');
+                              $('alert_sms').set('html', 'Р—Р°РїСЂРѕСЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕР±СЂР°Р±РѕС‚Р°РЅ.');");
+        //$objResponse->alert('Р—Р°РїСЂРѕСЃ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕР±СЂР°Р±РѕС‚Р°РЅ.');
         return $objResponse;
     }
     
     $pskb = new pskb($sbr);
     if (!$pskb->resendCode($stage)) {
         $objResponse->script("$('alert_sms').addClass('b-layout__txt_color_c7271e'); 
-                              $('alert_sms').set('html', 'Не удалось выслать код.');");
-        //$objResponse->alert('Ошибка запроса. Попробуйте еще раз.');
+                              $('alert_sms').set('html', 'РќРµ СѓРґР°Р»РѕСЃСЊ РІС‹СЃР»Р°С‚СЊ РєРѕРґ.');");
+        //$objResponse->alert('РћС€РёР±РєР° Р·Р°РїСЂРѕСЃР°. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·.');
         return $objResponse;
     }
     
     $m->set(pskb::SMS_RESEND_KEY . $sbr_id, time(), 300);
     
     $objResponse->script("$('alert_sms').addClass('b-layout__txt_color_56bd06'); 
-                          $('alert_sms').set('html', 'Код отправлен повторно.');
+                          $('alert_sms').set('html', 'РљРѕРґ РѕС‚РїСЂР°РІР»РµРЅ РїРѕРІС‚РѕСЂРЅРѕ.');
                           $('send_sms').destroy();
-                          $('resend_sms').set('html', 'Еще раз выслать код можно будет через 5 минут.')");
-    //$objResponse->alert('Код отправлен повторно.');
+                          $('resend_sms').set('html', 'Р•С‰Рµ СЂР°Р· РІС‹СЃР»Р°С‚СЊ РєРѕРґ РјРѕР¶РЅРѕ Р±СѓРґРµС‚ С‡РµСЂРµР· 5 РјРёРЅСѓС‚.')");
+    //$objResponse->alert('РљРѕРґ РѕС‚РїСЂР°РІР»РµРЅ РїРѕРІС‚РѕСЂРЅРѕ.');
     
     if (defined('PSKB_TEST_MODE')) {
         $objResponse->script('document.location.reload();');
@@ -1568,13 +1568,13 @@ function aGetLCInfo($sbr_id) {
     
     $sbr_id = __paramValue('int', $sbr_id);
     if (!$sbr_id) {
-        $objResponse->alert('Ошибка запроса.');
+        $objResponse->alert('РћС€РёР±РєР° Р·Р°РїСЂРѕСЃР°.');
         return $objResponse;
     }
     
     $sbr = sbr_meta::getInstance( sbr_meta::ADMIN_ACCESS );
     if(!$sbr->initFromId($sbr_id)) {
-        $objResponse->alert('Сделка не найдена.');
+        $objResponse->alert('РЎРґРµР»РєР° РЅРµ РЅР°Р№РґРµРЅР°.');
         return $objResponse;
     }
     
@@ -1604,10 +1604,10 @@ function aGetLCInfo($sbr_id) {
 
 
 /**
- * Функция для пересоздания документа
+ * Р¤СѓРЅРєС†РёСЏ РґР»СЏ РїРµСЂРµСЃРѕР·РґР°РЅРёСЏ РґРѕРєСѓРјРµРЅС‚Р°
  * 
- * @param integer $doc_id  ИД текущего документа
- * @param integer $uid     ИД Пользователя
+ * @param integer $doc_id  РР” С‚РµРєСѓС‰РµРіРѕ РґРѕРєСѓРјРµРЅС‚Р°
+ * @param integer $uid     РР” РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
  * @return \xajaxResponse
  */
 function aRecreateDocLC($doc_id, $uid, $stage_id, $action = 'create', $interface = 'admin') {
@@ -1623,26 +1623,26 @@ function aRecreateDocLC($doc_id, $uid, $stage_id, $action = 'create', $interface
     $stage_id = intval($stage_id);
     
     if(!$doc_id) {
-        $objResponse->alert('Не корректный документ.');
+        $objResponse->alert('РќРµ РєРѕСЂСЂРµРєС‚РЅС‹Р№ РґРѕРєСѓРјРµРЅС‚.');
         return $objResponse;
     }
     
     if(!$uid) {
-        $objResponse->alert('Не корректный пользователь.');
+        $objResponse->alert('РќРµ РєРѕСЂСЂРµРєС‚РЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ.');
         return $objResponse;
     }
     
     $sbr   = sbr_meta::getInstanceLocal($uid);
     
     if (!$sbr) {
-        $objResponse->alert('Ошибка запроса.');
+        $objResponse->alert('РћС€РёР±РєР° Р·Р°РїСЂРѕСЃР°.');
         return $objResponse;
     }
     
     $stage = $sbr->initFromStage($stage_id);
     
     if(!$stage) {
-        $objResponse->alert('Этап не найден.');
+        $objResponse->alert('Р­С‚Р°Рї РЅРµ РЅР°Р№РґРµРЅ.');
         return $objResponse;
     }
     if($stage->status == sbr_stages::STATUS_ARBITRAGED) {
@@ -1672,7 +1672,7 @@ function aRecreateDocLC($doc_id, $uid, $stage_id, $action = 'create', $interface
             $objResponse->assign("doc_content", "innerHTML", $out); 
         }
     } else {
-        $objResponse->alert('Ошибка генерации документа.');
+        $objResponse->alert('РћС€РёР±РєР° РіРµРЅРµСЂР°С†РёРё РґРѕРєСѓРјРµРЅС‚Р°.');
     }
     
     return $objResponse;
@@ -1745,8 +1745,8 @@ function authSMS($uid, $action = 'send', $phone = null) {
     require_once ($_SERVER['DOCUMENT_ROOT'] . '/classes/sbr.php');
     
     $objResponse = new xajaxResponse();
-    //@todo: запрещаем изменять финансы в старой СБР #29196
-    $objResponse->alert("Прекращена поддержка СБР.");
+    //@todo: Р·Р°РїСЂРµС‰Р°РµРј РёР·РјРµРЅСЏС‚СЊ С„РёРЅР°РЅСЃС‹ РІ СЃС‚Р°СЂРѕР№ РЎР‘Р  #29196
+    $objResponse->alert("РџСЂРµРєСЂР°С‰РµРЅР° РїРѕРґРґРµСЂР¶РєР° РЎР‘Р .");
     return $objResponse;
     
     if(!$uid) {
@@ -1758,7 +1758,7 @@ function authSMS($uid, $action = 'send', $phone = null) {
     }
     
     $reqv = sbr_meta::getUserReqvs($uid);
-    if($reqv['user_id'] == NULL) { // Еще не создано
+    if($reqv['user_id'] == NULL) { // Р•С‰Рµ РЅРµ СЃРѕР·РґР°РЅРѕ
         $reqv['from_type']       = 1;
         $reqv['rez_type']        = sbr::RT_RU;
         $reqv['is_activate_mob'] = 'f';
@@ -1769,7 +1769,7 @@ function authSMS($uid, $action = 'send', $phone = null) {
         $ureqv['mob_phone'] = $phone;
         $nreqv['mob_phone'] = $phone;
         
-        //@todo: запрещаем изменять финансы в старой СБР #29196
+        //@todo: Р·Р°РїСЂРµС‰Р°РµРј РёР·РјРµРЅСЏС‚СЊ С„РёРЅР°РЅСЃС‹ РІ СЃС‚Р°СЂРѕР№ РЎР‘Р  #29196
         //$error = sbr_meta::setUserReqv($uid, $reqv['rez_type'], $reqv['from_type'], $nreqv);
         
         if($error['mob_phone']) {
@@ -1778,9 +1778,9 @@ function authSMS($uid, $action = 'send', $phone = null) {
         }
     }
     
-    // Если уже активировано
+    // Р•СЃР»Рё СѓР¶Рµ Р°РєС‚РёРІРёСЂРѕРІР°РЅРѕ
     if($reqv['is_activate_mob'] == 't') {
-        $html = '<div class="b-layout__txt b-layout__txt_padtop_7 b-layout__txt_nowrap b-layout__txt_inline-block"><span class="b-icon b-icon_sbr_gok b-icon_top_2"></span>Активирован</div>';
+        $html = '<div class="b-layout__txt b-layout__txt_padtop_7 b-layout__txt_nowrap b-layout__txt_inline-block"><span class="b-icon b-icon_sbr_gok b-icon_top_2"></span>РђРєС‚РёРІРёСЂРѕРІР°РЅ</div>';
         $objResponse->script("$('auth_popup').set('html', '');$('auth_popup').hide(); $$('.c_sms_main').set('html', '{$html}');");
         return $objResponse;
     }
@@ -1794,12 +1794,12 @@ function authSMS($uid, $action = 'send', $phone = null) {
         }
     } elseif($action == 'resend') {
         $timer = $sms_gate->next_time_send - time();
-        $objResponse->alert("Следующее сообщение можно будет послать через {$timer} ". ending($timer, 'секунду', 'секунды', 'секунд'));
+        $objResponse->alert("РЎР»РµРґСѓСЋС‰РµРµ СЃРѕРѕР±С‰РµРЅРёРµ РјРѕР¶РЅРѕ Р±СѓРґРµС‚ РїРѕСЃР»Р°С‚СЊ С‡РµСЂРµР· {$timer} ". ending($timer, 'СЃРµРєСѓРЅРґСѓ', 'СЃРµРєСѓРЅРґС‹', 'СЃРµРєСѓРЅРґ'));
         return $objResponse;
     } else {
         $timer = $sms_gate->next_time_send - time();
         if($timer > 0) {
-            $objResponse->alert("Следующее сообщение можно будет послать через {$timer} ". ending($timer, 'секунду', 'секунды', 'секунд'));
+            $objResponse->alert("РЎР»РµРґСѓСЋС‰РµРµ СЃРѕРѕР±С‰РµРЅРёРµ РјРѕР¶РЅРѕ Р±СѓРґРµС‚ РїРѕСЃР»Р°С‚СЊ С‡РµСЂРµР· {$timer} ". ending($timer, 'СЃРµРєСѓРЅРґСѓ', 'СЃРµРєСѓРЅРґС‹', 'СЃРµРєСѓРЅРґ'));
             return $objResponse;
         }
     }
@@ -1823,7 +1823,7 @@ function authSMS($uid, $action = 'send', $phone = null) {
         $objResponse->assign("auth_popup", "innerHTML", $out); 
         $objResponse->script("$('auth_popup').show();$('auth_popup').removeClass('b-shadow_hide'); shadow_popup();");
     } else {
-    	$text = "СМС не пришло";
+    	$text = "РЎРњРЎ РЅРµ РїСЂРёС€Р»Рѕ";
     	$isExceed = $sms_gate->limitSmsOnNumberIsExceed($ureqv['mob_phone'], $recId, $count, $message);
     	$css1 = sms_gate_a1::$disable_link_css;
     	$css2 = sms_gate_a1::$enable_link_css;
@@ -1862,14 +1862,14 @@ function authCodeSMS($code, $page = 'finance') {
     
     if($info['data'] == $code && $info['data'] != null) {
         sbr_meta::authMobPhone($uid);
-        $sms_gate->setIsAuth($info['id'], true); // Обновляем флаг
+        $sms_gate->setIsAuth($info['id'], true); // РћР±РЅРѕРІР»СЏРµРј С„Р»Р°Рі
         switch($page) {
             case 'finance':
-                $html = '<div class="b-layout__txt b-layout__txt_padtop_7 b-layout__txt_nowrap b-layout__txt_inline-block"><span class="b-icon b-icon_sbr_gok b-icon_top_2"></span>Активирован</div>';
+                $html = '<div class="b-layout__txt b-layout__txt_padtop_7 b-layout__txt_nowrap b-layout__txt_inline-block"><span class="b-icon b-icon_sbr_gok b-icon_top_2"></span>РђРєС‚РёРІРёСЂРѕРІР°РЅ</div>';
                 $objResponse->script("$('auth_popup').set('html', ''); $('auth_popup').hide(); $$('.c_sms_main').set('html', '{$html}');");
                 break;
             case 'safety':
-                $html = '&#160;&#160;<div class="b-layout__txt b-layout__txt_inline-block"><a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)">Отвязать</a></div>';
+                $html = '&#160;&#160;<div class="b-layout__txt b-layout__txt_inline-block"><a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)">РћС‚РІСЏР·Р°С‚СЊ</a></div>';
                 $objResponse->script("$('auth_popup').set('html', ''); 
                                       $('auth_popup').hide(); 
                                       $$('.c_sms_main').set('html', '{$html}');
@@ -1878,7 +1878,7 @@ function authCodeSMS($code, $page = 'finance') {
                                       });
                                       $('safety_mob_phone').addClass('b-combo__input_disabled');
                                       $('safety_mob_phone').getElement('input').set('disabled', true);
-                                      $('safety_status').set('html', 'включена');
+                                      $('safety_status').set('html', 'РІРєР»СЋС‡РµРЅР°');
                                       $('safety_status').removeClass('b-layout__txt_color_c10600').addClass('b-layout__txt_color_6bb336');
                                       bindLinkUnativateAuth('{$uid}');
                                       ");
@@ -1889,7 +1889,7 @@ function authCodeSMS($code, $page = 'finance') {
         $objResponse->script("$('a_sms_act').getElement('.b-button__txt').removeClass('b-button__txt_hide');
                               $('a_sms_act').getElement('.b-button__load').hide();
                               $('a_sms_act').addClass('b-button_rectangle_color_disable');
-                              $('a_sms_resend').set('text', 'Выслать СМС еще раз');");
+                              $('a_sms_resend').set('text', 'Р’С‹СЃР»Р°С‚СЊ РЎРњРЎ РµС‰Рµ СЂР°Р·');");
         $objResponse->script("$('sms_error').removeClass('b-layout__txt_hide'); $('i_sms_code').getParent().addClass('b-combo__input_error');");
     }
     
@@ -1918,7 +1918,7 @@ function unactivateAuth($uid, $action = 'safety') {
         }
     } elseif($action == 'resend') {
         $timer = $sms_gate->next_time_send - time();
-        $objResponse->alert("Следующее сообщение можно будет послать через {$timer} ". ending($timer, 'секунду', 'секунды', 'секунд'));
+        $objResponse->alert("РЎР»РµРґСѓСЋС‰РµРµ СЃРѕРѕР±С‰РµРЅРёРµ РјРѕР¶РЅРѕ Р±СѓРґРµС‚ РїРѕСЃР»Р°С‚СЊ С‡РµСЂРµР· {$timer} ". ending($timer, 'СЃРµРєСѓРЅРґСѓ', 'СЃРµРєСѓРЅРґС‹', 'СЃРµРєСѓРЅРґ'));
         return $objResponse;
     }
     
@@ -1957,7 +1957,7 @@ function unauthCodeSMS($code) {
         sbr_meta::safetyMobPhone($uid, false);
         $user->updateSafetyPhone($uid, false);
         
-        $html = '<a href="javascript:void(0)" class="b-button b-button_rectangle_color_transparent b-button_margtop_-2" data-send="safety"><span class="b-button__b1"><span class="b-button__b2"><span class="b-button__txt">Активировать</span></span></span></a>';
+        $html = '<a href="javascript:void(0)" class="b-button b-button_rectangle_color_transparent b-button_margtop_-2" data-send="safety"><span class="b-button__b1"><span class="b-button__b2"><span class="b-button__txt">РђРєС‚РёРІРёСЂРѕРІР°С‚СЊ</span></span></span></a>';
         if ( $_SESSION['is_verify'] != 't' ) {
             $mobphone = "$('safety_mob_phone').removeClass('b-combo__input_disabled'); $('safety_mob_phone').getElement('input').set('disabled', false);";
         } else {
@@ -1970,7 +1970,7 @@ function unauthCodeSMS($code) {
                                   $(el).getElements('input[type=checkbox]').set('disabled', true).set('checked', false);
                               });
                               {$mobphone}
-                              $('safety_status').set('html', 'выключена');
+                              $('safety_status').set('html', 'РІС‹РєР»СЋС‡РµРЅР°');
                               $('safety_status').addClass('b-layout__txt_color_c10600').removeClass('b-layout__txt_color_6bb336');
                               bindLinkActivateAuth();
                               ");
@@ -1998,14 +1998,14 @@ function resendAuthCode() {
         $_SESSION['sms_access_code'] = $sms_gate->getAuthCode();
     } else {
         $timer = $sms_gate->next_time_send - time();
-        $objResponse->alert("Следующее сообщение можно будет послать через {$timer} ". ending($timer, 'секунду', 'секунды', 'секунд'));
+        $objResponse->alert("РЎР»РµРґСѓСЋС‰РµРµ СЃРѕРѕР±С‰РµРЅРёРµ РјРѕР¶РЅРѕ Р±СѓРґРµС‚ РїРѕСЃР»Р°С‚СЊ С‡РµСЂРµР· {$timer} ". ending($timer, 'СЃРµРєСѓРЅРґСѓ', 'СЃРµРєСѓРЅРґС‹', 'СЃРµРєСѓРЅРґ'));
         return $objResponse;
     }
     
     if(SMS_GATE_DEBUG) {
         $objResponse->script("$('auth_sms_code').set('value', '{$_SESSION['sms_access_code']}')");
     }
-    $objResponse->alert('Код выслан повторно');
+    $objResponse->alert('РљРѕРґ РІС‹СЃР»Р°РЅ РїРѕРІС‚РѕСЂРЅРѕ');
     return $objResponse;
 }
 
@@ -2035,7 +2035,7 @@ function sendCode() {
         
         $timer = $sms_gate->next_time_send - time();
         if($timer > 0) {
-            $objResponse->alert("Следующее сообщение можно будет послать через {$timer} ". ending($timer, 'секунду', 'секунды', 'секунд'));
+            $objResponse->alert("РЎР»РµРґСѓСЋС‰РµРµ СЃРѕРѕР±С‰РµРЅРёРµ РјРѕР¶РЅРѕ Р±СѓРґРµС‚ РїРѕСЃР»Р°С‚СЊ С‡РµСЂРµР· {$timer} ". ending($timer, 'СЃРµРєСѓРЅРґСѓ', 'СЃРµРєСѓРЅРґС‹', 'СЃРµРєСѓРЅРґ'));
         }
     }
     
@@ -2045,8 +2045,8 @@ function sendCode() {
     
     $callback_js = 'a_sms_disabled_safety';
     $callback_resend = 'sendCode';
-    $sms_title   = 'Подтверждение действий';
-    $sms_btn     = 'Отправить';
+    $sms_title   = 'РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РґРµР№СЃС‚РІРёР№';
+    $sms_btn     = 'РћС‚РїСЂР°РІРёС‚СЊ';
     ob_start();
     include($_SERVER['DOCUMENT_ROOT'].'/sbr/tpl.auth_sms_popup.php');
     $out = ob_get_clean();
@@ -2108,7 +2108,7 @@ function aDelDocument($stage_id, $doc_id)
     }
     $doc = $sbr->getDoc($doc_id);
     $stage = $sbr->initFromStage($stage_id, false);
-    if($doc['is_deleted'] == 't') { // Восстанавливаем
+    if($doc['is_deleted'] == 't') { // Р’РѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµРј
         if($sbr->recoveryDocs($doc_id)) {
             $stage->removeEvent(29, true);
             $objResponse->script("$('doc_{$doc_id}').removeClass('b-layout__tr_bg_ffdfdf')");
@@ -2221,7 +2221,7 @@ function aSaveDocument($stage_id, $doc_id, $name, $type, $access, $session)
     } else {
         if(!$file) {
             $objResponse->script('window.sended = false');
-            $objResponse->call('alert', 'Загрузите файл');
+            $objResponse->call('alert', 'Р—Р°РіСЂСѓР·РёС‚Рµ С„Р°Р№Р»');
             return $objResponse;
         }
         $doc = array(
@@ -2236,7 +2236,7 @@ function aSaveDocument($stage_id, $doc_id, $name, $type, $access, $session)
         
         if(!$add_doc) {
             $objResponse->script('window.sended = false;');
-            $objResponse->call('alert', 'Ошибка запроса');
+            $objResponse->call('alert', 'РћС€РёР±РєР° Р·Р°РїСЂРѕСЃР°');
             return $objResponse;
         }
     }
@@ -2311,18 +2311,18 @@ function aClearCloneLogPSKB($lc_id, $query, $logname)
     $clear    = $log_pskb->clearCloneData($lc_id);
     
     if($clear) {
-        $objResponse->call("alert", "Дублирующие записи удалены"); 
+        $objResponse->call("alert", "Р”СѓР±Р»РёСЂСѓСЋС‰РёРµ Р·Р°РїРёСЃРё СѓРґР°Р»РµРЅС‹"); 
     } else {
-        $objResponse->call("alert", "Ошибка удаления дублирующих записей"); 
+        $objResponse->call("alert", "РћС€РёР±РєР° СѓРґР°Р»РµРЅРёСЏ РґСѓР±Р»РёСЂСѓСЋС‰РёС… Р·Р°РїРёСЃРµР№"); 
     }
     
     return aFindLogPSKB($lc_id, $query, $logname);
 }
 
 /**
- * помечает отзыв о сервисе для показа в промоблоке
- * @param integer $feedbackID ID отзыва
- * @param bool $check если true - то отзыв разрешено показывать в промо-блоке
+ * РїРѕРјРµС‡Р°РµС‚ РѕС‚Р·С‹РІ Рѕ СЃРµСЂРІРёСЃРµ РґР»СЏ РїРѕРєР°Р·Р° РІ РїСЂРѕРјРѕР±Р»РѕРєРµ
+ * @param integer $feedbackID ID РѕС‚Р·С‹РІР°
+ * @param bool $check РµСЃР»Рё true - С‚Рѕ РѕС‚Р·С‹РІ СЂР°Р·СЂРµС€РµРЅРѕ РїРѕРєР°Р·С‹РІР°С‚СЊ РІ РїСЂРѕРјРѕ-Р±Р»РѕРєРµ
  * 
  */
 function addFeedbackToPromo ($feedbackID, $check = true) 
@@ -2341,7 +2341,7 @@ function addFeedbackToPromo ($feedbackID, $check = true)
 }
 
 /**
- * устанавливает арбитра
+ * СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ Р°СЂР±РёС‚СЂР°
  */
 function setArbitr ($arbitrageID, $arbitrID) 
 {

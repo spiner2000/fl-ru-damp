@@ -14,29 +14,29 @@ if(!defined('IN_STDF')) {
 </div>
 <div class="b-layout__one">
 <? if ($ban['reason'] == 4)  {?>
-	<h1 class="b-page__title">Аккаунт удален</h1>
-   <div class="b-layout__txt b-layout__txt_padbot_20">Если у вас есть вопросы &mdash; напишите в <a href="http://feedback.fl.ru" target="_blank">службу поддержки</a></div>
+	<h1 class="b-page__title">РђРєРєР°СѓРЅС‚ СѓРґР°Р»РµРЅ</h1>
+   <div class="b-layout__txt b-layout__txt_padbot_20">Р•СЃР»Рё Сѓ РІР°СЃ РµСЃС‚СЊ РІРѕРїСЂРѕСЃС‹ &mdash; РЅР°РїРёС€РёС‚Рµ РІ <a href="http://feedback.fl.ru" target="_blank">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a></div>
 <? } else { ?>
-	<h1 class="b-page__title">Аккаунт заблокирован <?=($ban["to"] ? "до ".date("d.m.Y  H:i",strtotimeEx($ban["to"])) : "")?></h1>
+	<h1 class="b-page__title">РђРєРєР°СѓРЅС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ <?=($ban["to"] ? "РґРѕ ".date("d.m.Y  H:i",strtotimeEx($ban["to"])) : "")?></h1>
     <div class="b-layout__txt b-layout__txt_padbot_20">
     <?
     switch ($ban["reason"]) {
         case 1:
-            // print "<br/>Причина: Крайне некорректное поведение на сайте";
+            // print "<br/>РџСЂРёС‡РёРЅР°: РљСЂР°Р№РЅРµ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РїРѕРІРµРґРµРЅРёРµ РЅР° СЃР°Р№С‚Рµ";
             break;
         case 2:
-            print "Причина: Спам в блогах";
+            print "РџСЂРёС‡РёРЅР°: РЎРїР°Рј РІ Р±Р»РѕРіР°С…";
             break;
         case 3:
-            print "Причина: Спам в проектах";
+            print "РџСЂРёС‡РёРЅР°: РЎРїР°Рј РІ РїСЂРѕРµРєС‚Р°С…";
             break;
         default:
             break;
     }
     ?>
     </div>
-    <div class="b-layout__txt b-layout__txt_padbot_20"><?=($ban["comment"] ? "Комментарий администратора: ".$ban["comment"] : "")?></div>
-    <div class="b-layout__txt b-layout__txt_padbot_20">Служба поддержки <a href="http://feedback.fl.ru" target="_blank">http://feedback.fl.ru</a></div>
+    <div class="b-layout__txt b-layout__txt_padbot_20"><?=($ban["comment"] ? "РљРѕРјРјРµРЅС‚Р°СЂРёР№ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°: ".$ban["comment"] : "")?></div>
+    <div class="b-layout__txt b-layout__txt_padbot_20">РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё <a href="http://feedback.fl.ru" target="_blank">http://feedback.fl.ru</a></div>
     
 <?  } ?>
 </div>

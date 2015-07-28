@@ -5,7 +5,7 @@ require_once(ABS_PATH . '/classes/tservices/tservices_helper.php');
 require_once('ReservesArchiveItemIterator.php');
 
 /**
- * Архив доккументов по БС
+ * РђСЂС…РёРІ РґРѕРєРєСѓРјРµРЅС‚РѕРІ РїРѕ Р‘РЎ
  */
 class ReservesArchiveModel extends CModel
 {
@@ -15,53 +15,53 @@ class ReservesArchiveModel extends CModel
 
 
     /**
-     * Временная директория WebDav хранилища чтобы скопировать файлв под защитой 
-     * и потом уже их переместить в логальную файловую систему
+     * Р’СЂРµРјРµРЅРЅР°СЏ РґРёСЂРµРєС‚РѕСЂРёСЏ WebDav С…СЂР°РЅРёР»РёС‰Р° С‡С‚РѕР±С‹ СЃРєРѕРїРёСЂРѕРІР°С‚СЊ С„Р°Р№Р»РІ РїРѕРґ Р·Р°С‰РёС‚РѕР№ 
+     * Рё РїРѕС‚РѕРј СѓР¶Рµ РёС… РїРµСЂРµРјРµСЃС‚РёС‚СЊ РІ Р»РѕРіР°Р»СЊРЅСѓСЋ С„Р°Р№Р»РѕРІСѓСЋ СЃРёСЃС‚РµРјСѓ
      */
     const DAV_TMP_PATH = '/temp/';
     
     /**
-     * Временная директория при сборки архива
+     * Р’СЂРµРјРµРЅРЅР°СЏ РґРёСЂРµРєС‚РѕСЂРёСЏ РїСЂРё СЃР±РѕСЂРєРё Р°СЂС…РёРІР°
      */
     const TMP_PATH = '/tmp/reserves_archive/';
     
     /**
-     * Директория архива на WebDav харанилище
+     * Р”РёСЂРµРєС‚РѕСЂРёСЏ Р°СЂС…РёРІР° РЅР° WebDav С…Р°СЂР°РЅРёР»РёС‰Рµ
      */
     const DAV_PATH = '/private/reserves_archive/';
 
     
     
     /**
-     * Статус архива: задача на создание архива;
+     * РЎС‚Р°С‚СѓСЃ Р°СЂС…РёРІР°: Р·Р°РґР°С‡Р° РЅР° СЃРѕР·РґР°РЅРёРµ Р°СЂС…РёРІР°;
      */
     const STATUS_NEW = 0;
     
     /**
-     * Статус архива: создание архива в процессе;
+     * РЎС‚Р°С‚СѓСЃ Р°СЂС…РёРІР°: СЃРѕР·РґР°РЅРёРµ Р°СЂС…РёРІР° РІ РїСЂРѕС†РµСЃСЃРµ;
      */
     const STATUS_INPROGRESS = 1;
     
     /**
-     * Статус архива: архив успешно создан;
+     * РЎС‚Р°С‚СѓСЃ Р°СЂС…РёРІР°: Р°СЂС…РёРІ СѓСЃРїРµС€РЅРѕ СЃРѕР·РґР°РЅ;
      */
     const STATUS_SUCCESS = 2;
     
     /**
-     * Статус архива: ошибка при создании архива;
+     * РЎС‚Р°С‚СѓСЃ Р°СЂС…РёРІР°: РѕС€РёР±РєР° РїСЂРё СЃРѕР·РґР°РЅРёРё Р°СЂС…РёРІР°;
      */
     const STATUS_ERROR = -1;
     
     
     /**
-     * Попыток создания архива
+     * РџРѕРїС‹С‚РѕРє СЃРѕР·РґР°РЅРёСЏ Р°СЂС…РёРІР°
      */
     const TRY_COUNT = 2;
    
     
     /**
-     * Количество копий документа
-     * для удобства печати сразу всей папки
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ РєРѕРїРёР№ РґРѕРєСѓРјРµРЅС‚Р°
+     * РґР»СЏ СѓРґРѕР±СЃС‚РІР° РїРµС‡Р°С‚Рё СЃСЂР°Р·Сѓ РІСЃРµР№ РїР°РїРєРё
      * 
      */
     private $doc_type_cnt = array(
@@ -70,7 +70,7 @@ class ReservesArchiveModel extends CModel
     
     
     /**
-     * Типы документов нужные в архиве
+     * РўРёРїС‹ РґРѕРєСѓРјРµРЅС‚РѕРІ РЅСѓР¶РЅС‹Рµ РІ Р°СЂС…РёРІРµ
      * 
      * @var type 
      */
@@ -80,19 +80,19 @@ class ReservesArchiveModel extends CModel
 
 
     /**
-     * Заголовок письма создаваемого в /siteadmin/ltters/
+     * Р—Р°РіРѕР»РѕРІРѕРє РїРёСЃСЊРјР° СЃРѕР·РґР°РІР°РµРјРѕРіРѕ РІ /siteadmin/ltters/
      */
-    const LETTER_GROUP_TXT  = "Архив БС %s";
+    const LETTER_GROUP_TXT  = "РђСЂС…РёРІ Р‘РЎ %s";
     /**
-     * Комментарий в письме со ссылкой на архив 
-     * где находятся основные документы по данной БС
+     * РљРѕРјРјРµРЅС‚Р°СЂРёР№ РІ РїРёСЃСЊРјРµ СЃРѕ СЃСЃС‹Р»РєРѕР№ РЅР° Р°СЂС…РёРІ 
+     * РіРґРµ РЅР°С…РѕРґСЏС‚СЃСЏ РѕСЃРЅРѕРІРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹ РїРѕ РґР°РЅРЅРѕР№ Р‘РЎ
      */
-    const LETTER_COMMENT    = "Скачать архив документов \n %s"; 
+    const LETTER_COMMENT    = "РЎРєР°С‡Р°С‚СЊ Р°СЂС…РёРІ РґРѕРєСѓРјРµРЅС‚РѕРІ \n %s"; 
     
 
 
     /**
-     * Добавить задачу на создание архива
+     * Р”РѕР±Р°РІРёС‚СЊ Р·Р°РґР°С‡Сѓ РЅР° СЃРѕР·РґР°РЅРёРµ Р°СЂС…РёРІР°
      * 
      * @param type $data
      * @return type
@@ -102,7 +102,7 @@ class ReservesArchiveModel extends CModel
         return $this->db()->insert(self::$_TABLE_ARCHIVE, array(
             'uid' => $_SESSION['uid'],
             'status' => self::STATUS_NEW,
-            'type' => 0, //пока у нас один тип архива
+            'type' => 0, //РїРѕРєР° Сѓ РЅР°СЃ РѕРґРёРЅ С‚РёРї Р°СЂС…РёРІР°
             'original_name' => $data['date_range'],
             'fields' => serialize($data['bs_ids'])
         ));
@@ -111,7 +111,7 @@ class ReservesArchiveModel extends CModel
     
     
     /**
-     * Общее количество архивов
+     * РћР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р°СЂС…РёРІРѕРІ
      * 
      * @return type
      */
@@ -125,7 +125,7 @@ class ReservesArchiveModel extends CModel
     
     
     /**
-     * Список архивов
+     * РЎРїРёСЃРѕРє Р°СЂС…РёРІРѕРІ
      * 
      * @return \ReservesArchiveItemIterator
      */
@@ -149,7 +149,7 @@ class ReservesArchiveModel extends CModel
     
     
     /**
-     * Обновление данных архива
+     * РћР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… Р°СЂС…РёРІР°
      * 
      * @param type $id
      * @param type $data
@@ -165,18 +165,18 @@ class ReservesArchiveModel extends CModel
 
     
     /**
-     * Создание архива документов 
-     * по последней задаче
+     * РЎРѕР·РґР°РЅРёРµ Р°СЂС…РёРІР° РґРѕРєСѓРјРµРЅС‚РѕРІ 
+     * РїРѕ РїРѕСЃР»РµРґРЅРµР№ Р·Р°РґР°С‡Рµ
      * 
-     * Рекомендуется запускать 
-     * в кроне с интервалом 1-2 минуты
+     * Р РµРєРѕРјРµРЅРґСѓРµС‚СЃСЏ Р·Р°РїСѓСЃРєР°С‚СЊ 
+     * РІ РєСЂРѕРЅРµ СЃ РёРЅС‚РµСЂРІР°Р»РѕРј 1-2 РјРёРЅСѓС‚С‹
      * 
      * @return boolean
      * @throws Exception
      */
     public function generateArchive()
     {
-        //Получаем последнюю задачу на создания архива
+        //РџРѕР»СѓС‡Р°РµРј РїРѕСЃР»РµРґРЅСЋСЋ Р·Р°РґР°С‡Сѓ РЅР° СЃРѕР·РґР°РЅРёСЏ Р°СЂС…РёРІР°
         $last = $this->db()->row("
             SELECT 
                 rda.*,
@@ -195,12 +195,12 @@ class ReservesArchiveModel extends CModel
         }
             
         $archObj = new ReservesArchiveItemModel($last);
-        //Ставим статус в работе
+        //РЎС‚Р°РІРёРј СЃС‚Р°С‚СѓСЃ РІ СЂР°Р±РѕС‚Рµ
         $this->updateArchive($archObj->id, array('status' => self::STATUS_INPROGRESS));
         
         try {
             
-            //Получаем файлы документов
+            //РџРѕР»СѓС‡Р°РµРј С„Р°Р№Р»С‹ РґРѕРєСѓРјРµРЅС‚РѕРІ
             require_once(ABS_PATH . '/classes/reserves/ReservesTServiceOrderModel.php');
             $bs_ids = $archObj->getFields();
             $files = CFile::selectFilesBySrc(
@@ -210,7 +210,7 @@ class ReservesArchiveModel extends CModel
                     $this->db()->parse('doc_type IN(?l)', $this->doc_req));
             
             if (!$files) {
-                throw new Exception('Нет файлов документов');
+                throw new Exception('РќРµС‚ С„Р°Р№Р»РѕРІ РґРѕРєСѓРјРµРЅС‚РѕРІ');
             }
                     
             $_archive_dir = uniqid();
@@ -220,10 +220,10 @@ class ReservesArchiveModel extends CModel
             $cfile = new CFile();
             
             if (!$cfile->MakeDir(trim($_dav_temp_path,'/'))) {
-                throw new Exception('Не удалось создать временную директорию в хранилище');
+                throw new Exception('РќРµ СѓРґР°Р»РѕСЃСЊ СЃРѕР·РґР°С‚СЊ РІСЂРµРјРµРЅРЅСѓСЋ РґРёСЂРµРєС‚РѕСЂРёСЋ РІ С…СЂР°РЅРёР»РёС‰Рµ');
             }
             
-            //Формируем массив файлов для архива
+            //Р¤РѕСЂРјРёСЂСѓРµРј РјР°СЃСЃРёРІ С„Р°Р№Р»РѕРІ РґР»СЏ Р°СЂС…РёРІР°
             foreach ($files as $file) {
                 
                 $cfile->name = $file['fname'];
@@ -233,15 +233,15 @@ class ReservesArchiveModel extends CModel
                 $_ext = $info->getExtension();                
                 $name = $info->getBasename(".{$_ext}");
                 
-                //Создаем временную директорию для файлов на локальной файловой системе
+                //РЎРѕР·РґР°РµРј РІСЂРµРјРµРЅРЅСѓСЋ РґРёСЂРµРєС‚РѕСЂРёСЋ РґР»СЏ С„Р°Р№Р»РѕРІ РЅР° Р»РѕРєР°Р»СЊРЅРѕР№ С„Р°Р№Р»РѕРІРѕР№ СЃРёСЃС‚РµРјРµ
                 $_local_tmp_path = "{$_archive_path}{$file['src_id']}/";
                 if (!file_exists($_local_tmp_path)) {
                     if (!mkdir($_local_tmp_path, 0777, true)) {
-                        throw new Exception("Нет прав на создание: {$_local_tmp_path}");
+                        throw new Exception("РќРµС‚ РїСЂР°РІ РЅР° СЃРѕР·РґР°РЅРёРµ: {$_local_tmp_path}");
                     }
                 }                 
                 
-                //Сколько копий документа сделать в зависимости от его типа
+                //РЎРєРѕР»СЊРєРѕ РєРѕРїРёР№ РґРѕРєСѓРјРµРЅС‚Р° СЃРґРµР»Р°С‚СЊ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РµРіРѕ С‚РёРїР°
                 $doc_cnt = isset($this->doc_type_cnt[$file['doc_type']]) && 
                            ($this->doc_type_cnt[$file['doc_type']] > 1)?
                            $this->doc_type_cnt[$file['doc_type']]:1;
@@ -254,22 +254,22 @@ class ReservesArchiveModel extends CModel
                     
                     $_dav_tmp_filename = "{$_dav_temp_path}{$name}{$_suffix}.{$_ext}";
                     if (!$cfile->copyFileTo($_dav_tmp_filename)) {
-                        throw new Exception("Не удалось скопировать: {$_dav_tmp_filename}");
+                        throw new Exception("РќРµ СѓРґР°Р»РѕСЃСЊ СЃРєРѕРїРёСЂРѕРІР°С‚СЊ: {$_dav_tmp_filename}");
                     }
 
                     $_tmp_name = empty($file['original_name'])?$name:$file['original_name'];
 
                     $_local_tmp_filename = "{$_local_tmp_path}{$_prefix}{$_tmp_name}{$_suffix}.{$_ext}";
-                    //Кодировка имен файлов для Windows
+                    //РљРѕРґРёСЂРѕРІРєР° РёРјРµРЅ С„Р°Р№Р»РѕРІ РґР»СЏ Windows
                     $_local_tmp_filename = iconv('WINDOWS-1251', 'CP866', $_local_tmp_filename);
                     //$_local_tmp_filename = iconv('WINDOWS-1251', 'UTF-8', $_local_tmp_filename);
                     
                     $filelist[$_dav_tmp_filename] = $_local_tmp_filename;
                     
-                    //Перемещаем нужные документы из хранища во временную папку
+                    //РџРµСЂРµРјРµС‰Р°РµРј РЅСѓР¶РЅС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹ РёР· С…СЂР°РЅРёС‰Р° РІРѕ РІСЂРµРјРµРЅРЅСѓСЋ РїР°РїРєСѓ
                     if (!$cfile->copyToLocalPathFromDav($_dav_tmp_filename, $_local_tmp_filename)) {
-                        throw new Exception("Не удалось переместить файл из хранища {$_dav_tmp_filename} 
-                                             в локальную файловую систему {$_local_tmp_filename}");
+                        throw new Exception("РќРµ СѓРґР°Р»РѕСЃСЊ РїРµСЂРµРјРµСЃС‚РёС‚СЊ С„Р°Р№Р» РёР· С…СЂР°РЅРёС‰Р° {$_dav_tmp_filename} 
+                                             РІ Р»РѕРєР°Р»СЊРЅСѓСЋ С„Р°Р№Р»РѕРІСѓСЋ СЃРёСЃС‚РµРјСѓ {$_local_tmp_filename}");
                     }
                     
                     $doc_cnt--;
@@ -278,24 +278,24 @@ class ReservesArchiveModel extends CModel
             
             
             if (empty($filelist)) {
-                throw new Exception("Не удалось сформировать массив документов");
+                throw new Exception("РќРµ СѓРґР°Р»РѕСЃСЊ СЃС„РѕСЂРјРёСЂРѕРІР°С‚СЊ РјР°СЃСЃРёРІ РґРѕРєСѓРјРµРЅС‚РѕРІ");
             }
             
             
             /*
-             * @todo: пока используем CFile::copyToLocalPathFromDav
+             * @todo: РїРѕРєР° РёСЃРїРѕР»СЊР·СѓРµРј CFile::copyToLocalPathFromDav
              *             
-            //Перемещаем нужные документы из хранища во временную папку
+            //РџРµСЂРµРјРµС‰Р°РµРј РЅСѓР¶РЅС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹ РёР· С…СЂР°РЅРёС‰Р° РІРѕ РІСЂРµРјРµРЅРЅСѓСЋ РїР°РїРєСѓ
             $cfile = new CFile();
             $res = $cfile->copyFilesToLocalPath($filelist);
 
             if (!$res) {
-                throw new Exception("Не удалось переместить файлы из хранища");
+                throw new Exception("РќРµ СѓРґР°Р»РѕСЃСЊ РїРµСЂРµРјРµСЃС‚РёС‚СЊ С„Р°Р№Р»С‹ РёР· С…СЂР°РЅРёС‰Р°");
             }
             */
             
 
-            //Создаем архив документов
+            //РЎРѕР·РґР°РµРј Р°СЂС…РёРІ РґРѕРєСѓРјРµРЅС‚РѕРІ
             $_zip_filename = self::TMP_PATH . "{$_archive_dir}.zip";
             $zip = new ZipArchive();
             if ($zip->open($_zip_filename, ZipArchive::CREATE)) {
@@ -307,10 +307,10 @@ class ReservesArchiveModel extends CModel
             }
 
             if (!file_exists($_zip_filename)) {
-                throw new Exception("Не удалось создать архив.");
+                throw new Exception("РќРµ СѓРґР°Р»РѕСЃСЊ СЃРѕР·РґР°С‚СЊ Р°СЂС…РёРІ.");
             }
 
-            //Загружаем архив документов
+            //Р—Р°РіСЂСѓР¶Р°РµРј Р°СЂС…РёРІ РґРѕРєСѓРјРµРЅС‚РѕРІ
             $cfile = new CFile(array(
                 'tmp_name' => $_zip_filename,
                 'size' => filesize($_zip_filename),
@@ -325,7 +325,7 @@ class ReservesArchiveModel extends CModel
             
             if (!$cfile->id) {
                 $_error = (is_array($cfile->error))?implode(', ', $cfile->error):$cfile->error;
-                throw new Exception("Не удалось загрузить архив в хранилище: {$_error}");
+                throw new Exception("РќРµ СѓРґР°Р»РѕСЃСЊ Р·Р°РіСЂСѓР·РёС‚СЊ Р°СЂС…РёРІ РІ С…СЂР°РЅРёР»РёС‰Рµ: {$_error}");
             }
             
 
@@ -337,7 +337,7 @@ class ReservesArchiveModel extends CModel
             
             //@todo: send mail here!
 
-            //Удаляем 
+            //РЈРґР°Р»СЏРµРј 
             $cfile->deleteFromTempDir($_dav_temp_path);
             delete_files($_archive_path, true, 1);
             unlink($_zip_filename);
@@ -361,7 +361,7 @@ class ReservesArchiveModel extends CModel
     }
     
     /**
-     * Создать письма в разделе /siteadmin/letters/ для БС архива
+     * РЎРѕР·РґР°С‚СЊ РїРёСЃСЊРјР° РІ СЂР°Р·РґРµР»Рµ /siteadmin/letters/ РґР»СЏ Р‘РЎ Р°СЂС…РёРІР°
      * 
      * @param type $ids
      * @param CFile $cfile
@@ -400,7 +400,7 @@ class ReservesArchiveModel extends CModel
             }
             
             if (!$city_id) {
-                $city_name = trim(str_replace('г.', '', $user_reqv['city']));
+                $city_name = trim(str_replace('Рі.', '', $user_reqv['city']));
                 $city_data = $cityObject->getByName($city_name);
                 if ($city_data) {
                     $country_id = $city_data['country_id'];
@@ -440,10 +440,10 @@ class ReservesArchiveModel extends CModel
 
             $frm = array(
                 'letters_doc_frm_title' => sprintf(ReservesTServiceOrderModel::NUM_FORMAT, $user_reqv['src_id']),
-                'letters_doc_frm_user_1_db_id' => 4,//ООО ВААН
+                'letters_doc_frm_user_1_db_id' => 4,//РћРћРћ Р’РђРђРќ
                 'letters_doc_frm_user_2_db_id' => $letter_company_id,
-                'letters_doc_frm_delivery_db_id' => 1,//Простое письмо
-                'letters_doc_frm_user2_status_data' => 11,//Статус Печать
+                'letters_doc_frm_delivery_db_id' => 1,//РџСЂРѕСЃС‚РѕРµ РїРёСЃСЊРјРѕ
+                'letters_doc_frm_user2_status_data' => 11,//РЎС‚Р°С‚СѓСЃ РџРµС‡Р°С‚СЊ
                 'letters_doc_frm_user_1_section' => true,
                 'letters_doc_frm_user_2_section' => true,
                 'letters_doc_frm_group' => sprintf(self::LETTER_GROUP_TXT, $cfile->getOriginalName()),
@@ -470,8 +470,8 @@ class ReservesArchiveModel extends CModel
     
     
     /**
-     * Получить список ID писем уже 
-     * привязанных к указанным заказам БС
+     * РџРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє ID РїРёСЃРµРј СѓР¶Рµ 
+     * РїСЂРёРІСЏР·Р°РЅРЅС‹С… Рє СѓРєР°Р·Р°РЅРЅС‹Рј Р·Р°РєР°Р·Р°Рј Р‘РЎ
      * 
      * @param type $bs_ids
      * @return type
@@ -494,7 +494,7 @@ class ReservesArchiveModel extends CModel
     }
     
     /**
-     * Добавить привязку заказа БС и созданного письма
+     * Р”РѕР±Р°РІРёС‚СЊ РїСЂРёРІСЏР·РєСѓ Р·Р°РєР°Р·Р° Р‘РЎ Рё СЃРѕР·РґР°РЅРЅРѕРіРѕ РїРёСЃСЊРјР°
      * 
      * @param type $data
      * @return type

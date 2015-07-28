@@ -4,61 +4,61 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/classes/wizard/step_wizard_registration
 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/wizard/wizard_billing.php';
 
 /**
- * Класс для работы с этапами мастера по регистрации фрилансеров 
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЌС‚Р°РїР°РјРё РјР°СЃС‚РµСЂР° РїРѕ СЂРµРіРёСЃС‚СЂР°С†РёРё С„СЂРёР»Р°РЅСЃРµСЂРѕРІ 
  * 
  */
 class step_freelancer extends step_wizard_registration
 {
     /**
-     * Позиция шага регистрации у фрилансеров
+     * РџРѕР·РёС†РёСЏ С€Р°РіР° СЂРµРіРёСЃС‚СЂР°С†РёРё Сѓ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
      *  
      */
     const STEP_REGISTRATION_CONFIRM = 3;
     
     /**
-     * Код операции платного ответа 
+     * РљРѕРґ РѕРїРµСЂР°С†РёРё РїР»Р°С‚РЅРѕРіРѕ РѕС‚РІРµС‚Р° 
      */
     const OFFERS_OP_CODE = 61;
     
     /**
-     * Количество проектов на начальной странице
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕРµРєС‚РѕРІ РЅР° РЅР°С‡Р°Р»СЊРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ
      */
     const DEF_PROJECTS_PER_PAGE = 3;
     
     /**
-     * Количетство догружаемых проектов 
+     * РљРѕР»РёС‡РµС‚СЃС‚РІРѕ РґРѕРіСЂСѓР¶Р°РµРјС‹С… РїСЂРѕРµРєС‚РѕРІ 
      */
     const LOAD_PROJECTS_PER_PAGE = 10;
     
     /**
-     * Максимальные значения стоимости часа работы
+     * РњР°РєСЃРёРјР°Р»СЊРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ СЃС‚РѕРёРјРѕСЃС‚Рё С‡Р°СЃР° СЂР°Р±РѕС‚С‹
      * @var array
      */
     public $MAX_COST_HOUR = array(
         0 => 300,  // USD
         1 => 250,  // Euro
-        2 => 7500, // Руб
+        2 => 7500, // Р СѓР±
         3 => 400   // FM
     );
     
     /**
-     * Максимальная стоимость месяца работы
+     * РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ РјРµСЃСЏС†Р° СЂР°Р±РѕС‚С‹
      * @var array
      */
     public $MAX_COST_MONTH = array(
         0 => 10000,  // USD
         1 => 8000,   // Euro
-        2 => 250000, // Руб
+        2 => 250000, // Р СѓР±
         3 => 13000   // FM
     );
     
     /**
-     * Максимальное значение опыта работы 
+     * РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РѕРїС‹С‚Р° СЂР°Р±РѕС‚С‹ 
      */
     const MAX_YEAR_VALUE = 100;
     
     /**
-     * Статическая функция для возврата ид операций по покупке ПРО
+     * РЎС‚Р°С‚РёС‡РµСЃРєР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РІРѕР·РІСЂР°С‚Р° РёРґ РѕРїРµСЂР°С†РёР№ РїРѕ РїРѕРєСѓРїРєРµ РџР Рћ
      * 
      * @return array
      */
@@ -67,19 +67,19 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Вывод и обработка информации
+     * Р’С‹РІРѕРґ Рё РѕР±СЂР°Р±РѕС‚РєР° РёРЅС„РѕСЂРјР°С†РёРё
      */
     public function render() {
         switch($this->pos) {
-            // Этап - "Поиск проекта и ответ на него"
+            // Р­С‚Р°Рї - "РџРѕРёСЃРє РїСЂРѕРµРєС‚Р° Рё РѕС‚РІРµС‚ РЅР° РЅРµРіРѕ"
             case 1:
                 $this->actionProjects();
                 break;
-            // Этап - "Заполнение портфолио"
+            // Р­С‚Р°Рї - "Р—Р°РїРѕР»РЅРµРЅРёРµ РїРѕСЂС‚С„РѕР»РёРѕ"
             case 2:
                 $this->actionPortfolio();
                 break;
-            // Этап - "Регистрация"
+            // Р­С‚Р°Рї - "Р РµРіРёСЃС‚СЂР°С†РёСЏ"
             case 3:
                 if($this->isCompleted()) {
                     $this->parent->setNextStep($this->parent->getPosition() + 1);
@@ -91,15 +91,15 @@ class step_freelancer extends step_wizard_registration
                 }*/
                 $this->registration(step_wizard_registration::TYPE_WIZARD_FRL);
                 break;
-            // Этап - "Дополнительные возможности"
+            // Р­С‚Р°Рї - "Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё"
             case 4:
                 $this->completeData(step_wizard_registration::TYPE_WIZARD_FRL);
                 break;  
-            // Этап - "Оплата услуг" и завершение мастера
+            // Р­С‚Р°Рї - "РћРїР»Р°С‚Р° СѓСЃР»СѓРі" Рё Р·Р°РІРµСЂС€РµРЅРёРµ РјР°СЃС‚РµСЂР°
             case 5:
                 $this->actionCompletedWizard();
                 break; 
-            // По умолчанию этап - "Поиск проекта и ответ на него"
+            // РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЌС‚Р°Рї - "РџРѕРёСЃРє РїСЂРѕРµРєС‚Р° Рё РѕС‚РІРµС‚ РЅР° РЅРµРіРѕ"
             default:
                 $this->actionProjects();
                 break;
@@ -107,7 +107,7 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Обрабатываем данные для ввывода информации по шагу 
+     * РћР±СЂР°Р±Р°С‚С‹РІР°РµРј РґР°РЅРЅС‹Рµ РґР»СЏ РІРІС‹РІРѕРґР° РёРЅС„РѕСЂРјР°С†РёРё РїРѕ С€Р°РіСѓ 
      */
     public function actionProjects() {
         require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/projects.php";
@@ -124,7 +124,7 @@ class step_freelancer extends step_wizard_registration
             require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/users.php";
             require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/opinions.php");
             
-            // Загружаем данные по отзывам автора проекта
+            // Р—Р°РіСЂСѓР¶Р°РµРј РґР°РЅРЅС‹Рµ РїРѕ РѕС‚Р·С‹РІР°Рј Р°РІС‚РѕСЂР° РїСЂРѕРµРєС‚Р°
             $op_data                = opinions::getCounts($project['user_id'], array('frl', 'norisk', 'all', 'total'));
             //$op_data['norisk']['a'] = ( (int)$op_data['norisk']['p'] + (int)$op_data['norisk']['n'] + (int)$op_data['norisk']['m'] );
             //$op_data['all']['a']    = ( (int)$op_data['all']['p']    + (int)$op_data['all']['n']    + (int)$op_data['all']['m'] );
@@ -136,9 +136,9 @@ class step_freelancer extends step_wizard_registration
             $is_offer        = $this->isOfferProject($project['id']);
             $count_offer     = $this->countOffers();
             $count_pay_offer = $this->countPayOffers();
-            // Максимальное количество ответов для пользователя
+            // РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РІРµС‚РѕРІ РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
             $max_offers = 3 + $count_pay_offer; 
-            // Обработка запросов на странице
+            // РћР±СЂР°Р±РѕС‚РєР° Р·Р°РїСЂРѕСЃРѕРІ РЅР° СЃС‚СЂР°РЅРёС†Рµ
             $action     = __paramInit('string', null, 'action');
             if($action && ($count_offer < $max_offers || $project['kind'] == 7 || $action == 'paid_offer')) {
                 $error  = $this->actionProcessingProjects($action, $project);
@@ -170,9 +170,9 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Обработка запросов на странице
+     * РћР±СЂР°Р±РѕС‚РєР° Р·Р°РїСЂРѕСЃРѕРІ РЅР° СЃС‚СЂР°РЅРёС†Рµ
      * 
-     * @param array $project данные проекта по которому идет ответ
+     * @param array $project РґР°РЅРЅС‹Рµ РїСЂРѕРµРєС‚Р° РїРѕ РєРѕС‚РѕСЂРѕРјСѓ РёРґРµС‚ РѕС‚РІРµС‚
      * @return array 
      */
     public function actionProcessingProjects($action, $project) {
@@ -200,31 +200,31 @@ class step_freelancer extends step_wizard_registration
                 $insert['pict3'] = $prev[3];
 
                 if($insert['descr'] == '' && !$previd) {
-                    $error['answer'] = 'Введите описание предложения';
+                    $error['answer'] = 'Р’РІРµРґРёС‚Рµ РѕРїРёСЃР°РЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ';
                 }
                 
                 if(strlen(stripslashes($_POST['answer'])) > 1000) {
-                    $error['answer'] = 'Исчерпан лимит символов для поля (1000 символов)';
+                    $error['answer'] = 'РСЃС‡РµСЂРїР°РЅ Р»РёРјРёС‚ СЃРёРјРІРѕР»РѕРІ РґР»СЏ РїРѕР»СЏ (1000 СЃРёРјРІРѕР»РѕРІ)';
                 }
 
-                // проверка бюджета
+                // РїСЂРѕРІРµСЂРєР° Р±СЋРґР¶РµС‚Р°
                 if(strlen($insert['cost_to']) > 6) {
                     $insert['cost_to'] = 999999;
-                    $error['cost_to'] = 'Слишком большая сумма';
+                    $error['cost_to'] = 'РЎР»РёС€РєРѕРј Р±РѕР»СЊС€Р°СЏ СЃСѓРјРјР°';
                 }
                 if(strlen($insert['cost_from']) > 6) {
                     $insert['cost_from'] = 999998;
-                    $error['cost_from'] = 'Слишком большая сумма';
+                    $error['cost_from'] = 'РЎР»РёС€РєРѕРј Р±РѕР»СЊС€Р°СЏ СЃСѓРјРјР°';
                 }
                 
-                // проверка срока
+                // РїСЂРѕРІРµСЂРєР° СЃСЂРѕРєР°
                 if(strlen($insert['time_to']) > 3) {
                     $insert['time_to'] = 999;
-                    $error['time_to'] = 'Слишком большой срок';
+                    $error['time_to'] = 'РЎР»РёС€РєРѕРј Р±РѕР»СЊС€РѕР№ СЃСЂРѕРє';
                 }
                 if(strlen($insert['time_from']) > 3) {
                     $insert['time_from'] = 998;
-                    $error['time_from'] = 'Слишком большой срок';
+                    $error['time_from'] = 'РЎР»РёС€РєРѕРј Р±РѕР»СЊС€РѕР№ СЃСЂРѕРє';
                 }
                 
                 
@@ -232,7 +232,7 @@ class step_freelancer extends step_wizard_registration
                     $id_offer = $this->createOffer($insert);
 
                     if($id_offer) {
-                        // Обновляем ид родителя файлов
+                        // РћР±РЅРѕРІР»СЏРµРј РёРґ СЂРѕРґРёС‚РµР»СЏ С„Р°Р№Р»РѕРІ
                         $this->_db->update("file_wizard", array("src_id" => $id_offer, "type" => 2), "id IN (?l)", $previd);
                         header("Location: /wizard/registration/?action=next&complited=1");
                         exit;
@@ -246,7 +246,7 @@ class step_freelancer extends step_wizard_registration
                     "op_code" => step_freelancer::OFFERS_OP_CODE,
                     "wiz_uid" => $this->getWizardUserID()
                 );
-                // Количество платных ответов
+                // РљРѕР»РёС‡РµСЃС‚РІРѕ РїР»Р°С‚РЅС‹С… РѕС‚РІРµС‚РѕРІ
                 switch($answer) {
                     case 1:
                         $payed['ammount'] = 1;
@@ -261,33 +261,33 @@ class step_freelancer extends step_wizard_registration
                         $payed['option']  = 10;
                         break;
                     default:
-                        $error = "Ошибка операции";
+                        $error = "РћС€РёР±РєР° РѕРїРµСЂР°С†РёРё";
                         break;
                 }
 
                 if(!$error) {
                     $bill_id = wizard_billing::addPaidOption($payed);
-                    // Если операция удачна возвращаем на тот же проект для ответа на него
+                    // Р•СЃР»Рё РѕРїРµСЂР°С†РёСЏ СѓРґР°С‡РЅР° РІРѕР·РІСЂР°С‰Р°РµРј РЅР° С‚РѕС‚ Р¶Рµ РїСЂРѕРµРєС‚ РґР»СЏ РѕС‚РІРµС‚Р° РЅР° РЅРµРіРѕ
                     if($bill_id > 0) {
                         header("Location: /wizard/registration/?project={$project['id']}");
                         exit;
                     } else {
-                        $error = "Ошибка записи операции";
+                        $error = "РћС€РёР±РєР° Р·Р°РїРёСЃРё РѕРїРµСЂР°С†РёРё";
                     }
                 }
                 return $error;
                 break;
             default:
-                return "Неопознанная операция";
+                return "РќРµРѕРїРѕР·РЅР°РЅРЅР°СЏ РѕРїРµСЂР°С†РёСЏ";
                 break;
         }
     }
     
     /**
-     * Проверяем ответил ли уже польщователь на проект или нет через мастер
+     * РџСЂРѕРІРµСЂСЏРµРј РѕС‚РІРµС‚РёР» Р»Рё СѓР¶Рµ РїРѕР»СЊС‰РѕРІР°С‚РµР»СЊ РЅР° РїСЂРѕРµРєС‚ РёР»Рё РЅРµС‚ С‡РµСЂРµР· РјР°СЃС‚РµСЂ
      * 
-     * @param type $prj_id  ИД Проекта
-     * @return integer Возвращает ИД ответа 
+     * @param type $prj_id  РР” РџСЂРѕРµРєС‚Р°
+     * @return integer Р’РѕР·РІСЂР°С‰Р°РµС‚ РР” РѕС‚РІРµС‚Р° 
      */
     public function isOfferProject($prj_id) {
         if(!$prj_id) return false;
@@ -295,7 +295,7 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Общее количество ответов на проект через мастер
+     * РћР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚ С‡РµСЂРµР· РјР°СЃС‚РµСЂ
      * 
      * @return integer 
      */
@@ -307,7 +307,7 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Количество купленных платных ответов через мастер
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ РєСѓРїР»РµРЅРЅС‹С… РїР»Р°С‚РЅС‹С… РѕС‚РІРµС‚РѕРІ С‡РµСЂРµР· РјР°СЃС‚РµСЂ
      * 
      * @return integer 
      */
@@ -316,9 +316,9 @@ class step_freelancer extends step_wizard_registration
     }
      
     /**
-     * Создание ответа на проект
+     * РЎРѕР·РґР°РЅРёРµ РѕС‚РІРµС‚Р° РЅР° РїСЂРѕРµРєС‚
      * 
-     * @param array $insert Данные по ответу на проект 
+     * @param array $insert Р”Р°РЅРЅС‹Рµ РїРѕ РѕС‚РІРµС‚Сѓ РЅР° РїСЂРѕРµРєС‚ 
      * @return type 
      */
     public function createOffer($insert) {
@@ -327,13 +327,13 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Берем ответы на проект созданные через мастер 
-     * (только проекты не для ПРО, не закрытые и незаблокированные и пользователь проекта не забанен)
+     * Р‘РµСЂРµРј РѕС‚РІРµС‚С‹ РЅР° РїСЂРѕРµРєС‚ СЃРѕР·РґР°РЅРЅС‹Рµ С‡РµСЂРµР· РјР°СЃС‚РµСЂ 
+     * (С‚РѕР»СЊРєРѕ РїСЂРѕРµРєС‚С‹ РЅРµ РґР»СЏ РџР Рћ, РЅРµ Р·Р°РєСЂС‹С‚С‹Рµ Рё РЅРµР·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РїСЂРѕРµРєС‚Р° РЅРµ Р·Р°Р±Р°РЅРµРЅ)
      * 
-     * @param integer|string $uid         Ид пользователя (если int - то это ИД зарегистрированного пользователя, если string - Ид пользователя мастера)
-     * @param string  $limit              Лимит выборки обычных ответов
-     * @param boolean $not_pro            Берем проекты где могут отвечать только ПРО или нет (если true - не берем)
-     * @return array - Данные ответов
+     * @param integer|string $uid         РРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (РµСЃР»Рё int - С‚Рѕ СЌС‚Рѕ РР” Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РµСЃР»Рё string - РРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РјР°СЃС‚РµСЂР°)
+     * @param string  $limit              Р›РёРјРёС‚ РІС‹Р±РѕСЂРєРё РѕР±С‹С‡РЅС‹С… РѕС‚РІРµС‚РѕРІ
+     * @param boolean $not_pro            Р‘РµСЂРµРј РїСЂРѕРµРєС‚С‹ РіРґРµ РјРѕРіСѓС‚ РѕС‚РІРµС‡Р°С‚СЊ С‚РѕР»СЊРєРѕ РџР Рћ РёР»Рё РЅРµС‚ (РµСЃР»Рё true - РЅРµ Р±РµСЂРµРј)
+     * @return array - Р”Р°РЅРЅС‹Рµ РѕС‚РІРµС‚РѕРІ
      */
     public function getWizardOffers($uid = false, $limit = 3, $not_pro = true) {
         if(!$uid) $uid = $this->getWizardUserID();
@@ -371,8 +371,8 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Чистим ответы к заблокированным проектам и к закрытым тк на них уже не ответить 
-     * + конкурсы закончились
+     * Р§РёСЃС‚РёРј РѕС‚РІРµС‚С‹ Рє Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рј РїСЂРѕРµРєС‚Р°Рј Рё Рє Р·Р°РєСЂС‹С‚С‹Рј С‚Рє РЅР° РЅРёС… СѓР¶Рµ РЅРµ РѕС‚РІРµС‚РёС‚СЊ 
+     * + РєРѕРЅРєСѓСЂСЃС‹ Р·Р°РєРѕРЅС‡РёР»РёСЃСЊ
      * 
      */
     public function clearOffers() {
@@ -390,9 +390,9 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Обновляем ответ фрилансера
+     * РћР±РЅРѕРІР»СЏРµРј РѕС‚РІРµС‚ С„СЂРёР»Р°РЅСЃРµСЂР°
      * 
-     * @param array $update  Данные для обновления
+     * @param array $update  Р”Р°РЅРЅС‹Рµ РґР»СЏ РѕР±РЅРѕРІР»РµРЅРёСЏ
      * @return boolean 
      */
     public function updateOffers($update) {
@@ -400,7 +400,7 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Обработка информации по шагу портфолио 
+     * РћР±СЂР°Р±РѕС‚РєР° РёРЅС„РѕСЂРјР°С†РёРё РїРѕ С€Р°РіСѓ РїРѕСЂС‚С„РѕР»РёРѕ 
      */
     public function actionPortfolio() {
         require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/professions.php";
@@ -431,11 +431,11 @@ class step_freelancer extends step_wizard_registration
                 }*/
             }
         } else {
-            // запись в базе для текущего портфолио
+            // Р·Р°РїРёСЃСЊ РІ Р±Р°Р·Рµ РґР»СЏ С‚РµРєСѓС‰РµРіРѕ РїРѕСЂС‚С„РѕР»РёРѕ
             $field = $this->parent->getFieldsUser();
-            // все данные портфолио
+            // РІСЃРµ РґР°РЅРЅС‹Рµ РїРѕСЂС‚С„РѕР»РёРѕ
             $data  = unserialize($field['portfolio']);
-            // сохраненные работы для текущего портфолио
+            // СЃРѕС…СЂР°РЅРµРЅРЅС‹Рµ СЂР°Р±РѕС‚С‹ РґР»СЏ С‚РµРєСѓС‰РµРіРѕ РїРѕСЂС‚С„РѕР»РёРѕ
             $portf_insert = $this->getWorks();
 
         }
@@ -445,7 +445,7 @@ class step_freelancer extends step_wizard_registration
 
         $curr_hour_name  = $this->CURRENCY_TYPE[$data['cost_type_hour']];
         $curr_month_name = $this->CURRENCY_TYPE[$data['cost_type_month']];
-        // подготовка специализации для вывода в шаблон
+        // РїРѕРґРіРѕС‚РѕРІРєР° СЃРїРµС†РёР°Р»РёР·Р°С†РёРё РґР»СЏ РІС‹РІРѕРґР° РІ С€Р°Р±Р»РѕРЅ
         $spec = $data['spec'];
         $specString = professions::GetProfNameWP($spec, '/', null, false);
         list($category_name, $subcategory_name) = explode('/', $specString);
@@ -457,7 +457,7 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Возвращает количество ответов пользователя на проекты
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РІРµС‚РѕРІ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° РїСЂРѕРµРєС‚С‹
      * @return int 
      * */
     private function _getCountAnswers() {
@@ -466,7 +466,7 @@ class step_freelancer extends step_wizard_registration
         return $this->_db->val($query);
     }
     /**
-     * Обработка данных в шаге порфтоило
+     * РћР±СЂР°Р±РѕС‚РєР° РґР°РЅРЅС‹С… РІ С€Р°РіРµ РїРѕСЂС„С‚РѕРёР»Рѕ
      * 
      * @return string 
      */
@@ -477,7 +477,7 @@ class step_freelancer extends step_wizard_registration
         $spec        = __paramInit('int', null, 'spec_db_id');
         $spec_name   = __paramInit('string', null, 'spec');
         if($type == 0) {
-            $error['spec'] = 'Вы должны выбрать свою специализацию';
+            $error['spec'] = 'Р’С‹ РґРѕР»Р¶РЅС‹ РІС‹Р±СЂР°С‚СЊ СЃРІРѕСЋ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ';
         } else {
             $data['spec_orig'] = professions::GetProfessionOrigin($spec);
         }
@@ -494,7 +494,7 @@ class step_freelancer extends step_wizard_registration
         $data['resume']    = __paramInit('int', null, 'resume_id');
         $data['info']      = stripslashes(__paramInit('string', null, 'info', ''));
         if(strlen($data['info']) > 4000) {
-            $error['info'] = 'Исчерпан лимит символов для этого поля (4000 символов)';
+            $error['info'] = 'РСЃС‡РµСЂРїР°РЅ Р»РёРјРёС‚ СЃРёРјРІРѕР»РѕРІ РґР»СЏ СЌС‚РѕРіРѕ РїРѕР»СЏ (4000 СЃРёРјРІРѕР»РѕРІ)';
         }
         $data['in_office'] = $_POST['in_office'] == 1 ? 1 : 0;
 
@@ -503,14 +503,14 @@ class step_freelancer extends step_wizard_registration
         }
 
         if (($data['exp'] < 0) || ($data['exp'] > step_freelancer::MAX_YEAR_VALUE)) {
-            $error['exp'] = 'Недопустимое значение. Опыт работы должен быть в пределе от 0 до ' . ( step_freelancer::MAX_YEAR_VALUE ) . '.';
+            $error['exp'] = 'РќРµРґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ. РћРїС‹С‚ СЂР°Р±РѕС‚С‹ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РІ РїСЂРµРґРµР»Рµ РѕС‚ 0 РґРѕ ' . ( step_freelancer::MAX_YEAR_VALUE ) . '.';
         }
 
         if (($data['cost_hour'] < 0) || ($data['cost_hour'] > $this->MAX_COST_HOUR[$data['cost_type_hour']])) {
-            $error['cost_hour']  = 'Недопустимое значение. Стоимость часа работы должна быть в пределе ' . view_range_cost2(0, $this->MAX_COST_HOUR[$data['cost_type_hour']], '', '', false, $data['cost_type_hour'] . '.');
+            $error['cost_hour']  = 'РќРµРґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ. РЎС‚РѕРёРјРѕСЃС‚СЊ С‡Р°СЃР° СЂР°Р±РѕС‚С‹ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РІ РїСЂРµРґРµР»Рµ ' . view_range_cost2(0, $this->MAX_COST_HOUR[$data['cost_type_hour']], '', '', false, $data['cost_type_hour'] . '.');
         }
         if (($data['cost_month'] < 0) || ($data['cost_month'] > $this->MAX_COST_MONTH[$data['cost_type_month']])) {
-            $error['cost_month'] = 'Недопустимое значение. Стоимость месяца работы должна быть в пределе ' . view_range_cost2(0, $this->MAX_COST_MONTH[$data['cost_type_month']], '', '', false, $data['cost_type_month']) . '.';
+            $error['cost_month'] = 'РќРµРґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ. РЎС‚РѕРёРјРѕСЃС‚СЊ РјРµСЃСЏС†Р° СЂР°Р±РѕС‚С‹ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РІ РїСЂРµРґРµР»Рµ ' . view_range_cost2(0, $this->MAX_COST_MONTH[$data['cost_type_month']], '', '', false, $data['cost_type_month']) . '.';
         }
 
         if(count($error) <=0) {
@@ -518,12 +518,12 @@ class step_freelancer extends step_wizard_registration
             $this->parent->saveFieldsInfo($insert);
         }
 
-        // Обрабатываем порфтолио
+        // РћР±СЂР°Р±Р°С‚С‹РІР°РµРј РїРѕСЂС„С‚РѕР»РёРѕ
         if(is_array($_POST['name'])) {
             foreach($_POST['name'] as $k=>$value) {
                 $value = __paramValue('string', stripslashes($value));
                 $descr = __paramValue('string', stripslashes($_POST['descr'][$k]));
-                $id  = __paramValue('int', $_POST['id'][$k]); // id работы, если он есть
+                $id  = __paramValue('int', $_POST['id'][$k]); // id СЂР°Р±РѕС‚С‹, РµСЃР»Рё РѕРЅ РµСЃС‚СЊ
                 $link  = __paramValue('string', stripslashes($_POST['link'][$k]));
                 $link  = preg_replace("/^http:\/\//", "", trim($link));
                 
@@ -531,13 +531,13 @@ class step_freelancer extends step_wizard_registration
                     continue;
                 }
                 if(is_empty_html($value)) {
-                    $error['portf'.$k]['name'] = "Введите название работы";
+                    $error['portf'.$k]['name'] = "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ СЂР°Р±РѕС‚С‹";
                 }
                 if(strlen($descr) > 1500) {
-                    $error['descr'.$k]['name'] = "Исчерпан лимит символов для этого поля (1500 символов)";
+                    $error['descr'.$k]['name'] = "РСЃС‡РµСЂРїР°РЅ Р»РёРјРёС‚ СЃРёРјРІРѕР»РѕРІ РґР»СЏ СЌС‚РѕРіРѕ РїРѕР»СЏ (1500 СЃРёРјРІРѕР»РѕРІ)";
                 }
                 if ($link != '' && !url_validate($link)) {
-                    $error['portf'.$k]['link'] = "Поле заполнено некорректно";
+                    $error['portf'.$k]['link'] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
                 }
 
                 $portf_insert[] = array(
@@ -571,15 +571,15 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Добавляем все порфтолио в таблицу
+     * Р”РѕР±Р°РІР»СЏРµРј РІСЃРµ РїРѕСЂС„С‚РѕР»РёРѕ РІ С‚Р°Р±Р»РёС†Сѓ
      * 
-     * @param array $portfs  Портфолио
-     * @return array - Ид добавленных портфолио 
+     * @param array $portfs  РџРѕСЂС‚С„РѕР»РёРѕ
+     * @return array - РРґ РґРѕР±Р°РІР»РµРЅРЅС‹С… РїРѕСЂС‚С„РѕР»РёРѕ 
      */
     public function createWorks($works) {
         if(is_array($works)) {
             foreach($works as $k=>$work) {
-                // если есть id, значит работа уже сохранена - значить обновляем
+                // РµСЃР»Рё РµСЃС‚СЊ id, Р·РЅР°С‡РёС‚ СЂР°Р±РѕС‚Р° СѓР¶Рµ СЃРѕС…СЂР°РЅРµРЅР° - Р·РЅР°С‡РёС‚СЊ РѕР±РЅРѕРІР»СЏРµРј
                 $id = $work['id'];
                 unset($work['id']);
                 if (!$id) {
@@ -594,9 +594,9 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Создание работы в портфолио 
+     * РЎРѕР·РґР°РЅРёРµ СЂР°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ 
      * 
-     * @param array $portfolio данные по работе  
+     * @param array $portfolio РґР°РЅРЅС‹Рµ РїРѕ СЂР°Р±РѕС‚Рµ  
      * @return boolean|integer 
      */
     public function createWork($work) {
@@ -604,10 +604,10 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Обновлене работы в портфолио 
+     * РћР±РЅРѕРІР»РµРЅРµ СЂР°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ 
      * 
-     * @param array $work данные по работе
-     * @param integer $id id работы
+     * @param array $work РґР°РЅРЅС‹Рµ РїРѕ СЂР°Р±РѕС‚Рµ
+     * @param integer $id id СЂР°Р±РѕС‚С‹
      * @return boolean|integer 
      */
     public function updateWork($work, $id) {
@@ -620,9 +620,9 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Считаем количество добавленых работ в портфолио
+     * РЎС‡РёС‚Р°РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ РґРѕР±Р°РІР»РµРЅС‹С… СЂР°Р±РѕС‚ РІ РїРѕСЂС‚С„РѕР»РёРѕ
      * 
-     * @param string $wiz_uid ИД пользователя мастера
+     * @param string $wiz_uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РјР°СЃС‚РµСЂР°
      * @return type 
      */
     public function getCountWorks($wiz_uid = false) {
@@ -631,9 +631,9 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Берем работы пользователя 
+     * Р‘РµСЂРµРј СЂР°Р±РѕС‚С‹ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ 
      * 
-     * @param string $wiz_uid Ид пользователя мастера
+     * @param string $wiz_uid РРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РјР°СЃС‚РµСЂР°
      * @return array
      */
     public function getWorks($wiz_uid = false) {
@@ -642,7 +642,7 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Обрабатываем информацию по шагу Оплата услуг (завершение мастера)
+     * РћР±СЂР°Р±Р°С‚С‹РІР°РµРј РёРЅС„РѕСЂРјР°С†РёСЋ РїРѕ С€Р°РіСѓ РћРїР»Р°С‚Р° СѓСЃР»СѓРі (Р·Р°РІРµСЂС€РµРЅРёРµ РјР°СЃС‚РµСЂР°)
      */
     public function actionCompletedWizard() {
         if($this->isDisable()) {
@@ -670,7 +670,7 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Функция для обработки данных шага Оплата услуг 
+     * Р¤СѓРЅРєС†РёСЏ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё РґР°РЅРЅС‹С… С€Р°РіР° РћРїР»Р°С‚Р° СѓСЃР»СѓРі 
      */
     public function actionProcessingCompletedWizard() {
         $options  = $_POST['options'];
@@ -683,18 +683,18 @@ class step_freelancer extends step_wizard_registration
         }
         $wizard_billing = new wizard_billing();
         $selecting  = $wizard_billing->selectedPaidOption($options, $selected);
-        // Есть выбранные операции переносим
+        // Р•СЃС‚СЊ РІС‹Р±СЂР°РЅРЅС‹Рµ РѕРїРµСЂР°С†РёРё РїРµСЂРµРЅРѕСЃРёРј
         if($selecting) {
             $delete = $wizard_billing->transferPaidOptionsToDraft($selecting);
-            $wizard_billing->deletePaidOptions($delete); // Удаляем все успешно записанные операции, операции которые не записались остаются в базе
+            $wizard_billing->deletePaidOptions($delete); // РЈРґР°Р»СЏРµРј РІСЃРµ СѓСЃРїРµС€РЅРѕ Р·Р°РїРёСЃР°РЅРЅС‹Рµ РѕРїРµСЂР°С†РёРё, РѕРїРµСЂР°С†РёРё РєРѕС‚РѕСЂС‹Рµ РЅРµ Р·Р°РїРёСЃР°Р»РёСЃСЊ РѕСЃС‚Р°СЋС‚СЃСЏ РІ Р±Р°Р·Рµ
         }
 
-        // Публикация проектов и обработка всех остальных данных относящихся к пользователю
+        // РџСѓР±Р»РёРєР°С†РёСЏ РїСЂРѕРµРєС‚РѕРІ Рё РѕР±СЂР°Р±РѕС‚РєР° РІСЃРµС… РѕСЃС‚Р°Р»СЊРЅС‹С… РґР°РЅРЅС‹С… РѕС‚РЅРѕСЃСЏС‰РёС…СЃСЏ Рє РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ
         $error = $this->transferWizardContent();
 
         if(!$error) {
             $this->parent->exitWizard(false);
-            // факт того, что пользователь только что зарегестрировался (сбрасывается на страницах wellcome)
+            // С„Р°РєС‚ С‚РѕРіРѕ, С‡С‚Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ С‚РѕР»СЊРєРѕ С‡С‚Рѕ Р·Р°СЂРµРіРµСЃС‚СЂРёСЂРѕРІР°Р»СЃСЏ (СЃР±СЂР°СЃС‹РІР°РµС‚СЃСЏ РЅР° СЃС‚СЂР°РЅРёС†Р°С… wellcome)
             $_SESSION['is_new_user'] = 1;
             header("Location: /registration/wellcome/freelancer.php");
             exit;
@@ -702,8 +702,8 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Перенос всех данных введнных в мастере на боевые таблицы
-     * должен запускаться синхронно с завершением работы мастера
+     * РџРµСЂРµРЅРѕСЃ РІСЃРµС… РґР°РЅРЅС‹С… РІРІРµРґРЅРЅС‹С… РІ РјР°СЃС‚РµСЂРµ РЅР° Р±РѕРµРІС‹Рµ С‚Р°Р±Р»РёС†С‹
+     * РґРѕР»Р¶РµРЅ Р·Р°РїСѓСЃРєР°С‚СЊСЃСЏ СЃРёРЅС…СЂРѕРЅРЅРѕ СЃ Р·Р°РІРµСЂС€РµРЅРёРµРј СЂР°Р±РѕС‚С‹ РјР°СЃС‚РµСЂР°
      * 
      * @return type 
      */
@@ -715,26 +715,26 @@ class step_freelancer extends step_wizard_registration
         $user = new users();
         $user->GetUserByUID(wizard::getUserIDReg());
         $this->user = $user;
-        // Чистим ответы на заблокированные проекты
+        // Р§РёСЃС‚РёРј РѕС‚РІРµС‚С‹ РЅР° Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ РїСЂРѕРµРєС‚С‹
         $this->clearOffers();
-        // некоторые ответы могут остатся в этой таблице поэтому обновляем им Ид пользователя (при завершении мастера все данные по Ид пользователя мастера удаляются)
+        // РЅРµРєРѕС‚РѕСЂС‹Рµ РѕС‚РІРµС‚С‹ РјРѕРіСѓС‚ РѕСЃС‚Р°С‚СЃСЏ РІ СЌС‚РѕР№ С‚Р°Р±Р»РёС†Рµ РїРѕСЌС‚РѕРјСѓ РѕР±РЅРѕРІР»СЏРµРј РёРј РРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (РїСЂРё Р·Р°РІРµСЂС€РµРЅРёРё РјР°СЃС‚РµСЂР° РІСЃРµ РґР°РЅРЅС‹Рµ РїРѕ РРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РјР°СЃС‚РµСЂР° СѓРґР°Р»СЏСЋС‚СЃСЏ)
         $this->updateOffers(array('reg_uid' => wizard::getUserIDReg()));
-        // пользователь может быть уже PRO (если он ранее был авторизован) - учитываем это
+        // РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РјРѕР¶РµС‚ Р±С‹С‚СЊ СѓР¶Рµ PRO (РµСЃР»Рё РѕРЅ СЂР°РЅРµРµ Р±С‹Р» Р°РІС‚РѕСЂРёР·РѕРІР°РЅ) - СѓС‡РёС‚С‹РІР°РµРј СЌС‚Рѕ
         $pro = is_pro();
         $limit = $pro ? "all" : 3;
-        // Берем все конкурсы + 3 обычных проекта для публикации ответов (без конкурсов и проектов для ПРО)
+        // Р‘РµСЂРµРј РІСЃРµ РєРѕРЅРєСѓСЂСЃС‹ + 3 РѕР±С‹С‡РЅС‹С… РїСЂРѕРµРєС‚Р° РґР»СЏ РїСѓР±Р»РёРєР°С†РёРё РѕС‚РІРµС‚РѕРІ (Р±РµР· РєРѕРЅРєСѓСЂСЃРѕРІ Рё РїСЂРѕРµРєС‚РѕРІ РґР»СЏ РџР Рћ)
         $offers  = $this->getWizardOffers(false, $limit, !$pro);
         if($offers) {
             $error = $this->transferOffers($offers);
         }
-        // Пишем данные пользователя введенные в шаге портфолио
+        // РџРёС€РµРј РґР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІРІРµРґРµРЅРЅС‹Рµ РІ С€Р°РіРµ РїРѕСЂС‚С„РѕР»РёРѕ
         $field = $this->parent->getFieldsUser();
         $data  = unserialize($field['portfolio']);
         if($data) {
             $error = $this->transferUserInformation($data);
         }
         
-        //Перенос порфтолио
+        //РџРµСЂРµРЅРѕСЃ РїРѕСЂС„С‚РѕР»РёРѕ
         $works = $this->getWorks();
         if($works) {
             $error = $this->transferWorks($works);
@@ -744,9 +744,9 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Перенос работ портфолио на боевые таблицы
+     * РџРµСЂРµРЅРѕСЃ СЂР°Р±РѕС‚ РїРѕСЂС‚С„РѕР»РёРѕ РЅР° Р±РѕРµРІС‹Рµ С‚Р°Р±Р»РёС†С‹
      * 
-     * @param array $works   Созданные в мастере работы
+     * @param array $works   РЎРѕР·РґР°РЅРЅС‹Рµ РІ РјР°СЃС‚РµСЂРµ СЂР°Р±РѕС‚С‹
      * @return array 
      */
     public function transferWorks($works) {
@@ -777,7 +777,7 @@ class step_freelancer extends step_wizard_registration
             if(!$error) {
                 $delete_work[] = $portf['id'];
             } else {
-                $error_work[]  = $error . " - работа #{$portf['id']}";
+                $error_work[]  = $error . " - СЂР°Р±РѕС‚Р° #{$portf['id']}";
             }
 
             unset($error);
@@ -797,9 +797,9 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Обновляем данные пользователя введенные в шаге портфолио
+     * РћР±РЅРѕРІР»СЏРµРј РґР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІРІРµРґРµРЅРЅС‹Рµ РІ С€Р°РіРµ РїРѕСЂС‚С„РѕР»РёРѕ
      * 
-     * @param array $data Данные пользователя
+     * @param array $data Р”Р°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      */
     public function transferUserInformation($data) {
         require_once $_SERVER['DOCUMENT_ROOT']."/classes/freelancer.php";
@@ -832,7 +832,7 @@ class step_freelancer extends step_wizard_registration
             $error_db = $prof->UpdatePortfChoise(wizard::getUserIDReg(), array($data['spec_orig']));
         }
         
-        // Если нет ошибок очищаем таблицу
+        // Р•СЃР»Рё РЅРµС‚ РѕС€РёР±РѕРє РѕС‡РёС‰Р°РµРј С‚Р°Р±Р»РёС†Сѓ
         if($error_db) {
             $this->log->writeln("Error transfer data user content - user (" . wizard::getUserIDReg() . "|" . $this->getWizardUserID() . ") - Error: {$error_db}");
         } else {
@@ -843,9 +843,9 @@ class step_freelancer extends step_wizard_registration
     }
     
     /**
-     * Переносим ответы на проекты в работающие таблицы
+     * РџРµСЂРµРЅРѕСЃРёРј РѕС‚РІРµС‚С‹ РЅР° РїСЂРѕРµРєС‚С‹ РІ СЂР°Р±РѕС‚Р°СЋС‰РёРµ С‚Р°Р±Р»РёС†С‹
      * 
-     * @param array $offers  Ответы на проекты
+     * @param array $offers  РћС‚РІРµС‚С‹ РЅР° РїСЂРѕРµРєС‚С‹
      * @return array
      */
     public function transferOffers($offers) {
@@ -857,7 +857,7 @@ class step_freelancer extends step_wizard_registration
             $pict2 = str_replace("sm_", "", $offer['pict2']);
             $pict3 = str_replace("sm_", "", $offer['pict3']);
             
-            // Переносим файлы в рабочие папки сайта
+            // РџРµСЂРµРЅРѕСЃРёРј С„Р°Р№Р»С‹ РІ СЂР°Р±РѕС‡РёРµ РїР°РїРєРё СЃР°Р№С‚Р°
             $files = $this->_db->rows("SELECT DISTINCT id FROM file_wizard WHERE fname IN (?l)", array($pict1, $pict2, $pict3));
             if ($files) {
                 $dir   = "users/" . substr($this->user->login, 0, 2) . "/" . $this->user->login . "/upload/";
@@ -876,7 +876,7 @@ class step_freelancer extends step_wizard_registration
                                                     null, null, null, null, null, null, $picts[0]['fname'], $picts[1]['fname'], $picts[2]['fname'], 
                                                     $sm_picts[0]['fname'], $sm_picts[1]['fname'], $sm_picts[2]['fname']);
             } else {
-                // Пишем ответ на конкурс
+                // РџРёС€РµРј РѕС‚РІРµС‚ РЅР° РєРѕРЅРєСѓСЂСЃ
                 $contest = new contest($offer['project_id'], wizard::getUserIDReg());
                 $error   = $contest->CreateOffer($offer['descr'], implode('/', $files), false);
                 if ($picts && $contest->new_oid) {
@@ -897,12 +897,12 @@ class step_freelancer extends step_wizard_registration
             if (!$error) {
                 $delete_offers[] = $offer['id'];
             } else {
-                $error_offer[]   = $error. " - ответ на проект #{$offer['id']}";
+                $error_offer[]   = $error. " - РѕС‚РІРµС‚ РЅР° РїСЂРѕРµРєС‚ #{$offer['id']}";
             }
             unset($error);
         }
         
-        // Очищаем перенесенные данные если нет ошибок если есть выводим
+        // РћС‡РёС‰Р°РµРј РїРµСЂРµРЅРµСЃРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ РµСЃР»Рё РЅРµС‚ РѕС€РёР±РѕРє РµСЃР»Рё РµСЃС‚СЊ РІС‹РІРѕРґРёРј
         if($error_offer) {
             foreach($error_offer as $error) {
                 $this->log->writeln("Error transfer offer content - user (" . wizard::getUserIDReg() . "|" . $this->getWizardUserID() . ") - Error: {$error}");

@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/seo.php");
 
 /**
- * Исправление сбитых позиций в SEO-каталоге /catalog/ 
+ * РСЃРїСЂР°РІР»РµРЅРёРµ СЃР±РёС‚С‹С… РїРѕР·РёС†РёР№ РІ SEO-РєР°С‚Р°Р»РѕРіРµ /catalog/ 
  */
 
 $sql = "SELECT parent FROM seo_sections 

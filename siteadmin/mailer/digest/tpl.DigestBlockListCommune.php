@@ -4,7 +4,7 @@
             <td  bgcolor="#ffffff" width="20" height="40" valign="top"></td>
             <td  width="20"></td>
             <td >
-                <font color="#444444" size="3" face="arial,sans-serif"><b>Обсуждают в </b><a href="<?= $this->host; ?>/commune/" style="color:#0F71C8" target="_blank"><b>сообществах</b></a></font>
+                <font color="#444444" size="3" face="arial,sans-serif"><b>РћР±СЃСѓР¶РґР°СЋС‚ РІ </b><a href="<?= $this->host; ?>/commune/" style="color:#0F71C8" target="_blank"><b>СЃРѕРѕР±С‰РµСЃС‚РІР°С…</b></a></font>
 
             </td>
             <td  width="20"></td>
@@ -20,7 +20,7 @@
             <td  bgcolor="#ffffff" width="20"></td>
             <td  width="20"></td>
             <td >
-                <font color="#444444" size="2" face="arial,sans-serif"><a href="<?= $this->getLinkById($blog['id'])?>" style="color:#0F71C8" target="_blank" ><?= $blog['title'] ? $blog['title'] : "Без названия";?></a></font>
+                <font color="#444444" size="2" face="arial,sans-serif"><a href="<?= $this->getLinkById($blog['id'])?>" style="color:#0F71C8" target="_blank" ><?= $blog['title'] ? $blog['title'] : "Р‘РµР· РЅР°Р·РІР°РЅРёСЏ";?></a></font>
             </td>
             <td  width="20"></td>
             <td  bgcolor="#ffffff" width="20"></td>

@@ -1,6 +1,6 @@
 <?php
 $paypost = $_POST;
-// Тестовое оплата услуг через Qiwi
+// РўРµСЃС‚РѕРІРѕРµ РѕРїР»Р°С‚Р° СѓСЃР»СѓРі С‡РµСЂРµР· Qiwi
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 if(is_release()) exit;
 
@@ -16,7 +16,7 @@ if(isset($paypost['cancel'])) {
 } elseif(isset($paypost['success']) ) {
     $post_payment = $_SESSION['post_payment'];
     
-    // Оплата через асист
+    // РћРїР»Р°С‚Р° С‡РµСЂРµР· Р°СЃРёСЃС‚
     if($post_payment['Merchant_ID'] > 0) {
         $cardpay = new cardpay();
         $post = array(
@@ -76,13 +76,13 @@ $_SESSION['post_payment'] = $paypost;
 
 ?>
 
-<h2>Тестовая оплата Пластиковая карта</h2>
+<h2>РўРµСЃС‚РѕРІР°СЏ РѕРїР»Р°С‚Р° РџР»Р°СЃС‚РёРєРѕРІР°СЏ РєР°СЂС‚Р°</h2>
 <p>
-Оплата услуг аккаунт #<?= get_uid(false);?>, сумма оплаты <?= to_money($paypost['OrderAmount'],2)?> рублей
+РћРїР»Р°С‚Р° СѓСЃР»СѓРі Р°РєРєР°СѓРЅС‚ #<?= get_uid(false);?>, СЃСѓРјРјР° РѕРїР»Р°С‚С‹ <?= to_money($paypost['OrderAmount'],2)?> СЂСѓР±Р»РµР№
 </p>
 
 <form method="POST" />
-    <input type="submit" name="success" value="Оплатить" />
-    <input type="submit" name="cancel" value="Отмена" />
+    <input type="submit" name="success" value="РћРїР»Р°С‚РёС‚СЊ" />
+    <input type="submit" name="cancel" value="РћС‚РјРµРЅР°" />
     <input type="hidden" name="u_token_key" value="<?=$_SESSION['rand']?>"/>
 </form>

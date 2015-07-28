@@ -36,7 +36,7 @@ switch($action) {
     case "activate":
         if($sUid > 0) {
             users::approveSuspiciousUser( $sUid );
-            // îòïàâëÿåì þçåðó ïèñüìî ñ êîäîì àêòèâàöèè. îí è íå óçíàåò ÷òî ìîäåðàöèÿ áûëà
+            // Ð¾Ñ‚Ð¿Ð°Ð²Ð»ÑÐµÐ¼ ÑŽÐ·ÐµÑ€Ñƒ Ð¿Ð¸ÑÑŒÐ¼Ð¾ Ñ ÐºÐ¾Ð´Ð¾Ð¼ Ð°ÐºÑ‚Ð¸Ð²Ð°Ñ†Ð¸Ð¸. Ð¾Ð½ Ð¸ Ð½Ðµ ÑƒÐ·Ð½Ð°ÐµÑ‚ Ñ‡Ñ‚Ð¾ Ð¼Ð¾Ð´ÐµÑ€Ð°Ñ†Ð¸Ñ Ð±Ñ‹Ð»Ð°
             $aData = users::getSuspectActivationData( $sUid );
             
             if ( $aData ) {
@@ -54,24 +54,24 @@ switch($action) {
         break;
     case "userban":
         if(!$sUid) break;
-        // þçåð íå çàáàíåí íà âñåì ñàéòå
+        // ÑŽÐ·ÐµÑ€ Ð½Ðµ Ð·Ð°Ð±Ð°Ð½ÐµÐ½ Ð½Ð° Ð²ÑÐµÐ¼ ÑÐ°Ð¹Ñ‚Ðµ
         $objUser = new users();
         $objUser->GetUserByUID( $sUid );
         
         if ( $objUser->uid ) {
-            $sReason = 'Ïîäîçðèòåëüíûé ïîëüçîâàòåëü: ëîãèí, èìÿ èëè ôàìèëèÿ ñîäåðæàò ïîäîçðèòåëüíûå ñëîâà.';
+            $sReason = 'ÐŸÐ¾Ð´Ð¾Ð·Ñ€Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¹ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ: Ð»Ð¾Ð³Ð¸Ð½, Ð¸Ð¼Ñ Ð¸Ð»Ð¸ Ñ„Ð°Ð¼Ð¸Ð»Ð¸Ñ ÑÐ¾Ð´ÐµÑ€Ð¶Ð°Ñ‚ Ð¿Ð¾Ð´Ð¾Ð·Ñ€Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ðµ ÑÐ»Ð¾Ð²Ð°.';
             
             if ( $objUser->ban_where ) {
-                // ìåíÿåì áàí â áëîãàõ íà áàí íà âñåì ñàéòå
+                // Ð¼ÐµÐ½ÑÐµÐ¼ Ð±Ð°Ð½ Ð² Ð±Ð»Ð¾Ð³Ð°Ñ… Ð½Ð° Ð±Ð°Ð½ Ð½Ð° Ð²ÑÐµÐ¼ ÑÐ°Ð¹Ñ‚Ðµ
                 $objUser->updateUserBan( $sUid, 1, 0, $sReason, null, '' );
             }
             elseif ( !$objUser->is_banned ) {
-                // áàíèì íà âñåì ñàéòå
+                // Ð±Ð°Ð½Ð¸Ð¼ Ð½Ð° Ð²ÑÐµÐ¼ ÑÐ°Ð¹Ñ‚Ðµ
                 $sBanId   = $objUser->setUserBan( $sUid, 0, $sReason, null, '', 1 );
                 $sObjName = $objUser->uname. ' ' . $objUser->usurname . '[' . $objUser->login . ']';
                 $sObjLink = '/users/' . $objUser->login;
                 
-                // ïèøåì ëîã àäìèíñêèõ äåéñòâèé
+                // Ð¿Ð¸ÑˆÐµÐ¼ Ð»Ð¾Ð³ Ð°Ð´Ð¼Ð¸Ð½ÑÐºÐ¸Ñ… Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ð¹
                 admin_log::addLog( admin_log::OBJ_CODE_USER, 3, $sUid, $sUid, $sObjName, $sObjLink, -1, '', null, $sReason, $sBanId );
             }
             
@@ -86,7 +86,7 @@ switch($action) {
         break;
     case "ban":
         if(!$sUid) break;
-        // þçåð óæå çàáàíåí íà âñåì ñàéòå - íóæíî òîëüêî óáðàòü åãî èç ñïèñêà ïîäîçðèòåëüíûõ
+        // ÑŽÐ·ÐµÑ€ ÑƒÐ¶Ðµ Ð·Ð°Ð±Ð°Ð½ÐµÐ½ Ð½Ð° Ð²ÑÐµÐ¼ ÑÐ°Ð¹Ñ‚Ðµ - Ð½ÑƒÐ¶Ð½Ð¾ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ ÑƒÐ±Ñ€Ð°Ñ‚ÑŒ ÐµÐ³Ð¾ Ð¸Ð· ÑÐ¿Ð¸ÑÐºÐ° Ð¿Ð¾Ð´Ð¾Ð·Ñ€Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ…
         users::banSuspiciousUser( $sUid );
         $tail = '';
         if ((int)$_GET['page'] > 0) {
@@ -111,7 +111,7 @@ switch($action) {
             header('Location: index.php');
             exit;
         } else {
-            $error_string = "Íåèçâåñòíàÿ îøèáêà çàïèñè.";
+            $error_string = "ÐÐµÐ¸Ð·Ð²ÐµÑÑ‚Ð½Ð°Ñ Ð¾ÑˆÐ¸Ð±ÐºÐ° Ð·Ð°Ð¿Ð¸ÑÐ¸.";
         }
         break;
         
@@ -121,13 +121,13 @@ $page = __paramInit('int', "page");
 if (!$page) {
     $page = 1;
 }
-$itemsPerPaging = 10; //êîëè÷åòâî ññûëîê â ñòðîêå íàâèãàöèè
-$recordsPerPage = 20; //êîëè÷åñòâî çàïèèñåé íà ñòðàíèöå
+$itemsPerPaging = 10; //ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑ‚Ð²Ð¾ ÑÑÑ‹Ð»Ð¾Ðº Ð² ÑÑ‚Ñ€Ð¾ÐºÐµ Ð½Ð°Ð²Ð¸Ð³Ð°Ñ†Ð¸Ð¸
+$recordsPerPage = 20; //ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð·Ð°Ð¿Ð¸Ð¸ÑÐµÐ¹ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ
 $itemBack = false;
 $itemNext = false;
 $totalSuspiciousUsers = users::GetCountSuspiciousUsers();
 $totalPages = ceil($totalSuspiciousUsers / $recordsPerPage);
-$currentPaging = floor( ($page - 1) / $itemsPerPaging);  //òåêóùàÿ ñòðàíèöà íàâèãàöèè
+$currentPaging = floor( ($page - 1) / $itemsPerPaging);  //Ñ‚ÐµÐºÑƒÑ‰Ð°Ñ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð° Ð½Ð°Ð²Ð¸Ð³Ð°Ñ†Ð¸Ð¸
 
 if ($currentPaging > 0) {
     $itemBack = true;

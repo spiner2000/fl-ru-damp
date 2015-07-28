@@ -13,11 +13,11 @@ if ($uid) {
         <td class="b-layout__right b-layout__right_padbot_15 b-layout__right_width_72ps">
             <div class="b-menu b-menu_crumbs">
             <ul class="b-menu__list">
-                <li class="b-menu__item"><a class="b-menu__link" href="/service/">Все услуги сайта</a>&#160;&rarr;&#160;</li>
+                <li class="b-menu__item"><a class="b-menu__link" href="/service/">Р’СЃРµ СѓСЃР»СѓРіРё СЃР°Р№С‚Р°</a>&#160;&rarr;&#160;</li>
             </ul>
             </div>			
-            <h1 class="b-page__title">Безопасная Сделка</h1>
-            <div class="b-layout__txt b-layout__txt_fontsize_15">Мы рекомендуем осуществлять взаимодействие с фрилансерами  через &laquo;Безопасную Сделку&raquo; &mdash; сервис, гарантирующий надежное сотрудничество. &laquo;Безопасная Сделка&raquo; защищает  работодателя от срыва сроков проекта, недобросовестных исполнителей и невыполнения обязательств с их стороны.</div>
+            <h1 class="b-page__title">Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°</h1>
+            <div class="b-layout__txt b-layout__txt_fontsize_15">РњС‹ СЂРµРєРѕРјРµРЅРґСѓРµРј РѕСЃСѓС‰РµСЃС‚РІР»СЏС‚СЊ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёРµ СЃ С„СЂРёР»Р°РЅСЃРµСЂР°РјРё  С‡РµСЂРµР· &laquo;Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ&raquo; &mdash; СЃРµСЂРІРёСЃ, РіР°СЂР°РЅС‚РёСЂСѓСЋС‰РёР№ РЅР°РґРµР¶РЅРѕРµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ. &laquo;Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°&raquo; Р·Р°С‰РёС‰Р°РµС‚  СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ РѕС‚ СЃСЂС‹РІР° СЃСЂРѕРєРѕРІ РїСЂРѕРµРєС‚Р°, РЅРµРґРѕР±СЂРѕСЃРѕРІРµСЃС‚РЅС‹С… РёСЃРїРѕР»РЅРёС‚РµР»РµР№ Рё РЅРµРІС‹РїРѕР»РЅРµРЅРёСЏ РѕР±СЏР·Р°С‚РµР»СЊСЃС‚РІ СЃ РёС… СЃС‚РѕСЂРѕРЅС‹.</div>
         </td>							
     </tr>
 </table>
@@ -25,13 +25,13 @@ if ($uid) {
     <tr class="b-layout__tr">
         <td class="b-layout__left b-layout__left_center b-layout__left_padtop_30">
             <a class="b-layout__link" href="<?= $calcHref ?>"><img class="b-promo__pic" src="/images/promo-icons/small/10.png" alt="" width="41" height="45" /></a>
-            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="<?= $calcHref ?>">Калькулятор<br>«Безопасной Сделки»</a></div>
-            <div class="b-layout__txt b-layout__txt_fontsize_11">Рассчитайте точную<br />стоимость заключения<br />сделки</div>
+            <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="<?= $calcHref ?>">РљР°Р»СЊРєСѓР»СЏС‚РѕСЂ<br>В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ»</a></div>
+            <div class="b-layout__txt b-layout__txt_fontsize_11">Р Р°СЃСЃС‡РёС‚Р°Р№С‚Рµ С‚РѕС‡РЅСѓСЋ<br />СЃС‚РѕРёРјРѕСЃС‚СЊ Р·Р°РєР»СЋС‡РµРЅРёСЏ<br />СЃРґРµР»РєРё</div>
         </td>
         <td class="b-layout__right b-layout__right_width_72ps">
-            <div class="b-layout__txt b-layout__txt_padtop_30 b-layout__txt_padbot_60 b-layout__txt_fontsize_22">Стоимость услуги &laquo;Безопасная Сделка&raquo; &mdash; 7% от бюджета проекта</div>
-            <div class="b-layout__txt b-promo__txt_padbot_10 b-layout__txt_fontsize_22">Вы платите фрилансеру только за выполненную работу</div>
-            <div class="b-promo__txt b-promo__txt_padbot_40 b-promo__txt_fontsize_15 b-promo__txt_lineheight_20">Сначала вам нужно зарезервировать деньги для сделки. Принцип работы сервиса таков, что исполнитель не получит гонорар до тех пор, пока вы не примете готовый проект.</div>
+            <div class="b-layout__txt b-layout__txt_padtop_30 b-layout__txt_padbot_60 b-layout__txt_fontsize_22">РЎС‚РѕРёРјРѕСЃС‚СЊ СѓСЃР»СѓРіРё &laquo;Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°&raquo; &mdash; 7% РѕС‚ Р±СЋРґР¶РµС‚Р° РїСЂРѕРµРєС‚Р°</div>
+            <div class="b-layout__txt b-promo__txt_padbot_10 b-layout__txt_fontsize_22">Р’С‹ РїР»Р°С‚РёС‚Рµ С„СЂРёР»Р°РЅСЃРµСЂСѓ С‚РѕР»СЊРєРѕ Р·Р° РІС‹РїРѕР»РЅРµРЅРЅСѓСЋ СЂР°Р±РѕС‚Сѓ</div>
+            <div class="b-promo__txt b-promo__txt_padbot_40 b-promo__txt_fontsize_15 b-promo__txt_lineheight_20">РЎРЅР°С‡Р°Р»Р° РІР°Рј РЅСѓР¶РЅРѕ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё РґР»СЏ СЃРґРµР»РєРё. РџСЂРёРЅС†РёРї СЂР°Р±РѕС‚С‹ СЃРµСЂРІРёСЃР° С‚Р°РєРѕРІ, С‡С‚Рѕ РёСЃРїРѕР»РЅРёС‚РµР»СЊ РЅРµ РїРѕР»СѓС‡РёС‚ РіРѕРЅРѕСЂР°СЂ РґРѕ С‚РµС… РїРѕСЂ, РїРѕРєР° РІС‹ РЅРµ РїСЂРёРјРµС‚Рµ РіРѕС‚РѕРІС‹Р№ РїСЂРѕРµРєС‚.</div>
         </td>							
     </tr>
 </table>
@@ -39,57 +39,57 @@ if ($uid) {
     <tr class="b-layout__tr">
         <td class="b-layout__left b-layout__left_center b-layout__left_padtop_30">&#160;</td>							
         <td class="b-layout__right b-layout__right_width_72ps">
-            <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_fontsize_22">Мы защищаем ваши интересы</div>
-            <div class="b-promo__txt b-promo__txt_padbot_5 b-promo__txt_fontsize_15 b-promo__txt_lineheight_20">При возникновении любой спорной ситуации вы всегда можете рассчитывать на нашу помощь. Арбитраж поможет разобраться в произошедшем и урегулировать финансовые вопросы между работодателем и фрилансером.	<? /*=  ( get_uid() ? "вами и исполнителем" : "сотрудничающими сторонами" ); */?></div>
-            <div class="b-promo__txt b-promo__txt_padbot_5 b-promo__txt_fontsize_15 b-promo__txt_lineheight_20">Если же фрилансер не справился с задачей, мы вернем вам зарезервированный бюджет сделки.</div>
-            <div class="b-promo__txt b-promo__txt_padbot_5 b-promo__txt_fontsize_15 b-promo__txt_lineheight_20">Если же Арбитраж выносит решение в пользу фрилансера, ему перечисляется весь бюджет сделки.</div>
-            <div class="b-promo__txt b-promo__txt_padbot_5 b-promo__txt_fontsize_15 b-promo__txt_lineheight_20">В более сложных случаях Арбитраж помогает оценить объем работы, которая была проделана фрилансером, и вернуть часть суммы заказчику, а также передать оставшуюся часть исполнителю в качестве вознаграждения за выполненный проект.</div>
-            <div class="b-promo__txt b-promo__txt_padbot_30 b-promo__txt_fontsize_15 b-promo__txt_lineheight_20">Арбитраж выносит решение не позднее, чем через 10 рабочих дней после обращения.</div>
+            <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_fontsize_22">РњС‹ Р·Р°С‰РёС‰Р°РµРј РІР°С€Рё РёРЅС‚РµСЂРµСЃС‹</div>
+            <div class="b-promo__txt b-promo__txt_padbot_5 b-promo__txt_fontsize_15 b-promo__txt_lineheight_20">РџСЂРё РІРѕР·РЅРёРєРЅРѕРІРµРЅРёРё Р»СЋР±РѕР№ СЃРїРѕСЂРЅРѕР№ СЃРёС‚СѓР°С†РёРё РІС‹ РІСЃРµРіРґР° РјРѕР¶РµС‚Рµ СЂР°СЃСЃС‡РёС‚С‹РІР°С‚СЊ РЅР° РЅР°С€Сѓ РїРѕРјРѕС‰СЊ. РђСЂР±РёС‚СЂР°Р¶ РїРѕРјРѕР¶РµС‚ СЂР°Р·РѕР±СЂР°С‚СЊСЃСЏ РІ РїСЂРѕРёР·РѕС€РµРґС€РµРј Рё СѓСЂРµРіСѓР»РёСЂРѕРІР°С‚СЊ С„РёРЅР°РЅСЃРѕРІС‹Рµ РІРѕРїСЂРѕСЃС‹ РјРµР¶РґСѓ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµРј Рё С„СЂРёР»Р°РЅСЃРµСЂРѕРј.	<? /*=  ( get_uid() ? "РІР°РјРё Рё РёСЃРїРѕР»РЅРёС‚РµР»РµРј" : "СЃРѕС‚СЂСѓРґРЅРёС‡Р°СЋС‰РёРјРё СЃС‚РѕСЂРѕРЅР°РјРё" ); */?></div>
+            <div class="b-promo__txt b-promo__txt_padbot_5 b-promo__txt_fontsize_15 b-promo__txt_lineheight_20">Р•СЃР»Рё Р¶Рµ С„СЂРёР»Р°РЅСЃРµСЂ РЅРµ СЃРїСЂР°РІРёР»СЃСЏ СЃ Р·Р°РґР°С‡РµР№, РјС‹ РІРµСЂРЅРµРј РІР°Рј Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРЅС‹Р№ Р±СЋРґР¶РµС‚ СЃРґРµР»РєРё.</div>
+            <div class="b-promo__txt b-promo__txt_padbot_5 b-promo__txt_fontsize_15 b-promo__txt_lineheight_20">Р•СЃР»Рё Р¶Рµ РђСЂР±РёС‚СЂР°Р¶ РІС‹РЅРѕСЃРёС‚ СЂРµС€РµРЅРёРµ РІ РїРѕР»СЊР·Сѓ С„СЂРёР»Р°РЅСЃРµСЂР°, РµРјСѓ РїРµСЂРµС‡РёСЃР»СЏРµС‚СЃСЏ РІРµСЃСЊ Р±СЋРґР¶РµС‚ СЃРґРµР»РєРё.</div>
+            <div class="b-promo__txt b-promo__txt_padbot_5 b-promo__txt_fontsize_15 b-promo__txt_lineheight_20">Р’ Р±РѕР»РµРµ СЃР»РѕР¶РЅС‹С… СЃР»СѓС‡Р°СЏС… РђСЂР±РёС‚СЂР°Р¶ РїРѕРјРѕРіР°РµС‚ РѕС†РµРЅРёС‚СЊ РѕР±СЉРµРј СЂР°Р±РѕС‚С‹, РєРѕС‚РѕСЂР°СЏ Р±С‹Р»Р° РїСЂРѕРґРµР»Р°РЅР° С„СЂРёР»Р°РЅСЃРµСЂРѕРј, Рё РІРµСЂРЅСѓС‚СЊ С‡Р°СЃС‚СЊ СЃСѓРјРјС‹ Р·Р°РєР°Р·С‡РёРєСѓ, Р° С‚Р°РєР¶Рµ РїРµСЂРµРґР°С‚СЊ РѕСЃС‚Р°РІС€СѓСЋСЃСЏ С‡Р°СЃС‚СЊ РёСЃРїРѕР»РЅРёС‚РµР»СЋ РІ РєР°С‡РµСЃС‚РІРµ РІРѕР·РЅР°РіСЂР°Р¶РґРµРЅРёСЏ Р·Р° РІС‹РїРѕР»РЅРµРЅРЅС‹Р№ РїСЂРѕРµРєС‚.</div>
+            <div class="b-promo__txt b-promo__txt_padbot_30 b-promo__txt_fontsize_15 b-promo__txt_lineheight_20">РђСЂР±РёС‚СЂР°Р¶ РІС‹РЅРѕСЃРёС‚ СЂРµС€РµРЅРёРµ РЅРµ РїРѕР·РґРЅРµРµ, С‡РµРј С‡РµСЂРµР· 10 СЂР°Р±РѕС‡РёС… РґРЅРµР№ РїРѕСЃР»Рµ РѕР±СЂР°С‰РµРЅРёСЏ.</div>
             <img class="b-promo__pic b-promo__pic_margbot_30" src="/images/promo-pic/5.png" alt="" />
-            <div class="b-promo__txt b-promo__txt_fontsize_11 b-promo__txt_lineheight_20">Арбитраж &mdash; это независимая комиссия, в состав которой входят исключительно профессионалы в своей области.</div>
-            <div class="b-promo__txt b-promo__txt_padtop_5 b-promo__txt_fontsize_11 b-promo__txt_lineheight_20">Когда исполнитель и заказчик не могут самостоятельно прийти к соглашению, перед Арбитражем стоит задача провести анализ работы и сделать вывод, была ли она предоставлена в срок и в какой степени соответствует согласованному сторонами техническому заданию.</div>
-            <div class="b-promo__txt b-promo__txt_padtop_5 b-promo__txt_fontsize_11 b-promo__txt_lineheight_20">В случае, когда для анализа проделанной фрилансером работы квалификации штатных специалистов Арбитража недостаточно, привлекаются внешние эксперты.</div>
-            <div class="b-layout__txt b-layout__txt_padtop_30 b-layout__txt_padbot_15 b-layout__txt_fontsize_22">Удобное взаимодействие без бумажной волокиты</div>
-            <div class="b-promo__txt b-promo__txt_padbot_10 b-promo__txt_fontsize_15 b-promo__txt_lineheight_20">Сотрудничая через &laquo;Безопасную Сделку&raquo;, вы сможете оперативно реагировать на любые изменения в проекте.</div>
+            <div class="b-promo__txt b-promo__txt_fontsize_11 b-promo__txt_lineheight_20">РђСЂР±РёС‚СЂР°Р¶ &mdash; СЌС‚Рѕ РЅРµР·Р°РІРёСЃРёРјР°СЏ РєРѕРјРёСЃСЃРёСЏ, РІ СЃРѕСЃС‚Р°РІ РєРѕС‚РѕСЂРѕР№ РІС…РѕРґСЏС‚ РёСЃРєР»СЋС‡РёС‚РµР»СЊРЅРѕ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»С‹ РІ СЃРІРѕРµР№ РѕР±Р»Р°СЃС‚Рё.</div>
+            <div class="b-promo__txt b-promo__txt_padtop_5 b-promo__txt_fontsize_11 b-promo__txt_lineheight_20">РљРѕРіРґР° РёСЃРїРѕР»РЅРёС‚РµР»СЊ Рё Р·Р°РєР°Р·С‡РёРє РЅРµ РјРѕРіСѓС‚ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ РїСЂРёР№С‚Рё Рє СЃРѕРіР»Р°С€РµРЅРёСЋ, РїРµСЂРµРґ РђСЂР±РёС‚СЂР°Р¶РµРј СЃС‚РѕРёС‚ Р·Р°РґР°С‡Р° РїСЂРѕРІРµСЃС‚Рё Р°РЅР°Р»РёР· СЂР°Р±РѕС‚С‹ Рё СЃРґРµР»Р°С‚СЊ РІС‹РІРѕРґ, Р±С‹Р»Р° Р»Рё РѕРЅР° РїСЂРµРґРѕСЃС‚Р°РІР»РµРЅР° РІ СЃСЂРѕРє Рё РІ РєР°РєРѕР№ СЃС‚РµРїРµРЅРё СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ СЃРѕРіР»Р°СЃРѕРІР°РЅРЅРѕРјСѓ СЃС‚РѕСЂРѕРЅР°РјРё С‚РµС…РЅРёС‡РµСЃРєРѕРјСѓ Р·Р°РґР°РЅРёСЋ.</div>
+            <div class="b-promo__txt b-promo__txt_padtop_5 b-promo__txt_fontsize_11 b-promo__txt_lineheight_20">Р’ СЃР»СѓС‡Р°Рµ, РєРѕРіРґР° РґР»СЏ Р°РЅР°Р»РёР·Р° РїСЂРѕРґРµР»Р°РЅРЅРѕР№ С„СЂРёР»Р°РЅСЃРµСЂРѕРј СЂР°Р±РѕС‚С‹ РєРІР°Р»РёС„РёРєР°С†РёРё С€С‚Р°С‚РЅС‹С… СЃРїРµС†РёР°Р»РёСЃС‚РѕРІ РђСЂР±РёС‚СЂР°Р¶Р° РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ, РїСЂРёРІР»РµРєР°СЋС‚СЃСЏ РІРЅРµС€РЅРёРµ СЌРєСЃРїРµСЂС‚С‹.</div>
+            <div class="b-layout__txt b-layout__txt_padtop_30 b-layout__txt_padbot_15 b-layout__txt_fontsize_22">РЈРґРѕР±РЅРѕРµ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёРµ Р±РµР· Р±СѓРјР°Р¶РЅРѕР№ РІРѕР»РѕРєРёС‚С‹</div>
+            <div class="b-promo__txt b-promo__txt_padbot_10 b-promo__txt_fontsize_15 b-promo__txt_lineheight_20">РЎРѕС‚СЂСѓРґРЅРёС‡Р°СЏ С‡РµСЂРµР· &laquo;Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ&raquo;, РІС‹ СЃРјРѕР¶РµС‚Рµ РѕРїРµСЂР°С‚РёРІРЅРѕ СЂРµР°РіРёСЂРѕРІР°С‚СЊ РЅР° Р»СЋР±С‹Рµ РёР·РјРµРЅРµРЅРёСЏ РІ РїСЂРѕРµРєС‚Рµ.</div>
             <ul class="b-promo__list b-promo__list_padbot_20">
-            <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_margbot_5 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-plus"></span>Вы будете получать мгновенные уведомления о новых событиях.</li>
-            <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_margbot_5 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-plus"></span>Вам всегда доступна вся история сделки.</li>
-            <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-plus"></span>Работа по договору аккредитива &mdash; все документы в электронной форме.</li>
+            <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_margbot_5 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-plus"></span>Р’С‹ Р±СѓРґРµС‚Рµ РїРѕР»СѓС‡Р°С‚СЊ РјРіРЅРѕРІРµРЅРЅС‹Рµ СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІС‹С… СЃРѕР±С‹С‚РёСЏС….</li>
+            <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_margbot_5 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-plus"></span>Р’Р°Рј РІСЃРµРіРґР° РґРѕСЃС‚СѓРїРЅР° РІСЃСЏ РёСЃС‚РѕСЂРёСЏ СЃРґРµР»РєРё.</li>
+            <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-plus"></span>Р Р°Р±РѕС‚Р° РїРѕ РґРѕРіРѕРІРѕСЂСѓ Р°РєРєСЂРµРґРёС‚РёРІР° &mdash; РІСЃРµ РґРѕРєСѓРјРµРЅС‚С‹ РІ СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ С„РѕСЂРјРµ.</li>
             </ul>
-            <div class="b-layout__txt b-layout__txt_padtop_30 b-layout__txt_padbot_15 b-layout__txt_fontsize_22">Как найти исполнителя, используя &laquo;Безопасную Сделку&raquo;:</div>
+            <div class="b-layout__txt b-layout__txt_padtop_30 b-layout__txt_padbot_15 b-layout__txt_fontsize_22">РљР°Рє РЅР°Р№С‚Рё РёСЃРїРѕР»РЅРёС‚РµР»СЏ, РёСЃРїРѕР»СЊР·СѓСЏ &laquo;Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ&raquo;:</div>
             <ul class="b-promo__list b-promo__list_padbot_20">
-            <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_margbot_5 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_1"></span>Опубликуйте проект или конкурс и получите предложения от фрилансеров.</li>
-            <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_2"></span>Зарезервируйте бюджет проекта/конкурса и оплачивайте услуги фрилансеров только после выполнения работы.</li>
+            <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_margbot_5 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_1"></span>РћРїСѓР±Р»РёРєСѓР№С‚Рµ РїСЂРѕРµРєС‚ РёР»Рё РєРѕРЅРєСѓСЂСЃ Рё РїРѕР»СѓС‡РёС‚Рµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РѕС‚ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ.</li>
+            <li class="b-promo__item b-promo__item_fontsize_15 b-promo__item_lineheight_18"><span class="b-promo__item-number b-promo__item-number_2"></span>Р—Р°СЂРµР·РµСЂРІРёСЂСѓР№С‚Рµ Р±СЋРґР¶РµС‚ РїСЂРѕРµРєС‚Р°/РєРѕРЅРєСѓСЂСЃР° Рё РѕРїР»Р°С‡РёРІР°Р№С‚Рµ СѓСЃР»СѓРіРё С„СЂРёР»Р°РЅСЃРµСЂРѕРІ С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹.</li>
             </ul>
             <div class="b-buttons b-buttons_padbot_40">
             <a href="/public/?step=1&kind=1" class="b-button b-button_round_green">
                 <span class="b-button__b1">
                     <span class="b-button__b2">
-                        <span class="b-button__txt">Разместить проект</span>
+                        <span class="b-button__txt">Р Р°Р·РјРµСЃС‚РёС‚СЊ РїСЂРѕРµРєС‚</span>
                     </span>
                 </span>
             </a>                          
             <a href="/public/?step=1&kind=7" class="b-button b-button_round_green">
                 <span class="b-button__b1">
                     <span class="b-button__b2">
-                        <span class="b-button__txt">Опубликовать конкурс</span>
+                        <span class="b-button__txt">РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ РєРѕРЅРєСѓСЂСЃ</span>
                     </span>
                 </span>
             </a>                          
             <a href="/bezopasnaya-sdelka/?site=new" class="b-button b-button_round_green">
                 <span class="b-button__b1">
                     <span class="b-button__b2">
-                        <span class="b-button__txt">Начать Безопасную Сделку</span>
+                        <span class="b-button__txt">РќР°С‡Р°С‚СЊ Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ</span>
                     </span>
                 </span>
             </a>                          
             </div>
             
-<div class="b-promo__txt b-promo__txt_padbot_40 b-promo__txt_fontsize_15 b-promo__txt_lineheight_20">Вы можете зарезервировать деньги для &laquo;Безопасной Сделки&raquo; удобным для вас способом <img width="85" height="20" usemap="#payvariants" alt="" src="/images/promo-pic/8.png" class="b-layout__pic b-layout__pic_valign_top">
+<div class="b-promo__txt b-promo__txt_padbot_40 b-promo__txt_fontsize_15 b-promo__txt_lineheight_20">Р’С‹ РјРѕР¶РµС‚Рµ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё РґР»СЏ &laquo;Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё&raquo; СѓРґРѕР±РЅС‹Рј РґР»СЏ РІР°СЃ СЃРїРѕСЃРѕР±РѕРј <img width="85" height="20" usemap="#payvariants" alt="" src="/images/promo-pic/8.png" class="b-layout__pic b-layout__pic_valign_top">
             <map name="payvariants">
             <area coords="0, 0, 25, 20" shape="rect" title="WebMoney">
-            <area coords="27, 0, 50, 20" shape="rect" title="Яндекс.Деньги">
-            <area coords="52, 0, 80, 20" shape="rect" title="Банковский счёт">
+            <area coords="27, 0, 50, 20" shape="rect" title="РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё">
+            <area coords="52, 0, 80, 20" shape="rect" title="Р‘Р°РЅРєРѕРІСЃРєРёР№ СЃС‡С‘С‚">
             </map>
             </div>
                         
@@ -99,7 +99,7 @@ if ($uid) {
 
 <? if (!(bool)$_COOKIE['sbr-help-block-closed']) { ?>
 <script type="text/javascript">
- 	// действия при закрытии оранжевой плашки с кнопками помощи внизу страницы
+ 	// РґРµР№СЃС‚РІРёСЏ РїСЂРё Р·Р°РєСЂС‹С‚РёРё РѕСЂР°РЅР¶РµРІРѕР№ РїР»Р°С€РєРё СЃ РєРЅРѕРїРєР°РјРё РїРѕРјРѕС‰Рё РІРЅРёР·Сѓ СЃС‚СЂР°РЅРёС†С‹
  	(function(){
  	    window.addEvent('domready', function(){
  	        var closeBtn = $('close-sbr-help-block');
@@ -121,13 +121,13 @@ if ($uid) {
                 <table border="0" cellspacing="0" cellpadding="0" class="b-layout__table b-layout__table_width_full">
                         <tbody><tr class="b-layout__tr">
                                 <td class="b-layout__one b-icon_help_ask">
-                                        <div class="b-layout__txt">Помощь по «Безопасной Сделке»<br />удобным для вас способом:</div>
+                                        <div class="b-layout__txt">РџРѕРјРѕС‰СЊ РїРѕ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµВ»<br />СѓРґРѕР±РЅС‹Рј РґР»СЏ РІР°СЃ СЃРїРѕСЃРѕР±РѕРј:</div>
                                 </td>
                                 <td class="b-layout__one b-layout__one_padright_25 b-icon_help_letter">
-                                        <div class="b-layout__txt b-layout__txt_nowrap">Напишите в<br /><a class="b-layout__link" href="/about/feedback/">службу поддержки</a></div>
+                                        <div class="b-layout__txt b-layout__txt_nowrap">РќР°РїРёС€РёС‚Рµ РІ<br /><a class="b-layout__link" href="/about/feedback/">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a></div>
                                 </td>
                                 <td class="b-layout__one b-icon_help_article">
-                                        <div class="b-layout__txt b-layout__txt_nowrap">Прочтите статью в<br /><a class="b-layout__link" href="https://feedback.free-lance.ru/" target="_blank">разделе «Помощь»</a></div>
+                                        <div class="b-layout__txt b-layout__txt_nowrap">РџСЂРѕС‡С‚РёС‚Рµ СЃС‚Р°С‚СЊСЋ РІ<br /><a class="b-layout__link" href="https://feedback.free-lance.ru/" target="_blank">СЂР°Р·РґРµР»Рµ В«РџРѕРјРѕС‰СЊВ»</a></div>
                                 </td>
                         </tr>
                 </tbody></table>

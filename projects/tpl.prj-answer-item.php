@@ -1,6 +1,6 @@
 
 
-	<? if(($value['user_id']==get_uid())&&($real_offers_count > 0)&&$user_offer_exist) { ?><h2  class="b-layout__title">Ваш ответ по проекту</h2><? } ?>
+	<? if(($value['user_id']==get_uid())&&($real_offers_count > 0)&&$user_offer_exist) { ?><h2  class="b-layout__title">Р’Р°С€ РѕС‚РІРµС‚ РїРѕ РїСЂРѕРµРєС‚Сѓ</h2><? } ?>
 
 
                 <div class="b-layout <?=$is_end?'':'b-layout_bordbot_dedfe0'?> <?= $value['user_id']==get_uid()?"b-layout_2bordbot_dfdfdf0":""?> b-layout_margbot_20" style=" <?=$value['user_id']==get_uid(false) &&  !( !(isset($project) && isset($project['payed']) && $project['payed'] > 0) || ($project['is_pro'] === 't') )?'margin-right:250px;':''?>" >
@@ -16,25 +16,25 @@
                               <?=$session->view_online_status($value['login'])?>
                               <a href="/users/<?=$value['login']?>" class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bold" title="<?=($value['uname'] . " " . $value['usurname'])?>"><?=($value['uname'] . " " . $value['usurname'])?></a>
                               [<a href="/users/<?=$value['login']?>" class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bold" title="<?=$value['login']?>"><?=$value['login']?></a>]
-                              <span style="line-height:1; vertical-align:top;"><?= (view_mark_user($value)); /*!!!is_team!!!*/?> <?=($value['completed_cnt'] > 0?'<a class="b-layout__link" href="/promo/bezopasnaya-sdelka/" title="Пользователь работал через Безопасную Сделку" target="_blank"><span class="b-icon b-icon__shield "></span></a>':'') ?></span> &#160; <?php if ( $value['is_banned'] ) { ?><span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_c10600 b-layout__txt_bold" >Пользователь&nbsp;забанен.</span><?php } ?>
+                              <span style="line-height:1; vertical-align:top;"><?= (view_mark_user($value)); /*!!!is_team!!!*/?> <?=($value['completed_cnt'] > 0?'<a class="b-layout__link" href="/promo/bezopasnaya-sdelka/" title="РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЂР°Р±РѕС‚Р°Р» С‡РµСЂРµР· Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ" target="_blank"><span class="b-icon b-icon__shield "></span></a>':'') ?></span> &#160; <?php if ( $value['is_banned'] ) { ?><span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_c10600 b-layout__txt_bold" >РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ&nbsp;Р·Р°Р±Р°РЅРµРЅ.</span><?php } ?>
                            </div>
-                           <? if ($value['spec_name'] != '') { ?><div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_5 b-layout__txt_bold">Специализация: <?=$value['spec_name']?></div><? }?>
+                           <? if ($value['spec_name'] != '') { ?><div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_5 b-layout__txt_bold">РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ: <?=$value['spec_name']?></div><? }?>
                             <?php if ( $value['frl_refused'] == 't' ) { ?>
                                 <div class="b-layout__txt b-layout__txt_color_c10600">
 									<?php if( $_SESSION['uid'] == $value['user_id'] ) { ?>
-                                    Вы отказались от проекта
+                                    Р’С‹ РѕС‚РєР°Р·Р°Р»РёСЃСЊ РѕС‚ РїСЂРѕРµРєС‚Р°
                                     <?php } else { ?>
-                                    Пользователь отказался от проекта
+                                    РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РѕС‚РєР°Р·Р°Р»СЃСЏ РѕС‚ РїСЂРѕРµРєС‚Р°
                                     <?php }?>
                                 </div>
                             <?php } else { //if?>
                                 <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_5">
-                                    <span class="b-layout__txt b-layout__txt_fontsize_11">Отзывы работодателей:</span>
+                                    <span class="b-layout__txt b-layout__txt_fontsize_11">РћС‚Р·С‹РІС‹ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№:</span>
                                     <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_6db335"><a class="b-layout__link b-layout__link_color_6db335" href="/users/<?=$value['login']?>/opinions/?sort=1#op_head" target="_blank">+&nbsp;<?= (int)$value['opinions_plus'] ?></a></span>
                                     <?php /*<span class="r_neutral"><a href="/users/<?=$value['login']?>/opinions/?sort=2#op_head" target="_blank"><?= (int)($value['sbr_opi_null'] + $value['ops_emp_null'])?></a></span>*/ ?>
                                     <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_c10600"><a class="b-layout__link b-layout__link_color_c10600" href="/users/<?=$value['login']?>/opinions/?sort=3#op_head" target="_blank">-&nbsp;<?= (int)$value['opinions_minus']?></a></span>
                                 </div>
-                                <div class="b-layout__txt b-layout__txt_fontsize_11">Рейтинг: <?=rating::round($value['rating'])?></div>
+                                <div class="b-layout__txt b-layout__txt_fontsize_11">Р РµР№С‚РёРЅРі: <?=rating::round($value['rating'])?></div>
                               <?php } ?>
                        </td>
                        <td class="b-layout__td b-layout__td_padright_20 b-layout__td_ipad">
@@ -67,12 +67,12 @@
                                              </td>
                                           </tr>
                                           <?php }//foreach?>
-                                          <? if ($value['country_name'] != 'Не определено') { ?>
+                                          <? if ($value['country_name'] != 'РќРµ РѕРїСЂРµРґРµР»РµРЅРѕ') { ?>
                                           <tr class="b-layout__tr">
-                                             <td class="b-layout__td b-layout__td_padbot_5 b-layout__td_padright_10"><div class="b-layout__txt b-layout__txt_fontsize_11">Город:</div></td>
+                                             <td class="b-layout__td b-layout__td_padbot_5 b-layout__td_padright_10"><div class="b-layout__txt b-layout__txt_fontsize_11">Р“РѕСЂРѕРґ:</div></td>
                                              <td class="b-layout__td b-layout__td_padbot_5 b-layout__td_width_full">
                                                  <div class="b-layout__txt b-layout__txt_fontsize_11">                         
-                                                     <?=$value['country_name']?><?  if ($value['city_name'] != 'Не определено') { ?>, 
+                                                     <?=$value['country_name']?><?  if ($value['city_name'] != 'РќРµ РѕРїСЂРµРґРµР»РµРЅРѕ') { ?>, 
                                                         <?=$value['city_name']?>
                                                      <? } ?>
                                                  </div>
@@ -90,18 +90,18 @@
                               <? if($uid == $project['user_id']) { ?>
                               <div class="uprj-bar<?=($value['in_team'] ? '-act' : '')?>" id="team_<?=$value['login']?>">
                                   <? if(!$value['in_team']) { ?>
-                                  <div class="uprj-st1"><a href="javascript:void(0)" onclick="addToFav('<?=$value['login']?>')" class="lnk-dot-grey">Добавить в Избранные</a></div>
+                                  <div class="uprj-st1"><a href="javascript:void(0)" onclick="addToFav('<?=$value['login']?>')" class="lnk-dot-grey">Р”РѕР±Р°РІРёС‚СЊ РІ РР·Р±СЂР°РЅРЅС‹Рµ</a></div>
                                   <? } else { ?>
-                                  <div class="uprj-st2">Этот исполнитель у вас в избранных (<a href="javascript:void(0)" onclick="delFromFav('<?=$value['login']?>')" class="lnk-dot-grey">убрать</a>)</div>
+                                  <div class="uprj-st2">Р­С‚РѕС‚ РёСЃРїРѕР»РЅРёС‚РµР»СЊ Сѓ РІР°СЃ РІ РёР·Р±СЂР°РЅРЅС‹С… (<a href="javascript:void(0)" onclick="delFromFav('<?=$value['login']?>')" class="lnk-dot-grey">СѓР±СЂР°С‚СЊ</a>)</div>
                                   <? } ?>
-                                  <div class="uprj-st3" style="<?=$value['n_text']?'display:none;':'' ?>"><a href="javascript:void(0)" onclick="addNoteForm(this, '<?=$value['login']?>')" class="lnk-dot-grey">Добавить заметку</a></div>
+                                  <div class="uprj-st3" style="<?=$value['n_text']?'display:none;':'' ?>"><a href="javascript:void(0)" onclick="addNoteForm(this, '<?=$value['login']?>')" class="lnk-dot-grey">Р”РѕР±Р°РІРёС‚СЊ Р·Р°РјРµС‚РєСѓ</a></div>
                               </div>
                               
                               <div class="uprj-note " id="note_<?=$value['login']?>" style="<?=!$value['n_text'] ? 'display:none;' : ''?>">
-                                  <strong class="b-layout__txt b-layout__txt_bold b-layout__txt_color_22b14c" style="margin-left:-1px;">Ваша заметка:</strong>
+                                  <strong class="b-layout__txt b-layout__txt_bold b-layout__txt_color_22b14c" style="margin-left:-1px;">Р’Р°С€Р° Р·Р°РјРµС‚РєР°:</strong>
                                   <div class="b-layout__txt b-layout__txt_inline b-layout__txt_color_22b14c b-layout__txt_fontsize_11 uprj-note-cnt">
                                       <p><?=reformat($value['n_text'], 54, 0, 0, 1, 54)?></p>
-                                      &#160;&#160;<a href="javascript:void(0)" onclick="editNoteForm(this, '<?=$value['login']?>')" class="b-layout__link b-layout__link_dot_c10600">Изменить</a>
+                                      &#160;&#160;<a href="javascript:void(0)" onclick="editNoteForm(this, '<?=$value['login']?>')" class="b-layout__link b-layout__link_dot_c10600">РР·РјРµРЅРёС‚СЊ</a>
                                       <div style="display:none;"><?=$value['n_text']?></div>
                                   </div>
                               </div>
@@ -116,38 +116,38 @@
                     	<?php if($project['user_id'] == $_SESSION['uid'] || $_SESSION['uid'] == $value['user_id'] || hasPermissions('projects')): ?>
                             <div class="b-layout b-layout__txt_padbot_15">
                                 <?php if ($txt_cost = view_one_cost($value['cost_from'], $value['cost_to'], $value['cost_type'])): ?>
-                                    <div class="b-layout__txt"><span class="b-layout__bold">Стоимость:</span> от&nbsp;<?=$txt_cost?></div>
+                                    <div class="b-layout__txt"><span class="b-layout__bold">РЎС‚РѕРёРјРѕСЃС‚СЊ:</span> РѕС‚&nbsp;<?=$txt_cost?></div>
                                 <?php endif; ?>
                                 <?php if ($txt_time = view_one_time($value['time_from'], $value['time_to'], $value['time_type'])): ?>
-                                    <div class="b-layout__txt"><span class="b-layout__bold">Срок:</span> от&nbsp;<?=$txt_time?></div>
+                                    <div class="b-layout__txt"><span class="b-layout__bold">РЎСЂРѕРє:</span> РѕС‚&nbsp;<?=$txt_time?></div>
                                 <?php endif; ?>
                             </div>
                         <?php endif; ?>
                         <? if ($value['prefer_sbr'] === 't') { ?>
-                            <div class="b-layout__txt b-layout__txt_padbot_15">Предпочитаю оплату работы через <a href="/promo/bezopasnaya-sdelka/" target="_blank" class="b-layout__link">Безопасную Сделку</a> <?= view_sbr_shield('', 'relative top_2 margleft_5') ?></div>
+                            <div class="b-layout__txt b-layout__txt_padbot_15">РџСЂРµРґРїРѕС‡РёС‚Р°СЋ РѕРїР»Р°С‚Сѓ СЂР°Р±РѕС‚С‹ С‡РµСЂРµР· <a href="/promo/bezopasnaya-sdelka/" target="_blank" class="b-layout__link">Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ</a> <?= view_sbr_shield('', 'relative top_2 margleft_5') ?></div>
                         <? } ?>
                 
             		    <?php if($is_user_offer) { ?>
                                         <?php if ($project['exec_id'] == $value['user_id']) { ?>
                                         <div class="po_exec">
-                                            <strong>Вы исполнитель</strong><br />
-                                            Работодатель вас определил как исполнителя по этому проекту.
+                                            <strong>Р’С‹ РёСЃРїРѕР»РЅРёС‚РµР»СЊ</strong><br />
+                                            Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ РІР°СЃ РѕРїСЂРµРґРµР»РёР» РєР°Рє РёСЃРїРѕР»РЅРёС‚РµР»СЏ РїРѕ СЌС‚РѕРјСѓ РїСЂРѕРµРєС‚Сѓ.
                                         </div>
                                         <?php  } else if ($value['selected'] == 't') { //if ?>
                                         <div class="po_selected">
-                                            <strong>Вы кандидат</strong><br />
-                                            Работодатель вас определил как кандидата по этому проекту.<br />
-                                            Это значит, что вы прошли предварительный отбор. Может быть, вы будете выбраны исполнителем проекта.
+                                            <strong>Р’С‹ РєР°РЅРґРёРґР°С‚</strong><br />
+                                            Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ РІР°СЃ РѕРїСЂРµРґРµР»РёР» РєР°Рє РєР°РЅРґРёРґР°С‚Р° РїРѕ СЌС‚РѕРјСѓ РїСЂРѕРµРєС‚Сѓ.<br />
+                                            Р­С‚Рѕ Р·РЅР°С‡РёС‚, С‡С‚Рѕ РІС‹ РїСЂРѕС€Р»Рё РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Р№ РѕС‚Р±РѕСЂ. РњРѕР¶РµС‚ Р±С‹С‚СЊ, РІС‹ Р±СѓРґРµС‚Рµ РІС‹Р±СЂР°РЅС‹ РёСЃРїРѕР»РЅРёС‚РµР»РµРј РїСЂРѕРµРєС‚Р°.
                               			</div>
                                         <?php } else if ($value['refused'] == 't' && $value['status'] == projects_status::STATUS_CANCEL) { ?>
                               			<div class="po_refused">
-                                            <strong>Вы получили отказ</strong><br />
-                                            Ваше предложение не подошло работодателю.
+                                            <strong>Р’С‹ РїРѕР»СѓС‡РёР»Рё РѕС‚РєР°Р·</strong><br />
+                                            Р’Р°С€Рµ РїСЂРµРґР»РѕР¶РµРЅРёРµ РЅРµ РїРѕРґРѕС€Р»Рѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЋ.
                               			</div>
                           			    <?php } else if ($value['status'] == projects_status::STATUS_DECLINE) { ?>
                               			<div class="po_refused">
-                                            <strong>Вы отказались от проекта</strong><br />
-                                            Вы отклонили предложение заказчика стать исполнителем проекта.
+                                            <strong>Р’С‹ РѕС‚РєР°Р·Р°Р»РёСЃСЊ РѕС‚ РїСЂРѕРµРєС‚Р°</strong><br />
+                                            Р’С‹ РѕС‚РєР»РѕРЅРёР»Рё РїСЂРµРґР»РѕР¶РµРЅРёРµ Р·Р°РєР°Р·С‡РёРєР° СЃС‚Р°С‚СЊ РёСЃРїРѕР»РЅРёС‚РµР»РµРј РїСЂРѕРµРєС‚Р°.
                               			</div>
                           			    <?php } // elseif?>
                       			   <?php }//if?>
@@ -157,7 +157,7 @@
                             <?php if (isset($order_url) && !empty($order_url)): ?>
                                 <div class="b-buttons b-buttons_padbot_20">
                                     <a href="<?= $order_url ?>" class="b-button b-button_flat b-button_flat_green">
-                                        Перейти в заказ
+                                        РџРµСЂРµР№С‚Рё РІ Р·Р°РєР°Р·
                                     </a>
                                 </div>
                             <?php endif; ?>
@@ -173,7 +173,7 @@
                                 
                                 
                   			    <?php if ($value['frl_new_msg_count'] > 0) {?>
-                  			    <span id="new_msgs_<?=$value['id']?>" style="float: right;"><img src="/images/ico_mail_2.gif" alt="" width="10" height="8" border="0"> <a href="javascript:void(0)" onclick="dialogue_toggle(<?=$value['id']?>); markRead('<?=$value['id']?>');"><?=$value['frl_new_msg_count']?> <?=ending($value['frl_new_msg_count'], 'новое сообщение', 'новых сообщения', 'новых сообщений')?></a></span>
+                  			    <span id="new_msgs_<?=$value['id']?>" style="float: right;"><img src="/images/ico_mail_2.gif" alt="" width="10" height="8" border="0"> <a href="javascript:void(0)" onclick="dialogue_toggle(<?=$value['id']?>); markRead('<?=$value['id']?>');"><?=$value['frl_new_msg_count']?> <?=ending($value['frl_new_msg_count'], 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№')?></a></span>
                   			    <?php } //if?>
                   			    
                   			    <?php if ($dc == 1) { ?>
@@ -186,11 +186,11 @@
                                     <div id="po_dialogue_answer_<?=$value['id']?>" style="font-size:100%;margin:16px 0px 6px 0px;">
                                     <?php if ($value['refused'] != 't' && $value['frl_refused'] != 't') { ?>
                                         <?php if (count($value['dialogue']) > 1) { ?>
-                                        <span style="float: right;"><a href="javascript:void(null)" onclick="dialogue_toggle(<?=$value['id']?>);markRead('<?=$value['id']?>');" class="internal" id="toggle_dialogue_<?=$value['id']?>">Развернуть всю переписку</a> <?=count($value['dialogue'])?></span>
+                                        <span style="float: right;"><a href="javascript:void(null)" onclick="dialogue_toggle(<?=$value['id']?>);markRead('<?=$value['id']?>');" class="internal" id="toggle_dialogue_<?=$value['id']?>">Р Р°Р·РІРµСЂРЅСѓС‚СЊ РІСЃСЋ РїРµСЂРµРїРёСЃРєСѓ</a> <?=count($value['dialogue'])?></span>
                                         <?php } //if?>
-                                        <span id="add_dialog_<?=$value['user_id']?>" class="add_dialog_user"><a href="javascript:void(0);" onclick="answer(<?=$value['id']?>);markRead('<?=$value['id']?>');" class="internal">Написать ответ</a></span>
+                                        <span id="add_dialog_<?=$value['user_id']?>" class="add_dialog_user"><a href="javascript:void(0);" onclick="answer(<?=$value['id']?>);markRead('<?=$value['id']?>');" class="internal">РќР°РїРёСЃР°С‚СЊ РѕС‚РІРµС‚</a></span>
                                     <?php } else if (count($value['dialogue']) > 1) { //if?>
-                                     	<span style="float: right;"><a href="javascript:void(null)" onclick="dialogue_toggle(<?=$value['id']?>);markRead('<?=$value['id']?>');" class="internal" id="toggle_dialogue_<?=$value['id']?>">Развернуть всю переписку</a> <?=count($value['dialogue'])?></span>
+                                     	<span style="float: right;"><a href="javascript:void(null)" onclick="dialogue_toggle(<?=$value['id']?>);markRead('<?=$value['id']?>');" class="internal" id="toggle_dialogue_<?=$value['id']?>">Р Р°Р·РІРµСЂРЅСѓС‚СЊ РІСЃСЋ РїРµСЂРµРїРёСЃРєСѓ</a> <?=count($value['dialogue'])?></span>
                                     <?php } ?>
                                     </div>
                                 <?php } else { //if
@@ -214,12 +214,12 @@
                                             <? if (!is_emp($comment['role']) || $show_info) { ?>
                                                 <span class="<?=is_emp($comment['role'])?'emp':'frl'?>name11"><a href="/users/<?=$comment['login']?>" class="<?=is_emp($comment['role'])?'emp':'frl'?>name11" title="<?=($comment['uname']." ".$comment['usurname'])?>"><?=($comment['uname']." ".$comment['usurname'])?></a> [<a href="/users/<?=$comment['login']?>" class="<?=is_emp($comment['role'])?'emp':'frl'?>name11" title="<?=$comment['login']?>"><?=$comment['login']?></a>]</span> <span id="po_date_<?=$comment['id']?>"><?=dateFormat("[d.m.Y | H:i]", $comment['post_date'])?></span>
                                             <? } else { ?>
-                                                <span class="empname11">Заказчик</span> <span id="po_date_<?=$comment['id']?>"><?=dateFormat("[d.m.Y | H:i]", $comment['post_date'])?></span>
+                                                <span class="empname11">Р—Р°РєР°Р·С‡РёРє</span> <span id="po_date_<?=$comment['id']?>"><?=dateFormat("[d.m.Y | H:i]", $comment['post_date'])?></span>
                                             <? } ?>
                                                 
                                             <?php if ( $i != 1 && hasPermissions('projects') && $comment['login'] != $_SESSION["login"] ) { ?>
                                             <span style="float: right;" id="dialogue-button-<?= $comment['id'] ?>">
-                                                <a class="admn" href="javascript:void(0);" onclick="banned.<?=($comment['is_blocked']=='t'? 'unblockedDialogue': 'blockedDialogue')?>(<?=$comment['id']?>)"><?= $comment['is_blocked']=='f'?"Заблокировать":"Разблокировать"; ?></a>
+                                                <a class="admn" href="javascript:void(0);" onclick="banned.<?=($comment['is_blocked']=='t'? 'unblockedDialogue': 'blockedDialogue')?>(<?=$comment['id']?>)"><?= $comment['is_blocked']=='f'?"Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ":"Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ"; ?></a>
                                             </span>
                                             <?php } ?>
                                                 
@@ -238,9 +238,9 @@
                                                     <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13">
                                                         <span class="b-fon__attent"></span>
                                                         <div class="b-fon__txt b-fon__txt_margleft_20">
-                                                                <span class="b-fon__txt_bold">Комментарий заблокирован</span>. <?= reformat($comment['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>Служба поддержки</a>
-                                                                <div class='b-fon__txt'><?php if ( hasPermissions('projects') ) { ?><?= ($comment['admin_login'] ? "Заблокировал: <a class='b-fon__link' href='/users/{$comment['admin_login']}'>{$comment['admin_uname']} {$comment['admin_usurname']} [{$comment['admin_login']}]</a><br />": '') ?><?php } ?>
-                                                                Дата блокировки: <?= dateFormat('d.m.Y H:i', $comment['blocked_time']) ?></div>
+                                                                <span class="b-fon__txt_bold">РљРѕРјРјРµРЅС‚Р°СЂРёР№ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ</span>. <?= reformat($comment['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё</a>
+                                                                <div class='b-fon__txt'><?php if ( hasPermissions('projects') ) { ?><?= ($comment['admin_login'] ? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°Р»: <a class='b-fon__link' href='/users/{$comment['admin_login']}'>{$comment['admin_uname']} {$comment['admin_usurname']} [{$comment['admin_login']}]</a><br />": '') ?><?php } ?>
+                                                                Р”Р°С‚Р° Р±Р»РѕРєРёСЂРѕРІРєРё: <?= dateFormat('d.m.Y H:i', $comment['blocked_time']) ?></div>
                                                         </div>
                                                     </div>
                                                     <b class="b-fon__b2"></b>
@@ -264,21 +264,21 @@
                           			<div id="po_dialogue_answer_<?=$value['id']?>" style="font-size:100%;margin:16px 0px 6px 0px;">
                           			<?php if ($value['refused'] != 't' && $value['frl_refused'] != 't') { ?>
                           			    <?php if (count($value['dialogue']) > 1) { ?>
-                                        <span style="float: right;"><a href="javascript:void(null)" onclick="dialogue_toggle(<?=$value['id']?>);markRead('<?=$value['id']?>');" class="internal" id="toggle_dialogue_<?=$value['id']?>">Развернуть всю переписку</a> <?=(count($value['dialogue']) - $nBlockedCnt)?></span>
+                                        <span style="float: right;"><a href="javascript:void(null)" onclick="dialogue_toggle(<?=$value['id']?>);markRead('<?=$value['id']?>');" class="internal" id="toggle_dialogue_<?=$value['id']?>">Р Р°Р·РІРµСЂРЅСѓС‚СЊ РІСЃСЋ РїРµСЂРµРїРёСЃРєСѓ</a> <?=(count($value['dialogue']) - $nBlockedCnt)?></span>
                                         <?php } //if ?>
                                         <span id="add_dialog_<?= $value['user_id']?>" class="add_dialog_user">
-                                        <span><a href="javascript:void(0);" onclick="answer(<?=$value['id']?>);markRead('<?=$value['id']?>');" class="internal">Написать ответ</a></span>
+                                        <span><a href="javascript:void(0);" onclick="answer(<?=$value['id']?>);markRead('<?=$value['id']?>');" class="internal">РќР°РїРёСЃР°С‚СЊ РѕС‚РІРµС‚</a></span>
                                         <?php if ($comment['user_id'] == $uid && $dialog_cnt > 1) { ?>
-                                        <span><a href="javascript:void(null)" onclick="answer(<?=$value['id']?>, <?=$edit_comment['id']?>);markRead('<?=$value['id']?>');" class="internal">Редактировать</a></span>
+                                        <span><a href="javascript:void(null)" onclick="answer(<?=$value['id']?>, <?=$edit_comment['id']?>);markRead('<?=$value['id']?>');" class="internal">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></span>
                                       	<script language="javascript">
                                       	last_commentid = <?=$edit_comment['id']?>;
-                                      	edit_block[<?=$value['id']?>] = '&nbsp;&nbsp;<span><a href="javascript:void(null)" onclick="answer(<?=$value['id']?>, last_commentid);markRead(\'<?=$value['id']?>\');" class="internal">Редактировать</a></span>';
+                                      	edit_block[<?=$value['id']?>] = '&nbsp;&nbsp;<span><a href="javascript:void(null)" onclick="answer(<?=$value['id']?>, last_commentid);markRead(\'<?=$value['id']?>\');" class="internal">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></span>';
                                       	</script>
                                       	<?php } //if?>
                                       	</span>
                                     <?php } else { //if?>
                                         <?php if (count($value['dialogue']) > 1) { ?>
-                                      	<span style="float: right;"><a href="javascript:void(null)" onclick="dialogue_toggle(<?=$value['id']?>);markRead('<?=$value['id']?>');" class="internal" id="toggle_dialogue_<?=$value['id']?>">Развернуть всю переписку</a> <?=(count($value['dialogue']) - $nBlockedCnt)?></span>
+                                      	<span style="float: right;"><a href="javascript:void(null)" onclick="dialogue_toggle(<?=$value['id']?>);markRead('<?=$value['id']?>');" class="internal" id="toggle_dialogue_<?=$value['id']?>">Р Р°Р·РІРµСЂРЅСѓС‚СЊ РІСЃСЋ РїРµСЂРµРїРёСЃРєСѓ</a> <?=(count($value['dialogue']) - $nBlockedCnt)?></span>
                                         <?php } //if ?>
                                         <span>&nbsp;</span>
                                     <?php } //else ?>
@@ -291,9 +291,9 @@
                             <div class="po_comments" style="color:#000;<?= ($value['mod_new_msg_count']>0 && hasPermissions('projects')) ? "background-color:#F0FFEC;" : ""?>" id="po_comments_<?=$value['id']?>">
                             <?php if($value['mod_new_msg_count'] && hasPermissions('projects')) { ?>
                                 <?php if(count($value['dialogue'])>1) { ?>
-                                <span id="new_msgs_<?=$value['id']?>" need_change="1" style="float: right;"><a href="javascript:markRead('<?=$value['id']?>');"><img src="/images/ico_mail_2.gif" alt="" width="10" height="8" border="0"> <?=$value['mod_new_msg_count']?> <?=ending($value['mod_new_msg_count'], 'новое сообщение', 'новых сообщения', 'новых сообщений')?></a></span>
+                                <span id="new_msgs_<?=$value['id']?>" need_change="1" style="float: right;"><a href="javascript:markRead('<?=$value['id']?>');"><img src="/images/ico_mail_2.gif" alt="" width="10" height="8" border="0"> <?=$value['mod_new_msg_count']?> <?=ending($value['mod_new_msg_count'], 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№')?></a></span>
                                 <?php } else { //if?>
-                                <span id="new_msgs_<?=$value['id']?>" need_change="0" style="display:none; float: right;"><a href="javascript:markRead('<?=$value['id']?>');"><img src="/images/ico_mail_2.gif" alt="" width="10" height="8" border="0"> <?=$value['mod_new_msg_count']?> <?=ending($value['mod_new_msg_count'], 'новое сообщение', 'новых сообщения', 'новых сообщений')?></a></span>
+                                <span id="new_msgs_<?=$value['id']?>" need_change="0" style="display:none; float: right;"><a href="javascript:markRead('<?=$value['id']?>');"><img src="/images/ico_mail_2.gif" alt="" width="10" height="8" border="0"> <?=$value['mod_new_msg_count']?> <?=ending($value['mod_new_msg_count'], 'РЅРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏ', 'РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёР№')?></a></span>
                                 <? } //else ?>
                             <?php } $dc = count($value['dialogue']);//if ?>
                             
@@ -316,7 +316,7 @@
                                         
                                         <?php if ( $i != 1 && hasPermissions('projects') && $comment['login'] != $_SESSION["login"] ) { ?>
                                         <span style="float: right;" id="dialogue-button-<?= $comment['id'] ?>">
-                                            <a class="admn" href="javascript:void(0);" onclick="banned.<?=($comment['is_blocked']=='t'? 'unblockedDialogue': 'blockedDialogue')?>(<?=$comment['id']?>)"><?= $comment['is_blocked']=='f'?"Заблокировать":"Разблокировать"; ?></a>
+                                            <a class="admn" href="javascript:void(0);" onclick="banned.<?=($comment['is_blocked']=='t'? 'unblockedDialogue': 'blockedDialogue')?>(<?=$comment['id']?>)"><?= $comment['is_blocked']=='f'?"Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ":"Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ"; ?></a>
                                         </span>
                                         <?php } ?>
                                         
@@ -333,9 +333,9 @@
                                                 <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13">
                                                     <span class="b-fon__attent"></span>
                                                     <div class="b-fon__txt b-fon__txt_margleft_20">
-                                                            <span class="b-fon__txt_bold">Комментарий заблокирован</span>. <?= reformat($comment['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>Служба поддержки</a>
-                                                            <div class='b-fon__txt'><?php if ( hasPermissions('projects') ) { ?><?= ($comment['admin_login'] ? "Заблокировал: <a class='b-fon__link' href='/users/{$comment['admin_login']}'>{$comment['admin_uname']} {$comment['admin_usurname']} [{$comment['admin_login']}]</a><br />": '') ?><?php } ?>
-                                                            Дата блокировки: <?= dateFormat('d.m.Y H:i', $comment['blocked_time']) ?></div>
+                                                            <span class="b-fon__txt_bold">РљРѕРјРјРµРЅС‚Р°СЂРёР№ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ</span>. <?= reformat($comment['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё</a>
+                                                            <div class='b-fon__txt'><?php if ( hasPermissions('projects') ) { ?><?= ($comment['admin_login'] ? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°Р»: <a class='b-fon__link' href='/users/{$comment['admin_login']}'>{$comment['admin_uname']} {$comment['admin_usurname']} [{$comment['admin_login']}]</a><br />": '') ?><?php } ?>
+                                                            Р”Р°С‚Р° Р±Р»РѕРєРёСЂРѕРІРєРё: <?= dateFormat('d.m.Y H:i', $comment['blocked_time']) ?></div>
                                                     </div>
                                                 </div>
                                                 <b class="b-fon__b2"></b>
@@ -358,7 +358,7 @@
                                     <?php } //if?>
                                 <?php } //foreach?>
                                 <div class="c"><span style="float: right;"><a href="javascript:void(null)" onclick="if($('new_msgs_<?=$value['id']?>')) { $('new_msgs_<?=$value['id']?>').set('need_change', 0); } dialogue_toggle(<?=$value['id']?>);markRead('<?=$value['id']?>');"
-                                class="internal" id="toggle_dialogue_<?=$value['id']?>">Развернуть всю переписку</a> <?=(count($value['dialogue']) - $nBlockedCnt)?></span></div>
+                                class="internal" id="toggle_dialogue_<?=$value['id']?>">Р Р°Р·РІРµСЂРЅСѓС‚СЊ РІСЃСЋ РїРµСЂРµРїРёСЃРєСѓ</a> <?=(count($value['dialogue']) - $nBlockedCnt)?></span></div>
                             <?php } else { //if?>
                                 <?php $sPostText = ($project['kind'] != 4 && ($value['dialogue'][0]['moderator_status'] === '0' || $value['moderator_status'] === '0')) ? $stop_words->replace($value['dialogue'][0]['post_text']) : $value['dialogue'][0]['post_text']; ?>
                                 <?=reformat(rtrim(strip_tags($sPostText)), 50, 0, 0, 1)?>
@@ -391,7 +391,7 @@
                                                      <?php if ($value['portf_id'.$i] == 0) { ?>
                                                          <?php if (in_array(CFile::getext($value['pict'.$i]), $GLOBALS['graf_array']) || strtolower(CFile::getext($value['pict'.$i])) == "mp3") { ?>
                                                             <?php if ($value['prev_pict'.$i] != '') { ?>
-                                                            <div style="text-align:left"><a href="/projects/viewwork.php?pid=<?=$value['project_id']?>&user=<?=$value['login']?>&wid=<?=$i?>" target="_blank" class="blue" title="<?="{$foto_alt} фото ".$value['prev_pict'.$i]?>" style="text-decoration:none"><?=view_preview($value['login'], $value['prev_pict'.$i], "upload", $align, false, true, "{$foto_alt} фото ".$value['prev_pict'.$i])?></a></div>
+                                                            <div style="text-align:left"><a href="/projects/viewwork.php?pid=<?=$value['project_id']?>&user=<?=$value['login']?>&wid=<?=$i?>" target="_blank" class="blue" title="<?="{$foto_alt} С„РѕС‚Рѕ ".$value['prev_pict'.$i]?>" style="text-decoration:none"><?=view_preview($value['login'], $value['prev_pict'.$i], "upload", $align, false, true, "{$foto_alt} С„РѕС‚Рѕ ".$value['prev_pict'.$i])?></a></div>
                                                             <?php } else { //if ?>
                                                             <div style="text-align:left;font-size:11px;">
                                                                 <a href="/projects/viewwork.php?pid=<?=$value['project_id']?>&user=<?=$value['login']?>&wid=<?=$i?>" target="_blank" class="blue" title=""><img src="/images/<?=$aData['file_ico']?>" alt="<?=$aData['file_name']?>" title="<?=$aData['file_name']?>" /></a>
@@ -400,7 +400,7 @@
                                                             <?php } //else ?>
                                                          <?php } else { //if?>
                                                             <?php if ($value['prev_pict'.$i] != '') { ?>
-                                                            <div style="text-align:left"><a href="<?=WDCPREFIX?>/users/<?=$value['login']?>/upload/<?=$value['pict'.$i]?>" target="_blank" class="blue" title="<?="{$foto_alt} фото ".$value['pict'.$i]?>" style="text-decoration:none"><?=view_preview($value['login'], $value['prev_pict'.$i], "upload", $align, false, true, "{$foto_alt} фото ".$value['pict'.$i])?></a></div>
+                                                            <div style="text-align:left"><a href="<?=WDCPREFIX?>/users/<?=$value['login']?>/upload/<?=$value['pict'.$i]?>" target="_blank" class="blue" title="<?="{$foto_alt} С„РѕС‚Рѕ ".$value['pict'.$i]?>" style="text-decoration:none"><?=view_preview($value['login'], $value['prev_pict'.$i], "upload", $align, false, true, "{$foto_alt} С„РѕС‚Рѕ ".$value['pict'.$i])?></a></div>
                                                             <?php } else { //if?>
                                                             <div style="text-align:left;font-size:11px;"><a href="<?=WDCPREFIX?>/users/<?=$value['login']?>/upload/<?=$value['pict'.$i]?>" target="_blank" class="blue" title=""><img src="/images/<?=$aData['file_ico']?>" alt="<?=$aData['file_name']?>" title="<?=$aData['file_name']?>" /></a></div>
                                                             <div><?=$aData['file_ext']?> <?=$aData['file_size_str']?>&nbsp;&nbsp;</div>
@@ -408,7 +408,7 @@
                                                          <?php } //else ?>
                                                      <?php } else { ?>
                                                          <?php if ($value['prev_pict'.$i] != '') { ?>
-                                                         <div style="text-align:left"><a href="/users/<?=$value['login']?>/viewproj.php?prjid=<?=$value['portf_id'.$i]?>" target="_blank" class="blue" title="<?="{$foto_alt} фото ".$value['prev_pict'.$i]?>" style="text-decoration:none"><?=view_preview($value['login'], $value['prev_pict'.$i], "upload", $align, false, true, "{$foto_alt} фото ".$value['prev_pict'.$i])?></a></div>
+                                                         <div style="text-align:left"><a href="/users/<?=$value['login']?>/viewproj.php?prjid=<?=$value['portf_id'.$i]?>" target="_blank" class="blue" title="<?="{$foto_alt} С„РѕС‚Рѕ ".$value['prev_pict'.$i]?>" style="text-decoration:none"><?=view_preview($value['login'], $value['prev_pict'.$i], "upload", $align, false, true, "{$foto_alt} С„РѕС‚Рѕ ".$value['prev_pict'.$i])?></a></div>
                                                          <?php } else { //if?>
                                                          <div style="text-align:left;font-size:11px;"><a href="/users/<?=$value['login']?>/viewproj.php?prjid=<?=$value['portf_id'.$i]?>" target="_blank" class="blue" title=""><img src="/images/<?=$aData['file_ico']?>" alt="<?=$aData['file_name']?>" title="<?=$aData['file_name']?>" /></a></div>
                                                          <div><?=$aData['file_ext']?> <?=$aData['file_size_str']?>&nbsp;&nbsp;</div>
@@ -420,7 +420,7 @@
 										     </tr>
     									</table>
     								</div>
-    								<div class="avs-contest"><span class="<?=$aData['virus_class']?>" <?=($aData['virus_class'] == 'avs-nocheck' ? 'title="Антивирусом проверяются файлы, загруженные после 1&nbsp;июня&nbsp;2011&nbsp;года"' : '')?>><nobr><?=$aData['virus_msg']?></nobr></span></div>
+    								<div class="avs-contest"><span class="<?=$aData['virus_class']?>" <?=($aData['virus_class'] == 'avs-nocheck' ? 'title="РђРЅС‚РёРІРёСЂСѓСЃРѕРј РїСЂРѕРІРµСЂСЏСЋС‚СЃСЏ С„Р°Р№Р»С‹, Р·Р°РіСЂСѓР¶РµРЅРЅС‹Рµ РїРѕСЃР»Рµ 1&nbsp;РёСЋРЅСЏ&nbsp;2011&nbsp;РіРѕРґР°"' : '')?>><nobr><?=$aData['virus_msg']?></nobr></span></div>
                                     <?php } //if ?>
                                     </div>
                                 </td>
@@ -431,11 +431,11 @@
               	        <?php if (hasPermissions('projects') && $value['user_id'] != $_SESSION['uid'] ) { ?>
               	        <div class="prj-admin-btn c" style=" padding-bottom:0; padding-top:0; float:right">
                             <ul>
-                                <li id="project-button-<?=$value['id']?>"><a class="admn" href="javascript:void(0);" onclick="banned.<?=($value['is_blocked']=='t'? 'unblockedProjectOffer': 'blockedProjectOffer')?>(<?=$value['id']?>,<?=$value['user_id']?>,<?= $project['id']?>)"><?= $value['is_blocked']=='f'?"Заблокировать":"Разблокировать"; ?></a></li>
+                                <li id="project-button-<?=$value['id']?>"><a class="admn" href="javascript:void(0);" onclick="banned.<?=($value['is_blocked']=='t'? 'unblockedProjectOffer': 'blockedProjectOffer')?>(<?=$value['id']?>,<?=$value['user_id']?>,<?= $project['id']?>)"><?= $value['is_blocked']=='f'?"Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ":"Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ"; ?></a></li>
                                 <li><?php if ($value['warn']<3 && !$value['is_banned'] && !$value['ban_where'] ) { ?>
-                            <span class='warnlink-<?= $value['user_id']?>'><a style='color: red;' href='javascript: void(0);' onclick='banned.warnUser(<?= $value['user_id']?>, 0, "projects", "p<?= $project['id']?>", 0); return false;'>Сделать предупреждение (<span class='warncount-<?= $value['user_id']?>'><?= ($value['warn'] ? $value['warn'] : 0);?></span>)</a></span> | 
+                            <span class='warnlink-<?= $value['user_id']?>'><a style='color: red;' href='javascript: void(0);' onclick='banned.warnUser(<?= $value['user_id']?>, 0, "projects", "p<?= $project['id']?>", 0); return false;'>РЎРґРµР»Р°С‚СЊ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ (<span class='warncount-<?= $value['user_id']?>'><?= ($value['warn'] ? $value['warn'] : 0);?></span>)</a></span> | 
                             <?php } else { 
-                                $sBanTitle = (!$value['is_banned'] && !$value['ban_where']) ? 'Забанить!' : 'Разбанить';
+                                $sBanTitle = (!$value['is_banned'] && !$value['ban_where']) ? 'Р—Р°Р±Р°РЅРёС‚СЊ!' : 'Р Р°Р·Р±Р°РЅРёС‚СЊ';
                                 ?>
                             <span class='warnlink-<?= $value['user_id']?>'><a class="admn" href="javascript:void(0);" onclick="banned.userBan(<?=$value['user_id']?>, 'p<?= $project['id']?>',0)"><?=$sBanTitle?></a></span> | 
                             <?php } //else ?></li>
@@ -450,9 +450,9 @@
                                 <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13">
                                     <span class="b-fon__attent"></span>
                                     <div class="b-fon__txt b-fon__txt_margleft_20">
-                                            <span class="b-fon__txt_bold">Предложение заблокировано</span>. <?= reformat($value['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>Служба поддержки</a>
-                                            <div class='b-fon__txt'><?php if ( hasPermissions('projects') ) { ?><?= ($value['admin_login'] ? "Заблокировал: <a class='b-fon__link' href='/users/{$value['admin_login']}'>{$value['admin_uname']} {$value['admin_usurname']} [{$value['admin_login']}]</a><br />": '') ?><?php } ?>
-                                            Дата блокировки: <?= dateFormat('d.m.Y H:i', $value['blocked_time']) ?></div>
+                                            <span class="b-fon__txt_bold">РџСЂРµРґР»РѕР¶РµРЅРёРµ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРѕ</span>. <?= reformat($value['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё</a>
+                                            <div class='b-fon__txt'><?php if ( hasPermissions('projects') ) { ?><?= ($value['admin_login'] ? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°Р»: <a class='b-fon__link' href='/users/{$value['admin_login']}'>{$value['admin_uname']} {$value['admin_usurname']} [{$value['admin_login']}]</a><br />": '') ?><?php } ?>
+                                            Р”Р°С‚Р° Р±Р»РѕРєРёСЂРѕРІРєРё: <?= dateFormat('d.m.Y H:i', $value['blocked_time']) ?></div>
                                     </div>
                                 </div>
                                 <b class="b-fon__b2"></b>
@@ -467,11 +467,11 @@
                                 <?php if ( !($project['kind'] == 9 && !is_emp()) ): ?>
                                 <?php if (!$uid) { ?>
                                <div class="b-buttons b-buttons_padtop_15">
-                                    <a href="/new-personal-order/<?=$value['login']?>/" class="b-button b-button_flat b-button_flat_green ">Предложить заказ</a>
-                                    <span class="b-layout__txt b-layout__txt_fontsize_11"> &#160; <a class="b-layout__link b-layout__link_bold" href="/users/<?=$value['login']?>/tu/">Посмотреть все услуги фрилансера</a>  или <a class="b-layout__link b-layout__link_bold" href="/users/<?=$value['login']?>/">его портфолио</a></span>
+                                    <a href="/new-personal-order/<?=$value['login']?>/" class="b-button b-button_flat b-button_flat_green ">РџСЂРµРґР»РѕР¶РёС‚СЊ Р·Р°РєР°Р·</a>
+                                    <span class="b-layout__txt b-layout__txt_fontsize_11"> &#160; <a class="b-layout__link b-layout__link_bold" href="/users/<?=$value['login']?>/tu/">РџРѕСЃРјРѕС‚СЂРµС‚СЊ РІСЃРµ СѓСЃР»СѓРіРё С„СЂРёР»Р°РЅСЃРµСЂР°</a>  РёР»Рё <a class="b-layout__link b-layout__link_bold" href="/users/<?=$value['login']?>/">РµРіРѕ РїРѕСЂС‚С„РѕР»РёРѕ</a></span>
                                </div>
                                <?php } else { ?>
-                           <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_10"><a class="b-layout__link b-layout__link_bold b-layout__link_fontsize_11 b-layout__link_color_0f71c8" href="/users/<?=$value['login']?>/tu/">Посмотреть все услуги фрилансера</a>  или <a class="b-layout__link b-layout__link_bold b-layout__link_fontsize_11 b-layout__link_color_0f71c8" href="/users/<?=$value['login']?>/">его портфолио</a></div>
+                           <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_10"><a class="b-layout__link b-layout__link_bold b-layout__link_fontsize_11 b-layout__link_color_0f71c8" href="/users/<?=$value['login']?>/tu/">РџРѕСЃРјРѕС‚СЂРµС‚СЊ РІСЃРµ СѓСЃР»СѓРіРё С„СЂРёР»Р°РЅСЃРµСЂР°</a>  РёР»Рё <a class="b-layout__link b-layout__link_bold b-layout__link_fontsize_11 b-layout__link_color_0f71c8" href="/users/<?=$value['login']?>/">РµРіРѕ РїРѕСЂС‚С„РѕР»РёРѕ</a></div>
                            <?php } ?>
                                 <?php endif; ?>
                            <div id="warnreason-o<?=$value['id']?>" style="display:none; margin-bottom: 5px;">&nbsp;</div>
@@ -480,30 +480,30 @@
             		    <?php if ($uid && $value['user_id'] == $uid && $value['refused']!='t' && $project['closed'] != 't' && $value['frl_refused'] != 't' && $project['exec_id'] != $uid && $value['is_blocked'] != 't') { $ref_view=true;?>
             		    <div id="frl_edit_bar" class="b-layout__txt b-layout__txt_padtop_10">
             		        <? if ($value['is_blocked'] != 't') { ?>
-                                <a href="/projects/index.php?pid=<?=$value['project_id']?>&edit=<?=$value['dialogue'][0]['id']?><?=$from_prm_s?>" class="b-layout__link b-layout__link_color_6db335 b-layout__link_bold ">Редактировать предложение</a>&nbsp;&nbsp;
-                                <a class="b-layout__link b-layout__link_dot_c10600 b-layout__link_bold" href="javascript:void(0);" onclick="if(confirm('Вы действительно хотите отказаться от этого проекта?')) { if($('resetbtn')!= undefined) {$('resetbtn').click();} xajax_FrlRefuse(<?=$value['project_id']?>)}">Отказаться от проекта</a>
+                                <a href="/projects/index.php?pid=<?=$value['project_id']?>&edit=<?=$value['dialogue'][0]['id']?><?=$from_prm_s?>" class="b-layout__link b-layout__link_color_6db335 b-layout__link_bold ">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РїСЂРµРґР»РѕР¶РµРЅРёРµ</a>&nbsp;&nbsp;
+                                <a class="b-layout__link b-layout__link_dot_c10600 b-layout__link_bold" href="javascript:void(0);" onclick="if(confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ РѕС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ СЌС‚РѕРіРѕ РїСЂРѕРµРєС‚Р°?')) { if($('resetbtn')!= undefined) {$('resetbtn').click();} xajax_FrlRefuse(<?=$value['project_id']?>)}">РћС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ РїСЂРѕРµРєС‚Р°</a>
                             <?php }?>
                         </div>
                         <? if($error_is_color) print("<br/><br/>".view_error($error_is_color));?> 
                         <?php } //if?>
                         <?php if ($project['kind'] != 9 && $ref_view == false && $uid && $value['user_id'] == $uid && $value['refused']!='t' && $value['frl_refused'] != 't' && $project['exec_id'] != $uid && $value['is_blocked'] != 't') {?>
                         <div id="frl_edit_bar" class="b-layout__txt b-layout__txt_padtop_10">
-                            <a class="b-layout__link b-layout__link_dot_c10600 b-layout__link_bold" href="javascript:void(0)" onclick="if(confirm('Вы действительно хотите отказаться от этого проекта?')) { if($('resetbtn')!= undefined) {$('resetbtn').click();} xajax_FrlRefuse(<?=$value['project_id']?>) }">Отказаться от проекта</a>
+                            <a class="b-layout__link b-layout__link_dot_c10600 b-layout__link_bold" href="javascript:void(0)" onclick="if(confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ РѕС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ СЌС‚РѕРіРѕ РїСЂРѕРµРєС‚Р°?')) { if($('resetbtn')!= undefined) {$('resetbtn').click();} xajax_FrlRefuse(<?=$value['project_id']?>) }">РћС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ РїСЂРѕРµРєС‚Р°</a>
                         </div>
                         <?php } //if?>
                     </div>
                 </div>
         <?php if ( $project['kind'] != 9 && $projectObject->isAllowShowOffers()): ?>        
 	<? if(($value['user_id']==get_uid())&&($real_offers_count > 0)) { ?>
-		<h2  class="b-layout__title">Ответов от фрилансеров - <?= $real_offers_count ?></h2>
+		<h2  class="b-layout__title">РћС‚РІРµС‚РѕРІ РѕС‚ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ - <?= $real_offers_count ?></h2>
 		<? if ($notHiddenOffersCount != $real_offers_count) {
-            // сколько ртветов скрыто
+            // СЃРєРѕР»СЊРєРѕ СЂС‚РІРµС‚РѕРІ СЃРєСЂС‹С‚Рѕ
             $count_hidden_offers = $real_offers_count - $notHiddenOffersCount;
         } ?>
 	<? } elseif($real_offers_count == 0) { ?>
-        <h2 class="b-layout__title">Никто из фрилансеров пока не ответил<?= (get_uid())? ', вы первый':'' ?></h2>
+        <h2 class="b-layout__title">РќРёРєС‚Рѕ РёР· С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РїРѕРєР° РЅРµ РѕС‚РІРµС‚РёР»<?= (get_uid())? ', РІС‹ РїРµСЂРІС‹Р№':'' ?></h2>
 	<? /*} elseif ($user_offer_exist) { //else?>
-        <h2  class="b-layout__title">Ваше предложение</h2>
+        <h2  class="b-layout__title">Р’Р°С€Рµ РїСЂРµРґР»РѕР¶РµРЅРёРµ</h2>
     <? */ } elseif ($notHiddenOffersCount == 0 && $real_offers_count != 0) { ?>
     	<h2  class="b-layout__title"><?=$real_offers_count.' '.getSymbolicName($real_offers_count, 'hidden_offers')?></h2>
     	<? $count_hidden_offers = $real_offers_count; ?>

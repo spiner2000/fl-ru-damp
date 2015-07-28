@@ -30,7 +30,7 @@ if (!$xajax) {
     
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction('saveHeaderNote', $_SERVER['DOCUMENT_ROOT'] . '/xajax/notes.server.php'));
     
-    // Ïëàòíûå ðåêîìåíäàöèè
+    // ÐŸÐ»Ð°Ñ‚Ð½Ñ‹Ðµ Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´Ð°Ñ†Ð¸Ð¸
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction('NewAdvice', $_SERVER['DOCUMENT_ROOT'] . '/xajax/paid-advices.server.php'));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction('DeclineAdvice', $_SERVER['DOCUMENT_ROOT'] . '/xajax/paid-advices.server.php'));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction('RestoreAdvice', $_SERVER['DOCUMENT_ROOT'] . '/xajax/paid-advices.server.php'));
@@ -49,7 +49,7 @@ if (!$xajax) {
     $xajax->register( XAJAX_FUNCTION, new xajaxUserFunction('editFeedbackNew', $_SERVER['DOCUMENT_ROOT'] . '/xajax/sbr.server.php') );
     $xajax->register( XAJAX_FUNCTION, new xajaxUserFunction('DeleteFeedback', $_SERVER['DOCUMENT_ROOT'] . '/xajax/sbr.server.php') );
     
-    //Óïðàâëåíèå îòçûâàìè ïî çàêàçó ÒÓ
+    //Ð£Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð¾Ñ‚Ð·Ñ‹Ð²Ð°Ð¼Ð¸ Ð¿Ð¾ Ð·Ð°ÐºÐ°Ð·Ñƒ Ð¢Ð£
     $xajax->register( XAJAX_FUNCTION, new xajaxUserFunction('tservicesOrdersDeleteFeedback', $_SERVER['DOCUMENT_ROOT'] . '/xajax/tservices_orders.server.php') );
     $xajax->register( XAJAX_FUNCTION, new xajaxUserFunction('tservicesOrdersUpdateFeedback', $_SERVER['DOCUMENT_ROOT'] . '/xajax/tservices_orders.server.php') );
     $xajax->register( XAJAX_FUNCTION, new xajaxUserFunction('tservicesOrdersEditFeedback', $_SERVER['DOCUMENT_ROOT'] . '/xajax/tservices_orders.server.php') );
@@ -58,10 +58,10 @@ if (!$xajax) {
     $xajax->register( XAJAX_FUNCTION, new xajaxUserFunction('projectUpdateFeedback', $_SERVER['DOCUMENT_ROOT'] . '/xajax/projects_status.server.php') );
     $xajax->register( XAJAX_FUNCTION, new xajaxUserFunction('projectEditFeedback', $_SERVER['DOCUMENT_ROOT'] . '/xajax/projects_status.server.php') );
     
-    //Ïîêàçûâàåì êîíòàêòû ïî çàïðîñó
+    //ÐŸÐ¾ÐºÐ°Ð·Ñ‹Ð²Ð°ÐµÐ¼ ÐºÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ñ‹ Ð¿Ð¾ Ð·Ð°Ð¿Ñ€Ð¾ÑÑƒ
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("getContactsInfo", $_SERVER['DOCUMENT_ROOT'] . "/xajax/users.server.php"));
     
-    //Àÿêñ îáðàáîò÷èêè ïîïàïà ïîêóïêè ÏÐÎ
+    //ÐÑÐºÑ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚Ñ‡Ð¸ÐºÐ¸ Ð¿Ð¾Ð¿Ð°Ð¿Ð° Ð¿Ð¾ÐºÑƒÐ¿ÐºÐ¸ ÐŸÐ Ðž
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROPayAccount", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROGetYandexKassaLink", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROGetPlatipotomLink", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));

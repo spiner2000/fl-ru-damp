@@ -28,5 +28,5 @@ $url = isset($_GET['test'])?'https://demomoney.yandex.ru/eshop.xml':
     <input name="customerNumber" value="481255" type="hidden" />
     <!-- <input name="paymentType" value="CD" type="hidden" /> -->
     
-    <input type="submit" value="Êóïèòü" />
+    <input type="submit" value="ÐšÑƒÐ¿Ð¸Ñ‚ÑŒ" />
 </form>

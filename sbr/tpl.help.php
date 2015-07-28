@@ -4,13 +4,13 @@
             <tbody>
                 <tr class="b-layout__tr">
                     <td class="b-layout__one b-icon_help_ask">
-                        <div class="b-layout__txt">Помощь по «Безопасным Сделкам»<br />удобным для вас способом:</div>
+                        <div class="b-layout__txt">РџРѕРјРѕС‰СЊ РїРѕ В«Р‘РµР·РѕРїР°СЃРЅС‹Рј РЎРґРµР»РєР°РјВ»<br />СѓРґРѕР±РЅС‹Рј РґР»СЏ РІР°СЃ СЃРїРѕСЃРѕР±РѕРј:</div>
                     </td>
                     <td class="b-layout__one b-layout__one_padright_25 b-icon_help_article">
-                        <div class="b-layout__txt b-layout__txt_padtop_13">Прочтите статью в <noindex><a rel="nofollow" href="https://feedback.fl.ru/list/27457-baza-znanij-flru/?category=9234" target="_blank" class="b-layout__link">разделе «Помощь»</a></noindex></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_13">РџСЂРѕС‡С‚РёС‚Рµ СЃС‚Р°С‚СЊСЋ РІ <noindex><a rel="nofollow" href="https://feedback.fl.ru/list/27457-baza-znanij-flru/?category=9234" target="_blank" class="b-layout__link">СЂР°Р·РґРµР»Рµ В«РџРѕРјРѕС‰СЊВ»</a></noindex></div>
                     </td>
                     <td class="b-layout__one b-icon_help_letter">
-                        <div class="b-layout__txt b-layout__txt_padtop_13">Напишите в <a href="/about/feedback/" class="b-layout__link">службу поддержки</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_13">РќР°РїРёС€РёС‚Рµ РІ <a href="/about/feedback/" class="b-layout__link">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a></div>
                     </td>
                 </tr>
             </tbody>

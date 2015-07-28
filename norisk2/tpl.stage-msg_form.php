@@ -16,8 +16,8 @@
                     <a href="javascript:;">&lt;h&gt;</a>
                 </li>
             */?>
-                <li><a href="javascript:;" id="msg_fs_toggler<?=$msg['id']?>">Прикрепить файл к сообщению</a></li>
-                <li><a href="javascript:;" id="msg_yt_toggler<?=$msg['id']?>">Добавить ссылку на YouTube/RuTube/Vimeo видео</a></li>
+                <li><a href="javascript:;" id="msg_fs_toggler<?=$msg['id']?>">РџСЂРёРєСЂРµРїРёС‚СЊ С„Р°Р№Р» Рє СЃРѕРѕР±С‰РµРЅРёСЋ</a></li>
+                <li><a href="javascript:;" id="msg_yt_toggler<?=$msg['id']?>">Р”РѕР±Р°РІРёС‚СЊ СЃСЃС‹Р»РєСѓ РЅР° YouTube/RuTube/Vimeo РІРёРґРµРѕ</a></li>
             </ul>
             <div class="cl-form-files" id="msgs_files_box<?=$msg['id']?>">
                 
@@ -26,7 +26,7 @@
                         <? foreach($msg['attach'] as $id=>$a) { if($msg['delattach'][$id]) continue; ?>
                         <li>
                             <a href="javascript:;" onclick="SBR_STAGE.delMsgAttach(this, <?=$msg['id']?>, <?=$a['id']?>)">
-                              <img src="/images/btn-remove2.png" alt="Удалить">
+                              <img src="/images/btn-remove2.png" alt="РЈРґР°Р»РёС‚СЊ">
                             </a>
                             <a href="<?=WDCPREFIX.'/'.$a['path'].$a['name']?>" target="_blank"><?=($a['orig_name'] ? $a['orig_name'] : $a['name'])?></a>
                         </li>
@@ -37,10 +37,10 @@
                     <ul class="form-files-list" id="msg_files_list<?=$msg['id']?>"><li class="c"><input type="file" size="23" class="i-file" name="attach[]" /></li></ul>
                     <div class="form-files-inf">
                         <p>
-                        Вы можете прикрепить к сообщению:<br />
-                        <strong>Файл:</strong> <?=sbr::MAX_FILE_SIZE/1024/1024?> Мб.<br />
-                        <strong>Картинку</strong>: 600x1000 пикселей, 300 Кб.<br />
-                        Файлы следующих форматов запрещены к загрузке: <?=implode(', ', $GLOBALS['disallowed_array'])?>
+                        Р’С‹ РјРѕР¶РµС‚Рµ РїСЂРёРєСЂРµРїРёС‚СЊ Рє СЃРѕРѕР±С‰РµРЅРёСЋ:<br />
+                        <strong>Р¤Р°Р№Р»:</strong> <?=sbr::MAX_FILE_SIZE/1024/1024?> РњР±.<br />
+                        <strong>РљР°СЂС‚РёРЅРєСѓ</strong>: 600x1000 РїРёРєСЃРµР»РµР№, 300 РљР±.<br />
+                        Р¤Р°Р№Р»С‹ СЃР»РµРґСѓСЋС‰РёС… С„РѕСЂРјР°С‚РѕРІ Р·Р°РїСЂРµС‰РµРЅС‹ Рє Р·Р°РіСЂСѓР·РєРµ: <?=implode(', ', $GLOBALS['disallowed_array'])?>
                         </p>
                     </div>
                     <div style="clear:both;"></div>
@@ -48,16 +48,16 @@
             <div class="cl-form-video" id="msgs_yt_box<?=$msg['id']?>" style="height:auto">
                 <? if($error['yt_link']) { ?><div style="color:red"><?=$error['yt_link']?></div><? } ?>
                 <input type="text" name="yt_link" value="<?=html_attr($msg['yt_link'])?>" />&nbsp;
-                <label>Например:&nbsp;http://www.youtube.com/watch?v=bNF_P281Uu4</label>
+                <label>РќР°РїСЂРёРјРµСЂ:&nbsp;http://www.youtube.com/watch?v=bNF_P281Uu4</label>
             </div>
             <div class="cl-form-btns">
                 <? if(!$is_main) { ?>
-                  <a href="javascript:;" class="lnk-dot-grey cl-form-cancel" onclick="SBR_STAGE.delMsgForm(<?=($msg['id'] ? $msg['id'] : $msg['parent_id'])?>)">Отменить</a>
+                  <a href="javascript:;" class="lnk-dot-grey cl-form-cancel" onclick="SBR_STAGE.delMsgForm(<?=($msg['id'] ? $msg['id'] : $msg['parent_id'])?>)">РћС‚РјРµРЅРёС‚СЊ</a>
                 <? } ?>
-                <a href="javascript:;" class="btnr btnr-grey" onclick="SBR.submitLock(document.getElementById('msg_form<?=$msg['id']?>'))"><span class="btn-lc"><span class="btn-m"><span class="btn-txt"><?=($is_edit ? 'Сохранить' : 'Комментировать')?></span></span></span></a>
+                <a href="javascript:;" class="btnr btnr-grey" onclick="SBR.submitLock(document.getElementById('msg_form<?=$msg['id']?>'))"><span class="btn-lc"><span class="btn-m"><span class="btn-txt"><?=($is_edit ? 'РЎРѕС…СЂР°РЅРёС‚СЊ' : 'РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ')?></span></span></span></a>
                 <? if (hasPermissions('sbr')) { ?>
                 <div class="b-layout b-layout_inline-block b-layout_pad_10">
-                    <div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_inline-block">Срок ожидания ответа</div>&nbsp;
+                    <div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_inline-block">РЎСЂРѕРє РѕР¶РёРґР°РЅРёСЏ РѕС‚РІРµС‚Р°</div>&nbsp;
                     <?
                     $dateMaxLimit = "date_max_limit_" . date('Y_m_d', strtotime('+ 30 days'));
                     $dateMinLimit = "date_min_limit_" . date('Y_m_d', strtotime('+ 1 day'));

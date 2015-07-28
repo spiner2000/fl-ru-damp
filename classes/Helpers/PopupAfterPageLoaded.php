@@ -6,7 +6,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/template.php';
 /**
  * Class PopupAfterPageLoaded
  * 
- * Показывает попап после загрузки страницы
+ * РџРѕРєР°Р·С‹РІР°РµС‚ РїРѕРїР°Рї РїРѕСЃР»Рµ Р·Р°РіСЂСѓР·РєРё СЃС‚СЂР°РЅРёС†С‹
  */
 class PopupAfterPageLoaded 
 {
@@ -42,7 +42,7 @@ class PopupAfterPageLoaded
 
 
     /**
-    * Создаем синглтон
+    * РЎРѕР·РґР°РµРј СЃРёРЅРіР»С‚РѕРЅ
     * @return object
     */
     public static function getInstance() 

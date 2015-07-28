@@ -5,13 +5,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/classes/sms_gate_a1.php';
 require_once($_SERVER['DOCUMENT_ROOT'].'/tu/models/TServiceOrderModel.php');
 
 /**
- * Отправка ЛС по Типовым Услугам
+ * РћС‚РїСЂР°РІРєР° Р›РЎ РїРѕ РўРёРїРѕРІС‹Рј РЈСЃР»СѓРіР°Рј
  */
 class messages_tservices extends messages
 {
     
     /**
-     * Отправка ЛС по заказу ТУ
+     * РћС‚РїСЂР°РІРєР° Р›РЎ РїРѕ Р·Р°РєР°Р·Сѓ РўРЈ
      * 
      * @param string $login
      * @param string $message

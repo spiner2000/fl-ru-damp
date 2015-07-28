@@ -27,7 +27,7 @@ switch($site) {
         $rt_checked = !!$rez_type;
         if($rt_disabled = $sbr->checkChangeRT()) {
             if(!($rez_type = $sbr->user_reqvs['rez_type']))
-                 $rez_type = sbr::RT_RU; // если не установлен флаг в базе, но checkChangeRT, то считаем, что он руський (т.к. до флага только резиденты были).
+                 $rez_type = sbr::RT_RU; // РµСЃР»Рё РЅРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅ С„Р»Р°Рі РІ Р±Р°Р·Рµ, РЅРѕ checkChangeRT, С‚Рѕ СЃС‡РёС‚Р°РµРј, С‡С‚Рѕ РѕРЅ СЂСѓСЃСЊРєРёР№ (С‚.Рє. РґРѕ С„Р»Р°РіР° С‚РѕР»СЊРєРѕ СЂРµР·РёРґРµРЅС‚С‹ Р±С‹Р»Рё).
         }
         
         if($action == 'create' && $rt_checked) {
@@ -37,17 +37,17 @@ switch($site) {
             }
             
             if($rez_type != $sbr->user_reqvs['rez_type']) {
-                //@todo: запрещаем изменять финансы в старой СБР #29196
+                //@todo: Р·Р°РїСЂРµС‰Р°РµРј РёР·РјРµРЅСЏС‚СЊ С„РёРЅР°РЅСЃС‹ РІ СЃС‚Р°СЂРѕР№ РЎР‘Р  #29196
                 //sbr_meta::setUserReqv($sbr->uid, $rez_type, $sbr->user_reqvs['form_type'], $rrr, TRUE);
                 $sbr->user_reqvs['rez_type'] = $rez_type;
             }
-            $_POST['cost_sys'] = exrates::BANK; // По умолчанию
+            $_POST['cost_sys'] = exrates::BANK; // РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
             if($sbr->_new_create($_POST, $attachedfiles)) {
                 if ($sbr->isDraft()) {
                     header_location_exit('/' . sbr::NEW_TEMPLATE_SBR . '/?site=drafts');
                 }
                 
-                // переход на страницу прокладку                
+                // РїРµСЂРµС…РѕРґ РЅР° СЃС‚СЂР°РЅРёС†Сѓ РїСЂРѕРєР»Р°РґРєСѓ                
                 header_location_exit('/' . sbr::NEW_TEMPLATE_SBR . '/?site=created&sbr_id=' . $sbr->id);
             } else {
                 foreach($sbr->stages as $k => $stage) {
@@ -100,7 +100,7 @@ switch($site) {
         if($sbr->frl_id) {
             $frl = new freelancer();
             $frl->GetUserByUID($sbr->frl_id);
-            // если фрилансера с таким uid не существует
+            // РµСЃР»Рё С„СЂРёР»Р°РЅСЃРµСЂР° СЃ С‚Р°РєРёРј uid РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
             if ($frl->uid) {
                 if(!$sbr->frl_login) $sbr->data['frl_login'] = $frl->login;
                 if($frl_reqvs = sbr_meta::getUserReqvs($frl->uid)) {
@@ -143,7 +143,7 @@ switch($site) {
 
         $sbr->initFromId($sbrID);
         
-        // чтобы нельзя было смотреть чужих сделок
+        // С‡С‚РѕР±С‹ РЅРµР»СЊР·СЏ Р±С‹Р»Рѕ СЃРјРѕС‚СЂРµС‚СЊ С‡СѓР¶РёС… СЃРґРµР»РѕРє
         if ($sbr->data['emp_id'] != get_uid(0)) {
             header_location_exit('/404.php');
         }
@@ -151,7 +151,7 @@ switch($site) {
         $crumbs = array(
             0 => array(
                 'href' => '/' . sbr::NEW_TEMPLATE_SBR . '/', 
-                'name' => '«Мои Сделки»'
+                'name' => 'В«РњРѕРё РЎРґРµР»РєРёВ»'
             ),
             1 => array(
                 'href' => '',
@@ -197,7 +197,7 @@ switch($site) {
             }
         }
         $stages_files = array($attachedfiles_files);
-        // Подготовка данных для JSON
+        // РџРѕРґРіРѕС‚РѕРІРєР° РґР°РЅРЅС‹С… РґР»СЏ JSON
         if($stages_files)
             $stages_files = attachedfiles::getInitJSONContentSBRFiles($stages_files); 
         
@@ -213,7 +213,7 @@ switch($site) {
         $rt_disabled = $sbr->reserved_id || $sbr->checkChangeRT();
         if(!($rez_type = $sbr->user_reqvs['rez_type']))
              $rez_type = sbr::RT_RU;
-        $history_frl = $sbr->getUserReqvHistory($stage->id, $sbr->frl_id); // если записалась история значит исполнитель согласился на сделку
+        $history_frl = $sbr->getUserReqvHistory($stage->id, $sbr->frl_id); // РµСЃР»Рё Р·Р°РїРёСЃР°Р»Р°СЃСЊ РёСЃС‚РѕСЂРёСЏ Р·РЅР°С‡РёС‚ РёСЃРїРѕР»РЅРёС‚РµР»СЊ СЃРѕРіР»Р°СЃРёР»СЃСЏ РЅР° СЃРґРµР»РєСѓ
         $not_type_changed = (!$sbr->reserved_id && ( $sbr->pskb_pl_id > 0 || $history_frl ) );
         if($action == 'editstage') {
             if($not_type_changed) {
@@ -256,11 +256,11 @@ switch($site) {
         }
         $notFilledValues = array('name', 'descr', 'work_days', 'cost');
         foreach($sbr->stages as $k=>$stage) { 
-            $aNull = array_keys(array_filter($stage->data, create_function('$a', 'return ($a == "" || $a == null);'))); // Фильтруем и выдаем только незаполненные данные
+            $aNull = array_keys(array_filter($stage->data, create_function('$a', 'return ($a == "" || $a == null);'))); // Р¤РёР»СЊС‚СЂСѓРµРј Рё РІС‹РґР°РµРј С‚РѕР»СЊРєРѕ РЅРµР·Р°РїРѕР»РЅРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ
             $vals  = array_intersect($notFilledValues, $aNull);
-            if(sizeof($vals) > 0) { // Проверяем если из отфильтрованых обязательные поля
+            if(sizeof($vals) > 0) { // РџСЂРѕРІРµСЂСЏРµРј РµСЃР»Рё РёР· РѕС‚С„РёР»СЊС‚СЂРѕРІР°РЅС‹С… РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ
                 $notFilled = true;
-                break; // Если есть дальше можно не проверять
+                break; // Р•СЃР»Рё РµСЃС‚СЊ РґР°Р»СЊС€Рµ РјРѕР¶РЅРѕ РЅРµ РїСЂРѕРІРµСЂСЏС‚СЊ
             }
         }
         
@@ -269,10 +269,10 @@ switch($site) {
 
         if (!$_POST['attachedfiles_session']) {
             $stage_files = array();
-            // $k - выступает как ключ к сессии файлов
+            // $k - РІС‹СЃС‚СѓРїР°РµС‚ РєР°Рє РєР»СЋС‡ Рє СЃРµСЃСЃРёРё С„Р°Р№Р»РѕРІ
             foreach($sbr->stages as $k=>$stage) {
                 if($stage->data['attach']) {
-                    if($k > 0) $attachedfiles->addNewSession();  // Первая сессия у нас генерируется вверху
+                    if($k > 0) $attachedfiles->addNewSession();  // РџРµСЂРІР°СЏ СЃРµСЃСЃРёСЏ Сѓ РЅР°СЃ РіРµРЅРµСЂРёСЂСѓРµС‚СЃСЏ РІРІРµСЂС…Сѓ
                     $stage_files = $attachedfiles_files = array();
                     foreach ($stage->data['attach'] as $i => $v) {
                         $stage_files[] = $v['file_id'];
@@ -287,7 +287,7 @@ switch($site) {
                 }
             }
         }
-        // Подготовка данных для JSON
+        // РџРѕРґРіРѕС‚РѕРІРєР° РґР°РЅРЅС‹С… РґР»СЏ JSON
         if($stages_files)
             $stages_files = attachedfiles::getInitJSONContentSBRFiles($stages_files);
         
@@ -398,7 +398,7 @@ switch($site) {
                     header_location_exit("/".sbr::NEW_TEMPLATE_SBR."/?site=Stage&id={$stage->data['id']}");
                 }
                 $day = 0;
-                if($status == sbr_stages::STATUS_FROZEN) { // Ставим на паузу
+                if($status == sbr_stages::STATUS_FROZEN) { // РЎС‚Р°РІРёРј РЅР° РїР°СѓР·Сѓ
                     $day = __paramInit('int', NULL, 'days');
                     if($day <= 0) $day = 1;
                     if($day > 30) $day = 30;
@@ -438,7 +438,7 @@ switch($site) {
                 if($sbr->frl_version   > $sbr->version)   { $sbr->data = $sbr->getVersion($sbr->version, $sbr->v_data); $sbr->getScheme(); }
                 if($stage->frl_version > $stage->version) $stage->data = $stage->getVersion($stage->version, $stage->v_data);
             }
-            // Если деньги зарезервированы то в черновик нельзя
+            // Р•СЃР»Рё РґРµРЅСЊРіРё Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹ С‚Рѕ РІ С‡РµСЂРЅРѕРІРёРє РЅРµР»СЊР·СЏ
             if($action == 'draft' && !$sbr->data['reserved_id']) {
                 if($sbr->frl_id > 0) {
                     $sbr->sbrCanceledSaveEvent();
@@ -624,7 +624,7 @@ switch($site) {
 
         $bank = __paramInit('int', 'bank', 'bank');
         $inner = $fpath . 'tpl.reserve.php';
-        $ndss = 'В том числе НДС - 18% с суммы агентского вознаграждения ООО «Ваан» ('
+        $ndss = 'Р’ С‚РѕРј С‡РёСЃР»Рµ РќР”РЎ - 18% СЃ СЃСѓРјРјС‹ Р°РіРµРЅС‚СЃРєРѕРіРѕ РІРѕР·РЅР°РіСЂР°Р¶РґРµРЅРёСЏ РћРћРћ В«Р’Р°Р°РЅВ» ('
             . (100 * $sbr->scheme['taxes'][sbr::EMP][sbr::TAX_EMP_COM]['percent'])
             . '%)';
 
@@ -682,7 +682,7 @@ switch($site) {
         $anchor = __paramInit('int', 'id');
         $count_sbr = $sbr->getCountCompleteSbr();
         if(!($sbr_currents = $sbr->_new_getCurrents($filter)) && !$filter && !$count_sbr && !$count_old_sbr) {
-            // если есть СБР в черновиках то промо страниццу не показываем, а редиректим в черновики
+            // РµСЃР»Рё РµСЃС‚СЊ РЎР‘Р  РІ С‡РµСЂРЅРѕРІРёРєР°С… С‚Рѕ РїСЂРѕРјРѕ СЃС‚СЂР°РЅРёС†С†Сѓ РЅРµ РїРѕРєР°Р·С‹РІР°РµРј, Р° СЂРµРґРёСЂРµРєС‚РёРј РІ С‡РµСЂРЅРѕРІРёРєРё
             $sbr_drafts = $sbr->getDrafts();	 
             $sbr_count = count($sbr_drafts);	 
             if ($sbr_count) {	 
@@ -693,7 +693,7 @@ switch($site) {
         } else {
             $now_count = sizeof($sbr_currents);
             //$count_sbr = $count_sbr - $now_count;
-            $now_count = ($now_count - $sbr->new_count - 1 ); // новые в выдаче не считаем, отсчет с нуля
+            $now_count = ($now_count - $sbr->new_count - 1 ); // РЅРѕРІС‹Рµ РІ РІС‹РґР°С‡Рµ РЅРµ СЃС‡РёС‚Р°РµРј, РѕС‚СЃС‡РµС‚ СЃ РЅСѓР»СЏ
             $sbr->getUserReqvs();
         }
         $_SESSION['sbr_tip'] = notifications::getSbrTip();

@@ -1,13 +1,13 @@
 <? 
-  // Фильтр проектов. Вставляется в разные места. На входе:
+  // Р¤РёР»СЊС‚СЂ РїСЂРѕРµРєС‚РѕРІ. Р’СЃС‚Р°РІР»СЏРµС‚СЃСЏ РІ СЂР°Р·РЅС‹Рµ РјРµСЃС‚Р°. РќР° РІС…РѕРґРµ:
   // $uid -- get_uid().
-  // $filter -- массив с параметрами фильтра.
-  // $filter_page -- код страницы (см. таблицу projects_filters).
-  // $filter_show -- 1: фильтр развернут, 0: свернут. /Параметр больше не используется - Эдуард, 8.10.2009/
-  // $filter_inputs -- дополнительные INPUT-ы в форму.
-  // $kind -- ид. закладки (если фильтр на главной странице).
-  // $page -- номер страницы (если фильтр на главной странице).
-  // Плюс должны быть включены заранее все xajax функции, которые тут используются.
+  // $filter -- РјР°СЃСЃРёРІ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё С„РёР»СЊС‚СЂР°.
+  // $filter_page -- РєРѕРґ СЃС‚СЂР°РЅРёС†С‹ (СЃРј. С‚Р°Р±Р»РёС†Сѓ projects_filters).
+  // $filter_show -- 1: С„РёР»СЊС‚СЂ СЂР°Р·РІРµСЂРЅСѓС‚, 0: СЃРІРµСЂРЅСѓС‚. /РџР°СЂР°РјРµС‚СЂ Р±РѕР»СЊС€Рµ РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ - Р­РґСѓР°СЂРґ, 8.10.2009/
+  // $filter_inputs -- РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ INPUT-С‹ РІ С„РѕСЂРјСѓ.
+  // $kind -- РёРґ. Р·Р°РєР»Р°РґРєРё (РµСЃР»Рё С„РёР»СЊС‚СЂ РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ).
+  // $page -- РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹ (РµСЃР»Рё С„РёР»СЊС‚СЂ РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ).
+  // РџР»СЋСЃ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РІРєР»СЋС‡РµРЅС‹ Р·Р°СЂР°РЅРµРµ РІСЃРµ xajax С„СѓРЅРєС†РёРё, РєРѕС‚РѕСЂС‹Рµ С‚СѓС‚ РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ.
 
   if (!$uid || is_emp()) {
     if($filter_page!=0)
@@ -28,11 +28,11 @@
       $location_value    = city::GetCountryName($filter['city']).": ".city::getCityName($filter['city']);
   } elseif($filter['country']) {
       $location_selector = "drop_down_default_{$filter['country']} multi_drop_down_default_column_0";
-      $location_value    = country::getCountryName($filter['country']) . ": Все города";
+      $location_value    = country::getCountryName($filter['country']) . ": Р’СЃРµ РіРѕСЂРѕРґР°";
   }
   
   if(!$_SESSION['ph'] && !$_SESSION['top_payed']) {
-      $has_hidd = false; // скрываем блок если нечего скрывать
+      $has_hidd = false; // СЃРєСЂС‹РІР°РµРј Р±Р»РѕРє РµСЃР»Рё РЅРµС‡РµРіРѕ СЃРєСЂС‹РІР°С‚СЊ
   }
   
   if(!$filter) {
@@ -68,17 +68,17 @@
 
   $_SESSION['ph_categories'] = $filter['categories'];
 
-  //создаем массив специализаций (для фильтра на главной он уже есть в $prfs, для фильтра в проектах фрилансера его нет, поэтому делаем проверку на существование
+  //СЃРѕР·РґР°РµРј РјР°СЃСЃРёРІ СЃРїРµС†РёР°Р»РёР·Р°С†РёР№ (РґР»СЏ С„РёР»СЊС‚СЂР° РЅР° РіР»Р°РІРЅРѕР№ РѕРЅ СѓР¶Рµ РµСЃС‚СЊ РІ $prfs, РґР»СЏ С„РёР»СЊС‚СЂР° РІ РїСЂРѕРµРєС‚Р°С… С„СЂРёР»Р°РЅСЃРµСЂР° РµРіРѕ РЅРµС‚, РїРѕСЌС‚РѕРјСѓ РґРµР»Р°РµРј РїСЂРѕРІРµСЂРєСѓ РЅР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ
   if (!sizeof($profs)) {$all_specs = professions::GetAllProfessions("", 0, 1);}
   else                 {$all_specs = $profs;}
 
   
 if ($kind == 2 || $kind == 7) {
-    $kindTitle = 'Конкурсы';
+    $kindTitle = 'РљРѕРЅРєСѓСЂСЃС‹';
 } elseif ($kind == 4) {
-    $kindTitle = 'Вакансии';
+    $kindTitle = 'Р’Р°РєР°РЅСЃРёРё';
 } else {
-    $kindTitle = 'Проекты';
+    $kindTitle = 'РџСЂРѕРµРєС‚С‹';
 }
 
 ?>
@@ -95,8 +95,8 @@ if ($kind == 2 || $kind == 7) {
 <script type="text/javascript">
     
     
-//1 = фильтр проектов
-//2 = фильтр фрилансеров
+//1 = С„РёР»СЊС‚СЂ РїСЂРѕРµРєС‚РѕРІ
+//2 = С„РёР»СЊС‚СЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
 var curFBulletsBox = 1;
 
 var PROJECTS_FILTER_CURRENCY = <?= $filter['currency'] === null ? 2 : (int)$filter['currency'] ?>;
@@ -188,19 +188,19 @@ function setMoneyType(i) {
 
 function FilterCatalogAddCategoryType() {
     if ($('comboe_column_id').value == 0) {
-        //добавляем категорию
+        //РґРѕР±Р°РІР»СЏРµРј РєР°С‚РµРіРѕСЂРёСЋ
         if(Number($('comboe_db_id').value) > 0) {
             tl = $('comboe').get("value");
-            /*tl = tl.replace(/: ?/, ''); а зачем это было???*/ 
+            /*tl = tl.replace(/: ?/, ''); Р° Р·Р°С‡РµРј СЌС‚Рѕ Р±С‹Р»Рѕ???*/ 
             tlf = tl;
             if (tl.length > 28) {
                 tl = tl.substr(0, 28) + '...';
             }
             FilterAddBulletNew(0, $('comboe_db_id').value, tl, undefined, tlf);
-            ComboboxManager.setDefaultValue('comboe', 'Все специализации', 0);            
+            ComboboxManager.setDefaultValue('comboe', 'Р’СЃРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё', 0);            
         }
     } else {
-        //добавляем подкатегорию
+        //РґРѕР±Р°РІР»СЏРµРј РїРѕРґРєР°С‚РµРіРѕСЂРёСЋ
         //if(Number($('comboe_db_id').value) > 0) {
             tl = $('comboe').get("value");
             tlf = tl;
@@ -221,7 +221,7 @@ function FilterCatalogAddCategoryType() {
                 value = parseInt(combo.breadCrumbs[0]);
             }
             FilterAddBulletNew(type, value, tl, category_id, tlf);
-            ComboboxManager.setDefaultValue('comboe', 'Все специализации', 0);            
+            ComboboxManager.setDefaultValue('comboe', 'Р’СЃРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё', 0);            
         //}
     }
 }
@@ -238,18 +238,18 @@ function FilterCatalogAddCategoryType() {
                 d.setMonth(d.getMonth() + 1);
                 if (!$('b_ext_filter').hasClass('b-layout_hide')) {
                     $('b_ext_filter').addClass('b-layout_hide');
-                    r.set('text', 'Развернуть');
+                    r.set('text', 'Р Р°Р·РІРµСЂРЅСѓС‚СЊ');
                         
                     document.cookie='new_pf'+$('b_ext_filter').get('page')+'='+''+'; expires='+d.toGMTString() + '; path=/';
                 } else {
                     $('b_ext_filter').removeClass('b-layout_hide');
-                    r.set('text', 'Cвернуть');
+                    r.set('text', 'CРІРµСЂРЅСѓС‚СЊ');
                     document.cookie='new_pf'+$('b_ext_filter').get('page')+'='+'1'+'; expires='+d.toGMTString() + '; path=/';
                 }
             }
         </script>
 
-        <!-- Специализации -->
+        <!-- РЎРїРµС†РёР°Р»РёР·Р°С†РёРё -->
         <div class="b-frm-filtr__item">
             <div class="b-layout b-frm-filtr__subitem <?=$kind !== 1 ? 'b-layout_float_left' : ''?>">
                 <input id="pf_category" name="pf_category" type="hidden" />
@@ -261,13 +261,13 @@ function FilterCatalogAddCategoryType() {
                                 <td class="b-layout__td">
                                     <div class="b-combo b-combo_margright_5 b-combo_zindex_3">
                                         <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_resize b-combo__input_max-width_450 b-combo__input_visible_height_200 b-combo__input_arrow_yes b-combo__input_init_professionsList sort_cnt drop_down_default_0 multi_drop_down_default_column_0 exclude_value_0_0">
-                                            <input id="comboe" class="b-combo__input-text" name="" type="text" size="80" value="Все специализации" />
+                                            <input id="comboe" class="b-combo__input-text" name="" type="text" size="80" value="Р’СЃРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё" />
                                             <span class="b-combo__arrow"></span>
                                         </div>
                                     </div>
                                 </td>
                                 <td class="b-layout__td">
-                                    <a class="b-button b-button_flat b-button_flat_grey" href="javascript:void(0)" onclick="FilterCatalogAddCategoryType();">Добавить</a>
+                                    <a class="b-button b-button_flat b-button_flat_grey" href="javascript:void(0)" onclick="FilterCatalogAddCategoryType();">Р”РѕР±Р°РІРёС‚СЊ</a>
                                 </td>
                             </tr>
                         </tbody>
@@ -275,12 +275,12 @@ function FilterCatalogAddCategoryType() {
                 </div>            
                 <ul id="pf_specs" class="b-ext-filter__list b-layout_padtop_10"></ul>
             </div>
-            <!-- Страны -->
+            <!-- РЎС‚СЂР°РЅС‹ -->
             <?php if ($kind == 5 || $kind == 4): ?>
             <div class="b-layout b-frm-filtr__subitem">
                 <div class="b-combo  b-combo_zindex_2">
-                    <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_arrow_yes b-combo__input_init_citiesList b-combo__input_on_click_request_id_getcities <?=$location_selector?> override_value_id_0_0_Все+страны override_value_id_1_0_Все+города">
-                        <input id="location" class="b-combo__input-text" name="" type="text" size="80" value="<?= ($location_value ? $location_value : "Все страны")?>" />
+                    <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_arrow_yes b-combo__input_init_citiesList b-combo__input_on_click_request_id_getcities <?=$location_selector?> override_value_id_0_0_Р’СЃРµ+СЃС‚СЂР°РЅС‹ override_value_id_1_0_Р’СЃРµ+РіРѕСЂРѕРґР°">
+                        <input id="location" class="b-combo__input-text" name="" type="text" size="80" value="<?= ($location_value ? $location_value : "Р’СЃРµ СЃС‚СЂР°РЅС‹")?>" />
                         <label class="b-combo__label" for="location"></label>
                         <span class="b-combo__arrow"></span>
                     </div>
@@ -288,76 +288,76 @@ function FilterCatalogAddCategoryType() {
             </div>
             <?php elseif ($kind == 2 || $kind == 7): ?>
             <div class="b-layout b-frm-filtr__subitem">
-                <label class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5">До окончания от&#160;</label>
+                <label class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5">Р”Рѕ РѕРєРѕРЅС‡Р°РЅРёСЏ РѕС‚&#160;</label>
                 <div class="b-combo b-combo_inline-block">
                     <div class="b-combo__input b-combo__input_width_25">
                         <input class="b-combo__input-text" name="pf_end_days_from" type="text" size="10" value="<?= $filter['konkurs_end_days_from'] !== null ? $filter['konkurs_end_days_from'] : '' ?>" />
                     </div>
                 </div><label
-                                    class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5">&#160;до&#160;</label><div
+                                    class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5">&#160;РґРѕ&#160;</label><div
                                      class="b-combo b-combo_inline-block">
                                     <div class="b-combo__input b-combo__input_width_25">
                                         <input class="b-combo__input-text" name="pf_end_days_to" type="text" size="10" value="<?= $filter['konkurs_end_days_to'] !== null ? $filter['konkurs_end_days_to'] : '' ?>" />
                                     </div>
                                 </div><span
-                                 class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5">&#160;дней</span>
+                                 class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5">&#160;РґРЅРµР№</span>
 
             </div>
             <?php endif; ?>
             <div class="b-layout b-layout_clear"></div>
         </div>
             
-        <!-- Опции -->
+        <!-- РћРїС†РёРё -->
         <div class="b-frm-filtr__item">
             <div class="b-check b-check_padbot_10 b-check_inline-block b-check_padright_30">
                 <input id="for-pro" class="b-check__input" name="pf_pro_only" type="checkbox" <?= ($filter['pro_only']=='t') ? 'checked="checked"': '' ?> value="1" />
-                <label for="for-pro" class="b-check__label b-check__label_fontsize_13">Только для <?= view_pro(false, false, true, 'пользователей с платным аккаунтом')?></label>
+                <label for="for-pro" class="b-check__label b-check__label_fontsize_13">РўРѕР»СЊРєРѕ РґР»СЏ <?= view_pro(false, false, true, 'РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ РїР»Р°С‚РЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј')?></label>
             </div>
             
             <div class="b-check b-check_padbot_10 b-check_inline-block b-check_padright_30">
                 <input id="for-ver" class="b-check__input" name="pf_verify_only" type="checkbox" <?= ($filter['verify_only']=='t') ? 'checked="checked"': '' ?> value="1" />
-                <label for="for-ver" class="b-check__label b-check__label_fontsize_13">Только для <?= view_verify('верифицированных пользователей', '')?></label>
+                <label for="for-ver" class="b-check__label b-check__label_fontsize_13">РўРѕР»СЊРєРѕ РґР»СЏ <?= view_verify('РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№', '')?></label>
             </div>
 
             <div class="b-check b-check_padbot_10 b-check_inline-block b-check_padright_30">
                 <input id="for-urgent" class="b-check__input" name="pf_urgent_only" type="checkbox" <?= ($filter['urgent_only']=='t') ? 'checked="checked"': '' ?> value="1" />
-                <label for="for-urgent" class="b-check__label b-check__label_fontsize_13">Только срочные <span class="b-icon b-icon__fire b-icon_top_1"></span></label>
+                <label for="for-urgent" class="b-check__label b-check__label_fontsize_13">РўРѕР»СЊРєРѕ СЃСЂРѕС‡РЅС‹Рµ <span class="b-icon b-icon__fire b-icon_top_1"></span></label>
             </div>
             
             <div class="b-check b-check_padbot_10 b-check_inline-block b-check_padright_30">
                 <input id="for-less2" class="b-check__input" name="pf_less_offers" type="checkbox" <?= ($filter['less_offers']=='t') ? 'checked="checked"': '' ?> value="1" />
-                <label for="for-less2" class="b-check__label b-check__label_fontsize_13">Меньше 2 ответов в проекте</label>
+                <label for="for-less2" class="b-check__label b-check__label_fontsize_13">РњРµРЅСЊС€Рµ 2 РѕС‚РІРµС‚РѕРІ РІ РїСЂРѕРµРєС‚Рµ</label>
             </div>
             
             <?php if (!(is_emp() || !get_uid(false))): ?>
             <div class="b-check b-check_inline-block b-check_padright_30"> 		 
                 <input id="pf_my_specs" class="b-check__input" type="checkbox" name="pf_my_specs" value="1" <?= ($filter['my_specs']=='t') ? 'checked="checked"': '' ?> />
-                <label for="pf_my_specs" class="b-check__label b-check__label_fontsize_13"> <?= $kindTitle ?> только по моей специализации</label> 	
+                <label for="pf_my_specs" class="b-check__label b-check__label_fontsize_13"> <?= $kindTitle ?> С‚РѕР»СЊРєРѕ РїРѕ РјРѕРµР№ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё</label> 	
             </div>                 
             <?php endif; ?>
             
-            <!-- Заблокированные -->
+            <!-- Р—Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ -->
             <?php if (hasPermissions('projects')): ?>
             <div class="b-check b-check_inline-block b-check_padright_30">
                 <input id="for-block" class="b-check__input" name="pf_block_only" type="checkbox" <?= ($filter['block_only']=='t') ? 'checked="checked"': '' ?> value="1" />
-                <label for="for-block" class="b-check__label b-check__label_fontsize_13">Только заблокированные</label>
+                <label for="for-block" class="b-check__label b-check__label_fontsize_13">РўРѕР»СЊРєРѕ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ</label>
             </div>
             <?php endif; ?>
             
             <div class="b-check b-check_padbot_10 b-check_inline-block b-check_padright_30">
                 <input id="for-hide_exec" class="b-check__input" name="hide_exec" type="checkbox" <?= ($filter['hide_exec']=='t') ? 'checked="checked"': '' ?> value="1" />
-                <label for="for-hide_exec" class="b-check__label b-check__label_fontsize_13">Скрыть проекты в которых определен исполнитель</label>
+                <label for="for-hide_exec" class="b-check__label b-check__label_fontsize_13">РЎРєСЂС‹С‚СЊ РїСЂРѕРµРєС‚С‹ РІ РєРѕС‚РѕСЂС‹С… РѕРїСЂРµРґРµР»РµРЅ РёСЃРїРѕР»РЅРёС‚РµР»СЊ</label>
             </div>
 
         </div>
             
-        <!-- Бюджет -->
+        <!-- Р‘СЋРґР¶РµС‚ -->
         <div class="b-frm-filtr__item">
             <div class="b-layout b-frm-filtr__subitem b-layout_float_left">
                 <table class="b-layout__table b-layout__table_width_full">
                     <tr class="b-layout__tr">
                         <td class="b-layout__td b-layout__td_width_70">
-                            <div class="b-layout__txt b-layout__txt_padtop_5">Бюджет от</div>
+                            <div class="b-layout__txt b-layout__txt_padtop_5">Р‘СЋРґР¶РµС‚ РѕС‚</div>
                         </td>
                         <td class="b-layout__td b-layout__td_padright_10">
                             <div class="b-combo">
@@ -367,7 +367,7 @@ function FilterCatalogAddCategoryType() {
                                 </div>
                             </div>
                         </td>
-                        <td class="b-layout__td b-layout__td_width_60"><script type="text/javascript"> var currencyList = {0:"USD", 1:"Евро", 2:"Руб"}</script><div
+                        <td class="b-layout__td b-layout__td_width_60"><script type="text/javascript"> var currencyList = {0:"USD", 1:"Р•РІСЂРѕ", 2:"Р СѓР±"}</script><div
                          class="b-combo b-combo_inline-block b-combo_valign_mid">
                                 <div class="b-combo__input b-combo__input_width_65 	b-combo__input_multi_dropdown b-combo__input_min-width_40 b-combo__input_arrow_yes b-combo__input_init_currencyList drop_down_default_2 reverse_list" >
                                     <input id="pf_currency" type="hidden" name="pf_currency" value="<?= $filter['currency'] === null ? 2 : (int)$filter['currency'] ?>" />
@@ -379,11 +379,11 @@ function FilterCatalogAddCategoryType() {
                 </table>
             </div>
             
-            <!-- Ключевые слова -->
+            <!-- РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР° -->
             <div class="b-layout b-frm-filtr__subitem">
                 <div class="b-combo b-combo_static">
                     <div class="b-combo__input b-combo__input_static">
-                        <input id="pf_keywords" class="b-combo__input-text" placeholder="Ключевые слова" type="text" name="pf_keywords" value="<?=htmlspecialchars($filter['keywords'], ENT_QUOTES, 'cp1251')?>" maxlength="255" />
+                        <input id="pf_keywords" class="b-combo__input-text" placeholder="РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°" type="text" name="pf_keywords" value="<?=htmlspecialchars($filter['keywords'], ENT_QUOTES, 'cp1251')?>" maxlength="255" />
                     </div>
                 </div>
             </div>
@@ -393,10 +393,10 @@ function FilterCatalogAddCategoryType() {
         <div class="b-layout b-layout_overflow_hidden">
             <div class="b-buttons b-buttons_float_right">
                 <button type="button" class="b-button b-button_flat b-button_flat_green" onclick="$('frm').submit();">
-                    Применить фильтр
+                    РџСЂРёРјРµРЅРёС‚СЊ С„РёР»СЊС‚СЂ
                 </button>
                 &#160;&#160;<a class="b-buttons__link b-buttons__link_margleft_10 b-buttons__link_dot_0f71c8" 
-                               onclick="FilterClearFormNew()">Очистить</a>
+                               onclick="FilterClearFormNew()">РћС‡РёСЃС‚РёС‚СЊ</a>
             </div>
          </div>
     </form>

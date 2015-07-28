@@ -30,9 +30,9 @@ class ReturnPaymentRequest extends BaseXmlRequest
         $this->setAttr(MWSApiKey::CURRENCY, $currency);
     }
     
-    public function setCause($Òause)
+    public function setCause($—Åause)
     {
-        $this->setAttr(MWSApiKey::CAUSE, $Òause);
+        $this->setAttr(MWSApiKey::CAUSE, $—Åause);
     }
     
 }

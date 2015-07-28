@@ -1,4 +1,4 @@
 <div class="b-layout__txt b-layout__txt_padbot_20">
-	<a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0);" onclick="User_Phone.showPopup();return false;">Привязать аккаунт к мобильному телефону</a>
-	<br> и бесплатно получать моментальные SMS-уведомления о выборе вас исполнителем в проектах.
+	<a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0);" onclick="User_Phone.showPopup();return false;">РџСЂРёРІСЏР·Р°С‚СЊ Р°РєРєР°СѓРЅС‚ Рє РјРѕР±РёР»СЊРЅРѕРјСѓ С‚РµР»РµС„РѕРЅСѓ</a>
+	<br> Рё Р±РµСЃРїР»Р°С‚РЅРѕ РїРѕР»СѓС‡Р°С‚СЊ РјРѕРјРµРЅС‚Р°Р»СЊРЅС‹Рµ SMS-СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РІС‹Р±РѕСЂРµ РІР°СЃ РёСЃРїРѕР»РЅРёС‚РµР»РµРј РІ РїСЂРѕРµРєС‚Р°С….
 </div>

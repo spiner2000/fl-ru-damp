@@ -1,21 +1,21 @@
 <?
 /**
- * Подключаем файл для работы с блогами
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р»РѕРіР°РјРё
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/blogs_proto.php");
 /**
- * Класс для работы с сообщениями портфолио
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЃРѕРѕР±С‰РµРЅРёСЏРјРё РїРѕСЂС‚С„РѕР»РёРѕ
  *
  */
 class blogs_portf extends blogs_proto
 {
 	/**
-     * Выборка треда сообщения
+     * Р’С‹Р±РѕСЂРєР° С‚СЂРµРґР° СЃРѕРѕР±С‰РµРЅРёСЏ
      *
-     * @todo Функция возвращает пременные которые не существуют в самой функции, стоит проверить где вызывается и убрать.
+     * @todo Р¤СѓРЅРєС†РёСЏ РІРѕР·РІСЂР°С‰Р°РµС‚ РїСЂРµРјРµРЅРЅС‹Рµ РєРѕС‚РѕСЂС‹Рµ РЅРµ СЃСѓС‰РµСЃС‚РІСѓСЋС‚ РІ СЃР°РјРѕР№ С„СѓРЅРєС†РёРё, СЃС‚РѕРёС‚ РїСЂРѕРІРµСЂРёС‚СЊ РіРґРµ РІС‹Р·С‹РІР°РµС‚СЃСЏ Рё СѓР±СЂР°С‚СЊ.
      * 
-     * @param integer $portf_id  ИД темы
-     * @param string  $error     Возвращает сообщение об ошибке
+     * @param integer $portf_id  РР” С‚РµРјС‹
+     * @param string  $error     Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
      * @return array 
      */
 	function GetThread($portf_id, &$error){
@@ -45,18 +45,18 @@ class blogs_portf extends blogs_proto
 		return array($name, $id_gr, 100);
 	}
 	/**
-	 * Добавить комментарии к портфолио
+	 * Р”РѕР±Р°РІРёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїРѕСЂС‚С„РѕР»РёРѕ
 	 *
-	 * @param integer $fid    ID Пользователя
-	 * @param integer $reply  Идентификатор сообщения ответом на которое является данное сообщение
-	 * @param integer $thread Темы
-	 * @param string  $msg    Сообщение
-	 * @param string  $name   Название сообщения
-	 * @param mixed   $attach Вложения файлов
-	 * @param string  $ip     ИП отправителя
-	 * @param mixed   $error  Возвращает сообщение об ошибке
-	 * @param mixed   $small  Метод показа
-	 * @return integer Возвращает ИД добавленного коментария
+	 * @param integer $fid    ID РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param integer $reply  РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃРѕРѕР±С‰РµРЅРёСЏ РѕС‚РІРµС‚РѕРј РЅР° РєРѕС‚РѕСЂРѕРµ СЏРІР»СЏРµС‚СЃСЏ РґР°РЅРЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ
+	 * @param integer $thread РўРµРјС‹
+	 * @param string  $msg    РЎРѕРѕР±С‰РµРЅРёРµ
+	 * @param string  $name   РќР°Р·РІР°РЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ
+	 * @param mixed   $attach Р’Р»РѕР¶РµРЅРёСЏ С„Р°Р№Р»РѕРІ
+	 * @param string  $ip     РРџ РѕС‚РїСЂР°РІРёС‚РµР»СЏ
+	 * @param mixed   $error  Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
+	 * @param mixed   $small  РњРµС‚РѕРґ РїРѕРєР°Р·Р°
+	 * @return integer Р’РѕР·РІСЂР°С‰Р°РµС‚ РР” РґРѕР±Р°РІР»РµРЅРЅРѕРіРѕ РєРѕРјРµРЅС‚Р°СЂРёСЏ
 	 */
 	function Add($fid, $reply, $thread, $msg, $name, $attach, $ip, &$error, $small){
         global $DB;
@@ -64,7 +64,7 @@ class blogs_portf extends blogs_proto
 		$sql = "SELECT show_comms FROM portfolio WHERE portfolio.id = ?i";
 		$portf_comments = $DB->val($sql, $thread);
         $error = $DB->error;
-		if ($portf_comments != 't') {$error = "Пользователь запретил оставлять комментарии"; return 0;}
+		if ($portf_comments != 't') {$error = "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°РїСЂРµС‚РёР» РѕСЃС‚Р°РІР»СЏС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёРё"; return 0;}
 		return parent::Add($fid, $reply, $thread, $msg, $name, $attach, $ip, $error, $small);
 	}
 	

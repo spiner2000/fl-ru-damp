@@ -5,11 +5,11 @@
                 <div class="b-shadow__top">
                     <div class="b-shadow__bottom">
                         <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20 b-layout">
-                            <h2 class="b-shadow__title b-shadow__title_padbot_30 b-shadow__title_fontsize_22">Здесь нельзя зарезервировать деньги для <br />&laquo;Безопасной Сделки&raquo;</h2>
+                            <h2 class="b-shadow__title b-shadow__title_padbot_30 b-shadow__title_fontsize_22">Р—РґРµСЃСЊ РЅРµР»СЊР·СЏ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё РґР»СЏ <br />&laquo;Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё&raquo;</h2>
                             <img class="b-layout__pic b-layout__pic_float_left b-layout__pic_margright_20" src="/images/promo-icons/big/_11.png" alt="" width="93" height="95" />
-                            <div class="b-layout__txt b-layout__txt_padbot_40 b-layout__txt_fontsize_15">Через личный счет нельзя зарезервировать деньги для <span class="b-layout__bold">&laquo;Безопасной Сделки&raquo;</span>. Для того чтобы произвести резервирование средств, создайте новую сделку и <a class="b-layout__link" href="http://feedback.free-lance.ru/article/details/id/203" target="_blank">следуйте инструкциям</a>.</div>
+                            <div class="b-layout__txt b-layout__txt_padbot_40 b-layout__txt_fontsize_15">Р§РµСЂРµР· Р»РёС‡РЅС‹Р№ СЃС‡РµС‚ РЅРµР»СЊР·СЏ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё РґР»СЏ <span class="b-layout__bold">&laquo;Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё&raquo;</span>. Р”Р»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ РїСЂРѕРёР·РІРµСЃС‚Рё СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ СЃСЂРµРґСЃС‚РІ, СЃРѕР·РґР°Р№С‚Рµ РЅРѕРІСѓСЋ СЃРґРµР»РєСѓ Рё <a class="b-layout__link" href="http://feedback.free-lance.ru/article/details/id/203" target="_blank">СЃР»РµРґСѓР№С‚Рµ РёРЅСЃС‚СЂСѓРєС†РёСЏРј</a>.</div>
                             <div class="b-buttons b-buttons_padtb_30 b-buttons_bg_6fb400 b-buttons_center b-buttons_marglr_-20 b-buttons_margbot_-20">
-                                <a class="b-button b-button_flat b-button_flat_green" href="javascript:void()" onclick="$('money-overlay').dispose(); $('splash-money').dispose();">Продолжить</a>
+                                <a class="b-button b-button_flat b-button_flat_green" href="javascript:void()" onclick="$('money-overlay').dispose(); $('splash-money').dispose();">РџСЂРѕРґРѕР»Р¶РёС‚СЊ</a>
                             </div>
                         </div>
                     </div>

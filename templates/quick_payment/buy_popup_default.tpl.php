@@ -1,6 +1,6 @@
 <?php
 /**
- * Шаблон поумолчанию popup-окна "быстрой" оплаты
+ * РЁР°Р±Р»РѕРЅ РїРѕСѓРјРѕР»С‡Р°РЅРёСЋ popup-РѕРєРЅР° "Р±С‹СЃС‚СЂРѕР№" РѕРїР»Р°С‚С‹
  */
 ?>
 <div id="<?=@$popup_id?>" data-quick-payment="<?=$unic_name?>" class="b-shadow b-shadow_block b-shadow_center b-shadow_width_520 <?=(!@$is_show)?'b-shadow_hide':'' ?> b-shadow__quick">
@@ -60,10 +60,10 @@
             </div>
             
             <div class="b-layout__txt b-layout__txt_padleft_20 b-layout__txt_fontsize_11">
-                Сумма к оплате: <span><?=@$reserve_price?></span>.<br/>
+                РЎСѓРјРјР° Рє РѕРїР»Р°С‚Рµ: <span><?=@$reserve_price?></span>.<br/>
             </div>
             <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_padleft_20 b-layout__txt_fontsize_11">
-                Ее вы можете оплатить одним из способов:
+                Р•Рµ РІС‹ РјРѕР¶РµС‚Рµ РѕРїР»Р°С‚РёС‚СЊ РѕРґРЅРёРј РёР· СЃРїРѕСЃРѕР±РѕРІ:
             </div>
 <?php
             if(!empty($payments)):
@@ -89,7 +89,7 @@
             <div data-quick-payment-success-screen="true" class="b-layout__success b-layout__txt_fontsize_15 b-layout__txt_color_323232 b-layout_hide">
                 <span data-quick-payment-success-msg="true"></span>
                 <div class="b-buttons b-buttons_center b-button_margtop_15">
-                    <a data-quick-payment-close="true" href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green">Закрыть</a>
+                    <a data-quick-payment-close="true" href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green">Р—Р°РєСЂС‹С‚СЊ</a>
                 </div>
             </div>
             

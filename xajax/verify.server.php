@@ -16,7 +16,7 @@ function addSubscribe() {
         
         $count = verify::getCountSubscribe();
         $objResponse->assign('count_subscribe', 'innerHTML', verify::converNumbersTemplate($count));
-        $objResponse->assign('count_subscribe_text', 'innerHTML', ending($count, 'пользователь', 'пользователя', 'пользователей'));
+        $objResponse->assign('count_subscribe_text', 'innerHTML', ending($count, 'РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ', 'РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ', 'РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№'));
         $objResponse->script("$('button_send').dispose(); $('send_success').removeClass('b-fon_hide');");
     } else {
         return $objResponse;

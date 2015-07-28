@@ -1,14 +1,14 @@
 <?
 /**
- * класс для работы с жалобами на проекты
+ * РєР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р¶Р°Р»РѕР±Р°РјРё РЅР° РїСЂРѕРµРєС‚С‹
  */
 class projects_complains
 {
     
     /**
-     * возвращает массив с типами жалоб
-     * @param boolean $moder - true/false - для модеров или для работодателей
-     * @param boolean $useCache использовать кэш
+     * РІРѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ СЃ С‚РёРїР°РјРё Р¶Р°Р»РѕР±
+     * @param boolean $moder - true/false - РґР»СЏ РјРѕРґРµСЂРѕРІ РёР»Рё РґР»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№
+     * @param boolean $useCache РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РєСЌС€
      */
     public static function getTypes ($moder = null, $useCache = true) {
         global $DB;
@@ -35,12 +35,12 @@ class projects_complains
     }
     
     /**
-     * обновляет список типов жалоб кучей
+     * РѕР±РЅРѕРІР»СЏРµС‚ СЃРїРёСЃРѕРє С‚РёРїРѕРІ Р¶Р°Р»РѕР± РєСѓС‡РµР№
      * @global type $DB
-     * @param array $add новые записи
-     * @param array $edit редактируемые записи
-     * @param array $delete удаляемые записи
-     * @param boolean $moder жалоба для модератора (true) или для работодателя (false)
+     * @param array $add РЅРѕРІС‹Рµ Р·Р°РїРёСЃРё
+     * @param array $edit СЂРµРґР°РєС‚РёСЂСѓРµРјС‹Рµ Р·Р°РїРёСЃРё
+     * @param array $delete СѓРґР°Р»СЏРµРјС‹Рµ Р·Р°РїРёСЃРё
+     * @param boolean $moder Р¶Р°Р»РѕР±Р° РґР»СЏ РјРѕРґРµСЂР°С‚РѕСЂР° (true) РёР»Рё РґР»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ (false)
      */
     public static function updateTypes ($add, $edit, $delete, $moder) {
         global $DB;
@@ -66,9 +66,9 @@ class projects_complains
     
     
     /**
-     * Возвращает название типа нарушения по ID
-     * @param  int $complainTypeID ID типа нарушения
-     * @param  bool $deleted отметить тип жалобы как удаленный, если он удаленный (просто дописывается в конце (этот тип жалоб удален))
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РЅР°Р·РІР°РЅРёРµ С‚РёРїР° РЅР°СЂСѓС€РµРЅРёСЏ РїРѕ ID
+     * @param  int $complainTypeID ID С‚РёРїР° РЅР°СЂСѓС€РµРЅРёСЏ
+     * @param  bool $deleted РѕС‚РјРµС‚РёС‚СЊ С‚РёРї Р¶Р°Р»РѕР±С‹ РєР°Рє СѓРґР°Р»РµРЅРЅС‹Р№, РµСЃР»Рё РѕРЅ СѓРґР°Р»РµРЅРЅС‹Р№ (РїСЂРѕСЃС‚Рѕ РґРѕРїРёСЃС‹РІР°РµС‚СЃСЏ РІ РєРѕРЅС†Рµ (СЌС‚РѕС‚ С‚РёРї Р¶Р°Р»РѕР± СѓРґР°Р»РµРЅ))
      * @return string
      */
     function GetComplainType($complainTypeID, $deleted = false) {
@@ -80,14 +80,14 @@ class projects_complains
         $row = $DB->row('SELECT name, deleted FROM projects_complains_types WHERE id = ?i', $complainTypeID);
         $name = $row['name'];
         if ($row['deleted'] === 't' && $deleted) {
-            $name .= ' (этот тип жалоб удален)';
+            $name .= ' (СЌС‚РѕС‚ С‚РёРї Р¶Р°Р»РѕР± СѓРґР°Р»РµРЅ)';
         }
         return $name;
     }
     
     /**
-     * Возвращает принадлежность типа нарушения модератору по ID
-     * @param  int $complainTypeID ID типа нарушения
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚СЊ С‚РёРїР° РЅР°СЂСѓС€РµРЅРёСЏ РјРѕРґРµСЂР°С‚РѕСЂСѓ РїРѕ ID
+     * @param  int $complainTypeID ID С‚РёРїР° РЅР°СЂСѓС€РµРЅРёСЏ
      * @return boolean
      */
     function isComplainTypeModer($complainTypeID) {
@@ -100,18 +100,18 @@ class projects_complains
     }
     
     /**
-     * Возвращает статистику по жалобам
-     * @param  string $by    - тип группировки результата
-     * @param  array $bounds - массив границ для построения диапазонов в режиме группировки по бюджету проекта (когда $by == 'cost')
-     * @return array         - результат, одномерный массив (строка) для $by == 'from', деление про / не про, 
-     *                         двумерный масcив строк для $by == 'category', топ 10 категорий
-     *                         в режиме группировки по бюджету проекта - трёхмерный (сами диапазоны и результат запроса)
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕ Р¶Р°Р»РѕР±Р°Рј
+     * @param  string $by    - С‚РёРї РіСЂСѓРїРїРёСЂРѕРІРєРё СЂРµР·СѓР»СЊС‚Р°С‚Р°
+     * @param  array $bounds - РјР°СЃСЃРёРІ РіСЂР°РЅРёС† РґР»СЏ РїРѕСЃС‚СЂРѕРµРЅРёСЏ РґРёР°РїР°Р·РѕРЅРѕРІ РІ СЂРµР¶РёРјРµ РіСЂСѓРїРїРёСЂРѕРІРєРё РїРѕ Р±СЋРґР¶РµС‚Сѓ РїСЂРѕРµРєС‚Р° (РєРѕРіРґР° $by == 'cost')
+     * @return array         - СЂРµР·СѓР»СЊС‚Р°С‚, РѕРґРЅРѕРјРµСЂРЅС‹Р№ РјР°СЃСЃРёРІ (СЃС‚СЂРѕРєР°) РґР»СЏ $by == 'from', РґРµР»РµРЅРёРµ РїСЂРѕ / РЅРµ РїСЂРѕ, 
+     *                         РґРІСѓРјРµСЂРЅС‹Р№ РјР°СЃcРёРІ СЃС‚СЂРѕРє РґР»СЏ $by == 'category', С‚РѕРї 10 РєР°С‚РµРіРѕСЂРёР№
+     *                         РІ СЂРµР¶РёРјРµ РіСЂСѓРїРїРёСЂРѕРІРєРё РїРѕ Р±СЋРґР¶РµС‚Сѓ РїСЂРѕРµРєС‚Р° - С‚СЂС‘С…РјРµСЂРЅС‹Р№ (СЃР°РјРё РґРёР°РїР°Р·РѕРЅС‹ Рё СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР°)
      */
     public static function GetComplainsStats($by = 'from', $bounds = array()) {
         global $DB;
         switch ($by) {
             case 'from': {
-                // Общее количество с делением "от про / не про"
+                // РћР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃ РґРµР»РµРЅРёРµРј "РѕС‚ РїСЂРѕ / РЅРµ РїСЂРѕ"
                 $sql = 'SELECT SUM(CAST(u.is_pro AS INT)) AS pro, SUM(1-CAST(u.is_pro AS INT)) AS nopro
                     FROM projects_complains_counter c
                     INNER JOIN projects p ON p.id  = c.project_id
@@ -121,7 +121,7 @@ class projects_complains
                 break;
             }
             case 'category': {
-                // По категориям
+                // РџРѕ РєР°С‚РµРіРѕСЂРёСЏРј
                 $sql = 'SELECT
                     g.id AS cat_id,
                     g.name,
@@ -139,15 +139,15 @@ class projects_complains
             case 'cost': {
                 if(!$bounds) return false;
                 sort($bounds);
-                // Деление по бюджету
-                // Подготавливаем массив диапазонов
+                // Р”РµР»РµРЅРёРµ РїРѕ Р±СЋРґР¶РµС‚Сѓ
+                // РџРѕРґРіРѕС‚Р°РІР»РёРІР°РµРј РјР°СЃСЃРёРІ РґРёР°РїР°Р·РѕРЅРѕРІ
                 $bcnt = count($bounds);
                 $diaps = array();
                 for ($i=0; $i<=$bcnt; $i++){
                     if (isset($bounds[($i-1)])) $diaps[$i]['start']   = $bounds[($i-1)];
                     if (isset($bounds[$i]))     $diaps[$i]['end']     = $bounds[$i];
                 }
-                // .. текст и sql - блок
+                // .. С‚РµРєСЃС‚ Рё sql - Р±Р»РѕРє
                 $sql = '';
                 $complains_pcost = array();
                 for ($i=0; $i<=$bcnt; $i++){
@@ -161,7 +161,7 @@ class projects_complains
                         $diaps[$i]['html'] = $diaps[$i]['start'].' &mdash; '.$diaps[$i]['end'];
                         $sql .= 'WHEN p.cost BETWEEN '.$diaps[$i]['start'].' AND '.$diaps[$i]['end'].' THEN '.$i."\n";
                     }
-                    // Заодно и массив вывода проинициализируем
+                    // Р—Р°РѕРґРЅРѕ Рё РјР°СЃСЃРёРІ РІС‹РІРѕРґР° РїСЂРѕРёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј
                     $complains_pcost[$i] = 0;
                 }
 

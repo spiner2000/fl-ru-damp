@@ -6,37 +6,37 @@ Sbr.prototype.ERRORS=<?=sbr_meta::jsInputErrors($stage->error['arbitrage'])?>;
 <div class="tabs-in">
 	<div class="nr-arb-send">
         <form action="." method="post" enctype="multipart/form-data" id="arbitrageFrm">
-            <h3>Обращение в Арбитражную комиссию</h3>
-            <p>Просим обратить внимание на то, что Арбитраж принимает во внимание только переписку в комментариях к проекту.<br />Не рассматриваются сообщения в других местах, например Skype, ICQ, почта и другие.</p>
+            <h3>РћР±СЂР°С‰РµРЅРёРµ РІ РђСЂР±РёС‚СЂР°Р¶РЅСѓСЋ РєРѕРјРёСЃСЃРёСЋ</h3>
+            <p>РџСЂРѕСЃРёРј РѕР±СЂР°С‚РёС‚СЊ РІРЅРёРјР°РЅРёРµ РЅР° С‚Рѕ, С‡С‚Рѕ РђСЂР±РёС‚СЂР°Р¶ РїСЂРёРЅРёРјР°РµС‚ РІРѕ РІРЅРёРјР°РЅРёРµ С‚РѕР»СЊРєРѕ РїРµСЂРµРїРёСЃРєСѓ РІ РєРѕРјРјРµРЅС‚Р°СЂРёСЏС… Рє РїСЂРѕРµРєС‚Сѓ.<br />РќРµ СЂР°СЃСЃРјР°С‚СЂРёРІР°СЋС‚СЃСЏ СЃРѕРѕР±С‰РµРЅРёСЏ РІ РґСЂСѓРіРёС… РјРµСЃС‚Р°С…, РЅР°РїСЂРёРјРµСЂ Skype, ICQ, РїРѕС‡С‚Р° Рё РґСЂСѓРіРёРµ.</p>
             <div class="form nr-arb-send-agree">
                 <b class="b1"></b>
                 <b class="b2"></b>
                 <div class="form-in">
-                    <span><input type="checkbox" name="iagree" id="f1" onclick="SBR.form.send.disabled=!this.checked"/><label for="f1"> Я понимаю, что это необратимый процесс</label></span>
+                    <span><input type="checkbox" name="iagree" id="f1" onclick="SBR.form.send.disabled=!this.checked"/><label for="f1"> РЇ РїРѕРЅРёРјР°СЋ, С‡С‚Рѕ СЌС‚Рѕ РЅРµРѕР±СЂР°С‚РёРјС‹Р№ РїСЂРѕС†РµСЃСЃ</label></span>
                     <div class="tip tip-t2" style="top:auto"></div>
                 </div>
                 <b class="b2"></b>
                 <b class="b1"></b>
             </div>
             <div class="nr-arb-send-prj">
-                <h4>Задача:</h4>
+                <h4>Р—Р°РґР°С‡Р°:</h4>
                 <div>
                     <a href="?site=Stage&id=<?=$stage->id?>"><?=reformat($stage->name,55,0,1)?></a><br/>
                     <span><strong>#<?=$stage->id?></strong></span>
                 </div>
             </div>
             <div class="nr-arb-send-form">
-                <label for="f2">Опишите возникшую проблему:</label>
+                <label for="f2">РћРїРёС€РёС‚Рµ РІРѕР·РЅРёРєС€СѓСЋ РїСЂРѕР±Р»РµРјСѓ:</label>
                 <span><textarea cols="140" rows="5" name="descr" id="f2"><?=htmlspecialchars($descr)?></textarea></span>
                 <div class="tip tip-t2" style="top:auto;margin-top:-6px"></div>
                 <ul class="cl-form-o c">
-                    <li><a href="javascript:;" id="arb_fs_toggler">Прикрепить файл к сообщению</a></li>
+                    <li><a href="javascript:;" id="arb_fs_toggler">РџСЂРёРєСЂРµРїРёС‚СЊ С„Р°Р№Р» Рє СЃРѕРѕР±С‰РµРЅРёСЋ</a></li>
                 </ul>
                 <div class="cl-form-files" id="arb_files_box">
                     <ul class="form-files-list" id="arb_files_list"><li class="c"><input type="file" size="23" class="i-file" name="attach[]" /></li></ul>
                     <div class="form-files-inf">
-                        <strong class="form-files-max">Максимальный размер файла: <?=sbr_stages::ARB_FILE_MAX_SIZE/1024/1024?> Мб</strong><br/>
-                        Файлы следующих форматов запрещены к загрузке: <?=implode(', ', $GLOBALS['disallowed_array'])?>
+                        <strong class="form-files-max">РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°: <?=sbr_stages::ARB_FILE_MAX_SIZE/1024/1024?> РњР±</strong><br/>
+                        Р¤Р°Р№Р»С‹ СЃР»РµРґСѓСЋС‰РёС… С„РѕСЂРјР°С‚РѕРІ Р·Р°РїСЂРµС‰РµРЅС‹ Рє Р·Р°РіСЂСѓР·РєРµ: <?=implode(', ', $GLOBALS['disallowed_array'])?>
                     </div>
                     <div style="clear:both;"></div>
                 </div>
@@ -44,8 +44,8 @@ Sbr.prototype.ERRORS=<?=sbr_meta::jsInputErrors($stage->error['arbitrage'])?>;
                     <span><input type="hidden" name="err_attach" /></span><div class="tip tip-t2" style="top:-35px; left: 0; z-index:100;"></div>
                 </div>
                 <div class="nr-send-btns">
-                    <input type="submit" name="send" value="Отправить в Арбитраж" disabled="disabled" class="i-btn" />
-                    <input type="submit" name="cancel" value="Отменить" class="i-btn" />
+                    <input type="submit" name="send" value="РћС‚РїСЂР°РІРёС‚СЊ РІ РђСЂР±РёС‚СЂР°Р¶" disabled="disabled" class="i-btn" />
+                    <input type="submit" name="cancel" value="РћС‚РјРµРЅРёС‚СЊ" class="i-btn" />
                 </div>
 								<input type="hidden" name="id" value="<?=$stage->id?>" />
 								<input type="hidden" name="site" value="<?=$site?>" />

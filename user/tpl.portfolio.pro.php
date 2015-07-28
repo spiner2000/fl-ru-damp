@@ -1,25 +1,25 @@
-<?php include_once("act.portfolio.php"); // Файл для обработки логики ?>
+<?php include_once("act.portfolio.php"); // Р¤Р°Р№Р» РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё Р»РѕРіРёРєРё ?>
 <?php 
 if($user->login == $_SESSION['login']) {
     uploader::init(array(), $templates, 'portfolio');
 }?>
 <script type="text/javascript">
     var categoryList = new Object();
-    var currencyList = {0:"USD", 1:"Евро", 2:"Руб"}
-    var timeTypeList = {0:"в часах", 1:"в днях", 2:"в месяцах", 3:"в минутах"}
+    var currencyList = {0:"USD", 1:"Р•РІСЂРѕ", 2:"Р СѓР±"}
+    var timeTypeList = {0:"РІ С‡Р°СЃР°С…", 1:"РІ РґРЅСЏС…", 2:"РІ РјРµСЃСЏС†Р°С…", 3:"РІ РјРёРЅСѓС‚Р°С…"}
 </script>
 
 <?php if($_SESSION['login'] == $user->login) { ?>
     <?php if($user->is_pro!='t' && (int) $user->spec == 0) { ?>
         <div class="b-fon b-fon_pad_20">
             <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb">
-                <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span><a class="b-layout__link" href="/users/<?= $user->login; ?>/setup/specsetup/">Выберите специализацию</a>. Это небходимо, чтобы попасть в каталог фрилансеров, в котором вас найдут заказчики
+                <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span><a class="b-layout__link" href="/users/<?= $user->login; ?>/setup/specsetup/">Р’С‹Р±РµСЂРёС‚Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ</a>. Р­С‚Рѕ РЅРµР±С…РѕРґРёРјРѕ, С‡С‚РѕР±С‹ РїРѕРїР°СЃС‚СЊ РІ РєР°С‚Р°Р»РѕРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, РІ РєРѕС‚РѕСЂРѕРј РІР°СЃ РЅР°Р№РґСѓС‚ Р·Р°РєР°Р·С‡РёРєРё
             </div>
         </div>
     <?php } elseif($user->is_pro!='t' && (int) $user->spec != 0) { ?>
         <div class="b-fon b-fon_pad_20">
             <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb">
-                <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span>Внимание! Вы отображаетесь в каталоге только по своей специализации. Чтобы увеличить количество специализаций, необходимо перейти на аккаунт <?= view_pro();?>
+                <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span>Р’РЅРёРјР°РЅРёРµ! Р’С‹ РѕС‚РѕР±СЂР°Р¶Р°РµС‚РµСЃСЊ РІ РєР°С‚Р°Р»РѕРіРµ С‚РѕР»СЊРєРѕ РїРѕ СЃРІРѕРµР№ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё. Р§С‚РѕР±С‹ СѓРІРµР»РёС‡РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёР№, РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµР№С‚Рё РЅР° Р°РєРєР°СѓРЅС‚ <?= view_pro();?>
             </div>
         </div>
     <?php } ?>
@@ -31,28 +31,28 @@ if($user->login == $_SESSION['login']) {
     <div class="prtfl-r"><a name="spec_text"></a>
         <p><?= reformat2( $sSpecText, 50, 0,  0 )?></p>
         <?php if ( hasPermissions('users') ) { ?>
-        <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'spec_text', 'utable': 'freelancer'})">Редактировать</a>
+        <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'spec_text', 'utable': 'freelancer'})">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
         <?php } ?>
     </div>
     <div class="prtfl-l">
-        <p><?= access_view('Специализация', '<a class="lnk-666" href="/users/'.$user->login.'/setup/specsetup/">%s</a>', $is_owner) ?>:&nbsp;&nbsp;<?=professions::GetProfNameWP($user->spec,' / ', "Нет специализации")?></p>
-        <? if ($is_pro) {?><p><?= access_view('Дополнительные специализации', '<a class="lnk-666" href="/users/'.$user->login.'/setup/specaddsetup/">%s</a>', $is_owner) ?>:&nbsp;&nbsp;<?=$specs_add_string?></p><? } ?>
+        <p><?= access_view('РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ', '<a class="lnk-666" href="/users/'.$user->login.'/setup/specsetup/">%s</a>', $is_owner) ?>:&nbsp;&nbsp;<?=professions::GetProfNameWP($user->spec,' / ', "РќРµС‚ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё")?></p>
+        <? if ($is_pro) {?><p><?= access_view('Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё', '<a class="lnk-666" href="/users/'.$user->login.'/setup/specaddsetup/">%s</a>', $is_owner) ?>:&nbsp;&nbsp;<?=$specs_add_string?></p><? } ?>
         <?php if($user->exp > 0) {?>
-        <p>Опыт работы:&nbsp;&nbsp;<?=view_exp($user->exp)?></p>
+        <p>РћРїС‹С‚ СЂР°Р±РѕС‚С‹:&nbsp;&nbsp;<?=view_exp($user->exp)?></p>
         <?php } //if?>
         <?php if($user->in_office == 't') { ?>
-        <p><strong>Ищу долгосрочную работу <span class="run-men" >в офисе</span></strong></p>
+        <p><strong>РС‰Сѓ РґРѕР»РіРѕСЃСЂРѕС‡РЅСѓСЋ СЂР°Р±РѕС‚Сѓ <span class="run-men" >РІ РѕС„РёСЃРµ</span></strong></p>
         <?php } //if?>
         <?php if ($user->cost_hour > 0) { ?>
-        <p><strong>Стоимость часа работы</strong> &mdash; <span class="money"><?=view_cost2($user->cost_hour, '', '', false, $user->cost_type_hour)?></span></p>
+        <p><strong>РЎС‚РѕРёРјРѕСЃС‚СЊ С‡Р°СЃР° СЂР°Р±РѕС‚С‹</strong> &mdash; <span class="money"><?=view_cost2($user->cost_hour, '', '', false, $user->cost_type_hour)?></span></p>
         <?php } //if?>
         <?php if ($user->cost_month > 0) { ?>
-        <p><strong>Стоимость месяца работы</strong> &mdash; <span class="money"><?=view_cost2($user->cost_month, '', '', false, $user->cost_type_month)?></span></p>
+        <p><strong>РЎС‚РѕРёРјРѕСЃС‚СЊ РјРµСЃСЏС†Р° СЂР°Р±РѕС‚С‹</strong> &mdash; <span class="money"><?=view_cost2($user->cost_month, '', '', false, $user->cost_type_month)?></span></p>
         <?php } //if?>
     </div>         
     <?php if ($is_owner) { ?>
     <div class="b-layout__txt">
-        <a class="b-layout__link" href="/users/<?= $user->login; ?>/setup/portfolio/">Настроить портфолио</a>
+        <a class="b-layout__link" href="/users/<?= $user->login; ?>/setup/portfolio/">РќР°СЃС‚СЂРѕРёС‚СЊ РїРѕСЂС‚С„РѕР»РёРѕ</a>
     </div>
     <?php } //if ?>
 </div>
@@ -90,10 +90,10 @@ if(!$is_count_project) {
         }
         ?>
         <div class="add-work-b">
-        	<p>В вашем портфолио сейчас нет ни одной работы</p><br/>
-            <a class="b-button b-button_flat b-button_flat_green" href="<?= $aHref?>">Добавить работу</a>
+        	<p>Р’ РІР°С€РµРј РїРѕСЂС‚С„РѕР»РёРѕ СЃРµР№С‡Р°СЃ РЅРµС‚ РЅРё РѕРґРЅРѕР№ СЂР°Р±РѕС‚С‹</p><br/>
+            <a class="b-button b-button_flat b-button_flat_green" href="<?= $aHref?>">Р”РѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚Сѓ</a>
         </div>
     <?php } else {//if?>
-        <h2 style="text-align: center;"><?= ($user->tab_name_id == "1"?"Нет услуг":"Нет работ")?></h2>
+        <h2 style="text-align: center;"><?= ($user->tab_name_id == "1"?"РќРµС‚ СѓСЃР»СѓРі":"РќРµС‚ СЂР°Р±РѕС‚")?></h2>
     <?php } //else?>
 <?php } //if ?>

@@ -31,7 +31,7 @@ $uid = get_uid();
 
 //------------------------------------------------------------------------------
 
-//@todo Ссылки должны изначально передавать такие параметры вместо word
+//@todo РЎСЃС‹Р»РєРё РґРѕР»Р¶РЅС‹ РёР·РЅР°С‡Р°Р»СЊРЅРѕ РїРµСЂРµРґР°РІР°С‚СЊ С‚Р°РєРёРµ РїР°СЂР°РјРµС‚СЂС‹ РІРјРµСЃС‚Рѕ word
 $word = __paramInit('string', 'word');
 if ($word) {
     $search_string = urlencode($word);
@@ -179,16 +179,16 @@ $freelancer_seo = new freelancer_seo( $section );
 
 if (!$prof_id && !$prof_group_id)
 {
-  // Подсчитываем количество избранных. Переписать в отдельный метод.
+  // РџРѕРґСЃС‡РёС‚С‹РІР°РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ РёР·Р±СЂР°РЅРЅС‹С…. РџРµСЂРµРїРёСЃР°С‚СЊ РІ РѕС‚РґРµР»СЊРЅС‹Р№ РјРµС‚РѕРґ.
 //  $fav_count = 0;
-  $prof_name = "Все фри-лансеры";
+  $prof_name = "Р’СЃРµ С„СЂРё-Р»Р°РЅСЃРµСЂС‹";
   $prof_type = false;
   $prof_group_name = '';
   $prof_descr = '';
   $prof_descr_text = '';
-  $page_title = "Удаленная работа%prepositional_cityname%. Фрилансеры%cityname%. Проекты от работодателей%cityname%.";
-  $page_keyw = "фрилансер, free-lance, freelance, нужны сотрудники удаленно, онлайн фрилансер ру, найти специалиста, сайт фрилансеров, ищу сотрудника, фриланс дизайнер, бухгалтер на дому, юрист удаленно, программист, разработчик, seo оптимизатор, копирайт, рерайт";
-  $page_descr = "Лучшие специалисты для тех, кому нужны сотрудники удаленно. Удаленная работа на дому. Онлайн фрилансеры: дизайнеры, копирайтеры, рерайтеры, разработчики, программисты, seo, бухгалтеры, юристы, художники";
+  $page_title = "РЈРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°%prepositional_cityname%. Р¤СЂРёР»Р°РЅСЃРµСЂС‹%cityname%. РџСЂРѕРµРєС‚С‹ РѕС‚ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№%cityname%.";
+  $page_keyw = "С„СЂРёР»Р°РЅСЃРµСЂ, free-lance, freelance, РЅСѓР¶РЅС‹ СЃРѕС‚СЂСѓРґРЅРёРєРё СѓРґР°Р»РµРЅРЅРѕ, РѕРЅР»Р°Р№РЅ С„СЂРёР»Р°РЅСЃРµСЂ СЂСѓ, РЅР°Р№С‚Рё СЃРїРµС†РёР°Р»РёСЃС‚Р°, СЃР°Р№С‚ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, РёС‰Сѓ СЃРѕС‚СЂСѓРґРЅРёРєР°, С„СЂРёР»Р°РЅСЃ РґРёР·Р°Р№РЅРµСЂ, Р±СѓС…РіР°Р»С‚РµСЂ РЅР° РґРѕРјСѓ, СЋСЂРёСЃС‚ СѓРґР°Р»РµРЅРЅРѕ, РїСЂРѕРіСЂР°РјРјРёСЃС‚, СЂР°Р·СЂР°Р±РѕС‚С‡РёРє, seo РѕРїС‚РёРјРёР·Р°С‚РѕСЂ, РєРѕРїРёСЂР°Р№С‚, СЂРµСЂР°Р№С‚";
+  $page_descr = "Р›СѓС‡С€РёРµ СЃРїРµС†РёР°Р»РёСЃС‚С‹ РґР»СЏ С‚РµС…, РєРѕРјСѓ РЅСѓР¶РЅС‹ СЃРѕС‚СЂСѓРґРЅРёРєРё СѓРґР°Р»РµРЅРЅРѕ. РЈРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° РґРѕРјСѓ. РћРЅР»Р°Р№РЅ С„СЂРёР»Р°РЅСЃРµСЂС‹: РґРёР·Р°Р№РЅРµСЂС‹, РєРѕРїРёСЂР°Р№С‚РµСЂС‹, СЂРµСЂР°Р№С‚РµСЂС‹, СЂР°Р·СЂР°Р±РѕС‚С‡РёРєРё, РїСЂРѕРіСЂР°РјРјРёСЃС‚С‹, seo, Р±СѓС…РіР°Р»С‚РµСЂС‹, СЋСЂРёСЃС‚С‹, С…СѓРґРѕР¶РЅРёРєРё";
 
   //list($avg_price_hour, $avg_price_project, $avg_price_month) = professions::GetAvgPrices($prof_id);
   //$avg_price_hour = $avg_price_project = $avg_price_month = null;
@@ -204,9 +204,9 @@ elseif ($prof_group_id)
     $prof_group_name = '';
     $prof_descr = '';
     $prof_descr_text = '';
-    $page_title = $prof_name .". Удаленная работа%prepositional_cityname%. Фрилансеры%cityname%. Проекты от работодателей%cityname%.";
-    $page_keyw = $prof_name . ", фри-лансер, удаленная работа, поиск работы, предложение работы, портфолио фри-лансеров, разработка сайтов, программирование, переводы, тексты, дизайн, арт, реклама, маркетинг, прочее, fl.ru";
-    $page_descr = $prof_name . ",Фри-лансер. Удаленная работа. Поиск работы. Предложение работы. Портфолио фри-лансеров. Разработка сайтов, Программирование, Переводы, Тексты, Дизайн, Арт, Реклама, Маркетинг, Прочее. FL.ru";
+    $page_title = $prof_name .". РЈРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°%prepositional_cityname%. Р¤СЂРёР»Р°РЅСЃРµСЂС‹%cityname%. РџСЂРѕРµРєС‚С‹ РѕС‚ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№%cityname%.";
+    $page_keyw = $prof_name . ", С„СЂРё-Р»Р°РЅСЃРµСЂ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°, РїРѕРёСЃРє СЂР°Р±РѕС‚С‹, РїСЂРµРґР»РѕР¶РµРЅРёРµ СЂР°Р±РѕС‚С‹, РїРѕСЂС‚С„РѕР»РёРѕ С„СЂРё-Р»Р°РЅСЃРµСЂРѕРІ, СЂР°Р·СЂР°Р±РѕС‚РєР° СЃР°Р№С‚РѕРІ, РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ, РїРµСЂРµРІРѕРґС‹, С‚РµРєСЃС‚С‹, РґРёР·Р°Р№РЅ, Р°СЂС‚, СЂРµРєР»Р°РјР°, РјР°СЂРєРµС‚РёРЅРі, РїСЂРѕС‡РµРµ, fl.ru";
+    $page_descr = $prof_name . ",Р¤СЂРё-Р»Р°РЅСЃРµСЂ. РЈРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°. РџРѕРёСЃРє СЂР°Р±РѕС‚С‹. РџСЂРµРґР»РѕР¶РµРЅРёРµ СЂР°Р±РѕС‚С‹. РџРѕСЂС‚С„РѕР»РёРѕ С„СЂРё-Р»Р°РЅСЃРµСЂРѕРІ. Р Р°Р·СЂР°Р±РѕС‚РєР° СЃР°Р№С‚РѕРІ, РџСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ, РџРµСЂРµРІРѕРґС‹, РўРµРєСЃС‚С‹, Р”РёР·Р°Р№РЅ, РђСЂС‚, Р РµРєР»Р°РјР°, РњР°СЂРєРµС‚РёРЅРі, РџСЂРѕС‡РµРµ. FL.ru";
 
     //list($avg_price_hour, $avg_price_project, $avg_price_month) = professions::GetAvgPrices($prof_id);
     //$avg_price_hour = $avg_price_project = $avg_price_month = null;
@@ -217,7 +217,7 @@ elseif ($prof_group_id)
 } 
 else
 {
-  // Подсчитываем количество избранных. Переписать в отдельный метод.
+  // РџРѕРґСЃС‡РёС‚С‹РІР°РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ РёР·Р±СЂР°РЅРЅС‹С…. РџРµСЂРµРїРёСЃР°С‚СЊ РІ РѕС‚РґРµР»СЊРЅС‹Р№ РјРµС‚РѕРґ.
     //  $fav_count = 0;
   if( !$prof_link ) 
   {
@@ -238,34 +238,34 @@ else
     {
         if ( empty($prof_name_arr['title']) ) 
         {
-            $page_title = $prof_title . " - фриланс, удаленная работа на FL.ru";
-            $page_keyw  = $prof_title . ", Поиск работы, Предложение работы, Портфолио фри-лансеров, FL.ru";
+            $page_title = $prof_title . " - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
+            $page_keyw  = $prof_title . ", РџРѕРёСЃРє СЂР°Р±РѕС‚С‹, РџСЂРµРґР»РѕР¶РµРЅРёРµ СЂР°Р±РѕС‚С‹, РџРѕСЂС‚С„РѕР»РёРѕ С„СЂРё-Р»Р°РЅСЃРµСЂРѕРІ, FL.ru";
         } 
         else 
         {
-            $page_title = $page_keyw = $prof_name_arr['title'] . " - фриланс, удаленная работа%prepositional_cityname% на FL.ru";
-            $page_keyw  = $prof_name_arr['title'] . ", Поиск работы, Предложение работы, Портфолио фри-лансеров, FL.ru";
+            $page_title = $page_keyw = $prof_name_arr['title'] . " - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°%prepositional_cityname% РЅР° FL.ru";
+            $page_keyw  = $prof_name_arr['title'] . ", РџРѕРёСЃРє СЂР°Р±РѕС‚С‹, РџСЂРµРґР»РѕР¶РµРЅРёРµ СЂР°Р±РѕС‚С‹, РџРѕСЂС‚С„РѕР»РёРѕ С„СЂРё-Р»Р°РЅСЃРµСЂРѕРІ, FL.ru";
         }
     }
     else 
     {
-        $page_title = $prof_name . ' - Страница ' . $page . ' - фриланс, удаленная работа%prepositional_cityname% на FL.ru';
-        $page_keyw  = $prof_name . ', Страница ' . $page . ', FL.ru';
+        $page_title = $prof_name . ' - РЎС‚СЂР°РЅРёС†Р° ' . $page . ' - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°%prepositional_cityname% РЅР° FL.ru';
+        $page_keyw  = $prof_name . ', РЎС‚СЂР°РЅРёС†Р° ' . $page . ', FL.ru';
     }
     
     
     if ( $page == 1 ) 
     {
-        $page_descr = $prof_title . " Удаленная работа. Поиск работы. Предложение работы. Портфолио фри-лансеров. FL.ru";
+        $page_descr = $prof_title . " РЈРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°. РџРѕРёСЃРє СЂР°Р±РѕС‚С‹. РџСЂРµРґР»РѕР¶РµРЅРёРµ СЂР°Р±РѕС‚С‹. РџРѕСЂС‚С„РѕР»РёРѕ С„СЂРё-Р»Р°РЅСЃРµСЂРѕРІ. FL.ru";
     }
     else 
     {
-        $page_descr = $prof_name . '. Страница ' . $page . ' - фриланс, удаленная работа%prepositional_cityname% на FL.ru';
+        $page_descr = $prof_name . '. РЎС‚СЂР°РЅРёС†Р° ' . $page . ' - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°%prepositional_cityname% РЅР° FL.ru';
     }
     
 }
 
-//Мета-теги
+//РњРµС‚Р°-С‚РµРіРё
 if ($prof_group_id) {
     SeoTags::getInstance()->initFreelancers($prof_group_id, $page, false);
 } else {
@@ -281,14 +281,14 @@ $page_h1 = SeoTags::getInstance()->getH1();
 //------------------------------------------------------------------------------
 
 
-// Показывать только про пользователей
+// РџРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ РїСЂРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
 $is_pro = __paramInit('bool', 'is_pro', 'is_pro', false);
 $show_all_freelancers = __paramInit('string', 'show', 'show', 'all');
 $show_all_freelancers = ($show_all_freelancers == 'all');
 
 $action = __paramInit('string', 'action', 'action', '');
 
-//Выборка при поиске
+//Р’С‹Р±РѕСЂРєР° РїСЂРё РїРѕРёСЃРєРµ
 if(in_array($action, array('search','search_advanced')))
 {
     
@@ -418,7 +418,7 @@ if(in_array($action, array('search','search_advanced')))
 
     $string_query = $search_string;
     
-    // @todo Кажется, это никогда не используется?
+    // @todo РљР°Р¶РµС‚СЃСЏ, СЌС‚Рѕ РЅРёРєРѕРіРґР° РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ?
     $string_query .= !empty($string_professions) ? ' ' . $string_professions : '';
     
     $search = new searchExt($uid);
@@ -436,11 +436,11 @@ if(in_array($action, array('search','search_advanced')))
     $content = "search/content.php";
     
 }
-//Обычная выборка при навигации
+//РћР±С‹С‡РЅР°СЏ РІС‹Р±РѕСЂРєР° РїСЂРё РЅР°РІРёРіР°С†РёРё
 else
 {
 
-    // Показываем только ПРО пользователей
+    // РџРѕРєР°Р·С‹РІР°РµРј С‚РѕР»СЊРєРѕ РџР Рћ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
     if (!$show_all_freelancers) 
     {
         freelancer::SetFuTable('fu_pro');
@@ -490,33 +490,33 @@ else
     {
         case "sbr":
             $orderby = "sbr";
-            $str_rating = "Рекомендации";
+            $str_rating = "Р РµРєРѕРјРµРЅРґР°С†РёРё";
             break;
         case "ops":
             $orderby = "opinions";
-            $str_rating = "Мнения";
+            $str_rating = "РњРЅРµРЅРёСЏ";
             break;
         case "pph":
             $orderby = "cost_hour";
-            $str_rating = "Цена за час";
+            $str_rating = "Р¦РµРЅР° Р·Р° С‡Р°СЃ";
             break;
         case "ppp":
             $orderby = "cost_proj";
-            $str_rating = "Цена за проект";
+            $str_rating = "Р¦РµРЅР° Р·Р° РїСЂРѕРµРєС‚";
             break;
         case "pp1":
             $orderby = "cost_1000";
-            $str_rating = "Цена за 1000 знаков";
+            $str_rating = "Р¦РµРЅР° Р·Р° 1000 Р·РЅР°РєРѕРІ";
             break;
         case "ppm":
             $orderby = "cost_month";
-            $str_rating = "Цена за месяц";
+            $str_rating = "Р¦РµРЅР° Р·Р° РјРµСЃСЏС†";
             break;
         case "gnr":
         default:
             $order = 'gnr';
             $orderby = "general";
-            $str_rating = "Рейтинг";
+            $str_rating = "Р РµР№С‚РёРЅРі";
             break;
     }
 
@@ -554,7 +554,7 @@ else
             (($show_all_freelancers)?"show=all&":"").                        
             (($key_word)?'word='.str_replace('%','%%', urlencode(stripslashes($key_word))).'&':'');
     
-    //Cсылка для new_paginator()
+    //CСЃС‹Р»РєР° РґР»СЏ new_paginator()
     $sHref = "%s".$cur_page_url."page=%d%s";
 
     if ($page > 1) 
@@ -576,7 +576,7 @@ else
 if($f_city_id) {
   $city_info = city::getCity($f_city_id);
   $page_title = preg_replace("/%cityname%/", ' '.$city_info['city_name'], $page_title);
-  $page_title = preg_replace("/%prepositional_cityname%/", ($city_info['prepositional_city_name'] ? ' в '.$city_info['prepositional_city_name'] : ' '.$city_info['city_name']), $page_title);
+  $page_title = preg_replace("/%prepositional_cityname%/", ($city_info['prepositional_city_name'] ? ' РІ '.$city_info['prepositional_city_name'] : ' '.$city_info['city_name']), $page_title);
 } else {
   $page_title = preg_replace("/%cityname%/", '', $page_title);
   $page_title = preg_replace("/%prepositional_cityname%/", '', $page_title);
@@ -598,19 +598,19 @@ $additional_header = '<script type="text/javascript" src="/scripts/kwords.js"></
 //------------------------------------------------------------------------------
 
 require_once(ABS_PATH . '/freelancers/widgets/FreelancersTServicesWidget.php');
-//Инициализация виджета плитки ТУ вместо портфолио
+//РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РІРёРґР¶РµС‚Р° РїР»РёС‚РєРё РўРЈ РІРјРµСЃС‚Рѕ РїРѕСЂС‚С„РѕР»РёРѕ
 $freelancersTServicesWidget = new FreelancersTServicesWidget();
 
 //------------------------------------------------------------------------------
 
-//Популярные услуги из этой же категории
+//РџРѕРїСѓР»СЏСЂРЅС‹Рµ СѓСЃР»СѓРіРё РёР· СЌС‚РѕР№ Р¶Рµ РєР°С‚РµРіРѕСЂРёРё
 require_once(ABS_PATH . '/tu/widgets/TServicesPopular.php');
 $tservicesPopular = new TServicesPopular();
 $tservicesPopular->setOptions(array(
     'prof_group_id' => $prof_group_id,
     'prof_id' => $prof_id,
     'limit' => 9,
-    'title' => 'Услуги фрилансеров',
+    'title' => 'РЈСЃР»СѓРіРё С„СЂРёР»Р°РЅСЃРµСЂРѕРІ',
     'title_css' => 'b-layout__title_padtop_10',
 ));
 $tservicesPopular->init();
@@ -634,6 +634,6 @@ $js_file[] = '/css/block/b-text/b-text.js';
 $js_file[] = '/css/block/b-popup/b-popup.js';
 $css_file = array( '/css/block/b-icon/__cat/b-icon__cat.css', '/css/block/b-search/b-search.css', 'main.css', '/css/nav.css' );
 $js_file[] = 'search.js';
-$js_file[] = 'freelancers/freelancers.js';//@todo: Сюда переносить все inline-скрипты!
+$js_file[] = 'freelancers/freelancers.js';//@todo: РЎСЋРґР° РїРµСЂРµРЅРѕСЃРёС‚СЊ РІСЃРµ inline-СЃРєСЂРёРїС‚С‹!
 $freelancers_catalog = true;
 include ("../template2.php");

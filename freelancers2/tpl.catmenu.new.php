@@ -15,12 +15,12 @@ if ($uid && !is_emp()) {
             $sTagB = '<div class="b-catalog__item-inner b-catalog__item-inner_pad_5_10">'.(( $cat_menu_employers ) ? ($page > 1 ? '<a href="/employers/" class="b-catalog__link b-catalog__link_bold b-catalog__link_color_000">' : '').'<span class="b-catalog__item-current b-catalog__item-current_color_000">' : '<a href="/employers/" class="b-catalog__link b-catalog__link_bold b-catalog__link_color_000">');
             $sTagE = (( $cat_menu_employers ) ? '</span>'.($page > 1 ? '</a>' : '') : '</a>').'</div>';
             ?>
-            <!-- <li class="b-catalog__item b-catalog__item_bg_74bb54"><?=$sTagB?>Работодатели<?=$sTagE?></li> -->
+            <!-- <li class="b-catalog__item b-catalog__item_bg_74bb54"><?=$sTagB?>Р Р°Р±РѕС‚РѕРґР°С‚РµР»Рё<?=$sTagE?></li> -->
             <?php
             $sTagB = '<div class="b-catalog__item-inner b-catalog__item-inner_pad_5_10">'.(( $grey_catalog ) ? ($prof_id || $page > 1 ? '<a href="/freelancers/" class="b-catalog__link b-catalog__link_bold b-catalog__link_color_000">' : '').'<span class="b-catalog__item-current b-catalog__item-current_color_000">' : '<a href="/freelancers/" class="b-catalog__link b-catalog__link_bold b-catalog__link_color_000">');
             $sTagE = (( $grey_catalog ) ? '</span>'.($prof_id || $page > 1 ? '</a>' : '') : '</a>').'</div>';
             ?>
-            <li class="b-catalog__item b-catalog__item_bg_eef1f2" data-menu-opener="true" data-menu-descriptor="freelancer-type" ><?=$sTagB?>Фрилансеры<?=$sTagE?></li>
+            <li class="b-catalog__item b-catalog__item_bg_eef1f2" data-menu-opener="true" data-menu-descriptor="freelancer-type" ><?=$sTagB?>Р¤СЂРёР»Р°РЅСЃРµСЂС‹<?=$sTagE?></li>
             
             <?php 
             $iter = 0;
@@ -55,7 +55,7 @@ if ($uid && !is_emp()) {
                     <?php
                     do {
                         $in_spec = ($uid && ((is_array($specs) && in_array($prof['id'], $specs))) && ($freelancer->cat_show == 't'));
-                        // #0011761 пункт 12!
+                        // #0011761 РїСѓРЅРєС‚ 12!
                         $sTagB   = ( $prof['id'] == $prof_id && $page == 1 ) ? '<a href="/freelancers/'.$prof['link'].'/" class="b-catalog__link b-catalog__link_color_000 b-catalog__item-current">' : '<a href="/freelancers/'.$prof['link'].'/" class="b-catalog__link b-catalog__link_color_000">';
                         $sTagE   = ( $prof['id'] == $prof_id && $page == 1 ) ? '</a>' : '</a>';
                         if($prof['id'] == 194) { // #0015197
@@ -65,7 +65,7 @@ if ($uid && !is_emp()) {
                     <li class="b-catalog__item b-catalog__item_bordtop_color_e7e6e5">
                         <?=$sTagB?><?=$prof['profname']?><?=$sTagE?>
                         <?php if ($in_spec) { ?>
-                            <em class="b-catalog__here b-catalog__here_right b-catalog__here_full" title="Вы здесь">Вы здесь</em>
+                            <em class="b-catalog__here b-catalog__here_right b-catalog__here_full" title="Р’С‹ Р·РґРµСЃСЊ">Р’С‹ Р·РґРµСЃСЊ</em>
                         <? } //if ?>
                     </li>    
                     <?php

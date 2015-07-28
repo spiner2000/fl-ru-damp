@@ -7,20 +7,20 @@ $count = banner_webeffector::getCountStat();
 $stats = banner_webeffector::getStat();
 ?>
 
-<strong>Статистика баннера WebEffector</strong>
+<strong>РЎС‚Р°С‚РёСЃС‚РёРєР° Р±Р°РЅРЅРµСЂР° WebEffector</strong>
 
 <br><br><br>
-<strong>Всего показов:</strong> <?=$count['views']?>
+<strong>Р’СЃРµРіРѕ РїРѕРєР°Р·РѕРІ:</strong> <?=$count['views']?>
 <br/>
-<strong>Всего кликов:</strong> <?=$count['clicks']?>
+<strong>Р’СЃРµРіРѕ РєР»РёРєРѕРІ:</strong> <?=$count['clicks']?>
 
 <? if($stats) { ?>
     <br><br>
     <table border="1">
         <tr>
-            <td width="100">&nbsp;<strong>Дата</strong></td>
-            <td width="50">&nbsp;<strong>Показы</strong></td>
-            <td width="50">&nbsp;<strong>Клики</strong></td>
+            <td width="100">&nbsp;<strong>Р”Р°С‚Р°</strong></td>
+            <td width="50">&nbsp;<strong>РџРѕРєР°Р·С‹</strong></td>
+            <td width="50">&nbsp;<strong>РљР»РёРєРё</strong></td>
         </tr>
         <? foreach($stats as $stat ) { ?>
             <tr>

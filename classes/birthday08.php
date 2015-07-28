@@ -2,9 +2,9 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
- * Класс для работы разделом День Рождения Фриланса.
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЂР°Р·РґРµР»РѕРј Р”РµРЅСЊ Р РѕР¶РґРµРЅРёСЏ Р¤СЂРёР»Р°РЅСЃР°.
  * @deprecated
- * Устаревший. Новый birthday.php
+ * РЈСЃС‚Р°СЂРµРІС€РёР№. РќРѕРІС‹Р№ birthday.php
  *
  */
 class birthday08{
@@ -15,7 +15,7 @@ class birthday08{
             $sql = "INSERT INTO birthday08 (uid,name,surname,type,message) VALUES ('$uid', '$name', '$surname', ".intval($type).", '$mess')";
             pg_query(DBConnect(),$sql);
             return true;
-        } else $error[1] = "Вы уже зарегистрированы";
+        } else $error[1] = "Р’С‹ СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅС‹";
 
         return $error;
     }

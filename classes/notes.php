@@ -1,62 +1,62 @@
 <?
 /**
- * Подключем файл с основными функциями
+ * РџРѕРґРєР»СЋС‡РµРј С„Р°Р№Р» СЃ РѕСЃРЅРѕРІРЅС‹РјРё С„СѓРЅРєС†РёСЏРјРё
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
- * Полный путь до папки с шаблонами для Заметок
+ * РџРѕР»РЅС‹Р№ РїСѓС‚СЊ РґРѕ РїР°РїРєРё СЃ С€Р°Р±Р»РѕРЅР°РјРё РґР»СЏ Р—Р°РјРµС‚РѕРє
  *
  */
 define(TPL_DIR_NOTES, $_SERVER['DOCUMENT_ROOT']."/user");
 
 /**
- * Класс для работы с заметками на странице пользователя
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р·Р°РјРµС‚РєР°РјРё РЅР° СЃС‚СЂР°РЅРёС†Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
  *
  */
 class notes
 {
     /**
-	 * Добавление новой заметки
+	 * Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕР№ Р·Р°РјРµС‚РєРё
 	 *
-	 * @param integer $user_id       ИД пользователя (чья заметка)
-	 * @param string  $target_login  Кому заметка (логин)
-	 * @param string  $text          Текст заметки 
-	 * @return string Сообщение об ошибке
+	 * @param integer $user_id       РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (С‡СЊСЏ Р·Р°РјРµС‚РєР°)
+	 * @param string  $target_login  РљРѕРјСѓ Р·Р°РјРµС‚РєР° (Р»РѕРіРёРЅ)
+	 * @param string  $text          РўРµРєСЃС‚ Р·Р°РјРµС‚РєРё 
+	 * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function Add($user_id, $target_login, $text, $rating = 0, $old="?i"){
 		$DB = new DB;
 		if ( empty($user_id) || empty($target_login) || empty($text) ) {
-            return 'Ошибка добавления заметки';
+            return 'РћС€РёР±РєР° РґРѕР±Р°РІР»РµРЅРёСЏ Р·Р°РјРµС‚РєРё';
         }
 		$id = $DB->val("SELECT notes_add(?i, {$old}, ?, ?i)", $user_id, $target_login, $text, $rating);
 		return '';
 	}
 	
 	/**
-	 * Обновить заметку
+	 * РћР±РЅРѕРІРёС‚СЊ Р·Р°РјРµС‚РєСѓ
 	 *
-	 * @param integer $user_id      ИД пользователя 
-	 * @param string  $target_login Кому заметка
-	 * @param string  $text         текст заметки
-	 * @return string Сообщение об ошибке
+	 * @param integer $user_id      РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ 
+	 * @param string  $target_login РљРѕРјСѓ Р·Р°РјРµС‚РєР°
+	 * @param string  $text         С‚РµРєСЃС‚ Р·Р°РјРµС‚РєРё
+	 * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function Update($user_id, $target_login, $text, $rating = 0, $old="?i"){
 		$DB = new DB;
 		if ( empty($user_id) || empty($target_login) || empty($text) ) {
-            return 'Ошибка обновления заметки';
+            return 'РћС€РёР±РєР° РѕР±РЅРѕРІР»РµРЅРёСЏ Р·Р°РјРµС‚РєРё';
         }
 		$res = $DB->val("SELECT notes_update(?i, {$old}, ?, ?i)", $user_id, $target_login, $text, (int)$rating);
 		return '';
 	}
 	
 	/**
-	 * Взять все заметки
+	 * Р’Р·СЏС‚СЊ РІСЃРµ Р·Р°РјРµС‚РєРё
 	 *
-	 * @param integer $from_id   ИД пользователя чьи заметки
-	 * @param array   $to_login  Кому заметка (массив с логинами) 
-	 * @param string  $error  Возвращает сообщение об ошибке
-	 * @return array данные выборки
+	 * @param integer $from_id   РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ С‡СЊРё Р·Р°РјРµС‚РєРё
+	 * @param array   $to_login  РљРѕРјСѓ Р·Р°РјРµС‚РєР° (РјР°СЃСЃРёРІ СЃ Р»РѕРіРёРЅР°РјРё) 
+	 * @param string  $error  Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
+	 * @return array РґР°РЅРЅС‹Рµ РІС‹Р±РѕСЂРєРё
 	 */
 	function GetNotes($from_id, $to_login=false, &$error){
 		$DB = new DB;
@@ -72,12 +72,12 @@ class notes
 	}
 	
 	/**
-	 * Выборка заметки
+	 * Р’С‹Р±РѕСЂРєР° Р·Р°РјРµС‚РєРё
 	 *
-	 * @param integer $from_id   ИД пользователя чья заметка
-	 * @param string  $to_login  Кому заметка (логин)
-	 * @param string  $error     Возвращает сообщение об ошибке
-	 * @return array данные выборки
+	 * @param integer $from_id   РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ С‡СЊСЏ Р·Р°РјРµС‚РєР°
+	 * @param string  $to_login  РљРѕРјСѓ Р·Р°РјРµС‚РєР° (Р»РѕРіРёРЅ)
+	 * @param string  $error     Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
+	 * @return array РґР°РЅРЅС‹Рµ РІС‹Р±РѕСЂРєРё
 	 */
 	function GetNote($from_id, $to_id, &$error=false){
 		$DB = new DB;
@@ -86,12 +86,12 @@ class notes
 	}
 	
 	/**
-	 * Выборка заметки
+	 * Р’С‹Р±РѕСЂРєР° Р·Р°РјРµС‚РєРё
 	 *
-	 * @param integer $from_id   ИД пользователя чья заметка
-	 * @param string  $to_login  Кому заметка (логин)
-	 * @param string  $error     Возвращает сообщение об ошибке
-	 * @return array данные выборки
+	 * @param integer $from_id   РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ С‡СЊСЏ Р·Р°РјРµС‚РєР°
+	 * @param string  $to_login  РљРѕРјСѓ Р·Р°РјРµС‚РєР° (Р»РѕРіРёРЅ)
+	 * @param string  $error     Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
+	 * @return array РґР°РЅРЅС‹Рµ РІС‹Р±РѕСЂРєРё
 	 */
 	function GetNoteInt($from_id, $to_id, &$error=false){
 		$DB = new DB;
@@ -100,26 +100,26 @@ class notes
 	}
 	
 	/**
-	 * Удаление заметки
+	 * РЈРґР°Р»РµРЅРёРµ Р·Р°РјРµС‚РєРё
 	 *
-	 * @param inetger  $user_id    Ид пользотваеля
-	 * @param integer  $to_uid     Кому заметка (Логин)
-	 * @return string  $error      Возвращает сообщение об ошибке
+	 * @param inetger  $user_id    РРґ РїРѕР»СЊР·РѕС‚РІР°РµР»СЏ
+	 * @param integer  $to_uid     РљРѕРјСѓ Р·Р°РјРµС‚РєР° (Р›РѕРіРёРЅ)
+	 * @return string  $error      Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function DeleteNote($user_id, $to_uid, $old="?i"){
 		$DB = new DB;
 		if ( empty($user_id) || empty($to_uid)) {
-            return 'Ошибка удаления заметки';
+            return 'РћС€РёР±РєР° СѓРґР°Р»РµРЅРёСЏ Р·Р°РјРµС‚РєРё';
         }
 		$DB->query("SELECT notes_del(?i, {$old})", $user_id, $to_uid);
 		return '';
 	}
     
 	/**
-	 * Выводит форм редактирования и добавления Заметки
+	 * Р’С‹РІРѕРґРёС‚ С„РѕСЂРј СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ Рё РґРѕР±Р°РІР»РµРЅРёСЏ Р—Р°РјРµС‚РєРё
 	 *
-	 * @param array $req Данные для формы
-	 * @return string $html Шаблон в формате HTML
+	 * @param array $req Р”Р°РЅРЅС‹Рµ РґР»СЏ С„РѕСЂРјС‹
+	 * @return string $html РЁР°Р±Р»РѕРЅ РІ С„РѕСЂРјР°С‚Рµ HTML
 	 */
 	public function getNotesForm($req, $type = 1) {
 	    ob_start();
@@ -129,12 +129,12 @@ class notes
 	}
 	
 	/**
-	 * Выводим заметки пользователей которые находятся в избранном
+	 * Р’С‹РІРѕРґРёРј Р·Р°РјРµС‚РєРё РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РєРѕС‚РѕСЂС‹Рµ РЅР°С…РѕРґСЏС‚СЃСЏ РІ РёР·Р±СЂР°РЅРЅРѕРј
 	 *
-	 * @param array   $recs  Пользователи находящиеся в избранном
-	 * @param array   $notes Заметки пользователя
-	 * @param integer $start Начало позиции вывода колонки пользователей (с какого пользователя в массиве recs)
-	 * @param integer $stop  Конец позиции вывода колонки пользователей (до какого пользователя в массиве recs)
+	 * @param array   $recs  РџРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅР°С…РѕРґСЏС‰РёРµСЃСЏ РІ РёР·Р±СЂР°РЅРЅРѕРј
+	 * @param array   $notes Р—Р°РјРµС‚РєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param integer $start РќР°С‡Р°Р»Рѕ РїРѕР·РёС†РёРё РІС‹РІРѕРґР° РєРѕР»РѕРЅРєРё РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ (СЃ РєР°РєРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ РјР°СЃСЃРёРІРµ recs)
+	 * @param integer $stop  РљРѕРЅРµС† РїРѕР·РёС†РёРё РІС‹РІРѕРґР° РєРѕР»РѕРЅРєРё РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ (РґРѕ РєР°РєРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ РјР°СЃСЃРёРІРµ recs)
  	 */
 	public function getNotesUsers($recs, $notes, $start, $stop, $type=1) {
 	    global $session, $recsProfi;

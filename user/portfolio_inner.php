@@ -24,7 +24,7 @@ if($user->uid == $_SESSION['uid']) {
 <? if((int) $user->spec == 0 && $user->uid == $_SESSION['uid']) {?>
 <div class="b-fon b-fon_pad_20">
     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb">
-        <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span><a class="b-layout__link" href="/users/<?= $user->login; ?>/setup/specsetup/">Выберите специализацию</a>. Это небходимо, чтобы попасть в каталог фрилансеров, в котором вас найдут заказчики
+        <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span><a class="b-layout__link" href="/users/<?= $user->login; ?>/setup/specsetup/">Р’С‹Р±РµСЂРёС‚Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ</a>. Р­С‚Рѕ РЅРµР±С…РѕРґРёРјРѕ, С‡С‚РѕР±С‹ РїРѕРїР°СЃС‚СЊ РІ РєР°С‚Р°Р»РѕРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, РІ РєРѕС‚РѕСЂРѕРј РІР°СЃ РЅР°Р№РґСѓС‚ Р·Р°РєР°Р·С‡РёРєРё
     </div>
 </div>
 <? }//if?>
@@ -33,7 +33,7 @@ if($user->uid == $_SESSION['uid']) {
 <table  cellspacing="0" cellpadding="0" style="width:100%;" class="cpt-info">
 <tr>
 	<td style="width:45%;vertical-align:top;padding:16px 16px 32px 19px;">
-	<div style="padding-bottom:15px;vertical-align:top;white-space:nowrap;">Специализация:&nbsp;&nbsp;<?=professions::GetProfNameWP($user->spec, ' / ', 'Нет специализации')?></div>
+	<div style="padding-bottom:15px;vertical-align:top;white-space:nowrap;">РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ:&nbsp;&nbsp;<?=professions::GetProfNameWP($user->spec, ' / ', 'РќРµС‚ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё')?></div>
 
 <?
 	$specs_add = professions::GetProfsAddSpec($user->uid);
@@ -48,32 +48,32 @@ if($user->uid == $_SESSION['uid']) {
 
      $specs_add_string = join(", ", $specs_add_array);
  } else {
-     $specs_add_string = "Нет";
+     $specs_add_string = "РќРµС‚";
  }
  
  ?>
 
  <? if($specs_add_string) { ?>
-	<div style="padding-bottom:15px;vertical-align:top;width:280px;">Дополнительные специализации:&nbsp;&nbsp;<?=$specs_add_string?></div>
+	<div style="padding-bottom:15px;vertical-align:top;width:280px;">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё:&nbsp;&nbsp;<?=$specs_add_string?></div>
  <? } ?>
 <?php if($spec_modified && !is_pro()) { ?>
-    <p style="padding-bottom:15px;">Вы можете сменить выбранные специализации через <?= $spec_modified['days']. ' '.ending($spec_modified['days'], 'день', 'дня', 'дней'); ?></p>
+    <p style="padding-bottom:15px;">Р’С‹ РјРѕР¶РµС‚Рµ СЃРјРµРЅРёС‚СЊ РІС‹Р±СЂР°РЅРЅС‹Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё С‡РµСЂРµР· <?= $spec_modified['days']. ' '.ending($spec_modified['days'], 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№'); ?></p>
 <?php }//if?>
     
 <? if ($user->exp > 0) { ?>
-	<div style="padding-bottom:15px;vertical-align:top;white-space:nowrap;">Опыт работы:&nbsp;&nbsp;<?=view_exp($user->exp)?></div>
+	<div style="padding-bottom:15px;vertical-align:top;white-space:nowrap;">РћРїС‹С‚ СЂР°Р±РѕС‚С‹:&nbsp;&nbsp;<?=view_exp($user->exp)?></div>
 <? } ?>
 <? if($user->in_office == 't'):?>
-    <div style="padding-bottom:15px;vertical-align:top;white-space:nowrap;"><strong>Ищу долгосрочную работу <span style="display:inline-block; padding: 0 0 0 15px; background: url(/images/icons-sprite.png) no-repeat -100px -335px;">в офисе</span></strong></div>
+    <div style="padding-bottom:15px;vertical-align:top;white-space:nowrap;"><strong>РС‰Сѓ РґРѕР»РіРѕСЃСЂРѕС‡РЅСѓСЋ СЂР°Р±РѕС‚Сѓ <span style="display:inline-block; padding: 0 0 0 15px; background: url(/images/icons-sprite.png) no-repeat -100px -335px;">РІ РѕС„РёСЃРµ</span></strong></div>
 <?endif; ?>
 <? /* #0019741 if($user->prefer_sbr == 't'):?>
-    <div style="padding-bottom:15px;vertical-align:top;white-space:nowrap;"><strong>Предпочитаю работать через сервис <span class="sbr-ic"><a href="/promo/sbr/" class="inherit_underline" style="color:#666666;">Сделка без риска</a></span></strong></div>
+    <div style="padding-bottom:15px;vertical-align:top;white-space:nowrap;"><strong>РџСЂРµРґРїРѕС‡РёС‚Р°СЋ СЂР°Р±РѕС‚Р°С‚СЊ С‡РµСЂРµР· СЃРµСЂРІРёСЃ <span class="sbr-ic"><a href="/promo/sbr/" class="inherit_underline" style="color:#666666;">РЎРґРµР»РєР° Р±РµР· СЂРёСЃРєР°</a></span></strong></div>
 <?endif;*/ ?>
 <? if ($user->cost_hour > 0) { ?>
-	<div style="padding-bottom:15px;vertical-align:top;white-space:nowrap;"><strong>Стоимость часа работы</strong> &mdash; <span class="money"><?=view_cost2($user->cost_hour, '', '', false, $user->cost_type_hour)?></span></div>
+	<div style="padding-bottom:15px;vertical-align:top;white-space:nowrap;"><strong>РЎС‚РѕРёРјРѕСЃС‚СЊ С‡Р°СЃР° СЂР°Р±РѕС‚С‹</strong> &mdash; <span class="money"><?=view_cost2($user->cost_hour, '', '', false, $user->cost_type_hour)?></span></div>
 <? } ?>
 <? if ($user->cost_month > 0) { ?>
-	<div style="padding-bottom:15px;vertical-align:top;white-space:nowrap;"><strong>Стоимость месяца работы</strong> &mdash; <span class="money"><?=view_cost2($user->cost_month, '', '', false, $user->cost_type_month)?></span></div>
+	<div style="padding-bottom:15px;vertical-align:top;white-space:nowrap;"><strong>РЎС‚РѕРёРјРѕСЃС‚СЊ РјРµСЃСЏС†Р° СЂР°Р±РѕС‚С‹</strong> &mdash; <span class="money"><?=view_cost2($user->cost_month, '', '', false, $user->cost_type_month)?></span></div>
 <? } ?>
 	</td>
     <?php $sSpecText = $user->isChangeOnModeration( $user->uid, 'spec_text' ) && $user->is_pro != 't' ? $stop_words->replace($user->spec_text) : $user->spec_text; ?>
@@ -82,13 +82,13 @@ if($user->uid == $_SESSION['uid']) {
         <?php if ( hasPermissions('users') ) { ?>
         <br/>
         <br/>
-        <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'spec_text', 'utable': 'freelancer'})">Редактировать</a>
+        <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'spec_text', 'utable': 'freelancer'})">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
         <?php } ?>
     </td>
 </tr>
 </table>
 <? if ($_SESSION['login'] == $user->login) { ?>
-<div class="change"><div style="padding-right:19px;"><a href="/users/<?=$_SESSION['login']?>/setup/portfolio/"><img src="/images/ico_setup.gif" alt="" width="6" height="9" /></a>&nbsp;<a href="/users/<?=$_SESSION['login']?>/setup/portfolio/">Изменить</a></div></div>
+<div class="change"><div style="padding-right:19px;"><a href="/users/<?=$_SESSION['login']?>/setup/portfolio/"><img src="/images/ico_setup.gif" alt="" width="6" height="9" /></a>&nbsp;<a href="/users/<?=$_SESSION['login']?>/setup/portfolio/">РР·РјРµРЅРёС‚СЊ</a></div></div>
 <br />
 <? } if ($prjs){ ?>
 <?
@@ -151,7 +151,7 @@ if($user->uid == $_SESSION['uid']) {
                  echo implode(", ", $links_keyword);
                  if($kword_count > kwords::MAX_KWORDS_PORTFOLIO ) { 
               ?><span class="prtfl-hellip">&hellip;</span
-                ><span class="prfl-tags"><a href="javascript:void(0)">Все <?=$kword_count?> <?=ending($kword_count, 'тег', 'тега', 'тегов')?></a></span
+                ><span class="prfl-tags"><a href="javascript:void(0)">Р’СЃРµ <?=$kword_count?> <?=ending($kword_count, 'С‚РµРі', 'С‚РµРіР°', 'С‚РµРіРѕРІ')?></a></span
                 ><span class="prfl-tags-more" style="display:none"><?=implode(',', $links_keyword_hide)?></span>
               <? } ?>
             </p>
@@ -170,12 +170,12 @@ if($user->uid == $_SESSION['uid']) {
     {
     ?>
     <tr>
-    	<td style="padding:8px 16px 2px 0px; vertical-align: top;">Стоимость тысячи знаков: <span class="money"><?=$cost_text?></span></td>
+    	<td style="padding:8px 16px 2px 0px; vertical-align: top;">РЎС‚РѕРёРјРѕСЃС‚СЊ С‚С‹СЃСЏС‡Рё Р·РЅР°РєРѕРІ: <span class="money"><?=$cost_text?></span></td>
     </tr>
     <? } ?>
     <? if($cost_hour_text != ''): ?>
     <tr>
-    	<td style="padding:8px 16px 2px 0px; vertical-align: top;">Оценка часа работы: <span class="money"><?=$cost_hour_text?></span></td>
+    	<td style="padding:8px 16px 2px 0px; vertical-align: top;">РћС†РµРЅРєР° С‡Р°СЃР° СЂР°Р±РѕС‚С‹: <span class="money"><?=$cost_hour_text?></span></td>
     </tr>
     <? endif; ?> 
     <? } else {
@@ -186,13 +186,13 @@ if($user->uid == $_SESSION['uid']) {
     {
     ?>
     <tr>
-    	<td style="padding:8px 16px 2px 0px; vertical-align: top;">Стоимость работ: <span class="money"><? if ($cost_from_text != '') { ?>от <?=$cost_from_text?> <? } ?><? if ($cost_to_text != '') { ?>до <?=$cost_to_text?><? } ?></span></td>
+    	<td style="padding:8px 16px 2px 0px; vertical-align: top;">РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚: <span class="money"><? if ($cost_from_text != '') { ?>РѕС‚ <?=$cost_from_text?> <? } ?><? if ($cost_to_text != '') { ?>РґРѕ <?=$cost_to_text?><? } ?></span></td>
     </tr>
     <? } ?>
     
     <? if($cost_hour_text != ''): ?>
     <tr>
-    	<td style="padding:8px 16px 2px 0px; vertical-align: top;">Оценка часа работы: <span class="money"><?=$cost_hour_text?></span></td>
+    	<td style="padding:8px 16px 2px 0px; vertical-align: top;">РћС†РµРЅРєР° С‡Р°СЃР° СЂР°Р±РѕС‚С‹: <span class="money"><?=$cost_hour_text?></span></td>
     </tr>
     <? endif; ?> 
     
@@ -202,14 +202,14 @@ if($user->uid == $_SESSION['uid']) {
     {
     ?>
     <tr>
-    	<td style="padding:8px 16px 2px 0px; vertical-align: top;">Сроки: <?=$time_text?>.</td>
+    	<td style="padding:8px 16px 2px 0px; vertical-align: top;">РЎСЂРѕРєРё: <?=$time_text?>.</td>
     </tr>
     <? } } ?>
     
     <?php if ( hasPermissions('users') ) { ?>
     <tr>
         <td style="padding:8px 16px 2px 0px; vertical-align: top;">
-            <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditPortfChoice', '<?=$user->uid?>_0', 0, '', {'sProfId': <?=$prof_id?>})">Редактировать</a>
+            <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditPortfChoice', '<?=$user->uid?>_0', 0, '', {'sProfId': <?=$prof_id?>})">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
         </td>
     </tr>
     <?php } ?>
@@ -235,7 +235,7 @@ if($user->uid == $_SESSION['uid']) {
 			<td class="odd"><?=$i?>.</td>
 			<td class="even">
                 <a href="/users/<?=$user->login?>/viewproj.php?prjid=<?=$prj['id']?>" target="_blank" class="blue" title="<?=htmlspecialchars($sName)?>"><?= reformat($sName, 30)?></a><? $txt_cost = view_cost2($prj['prj_cost'], '', '', false, $prj['prj_cost_type']); $txt_time = view_time($prj['prj_time_value'], $prj['prj_time_type']);?> <span class="money" style="padding-left:8px;"><?=$txt_cost?></span><? if ($txt_cost != '' && $txt_time != '') { ?>, <? } ?><?=$txt_time?>
-			<? /* Убраны комментарии к работам if ($prj['show_comms'] == 't') {?> | <a href="/users/<?=$user->login?>/comments/?tr=<?=$prj['id']?>" style="color: #666666;">Комментарии (<?=zin($prj['comms'])?>)</a><? } */ ?>
+			<? /* РЈР±СЂР°РЅС‹ РєРѕРјРјРµРЅС‚Р°СЂРёРё Рє СЂР°Р±РѕС‚Р°Рј if ($prj['show_comms'] == 't') {?> | <a href="/users/<?=$user->login?>/comments/?tr=<?=$prj['id']?>" style="color: #666666;">РљРѕРјРјРµРЅС‚Р°СЂРёРё (<?=zin($prj['comms'])?>)</a><? } */ ?>
                 <div id="portfolio-block-<?= $prj['id'] ?>" style="display: <?= ($prj['is_blocked'] == 't' ? 'block': 'none') ?>">
                     <? if ($prj['is_blocked'] == 't') { ?>
                     <div class='b-fon b-fon_clear_both b-fon_bg_ff6d2d b-fon_padtop_10 b-fon_padbot_10'>
@@ -244,9 +244,9 @@ if($user->uid == $_SESSION['uid']) {
                         <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13">
                             <span class="b-fon__attent"></span>
                             <div class="b-fon__txt b-fon__txt_margleft_20">
-                                    <span class="b-fon__txt_bold">Работа заблокирована</span>. <?= reformat($prj['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>Служба поддержки</a>
-                                    <div class='b-fon__txt'><?php if ( hasPermissions('users') ) { ?><?= ($prj['admin_login'] ? "Заблокировал: <a class='b-fon__link' href='/users/{$prj['admin_login']}'>{$prj['admin_uname']} {$prj['admin_usurname']} [{$prj['admin_login']}]</a><br />": '') ?><?php } ?>
-                                    Дата блокировки: <?= dateFormat('d.m.Y H:i', $prj['blocked_time']) ?></div>
+                                    <span class="b-fon__txt_bold">Р Р°Р±РѕС‚Р° Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅР°</span>. <?= reformat($prj['blocked_reason'], 24, 0, 0, 1, 24) ?> <a class='b-fon__link' href='https://feedback.fl.ru/'>РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё</a>
+                                    <div class='b-fon__txt'><?php if ( hasPermissions('users') ) { ?><?= ($prj['admin_login'] ? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°Р»: <a class='b-fon__link' href='/users/{$prj['admin_login']}'>{$prj['admin_uname']} {$prj['admin_usurname']} [{$prj['admin_login']}]</a><br />": '') ?><?php } ?>
+                                    Р”Р°С‚Р° Р±Р»РѕРєРёСЂРѕРІРєРё: <?= dateFormat('d.m.Y H:i', $prj['blocked_time']) ?></div>
                             </div>
                         </div>
                         <b class="b-fon__b2"></b>
@@ -258,8 +258,8 @@ if($user->uid == $_SESSION['uid']) {
             <td class="odd">
                 <?php if ( hasPermissions('users') ) { ?>
                 <div id="portfolio-button-<?= $prj['id'] ?>">
-                    <a class="admn" href="javascript:void(0);" onclick="banned.<?=($prj['is_blocked']=='t'? 'unblockedPortfolio': 'blockedPortfolio')?>(<?=$prj['id']?>)"><?= $prj['is_blocked']=='f' ? "Заблокировать" : "Разблокировать"; ?></a><br/>
-                    <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditPortfolio', '<?=$prj['id']?>_0', 0, '')">Редактировать</a>
+                    <a class="admn" href="javascript:void(0);" onclick="banned.<?=($prj['is_blocked']=='t'? 'unblockedPortfolio': 'blockedPortfolio')?>(<?=$prj['id']?>)"><?= $prj['is_blocked']=='f' ? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ" : "Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ"; ?></a><br/>
+                    <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditPortfolio', '<?=$prj['id']?>_0', 0, '')">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
                 </div>
                 <?php 
                 }
@@ -270,7 +270,7 @@ if($user->uid == $_SESSION['uid']) {
 		<? $i++; $j++;}
 		 else { ?>
 		<tr>
-			<td style="text-align:center;">В этом разделе нет работ</td>
+			<td style="text-align:center;">Р’ СЌС‚РѕРј СЂР°Р·РґРµР»Рµ РЅРµС‚ СЂР°Р±РѕС‚</td>
 		</tr>
 		<?
 		}
@@ -292,10 +292,10 @@ if($user->uid == $_SESSION['uid']) {
         ?>
     
         <div class="add-work-b">
-        	<p>В вашем портфолио сейчас нет ни одной работы</p><br />
-            <a class="b-button b-button_flat b-button_flat_green" href="<?= $aHref?>">Добавить работу</a>
+        	<p>Р’ РІР°С€РµРј РїРѕСЂС‚С„РѕР»РёРѕ СЃРµР№С‡Р°СЃ РЅРµС‚ РЅРё РѕРґРЅРѕР№ СЂР°Р±РѕС‚С‹</p><br />
+            <a class="b-button b-button_flat b-button_flat_green" href="<?= $aHref?>">Р”РѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚Сѓ</a>
         </div>
     <?php } else {//if?>
-        <h2 style="text-align: center;"><?= ($user->tab_name_id == "1"?"Нет услуг":"Нет работ")?></h2>
+        <h2 style="text-align: center;"><?= ($user->tab_name_id == "1"?"РќРµС‚ СѓСЃР»СѓРі":"РќРµС‚ СЂР°Р±РѕС‚")?></h2>
     <?php } //else?>
 <? } ?>

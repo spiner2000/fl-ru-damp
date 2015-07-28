@@ -17,16 +17,16 @@ function error_clear(obj) {
 function tplInfoPhp_clearDate() {
     $('bday').value = '';
     $('byear').value = '';
-    ComboboxManager.setDefaultValue("bmonth", "января", 1);
+    ComboboxManager.setDefaultValue("bmonth", "СЏРЅРІР°СЂСЏ", 1);
     return false;
 }
 function tplInfoPhp_clearCountry() {
-	ComboboxManager.setDefaultValue("country", "Все страны", 0);	
+	ComboboxManager.setDefaultValue("country", "Р’СЃРµ СЃС‚СЂР°РЅС‹", 0);	
 	ComboboxManager.getInput("city").clear(0, 0, 1);
-	ComboboxManager.setDefaultValue("city", "Все города", 0);
+	ComboboxManager.setDefaultValue("city", "Р’СЃРµ РіРѕСЂРѕРґР°", 0);
 }
 function tplInfoPhp_clearCity() {
-	ComboboxManager.setDefaultValue("city", "Все города", 0);
+	ComboboxManager.setDefaultValue("city", "Р’СЃРµ РіРѕСЂРѕРґР°", 0);
 }
 function tplInfoPhp_leapYear(year) {
     year = Number(year);
@@ -81,7 +81,7 @@ if($registration->is_post) {
 
 <div class="b-layout">
     <div class="b-layout__right b-layout__right_width_73ps b-layout__right_float_right">
-        <h1 class="b-page__title b-page__title_padbot_30">Личная информация</h1>
+        <h1 class="b-page__title b-page__title_padbot_30">Р›РёС‡РЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ</h1>
     </div>
     <div class="b-layout__right b-layout__right_width_73ps b-layout__right_float_right">
         <?php if($_SESSION['confirm_info']) {?>
@@ -94,9 +94,9 @@ if($registration->is_post) {
         <div class="b-fon b-fon_inline-block b-fon_padbot_20">
             <div class="b-fon__body b-fon__body_pad_15  b-fon__body_padleft_30 b-fon__body_lineheight_18 b-fon__body_padright_40 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
                 <? if (BLOGS_CLOSED == false) { ?>
-                <span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Заполните либо сейчас, либо позже личную информацию. Она потребуется как только вы захотите <?= is_emp() ? 'создать проект' : 'ответить на любой проект' ?>, опубликовать пост в блогах или сообществах, написать комментарий. 
+                <span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Р—Р°РїРѕР»РЅРёС‚Рµ Р»РёР±Рѕ СЃРµР№С‡Р°СЃ, Р»РёР±Рѕ РїРѕР·Р¶Рµ Р»РёС‡РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ. РћРЅР° РїРѕС‚СЂРµР±СѓРµС‚СЃСЏ РєР°Рє С‚РѕР»СЊРєРѕ РІС‹ Р·Р°С…РѕС‚РёС‚Рµ <?= is_emp() ? 'СЃРѕР·РґР°С‚СЊ РїСЂРѕРµРєС‚' : 'РѕС‚РІРµС‚РёС‚СЊ РЅР° Р»СЋР±РѕР№ РїСЂРѕРµРєС‚' ?>, РѕРїСѓР±Р»РёРєРѕРІР°С‚СЊ РїРѕСЃС‚ РІ Р±Р»РѕРіР°С… РёР»Рё СЃРѕРѕР±С‰РµСЃС‚РІР°С…, РЅР°РїРёСЃР°С‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№. 
                 <? } else { ?>
-                <span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Заполните либо сейчас, либо позже личную информацию. Она потребуется как только вы захотите <?= is_emp() ? 'создать проект' : 'ответить на любой проект' ?>, опубликовать пост в сообществе, написать комментарий. 
+                <span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Р—Р°РїРѕР»РЅРёС‚Рµ Р»РёР±Рѕ СЃРµР№С‡Р°СЃ, Р»РёР±Рѕ РїРѕР·Р¶Рµ Р»РёС‡РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ. РћРЅР° РїРѕС‚СЂРµР±СѓРµС‚СЃСЏ РєР°Рє С‚РѕР»СЊРєРѕ РІС‹ Р·Р°С…РѕС‚РёС‚Рµ <?= is_emp() ? 'СЃРѕР·РґР°С‚СЊ РїСЂРѕРµРєС‚' : 'РѕС‚РІРµС‚РёС‚СЊ РЅР° Р»СЋР±РѕР№ РїСЂРѕРµРєС‚' ?>, РѕРїСѓР±Р»РёРєРѕРІР°С‚СЊ РїРѕСЃС‚ РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ, РЅР°РїРёСЃР°С‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№. 
                 <? } ?>
             </div>
         </div>	
@@ -106,7 +106,7 @@ if($registration->is_post) {
             <div class="b-layout b-layout_margleft_-110">
                 <table class="b-layout__table b-layout__table_width_full" border="0" cellpadding="0" cellspacing="0">
                     <tr class="b-layout__tr">
-                        <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">Ваше имя</div></td>
+                        <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">Р’Р°С€Рµ РёРјСЏ</div></td>
                         <td class="b-layout__middle b-layout__middle_padbot_20 b-layout__middle_width_270">
                             <div class="b-combo">
                                 <div class="b-combo__input b-combo__input_width_260 <?= $registration->error['uname'] ? "b-combo__input_error" : ""?>">
@@ -125,7 +125,7 @@ if($registration->is_post) {
                         </td>
                     </tr>
                     <tr class="b-layout__tr">
-                        <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">Фамилия</div></td>
+                        <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">Р¤Р°РјРёР»РёСЏ</div></td>
                         <td class="b-layout__middle b-layout__middle_padbot_20 b-layout__middle_width_270">
                             <div class="b-combo">
                                 <div class="b-combo__input b-combo__input_width_260 <?= $registration->error['usurname'] ? "b-combo__input_error" : ""?>">
@@ -150,7 +150,7 @@ if($registration->is_post) {
                     $birthday_year = (($registration->birthday == '1910-01-01')||(!$registration->birthday)) ? '' : date('Y', strtotime($registration->birthday));
                     ?>
                     <tr class="b-layout__tr">
-                        <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">День рождения</div></td>
+                        <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">Р”РµРЅСЊ СЂРѕР¶РґРµРЅРёСЏ</div></td>
                         <td class="b-layout__middle b-layout__middle_padbot_20 b-layout__middle_width_270">
                             <div class="b-combo b-combo_inline-block b-combo_margright_5">
                                 <div class="b-combo__input b-combo__input_width_45  numeric_max_31 numeric_min_1">
@@ -182,23 +182,23 @@ if($registration->is_post) {
                         <td class="b-layout__right b-layout__right_padbot_20">
                             <div class="b-eye b-eye_inline-block">
                                 <a href="javascript:void(0)" class="b-eye__link <?= $registration->info_for_reg['birthday'] == 1 ? "b-eye__link_bordbot_dot_808080"  : "b-eye__link_bordbot_dot_0f71c8"?> b-eye-enable">
-                                    <?/* #0024237 <span class="b-eye__icon <?= $registration->info_for_reg['birthday'] == 1 ? "b-eye__icon_close"  : "b-eye__icon_open"?> b-eye__icon_margright_5"></span><span class="b-eye__txt"><?= $registration->info_for_reg['birthday'] == 1 ? "Видят только зарегистрированные" : "Видят все"?></span> */?>
+                                    <?/* #0024237 <span class="b-eye__icon <?= $registration->info_for_reg['birthday'] == 1 ? "b-eye__icon_close"  : "b-eye__icon_open"?> b-eye__icon_margright_5"></span><span class="b-eye__txt"><?= $registration->info_for_reg['birthday'] == 1 ? "Р’РёРґСЏС‚ С‚РѕР»СЊРєРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Рµ" : "Р’РёРґСЏС‚ РІСЃРµ"?></span> */?>
                                 </a>
                                 <input type="hidden" name="info_for_reg[birthday]" value="<?= $registration->info_for_reg['birthday'] == 1 ? $registration->info_for_reg['birthday'] : 0?>">
                             </div>
                         </td>
                     </tr>
                     <tr class="b-layout__tr">
-                        <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt">Пол</div></td>
+                        <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt">РџРѕР»</div></td>
                         <td class="b-layout__middle b-layout__middle_padbot_20 b-layout__middle_width_270">
                             <div class="b-radio b-radio_layout_horizontal">
                                 <div class="b-radio__item b-radio__item_width_100">
                                     <input type="radio" value="1" <?= $registration->sex === '1'?"checked":""?> name="sex"  class="b-radio__input" id="b-radio__input4" onfocus="error_clear(this)">
-                                    <label for="b-radio__input4" class="b-radio__label b-radio__label_fontsize_13">Мужской</label>
+                                    <label for="b-radio__input4" class="b-radio__label b-radio__label_fontsize_13">РњСѓР¶СЃРєРѕР№</label>
                                 </div>
                                 <div class="b-radio__item b-radio__item_width_100">
                                     <input type="radio" value="0" <?= $registration->sex === '0'?"checked":""?> name="sex" class="b-radio__input" id="b-radio__input5" onfocus="error_clear(this)">
-                                    <label for="b-radio__input5" class="b-radio__label b-radio__label_fontsize_13">Женский</label>
+                                    <label for="b-radio__input5" class="b-radio__label b-radio__label_fontsize_13">Р–РµРЅСЃРєРёР№</label>
                                 </div>
                             </div>
                             <?php if($registration->error['sex']) {?>
@@ -209,17 +209,17 @@ if($registration->is_post) {
                         <td class="b-layout__right b-layout__right_padbot_20">
                             <div class="b-eye b-eye_inline-block">
                                 <a href="javascript:void(0)" class="b-eye__link <?= $registration->info_for_reg['sex']== 1 ? "b-eye__link_bordbot_dot_808080"  : "b-eye__link_bordbot_dot_0f71c8"?> b-eye-enable">
-                                    <?/* #0024237 <span class="b-eye__icon <?= $registration->info_for_reg['sex']== 1 ? "b-eye__icon_close"  : "b-eye__icon_open"?> b-eye__icon_margright_5"></span><span class="b-eye__txt"><?= $registration->info_for_reg['sex'] == 1 ? "Видят только зарегистрированные" : "Видят все"?></span> */?>
+                                    <?/* #0024237 <span class="b-eye__icon <?= $registration->info_for_reg['sex']== 1 ? "b-eye__icon_close"  : "b-eye__icon_open"?> b-eye__icon_margright_5"></span><span class="b-eye__txt"><?= $registration->info_for_reg['sex'] == 1 ? "Р’РёРґСЏС‚ С‚РѕР»СЊРєРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Рµ" : "Р’РёРґСЏС‚ РІСЃРµ"?></span> */?>
                                 </a>
                                 <input type="hidden" name="info_for_reg[sex]" value="<?= $registration->info_for_reg['sex'] == 1 ? $registration->info_for_reg['sex'] : 0?>">
                             </div>
                         </td>
                     </tr>
                     <tr class="b-layout__tr">
-                        <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">Страна</div></td>
+                        <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">РЎС‚СЂР°РЅР°</div></td>
                         <td class="b-layout__middle b-layout__middle_padbot_20 b-layout__middle_width_270">
                             <div class="b-combo b-combo_inline-block">
-                                <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_245 b-combo__input_resize b-combo__input_arrow_yes  b-combo__input_on_load_request_id_getrelevantcountries  b-combo__input_max-width_450 all_value_id_0_0_Все+страны exclude_value_1_0 drop_down_default_<?= $registration->country ? $registration->country : 0?> multi_drop_down_default_column_0 <?= $registration->error['country'] ? "b-combo__input_error" : ""?>">
+                                <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_245 b-combo__input_resize b-combo__input_arrow_yes  b-combo__input_on_load_request_id_getrelevantcountries  b-combo__input_max-width_450 all_value_id_0_0_Р’СЃРµ+СЃС‚СЂР°РЅС‹ exclude_value_1_0 drop_down_default_<?= $registration->country ? $registration->country : 0?> multi_drop_down_default_column_0 <?= $registration->error['country'] ? "b-combo__input_error" : ""?>">
                                     <input type="text" id="country" class="b-combo__input-text b-combo__input-text_fontsize_15" name="country" size="80" value="<?= $registration->country == 0 ? "" : stripslashes($registration->country_name)?>" onchange="loadCities()" onfocus="error_clear(this);error_clear('city');" />
                                     <label class="b-combo__label" for="country"></label>
                                     <span class="b-combo__arrow"></span>
@@ -235,17 +235,17 @@ if($registration->is_post) {
                         <td class="b-layout__right b-layout__right_padbot_20">
                             <div class="b-eye b-eye_inline-block">
                                 <a href="javascript:void(0)" class="b-eye__link <?= $registration->info_for_reg['country']== 1 ? "b-eye__link_bordbot_dot_808080"  : "b-eye__link_bordbot_dot_0f71c8"?> b-eye-enable">
-                                    <?/* #0024237 <span class="b-eye__icon <?= $registration->info_for_reg['country']== 1 ? "b-eye__icon_close"  : "b-eye__icon_open"?> b-eye__icon_margright_5"></span><span class="b-eye__txt"><?= $registration->info_for_reg['country'] == 1 ? "Видят только зарегистрированные" : "Видят все"?></span> */?>
+                                    <?/* #0024237 <span class="b-eye__icon <?= $registration->info_for_reg['country']== 1 ? "b-eye__icon_close"  : "b-eye__icon_open"?> b-eye__icon_margright_5"></span><span class="b-eye__txt"><?= $registration->info_for_reg['country'] == 1 ? "Р’РёРґСЏС‚ С‚РѕР»СЊРєРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Рµ" : "Р’РёРґСЏС‚ РІСЃРµ"?></span> */?>
                                 </a>
                                 <input type="hidden" name="info_for_reg[country]" value="<?= $registration->info_for_reg['country'] == 1 ? stripslashes($registration->info_for_reg['country']) : 0?>">
                             </div>
                         </td>
                     </tr>
                     <tr class="b-layout__tr">
-                        <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">Город</div></td>
+                        <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_110"><div class="b-layout__txt b-layout__txt_padtop_4">Р“РѕСЂРѕРґ</div></td>
                         <td class="b-layout__middle b-layout__middle_padbot_20 b-layout__middle_width_270" id="city_content">
                             <div class="b-combo b-combo_inline-block">
-                                <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_245 b-combo__input_resize b-combo__input_arrow_yes  b-combo__input_max-width_450 all_value_id_0_0_Все+города drop_down_default_<?= $registration->city ? $registration->city : 0?> multi_drop_down_default_column_0 <?= $registration->error['city'] ? "b-combo__input_error" : ""?> <?= $registration->country > 0 ? "b-combo__input_on_load_request_id_getcitiesbyid?id=".$registration->country : "" ?>" >
+                                <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_245 b-combo__input_resize b-combo__input_arrow_yes  b-combo__input_max-width_450 all_value_id_0_0_Р’СЃРµ+РіРѕСЂРѕРґР° drop_down_default_<?= $registration->city ? $registration->city : 0?> multi_drop_down_default_column_0 <?= $registration->error['city'] ? "b-combo__input_error" : ""?> <?= $registration->country > 0 ? "b-combo__input_on_load_request_id_getcitiesbyid?id=".$registration->country : "" ?>" >
                                     <input type="text" id="city" class="b-combo__input-text b-combo__input-text_fontsize_15" name="city" size="80" value="<?= $registration->city == 0 ? "" : $registration->city_name?>" onfocus="error_clear(this);" />
                                     <label class="b-combo__label" for="city"></label>
                                     <span class="b-combo__arrow" id="city_arrow"></span>
@@ -261,7 +261,7 @@ if($registration->is_post) {
                         <td class="b-layout__right b-layout__right_padbot_20">
                             <div class="b-eye b-eye_inline-block">
                                 <a href="javascript:void(0)" class="b-eye__link <?= $registration->info_for_reg['city'] == 1 ? "b-eye__link_bordbot_dot_808080"  : "b-eye__link_bordbot_dot_0f71c8"?> b-eye-enable">
-                                    <?/* #0024237 <span class="b-eye__icon <?= $registration->info_for_reg['city'] == 1 ? "b-eye__icon_close"  : "b-eye__icon_open"?> b-eye__icon_margright_5"></span><span class="b-eye__txt"><?= $registration->info_for_reg['city'] == 1 ? "Видят только зарегистрированные" : "Видят все"?></span> */?>
+                                    <?/* #0024237 <span class="b-eye__icon <?= $registration->info_for_reg['city'] == 1 ? "b-eye__icon_close"  : "b-eye__icon_open"?> b-eye__icon_margright_5"></span><span class="b-eye__txt"><?= $registration->info_for_reg['city'] == 1 ? "Р’РёРґСЏС‚ С‚РѕР»СЊРєРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Рµ" : "Р’РёРґСЏС‚ РІСЃРµ"?></span> */?>
                                 </a>
                                 <input type="hidden" name="info_for_reg[city]" value="<?= $registration->info_for_reg['city'] == 1 ? $registration->info_for_reg['city'] : 0?>">
                             </div>
@@ -274,12 +274,12 @@ if($registration->is_post) {
             <a href="javascript:void(0)" onclick="$('form_info').submit();" class="b-button b-button_rectangle_color_green">
                 <span class="b-button__b1">
                     <span class="b-button__b2 b-button__b2_padlr_15">
-                        <span class="b-button__txt">Сохранить</span>
+                        <span class="b-button__txt">РЎРѕС…СЂР°РЅРёС‚СЊ</span>
                     </span>
                 </span>
             </a>&#160;&#160;
-            <?/*<span class="b-buttons__txt">&#160;или&#160;</span>
-            <a href="<?= $_SESSION['link_back'] ? $_SESSION['link_back'] : "/"?>" class="b-buttons__link">заполнить позже</a>*/?>
+            <?/*<span class="b-buttons__txt">&#160;РёР»Рё&#160;</span>
+            <a href="<?= $_SESSION['link_back'] ? $_SESSION['link_back'] : "/"?>" class="b-buttons__link">Р·Р°РїРѕР»РЅРёС‚СЊ РїРѕР·Р¶Рµ</a>*/?>
         </div>
     </div>
 </div>

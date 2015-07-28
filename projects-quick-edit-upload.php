@@ -20,7 +20,7 @@ if($uid && hasPermissions('projects') && $_POST['tmpid']) {
             case 'upload':
                 if(__paramInit('bool', NULL, 'use_logo')) {
                     if(!$_FILES['logo']['size'])
-                        $error = 'Íåîáõîäèìî âûáðàòü ôàéë';
+                        $error = 'ÐÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ Ð²Ñ‹Ð±Ñ€Ð°Ñ‚ÑŒ Ñ„Ð°Ð¹Ð»';
                     elseif($err = $tmpPrj->setLogo(new CFile($_FILES['logo'])))
                         $error = $err;
                     $tmpPrj->fix();

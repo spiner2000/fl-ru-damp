@@ -26,13 +26,13 @@
                         <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padleft_20 b-layout__txt_fontsize_15  b-layout__txt_lineheight_18"><?= reformat($stage->data['name'], 35, 0, 1) ?></div>
                     </td>
                     <td class="b-layout__right b-layout__right_padbot_10 b-layout__right_width_560">
-                        <div class="b-layout__txt">Бюджет этапа <span class="b-layout__bold"><?= sbr_meta::view_cost($stage->data['cost'], $curr_sbr->cost_sys)?></span></div>
+                        <div class="b-layout__txt">Р‘СЋРґР¶РµС‚ СЌС‚Р°РїР° <span class="b-layout__bold"><?= sbr_meta::view_cost($stage->data['cost'], $curr_sbr->cost_sys)?></span></div>
                     </td>
                 </tr>
                 <? }//foreach?>
                 <tr class="b-layout__tr">
                     <td class="b-layout__left">
-                        <a href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/?site=master&id=<?= $curr_sbr->id;?>" class="b-button b-button_margleft_18 b-button_flat b-button_flat_grey">Посмотреть условия сделки</a>
+                        <a href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/?site=master&id=<?= $curr_sbr->id;?>" class="b-button b-button_margleft_18 b-button_flat b-button_flat_grey">РџРѕСЃРјРѕС‚СЂРµС‚СЊ СѓСЃР»РѕРІРёСЏ СЃРґРµР»РєРё</a>
                     </td>
                     <td class="b-layout__right b-layout__right_width_560"></td>
                 </tr>

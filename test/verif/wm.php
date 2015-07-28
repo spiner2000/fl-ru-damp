@@ -44,5 +44,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 ?>
 <a href="https://login.wmtransfer.com/GateKeeper.aspx?RID=<?=URL_UD?>">
-    Верификация WM
+    Р’РµСЂРёС„РёРєР°С†РёСЏ WM
 </a>

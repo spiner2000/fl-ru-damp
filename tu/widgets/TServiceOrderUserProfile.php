@@ -8,7 +8,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/sbr.php");
 /**
  * Class TServiceOrderUserProfile
  *
- * Âèäæåò - Áëîê èíôîğìàöèè î ôğèëàíñåğå â êàğòî÷êå çàêàçà
+ * Ğ’Ğ¸Ğ´Ğ¶ĞµÑ‚ - Ğ‘Ğ»Ğ¾Ğº Ğ¸Ğ½Ñ„Ğ¾Ñ€Ğ¼Ğ°Ñ†Ğ¸Ğ¸ Ğ¾ Ñ„Ñ€Ğ¸Ğ»Ğ°Ğ½ÑĞµÑ€Ğµ Ğ² ĞºĞ°Ñ€Ñ‚Ğ¾Ñ‡ĞºĞµ Ğ·Ğ°ĞºĞ°Ğ·Ğ°
  */
 class TServiceOrderUserProfile extends CWidget 
 {
@@ -20,7 +20,7 @@ class TServiceOrderUserProfile extends CWidget
         {
             $user = $this->order[$this->is_emp?'freelancer':'employer'];    
             
-            //ïîëó÷àåì îáùåå êîë-âî îòçûâîâ
+            //Ğ¿Ğ¾Ğ»ÑƒÑ‡Ğ°ĞµĞ¼ Ğ¾Ğ±Ñ‰ĞµĞµ ĞºĞ¾Ğ»-Ğ²Ğ¾ Ğ¾Ñ‚Ğ·Ñ‹Ğ²Ğ¾Ğ²
             $oplinks = NULL;
             $opcount = opinions::GetCounts($user['uid'], array('total'));
 
@@ -32,7 +32,7 @@ class TServiceOrderUserProfile extends CWidget
                 );
             }
 
-            //ãîğîä şçåğà
+            //Ğ³Ğ¾Ñ€Ğ¾Ğ´ ÑĞ·ĞµÑ€Ğ°
             $city_id = ($this->order['is_meet'] == 't' && $this->order['city'] > 0)?$this->order['city']:$user['city'];
             $user['place_title'] = '';        
             if($city_id > 0)
@@ -41,7 +41,7 @@ class TServiceOrderUserProfile extends CWidget
                                        city::getCityName($city_id);                
             }
             
-            //ñîáèğàåì øàáëîí
+            //ÑĞ¾Ğ±Ğ¸Ñ€Ğ°ĞµĞ¼ ÑˆĞ°Ğ±Ğ»Ğ¾Ğ½
             $this->render('t-service-order-user-profile', array(
                 'user' => $user,
                 'oplinks' => $oplinks

@@ -128,19 +128,19 @@
 				<?php if($letter['delivery_title']) { ?>
 					<a href="#" class="b-layout__link b-layout__link_bordbot_dot_000" onClick="letters.nn=<?=$nn?>; letters.formDeliveryShow(<?=$letter['id']?>); return false;"><?=$letter['delivery_title']?></a>. 
 				<?php } else { ?>
-					<a href="#" class="b-layout__link b-layout__link_bordbot_dot_000" onClick="letters.nn=<?=$nn?>; letters.formDeliveryShow(<?=$letter['id']?>); return false;">Добавить доставку</a>. 
+					<a href="#" class="b-layout__link b-layout__link_bordbot_dot_000" onClick="letters.nn=<?=$nn?>; letters.formDeliveryShow(<?=$letter['id']?>); return false;">Р”РѕР±Р°РІРёС‚СЊ РґРѕСЃС‚Р°РІРєСѓ</a>. 
 				<?php } ?>
 			</span>
 			<span id="letters_item_deliverycost_<?=$letter['id']?><?=($type==2 || $type==6 ? "_{$nn}" : "")?>">
 			<?php if($letter['delivery_cost']) { ?>
-				<a href="#" class="b-layout__link b-layout__link_bordbot_dot_000" onClick="letters.nn=<?=$nn?>; letters.formDeliveryCostShow(<?=$letter['id']?>, 'list'); return false;">Стоимость <?=sprintf("%01.2f", $letter['delivery_cost'])?> рублей</a>. 
+				<a href="#" class="b-layout__link b-layout__link_bordbot_dot_000" onClick="letters.nn=<?=$nn?>; letters.formDeliveryCostShow(<?=$letter['id']?>, 'list'); return false;">РЎС‚РѕРёРјРѕСЃС‚СЊ <?=sprintf("%01.2f", $letter['delivery_cost'])?> СЂСѓР±Р»РµР№</a>. 
 			<?php } else { ?>
-				<a href="#" class="b-layout__link b-layout__link_bordbot_dot_000" onClick="letters.nn=<?=$nn?>; letters.formDeliveryCostShow(<?=$letter['id']?>, 'list'); return false;">Добавить стоимость</a>.
+				<a href="#" class="b-layout__link b-layout__link_bordbot_dot_000" onClick="letters.nn=<?=$nn?>; letters.formDeliveryCostShow(<?=$letter['id']?>, 'list'); return false;">Р”РѕР±Р°РІРёС‚СЊ СЃС‚РѕРёРјРѕСЃС‚СЊ</a>.
 			<?php } ?>
 			</span>
 			<br/>
 			<?php if($letter['parent'] && $letter['parent_title']) { ?>
-			Документ связан с <a href="/siteadmin/letters/?page=doc&doc=<?=$letter['parent']?>" class="b-layout__link b-layout__link_color_000">ID<?=$letter['parent']?> <?=reformat(htmlspecialchars($letter['parent_title']),20)?></a><br/><br/>
+			Р”РѕРєСѓРјРµРЅС‚ СЃРІСЏР·Р°РЅ СЃ <a href="/siteadmin/letters/?page=doc&doc=<?=$letter['parent']?>" class="b-layout__link b-layout__link_color_000">ID<?=$letter['parent']?> <?=reformat(htmlspecialchars($letter['parent_title']),20)?></a><br/><br/>
 			<?php } else { ?>
 			<br/>
 			<?php } ?>
@@ -149,7 +149,7 @@
 			<?php if($letter['comment']) {?>
 				<?=reformat(htmlspecialchars($letter['comment']),20)?>&nbsp;&nbsp;<a class="b-icon b-icon_margtop_4 b-icon_sbr_edit2" href="#" onClick="letters.nn=<?=$nn?>; letters.formCommentShow(<?=$letter['id']?>); return false;"></a>
 			<?php } else { ?>
-				<a href="#" class="b-layout__link b-layout__link_bordbot_dot_000" onClick="letters.nn=<?=$nn?>; letters.formCommentShow(<?=$letter['id']?>); return false;">Добавить примечание</a>
+				<a href="#" class="b-layout__link b-layout__link_bordbot_dot_000" onClick="letters.nn=<?=$nn?>; letters.formCommentShow(<?=$letter['id']?>); return false;">Р”РѕР±Р°РІРёС‚СЊ РїСЂРёРјРµС‡Р°РЅРёРµ</a>
 			<?php } ?>
 			</span>
 
@@ -160,7 +160,7 @@
 				require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/CFile.php");
 				$cFile = new CFile($letter['file_id']);
 				?>
-				<a href="<?=WDCPREFIX."/".$cFile->path.$cFile->name?>" class="b-layout__link b-layout__link_bordbot_dot_000">Электронная версия</a>
+				<a href="<?=WDCPREFIX."/".$cFile->path.$cFile->name?>" class="b-layout__link b-layout__link_bordbot_dot_000">Р­Р»РµРєС‚СЂРѕРЅРЅР°СЏ РІРµСЂСЃРёСЏ</a>
 			</span>
 			<?php } ?>
 		</div>

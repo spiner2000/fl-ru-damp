@@ -1,6 +1,6 @@
 <?php
 /**
- * Ïîñðåäíèê ìåæäó ìåæäó CFile è webdav_client, ïîçâîëÿåò ïîäêëþ÷àòü íåñêîëüêî ñåðâåðîâ.
+ * ÐŸÐ¾ÑÑ€ÐµÐ´Ð½Ð¸Ðº Ð¼ÐµÐ¶Ð´Ñƒ Ð¼ÐµÐ¶Ð´Ñƒ CFile Ð¸ webdav_client, Ð¿Ð¾Ð·Ð²Ð¾Ð»ÑÐµÑ‚ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡Ð°Ñ‚ÑŒ Ð½ÐµÑÐºÐ¾Ð»ÑŒÐºÐ¾ ÑÐµÑ€Ð²ÐµÑ€Ð¾Ð².
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/webdav_client.php');
@@ -9,27 +9,27 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/log.php");
 class webdav_proxy {
     
     /**
-     * Òåêóùèé îáúåêò.
+     * Ð¢ÐµÐºÑƒÑ‰Ð¸Ð¹ Ð¾Ð±ÑŠÐµÐºÑ‚.
      * @see webdav_proxy::getInst()
      * @var webdav_proxy
      */
     static private $_inst;
     
     /**
-     * Îáúåêòû webdav_client íà êàæäûé ñåðâåð WebDAV.
+     * ÐžÐ±ÑŠÐµÐºÑ‚Ñ‹ webdav_client Ð½Ð° ÐºÐ°Ð¶Ð´Ñ‹Ð¹ ÑÐµÑ€Ð²ÐµÑ€ WebDAV.
      * @var array
      */
     private $_wdcs = array();
     
     /**
-     * Ëîããåð
+     * Ð›Ð¾Ð³Ð³ÐµÑ€
      * @var log
      */
     private $_log;
     
     /**
-     * Êîíñòðóêòîð (ïðèâåòíûé -- ÷òîáû íå áûëî ëèøíèõ ïîäêëþ÷åíèé). Ñîõðàíÿåò êîíôèãóðàöèþ ñåðâåðîâ.
-     * @param array $wdcs_prms   êîíôèãóðàöèÿ ñåðâåðîâ WebDAV: array (array ('server'=>'dav.free-lance.ru','prefix'=>'http://dav.free-lance.ru', 'port'=>80, 'user'=>'DAV', 'pass'=>'test', 'debug'=>true), array(...), ... );
+     * ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€ (Ð¿Ñ€Ð¸Ð²ÐµÑ‚Ð½Ñ‹Ð¹ -- Ñ‡Ñ‚Ð¾Ð±Ñ‹ Ð½Ðµ Ð±Ñ‹Ð»Ð¾ Ð»Ð¸ÑˆÐ½Ð¸Ñ… Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ð¹). Ð¡Ð¾Ñ…Ñ€Ð°Ð½ÑÐµÑ‚ ÐºÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸ÑŽ ÑÐµÑ€Ð²ÐµÑ€Ð¾Ð².
+     * @param array $wdcs_prms   ÐºÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ñ ÑÐµÑ€Ð²ÐµÑ€Ð¾Ð² WebDAV: array (array ('server'=>'dav.free-lance.ru','prefix'=>'http://dav.free-lance.ru', 'port'=>80, 'user'=>'DAV', 'pass'=>'test', 'debug'=>true), array(...), ... );
      */
     private function __construct($wdcs_prms) {
         $this->_log = new log('webdav/'.SERVER.'-%d%m%Y.log', 'a', '%d.%m.%Y %H:%M:%S : ');
@@ -37,9 +37,9 @@ class webdav_proxy {
     }
     
     /**
-     * Ìåòîä äëÿ ïîëó÷åíèÿ òåêóùåãî ýêçåìïëÿðà.
+     * ÐœÐµÑ‚Ð¾Ð´ Ð´Ð»Ñ Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ñ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ³Ð¾ ÑÐºÐ·ÐµÐ¼Ð¿Ð»ÑÑ€Ð°.
      *
-     * @param array $wdcs_prms   êîíôèãóðàöèÿ ñåðâåðîâ WebDAV (ñì. êîíñòðóêòîð)
+     * @param array $wdcs_prms   ÐºÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ñ ÑÐµÑ€Ð²ÐµÑ€Ð¾Ð² WebDAV (ÑÐ¼. ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€)
      * @return webdav_proxy
      */
     static function getInst($wdcs_prms = NULL) {
@@ -50,8 +50,8 @@ class webdav_proxy {
     }
     
     /**
-     * Ñîõðàíÿåò êîíôèãóðàöèþ ñåðâåðîâ.
-     * @param array $wdcs_prms   êîíôèãóðàöèÿ ñåðâåðîâ WebDAV (ñì. êîíñòðóêòîð)
+     * Ð¡Ð¾Ñ…Ñ€Ð°Ð½ÑÐµÑ‚ ÐºÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸ÑŽ ÑÐµÑ€Ð²ÐµÑ€Ð¾Ð².
+     * @param array $wdcs_prms   ÐºÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ñ ÑÐµÑ€Ð²ÐµÑ€Ð¾Ð² WebDAV (ÑÐ¼. ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€)
      */
     function setWdcParams($wdcs_prms) {
         foreach ($wdcs_prms as $wdid=>$prms) {
@@ -63,19 +63,19 @@ class webdav_proxy {
             $wdc->set_port($prms['port']);
             $wdc->set_user($prms['user']);
             $wdc->set_pass($prms['pass']);
-            $wdc->set_protocol((int)$prms['protocol']); // use HTTP/1.0 - 1.1 ðàáîòàåò ñ ãëþêàìè â ïîðòôîëèî è ìåäëåííåå
+            $wdc->set_protocol((int)$prms['protocol']); // use HTTP/1.0 - 1.1 Ñ€Ð°Ð±Ð¾Ñ‚Ð°ÐµÑ‚ Ñ Ð³Ð»ÑŽÐºÐ°Ð¼Ð¸ Ð² Ð¿Ð¾Ñ€Ñ‚Ñ„Ð¾Ð»Ð¸Ð¾ Ð¸ Ð¼ÐµÐ´Ð»ÐµÐ½Ð½ÐµÐµ
             $wdc->set_debug($prms['debug']);
             $wdc->prefix = $prms['prefix'];
-            $wdc->prefix_local = 'http://' . $prms['server'] .':'. $prms['port']; // òóò ïîêà òîëüêî "http".
+            $wdc->prefix_local = 'http://' . $prms['server'] .':'. $prms['port']; // Ñ‚ÑƒÑ‚ Ð¿Ð¾ÐºÐ° Ñ‚Ð¾Ð»ÑŒÐºÐ¾ "http".
             $wdc->is_reserved = $prms['is_reserved'];
         }
     }
     
     /**
-     * Ïîäêëþ÷àåò êëèåíòà ê ñåðâåðó.
+     * ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡Ð°ÐµÑ‚ ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð° Ðº ÑÐµÑ€Ð²ÐµÑ€Ñƒ.
      *
-     * @param webdav_client $wdc   îáúåêò êëèåíòà
-     * @return boolean   óñïåøíî?
+     * @param webdav_client $wdc   Ð¾Ð±ÑŠÐµÐºÑ‚ ÐºÐ»Ð¸ÐµÐ½Ñ‚Ð°
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     private function _connect($wdc) {
         if(!$wdc->connected) {
@@ -87,10 +87,10 @@ class webdav_proxy {
     }
     
     /**
-     * Ñîõðàíÿåò ôàéë.
+     * Ð¡Ð¾Ñ…Ñ€Ð°Ð½ÑÐµÑ‚ Ñ„Ð°Ð¹Ð».
      * @see webdav_client::put_file()
-     * @param boolean $exclude_reserved_wdc   èñêëþ÷èòü ëè ðåçåðâíûå ñåðâåðà (äëÿ êàêèõ-òî âðåìåííûõ äàííûõ, ÷òîá íå íàãðóæàòü ëèøíèé ðàç).
-     * @return boolean   óñïåøíî?
+     * @param boolean $exclude_reserved_wdc   Ð¸ÑÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ Ð»Ð¸ Ñ€ÐµÐ·ÐµÑ€Ð²Ð½Ñ‹Ðµ ÑÐµÑ€Ð²ÐµÑ€Ð° (Ð´Ð»Ñ ÐºÐ°ÐºÐ¸Ñ…-Ñ‚Ð¾ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ñ… Ð´Ð°Ð½Ð½Ñ‹Ñ…, Ñ‡Ñ‚Ð¾Ð± Ð½Ðµ Ð½Ð°Ð³Ñ€ÑƒÐ¶Ð°Ñ‚ÑŒ Ð»Ð¸ÑˆÐ½Ð¸Ð¹ Ñ€Ð°Ð·).
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     function put_file($path, $filename, $exclude_reserved_wdc = false) {
         if(!$this->safePath($path.$filename)) {
@@ -104,7 +104,7 @@ class webdav_proxy {
                 $rc = $wdc->put_file($path, $filename);
                 $ok = ($rc == 201 || $rc == 204);
             }
-            if(!$ok) { // õîòü îäèí íå îê, âûõîäèì.
+            if(!$ok) { // Ñ…Ð¾Ñ‚ÑŒ Ð¾Ð´Ð¸Ð½ Ð½Ðµ Ð¾Ðº, Ð²Ñ‹Ñ…Ð¾Ð´Ð¸Ð¼.
                 $this->_log->writeln("error {$rc}: could not put file: {$filename}, to: {$path}, server: {$wdc->_server}");
                 return false;
             }
@@ -113,10 +113,10 @@ class webdav_proxy {
     }
     
     /**
-     * Ñîçäàåò íîâûé ôàéë ñ çàäàíûì êîíòåíòîì.
+     * Ð¡Ð¾Ð·Ð´Ð°ÐµÑ‚ Ð½Ð¾Ð²Ñ‹Ð¹ Ñ„Ð°Ð¹Ð» Ñ Ð·Ð°Ð´Ð°Ð½Ñ‹Ð¼ ÐºÐ¾Ð½Ñ‚ÐµÐ½Ñ‚Ð¾Ð¼.
      * @see webdav_client::put()
-     * @param boolean $exclude_reserved_wdc   èñêëþ÷èòü ëè ðåçåðâíûå ñåðâåðà (äëÿ êàêèõ-òî âðåìåííûõ äàííûõ, ÷òîá íå íàãðóæàòü ëèøíèé ðàç).
-     * @return boolean   óñïåøíî?
+     * @param boolean $exclude_reserved_wdc   Ð¸ÑÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ Ð»Ð¸ Ñ€ÐµÐ·ÐµÑ€Ð²Ð½Ñ‹Ðµ ÑÐµÑ€Ð²ÐµÑ€Ð° (Ð´Ð»Ñ ÐºÐ°ÐºÐ¸Ñ…-Ñ‚Ð¾ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ñ… Ð´Ð°Ð½Ð½Ñ‹Ñ…, Ñ‡Ñ‚Ð¾Ð± Ð½Ðµ Ð½Ð°Ð³Ñ€ÑƒÐ¶Ð°Ñ‚ÑŒ Ð»Ð¸ÑˆÐ½Ð¸Ð¹ Ñ€Ð°Ð·).
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     function put($path, $content, $exclude_reserved_wdc = false) {
         if(!$this->safePath($path)) {
@@ -130,7 +130,7 @@ class webdav_proxy {
                 $rc = $wdc->put($path, $content);
                 $ok = ($rc == 201 || $rc == 204);
             }
-            if(!$ok) { // õîòü îäèí íå îê, âûõîäèì.
+            if(!$ok) { // Ñ…Ð¾Ñ‚ÑŒ Ð¾Ð´Ð¸Ð½ Ð½Ðµ Ð¾Ðº, Ð²Ñ‹Ñ…Ð¾Ð´Ð¸Ð¼.
                 $this->_log->writeln("error {$rc}: could not put content path: {$path}, server: {$wdc->_server}");
                 return false;
             }
@@ -139,10 +139,10 @@ class webdav_proxy {
     }
     
     /**
-     * Óäàëÿåò ôàéë/äèðåêòîðèþ.
+     * Ð£Ð´Ð°Ð»ÑÐµÑ‚ Ñ„Ð°Ð¹Ð»/Ð´Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸ÑŽ.
      * @see webdav_client::delete()
-     * @param boolean $exclude_reserved_wdc   èñêëþ÷èòü ëè ðåçåðâíûå ñåðâåðà (äëÿ êàêèõ-òî âðåìåííûõ äàííûõ, ÷òîá íå íàãðóæàòü ëèøíèé ðàç).
-     * @return boolean   óñïåøíî?
+     * @param boolean $exclude_reserved_wdc   Ð¸ÑÐºÐ»ÑŽÑ‡Ð¸Ñ‚ÑŒ Ð»Ð¸ Ñ€ÐµÐ·ÐµÑ€Ð²Ð½Ñ‹Ðµ ÑÐµÑ€Ð²ÐµÑ€Ð° (Ð´Ð»Ñ ÐºÐ°ÐºÐ¸Ñ…-Ñ‚Ð¾ Ð²Ñ€ÐµÐ¼ÐµÐ½Ð½Ñ‹Ñ… Ð´Ð°Ð½Ð½Ñ‹Ñ…, Ñ‡Ñ‚Ð¾Ð± Ð½Ðµ Ð½Ð°Ð³Ñ€ÑƒÐ¶Ð°Ñ‚ÑŒ Ð»Ð¸ÑˆÐ½Ð¸Ð¹ Ñ€Ð°Ð·).
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     function delete($path, $exclude_reserved_wdc = false) {
         if(!$this->safePath($path)) {
@@ -157,15 +157,15 @@ class webdav_proxy {
             if(!$ok) {
                 $this->_log->writeln("error {$rc}: could not delete: {$path}, server: {$wdc->_server}");
             }
-            $ret = $ret || $ok; // íóæåí õîòÿ áû îäèí îê, òîãäà ñ÷èòàåì, ÷òî ôàéëà íåò.
+            $ret = $ret || $ok; // Ð½ÑƒÐ¶ÐµÐ½ Ñ…Ð¾Ñ‚Ñ Ð±Ñ‹ Ð¾Ð´Ð¸Ð½ Ð¾Ðº, Ñ‚Ð¾Ð³Ð´Ð° ÑÑ‡Ð¸Ñ‚Ð°ÐµÐ¼, Ñ‡Ñ‚Ð¾ Ñ„Ð°Ð¹Ð»Ð° Ð½ÐµÑ‚.
         }
         return $ret;
     }
     
     /**
-     * Êîïèðóåò ôàéë/äèðåêòîðèþ.
+     * ÐšÐ¾Ð¿Ð¸Ñ€ÑƒÐµÑ‚ Ñ„Ð°Ð¹Ð»/Ð´Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸ÑŽ.
      * @see webdav_client::copy_file()
-     * @return boolean   óñïåøíî?
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     function copy_file($src_path, $dst_path, $overwrite) {
         if(!$this->safePath($src_path) || !$this->safePath($dst_path)) {
@@ -176,7 +176,7 @@ class webdav_proxy {
                 $rc = $wdc->copy_file($src_path, $dst_path, $overwrite);
                 $ok = ($rc == 201 || $rc == 204);
             }
-            if(!$ok) { // õîòü îäèí íå îê, âûõîäèì.
+            if(!$ok) { // Ñ…Ð¾Ñ‚ÑŒ Ð¾Ð´Ð¸Ð½ Ð½Ðµ Ð¾Ðº, Ð²Ñ‹Ñ…Ð¾Ð´Ð¸Ð¼.
                 $this->_log->writeln("error {$rc}: could not copy file: {$src_path}, to: {$dst_path}, server: {$wdc->_server}");
                 return false;
             }
@@ -185,9 +185,9 @@ class webdav_proxy {
     }
     
     /**
-     * Ïåðåìåùàåò/ïåðåèìåíîâûâàåò ôàéë/äèðåêòîðèþ.
+     * ÐŸÐµÑ€ÐµÐ¼ÐµÑ‰Ð°ÐµÑ‚/Ð¿ÐµÑ€ÐµÐ¸Ð¼ÐµÐ½Ð¾Ð²Ñ‹Ð²Ð°ÐµÑ‚ Ñ„Ð°Ð¹Ð»/Ð´Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸ÑŽ.
      * @see webdav_client::move()
-     * @return boolean   óñïåøíî?
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     function move($src_path, $dst_path, $overwrite) {
         if(!$this->safePath($src_path) || !$this->safePath($dst_path)) {
@@ -217,9 +217,9 @@ class webdav_proxy {
     }
     
     /**
-     * Ñîçäàåò äèðåêòîðèþ.
+     * Ð¡Ð¾Ð·Ð´Ð°ÐµÑ‚ Ð´Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸ÑŽ.
      * @see webdav_client::mkcol()
-     * @return boolean   óñïåøíî?
+     * @return boolean   ÑƒÑÐ¿ÐµÑˆÐ½Ð¾?
      */
     function mkcol($path) {
         if(!$this->safePath($path)) {
@@ -230,7 +230,7 @@ class webdav_proxy {
                 $rc = $wdc->mkcol($path);
                 $ok = ($rc == 201 || $rc == 405);
             }
-            if(!$ok) { // õîòü îäèí íå îê, âûõîäèì.
+            if(!$ok) { // Ñ…Ð¾Ñ‚ÑŒ Ð¾Ð´Ð¸Ð½ Ð½Ðµ Ð¾Ðº, Ð²Ñ‹Ñ…Ð¾Ð´Ð¸Ð¼.
                 $this->_log->writeln("error {$rc}: could not make col: {$path}, server: {$wdc->_server}");
                 return false;
             }
@@ -239,10 +239,10 @@ class webdav_proxy {
     }
     
     /**
-     * Ïðîâåðÿåò, ñóùåñòâóåò ëè ôàéë/äèðåêòîðèÿ.
-     * @param string $path   ïóòü äî ôàéëà (áåç ïåðâîãî ñëåøà).
-     * @param boolean $dont_check_put    true: íå ïðîâåðÿòü, åñëè webdav ñèäèò íà nginx è âêëþ÷åí create_full_put_path, ïðîñòî âåðíóòü true.
-     * @return boolean   true:ñóùåñòâóåò íà âñåõ ñåðâåðàõ, false:íå ñóùåñòâóåò õîòÿ áû íà îäíîì èëè îøèáêà.
+     * ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÑ‚, ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚ Ð»Ð¸ Ñ„Ð°Ð¹Ð»/Ð´Ð¸Ñ€ÐµÐºÑ‚Ð¾Ñ€Ð¸Ñ.
+     * @param string $path   Ð¿ÑƒÑ‚ÑŒ Ð´Ð¾ Ñ„Ð°Ð¹Ð»Ð° (Ð±ÐµÐ· Ð¿ÐµÑ€Ð²Ð¾Ð³Ð¾ ÑÐ»ÐµÑˆÐ°).
+     * @param boolean $dont_check_put    true: Ð½Ðµ Ð¿Ñ€Ð¾Ð²ÐµÑ€ÑÑ‚ÑŒ, ÐµÑÐ»Ð¸ webdav ÑÐ¸Ð´Ð¸Ñ‚ Ð½Ð° nginx Ð¸ Ð²ÐºÐ»ÑŽÑ‡ÐµÐ½ create_full_put_path, Ð¿Ñ€Ð¾ÑÑ‚Ð¾ Ð²ÐµÑ€Ð½ÑƒÑ‚ÑŒ true.
+     * @return boolean   true:ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚ Ð½Ð° Ð²ÑÐµÑ… ÑÐµÑ€Ð²ÐµÑ€Ð°Ñ…, false:Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚ Ñ…Ð¾Ñ‚Ñ Ð±Ñ‹ Ð½Ð° Ð¾Ð´Ð½Ð¾Ð¼ Ð¸Ð»Ð¸ Ð¾ÑˆÐ¸Ð±ÐºÐ°.
      */
     function check_file($path, $dont_check_put = false) {
         if( !($dont_check_put && defined('WD_CREATE_FULL_PUT_PATH') && WD_CREATE_FULL_PUT_PATH) ) {
@@ -257,24 +257,24 @@ class webdav_proxy {
     }
     
     /**
-     * Âîçâðàùàåò mime-òèï ôàéëà.
-     * @param string $path   ïóòü äî ôàéëà (áåç ïåðâîãî ñëåøà).
-     * @return string   òèï, íàïðèìåð, "image/png".
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ mime-Ñ‚Ð¸Ð¿ Ñ„Ð°Ð¹Ð»Ð°.
+     * @param string $path   Ð¿ÑƒÑ‚ÑŒ Ð´Ð¾ Ñ„Ð°Ð¹Ð»Ð° (Ð±ÐµÐ· Ð¿ÐµÑ€Ð²Ð¾Ð³Ð¾ ÑÐ»ÐµÑˆÐ°).
+     * @return string   Ñ‚Ð¸Ð¿, Ð½Ð°Ð¿Ñ€Ð¸Ð¼ÐµÑ€, "image/png".
      */
     function get_content_type($path) {
         foreach($this->_wdcs as $id=>$wdc) {
             $info = $this->get_info($id, $path);
             if($info && $info['http_code'] != 404) {
-                return $info['content_type']; // c ïåðâîãî óäà÷íîãî çàáèðàåì è âûõîäèì.
+                return $info['content_type']; // c Ð¿ÐµÑ€Ð²Ð¾Ð³Ð¾ ÑƒÐ´Ð°Ñ‡Ð½Ð¾Ð³Ð¾ Ð·Ð°Ð±Ð¸Ñ€Ð°ÐµÐ¼ Ð¸ Ð²Ñ‹Ñ…Ð¾Ð´Ð¸Ð¼.
             }
         }
         return NULL;
     }
     
     /**
-     * Âîçâðàùàåò èíôîðìàöèþ î ôàéëå.
-     * @param integer $wdid  èä. DAV-ñîåäèíåíèÿ.
-     * @param string $path   ïóòü äî ôàéëà (áåç ïåðâîãî ñëåøà).
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¾ Ñ„Ð°Ð¹Ð»Ðµ.
+     * @param integer $wdid  Ð¸Ð´. DAV-ÑÐ¾ÐµÐ´Ð¸Ð½ÐµÐ½Ð¸Ñ.
+     * @param string $path   Ð¿ÑƒÑ‚ÑŒ Ð´Ð¾ Ñ„Ð°Ð¹Ð»Ð° (Ð±ÐµÐ· Ð¿ÐµÑ€Ð²Ð¾Ð³Ð¾ ÑÐ»ÐµÑˆÐ°).
      * @return array
      */
     function get_info($wdid, $path) {
@@ -305,8 +305,8 @@ class webdav_proxy {
     
     
     /**
-     * Ãîâîðèò, áåçîïàñíûé ëè ïóòü (äëÿ copy, delete è ò.ï.)
-     * @param string $path   ïóòü äî ôàéëà/ïàïêè
+     * Ð“Ð¾Ð²Ð¾Ñ€Ð¸Ñ‚, Ð±ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ñ‹Ð¹ Ð»Ð¸ Ð¿ÑƒÑ‚ÑŒ (Ð´Ð»Ñ copy, delete Ð¸ Ñ‚.Ð¿.)
+     * @param string $path   Ð¿ÑƒÑ‚ÑŒ Ð´Ð¾ Ñ„Ð°Ð¹Ð»Ð°/Ð¿Ð°Ð¿ÐºÐ¸
      * @return boolean
      */
     function safePath($path) {
@@ -315,7 +315,7 @@ class webdav_proxy {
 
     
     /**
-     * Êîïèðóåò ôàéë èç WebDav â ëîêàëüíóþ ôàéëîâóþ ñèñòåìó
+     * ÐšÐ¾Ð¿Ð¸Ñ€ÑƒÐµÑ‚ Ñ„Ð°Ð¹Ð» Ð¸Ð· WebDav Ð² Ð»Ð¾ÐºÐ°Ð»ÑŒÐ½ÑƒÑŽ Ñ„Ð°Ð¹Ð»Ð¾Ð²ÑƒÑŽ ÑÐ¸ÑÑ‚ÐµÐ¼Ñƒ
      * 
      * @param type $srcpath
      * @param type $localpath
@@ -339,8 +339,8 @@ class webdav_proxy {
     
     
     /**
-     * Êîïèðóåò ìàññèâ ôàéëîâ èç WebDav â ëîêàëüíóþ ôàéëîâóþ ñèñòåìó
-     * Ôîðìàò âõîäíûõ äàííûõ array("remotepath" => "localpath")
+     * ÐšÐ¾Ð¿Ð¸Ñ€ÑƒÐµÑ‚ Ð¼Ð°ÑÑÐ¸Ð² Ñ„Ð°Ð¹Ð»Ð¾Ð² Ð¸Ð· WebDav Ð² Ð»Ð¾ÐºÐ°Ð»ÑŒÐ½ÑƒÑŽ Ñ„Ð°Ð¹Ð»Ð¾Ð²ÑƒÑŽ ÑÐ¸ÑÑ‚ÐµÐ¼Ñƒ
+     * Ð¤Ð¾Ñ€Ð¼Ð°Ñ‚ Ð²Ñ…Ð¾Ð´Ð½Ñ‹Ñ… Ð´Ð°Ð½Ð½Ñ‹Ñ… array("remotepath" => "localpath")
      * 
      * @param type $filelist
      * @return boolean

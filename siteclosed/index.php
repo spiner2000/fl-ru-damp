@@ -1,6 +1,6 @@
 <?php
 /**
- * Выводит заглушки и форму авторизации
+ * Р’С‹РІРѕРґРёС‚ Р·Р°РіР»СѓС€РєРё Рё С„РѕСЂРјСѓ Р°РІС‚РѕСЂРёР·Р°С†РёРё
  *
  */
 
@@ -12,7 +12,7 @@ if(!defined('IN_STDF')) {
 
 if(defined('IS_CLOSED') && IS_CLOSED) {
     
-    if(defined('IS_OPENED')) return; // если нужно оставить работающим отдельный скрипт.
+    if(defined('IS_OPENED')) return; // РµСЃР»Рё РЅСѓР¶РЅРѕ РѕСЃС‚Р°РІРёС‚СЊ СЂР°Р±РѕС‚Р°СЋС‰РёРј РѕС‚РґРµР»СЊРЅС‹Р№ СЃРєСЂРёРїС‚.
     if(defined('IS_EXTERNAL')) return;
     if(defined('IS_PGQ')) return;
     
@@ -29,7 +29,7 @@ if(defined('IS_CLOSED') && IS_CLOSED) {
     if($is_auth !== 'ok') {
         header('Content-Type: text/html');
         /**
-         * Заглушки
+         * Р—Р°РіР»СѓС€РєРё
          */
         $pages = array(
             'content_closed.php',
@@ -52,7 +52,7 @@ if(defined('IS_CLOSED') && IS_CLOSED) {
                 $session->write($sessid, 'ok');
                 header('Location: /');
             } else {
-                $error = 'Нет такого!';
+                $error = 'РќРµС‚ С‚Р°РєРѕРіРѕ!';
             }
         }
 

@@ -1,16 +1,16 @@
 <a name="page"></a>
 
 <?php /* if($sbr->isEmp()) {?>
-<a href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/?site=<?= $projects_cnt['open'] == 0 ? 'create' : 'new';?>" class="b-button b-button_flat b-button_flat_green b-button_float_right">Начать новую сделку</a>
+<a href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/?site=<?= $projects_cnt['open'] == 0 ? 'create' : 'new';?>" class="b-button b-button_flat b-button_flat_green b-button_float_right">РќР°С‡Р°С‚СЊ РЅРѕРІСѓСЋ СЃРґРµР»РєСѓ</a>
 <?php }//if */?>
-<h1 class="b-page__title">Мои сделки</h1>
+<h1 class="b-page__title">РњРѕРё СЃРґРµР»РєРё</h1>
 
 <? 
-// Окно помощи
+// РћРєРЅРѕ РїРѕРјРѕС‰Рё
 include ($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.help.php");
-// Шапка СБР
+// РЁР°РїРєР° РЎР‘Р 
 include ($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.header.php");
-// Список СБР
+// РЎРїРёСЃРѕРє РЎР‘Р 
 ?>
 <div class="body">
     <div class="main">

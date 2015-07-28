@@ -1,26 +1,26 @@
 <?php
 
-//Шаблон списка счетов и формы фильтра
+//РЁР°Р±Р»РѕРЅ СЃРїРёСЃРєР° СЃС‡РµС‚РѕРІ Рё С„РѕСЂРјС‹ С„РёР»СЊС‚СЂР°
 
 ?>
-<h3>Заказчики пополнение ЛС</h3>
+<h3>Р—Р°РєР°Р·С‡РёРєРё РїРѕРїРѕР»РЅРµРЅРёРµ Р›РЎ</h3>
 <div class="form form-acnew b-layout b-layout_padbot_20">
 	<b class="b1"></b>
 	<b class="b2"></b>
 	<div class="form-in">
-        <h4 class="toggle"><a class="lnk-dot-666" onclick="var mySlide = new Fx.Slide('slideBlock').toggle();" href="javascript:void(0);">Фильтр</a></h4>
+        <h4 class="toggle"><a class="lnk-dot-666" onclick="var mySlide = new Fx.Slide('slideBlock').toggle();" href="javascript:void(0);">Р¤РёР»СЊС‚СЂ</a></h4>
         <div class="slideBlock" id="slideBlock">
             <form action="." method="get" enctype="application/x-www-form-urlencoded">
             <input type="hidden" name="do" value="filter" />
             <div class="form-block first">
                 <div class="form-el">
-                    <label class="form-l">Логин или номер счета:</label>
+                    <label class="form-l">Р›РѕРіРёРЅ РёР»Рё РЅРѕРјРµСЂ СЃС‡РµС‚Р°:</label>
                     <div class="form-value fvs">
                         <input size="25" type="text" class="i-txt fvsi" name="login" value="<?=@$filter['login']?>"/>
                     </div>
                 </div>
                 <div class="form-el">
-                    <label class="form-l">За период:</label>
+                    <label class="form-l">Р—Р° РїРµСЂРёРѕРґ:</label>
                     <div class="form-value fvs">
                         <input size="25" id="filterDatePicker" type="text" class="i-txt fvsi" name="date" value="<?=@$filter['date']?>"/>
                     </div>
@@ -28,7 +28,7 @@
             </div>
             <div class="form-block last">
                 <div class="form-el form-btns">
-                    <button type="submit">Отфильтровать</button>
+                    <button type="submit">РћС‚С„РёР»СЊС‚СЂРѕРІР°С‚СЊ</button>
                 </div>
             </div>
             </form>
@@ -51,10 +51,10 @@
         </colgroup>
         <thead>
             <tr>
-                <th>Дата</th>
-                <th>Файл</th>
-                <th>Логин</th>
-                <th>Сумма (руб)</th>
+                <th>Р”Р°С‚Р°</th>
+                <th>Р¤Р°Р№Р»</th>
+                <th>Р›РѕРіРёРЅ</th>
+                <th>РЎСѓРјРјР° (СЂСѓР±)</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -78,19 +78,19 @@
                 </td>
                 <?php if($el['acc_op_id'] > 0): ?>
                 <td>
-                    <a target="_blank" href="<?=sprintf("/siteadmin/bill/?login=%s", $el['login'])?>" class="color-45a300">Зачислено</a>
+                    <a target="_blank" href="<?=sprintf("/siteadmin/bill/?login=%s", $el['login'])?>" class="color-45a300">Р—Р°С‡РёСЃР»РµРЅРѕ</a>
                 </td>
                 <td>
                     <form action="." method="post" enctype="application/x-www-form-urlencoded">
                         <?php if($el['file_factura_id'] > 0): ?>
                         <a target="_blank" href="<?=WDCPREFIX . '/' . $el['file_factura']?>"><?=$el['name_factura']?></a>&nbsp;&nbsp;
                         <input type="hidden" name="num[<?=$el['uid']?>][<?=$el['invoice_id']?>]" value="<?=$el['file_factura_id']?>" />
-                        <button type="submit">Удалить</button>
+                        <button type="submit">РЈРґР°Р»РёС‚СЊ</button>
                         <input type="hidden" name="do" value="factura_delete" /> 
                         <?php else: ?>
                         <input type="text" name="num[<?=$el['uid']?>][<?=$el['invoice_id']?>]" maxlength="10" size="10" />
                         <input data-datepicker="true" type="text" name="date[<?=$el['uid']?>][<?=$el['invoice_id']?>]" maxlength="10" size="10" />
-                        <button type="submit">Загрузить СФ</button>
+                        <button type="submit">Р—Р°РіСЂСѓР·РёС‚СЊ РЎР¤</button>
                         <input type="hidden" name="do" value="factura" /> 
                         <?php endif; ?>
                         <input type="hidden" name="u_token_key" value="<?=$_SESSION['rand']?>" />
@@ -99,7 +99,7 @@
                     <form action="." method="post" enctype="multipart/form-data" class="b-layout_padtop_10">
                         <input type="hidden" name="invoice_id" value="<?=$el['invoice_id']?>" />
                         <input type="file" name="new_file" />
-                        <button type="submit">Обновить CФ</button>
+                        <button type="submit">РћР±РЅРѕРІРёС‚СЊ CР¤</button>
                         <input type="hidden" name="do" value="factura_update" /> 
                         <input type="hidden" name="u_token_key" value="<?=$_SESSION['rand']?>" />
                     </form>
@@ -111,7 +111,7 @@
                 <td>
                     <form action="." method="post" enctype="application/x-www-form-urlencoded">
                         <input type="text" name="sum[<?=$el['uid']?>][<?=$el['invoice_id']?>]" maxlength="7" size="10" />
-                        <button type="submit">Зачислить</button>
+                        <button type="submit">Р—Р°С‡РёСЃР»РёС‚СЊ</button>
                         <input type="hidden" name="do" value="pay" />    
                     </form>                      
                 </td>
@@ -138,7 +138,7 @@
 </div>
 <?php else: ?>
 <div class="b-txt b-txt_center">
-    Нет данных за указанный период
+    РќРµС‚ РґР°РЅРЅС‹С… Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ
 </div>
 <?php endif; ?>
 

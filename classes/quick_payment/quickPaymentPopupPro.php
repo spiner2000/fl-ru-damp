@@ -8,20 +8,20 @@ class quickPaymentPopupPro extends quickExtPaymentPopup
     const TPL_BUY_POPUP_DEFAULT_LAYOUT  = 'buy_ext_popup_pro_layout.tpl.php';
     
     
-    const TXT_FRL_TITLE = "Покупка аккаунта %s фрилансера";
+    const TXT_FRL_TITLE = "РџРѕРєСѓРїРєР° Р°РєРєР°СѓРЅС‚Р° %s С„СЂРёР»Р°РЅСЃРµСЂР°";
     const TXT_FRL_SUBTITLE = '
-        неограниченные отклики на проекты, доступ
-        к премиум проектам и повышение рейтинга
+        РЅРµРѕРіСЂР°РЅРёС‡РµРЅРЅС‹Рµ РѕС‚РєР»РёРєРё РЅР° РїСЂРѕРµРєС‚С‹, РґРѕСЃС‚СѓРї
+        Рє РїСЂРµРјРёСѓРј РїСЂРѕРµРєС‚Р°Рј Рё РїРѕРІС‹С€РµРЅРёРµ СЂРµР№С‚РёРЅРіР°
     ';
     
-    const TXT_EMP_TITLE = "Покупка аккаунта %s работодателя";
+    const TXT_EMP_TITLE = "РџРѕРєСѓРїРєР° Р°РєРєР°СѓРЅС‚Р° %s СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ";
     const TXT_EMP_SUBTITLE = '
-        доступ к контактам фрилансеров <br/>
-        и скидки до 50% на дополнительные услуги';
+        РґРѕСЃС‚СѓРї Рє РєРѕРЅС‚Р°РєС‚Р°Рј С„СЂРёР»Р°РЅСЃРµСЂРѕРІ <br/>
+        Рё СЃРєРёРґРєРё РґРѕ 50% РЅР° РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СѓСЃР»СѓРіРё';
     
     
-    const TXT_DTITLE = 'PRO аккаунт на %s';
-    const TXT_DTITLE_SUFFIX = ' <span class="%s">+%s экономии</span>,';
+    const TXT_DTITLE = 'PRO Р°РєРєР°СѓРЅС‚ РЅР° %s';
+    const TXT_DTITLE_SUFFIX = ' <span class="%s">+%s СЌРєРѕРЅРѕРјРёРё</span>,';
 
     
     public function initJS() 
@@ -81,14 +81,14 @@ class quickPaymentPopupPro extends quickExtPaymentPopup
         
         
 
-        $this->addWaitMessageForAll(/* только индикатор */);
+        $this->addWaitMessageForAll(/* С‚РѕР»СЊРєРѕ РёРЅРґРёРєР°С‚РѕСЂ */);
         $this->setContent($form->render());
         
         parent::init($options);
         
         $this->options['payments'][self::PAYMENT_TYPE_PLATIPOTOM]['content_after'] = sprintf(
             $this->options['payments'][self::PAYMENT_TYPE_PLATIPOTOM]['content_after'],
-            'аккаунт PRO'
+            'Р°РєРєР°СѓРЅС‚ PRO'
         );        
     }
     

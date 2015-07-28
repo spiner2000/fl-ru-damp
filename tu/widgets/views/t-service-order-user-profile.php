@@ -20,12 +20,12 @@ global $session;
                     </div>
                     <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_nowrap b-layout__txt_lineheight_1">
                         <?php if($oplinks){ ?>
-                        Отзывы: 
+                        РћС‚Р·С‹РІС‹: 
                         <?php echo $oplinks['p'] ?>
                         <?php echo $oplinks['n'] ?>
                         <?php echo $oplinks['m'] ?>
                         <?php }else{ ?>
-                        Отзывов пока нет
+                        РћС‚Р·С‹РІРѕРІ РїРѕРєР° РЅРµС‚
                         <?php } ?>
                     </div>
                     <div class="b-layout__txt b-layout__txt_nowrap b-layout__txt_lineheight_1">

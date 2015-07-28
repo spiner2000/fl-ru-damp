@@ -7,7 +7,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
 
 
 /**
- * Удаление файла счета пользователя
+ * РЈРґР°Р»РµРЅРёРµ С„Р°Р№Р»Р° СЃС‡РµС‚Р° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
  * 
  * @param type $invoice_id
  * @return \xajaxResponse
@@ -102,12 +102,12 @@ function ShowBillText($bill_id){
     
     $res      = get_object_vars($user);
     if((int)$res['uid'] <= 0) {
-	   $objResponse->script("billing.tipView({id:'login'}, 'Нет такого пользователя');");
+	   $objResponse->script("billing.tipView({id:'login'}, 'РќРµС‚ С‚Р°РєРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ');");
        return $objResponse;
 	}
     
     if((int)$res['uid'] == $_SESSION['uid']) {
-       $objResponse->script("billing.tipView({id:'login'}, 'Вы не можете перевести деньги самому себе');");
+       $objResponse->script("billing.tipView({id:'login'}, 'Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ РїРµСЂРµРІРµСЃС‚Рё РґРµРЅСЊРіРё СЃР°РјРѕРјСѓ СЃРµР±Рµ');");
        return $objResponse;
     }
     $sbr_info = sbr_meta::getUserInfo($res['uid']);
@@ -134,9 +134,9 @@ function CheckUserType($login, $alert=false){
 	$role = $check_user->GetRole($login, $error);
     
 	
-	// если нет role то и пользователя нет
+	// РµСЃР»Рё РЅРµС‚ role С‚Рѕ Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅРµС‚
 	if($role == "") {
-	   $objResponse->script("billing.tipView({id:'login'}, 'Нет такого пользователя');"); 
+	   $objResponse->script("billing.tipView({id:'login'}, 'РќРµС‚ С‚Р°РєРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ');"); 
 
 	   return $objResponse;   
 	}
@@ -154,7 +154,7 @@ function CheckUserType($login, $alert=false){
 	
 	if($alert) {
 	    if($user_type == 'emp') {
-	       $objResponse->script("billing.tipView({id:'login'}, 'Пользователь не является фрилансером');");
+	       $objResponse->script("billing.tipView({id:'login'}, 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ СЏРІР»СЏРµС‚СЃСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРј');");
 	    }
 	}
         $objResponse->script('monthCheck($("month"));');
@@ -176,7 +176,7 @@ function changeCalendarMonth($month, $year) {
 		$day = -1;
 	}
 	
-	$month_name = array(1=>"Январь", 2=>"Февраль", 3=>"Март", 4=>"Апрель", 5=>"Май", 6=>"Июнь", 7=>"Июль", 8=>"Август", 9=>"Сентябрь", 10=>"Октябрь", 11=>"Ноябрь", 12=>"Декабрь");
+	$month_name = array(1=>"РЇРЅРІР°СЂСЊ", 2=>"Р¤РµРІСЂР°Р»СЊ", 3=>"РњР°СЂС‚", 4=>"РђРїСЂРµР»СЊ", 5=>"РњР°Р№", 6=>"РСЋРЅСЊ", 7=>"РСЋР»СЊ", 8=>"РђРІРіСѓСЃС‚", 9=>"РЎРµРЅС‚СЏР±СЂСЊ", 10=>"РћРєС‚СЏР±СЂСЊ", 11=>"РќРѕСЏР±СЂСЊ", 12=>"Р”РµРєР°Р±СЂСЊ");
 	$name_page = 'bill';
 	$monthDay = date('t', mktime(0,0,0,$month, 1, $year));
 	$xajax = true;
@@ -205,7 +205,7 @@ function BlockOperation($opid){
     $objResponse = new xajaxResponse();
     $acc = new account();
     $acc->Blocked((int)$_SESSION['uid'], $opid);
-    $objResponse->assign("lock_$opid", "innerHTML", 'Разблокировать');
+    $objResponse->assign("lock_$opid", "innerHTML", 'Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ');
     $objResponse->script("$('lock_$opid').setAttribute('onclick','xajax_UnBlockOperation($opid); return false;');");
     return $objResponse;
 }
@@ -218,7 +218,7 @@ function UnBlockOperation($opid){
     $objResponse = new xajaxResponse();
     $acc = new account();
     $acc->unBlocked((int)$_SESSION['uid'], $opid);
-    $objResponse->assign("lock_$opid", "innerHTML", 'Заблокировать');
+    $objResponse->assign("lock_$opid", "innerHTML", 'Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ');
     $objResponse->script("$('lock_$opid').setAttribute('onclick','xajax_BlockOperation($opid); return false;');");
     return $objResponse;
 }
@@ -242,7 +242,7 @@ function PreparePaymentOD($order_id, $amount) {
     $url = $account->getRedirectUrl($order_id, $amount);
     
     if (!$url) {
-        $objResponse->call("checkFieldsCallback", null, 'Ошибка обработки запроса.');
+        $objResponse->call("checkFieldsCallback", null, 'РћС€РёР±РєР° РѕР±СЂР°Р±РѕС‚РєРё Р·Р°РїСЂРѕСЃР°.');
         return $objResponse;
     }
     
@@ -267,7 +267,7 @@ function addService($service) {
     if( $billing->create($service['opcode'], $service['auto'])) {
         $objResponse->call('forwardList');
     } else {
-        $objResponse->call('alert', 'Возникла ошибка при добавлении услуги.');
+        $objResponse->call('alert', 'Р’РѕР·РЅРёРєР»Р° РѕС€РёР±РєР° РїСЂРё РґРѕР±Р°РІР»РµРЅРёРё СѓСЃР»СѓРіРё.');
     }
     
     return $objResponse;
@@ -288,10 +288,10 @@ function updateOrder($service) {
     $info    = $billing->findOrders($DB->parse("AND id = ?i", $service['order_id']));
     $info    = !empty($info) ? current($info) : null;
     $options = $billing->prepareOperationCode($service['opcode']);
-    // @todo плохая логика вынести отсюда, внутрь класса
+    // @todo РїР»РѕС…Р°СЏ Р»РѕРіРёРєР° РІС‹РЅРµСЃС‚Рё РѕС‚СЃСЋРґР°, РІРЅСѓС‚СЂСЊ РєР»Р°СЃСЃР°
     if($info['option'] == 'top' && in_array($info['op_code'], array(53, 86)) ) {
         $options['ammount']  = is_pro() ? 750 : 1500;
-        $options['comment'] .= 'закрепление наверху на '.$service['count'].' '.  getTermination($service['count'], array(0 => 'день', 1 => 'дня', 2=> 'дней'));
+        $options['comment'] .= 'Р·Р°РєСЂРµРїР»РµРЅРёРµ РЅР°РІРµСЂС…Сѓ РЅР° '.$service['count'].' '.  getTermination($service['count'], array(0 => 'РґРµРЅСЊ', 1 => 'РґРЅСЏ', 2=> 'РґРЅРµР№'));
         if ($billing->pro_exists_in_list_service) {
             $options['pro_ammount']  = 750;
         }
@@ -350,7 +350,7 @@ function removeOrder($service) {
             $objResponse->script("$$('div[data-name={$billing->eventRemove['service']}_{$id}]').dispose();");
         }
     }
-//    if ( in_array($service["opcode"], billing::$pro_op_codes) && is_emp()) {//#0024779 - пересчитываем сумму заказа, когда пользователь удаляет pro
+//    if ( in_array($service["opcode"], billing::$pro_op_codes) && is_emp()) {//#0024779 - РїРµСЂРµСЃС‡РёС‚С‹РІР°РµРј СЃСѓРјРјСѓ Р·Р°РєР°Р·Р°, РєРѕРіРґР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓРґР°Р»СЏРµС‚ pro
 //        $billing->getOrders();
 //        $a = $billing->list_service;
 //        if ( !is_array($a) ) {
@@ -374,8 +374,8 @@ function updateAutoProlong($service) {
     }
     $billing = new billing($uid);
 
-    // Если нет активного кошелька и мы включаем автопродление показываем попап с привязкой
-    // при этом само автопродление включается
+    // Р•СЃР»Рё РЅРµС‚ Р°РєС‚РёРІРЅРѕРіРѕ РєРѕС€РµР»СЊРєР° Рё РјС‹ РІРєР»СЋС‡Р°РµРј Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёРµ РїРѕРєР°Р·С‹РІР°РµРј РїРѕРїР°Рї СЃ РїСЂРёРІСЏР·РєРѕР№
+    // РїСЂРё СЌС‚РѕРј СЃР°РјРѕ Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёРµ РІРєР»СЋС‡Р°РµС‚СЃСЏ
 //    if( !WalletTypes::isWalletActive($uid)  ) {
 //        if($service['auto'] > 0) {
 //            $objResponse->call("toggleWalletPopup");
@@ -414,7 +414,7 @@ function updateProAuto($type) {
     }
     $billing = new billing($uid);
 
-    // Изменяем авто продление PRO, если нужно
+    // РР·РјРµРЅСЏРµРј Р°РІС‚Рѕ РїСЂРѕРґР»РµРЅРёРµ PRO, РµСЃР»Рё РЅСѓР¶РЅРѕ
     if ($type == 'on') {
         if( !WalletTypes::isWalletActive($uid)  ) {
             $objResponse->call("toggleWalletPopup");
@@ -477,7 +477,7 @@ function cancelReservedOrders($id) {
     $bill = new billing($uid);
     
     if($bill->checkStatusReserve($id) != billing::RESERVE_STATUS) {
-        $objResponse->call('alert', 'Данный список услуг уже обработан.');
+        $objResponse->call('alert', 'Р”Р°РЅРЅС‹Р№ СЃРїРёСЃРѕРє СѓСЃР»СѓРі СѓР¶Рµ РѕР±СЂР°Р±РѕС‚Р°РЅ.');
     } else {
         $success = $bill->setReserveStatus($id, billing::RESERVE_CANCEL_STATUS);
         
@@ -506,7 +506,7 @@ function ShowReserveOrders($id) {
     
     if ($info){
         $info = implode(", ", $info);
-        $info .= ' &#160;&#160;&#160;<a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_80 b-layout__link_inline-block b-layout__link_lineheight_1" onclick="xajax_ShowReserveText('.$id.');" href="javascript:void(0);">Скрыть</a>';
+        $info .= ' &#160;&#160;&#160;<a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_80 b-layout__link_inline-block b-layout__link_lineheight_1" onclick="xajax_ShowReserveText('.$id.');" href="javascript:void(0);">РЎРєСЂС‹С‚СЊ</a>';
 		$objResponse->assign("res".$id,"innerHTML", $info);
 	}
     
@@ -526,7 +526,7 @@ function ShowReserveText($reserve_id){
                 WHERE reserve_id = ?i
                 GROUP BY reserve_id
             )
-            SELECT 'Список заказов №'|| id ||' на сумму ' || round(bq.ammount, 2) || ' руб' as op_name, id, " . billing::RESERVE_OP_CODE . " as op_code
+            SELECT 'РЎРїРёСЃРѕРє Р·Р°РєР°Р·РѕРІ в„–'|| id ||' РЅР° СЃСѓРјРјСѓ ' || round(bq.ammount, 2) || ' СЂСѓР±' as op_name, id, " . billing::RESERVE_OP_CODE . " as op_code
             FROM bill_reserve
             INNER JOIN bill_queue_ammount as bq ON bq.reserve_id = bill_reserve.id
             WHERE id = ?i AND uid = ?i";
@@ -554,8 +554,8 @@ function walletActivate($type, $path = null) {
     }
 
     $wallet = WalletTypes::initWalletByType($uid, $type);
-    if($wallet->getAccessToken() != '') { // Значит можно просто активировать услугу, но сначало нужно проверить работает ли токен
-        // Токен рабочий активируем иначе посылаем пользователя активироваться
+    if($wallet->getAccessToken() != '') { // Р—РЅР°С‡РёС‚ РјРѕР¶РЅРѕ РїСЂРѕСЃС‚Рѕ Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊ СѓСЃР»СѓРіСѓ, РЅРѕ СЃРЅР°С‡Р°Р»Рѕ РЅСѓР¶РЅРѕ РїСЂРѕРІРµСЂРёС‚СЊ СЂР°Р±РѕС‚Р°РµС‚ Р»Рё С‚РѕРєРµРЅ
+        // РўРѕРєРµРЅ СЂР°Р±РѕС‡РёР№ Р°РєС‚РёРІРёСЂСѓРµРј РёРЅР°С‡Рµ РїРѕСЃС‹Р»Р°РµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊСЃСЏ
         if($wallet->api->checkToken()) {
             if( $wallet->setActiveWallet($type, $uid) ) {
 
@@ -601,7 +601,7 @@ function walletActivate($type, $path = null) {
         ");
     }
 
-    // Только методом GET
+    // РўРѕР»СЊРєРѕ РјРµС‚РѕРґРѕРј GET
     if($type == WalletTypes::WALLET_ALPHA) {
         $objResponse->script("$('walletForm').set('method', 'GET')");
     }
@@ -646,7 +646,7 @@ function walletRevoke($type) {
         $objResponse->script("$$('.walletRightBlock').set('html', '{$right}');");
 
     } else {
-        $objResponse->call("alert", "Ошибка удаления кошелька");
+        $objResponse->call("alert", "РћС€РёР±РєР° СѓРґР°Р»РµРЅРёСЏ РєРѕС€РµР»СЊРєР°");
     }
 
     return $objResponse;

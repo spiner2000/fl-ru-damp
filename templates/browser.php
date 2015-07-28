@@ -14,7 +14,7 @@
 <div class="b-fon b-fon_width_full b-fon_padbot_10">
 	<span class="b-fon__bord-attent"></span>
     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffe679">
-        <div class="b-fon__txt b-fon__txt_center"><span class="b-fon__txt b-fon__txt_bold">Ваш браузер устарел.</span> Старый браузер —&nbsp;угроза безопасности вашего компьютера. <a class="b-fon__link b-fon__link_relative b-fon__link_zindex_1" href="/browser_outdated/">Узнать подробнее о проблеме</a> </div>
+        <div class="b-fon__txt b-fon__txt_center"><span class="b-fon__txt b-fon__txt_bold">Р’Р°С€ Р±СЂР°СѓР·РµСЂ СѓСЃС‚Р°СЂРµР».</span> РЎС‚Р°СЂС‹Р№ Р±СЂР°СѓР·РµСЂ вЂ”&nbsp;СѓРіСЂРѕР·Р° Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё РІР°С€РµРіРѕ РєРѕРјРїСЊСЋС‚РµСЂР°. <a class="b-fon__link b-fon__link_relative b-fon__link_zindex_1" href="/browser_outdated/">РЈР·РЅР°С‚СЊ РїРѕРґСЂРѕР±РЅРµРµ Рѕ РїСЂРѕР±Р»РµРјРµ</a> </div>
 	</div>
 	<span class="b-fon__bord-attent"></span>
 </div>

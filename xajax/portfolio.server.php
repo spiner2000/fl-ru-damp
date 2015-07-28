@@ -10,7 +10,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/uploader/uploader.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/seo/SeoTags.php");
 
 /**
- * Добавление работы в избранное.
+ * Р”РѕР±Р°РІР»РµРЅРёРµ СЂР°Р±РѕС‚С‹ РІ РёР·Р±СЂР°РЅРЅРѕРµ.
  *
  * @param integer $prj_id
  * @param integer $prof_id
@@ -44,7 +44,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/seo/SeoTags.php");
 //}
 
 /**
- * Переключает и запоминает в сессии статус фильтра работ.
+ * РџРµСЂРµРєР»СЋС‡Р°РµС‚ Рё Р·Р°РїРѕРјРёРЅР°РµС‚ РІ СЃРµСЃСЃРёРё СЃС‚Р°С‚СѓСЃ С„РёР»СЊС‚СЂР° СЂР°Р±РѕС‚.
  *
  * @return object xajaxResponse
  */
@@ -142,13 +142,13 @@ function editProfession($uid = '', $params = '') {
             }
         } else if($params['position'] != $pinfo['ordering']) {
             if(!is_pro()) {
-                // Если пользователь не ПРо у него скрыты два раздела которые существуют они стоят на первых позициях всегда, и поэтому нельзя ставить разделу 1 позицию
-                // позицию надо ставить исходя из позиций этих скрытых разделов.
+                // Р•СЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РџР Рѕ Сѓ РЅРµРіРѕ СЃРєСЂС‹С‚С‹ РґРІР° СЂР°Р·РґРµР»Р° РєРѕС‚РѕСЂС‹Рµ СЃСѓС‰РµСЃС‚РІСѓСЋС‚ РѕРЅРё СЃС‚РѕСЏС‚ РЅР° РїРµСЂРІС‹С… РїРѕР·РёС†РёСЏС… РІСЃРµРіРґР°, Рё РїРѕСЌС‚РѕРјСѓ РЅРµР»СЊР·СЏ СЃС‚Р°РІРёС‚СЊ СЂР°Р·РґРµР»Сѓ 1 РїРѕР·РёС†РёСЋ
+                // РїРѕР·РёС†РёСЋ РЅР°РґРѕ СЃС‚Р°РІРёС‚СЊ РёСЃС…РѕРґСЏ РёР· РїРѕР·РёС†РёР№ СЌС‚РёС… СЃРєСЂС‹С‚С‹С… СЂР°Р·РґРµР»РѕРІ.
                 $fpos = $profession->GetProfDesc($uid, professions::BEST_PROF_ID);
                 $spos = $profession->GetProfDesc($uid, professions::CLIENTS_PROF_ID);
-                if($fpos['ordering'] == $spos['ordering']) { // Оба на первой позиции
+                if($fpos['ordering'] == $spos['ordering']) { // РћР±Р° РЅР° РїРµСЂРІРѕР№ РїРѕР·РёС†РёРё
                     $first = 2;
-                } else { // Позиции корректны
+                } else { // РџРѕР·РёС†РёРё РєРѕСЂСЂРµРєС‚РЅС‹
                     $first = 3;
                 }
             }
@@ -164,7 +164,7 @@ function editProfession($uid = '', $params = '') {
         ob_end_clean();
         
         if( ($pinfo['show_preview'] == 't' && $params['on_preview_default'] == '0') || 
-            ($pinfo['show_preview'] == 'f' && $params['on_preview_default'] == '1')   ) { // Меняем вид работ
+            ($pinfo['show_preview'] == 'f' && $params['on_preview_default'] == '1')   ) { // РњРµРЅСЏРµРј РІРёРґ СЂР°Р±РѕС‚
             $portfolio = new portfolio();
             $works  = $portfolio->GetPortf($user->uid, $prof_id, true);
             
@@ -214,7 +214,7 @@ function removeProfession($uid, $params) {
     }
     
     $category = current( portfolio::getPortfolioCategory($prof_id) );
-    if($category['is_work'] > 0) { // С работами раздел удалить нельзя!
+    if($category['is_work'] > 0) { // РЎ СЂР°Р±РѕС‚Р°РјРё СЂР°Р·РґРµР» СѓРґР°Р»РёС‚СЊ РЅРµР»СЊР·СЏ!
         return $objResponse;
     }
     
@@ -238,7 +238,7 @@ function openEditWork($uid, $params) {
         return $objResponse;
     }
     $wmode_margin = 80;
-    if($work_id == 0) { // Значит новую работу надо
+    if($work_id == 0) { // Р—РЅР°С‡РёС‚ РЅРѕРІСѓСЋ СЂР°Р±РѕС‚Сѓ РЅР°РґРѕ
         $is_edit = false;
         $work    = array();
         $work['prof_id'] = $prof_id;
@@ -257,8 +257,8 @@ function openEditWork($uid, $params) {
     $sHtml = ob_get_contents();
     ob_end_clean();
     
-    $btn_file__portf  = $work['pict'] ? 'Заменить файл' : 'Загрузить файл';
-    $btn_file_preview = $work['prev_pict'] ? 'Заменить картинку' : 'Загрузить картинку';
+    $btn_file__portf  = $work['pict'] ? 'Р—Р°РјРµРЅРёС‚СЊ С„Р°Р№Р»' : 'Р—Р°РіСЂСѓР·РёС‚СЊ С„Р°Р№Р»';
+    $btn_file_preview = $work['prev_pict'] ? 'Р—Р°РјРµРЅРёС‚СЊ РєР°СЂС‚РёРЅРєСѓ' : 'Р—Р°РіСЂСѓР·РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ';
     
     $setting_uploader = "{ is_replace: true, text: { uploadButton: '{$btn_file__portf}'}, validation: { maxFileCount: 1 } }";
     $setting_uploader_preview = "{ is_replace: true, text: { uploadButton: '{$btn_file_preview}'}, validation: { maxFileCount: 1, restrictedExtensions: [], allowedExtensions: ['gif', 'jpg', 'jpeg', 'png'] }, umask: '" . uploader::umask('pf_preview') . "' }";
@@ -299,7 +299,7 @@ function editWork($uid, $params) {
     $params = uploader::encodeCharset($params, array('utf-8', 'cp1251'));
     $edited = portfolio::editWork($uid, $params);
     
-    if(is_array($edited)) { // Вернуло ошибки
+    if(is_array($edited)) { // Р’РµСЂРЅСѓР»Рѕ РѕС€РёР±РєРё
         $errors = json_encode( array_map("win2utf", $edited) );
         $objResponse->script("portfolio.viewError({$errors}, 'portfolio_work_edit')");
         
@@ -434,7 +434,7 @@ function updatePreview($file_id, $resource) {
     } else {
         $CFile = uploader::remoteCopy($CFile->id, $CFile->table, $CFile->path, false, 'sm_f_');
     }
-    uploader::sclear($resource); // Чистим заменяем
+    uploader::sclear($resource); // Р§РёСЃС‚РёРј Р·Р°РјРµРЅСЏРµРј
     uploader::screateFile($CFile, $resource);
     $callback = uploader::getCallback(uploader::sgetTypeUpload($resource));
     $template = uploader::getTemplate('uploader.file', 'portfolio/');
@@ -527,7 +527,7 @@ function removeWork($uid, $params) {
         }
         $objResponse->script("$('portfolio_work_edit').getParent().dispose()");
     } else {
-        $objResponse->call('alert', 'Ошибка, работу удалить не удалось.');
+        $objResponse->call('alert', 'РћС€РёР±РєР°, СЂР°Р±РѕС‚Сѓ СѓРґР°Р»РёС‚СЊ РЅРµ СѓРґР°Р»РѕСЃСЊ.');
     }
     
     return $objResponse;

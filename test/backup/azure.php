@@ -9,7 +9,7 @@ $connectionString = "DefaultEndpointsProtocol=https;AccountName=portalvhdscs9w1r
 
 $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
 
-// 1. Отображение списка BLOB-объектов.
+// 1. РћС‚РѕР±СЂР°Р¶РµРЅРёРµ СЃРїРёСЃРєР° BLOB-РѕР±СЉРµРєС‚РѕРІ.
 try {
     
     $listContainers = $blobRestProxy->listContainers();
@@ -24,7 +24,7 @@ try {
             $blobs = $blob_list->getBlobs();
             
             if($blobs) {
-                echo "<h4>Контейнер: {$container->getName()}</h4>";
+                echo "<h4>РљРѕРЅС‚РµР№РЅРµСЂ: {$container->getName()}</h4>";
                 foreach($blobs as $blob){
                     echo "<a href=\"{$blob->getUrl()}\">{$blob->getName()}</a><br/>";
                 }
@@ -36,7 +36,7 @@ try {
     
     
     /*
-    echo '<h2>Загруженные</h2>';
+    echo '<h2>Р—Р°РіСЂСѓР¶РµРЅРЅС‹Рµ</h2>';
     
     $blob_list = $blobRestProxy->listBlobs("users");
     $blobs = $blob_list->getBlobs();
@@ -47,7 +47,7 @@ try {
     }
     
     
-    echo '<h2>Удаленные</h2>';
+    echo '<h2>РЈРґР°Р»РµРЅРЅС‹Рµ</h2>';
     
     $blob_list = $blobRestProxy->listBlobs("deleted");
     $blobs = $blob_list->getBlobs();
@@ -61,15 +61,15 @@ try {
     
 }
 catch (ServiceException $e){
-    // Обработка исключений на основе кодов ошибок и сообщений об ошибках.
-    // // Коды ошибок и сообщения об ошибках приведены здесь: 
+    // РћР±СЂР°Р±РѕС‚РєР° РёСЃРєР»СЋС‡РµРЅРёР№ РЅР° РѕСЃРЅРѕРІРµ РєРѕРґРѕРІ РѕС€РёР±РѕРє Рё СЃРѕРѕР±С‰РµРЅРёР№ РѕР± РѕС€РёР±РєР°С….
+    // // РљРѕРґС‹ РѕС€РёР±РѕРє Рё СЃРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕС€РёР±РєР°С… РїСЂРёРІРµРґРµРЅС‹ Р·РґРµСЃСЊ: 
     // http://msdn.microsoft.com/ru-ru/library/windowsazure/dd179439.aspx
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
 }
 
-// 2. Отправка BLOB-объекта в контейнер
+// 2. РћС‚РїСЂР°РІРєР° BLOB-РѕР±СЉРµРєС‚Р° РІ РєРѕРЅС‚РµР№РЅРµСЂ
 /*
 $content = fopen("images/logo_50x50.png", "r");
 $blob_name = "images/logo_50x50.png";
@@ -78,12 +78,12 @@ $options = new CreateBlobOptions();
 $options->setBlobContentType("image/png");
 
 try {
-    //Передача blob-объекта
+    //РџРµСЂРµРґР°С‡Р° blob-РѕР±СЉРµРєС‚Р°
     $blob = $blobRestProxy->createBlockBlob("users", $blob_name, $content, $options);
 }
 catch(ServiceException $e){
-    // Обработка исключений на основе кодов ошибок и сообщений об ошибках.
-    // // Коды ошибок и сообщения об ошибках приведены здесь: 
+    // РћР±СЂР°Р±РѕС‚РєР° РёСЃРєР»СЋС‡РµРЅРёР№ РЅР° РѕСЃРЅРѕРІРµ РєРѕРґРѕРІ РѕС€РёР±РѕРє Рё СЃРѕРѕР±С‰РµРЅРёР№ РѕР± РѕС€РёР±РєР°С….
+    // // РљРѕРґС‹ РѕС€РёР±РѕРє Рё СЃРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕС€РёР±РєР°С… РїСЂРёРІРµРґРµРЅС‹ Р·РґРµСЃСЊ: 
     // http://msdn.microsoft.com/ru-ru/library/windowsazure/dd179439.aspx
     $code = $e->getCode();
     $error_message = $e->getMessage();

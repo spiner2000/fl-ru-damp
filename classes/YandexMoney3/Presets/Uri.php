@@ -5,7 +5,7 @@ namespace YandexMoney3\Presets;
 
 class Uri
 {
-    //@todo: у ЯД тест работает только припервом подключении
+    //@todo: Сѓ РЇР” С‚РµСЃС‚ СЂР°Р±РѕС‚Р°РµС‚ С‚РѕР»СЊРєРѕ РїСЂРёРїРµСЂРІРѕРј РїРѕРґРєР»СЋС‡РµРЅРёРё
     //const API_TEST = 'https://bo-demo02.yamoney.ru:9094/webservice/deposition/api/%s';
     const API      = 'https://calypso.yamoney.ru:9094/webservice/deposition/api/%s';
     

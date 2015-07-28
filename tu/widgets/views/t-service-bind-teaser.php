@@ -10,10 +10,10 @@
             <?php endif; ?>
             <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_6db335"><?=$title?></div>
             <div class="b-layout__txt b-layout__txt_bold b-layout__txt_fontsize_20 b-layout__txt_color_6db335">
-                за <?=view_cost_format($price, true, false, false)?>
+                Р·Р° <?=view_cost_format($price, true, false, false)?>
             </div>
             <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_20 b-layout__txt_color_6db335">
-                на 7 дней до <?=$date?>
+                РЅР° 7 РґРЅРµР№ РґРѕ <?=$date?>
             </div>
             <a class="b-button b-button_flat b-button_flat_green"<?php if (isset($popup_id)): ?>
                    data-popup="<?=$popup_id?>"

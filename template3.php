@@ -1,5 +1,5 @@
 <?php
-// Основной шаблон сайта
+// РћСЃРЅРѕРІРЅРѕР№ С€Р°Р±Р»РѕРЅ СЃР°Р№С‚Р°
 
 if (!defined("IN_STDF")){
     header("HTTP/1.1 403 Forbidden");
@@ -7,28 +7,28 @@ if (!defined("IN_STDF")){
 	die();
 }
 if (!$page_title) {
-    $page_title = "Удаленная работа (фри-ланс) на FL.ru";
+    $page_title = "РЈРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° (С„СЂРё-Р»Р°РЅСЃ) РЅР° FL.ru";
 }
 if (!$page_keyw) {
-    $page_keyw = "работа, ищу работу, поиск работы, удаленная работа, фриланс, фри-ланс";
+    $page_keyw = "СЂР°Р±РѕС‚Р°, РёС‰Сѓ СЂР°Р±РѕС‚Сѓ, РїРѕРёСЃРє СЂР°Р±РѕС‚С‹, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°, С„СЂРёР»Р°РЅСЃ, С„СЂРё-Р»Р°РЅСЃ";
 }
 if (!$page_descr) {
-    $page_descr = "FL.ru это профессиональный ресурс, предназначенный для поиска работы или исполнителя (фрилансера) на удаленную работу (фриланс).";
+    $page_descr = "FL.ru СЌС‚Рѕ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ СЂРµСЃСѓСЂСЃ, РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅРЅС‹Р№ РґР»СЏ РїРѕРёСЃРєР° СЂР°Р±РѕС‚С‹ РёР»Рё РёСЃРїРѕР»РЅРёС‚РµР»СЏ (С„СЂРёР»Р°РЅСЃРµСЂР°) РЅР° СѓРґР°Р»РµРЅРЅСѓСЋ СЂР°Р±РѕС‚Сѓ (С„СЂРёР»Р°РЅСЃ).";
 }
 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/static_compress.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/user_phone.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/Helpers/SubBarNotificationHelper.php");
 
-$stc = new static_compress(); // общий.
-$stc2 = new static_compress(); // для подключаемых модулей.
+$stc = new static_compress(); // РѕР±С‰РёР№.
+$stc2 = new static_compress(); // РґР»СЏ РїРѕРґРєР»СЋС‡Р°РµРјС‹С… РјРѕРґСѓР»РµР№.
 
-$stc_js = new static_compress(); // JS-файлы
-$stc2_js = new static_compress(); // JS-файлы для подключаемых модулей
+$stc_js = new static_compress(); // JS-С„Р°Р№Р»С‹
+$stc2_js = new static_compress(); // JS-С„Р°Р№Р»С‹ РґР»СЏ РїРѕРґРєР»СЋС‡Р°РµРјС‹С… РјРѕРґСѓР»РµР№
 
 if (!isset($promo)) $promo = true;
 
-//Глобальные переменные которые могут несуществовать и нужно это проверить
+//Р“Р»РѕР±Р°Р»СЊРЅС‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ РЅРµСЃСѓС‰РµСЃС‚РІРѕРІР°С‚СЊ Рё РЅСѓР¶РЅРѕ СЌС‚Рѕ РїСЂРѕРІРµСЂРёС‚СЊ
 $main_page = isset($main_page)?$main_page:false;
 $freelancers_catalog = isset($freelancers_catalog)?$freelancers_catalog:false;
 
@@ -59,7 +59,7 @@ $_user->GetUserByUID(get_uid(false));
         <?php if(!empty($FBShare)) { ?>
         <?= printMetaFBShare($FBShare); ?>
         <?php }//if?>
-        <?php if (isset($canonical_url) && $canonical_url): // канонический URL для SEO ?>
+        <?php if (isset($canonical_url) && $canonical_url): // РєР°РЅРѕРЅРёС‡РµСЃРєРёР№ URL РґР»СЏ SEO ?>
             <link rel="canonical" href="<?=$canonical_url?>" />
         <?php endif; ?>
         <title><?= $page_title ?></title><?php $quick_chat_on = intval($_SESSION['chat']);?>
@@ -114,9 +114,9 @@ $_user->GetUserByUID(get_uid(false));
         <? if($js_file_utf8) { foreach ((array)$js_file_utf8 as $js) { $stc2_js->Add( ($js[0]=='/' ? '' : '/scripts/') . $js, true); } } ?>
             
         <?
-           //Новая шапка
-           //уже со встроенной в стилях адаптивностью
-           //которую получается нельзя отключить
+           //РќРѕРІР°СЏ С€Р°РїРєР°
+           //СѓР¶Рµ СЃРѕ РІСЃС‚СЂРѕРµРЅРЅРѕР№ РІ СЃС‚РёР»СЏС… Р°РґР°РїС‚РёРІРЅРѕСЃС‚СЊСЋ
+           //РєРѕС‚РѕСЂСѓСЋ РїРѕР»СѓС‡Р°РµС‚СЃСЏ РЅРµР»СЊР·СЏ РѕС‚РєР»СЋС‡РёС‚СЊ
            $stc_js->Add("/scripts/jquery.js");
            $stc_js->Add("/scripts/bar.js");
            $stc_js->Add("/scripts/bar_ext.js");
@@ -124,14 +124,14 @@ $_user->GetUserByUID(get_uid(false));
 
         <?php $stc_js->Add("/scripts/ga_actions.js"); ?>
         <?php    
-            //Парсим и добавляем css
+            //РџР°СЂСЃРёРј Рё РґРѕР±Р°РІР»СЏРµРј css
             parse_additional_header($additional_header, $stc2, 'css');
-            //Парсим и добавляем js + выводим другие заголовки
+            //РџР°СЂСЃРёРј Рё РґРѕР±Р°РІР»СЏРµРј js + РІС‹РІРѕРґРёРј РґСЂСѓРіРёРµ Р·Р°РіРѕР»РѕРІРєРё
             echo parse_additional_header($additional_header, $stc2_js, 'js');
         ?>
         <? $stc->addBem(); ?>
         <?php
-           //Адаптивность которую видимо можно выключать
+           //РђРґР°РїС‚РёРІРЅРѕСЃС‚СЊ РєРѕС‚РѕСЂСѓСЋ РІРёРґРёРјРѕ РјРѕР¶РЅРѕ РІС‹РєР»СЋС‡Р°С‚СЊ
            if(@$_COOKIE['full_site_version'] != 1 && 
               !isset($show_full_site_version) && 
               @$_SESSION['pda'] == 1):
@@ -139,8 +139,8 @@ $_user->GetUserByUID(get_uid(false));
                 $stc_js->Add("/scripts/portable.js");
            endif; 
            
-           //@todo: для Локала и Беты принудительно включаем 
-           //адаптивность для всех чтобы было проще проверять верстку
+           //@todo: РґР»СЏ Р›РѕРєР°Р»Р° Рё Р‘РµС‚С‹ РїСЂРёРЅСѓРґРёС‚РµР»СЊРЅРѕ РІРєР»СЋС‡Р°РµРј 
+           //Р°РґР°РїС‚РёРІРЅРѕСЃС‚СЊ РґР»СЏ РІСЃРµС… С‡С‚РѕР±С‹ Р±С‹Р»Рѕ РїСЂРѕС‰Рµ РїСЂРѕРІРµСЂСЏС‚СЊ РІРµСЂСЃС‚РєСѓ
            if (is_local() || is_beta()) {
                $stc->Add("/css/portable.css");
                $stc_js->Add("/scripts/portable.js");
@@ -150,12 +150,12 @@ $_user->GetUserByUID(get_uid(false));
         <? $stc->Send(); ?>
         <? $stc2->Send(); ?>
         
-        <?php if (!defined('JS_BOTTOM')): // Отображаем JS в хедере страниц @TODO: Убрать на всех страницах JS в нижнюю часть ?>            
+        <?php if (!defined('JS_BOTTOM')): // РћС‚РѕР±СЂР°Р¶Р°РµРј JS РІ С…РµРґРµСЂРµ СЃС‚СЂР°РЅРёС† @TODO: РЈР±СЂР°С‚СЊ РЅР° РІСЃРµС… СЃС‚СЂР°РЅРёС†Р°С… JS РІ РЅРёР¶РЅСЋСЋ С‡Р°СЃС‚СЊ ?>            
             <?php $stc_js->Send(); ?>
             <?php $stc2_js->Send(); ?>
 
             <?php
-                // Подключаем код Google Analytics 
+                // РџРѕРґРєР»СЋС‡Р°РµРј РєРѕРґ Google Analytics 
                 include($_SERVER['DOCUMENT_ROOT'].'/templates/include/ga.php'); 
             ?>
         <?php endif ?>
@@ -166,7 +166,7 @@ $_user->GetUserByUID(get_uid(false));
            <?php if(!$main_page) { ?>
            var _SHORT_CAROUSEL = true;           
            <?php } ?>
-           <? // индекс страницы
+           <? // РёРЅРґРµРєСЃ СЃС‚СЂР°РЅРёС†С‹
            if (!isset($g_help_id) && isset($g_page_id)) {
                $page_index = explode('|', $g_page_id);
                if ($page_index[1]) {
@@ -181,7 +181,7 @@ $_user->GetUserByUID(get_uid(false));
         </script>
         
         <? if ($rss_file) { ?>
-        <link rel="alternate" type="application/rss+xml" title="Проекты/Предложения" href="<?= $rss_file ?>" />
+        <link rel="alternate" type="application/rss+xml" title="РџСЂРѕРµРєС‚С‹/РџСЂРµРґР»РѕР¶РµРЅРёСЏ" href="<?= $rss_file ?>" />
         <? } ?>
         <?php
             $freelance = "#^[a-w]*\.?free\-lance\.ru/?.?#";
@@ -189,38 +189,38 @@ $_user->GetUserByUID(get_uid(false));
         ?>
     </head>
     <?
-    // высоты различных блоков
-    define('HEIGHT_PHONE', 190); // высота блка привязки телефона
+    // РІС‹СЃРѕС‚С‹ СЂР°Р·Р»РёС‡РЅС‹С… Р±Р»РѕРєРѕРІ
+    define('HEIGHT_PHONE', 190); // РІС‹СЃРѕС‚Р° Р±Р»РєР° РїСЂРёРІСЏР·РєРё С‚РµР»РµС„РѕРЅР°
     ?>
     <body <?php if (isset($onload)) { ?> onload="<?= $onload ?>"<?php } ?> class="b-page <?= cssClassBody($body_class) ?> <?= BROWSER_NAME;?> <?= $body_additional_class?> <?php if(getOS()=='Macintosh') { ?>mac<?php } ?>">
         <?php 
-        // подарки и переводы
+        // РїРѕРґР°СЂРєРё Рё РїРµСЂРµРІРѕРґС‹
         if ($_SESSION['uid'] && !$no_personal) {
             require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/present.php");
             require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
             $gifts = present::GetLastGiftByUid($_SESSION['uid']);
             $accountCredited = 0; 
             foreach ($gifts as $gift) {
-                if ($gift['op_code'] == 23) { //перевод средств от пользователя
+                if ($gift['op_code'] == 23) { //РїРµСЂРµРІРѕРґ СЃСЂРµРґСЃС‚РІ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
                     $accountCredited = 1;
                 }
-                if ($gift['op_code'] == 38) { //перевод за сделку без риска
+                if ($gift['op_code'] == 38) { //РїРµСЂРµРІРѕРґ Р·Р° СЃРґРµР»РєСѓ Р±РµР· СЂРёСЃРєР°
                     $accountCredited = 1;
                 }
-                if ($gift['op_code'] == 12) { //возврат денег за рассылку и прочие зачисление
+                if ($gift['op_code'] == 12) { //РІРѕР·РІСЂР°С‚ РґРµРЅРµРі Р·Р° СЂР°СЃСЃС‹Р»РєСѓ Рё РїСЂРѕС‡РёРµ Р·Р°С‡РёСЃР»РµРЅРёРµ
                     $accountCredited = 1;
                 }
             }
             if (!$accountCredited) {
                 $accountCredited = account::GetNewMoneyBack($_SESSION['uid'], $lastId, $currentId);
                 if ($accountCredited) {
-                    $accountToolTip = "Возврат средств за рассылку";
+                    $accountToolTip = "Р’РѕР·РІСЂР°С‚ СЃСЂРµРґСЃС‚РІ Р·Р° СЂР°СЃСЃС‹Р»РєСѓ";
                 }
             }
         }
         if (!$no_personal) include (ABS_PATH . "/templates/personal.php") ?>
 <?php
-        // флаг, указывает что сплэш уже определен, чтобы не показывать больше одного сплэша за раз
+        // С„Р»Р°Рі, СѓРєР°Р·С‹РІР°РµС‚ С‡С‚Рѕ СЃРїР»СЌС€ СѓР¶Рµ РѕРїСЂРµРґРµР»РµРЅ, С‡С‚РѕР±С‹ РЅРµ РїРѕРєР°Р·С‹РІР°С‚СЊ Р±РѕР»СЊС€Рµ РѕРґРЅРѕРіРѕ СЃРїР»СЌС€Р° Р·Р° СЂР°Р·
         $splashDefined = false;
         
         $no_phone_block = !(user_phone::getInstance()->checkAllow() && user_phone::getInstance()->_use_header == true);
@@ -238,7 +238,7 @@ $_user->GetUserByUID(get_uid(false));
         }
         
         
-        //Контентая область на всю ширину страницы
+        //РљРѕРЅС‚РµРЅС‚Р°СЏ РѕР±Р»Р°СЃС‚СЊ РЅР° РІСЃСЋ С€РёСЂРёРЅСѓ СЃС‚СЂР°РЅРёС†С‹
         if (isset($full_content)):
 ?>
         <div class="b-page__page b-page__page_padtop_0_r600 b-page__page_padtop_50_r1000 b-page__page_padtop_<?=$padTop-10?>">
@@ -255,7 +255,7 @@ $_user->GetUserByUID(get_uid(false));
         <?php endif; ?>
 <?php            
         else:
-        //Обычная фиксированная контентная область    
+        //РћР±С‹С‡РЅР°СЏ С„РёРєСЃРёСЂРѕРІР°РЅРЅР°СЏ РєРѕРЅС‚РµРЅС‚РЅР°СЏ РѕР±Р»Р°СЃС‚СЊ    
 ?>
         <div class="b-page__wrapper">
             <div class="b-page__inner">
@@ -274,7 +274,7 @@ $_user->GetUserByUID(get_uid(false));
                         
                         $extraMarginTop = 0;
                         
-                        // блок устаревший браузер
+                        // Р±Р»РѕРє СѓСЃС‚Р°СЂРµРІС€РёР№ Р±СЂР°СѓР·РµСЂ
                         if (!isset($_COOKIE['browserCompatWrn']) && !BROWSER_COMPAT && !$browser_outdated_page) {
                             include_once($_SERVER['DOCUMENT_ROOT'].'/templates/browser.php');
                             $extraMarginTop += 51;
@@ -286,7 +286,7 @@ $_user->GetUserByUID(get_uid(false));
                             $extraMarginTop += 60;
                         }
                         
-                        // отступ для основного блока
+                        // РѕС‚СЃС‚СѓРї РґР»СЏ РѕСЃРЅРѕРІРЅРѕРіРѕ Р±Р»РѕРєР°
                         $mainMarginTop = 0;
                     ?>
                     <div class="b-layout b-layout__page" style="margin-top:<?= $mainMarginTop ?>px">
@@ -319,7 +319,7 @@ $_user->GetUserByUID(get_uid(false));
         
         
         
-        <? // этот банер показывается в режиме демонстрации ПРО для НЕПРО
+        <? // СЌС‚РѕС‚ Р±Р°РЅРµСЂ РїРѕРєР°Р·С‹РІР°РµС‚СЃСЏ РІ СЂРµР¶РёРјРµ РґРµРјРѕРЅСЃС‚СЂР°С†РёРё РџР Рћ РґР»СЏ РќР•РџР Рћ
         if ($iWantPro) { ?>
             <div class="b-fix b-fix_bordbot_solid_e7cca5 b-fix_top_30 b-fix_bg_ffebbf b-fix_width_full b-fix_padtb_10">
                 <div class="b-layuot b-layout_center b-layuot_max-width_1280 b-layuot_min-width_1000">
@@ -330,19 +330,19 @@ $_user->GetUserByUID(get_uid(false));
                                 <span title="PRO" class="b-icon b-icon__mpro b-icon__mpro_f"></span>
                             </td>
                             <td class="b-layout__one b-layout__one_valign_middle">
-                                <div class="b-layout__txt b-layout__txt_padleft_10 b-layout__txt_bold">Если бы у вас был<br />PRO-аккаунт, то:</div>
+                                <div class="b-layout__txt b-layout__txt_padleft_10 b-layout__txt_bold">Р•СЃР»Рё Р±С‹ Сѓ РІР°СЃ Р±С‹Р»<br />PRO-Р°РєРєР°СѓРЅС‚, С‚Рѕ:</div>
                             </td>
                             <td class="b-layout__one b-layout__one_valign_middle">
-                                <div class="b-layout__txt b-layout__txt_padleft_15 b-layout__txt_indent_-15">1. Неограниченное количество<br />ответов на проекты.</div>
+                                <div class="b-layout__txt b-layout__txt_padleft_15 b-layout__txt_indent_-15">1. РќРµРѕРіСЂР°РЅРёС‡РµРЅРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ<br />РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚С‹.</div>
                             </td>
                             <td class="b-layout__one b-layout__one_valign_middle">
-                                <div class="b-layout__txt b-layout__txt_padleft_15 b-layout__txt_indent_-15">2. Бесплатная реклама вашего<br />профиля в проектах работодателей.</div>
+                                <div class="b-layout__txt b-layout__txt_padleft_15 b-layout__txt_indent_-15">2. Р‘РµСЃРїР»Р°С‚РЅР°СЏ СЂРµРєР»Р°РјР° РІР°С€РµРіРѕ<br />РїСЂРѕС„РёР»СЏ РІ РїСЂРѕРµРєС‚Р°С… СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№.</div>
                             </td>
                             <td class="b-layout__one b-layout__one_valign_middle">
                                 <a href="/payed/" class="b-button b-button_float_right b-button_round_green">
                                     <span class="b-button__b1">
                                         <span class="b-button__b2">
-                                            <span class="b-button__txt">Купить PRO</span>
+                                            <span class="b-button__txt">РљСѓРїРёС‚СЊ PRO</span>
                                         </span>
                                     </span>
                                 </a>
@@ -358,12 +358,12 @@ $_user->GetUserByUID(get_uid(false));
             <?=user_phone::getInstance()->renderPopup() ?>
         </div>
 
-        <?php if (defined('JS_BOTTOM')): // Формиирование JS (склеивание) ?>
+        <?php if (defined('JS_BOTTOM')): // Р¤РѕСЂРјРёРёСЂРѕРІР°РЅРёРµ JS (СЃРєР»РµРёРІР°РЅРёРµ) ?>
             <?php $stc_js->Send(); ?>
             <?php $stc2_js->Send(); ?>
 
             <?php
-                // Подключаем код Google Analytics 
+                // РџРѕРґРєР»СЋС‡Р°РµРј РєРѕРґ Google Analytics 
                 include($_SERVER['DOCUMENT_ROOT'].'/templates/include/ga.php'); 
             ?>
         <?php endif; ?>

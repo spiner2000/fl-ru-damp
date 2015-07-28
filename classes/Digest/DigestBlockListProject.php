@@ -3,24 +3,24 @@
 require_once 'DigestBlockList.php';
 
 /**
- * Класс для работы с блоком проекты
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р»РѕРєРѕРј РїСЂРѕРµРєС‚С‹
  */
 class DigestBlockListProject extends DigestBlockList {
     
     /**
-     * Тип проекта
+     * РўРёРї РїСЂРѕРµРєС‚Р°
      */
     const PROJECT_KIND = 1;
     
     /**
-     * Доступна ли кнопка автозаполнения ссылок
+     * Р”РѕСЃС‚СѓРїРЅР° Р»Рё РєРЅРѕРїРєР° Р°РІС‚РѕР·Р°РїРѕР»РЅРµРЅРёСЏ СЃСЃС‹Р»РѕРє
      * 
      * @var boolean 
      */
     const AUTO_COMPLETE = true;
     
     /**
-     * Маска валидации и проверки ссылки
+     * РњР°СЃРєР° РІР°Р»РёРґР°С†РёРё Рё РїСЂРѕРІРµСЂРєРё СЃСЃС‹Р»РєРё
      * 
      * @var string 
      */
@@ -30,22 +30,22 @@ class DigestBlockListProject extends DigestBlockList {
      * @see parent::$title
      * @var string 
      */
-    public $title = '<a class="b-layout__link" href="/projects/?kind=1" target="_blank">Топ %s проектов</a> с наиболее большим бюджетом за неделю';
+    public $title = '<a class="b-layout__link" href="/projects/?kind=1" target="_blank">РўРѕРї %s РїСЂРѕРµРєС‚РѕРІ</a> СЃ РЅР°РёР±РѕР»РµРµ Р±РѕР»СЊС€РёРј Р±СЋРґР¶РµС‚РѕРј Р·Р° РЅРµРґРµР»СЋ';
     
     /**
      * @see parent::$hint
      * @var string 
      */
-    public $hint  = 'Например: http://www.free-lance.ru/projects/5/example.html';
+    public $hint  = 'РќР°РїСЂРёРјРµСЂ: http://www.free-lance.ru/projects/5/example.html';
     
     /**
      * @see parent::$title_field
      * @var string 
      */
-    public $title_field = 'Ссылки на проекты:';
+    public $title_field = 'РЎСЃС‹Р»РєРё РЅР° РїСЂРѕРµРєС‚С‹:';
     
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      * 
      * @param integer $size
      * @param mixed   $link
@@ -73,7 +73,7 @@ class DigestBlockListProject extends DigestBlockList {
                 $sTitle = ( $project['moderator_status'] === '0' && $project['kind'] != 4 && $project['is_pro'] != 't' ? $stop_words->replace($project['name']) : $project['name'] );
                 $projects[$i]['sTitle'] =  reformat2($sTitle, 30, 0, 1);
                 $projects[$i]['friendly_url'] = $this->getLinkById($project['id']);
-                $projects[$i]['str_cost'] = $project['cost'] ? CurToChar($project['cost'], $project['currency']) . getPricebyProject($project['priceby']) : "По договоренности";
+                $projects[$i]['str_cost'] = $project['cost'] ? CurToChar($project['cost'], $project['currency']) . getPricebyProject($project['priceby']) : "РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё";
             }
             
             $this->html_data = $projects;
@@ -81,7 +81,7 @@ class DigestBlockListProject extends DigestBlockList {
     }
     
     /**
-     * Функция автозаполнения полей блока
+     * Р¤СѓРЅРєС†РёСЏ Р°РІС‚РѕР·Р°РїРѕР»РЅРµРЅРёСЏ РїРѕР»РµР№ Р±Р»РѕРєР°
      * 
      * @return boolean
      */

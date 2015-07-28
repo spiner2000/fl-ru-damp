@@ -1,14 +1,14 @@
 <?php
 
-//Ñîëü äëÿ MD5
+//Ð¡Ð¾Ð»ÑŒ Ð´Ð»Ñ MD5
 define('STAT_URL_PREFIX','yPXEUFyDqh');
 
 require_once(ABS_PATH . "/classes/statistic/StatisticConfig.php");
 require_once(ABS_PATH . "/classes/statistic/StatisticHelper.php");
 
 /**
- * Êëàññ ôàáðèêà äëÿ ðàáîòû 
- * ñ ñåðâèñàìè ñòàòèñòèêè
+ * ÐšÐ»Ð°ÑÑ Ñ„Ð°Ð±Ñ€Ð¸ÐºÐ° Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ 
+ * Ñ ÑÐµÑ€Ð²Ð¸ÑÐ°Ð¼Ð¸ ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ¸
  */
 class StatisticFactory 
 {
@@ -19,8 +19,8 @@ class StatisticFactory
     );    
     
     /**
-     * Ñîçäàåì è êîíôèãóðèðóåì 
-     * àäàïòåð ñâÿçè ñ ñåðâèñîì ñòàòèñòèêè
+     * Ð¡Ð¾Ð·Ð´Ð°ÐµÐ¼ Ð¸ ÐºÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð¸Ñ€ÑƒÐµÐ¼ 
+     * Ð°Ð´Ð°Ð¿Ñ‚ÐµÑ€ ÑÐ²ÑÐ·Ð¸ Ñ ÑÐµÑ€Ð²Ð¸ÑÐ¾Ð¼ ÑÑ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ¸
      * 
      * @param string $name
      * @param array $options

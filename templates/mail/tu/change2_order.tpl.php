@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Часть шаблона письма уведомление исполнителю об изменении заказа
- * содержащая изменения в заказе
+ * Р§Р°СЃС‚СЊ С€Р°Р±Р»РѕРЅР° РїРёСЃСЊРјР° СѓРІРµРґРѕРјР»РµРЅРёРµ РёСЃРїРѕР»РЅРёС‚РµР»СЋ РѕР± РёР·РјРµРЅРµРЅРёРё Р·Р°РєР°Р·Р°
+ * СЃРѕРґРµСЂР¶Р°С‰Р°СЏ РёР·РјРµРЅРµРЅРёСЏ РІ Р·Р°РєР°Р·Рµ
  */
 
 $templ = '%s >> %s';
@@ -19,17 +19,17 @@ $order_days_txt = isset($order['old_order_days'])?sprintf($templ,
         tservices_helper::days_format($order['order_days']);
 
 $is_new_reserve = tservices_helper::isOrderReserve($order['pay_type']);
-$order_paytype_txt = $is_new_reserve?"С резервированием":"Без резервирования";
+$order_paytype_txt = $is_new_reserve?"РЎ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРµРј":"Р‘РµР· СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ";
 
 if(isset($order['old_pay_type']))
 {
     $is_old_reserve = tservices_helper::isOrderReserve($order['old_pay_type']);
-    $from_txt = $is_old_reserve?"С резервированием":"Без резервирования";
-    $to_txt = !$is_old_reserve?"С резервированием":"Без резервирования";
+    $from_txt = $is_old_reserve?"РЎ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРµРј":"Р‘РµР· СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ";
+    $to_txt = !$is_old_reserve?"РЎ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРµРј":"Р‘РµР· СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ";
     $order_paytype_txt = sprintf($templ,$from_txt,$to_txt);
 }
 
 ?>
-Бюджет: <?=$order_price_txt . PHP_EOL?>
-Срок: <?=$order_days_txt . PHP_EOL?>
-Тип оплаты: <?=$order_paytype_txt . PHP_EOL?>
+Р‘СЋРґР¶РµС‚: <?=$order_price_txt . PHP_EOL?>
+РЎСЂРѕРє: <?=$order_days_txt . PHP_EOL?>
+РўРёРї РѕРїР»Р°С‚С‹: <?=$order_paytype_txt . PHP_EOL?>

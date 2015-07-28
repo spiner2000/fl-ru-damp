@@ -1,5 +1,5 @@
 <?
-  exit; // пользуемся /siteadmin/admin/
+  exit; // РїРѕР»СЊР·СѓРµРјСЃСЏ /siteadmin/admin/
 	if (!is_admin_sm())
 		{exit;}
 	$action = trim($_GET['action']);
@@ -25,21 +25,21 @@
 	$val = $sm->Get();
 ?>
 
-<strong>Спам</strong><br><br>
-Теги %name% и %surname% в теле письма будут заменены на имя и фамилию юзера.
+<strong>РЎРїР°Рј</strong><br><br>
+РўРµРіРё %name% Рё %surname% РІ С‚РµР»Рµ РїРёСЃСЊРјР° Р±СѓРґСѓС‚ Р·Р°РјРµРЅРµРЅС‹ РЅР° РёРјСЏ Рё С„Р°РјРёР»РёСЋ СЋР·РµСЂР°.
 	<? if ($error) print(view_error($error));?>
-<form action="/siteadmin/spam/" method="post" onSubmit="this.btn.value='Подождите'; this.btn.disabled=true;">
+<form action="/siteadmin/spam/" method="post" onSubmit="this.btn.value='РџРѕРґРѕР¶РґРёС‚Рµ'; this.btn.disabled=true;">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 		<td width="19" rowspan="5">&nbsp;</td>
 		<td height="30" valign="bottom">
-			Новое сообщение для всех НЕ ПРО фрилансеров:
+			РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РґР»СЏ РІСЃРµС… РќР• РџР Рћ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ:
 		</td>
 		<td width="19" rowspan="4">&nbsp;</td>
 	</tr>
 	<tr>
 		<td>
-			Заголовок: <input type="text" name="name" value="<?=$val['subj']?>">
+			Р—Р°РіРѕР»РѕРІРѕРє: <input type="text" name="name" value="<?=$val['subj']?>">
 		</td>
 	</tr>
 	<tr>
@@ -50,7 +50,7 @@
 	</tr>
 	<tr>
 		<td align="right"><input type="hidden" name="MAX_FILE_SIZE" value="100000">
-			<input type="hidden" name="action" value="post_msg"><input type="submit" name="btn" class="btn" value="Сохранить">
+			<input type="hidden" name="action" value="post_msg"><input type="submit" name="btn" class="btn" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 			<input type="hidden" name="role" value="npro">
 		</td>
 	</tr>
@@ -60,18 +60,18 @@
 <?
 	$val = $sm->Get(1);
 ?>
-<form action="/siteadmin/spam/" method="post" onSubmit="this.btn.value='Подождите'; this.btn.disabled=true;">
+<form action="/siteadmin/spam/" method="post" onSubmit="this.btn.value='РџРѕРґРѕР¶РґРёС‚Рµ'; this.btn.disabled=true;">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 		<td width="19" rowspan="5">&nbsp;</td>
 		<td height="30" valign="bottom">
-			Новое сообщение для всех ПРО фрилансеров:
+			РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РґР»СЏ РІСЃРµС… РџР Рћ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ:
 		</td>
 		<td width="19" rowspan="4">&nbsp;</td>
 	</tr>
 	<tr>
 		<td>
-			Заголовок: <input type="text" name="name" value="<?=$val['subj']?>">
+			Р—Р°РіРѕР»РѕРІРѕРє: <input type="text" name="name" value="<?=$val['subj']?>">
 		</td>
 	</tr>
 	<tr>
@@ -82,7 +82,7 @@
 	</tr>
 	<tr>
 		<td align="right"><input type="hidden" name="MAX_FILE_SIZE" value="100000">
-			<input type="hidden" name="action" value="post_msg"><input type="submit" name="btn" class="btn" value="Сохранить">
+			<input type="hidden" name="action" value="post_msg"><input type="submit" name="btn" class="btn" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 			<input type="hidden" name="role" value="pro">
 		</td>
 	</tr>
@@ -92,18 +92,18 @@
 <?
 	$val = $sm->Get(2);
 ?>
-<form action="/siteadmin/spam/" method="post" onSubmit="this.btn.value='Подождите'; this.btn.disabled=true;">
+<form action="/siteadmin/spam/" method="post" onSubmit="this.btn.value='РџРѕРґРѕР¶РґРёС‚Рµ'; this.btn.disabled=true;">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 		<td width="19" rowspan="5">&nbsp;</td>
 		<td height="30" valign="bottom">
-			Новое сообщение для всех работодателей:
+			РќРѕРІРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РґР»СЏ РІСЃРµС… СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№:
 		</td>
 		<td width="19" rowspan="4">&nbsp;</td>
 	</tr>
 	<tr>
 		<td>
-			Заголовок: <input type="text" name="name" value="<?=$val['subj']?>">
+			Р—Р°РіРѕР»РѕРІРѕРє: <input type="text" name="name" value="<?=$val['subj']?>">
 		</td>
 	</tr>
 	<tr>
@@ -114,7 +114,7 @@
 	</tr>
 	<tr>
 		<td align="right"><input type="hidden" name="MAX_FILE_SIZE" value="100000">
-			<input type="hidden" name="action" value="post_msg"><input type="submit" name="btn" class="btn" value="Сохранить">
+			<input type="hidden" name="action" value="post_msg"><input type="submit" name="btn" class="btn" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 			<input type="hidden" name="role" value="emp">
 		</td>
 	</tr>

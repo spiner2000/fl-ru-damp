@@ -5,11 +5,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/search/search.php");
 class searchExt extends search
 {
     /**
-     * Вызывает поиск по указанному элементу.
+     * Р’С‹Р·С‹РІР°РµС‚ РїРѕРёСЃРє РїРѕ СѓРєР°Р·Р°РЅРЅРѕРјСѓ СЌР»РµРјРµРЅС‚Сѓ.
      * 
-     * @param string $type название элемента
-     * @param string $string   строка поиска.
-     * @param integer $page   номер текущей страницы (используется при поиске по конкретному элементу).
+     * @param string $type РЅР°Р·РІР°РЅРёРµ СЌР»РµРјРµРЅС‚Р°
+     * @param string $string   СЃС‚СЂРѕРєР° РїРѕРёСЃРєР°.
+     * @param integer $page   РЅРѕРјРµСЂ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹ (РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РїСЂРё РїРѕРёСЃРєРµ РїРѕ РєРѕРЅРєСЂРµС‚РЅРѕРјСѓ СЌР»РµРјРµРЅС‚Сѓ).
      */
     function searchByType($type, $string, $page = 0, $filter = false) 
     {

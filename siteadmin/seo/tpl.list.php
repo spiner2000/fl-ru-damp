@@ -4,7 +4,7 @@
             <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bordbot_double_ccc">ID</div>
         </td>
         <td class="b-layout__one b-layout__one_padbot_10 b-layout__one_valign_bot">
-            <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bordbot_double_ccc">Раздел / специализация</div>
+            <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bordbot_double_ccc">Р Р°Р·РґРµР» / СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏ</div>
         </td>
         <td class="b-layout__one b-layout__one_width_130 b-layout__one_padbot_10 b-layout__one_valign_bot">
             <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_bordbot_double_ccc">&nbsp;</div>
@@ -19,7 +19,7 @@
             <?=$content['is_spec']=='t'?$content['prof_title']:$content['prof_group_title']; ?>
         </td>
         <td class="b-layout__one b-layout__one_padbot_10 b-layout__one_padtop_9  b-layout__txt_bordbot_b2">
-            <a href="/siteadmin/seo/?action=edit&id=<?=$content['id']?>">изменить</a>
+            <a href="/siteadmin/seo/?action=edit&id=<?=$content['id']?>">РёР·РјРµРЅРёС‚СЊ</a>
         </td>
     </tr>
     <?php }//foreach?>

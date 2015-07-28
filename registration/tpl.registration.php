@@ -4,7 +4,7 @@ $xajax->printJavascript('/xajax/');
 ?>
 <div class="b-layout">
     <div class="b-layout__right b-layout__right_width_72ps b-layout__right_float_right">
-        <h1 class="b-page__title b-page__title_padbot_30">Регистрация</h1>
+        <h1 class="b-page__title b-page__title_padbot_30">Р РµРіРёСЃС‚СЂР°С†РёСЏ</h1>
     </div>
     <div class="b-layout__right b-layout__right_width_72ps b-layout__right_float_right">
         <div class="b-layout b-layout_margleft_-80" id="form_elements">
@@ -14,7 +14,7 @@ $xajax->printJavascript('/xajax/');
             <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table">
                 <tbody>
                     <tr class="b-layout__tr">
-                        <td class="b-layout__left b-layout__left_width_80"><div class="b-layout__txt b-layout__txt_padtop_5"><label for="login">Логин</label></div></td>
+                        <td class="b-layout__left b-layout__left_width_80"><div class="b-layout__txt b-layout__txt_padtop_5"><label for="login">Р›РѕРіРёРЅ</label></div></td>
                         <td class="b-layout__middle b-layout__middle_padbot_20 b-layout__middle_padright_10">
                             <div class="b-combo">
                                 <div class="b-combo__input b-combo__input_width_280 <?= $registration->error['login']?"b-combo__input_error":""?>">
@@ -40,7 +40,7 @@ $xajax->printJavascript('/xajax/');
                                     <span class="b-shadow__icon b-shadow__icon_nosik-left b-shadow__icon_top_20 b-shadow__icon_left_5"></span>
                                 </div>                                
                             </div>
-                            <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">3&mdash;15 символов: латинские буквы, цифры, подчёркивание (_) и дефис (-)</div>
+                            <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">3&mdash;15 СЃРёРјРІРѕР»РѕРІ: Р»Р°С‚РёРЅСЃРєРёРµ Р±СѓРєРІС‹, С†РёС„СЂС‹, РїРѕРґС‡С‘СЂРєРёРІР°РЅРёРµ (_) Рё РґРµС„РёСЃ (-)</div>
                         </td>
                     </tr>
                     <tr class="b-layout__tr">
@@ -70,11 +70,11 @@ $xajax->printJavascript('/xajax/');
                                     <span class="b-shadow__icon b-shadow__icon_nosik-left b-shadow__icon_top_20 b-shadow__icon_left_5"></span>
                                 </div>                                
                             </div>
-                            <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">Нигде не публикуется</div>
+                            <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">РќРёРіРґРµ РЅРµ РїСѓР±Р»РёРєСѓРµС‚СЃСЏ</div>
                         </td>
                     </tr>
                     <tr class="b-layout__tr">
-                        <td class="b-layout__left b-layout__left_width_80"><div class="b-layout__txt b-layout__txt_padtop_5"><label for="parol">Пароль</label></div></td>
+                        <td class="b-layout__left b-layout__left_width_80"><div class="b-layout__txt b-layout__txt_padtop_5"><label for="parol">РџР°СЂРѕР»СЊ</label></div></td>
                         <td class="b-layout__middle b-layout__middle_padbot_20 b-layout__middle_padright_10">
                             <div class="b-combo">
                                 <div class="b-combo__input b-combo__input_width_280 b-combo__input_width_280 b-eye <?= $registration->error['password']?"b-combo__input_error":""?>">
@@ -101,7 +101,7 @@ $xajax->printJavascript('/xajax/');
                                     <span class="b-shadow__icon b-shadow__icon_nosik-left b-shadow__icon_top_20 b-shadow__icon_left_5"></span>
                                 </div>                                
                             </div>
-                            <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">От 6 до 24 символов. Допустимы латинские буквы, цифры и знак подчёркивания (_) </div>
+                            <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">РћС‚ 6 РґРѕ 24 СЃРёРјРІРѕР»РѕРІ. Р”РѕРїСѓСЃС‚РёРјС‹ Р»Р°С‚РёРЅСЃРєРёРµ Р±СѓРєРІС‹, С†РёС„СЂС‹ Рё Р·РЅР°Рє РїРѕРґС‡С‘СЂРєРёРІР°РЅРёСЏ (_) </div>
                         </td>
                     </tr>
                     <?php /*if($registration->error['password']) { ?>
@@ -111,7 +111,7 @@ $xajax->printJavascript('/xajax/');
                             <div class="b-layout__txt b-layout__txt_color_c4271f b-layout__txt_padbot_10">
                                 <span class="b-form__error"></span> <?= $registration->error['password']?>
                             </div>
-                            <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">От 6 до 24 символов на латинице</div>
+                            <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">РћС‚ 6 РґРѕ 24 СЃРёРјРІРѕР»РѕРІ РЅР° Р»Р°С‚РёРЅРёС†Рµ</div>
                         </td>
                     </tr>
                     <?php }*/ ?>
@@ -129,7 +129,7 @@ $xajax->printJavascript('/xajax/');
                                     </div>
                                 </div>
 
-                                <div class="b-captcha__txt b-captcha__txt_padtop_5"><a class="b-captcha__link" href="javascript:void(0)" onClick="return updateCaptchaImage();">Обновить картинку</a></div>
+                                <div class="b-captcha__txt b-captcha__txt_padtop_5"><a class="b-captcha__link" href="javascript:void(0)" onClick="return updateCaptchaImage();">РћР±РЅРѕРІРёС‚СЊ РєР°СЂС‚РёРЅРєСѓ</a></div>
                             </div>
                         </td>
                         <td class="b-layout__right">
@@ -150,7 +150,7 @@ $xajax->printJavascript('/xajax/');
                                     <span class="b-shadow__icon b-shadow__icon_nosik-left b-shadow__icon_top_20 b-shadow__icon_left_5"></span>
                                 </div>                                
                             </div>
-                            <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_15">Пожалуйста, введите символы с картинки</div>
+                            <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_15">РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ СЃРёРјРІРѕР»С‹ СЃ РєР°СЂС‚РёРЅРєРё</div>
                         </td>
                     </tr>
                     <?php //} ?>
@@ -160,15 +160,15 @@ $xajax->printJavascript('/xajax/');
                             <div class="b-radio b-radio_layout_vertical b-radio_inline-block">
                                 <div class="b-radio__item b-radio__item_padbot_10">
                                     <input id="freelancer" class="b-radio__input" name="role" type="radio" value="<?= registration::ROLE_FREELANCER?>" <?= $registration->role != registration::ROLE_EMPLOYER ? 'checked="checked"' : ''; ?>/>
-                                    <label class="b-radio__label b-radio__label_fontsize_13" for="freelancer">Фрилансер</label>
+                                    <label class="b-radio__label b-radio__label_fontsize_13" for="freelancer">Р¤СЂРёР»Р°РЅСЃРµСЂ</label>
                                 </div>
                                 <div class="b-radio__item">
                                     <input id="employer" class="b-radio__input" name="role" type="radio" value="<?= registration::ROLE_EMPLOYER?>" <?= $registration->role == registration::ROLE_EMPLOYER ? 'checked="checked"' : ''; ?>/>
-                                    <label class="b-radio__label b-radio__label_fontsize_13" for="employer" >Работодатель</label>
+                                    <label class="b-radio__label b-radio__label_fontsize_13" for="employer" >Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ</label>
                                 </div>
                             </div>
                            <div class="b-fon b-fon_inline-block b-fon_pad_5_10 b-fon_bg_fff9bf b-fon_margleft_20 b-fon_valign_top b-fon_margtop_-5">
-                              <div class="b-layout__txt b-layout__txt_fontsize_11">Каждому пользователю разрешается регистрировать<br>по одному аккаунту Фрилансера и Работодателя (<a href="<?=WDCPREFIX?>/about/documents/appendix_2_regulations.pdf" class="b-layout__link " target="_blank">Правила</a> сайта, п.1.4).<br>Все аккаунты, созданные в обход данного правила, могут быть заблокированы.</div>
+                              <div class="b-layout__txt b-layout__txt_fontsize_11">РљР°Р¶РґРѕРјСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ СЂР°Р·СЂРµС€Р°РµС‚СЃСЏ СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊ<br>РїРѕ РѕРґРЅРѕРјСѓ Р°РєРєР°СѓРЅС‚Сѓ Р¤СЂРёР»Р°РЅСЃРµСЂР° Рё Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЏ (<a href="<?=WDCPREFIX?>/about/documents/appendix_2_regulations.pdf" class="b-layout__link " target="_blank">РџСЂР°РІРёР»Р°</a> СЃР°Р№С‚Р°, Рї.1.4).<br>Р’СЃРµ Р°РєРєР°СѓРЅС‚С‹, СЃРѕР·РґР°РЅРЅС‹Рµ РІ РѕР±С…РѕРґ РґР°РЅРЅРѕРіРѕ РїСЂР°РІРёР»Р°, РјРѕРіСѓС‚ Р±С‹С‚СЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹.</div>
                            </div>
                         </td>
                     </tr>
@@ -181,13 +181,13 @@ $xajax->printJavascript('/xajax/');
             <a href="javascript:void(0)" id="send_btn" class="b-button b-button_rectangle_color_green b-button_rectangle_color_disable" onclick="formSubmit();">
                 <span class="b-button__b1">
                     <span class="b-button__b2 b-button__b2_padlr_15">
-                        <span class="b-button__txt">Зарегистрироваться</span>
+                        <span class="b-button__txt">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</span>
                     </span>
                 </span>
             </a>&#160;&#160;
 
             <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_10">
-                Нажимая на кнопку &laquo;Зарегистрироваться&raquo;, я соглашаюсь с <a href="<?=WDCPREFIX?>/about/documents/agreement_site.pdf" class="b-layout__link " target="_blank">публичной офертой ООО «Ваан»</a> и <a href="<?=WDCPREFIX?>/about/documents/appendix_2_regulations.pdf" class="b-layout__link " target="_blank">правилами сайта</a>.
+                РќР°Р¶РёРјР°СЏ РЅР° РєРЅРѕРїРєСѓ &laquo;Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ&raquo;, СЏ СЃРѕРіР»Р°С€Р°СЋСЃСЊ СЃ <a href="<?=WDCPREFIX?>/about/documents/agreement_site.pdf" class="b-layout__link " target="_blank">РїСѓР±Р»РёС‡РЅРѕР№ РѕС„РµСЂС‚РѕР№ РћРћРћ В«Р’Р°Р°РЅВ»</a> Рё <a href="<?=WDCPREFIX?>/about/documents/appendix_2_regulations.pdf" class="b-layout__link " target="_blank">РїСЂР°РІРёР»Р°РјРё СЃР°Р№С‚Р°</a>.
             </div>
         </div>
     </div>

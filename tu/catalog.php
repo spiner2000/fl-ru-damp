@@ -1,6 +1,6 @@
 <?php
 /**
- * Страница каталога типовых услуг для главной страницы
+ * РЎС‚СЂР°РЅРёС†Р° РєР°С‚Р°Р»РѕРіР° С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі РґР»СЏ РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹
  */
 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
@@ -11,13 +11,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/seo/SeoTags.php");
 $g_page_id = "0|992";
 $rpath="../";
 
-// begin настройки layout
+// begin РЅР°СЃС‚СЂРѕР№РєРё layout
 
-$grey_tservice = true; // включает в верхнем меню "b-menu_head" пункт "типовые услуги" (@see ../header.new.php)
+$grey_tservice = true; // РІРєР»СЋС‡Р°РµС‚ РІ РІРµСЂС…РЅРµРј РјРµРЅСЋ "b-menu_head" РїСѓРЅРєС‚ "С‚РёРїРѕРІС‹Рµ СѓСЃР»СѓРіРё" (@see ../header.new.php)
 $stretch_page = true;
 $showMainDiv  = true;
 
-// Формируем JS внизу страницы
+// Р¤РѕСЂРјРёСЂСѓРµРј JS РІРЅРёР·Сѓ СЃС‚СЂР°РЅРёС†С‹
 define('JS_BOTTOM', true);
 //$js_file[] = "/tservices_categories_js.php";
 $js_file[] = "tservices/tservices_catalog.js";
@@ -27,22 +27,22 @@ $content = $_SERVER['DOCUMENT_ROOT']."/tu/tpl.catalog.php";
 $header = "../header.php";
 $footer = "../footer.html";
 
-// /end настройки layout
+// /end РЅР°СЃС‚СЂРѕР№РєРё layout
 
 session_start();
 
-// begin логика основной части контента
+// begin Р»РѕРіРёРєР° РѕСЃРЅРѕРІРЅРѕР№ С‡Р°СЃС‚Рё РєРѕРЅС‚РµРЅС‚Р°
 require_once($_SERVER['DOCUMENT_ROOT'] . '/tu/controllers/TServiceCatalogController.php');
 
 $module = new CModule('tu');
 $module->setBasePath(dirname(__FILE__));
 $controller = new TServiceCatalogController('t-service-catalog', $module);
-$controller->init(); // инициализация контролера
+$controller->init(); // РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєРѕРЅС‚СЂРѕР»РµСЂР°
 $controller->run('index');
-// /end логика основной части контента
+// /end Р»РѕРіРёРєР° РѕСЃРЅРѕРІРЅРѕР№ С‡Р°СЃС‚Рё РєРѕРЅС‚РµРЅС‚Р°
 
 
-//Показываем в шапке слайдер платных мест
+//РџРѕРєР°Р·С‹РІР°РµРј РІ С€Р°РїРєРµ СЃР»Р°Р№РґРµСЂ РїР»Р°С‚РЅС‹С… РјРµСЃС‚
 $main_page = true;
 
 $page_title = SeoTags::getInstance()->getTitle();
@@ -50,5 +50,5 @@ $page_descr = SeoTags::getInstance()->getDescription();
 $page_keyw = SeoTags::getInstance()->getKeywords();
 
 
-// отрисовка страницы
+// РѕС‚СЂРёСЃРѕРІРєР° СЃС‚СЂР°РЅРёС†С‹
 include ($_SERVER['DOCUMENT_ROOT']."/template3.php");

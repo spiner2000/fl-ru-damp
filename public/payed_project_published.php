@@ -13,7 +13,7 @@ $bold = __paramInit('int', 'bold', null, 0);
 $logo = __paramInit('int', 'logo', null, 0);
 $inoffice = __paramInit('float', 'inoffice', null, 0);
 
-// страницу могут смотреть только зарегистрированые работодатели
+// СЃС‚СЂР°РЅРёС†Сѓ РјРѕРіСѓС‚ СЃРјРѕС‚СЂРµС‚СЊ С‚РѕР»СЊРєРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅС‹Рµ СЂР°Р±РѕС‚РѕРґР°С‚РµР»Рё
 if (!get_uid(0) || !is_emp() || !$prj_id) {
     include $_SERVER['DOCUMENT_ROOT']."/403.php";
     exit;

@@ -1,7 +1,7 @@
 <?
 $sorting = array(
-    'date' => 'по дате добавления',
-    'views' => 'по количеству просмотров',
+    'date' => 'РїРѕ РґР°С‚Рµ РґРѕР±Р°РІР»РµРЅРёСЏ',
+    'views' => 'РїРѕ РєРѕР»РёС‡РµСЃС‚РІСѓ РїСЂРѕСЃРјРѕС‚СЂРѕРІ',
 );
 
 if(count($query)) {
@@ -13,8 +13,8 @@ $uri = "/interview/".$query_str;
 
 <?php
 $crumbs = array();
-$crumbs[] = array("title"=>"Статьи и интервью", "url"=>"/articles/");
-$crumbs[] = array("title"=>"Интервью", "url"=>"");
+$crumbs[] = array("title"=>"РЎС‚Р°С‚СЊРё Рё РёРЅС‚РµСЂРІСЊСЋ", "url"=>"/articles/");
+$crumbs[] = array("title"=>"РРЅС‚РµСЂРІСЊСЋ", "url"=>"");
 ?>
 <div class="b-menu b-menu_crumbs  b-menu_padbot_20"><?=getCrumbs($crumbs)?></div>
 
@@ -27,7 +27,7 @@ $crumbs[] = array("title"=>"Интервью", "url"=>"");
            <tr class="b-layout__tr">
              <td class="b-layout__one b-layout__one_width_380 b-layout__one_padleft_20 b-layout__one_bordright_d9 b-layout__one_padtop_9"> 
                 <noindex>
-                    <span class="b-layout__txt b-layout__txt_bold b-layout__txt_fontsize_11 b-layout__txt_inline-block">Сортировать:</span>
+                    <span class="b-layout__txt b-layout__txt_bold b-layout__txt_fontsize_11 b-layout__txt_inline-block">РЎРѕСЂС‚РёСЂРѕРІР°С‚СЊ:</span>
                         <? foreach($sorting as $k => $label) { ?>
                             <? if($k == $ord) { ?>
                                 &#160;&#160;&#160;<span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_pad_1_3" style="background:#E6E6E3"><?=$label?></span>
@@ -41,8 +41,8 @@ $crumbs[] = array("title"=>"Интервью", "url"=>"");
                 <noindex>
                         <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_pad_1_3" style="<?=!$year ? 'background:#E6E6E3' : ''?>">
                             <? if($year) { ?>
-                            <a class="b-layout__link b-layout__link_bordbot_dot_41" rel="nofollow" href="<?=url($GET, array('ord' => $ord), true, '?')?>">Все</a>
-                            <? } else { ?>Все<? } ?>
+                            <a class="b-layout__link b-layout__link_bordbot_dot_41" rel="nofollow" href="<?=url($GET, array('ord' => $ord), true, '?')?>">Р’СЃРµ</a>
+                            <? } else { ?>Р’СЃРµ<? } ?>
                         </span>
                         <? if($years) foreach($years as $y) { ?>
                         <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_pad_1_3" style="<?=$y['yr'] == $year ? 'background:#E6E6E3' : '' ?>">
@@ -61,9 +61,9 @@ $crumbs[] = array("title"=>"Интервью", "url"=>"");
                 <form action="">
                     <div class="b-select b-select_float_right b-select_width_140">
                         <select class="b-select__select" onchange="location.href = '<?= $uri.($is_query_uri?"&":"?")?>filter=' + this.value;" style="width:140px;">
-                            <option value="0" <?= ($filter==0?'selected="selected"':'');?>>Все пользователи</option>
-                            <option value="1" <?= ($filter==1?'selected="selected"':'');?>>Фри-лансер</option>
-                            <option value="2" <?= ($filter==2?'selected="selected"':'');?>>Работодатель</option>
+                            <option value="0" <?= ($filter==0?'selected="selected"':'');?>>Р’СЃРµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё</option>
+                            <option value="1" <?= ($filter==1?'selected="selected"':'');?>>Р¤СЂРё-Р»Р°РЅСЃРµСЂ</option>
+                            <option value="2" <?= ($filter==2?'selected="selected"':'');?>>Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ</option>
                         </select>
                     </div>
                 </form>
@@ -75,7 +75,7 @@ $crumbs[] = array("title"=>"Интервью", "url"=>"");
                         <div class="b-fon b-fon_bg_74bb54">
                           <b class="b-fon__b1"></b>
                           <b class="b-fon__b2"></b>
-                          <div class="b-fon__body b-fon__body_pad_2_5"><a class="b-layout__link b-layout__link_color_fff" href="javascript:void(0)" onclick="toggleAddForm(0,1)">Добавить интервью</a></div>
+                          <div class="b-fon__body b-fon__body_pad_2_5"><a class="b-layout__link b-layout__link_color_fff" href="javascript:void(0)" onclick="toggleAddForm(0,1)">Р”РѕР±Р°РІРёС‚СЊ РёРЅС‚РµСЂРІСЊСЋ</a></div>
                           <b class="b-fon__b2"></b>
                           <b class="b-fon__b1"></b>
                         </div>        
@@ -85,7 +85,7 @@ $crumbs[] = array("title"=>"Интервью", "url"=>"");
           </tr>
        </table>
     </div>
-    <div class="b-layout__txt b-layout__txt_padtop_20 b-layout__txt_padbot_20">Мы берем интервью у фри-лансеров и работодателей и выкладываем их здесь. А это значит, что теперь вы можете узнать о том, как живут ваши коллеги по цеху, что их интересует и влечет, как они начинали карьеру и кем видят себя в будущем, что читают и чего боятся, для чего живут и что приносит им радость. Фри-лансеры с удовольствием поделятся секретами профессионального успеха и дадут полезные советы новичкам, а работодатели расскажут о том, на что обращают внимание при поиске фри-лансеров, как выбирают исполнителей на проекты и еще много чего интересного. Приятного чтения!</div>
+    <div class="b-layout__txt b-layout__txt_padtop_20 b-layout__txt_padbot_20">РњС‹ Р±РµСЂРµРј РёРЅС‚РµСЂРІСЊСЋ Сѓ С„СЂРё-Р»Р°РЅСЃРµСЂРѕРІ Рё СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ Рё РІС‹РєР»Р°РґС‹РІР°РµРј РёС… Р·РґРµСЃСЊ. Рђ СЌС‚Рѕ Р·РЅР°С‡РёС‚, С‡С‚Рѕ С‚РµРїРµСЂСЊ РІС‹ РјРѕР¶РµС‚Рµ СѓР·РЅР°С‚СЊ Рѕ С‚РѕРј, РєР°Рє Р¶РёРІСѓС‚ РІР°С€Рё РєРѕР»Р»РµРіРё РїРѕ С†РµС…Сѓ, С‡С‚Рѕ РёС… РёРЅС‚РµСЂРµСЃСѓРµС‚ Рё РІР»РµС‡РµС‚, РєР°Рє РѕРЅРё РЅР°С‡РёРЅР°Р»Рё РєР°СЂСЊРµСЂСѓ Рё РєРµРј РІРёРґСЏС‚ СЃРµР±СЏ РІ Р±СѓРґСѓС‰РµРј, С‡С‚Рѕ С‡РёС‚Р°СЋС‚ Рё С‡РµРіРѕ Р±РѕСЏС‚СЃСЏ, РґР»СЏ С‡РµРіРѕ Р¶РёРІСѓС‚ Рё С‡С‚Рѕ РїСЂРёРЅРѕСЃРёС‚ РёРј СЂР°РґРѕСЃС‚СЊ. Р¤СЂРё-Р»Р°РЅСЃРµСЂС‹ СЃ СѓРґРѕРІРѕР»СЊСЃС‚РІРёРµРј РїРѕРґРµР»СЏС‚СЃСЏ СЃРµРєСЂРµС‚Р°РјРё РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅРѕРіРѕ СѓСЃРїРµС…Р° Рё РґР°РґСѓС‚ РїРѕР»РµР·РЅС‹Рµ СЃРѕРІРµС‚С‹ РЅРѕРІРёС‡РєР°Рј, Р° СЂР°Р±РѕС‚РѕРґР°С‚РµР»Рё СЂР°СЃСЃРєР°Р¶СѓС‚ Рѕ С‚РѕРј, РЅР° С‡С‚Рѕ РѕР±СЂР°С‰Р°СЋС‚ РІРЅРёРјР°РЅРёРµ РїСЂРё РїРѕРёСЃРєРµ С„СЂРё-Р»Р°РЅСЃРµСЂРѕРІ, РєР°Рє РІС‹Р±РёСЂР°СЋС‚ РёСЃРїРѕР»РЅРёС‚РµР»РµР№ РЅР° РїСЂРѕРµРєС‚С‹ Рё РµС‰Рµ РјРЅРѕРіРѕ С‡РµРіРѕ РёРЅС‚РµСЂРµСЃРЅРѕРіРѕ. РџСЂРёСЏС‚РЅРѕРіРѕ С‡С‚РµРЅРёСЏ!</div>
         <? if($list && count($list)) { ?>
         <ul class="interview-list ">
         <? foreach($list as $i => $interview) { ?>
@@ -110,15 +110,15 @@ $crumbs[] = array("title"=>"Интервью", "url"=>"");
                 <div class="b-layout__txt b-layout__txt_center"><a class="b-layout__link b-layout__link_bold b-layout__link_color_000" href="<?=getFriendlyURL('interview', $interview['id'])?>"><?=$interview['uname'] . ' ' . $interview['usurname'] . ' [' . $interview['login'] . ']'?></a></div>
                 <? if(hasPermissions('interviews')) { ?>
                 <div class="b-layout__txt b-layout__txt_center">
-                    <a class="b-layout__link b-layout__link_color_000" href="javascript:void(0)" onclick="editInterview(<?=$interview['id']?>)">Редактировать</a> |
-                    <a class="b-layout__link b-layout__link_color_000" href="./?task=del&id=<?=$interview['id']?>&token=<?=$_SESSION['rand']?>" onclick="return (confirm('Уверены?'))">Удалить</a>
+                    <a class="b-layout__link b-layout__link_color_000" href="javascript:void(0)" onclick="editInterview(<?=$interview['id']?>)">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> |
+                    <a class="b-layout__link b-layout__link_color_000" href="./?task=del&id=<?=$interview['id']?>&token=<?=$_SESSION['rand']?>" onclick="return (confirm('РЈРІРµСЂРµРЅС‹?'))">РЈРґР°Р»РёС‚СЊ</a>
                 </div>
                 <? } ?>
             </li>
         <? } ?>
         </ul>
         <? } else { ?>
-        <div class="b-layout__txt b-layout__txt_padtop_20 b-layout__txt_padbot_20">Интервью не найдено</div>
+        <div class="b-layout__txt b-layout__txt_padtop_20 b-layout__txt_padbot_20">РРЅС‚РµСЂРІСЊСЋ РЅРµ РЅР°Р№РґРµРЅРѕ</div>
         <? } //else?>
         <? if(hasPermissions('interviews')) include('form.php'); ?>
 </div>

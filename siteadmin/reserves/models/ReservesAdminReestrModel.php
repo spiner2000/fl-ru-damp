@@ -13,127 +13,127 @@ class ReservesAdminReestrModel extends ReservesAdmin
     const TEMPLATE_PROFILE = "<a target='_blank' href='/users/%s/setup/finance/'>%s %s %s [%s]</a>";    
     
     private $menu = array(
-        self::MODE_REESTRES => 'Ñäåëêè',
-        self::MODE_DOCUMENTS => 'Äîêóìåíòû',
-        self::MODE_NDFL => 'ÍÄÔË'
+        self::MODE_REESTRES => 'Ð¡Ð´ÐµÐ»ÐºÐ¸',
+        self::MODE_DOCUMENTS => 'Ð”Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ñ‹',
+        self::MODE_NDFL => 'ÐÐ”Ð¤Ð›'
     );
     
     private $fields = array(
         self::MODE_REESTRES => array(
             'order_id' => array(
-                'name' => '¹ äîã.', 
+                'name' => 'â„– Ð´Ð¾Ð³.', 
                 'width' => 60
             ),
             'emp_login' => array(
-                'name' => 'Ëîãèí çàêàç÷èêà', 
+                'name' => 'Ð›Ð¾Ð³Ð¸Ð½ Ð·Ð°ÐºÐ°Ð·Ñ‡Ð¸ÐºÐ°', 
                 'width' => 60
             ),
             'emp_id' => array(
-                'name' => 'ÈÄ çàêàç÷èêà', 
+                'name' => 'Ð˜Ð” Ð·Ð°ÐºÐ°Ð·Ñ‡Ð¸ÐºÐ°', 
                 'width' => 60
             ),
             'emp_status' => array(
-                'name' => 'Ñòàòóñ çàêàç÷èêà', 
+                'name' => 'Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð·Ð°ÐºÐ°Ð·Ñ‡Ð¸ÐºÐ°', 
                 'width' => 60
             ),
             'frl_login' => array(
-                'name' => 'Ëîãèí èñïîëíèòåëÿ', 
+                'name' => 'Ð›Ð¾Ð³Ð¸Ð½ Ð¸ÑÐ¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»Ñ', 
                 'width' => 60
             ),
             'frl_id' => array(
-                'name' => 'ÈÄ èñïîëíèòåëÿ', 
+                'name' => 'Ð˜Ð” Ð¸ÑÐ¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»Ñ', 
                 'width' => 60
             ),
             'frl_status' => array(
-                'name' => 'Ñòàòóñ èñïîëíèòåëÿ', 
+                'name' => 'Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð¸ÑÐ¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»Ñ', 
                 'width' => 60
             ),
             'pay_type' => array(
-                'name' => 'Òèï ïëàòåæà', 
+                'name' => 'Ð¢Ð¸Ð¿ Ð¿Ð»Ð°Ñ‚ÐµÐ¶Ð°', 
                 'width' => 60
             ),
             'pay_sum' => array(
-                'name' => 'Ñóììà îïëàòû', 
+                'name' => 'Ð¡ÑƒÐ¼Ð¼Ð° Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹', 
                 'width' => 60
             ),
             'ndfl_sum' => array(
-                'name' => 'ÍÄÔË', 
+                'name' => 'ÐÐ”Ð¤Ð›', 
                 'width' => 60
             ),
             'pay_kind' => array(
-                'name' => 'Ñïîñîá îïëàòû', 
+                'name' => 'Ð¡Ð¿Ð¾ÑÐ¾Ð± Ð¾Ð¿Ð»Ð°Ñ‚Ñ‹', 
                 'width' => 60
             ),
             'pay_date' => array(
-                'name' => 'Äàòà ïëàòåæà', 
+                'name' => 'Ð”Ð°Ñ‚Ð° Ð¿Ð»Ð°Ñ‚ÐµÐ¶Ð°', 
                 'width' => 60
             )
         ),
         self::MODE_DOCUMENTS => array(
             'bs_id' => array(
-                'name' => '¹ ñäåëêè', 
+                'name' => 'â„– ÑÐ´ÐµÐ»ÐºÐ¸', 
                 'width' => 60
             ),
             'profile' => array(
-                'name' => 'Ôàìèëèÿ Èìÿ Îò÷åñòâî [ëîãèí]', 
+                'name' => 'Ð¤Ð°Ð¼Ð¸Ð»Ð¸Ñ Ð˜Ð¼Ñ ÐžÑ‚Ñ‡ÐµÑÑ‚Ð²Ð¾ [Ð»Ð¾Ð³Ð¸Ð½]', 
                 'width' => 120
             ),
             'comp_name' => array(
-                'name' => 'Íàèìåíîâàíèå êîìïàíèè', 
+                'name' => 'ÐÐ°Ð¸Ð¼ÐµÐ½Ð¾Ð²Ð°Ð½Ð¸Ðµ ÐºÐ¾Ð¼Ð¿Ð°Ð½Ð¸Ð¸', 
                 'width' => 300
             ),
             'post_addr' => array(
-                'name' => 'Ïî÷òîâûé àäðåñ', 
+                'name' => 'ÐŸÐ¾Ñ‡Ñ‚Ð¾Ð²Ñ‹Ð¹ Ð°Ð´Ñ€ÐµÑ', 
                 'width' => 250
             )
         ), 
         self::MODE_NDFL => array(
             'id_contragent' => array(
-                'name' => 'ÈÄ',
+                'name' => 'Ð˜Ð”',
                 'width' => 60
             ),
             'login' => array(
-                'name' => 'Ëîãèí',
+                'name' => 'Ð›Ð¾Ð³Ð¸Ð½',
                 'width' => 60
             ),
             'i_name' => array(
-                'name' => 'Èìÿ',
+                'name' => 'Ð˜Ð¼Ñ',
                 'width' => 80
             ),
             'o_name' => array(
-                'name' => 'Îò÷åñòâî',
+                'name' => 'ÐžÑ‚Ñ‡ÐµÑÑ‚Ð²Ð¾',
                 'width' => 80
             ),
             'f_name' => array(
-                'name' => 'Ôàìèëèÿ',
+                'name' => 'Ð¤Ð°Ð¼Ð¸Ð»Ð¸Ñ',
                 'width' => 80
             ),
             'country_name' => array(
-                'name' => 'Ñòðàíà',
+                'name' => 'Ð¡Ñ‚Ñ€Ð°Ð½Ð°',
                 'width' => 60
             ),
             'ser_pass' => array(
-                'name' => 'Ñåðèÿ ïàñïîðòà',
+                'name' => 'Ð¡ÐµÑ€Ð¸Ñ Ð¿Ð°ÑÐ¿Ð¾Ñ€Ñ‚Ð°',
                 'width' => 50
             ),
             'num_pass' => array(
-                'name' => 'Íîìåð ïàñïîðòà',
+                'name' => 'ÐÐ¾Ð¼ÐµÑ€ Ð¿Ð°ÑÐ¿Ð¾Ñ€Ñ‚Ð°',
                 'width' => 60
             ),
             'date_pass' => array(
-                'name' => 'Äàòà âûäà÷è',
+                'name' => 'Ð”Ð°Ñ‚Ð° Ð²Ñ‹Ð´Ð°Ñ‡Ð¸',
                 'width' => 60
             ),
             'org_pass' => array(
-                'name' => 'Êåì âûäàí',
+                'name' => 'ÐšÐµÐ¼ Ð²Ñ‹Ð´Ð°Ð½',
                 'width' => 120
             ),
             'reg_addr' => array(
-                'name' => 'Àäðåñ',
+                'name' => 'ÐÐ´Ñ€ÐµÑ',
                 'width' => 180
             ),
             'dr' => array(
-                'name' => 'Äåíü ðîæäåíèÿ',
+                'name' => 'Ð”ÐµÐ½ÑŒ Ñ€Ð¾Ð¶Ð´ÐµÐ½Ð¸Ñ',
                 'width' => 60
             )
         )
@@ -154,7 +154,7 @@ class ReservesAdminReestrModel extends ReservesAdmin
     }
     
     /**
-     * Âîçâðàùàåò ìàññèâ ïîëåé òàáëèöû
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð¼Ð°ÑÑÐ¸Ð² Ð¿Ð¾Ð»ÐµÐ¹ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ‹
      */
     public function getFields()
     {
@@ -242,7 +242,7 @@ class ReservesAdminReestrModel extends ReservesAdmin
             
             case 'emp_status':
             case 'frl_status':
-                $value = $value ? 'ÞË' : 'ÔË';
+                $value = $value ? 'Ð®Ð›' : 'Ð¤Ð›';
                 break;
 
             case 'bs_id':
@@ -259,24 +259,24 @@ class ReservesAdminReestrModel extends ReservesAdmin
                 
                 if ($res) {
                     if (!$res['index']) {
-                        $message[] = 'èíäåêñ';
+                        $message[] = 'Ð¸Ð½Ð´ÐµÐºÑ';
                     }
                     
                     if (!$res['country_id']) {
-                        $message[] = 'ñòðàíó';
+                        $message[] = 'ÑÑ‚Ñ€Ð°Ð½Ñƒ';
                     }
                     
                     if (!$res['city_id']) {
-                        $message[] = 'ãîðîä';
+                        $message[] = 'Ð³Ð¾Ñ€Ð¾Ð´';
                     }                    
                 }
                 
                 if (!$res || !empty($message)) {
                     if (!$res || count($message) == 3) {
-                        $message_txt = 'Íå óäàëîñü ðàçîáðàòü àäðåñ.';
+                        $message_txt = 'ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ñ€Ð°Ð·Ð¾Ð±Ñ€Ð°Ñ‚ÑŒ Ð°Ð´Ñ€ÐµÑ.';
                         $error_class = 'b-txt_color_red';
                     } else {
-                        $message_txt = sprintf('Íå óäàëîñü ðàçîáðàòü: %s.', implode(', ', $message));
+                        $message_txt = sprintf('ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ñ€Ð°Ð·Ð¾Ð±Ñ€Ð°Ñ‚ÑŒ: %s.', implode(', ', $message));
                     }
                 }
                 
@@ -299,10 +299,10 @@ class ReservesAdminReestrModel extends ReservesAdmin
     public static function getPayTypes()
     {
         return array(
-            self::OPERATION_RESERVE => 'Ðåçåðâèðîâàíèå',
-            self::OPERATION_PAY => 'Âûïëàòà',
-            self::OPERATION_BACK => 'Âîçâðàò',
-            self::OPERATION_TAX => 'Êîìèññèÿ'
+            self::OPERATION_RESERVE => 'Ð ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ',
+            self::OPERATION_PAY => 'Ð’Ñ‹Ð¿Ð»Ð°Ñ‚Ð°',
+            self::OPERATION_BACK => 'Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‚',
+            self::OPERATION_TAX => 'ÐšÐ¾Ð¼Ð¸ÑÑÐ¸Ñ'
         );
     }
     
@@ -417,7 +417,7 @@ class ReservesAdminReestrModel extends ReservesAdmin
             split_part(sr._1_fio, ' ', 2) AS i_name,
             split_part(sr._1_fio , ' ', 3) AS o_name,
             split_part(sr._1_fio, ' ', 1) AS f_name,
-            (CASE WHEN u.country > 0 THEN c.country_name ELSE 'Ðîññèÿ' END) AS country_name,
+            (CASE WHEN u.country > 0 THEN c.country_name ELSE 'Ð Ð¾ÑÑÐ¸Ñ' END) AS country_name,
             0 AS status,
             sr._1_idcard_ser AS ser_pass,
             sr._1_idcard AS num_pass,
@@ -489,7 +489,7 @@ class ReservesAdminReestrModel extends ReservesAdmin
                     'i_name' => @$name[1],
                     'o_name' => @$name[2],
                     'f_name' => @$name[0],
-                    'country_name' => empty($fields['country'])?'Ðîññèÿ':$fields['country'],
+                    'country_name' => empty($fields['country'])?'Ð Ð¾ÑÑÐ¸Ñ':$fields['country'],
                     'status' => 0,
                     'ser_pass' => $fields['idcard_ser'],
                     'num_pass' => $fields['idcard'],
@@ -555,22 +555,22 @@ class ReservesAdminReestrModel extends ReservesAdmin
                     $menu = array(
                         array(
                             'link' => WDCPREFIX . $this->path . $this->reestr1_filename,
-                            'anchor' => 'Ðååñòð 1'
+                            'anchor' => 'Ð ÐµÐµÑÑ‚Ñ€ 1'
                         ),
                         array(
                             'link' => WDCPREFIX . $this->path . $this->reestr2_filename,
-                            'anchor' => 'Ðååñòð 2'
+                            'anchor' => 'Ð ÐµÐµÑÑ‚Ñ€ 2'
                         ),
                         array(
                             'link' => WDCPREFIX . $this->path . $this->reestr3_filename,
-                            'anchor' => 'Ðååñòð 3'
+                            'anchor' => 'Ð ÐµÐµÑÑ‚Ñ€ 3'
                         )
                     );
                 }
                 if ($this->generated_file_name) {
                     $menu[] = array(
                         'link' => WDCPREFIX . $this->path_payout . $this->generated_file_name,
-                        'anchor' => 'Îò÷åò ïî âûïëàòàì'
+                        'anchor' => 'ÐžÑ‚Ñ‡ÐµÑ‚ Ð¿Ð¾ Ð²Ñ‹Ð¿Ð»Ð°Ñ‚Ð°Ð¼'
                     );
                 }
                 break;
@@ -579,7 +579,7 @@ class ReservesAdminReestrModel extends ReservesAdmin
                 if ($this->generated_file_name) {
                     $menu[] = array(
                         'link' => WDCPREFIX . $this->path . $this->generated_file_name,
-                        'anchor' => 'Ðååñòð äîêóìåíòîâ'
+                        'anchor' => 'Ð ÐµÐµÑÑ‚Ñ€ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð¾Ð²'
                     );
                 }
                 break;
@@ -588,12 +588,12 @@ class ReservesAdminReestrModel extends ReservesAdmin
                 if ($this->generated_file_name) {
                     $menu[] = array(
                         'link' => WDCPREFIX . $this->path . $this->generated_file_name,
-                        'anchor' => 'Ðååñòð ÍÄÔË'
+                        'anchor' => 'Ð ÐµÐµÑÑ‚Ñ€ ÐÐ”Ð¤Ð›'
                     );
                     
                     $menu[] = array(
                         'link' => 'https://dadata.ru/#!process_form_from_file',
-                        'anchor' => 'Ïåðåéòè â DaData'
+                        'anchor' => 'ÐŸÐµÑ€ÐµÐ¹Ñ‚Ð¸ Ð² DaData'
                     );
                 }
                 break;

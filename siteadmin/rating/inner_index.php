@@ -16,49 +16,49 @@ $xajax->printJavascript('/xajax/');
 </style>
 <script>
 </script>
-<strong>Рейтинг</strong>
+<strong>Р РµР№С‚РёРЅРі</strong>
 <br/><br/><br/>
 <? if ($_GET['result']=='success') { ?>
   <div>
-    <img src="/images/ico_ok.gif" alt="" border="0" height="18" width="19"/>&nbsp;&nbsp;Изменения внесены.
+    <img src="/images/ico_ok.gif" alt="" border="0" height="18" width="19"/>&nbsp;&nbsp;РР·РјРµРЅРµРЅРёСЏ РІРЅРµСЃРµРЅС‹.
   </div>
   <br/><br/>
 <? } if ($error) print(view_error($error).'<br/>');?>
-<form action="/siteadmin/rating/" method="post" onSubmit="this.btn.value='Подождите'; this.btn.disabled=true;">
-    Логин&nbsp;&nbsp;<input type="text" name="login" value="<?=$login?>"/><br/><br/>
+<form action="/siteadmin/rating/" method="post" onSubmit="this.btn.value='РџРѕРґРѕР¶РґРёС‚Рµ'; this.btn.disabled=true;">
+    Р›РѕРіРёРЅ&nbsp;&nbsp;<input type="text" name="login" value="<?=$login?>"/><br/><br/>
     <fieldset style="width:30%;text-align:right;padding:10px">
-      <legend>Добавить ему в&nbsp;</legend><br/>
-      Рейтинг&nbsp;&nbsp;<input type="text" name="o_oth_plus" value="<?=$o_oth_plus?>" style="width:50px;text-align:right"/>&nbsp;&nbsp;очков
+      <legend>Р”РѕР±Р°РІРёС‚СЊ РµРјСѓ РІ&nbsp;</legend><br/>
+      Р РµР№С‚РёРЅРі&nbsp;&nbsp;<input type="text" name="o_oth_plus" value="<?=$o_oth_plus?>" style="width:50px;text-align:right"/>&nbsp;&nbsp;РѕС‡РєРѕРІ
       <br/>
     </fieldset><br/><br/><br/>
     <input type="hidden" name="action" value="oth_plus" />
-    <input type="submit" id="btn" value="Отправить" />
+    <input type="submit" id="btn" value="РћС‚РїСЂР°РІРёС‚СЊ" />
 </form>
 <br />
 <br />
 <br />
-Установить новый пароль:
-<form action="/siteadmin/rating/" method="post" onSubmit="this.btn.value='Подождите'; this.btn.disabled=true;">
-    Логин&nbsp;&nbsp;&nbsp;<input type="text" name="login" value="<?=$login?>"/><br/>
-    Пароль&nbsp;<input type="password" name="pwd" value=""/><br/><br/>
+РЈСЃС‚Р°РЅРѕРІРёС‚СЊ РЅРѕРІС‹Р№ РїР°СЂРѕР»СЊ:
+<form action="/siteadmin/rating/" method="post" onSubmit="this.btn.value='РџРѕРґРѕР¶РґРёС‚Рµ'; this.btn.disabled=true;">
+    Р›РѕРіРёРЅ&nbsp;&nbsp;&nbsp;<input type="text" name="login" value="<?=$login?>"/><br/>
+    РџР°СЂРѕР»СЊ&nbsp;<input type="password" name="pwd" value=""/><br/><br/>
    <br/>
     <input type="hidden" name="action" value="setpwd" />
-    <input type="submit" id="btn" value="Отправить" />
+    <input type="submit" id="btn" value="РћС‚РїСЂР°РІРёС‚СЊ" />
 </form>
 <br />
 <br />
 <br />
 <?php if ($sError) { print(view_error($sError).'<br/>'); } ?>
-Продление сервисов:
-<form action="/siteadmin/rating/" method="post" onSubmit="this.btn.value='Подождите'; this.btn.disabled=true;">
-    Логин&nbsp;&nbsp;<input type="text" name="login" value="<?=$login?>"/><br/>
-    Кол-во дней&nbsp;&nbsp;<input type="text" name="days" value="<?=$days?>"/><br/>
+РџСЂРѕРґР»РµРЅРёРµ СЃРµСЂРІРёСЃРѕРІ:
+<form action="/siteadmin/rating/" method="post" onSubmit="this.btn.value='РџРѕРґРѕР¶РґРёС‚Рµ'; this.btn.disabled=true;">
+    Р›РѕРіРёРЅ&nbsp;&nbsp;<input type="text" name="login" value="<?=$login?>"/><br/>
+    РљРѕР»-РІРѕ РґРЅРµР№&nbsp;&nbsp;<input type="text" name="days" value="<?=$days?>"/><br/>
     <fieldset style="width:80%;padding:10px">
-      <legend>Что именно&nbsp;</legend><br/>
+      <legend>Р§С‚Рѕ РёРјРµРЅРЅРѕ&nbsp;</legend><br/>
       <input type="radio" name="type" value="1" id="type_pro"> <label for="type_pro">PRO</label><br/>
-      <input type="radio" name="type" value="2" id="type_where"> <label for="type_where">Размещение в</label> &nbsp;&nbsp;<select name="where">
-      	<option value="-1">Главная</option>
-      	<option value="0">Каталог</option>
+      <input type="radio" name="type" value="2" id="type_where"> <label for="type_where">Р Р°Р·РјРµС‰РµРЅРёРµ РІ</label> &nbsp;&nbsp;<select name="where">
+      	<option value="-1">Р“Р»Р°РІРЅР°СЏ</option>
+      	<option value="0">РљР°С‚Р°Р»РѕРі</option>
       	<?php foreach ($profs as $prof) { ?>
       	<option value="<?=$prof['id']?>"><?=$prof['groupname']?>: <?=$prof['profname']?></option>
       	<?php } ?>
@@ -66,17 +66,17 @@ $xajax->printJavascript('/xajax/');
       <br/>
     </fieldset><br/><br/><br/>
     <input type="hidden" name="action" value="addserv" />
-    <input type="submit" id="btn" value="Отправить" />
+    <input type="submit" id="btn" value="РћС‚РїСЂР°РІРёС‚СЊ" />
 </form>
 <hr/>
-Пересчет рейтинга за работы в портфолио
+РџРµСЂРµСЃС‡РµС‚ СЂРµР№С‚РёРЅРіР° Р·Р° СЂР°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ
 <br/><br/>
 <table>
 <tr>
-    <td style="padding:5px">Логин: </td>
+    <td style="padding:5px">Р›РѕРіРёРЅ: </td>
     <td><input type="text" id="recalc_portfolio_rating_login" style="margin:5px"/></td>
 </tr>
 <tr>
-    <td colspan="2" align="right"><input type="button" onclick="xajax_recalcUserPortfolioRating($('recalc_portfolio_rating_login').value)" value="Пересчитать для него"/> </td>
+    <td colspan="2" align="right"><input type="button" onclick="xajax_recalcUserPortfolioRating($('recalc_portfolio_rating_login').value)" value="РџРµСЂРµСЃС‡РёС‚Р°С‚СЊ РґР»СЏ РЅРµРіРѕ"/> </td>
 </tr>
 </table>

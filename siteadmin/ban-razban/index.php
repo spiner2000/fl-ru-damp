@@ -19,18 +19,18 @@ if (!hasPermissions('users')) {
     exit;
 }
 
-$mode   = __paramInit( 'string', 'mode',   null,     '' ); // раздел
-$sort   = __paramInit( 'string', 'sort',   null,     '' ); // сортировка
-$page   = __paramInit( 'int',    'p',      null,     1 );  // номер страницы
-$ft     = __paramInit( 'int',    'ft',     null,     0 );  // тип отображения
-$admin  = __paramInit( 'int',    'admin',  null,     0 );  // uid админа, данные по которому смотрим
-$action = __paramInit( 'string', 'action', 'action', '' ); // текущее действие
-$search = __paramInit( 'string', 'search', null,     '' ); // поиск
-$group  = __paramInit( 'string', 'group', null,     'new' ); // группа
+$mode   = __paramInit( 'string', 'mode',   null,     '' ); // СЂР°Р·РґРµР»
+$sort   = __paramInit( 'string', 'sort',   null,     '' ); // СЃРѕСЂС‚РёСЂРѕРІРєР°
+$page   = __paramInit( 'int',    'p',      null,     1 );  // РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹
+$ft     = __paramInit( 'int',    'ft',     null,     0 );  // С‚РёРї РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ
+$admin  = __paramInit( 'int',    'admin',  null,     0 );  // uid Р°РґРјРёРЅР°, РґР°РЅРЅС‹Рµ РїРѕ РєРѕС‚РѕСЂРѕРјСѓ СЃРјРѕС‚СЂРёРј
+$action = __paramInit( 'string', 'action', 'action', '' ); // С‚РµРєСѓС‰РµРµ РґРµР№СЃС‚РІРёРµ
+$search = __paramInit( 'string', 'search', null,     '' ); // РїРѕРёСЃРє
+$group  = __paramInit( 'string', 'group', null,     'new' ); // РіСЂСѓРїРїР°
 $sort   = in_array( $sort, array('btime', 'utime',   'login') ) ? $sort : '';
 $search = clearInputText( $search );
 
-// где находимся
+// РіРґРµ РЅР°С…РѕРґРёРјСЃСЏ
 if ( !in_array($mode, array('users', 'commune', 'opinions', 'complain', 'complain_types')) ) {
     header ("Location: /404.php"); 
     exit;

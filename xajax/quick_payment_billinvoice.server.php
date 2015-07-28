@@ -17,9 +17,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/DocGen/DocGenBill.php');
 
 
 /**
- * Выставяем счет оплаты по безналу
+ * Р’С‹СЃС‚Р°РІСЏРµРј СЃС‡РµС‚ РѕРїР»Р°С‚С‹ РїРѕ Р±РµР·РЅР°Р»Сѓ
  * 
- * @param string $type - тип платежа (тут всегда bank)
+ * @param string $type - С‚РёРї РїР»Р°С‚РµР¶Р° (С‚СѓС‚ РІСЃРµРіРґР° bank)
  * @param array $data
  * @return \xajaxResponse
  */
@@ -53,7 +53,7 @@ function quickPaymentBillinvoiceBank($type, $data)
     } catch (Exception $e) {
          $objResponse->script("
             var qp = quick_ext_payment_factory.getQuickPayment('billinvoice');
-            if(qp) qp.show_error('{$e->getMessage()} Попробуйте еще раз.');
+            if(qp) qp.show_error('{$e->getMessage()} РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·.');
         ");
             
         return $objResponse;

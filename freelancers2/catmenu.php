@@ -5,8 +5,8 @@ if ($uid && !is_emp()) {
 }
 ?>
 <ul id="accordion">
-    <li class="all-employers"><a href="/employers/">Работодатели</a></li>
-    <li class="all-lancers"><a href="/freelancers">Все фрилансеры</a></li>
+    <li class="all-employers"><a href="/employers/">Р Р°Р±РѕС‚РѕРґР°С‚РµР»Рё</a></li>
+    <li class="all-lancers"><a href="/freelancers">Р’СЃРµ С„СЂРёР»Р°РЅСЃРµСЂС‹</a></li>
     <? $iter = 0;
     $size = sizeof($profs);
     $prof = $profs[$iter++];
@@ -24,7 +24,7 @@ if ($uid && !is_emp()) {
                         do {
                           $in_spec = FALSE; // ($uid && ((is_array($specs) && in_array($prof['id'], $specs)))); ?>
                    <li<?=($prof['id'] == $prof_id ? ' class="active"' : '')?>>
-                        <?if($num==1){?><script type="text/javascript">initCI('submenu<?=$iter?>')</script><?}?><span class="prf-cnt"><?=$prof['count']?></span><a href="/freelancers/<?=$prof['link']?>/"><?=$prof['profname']?></a><? if ($in_spec) { ?>&nbsp;<span class="prf-this">&larr;&nbsp;<span>Вы&nbsp;здесь</span></span><? } ?>
+                        <?if($num==1){?><script type="text/javascript">initCI('submenu<?=$iter?>')</script><?}?><span class="prf-cnt"><?=$prof['count']?></span><a href="/freelancers/<?=$prof['link']?>/"><?=$prof['profname']?></a><? if ($in_spec) { ?>&nbsp;<span class="prf-this">&larr;&nbsp;<span>Р’С‹&nbsp;Р·РґРµСЃСЊ</span></span><? } ?>
                    </li>
                         <?
                                                             

@@ -8,15 +8,15 @@
 				<div class="nr-arb-full-info">
                     <?
                     if ($stage->arbitrage['by_consent'] === 't') { 
-                        $introText = "Арбитраж закрыл этап";
+                        $introText = "РђСЂР±РёС‚СЂР°Р¶ Р·Р°РєСЂС‹Р» СЌС‚Р°Рї";
                     } else {
-                        $introText = "Арбитраж вынес решение по этапу";
+                        $introText = "РђСЂР±РёС‚СЂР°Р¶ РІС‹РЅРµСЃ СЂРµС€РµРЅРёРµ РїРѕ СЌС‚Р°РїСѓ";
                     }
                     ?>
 					<h3><?= $introText ?> &laquo;<a href="?site=Stage&id=<?=$stage->id?>"><?=reformat($stage->name, 33, 0, 1)?></a>&raquo;</h3>
                     
    					<div class="nr-arb-why">
-   						<a href="javascript:void(0);" onclick="$(this).getParent('.nr-arb-why').toggleClass('nr-arb-why-show');" class="lnk-dot-666">Причина подачи в Арбитраж</a>
+   						<a href="javascript:void(0);" onclick="$(this).getParent('.nr-arb-why').toggleClass('nr-arb-why-show');" class="lnk-dot-666">РџСЂРёС‡РёРЅР° РїРѕРґР°С‡Рё РІ РђСЂР±РёС‚СЂР°Р¶</a>
    						<div class="nr-arb-why-in">
    							<p class="d"><?=date('j '.strtolower($GLOBALS['MONTHA'][date('n', strtotime($stage->arbitrage['requested']))]).' Y, H:i', strtotime($stage->arbitrage['requested']))?></p>
    							<p><?=reformat($stage->arbitrage['descr'], 40, 0, 0, 1)?></p>
@@ -59,15 +59,15 @@
                             <b class="b1"></b>
                             <b class="b2"></b>
                             <div class="form-in">
-                                Для получения денег перейдите в задачу и заполните форму.
+                                Р”Р»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РґРµРЅРµРі РїРµСЂРµР№РґРёС‚Рµ РІ Р·Р°РґР°С‡Сѓ Рё Р·Р°РїРѕР»РЅРёС‚Рµ С„РѕСЂРјСѓ.
                             </div>
                             <b class="b2"></b>
                             <b class="b1"></b>
                         </div>
                     <? } ?>
-                    <p>Если у вас есть вопросы, пожалуйста, обратитесь в <a href="/help/?all">Службу поддержки</a> или к <a href="/users/norisk/">менеджеру «Безопасной Сделки»</a></p>
+                    <p>Р•СЃР»Рё Сѓ РІР°СЃ РµСЃС‚СЊ РІРѕРїСЂРѕСЃС‹, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕР±СЂР°С‚РёС‚РµСЃСЊ РІ <a href="/help/?all">РЎР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a> РёР»Рё Рє <a href="/users/norisk/">РјРµРЅРµРґР¶РµСЂСѓ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ»</a></p>
 					<div class="nr-arb-fi-close">
-						<a href="javascript:void(0);" class="btn btn-grey" onclick="$(this).getParent('div.overlay').setStyle('display', 'none'); return false;"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Закрыть</span></span></span></a>
+						<a href="javascript:void(0);" class="btn btn-grey" onclick="$(this).getParent('div.overlay').setStyle('display', 'none'); return false;"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Р—Р°РєСЂС‹С‚СЊ</span></span></span></a>
 					</div>
 				</div>
 			</div>

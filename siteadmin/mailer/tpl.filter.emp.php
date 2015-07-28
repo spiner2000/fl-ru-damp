@@ -2,16 +2,16 @@
     <table class="b-layout__table b-layout__table_width_full" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_130">
-                <div class="b-layout__txt">Аккаунт</div>
+                <div class="b-layout__txt">РђРєРєР°СѓРЅС‚</div>
             </td>
             <td class="b-layout__right">
                 <div class="b-check b-check_padbot_10">
                     <input id="check_emp_pro" class="b-check__input" name="etype_account[0]" type="checkbox" value="1" <?=($message['etype_account'][0]==1?"checked":"")?>/>
-                    <label class="b-check__label b-check__label_fontsize_13" for="check_emp_pro">Профессиональный <img src="/images/icons/e-pro.png" alt=""  /></label>
+                    <label class="b-check__label b-check__label_fontsize_13" for="check_emp_pro">РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ <img src="/images/icons/e-pro.png" alt=""  /></label>
                 </div>
                 <div class="b-check b-check_padbot_20">
                     <input id="check_emp_norm" class="b-check__input" name="etype_account[1]" type="checkbox" value="1" <?=($message['etype_account'][1]==1?"checked":"")?>/>
-                    <label class="b-check__label b-check__label_fontsize_13" for="check_emp_norm">Начальный</label>
+                    <label class="b-check__label b-check__label_fontsize_13" for="check_emp_norm">РќР°С‡Р°Р»СЊРЅС‹Р№</label>
                 </div>
             </td>
         </tr>
@@ -19,16 +19,16 @@
     <table class="b-layout__table b-layout__table_width_full" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_130">
-                <div class="b-layout__txt">Профиль</div>
+                <div class="b-layout__txt">РџСЂРѕС„РёР»СЊ</div>
             </td>
             <td class="b-layout__right">
                 <div class="b-check b-check_padbot_10">
                     <input id="check_emp_profile_full" class="b-check__input" name="etype_profile[0]" type="checkbox" value="1" <?=($message['etype_profile'][0]==1?"checked":"")?>/>
-                    <label class="b-check__label b-check__label_fontsize_13" for="check_emp_profile_full">Заполнен</label>
+                    <label class="b-check__label b-check__label_fontsize_13" for="check_emp_profile_full">Р—Р°РїРѕР»РЅРµРЅ</label>
                 </div>
                 <div class="b-check b-check_padbot_20">
                     <input id="check_emp_profile_norm" class="b-check__input" name="etype_profile[1]" type="checkbox" value="1" <?=($message['etype_profile'][1]==1?"checked":"")?>/>
-                    <label class="b-check__label b-check__label_fontsize_13" for="check_emp_profile_norm">Пустой</label>
+                    <label class="b-check__label b-check__label_fontsize_13" for="check_emp_profile_norm">РџСѓСЃС‚РѕР№</label>
                 </div>
             </td>
         </tr>
@@ -36,7 +36,7 @@
     <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_130 b-layout__left_valign_middle">
-                <div class="b-layout__txt">Зарегистрирован</div>
+                <div class="b-layout__txt">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ</div>
             </td>
             <td class="b-layout__right">
                 <span id="i_eregdate"></span>
@@ -53,14 +53,14 @@
                         <span class="b-combo__arrow-date"></span>
                     </div>
                 </div>
-                <span id="emp_reg_date_text" class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?=($message['efrom_regdate'] || $message['eto_regdate'] ? "style='display: none'" : '')?>>&#160;&#160;не важно</span>
+                <span id="emp_reg_date_text" class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?=($message['efrom_regdate'] || $message['eto_regdate'] ? "style='display: none'" : '')?>>&#160;&#160;РЅРµ РІР°Р¶РЅРѕ</span>
             </td>
         </tr>
     </table>
     <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_130 b-layout__left_valign_middle">
-                <div class="b-layout__txt">Последний визит</div>
+                <div class="b-layout__txt">РџРѕСЃР»РµРґРЅРёР№ РІРёР·РёС‚</div>
             </td>
             <td class="b-layout__right">
                 <span id="i_lastvisit"></span>
@@ -77,14 +77,14 @@
                         <span class="b-combo__arrow-date"></span>
                     </div>
                 </div>
-                <span id="emp_lastvisit_date_text" class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?=($message['efrom_lastvisit'] || $message['eto_lastvisit'] ? "style='display: none'" : '')?>>&#160;&#160;не важно</span>
+                <span id="emp_lastvisit_date_text" class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" <?=($message['efrom_lastvisit'] || $message['eto_lastvisit'] ? "style='display: none'" : '')?>>&#160;&#160;РЅРµ РІР°Р¶РЅРѕ</span>
             </td>
         </tr>
     </table>
     <? $finance_check  = "efinance"; ?>
     <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_margleft_130 i-button show-settings <?= !empty($message[$finance_check])?"b-layout__txt_hide":""?>">
         <a class="b-button b-button_poll_plus" href="#" onclick="$('<?= $finance_check?>').set('value', 1);"></a>&#160;&#160;
-        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('<?= $finance_check?>').set('value', 1);">Финансы</a>
+        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('<?= $finance_check?>').set('value', 1);">Р¤РёРЅР°РЅСЃС‹</a>
     </div>
     <?php 
     $finance_name   = array("money"          => "efinance_money",
@@ -99,7 +99,7 @@
     <? $buying_check = "ebuying"; ?>
     <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_margleft_130 i-button show-settings <?= !empty($message[$buying_check])?"b-layout__txt_hide":""?>">
         <a class="b-button b-button_poll_plus" href="#" onclick="$('<?= $buying_check;?>').set('value', 1);"></a>&#160;&#160;
-        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('<?= $buying_check;?>').set('value', 1);">Покупки</a>
+        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('<?= $buying_check;?>').set('value', 1);">РџРѕРєСѓРїРєРё</a>
     </div>
     <?php
     $buying_name   = array("buying"         => "ebuying_buying[%s]",
@@ -115,29 +115,29 @@
     
     <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_margleft_130 i-button show-settings <?= !empty($message['eproject'])?"b-layout__txt_hide":""?>">
         <a class="b-button b-button_poll_plus" href="#" onclick="$('eproject').set('value', 1);"></a>&#160;&#160;
-        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('eproject').set('value', 1);">Проекты</a>
+        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('eproject').set('value', 1);">РџСЂРѕРµРєС‚С‹</a>
     </div>
     <? include("subfilter/tpl.eproject.php"); ?>
     
     <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_margleft_130 i-button show-settings <?= !empty($message['emassend'])?"b-layout__txt_hide":""?>">
         <a class="b-button b-button_poll_plus" href="#" onclick="$('emassend').set('value', 1);"></a>&#160;&#160;
-        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('emassend').set('value', 1);">Рассылка</a>
+        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('emassend').set('value', 1);">Р Р°СЃСЃС‹Р»РєР°</a>
     </div>
 	<? include("subfilter/tpl.massend.php"); ?>			
 				
     <table class="b-layout__table b-layout__table_width_full" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_130">
-                <div class="b-layout__txt">Пол</div>
+                <div class="b-layout__txt">РџРѕР»</div>
             </td>
             <td class="b-layout__right">
                 <div class="b-check b-check_padbot_10 b-check_padtop_4">
                     <input id="check_emp_sex0" class="b-check__input" name="etype_sex[0]" type="checkbox" value="1" <?=($message['etype_sex'][0]==1?"checked":"")?>/>
-                    <label class="b-check__label b-check__label_fontsize_13" for="check_emp_sex0">Мужской</label>
+                    <label class="b-check__label b-check__label_fontsize_13" for="check_emp_sex0">РњСѓР¶СЃРєРѕР№</label>
                 </div>
                 <div class="b-check">
                     <input id="check_emp_sex1" class="b-check__input" name="etype_sex[1]" type="checkbox" value="1" <?=($message['etype_sex'][1]==1?"checked":"")?>/>
-                    <label class="b-check__label b-check__label_fontsize_13" for="check_emp_sex1">Женский</label>
+                    <label class="b-check__label b-check__label_fontsize_13" for="check_emp_sex1">Р–РµРЅСЃРєРёР№</label>
                 </div>
             </td>
         </tr>

@@ -1,5 +1,5 @@
 <?
-// TODO: Убрать во время релиза tu, чтобы сохранить ссылки
+// TODO: РЈР±СЂР°С‚СЊ РІРѕ РІСЂРµРјСЏ СЂРµР»РёР·Р° tu, С‡С‚РѕР±С‹ СЃРѕС…СЂР°РЅРёС‚СЊ СЃСЃС‹Р»РєРё
 /*
 if (isset($_GET['p']) && $_GET['p'] == 'tu') {
    include('../404.php');
@@ -66,7 +66,7 @@ if ($user->login && $user->email == ''){
 	exit;
 }
 
-// нельзя просматривать чужие портфолио в режиме ПРО
+// РЅРµР»СЊР·СЏ РїСЂРѕСЃРјР°С‚СЂРёРІР°С‚СЊ С‡СѓР¶РёРµ РїРѕСЂС‚С„РѕР»РёРѕ РІ СЂРµР¶РёРјРµ РџР Рћ
 if ($_SESSION['i_want_pro'] && $user->uid != get_uid(0)) {
     unset($_SESSION['i_want_pro']);
     unset($_SESSION['pro_last']);
@@ -86,7 +86,7 @@ if($user->uid<>$uid && !is_emp($user->role))
   if($user->uid) {
     $scl->LogStat($user->uid, (int)$uid, $_SERVER['REMOTE_ADDR'], $ref_id, (int)is_emp(), $stamp);
     
-    // статистика по ключевым словам ------------
+    // СЃС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РєР»СЋС‡РµРІС‹Рј СЃР»РѕРІР°Рј ------------
     $kw = $_GET['kw'];
     
     if ( $kw && $user->is_pro && preg_match('~/freelancers/~i', $_SERVER['HTTP_REFERER']) ) {
@@ -106,7 +106,7 @@ if($user->uid<>$uid && !is_emp($user->role))
 $role = $user->role;
 $rpath = "../";
 
-// Статус присутсвия.
+// РЎС‚Р°С‚СѓСЃ РїСЂРёСЃСѓС‚СЃРІРёСЏ.
 $online_status = $user->getOnlineStatus4Profile();
 
 
@@ -131,7 +131,7 @@ elseif(!$page && !$user->tabs[0] && (!$user->tabs[3] && !hasPermissions('users')
 
 
 //------------------------------------------------------------------------------
-// Проверяем блокировку ТУ в профиле за не погашенный долг в ЛС
+// РџСЂРѕРІРµСЂСЏРµРј Р±Р»РѕРєРёСЂРѕРІРєСѓ РўРЈ РІ РїСЂРѕС„РёР»Рµ Р·Р° РЅРµ РїРѕРіР°С€РµРЅРЅС‹Р№ РґРѕР»Рі РІ Р›РЎ
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/tu/models/TServiceOrderModel.php');
 $hide_tu_for_others = FALSE;
@@ -167,8 +167,8 @@ switch ($page) {
         $prfs = new professions();
         $profs = $prfs->GetSpecs($user->login);
         $spec_text = professions::GetProfName($user->spec);
-        $page_descr = "Удаленная работа (фри-ланс). Портфолио фрилансера: ".$spec_text.". ";
-        $page_keyw = "удаленная работа, фри-ланс, фрилансер, ";
+        $page_descr = "РЈРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° (С„СЂРё-Р»Р°РЅСЃ). РџРѕСЂС‚С„РѕР»РёРѕ С„СЂРёР»Р°РЅСЃРµСЂР°: ".$spec_text.". ";
+        $page_keyw = "СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°, С„СЂРё-Р»Р°РЅСЃ, С„СЂРёР»Р°РЅСЃРµСЂ, ";
         if ($profs) {
             foreach ($profs as $ikey => $prof)
             $out[] = str_replace("\"","",input_ref($prof['name']));
@@ -180,9 +180,9 @@ switch ($page) {
         $inner = "inform_inner.php";
         $activ_tab = 3;
         if(is_emp($user->role)) {
-            $page_title = "Информация о работодателе $user->uname $user->usurname [$user->login] - фриланс, удаленная работа на FL.ru";
+            $page_title = "РРЅС„РѕСЂРјР°С†РёСЏ Рѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»Рµ $user->uname $user->usurname [$user->login] - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
         } else {
-            $page_title = "Информация о фрилансере $user->uname $user->usurname [$user->login] - фриланс, удаленная работа на FL.ru";
+            $page_title = "РРЅС„РѕСЂРјР°С†РёСЏ Рѕ С„СЂРёР»Р°РЅСЃРµСЂРµ $user->uname $user->usurname [$user->login] - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
         }
         break;
     case "all":
@@ -199,9 +199,9 @@ switch ($page) {
         $inner = "opinions_inner.php";
         $activ_tab = 5;
         if(is_emp($user->role)) {
-            $page_title = "Отзывы о работодателе $user->uname $user->usurname [$user->login] - фриланс, удаленная работа на FL.ru";
+            $page_title = "РћС‚Р·С‹РІС‹ Рѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»Рµ $user->uname $user->usurname [$user->login] - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
         } else {
-            $page_title = "Отзывы о фрилансере $user->uname $user->usurname [$user->login] - фриланс, удаленная работа на FL.ru";
+            $page_title = "РћС‚Р·С‹РІС‹ Рѕ С„СЂРёР»Р°РЅСЃРµСЂРµ $user->uname $user->usurname [$user->login] - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
         }
         break;
     case "rating":
@@ -216,9 +216,9 @@ switch ($page) {
         }
         $activ_tab = 6;
         if(is_emp($user->role)) {
-            $page_title = "Рейтинг работодателя $user->uname $user->usurname [$user->login] - фриланс, удаленная работа на FL.ru";
+            $page_title = "Р РµР№С‚РёРЅРі СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ $user->uname $user->usurname [$user->login] - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
         } else {
-            $page_title = "Рейтинг фрилансера $user->uname $user->usurname [$user->login] - фриланс, удаленная работа на FL.ru";
+            $page_title = "Р РµР№С‚РёРЅРі С„СЂРёР»Р°РЅСЃРµСЂР° $user->uname $user->usurname [$user->login] - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
         }
         break;
     default:
@@ -232,9 +232,9 @@ switch ($page) {
         	exit;
         }
         
-        // если хотим показать пользователю НЕПРО как будет выглядеть его страница будь он ПРО
+        // РµСЃР»Рё С…РѕС‚РёРј РїРѕРєР°Р·Р°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ РќР•РџР Рћ РєР°Рє Р±СѓРґРµС‚ РІС‹РіР»СЏРґРµС‚СЊ РµРіРѕ СЃС‚СЂР°РЅРёС†Р° Р±СѓРґСЊ РѕРЅ РџР Рћ
         $iWantPro = __paramInit('bool', 'i_want_pro', null, false);
-        // нельзя просматривать чужие портфолио в режиме ПРО
+        // РЅРµР»СЊР·СЏ РїСЂРѕСЃРјР°С‚СЂРёРІР°С‚СЊ С‡СѓР¶РёРµ РїРѕСЂС‚С„РѕР»РёРѕ РІ СЂРµР¶РёРјРµ РџР Рћ
         if ($iWantPro && $user->uid != get_uid(0)) {
             $iWantPro = false;
             unset($_SESSION['i_want_pro']);
@@ -259,8 +259,8 @@ switch ($page) {
         $prfs = new professions();
         $profs = $prfs->GetSpecs($user->login);
         $spec_text = professions::GetProfName($user->spec);
-        $page_descr = "Удаленная работа (фри-ланс). Портфолио фрилансера: ".$spec_text.". ";
-        $page_keyw = "удаленная работа, фри-ланс, фрилансер, ";
+        $page_descr = "РЈРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° (С„СЂРё-Р»Р°РЅСЃ). РџРѕСЂС‚С„РѕР»РёРѕ С„СЂРёР»Р°РЅСЃРµСЂР°: ".$spec_text.". ";
+        $page_keyw = "СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°, С„СЂРё-Р»Р°РЅСЃ, С„СЂРёР»Р°РЅСЃРµСЂ, ";
         if ($profs) {
             foreach ($profs as $ikey => $prof)
             $out[] = str_replace("\"","",input_ref($prof['name']));
@@ -270,8 +270,8 @@ switch ($page) {
         
         $specs_add = professions::GetProfsAddSpec($user->uid);
         
-        //@todo: этот код ниже нужно переработать с использованием GaJsHelper
-        //проверить все варианты чтобы не делать повторные запросы!
+        //@todo: СЌС‚РѕС‚ РєРѕРґ РЅРёР¶Рµ РЅСѓР¶РЅРѕ РїРµСЂРµСЂР°Р±РѕС‚Р°С‚СЊ СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј GaJsHelper
+        //РїСЂРѕРІРµСЂРёС‚СЊ РІСЃРµ РІР°СЂРёР°РЅС‚С‹ С‡С‚РѕР±С‹ РЅРµ РґРµР»Р°С‚СЊ РїРѕРІС‚РѕСЂРЅС‹Рµ Р·Р°РїСЂРѕСЃС‹!
         
         $ga_profs = array_merge(array($user->spec), $specs_add);
         if (isset($ga_profs) && count($ga_profs)) {
@@ -328,7 +328,7 @@ switch ($page) {
         $data = $tservices->setPage($on_page,$page)->getShortList(!$is_not_public);
         $cnt = $tservices->getCount(!$is_not_public);
 
-        //Виджет для рендера сообщения о блокировки
+        //Р’РёРґР¶РµС‚ РґР»СЏ СЂРµРЅРґРµСЂР° СЃРѕРѕР±С‰РµРЅРёСЏ Рѕ Р±Р»РѕРєРёСЂРѕРІРєРё
         $tserviceOrderDebtMessageWidget = new TServiceOrderDebtMessage();
         $tserviceOrderDebtMessageWidget->init($user->uid);
         
@@ -336,7 +336,7 @@ switch ($page) {
         $activ_tab = 2;
         
         //SEO
-        $page_title = 'Типовые услуги на FL.ru';
+        $page_title = 'РўРёРїРѕРІС‹Рµ СѓСЃР»СѓРіРё РЅР° FL.ru';
         //$page_descr = '';
         //$page_keyw = '';
         
@@ -364,7 +364,7 @@ if($_SESSION['login']) {
 if (!$content) $content = $page == 'opinions' ? 'content_new.php' : 'content.php';
 
 
-//Мета-теги
+//РњРµС‚Р°-С‚РµРіРё
 SeoTags::getInstance()->initByUser($user);
 $page_title = SeoTags::getInstance()->getTitle();
 $page_descr = SeoTags::getInstance()->getDescription();
@@ -389,7 +389,7 @@ if ( hasPermissions('users') ) {
 
 
 /*if (!is_emp() && $user->login === $_SESSION['login']) {
-    $splashScreenNoSpec = true; // показать сплэш 
+    $splashScreenNoSpec = true; // РїРѕРєР°Р·Р°С‚СЊ СЃРїР»СЌС€ 
 }*/
 
 if($_SESSION['i_want_pro']) { $no_banner = true; }

@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/tservices/tservices_categorie
 /**
  * Class TServiceCatalog
  *
- * Виджет - список категорий типовых услуг
+ * Р’РёРґР¶РµС‚ - СЃРїРёСЃРѕРє РєР°С‚РµРіРѕСЂРёР№ С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі
  */
 class TServiceCatalog extends CWidget {
 

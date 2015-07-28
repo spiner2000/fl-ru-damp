@@ -1,6 +1,6 @@
 <?php
 /**
- * Интервью
+ * РРЅС‚РµСЂРІСЊСЋ
  *
  */
 $grey_articles = 1;
@@ -15,7 +15,7 @@ $rpath = realpath(dirname(__FILE__) . '/../' );
 
 session_start();
 $uid = get_uid();
-if($uid) { // определяем, показывать ли вкладку НА МОДЕРАЦИИ ($articles_unpub)
+if($uid) { // РѕРїСЂРµРґРµР»СЏРµРј, РїРѕРєР°Р·С‹РІР°С‚СЊ Р»Рё РІРєР»Р°РґРєСѓ РќРђ РњРћР”Р•Р РђР¦РР ($articles_unpub)
     $_uid = (hasPermissions('articles')) ? null : $uid;
     $articles_unpub = (hasPermissions('articles')) ? articles::ArticlesCount(false, $_uid) : null;
 }
@@ -83,8 +83,8 @@ if($year) {
 
 $years = interview::getYears();
 
-$page_title = "Интервью - фриланс, удаленная работа на FL.ru";
-$page_descr = "Интервью - фриланс, удаленная работа на FL.ru";
+$page_title = "РРЅС‚РµСЂРІСЊСЋ - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
+$page_descr = "РРЅС‚РµСЂРІСЊСЋ - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
 
 
 //function toQueryString($array, $prefix = '&') {
@@ -125,7 +125,7 @@ switch($task) {
         exit();
         break;
 
-    /* Создание интервью */
+    /* РЎРѕР·РґР°РЅРёРµ РёРЅС‚РµСЂРІСЊСЋ */
     case 'add':
         if(!hasPermissions('interviews')) exit();
         $result = array();
@@ -146,17 +146,17 @@ switch($task) {
         $txt = iconv('UTF-8', 'CP1251', $_POST['txt']);
         $txt = __paramValue('ckedit', $txt);
 
-        if(!$login || !$user->uid) $alert['login'] = 'Вы должны указать логин пользователя.';
-        if(!$txt || $txt == '' ||is_empty_html($txt)) $alert['txt'] = 'Поле не должно быть пустым.';
+        if(!$login || !$user->uid) $alert['login'] = 'Р’С‹ РґРѕР»Р¶РЅС‹ СѓРєР°Р·Р°С‚СЊ Р»РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.';
+        if(!$txt || $txt == '' ||is_empty_html($txt)) $alert['txt'] = 'РџРѕР»Рµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.';
         $attached = isset($_POST['attached']) ? $_POST['attached'] : array();
 
         $int = new interview();
         $files = new CFile();
 
         if(!isset($alert)) {
-            /* Создание интервью */
+            /* РЎРѕР·РґР°РЅРёРµ РёРЅС‚РµСЂРІСЊСЋ */
             if(!$newid = $int->addInterview($user->uid, $txt, $attached, $is_jury)) {
-                $alert['alert'] = 'Невозможно создать запись.';
+                $alert['alert'] = 'РќРµРІРѕР·РјРѕР¶РЅРѕ СЃРѕР·РґР°С‚СЊ Р·Р°РїРёСЃСЊ.';
             }
         }
 
@@ -173,7 +173,7 @@ switch($task) {
         echo json_encode($result);
         exit();
         
-    /* Редактирование интервью */
+    /* Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РёРЅС‚РµСЂРІСЊСЋ */
     case 'edit' :
         if(!hasPermissions('interviews')) exit();
         $result = array();
@@ -194,8 +194,8 @@ switch($task) {
         $txt = iconv('UTF-8', 'CP1251', $_POST['txt']);
         $txt = __paramValue('ckedit', $txt);
 
-        if(!$login || !$user->uid) $alert['login'] = 'Вы должны указать логин пользователя.';
-        if(!$txt || $txt == '' ||is_empty_html($txt)) $alert['txt'] = 'Поле не должно быть пустым.';
+        if(!$login || !$user->uid) $alert['login'] = 'Р’С‹ РґРѕР»Р¶РЅС‹ СѓРєР°Р·Р°С‚СЊ Р»РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.';
+        if(!$txt || $txt == '' ||is_empty_html($txt)) $alert['txt'] = 'РџРѕР»Рµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј.';
         $attached = isset($_POST['attached']) ? $_POST['attached'] : array();
         $rmfiles = isset($_POST['rmattaches']) && count($_POST['rmattaches']) ? $_POST['rmattaches'] : null;
         
@@ -205,12 +205,12 @@ switch($task) {
         if(!isset($alert)) {
             $interview = $int->getInterview($uid, $id);
             
-            /* Обновление интервью */
+            /* РћР±РЅРѕРІР»РµРЅРёРµ РёРЅС‚РµСЂРІСЊСЋ */
             if(!$int->updateInterview($id, $user->uid, $txt, $attached, $is_jury)) {
-                $alert['alert'] = 'Невозможно изменить запись.';
+                $alert['alert'] = 'РќРµРІРѕР·РјРѕР¶РЅРѕ РёР·РјРµРЅРёС‚СЊ Р·Р°РїРёСЃСЊ.';
             }
 
-            /* Удаление файлов, которые нужно удалить =) */
+            /* РЈРґР°Р»РµРЅРёРµ С„Р°Р№Р»РѕРІ, РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ СѓРґР°Р»РёС‚СЊ =) */
             if(!isset($alert) && $rmfiles) {
                 foreach($rmfiles as $rf) {
                     $files->Delete($rf);
@@ -278,20 +278,20 @@ switch($task) {
 
         $files = new CFile();
 
-        // удаляем основное фото
+        // СѓРґР°Р»СЏРµРј РѕСЃРЅРѕРІРЅРѕРµ С„РѕС‚Рѕ
         if($interview['main_foto'] !== NULL) {
             $files->Delete($interview['main_foto']);
-            // и миниатюру )
+            // Рё РјРёРЅРёР°С‚СЋСЂСѓ )
             $files->Delete(null, $interview['path'], 'sm_' . $interview['fname']);
         }
         
-        // удаляем другие аттачи
+        // СѓРґР°Р»СЏРµРј РґСЂСѓРіРёРµ Р°С‚С‚Р°С‡Рё
         $attaches = $int->getInterviewFiles($interview['id']);
         if($attaches) foreach($attaches as $attach) {
             $files->Delete($attach['id']);
         }
 
-        // удаляем интервью
+        // СѓРґР°Р»СЏРµРј РёРЅС‚РµСЂРІСЊСЋ
         $int->delInterview($interview['id']);
 
         header('Location: ./');
@@ -326,7 +326,7 @@ switch($task) {
         } else {
             $file->MoveUploadedFile('about/interview/');
             if (!isNulArray($file->error)) {
-                $alert = "Файл не удовлетворяет условиям загрузки";
+                $alert = "Р¤Р°Р№Р» РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё";
             }
         }
 

@@ -26,11 +26,11 @@ switch($action)
     $descr   = __paramInit('string', NULL, 'descr','');
 
     if(!trim($name))
-      $alert['name'] = "Нельзя без названия.";
+      $alert['name'] = "РќРµР»СЊР·СЏ Р±РµР· РЅР°Р·РІР°РЅРёСЏ.";
     
     if(!$alert) {
       if(!commune::AddGroup($name, $descr))
-        $error = "Ошибка. Не удалось добавить раздел.";
+        $error = "РћС€РёР±РєР°. РќРµ СѓРґР°Р»РѕСЃСЊ РґРѕР±Р°РІРёС‚СЊ СЂР°Р·РґРµР».";
       else {
         header ("Location: /siteadmin/commune/?result=success");
         exit;
@@ -51,11 +51,11 @@ switch($action)
     for($i=0; $i<$cnt; $i++) {
       $n = change_q_new($name[$i], TRUE);
       if(!trim($n))
-        $alert['name[]'][intval($id[$i])] = "Нельзя без названия.";
+        $alert['name[]'][intval($id[$i])] = "РќРµР»СЊР·СЏ Р±РµР· РЅР°Р·РІР°РЅРёСЏ.";
       else {
         $d = change_q_new($descr[$i], TRUE);
         if(!commune::UpdateGroup(intval($id[$i]), $n, $d, $i+1))
-          $error .= (!$error ? '' : '<br/>')."Ошибка. Не удалось изменить раздел '{$n}'.";
+          $error .= (!$error ? '' : '<br/>')."РћС€РёР±РєР°. РќРµ СѓРґР°Р»РѕСЃСЊ РёР·РјРµРЅРёС‚СЊ СЂР°Р·РґРµР» '{$n}'.";
       }
     }
 
@@ -72,7 +72,7 @@ switch($action)
     $alert=NULL;
     $id = __paramInit('int', 'id', NULL);
     if(!commune::DeleteGroup($id))
-      $error = "Ошибка. Невозможно удалить раздел. Возможен конфликт ключей (если раздел уже содержит сообщества).";
+      $error = "РћС€РёР±РєР°. РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРґР°Р»РёС‚СЊ СЂР°Р·РґРµР». Р’РѕР·РјРѕР¶РµРЅ РєРѕРЅС„Р»РёРєС‚ РєР»СЋС‡РµР№ (РµСЃР»Рё СЂР°Р·РґРµР» СѓР¶Рµ СЃРѕРґРµСЂР¶РёС‚ СЃРѕРѕР±С‰РµСЃС‚РІР°).";
     else {
       header ("Location: /siteadmin/commune/?result=success");
       exit;

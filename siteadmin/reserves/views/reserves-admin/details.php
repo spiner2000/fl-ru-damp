@@ -26,72 +26,72 @@
                 <thead>
                     <tr>
                         <th colspan="2">
-                            <h3><i>О резерве</i></h3>
+                            <h3><i>Рћ СЂРµР·РµСЂРІРµ</i></h3>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Статус:</b></td>
+                        <td><b>РЎС‚Р°С‚СѓСЃ:</b></td>
                         <td>
-                            <b>сделки:</b> <?=$reserveInstance->getStatusText()?> (status: <?=$reserveInstance->getStatus()?>)<br/>
-                            <b>заказа:</b> <?=$reserveInstance->getSrcStatus()?>
+                            <b>СЃРґРµР»РєРё:</b> <?=$reserveInstance->getStatusText()?> (status: <?=$reserveInstance->getStatus()?>)<br/>
+                            <b>Р·Р°РєР°Р·Р°:</b> <?=$reserveInstance->getSrcStatus()?>
                         </td>
                     </tr> 
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Статус выплаты:</b></td>
+                        <td><b>РЎС‚Р°С‚СѓСЃ РІС‹РїР»Р°С‚С‹:</b></td>
                         <td>
                             <?=$reserveInstance->getStatusPayTxt()?> 
                             (status_pay: <?=(int)$reserveInstance->getStatusPay()?>)
                         </td>
                     </tr>
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Статус возврата:</b></td>
+                        <td><b>РЎС‚Р°С‚СѓСЃ РІРѕР·РІСЂР°С‚Р°:</b></td>
                         <td>
                             <?=$reserveInstance->getStatusBackTxt()?> 
                             (status_back: <?=(int)$reserveInstance->getStatusBack()?>)
                         </td>
                     </tr>                    
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Дата создания:</b></td>
+                        <td><b>Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ:</b></td>
                         <td>
                             <?=$reserveInstance->getDateByKey('date')?>
                         </td>
                     </tr>                     
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Дата резерва средств:</b></td>
+                        <td><b>Р”Р°С‚Р° СЂРµР·РµСЂРІР° СЃСЂРµРґСЃС‚РІ:</b></td>
                         <td>
                             <?=$reserveInstance->getDateByKey('date_reserve')?>
                         </td>
                     </tr>                    
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Дата завершения:</b></td>
+                        <td><b>Р”Р°С‚Р° Р·Р°РІРµСЂС€РµРЅРёСЏ:</b></td>
                         <td>
                             <?=$reserveInstance->getDateByKey('date_complete')?>
                         </td>
                     </tr>                     
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Cумма сделки:</b></td>
+                        <td><b>CСѓРјРјР° СЃРґРµР»РєРё:</b></td>
                         <td>
                             <?=$reserveInstance->getPriceByKey('price', true)?> 
                         </td>
                     </tr> 
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Комиссия:</b></td>
+                        <td><b>РљРѕРјРёСЃСЃРёСЏ:</b></td>
                         <td>
                             <?=$reserveInstance->getPriceByKey('tax_price', true)?>
                             (<?=$reserveInstance->getTax()?> %)
                         </td>
                     </tr> 
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Cумма резерва:</b></td>
+                        <td><b>CСѓРјРјР° СЂРµР·РµСЂРІР°:</b></td>
                         <td>
                             <?=$reserveInstance->getPriceByKey('reserve_price', true)?>
                         </td>
                     </tr>      
                     <?php if ($reserveInstance->isReserveByService()): ?>
                     <tr class="nr-a-tbl_tr">
-                        <td><b>ID платежа по ЯД:</b></td>
+                        <td><b>ID РїР»Р°С‚РµР¶Р° РїРѕ РЇР”:</b></td>
                         <td>
                             account_operation_id: <?=$reserveInstance->getAccountOperationId()?><br/>
                             invoice_id: <b><?=$reserveInstance->getInvoiceId()?></b>
@@ -101,7 +101,7 @@
                     
                     <?php if($reserveInstance->getReasonReserve()): ?>
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Текущая причина<br/>отказа в резерве:</b></td>
+                        <td><b>РўРµРєСѓС‰Р°СЏ РїСЂРёС‡РёРЅР°<br/>РѕС‚РєР°Р·Р° РІ СЂРµР·РµСЂРІРµ:</b></td>
                         <td>
                             <?=$reserveInstance->getReasonReserve()?>
                         </td>
@@ -111,24 +111,24 @@
                     <tr class="nr-a-tbl_tr">
                         <td>
                             <form action="" method="POST" enctype="application/x-www-form-urlencoded">
-                                <input type="submit" name="submit" value="Подтвердить резерв" />
+                                <input type="submit" name="submit" value="РџРѕРґС‚РІРµСЂРґРёС‚СЊ СЂРµР·РµСЂРІ" />
                                 <input type="hidden" name="do" value="accept_reserve" />
                             </form>
                         </td>
                         <td>
-                            <a href="javascript:void(0);" onclick="showDeclinePopup('decline_reserve')">Отклонить резерв</a>
+                            <a href="javascript:void(0);" onclick="showDeclinePopup('decline_reserve')">РћС‚РєР»РѕРЅРёС‚СЊ СЂРµР·РµСЂРІ</a>
 
                             <div id="decline_reserve" class="b-shadow b-shadow_center b-shadow_width_580 b-shadow__quick b-shadow_hide">
                                 <div class="b-shadow__body b-shadow__body_pad_20">
-                                    <h2 class="b-layout__title">Отклонить резерв</h2>
+                                    <h2 class="b-layout__title">РћС‚РєР»РѕРЅРёС‚СЊ СЂРµР·РµСЂРІ</h2>
                                     <div class="b-layout b-layout_padleft_20">
                                         <form method="post" action="">
                                             <input type="hidden" name="do" value="" />
                                             <div class="b-textarea">
-                                                <textarea placeholder="Введите текст причины" name="message" maxlength="500" cols="80" rows="1" class="b-textarea__textarea b-textarea__textarea_italic" id="message"></textarea>
+                                                <textarea placeholder="Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚ РїСЂРёС‡РёРЅС‹" name="message" maxlength="500" cols="80" rows="1" class="b-textarea__textarea b-textarea__textarea_italic" id="message"></textarea>
                                             </div>
                                             <div class="b-buttons b-buttons_padtop_20">
-                                                <button type="submit" class="b-button b-button_flat b-button_flat_green">Отклонить</button>
+                                                <button type="submit" class="b-button b-button_flat b-button_flat_green">РћС‚РєР»РѕРЅРёС‚СЊ</button>
                                             </div>
                                         </form>
                                     </div>
@@ -148,17 +148,17 @@
                 <thead>
                     <tr>
                         <th colspan="2">
-                            <h4><i>О заказе</i></h4>
+                            <h4><i>Рћ Р·Р°РєР°Р·Рµ</i></h4>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="nr-a-tbl_tr">
-                        <td>Статус резерва:</td>
+                        <td>РЎС‚Р°С‚СѓСЃ СЂРµР·РµСЂРІР°:</td>
                         <td></td>
                     </tr>                
                     <tr class="nr-a-tbl_tr">
-                        <td>Дата создания заказа:</td>
+                        <td>Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ Р·Р°РєР°Р·Р°:</td>
                         <td><?=$reserveInstance->getSrcDate()?></td>
                     </tr>
                     <tr class="nr-a-tbl_tr">
@@ -177,53 +177,53 @@
                 <thead>
                     <tr>
                         <th colspan="2">
-                            <h3><i>Арбитраж</i></h3>
+                            <h3><i>РђСЂР±РёС‚СЂР°Р¶</i></h3>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Статус:</b></td>
-                        <td><?=$reserveInstance->isArbitrageClosed()?'закрыт':'открыт'?></td>
+                        <td><b>РЎС‚Р°С‚СѓСЃ:</b></td>
+                        <td><?=$reserveInstance->isArbitrageClosed()?'Р·Р°РєСЂС‹С‚':'РѕС‚РєСЂС‹С‚'?></td>
                     </tr>  
                     
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Дата создания:</b></td>
+                        <td><b>Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ:</b></td>
                         <td><?=$reserveInstance->getDateByKey('arbitrage_date')?></td>
                     </tr>
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Дата закрытия:</b></td>
+                        <td><b>Р”Р°С‚Р° Р·Р°РєСЂС‹С‚РёСЏ:</b></td>
                         <td><?=$reserveInstance->getDateByKey('arbitrage_date_close')?></td>
                     </tr>  
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Обратился:</b></td>
-                        <td><?=($reserveInstance->getReserveDataByKey('arbitrage_is_emp') == 't')?'заказчик':'исполнитель'?></td>
+                        <td><b>РћР±СЂР°С‚РёР»СЃСЏ:</b></td>
+                        <td><?=($reserveInstance->getReserveDataByKey('arbitrage_is_emp') == 't')?'Р·Р°РєР°Р·С‡РёРє':'РёСЃРїРѕР»РЅРёС‚РµР»СЊ'?></td>
                     </tr>
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Обращение:</b></td>
+                        <td><b>РћР±СЂР°С‰РµРЅРёРµ:</b></td>
                         <td><?=$reserveInstance->getReserveDataByKey('arbitrage_message')?></td>
                     </tr>
                     <?php if($reserveInstance->isArbitrageClosed()): ?>
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Решение:</b></td>
+                        <td><b>Р РµС€РµРЅРёРµ:</b></td>
                         <td>
                             <?php if($reserveInstance->getArbitragePriceWithOutNDFL() > 0): ?>
                                 <?php if($reserveInstance->getReserveDataByKey('arbitrage_payback') > 0): ?>
-                            Выплатить: <b><?=$reserveInstance->getPriceByKey('arbitrage_price', true)?></b> <br/>
-                            Вернуть: <b><?=$reserveInstance->getPriceByKey('arbitrage_payback', true)?></b>
+                            Р’С‹РїР»Р°С‚РёС‚СЊ: <b><?=$reserveInstance->getPriceByKey('arbitrage_price', true)?></b> <br/>
+                            Р’РµСЂРЅСѓС‚СЊ: <b><?=$reserveInstance->getPriceByKey('arbitrage_payback', true)?></b>
                                 <?php else: ?>
-                            Выплатить: <b>100% (<?=$reserveInstance->getPriceByKey('arbitrage_price', true)?>)</b>
+                            Р’С‹РїР»Р°С‚РёС‚СЊ: <b>100% (<?=$reserveInstance->getPriceByKey('arbitrage_price', true)?>)</b>
                                 <?php endif; ?>
                             <?php else: ?>
-                            Вернуть: <b>100% (<?=$reserveInstance->getPriceByKey('arbitrage_payback', true)?>)</b>
+                            Р’РµСЂРЅСѓС‚СЊ: <b>100% (<?=$reserveInstance->getPriceByKey('arbitrage_payback', true)?>)</b>
                             <?php endif; ?>
                         </td>
                     </tr>
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Разрешить написать отзыв:</b></td>
+                        <td><b>Р Р°Р·СЂРµС€РёС‚СЊ РЅР°РїРёСЃР°С‚СЊ РѕС‚Р·С‹РІ:</b></td>
                         <td>
-                            Заказчик: <b><?=$reserveInstance->getReserveDataByKey('arbitrage_allow_fb_emp')?'да':'нет'?></b> <br/>
-                            Исполнитель: <b><?=$reserveInstance->getReserveDataByKey('arbitrage_allow_fb_frl')?'да':'нет'?></b>
+                            Р—Р°РєР°Р·С‡РёРє: <b><?=$reserveInstance->getReserveDataByKey('arbitrage_allow_fb_emp')?'РґР°':'РЅРµС‚'?></b> <br/>
+                            РСЃРїРѕР»РЅРёС‚РµР»СЊ: <b><?=$reserveInstance->getReserveDataByKey('arbitrage_allow_fb_frl')?'РґР°':'РЅРµС‚'?></b>
                         </td>
                     </tr>
                     <?php endif; ?>
@@ -243,7 +243,7 @@
                 <thead>
                     <tr>
                         <th colspan="3">
-                            <h3><i>Файлы документов</i></h3>
+                            <h3><i>Р¤Р°Р№Р»С‹ РґРѕРєСѓРјРµРЅС‚РѕРІ</i></h3>
                         </th>
                     </tr>
                 </thead>
@@ -276,7 +276,7 @@
                     <?php if($is_close): ?>
                     <tr>
                         <td colspan="2">
-                            Дата Акта и Отчета
+                            Р”Р°С‚Р° РђРєС‚Р° Рё РћС‚С‡РµС‚Р°
                         </td>
                         <td>
                             <div class="b-combo">
@@ -290,9 +290,9 @@
                     <tr>
                         <td colspan="3">
                             <br/>
-                            <input type="submit" name="submit" value="Обновить" />
+                            <input type="submit" name="submit" value="РћР±РЅРѕРІРёС‚СЊ" />
                             <input id="create" type="checkbox" name="create" value="1" checked="checked"/>
-                            <label for="create">и создать отсутствующие</label>
+                            <label for="create">Рё СЃРѕР·РґР°С‚СЊ РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‰РёРµ</label>
                         </td>
                     </tr>
                 </tfoot>
@@ -313,25 +313,25 @@
                 <thead>
                     <tr>
                         <th>
-                            <h3><i>Реквизиты на Выплату</i></h3>
+                            <h3><i>Р РµРєРІРёР·РёС‚С‹ РЅР° Р’С‹РїР»Р°С‚Сѓ</i></h3>
                         </th>
                         <th style="text-align: right;">
-                            <a data-reqv-show="true" href="javascript:void(0);">Показать</a>
-                            <a data-reqv-hide="true" style="display: none;" href="javascript:void(0);">Скрыть</a>
+                            <a data-reqv-show="true" href="javascript:void(0);">РџРѕРєР°Р·Р°С‚СЊ</a>
+                            <a data-reqv-hide="true" style="display: none;" href="javascript:void(0);">РЎРєСЂС‹С‚СЊ</a>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Выплата на:</b></td>
+                        <td><b>Р’С‹РїР»Р°С‚Р° РЅР°:</b></td>
                         <td><?=$payout_reqv['pay_type_txt']?></td>
                     </tr>
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Создание:</b></td>
+                        <td><b>РЎРѕР·РґР°РЅРёРµ:</b></td>
                         <td><?=$payout_reqv['date']?></td>
                     </tr>                    
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Обновление:</b></td>
+                        <td><b>РћР±РЅРѕРІР»РµРЅРёРµ:</b></td>
                         <td><?=$payout_reqv['last']?></td>
                     </tr>                     
                     <?php 
@@ -340,7 +340,7 @@
                                 !empty($payout_reqv['fields']['moderator_login'])):
                     ?>
                     <tr class="nr-a-tbl_tr" data-reqv="true" style="display: none;">
-                        <td><b>Модератор:</b></td>
+                        <td><b>РњРѕРґРµСЂР°С‚РѕСЂ:</b></td>
                         <td><a href="<?="{$host}/users/{$payout_reqv['fields']['moderator_login']}"?>"><?=$payout_reqv['fields']['moderator_login']?></a></td>
                     </tr>                    
                     <?php
@@ -364,7 +364,7 @@
                     
                     <?php if($reserveInstance->getReasonPayout()): ?>
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Текущая причина<br/>отказа в выплате:</b></td>
+                        <td><b>РўРµРєСѓС‰Р°СЏ РїСЂРёС‡РёРЅР°<br/>РѕС‚РєР°Р·Р° РІ РІС‹РїР»Р°С‚Рµ:</b></td>
                         <td>
                             <?=$reserveInstance->getReasonPayout()?>
                         </td>
@@ -374,24 +374,24 @@
                     <tr class="nr-a-tbl_tr">
                         <td>
                             <form action="" method="POST" enctype="application/x-www-form-urlencoded">
-                                <input type="submit" name="submit" value="Подтвердить выплату" />
+                                <input type="submit" name="submit" value="РџРѕРґС‚РІРµСЂРґРёС‚СЊ РІС‹РїР»Р°С‚Сѓ" />
                                 <input type="hidden" name="do" value="accept_pay" />
                             </form>
                         </td>
                         <td>
-                            <a href="javascript:void(0);" onclick="showDeclinePopup('decline_pay');">Отклонить выплату</a>
+                            <a href="javascript:void(0);" onclick="showDeclinePopup('decline_pay');">РћС‚РєР»РѕРЅРёС‚СЊ РІС‹РїР»Р°С‚Сѓ</a>
 
                             <div id="decline_pay" class="b-shadow b-shadow_center b-shadow_width_580 b-shadow__quick b-shadow_hide">
                                 <div class="b-shadow__body b-shadow__body_pad_20">
-                                    <h2 class="b-layout__title">Отклонить выплату</h2>
+                                    <h2 class="b-layout__title">РћС‚РєР»РѕРЅРёС‚СЊ РІС‹РїР»Р°С‚Сѓ</h2>
                                     <div class="b-layout b-layout_padleft_20">
                                         <form method="post" action="">
                                             <input type="hidden" name="do" value="" />
                                             <div class="b-textarea">
-                                                <textarea placeholder="Введите текст причины" name="message" maxlength="500" cols="80" rows="1" class="b-textarea__textarea b-textarea__textarea_italic" id="message"></textarea>
+                                                <textarea placeholder="Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚ РїСЂРёС‡РёРЅС‹" name="message" maxlength="500" cols="80" rows="1" class="b-textarea__textarea b-textarea__textarea_italic" id="message"></textarea>
                                             </div>
                                             <div class="b-buttons b-buttons_padtop_20">
-                                                <button type="submit" class="b-button b-button_flat b-button_flat_green">Отклонить</button>
+                                                <button type="submit" class="b-button b-button_flat b-button_flat_green">РћС‚РєР»РѕРЅРёС‚СЊ</button>
                                             </div>
                                         </form>
                                     </div>
@@ -413,21 +413,21 @@
                 if($payout_list):
 ?>
             <br/>
-            <h3><i>Запросы к ЯД на Выплату</i></h3>
+            <h3><i>Р—Р°РїСЂРѕСЃС‹ Рє РЇР” РЅР° Р’С‹РїР»Р°С‚Сѓ</i></h3>
             <?php if(!is_release()): ?>
-            <p>* на тесте статусы выплат не меняются они всегда "новый"</p>
+            <p>* РЅР° С‚РµСЃС‚Рµ СЃС‚Р°С‚СѓСЃС‹ РІС‹РїР»Р°С‚ РЅРµ РјРµРЅСЏСЋС‚СЃСЏ РѕРЅРё РІСЃРµРіРґР° "РЅРѕРІС‹Р№"</p>
             <?php endif; ?>
             <table class="nr-a-tbl" cellspacing="5">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Сумма</th>
-                        <th>Статус</th>
-                        <th>Ошибка</th>
-                        <th>Создание</th>
-                        <th>Обновление</th>
-                        <th>Попыток</th>
-                        <th>Инфо</th>
+                        <th>РЎСѓРјРјР°</th>
+                        <th>РЎС‚Р°С‚СѓСЃ</th>
+                        <th>РћС€РёР±РєР°</th>
+                        <th>РЎРѕР·РґР°РЅРёРµ</th>
+                        <th>РћР±РЅРѕРІР»РµРЅРёРµ</th>
+                        <th>РџРѕРїС‹С‚РѕРє</th>
+                        <th>РРЅС„Рѕ</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -451,12 +451,12 @@
                 if($payout_log):
             ?>
             <br/>
-            <h3><i>Лог ошибок запросов на Выплату</i></h3>
+            <h3><i>Р›РѕРі РѕС€РёР±РѕРє Р·Р°РїСЂРѕСЃРѕРІ РЅР° Р’С‹РїР»Р°С‚Сѓ</i></h3>
             <table class="nr-a-tbl" cellspacing="5">
                 <thead>
                     <tr>
-                        <th>Дата</th>
-                        <th>Сообщение</th>
+                        <th>Р”Р°С‚Р°</th>
+                        <th>РЎРѕРѕР±С‰РµРЅРёРµ</th>
                     </tr>
                 </thead>
                 <tbody>   
@@ -481,17 +481,17 @@
             if($paybackList):
 ?>
             <br/>
-            <h3><i>Запрос к ЯД на Возврат</i></h3>
+            <h3><i>Р—Р°РїСЂРѕСЃ Рє РЇР” РЅР° Р’РѕР·РІСЂР°С‚</i></h3>
             <table class="nr-a-tbl" cellspacing="5">
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Сумма</th>
-                        <th>Статус</th>
-                        <th>Ошибка</th>
-                        <th>Создание</th>
-                        <th>Обновление</th>
-                        <th>Попыток</th>
+                        <th>РЎСѓРјРјР°</th>
+                        <th>РЎС‚Р°С‚СѓСЃ</th>
+                        <th>РћС€РёР±РєР°</th>
+                        <th>РЎРѕР·РґР°РЅРёРµ</th>
+                        <th>РћР±РЅРѕРІР»РµРЅРёРµ</th>
+                        <th>РџРѕРїС‹С‚РѕРє</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -512,7 +512,7 @@
             <?php if(!$reserveInstance->isStatusBackPayed()): ?>
             <br/>
             <form action="" method="POST" enctype="application/x-www-form-urlencoded">
-                <input type="submit" name="submit" value="Подтвердить возврат" />
+                <input type="submit" name="submit" value="РџРѕРґС‚РІРµСЂРґРёС‚СЊ РІРѕР·РІСЂР°С‚" />
                 <input type="hidden" name="do" value="accept_back" />
             </form>
             <?php endif; ?>
@@ -527,7 +527,7 @@
                <thead>
                    <tr>
                        <th colspan="2">
-                            <h3><i>Запрос на Возврат по безналу</i></h3>
+                            <h3><i>Р—Р°РїСЂРѕСЃ РЅР° Р’РѕР·РІСЂР°С‚ РїРѕ Р±РµР·РЅР°Р»Сѓ</i></h3>
                        </th>
                     </tr>
                 </thead>
@@ -535,7 +535,7 @@
                     
                     <?php if($reserveInstance->getReasonPayback()): ?>
                     <tr class="nr-a-tbl_tr">
-                        <td><b>Текущая причина<br/>отказа возврата:</b></td>
+                        <td><b>РўРµРєСѓС‰Р°СЏ РїСЂРёС‡РёРЅР°<br/>РѕС‚РєР°Р·Р° РІРѕР·РІСЂР°С‚Р°:</b></td>
                         <td>
                             <?=$reserveInstance->getReasonPayback()?>
                         </td>
@@ -545,24 +545,24 @@
                     <tr class="nr-a-tbl_tr">
                         <td>
                             <form action="" method="POST" enctype="application/x-www-form-urlencoded">
-                                <input type="submit" name="submit" value="Подтвердить возврат" />
+                                <input type="submit" name="submit" value="РџРѕРґС‚РІРµСЂРґРёС‚СЊ РІРѕР·РІСЂР°С‚" />
                                 <input type="hidden" name="do" value="accept_back" />
                             </form>
                         </td>
                         <td>
-                            <a href="javascript:void(0);" onclick="showDeclinePopup('decline_back');">Отклонить возврат</a>
+                            <a href="javascript:void(0);" onclick="showDeclinePopup('decline_back');">РћС‚РєР»РѕРЅРёС‚СЊ РІРѕР·РІСЂР°С‚</a>
 
                             <div id="decline_back" class="b-shadow b-shadow_center b-shadow_width_580 b-shadow__quick b-shadow_hide">
                                 <div class="b-shadow__body b-shadow__body_pad_20">
-                                    <h2 class="b-layout__title">Отклонить возврат</h2>
+                                    <h2 class="b-layout__title">РћС‚РєР»РѕРЅРёС‚СЊ РІРѕР·РІСЂР°С‚</h2>
                                     <div class="b-layout b-layout_padleft_20">
                                         <form method="post" action="">
                                             <input type="hidden" name="do" value="" />
                                             <div class="b-textarea">
-                                                <textarea placeholder="Введите текст причины" name="message" maxlength="500" cols="80" rows="1" class="b-textarea__textarea b-textarea__textarea_italic" id="message"></textarea>
+                                                <textarea placeholder="Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚ РїСЂРёС‡РёРЅС‹" name="message" maxlength="500" cols="80" rows="1" class="b-textarea__textarea b-textarea__textarea_italic" id="message"></textarea>
                                             </div>
                                             <div class="b-buttons b-buttons_padtop_20">
-                                                <button type="submit" class="b-button b-button_flat b-button_flat_green">Отклонить</button>
+                                                <button type="submit" class="b-button b-button_flat b-button_flat_green">РћС‚РєР»РѕРЅРёС‚СЊ</button>
                                             </div>
                                         </form>
                                     </div>

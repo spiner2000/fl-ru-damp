@@ -12,24 +12,24 @@ if(!defined('IN_STDF'))
         <div class="b-horizontal-line b-horizontal-line_after_bgcolor_f3 b-horizontal-line_margbot_30 b-horizontal-line_icon_warning"></div>
         
         <h3 class="b-txt__h3 b-txt__h3_padbot_20">
-            Советы по созданию услуги:
+            РЎРѕРІРµС‚С‹ РїРѕ СЃРѕР·РґР°РЅРёСЋ СѓСЃР»СѓРіРё:
         </h3>
     
         <ul class="b-layout__side_bar__infolist b-layout__side_bar__infolist_padbot_60">
             <li class="b-layout__side_bar__infolist__item">
-                Будьте оригинальны. Расскажите, чем ваша услуга отличается от остальных.
+                Р‘СѓРґСЊС‚Рµ РѕСЂРёРіРёРЅР°Р»СЊРЅС‹. Р Р°СЃСЃРєР°Р¶РёС‚Рµ, С‡РµРј РІР°С€Р° СѓСЃР»СѓРіР° РѕС‚Р»РёС‡Р°РµС‚СЃСЏ РѕС‚ РѕСЃС‚Р°Р»СЊРЅС‹С….
             </li>
             <li class="b-layout__side_bar__infolist__item">
-                Подробно расскажите о том, что получит заказчик.
+                РџРѕРґСЂРѕР±РЅРѕ СЂР°СЃСЃРєР°Р¶РёС‚Рµ Рѕ С‚РѕРј, С‡С‚Рѕ РїРѕР»СѓС‡РёС‚ Р·Р°РєР°Р·С‡РёРє.
             </li>
             <li class="b-layout__side_bar__infolist__item">
-                Установите реалистичные сроки. Задержка может понизить ваш рейтинг.
+                РЈСЃС‚Р°РЅРѕРІРёС‚Рµ СЂРµР°Р»РёСЃС‚РёС‡РЅС‹Рµ СЃСЂРѕРєРё. Р—Р°РґРµСЂР¶РєР° РјРѕР¶РµС‚ РїРѕРЅРёР·РёС‚СЊ РІР°С€ СЂРµР№С‚РёРЅРі.
             </li>
             <li class="b-layout__side_bar__infolist__item">
-                Добавьте к описанию хорошие картинки или даже видео.
+                Р”РѕР±Р°РІСЊС‚Рµ Рє РѕРїРёСЃР°РЅРёСЋ С…РѕСЂРѕС€РёРµ РєР°СЂС‚РёРЅРєРё РёР»Рё РґР°Р¶Рµ РІРёРґРµРѕ.
             </li>
             <li class="b-layout__side_bar__infolist__item">
-                Убедитесь, что не нарушаете <a target="_blank" href="<?php echo WDCPREFIX ?>/about/documents/appendix_2_regulations.pdf" class="b-txt__lnk b-txt__lnk_color_0f71c8 b-txt__lnk_underline">правила сайта</a>.
+                РЈР±РµРґРёС‚РµСЃСЊ, С‡С‚Рѕ РЅРµ РЅР°СЂСѓС€Р°РµС‚Рµ <a target="_blank" href="<?php echo WDCPREFIX ?>/about/documents/appendix_2_regulations.pdf" class="b-txt__lnk b-txt__lnk_color_0f71c8 b-txt__lnk_underline">РїСЂР°РІРёР»Р° СЃР°Р№С‚Р°</a>.
             </li>
         </ul>
         
@@ -37,15 +37,15 @@ if(!defined('IN_STDF'))
         <div class="b-horizontal-line b-horizontal-line_after_bgcolor_f3 b-horizontal-line_margbot_30 b-horizontal-line_icon_prohibited"></div>
         
         <h3 class="b-txt__h3 b-txt__h3_padbot_20">
-            Нельзя указывать:
+            РќРµР»СЊР·СЏ СѓРєР°Р·С‹РІР°С‚СЊ:
         </h3>
         
         <ul class="b-layout__side_bar__infolist">
             <li class="b-layout__side_bar__infolist__item">
-                Цену за час работы или часть работы. Цена должна быть конечной и фиксированной.
+                Р¦РµРЅСѓ Р·Р° С‡Р°СЃ СЂР°Р±РѕС‚С‹ РёР»Рё С‡Р°СЃС‚СЊ СЂР°Р±РѕС‚С‹. Р¦РµРЅР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РєРѕРЅРµС‡РЅРѕР№ Рё С„РёРєСЃРёСЂРѕРІР°РЅРЅРѕР№.
             </li>
             <li class="b-layout__side_bar__infolist__item">
-                Ссылки на другие сайты для полной информации об услуге.
+                РЎСЃС‹Р»РєРё РЅР° РґСЂСѓРіРёРµ СЃР°Р№С‚С‹ РґР»СЏ РїРѕР»РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё РѕР± СѓСЃР»СѓРіРµ.
             </li>
         </ul>
 

@@ -16,11 +16,11 @@ var SBR = new Sbr();
     ?>
         <div class="nr-list-items" id="<?=$sbrss_classes[$status][0]?>">
             <div class="flt-bar">
-                <a href="javascript:void(0);" class="flt-tgl-lnk" id="sssw<?=$status?>" onclick="SBR.hideStatusBox(this,<?=$status?>)"><?=($is_hidden ? 'Показать' : 'Скрыть')?></a>
+                <a href="javascript:void(0);" class="flt-tgl-lnk" id="sssw<?=$status?>" onclick="SBR.hideStatusBox(this,<?=$status?>)"><?=($is_hidden ? 'РџРѕРєР°Р·Р°С‚СЊ' : 'РЎРєСЂС‹С‚СЊ')?></a>
                 <h3><?=$sbrss_classes[$status][1]?> (<?=count($sbrs)?>)</h3>
             </div>
             <div id="ssbox<?=$status?>"<?=($is_hidden ? ' style="display:none"' : '')?>>
-                <!-- Проект -->
+                <!-- РџСЂРѕРµРєС‚ -->
                 <? foreach($sbrs as $id=>$curr_sbr) { ?>
                     <a name="s<?=$id?>"></a>
                     <div class="form nr-prj">
@@ -39,7 +39,7 @@ var SBR = new Sbr();
                                                    
                                                     <a href="/users/<?=$curr_sbr->data[$curr_sbr->apfx.'login']?>/" class="employer-name"><?=($curr_sbr->data[$curr_sbr->apfx.'uname'].' '.$curr_sbr->data[$curr_sbr->apfx.'usurname'].' ['.$curr_sbr->data[$curr_sbr->apfx.'login'].']')?></a><?=view_mark_user($curr_sbr->data, $curr_sbr->apfx);?>&nbsp;<?=$session->view_online_status($curr_sbr->data[$curr_sbr->apfx.'login'], false, '&nbsp;', $activity)?>
                                                     <? /*<div class="nr-prj-u-s">
-                                                        <?=($activity ? ' Сейчас на сайте' : 'Нет на сайте')?>
+                                                        <?=($activity ? ' РЎРµР№С‡Р°СЃ РЅР° СЃР°Р№С‚Рµ' : 'РќРµС‚ РЅР° СЃР°Р№С‚Рµ')?>
                                                     </div> */ ?>
                                                 </div>
                                             </div>
@@ -49,7 +49,7 @@ var SBR = new Sbr();
                                         <h4 class="nr-prj-title"><a href="?id=<?=$id?>" class="inherit"><?=reformat($curr_sbr->data['name'], 35, 0, 1)?></a></h4>
                                     </div>
                                     <div class="nr-prj-created">
-                                        <strong>#<?=$id?></strong> Проект создан: <?=$MONTHS[date('n', $t = strtotime($curr_sbr->data['posted']))].date(' j, Y', $t)?>
+                                        <strong>#<?=$id?></strong> РџСЂРѕРµРєС‚ СЃРѕР·РґР°РЅ: <?=$MONTHS[date('n', $t = strtotime($curr_sbr->data['posted']))].date(' j, Y', $t)?>
                                     </div>
                                     <h4><?=sbr::$scheme_types[$curr_sbr->scheme_type][0]?></h4>
                                     <? foreach($curr_sbr->stages as $num=>$stage) { ?>
@@ -77,7 +77,7 @@ var SBR = new Sbr();
                                                             <?php if ($stage->data['unread_msgs_count']): ?>
                                                             <?php $anchor_unread = ( $anchor_unread ) ? $anchor_unread : $stage->sbr->data['id'] ?>
                                                             <div class="nr-mn">
-                      <a href="/norisk2/?site=Stage&id=<?=$stage->data['id']?>#c_<?=$stage->data['unread_first_id']?>" class="lnk-green"><?=$stage->data['unread_msgs_count']?> <?=ending($stage->data['unread_msgs_count'], 'новый комментарий', 'новых комментария', 'новых комментариев')?></a>
+                      <a href="/norisk2/?site=Stage&id=<?=$stage->data['id']?>#c_<?=$stage->data['unread_first_id']?>" class="lnk-green"><?=$stage->data['unread_msgs_count']?> <?=ending($stage->data['unread_msgs_count'], 'РЅРѕРІС‹Р№ РєРѕРјРјРµРЅС‚Р°СЂРёР№', 'РЅРѕРІС‹С… РєРѕРјРјРµРЅС‚Р°СЂРёСЏ', 'РЅРѕРІС‹С… РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ')?></a>
                      </div>
                                                             <?php endif; ?>
                                                         </td>
@@ -85,21 +85,21 @@ var SBR = new Sbr();
                                                             <td colspan="3" class="nr-ch last">
                                                                 <div class="nr-ch-info">
                                                                     <div>
-                                                                        Перейдите в проект, чтобы увидеть измененные условия
+                                                                        РџРµСЂРµР№РґРёС‚Рµ РІ РїСЂРѕРµРєС‚, С‡С‚РѕР±С‹ СѓРІРёРґРµС‚СЊ РёР·РјРµРЅРµРЅРЅС‹Рµ СѓСЃР»РѕРІРёСЏ
                                                                     </div>
                                                                 </div>
                                                             </td>
                                                         <? } else { ?>
                                                             <td class="nr-td-budjet" title="<?=$EXRATE_CODES[$curr_sbr->cost_sys][0]?>"><b class="rd24 rd24-<?=($curr_sbr->data['reserved_id'] ? 'grn' : 'red')?>"><b class="btn-lc"><b class="btn-m"><b class="btn-txt"><?=sbr_meta::view_cost($stage->data['cost'], $curr_sbr->cost_sys)?></b></b></b></b></td>
                                                             <? if($stage->status == sbr_stages::STATUS_COMPLETED || $stage->status == sbr_stages::STATUS_ARBITRAGED) { ?>
-                                                              <td><?=$stage->data['work_days']?> <?=ending(abs($stage->data['work_days']), 'день', 'дня', 'дней')?></td>
+                                                              <td><?=$stage->data['work_days']?> <?=ending(abs($stage->data['work_days']), 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№')?></td>
                                                             <? } else { ?>
-                                                              <td<?=($stage->data['work_rem'] < 0 ? ' class="nr-day-red"' : '')?>><?=$stage->data['work_rem']?> <?=ending(abs($stage->data['work_rem']), 'день', 'дня', 'дней')?></td>
+                                                              <td<?=($stage->data['work_rem'] < 0 ? ' class="nr-day-red"' : '')?>><?=$stage->data['work_rem']?> <?=ending(abs($stage->data['work_rem']), 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№')?></td>
                                                             <? } ?>
                                                               <td class="last">
                                                                   <b class="rd24 rd24-<?=sbr_stages::$ss_classes[$stage->data['status']][0]?>"><b class="btn-lc"><b class="btn-m"><b class="btn-txt"><?=sbr_stages::$ss_classes[$stage->data['status']][1]?></b></b></b></b>
                                                                   <? if(($ain=$stage->status == sbr_stages::STATUS_INARBITRAGE) || $stage->status == sbr_stages::STATUS_ARBITRAGED) { ?>
-                                                                    <span class="lnk-arb"><a href="javascript:;" onclick="SBR.getArbDescr(<?=$curr_sbr->id?>, <?=$stage->id?>)"><?=$ain ? 'Информация' : 'Решение Арбитража'?></a></span>
+                                                                    <span class="lnk-arb"><a href="javascript:;" onclick="SBR.getArbDescr(<?=$curr_sbr->id?>, <?=$stage->id?>)"><?=$ain ? 'РРЅС„РѕСЂРјР°С†РёСЏ' : 'Р РµС€РµРЅРёРµ РђСЂР±РёС‚СЂР°Р¶Р°'?></a></span>
                                                                   <? } ?>
                                                               </td>
                                                         <? } ?>
@@ -112,29 +112,29 @@ var SBR = new Sbr();
                                     <? } ?>
                                     <? if($sbr->error[$curr_sbr->data['id']]['new_version']) { ?>
                                         <div class="nr-cancel-reason c">
-                                            <p>Заказчик только что изменил структуру «Безопасной Сделки» (добавил/удалил/переместил) этапы. Пожалуйста, ознакомьтесь и примите решение.</p>
+                                            <p>Р—Р°РєР°Р·С‡РёРє С‚РѕР»СЊРєРѕ С‡С‚Рѕ РёР·РјРµРЅРёР» СЃС‚СЂСѓРєС‚СѓСЂСѓ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ» (РґРѕР±Р°РІРёР»/СѓРґР°Р»РёР»/РїРµСЂРµРјРµСЃС‚РёР») СЌС‚Р°РїС‹. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕР·РЅР°РєРѕРјСЊС‚РµСЃСЊ Рё РїСЂРёРјРёС‚Рµ СЂРµС€РµРЅРёРµ.</p>
                                         </div>
                                     <? } ?>
                                     <? if ($status == sbr::STATUS_NEW) { ?>
                                         <div class="nr-prj-btns c" style="position:relative">
                                             <?  if($curr_sbr->scheme_type != sbr::SCHEME_OLD) { ?>
                                                 <div class="nr-warning">
-                                                    <strong>Соглашаясь с данным Техническим заданием</strong>
+                                                    <strong>РЎРѕРіР»Р°С€Р°СЏСЃСЊ СЃ РґР°РЅРЅС‹Рј РўРµС…РЅРёС‡РµСЃРєРёРј Р·Р°РґР°РЅРёРµРј</strong>
                                                     <? if($curr_sbr->scheme_type == sbr::SCHEME_AGNT) { ?>
-                                                      путем нажатия на кнопку &laquo;Согласиться&raquo;, вы заключаете Соглашение о выполнении работы и/или оказании услуги с использованием онлайн сервиса &laquo;Безопасная Сделка&raquo;. Текст Соглашения расположен на Сайте Free-lance.ru в сети Интернет по адресу: <a href="/agreement_escrow.pdf" target="_blank"><nobr><?=HTTP_PREFIX?>www.free-lance.ru/agreement_escrow.pdf</nobr></a>.<br/><br/>
-                                                      Настоящим Сайт Free-lance.ru (ООО "Ваан") предлагает Оферту на заключение Договора об использовании онлайн сервиса &laquo;Безопасная Сделка&raquo;. Текст Оферты на заключение Договора об использовании онлайн сервиса &laquo;Безопасная Сделка&raquo; расположен на Сайте Free-lance.ru в сети Интернет по адресу: <a href="<?=sbr::$scheme_types[sbr::SCHEME_AGNT][1]?>" target="_blank"><nobr><?=sbr::$scheme_types[sbr::SCHEME_AGNT][1]?></nobr></a>. Нажимая на кнопку &laquo;Согласиться&raquo;, вы принимаете условия Оферты на заключение Договора об использовании онлайн сервиса &laquo;Безопасная Сделка&raquo;.
+                                                      РїСѓС‚РµРј РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ &laquo;РЎРѕРіР»Р°СЃРёС‚СЊСЃСЏ&raquo;, РІС‹ Р·Р°РєР»СЋС‡Р°РµС‚Рµ РЎРѕРіР»Р°С€РµРЅРёРµ Рѕ РІС‹РїРѕР»РЅРµРЅРёРё СЂР°Р±РѕС‚С‹ Рё/РёР»Рё РѕРєР°Р·Р°РЅРёРё СѓСЃР»СѓРіРё СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј РѕРЅР»Р°Р№РЅ СЃРµСЂРІРёСЃР° &laquo;Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°&raquo;. РўРµРєСЃС‚ РЎРѕРіР»Р°С€РµРЅРёСЏ СЂР°СЃРїРѕР»РѕР¶РµРЅ РЅР° РЎР°Р№С‚Рµ Free-lance.ru РІ СЃРµС‚Рё РРЅС‚РµСЂРЅРµС‚ РїРѕ Р°РґСЂРµСЃСѓ: <a href="/agreement_escrow.pdf" target="_blank"><nobr><?=HTTP_PREFIX?>www.free-lance.ru/agreement_escrow.pdf</nobr></a>.<br/><br/>
+                                                      РќР°СЃС‚РѕСЏС‰РёРј РЎР°Р№С‚ Free-lance.ru (РћРћРћ "Р’Р°Р°РЅ") РїСЂРµРґР»Р°РіР°РµС‚ РћС„РµСЂС‚Сѓ РЅР° Р·Р°РєР»СЋС‡РµРЅРёРµ Р”РѕРіРѕРІРѕСЂР° РѕР± РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё РѕРЅР»Р°Р№РЅ СЃРµСЂРІРёСЃР° &laquo;Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°&raquo;. РўРµРєСЃС‚ РћС„РµСЂС‚С‹ РЅР° Р·Р°РєР»СЋС‡РµРЅРёРµ Р”РѕРіРѕРІРѕСЂР° РѕР± РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё РѕРЅР»Р°Р№РЅ СЃРµСЂРІРёСЃР° &laquo;Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°&raquo; СЂР°СЃРїРѕР»РѕР¶РµРЅ РЅР° РЎР°Р№С‚Рµ Free-lance.ru РІ СЃРµС‚Рё РРЅС‚РµСЂРЅРµС‚ РїРѕ Р°РґСЂРµСЃСѓ: <a href="<?=sbr::$scheme_types[sbr::SCHEME_AGNT][1]?>" target="_blank"><nobr><?=sbr::$scheme_types[sbr::SCHEME_AGNT][1]?></nobr></a>. РќР°Р¶РёРјР°СЏ РЅР° РєРЅРѕРїРєСѓ &laquo;РЎРѕРіР»Р°СЃРёС‚СЊСЃСЏ&raquo;, РІС‹ РїСЂРёРЅРёРјР°РµС‚Рµ СѓСЃР»РѕРІРёСЏ РћС„РµСЂС‚С‹ РЅР° Р·Р°РєР»СЋС‡РµРЅРёРµ Р”РѕРіРѕРІРѕСЂР° РѕР± РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё РѕРЅР»Р°Р№РЅ СЃРµСЂРІРёСЃР° &laquo;Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°&raquo;.
                                                     <? } else if($curr_sbr->scheme_type == sbr::SCHEME_PDRD) { ?>
-                                                      путем нажатия на кнопку &laquo;Согласиться&raquo;, вы заключаете Соглашение о выполнении работы и/или оказании услуги с использованием онлайн сервиса &laquo;Безопасная Сделка&raquo;. Текст Соглашения расположен на Сайте Free-lance.ru в сети Интернет по адресу: <a href="/offer_work_free-lancer.pdf" target="_blank"><nobr><?=HTTP_PREFIX?>www.free-lance.ru/offer_work_free-lancer.pdf</nobr></a>.
+                                                      РїСѓС‚РµРј РЅР°Р¶Р°С‚РёСЏ РЅР° РєРЅРѕРїРєСѓ &laquo;РЎРѕРіР»Р°СЃРёС‚СЊСЃСЏ&raquo;, РІС‹ Р·Р°РєР»СЋС‡Р°РµС‚Рµ РЎРѕРіР»Р°С€РµРЅРёРµ Рѕ РІС‹РїРѕР»РЅРµРЅРёРё СЂР°Р±РѕС‚С‹ Рё/РёР»Рё РѕРєР°Р·Р°РЅРёРё СѓСЃР»СѓРіРё СЃ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµРј РѕРЅР»Р°Р№РЅ СЃРµСЂРІРёСЃР° &laquo;Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°&raquo;. РўРµРєСЃС‚ РЎРѕРіР»Р°С€РµРЅРёСЏ СЂР°СЃРїРѕР»РѕР¶РµРЅ РЅР° РЎР°Р№С‚Рµ Free-lance.ru РІ СЃРµС‚Рё РРЅС‚РµСЂРЅРµС‚ РїРѕ Р°РґСЂРµСЃСѓ: <a href="/offer_work_free-lancer.pdf" target="_blank"><nobr><?=HTTP_PREFIX?>www.free-lance.ru/offer_work_free-lancer.pdf</nobr></a>.
                                                     <? } ?>
                                                 </div>
                                                 <!-- NR edited -->
                                                 <br />
                                                     <div>
                                                         <ul class="form-list">
-                                                            <li><label for="rez_type<?=sbr::RT_RU?>"><input type="radio" class="i-radio" name="rez_type" id="rez_type<?=sbr::RT_RU?>" onclick="<? if($isReqvsFilled) { ?>SBR.changeRezTypeFrl(<?=$curr_sbr->id?>, <?=sbr::RT_RU?>)<? } ?>" value="<?=sbr::RT_RU?>"<?=($rt_disabled && $rez_type && $rez_type != sbr::RT_RU ? ' disabled="true"' : '' )?><?=($rt_checked && $rez_type == sbr::RT_RU ? ' checked="true"' : '' )?> />&nbsp;Я подтверждаю, что являюсь резидентом Российской Федерации.</label></li>
+                                                            <li><label for="rez_type<?=sbr::RT_RU?>"><input type="radio" class="i-radio" name="rez_type" id="rez_type<?=sbr::RT_RU?>" onclick="<? if($isReqvsFilled) { ?>SBR.changeRezTypeFrl(<?=$curr_sbr->id?>, <?=sbr::RT_RU?>)<? } ?>" value="<?=sbr::RT_RU?>"<?=($rt_disabled && $rez_type && $rez_type != sbr::RT_RU ? ' disabled="true"' : '' )?><?=($rt_checked && $rez_type == sbr::RT_RU ? ' checked="true"' : '' )?> />&nbsp;РЇ РїРѕРґС‚РІРµСЂР¶РґР°СЋ, С‡С‚Рѕ СЏРІР»СЏСЋСЃСЊ СЂРµР·РёРґРµРЅС‚РѕРј Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё.</label></li>
                                                             <li>
                                                                 <label for="rez_type<?=sbr::RT_UABYKZ?>">
-                                                                  <input type="radio" name="rez_type" class="i-radio" id="rez_type<?=sbr::RT_UABYKZ?>" onclick="<? if($isReqvsFilled) { ?>SBR.changeRezTypeFrl(<?=$curr_sbr->id?>, <?=sbr::RT_UABYKZ?>)<? } ?>" value="<?=sbr::RT_UABYKZ?>"<?=($rt_disabled && $rez_type && $rez_type != sbr::RT_UABYKZ ? ' disabled="true"' : '' )?><?=($rt_checked && $rez_type == sbr::RT_UABYKZ ? ' checked="true"' : '' )?> />&nbsp;Я подтверждаю, что являюсь резидентом любого другого государства, кроме Российской Федерации
+                                                                  <input type="radio" name="rez_type" class="i-radio" id="rez_type<?=sbr::RT_UABYKZ?>" onclick="<? if($isReqvsFilled) { ?>SBR.changeRezTypeFrl(<?=$curr_sbr->id?>, <?=sbr::RT_UABYKZ?>)<? } ?>" value="<?=sbr::RT_UABYKZ?>"<?=($rt_disabled && $rez_type && $rez_type != sbr::RT_UABYKZ ? ' disabled="true"' : '' )?><?=($rt_checked && $rez_type == sbr::RT_UABYKZ ? ' checked="true"' : '' )?> />&nbsp;РЇ РїРѕРґС‚РІРµСЂР¶РґР°СЋ, С‡С‚Рѕ СЏРІР»СЏСЋСЃСЊ СЂРµР·РёРґРµРЅС‚РѕРј Р»СЋР±РѕРіРѕ РґСЂСѓРіРѕРіРѕ РіРѕСЃСѓРґР°СЂСЃС‚РІР°, РєСЂРѕРјРµ Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё
                                                                 </label>
                                                                 <div class="form fs-w form-resident-inf"<?=($rt_checked && $rez_type == sbr::RT_UABYKZ ? '' : ' style="display:none"' )?> id="norez_info<?=$curr_sbr->id?>">
                                                                     <b class="b1"></b>
@@ -145,19 +145,19 @@ var SBR = new Sbr();
                                                                             <? if($curr_sbr->has_norez_overcost || ($pdrd_disabled && $curr_sbr->scheme_type==sbr::SCHEME_PDRD && $sbr->user_reqvs['rez_type']!=sbr::RT_RU)) { ?>
                                                                               <div id="ok_blocked_alert<?=$curr_sbr->id?>">
                                                                                 <? if($curr_sbr->has_norez_overcost) { ?>
-                                                                                  <div><strong>Бюджет задачи «Безопасной Сделки» превышает допустимый лимит</strong>, свяжитесь с работодателем для корректировки проекта.</div><br/>
+                                                                                  <div><strong>Р‘СЋРґР¶РµС‚ Р·Р°РґР°С‡Рё В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ» РїСЂРµРІС‹С€Р°РµС‚ РґРѕРїСѓСЃС‚РёРјС‹Р№ Р»РёРјРёС‚</strong>, СЃРІСЏР¶РёС‚РµСЃСЊ СЃ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµРј РґР»СЏ РєРѕСЂСЂРµРєС‚РёСЂРѕРІРєРё РїСЂРѕРµРєС‚Р°.</div><br/>
                                                                                 <? } ?>
                                                                                 <? if($pdrd_disabled && $curr_sbr->scheme_type==sbr::SCHEME_PDRD && $sbr->user_reqvs['rez_type']!=sbr::RT_RU) { ?>
-                                                                                  <div><strong>«Безопасная Сделка» по договору подряда для нерезидентов Российской Федерации временно недоступна</strong>.</div><br/>
+                                                                                  <div><strong>В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В» РїРѕ РґРѕРіРѕРІРѕСЂСѓ РїРѕРґСЂСЏРґР° РґР»СЏ РЅРµСЂРµР·РёРґРµРЅС‚РѕРІ Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё РІСЂРµРјРµРЅРЅРѕ РЅРµРґРѕСЃС‚СѓРїРЅР°</strong>.</div><br/>
                                                                                 <? } ?>
                                                                               </div>
                                                                             <? } ?>
-                                                                            Нерезиденты Российской Федерации имеют лишь один способ получения денежных средств: безналичный расчет с ограничением суммы эквивалентной пятидесяти тысячам долларов США.
+                                                                            РќРµСЂРµР·РёРґРµРЅС‚С‹ Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё РёРјРµСЋС‚ Р»РёС€СЊ РѕРґРёРЅ СЃРїРѕСЃРѕР± РїРѕР»СѓС‡РµРЅРёСЏ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ: Р±РµР·РЅР°Р»РёС‡РЅС‹Р№ СЂР°СЃС‡РµС‚ СЃ РѕРіСЂР°РЅРёС‡РµРЅРёРµРј СЃСѓРјРјС‹ СЌРєРІРёРІР°Р»РµРЅС‚РЅРѕР№ РїСЏС‚РёРґРµСЃСЏС‚Рё С‚С‹СЃСЏС‡Р°Рј РґРѕР»Р»Р°СЂРѕРІ РЎРЁРђ.
                                                                           </span>
                                                                           <? if( $curr_sbr->scheme['taxes'][sbr::FRL][sbr::TAX_NP]
                                                                                  && $sbr->user_reqvs['form_type']==sbr::FT_JURI) { ?>
                                                                             <br /><br />
-                                                                            Во избежание дополнительного налога (налога на прибыль), вам необходимо выслать справку в бумажном виде вместе с Актом, что вы являетесь резидентом своей страны. <a href="/docs/dokumenty_na_rezidentstvo.docx" target="_blank">Документ о Резидентстве</a>
+                                                                            Р’Рѕ РёР·Р±РµР¶Р°РЅРёРµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕРіРѕ РЅР°Р»РѕРіР° (РЅР°Р»РѕРіР° РЅР° РїСЂРёР±С‹Р»СЊ), РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РІС‹СЃР»Р°С‚СЊ СЃРїСЂР°РІРєСѓ РІ Р±СѓРјР°Р¶РЅРѕРј РІРёРґРµ РІРјРµСЃС‚Рµ СЃ РђРєС‚РѕРј, С‡С‚Рѕ РІС‹ СЏРІР»СЏРµС‚РµСЃСЊ СЂРµР·РёРґРµРЅС‚РѕРј СЃРІРѕРµР№ СЃС‚СЂР°РЅС‹. <a href="/docs/dokumenty_na_rezidentstvo.docx" target="_blank">Р”РѕРєСѓРјРµРЅС‚ Рѕ Р РµР·РёРґРµРЅС‚СЃС‚РІРµ</a>
                                                                           <? } ?>
                                                                         </p>
                                                                     </div>
@@ -172,7 +172,7 @@ var SBR = new Sbr();
                                                             <b class="b1"></b>
                                                             <b class="b2"></b>
                                                             <div class="form-in">
-                                                                 Не заполнены данные на вашей странице "Финансы", прежде чем продолжить вам необходимо <a href="/users/<?=$_SESSION['login']?>/setup/finance">заполнить все обязательные поля.</a>
+                                                                 РќРµ Р·Р°РїРѕР»РЅРµРЅС‹ РґР°РЅРЅС‹Рµ РЅР° РІР°С€РµР№ СЃС‚СЂР°РЅРёС†Рµ "Р¤РёРЅР°РЅСЃС‹", РїСЂРµР¶РґРµ С‡РµРј РїСЂРѕРґРѕР»Р¶РёС‚СЊ РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ <a href="/users/<?=$_SESSION['login']?>/setup/finance">Р·Р°РїРѕР»РЅРёС‚СЊ РІСЃРµ РѕР±СЏР·Р°С‚РµР»СЊРЅС‹Рµ РїРѕР»СЏ.</a>
                                                             </div>
                                                             <b class="b2"></b>
                                                             <b class="b1"></b>
@@ -184,7 +184,7 @@ var SBR = new Sbr();
                                                             <b class="b1"></b>
                                                             <b class="b2"></b>
                                                             <div class="form-in">
-                                                                 Если вы являетесь физическим лицом и не являетесь резидентом РФ, для вывода средств с вашего личного счета необходимо подписать и отправить нам по почте Акт по проведенной «Безопасной Сделке» и Заявление на вывод денежных средств.
+                                                                 Р•СЃР»Рё РІС‹ СЏРІР»СЏРµС‚РµСЃСЊ С„РёР·РёС‡РµСЃРєРёРј Р»РёС†РѕРј Рё РЅРµ СЏРІР»СЏРµС‚РµСЃСЊ СЂРµР·РёРґРµРЅС‚РѕРј Р Р¤, РґР»СЏ РІС‹РІРѕРґР° СЃСЂРµРґСЃС‚РІ СЃ РІР°С€РµРіРѕ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р° РЅРµРѕР±С…РѕРґРёРјРѕ РїРѕРґРїРёСЃР°С‚СЊ Рё РѕС‚РїСЂР°РІРёС‚СЊ РЅР°Рј РїРѕ РїРѕС‡С‚Рµ РђРєС‚ РїРѕ РїСЂРѕРІРµРґРµРЅРЅРѕР№ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµВ» Рё Р—Р°СЏРІР»РµРЅРёРµ РЅР° РІС‹РІРѕРґ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ.
                                                             </div>
                                                             <b class="b2"></b>
                                                             <b class="b1"></b>
@@ -200,13 +200,13 @@ var SBR = new Sbr();
                                                     <a href="javascript:;" onclick="$$('.rrbox-class').setStyle('display', 'none'); $('rrbox<?=$curr_sbr->id?>').style.display='block';
                                                                                    if(__okbl=$('ok_blocked_alert<?=$curr_sbr->id?>'))
                                                                                       $('rrtext<?=$curr_sbr->data['id']?>').value=__okbl.get('text').trim();
-                                                                                   return false;" class="btnr btnr-red"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Отказаться</span></span></span></a>
+                                                                                   return false;" class="btnr btnr-red"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РћС‚РєР°Р·Р°С‚СЊСЃСЏ</span></span></span></a>
                                                 </span>
                                                 <span class="btn-o-green">
                                                     <? if($curr_sbr->scheme_type != sbr::SCHEME_OLD) { ?>
-                                                      <a href="javascript:;" onclick="if((_xrtc=SBR.rt_cache[<?=$curr_sbr->id?>]) && !_xrtc.ok_blocked)SBR.submitLock(document.getElementById('currentsFrm<?=$id?>'),{ok:1})" id="ok_btn<?=$curr_sbr->id?>" class="btnr btnr-green2 btnr-disabled"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Согласиться</span></span></span></a>
+                                                      <a href="javascript:;" onclick="if((_xrtc=SBR.rt_cache[<?=$curr_sbr->id?>]) && !_xrtc.ok_blocked)SBR.submitLock(document.getElementById('currentsFrm<?=$id?>'),{ok:1})" id="ok_btn<?=$curr_sbr->id?>" class="btnr btnr-green2 btnr-disabled"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РЎРѕРіР»Р°СЃРёС‚СЊСЃСЏ</span></span></span></a>
                                                     <? } else { ?>
-                                                      <a href="javascript:;" onclick="SBR.submitLock(document.getElementById('currentsFrm<?=$id?>'),{ok:1})" class="btnr btnr-green2"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Согласиться</span></span></span></a>
+                                                      <a href="javascript:;" onclick="SBR.submitLock(document.getElementById('currentsFrm<?=$id?>'),{ok:1})" class="btnr btnr-green2"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РЎРѕРіР»Р°СЃРёС‚СЊСЃСЏ</span></span></span></a>
                                                     <? } ?>
                                                     <input type="hidden" name="ok" value="" />
                                                 </span>
@@ -214,11 +214,11 @@ var SBR = new Sbr();
 
                                             <div class="f-overlay f-o-nr-c rrbox-class" id="rrbox<?=$curr_sbr->id?>" style="display:none;">
                                                 <div class="f-overlay-in">
-                                                    <h3>Укажите причину отказа</h3>
+                                                    <h3>РЈРєР°Р¶РёС‚Рµ РїСЂРёС‡РёРЅСѓ РѕС‚РєР°Р·Р°</h3>
                                                     <div class="f-overlay-cnt"><textarea name="frl_refuse_reason" rows="5" cols="10" id="rrtext<?=$curr_sbr->data['id']?>"></textarea></div>
                                                     <div class="f-overlay-btns">
-                                                        <input type="submit" name="refuse" value="Отказаться" class="i-btn i-bold" />
-                                                        <input type="button" value="Отменить" class="i-btn" onclick="document.getElementById('rrbox<?=$curr_sbr->data['id']?>').style.display='none'; document.getElementById('rrtext<?=$curr_sbr->data['id']?>').value=''; return false;" />
+                                                        <input type="submit" name="refuse" value="РћС‚РєР°Р·Р°С‚СЊСЃСЏ" class="i-btn i-bold" />
+                                                        <input type="button" value="РћС‚РјРµРЅРёС‚СЊ" class="i-btn" onclick="document.getElementById('rrbox<?=$curr_sbr->data['id']?>').style.display='none'; document.getElementById('rrtext<?=$curr_sbr->data['id']?>').value=''; return false;" />
                                                   </div>
                                                 </div>
                                             </div>
@@ -228,20 +228,20 @@ var SBR = new Sbr();
                                         <div class="nr-prj-btns c" style="position:relative">
                                             <div class="btn-margin">
                                                 <span class="btn-o-red">
-                                                    <a href="javascript:;" onclick="$$('.rrbox-class').setStyle('display', 'none'); document.getElementById('rrbox<?=$curr_sbr->data['id']?>').style.display='block'; return false;" class="btnr btnr-red"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Отказаться от проекта</span></span></span></a>
+                                                    <a href="javascript:;" onclick="$$('.rrbox-class').setStyle('display', 'none'); document.getElementById('rrbox<?=$curr_sbr->data['id']?>').style.display='block'; return false;" class="btnr btnr-red"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РћС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ РїСЂРѕРµРєС‚Р°</span></span></span></a>
                                                 </span>
                                             </div>
                                             <div class="nr-warning">
-                                                <strong>Обратите внимание &mdash; заказчик еще не зарезервировал деньги!</strong><br />
-                                                Не начинайте выполнять проект до резервирования средств &mdash; так вы убережете себя от обмана.
+                                                <strong>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ &mdash; Р·Р°РєР°Р·С‡РёРє РµС‰Рµ РЅРµ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°Р» РґРµРЅСЊРіРё!</strong><br />
+                                                РќРµ РЅР°С‡РёРЅР°Р№С‚Рµ РІС‹РїРѕР»РЅСЏС‚СЊ РїСЂРѕРµРєС‚ РґРѕ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ СЃСЂРµРґСЃС‚РІ &mdash; С‚Р°Рє РІС‹ СѓР±РµСЂРµР¶РµС‚Рµ СЃРµР±СЏ РѕС‚ РѕР±РјР°РЅР°.
                                             </div>
                                             <div class="f-overlay f-o-nr-c rrbox-class" id="rrbox<?=$curr_sbr->data['id']?>" style="display:none">
                                                 <div class="f-overlay-in">
-                                                    <h3>Укажите причину отказа</h3>
+                                                    <h3>РЈРєР°Р¶РёС‚Рµ РїСЂРёС‡РёРЅСѓ РѕС‚РєР°Р·Р°</h3>
                                                     <div class="f-overlay-cnt"><textarea name="frl_refuse_reason" rows="5" cols="10" id="rrtext<?=$curr_sbr->data['id']?>"></textarea></div>
                                                     <div class="f-overlay-btns">
-                                                        <input type="submit" name="refuse" value="Отказаться" class="i-btn i-bold" />
-                                                        <input type="button" value="Отменить" class="i-btn" onclick="document.getElementById('rrbox<?=$curr_sbr->data['id']?>').style.display='none'; document.getElementById('rrtext<?=$curr_sbr->data['id']?>').value=''; return false;" />
+                                                        <input type="submit" name="refuse" value="РћС‚РєР°Р·Р°С‚СЊСЃСЏ" class="i-btn i-bold" />
+                                                        <input type="button" value="РћС‚РјРµРЅРёС‚СЊ" class="i-btn" onclick="document.getElementById('rrbox<?=$curr_sbr->data['id']?>').style.display='none'; document.getElementById('rrtext<?=$curr_sbr->data['id']?>').value=''; return false;" />
                                                   </div>
                                                 </div>
                                             </div>
@@ -258,7 +258,7 @@ var SBR = new Sbr();
                         <b class="b1"></b>
                     </div>
                     <div id="arb_descr_box<?=$curr_sbr->id?>" class="arb_descr_box"></div>
-                    <!-- конец Проект -->
+                    <!-- РєРѕРЅРµС† РџСЂРѕРµРєС‚ -->
                 <? } ?>
             </div>
         </div>

@@ -4,7 +4,7 @@ if(!$sbr) exit;
 require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/sbr.common.php");
 $xajax->printJavascript('/xajax/');
 ?>
-<h2 class="b-layout__title b-layout__title_padbot_20">Автозагрузка актов и с/ф</h3>
+<h2 class="b-layout__title b-layout__title_padbot_20">РђРІС‚РѕР·Р°РіСЂСѓР·РєР° Р°РєС‚РѕРІ Рё СЃ/С„</h3>
 
 <form name="frm" method="post" action="" enctype="multipart/form-data">
     <input type="hidden" name="action" value="parse_report"/>
@@ -13,7 +13,7 @@ $xajax->printJavascript('/xajax/');
         <b class="b2"></b>
         <div class="form-in">
             <div class="form-block first">
-                <h3>Загрузка отчета</h3>
+                <h3>Р—Р°РіСЂСѓР·РєР° РѕС‚С‡РµС‚Р°</h3>
                 <div class="form-el">
                     <div class="form-value">
                         <input type="file" name="report" class=""/>
@@ -22,7 +22,7 @@ $xajax->printJavascript('/xajax/');
             </div>
             <div class="form-block last">
                 <div class="form-el form-btns flm">
-                    <button type="submit">Загрузить</button>
+                    <button type="submit">Р—Р°РіСЂСѓР·РёС‚СЊ</button>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@ $xajax->printJavascript('/xajax/');
     </div>
 </form>
 
-<blockquote>* <b>Статус</b> - отображает статус обработки. Принимает два значения: в очереди - ожидание обработки, обработано - документы сформированы</blockquote>
+<blockquote>* <b>РЎС‚Р°С‚СѓСЃ</b> - РѕС‚РѕР±СЂР°Р¶Р°РµС‚ СЃС‚Р°С‚СѓСЃ РѕР±СЂР°Р±РѕС‚РєРё. РџСЂРёРЅРёРјР°РµС‚ РґРІР° Р·РЅР°С‡РµРЅРёСЏ: РІ РѕС‡РµСЂРµРґРё - РѕР¶РёРґР°РЅРёРµ РѕР±СЂР°Р±РѕС‚РєРё, РѕР±СЂР°Р±РѕС‚Р°РЅРѕ - РґРѕРєСѓРјРµРЅС‚С‹ СЃС„РѕСЂРјРёСЂРѕРІР°РЅС‹</blockquote>
 <form action="." method="get" id="invoice_form">
     <input type="hidden" name="site" value="invoice" />
     <input type="hidden" name="f_orderby" value="<?= $filter['f_orderby'] ?>" />
@@ -40,42 +40,42 @@ $xajax->printJavascript('/xajax/');
     <thead>
         <tr>
             <th width="50">
-                СБР<br />
+                РЎР‘Р <br />
                 <a href="<?= $orderLink ?>&f_orderby=sbr&f_desc=0"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $filter['f_orderby'] === 'sbr' && !$filter['f_desc'] ? '-a' : '' ?>.png" /></a>
                 <a href="<?= $orderLink ?>&f_orderby=sbr&f_desc=1"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $filter['f_orderby'] === 'sbr' && $filter['f_desc'] ? '-a' : '' ?>.png" /></a>
             </th>
             <th width="60">
-                Логин<br />
+                Р›РѕРіРёРЅ<br />
                 <a href="<?= $orderLink ?>&f_orderby=login&f_desc=0"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $filter['f_orderby'] === 'login' && !$filter['f_desc'] ? '-a' : '' ?>.png" /></a>
                 <a href="<?= $orderLink ?>&f_orderby=login&f_desc=1"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $filter['f_orderby'] === 'login' && $filter['f_desc'] ? '-a' : '' ?>.png" /></a>
             </th>
             <th width="80">
-                #Аккр.<br />
+                #РђРєРєСЂ.<br />
                 <a href="<?= $orderLink ?>&f_orderby=akkr&f_desc=0"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $filter['f_orderby'] === 'akkr' && !$filter['f_desc'] ? '-a' : '' ?>.png" /></a>
                 <a href="<?= $orderLink ?>&f_orderby=akkr&f_desc=1"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $filter['f_orderby'] === 'akkr' && $filter['f_desc'] ? '-a' : '' ?>.png" /></a>
             </th>
             <th width="80">
-                ДатаАкта<br />
+                Р”Р°С‚Р°РђРєС‚Р°<br />
                 <a href="<?= $orderLink ?>&f_orderby=actdate&f_desc=0"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $filter['f_orderby'] === 'actdate' && !$filter['f_desc'] ? '-a' : '' ?>.png" /></a>
                 <a href="<?= $orderLink ?>&f_orderby=actdate&f_desc=1"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $filter['f_orderby'] === 'actdate' && $filter['f_desc'] ? '-a' : '' ?>.png" /></a>
             </th>
             <th width="100">
-                Дата Счета-ф<br />
+                Р”Р°С‚Р° РЎС‡РµС‚Р°-С„<br />
                 <a href="<?= $orderLink ?>&f_orderby=invdate&f_desc=0"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $filter['f_orderby'] === 'invdate' && !$filter['f_desc'] ? '-a' : '' ?>.png" /></a>
                 <a href="<?= $orderLink ?>&f_orderby=invdate&f_desc=1"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $filter['f_orderby'] === 'invdate' && $filter['f_desc'] ? '-a' : '' ?>.png" /></a>
             </th>
             <th width="60">
-                Сумма<br />
+                РЎСѓРјРјР°<br />
                 <a href="<?= $orderLink ?>&f_orderby=sum&f_desc=0"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $filter['f_orderby'] === 'sum' && !$filter['f_desc'] ? '-a' : '' ?>.png" /></a>
                 <a href="<?= $orderLink ?>&f_orderby=sum&f_desc=1"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $filter['f_orderby'] === 'sum' && $filter['f_desc'] ? '-a' : '' ?>.png" /></a>
             </th>
             <th width="70">
-                Статус *<br />
+                РЎС‚Р°С‚СѓСЃ *<br />
                 <a href="<?= $orderLink ?>&f_orderby=status&f_desc=0"><img width="11" height="11" alt="v" src="/images/arrow-bottom<?= $filter['f_orderby'] === 'status' && !$filter['f_desc'] ? '-a' : '' ?>.png" /></a>
                 <a href="<?= $orderLink ?>&f_orderby=status&f_desc=1"><img width="11" height="11" alt="v" src="/images/arrow-top<?= $filter['f_orderby'] === 'status' && $filter['f_desc'] ? '-a' : '' ?>.png" /></a>
             </th>
             <th>
-                Сообщ
+                РЎРѕРѕР±С‰
             </th>
         </tr>
     </thead>
@@ -113,7 +113,7 @@ $xajax->printJavascript('/xajax/');
             </td>
             <td>
                 <select name="f_status" class="filter_select">
-                    <option value="-1" <?= $filter['f_status'] == -1 ? 'selected' : '' ?>>Все</option>
+                    <option value="-1" <?= $filter['f_status'] == -1 ? 'selected' : '' ?>>Р’СЃРµ</option>
                     <? foreach (sbr_adm::$invoice_state as $st_id => $st_name) { ?>
                     <option value="<?= $st_id ?>" <?= $filter['f_status'] == $st_id ? 'selected' : '' ?>><?= $st_name ?></option>
                     <? } ?>
@@ -123,14 +123,14 @@ $xajax->printJavascript('/xajax/');
                 <a id="filter_apply" href="javascript:void(0)" class="b-button b-button_rectangle_transparent_small">
                     <span class="b-button__b1">
                         <span class="b-button__b2">
-                            <span class="b-button__txt">Применить</span>
+                            <span class="b-button__txt">РџСЂРёРјРµРЅРёС‚СЊ</span>
                         </span>
                     </span>
                 </a>                
                 <a id="filter_reset" href="javascript:void(0)" class="b-button b-button_rectangle_transparent_small">
                     <span class="b-button__b1">
                         <span class="b-button__b2">
-                            <span class="b-button__txt">Сбросить</span>
+                            <span class="b-button__txt">РЎР±СЂРѕСЃРёС‚СЊ</span>
                         </span>
                     </span>
                 </a>                
@@ -174,7 +174,7 @@ $xajax->printJavascript('/xajax/');
         <? } else { ?>
             <tr>
                 <td colspan="8">
-                    Ничего не найдено
+                    РќРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ
                 </td>
             </tr>
         <? } ?>
@@ -200,14 +200,14 @@ $xajax->printJavascript('/xajax/');
                 filterApply = $('filter_apply'),
                 filterReset = $('filter_reset');
             
-            // сабмит по энтеру
+            // СЃР°Р±РјРёС‚ РїРѕ СЌРЅС‚РµСЂСѓ
             filterInputs.addEvent('keypress', function(event){
                 if (event.key === 'enter') {
                     filterForm.submit();
                 }
             });
             
-            // сабмит при выборе в селекте
+            // СЃР°Р±РјРёС‚ РїСЂРё РІС‹Р±РѕСЂРµ РІ СЃРµР»РµРєС‚Рµ
             /*filterSelects.addEvent('change', function(event){
                 filterForm.submit();
             });*/
@@ -222,7 +222,7 @@ $xajax->printJavascript('/xajax/');
                 filterForm.submit();
             });
             
-            // выделение текста при фокусе
+            // РІС‹РґРµР»РµРЅРёРµ С‚РµРєСЃС‚Р° РїСЂРё С„РѕРєСѓСЃРµ
             filterInputs.addEvent('focus', function(event){
                 this.select();
             }).addEvent('mouseup', function(event){

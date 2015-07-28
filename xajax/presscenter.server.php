@@ -3,9 +3,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/presscenter.common.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
-* Реорганизация членов комманды в категориях
+* Р РµРѕСЂРіР°РЅРёР·Р°С†РёСЏ С‡Р»РµРЅРѕРІ РєРѕРјРјР°РЅРґС‹ РІ РєР°С‚РµРіРѕСЂРёСЏС…
 *
-* @param    string  $order  Порядок членов комманды в категориях
+* @param    string  $order  РџРѕСЂСЏРґРѕРє С‡Р»РµРЅРѕРІ РєРѕРјРјР°РЅРґС‹ РІ РєР°С‚РµРіРѕСЂРёСЏС…
 *
 */
 function ReorderTeam($order) {
@@ -19,9 +19,9 @@ function ReorderTeam($order) {
 }
 
 /**
-* Получение информации о пользователе
+* РџРѕР»СѓС‡РµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ
 *
-* @param    integer $id     ID пользователя
+* @param    integer $id     ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 *
 */
 function GetPeopleTeamInfo($id) {
@@ -49,9 +49,9 @@ function GetPeopleTeamInfo($id) {
 }
 
 /**
-* Удаление фотографии
+* РЈРґР°Р»РµРЅРёРµ С„РѕС‚РѕРіСЂР°С„РёРё
 *
-* @param    integer $id     ID пользователя
+* @param    integer $id     ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 *
 */
 function DeletePhoto($id) {

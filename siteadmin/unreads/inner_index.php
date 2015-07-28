@@ -8,7 +8,7 @@ if($_POST['action']) {
     $action = $_POST['action'];
     
     switch($action) {
-        // читкаем сообщения которые не прочитаны
+        // С‡РёС‚РєР°РµРј СЃРѕРѕР±С‰РµРЅРёСЏ РєРѕС‚РѕСЂС‹Рµ РЅРµ РїСЂРѕС‡РёС‚Р°РЅС‹
         case "read":
             require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/projects_offers_dialogue.php");
             $cls  = new projects_offers_dialogue();
@@ -34,7 +34,7 @@ if(trim($_GET['login']) != "") {
             require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/projects_offers_dialogue.php");
             $cls  = new projects_offers_dialogue();
             if(!is_emp($user->role) ) {
-                $info = $cls->FindAllUnreadMessageFrl($user->uid); // Для Работодателей будет другая функция
+                $info = $cls->FindAllUnreadMessageFrl($user->uid); // Р”Р»СЏ Р Р°Р±РѕС‚РѕРґР°С‚РµР»РµР№ Р±СѓРґРµС‚ РґСЂСѓРіР°СЏ С„СѓРЅРєС†РёСЏ
             } else {
                 $info = $cls->FindAllUnreadMessageEmp($user->uid); 
             }
@@ -63,18 +63,18 @@ function emptyToggle() {
     $('secret').value = 0;     
 }
 </script>
-<h1>Отчеты о непрочитанных сообщениях</h1>
+<h1>РћС‚С‡РµС‚С‹ Рѕ РЅРµРїСЂРѕС‡РёС‚Р°РЅРЅС‹С… СЃРѕРѕР±С‰РµРЅРёСЏС…</h1>
 <div>
     <input type="hidden" name="secret" id="secret" value="0">
     <form method="GET">
-        Логин: <input type="text" name="login" value="<?=$login?>">
+        Р›РѕРіРёРЅ: <input type="text" name="login" value="<?=$login?>">
         <select name="mod">
-            <option value="1">Сообщения в диалогах/предложениях к проекту</option>
+            <option value="1">РЎРѕРѕР±С‰РµРЅРёСЏ РІ РґРёР°Р»РѕРіР°С…/РїСЂРµРґР»РѕР¶РµРЅРёСЏС… Рє РїСЂРѕРµРєС‚Сѓ</option>
         </select>
-        <input type="submit" value="Искать">
+        <input type="submit" value="РСЃРєР°С‚СЊ">
     </form>
     <? if($login): ?>
-    <h3>Результаты поиска:</h3>
+    <h3>Р РµР·СѓР»СЊС‚Р°С‚С‹ РїРѕРёСЃРєР°:</h3>
     
     <div style="border:1px silver solid;">
         <p style="float:left;padding:5px;"><?=view_avatar($user->login, $user->photo);?></p>
@@ -92,11 +92,11 @@ function emptyToggle() {
                 <thead>
                     <tr style="background:#fff">
                         <td><img src="/images/check.gif" onClick="toggleCheckBox();" style="cursor:pointer"/></td>
-                        <td>Фрилансер</td>
-                        <td>Проект</td>
-                        <td>Фрилансер забанен</td>
-                        <td>Проект заблокирован</td>
-                        <td>Дата сообщения</td>
+                        <td>Р¤СЂРёР»Р°РЅСЃРµСЂ</td>
+                        <td>РџСЂРѕРµРєС‚</td>
+                        <td>Р¤СЂРёР»Р°РЅСЃРµСЂ Р·Р°Р±Р°РЅРµРЅ</td>
+                        <td>РџСЂРѕРµРєС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ</td>
+                        <td>Р”Р°С‚Р° СЃРѕРѕР±С‰РµРЅРёСЏ</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -118,13 +118,13 @@ function emptyToggle() {
                 <thead>
                     <tr style="background:#fff">
                         <td><img src="/images/check.gif" onClick="toggleCheckBox();" style="cursor:pointer"/></td>
-                        <td>Работодатель</td>
-                        <td>Проект</td>
-                        <?/* <td>Ссылка на проект</td> */?>
-                        <td>Работодатель забанен</td>
-                        <td>Проект заблокирован</td>
-                        <td>Проект для ПРО</td>
-                        <td>Дата сообщения</td>
+                        <td>Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ</td>
+                        <td>РџСЂРѕРµРєС‚</td>
+                        <?/* <td>РЎСЃС‹Р»РєР° РЅР° РїСЂРѕРµРєС‚</td> */?>
+                        <td>Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ Р·Р°Р±Р°РЅРµРЅ</td>
+                        <td>РџСЂРѕРµРєС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ</td>
+                        <td>РџСЂРѕРµРєС‚ РґР»СЏ РџР Рћ</td>
+                        <td>Р”Р°С‚Р° СЃРѕРѕР±С‰РµРЅРёСЏ</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -138,11 +138,11 @@ function emptyToggle() {
                         <td><? if($val['is_blocked']): ?><strong style="color:red"><?=date('d.m.Y H:i:s', strtotime($val['blocked_time']))?><? else: ?> - <? endif; ?></td>
                         <td>
                         <?if($val['pro_only'] == 't'):?>
-                            <?=(!is_pro($user->is_pro)?'<strong style="color:red">Да</strong>':'Да')?>
+                            <?=(!is_pro($user->is_pro)?'<strong style="color:red">Р”Р°</strong>':'Р”Р°')?>
                         <?else:?>
-                            Нет
+                            РќРµС‚
                         <?endif;?>
-                        <?($val['pro_only']=='t'?"Да":"Нет")?></td>
+                        <?($val['pro_only']=='t'?"Р”Р°":"РќРµС‚")?></td>
                         <td><?=date('d.m.Y H:i:s', strtotime($val['post_date']));?></td>
                     </tr>
                     <? endforeach; ?>
@@ -153,13 +153,13 @@ function emptyToggle() {
             
         </div>
         
-        Действие с сообщениями: <select name="action">
-        <option value="read">Прочитать</option>
+        Р”РµР№СЃС‚РІРёРµ СЃ СЃРѕРѕР±С‰РµРЅРёСЏРјРё: <select name="action">
+        <option value="read">РџСЂРѕС‡РёС‚Р°С‚СЊ</option>
         </select> 
-        <input type="submit" name="sbm" value="Ок" onCLick="return confirm('Вы уверены?');">
+        <input type="submit" name="sbm" value="РћРє" onCLick="return confirm('Р’С‹ СѓРІРµСЂРµРЅС‹?');">
         </form>
         <? else: ?>
-        <strong>Данных нет</strong>
+        <strong>Р”Р°РЅРЅС‹С… РЅРµС‚</strong>
         <? endif; ?>
     <? endif; ?>
 </div>

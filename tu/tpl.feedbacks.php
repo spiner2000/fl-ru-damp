@@ -6,7 +6,7 @@ if(!defined('IN_STDF'))
 }
 ?>
     <h2 class="b-txt__title b-txt__title_padbot_40">
-        Отзывы 
+        РћС‚Р·С‹РІС‹ 
         <div class="b-txt b-txt_normal b-txt_inline-block b-txt_padleft_5">
             <div class="b-icon b-icon__cat_thumbsup"></div>
             <span class="b-txt_normal b-txt_color_55b02e">
@@ -22,5 +22,5 @@ if(!defined('IN_STDF'))
     <?php include 'tpl.feedbacks-items.php'; ?>
     </noindex>
     <?php if($is_feedbacks_paginator){ ?>
-    <a id="feedbacks_next_page" href="javascript:void(0)" data-id="<?php echo $data['id'] ?>" data-total="<?php echo $data['total_feedbacks'] ?>" class="b-button b-button_more">Ещё отзывы</a>
+    <a id="feedbacks_next_page" href="javascript:void(0)" data-id="<?php echo $data['id'] ?>" data-total="<?php echo $data['total_feedbacks'] ?>" class="b-button b-button_more">Р•С‰С‘ РѕС‚Р·С‹РІС‹</a>
     <?php } ?>

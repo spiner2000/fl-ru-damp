@@ -1,6 +1,6 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/static_compress.php");
-if(!defined('IN_SBR')) { // в СБР уже все есть.
+if(!defined('IN_SBR')) { // РІ РЎР‘Р  СѓР¶Рµ РІСЃРµ РµСЃС‚СЊ.
   session_start();
   $uid = get_uid();
   $id = intval($_GET['id']);
@@ -29,7 +29,7 @@ $stc = new static_compress;
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>Удаленная работа (фри-ланс) на Free-lance.ru</title>
+		<title>РЈРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° (С„СЂРё-Р»Р°РЅСЃ) РЅР° Free-lance.ru</title>
 		<meta content="text/html; charset=windows-1251" http-equiv="Content-Type"/>
 		<?php $stc->Add("/css/style.css"); ?>
 		<?php $stc->Send(); ?>
@@ -44,16 +44,16 @@ $stc = new static_compress;
    				<table class="cbr-tbl">
    					<tr>
    						<th rowspan="7" style="border-bottom: none;">
-   							<strong>Извещение</strong>
+   							<strong>РР·РІРµС‰РµРЅРёРµ</strong>
    						</th>
    						<td colspan="3">
-   							<strong>ООО &laquo;ВААН&raquo;</strong><br />
-   							ИНН 7805399430, КПП 771401001<br />
-   							Расчетный счет: <strong>40702810787880000803</strong>
-   							в Московский филиал ОАО АКБ «РОСБАНК» г. Москва<br />
-   							БИК 044583272,<br/>
-                            Корр. счет: 30101810000000000272<br />
-   							<strong>Счет №: <?=$bp->bill_num?></strong>
+   							<strong>РћРћРћ &laquo;Р’РђРђРќ&raquo;</strong><br />
+   							РРќРќ 7805399430, РљРџРџ 771401001<br />
+   							Р Р°СЃС‡РµС‚РЅС‹Р№ СЃС‡РµС‚: <strong>40702810787880000803</strong>
+   							РІ РњРѕСЃРєРѕРІСЃРєРёР№ С„РёР»РёР°Р» РћРђРћ РђРљР‘ В«Р РћРЎР‘РђРќРљВ» Рі. РњРѕСЃРєРІР°<br />
+   							Р‘РРљ 044583272,<br/>
+                            РљРѕСЂСЂ. СЃС‡РµС‚: 30101810000000000272<br />
+   							<strong>РЎС‡РµС‚ в„–: <?=$bp->bill_num?></strong>
    						</td>
    					</tr>
    					<tr>
@@ -63,45 +63,45 @@ $stc = new static_compress;
    					</tr>
    					<tr>
    						<td colspan="3">
-   							<span class="tcbr-hint">(Ф.И.О. плательщика)</span>
+   							<span class="tcbr-hint">(Р¤.Р.Рћ. РїР»Р°С‚РµР»СЊС‰РёРєР°)</span>
    							<strong><?=$bp->address?></strong>
    						</td>
    					</tr>
    					<tr>
    						<td colspan="3">
-   							<span class="tcbr-hint">(адрес плательщика)</span>
+   							<span class="tcbr-hint">(Р°РґСЂРµСЃ РїР»Р°С‚РµР»СЊС‰РёРєР°)</span>
    							<strong></strong>
    						</td>
    					</tr>
    					<tr>
    						<td rowspan="2" style="text-align:center;">
-   							Назначение платежа
+   							РќР°Р·РЅР°С‡РµРЅРёРµ РїР»Р°С‚РµР¶Р°
    						</td>
    						<td colspan="2" style="text-align:center;">
-   							Сумма
+   							РЎСѓРјРјР°
    						</td>
    					</tr>
    					<tr>
    						<td style="width: 15%; text-align:center;">
-   							Руб.
+   							Р СѓР±.
    						</td>
    						<td style="width: 15%; text-align:center;">
-   							Коп.
+   							РљРѕРї.
    						</td>
    					</tr>
    					<tr>
    						<td>
    							<strong>
                               <? if($contract_num) { ?>
-                                Оплата по договору-оферте № <?=$contract_num?>.
+                                РћРїР»Р°С‚Р° РїРѕ РґРѕРіРѕРІРѕСЂСѓ-РѕС„РµСЂС‚Рµ в„– <?=$contract_num?>.
                                 <? if($sbr_nds) { ?>
-                                  В том числе НДС 18% &mdash; <?=num2strL($sbr_nds)?>
-                                  <? if($sbr_comm) { ?> с суммы агентского вознаграждения ООО "Ваан" &mdash; <?=num2strL($sbr_comm)?><? } ?>
+                                  Р’ С‚РѕРј С‡РёСЃР»Рµ РќР”РЎ 18% &mdash; <?=num2strL($sbr_nds)?>
+                                  <? if($sbr_comm) { ?> СЃ СЃСѓРјРјС‹ Р°РіРµРЅС‚СЃРєРѕРіРѕ РІРѕР·РЅР°РіСЂР°Р¶РґРµРЅРёСЏ РћРћРћ "Р’Р°Р°РЅ" &mdash; <?=num2strL($sbr_comm)?><? } ?>
                                 <? } else { ?>
-                                  НДС не облагается
+                                  РќР”РЎ РЅРµ РѕР±Р»Р°РіР°РµС‚СЃСЏ
                                 <? } ?>
                               <? } else { ?>
-   			    			    Оплата услуг сайта Free-lance.ru по счету<br/>№ <?=$bp->bill_num?>. В том числе НДС.
+   			    			    РћРїР»Р°С‚Р° СѓСЃР»СѓРі СЃР°Р№С‚Р° Free-lance.ru РїРѕ СЃС‡РµС‚Сѓ<br/>в„– <?=$bp->bill_num?>. Р’ С‚РѕРј С‡РёСЃР»Рµ РќР”РЎ.
                               <? } ?>
    							</strong>
    						</td>
@@ -114,25 +114,25 @@ $stc = new static_compress;
    					</tr>
    					<tr>
    						<th style="border-top: none;">
-   							<strong>Кассир</strong>
+   							<strong>РљР°СЃСЃРёСЂ</strong>
    						</th>
    						<td colspan="3">
-   							Подпись<br />
-   							плательщика __________&nbsp;&nbsp;&nbsp;&laquo;__&raquo; _____ 20__ г.
+   							РџРѕРґРїРёСЃСЊ<br />
+   							РїР»Р°С‚РµР»СЊС‰РёРєР° __________&nbsp;&nbsp;&nbsp;&laquo;__&raquo; _____ 20__ Рі.
    						</td>
    					</tr>
    					<tr>
    						<th rowspan="7" style="border-bottom: none;">
-   							<strong>Квитанция</strong>
+   							<strong>РљРІРёС‚Р°РЅС†РёСЏ</strong>
    						</th>
    						<td colspan="3">
-   							<strong>ООО &laquo;ВААН&raquo;</strong><br />
-   							ИНН 7805399430, КПП 771401001<br />
-   							Расчетный счет: <strong>40702810787880000803</strong>
-   							в Московский филиал ОАО АКБ «РОСБАНК» г. Москва<br />
-   							БИК 044583272,<br/>
-                            Корр. счет: 30101810000000000272<br />
-   							<strong>Счет №: <?=$bp->bill_num?></strong>
+   							<strong>РћРћРћ &laquo;Р’РђРђРќ&raquo;</strong><br />
+   							РРќРќ 7805399430, РљРџРџ 771401001<br />
+   							Р Р°СЃС‡РµС‚РЅС‹Р№ СЃС‡РµС‚: <strong>40702810787880000803</strong>
+   							РІ РњРѕСЃРєРѕРІСЃРєРёР№ С„РёР»РёР°Р» РћРђРћ РђРљР‘ В«Р РћРЎР‘РђРќРљВ» Рі. РњРѕСЃРєРІР°<br />
+   							Р‘РРљ 044583272,<br/>
+                            РљРѕСЂСЂ. СЃС‡РµС‚: 30101810000000000272<br />
+   							<strong>РЎС‡РµС‚ в„–: <?=$bp->bill_num?></strong>
    						</td>
    					</tr>
    					<tr>
@@ -142,45 +142,45 @@ $stc = new static_compress;
    					</tr>
    					<tr>
    						<td colspan="3">
-   							<span class="tcbr-hint">(Ф.И.О. плательщика)</span>
+   							<span class="tcbr-hint">(Р¤.Р.Рћ. РїР»Р°С‚РµР»СЊС‰РёРєР°)</span>
    							<strong><?=$bp->address?></strong>
    						</td>
    					</tr>
    					<tr>
    						<td colspan="3">
-   							<span class="tcbr-hint">(адрес плательщика)</span>
+   							<span class="tcbr-hint">(Р°РґСЂРµСЃ РїР»Р°С‚РµР»СЊС‰РёРєР°)</span>
    							<strong></strong>
    						</td>
    					</tr>
    					<tr>
    						<td rowspan="2" style="text-align:center;">
-   							Назначение платежа
+   							РќР°Р·РЅР°С‡РµРЅРёРµ РїР»Р°С‚РµР¶Р°
    						</td>
    						<td colspan="2" style="text-align:center;">
-   							Сумма
+   							РЎСѓРјРјР°
    						</td>
    					</tr>
    					<tr>
    						<td style="width: 15%; text-align:center;">
-   							Руб.
+   							Р СѓР±.
    						</td>
    						<td style="width: 15%; text-align:center;">
-   							Коп.
+   							РљРѕРї.
    						</td>
    					</tr>
    					<tr>
    						<td>
    							<strong>
                               <? if($contract_num) { ?>
-                                Оплата по договору-оферте № <?=$contract_num?>.
+                                РћРїР»Р°С‚Р° РїРѕ РґРѕРіРѕРІРѕСЂСѓ-РѕС„РµСЂС‚Рµ в„– <?=$contract_num?>.
                                 <? if($sbr_nds) { ?>
-                                  В том числе НДС 18% &mdash; <?=num2strL($sbr_nds)?>
-                                  <? if($sbr_comm) { ?> с суммы агентского вознаграждения ООО "Ваан" &mdash; <?=num2strL($sbr_comm)?><? } ?>
+                                  Р’ С‚РѕРј С‡РёСЃР»Рµ РќР”РЎ 18% &mdash; <?=num2strL($sbr_nds)?>
+                                  <? if($sbr_comm) { ?> СЃ СЃСѓРјРјС‹ Р°РіРµРЅС‚СЃРєРѕРіРѕ РІРѕР·РЅР°РіСЂР°Р¶РґРµРЅРёСЏ РћРћРћ "Р’Р°Р°РЅ" &mdash; <?=num2strL($sbr_comm)?><? } ?>
                                 <? } else { ?>
-                                  НДС не облагается
+                                  РќР”РЎ РЅРµ РѕР±Р»Р°РіР°РµС‚СЃСЏ
                                 <? } ?>
                               <? } else { ?>
-   			    			    Оплата услуг сайта Free-lance.ru по счету<br/>№ <?=$bp->bill_num?>. В том числе НДС.
+   			    			    РћРїР»Р°С‚Р° СѓСЃР»СѓРі СЃР°Р№С‚Р° Free-lance.ru РїРѕ СЃС‡РµС‚Сѓ<br/>в„– <?=$bp->bill_num?>. Р’ С‚РѕРј С‡РёСЃР»Рµ РќР”РЎ.
                               <? } ?>
    							</strong>
    						</td>
@@ -193,17 +193,17 @@ $stc = new static_compress;
    					</tr>
    					<tr>
    						<th style="border-top: none;">
-   							<strong>Кассир</strong>
+   							<strong>РљР°СЃСЃРёСЂ</strong>
    						</th>
    						<td colspan="3">
-   							Подпись<br />
-   							плательщика __________&nbsp;&nbsp;&nbsp;&laquo;__&raquo; _____ 20__ г.
+   							РџРѕРґРїРёСЃСЊ<br />
+   							РїР»Р°С‚РµР»СЊС‰РёРєР° __________&nbsp;&nbsp;&nbsp;&laquo;__&raquo; _____ 20__ Рі.
    						</td>
    					</tr>
    				</table>
 <? if(!$print_mode) { ?>
 					<div class="tcbr-btns">
- 						  <input type="button" class="i-btn" value="Распечатать" onclick="window.print();"/>
+ 						  <input type="button" class="i-btn" value="Р Р°СЃРїРµС‡Р°С‚Р°С‚СЊ" onclick="window.print();"/>
 					</div>
 				</div>
 			</div>

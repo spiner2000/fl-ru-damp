@@ -5,7 +5,7 @@ if(!defined('IN_STDF')) {
 }
 
 /**
- * Представление для виджета TServiceCatalog
+ * РџСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ РґР»СЏ РІРёРґР¶РµС‚Р° TServiceCatalog
  *
  *
  * @var TServiceCatalog $this

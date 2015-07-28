@@ -1,10 +1,10 @@
 <?php if ( !defined('IS_SITE_ADMIN') ) { header('Location: /404.php'); exit; }
 
 $reasons = array (
-    0 => 'Не указана',
-    1 => 'Некорректное поведение на сайте',
-    2 => 'Спам в блогах',
-    3 => 'Спам в проектах'
+    0 => 'РќРµ СѓРєР°Р·Р°РЅР°',
+    1 => 'РќРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РїРѕРІРµРґРµРЅРёРµ РЅР° СЃР°Р№С‚Рµ',
+    2 => 'РЎРїР°Рј РІ Р±Р»РѕРіР°С…',
+    3 => 'РЎРїР°Рј РІ РїСЂРѕРµРєС‚Р°С…'
 );
 
 include 'head.php';
@@ -54,7 +54,7 @@ function OpenWarns(uid) {
 
 </script>
 
-<? if (empty($banned)) { print "<center><div style='font: bold 16px Tahoma'>Нет пользователей.</div></center>"; return; } ?>
+<? if (empty($banned)) { print "<center><div style='font: bold 16px Tahoma'>РќРµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.</div></center>"; return; } ?>
 
 
 <? foreach ($banned as $user) { ?>
@@ -64,7 +64,7 @@ function OpenWarns(uid) {
 
 <div id="u-warn-box-<?=$user['uid']?>" class="u-warn-box" style="display: none">
 <div class="u-warn-box-outset">
-    <a href="javascript:;" onclick="CloseWarns();" title="Закрыть" class="u-popup-close">Закрыть</a>
+    <a href="javascript:;" onclick="CloseWarns();" title="Р—Р°РєСЂС‹С‚СЊ" class="u-popup-close">Р—Р°РєСЂС‹С‚СЊ</a>
 
     <div id="warnlist-<?=$user['uid']?>">
     
@@ -91,15 +91,15 @@ function OpenWarns(uid) {
             <?=$session->view_online_status($user['login'])?>
             <a href="/users/<?=$user['login']?>/"><?=YellowLine($user['uname'])?> <?=YellowLine($user['usurname'])?></a> [<a href="/users/<?=$user['login']?>/"><?=YellowLine($user['login'])?></a>]
         </div>
-        <div>Зарегистрирован: <?=dateFormat("d.m.Y", $user['reg_date'])?></div>
-        <div style="margin-top: 4px">Предупреждений: <span id="warncount1-<?=$user['uid']?>"><?=intval($user['warn'])?></span></div>
+        <div>Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ: <?=dateFormat("d.m.Y", $user['reg_date'])?></div>
+        <div style="margin-top: 4px">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№: <span id="warncount1-<?=$user['uid']?>"><?=intval($user['warn'])?></span></div>
     <? if ($user['is_banned'] || $user['ban_where'] > 0) { ?>
-        <? if ($user['from']) { ?><div><b><?=((($user['ban_where'] == 1)?'Заблокирован в блогах': 'Забанен').': '.dateFormat('d.m.Y H:i', $user['from']))?></b></div><? } ?>
+        <? if ($user['from']) { ?><div><b><?=((($user['ban_where'] == 1)?'Р—Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ РІ Р±Р»РѕРіР°С…': 'Р—Р°Р±Р°РЅРµРЅ').': '.dateFormat('d.m.Y H:i', $user['from']))?></b></div><? } ?>
     </td>
     <td>
-        <div><b><?=((($user['ban_where'] == 1)? 'Блоги закрыты ': 'Аккаунт заблокирован ').($user['to']? ('до: '.dateFormat('d.m.Y H:i', $user['to'])): 'навсегда'))?></b></div>
-        <div style="margin-top: 7px"><b>Причина бана:</b> <?=$reasons[(int) $user['ban_reason']]?></div>
-        <? if ($user['admin_comment']) { ?><div><b>Комментарий модератора:</b> <?=$user['admin_comment']?></div><? } ?>
+        <div><b><?=((($user['ban_where'] == 1)? 'Р‘Р»РѕРіРё Р·Р°РєСЂС‹С‚С‹ ': 'РђРєРєР°СѓРЅС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ ').($user['to']? ('РґРѕ: '.dateFormat('d.m.Y H:i', $user['to'])): 'РЅР°РІСЃРµРіРґР°'))?></b></div>
+        <div style="margin-top: 7px"><b>РџСЂРёС‡РёРЅР° Р±Р°РЅР°:</b> <?=$reasons[(int) $user['ban_reason']]?></div>
+        <? if ($user['admin_comment']) { ?><div><b>РљРѕРјРјРµРЅС‚Р°СЂРёР№ РјРѕРґРµСЂР°С‚РѕСЂР°:</b> <?=$user['admin_comment']?></div><? } ?>
     </td>
     <? } else { ?>
     </td>
@@ -110,13 +110,13 @@ function OpenWarns(uid) {
 </tr>
 <tr class="u-bottom">
 
-<td class="u-warns" colspan="2"><div><a href="javascript:;" onclick="OpenWarns(<?=$user['uid']?>);">Предупреждения</a> <span id="warncount2-<?=$user['uid']?>"><?=intval($user['warn'])?></span></div></td>
+<td class="u-warns" colspan="2"><div><a href="javascript:;" onclick="OpenWarns(<?=$user['uid']?>);">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ</a> <span id="warncount2-<?=$user['uid']?>"><?=intval($user['warn'])?></span></div></td>
 
 <td class="u-bans">
 <?php
-$sBanTitle = (!$user['is_banned'] && !$user['ban_where']) ? 'Забанить!' : 'Разбанить';
+$sBanTitle = (!$user['is_banned'] && !$user['ban_where']) ? 'Р—Р°Р±Р°РЅРёС‚СЊ!' : 'Р Р°Р·Р±Р°РЅРёС‚СЊ';
 ?>
-<div class="warnlink-<?=$user['uid']?>"><a class="admn" href="javascript:void(0);" onclick="banned.userBan(<?=$user['uid']?>, 'admin',0)"><?=$sBanTitle?></a> <? if ($user['admin']) { ?><span>Заблокировал: <?=$user['admin_login']?></span><? } ?></div>
+<div class="warnlink-<?=$user['uid']?>"><a class="admn" href="javascript:void(0);" onclick="banned.userBan(<?=$user['uid']?>, 'admin',0)"><?=$sBanTitle?></a> <? if ($user['admin']) { ?><span>Р—Р°Р±Р»РѕРєРёСЂРѕРІР°Р»: <?=$user['admin_login']?></span><? } ?></div>
 </td>
 
 </table>
@@ -129,7 +129,7 @@ $sBanTitle = (!$user['is_banned'] && !$user['ban_where']) ? 'Забанить!' : 'Разба
     <td align="left" width="100%">
     <div id="fl2_paginator"><?
 
-        // Страницы
+        // РЎС‚СЂР°РЅРёС†С‹
         $pages = ceil($nums / USERS_ON_PAGE);
         if ($pages > 1) {
             $maxpages = $pages;
@@ -146,13 +146,13 @@ $sBanTitle = (!$user['is_banned'] && !$user['ban_where']) ? 'Забанить!' : 'Разба
 
             $sBox = '<table width="100%"><tr>';
             if ($page == 1) {
-                $sBox .= '<td><div id="nav_pre_not_active"><span>предыдущая</span></div></td>';
+                $sBox .= '<td><div id="nav_pre_not_active"><span>РїСЂРµРґС‹РґСѓС‰Р°СЏ</span></div></td>';
             } else {
                 $sBox .= "<input type=\"hidden\" id=\"pre_navigation_link\" value=\"".($sHref.($page-1))."\">";
-                $sBox .= "<td><div id=\"nav_pre_not_active\"><a href=\"".($sHref.($page-1))."\" style=\"color: #717171\">предыдущая</a></div></td>";
+                $sBox .= "<td><div id=\"nav_pre_not_active\"><a href=\"".($sHref.($page-1))."\" style=\"color: #717171\">РїСЂРµРґС‹РґСѓС‰Р°СЏ</a></div></td>";
             }
             $sBox .= '<td width="90%" align="center">';
-            //в начале
+            //РІ РЅР°С‡Р°Р»Рµ
             if ($page <= 10) {
                 $sBox .= buildNavigation($page, 1, ($pages>10)?($page+4):$pages, $sHref);
                 if ($pages > 15) {
@@ -160,7 +160,7 @@ $sBanTitle = (!$user['is_banned'] && !$user['ban_where']) ? 'Забанить!' : 'Разба
                     //$sBox .= buildNavigation($page, $pages-5, $pages, $sHref);
                 }
             }
-            //в конце
+            //РІ РєРѕРЅС†Рµ
             elseif ($page >= $pages-10) {
                 $sBox .= buildNavigation($page, 1, 5, $sHref);
                 $sBox .= '<span style="padding-right: 5px">...</span>';
@@ -175,17 +175,17 @@ $sBanTitle = (!$user['is_banned'] && !$user['ban_where']) ? 'Забанить!' : 'Разба
             }
             $sBox .= '</td>';
             if ($page == $pages) {
-                $sBox .= "<td><div id=\"nav_next_not_active\"><span>следующая</span></div></td>";
+                $sBox .= "<td><div id=\"nav_next_not_active\"><span>СЃР»РµРґСѓСЋС‰Р°СЏ</span></div></td>";
             } else {
                 $sBox .= "<input type=\"hidden\" id=\"next_navigation_link\" value=\"".($sHref.($page+1))."\">";
-                $sBox .= "<td><div id=\"nav_next_not_active\"><a href=\"".($sHref.($page+1))."\" style=\"color: #717171\">следующая</a></div></td>";
+                $sBox .= "<td><div id=\"nav_next_not_active\"><a href=\"".($sHref.($page+1))."\" style=\"color: #717171\">СЃР»РµРґСѓСЋС‰Р°СЏ</a></div></td>";
             }
             $sBox .= '</tr>';
             $sBox .= '</table>';
         }
         $sBox .= '</div>';
         echo $sBox;
-        // Страницы закончились
+        // РЎС‚СЂР°РЅРёС†С‹ Р·Р°РєРѕРЅС‡РёР»РёСЃСЊ
     ?></td>
 
 </tr>

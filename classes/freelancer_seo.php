@@ -1,89 +1,89 @@
 <?php
 
 /**
- * Êëàññ äëÿ ðàáîòû ñ ïñåâäî ðàçäåëàìè êàòàëîãà äëÿ SEO öåëåé.
+ * ÐšÐ»Ð°ÑÑ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ Ð¿ÑÐµÐ²Ð´Ð¾ Ñ€Ð°Ð·Ð´ÐµÐ»Ð°Ð¼Ð¸ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð° Ð´Ð»Ñ SEO Ñ†ÐµÐ»ÐµÐ¹.
  */
 
 class freelancer_seo {
     /**
-     * ID ðàçäåëà ïñåâäî-êàòàëîãà
+     * ID Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Ð¿ÑÐµÐ²Ð´Ð¾-ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð°
      *
      * @var int
      */
     private $sLinkId    = null;
     
     /**
-     * Ðàçäåë êàòàëîãà (id èç professions)
+     * Ð Ð°Ð·Ð´ÐµÐ» ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð° (id Ð¸Ð· professions)
      *
      * @var int
      */
     private $sProfId    = null;
     
     /**
-     * Íàçâàíèå ïñåâäîðàçäåëà
+     * ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ Ð¿ÑÐµÐ²Ð´Ð¾Ñ€Ð°Ð·Ð´ÐµÐ»Ð°
      *
      * @var string
      */
     private $sTitle     = null;
     
     /**
-     * óñëîâèå âûáîðêè ôðèëàíñåðîâ
+     * ÑƒÑÐ»Ð¾Ð²Ð¸Ðµ Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐ¸ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð²
      *
      * @var string
      */
     private $sCondition = null;
     
     /**
-     * Ãäå ïîêàçûâàòü ññûëêó
+     * Ð“Ð´Ðµ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÑÑ‹Ð»ÐºÑƒ
      *
      * @var int
      */
     private $nSide      = null;
     
     /**
-     * Ðàçîáðàííîå óñëîâèå âûáîðêè
+     * Ð Ð°Ð·Ð¾Ð±Ñ€Ð°Ð½Ð½Ð¾Ðµ ÑƒÑÐ»Ð¾Ð²Ð¸Ðµ Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐ¸
      * 
      * @var array
      */
     private $aGet       = array();
     
     /**
-     * Ñîñòàâíûå ÷àñòè SQL çàïðîñà 
+     * Ð¡Ð¾ÑÑ‚Ð°Ð²Ð½Ñ‹Ðµ Ñ‡Ð°ÑÑ‚Ð¸ SQL Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° 
      * 
      * @var array
      */
     private $aSQL       = array();
     
     /**
-     * ID îñíîâíîé èëè äîïîëíèòåëüíîé ïðîôû äëÿ SQL çàïðîñà
+     * ID Ð¾ÑÐ½Ð¾Ð²Ð½Ð¾Ð¹ Ð¸Ð»Ð¸ Ð´Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾Ð¹ Ð¿Ñ€Ð¾Ñ„Ñ‹ Ð´Ð»Ñ SQL Ð·Ð°Ð¿Ñ€Ð¾ÑÐ°
      *
      * @var string
      */
     private $sSQLProfId = 0;
     
     /**
-     * Âðåìÿ æèçíè ìåìêåøà â ñåêóíäàõ
+     * Ð’Ñ€ÐµÐ¼Ñ Ð¶Ð¸Ð·Ð½Ð¸ Ð¼ÐµÐ¼ÐºÐµÑˆÐ° Ð² ÑÐµÐºÑƒÐ½Ð´Ð°Ñ…
      */
     const CATALOG_MEM_LIFE = 1800;
     
     /**
-     * Ìàñêèìàëüíîå êîëè÷åñâî ôðèëàíñåðîâ â ñëó÷àéíîé âûáîðêå
+     * ÐœÐ°ÑÐºÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÐ²Ð¾ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð² Ð² ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ð¾Ð¹ Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐµ
      */
     const RANDOM_LIMIT  = 1000;
     
     /**
-     * Êîíñòðóêòîð
+     * ÐšÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€
      *
-     * @param $link_id ID ðàçäåëà ïñåâäî-êàòàëîãà
+     * @param $link_id ID Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Ð¿ÑÐµÐ²Ð´Ð¾-ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð°
      */
     function __construct( $link_id = null ) {
         $this->fseoInit( $link_id );
     }
     
     /**
-     * Èíèöèàëèçàöèÿ
+     * Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ
      *
-     * @param $link_id ID ðàçäåëà ïñåâäî-êàòàëîãà
+     * @param $link_id ID Ñ€Ð°Ð·Ð´ÐµÐ»Ð° Ð¿ÑÐµÐ²Ð´Ð¾-ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð°
      */
     function fseoInit( $link_id = null ) {
         global $DB;
@@ -120,10 +120,10 @@ class freelancer_seo {
     }
     
     /**
-     * Âîçâðàùàåò áëîê ññûëîê äëÿ Äîïîëíèòåëüíîãî ôèëüòðà ôðèëàíñåðîâ.
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð±Ð»Ð¾Ðº ÑÑÑ‹Ð»Ð¾Ðº Ð´Ð»Ñ Ð”Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾Ð³Ð¾ Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð° Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð².
      * 
-     * @param  int $nSide Ãäå ïîêàçûâàòü ññûëêó: 0 - â ëåâîé êîëîíêå, 1 - íàä ôèëüòðîì
-     * @param  int $sProfId îïöèîíàëüíî. Ðàçäåë êàòàëîãà (id èç professions). Åñëè íå óêàçàíî - òî $this->sProfId
+     * @param  int $nSide Ð“Ð´Ðµ Ð¿Ð¾ÐºÐ°Ð·Ñ‹Ð²Ð°Ñ‚ÑŒ ÑÑÑ‹Ð»ÐºÑƒ: 0 - Ð² Ð»ÐµÐ²Ð¾Ð¹ ÐºÐ¾Ð»Ð¾Ð½ÐºÐµ, 1 - Ð½Ð°Ð´ Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ð¾Ð¼
+     * @param  int $sProfId Ð¾Ð¿Ñ†Ð¸Ð¾Ð½Ð°Ð»ÑŒÐ½Ð¾. Ð Ð°Ð·Ð´ÐµÐ» ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð° (id Ð¸Ð· professions). Ð•ÑÐ»Ð¸ Ð½Ðµ ÑƒÐºÐ°Ð·Ð°Ð½Ð¾ - Ñ‚Ð¾ $this->sProfId
      * @return array
      */
     function fseoGetLinksBlock( $nSide = 0, $sProfId = null ) {
@@ -137,28 +137,28 @@ class freelancer_seo {
     }
     
     /**
-     * Âîçâðàùàåò ñòðàíèöó ïñåâäî-êàòàëîãà ôðèëàíñåðîâ.
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ Ð¿ÑÐµÐ²Ð´Ð¾-ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð° Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð².
      * 
-     * @param  int count êîëè÷åñòâî âñåãî ôðèëàíñåðîâ â äàííîì ðàçäåëå êàòàëîãà.
-     * @param  int size êîëè÷åñòâî ôðèëàíñåðîâ íà äàííîé ñòðàíèöå êàòàëîãà.
-     * @param  array works ìàññèâ, èíäåêñèðîâàííûé èä. ôðèëàíñåðîâ, ñîäåðæàùèé ìàññèâ èç òðåõ ïåðâûõ ðàáîò äàííîãî ôðèëàíñåðà â äàííîì ðàçäåëå.
-     * @param  int limit ñêîëüêî ôðèëàíñåðîâ íà îäíîé ñòðàíèöå.
+     * @param  int count ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð²ÑÐµÐ³Ð¾ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð² Ð² Ð´Ð°Ð½Ð½Ð¾Ð¼ Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð°.
+     * @param  int size ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð² Ð½Ð° Ð´Ð°Ð½Ð½Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð°.
+     * @param  array works Ð¼Ð°ÑÑÐ¸Ð², Ð¸Ð½Ð´ÐµÐºÑÐ¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ð¸Ð´. Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð², ÑÐ¾Ð´ÐµÑ€Ð¶Ð°Ñ‰Ð¸Ð¹ Ð¼Ð°ÑÑÐ¸Ð² Ð¸Ð· Ñ‚Ñ€ÐµÑ… Ð¿ÐµÑ€Ð²Ñ‹Ñ… Ñ€Ð°Ð±Ð¾Ñ‚ Ð´Ð°Ð½Ð½Ð¾Ð³Ð¾ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð° Ð² Ð´Ð°Ð½Ð½Ð¾Ð¼ Ñ€Ð°Ð·Ð´ÐµÐ»Ðµ.
+     * @param  int limit ÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð² Ð½Ð° Ð¾Ð´Ð½Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ.
      * @param  int offset OFFSET.
-     * @param  string order òèï ñîðòèðîâêè
-     * @param  int direction ïîðÿäîê ñîðòèðîâêè. 0 -- ïî óáûâàþùåé, íå 0 -- ïî âîçðàñòàþùåé.
+     * @param  string order Ñ‚Ð¸Ð¿ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸
+     * @param  int direction Ð¿Ð¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸. 0 -- Ð¿Ð¾ ÑƒÐ±Ñ‹Ð²Ð°ÑŽÑ‰ÐµÐ¹, Ð½Ðµ 0 -- Ð¿Ð¾ Ð²Ð¾Ð·Ñ€Ð°ÑÑ‚Ð°ÑŽÑ‰ÐµÐ¹.
      * @return array
      */
     function fseoGetCatalog( &$count, &$size, &$works, $limit, $offset, $order = "general", $direction = 0 ) {
         global $DB;
         
-        // ñòðîèì çàïðîñ
+        // ÑÑ‚Ñ€Ð¾Ð¸Ð¼ Ð·Ð°Ð¿Ñ€Ð¾Ñ
         $this->fseoSetSelect();
         $this->fseoSetFrom();
         $this->fseoSetJoin();
         $this->fseoSetWhere();
         $this->fseoSetOrderBy( $order, $direction );
         
-        // ïîëó÷àåì ñïèñîê ôðèëàíñåðîâ
+        // Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ ÑÐ¿Ð¸ÑÐ¾Ðº Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð²
         $sQuery = 'SELECT ' . implode(', ', $this->aSQL['select']) 
             . ' FROM ' . $this->aSQL['from'] . ( $this->aSQL['join'] ? ' ' . implode(' ', $this->aSQL['join']) : '' ) 
             . ' WHERE ' . implode(' AND ', $this->aSQL['where']) . ' ORDER BY ' . implode(', ', $this->aSQL['order_by']) 
@@ -171,8 +171,8 @@ class freelancer_seo {
             return NULL;
         }
         
-        // ïîëó÷àåì îáùåå êîëè÷åñòâî ôðèëàíñåðîâ
-        // äëÿ ïîäñ÷åòà êîëè÷åñòâà ôðèëàíñåðîâ íå íóæíû
+        // Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ð¾Ð±Ñ‰ÐµÐµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð²
+        // Ð´Ð»Ñ Ð¿Ð¾Ð´ÑÑ‡ÐµÑ‚Ð° ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð° Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð² Ð½Ðµ Ð½ÑƒÐ¶Ð½Ñ‹
         unset( $this->aSQL['join']['portf_choise'] );
         unset( $this->aSQL['join']['portf_professions'] );
         
@@ -184,7 +184,7 @@ class freelancer_seo {
         $count  = $aCount[0]['count'];
         $size   = sizeof( $frls );
         
-        // ïîëó÷àåì ðàáîòû ôðèëàíñåðîâ
+        // Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð²
         foreach ( $frls as $row ) {
             $frl_ids[] = $row['uid'];
         }
@@ -210,10 +210,10 @@ class freelancer_seo {
     }
     
     /**
-     * Ñîáèðàåò SELECT ÷àñòü SQL çàïðîñà ïî óñëîâèå âûáîðêè â $this->aGet
+     * Ð¡Ð¾Ð±Ð¸Ñ€Ð°ÐµÑ‚ SELECT Ñ‡Ð°ÑÑ‚ÑŒ SQL Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° Ð¿Ð¾ ÑƒÑÐ»Ð¾Ð²Ð¸Ðµ Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐ¸ Ð² $this->aGet
      */
     function fseoSetSelect() {
-        // ïîëÿ êîòîðûå åñòü âñåãäà
+        // Ð¿Ð¾Ð»Ñ ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ ÐµÑÑ‚ÑŒ Ð²ÑÐµÐ³Ð´Ð°
         $this->aSQL['select'] = array( 's.is_profi, s.is_pro AS payed, s.is_pro_test, s.uname, s.usurname, s.login, s.uid, s.photo, 
             s.spec, s.status_type, s.cost_month, s.cost_type_month, s.site, s.icq, s.phone, s.ljuser, s.country, s.city, 
             s.last_time, s.boss_rate, s.tabs, s.spec_orig, uc.ops_frl_plus AS sg, uc.ops_frl_minus AS sl, uc.ops_frl_null AS se, 
@@ -222,18 +222,18 @@ class freelancer_seo {
         );
         
         if ( $this->sSQLProfId ) {
-            // êîãäà åñòü îñíîâíàÿ èëè äîïîëíèòåëüíàÿ ïðîôà 
+            // ÐºÐ¾Ð³Ð´Ð° ÐµÑÑ‚ÑŒ Ð¾ÑÐ½Ð¾Ð²Ð½Ð°Ñ Ð¸Ð»Ð¸ Ð´Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð°Ñ Ð¿Ñ€Ð¾Ñ„Ð° 
         	$this->aSQL['select'][] = '(s.spec_orig = ' . $this->sSQLProfId . ') AS its_his_main_spec, 
         	   pc.cost_hour, pc.cost_type_hour';
         }
         else {
-            // êîãäà íåò âîîáùå íèêàêèõ ïðîô
+            // ÐºÐ¾Ð³Ð´Ð° Ð½ÐµÑ‚ Ð²Ð¾Ð¾Ð±Ñ‰Ðµ Ð½Ð¸ÐºÐ°ÐºÐ¸Ñ… Ð¿Ñ€Ð¾Ñ„
             $this->aSQL['select'][] = 's.cost_hour, s.cost_type_hour';
         }
     }
     
     /**
-     * Ñîáèðàåò FROM ÷àñòü SQL çàïðîñà ïî óñëîâèå âûáîðêè â $this->aGet
+     * Ð¡Ð¾Ð±Ð¸Ñ€Ð°ÐµÑ‚ FROM Ñ‡Ð°ÑÑ‚ÑŒ SQL Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° Ð¿Ð¾ ÑƒÑÐ»Ð¾Ð²Ð¸Ðµ Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐ¸ Ð² $this->aGet
      */
     function fseoSetFrom() {
         global $DB;
@@ -241,7 +241,7 @@ class freelancer_seo {
         $sRndSelect   = '';
         $sRndRestrict = '';
         
-        // åñëè âûáîðêà äîëæíà áûòü ñëó÷àéíîé, òî íóæíî ñëó÷àéíîå ÷èñëî
+        // ÐµÑÐ»Ð¸ Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐ° Ð´Ð¾Ð»Ð¶Ð½Ð° Ð±Ñ‹Ñ‚ÑŒ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ð¾Ð¹, Ñ‚Ð¾ Ð½ÑƒÐ¶Ð½Ð¾ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾
         if ( !empty($this->aGet['random']) ) {
         	$memBuff = new memBuff();
         	
@@ -256,15 +256,15 @@ class freelancer_seo {
         }
         
         if ( !empty($this->aGet['main_prof']) || !empty($this->aGet['additional_prof']) ) {
-            // êîãäà åñòü îñíîâíàÿ èëè äîïîëíèòåëüíàÿ ïðîôà 
+            // ÐºÐ¾Ð³Ð´Ð° ÐµÑÑ‚ÑŒ Ð¾ÑÐ½Ð¾Ð²Ð½Ð°Ñ Ð¸Ð»Ð¸ Ð´Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð°Ñ Ð¿Ñ€Ð¾Ñ„Ð° 
             $aSQL = array();
             
             if ( !empty($this->aGet['main_prof']) ) {
-                // êîãäà åñòü îñíîâíàÿ ïðîôà 
+                // ÐºÐ¾Ð³Ð´Ð° ÐµÑÑ‚ÑŒ Ð¾ÑÐ½Ð¾Ð²Ð½Ð°Ñ Ð¿Ñ€Ð¾Ñ„Ð° 
                 $aSQL['main_choise'] = 'SELECT *' . $sRndSelect . ' FROM fu WHERE spec_orig = ' . $this->sSQLProfId;
             }
             elseif ( !empty($this->aGet['additional_prof']) ) {
-                // êîãäà åñòü äîïîëíèòåëüíàÿ ïðîôà 
+                // ÐºÐ¾Ð³Ð´Ð° ÐµÑÑ‚ÑŒ Ð´Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð°Ñ Ð¿Ñ€Ð¾Ñ„Ð° 
                 $aSQL['add_choise']  = 'SELECT fu.*' . $sRndSelect . ' FROM fu 
                     INNER JOIN spec_add_choise sp ON sp.user_id = fu.uid 
                     AND sp.prof_id = ' . $this->sSQLProfId . ' WHERE fu.is_pro = true';
@@ -280,24 +280,24 @@ class freelancer_seo {
             $this->aSQL['from'] = $sBegin . implode( ' UNION ALL ' , $aSQL ) . $sEnd;
         }
         else {
-            // êîãäà íåò âîîáùå íèêàêèõ ïðîô
+            // ÐºÐ¾Ð³Ð´Ð° Ð½ÐµÑ‚ Ð²Ð¾Ð¾Ð±Ñ‰Ðµ Ð½Ð¸ÐºÐ°ÐºÐ¸Ñ… Ð¿Ñ€Ð¾Ñ„
             $this->aSQL['from'] = ( $sRndSelect ) ? '(SELECT *' . $sRndSelect . ' FROM fu ' . $sRndRestrict . ') s' : 'fu s';
         }
     }
     
     /**
-     * Ñîáèðàåò JOIN ÷àñòü SQL çàïðîñà ïî óñëîâèå âûáîðêè â $this->aGet
+     * Ð¡Ð¾Ð±Ð¸Ñ€Ð°ÐµÑ‚ JOIN Ñ‡Ð°ÑÑ‚ÑŒ SQL Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° Ð¿Ð¾ ÑƒÑÐ»Ð¾Ð²Ð¸Ðµ Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐ¸ Ð² $this->aGet
      */
     function fseoSetJoin() {
         if ( $this->sSQLProfId ) {
-            // êîãäà åñòü îñíîâíàÿ èëè äîïîëíèòåëüíàÿ ïðîôà
+            // ÐºÐ¾Ð³Ð´Ð° ÐµÑÑ‚ÑŒ Ð¾ÑÐ½Ð¾Ð²Ð½Ð°Ñ Ð¸Ð»Ð¸ Ð´Ð¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð°Ñ Ð¿Ñ€Ð¾Ñ„Ð°
             $this->aSQL['join']['portf_choise'] = 'LEFT JOIN portf_choise pc ON pc.prof_id = ' . $this->sSQLProfId 
                 . ' AND pc.user_id = s.uid';
             
             $this->aSQL['join']['portf_professions'] = 'INNER JOIN professions p ON p.id = ' . $this->sSQLProfId;
         }
         else {
-            // êîãäà íåò âîîáùå íèêàêèõ ïðîô
+            // ÐºÐ¾Ð³Ð´Ð° Ð½ÐµÑ‚ Ð²Ð¾Ð¾Ð±Ñ‰Ðµ Ð½Ð¸ÐºÐ°ÐºÐ¸Ñ… Ð¿Ñ€Ð¾Ñ„
             $this->aSQL['join']['all_portf'] = 'INNER JOIN portf_choise pc ON pc.prof_id = s.spec_orig AND pc.user_id = s.uid';
             $this->aSQL['join']['all_professions'] = 'INNER JOIN professions p ON p.id = s.spec';
         }
@@ -306,12 +306,12 @@ class freelancer_seo {
     }
     
     /**
-     * Ñîáèðàåò WHERE ÷àñòü SQL çàïðîñà ïî óñëîâèå âûáîðêè â $this->aGet
+     * Ð¡Ð¾Ð±Ð¸Ñ€Ð°ÐµÑ‚ WHERE Ñ‡Ð°ÑÑ‚ÑŒ SQL Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° Ð¿Ð¾ ÑƒÑÐ»Ð¾Ð²Ð¸Ðµ Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐ¸ Ð² $this->aGet
      */
     function fseoSetWhere() {
         $this->aSQL['where'] = array( "s.is_banned = '0' AND s.cat_show = true" );
         
-        // ãîðîäà è ñòðàíû
+        // Ð³Ð¾Ñ€Ð¾Ð´Ð° Ð¸ ÑÑ‚Ñ€Ð°Ð½Ñ‹
         if ( $sVal = $this->aGet['country'] ) {
             $this->aSQL['where'][] = 's.country IN (' . implode(',', $sVal) . ')';
         }
@@ -320,7 +320,7 @@ class freelancer_seo {
             $this->aSQL['where'][] = 's.city IN (' . implode(',', $sVal) . ')';
         }
         
-        // çà èñêëþ÷åíèåì ãîðîäîâ è ñòðàí
+        // Ð·Ð° Ð¸ÑÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸ÐµÐ¼ Ð³Ð¾Ñ€Ð¾Ð´Ð¾Ð² Ð¸ ÑÑ‚Ñ€Ð°Ð½
         if ( $sVal = $this->aGet['except_country'] ) {
             $this->aSQL['where'][] = 's.country NOT IN (' . implode(',', $sVal) . ')';
         }
@@ -331,10 +331,10 @@ class freelancer_seo {
     }
     
     /**
-     * Ñîáèðàåò ORDER BY ÷àñòü SQL çàïðîñà ïî óñëîâèå âûáîðêè â $this->aGet
+     * Ð¡Ð¾Ð±Ð¸Ñ€Ð°ÐµÑ‚ ORDER BY Ñ‡Ð°ÑÑ‚ÑŒ SQL Ð·Ð°Ð¿Ñ€Ð¾ÑÐ° Ð¿Ð¾ ÑƒÑÐ»Ð¾Ð²Ð¸Ðµ Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐ¸ Ð² $this->aGet
      * 
-     * @param  string order òèï ñîðòèðîâêè
-     * @param  int direction ïîðÿäîê ñîðòèðîâêè: 0 - ïî óáûâàþùåé, íå 0 - ïî âîçðàñòàþùåé.
+     * @param  string order Ñ‚Ð¸Ð¿ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸
+     * @param  int direction Ð¿Ð¾Ñ€ÑÐ´Ð¾Ðº ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸: 0 - Ð¿Ð¾ ÑƒÐ±Ñ‹Ð²Ð°ÑŽÑ‰ÐµÐ¹, Ð½Ðµ 0 - Ð¿Ð¾ Ð²Ð¾Ð·Ñ€Ð°ÑÑ‚Ð°ÑŽÑ‰ÐµÐ¹.
      */
     function fseoSetOrderBy( $order = "general", $direction = 0 ) {
         global $project_exRates;
@@ -343,7 +343,7 @@ class freelancer_seo {
         
         $this->aSQL['order_by'] = array( 's.is_pro DESC' );
         
-        // êëþ÷åâîå ñëîâî: ó êîãî åñòü - òîò âûøå
+        // ÐºÐ»ÑŽÑ‡ÐµÐ²Ð¾Ðµ ÑÐ»Ð¾Ð²Ð¾: Ñƒ ÐºÐ¾Ð³Ð¾ ÐµÑÑ‚ÑŒ - Ñ‚Ð¾Ñ‚ Ð²Ñ‹ÑˆÐµ
         if ( $sVal = $this->aGet['word'] ) {
             $this->aSQL['order_by'][] = "(s.spec_text LIKE '%{$sVal[0]}%') DESC";
         }

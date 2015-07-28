@@ -19,15 +19,15 @@
       case 3: $scl->wordsStatStep3(); break;
   }
 ?>
-  <h1>Ручной перегон статистики по таблицам постгреса</h1>
+  <h1>Р СѓС‡РЅРѕР№ РїРµСЂРµРіРѕРЅ СЃС‚Р°С‚РёСЃС‚РёРєРё РїРѕ С‚Р°Р±Р»РёС†Р°Рј РїРѕСЃС‚РіСЂРµСЃР°</h1>
   <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr valign="top">
       <td bgcolor="#FFFFFF" class="box">
         <div style="padding:20px 0 0 20px">
-          <h1>Статистика посещений пользовательских страниц</h1>
-          Все и сразу (рекомендуется при отсутсвии критических сбоев):<br/><br/>
+          <h1>РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕСЃРµС‰РµРЅРёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёС… СЃС‚СЂР°РЅРёС†</h1>
+          Р’СЃРµ Рё СЃСЂР°Р·Сѓ (СЂРµРєРѕРјРµРЅРґСѓРµС‚СЃСЏ РїСЂРё РѕС‚СЃСѓС‚СЃРІРёРё РєСЂРёС‚РёС‡РµСЃРєРёС… СЃР±РѕРµРІ):<br/><br/>
           <a href="?step=all">stat_collector::Run()</a><br/><br/><br/><br/>
-          Пошагово:<br/><br/>
+          РџРѕС€Р°РіРѕРІРѕ:<br/><br/>
           <a href="?step=1">stat_collector::Step1()</a><br/>
           <a href="?step=2">stat_collector::Step2()</a><br/>
           <a href="?step=3">stat_collector::Step3()</a><br/>
@@ -40,14 +40,14 @@
     <tr valign="top">
       <td bgcolor="#FFFFFF" class="box">
         <div style="padding:20px 0 0 20px">
-            <h1>Статистика по ключевым словам</h1>
-            Все и сразу (рекомендуется):<br/><br/>
+            <h1>РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РєР»СЋС‡РµРІС‹Рј СЃР»РѕРІР°Рј</h1>
+            Р’СЃРµ Рё СЃСЂР°Р·Сѓ (СЂРµРєРѕРјРµРЅРґСѓРµС‚СЃСЏ):<br/><br/>
             <a href="?words_step=all">stat_collector::wordsStatRun()</a><br/><br/><br/><br/>
             
-            Пошагово (для тестирования):<br/><br/>
-            <a href="?words_step=1">stat_collector::wordsStatStep1() - пересчет почасовой статистики</a><br/><br/>
-            <a href="?words_step=2">stat_collector::wordsStatStep2() - почасовой пересчет общей статистики</a><br/><br/>
-            <a href="?words_step=3">stat_collector::wordsStatStep3() - пересчет ежедневной статистики</a><br/><br/>
+            РџРѕС€Р°РіРѕРІРѕ (РґР»СЏ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ):<br/><br/>
+            <a href="?words_step=1">stat_collector::wordsStatStep1() - РїРµСЂРµСЃС‡РµС‚ РїРѕС‡Р°СЃРѕРІРѕР№ СЃС‚Р°С‚РёСЃС‚РёРєРё</a><br/><br/>
+            <a href="?words_step=2">stat_collector::wordsStatStep2() - РїРѕС‡Р°СЃРѕРІРѕР№ РїРµСЂРµСЃС‡РµС‚ РѕР±С‰РµР№ СЃС‚Р°С‚РёСЃС‚РёРєРё</a><br/><br/>
+            <a href="?words_step=3">stat_collector::wordsStatStep3() - РїРµСЂРµСЃС‡РµС‚ РµР¶РµРґРЅРµРІРЅРѕР№ СЃС‚Р°С‚РёСЃС‚РёРєРё</a><br/><br/>
         </div><br/><br/>
       </td>
     </tr>

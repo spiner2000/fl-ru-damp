@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Класс обрабатывающий все действия на странице /press/
+ * РљР»Р°СЃСЃ РѕР±СЂР°Р±Р°С‚С‹РІР°СЋС‰РёР№ РІСЃРµ РґРµР№СЃС‚РІРёСЏ РЅР° СЃС‚СЂР°РЅРёС†Рµ /press/
  *
  */
 class page_press extends page_base {    
 	/**
-	 * Переменная необходимая для баннеров (определяет какой тип баннеров выводить на данной странице)
+	 * РџРµСЂРµРјРµРЅРЅР°СЏ РЅРµРѕР±С…РѕРґРёРјР°СЏ РґР»СЏ Р±Р°РЅРЅРµСЂРѕРІ (РѕРїСЂРµРґРµР»СЏРµС‚ РєР°РєРѕР№ С‚РёРї Р±Р°РЅРЅРµСЂРѕРІ РІС‹РІРѕРґРёС‚СЊ РЅР° РґР°РЅРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ)
 	 *
 	 * @var unknown_type
 	 */
@@ -16,17 +16,17 @@ class page_press extends page_base {
 	    front::og("tpl")->main_css  = "/css/press-center.css";
 		front::og("tpl")->g_page_id = $this->b_page;
         front::og("tpl")->page = 'press';
-        front::og("tpl")->page_title = "Удаленная работа (фри-ланс) на Free-lance.ru";
+        front::og("tpl")->page_title = "РЈРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° (С„СЂРё-Р»Р°РЅСЃ) РЅР° Free-lance.ru";
 	}
 	/**
-	 * Обработчик событий главной страницы /press/
+	 * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹ /press/
 	 *
 	 */
     function indexAction() {
         $this->contactsAction();
     }
     /**
-	 * Обработчик событий страницы /press/news/
+	 * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ СЃС‚СЂР°РЅРёС†С‹ /press/news/
 	 *
 	 */
     /*function newsAction() {
@@ -55,9 +55,9 @@ class page_press extends page_base {
         front::og("tpl")->display("press_center/press_news.tpl");
     }*/
     /**
-     * Показа новость полностью страница вида /press/news/ID/
+     * РџРѕРєР°Р·Р° РЅРѕРІРѕСЃС‚СЊ РїРѕР»РЅРѕСЃС‚СЊСЋ СЃС‚СЂР°РЅРёС†Р° РІРёРґР° /press/news/ID/
      *
-     * @param integer $id ID Новости
+     * @param integer $id ID РќРѕРІРѕСЃС‚Рё
      */
     function showNews($id) {
         $db = front::og("db"); 
@@ -66,7 +66,7 @@ class page_press extends page_base {
         front::og("tpl")->display("press_center/press_news.tpl");
     }
     /**
-     * Обработчик событий страницы /press/about/ (О Фри-лансе)
+     * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ СЃС‚СЂР°РЅРёС†С‹ /press/about/ (Рћ Р¤СЂРё-Р»Р°РЅСЃРµ)
      *
      */
     /*function aboutAction() {
@@ -74,7 +74,7 @@ class page_press extends page_base {
         front::og("tpl")->display("press_center/press_about.tpl");
     }*/
     /**
-     * Обработчик событий страницы /press/opinions/ (Отзывы)
+     * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ СЃС‚СЂР°РЅРёС†С‹ /press/opinions/ (РћС‚Р·С‹РІС‹)
      *
      */
     /*function opinionsAction() {
@@ -82,7 +82,7 @@ class page_press extends page_base {
         front::og("tpl")->display("press_center/press_opinions.tpl");
     }*/
     /**
-     * Обработчик событий страницы /press/parthners/ (Партнеры)
+     * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ СЃС‚СЂР°РЅРёС†С‹ /press/parthners/ (РџР°СЂС‚РЅРµСЂС‹)
      *
      */
     /*function partnersAction() {
@@ -91,7 +91,7 @@ class page_press extends page_base {
         front::og("tpl")->display("press_center/press_partners.tpl");
     }*/
     /**
-     * Обработчик событий страницы /press/adv/ (Реклама)
+     * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ СЃС‚СЂР°РЅРёС†С‹ /press/adv/ (Р РµРєР»Р°РјР°)
      *
      */
     function advAction() {
@@ -100,7 +100,7 @@ class page_press extends page_base {
         front::og("tpl")->display("press_center/press_adv.tpl");
     }
     /**
-     * Обработчик событий страницы /press/smi/ (СМИ о Фри-лансе)
+     * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ СЃС‚СЂР°РЅРёС†С‹ /press/smi/ (РЎРњР Рѕ Р¤СЂРё-Р»Р°РЅСЃРµ)
      *
      */
     /*function smiAction() {
@@ -120,7 +120,7 @@ class page_press extends page_base {
         front::og("tpl")->display("press_center/press_smi.tpl");
     }*/
     /**
-     * Обработчик событий страницы /press/contacts/ (Контакты)
+     * РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёР№ СЃС‚СЂР°РЅРёС†С‹ /press/contacts/ (РљРѕРЅС‚Р°РєС‚С‹)
      *
      */
     function contactsAction() {

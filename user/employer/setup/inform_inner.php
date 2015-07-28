@@ -58,7 +58,7 @@
 	function CityUpd(v){
 		ct = document.getElementById("frm").pf_city;
 		ct.disabled = true;
-		ct.options[0].innerHTML = "Подождите...";
+		ct.options[0].innerHTML = "РџРѕРґРѕР¶РґРёС‚Рµ...";
 		ct.value = 0;
 		xajax_GetCitysByCid(v);
 	}
@@ -142,7 +142,7 @@
                 </td></tr>
                 <?php } ?>
                 <tr>
-                    <td style=" width:110px;"><div class="b-layout__txt b-layout__txt_bold b-layout__txt_padtop_5">Дата рождения:</div></td>
+                    <td style=" width:110px;"><div class="b-layout__txt b-layout__txt_bold b-layout__txt_padtop_5">Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ:</div></td>
                     <td class="">
                        <div class="b-combo b-combo_inline-block">
                           <div class="b-combo__input b-combo__input_width_50">
@@ -151,18 +151,18 @@
                        </div>
                        <div class="b-select b-select_inline-block b-select_width_140">
                         <select class="b-select__select " name="datem">
-                            <option value="1" <?= ($mnth == 1) ? "selected='selected'" : "" ?> >января</option>
-                            <option value="2" <?= ($mnth == 2) ? "selected='selected'" : "" ?>>февраля</option>
-                            <option value="3" <?= ($mnth == 3) ? "selected='selected'" : "" ?>>марта</option>
-                            <option value="4" <?= ($mnth == 4) ? "selected='selected'" : "" ?>>апреля</option>
-                            <option value="5" <?= ($mnth == 5) ? "selected='selected'" : "" ?>>мая</option>
-                            <option value="6" <?= ($mnth == 6) ? "selected='selected'" : "" ?>>июня</option>
-                            <option value="7" <?= ($mnth == 7) ? "selected='selected'" : "" ?>>июля</option>
-                            <option value="8" <?= ($mnth == 8) ? "selected='selected'" : "" ?>>августа</option>
-                            <option value="9" <?= ($mnth == 9) ? "selected='selected'" : "" ?>>сентября</option>
-                            <option value="10" <?= ($mnth == 10) ? "selected='selected'" : "" ?>>октября</option>
-                            <option value="11" <?= ($mnth == 11) ? "selected='selected'" : "" ?>>ноября</option>
-                            <option value="12" <?= ($mnth == 12) ? "selected='selected'" : "" ?>>декабря</option>
+                            <option value="1" <?= ($mnth == 1) ? "selected='selected'" : "" ?> >СЏРЅРІР°СЂСЏ</option>
+                            <option value="2" <?= ($mnth == 2) ? "selected='selected'" : "" ?>>С„РµРІСЂР°Р»СЏ</option>
+                            <option value="3" <?= ($mnth == 3) ? "selected='selected'" : "" ?>>РјР°СЂС‚Р°</option>
+                            <option value="4" <?= ($mnth == 4) ? "selected='selected'" : "" ?>>Р°РїСЂРµР»СЏ</option>
+                            <option value="5" <?= ($mnth == 5) ? "selected='selected'" : "" ?>>РјР°СЏ</option>
+                            <option value="6" <?= ($mnth == 6) ? "selected='selected'" : "" ?>>РёСЋРЅСЏ</option>
+                            <option value="7" <?= ($mnth == 7) ? "selected='selected'" : "" ?>>РёСЋР»СЏ</option>
+                            <option value="8" <?= ($mnth == 8) ? "selected='selected'" : "" ?>>Р°РІРіСѓСЃС‚Р°</option>
+                            <option value="9" <?= ($mnth == 9) ? "selected='selected'" : "" ?>>СЃРµРЅС‚СЏР±СЂСЏ</option>
+                            <option value="10" <?= ($mnth == 10) ? "selected='selected'" : "" ?>>РѕРєС‚СЏР±СЂСЏ</option>
+                            <option value="11" <?= ($mnth == 11) ? "selected='selected'" : "" ?>>РЅРѕСЏР±СЂСЏ</option>
+                            <option value="12" <?= ($mnth == 12) ? "selected='selected'" : "" ?>>РґРµРєР°Р±СЂСЏ</option>
                         </select>
                         </div>
                        <div class="b-combo b-combo_inline-block">
@@ -177,25 +177,25 @@
                 <tr><td>&nbsp;</td><td colspan="2"><?= view_error($alert[1]) ?></td></tr>
                 <?php } //if ?>
                 <tr>
-                    <td><div class="b-layout__txt b-layout__txt_bold">Пол:</div></td>
+                    <td><div class="b-layout__txt b-layout__txt_bold">РџРѕР»:</div></td>
                     <td>
                         <div class="b-radio b-radio_layout_horizontal">
                            <div class="b-radio__item">
-                              <input type="radio" id="sex_w" class="b-radio__input" name="sex" value="0" <?= $user->sex == 'f' ? 'checked="checked"' : ''; ?>/><label class="b-radio__label b-radio__label_fontsize_13 " for="sex_w">Женский</label>
+                              <input type="radio" id="sex_w" class="b-radio__input" name="sex" value="0" <?= $user->sex == 'f' ? 'checked="checked"' : ''; ?>/><label class="b-radio__label b-radio__label_fontsize_13 " for="sex_w">Р–РµРЅСЃРєРёР№</label>
                            </div>&#160;&#160;
                            <div class="b-radio__item">
-                              <input type="radio" id="sex_m" class="b-radio__input" name="sex" value="1" <?= $user->sex == 't' ? 'checked="checked"' : ''; ?>/><label class="b-radio__label b-radio__label_fontsize_13" for="sex_m">Мужской</label>
+                              <input type="radio" id="sex_m" class="b-radio__input" name="sex" value="1" <?= $user->sex == 't' ? 'checked="checked"' : ''; ?>/><label class="b-radio__label b-radio__label_fontsize_13" for="sex_m">РњСѓР¶СЃРєРѕР№</label>
                            </div>
                        </div>
                     </td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td><div class="b-layout__txt b-layout__txt_bold b-layout__txt_padtop_5">Страна:</div></td>
+                    <td><div class="b-layout__txt b-layout__txt_bold b-layout__txt_padtop_5">РЎС‚СЂР°РЅР°:</div></td>
                     <td>
                         <div class="b-select">
                             <select name="country" class="b-select__select b-select__select_width_220 " onChange="CityUpd(this.value)">
-                                <option value="0">Не выбрано</option>
+                                <option value="0">РќРµ РІС‹Р±СЂР°РЅРѕ</option>
                                 <?php foreach ($countries as $countid => $country) { ?>
                                 <option value="<?= $countid ?>"<? if ($countid == $user->country) print(" selected='selected'") ?> ><?= $country ?></option>
                                 <?php } //foreach ?>
@@ -208,11 +208,11 @@
                 <tr><td>&nbsp;</td><td colspan="2"><?= view_error($alert['country']) ?></td></tr>
                 <? } ?>
                 <tr>
-                    <td><div class="b-layout__txt b-layout__txt_bold b-layout__txt_padtop_5">Город:</div></td>
+                    <td><div class="b-layout__txt b-layout__txt_bold b-layout__txt_padtop_5">Р“РѕСЂРѕРґ:</div></td>
                     <td id="frm_city">
                         <div class="b-select">
                             <select name="pf_city" class="b-select__select b-select__select_width_220 " <? if (!$cities) print("disabled='disabled'") ?> >
-                                <option value="0">Не выбрано</option>
+                                <option value="0">РќРµ РІС‹Р±СЂР°РЅРѕ</option>
                                 <?php if ($cities) foreach ($cities as $cityid => $city) { ?>
                                 <option value="<?= $cityid ?>"<? if ($cityid == $user->city) print(" selected='selected'") ?> ><?= $city ?></option>
                                 <?php } //foreach ?>
@@ -225,7 +225,7 @@
                 <tr><td>&nbsp;</td><td colspan="2"><?= view_error($alert['city']) ?></td></tr>
                 <? } ?>
                 <tr>
-                    <td><div class="b-layout__txt b-layout__txt_bold b-layout__txt_padtop_5">Компания:</div></td>
+                    <td><div class="b-layout__txt b-layout__txt_bold b-layout__txt_padtop_5">РљРѕРјРїР°РЅРёСЏ:</div></td>
                     <td class="b-layout__td b-layout__td_width_640">
                        <div class="b-combo">
                           <div class="b-combo__input">
@@ -236,7 +236,7 @@
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td><div class="b-layout__txt b-layout__txt_bold b-layout__txt_padtop_5">Сайт:</div></td>
+                    <td><div class="b-layout__txt b-layout__txt_bold b-layout__txt_padtop_5">РЎР°Р№С‚:</div></td>
                     <td class="b-layout__td b-layout__td_width_640">
                        <div class="b-combo">
                           <div class="b-combo__input">
@@ -245,7 +245,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_bordbot_dot_6db335" href="#" id="bm_site" style="<?= (($user->site_1 && $user->site_2 && $user->site_3) ? 'display:none;' : '') ?>" onClick="m_field_add('site'); return false;">+ Добавить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_bordbot_dot_6db335" href="#" id="bm_site" style="<?= (($user->site_1 && $user->site_2 && $user->site_3) ? 'display:none;' : '') ?>" onClick="m_field_add('site'); return false;">+ Р”РѕР±Р°РІРёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <?php if ($alert[11]) { ?>
@@ -263,7 +263,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('site',1); return false;">- Удалить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('site',1); return false;">- РЈРґР°Р»РёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[41]) { ?>
@@ -279,7 +279,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('site',2); return false;">- Удалить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('site',2); return false;">- РЈРґР°Р»РёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[42]) { ?>
@@ -295,7 +295,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('site',3); return false;">- Удалить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('site',3); return false;">- РЈРґР°Р»РёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[43]) { ?>
@@ -313,7 +313,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_bordbot_dot_6db335" href="#" id="bm_icq" style="<?= (($user->icq_1 && $user->icq_2 && $user->icq_3) ? 'display:none;' : '') ?>" onClick="m_field_add('icq'); return false;">+ Добавить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_bordbot_dot_6db335" href="#" id="bm_icq" style="<?= (($user->icq_1 && $user->icq_2 && $user->icq_3) ? 'display:none;' : '') ?>" onClick="m_field_add('icq'); return false;">+ Р”РѕР±Р°РІРёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[2]) { ?>
@@ -331,7 +331,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#"  onClick="m_field_del('icq',1); return false;">- Удалить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#"  onClick="m_field_del('icq',1); return false;">- РЈРґР°Р»РёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[31]) { ?>
@@ -347,7 +347,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('icq',2); return false;">- Удалить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('icq',2); return false;">- РЈРґР°Р»РёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[32]) { ?>
@@ -363,7 +363,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('icq',3); return false;">- Удалить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('icq',3); return false;">- РЈРґР°Р»РёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[33]) { ?>
@@ -381,7 +381,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_bordbot_dot_6db335" href="#" id="bm_jabber" style=" <?= (($user->jabber_1 && $user->jabber_2 && $user->jabber_3) ? 'display:none;' : '') ?>" onClick="m_field_add('jabber'); return false;">+ Добавить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_bordbot_dot_6db335" href="#" id="bm_jabber" style=" <?= (($user->jabber_1 && $user->jabber_2 && $user->jabber_3) ? 'display:none;' : '') ?>" onClick="m_field_add('jabber'); return false;">+ Р”РѕР±Р°РІРёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert['jabber']) { ?>
@@ -398,7 +398,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('jabber',1); return false;">- Удалить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('jabber',1); return false;">- РЈРґР°Р»РёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[51]) { ?>
@@ -414,7 +414,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('jabber',2); return false;">- Удалить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('jabber',2); return false;">- РЈРґР°Р»РёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[52]) { ?>
@@ -430,7 +430,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('jabber',3); return false;">- Удалить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('jabber',3); return false;">- РЈРґР°Р»РёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[53]) { ?>
@@ -439,7 +439,7 @@
                 <!-- more jabber -->
     
                 <tr>
-                    <td><div class="b-layout__txt b-layout__txt_bold b-layout__txt_padtop_5">Телефон:</div></td>
+                    <td><div class="b-layout__txt b-layout__txt_bold b-layout__txt_padtop_5">РўРµР»РµС„РѕРЅ:</div></td>
                     <td class="b-layout__td b-layout__td_width_640">
                        <div class="b-combo">
                           <div class="b-combo__input">
@@ -448,7 +448,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_bordbot_dot_6db335" href="#" id="bm_phone" style=" <?= (($user->phone_1 && $user->phone_2 && $user->phone_3) ? 'display:none;' : '') ?>" onClick="m_field_add('phone'); return false;">+ Добавить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_bordbot_dot_6db335" href="#" id="bm_phone" style=" <?= (($user->phone_1 && $user->phone_2 && $user->phone_3) ? 'display:none;' : '') ?>" onClick="m_field_add('phone'); return false;">+ Р”РѕР±Р°РІРёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[3]) { ?>
@@ -465,7 +465,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('phone',1); return false;">- Удалить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('phone',1); return false;">- РЈРґР°Р»РёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[61]) { ?>
@@ -481,7 +481,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('phone',2); return false;">- Удалить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('phone',2); return false;">- РЈРґР°Р»РёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[62]) { ?>
@@ -497,7 +497,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('phone',3); return false;">- Удалить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('phone',3); return false;">- РЈРґР°Р»РёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[63]) { ?>
@@ -515,7 +515,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_bordbot_dot_6db335" href="#" id="bm_lj" style=" <?= (($user->lj_1 && $user->lj_2 && $user->lj_3) ? 'display:none;' : '') ?>" onClick="m_field_add('lj'); return false;">+ Добавить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_bordbot_dot_6db335" href="#" id="bm_lj" style=" <?= (($user->lj_1 && $user->lj_2 && $user->lj_3) ? 'display:none;' : '') ?>" onClick="m_field_add('lj'); return false;">+ Р”РѕР±Р°РІРёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[12]) { ?>
@@ -532,7 +532,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('lj',1); return false;">- Удалить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('lj',1); return false;">- РЈРґР°Р»РёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[71]) { ?>
@@ -548,7 +548,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('lj',2); return false;">- Удалить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('lj',2); return false;">- РЈРґР°Р»РёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[72]) { ?>
@@ -564,7 +564,7 @@
                        </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('lj',3); return false;">- Удалить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('lj',3); return false;">- РЈРґР°Р»РёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[73]) { ?>
@@ -582,11 +582,11 @@
                        </div>
                         <div class="b-check b-check_inline-block b-check_valign_middle b-check_padleft_10 b-check_padtop_8" style="display: none">
                            <input id="by-skype" class="b-check__input" name="skype_as_link" type="checkbox" value="1"<?=$user->skype_as_link == 't' ? ' checked="checked"' : ''?> />
-                           <label for="by-skype" class="b-check__label b-check__label_fontsize_13">Отображать "Связаться по skype" вместо логина</label>
+                           <label for="by-skype" class="b-check__label b-check__label_fontsize_13">РћС‚РѕР±СЂР°Р¶Р°С‚СЊ "РЎРІСЏР·Р°С‚СЊСЃСЏ РїРѕ skype" РІРјРµСЃС‚Рѕ Р»РѕРіРёРЅР°</label>
                         </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_bordbot_dot_6db335" href="#" id="bm_skype" style=" <?= (($user->skype_1 && $user->skype_2 && $user->skype_3) ? 'display:none;' : '') ?>" onClick="m_field_add('skype'); return false;">+ Добавить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_bordbot_dot_6db335" href="#" id="bm_skype" style=" <?= (($user->skype_1 && $user->skype_2 && $user->skype_3) ? 'display:none;' : '') ?>" onClick="m_field_add('skype'); return false;">+ Р”РѕР±Р°РІРёС‚СЊ</a></div>
                     </td>
                 </tr>
                 
@@ -602,11 +602,11 @@
                        </div>
                         <div class="b-check b-check_inline-block b-check_valign_middle b-check_padleft_10 b-check_padtop_8" style="display: none">
                            <input id="by-skype<?=$i?>" class="b-check__input" name="skype_<?=$i?>_as_link" type="checkbox" value="1"<?=$user->{'skype_'.$i.'_as_link'} == 't' ? ' checked="checked"' : ''?> />
-                           <label for="by-skype<?=$i?>" class="b-check__label b-check__label_fontsize_13">Отображать "Связаться по skype" вместо логина</label>
+                           <label for="by-skype<?=$i?>" class="b-check__label b-check__label_fontsize_13">РћС‚РѕР±СЂР°Р¶Р°С‚СЊ "РЎРІСЏР·Р°С‚СЊСЃСЏ РїРѕ skype" РІРјРµСЃС‚Рѕ Р»РѕРіРёРЅР°</label>
                         </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('skype',<?=$i?>); return false;">- Удалить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('skype',<?=$i?>); return false;">- РЈРґР°Р»РёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <?php endfor; ?>
@@ -622,11 +622,11 @@
                        </div>
                         <div class="b-check b-check_inline-block b-check_valign_middle b-check_padleft_10 b-check_padtop_8" style="display: none">
                            <input id="by-mail" class="b-check__input" name="email_as_link" type="checkbox" value="1"<?=$user->email_as_link == 't' ? ' checked="checked"' : ''?> />
-                           <label for="by-mail" class="b-check__label b-check__label_fontsize_13">Отображать "Написать письмо" вместо адреса</label>
+                           <label for="by-mail" class="b-check__label b-check__label_fontsize_13">РћС‚РѕР±СЂР°Р¶Р°С‚СЊ "РќР°РїРёСЃР°С‚СЊ РїРёСЃСЊРјРѕ" РІРјРµСЃС‚Рѕ Р°РґСЂРµСЃР°</label>
                         </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_bordbot_dot_6db335" href="#" id="bm_email" style=" <?= (($user->email_1 && $user->email_2 && $user->email_3) ? 'display:none;' : '') ?>" onClick="m_field_add('email'); return false;">+ Добавить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_bordbot_dot_6db335" href="#" id="bm_email" style=" <?= (($user->email_1 && $user->email_2 && $user->email_3) ? 'display:none;' : '') ?>" onClick="m_field_add('email'); return false;">+ Р”РѕР±Р°РІРёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert[10]) { ?>
@@ -645,11 +645,11 @@
                        </div>
                         <div class="b-check b-check_inline-block b-check_valign_middle b-check_padleft_10 b-check_padtop_8" style="display: none">
                            <input id="by-mail<?=$i?>" class="b-check__input" name="email_<?=$i?>_as_link" type="checkbox" value="1"<?=$user->{'email_'.$i.'_as_link'} == 't' ? ' checked="checked"' : ''?> />
-                           <label for="by-mail<?=$i?>" class="b-check__label b-check__label_fontsize_13">Отображать "Написать письмо" вместо адреса</label>
+                           <label for="by-mail<?=$i?>" class="b-check__label b-check__label_fontsize_13">РћС‚РѕР±СЂР°Р¶Р°С‚СЊ "РќР°РїРёСЃР°С‚СЊ РїРёСЃСЊРјРѕ" РІРјРµСЃС‚Рѕ Р°РґСЂРµСЃР°</label>
                         </div>
                     </td>
                     <td>
-                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('email',<?=$i?>); return false;">- Удалить</a></div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5"><a class="b-layout__link b-layout__link_dot_c10600" href="#" onClick="m_field_del('email',<?=$i?>); return false;">- РЈРґР°Р»РёС‚СЊ</a></div>
                     </td>
                 </tr>
                 <? if ($alert['2'.$i]): ?>
@@ -659,13 +659,13 @@
                 <!-- more emails -->
 		<tr><td  colspan="3" style="height:10px"></td></tr>
 		<tr><td></td><td>
-         <div class="b-layout__txt b-layout__txt_fontsize_11" style="display: none;"><span class="b-icon b-icon_sbr_oattent"></span>Для безопасности вашего аккаунта рекомендуем скрывать свои skype-логины и адреса почт от публичного доступа.</div>
+         <div class="b-layout__txt b-layout__txt_fontsize_11" style="display: none;"><span class="b-icon b-icon_sbr_oattent"></span>Р”Р»СЏ Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р° СЂРµРєРѕРјРµРЅРґСѓРµРј СЃРєСЂС‹РІР°С‚СЊ СЃРІРѕРё skype-Р»РѕРіРёРЅС‹ Рё Р°РґСЂРµСЃР° РїРѕС‡С‚ РѕС‚ РїСѓР±Р»РёС‡РЅРѕРіРѕ РґРѕСЃС‚СѓРїР°.</div>
       </td><td></td></tr>
 		<tr><td  colspan="3" style="height:10px"></td></tr>
             </table>
 <table style="width:100%; border:0" cellspacing="0" cellpadding="0">
 <tr>
-	<td class="brdtop" style="padding:3px 20px;">Дополнительная информация</td>
+	<td class="brdtop" style="padding:3px 20px;">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ</td>
 </tr>
 </table>
 		<table cellspacing="0" cellpadding="0"  style="width:100%; border:0;margin-top:10px;" class="dop-inf-tabl">
@@ -676,7 +676,7 @@
 			<td>
 			<input type="hidden" name="del" value="0" />
 				<img src="<?=WDCPREFIX?>/users/<?=$user->login?>/logo/<?=$user->logo?>" alt="<?=$user->login?>"  /><br />
-				<a href="#" onClick="if (warning(6)) { frm.del.value='1'; frm.submit(); } else return(false);"><img src="/images/ico_close.gif" alt="" width="9" height="9" /></a>&nbsp;<a href="#" onClick="if (warning(6)) { frm.del.value='1'; frm.submit(); } else return(false);">Удалить логотип</a>
+				<a href="#" onClick="if (warning(6)) { frm.del.value='1'; frm.submit(); } else return(false);"><img src="/images/ico_close.gif" alt="" width="9" height="9" /></a>&nbsp;<a href="#" onClick="if (warning(6)) { frm.del.value='1'; frm.submit(); } else return(false);">РЈРґР°Р»РёС‚СЊ Р»РѕРіРѕС‚РёРї</a>
 			</td>
 		</tr>
 		<?php
@@ -684,7 +684,7 @@
 		?>
 		<tr>
 			<td>
-				Загрузить логотип:
+				Р—Р°РіСЂСѓР·РёС‚СЊ Р»РѕРіРѕС‚РёРї:
 			</td>
 		</tr>
 		<tr>
@@ -693,7 +693,7 @@
 				<input type="hidden" name="MAX_FILE_SIZE" value="51200" />
 				<input type="file" name="logo" size="74" /><br />
 				<?php $aAllowedExt = array_diff( $GLOBALS['graf_array'], array('swf') ) ?>
-				Условия загрузки: Не более 50 Кб, размер 150x100 пикселей <?=implode(', ', $aAllowedExt )?>
+				РЈСЃР»РѕРІРёСЏ Р·Р°РіСЂСѓР·РєРё: РќРµ Р±РѕР»РµРµ 50 РљР±, СЂР°Р·РјРµСЂ 150x100 РїРёРєСЃРµР»РµР№ <?=implode(', ', $aAllowedExt )?>
 			</td>
 		</tr>
 		<?php
@@ -701,7 +701,7 @@
 		?>
 		<tr>
 			<td>
-				О компании:
+				Рћ РєРѕРјРїР°РЅРёРё:
 			</td>
 		</tr>
 		<tr>
@@ -714,12 +714,12 @@
 		<? } ?>
 		<tr>
 			<td>
-				Максимум 500 знаков.<br /><br />
+				РњР°РєСЃРёРјСѓРј 500 Р·РЅР°РєРѕРІ.<br /><br />
 			</td>
 		</tr>
 		<tr>
 			<td>
-				Текст:
+				РўРµРєСЃС‚:
 			</td>
 		</tr>
 		<tr>
@@ -732,8 +732,8 @@
 		<? } ?>
 		<tr>
 			<td>
-				Максимум 4000 знаков.<br />
-				Вы можете использовать простые теги для форматирования текста.
+				РњР°РєСЃРёРјСѓРј 4000 Р·РЅР°РєРѕРІ.<br />
+				Р’С‹ РјРѕР¶РµС‚Рµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РїСЂРѕСЃС‚С‹Рµ С‚РµРіРё РґР»СЏ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёСЏ С‚РµРєСЃС‚Р°.
 			</td>
 		</tr>
 		<tr>
@@ -746,7 +746,7 @@
 
 <table style="width:100%; border:0" cellspacing="0" cellpadding="0">
 <tr>
-	<td class="brdtop" style="padding:3px 20px;">В избранном у работодателей <div class="b-check b-check_float_right b-check_float_none_iphone"><input type="checkbox" id="ch-b1" class="b-check__input" name="showempl" value="1" <? if ($user->blocks[4]) print "checked='checked'" ?> /> <label class="b-check__label b-check__label_bold b-check__label_color_666" for="ch-b1">Показывать блок</label></div></td>
+	<td class="brdtop" style="padding:3px 20px;">Р’ РёР·Р±СЂР°РЅРЅРѕРј Сѓ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ <div class="b-check b-check_float_right b-check_float_none_iphone"><input type="checkbox" id="ch-b1" class="b-check__input" name="showempl" value="1" <? if ($user->blocks[4]) print "checked='checked'" ?> /> <label class="b-check__label b-check__label_bold b-check__label_color_666" for="ch-b1">РџРѕРєР°Р·С‹РІР°С‚СЊ Р±Р»РѕРє</label></div></td>
 </tr>
 </table>
 <table cellspacing="0" cellpadding="0" style="width:100%">
@@ -776,11 +776,11 @@
 			<div class="izbr-text">
                 <span class="user-inf"><span class="<?=$cls?>name11"><a href="/users/<?=$rec['login']?>" class="<?=$cls?>name11" title="<?=($rec['uname']." ".$rec['usurname'])?>"><?=($rec['uname']." ".$rec['usurname'])?></a> [<a href="/users/<?=$rec['login']?>/" class="<?=$cls?>name11" title="<?=$rec['login']?>"><?=$rec['login']?></a>]</span> <?= view_mark_user($rec);?><?= $session->view_online_status($rec['login'], false, "")?></span>
                 <?php if(!is_emp($rec['role'])) {?>
-                    Специализация: <?= professions::GetProfNameWP($rec['spec'], ' / ', "не указано", "lnk-666", true)?>
+                    РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ: <?= professions::GetProfNameWP($rec['spec'], ' / ', "РЅРµ СѓРєР°Р·Р°РЅРѕ", "lnk-666", true)?>
                 <?php }//if?>
 				<div class="userFav_<?=$rec['uid']?>">
 				    <?php if($note === false) { ?>
-                    <div class="sent-mark"><a href="javascript:void(0)" onclick="xajax_getNotesForm(<?= $rec['uid']?>, false, <?=$type?>);">Оставить заметку</a>&nbsp;<span></span></div>
+                    <div class="sent-mark"><a href="javascript:void(0)" onclick="xajax_getNotesForm(<?= $rec['uid']?>, false, <?=$type?>);">РћСЃС‚Р°РІРёС‚СЊ Р·Р°РјРµС‚РєСѓ</a>&nbsp;<span></span></div>
                     <?php } else { //if ?>
                         <?include ("../tpl.notes-textitem.php"); ?>
                     <?php }//else ?>
@@ -796,7 +796,7 @@
   <? if($i > $limit) { ?>
     <tr>
       <td>
-        <a class="blue" href='/users/<?=$user->login?>/all/?mode=1'><b>Все (<?=$allCnt?>)</b></a>
+        <a class="blue" href='/users/<?=$user->login?>/all/?mode=1'><b>Р’СЃРµ (<?=$allCnt?>)</b></a>
       </td>
     </tr>
   <? } ?>
@@ -804,7 +804,7 @@
 
 <table style="width:100%; border:0; clear:both;" cellspacing="0" cellpadding="0">
 <tr>
-	<td class="brdtop" style="padding:3px 20px;">В избранном у фрилансеров <div class="b-check b-check_float_right b-check_float_none_iphone"><input type="checkbox" id="ch-b2" class="b-check__input" name="showfrl" value="1" <? if ($user->blocks[5]) print "checked='checked'" ?> /> <label class="b-check__label b-check__label_bold b-check__label_color_666" for="ch-b2">Показывать блок</label></div></td>
+	<td class="brdtop" style="padding:3px 20px;">Р’ РёР·Р±СЂР°РЅРЅРѕРј Сѓ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ <div class="b-check b-check_float_right b-check_float_none_iphone"><input type="checkbox" id="ch-b2" class="b-check__input" name="showfrl" value="1" <? if ($user->blocks[5]) print "checked='checked'" ?> /> <label class="b-check__label b-check__label_bold b-check__label_color_666" for="ch-b2">РџРѕРєР°Р·С‹РІР°С‚СЊ Р±Р»РѕРє</label></div></td>
 </tr>
 </table>
 <table cellspacing="0" cellpadding="0" style="width:100%">
@@ -816,7 +816,7 @@
       $allCnt = count($recs);
       if ($recs) {
           
-        //Получаем is_profi
+        //РџРѕР»СѓС‡Р°РµРј is_profi
         $ids = array();
 
         foreach($recs as $rec) {
@@ -851,11 +851,11 @@
 			<div class="izbr-text">
                 <span class="user-inf"><span class="<?=$cls?>name11"><a href="/users/<?=$rec['login']?>" class="<?=$cls?>name11" title="<?=($rec['uname']." ".$rec['usurname'])?>"><?=($rec['uname']." ".$rec['usurname'])?></a> [<a href="/users/<?=$rec['login']?>/" class="<?=$cls?>name11" title="<?=$rec['login']?>"><?=$rec['login']?></a>]</span> <?= view_mark_user($rec);?><?= $session->view_online_status($rec['login'], false, "")?></span>
                 <?php if(!is_emp($rec['role'])) {?>
-                    Специализация: <?= professions::GetProfNameWP($rec['spec'], ' / ', "не указано", "lnk-666", true)?>
+                    РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ: <?= professions::GetProfNameWP($rec['spec'], ' / ', "РЅРµ СѓРєР°Р·Р°РЅРѕ", "lnk-666", true)?>
                 <?php }//if?>
 				<div class="userFav_<?=$rec['uid']?>">
 				    <?php if($note === false) { ?>
-                    <div class="sent-mark"><a href="javascript:void(0)" onclick="xajax_getNotesForm(<?= $rec['uid']?>, false, <?=$type?>);">Оставить заметку</a>&nbsp;<span></span></div>
+                    <div class="sent-mark"><a href="javascript:void(0)" onclick="xajax_getNotesForm(<?= $rec['uid']?>, false, <?=$type?>);">РћСЃС‚Р°РІРёС‚СЊ Р·Р°РјРµС‚РєСѓ</a>&nbsp;<span></span></div>
                     <?php } else { //if ?>
                         <?include ("../tpl.notes-textitem.php"); ?>
                     <?php }//else ?>
@@ -871,7 +871,7 @@
   <? if($i > $limit) { ?>
     <tr>
       <td>
-        <a class="blue" href='/users/<?=$user->login?>/all/?mode=2'><b>Все (<?=$allCnt?>)</b></a>
+        <a class="blue" href='/users/<?=$user->login?>/all/?mode=2'><b>Р’СЃРµ (<?=$allCnt?>)</b></a>
       </td>
     </tr>
   <? } ?>
@@ -882,7 +882,7 @@
 <a name="team" id="team"></a>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style=" clear:both;">
 <tr>
-	<td class="brdtop" style="padding:3px 20px;">Избранные <div class="b-check b-check_float_right b-check_float_none_iphone"><input type="checkbox" id="ch-b3" class="b-check__input" name="showteam" value="1" <? if ($user->blocks[1]) print "checked='checked'" ?> /> <label class="b-check__label b-check__label_bold b-check__label_color_666" for="ch-b3">Показывать блок</label></div></td>
+	<td class="brdtop" style="padding:3px 20px;">РР·Р±СЂР°РЅРЅС‹Рµ <div class="b-check b-check_float_right b-check_float_none_iphone"><input type="checkbox" id="ch-b3" class="b-check__input" name="showteam" value="1" <? if ($user->blocks[1]) print "checked='checked'" ?> /> <label class="b-check__label b-check__label_bold b-check__label_color_666" for="ch-b3">РџРѕРєР°Р·С‹РІР°С‚СЊ Р±Р»РѕРє</label></div></td>
 </tr>
 </table>
 <table cellspacing="0" cellpadding="0" style="width:100%">
@@ -893,7 +893,7 @@
       $allCnt = count($recs);
       if ($recs) {
           
-        //Получаем is_profi
+        //РџРѕР»СѓС‡Р°РµРј is_profi
         $ids = array();
         
         foreach($recs as $rec) {
@@ -929,11 +929,11 @@
 			<div class="izbr-text">
                 <span class="user-inf"><span class="<?=$cls?>name11"><a href="/users/<?=$rec['login']?>" class="<?=$cls?>name11" title="<?=($rec['uname']." ".$rec['usurname'])?>"><?=($rec['uname']." ".$rec['usurname'])?></a> [<a href="/users/<?=$rec['login']?>/" class="<?=$cls?>name11" title="<?=$rec['login']?>"><?=$rec['login']?></a>]</span> <?= view_mark_user($rec);?><?= $session->view_online_status($rec['login'], false, "")?></span>
                 <?php if(!is_emp($rec['role'])) {?>
-                    Специализация: <?= professions::GetProfNameWP($rec['spec'], ' / ', "не указано", "lnk-666", true)?>
+                    РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ: <?= professions::GetProfNameWP($rec['spec'], ' / ', "РЅРµ СѓРєР°Р·Р°РЅРѕ", "lnk-666", true)?>
                 <?php }//if?>
 				<div class="userFav_<?=$rec['uid']?>">
 				    <?php if($note === false) { ?>
-                    <div class="sent-mark"><a href="javascript:void(0)" onclick="xajax_getNotesForm(<?= $rec['uid']?>, false, <?=$type?>);">Оставить заметку</a>&nbsp;<span></span></div>
+                    <div class="sent-mark"><a href="javascript:void(0)" onclick="xajax_getNotesForm(<?= $rec['uid']?>, false, <?=$type?>);">РћСЃС‚Р°РІРёС‚СЊ Р·Р°РјРµС‚РєСѓ</a>&nbsp;<span></span></div>
                     <?php } else { //if ?>
                         <?include ("../tpl.notes-textitem.php"); ?>
                     <?php }//else ?>
@@ -963,7 +963,7 @@
 <a name="commune" id="commune"></a>
 <table style="width:100%; border:0; clear:both;" cellspacing="0" cellpadding="0">
 <tr>
-  <td class="brdtop" style="padding:3px 20px;">Создал сообщества (<?=$commCnt?>) <div class="b-check b-check_float_right b-check_float_none_iphone"><input type="checkbox" class="b-check__input" id="ch-b4" name="showcommune" value="1" <? if ($user->blocks[2]) print "checked='checked'" ?> /> <label  class="b-check__label b-check__label_bold b-check__label_color_666" for="ch-b4">Показывать блок</label></div></td>
+  <td class="brdtop" style="padding:3px 20px;">РЎРѕР·РґР°Р» СЃРѕРѕР±С‰РµСЃС‚РІР° (<?=$commCnt?>) <div class="b-check b-check_float_right b-check_float_none_iphone"><input type="checkbox" class="b-check__input" id="ch-b4" name="showcommune" value="1" <? if ($user->blocks[2]) print "checked='checked'" ?> /> <label  class="b-check__label b-check__label_bold b-check__label_color_666" for="ch-b4">РџРѕРєР°Р·С‹РІР°С‚СЊ Р±Р»РѕРє</label></div></td>
 </tr>
 </table>
 <table cellspacing="0" cellpadding="0" style="width:100%">
@@ -976,12 +976,12 @@
         <? foreach($communes as $comm) {
               
              $i++;
-             // Название.
+             // РќР°Р·РІР°РЅРёРµ.
              $name = "<a href='".getFriendlyURL("commune_commune", $comm['id'])."' class='blue' style='font-size:20px'>".reformat($comm['name'], 25, 1)."</a>";
              $descr = reformat($comm['descr'], 25, 1);
-             // Сколько участников.
+             // РЎРєРѕР»СЊРєРѕ СѓС‡Р°СЃС‚РЅРёРєРѕРІ.
              $mAcceptedCnt = $comm['a_count'] - $comm['w_count'] + 1;
-             $mCnt = $mAcceptedCnt.' участник'.getSymbolicName($mAcceptedCnt, 'man');
+             $mCnt = $mAcceptedCnt.' СѓС‡Р°СЃС‚РЅРёРє'.getSymbolicName($mAcceptedCnt, 'man');
         ?>
         
         
@@ -1067,7 +1067,7 @@
 <a name="commune_join" id="commune_join"></a>
 <table style="border:0; width:100%; clear:both;" cellspacing="0" cellpadding="0">
 <tr>
-  <td class="brdtop" style="padding:3px 20px;">Состоит в сообществах (<?=$commCnt?>) <div class="b-check b-check_float_right b-check_float_none_iphone"><input class="b-check__input" type="checkbox" id="ch-b5" name="showjoincommune" value="1" <? if ($user->blocks[3]) print "checked='checked'" ?> /> <label class="b-check__label b-check__label_bold b-check__label_color_666" for="ch-b5">Показывать блок</label></div></td>
+  <td class="brdtop" style="padding:3px 20px;">РЎРѕСЃС‚РѕРёС‚ РІ СЃРѕРѕР±С‰РµСЃС‚РІР°С… (<?=$commCnt?>) <div class="b-check b-check_float_right b-check_float_none_iphone"><input class="b-check__input" type="checkbox" id="ch-b5" name="showjoincommune" value="1" <? if ($user->blocks[3]) print "checked='checked'" ?> /> <label class="b-check__label b-check__label_bold b-check__label_color_666" for="ch-b5">РџРѕРєР°Р·С‹РІР°С‚СЊ Р±Р»РѕРє</label></div></td>
 </tr>
 </table>
 <table cellspacing="0" cellpadding="0" style="width:100%">
@@ -1080,12 +1080,12 @@
         <? foreach($communes as $comm) {
               
              $i++;
-             // Название.
+             // РќР°Р·РІР°РЅРёРµ.
              $name = "<a href='".getFriendlyURL("commune_commune", $comm['id'])."' class='blue' style='font-size:20px'>".reformat($comm['name'], 25, 1)."</a>";
              $descr = reformat($comm['descr'], 25, 1);
-             // Сколько участников.
+             // РЎРєРѕР»СЊРєРѕ СѓС‡Р°СЃС‚РЅРёРєРѕРІ.
              $mAcceptedCnt = $comm['a_count'] - $comm['w_count'] + 1;
-             $mCnt = $mAcceptedCnt.' участник'.getSymbolicName($mAcceptedCnt, 'man');
+             $mCnt = $mAcceptedCnt.' СѓС‡Р°СЃС‚РЅРёРє'.getSymbolicName($mAcceptedCnt, 'man');
         ?>
         
         <!-- NEW -->
@@ -1159,7 +1159,7 @@
   </tr>
   <tr>
     <td style="text-align:right; height:50px; vertical-align:bottom; padding-right:19px;">
-      <input type="hidden" name="MAX_FILE_SIZE" value="100000" /><input type="hidden" name="action" value="inform_change" /><button type="submit" name="btn" class="b-button b-button_flat b-button_flat_green b-button_float_right">Изменить</button>
+      <input type="hidden" name="MAX_FILE_SIZE" value="100000" /><input type="hidden" name="action" value="inform_change" /><button type="submit" name="btn" class="b-button b-button_flat b-button_flat_green b-button_float_right">РР·РјРµРЅРёС‚СЊ</button>
     </td>
   </tr>
 </table>

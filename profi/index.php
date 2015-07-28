@@ -22,7 +22,7 @@ if ($is_allow) {
     $account->GetInfo($uid, true);
     
     if(__paramInit('bool', 'quickprofi_ok', NULL, false)) {
-        //Обновляем сессию
+        //РћР±РЅРѕРІР»СЏРµРј СЃРµСЃСЃРёСЋ
         $freelancer->GetUserByUID($uid);
         $_SESSION['is_profi'] = $freelancer->isProfi();
     
@@ -39,7 +39,7 @@ $isMoreCatalogList = $cntCatalogList > $maxFirstCLBlock;
 $cntFirstCLBlock = $isMoreCatalogList?$maxFirstCLBlock:$cntCatalogList;
 
 
-$page_title = "PROFI аккаунт - фриланс, удаленная работа на FL.ru";
+$page_title = "PROFI Р°РєРєР°СѓРЅС‚ - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
 
 $css_file = array('/css/block/b-icon/__cont/b-icon__cont.css');
 $js_file = array('payed.js','billing.js');

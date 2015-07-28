@@ -18,26 +18,26 @@ $sCheck = $uid ? ($_SESSION['direct_external_links'] ? ' checked="checked"' : ''
   <!-- end of Banner 240x400 -->  
 </div>
 <div class="b-layout__left b-layout__left_margright_270">
-  <h1 class="b-page__title">Переход по внешней ссылке</h1>
+  <h1 class="b-page__title">РџРµСЂРµС…РѕРґ РїРѕ РІРЅРµС€РЅРµР№ СЃСЃС‹Р»РєРµ</h1>
   <? if($href) { ?>
-  <div class="b-layout__txt b-layout__txt_padbot_20">Вы покидаете сайт FL.ru и переходите на сторонний сайт.</div>
+  <div class="b-layout__txt b-layout__txt_padbot_20">Р’С‹ РїРѕРєРёРґР°РµС‚Рµ СЃР°Р№С‚ FL.ru Рё РїРµСЂРµС…РѕРґРёС‚Рµ РЅР° СЃС‚РѕСЂРѕРЅРЅРёР№ СЃР°Р№С‚.</div>
   <div class="b-fon">
-    <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb"> <span class="b-fon__attent_red"></span>Данный сайт может содержать вирусы и различные вредоносные программы. Администрация сайта FL.ru не несёт ответственности за контент данного сайта.<br />
-      Кроме того мы рекомендуем <strong class="b-layout__bold">не указывать ваши данные</strong>, имеющие отношение к FL.ru (имя пользователя, пароль), на сторонних сайтах. </div>
+    <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb"> <span class="b-fon__attent_red"></span>Р”Р°РЅРЅС‹Р№ СЃР°Р№С‚ РјРѕР¶РµС‚ СЃРѕРґРµСЂР¶Р°С‚СЊ РІРёСЂСѓСЃС‹ Рё СЂР°Р·Р»РёС‡РЅС‹Рµ РІСЂРµРґРѕРЅРѕСЃРЅС‹Рµ РїСЂРѕРіСЂР°РјРјС‹. РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ СЃР°Р№С‚Р° FL.ru РЅРµ РЅРµСЃС‘С‚ РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚Рё Р·Р° РєРѕРЅС‚РµРЅС‚ РґР°РЅРЅРѕРіРѕ СЃР°Р№С‚Р°.<br />
+      РљСЂРѕРјРµ С‚РѕРіРѕ РјС‹ СЂРµРєРѕРјРµРЅРґСѓРµРј <strong class="b-layout__bold">РЅРµ СѓРєР°Р·С‹РІР°С‚СЊ РІР°С€Рё РґР°РЅРЅС‹Рµ</strong>, РёРјРµСЋС‰РёРµ РѕС‚РЅРѕС€РµРЅРёРµ Рє FL.ru (РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РїР°СЂРѕР»СЊ), РЅР° СЃС‚РѕСЂРѕРЅРЅРёС… СЃР°Р№С‚Р°С…. </div>
   </div>
-  <div class="b-layout__txt b-layout__txt_padtop_20 b-layout__txt_padbot_20 b-fon__body_padleft_30">Для того чтобы перейти на этот сайт, нажмите на
+  <div class="b-layout__txt b-layout__txt_padtop_20 b-layout__txt_padbot_20 b-fon__body_padleft_30">Р”Р»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ РїРµСЂРµР№С‚Рё РЅР° СЌС‚РѕС‚ СЃР°Р№С‚, РЅР°Р¶РјРёС‚Рµ РЅР°
     <noindex><a class="b-layout__link" href="<?=str_replace(array('<', '>', '"', '\''), array('&lt;', '&gt;', '&quot;', '&#039;'), $scheme.$url)?>" rel="nofollow">
       <?=$text_link?>
       </a></noindex>
     <br />
-    Для того чтобы вернуться на FL.ru, нажмите <a class="b-layout__link" href="/">отмена</a>.</div>
+    Р”Р»СЏ С‚РѕРіРѕ С‡С‚РѕР±С‹ РІРµСЂРЅСѓС‚СЊСЃСЏ РЅР° FL.ru, РЅР°Р¶РјРёС‚Рµ <a class="b-layout__link" href="/">РѕС‚РјРµРЅР°</a>.</div>
   <? } ?>
   <div class="b-fon b-fon_inline-block">
     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_bg_f0ffdf">
       <?php /* onclick="document.cookie='direct_external_links=1; expires='+(new Date(<?=date('Y')?>+(this.checked?2:-2),1,1)).toGMTString()" */ ?>
       <div class="b-check">
         <input class="b-check__input" onclick="<?=$sClick?>" type="checkbox" value="" id="a-rem"<?=$sCheck?>/>
-        <label class="b-check__label" for="a-rem">Больше не показывать страницу &laquo;Переход по ссылке&raquo;</label>
+        <label class="b-check__label" for="a-rem">Р‘РѕР»СЊС€Рµ РЅРµ РїРѕРєР°Р·С‹РІР°С‚СЊ СЃС‚СЂР°РЅРёС†Сѓ &laquo;РџРµСЂРµС…РѕРґ РїРѕ СЃСЃС‹Р»РєРµ&raquo;</label>
       </div>
     </div>
   </div>

@@ -50,49 +50,49 @@ ORDER BY tso.id
 LIMIT 2000 OFFSET 0", $s_date_begin, $s_date_end);
 
     $statuses = array(
-        '0' => 'не подтвержден',
-        '-1' => 'фрилансер отказался',
-        '-2' => 'работодатель отменил',
-        '1' => 'в работе',
-        '2' => 'завершен фрилансером',
-        '3' => 'завершен работодателем'
+        '0' => 'РЅРµ РїРѕРґС‚РІРµСЂР¶РґРµРЅ',
+        '-1' => 'С„СЂРёР»Р°РЅСЃРµСЂ РѕС‚РєР°Р·Р°Р»СЃСЏ',
+        '-2' => 'СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ РѕС‚РјРµРЅРёР»',
+        '1' => 'РІ СЂР°Р±РѕС‚Рµ',
+        '2' => 'Р·Р°РІРµСЂС€РµРЅ С„СЂРёР»Р°РЅСЃРµСЂРѕРј',
+        '3' => 'Р·Р°РІРµСЂС€РµРЅ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµРј'
     );
     
     $feedbacks = array(
-      '-1' => 'отрицательный',
-       '1' => 'положительный',
-        '' => 'отсутствует'
+      '-1' => 'РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№',
+       '1' => 'РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№',
+        '' => 'РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚'
     );
     
     require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/billing.php");
    
 ?>
 
-<h3>Статусы заказов типовых услуг</h3>
+<h3>РЎС‚Р°С‚СѓСЃС‹ Р·Р°РєР°Р·РѕРІ С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі</h3>
 <br />
 <form name="frm" method="get" action=".">
     <input type="hidden" name="mode" value="orders">
-    <label class="flt-lbl">Начало периода:</label>
+    <label class="flt-lbl">РќР°С‡Р°Р»Рѕ РїРµСЂРёРѕРґР°:</label>
     <input type="text" maxlength="10" id="date_begin" name="date_begin" value="<?=$date_begin?>" class="apf-date" readonly="readonly">
     <span class="apf-date" id="date_begin_btn">&nbsp;</span>
 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-    <label class="flt-lbl">Конец периода:</label>
+    <label class="flt-lbl">РљРѕРЅРµС† РїРµСЂРёРѕРґР°:</label>
     <input type="text" maxlength="10" id="date_end" name="date_end" value="<?=$date_end?>" class="apf-date" readonly="readonly">
     <span class="apf-date" id="date_end_btn">&nbsp;</span>
     
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
     <select name="filterdate">
-        <option value="create"<?php echo $_GET['filterdate']=='create'?' selected="selected"':''?>>дата создания заказа</option>
-        <option value="accept"<?php echo $_GET['filterdate']=='accept'?' selected="selected"':''?>>дата подтверждения исполнителем</option>
-        <option value="close"<?php echo $_GET['filterdate']=='close'?' selected="selected"':''?>>дата завершения сотрудничества в заказе</option>
+        <option value="create"<?php echo $_GET['filterdate']=='create'?' selected="selected"':''?>>РґР°С‚Р° СЃРѕР·РґР°РЅРёСЏ Р·Р°РєР°Р·Р°</option>
+        <option value="accept"<?php echo $_GET['filterdate']=='accept'?' selected="selected"':''?>>РґР°С‚Р° РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ РёСЃРїРѕР»РЅРёС‚РµР»РµРј</option>
+        <option value="close"<?php echo $_GET['filterdate']=='close'?' selected="selected"':''?>>РґР°С‚Р° Р·Р°РІРµСЂС€РµРЅРёСЏ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР° РІ Р·Р°РєР°Р·Рµ</option>
     </select>
     
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
-    <input type="submit" value="Показать">
+    <input type="submit" value="РџРѕРєР°Р·Р°С‚СЊ">
     
 </form>
 
@@ -101,22 +101,22 @@ LIMIT 2000 OFFSET 0", $s_date_begin, $s_date_end);
 
 <table cellpadding="2" cellspacing="2" border="1" width="100%"  class="brd-tbl">
 <tr valign="top" align="center">
-	<td style="text-align:center"><b>№ заказа</b></td>
-	<td style="text-align:center"><B>Заказчик</B></TD>
-	<td style="text-align:center"><B>Исполнитель</B></TD>
-	<td style="text-align:center"><B>Дата создания заказа</B></td>
-	<td style="text-align:center"><B>дата подтверждения исполнителем</B></td>
-	<td style="text-align:center"><B>дата завершения сотрудничества в заказе</B></td>
-        <td style="text-align:center"><b>статус заказа</b></td>
-        <td style="text-align:center"><b>отзыв от исполнителя</b></td>
-        <td style="text-align:center"><b>отзыв от работодателя</b></td>
-        <td style="text-align:center"><b>сумма списанной комиссии</b></td>
-        <td style="text-align:center"><b>баланс на счету исполнителя</b></td>
+	<td style="text-align:center"><b>в„– Р·Р°РєР°Р·Р°</b></td>
+	<td style="text-align:center"><B>Р—Р°РєР°Р·С‡РёРє</B></TD>
+	<td style="text-align:center"><B>РСЃРїРѕР»РЅРёС‚РµР»СЊ</B></TD>
+	<td style="text-align:center"><B>Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ Р·Р°РєР°Р·Р°</B></td>
+	<td style="text-align:center"><B>РґР°С‚Р° РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ РёСЃРїРѕР»РЅРёС‚РµР»РµРј</B></td>
+	<td style="text-align:center"><B>РґР°С‚Р° Р·Р°РІРµСЂС€РµРЅРёСЏ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР° РІ Р·Р°РєР°Р·Рµ</B></td>
+        <td style="text-align:center"><b>СЃС‚Р°С‚СѓСЃ Р·Р°РєР°Р·Р°</b></td>
+        <td style="text-align:center"><b>РѕС‚Р·С‹РІ РѕС‚ РёСЃРїРѕР»РЅРёС‚РµР»СЏ</b></td>
+        <td style="text-align:center"><b>РѕС‚Р·С‹РІ РѕС‚ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ</b></td>
+        <td style="text-align:center"><b>СЃСѓРјРјР° СЃРїРёСЃР°РЅРЅРѕР№ РєРѕРјРёСЃСЃРёРё</b></td>
+        <td style="text-align:center"><b>Р±Р°Р»Р°РЅСЃ РЅР° СЃС‡РµС‚Сѓ РёСЃРїРѕР»РЅРёС‚РµР»СЏ</b></td>
 </tr>
 
 <?php foreach ($orders as $order) { 
     $bill = new billing($order['frl_id']);
-    $paid_tax = $order['tax_price']; //$order['status'] > 1 ? $order['tax_price'] : 0; // Реально списанная комиссия
+    $paid_tax = $order['tax_price']; //$order['status'] > 1 ? $order['tax_price'] : 0; // Р РµР°Р»СЊРЅРѕ СЃРїРёСЃР°РЅРЅР°СЏ РєРѕРјРёСЃСЃРёСЏ
 ?>
 <tr valign="top">
     <td style="text-align:center" align="center"><a href="/tu/order/<?=$order['id']?>/"><?=$order['id']?></a></td>
@@ -129,7 +129,7 @@ LIMIT 2000 OFFSET 0", $s_date_begin, $s_date_end);
     <td style="text-align:center">&nbsp;<?=$feedbacks[$order['frl_feedback']]?></td>
     <td style="text-align:center">&nbsp;<?=$feedbacks[$order['emp_feedback']]?></td>
     <td style="text-align:center">&nbsp;<?=$paid_tax?></td>
-    <td style="text-align:center">&nbsp;<?=to_money($bill->acc['sum'], 2)?> руб.</td>
+    <td style="text-align:center">&nbsp;<?=to_money($bill->acc['sum'], 2)?> СЂСѓР±.</td>
 </tr>
 <?php } ?>
 

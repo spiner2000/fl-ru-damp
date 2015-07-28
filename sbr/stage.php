@@ -36,7 +36,7 @@ $crumbs =
 array(
     0 => array(
         'href' => '/' . sbr::NEW_TEMPLATE_SBR . '/', 
-        'name' => '«Мои Сделки»'
+        'name' => 'В«РњРѕРё РЎРґРµР»РєРёВ»'
     ),
     1 => array(
         'href' => '/' . sbr::NEW_TEMPLATE_SBR . '/?id=' . $sbr->id, 
@@ -47,36 +47,36 @@ array(
         'name' => $stage->data['name'] . ' ' . $sbr->getContractNum()
     )
 );
-// Хлебные крошки
+// РҐР»РµР±РЅС‹Рµ РєСЂРѕС€РєРё
 include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php"); 
 
-// Заказчик или исполнитель
+// Р—Р°РєР°Р·С‡РёРє РёР»Рё РёСЃРїРѕР»РЅРёС‚РµР»СЊ
 include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.stage-user.php");
 
-// Подключаем окно помощи в Этапе СБР
+// РџРѕРґРєР»СЋС‡Р°РµРј РѕРєРЅРѕ РїРѕРјРѕС‰Рё РІ Р­С‚Р°РїРµ РЎР‘Р 
 include ($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.help.php");
 
-// Шапка этапа
+// РЁР°РїРєР° СЌС‚Р°РїР°
 include ($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.stage-header.php");
 
-// Задание на этап
+// Р—Р°РґР°РЅРёРµ РЅР° СЌС‚Р°Рї
 include ($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.stage-tz.php"); 
 
-// История этапа
+// РСЃС‚РѕСЂРёСЏ СЌС‚Р°РїР°
 include ($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.stage-history.php");
 
-// Предупреждение по этапу
+// РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РїРѕ СЌС‚Р°РїСѓ
 if($sbr->isEmp()) {
     include ($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.stage-alerts-emp.php");
 } elseif($sbr->isFrl()) {
     include ($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.stage-alerts-frl.php");
 }
 
-// Комментирование
+// РљРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ
 if($stage->status != sbr_stages::STATUS_ARBITRAGED && $sbr->status != sbr::STATUS_CANCELED && $sbr->status != sbr::STATUS_REFUSED && $sbr->reserved_id && $stage->orders == 'ASC') {
     include ($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.stage-comment.php");
 }
-// Файлы этапа
+// Р¤Р°Р№Р»С‹ СЌС‚Р°РїР°
 if($sbr->all_docs) {
     ?><div id="doc_content"><?
     include ($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.stage-files.php");

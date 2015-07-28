@@ -1,20 +1,20 @@
 <?
 /**
- * подключаем файл с курсом обмена валют
+ * РїРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» СЃ РєСѓСЂСЃРѕРј РѕР±РјРµРЅР° РІР°Р»СЋС‚
  *
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/exchrates.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/PromoCodes.php");
 
 /**
- * Класс обрабатывающий счета юзеров (таблицы account и account_operations)
+ * РљР»Р°СЃСЃ РѕР±СЂР°Р±Р°С‚С‹РІР°СЋС‰РёР№ СЃС‡РµС‚Р° СЋР·РµСЂРѕРІ (С‚Р°Р±Р»РёС†С‹ account Рё account_operations)
  *
  */
 class account
 {
     /**
-     * Пути для загрузки сканов документов
-     * Например: kazakov/private/account/...
+     * РџСѓС‚Рё РґР»СЏ Р·Р°РіСЂСѓР·РєРё СЃРєР°РЅРѕРІ РґРѕРєСѓРјРµРЅС‚РѕРІ
+     * РќР°РїСЂРёРјРµСЂ: kazakov/private/account/...
      */
     const DOC_UPLOAD_PATH   = '%s/private/account';
     const OTHER_UPLOAD_PATH = '$s/private/account/finance_other';
@@ -24,62 +24,62 @@ class account
     const MAX_FILE_COUNT = 4;
     
     
-    const MSG_UPLOAD_REQ = 'Требуется загрузить скан одной или нескольких страниц паспорта.';
-    const MSG_UPLOAD_OLD = 'Проверьте актуальность сканов документов.';
+    const MSG_UPLOAD_REQ = 'РўСЂРµР±СѓРµС‚СЃСЏ Р·Р°РіСЂСѓР·РёС‚СЊ СЃРєР°РЅ РѕРґРЅРѕР№ РёР»Рё РЅРµСЃРєРѕР»СЊРєРёС… СЃС‚СЂР°РЅРёС† РїР°СЃРїРѕСЂС‚Р°.';
+    const MSG_UPLOAD_OLD = 'РџСЂРѕРІРµСЂСЊС‚Рµ Р°РєС‚СѓР°Р»СЊРЅРѕСЃС‚СЊ СЃРєР°РЅРѕРІ РґРѕРєСѓРјРµРЅС‚РѕРІ.';
     
     
 	/**
-	 * id счета пользователя. ОНО отлично от UID юзера из таблицы users!
+	 * id СЃС‡РµС‚Р° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ. РћРќРћ РѕС‚Р»РёС‡РЅРѕ РѕС‚ UID СЋР·РµСЂР° РёР· С‚Р°Р±Р»РёС†С‹ users!
 	 *
 	 * @var integer
 	 */
 	public $id;
 	
 	/**
-	 * UID юзера из таблицы users
+	 * UID СЋР·РµСЂР° РёР· С‚Р°Р±Р»РёС†С‹ users
 	 *
 	 * @var integer
 	 */
 	public $uid;
 	
 	/**
-	 * По идеи должно сохранять имя и фамилию юзера, если того удалят (чтобы сохранить историю и счета)
-	 * (Похоже этого не делает) character varying(128)
+	 * РџРѕ РёРґРµРё РґРѕР»Р¶РЅРѕ СЃРѕС…СЂР°РЅСЏС‚СЊ РёРјСЏ Рё С„Р°РјРёР»РёСЋ СЋР·РµСЂР°, РµСЃР»Рё С‚РѕРіРѕ СѓРґР°Р»СЏС‚ (С‡С‚РѕР±С‹ СЃРѕС…СЂР°РЅРёС‚СЊ РёСЃС‚РѕСЂРёСЋ Рё СЃС‡РµС‚Р°)
+	 * (РџРѕС…РѕР¶Рµ СЌС‚РѕРіРѕ РЅРµ РґРµР»Р°РµС‚) character varying(128)
 	 *
 	 * @var string
 	 */
 	public $username;
 	
 	/**
-	 * Сумма на счету юзера (numeric(8,2))
+	 * РЎСѓРјРјР° РЅР° СЃС‡РµС‚Сѓ СЋР·РµСЂР° (numeric(8,2))
 	 *
 	 * @var float
 	 */
 	public $sum;
 	
 	/**
-	 * Сумма бонуса на счету юзера
+	 * РЎСѓРјРјР° Р±РѕРЅСѓСЃР° РЅР° СЃС‡РµС‚Сѓ СЋР·РµСЂР°
 	 *
 	 * @var float
 	 */
     public $bonus_sum;
 	
 	/**
-	 * ФИО пользователя
+	 * Р¤РРћ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	 *
 	 * @var string
 	 */
 	public $fio;
 	
 	/**
-	 * Номер аккаунта
+	 * РќРѕРјРµСЂ Р°РєРєР°СѓРЅС‚Р°
 	 *
 	 * @var integer
 	 */
 	public $accnum;
 	
 	/**
-	 * Название первичного ключа таблицы
+	 * РќР°Р·РІР°РЅРёРµ РїРµСЂРІРёС‡РЅРѕРіРѕ РєР»СЋС‡Р° С‚Р°Р±Р»РёС†С‹
 	 *
 	 * @var string
 	 */
@@ -90,14 +90,14 @@ class account
         public $is_gift = false;
         
     /**
-     * Массив UID юзеров которые не нужно учитывать в статистике
+     * РњР°СЃСЃРёРІ UID СЋР·РµСЂРѕРІ РєРѕС‚РѕСЂС‹Рµ РЅРµ РЅСѓР¶РЅРѕ СѓС‡РёС‚С‹РІР°С‚СЊ РІ СЃС‚Р°С‚РёСЃС‚РёРєРµ
      * 
      * @var array 
      */
     private $aIgnoreInStats = array();
     
     /**
-     * Получает массив UID юзеров которые не нужно учитывать в статистике и сохраняет в $this->aIgnoreInStats
+     * РџРѕР»СѓС‡Р°РµС‚ РјР°СЃСЃРёРІ UID СЋР·РµСЂРѕРІ РєРѕС‚РѕСЂС‹Рµ РЅРµ РЅСѓР¶РЅРѕ СѓС‡РёС‚С‹РІР°С‚СЊ РІ СЃС‚Р°С‚РёСЃС‚РёРєРµ Рё СЃРѕС…СЂР°РЅСЏРµС‚ РІ $this->aIgnoreInStats
      */
     private function _getIgnoreInStats() {
         if ( !$this->aIgnoreInStats ) {
@@ -106,7 +106,7 @@ class account
     }
 
     /**
-     * Возвращает соединение с базой данных.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРµРґРёРЅРµРЅРёРµ СЃ Р±Р°Р·РѕР№ РґР°РЅРЅС‹С….
      * 
      * @return resource
      */
@@ -117,17 +117,17 @@ class account
     }
 
 	/**
-	 * Занести деньги на счет юзера (предполагается, что оплата прошла успешно)
+	 * Р—Р°РЅРµСЃС‚Рё РґРµРЅСЊРіРё РЅР° СЃС‡РµС‚ СЋР·РµСЂР° (РїСЂРµРґРїРѕР»Р°РіР°РµС‚СЃСЏ, С‡С‚Рѕ РѕРїР»Р°С‚Р° РїСЂРѕС€Р»Р° СѓСЃРїРµС€РЅРѕ)
 	 *
-	 * @param integer $op_id			возвращает идентификатор платежной операции
-	 * @param integer $dep_id			номер счета
-	 * @param float   $ammount			сумма перевода (numeric(8,2)) в FM
-	 * @param string  $descr			описание перевода
-	 * @param integer $payment_sys		тип системы через которую осуществлен перевод
-	 * @param float   $trs_sum			кол-во денег в единицах исходной системы
-	 * @param integer $op_code			номер операции (по дефолту - 12 занесение денег на счет)
-	 * @param integer $op_add			Доп. инфа по операции (например id Сделки без Риска)
-	 * @return string					возвращает сообщение об ошибке
+	 * @param integer $op_id			РІРѕР·РІСЂР°С‰Р°РµС‚ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїР»Р°С‚РµР¶РЅРѕР№ РѕРїРµСЂР°С†РёРё
+	 * @param integer $dep_id			РЅРѕРјРµСЂ СЃС‡РµС‚Р°
+	 * @param float   $ammount			СЃСѓРјРјР° РїРµСЂРµРІРѕРґР° (numeric(8,2)) РІ FM
+	 * @param string  $descr			РѕРїРёСЃР°РЅРёРµ РїРµСЂРµРІРѕРґР°
+	 * @param integer $payment_sys		С‚РёРї СЃРёСЃС‚РµРјС‹ С‡РµСЂРµР· РєРѕС‚РѕСЂСѓСЋ РѕСЃСѓС‰РµСЃС‚РІР»РµРЅ РїРµСЂРµРІРѕРґ
+	 * @param float   $trs_sum			РєРѕР»-РІРѕ РґРµРЅРµРі РІ РµРґРёРЅРёС†Р°С… РёСЃС…РѕРґРЅРѕР№ СЃРёСЃС‚РµРјС‹
+	 * @param integer $op_code			РЅРѕРјРµСЂ РѕРїРµСЂР°С†РёРё (РїРѕ РґРµС„РѕР»С‚Сѓ - 12 Р·Р°РЅРµСЃРµРЅРёРµ РґРµРЅРµРі РЅР° СЃС‡РµС‚)
+	 * @param integer $op_add			Р”РѕРї. РёРЅС„Р° РїРѕ РѕРїРµСЂР°С†РёРё (РЅР°РїСЂРёРјРµСЂ id РЎРґРµР»РєРё Р±РµР· Р РёСЃРєР°)
+	 * @return string					РІРѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function deposit(&$op_id, $dep_id, $ammount, $descr, $payment_sys = 0, $trs_sum = 0, $op_code = 12, $op_add = 0, $date = 'now()') 
     {
@@ -135,7 +135,7 @@ class account
         
         //setlocale(LC_ALL, "en_US");
         
-		//$ammount = (float)$ammount; // фикс (540.3/30) -- вместо 18.01 округление дает 18.00.
+		//$ammount = (float)$ammount; // С„РёРєСЃ (540.3/30) -- РІРјРµСЃС‚Рѕ 18.01 РѕРєСЂСѓРіР»РµРЅРёРµ РґР°РµС‚ 18.00.
 		//$ammount = round($ammount * 100) / 100;
 				
         $row = $DB->row("
@@ -149,7 +149,7 @@ class account
         }
 
         if (!$row) {
-            return 'Аккаунт не существует';
+            return 'РђРєРєР°СѓРЅС‚ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚';
         }
         
         $this->uid = $row['uid'];
@@ -170,14 +170,14 @@ class account
 		), 'id');
 		
 		if(!$op_id) {
-			return "Ошибка сервера";
+			return "РћС€РёР±РєР° СЃРµСЂРІРµСЂР°";
 		}
         
-		// количество операций
+		// РєРѕР»РёС‡РµСЃС‚РІРѕ РѕРїРµСЂР°С†РёР№
 		$_SESSION['account_operations'] = intval($_SESSION['account_operations']) + 1;
         
-        // Обновляем сессию пользователю сразу 
-        // при поступлении денежных средств
+        // РћР±РЅРѕРІР»СЏРµРј СЃРµСЃСЃРёСЋ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ СЃСЂР°Р·Сѓ 
+        // РїСЂРё РїРѕСЃС‚СѓРїР»РµРЅРёРё РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ
         $session = new session();
         $session->UpdateAccountSum($login);
         
@@ -191,8 +191,8 @@ class account
             //$this->GetInfo($gid);
             //$_SESSION['ac_sum'] = $this->sum;
             
-            // Обновляем сессию пользователю сразу 
-            // при поступлении денежных средств
+            // РћР±РЅРѕРІР»СЏРµРј СЃРµСЃСЃРёСЋ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ СЃСЂР°Р·Сѓ 
+            // РїСЂРё РїРѕСЃС‚СѓРїР»РµРЅРёРё РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ
             //$session = new session();
             //$session->UpdateAccountSum($login);
         //}
@@ -201,27 +201,27 @@ class account
 		//if (!$result) {
             //$this->buyOrdersList($gid, $op_code, $login);
             
-            // Обновляем сессию пользователю сразу при поступлении денежных средств
+            // РћР±РЅРѕРІР»СЏРµРј СЃРµСЃСЃРёСЋ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ СЃСЂР°Р·Сѓ РїСЂРё РїРѕСЃС‚СѓРїР»РµРЅРёРё РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ
             //$session = new session();
             //$session->UpdateAccountSum($login);
 
-            //@todo: по идее более не используется
+            //@todo: РїРѕ РёРґРµРµ Р±РѕР»РµРµ РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
             /*
 			require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/sbr.php');
 			switch ($op_code) {
-				case sbr::OP_RESERVE: // новая СБР.
+				case sbr::OP_RESERVE: // РЅРѕРІР°СЏ РЎР‘Р .
 					$sbr = new sbr_emp($gid);
-                    $sbr->setGetterSchemes(1);// Новая СБР
+                    $sbr->setGetterSchemes(1);// РќРѕРІР°СЏ РЎР‘Р 
 					$sbr->initFromId($op_add, false, false);
 					if (!$sbr->error) {
 						$sbr->reserve($op_id);
 						$sbr_stage = $sbr->getStages();
                         foreach($sbr_stage as $stage) {
-                            $sbr->setUserReqvHistory($gid, intval($stage->data['id']), 0); // Сохраняем для всех этапов, Резервирование работодателя
+                            $sbr->setUserReqvHistory($gid, intval($stage->data['id']), 0); // РЎРѕС…СЂР°РЅСЏРµРј РґР»СЏ РІСЃРµС… СЌС‚Р°РїРѕРІ, Р РµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ
                         }
 					}
 					break;
-				default:  //Зачисление денег на счет
+				default:  //Р—Р°С‡РёСЃР»РµРЅРёРµ РґРµРЅРµРі РЅР° СЃС‡РµС‚
 			}*/
             
 		//}
@@ -230,12 +230,12 @@ class account
 	}
 
     /**
-     * Покупка списка услуг ожидающих оплаты
+     * РџРѕРєСѓРїРєР° СЃРїРёСЃРєР° СѓСЃР»СѓРі РѕР¶РёРґР°СЋС‰РёС… РѕРїР»Р°С‚С‹
      * 
-     * @todo: рекомендуется не использовать данный метод
+     * @todo: СЂРµРєРѕРјРµРЅРґСѓРµС‚СЃСЏ РЅРµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РґР°РЅРЅС‹Р№ РјРµС‚РѕРґ
      * 
-     * @param integer $gid     Ид пользователя
-     * @param integer $op_code Ид услуги
+     * @param integer $gid     РРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param integer $op_code РРґ СѓСЃР»СѓРіРё
      */
     public function buyOrdersList($gid, $op_code, $login = "") {
         $log =  new log("billing/deposit-".SERVER.'-%d%m%Y.log', 'a', "%d.%m.%Y %H:%M:%S:\r\n");
@@ -248,7 +248,7 @@ class account
         $ac_sum = $this->sum;
         $log->write("start account_sum:{$ac_sum}\r\n");
         if(in_array($op_code, billing::$op_code_transfer_money)) {
-            // Деньги поступают на счет смотрим что можно оплатить
+            // Р”РµРЅСЊРіРё РїРѕСЃС‚СѓРїР°СЋС‚ РЅР° СЃС‡РµС‚ СЃРјРѕС‚СЂРёРј С‡С‚Рѕ РјРѕР¶РЅРѕ РѕРїР»Р°С‚РёС‚СЊ
             $bill= new billing($gid);
             $reserve_operations = $bill->getReserveOperationsByStatus();
             if( !empty($reserve_operations) ) {
@@ -258,11 +258,11 @@ class account
                 $log->write($out."\r\n");
                 //$mail_reserved = array();
                 $reserved_ids  = array_map(create_function('$array', 'return $array["id"];'), $reserve_operations);
-                $bill->startReserved($reserved_ids); // Блокируем услуги для изменений
+                $bill->startReserved($reserved_ids); // Р‘Р»РѕРєРёСЂСѓРµРј СѓСЃР»СѓРіРё РґР»СЏ РёР·РјРµРЅРµРЅРёР№
                 foreach($reserve_operations as $reserve) {
                     //$ret[$reserve['id']] = $reserve;
                     $log->write("reserve {$reserve['id']} : {$ac_sum} >= {$reserve['ammount']}\r\n");
-                    //if($ac_sum >= $reserve['ammount']) { // Пытаемся оплатить список услуг
+                    //if($ac_sum >= $reserve['ammount']) { // РџС‹С‚Р°РµРјСЃСЏ РѕРїР»Р°С‚РёС‚СЊ СЃРїРёСЃРѕРє СѓСЃР»СѓРі
                         //$mail_reserved[] = $reserve['id'];
                         $bill->transaction = $bill->account->start_transaction($bill->user['uid'], 0);
                         $success = $bill->completeOrders($reserve['id']);
@@ -274,7 +274,7 @@ class account
                         $log->write("set account_sum: {$ac_sum}\r\n---\r\n");
                     //}
                 }
-                $bill->stopReserved($reserved_ids); // Разблокируем услуги для изменений
+                $bill->stopReserved($reserved_ids); // Р Р°Р·Р±Р»РѕРєРёСЂСѓРµРј СѓСЃР»СѓРіРё РґР»СЏ РёР·РјРµРЅРµРЅРёР№
                 $log->write("done\r\n---------------------------------\r\n\r\n");
                 
                 /*
@@ -294,23 +294,23 @@ class account
     
     
     /**
-     * Аналог: depositEx
+     * РђРЅР°Р»РѕРі: depositEx
      * 
-     * Занести деньги на счет юзера (используется в админке, когда деньги заносятся
-     * вручную) По умолчанию падает в "Другие операции"
+     * Р—Р°РЅРµСЃС‚Рё РґРµРЅСЊРіРё РЅР° СЃС‡РµС‚ СЋР·РµСЂР° (РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ Р°РґРјРёРЅРєРµ, РєРѕРіРґР° РґРµРЅСЊРіРё Р·Р°РЅРѕСЃСЏС‚СЃСЏ
+     * РІСЂСѓС‡РЅСѓСЋ) РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РїР°РґР°РµС‚ РІ "Р”СЂСѓРіРёРµ РѕРїРµСЂР°С†РёРё"
      *
-     * @todo Это доработанная версия depositEx() чтобы оная вернула $op_id как делает это deposit()
-     * @todo Но вот deposit() не принимает комментарий $ucoms
+     * @todo Р­С‚Рѕ РґРѕСЂР°Р±РѕС‚Р°РЅРЅР°СЏ РІРµСЂСЃРёСЏ depositEx() С‡С‚РѕР±С‹ РѕРЅР°СЏ РІРµСЂРЅСѓР»Р° $op_id РєР°Рє РґРµР»Р°РµС‚ СЌС‚Рѕ deposit()
+     * @todo РќРѕ РІРѕС‚ deposit() РЅРµ РїСЂРёРЅРёРјР°РµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёР№ $ucoms
      * 
-     * @param integer $op_id			возвращает идентификатор платежной операции 
-     * @param integer $dep_id 			номер счета
-     * @param float   $ammount			сумма перевода (numeric(8,2)) в FM
-     * @param string  $descr			описание перевода для системы
-     * @param string  $ucoms			описание перевода для "истории" в аккаунте юзера
-     * @param integer $op_code			идентификатор типа платежа
-     * @param float   $trs_sum			кол-во денег в единицах исходной системы
-     * @param integer $payment_sys		тип системы через которую осуществлен перевод
-     * @return string				возвращает сообщение об ошибке
+     * @param integer $op_id			РІРѕР·РІСЂР°С‰Р°РµС‚ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїР»Р°С‚РµР¶РЅРѕР№ РѕРїРµСЂР°С†РёРё 
+     * @param integer $dep_id 			РЅРѕРјРµСЂ СЃС‡РµС‚Р°
+     * @param float   $ammount			СЃСѓРјРјР° РїРµСЂРµРІРѕРґР° (numeric(8,2)) РІ FM
+     * @param string  $descr			РѕРїРёСЃР°РЅРёРµ РїРµСЂРµРІРѕРґР° РґР»СЏ СЃРёСЃС‚РµРјС‹
+     * @param string  $ucoms			РѕРїРёСЃР°РЅРёРµ РїРµСЂРµРІРѕРґР° РґР»СЏ "РёСЃС‚РѕСЂРёРё" РІ Р°РєРєР°СѓРЅС‚Рµ СЋР·РµСЂР°
+     * @param integer $op_code			РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚РёРїР° РїР»Р°С‚РµР¶Р°
+     * @param float   $trs_sum			РєРѕР»-РІРѕ РґРµРЅРµРі РІ РµРґРёРЅРёС†Р°С… РёСЃС…РѕРґРЅРѕР№ СЃРёСЃС‚РµРјС‹
+     * @param integer $payment_sys		С‚РёРї СЃРёСЃС‚РµРјС‹ С‡РµСЂРµР· РєРѕС‚РѕСЂСѓСЋ РѕСЃСѓС‰РµСЃС‚РІР»РµРЅ РїРµСЂРµРІРѕРґ
+     * @return string				РІРѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
      */
     public function depositEx2(&$op_id, $dep_id, $ammount, $descr, $ucoms, $op_code = 13, $trs_sum = NULL, $payment_sys = NULL, $date = NULL){
         global $DB;
@@ -339,8 +339,8 @@ class account
          //$role  = $row['role'];
          $login = $row['login'];
         
-         //@todo: в обновленной схеме биллинга каждый занос денег может быть привязан к услуге
-         //и покупка всех услуг в очереди не допустима
+         //@todo: РІ РѕР±РЅРѕРІР»РµРЅРЅРѕР№ СЃС…РµРјРµ Р±РёР»Р»РёРЅРіР° РєР°Р¶РґС‹Р№ Р·Р°РЅРѕСЃ РґРµРЅРµРі РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСЂРёРІСЏР·Р°РЅ Рє СѓСЃР»СѓРіРµ
+         //Рё РїРѕРєСѓРїРєР° РІСЃРµС… СѓСЃР»СѓРі РІ РѕС‡РµСЂРµРґРё РЅРµ РґРѕРїСѓСЃС‚РёРјР°
          
          //if (!$result) {
          //   $this->buyOrdersList($gid, $op_code, $login);
@@ -349,7 +349,7 @@ class account
          $session = new session();
          $session->UpdateAccountSum($login);
 
-         // количество операций
+         // РєРѕР»РёС‡РµСЃС‚РІРѕ РѕРїРµСЂР°С†РёР№
         $_SESSION['account_operations'] = intval($_SESSION['account_operations']) + 1;
         
          return $result;     
@@ -359,17 +359,17 @@ class account
     
     
 	/**
-	 * Занести деньги на счет юзера (используется в админке, когда деньги заносятся
-	 * вручную) По умолчанию падает в "Другие операции"
+	 * Р—Р°РЅРµСЃС‚Рё РґРµРЅСЊРіРё РЅР° СЃС‡РµС‚ СЋР·РµСЂР° (РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ Р°РґРјРёРЅРєРµ, РєРѕРіРґР° РґРµРЅСЊРіРё Р·Р°РЅРѕСЃСЏС‚СЃСЏ
+	 * РІСЂСѓС‡РЅСѓСЋ) РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РїР°РґР°РµС‚ РІ "Р”СЂСѓРіРёРµ РѕРїРµСЂР°С†РёРё"
 	 *
-	 * @param integer $dep_id 			номер счета
-	 * @param float   $ammount			сумма перевода (numeric(8,2)) в FM
-	 * @param string  $descr			описание перевода для системы
-	 * @param string  $ucoms			описание перевода для "истории" в аккаунте юзера
-	 * @param integer $op_code			идентификатор типа платежа
-	 * @param float   $trs_sum			кол-во денег в единицах исходной системы
-	 * @param integer $payment_sys		тип системы через которую осуществлен перевод
-	 * @return string					возвращает сообщение об ошибке
+	 * @param integer $dep_id 			РЅРѕРјРµСЂ СЃС‡РµС‚Р°
+	 * @param float   $ammount			СЃСѓРјРјР° РїРµСЂРµРІРѕРґР° (numeric(8,2)) РІ FM
+	 * @param string  $descr			РѕРїРёСЃР°РЅРёРµ РїРµСЂРµРІРѕРґР° РґР»СЏ СЃРёСЃС‚РµРјС‹
+	 * @param string  $ucoms			РѕРїРёСЃР°РЅРёРµ РїРµСЂРµРІРѕРґР° РґР»СЏ "РёСЃС‚РѕСЂРёРё" РІ Р°РєРєР°СѓРЅС‚Рµ СЋР·РµСЂР°
+	 * @param integer $op_code			РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚РёРїР° РїР»Р°С‚РµР¶Р°
+	 * @param float   $trs_sum			РєРѕР»-РІРѕ РґРµРЅРµРі РІ РµРґРёРЅРёС†Р°С… РёСЃС…РѕРґРЅРѕР№ СЃРёСЃС‚РµРјС‹
+	 * @param integer $payment_sys		С‚РёРї СЃРёСЃС‚РµРјС‹ С‡РµСЂРµР· РєРѕС‚РѕСЂСѓСЋ РѕСЃСѓС‰РµСЃС‚РІР»РµРЅ РїРµСЂРµРІРѕРґ
+	 * @return string					РІРѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function depositEx($dep_id, $ammount, $descr, $ucoms, $op_code = 13, $trs_sum = NULL, $payment_sys = NULL, $date = NULL){
 	    global $DB;
@@ -396,16 +396,16 @@ class account
         $session = new session();
         $session->UpdateAccountSum($login);
 
-		// количество операций
+		// РєРѕР»РёС‡РµСЃС‚РІРѕ РѕРїРµСЂР°С†РёР№
 		$_SESSION['account_operations'] = intval($_SESSION['account_operations']) + 1;
   
 		return $DB->error;
 	}
 	
 	/**
-	 * ВРЕМЕННАЯ
+	 * Р’Р Р•РњР•РќРќРђРЇ
 	 * 
-	 * Акция Альфа-банк: первые 50 юзеров пополнившие на 1000 и более рублей счет, получают ПРО в подарок
+	 * РђРєС†РёСЏ РђР»СЊС„Р°-Р±Р°РЅРє: РїРµСЂРІС‹Рµ 50 СЋР·РµСЂРѕРІ РїРѕРїРѕР»РЅРёРІС€РёРµ РЅР° 1000 Рё Р±РѕР»РµРµ СЂСѓР±Р»РµР№ СЃС‡РµС‚, РїРѕР»СѓС‡Р°СЋС‚ РџР Рћ РІ РїРѕРґР°СЂРѕРє
 	 * 
 	 * @param float $nSummR
 	 * @param integer $sUid
@@ -413,20 +413,20 @@ class account
 	function alphaBankGift( $nSummR = 0, $sDate = '', $sUid = 0, $sLogin = '' ) {
 	    global $DB;
 	    
-	    if ( $nSummR >= 1000 && $sDate < date('c', strtotime('2011-06-06')) ) { // если сумма больше 1000
+	    if ( $nSummR >= 1000 && $sDate < date('c', strtotime('2011-06-06')) ) { // РµСЃР»Рё СЃСѓРјРјР° Р±РѕР»СЊС€Рµ 1000
 	        /*
         	$nCount = $DB->val('SELECT COUNT(DISTINCT u.uid) FROM users u 
                 LEFT JOIN account a ON u.uid = a.uid 
                 LEFT JOIN account_operations o ON a.id = o.billing_id 
                 WHERE o.op_code = 89 AND o.trs_sum >= 1000');
         	
-        	if ( $nCount < 50 ) { // если юзер из числа первых 50
+        	if ( $nCount < 50 ) { // РµСЃР»Рё СЋР·РµСЂ РёР· С‡РёСЃР»Р° РїРµСЂРІС‹С… 50
         	    $nCount = $DB->val('SELECT COUNT(o.billing_id) FROM users u 
                     LEFT JOIN account a ON u.uid = a.uid 
                     LEFT JOIN account_operations o ON a.id = o.billing_id 
                     WHERE u.uid = ?i AND o.op_code = 89 AND o.trs_sum >= 1000', $sUid );
         	    
-        	    if ( $nCount == 1 ) { // если юзер еще не получал этот бонус (первое пополнение на 1000+)
+        	    if ( $nCount == 1 ) { // РµСЃР»Рё СЋР·РµСЂ РµС‰Рµ РЅРµ РїРѕР»СѓС‡Р°Р» СЌС‚РѕС‚ Р±РѕРЅСѓСЃ (РїРµСЂРІРѕРµ РїРѕРїРѕР»РЅРµРЅРёРµ РЅР° 1000+)
         	    */
             		require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/payed.php' );
 				    
@@ -436,7 +436,7 @@ class account
 				    
 				    $payed->GiftOrderedTarif( $bill_id, $gift_id, $sUid, 103, $tr_id, '1', '', 90 );
                                                 
-                    // уведомление о подарке
+                    // СѓРІРµРґРѕРјР»РµРЅРёРµ Рѕ РїРѕРґР°СЂРєРµ
                     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/smail.php' );
     				$sm = new smail();
     				$sm->NewGift( 'admin', $sLogin, '', $gift_id );
@@ -448,15 +448,15 @@ class account
 	}
 
 	/**
-	 * Занести деньги на бонусный счет юзера (используется в админке, когда деньги заносятся
-	 * вручную) По умолчанию падает в "Другие операции"
+	 * Р—Р°РЅРµСЃС‚Рё РґРµРЅСЊРіРё РЅР° Р±РѕРЅСѓСЃРЅС‹Р№ СЃС‡РµС‚ СЋР·РµСЂР° (РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ Р°РґРјРёРЅРєРµ, РєРѕРіРґР° РґРµРЅСЊРіРё Р·Р°РЅРѕСЃСЏС‚СЃСЏ
+	 * РІСЂСѓС‡РЅСѓСЋ) РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РїР°РґР°РµС‚ РІ "Р”СЂСѓРіРёРµ РѕРїРµСЂР°С†РёРё"
 	 *
-	 * @param integer $dep_id 			номер счета
-	 * @param float   $ammount			сумма перевода (numeric(8,2)) в FM
-	 * @param string  $descr			описание перевода для системы
-	 * @param string  $ucoms			описание перевода для "истории" в аккаунте юзера
-	 * @param integer $op_code			идентификатор типа платежа
-	 * @return string					возвращает сообщение об ошибке
+	 * @param integer $dep_id 			РЅРѕРјРµСЂ СЃС‡РµС‚Р°
+	 * @param float   $ammount			СЃСѓРјРјР° РїРµСЂРµРІРѕРґР° (numeric(8,2)) РІ FM
+	 * @param string  $descr			РѕРїРёСЃР°РЅРёРµ РїРµСЂРµРІРѕРґР° РґР»СЏ СЃРёСЃС‚РµРјС‹
+	 * @param string  $ucoms			РѕРїРёСЃР°РЅРёРµ РїРµСЂРµРІРѕРґР° РґР»СЏ "РёСЃС‚РѕСЂРёРё" РІ Р°РєРєР°СѓРЅС‚Рµ СЋР·РµСЂР°
+	 * @param integer $op_code			РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚РёРїР° РїР»Р°С‚РµР¶Р°
+	 * @return string					РІРѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function depositBonusEx($dep_id, $ammount, $descr, $ucoms, $op_code = 13, $date=NULL)
 	{
@@ -476,21 +476,21 @@ class account
 	}
 
 	/**
-	 * Проверяет существует ли счет с заданным номером
+	 * РџСЂРѕРІРµСЂСЏРµС‚ СЃСѓС‰РµСЃС‚РІСѓРµС‚ Р»Рё СЃС‡РµС‚ СЃ Р·Р°РґР°РЅРЅС‹Рј РЅРѕРјРµСЂРѕРј
 	 *
-	 * @param integer $billing_no	номер счета
-	 * @return integer				1 - да, 0 - нет :)
+	 * @param integer $billing_no	РЅРѕРјРµСЂ СЃС‡РµС‚Р°
+	 * @return integer				1 - РґР°, 0 - РЅРµС‚ :)
 	 */
 	function is_dep_exists($billing_no){
 		return $GLOBALS['DB']->val("SELECT COUNT(id) FROM account WHERE id = ?", $billing_no);
 	}
 
 	/**
-	 * Инициализирует члены класса значениями из таблицы счетов, соотв. данному юзеру
+	 * РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ С‡Р»РµРЅС‹ РєР»Р°СЃСЃР° Р·РЅР°С‡РµРЅРёСЏРјРё РёР· С‚Р°Р±Р»РёС†С‹ СЃС‡РµС‚РѕРІ, СЃРѕРѕС‚РІ. РґР°РЅРЅРѕРјСѓ СЋР·РµСЂСѓ
 	 *
      * @param integer $uid
-     * @param boolean $create   создать, если счет отсутсвует?
-	 * @return integer		0 - счет не найден, 1 - иначе
+     * @param boolean $create   СЃРѕР·РґР°С‚СЊ, РµСЃР»Рё СЃС‡РµС‚ РѕС‚СЃСѓС‚СЃРІСѓРµС‚?
+	 * @return integer		0 - СЃС‡РµС‚ РЅРµ РЅР°Р№РґРµРЅ, 1 - РёРЅР°С‡Рµ
 	 */
     function GetInfo($uid, $create = false){
 		global $DB;
@@ -510,10 +510,10 @@ class account
 	}
 
 	/**
-	 * Создать новый счет для пользователя с заданным UID
+	 * РЎРѕР·РґР°С‚СЊ РЅРѕРІС‹Р№ СЃС‡РµС‚ РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ Р·Р°РґР°РЅРЅС‹Рј UID
 	 *
-	 * @param integer $uid ИД Пользователя
-	 * @return string	сообщение об ошибке
+	 * @param integer $uid РР” РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @return string	СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function CreateNew($uid){
 		global $DB;
@@ -522,11 +522,11 @@ class account
 	}
 
 	/**
-	 * Получить историю операций юзера в виде многомерного массива по UID юзера
+	 * РџРѕР»СѓС‡РёС‚СЊ РёСЃС‚РѕСЂРёСЋ РѕРїРµСЂР°С†РёР№ СЋР·РµСЂР° РІ РІРёРґРµ РјРЅРѕРіРѕРјРµСЂРЅРѕРіРѕ РјР°СЃСЃРёРІР° РїРѕ UID СЋР·РµСЂР°
 	 *
-	 * @param integer $uid ИД Пользователя
-	 * @param integer $mode Выборка для админов
-	 * @return array  Данные выборки 
+	 * @param integer $uid РР” РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param integer $mode Р’С‹Р±РѕСЂРєР° РґР»СЏ Р°РґРјРёРЅРѕРІ
+	 * @return array  Р”Р°РЅРЅС‹Рµ РІС‹Р±РѕСЂРєРё 
 	 */
 	function GetHistory($uid, $mode=0) {
 		global $DB;
@@ -551,9 +551,9 @@ class account
 	}
 	
 	/**
-	 * Взять все операции по истории пользователя (надо для фильтра)
+	 * Р’Р·СЏС‚СЊ РІСЃРµ РѕРїРµСЂР°С†РёРё РїРѕ РёСЃС‚РѕСЂРёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (РЅР°РґРѕ РґР»СЏ С„РёР»СЊС‚СЂР°)
 	 * 
-	 * @param integer $uid    ИД Пользователя
+	 * @param integer $uid    РР” РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	 * @return array
 	 */
 	function GetHistoryOpCodes($uid) {
@@ -569,11 +569,11 @@ class account
 	}
 	
 	/**
-	 * Получить историю операций юзера в виде многомерного массива по UID юзера c применением фильтра
+	 * РџРѕР»СѓС‡РёС‚СЊ РёСЃС‚РѕСЂРёСЋ РѕРїРµСЂР°С†РёР№ СЋР·РµСЂР° РІ РІРёРґРµ РјРЅРѕРіРѕРјРµСЂРЅРѕРіРѕ РјР°СЃСЃРёРІР° РїРѕ UID СЋР·РµСЂР° c РїСЂРёРјРµРЅРµРЅРёРµРј С„РёР»СЊС‚СЂР°
 	 *
-	 * @param integer $uid ИД Пользователя
-	 * @param array   $filter Фильтр выборки
-	 * @return array  Данные выборки 
+	 * @param integer $uid РР” РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param array   $filter Р¤РёР»СЊС‚СЂ РІС‹Р±РѕСЂРєРё
+	 * @return array  Р”Р°РЅРЅС‹Рµ РІС‹Р±РѕСЂРєРё 
 	 */
 	function GetHistoryByFilter($uid, $filter) {
 	    global $DB;
@@ -600,9 +600,9 @@ class account
 	}
 	
 	/**
-	 * Генерируем SQL запрос фильтра 
+	 * Р“РµРЅРµСЂРёСЂСѓРµРј SQL Р·Р°РїСЂРѕСЃ С„РёР»СЊС‚СЂР° 
 	 *
-	 * @param array $filter Данные фильтра
+	 * @param array $filter Р”Р°РЅРЅС‹Рµ С„РёР»СЊС‚СЂР°
 	 * @return unknown
 	 */
 	public function getHistoryFilterSQL($filter) {
@@ -668,11 +668,11 @@ class account
     }
 	
 	/**
-	 * Получить историю операций юзера в виде многомерного массива по UID юзера и типу 
+	 * РџРѕР»СѓС‡РёС‚СЊ РёСЃС‚РѕСЂРёСЋ РѕРїРµСЂР°С†РёР№ СЋР·РµСЂР° РІ РІРёРґРµ РјРЅРѕРіРѕРјРµСЂРЅРѕРіРѕ РјР°СЃСЃРёРІР° РїРѕ UID СЋР·РµСЂР° Рё С‚РёРїСѓ 
 	 *
-	 * @param integer $uid  ИД Пользователя
-	 * @param array   $type Тип истории (тбл. op_codes) Если тип равен false выборка берется через self::getHistory();
-	 * @return array  Данные выборки
+	 * @param integer $uid  РР” РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param array   $type РўРёРї РёСЃС‚РѕСЂРёРё (С‚Р±Р». op_codes) Р•СЃР»Рё С‚РёРї СЂР°РІРµРЅ false РІС‹Р±РѕСЂРєР° Р±РµСЂРµС‚СЃСЏ С‡РµСЂРµР· self::getHistory();
+	 * @return array  Р”Р°РЅРЅС‹Рµ РІС‹Р±РѕСЂРєРё
 	 */
 	function getHistoryType($uid, $type=false) {
 		if(!$type) return self::GetHistory($uid);
@@ -684,10 +684,10 @@ class account
 	}
 
 	/**
-	 * Проверяет пополнял ли пользователь счет любым способом, кроме карты
+	 * РџСЂРѕРІРµСЂСЏРµС‚ РїРѕРїРѕР»РЅСЏР» Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃС‡РµС‚ Р»СЋР±С‹Рј СЃРїРѕСЃРѕР±РѕРј, РєСЂРѕРјРµ РєР°СЂС‚С‹
 	 *
-	 * @param    integer    $uid    ID пользователям
-	 * @return   boolean            true - да, false - нет
+	 * @param    integer    $uid    ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј
+	 * @return   boolean            true - РґР°, false - РЅРµС‚
 	 */
 	function checkDepositByNotCard($uid) {
 		global $DB;
@@ -706,11 +706,11 @@ class account
 	}
 	
 	/**
-	 * Проверяет, совершал ли пользователь хотя бы одну операцию указанного типа(ов)
+	 * РџСЂРѕРІРµСЂСЏРµС‚, СЃРѕРІРµСЂС€Р°Р» Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ С…РѕС‚СЏ Р±С‹ РѕРґРЅСѓ РѕРїРµСЂР°С†РёСЋ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С‚РёРїР°(РѕРІ)
 	 * 
-	 * @param    integer   $uid   uid пользователя
-	 * @param    array     $type  массив с типами операций (op_code)
-	 * @return   boolean          TRUE - операции были, FALSE - нет
+	 * @param    integer   $uid   uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param    array     $type  РјР°СЃСЃРёРІ СЃ С‚РёРїР°РјРё РѕРїРµСЂР°С†РёР№ (op_code)
+	 * @return   boolean          TRUE - РѕРїРµСЂР°С†РёРё Р±С‹Р»Рё, FALSE - РЅРµС‚
 	 */
 	function checkHistory($uid, $type) {
 		global $DB;
@@ -718,10 +718,10 @@ class account
 	}
 
 	/**
-	 * Проверяет, совершал ли пользователь хотя бы одну платную покупку
+	 * РџСЂРѕРІРµСЂСЏРµС‚, СЃРѕРІРµСЂС€Р°Р» Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ С…РѕС‚СЏ Р±С‹ РѕРґРЅСѓ РїР»Р°С‚РЅСѓСЋ РїРѕРєСѓРїРєСѓ
 	 * 
-	 * @param    integer   $uid   uid пользователя
-	 * @return   boolean          TRUE - операции были, FALSE - нет
+	 * @param    integer   $uid   uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @return   boolean          TRUE - РѕРїРµСЂР°С†РёРё Р±С‹Р»Рё, FALSE - РЅРµС‚
 	 */
 	function checkPayOperation($uid) {
 		global $DB;
@@ -729,10 +729,10 @@ class account
 	}
 	
 	/**
-	 * Группирует историю пользователя по коду операции.
+	 * Р“СЂСѓРїРїРёСЂСѓРµС‚ РёСЃС‚РѕСЂРёСЋ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ РєРѕРґСѓ РѕРїРµСЂР°С†РёРё.
 	 *
-	 * @param integer $uid ИД пользователя
-	 * @return array массив (код операции -> количество)
+	 * @param integer $uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @return array РјР°СЃСЃРёРІ (РєРѕРґ РѕРїРµСЂР°С†РёРё -> РєРѕР»РёС‡РµСЃС‚РІРѕ)
 	 */
 	function getCountHistoryType($uid) {
 		$row = $DB->rows("SELECT COUNT(op_code) as count, op_code FROM account_operations
@@ -750,26 +750,26 @@ class account
 	}
 
 	/**
-	 * Совершить покупку
+	 * РЎРѕРІРµСЂС€РёС‚СЊ РїРѕРєСѓРїРєСѓ
 	 *
-	 * @param integer $id				возвращает id покупки
-	 * @param integer $transaction_id	идентификатор текущей транзакции
-	 * @param integer $op_code			идентификатор операции
+	 * @param integer $id				РІРѕР·РІСЂР°С‰Р°РµС‚ id РїРѕРєСѓРїРєРё
+	 * @param integer $transaction_id	РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚РµРєСѓС‰РµР№ С‚СЂР°РЅР·Р°РєС†РёРё
+	 * @param integer $op_code			РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРїРµСЂР°С†РёРё
 	 * @param integer $uid				UID
-	 * @param string  $descr			описание для системы
-	 * @param string  $comments			описание для истории юзера
-	 * @param integer $ammount			количество товара
-     * @param integer $commit			завершать ли транзакцию?
-     * @param integer $promo_code   	ИД промо-кода
+	 * @param string  $descr			РѕРїРёСЃР°РЅРёРµ РґР»СЏ СЃРёСЃС‚РµРјС‹
+	 * @param string  $comments			РѕРїРёСЃР°РЅРёРµ РґР»СЏ РёСЃС‚РѕСЂРёРё СЋР·РµСЂР°
+	 * @param integer $ammount			РєРѕР»РёС‡РµСЃС‚РІРѕ С‚РѕРІР°СЂР°
+     * @param integer $commit			Р·Р°РІРµСЂС€Р°С‚СЊ Р»Рё С‚СЂР°РЅР·Р°РєС†РёСЋ?
+     * @param integer $promo_code   	РР” РїСЂРѕРјРѕ-РєРѕРґР°
      * 
 	 * @return integer					0
 	 */
     function Buy(&$id, $transaction_id, $op_code, $uid, $descr = "", $comments = "", $ammount = 1, $commit = 1, $promo_code = 0, $payment_sys = 0, $trs_sum = 0){
 		global $DB;
-                if (!$transaction_id || $transaction_id != $this -> check_transaction($transaction_id, $uid)) return "Невозможно завершить транзакцию";
+                if (!$transaction_id || $transaction_id != $this -> check_transaction($transaction_id, $uid)) return "РќРµРІРѕР·РјРѕР¶РЅРѕ Р·Р°РІРµСЂС€РёС‚СЊ С‚СЂР°РЅР·Р°РєС†РёСЋ";
 		else {
 			$res = $DB->query("SELECT op_codes.sum as op_sum, account.sum, account.id FROM op_codes, account WHERE op_codes.id=? AND account.uid=?", $op_code, $uid);
-			if (pg_errormessage()) return "Ошибка при получении информации о счете!";
+			if (pg_errormessage()) return "РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃС‡РµС‚Рµ!";
 
 			list($op_sum, $ac_sum, $bill_id) = pg_fetch_row($res);
 			$sum = $op_sum*$ammount;
@@ -782,8 +782,8 @@ class account
             $ac_sum = round($ac_sum, 2);
             $sum = round($sum, 2);
 			
-            //@todo: зачем мемкеш? если занос денег deposit и покупка в отдной сессии php
-            //можно было старое значение передать глобальной переменной или реестром
+            //@todo: Р·Р°С‡РµРј РјРµРјРєРµС€? РµСЃР»Рё Р·Р°РЅРѕСЃ РґРµРЅРµРі deposit Рё РїРѕРєСѓРїРєР° РІ РѕС‚РґРЅРѕР№ СЃРµСЃСЃРёРё php
+            //РјРѕР¶РЅРѕ Р±С‹Р»Рѕ СЃС‚Р°СЂРѕРµ Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРґР°С‚СЊ РіР»РѕР±Р°Р»СЊРЅРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№ РёР»Рё СЂРµРµСЃС‚СЂРѕРј
 			$memBuff = new memBuff();
 			$ac_sum_old = round($memBuff->get("ac_sum_old_".$uid), 2);
 			$memBuff->delete("ac_sum_old_".$uid);
@@ -791,11 +791,11 @@ class account
 			$new_ac_sum = $ac_sum_old < 0 ? $ac_sum - $ac_sum_old : $ac_sum;
             
 			if ($sum > 0 && $sum > $new_ac_sum)  {
-                return "Недостаточно средств на счету!";
+                return "РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ РЅР° СЃС‡РµС‚Сѓ!";
             }
             
 			if ($sum < 0) { 
-                return "Покупка на отрицательную сумму!";
+                return "РџРѕРєСѓРїРєР° РЅР° РѕС‚СЂРёС†Р°С‚РµР»СЊРЅСѓСЋ СЃСѓРјРјСѓ!";
             }
             
             $id = $DB->insert('account_operations', array(
@@ -809,7 +809,7 @@ class account
 			), 'id');
 			
 			if ($DB->error) {
-                            return "Ошибка при записи счета!";
+                            return "РћС€РёР±РєР° РїСЂРё Р·Р°РїРёСЃРё СЃС‡РµС‚Р°!";
                         } else {
                             if ($uid == get_uid(false)) {
                                 $_SESSION['ac_sum'] = $_SESSION['ac_sum'] - $sum;
@@ -820,10 +820,10 @@ class account
                 $promoCodes->markUsed($promo_code);
             }
                         
-            // количество операций
+            // РєРѕР»РёС‡РµСЃС‚РІРѕ РѕРїРµСЂР°С†РёР№
             $_SESSION['account_operations'] = intval($_SESSION['account_operations']) + 1;
             
-            // для счетчика everesttech.net (см. engine/templates/footer.tpl)
+            // РґР»СЏ СЃС‡РµС‚С‡РёРєР° everesttech.net (СЃРј. engine/templates/footer.tpl)
             if ( $sum > 0 ) {
                 $_SESSION['everesttech_conter'] = 1;
             }
@@ -834,25 +834,25 @@ class account
 	}
 
 	/**
-	 * Совершить покупку через СМС
+	 * РЎРѕРІРµСЂС€РёС‚СЊ РїРѕРєСѓРїРєСѓ С‡РµСЂРµР· РЎРњРЎ
 	 *
-	 * @param integer $id				возвращает id покупки
-	 * @param integer $transaction_id	идентификатор текущей транзакции
-	 * @param integer $op_code			идентификатор операции
+	 * @param integer $id				РІРѕР·РІСЂР°С‰Р°РµС‚ id РїРѕРєСѓРїРєРё
+	 * @param integer $transaction_id	РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚РµРєСѓС‰РµР№ С‚СЂР°РЅР·Р°РєС†РёРё
+	 * @param integer $op_code			РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРїРµСЂР°С†РёРё
 	 * @param integer $uid				UID
-	 * @param string  $descr			описание для системы
-	 * @param string  $comments			описание для истории юзера
-	 * @param integer $sum			    сумма потраченная за смс
-	 * @param integer $commit			завершать ли транзакцию?
+	 * @param string  $descr			РѕРїРёСЃР°РЅРёРµ РґР»СЏ СЃРёСЃС‚РµРјС‹
+	 * @param string  $comments			РѕРїРёСЃР°РЅРёРµ РґР»СЏ РёСЃС‚РѕСЂРёРё СЋР·РµСЂР°
+	 * @param integer $sum			    СЃСѓРјРјР° РїРѕС‚СЂР°С‡РµРЅРЅР°СЏ Р·Р° СЃРјСЃ
+	 * @param integer $commit			Р·Р°РІРµСЂС€Р°С‚СЊ Р»Рё С‚СЂР°РЅР·Р°РєС†РёСЋ?
 	 * @return integer					0
 	 */	
 	function BuyFromSMS(&$id, $transaction_id, $op_code, $uid, $descr, $comments, $sum, $commit = 1, $payment_sys = 7) { 
 		global $DB;
 		if (!$transaction_id || $transaction_id != $this->check_transaction($transaction_id, $uid)) {
-			$this->view_error("Невозможно завершить транзакцию");
+			$this->view_error("РќРµРІРѕР·РјРѕР¶РЅРѕ Р·Р°РІРµСЂС€РёС‚СЊ С‚СЂР°РЅР·Р°РєС†РёСЋ");
 		} else {
 			if (!($bill_id = $DB->val("SELECT account.id FROM op_codes, account WHERE op_codes.id = ? AND account.uid = ?", $op_code, $uid))) {
-				return "Ошибка при получении информации о счете!";
+				return "РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃС‡РµС‚Рµ!";
 			}
 			$id = $DB->insert('account_operations', array(
 				'billing_id'  => $bill_id,
@@ -864,10 +864,10 @@ class account
 				'trs_sum'     => $sum
 			), 'id');
 			if ($DB->error) {
-				return 'Ошибка при записи счета!';
+				return 'РћС€РёР±РєР° РїСЂРё Р·Р°РїРёСЃРё СЃС‡РµС‚Р°!';
 			}
 			
-            // количество операций
+            // РєРѕР»РёС‡РµСЃС‚РІРѕ РѕРїРµСЂР°С†РёР№
             $_SESSION['account_operations'] = intval($_SESSION['account_operations']) + 1;
 			
 			if ($commit) {
@@ -879,34 +879,34 @@ class account
 
 	
 	/**
-	 * Совершить покупку c бонусного счета
+	 * РЎРѕРІРµСЂС€РёС‚СЊ РїРѕРєСѓРїРєСѓ c Р±РѕРЅСѓСЃРЅРѕРіРѕ СЃС‡РµС‚Р°
 	 *
-	 * @param integer $id				возвращает id покупки
-	 * @param integer $transaction_id	идентификатор текущей транзакции
-	 * @param integer $op_code			идентификатор операции
+	 * @param integer $id				РІРѕР·РІСЂР°С‰Р°РµС‚ id РїРѕРєСѓРїРєРё
+	 * @param integer $transaction_id	РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚РµРєСѓС‰РµР№ С‚СЂР°РЅР·Р°РєС†РёРё
+	 * @param integer $op_code			РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРїРµСЂР°С†РёРё
 	 * @param integer $uid				UID
-	 * @param string  $descr				описание для системы
-	 * @param string  $comments			описание для истории юзера
-	 * @param integer $ammount			количество товара
-	 * @param integer $commit			завершать ли транзакцию?
+	 * @param string  $descr				РѕРїРёСЃР°РЅРёРµ РґР»СЏ СЃРёСЃС‚РµРјС‹
+	 * @param string  $comments			РѕРїРёСЃР°РЅРёРµ РґР»СЏ РёСЃС‚РѕСЂРёРё СЋР·РµСЂР°
+	 * @param integer $ammount			РєРѕР»РёС‡РµСЃС‚РІРѕ С‚РѕРІР°СЂР°
+	 * @param integer $commit			Р·Р°РІРµСЂС€Р°С‚СЊ Р»Рё С‚СЂР°РЅР·Р°РєС†РёСЋ?
 	 * @return integer					0
 	 */
 	function BuyFromBonus(&$id, $transaction_id, $op_code, $uid, $descr = "", $comments = "", $ammount = 1, $commit = 1){
 		global $DB;
 		if (!$transaction_id || $transaction_id != $this -> check_transaction($transaction_id, $uid)) {
-			$this->view_error("Невозможно завершить транзакцию");
+			$this->view_error("РќРµРІРѕР·РјРѕР¶РЅРѕ Р·Р°РІРµСЂС€РёС‚СЊ С‚СЂР°РЅР·Р°РєС†РёСЋ");
 		} else {
 			$res = $DB->query("SELECT op_codes.sum as op_sum, account.bonus_sum, account.id FROM op_codes, account WHERE op_codes.id=? AND account.uid=?", $op_code, $uid);
 			if ($DB->error) {
-				return "Ошибка при получении информации о счете!";
+				return "РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃС‡РµС‚Рµ!";
 			}
 			list($op_sum, $ac_sum, $bill_id) = pg_fetch_row($res);
 			$sum = $op_sum * $ammount;
 			if ($sum > $ac_sum) {
-				return "Недостаточно средств на бонусном счету!";
+				return "РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ РЅР° Р±РѕРЅСѓСЃРЅРѕРј СЃС‡РµС‚Сѓ!";
 			}
 			if ($sum < 0) {
-				return "Покупка на отрицательную сумму!";
+				return "РџРѕРєСѓРїРєР° РЅР° РѕС‚СЂРёС†Р°С‚РµР»СЊРЅСѓСЋ СЃСѓРјРјСѓ!";
 			}
 			$id = $DB->insert('account_operations', array(
 				'billing_id'    => $bill_id,
@@ -916,11 +916,11 @@ class account
 				'comments'      => $comments
 			), 'id');
 			if ($DB->error) {
-				return "Ошибка при записи счета!";
+				return "РћС€РёР±РєР° РїСЂРё Р·Р°РїРёСЃРё СЃС‡РµС‚Р°!";
 			} else {
 				$_SESSION['bn_sum'] = $_SESSION['bn_sum'] - $sum;
 				
-				// количество операций
+				// РєРѕР»РёС‡РµСЃС‚РІРѕ РѕРїРµСЂР°С†РёР№
                 //$_SESSION['account_operations'] = intval($_SESSION['account_operations']) + 1;
 			}
 			if ($commit) {
@@ -931,10 +931,10 @@ class account
 	}
 
 	/**
-	 * Изменить код операции (op_codes)
+	 * РР·РјРµРЅРёС‚СЊ РєРѕРґ РѕРїРµСЂР°С†РёРё (op_codes)
 	 *
-	 * @param integer $bill_id			id покупки
-	 * @param integer $new_opcode		новый код покупки(операции)
+	 * @param integer $bill_id			id РїРѕРєСѓРїРєРё
+	 * @param integer $new_opcode		РЅРѕРІС‹Р№ РєРѕРґ РїРѕРєСѓРїРєРё(РѕРїРµСЂР°С†РёРё)
 	 */
 	function ChangeOpcodes ($bill_id, $new_opcode) {
 		$GLOBALS['DB']->query("UPDATE account_operations SET op_code = ? WHERE id = ?", $new_opcode, $bill_id);
@@ -942,35 +942,35 @@ class account
 	}
 
 	/**
-	 * Подарить что-нибудь пользователю
+	 * РџРѕРґР°СЂРёС‚СЊ С‡С‚Рѕ-РЅРёР±СѓРґСЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ
 	 *
-	 * @param integer $id				возвращает id покупки
-	 * @param integer $gid				возвращает идентификатор подарка
-	 * @param integer $transaction_id	идентификатор текущей транзакции
-	 * @param integer $op_code			идентификатор операции
-	 * @param integer $fid				UID дарителя
-	 * @param integer $tid				UID получателя
-	 * @param string  $descr			описание для системы
-	 * @param string  $comments			описание для истории юзера
-	 * @param integer $ammount			количество товара
-	 * @return integer Возвращает всегда 0;
+	 * @param integer $id				РІРѕР·РІСЂР°С‰Р°РµС‚ id РїРѕРєСѓРїРєРё
+	 * @param integer $gid				РІРѕР·РІСЂР°С‰Р°РµС‚ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕРґР°СЂРєР°
+	 * @param integer $transaction_id	РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚РµРєСѓС‰РµР№ С‚СЂР°РЅР·Р°РєС†РёРё
+	 * @param integer $op_code			РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРїРµСЂР°С†РёРё
+	 * @param integer $fid				UID РґР°СЂРёС‚РµР»СЏ
+	 * @param integer $tid				UID РїРѕР»СѓС‡Р°С‚РµР»СЏ
+	 * @param string  $descr			РѕРїРёСЃР°РЅРёРµ РґР»СЏ СЃРёСЃС‚РµРјС‹
+	 * @param string  $comments			РѕРїРёСЃР°РЅРёРµ РґР»СЏ РёСЃС‚РѕСЂРёРё СЋР·РµСЂР°
+	 * @param integer $ammount			РєРѕР»РёС‡РµСЃС‚РІРѕ С‚РѕРІР°СЂР°
+	 * @return integer Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµРіРґР° 0;
 	 */
 	function Gift(&$id, &$gid, $transaction_id, $op_code, $fid, $tid, $descr = "", $comments = "", $ammount = 1){
 		global $DB;
 		if (!$transaction_id || $transaction_id != $this->check_transaction($transaction_id, $fid)) {
-			$this->view_error("Невозможно завершить транзакцию");
+			$this->view_error("РќРµРІРѕР·РјРѕР¶РЅРѕ Р·Р°РІРµСЂС€РёС‚СЊ С‚СЂР°РЅР·Р°РєС†РёСЋ");
 		} else {
 			$res = $DB->query("SELECT op_codes.sum as op_sum, f.sum, f.id, t.id FROM op_codes, account f, account t WHERE op_codes.id = ? AND f.uid = ? AND t.uid = ?", $op_code, $fid, $tid);
 			if ($DB->error) {
-				return "Ошибка при получении информации о счете!";
+				return "РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃС‡РµС‚Рµ!";
 			}
 			list($op_sum, $ac_sum, $bill_id, $tbill_id) = pg_fetch_row($res);
 			$sum = $op_sum*$ammount;
 			if ($sum > $ac_sum) {
-				return "Недостаточно средств на счету!";
+				return "РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ РЅР° СЃС‡РµС‚Сѓ!";
 			}
 			if ($sum < 0) {
-				return "Подарок на отрицательную сумму!";
+				return "РџРѕРґР°СЂРѕРє РЅР° РѕС‚СЂРёС†Р°С‚РµР»СЊРЅСѓСЋ СЃСѓРјРјСѓ!";
 			}
 			$res = $DB->mquery(
 				"SELECT gid, id FROM MakeGift(?, ?, ?, ?, ?, ?, ?, ?, ?) as (gid integer, id integer)",
@@ -978,13 +978,13 @@ class account
 			);
 			list($gid, $id) = pg_fetch_row($res);
 			if ($DB->error) {
-				return "Ошибка при записи счета!";
+				return "РћС€РёР±РєР° РїСЂРё Р·Р°РїРёСЃРё СЃС‡РµС‚Р°!";
 			} else {
 				$_SESSION['ac_sum'] = $_SESSION['ac_sum'] - $sum;
 			}
 			$this->commit_transaction($transaction_id, $fid, $id);
 		}
-                // для счетчика everesttech.net (см. engine/templates/footer.tpl)
+                // РґР»СЏ СЃС‡РµС‚С‡РёРєР° everesttech.net (СЃРј. engine/templates/footer.tpl)
                 if ( $sum > 0 ) {
                     $_SESSION['everesttech_conter'] = 1;
                 }
@@ -992,38 +992,38 @@ class account
 	}
 
 	/**
-	 * Подарить что-нибудь по бонусному счету
+	 * РџРѕРґР°СЂРёС‚СЊ С‡С‚Рѕ-РЅРёР±СѓРґСЊ РїРѕ Р±РѕРЅСѓСЃРЅРѕРјСѓ СЃС‡РµС‚Сѓ
 	 *
-	 * @param integer $id				возвращает id покупки
-	 * @param integer $gid				возвращает идентификатор подарка
-	 * @param integer $transaction_id	идентификатор текущей транзакции
-	 * @param integer $op_code			идентификатор операции
-	 * @param integer $fid				UID дарителя
-	 * @param integer $tid				UID получателя
-	 * @param string  $descr				описание для системы
-	 * @param string  $comments			описание для истории юзера
-	 * @param integer $ammount			количество товара
+	 * @param integer $id				РІРѕР·РІСЂР°С‰Р°РµС‚ id РїРѕРєСѓРїРєРё
+	 * @param integer $gid				РІРѕР·РІСЂР°С‰Р°РµС‚ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕРґР°СЂРєР°
+	 * @param integer $transaction_id	РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚РµРєСѓС‰РµР№ С‚СЂР°РЅР·Р°РєС†РёРё
+	 * @param integer $op_code			РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРїРµСЂР°С†РёРё
+	 * @param integer $fid				UID РґР°СЂРёС‚РµР»СЏ
+	 * @param integer $tid				UID РїРѕР»СѓС‡Р°С‚РµР»СЏ
+	 * @param string  $descr				РѕРїРёСЃР°РЅРёРµ РґР»СЏ СЃРёСЃС‚РµРјС‹
+	 * @param string  $comments			РѕРїРёСЃР°РЅРёРµ РґР»СЏ РёСЃС‚РѕСЂРёРё СЋР·РµСЂР°
+	 * @param integer $ammount			РєРѕР»РёС‡РµСЃС‚РІРѕ С‚РѕРІР°СЂР°
 	 * @return integer
 	 */
 	function GiftBonus(&$id, &$gid, $transaction_id, $op_code, $fid, $tid, $descr = "", $comments = "", $ammount = 1){
 		global $DB;
 		if (!$transaction_id || $transaction_id != $this->check_transaction($transaction_id, $fid)) {
-			$this->view_error("Невозможно завершить транзакцию");
+			$this->view_error("РќРµРІРѕР·РјРѕР¶РЅРѕ Р·Р°РІРµСЂС€РёС‚СЊ С‚СЂР°РЅР·Р°РєС†РёСЋ");
 		} else {
 			$res = $DB->query("SELECT op_codes.sum as op_sum, f.bonus_sum, f.id, t.id FROM op_codes, account f, account t WHERE op_codes.id=? AND f.uid=? AND t.uid=?", $op_code, $fid, $tid);
 			if ($DB->error) {
-				return "Ошибка при получении информации о счете!";
+				return "РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃС‡РµС‚Рµ!";
 			}
 
 			list($op_sum, $ac_sum, $bill_id, $tbill_id) = pg_fetch_row($res);
 			$sum = $op_sum*$ammount;
 
 			if ($sum > $ac_sum) {
-				return "Недостаточно средств на счету!";
+				return "РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ РЅР° СЃС‡РµС‚Сѓ!";
 			}
 
 			if ($sum < 0) {
-				return "Подарок на отрицательную сумму!";
+				return "РџРѕРґР°СЂРѕРє РЅР° РѕС‚СЂРёС†Р°С‚РµР»СЊРЅСѓСЋ СЃСѓРјРјСѓ!";
 			}
 
 			$res = $DB->query(
@@ -1032,7 +1032,7 @@ class account
 			);
 			list($gid, $id) = pg_fetch_row($res);
 			if ($DB->error) {
-				return "Ошибка при записи счета!";
+				return "РћС€РёР±РєР° РїСЂРё Р·Р°РїРёСЃРё СЃС‡РµС‚Р°!";
 			} else {
 				$_SESSION['ac_sum'] = $_SESSION['ac_sum'] - $sum;
 			}
@@ -1042,11 +1042,11 @@ class account
 	}
 
 	/**
-	 * Получить имя класса операции по ее коду (типу) или идентификатору в журнале операций.
+	 * РџРѕР»СѓС‡РёС‚СЊ РёРјСЏ РєР»Р°СЃСЃР° РѕРїРµСЂР°С†РёРё РїРѕ РµРµ РєРѕРґСѓ (С‚РёРїСѓ) РёР»Рё РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂСѓ РІ Р¶СѓСЂРЅР°Р»Рµ РѕРїРµСЂР°С†РёР№.
 	 *
-	 * @param integer $bill_id		[опционально] идентификатор операции (ид биллинга)
-	 * @param integer $opcode		[опционально] код операции (op_codes)
-	 * @return string				имя класса
+	 * @param integer $bill_id		[РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ] РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРїРµСЂР°С†РёРё (РёРґ Р±РёР»Р»РёРЅРіР°)
+	 * @param integer $opcode		[РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ] РєРѕРґ РѕРїРµСЂР°С†РёРё (op_codes)
+	 * @return string				РёРјСЏ РєР»Р°СЃСЃР°
 	 */
 	function GetOperationClassName($bill_id = 0, $opcode = 0){
 		global $DB;
@@ -1069,9 +1069,9 @@ class account
 		} elseif ($opcode == 31){
 			$class="confa07";
 		} elseif ($opcode == 23 || $opcode == 39 || $opcode==95 || $opcode==97 || $opcode==99 || $opcode==101 || $opcode==96 || $opcode==100){
-			$class="present"; // если будут добавляться опкоды, то надо проверить правильность ф-ции DelByOpid в этом классе.
+			$class="present"; // РµСЃР»Рё Р±СѓРґСѓС‚ РґРѕР±Р°РІР»СЏС‚СЊСЃСЏ РѕРїРєРѕРґС‹, С‚Рѕ РЅР°РґРѕ РїСЂРѕРІРµСЂРёС‚СЊ РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ С„-С†РёРё DelByOpid РІ СЌС‚РѕРј РєР»Р°СЃСЃРµ.
 		} elseif ($opcode == 36 || $opcode == 38 || $opcode == 79 || $opcode == 38){
-			$class="norisk"; //  @todo старый norisk, необходимо убрать
+			$class="norisk"; //  @todo СЃС‚Р°СЂС‹Р№ norisk, РЅРµРѕР±С…РѕРґРёРјРѕ СѓР±СЂР°С‚СЊ
 		} elseif ($opcode == 44){
 			$class="birthday08";
 	    } elseif ($opcode == 45 || $opcode == 46){
@@ -1099,12 +1099,12 @@ class account
 	}
 
 	/**
-	 * Получить информацию об операции по ее идентификатору
+	 * РџРѕР»СѓС‡РёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ РѕР± РѕРїРµСЂР°С†РёРё РїРѕ РµРµ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂСѓ
 	 *
-	 * @param integer $bill_id		идентификатор операции
-	 * @param integer $uid			ID Пользователя
-	 * @param integer $mode			1:история юзера; 2:история юзера для админа; 3:подарок
-	 * @return string				текстовое описание операции
+	 * @param integer $bill_id		РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРїРµСЂР°С†РёРё
+	 * @param integer $uid			ID РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param integer $mode			1:РёСЃС‚РѕСЂРёСЏ СЋР·РµСЂР°; 2:РёСЃС‚РѕСЂРёСЏ СЋР·РµСЂР° РґР»СЏ Р°РґРјРёРЅР°; 3:РїРѕРґР°СЂРѕРє
+	 * @return string				С‚РµРєСЃС‚РѕРІРѕРµ РѕРїРёСЃР°РЅРёРµ РѕРїРµСЂР°С†РёРё
 	 */
 	function GetHistoryInfo($bill_id, $uid, $mode = 1){
 		$class = $this->GetOperationClassName($bill_id);
@@ -1113,28 +1113,28 @@ class account
                     $rtf = new $class;
                     $out = $rtf->GetOrderInfo($bill_id, $uid, $mode);
                 }else{
-                    $out = 'Класс не найден '.$bill_id;
+                    $out = 'РљР»Р°СЃСЃ РЅРµ РЅР°Р№РґРµРЅ '.$bill_id;
                 }
-                return $out. ($mode==1 ? ' &#160;&#160;&#160;<a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_80 b-layout__link_inline-block b-layout__link_lineheight_1" onclick="xajax_ShowBillText('.$bill_id.');" href="javascript:void(0);">Скрыть</a>' : '');
+                return $out. ($mode==1 ? ' &#160;&#160;&#160;<a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_80 b-layout__link_inline-block b-layout__link_lineheight_1" onclick="xajax_ShowBillText('.$bill_id.');" href="javascript:void(0);">РЎРєСЂС‹С‚СЊ</a>' : '');
 	}
 
     /**
-	 * Получить наименование операции для вывода в таблице истории
+	 * РџРѕР»СѓС‡РёС‚СЊ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ РѕРїРµСЂР°С†РёРё РґР»СЏ РІС‹РІРѕРґР° РІ С‚Р°Р±Р»РёС†Рµ РёСЃС‚РѕСЂРёРё
 	 *
-	 * @param integer $bill_id		идентификатор операции
-	 * @param integer $uid			ID Пользователя
-	 * @return string				текстовое описание операции
+	 * @param integer $bill_id		РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРїРµСЂР°С†РёРё
+	 * @param integer $uid			ID РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @return string				С‚РµРєСЃС‚РѕРІРѕРµ РѕРїРёСЃР°РЅРёРµ РѕРїРµСЂР°С†РёРё
 	 */
 	public static function GetHistoryText(&$val){
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/billing.php");
         
-        //Входной опкод может быть для скидки поэтому пробуем получить его оригинал услуги
+        //Р’С…РѕРґРЅРѕР№ РѕРїРєРѕРґ РјРѕР¶РµС‚ Р±С‹С‚СЊ РґР»СЏ СЃРєРёРґРєРё РїРѕСЌС‚РѕРјСѓ РїСЂРѕР±СѓРµРј РїРѕР»СѓС‡РёС‚СЊ РµРіРѕ РѕСЂРёРіРёРЅР°Р» СѓСЃР»СѓРіРё
         $original_op_code = $val['op_code'];
         $val['op_code'] = billing::getOpCodeByDiscount($val['op_code']);
         
 		$html = $val['op_name'];
         if($val['op_code'] == billing::RESERVE_OP_CODE) {
-            $html .= ' &#160;&#160;&#160;<a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_80 b-layout__link_inline-block b-layout__link_lineheight_1" href="javascript:void(0);" onclick="xajax_ShowReserveOrders('.$val['id'].');">подробнее</a>';
+            $html .= ' &#160;&#160;&#160;<a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_80 b-layout__link_inline-block b-layout__link_lineheight_1" href="javascript:void(0);" onclick="xajax_ShowReserveOrders('.$val['id'].');">РїРѕРґСЂРѕР±РЅРµРµ</a>';
         }
         if($val['op_code']==16) $html .= '(EMP)';
         if($val['op_code']==52) $html .= '(FL)';
@@ -1158,49 +1158,49 @@ class account
             66,
             67,
             68,
-            12, // Зачисление денег
-            //21, // Изменение позиции платного размещения
-            38, // Перевод денег за "Сделку без риска"
-            45, // Платная рассылка по разделам
-            47, // Тестовый ПРО
-            114,// Тестовый ПРО акция
-            131, // Аккаунт PRO на неделю
-            132, // Аккаунт PRO на день
-            48, // Аккаунт PRO на месяц
-            49, // Аккаунт PRO на 3 мес
-            50, // Аккаунт PRO на 6 мес
-            51, // Аккаунт PRO на 12 мес
-            69, // Место наверху главной страницы в подарок
-            76, // Аккаунт PRO на неделю
-            80, // Платные специализации
-            84, // Размещение на странице каталога в подарок
-            83, // Место наверху каталога в подарок
-            85, // Размещение на странице каталога (внутренние страницы) в подарок
-            118, // ПРО на 3 месяца
-            119, // ПРО на 6 месяцев
-            120, // ПРО на 12 месяцев
-            163, // Тестовый ПРО на 2 месяц
-            164  // PROFI на 1 месяц
+            12, // Р—Р°С‡РёСЃР»РµРЅРёРµ РґРµРЅРµРі
+            //21, // РР·РјРµРЅРµРЅРёРµ РїРѕР·РёС†РёРё РїР»Р°С‚РЅРѕРіРѕ СЂР°Р·РјРµС‰РµРЅРёСЏ
+            38, // РџРµСЂРµРІРѕРґ РґРµРЅРµРі Р·Р° "РЎРґРµР»РєСѓ Р±РµР· СЂРёСЃРєР°"
+            45, // РџР»Р°С‚РЅР°СЏ СЂР°СЃСЃС‹Р»РєР° РїРѕ СЂР°Р·РґРµР»Р°Рј
+            47, // РўРµСЃС‚РѕРІС‹Р№ РџР Рћ
+            114,// РўРµСЃС‚РѕРІС‹Р№ РџР Рћ Р°РєС†РёСЏ
+            131, // РђРєРєР°СѓРЅС‚ PRO РЅР° РЅРµРґРµР»СЋ
+            132, // РђРєРєР°СѓРЅС‚ PRO РЅР° РґРµРЅСЊ
+            48, // РђРєРєР°СѓРЅС‚ PRO РЅР° РјРµСЃСЏС†
+            49, // РђРєРєР°СѓРЅС‚ PRO РЅР° 3 РјРµСЃ
+            50, // РђРєРєР°СѓРЅС‚ PRO РЅР° 6 РјРµСЃ
+            51, // РђРєРєР°СѓРЅС‚ PRO РЅР° 12 РјРµСЃ
+            69, // РњРµСЃС‚Рѕ РЅР°РІРµСЂС…Сѓ РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹ РІ РїРѕРґР°СЂРѕРє
+            76, // РђРєРєР°СѓРЅС‚ PRO РЅР° РЅРµРґРµР»СЋ
+            80, // РџР»Р°С‚РЅС‹Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё
+            84, // Р Р°Р·РјРµС‰РµРЅРёРµ РЅР° СЃС‚СЂР°РЅРёС†Рµ РєР°С‚Р°Р»РѕРіР° РІ РїРѕРґР°СЂРѕРє
+            83, // РњРµСЃС‚Рѕ РЅР°РІРµСЂС…Сѓ РєР°С‚Р°Р»РѕРіР° РІ РїРѕРґР°СЂРѕРє
+            85, // Р Р°Р·РјРµС‰РµРЅРёРµ РЅР° СЃС‚СЂР°РЅРёС†Рµ РєР°С‚Р°Р»РѕРіР° (РІРЅСѓС‚СЂРµРЅРЅРёРµ СЃС‚СЂР°РЅРёС†С‹) РІ РїРѕРґР°СЂРѕРє
+            118, // РџР Рћ РЅР° 3 РјРµСЃСЏС†Р°
+            119, // РџР Рћ РЅР° 6 РјРµСЃСЏС†РµРІ
+            120, // РџР Рћ РЅР° 12 РјРµСЃСЏС†РµРІ
+            163, // РўРµСЃС‚РѕРІС‹Р№ РџР Рћ РЅР° 2 РјРµСЃСЏС†
+            164  // PROFI РЅР° 1 РјРµСЃСЏС†
             ))){
-            $html .= ' &#160;&#160;&#160;<a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_80 b-layout__link_inline-block b-layout__link_lineheight_1" href="javascript:void(0);" onclick="xajax_ShowBillComms('.$val['id'].', 0, 1);">подробнее</a>';
+            $html .= ' &#160;&#160;&#160;<a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_80 b-layout__link_inline-block b-layout__link_lineheight_1" href="javascript:void(0);" onclick="xajax_ShowBillComms('.$val['id'].', 0, 1);">РїРѕРґСЂРѕР±РЅРµРµ</a>';
         }
 
         /**
-         * Платные опции проектов
-         * @TODO Конструкция монструозная, конечно. Хотя делает простую вещь. Вынести в метод?
-         * @todo Почему она вообще здесь и отрабатывает на каждую итерацию?
-         * @todo Зачем вообще нужен этот метод?
+         * РџР»Р°С‚РЅС‹Рµ РѕРїС†РёРё РїСЂРѕРµРєС‚РѕРІ
+         * @TODO РљРѕРЅСЃС‚СЂСѓРєС†РёСЏ РјРѕРЅСЃС‚СЂСѓРѕР·РЅР°СЏ, РєРѕРЅРµС‡РЅРѕ. РҐРѕС‚СЏ РґРµР»Р°РµС‚ РїСЂРѕСЃС‚СѓСЋ РІРµС‰СЊ. Р’С‹РЅРµСЃС‚Рё РІ РјРµС‚РѕРґ?
+         * @todo РџРѕС‡РµРјСѓ РѕРЅР° РІРѕРѕР±С‰Рµ Р·РґРµСЃСЊ Рё РѕС‚СЂР°Р±Р°С‚С‹РІР°РµС‚ РЅР° РєР°Р¶РґСѓСЋ РёС‚РµСЂР°С†РёСЋ?
+         * @todo Р—Р°С‡РµРј РІРѕРѕР±С‰Рµ РЅСѓР¶РµРЅ СЌС‚РѕС‚ РјРµС‚РѕРґ?
          */
         if (in_array($val['op_code'], array(9, 53, 86, 106, 138, 139, 140, 141, 113, 192))) {
-            //Если нет ИД проекта, парсим его из строки
-            //Старые операции - с пробелом после №
+            //Р•СЃР»Рё РЅРµС‚ РР” РїСЂРѕРµРєС‚Р°, РїР°СЂСЃРёРј РµРіРѕ РёР· СЃС‚СЂРѕРєРё
+            //РЎС‚Р°СЂС‹Рµ РѕРїРµСЂР°С†РёРё - СЃ РїСЂРѕР±РµР»РѕРј РїРѕСЃР»Рµ в„–
             if (!$val['project_id']) {
-                preg_match('~№ (\d+)~', $val['comments'], $match);
+                preg_match('~в„– (\d+)~', $val['comments'], $match);
                 $val['project_id'] = $match[1];
             }
-            //Не нашли, тогда новые - без пробела
+            //РќРµ РЅР°С€Р»Рё, С‚РѕРіРґР° РЅРѕРІС‹Рµ - Р±РµР· РїСЂРѕР±РµР»Р°
             if (!$val['project_id']) {
-                preg_match('~№(\d+)~', $val['comments'], $match);
+                preg_match('~в„–(\d+)~', $val['comments'], $match);
                 $val['project_id'] = $match[1];
             }
 
@@ -1209,13 +1209,13 @@ class account
                 $words = explode(' ', $parts[0]);
                 $projectNumber = false;
                 foreach ($words as $key=>&$word) {
-                    if (strpos($word, '№') === false) {
+                    if (strpos($word, 'в„–') === false) {
                         continue;
                     }
                     $projectNumber = $key;
                     
-                    //Номер мог не записался в операцию, если покупка была при создании
-                    if ($word == '№') {
+                    //РќРѕРјРµСЂ РјРѕРі РЅРµ Р·Р°РїРёСЃР°Р»СЃСЏ РІ РѕРїРµСЂР°С†РёСЋ, РµСЃР»Рё РїРѕРєСѓРїРєР° Р±С‹Р»Р° РїСЂРё СЃРѕР·РґР°РЅРёРё
+                    if ($word == 'в„–') {
                         $word .= $val['project_id'];
                     }
                 }
@@ -1229,34 +1229,34 @@ class account
             }
         }
         
-        //Платные места в каталоге
+        //РџР»Р°С‚РЅС‹Рµ РјРµСЃС‚Р° РІ РєР°С‚Р°Р»РѕРіРµ
         if (in_array($val['op_code'], array(142, 143, 144))) {
             $html = $val['descr'];
         }
         
-        //Поднятие платного места
+        //РџРѕРґРЅСЏС‚РёРµ РїР»Р°С‚РЅРѕРіРѕ РјРµСЃС‚Р°
         if (in_array($val['op_code'], array(10, 20, 145, 146, 147, 148, 149, 150, 
             151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162))) {
             $html = $val['descr'];
         }
         
-        //Поднятие платного места
+        //РџРѕРґРЅСЏС‚РёРµ РїР»Р°С‚РЅРѕРіРѕ РјРµСЃС‚Р°
         if (in_array($val['op_code'], array(10, 19, 20))) {
             if ($val['descr']) {
                 $html = $val['descr'];
             } else {
-                //У старых платежей описание не заполнено
-                $html = $val['op_name'].' &#160;&#160;&#160;<a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_80 b-layout__link_inline-block b-layout__link_lineheight_1" href="javascript:void(0);" onclick="xajax_ShowBillComms('.$val['id'].', 0, 1);">подробнее</a>';
+                //РЈ СЃС‚Р°СЂС‹С… РїР»Р°С‚РµР¶РµР№ РѕРїРёСЃР°РЅРёРµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ
+                $html = $val['op_name'].' &#160;&#160;&#160;<a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_80 b-layout__link_inline-block b-layout__link_lineheight_1" href="javascript:void(0);" onclick="xajax_ShowBillComms('.$val['id'].', 0, 1);">РїРѕРґСЂРѕР±РЅРµРµ</a>';
             }
         }
 
         
-        //Услуга по скидке, пока у нас только для PROFI
-        //поэтому дописываем пометку
+        //РЈСЃР»СѓРіР° РїРѕ СЃРєРёРґРєРµ, РїРѕРєР° Сѓ РЅР°СЃ С‚РѕР»СЊРєРѕ РґР»СЏ PROFI
+        //РїРѕСЌС‚РѕРјСѓ РґРѕРїРёСЃС‹РІР°РµРј РїРѕРјРµС‚РєСѓ
         if ($original_op_code != $val['op_code'] && 
-            //В опкодах тоже есть пометка поэтому кое-где она не нужна
+            //Р’ РѕРїРєРѕРґР°С… С‚РѕР¶Рµ РµСЃС‚СЊ РїРѕРјРµС‚РєР° РїРѕСЌС‚РѕРјСѓ РєРѕРµ-РіРґРµ РѕРЅР° РЅРµ РЅСѓР¶РЅР°
             !in_array($original_op_code, array(165, 166))) {
-            $html .= '  (для profi)';
+            $html .= '  (РґР»СЏ profi)';
         }
         
         
@@ -1264,11 +1264,11 @@ class account
 }
 
 	/**
-	 * Удалить операцию
+	 * РЈРґР°Р»РёС‚СЊ РѕРїРµСЂР°С†РёСЋ
 	 *
-	 * @param integer $uid		ID Пользователя
-	 * @param integer $opid		идентификатор операции
-	 * @return string			сообщение об ошибке
+	 * @param integer $uid		ID РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param integer $opid		РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРїРµСЂР°С†РёРё
+	 * @return string			СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function Del($uid, $opid){
 		global $DB;
@@ -1289,7 +1289,7 @@ class account
                     $session->UpdateAccountSum($user->login);
                     
                     if ($class == 'tservices/tservices') {
-                        //@todo: А сделать это в DelByOpid нельзя?
+                        //@todo: Рђ СЃРґРµР»Р°С‚СЊ СЌС‚Рѕ РІ DelByOpid РЅРµР»СЊР·СЏ?
                         $rtf->updateTab($uid);
                     }
 		}
@@ -1298,10 +1298,10 @@ class account
 	}
 
 	/**
-	 * Заглушка для операции Del для этого класса
+	 * Р—Р°РіР»СѓС€РєР° РґР»СЏ РѕРїРµСЂР°С†РёРё Del РґР»СЏ СЌС‚РѕРіРѕ РєР»Р°СЃСЃР°
 	 *
-	 * @param integer $uid		ID Пользователя
-	 * @param integer $opid		идентификатор операции
+	 * @param integer $uid		ID РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param integer $opid		РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРїРµСЂР°С†РёРё
 	 * @return integer			0
 	 */
 	function DelByOpid($uid, $opid){
@@ -1309,12 +1309,12 @@ class account
 	}
 
 	/**
-	 * Выдает статистику по приходу средств счет за указаный период
+	 * Р’С‹РґР°РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕ РїСЂРёС…РѕРґСѓ СЃСЂРµРґСЃС‚РІ СЃС‡РµС‚ Р·Р° СѓРєР°Р·Р°РЅС‹Р№ РїРµСЂРёРѕРґ
 	 *
-	 * @param integer $ps					идентификатор платежной системы
-	 * @param string  $from_date			c какого дня
-	 * @param string  $to_date				по какой день
-	 * @return array					[сумма в валюте платежной системы, сумма в FM]
+	 * @param integer $ps					РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїР»Р°С‚РµР¶РЅРѕР№ СЃРёСЃС‚РµРјС‹
+	 * @param string  $from_date			c РєР°РєРѕРіРѕ РґРЅСЏ
+	 * @param string  $to_date				РїРѕ РєР°РєРѕР№ РґРµРЅСЊ
+	 * @return array					[СЃСѓРјРјР° РІ РІР°Р»СЋС‚Рµ РїР»Р°С‚РµР¶РЅРѕР№ СЃРёСЃС‚РµРјС‹, СЃСѓРјРјР° РІ FM]
 	 */
 	function GetStatPS($ps, $from_date = '2000-01-01', $to_date = 'now()', $op_code = 12) {
 		global $DB;
@@ -1327,11 +1327,11 @@ class account
 	}
 	
 	/**
-	 * Выдает статистику по приходу средств счет за указаный период по всем платежным системам
+	 * Р’С‹РґР°РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕ РїСЂРёС…РѕРґСѓ СЃСЂРµРґСЃС‚РІ СЃС‡РµС‚ Р·Р° СѓРєР°Р·Р°РЅС‹Р№ РїРµСЂРёРѕРґ РїРѕ РІСЃРµРј РїР»Р°С‚РµР¶РЅС‹Рј СЃРёСЃС‚РµРјР°Рј
 	 *
-	 * @param string  $from_date			c какого дня
-	 * @param string  $to_date				по какой день
-	 * @return array					[сумма в валюте платежной системы, сумма в FM]
+	 * @param string  $from_date			c РєР°РєРѕРіРѕ РґРЅСЏ
+	 * @param string  $to_date				РїРѕ РєР°РєРѕР№ РґРµРЅСЊ
+	 * @return array					[СЃСѓРјРјР° РІ РІР°Р»СЋС‚Рµ РїР»Р°С‚РµР¶РЅРѕР№ СЃРёСЃС‚РµРјС‹, СЃСѓРјРјР° РІ FM]
 	 */
 	function GetStatPSEx($from_date = '2000-01-01', $to_date = 'now()', $op_codes = array(12)){
 		global $DB;
@@ -1365,11 +1365,11 @@ class account
 	}
 
     /**
-     * Получить остатки на счетах юзеров за указанный период (суммарный баланс)
+     * РџРѕР»СѓС‡РёС‚СЊ РѕСЃС‚Р°С‚РєРё РЅР° СЃС‡РµС‚Р°С… СЋР·РµСЂРѕРІ Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ (СЃСѓРјРјР°СЂРЅС‹Р№ Р±Р°Р»Р°РЅСЃ)
      *
-     * @param string $from_date			c какого дня
-     * @param string $to_date			по какой день
-     * @return real						сумма
+     * @param string $from_date			c РєР°РєРѕРіРѕ РґРЅСЏ
+     * @param string $to_date			РїРѕ РєР°РєРѕР№ РґРµРЅСЊ
+     * @return real						СЃСѓРјРјР°
      */
     function GetStatOst($from_date = '2000-01-01', $to_date = 'now()', $ignore_staff = false) {
         global $DB;
@@ -1385,17 +1385,17 @@ class account
     }
     
     /**
-     * Общая статистика (Остаток на начало, Остаток на конец, Всего зачислено, Всего потрачено)
+     * РћР±С‰Р°СЏ СЃС‚Р°С‚РёСЃС‚РёРєР° (РћСЃС‚Р°С‚РѕРє РЅР° РЅР°С‡Р°Р»Рѕ, РћСЃС‚Р°С‚РѕРє РЅР° РєРѕРЅРµС†, Р’СЃРµРіРѕ Р·Р°С‡РёСЃР»РµРЅРѕ, Р’СЃРµРіРѕ РїРѕС‚СЂР°С‡РµРЅРѕ)
      * 
-     * @param  string $from_date дата начала периода подсчета статистики
-     * @param  string $to_date дата окончания периода подсчета статистики
-     * @param  bool $ignore_staff опцилнально. установить в true если нужно исключить сотрудников
-     * @return array масив с данными 
+     * @param  string $from_date РґР°С‚Р° РЅР°С‡Р°Р»Р° РїРµСЂРёРѕРґР° РїРѕРґСЃС‡РµС‚Р° СЃС‚Р°С‚РёСЃС‚РёРєРё
+     * @param  string $to_date РґР°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РїРµСЂРёРѕРґР° РїРѕРґСЃС‡РµС‚Р° СЃС‚Р°С‚РёСЃС‚РёРєРё
+     * @param  bool $ignore_staff РѕРїС†РёР»РЅР°Р»СЊРЅРѕ. СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РІ true РµСЃР»Рё РЅСѓР¶РЅРѕ РёСЃРєР»СЋС‡РёС‚СЊ СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ
+     * @return array РјР°СЃРёРІ СЃ РґР°РЅРЅС‹РјРё 
      *     (
-     *         'begin'   => 'остаток_на_начало', 
-     *         'end'    => 'остаток_на_конец', 
-     *         'income' => 'всего_зачислено', 
-     *         'spent'  => 'всего_потрачено'
+     *         'begin'   => 'РѕСЃС‚Р°С‚РѕРє_РЅР°_РЅР°С‡Р°Р»Рѕ', 
+     *         'end'    => 'РѕСЃС‚Р°С‚РѕРє_РЅР°_РєРѕРЅРµС†', 
+     *         'income' => 'РІСЃРµРіРѕ_Р·Р°С‡РёСЃР»РµРЅРѕ', 
+     *         'spent'  => 'РІСЃРµРіРѕ_РїРѕС‚СЂР°С‡РµРЅРѕ'
      *     )
      */
     function getStatOverall( $from_date = '2000-01-01', $to_date = '2000-01-01', $ignore_staff = false ) {
@@ -1434,11 +1434,11 @@ class account
     }
     
     /**
-     * Статистика по переводам от "своих" к "чужим" и от "чужих" к "своим"
+     * РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РїРµСЂРµРІРѕРґР°Рј РѕС‚ "СЃРІРѕРёС…" Рє "С‡СѓР¶РёРј" Рё РѕС‚ "С‡СѓР¶РёС…" Рє "СЃРІРѕРёРј"
      * 
-     * @param  string $from_date дата начала периода подсчета статистики
-     * @param  string $to_date дата окончания периода подсчета статистики
-     * @param  bool $direction true - от "своих" к "чужим", false от "чужих" к "своим"
+     * @param  string $from_date РґР°С‚Р° РЅР°С‡Р°Р»Р° РїРµСЂРёРѕРґР° РїРѕРґСЃС‡РµС‚Р° СЃС‚Р°С‚РёСЃС‚РёРєРё
+     * @param  string $to_date РґР°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РїРµСЂРёРѕРґР° РїРѕРґСЃС‡РµС‚Р° СЃС‚Р°С‚РёСЃС‚РёРєРё
+     * @param  bool $direction true - РѕС‚ "СЃРІРѕРёС…" Рє "С‡СѓР¶РёРј", false РѕС‚ "С‡СѓР¶РёС…" Рє "СЃРІРѕРёРј"
      */
     function getStatTransferOursAlien( $from_date = '2000-01-01', $to_date = '2000-01-01', $direction = true ) {
         $this->_getIgnoreInStats();
@@ -1462,17 +1462,17 @@ class account
     }
 
     /**
-	 * Получить статистику по сделкам за указанный период
+	 * РџРѕР»СѓС‡РёС‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕ СЃРґРµР»РєР°Рј Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ
 	 *
-	 * @param string $from_date		c какого дня
-	 * @param string $to_date		по какой день
+	 * @param string $from_date		c РєР°РєРѕРіРѕ РґРЅСЏ
+	 * @param string $to_date		РїРѕ РєР°РєРѕР№ РґРµРЅСЊ
 	 * @return arrray				[
-     *                                  selfrl - найден исполнитель
-     *                                  t3acc - утвердили ТЗ
-     *                                  reserved - переведены деньги
-     *                                  final - работа завершена
-     *                                  moneyout - сделать выплаты
-     *                                  finished - закончены
+     *                                  selfrl - РЅР°Р№РґРµРЅ РёСЃРїРѕР»РЅРёС‚РµР»СЊ
+     *                                  t3acc - СѓС‚РІРµСЂРґРёР»Рё РўР—
+     *                                  reserved - РїРµСЂРµРІРµРґРµРЅС‹ РґРµРЅСЊРіРё
+     *                                  final - СЂР°Р±РѕС‚Р° Р·Р°РІРµСЂС€РµРЅР°
+     *                                  moneyout - СЃРґРµР»Р°С‚СЊ РІС‹РїР»Р°С‚С‹
+     *                                  finished - Р·Р°РєРѕРЅС‡РµРЅС‹
      *                              ]
 	 */
     function GetStatDeal($from_date = '2000-01-01', $to_date = 'now()') {
@@ -1488,11 +1488,11 @@ class account
     }
     
 	/**
-	 * Взять статистику по сделкам за деньги в определенный период времени
+	 * Р’Р·СЏС‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕ СЃРґРµР»РєР°Рј Р·Р° РґРµРЅСЊРіРё РІ РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РїРµСЂРёРѕРґ РІСЂРµРјРµРЅРё
 	 *
-	 * @param string $from_date С какой даты
-	 * @param string $to_date   По какую дату
-	 * @return array [WMZ сумма, WMR сумма]
+	 * @param string $from_date РЎ РєР°РєРѕР№ РґР°С‚С‹
+	 * @param string $to_date   РџРѕ РєР°РєСѓСЋ РґР°С‚Сѓ
+	 * @return array [WMZ СЃСѓРјРјР°, WMR СЃСѓРјРјР°]
 	 */
     function GetStatDealMoney($from_date = '2000-01-01', $to_date = 'now()') {
         global $DB;
@@ -1515,14 +1515,14 @@ class account
     }
     
     /**
-     * Разделенная статистика по платным проектам (платные проекты, платные проекты по бонусу, конкурсы, конкурсы по бонусу)
+     * Р Р°Р·РґРµР»РµРЅРЅР°СЏ СЃС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РїР»Р°С‚РЅС‹Рј РїСЂРѕРµРєС‚Р°Рј (РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹, РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹ РїРѕ Р±РѕРЅСѓСЃСѓ, РєРѕРЅРєСѓСЂСЃС‹, РєРѕРЅРєСѓСЂСЃС‹ РїРѕ Р±РѕРЅСѓСЃСѓ)
      *
-     * @param string  $from_date	c какого дня
-	 * @param string  $to_date		по какой день
-     * @param integer $type         Тип платной услуги (0 - логотип, 1 - фон, 2 - выделение текста, 3 - поднятие проекта)
-     * @param boolean $is_konkurs   Берем данные по конкурсу или нет
-     * @param boolean $is_bonus     Берем данные по бонусам или нет
-     * @return array [сумма в FM, кол-во операций]
+     * @param string  $from_date	c РєР°РєРѕРіРѕ РґРЅСЏ
+	 * @param string  $to_date		РїРѕ РєР°РєРѕР№ РґРµРЅСЊ
+     * @param integer $type         РўРёРї РїР»Р°С‚РЅРѕР№ СѓСЃР»СѓРіРё (0 - Р»РѕРіРѕС‚РёРї, 1 - С„РѕРЅ, 2 - РІС‹РґРµР»РµРЅРёРµ С‚РµРєСЃС‚Р°, 3 - РїРѕРґРЅСЏС‚РёРµ РїСЂРѕРµРєС‚Р°)
+     * @param boolean $is_konkurs   Р‘РµСЂРµРј РґР°РЅРЅС‹Рµ РїРѕ РєРѕРЅРєСѓСЂСЃСѓ РёР»Рё РЅРµС‚
+     * @param boolean $is_bonus     Р‘РµСЂРµРј РґР°РЅРЅС‹Рµ РїРѕ Р±РѕРЅСѓСЃР°Рј РёР»Рё РЅРµС‚
+     * @return array [СЃСѓРјРјР° РІ FM, РєРѕР»-РІРѕ РѕРїРµСЂР°С†РёР№]
      */
     function getStatOPProject($from_date = '2000-01-01', $to_date = 'now()', $type = '', $is_konkurs=false, $is_bonus=false) {
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/projects.php");
@@ -1589,18 +1589,18 @@ class account
     }
 
 	/**
-	 * Получить статистику по операциям за указанный период
+	 * РџРѕР»СѓС‡РёС‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕ РѕРїРµСЂР°С†РёСЏРј Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ
 	 *
-	 * @param array  $op			массив кодов операций (или номер одной операции) (op_codes)
-	 * @param string $from_date		c какого дня
-	 * @param string $to_date		по какой день
-	 * @param string $addit			доп. условия (в WHERE после AND)
-	 * @return arrray				[сумма в FM, кол-во операций]
+	 * @param array  $op			РјР°СЃСЃРёРІ РєРѕРґРѕРІ РѕРїРµСЂР°С†РёР№ (РёР»Рё РЅРѕРјРµСЂ РѕРґРЅРѕР№ РѕРїРµСЂР°С†РёРё) (op_codes)
+	 * @param string $from_date		c РєР°РєРѕРіРѕ РґРЅСЏ
+	 * @param string $to_date		РїРѕ РєР°РєРѕР№ РґРµРЅСЊ
+	 * @param string $addit			РґРѕРї. СѓСЃР»РѕРІРёСЏ (РІ WHERE РїРѕСЃР»Рµ AND)
+	 * @return arrray				[СЃСѓРјРјР° РІ FM, РєРѕР»-РІРѕ РѕРїРµСЂР°С†РёР№]
 	 */
 	function GetStatOP($op, $from_date = '2000-01-01', $to_date = 'now()', $addit="", $join = "", $app="") {
         global $DB;
         if (in_array($addit, array('0', '1', '2', '3'))) {
-            //Услуги платных проектов по отдельности
+            //РЈСЃР»СѓРіРё РїР»Р°С‚РЅС‹С… РїСЂРѕРµРєС‚РѕРІ РїРѕ РѕС‚РґРµР»СЊРЅРѕСЃС‚Рё
             $sql = "SELECT SUM(round(p.ammount,2)) as sum, COUNT(p.*) as cnt 
                     FROM projects_payments as p 
                     INNER JOIN projects prj ON prj.id = p.project_id
@@ -1636,12 +1636,12 @@ class account
 
 	
    /**
-    * Получить массив статистики за указанный период
+    * РџРѕР»СѓС‡РёС‚СЊ РјР°СЃСЃРёРІ СЃС‚Р°С‚РёСЃС‚РёРєРё Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ
     *
-    * @param Array $from_date		c какого дня
-    * @param Array $to_date		по какой день
-    * @param Bool $ignore_staff		игнорировать своих (users.ignore_in_stats)
-    * @return arrray				[сумма в FM, кол-во операций]
+    * @param Array $from_date		c РєР°РєРѕРіРѕ РґРЅСЏ
+    * @param Array $to_date		РїРѕ РєР°РєРѕР№ РґРµРЅСЊ
+    * @param Bool $ignore_staff		РёРіРЅРѕСЂРёСЂРѕРІР°С‚СЊ СЃРІРѕРёС… (users.ignore_in_stats)
+    * @return arrray				[СЃСѓРјРјР° РІ FM, РєРѕР»-РІРѕ РѕРїРµСЂР°С†РёР№]
     */
     function GetStatOPEx($from_date = '2000-01-01', $to_date = 'now()', $ignore_staff = false) {
         global $DB;
@@ -1670,12 +1670,12 @@ class account
     }
 	
     /**
-     * Получить статистику по PRO
+     * РџРѕР»СѓС‡РёС‚СЊ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕ PRO
      *
-     * @param string  $from_date	c какого дня
-     * @param string  $to_date		по какой день
-     * @param integer $emp			по работодательскому ПРО (чьи аккаунты про будем смотреть, работодателей либо фрилансеров, если 1 то работодателей)
-     * @return array				[сумма в FM, кол-во операций]
+     * @param string  $from_date	c РєР°РєРѕРіРѕ РґРЅСЏ
+     * @param string  $to_date		РїРѕ РєР°РєРѕР№ РґРµРЅСЊ
+     * @param integer $emp			РїРѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊСЃРєРѕРјСѓ РџР Рћ (С‡СЊРё Р°РєРєР°СѓРЅС‚С‹ РїСЂРѕ Р±СѓРґРµРј СЃРјРѕС‚СЂРµС‚СЊ, СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№ Р»РёР±Рѕ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, РµСЃР»Рё 1 С‚Рѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№)
+     * @return array				[СЃСѓРјРјР° РІ FM, РєРѕР»-РІРѕ РѕРїРµСЂР°С†РёР№]
      */
     function GetPROStat($from_date = '2000-01-01', $to_date = 'now()', $emp = 1) {
         global $DB;
@@ -1697,13 +1697,13 @@ class account
     }
 
 	/**
-	 * Получить юзеров по номеру группы операции
+	 * РџРѕР»СѓС‡РёС‚СЊ СЋР·РµСЂРѕРІ РїРѕ РЅРѕРјРµСЂСѓ РіСЂСѓРїРїС‹ РѕРїРµСЂР°С†РёРё
 	 *
-	 * @param integer $akop			номер группы
-	 * @param string $fdate			c какого дня
-	 * @param string $tdate			по какой день
-	 * @param string $sDomainId опуионально. ID платного источника трафика. Тогда берутся только юзеры пришедшие с него.
-	 * @return array				[[логин, имя, фамилия, фото, регистрационный ip, последний ip, e-mail, кол-во посещений]]
+	 * @param integer $akop			РЅРѕРјРµСЂ РіСЂСѓРїРїС‹
+	 * @param string $fdate			c РєР°РєРѕРіРѕ РґРЅСЏ
+	 * @param string $tdate			РїРѕ РєР°РєРѕР№ РґРµРЅСЊ
+	 * @param string $sDomainId РѕРїСѓРёРѕРЅР°Р»СЊРЅРѕ. ID РїР»Р°С‚РЅРѕРіРѕ РёСЃС‚РѕС‡РЅРёРєР° С‚СЂР°С„РёРєР°. РўРѕРіРґР° Р±РµСЂСѓС‚СЃСЏ С‚РѕР»СЊРєРѕ СЋР·РµСЂС‹ РїСЂРёС€РµРґС€РёРµ СЃ РЅРµРіРѕ.
+	 * @return array				[[Р»РѕРіРёРЅ, РёРјСЏ, С„Р°РјРёР»РёСЏ, С„РѕС‚Рѕ, СЂРµРіРёСЃС‚СЂР°С†РёРѕРЅРЅС‹Р№ ip, РїРѕСЃР»РµРґРЅРёР№ ip, e-mail, РєРѕР»-РІРѕ РїРѕСЃРµС‰РµРЅРёР№]]
 	 */
 	function GetUsersByAkOp( $akop, $fdate, $tdate, $sDomainId = '' ){
 		global $DB;
@@ -1715,7 +1715,7 @@ class account
   $inc = array(16,17,22,23,24,25,26,27,28,89,29);
   
 		switch ($akop){
-			case 1: $opcode = "op_code IN ('1','2','3','4','5','6','15','131','132', '48','49','50','51','52','76', 108) AND role&'100000'='000000' "; break; //PRO freelancer -- добавляем акцию "Масленица" 2012 года
+			case 1: $opcode = "op_code IN ('1','2','3','4','5','6','15','131','132', '48','49','50','51','52','76', 108) AND role&'100000'='000000' "; break; //PRO freelancer -- РґРѕР±Р°РІР»СЏРµРј Р°РєС†РёСЋ "РњР°СЃР»РµРЅРёС†Р°" 2012 РіРѕРґР°
 			case 11: $opcode = "op_code IN ('1','2','3','4','5','6','15') AND role&'100000'='100000' "; break; //PRO employers
 			case 2: $opcode = "op_code IN (10,11)"; break;
             case 3: $opcode = "op_code IN (8,53,54,113,192)"; break;
@@ -1731,31 +1731,31 @@ class account
 			case 13: $opcode = "op_code IN (39) AND account.id <> 134"; break;
 			case 15: $opcode = "op_code IN (47, 114)"; break;
    
-			case 16: $opcode = "payment_sys = 7"; break; //смс
-			case 17: $opcode = "op_code IN (12) AND payment_sys = 8"; break; //осмп
-			case 22: $opcode = "op_code IN (12) AND payment_sys = 3"; break; //яд
+			case 16: $opcode = "payment_sys = 7"; break; //СЃРјСЃ
+			case 17: $opcode = "op_code IN (12) AND payment_sys = 8"; break; //РѕСЃРјРї
+			case 22: $opcode = "op_code IN (12) AND payment_sys = 3"; break; //СЏРґ
 
 			case 23: $opcode = "op_code IN (12) AND payment_sys = 1"; break; //wmz
-			case 24: $opcode = "op_code IN (12) AND payment_sys = 2"; break; //wmrч
-			case 25: $opcode = "op_code IN (12) AND payment_sys = 4"; break; //бн
-			case 26: $opcode = "op_code IN (12) AND payment_sys = 17"; break; //сб
-			case 27: $opcode = "op_code IN (12) AND payment_sys = 6"; break; //карта
-			case 28: $opcode = "op_code IN (12) AND payment_sys = 9"; break; //киви
-			case 89: $opcode = "op_code IN (12) AND payment_sys = 16"; break; //альфа банк
-			case 29: $opcode = "op_code IN (12) AND payment_sys = 10"; break; //wmrб
-            case 117: $opcode = "op_code IN (12) AND payment_sys = 13"; break; //wmrб
+			case 24: $opcode = "op_code IN (12) AND payment_sys = 2"; break; //wmrС‡
+			case 25: $opcode = "op_code IN (12) AND payment_sys = 4"; break; //Р±РЅ
+			case 26: $opcode = "op_code IN (12) AND payment_sys = 17"; break; //СЃР±
+			case 27: $opcode = "op_code IN (12) AND payment_sys = 6"; break; //РєР°СЂС‚Р°
+			case 28: $opcode = "op_code IN (12) AND payment_sys = 9"; break; //РєРёРІРё
+			case 89: $opcode = "op_code IN (12) AND payment_sys = 16"; break; //Р°Р»СЊС„Р° Р±Р°РЅРє
+			case 29: $opcode = "op_code IN (12) AND payment_sys = 10"; break; //wmrР±
+            case 117: $opcode = "op_code IN (12) AND payment_sys = 13"; break; //wmrР±
 
             case 18: $opcode = "op_code IN (61)"; break;
             case 19: $opcode = "op_code IN (62) AND payment_sys = 7"; break;
             case 20: $opcode = "op_code IN (65)"; break;
 			case 21: $opcode = "op_code IN (55) AND payment_sys = 7"; break;
-			case 101: $opcode = "op_code IN (8,53,113,192)"; break; // Платные проекты
-			case 102: $opcode = "op_code = 54"; break; // Платные проекты (бонус)
+			case 101: $opcode = "op_code IN (8,53,113,192)"; break; // РџР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹
+			case 102: $opcode = "op_code = 54"; break; // РџР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹ (Р±РѕРЅСѓСЃ)
 			case 103:
                 $opCodes = implode(',', new_projects::getContestOpCodes());
                 $opcode = "op_code IN ($opCodes) AND bonus_ammount = 0";
-                break; // Конкурсы
-			case 104: $opcode = "op_code IN (9, 86, 106) AND bonus_ammount <> 0"; break; // Конкурсы (бонус)
+                break; // РљРѕРЅРєСѓСЂСЃС‹
+			case 104: $opcode = "op_code IN (9, 86, 106) AND bonus_ammount <> 0"; break; // РљРѕРЅРєСѓСЂСЃС‹ (Р±РѕРЅСѓСЃ)
 			case 107: $opcode = "op_code IN (107)"; break;
    
 
@@ -1766,31 +1766,31 @@ class account
 
 			case 70: $opcode = "op_code IN (70)"; break;
 			case 74: $opcode = "op_code IN (74)"; break;
-			case 71: $opcode = "op_code IN (71) AND payment_sys = 7"; break; //восстановление пароля
-			case 72: $opcode = "op_code IN (72, 88, 104)"; break; //поднятие конкурса
-			case 73: $opcode = "op_code IN (73, 108, 109, 111)"; break; // добавляем акцию "Масленица" 2012 года + акция первомай
+			case 71: $opcode = "op_code IN (71) AND payment_sys = 7"; break; //РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РїР°СЂРѕР»СЏ
+			case 72: $opcode = "op_code IN (72, 88, 104)"; break; //РїРѕРґРЅСЏС‚РёРµ РєРѕРЅРєСѓСЂСЃР°
+			case 73: $opcode = "op_code IN (73, 108, 109, 111)"; break; // РґРѕР±Р°РІР»СЏРµРј Р°РєС†РёСЋ "РњР°СЃР»РµРЅРёС†Р°" 2012 РіРѕРґР° + Р°РєС†РёСЏ РїРµСЂРІРѕРјР°Р№
 
             case 92: $opcode = "op_code IN (91) AND NOT ((role&'100000')='100000') "; break;
             case 75: $opcode = "op_code IN (93) AND NOT ((role&'100000')='100000') "; break;
             case 76: $opcode = "op_code IN (92) AND ((role&'100000')='100000')"; break;
             case 77: $opcode = "op_code IN (93) AND ((role&'100000')='100000')"; break;
-            case 80: $opcode = "op_code IN (80)"; break; // личный менеджер
-            case 82: $opcode = "op_code IN (82)"; break; // личный менеджер
+            case 80: $opcode = "op_code IN (80)"; break; // Р»РёС‡РЅС‹Р№ РјРµРЅРµРґР¶РµСЂ
+            case 82: $opcode = "op_code IN (82)"; break; // Р»РёС‡РЅС‹Р№ РјРµРЅРµРґР¶РµСЂ
             
-            //акция - сбер
+            //Р°РєС†РёСЏ - СЃР±РµСЂ
             case 83: $opcode = "op_code IN (95) AND NOT ((role&'100000')='100000') "; break;
             case 84: $opcode = "op_code IN (97) AND NOT ((role&'100000')='100000') "; break;
             case 85: $opcode = "op_code IN (96) AND ((role&'100000')='100000') "; break;
             case 86: $opcode = "op_code IN (97) AND ((role&'100000')='100000') "; break;
-            //акция - безнал
+            //Р°РєС†РёСЏ - Р±РµР·РЅР°Р»
             case 87: $opcode = "op_code IN (99) AND NOT ((role&'100000')='100000')  "; break;
             case 88: $opcode = "op_code IN (101) AND NOT ((role&'100000')='100000') "; break;
             case 90: $opcode = "op_code IN (100) AND ((role&'100000')='100000') "; break;
             case 91: $opcode = "op_code IN (101) AND ((role&'100000')='100000') "; break;
             case 94: $opcode = "op_code IN (94)"; break;    
             case 116: $opcode = "op_code IN(116)"; break;
-            case 118: $opcode = "op_code IN(117)"; break; // верификация через FF
-            // следующий номер использовать 93, 92 уже используется выше. Это чтобы не забыть
+            case 118: $opcode = "op_code IN(117)"; break; // РІРµСЂРёС„РёРєР°С†РёСЏ С‡РµСЂРµР· FF
+            // СЃР»РµРґСѓСЋС‰РёР№ РЅРѕРјРµСЂ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ 93, 92 СѓР¶Рµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІС‹С€Рµ. Р­С‚Рѕ С‡С‚РѕР±С‹ РЅРµ Р·Р°Р±С‹С‚СЊ
 
 			default: $opcode = "op_code IN (12)";
        $ignore = false;
@@ -1830,9 +1830,9 @@ class account
 	}
 	
 	/**
-	 * Взять данные для платных услуг
+	 * Р’Р·СЏС‚СЊ РґР°РЅРЅС‹Рµ РґР»СЏ РїР»Р°С‚РЅС‹С… СѓСЃР»СѓРі
 	 *
-	 * @param array $sql Запросы SQL для объединиеня их в один запрос
+	 * @param array $sql Р—Р°РїСЂРѕСЃС‹ SQL РґР»СЏ РѕР±СЉРµРґРёРЅРёРµРЅСЏ РёС… РІ РѕРґРёРЅ Р·Р°РїСЂРѕСЃ
 	 * @return array
 	 */
 	function getPayUsers($get, $ds, $de, $filter=false) {
@@ -1948,11 +1948,11 @@ class account
 	}
 	
 	/**
-	 * Считаем стоимость за период (Платные услуги)
+	 * РЎС‡РёС‚Р°РµРј СЃС‚РѕРёРјРѕСЃС‚СЊ Р·Р° РїРµСЂРёРѕРґ (РџР»Р°С‚РЅС‹Рµ СѓСЃР»СѓРіРё)
 	 * 
-	 * @param integer $ammount  Сумма оплаты
-	 * @param integer $days     Период в днях (по выбранному периоду)
-	 * @param integer $period   Реальный период оплаченного тарифа 
+	 * @param integer $ammount  РЎСѓРјРјР° РѕРїР»Р°С‚С‹
+	 * @param integer $days     РџРµСЂРёРѕРґ РІ РґРЅСЏС… (РїРѕ РІС‹Р±СЂР°РЅРЅРѕРјСѓ РїРµСЂРёРѕРґСѓ)
+	 * @param integer $period   Р РµР°Р»СЊРЅС‹Р№ РїРµСЂРёРѕРґ РѕРїР»Р°С‡РµРЅРЅРѕРіРѕ С‚Р°СЂРёС„Р° 
 	 * @return integer
 	 */
 	function ammountDay($ammount, $days, $period=1) {
@@ -1961,13 +1961,13 @@ class account
 	}
 	
 	/**
-	 * Взять оплаты юзера в определенный период времени
+	 * Р’Р·СЏС‚СЊ РѕРїР»Р°С‚С‹ СЋР·РµСЂР° РІ РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РїРµСЂРёРѕРґ РІСЂРµРјРµРЅРё
 	 *
-	 * @param array  $ps     Системы оплаты
-	 * @param string $fdate  С какой даты 
-	 * @param string $tdate  По какую дату
-	 * @param boolean $is_ret_data 		true - возвращать данные запроса, false - позвращать ссылку на результат запроса
-	 * @return array Результат выборки
+	 * @param array  $ps     РЎРёСЃС‚РµРјС‹ РѕРїР»Р°С‚С‹
+	 * @param string $fdate  РЎ РєР°РєРѕР№ РґР°С‚С‹ 
+	 * @param string $tdate  РџРѕ РєР°РєСѓСЋ РґР°С‚Сѓ
+	 * @param boolean $is_ret_data 		true - РІРѕР·РІСЂР°С‰Р°С‚СЊ РґР°РЅРЅС‹Рµ Р·Р°РїСЂРѕСЃР°, false - РїРѕР·РІСЂР°С‰Р°С‚СЊ СЃСЃС‹Р»РєСѓ РЅР° СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР°
+	 * @return array Р РµР·СѓР»СЊС‚Р°С‚ РІС‹Р±РѕСЂРєРё
 	 */
 	function GetUsersPayments($ps, $fdate, $tdate, $is_ret_data=true){
 		global $DB;
@@ -1991,12 +1991,12 @@ class account
 	}
 
 	/**
-	 * Начинает транзакцию (должно быть выполнено перед любой покупкой и подарком) или проверяет существующую
+	 * РќР°С‡РёРЅР°РµС‚ С‚СЂР°РЅР·Р°РєС†РёСЋ (РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РІС‹РїРѕР»РЅРµРЅРѕ РїРµСЂРµРґ Р»СЋР±РѕР№ РїРѕРєСѓРїРєРѕР№ Рё РїРѕРґР°СЂРєРѕРј) РёР»Рё РїСЂРѕРІРµСЂСЏРµС‚ СЃСѓС‰РµСЃС‚РІСѓСЋС‰СѓСЋ
 	 *
 	 * @param integer $user_id		UID
-	 * @param integer $tr_id		идентификатор возможной текущей транзакции
-	 * @param boolean $yd			является операцией вывода ЯД
-	 * @return integer				идентификатор транзакции
+	 * @param integer $tr_id		РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РІРѕР·РјРѕР¶РЅРѕР№ С‚РµРєСѓС‰РµР№ С‚СЂР°РЅР·Р°РєС†РёРё
+	 * @param boolean $yd			СЏРІР»СЏРµС‚СЃСЏ РѕРїРµСЂР°С†РёРµР№ РІС‹РІРѕРґР° РЇР”
+	 * @return integer				РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚СЂР°РЅР·Р°РєС†РёРё
 	 */
 	function start_transaction($user_id, $tr_id = 0, $yd = false){
 		global $DB;
@@ -2011,9 +2011,9 @@ class account
 	}
 
 	/**
-	 * Показывает ошибку
+	 * РџРѕРєР°Р·С‹РІР°РµС‚ РѕС€РёР±РєСѓ
 	 *
-	 * @param string $error	текст ошибки
+	 * @param string $error	С‚РµРєСЃС‚ РѕС€РёР±РєРё
 	 */
 	function view_error($error){
 	    $_SESSION['bill.GET']['error'] = $error;
@@ -2022,12 +2022,12 @@ class account
 	}
 
 	/**
-	 * Проверяет идентификатор транзакции. Если транзакция с таким идентификатором завершена, то возвращает 0,
-	 * иначе - идентификатор транзакции
+	 * РџСЂРѕРІРµСЂСЏРµС‚ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚СЂР°РЅР·Р°РєС†РёРё. Р•СЃР»Рё С‚СЂР°РЅР·Р°РєС†РёСЏ СЃ С‚Р°РєРёРј РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРј Р·Р°РІРµСЂС€РµРЅР°, С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ 0,
+	 * РёРЅР°С‡Рµ - РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚СЂР°РЅР·Р°РєС†РёРё
 	 *
-	 * @param integer $tr_id		идентификатор транзакции
-	 * @param integer $user_id		ID Пользователя
-	 * @return integer				идентификатор транзакции или 0
+	 * @param integer $tr_id		РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚СЂР°РЅР·Р°РєС†РёРё
+	 * @param integer $user_id		ID РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @return integer				РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚СЂР°РЅР·Р°РєС†РёРё РёР»Рё 0
 	 */
 	function check_transaction($tr_id, $user_id){
 		global $DB;
@@ -2037,12 +2037,12 @@ class account
 	}
 
 	/**
-	 * Завершает транзакцию
+	 * Р—Р°РІРµСЂС€Р°РµС‚ С‚СЂР°РЅР·Р°РєС†РёСЋ
 	 *
-	 * @param integer $tr_id		идентификатор транзакции
-	 * @param integer $user_id		ID Пользователя
-	 * @param integer $op_id		идентификатор операции
-	 * @return integer				Всегда возвращает 0
+	 * @param integer $tr_id		РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚СЂР°РЅР·Р°РєС†РёРё
+	 * @param integer $user_id		ID РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param integer $op_id		РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРїРµСЂР°С†РёРё
+	 * @return integer				Р’СЃРµРіРґР° РІРѕР·РІСЂР°С‰Р°РµС‚ 0
 	 */
 	function commit_transaction($tr_id, $user_id, $op_id){
 		global $DB;
@@ -2055,27 +2055,27 @@ class account
 	}
 
 	/**
-	 * Перевод денег на другой аккаунт
+	 * РџРµСЂРµРІРѕРґ РґРµРЅРµРі РЅР° РґСЂСѓРіРѕР№ Р°РєРєР°СѓРЅС‚
 	 *
-	 * @param integer $uid					UID переводящего
-	 * @param integer $gid					UID кому переводят
-	 * @param integer $sum					сумма
-	 * @param integer $transaction_id		идентификатор транзакции
-	 * @param string  $comments				комментарии переводящего
-	 * @return integer						1 - все ок, 0 - иначе
+	 * @param integer $uid					UID РїРµСЂРµРІРѕРґСЏС‰РµРіРѕ
+	 * @param integer $gid					UID РєРѕРјСѓ РїРµСЂРµРІРѕРґСЏС‚
+	 * @param integer $sum					СЃСѓРјРјР°
+	 * @param integer $transaction_id		РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚СЂР°РЅР·Р°РєС†РёРё
+	 * @param string  $comments				РєРѕРјРјРµРЅС‚Р°СЂРёРё РїРµСЂРµРІРѕРґСЏС‰РµРіРѕ
+	 * @return integer						1 - РІСЃРµ РѕРє, 0 - РёРЅР°С‡Рµ
 	 */
 	function transfer($uid, $gid, $sum, $transaction_id, $comments, $commit = true, $trs_sum = 0){
 		global $DB;
 		$user_transfer = $gid;
         if (!$transaction_id || $transaction_id != $this -> check_transaction($transaction_id, $uid)) {
-			$this -> view_error("Невозможно завершить транзакцию");
+			$this -> view_error("РќРµРІРѕР·РјРѕР¶РЅРѕ Р·Р°РІРµСЂС€РёС‚СЊ С‚СЂР°РЅР·Р°РєС†РёСЋ");
 		} else {
 			$res = $DB->query("SELECT account.sum, account.id FROM account WHERE account.uid=?", $uid);
-			if ($DB->error) return "Ошибка при получении информации о счете!";
+			if ($DB->error) return "РћС€РёР±РєР° РїСЂРё РїРѕР»СѓС‡РµРЅРёРё РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃС‡РµС‚Рµ!";
 
 			list($ac_sum, $bill_id) = pg_fetch_row($res);
 
-			if ($sum > $ac_sum) return "Недостаточно средств на счету!";
+			if ($sum > $ac_sum) return "РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ РЅР° СЃС‡РµС‚Сѓ!";
 
 			$ok = $this->GetInfo($gid);
 			if (!$ok) {
@@ -2083,32 +2083,32 @@ class account
 				$this->GetInfo($gid);
 			}
 
-			if ($sum < 0) return "Перевод на отрицательную сумму!";
+			if ($sum < 0) return "РџРµСЂРµРІРѕРґ РЅР° РѕС‚СЂРёС†Р°С‚РµР»СЊРЅСѓСЋ СЃСѓРјРјСѓ!";
 			$descr = '';
 			$res = $DB->query(
 				"SELECT gid, id FROM MakeGift(?, ?, ?, ?, ?, ?, ?, ?, ?, ?) as (gid integer, id integer)",
 				$bill_id, $this->id, 23, $sum, $descr, $comments, $uid, $gid, $sum, $trs_sum
 			);
-			if ($DB->error) return "Ошибка при записи счета!";
+			if ($DB->error) return "РћС€РёР±РєР° РїСЂРё Р·Р°РїРёСЃРё СЃС‡РµС‚Р°!";
 			else {
                 $_SESSION['ac_sum'] = $_SESSION['ac_sum'] - $sum;
             }
 			list($gid, $id) = pg_fetch_row($res);
 			if ($commit) $this -> commit_transaction($transaction_id, $uid, $id);
-                        // для счетчика everesttech.net (см. engine/templates/footer.tpl)
+                        // РґР»СЏ СЃС‡РµС‚С‡РёРєР° everesttech.net (СЃРј. engine/templates/footer.tpl)
                         if ( $sum > 0 ) {
                             $_SESSION['everesttech_conter'] = 1;
                         }
             $user = new users();
             $user->GetUserByUID($user_transfer);
-            // Обновляем сессию пользователю сразу при поступлении денежных средств
+            // РћР±РЅРѕРІР»СЏРµРј СЃРµСЃСЃРёСЋ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ СЃСЂР°Р·Сѓ РїСЂРё РїРѕСЃС‚СѓРїР»РµРЅРёРё РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ
             $session = new session();
             $session->UpdateAccountSum($user->login);
 
-            // уведомление в юзербаре
+            // СѓРІРµРґРѕРјР»РµРЅРёРµ РІ СЋР·РµСЂР±Р°СЂРµ
             require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/bar_notify.php");
             $bar_notify = new bar_notify($user->uid);
-            $bar_notify->addNotify('bill', null, "На счет зачислено $sum руб.");
+            $bar_notify->addNotify('bill', null, "РќР° СЃС‡РµС‚ Р·Р°С‡РёСЃР»РµРЅРѕ $sum СЂСѓР±.");
 
 			return 1;
 		}
@@ -2116,10 +2116,10 @@ class account
 	}
 
 	/**
-	 * Возвращает массив всех переводов за указанный период
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ РІСЃРµС… РїРµСЂРµРІРѕРґРѕРІ Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ
 	 *
-	 * @param string $fdate		c какого дня
-	 * @param string $tdate		по какой день
+	 * @param string $fdate		c РєР°РєРѕРіРѕ РґРЅСЏ
+	 * @param string $tdate		РїРѕ РєР°РєРѕР№ РґРµРЅСЊ
 	 * @return array
 	 */
 	function GetTransfers($fdate, $tdate){
@@ -2135,10 +2135,10 @@ class account
 	}
 
 	/**
-	 * Возвращает массив всех подарков за указанный период
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ РІСЃРµС… РїРѕРґР°СЂРєРѕРІ Р·Р° СѓРєР°Р·Р°РЅРЅС‹Р№ РїРµСЂРёРѕРґ
 	 *
-	 * @param string $fdate		c какого дня
-	 * @param string $tdate		по какой день
+	 * @param string $fdate		c РєР°РєРѕРіРѕ РґРЅСЏ
+	 * @param string $tdate		РїРѕ РєР°РєРѕР№ РґРµРЅСЊ
 	 * @return array
 	 */
 	function GetGifts($fdate, $tdate){
@@ -2155,10 +2155,10 @@ class account
 	}
 
 	/**
-	 * Отменить перевод денег.
+	 * РћС‚РјРµРЅРёС‚СЊ РїРµСЂРµРІРѕРґ РґРµРЅРµРі.
 	 *
-	 * @param integer $id		идентификатор перевода (из таблицы подарков!)
-	 * @return integer			Всегда возвращает 0
+	 * @param integer $id		РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРµСЂРµРІРѕРґР° (РёР· С‚Р°Р±Р»РёС†С‹ РїРѕРґР°СЂРєРѕРІ!)
+	 * @return integer			Р’СЃРµРіРґР° РІРѕР·РІСЂР°С‰Р°РµС‚ 0
 	 */
 	function DropTransfer($id){
 		global $DB;
@@ -2170,22 +2170,22 @@ class account
 	}
 
 	/**
-	 * Возвращает название платежной системы
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РЅР°Р·РІР°РЅРёРµ РїР»Р°С‚РµР¶РЅРѕР№ СЃРёСЃС‚РµРјС‹
 	 * 
-	 * @param  int $payment_sys код платежной системы
+	 * @param  int $payment_sys РєРѕРґ РїР»Р°С‚РµР¶РЅРѕР№ СЃРёСЃС‚РµРјС‹
 	 * @return string
 	 */
     public static function GetPSName( $payment_sys ) {
         $out = '';
         switch((int)$payment_sys) {
             case 7:
-                $out .= 'СМС';
+                $out .= 'РЎРњРЎ';
                 break;
             case 8:
-                $out .= 'ОСМП';
+                $out .= 'РћРЎРњРџ';
                 break;
             case 3:
-                $out .= 'Яндекс.Деньги';
+                $out .= 'РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё';
                 break;
             case 1:
                 $out .= 'WMZ';
@@ -2194,40 +2194,40 @@ class account
                 $out .= 'WMR';
                 break;
             case 4:
-                $out .= 'безналичный расчет';
+                $out .= 'Р±РµР·РЅР°Р»РёС‡РЅС‹Р№ СЂР°СЃС‡РµС‚';
                 break;
             case 5:
-                $out .= 'квитанцию Сбербанка';
+                $out .= 'РєРІРёС‚Р°РЅС†РёСЋ РЎР±РµСЂР±Р°РЅРєР°';
                 break;
             case 6:
-                $out .= 'пластиковую карту';
+                $out .= 'РїР»Р°СЃС‚РёРєРѕРІСѓСЋ РєР°СЂС‚Сѓ';
                 break;
             case 9:
-                $out .= 'QIWI кошелек';
+                $out .= 'QIWI РєРѕС€РµР»РµРє';
                 break;
             case 10:
                 $out .= 'WMR';
                 break;
             case 11:
-                $out .= 'Альфа-Банк';
+                $out .= 'РђР»СЊС„Р°-Р‘Р°РЅРє';
                 break;
             case 13:
-                $out .= 'Веб-кошелек';
+                $out .= 'Р’РµР±-РєРѕС€РµР»РµРє';
                 break;
             case 14:
                 $out .= 'OKPAY';
                 break;
             case 15:
-                $out .= 'Плати потом';
+                $out .= 'РџР»Р°С‚Рё РїРѕС‚РѕРј';
                 break;
             case 16: 
-                $out .= "Альфа-Клик";
+                $out .= "РђР»СЊС„Р°-РљР»РёРє";
                 break;
             case 17: 
-                $out .= "Сбербанк Онлайн";
+                $out .= "РЎР±РµСЂР±Р°РЅРє РћРЅР»Р°Р№РЅ";
                 break;
             default:
-                $out = 'пополнение счета';
+                $out = 'РїРѕРїРѕР»РЅРµРЅРёРµ СЃС‡РµС‚Р°';
                 break;
         }
         
@@ -2235,32 +2235,32 @@ class account
     }
 
 	/**
-	 * Информация об операции
+	 * РРЅС„РѕСЂРјР°С†РёСЏ РѕР± РѕРїРµСЂР°С†РёРё
 	 *
-	 * @param integer $bill_id		идентификатор операции
-	 * @return string				информация об операции				
+	 * @param integer $bill_id		РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРїРµСЂР°С†РёРё
+	 * @return string				РёРЅС„РѕСЂРјР°С†РёСЏ РѕР± РѕРїРµСЂР°С†РёРё				
 	 */
 	function GetOrderInfo($bill_id, $uid = NULL, $mode = 1){
 		global $DB;
         $q = $DB->query("SELECT descr, payment_sys, billing_id, op_code FROM account_operations WHERE id = ?i", $bill_id);
         if(!$q) return NULL;
 		list($out, $payment_sys, $billing_id, $op_code) = pg_fetch_row($q);
-		if($mode!=2 && $op_code == 12){// пополнение счета
-			$out = 'Пополнение счета через '.self::GetPSName($payment_sys);
+		if($mode!=2 && $op_code == 12){// РїРѕРїРѕР»РЅРµРЅРёРµ СЃС‡РµС‚Р°
+			$out = 'РџРѕРїРѕР»РЅРµРЅРёРµ СЃС‡РµС‚Р° С‡РµСЂРµР· '.self::GetPSName($payment_sys);
 			//return $out;
 		}
                 
         switch($payment_sys) {
             case 4:
-                // Безнал юр. лица
+                // Р‘РµР·РЅР°Р» СЋСЂ. Р»РёС†Р°
 				if($reqv = $DB->row("SELECT * FROM reqv_ordered WHERE billing_id = ?i", $bill_id)) {
-                    $out = 'Перевод по безналу для юр. лиц, '.$reqv['full_name'].', счет Б-'.$billing_id.'-'.($reqv['bill_no']+1).', заказ '.$reqv['id'];
+                    $out = 'РџРµСЂРµРІРѕРґ РїРѕ Р±РµР·РЅР°Р»Сѓ РґР»СЏ СЋСЂ. Р»РёС†, '.$reqv['full_name'].', СЃС‡РµС‚ Р‘-'.$billing_id.'-'.($reqv['bill_no']+1).', Р·Р°РєР°Р· '.$reqv['id'];
                 }
                 break;
             case 5:
-                // Сбербанк физ. лица
+                // РЎР±РµСЂР±Р°РЅРє С„РёР·. Р»РёС†Р°
                 if($bank = $DB->row("SELECT * FROM bank_payments WHERE billing_id = ?i", $bill_id)) {
-                    $out = 'Перевод по безналу для физ. лиц, '.$bank['bill_num'].', заказ '.$bank['id'];
+                    $out = 'РџРµСЂРµРІРѕРґ РїРѕ Р±РµР·РЅР°Р»Сѓ РґР»СЏ С„РёР·. Р»РёС†, '.$bank['bill_num'].', Р·Р°РєР°Р· '.$bank['id'];
                 }
                 break;
         }
@@ -2268,13 +2268,13 @@ class account
 	}
 	
 	/**
-	 * Снять зарезервированные деньги со счета (СБР)
+	 * РЎРЅСЏС‚СЊ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРЅС‹Рµ РґРµРЅСЊРіРё СЃРѕ СЃС‡РµС‚Р° (РЎР‘Р )
 	 *
-	 * @param integer $eid				uid работодателя
-	 * @param integer $reserve_id		id операции резервирования денег работодателем
-     * @param string  $descr            комменты к транзакции
-     * @param string  $comments         комменты к операции для юзера.
-	 * @return integer					идентификатор операции списания денег
+	 * @param integer $eid				uid СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ
+	 * @param integer $reserve_id		id РѕРїРµСЂР°С†РёРё СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ РґРµРЅРµРі СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµРј
+     * @param string  $descr            РєРѕРјРјРµРЅС‚С‹ Рє С‚СЂР°РЅР·Р°РєС†РёРё
+     * @param string  $comments         РєРѕРјРјРµРЅС‚С‹ Рє РѕРїРµСЂР°С†РёРё РґР»СЏ СЋР·РµСЂР°.
+	 * @return integer					РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕРїРµСЂР°С†РёРё СЃРїРёСЃР°РЅРёСЏ РґРµРЅРµРі
 	 */
     function CommitReserved($eid, $reserve_id, $descr, $op_code = 37, $sum = NULL, $comments = NULL){
 		global $DB;
@@ -2293,27 +2293,27 @@ class account
 			'trs_sum'     => -$sum
 		), 'id');
 		
-		// количество операций
+		// РєРѕР»РёС‡РµСЃС‚РІРѕ РѕРїРµСЂР°С†РёР№
 		$_SESSION['account_operations'] = intval($_SESSION['account_operations']) + 1;
 	}
 	
 	/**
-	 * Зачислить деньги после списания с резерва (или арбитража) (СБР)
+	 * Р—Р°С‡РёСЃР»РёС‚СЊ РґРµРЅСЊРіРё РїРѕСЃР»Рµ СЃРїРёСЃР°РЅРёСЏ СЃ СЂРµР·РµСЂРІР° (РёР»Рё Р°СЂР±РёС‚СЂР°Р¶Р°) (РЎР‘Р )
 	 *
-	 * @param integer $fid				uid кому зачисляем
-	 * @param float   $sum				сумма
-	 * @param integer $money_type		тип денег
-     * @param string  $descr            комменты к операции
-	 * @param string  $errors			возвращает массив ошибок
-	 * @param integer $op_code			код операции
-     * @param string  $comments         комменты к операции для юзера.
-	 * @return integer					id операции в account_operations
+	 * @param integer $fid				uid РєРѕРјСѓ Р·Р°С‡РёСЃР»СЏРµРј
+	 * @param float   $sum				СЃСѓРјРјР°
+	 * @param integer $money_type		С‚РёРї РґРµРЅРµРі
+     * @param string  $descr            РєРѕРјРјРµРЅС‚С‹ Рє РѕРїРµСЂР°С†РёРё
+	 * @param string  $errors			РІРѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ РѕС€РёР±РѕРє
+	 * @param integer $op_code			РєРѕРґ РѕРїРµСЂР°С†РёРё
+     * @param string  $comments         РєРѕРјРјРµРЅС‚С‹ Рє РѕРїРµСЂР°С†РёРё РґР»СЏ СЋР·РµСЂР°.
+	 * @return integer					id РѕРїРµСЂР°С†РёРё РІ account_operations
 	 */
     function TransferReserved($fid, $sum, $money_type, $descr, &$errors, $op_code = 38, $comments = NULL){
 		global $DB;
 		$user_account = new account();
 		$user_account->GetInfo($fid);
-		//Если в ФМ, то надо пополнять сразу
+		//Р•СЃР»Рё РІ Р¤Рњ, С‚Рѕ РЅР°РґРѕ РїРѕРїРѕР»РЅСЏС‚СЊ СЃСЂР°Р·Сѓ
 		$ammount =($money_type == 0)?$sum:0;
         $frl_accept_id = $DB->insert('account_operations', array(
             'billing_id'  => $user_account->id,
@@ -2325,17 +2325,17 @@ class account
             'trs_sum'     => $sum
         ), 'id');
 			
-        // количество операций
+        // РєРѕР»РёС‡РµСЃС‚РІРѕ РѕРїРµСЂР°С†РёР№
         $_SESSION['account_operations'] = intval($_SESSION['account_operations']) + 1;
 		return $frl_accept_id;
 	}
 	
 	/**
-	 * Получить TOP-100 пользователей, которые принесли больше всего денег
+	 * РџРѕР»СѓС‡РёС‚СЊ TOP-100 РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№, РєРѕС‚РѕСЂС‹Рµ РїСЂРёРЅРµСЃР»Рё Р±РѕР»СЊС€Рµ РІСЃРµРіРѕ РґРµРЅРµРі
 	 *
-	 * @param  string $users_table  используемая таблица
-	 * @param  date   $period_from	дата начала периода
-	 * @param  date   $period_to	дата окончания периода
+	 * @param  string $users_table  РёСЃРїРѕР»СЊР·СѓРµРјР°СЏ С‚Р°Р±Р»РёС†Р°
+	 * @param  date   $period_from	РґР°С‚Р° РЅР°С‡Р°Р»Р° РїРµСЂРёРѕРґР°
+	 * @param  date   $period_to	РґР°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РїРµСЂРёРѕРґР°
 	 * @return array
 	 */
 	function GetMoneyTop100( $users_table = 'users', $period_from='1970-01-01', $period_to = 'NOW()' ) {
@@ -2352,11 +2352,11 @@ class account
 	}
 
 	/**
-	 * Получить сумму денег, которые принес пользователь за определенный период
+	 * РџРѕР»СѓС‡РёС‚СЊ СЃСѓРјРјСѓ РґРµРЅРµРі, РєРѕС‚РѕСЂС‹Рµ РїСЂРёРЅРµСЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р° РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РїРµСЂРёРѕРґ
 	 *
-	 * @param array $uarray		uid пользователей
-	 * @param date $period_from	дата начала периода
-	 * @param date $period_to	дата окончания периода
+	 * @param array $uarray		uid РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
+	 * @param date $period_from	РґР°С‚Р° РЅР°С‡Р°Р»Р° РїРµСЂРёРѕРґР°
+	 * @param date $period_to	РґР°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РїРµСЂРёРѕРґР°
 	 * @return array
 	 */
 	function GetMoneyTop100UsersByPeriod($uarray, $period_from = '2000-01-01', $period_to = 'NOW()'){
@@ -2372,10 +2372,10 @@ class account
 	}
 	
 	/**
-	 * Найти данные по операции по описанию
+	 * РќР°Р№С‚Рё РґР°РЅРЅС‹Рµ РїРѕ РѕРїРµСЂР°С†РёРё РїРѕ РѕРїРёСЃР°РЅРёСЋ
 	 *
-	 * @param string $text   текст описания
-	 * @return array   информация по операции.
+	 * @param string $text   С‚РµРєСЃС‚ РѕРїРёСЃР°РЅРёСЏ
+	 * @return array   РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ РѕРїРµСЂР°С†РёРё.
 	 */
 	function SearchPaymentByDescr($text){
 		global $DB;
@@ -2383,10 +2383,10 @@ class account
 	}
 	
 	/**
-	 * Взять юзера по идентификатору его счета
+	 * Р’Р·СЏС‚СЊ СЋР·РµСЂР° РїРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂСѓ РµРіРѕ СЃС‡РµС‚Р°
 	 *
-	 * @param integer $id   ид счета.
-	 * @return array   данные по юзеру
+	 * @param integer $id   РёРґ СЃС‡РµС‚Р°.
+	 * @return array   РґР°РЅРЅС‹Рµ РїРѕ СЋР·РµСЂСѓ
 	 */
 	function GetUserByAccID($id){
 		global $DB;
@@ -2395,20 +2395,20 @@ class account
 	
 	
 	/**
-	 * Взять данные для истории по периоду (новый личный счет)
+	 * Р’Р·СЏС‚СЊ РґР°РЅРЅС‹Рµ РґР»СЏ РёСЃС‚РѕСЂРёРё РїРѕ РїРµСЂРёРѕРґСѓ (РЅРѕРІС‹Р№ Р»РёС‡РЅС‹Р№ СЃС‡РµС‚)
 	 *
 	 * @see  class page_bill
 	 * 
-	 * @param string  $sdate 	Дата начало периода
-	 * @param string  $edate 	Дата окончание периода
-	 * @param integer $sort  	Тип сортировки (1,2 - сортировка по дате; 3,4 - сортировка по коду операции (op_codes); 5,6 - сортировка по сумме) по умолчанию сортировка по дате
-	 * @param string  $type  	Доп переменная для фильтровки результатов, по умолчанию false @see page_bill::historyAction() 
-	 * @param integer $page  	Страница выборки
-	 * @param integer $pages 	Возвращает количество страниц 
-	 * @param integer $total 	Возвращает количество данных выборки
+	 * @param string  $sdate 	Р”Р°С‚Р° РЅР°С‡Р°Р»Рѕ РїРµСЂРёРѕРґР°
+	 * @param string  $edate 	Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёРµ РїРµСЂРёРѕРґР°
+	 * @param integer $sort  	РўРёРї СЃРѕСЂС‚РёСЂРѕРІРєРё (1,2 - СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РґР°С‚Рµ; 3,4 - СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РєРѕРґСѓ РѕРїРµСЂР°С†РёРё (op_codes); 5,6 - СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ СЃСѓРјРјРµ) РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЃРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РґР°С‚Рµ
+	 * @param string  $type  	Р”РѕРї РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ С„РёР»СЊС‚СЂРѕРІРєРё СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ, РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ false @see page_bill::historyAction() 
+	 * @param integer $page  	РЎС‚СЂР°РЅРёС†Р° РІС‹Р±РѕСЂРєРё
+	 * @param integer $pages 	Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚СЂР°РЅРёС† 
+	 * @param integer $total 	Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РґР°РЅРЅС‹С… РІС‹Р±РѕСЂРєРё
 
-	 * @param integer $count 	Число показа данных на странице
-	 * @return array 			Данные выборки
+	 * @param integer $count 	Р§РёСЃР»Рѕ РїРѕРєР°Р·Р° РґР°РЅРЅС‹С… РЅР° СЃС‚СЂР°РЅРёС†Рµ
+	 * @return array 			Р”Р°РЅРЅС‹Рµ РІС‹Р±РѕСЂРєРё
 	 */
 	function searchBillHistory($sdate, $edate, $sort, $type=false, $page=1, &$pages, &$total, $count=10) {
 		global $DB;
@@ -2448,7 +2448,7 @@ class account
         $opCodes = new_projects::getContestOpCodes();
         $opCodesSql = implode(',', $opCodes);
         
-		// op_code <> 77 СБР не выводим тк деньги через ЛС не проходят #0020554 
+		// op_code <> 77 РЎР‘Р  РЅРµ РІС‹РІРѕРґРёРј С‚Рє РґРµРЅСЊРіРё С‡РµСЂРµР· Р›РЎ РЅРµ РїСЂРѕС…РѕРґСЏС‚ #0020554 
 		$sql = "SELECT op_date, op_name, ammount, comments, op_code, account_operations.id, round(balance,2) as balance, trs_sum, payment_sys, p.id as project_id
                 FROM account_operations
 				LEFT JOIN account ON account.id=account_operations.billing_id
@@ -2476,11 +2476,11 @@ class account
 	}
 
     /**
-     * возвращает историю платежей
-     * @param int $page номер страницы
-     * @param int $itemsPerPageсколько пунктов на одной странице
-     * @param string $startTime дата начала периода
-     * @param int $opCode назначение платежа
+     * РІРѕР·РІСЂР°С‰Р°РµС‚ РёСЃС‚РѕСЂРёСЋ РїР»Р°С‚РµР¶РµР№
+     * @param int $page РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹
+     * @param int $itemsPerPageСЃРєРѕР»СЊРєРѕ РїСѓРЅРєС‚РѕРІ РЅР° РѕРґРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ
+     * @param string $startTime РґР°С‚Р° РЅР°С‡Р°Р»Р° РїРµСЂРёРѕРґР°
+     * @param int $opCode РЅР°Р·РЅР°С‡РµРЅРёРµ РїР»Р°С‚РµР¶Р°
      */
     public static function getBillHistory ($page = 1, $itemsPerPage = null, $startTime = null, $opCode = null, $getCount = true) {
         global $DB;
@@ -2514,7 +2514,7 @@ class account
             $whereDataReserveSql = $DB->parse('AND create_time >= ?', date('c', $startTime));
         }
 
-        if ($opCode) { // назначение платежа
+        if ($opCode) { // РЅР°Р·РЅР°С‡РµРЅРёРµ РїР»Р°С‚РµР¶Р°
             switch ($opCode) {
                 case 77:
                     $whereOpCodeSql = 'AND ao.op_code IN (36, 77)';
@@ -2539,7 +2539,7 @@ class account
             $reserve_operation = "UNION
             SELECT create_time as op_date, round(bq.ammount, 2) as ammount, null::text as descr, null::text as comments, ".billing::RESERVE_OP_CODE." as op_code, id,
                 null::numeric as balance, null::integer as trs_sum, payment as payment_sys,
-                'Список заказов №'|| id ||' на сумму ' || round(bq.ammount, 2) || ' руб' as op_name,
+                'РЎРїРёСЃРѕРє Р·Р°РєР°Р·РѕРІ в„–'|| id ||' РЅР° СЃСѓРјРјСѓ ' || round(bq.ammount, 2) || ' СЂСѓР±' as op_name,
                 null::integer as project_id, status, FALSE
             FROM bill_reserve
             INNER JOIN bill_queue_ammount as bq ON bq.reserve_id = bill_reserve .id
@@ -2577,7 +2577,7 @@ class account
             $reserve_operation    
             $limit";
         $result['items'] = $DB->rows($sql, $uid, billing::STATUS_RESERVE, $uid, $uid, billing::STATUS_RESERVE);
-        // считаем общее количество денежных операций
+        // СЃС‡РёС‚Р°РµРј РѕР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РґРµРЅРµР¶РЅС‹С… РѕРїРµСЂР°С†РёР№
         if ($itemsPerPage && $getCount) {
             $sqlItemsCount =  "
                 WITH count_history AS (
@@ -2607,13 +2607,13 @@ class account
     }
 	
 	/**
-	 * Берем все события произошедшие за данный период (новый личный счет)
+	 * Р‘РµСЂРµРј РІСЃРµ СЃРѕР±С‹С‚РёСЏ РїСЂРѕРёР·РѕС€РµРґС€РёРµ Р·Р° РґР°РЅРЅС‹Р№ РїРµСЂРёРѕРґ (РЅРѕРІС‹Р№ Р»РёС‡РЅС‹Р№ СЃС‡РµС‚)
 	 *
 	 * @see  class page_bill 
 	 * 
-	 * @param string $sdate Дата начала периода
-	 * @param string $edate Дата окочнация периода
-	 * @return array Данные выборки
+	 * @param string $sdate Р”Р°С‚Р° РЅР°С‡Р°Р»Р° РїРµСЂРёРѕРґР°
+	 * @param string $edate Р”Р°С‚Р° РѕРєРѕС‡РЅР°С†РёСЏ РїРµСЂРёРѕРґР°
+	 * @return array Р”Р°РЅРЅС‹Рµ РІС‹Р±РѕСЂРєРё
 	 */
 	function searchBillEvent($sdate, $edate) {
 		global $DB;
@@ -2640,15 +2640,15 @@ class account
 	}
 	
 	/**
-	 * Выбираем дни в месяце где были операции (новый личный счет)
+	 * Р’С‹Р±РёСЂР°РµРј РґРЅРё РІ РјРµСЃСЏС†Рµ РіРґРµ Р±С‹Р»Рё РѕРїРµСЂР°С†РёРё (РЅРѕРІС‹Р№ Р»РёС‡РЅС‹Р№ СЃС‡РµС‚)
 	 *
 	 * @see  class page_bill 
 	 * 
-	 * @param integer  $month    Месяц (если false, берем текущий месяц)
-	 * @param integer  $uid      ИД Пользовтаеля  (если false, берем юзера из сессии)
-	 * @param array    $type     Типы операция (op_codes) 
-	 * @param integer  $year     Год (если false, берем текущий год)
-	 * @return array 			 Данные выборки
+	 * @param integer  $month    РњРµСЃСЏС† (РµСЃР»Рё false, Р±РµСЂРµРј С‚РµРєСѓС‰РёР№ РјРµСЃСЏС†)
+	 * @param integer  $uid      РР” РџРѕР»СЊР·РѕРІС‚Р°РµР»СЏ  (РµСЃР»Рё false, Р±РµСЂРµРј СЋР·РµСЂР° РёР· СЃРµСЃСЃРёРё)
+	 * @param array    $type     РўРёРїС‹ РѕРїРµСЂР°С†РёСЏ (op_codes) 
+	 * @param integer  $year     Р“РѕРґ (РµСЃР»Рё false, Р±РµСЂРµРј С‚РµРєСѓС‰РёР№ РіРѕРґ)
+	 * @return array 			 Р”Р°РЅРЅС‹Рµ РІС‹Р±РѕСЂРєРё
 	 */
 	function getDateBillOperation($month=false, $uid=false, $type=false, $year = false)  {
 		global $DB;
@@ -2688,43 +2688,43 @@ class account
 	}	
 
     /**
-     * Выводит информацию по операциям SMS для админки.
-     * Разбирает поле account_operations.descr (см. /classes/ifreepay.php) для получения данных.
+     * Р’С‹РІРѕРґРёС‚ РёРЅС„РѕСЂРјР°С†РёСЋ РїРѕ РѕРїРµСЂР°С†РёСЏРј SMS РґР»СЏ Р°РґРјРёРЅРєРё.
+     * Р Р°Р·Р±РёСЂР°РµС‚ РїРѕР»Рµ account_operations.descr (СЃРј. /classes/ifreepay.php) РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РґР°РЅРЅС‹С….
      * @see ifreepay::processRequest()
      *
-     * @param string $from_date   начало периода (включительно).
-     * @param string $to_date     конец периода (включительно).
+     * @param string $from_date   РЅР°С‡Р°Р»Рѕ РїРµСЂРёРѕРґР° (РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ).
+     * @param string $to_date     РєРѕРЅРµС† РїРµСЂРёРѕРґР° (РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ).
      * @return array
      */
     function getSmsInfo($from_date = '2009-01-01', $to_date = 'now()') {
         global $DB;
 		return $DB->rows(
         "select substring(descr from E'\\\\(\\\\w{2}\\\\)') as country,
-                replace(substring(descr from E'номер \\\\d{4}'),'номер ','') as phone,
-                replace(substring(descr from E'оператор [^,]*'),'оператор ','') as oper,
+                replace(substring(descr from E'РЅРѕРјРµСЂ \\\\d{4}'),'РЅРѕРјРµСЂ ','') as phone,
+                replace(substring(descr from E'РѕРїРµСЂР°С‚РѕСЂ [^,]*'),'РѕРїРµСЂР°С‚РѕСЂ ','') as oper,
                 count(*) as count,
                 sum(trs_sum)*0.5 as sum,
                 sum(coalesce(so.profit, (trs_sum*30*0.5))) as profit
            from account_operations
            LEFT JOIN sms_operations so ON operation_id = account_operations.id
           where (so.id IS NULL OR so.profit IS NOT NULL) AND payment_sys = 7
-            and substr(descr,1,4) <> 'ОСМП'
+            and substr(descr,1,4) <> 'РћРЎРњРџ'
             and op_date >= ? and op_date < ?::date +'1 day'::interval
           group by substring(descr from E'\\\\(\\\\w{2}\\\\)'), 
-                   replace(substring(descr from E'номер \\\\d{4}'),'номер ',''),
-                   replace(substring(descr from E'оператор [^,]*'),'оператор ','')
+                   replace(substring(descr from E'РЅРѕРјРµСЂ \\\\d{4}'),'РЅРѕРјРµСЂ ',''),
+                   replace(substring(descr from E'РѕРїРµСЂР°С‚РѕСЂ [^,]*'),'РѕРїРµСЂР°С‚РѕСЂ ','')
           order by country, phone, oper, count
 		", $from_date, $to_date);
         return NULL;
     }
 
     /**
-     * Выводит информацию по операциям SMS в CSV для админки.
-     * Разбирает поле account_operations.descr (см. /classes/ifreepay.php) для получения данных.
+     * Р’С‹РІРѕРґРёС‚ РёРЅС„РѕСЂРјР°С†РёСЋ РїРѕ РѕРїРµСЂР°С†РёСЏРј SMS РІ CSV РґР»СЏ Р°РґРјРёРЅРєРё.
+     * Р Р°Р·Р±РёСЂР°РµС‚ РїРѕР»Рµ account_operations.descr (СЃРј. /classes/ifreepay.php) РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РґР°РЅРЅС‹С….
      * @see ifreepay::processRequest()
      *
-     * @param string $from_date   начало периода (включительно).
-     * @param string $to_date     конец периода (включительно).
+     * @param string $from_date   РЅР°С‡Р°Р»Рѕ РїРµСЂРёРѕРґР° (РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ).
+     * @param string $to_date     РєРѕРЅРµС† РїРµСЂРёРѕРґР° (РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ).
      * @return array
      */
     function getSmsInfoInCSV($from_date = '2009-01-01', $to_date = 'now()') {
@@ -2733,21 +2733,21 @@ class account
         $to_date   = pg_escape_string($to_date);
 		return $DB->rows(
         "select regexp_replace(descr, E'^.*?#(\\\\d+).*$', E'\\\\1') as evtId,
-                regexp_replace(descr, E'^.*?с номера (\\\\d+).*$', E'\\\\1') as MSISDN,
-                regexp_replace(descr, E'^.*?текст: ([^,]+).*$', E'\\\\1') as SmsText,
-                regexp_replace(descr, E'^.*?обработан (\\\\d+).*$', E'\\\\1') as Time--, descr
+                regexp_replace(descr, E'^.*?СЃ РЅРѕРјРµСЂР° (\\\\d+).*$', E'\\\\1') as MSISDN,
+                regexp_replace(descr, E'^.*?С‚РµРєСЃС‚: ([^,]+).*$', E'\\\\1') as SmsText,
+                regexp_replace(descr, E'^.*?РѕР±СЂР°Р±РѕС‚Р°РЅ (\\\\d+).*$', E'\\\\1') as Time--, descr
                 from account_operations where op_date >= ? AND op_date < ?::date+1 AND payment_sys = 7
                 order by evtId;
 		", $from_date, $to_date);
     }
     
 	/**
-	 * Сортировка в истории 
+	 * РЎРѕСЂС‚РёСЂРѕРІРєР° РІ РёСЃС‚РѕСЂРёРё 
 	 *
-	 * @deprecated эта функция нигде не используется вроде как...
+	 * @deprecated СЌС‚Р° С„СѓРЅРєС†РёСЏ РЅРёРіРґРµ РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІСЂРѕРґРµ РєР°Рє...
 	 * 
-	 * @param integer $sort Тип сортировки
-	 * @param integer $uid  ИД пользователя
+	 * @param integer $sort РўРёРї СЃРѕСЂС‚РёСЂРѕРІРєРё
+	 * @param integer $uid  РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	 * @return array
 	 */
 	function billHistorySort($sort, $uid) {
@@ -2789,11 +2789,11 @@ class account
 	}
 	
 	/**
-	 * Получает кол-во пользователей которые были TESTPRO и купили PRO в указанном периоде
+	 * РџРѕР»СѓС‡Р°РµС‚ РєРѕР»-РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РєРѕС‚РѕСЂС‹Рµ Р±С‹Р»Рё TESTPRO Рё РєСѓРїРёР»Рё PRO РІ СѓРєР°Р·Р°РЅРЅРѕРј РїРµСЂРёРѕРґРµ
 	 *
-	 * @param string $fdate     Дата начала периода
-	 * @param string $tdate     Дата окончания периода
-	 * @return integer          кол-во пользователей
+	 * @param string $fdate     Р”Р°С‚Р° РЅР°С‡Р°Р»Р° РїРµСЂРёРѕРґР°
+	 * @param string $tdate     Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РїРµСЂРёРѕРґР°
+	 * @return integer          РєРѕР»-РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
 	 */
     function GetStatTestBuyPro($fdate,$tdate) {
         global $DB;
@@ -2826,16 +2826,16 @@ class account
     }
 
 	/**
-	 * Получает кол-во бонусов полученных пользователями по акции пополнения счета через ЯД. Подробности на /bill/
+	 * РџРѕР»СѓС‡Р°РµС‚ РєРѕР»-РІРѕ Р±РѕРЅСѓСЃРѕРІ РїРѕР»СѓС‡РµРЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРјРё РїРѕ Р°РєС†РёРё РїРѕРїРѕР»РЅРµРЅРёСЏ СЃС‡РµС‚Р° С‡РµСЂРµР· РЇР”. РџРѕРґСЂРѕР±РЅРѕСЃС‚Рё РЅР° /bill/
 	 *
-	 * @param string $fdate     С даты
-	 * @param string $tdate     По дату
-	 * @return array            [frl_pro] - pro в подарок, [frl_main] - размещение на главной в подарок, [emp_pro] - pro в подарок, [emp_fm] - 85 FM на бонусный счет
+	 * @param string $fdate     РЎ РґР°С‚С‹
+	 * @param string $tdate     РџРѕ РґР°С‚Сѓ
+	 * @return array            [frl_pro] - pro РІ РїРѕРґР°СЂРѕРє, [frl_main] - СЂР°Р·РјРµС‰РµРЅРёРµ РЅР° РіР»Р°РІРЅРѕР№ РІ РїРѕРґР°СЂРѕРє, [emp_pro] - pro РІ РїРѕРґР°СЂРѕРє, [emp_fm] - 85 FM РЅР° Р±РѕРЅСѓСЃРЅС‹Р№ СЃС‡РµС‚
 	 */
     function GetStatBonuses($fdate,$tdate) {
         global $DB;
 		$stat = array('frl_pro'=>0,'frl_main'=>0,'emp_pro'=>0,'emp_fm'=>0);
-        // Фрилансер PRO в подарок
+        // Р¤СЂРёР»Р°РЅСЃРµСЂ PRO РІ РїРѕРґР°СЂРѕРє
         $data = $DB->row("SELECT count(o.*) as count 
                 FROM account_operations as o,
                      account_transaction as t,
@@ -2847,7 +2847,7 @@ class account
                       t.user_id=f.uid
                 ");
         $stat['frl_pro'] = $data['count'];
-        // Фрилансер размещение на главной в подарок
+        // Р¤СЂРёР»Р°РЅСЃРµСЂ СЂР°Р·РјРµС‰РµРЅРёРµ РЅР° РіР»Р°РІРЅРѕР№ РІ РїРѕРґР°СЂРѕРє
         $sql = "SELECT count(*) as count 
                 FROM account_operations  
                 WHERE op_date>='$fdate 00:00:00.000000' AND 
@@ -2856,7 +2856,7 @@ class account
                 ";
         $data = $DB->row($sql);
         $stat['frl_main'] = $data['count'];
-        // Работадатель PRO в подарок
+        // Р Р°Р±РѕС‚Р°РґР°С‚РµР»СЊ PRO РІ РїРѕРґР°СЂРѕРє
         $sql = "SELECT count(o.*) as count 
                 FROM account_operations as o,
                      account_transaction as t,
@@ -2869,7 +2869,7 @@ class account
                 ";
         $data = $DB->row($sql);
         $stat['emp_pro'] = $data['count'];
-        // Работадатель 85 FM на бонусный счет
+        // Р Р°Р±РѕС‚Р°РґР°С‚РµР»СЊ 85 FM РЅР° Р±РѕРЅСѓСЃРЅС‹Р№ СЃС‡РµС‚
         $sql = "SELECT count(*) as count  
                 FROM account_operations  
                 WHERE op_date>='$fdate 00:00:00.000000' AND 
@@ -2883,11 +2883,11 @@ class account
     }
     
     /**
-	 * Заблокировать операцию
+	 * Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РѕРїРµСЂР°С†РёСЋ
 	 *
-	 * @param integer $uid			ID Пользователя Который производит блокировку
-	 * @param integer $opid			идентификатор типа операции
-	 * @return string			сообщение об ошибке
+	 * @param integer $uid			ID РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ РљРѕС‚РѕСЂС‹Р№ РїСЂРѕРёР·РІРѕРґРёС‚ Р±Р»РѕРєРёСЂРѕРІРєСѓ
+	 * @param integer $opid			РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С‚РёРїР° РѕРїРµСЂР°С†РёРё
+	 * @return string			СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function Blocked($uid, $opid){
 		$class = $this->GetOperationClassName($opid);
@@ -2900,10 +2900,10 @@ class account
 	}
 	
 	/**
-	 * Разблокировать заблокированную операцию
+	 * Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅСѓСЋ РѕРїРµСЂР°С†РёСЋ
 	 *
-	 * @param integer $uid			ИД заблокированной записи 
-	 * @param integer $operation	ИД заблокированной операции
+	 * @param integer $uid			РР” Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅРѕР№ Р·Р°РїРёСЃРё 
+	 * @param integer $operation	РР” Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅРѕР№ РѕРїРµСЂР°С†РёРё
 	 */
 	function unBlocked($uid, $opid) {
 		$class = $this->GetOperationClassName($opid);
@@ -2917,11 +2917,11 @@ class account
 	
 	
 	/**
-	 * Статистика про покупкам ПРО аккаунта
+	 * РЎС‚Р°С‚РёСЃС‚РёРєР° РїСЂРѕ РїРѕРєСѓРїРєР°Рј РџР Рћ Р°РєРєР°СѓРЅС‚Р°
 	 * 
-	 * @param string  $from_date	c какого дня
-	 * @param string  $to_date		по какой день
-	 * @return array [данные по фрилансерам, данные по работодателям]
+	 * @param string  $from_date	c РєР°РєРѕРіРѕ РґРЅСЏ
+	 * @param string  $to_date		РїРѕ РєР°РєРѕР№ РґРµРЅСЊ
+	 * @return array [РґР°РЅРЅС‹Рµ РїРѕ С„СЂРёР»Р°РЅСЃРµСЂР°Рј, РґР°РЅРЅС‹Рµ РїРѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏРј]
 	 */
 	function getStatsPRO($from_date = '2000-01-01', $to_date = 'now()') {
 	    global $DB;
@@ -2943,9 +2943,9 @@ class account
                        FROM account_operations
                        WHERE 
                        op_date >= ? AND op_date < ?::date +'1 day'::interval AND
-                       op_code IN (15, 28, 48, 49, 50, 51, 76, 131, 132,    -- обычные покупки.
-                                         16, 35, 42, 52, 66, 67, 68, -- подарки.
-                                         47)                         -- пробник.
+                       op_code IN (15, 28, 48, 49, 50, 51, 76, 131, 132,    -- РѕР±С‹С‡РЅС‹Рµ РїРѕРєСѓРїРєРё.
+                                         16, 35, 42, 52, 66, 67, 68, -- РїРѕРґР°СЂРєРё.
+                                         47)                         -- РїСЂРѕР±РЅРёРє.
                        GROUP BY billing_id
                      ) as x
                 INNER JOIN account a ON a.id = x.billing_id
@@ -2976,9 +2976,9 @@ class account
 	}
 
 	/**
-	 * Возвращает одну или несколько (одновременных) самых последних операций пользователя.
-	 * @param integer $uid   ид. пользователя.
-	 * @return array   операции.
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕРґРЅСѓ РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ (РѕРґРЅРѕРІСЂРµРјРµРЅРЅС‹С…) СЃР°РјС‹С… РїРѕСЃР»РµРґРЅРёС… РѕРїРµСЂР°С†РёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
+	 * @param integer $uid   РёРґ. РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
+	 * @return array   РѕРїРµСЂР°С†РёРё.
 	 */
     function getLastOperations($uid) {	
         global $DB;
@@ -3001,7 +3001,7 @@ class account
             LIMIT 1
         ";
 		if ($rows = $DB->rows($sql, $uid, $uid)) {
-            if( in_array($rows[0]['op_code'], array(12, 77)) ) // deposit()-коды, не проходят через account_transactions.
+            if( in_array($rows[0]['op_code'], array(12, 77)) ) // deposit()-РєРѕРґС‹, РЅРµ РїСЂРѕС…РѕРґСЏС‚ С‡РµСЂРµР· account_transactions.
                 return $rows;
         }
         
@@ -3025,16 +3025,16 @@ class account
     }	
 	
 	/**
-	 * Информация о успешно прошедшей операции
+	 * РРЅС„РѕСЂРјР°С†РёСЏ Рѕ СѓСЃРїРµС€РЅРѕ РїСЂРѕС€РµРґС€РµР№ РѕРїРµСЂР°С†РёРё
 	 * 
-	 * @param array $data - Информация об операции
-	 * @return array информация
+	 * @param array $data - РРЅС„РѕСЂРјР°С†РёСЏ РѕР± РѕРїРµСЂР°С†РёРё
+	 * @return array РёРЅС„РѕСЂРјР°С†РёСЏ
 	 */
 	function getSuccessInfo($data) {
 	    if($data['op_code'] == 12) {
 	        list($sys, $cur) = self::getPaymentSysName($data['payment_sys']);
 	        $suc = array("date"  => $data['op_date'],
-	                     "name"  => "Пополнение счета ({$sys})",
+	                     "name"  => "РџРѕРїРѕР»РЅРµРЅРёРµ СЃС‡РµС‚Р° ({$sys})",
 	                     "descr" => '',
 	                     "sum"   => $data['trs_sum']." {$cur}",   
 	                   );
@@ -3044,7 +3044,7 @@ class account
         if($data['op_code'] == 77) {
 			require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/sbr.php');
             $suc = array("date"  => $data['op_date'],
-                         "name"  => "Резервирование денег («Безопасная Сделка»)",
+                         "name"  => "Р РµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ РґРµРЅРµРі (В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В»)",
                          "descr" => '',
                          "sum"   => sbr_meta::view_cost($data['trs_sum'], $data['payment_sys']+1)
                        );
@@ -3052,28 +3052,28 @@ class account
             return $suc;
         }
 	    $sum = abs($data['ammount']);
-	    return array("date" => $data['op_date'], "name" => $data['op_name'] , "descr" => $data['comments'], "sum"=> $sum." руб.");
+	    return array("date" => $data['op_date'], "name" => $data['op_name'] , "descr" => $data['comments'], "sum"=> $sum." СЂСѓР±.");
 	}
 	
 	/**
-	 * Название системы по его ИД
+	 * РќР°Р·РІР°РЅРёРµ СЃРёСЃС‚РµРјС‹ РїРѕ РµРіРѕ РР”
 	 *
-	 * @param integer $sys ИД Системы
-	 * @return string название
+	 * @param integer $sys РР” РЎРёСЃС‚РµРјС‹
+	 * @return string РЅР°Р·РІР°РЅРёРµ
 	 */
 	function getPaymentSysName($sys) {
 	    switch($sys) {
 	        case 1: $s = "WebMoney WMZ"; $c = "USD"; break;
-	        case 2: $s = "WebMoney WMR"; $c = "Руб."; break;
-	        case 3: $s = "Яндекс.Деньги"; $c = "Руб."; break;
-	        case 4: $s = "Безналичный расчет"; $c = "Руб."; break;
-	        case 5: $s = "Сбербанк"; $c = "Руб."; break;
-	        case 6: $s = "Пластиковые карты"; $c = "Руб."; break;
-	        case 7: $s = "SMS"; $c = "Руб."; break;
-	        case 8: $s = "ОСМП"; $c = "Руб."; break;
-            case 10: $s = "WebMoney WMR"; $c = "Руб."; break;
-            case 16: $s = "Альфа-Клик"; $c = "Руб."; break;
-            case 17: $s = "Сбербанк Онлайн"; $c = "Руб."; break;
+	        case 2: $s = "WebMoney WMR"; $c = "Р СѓР±."; break;
+	        case 3: $s = "РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё"; $c = "Р СѓР±."; break;
+	        case 4: $s = "Р‘РµР·РЅР°Р»РёС‡РЅС‹Р№ СЂР°СЃС‡РµС‚"; $c = "Р СѓР±."; break;
+	        case 5: $s = "РЎР±РµСЂР±Р°РЅРє"; $c = "Р СѓР±."; break;
+	        case 6: $s = "РџР»Р°СЃС‚РёРєРѕРІС‹Рµ РєР°СЂС‚С‹"; $c = "Р СѓР±."; break;
+	        case 7: $s = "SMS"; $c = "Р СѓР±."; break;
+	        case 8: $s = "РћРЎРњРџ"; $c = "Р СѓР±."; break;
+            case 10: $s = "WebMoney WMR"; $c = "Р СѓР±."; break;
+            case 16: $s = "РђР»СЊС„Р°-РљР»РёРє"; $c = "Р СѓР±."; break;
+            case 17: $s = "РЎР±РµСЂР±Р°РЅРє РћРЅР»Р°Р№РЅ"; $c = "Р СѓР±."; break;
 	        default: $s = ""; break;
 	    }
 	    
@@ -3081,10 +3081,10 @@ class account
 	}
 	
 	/**
-	 * Берем сумму на последний момент на странице истории
+	 * Р‘РµСЂРµРј СЃСѓРјРјСѓ РЅР° РїРѕСЃР»РµРґРЅРёР№ РјРѕРјРµРЅС‚ РЅР° СЃС‚СЂР°РЅРёС†Рµ РёСЃС‚РѕСЂРёРё
 	 * 
-	 * @param string $date - Тут дата
-	 * @return integer сумма
+	 * @param string $date - РўСѓС‚ РґР°С‚Р°
+	 * @return integer СЃСѓРјРјР°
 	 */
 	function getLastSumHistory($date) {
 	   global $DB;
@@ -3092,10 +3092,10 @@ class account
 	}
 	
 	/**
-	 * Заблокировать деньги у пользователя
+	 * Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	 *
-	 * @param integer $uid    ИД Пользователя
-	 * @param boolean $block  Заблокировать или разблокировать пользователя (true - заблокировать, false - разблокировать)
+	 * @param integer $uid    РР” РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param boolean $block  Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РёР»Рё СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (true - Р·Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ, false - СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ)
 	 */
 	function setBlockMoney($uid, $block=true) {
 	    global $DB;
@@ -3104,12 +3104,12 @@ class account
 	}
 
     /**
-     * Прикрепляет файлы
+     * РџСЂРёРєСЂРµРїР»СЏРµС‚ С„Р°Р№Р»С‹
      * 
-     * @param  array $files массив файлов
-     * @param  string $dir папка назначения
-     * @param  bool $formatted true - файлы являются экземплярами CFile, иначе false
-     * @return mixed сообщение об ошибке или 0
+     * @param  array $files РјР°СЃСЃРёРІ С„Р°Р№Р»РѕРІ
+     * @param  string $dir РїР°РїРєР° РЅР°Р·РЅР°С‡РµРЅРёСЏ
+     * @param  bool $formatted true - С„Р°Р№Р»С‹ СЏРІР»СЏСЋС‚СЃСЏ СЌРєР·РµРјРїР»СЏСЂР°РјРё CFile, РёРЅР°С‡Рµ false
+     * @return mixed СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё 0
      */
     function addAttach($files, $dir, $formatted=false) {
         global $DB;
@@ -3139,21 +3139,21 @@ class account
             if(++$i > self::MAX_FILE_COUNT) continue;
             $ext = $file->getext();
             $file->orig_name = change_q_x($file->name);
-            if(!in_array($ext, $GLOBALS['graf_array']) || $ext == 'swf') return "Неверный формат файла: {$file->orig_name}";
+            if(!in_array($ext, $GLOBALS['graf_array']) || $ext == 'swf') return "РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ С„Р°Р№Р»Р°: {$file->orig_name}";
             $file->max_size = self::MAX_FILE_SIZE;
             if(!$file->MoveUploadedFile($dir) || !isNulArray($file->error))
                 return $file->StrError();
             $sql .= "INSERT INTO account_attach (account_id, file_id, name, orig_name) VALUES ({$this->id}, {$file->id}, '{$file->name}', '{$file->orig_name}');";
         }
         if($sql && !$DB->query($sql))
-           return 'Ошибка';
+           return 'РћС€РёР±РєР°';
 
         return 0;
     }
     
     /**
-     * делает запись о новом файле или удаляет запись
-     * @param $attach список файлов полученый из attachedfiles::getFiles()
+     * РґРµР»Р°РµС‚ Р·Р°РїРёСЃСЊ Рѕ РЅРѕРІРѕРј С„Р°Р№Р»Рµ РёР»Рё СѓРґР°Р»СЏРµС‚ Р·Р°РїРёСЃСЊ
+     * @param $attach СЃРїРёСЃРѕРє С„Р°Р№Р»РѕРІ РїРѕР»СѓС‡РµРЅС‹Р№ РёР· attachedfiles::getFiles()
      */
     function addAttach2 ($attach) {
         global $DB;
@@ -3163,24 +3163,24 @@ class account
 
         $sql = '';
         foreach ($attach as $file) {
-            if ($file['status'] == 1) { // токо что загруженные файлы
+            if ($file['status'] == 1) { // С‚РѕРєРѕ С‡С‚Рѕ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Рµ С„Р°Р№Р»С‹
                 $sql .= "INSERT INTO account_attach (account_id, file_id, name, orig_name) VALUES (?i, ?i, ?, ?);";
                 $sql = $DB->parse($sql, $this->id, $file['id'], $file['name'], $file['orig_name']);
-            } elseif ($file['status'] == 4) { // удаленные, ранее загруженные файлы
+            } elseif ($file['status'] == 4) { // СѓРґР°Р»РµРЅРЅС‹Рµ, СЂР°РЅРµРµ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Рµ С„Р°Р№Р»С‹
                 $sql .= "UPDATE account_attach SET deleted = TRUE WHERE file_id = {$file['id']};";
             }
         }
         if ($sql && !$DB->query($sql)) {
-           return 'Ошибка';
+           return 'РћС€РёР±РєР°';
         }
        
         return 0;        
     }
 
     /**
-     * Возвращает все прикрепленные файлы или определенный файл
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµ РїСЂРёРєСЂРµРїР»РµРЅРЅС‹Рµ С„Р°Р№Р»С‹ РёР»Рё РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ С„Р°Р№Р»
      * 
-     * @param  int $attach_id опционально. ID файла
+     * @param  int $attach_id РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. ID С„Р°Р№Р»Р°
      * @return array
      */
     function getAllAttach($attach_id = NULL) {
@@ -3208,7 +3208,7 @@ class account
     
     
     /**
-     * Есть ли сканы?
+     * Р•СЃС‚СЊ Р»Рё СЃРєР°РЅС‹?
      * 
      * @global object $DB
      * @return type
@@ -3223,10 +3223,10 @@ class account
 
 
     /**
-     * Удаляет определенный файл
+     * РЈРґР°Р»СЏРµС‚ РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ С„Р°Р№Р»
      *
-     * @param  int $attach_id ID файла
-     * @return bool true - успех, false - провал
+     * @param  int $attach_id ID С„Р°Р№Р»Р°
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function delAttach($attach_id) {
         global $DB;
@@ -3234,7 +3234,7 @@ class account
         if(!($aa = $this->getAllAttach($attach_id)))
             return false;
         $DB->query("UPDATE account_attach SET deleted = TRUE WHERE id = ?", $attach_id);
-        // в док.файлы не удаляем. храним для истории
+        // РІ РґРѕРє.С„Р°Р№Р»С‹ РЅРµ СѓРґР°Р»СЏРµРј. С…СЂР°РЅРёРј РґР»СЏ РёСЃС‚РѕСЂРёРё
         /*$cfile = new CFile();
         foreach($aa as $a) {
             $cfile->Delete(0, $a['path'], $a['name']);
@@ -3244,12 +3244,12 @@ class account
 
 
     /**
-     * Возвращает статистику по вводу/выводу СБР
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕ РІРІРѕРґСѓ/РІС‹РІРѕРґСѓ РЎР‘Р 
      *
-     * @param string $from_date     фильтр: начальная дата
-     * @param string $to_date       фильтр: конечная дата
-     * @param array $op_codes       массив с кодами операций
-     * @return array                массив или NULL
+     * @param string $from_date     С„РёР»СЊС‚СЂ: РЅР°С‡Р°Р»СЊРЅР°СЏ РґР°С‚Р°
+     * @param string $to_date       С„РёР»СЊС‚СЂ: РєРѕРЅРµС‡РЅР°СЏ РґР°С‚Р°
+     * @param array $op_codes       РјР°СЃСЃРёРІ СЃ РєРѕРґР°РјРё РѕРїРµСЂР°С†РёР№
+     * @return array                РјР°СЃСЃРёРІ РёР»Рё NULL
      */
     function GetStatSbrInOut($from_date = '2000-01-01', $to_date = 'now()', $op_codes = array(36, 38, 77, 79)) {
 		global $DB;
@@ -3276,11 +3276,11 @@ class account
     }
 
     /**
-     * Возвращает статистику по комиссиям СБР
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РїРѕ РєРѕРјРёСЃСЃРёСЏРј РЎР‘Р 
      *
-     * @param string $from_date     фильтр: начальная дата
-     * @param string $to_date       фильтр: конечная дата
-     * @return array                массив или NULL
+     * @param string $from_date     С„РёР»СЊС‚СЂ: РЅР°С‡Р°Р»СЊРЅР°СЏ РґР°С‚Р°
+     * @param string $to_date       С„РёР»СЊС‚СЂ: РєРѕРЅРµС‡РЅР°СЏ РґР°С‚Р°
+     * @return array                РјР°СЃСЃРёРІ РёР»Рё NULL
      */
     function GetStatSbrCommission($from_date = '2000-01-01', $to_date = 'now()') {
         global $DB;
@@ -3309,9 +3309,9 @@ class account
     }
     
     /**
-     * Получаем инфу по определенной операции
+     * РџРѕР»СѓС‡Р°РµРј РёРЅС„Сѓ РїРѕ РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ РѕРїРµСЂР°С†РёРё
      * 
-     * @param integer $operation_id - ID операции
+     * @param integer $operation_id - ID РѕРїРµСЂР°С†РёРё
      * @return mixed
      */
     public static function getOperationInfo($operation_id){
@@ -3322,47 +3322,47 @@ class account
 
 
     /**
-     * Проверка номера счета ЯД
+     * РџСЂРѕРІРµСЂРєР° РЅРѕРјРµСЂР° СЃС‡РµС‚Р° РЇР”
      *
-     * @param string $input     Строка с номером счета
-     * @return boolean          Результат проверки
+     * @param string $input     РЎС‚СЂРѕРєР° СЃ РЅРѕРјРµСЂРѕРј СЃС‡РµС‚Р°
+     * @return boolean          Р РµР·СѓР»СЊС‚Р°С‚ РїСЂРѕРІРµСЂРєРё
      */
     public static function isValidYd($input) {
         $N = $X = $Y = $Z = null;
         
-        // Если строка пуста или содержит символы, отличные от цифр,
-        // то разбор невозможен и строка недействительна.
-        // Максимально возможная длина номера — 32
+        // Р•СЃР»Рё СЃС‚СЂРѕРєР° РїСѓСЃС‚Р° РёР»Рё СЃРѕРґРµСЂР¶РёС‚ СЃРёРјРІРѕР»С‹, РѕС‚Р»РёС‡РЅС‹Рµ РѕС‚ С†РёС„СЂ,
+        // С‚Рѕ СЂР°Р·Р±РѕСЂ РЅРµРІРѕР·РјРѕР¶РµРЅ Рё СЃС‚СЂРѕРєР° РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅР°.
+        // РњР°РєСЃРёРјР°Р»СЊРЅРѕ РІРѕР·РјРѕР¶РЅР°СЏ РґР»РёРЅР° РЅРѕРјРµСЂР° вЂ” 32
         if (strlen($input) == 0 || preg_match("/[\D]+/", $input) || strlen($input) > 32)
             return false;
 
-        // только рубли
+        // С‚РѕР»СЊРєРѕ СЂСѓР±Р»Рё
         if (substr($input, 0, 5) != '41001')
             return false;
 
-        // Если первая цифра равна 0, то разбор невозможен и
-        // строка недействительна, в противном случае N= первая цифра.
+        // Р•СЃР»Рё РїРµСЂРІР°СЏ С†РёС„СЂР° СЂР°РІРЅР° 0, С‚Рѕ СЂР°Р·Р±РѕСЂ РЅРµРІРѕР·РјРѕР¶РµРЅ Рё
+        // СЃС‚СЂРѕРєР° РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅР°, РІ РїСЂРѕС‚РёРІРЅРѕРј СЃР»СѓС‡Р°Рµ N= РїРµСЂРІР°СЏ С†РёС„СЂР°.
         if (intval(substr($input, 0, 1)) == 0)
             return false;
 
         $N = intval(substr($input, 0, 1));
 
-        // Если длина строки меньше N+4, то разбор невозможен и строка недействительна.
+        // Р•СЃР»Рё РґР»РёРЅР° СЃС‚СЂРѕРєРё РјРµРЅСЊС€Рµ N+4, С‚Рѕ СЂР°Р·Р±РѕСЂ РЅРµРІРѕР·РјРѕР¶РµРЅ Рё СЃС‚СЂРѕРєР° РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅР°.
         if (strlen($input) < $N+4)
             return false;
 
-        // Если две последние цифры строки равны "00", то строка недействительна.
+        // Р•СЃР»Рё РґРІРµ РїРѕСЃР»РµРґРЅРёРµ С†РёС„СЂС‹ СЃС‚СЂРѕРєРё СЂР°РІРЅС‹ "00", С‚Рѕ СЃС‚СЂРѕРєР° РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅР°.
         if (substr($input, (strlen($input)-2), 2) == "00")
             return false;
 
-        // X = N цифр, начиная со второй;
+        // X = N С†РёС„СЂ, РЅР°С‡РёРЅР°СЏ СЃРѕ РІС‚РѕСЂРѕР№;
         $X = substr($input, 1, $N);
-        // Z = две последних цифры
+        // Z = РґРІРµ РїРѕСЃР»РµРґРЅРёС… С†РёС„СЂС‹
         $Z = substr($input, (strlen($input)-2), 2);
-        // Y =  оставшиеся цифры
+        // Y =  РѕСЃС‚Р°РІС€РёРµСЃСЏ С†РёС„СЂС‹
         $Y = substr($input, $N+1, (strlen($input)-2-($N+1)));
 
-        //Если длина Y больше 20, то строка недействительна
+        //Р•СЃР»Рё РґР»РёРЅР° Y Р±РѕР»СЊС€Рµ 20, С‚Рѕ СЃС‚СЂРѕРєР° РЅРµРґРµР№СЃС‚РІРёС‚РµР»СЊРЅР°
         if (strlen($Y) > 20)
             return false;
 
@@ -3370,21 +3370,21 @@ class account
         /**
          * AccountNumberRedundancy
          *
-         * X записывается как последовательность 10 десятичных цифр:
-         * X = X9  X8  … X0
-         * Пример: для X = 67458
+         * X Р·Р°РїРёСЃС‹РІР°РµС‚СЃСЏ РєР°Рє РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ 10 РґРµСЃСЏС‚РёС‡РЅС‹С… С†РёС„СЂ:
+         * X = X9  X8  вЂ¦ X0
+         * РџСЂРёРјРµСЂ: РґР»СЏ X = 67458
          *      X0  = 8	X1 =  5	X2  = 4	X3  = 7	X4  = 6	X5  = 0 X6  = 0	X7  = 0	X8  = 0	X9  = 0
          *
-         * Y записывается как последовательность 20 десятичных цифр:
-         * Y = Y19  Y18  … Y0
-         * Пример: для Y = 3285076
+         * Y Р·Р°РїРёСЃС‹РІР°РµС‚СЃСЏ РєР°Рє РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ 20 РґРµСЃСЏС‚РёС‡РЅС‹С… С†РёС„СЂ:
+         * Y = Y19  Y18  вЂ¦ Y0
+         * РџСЂРёРјРµСЂ: РґР»СЏ Y = 3285076
          *      Y0  = 6	Y1 =  7	Y2  = 0	Y3  = 5	Y4  = 8	Y5  = 2	Y6  = 3
          *            Y7  = 0	Y8  = 0	Y9  = 0	Y10  = 0	Y11  = 0	Y12  = 0	Y13  = 0
          *            Y14  = 0	Y15  = 0	Y16  = 0	Y17  = 0	Y18  = 0	Y19  = 0
          *
-         * Важно!
-         * Нули слева в X и Y, которые являются незначащими
-         * с точки зрения десятичной записи X и Y, пропускать НЕЛЬЗЯ.
+         * Р’Р°Р¶РЅРѕ!
+         * РќСѓР»Рё СЃР»РµРІР° РІ X Рё Y, РєРѕС‚РѕСЂС‹Рµ СЏРІР»СЏСЋС‚СЃСЏ РЅРµР·РЅР°С‡Р°С‰РёРјРё
+         * СЃ С‚РѕС‡РєРё Р·СЂРµРЅРёСЏ РґРµСЃСЏС‚РёС‡РЅРѕР№ Р·Р°РїРёСЃРё X Рё Y, РїСЂРѕРїСѓСЃРєР°С‚СЊ РќР•Р›Р¬Р—РЇ.
          */
         
         $Xs = str_pad($X, 10, "0", STR_PAD_LEFT);
@@ -3417,10 +3417,10 @@ class account
     }
     
     /**
-     * Количество денег, потраченных на сервис
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ РґРµРЅРµРі, РїРѕС‚СЂР°С‡РµРЅРЅС‹С… РЅР° СЃРµСЂРІРёСЃ
      * 
-     * @global object $DB Класс для работы с БД 
-     * @param integer $uid ИД пользователя
+     * @global object $DB РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р‘Р” 
+     * @param integer $uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * @return float;
      */
     public function getSumAmmountSpentService($uid) {
@@ -3432,45 +3432,45 @@ class account
     }
   
     /**
-     * Проверка, был ли новый возврат денег 
-     * @param $uid идентификатор пользователя     
-     * @param &$lastId    идентификатор последней операции возврата средств за рассылку, о которой пользователя оповестили
-     * @param &$currentId идентификатор последней операции возврата средств за рассылку, о которой пользователя не оповестили
-     * @return true если существует возврат денег, о котором пользователя не оповестили  
+     * РџСЂРѕРІРµСЂРєР°, Р±С‹Р» Р»Рё РЅРѕРІС‹Р№ РІРѕР·РІСЂР°С‚ РґРµРЅРµРі 
+     * @param $uid РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ     
+     * @param &$lastId    РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕСЃР»РµРґРЅРµР№ РѕРїРµСЂР°С†РёРё РІРѕР·РІСЂР°С‚Р° СЃСЂРµРґСЃС‚РІ Р·Р° СЂР°СЃСЃС‹Р»РєСѓ, Рѕ РєРѕС‚РѕСЂРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РѕРїРѕРІРµСЃС‚РёР»Рё
+     * @param &$currentId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕСЃР»РµРґРЅРµР№ РѕРїРµСЂР°С†РёРё РІРѕР·РІСЂР°С‚Р° СЃСЂРµРґСЃС‚РІ Р·Р° СЂР°СЃСЃС‹Р»РєСѓ, Рѕ РєРѕС‚РѕСЂРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅРµ РѕРїРѕРІРµСЃС‚РёР»Рё
+     * @return true РµСЃР»Рё СЃСѓС‰РµСЃС‚РІСѓРµС‚ РІРѕР·РІСЂР°С‚ РґРµРЅРµРі, Рѕ РєРѕС‚РѕСЂРѕРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅРµ РѕРїРѕРІРµСЃС‚РёР»Рё  
      */
     public static function GetNewMoneyBack ($uid, &$lastId, &$currentId) {
         global $DB;
-        //получаем последний номер записи возврата денег, о котором было уведомление
+        //РїРѕР»СѓС‡Р°РµРј РїРѕСЃР»РµРґРЅРёР№ РЅРѕРјРµСЂ Р·Р°РїРёСЃРё РІРѕР·РІСЂР°С‚Р° РґРµРЅРµРі, Рѕ РєРѕС‚РѕСЂРѕРј Р±С‹Р»Рѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
         $uid = (int)$uid;
         $query   = "SELECT last_deny_subscribe_op_id FROM users_counters WHERE user_id = $uid";
         $lastId  = $DB->val($query);
-        //получаем последний номер записи возврата денег из лога операций
+        //РїРѕР»СѓС‡Р°РµРј РїРѕСЃР»РµРґРЅРёР№ РЅРѕРјРµСЂ Р·Р°РїРёСЃРё РІРѕР·РІСЂР°С‚Р° РґРµРЅРµРі РёР· Р»РѕРіР° РѕРїРµСЂР°С†РёР№
         $query = "SELECT id FROM account_operations 
                   WHERE billing_id = (SELECT id FROM account WHERE uid = $uid)
                         AND op_code = 46 
         ORDER BY op_date DESC LIMIT 1";
         $currentId = $DB->val($query);
-        //если они не равны вернем истину
+        //РµСЃР»Рё РѕРЅРё РЅРµ СЂР°РІРЅС‹ РІРµСЂРЅРµРј РёСЃС‚РёРЅСѓ
         if ($currentId != $lastId) {           
             return true;
         }
-        //иначе вернем ложь
+        //РёРЅР°С‡Рµ РІРµСЂРЅРµРј Р»РѕР¶СЊ
         return false;
     }    
     
     /**
-     * Запоминаем последний возврат денег, о котором пользователю маякнули 
-     * @param $uid идентификатор пользователя
-     * @param $currentId идентификатор последней операции возврата средств за рассылку, о которой пользователя не оповестили
+     * Р—Р°РїРѕРјРёРЅР°РµРј РїРѕСЃР»РµРґРЅРёР№ РІРѕР·РІСЂР°С‚ РґРµРЅРµРі, Рѕ РєРѕС‚РѕСЂРѕРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ РјР°СЏРєРЅСѓР»Рё 
+     * @param $uid РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param $currentId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕСЃР»РµРґРЅРµР№ РѕРїРµСЂР°С†РёРё РІРѕР·РІСЂР°С‚Р° СЃСЂРµРґСЃС‚РІ Р·Р° СЂР°СЃСЃС‹Р»РєСѓ, Рѕ РєРѕС‚РѕСЂРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅРµ РѕРїРѕРІРµСЃС‚РёР»Рё
      */
     public static function SetNewMoneyBack($uid, $currentId) {
         global $DB;
-        //получаем последний номер записи возврата денег, о котором было уведомление
+        //РїРѕР»СѓС‡Р°РµРј РїРѕСЃР»РµРґРЅРёР№ РЅРѕРјРµСЂ Р·Р°РїРёСЃРё РІРѕР·РІСЂР°С‚Р° РґРµРЅРµРі, Рѕ РєРѕС‚РѕСЂРѕРј Р±С‹Р»Рѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
         $uid = (int)$uid;
         $query   = "SELECT last_deny_subscribe_op_id FROM users_counters WHERE user_id = $uid";
         $lastId  = $DB->val($query);
         $numRows = pg_num_rows($DB->res);
-        //если они не равны запишем новое значение
+        //РµСЃР»Рё РѕРЅРё РЅРµ СЂР°РІРЅС‹ Р·Р°РїРёС€РµРј РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ
         if ($currentId != $lastId) {
             if ($numRows == 0) {                
                 $DB->insert("users_counters", array("user_id"=>$uid, "last_deny_subscribe_op_id"=>$currentId));
@@ -3481,11 +3481,11 @@ class account
     }
     
     /**
-	 * Изменить комментарий к операции
+	 * РР·РјРµРЅРёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№ Рє РѕРїРµСЂР°С†РёРё
 	 *
-     * @param string $comment Комментарий
-	 * @param integer $bill_id id покупки
-     * @param array $op_codes Коды операций
+     * @param string $comment РљРѕРјРјРµРЅС‚Р°СЂРёР№
+	 * @param integer $bill_id id РїРѕРєСѓРїРєРё
+     * @param array $op_codes РљРѕРґС‹ РѕРїРµСЂР°С†РёР№
 	 */
 	public function updateComment ($comment, $bill_id, $op_codes) {
 		$GLOBALS['DB']->query("UPDATE account_operations SET comments = ? WHERE id = ? AND op_code IN (?l)", $comment, $bill_id, $op_codes);
@@ -3493,7 +3493,7 @@ class account
 	}
     
     /**
-     * вычисляем в каких месяцах была активность начиная с указанного года
+     * РІС‹С‡РёСЃР»СЏРµРј РІ РєР°РєРёС… РјРµСЃСЏС†Р°С… Р±С‹Р»Р° Р°РєС‚РёРІРЅРѕСЃС‚СЊ РЅР°С‡РёРЅР°СЏ СЃ СѓРєР°Р·Р°РЅРЅРѕРіРѕ РіРѕРґР°
      * @global object $DB
      * @param type $year
      * @return type
@@ -3519,7 +3519,7 @@ class account
                     account_operations WHERE op_date >= ? AND op_date < ? GROUP BY to_char(op_date,'MM') ORDER BY to_char(op_date,'MM')";
             
             
-            //Текущий год кешируем на час, прошедшие - на неделю
+            //РўРµРєСѓС‰РёР№ РіРѕРґ РєРµС€РёСЂСѓРµРј РЅР° С‡Р°СЃ, РїСЂРѕС€РµРґС€РёРµ - РЅР° РЅРµРґРµР»СЋ
             $time = $i == date('Y') ? 3600 : 604800;
             $aTemp = $DB->cache($time)->rows($sql, $date_from, $date_to);
 
@@ -3540,7 +3540,7 @@ class account
     }
     
     /**
-     * Проверяет принадлежность операции указанному пользователю
+     * РџСЂРѕРІРµСЂСЏРµС‚ РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚СЊ РѕРїРµСЂР°С†РёРё СѓРєР°Р·Р°РЅРЅРѕРјСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ
      * @global object $DB
      * @param type $billId
      * @param type $uid

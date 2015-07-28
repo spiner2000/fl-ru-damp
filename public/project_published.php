@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/registration.php");
 session_start();
 
 $prj_id = __paramInit('int', 'prj_id', null, 0);
-// страницу могут смотреть только зарегистрированые работодатели
+// СЃС‚СЂР°РЅРёС†Сѓ РјРѕРіСѓС‚ СЃРјРѕС‚СЂРµС‚СЊ С‚РѕР»СЊРєРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅС‹Рµ СЂР°Р±РѕС‚РѕРґР°С‚РµР»Рё
 if (!get_uid(0) || !is_emp() || !$prj_id) {
     include $_SERVER['DOCUMENT_ROOT']."/403.php";
     exit;

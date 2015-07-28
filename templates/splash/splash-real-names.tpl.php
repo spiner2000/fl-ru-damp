@@ -5,18 +5,18 @@
         <div class="b-shadow__top">
           <div class="b-shadow__bottom">
                         <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20 b-layout">
-                          <h2 class="b-shadow__title b-shadow__title_padbot_15 b-shadow__title_fontsize_22">Реальные имена &mdash; выгодные заказы</h2>
-                          <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_fontsize_15">Основная цель фрилансера &mdash; получение прибыльных заказов.</div>
-                          <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_fontsize_15">Взгляните на наш каталог фрилансеров. А вы бы поручили работу над своим проектом пользователю<br />
-                            с вымышленным именем и не относящимся к делу рисунком на аватаре?</div>
+                          <h2 class="b-shadow__title b-shadow__title_padbot_15 b-shadow__title_fontsize_22">Р РµР°Р»СЊРЅС‹Рµ РёРјРµРЅР° &mdash; РІС‹РіРѕРґРЅС‹Рµ Р·Р°РєР°Р·С‹</h2>
+                          <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_fontsize_15">РћСЃРЅРѕРІРЅР°СЏ С†РµР»СЊ С„СЂРёР»Р°РЅСЃРµСЂР° &mdash; РїРѕР»СѓС‡РµРЅРёРµ РїСЂРёР±С‹Р»СЊРЅС‹С… Р·Р°РєР°Р·РѕРІ.</div>
+                          <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_fontsize_15">Р’Р·РіР»СЏРЅРёС‚Рµ РЅР° РЅР°С€ РєР°С‚Р°Р»РѕРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ. Рђ РІС‹ Р±С‹ РїРѕСЂСѓС‡РёР»Рё СЂР°Р±РѕС‚Сѓ РЅР°Рґ СЃРІРѕРёРј РїСЂРѕРµРєС‚РѕРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ<br />
+                            СЃ РІС‹РјС‹С€Р»РµРЅРЅС‹Рј РёРјРµРЅРµРј Рё РЅРµ РѕС‚РЅРѕСЃСЏС‰РёРјСЃСЏ Рє РґРµР»Сѓ СЂРёСЃСѓРЅРєРѕРј РЅР° Р°РІР°С‚Р°СЂРµ?</div>
                           <table class="b-layout__table b-layout__table_margbot_20 b-layout__table_width_full">
                             <tr class="b-layout__tr">
                               <td class="b-layout__one">&#160;</td>
                               <td class="b-layout__one b-layout__one_width_50 b-layout__one_center"><img class="b-layout__pic" src="/images/temp/avatar/1.png" alt="" width="50" height="50" />
-                                <div class="b-layout__txt b-layout__txt_fontsize_11">Павлик-смайлик</div></td>
+                                <div class="b-layout__txt b-layout__txt_fontsize_11">РџР°РІР»РёРє-СЃРјР°Р№Р»РёРє</div></td>
                               <td class="b-layout__one b-layout__one_width_30">&#160;</td>
                               <td class="b-layout__one b-layout__one_width_50 b-layout__one_center"><img class="b-layout__pic" src="/images/temp/avatar/2.png" alt="" width="50" height="50" />
-                                <div class="b-layout__txt b-layout__txt_fontsize_11">Креатив webstudio</div></td>
+                                <div class="b-layout__txt b-layout__txt_fontsize_11">РљСЂРµР°С‚РёРІ webstudio</div></td>
                               <td class="b-layout__one b-layout__one_width_30">&#160;</td>
                               <td class="b-layout__one b-layout__one_width_50  b-layout__one_center"><img class="b-layout__pic" src="/images/temp/avatar/3.png" alt="" width="50" height="50" />
                                 <div class="b-layout__txt b-layout__txt_fontsize_11">Anna Black</div></td>
@@ -28,43 +28,43 @@
                                 <div class="b-layout__txt b-layout__txt_fontsize_11">Kisa design</div></td>
                               <td class="b-layout__one b-layout__one_width_30">&#160;</td>
                               <td class="b-layout__one b-layout__one_width_50  b-layout__one_center"><img class="b-layout__pic" src="/images/temp/avatar/6.png" alt="" width="50" height="50" />
-                                <div class="b-layout__txt b-layout__txt_fontsize_11">Верстка недорого</div></td>
+                                <div class="b-layout__txt b-layout__txt_fontsize_11">Р’РµСЂСЃС‚РєР° РЅРµРґРѕСЂРѕРіРѕ</div></td>
                               <td class="b-layout__one">&#160;</td>
                             </tr>
                           </table>
-                          <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_fontsize_15">Заказчику гораздо приятнее обратиться к человеку, который открыт для деловых контактов и ничего не скрывает.</div>
+                          <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_fontsize_15">Р—Р°РєР°Р·С‡РёРєСѓ РіРѕСЂР°Р·РґРѕ РїСЂРёСЏС‚РЅРµРµ РѕР±СЂР°С‚РёС‚СЊСЃСЏ Рє С‡РµР»РѕРІРµРєСѓ, РєРѕС‚РѕСЂС‹Р№ РѕС‚РєСЂС‹С‚ РґР»СЏ РґРµР»РѕРІС‹С… РєРѕРЅС‚Р°РєС‚РѕРІ Рё РЅРёС‡РµРіРѕ РЅРµ СЃРєСЂС‹РІР°РµС‚.</div>
                           <table class="b-layout__table b-layout__table_margbot_20 b-layout__table_width_full">
                             <tr class="b-layout__tr">
                               <td class="b-layout__one">&#160;</td>
                               <td class="b-layout__one b-layout__one_width_50 b-layout__one_center"><img class="b-layout__pic" src="/images/temp/avatar/11.png" alt="" width="50" height="50" />
-                                <div class="b-layout__txt b-layout__txt_fontsize_11">Ирина Пожидаева</div></td>
+                                <div class="b-layout__txt b-layout__txt_fontsize_11">РСЂРёРЅР° РџРѕР¶РёРґР°РµРІР°</div></td>
                               <td class="b-layout__one b-layout__one_width_30">&#160;</td>
                               <td class="b-layout__one b-layout__one_width_50 b-layout__one_center"><img class="b-layout__pic" src="/images/temp/avatar/12.png" alt="" width="50" height="50" />
-                                <div class="b-layout__txt b-layout__txt_fontsize_11">Максим Юрьев</div></td>
+                                <div class="b-layout__txt b-layout__txt_fontsize_11">РњР°РєСЃРёРј Р®СЂСЊРµРІ</div></td>
                               <td class="b-layout__one b-layout__one_width_30">&#160;</td>
                               <td class="b-layout__one b-layout__one_width_50  b-layout__one_center"><img class="b-layout__pic" src="/images/temp/avatar/13.png" alt="" width="50" height="50" />
-                                <div class="b-layout__txt b-layout__txt_fontsize_11">Вика Озерцова</div></td>
+                                <div class="b-layout__txt b-layout__txt_fontsize_11">Р’РёРєР° РћР·РµСЂС†РѕРІР°</div></td>
                               <td class="b-layout__one b-layout__one_width_30">&#160;</td>
                               <td class="b-layout__one b-layout__one_width_50  b-layout__one_center"><img class="b-layout__pic" src="/images/temp/avatar/14.png" alt="" width="50" height="50" />
-                                <div class="b-layout__txt b-layout__txt_fontsize_11">Петр Григорьев</div></td>
+                                <div class="b-layout__txt b-layout__txt_fontsize_11">РџРµС‚СЂ Р“СЂРёРіРѕСЂСЊРµРІ</div></td>
                               <td class="b-layout__one b-layout__one_width_30">&#160;</td>
                               <td class="b-layout__one b-layout__one_width_50  b-layout__one_center"><img class="b-layout__pic" src="/images/temp/avatar/15.png" alt="" width="50" height="50" />
-                                <div class="b-layout__txt b-layout__txt_fontsize_11">Джон Смитт</div></td>
+                                <div class="b-layout__txt b-layout__txt_fontsize_11">Р”Р¶РѕРЅ РЎРјРёС‚С‚</div></td>
                               <td class="b-layout__one b-layout__one_width_30">&#160;</td>
                               <td class="b-layout__one b-layout__one_width_50  b-layout__one_center"><img class="b-layout__pic" src="/images/temp/avatar/16.png" alt="" width="50" height="50" />
-                                <div class="b-layout__txt b-layout__txt_fontsize_11">Николай Яшин</div></td>
+                                <div class="b-layout__txt b-layout__txt_fontsize_11">РќРёРєРѕР»Р°Р№ РЇС€РёРЅ</div></td>
                               <td class="b-layout__one">&#160;</td>
                             </tr>
                     </table>
                     <? if (!$r_data['o_inf_factor']) { ?>
-                        <div class="b-layout__txt b-layout__txt_padbot_30 b-layout__txt_fontsize_11">Хотите добавить 100 баллов к своему рейтингу? Просто укажите свое имя, возраст, специализацию, город, страну и добавьте хотя бы 1 работу в портфолио по выбранной вами специализации.</div>
+                        <div class="b-layout__txt b-layout__txt_padbot_30 b-layout__txt_fontsize_11">РҐРѕС‚РёС‚Рµ РґРѕР±Р°РІРёС‚СЊ 100 Р±Р°Р»Р»РѕРІ Рє СЃРІРѕРµРјСѓ СЂРµР№С‚РёРЅРіСѓ? РџСЂРѕСЃС‚Рѕ СѓРєР°Р¶РёС‚Рµ СЃРІРѕРµ РёРјСЏ, РІРѕР·СЂР°СЃС‚, СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ, РіРѕСЂРѕРґ, СЃС‚СЂР°РЅСѓ Рё РґРѕР±Р°РІСЊС‚Рµ С…РѕС‚СЏ Р±С‹ 1 СЂР°Р±РѕС‚Сѓ РІ РїРѕСЂС‚С„РѕР»РёРѕ РїРѕ РІС‹Р±СЂР°РЅРЅРѕР№ РІР°РјРё СЃРїРµС†РёР°Р»РёР·Р°С†РёРё.</div>
                     <? } ?>
                     <form action="/users/<?= $_SESSION['login'] ?>/setup/main/" method="post" id="real_name_form">
                         <input type="hidden" name="action" value="real_name_splash" />
                         <table class="b-layout__table">
                             <tr class="b-layout__tr">
                                   <td class="b-layout__one b-layout__one_padbot_10 b-layout__one_width_80">
-                                      <label class="b-layout__txt b-layout__txt_block b-layout__txt_padtop_5" for="new-name">Имя</label>
+                                      <label class="b-layout__txt b-layout__txt_block b-layout__txt_padtop_5" for="new-name">РРјСЏ</label>
                                   </td>
                                   <td class="b-layout__one b-layout__one_padbot_10">
                                       <div class="b-combo">
@@ -76,7 +76,7 @@
                             </tr>
                             <tr class="b-layout__tr">
                                 <td class="b-layout__one b-layout__one_padbot_10 b-layout__one_width_80">
-                                    <label class="b-layout__txt b-layout__txt_block b-layout__txt_padtop_5" for="new-surname">Фамилия</label>
+                                    <label class="b-layout__txt b-layout__txt_block b-layout__txt_padtop_5" for="new-surname">Р¤Р°РјРёР»РёСЏ</label>
                                 </td>
                                 <td class="b-layout__one b-layout__one_padbot_10">
                                     <div class="b-combo">
@@ -87,14 +87,14 @@
                                 </td>
                             </tr>
                             <tr class="b-layout__tr">
-                                <td class="b-layout__one b-layout__one_padbot_10 b-layout__one_width_80"><label class="b-layout__txt b-layout__txt_block b-layout__txt_padtop_15" for="userpic">Фотография</label></td>
+                                <td class="b-layout__one b-layout__one_padbot_10 b-layout__one_width_80"><label class="b-layout__txt b-layout__txt_block b-layout__txt_padtop_15" for="userpic">Р¤РѕС‚РѕРіСЂР°С„РёСЏ</label></td>
                                 <td class="b-layout__one b-layout__one_padbot_10">
                                     <img id="real_img" class="b-layout__pic b-layout__pic_valign_top" src="<?= $userpicSrc ?>" alt="" width="50" height="50" />
 
                                         <div id="attach_userpic" class="b-file b-file_padbot_10 b-file_inline-block">
                                            <?
                                            $params = array(
-                                               'button_title' => 'Загрузить фотографию',
+                                               'button_title' => 'Р—Р°РіСЂСѓР·РёС‚СЊ С„РѕС‚РѕРіСЂР°С„РёСЋ',
                                                'maxfiles' => 1,
                                                'maxsize' => 1024 * 1024,
                                                'graph_userpic' => true,
@@ -112,7 +112,7 @@
                                         <a href="javascript:void(0)" class="b-button b-button_rectangle_color_green" id="real_name_send">
                                             <span class="b-button__b1">
                                                 <span class="b-button__b2">
-                                                    <span class="b-button__txt">Сохранить изменения</span>
+                                                    <span class="b-button__txt">РЎРѕС…СЂР°РЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ</span>
                                                 </span>
                                             </span>
                                         </a>
@@ -122,7 +122,7 @@
                                     <td colspan="2" class="b-layout__one">
                                         <div id="real-name-errormessage" class="b-layout__txt b-layout__txt_padleft_80 b-layout__txt_ma b-layout_hide" style="margin-top: 15px;">
                                             <span class="b-icon b-icon_sbr_rattent"></span>
-                                            <span id="real-name-errormessage-text">Выберите страницу размещения.</span>
+                                            <span id="real-name-errormessage-text">Р’С‹Р±РµСЂРёС‚Рµ СЃС‚СЂР°РЅРёС†Сѓ СЂР°Р·РјРµС‰РµРЅРёСЏ.</span>
                                         </div>
                                     </td>
                                 </tr>
@@ -154,9 +154,9 @@
                 },
                 '<?= $attachedFiles->session[0] ?>'
             );
-            // скрываем список файлов
+            // СЃРєСЂС‹РІР°РµРј СЃРїРёСЃРѕРє С„Р°Р№Р»РѕРІ
             attachBlock.getElement('.attachedfiles_table').setStyles({position: 'fixed', left: '-1000px'});
-            // отправка формы
+            // РѕС‚РїСЂР°РІРєР° С„РѕСЂРјС‹
             var errorInput;
             $('real_name_send').addEvent('click', function(){
                 var name = $('new-name').get('value'),
@@ -164,34 +164,34 @@
                 if (!name.trim() && !surname.trim()) {
                     $('new-name').getParent().addClass('b-combo__input_error');
                     $('new-surname').getParent().addClass('b-combo__input_error');
-                    showError('Необходимо ввести имя и фамилию');
+                    showError('РќРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё РёРјСЏ Рё С„Р°РјРёР»РёСЋ');
                     errorInput = false;
                     return;
                 } else if (!name.trim()) {
                     $('new-name').getParent().addClass('b-combo__input_error');
-                    showError('Необходимо ввести имя');
+                    showError('РќРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё РёРјСЏ');
                     errorInput = 'name';
                     return;
-                } else if (!name.match(/^[-a-zA-Zа-яёА-ЯЁ]+$/)) {
+                } else if (!name.match(/^[-a-zA-ZР°-СЏС‘Рђ-РЇРЃ]+$/)) {
                     $('new-name').getParent().addClass('b-combo__input_error');
-                    showError('Имя должно состоять только из букв');
+                    showError('РРјСЏ РґРѕР»Р¶РЅРѕ СЃРѕСЃС‚РѕСЏС‚СЊ С‚РѕР»СЊРєРѕ РёР· Р±СѓРєРІ');
                     errorInput = 'name';
                     return;
                 } else if (!surname.trim()) {
                     $('new-surname').getParent().addClass('b-combo__input_error');
-                    showError('Необходимо ввести фамилию');
+                    showError('РќРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё С„Р°РјРёР»РёСЋ');
                     errorInput = 'surname';
                     return;
-                } else if (!surname.match(/^[-a-zA-Zа-яёА-ЯЁ]+$/)) {
+                } else if (!surname.match(/^[-a-zA-ZР°-СЏС‘Рђ-РЇРЃ]+$/)) {
                     $('new-surname').getParent().addClass('b-combo__input_error');
-                    showError('Фамилия должна состоять только из букв');
+                    showError('Р¤Р°РјРёР»РёСЏ РґРѕР»Р¶РЅР° СЃРѕСЃС‚РѕСЏС‚СЊ С‚РѕР»СЊРєРѕ РёР· Р±СѓРєРІ');
                     errorInput = 'surname';
                     return;
                 }
                 $('real_name_form').submit();
             });
             
-            // открыть требования к файлу
+            // РѕС‚РєСЂС‹С‚СЊ С‚СЂРµР±РѕРІР°РЅРёСЏ Рє С„Р°Р№Р»Сѓ
             attachBlock.getElement('.b-fileinfo').addEvent('click', function(){
                 $$('.b-fileinfo-shadow').removeClass('b-shadow_hide');
             });
@@ -199,7 +199,7 @@
                 $$('.b-fileinfo-shadow').addClass('b-shadow_hide');
             });
             
-            // сброс ошибок
+            // СЃР±СЂРѕСЃ РѕС€РёР±РѕРє
             $('new-name').addEvent('focus', function(){
                 var parent = this.getParent();
                 if (!errorInput || errorInput === 'name') {
@@ -223,7 +223,7 @@
                 $('real-name-errormessage').addClass('b-layout_hide');
             }
             
-            // отметить сплэш про СПЕЦИАЛИЗАЦИИ как просмотренный
+            // РѕС‚РјРµС‚РёС‚СЊ СЃРїР»СЌС€ РїСЂРѕ РЎРџР•Р¦РРђР›РР—РђР¦РР РєР°Рє РїСЂРѕСЃРјРѕС‚СЂРµРЅРЅС‹Р№
             splashRealNames.setSplashSpecViewed = function(){
                 new Request({
                     url: '/ajax.php',

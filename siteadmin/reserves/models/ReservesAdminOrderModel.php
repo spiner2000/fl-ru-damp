@@ -10,7 +10,7 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
     protected $filter_query;
 
     /**
-     * Расширение запроса выборки
+     * Р Р°СЃС€РёСЂРµРЅРёРµ Р·Р°РїСЂРѕСЃР° РІС‹Р±РѕСЂРєРё
      * 
      * @var type 
      */
@@ -18,18 +18,18 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
 
 
     static $_substatus_txt = array(
-        self::SUBSTATUS_NONE => 'нет',
-        self::SUBSTATUS_NEW => 'назначен',
-        self::SUBSTATUS_INPROGRESS => 'в процессе',
-        self::SUBSTATUS_PAYED => 'выполнено',
-        self::SUBSTATUS_ERR => 'ошибка'
+        self::SUBSTATUS_NONE => 'РЅРµС‚',
+        self::SUBSTATUS_NEW => 'РЅР°Р·РЅР°С‡РµРЅ',
+        self::SUBSTATUS_INPROGRESS => 'РІ РїСЂРѕС†РµСЃСЃРµ',
+        self::SUBSTATUS_PAYED => 'РІС‹РїРѕР»РЅРµРЅРѕ',
+        self::SUBSTATUS_ERR => 'РѕС€РёР±РєР°'
     );
 
     static $_payout_status_txt = array(
-        -1 => 'новый',
-        0 => 'успех',
-        1 => 'в обработке',
-        2 => 'отвергнут'
+        -1 => 'РЅРѕРІС‹Р№',
+        0 => 'СѓСЃРїРµС…',
+        1 => 'РІ РѕР±СЂР°Р±РѕС‚РєРµ',
+        2 => 'РѕС‚РІРµСЂРіРЅСѓС‚'
     );
 
     const ReserveOrderStatus_ArbitrageEmp = 51;
@@ -114,47 +114,47 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
                'all' => array(
                     'date' => array(
                         'type' => 'Date',
-                        'label' => 'Создано',
+                        'label' => 'РЎРѕР·РґР°РЅРѕ',
                         'where' => 'src.date::date = ?',
                         'order' => array('asc' => 'src.date', 'desc' => 'src.date DESC')
                     ),
                     'date_reserve' => array(
                         'type' => 'Date',
-                        'label' => 'Резерв',
+                        'label' => 'Р РµР·РµСЂРІ',
                         'where' => 'r.date_reserve::date = ?',
                         'order' => array('asc' => 'r.date_reserve', 'desc' => 'r.date_reserve DESC')
                     ),
                     'date_complete' => array(
                         'type' => 'Date',
-                        'label' => 'Закрыт',
+                        'label' => 'Р—Р°РєСЂС‹С‚',
                         'where' => 'r.date_complete::date = ?',
                         'order' => array('asc' => 'r.date_complete', 'desc' => 'r.date_complete DESC')
                     ),
                     'id' => array(
-                        'label' => '№ дог./плат.',
+                        'label' => 'в„– РґРѕРі./РїР»Р°С‚.',
                         'where' => 'src.id = ?i OR r.invoice_id = ?i OR rp.id = ?i',
                         'order' => array('asc' => 'src.id', 'desc' => 'src.id DESC'),
                         'filters' => array('Digits')
                     ),
                     'title' => array(
-                        'label' => 'Название',
+                        'label' => 'РќР°Р·РІР°РЅРёРµ',
                         'where' => 'src.title LIKE ?',
                         'filter' => function($value){ return "%{$value}%"; },
                         'order' => array('asc' => 'src.title', 'desc' => 'src.title DESC')
                     ),
                     'order_price' => array(
-                        'label' => 'Бюджет',
+                        'label' => 'Р‘СЋРґР¶РµС‚',
                         'where' => 'src.order_price = ?i',
                         'order' => array('asc' => 'src.order_price', 'desc' => 'src.order_price DESC'),
                         'filters' => array('Digits')
                     ),
                     'reserve_type' => array(
                         'type' => 'Select',
-                        'label' => 'Резерв',
+                        'label' => 'Р РµР·РµСЂРІ',
                         'multioptions' => array(
-                            NULL => 'Все',
-                            1 => 'БН',
-                            2 => 'ЯК'                         
+                            NULL => 'Р’СЃРµ',
+                            1 => 'Р‘Рќ',
+                            2 => 'РЇРљ'                         
                         ),
                         'where' => array(
                             1 => $this->db()->parse('(((rb.id > 0) OR (r.status >= ?i)) AND r.invoice_id IS NULL)', self::STATUS_RESERVE),
@@ -163,11 +163,11 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
                     ),
                     'payout_type' => array(
                         'type' => 'Select',
-                        'label' => 'Выплата',
+                        'label' => 'Р’С‹РїР»Р°С‚Р°',
                         'multioptions' => array(
-                            NULL => 'Все',
-                            1 => 'БН',
-                            2 => 'ЯК'                         
+                            NULL => 'Р’СЃРµ',
+                            1 => 'Р‘Рќ',
+                            2 => 'РЇРљ'                         
                         ),
                         'where' => array(
                             1 => $this->db()->parse('r.status_pay = ?i AND rp.id IS NULL', self::SUBSTATUS_PAYED),
@@ -176,11 +176,11 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
                     ),    
                     'payback_type' => array(
                         'type' => 'Select',
-                        'label' => 'Возврат',
+                        'label' => 'Р’РѕР·РІСЂР°С‚',
                         'multioptions' => array(
-                            NULL => 'Все',
-                            1 => 'БН',
-                            2 => 'ЯК'                         
+                            NULL => 'Р’СЃРµ',
+                            1 => 'Р‘Рќ',
+                            2 => 'РЇРљ'                         
                         ),
                         'where' => array(
                             1 => $this->db()->parse('r.status_back = ?i AND rb.id > 0 AND r.invoice_id IS NULL', self::SUBSTATUS_PAYED),
@@ -188,14 +188,14 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
                         )
                     ),                                
                     'order_days' => array(
-                        'label' => 'Срок',
+                        'label' => 'РЎСЂРѕРє',
                         'where' => 'src.order_days = ?i',
                         'order' => array('asc' => 'src.order_days', 'desc' => 'src.order_days DESC'),
                         'filters' => array('Digits')
                     ),
                     'status' => array(
                         'type' => 'Select',
-                        'label' => 'Статус',
+                        'label' => 'РЎС‚Р°С‚СѓСЃ',
                         'where' => array(
                             1 => 'r.id IS NULL AND src.status >= ' . TServiceOrderModel::STATUS_NEW,
                             2 => 'src.status < ' . TServiceOrderModel::STATUS_NEW,
@@ -220,15 +220,15 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
                                     )
                         ),
                         'multioptions' => array(
-                            NULL => 'Все',
-                            1 => 'Согласование',
-                            2 => 'Отменен',
-                            3 => 'Резервирование',
-                            4 => 'В работе',
-                            8 => 'Выполнен',
-                            5 => 'Арбитраж',
-                            6 => 'Выплата',
-                            7 => 'Закрыт'                            
+                            NULL => 'Р’СЃРµ',
+                            1 => 'РЎРѕРіР»Р°СЃРѕРІР°РЅРёРµ',
+                            2 => 'РћС‚РјРµРЅРµРЅ',
+                            3 => 'Р РµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ',
+                            4 => 'Р’ СЂР°Р±РѕС‚Рµ',
+                            8 => 'Р’С‹РїРѕР»РЅРµРЅ',
+                            5 => 'РђСЂР±РёС‚СЂР°Р¶',
+                            6 => 'Р’С‹РїР»Р°С‚Р°',
+                            7 => 'Р—Р°РєСЂС‹С‚'                            
                         )
                     )
                )
@@ -328,7 +328,7 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
     
     
     /**
-     * Есть ли выставленный заказчиком счет
+     * Р•СЃС‚СЊ Р»Рё РІС‹СЃС‚Р°РІР»РµРЅРЅС‹Р№ Р·Р°РєР°Р·С‡РёРєРѕРј СЃС‡РµС‚
      * @return boolean
      */
     public function isInvoice()
@@ -337,7 +337,7 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
     }
 
     /**
-     * Резерв БС был оплачен
+     * Р РµР·РµСЂРІ Р‘РЎ Р±С‹Р» РѕРїР»Р°С‡РµРЅ
      * 
      * @return type
      */
@@ -353,7 +353,7 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
 
     
     /**
-     * Заказ готов к резервированию средств по безналу?
+     * Р—Р°РєР°Р· РіРѕС‚РѕРІ Рє СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЋ СЃСЂРµРґСЃС‚РІ РїРѕ Р±РµР·РЅР°Р»Сѓ?
      * 
      * @return type
      */
@@ -434,22 +434,22 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
         if( @$this->reserve_data['src_status'] >= TServiceOrderModel::STATUS_NEW) {
             if ($this->isReserveData()) {
                 if ($this->isStatusNew()) {
-                    $text = 'pезервирование';
+                    $text = 'pРµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ';
                 } elseif ($this->isClosed()) {
-                    $text = 'закрыт';
+                    $text = 'Р·Р°РєСЂС‹С‚';
                 } elseif ($this->isArbitrageOpen()) {
-                    $text = 'арбитраж';
+                    $text = 'Р°СЂР±РёС‚СЂР°Р¶';
                 } elseif(!($this->isStatusPayNone() || $this->isStatusPayPayed()) || 
                          !($this->isStatusBackNone() || $this->isStatusBackPayed())) {
-                    $text = 'выплата';
+                    $text = 'РІС‹РїР»Р°С‚Р°';
                 } else {
-                    $text = 'в работе';
+                    $text = 'РІ СЂР°Р±РѕС‚Рµ';
                 }                
             }else {
-                $text = 'cогласование';
+                $text = 'cРѕРіР»Р°СЃРѕРІР°РЅРёРµ';
             }
         } else {
-            $text = 'отменен';
+            $text = 'РѕС‚РјРµРЅРµРЅ';
         }
         
         
@@ -458,7 +458,7 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
     
     
     /**
-     * Карточка резерва БС
+     * РљР°СЂС‚РѕС‡РєР° СЂРµР·РµСЂРІР° Р‘РЎ
      * 
      * @param type $src_id
      * @return type
@@ -505,14 +505,14 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
     public function getDateByKey($key)
     {
         $date = @$this->reserve_data[$key];
-        if(!$date) return ' — ';
+        if(!$date) return ' вЂ” ';
         return date('d.m.Y H:i',strtotime($date));
     }      
     
     public function getPriceByKey($key, $currency = false)
     {
         $price = @$this->reserve_data[$key];
-        if(!$price) return ' — ';
+        if(!$price) return ' вЂ” ';
         return tservices_helper::cost_format($price, $currency);
     }     
     
@@ -526,10 +526,10 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
            foreach($payoutList as $key => $payoutItem) {
                $payoutList[$key]['price'] = tservices_helper::cost_format($payoutItem['price'], true);
                $payoutList[$key]['status_txt'] = self::$_payout_status_txt[$payoutItem['status']];
-               $payoutList[$key]['error'] = ($payoutItem['error'] == 0)?'нет':$payoutItem['error'];
+               $payoutList[$key]['error'] = ($payoutItem['error'] == 0)?'РЅРµС‚':$payoutItem['error'];
                $payoutList[$key]['date'] = date('d.m.Y H:i',strtotime($payoutItem['date']));
-               $payoutList[$key]['last'] = ($payoutItem['last'])?date('d.m.Y H:i',strtotime($payoutItem['last'])):' — ';
-               $payoutList[$key]['techmessage'] = ($payoutList[$key]['techmessage'])?$payoutList[$key]['techmessage']:' — ';
+               $payoutList[$key]['last'] = ($payoutItem['last'])?date('d.m.Y H:i',strtotime($payoutItem['last'])):' вЂ” ';
+               $payoutList[$key]['techmessage'] = ($payoutList[$key]['techmessage'])?$payoutList[$key]['techmessage']:' вЂ” ';
            } 
        }
 
@@ -538,7 +538,7 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
            require_once(ABS_PATH . '/classes/reserves/ReservesPayoutPopup.php');
            $payoutReqv['pay_type_txt'] = ReservesPayoutPopup::$payments_short_text[$payoutReqv['pay_type']];
            $payoutReqv['date'] = date('d.m.Y H:i',strtotime($payoutReqv['date']));
-           $payoutReqv['last'] = ($payoutReqv['last'])?date('d.m.Y H:i',strtotime($payoutReqv['last'])):' — ';
+           $payoutReqv['last'] = ($payoutReqv['last'])?date('d.m.Y H:i',strtotime($payoutReqv['last'])):' вЂ” ';
            $payoutReqv['fields'] = mb_unserialize($payoutReqv['fields']);
            $payoutReqv['is_bank'] = $payoutReqv['pay_type'] == ReservesPayoutPopup::PAYMENT_TYPE_BANK;
            $payoutReqv['is_allow_change_status'] = $payoutReqv['is_bank'] && !$this->isStatusPayPayed();
@@ -568,9 +568,9 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
            foreach ($paybackList as $key => $paybackItem) {
                $paybackList[$key]['price'] = tservices_helper::cost_format($paybackItem['price'], true);
                $paybackList[$key]['status_txt'] = self::$_payout_status_txt[$paybackItem['status']];
-               $paybackList[$key]['error'] = ($paybackItem['error'] == 0)?'нет':$paybackItem['error'];
+               $paybackList[$key]['error'] = ($paybackItem['error'] == 0)?'РЅРµС‚':$paybackItem['error'];
                $paybackList[$key]['date'] = date('d.m.Y H:i',strtotime($paybackItem['date']));
-               $paybackList[$key]['last'] = ($paybackItem['last'])?date('d.m.Y H:i',strtotime($paybackItem['last'])):' — ';
+               $paybackList[$key]['last'] = ($paybackItem['last'])?date('d.m.Y H:i',strtotime($paybackItem['last'])):' вЂ” ';
            } 
        }
         
@@ -583,7 +583,7 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
     {
         $current_status = $this->getReserveOrderStatus();
         
-        //Если статус совпадает с текущим то не меняем
+        //Р•СЃР»Рё СЃС‚Р°С‚СѓСЃ СЃРѕРІРїР°РґР°РµС‚ СЃ С‚РµРєСѓС‰РёРј С‚Рѕ РЅРµ РјРµРЅСЏРµРј
         if($current_status == $to_status || 
            !$this->isReserveData() ||
            ($this->isArbitrage() && in_array($to_status, array(
@@ -637,7 +637,7 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
                     'is_emp' => $is_emp,
                     'frl_id' => $this->getFrlId(),
                     'emp_id' => $this->getEmpId(),
-                    'message' => 'Разрешение конфликтной ситуации по заказу.'
+                    'message' => 'Р Р°Р·СЂРµС€РµРЅРёРµ РєРѕРЅС„Р»РёРєС‚РЅРѕР№ СЃРёС‚СѓР°С†РёРё РїРѕ Р·Р°РєР°Р·Сѓ.'
                 ));
                 
                 if(!$this->db()->commit()) {
@@ -689,8 +689,8 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
             break;
             
             
-            //@todo: Можно предусмотреть удаление существующего резерва 
-            //и возврата суммы на ЛС
+            //@todo: РњРѕР¶РЅРѕ РїСЂРµРґСѓСЃРјРѕС‚СЂРµС‚СЊ СѓРґР°Р»РµРЅРёРµ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРіРѕ СЂРµР·РµСЂРІР° 
+            //Рё РІРѕР·РІСЂР°С‚Р° СЃСѓРјРјС‹ РЅР° Р›РЎ
             case self::ReserveOrderStatus_Reserve:
 
                 $this->db()->start();
@@ -774,19 +774,19 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
         
         if ($is_create) {
             
-            //Если зарезервировали
+            //Р•СЃР»Рё Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°Р»Рё
             if ($reserveInstance->isStatusReserved()) {
                 $base_doc_types[] = DocGenReserves::RESERVE_SPECIFICATION_TYPE;
                 $base_doc_types[] = DocGenReserves::RESERVE_OFFER_CONTRACT_TYPE;
                 $base_doc_types[] = DocGenReserves::RESERVE_OFFER_AGREEMENT_TYPE;
             }
             
-            //Если резерв по безналу то нужен счет
+            //Р•СЃР»Рё СЂРµР·РµСЂРІ РїРѕ Р±РµР·РЅР°Р»Сѓ С‚Рѕ РЅСѓР¶РµРЅ СЃС‡РµС‚
             if (!$reserveInstance->isReserveByService()) {
                 $base_doc_types[] = DocGenReserves::BANK_INVOICE_TYPE;
             }
             
-            //Если сделка закрыта и исполнителю полагается выплата либо выплата в процессе
+            //Р•СЃР»Рё СЃРґРµР»РєР° Р·Р°РєСЂС‹С‚Р° Рё РёСЃРїРѕР»РЅРёС‚РµР»СЋ РїРѕР»Р°РіР°РµС‚СЃСЏ РІС‹РїР»Р°С‚Р° Р»РёР±Рѕ РІС‹РїР»Р°С‚Р° РІ РїСЂРѕС†РµСЃСЃРµ
             if ($reserveInstance->isStatusPayInprogress() || 
                     ($reserveInstance->isClosed() && 
                     (!$reserveInstance->isArbitrage() || $reserveInstance->isStatusPayPayed()))
@@ -794,18 +794,18 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
                 $base_doc_types[] = DocGenReserves::ACT_COMPLETED_FRL_TYPE;
             }
             
-            //Если сделка закрыта либо выплата в процессе
+            //Р•СЃР»Рё СЃРґРµР»РєР° Р·Р°РєСЂС‹С‚Р° Р»РёР±Рѕ РІС‹РїР»Р°С‚Р° РІ РїСЂРѕС†РµСЃСЃРµ
             if ($reserveInstance->isClosed() || $reserveInstance->isStatusPayInprogress()) {
                 $base_doc_types[] = DocGenReserves::LETTER_FRL_TYPE;
             }
             
-            //Если сделка закрыта
+            //Р•СЃР»Рё СЃРґРµР»РєР° Р·Р°РєСЂС‹С‚Р°
             if ($reserveInstance->isClosed()) {
                 $base_doc_types[] = DocGenReserves::ACT_SERVICE_EMP_TYPE;
                 $base_doc_types[] = DocGenReserves::AGENT_REPORT_TYPE;
             }
             
-            //Если сделка закрыта по арбитражу
+            //Р•СЃР»Рё СЃРґРµР»РєР° Р·Р°РєСЂС‹С‚Р° РїРѕ Р°СЂР±РёС‚СЂР°Р¶Сѓ
             if ($reserveInstance->isArbitrage() && $reserveInstance->isArbitrageClosed()) {
                 $base_doc_types[] = DocGenReserves::ARBITRAGE_REPORT_TYPE;
             }
@@ -877,7 +877,7 @@ class ReservesAdminOrderModel extends ReservesTServiceOrderModel
     
     
     /**
-     * Возвращает общую сумму резерва за указанную дату
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕР±С‰СѓСЋ СЃСѓРјРјСѓ СЂРµР·РµСЂРІР° Р·Р° СѓРєР°Р·Р°РЅРЅСѓСЋ РґР°С‚Сѓ
      * 
      * @return boolean
      */

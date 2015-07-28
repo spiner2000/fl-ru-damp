@@ -1,5 +1,5 @@
 <?
-// так же в /xajax/projects_ci.server.php
+// С‚Р°Рє Р¶Рµ РІ /xajax/projects_ci.server.php
 define('MAX_WORKS_IN_LIST', 30);
 define('MAX_OFFERS_AT_PAGE', 50);
 
@@ -51,7 +51,7 @@ if($_GET['pid'] && !$_GET['newurl'] && !$_POST) {
   }
 }
 
-// Определяем канонический URL для страницы проекта
+// РћРїСЂРµРґРµР»СЏРµРј РєР°РЅРѕРЅРёС‡РµСЃРєРёР№ URL РґР»СЏ СЃС‚СЂР°РЅРёС†С‹ РїСЂРѕРµРєС‚Р°
 if (isset($_GET['pid']) && $_GET['pid'] && isset($_GET['newurl']) && $_GET['newurl']) {
     $canonical_url = $GLOBALS['host'].getFriendlyURL('project', (int) $_GET['pid']);
 }
@@ -67,7 +67,7 @@ if($_GET['pid'] && !$_POST['action']) {
 }
 
 switch ($section) {
-    // смена статуса блока рекомендованных фрилансерова
+    // СЃРјРµРЅР° СЃС‚Р°С‚СѓСЃР° Р±Р»РѕРєР° СЂРµРєРѕРјРµРЅРґРѕРІР°РЅРЅС‹С… С„СЂРёР»Р°РЅСЃРµСЂРѕРІР°
     case 'setRcmdFrlStatus': {
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/employer.php");
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
@@ -108,7 +108,7 @@ switch ($section) {
         
         #if (!$_SESSION['uid'] && !$pass) { include("../fbd.php"); exit; }
         
-        // Проект.
+        // РџСЂРѕРµРєС‚.
         $obj_project = new projects();
         $project = $obj_project->GetPrjCust($prj_id);
         $projectObject = $obj_project->initData($project);
@@ -127,8 +127,8 @@ switch ($section) {
         GaJsHelper::getInstance()->setProjectCategory($project_specs);
         
         
-        //Если это перемещенная вакансия то редиректим владельца на редактивание
-        //А посетителю 404
+        //Р•СЃР»Рё СЌС‚Рѕ РїРµСЂРµРјРµС‰РµРЅРЅР°СЏ РІР°РєР°РЅСЃРёСЏ С‚Рѕ СЂРµРґРёСЂРµРєС‚РёРј РІР»Р°РґРµР»СЊС†Р° РЅР° СЂРµРґР°РєС‚РёРІР°РЅРёРµ
+        //Рђ РїРѕСЃРµС‚РёС‚РµР»СЋ 404
         /*
         if ($projectObject->isNotPayedVacancy()) {
             if($is_owner) {
@@ -151,7 +151,7 @@ switch ($section) {
 
         
         
-        // Проект только что опубликован, записываем в событие для дальнейшей обработки
+        // РџСЂРѕРµРєС‚ С‚РѕР»СЊРєРѕ С‡С‚Рѕ РѕРїСѓР±Р»РёРєРѕРІР°РЅ, Р·Р°РїРёСЃС‹РІР°РµРј РІ СЃРѕР±С‹С‚РёРµ РґР»СЏ РґР°Р»СЊРЅРµР№С€РµР№ РѕР±СЂР°Р±РѕС‚РєРё
         if (isset($project['user_id']) && $project['user_id'] == $uid && strpos($_SERVER['HTTP_REFERER'], '/public/') !== FALSE) {
             Zend_Registry::set('project', $project);
             Zend_Registry::set('action.render_project_page_after_publishing', true);
@@ -183,7 +183,7 @@ switch ($section) {
             $project_history = $obj_project->GetPrjHistory($prj_id);
         }
 
-		// Новые конкурсы
+		// РќРѕРІС‹Рµ РєРѕРЅРєСѓСЂСЃС‹
 		if ($project['kind'] == 7) {
 			require_once $_SERVER['DOCUMENT_ROOT'].'/classes/contest.php';
 			$contest = new contest($project['id'], $uid, is_emp(), ($project['user_id'] == $uid), hasPermissions('projects'), is_pro());
@@ -203,9 +203,9 @@ switch ($section) {
           }
         }
 		
-        // $from_prm: откуда зашли. Нужен для кнопки [Назад].
-        // Пусто, значит с первой страницы, иначе из другого места:
-        // 3 -- из фрилансерского меню проекты /proj/?p=list.
+        // $from_prm: РѕС‚РєСѓРґР° Р·Р°С€Р»Рё. РќСѓР¶РµРЅ РґР»СЏ РєРЅРѕРїРєРё [РќР°Р·Р°Рґ].
+        // РџСѓСЃС‚Рѕ, Р·РЅР°С‡РёС‚ СЃ РїРµСЂРІРѕР№ СЃС‚СЂР°РЅРёС†С‹, РёРЅР°С‡Рµ РёР· РґСЂСѓРіРѕРіРѕ РјРµСЃС‚Р°:
+        // 3 -- РёР· С„СЂРёР»Р°РЅСЃРµСЂСЃРєРѕРіРѕ РјРµРЅСЋ РїСЂРѕРµРєС‚С‹ /proj/?p=list.
         $from_prm   = __paramInit('string', 'f', 'f');
         $from_prm_s = !$from_prm ? '' : ('&f='.htmlspecialchars($from_prm));
         if($from_prm == 3) {
@@ -222,25 +222,25 @@ switch ($section) {
             $from_prm_s = '';
         }
 
-        //404 если работодатель забанен
+        //404 РµСЃР»Рё СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ Р·Р°Р±Р°РЅРµРЅ
         $usr = new users();
         if ($project['user_id'] && $usr->GetField($project['user_id'], $ban_error, "is_banned") > 0 && !hasPermissions('projects')) { include ABS_PATH."/404.php"; exit; }
 		
-		//Если не участник персонального проекта
-        if ($project['kind']==9 //Персональный проект
-			&& (!$uid || !(hasPermissions('projects') // Либо админ
-				|| $project['user_id'] == $uid // Либо создатель проекта
-				|| $project['exec_id'] == $uid // Либо исполнитель проекта
-				|| projects_offers::IsPrjOfferExists($project['id'], get_uid(false)) // Либо отвечал на этот проект
+		//Р•СЃР»Рё РЅРµ СѓС‡Р°СЃС‚РЅРёРє РїРµСЂСЃРѕРЅР°Р»СЊРЅРѕРіРѕ РїСЂРѕРµРєС‚Р°
+        if ($project['kind']==9 //РџРµСЂСЃРѕРЅР°Р»СЊРЅС‹Р№ РїСЂРѕРµРєС‚
+			&& (!$uid || !(hasPermissions('projects') // Р›РёР±Рѕ Р°РґРјРёРЅ
+				|| $project['user_id'] == $uid // Р›РёР±Рѕ СЃРѕР·РґР°С‚РµР»СЊ РїСЂРѕРµРєС‚Р°
+				|| $project['exec_id'] == $uid // Р›РёР±Рѕ РёСЃРїРѕР»РЅРёС‚РµР»СЊ РїСЂРѕРµРєС‚Р°
+				|| projects_offers::IsPrjOfferExists($project['id'], get_uid(false)) // Р›РёР±Рѕ РѕС‚РІРµС‡Р°Р» РЅР° СЌС‚РѕС‚ РїСЂРѕРµРєС‚
 			))) { 
 				include ABS_PATH."/404.php"; 
 				exit;
 			}
 
-        //404 если проект заблокирован
+        //404 РµСЃР»Рё РїСЂРѕРµРєС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ
         if ($project['is_blocked'] && $_SESSION['uid'] != $project['user_id'] && !hasPermissions('projects')) { include ABS_PATH."/prj_blocked.php"; exit; }
         
-        // Платные ответы
+        // РџР»Р°С‚РЅС‹Рµ РѕС‚РІРµС‚С‹
         $answers = new projects_offers_answers;
         $answers->GetInfo($uid);
         
@@ -259,16 +259,16 @@ switch ($section) {
         if ($project['cost'] != 0) {
             switch ($project['priceby']) {
                 case '1':
-                    $priceby_str = "/час";
+                    $priceby_str = "/С‡Р°СЃ";
                     break;
                 case '2':
-                    $priceby_str = "/день";
+                    $priceby_str = "/РґРµРЅСЊ";
                     break;
                 case '3':
-                    $priceby_str = "/месяц";
+                    $priceby_str = "/РјРµСЃСЏС†";
                     break;
                 case '4':
-                    $priceby_str = "/проект";
+                    $priceby_str = "/РїСЂРѕРµРєС‚";
                     break;
                 default:
                     $priceby_str = "";
@@ -278,13 +278,13 @@ switch ($section) {
                 $priceby_str = "";
             }
             $project['price_display'] = CurToChar($project['cost'], $project['currency']) . $priceby_str;
-            $project['price_display'] = str_replace(array('&euro;', '&nbsp;'), array('€', ' '), $project['price_display']);
+            $project['price_display'] = str_replace(array('&euro;', '&nbsp;'), array('в‚¬', ' '), $project['price_display']);
         }
-        $price = @$project['price_display'] ? $project['price_display'] : 'по договоренности';
-        // OpenGraph данные для шаринга в соц.сети
+        $price = @$project['price_display'] ? $project['price_display'] : 'РїРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё';
+        // OpenGraph РґР°РЅРЅС‹Рµ РґР»СЏ С€Р°СЂРёРЅРіР° РІ СЃРѕС†.СЃРµС‚Рё
         $FBShare = array(
             "title" => $sTitle .' - '.$price,
-            "description" => '', //smart_trim(strip_tags(nl2br($project['descr'])), 30), // убераем переносы строки и теги в описание
+            "description" => '', //smart_trim(strip_tags(nl2br($project['descr'])), 30), // СѓР±РµСЂР°РµРј РїРµСЂРµРЅРѕСЃС‹ СЃС‚СЂРѕРєРё Рё С‚РµРіРё РІ РѕРїРёСЃР°РЅРёРµ
             "image" => $GLOBALS['host'] . "/images/logo_50x50.png"
         );
         
@@ -294,19 +294,19 @@ switch ($section) {
         
         
         /*
-        // Стоимость проекта в разных валютах.
+        // РЎС‚РѕРёРјРѕСЃС‚СЊ РїСЂРѕРµРєС‚Р° РІ СЂР°Р·РЅС‹С… РІР°Р»СЋС‚Р°С….
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/exrates.php");
         $exrates = new exrates();
         $exrate = $exrates -> GetField($oldMoneyType . $money_to_type, $error, 'val');
         if ($exrate) $money_to_sum = floor($oldMoneySum * 98 * $exrate)/100;
         */
         
-        // Предложения по данному проекту.
+        // РџСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РґР°РЅРЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ.
         $obj_offer = new projects_offers();
         
         $smail = new smail();
         
-        // Диалог по предложениям к данному проекту.
+        // Р”РёР°Р»РѕРі РїРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЏРј Рє РґР°РЅРЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ.
         $obj_dialogue = new projects_offers_dialogue();
         
         
@@ -330,11 +330,11 @@ switch ($section) {
                 $offer_id = (int)trim($_GET['oid']);
               }
               
-                // пишем лог админских действий пока еще само предложение не грохнули...
+                // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№ РїРѕРєР° РµС‰Рµ СЃР°РјРѕ РїСЂРµРґР»РѕР¶РµРЅРёРµ РЅРµ РіСЂРѕС…РЅСѓР»Рё...
                 if ( $_SESSION['uid'] && hasPermissions('projects') ) {
                     $obj_offer->DelOfferLog( $offer_id, $prj_id, $project['name'], $project['user_id'] );
                     
-                    // отправляем уведомление об удалении предложения
+                    // РѕС‚РїСЂР°РІР»СЏРµРј СѓРІРµРґРѕРјР»РµРЅРёРµ РѕР± СѓРґР°Р»РµРЅРёРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ
                     $obj_offer->DelOfferNotification( $offer_id, $_SESSION['uid'] );
                 }
                 
@@ -382,16 +382,16 @@ switch ($section) {
 										header("Location: ".getFriendlyURL("project", $project['id']));
 										exit;
 									} else {
-										$dateAlert = 'Дата объявления победителя должна быть больше даты окончания конкурса';
+										$dateAlert = 'Р”Р°С‚Р° РѕР±СЉСЏРІР»РµРЅРёСЏ РїРѕР±РµРґРёС‚РµР»СЏ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РґР°С‚С‹ РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР°';
 									}
 								} else {
-									$dateAlert = 'Дата окончания конкурса не может находиться в прошлом';
+									$dateAlert = 'Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР° РЅРµ РјРѕР¶РµС‚ РЅР°С…РѕРґРёС‚СЊСЃСЏ РІ РїСЂРѕС€Р»РѕРј';
 								}
 							} else {
-								$dateAlert = 'Неправильно указана дата объявления победителя';
+								$dateAlert = 'РќРµРїСЂР°РІРёР»СЊРЅРѕ СѓРєР°Р·Р°РЅР° РґР°С‚Р° РѕР±СЉСЏРІР»РµРЅРёСЏ РїРѕР±РµРґРёС‚РµР»СЏ';
 							}
 						} else {
-							$dateAlert = 'Неправильно указана дата окончания конкурса';
+							$dateAlert = 'РќРµРїСЂР°РІРёР»СЊРЅРѕ СѓРєР°Р·Р°РЅР° РґР°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР°';
 						}
 					}
 					break;
@@ -405,7 +405,7 @@ switch ($section) {
 				}
 			}
 		} else if ($action == 'blockuser' || $action == 'change-dates') {
-			$errmsg = 'У вас нет прав для выполнения данной операции';
+			$errmsg = 'РЈ РІР°СЃ РЅРµС‚ РїСЂР°РІ РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РґР°РЅРЅРѕР№ РѕРїРµСЂР°С†РёРё';
 		}
 
         
@@ -429,8 +429,8 @@ switch ($section) {
               break;
           }
           
-          //Персональный проект 
-          //показываем одно единственное предложение
+          //РџРµСЂСЃРѕРЅР°Р»СЊРЅС‹Р№ РїСЂРѕРµРєС‚ 
+          //РїРѕРєР°Р·С‹РІР°РµРј РѕРґРЅРѕ РµРґРёРЅСЃС‚РІРµРЅРЅРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ
           if($project['kind'] == 9)
           {
                 $offers = $obj_offer->GetPrjOffers($num_offers, $prj_id, MAX_OFFERS_AT_PAGE, MAX_OFFERS_AT_PAGE * ($item_page - 1), $uid, TRUE, 'date', 'a');
@@ -492,8 +492,8 @@ switch ($section) {
                     $po_type = 'nor';
                 }
                 
-                // Предложения по данному проекту.
-                // владелец ? выбранная вкладка : (админ ? все : кроме отказавшихся)
+                // РџСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РґР°РЅРЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ.
+                // РІР»Р°РґРµР»РµС† ? РІС‹Р±СЂР°РЅРЅР°СЏ РІРєР»Р°РґРєР° : (Р°РґРјРёРЅ ? РІСЃРµ : РєСЂРѕРјРµ РѕС‚РєР°Р·Р°РІС€РёС…СЃСЏ)
                 
                 $offers = array();
                 $real_offers_count = 0;
@@ -512,7 +512,7 @@ switch ($section) {
           $exec_info = null;
           $op_count_all = 0;
           
-          //Показываем ответы если админ или владелец оплатил вакансию или владелец ПРО
+          //РџРѕРєР°Р·С‹РІР°РµРј РѕС‚РІРµС‚С‹ РµСЃР»Рё Р°РґРјРёРЅ РёР»Рё РІР»Р°РґРµР»РµС† РѕРїР»Р°С‚РёР» РІР°РєР°РЅСЃРёСЋ РёР»Рё РІР»Р°РґРµР»РµС† РџР Рћ
           if ($projectObject->isAllowShowOffers()) {
           
                 if($offers) {
@@ -543,11 +543,11 @@ switch ($section) {
 
             $contacts_freelancer = array(
                 'phone' => array(
-                    'name' => 'Телефон',
+                    'name' => 'РўРµР»РµС„РѕРЅ',
                     'value' => $freelancer->phone
                 ),
                 'site' => array(
-                    'name' => 'Сайт',
+                    'name' => 'РЎР°Р№С‚',
                     'value' => $freelancer->site
                 ),
                 'icq' => array(
@@ -617,7 +617,7 @@ switch ($section) {
                         if($_POST['is_color']) {
                           $account = new account;
                           $transaction_id = $account->start_transaction(get_uid());
-                          $error_buy = $account->Buy($billing_id, $transaction_id, $answers->color_op_code, get_uid(), "Выделение ответа на проект цветом", "Выделение <a href='". (getFriendlyURL("project", $project['id'])) . "#freelancer_{$_SESSION['uid']}' target='_blank'>ответа на проект</a> цветом", 1, 1);
+                          $error_buy = $account->Buy($billing_id, $transaction_id, $answers->color_op_code, get_uid(), "Р’С‹РґРµР»РµРЅРёРµ РѕС‚РІРµС‚Р° РЅР° РїСЂРѕРµРєС‚ С†РІРµС‚РѕРј", "Р’С‹РґРµР»РµРЅРёРµ <a href='". (getFriendlyURL("project", $project['id'])) . "#freelancer_{$_SESSION['uid']}' target='_blank'>РѕС‚РІРµС‚Р° РЅР° РїСЂРѕРµРєС‚</a> С†РІРµС‚РѕРј", 1, 1);
                           $payed_items = '1'; 
                           if($error_buy) {
                               $_POST['is_color'] = false;
@@ -641,7 +641,7 @@ switch ($section) {
                             $_POST['ps_work_1_prev_pict'], $_POST['ps_work_2_prev_pict'], $_POST['ps_work_3_prev_pict'],
                             isset($_POST['ps_for_customer_only']), 0, 0, isset($_POST['prefer_sbr']), $_POST['is_color'], $save_contacts, $payed_items);
 
-                            //Получаем новые данные о количестве ответов
+                            //РџРѕР»СѓС‡Р°РµРј РЅРѕРІС‹Рµ РґР°РЅРЅС‹Рµ Рѕ РєРѕР»РёС‡РµСЃС‚РІРµ РѕС‚РІРµС‚РѕРІ
                             $answers->GetInfo($uid);
                             $projectKindIdent = $projectObject->getKindIdent();
                             $obj_offer->sendStatistic($projectKindIdent, $answers->offers, $is_pro, $obj_offer->offer_id);
@@ -719,7 +719,7 @@ switch ($section) {
                   if($_POST['is_color'] && !$payed_color) {
                         $account = new account;
                         $transaction_id = $account->start_transaction(get_uid());
-                        $error_buy = $account->Buy($billing_id, $transaction_id, $answers->color_op_code, get_uid(), "Выделение ответа на проект цветом", "Выделение <a href='". (getFriendlyURL("project", $project['id'])) . "#freelancer_{$_SESSION['uid']}' target='_blank'>ответа на проект</a> цветом", 1, 1);
+                        $error_buy = $account->Buy($billing_id, $transaction_id, $answers->color_op_code, get_uid(), "Р’С‹РґРµР»РµРЅРёРµ РѕС‚РІРµС‚Р° РЅР° РїСЂРѕРµРєС‚ С†РІРµС‚РѕРј", "Р’С‹РґРµР»РµРЅРёРµ <a href='". (getFriendlyURL("project", $project['id'])) . "#freelancer_{$_SESSION['uid']}' target='_blank'>РѕС‚РІРµС‚Р° РЅР° РїСЂРѕРµРєС‚</a> С†РІРµС‚РѕРј", 1, 1);
                         $payed_items = '1';
                         if($error_buy) {
                             $_POST['is_color'] = false;
@@ -795,7 +795,7 @@ switch ($section) {
                 $account = new account;
                 $transaction_id = $account->start_transaction(get_uid());
                 $project_id  = $obj_offer->getProjectIDByOfferID($offer_id);
-                $error_buy   = $account->Buy($billing_id, $transaction_id, $answers->color_op_code, get_uid(), "Выделение ответа на проект цветом", "Выделение <a href='". (getFriendlyURL("project", $project_id)) . "#freelancer_{$_SESSION['uid']}' target='_blank'>ответа на проект</a> цветом", 1, 1);
+                $error_buy   = $account->Buy($billing_id, $transaction_id, $answers->color_op_code, get_uid(), "Р’С‹РґРµР»РµРЅРёРµ РѕС‚РІРµС‚Р° РЅР° РїСЂРѕРµРєС‚ С†РІРµС‚РѕРј", "Р’С‹РґРµР»РµРЅРёРµ <a href='". (getFriendlyURL("project", $project_id)) . "#freelancer_{$_SESSION['uid']}' target='_blank'>РѕС‚РІРµС‚Р° РЅР° РїСЂРѕРµРєС‚</a> С†РІРµС‚РѕРј", 1, 1);
                 $is_color    = 't';
                 $payed_items = '1'; 
                 if($error_buy) {
@@ -810,7 +810,7 @@ switch ($section) {
                     header("Location: /bill/success/"); 
                     exit();
                 } else {
-                    $error_is_color = "Ошибка обработки запроса";
+                    $error_is_color = "РћС€РёР±РєР° РѕР±СЂР°Р±РѕС‚РєРё Р·Р°РїСЂРѕСЃР°";
                 }
                 break;
           }
@@ -820,15 +820,15 @@ switch ($section) {
           $offers = array();
           $exec_info = null;
           
-          // $real_offers_count - реальное количество ответов на проекты (видимые, скрытые, и ответ пользователя не зависимо от статуса ответа)
+          // $real_offers_count - СЂРµР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚С‹ (РІРёРґРёРјС‹Рµ, СЃРєСЂС‹С‚С‹Рµ, Рё РѕС‚РІРµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅРµ Р·Р°РІРёСЃРёРјРѕ РѕС‚ СЃС‚Р°С‚СѓСЃР° РѕС‚РІРµС‚Р°)
           $real_offers_count = current($obj_offer->CountPrjOffers($prj_id, "frl_not_refuse"));
                 
-          //Показываем админу
+          //РџРѕРєР°Р·С‹РІР°РµРј Р°РґРјРёРЅСѓ
           if ($is_adm) {
               
-                // Предложения по данному проекту.
+                // РџСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РґР°РЅРЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ.
                 $type   = hasPermissions('projects') ? 'a' : 'nor';
-                // $offers - массив ответов на проект которые будут отображены (здесь нет скрытых ответов и ответа от пользователя)
+                // $offers - РјР°СЃСЃРёРІ РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚ РєРѕС‚РѕСЂС‹Рµ Р±СѓРґСѓС‚ РѕС‚РѕР±СЂР°Р¶РµРЅС‹ (Р·РґРµСЃСЊ РЅРµС‚ СЃРєСЂС‹С‚С‹С… РѕС‚РІРµС‚РѕРІ Рё РѕС‚РІРµС‚Р° РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ)
                 $offers = $obj_offer->GetPrjOffers( $num_offers, $prj_id, MAX_OFFERS_AT_PAGE, MAX_OFFERS_AT_PAGE * ($item_page-1), $uid, hasPermissions('projects'), null, $type );
                 //$real_offers_count = current($obj_offer->CountPrjOffers($prj_id, "all"));
 
@@ -842,12 +842,12 @@ switch ($section) {
                 }
 
                 
-                //@todo: Устаревший не используемый функционал
-                // если из проекта сформирована сделка
+                //@todo: РЈСЃС‚Р°СЂРµРІС€РёР№ РЅРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Р№ С„СѓРЅРєС†РёРѕРЅР°Р»
+                // РµСЃР»Рё РёР· РїСЂРѕРµРєС‚Р° СЃС„РѕСЂРјРёСЂРѕРІР°РЅР° СЃРґРµР»РєР°
                 /*
                 if (!$exec_info && $project['sbr_id']) {
                     require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/sbr.php");
-                    // сделка должна с согласием исполнителя
+                    // СЃРґРµР»РєР° РґРѕР»Р¶РЅР° СЃ СЃРѕРіР»Р°СЃРёРµРј РёСЃРїРѕР»РЅРёС‚РµР»СЏ
                     $offerInfo = $obj_offer->getSbrExecData($project['sbr_id']);
                     if ($offerInfo && $offerInfo['status'] >= sbr::STATUS_CHANGED) {
                         $exec_info = $offerInfo;
@@ -862,38 +862,38 @@ switch ($section) {
           }
           
           
-            // Наличие предложения данного юзера по данному проекту.
+            // РќР°Р»РёС‡РёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РґР°РЅРЅРѕРіРѕ СЋР·РµСЂР° РїРѕ РґР°РЅРЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ.
             $user_offer_exist = $obj_offer->OfferExist($prj_id, $uid);
             if ($user_offer_exist) {
-                // Предложение данного пользователя по данному проекту.
+                // РџСЂРµРґР»РѕР¶РµРЅРёРµ РґР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ РґР°РЅРЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ.
                 $user_offer = $obj_offer->GetPrjOffer($prj_id, $uid);
 
                 if($project['exec_id'] == $uid) $exec_info = $user_offer;
-                // Диалог по предложению данного пользователя.
+                // Р”РёР°Р»РѕРі РїРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЋ РґР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
                 $user_offer['dialogue'] = $obj_dialogue->GetDialogueForOffer($user_offer['id']);
             } else {
-                // Предложение данного пользователя по данному проекту.
+                // РџСЂРµРґР»РѕР¶РµРЅРёРµ РґР°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ РґР°РЅРЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ.
                 $user_offer = false;
             }
           
           
           
-          // Профессии.
+          // РџСЂРѕС„РµСЃСЃРёРё.
           $obj_profession = new professions();
           $professions = $obj_profession->GetSelFilProf($uid);
           if (!$professions)
           {
             $professions = array();
-            // Текущая профессия.
+            // РўРµРєСѓС‰Р°СЏ РїСЂРѕС„РµСЃСЃРёСЏ.
             $cur_prof = 0;
           }
           else
           {
-            // Текущая профессия.
+            // РўРµРєСѓС‰Р°СЏ РїСЂРѕС„РµСЃСЃРёСЏ.
             $cur_prof = $professions[0]['id'];
           }
           
-          // Работы.
+          // Р Р°Р±РѕС‚С‹.
           $obj_portfolio = new portfolio();
           if(!($portf_works = $obj_portfolio->GetPortfProf($uid, $cur_prof))) {
             $portf_works = array();
@@ -908,11 +908,11 @@ switch ($section) {
 	            $portf_works = array();
 	        }	
           }*/
-          // Признак того, что работ > MAX_WORKS_IN_LIST
+          // РџСЂРёР·РЅР°Рє С‚РѕРіРѕ, С‡С‚Рѕ СЂР°Р±РѕС‚ > MAX_WORKS_IN_LIST
           $portf_more = (count($portf_works) > MAX_WORKS_IN_LIST);
         }
         
-        // Диалоги по предложениям к данному проекту.
+        // Р”РёР°Р»РѕРіРё РїРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЏРј Рє РґР°РЅРЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ.
         if (isset($offers) && is_array($offers))
         {
           foreach ($offers as $key => $value)
@@ -926,7 +926,7 @@ switch ($section) {
 
         
         
-        //Валидный пользователь или нет для показа ему дополнительной информации о проекте
+        //Р’Р°Р»РёРґРЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РёР»Рё РЅРµС‚ РґР»СЏ РїРѕРєР°Р·Р° РµРјСѓ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїСЂРѕРµРєС‚Рµ
         $show_info = ($project['kind'] == 2 || $project['kind'] == 7 || 
                       ($uid > 0 && (($is_pro || $project['exec_id'] == $uid) && $projectObject->isAllowShowOffers() || 
                        hasPermissions('projects') || 
@@ -942,7 +942,7 @@ switch ($section) {
             $aNote  = $oNotes->GetNoteInt( $_SESSION['uid'], $project['user_id'], $error );
         } 
         
-        //Помечаем проект как прочитанный (счетчик просмотров)
+        //РџРѕРјРµС‡Р°РµРј РїСЂРѕРµРєС‚ РєР°Рє РїСЂРѕС‡РёС‚Р°РЅРЅС‹Р№ (СЃС‡РµС‚С‡РёРє РїСЂРѕСЃРјРѕС‚СЂРѕРІ)
         $obj_project->SetRead($project, $uid);
         
         if (is_emp())
@@ -950,7 +950,7 @@ switch ($section) {
           if ($project['kind'] == 2)
           {
             /*  
-             * todo: неиспользуемый кусок?
+             * todo: РЅРµРёСЃРїРѕР»СЊР·СѓРµРјС‹Р№ РєСѓСЃРѕРє?
             if (($project['user_id'] == $uid) && ($op_count_all > 0)) {
             #close: onload                $onload = 'start_scroll();';
             }
@@ -981,7 +981,7 @@ switch ($section) {
           else
           {
             /*  
-             * todo: неиспользуемый кусок?
+             * todo: РЅРµРёСЃРїРѕР»СЊР·СѓРµРјС‹Р№ РєСѓСЃРѕРє?
             if (($project['user_id'] == $uid) && ($op_count_all > 0)) {
             #close: onload                $onload = 'start_scroll();';
             }
@@ -1134,7 +1134,7 @@ switch ($section) {
             $user_id = get_uid(false);
             $prj_id = intvalPgSql((int)trim(str_replace("O","0",$_GET['pid'])));
             $po_id   = intval($_GET['id']);
-            // Проект.
+            // РџСЂРѕРµРєС‚.
             $action = trim($_REQUEST['action']);
             $obj_project = new projects();
             $project = $obj_project->GetPrjCust($prj_id);
@@ -1161,10 +1161,10 @@ switch ($section) {
             }
             if($action == "create") {
                 if(!trim($_POST['po_text'])) {
-                    $error = "Невозможно отправить пустое сообщение.";
+                    $error = "РќРµРІРѕР·РјРѕР¶РЅРѕ РѕС‚РїСЂР°РІРёС‚СЊ РїСѓСЃС‚РѕРµ СЃРѕРѕР±С‰РµРЅРёРµ.";
                 }
     
-                //Не позволяем производить действия с заблокированным проектом
+                //РќРµ РїРѕР·РІРѕР»СЏРµРј РїСЂРѕРёР·РІРѕРґРёС‚СЊ РґРµР№СЃС‚РІРёСЏ СЃ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рј РїСЂРѕРµРєС‚РѕРј
                 if (projects::CheckBlocked(intval($_POST['prj_id']))) {
                     return;
                     
@@ -1206,7 +1206,7 @@ switch ($section) {
                 		$error = $pod->SaveDialogueMessage($user_id, $po_text, $po_commentid, $po_id, false);
                         $last_comment = $po_commentid;
                 		if ($error == 1) {
-                			$error  = "Вы не можете редактировать комментарий, так как на него уже ответили.";
+                			$error  = "Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№, С‚Р°Рє РєР°Рє РЅР° РЅРµРіРѕ СѓР¶Рµ РѕС‚РІРµС‚РёР»Рё.";
                 		}
                 	}
 
@@ -1241,7 +1241,7 @@ switch ($section) {
             $emp_id     = get_uid(false);
             $emp_name   = $user->GetName($emp_id, $error);
         
-            //Не позволяем производить действия с заблокированным проектом
+            //РќРµ РїРѕР·РІРѕР»СЏРµРј РїСЂРѕРёР·РІРѕРґРёС‚СЊ РґРµР№СЃС‚РІРёСЏ СЃ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рј РїСЂРѕРµРєС‚РѕРј
             if (projects::CheckBlocked(intval($prj_id))) {
                 header('Location: /projects/index.php?pid='.intval($prj_id));
                 exit;
@@ -1279,7 +1279,7 @@ switch ($section) {
                 include ("../template2.php");
                 exit;    
             }
-            //Не позволяем производить действия с заблокированным проектом
+            //РќРµ РїРѕР·РІРѕР»СЏРµРј РїСЂРѕРёР·РІРѕРґРёС‚СЊ РґРµР№СЃС‚РІРёСЏ СЃ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рј РїСЂРѕРµРєС‚РѕРј
             if (projects::CheckBlocked(intval($prj_id))) {
                 header('Location: /projects/index.php?pid='.intval($prj_id));
                 exit;
@@ -1320,7 +1320,7 @@ switch ($section) {
             	$emp_id   = get_uid(false);
             	$emp_name = $user->GetName($emp_id, $error);
             
-                //Не позволяем производить действия с заблокированным проектом
+                //РќРµ РїРѕР·РІРѕР»СЏРµРј РїСЂРѕРёР·РІРѕРґРёС‚СЊ РґРµР№СЃС‚РІРёСЏ СЃ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рј РїСЂРѕРµРєС‚РѕРј
                 if (projects::CheckBlocked(intval($prj_id))) {
                     $objResponse->script("document.location.href='/projects/index.php?pid=".intval($prj_id)."'");
                 } else { 
@@ -1351,7 +1351,7 @@ switch ($section) {
 $user_phone_block = user_phone::getInstance()->render(user_phone::PLACE_HEADER);
 $user_phone_projects = user_phone::getInstance()->render(user_phone::PLACE_PROJECTS);
 
-// Формируем JS внизу страницы
+// Р¤РѕСЂРјРёСЂСѓРµРј JS РІРЅРёР·Сѓ СЃС‚СЂР°РЅРёС†С‹
 define('JS_BOTTOM', true);
 
 $css_file = array('/css/block/b-frm-filtr/b-frm-filtr.css','/css/block/b-opinion/b-opinion.css','/css/block/b-free-share/b-free-share.css','/css/block/b-note/b-note.css','/css/block/b-button-multi/b-button-multi.css','/css/block/b-prev/b-prev.css', '/css/nav.css', '/css/projects3.css' );

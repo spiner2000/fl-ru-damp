@@ -5,7 +5,7 @@
             <input type="checkbox" id="cbm_top" onclick="setDockChecked(this.checked)">
         </td>
         <td colspan="4" class="thf">
-            <input onclick="deleteSelectedDocs()" type="button" value="Óäàëèòü" class="btn-remove i-btn">
+            <input onclick="deleteSelectedDocs()" type="button" value="Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ" class="btn-remove i-btn">
             <div id="sel_s1_parent" style="float:left; margin-right:2px; margin-top:1px">
             <select onclick="$('sel_s2').set('value',this.value)" id="sel_s1">
                 <? if(is_array($sections)) foreach($sections as $section) { ?>
@@ -13,7 +13,7 @@
                 <?} ?>
             </select>
             </div>
-            <input onclick="moveSelectedDocs($('sel_s1').get('value'))" type="button" value="Ïåðåíåñòè" class="i-btn">
+            <input onclick="moveSelectedDocs($('sel_s1').get('value'))" type="button" value="ÐŸÐµÑ€ÐµÐ½ÐµÑÑ‚Ð¸" class="i-btn">
         </td>
     </tr>
 </thead>
@@ -23,13 +23,13 @@
             <input type="checkbox" id="cbm_bottom" onclick="setDockChecked(this.checked)">
         </td>
         <td colspan="4" class="thf">
-            <input onclick="deleteSelectedDocs()" type="button" value="Óäàëèòü" class="btn-remove i-btn">
+            <input onclick="deleteSelectedDocs()" type="button" value="Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ" class="btn-remove i-btn">
             <div id="sel_s2_parent" style="float:left; margin-right:2px; margin-top:1px">
             <select id="sel_s2" onclick="$('sel_s1').set('value',this.value)"><? if(is_array($sections))  foreach($sections as $section) { ?>
                                 <option value="<?= $section['id'];?>"><?= htmlspecialchars($section['name']);?></option>
                 <?} ?></select>
             </div>
-            <input onclick="moveSelectedDocs($('sel_s2').get('value'))" type="button" value="Ïåðåíåñòè" class="i-btn">
+            <input onclick="moveSelectedDocs($('sel_s2').get('value'))" type="button" value="ÐŸÐµÑ€ÐµÐ½ÐµÑÑ‚Ð¸" class="i-btn">
         </td>
     </tr>
 </tfoot>

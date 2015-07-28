@@ -2,8 +2,8 @@
 error_reporting(E_ALL & ~E_NOTICE);
 
 /**
- * Скрипт для перегонки старых файлов по подпапкам, работает из консоли
- * Свои результаты работы записывает в лог к webdav с пометкой transfer
+ * РЎРєСЂРёРїС‚ РґР»СЏ РїРµСЂРµРіРѕРЅРєРё СЃС‚Р°СЂС‹С… С„Р°Р№Р»РѕРІ РїРѕ РїРѕРґРїР°РїРєР°Рј, СЂР°Р±РѕС‚Р°РµС‚ РёР· РєРѕРЅСЃРѕР»Рё
+ * РЎРІРѕРё СЂРµР·СѓР»СЊС‚Р°С‚С‹ СЂР°Р±РѕС‚С‹ Р·Р°РїРёСЃС‹РІР°РµС‚ РІ Р»РѕРі Рє webdav СЃ РїРѕРјРµС‚РєРѕР№ transfer
  * 
  * @example
  * php transfer_upload_files.php 
@@ -13,11 +13,11 @@ $st = microtime(true);
 require_once "../classes/stdf.php";
 require_once "../classes/log.php";
 
-// Данные настройки перегонки файлов, все надо поменять под бету
-define("UPLOAD_PROJECTS", "/var/www/webdav/projects/upload/"); // Заменить на путь на бете
+// Р”Р°РЅРЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё РїРµСЂРµРіРѕРЅРєРё С„Р°Р№Р»РѕРІ, РІСЃРµ РЅР°РґРѕ РїРѕРјРµРЅСЏС‚СЊ РїРѕРґ Р±РµС‚Сѓ
+define("UPLOAD_PROJECTS", "/var/www/webdav/projects/upload/"); // Р—Р°РјРµРЅРёС‚СЊ РЅР° РїСѓС‚СЊ РЅР° Р±РµС‚Рµ
 define("DIR_SEPARATOR", "/");
-define("MAX_READ_FILES", 5000); // Количество файлов для обработки
-define("CHMOD_DIR", 0755); // Права доступа к папке 
+define("MAX_READ_FILES", 5000); // РљРѕР»РёС‡РµСЃС‚РІРѕ С„Р°Р№Р»РѕРІ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё
+define("CHMOD_DIR", 0755); // РџСЂР°РІР° РґРѕСЃС‚СѓРїР° Рє РїР°РїРєРµ 
 
 $log = new log('webdav/transfer-'.SERVER.'-%d.log', 'a', '%d.%m.%Y %H:%M:%S : ');
 if ($handle = opendir(UPLOAD_PROJECTS)) {
@@ -27,7 +27,7 @@ if ($handle = opendir(UPLOAD_PROJECTS)) {
             $i++;
             
             if(substr($file, 0, 2) == "na") {
-                continue; // такие файлы будут перемещатся вместе с родителями их нет в БД
+                continue; // С‚Р°РєРёРµ С„Р°Р№Р»С‹ Р±СѓРґСѓС‚ РїРµСЂРµРјРµС‰Р°С‚СЃСЏ РІРјРµСЃС‚Рµ СЃ СЂРѕРґРёС‚РµР»СЏРјРё РёС… РЅРµС‚ РІ Р‘Р”
             }
                     
             $sql = "SELECT * FROM file_projects WHERE fname = ?";

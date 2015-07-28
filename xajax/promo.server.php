@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/promo.common.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/sbr_meta.php");
 
 /**
- * возвращает отзывы сервису в промоблок Безопасной Сделки
+ * РІРѕР·РІСЂР°С‰Р°РµС‚ РѕС‚Р·С‹РІС‹ СЃРµСЂРІРёСЃСѓ РІ РїСЂРѕРјРѕР±Р»РѕРє Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё
  */
 function getPromoFeedbacks()
 {
@@ -25,7 +25,7 @@ function getPromoFeedbacks()
 }
 
 /**
- * возвращает статистику в промоблок Безопасной Сделки
+ * РІРѕР·РІСЂР°С‰Р°РµС‚ СЃС‚Р°С‚РёСЃС‚РёРєСѓ РІ РїСЂРѕРјРѕР±Р»РѕРє Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРё
  */
 function getPromoStats()
 {

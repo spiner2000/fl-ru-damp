@@ -27,7 +27,7 @@ if (!$xajax) {
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("authCode", $_SERVER['DOCUMENT_ROOT'] . "/xajax/sbr.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("checkCode", $_SERVER['DOCUMENT_ROOT'] . "/xajax/users.server.php"));
     
-    //Модерация финансов
+    //РњРѕРґРµСЂР°С†РёСЏ С„РёРЅР°РЅСЃРѕРІ
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("setDelReasonForm", $_SERVER['DOCUMENT_ROOT'] . "/xajax/banned.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("getAdminActionReasonTextDel", $_SERVER['DOCUMENT_ROOT'] . "/xajax/banned.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("setDeleted", $_SERVER['DOCUMENT_ROOT'] . "/xajax/banned.server.php"));

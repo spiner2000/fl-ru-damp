@@ -18,9 +18,9 @@ $msg_text = strip_tags(preg_replace('~(https?:/){[^}]+}/~', '$1/', $msg_text), "
                                      'is_team' => $result[$pfx.'is_team'],
                                      'is_profi' => @$result[$pfx.'is_profi'],
                         	         'role'    => $result[$pfx.'role'],
-                        	         'is_pro'  => $result[$pfx.'is_pro']));?></span><?php if($result[$pfx.'is_banned'] == 1) {?><span class="red">[Пользователь заблокирован]</span><?php }//if?> <span class="search-mess-time"><?= date('d.m.Y в H:i', strtotime($result['post_time']))?></span></span>
+                        	         'is_pro'  => $result[$pfx.'is_pro']));?></span><?php if($result[$pfx.'is_banned'] == 1) {?><span class="red">[РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ]</span><?php }//if?> <span class="search-mess-time"><?= date('d.m.Y РІ H:i', strtotime($result['post_time']))?></span></span>
         </h4>
         <p><?= reformat($msg_text, 40, 0, 1)?></p>
-        <p class="all-mess"><a href="/contacts/?from=<?= $result[$pfx.'login']?>" target="login">Смотреть все сообщения</a></p>
+        <p class="all-mess"><a href="/contacts/?from=<?= $result[$pfx.'login']?>" target="login">РЎРјРѕС‚СЂРµС‚СЊ РІСЃРµ СЃРѕРѕР±С‰РµРЅРёСЏ</a></p>
     </div>
 </div><!--/search-lenta-item-->

@@ -50,7 +50,7 @@ $Test->drawCubicCurve($DataSet->GetData(),$DataSet->GetDataDescription());
 
 // Finish the graph
 $Test->setFontProperties("Fonts/tahoma.ttf",10);
-$Test->drawTitle(50,22,"Пользователи PRO",50,50,50,585);
+$Test->drawTitle(50,22,"РџРѕР»СЊР·РѕРІР°С‚РµР»Рё PRO",50,50,50,585);
 $Test->Stroke();
 ?>
 

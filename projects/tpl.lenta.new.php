@@ -14,7 +14,7 @@ if($can_change_prj) {
 			<div class="b-shadow__top">
 				<div class="b-shadow__bottom">
 					<div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20">
-						<h2 class="b-shadow__title b-shadow__title_padbot_15">Редактирование бюджета</h2>
+						<h2 class="b-shadow__title b-shadow__title_padbot_15">Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±СЋРґР¶РµС‚Р°</h2>
 						<div id="popup_budget_prj_name" class="b-layout__txt b-layout__txt_padbot_15"></div>
                         
 						<div class="b-form b-form_padbot_20">
@@ -39,23 +39,23 @@ if($can_change_prj) {
                         
                         <div class="b-check b-check_padbot_10 b-check_clear_both">
                             <input id="popup_budget_prj_agreement" class="b-check__input" name="agreement" type="checkbox" value="1" />
-                            <label class="b-check__label b-check__label_fontsize_13" for="popup_budget_prj_agreement">по договорённости</label>
+                            <label class="b-check__label b-check__label_fontsize_13" for="popup_budget_prj_agreement">РїРѕ РґРѕРіРѕРІРѕСЂС‘РЅРЅРѕСЃС‚Рё</label>
                         </div>
                         
                         <div id="popup_budget_prj_price_error" class="b-fon b-fon_bg_ff6d2d b-fon_padtop_10" style="display: none; ">
                             <b class="b-fon__b1"></b>
                             <b class="b-fon__b2"></b>
                             <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13 ">
-                                <span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20">Бюджет заполнен не верно</div>
+                                <span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20">Р‘СЋРґР¶РµС‚ Р·Р°РїРѕР»РЅРµРЅ РЅРµ РІРµСЂРЅРѕ</div>
                             </div>
                             <b class="b-fon__b2"></b>
                             <b class="b-fon__b1"></b>
                         </div>
                         
 						<div class="b-buttons b-buttons_padtop_15">
-							<a id="popupBtnSaveBudget" href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green">Сохранить</a>							
-                            <span class="b-buttons__txt">&nbsp;или&nbsp;</span>
-							<a class="b-buttons__link b-buttons__link_dot_c10601 b-shadow__close" href="javascript:void(0)">закрыть без изменений</a>
+							<a id="popupBtnSaveBudget" href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green">РЎРѕС…СЂР°РЅРёС‚СЊ</a>							
+                            <span class="b-buttons__txt">&nbsp;РёР»Рё&nbsp;</span>
+							<a class="b-buttons__link b-buttons__link_dot_c10601 b-shadow__close" href="javascript:void(0)">Р·Р°РєСЂС‹С‚СЊ Р±РµР· РёР·РјРµРЅРµРЅРёР№</a>
 						</div>
 					</div>
 				</div>
@@ -77,8 +77,8 @@ if($can_change_prj) {
 
 <? if (empty($list)) { ?>
     <div class="b-post b-post_padtop_60">
-        <h4 class="b-post__h4 b-post__h4_padbot_5 b-post__h4_center"><?= $kind == 2 || $kind == 7 ? 'Конкурсов' : ($kind == 4 ? 'Вакансий' : 'Проектов') ?> не найдено</h4>
-        <div class="b-post__txt b-post__txt_center">Попробуйте изменить параметры фильтра</div>
+        <h4 class="b-post__h4 b-post__h4_padbot_5 b-post__h4_center"><?= $kind == 2 || $kind == 7 ? 'РљРѕРЅРєСѓСЂСЃРѕРІ' : ($kind == 4 ? 'Р’Р°РєР°РЅСЃРёР№' : 'РџСЂРѕРµРєС‚РѕРІ') ?> РЅРµ РЅР°Р№РґРµРЅРѕ</h4>
+        <div class="b-post__txt b-post__txt_center">РџРѕРїСЂРѕР±СѓР№С‚Рµ РёР·РјРµРЅРёС‚СЊ РїР°СЂР°РјРµС‚СЂС‹ С„РёР»СЊС‚СЂР°</div>
     </div>
 <? } ?>
 
@@ -86,7 +86,7 @@ if($can_change_prj) {
 <div class="b-rss b-rss_padbot_15">
     <script type="text/javascript">
         var RSS_LINK = '/rss/<?= $rss_link ?>';
-        document.write('<a class="b-rss__link b-rss__link_dot_0f71c8" href="javascript:void(0)" onClick="showRSS(); return false;">Подписаться через RSS</a>');
+        document.write('<a class="b-rss__link b-rss__link_dot_0f71c8" href="javascript:void(0)" onClick="showRSS(); return false;">РџРѕРґРїРёСЃР°С‚СЊСЃСЏ С‡РµСЂРµР· RSS</a>');
     </script>
 		
 		
@@ -94,16 +94,16 @@ if($can_change_prj) {
 <div class="i-shadow">		
 <div id="rsso" class="b-shadow b-shadow_inline-block b-shadow_width_380 b-shadow_zindex_3 b-shadow_hide" >
 					<div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20">
-						<div class="b-layout__txt b-layout__txt_padbot_15">Выберите раздел, на который хотите подписаться</div>
+						<div class="b-layout__txt b-layout__txt_padbot_15">Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР», РЅР° РєРѕС‚РѕСЂС‹Р№ С…РѕС‚РёС‚Рµ РїРѕРґРїРёСЃР°С‚СЊСЃСЏ</div>
 						<div class="b-combo b-combo_margbot_20">
-							<div class="b-combo__input b-combo__input_width_280  b-combo__input_multi_dropdown b-combo__input_arrow_yes b-combo__input_init_professionsList sort_cnt drop_down_default_-1 multi_drop_down_default_column_0 override_value_id_1_0_Веcь+раздел exclude_value_0_0">
+							<div class="b-combo__input b-combo__input_width_280  b-combo__input_multi_dropdown b-combo__input_arrow_yes b-combo__input_init_professionsList sort_cnt drop_down_default_-1 multi_drop_down_default_column_0 override_value_id_1_0_Р’РµcСЊ+СЂР°Р·РґРµР» exclude_value_0_0">
 								<input id="popup_profgroup" class="b-combo__input-text b-combo__input-text_fontsize_15" type="text"  size="80" />
 							</div>
 						</div>
 						<div class="b-buttons b-buttons_padtop_15">
-							<a class="b-button b-button_flat b-button_flat_green" href="javascript:void(0)" onclick="gotoRSS(); document.getElementById('rsso').style.display='none'; return false;">Подписаться</a>							
-							<span class="b-buttons__txt b-buttons__txt_padleft_10">или</span>
-							<a class="b-buttons__link b-buttons__link_dot_c10601 b-shadow__close" href="javascript:void(0)" onclick="$(this).getParent('div.overlay').setStyle('display', 'none'); return false;">закрыть</a>
+							<a class="b-button b-button_flat b-button_flat_green" href="javascript:void(0)" onclick="gotoRSS(); document.getElementById('rsso').style.display='none'; return false;">РџРѕРґРїРёСЃР°С‚СЊСЃСЏ</a>							
+							<span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё</span>
+							<a class="b-buttons__link b-buttons__link_dot_c10601 b-shadow__close" href="javascript:void(0)" onclick="$(this).getParent('div.overlay').setStyle('display', 'none'); return false;">Р·Р°РєСЂС‹С‚СЊ</a>
 						</div>
 					</div>
 </div>

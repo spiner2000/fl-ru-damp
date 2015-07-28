@@ -1,25 +1,25 @@
 <?
 /**
- * Подключем файл с основными функциями
+ * РџРѕРґРєР»СЋС‡РµРј С„Р°Р№Р» СЃ РѕСЃРЅРѕРІРЅС‹РјРё С„СѓРЅРєС†РёСЏРјРё
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 /**
- * Подключаем файл для работы с мемкешем 
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РјРµРјРєРµС€РµРј 
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/memBuff.php");
 
 
 /**
- * Класс для работы с черновиками
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ С‡РµСЂРЅРѕРІРёРєР°РјРё
  *
  */
 class drafts
 {
 	/**
-	 * Сохранение поста в сообществе в черновики
+	 * РЎРѕС…СЂР°РЅРµРЅРёРµ РїРѕСЃС‚Р° РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ РІ С‡РµСЂРЅРѕРІРёРєРё
 	 *
-	 * @param   array     $msg    Информация опосте
-     * @return  array             ['id'] - ID черновика, ['date'] - дата сохранения черновика
+	 * @param   array     $msg    РРЅС„РѕСЂРјР°С†РёСЏ РѕРїРѕСЃС‚Рµ
+     * @return  array             ['id'] - ID С‡РµСЂРЅРѕРІРёРєР°, ['date'] - РґР°С‚Р° СЃРѕС…СЂР°РЅРµРЅРёСЏ С‡РµСЂРЅРѕРІРёРєР°
 	 */
 	function SaveCommune($msg){
 		global $DB;
@@ -110,7 +110,7 @@ class drafts
             $id = $DB->val($sql, $msg['category_id'], $msg['title'], $msg['msgtext'], $msg['youtube_link'], $msg['question'], $msg['multiple'], $msg['answers'], $msg['close_comments'], $msg['is_private'], $msg['pos'], $msg['uid'], $msg['draft_post_id'], $msg['id'], $date);
         }
 
-        // - BEGIN атачи
+        // - BEGIN Р°С‚Р°С‡Рё
         $sql = "SELECT * FROM draft_attaches WHERE draft_id = ?i AND draft_type = 2;";
         $files = $DB->rows($sql, $id);
         if($files) {
@@ -136,7 +136,7 @@ class drafts
             }
             $DB->query();
         }
-        // - END атачи
+        // - END Р°С‚Р°С‡Рё
 
         $_SESSION['drafts_count'] = drafts::getCount($msg['uid']);
 
@@ -144,10 +144,10 @@ class drafts
     }
 
 	/**
-	 * Сохранение поста блога в черновики
+	 * РЎРѕС…СЂР°РЅРµРЅРёРµ РїРѕСЃС‚Р° Р±Р»РѕРіР° РІ С‡РµСЂРЅРѕРІРёРєРё
 	 *
-	 * @param   array     $msg    Информация опосте
-     * @return  array             ['id'] - ID черновика, ['date'] - дата сохранения черновика
+	 * @param   array     $msg    РРЅС„РѕСЂРјР°С†РёСЏ РѕРїРѕСЃС‚Рµ
+     * @return  array             ['id'] - ID С‡РµСЂРЅРѕРІРёРєР°, ['date'] - РґР°С‚Р° СЃРѕС…СЂР°РЅРµРЅРёСЏ С‡РµСЂРЅРѕРІРёРєР°
 	 */
 	function SaveBlog($msg){
 		global $DB;
@@ -238,7 +238,7 @@ class drafts
             $id = $DB->val($sql, $msg['category'], $msg['name'], $msg['msgtext'], $msg['yt_link'], $msg['close_comments'], $msg['is_private'], $msg['question'], $msg['multiple'], $msg['answers'], $msg['uid'], $msg['draft_post_id'], $date, $msg['answers_a']);
         }
 
-        // - BEGIN атачи
+        // - BEGIN Р°С‚Р°С‡Рё
         $sql = "SELECT * FROM draft_attaches WHERE draft_id = ?i AND draft_type = 1;";
         $files = $DB->rows($sql, $id);
         if($files) {
@@ -264,7 +264,7 @@ class drafts
             }
             $DB->query();
         }
-        // - END атачи
+        // - END Р°С‚Р°С‡Рё
 
         $_SESSION['drafts_count'] = drafts::getCount($msg['uid']);
 
@@ -272,10 +272,10 @@ class drafts
     }
 
 	/**
-	 * Сохранение личного сообщения в черновики
+	 * РЎРѕС…СЂР°РЅРµРЅРёРµ Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ РІ С‡РµСЂРЅРѕРІРёРєРё
 	 *
-	 * @param   array     $msg       Информация о сообщении
-     * @return  array               ['id'] - ID черновика, ['date'] - дата сохранения черновика
+	 * @param   array     $msg       РРЅС„РѕСЂРјР°С†РёСЏ Рѕ СЃРѕРѕР±С‰РµРЅРёРё
+     * @return  array               ['id'] - ID С‡РµСЂРЅРѕРІРёРєР°, ['date'] - РґР°С‚Р° СЃРѕС…СЂР°РЅРµРЅРёСЏ С‡РµСЂРЅРѕРІРёРєР°
 	 */
 	function SaveContacts($msg){
 		global $DB;
@@ -307,7 +307,7 @@ class drafts
             $id = $DB->val($sql, $msg['msg'], $msg['to_login'], $date, $msg['uid']);
         }
 
-        // - BEGIN атачи
+        // - BEGIN Р°С‚Р°С‡Рё
         $sql = "SELECT * FROM draft_attaches WHERE draft_id = ?i AND draft_type = 3;";
         $files = $DB->rows($sql, $id);
         if($files) {
@@ -333,7 +333,7 @@ class drafts
             }
             $DB->query();
         }
-        // - END атачи
+        // - END Р°С‚Р°С‡Рё
 
         $_SESSION['drafts_count'] = drafts::getCount($msg['uid']);
 
@@ -341,10 +341,10 @@ class drafts
     }
 
     /**
-	 * Сохранение проекта в черновики
+	 * РЎРѕС…СЂР°РЅРµРЅРёРµ РїСЂРѕРµРєС‚Р° РІ С‡РµСЂРЅРѕРІРёРєРё
 	 *
-	 * @param   array     $prj    Информация о проекте
-     * @return  array             ['id'] - ID черновика, ['date'] - дата сохранения черновика
+	 * @param   array     $prj    РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїСЂРѕРµРєС‚Рµ
+     * @return  array             ['id'] - ID С‡РµСЂРЅРѕРІРёРєР°, ['date'] - РґР°С‚Р° СЃРѕС…СЂР°РЅРµРЅРёСЏ С‡РµСЂРЅРѕРІРёРєР°
 	 */
 	function SaveProject($prj, $attachedfiles_files = false){
 		global $DB;
@@ -441,7 +441,7 @@ class drafts
             $id = $DB->val($sql, $prj['name'], $prj['descr'], $prj['cost'], $prj['currency'], $prj['kind'], ($prj['pro_only']==1?'t':'f'), $prj['end_date'], $prj['win_date'], $prj['country'], $prj['city'], $categories, $date, $prj['uid'], $prj['prj_id'], intval($prj['priceby']), ($prj['prefer_sbr']==1?'t':'f'), $prj['budget_type'], (int)$prj['strong_top'], $prj['verify_only'], $prj['contacts']);
         }
 
-        // - BEGIN атачи
+        // - BEGIN Р°С‚Р°С‡Рё
         if(!$attachedfiles_files) {
             require_once($_SERVER['DOCUMENT_ROOT'] . "/classes//uploader/uploader.php");
             $mask_files = array(1,3);
@@ -450,15 +450,15 @@ class drafts
         }
         
         $file_id = array();
-        // массив с ID файлов которые не надо удалять
+        // РјР°СЃСЃРёРІ СЃ ID С„Р°Р№Р»РѕРІ РєРѕС‚РѕСЂС‹Рµ РЅРµ РЅР°РґРѕ СѓРґР°Р»СЏС‚СЊ
         $noDeletedFiles = array();
         foreach($attachedfiles_files as $attachedfiles_file) {
             $noDeletedFiles[] = $attachedfiles_file['id'];
-            // старые файлы не трогаем
+            // СЃС‚Р°СЂС‹Рµ С„Р°Р№Р»С‹ РЅРµ С‚СЂРѕРіР°РµРј
             if ($attachedfiles_file['status'] == 3) {
                 continue;
             }
-            if(in_array($f->id, $file_id)) continue; // Чтобы не было дублей
+            if(in_array($f->id, $file_id)) continue; // Р§С‚РѕР±С‹ РЅРµ Р±С‹Р»Рѕ РґСѓР±Р»РµР№
             $file_id[] = $f->id;
             $f = new CFile($attachedfiles_file['id']);
             $f->table = 'file';
@@ -487,7 +487,7 @@ class drafts
         $sql = "DELETE FROM draft_attaches WHERE draft_id = ?i AND draft_type = 4 $sqlNoDeletedFiles;";
         $DB->query($sql, $id, array());
             
-        // - END атачи
+        // - END Р°С‚Р°С‡Рё
 
         $_SESSION['drafts_count'] = drafts::getCount($msg['uid']);
 
@@ -495,10 +495,10 @@ class drafts
 	}
     
 	/**
-	 * Сохранение проекта в черновики (новый шаблон)
+	 * РЎРѕС…СЂР°РЅРµРЅРёРµ РїСЂРѕРµРєС‚Р° РІ С‡РµСЂРЅРѕРІРёРєРё (РЅРѕРІС‹Р№ С€Р°Р±Р»РѕРЅ)
 	 *
-	 * @param   array     $prj    Информация о проекте
-     * @return  array             ['id'] - ID черновика, ['date'] - дата сохранения черновика
+	 * @param   array     $prj    РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїСЂРѕРµРєС‚Рµ
+     * @return  array             ['id'] - ID С‡РµСЂРЅРѕРІРёРєР°, ['date'] - РґР°С‚Р° СЃРѕС…СЂР°РЅРµРЅРёСЏ С‡РµСЂРЅРѕРІРёРєР°
 	 */
 	function SaveProjectNew($prj, $attachedfiles_files = false){
 		global $DB;
@@ -529,7 +529,7 @@ class drafts
         $prj['strong_top'] = hasPermissions('projects') ? (int) $prj['strong_top'] : 0;
         $prj['verify_only'] = (bool)$prj['verify_only'];
 
-        // платные опции
+        // РїР»Р°С‚РЅС‹Рµ РѕРїС†РёРё
         $prj['urgent'] = (bool)$prj['urgent'];
         $prj['hide'] = (bool)$prj['hide'];
         $topDays = $prj['top_ok'] ? $prj['top_days'] : 0;
@@ -537,7 +537,7 @@ class drafts
             $logoAttach = new attachedfiles($prj['logo_attachedfiles_session']);
             $logoFiles = $logoAttach->getFiles();
             if (is_array($logoFiles) && count($logoFiles)) {
-                $logoFile = array_pop($logoFiles); // файлов может быть несколько, берем последний
+                $logoFile = array_pop($logoFiles); // С„Р°Р№Р»РѕРІ РјРѕР¶РµС‚ Р±С‹С‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ, Р±РµСЂРµРј РїРѕСЃР»РµРґРЅРёР№
                 $logoAttach->setStatusTo3($logoFile['id']);
                 $logoFileID = $logoFile['id'];
             } elseif ($prj['logo_file_id']) {
@@ -634,7 +634,7 @@ class drafts
             $id = $DB->val($sql, $prj['name'], $prj['descr'], $prj['cost'], $prj['currency_db_id'], $prj['kind'], ($prj['pro_only']==1?'t':'f'), $prj['end_date'], $prj['win_date'], (int)$prj['project_location_columns'][0], (int)$prj['project_location_columns'][1], $categories, $date, $prj['uid'], $prj['prj_id'], intval($prj['priceby_db_id']), ($prj['prefer_sbr']==1?'t':'f'), $prj['budget_type'], (int)$prj['strong_top'], $prj['verify_only'], $prj['urgent'], $prj['hide'], $topDays, $logoFileID, $logoLink, $prj['contacts']);
         }
 
-        // - BEGIN атачи
+        // - BEGIN Р°С‚Р°С‡Рё
         if(!$attachedfiles_files) {
             require_once($_SERVER['DOCUMENT_ROOT'] . "/classes//uploader/uploader.php");
             $mask_files = array(1,3);
@@ -643,15 +643,15 @@ class drafts
         }
         
         $file_id = array();
-        // массив с ID файлов которые не надо удалять
+        // РјР°СЃСЃРёРІ СЃ ID С„Р°Р№Р»РѕРІ РєРѕС‚РѕСЂС‹Рµ РЅРµ РЅР°РґРѕ СѓРґР°Р»СЏС‚СЊ
         $noDeletedFiles = array();
         foreach($attachedfiles_files as $attachedfiles_file) {
             $noDeletedFiles[] = $attachedfiles_file['id'];
-            // старые файлы не трогаем
+            // СЃС‚Р°СЂС‹Рµ С„Р°Р№Р»С‹ РЅРµ С‚СЂРѕРіР°РµРј
             if ($attachedfiles_file['status'] == 3) {
                 continue;
             }
-            if(in_array($f->id, $file_id)) continue; // Чтобы не было дублей
+            if(in_array($f->id, $file_id)) continue; // Р§С‚РѕР±С‹ РЅРµ Р±С‹Р»Рѕ РґСѓР±Р»РµР№
             $file_id[] = $f->id;
             $f = new CFile($attachedfiles_file['id']);
             $f->table = 'file';
@@ -680,7 +680,7 @@ class drafts
         $sql = "DELETE FROM draft_attaches WHERE draft_id = ?i AND draft_type = 4 $sqlNoDeletedFiles;";
         $DB->query($sql, $id, array());
             
-        // - END атачи
+        // - END Р°С‚Р°С‡Рё
 
         $_SESSION['drafts_count'] = drafts::getCount($msg['uid']);
 
@@ -688,31 +688,31 @@ class drafts
 	}
 
     /**
-     * Проверяет есть ли запрашиваемый черновик
+     * РџСЂРѕРІРµСЂСЏРµС‚ РµСЃС‚СЊ Р»Рё Р·Р°РїСЂР°С€РёРІР°РµРјС‹Р№ С‡РµСЂРЅРѕРІРёРє
      *
-     * @param   integer     $id       ID черновика
-     * @param   integer     $uid      ID пользователя
-     * @param   integer     $type     Тип черновика
-     * @param   integer     $prj_id   Идентификатор проекта на случай, если сохраняем уже опубликованый проект
-     * @return  boolean             true - есть, false - нет
+     * @param   integer     $id       ID С‡РµСЂРЅРѕРІРёРєР°
+     * @param   integer     $uid      ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param   integer     $type     РўРёРї С‡РµСЂРЅРѕРІРёРєР°
+     * @param   integer     $prj_id   РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїСЂРѕРµРєС‚Р° РЅР° СЃР»СѓС‡Р°Р№, РµСЃР»Рё СЃРѕС…СЂР°РЅСЏРµРј СѓР¶Рµ РѕРїСѓР±Р»РёРєРѕРІР°РЅС‹Р№ РїСЂРѕРµРєС‚
+     * @return  boolean             true - РµСЃС‚СЊ, false - РЅРµС‚
      */
     function isDraftExists($id, $uid, $type, $prj_id = 0) {
         global $DB;
         switch($type) {
             case 1:
-                // Проекты
+                // РџСЂРѕРµРєС‚С‹
                 $sql = "SELECT id FROM draft_projects WHERE (id=?i OR prj_id = ?i) AND uid=?i";
                 return $DB->val($sql, $id, $prj_id, $uid);
             case 2:
-                // Личка
+                // Р›РёС‡РєР°
                 $sql = "SELECT id FROM draft_contacts WHERE id=?i AND uid=?i";
                 break;
             case 3:
-                // Блоги
+                // Р‘Р»РѕРіРё
                 $sql = "SELECT id FROM draft_blogs WHERE id=?i AND uid=?i";
                 break;
             case 4:
-                // Сообщества
+                // РЎРѕРѕР±С‰РµСЃС‚РІР°
                 $sql = "SELECT id FROM draft_communes WHERE id=?i AND uid=?i";
                 break;
         }
@@ -720,11 +720,11 @@ class drafts
     }
 
     /**
-     * Получает список приатаченных файлов
+     * РџРѕР»СѓС‡Р°РµС‚ СЃРїРёСЃРѕРє РїСЂРёР°С‚Р°С‡РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ
      *
-     * @param   integer $draft_id   ID черновика
-     * @param   integer $draft_type Тип черновика
-     * @return  array               Информация о файлах
+     * @param   integer $draft_id   ID С‡РµСЂРЅРѕРІРёРєР°
+     * @param   integer $draft_type РўРёРї С‡РµСЂРЅРѕРІРёРєР°
+     * @return  array               РРЅС„РѕСЂРјР°С†РёСЏ Рѕ С„Р°Р№Р»Р°С…
      *
      */
     function getAttachedFiles($draft_id, $draft_type, $uid = null) {
@@ -765,21 +765,21 @@ class drafts
 
 
     /**
-     * Удаление черновика
+     * РЈРґР°Р»РµРЅРёРµ С‡РµСЂРЅРѕРІРёРєР°
      *
-     * @param   integer     $id     ID черновика
-     * @param   integer     $uid    ID пользователя
-     * @param   integer     $type   Тип черновика
+     * @param   integer     $id     ID С‡РµСЂРЅРѕРІРёРєР°
+     * @param   integer     $uid    ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param   integer     $type   РўРёРї С‡РµСЂРЅРѕРІРёРєР°
      */
     function DeleteDraft($id, $uid, $type, $delete_files=false) {
         global $DB;
         switch($type) {
             case 1:
-                // Проекты
+                // РџСЂРѕРµРєС‚С‹
                 $sql = "DELETE FROM draft_projects WHERE id=?i AND uid=?i";
                 break;
             case 2:
-                // Личка
+                // Р›РёС‡РєР°
                 if($delete_files) {
                     $sql = "SELECT * FROM draft_attaches WHERE draft_id = ?i AND draft_type = 3;";
                     $attaches = $DB->rows($sql, $id);
@@ -795,7 +795,7 @@ class drafts
                 $sql = "DELETE FROM draft_contacts WHERE id=?i AND uid=?i";
                 break;
             case 3:
-                // Блоги
+                // Р‘Р»РѕРіРё
                 if($delete_files) {
                     $sql = "SELECT * FROM draft_attaches WHERE draft_id = ?i AND draft_type = 1;";
                     $attaches = $DB->rows($sql, $id);
@@ -811,7 +811,7 @@ class drafts
                 $sql = "DELETE FROM draft_blogs WHERE id=?i AND uid=?i";
                 break;
             case 4:
-                // Сообщества
+                // РЎРѕРѕР±С‰РµСЃС‚РІР°
                 $sql = "DELETE FROM draft_communes WHERE id=?i AND uid=?i";
                 break;
 
@@ -822,9 +822,9 @@ class drafts
     }
 
     /**
-     * Удаление черновика проекта по ID проекта
+     * РЈРґР°Р»РµРЅРёРµ С‡РµСЂРЅРѕРІРёРєР° РїСЂРѕРµРєС‚Р° РїРѕ ID РїСЂРѕРµРєС‚Р°
      *
-     * @param   integer $prj_id     ID проекта
+     * @param   integer $prj_id     ID РїСЂРѕРµРєС‚Р°
      */
     function DeleteDraftByPrjID($prj_id) {
         global $DB;
@@ -833,11 +833,11 @@ class drafts
     }
 
     /**
-     * Проверка наличия ранее сохраненных черновиков для лички
+     * РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ СЂР°РЅРµРµ СЃРѕС…СЂР°РЅРµРЅРЅС‹С… С‡РµСЂРЅРѕРІРёРєРѕРІ РґР»СЏ Р»РёС‡РєРё
      *
-     * @param       string  $to_login   Логин получателя
-     * @param       integer $uid        ID пользователя   
-     * @return      integer             Кол-во черновиков
+     * @param       string  $to_login   Р›РѕРіРёРЅ РїРѕР»СѓС‡Р°С‚РµР»СЏ
+     * @param       integer $uid        ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ   
+     * @return      integer             РљРѕР»-РІРѕ С‡РµСЂРЅРѕРІРёРєРѕРІ
      */
     function CheckContacts($to_login, $uid) {
         global $DB;
@@ -847,10 +847,10 @@ class drafts
     }
 
     /**
-     * Проверка наличия ранее сохраненных черновиков для проектов
+     * РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ СЂР°РЅРµРµ СЃРѕС…СЂР°РЅРµРЅРЅС‹С… С‡РµСЂРЅРѕРІРёРєРѕРІ РґР»СЏ РїСЂРѕРµРєС‚РѕРІ
      *
-     * @param       integer $uid        ID пользователя   
-     * @return      integer             Кол-во черновиков
+     * @param       integer $uid        ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ   
+     * @return      integer             РљРѕР»-РІРѕ С‡РµСЂРЅРѕРІРёРєРѕРІ
      */
     function CheckProjects($uid) {
         global $DB;
@@ -860,10 +860,10 @@ class drafts
     }
 
     /**
-     * Проверка наличия ранее сохраненных черновиков для блогов
+     * РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ СЂР°РЅРµРµ СЃРѕС…СЂР°РЅРµРЅРЅС‹С… С‡РµСЂРЅРѕРІРёРєРѕРІ РґР»СЏ Р±Р»РѕРіРѕРІ
      *
-     * @param       integer $uid        ID пользователя   
-     * @return      integer             Кол-во черновиков
+     * @param       integer $uid        ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ   
+     * @return      integer             РљРѕР»-РІРѕ С‡РµСЂРЅРѕРІРёРєРѕРІ
      */
     function CheckBlogs($uid) {
         global $DB;
@@ -878,10 +878,10 @@ class drafts
     }
 
     /**
-     * Проверка наличия ранее сохраненных черновиков для сообществ
+     * РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ СЂР°РЅРµРµ СЃРѕС…СЂР°РЅРµРЅРЅС‹С… С‡РµСЂРЅРѕРІРёРєРѕРІ РґР»СЏ СЃРѕРѕР±С‰РµСЃС‚РІ
      *
-     * @param       integer $uid        ID пользователя   
-     * @return      integer             Кол-во черновиков
+     * @param       integer $uid        ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ   
+     * @return      integer             РљРѕР»-РІРѕ С‡РµСЂРЅРѕРІРёРєРѕРІ
      */
     function CheckCommune($uid) {
         global $DB;
@@ -891,27 +891,27 @@ class drafts
     }
 
     /**
-     * Получение всех черновиков пользователя
+     * РџРѕР»СѓС‡РµРЅРёРµ РІСЃРµС… С‡РµСЂРЅРѕРІРёРєРѕРІ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      *
-     * @param   integer     $uid    ID пользователя
-     * @param   integer     $type   Тип черновика
-     * @param   integer     $limit  количество черновиков (пока только для проектов)
-     * @return  array               Информация о черновиках
+     * @param   integer     $uid    ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param   integer     $type   РўРёРї С‡РµСЂРЅРѕРІРёРєР°
+     * @param   integer     $limit  РєРѕР»РёС‡РµСЃС‚РІРѕ С‡РµСЂРЅРѕРІРёРєРѕРІ (РїРѕРєР° С‚РѕР»СЊРєРѕ РґР»СЏ РїСЂРѕРµРєС‚РѕРІ)
+     * @return  array               РРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‡РµСЂРЅРѕРІРёРєР°С…
      */
     function getUserDrafts($uid, $type, $limit = null) {
         global $DB;
         switch($type) {
             case 1:
-                // Проекты
+                // РџСЂРѕРµРєС‚С‹
                 $limitSql = $limit ? ' LIMIT ' . $limit . ' ' : '';
                 $sql = "SELECT *, to_char(date, 'DD.MM.YYYY HH24:MI') as pdate FROM draft_projects WHERE uid=?i ORDER BY date DESC $limitSql";
                 break;
             case 2:
-                // Личка
+                // Р›РёС‡РєР°
                 $sql = "SELECT draft_contacts.*, users.uname, users.usurname, to_char(draft_contacts.date, 'DD.MM.YYYY HH24:MI') as pdate FROM draft_contacts JOIN users ON draft_contacts.to_login = users.login WHERE draft_contacts.uid = ?i ORDER BY draft_contacts.date DESC";
                 break;
             case 3:
-                // Блоги
+                // Р‘Р»РѕРіРё
                 $sql = "
                     SELECT draft_blogs.*, blogs_groups.t_name as category_title, to_char(draft_blogs.date, 'DD.MM.YYYY HH24:MI') as pdate, b.thread_id AS is_blocked 
                     FROM draft_blogs 
@@ -922,7 +922,7 @@ class drafts
                     ORDER BY draft_blogs.date DESC";
                 break;
             case 4:
-                // Сообщества
+                // РЎРѕРѕР±С‰РµСЃС‚РІР°
                 $sql = "SELECT draft_communes.*, commune.name as commune_title, to_char(draft_communes.date, 'DD.MM.YYYY HH24:MI') as pdate, (author_id = {$uid} OR m.id IS NOT NULL) AS is_member
                     FROM draft_communes 
                     JOIN commune ON draft_communes.commune_id = commune.id 
@@ -934,30 +934,30 @@ class drafts
     }
 
     /**
-    * Получить информацию о черновике
+    * РџРѕР»СѓС‡РёС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ С‡РµСЂРЅРѕРІРёРєРµ
     *
-    * @param    integer     $draft_id   ID черновика
-    * @param    integer     $uid        ID пользователя
-    * @param    integer     $type       Тип черновика
-    * @return   array                   Информация о черновике
+    * @param    integer     $draft_id   ID С‡РµСЂРЅРѕРІРёРєР°
+    * @param    integer     $uid        ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+    * @param    integer     $type       РўРёРї С‡РµСЂРЅРѕРІРёРєР°
+    * @return   array                   РРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‡РµСЂРЅРѕРІРёРєРµ
     */
     function getDraft($draft_id, $uid, $type) {
         global $DB;
         switch($type) {
             case 1:
-                // Проекты
+                // РџСЂРѕРµРєС‚С‹
                 $sql = "SELECT *, to_char(end_date, 'DD-MM-YYYY') as p_end_date, to_char(win_date, 'DD-MM-YYYY') as p_win_date FROM draft_projects WHERE id=?i AND uid=?i";
                 break;
             case 2:
-                // Личка
+                // Р›РёС‡РєР°
                 $sql = "SELECT * FROM draft_contacts WHERE id=?i AND uid = ?i";
                 break;
             case 3:
-                // Блоги
+                // Р‘Р»РѕРіРё
                 $sql = "SELECT * FROM draft_blogs WHERE id=?i AND uid = ?i";
                 break;
             case 4:
-                // Сообщества
+                // РЎРѕРѕР±С‰РµСЃС‚РІР°
                 $sql = "SELECT * FROM draft_communes WHERE id=?i AND uid = ?i";
                 break;
         }
@@ -976,9 +976,9 @@ class drafts
     }
     
     /**
-     * Возвращает количество черновиков пользователя
-     * @param  ingeter   $uid   uid пользователья
-     * @return integer          количество имеющихся черновиков
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ С‡РµСЂРЅРѕРІРёРєРѕРІ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  ingeter   $uid   uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЏ
+     * @return integer          РєРѕР»РёС‡РµСЃС‚РІРѕ РёРјРµСЋС‰РёС…СЃСЏ С‡РµСЂРЅРѕРІРёРєРѕРІ
      * 
      */
     function getCount($uid) {
@@ -992,9 +992,9 @@ class drafts
     }
     
     /**
-     * Возвращает количество черновиков пользователя отдельно по каждому разделу
-     * @param  ingeter   $uid   uid пользователья
-     * @return array            массив со счетчиками
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ С‡РµСЂРЅРѕРІРёРєРѕРІ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РѕС‚РґРµР»СЊРЅРѕ РїРѕ РєР°Р¶РґРѕРјСѓ СЂР°Р·РґРµР»Сѓ
+     * @param  ingeter   $uid   uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЏ
+     * @return array            РјР°СЃСЃРёРІ СЃРѕ СЃС‡РµС‚С‡РёРєР°РјРё
      * 
      */
     function getCounts($uid) {

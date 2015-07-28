@@ -2,7 +2,7 @@
 $crumbs = array(
     array(
         'href' => '/' . sbr::NEW_TEMPLATE_SBR . '/',
-        'name' => '«Мои Сделки»'
+        'name' => 'В«РњРѕРё РЎРґРµР»РєРёВ»'
     ),
     array(
         'href' => '/' . sbr::NEW_TEMPLATE_SBR . '/?id=' . $sbr->id,
@@ -22,13 +22,13 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.stage-user.php");
                     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
                         <?php if($lc['ps_emp'] != onlinedengi::BANK_YL) { ?>  
                         <div class="b-layout__txt b-layout__txt_padbot_10"><img src="/images/loading-green.gif" style="float:left;margin-right:10px;">
-                            Идет оплата. Это может занять от нескольких секунд до нескольких минут. <a class="b-layout__link" href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/?site=reserve&id=<?= $sbr->data['id'] ?>">Проверить статус оплаты</a><br />
-                            Если оплата затянулась, обратитесь в <a class="b-layout__link" href="/about/feedback/">службу поддержки</a>.<br />
+                            РРґРµС‚ РѕРїР»Р°С‚Р°. Р­С‚Рѕ РјРѕР¶РµС‚ Р·Р°РЅСЏС‚СЊ РѕС‚ РЅРµСЃРєРѕР»СЊРєРёС… СЃРµРєСѓРЅРґ РґРѕ РЅРµСЃРєРѕР»СЊРєРёС… РјРёРЅСѓС‚. <a class="b-layout__link" href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/?site=reserve&id=<?= $sbr->data['id'] ?>">РџСЂРѕРІРµСЂРёС‚СЊ СЃС‚Р°С‚СѓСЃ РѕРїР»Р°С‚С‹</a><br />
+                            Р•СЃР»Рё РѕРїР»Р°С‚Р° Р·Р°С‚СЏРЅСѓР»Р°СЃСЊ, РѕР±СЂР°С‚РёС‚РµСЃСЊ РІ <a class="b-layout__link" href="/about/feedback/">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.<br />
                         <?php }?>  
                         <? if ($lc['ps_emp'] == onlinedengi::BANK_YL) { ?>
-                            Вам необходимо произвести оплату в любом банке по реквизитам, указанным в п.9 Заявления на открытие аккредитива. Работа по сделке начнется с момента фактического поступления денежных средств на указанный в п.9 Заявления расчетный счет. Не забудьте, что в назначении платежа должны быть в обязательном порядке указаны номер и дата Договора. 
+                            Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РїСЂРѕРёР·РІРµСЃС‚Рё РѕРїР»Р°С‚Сѓ РІ Р»СЋР±РѕРј Р±Р°РЅРєРµ РїРѕ СЂРµРєРІРёР·РёС‚Р°Рј, СѓРєР°Р·Р°РЅРЅС‹Рј РІ Рї.9 Р—Р°СЏРІР»РµРЅРёСЏ РЅР° РѕС‚РєСЂС‹С‚РёРµ Р°РєРєСЂРµРґРёС‚РёРІР°. Р Р°Р±РѕС‚Р° РїРѕ СЃРґРµР»РєРµ РЅР°С‡РЅРµС‚СЃСЏ СЃ РјРѕРјРµРЅС‚Р° С„Р°РєС‚РёС‡РµСЃРєРѕРіРѕ РїРѕСЃС‚СѓРїР»РµРЅРёСЏ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ РЅР° СѓРєР°Р·Р°РЅРЅС‹Р№ РІ Рї.9 Р—Р°СЏРІР»РµРЅРёСЏ СЂР°СЃС‡РµС‚РЅС‹Р№ СЃС‡РµС‚. РќРµ Р·Р°Р±СѓРґСЊС‚Рµ, С‡С‚Рѕ РІ РЅР°Р·РЅР°С‡РµРЅРёРё РїР»Р°С‚РµР¶Р° РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РІ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕРј РїРѕСЂСЏРґРєРµ СѓРєР°Р·Р°РЅС‹ РЅРѕРјРµСЂ Рё РґР°С‚Р° Р”РѕРіРѕРІРѕСЂР°. 
                         <? } else { ?>
-                                Работа по сделке начнется только после фактического поступления отправленных вами денежных средств.</div>
+                                Р Р°Р±РѕС‚Р° РїРѕ СЃРґРµР»РєРµ РЅР°С‡РЅРµС‚СЃСЏ С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ С„Р°РєС‚РёС‡РµСЃРєРѕРіРѕ РїРѕСЃС‚СѓРїР»РµРЅРёСЏ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… РІР°РјРё РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ.</div>
                         <? } ?>
                         
                         <? if($lc['sended'] != 1 && $lc['ps_emp'] != onlinedengi::BANK_YL) { ?>
@@ -43,17 +43,17 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.stage-user.php");
                             <input type="hidden" name="mode_type" value="<?= $lc['ps_emp']; ?>" />
                         </form>
                         <div class="b-layout__txt b-layout__txt_padbot_10">
-                            Если по какой-либо причине вы еще не произвели платеж, то сможете это сделать перейдя по <a class="b-layout__link" href="javascript:void(0)" onclick="<?= $lc['ps_emp'] != onlinedengi::CARD ? "$('reserveForm').submit();" : "pskb_frame({$lc['lc_id']}, '" .pskb::getNonceSign($lc['lc_id']). "')" ?>">ссылке</a>.
+                            Р•СЃР»Рё РїРѕ РєР°РєРѕР№-Р»РёР±Рѕ РїСЂРёС‡РёРЅРµ РІС‹ РµС‰Рµ РЅРµ РїСЂРѕРёР·РІРµР»Рё РїР»Р°С‚РµР¶, С‚Рѕ СЃРјРѕР¶РµС‚Рµ СЌС‚Рѕ СЃРґРµР»Р°С‚СЊ РїРµСЂРµР№РґСЏ РїРѕ <a class="b-layout__link" href="javascript:void(0)" onclick="<?= $lc['ps_emp'] != onlinedengi::CARD ? "$('reserveForm').submit();" : "pskb_frame({$lc['lc_id']}, '" .pskb::getNonceSign($lc['lc_id']). "')" ?>">СЃСЃС‹Р»РєРµ</a>.
                         </div>
                         <? }//if ?>
                         
-                        <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_padtop_10"><a class="b-layout__link" href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/">Перейти к списку сделок</a>.</div>
+                        <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_padtop_10"><a class="b-layout__link" href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/">РџРµСЂРµР№С‚Рё Рє СЃРїРёСЃРєСѓ СЃРґРµР»РѕРє</a>.</div>
                         <?php if($doc_file) {?>
                         <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table">
                             <tbody>
                                 <tr class="b-layout__tr">
                                     <td class="b-layout__middle b-layout__middle_padbot_5"><div class="b-layout__txt"><i class="b-icon b-icon_attach_pdf"></i> <a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?=$doc_file->path . $doc_file->name?>"><?= $doc_file->original_name?></a>, <?= ConvertBtoMB($doc_file->size)?></div></td>
-                                    <td class="b-layout__right b-layout__right_padleft_20 b-layout__right_padbot_5"><div class="b-layout__txt"><a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?=$doc_file->path . $doc_file->name?>">Скачать файл</a></div></td>
+                                    <td class="b-layout__right b-layout__right_padleft_20 b-layout__right_padbot_5"><div class="b-layout__txt"><a class="b-layout__link" href="<?= WDCPREFIX; ?>/<?=$doc_file->path . $doc_file->name?>">РЎРєР°С‡Р°С‚СЊ С„Р°Р№Р»</a></div></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -74,7 +74,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.stage-user.php");
                         </script>
                         <?php }?>
                         <? /*if ($lc['ps_emp'] == onlinedengi::BANK_YL) { ?>
-                            <div class="b-buttons b-buttons_padtop_10"> <a href="/sbr/?site=invoiced&id=<?=$sbr_id?>" class="b-button b-button_rectangle_color_green"> <span class="b-button__b1"> <span class="b-button__b2"> <span class="b-button__txt">Получить квитанцию</span> </span> </span> </a> </div>
+                            <div class="b-buttons b-buttons_padtop_10"> <a href="/sbr/?site=invoiced&id=<?=$sbr_id?>" class="b-button b-button_rectangle_color_green"> <span class="b-button__b1"> <span class="b-button__b2"> <span class="b-button__txt">РџРѕР»СѓС‡РёС‚СЊ РєРІРёС‚Р°РЅС†РёСЋ</span> </span> </span> </a> </div>
                         <? }*/ ?>
                     </div>
                 </div>
@@ -82,13 +82,13 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.stage-user.php");
                 <? if ($lc['state'] == pskb::STATE_FORM) { ?>
                 <div class="b-fon b-fon_width_full">
                     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-                        <div class="b-layout__txt b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Идет подготовка к резервированию, это может занять от нескольких секунд до минуты...</div>
-                        <div class="b-buttons b-buttons_padtop_10"> <a href="javascript:void(0)" onclick="document.location.reload();" class="b-button b-button_flat b-button_flat_green">Обновить страницу</a> </div>
+                        <div class="b-layout__txt b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>РРґРµС‚ РїРѕРґРіРѕС‚РѕРІРєР° Рє СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЋ, СЌС‚Рѕ РјРѕР¶РµС‚ Р·Р°РЅСЏС‚СЊ РѕС‚ РЅРµСЃРєРѕР»СЊРєРёС… СЃРµРєСѓРЅРґ РґРѕ РјРёРЅСѓС‚С‹...</div>
+                        <div class="b-buttons b-buttons_padtop_10"> <a href="javascript:void(0)" onclick="document.location.reload();" class="b-button b-button_flat b-button_flat_green">РћР±РЅРѕРІРёС‚СЊ СЃС‚СЂР°РЅРёС†Сѓ</a> </div>
                     </div>
                 </div>
                 <? } ?>
                 <script>
-                    // обновление страницы через 59 секунд
+                    // РѕР±РЅРѕРІР»РµРЅРёРµ СЃС‚СЂР°РЅРёС†С‹ С‡РµСЂРµР· 59 СЃРµРєСѓРЅРґ
                     window.addEvent('load', function(){
                         var waitTime = 29000;
                         setTimeout(function(){

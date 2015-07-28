@@ -19,7 +19,7 @@ if (!$s) {
         if ($result[$i["gid"]] === null) {
             $result[$i["gid"]] = array(
                 '0' =>  array(iconv("WINDOWS-1251", "UTF-8//IGNORE", $i["gname"]), "{$i["gcnt"]}"),
-                "undefined_value" => array(iconv("WINDOWS-1251", "UTF-8//IGNORE", 'Все специальности'),"0")
+                "undefined_value" => array(iconv("WINDOWS-1251", "UTF-8//IGNORE", 'Р’СЃРµ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё'),"0")
             );
 
             if ($i["id"] !== null) { 
@@ -37,4 +37,4 @@ if (!$s) {
    $s = json_encode($result);
    $membuf->add($memkey, $s);
 }
-print('var professionsList = '.$s.'; professionsList["0"]["0"] = ["Другое","0"]; professionsList["0"]["undefined_value"] = ["Нет специализации","0"];');
+print('var professionsList = '.$s.'; professionsList["0"]["0"] = ["Р”СЂСѓРіРѕРµ","0"]; professionsList["0"]["undefined_value"] = ["РќРµС‚ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё","0"];');

@@ -8,7 +8,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/tservices/tservices_categorie
 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/stop_words.php' );
 
 /**
- * Класс для работы с сео-тегами разделов и специализаций
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЃРµРѕ-С‚РµРіР°РјРё СЂР°Р·РґРµР»РѕРІ Рё СЃРїРµС†РёР°Р»РёР·Р°С†РёР№
  */
 class SeoTags {
     
@@ -38,7 +38,7 @@ class SeoTags {
     private $side_text;
     
     /**
-     * Конструктор по умолчанию
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
      */
     private function __construct(){
     }
@@ -54,9 +54,9 @@ class SeoTags {
     }
 
     /**
-     * Заполняет значения в зависимости от для профиля юзера
+     * Р—Р°РїРѕР»РЅСЏРµС‚ Р·РЅР°С‡РµРЅРёСЏ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РґР»СЏ РїСЂРѕС„РёР»СЏ СЋР·РµСЂР°
      * 
-     * @param array $user Информация о пользователе
+     * @param array $user РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ
      */
     function initByUser($user) {
         
@@ -64,7 +64,7 @@ class SeoTags {
         
         $user_name = trim(sprintf(SeoText::USER_NAME, (string)$user->uname, (string)$user->usurname, $user->login));
   
-        //Получаем названия страны и города
+        //РџРѕР»СѓС‡Р°РµРј РЅР°Р·РІР°РЅРёСЏ СЃС‚СЂР°РЅС‹ Рё РіРѕСЂРѕРґР°
         if ($user->country > 0) {
             $country = new country();
             $country_name = $country->GetCountryName($user->country);
@@ -120,7 +120,7 @@ class SeoTags {
         }
 
 
-        if ($user->is_pro=='t' && $user->pname) { //если в настройках задан пользовательский заголовок
+        if ($user->is_pro=='t' && $user->pname) { //РµСЃР»Рё РІ РЅР°СЃС‚СЂРѕР№РєР°С… Р·Р°РґР°РЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ Р·Р°РіРѕР»РѕРІРѕРє
             $stop_words = new stop_words( hasPermissions('projects') );
             $own_title = $user->isChangeOnModeration( $user->uid, 'pname' ) && $user->is_pro != 't' 
                 ? $stop_words->replace($user->pname, 'plain', false) 
@@ -137,7 +137,7 @@ class SeoTags {
     }
     
     /**
-     * Заполняет значения для страницы работы в портфолио
+     * Р—Р°РїРѕР»РЅСЏРµС‚ Р·РЅР°С‡РµРЅРёСЏ РґР»СЏ СЃС‚СЂР°РЅРёС†С‹ СЂР°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ
      * @param array $item
      */
     function initByPortfolio($item, $spec_text)
@@ -165,10 +165,10 @@ class SeoTags {
     }
     
     /**
-     * Заполняет значения в зависимости от раздела каталога фрилансеров
+     * Р—Р°РїРѕР»РЅСЏРµС‚ Р·РЅР°С‡РµРЅРёСЏ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЂР°Р·РґРµР»Р° РєР°С‚Р°Р»РѕРіР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
      * 
-     * @param int $prof_id ИД раздела
-     * @param bool $is_spec Флаг раздел или специализация
+     * @param int $prof_id РР” СЂР°Р·РґРµР»Р°
+     * @param bool $is_spec Р¤Р»Р°Рі СЂР°Р·РґРµР» РёР»Рё СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏ
      */
     function initFreelancers($prof_id, $page = 1, $is_spec = true) {
         if ($prof_id) {
@@ -209,15 +209,15 @@ class SeoTags {
             );
         } else {
             $this->title = sprintf(SeoText::FRL_TITLE_DEF, $page);
-            $this->h1 = 'Каталог фрилансеров';
+            $this->h1 = 'РљР°С‚Р°Р»РѕРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ';
         }
     }
     
     /**
-     * Заполняет значения в зависимости от раздела услуг
+     * Р—Р°РїРѕР»РЅСЏРµС‚ Р·РЅР°С‡РµРЅРёСЏ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЂР°Р·РґРµР»Р° СѓСЃР»СѓРі
      * 
-     * @param int $prof_id ИД раздела
-     * @param bool $is_spec Флаг раздел или специализация
+     * @param int $prof_id РР” СЂР°Р·РґРµР»Р°
+     * @param bool $is_spec Р¤Р»Р°Рі СЂР°Р·РґРµР» РёР»Рё СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏ
      */
     function initTserviceList($tservice_prof_id, $is_spec = true, $count = 0, $min_price = 0) {
         $prof_id = $this->getRealProfId($tservice_prof_id);        
@@ -227,9 +227,9 @@ class SeoTags {
         if ($this->seo_value->getTUTitle(1)) {
             $this->h1 = $this->seo_value->getTUTitle(1) . ($this->seo_value->getTUTitle(2) ? ', ' . $this->seo_value->getTUTitle(2) : '');
             
-            $text_price = $min_price . ' ' . ending($min_price, 'рубля', 'рубля', 'рублей');
+            $text_price = $min_price . ' ' . ending($min_price, 'СЂСѓР±Р»СЏ', 'СЂСѓР±Р»СЏ', 'СЂСѓР±Р»РµР№');
             $t_price = $min_price ? sprintf(SeoText::TU_TITLE_PRICE, $text_price) : '';
-            $text_count = $count . ' ' . ending($count, 'предложения', 'предложений', 'предложений');
+            $text_count = $count . ' ' . ending($count, 'РїСЂРµРґР»РѕР¶РµРЅРёСЏ', 'РїСЂРµРґР»РѕР¶РµРЅРёР№', 'РїСЂРµРґР»РѕР¶РµРЅРёР№');
             $t_count = $count >= 10 ? sprintf(SeoText::TU_TITLE_COUNT, $text_count) : SeoText::TU_TITLE_COUNT_LESS;
             $this->title = sprintf(SeoText::TU_TITLE, 
                 $this->h1, 
@@ -260,16 +260,16 @@ class SeoTags {
             );
             
         } else {
-            $this->title = 'Фриланс сайт удаленной работы №1. Фрилансеры, работа на дому, freelance : FL.ru';
-            $this->h1 = "Услуги фрилансеров";
+            $this->title = 'Р¤СЂРёР»Р°РЅСЃ СЃР°Р№С‚ СѓРґР°Р»РµРЅРЅРѕР№ СЂР°Р±РѕС‚С‹ в„–1. Р¤СЂРёР»Р°РЅСЃРµСЂС‹, СЂР°Р±РѕС‚Р° РЅР° РґРѕРјСѓ, freelance : FL.ru';
+            $this->h1 = "РЈСЃР»СѓРіРё С„СЂРёР»Р°РЅСЃРµСЂРѕРІ";
         }
     }
     
     /**
-     * Заполняет значения в зависимости от услуги
+     * Р—Р°РїРѕР»РЅСЏРµС‚ Р·РЅР°С‡РµРЅРёСЏ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СѓСЃР»СѓРіРё
      * 
-     * @param array $tservice Массив с данными услуги
-     * @param string $user Массив с данными пользователя
+     * @param array $tservice РњР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё СѓСЃР»СѓРіРё
+     * @param string $user РњР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      */
     function initTServicesCard($tservice, $user) {
         $prof_id = $this->getRealProfId($tservice['category_id']);
@@ -279,7 +279,7 @@ class SeoTags {
         $title50 = LenghtFormatEx(trim(strip_tags($tservice['title'])),50);
         $title100 = LenghtFormatEx(trim(strip_tags($tservice['title'])),100);
                 
-        //Получаем названия страны и города
+        //РџРѕР»СѓС‡Р°РµРј РЅР°Р·РІР°РЅРёСЏ СЃС‚СЂР°РЅС‹ Рё РіРѕСЂРѕРґР°
         $country_name = $city_name = '';
         if ($user->country > 0) {
             $country = new country();
@@ -305,7 +305,7 @@ class SeoTags {
     }
     
     /**
-     * Получает ИД профессии по ИД категории услуг
+     * РџРѕР»СѓС‡Р°РµС‚ РР” РїСЂРѕС„РµСЃСЃРёРё РїРѕ РР” РєР°С‚РµРіРѕСЂРёРё СѓСЃР»СѓРі
      */
     private function getRealProfId($tservice_prof_id) {
         $tservice_categories = new tservices_categories();
@@ -315,9 +315,9 @@ class SeoTags {
     }
     
     /**
-     * Заполняет значения в зависимости от проекта
+     * Р—Р°РїРѕР»РЅСЏРµС‚ Р·РЅР°С‡РµРЅРёСЏ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РїСЂРѕРµРєС‚Р°
      * 
-     * @param array $project данные проекта
+     * @param array $project РґР°РЅРЅС‹Рµ РїСЂРѕРµРєС‚Р°
      */
     function initProject($project) {
         $stop_words = new stop_words( hasPermissions('projects') );
@@ -347,75 +347,75 @@ class SeoTags {
 
 
     /**
-     * Текст для тега title
-     * @return string Title страницы
+     * РўРµРєСЃС‚ РґР»СЏ С‚РµРіР° title
+     * @return string Title СЃС‚СЂР°РЅРёС†С‹
      */
     function getTitle() {
         return $this->filter($this->title);
     }
     
     /**
-     * Текст для тега description
-     * @return string Description страницы
+     * РўРµРєСЃС‚ РґР»СЏ С‚РµРіР° description
+     * @return string Description СЃС‚СЂР°РЅРёС†С‹
      */
     function getDescription() {
         return $this->filter($this->description);
     }
     
     /**
-     * Текст для тега keywords
-     * @return string keywords страницы
+     * РўРµРєСЃС‚ РґР»СЏ С‚РµРіР° keywords
+     * @return string keywords СЃС‚СЂР°РЅРёС†С‹
      */
     function getKeywords() {
         return $this->filter($this->keywords);
     }
     
     /**
-     * @return string Заголовок в футере
+     * @return string Р—Р°РіРѕР»РѕРІРѕРє РІ С„СѓС‚РµСЂРµ
      */
     function getFooterHead() {
         return $this->filter($this->footer_head);
     }
     
     /**
-     * @return string Текст в футере
+     * @return string РўРµРєСЃС‚ РІ С„СѓС‚РµСЂРµ
      */
     function getFooterText() {
         return $this->filter($this->footer_text);
     }
     
     /**
-     * @return strine подпись к иллюстрациям
+     * @return strine РїРѕРґРїРёСЃСЊ Рє РёР»Р»СЋСЃС‚СЂР°С†РёСЏРј
      */
     function getImageDescription() {
         return $this->filter($this->image_description);
     }
     
     /**
-     * @return string Текст для тега h1
+     * @return string РўРµРєСЃС‚ РґР»СЏ С‚РµРіР° h1
      */
     function getH1() {
         return $this->filter($this->h1);
     }
     
     /**
-     * @return string Заголовок в боковой колонке
+     * @return string Р—Р°РіРѕР»РѕРІРѕРє РІ Р±РѕРєРѕРІРѕР№ РєРѕР»РѕРЅРєРµ
      */
     function getSideHead() {
         return $this->filter($this->side_head);
     }
     
     /**
-     * @return string Текст в боковой колонке
+     * @return string РўРµРєСЃС‚ РІ Р±РѕРєРѕРІРѕР№ РєРѕР»РѕРЅРєРµ
      */
     function getSideText() {
         return $this->filter($this->side_text);
     }
     
     /**
-     * Выполняет обработку строк перед выдачей.
-     * @param type $string Исходный текст
-     * @return type Преобразованный текст
+     * Р’С‹РїРѕР»РЅСЏРµС‚ РѕР±СЂР°Р±РѕС‚РєСѓ СЃС‚СЂРѕРє РїРµСЂРµРґ РІС‹РґР°С‡РµР№.
+     * @param type $string РСЃС…РѕРґРЅС‹Р№ С‚РµРєСЃС‚
+     * @return type РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРЅС‹Р№ С‚РµРєСЃС‚
      */
     private function filter($string) {
         $string = trim(trim($string), ',');

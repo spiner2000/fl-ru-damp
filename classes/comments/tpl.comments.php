@@ -58,7 +58,7 @@
         if(t != undefined) {
             t.removeClass('cl-li-hidden-c');
             t.getElements('li.cl-li').removeClass('cl-li-hidden-c');
-            t.getElements('a.cl-thread-toggle').set('text', 'Свернуть ветвь');
+            t.getElements('a.cl-thread-toggle').set('text', 'РЎРІРµСЂРЅСѓС‚СЊ РІРµС‚РІСЊ');
         }
         <? unset($_SESSION['c_new_id']); ?>
     <? } ?>
@@ -75,33 +75,33 @@
     </div>
 </div>
 <?php if($this->_options['no_comments'] == true && !$this->msg_num) {?>
-<div style="font-size: 18px; padding: 0pt 20px 20px;">Автор запретил оставлять комментарии</div>
+<div style="font-size: 18px; padding: 0pt 20px 20px;">РђРІС‚РѕСЂ Р·Р°РїСЂРµС‚РёР» РѕСЃС‚Р°РІР»СЏС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёРё</div>
 <?php } else if($this->is_new_template) { //if?>
 <div class="comment-list" id="cl" onclick="updateGlobalAnchor();">
     <ul class="b-post__links b-post__links_padtop_20 b-post__links_float_right">
         <? if($this->msg_num) { ?>
             <? if($this->enableHiddenThreads) { ?>
-                <li class="b-post__links-item"><a href="" class="lnk-dot-<?=in_array(-1, $this->_hidden) ? '666' : '999'?> cl-show-all">Показать все ветви</a></li>
-                <li class="b-post__links-item b-post__links-item_padleft_10"><a href="" class="lnk-dot-<?=in_array(-1, $this->_hidden) ? '999' : '666'?> cl-hide-all">Свернуть все ветви</a></li>
+                <li class="b-post__links-item"><a href="" class="lnk-dot-<?=in_array(-1, $this->_hidden) ? '666' : '999'?> cl-show-all">РџРѕРєР°Р·Р°С‚СЊ РІСЃРµ РІРµС‚РІРё</a></li>
+                <li class="b-post__links-item b-post__links-item_padleft_10"><a href="" class="lnk-dot-<?=in_array(-1, $this->_hidden) ? '999' : '666'?> cl-hide-all">РЎРІРµСЂРЅСѓС‚СЊ РІСЃРµ РІРµС‚РІРё</a></li>
             <? } ?>
         <? } ?>
         <? if($uid) { ?>
             <?php if ($this->_sname == "Commune") { ?>
             <li class="b-post__links-item b-post__links-item_padleft_30">
                 <? if (!$this->_options['readonly']) { ?>
-                    <a href="javascript:void(0)" id="subscribe_to_comm" class="b-post__link b-post__link_dot_0f71c8" onclick="xajax_SubscribeTheme(<?=$this->_resource_id ?>, 1); return false;"><?php if (!$user_is_subscribe_on_topic) {?>Подписаться на комментарии<?} else {?>Отписаться от комментариев <?} ?></a>
+                    <a href="javascript:void(0)" id="subscribe_to_comm" class="b-post__link b-post__link_dot_0f71c8" onclick="xajax_SubscribeTheme(<?=$this->_resource_id ?>, 1); return false;"><?php if (!$user_is_subscribe_on_topic) {?>РџРѕРґРїРёСЃР°С‚СЊСЃСЏ РЅР° РєРѕРјРјРµРЅС‚Р°СЂРёРё<?} else {?>РћС‚РїРёСЃР°С‚СЊСЃСЏ РѕС‚ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ <?} ?></a>
                 <? } ?>                    
             </li>
             <?php }?>
             <li class="b-post__links-item b-post__links-item_padleft_30">
                 <? if (!$this->_options['readonly']) { ?>
-                    <a href="javascript:void(0)" id="comm-show-form" class="b-post__link b-post__link_dot_0f71c8">Прокомментировать</a>
+                    <a href="javascript:void(0)" id="comm-show-form" class="b-post__link b-post__link_dot_0f71c8">РџСЂРѕРєРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ</a>
                 <? } ?>
             </li>
         <? } ?>
     </ul>
     <?php if($this->msg_num || $uid ) { ?>
-    <h2 class="b-post__title b-post__title_padbot_15 b-post__title_padtop_14 b-post__title_width_250"><?= $this->msg_num;?> <?=ending($this->msg_num, "комментарий", "комментария", "комментариев")?></h2>
+    <h2 class="b-post__title b-post__title_padbot_15 b-post__title_padtop_14 b-post__title_width_250"><?= $this->msg_num;?> <?=ending($this->msg_num, "РєРѕРјРјРµРЅС‚Р°СЂРёР№", "РєРѕРјРјРµРЅС‚Р°СЂРёСЏ", "РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ")?></h2>
     <?php }//if?>
     <? if($this->msg_num) { ?>
         <?= $comments_html ?>
@@ -115,22 +115,22 @@
     <ul class="cl-thread-o">
     <? if($this->msg_num) { ?>
         <? if($this->enableHiddenThreads) { ?>
-								<li><a href="" class="lnk-dot-<?=in_array(-1, $this->_hidden) ? '666' : '999'?> cl-show-all">Показать все ветви</a></li>
-								<li><a href="" class="lnk-dot-<?=in_array(-1, $this->_hidden) ? '999' : '666'?> cl-hide-all">Свернуть все ветви</a></li>
+								<li><a href="" class="lnk-dot-<?=in_array(-1, $this->_hidden) ? '666' : '999'?> cl-show-all">РџРѕРєР°Р·Р°С‚СЊ РІСЃРµ РІРµС‚РІРё</a></li>
+								<li><a href="" class="lnk-dot-<?=in_array(-1, $this->_hidden) ? '999' : '666'?> cl-hide-all">РЎРІРµСЂРЅСѓС‚СЊ РІСЃРµ РІРµС‚РІРё</a></li>
         <? } ?>
     <? } ?>
     <? if($uid) { ?>
     <li>
         <? if (!$this->_options['readonly']) { ?>
-        <a href="javascript:void(0)" id="comm-show-form" class="lnk-dot-999">Комментировать</a>
+        <a href="javascript:void(0)" id="comm-show-form" class="lnk-dot-999">РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ</a>
         <? } else { ?>
-        <a href="javascript:void(0)" onclick="alert('<?= $this->_options['readonly_alert'] ?>')" class="lnk-dot-999">Комментировать</a>
+        <a href="javascript:void(0)" onclick="alert('<?= $this->_options['readonly_alert'] ?>')" class="lnk-dot-999">РљРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ</a>
         <? } ?>
     </li>
     <? } ?>
     </ul>
     <? if($this->msg_num || $uid ) { ?>
-    <h3>Комментарии<?= $this->msg_num ? " ({$this->msg_num})" : '' ?>:</h3>
+    <h3>РљРѕРјРјРµРЅС‚Р°СЂРёРё<?= $this->msg_num ? " ({$this->msg_num})" : '' ?>:</h3>
     <? } ?>
     <a name="comments"></a>
     <? if($this->msg_num) { ?>

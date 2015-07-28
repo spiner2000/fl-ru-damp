@@ -5,7 +5,7 @@ require_once(ABS_PATH . "/classes/Form/View.php");
 
 class LoginForm extends Form_View
 {
-    const FAIL_LOGIN_MSG = 'Неверный логин/пароль. Попробуйте ещё раз или восстановите пароль.';
+    const FAIL_LOGIN_MSG = 'РќРµРІРµСЂРЅС‹Р№ Р»РѕРіРёРЅ/РїР°СЂРѕР»СЊ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰С‘ СЂР°Р· РёР»Рё РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚Рµ РїР°СЂРѕР»СЊ.';
     
     const UID_FAIL      = 0;
     const UID_BANNED    = -1;
@@ -40,7 +40,7 @@ class LoginForm extends Form_View
     */
     
     /**
-     * Общая вьюшка для форм
+     * РћР±С‰Р°СЏ РІСЊСЋС€РєР° РґР»СЏ С„РѕСЂРј
      */
     
     public function loadDefaultDecorators()
@@ -56,7 +56,7 @@ class LoginForm extends Form_View
     
     
     /**
-     * Инициализация формы
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ С„РѕСЂРјС‹
      */    
     public function init()
     {
@@ -76,9 +76,9 @@ class LoginForm extends Form_View
                'padbot' => 30,
                'size' => 80,
                'hide_label' => true,
-               'label' => 'Логин, телефон или почта',
+               'label' => 'Р›РѕРіРёРЅ, С‚РµР»РµС„РѕРЅ РёР»Рё РїРѕС‡С‚Р°',
                //'width' => 250,
-               'placeholder' => 'Логин, телефон или почта',
+               'placeholder' => 'Р›РѕРіРёРЅ, С‚РµР»РµС„РѕРЅ РёР»Рё РїРѕС‡С‚Р°',
                'required' => true,
                'filters' => $this->filters + array('StripTags'),
                //'validators' => $validators
@@ -93,9 +93,9 @@ class LoginForm extends Form_View
                'padbot' => 15,
                'size' => 80,
                'hide_label' => true,
-               'label' => 'Пароль',
+               'label' => 'РџР°СЂРѕР»СЊ',
                //'width' => 250,
-               'placeholder' => 'Пароль',
+               'placeholder' => 'РџР°СЂРѕР»СЊ',
                'required' => true,
                'filters' => $this->filters,
                //'validators' => $validators
@@ -105,7 +105,7 @@ class LoginForm extends Form_View
            new Zend_Form_Element_Checkbox('autologin', array(
                'class' => 'b-check_large',
                'padbot' => 60,
-               'label' => 'Запомнить меня',
+               'label' => 'Р—Р°РїРѕРјРЅРёС‚СЊ РјРµРЅСЏ',
                'td_class' => 'b-layout__td_width_full_ipad'
         )));
         
@@ -114,14 +114,14 @@ class LoginForm extends Form_View
                'td_class' => 'b-layout__td_width_full_ipad',
                'class' => 'b-button_flat_large b-button_flat_width_full',
                'padbot' => 1,
-               'label' => 'Войти',
+               'label' => 'Р’РѕР№С‚Рё',
                'data-ga-event' => "{ec: 'user', ea: 'authorization_started',el: 'email'}"
         )));
     }
     
     
     /**
-     * Проверка авторизации и установка ошибки или URL для перехода
+     * РџСЂРѕРІРµСЂРєР° Р°РІС‚РѕСЂРёР·Р°С†РёРё Рё СѓСЃС‚Р°РЅРѕРІРєР° РѕС€РёР±РєРё РёР»Рё URL РґР»СЏ РїРµСЂРµС…РѕРґР°
      * 
      * @param type $data
      * @return boolean
@@ -164,7 +164,7 @@ class LoginForm extends Form_View
                 
                 default:
                     
-                    //Успешная авторизация
+                    //РЈСЃРїРµС€РЅР°СЏ Р°РІС‚РѕСЂРёР·Р°С†РёСЏ
                     if ($uid > 0) {
                         
                         $default_location = is_emp() ? '/tu/' : '/projects/';
@@ -188,7 +188,7 @@ class LoginForm extends Form_View
                         
                         session_write_close();
 
-                        //Отправляем в очередь событие об успешной авторизации
+                        //РћС‚РїСЂР°РІР»СЏРµРј РІ РѕС‡РµСЂРµРґСЊ СЃРѕР±С‹С‚РёРµ РѕР± СѓСЃРїРµС€РЅРѕР№ Р°РІС‚РѕСЂРёР·Р°С†РёРё
                         require_once(ABS_PATH . '/classes/statistic/StatisticFactory.php');
                         require_once(ABS_PATH . '/classes/users.php');
                         
@@ -212,7 +212,7 @@ class LoginForm extends Form_View
     
     
     /**
-     * Вернуть URL
+     * Р’РµСЂРЅСѓС‚СЊ URL
      * 
      * @return type
      */

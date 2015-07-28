@@ -8,7 +8,7 @@
 			if (frm.elements[i].name == "selected[]" && frm.elements[i].checked == 1)
 			chc = true;
 		}
-		if (!chc) document.getElementById('submenu').innerHTML = "<?=ref_scr(view_error("Необходимо выбрать хотя бы один контакт"))?>";
+		if (!chc) document.getElementById('submenu').innerHTML = "<?=ref_scr(view_error("РќРµРѕР±С…РѕРґРёРјРѕ РІС‹Р±СЂР°С‚СЊ С…РѕС‚СЏ Р±С‹ РѕРґРёРЅ РєРѕРЅС‚Р°РєС‚"))?>";
 		return (chc);
 	}
 //-->
@@ -17,14 +17,14 @@
 <tr class="n_qpr">
 	<td height="18" align="left" valign="bottom"><img src="/images/arrow_rl.gif" alt="" width="12" height="14" hspace="6" border="0"></td>
 	<td valign="top">
-		Действия с отмеченными: 
-		 <a href="#" class="blue" onClick="if (CheckSelected() && warning(3)) {frm.action.value='delete'; frm.submit();} else return(false);">Удалить</a> |
+		Р”РµР№СЃС‚РІРёСЏ СЃ РѕС‚РјРµС‡РµРЅРЅС‹РјРё: 
+		 <a href="#" class="blue" onClick="if (CheckSelected() && warning(3)) {frm.action.value='delete'; frm.submit();} else return(false);">РЈРґР°Р»РёС‚СЊ</a> |
 		 <? if ($page != "team") { ?>
-		 <a href="#" class="blue" onClick="if (CheckSelected()) {frm.action.value='team'; frm.submit();}"><? if ((substr($_SESSION['role'], 0, 1)  == '0')) { ?>Рекомендовать фрилансера<? } else { ?>Добавить в команду<? } ?></a> | <? } ?>
+		 <a href="#" class="blue" onClick="if (CheckSelected()) {frm.action.value='team'; frm.submit();}"><? if ((substr($_SESSION['role'], 0, 1)  == '0')) { ?>Р РµРєРѕРјРµРЅРґРѕРІР°С‚СЊ С„СЂРёР»Р°РЅСЃРµСЂР°<? } else { ?>Р”РѕР±Р°РІРёС‚СЊ РІ РєРѕРјР°РЅРґСѓ<? } ?></a> | <? } ?>
 		 <? if ($page == "ignor") { ?>
-		 <a href="#" class="blue"onClick="if (CheckSelected()) {frm.action.value='unignor'; frm.submit();}">Снять Игнорирование</a>
+		 <a href="#" class="blue"onClick="if (CheckSelected()) {frm.action.value='unignor'; frm.submit();}">РЎРЅСЏС‚СЊ РРіРЅРѕСЂРёСЂРѕРІР°РЅРёРµ</a>
 		 <? } else {?>
-		 <a href="#" class="blue" onClick="if (CheckSelected()) {frm.action.value='ignor'; frm.submit();}">Игнорировать</a>
+		 <a href="#" class="blue" onClick="if (CheckSelected()) {frm.action.value='ignor'; frm.submit();}">РРіРЅРѕСЂРёСЂРѕРІР°С‚СЊ</a>
 		<? } ?>
 			
 	</td>

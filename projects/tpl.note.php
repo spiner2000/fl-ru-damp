@@ -2,10 +2,10 @@
 $note = notes::GetNotes((int)$_SESSION['uid'], (int)$project['user_id'], $error);
 if ($note['n_text']) {
     $noteText = reformat($note['n_text'], 22, 0, 0, 1, 22);
-    $noteBtn = 'Редактировать';
+    $noteBtn = 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ';
 } else {
     $noteText = '';
-    $noteBtn = 'Добавить';
+    $noteBtn = 'Р”РѕР±Р°РІРёС‚СЊ';
 }
 ?>
 <div id="noteTextBlock" class="b-note b-note_inline-block b-fon b-fon_bg_ffeda9">
@@ -13,7 +13,7 @@ if ($note['n_text']) {
     <div class="b-fon__b2"></div>
     <div class="b-fon__body b-fon__body_pad_5_10">
         <div class="b-note__txt">
-            <strong class="b-note__bold">Ваша заметка: </strong><span id="noteText"><?= $noteText ?></span> <a id="noteEditBtn" class="b-note__link b-note__link_bordbot_0f71c8" href="javascript:void(0)"><?= $noteBtn ?></a>
+            <strong class="b-note__bold">Р’Р°С€Р° Р·Р°РјРµС‚РєР°: </strong><span id="noteText"><?= $noteText ?></span> <a id="noteEditBtn" class="b-note__link b-note__link_bordbot_0f71c8" href="javascript:void(0)"><?= $noteBtn ?></a>
         </div>
     </div>
     <div class="b-fon__b2"></div>
@@ -31,7 +31,7 @@ if ($note['n_text']) {
                     </div>
                 </td>
                 <td class="b-layout__right b-layout__right_padleft_5">
-                    <a id="noteSaveBtn" href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green">Сохранить</a>
+                    <a id="noteSaveBtn" href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green">РЎРѕС…СЂР°РЅРёС‚СЊ</a>
                 </td>
             </tr>
         </table>

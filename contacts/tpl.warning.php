@@ -30,17 +30,17 @@ function hideWarning(warning_code) {
 <div id="hack_warn_all">
     
    
-    <? $temporaryHide = true; if (empty($_COOKIE['hack_warn_1']) && $temporaryHide == false) { //временно скрываем?>
+    <? $temporaryHide = true; if (empty($_COOKIE['hack_warn_1']) && $temporaryHide == false) { //РІСЂРµРјРµРЅРЅРѕ СЃРєСЂС‹РІР°РµРј?>
 
 <div id="hack_warn_1" class="b-fon b-fon_bg_fcc b-fon_pad_15_15_0">
     <b class="b-fon__b1"></b>
     <b class="b-fon__b2"></b>
     <div class="b-fon__body b-fon__body b-fon__body_pad_5_10">
-                <a href="javascript:void(0)" onclick="hideWarning('WARNING_HACK_VIRUS')" title="Закрыть"><img src="/images/btn-remove2.png" alt="Закрыть" style="float:right;" /></a>
-        <div class="b-fon__txt b-fon__txt_padbot_5 b-fon__txt_bold b-fon__txt_color_c10601 b-fon__txt_fontsize_11">Обратите внимание!</div>
+                <a href="javascript:void(0)" onclick="hideWarning('WARNING_HACK_VIRUS')" title="Р—Р°РєСЂС‹С‚СЊ"><img src="/images/btn-remove2.png" alt="Р—Р°РєСЂС‹С‚СЊ" style="float:right;" /></a>
+        <div class="b-fon__txt b-fon__txt_padbot_5 b-fon__txt_bold b-fon__txt_color_c10601 b-fon__txt_fontsize_11">РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ!</div>
         <div class="b-fon__txt b-fon__txt_fontsize_11">
-                    Участились взломы аккаунтов с целью рассылки вирусов. Пожалуйста, пользуйтесь актуальной версией антивирусной программы и проверяйте все присылаемые подозрительные файлы, в том числе и от знакомых пользователей.
-                    Подробности <a class="b-fon__link" href="/blogs/view.php?tr=616605">здесь</a>.
+                    РЈС‡Р°СЃС‚РёР»РёСЃСЊ РІР·Р»РѕРјС‹ Р°РєРєР°СѓРЅС‚РѕРІ СЃ С†РµР»СЊСЋ СЂР°СЃСЃС‹Р»РєРё РІРёСЂСѓСЃРѕРІ. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕР»СЊР·СѓР№С‚РµСЃСЊ Р°РєС‚СѓР°Р»СЊРЅРѕР№ РІРµСЂСЃРёРµР№ Р°РЅС‚РёРІРёСЂСѓСЃРЅРѕР№ РїСЂРѕРіСЂР°РјРјС‹ Рё РїСЂРѕРІРµСЂСЏР№С‚Рµ РІСЃРµ РїСЂРёСЃС‹Р»Р°РµРјС‹Рµ РїРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹Рµ С„Р°Р№Р»С‹, РІ С‚РѕРј С‡РёСЃР»Рµ Рё РѕС‚ Р·РЅР°РєРѕРјС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№.
+                    РџРѕРґСЂРѕР±РЅРѕСЃС‚Рё <a class="b-fon__link" href="/blogs/view.php?tr=616605">Р·РґРµСЃСЊ</a>.
         </div>
     </div>
     <b class="b-fon__b2"></b>
@@ -54,12 +54,12 @@ function hideWarning(warning_code) {
     <b class="b-fon__b1"></b>
     <b class="b-fon__b2"></b>
     <div class="b-fon__body b-fon__body b-fon__body_pad_5_10">
-                <a href="javascript:void(0)" onclick="hideWarning('WARNING_HACK_MSG')" title="Закрыть"><img src="/images/btn-remove2.png" alt="Закрыть" style="float:right;" /></a>
-        <div class="b-fon__txt b-fon__txt_padbot_5 b-fon__txt_bold b-fon__txt_color_6db335 b-fon__txt_fontsize_11">Обратите внимание!</div>
+                <a href="javascript:void(0)" onclick="hideWarning('WARNING_HACK_MSG')" title="Р—Р°РєСЂС‹С‚СЊ"><img src="/images/btn-remove2.png" alt="Р—Р°РєСЂС‹С‚СЊ" style="float:right;" /></a>
+        <div class="b-fon__txt b-fon__txt_padbot_5 b-fon__txt_bold b-fon__txt_color_6db335 b-fon__txt_fontsize_11">РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ!</div>
         <div class="b-fon__txt b-fon__txt_fontsize_11">
-                    Обращаться к вам по поводу сервисов «Сделка Без Риска», «Подбор фрилансеров», раздела «Статьи и интервью», а также производить рассылку сервисных сообщений могут только сотрудники Free-lance.ru. 
-                    Их можно легко узнать по значку <img src="/images/team.gif" alt="" style="margin-bottom:-2px" />, который находится рядом с именем пользователя, приславшего вам сообщение. 
-                    Подробнее <a class="b-fon__link" href="/blogs/view.php?tr=652908&b=5">здесь</a>.
+                    РћР±СЂР°С‰Р°С‚СЊСЃСЏ Рє РІР°Рј РїРѕ РїРѕРІРѕРґСѓ СЃРµСЂРІРёСЃРѕРІ В«РЎРґРµР»РєР° Р‘РµР· Р РёСЃРєР°В», В«РџРѕРґР±РѕСЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІВ», СЂР°Р·РґРµР»Р° В«РЎС‚Р°С‚СЊРё Рё РёРЅС‚РµСЂРІСЊСЋВ», Р° С‚Р°РєР¶Рµ РїСЂРѕРёР·РІРѕРґРёС‚СЊ СЂР°СЃСЃС‹Р»РєСѓ СЃРµСЂРІРёСЃРЅС‹С… СЃРѕРѕР±С‰РµРЅРёР№ РјРѕРіСѓС‚ С‚РѕР»СЊРєРѕ СЃРѕС‚СЂСѓРґРЅРёРєРё Free-lance.ru. 
+                    РС… РјРѕР¶РЅРѕ Р»РµРіРєРѕ СѓР·РЅР°С‚СЊ РїРѕ Р·РЅР°С‡РєСѓ <img src="/images/team.gif" alt="" style="margin-bottom:-2px" />, РєРѕС‚РѕСЂС‹Р№ РЅР°С…РѕРґРёС‚СЃСЏ СЂСЏРґРѕРј СЃ РёРјРµРЅРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РїСЂРёСЃР»Р°РІС€РµРіРѕ РІР°Рј СЃРѕРѕР±С‰РµРЅРёРµ. 
+                    РџРѕРґСЂРѕР±РЅРµРµ <a class="b-fon__link" href="/blogs/view.php?tr=652908&b=5">Р·РґРµСЃСЊ</a>.
         </div>
     </div>
     <b class="b-fon__b2"></b>

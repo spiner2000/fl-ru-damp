@@ -4,24 +4,24 @@
 	font-size: 13px;
 }
 </style>
-<h1>Услуги</h1>
+<h1>РЈСЃР»СѓРіРё</h1>
 <table width="100%" border="0" cellspacing="0" cellpadding="19">
 <tr valign="top">
 	<td height="400" valign="top" bgcolor="#FFFFFF" class="box2" style="color: #333333;">
-		<div align="center" style="color: #000000; font-size: 35px; margin-bottom: 25px;">Предоставленные услуги:</div>
-		<div style="margin-bottom: 10px;">Платный проект на главной странице.</div>
+		<div align="center" style="color: #000000; font-size: 35px; margin-bottom: 25px;">РџСЂРµРґРѕСЃС‚Р°РІР»РµРЅРЅС‹Рµ СѓСЃР»СѓРіРё:</div>
+		<div style="margin-bottom: 10px;">РџР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚ РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ.</div>
 		<div class="fl2_offer bordered" style="width: 500px;">
 		<div class="fl2_offer_logo">
 			<? if ($eprj['filename']) { ?>
 		 <a href="http://<?=$eprj['link']?>" target="_blank" nofollow ><img src="/users/<?=$eprj['login']?>/upload/<?=$eprj['filename']?>" border="0" /></a>
 			<? } ?>
-			<div>Платный проект</div>
+			<div>РџР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚</div>
 		</div>
 		<div class="fl2_offer_budget">
-			Бюджет: <?=CurToChar($eprj['cost'], $eprj['currency'])?>
+			Р‘СЋРґР¶РµС‚: <?=CurToChar($eprj['cost'], $eprj['currency'])?>
 		</div>
 		<div class="fl2_offer_header">
-		<?	if ($eprj['no_risk'] == "t") { ?><a href="/norisk2/" title="Безопасная Сделка"><img src="/images/shield.gif" alt="Безопасная Сделка" /></a><? } ?>
+		<?	if ($eprj['no_risk'] == "t") { ?><a href="/norisk2/" title="Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°"><img src="/images/shield.gif" alt="Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°" /></a><? } ?>
 		<?=$eprj['name']?>
 		</div>
 
@@ -30,25 +30,25 @@
 		</div>
 		<? if ($eprj['attach']) { ?>
 		<div class="flw_offer_attach">
-			<a href="/users/<?=$eprj['login']?>/upload/<?=$eprj['attach']?>">Загрузить</a>
-			<!-- (Rar, 25кб) -->
+			<a href="/users/<?=$eprj['login']?>/upload/<?=$eprj['attach']?>">Р—Р°РіСЂСѓР·РёС‚СЊ</a>
+			<!-- (Rar, 25РєР±) -->
 		</div>
 		<? } ?>
 		<div class="fl2_offer_meta">
 		<? if ($eprj['anon_id']) { ?>
-		Автор: Не зарегистрирован <br />
-		Категория: <?=$eprj['catname']?><br />
+		РђРІС‚РѕСЂ: РќРµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ <br />
+		РљР°С‚РµРіРѕСЂРёСЏ: <?=$eprj['catname']?><br />
 		<? if ($eprj['icq']) { ?>Icq: <?=$eprj['icq']?><br /><? } ?>
-		<? if ($eprj['mail']) { ?>Электронная почта: <?=$eprj['mail']?><br /><? } ?>
-		<? if ($eprj['phone']) { ?>Телефон: <?=$eprj['phone']?><? } ?>
+		<? if ($eprj['mail']) { ?>Р­Р»РµРєС‚СЂРѕРЅРЅР°СЏ РїРѕС‡С‚Р°: <?=$eprj['mail']?><br /><? } ?>
+		<? if ($eprj['phone']) { ?>РўРµР»РµС„РѕРЅ: <?=$eprj['phone']?><? } ?>
 	<? } else { ?>
-		Автор: <a href="/users/<?=$eprj['login']?>"><?=$eprj['uname']?> <?=$eprj['usurname']?> [<?=$eprj['login']?>]</a><br />
-		Категория: <?=$eprj['catname']?><br />
+		РђРІС‚РѕСЂ: <a href="/users/<?=$eprj['login']?>"><?=$eprj['uname']?> <?=$eprj['usurname']?> [<?=$eprj['login']?>]</a><br />
+		РљР°С‚РµРіРѕСЂРёСЏ: <?=$eprj['catname']?><br />
 	<? } ?>
 		</div>
 	<? if (is_new_prj($eprj['post_date'])) { ?>
 		<div class="fl2_comments_link">
-			<a href="javascript:void(0);">Комментарии (0)</a>
+			<a href="javascript:void(0);">РљРѕРјРјРµРЅС‚Р°СЂРёРё (0)</a>
 		</div>
 	<? } ?>
 	</div>

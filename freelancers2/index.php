@@ -28,7 +28,7 @@ stat_collector::setStamp(); // stamp
 $uid = get_uid();
 
 //------------------------------------------------------------------------------
-//@todo Ссылки должны изначально передавать такие параметры вместо word
+//@todo РЎСЃС‹Р»РєРё РґРѕР»Р¶РЅС‹ РёР·РЅР°С‡Р°Р»СЊРЅРѕ РїРµСЂРµРґР°РІР°С‚СЊ С‚Р°РєРёРµ РїР°СЂР°РјРµС‚СЂС‹ РІРјРµСЃС‚Рѕ word
 $word = __paramInit('string', 'word');
 if ($word) {
     $link = "/freelancers/?action=search&search_string={$word}";
@@ -141,7 +141,7 @@ if (!$prof_id && !$prof_group_id) {
     $g_page_id = "1|" . $prof_id;
 }
 
-//Мета-теги
+//РњРµС‚Р°-С‚РµРіРё
 if ($prof_group_id) {
     SeoTags::getInstance()->initFreelancers($prof_group_id, $page, false);
 } else {
@@ -155,12 +155,12 @@ $page_h1 = SeoTags::getInstance()->getH1();
 
 //------------------------------------------------------------------------------
 
-// Показывать только про пользователей
+// РџРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ РїСЂРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
 $is_pro = __paramInit('bool', 'is_pro', 'is_pro', false);
 
 $action = __paramInit('string', 'action', 'action', '');
 
-//Выборка при поиске (не менялась)
+//Р’С‹Р±РѕСЂРєР° РїСЂРё РїРѕРёСЃРєРµ (РЅРµ РјРµРЅСЏР»Р°СЃСЊ)
 if (in_array($action, array('search', 'search_advanced'))) {
 
     $search_string = __paramInit('htmltext', 'search_string', 'search_string');
@@ -281,7 +281,7 @@ if (in_array($action, array('search', 'search_advanced'))) {
 
     $string_query = $search_string;
 
-    // @todo Кажется, это никогда не используется?
+    // @todo РљР°Р¶РµС‚СЃСЏ, СЌС‚Рѕ РЅРёРєРѕРіРґР° РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ?
     $string_query .=!empty($string_professions) ? ' ' . $string_professions : '';
 
     $type = 'users_ext';
@@ -301,7 +301,7 @@ if (in_array($action, array('search', 'search_advanced'))) {
 
     $content = "search/content.php";
 }
-//Обычная выборка при навигации
+//РћР±С‹С‡РЅР°СЏ РІС‹Р±РѕСЂРєР° РїСЂРё РЅР°РІРёРіР°С†РёРё
 else {
     $direction = (int) __paramInit('bool', 'dir', 'dir', false);
     $order = __paramInit('string', 'order', 'order', 'gnr');
@@ -318,7 +318,7 @@ else {
             (($order && $order != 'gnr') ? "order=$order&" : "") .
             (($direction) ? "dir=$direction&" : "");
 
-    //Cсылка для new_paginator()
+    //CСЃС‹Р»РєР° РґР»СЏ new_paginator()
     $sHref = "%s" . $cur_page_url . "page=%d%s";
 
     if ($page > 1) {
@@ -334,7 +334,7 @@ else {
 
 //------------------------------------------------------------------------------
 
-// Попапы закреплений фрилансеров ----------------------------------------------
+// РџРѕРїР°РїС‹ Р·Р°РєСЂРµРїР»РµРЅРёР№ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ ----------------------------------------------
 
 $popup = __paramInit('string', 'popup');
 
@@ -401,6 +401,6 @@ $js_file[] = '/css/block/b-text/b-text.js';
 $js_file[] = '/css/block/b-popup/b-popup.js';
 $css_file = array('/css/block/b-icon/__cat/b-icon__cat.css', 'main.css', 'search.css', '/css/nav.css');
 $js_file[] = 'search.js';
-$js_file[] = 'freelancers/freelancers.js'; //@todo: Сюда переносить все inline-скрипты!
+$js_file[] = 'freelancers/freelancers.js'; //@todo: РЎСЋРґР° РїРµСЂРµРЅРѕСЃРёС‚СЊ РІСЃРµ inline-СЃРєСЂРёРїС‚С‹!
 $freelancers_catalog = true;
 include ("../template2.php");

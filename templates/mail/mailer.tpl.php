@@ -1,7 +1,7 @@
 <?php
 
 /* 
- * Шаблон письма рассылки mailer
+ * РЁР°Р±Р»РѕРЅ РїРёСЃСЊРјР° СЂР°СЃСЃС‹Р»РєРё mailer
  */
 
 $unsubscribe_url = $GLOBALS['host']."/unsubscribe/?type=mailer&ukey=%UNSUBSCRIBE_KEY%" . $utm;
@@ -13,8 +13,8 @@ $unsubscribe_url = $GLOBALS['host']."/unsubscribe/?type=mailer&ukey=%UNSUBSCRIBE
 <body style="padding-bottom: 20px;" marginwidth="0" marginheight="0" bottommargin="0" topmargin="0" rightmargin="0" leftmargin="0">
     <font color="#7e7e7e" size="1" face="arial">
         <center>
-            Чтобы не пропустить ни одного письма от команды <a style="color:#006ed6" target="_blank" href="<?=$GLOBALS['host']?>">FL.ru</a>, добавьте наш адрес no_reply@free-lance.ru в вашу адресную книгу. 
-            <a href="https://feedback.fl.ru/topic/532678-instruktsiya-po-dobavleniyu-email-adresa-flru-v-spisok-kontaktov/">Инструкция</a>
+            Р§С‚РѕР±С‹ РЅРµ РїСЂРѕРїСѓСЃС‚РёС‚СЊ РЅРё РѕРґРЅРѕРіРѕ РїРёСЃСЊРјР° РѕС‚ РєРѕРјР°РЅРґС‹ <a style="color:#006ed6" target="_blank" href="<?=$GLOBALS['host']?>">FL.ru</a>, РґРѕР±Р°РІСЊС‚Рµ РЅР°С€ Р°РґСЂРµСЃ no_reply@free-lance.ru РІ РІР°С€Сѓ Р°РґСЂРµСЃРЅСѓСЋ РєРЅРёРіСѓ. 
+            <a href="https://feedback.fl.ru/topic/532678-instruktsiya-po-dobavleniyu-email-adresa-flru-v-spisok-kontaktov/">РРЅСЃС‚СЂСѓРєС†РёСЏ</a>
         </center>
     </font>
     <br />
@@ -22,8 +22,8 @@ $unsubscribe_url = $GLOBALS['host']."/unsubscribe/?type=mailer&ukey=%UNSUBSCRIBE
     <br />
     <font color="#7e7e7e" size="1" face="arial">
         <center>
-            Вы получили это письмо, т.к. зарегистрированы на сайте <a style="color:#006ed6" target="_blank" href="<?=$GLOBALS['host']?>">FL.ru</a>.
-            Вы можете <a style="color:#006ed6" target="_blank" href="<?=$unsubscribe_url?>">отписаться от рассылки</a> и больше не получать подобные письма.
+            Р’С‹ РїРѕР»СѓС‡РёР»Рё СЌС‚Рѕ РїРёСЃСЊРјРѕ, С‚.Рє. Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅС‹ РЅР° СЃР°Р№С‚Рµ <a style="color:#006ed6" target="_blank" href="<?=$GLOBALS['host']?>">FL.ru</a>.
+            Р’С‹ РјРѕР¶РµС‚Рµ <a style="color:#006ed6" target="_blank" href="<?=$unsubscribe_url?>">РѕС‚РїРёСЃР°С‚СЊСЃСЏ РѕС‚ СЂР°СЃСЃС‹Р»РєРё</a> Рё Р±РѕР»СЊС€Рµ РЅРµ РїРѕР»СѓС‡Р°С‚СЊ РїРѕРґРѕР±РЅС‹Рµ РїРёСЃСЊРјР°.
         </center>
     </font>
 </body>

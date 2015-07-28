@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Шаблон виджета TServiceOrderFeedback
- * Popup окошка для отправки отзыва и/или закрытии заказа
+ * РЁР°Р±Р»РѕРЅ РІРёРґР¶РµС‚Р° TServiceOrderFeedback
+ * Popup РѕРєРѕС€РєР° РґР»СЏ РѕС‚РїСЂР°РІРєРё РѕС‚Р·С‹РІР° Рё/РёР»Рё Р·Р°РєСЂС‹С‚РёРё Р·Р°РєР°Р·Р°
  */
 
 $is_reserve = tservices_helper::isOrderReserve($pay_type);
@@ -14,7 +14,7 @@ $is_reserve = tservices_helper::isOrderReserve($pay_type);
      class="b-shadow b-shadow_center b-shadow_block b-shadow_width_<?=($is_reserve)?'580':'520'?> b-shadow_hide b-shadow__quick b-shadow_zindex_110">
   <div class="b-shadow__body b-shadow__body_pad_15_20">
       <h2 class="b-layout__title">
-          Завершение сотрудничества
+          Р—Р°РІРµСЂС€РµРЅРёРµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР°
       </h2>
       <div class="b-layout">
           
@@ -28,14 +28,14 @@ $is_reserve = tservices_helper::isOrderReserve($pay_type);
             <?php if(!$is_close): ?>   
             <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_10 __tservices_orders_feedback_label">
                 <?php if($is_reserve): ?>
-                Пожалуйста, оставьте ваш отзыв о сотрудничестве и подтвердите закрытие заказа с выплатой всей суммы исполнителю.
+                РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕСЃС‚Р°РІСЊС‚Рµ РІР°С€ РѕС‚Р·С‹РІ Рѕ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРµ Рё РїРѕРґС‚РІРµСЂРґРёС‚Рµ Р·Р°РєСЂС‹С‚РёРµ Р·Р°РєР°Р·Р° СЃ РІС‹РїР»Р°С‚РѕР№ РІСЃРµР№ СЃСѓРјРјС‹ РёСЃРїРѕР»РЅРёС‚РµР»СЋ.
                 <?php else: ?>
-                Пожалуйста, оставьте ваш отзыв о сотрудничестве и подтвердите закрытие заказа.
+                РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕСЃС‚Р°РІСЊС‚Рµ РІР°С€ РѕС‚Р·С‹РІ Рѕ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРµ Рё РїРѕРґС‚РІРµСЂРґРёС‚Рµ Р·Р°РєСЂС‹С‚РёРµ Р·Р°РєР°Р·Р°.
                 <?php endif; ?>
             </div>
             <?php endif; ?>   
             <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_10">
-                Ваш отзыв о сотрудничестве:
+                Р’Р°С€ РѕС‚Р·С‹РІ Рѕ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРµ:
             </div>
             <div class="b-layout b-layout_padleft_20">
                 <form action="" method="post">
@@ -44,11 +44,11 @@ $is_reserve = tservices_helper::isOrderReserve($pay_type);
                 <div class="b-radio b-radio_layout_horizontal">
                    <div class="b-radio__item b-radio__item_padbot_20 b-radio__item_padright_20">
                        <input<?=($rating >= 0)?' checked':''?> data-validators="fbtype" type="radio" value="1" name="fbtype" class="b-radio__input" id="plus-<?=$idx?>">
-                       <label for="plus-<?=$idx?>" class="b-radio__label b-radio__label_fontsize_13 b-radio__label_color_6db335">Положительный</label>
+                       <label for="plus-<?=$idx?>" class="b-radio__label b-radio__label_fontsize_13 b-radio__label_color_6db335">РџРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№</label>
                    </div>
                    <div class="b-radio__item b-radio__item_padbot_20">
                        <input<?=($rating < 0)?' checked':''?> data-validators="fbtype" type="radio" value="-1" name="fbtype" class="b-radio__input" id="minus-<?=$idx?>">
-                       <label for="minus-<?=$idx?>" class="b-radio__label b-radio__label_fontsize_13 b-radio__label_color_c10600">Отрицательный</label>
+                       <label for="minus-<?=$idx?>" class="b-radio__label b-radio__label_fontsize_13 b-radio__label_color_c10600">РћС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№</label>
                    </div>
                 </div>
                 <div class="b-textarea">
@@ -56,10 +56,10 @@ $is_reserve = tservices_helper::isOrderReserve($pay_type);
                               <?=($is_close)?'data-order-feedback-is-close="true"':''?>
                               class="b-textarea__textarea b-textarea__textarea_italic" 
                               rows="5" cols="80" maxlength="500" name="feedback" 
-                              placeholder="Введите текст отзыва"></textarea>
+                              placeholder="Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚ РѕС‚Р·С‹РІР°"></textarea>
                 </div> 
                 <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_5">
-                    Не более 500 символов.
+                    РќРµ Р±РѕР»РµРµ 500 СЃРёРјРІРѕР»РѕРІ.
                 </div>      
                 <div class="b-buttons b-buttons_padtop_20">
                       <a href="javascript:void(0);" 
@@ -68,33 +68,33 @@ $is_reserve = tservices_helper::isOrderReserve($pay_type);
                          onclick="">
                           <?php if($is_reserve): ?>
                              <?php if($is_close): ?>
-                             Оставить отзыв
+                             РћСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ
                              <?php else: ?>
-                             Закрыть заказ
+                             Р—Р°РєСЂС‹С‚СЊ Р·Р°РєР°Р·
                              <?php endif; ?>
                           <?php else: ?>
                           <span class="__tservices_orders_feedback_submit_label">
                               <?php if($is_close): ?>
-                              Оставить отзыв
+                              РћСЃС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ
                               <?php else: ?>
-                              Закрыть заказ
+                              Р—Р°РєСЂС‹С‚СЊ Р·Р°РєР°Р·
                               <?php endif; ?>
                           </span>                 
                           <?php endif; ?>
                       </a>
                       <?php if(false): ?>
-                      <span class="b-layout__txt b-layout__txt_fontsize_11">&#160; или 
+                      <span class="b-layout__txt b-layout__txt_fontsize_11">&#160; РёР»Рё 
                           <a class="b-layout__link" 
                              data-order-feedback-close="true" 
                              href="javascript:void(0);" 
-                             onclick="">продолжить сотрудничество</a>
+                             onclick="">РїСЂРѕРґРѕР»Р¶РёС‚СЊ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ</a>
                       </span>
                       <?php endif; ?>
                 </div>
                 </form>
                 <?php if($is_reserve && !$is_close): ?>        
                  <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_10">
-                     Нажатием кнопки "Закрыть заказ" вы подтверждаете отсутствие претензий к выполненной работе и даете согласие на выплату исполнителю ранее зарезервированной суммы.
+                     РќР°Р¶Р°С‚РёРµРј РєРЅРѕРїРєРё "Р—Р°РєСЂС‹С‚СЊ Р·Р°РєР°Р·" РІС‹ РїРѕРґС‚РІРµСЂР¶РґР°РµС‚Рµ РѕС‚СЃСѓС‚СЃС‚РІРёРµ РїСЂРµС‚РµРЅР·РёР№ Рє РІС‹РїРѕР»РЅРµРЅРЅРѕР№ СЂР°Р±РѕС‚Рµ Рё РґР°РµС‚Рµ СЃРѕРіР»Р°СЃРёРµ РЅР° РІС‹РїР»Р°С‚Сѓ РёСЃРїРѕР»РЅРёС‚РµР»СЋ СЂР°РЅРµРµ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРЅРѕР№ СЃСѓРјРјС‹.
                  </div>
                  <?php endif; ?> 
             </div>

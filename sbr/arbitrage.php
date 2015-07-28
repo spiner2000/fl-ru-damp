@@ -7,10 +7,10 @@
                 <div class="b-shadow__top">
                     <div class="b-shadow__bottom">
                         <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20">
-                            <h1 class="b-shadow__title b-shadow__title_fontsize_34 b-shadow__title_padbot_15">Обращение в Арбитраж</h1>
-                            <div class="b-shadow__txt b-shadow__txt_padbot_5">Арбитраж Free-lance.ru — независимая комиссия, разбирающая спорные вопросы, возникающие в ходе проведения «Безопасной Сделки». К рассмотрению принимается переписка в сообщениях на сайте и внутри задачи. Личная почта, ICQ, Skype и прочие мессенджеры во внимание не берутся. </div>
-                            <div class="b-shadow__txt b-shadow__txt_padbot_5">Отправляйте жалобу только в случае спорной ситуации с <?= ( $sbr->isEmp()?'исполнителем': 'заказчиком'); ?>, решить которую не удается. Учтите, что отозвать заявку из арбитража невозможно. По результатам разбирательства задача будет закрыта, а бюджет распределен между вами и <?= ( $sbr->isEmp()?'исполнителем': 'заказчиком'); ?>.</div>
-                            <div class="b-shadow__txt b-shadow__txt_padbot_20">Если у вас просто вопрос по работе сервиса «Безопасная Сделка», обратитесь в нашу <a class="b-layout__link" href="https://feedback.fl.ru/">службу поддержки</a>.</div>
+                            <h1 class="b-shadow__title b-shadow__title_fontsize_34 b-shadow__title_padbot_15">РћР±СЂР°С‰РµРЅРёРµ РІ РђСЂР±РёС‚СЂР°Р¶</h1>
+                            <div class="b-shadow__txt b-shadow__txt_padbot_5">РђСЂР±РёС‚СЂР°Р¶ Free-lance.ru вЂ” РЅРµР·Р°РІРёСЃРёРјР°СЏ РєРѕРјРёСЃСЃРёСЏ, СЂР°Р·Р±РёСЂР°СЋС‰Р°СЏ СЃРїРѕСЂРЅС‹Рµ РІРѕРїСЂРѕСЃС‹, РІРѕР·РЅРёРєР°СЋС‰РёРµ РІ С…РѕРґРµ РїСЂРѕРІРµРґРµРЅРёСЏ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ». Рљ СЂР°СЃСЃРјРѕС‚СЂРµРЅРёСЋ РїСЂРёРЅРёРјР°РµС‚СЃСЏ РїРµСЂРµРїРёСЃРєР° РІ СЃРѕРѕР±С‰РµРЅРёСЏС… РЅР° СЃР°Р№С‚Рµ Рё РІРЅСѓС‚СЂРё Р·Р°РґР°С‡Рё. Р›РёС‡РЅР°СЏ РїРѕС‡С‚Р°, ICQ, Skype Рё РїСЂРѕС‡РёРµ РјРµСЃСЃРµРЅРґР¶РµСЂС‹ РІРѕ РІРЅРёРјР°РЅРёРµ РЅРµ Р±РµСЂСѓС‚СЃСЏ. </div>
+                            <div class="b-shadow__txt b-shadow__txt_padbot_5">РћС‚РїСЂР°РІР»СЏР№С‚Рµ Р¶Р°Р»РѕР±Сѓ С‚РѕР»СЊРєРѕ РІ СЃР»СѓС‡Р°Рµ СЃРїРѕСЂРЅРѕР№ СЃРёС‚СѓР°С†РёРё СЃ <?= ( $sbr->isEmp()?'РёСЃРїРѕР»РЅРёС‚РµР»РµРј': 'Р·Р°РєР°Р·С‡РёРєРѕРј'); ?>, СЂРµС€РёС‚СЊ РєРѕС‚РѕСЂСѓСЋ РЅРµ СѓРґР°РµС‚СЃСЏ. РЈС‡С‚РёС‚Рµ, С‡С‚Рѕ РѕС‚РѕР·РІР°С‚СЊ Р·Р°СЏРІРєСѓ РёР· Р°СЂР±РёС‚СЂР°Р¶Р° РЅРµРІРѕР·РјРѕР¶РЅРѕ. РџРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°Рј СЂР°Р·Р±РёСЂР°С‚РµР»СЊСЃС‚РІР° Р·Р°РґР°С‡Р° Р±СѓРґРµС‚ Р·Р°РєСЂС‹С‚Р°, Р° Р±СЋРґР¶РµС‚ СЂР°СЃРїСЂРµРґРµР»РµРЅ РјРµР¶РґСѓ РІР°РјРё Рё <?= ( $sbr->isEmp()?'РёСЃРїРѕР»РЅРёС‚РµР»РµРј': 'Р·Р°РєР°Р·С‡РёРєРѕРј'); ?>.</div>
+                            <div class="b-shadow__txt b-shadow__txt_padbot_20">Р•СЃР»Рё Сѓ РІР°СЃ РїСЂРѕСЃС‚Рѕ РІРѕРїСЂРѕСЃ РїРѕ СЂР°Р±РѕС‚Рµ СЃРµСЂРІРёСЃР° В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В», РѕР±СЂР°С‚РёС‚РµСЃСЊ РІ РЅР°С€Сѓ <a class="b-layout__link" href="https://feedback.fl.ru/">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.</div>
                             <div class="b-textarea <?= $stage->error['arbitrage']['descr']? 'b-textarea_error' : ''?>">
                                 <textarea class="b-textarea__textarea b-textarea__textarea_height_250" name="descr" cols="" rows="" onfocus="$(this).getParent('.b-textarea').removeClass('b-textarea_error');"><?=htmlspecialchars($descr)?></textarea>        
                             </div>
@@ -22,12 +22,12 @@
                             
                             <div class="b-check b-check_padtop_15">
                                 <input type="checkbox" name="iagree" id="f1" onclick="check_arb(this.checked)" class="b-check__input" />
-                                <label class="b-check__label b-check__label_fontsize_13" for="f1">Я понимаю, что отозвать жалобу будет невозможно</label>
+                                <label class="b-check__label b-check__label_fontsize_13" for="f1">РЇ РїРѕРЅРёРјР°СЋ, С‡С‚Рѕ РѕС‚РѕР·РІР°С‚СЊ Р¶Р°Р»РѕР±Сѓ Р±СѓРґРµС‚ РЅРµРІРѕР·РјРѕР¶РЅРѕ</label>
                             </div>	
                             <div class="b-buttons b-buttons_padtop_15">
-                                <a class="b-button b-button_flat b-button_flat_green b-button_disabled"  href="javascript:void(0)" onclick="if(!$(this).hasClass('b-button_disabled')) $('arbitrageFrm').submit();" id="send_arbitrage">Обратиться в арбитраж</a>
-                                <span class="b-buttons__txt b-buttons__txt_padleft_10">или</span>
-                                <a class="b-buttons__link b-buttons__link_dot_c10601" href="javascript:void(0)" onclick="toggle_arb();">закрыть, не отправляя</a>
+                                <a class="b-button b-button_flat b-button_flat_green b-button_disabled"  href="javascript:void(0)" onclick="if(!$(this).hasClass('b-button_disabled')) $('arbitrageFrm').submit();" id="send_arbitrage">РћР±СЂР°С‚РёС‚СЊСЃСЏ РІ Р°СЂР±РёС‚СЂР°Р¶</a>
+                                <span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё</span>
+                                <a class="b-buttons__link b-buttons__link_dot_c10601" href="javascript:void(0)" onclick="toggle_arb();">Р·Р°РєСЂС‹С‚СЊ, РЅРµ РѕС‚РїСЂР°РІР»СЏСЏ</a>
                             </div>
                         </div>
                     </div>

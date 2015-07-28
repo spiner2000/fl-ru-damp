@@ -5,57 +5,57 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
 
 /**
  * 
- * Класс для обработки акции на масленицу
+ * РљР»Р°СЃСЃ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё Р°РєС†РёРё РЅР° РјР°СЃР»РµРЅРёС†Сѓ
  */
 class maslen extends account
 {
     /**
-     * Код акции в БД 
+     * РљРѕРґ Р°РєС†РёРё РІ Р‘Р” 
      */
     const OP_CODE = 108;
     
     /*
-     * Сумма за акцию
+     * РЎСѓРјРјР° Р·Р° Р°РєС†РёСЋ
      */
     const PAYED_SUM = 20; 
     
     /**
-     *  Количество месяцев при покупке про
+     *  РљРѕР»РёС‡РµСЃС‚РІРѕ РјРµСЃСЏС†РµРІ РїСЂРё РїРѕРєСѓРїРєРµ РїСЂРѕ
      */
     const MONTH_PRO = 1;
     
     const PRO_TARIF = 48;
     
     /**
-     * Дата старта акции // для теста сделано на 15 февраля
+     * Р”Р°С‚Р° СЃС‚Р°СЂС‚Р° Р°РєС†РёРё // РґР»СЏ С‚РµСЃС‚Р° СЃРґРµР»Р°РЅРѕ РЅР° 15 С„РµРІСЂР°Р»СЏ
      */
     public $start_date = '20120215';
     
     /**
-     * Дата окончания акции 
+     * Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ Р°РєС†РёРё 
      */
     public $stop_date  = '20120226';
     
     /**
-     * Заголовок операции
+     * Р—Р°РіРѕР»РѕРІРѕРє РѕРїРµСЂР°С†РёРё
      * 
      * @var string 
      */
-    public $title      = 'Масленичная акция';
+    public $title      = 'РњР°СЃР»РµРЅРёС‡РЅР°СЏ Р°РєС†РёСЏ';
     
     /**
-     * Описание операции 
+     * РћРїРёСЃР°РЅРёРµ РѕРїРµСЂР°С†РёРё 
      * 
      * @var string 
      */
-    public $descr      = 'PRO-аккаунт на месяц + Размещение в карусели (в каталоге фрилансеров)';
+    public $descr      = 'PRO-Р°РєРєР°СѓРЅС‚ РЅР° РјРµСЃСЏС† + Р Р°Р·РјРµС‰РµРЅРёРµ РІ РєР°СЂСѓСЃРµР»Рё (РІ РєР°С‚Р°Р»РѕРіРµ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ)';
     
     /**
-     * Функция оплаты акции
+     * Р¤СѓРЅРєС†РёСЏ РѕРїР»Р°С‚С‹ Р°РєС†РёРё
      *  
-     * @global object $DB база данных
-     * @param integer $transaction_id  ИД транзакции сделки
-     * @param integer $user_id         ИД пользователя
+     * @global object $DB Р±Р°Р·Р° РґР°РЅРЅС‹С…
+     * @param integer $transaction_id  РР” С‚СЂР°РЅР·Р°РєС†РёРё СЃРґРµР»РєРё
+     * @param integer $user_id         РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * @return int 
      */
     function setPayed($transaction_id, $user_id) {
@@ -83,11 +83,11 @@ class maslen extends account
     }
     
     /**
-     * Даем пользователою ПРО на месяц
+     * Р”Р°РµРј РїРѕР»СЊР·РѕРІР°С‚РµР»РѕСЋ РџР Рћ РЅР° РјРµСЃСЏС†
      * 
-     * @global object $DB     подключение к БД
-     * @param  integer $user_id ИД пользователя
-     * @param  integer $bill_id ИД операции
+     * @global object $DB     РїРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р”
+     * @param  integer $user_id РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  integer $bill_id РР” РѕРїРµСЂР°С†РёРё
      * @return resource
      */
     function setUserPRO($user_id, $bill_id) {
@@ -105,10 +105,10 @@ class maslen extends account
     }
     
     /**
-     * Пользовался ли пользователь уже этой акцией
+     * РџРѕР»СЊР·РѕРІР°Р»СЃСЏ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓР¶Рµ СЌС‚РѕР№ Р°РєС†РёРµР№
      *  
      * @global object $DB   
-     * @param integer $user_id  ИД пользователя
+     * @param integer $user_id  РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * @return boolean 
      */
     function isPayed($user_id) {
@@ -124,7 +124,7 @@ class maslen extends account
     }
     
     /**
-     * Проверка даты проведения акции
+     * РџСЂРѕРІРµСЂРєР° РґР°С‚С‹ РїСЂРѕРІРµРґРµРЅРёСЏ Р°РєС†РёРё
      * 
      * @return boolean 
      */
@@ -139,11 +139,11 @@ class maslen extends account
     }
     
     /**
-     * Чистим по операции
+     * Р§РёСЃС‚РёРј РїРѕ РѕРїРµСЂР°С†РёРё
      * 
-     * @global object $DB      Подключение к БД 
-     * @param integer $uid     ИД Пользователя
-     * @param integer $opid    ИД операции (account_operations)
+     * @global object $DB      РџРѕРґРєР»СЋС‡РµРЅРёРµ Рє Р‘Р” 
+     * @param integer $uid     РР” РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param integer $opid    РР” РѕРїРµСЂР°С†РёРё (account_operations)
      * @return boolean 
      */
     function DelByOpid($uid, $opid) {

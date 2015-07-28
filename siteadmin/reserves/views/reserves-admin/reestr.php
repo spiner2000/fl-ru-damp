@@ -22,7 +22,7 @@ $line_css = 'b-layout__txt b-layout__txt_padtop_5 b-layout__txt_fontsize_11 b-la
     <input type="hidden" name="action" value="reestr" />
     <input type="hidden" name="mode" value="<?=$mode?>" />
     <div class="<?= $line_css ?> b-layout__txt_padright_20">
-        Период:
+        РџРµСЂРёРѕРґ:
     </div>
     <?php foreach ($form_elements as $form_element): ?>
         <?php if ($form_element->getName() == 'date_end'): ?>
@@ -32,7 +32,7 @@ $line_css = 'b-layout__txt b-layout__txt_padtop_5 b-layout__txt_fontsize_11 b-la
         <?php endif; ?>
         <?= $form_element->render(); ?>
     <?php endforeach; ?>
-    <button class="b-button_margleft_10" style="height:27px;" type="submit">Генерировать</button>
+    <button class="b-button_margleft_10" style="height:27px;" type="submit">Р“РµРЅРµСЂРёСЂРѕРІР°С‚СЊ</button>
 </form>
 </div>
 
@@ -51,7 +51,7 @@ $line_css = 'b-layout__txt b-layout__txt_padtop_5 b-layout__txt_fontsize_11 b-la
         <tr>
             <td class="b-layout__td b-layout__td_padbot_5 b-layout__td_padright_10">
                 <span class="b-layout__txt b-layout__txt_fontsize_13 b-layout__txt_color_646464">
-                    Сумма резервирования через Яндекс.Кассу
+                    РЎСѓРјРјР° СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ С‡РµСЂРµР· РЇРЅРґРµРєСЃ.РљР°СЃСЃСѓ
                 </span>
             </td>
             <td class="b-layout__td b-layout__td_padbot_5 b-layout__td_padright_10">
@@ -63,7 +63,7 @@ $line_css = 'b-layout__txt b-layout__txt_padtop_5 b-layout__txt_fontsize_11 b-la
         <tr>
             <td class="b-layout__td b-layout__td_padbot_5 b-layout__td_padright_10">
                 <span class="b-layout__txt b-layout__txt_fontsize_13 b-layout__txt_color_646464">
-                    Сумма выплат через Яндекс.Кассу
+                    РЎСѓРјРјР° РІС‹РїР»Р°С‚ С‡РµСЂРµР· РЇРЅРґРµРєСЃ.РљР°СЃСЃСѓ
                 </span>
             </td>
             <td class="b-layout__td b-layout__td_padbot_5 b-layout__td_padright_10">
@@ -75,7 +75,7 @@ $line_css = 'b-layout__txt b-layout__txt_padtop_5 b-layout__txt_fontsize_11 b-la
         <tr>
             <td class="b-layout__td b-layout__td_padbot_5 b-layout__td_padright_10">
                 <span class="b-layout__txt b-layout__txt_fontsize_13 b-layout__txt_color_646464">
-                    Сумма выплат нерезидентам через Яндекс.Кассу
+                    РЎСѓРјРјР° РІС‹РїР»Р°С‚ РЅРµСЂРµР·РёРґРµРЅС‚Р°Рј С‡РµСЂРµР· РЇРЅРґРµРєСЃ.РљР°СЃСЃСѓ
                 </span>
             </td>
             <td class="b-layout__td b-layout__td_padbot_5 b-layout__td_padright_10">
@@ -87,7 +87,7 @@ $line_css = 'b-layout__txt b-layout__txt_padtop_5 b-layout__txt_fontsize_11 b-la
         <tr>
             <td class="b-layout__td b-layout__td_padbot_5 b-layout__td_padright_10">
                 <span class="b-layout__txt b-layout__txt_fontsize_13 b-layout__txt_color_646464">
-                    Сумма возвратов через Яндекс.Кассу
+                    РЎСѓРјРјР° РІРѕР·РІСЂР°С‚РѕРІ С‡РµСЂРµР· РЇРЅРґРµРєСЃ.РљР°СЃСЃСѓ
                 </span>
             </td>
             <td class="b-layout__td b-layout__td_padbot_5 b-layout__td_padright_10">
@@ -142,7 +142,7 @@ $line_css = 'b-layout__txt b-layout__txt_padtop_5 b-layout__txt_fontsize_11 b-la
 <div class="b-layout b-layout_padtop_20">
     <input type="hidden" name="date_range" value="<?=$form->getReadbleDateInterval()?>" />
     <a id="__create_archive" href="?action=archive" class="b-button b-button_flat b-button_flat_green">
-        Создать архив документов
+        РЎРѕР·РґР°С‚СЊ Р°СЂС…РёРІ РґРѕРєСѓРјРµРЅС‚РѕРІ
     </a>
 </div>
     <?php endif; ?>

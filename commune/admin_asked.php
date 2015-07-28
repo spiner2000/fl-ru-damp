@@ -11,11 +11,11 @@ $is_author = $user_mod & (commune::MOD_COMM_AUTHOR);
 								<thead>
 									<tr>
 										<th>
-											<a href="<?= $name_link?>" class="lnk-dot-grey">Пользователь</a> <a href="<?= $name_link?>"><?= $arrow_name;?></a>
+											<a href="<?= $name_link?>" class="lnk-dot-grey">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ</a> <a href="<?= $name_link?>"><?= $arrow_name;?></a>
 										</th>
 
 										<th>
-											<a href="<?= $asked_link;?>" class="lnk-dot-grey">Заявка подана</a> <a href="<?= $asked_link;?>"><?= $arrow_asked;?></a>
+											<a href="<?= $asked_link;?>" class="lnk-dot-grey">Р—Р°СЏРІРєР° РїРѕРґР°РЅР°</a> <a href="<?= $asked_link;?>"><?= $arrow_asked;?></a>
 										</th>
 										<th>
 
@@ -48,13 +48,13 @@ $is_author = $user_mod & (commune::MOD_COMM_AUTHOR);
                                                                                     <strong><?= date("d.m.Y H:i", strtotime($memb['asked_time']));?></strong>
 										</td>
 										<td class="cau-lnks">
-											<strong><a href="?id=<?=$id?>&site=Admin.members&mode=Asked&m=<?=$memb['id']?><?php if ($page>1){ ?>&page=<?=$page?><?php } ?>&action=do.Accept.member" class="lnk-dot-green">Добавить в сообщество</a>&nbsp;&nbsp;&nbsp; <a href="?id=<?=$id?>&site=Admin.members&mode=Asked&m=<?=$memb['id']?><?php if ($page>1){ ?>&page=<?=$page?><?php } ?>&action=do.Unaccept.member" class="lnk-dot-red">Отказать</a></strong>&nbsp;&nbsp;&nbsp;
+											<strong><a href="?id=<?=$id?>&site=Admin.members&mode=Asked&m=<?=$memb['id']?><?php if ($page>1){ ?>&page=<?=$page?><?php } ?>&action=do.Accept.member" class="lnk-dot-green">Р”РѕР±Р°РІРёС‚СЊ РІ СЃРѕРѕР±С‰РµСЃС‚РІРѕ</a>&nbsp;&nbsp;&nbsp; <a href="?id=<?=$id?>&site=Admin.members&mode=Asked&m=<?=$memb['id']?><?php if ($page>1){ ?>&page=<?=$page?><?php } ?>&action=do.Unaccept.member" class="lnk-dot-red">РћС‚РєР°Р·Р°С‚СЊ</a></strong>&nbsp;&nbsp;&nbsp;
 										</td>
 									</tr>
 
 <? }else{ ?>
                                                                         <tr><td><? if($user_login!==NULL && empty($members)) { ?>
-                      Пользователь не найден
+                      РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РЅР°Р№РґРµРЅ
                     <? } else { ?>
                       &nbsp;
                     <? } ?></td></tr>

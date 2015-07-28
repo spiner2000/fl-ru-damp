@@ -1,6 +1,6 @@
 <?php
 /**
- * Общий шаблон оплаты
+ * РћР±С‰РёР№ С€Р°Р±Р»РѕРЅ РѕРїР»Р°С‚С‹
  */
 
 
@@ -38,7 +38,7 @@ $is_payfull = ($pay_sum > 0) && ($acc_sum <= 0);
             <?=$content?>
             
             <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20">
-                Сумма и способ оплаты
+                РЎСѓРјРјР° Рё СЃРїРѕСЃРѕР± РѕРїР»Р°С‚С‹
             </div>
             
             <?=$promo_code?>
@@ -51,27 +51,27 @@ $is_payfull = ($pay_sum > 0) && ($acc_sum <= 0);
             </div>
             
             <div class="b-layout__txt b-layout__txt_padleft_20 b-layout__txt_fontsize_11">
-                Сумма к оплате: 
+                РЎСѓРјРјР° Рє РѕРїР»Р°С‚Рµ: 
                 <strong data-quick-payment-price="<?=$price?>">
                     <?=view_cost_format($price, false)?>
-                </strong> руб.<br/>
+                </strong> СЂСѓР±.<br/>
             </div>
             
             <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_padleft_20 b-layout__txt_fontsize_11">
                 <?php if ($acc_sum > 0): ?>
                 <span data-quick-payment-paynone="true" <?php if(!$is_paynone): ?>class="b-layout__txt_hide"<?php endif; ?>>
-                    Она будет списана с личного счета, на нем 
+                    РћРЅР° Р±СѓРґРµС‚ СЃРїРёСЃР°РЅР° СЃ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р°, РЅР° РЅРµРј 
                     <strong data-quick-payment-accsum="<?=$acc_sum?>">
                         <?=view_cost_format($acc_sum, false)?>
-                    </strong> руб.
+                    </strong> СЂСѓР±.
                 </span>
                 <span data-quick-payment-paypart="true" <?php if(!$is_paypart): ?>class="b-layout__txt_hide"<?php endif; ?>>
-                    Часть суммы (<strong><?=view_cost_format($acc_sum, false)?></strong> руб.) есть на Вашем личном счете.<br />
-                    Остаток (<strong data-quick-payment-partsum="true"><?=view_cost_format($pay_sum, false)?></strong> руб.) вам нужно оплатить одним из способов:
+                    Р§Р°СЃС‚СЊ СЃСѓРјРјС‹ (<strong><?=view_cost_format($acc_sum, false)?></strong> СЂСѓР±.) РµСЃС‚СЊ РЅР° Р’Р°С€РµРј Р»РёС‡РЅРѕРј СЃС‡РµС‚Рµ.<br />
+                    РћСЃС‚Р°С‚РѕРє (<strong data-quick-payment-partsum="true"><?=view_cost_format($pay_sum, false)?></strong> СЂСѓР±.) РІР°Рј РЅСѓР¶РЅРѕ РѕРїР»Р°С‚РёС‚СЊ РѕРґРЅРёРј РёР· СЃРїРѕСЃРѕР±РѕРІ:
                 </span>
                 <?php endif; ?>
                 <span data-quick-payment-payfull="true" <?php if(!$is_payfull): ?>class="b-layout__txt_hide"<?php endif; ?>>
-                    Ее вы можете оплатить одним из способов:
+                    Р•Рµ РІС‹ РјРѕР¶РµС‚Рµ РѕРїР»Р°С‚РёС‚СЊ РѕРґРЅРёРј РёР· СЃРїРѕСЃРѕР±РѕРІ:
                 </span>
             </div>
 <?php
@@ -106,7 +106,7 @@ $is_payfull = ($pay_sum > 0) && ($acc_sum <= 0);
             <div data-quick-payment-success-screen="true" class="b-layout__success b-layout__txt_fontsize_15 b-layout__txt_color_323232 b-layout_hide">
                 <span data-quick-payment-success-msg="true"></span>
                 <div class="b-buttons b-buttons_center b-button_margtop_15">
-                    <a data-quick-payment-close="true" href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green">Закрыть</a>
+                    <a data-quick-payment-close="true" href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green">Р—Р°РєСЂС‹С‚СЊ</a>
                 </div>
             </div>
 
@@ -119,10 +119,10 @@ $is_payfull = ($pay_sum > 0) && ($acc_sum <= 0);
                     <a class="b-button b-button_flat b-button_flat_green" 
                        href="javascript:void(0);" 
                        data-quick-payment-type="<?=$payment_account?>">
-                        Оплатить 
+                        РћРїР»Р°С‚РёС‚СЊ 
                         <span data-quick-payment-account-price="true">
                             <?=view_cost_format($price, false)?>
-                        </span> руб.
+                        </span> СЂСѓР±.
                     </a> 
                 </div>
             </div>

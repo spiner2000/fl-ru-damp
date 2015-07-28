@@ -11,7 +11,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/sbr.php");
 
 
 /**
- * Вернуть контактные данные фрилансера если есть доступ их смотреть
+ * Р’РµСЂРЅСѓС‚СЊ РєРѕРЅС‚Р°РєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ С„СЂРёР»Р°РЅСЃРµСЂР° РµСЃР»Рё РµСЃС‚СЊ РґРѕСЃС‚СѓРї РёС… СЃРјРѕС‚СЂРµС‚СЊ
  * 
  * @param type $login
  * @param type $hash
@@ -68,7 +68,7 @@ function getUserPhoto() {
         $ufoto = WDCPREFIX.'/images/no_foto_b.png';
     }
 
-    //@todo: top_payed.php более неиспользуется
+    //@todo: top_payed.php Р±РѕР»РµРµ РЅРµРёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
     //$objResponse->script('TopPayed.adImgPath = "'.$ufoto.'";');
     $objResponse->script('$("payfoto").set("src","'.$ufoto.'")');
     return $objResponse;
@@ -100,16 +100,16 @@ function CheckUser($login, $a=false) {
 	
 	$err = 'null';
   if (!preg_match("/^[a-zA-Z0-9]+[-a-zA-Z0-9_]{2,}$/", $login))
-    $err = "'Поле заполнено некорректно'";
+    $err = "'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ'";
   else {
     $user = new users();
     $user->GetUser($login);
     if($user->uid > 0)
-      $err = "'Извините, этот логин занят. Придумайте другой. <a class=\"b-form__close\" href=\"#\"></a>'";
+      $err = "'РР·РІРёРЅРёС‚Рµ, СЌС‚РѕС‚ Р»РѕРіРёРЅ Р·Р°РЅСЏС‚. РџСЂРёРґСѓРјР°Р№С‚Рµ РґСЂСѓРіРѕР№. <a class=\"b-form__close\" href=\"#\"></a>'";
 	}
 
     if(in_array(strtolower($login), $GLOBALS['disallowUserLogins'])) {
-        $err = "'Извините, такой логин использовать нельзя <a class=\"b-form__close\" href=\"#\"></a>'";
+        $err = "'РР·РІРёРЅРёС‚Рµ, С‚Р°РєРѕР№ Р»РѕРіРёРЅ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РЅРµР»СЊР·СЏ <a class=\"b-form__close\" href=\"#\"></a>'";
     }
 
     if($a) {
@@ -153,7 +153,7 @@ function GetFreeLogin($email) {
 }
 
 /**
- * Включаем/выключаем подписку на проекты
+ * Р’РєР»СЋС‡Р°РµРј/РІС‹РєР»СЋС‡Р°РµРј РїРѕРґРїРёСЃРєСѓ РЅР° РїСЂРѕРµРєС‚С‹
  * 
  * @param int $status
  * @return \xajaxResponse
@@ -178,7 +178,7 @@ function togglePrj($status = 1)
 
 
 /**
- * Добавляет категорию в подписку на проекты
+ * Р”РѕР±Р°РІР»СЏРµС‚ РєР°С‚РµРіРѕСЂРёСЋ РІ РїРѕРґРїРёСЃРєСѓ РЅР° РїСЂРѕРµРєС‚С‹
  * 
  * @param int $category_id
  * @param int $subcategory_id
@@ -210,7 +210,7 @@ function AddSubscFilter($category_id, $subcategory_id, $exists = ''){
 }
 
 /**
- * Удаляет категорию из подписки на проекты
+ * РЈРґР°Р»СЏРµС‚ РєР°С‚РµРіРѕСЂРёСЋ РёР· РїРѕРґРїРёСЃРєРё РЅР° РїСЂРѕРµРєС‚С‹
  * 
  * @param int $category_id
  * @param int $subcategory_id
@@ -240,7 +240,7 @@ function SetSex(){
     session_start();
     $resp = array('status' => 'ok', 'alert' => 'Ok');
     if(!isset($_POST['sex'])) {
-        exit('{"status":"error","alert":"Укажите ваш пол!"}');
+        exit('{"status":"error","alert":"РЈРєР°Р¶РёС‚Рµ РІР°С€ РїРѕР»!"}');
     } else {
         $obj = new users();
         $obj->SetSex(get_uid(false),(int)$_POST['sex']);
@@ -249,7 +249,7 @@ function SetSex(){
 }
 
  /**
- * Делает отметку о получении подарка(просмотре подарка) по id подарка и UID
+ * Р”РµР»Р°РµС‚ РѕС‚РјРµС‚РєСѓ Рѕ РїРѕР»СѓС‡РµРЅРёРё РїРѕРґР°СЂРєР°(РїСЂРѕСЃРјРѕС‚СЂРµ РїРѕРґР°СЂРєР°) РїРѕ id РїРѕРґР°СЂРєР° Рё UID
  *
  * @param integer $uid
  */
@@ -303,10 +303,10 @@ function SetPromoBlockClosed() {
 }
 
 /**
- * Не показывать страницу "Переход по внешней ссылке" a.php
+ * РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ СЃС‚СЂР°РЅРёС†Сѓ "РџРµСЂРµС…РѕРґ РїРѕ РІРЅРµС€РЅРµР№ СЃСЃС‹Р»РєРµ" a.php
  *
- * @param  int $uid UID пользователя.
- * @param  string $new новое значение
+ * @param  int $uid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
+ * @param  string $new РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ
  * @return object xajaxResponse
  */
 function setDirectExternalLinks( $uid = 0, $new = false ) {
@@ -329,7 +329,7 @@ function getsms($phone) {
     require_once $_SERVER['DOCUMENT_ROOT']."/classes/sms_gate_a1.php";
     
     if($_SESSION['send_sms_time']  > time()) return;
-    $_SESSION['send_sms_time'] = strtotime("+" . sms_gate::TIMEOUT_SEND); // таймаут до следующей отсылки СМС
+    $_SESSION['send_sms_time'] = strtotime("+" . sms_gate::TIMEOUT_SEND); // С‚Р°Р№РјР°СѓС‚ РґРѕ СЃР»РµРґСѓСЋС‰РµР№ РѕС‚СЃС‹Р»РєРё РЎРњРЎ
     
     if(!preg_match("/^\+[0-9]{10,15}/mi", $phone)) {
         $sms = new sms_gate_a1($phone);
@@ -388,13 +388,13 @@ function checkCode($phone, $code, $type = "bind") {
 				unset($_SESSION['send_sms_time']);
 				$success = 2;
 			} else {
-                $error = current($text_error); // Телефон забит
+                $error = current($text_error); // РўРµР»РµС„РѕРЅ Р·Р°Р±РёС‚
             }
-        } else if($type == 'unbind') { // Сбрасываем все
+        } else if($type == 'unbind') { // РЎР±СЂР°СЃС‹РІР°РµРј РІСЃРµ
             $phone = '';
             $save_reqv['mob_phone'] = '';
             $ureqv['mob_phone']     = '';
-            sbr_meta::setUserReqv($uid, $reqv['rez_type'], $reqv['form_type'], $save_reqv); // Удаляем телефон
+            sbr_meta::setUserReqv($uid, $reqv['rez_type'], $reqv['form_type'], $save_reqv); // РЈРґР°Р»СЏРµРј С‚РµР»РµС„РѕРЅ
             sbr_meta::authMobPhone($uid, false);
             sbr_meta::safetyMobPhone($uid, false);
             $user->updateSafetyPhone($uid, false);
@@ -403,30 +403,30 @@ function checkCode($phone, $code, $type = "bind") {
             $success = 3;
         }
     } else {
-		$error = 'Неправильный код';
+		$error = 'РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ РєРѕРґ';
 	}
 	
 	switch ($success) {
-		case 2: //Прицепили телефон
+		case 2: //РџСЂРёС†РµРїРёР»Рё С‚РµР»РµС„РѕРЅ
 			$objResponse->script("$('safety_status')"
-				. ".set('text', 'включена')"
+				. ".set('text', 'РІРєР»СЋС‡РµРЅР°')"
 				. ".removeClass('b-layout__txt_color_c10600')"
 				. ".addClass('b-layout__txt_color_6db335');");
 			$objResponse->script("$('mob_phone_text').set('html', "
 				. "'<a href=\"javascript:void(0)\" onclick=\"User_Phone.unbindStart();\" "
-				. "class=\"b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8\">Отвязать</a>')");
+				. "class=\"b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8\">РћС‚РІСЏР·Р°С‚СЊ</a>')");
 			$objResponse->script("$('mob_phone_text').removeClass('b-layout__txt_hide')");
 			$objResponse->script("$('mob_code_block').addClass('b-layout__txt_hide');");
 			$objResponse->script("$('buttons_step1').addClass('b-layout__txt_hide');");
 			$objResponse->script("$('buttons_step2').removeClass('b-layout__txt_hide');");
 			break;
 	
-		case 3: //Отцепили телефон
+		case 3: //РћС‚С†РµРїРёР»Рё С‚РµР»РµС„РѕРЅ
 			$objResponse->script("$('safety_status')"
-				. ".set('text', 'выключена')"
+				. ".set('text', 'РІС‹РєР»СЋС‡РµРЅР°')"
 				. ".removeClass('b-layout__txt_color_6db335')"
 				. ".addClass('b-layout__txt_color_c10600');");
-			$objResponse->script("$('mob_phone_text').set('text', 'без пробелов и дефиса')");
+			$objResponse->script("$('mob_phone_text').set('text', 'Р±РµР· РїСЂРѕР±РµР»РѕРІ Рё РґРµС„РёСЃР°')");
 			$objResponse->script("$('sms_sent_ok').addClass('b-layout__txt_hide');");
 			$objResponse->script("$('smscode').set('value', '');");
 			$objResponse->script("$('buttons_step1').removeClass('b-layout__txt_hide');");
@@ -449,7 +449,7 @@ function checkCode($phone, $code, $type = "bind") {
 }
 
 /**
-  * @desc Пересчитать рейтинг за работы в портфолио
+  * @desc РџРµСЂРµСЃС‡РёС‚Р°С‚СЊ СЂРµР№С‚РёРЅРі Р·Р° СЂР°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ
   * @param String login
  **/
 function recalcUserPortfolioRating($login) {
@@ -457,20 +457,20 @@ function recalcUserPortfolioRating($login) {
     $objResponse = new xajaxResponse();
     if (!$login) {
         $login = '';
-        $err = "Необходимо ввести логин";
+        $err = "РќРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё Р»РѕРіРёРЅ";
     }
     if(!(hasPermissions('adm') && hasPermissions('users'))) {
-        $err = "Нет достаточно прав - 2";
+        $err = "РќРµС‚ РґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ - 2";
     }
     if ($err == '') {
         global $DB;
         $query = "SELECT recalc_portfolio_user_rating(?)";
         $val = $DB->val($query, $login);
         if ($val == -1) {
-            $objResponse->script("alert('Пользователь с логином \'{$login}\' не найден.');");
+            $objResponse->script("alert('РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ Р»РѕРіРёРЅРѕРј \'{$login}\' РЅРµ РЅР°Р№РґРµРЅ.');");
             return $objResponse;
         }
-        $objResponse->script("alert('Рейтинг пользователя {$login} за работы в портфолио пересчитан и составляет {$val} баллов');");
+        $objResponse->script("alert('Р РµР№С‚РёРЅРі РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ {$login} Р·Р° СЂР°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ РїРµСЂРµСЃС‡РёС‚Р°РЅ Рё СЃРѕСЃС‚Р°РІР»СЏРµС‚ {$val} Р±Р°Р»Р»РѕРІ');");
     } else {
         $objResponse->script("alert('$err');");
     }

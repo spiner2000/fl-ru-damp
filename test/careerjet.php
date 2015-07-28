@@ -1,6 +1,6 @@
 <?
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/projects.php");
 new_projects::careerjetGenerateRss('upload/careerjet.xml');
-echo "ôàéë ãîòîâ";
+echo "Ñ„Ð°Ð¹Ð» Ð³Ð¾Ñ‚Ð¾Ð²";
 
 ?>

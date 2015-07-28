@@ -94,10 +94,10 @@ class ReservesArchiveItemModel
     public function getStatusText()
     {
         switch($this->_data['status']) {
-            case ReservesArchiveModel::STATUS_SUCCESS: return 'Готов';
-            case ReservesArchiveModel::STATUS_ERROR: return "Ошибка";
+            case ReservesArchiveModel::STATUS_SUCCESS: return 'Р“РѕС‚РѕРІ';
+            case ReservesArchiveModel::STATUS_ERROR: return "РћС€РёР±РєР°";
             case ReservesArchiveModel::STATUS_NEW:    
-            case ReservesArchiveModel::STATUS_INPROGRESS: return 'В процессе';
+            case ReservesArchiveModel::STATUS_INPROGRESS: return 'Р’ РїСЂРѕС†РµСЃСЃРµ';
         }
         
         return '';

@@ -3,8 +3,8 @@
 
 ?>
     <h1 class="b-layout__title b-layout__title_fs30 b-layout__title_color_333 b-layout__title_padbot_37">
-        Кратко опишите проект, чтобы на него<br/>
-        <strong>откликнулось больше фрилансеров</strong>
+        РљСЂР°С‚РєРѕ РѕРїРёС€РёС‚Рµ РїСЂРѕРµРєС‚, С‡С‚РѕР±С‹ РЅР° РЅРµРіРѕ<br/>
+        <strong>РѕС‚РєР»РёРєРЅСѓР»РѕСЃСЊ Р±РѕР»СЊС€Рµ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</strong>
     </h1>
     <div class="b-layout b-layout_center b-layout_text-left b-layout_max-width_575">
          <?=$form?>

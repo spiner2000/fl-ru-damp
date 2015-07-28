@@ -1,23 +1,23 @@
 <div class="b-layout">
     <div class="b-layout__right b-layout__right_width_72ps b-layout__right_float_right">
-        <h1 class="b-page__title b-page__title_padbot_30">Добро пожаловать на FL.ru</h1>
+        <h1 class="b-page__title b-page__title_padbot_30">Р”РѕР±СЂРѕ РїРѕР¶Р°Р»РѕРІР°С‚СЊ РЅР° FL.ru</h1>
     </div>
 
     <div class="b-layout__right b-layout__right_width_72ps b-layout__right_float_right">
         <? if (!$_COOKIE['master_auth']) { ?>
         <div class="b-fon b-fon_inline-block b-fon_padbot_50">
             <div class="b-fon__body b-fon__body_pad_15  b-fon__body_padleft_30 b-fon__body_padright_40 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-                <span class="b-icon b-icon_sbr_gattent b-icon_margleft_-20 b-icon_top_8"></span>Поздравляем вас с успешной регистрацией на сайте FL.ru!<br>На e-mail, указанный при регистрации, отправлено письмо с логином, паролем и ссылкой для активации аккаунта. Пожалуйста, сохраните эти учетные данные и активируйте аккаунт.
+                <span class="b-icon b-icon_sbr_gattent b-icon_margleft_-20 b-icon_top_8"></span>РџРѕР·РґСЂР°РІР»СЏРµРј РІР°СЃ СЃ СѓСЃРїРµС€РЅРѕР№ СЂРµРіРёСЃС‚СЂР°С†РёРµР№ РЅР° СЃР°Р№С‚Рµ FL.ru!<br>РќР° e-mail, СѓРєР°Р·Р°РЅРЅС‹Р№ РїСЂРё СЂРµРіРёСЃС‚СЂР°С†РёРё, РѕС‚РїСЂР°РІР»РµРЅРѕ РїРёСЃСЊРјРѕ СЃ Р»РѕРіРёРЅРѕРј, РїР°СЂРѕР»РµРј Рё СЃСЃС‹Р»РєРѕР№ РґР»СЏ Р°РєС‚РёРІР°С†РёРё Р°РєРєР°СѓРЅС‚Р°. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, СЃРѕС…СЂР°РЅРёС‚Рµ СЌС‚Рё СѓС‡РµС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ Рё Р°РєС‚РёРІРёСЂСѓР№С‚Рµ Р°РєРєР°СѓРЅС‚.
             </div>
         </div>
         <? } ?>
-        <div class="b-layout__txt b-layout__txt_fontsize_22 b-layout__txt_padbot_40"><a href="/public/?step=1&kind=1" class="b-layout__link">Опубликуйте проект</a>, <a href="/public/?step=1&kind=7" class="b-layout__link">конкурс</a> или <a href="/public/?step=1&kind=4" class="b-layout__link">вакансию</a></div>
-        <div class="b-layout__txt b-layout__txt_fontsize_22 b-layout__txt_padbot_40">Заполните <a href="/users/<?= $_SESSION['login']?>/setup/info/" class="b-layout__link">профиль</a></div>
-        <div class="b-layout__txt b-layout__txt_fontsize_22">Приобретите  <a href="/payed-emp/" class="b-layout__link">аккаунт</a> <a href="/payed-emp/" class="b-layout__link"><span title="PRO" class="b-icon b-icon__spro b-icon__spro_e"></span></a></div>
-        <div class="b-layout__txt b-layout__txt_padbot_40">и получите скидки на услуги и другие бонусы </div>
-        <div class="b-layout__txt b-layout__txt_fontsize_22 b-layout__txt_padbot_40">Разошлите <a href="/masssending/" class="b-layout__link">объявление</a> по каталогу фрилансеров</div>
-        <div class="b-layout__txt b-layout__txt_fontsize_22">Подтвердите свою   <a href="/promo/verification/" class="b-layout__link">личность</a>,</div>
-        <div class="b-layout__txt b-layout__txt_padbot_40">чтобы вам доверяли партнеры</div>
+        <div class="b-layout__txt b-layout__txt_fontsize_22 b-layout__txt_padbot_40"><a href="/public/?step=1&kind=1" class="b-layout__link">РћРїСѓР±Р»РёРєСѓР№С‚Рµ РїСЂРѕРµРєС‚</a>, <a href="/public/?step=1&kind=7" class="b-layout__link">РєРѕРЅРєСѓСЂСЃ</a> РёР»Рё <a href="/public/?step=1&kind=4" class="b-layout__link">РІР°РєР°РЅСЃРёСЋ</a></div>
+        <div class="b-layout__txt b-layout__txt_fontsize_22 b-layout__txt_padbot_40">Р—Р°РїРѕР»РЅРёС‚Рµ <a href="/users/<?= $_SESSION['login']?>/setup/info/" class="b-layout__link">РїСЂРѕС„РёР»СЊ</a></div>
+        <div class="b-layout__txt b-layout__txt_fontsize_22">РџСЂРёРѕР±СЂРµС‚РёС‚Рµ  <a href="/payed-emp/" class="b-layout__link">Р°РєРєР°СѓРЅС‚</a> <a href="/payed-emp/" class="b-layout__link"><span title="PRO" class="b-icon b-icon__spro b-icon__spro_e"></span></a></div>
+        <div class="b-layout__txt b-layout__txt_padbot_40">Рё РїРѕР»СѓС‡РёС‚Рµ СЃРєРёРґРєРё РЅР° СѓСЃР»СѓРіРё Рё РґСЂСѓРіРёРµ Р±РѕРЅСѓСЃС‹ </div>
+        <div class="b-layout__txt b-layout__txt_fontsize_22 b-layout__txt_padbot_40">Р Р°Р·РѕС€Р»РёС‚Рµ <a href="/masssending/" class="b-layout__link">РѕР±СЉСЏРІР»РµРЅРёРµ</a> РїРѕ РєР°С‚Р°Р»РѕРіСѓ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</div>
+        <div class="b-layout__txt b-layout__txt_fontsize_22">РџРѕРґС‚РІРµСЂРґРёС‚Рµ СЃРІРѕСЋ   <a href="/promo/verification/" class="b-layout__link">Р»РёС‡РЅРѕСЃС‚СЊ</a>,</div>
+        <div class="b-layout__txt b-layout__txt_padbot_40">С‡С‚РѕР±С‹ РІР°Рј РґРѕРІРµСЂСЏР»Рё РїР°СЂС‚РЅРµСЂС‹</div>
     </div>
 </div>
 

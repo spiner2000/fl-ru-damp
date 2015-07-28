@@ -71,7 +71,7 @@ Sbr.prototype.closePayoutPopup
                 <thead>
                     <tr>
                         <td colspan="8">
-                            Остатки: <b><?=sbr_meta::view_cost($yd_balance, exrates::YM, false) ?></b>
+                            РћСЃС‚Р°С‚РєРё: <b><?=sbr_meta::view_cost($yd_balance, exrates::YM, false) ?></b>
                         </td>
                     </tr>
                     <tr>
@@ -91,7 +91,7 @@ Sbr.prototype.closePayoutPopup
                         <td><input type="text" name="filter[sum]" value="<?=html_attr($sbr_payouts['filter']['sum'])?>" onkeydown="if(event.keyCode==13)SBR.form.submit()" onfocus="this.select()" /></td>
                         <td>
                           <select name="filter[sys]" onchange="SBR.form.submit()">
-                            <option value="0">Все</option>
+                            <option value="0">Р’СЃРµ</option>
                             <? foreach($EXRATE_CODES as $exc=>$exn) { ?>
                               <option value="<?=$exc?>"<?=($exc==$sbr_payouts['filter']['sys'] ? ' selected="selected"' : '')?> ><?=$exn[2]?></option>
                             <? } ?>
@@ -100,9 +100,9 @@ Sbr.prototype.closePayoutPopup
                         <td><input type="text" name="filter[account_num]" value="<?=html_attr($sbr_payouts['filter']['account_num'])?>" onkeydown="if(event.keyCode==13)SBR.form.submit()" onfocus="this.select()" /></td>
                         <td>
                           <select name="filter[completed]" onchange="SBR.form.submit()">
-                            <option value="0">Все</option>
-                            <option value="1"<?=(1==$sbr_payouts['filter']['completed'] ? ' selected="selected"' : '')?>>Выплачены</option>
-                            <option value="2"<?=(2==$sbr_payouts['filter']['completed'] ? ' selected="selected"' : '')?>>Не выплачены</option>
+                            <option value="0">Р’СЃРµ</option>
+                            <option value="1"<?=(1==$sbr_payouts['filter']['completed'] ? ' selected="selected"' : '')?>>Р’С‹РїР»Р°С‡РµРЅС‹</option>
+                            <option value="2"<?=(2==$sbr_payouts['filter']['completed'] ? ' selected="selected"' : '')?>>РќРµ РІС‹РїР»Р°С‡РµРЅС‹</option>
                           </select>
                         </td>
                     </tr>
@@ -122,13 +122,13 @@ Sbr.prototype.closePayoutPopup
                     <tr class="<?=(++$i%2==0 ? 'even' : 'odd').($sp['is_arbitrage']=='t' ? ' l-arb' : '')?>">
                         <td class="nr-a-o-date"><?=date('d.m.Y H:i', strtotime($sp['requested']))?></td>
                         <td><?=$sbr->getContractNum($sp['sbr_id'], $sp['scheme_type'])?></td>
-                        <td class="nr-a-o-num"><?=($sp['is_arbitrage']=='t' ? '<b>А</b>&nbsp;&nbsp;' : '')?><a href="/sbr/?access=A&site=Stage&id=<?=$sp['stage_id']?>">#<?=sbr_stages::getOuterNum($sp['sbr_id'], $sp['stage_num'])?></a></td>
+                        <td class="nr-a-o-num"><?=($sp['is_arbitrage']=='t' ? '<b>Рђ</b>&nbsp;&nbsp;' : '')?><a href="/sbr/?access=A&site=Stage&id=<?=$sp['stage_id']?>">#<?=sbr_stages::getOuterNum($sp['sbr_id'], $sp['stage_num'])?></a></td>
                         <td><a href="/users/<?=$sp['login']?>/" class="nr-a-lnk-<?=(is_emp($sp['role']) ? 'emp' : 'frl')?>"><?=($sp['uname'].' '.$sp['usurname'].' ['.$sp['login'].']')?></a></td>
                         <td class="nr-a-td-sum"><?=sbr_meta::view_cost($sp['credit_sum'], NULL, false)?></td>
                         <td class="nr-a-td-val">
                           <?=$EXRATE_CODES[$sp['credit_sys']][2]?>
                         </td>
-                        <td><a href="/users/<?=$sp['login']?>/setup/finance/?sid=<?=$sp['stage_id']?>"><?=($sp['account_num'] ? $sp['account_num'] : 'Не задан')?></a></td>
+                        <td><a href="/users/<?=$sp['login']?>/setup/finance/?sid=<?=$sp['stage_id']?>"><?=($sp['account_num'] ? $sp['account_num'] : 'РќРµ Р·Р°РґР°РЅ')?></a></td>
                         <td class="nr-a-td-btn">
                         
                           <? if(!$sp['completed'] && ($sp['credit_sys']!=exrates::YM  || $sp['yd_completed']=='t')
@@ -138,32 +138,32 @@ Sbr.prototype.closePayoutPopup
                             <? if($sp['credit_sys']==exrates::WMR && $sp['is_arbitrage']=='t' && is_emp($sp['role']) && $payment_id) {?>
                                 <? if($sp['is_refund'] == null) {?>
                                 <span>
-                                    <input type="button" id="wm_btn_refund<?=$sp['stage_id'].'_'.$sp['user_id']?>" value="Возврат" class="i-btn" onclick="SBR.sendForm({action:'refund', user_id: <?=$sp['user_id']?>, payment_id:<?= $payment_id?>, stage_id:<?=$sp['stage_id']?>});">
+                                    <input type="button" id="wm_btn_refund<?=$sp['stage_id'].'_'.$sp['user_id']?>" value="Р’РѕР·РІСЂР°С‚" class="i-btn" onclick="SBR.sendForm({action:'refund', user_id: <?=$sp['user_id']?>, payment_id:<?= $payment_id?>, stage_id:<?=$sp['stage_id']?>});">
                                 </span>
                                 <? } elseif($sp['is_refund'] == 't') {?>
-                                Деньги возвращены (<?=date('d.m.Y H:i', strtotime($sp['completed']))?>)
+                                Р”РµРЅСЊРіРё РІРѕР·РІСЂР°С‰РµРЅС‹ (<?=date('d.m.Y H:i', strtotime($sp['completed']))?>)
                                 <? } else {?>
-                                В процессе возврата
+                                Р’ РїСЂРѕС†РµСЃСЃРµ РІРѕР·РІСЂР°С‚Р°
                                 <? }?>
                             <?php } else if($sbr->isAdmin() && ! ( is_emp($sp['role']) && ($sp['credit_sys'] == exrates::YM || $sp['credit_sys'] == exrates::WMR  ) ) ) {?>
-                            <span><input type="button" id="sp_btn<?=$sp['stage_id'].'_'.$sp['user_id']?>" value="Выплатить" class="i-btn" onclick="SBR.sendForm({action:'payout',user_id:<?=$sp['user_id']?>,stage_id:<?=$sp['stage_id']?>})"<?=($sp['account_num'] ? '' : ' disabled="disabled" title="Необходимо определить номер счета/кошелька"')?> /></span>
+                            <span><input type="button" id="sp_btn<?=$sp['stage_id'].'_'.$sp['user_id']?>" value="Р’С‹РїР»Р°С‚РёС‚СЊ" class="i-btn" onclick="SBR.sendForm({action:'payout',user_id:<?=$sp['user_id']?>,stage_id:<?=$sp['stage_id']?>})"<?=($sp['account_num'] ? '' : ' disabled="disabled" title="РќРµРѕР±С…РѕРґРёРјРѕ РѕРїСЂРµРґРµР»РёС‚СЊ РЅРѕРјРµСЂ СЃС‡РµС‚Р°/РєРѕС€РµР»СЊРєР°"')?> /></span>
                             <?php }//if?>
                           <? } else if($sp['completed']) { ?>
                             <?=date('d.m.Y H:i', strtotime($sp['completed']))?>&nbsp;
                             <? if ($sp['credit_sys']!=exrates::YM && $sp['credit_sys']!=exrates::WMR && $sbr->isAdmin()) { ?>
-                              <a href="javascript:;" onclick="if(window.confirm('Отменить выплату?'))SBR.sendForm({action:'unpayout',user_id:<?=$sp['user_id']?>,stage_id:<?=$sp['stage_id']?>})" title="Отменить выплату"><img src="/images/basket.png" width="11" heigth="11" alt="x" /></a>
+                              <a href="javascript:;" onclick="if(window.confirm('РћС‚РјРµРЅРёС‚СЊ РІС‹РїР»Р°С‚Сѓ?'))SBR.sendForm({action:'unpayout',user_id:<?=$sp['user_id']?>,stage_id:<?=$sp['stage_id']?>})" title="РћС‚РјРµРЅРёС‚СЊ РІС‹РїР»Р°С‚Сѓ"><img src="/images/basket.png" width="11" heigth="11" alt="x" /></a>
                             <? } ?>
                           <? } ?>
                           <? if ($sp['credit_sys']==exrates::YM && !$sp['completed'] && $sbr->isAdmin()) { ?>
-                            <span><input type="button" id="yd_btn<?=$sp['stage_id'].'_'.$sp['user_id']?>" value="Выплатить ЯД" class="i-btn" onclick="SBR.openPayoutPopup(<?=exrates::YM?>, <?=$sp['stage_id']?>,<?=$sp['user_id']?>)"
+                            <span><input type="button" id="yd_btn<?=$sp['stage_id'].'_'.$sp['user_id']?>" value="Р’С‹РїР»Р°С‚РёС‚СЊ РЇР”" class="i-btn" onclick="SBR.openPayoutPopup(<?=exrates::YM?>, <?=$sp['stage_id']?>,<?=$sp['user_id']?>)"
                             <?=(!$sp['account_num'] ? ' disabled="disabled"' : '')?>
-                              title="<?=(!$sp['account_num'] ? 'Необходимо определить номер кошелька' : 'Открыть терминал выплат в ЯД')?>"/>
+                              title="<?=(!$sp['account_num'] ? 'РќРµРѕР±С…РѕРґРёРјРѕ РѕРїСЂРµРґРµР»РёС‚СЊ РЅРѕРјРµСЂ РєРѕС€РµР»СЊРєР°' : 'РћС‚РєСЂС‹С‚СЊ С‚РµСЂРјРёРЅР°Р» РІС‹РїР»Р°С‚ РІ РЇР”')?>"/>
                             </span>
                           <? } ?>
                           <? if ($sp['credit_sys']==exrates::WMR && !$sp['completed'] && $sbr->isAdmin()) { ?>
-                            <span><input type="button" id="wm_btn<?=$sp['stage_id'].'_'.$sp['user_id']?>" value="Выплатить WMR" class="i-btn" onclick="SBR.openPayoutPopup(<?=exrates::WMR?>, <?=$sp['stage_id']?>,<?=$sp['user_id']?>)"
+                            <span><input type="button" id="wm_btn<?=$sp['stage_id'].'_'.$sp['user_id']?>" value="Р’С‹РїР»Р°С‚РёС‚СЊ WMR" class="i-btn" onclick="SBR.openPayoutPopup(<?=exrates::WMR?>, <?=$sp['stage_id']?>,<?=$sp['user_id']?>)"
                             <?=(!$sp['account_num'] ? ' disabled="disabled"' : '')?>
-                              title="<?=(!$sp['account_num'] ? 'Необходимо определить номер кошелька' : 'Открыть терминал выплат в WMR')?>"/>
+                              title="<?=(!$sp['account_num'] ? 'РќРµРѕР±С…РѕРґРёРјРѕ РѕРїСЂРµРґРµР»РёС‚СЊ РЅРѕРјРµСЂ РєРѕС€РµР»СЊРєР°' : 'РћС‚РєСЂС‹С‚СЊ С‚РµСЂРјРёРЅР°Р» РІС‹РїР»Р°С‚ РІ WMR')?>"/>
                             </span>
                           <? } ?>
                         </td>

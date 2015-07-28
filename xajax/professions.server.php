@@ -24,7 +24,7 @@ function setSpecAutoPay($bxid, $paid_id) {
     global $uid;
     $objResponse = new xajaxResponse();
     if(!($is_autopaid = professions::setSpecAutoPay($uid, $paid_id)))
-        $err = 'Ошибка. Пожалуйста, повторите операцию.';
+        $err = 'РћС€РёР±РєР°. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРІС‚РѕСЂРёС‚Рµ РѕРїРµСЂР°С†РёСЋ.';
     $objResponse->call('setSpecAuto', $bxid, (int)($is_autopaid=='t'), $err);
     return $objResponse;
 }
@@ -95,7 +95,7 @@ function freezePro($action, $from_date, $to_date) {
     $to_time = date('Y-m-d', $to_time);
 
     //if (date('Ymd', strtotime($_SESSION['pro_last'])) == date('Ymd'))
-    //@todo: выключаем возможность заморозки
+    //@todo: РІС‹РєР»СЋС‡Р°РµРј РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ Р·Р°РјРѕСЂРѕР·РєРё
     //https://beta.free-lance.ru/mantis/view.php?id=29292
     $freeze_allow = false;
     
@@ -131,19 +131,19 @@ function freezePro($action, $from_date, $to_date) {
             }
             $_SESSION['pro_last'] = $pro_last['is_freezed'] ? false : $pro_last['cnt'];
             
-            $text = "Ваш аккаунт будет заморожен с <b>" . date('d.m.Y', strtotime($from_date)) . "</b> на <b>{$freeze_days} дней</b>" ;
+            $text = "Р’Р°С€ Р°РєРєР°СѓРЅС‚ Р±СѓРґРµС‚ Р·Р°РјРѕСЂРѕР¶РµРЅ СЃ <b>" . date('d.m.Y', strtotime($from_date)) . "</b> РЅР° <b>{$freeze_days} РґРЅРµР№</b>" ;
             $objResponse->call("freezeDisabled", $freeze_act);
             $objResponse->assign('freeze_info', 'innerHTML', $text);
         } elseif (strtotime($from_date) > strtotime($_SESSION['pro_last']) || strtotime($from_date) < $fstart) {
-            $freeze_error = 'Неверная дата начала заморозки.';
+            $freeze_error = 'РќРµРІРµСЂРЅР°СЏ РґР°С‚Р° РЅР°С‡Р°Р»Р° Р·Р°РјРѕСЂРѕР·РєРё.';
         } else {
-            $freeze_error = 'Ошибка, не указана одна из дат.';
+            $freeze_error = 'РћС€РёР±РєР°, РЅРµ СѓРєР°Р·Р°РЅР° РѕРґРЅР° РёР· РґР°С‚.';
         }
     }
     
     if ($action == 'freeze_cancel' && $freeze_set) {
         if (!payed::freezeProCancel($uid, $last_freeze_id)) {
-            $freeze_error = 'Невозможно отменить заморозку.';
+            $freeze_error = 'РќРµРІРѕР·РјРѕР¶РЅРѕ РѕС‚РјРµРЅРёС‚СЊ Р·Р°РјРѕСЂРѕР·РєСѓ.';
         } else {
             $freeze_set = false;
             $freeze_allow = true;
@@ -164,7 +164,7 @@ function freezePro($action, $from_date, $to_date) {
 
     if ($action == 'freeze_stop' && $freezed_now) {
         if (!payed::freezeProStop($uid, $last_freeze_id)) {
-            $freeze_error = 'Невозможно разморозить аккаунт.';
+            $freeze_error = 'РќРµРІРѕР·РјРѕР¶РЅРѕ СЂР°Р·РјРѕСЂРѕР·РёС‚СЊ Р°РєРєР°СѓРЅС‚.';
         } else {
             $pro_last = payed::ProLast($_SESSION['login']);
             if (!$pro_last['freeze_to']) {

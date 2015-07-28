@@ -28,7 +28,7 @@ $user = new users();
 
 $user->GetUser($from_login);
 if (!$user->uid) {
-    echo iconv('cp1251','utf-8',"Не найден пользователь: {$from_login}");
+    echo iconv('cp1251','utf-8',"РќРµ РЅР°Р№РґРµРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ: {$from_login}");
     exit;
 }
 
@@ -36,23 +36,23 @@ $from_id = $user->uid;
 
 $user->GetUser($to_login);
 if (!$user->uid) {
-    echo iconv('cp1251','utf-8',"Не найден пользователь: {$to_login}");
+    echo iconv('cp1251','utf-8',"РќРµ РЅР°Р№РґРµРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ: {$to_login}");
     exit;
 }
 
 $to_id = $user->uid;
 
 
-echo iconv('cp1251','utf-8',"Права и Роль учитваются только для залогиненых пользователей. <br/><br/>\n");
+echo iconv('cp1251','utf-8',"РџСЂР°РІР° Рё Р РѕР»СЊ СѓС‡РёС‚РІР°СЋС‚СЃСЏ С‚РѕР»СЊРєРѕ РґР»СЏ Р·Р°Р»РѕРіРёРЅРµРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№. <br/><br/>\n");
 
 //messages::isAllowed($to_id, $from_id);
 //messages::isAllowed($to_id, $from_id);        
 //messages::isAllowed($to_id, $from_id);
 
 if (messages::isAllowed($to_id, $from_id)) {
-    echo iconv('cp1251','utf-8',"Переписка разрешена\n\n");
+    echo iconv('cp1251','utf-8',"РџРµСЂРµРїРёСЃРєР° СЂР°Р·СЂРµС€РµРЅР°\n\n");
     exit;
 }
 
-echo iconv('cp1251','utf-8',"Переписка запрещена\n\n");
+echo iconv('cp1251','utf-8',"РџРµСЂРµРїРёСЃРєР° Р·Р°РїСЂРµС‰РµРЅР°\n\n");
 exit;

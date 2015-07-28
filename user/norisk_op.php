@@ -11,7 +11,7 @@ $show[$theme['id']] = true;
     <div class="ops-one-cnt">
         <ul class="ops-i">
             <?php if ($edited) { ?>
-                <li><img src="/images/ico-e-u.png" title="Отедактировано <?= $edited; ?>" alt="Редактировал <?= $edited; ?>" /></li>
+                <li><img src="/images/ico-e-u.png" title="РћС‚РµРґР°РєС‚РёСЂРѕРІР°РЅРѕ <?= $edited; ?>" alt="Р РµРґР°РєС‚РёСЂРѕРІР°Р» <?= $edited; ?>" /></li>
             <?php } ?>
             <li class="ops-time"><?= $posted; ?></li>
             <li><a onclick="hlAnchor('s',<?= $theme['id'] ?>)" href="#s_<?= $theme['id'] ?>" class="ops-anchor">#</a></li>
@@ -20,7 +20,7 @@ $show[$theme['id']] = true;
         <div class="user-info">
             <div class="username" style="font-size: 12px"><?= __prntUsrInfo($user); ?>
                 <? if (hasPermissions('users')) { ?>
-                <i>На сайте <?= ElapsedMnths(strtotime($user->reg_date)) ?></i>
+                <i>РќР° СЃР°Р№С‚Рµ <?= ElapsedMnths(strtotime($user->reg_date)) ?></i>
                 <? } ?>
             </div>
             <? $curr_sbr_id = $theme['sbr_id']; ?>
@@ -44,7 +44,7 @@ $show[$theme['id']] = true;
                         <?php if($show[$theme['id']] !== true){ ?>
                         <ul class="ops-i">
                             <?php if ($edited) { ?>
-                                <li><img src="/images/ico-e-u.png" title="Отедактировано <?= $edited; ?>" alt="Редактировал <?= $edited; ?>" /></li>
+                                <li><img src="/images/ico-e-u.png" title="РћС‚РµРґР°РєС‚РёСЂРѕРІР°РЅРѕ <?= $edited; ?>" alt="Р РµРґР°РєС‚РёСЂРѕРІР°Р» <?= $edited; ?>" /></li>
                             <?php } ?>
                             <li class="ops-time"><?= $posted; ?></li>
                             <li><a onclick="hlAnchor('s',<?= $theme['id'] ?>)" href="#s_<?= $theme['id'] ?>" class="ops-anchor">#</a></li>
@@ -52,7 +52,7 @@ $show[$theme['id']] = true;
                         <?php }?>
                         <?php
                         if ($print_sbr_name) {
-                            // Первый этап
+                            // РџРµСЂРІС‹Р№ СЌС‚Р°Рї
 
 
                             $sSbrNameText = reformat($theme['sbr_name'], 40, 0, 1);
@@ -73,32 +73,32 @@ $show[$theme['id']] = true;
                         }
                         ?>
 
-                        <?php if ($theme['stage_status'] == sbr_stages::STATUS_ARBITRAGED) {// арбитраж ?>
-                            <h3 class="ops-nr-arb">Завершено арбитражем</h3>
+                        <?php if ($theme['stage_status'] == sbr_stages::STATUS_ARBITRAGED) {// Р°СЂР±РёС‚СЂР°Р¶ ?>
+                            <h3 class="ops-nr-arb">Р—Р°РІРµСЂС€РµРЅРѕ Р°СЂР±РёС‚СЂР°Р¶РµРј</h3>
                         <?php } ?>
                         <?php $sStageName = reformat($theme['stage_name'], 40, 0, 1); ?>
                         <?php if ($uid == $theme['frl_id'] || $uid == $theme['emp_id']) { ?>
-                            <p>Этап: <a href="/norisk2/?site=Stage&id=<?= $theme['stage_id'] ?>"><?= $sStageName ?></a></p>
+                            <p>Р­С‚Р°Рї: <a href="/norisk2/?site=Stage&id=<?= $theme['stage_id'] ?>"><?= $sStageName ?></a></p>
                         <?php } else { ?>
-                            <p>Этап: <?= $sStageName ?></p>
+                            <p>Р­С‚Р°Рї: <?= $sStageName ?></p>
                         <?php } ?>
-                        <p><span>Категория: <?php echo professions::GetProfNameWP($theme['sub_category']) ?></span></p>
+                        <p><span>РљР°С‚РµРіРѕСЂРёСЏ: <?php echo professions::GetProfNameWP($theme['sub_category']) ?></span></p>
                         <p><span><?=date("d.m.Y H:i", strtotime($theme['stage_closed']))?></span></p>
                     </div>
                     <b class="b2"></b>
                     <b class="b1"></b>
                 </div>
-                <? /* !!! классы sbrmsgblock, editsbrblock, editFromSbr не существуют, необходимы для точной обработки логики вызывания через XAJAX функции редактирования нескольких отзывов*/?>
+                <? /* !!! РєР»Р°СЃСЃС‹ sbrmsgblock, editsbrblock, editFromSbr РЅРµ СЃСѓС‰РµСЃС‚РІСѓСЋС‚, РЅРµРѕР±С…РѕРґРёРјС‹ РґР»СЏ С‚РѕС‡РЅРѕР№ РѕР±СЂР°Р±РѕС‚РєРё Р»РѕРіРёРєРё РІС‹Р·С‹РІР°РЅРёСЏ С‡РµСЂРµР· XAJAX С„СѓРЅРєС†РёРё СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РЅРµСЃРєРѕР»СЊРєРёС… РѕС‚Р·С‹РІРѕРІ*/?>
                 <div id="op_message_<?= $theme['id'] ?>" class="utxt sbrmsgblock ops-nr-utxt<?php echo $theme['stage_status'] == sbr_stages::STATUS_ARBITRAGED ? ' ops-nr-arb' : ''; ?>">
                     <p><?= reformat($theme['descr'], 30, 0, 1, 1) ?></p>
                 </div>
                 <?php if ($uid == $user->uid || hasPermissions('users')) { ?>
                     <ul class="opsa-op editsbrblock" id="ops_edit_link_<?= $theme['id'] ?>">
                         <? if (hasPermissions('users') || (strtotime($theme['posted_time'])+3600*24 > time())) { ?>
-                        <li><a class="lnk-dot-red" href="javascript:void(0)" onclick="xajax_EditSBROpForm(<?= $theme['id'] ?>, '<?=$user->login?>')">Редактировать</a></li>
+                        <li><a class="lnk-dot-red" href="javascript:void(0)" onclick="xajax_EditSBROpForm(<?= $theme['id'] ?>, '<?=$user->login?>')">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></li>
                         <? } ?>
                         <? if (hasPermissions('users')) { ?>
-                        <li><a class="lnk-dot-red" href="javascript:void(0)" onclick="if(confirm('Уверены??')) xajax_DeleteFeedback(<?= $theme['stage_id'] ?>, <?= $theme['id'] ?>)">Удалить</a></li>
+                        <li><a class="lnk-dot-red" href="javascript:void(0)" onclick="if(confirm('РЈРІРµСЂРµРЅС‹??')) xajax_DeleteFeedback(<?= $theme['stage_id'] ?>, <?= $theme['id'] ?>)">РЈРґР°Р»РёС‚СЊ</a></li>
                         <? } ?>
                     </ul>
                     <div id="form_container_<?= $theme['id'] ?>" class="editFormSbr" style="display:none"></div>

@@ -31,15 +31,15 @@ $content = 'content.php';
 $action = __paramInit('string', 'action', 'action');
 $site = __paramInit('string', 'site', 'site');
 $sbrss_classes = sbr::$ss_classes;
-$sbrss_classes[sbr::STATUS_CHANGED][1] = $sbr->isEmp() ? 'Èçìåíåííûå «Áåçîïàñíûå Ñäåëêè» áåç óòâåðæäåíèÿ' : 'Èçìåíåííûå «Áåçîïàñíûå Ñäåëêè», îæèäàþùèå âàøåãî ñîãëàñèÿ';
+$sbrss_classes[sbr::STATUS_CHANGED][1] = $sbr->isEmp() ? 'Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð½Ñ‹Ðµ Â«Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ñ‹Ðµ Ð¡Ð´ÐµÐ»ÐºÐ¸Â» Ð±ÐµÐ· ÑƒÑ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ñ' : 'Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð½Ñ‹Ðµ Â«Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ñ‹Ðµ Ð¡Ð´ÐµÐ»ÐºÐ¸Â», Ð¾Ð¶Ð¸Ð´Ð°ÑŽÑ‰Ð¸Ðµ Ð²Ð°ÑˆÐµÐ³Ð¾ ÑÐ¾Ð³Ð»Ð°ÑÐ¸Ñ';
 
 sbr::$ss_classes = array(
-    sbr::STATUS_NEW => array('nr-list-new', 'Íîâûå «Áåçîïàñíûå Ñäåëêè» áåç óòâåðæäåíèÿ'),
-    sbr::STATUS_CHANGED => array('nr-list-changed', $sbr->isEmp() ? 'Èçìåíåííûå «Áåçîïàñíûå Ñäåëêè» áåç óòâåðæäåíèÿ' : 'Èçìåíåííûå «Áåçîïàñíûå Ñäåëêè», îæèäàþùèå âàøåãî ñîãëàñèÿ'),
-    sbr::STATUS_PROCESS => array('nr-list-progress', 'Â ðàçðàáîòêå'),
-    sbr::STATUS_CANCELED => array('nr-list-canceled', 'Îòìåíåííûå ïðîåêòû'),
-    sbr::STATUS_REFUSED => array('nr-list-canceled', 'Îòêëîíåííûå ïðîåêòû'),
-    sbr::STATUS_COMPLETED => array('nr-list-completed', 'Çàâåðøåííûå') );
+    sbr::STATUS_NEW => array('nr-list-new', 'ÐÐ¾Ð²Ñ‹Ðµ Â«Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ñ‹Ðµ Ð¡Ð´ÐµÐ»ÐºÐ¸Â» Ð±ÐµÐ· ÑƒÑ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ñ'),
+    sbr::STATUS_CHANGED => array('nr-list-changed', $sbr->isEmp() ? 'Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð½Ñ‹Ðµ Â«Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ñ‹Ðµ Ð¡Ð´ÐµÐ»ÐºÐ¸Â» Ð±ÐµÐ· ÑƒÑ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ñ' : 'Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð½Ñ‹Ðµ Â«Ð‘ÐµÐ·Ð¾Ð¿Ð°ÑÐ½Ñ‹Ðµ Ð¡Ð´ÐµÐ»ÐºÐ¸Â», Ð¾Ð¶Ð¸Ð´Ð°ÑŽÑ‰Ð¸Ðµ Ð²Ð°ÑˆÐµÐ³Ð¾ ÑÐ¾Ð³Ð»Ð°ÑÐ¸Ñ'),
+    sbr::STATUS_PROCESS => array('nr-list-progress', 'Ð’ Ñ€Ð°Ð·Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐµ'),
+    sbr::STATUS_CANCELED => array('nr-list-canceled', 'ÐžÑ‚Ð¼ÐµÐ½ÐµÐ½Ð½Ñ‹Ðµ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñ‹'),
+    sbr::STATUS_REFUSED => array('nr-list-canceled', 'ÐžÑ‚ÐºÐ»Ð¾Ð½ÐµÐ½Ð½Ñ‹Ðµ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñ‹'),
+    sbr::STATUS_COMPLETED => array('nr-list-completed', 'Ð—Ð°Ð²ÐµÑ€ÑˆÐµÐ½Ð½Ñ‹Ðµ') );
     
 if($sbr->isAdmin() || $sbr->isAdminFinance())
     include('admin/index.php');
@@ -49,7 +49,7 @@ else
     include('employer/index.php');
 
 
-// Îáùåå.
+// ÐžÐ±Ñ‰ÐµÐµ.
 switch($site) {
 
     case 'history' :
@@ -68,7 +68,7 @@ switch($site) {
         $site_uri = "?site=Stage&id={$stage->id}";
         if(!$stage)
             header_location_exit('/norisk2/?');
-        // Åñëè ñäåëêà íîâàÿ ïåðåíîñèì ïîëüçîâàòåëÿ íà íîâûé èíòåðôåéñ
+        // Ð•ÑÐ»Ð¸ ÑÐ´ÐµÐ»ÐºÐ° Ð½Ð¾Ð²Ð°Ñ Ð¿ÐµÑ€ÐµÐ½Ð¾ÑÐ¸Ð¼ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ Ð½Ð° Ð½Ð¾Ð²Ñ‹Ð¹ Ð¸Ð½Ñ‚ÐµÑ€Ñ„ÐµÐ¹Ñ
         if( $stage->sbr->isNewVersionSbr()  && !$sbr->isAdmin()) {
             header_location_exit("/sbr/?site=Stage&id={$stage->id}");
         }
@@ -118,7 +118,7 @@ switch($site) {
 
 
     case 'docs' :
-        if($sbr->isAdmin()) break; // çäåñü òîëüêî äëÿ ôðèëàíñåðà è ðàáîòîäàòåëÿ.
+        if($sbr->isAdmin()) break; // Ð·Ð´ÐµÑÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð´Ð»Ñ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð° Ð¸ Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»Ñ.
         $inner = 'docs.php';
         $sbr_id  = __paramInit('int', 'id', 'sbr_id');
         $stage_id  = __paramInit('int', 'sid', 'stage_id');
@@ -148,7 +148,7 @@ switch($site) {
 
         if($action=='arbitration') {
             if(!($iagree = __paramInit('bool', NULL, 'iagree')))
-                $stage->error['arbitrage']['iagree'] = 'Íåîáõîäèìî ïîäòâåðæäåíèå';
+                $stage->error['arbitrage']['iagree'] = 'ÐÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ Ð¿Ð¾Ð´Ñ‚Ð²ÐµÑ€Ð¶Ð´ÐµÐ½Ð¸Ðµ';
             else {
                 $descr = stripslashes($_POST['descr']);
                 if($stage->arbitrage($descr, $_FILES['attach']))

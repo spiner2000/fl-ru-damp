@@ -14,15 +14,15 @@ $stop_words   = new stop_words( true );
 $sTeam        = view_team_fl().'&nbsp;';
 
 /**
- * Массовое утверждение записей
+ * РњР°СЃСЃРѕРІРѕРµ СѓС‚РІРµСЂР¶РґРµРЅРёРµ Р·Р°РїРёСЃРµР№
  * 
- * @param  int $content_id идентификатор сущности из admin_contents
- * @param  string $stream_id идентификатор потока
- * @param  string $sid JSON строка с массивом идентификаторов записей
- * @param  string $user_id JSON строка с массивом UID авторов записей
- * @param  int $content_cnt количество записей в потоке
- * @param  int $status статус сущностей: 0 - для модерирования, 1 - утвержденные, 2 - удаленные
- * @param  string $is_sent JSON строка с массивом флагов было ли отправлено уведомление
+ * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+ * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+ * @param  string $sid JSON СЃС‚СЂРѕРєР° СЃ РјР°СЃСЃРёРІРѕРј РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРІ Р·Р°РїРёСЃРµР№
+ * @param  string $user_id JSON СЃС‚СЂРѕРєР° СЃ РјР°СЃСЃРёРІРѕРј UID Р°РІС‚РѕСЂРѕРІ Р·Р°РїРёСЃРµР№
+ * @param  int $content_cnt РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ РІ РїРѕС‚РѕРєРµ
+ * @param  int $status СЃС‚Р°С‚СѓСЃ СЃСѓС‰РЅРѕСЃС‚РµР№: 0 - РґР»СЏ РјРѕРґРµСЂРёСЂРѕРІР°РЅРёСЏ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРЅС‹Рµ, 2 - СѓРґР°Р»РµРЅРЅС‹Рµ
+ * @param  string $is_sent JSON СЃС‚СЂРѕРєР° СЃ РјР°СЃСЃРёРІРѕРј С„Р»Р°РіРѕРІ Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
  * @return object xajaxResponse
  */
 function massApproveContent( $content_id = 0, $stream_id = '', $sid = '', $user_id = '', $content_cnt = 0, $status = 0, $is_sent = '' ) {
@@ -90,13 +90,13 @@ function massApproveContent( $content_id = 0, $stream_id = '', $sid = '', $user_
 }
 
 /**
- * Удаление записи с предупреждением или баном
+ * РЈРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё СЃ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµРј РёР»Рё Р±Р°РЅРѕРј
  * 
- * @param  int $content_id идентификатор сущности из admin_contents
- * @param  string $stream_id идентификатор потока
- * @param  int $sid идентификатор записи
- * @param  int $action действие: 1 - утвердить, 2 - удалить, 3 - удалить и предупредить, 4 - удалить и забанить
- * @param  int $user_id UID автора записи
+ * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+ * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+ * @param  int $sid РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  int $action РґРµР№СЃС‚РІРёРµ: 1 - СѓС‚РІРµСЂРґРёС‚СЊ, 2 - СѓРґР°Р»РёС‚СЊ, 3 - СѓРґР°Р»РёС‚СЊ Рё РїСЂРµРґСѓРїСЂРµРґРёС‚СЊ, 4 - СѓРґР°Р»РёС‚СЊ Рё Р·Р°Р±Р°РЅРёС‚СЊ
+ * @param  int $user_id UID Р°РІС‚РѕСЂР° Р·Р°РїРёСЃРё
  * @return object xajaxResponse
  */
 function resolveAndBan( $content_id = 0, $stream_id = '', $sid = 0, $action = 1, $user_id = 0 ) {
@@ -109,7 +109,7 @@ function resolveAndBan( $content_id = 0, $stream_id = '', $sid = 0, $action = 1,
         $checkStream = $user_content->checkStream( $content_id, $stream_id, $_SESSION['uid'], $aStream );
         
         if ( $checkStream ) {
-            if ( $action == 2 ) { // !!! мне кажется сюда мы не должны попадать
+            if ( $action == 2 ) { // !!! РјРЅРµ РєР°Р¶РµС‚СЃСЏ СЃСЋРґР° РјС‹ РЅРµ РґРѕР»Р¶РЅС‹ РїРѕРїР°РґР°С‚СЊ
                 list( $content_id, $rec_id, $rec_type ) = explode( '_', $sid );
                 $bResolve = $user_content->checkContent( $content_id, $stream_id, $rec_id );
                     if ( $bResolve ) {
@@ -118,7 +118,7 @@ function resolveAndBan( $content_id = 0, $stream_id = '', $sid = 0, $action = 1,
                         $objResponse->script( "banned.delReason({$user_id}, 'moder', '{$content_id}-{$rec_type}');" );
                     }
                     else {
-                        $objResponse->alert( "Пользователь удалил или изменил данные.\nЛибо запись заблокирована." );
+                        $objResponse->alert( "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓРґР°Р»РёР» РёР»Рё РёР·РјРµРЅРёР» РґР°РЅРЅС‹Рµ.\nР›РёР±Рѕ Р·Р°РїРёСЃСЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅР°." );
                         $objResponse->script('user_content.getContents();');
                     }
             }
@@ -127,7 +127,7 @@ function resolveAndBan( $content_id = 0, $stream_id = '', $sid = 0, $action = 1,
                 list( $content_id, $rec_id, $rec_type ) = explode( '_', $sid );
                 
                 if ( $user_id == $_SESSION['uid'] ) {
-                    $objResponse->alert('Вы не можете предупредить или забанить самого себя');
+                    $objResponse->alert('Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ РїСЂРµРґСѓРїСЂРµРґРёС‚СЊ РёР»Рё Р·Р°Р±Р°РЅРёС‚СЊ СЃР°РјРѕРіРѕ СЃРµР±СЏ');
                     $bResolve = false;
                 }
 
@@ -135,12 +135,12 @@ function resolveAndBan( $content_id = 0, $stream_id = '', $sid = 0, $action = 1,
                 $oUsers = new users();
                 $oUsers->GetUserByUID($user_id);
                 if ( $action == 3 && $oUsers->warn > 2 && $bResolve ) {
-                    $objResponse->alert('У пользователя уже есть 3 предупреждения');
+                    $objResponse->alert('РЈ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СѓР¶Рµ РµСЃС‚СЊ 3 РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ');
                     $bResolve = false;
                 }
 
                 if ( $action == 4 && ($oUsers->is_banned || $oUsers->ban_where) && $bResolve ) {
-                    $objResponse->alert('Пользователь уже забанен');
+                    $objResponse->alert('РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓР¶Рµ Р·Р°Р±Р°РЅРµРЅ');
                     $bResolve = false;
                 }
                 
@@ -159,7 +159,7 @@ function resolveAndBan( $content_id = 0, $stream_id = '', $sid = 0, $action = 1,
                         }
                     }
                     else {
-                        $objResponse->alert( "Пользователь удалил или изменил данные.\nЛибо запись заблокирована." );
+                        $objResponse->alert( "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓРґР°Р»РёР» РёР»Рё РёР·РјРµРЅРёР» РґР°РЅРЅС‹Рµ.\nР›РёР±Рѕ Р·Р°РїРёСЃСЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅР°." );
                         $objResponse->script('user_content.getContents();');
                     }
                 }
@@ -178,17 +178,17 @@ function resolveAndBan( $content_id = 0, $stream_id = '', $sid = 0, $action = 1,
         
 
 /**
- * Утверждение/удаление записи
+ * РЈС‚РІРµСЂР¶РґРµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё
  * 
- * @param  int $content_id идентификатор сущности из admin_contents
- * @param  string $stream_id идентификатор потока
- * @param  int $sid идентификатор записи
- * @param  int $action действие: 1 - утвердить, 2 - удалить, 3 - удалить и предупредить, 4 - удалить и забанить
- * @param  int $user_id UID автора записи
- * @param  int $content_cnt количество записей в потоке
- * @param  int $status статус сущностей: 0 - для модерирования, 1 - утвержденные, 2 - удаленные
- * @param  string $is_sent было ли отправлено уведомление
- * @param  object ссылка на $objResponse опционально
+ * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+ * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+ * @param  int $sid РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  int $action РґРµР№СЃС‚РІРёРµ: 1 - СѓС‚РІРµСЂРґРёС‚СЊ, 2 - СѓРґР°Р»РёС‚СЊ, 3 - СѓРґР°Р»РёС‚СЊ Рё РїСЂРµРґСѓРїСЂРµРґРёС‚СЊ, 4 - СѓРґР°Р»РёС‚СЊ Рё Р·Р°Р±Р°РЅРёС‚СЊ
+ * @param  int $user_id UID Р°РІС‚РѕСЂР° Р·Р°РїРёСЃРё
+ * @param  int $content_cnt РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ РІ РїРѕС‚РѕРєРµ
+ * @param  int $status СЃС‚Р°С‚СѓСЃ СЃСѓС‰РЅРѕСЃС‚РµР№: 0 - РґР»СЏ РјРѕРґРµСЂРёСЂРѕРІР°РЅРёСЏ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРЅС‹Рµ, 2 - СѓРґР°Р»РµРЅРЅС‹Рµ
+ * @param  string $is_sent Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
+ * @param  object СЃСЃС‹Р»РєР° РЅР° $objResponse РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ
  * @return object xajaxResponse
  */
 function resolveContent( $content_id = 0, $stream_id = '', $sid = 0, $action = 1, $user_id = 0, $content_cnt = 0, $status = 0, $is_sent = '', $reason = '', &$objResponse = null ) {
@@ -218,7 +218,7 @@ function resolveContent( $content_id = 0, $stream_id = '', $sid = 0, $action = 1
                     $user_content->sendNotification( $_SESSION['uid'], $user_id, $rec_content_id, $rec_id, $rec_type, $action, $reason );
                 }
                 else {
-                    $objResponse->alert( "Пользователь удалил или изменил данные.\nЛибо запись заблокирована." );
+                    $objResponse->alert( "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓРґР°Р»РёР» РёР»Рё РёР·РјРµРЅРёР» РґР°РЅРЅС‹Рµ.\nР›РёР±Рѕ Р·Р°РїРёСЃСЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅР°." );
                 }
 
                 if ( $status < 2 || $action == 1 ) {
@@ -255,13 +255,13 @@ function resolveContent( $content_id = 0, $stream_id = '', $sid = 0, $action = 1
 }
 
 /**
- * Возвращает сущности для модерирования
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃСѓС‰РЅРѕСЃС‚Рё РґР»СЏ РјРѕРґРµСЂРёСЂРѕРІР°РЅРёСЏ
  * 
- * @param  int $content_id идентификатор сущности из admin_contents
- * @param  string $stream_id идентификатор потока
- * @param  int $status статус сущностей: 0 - для модерирования, 1 - утвержденные, 2 - удаленные
- * @param  int $last_id для статус = 1, 2 - последний полученный ID
- * @param  int $content_cnt количество записей в потоке
+ * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+ * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+ * @param  int $status СЃС‚Р°С‚СѓСЃ СЃСѓС‰РЅРѕСЃС‚РµР№: 0 - РґР»СЏ РјРѕРґРµСЂРёСЂРѕРІР°РЅРёСЏ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРЅС‹Рµ, 2 - СѓРґР°Р»РµРЅРЅС‹Рµ
+ * @param  int $last_id РґР»СЏ СЃС‚Р°С‚СѓСЃ = 1, 2 - РїРѕСЃР»РµРґРЅРёР№ РїРѕР»СѓС‡РµРЅРЅС‹Р№ ID
+ * @param  int $content_cnt РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ РІ РїРѕС‚РѕРєРµ
  * @return object xajaxResponse
  */
 function getContents( $content_id = 0, $stream_id = '', $status = 0, $last_id = 0, $content_cnt = 0 ) {    
@@ -296,15 +296,15 @@ function getContents( $content_id = 0, $stream_id = '', $status = 0, $last_id = 
 }
 
 /**
- * Возвращает заблокированые 
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹Рµ 
  * 
  * @global object $user_content user_content
- * @param  int $content_id идентификатор сущности из admin_contents
- * @param  string $login фильтр по логину, или пустая строка
- * @param  string $login_ex точное совпадениелогина, или пустая строка
- * @param  string $from фильтр по дате - начальная дата
- * @param  string $to фильтр по дате - конечная дата
- * @param  int $last_id последний полученный ID
+ * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+ * @param  string $login С„РёР»СЊС‚СЂ РїРѕ Р»РѕРіРёРЅСѓ, РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°
+ * @param  string $login_ex С‚РѕС‡РЅРѕРµ СЃРѕРІРїР°РґРµРЅРёРµР»РѕРіРёРЅР°, РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°
+ * @param  string $from С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ - РЅР°С‡Р°Р»СЊРЅР°СЏ РґР°С‚Р°
+ * @param  string $to С„РёР»СЊС‚СЂ РїРѕ РґР°С‚Рµ - РєРѕРЅРµС‡РЅР°СЏ РґР°С‚Р°
+ * @param  int $last_id РїРѕСЃР»РµРґРЅРёР№ РїРѕР»СѓС‡РµРЅРЅС‹Р№ ID
  * @return object xajaxResponse
  */
 function getBlocked( $content_id = 0, $login = '', $login_ex = '', $from = '', $to = '', $last_id = 2147483647 ) {
@@ -376,14 +376,14 @@ function getBlocked( $content_id = 0, $login = '', $login_ex = '', $from = '', $
 <div class="b-post b-post_bordtop_dfe3e4 b-post_padtop_15 b-post_marg_20_10" id="my_div_content_'. $aOne['id'] .'">
     '. _parsePostTime( 20, $aOne['post_time'] ) .'
     <div class="b-username b-username_padbot_5"><a class="b-username__link b-username__link_color_'. $sUserClass .' b-username__link_fontsize_11 b-username__link_bold" href="/users/'. $aOne['f_user']['login'] .'" target="_blank">'. $aOne['f_user']['uname'] .' '. $aOne['f_user']['usurname'] .' ['. $aOne['f_user']['login'] .']</a></div>
-    <div class="b-username b-username_bold b-username_padbot_10">Кому: <a class="b-username__link b-username__link_color_000  b-username__link_bold" href="/users/'. $aOne['t_user']['login'] .'" target="_blank">'. $aOne['t_user']['uname'] .' '. $aOne['t_user']['usurname'] .' ['. $aOne['t_user']['login'] .']</a></div>
+    <div class="b-username b-username_bold b-username_padbot_10">РљРѕРјСѓ: <a class="b-username__link b-username__link_color_000  b-username__link_bold" href="/users/'. $aOne['t_user']['login'] .'" target="_blank">'. $aOne['t_user']['uname'] .' '. $aOne['t_user']['usurname'] .' ['. $aOne['t_user']['login'] .']</a></div>
     <div class="b-post__txt b-post__txt_fontsize_15">'. $sMessage .'</div>
     '. $sAttach .'
     <div class="b-fon b-fon_padtop_20">
         <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_bg_f5" style="height:23px;">
             '. _parseEditIcon( 'admEditContacts', $aOne['id'], 20, '0', "{'from_id': {$aOne['f_user']['uid']}, 'is_sent': '{$aOne['is_sent']}'}" ) .'
             <a onclick="user_content.approveLetter('. $aOne['id'] .', '. $aOne['from_id'] .')" class="b-button b-button_mini b-button_margleft_10 b-button_float_right" href="javascript:void(0);"><span class="b-button__icon b-button__icon_ok"></span></a>
-            <a class="b-button b-button_mini b-button_margleft_10 b-button_float_right" href="#" onclick="'. $sOnClick .'" title="Переписка"><span class="b-button__icon b-button__icon_com"></span></a>
+            <a class="b-button b-button_mini b-button_margleft_10 b-button_float_right" href="#" onclick="'. $sOnClick .'" title="РџРµСЂРµРїРёСЃРєР°"><span class="b-button__icon b-button__icon_com"></span></a>
         </div>
     </div>
 </div>';
@@ -407,7 +407,7 @@ function getBlocked( $content_id = 0, $login = '', $login_ex = '', $from = '', $
             $objResponse->script( "user_content.afterScroll();" );
         }
         elseif ( $last_id == 2147483647 ) {
-            $objResponse->append( 'my_div_contents', 'innerHTML', '<div class="b-post b-post_padtop_15">Нет заблокированных записей, удовлетворяющих условиям выборки</div>' );
+            $objResponse->append( 'my_div_contents', 'innerHTML', '<div class="b-post b-post_padtop_15">РќРµС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹С… Р·Р°РїРёСЃРµР№, СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё</div>' );
         }
     }
     else {
@@ -421,12 +421,12 @@ function getBlocked( $content_id = 0, $login = '', $login_ex = '', $from = '', $
 }
 
 /**
- * Разблокировака сущностей
+ * Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°РєР° СЃСѓС‰РЅРѕСЃС‚РµР№
  * 
- * @param  int $sid идентификатор записи
- * @param  int $from_id идентификатор пользователя
+ * @param  int $sid РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+ * @param  int $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
  * @return object xajaxResponse
- * @param  string $is_sent было ли отправлено уведомление
+ * @param  string $is_sent Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
  */
 function unblock( $sid = '', $from_id = 0, $is_sent = '' ) {
     global $user_content;
@@ -448,11 +448,11 @@ function unblock( $sid = '', $from_id = 0, $is_sent = '' ) {
 }
 
 /**
- * Возвращает диалог при чтении переписки в заблокированных личных сообщениях
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґРёР°Р»РѕРі РїСЂРё С‡С‚РµРЅРёРё РїРµСЂРµРїРёСЃРєРё РІ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹С… Р»РёС‡РЅС‹С… СЃРѕРѕР±С‰РµРЅРёСЏС…
  * 
- * @param  int $nFromId uid отправиля (то есть одного)
- * @param  int $nToId uid получателя (то есть другого)
- * @param  int $nCurpage номер страницы
+ * @param  int $nFromId uid РѕС‚РїСЂР°РІРёР»СЏ (С‚Рѕ РµСЃС‚СЊ РѕРґРЅРѕРіРѕ)
+ * @param  int $nToId uid РїРѕР»СѓС‡Р°С‚РµР»СЏ (С‚Рѕ РµСЃС‚СЊ РґСЂСѓРіРѕРіРѕ)
+ * @param  int $nCurpage РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹
  * @return object xajaxResponse
  */
 function getBlockedLetters( $nFromId = 0, $nToId = 0, $nCurpage = 1 ) {
@@ -507,14 +507,14 @@ function getBlockedLetters( $nFromId = 0, $nToId = 0, $nCurpage = 1 ) {
 
                     $msg_text = $stop_words->replace($aOne['msg_text']);
                     $msg_text = reformat( $msg_text, 50, 0, -($sIsChuck=='t'), 1 );
-                    $sDeleted = $aOne['deleted'] ? ' [Сообщение удалено модератором]' : '';
+                    $sDeleted = $aOne['deleted'] ? ' [РЎРѕРѕР±С‰РµРЅРёРµ СѓРґР°Р»РµРЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј]' : '';
                     $sDialog .= '
 <div class="b-post b-post_bordtop_dfe3e4 b-post_padtop_15 b-post_marg_20_10" id="my_div_content_'. $aOne['id'] .'">
     <span id="my_action_'. $aOne['id'] .'" class="b-button_float_right">
     '. ( $aOne['moderator_status'] !== '0' ? '<a onclick="'. $sAction .'" class="b-button b-button_float_right b-button_mini" href="javascript:void(0);"><span class="b-button__icon b-button__icon_'. $sIcon .'"></span></a>' : '') .'
     </span>
 
-    <div class="b-post__txt '. $sClass .'"><span class="b-post__txt b-post__txt_bold '. $sClass .'">'. $sName .' '. $sSurname.' ['. $sLogin.']</span> '. date("d.m.y в H:i",strtotimeEx($aOne['post_time'])) . '<span id="my_deleted_'. $aOne['id'] .'" style="color:red;">' . $sDeleted .'</span>:</div>
+    <div class="b-post__txt '. $sClass .'"><span class="b-post__txt b-post__txt_bold '. $sClass .'">'. $sName .' '. $sSurname.' ['. $sLogin.']</span> '. date("d.m.y РІ H:i",strtotimeEx($aOne['post_time'])) . '<span id="my_deleted_'. $aOne['id'] .'" style="color:red;">' . $sDeleted .'</span>:</div>
     <div class="b-post__txt '. $sClass .'">
        '. $msg_text .'
     </div>
@@ -539,12 +539,12 @@ function getBlockedLetters( $nFromId = 0, $nToId = 0, $nCurpage = 1 ) {
 }
 
 /**
- * Утверждение/удаление личного сообщения при чтении переписки в заблокированных личных сообщениях
+ * РЈС‚РІРµСЂР¶РґРµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ РїСЂРё С‡С‚РµРЅРёРё РїРµСЂРµРїРёСЃРєРё РІ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹С… Р»РёС‡РЅС‹С… СЃРѕРѕР±С‰РµРЅРёСЏС…
  * 
- * @param  int $sId ID личного сообщения
- * @param  int $sId UID отправителя
- * @param  int $sAction 1 - утвердить, 2 - удалить
- * @param  string $reason причина удаления
+ * @param  int $sId ID Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
+ * @param  int $sId UID РѕС‚РїСЂР°РІРёС‚РµР»СЏ
+ * @param  int $sAction 1 - СѓС‚РІРµСЂРґРёС‚СЊ, 2 - СѓРґР°Р»РёС‚СЊ
+ * @param  string $reason РїСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ
  * @return object xajaxResponse
  */
 function updateLetter( $sId = 0, $sFromId = 0, $sAction = 1, $sReason = '', &$objResponse = null ) {
@@ -560,7 +560,7 @@ function updateLetter( $sId = 0, $sFromId = 0, $sAction = 1, $sReason = '', &$ob
         
         $sAction  = $nAction == 2 ? 'user_content.updateLetter('. $sId . ', '. $sFromId .', 1)' : 'parent.banned.delReason(\'1_'. $sId .'_0\', '. $sFromId .', \'updateLetter\', {})';
         $sIcon    = $nAction == 2 ? 'ok' : 'del';
-        $sDeleted = $nAction == 2 ? ' [Сообщение удалено модератором]' : '';
+        $sDeleted = $nAction == 2 ? ' [РЎРѕРѕР±С‰РµРЅРёРµ СѓРґР°Р»РµРЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј]' : '';
         $sLink    = '<a onclick="'. $sAction .'" class="b-button b-button_float_right b-button_mini" href="javascript:void(0);"><span class="b-button__icon b-button__icon_'. $sIcon .'"></span></a>';
         
         if ( $nAction == 2 ) {
@@ -578,10 +578,10 @@ function updateLetter( $sId = 0, $sFromId = 0, $sAction = 1, $sReason = '', &$ob
 }
 
 /**
- * Утвердить личное сообщение в заблокированных личных сообщениях
+ * РЈС‚РІРµСЂРґРёС‚СЊ Р»РёС‡РЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РІ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹С… Р»РёС‡РЅС‹С… СЃРѕРѕР±С‰РµРЅРёСЏС…
  * 
- * @param  int $sId ID личного сообщения
- * @param  int $sId UID отправителя
+ * @param  int $sId ID Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
+ * @param  int $sId UID РѕС‚РїСЂР°РІРёС‚РµР»СЏ
  * @return object xajaxResponse
  */
 function approveLetter( $sId = 0, $sFromId = 0 ) {
@@ -600,13 +600,13 @@ function approveLetter( $sId = 0, $sFromId = 0 ) {
 }
 
 /**
- * Возвращает диалог при чтении переписки в потоке лички
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґРёР°Р»РѕРі РїСЂРё С‡С‚РµРЅРёРё РїРµСЂРµРїРёСЃРєРё РІ РїРѕС‚РѕРєРµ Р»РёС‡РєРё
  * 
- * @param  string $stream_id идентификатор потока
- * @param  int $nFromId uid отправиля (то есть одного)
- * @param  int $nToId uid получателя (то есть другого)
- * @param  int $nMsgId id сообщения из которого смотрят переписку
- * @param  int $nCurpage номер страницы
+ * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+ * @param  int $nFromId uid РѕС‚РїСЂР°РІРёР»СЏ (С‚Рѕ РµСЃС‚СЊ РѕРґРЅРѕРіРѕ)
+ * @param  int $nToId uid РїРѕР»СѓС‡Р°С‚РµР»СЏ (С‚Рѕ РµСЃС‚СЊ РґСЂСѓРіРѕРіРѕ)
+ * @param  int $nMsgId id СЃРѕРѕР±С‰РµРЅРёСЏ РёР· РєРѕС‚РѕСЂРѕРіРѕ СЃРјРѕС‚СЂСЏС‚ РїРµСЂРµРїРёСЃРєСѓ
+ * @param  int $nCurpage РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹
  * @return object xajaxResponse
  */
 function getLetters( $stream_id = '', $nFromId = 0, $nToId = 0, $nMsgId = 0, $nCurpage = 1 ) {
@@ -680,12 +680,12 @@ function getLetters( $stream_id = '', $nFromId = 0, $nToId = 0, $nMsgId = 0, $nC
                         
                         $msg_text = $aOne['moderator_status'] === '0' ? $stop_words->replace($aOne['msg_text']) : $aOne['msg_text'];
                         $msg_text = reformat( $msg_text, 50, 0, -($sIsChuck=='t'), 1 );
-                        $sDeleted = $aOne['deleted'] ? ' [Сообщение удалено модератором]' : '';
+                        $sDeleted = $aOne['deleted'] ? ' [РЎРѕРѕР±С‰РµРЅРёРµ СѓРґР°Р»РµРЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј]' : '';
                         $sDialog .= '
 <div class="b-post b-post_bordtop_dfe3e4 b-post_padtop_15 b-post_marg_20_10" id="my_div_content_'. $aOne['id'] .'_'. ($aOne['id'] == $nMsgId ? '1' : '2') .'">
     '. ( !$aOne['deleted'] && ($aOne['moderator_status'] !== '0' || ($aOne['moderator_status'] === '0' && $aOne['id'] == $nMsgId)) ? '<a id="my_del_link_'. $aOne['id'] .'" onclick="'. $sClickD .'" class="b-button b-button_float_right b-button_mini" href="javascript:void(0);"><span class="b-button__icon b-button__icon_del"></span></a>' : '') .'
 
-    <div class="b-post__txt '. $sClass .' b-post__txt_fontsize_15">'. $sPro .'<span class="b-post__txt b-post__txt_bold '. $sClass .'">'. $sName .' '. $sSurname.' ['. $sLogin.']</span> '. date("d.m.y в H:i",strtotimeEx($aOne['post_time'])) . '<span id="my_deleted_'. $aOne['id'] .'" style="color:red;">' . $sDeleted .'</span>'.':</div>
+    <div class="b-post__txt '. $sClass .' b-post__txt_fontsize_15">'. $sPro .'<span class="b-post__txt b-post__txt_bold '. $sClass .'">'. $sName .' '. $sSurname.' ['. $sLogin.']</span> '. date("d.m.y РІ H:i",strtotimeEx($aOne['post_time'])) . '<span id="my_deleted_'. $aOne['id'] .'" style="color:red;">' . $sDeleted .'</span>'.':</div>
     <div class="b-post__txt '. $sClass .' b-post__txt_fontsize_15">
        '. $msg_text .'
     </div>
@@ -717,13 +717,13 @@ function getLetters( $stream_id = '', $nFromId = 0, $nToId = 0, $nMsgId = 0, $nC
 }
 
 /**
- * Удаление личного сообщения
+ * РЈРґР°Р»РµРЅРёРµ Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
  * 
- * @param  string $stream_id идентификатор потока
- * @param  string $from_id идентификатор отправителя сообщения
- * @param  string $sid идентификатор сообщения
- * @param  string $reason причина удаления
- * @param  object ссылка на $objResponse опционально
+ * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+ * @param  string $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РѕС‚РїСЂР°РІРёС‚РµР»СЏ СЃРѕРѕР±С‰РµРЅРёСЏ
+ * @param  string $sid РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃРѕРѕР±С‰РµРЅРёСЏ
+ * @param  string $reason РїСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ
+ * @param  object СЃСЃС‹Р»РєР° РЅР° $objResponse РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ
  */
 function delLetter( $stream_id = '', $from_id = 0, $sid = '', $reason = '', &$objResponse = null ) {
     global $user_content;
@@ -745,7 +745,7 @@ function delLetter( $stream_id = '', $from_id = 0, $sid = '', $reason = '', &$ob
             
             $objResponse->script( "parent.$$(\"div[id^='ov-notice']\").setStyle('display', 'none');" );
             $objResponse->script( "parent.$('ov-notice22-r').toggleClass('b-shadow_hide');" );
-            $objResponse->assign( 'my_deleted_' . $sMsgId, 'innerHTML', ' [Сообщение удалено модератором]' );
+            $objResponse->assign( 'my_deleted_' . $sMsgId, 'innerHTML', ' [РЎРѕРѕР±С‰РµРЅРёРµ СѓРґР°Р»РµРЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј]' );
             $objResponse->script( "$('my_del_link_{$sMsgId}').destroy();" );
         }
         else {
@@ -762,14 +762,14 @@ function delLetter( $stream_id = '', $from_id = 0, $sid = '', $reason = '', &$ob
 }
 
 /**
- * Парсит порцию HTML содержимого в зависимости от контента
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РєРѕРЅС‚РµРЅС‚Р°
  * 
  * @param  object $objResponse xajaxResponse
- * @param  array $aStream данные о потоке
- * @param  int $content_id идентификатор сущности из admin_contents
- * @param  array $contents массив сущностей
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  int $content_cnt количество записей в потоке
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
+ * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+ * @param  array $contents РјР°СЃСЃРёРІ СЃСѓС‰РЅРѕСЃС‚РµР№
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  int $content_cnt РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ РІ РїРѕС‚РѕРєРµ
  * @return string HTML
  */
 function _parseContents( &$objResponse, $aStream = array(), $content_id = 0, $contents = array(), $status = 0, $content_cnt = 0 ) {
@@ -782,81 +782,81 @@ function _parseContents( &$objResponse, $aStream = array(), $content_id = 0, $co
         
         switch ($content_id) {
             case user_content::MODER_MSSAGES:
-                // Личные сообщения
+                // Р›РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ
                 $sReturn = _parseContacts( $nLastId, $aStream, $contents, $status );
                 break;
             case user_content::MODER_BLOGS:
-                // Блоги: посты и комментарии
+                // Р‘Р»РѕРіРё: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё
                 $sReturn = _parseBlogs( $nLastId, $contents, $status, $aStream );
                 break;
             case user_content::MODER_COMMUNITY:
-                // Сообщества: посты и комментарии
+                // РЎРѕРѕР±С‰РµСЃС‚РІР°: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё
                 $sReturn = _parseCommunity( $nLastId, $contents, $status, $aStream );
                 break;
             case user_content::MODER_PROJECTS:
-                // Проекты
+                // РџСЂРѕРµРєС‚С‹
                 $sReturn = _parseProjects( $nLastId, $contents, $status, $aStream );
                 break;
             case user_content::MODER_PRJ_OFFERS:
-                // Предложения в проектах
+                // РџСЂРµРґР»РѕР¶РµРЅРёСЏ РІ РїСЂРѕРµРєС‚Р°С…
                 $sReturn = _parseProjectsOffers( $nLastId, $contents, $status, $aStream );
                 break;
             case user_content::MODER_ART_COM:
-                // Комментарии в статьях
+                // РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ СЃС‚Р°С‚СЊСЏС…
                 $sReturn = _parseArticleComments( $nLastId, $contents, $status, $aStream );
                 break;
             case user_content::MODER_PROFILE:
-                // Изменения в профилях
+                // РР·РјРµРЅРµРЅРёСЏ РІ РїСЂРѕС„РёР»СЏС…
                 $sReturn = _parseProfile( $nLastId, $contents, $status, $aStream );
                 break;
             case user_content::MODER_PRJ_DIALOG:
-                // Комментарии к предложениям по проектам
+                // РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РїРѕ РїСЂРѕРµРєС‚Р°Рј
                 $sReturn = _parseProjectsDialog( $nLastId, $contents, $status, $aStream );
                 break;
             case user_content::MODER_CONTEST_COM:
-                // Комментарии к предложениям конкурсов
+                // РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РєРѕРЅРєСѓСЂСЃРѕРІ
                 $sReturn = _parseContestComments( $nLastId, $contents, $status, $aStream );
                 break;
             case user_content::MODER_PORTF_CHOISE:
-                // Уточнения к разделам в портфолио
+                // РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
                 $sReturn = _parsePortfChoice( $nLastId, $contents, $status, $aStream );
                 break;
             case user_content::MODER_PORTFOLIO:
-                // Работы в портфолио
+                // Р Р°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ
                 $sReturn = _parsePortfolio( $nLastId, $contents, $status, $aStream );
                 break;
             case user_content::MODER_TSERVICES:
-                //Типовые услуги
+                //РўРёРїРѕРІС‹Рµ СѓСЃР»СѓРіРё
                 $sReturn = _parseTServices( $nLastId, $contents, $status, $aStream );
                 break;
             
             case user_content::MODER_SBR_REQV:
-                //Реквизиты в разделе финансы
+                //Р РµРєРІРёР·РёС‚С‹ РІ СЂР°Р·РґРµР»Рµ С„РёРЅР°РЅСЃС‹
                 $sReturn = _parseSbrReqv( $nLastId, $contents, $status, $aStream );
                 break;
             
             case user_content::MODER_SDELAU:
-                // Предложения фрилансеров "Сделаю"
+                // РџСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ "РЎРґРµР»Р°СЋ"
                 $sReturn = _parseSdelau( $nLastId, $contents, $status, $aStream );
                 break;
             case user_content::MODER_PRJ_COM:
-                // Сборная: Предложения в проектах/конкурсах, комментарии к предложениям в проектах/конкурсах, Предложения фрилансеров Сделаю
+                // РЎР±РѕСЂРЅР°СЏ: РџСЂРµРґР»РѕР¶РµРЅРёСЏ РІ РїСЂРѕРµРєС‚Р°С…/РєРѕРЅРєСѓСЂСЃР°С…, РєРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РІ РїСЂРѕРµРєС‚Р°С…/РєРѕРЅРєСѓСЂСЃР°С…, РџСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РЎРґРµР»Р°СЋ
                 $sReturn = _parsePrjCom( $nLastId, $contents, $status, $aStream );
                 break;
             case user_content::MODER_COMMENTS:
-                // Сборная: Комментарии: магазин, статьи
+                // РЎР±РѕСЂРЅР°СЏ: РљРѕРјРјРµРЅС‚Р°СЂРёРё: РјР°РіР°Р·РёРЅ, СЃС‚Р°С‚СЊРё
                 $sReturn = _parseComments( $nLastId, $contents, $status, $aStream );
                 break;
             case user_content::MODER_PORTF_UNITED:
-                // Сборная: Работы в портфолио, Уточнения к разделам в портфолио
+                // РЎР±РѕСЂРЅР°СЏ: Р Р°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ, РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
                 $sReturn = _parsePortfUnited( $nLastId, $contents, $status, $aStream );
                 break;
             case user_content::MODER_BLOGS_UNITED:
-                // Сборная: Блоги: посты и комментарии, Комментарии в Комментарии в статьях
+                // РЎР±РѕСЂРЅР°СЏ: Р‘Р»РѕРіРё: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё, РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ СЃС‚Р°С‚СЊСЏС…
                 $sReturn = _parseBlogsUnited( $nLastId, $contents, $status, $aStream );
                 break;
             case user_content::MODER_USER_UNITED:
-                // Сборная: Изменения в профилях и Уточнения к разделам в портфолио
+                // РЎР±РѕСЂРЅР°СЏ: РР·РјРµРЅРµРЅРёСЏ РІ РїСЂРѕС„РёР»СЏС… Рё РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
                 $sReturn = _parseUserUnited( $nLastId, $contents, $status, $aStream );
                 break;
             default:
@@ -883,13 +883,13 @@ function _parseContents( &$objResponse, $aStream = array(), $content_id = 0, $co
     else {
         if ( $status ) {
             if ( !$content_cnt ) {
-                $sKind = ( $status == 1 ) ? 'проверенных' : 'заблокированных';
-                $objResponse->assign( 'my_div_contents', 'innerHTML', '<div class="b-post b-post_pad_10_15_15">На данный момент нет '. $sKind .' записей</div>' );
+                $sKind = ( $status == 1 ) ? 'РїСЂРѕРІРµСЂРµРЅРЅС‹С…' : 'Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹С…';
+                $objResponse->assign( 'my_div_contents', 'innerHTML', '<div class="b-post b-post_pad_10_15_15">РќР° РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РЅРµС‚ '. $sKind .' Р·Р°РїРёСЃРµР№</div>' );
             }
         }
         else {
             $objResponse->script( 'user_content.playSoundFlag = true;' );
-            $objResponse->assign( 'my_div_contents', 'innerHTML', '<div class="b-post b-post_pad_10_15_15">На данный момент нет новых записей</div>' );
+            $objResponse->assign( 'my_div_contents', 'innerHTML', '<div class="b-post b-post_pad_10_15_15">РќР° РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РЅРµС‚ РЅРѕРІС‹С… Р·Р°РїРёСЃРµР№</div>' );
             $objResponse->script( "setTimeout('user_content.chooseContent();', ". (user_content::MODER_CHOOSE_REFRESH * 1000) .")" );
         }
     }
@@ -902,12 +902,12 @@ function _parseContents( &$objResponse, $aStream = array(), $content_id = 0, $co
 }
 
 /**
- * Парсит порцию HTML содержимого для личных сообщений
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РґР»СЏ Р»РёС‡РЅС‹С… СЃРѕРѕР±С‰РµРЅРёР№
  * 
- * @param  int $last_id возвращает последний Id сообщений
- * @param  array $aStream данные о потоке
- * @param  array $content массив данных из базы
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
+ * @param  int $last_id РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ Id СЃРѕРѕР±С‰РµРЅРёР№
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
+ * @param  array $content РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
  * @return string HTML
  */
 function _parseContacts( &$last_id, $aStream = array(), $content = array(), $status = 0 ) {
@@ -959,7 +959,7 @@ function _parseContacts( &$last_id, $aStream = array(), $content = array(), $sta
         $aOne['is_sent']       = '0';
         $aOne['context_code']  = '9';
         $aOne['context_link']  = '';
-        $aOne['context_title'] = 'Личное сообщение для '. $aOne['t_user']['uname'] .' '. $aOne['t_user']['usurname'] .' ['. $aOne['t_user']['login'] .']';
+        $aOne['context_title'] = 'Р›РёС‡РЅРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ РґР»СЏ '. $aOne['t_user']['uname'] .' '. $aOne['t_user']['usurname'] .' ['. $aOne['t_user']['login'] .']';
         $aOne['user_id']       = $aOne['from_id'];
         
         $sUserClass = is_emp($aOne['f_user']['role']) ? '6db335' : 'fd6c30';
@@ -967,12 +967,12 @@ function _parseContacts( &$last_id, $aStream = array(), $content = array(), $sta
         $sEditIcon  = _parseEditIcon( 'admEditContacts', $aOne['id'], $status, '0', $sJSParams );
         $sJSParams  = "{'content_id': ". user_content::MODER_MSSAGES .", 'stream_id': '{$aStream['stream_id']}', 'content_cnt': $nCnt, 'status': $status, 'is_sent': '{$aOne['is_sent']}'}";
         
-        $sModified = ($aOne['modified_id'] && $aOne['modified_id'] != $aOne['from_id']) ? '<div class="b-post__txt b-post__txt_padbot_15"><span style="color:red;">Сообщение было отредактировано. '. ($aOne['modified_reason'] ? 'Причина: '.$aOne['modified_reason'] : 'Без причины') .'</span></div>' : '';
+        $sModified = ($aOne['modified_id'] && $aOne['modified_id'] != $aOne['from_id']) ? '<div class="b-post__txt b-post__txt_padbot_15"><span style="color:red;">РЎРѕРѕР±С‰РµРЅРёРµ Р±С‹Р»Рѕ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ. '. ($aOne['modified_reason'] ? 'РџСЂРёС‡РёРЅР°: '.$aOne['modified_reason'] : 'Р‘РµР· РїСЂРёС‡РёРЅС‹') .'</span></div>' : '';
         $sMessage = xmloutofrangechars($aOne['msg_text']);
         $sMessage = $status != 1 ? $stop_words->replace( $sMessage ) : $sMessage;
         $sMessage = !$sMessage ? '&nbsp;' : $sMessage;
         $sMessage = reformat( $sMessage, 50, 0, -($aOne['f_user']['is_chuck']=='t'), 1 );
-        $sEdit    = $status == 1 ? 'Редактировать' : 'Редактировать и утвердить';
+        $sEdit    = $status == 1 ? 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ' : 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ Рё СѓС‚РІРµСЂРґРёС‚СЊ';
         
         $sProF    = $aOne['f_user']['is_pro'] == 't' ? ( is_emp($aOne['f_user']['role']) ? view_pro_emp() : view_pro2( $aOne['f_user']['is_pro_test'] == 't' ? true : false) ).'&nbsp;' : ''; 
         $sProT    = $aOne['t_user']['is_pro'] == 't' ? ( is_emp($aOne['t_user']['role']) ? view_pro_emp() : view_pro2( $aOne['t_user']['is_pro_test'] == 't' ? true : false) ).'&nbsp;' : ''; 
@@ -983,8 +983,8 @@ function _parseContacts( &$last_id, $aStream = array(), $content = array(), $sta
     '. _parseOkIcon( $status, $aOne['content_id'], $aOne['id'], '0', $aOne['from_id'] ) .'
     '. _parsePostTime( $status, $aOne['post_time'] ) .'
     <div class="b-username b-username_padbot_5">'. ($aOne['f_user']['is_team'] == 't' ? $sTeam : $sProF ) .'<a class="b-username__link b-username__link_color_'. $sUserClass .' b-username__link_fontsize_11 b-username__link_bold" href="/users/'. $aOne['f_user']['login'] .'" target="_blank">'. $aOne['f_user']['uname'] .' '. $aOne['f_user']['usurname'] .' ['. $aOne['f_user']['login'] .']</a></div>
-    '. ( $aOne['f_user']['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['from_id'].');" href="javascript:void(0);" class="notice">Предупреждения:&nbsp;<span id="warn_'.$aOne['from_id'].'_'. user_content::MODER_MSSAGES .'_'. $aOne['id'] .'">'. intval($aOne['f_user']['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">Предупреждений нет</div>') . '
-    <div class="b-username b-username_bold b-username_padbot_10">Кому: '. ($aOne['t_user']['is_team'] == 't' ? $sTeam : $sProT ) .'<a class="b-username__link b-username__link_color_000  b-username__link_bold" href="/users/'. $aOne['t_user']['login'] .'" target="_blank">'. $aOne['t_user']['uname'] .' '. $aOne['t_user']['usurname'] .' ['. $aOne['t_user']['login'] .']</a></div>
+    '. ( $aOne['f_user']['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['from_id'].');" href="javascript:void(0);" class="notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ:&nbsp;<span id="warn_'.$aOne['from_id'].'_'. user_content::MODER_MSSAGES .'_'. $aOne['id'] .'">'. intval($aOne['f_user']['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РЅРµС‚</div>') . '
+    <div class="b-username b-username_bold b-username_padbot_10">РљРѕРјСѓ: '. ($aOne['t_user']['is_team'] == 't' ? $sTeam : $sProT ) .'<a class="b-username__link b-username__link_color_000  b-username__link_bold" href="/users/'. $aOne['t_user']['login'] .'" target="_blank">'. $aOne['t_user']['uname'] .' '. $aOne['t_user']['usurname'] .' ['. $aOne['t_user']['login'] .']</a></div>
     '. _parseMass( $aOne, $status, '0' ) .'
     <div class="b-post__txt b-post__txt_fontsize_15">'. $sMessage .'</div>
     
@@ -999,12 +999,12 @@ function _parseContacts( &$last_id, $aStream = array(), $content = array(), $sta
 }
 
 /**
- * Парсит порцию HTML содержимого для блогов
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РґР»СЏ Р±Р»РѕРіРѕРІ
  * 
- * @param  int $last_id возвращает последний Id блогов
- * @param  array $content массив данных из базы
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  array $aStream данные о потоке
+ * @param  int $last_id РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ Id Р±Р»РѕРіРѕРІ
+ * @param  array $content РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
  * @return string HTML
  */
 function _parseBlogs( &$last_id, $content = array(), $status = 0, $aStream = array() ) {
@@ -1024,14 +1024,14 @@ function _parseBlogs( &$last_id, $content = array(), $status = 0, $aStream = arr
 }
 
 /**
- * Парсит HTML одного поста или комментария в блогах
+ * РџР°СЂСЃРёС‚ HTML РѕРґРЅРѕРіРѕ РїРѕСЃС‚Р° РёР»Рё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ РІ Р±Р»РѕРіР°С…
  * 
- * @param  array $aOne массив с данными комментария
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  array $aStream данные о потоке
- * @param  int $nCnt количество записей в потоке
- * @param  int $nContentId идентификатор сущности из admin_contents (фактический из потоков, то есть со сборными)
- * @param  array $groups список разделов блогов для постов
+ * @param  array $aOne РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
+ * @param  int $nCnt РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ РІ РїРѕС‚РѕРєРµ
+ * @param  int $nContentId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents (С„Р°РєС‚РёС‡РµСЃРєРёР№ РёР· РїРѕС‚РѕРєРѕРІ, С‚Рѕ РµСЃС‚СЊ СЃРѕ СЃР±РѕСЂРЅС‹РјРё)
+ * @param  array $groups СЃРїРёСЃРѕРє СЂР°Р·РґРµР»РѕРІ Р±Р»РѕРіРѕРІ РґР»СЏ РїРѕСЃС‚РѕРІ
  * @return string HTML
  */
 function _parseBlogOne( $aOne = array(), $status = 0, $aStream = array(), $nCnt = 0, $nContentId = 0, $groups = array() ) {
@@ -1069,7 +1069,7 @@ function _parseBlogOne( $aOne = array(), $status = 0, $aStream = array(), $nCnt 
     if ( $aOne['poll_question'] && !$aOne['reply_to'] ) {
         $sQuestion = xmloutofrangechars($aOne['poll_question']);
         $sQuestion = $status != 1 ? $stop_words->replace( $sQuestion ) : $sQuestion;
-        $sPoll     = '<div class="b-post__txt b-post__txt_bold b-post__txt_fontsize_15">Опрос: '. reformat( $sQuestion, 40, 0, 1 ) .'</div>';
+        $sPoll     = '<div class="b-post__txt b-post__txt_bold b-post__txt_fontsize_15">РћРїСЂРѕСЃ: '. reformat( $sQuestion, 40, 0, 1 ) .'</div>';
         $nn        = 1;
         
         foreach ( $aOne['poll'] as $poll ) {
@@ -1090,11 +1090,11 @@ function _parseBlogOne( $aOne = array(), $status = 0, $aStream = array(), $nCnt 
         }
         
         $sLink = getFriendlyURL( 'blog_group', $aOne['id_gr'] );
-        $sGroupName = '<div class="b-post__txt b-post__txt_padtop_10 b-post__txt_fontsize_11"><span class="b-post__bold">Раздел:</span> <a class="b-post__link b-post__link_fontsize_11" href="'. $sLink .'" target="_blank">'. $sTitle .'</a></div>';
+        $sGroupName = '<div class="b-post__txt b-post__txt_padtop_10 b-post__txt_fontsize_11"><span class="b-post__bold">Р Р°Р·РґРµР»:</span> <a class="b-post__link b-post__link_fontsize_11" href="'. $sLink .'" target="_blank">'. $sTitle .'</a></div>';
     }
     
-    // TODO: видео через аякс не работает так как там нужно выполнение яваскрипта
-    $sYouTube = $aOne['youtube_link'] ? '<div class="b-post__txt b-post__txt_bold b-post__txt_fontsize_15">Ссылка на YouTube/RuTube/Vimeo видео:</div><a href="' . $aOne['youtube_link'] .'" target="_blank">' . $aOne['youtube_link'] .'</a>' : '';
+    // TODO: РІРёРґРµРѕ С‡РµСЂРµР· Р°СЏРєСЃ РЅРµ СЂР°Р±РѕС‚Р°РµС‚ С‚Р°Рє РєР°Рє С‚Р°Рј РЅСѓР¶РЅРѕ РІС‹РїРѕР»РЅРµРЅРёРµ СЏРІР°СЃРєСЂРёРїС‚Р°
+    $sYouTube = $aOne['youtube_link'] ? '<div class="b-post__txt b-post__txt_bold b-post__txt_fontsize_15">РЎСЃС‹Р»РєР° РЅР° YouTube/RuTube/Vimeo РІРёРґРµРѕ:</div><a href="' . $aOne['youtube_link'] .'" target="_blank">' . $aOne['youtube_link'] .'</a>' : '';
     $sKind    = $aOne['reply_to'] ? '2' : '1';
     $sLink    = getFriendlyURL( 'blog', $aOne['src_id'] );
     $sLink   .= $aOne['reply_to'] ? '?openlevel=' . $aOne['id'] . '#o' . $aOne['id'] : '';
@@ -1109,7 +1109,7 @@ function _parseBlogOne( $aOne = array(), $status = 0, $aStream = array(), $nCnt 
     
     $aOne['context_code']  = '2';
     $aOne['context_link']  = $sLink;
-    $aOne['context_title'] = ($aOne['src_name'] !== '' ? xmloutofrangechars($aOne['src_name']) : '<без темы>');
+    $aOne['context_title'] = ($aOne['src_name'] !== '' ? xmloutofrangechars($aOne['src_name']) : '<Р±РµР· С‚РµРјС‹>');
     
     $sUserClass = is_emp($aOne['role']) ? '6db335' : 'fd6c30';
     $sMsgClass  = $sTitle ? '' : 'b-post__txt_padbot_5';
@@ -1130,7 +1130,7 @@ function _parseBlogOne( $aOne = array(), $status = 0, $aStream = array(), $nCnt 
         '. ($aOne['is_team'] == 't' ? $sTeam : $sPro ) .'<a class="b-username__link b-username__link_color_'. $sUserClass .' b-username__link_fontsize_11 b-username__link_bold" href="/users/'. $aOne['login'] .'" target="_blank">'. $aOne['uname'] .' '. $aOne['usurname'] .' ['. $aOne['login'] .']</a>
         <a class="b-post__anchor b-post__anchor_margleft_10" href="'. $sLink .'" target="_blank"></a>
     </div>
-    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">Предупреждения:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. $aOne['content_id'] .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">Предупреждений нет</div>') . '
+    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. $aOne['content_id'] .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РЅРµС‚</div>') . '
     '. _parseMass( $aOne, $status, $sKind ) .'
     '. $sTitle .'
     <div class="b-post__txt '. $sMsgClass .' b-post__txt_fontsize_15">'. ($sTitle ? '' : $sKindIco) . $sMessage .'</div>
@@ -1145,12 +1145,12 @@ function _parseBlogOne( $aOne = array(), $status = 0, $aStream = array(), $nCnt 
 }
 
 /**
- * Парсит порцию HTML содержимого для сообществ
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РґР»СЏ СЃРѕРѕР±С‰РµСЃС‚РІ
  * 
- * @param  int $last_id возвращает последний Id сообществ
- * @param  array $content массив данных из базы
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  array $aStream данные о потоке
+ * @param  int $last_id РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ Id СЃРѕРѕР±С‰РµСЃС‚РІ
+ * @param  array $content РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
  * @return string HTML
  */
 function _parseCommunity( &$last_id, $content = array(), $status = 0, $aStream = array() ) {
@@ -1195,7 +1195,7 @@ function _parseCommunity( &$last_id, $content = array(), $status = 0, $aStream =
         if ( $aOne['question'] && !$aOne['parent_id'] ) {
             $sQuestion = xmloutofrangechars($aOne['question']);
             $sQuestion = $status != 1 ? $stop_words->replace( $sQuestion ) : $sQuestion;
-            $sPoll     = '<div class="b-post__txt b-post__txt_bold b-post__txt_fontsize_15">Опрос: '. reformat( $sQuestion, 30, 0, 1 ) .'</div>';
+            $sPoll     = '<div class="b-post__txt b-post__txt_bold b-post__txt_fontsize_15">РћРїСЂРѕСЃ: '. reformat( $sQuestion, 30, 0, 1 ) .'</div>';
             $nn        = 1;
             
             foreach ( $aOne['answers'] as $poll ) {
@@ -1206,8 +1206,8 @@ function _parseCommunity( &$last_id, $content = array(), $status = 0, $aStream =
             }
         }
         
-        // TODO: видео через аякс не работает так как там нужно выполнение яваскрипта
-        $sYouTube = $aOne['youtube_link'] ? '<div class="b-post__txt b-post__txt_bold b-post__txt_fontsize_15">Ссылка на YouTube/RuTube/Vimeo видео:</div><a href="' . $aOne['youtube_link'] .'" target="_blank">' . $aOne['youtube_link'] .'</a>' : '';
+        // TODO: РІРёРґРµРѕ С‡РµСЂРµР· Р°СЏРєСЃ РЅРµ СЂР°Р±РѕС‚Р°РµС‚ С‚Р°Рє РєР°Рє С‚Р°Рј РЅСѓР¶РЅРѕ РІС‹РїРѕР»РЅРµРЅРёРµ СЏРІР°СЃРєСЂРёРїС‚Р°
+        $sYouTube = $aOne['youtube_link'] ? '<div class="b-post__txt b-post__txt_bold b-post__txt_fontsize_15">РЎСЃС‹Р»РєР° РЅР° YouTube/RuTube/Vimeo РІРёРґРµРѕ:</div><a href="' . $aOne['youtube_link'] .'" target="_blank">' . $aOne['youtube_link'] .'</a>' : '';
         
         $sKind    = $aOne['parent_id'] ? '2' : '1';
         $sLink    = getFriendlyURL( 'commune', $aOne['top_id'] );
@@ -1222,7 +1222,7 @@ function _parseCommunity( &$last_id, $content = array(), $status = 0, $aStream =
         
         $aOne['context_code']  = '4';
         $aOne['context_link']  = $sLink;
-        $aOne['context_title'] = ($aOne['title']!=='' ? xmloutofrangechars( $aOne['title'] ) : '<без темы>');
+        $aOne['context_title'] = ($aOne['title']!=='' ? xmloutofrangechars( $aOne['title'] ) : '<Р±РµР· С‚РµРјС‹>');
         
         $sUserClass = is_emp($aOne['role']) ? '6db335' : 'fd6c30';
         $sMsgClass  = $sTitle ? '' : 'b-post__txt_padbot_5';
@@ -1241,7 +1241,7 @@ function _parseCommunity( &$last_id, $content = array(), $status = 0, $aStream =
         '. ($aOne['is_team'] == 't' ? $sTeam : $sPro ) .'<a class="b-username__link b-username__link_color_'. $sUserClass .' b-username__link_fontsize_11 b-username__link_bold" href="/users/'. $aOne['login'] .'" target="_blank">'. $aOne['uname'] .' '. $aOne['usurname'] .' ['. $aOne['login'] .']</a>
         <a class="b-post__anchor b-post__anchor_margleft_10" href="'. $sLink .'" target="_blank"></a>
     </div>
-    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">Предупреждения:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. user_content::MODER_COMMUNITY .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">Предупреждений нет</div>') . '
+    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. user_content::MODER_COMMUNITY .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РЅРµС‚</div>') . '
     '. _parseMass( $aOne, $status, $sKind ) .'
     '. $sTitle .'
     <div class="b-post__txt '. $sMsgClass .' b-post__txt_fontsize_15">'. $sMessage .'</div>
@@ -1256,12 +1256,12 @@ function _parseCommunity( &$last_id, $content = array(), $status = 0, $aStream =
 }
 
 /**
- * Парсит порцию HTML содержимого для проектов
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РґР»СЏ РїСЂРѕРµРєС‚РѕРІ
  * 
- * @param  int $last_id возвращает последний Id проектов
- * @param  array $content массив данных из базы
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  array $aStream данные о потоке
+ * @param  int $last_id РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ Id РїСЂРѕРµРєС‚РѕРІ
+ * @param  array $content РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
  * @return string HTML
  */
 function _parseProjects( &$last_id, $content = array(), $status = 0, $aStream = array() ) {
@@ -1275,7 +1275,7 @@ function _parseProjects( &$last_id, $content = array(), $status = 0, $aStream = 
         $aEmpId[] = $aOne['user_id'];
     }
     
-    $aPrjCnt = $user_content->getProjectsPer24( $aEmpId ); // TODO: вынести в модель
+    $aPrjCnt = $user_content->getProjectsPer24( $aEmpId ); // TODO: РІС‹РЅРµСЃС‚Рё РІ РјРѕРґРµР»СЊ
     
     foreach ( $content as $aOne ) {
         $last_id = $aOne['moder_num'];
@@ -1310,7 +1310,7 @@ function _parseProjects( &$last_id, $content = array(), $status = 0, $aStream = 
             $cfile = new cfile($aOne['logo_id']);
             
              if ( $cfile->id && trim($aOne['link']) ) {
-                 $sLogo = '<div class="b-post__txt b-post__txt_padbot_15"><strong>Лого: </strong><br/>
+                 $sLogo = '<div class="b-post__txt b-post__txt_padbot_15"><strong>Р›РѕРіРѕ: </strong><br/>
                      <div>
                          <a target="_blank" rel="nofollow" href="'. $aOne['link'] .'" target="_blank" class="b-post__link">
                              <img alt="" src="'. WDCPREFIX . '/' . $cfile->path . '/' . $cfile->name .'" class="b-post__pic b-post__pic_clear_right">
@@ -1319,7 +1319,7 @@ function _parseProjects( &$last_id, $content = array(), $status = 0, $aStream = 
               }
         }
         
-        $sPayed   = $aOne['kind'] == 7 ? 'Конкурс!' : (( $aOne['ico_payed']=='t' || $aOne['is_upped'] == 't' ) ? 'Платный проект!' : '');
+        $sPayed   = $aOne['kind'] == 7 ? 'РљРѕРЅРєСѓСЂСЃ!' : (( $aOne['ico_payed']=='t' || $aOne['is_upped'] == 't' ) ? 'РџР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚!' : '');
         $sPayed   = $sPayed ? '<div class="b-post__txt b-post__txt_padbot_5 b-post__txt_fontsize_15"><span class="b-post__txt b-post__txt_color_c10601">'. $sPayed .'</span></div>' : '';
         $sTitle   = xmloutofrangechars($aOne['name']);
         $sTitle   = $aOne['kind'] != 4 && $status != 1 ? $stop_words->replace($sTitle) : $sTitle;
@@ -1332,7 +1332,7 @@ function _parseProjects( &$last_id, $content = array(), $status = 0, $aStream = 
         $sDescr   = preg_replace( "/\x07/", "&nbsp;", $sDescr );
         $sLink    = $GLOBALS['host'] . getFriendlyURL( 'project', $aOne['id'] );
         $sPrjCnt  = isset($aPrjCnt[$aOne['user_id']]) ? $aPrjCnt[$aOne['user_id']] : '0';
-        $sOffice  = $aOne['kind'] != 4 ? '' : '<div class="b-post__txt b-post__txt_padbot_5 b-post__txt_fontsize_15" style="color: #cc4642;"> Проект в офис. Разрешен обмен контактами.</div>';
+        $sOffice  = $aOne['kind'] != 4 ? '' : '<div class="b-post__txt b-post__txt_padbot_5 b-post__txt_fontsize_15" style="color: #cc4642;"> РџСЂРѕРµРєС‚ РІ РѕС„РёСЃ. Р Р°Р·СЂРµС€РµРЅ РѕР±РјРµРЅ РєРѕРЅС‚Р°РєС‚Р°РјРё.</div>';
         
         $aOne['context_code']  = '3';
         $aOne['context_link']  = $sLink;
@@ -1349,7 +1349,7 @@ function _parseProjects( &$last_id, $content = array(), $status = 0, $aStream = 
         $allow_vacancy = $projectObject->isAllowMovedToVacancy();
         $moveToVacancy = $allow_vacancy ? '
             <div class="b-post__txt b-post__txt_padbot_10 b-post__txt_fontsize_11">
-                <a onclick="user_content.make_vacancy(\''.$aOne['content_id'] .'_'. $aOne['id'] .'_0\');" class="b-post__txt b-post__txt_padbot_10 b-post__txt_fontsize_11" href="#">Сделать вакансией</a>
+                <a onclick="user_content.make_vacancy(\''.$aOne['content_id'] .'_'. $aOne['id'] .'_0\');" class="b-post__txt b-post__txt_padbot_10 b-post__txt_fontsize_11" href="#">РЎРґРµР»Р°С‚СЊ РІР°РєР°РЅСЃРёРµР№</a>
             </div>' : '';
         
         
@@ -1360,16 +1360,16 @@ function _parseProjects( &$last_id, $content = array(), $status = 0, $aStream = 
     '. _parsePostTime( $status, $aOne['post_time'] ) .'
     <div class="b-username b-username_padbot_5">'. ($aOne['is_team'] == 't' ? $sTeam : $sPro ) .'<a class="b-username__link b-username__link_color_6db335 b-username__link_fontsize_11 b-username__link_bold" href="/users/'. $aOne['login'] .'?kind=0&all=1" target="_blank">'. $aOne['uname'] .' '. $aOne['usurname'] .' ['. $aOne['login'] .']</a></div>
     '. $sPayed . '
-    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">Предупреждения:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. user_content::MODER_PROJECTS .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">Предупреждений нет</div>') . '
-    <div class="b-post__txt b-post__txt_padbot_10 b-post__txt_fontsize_11"><img class="b-post__pic b-post__pic_valign_mid" src="/images/frame-'. $sKindIco .'.png" alt="" /> ('. $sPrjCnt .' за 24 часа)'. ($aOne['pro_only'] == 't' ? '&nbsp;Только для <span class="b-icon b-icon__pro b-icon__pro_f"></span>' : '') .'</div>
+    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. user_content::MODER_PROJECTS .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РЅРµС‚</div>') . '
+    <div class="b-post__txt b-post__txt_padbot_10 b-post__txt_fontsize_11"><img class="b-post__pic b-post__pic_valign_mid" src="/images/frame-'. $sKindIco .'.png" alt="" /> ('. $sPrjCnt .' Р·Р° 24 С‡Р°СЃР°)'. ($aOne['pro_only'] == 't' ? '&nbsp;РўРѕР»СЊРєРѕ РґР»СЏ <span class="b-icon b-icon__pro b-icon__pro_f"></span>' : '') .'</div>
     '. $sOffice .'
     '. _parseMass( $aOne, $status, '0' ) .'
     <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_fontsize_15"><a class="b-post__link b-post__link_bold b-post__link_fontsize_15" href="'. $sLink .'" target="_blank">'. $sTitle .'</a></div>
     <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_fontsize_15">'. $sDescr .'</div>
     '. $sAttach .'
     '. $sLogo .'
-    <div class="b-post__txt b-post__txt_padtop_5 b-post__txt_fontsize_11"><span class="b-post__bold">Раздел:</span> '. $aOne['specs'] .'</div>
-    '. ($aOne['pro_only'] == 't' ? '<div class="b-post__txt b-post__txt_padtop_10 b-post__txt_fontsize_11">Только для <span class="b-icon b-icon__pro b-icon__pro_f"></span></div>' : '') .'
+    <div class="b-post__txt b-post__txt_padtop_5 b-post__txt_fontsize_11"><span class="b-post__bold">Р Р°Р·РґРµР»:</span> '. $aOne['specs'] .'</div>
+    '. ($aOne['pro_only'] == 't' ? '<div class="b-post__txt b-post__txt_padtop_10 b-post__txt_fontsize_11">РўРѕР»СЊРєРѕ РґР»СЏ <span class="b-icon b-icon__pro b-icon__pro_f"></span></div>' : '') .'
     '. $moveToVacancy .'
     '. _parseDelIcons( $aOne, 'user_id', $status, '0', $sJSParams, $sEditIcon ) .'
 </div>';
@@ -1380,12 +1380,12 @@ function _parseProjects( &$last_id, $content = array(), $status = 0, $aStream = 
 }
 
 /**
- * Парсит порцию HTML содержимого для предложений по проектам
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РґР»СЏ РїСЂРµРґР»РѕР¶РµРЅРёР№ РїРѕ РїСЂРѕРµРєС‚Р°Рј
  * 
- * @param  int $last_id возвращает последний Id проектов
- * @param  array $content массив данных из базы
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  array $aStream данные о потоке
+ * @param  int $last_id РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ Id РїСЂРѕРµРєС‚РѕРІ
+ * @param  array $content РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
  * @return string HTML
  */
 function _parseProjectsOffers( &$last_id, $content = array(), $status = 0, $aStream = array() ) {
@@ -1401,14 +1401,14 @@ function _parseProjectsOffers( &$last_id, $content = array(), $status = 0, $aStr
 }
 
 /**
- * Парсит HTML одного предложения по проектам
+ * РџР°СЂСЃРёС‚ HTML РѕРґРЅРѕРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РїСЂРѕРµРєС‚Р°Рј
  * 
- * @param  array $aOne массив с данными комментария
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  string $sKind опционально. тип записи
- * @param  array $aStream данные о потоке
- * @param  int $nCnt количество записей в потоке
- * @param  int $nContentId идентификатор сущности из admin_contents (фактический из потоков, то есть со сборными)
+ * @param  array $aOne РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  string $sKind РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
+ * @param  int $nCnt РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ РІ РїРѕС‚РѕРєРµ
+ * @param  int $nContentId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents (С„Р°РєС‚РёС‡РµСЃРєРёР№ РёР· РїРѕС‚РѕРєРѕРІ, С‚Рѕ РµСЃС‚СЊ СЃРѕ СЃР±РѕСЂРЅС‹РјРё)
  * @return string HTML
  */
 function _parseProjectsOffersOne( $aOne = array(), $status = 0, $sKind = '0', $aStream = array(), $nCnt = 0, $nContentId = 0 ) {
@@ -1462,12 +1462,12 @@ function _parseProjectsOffersOne( $aOne = array(), $status = 0, $sKind = '0', $a
     $sAttach = $sAttach ? _wrapAttach( $sAttach ) : '';
     
     $bIsModer = $user_content->hasContentPermissions( $nContentId, permissions::getUserPermissions($aOne['user_id']) );
-    $sModified = ($sKind != 7 && $aOne['moduser_id'] && ($aOne['moduser_id'] != $aOne['user_id'] || $bIsModer)) ? '<div class="b-post__txt b-post__txt_padbot_15"><span style="color:red;">Предложение было отредактировано. '. ($aOne['modified_reason'] ? 'Причина: '.$aOne['modified_reason'] : 'Без причины') .'</span></div>' : '';
+    $sModified = ($sKind != 7 && $aOne['moduser_id'] && ($aOne['moduser_id'] != $aOne['user_id'] || $bIsModer)) ? '<div class="b-post__txt b-post__txt_padbot_15"><span style="color:red;">РџСЂРµРґР»РѕР¶РµРЅРёРµ Р±С‹Р»Рѕ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ. '. ($aOne['modified_reason'] ? 'РџСЂРёС‡РёРЅР°: '.$aOne['modified_reason'] : 'Р‘РµР· РїСЂРёС‡РёРЅС‹') .'</span></div>' : '';
     $sLink    = $GLOBALS['host'] . getFriendlyURL( 'project', $aOne['src_id'] );
     $sDescr   = $sKind == 7 ? $aOne['post_text'] : $aOne['dialog_root'];
     $sDescr   = xmloutofrangechars(($sKind != 4 && $status != 1) ? $stop_words->replace( $sDescr, 'html', true, 'suspect' ) : $sDescr);
     $sDescr   = !$sDescr ? '&nbsp;' : $sDescr;
-    $sOffice  = $sKind != 4 ? '' : '<span style="color: #cc4642;"> Проект в офис. В ответах разрешен обмен контактами.</span>';
+    $sOffice  = $sKind != 4 ? '' : '<span style="color: #cc4642;"> РџСЂРѕРµРєС‚ РІ РѕС„РёСЃ. Р’ РѕС‚РІРµС‚Р°С… СЂР°Р·СЂРµС€РµРЅ РѕР±РјРµРЅ РєРѕРЅС‚Р°РєС‚Р°РјРё.</span>';
     
     $aOne['context_code']  = '3';
     $aOne['context_link']  = $sLink;
@@ -1492,7 +1492,7 @@ function _parseProjectsOffersOne( $aOne = array(), $status = 0, $sKind = '0', $a
     '. _parseOkIcon( $status, $aOne['content_id'], $aOne['id'], $sKind, $aOne['user_id'] ) .'
     '. _parsePostTime( $status, $aOne['post_time'] ) .'
     <div class="b-username b-username_padbot_5">'. ($aOne['is_team'] == 't' ? $sTeam : $sPro ) .'<a class="b-username__link b-username__link_color_fd6c30 b-username__link_fontsize_11 b-username__link_bold" href="/users/'. $aOne['login'] .'" target="_blank">'. $aOne['uname'] .' '. $aOne['usurname'] .' ['. $aOne['login'] .']</a></div>
-    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">Предупреждения:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. $aOne['content_id'] .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">Предупреждений нет</div>') . '
+    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. $aOne['content_id'] .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РЅРµС‚</div>') . '
     '. $sOffice .'
     '. _parseMass( $aOne, $status, $sKind ) .'
     <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_fontsize_15">'. reformat( $sDescr, 50, 0, 0, 1 ) .'</div>
@@ -1507,12 +1507,12 @@ function _parseProjectsOffersOne( $aOne = array(), $status = 0, $sKind = '0', $a
 
 
 /**
- * Парсит порцию HTML содержимого для комментариев в статьях
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РґР»СЏ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ РІ СЃС‚Р°С‚СЊСЏС…
  * 
- * @param  int $last_id возвращает последний Id проектов
- * @param  array $content массив данных из базы
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  array $aStream данные о потоке
+ * @param  int $last_id РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ Id РїСЂРѕРµРєС‚РѕРІ
+ * @param  array $content РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
  * @return string HTML
  */
 function _parseArticleComments( &$last_id, $content = array(), $status = 0, $aStream = array() ) {
@@ -1528,14 +1528,14 @@ function _parseArticleComments( &$last_id, $content = array(), $status = 0, $aSt
 }
 
 /**
- * Парсит HTML одного комментария в статьях
+ * РџР°СЂСЃРёС‚ HTML РѕРґРЅРѕРіРѕ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ РІ СЃС‚Р°С‚СЊСЏС…
  * 
- * @param  array $aOne массив с данными комментария
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  string $sKind опционально. тип записи
- * @param  array $aStream данные о потоке
- * @param  int $nCnt количество записей в потоке
- * @param  int $nContentId идентификатор сущности из admin_contents (фактический из потоков, то есть со сборными)
+ * @param  array $aOne РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  string $sKind РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
+ * @param  int $nCnt РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ РІ РїРѕС‚РѕРєРµ
+ * @param  int $nContentId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents (С„Р°РєС‚РёС‡РµСЃРєРёР№ РёР· РїРѕС‚РѕРєРѕРІ, С‚Рѕ РµСЃС‚СЊ СЃРѕ СЃР±РѕСЂРЅС‹РјРё)
  * @return string HTML
  */
 function _parseArticleCommentOne( $aOne = array(), $status = 0, $sKind = '0', $aStream = array(), $nCnt = 0, $nContentId = 0 ) {
@@ -1553,7 +1553,7 @@ function _parseArticleCommentOne( $aOne = array(), $status = 0, $sKind = '0', $a
     }
 
     $sLink    = getFriendlyURL( 'article', $aOne['src_id'] ) . '#c_' . $aOne['id'];
-    $aTitle   = !$aOne['src_name'] ? 'Без названия' : reformat( xmloutofrangechars($aOne['src_name'] ), 59, 0, 1);
+    $aTitle   = !$aOne['src_name'] ? 'Р‘РµР· РЅР°Р·РІР°РЅРёСЏ' : reformat( xmloutofrangechars($aOne['src_name'] ), 59, 0, 1);
     $sMsgText = wysiwygLinkEncode( xmloutofrangechars($aOne['msgtext']) );
     $sMsgText = $status != 1 ? $stop_words->replace($sMsgText) : $sMsgText;
     $sMsgText = reformat( $sMsgText, 45, 0, 0, 1 );
@@ -1593,7 +1593,7 @@ function _parseArticleCommentOne( $aOne = array(), $status = 0, $sKind = '0', $a
     '. _parseOkIcon( $status, $aOne['content_id'], $aOne['id'], $sKind, $aOne['user_id'] ) .'
     '. _parsePostTime( $status, $aOne['post_time'] ) .'
     <div class="b-username b-username_padbot_10">'. ($aOne['is_team'] == 't' ? $sTeam : $sPro ) .'<a class="b-username__link b-username__link_color_'. $sUserClass .' b-username__link_fontsize_11 b-username__link_bold" href="/users/'. $aOne['login'] .'" target="_blank">'. $aOne['uname'] .' '. $aOne['usurname'] .' ['. $aOne['login'] .']</a></div>
-    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">Предупреждения:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. $aOne['content_id'] .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">Предупреждений нет</div>') . '
+    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. $aOne['content_id'] .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РЅРµС‚</div>') . '
     '. _parseMass( $aOne, $status, $sKind ) .'
     <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_fontsize_15">'. $sKindIco .' <a class="b-post__link b-post__link_bold b-post__link_fontsize_15" href="'. $sLink .'" target="_blank">'. $aTitle .'</a></div>
     <div class="b-post__txt b-post__txt_fontsize_15">'. $sMsgText .'</div>
@@ -1605,12 +1605,12 @@ function _parseArticleCommentOne( $aOne = array(), $status = 0, $sKind = '0', $a
 }
 
 /**
- * Парсит порцию HTML содержимого для изменений в профилях юзеров
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РґР»СЏ РёР·РјРµРЅРµРЅРёР№ РІ РїСЂРѕС„РёР»СЏС… СЋР·РµСЂРѕРІ
  * 
- * @param  int $last_id возвращает последний Id проектов
- * @param  array $content массив данных из базы
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  array $aStream данные о потоке
+ * @param  int $last_id РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ Id РїСЂРѕРµРєС‚РѕРІ
+ * @param  array $content РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
  * @return string HTML
  */
 function _parseProfile( &$last_id, $content = array(), $status = 0, $aStream = array() ) {
@@ -1626,14 +1626,14 @@ function _parseProfile( &$last_id, $content = array(), $status = 0, $aStream = a
 }
 
 /**
- * Парсит HTML одного изменения в профилях юзеров
+ * РџР°СЂСЃРёС‚ HTML РѕРґРЅРѕРіРѕ РёР·РјРµРЅРµРЅРёСЏ РІ РїСЂРѕС„РёР»СЏС… СЋР·РµСЂРѕРІ
  * 
- * @param  array $aOne массив с данными комментария
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  string $sKind опционально. тип записи
- * @param  array $aStream данные о потоке
- * @param  int $nCnt количество записей в потоке
- * @param  int $nContentId идентификатор сущности из admin_contents (фактический из потоков, то есть со сборными)
+ * @param  array $aOne РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  string $sKind РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
+ * @param  int $nCnt РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ РІ РїРѕС‚РѕРєРµ
+ * @param  int $nContentId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents (С„Р°РєС‚РёС‡РµСЃРєРёР№ РёР· РїРѕС‚РѕРєРѕРІ, С‚Рѕ РµСЃС‚СЊ СЃРѕ СЃР±РѕСЂРЅС‹РјРё)
  * @return string HTML
  */
 function _parseProfileOne( $aOne = array(), $status = 0, $sKind = '0', $aStream = array(), $nCnt = 0, $nContentId = 0 ) {
@@ -1644,52 +1644,52 @@ function _parseProfileOne( $aOne = array(), $status = 0, $sKind = '0', $aStream 
     
     switch ( $aOne['ucolumn'] ) {
         case 'uname':
-            $sColumn = 'Имя';
+            $sColumn = 'РРјСЏ';
             break;
         case 'usurname':
-            $sColumn = 'Фамилия';
+            $sColumn = 'Р¤Р°РјРёР»РёСЏ';
             break;
         case 'pname':
-            $sColumn = 'Заголовок страницы';
+            $sColumn = 'Р—Р°РіРѕР»РѕРІРѕРє СЃС‚СЂР°РЅРёС†С‹';
             break;
         case 'spec_text':
-            $sColumn = 'Уточнения к услугам в портфолио';
+            $sColumn = 'РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СѓСЃР»СѓРіР°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ';
             $sLinkSuff = '/#spec_text';
             break;
         case 'resume_file':
-            $sColumn = 'Файл резюме';
+            $sColumn = 'Р¤Р°Р№Р» СЂРµР·СЋРјРµ';
             $sLinkSuff = '/info/#resume_file';
             break;
         case 'resume':
             if ( $aOne['utable'] == 'freelancer' ) {
-                $sColumn = 'Текст резюме';
+                $sColumn = 'РўРµРєСЃС‚ СЂРµР·СЋРјРµ';
             }
             else {
-                $sColumn = 'Дополнительная информация';
+                $sColumn = 'Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ';
             }
             
             $sLinkSuff = '/info/#resume_file';
             break;
         case 'konk':
-            $sColumn = 'Участие в конкурсах и награды';
+            $sColumn = 'РЈС‡Р°СЃС‚РёРµ РІ РєРѕРЅРєСѓСЂСЃР°С… Рё РЅР°РіСЂР°РґС‹';
             $sLinkSuff = '/info/#konk';
             break;
         case 'company':
-            $sColumn = 'О компании';
+            $sColumn = 'Рћ РєРѕРјРїР°РЅРёРё';
             $sLinkSuff = '/info/#company';
             break;
         case 'status_text':
-            $sColumn = 'Статус';
+            $sColumn = 'РЎС‚Р°С‚СѓСЃ';
             break;
         case 'photo':
-            $sColumn = 'Аватар';
+            $sColumn = 'РђРІР°С‚Р°СЂ';
             break;
         case 'logo':
-            $sColumn = 'Логотип компании';
+            $sColumn = 'Р›РѕРіРѕС‚РёРї РєРѕРјРїР°РЅРёРё';
             $sLinkSuff = '/info/#logo';
             break;
         case 'compname':
-            $sColumn = 'Компания';
+            $sColumn = 'РљРѕРјРїР°РЅРёСЏ';
             $sLinkSuff = '/info/#compname';
             break;
         default:
@@ -1702,7 +1702,7 @@ function _parseProfileOne( $aOne = array(), $status = 0, $sKind = '0', $aStream 
     $sMsgText = reformat( $sMsgText, 45, 0, 0, 1 );
 
     if ( $aOne['ucolumn'] == 'resume_file' ) {
-        $sMsgText = '<a href="'. WDCPREFIX .'/users/'. $aOne['login'] .'/resume/'. $aOne['new_val'] .'" class="blue" target="_blank">Резюме загружено</a>';
+        $sMsgText = '<a href="'. WDCPREFIX .'/users/'. $aOne['login'] .'/resume/'. $aOne['new_val'] .'" class="blue" target="_blank">Р РµР·СЋРјРµ Р·Р°РіСЂСѓР¶РµРЅРѕ</a>';
     }
     
     if ( $aOne['ucolumn'] == 'photo' ) {
@@ -1723,7 +1723,7 @@ function _parseProfileOne( $aOne = array(), $status = 0, $sKind = '0', $aStream 
     $sJSParams = "{'content_id': ". $nContentId .", 'stream_id': '{$aStream['stream_id']}', 'content_cnt': $nCnt, 'status': $status, 'is_sent': '{$aOne['is_sent']}'}";
     
     $sUserClass = is_emp($aOne['role']) ? '6db335' : 'fd6c30';
-    $sPRO = $aOne['moderator_status'] == -1 ? '<div class="b-post__txt b-post__txt_fontsize_11"><span style="color: #cc4642;">У пользователя был аккаунт PRO</span></div>' : '';
+    $sPRO = $aOne['moderator_status'] == -1 ? '<div class="b-post__txt b-post__txt_fontsize_11"><span style="color: #cc4642;">РЈ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р±С‹Р» Р°РєРєР°СѓРЅС‚ PRO</span></div>' : '';
     $sPro = $aOne['is_pro'] == 't' ? preg_replace('#<a[^>]+>(.+)</a>#', '$1', (is_emp($aOne['role']) ? view_pro_emp() : view_pro2( $aOne['is_pro_test'] == 't' ? true : false))).'&nbsp;' : ''; 
 
     $sReturn .= '
@@ -1732,7 +1732,7 @@ function _parseProfileOne( $aOne = array(), $status = 0, $sKind = '0', $aStream 
     '. _parseOkIcon( $status, $aOne['content_id'], $aOne['id'], $sKind, $aOne['user_id'] ) .'
     '. _parsePostTime( $status, $aOne['post_time'] ) .'
     <div class="b-username b-username_padbot_5">'. ($aOne['is_team'] == 't' ? $sTeam : $sPro ) .'<a class="b-username__link b-username__link_color_'. $sUserClass .' b-username__link_fontsize_11 b-username__link_bold" href="/users/'. $aOne['login'] . $sLinkSuff . '" target="_blank">'. $aOne['uname'] .' '. $aOne['usurname'] .' ['. $aOne['login'] .']</a></div>
-    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">Предупреждения:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. user_content::MODER_PROFILE .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">Предупреждений нет</div>') . '
+    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. user_content::MODER_PROFILE .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РЅРµС‚</div>') . '
     '. $sPRO .'
     '. _parseMass( $aOne, $status, $sKind ) .'
     <div class="b-post__txt b-post__txt_fontsize_15"><span class="b-post__bold">'. $sColumn .'</span>: '. $sMsgText .'</div>
@@ -1745,12 +1745,12 @@ function _parseProfileOne( $aOne = array(), $status = 0, $sKind = '0', $aStream 
 
 
 /**
- * Парсит порцию HTML содержимого для изменений в реквизитах финансов
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РґР»СЏ РёР·РјРµРЅРµРЅРёР№ РІ СЂРµРєРІРёР·РёС‚Р°С… С„РёРЅР°РЅСЃРѕРІ
  * 
- * @param  int $last_id возвращает последний Id проектов
- * @param  array $content массив данных из базы
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  array $aStream данные о потоке
+ * @param  int $last_id РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ Id РїСЂРѕРµРєС‚РѕРІ
+ * @param  array $content РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
  * @return string HTML
  */
 function _parseSbrReqv( &$last_id, $content = array(), $status = 0, $aStream = array() )
@@ -1781,7 +1781,7 @@ function _parseSbrReqv( &$last_id, $content = array(), $status = 0, $aStream = a
             'user_status' => view_mark_user($aOne),
             '_parseDelIcons' => _parseDelIcons($aOne, 'user_id', $status, '0', $sJSParams, $sEditIcon),
             'warn_class' => !$aOne['warn']?'user-notice':'',
-            'warn' => $aOne['warn']?'<a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">Предупреждения:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. user_content::MODER_SBR_REQV .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a>':'Предупреждений нет',
+            'warn' => $aOne['warn']?'<a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. user_content::MODER_SBR_REQV .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a>':'РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РЅРµС‚',
             '_parseMass' => _parseMass($aOne, $status, '0'),
             'content' => $content 
         ));
@@ -1796,7 +1796,7 @@ function _parseTServices( &$last_id, $content = array(), $status = 0, $aStream =
 {
     global /*$user_content, */ $stop_words, $sTeam;
     
-    //Общий шаблончик типовой услуги в потоке
+    //РћР±С‰РёР№ С€Р°Р±Р»РѕРЅС‡РёРє С‚РёРїРѕРІРѕР№ СѓСЃР»СѓРіРё РІ РїРѕС‚РѕРєРµ
     $_template = <<<EOT
 <div class="b-post b-post_bordtop_dfe3e4 b-post_padtop_15 b-post_marg_20_10" id="my_div_content_{{content_id}}_{{id}}_0">
    {{_parseHidden}}
@@ -1826,16 +1826,16 @@ function _parseTServices( &$last_id, $content = array(), $status = 0, $aStream =
        </table> 
    </div>    
    <div class="b-post__txt b-post__txt_fontsize_15 b-post__txt_padbot_10">
-        <i><span class="b-post__bold">Раздел: </span> {{sCategory}}   </i>
+        <i><span class="b-post__bold">Р Р°Р·РґРµР»: </span> {{sCategory}}   </i>
    </div>
    <div class="b-post__txt b-post__txt_fontsize_15 b-post__bold b-post__txt_padbot_10">
-        Что вы получите
+        Р§С‚Рѕ РІС‹ РїРѕР»СѓС‡РёС‚Рµ
    </div>
    <div class="b-post__txt b-post__txt_padbot_20 b-post__txt_fontsize_15">
        {{sDescr}}
    </div>         
    <div class="b-post__txt b-post__txt_fontsize_15 b-post__bold b-post__txt_padbot_10">
-        Что нужно, чтобы начать
+        Р§С‚Рѕ РЅСѓР¶РЅРѕ, С‡С‚РѕР±С‹ РЅР°С‡Р°С‚СЊ
    </div>
    <div class="b-post__txt b-post__txt_padbot_20 b-post__txt_fontsize_15">
        {{sReq}}
@@ -1846,10 +1846,10 @@ function _parseTServices( &$last_id, $content = array(), $status = 0, $aStream =
 </div>
 EOT;
     
-    //Шаблон доп.опций
+    //РЁР°Р±Р»РѕРЅ РґРѕРї.РѕРїС†РёР№
     $_extra_template = <<<EOT
    <div class="b-post__txt b-post__txt_fontsize_15 b-post__bold b-post__txt_padbot_10">
-        Дополнительно        
+        Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕ        
    </div>
    <div class="b-post__txt b-post__txt_padbot_20 b-post__txt_fontsize_15">         
         <table class="b-layout__table" cellspacing="0" cellpadding="0" border="0">
@@ -1857,7 +1857,7 @@ EOT;
         </table>
    </div>
 EOT;
-    //Шаблон элемента доп.опций
+    //РЁР°Р±Р»РѕРЅ СЌР»РµРјРµРЅС‚Р° РґРѕРї.РѕРїС†РёР№
     $_extra_item_template = <<<EOT
     <tr class="b-layout__tr">
        <td class="b-layout__cell_width_100ps">{{sTitle}}</td>
@@ -1866,16 +1866,16 @@ EOT;
     </tr>
 EOT;
     
-    //Шаблон срочного выполнения работы
+    //РЁР°Р±Р»РѕРЅ СЃСЂРѕС‡РЅРѕРіРѕ РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹
     $_express_template = <<<EOT
     <div class="b-post__txt b-post__txt_fontsize_15 b-post__bold b-post__txt_padbot_10">
-       Срочность 
+       РЎСЂРѕС‡РЅРѕСЃС‚СЊ 
     </div>    
     <div class="b-post__txt b-post__txt_padbot_20 b-post__txt_fontsize_15">
         <table class="b-layout__table" cellspacing="0" cellpadding="0" border="0">
            <tr class="b-layout__tr">
                 <td class="b-layout__cell_width_100ps">
-                    Могу выполнить срочно за {{sDays}}
+                    РњРѕРіСѓ РІС‹РїРѕР»РЅРёС‚СЊ СЃСЂРѕС‡РЅРѕ Р·Р° {{sDays}}
                 </td>
                 <td class="b-layout__txt_nowrap b-layout__txt_padleft_20">
                     {{sPrice}}
@@ -1926,8 +1926,8 @@ EOT;
             {
                 $_data = array(
                     'sTitle' => xmloutofrangechars($item['title']),
-                    'sPrice' => number_format($item['price'],0,',',' ') . ' руб.',
-                    'sDays' => $item['days'] . ' ' . ending($item['days'], 'день', 'дня', 'дней')
+                    'sPrice' => number_format($item['price'],0,',',' ') . ' СЂСѓР±.',
+                    'sDays' => $item['days'] . ' ' . ending($item['days'], 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№')
                 );
                 
                 $keys = array_map(function($el){return "{{{$el}}}";}, array_keys($_data));
@@ -1947,8 +1947,8 @@ EOT;
                 '{{sDays}}',
                 '{{sPrice}}'
             ), array(
-                $aOne['express_days'] . ' ' . ending($aOne['express_days'], 'день', 'дня', 'дней'),
-                number_format($aOne['express_price'],0,',',' ') . ' руб.'
+                $aOne['express_days'] . ' ' . ending($aOne['express_days'], 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№'),
+                number_format($aOne['express_price'],0,',',' ') . ' СЂСѓР±.'
             ), $_express_template);
         }
 
@@ -1975,15 +1975,15 @@ EOT;
             'user_status' => $aOne['is_team'] == 't' ? $sTeam : $sPro,
             'user_fullname' => $aOne['context_title'],
             'warn_class' => !$aOne['warn']?'user-notice':'',
-            'warn' => $aOne['warn']?'<a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">Предупреждения:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. user_content::MODER_TSERVICES .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a>':'Предупреждений нет',
+            'warn' => $aOne['warn']?'<a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. user_content::MODER_TSERVICES .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a>':'РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РЅРµС‚',
             '_parseDelIcons' => _parseDelIcons($aOne, 'user_id', $status, '0', $sJSParams, $sEditIcon),
             '_parseMass' => _parseMass($aOne, $status, '0'),
             'sTitle' => $sTitle,
             'sLink' => $sLink,
             'sDescr' => $sDescr,
             'sReq' => $sRequirement,
-            'sPrice' => number_format($aOne['price'],0,',',' ') . ' руб.',
-            'sDays' => $aOne['days'] . ' ' . ending($aOne['days'], 'день', 'дня', 'дней'),
+            'sPrice' => number_format($aOne['price'],0,',',' ') . ' СЂСѓР±.',
+            'sDays' => $aOne['days'] . ' ' . ending($aOne['days'], 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅРµР№'),
             'sExtra' => $extra_html,
             'sExpress' => $express_html,
             'sCategory' => $aOne['category_group_title'] . ($aOne['category_spec_title']?' &rarr; ' . $aOne['category_spec_title']:'')
@@ -2009,12 +2009,12 @@ EOT;
 
 
 /**
- * Парсит порцию HTML содержимого для комментариев к предложениям по проектам
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РґР»СЏ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РїРѕ РїСЂРѕРµРєС‚Р°Рј
  * 
- * @param  int $last_id возвращает последний Id проектов
- * @param  array $content массив данных из базы
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  array $aStream данные о потоке
+ * @param  int $last_id РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ Id РїСЂРѕРµРєС‚РѕРІ
+ * @param  array $content РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
  * @return string HTML
  */
 function _parseProjectsDialog( &$last_id, $content = array(), $status = 0, $aStream = array() ) {
@@ -2032,14 +2032,14 @@ function _parseProjectsDialog( &$last_id, $content = array(), $status = 0, $aStr
 }
 
 /**
- * Парсит HTML одного комментария к предложениям по проектам
+ * РџР°СЂСЃРёС‚ HTML РѕРґРЅРѕРіРѕ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РїРѕ РїСЂРѕРµРєС‚Р°Рј
  * 
- * @param  array $aOne массив с данными комментария
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  string $sKind опционально. тип записи
- * @param  array $aStream данные о потоке
- * @param  int $nCnt количество записей в потоке
- * @param  int $nContentId идентификатор сущности из admin_contents (фактический из потоков, то есть со сборными)
+ * @param  array $aOne РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  string $sKind РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
+ * @param  int $nCnt РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ РІ РїРѕС‚РѕРєРµ
+ * @param  int $nContentId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents (С„Р°РєС‚РёС‡РµСЃРєРёР№ РёР· РїРѕС‚РѕРєРѕРІ, С‚Рѕ РµСЃС‚СЊ СЃРѕ СЃР±РѕСЂРЅС‹РјРё)
  * @return string HTML
  */
 function _parseProjectsDialogOne( $aOne = array(), $status = 0, $sKind = '0', $aStream = array(), $nCnt = 0, $nContentId = 0 ) {
@@ -2048,7 +2048,7 @@ function _parseProjectsDialogOne( $aOne = array(), $status = 0, $sKind = '0', $a
     $sReturn = '';
     $sLink    = $GLOBALS['host'] . getFriendlyURL( 'project', $aOne['src_id'] );
     $sDescr   = xmloutofrangechars(($sKind != 4 && $status != 1) ? $stop_words->replace( rtrim(strip_tags($aOne['post_text'])), 'html', true, 'suspect' ) : $aOne['post_text']);
-    $sOffice  = $sKind != 4 ? '' : '<span style="color: #cc4642;"> Проект в офис. В ответах разрешен обмен контактами.</span>';
+    $sOffice  = $sKind != 4 ? '' : '<span style="color: #cc4642;"> РџСЂРѕРµРєС‚ РІ РѕС„РёСЃ. Р’ РѕС‚РІРµС‚Р°С… СЂР°Р·СЂРµС€РµРЅ РѕР±РјРµРЅ РєРѕРЅС‚Р°РєС‚Р°РјРё.</span>';
     
     $aOne['context_code']  = '3';
     $aOne['context_link']  = $sLink;
@@ -2060,7 +2060,7 @@ function _parseProjectsDialogOne( $aOne = array(), $status = 0, $sKind = '0', $a
     $sUserClass = is_emp($aOne['role']) ? '6db335' : 'fd6c30';
     
     $bIsModer = $user_content->hasContentPermissions( $nContentId, permissions::getUserPermissions($aOne['user_id']) );
-    $sModified = ($aOne['moduser_id'] && ($aOne['moduser_id'] != $aOne['user_id'] || $bIsModer) ) ? '<div class="b-post__txt b-post__txt_padbot_15"><span style="color:red;">Сообщение было отредактировано. '. ($aOne['modified_reason'] ? 'Причина: '.$aOne['modified_reason'] : 'Без причины') .'</span></div>' : '';
+    $sModified = ($aOne['moduser_id'] && ($aOne['moduser_id'] != $aOne['user_id'] || $bIsModer) ) ? '<div class="b-post__txt b-post__txt_padbot_15"><span style="color:red;">РЎРѕРѕР±С‰РµРЅРёРµ Р±С‹Р»Рѕ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ. '. ($aOne['modified_reason'] ? 'РџСЂРёС‡РёРЅР°: '.$aOne['modified_reason'] : 'Р‘РµР· РїСЂРёС‡РёРЅС‹') .'</span></div>' : '';
     
     $sPro = $aOne['is_pro'] == 't' ? preg_replace('#<a[^>]+>(.+)</a>#', '$1', (is_emp($aOne['role']) ? view_pro_emp() : view_pro2( $aOne['is_pro_test'] == 't' ? true : false))).'&nbsp;' : ''; 
     
@@ -2070,7 +2070,7 @@ function _parseProjectsDialogOne( $aOne = array(), $status = 0, $sKind = '0', $a
     '. _parseOkIcon( $status, $aOne['content_id'], $aOne['id'], $sKind, $aOne['user_id'] ) .'
     '. _parsePostTime( $status, $aOne['post_time'] ) .'
     <div class="b-username b-username_padbot_5">'. ($aOne['is_team'] == 't' ? $sTeam : $sPro ) .'<a class="b-username__link b-username__link_color_'. $sUserClass .' b-username__link_fontsize_11 b-username__link_bold" href="/users/'. $aOne['login'] .'" target="_blank">'. $aOne['uname'] .' '. $aOne['usurname'] .' ['. $aOne['login'] .']</a></div>
-    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">Предупреждения:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. $aOne['content_id'] .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">Предупреждений нет</div>') . '
+    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. $aOne['content_id'] .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РЅРµС‚</div>') . '
     '. $sOffice .'
     '. _parseMass( $aOne, $status, $sKind ) .'
     <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_fontsize_15">'. reformat($sDescr, 50, 0, 0, 1) .'</div>
@@ -2083,12 +2083,12 @@ function _parseProjectsDialogOne( $aOne = array(), $status = 0, $sKind = '0', $a
 }
 
 /**
- * Парсит порцию HTML содержимого для комментариев к предложениям конкурсов
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РґР»СЏ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РєРѕРЅРєСѓСЂСЃРѕРІ
  * 
- * @param  int $last_id возвращает последний Id проектов
- * @param  array $content массив данных из базы
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  array $aStream данные о потоке
+ * @param  int $last_id РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ Id РїСЂРѕРµРєС‚РѕРІ
+ * @param  array $content РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
  * @return string HTML
  */
 function _parseContestComments( &$last_id, $content = array(), $status = 0, $aStream = array() ) {
@@ -2104,14 +2104,14 @@ function _parseContestComments( &$last_id, $content = array(), $status = 0, $aSt
 }
 
 /**
- * Парсит HTML одного комментария к предложениям конкурсов
+ * РџР°СЂСЃРёС‚ HTML РѕРґРЅРѕРіРѕ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РєРѕРЅРєСѓСЂСЃРѕРІ
  * 
- * @param  array $aOne массив с данными комментария
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  string $sKind опционально. тип записи
- * @param  array $aStream данные о потоке
- * @param  int $nCnt количество записей в потоке
- * @param  int $nContentId идентификатор сущности из admin_contents (фактический из потоков, то есть со сборными)
+ * @param  array $aOne РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  string $sKind РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
+ * @param  int $nCnt РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ РІ РїРѕС‚РѕРєРµ
+ * @param  int $nContentId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents (С„Р°РєС‚РёС‡РµСЃРєРёР№ РёР· РїРѕС‚РѕРєРѕРІ, С‚Рѕ РµСЃС‚СЊ СЃРѕ СЃР±РѕСЂРЅС‹РјРё)
  * @return string HTML
  */
 function _parseContestCommentsOne( $aOne = array(), $status = 0, $sKind = '0', $aStream = array(), $nCnt = 0, $nContentId = 0 ) {
@@ -2137,7 +2137,7 @@ function _parseContestCommentsOne( $aOne = array(), $status = 0, $sKind = '0', $
     '. _parseOkIcon( $status, $aOne['content_id'], $aOne['id'], $sKind, $aOne['user_id'] ) .'
     '. _parsePostTime( $status, $aOne['post_time'] ) .'
     <div class="b-username b-username_padbot_5">'. ($aOne['is_team'] == 't' ? $sTeam : $sPro ) .'<a class="b-username__link b-username__link_color_'. $sUserClass .' b-username__link_fontsize_11 b-username__link_bold" href="/users/'. $aOne['login'] .'" target="_blank"">'. $aOne['uname'] .' '. $aOne['usurname'] .' ['. $aOne['login'] .']</a></div>
-    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">Предупреждения:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. $aOne['content_id'] .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">Предупреждений нет</div>') . '
+    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. $aOne['content_id'] .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РЅРµС‚</div>') . '
     '. _parseMass( $aOne, $status, $sKind ) .'
     <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_fontsize_15">'. reformat( $sDescr, 30, 0, 0, 1 ) .'</div>
     <div class="b-post__txt b-post__txt_fontsize_11"><img class="b-post__pic b-post__pic_valign_mid" src="/images/frame-kont.png" alt="" /> <a class="b-post__link b-post__link_fontsize_11" href="'. $sLink .'" target="_blank">'. reformat(xmloutofrangechars($aOne['src_name']), 30, 0, 1) .'</a></div>
@@ -2148,12 +2148,12 @@ function _parseContestCommentsOne( $aOne = array(), $status = 0, $sKind = '0', $
 }
 
 /**
- * Парсит порцию HTML содержимого для уточнений к разделам в портфолио
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РґР»СЏ СѓС‚РѕС‡РЅРµРЅРёР№ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
  * 
- * @param  int $last_id возвращает последний Id проектов
- * @param  array $content массив данных из базы
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  array $aStream данные о потоке
+ * @param  int $last_id РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ Id РїСЂРѕРµРєС‚РѕРІ
+ * @param  array $content РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
  * @return string HTML
  */
 function _parsePortfChoice( &$last_id, $content = array(), $status = 0, $aStream = array() ) {
@@ -2171,14 +2171,14 @@ function _parsePortfChoice( &$last_id, $content = array(), $status = 0, $aStream
 }
 
 /**
- * Парсит HTML одного уточнения к разделам в портфолио
+ * РџР°СЂСЃРёС‚ HTML РѕРґРЅРѕРіРѕ СѓС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
  * 
- * @param  array $aOne массив с данными комментария
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  string $sKind опционально. тип записи
- * @param  array $aStream данные о потоке
- * @param  int $nCnt количество записей в потоке
- * @param  int $nContentId идентификатор сущности из admin_contents (фактический из потоков, то есть со сборными)
+ * @param  array $aOne РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  string $sKind РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
+ * @param  int $nCnt РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ РІ РїРѕС‚РѕРєРµ
+ * @param  int $nContentId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents (С„Р°РєС‚РёС‡РµСЃРєРёР№ РёР· РїРѕС‚РѕРєРѕРІ, С‚Рѕ РµСЃС‚СЊ СЃРѕ СЃР±РѕСЂРЅС‹РјРё)
  * @return string HTML
  */
 function _parsePortfChoiceOne( $aOne = array(), $status = 0, $sKind = '0', $aStream = array(), $nCnt = 0, $nContentId = 0 ) {
@@ -2204,7 +2204,7 @@ function _parsePortfChoiceOne( $aOne = array(), $status = 0, $sKind = '0', $aStr
     }
 
     $sLink    = $GLOBALS['host'] . '/users/' . $aOne['login'];
-    $sColumn  = $aOne['ucolumn'] == 'text' ? 'Уточнения к разделу' : 'Ключевые слова';
+    $sColumn  = $aOne['ucolumn'] == 'text' ? 'РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Сѓ' : 'РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°';
     $sMsgText = reformat( $sMsgText, 54, 0, 1 );
     
     $aOne['is_sent']       = '0';
@@ -2215,7 +2215,7 @@ function _parsePortfChoiceOne( $aOne = array(), $status = 0, $sKind = '0', $aStr
     $sJSParams = "{'sProfId': {$aOne['prof_id']}, 'change_id': '{$aOne['id']}', 'content_id': $nContentId, 'stream_id': '{$aStream['stream_id']}', 'content_cnt': $nCnt, 'status': $status, 'is_sent': '{$aOne['is_sent']}'}";
     $sEditIcon = _parseEditIcon( 'admEditPortfChoice', $aOne['user_id'], $status, $sKind, $sJSParams );
     $sJSParams = "{'content_id': $nContentId, 'stream_id': '{$aStream['stream_id']}', 'content_cnt': $nCnt, 'status': $status, 'is_sent': '{$aOne['is_sent']}'}";
-    $sPRO = $aOne['moderator_status'] == -1 ? '<div class="b-post__txt b-post__txt_fontsize_11"><span style="color: #cc4642;">У пользователя был аккаунт PRO</span></div>' : '';
+    $sPRO = $aOne['moderator_status'] == -1 ? '<div class="b-post__txt b-post__txt_fontsize_11"><span style="color: #cc4642;">РЈ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р±С‹Р» Р°РєРєР°СѓРЅС‚ PRO</span></div>' : '';
     $sPro      = $aOne['is_pro'] == 't' ? view_pro2( $aOne['is_pro_test'] == 't' ? true : false) .'&nbsp;' : '';
     
     $sReturn .= '
@@ -2224,7 +2224,7 @@ function _parsePortfChoiceOne( $aOne = array(), $status = 0, $sKind = '0', $aStr
     '. _parseOkIcon( $status, $aOne['content_id'], $aOne['id'], $sKind , $aOne['user_id'] ) .'
     '. _parsePostTime( $status, $aOne['post_time'] ) .'
     <div class="b-username b-username_padbot_5">'. ($aOne['is_team'] == 't' ? $sTeam : $sPro ) .'<a class="b-username__link b-username__link_color_fd6c30 b-username__link_fontsize_11 b-username__link_bold" href="/users/'. $aOne['login'] . '/#'.$aOne['prof_id'] . '" target="_blank">'. $aOne['uname'] .' '. $aOne['usurname'] .' ['. $aOne['login'] .']</a></div>
-    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">Предупреждения:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. $aOne['content_id'] .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">Предупреждений нет</div>') . '
+    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. $aOne['content_id'] .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РЅРµС‚</div>') . '
     '. $sPRO .'
     '. _parseMass( $aOne, $status, $sKind ) .'
     <div class="b-post__txt b-post__txt_fontsize_15"><span class="b-post__bold">'. $sColumn .'</span>: '. $sMsgText .'</div>
@@ -2235,12 +2235,12 @@ function _parsePortfChoiceOne( $aOne = array(), $status = 0, $sKind = '0', $aStr
 }
 
 /**
- * Парсит порцию HTML содержимого для работ в портфолио
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РґР»СЏ СЂР°Р±РѕС‚ РІ РїРѕСЂС‚С„РѕР»РёРѕ
  * 
- * @param  int $last_id возвращает последний Id проектов
- * @param  array $content массив данных из базы
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  array $aStream данные о потоке
+ * @param  int $last_id РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ Id РїСЂРѕРµРєС‚РѕРІ
+ * @param  array $content РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
  * @return string HTML
  */
 function _parsePortfolio( &$last_id, $content = array(), $status = 0, $aStream = array() ) {
@@ -2256,14 +2256,14 @@ function _parsePortfolio( &$last_id, $content = array(), $status = 0, $aStream =
 }
 
 /**
- * Парсит HTML одной работы в портфолио
+ * РџР°СЂСЃРёС‚ HTML РѕРґРЅРѕР№ СЂР°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ
  * 
- * @param  array $aOne массив с данными комментария
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  string $sKind опционально. тип записи
- * @param  array $aStream данные о потоке
- * @param  int $nCnt количество записей в потоке
- * @param  int $nContentId идентификатор сущности из admin_contents (фактический из потоков, то есть со сборными)
+ * @param  array $aOne РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  string $sKind РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
+ * @param  int $nCnt РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ РІ РїРѕС‚РѕРєРµ
+ * @param  int $nContentId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents (С„Р°РєС‚РёС‡РµСЃРєРёР№ РёР· РїРѕС‚РѕРєРѕРІ, С‚Рѕ РµСЃС‚СЊ СЃРѕ СЃР±РѕСЂРЅС‹РјРё)
  * @return string HTML
  */
 function _parsePortfolioOne( $aOne = array(), $status = 0, $sKind = '0', $aStream = array(), $nCnt = 0, $nContentId = 0 ) {
@@ -2272,39 +2272,39 @@ function _parsePortfolioOne( $aOne = array(), $status = 0, $sKind = '0', $aStrea
     $sReturn = '';
     $sAttach = '';
     
-    if ( $aOne['is_video'] == 't' ) { // работа есть видео
-        if ( $aOne['prev_pict'] ) { // есть отдельно загруженное превью
+    if ( $aOne['is_video'] == 't' ) { // СЂР°Р±РѕС‚Р° РµСЃС‚СЊ РІРёРґРµРѕ
+        if ( $aOne['prev_pict'] ) { // РµСЃС‚СЊ РѕС‚РґРµР»СЊРЅРѕ Р·Р°РіСЂСѓР¶РµРЅРЅРѕРµ РїСЂРµРІСЊСЋ
             $sInner = '<img src="'.WDCPREFIX.'/users/'.$aOne['login'].'/upload/'.$aOne['prev_pict'].'" alt="'.$aOne['prev_pict'].'" title="'.$aOne['prev_pict'].'" />';
         }
-        else { // нет отдельно загруженного превью
+        else { // РЅРµС‚ РѕС‚РґРµР»СЊРЅРѕ Р·Р°РіСЂСѓР¶РµРЅРЅРѕРіРѕ РїСЂРµРІСЊСЋ
             $sInner = $aOne['video_link'];
         }
         
-        $sAttach = '<div class="b-post__txt b-post__txt_padbot_15 b-post__txt_fontsize_15"><strong>Ссылка на YouTube/RuTube/Vimeo видео:</strong> <br/><a href="http://' . $aOne['video_link'] .'" target="_blank">' . $sInner .'</a></div>';
+        $sAttach = '<div class="b-post__txt b-post__txt_padbot_15 b-post__txt_fontsize_15"><strong>РЎСЃС‹Р»РєР° РЅР° YouTube/RuTube/Vimeo РІРёРґРµРѕ:</strong> <br/><a href="http://' . $aOne['video_link'] .'" target="_blank">' . $sInner .'</a></div>';
     }
-    elseif ( $aOne['pict'] ) { // работа есть файл
+    elseif ( $aOne['pict'] ) { // СЂР°Р±РѕС‚Р° РµСЃС‚СЊ С„Р°Р№Р»
         $ext      = CFile::getext( $aOne['pict'] );
         $preview  = $aOne['prev_pict'];
         $sPreview = '';
         
-        if ( in_array($ext, $GLOBALS['graf_array']) && $ext != 'swf' ) { // работа есть картинка
-            if ( $aOne['pict'] != substr($preview, 3, strlen($preview)) ) { // превью сделано не на основе оригинальной картинки либо вообще отсутствует
+        if ( in_array($ext, $GLOBALS['graf_array']) && $ext != 'swf' ) { // СЂР°Р±РѕС‚Р° РµСЃС‚СЊ РєР°СЂС‚РёРЅРєР°
+            if ( $aOne['pict'] != substr($preview, 3, strlen($preview)) ) { // РїСЂРµРІСЊСЋ СЃРґРµР»Р°РЅРѕ РЅРµ РЅР° РѕСЃРЅРѕРІРµ РѕСЂРёРіРёРЅР°Р»СЊРЅРѕР№ РєР°СЂС‚РёРЅРєРё Р»РёР±Рѕ РІРѕРѕР±С‰Рµ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚
                 $sInner = '<img src="'.WDCPREFIX.'/users/'.$aOne['login'].'/upload/tn_'.$aOne['pict'].'" alt="'.$aOne['pict'].'" title="'.$aOne['pict'].'" />';
                 
-                if ( $preview ) { // превью загружено отдельно
-                    $sPreview = 'Превью: <br/><img src="'.WDCPREFIX.'/users/'.$aOne['login'].'/upload/'.$preview.'" alt="'.$preview.'" title="'.$preview.'" />';
+                if ( $preview ) { // РїСЂРµРІСЊСЋ Р·Р°РіСЂСѓР¶РµРЅРѕ РѕС‚РґРµР»СЊРЅРѕ
+                    $sPreview = 'РџСЂРµРІСЊСЋ: <br/><img src="'.WDCPREFIX.'/users/'.$aOne['login'].'/upload/'.$preview.'" alt="'.$preview.'" title="'.$preview.'" />';
                 }
             }
-            else { // превью сделано на основе оригинальной картинки
+            else { // РїСЂРµРІСЊСЋ СЃРґРµР»Р°РЅРѕ РЅР° РѕСЃРЅРѕРІРµ РѕСЂРёРіРёРЅР°Р»СЊРЅРѕР№ РєР°СЂС‚РёРЅРєРё
                 $sInner = '<img src="'.WDCPREFIX.'/users/'.$aOne['login'].'/upload/'.$preview.'" alt="'.$preview.'" title="'.$preview.'" />';
             }
         }
-        else { //работа не есть картинка
-            if ( $preview ) {  // есть отдельно загруженное превью
+        else { //СЂР°Р±РѕС‚Р° РЅРµ РµСЃС‚СЊ РєР°СЂС‚РёРЅРєР°
+            if ( $preview ) {  // РµСЃС‚СЊ РѕС‚РґРµР»СЊРЅРѕ Р·Р°РіСЂСѓР¶РµРЅРЅРѕРµ РїСЂРµРІСЊСЋ
                 $sInner = '<img src="'.WDCPREFIX.'/users/'.$aOne['login'].'/upload/'.$preview.'" alt="'.$preview.'" title="'.$preview.'" />';
             }
-            else {  // нет отдельно загруженного превью
-                $sInner = 'Работа';
+            else {  // РЅРµС‚ РѕС‚РґРµР»СЊРЅРѕ Р·Р°РіСЂСѓР¶РµРЅРЅРѕРіРѕ РїСЂРµРІСЊСЋ
+                $sInner = 'Р Р°Р±РѕС‚Р°';
             }
         }
         
@@ -2319,10 +2319,10 @@ function _parsePortfolioOne( $aOne = array(), $status = 0, $sKind = '0', $aStrea
     $is_txt_time = ( $txt_cost != '' && $txt_time != '' );
 
     $sLink    = $GLOBALS['host'] . '/users/' . $aOne['login'];
-    $sLink2   = $aOne['link'] ? '<div class="b-post__txt b-post__txt_padbot_15 b-post__txt_fontsize_15"><strong>Ссылка:</strong> <br/><a href="' . $aOne['link'] .'" target="_blank">' . $aOne['link'] .'</a></div>' : '';
+    $sLink2   = $aOne['link'] ? '<div class="b-post__txt b-post__txt_padbot_15 b-post__txt_fontsize_15"><strong>РЎСЃС‹Р»РєР°:</strong> <br/><a href="' . $aOne['link'] .'" target="_blank">' . $aOne['link'] .'</a></div>' : '';
     $sTitle   = $status != 1? $stop_words->replace( xmloutofrangechars($aOne['name']) ): xmloutofrangechars($aOne['name']);
     $sTitle   = reformat( $sTitle, 52, 0, 1 );
-    $aOne['descr'] = nl2br($aOne['descr']); // грязный хак так как close_tags стала съедать переносы строк
+    $aOne['descr'] = nl2br($aOne['descr']); // РіСЂСЏР·РЅС‹Р№ С…Р°Рє С‚Р°Рє РєР°Рє close_tags СЃС‚Р°Р»Р° СЃСЉРµРґР°С‚СЊ РїРµСЂРµРЅРѕСЃС‹ СЃС‚СЂРѕРє
     $sMessage = close_tags($aOne['descr'],'b,i,p,ul,li');
     $sMessage = $status != 1? $stop_words->replace( xmloutofrangechars($aOne['descr']) ): xmloutofrangechars($aOne['descr']);
     $sMessage = reformat( $sMessage, 60, 0, 0, 1 );
@@ -2336,8 +2336,8 @@ function _parsePortfolioOne( $aOne = array(), $status = 0, $sKind = '0', $aStrea
     $sEditIcon = _parseEditIcon( 'admEditPortfolio', $aOne['id'], $status, $sKind, $sJSParams );
     
     $bIsModer = $user_content->hasContentPermissions( $nContentId, permissions::getUserPermissions($aOne['user_id']) );
-    $sModified = ($aOne['moduser_id'] && ($aOne['moduser_id'] != $aOne['user_id'] || $bIsModer) ) ? '<div class="b-post__txt b-post__txt_padbot_15"><span style="color:red;">Работа была отредактирована. '. ($aOne['modified_reason'] ? 'Причина: '.$aOne['modified_reason'] : 'Без причины') .'</span></div>' : '';
-    $sPRO = $aOne['moderator_status'] == -1 ? '<div class="b-post__txt b-post__txt_fontsize_11"><span style="color: #cc4642;">У пользователя был аккаунт PRO</span></div>' : '';
+    $sModified = ($aOne['moduser_id'] && ($aOne['moduser_id'] != $aOne['user_id'] || $bIsModer) ) ? '<div class="b-post__txt b-post__txt_padbot_15"><span style="color:red;">Р Р°Р±РѕС‚Р° Р±С‹Р»Р° РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅР°. '. ($aOne['modified_reason'] ? 'РџСЂРёС‡РёРЅР°: '.$aOne['modified_reason'] : 'Р‘РµР· РїСЂРёС‡РёРЅС‹') .'</span></div>' : '';
+    $sPRO = $aOne['moderator_status'] == -1 ? '<div class="b-post__txt b-post__txt_fontsize_11"><span style="color: #cc4642;">РЈ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р±С‹Р» Р°РєРєР°СѓРЅС‚ PRO</span></div>' : '';
     $sPro      = $aOne['is_pro'] == 't' ? view_pro2( $aOne['is_pro_test'] == 't' ? true : false) .'&nbsp;' : ''; 
     $sReturn  .= '
 <div class="b-post b-post_bordtop_dfe3e4 b-post_padtop_15 b-post_marg_20_10" id="my_div_content_'. $aOne['content_id'] .'_'. $aOne['id'] .'_'. $sKind .'">
@@ -2345,10 +2345,10 @@ function _parsePortfolioOne( $aOne = array(), $status = 0, $sKind = '0', $aStrea
     '. _parseOkIcon( $status, $aOne['content_id'], $aOne['id'], $sKind, $aOne['user_id'] ) .'
     '. _parsePostTime( $status, $aOne['post_time'] ) .'
     <div class="b-username b-username_padbot_5">'. ($aOne['is_team'] == 't' ? $sTeam : $sPro ) .'<a class="b-username__link b-username__link_color_fd6c30 b-username__link_fontsize_11 b-username__link_bold" href="/users/'. $aOne['login'] .'" target="_blank">'. $aOne['uname'] .' '. $aOne['usurname'] .' ['. $aOne['login'] .']</a></div>
-    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">Предупреждения:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. $aOne['content_id'] .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">Предупреждений нет</div>') . '
+    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. $aOne['content_id'] .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РЅРµС‚</div>') . '
     '. $sPRO .'
     '. _parseMass( $aOne, $status, $sKind ) .'
-    <div class="b-post__txt b-post__txt_padbot_10 b-post__txt_fontsize_15"><span class="b-post__bold">Новая работа:</span> <a class="b-post__link b-post__link_fontsize_15" href="/users/'. $aOne['login'] .'/viewproj.php?prjid='. $aOne['id'] .'" target="_blank">'. $sTitle .'</a></div>
+    <div class="b-post__txt b-post__txt_padbot_10 b-post__txt_fontsize_15"><span class="b-post__bold">РќРѕРІР°СЏ СЂР°Р±РѕС‚Р°:</span> <a class="b-post__link b-post__link_fontsize_15" href="/users/'. $aOne['login'] .'/viewproj.php?prjid='. $aOne['id'] .'" target="_blank">'. $sTitle .'</a></div>
     <div class="b-post__txt b-post__txt_fontsize_15">'. $sMessage .'</div>
     <div class="b-post__txt b-post__txt_fontsize_15">'. $txt_cost . ($is_txt_time ? ', ' : '') . ($txt_time != '' ? $txt_time : '') .'</div>
 
@@ -2363,12 +2363,12 @@ function _parsePortfolioOne( $aOne = array(), $status = 0, $sKind = '0', $aStrea
 }
 
 /**
- * Парсит порцию HTML содержимого для Предложения фрилансеров "Сделаю"
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РґР»СЏ РџСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ "РЎРґРµР»Р°СЋ"
  * 
- * @param  int $last_id возвращает последний Id проектов
- * @param  array $content массив данных из базы
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  array $aStream данные о потоке
+ * @param  int $last_id РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ Id РїСЂРѕРµРєС‚РѕРІ
+ * @param  array $content РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
  * @return string HTML
  */
 function _parseSdelau( &$last_id, $content = array(), $status = 0, $aStream = array() ) {
@@ -2384,14 +2384,14 @@ function _parseSdelau( &$last_id, $content = array(), $status = 0, $aStream = ar
 }
 
 /**
- * Парсит HTML одного Предложения фрилансеров "Сделаю"
+ * РџР°СЂСЃРёС‚ HTML РѕРґРЅРѕРіРѕ РџСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ "РЎРґРµР»Р°СЋ"
  * 
- * @param  array $aOne массив с данными комментария
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  string $sKind опционально. тип записи
- * @param  array $aStream данные о потоке
- * @param  int $nCnt количество записей в потоке
- * @param  int $nContentId идентификатор сущности из admin_contents (фактический из потоков, то есть со сборными)
+ * @param  array $aOne РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  string $sKind РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. С‚РёРї Р·Р°РїРёСЃРё
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
+ * @param  int $nCnt РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ РІ РїРѕС‚РѕРєРµ
+ * @param  int $nContentId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents (С„Р°РєС‚РёС‡РµСЃРєРёР№ РёР· РїРѕС‚РѕРєРѕРІ, С‚Рѕ РµСЃС‚СЊ СЃРѕ СЃР±РѕСЂРЅС‹РјРё)
  * @return string HTML
  */
 function _parseSdelauOne( $aOne = array(), $status = 0, $sKind = '0', $aStream = array(), $nCnt = 0, $nContentId = 0 ) {
@@ -2402,7 +2402,7 @@ function _parseSdelauOne( $aOne = array(), $status = 0, $sKind = '0', $aStream =
     $sTitle   = reformat($sTitle, 35, 0, 1);
     $sMessage = $status != 1? $stop_words->replace( htmlspecialchars(xmloutofrangechars($aOne['post_text'])) ): htmlspecialchars(xmloutofrangechars($aOne['post_text']));
     $sMessage = reformat($sMessage, 50);
-    $sProf    = xmloutofrangechars($aOne['src_name']) . ( $aOne['profname'] != 'Нет специализации' ? ' &rarr; <a class="b-freelancer__link" href="/freelancers/'. $aOne['link']. '/" target="_blank">'. $aOne['profname'] .'</a>' : '');
+    $sProf    = xmloutofrangechars($aOne['src_name']) . ( $aOne['profname'] != 'РќРµС‚ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё' ? ' &rarr; <a class="b-freelancer__link" href="/freelancers/'. $aOne['link']. '/" target="_blank">'. $aOne['profname'] .'</a>' : '');
     
     $aOne['is_sent']       = '0';
     $aOne['context_code']  = '8';
@@ -2420,11 +2420,11 @@ function _parseSdelauOne( $aOne = array(), $status = 0, $sKind = '0', $aStream =
     '. _parseOkIcon( $status, $aOne['content_id'], $aOne['id'], $sKind, $aOne['user_id'] ) .'
     '. _parsePostTime( $status, $aOne['post_time'] ) .'
     <div class="b-username b-username_padbot_5">'. ($aOne['is_team'] == 't' ? $sTeam : $sPro ) .'<a class="b-username__link b-username__link_color_fd6c30 b-username__link_fontsize_11 b-username__link_bold" href="/users/'. $aOne['login'] .'" target="_blank">'. $aOne['uname'] .' '. $aOne['usurname'] .' ['. $aOne['login'] .']</a></div>
-    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">Предупреждения:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. $aOne['content_id'] .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">Предупреждений нет</div>') . '
+    '. ( $aOne['warn'] ? '<div class="b-username_padbot_5"><a onclick="parent.user_content.getUserWarns('.$aOne['user_id'].');" href="javascript:void(0);" class="notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ:&nbsp;<span id="warn_'.$aOne['user_id'].'_'. $aOne['content_id'] .'_'. $aOne['id'] .'">'. intval($aOne['warn']) .'</span></a></div>' : '<div class="b-username_padbot_5 user-notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РЅРµС‚</div>') . '
     '. _parseMass( $aOne, $status, $sKind ) .'
-    <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_fontsize_15"><span class="b-post__bold">Сделаю:</span> <a class="b-post__link b-post__link_fontsize_15" href="/users/'. $aOne['login'] .'" target="_blank">'. $sTitle .'</a></div>
+    <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_fontsize_15"><span class="b-post__bold">РЎРґРµР»Р°СЋ:</span> <a class="b-post__link b-post__link_fontsize_15" href="/users/'. $aOne['login'] .'" target="_blank">'. $sTitle .'</a></div>
     <div class="b-post__txt b-post__txt_padbot_5 b-post__txt_fontsize_15">'. $sMessage .'</div>
-    <div class="b-post__txt b-post__txt_padtop_10 b-post__txt_fontsize_11"><span class="b-post__bold">Специализация:</span> '. $sProf .'</div>
+    <div class="b-post__txt b-post__txt_padtop_10 b-post__txt_fontsize_11"><span class="b-post__bold">РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ:</span> '. $sProf .'</div>
     '. _parseDelIcons( $aOne, 'user_id', $status, $sKind, $sJSParams, $sEditIcon ) .'
 </div>';
     
@@ -2432,13 +2432,13 @@ function _parseSdelauOne( $aOne = array(), $status = 0, $sKind = '0', $aStream =
 }
 
 /**
- * Парсит порцию HTML содержимого
- * Сборная: Предложения в проектах/конкурсах, комментарии к предложениям в проектах/конкурсах, Предложения фрилансеров Сделаю
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ
+ * РЎР±РѕСЂРЅР°СЏ: РџСЂРµРґР»РѕР¶РµРЅРёСЏ РІ РїСЂРѕРµРєС‚Р°С…/РєРѕРЅРєСѓСЂСЃР°С…, РєРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РІ РїСЂРѕРµРєС‚Р°С…/РєРѕРЅРєСѓСЂСЃР°С…, РџСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РЎРґРµР»Р°СЋ
  * 
- * @param  int $last_id возвращает последний Id проектов
- * @param  array $content массив данных из базы
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  array $aStream данные о потоке
+ * @param  int $last_id РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ Id РїСЂРѕРµРєС‚РѕРІ
+ * @param  array $content РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
  * @return string HTML
  */
 function _parsePrjCom( &$last_id, $content = array(), $status = 0, $aStream = array() ) {
@@ -2471,13 +2471,13 @@ function _parsePrjCom( &$last_id, $content = array(), $status = 0, $aStream = ar
 }
 
 /**
- * Парсит порцию HTML содержимого
- * Сборная: Комментарии: магазин, статьи
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ
+ * РЎР±РѕСЂРЅР°СЏ: РљРѕРјРјРµРЅС‚Р°СЂРёРё: РјР°РіР°Р·РёРЅ, СЃС‚Р°С‚СЊРё
  * 
- * @param  int $last_id возвращает последний Id проектов
- * @param  array $content массив данных из базы
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  array $aStream данные о потоке
+ * @param  int $last_id РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ Id РїСЂРѕРµРєС‚РѕРІ
+ * @param  array $content РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
  * @return string HTML
  */
 function _parseComments( &$last_id, $content = array(), $status = 0, $aStream = array() ) {
@@ -2501,13 +2501,13 @@ function _parseComments( &$last_id, $content = array(), $status = 0, $aStream = 
 }
 
 /**
- * Парсит порцию HTML содержимого
- * Сборная: Работы в портфолио, Уточнения к разделам в портфолио
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ
+ * РЎР±РѕСЂРЅР°СЏ: Р Р°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ, РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
  * 
- * @param  int $last_id возвращает последний Id проектов
- * @param  array $content массив данных из базы
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  array $aStream данные о потоке
+ * @param  int $last_id РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ Id РїСЂРѕРµРєС‚РѕРІ
+ * @param  array $content РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
  * @return string HTML
  */
 function _parsePortfUnited( &$last_id, $content = array(), $status = 0, $aStream = array() ) {
@@ -2536,13 +2536,13 @@ function _parsePortfUnited( &$last_id, $content = array(), $status = 0, $aStream
 }
 
 /**
- * Парсит порцию HTML содержимого
- * Сборная: Блоги: посты и комментарии, Комментарии в Комментарии в статьях
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ
+ * РЎР±РѕСЂРЅР°СЏ: Р‘Р»РѕРіРё: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё, РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ СЃС‚Р°С‚СЊСЏС…
  * 
- * @param  int $last_id возвращает последний Id проектов
- * @param  array $content массив данных из базы
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  array $aStream данные о потоке
+ * @param  int $last_id РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ Id РїСЂРѕРµРєС‚РѕРІ
+ * @param  array $content РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
  * @return string HTML
  */
 function _parseBlogsUnited( &$last_id, $content = array(), $status = 0, $aStream = array() ) {
@@ -2573,13 +2573,13 @@ function _parseBlogsUnited( &$last_id, $content = array(), $status = 0, $aStream
 }
 
 /**
- * Парсит порцию HTML содержимого
- * Сборная: Изменения в профилях и Уточнения к разделам в портфолио
+ * РџР°СЂСЃРёС‚ РїРѕСЂС†РёСЋ HTML СЃРѕРґРµСЂР¶РёРјРѕРіРѕ
+ * РЎР±РѕСЂРЅР°СЏ: РР·РјРµРЅРµРЅРёСЏ РІ РїСЂРѕС„РёР»СЏС… Рё РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
  * 
- * @param  int $last_id возвращает последний Id проектов
- * @param  array $content массив данных из базы
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  array $aStream данные о потоке
+ * @param  int $last_id РІРѕР·РІСЂР°С‰Р°РµС‚ РїРѕСЃР»РµРґРЅРёР№ Id РїСЂРѕРµРєС‚РѕРІ
+ * @param  array $content РјР°СЃСЃРёРІ РґР°РЅРЅС‹С… РёР· Р±Р°Р·С‹
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  array $aStream РґР°РЅРЅС‹Рµ Рѕ РїРѕС‚РѕРєРµ
  * @return string HTML
  */
 function _parseUserUnited( &$last_id, $content = array(), $status = 0, $aStream = array() ) {
@@ -2608,13 +2608,13 @@ function _parseUserUnited( &$last_id, $content = array(), $status = 0, $aStream 
 }
 
 /**
- * Парсит контролы редактирования записи
+ * РџР°СЂСЃРёС‚ РєРѕРЅС‚СЂРѕР»С‹ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ Р·Р°РїРёСЃРё
  * 
- * @param  string $sFunc название метода adm_edit_content.js
- * @param  int $sId ID записи
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  string $sKind тип записи
- * @param  string $sObjParams javascript объект с дополнительными параметрами
+ * @param  string $sFunc РЅР°Р·РІР°РЅРёРµ РјРµС‚РѕРґР° adm_edit_content.js
+ * @param  int $sId ID Р·Р°РїРёСЃРё
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  string $sKind С‚РёРї Р·Р°РїРёСЃРё
+ * @param  string $sObjParams javascript РѕР±СЉРµРєС‚ СЃ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё
  * @return string 
  */
 function _parseEditIcon( $sFunc = '', $sId = 0, $status = 2, $sKind = '0', $sObjParams = '{}' ) {
@@ -2623,7 +2623,7 @@ function _parseEditIcon( $sFunc = '', $sId = 0, $status = 2, $sKind = '0', $sObj
     $sParent   = $status != 20 ? 'parent.' : '';
     
     if ( $sFunc && $sId ) {
-        $sEditTitle = $status == 1 ? 'Редактировать' : 'Редактировать и утвердить';
+        $sEditTitle = $status == 1 ? 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ' : 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ Рё СѓС‚РІРµСЂРґРёС‚СЊ';
         $sEditIcon  = '<a onclick="'. $sParent .'adm_edit_content.editContent(\''. $sFunc .'\', \''. $sId .'_'. $sKind .'\', 0, \''. $sDrawFunc .'\', '. $sObjParams .')" href="javascript:void(0);" class="b-button b-button_mini b-button_margleft_10 b-button_float_right" title="'. $sEditTitle .'"><span class="b-button__icon b-button__icon_edit"></span></a>';
     }
     
@@ -2631,38 +2631,38 @@ function _parseEditIcon( $sFunc = '', $sId = 0, $status = 2, $sKind = '0', $sObj
 }
 
 /**
- * Парсит контролы утверждения записи
+ * РџР°СЂСЃРёС‚ РєРѕРЅС‚СЂРѕР»С‹ СѓС‚РІРµСЂР¶РґРµРЅРёСЏ Р·Р°РїРёСЃРё
  * 
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  int $content_id идентификатор сущности из admin_contents
- * @param  int $sId ID записи
- * @param  string $sKind тип записи
- * @param  type $sUserId UID автора
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+ * @param  int $sId ID Р·Р°РїРёСЃРё
+ * @param  string $sKind С‚РёРї Р·Р°РїРёСЃРё
+ * @param  type $sUserId UID Р°РІС‚РѕСЂР°
  * @return string 
  */
 function _parseOkIcon( $status = 2, $content_id = 0, $sId = 0, $sKind = '0', $sUserId = 0 ) {
-    return ($status == 1 || $status == 20) ? '' : '<a onclick="'.($content_id==22 ? "yaCounter6051055.reachGoal('confirm_tu');" : "").' user_content.resolveContent(\''. $content_id .'_'. $sId .'_'. $sKind .'\', 1, '. $sUserId .');" class="b-button b-button_margleft_10 b-button_float_right b-button_margtop_-4 b-button_mini" href="javascript:void(0);" title="Утвердить"><span class="b-button__icon b-button__icon_ok"></span></a>';
+    return ($status == 1 || $status == 20) ? '' : '<a onclick="'.($content_id==22 ? "yaCounter6051055.reachGoal('confirm_tu');" : "").' user_content.resolveContent(\''. $content_id .'_'. $sId .'_'. $sKind .'\', 1, '. $sUserId .');" class="b-button b-button_margleft_10 b-button_float_right b-button_margtop_-4 b-button_mini" href="javascript:void(0);" title="РЈС‚РІРµСЂРґРёС‚СЊ"><span class="b-button__icon b-button__icon_ok"></span></a>';
 }
 
 /**
- * Парсит дату/время создания записи
+ * РџР°СЂСЃРёС‚ РґР°С‚Сѓ/РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ Р·Р°РїРёСЃРё
  * 
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  type $time  дата/время создания
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  type $time  РґР°С‚Р°/РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ
  * @return string 
  */
 function _parsePostTime( $status = 2, $time = 0 ) {
     $time = strtotime( $time );
-    //return '<div class="b-post__time b-post__time_float_right b-post__time_bordbot_b2">'. ($status == 20 ? date('d.m.Y в H:i', $time) : date('H:i', $time)) .'</div>';
-    return '<div class="b-post__time b-post__time_float_right b-post__time_bordbot_b2">'. date('d.m.Y в H:i', $time) .'</div>';
+    //return '<div class="b-post__time b-post__time_float_right b-post__time_bordbot_b2">'. ($status == 20 ? date('d.m.Y РІ H:i', $time) : date('H:i', $time)) .'</div>';
+    return '<div class="b-post__time b-post__time_float_right b-post__time_bordbot_b2">'. date('d.m.Y РІ H:i', $time) .'</div>';
 }
 
 /**
- * Парсит массовое утверждение
+ * РџР°СЂСЃРёС‚ РјР°СЃСЃРѕРІРѕРµ СѓС‚РІРµСЂР¶РґРµРЅРёРµ
  * 
- * @param  array $aOne массив с данными о записи
- * @param  string $sKind опционально. тип записи
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
+ * @param  array $aOne РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё Рѕ Р·Р°РїРёСЃРё
+ * @param  string $sKind РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. С‚РёРї Р·Р°РїРёСЃРё
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
  * @return string 
  */
 function _parseMass( $aOne = array(), $status = 2, $sKind = '0' ) {
@@ -2670,10 +2670,10 @@ function _parseMass( $aOne = array(), $status = 2, $sKind = '0' ) {
 }
 
 /**
- * Парсит скрытые поля
+ * РџР°СЂСЃРёС‚ СЃРєСЂС‹С‚С‹Рµ РїРѕР»СЏ
  * 
- * @param  array $aOne массив с данными о записи
- * @param  string $sKind опционально. тип записи
+ * @param  array $aOne РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё Рѕ Р·Р°РїРёСЃРё
+ * @param  string $sKind РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. С‚РёРї Р·Р°РїРёСЃРё
  * @return string 
  */
 function _parseHidden( $aOne = array(), $sKind = '0' ) {
@@ -2685,19 +2685,19 @@ function _parseHidden( $aOne = array(), $sKind = '0' ) {
 }
 
 /**
- * Парсит контролы удаления записи (собственно теперь более актуально "нижний блок котнтролов")
+ * РџР°СЂСЃРёС‚ РєРѕРЅС‚СЂРѕР»С‹ СѓРґР°Р»РµРЅРёСЏ Р·Р°РїРёСЃРё (СЃРѕР±СЃС‚РІРµРЅРЅРѕ С‚РµРїРµСЂСЊ Р±РѕР»РµРµ Р°РєС‚СѓР°Р»СЊРЅРѕ "РЅРёР¶РЅРёР№ Р±Р»РѕРє РєРѕС‚РЅС‚СЂРѕР»РѕРІ")
  * 
- * @param  array $aOne массив с данными о записи
- * @param  string $user_fld поле с UID автора
- * @param  int $status статус: 0 - не проверенно, 1 - утверждено, 2 - удалено
- * @param  string $sKind опционально. тип записи
- * @param  string $sObjParams javascript объект с дополнительными параметрами
- * @param  string $sEditIcon вносим сюда результат _parseEditIcon
+ * @param  array $aOne РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё Рѕ Р·Р°РїРёСЃРё
+ * @param  string $user_fld РїРѕР»Рµ СЃ UID Р°РІС‚РѕСЂР°
+ * @param  int $status СЃС‚Р°С‚СѓСЃ: 0 - РЅРµ РїСЂРѕРІРµСЂРµРЅРЅРѕ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+ * @param  string $sKind РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. С‚РёРї Р·Р°РїРёСЃРё
+ * @param  string $sObjParams javascript РѕР±СЉРµРєС‚ СЃ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё
+ * @param  string $sEditIcon РІРЅРѕСЃРёРј СЃСЋРґР° СЂРµР·СѓР»СЊС‚Р°С‚ _parseEditIcon
  * @return string
  */
 function _parseDelIcons( $aOne = array(), $user_fld = 'user_id', $status = 2, $sKind = '0', $sObjParams = '{}', $sEditIcon = '' ) {
-    $sWarn   = $status == 2 ? 'Предупредить' : 'Удалить и предупредить';
-    $sBan    = $status == 2 ? 'Забанить' : 'Удалить и забанить';
+    $sWarn   = $status == 2 ? 'РџСЂРµРґСѓРїСЂРµРґРёС‚СЊ' : 'РЈРґР°Р»РёС‚СЊ Рё РїСЂРµРґСѓРїСЂРµРґРёС‚СЊ';
+    $sBan    = $status == 2 ? 'Р—Р°Р±Р°РЅРёС‚СЊ' : 'РЈРґР°Р»РёС‚СЊ Рё Р·Р°Р±Р°РЅРёС‚СЊ';
     $sReturn = '<div class="b-fon b-fon_padtop_20">
         <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_bg_f5" style="height:23px;">';
 
@@ -2706,12 +2706,12 @@ function _parseDelIcons( $aOne = array(), $user_fld = 'user_id', $status = 2, $s
             . $sEditIcon ;
     }
     else {
-        $sReturn .= ( $status == 2 ? '' : '<a onclick="parent.banned.delReason(\''. $aOne['content_id'] .'_'. $aOne['id'] .'_'. $sKind .'\', '. $aOne[$user_fld] .', \'stream'. $status .'\', '. $sObjParams .')" href="javascript:void(0);" class="b-button b-button_mini b-button_margleft_10 b-button_float_right" title="Удалить"><span class="b-button__icon b-button__icon_del"></span></a>' . "\n" ) 
+        $sReturn .= ( $status == 2 ? '' : '<a onclick="parent.banned.delReason(\''. $aOne['content_id'] .'_'. $aOne['id'] .'_'. $sKind .'\', '. $aOne[$user_fld] .', \'stream'. $status .'\', '. $sObjParams .')" href="javascript:void(0);" class="b-button b-button_mini b-button_margleft_10 b-button_float_right" title="РЈРґР°Р»РёС‚СЊ"><span class="b-button__icon b-button__icon_del"></span></a>' . "\n" ) 
             . ( $aOne[$user_fld] != $_SESSION['uid'] && !$aOne['is_banned'] && $aOne['warn'] < 3 ? '<a onclick="'.($aOne['content_id']==22 ? "yaCounter6051055.reachGoal('block_tu');" : "").' user_content.resolveAndBan(\''. $aOne['content_id'] .'_'. $aOne['id'] .'_'. $sKind .'\', 3, '. $aOne[$user_fld] .')" href="javascript:void(0);" class="b-button b-button_mini b-button_margleft_10 b-button_float_right" title="'. $sWarn .'"><span class="b-button__icon b-button__icon_att"></span></a>' . "\n" : '' ) 
             . ( $aOne[$user_fld] == $_SESSION['uid'] || $aOne['is_banned'] || $aOne['ban_where'] ? '' : '<a onclick="'.($aOne['content_id']==22 ? "yaCounter6051055.reachGoal('block_tu');" : "").' user_content.resolveAndBan(\''. $aOne['content_id'] .'_'. $aOne['id'] .'_'. $sKind .'\', 4, '. $aOne[$user_fld] .')" href="javascript:void(0);" class="b-button b-button_mini b-button_margleft_10 b-button_float_right" title="'. $sBan .'"><span class="b-button__icon b-button__icon_krest"></span></a>' . "\n" ) 
             . $sEditIcon 
-            . ( $aOne['content_id'] == 1 ? '<a class="b-button b-button_mini b-button_margleft_10 b-button_float_right" href="/siteadmin/user_content/?site=stream&cid=1&sid='. $aOne['stream_id'] .'&mode=letters&fid='. $aOne['from_id'] .'&tid='. $aOne['to_id'] .'&lid='. $aOne['id'] .'" title="Переписка"><span class="b-button__icon b-button__icon_com"></span></a>' : '' ) 
-            . ( $status == 1 ? '' : '<a onclick="'.($aOne['content_id']==22 ? "yaCounter6051055.reachGoal('confirm_tu');" : "").' user_content.resolveContent(\''. $aOne['content_id'] .'_'. $aOne['id'] .'_'. $sKind .'\', 1, '. $aOne[$user_fld] .')" class="b-button b-button_mini" href="javascript:void(0);" title="Утвердить"><span class="b-button__icon b-button__icon_ok"></span></a>' );
+            . ( $aOne['content_id'] == 1 ? '<a class="b-button b-button_mini b-button_margleft_10 b-button_float_right" href="/siteadmin/user_content/?site=stream&cid=1&sid='. $aOne['stream_id'] .'&mode=letters&fid='. $aOne['from_id'] .'&tid='. $aOne['to_id'] .'&lid='. $aOne['id'] .'" title="РџРµСЂРµРїРёСЃРєР°"><span class="b-button__icon b-button__icon_com"></span></a>' : '' ) 
+            . ( $status == 1 ? '' : '<a onclick="'.($aOne['content_id']==22 ? "yaCounter6051055.reachGoal('confirm_tu');" : "").' user_content.resolveContent(\''. $aOne['content_id'] .'_'. $aOne['id'] .'_'. $sKind .'\', 1, '. $aOne[$user_fld] .')" class="b-button b-button_mini" href="javascript:void(0);" title="РЈС‚РІРµСЂРґРёС‚СЊ"><span class="b-button__icon b-button__icon_ok"></span></a>' );
     }
         
         $sReturn .= '</div>
@@ -2722,9 +2722,9 @@ function _parseDelIcons( $aOne = array(), $user_fld = 'user_id', $status = 2, $s
 }
 
 /**
- * Парсит прикрепленный файл (не картинка)
+ * РџР°СЂСЃРёС‚ РїСЂРёРєСЂРµРїР»РµРЅРЅС‹Р№ С„Р°Р№Р» (РЅРµ РєР°СЂС‚РёРЅРєР°)
  * 
- * @param  array $aData данные для отображеня приложенного файла @see getAttachDisplayData
+ * @param  array $aData РґР°РЅРЅС‹Рµ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅСЏ РїСЂРёР»РѕР¶РµРЅРЅРѕРіРѕ С„Р°Р№Р»Р° @see getAttachDisplayData
  * @return string 
  */
 function _parseAttach( $aData = array() ) {
@@ -2739,9 +2739,9 @@ function _parseAttach( $aData = array() ) {
 }
 
 /**
- * Оборачивает аттачи в контейнер
+ * РћР±РѕСЂР°С‡РёРІР°РµС‚ Р°С‚С‚Р°С‡Рё РІ РєРѕРЅС‚РµР№РЅРµСЂ
  * 
- * @param  string $sAttach аттачи
+ * @param  string $sAttach Р°С‚С‚Р°С‡Рё
  * @return string HTML
  */
 function _wrapAttach( $sAttach = '' ) {
@@ -2749,10 +2749,10 @@ function _wrapAttach( $sAttach = '' ) {
 }
 
 /**
- * Захватывает сущности для модерирования
+ * Р—Р°С…РІР°С‚С‹РІР°РµС‚ СЃСѓС‰РЅРѕСЃС‚Рё РґР»СЏ РјРѕРґРµСЂРёСЂРѕРІР°РЅРёСЏ
  * 
- * @param  int $content_id идентификатор сущности из admin_contents
- * @param  string $stream_id идентификатор потока
+ * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+ * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
  * @return object xajaxResponse
  */
 function chooseContent( $content_id = 0, $stream_id = '' ) {    
@@ -2783,14 +2783,14 @@ function chooseContent( $content_id = 0, $stream_id = '' ) {
 }
 
 /**
- * Возвращает HTML блок на случай потери потока
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ HTML Р±Р»РѕРє РЅР° СЃР»СѓС‡Р°Р№ РїРѕС‚РµСЂРё РїРѕС‚РѕРєР°
  * 
  * @param  object $objResponse xajaxResponse
- * @param  string $stream_id идентификатор потока
+ * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
  * @return string
  */
 function _loseStream( &$objResponse = null, $stream_id = '' ) {
-    $sHtml = '<div class="b-post b-post_pad_10_15_15"><span style="color: #cc4642; font-weight: bold;">Поток потерян либо перехвачен</span></div>';
+    $sHtml = '<div class="b-post b-post_pad_10_15_15"><span style="color: #cc4642; font-weight: bold;">РџРѕС‚РѕРє РїРѕС‚РµСЂСЏРЅ Р»РёР±Рѕ РїРµСЂРµС…РІР°С‡РµРЅ</span></div>';
     
     if ( $objResponse ) {
         $objResponse->assign( 'my_div_all', 'innerHTML', $sHtml );
@@ -2800,14 +2800,14 @@ function _loseStream( &$objResponse = null, $stream_id = '' ) {
 }
 
 /**
- * Возвращает HTML блок на случай отсутствия прав
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ HTML Р±Р»РѕРє РЅР° СЃР»СѓС‡Р°Р№ РѕС‚СЃСѓС‚СЃС‚РІРёСЏ РїСЂР°РІ
  * 
  * @param  object $objResponse xajaxResponse
- * @param  string $stream_id идентификатор потока
+ * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
  * @return string
  */
 function _parsePermissionsDenied( &$objResponse = null, $stream_id = '' ) {
-    $sHtml = '<div class="b-post b-post_pad_10_15_15"><span style="color: #cc4642; font-weight: bold;">Не достаточно прав</span></div>';
+    $sHtml = '<div class="b-post b-post_pad_10_15_15"><span style="color: #cc4642; font-weight: bold;">РќРµ РґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ</span></div>';
     
     if ( $objResponse ) {
         $objResponse->assign( 'my_div_all', 'innerHTML', $sHtml );
@@ -2817,10 +2817,10 @@ function _parsePermissionsDenied( &$objResponse = null, $stream_id = '' ) {
 }
 
 /**
- * Освобождение потока пользователем
+ * РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїРѕС‚РѕРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
  * 
- * @param  int $content_id идентификатор сущности из admin_contents
- * @param  string $stream_id идентификатор потока
+ * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+ * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
  * @return object xajaxResponse
  */
 function releaseStream( $content_id = 0, $stream_id = '' ) {    
@@ -2854,11 +2854,11 @@ function releaseStream( $content_id = 0, $stream_id = '' ) {
 }
 
 /**
- * Захват потока пользователем
+ * Р—Р°С…РІР°С‚ РїРѕС‚РѕРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
  * 
- * @param  int $content_id идентификатор сущности из admin_contents
- * @param  string $stream_id идентификатор потока
- * @param  int $is_first флаг того, что это первый открываемый фрейм
+ * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+ * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+ * @param  int $is_first С„Р»Р°Рі С‚РѕРіРѕ, С‡С‚Рѕ СЌС‚Рѕ РїРµСЂРІС‹Р№ РѕС‚РєСЂС‹РІР°РµРјС‹Р№ С„СЂРµР№Рј
  * @return object xajaxResponse
  */
 function chooseStream( $content_id = 0, $stream_id = '', $is_first = 0 ) {    
@@ -2871,24 +2871,24 @@ function chooseStream( $content_id = 0, $stream_id = '', $is_first = 0 ) {
         
         if ( $sStreamId != $stream_id ) {
             if ( empty($sStreamId) ) {
-                $objResponse->alert( 'Захват потока не удался.\nПовторите попытку.' );
+                $objResponse->alert( 'Р—Р°С…РІР°С‚ РїРѕС‚РѕРєР° РЅРµ СѓРґР°Р»СЃСЏ.\nРџРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ.' );
             }
         }
         else {
             $aStreams     = $user_content->getStreamsForUser( $_SESSION['uid'] );
-            $aContentId   = array(); // id сущностей, для которых есть захваченные потоки
-            $aCounters    = array(); // данные счетчиков в шапке захватываемого потока
-            $sContentName = '';      // название сущности
+            $aContentId   = array(); // id СЃСѓС‰РЅРѕСЃС‚РµР№, РґР»СЏ РєРѕС‚РѕСЂС‹С… РµСЃС‚СЊ Р·Р°С…РІР°С‡РµРЅРЅС‹Рµ РїРѕС‚РѕРєРё
+            $aCounters    = array(); // РґР°РЅРЅС‹Рµ СЃС‡РµС‚С‡РёРєРѕРІ РІ С€Р°РїРєРµ Р·Р°С…РІР°С‚С‹РІР°РµРјРѕРіРѕ РїРѕС‚РѕРєР°
+            $sContentName = '';      // РЅР°Р·РІР°РЅРёРµ СЃСѓС‰РЅРѕСЃС‚Рё
             
-            foreach ( $aStreams as $aOne ) { // находим нужный поток
+            foreach ( $aStreams as $aOne ) { // РЅР°С…РѕРґРёРј РЅСѓР¶РЅС‹Р№ РїРѕС‚РѕРє
                 if ( $aOne['stream_id'] == $stream_id ) {
-                    break; // обрываем обход. то если это первый поток в сущности - $aContentId не будет id
+                    break; // РѕР±СЂС‹РІР°РµРј РѕР±С…РѕРґ. С‚Рѕ РµСЃР»Рё СЌС‚Рѕ РїРµСЂРІС‹Р№ РїРѕС‚РѕРє РІ СЃСѓС‰РЅРѕСЃС‚Рё - $aContentId РЅРµ Р±СѓРґРµС‚ id
                 }
                 
-                $aContentId[$aOne['content_id']] = 1; // попутно собираем id сущностей
+                $aContentId[$aOne['content_id']] = 1; // РїРѕРїСѓС‚РЅРѕ СЃРѕР±РёСЂР°РµРј id СЃСѓС‰РЅРѕСЃС‚РµР№
             }
             
-            foreach ( $user_content->contents as $aContent ) { // находим название сущности
+            foreach ( $user_content->contents as $aContent ) { // РЅР°С…РѕРґРёРј РЅР°Р·РІР°РЅРёРµ СЃСѓС‰РЅРѕСЃС‚Рё
                 if ( $aContent['id'] == $aOne['content_id'] ) {
                     $sContentName = $aContent['name'];
                     break;
@@ -2896,19 +2896,19 @@ function chooseStream( $content_id = 0, $stream_id = '', $is_first = 0 ) {
             }
             
             if ( $user_content->isStreamCounters( $aOne['content_id'] ) ) {
-                // ели нужно добавляем счтчики - заготовка должна быть в каждом пото такой сущности
+                // РµР»Рё РЅСѓР¶РЅРѕ РґРѕР±Р°РІР»СЏРµРј СЃС‡С‚С‡РёРєРё - Р·Р°РіРѕС‚РѕРІРєР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РІ РєР°Р¶РґРѕРј РїРѕС‚Рѕ С‚Р°РєРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё
                 $aCounters = $user_content->getStreamCounters( $aOne['content_id'], false, $bShow );
             }
             
-            $bFirstIn = !isset($aContentId[$aOne['content_id']]); // это первый поток данной сущности. нужно ли показывать счетчики
+            $bFirstIn = !isset($aContentId[$aOne['content_id']]); // СЌС‚Рѕ РїРµСЂРІС‹Р№ РїРѕС‚РѕРє РґР°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё. РЅСѓР¶РЅРѕ Р»Рё РїРѕРєР°Р·С‹РІР°С‚СЊ СЃС‡РµС‚С‡РёРєРё
             
             ob_start();
             include_once( $_SERVER['DOCUMENT_ROOT'] . '/siteadmin/user_content/frames_header.php' );
             $sOutput = ob_get_contents();
             ob_end_clean();
             
-            $sApproved = in_array($content_id, user_content::$aNoApproved) ? '' : 'проверенные';
-            $sRejected = in_array($content_id, user_content::$aNoRejected) ? '' : 'заблокированные';
+            $sApproved = in_array($content_id, user_content::$aNoApproved) ? '' : 'РїСЂРѕРІРµСЂРµРЅРЅС‹Рµ';
+            $sRejected = in_array($content_id, user_content::$aNoRejected) ? '' : 'Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ';
             
             if ( $is_first == 1 ) {
                 $objResponse->create( 'frames_body', 'table', 'frames_table' );
@@ -2937,7 +2937,7 @@ function chooseStream( $content_id = 0, $stream_id = '', $is_first = 0 ) {
             
             $objResponse->assign( 'th_'.$stream_id, 'innerHTML', $sOutput );
             $objResponse->script( "user_content.addSoundControl('$stream_id');" );
-            $objResponse->script( "user_content.tabMenuItems['$stream_id'] = ['непроверенные', '$sApproved', '$sRejected'];" );
+            $objResponse->script( "user_content.tabMenuItems['$stream_id'] = ['РЅРµРїСЂРѕРІРµСЂРµРЅРЅС‹Рµ', '$sApproved', '$sRejected'];" );
         }
     }
     
@@ -2945,7 +2945,7 @@ function chooseStream( $content_id = 0, $stream_id = '', $is_first = 0 ) {
 }
 
 /**
- * Обновляет счетчики в шапках потоков
+ * РћР±РЅРѕРІР»СЏРµС‚ СЃС‡РµС‚С‡РёРєРё РІ С€Р°РїРєР°С… РїРѕС‚РѕРєРѕРІ
  * 
  * @global object $user_content
  * @return xajaxResponse 
@@ -2987,7 +2987,7 @@ function otherCounters() {
 }
 
 /**
- * Возвращает обновления для страницы выбора потоков
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕР±РЅРѕРІР»РµРЅРёСЏ РґР»СЏ СЃС‚СЂР°РЅРёС†С‹ РІС‹Р±РѕСЂР° РїРѕС‚РѕРєРѕРІ
  */
 function updateStreamsForUser() {
     global $user_content;

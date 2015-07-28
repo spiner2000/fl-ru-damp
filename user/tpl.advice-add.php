@@ -10,10 +10,10 @@ return;
             <a class="b-post__link" href="#"><?= view_avatar($_user->login, $_user->photo, 1, 1, 'b-post__userpic') ?></a>
         </div>
         <div class="b-post__content b-post__content_margleft_60 b-post__content_overflow_hidden">
-            <div class="b-post__txt b-post__txt_float_right"><a class="b-post__link b-post__link_fontsize_11 b-post__link_color_4e" href="https://feedback.fl.ru/article/details/id/199" target="_blank">Что такое рекомендация?</a></div>
-            <div class="b-username b-username_bold b-username_padbot_10">Ваш отзыв</div>			
+            <div class="b-post__txt b-post__txt_float_right"><a class="b-post__link b-post__link_fontsize_11 b-post__link_color_4e" href="https://feedback.fl.ru/article/details/id/199" target="_blank">Р§С‚Рѕ С‚Р°РєРѕРµ СЂРµРєРѕРјРµРЅРґР°С†РёСЏ?</a></div>
+            <div class="b-username b-username_bold b-username_padbot_10">Р’Р°С€ РѕС‚Р·С‹РІ</div>			
 
-            <div class="b-post__voice b-post__voice_positive"></div>&#160;<div class="b-post__txt b-post__txt_top_-3 b-post__txt_fontsize_11 b-post__txt_inline-block">Рекомендация может быть только положительной</div>
+            <div class="b-post__voice b-post__voice_positive"></div>&#160;<div class="b-post__txt b-post__txt_top_-3 b-post__txt_fontsize_11 b-post__txt_inline-block">Р РµРєРѕРјРµРЅРґР°С†РёСЏ РјРѕР¶РµС‚ Р±С‹С‚СЊ С‚РѕР»СЊРєРѕ РїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕР№</div>
             <form action="">
                 <input type="hidden" name="user_to" value="<?= $user->uid ?>"/>
                 <div class="b-textarea">
@@ -21,7 +21,7 @@ return;
                 </div>
             </form>
             <?php if(!is_emp($_SESSION['role'])) { ?>
-            <div class="b-post__foot b-post__foot_padtop_15">У вас должен быть заполнен раздел «<a class="b-post__link" href="/users/<?=$_SESSION['login']?>/setup/finance/" target="_blank">Финансы</a>»</div>
+            <div class="b-post__foot b-post__foot_padtop_15">РЈ РІР°СЃ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ Р·Р°РїРѕР»РЅРµРЅ СЂР°Р·РґРµР» В«<a class="b-post__link" href="/users/<?=$_SESSION['login']?>/setup/finance/" target="_blank">Р¤РёРЅР°РЅСЃС‹</a>В»</div>
             <?php }//if?>
         </div>
     </div>
@@ -29,10 +29,10 @@ return;
         <a class="b-button b-button_rectangle_color_transparent_green advice-new" onclick="return false" href="#">
             <span class="b-button__b1">
                 <span class="b-button__b2">
-                    <span class="b-button__txt">Отправить</span>
+                    <span class="b-button__txt">РћС‚РїСЂР°РІРёС‚СЊ</span>
                 </span>
             </span>
         </a>
-        <span class="b-buttons__txt b-buttons__txt_padleft_5">рекомендацию на проверку <?= is_emp($user->role)?'работодателю':'фрилансеру'?> или</span> <a class="b-buttons__link b-buttons__link_dot_c10601" onclick="adviceAddFormClose()" href="javascript:void(0)"> закрыть не отправляя </a>
+        <span class="b-buttons__txt b-buttons__txt_padleft_5">СЂРµРєРѕРјРµРЅРґР°С†РёСЋ РЅР° РїСЂРѕРІРµСЂРєСѓ <?= is_emp($user->role)?'СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЋ':'С„СЂРёР»Р°РЅСЃРµСЂСѓ'?> РёР»Рё</span> <a class="b-buttons__link b-buttons__link_dot_c10601" onclick="adviceAddFormClose()" href="javascript:void(0)"> Р·Р°РєСЂС‹С‚СЊ РЅРµ РѕС‚РїСЂР°РІР»СЏСЏ </a>
     </div>
 </div>

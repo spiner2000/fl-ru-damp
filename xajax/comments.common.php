@@ -21,7 +21,7 @@ if (!$xajax) {
     $xajax->register( XAJAX_FUNCTION, new xajaxUserFunction('setUserWarnForm', $_SERVER['DOCUMENT_ROOT'] . '/xajax/banned.server.php') );
     $xajax->register( XAJAX_FUNCTION, new xajaxUserFunction('updateUserWarn', $_SERVER['DOCUMENT_ROOT'] . '/xajax/banned.server.php') );
 
-    // Íîâûå êîììåíòàðèè
+    // ÐÐ¾Ð²Ñ‹Ðµ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¸
     $xajax->register(XAJAX_FUNCTION, "RateComment");
     $xajax->register(XAJAX_FUNCTION, "GetComment");
 }

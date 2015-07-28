@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Ãåíåğàòîğà àêòà âûïîëíåííûõ ğàáîò
+ * Ğ“ĞµĞ½ĞµÑ€Ğ°Ñ‚Ğ¾Ñ€Ğ° Ğ°ĞºÑ‚Ğ° Ğ²Ñ‹Ğ¿Ğ¾Ğ»Ğ½ĞµĞ½Ğ½Ñ‹Ñ… Ñ€Ğ°Ğ±Ğ¾Ñ‚
  */
 
 
@@ -36,16 +36,16 @@ if(count($argv) > 1) parse_str(implode('&', array_slice($argv, 1)), $_GET);
 if(empty($_GET))
 {
     $help = '
-Ïàğàìåòğû:
-h - Îòğàáîòàíî ÷àñîâ
-p - Ñòàâêà â ÷àñ
-d - Çà êàêîé ìåñÿö â ôîğìàòå MM.YYYY (ïî óìîë÷àíèş çà òåêóùèé)      
-n - Ñêîëüêî ïîñëåäíèõ ïğîåêòîâ âçÿòü èç ìàíòèñà
-f - Id ôèëüòğà â ìàíòèñå
-n1 - Íóìåğ àêòà
-n2 - Íóìåğ ïğèëîæåíèÿ
+ĞŸĞ°Ñ€Ğ°Ğ¼ĞµÑ‚Ñ€Ñ‹:
+h - ĞÑ‚Ñ€Ğ°Ğ±Ğ¾Ñ‚Ğ°Ğ½Ğ¾ Ñ‡Ğ°ÑĞ¾Ğ²
+p - Ğ¡Ñ‚Ğ°Ğ²ĞºĞ° Ğ² Ñ‡Ğ°Ñ
+d - Ğ—Ğ° ĞºĞ°ĞºĞ¾Ğ¹ Ğ¼ĞµÑÑÑ† Ğ² Ñ„Ğ¾Ñ€Ğ¼Ğ°Ñ‚Ğµ MM.YYYY (Ğ¿Ğ¾ ÑƒĞ¼Ğ¾Ğ»Ñ‡Ğ°Ğ½Ğ¸Ñ Ğ·Ğ° Ñ‚ĞµĞºÑƒÑ‰Ğ¸Ğ¹)      
+n - Ğ¡ĞºĞ¾Ğ»ÑŒĞºĞ¾ Ğ¿Ğ¾ÑĞ»ĞµĞ´Ğ½Ğ¸Ñ… Ğ¿Ñ€Ğ¾ĞµĞºÑ‚Ğ¾Ğ² Ğ²Ğ·ÑÑ‚ÑŒ Ğ¸Ğ· Ğ¼Ğ°Ğ½Ñ‚Ğ¸ÑĞ°
+f - Id Ñ„Ğ¸Ğ»ÑŒÑ‚Ñ€Ğ° Ğ² Ğ¼Ğ°Ğ½Ñ‚Ğ¸ÑĞµ
+n1 - ĞÑƒĞ¼ĞµÑ€ Ğ°ĞºÑ‚Ğ°
+n2 - ĞÑƒĞ¼ĞµÑ€ Ğ¿Ñ€Ğ¸Ğ»Ğ¾Ğ¶ĞµĞ½Ğ¸Ñ
 
-Ïğèìåğ:
+ĞŸÑ€Ğ¸Ğ¼ĞµÑ€:
 bash$ sudo php /fl/beta/test/mantis/act.php h=176 p=100 d=06.2014 n=15 f=222
 
 ';
@@ -55,13 +55,13 @@ bash$ sudo php /fl/beta/test/mantis/act.php h=176 p=100 d=06.2014 n=15 f=222
 
 
 //------------------------------------------------------------------------------
-// Íàñòğîéêè
+// ĞĞ°ÑÑ‚Ñ€Ğ¾Ğ¹ĞºĞ¸
 //------------------------------------------------------------------------------
 
-//URL API Ìàíòèñà
+//URL API ĞœĞ°Ğ½Ñ‚Ğ¸ÑĞ°
 define('MANTISCONNECT_URL', 'https://beta.free-lance.ru/mantis/api/soap/mantisconnect.php');
 
-//Ğàñïîëîæåíèå øàáëîíîâ àêòà
+//Ğ Ğ°ÑĞ¿Ğ¾Ğ»Ğ¾Ğ¶ĞµĞ½Ğ¸Ğµ ÑˆĞ°Ğ±Ğ»Ğ¾Ğ½Ğ¾Ğ² Ğ°ĞºÑ‚Ğ°
 define('TEMPLATES_PATH',realpath(pathinfo(__FILE__, PATHINFO_DIRNAME) . '/docs/') . '/');
 
 define('ACT_NUM',isset($_GET['n1'])?intval($_GET['n1']):DEFAULT_ACT_NUM);
@@ -85,7 +85,7 @@ $args = array(
     'project_id' => MANTIS_PROJECT_ID,
     'filter_id' => isset($_GET['f'])?intval($_GET['f']):MANTIS_FILTER_ID,
     'page_number' => 1,
-    'per_page' => isset($_GET['n'])?intval($_GET['n']):30//Áåğåì ïî áîëüøå ÷òîáû çàõâàòèòü çà íóæíûé íàì ìåñÿö
+    'per_page' => isset($_GET['n'])?intval($_GET['n']):30//Ğ‘ĞµÑ€ĞµĞ¼ Ğ¿Ğ¾ Ğ±Ğ¾Ğ»ÑŒÑˆĞµ Ñ‡Ñ‚Ğ¾Ğ±Ñ‹ Ğ·Ğ°Ñ…Ğ²Ğ°Ñ‚Ğ¸Ñ‚ÑŒ Ğ·Ğ° Ğ½ÑƒĞ¶Ğ½Ñ‹Ğ¹ Ğ½Ğ°Ğ¼ Ğ¼ĞµÑÑÑ†
 );
 
 
@@ -98,11 +98,11 @@ $date_to_time = strtotime($date_to);
 
 try 
 {
-    //Ïîëó÷àåì íåñêîëüêî ïîñëåäíèõ òèêåòîâ ïî ôèëüòğó
+    //ĞŸĞ¾Ğ»ÑƒÑ‡Ğ°ĞµĞ¼ Ğ½ĞµÑĞºĞ¾Ğ»ÑŒĞºĞ¾ Ğ¿Ğ¾ÑĞ»ĞµĞ´Ğ½Ğ¸Ñ… Ñ‚Ğ¸ĞºĞµÑ‚Ğ¾Ğ² Ğ¿Ğ¾ Ñ„Ğ¸Ğ»ÑŒÑ‚Ñ€Ñƒ
     $client = new SoapClient(MANTISCONNECT_URL . '?wsdl', $opt);
     $issues = $client->__soapCall('mc_filter_get_issue_headers', $args);
 
-    //Îòñåèâàåì òèêåòû íå çà íóæíûé íàì ìåñÿö
+    //ĞÑ‚ÑĞµĞ¸Ğ²Ğ°ĞµĞ¼ Ñ‚Ğ¸ĞºĞµÑ‚Ñ‹ Ğ½Ğµ Ğ·Ğ° Ğ½ÑƒĞ¶Ğ½Ñ‹Ğ¹ Ğ½Ğ°Ğ¼ Ğ¼ĞµÑÑÑ†
     $issues = array_filter($issues,function($obj) use($date_from_time, $date_to_time){
         $last_update = strtotime($obj->last_updated);
         return !($last_update < $date_from_time || $last_update > $date_to_time);
@@ -111,7 +111,7 @@ try
     //print_r($issues[count($issues)-1]);
     //exit;
     
-    //Ïî øàáëîíó íàì 15 õâàòèò
+    //ĞŸĞ¾ ÑˆĞ°Ğ±Ğ»Ğ¾Ğ½Ñƒ Ğ½Ğ°Ğ¼ 15 Ñ…Ğ²Ğ°Ñ‚Ğ¸Ñ‚
     $issues = array_slice($issues, -17, 17);
     
     //print_r(array_keys($issues));
@@ -151,7 +151,7 @@ if (!empty($issues))
     $date_dog_time = strtotime(DATE_DOG);
     $date_dog = date( 'j', $date_dog_time ) . ' ' . monthtostr( date('n', $date_dog_time), true ) . ' ' . date( 'Y', $date_dog_time ); 
 
-    //Ïîäñòàíîâêà äëÿ àêòà
+    //ĞŸĞ¾Ğ´ÑÑ‚Ğ°Ğ½Ğ¾Ğ²ĞºĞ° Ğ´Ğ»Ñ Ğ°ĞºÑ‚Ğ°
     $act_val = array(
         '$date_dog' => $date_dog,
         '$date_dog2' => DATE_DOG,
@@ -164,15 +164,15 @@ if (!empty($issues))
         '$affix_num' => AFX_NUM,
         '$date_from' => $date_from,
         '$date_to' => $date_to,
-        '$per_hour' => $per_hour . ' ğóá. 00 êîï',
+        '$per_hour' => $per_hour . ' Ñ€ÑƒĞ±. 00 ĞºĞ¾Ğ¿',
         '$total_hours' => $total_hours,
         '$total_price' => $total_price_format,
         '$total_price2' => $total_price_parts[0],
         '$total_price3' => $total_price_parts[1],
-        '$total_price_txt' => trim(str_replace(array('ğóáëåé','ğóáëÿ',' Ğîññèéñêîé Ôåäåğàöèè','00 êîïååê'),array('','','',''),num2str($total_price_parts[0])))
+        '$total_price_txt' => trim(str_replace(array('Ñ€ÑƒĞ±Ğ»ĞµĞ¹','Ñ€ÑƒĞ±Ğ»Ñ',' Ğ Ğ¾ÑÑĞ¸Ğ¹ÑĞºĞ¾Ğ¹ Ğ¤ĞµĞ´ĞµÑ€Ğ°Ñ†Ğ¸Ğ¸','00 ĞºĞ¾Ğ¿ĞµĞµĞº'),array('','','',''),num2str($total_price_parts[0])))
     );
 
-    //Ïîäñòàíîâêà äëÿ ïğèëîæåíèÿ
+    //ĞŸĞ¾Ğ´ÑÑ‚Ğ°Ğ½Ğ¾Ğ²ĞºĞ° Ğ´Ğ»Ñ Ğ¿Ñ€Ğ¸Ğ»Ğ¾Ğ¶ĞµĞ½Ğ¸Ñ
     $act_affix = array(
         '$num' => AFX_NUM,
         '$date_dog' => $date_dog,

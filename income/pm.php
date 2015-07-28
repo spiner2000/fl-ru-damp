@@ -1,7 +1,7 @@
 <?php
 
 define('NO_CSRF', 1);
-$reqv = $_POST; // Äëÿ àâòîïëàòåæåé, òê ìû íå çíàåì u_token_key
+$reqv = $_POST; // Ð”Ð»Ñ Ð°Ð²Ñ‚Ð¾Ð¿Ð»Ð°Ñ‚ÐµÐ¶ÐµÐ¹, Ñ‚Ðº Ð¼Ñ‹ Ð½Ðµ Ð·Ð½Ð°ÐµÐ¼ u_token_key
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/pmpay.php');
 $account = new pmpay();
 if(pmpay::getPaymentBillNO($reqv['LMI_PAYMENT_DESC']) > 0 && $reqv['PAYMENT_BILL_NO'] == '') {

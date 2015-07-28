@@ -1,8 +1,8 @@
 
 <?php
 $crumbs = array();
-$crumbs[] = array("title"=>"Статьи и интервью", "url"=>"/articles/");
-$crumbs[] = array("title"=>"Статьи на модерации", "url"=>"");
+$crumbs[] = array("title"=>"РЎС‚Р°С‚СЊРё Рё РёРЅС‚РµСЂРІСЊСЋ", "url"=>"/articles/");
+$crumbs[] = array("title"=>"РЎС‚Р°С‚СЊРё РЅР° РјРѕРґРµСЂР°С†РёРё", "url"=>"");
 ?>
 <div class="b-menu b-menu_crumbs b-menu_padbot_20"><?=getCrumbs($crumbs)?></div>
 
@@ -16,7 +16,7 @@ $crumbs[] = array("title"=>"Статьи на модерации", "url"=>"");
                     <img src="<?=WDCPREFIX?>/<?=$article['path']?><?=$article['fname']?>" alt="" width="100" class="post-img" />
                 <? } ?>
                 <div class="post-txt">
-                    <h3><a class="b-layout__link" href="<?=getFriendlyURL('article', $article['id']).($page ? "?p=$page" : "")?>"><?=!$article['title'] ? 'Без названия' : reformat($article['title'], 32, 0, 1) ?></a></h3>
+                    <h3><a class="b-layout__link" href="<?=getFriendlyURL('article', $article['id']).($page ? "?p=$page" : "")?>"><?=!$article['title'] ? 'Р‘РµР· РЅР°Р·РІР°РЅРёСЏ' : reformat($article['title'], 32, 0, 1) ?></a></h3>
                     <p class="post-body">
                         <?= reformat($article['short'], 50, 0, 0, 1) ?></p>
                 </div>
@@ -26,22 +26,22 @@ $crumbs[] = array("title"=>"Статьи на модерации", "url"=>"");
                             <ul>
                                 <li class="first">
                                     <? if(hasPermissions('articles')) { ?>
-                                    <a href="javascript:void(0)" style="color: #A23E3E;" onclick="editArticle(<?=$article['id']?>)">Редактировать</a>
+                                    <a href="javascript:void(0)" style="color: #A23E3E;" onclick="editArticle(<?=$article['id']?>)">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
                                     &nbsp;|&nbsp;
-                                    <a href="javascript:void(0)" style="color: #A23E3E;" onclick="delArticleForm(<?=$article['id']?>);">Удалить</a>
+                                    <a href="javascript:void(0)" style="color: #A23E3E;" onclick="delArticleForm(<?=$article['id']?>);">РЈРґР°Р»РёС‚СЊ</a>
                                     &nbsp;|&nbsp;
                                     <? } ?>
                                     <? if($article['approved'] == 'f' && (hasPermissions('articles'))) { ?>
-                                    <a href="javascript:void(0)" style="color: #A23E3E;" class="moderator_decline" article_id="<?= $article['id'] ?>">Отклонить</a>
+                                    <a href="javascript:void(0)" style="color: #A23E3E;" class="moderator_decline" article_id="<?= $article['id'] ?>">РћС‚РєР»РѕРЅРёС‚СЊ</a>
                                     &nbsp;|&nbsp;
-                                    <a href="javascript:void(0)" class="moderator_approve" article_id="<?= $article['id'] ?>">Подтвердить</a>
+                                    <a href="javascript:void(0)" class="moderator_approve" article_id="<?= $article['id'] ?>">РџРѕРґС‚РІРµСЂРґРёС‚СЊ</a>
                                     <? } ?>
                                 </li>
                             </ul>
                         </li>
 
                         <li class="post-f-date">
-                            <?=date('d.m.Y в H:i', strtotime($article['moderation_time']))?>
+                            <?=date('d.m.Y РІ H:i', strtotime($article['moderation_time']))?>
                         </li>
                         <li class="post-f-autor">
                             <a href="/users/<?=$article['login']?>">
@@ -83,14 +83,14 @@ $crumbs[] = array("title"=>"Статьи на модерации", "url"=>"");
     <div class="form-in">
                     <form id="del_article_frm" method="post" action="/articles/?task=del-article">
         <div class="form-block first last">
-                <h4>Удаление статьи</h4>
+                <h4>РЈРґР°Р»РµРЅРёРµ СЃС‚Р°С‚СЊРё</h4>
             <div class="form-el">
-                <label class="form-label2">Укажите причину отказа в публикации (для автора):</label>
+                <label class="form-label2">РЈРєР°Р¶РёС‚Рµ РїСЂРёС‡РёРЅСѓ РѕС‚РєР°Р·Р° РІ РїСѓР±Р»РёРєР°С†РёРё (РґР»СЏ Р°РІС‚РѕСЂР°):</label>
                 <div class="form-value">
                         <input type="hidden" name="id" value="" />
                         <textarea rows="5" cols="20" name="msgtxt"></textarea>
                         <div class="form-btns">
-                            <button onclick="return delArticleConfirm()">Удалить</button>&nbsp; <a href="javascript:void(0)" onclick="delArticleFormClose()" class="lnk-dot-666">Отменить</a>
+                            <button onclick="return delArticleConfirm()">РЈРґР°Р»РёС‚СЊ</button>&nbsp; <a href="javascript:void(0)" onclick="delArticleFormClose()" class="lnk-dot-666">РћС‚РјРµРЅРёС‚СЊ</a>
                         </div>
                 </div>
             </div>

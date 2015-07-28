@@ -1,4 +1,4 @@
-<h2 class="b-layout__title b-layout__title_padbot_30">Оплата через банк для физических лиц</h2>
+<h2 class="b-layout__title b-layout__title_padbot_30">РћРїР»Р°С‚Р° С‡РµСЂРµР· Р±Р°РЅРє РґР»СЏ С„РёР·РёС‡РµСЃРєРёС… Р»РёС†</h2>
 
 <form id="<?= $type_payment ?>" name="<?= $type_payment ?>" method="POST" action="<?= "/bill/payment/?type={$type_payment}"?>">
     <input type="hidden" name="action" value="payment"/>
@@ -14,7 +14,7 @@
                     <table class="b-layout__table b-layout__table_width_full">
                         <tbody>
                             <tr class="b-layout__tr">
-                                <td class="b-layout__td b-layout__td_padbot_20"><div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">ФИО</div></td>
+                                <td class="b-layout__td b-layout__td_padbot_20"><div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Р¤РРћ</div></td>
                                 <td class="b-layout__td b-layout__td_padleft_20 b-layout__td_padbot_20">
                                     <div class="b-combo">
                                         <div class="b-combo__input <?= $bill->error['fio'] ? "b-combo__input_error" : ""?>">
@@ -24,7 +24,7 @@
                                 </td>
                             </tr>
                             <tr class="b-layout__tr">
-                                <td class="b-layout__td b-layout__td_padbot_20"><div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">Адрес плательщика</div></td>
+                                <td class="b-layout__td b-layout__td_padbot_20"><div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padtop_3">РђРґСЂРµСЃ РїР»Р°С‚РµР»СЊС‰РёРєР°</div></td>
                                 <td class="b-layout__td b-layout__td_padleft_20 b-layout__td_padbot_20">
                                     <div class="b-textarea <?= $bill->error['address'] ? "b-textarea_error" : ""?>">
                                         <textarea rows="5" cols="80" id="address" name="address" class="b-textarea__textarea js-payform_input"><?=stripcslashes($bill->pm->address)?></textarea>
@@ -34,9 +34,9 @@
                         </tbody>
                     </table>
                     <div class="b-fon b-fon_bg_fff9bf b-fon_pad_10 b-fon_padleft_35">
-                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold"><span class="b-icon b-icon_sbr_oattent b-icon_margleft_-20"></span>Обратите внимание</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_11">— Период зачисления средств — до 7 рабочих дней.<br>— Банковский перевод для физических лиц.</div>
-                        <div class="b-layout__txt b-layout__txt_fontsize_11">— Минимальная сумма платежа 10 рублей.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold"><span class="b-icon b-icon_sbr_oattent b-icon_margleft_-20"></span>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_11">вЂ” РџРµСЂРёРѕРґ Р·Р°С‡РёСЃР»РµРЅРёСЏ СЃСЂРµРґСЃС‚РІ вЂ” РґРѕ 7 СЂР°Р±РѕС‡РёС… РґРЅРµР№.<br>вЂ” Р‘Р°РЅРєРѕРІСЃРєРёР№ РїРµСЂРµРІРѕРґ РґР»СЏ С„РёР·РёС‡РµСЃРєРёС… Р»РёС†.</div>
+                        <div class="b-layout__txt b-layout__txt_fontsize_11">вЂ” РњРёРЅРёРјР°Р»СЊРЅР°СЏ СЃСѓРјРјР° РїР»Р°С‚РµР¶Р° 10 СЂСѓР±Р»РµР№.</div>
                     </div>
                     <? 
                     $checked  = "checkBankFizFields";
@@ -45,7 +45,7 @@
                     <? include ( $_SERVER['DOCUMENT_ROOT'] . "/bill/payment/paysystems/tpl.button_buy.php");?>                   
                 </td>
                 <td class="b-layout__td b-layout__td_padleft_30 b-layout__td_bordleft_e6 b-layout__td_width_50ps">
-                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_15">После нажатия кнопки &laquo;Оплатить&raquo; вам будет сформирована квитанция, оплатить которую вы можете в любом банке, расположенном на территории Российской Федерации.</div>
+                    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_15">РџРѕСЃР»Рµ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРєРё &laquo;РћРїР»Р°С‚РёС‚СЊ&raquo; РІР°Рј Р±СѓРґРµС‚ СЃС„РѕСЂРјРёСЂРѕРІР°РЅР° РєРІРёС‚Р°РЅС†РёСЏ, РѕРїР»Р°С‚РёС‚СЊ РєРѕС‚РѕСЂСѓСЋ РІС‹ РјРѕР¶РµС‚Рµ РІ Р»СЋР±РѕРј Р±Р°РЅРєРµ, СЂР°СЃРїРѕР»РѕР¶РµРЅРЅРѕРј РЅР° С‚РµСЂСЂРёС‚РѕСЂРёРё Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё.</div>
 
                 </td>
             </tr>

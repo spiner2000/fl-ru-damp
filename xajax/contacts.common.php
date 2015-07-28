@@ -21,13 +21,13 @@ $xajax->register(XAJAX_FUNCTION, 'PmFolderDel');
 $xajax->register(XAJAX_FUNCTION, 'getSpamComplaints');
 $xajax->register(XAJAX_FUNCTION, 'sendSpamComplaint');
 
-// Ð§ÐµÑ€Ð½Ð¾Ð²Ð¸ÐºÐ¸
+// Ð Â§Ð ÂµÐ¡Ð‚Ð Ð…Ð Ñ•Ð Ð†Ð Ñ‘Ð Ñ”Ð Ñ‘
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("SaveDraftContacts", $_SERVER['DOCUMENT_ROOT'] . "/xajax/drafts.server.php"));
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("CheckDraftsContacts", $_SERVER['DOCUMENT_ROOT'] . "/xajax/drafts.server.php"));
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("FillDraftForm", $_SERVER['DOCUMENT_ROOT'] . "/xajax/drafts.server.php"));
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("PostDraft", $_SERVER['DOCUMENT_ROOT'] . "/xajax/drafts.server.php"));
 
-//Àÿêñ îáðàáîò÷èêè ïîïàïà ïîêóïêè ÏÐÎ
+//ÐÑÐºÑ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚Ñ‡Ð¸ÐºÐ¸ Ð¿Ð¾Ð¿Ð°Ð¿Ð° Ð¿Ð¾ÐºÑƒÐ¿ÐºÐ¸ ÐŸÐ Ðž
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROPayAccount", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROGetYandexKassaLink", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROGetPlatipotomLink", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));

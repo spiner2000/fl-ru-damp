@@ -15,11 +15,11 @@ switch($site) {
         $rt_checked = !!$rez_type;
         if($rt_disabled = $sbr->checkChangeRT()) {
             if(!($rez_type = $sbr->user_reqvs['rez_type']))
-                 $rez_type = sbr::RT_RU; // åñëè íå óñòàíîâëåí ôëàã â áàçå, íî checkChangeRT, òî ñ÷èòàåì, ÷òî îí ðóñüêèé (ò.ê. äî ôëàãà òîëüêî ðåçèäåíòû áûëè).
+                 $rez_type = sbr::RT_RU; // ÐµÑÐ»Ð¸ Ð½Ðµ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½ Ñ„Ð»Ð°Ð³ Ð² Ð±Ð°Ð·Ðµ, Ð½Ð¾ checkChangeRT, Ñ‚Ð¾ ÑÑ‡Ð¸Ñ‚Ð°ÐµÐ¼, Ñ‡Ñ‚Ð¾ Ð¾Ð½ Ñ€ÑƒÑÑŒÐºÐ¸Ð¹ (Ñ‚.Ðº. Ð´Ð¾ Ñ„Ð»Ð°Ð³Ð° Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ€ÐµÐ·Ð¸Ð´ÐµÐ½Ñ‚Ñ‹ Ð±Ñ‹Ð»Ð¸).
         }
         if($action == 'create' && $rt_checked) {
             if($rez_type != $sbr->user_reqvs['rez_type']) {
-                //@todo: çàïðåùàåì èçìåíÿòü ôèíàíñû â ñòàðîé ÑÁÐ #29196
+                //@todo: Ð·Ð°Ð¿Ñ€ÐµÑ‰Ð°ÐµÐ¼ Ð¸Ð·Ð¼ÐµÐ½ÑÑ‚ÑŒ Ñ„Ð¸Ð½Ð°Ð½ÑÑ‹ Ð² ÑÑ‚Ð°Ñ€Ð¾Ð¹ Ð¡Ð‘Ð  #29196
                 //sbr_meta::setUserReqv($sbr->uid, $rez_type, $sbr->user_reqvs['form_type'], $rrr, TRUE);
                 $sbr->user_reqvs['rez_type'] = $rez_type;
             }
@@ -130,15 +130,15 @@ switch($site) {
                 $stage->v_data = $stage->data;
                 if($sbr->frl_version   > $sbr->version)   { $sbr->data = $sbr->getVersion($sbr->version, $sbr->v_data); $sbr->getScheme(); }
                 if($stage->frl_version > $stage->version) $stage->data = $stage->getVersion($stage->version, $stage->v_data);
-            } else if($sbr->status == sbr::STATUS_PROCESS && $sbr->stages_version == $sbr->frl_stages_version && $sbr->version == $sbr->frl_version && !$sbr->reserved_id) { // !!! ïðîâåðèòü. Ìîæíî ëè ðåçåðâèðîâàòü, åñëè ôðèëàíñåð íå ñîãëàñèëñÿ ñ èçìåíåíèÿìè.
-                // !!! Íåïîíÿòíî ñ êîììåíòàìè. Ó ôðèëàíñåðà â äîñòóïå âñåãäà, à ó çàêàç÷èêà òóò òîëüêî ñòðàíèöà ñ ðåçåðâàöèåé.
+            } else if($sbr->status == sbr::STATUS_PROCESS && $sbr->stages_version == $sbr->frl_stages_version && $sbr->version == $sbr->frl_version && !$sbr->reserved_id) { // !!! Ð¿Ñ€Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÑŒ. ÐœÐ¾Ð¶Ð½Ð¾ Ð»Ð¸ Ñ€ÐµÐ·ÐµÑ€Ð²Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ, ÐµÑÐ»Ð¸ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€ Ð½Ðµ ÑÐ¾Ð³Ð»Ð°ÑÐ¸Ð»ÑÑ Ñ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸ÑÐ¼Ð¸.
+                // !!! ÐÐµÐ¿Ð¾Ð½ÑÑ‚Ð½Ð¾ Ñ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ð¼Ð¸. Ð£ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð° Ð² Ð´Ð¾ÑÑ‚ÑƒÐ¿Ðµ Ð²ÑÐµÐ³Ð´Ð°, Ð° Ñƒ Ð·Ð°ÐºÐ°Ð·Ñ‡Ð¸ÐºÐ° Ñ‚ÑƒÑ‚ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ð° Ñ Ñ€ÐµÐ·ÐµÑ€Ð²Ð°Ñ†Ð¸ÐµÐ¹.
 
                 $bank  = __paramInit('int', 'bank', 'bank');
                 $inner = $fpath.'stage-reserve'.($bank && !$no_reserve ? '-bn' : '').'.php';
-                $ndss = 'Â òîì ÷èñëå ÍÄÑ - 18% ñ ñóììû àãåíòñêîãî âîçíàãðàæäåíèÿ ÎÎÎ "Âààí" ('
+                $ndss = 'Ð’ Ñ‚Ð¾Ð¼ Ñ‡Ð¸ÑÐ»Ðµ ÐÐ”Ð¡ - 18% Ñ ÑÑƒÐ¼Ð¼Ñ‹ Ð°Ð³ÐµÐ½Ñ‚ÑÐºÐ¾Ð³Ð¾ Ð²Ð¾Ð·Ð½Ð°Ð³Ñ€Ð°Ð¶Ð´ÐµÐ½Ð¸Ñ ÐžÐžÐž "Ð’Ð°Ð°Ð½" ('
                       . (100 * $sbr->scheme['taxes'][sbr::EMP][sbr::TAX_EMP_COM]['percent'])
                       . '%)';
-                // åñëè ïðîåêò â ðàçðàáîòêå, òî â ÷åðíîâèêè íåëüçÿ
+                // ÐµÑÐ»Ð¸ Ð¿Ñ€Ð¾ÐµÐºÑ‚ Ð² Ñ€Ð°Ð·Ñ€Ð°Ð±Ð¾Ñ‚ÐºÐµ, Ñ‚Ð¾ Ð² Ñ‡ÐµÑ€Ð½Ð¾Ð²Ð¸ÐºÐ¸ Ð½ÐµÐ»ÑŒÐ·Ñ
                 if($action == 'draft' && $sbr->status != sbr::STATUS_PROCESS) {
                     if($sbr->draft($sbr->id))
                         header_location_exit('/norisk2/?site=drafts');

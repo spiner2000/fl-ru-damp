@@ -10,10 +10,10 @@ if(!hasPermissions('changelogin')) { exit; }
 <? if ($error) print view_error($error); ?>
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
-    <td align="left" style="font-size: 14px; font-weight: bold">Изменения логинов за <?=(($ds == $de)? $ds: $ds.' &ndash; '.$de)?></td>
+    <td align="left" style="font-size: 14px; font-weight: bold">РР·РјРµРЅРµРЅРёСЏ Р»РѕРіРёРЅРѕРІ Р·Р° <?=(($ds == $de)? $ds: $ds.' &ndash; '.$de)?></td>
         <td align="right" style="text-align:right; padding-right:20px">
-        с: <input class="plain" name="ds" value="<?=$ds?>" size="12" style="border: 1px solid #DFDFDF; height: 21px"><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fStartPop(document.daterange.ds,document.daterange.de);return false;"><img class="PopcalTrigger" align="absmiddle" src="/scripts/DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a>
-        по: <input class="plain" name="de" value="<?=$de?>" size="12" style="border: 1px solid #DFDFDF; height: 21px"><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fEndPop(document.daterange.ds,document.daterange.de);return false;"><img class="PopcalTrigger" align="absmiddle" src="/scripts/DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a>
+        СЃ: <input class="plain" name="ds" value="<?=$ds?>" size="12" style="border: 1px solid #DFDFDF; height: 21px"><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fStartPop(document.daterange.ds,document.daterange.de);return false;"><img class="PopcalTrigger" align="absmiddle" src="/scripts/DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a>
+        РїРѕ: <input class="plain" name="de" value="<?=$de?>" size="12" style="border: 1px solid #DFDFDF; height: 21px"><a href="javascript:void(0)" onclick="if(self.gfPop)gfPop.fEndPop(document.daterange.ds,document.daterange.de);return false;"><img class="PopcalTrigger" align="absmiddle" src="/scripts/DateRange/calbtn.gif" width="34" height="22" border="0" alt=""></a>
     </td>
     <td align="right"><input type="submit" value="OK" style="height: 21px"></td>
 </tr>
@@ -25,7 +25,7 @@ if(!hasPermissions('changelogin')) { exit; }
 <table width="50%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 4px">
 <tr>
     <td align="left" style="padding-bottom:10px">
-    	старый логин:
+    	СЃС‚Р°СЂС‹Р№ Р»РѕРіРёРЅ:
     </td>
     <td align="left" style="padding-bottom:10px">
     	<input type="text" name="old_login" value="<?=$old_login?>" />
@@ -33,7 +33,7 @@ if(!hasPermissions('changelogin')) { exit; }
 </tr>
 <tr>
     <td align="left" style="padding-bottom:10px">
-    	новый логин:
+    	РЅРѕРІС‹Р№ Р»РѕРіРёРЅ:
     </td>
     <td align="left" style="padding-bottom:10px">
 		<input type="text" name="new_login" maxlength="15" value="<?=$new_login?>" />
@@ -44,13 +44,13 @@ if(!hasPermissions('changelogin')) { exit; }
     	
     </td>
     <td align="left">
-		<input type="checkbox" name="save" value="1" /> Сохранить логин
+		<input type="checkbox" name="save" value="1" /> РЎРѕС…СЂР°РЅРёС‚СЊ Р»РѕРіРёРЅ
     </td>
 </tr>
 <tr>
     <td align="left" rowspan="2">
     	<input type="hidden" value="<?=$_SESSION["rand"] ?>" name="u_token_key">
-    	<input type="submit" value="Изменить" style="height: 21px">
+    	<input type="submit" value="РР·РјРµРЅРёС‚СЊ" style="height: 21px">
     </td>
 </tr>
 </table>
@@ -58,10 +58,10 @@ if(!hasPermissions('changelogin')) { exit; }
 
 <table width="100%" cellpadding="3" cellspacing="1" style="background:gray"  class="brd-tbl">
     <tr>
-		<td style="background:#e6fdb7;text-align:center;"><strong>Дата</strong></td>
-		<td style="background:#e6fdb7;text-align:center;"><strong>Старый логин</strong></td>
-		<td style="background:#e6fdb7;text-align:center;"><strong>Новый логин</strong></td>
-		<td style="background:#e6fdb7;text-align:center;"><strong>Сохранение логина</strong></td>
+		<td style="background:#e6fdb7;text-align:center;"><strong>Р”Р°С‚Р°</strong></td>
+		<td style="background:#e6fdb7;text-align:center;"><strong>РЎС‚Р°СЂС‹Р№ Р»РѕРіРёРЅ</strong></td>
+		<td style="background:#e6fdb7;text-align:center;"><strong>РќРѕРІС‹Р№ Р»РѕРіРёРЅ</strong></td>
+		<td style="background:#e6fdb7;text-align:center;"><strong>РЎРѕС…СЂР°РЅРµРЅРёРµ Р»РѕРіРёРЅР°</strong></td>
 	</tr>
 	<? if($data) { ?>
     <? foreach($data as $k=>$val) { ?>
@@ -74,7 +74,7 @@ if(!hasPermissions('changelogin')) { exit; }
     <? } ?>
     <? } else { ?>
     <tr style="background:white;">
-        <td colspan="4" align="center" style="text-align:center">Нет изменений</td>
+        <td colspan="4" align="center" style="text-align:center">РќРµС‚ РёР·РјРµРЅРµРЅРёР№</td>
     </tr>
     <? } ?>
 </table>

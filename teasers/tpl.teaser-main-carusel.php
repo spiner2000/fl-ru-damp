@@ -1,6 +1,6 @@
 <td class="b-layout__td b-layout__td_width_70 b-layout__td_center b-layout__td_width_null_ipad"><span class="b-page__desktop"><img class="b-layout__pic" src="/images/promo-icons/small/11.png" alt=""  /></span></td>
-<td class="b-layout__td"><h3 class="b-layout__h3 b-layout__h3_padbot_5"><a class="b-layout__link b-layout__link_bold" href="/pay_place/top_payed.php">Место на карусели главной страницы</a></h3>
-<div class="b-layout__txt">Эффективный и доступный способ прорекламировать себя среди потенциальных заказчиков.</div>
-<div class="b-buttons b-buttons_padtop_10 b-page__iphone"><a href="/pay_place/top_payed.php" class="b-button b-button_flat b-button_flat_green b-button_height_auto">Купить место</a></div>
+<td class="b-layout__td"><h3 class="b-layout__h3 b-layout__h3_padbot_5"><a class="b-layout__link b-layout__link_bold" href="/pay_place/top_payed.php">РњРµСЃС‚Рѕ РЅР° РєР°СЂСѓСЃРµР»Рё РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹</a></h3>
+<div class="b-layout__txt">Р­С„С„РµРєС‚РёРІРЅС‹Р№ Рё РґРѕСЃС‚СѓРїРЅС‹Р№ СЃРїРѕСЃРѕР± РїСЂРѕСЂРµРєР»Р°РјРёСЂРѕРІР°С‚СЊ СЃРµР±СЏ СЃСЂРµРґРё РїРѕС‚РµРЅС†РёР°Р»СЊРЅС‹С… Р·Р°РєР°Р·С‡РёРєРѕРІ.</div>
+<div class="b-buttons b-buttons_padtop_10 b-page__iphone"><a href="/pay_place/top_payed.php" class="b-button b-button_flat b-button_flat_green b-button_height_auto">РљСѓРїРёС‚СЊ РјРµСЃС‚Рѕ</a></div>
 </td>
-<td class="b-layout__td b-layout__td_width_270 b-layout__td_center b-layout__td_valign_mid  b-layout__td_width_null_iphone b-layout__td_pad_10 b-layout__td_pad_null_iphone"><a href="/pay_place/top_payed.php" class="b-button b-button_flat b-button_flat_green b-button_height_auto b-page__desktop b-page__ipad">Купить место</a></td>
+<td class="b-layout__td b-layout__td_width_270 b-layout__td_center b-layout__td_valign_mid  b-layout__td_width_null_iphone b-layout__td_pad_10 b-layout__td_pad_null_iphone"><a href="/pay_place/top_payed.php" class="b-button b-button_flat b-button_flat_green b-button_height_auto b-page__desktop b-page__ipad">РљСѓРїРёС‚СЊ РјРµСЃС‚Рѕ</a></td>

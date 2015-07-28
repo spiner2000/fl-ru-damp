@@ -1,9 +1,9 @@
-<div class="b-layout__txt"><a class="b-layout__link" href="/siteadmin/letters/?mode=company">Все стороны</a> &rarr;</div>
+<div class="b-layout__txt"><a class="b-layout__link" href="/siteadmin/letters/?mode=company">Р’СЃРµ СЃС‚РѕСЂРѕРЅС‹</a> &rarr;</div>
 
 <?php if($_GET['mode']=='edit') { ?>
-<h2 class="b-layout__title">Редактирование стороны: <?=htmlspecialchars($company['name'])?></h2>
+<h2 class="b-layout__title">Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ СЃС‚РѕСЂРѕРЅС‹: <?=htmlspecialchars($company['name'])?></h2>
 <?php } else { ?>
-<h2 class="b-layout__title">Новая сторона</h2>
+<h2 class="b-layout__title">РќРѕРІР°СЏ СЃС‚РѕСЂРѕРЅР°</h2>
 <?php } ?>
 
 <form action="/siteadmin/letters/?mode=<?=htmlspecialchars($_GET['mode'])=='edit' ? 'update' : 'insert' ?>" method="POST" id="frm_company">
@@ -12,7 +12,7 @@
 	<tbody>
 		<tr class="b-layout__tr">
 			<td class="b-layout__left b-layout__left_width_175">
-				<div class="b-layout__txt b-layout__txt_padtop_5">Тип организации</div>
+				<div class="b-layout__txt b-layout__txt_padtop_5">РўРёРї РѕСЂРіР°РЅРёР·Р°С†РёРё</div>
 			</td>
 			<td class="b-layout__right">
 				<div class="b-combo b-combo_inline-block">
@@ -20,7 +20,7 @@
 						<input type="text" class="b-combo__input-text" id="frm_company_type" name="frm_company_type" size="10" value="<?=htmlspecialchars($company['frm_type'])?>">
 					</div>
 				</div>
-				<div class="b-layout__txt b-layout__txt_fontsize_11">Укажите, если есть</div>
+				<div class="b-layout__txt b-layout__txt_fontsize_11">РЈРєР°Р¶РёС‚Рµ, РµСЃР»Рё РµСЃС‚СЊ</div>
 			</td>
 		</tr>
 	</tbody>
@@ -30,7 +30,7 @@
 	<tbody>
 		<tr class="b-layout__tr">
 			<td class="b-layout__left b-layout__left_width_175">
-				<div class="b-layout__txt b-layout__txt_padtop_5">Ф.И.О/Название компании</div>
+				<div class="b-layout__txt b-layout__txt_padtop_5">Р¤.Р.Рћ/РќР°Р·РІР°РЅРёРµ РєРѕРјРїР°РЅРёРё</div>
 			</td>
 			<td class="b-layout__right">
 				<div class="b-combo b-combo_inline-block">
@@ -47,7 +47,7 @@
 	<tbody>
 		<tr class="b-layout__tr">
 			<td class="b-layout__left b-layout__left_width_175">
-				<div class="b-layout__txt b-layout__txt_padtop_5">ФИО представителя</div>
+				<div class="b-layout__txt b-layout__txt_padtop_5">Р¤РРћ РїСЂРµРґСЃС‚Р°РІРёС‚РµР»СЏ</div>
 			</td>
 			<td class="b-layout__right">
 				<div class="b-combo">
@@ -55,7 +55,7 @@
 						<input type="text" class="b-combo__input-text" id="frm_company_fio" name="frm_company_fio" size="80" value="<?=htmlspecialchars($company['fio'])?>">
 					</div>
 				</div>
-				<div class="b-layout__txt b-layout__txt_fontsize_11">Укажите, если есть</div>
+				<div class="b-layout__txt b-layout__txt_fontsize_11">РЈРєР°Р¶РёС‚Рµ, РµСЃР»Рё РµСЃС‚СЊ</div>
 			</td>
 		</tr>
 	</tbody>
@@ -65,7 +65,7 @@
 	<tbody>
 		<tr class="b-layout__tr">
 			<td class="b-layout__left b-layout__left_width_175">
-				<div class="b-layout__txt b-layout__txt_padtop_5">Страна, город</div>
+				<div class="b-layout__txt b-layout__txt_padtop_5">РЎС‚СЂР°РЅР°, РіРѕСЂРѕРґ</div>
 			</td>
 			<td class="b-layout__right">
 				<div class="b-combo">
@@ -84,7 +84,7 @@
 	<tbody>
 		<tr class="b-layout__tr">
 			<td class="b-layout__left b-layout__left_width_175">
-				<div class="b-layout__txt b-layout__txt_padtop_5">Индекс</div>
+				<div class="b-layout__txt b-layout__txt_padtop_5">РРЅРґРµРєСЃ</div>
 			</td>
 			<td class="b-layout__right">
 				<div class="b-combo">
@@ -102,7 +102,7 @@
 	<tbody>
 		<tr class="b-layout__tr">
 			<td class="b-layout__left b-layout__left_width_175">
-				<div class="b-layout__txt b-layout__txt_padtop_5">Адрес</div>
+				<div class="b-layout__txt b-layout__txt_padtop_5">РђРґСЂРµСЃ</div>
 			</td>
 			<td class="b-layout__right">
 				<div class="b-combo">
@@ -116,8 +116,8 @@
 </table>
 
 <div class="b-buttons b-buttons_padtop_40 b-buttons_padbot_20 b-buttons_padleft_180">
-	<a href="" onClick="letters.submitCompany('<?=htmlspecialchars($_GET['mode'])?>'); return false;" class="b-button b-button_flat b-button_flat_green">Сохранить</a>
-	<span class="b-buttons__txt b-buttons__txt_padleft_10">или</span>
-	<a href="/siteadmin/letters/?mode=company" class="b-buttons__link b-buttons__link_dot_c10601">закрыть не сохраняя</a>
+	<a href="" onClick="letters.submitCompany('<?=htmlspecialchars($_GET['mode'])?>'); return false;" class="b-button b-button_flat b-button_flat_green">РЎРѕС…СЂР°РЅРёС‚СЊ</a>
+	<span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё</span>
+	<a href="/siteadmin/letters/?mode=company" class="b-buttons__link b-buttons__link_dot_c10601">Р·Р°РєСЂС‹С‚СЊ РЅРµ СЃРѕС…СЂР°РЅСЏСЏ</a>
 </div>
 </form>

@@ -6,37 +6,37 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/offers_filter.php");
 class freelancer_offers
 {
     /**
-  	 * Максимальный объем текста в описании предложения
+  	 * РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РѕР±СЉРµРј С‚РµРєСЃС‚Р° РІ РѕРїРёСЃР°РЅРёРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ
   	 *
   	 */
 	const MAX_SIZE_DESCRIPTION = 1500;
 	
 	/**
-  	 * Максимальный объем текста в заголовке предложения
+  	 * РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РѕР±СЉРµРј С‚РµРєСЃС‚Р° РІ Р·Р°РіРѕР»РѕРІРєРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
   	 *
   	 */
 	const MAX_SIZE_TITLE = 200;
     
     /**
-     * Номер операции в op_codes для оплаты через FM
+     * РќРѕРјРµСЂ РѕРїРµСЂР°С†РёРё РІ op_codes РґР»СЏ РѕРїР»Р°С‚С‹ С‡РµСЂРµР· FM
      *
      * @var integer
      */
     const FM_OP_CODE = 94;
     
     /**
-     * Стоимости публикации предложения
+     * РЎС‚РѕРёРјРѕСЃС‚Рё РїСѓР±Р»РёРєР°С†РёРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ
      *
      * @var integer
      */
     const SUM_FM_COST = 1;
     
     /**
-     * Количество пользователей на 1 странице
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РЅР° 1 СЃС‚СЂР°РЅРёС†Рµ
      *
      * @var integer
      */
-    const FRL_COUNT_PAGES = 40; // !!! Проверить
+    const FRL_COUNT_PAGES = 40; // !!! РџСЂРѕРІРµСЂРёС‚СЊ
     
     
     protected $access;
@@ -47,9 +47,9 @@ class freelancer_offers
     }
     
     /**
-     * Создание нового предложения
+     * РЎРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
      *
-     * @param array $create    Переменная типа array(name=>value) где name - поле таблицы, value - значение для записи (@see Таблица freelance_offers) 
+     * @param array $create    РџРµСЂРµРјРµРЅРЅР°СЏ С‚РёРїР° array(name=>value) РіРґРµ name - РїРѕР»Рµ С‚Р°Р±Р»РёС†С‹, value - Р·РЅР°С‡РµРЅРёРµ РґР»СЏ Р·Р°РїРёСЃРё (@see РўР°Р±Р»РёС†Р° freelance_offers) 
      * @return boolean|string
      */
     public function Create($create) {
@@ -58,7 +58,7 @@ class freelancer_offers
         if($_SESSION['uid'] == $uid && !is_emp()) {
             $account = new account;
             $transaction_id = $account->start_transaction($uid, $tr_id);
-            $error = $account->Buy($billing_id, $transaction_id, self::FM_OP_CODE, $uid, "Покупка публикации предложения фрилансера", "Покупка публикации предложения", 1, 0);
+            $error = $account->Buy($billing_id, $transaction_id, self::FM_OP_CODE, $uid, "РџРѕРєСѓРїРєР° РїСѓР±Р»РёРєР°С†РёРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂР°", "РџРѕРєСѓРїРєР° РїСѓР±Р»РёРєР°С†РёРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ", 1, 0);
             if ($error) return $error;
             $account->commit_transaction($transaction_id, $uid, $billing_id);
             $create['bill_id'] = $billing_id;
@@ -86,17 +86,17 @@ class freelancer_offers
     }
     
     /**
-     * Обновление предложения
+     * РћР±РЅРѕРІР»РµРЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
      *
-     * @param integer $fid      ИД обновляемого предложения
-     * @param array   $update   Переменная типа array(name=>value) где name - поле таблицы, value - значение для записи (@see Таблица freelance_offers) 
+     * @param integer $fid      РР” РѕР±РЅРѕРІР»СЏРµРјРѕРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+     * @param array   $update   РџРµСЂРµРјРµРЅРЅР°СЏ С‚РёРїР° array(name=>value) РіРґРµ name - РїРѕР»Рµ С‚Р°Р±Р»РёС†С‹, value - Р·РЅР°С‡РµРЅРёРµ РґР»СЏ Р·Р°РїРёСЃРё (@see РўР°Р±Р»РёС†Р° freelance_offers) 
      * @return boolean
      */
     public function Update($fid, $update) {
         global $DB;
         
         if ( !hasPermissions('projects') && !is_pro() ) {
-            // автор, не админ, не про
+            // Р°РІС‚РѕСЂ, РЅРµ Р°РґРјРёРЅ, РЅРµ РїСЂРѕ
             $update['moderator_status'] = 0;
             require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/stop_words.php' );
             require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/user_content.php' );
@@ -117,10 +117,10 @@ class freelancer_offers
     }
     
     /**
-     * Данные по ленте предложений
+     * Р”Р°РЅРЅС‹Рµ РїРѕ Р»РµРЅС‚Рµ РїСЂРµРґР»РѕР¶РµРЅРёР№
      *
-     * @param array|mixed $filter  Фильтр (@see offers_filter.php)
-     * @param bool        $only_my_offs  показывать только мои предложения
+     * @param array|mixed $filter  Р¤РёР»СЊС‚СЂ (@see offers_filter.php)
+     * @param bool        $only_my_offs  РїРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ РјРѕРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ
      * @return array
      */
     public function GetFreelancerOffers($filter=false, $offset=0, $limit = 'ALL', $only_my_offs = false, $is_ban = false) {
@@ -169,12 +169,12 @@ class freelancer_offers
     }
     
     /**
-     * Блокированые предложения из раздела "Сделаю"
+     * Р‘Р»РѕРєРёСЂРѕРІР°РЅС‹Рµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РёР· СЂР°Р·РґРµР»Р° "РЎРґРµР»Р°СЋ"
      *
-     * @param int &$total_offers  - сколько всего предложений, удовлетворяющих условиям поиска   
+     * @param int &$total_offers  - СЃРєРѕР»СЊРєРѕ РІСЃРµРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёР№, СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РїРѕРёСЃРєР°   
      * @param int $offset
      * @param mixed int|string $limit
-     * @param string $search      - подстрока, которую будем искать в title, descr, login, uname, usurname
+     * @param string $search      - РїРѕРґСЃС‚СЂРѕРєР°, РєРѕС‚РѕСЂСѓСЋ Р±СѓРґРµРј РёСЃРєР°С‚СЊ РІ title, descr, login, uname, usurname
      * @return array
      */
     public function GetBlockedFreelancerOffers(&$total_offers, $offset=0, $limit = 'ALL', $search='') {
@@ -210,7 +210,7 @@ class freelancer_offers
     }
     
     /**
-     * Идентификаторы предложений из раздела "Сделаю"
+     * РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РїСЂРµРґР»РѕР¶РµРЅРёР№ РёР· СЂР°Р·РґРµР»Р° "РЎРґРµР»Р°СЋ"
      * 
      * @return array ($id => $position)
      */
@@ -236,7 +236,7 @@ class freelancer_offers
     }
     
     /**
-     * Количество блокированых предложений раздела "Сделаю"     
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ Р±Р»РѕРєРёСЂРѕРІР°РЅС‹С… РїСЂРµРґР»РѕР¶РµРЅРёР№ СЂР°Р·РґРµР»Р° "РЎРґРµР»Р°СЋ"     
      * @return int
      */
     public static function GetCountFreelancerBlockedOffers() {
@@ -250,9 +250,9 @@ class freelancer_offers
     }
     
     /**
-     * Удаление предложения
+     * РЈРґР°Р»РµРЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
      *
-     * @param integer $fid ИД Предложения
+     * @param integer $fid РР” РџСЂРµРґР»РѕР¶РµРЅРёСЏ
      * @return 
      */
     public function Delete($fid) {
@@ -264,10 +264,10 @@ class freelancer_offers
     }
     
     /**
-     * Возвращает предложение по его ИД
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РїСЂРµРґР»РѕР¶РµРЅРёРµ РїРѕ РµРіРѕ РР”
      * 
-     * @param  integer $fid ИД Предложения
-     * @param  boolean $access флаг проверки прав доступа
+     * @param  integer $fid РР” РџСЂРµРґР»РѕР¶РµРЅРёСЏ
+     * @param  boolean $access С„Р»Р°Рі РїСЂРѕРІРµСЂРєРё РїСЂР°РІ РґРѕСЃС‚СѓРїР°
      * @return array
      */
     public function getOfferById($fid, $access = true) {
@@ -277,7 +277,7 @@ class freelancer_offers
     }
     
     /**
-     * Возвращает общее количество предложений
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РѕР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРµРґР»РѕР¶РµРЅРёР№
      *
      * @param unknown_type $filter
      * @return unknown
@@ -299,13 +299,13 @@ class freelancer_offers
     }
     
     /**
-     * Добавляет жалобу на предложение
+     * Р”РѕР±Р°РІР»СЏРµС‚ Р¶Р°Р»РѕР±Сѓ РЅР° РїСЂРµРґР»РѕР¶РµРЅРёРµ
      * 
-     * @param  int $offer_id Идентификатор предложения на которое жалуются
-     * @param  int $user_id Идентификатор пользователя который жалуется
-     * @param  int $type Тип нарушения
-     * @param  string $msg Суть жалобы
-     * @return bool true - успех, false - провал
+     * @param  int $offer_id РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РЅР° РєРѕС‚РѕСЂРѕРµ Р¶Р°Р»СѓСЋС‚СЃСЏ
+     * @param  int $user_id РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕС‚РѕСЂС‹Р№ Р¶Р°Р»СѓРµС‚СЃСЏ
+     * @param  int $type РўРёРї РЅР°СЂСѓС€РµРЅРёСЏ
+     * @param  string $msg РЎСѓС‚СЊ Р¶Р°Р»РѕР±С‹
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function AddComplain( $offer_id, $user_id, $type, $msg ) {
         $msg   = change_q_new( stripslashes($msg), true, true );
@@ -322,11 +322,11 @@ class freelancer_offers
     }
     
     /**
-     * Оставлял ли юзер жалобу на предложение
+     * РћСЃС‚Р°РІР»СЏР» Р»Рё СЋР·РµСЂ Р¶Р°Р»РѕР±Сѓ РЅР° РїСЂРµРґР»РѕР¶РµРЅРёРµ
      *
-     * @param  int $project_id Идентификатор предложения на которое жалуются
-     * @param  int $user_id Идентификатор пользователя который жалуется
-     * @return bool true - оставлял, false - нет
+     * @param  int $project_id РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РЅР° РєРѕС‚РѕСЂРѕРµ Р¶Р°Р»СѓСЋС‚СЃСЏ
+     * @param  int $user_id РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕС‚РѕСЂС‹Р№ Р¶Р°Р»СѓРµС‚СЃСЏ
+     * @return bool true - РѕСЃС‚Р°РІР»СЏР», false - РЅРµС‚
      */
     function ComplainExists( $offer_id, $user_id ) {
         $sQuery = "SELECT COUNT(id) FROM freelance_offers_complains WHERE offer_id=?i AND user_id=?i";
@@ -334,7 +334,7 @@ class freelancer_offers
     }
     
     /**
-     * Возвращает количество предложений с жалобами
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРµРґР»РѕР¶РµРЅРёР№ СЃ Р¶Р°Р»РѕР±Р°РјРё
      * 
      * @return int
      */
@@ -360,16 +360,16 @@ class freelancer_offers
     }
     
     /**
-     * Возвращает предложения с жалобами
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РїСЂРµРґР»РѕР¶РµРЅРёСЏ СЃ Р¶Р°Р»РѕР±Р°РјРё
      * 
-     * @param  int $nums возвращает кол-во предложений с жалобами
-     * @param  string $error возвращает сообщение об ошибке
-     * @param  int $page номер страницы
-     * @param  string $sort тип сортировки
-     * @param  string $search строка для поиска
-     * @param  int $admin uid модератора, заблокированные предложения которого нужно показать
-     * @param  int $nLimit количество элементов на странице
-     * @param  bool $unlimited установить в true если нужно получить все записи (без постраничного вывода)
+     * @param  int $nums РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»-РІРѕ РїСЂРµРґР»РѕР¶РµРЅРёР№ СЃ Р¶Р°Р»РѕР±Р°РјРё
+     * @param  string $error РІРѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
+     * @param  int $page РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹
+     * @param  string $sort С‚РёРї СЃРѕСЂС‚РёСЂРѕРІРєРё
+     * @param  string $search СЃС‚СЂРѕРєР° РґР»СЏ РїРѕРёСЃРєР°
+     * @param  int $admin uid РјРѕРґРµСЂР°С‚РѕСЂР°, Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РєРѕС‚РѕСЂРѕРіРѕ РЅСѓР¶РЅРѕ РїРѕРєР°Р·Р°С‚СЊ
+     * @param  int $nLimit РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РЅР° СЃС‚СЂР°РЅРёС†Рµ
+     * @param  bool $unlimited СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РІ true РµСЃР»Рё РЅСѓР¶РЅРѕ РїРѕР»СѓС‡РёС‚СЊ РІСЃРµ Р·Р°РїРёСЃРё (Р±РµР· РїРѕСЃС‚СЂР°РЅРёС‡РЅРѕРіРѕ РІС‹РІРѕРґР°)
      * @return array
      */
     function GetComplainOffers( &$nums, &$error, $page = 1, $sort = '', $search = '', $admin = 0, $nLimit = 20, $unlimited = false ) {
@@ -377,10 +377,10 @@ class freelancer_offers
         $nOffset     = $nLimit * ($page - 1);
         $bCountCache = false;
         
-        // сортировка
+        // СЃРѕСЂС‚РёСЂРѕРІРєР°
         $sOrder = ( $sort == 'login' ) ? ' login ' : ( $search ? ' relevant DESC ' : ' oc.date DESC ' );
         
-        // поиск
+        // РїРѕРёСЃРє
         $sSelect = '';
         $sWhere  = '';
         
@@ -426,7 +426,7 @@ class freelancer_offers
             LEFT JOIN prof_group pg ON pg.id = fo.category_id 
             LEFT JOIN professions p ON p.id = fo.subcategory_id 
             LEFT JOIN ( 
-                -- количество жалоб на предложение
+                -- РєРѕР»РёС‡РµСЃС‚РІРѕ Р¶Р°Р»РѕР± РЅР° РїСЂРµРґР»РѕР¶РµРЅРёРµ
                 SELECT MIN(foc.id) AS min_cnt_id, COUNT(occ.id) AS complain_cnt 
                 FROM freelance_offers_complains occ 
                 INNER JOIN freelance_offers foc ON foc.id = occ.offer_id 
@@ -453,9 +453,9 @@ class freelancer_offers
     }
     
     /**
-     * Возвращает список жалоб на предложение.
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє Р¶Р°Р»РѕР± РЅР° РїСЂРµРґР»РѕР¶РµРЅРёРµ.
      * 
-     * @param  int $nOfferId Идентификатор предложения
+     * @param  int $nOfferId РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
      * @return array
      */
     function getOfferComplaints( $nOfferId = 0 ) {
@@ -469,10 +469,10 @@ class freelancer_offers
     }
     
     /**
-     * Удаляет все жалобы на предложение
+     * РЈРґР°Р»СЏРµС‚ РІСЃРµ Р¶Р°Р»РѕР±С‹ РЅР° РїСЂРµРґР»РѕР¶РµРЅРёРµ
      * 
-     * @param  int $nOfferId Идентификатор предложения
-     * @return bool true - успех, false - провал
+     * @param  int $nOfferId РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function deleteOfferComplaints( $nOfferId = 0 ) {
         $GLOBALS['DB']->query( 'DELETE FROM freelance_offers_complains WHERE offer_id = ?i', $nOfferId );
@@ -493,31 +493,31 @@ class freelancer_offers
     }
     
     /**
-     * Возвращает тип нарушения по номеру
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ С‚РёРї РЅР°СЂСѓС€РµРЅРёСЏ РїРѕ РЅРѕРјРµСЂСѓ
      * 
-     * @param  int $complain_type тип нарушения
+     * @param  int $complain_type С‚РёРї РЅР°СЂСѓС€РµРЅРёСЏ
      * @return string
      */
     function GetComplainType( $complain_type ) {
         switch( $complain_type ) {
             case 1:
-                $sName = 'Реклама, массовая публикация';
+                $sName = 'Р РµРєР»Р°РјР°, РјР°СЃСЃРѕРІР°СЏ РїСѓР±Р»РёРєР°С†РёСЏ';
                 break;
             case 2:
-                $sName = 'Дубликат предложения (за 24 часа)';
+                $sName = 'Р”СѓР±Р»РёРєР°С‚ РїСЂРµРґР»РѕР¶РµРЅРёСЏ (Р·Р° 24 С‡Р°СЃР°)';
                 break;
             case 4:
-                $sName = 'Контактные данные';
+                $sName = 'РљРѕРЅС‚Р°РєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ';
                 break;
             case 5:
-                $sName = 'Реклама, ссылки на сторонние ресурсы';
+                $sName = 'Р РµРєР»Р°РјР°, СЃСЃС‹Р»РєРё РЅР° СЃС‚РѕСЂРѕРЅРЅРёРµ СЂРµСЃСѓСЂСЃС‹';
                 break;
             case 6:
-                $sName = 'Мат, ругань, оскорбления';
+                $sName = 'РњР°С‚, СЂСѓРіР°РЅСЊ, РѕСЃРєРѕСЂР±Р»РµРЅРёСЏ';
                 break;
             case 3:
             default:
-                $sName = 'Другое';
+                $sName = 'Р”СЂСѓРіРѕРµ';
                 break;
         }
         

@@ -9,14 +9,14 @@
 /**
  * Class Form_Validate_CostOrAgreementRequired
  *
- * Валидатор проверяет заполнение одного из полей: "Бюджет" и "По договоренности"
+ * Р’Р°Р»РёРґР°С‚РѕСЂ РїСЂРѕРІРµСЂСЏРµС‚ Р·Р°РїРѕР»РЅРµРЅРёРµ РѕРґРЅРѕРіРѕ РёР· РїРѕР»РµР№: "Р‘СЋРґР¶РµС‚" Рё "РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё"
  */
 class Form_Validate_CostOrAgreementRequired extends Zend_Validate_Abstract {
     
     const INVALID = 'invalid';
 
     protected $_messageTemplates = array(
-        self::INVALID => 'Укажите бюджет или отметьте пункт "По договоренности"'
+        self::INVALID => 'РЈРєР°Р¶РёС‚Рµ Р±СЋРґР¶РµС‚ РёР»Рё РѕС‚РјРµС‚СЊС‚Рµ РїСѓРЅРєС‚ "РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё"'
     ); 
 
     public function isValid($value, $context = array())

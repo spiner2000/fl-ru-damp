@@ -1,7 +1,7 @@
 <? if($sbr->status == sbr::STATUS_PROCESS && !$sbr->data['reserved_id']) {?>
 <div class="b-fon b-fon_width_full">
     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb">
-			<span class="b-icon b-icon_sbr_rattent b-icon_margleft_-20"></span>Не начинайте работу, пока заказчик не зарезервирует деньги под эту сделку!
+			<span class="b-icon b-icon_sbr_rattent b-icon_margleft_-20"></span>РќРµ РЅР°С‡РёРЅР°Р№С‚Рµ СЂР°Р±РѕС‚Сѓ, РїРѕРєР° Р·Р°РєР°Р·С‡РёРє РЅРµ Р·Р°СЂРµР·РµСЂРІРёСЂСѓРµС‚ РґРµРЅСЊРіРё РїРѕРґ СЌС‚Сѓ СЃРґРµР»РєСѓ!
 	</div>
 </div>	
 <? } ?>
@@ -9,7 +9,7 @@
 <? if($stage->status == sbr_stages::STATUS_PROCESS && $sbr->data['reserved_id']) {?>
 <div class="b-fon b-fon_width_full">
     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-			<span class="b-icon b-icon_sbr_brur b-icon_margleft_-20"></span>Заказчик зарезервировал деньги на сделку, можно приступать к работе.
+			<span class="b-icon b-icon_sbr_brur b-icon_margleft_-20"></span>Р—Р°РєР°Р·С‡РёРє Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°Р» РґРµРЅСЊРіРё РЅР° СЃРґРµР»РєСѓ, РјРѕР¶РЅРѕ РїСЂРёСЃС‚СѓРїР°С‚СЊ Рє СЂР°Р±РѕС‚Рµ.
 	</div>
 </div>	
 <? } ?>
@@ -18,7 +18,7 @@
 <div class="b-fon b-fon_width_full">
     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
         <span class="b-icon b-icon_sbr_gattent b-icon_margleft_-20"></span>
-        Чтобы получить заработанные деньги, вы должны выслать <a class="b-fon__link b-fon__link_bordbot_dot_0f71c8" href="javascript:void(0);" onclick="JSScroll($('head_docs'));">подписанные документы</a>.
+        Р§С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ Р·Р°СЂР°Р±РѕС‚Р°РЅРЅС‹Рµ РґРµРЅСЊРіРё, РІС‹ РґРѕР»Р¶РЅС‹ РІС‹СЃР»Р°С‚СЊ <a class="b-fon__link b-fon__link_bordbot_dot_0f71c8" href="javascript:void(0);" onclick="JSScroll($('head_docs'));">РїРѕРґРїРёСЃР°РЅРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹</a>.
 	</div>
 </div>
 <? } ?>
@@ -27,7 +27,7 @@
 <div class="b-fon b-fon_width_full">
     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb">
         <span class="b-icon b-icon_sbr_avesy b-icon_margleft_-20"></span>
-        Решение будет вынесено до <?= $stage->getStrOvertimeArbitrage()?>, после чего этап будет завершен. Арбитражная комиссия предложит вам урегулировать ситуацию по взаимной договоренности с другой стороной. В случае, если договоренность не будет достигнута, арбитраж примет одно из решений, указанных в пункте 9.9 <a class="b-layout__link" href="<?= $sbr->getDocumentLink('contract'); ?>">Договора</a>.
+        Р РµС€РµРЅРёРµ Р±СѓРґРµС‚ РІС‹РЅРµСЃРµРЅРѕ РґРѕ <?= $stage->getStrOvertimeArbitrage()?>, РїРѕСЃР»Рµ С‡РµРіРѕ СЌС‚Р°Рї Р±СѓРґРµС‚ Р·Р°РІРµСЂС€РµРЅ. РђСЂР±РёС‚СЂР°Р¶РЅР°СЏ РєРѕРјРёСЃСЃРёСЏ РїСЂРµРґР»РѕР¶РёС‚ РІР°Рј СѓСЂРµРіСѓР»РёСЂРѕРІР°С‚СЊ СЃРёС‚СѓР°С†РёСЋ РїРѕ РІР·Р°РёРјРЅРѕР№ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё СЃ РґСЂСѓРіРѕР№ СЃС‚РѕСЂРѕРЅРѕР№. Р’ СЃР»СѓС‡Р°Рµ, РµСЃР»Рё РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚СЊ РЅРµ Р±СѓРґРµС‚ РґРѕСЃС‚РёРіРЅСѓС‚Р°, Р°СЂР±РёС‚СЂР°Р¶ РїСЂРёРјРµС‚ РѕРґРЅРѕ РёР· СЂРµС€РµРЅРёР№, СѓРєР°Р·Р°РЅРЅС‹С… РІ РїСѓРЅРєС‚Рµ 9.9 <a class="b-layout__link" href="<?= $sbr->getDocumentLink('contract'); ?>">Р”РѕРіРѕРІРѕСЂР°</a>.
         </div>
 </div>	
 <? } ?>
@@ -41,15 +41,15 @@
             $byConsent = $stage->arbitrage['by_consent'] === 't';
             $byAward   = $stage->isByAward();
             if ($frlPercent === (float)1) { ?>
-                Арбитраж принял решение о выплате вам 100% бюджета.
+                РђСЂР±РёС‚СЂР°Р¶ РїСЂРёРЅСЏР» СЂРµС€РµРЅРёРµ Рѕ РІС‹РїР»Р°С‚Рµ РІР°Рј 100% Р±СЋРґР¶РµС‚Р°.
             <? } elseif ($frlPercent === (float)0) { ?>
-                Арбитраж принял решение о возвращении 100% бюджета заказчику.
+                РђСЂР±РёС‚СЂР°Р¶ РїСЂРёРЅСЏР» СЂРµС€РµРЅРёРµ Рѕ РІРѕР·РІСЂР°С‰РµРЅРёРё 100% Р±СЋРґР¶РµС‚Р° Р·Р°РєР°Р·С‡РёРєСѓ.
             <? } else { ?>
-                Арбитраж завершил этот этап. 
+                РђСЂР±РёС‚СЂР°Р¶ Р·Р°РІРµСЂС€РёР» СЌС‚РѕС‚ СЌС‚Р°Рї. 
                 <? if($byAward) {?>
-                По решению арбитража бюджет был разделен.
+                РџРѕ СЂРµС€РµРЅРёСЋ Р°СЂР±РёС‚СЂР°Р¶Р° Р±СЋРґР¶РµС‚ Р±С‹Р» СЂР°Р·РґРµР»РµРЅ.
                 <? } elseif ($byConsent) { ?>
-                По соглашению сторон бюджет был разделен.
+                РџРѕ СЃРѕРіР»Р°С€РµРЅРёСЋ СЃС‚РѕСЂРѕРЅ Р±СЋРґР¶РµС‚ Р±С‹Р» СЂР°Р·РґРµР»РµРЅ.
                 <? }?>
             <? } ?>
 	</div>
@@ -57,7 +57,7 @@
 <? } ?>
 
 <? if($stage->status == sbr_stages::STATUS_COMPLETED && !$stage->data['frl_feedback_id'] && $stage->sbr->scheme_type == sbr::SCHEME_LC) { 
-    // $completed_time -- время завершения сделки берется из файла tpl.stage-history-event.php -- чтобы лишний раз не выбирать его
+    // $completed_time -- РІСЂРµРјСЏ Р·Р°РІРµСЂС€РµРЅРёСЏ СЃРґРµР»РєРё Р±РµСЂРµС‚СЃСЏ РёР· С„Р°Р№Р»Р° tpl.stage-history-event.php -- С‡С‚РѕР±С‹ Р»РёС€РЅРёР№ СЂР°Р· РЅРµ РІС‹Р±РёСЂР°С‚СЊ РµРіРѕ
     $cdate = new LocalDateTime($completed_time);
     $cdate->getWorkForDay(pskb::PERIOD_FRL_EXEC);
     $pskb_created = $cdate->getTimestamp();
@@ -65,7 +65,7 @@
 <div class="b-fon b-fon_width_full">
     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
         <span class="b-icon b-icon_sbr_gattent b-icon_margleft_-20"></span>
-        Чтобы получить заработанные деньги, вам необходимо нажать кнопку «Завершить этап» до <?= date('d', $overtime_completed)?> <?= monthtostr(date('n', $overtime_completed), true)?> <?= date('Y', $overtime_completed)?>.
+        Р§С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ Р·Р°СЂР°Р±РѕС‚Р°РЅРЅС‹Рµ РґРµРЅСЊРіРё, РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РЅР°Р¶Р°С‚СЊ РєРЅРѕРїРєСѓ В«Р—Р°РІРµСЂС€РёС‚СЊ СЌС‚Р°РїВ» РґРѕ <?= date('d', $overtime_completed)?> <?= monthtostr(date('n', $overtime_completed), true)?> <?= date('Y', $overtime_completed)?>.
 	</div>
 </div>	
 <? }//if?>

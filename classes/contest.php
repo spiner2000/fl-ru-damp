@@ -1,107 +1,107 @@
 <?php
 /**
- * Подключаем файл с основными функциями системы
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» СЃ РѕСЃРЅРѕРІРЅС‹РјРё С„СѓРЅРєС†РёСЏРјРё СЃРёСЃС‚РµРјС‹
  */
 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/stdf.php';
 /**
- * Класс для работы с предложениями и комментариями в конкурсах.
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РїСЂРµРґР»РѕР¶РµРЅРёСЏРјРё Рё РєРѕРјРјРµРЅС‚Р°СЂРёСЏРјРё РІ РєРѕРЅРєСѓСЂСЃР°С….
  */
 class contest {
 
     /**
-     * id проекта с которым в текущий момент идет работа
+     * id РїСЂРѕРµРєС‚Р° СЃ РєРѕС‚РѕСЂС‹Рј РІ С‚РµРєСѓС‰РёР№ РјРѕРјРµРЅС‚ РёРґРµС‚ СЂР°Р±РѕС‚Р°
      *
      * @var integer
      */
 	public $pid = 0;
 
     /**
-     * uid пользователя, который работает с конкурсом
+     * uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РєРѕС‚РѕСЂС‹Р№ СЂР°Р±РѕС‚Р°РµС‚ СЃ РєРѕРЅРєСѓСЂСЃРѕРј
      *
      * @var integer
      */
 	public $uid = 0;
 
     /**
-     * пользователь работодатель?
+     * РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ?
      *
      * @var boolean
      */
 	public $is_emp = FALSE;
 
     /**
-     * пользователь автор этого конкурса?
+     * РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р°РІС‚РѕСЂ СЌС‚РѕРіРѕ РєРѕРЅРєСѓСЂСЃР°?
      *
      * @var boolean
      */
 	public $is_owner = FALSE;
 
     /**
-     * пользователь модератор, админ или малый админ?
+     * РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РјРѕРґРµСЂР°С‚РѕСЂ, Р°РґРјРёРЅ РёР»Рё РјР°Р»С‹Р№ Р°РґРјРёРЅ?
      *
      * @var boolean
      */
 	public $is_moder = FALSE;
 
     /**
-     * пользователь со статусом pro?
+     * РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃРѕ СЃС‚Р°С‚СѓСЃРѕРј pro?
      *
      * @var boolean
      */
 	public $is_pro = FALSE;
 	
     /**
-     * пользователь $this->uid забанен в этом конкурсе?
+     * РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ $this->uid Р·Р°Р±Р°РЅРµРЅ РІ СЌС‚РѕРј РєРѕРЅРєСѓСЂСЃРµ?
      *
      * @var boolean
      */
 	public $is_banned = FALSE;
 
     /**
-     * пользователь $this->uid уже добавлял предложение в этом конкурсу?
+     * РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ $this->uid СѓР¶Рµ РґРѕР±Р°РІР»СЏР» РїСЂРµРґР»РѕР¶РµРЅРёРµ РІ СЌС‚РѕРј РєРѕРЅРєСѓСЂСЃСѓ?
      *
      * @var boolean
      */
 	public $has_offer = FALSE;
 
     /**
-     * id нового предложения (устанавливается после $this->CreateOffer)
+     * id РЅРѕРІРѕРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЏ (СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ РїРѕСЃР»Рµ $this->CreateOffer)
      *
      * @var integer
      */
 	public $new_oid = 0;
 
     /**
-     * id нового комментария (устанавливается после $this->CreateComment)
+     * id РЅРѕРІРѕРіРѕ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ (СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ РїРѕСЃР»Рµ $this->CreateComment)
      *
      * @var integer
      */
 	public $new_cid = 0;
 
     /**
-     * массив с выбранными предложениями и комментариями (устанавливается после $this->GetOffers)
+     * РјР°СЃСЃРёРІ СЃ РІС‹Р±СЂР°РЅРЅС‹РјРё РїСЂРµРґР»РѕР¶РµРЅРёСЏРјРё Рё РєРѕРјРјРµРЅС‚Р°СЂРёСЏРјРё (СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ РїРѕСЃР»Рµ $this->GetOffers)
      *
      * @var array
      */
 	public $offers = array();
 
     /**
-     * массив с выбранным предложением и комментариями к нему (устанавливается после $this->GetOffer)
+     * РјР°СЃСЃРёРІ СЃ РІС‹Р±СЂР°РЅРЅС‹Рј РїСЂРµРґР»РѕР¶РµРЅРёРµРј Рё РєРѕРјРјРµРЅС‚Р°СЂРёСЏРјРё Рє РЅРµРјСѓ (СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ РїРѕСЃР»Рµ $this->GetOffer)
      *
      * @var array
      */
 	public $offer = array();
 
     /**
-     * статистика по конкурсу (устанавливается после $this->GetOffers с учетом фильтра или $this->GetStat для всех предложений)
+     * СЃС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РєРѕРЅРєСѓСЂСЃСѓ (СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ РїРѕСЃР»Рµ $this->GetOffers СЃ СѓС‡РµС‚РѕРј С„РёР»СЊС‚СЂР° РёР»Рё $this->GetStat РґР»СЏ РІСЃРµС… РїСЂРµРґР»РѕР¶РµРЅРёР№)
      *
      * @var array
      */
 	public $stat = array();
 
     /**
-     * если конкурс завершен и победители объявлены, здесь хранятся данные о побежденных предложениях (ссылки на элементы в $this->offers)
-	 * 1-ый элемент -> 1 место и т.д.
+     * РµСЃР»Рё РєРѕРЅРєСѓСЂСЃ Р·Р°РІРµСЂС€РµРЅ Рё РїРѕР±РµРґРёС‚РµР»Рё РѕР±СЉСЏРІР»РµРЅС‹, Р·РґРµСЃСЊ С…СЂР°РЅСЏС‚СЃСЏ РґР°РЅРЅС‹Рµ Рѕ РїРѕР±РµР¶РґРµРЅРЅС‹С… РїСЂРµРґР»РѕР¶РµРЅРёСЏС… (СЃСЃС‹Р»РєРё РЅР° СЌР»РµРјРµРЅС‚С‹ РІ $this->offers)
+	 * 1-С‹Р№ СЌР»РµРјРµРЅС‚ -> 1 РјРµСЃС‚Рѕ Рё С‚.Рґ.
      *
      * @var array
      */
@@ -109,20 +109,20 @@ class contest {
 	
 	/*
 	
-	В массиве $this->offers кроме предложений, хранится дерево комментариев, выглядит это примерно так
-	  $this->offers[0]['comments'] <- массив комментариев для первого предложения
-	  $this->offers[0]['comments'][0] <- первый комментарий для первого предложения
-	  $this->offers[0]['comments'][0]['comments'][0] <- первый комментарий являющийся ответом на $this->offers[0]['comments'][0]
-	  ну и т.д. :)
+	Р’ РјР°СЃСЃРёРІРµ $this->offers РєСЂРѕРјРµ РїСЂРµРґР»РѕР¶РµРЅРёР№, С…СЂР°РЅРёС‚СЃСЏ РґРµСЂРµРІРѕ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ, РІС‹РіР»СЏРґРёС‚ СЌС‚Рѕ РїСЂРёРјРµСЂРЅРѕ С‚Р°Рє
+	  $this->offers[0]['comments'] <- РјР°СЃСЃРёРІ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ РґР»СЏ РїРµСЂРІРѕРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+	  $this->offers[0]['comments'][0] <- РїРµСЂРІС‹Р№ РєРѕРјРјРµРЅС‚Р°СЂРёР№ РґР»СЏ РїРµСЂРІРѕРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+	  $this->offers[0]['comments'][0]['comments'][0] <- РїРµСЂРІС‹Р№ РєРѕРјРјРµРЅС‚Р°СЂРёР№ СЏРІР»СЏСЋС‰РёР№СЃСЏ РѕС‚РІРµС‚РѕРј РЅР° $this->offers[0]['comments'][0]
+	  РЅСѓ Рё С‚.Рґ. :)
 	  
-	Массив $this->offer аналогичен $this->offers, только содержит одно предложение
+	РњР°СЃСЃРёРІ $this->offer Р°РЅР°Р»РѕРіРёС‡РµРЅ $this->offers, С‚РѕР»СЊРєРѕ СЃРѕРґРµСЂР¶РёС‚ РѕРґРЅРѕ РїСЂРµРґР»РѕР¶РµРЅРёРµ
 	
-	Массиве $this->stat содержит следующие индексы:
-	  offers  -  количество предложений
-	  candidates  -  количество кандидатов
-	  banned  -  количество забанненный
-	  offer  -  массив, offer['id'] - id самой популярной работы, offer['rating'] - рейтинг этой работы
-	  leader -  массив с данными самого активного пользователя array('uid', 'login', 'uname', 'usurname', 'photo')
+	РњР°СЃСЃРёРІРµ $this->stat СЃРѕРґРµСЂР¶РёС‚ СЃР»РµРґСѓСЋС‰РёРµ РёРЅРґРµРєСЃС‹:
+	  offers  -  РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРµРґР»РѕР¶РµРЅРёР№
+	  candidates  -  РєРѕР»РёС‡РµСЃС‚РІРѕ РєР°РЅРґРёРґР°С‚РѕРІ
+	  banned  -  РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°Р±Р°РЅРЅРµРЅРЅС‹Р№
+	  offer  -  РјР°СЃСЃРёРІ, offer['id'] - id СЃР°РјРѕР№ РїРѕРїСѓР»СЏСЂРЅРѕР№ СЂР°Р±РѕС‚С‹, offer['rating'] - СЂРµР№С‚РёРЅРі СЌС‚РѕР№ СЂР°Р±РѕС‚С‹
+	  leader -  РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё СЃР°РјРѕРіРѕ Р°РєС‚РёРІРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ array('uid', 'login', 'uname', 'usurname', 'photo')
 	  
 	*/
 	
@@ -131,13 +131,13 @@ class contest {
 
 	
 	/**
-	 * Конструктор.
-	 * @param  integer  $pid       id проекта (для некоторых методов, его можно не указывать)
-	 * @param  integer  $uid       uid пользотеля, который работает с конкурсом
-	 * @param  boolean  $is_emp    пользователь работодатель?
-	 * @param  boolean  $is_owner  пользователь автор этого конкурса?
-	 * @param  boolean  $is_moder  пользователь модератор, админ или малый админ?
-	 * @param  boolean  $is_pro    у пользователя статус pro?
+	 * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ.
+	 * @param  integer  $pid       id РїСЂРѕРµРєС‚Р° (РґР»СЏ РЅРµРєРѕС‚РѕСЂС‹С… РјРµС‚РѕРґРѕРІ, РµРіРѕ РјРѕР¶РЅРѕ РЅРµ СѓРєР°Р·С‹РІР°С‚СЊ)
+	 * @param  integer  $uid       uid РїРѕР»СЊР·РѕС‚РµР»СЏ, РєРѕС‚РѕСЂС‹Р№ СЂР°Р±РѕС‚Р°РµС‚ СЃ РєРѕРЅРєСѓСЂСЃРѕРј
+	 * @param  boolean  $is_emp    РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ?
+	 * @param  boolean  $is_owner  РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р°РІС‚РѕСЂ СЌС‚РѕРіРѕ РєРѕРЅРєСѓСЂСЃР°?
+	 * @param  boolean  $is_moder  РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РјРѕРґРµСЂР°С‚РѕСЂ, Р°РґРјРёРЅ РёР»Рё РјР°Р»С‹Р№ Р°РґРјРёРЅ?
+	 * @param  boolean  $is_pro    Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃС‚Р°С‚СѓСЃ pro?
 	 */
 	public function __construct($pid, $uid, $is_emp=FALSE, $is_owner=FALSE, $is_moder=FALSE, $is_pro=FALSE) {
         global $DB;
@@ -152,12 +152,12 @@ class contest {
 	}
 
     /**
-     * Получение статуса существования предложения конкретного пользователя по конкретному проекту (есть/нет)
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃС‚Р°С‚СѓСЃР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ РєРѕРЅРєСЂРµС‚РЅРѕРјСѓ РїСЂРѕРµРєС‚Сѓ (РµСЃС‚СЊ/РЅРµС‚)
      *
-     * @param integer $prj_id          id проекта
-     * @param integer $user_id         id пользователя
+     * @param integer $prj_id          id РїСЂРѕРµРєС‚Р°
+     * @param integer $user_id         id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      *
-     * @return boolean                 да/нет
+     * @return boolean                 РґР°/РЅРµС‚
      */
 	public function IsContestOfferExists($prj_id, $user_id) {
         global $DB;
@@ -184,13 +184,13 @@ class contest {
 	}
 	
 	/**
-	 * Инициализирует список предложений с комментариями ($this->offers) и статистику ($this->stat)
-	 * @param   string   $filter  фильтр, может принимать значение candidates для выбора предложений только кандидатов
-	 * @return  boolean           успех операции
+	 * РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ СЃРїРёСЃРѕРє РїСЂРµРґР»РѕР¶РµРЅРёР№ СЃ РєРѕРјРјРµРЅС‚Р°СЂРёСЏРјРё ($this->offers) Рё СЃС‚Р°С‚РёСЃС‚РёРєСѓ ($this->stat)
+	 * @param   string   $filter  С„РёР»СЊС‚СЂ, РјРѕР¶РµС‚ РїСЂРёРЅРёРјР°С‚СЊ Р·РЅР°С‡РµРЅРёРµ candidates РґР»СЏ РІС‹Р±РѕСЂР° РїСЂРµРґР»РѕР¶РµРЅРёР№ С‚РѕР»СЊРєРѕ РєР°РЅРґРёРґР°С‚РѕРІ
+	 * @return  boolean           СѓСЃРїРµС… РѕРїРµСЂР°С†РёРё
 	 */
 	public function GetOffers($filter='', $set_read=true) {
         global $DB;
-		// дата последнего посещения
+		// РґР°С‚Р° РїРѕСЃР»РµРґРЅРµРіРѕ РїРѕСЃРµС‰РµРЅРёСЏ
         if(hasPermissions('projects')) {
     		$sql = "SELECT * FROM projects_watch WHERE prj_id = ?i AND user_id IN (SELECT user_id FROM permissions_groups_users) ORDER BY last_view DESC LIMIT 1";
         } else {
@@ -200,7 +200,7 @@ class contest {
 		if (!$watch) $watch = array('status'=>'f', 'last_view'=>'1970-01-01 00:00:00');
         if(hasPermissions('projects') && $watch['user_id']) $watch['user_id'] = $this->uid;
 
-		// предложения
+		// РїСЂРµРґР»РѕР¶РµРЅРёСЏ
 		$sql = "
 			SELECT
 				offers.*, 
@@ -230,19 +230,19 @@ class contest {
             foreach($res as $row) {
     			$this->offers[$i] = $row;
     			$in[] = $this->offers[$i]['id'];
-    			if ($this->offers[$i]['user_id'] == $this->uid) $this->has_offer = TRUE;  // делал ли уже пользователь предложение в этом конкурсе
-    			if (!$this->is_moder) $this->offers[$i]['msg_count'] = 0;                 // сброс кол-ва сообещний, для правильно пересчета
-    			if ($this->uid && $this->offers[$i]['post_date'] > $watch['last_view'] && $this->offers[$i]['user_id'] != $this->uid) $this->offers[$i]['is_new'] = TRUE;  // видели ли это предложение?
-    			//if (strtotime($this->offers[$i]['post_date']) > $today) $this->stat['offers_today']++;  // кол-во предложений сегодня (стастика)
+    			if ($this->offers[$i]['user_id'] == $this->uid) $this->has_offer = TRUE;  // РґРµР»Р°Р» Р»Рё СѓР¶Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РїСЂРµРґР»РѕР¶РµРЅРёРµ РІ СЌС‚РѕРј РєРѕРЅРєСѓСЂСЃРµ
+    			if (!$this->is_moder) $this->offers[$i]['msg_count'] = 0;                 // СЃР±СЂРѕСЃ РєРѕР»-РІР° СЃРѕРѕР±РµС‰РЅРёР№, РґР»СЏ РїСЂР°РІРёР»СЊРЅРѕ РїРµСЂРµСЃС‡РµС‚Р°
+    			if ($this->uid && $this->offers[$i]['post_date'] > $watch['last_view'] && $this->offers[$i]['user_id'] != $this->uid) $this->offers[$i]['is_new'] = TRUE;  // РІРёРґРµР»Рё Р»Рё СЌС‚Рѕ РїСЂРµРґР»РѕР¶РµРЅРёРµ?
+    			//if (strtotime($this->offers[$i]['post_date']) > $today) $this->stat['offers_today']++;  // РєРѕР»-РІРѕ РїСЂРµРґР»РѕР¶РµРЅРёР№ СЃРµРіРѕРґРЅСЏ (СЃС‚Р°СЃС‚РёРєР°)
                 if($this->offers[$i]['is_deleted']=='f') {
-        			$this->stat['offers']++;  // кол-во предложений (статистика)
+        			$this->stat['offers']++;  // РєРѕР»-РІРѕ РїСЂРµРґР»РѕР¶РµРЅРёР№ (СЃС‚Р°С‚РёСЃС‚РёРєР°)
                 }
-    			if ($this->offers[$i]['selected'] == 't' && $this->offers[$i]['is_deleted'] == 'f') $this->stat['candidates']++;  // кол-во кандидатов (статистика)
-    			// если победители уже определены
+    			if ($this->offers[$i]['selected'] == 't' && $this->offers[$i]['is_deleted'] == 'f') $this->stat['candidates']++;  // РєРѕР»-РІРѕ РєР°РЅРґРёРґР°С‚РѕРІ (СЃС‚Р°С‚РёСЃС‚РёРєР°)
+    			// РµСЃР»Рё РїРѕР±РµРґРёС‚РµР»Рё СѓР¶Рµ РѕРїСЂРµРґРµР»РµРЅС‹
     			if ($this->offers[$i]['position']) {
     				$this->positions[ $this->offers[$i]['position'] ] = &$this->offers[$i];
     			}
-    			$offidx[$row['id']] = $i++;  // массив ссылок на предложения по их id
+    			$offidx[$row['id']] = $i++;  // РјР°СЃСЃРёРІ СЃСЃС‹Р»РѕРє РЅР° РїСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РёС… id
     		}
         }
 		if ($filter) {
@@ -252,15 +252,15 @@ class contest {
 			WHERE project_id = ?i AND user_id = ?i AND f.is_banned = '0' ";
 			$this->has_offer = (bool) $DB->val($sql, $this->pid, $this->uid);
 		}
-		if (!$this->offers) return TRUE;  // если нет предложений, идти дальше нет смысла
-		// кол-во заблокированых пользователей (статистика)
+		if (!$this->offers) return TRUE;  // РµСЃР»Рё РЅРµС‚ РїСЂРµРґР»РѕР¶РµРЅРёР№, РёРґС‚Рё РґР°Р»СЊС€Рµ РЅРµС‚ СЃРјС‹СЃР»Р°
+		// РєРѕР»-РІРѕ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ (СЃС‚Р°С‚РёСЃС‚РёРєР°)
 		$sql = "SELECT COUNT(*) FROM projects_contest_blocked b 
 		INNER JOIN freelancer f ON b.user_id = f.uid 
 		INNER JOIN projects_contest_offers o ON o.user_id = f.uid AND o.project_id = b.project_id 
 		 WHERE b.project_id = ?i AND f.is_banned = '0' AND o.is_deleted = false";
 		$this->stat['banned'] = $DB->val($sql, $this->pid);
 
-		// комментарии
+		// РєРѕРјРјРµРЅС‚Р°СЂРёРё
 		$sql = "
 			SELECT
 				msgs.*, 
@@ -279,7 +279,7 @@ class contest {
 				post_date
 		";
 
-		// первый проход - привязываем комментарии без родителя к предложениям
+		// РїРµСЂРІС‹Р№ РїСЂРѕС…РѕРґ - РїСЂРёРІСЏР·С‹РІР°РµРј РєРѕРјРјРµРЅС‚Р°СЂРёРё Р±РµР· СЂРѕРґРёС‚РµР»СЏ Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј
 		$i = 0;
 		$comments = array();
 		$commidx  = array();
@@ -287,7 +287,7 @@ class contest {
         if($res) {
             foreach($res as $row) {
     			$comments[$i] = $row;
-			    $commidx[$row['id']] = $i; // массив ссылок на комментарии по их id
+			    $commidx[$row['id']] = $i; // РјР°СЃСЃРёРІ СЃСЃС‹Р»РѕРє РЅР° РєРѕРјРјРµРЅС‚Р°СЂРёРё РїРѕ РёС… id
     			if (!$comments[$i]['reply_to']) {
 				    //if ($is_owner || $comments[$i]['user_blocked'] != 't') {
     					$idx = $offidx[$comments[$i]['offer_id']];
@@ -309,7 +309,7 @@ class contest {
     			++$i;
     		}
         }
-		// второй проход - привязываем комментарии к комментариям
+		// РІС‚РѕСЂРѕР№ РїСЂРѕС…РѕРґ - РїСЂРёРІСЏР·С‹РІР°РµРј РєРѕРјРјРµРЅС‚Р°СЂРёРё Рє РєРѕРјРјРµРЅС‚Р°СЂРёСЏРј
 		for ($i=0,$c=count($comments); $i<$c; $i++) {
 			if (($idx = $comments[$i]['reply_to']) && isset($commidx[$idx])) {
 				//if ($is_owner || ($comments[$i]['user_blocked'] != 't' && $comments[$commidx[$idx]]['user_blocked'] != 't')) {
@@ -329,7 +329,7 @@ class contest {
 				//}
 			}
 		}
-		// аттачи
+		// Р°С‚С‚Р°С‡Рё
 		$sql = "
 			SELECT
 				attach.*,
@@ -353,7 +353,7 @@ class contest {
     			$this->offers[$offidx[$row['offer_id']]]['attach'][] = $row;
     		}
         }
-		// устанавливаем в ноль флаг количества непрочитанных комментариев
+		// СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РІ РЅРѕР»СЊ С„Р»Р°Рі РєРѕР»РёС‡РµСЃС‚РІР° РЅРµРїСЂРѕС‡РёС‚Р°РЅРЅС‹С… РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
 		if ($set_read) {
             if(hasPermissions('projects')) {
                 $sql = "UPDATE projects_contest_offers SET mod_new_msg_count = 0 WHERE project_id = ?i";
@@ -375,10 +375,10 @@ class contest {
 
 	
 	/**
-	 * Выбирает данные о конкретном предложении и заполняет этими данными массив $this->offer
-	 * @param   integer  $oid        id предложения
-	 * @param   bool $check_access нужно ли проверять права доступа (например при редактировании предложения)
-	 * @return  boolean              успех операции
+	 * Р’С‹Р±РёСЂР°РµС‚ РґР°РЅРЅС‹Рµ Рѕ РєРѕРЅРєСЂРµС‚РЅРѕРј РїСЂРµРґР»РѕР¶РµРЅРёРё Рё Р·Р°РїРѕР»РЅСЏРµС‚ СЌС‚РёРјРё РґР°РЅРЅС‹РјРё РјР°СЃСЃРёРІ $this->offer
+	 * @param   integer  $oid        id РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+	 * @param   bool $check_access РЅСѓР¶РЅРѕ Р»Рё РїСЂРѕРІРµСЂСЏС‚СЊ РїСЂР°РІР° РґРѕСЃС‚СѓРїР° (РЅР°РїСЂРёРјРµСЂ РїСЂРё СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ)
+	 * @return  boolean              СѓСЃРїРµС… РѕРїРµСЂР°С†РёРё
 	 */
 	public function GetOffer($oid, $check_access = false) {
         global $DB;
@@ -407,7 +407,7 @@ class contest {
 		";
 		$this->offer = $DB->row($sql, $oid);
 		if (!$this->offer) return TRUE;
-		// файлы
+		// С„Р°Р№Р»С‹
 		$sql = "
 			SELECT
 				file.id, file.fname, file.size, file.modified, preview.fname AS prev_fname, preview.size AS prev_size, 
@@ -431,9 +431,9 @@ class contest {
 	
 	
 	/**
-	 * Выбирает строку данных из projects_contest_offers
-	 * @param   integer  $oid   id предложения
-	 * @return  array           строка данных из projects_contest_offers
+	 * Р’С‹Р±РёСЂР°РµС‚ СЃС‚СЂРѕРєСѓ РґР°РЅРЅС‹С… РёР· projects_contest_offers
+	 * @param   integer  $oid   id РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+	 * @return  array           СЃС‚СЂРѕРєР° РґР°РЅРЅС‹С… РёР· projects_contest_offers
 	 */
 	public function GetOfferRow($oid) {
         global $DB;
@@ -444,10 +444,10 @@ class contest {
 
 	
 	/**
-	 * Выбирает строку данных из projects_contest_offers со связими в projects и users
-	 * Используется в рассылках
-	 * @param   integer  $oid   id предложения
-	 * @return  array           строка данных из projects_contest_offers
+	 * Р’С‹Р±РёСЂР°РµС‚ СЃС‚СЂРѕРєСѓ РґР°РЅРЅС‹С… РёР· projects_contest_offers СЃРѕ СЃРІСЏР·РёРјРё РІ projects Рё users
+	 * РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ СЂР°СЃСЃС‹Р»РєР°С…
+	 * @param   integer  $oid   id РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+	 * @return  array           СЃС‚СЂРѕРєР° РґР°РЅРЅС‹С… РёР· projects_contest_offers
 	 */
 	public function GetOfferFullRow($oid) {
         global $DB;
@@ -470,26 +470,26 @@ class contest {
 	}
 	
 	/**
-	 * Создает предложение
-	 * @param   string   $descr         описание
-	 * @param   string   $files         данные о загруженных файлах примерно следующего вида: "u34356/u37857/o983982"
-	 *                                  префикс "u" обозначает что файл был загружен, префикс "o", что файл не именялся, т.е.
-	 *                                  был загружен ранее ("o" используется только в ChangeOffer). цифры это id файла в таблице projects_contest_attach
-	 * @param   boolean  $comm_blocked  автор запретил комментирование?
-	 * @return  string                  сообщение об ошибке или пустая строка, если все нормально
+	 * РЎРѕР·РґР°РµС‚ РїСЂРµРґР»РѕР¶РµРЅРёРµ
+	 * @param   string   $descr         РѕРїРёСЃР°РЅРёРµ
+	 * @param   string   $files         РґР°РЅРЅС‹Рµ Рѕ Р·Р°РіСЂСѓР¶РµРЅРЅС‹С… С„Р°Р№Р»Р°С… РїСЂРёРјРµСЂРЅРѕ СЃР»РµРґСѓСЋС‰РµРіРѕ РІРёРґР°: "u34356/u37857/o983982"
+	 *                                  РїСЂРµС„РёРєСЃ "u" РѕР±РѕР·РЅР°С‡Р°РµС‚ С‡С‚Рѕ С„Р°Р№Р» Р±С‹Р» Р·Р°РіСЂСѓР¶РµРЅ, РїСЂРµС„РёРєСЃ "o", С‡С‚Рѕ С„Р°Р№Р» РЅРµ РёРјРµРЅСЏР»СЃСЏ, С‚.Рµ.
+	 *                                  Р±С‹Р» Р·Р°РіСЂСѓР¶РµРЅ СЂР°РЅРµРµ ("o" РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ С‚РѕР»СЊРєРѕ РІ ChangeOffer). С†РёС„СЂС‹ СЌС‚Рѕ id С„Р°Р№Р»Р° РІ С‚Р°Р±Р»РёС†Рµ projects_contest_attach
+	 * @param   boolean  $comm_blocked  Р°РІС‚РѕСЂ Р·Р°РїСЂРµС‚РёР» РєРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ?
+	 * @return  string                  СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°, РµСЃР»Рё РІСЃРµ РЅРѕСЂРјР°Р»СЊРЅРѕ
 	 */
 	public function CreateOffer($descr, $files, $comm_blocked) {
         global $DB;
-		if ($this->is_banned) return "Забаненые пользователи не могут добавлять комментарии";
+		if ($this->is_banned) return "Р—Р°Р±Р°РЅРµРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ РјРѕРіСѓС‚ РґРѕР±Р°РІР»СЏС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёРё";
 		/*if (!$this->is_pro) {
 			require_once $_SERVER['DOCUMENT_ROOT'].'/classes/projects_offers_answers.php';
 			$answers = new projects_offers_answers;
 			$answers->getInfo($this->uid, TRUE);
-			if (!$answers->offers) return "У Вас закончились ответы на проекты";
+			if (!$answers->offers) return "РЈ Р’Р°СЃ Р·Р°РєРѕРЅС‡РёР»РёСЃСЊ РѕС‚РІРµС‚С‹ РЅР° РїСЂРѕРµРєС‚С‹";
 		}*/
 		$sql = "SELECT COUNT(*) FROM projects_contest_offers WHERE user_id = ?i AND project_id = ?i";
 		$row[0] = $DB->val($sql, $this->uid, $this->pid);
-		if ($row[0]) return "У Вас уже есть предложение";
+		if ($row[0]) return "РЈ Р’Р°СЃ СѓР¶Рµ РµСЃС‚СЊ РїСЂРµРґР»РѕР¶РµРЅРёРµ";
         
 		$sql = 'SELECT p.end_date, e.is_pro FROM projects p 
             LEFT JOIN employer e ON e.uid = p.user_id 
@@ -497,9 +497,9 @@ class contest {
         
 		$aData = $DB->row( $sql, $this->pid );
         
-		if (strtotime($aData['end_date']) < time()) return "Конкурс окончен";
+		if (strtotime($aData['end_date']) < time()) return "РљРѕРЅРєСѓСЂСЃ РѕРєРѕРЅС‡РµРЅ";
 		//$descr = substr(change_q(trim($descr), true, 90), 0, 3000);
-		// добавление предложения
+		// РґРѕР±Р°РІР»РµРЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
         $nStopWordsCnt = 0;
         
         if ( !is_pro() && $aData['is_pro'] != 't') {
@@ -525,7 +525,7 @@ class contest {
             $DB->insert( 'moderation', array('rec_id' => $this->new_oid, 'rec_type' => user_content::MODER_PRJ_OFFERS, 'stop_words_cnt' => $nStopWordsCnt) );
         }
 
-		// добавление файлов
+		// РґРѕР±Р°РІР»РµРЅРёРµ С„Р°Р№Р»РѕРІ
 		$s = array();
 		if ($files) {
 			$files = explode('/', $files);
@@ -551,10 +551,10 @@ class contest {
 		}
 		$this->ClearTempFiles();
         
-        // id работодателя-создателя конкурса
+        // id СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ-СЃРѕР·РґР°С‚РµР»СЏ РєРѕРЅРєСѓСЂСЃР°
         $sql = "SELECT p.user_id FROM projects p WHERE p.id = ?i";
         $emp_id = $DB->val($sql, $this->pid);
-        // сброс количества непросмотренных событий в проектах
+        // СЃР±СЂРѕСЃ РєРѕР»РёС‡РµСЃС‚РІР° РЅРµРїСЂРѕСЃРјРѕС‚СЂРµРЅРЅС‹С… СЃРѕР±С‹С‚РёР№ РІ РїСЂРѕРµРєС‚Р°С…
         $mem = new memBuff();
         $mem->delete("prjMsgsCnt{$emp_id}");
         $mem->delete('prjEventsCnt' . $emp_id);
@@ -564,21 +564,21 @@ class contest {
 
 	
 	/**
-	 * Создает предложение
-	 * @param   integer  $oid           id редактируемого предложения
-	 * @param   string   $descr         описание
-	 * @param   string   $files         данные о загруженных файлах примерно следующего вида: "u34356/u37857/o983982"
-	 *                                  префикс "u" обозначает что файл был загружен, префикс "o", что файл не именялся, т.е.
-	 *                                  был загружен ранее. цифры это id файла в таблице projects_contest_attach
-	 * @param   boolean  $comm_blocked  автор запретил комментирование?
-	 * @return  string                  сообщение об ошибке или пустая строка, если все нормально
+	 * РЎРѕР·РґР°РµС‚ РїСЂРµРґР»РѕР¶РµРЅРёРµ
+	 * @param   integer  $oid           id СЂРµРґР°РєС‚РёСЂСѓРµРјРѕРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+	 * @param   string   $descr         РѕРїРёСЃР°РЅРёРµ
+	 * @param   string   $files         РґР°РЅРЅС‹Рµ Рѕ Р·Р°РіСЂСѓР¶РµРЅРЅС‹С… С„Р°Р№Р»Р°С… РїСЂРёРјРµСЂРЅРѕ СЃР»РµРґСѓСЋС‰РµРіРѕ РІРёРґР°: "u34356/u37857/o983982"
+	 *                                  РїСЂРµС„РёРєСЃ "u" РѕР±РѕР·РЅР°С‡Р°РµС‚ С‡С‚Рѕ С„Р°Р№Р» Р±С‹Р» Р·Р°РіСЂСѓР¶РµРЅ, РїСЂРµС„РёРєСЃ "o", С‡С‚Рѕ С„Р°Р№Р» РЅРµ РёРјРµРЅСЏР»СЃСЏ, С‚.Рµ.
+	 *                                  Р±С‹Р» Р·Р°РіСЂСѓР¶РµРЅ СЂР°РЅРµРµ. С†РёС„СЂС‹ СЌС‚Рѕ id С„Р°Р№Р»Р° РІ С‚Р°Р±Р»РёС†Рµ projects_contest_attach
+	 * @param   boolean  $comm_blocked  Р°РІС‚РѕСЂ Р·Р°РїСЂРµС‚РёР» РєРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅРёРµ?
+	 * @return  string                  СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°, РµСЃР»Рё РІСЃРµ РЅРѕСЂРјР°Р»СЊРЅРѕ
 	 */
 	public function ChangeOffer($oid, $descr, $files, $comm_blocked) {
         global $DB;
 		$oid = intval($oid);
-		if ($this->is_banned) return "Забаненые пользователи не могут добавлять комментарии";
-		if (!($offer = $this->GetOfferRow($oid))) return "Нет предложения для редактирования";
-		if ($offer['user_id'] != $this->uid && !$this->is_moder) return "Нет предложения для редактирования";
+		if ($this->is_banned) return "Р—Р°Р±Р°РЅРµРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ РјРѕРіСѓС‚ РґРѕР±Р°РІР»СЏС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёРё";
+		if (!($offer = $this->GetOfferRow($oid))) return "РќРµС‚ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ";
+		if ($offer['user_id'] != $this->uid && !$this->is_moder) return "РќРµС‚ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ";
         
 		$sql = 'SELECT p.end_date, e.is_pro FROM projects p 
             LEFT JOIN employer e ON e.uid = p.user_id 
@@ -586,16 +586,16 @@ class contest {
         
 		$aData = $DB->row( $sql, $this->pid );
         
-		if (strtotime($aData['end_date']) < time()) return "Конкурс окончен";
+		if (strtotime($aData['end_date']) < time()) return "РљРѕРЅРєСѓСЂСЃ РѕРєРѕРЅС‡РµРЅ";
 		//$descr = substr(change_q(trim($descr), true, 90), 0, 3000);
 		
-		// редактирование файлов
-		$s = array(); // новые файлы
-		$o = array(); // айдишки старых файлов
-		$p = array(); // старые файлы
-		$h = array(); // айдишки старых файлов, которые не нужно удалять
-		$a = array(); // старые файлы, которые нужно заново положить в базу
-        $u = array(); // финальный список файлов
+		// СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ С„Р°Р№Р»РѕРІ
+		$s = array(); // РЅРѕРІС‹Рµ С„Р°Р№Р»С‹
+		$o = array(); // Р°Р№РґРёС€РєРё СЃС‚Р°СЂС‹С… С„Р°Р№Р»РѕРІ
+		$p = array(); // СЃС‚Р°СЂС‹Рµ С„Р°Р№Р»С‹
+		$h = array(); // Р°Р№РґРёС€РєРё СЃС‚Р°СЂС‹С… С„Р°Р№Р»РѕРІ, РєРѕС‚РѕСЂС‹Рµ РЅРµ РЅСѓР¶РЅРѕ СѓРґР°Р»СЏС‚СЊ
+		$a = array(); // СЃС‚Р°СЂС‹Рµ С„Р°Р№Р»С‹, РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ Р·Р°РЅРѕРІРѕ РїРѕР»РѕР¶РёС‚СЊ РІ Р±Р°Р·Сѓ
+        $u = array(); // С„РёРЅР°Р»СЊРЅС‹Р№ СЃРїРёСЃРѕРє С„Р°Р№Р»РѕРІ
 		$res = $DB->rows("SELECT * FROM projects_contest_attach WHERE offer_id = ?i ORDER BY sort ASC", $oid);
         if($res) {
             foreach($res as $row) {
@@ -621,7 +621,7 @@ class contest {
 			}
 		}
 		$DB->query("DELETE FROM projects_contest_attach WHERE offer_id = ?i", $oid);
-		// удаляем удаленные
+		// СѓРґР°Р»СЏРµРј СѓРґР°Р»РµРЅРЅС‹Рµ
 		$cn = new CFile();
 		for ($i=0; $i<count($o); $i++) {
 			if (!in_array($o[$i], $h)) {
@@ -651,7 +651,7 @@ class contest {
             }
         }
         
-        // редактирование предложения
+        // СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
 		$sql .= "UPDATE projects_contest_offers SET descr = ?, comm_blocked = ".($comm_blocked? 'true': 'false').", modified = NOW(), moduser_id = ?i $sMod WHERE id = ?i";
 		$DB->query($sql, $descr, $this->uid, $oid);
 
@@ -660,11 +660,11 @@ class contest {
 	}
 	
 	/**
-	 * Добавляет файлы к предложению
+	 * Р”РѕР±Р°РІР»СЏРµС‚ С„Р°Р№Р»С‹ Рє РїСЂРµРґР»РѕР¶РµРЅРёСЋ
 	 * 
-	 * @param integer $oid ID редактируемого предложения
-	 * @param array $s список файлов.
-     * @param integer $pos номер файла по порядку
+	 * @param integer $oid ID СЂРµРґР°РєС‚РёСЂСѓРµРјРѕРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+	 * @param array $s СЃРїРёСЃРѕРє С„Р°Р№Р»РѕРІ.
+     * @param integer $pos РЅРѕРјРµСЂ С„Р°Р№Р»Р° РїРѕ РїРѕСЂСЏРґРєСѓ
 	 */
 	function addOfferFiles( $oid, $s, $pos=0 ) {
 	    global $DB;
@@ -697,16 +697,16 @@ class contest {
 	}
     
 	/**
-	 * Удаляет предложение
-	 * @param   integer  $oid   id предложения
-	 * @return  string          сообщение об ошибке или пустая строка, если все нормально
+	 * РЈРґР°Р»СЏРµС‚ РїСЂРµРґР»РѕР¶РµРЅРёРµ
+	 * @param   integer  $oid   id РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+	 * @return  string          СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°, РµСЃР»Рё РІСЃРµ РЅРѕСЂРјР°Р»СЊРЅРѕ
 	 */
 	public function DeleteOffer($oid) {
         global $DB;
 		$oid = intval($oid);
-		// проверка наличия предложения
-		if (!($offer = $this->GetOfferRow($oid))) return "Несуществующее предложение";
-		// файлы
+		// РїСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+		if (!($offer = $this->GetOfferRow($oid))) return "РќРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ";
+		// С„Р°Р№Р»С‹
 
 
 
@@ -718,37 +718,37 @@ class contest {
     			$cf->Delete($row['prev_id']);
     		}
         }
-		// предложение
+		// РїСЂРµРґР»РѕР¶РµРЅРёРµ
 		$DB->query("DELETE FROM projects_contest_offers WHERE id = ?i", $oid);
 		return 0;
 	}
 
     /**
-     * Удаление предложения(пометка как удаленное)
+     * РЈРґР°Р»РµРЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ(РїРѕРјРµС‚РєР° РєР°Рє СѓРґР°Р»РµРЅРЅРѕРµ)
      *
-     * @param   integer $offer_id   ID предложения
-     * @return  string              сообщение об ошибке или пустая строка, если все нормально
+     * @param   integer $offer_id   ID РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+     * @return  string              СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°, РµСЃР»Рё РІСЃРµ РЅРѕСЂРјР°Р»СЊРЅРѕ
      */
     public function RemoveOffer($offer_id) {
         return $this->setOfferDeleted( $offer_id, true );
     }
 
     /**
-     * Восстановление предложения
+     * Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
      *
-     * @param   integer $offer_id   ID предложения
-     * @return  string              сообщение об ошибке или пустая строка, если все нормально
+     * @param   integer $offer_id   ID РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+     * @return  string              СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°, РµСЃР»Рё РІСЃРµ РЅРѕСЂРјР°Р»СЊРЅРѕ
      */
     public function RestoreOffer($offer_id) {
         return $this->setOfferDeleted( $offer_id, false );
     }
     
     /**
-     * Удаление или восстановление предложения (устанавливает флаг is_deleted)
+     * РЈРґР°Р»РµРЅРёРµ РёР»Рё РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ (СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ С„Р»Р°Рі is_deleted)
      * 
-     * @param  int $offer_id ID предложения
-     * @param  bool $is_deleted новое значение поля is_deleted в projects_contest_offers
-     * @return string сообщение об ошибке или пустая строка, если все нормально
+     * @param  int $offer_id ID РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+     * @param  bool $is_deleted РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ is_deleted РІ projects_contest_offers
+     * @return string СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°, РµСЃР»Рё РІСЃРµ РЅРѕСЂРјР°Р»СЊРЅРѕ
      */
     function setOfferDeleted( $offer_id, $is_deleted = false ) {
         global $DB;
@@ -757,7 +757,7 @@ class contest {
         $user_id  = get_uid( false );
         
         if ( !($offer = $this->GetOfferRow($offer_id)) ) {
-            return "Несуществующее предложение";
+            return "РќРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ";
         }
         
         $aUser = $DB->row( 'SELECT f.uid, f.login, f.uname, f.usurname, 
@@ -798,14 +798,14 @@ class contest {
             $sql .= 'UPDATE projects_contest_offers SET is_deleted = ?b, deluser_id = ?i '. $sModer .' WHERE id = ?i';
             $DB->query( $sql, $is_deleted, $deluser_id, $offer_id );
             
-            // пишем лог админских действий: удаление предложения в проекте
+            // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№: СѓРґР°Р»РµРЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РІ РїСЂРѕРµРєС‚Рµ
             if ( !$DB->error && $aUser['uid'] != $user_id ) {
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/admin_log.php' );
                 
                 $sPrjLink = getFriendlyURL('project', $aUser['project_id']);
                 $sOffLink = $sPrjLink . "?offer={$offer_id}#offer-{$offer_id}";
                 
-                $sReason = '<a href="' . $sOffLink . '" target="_blank">Предложение</a> от <a href="' . $GLOBALS['host'] 
+                $sReason = '<a href="' . $sOffLink . '" target="_blank">РџСЂРµРґР»РѕР¶РµРЅРёРµ</a> РѕС‚ <a href="' . $GLOBALS['host'] 
                     . '/users/' . $aUser['login'] . '" target="_blank">' . $aUser['uname'] . ' ' . $aUser['usurname'] 
                     . ' [' . $aUser['login'] . ']</a>';
                 
@@ -822,9 +822,9 @@ class contest {
     }
 	
 	/**
-	 * Возвращает данные комментария
-	 * @param   integer  $cid   id комментария
-	 * @return  array           данные комментария
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+	 * @param   integer  $cid   id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+	 * @return  array           РґР°РЅРЅС‹Рµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
 	 */
 	public function GetComment($cid) {
         global $DB;
@@ -848,25 +848,25 @@ class contest {
 	
 	
 	/**
-	 * Создает комментарий
-	 * @param   integer   $oid       id предложения, который комментируют
-	 * @param   string    $comment   комментарий
-	 * @param   integer   $reply     id комментария на который отвечают или 0, если комментарий 1-го уровня
-	 * @return  string               сообщение об ошибке или пустая строка, если все нормально
+	 * РЎРѕР·РґР°РµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёР№
+	 * @param   integer   $oid       id РїСЂРµРґР»РѕР¶РµРЅРёСЏ, РєРѕС‚РѕСЂС‹Р№ РєРѕРјРјРµРЅС‚РёСЂСѓСЋС‚
+	 * @param   string    $comment   РєРѕРјРјРµРЅС‚Р°СЂРёР№
+	 * @param   integer   $reply     id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ РЅР° РєРѕС‚РѕСЂС‹Р№ РѕС‚РІРµС‡Р°СЋС‚ РёР»Рё 0, РµСЃР»Рё РєРѕРјРјРµРЅС‚Р°СЂРёР№ 1-РіРѕ СѓСЂРѕРІРЅСЏ
+	 * @return  string               СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°, РµСЃР»Рё РІСЃРµ РЅРѕСЂРјР°Р»СЊРЅРѕ
 	 */
 	public function CreateComment($oid, $comment, $reply=0) {
         global $DB;
 		$oid = intval($oid);
 		$reply = intval($reply);
 		//$comment = substr(change_q(trim($comment), true, 90), 0, 1000);
-		if (!($offer = $this->GetOffer($oid))) return 'Несуществующее предложение';
+		if (!($offer = $this->GetOffer($oid))) return 'РќРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ';
 
-		if ($offer['closed'] == 't') return "Проект завершен";
-		// пользователь забанен в текущем предложении?
-		if ($this->is_banned) return "Забаненые пользователи не могут добавлять комментарии";
-		// пользователь запретил комментировать свое предложение?
-		if ($offer['comm_blocked'] == 't') return 'Автор предложения отключил возможность комментирования';
-		// добавляем комментарий
+		if ($offer['closed'] == 't') return "РџСЂРѕРµРєС‚ Р·Р°РІРµСЂС€РµРЅ";
+		// РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°Р±Р°РЅРµРЅ РІ С‚РµРєСѓС‰РµРј РїСЂРµРґР»РѕР¶РµРЅРёРё?
+		if ($this->is_banned) return "Р—Р°Р±Р°РЅРµРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ РјРѕРіСѓС‚ РґРѕР±Р°РІР»СЏС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёРё";
+		// РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°РїСЂРµС‚РёР» РєРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ СЃРІРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ?
+		if ($offer['comm_blocked'] == 't') return 'РђРІС‚РѕСЂ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РѕС‚РєР»СЋС‡РёР» РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РєРѕРјРјРµРЅС‚РёСЂРѕРІР°РЅРёСЏ';
+		// РґРѕР±Р°РІР»СЏРµРј РєРѕРјРјРµРЅС‚Р°СЂРёР№
 		$ip = getRemoteIP();
                 
             $nStopWordsCnt = 0;
@@ -904,7 +904,7 @@ class contest {
         
                 $users = $DB->row($sql, $oid);
                 
-                // стираем мемкеш
+                // СЃС‚РёСЂР°РµРј РјРµРјРєРµС€
                 $memBuff = new memBuff();
                 if ((int)$users['frl'] !== (int)$this->uid) {
                     $memBuff->delete("prjMsgsCnt{$users['frl']}");
@@ -919,26 +919,26 @@ class contest {
 
 	
 	/**
-	 * Редактирует комментарий
-	 * @param   integer  $cid       id комментария
-	 * @param   string   $comment   новый комментарий
-	 * @return  string              сообщение об ошибке или пустая строка, если все нормально
+	 * Р РµРґР°РєС‚РёСЂСѓРµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёР№
+	 * @param   integer  $cid       id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+	 * @param   string   $comment   РЅРѕРІС‹Р№ РєРѕРјРјРµРЅС‚Р°СЂРёР№
+	 * @return  string              СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°, РµСЃР»Рё РІСЃРµ РЅРѕСЂРјР°Р»СЊРЅРѕ
 	 */
 	public function ChangeComment($cid, $comment) {
         global $DB;
 		$cid = intval($cid);
-		if ($this->is_banned && !$this->is_moder) return "Забаненые пользователи не могут редактировать комментарии";
-		if (!($p_comment = $this->GetComment($cid))) return "Несуществующий комментарий. $cid";
-		if ($p_comment['user_id'] != $this->uid && !$this->is_moder) return "Несуществующий комментарий!";
+		if ($this->is_banned && !$this->is_moder) return "Р—Р°Р±Р°РЅРµРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё РЅРµ РјРѕРіСѓС‚ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёРё";
+		if (!($p_comment = $this->GetComment($cid))) return "РќРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ РєРѕРјРјРµРЅС‚Р°СЂРёР№. $cid";
+		if ($p_comment['user_id'] != $this->uid && !$this->is_moder) return "РќРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ РєРѕРјРјРµРЅС‚Р°СЂРёР№!";
 		$offer = $this->GetOffer($p_comment['offer_id']);
-		if ($offer['closed'] == 't' && !$this->is_moder) return "Проект завершен";
+		if ($offer['closed'] == 't' && !$this->is_moder) return "РџСЂРѕРµРєС‚ Р·Р°РІРµСЂС€РµРЅ";
 		//$comment = substr(change_q(trim($comment), true, 90), 0, 3000);
         
         $sModer = '';
         $sql    = '';
         
         if ( $p_comment['user_id'] == $_SESSION['uid'] && !hasPermissions('projects') && !is_pro() && $p_comment['msg'] != $comment ) {
-            // автор, не админ, не про меняет текст - отправить на модерирование
+            // Р°РІС‚РѕСЂ, РЅРµ Р°РґРјРёРЅ, РЅРµ РїСЂРѕ РјРµРЅСЏРµС‚ С‚РµРєСЃС‚ - РѕС‚РїСЂР°РІРёС‚СЊ РЅР° РјРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ
             require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/stop_words.php' );
             require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/user_content.php' );
             
@@ -961,9 +961,9 @@ class contest {
 	
 	
 	/**
-	 * Удаляет комментарий (помечает удаленным)
-	 * @param   integer   $cid   id комментария
-	 * @return  string           сообщение об ошибке или пустая строка, если все нормально
+	 * РЈРґР°Р»СЏРµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёР№ (РїРѕРјРµС‡Р°РµС‚ СѓРґР°Р»РµРЅРЅС‹Рј)
+	 * @param   integer   $cid   id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+	 * @return  string           СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°, РµСЃР»Рё РІСЃРµ РЅРѕСЂРјР°Р»СЊРЅРѕ
 	 */
 	public function DeleteComment($cid) {
         global $DB;
@@ -983,9 +983,9 @@ class contest {
 
 	
 	/**
-	 * Восстанавливает комментарий
-	 * @param   integer  $cid    id комментария
-	 * @return  string           сообщение об ошибке или пустая строка, если все нормально
+	 * Р’РѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёР№
+	 * @param   integer  $cid    id РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+	 * @return  string           СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°, РµСЃР»Рё РІСЃРµ РЅРѕСЂРјР°Р»СЊРЅРѕ
 	 */
 	public function RestoreComment($cid) {
         global $DB;
@@ -1019,8 +1019,8 @@ class contest {
 	
 
 	/**
-	 * Возвращает список забанненных пользователей в конкурсе $this->pid
-	 * @return  array  список забанненных
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє Р·Р°Р±Р°РЅРЅРµРЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РІ РєРѕРЅРєСѓСЂСЃРµ $this->pid
+	 * @return  array  СЃРїРёСЃРѕРє Р·Р°Р±Р°РЅРЅРµРЅРЅС‹С…
 	 */
 	public function GetBanned() {
         global $DB;
@@ -1036,37 +1036,37 @@ class contest {
 
 
 	/**
-	 * Добавляет или удаляет кандидата
-	 * @param  integer  $oid   id предложения
-	 * @return array           список кандидатов
+	 * Р”РѕР±Р°РІР»СЏРµС‚ РёР»Рё СѓРґР°Р»СЏРµС‚ РєР°РЅРґРёРґР°С‚Р°
+	 * @param  integer  $oid   id РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+	 * @return array           СЃРїРёСЃРѕРє РєР°РЅРґРёРґР°С‚РѕРІ
 	 */
 	public function Candidate($oid) {
         global $DB;
 		if ($this->is_owner) {
 			$oid = intval($oid);
-			if (!($offer = $this->GetOfferRow($oid))) return "Несуществующее предложение";
+			if (!($offer = $this->GetOfferRow($oid))) return "РќРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ";
 			$frl_id = $DB->val("UPDATE projects_contest_offers SET selected = NOT selected WHERE id = ?i RETURNING user_id", $oid);
             
-            // сброс количества непросмотренных событий в проектах
+            // СЃР±СЂРѕСЃ РєРѕР»РёС‡РµСЃС‚РІР° РЅРµРїСЂРѕСЃРјРѕС‚СЂРµРЅРЅС‹С… СЃРѕР±С‹С‚РёР№ РІ РїСЂРѕРµРєС‚Р°С…
             $mem = new memBuff();
             $mem->delete('prjEventsCnt' . $frl_id);
             
 			return $DB->error;
 		} else {
-			return "У Вас нет прав";
+			return "РЈ Р’Р°СЃ РЅРµС‚ РїСЂР°РІ";
 		}
 	}
 	
 	
 	/**
-	 * Банит пользователя в конкурсе $this->pid
-	 * @param   integer   $uid       uid пользователя
-	 * @param   integer   $blocked   возвращает TRUE, если пользователя заблокировали или FALSE если разблокировали
-	 * @return  string               сообщение об ошибке или пустая строка, если все нормально
+	 * Р‘Р°РЅРёС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ РєРѕРЅРєСѓСЂСЃРµ $this->pid
+	 * @param   integer   $uid       uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param   integer   $blocked   РІРѕР·РІСЂР°С‰Р°РµС‚ TRUE, РµСЃР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°Р»Рё РёР»Рё FALSE РµСЃР»Рё СЂР°Р·Р±Р»РѕРєРёСЂРѕРІР°Р»Рё
+	 * @return  string               СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°, РµСЃР»Рё РІСЃРµ РЅРѕСЂРјР°Р»СЊРЅРѕ
 	 */
 	public function BlockUser($uid, &$blocked) {
         global $DB;
-		if (!($this->is_moder || $this->is_owner)) return "У Вас нет прав для проведения этой операции";
+		if (!($this->is_moder || $this->is_owner)) return "РЈ Р’Р°СЃ РЅРµС‚ РїСЂР°РІ РґР»СЏ РїСЂРѕРІРµРґРµРЅРёСЏ СЌС‚РѕР№ РѕРїРµСЂР°С†РёРё";
 		$uid = intval($uid);
 		if ($row = $DB->row("SELECT * FROM projects_contest_blocked WHERE project_id = ?i AND user_id = ?i", $this->pid, $uid)) {
 			$DB->query("DELETE FROM projects_contest_blocked WHERE id = ?i", $row['id']);
@@ -1088,8 +1088,8 @@ class contest {
 	
 	
 	/**
-	 * Заполняет массив $this->stat статистикой по конкурсу $this->pid
-	 * @return  string    сообщение об ошибке или пустая строка, если все нормально
+	 * Р—Р°РїРѕР»РЅСЏРµС‚ РјР°СЃСЃРёРІ $this->stat СЃС‚Р°С‚РёСЃС‚РёРєРѕР№ РїРѕ РєРѕРЅРєСѓСЂСЃСѓ $this->pid
+	 * @return  string    СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°, РµСЃР»Рё РІСЃРµ РЅРѕСЂРјР°Р»СЊРЅРѕ
 	 */
 	public function GetStat() {
         global $DB;
@@ -1116,8 +1116,8 @@ class contest {
 
 	
 	/**
-	 * Удаляет временные файлы, которые могут появиться при загрузке/редактировании предложения.
-	 * Например, пользователь прикрепил картинку, но потом передумал и удалил ее до добавления работы.
+	 * РЈРґР°Р»СЏРµС‚ РІСЂРµРјРµРЅРЅС‹Рµ С„Р°Р№Р»С‹, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ РїРѕСЏРІРёС‚СЊСЃСЏ РїСЂРё Р·Р°РіСЂСѓР·РєРµ/СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ.
+	 * РќР°РїСЂРёРјРµСЂ, РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РїСЂРёРєСЂРµРїРёР» РєР°СЂС‚РёРЅРєСѓ, РЅРѕ РїРѕС‚РѕРј РїРµСЂРµРґСѓРјР°Р» Рё СѓРґР°Р»РёР» РµРµ РґРѕ РґРѕР±Р°РІР»РµРЅРёСЏ СЂР°Р±РѕС‚С‹.
 	 */
 	public function ClearTempFiles() {
 		if (!empty($_SESSION['contest_files'])) {
@@ -1134,9 +1134,9 @@ class contest {
 
 	
 	/**
-	 * Устанавливает дату окончания конкурса
-	 * @param   integer   $time   дата в формате unixtime
-	 * @return  string            сообщение об ошибке или пустая строка, если все нормально
+	 * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РґР°С‚Сѓ РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР°
+	 * @param   integer   $time   РґР°С‚Р° РІ С„РѕСЂРјР°С‚Рµ unixtime
+	 * @return  string            СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°, РµСЃР»Рё РІСЃРµ РЅРѕСЂРјР°Р»СЊРЅРѕ
 	 */
 	public function ChangeEndDate($time) {
         global $DB;
@@ -1146,9 +1146,9 @@ class contest {
 
 	
 	/**
-	 * Устанавливает дату выбора победителей
-	 * @param   integer   $time   дата в формате unixtime
-	 * @return  string            сообщение об ошибке или пустая строка, если все нормально
+	 * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РґР°С‚Сѓ РІС‹Р±РѕСЂР° РїРѕР±РµРґРёС‚РµР»РµР№
+	 * @param   integer   $time   РґР°С‚Р° РІ С„РѕСЂРјР°С‚Рµ unixtime
+	 * @return  string            СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°, РµСЃР»Рё РІСЃРµ РЅРѕСЂРјР°Р»СЊРЅРѕ
 	 */
 	public function ChangeWinDate($time) {
         global $DB;
@@ -1159,11 +1159,11 @@ class contest {
 	
 	
 	/**
-	 * Выбор победителей
-	 * @param   integer   $uid1   uid пользователя занявшего первое место
-	 * @param   integer   $uid2   uid пользователя занявшего второе место
-	 * @param   integer   $uid3   uid пользователя занявшего третье место
-	 * @return  string            сообщение об ошибке или пустая строка, если все нормально
+	 * Р’С‹Р±РѕСЂ РїРѕР±РµРґРёС‚РµР»РµР№
+	 * @param   integer   $uid1   uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р°РЅСЏРІС€РµРіРѕ РїРµСЂРІРѕРµ РјРµСЃС‚Рѕ
+	 * @param   integer   $uid2   uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р°РЅСЏРІС€РµРіРѕ РІС‚РѕСЂРѕРµ РјРµСЃС‚Рѕ
+	 * @param   integer   $uid3   uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·Р°РЅСЏРІС€РµРіРѕ С‚СЂРµС‚СЊРµ РјРµСЃС‚Рѕ
+	 * @return  string            СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°, РµСЃР»Рё РІСЃРµ РЅРѕСЂРјР°Р»СЊРЅРѕ
 	 */
 	public function SetWinners($uid1, $uid2, $uid3) 
     {
@@ -1185,7 +1185,7 @@ class contest {
                      
             messages::setIsAllowed($this->uid, $uid1);
 		} else {
-			$DB->query("UPDATE projects SET closed = 'f' WHERE id = ?i", $this->pid); // помойму это не недо.
+			$DB->query("UPDATE projects SET closed = 'f' WHERE id = ?i", $this->pid); // РїРѕРјРѕР№РјСѓ СЌС‚Рѕ РЅРµ РЅРµРґРѕ.
 			return 0;
 		}
         
@@ -1204,9 +1204,9 @@ class contest {
 	
 	
 	/**
-	 * Возвращает uid победителей конкурса
-	 * @param   integer   $pid   id конкурса. можно не указывать, тогда беретса $this->pid
-	 * @return  array            массив с uid победителей в порядке занятого места
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ uid РїРѕР±РµРґРёС‚РµР»РµР№ РєРѕРЅРєСѓСЂСЃР°
+	 * @param   integer   $pid   id РєРѕРЅРєСѓСЂСЃР°. РјРѕР¶РЅРѕ РЅРµ СѓРєР°Р·С‹РІР°С‚СЊ, С‚РѕРіРґР° Р±РµСЂРµС‚СЃР° $this->pid
+	 * @return  array            РјР°СЃСЃРёРІ СЃ uid РїРѕР±РµРґРёС‚РµР»РµР№ РІ РїРѕСЂСЏРґРєРµ Р·Р°РЅСЏС‚РѕРіРѕ РјРµСЃС‚Р°
 	 */
 	public function GetWinners($pid=FALSE) {
         global $DB;
@@ -1221,9 +1221,9 @@ class contest {
 
 	
 	/**
-	 * В отличии от GetWinners возвращает более полные данные о победителях в двумерном массиве
-	 * @param   integer   $pid   id конкурса. можно не указывать, тогда беретса $this->pid
-	 * @return  array            массив с uid победителей в порядке занятого места
+	 * Р’ РѕС‚Р»РёС‡РёРё РѕС‚ GetWinners РІРѕР·РІСЂР°С‰Р°РµС‚ Р±РѕР»РµРµ РїРѕР»РЅС‹Рµ РґР°РЅРЅС‹Рµ Рѕ РїРѕР±РµРґРёС‚РµР»СЏС… РІ РґРІСѓРјРµСЂРЅРѕРј РјР°СЃСЃРёРІРµ
+	 * @param   integer   $pid   id РєРѕРЅРєСѓСЂСЃР°. РјРѕР¶РЅРѕ РЅРµ СѓРєР°Р·С‹РІР°С‚СЊ, С‚РѕРіРґР° Р±РµСЂРµС‚СЃР° $this->pid
+	 * @return  array            РјР°СЃСЃРёРІ СЃ uid РїРѕР±РµРґРёС‚РµР»РµР№ РІ РїРѕСЂСЏРґРєРµ Р·Р°РЅСЏС‚РѕРіРѕ РјРµСЃС‚Р°
 	 */
 	public function GetWinnersFullInfo($pid=FALSE) {
         global $DB;
@@ -1243,9 +1243,9 @@ class contest {
 	
 	
 	/**
-	 * Количество закончившихся конкурсов для конкретного пользователя
-	 * @param   integer  $uid   uid пользователя
-	 * @return  integer         количество закончившихся конкурсов
+	 * РљРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РєРѕРЅС‡РёРІС€РёС…СЃСЏ РєРѕРЅРєСѓСЂСЃРѕРІ РґР»СЏ РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param   integer  $uid   uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @return  integer         РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РєРѕРЅС‡РёРІС€РёС…СЃСЏ РєРѕРЅРєСѓСЂСЃРѕРІ
 	 */
 	public function CompleteCount($uid) {
         global $DB;
@@ -1254,12 +1254,12 @@ class contest {
 	}
 	
 	/**
-	 * Возвращает пользователей в конкурсах на объявление победителей в котором остется указанное количество времени. ($date = 'win_date')
-	 * Возвращает пользователей в конкурсах на окончание в котором остется указанное количество времени. ($date = 'end_date')
-	 * Используется в рассылке.
-	 * @param    string   временной интервал в формате postgresql
-	 * @param    string   По какой дате окончания брать (win_date - По дате объясвления победителей, end_date - По дате окончания конкурса)
-	 * @return   string   массив, индексы которого - id конкурсов содеражащие uid работодателя и uid фрилансеров.
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РІ РєРѕРЅРєСѓСЂСЃР°С… РЅР° РѕР±СЉСЏРІР»РµРЅРёРµ РїРѕР±РµРґРёС‚РµР»РµР№ РІ РєРѕС‚РѕСЂРѕРј РѕСЃС‚РµС‚СЃСЏ СѓРєР°Р·Р°РЅРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РІСЂРµРјРµРЅРё. ($date = 'win_date')
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РІ РєРѕРЅРєСѓСЂСЃР°С… РЅР° РѕРєРѕРЅС‡Р°РЅРёРµ РІ РєРѕС‚РѕСЂРѕРј РѕСЃС‚РµС‚СЃСЏ СѓРєР°Р·Р°РЅРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РІСЂРµРјРµРЅРё. ($date = 'end_date')
+	 * РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ СЂР°СЃСЃС‹Р»РєРµ.
+	 * @param    string   РІСЂРµРјРµРЅРЅРѕР№ РёРЅС‚РµСЂРІР°Р» РІ С„РѕСЂРјР°С‚Рµ postgresql
+	 * @param    string   РџРѕ РєР°РєРѕР№ РґР°С‚Рµ РѕРєРѕРЅС‡Р°РЅРёСЏ Р±СЂР°С‚СЊ (win_date - РџРѕ РґР°С‚Рµ РѕР±СЉСЏСЃРІР»РµРЅРёСЏ РїРѕР±РµРґРёС‚РµР»РµР№, end_date - РџРѕ РґР°С‚Рµ РѕРєРѕРЅС‡Р°РЅРёСЏ РєРѕРЅРєСѓСЂСЃР°)
+	 * @return   string   РјР°СЃСЃРёРІ, РёРЅРґРµРєСЃС‹ РєРѕС‚РѕСЂРѕРіРѕ - id РєРѕРЅРєСѓСЂСЃРѕРІ СЃРѕРґРµСЂР°Р¶Р°С‰РёРµ uid СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ Рё uid С„СЂРёР»Р°РЅСЃРµСЂРѕРІ.
 	 */
 	public function WInterval($interval='1 day', $date='win_date') {
         global $DB;
@@ -1318,11 +1318,11 @@ class contest {
 	}
 
 	/**
-	 * Возвращает данные нескольких конкурсах по их id.
-	 * Используется для рассылки почты в smail
-	 * @param   array     $prj_ids   список id проектов
-	 * @param   resource  $connect   соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-	 * @return  array                массив с данными проектов
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ РЅРµСЃРєРѕР»СЊРєРёС… РєРѕРЅРєСѓСЂСЃР°С… РїРѕ РёС… id.
+	 * РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ СЂР°СЃСЃС‹Р»РєРё РїРѕС‡С‚С‹ РІ smail
+	 * @param   array     $prj_ids   СЃРїРёСЃРѕРє id РїСЂРѕРµРєС‚РѕРІ
+	 * @param   resource  $connect   СЃРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+	 * @return  array                РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РїСЂРѕРµРєС‚РѕРІ
 	 */
 	function GetContests4Sending($prj_ids, $connect=NULL) {
         global $DB;
@@ -1344,11 +1344,11 @@ class contest {
 	}
 	
 	/**
-	 * Выбирает строку данных из projects_contest_offers
+	 * Р’С‹Р±РёСЂР°РµС‚ СЃС‚СЂРѕРєСѓ РґР°РЅРЅС‹С… РёР· projects_contest_offers
 	 * 
-	 * @param   integer  $prj   id проекта
-	 * @param   integer  $uid   id пользователя
-	 * @return  array           строка данных из projects_contest_offers
+	 * @param   integer  $prj   id РїСЂРѕРµРєС‚Р°
+	 * @param   integer  $uid   id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @return  array           СЃС‚СЂРѕРєР° РґР°РЅРЅС‹С… РёР· projects_contest_offers
 	 */
 	public function GetOfferByProject($prj, $uid) {
         global $DB;
@@ -1358,16 +1358,16 @@ class contest {
 	}
 	
 	/**
-     * Выборка информации о добавлении комментария к его предложению в конкурсе.
+     * Р’С‹Р±РѕСЂРєР° РёРЅС„РѕСЂРјР°С†РёРё Рѕ РґРѕР±Р°РІР»РµРЅРёРё РєРѕРјРјРµРЅС‚Р°СЂРёСЏ Рє РµРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЋ РІ РєРѕРЅРєСѓСЂСЃРµ.
      * 
-     * После изменения этой функции, необходимо перезапустить консьюмер /classes/pgq/mail_cons.php на сервере.
-     * Если нет возможности, то сообщить админу.
+     * РџРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ СЌС‚РѕР№ С„СѓРЅРєС†РёРё, РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ РєРѕРЅСЃСЊСЋРјРµСЂ /classes/pgq/mail_cons.php РЅР° СЃРµСЂРІРµСЂРµ.
+     * Р•СЃР»Рё РЅРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё, С‚Рѕ СЃРѕРѕР±С‰РёС‚СЊ Р°РґРјРёРЅСѓ.
      * @see pmail::ContestNewComment()
      * @see PGQMailSimpleConsumer::finish_batch()
      *
-     * @param string|array  $comment_ids    Идентификаторы комментариев
-     * @param resource      $connect        Соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return array|mixed                  Если есть ответы к проектам то возвращает массив их, если нет то NULL
+     * @param string|array  $comment_ids    РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ
+     * @param resource      $connect        РЎРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return array|mixed                  Р•СЃР»Рё РµСЃС‚СЊ РѕС‚РІРµС‚С‹ Рє РїСЂРѕРµРєС‚Р°Рј С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ РёС…, РµСЃР»Рё РЅРµС‚ С‚Рѕ NULL
      */
     public function getContestNewComment($comment_ids, $connect=NULL) {
         global $DB;
@@ -1375,10 +1375,10 @@ class contest {
         if(is_array($comment_ids))
         $comment_ids = implode(',', array_unique($comment_ids));
         
-        // u  - автор нового комментария
-        // um - автор родительского комментария
-        // uo - автор предложения по проекту
-        // up - автор проекта
+        // u  - Р°РІС‚РѕСЂ РЅРѕРІРѕРіРѕ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+        // um - Р°РІС‚РѕСЂ СЂРѕРґРёС‚РµР»СЊСЃРєРѕРіРѕ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+        // uo - Р°РІС‚РѕСЂ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РїСЂРѕРµРєС‚Сѓ
+        // up - Р°РІС‚РѕСЂ РїСЂРѕРµРєС‚Р°
         $sql = "SELECT 
                     p.name AS project_name, p.id AS project_id, cm.offer_id, cm.id AS comment_id, 
                     u.uid, u.uname, u.usurname, u.login, u.email, u.subscr, u.is_banned AS banned, 
@@ -1401,15 +1401,15 @@ class contest {
 
 
    /**
-    * Выбрать данные по заблокированным пользователям для рассылки
+    * Р’С‹Р±СЂР°С‚СЊ РґР°РЅРЅС‹Рµ РїРѕ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј РґР»СЏ СЂР°СЃСЃС‹Р»РєРё
     *
-    * После изменения этой функции, необходимо перезапустить консьюмер /classes/pgq/mail_cons.php на сервере.
-    * Если нет возможности, то сообщить админу.
+    * РџРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ СЌС‚РѕР№ С„СѓРЅРєС†РёРё, РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ РєРѕРЅСЃСЊСЋРјРµСЂ /classes/pgq/mail_cons.php РЅР° СЃРµСЂРІРµСЂРµ.
+    * Р•СЃР»Рё РЅРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё, С‚Рѕ СЃРѕРѕР±С‰РёС‚СЊ Р°РґРјРёРЅСѓ.
     * @see pmail::ContestUserBlocked()
     * @see PGQMailSimpleConsumer::finish_batch()
     *
-    * @param string|array  $ids  Идентификаторы проектов
-    * @param resource      $connect Соединение к БД (необходимо в PgQ) или NULL -- создать новое.
+    * @param string|array  $ids  РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РїСЂРѕРµРєС‚РѕРІ
+    * @param resource      $connect РЎРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
     * @return array|mixed
     */
    function getContestsBlockedUsers($ids, $connect=NULL) {
@@ -1441,15 +1441,15 @@ class contest {
 
 
     /**
-     * Выбрать конкурсы по пользователям, для рассылки
+     * Р’С‹Р±СЂР°С‚СЊ РєРѕРЅРєСѓСЂСЃС‹ РїРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј, РґР»СЏ СЂР°СЃСЃС‹Р»РєРё
      *
-     * После изменения этой функции, необходимо перезапустить консьюмер /classes/pgq/mail_cons.php на сервере.
-     * Если нет возможности, то сообщить админу.
+     * РџРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ СЌС‚РѕР№ С„СѓРЅРєС†РёРё, РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ РєРѕРЅСЃСЊСЋРјРµСЂ /classes/pgq/mail_cons.php РЅР° СЃРµСЂРІРµСЂРµ.
+     * Р•СЃР»Рё РЅРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё, С‚Рѕ СЃРѕРѕР±С‰РёС‚СЊ Р°РґРјРёРЅСѓ.
      * @see pmail::ContestUserUnblocked()
      * @see PGQMailSimpleConsumer::finish_batch()
      *
-     * @param string|array  $params  Идентификаторы проектов
-     * @param resource      $connect Соединение к БД (необходимо в PgQ) или NULL -- создать новое.
+     * @param string|array  $params  РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РїСЂРѕРµРєС‚РѕРІ
+     * @param resource      $connect РЎРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
      * @return array|mixed
      */
     function getContestsUnblocked($params, $connect=NULL) {
@@ -1521,16 +1521,16 @@ class contest {
 
 
     /**
-     * Выборка информации по кандидатам к конкурсам для отправки уведомлений.
+     * Р’С‹Р±РѕСЂРєР° РёРЅС„РѕСЂРјР°С†РёРё РїРѕ РєР°РЅРґРёРґР°С‚Р°Рј Рє РєРѕРЅРєСѓСЂСЃР°Рј РґР»СЏ РѕС‚РїСЂР°РІРєРё СѓРІРµРґРѕРјР»РµРЅРёР№.
      *
-     * После изменения этой функции, необходимо перезапустить консьюмер /classes/pgq/mail_cons.php на сервере.
-     * Если нет возможности, то сообщить админу.
+     * РџРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ СЌС‚РѕР№ С„СѓРЅРєС†РёРё, РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ РєРѕРЅСЃСЊСЋРјРµСЂ /classes/pgq/mail_cons.php РЅР° СЃРµСЂРІРµСЂРµ.
+     * Р•СЃР»Рё РЅРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё, С‚Рѕ СЃРѕРѕР±С‰РёС‚СЊ Р°РґРјРёРЅСѓ.
      * @see pmail::ContestAddCandidate()
      * @see PGQMailSimpleConsumer::finish_batch()
      *
-     * @param string|array  $offer_ids      Идентификаторы ответов
-     * @param resource      $connect        Соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return array|mixed                  Если есть ответы к проектам то возвращает массив их, если нет то NULL
+     * @param string|array  $offer_ids      РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РѕС‚РІРµС‚РѕРІ
+     * @param resource      $connect        РЎРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return array|mixed                  Р•СЃР»Рё РµСЃС‚СЊ РѕС‚РІРµС‚С‹ Рє РїСЂРѕРµРєС‚Р°Рј С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ РёС…, РµСЃР»Рё РЅРµС‚ С‚Рѕ NULL
      */
     function getSelectedOffers($offer_ids, $connect=NULL) {
         global $DB;
@@ -1561,16 +1561,16 @@ class contest {
 
 
     /**
-     * Выборка информации по победителям в конкурсах для отправки уведомлений.
+     * Р’С‹Р±РѕСЂРєР° РёРЅС„РѕСЂРјР°С†РёРё РїРѕ РїРѕР±РµРґРёС‚РµР»СЏРј РІ РєРѕРЅРєСѓСЂСЃР°С… РґР»СЏ РѕС‚РїСЂР°РІРєРё СѓРІРµРґРѕРјР»РµРЅРёР№.
      *
-     * После изменения этой функции, необходимо перезапустить консьюмер /classes/pgq/mail_cons.php на сервере.
-     * Если нет возможности, то сообщить админу.
+     * РџРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ СЌС‚РѕР№ С„СѓРЅРєС†РёРё, РЅРµРѕР±С…РѕРґРёРјРѕ РїРµСЂРµР·Р°РїСѓСЃС‚РёС‚СЊ РєРѕРЅСЃСЊСЋРјРµСЂ /classes/pgq/mail_cons.php РЅР° СЃРµСЂРІРµСЂРµ.
+     * Р•СЃР»Рё РЅРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё, С‚Рѕ СЃРѕРѕР±С‰РёС‚СЊ Р°РґРјРёРЅСѓ.
      * @see pmail::ContestWinners()
      * @see PGQMailSimpleConsumer::finish_batch()
      *
-     * @param string|array  $offer_ids      Идентификаторы ответов
-     * @param resource      $connect        Соединение к БД (необходимо в PgQ) или NULL -- создать новое.
-     * @return array|mixed                  Если есть ответы к проектам то возвращает массив их, если нет то NULL
+     * @param string|array  $offer_ids      РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РѕС‚РІРµС‚РѕРІ
+     * @param resource      $connect        РЎРѕРµРґРёРЅРµРЅРёРµ Рє Р‘Р” (РЅРµРѕР±С…РѕРґРёРјРѕ РІ PgQ) РёР»Рё NULL -- СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ.
+     * @return array|mixed                  Р•СЃР»Рё РµСЃС‚СЊ РѕС‚РІРµС‚С‹ Рє РїСЂРѕРµРєС‚Р°Рј С‚Рѕ РІРѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ РёС…, РµСЃР»Рё РЅРµС‚ С‚Рѕ NULL
      */
     function getWinnerOffers($offer_ids, $connect=NULL) {
         global $DB;
@@ -1601,7 +1601,7 @@ class contest {
     }
     
     /**
-     * Статистика конкурса за текущий день
+     * РЎС‚Р°С‚РёСЃС‚РёРєР° РєРѕРЅРєСѓСЂСЃР° Р·Р° С‚РµРєСѓС‰РёР№ РґРµРЅСЊ
      *
      */
     public function getStatContest() {
@@ -1622,7 +1622,7 @@ class contest {
     }
     
     /**
-     * Удаляем кеш тк прочитали сообщения
+     * РЈРґР°Р»СЏРµРј РєРµС€ С‚Рє РїСЂРѕС‡РёС‚Р°Р»Рё СЃРѕРѕР±С‰РµРЅРёСЏ
      * @param type $user_id
      */
     public function markReadComments($user_id) {
@@ -1632,7 +1632,7 @@ class contest {
     }
     
     /**
-     * возвращает информацию о проекте (конкурсе) по ID комментария
+     * РІРѕР·РІСЂР°С‰Р°РµС‚ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РїСЂРѕРµРєС‚Рµ (РєРѕРЅРєСѓСЂСЃРµ) РїРѕ ID РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
      * @param integer $commentID
      */
     public function getProjectByCommentID ($commentID) {
@@ -1652,7 +1652,7 @@ class contest {
     
     
     /**
-     * Указанный фрилансер занимал призовые места у заказчика
+     * РЈРєР°Р·Р°РЅРЅС‹Р№ С„СЂРёР»Р°РЅСЃРµСЂ Р·Р°РЅРёРјР°Р» РїСЂРёР·РѕРІС‹Рµ РјРµСЃС‚Р° Сѓ Р·Р°РєР°Р·С‡РёРєР°
      * 
      * @global type $DB
      * @param type $to_id

@@ -14,9 +14,9 @@ class CaruselForm extends Form_View
         'Carusel'
     );
     
-    //Путь к вьюшкам элементов
+    //РџСѓС‚СЊ Рє РІСЊСЋС€РєР°Рј СЌР»РµРјРµРЅС‚РѕРІ
     protected $viewScriptPrefixPath = 'classes/Form/Templates/Horizontal';
-    //Путь вьюшкам форм
+    //РџСѓС‚СЊ РІСЊСЋС€РєР°Рј С„РѕСЂРј
     protected $viewScriptFormPrefixPath = 'templates/quick_payment/forms';
     
     public function loadDefaultDecorators()
@@ -33,9 +33,9 @@ class CaruselForm extends Form_View
     {
         $this->addElement(
            new Zend_Form_Element_Text('title', array(
-               'placeholder' => 'Заголовок',
+               'placeholder' => 'Р—Р°РіРѕР»РѕРІРѕРє',
                'required' => true,
-               //'padbot' => 20, // отступ снизу
+               //'padbot' => 20, // РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ
                'maxlength' => pay_place::MAX_HEADER_SIZE,
                'filters' => $this->filters,
                'validators' => array(
@@ -45,9 +45,9 @@ class CaruselForm extends Form_View
         
         $this->addElement(
           new Zend_Form_Element_Textarea('description', array(
-              'placeholder' => 'Текст объявления',
+              'placeholder' => 'РўРµРєСЃС‚ РѕР±СЉСЏРІР»РµРЅРёСЏ',
               'required' => true,
-              //'padbot' => 20, // отступ снизу
+              //'padbot' => 20, // РѕС‚СЃС‚СѓРї СЃРЅРёР·Сѓ
               'filters' => $this->filters,
               'validators' => array(
                   array('StringLength', true, array('max' => pay_place::MAX_TEXT_SIZE, 'min' => 4))
@@ -61,7 +61,7 @@ class CaruselForm extends Form_View
               'value' => 1,
               'max' => 99,
               'min' => 1,
-              'suffix' => array('размещение','размещения','размещений')
+              'suffix' => array('СЂР°Р·РјРµС‰РµРЅРёРµ','СЂР°Р·РјРµС‰РµРЅРёСЏ','СЂР°Р·РјРµС‰РµРЅРёР№')
           ))
         );
         
@@ -72,7 +72,7 @@ class CaruselForm extends Form_View
               'value' => 1,
               'max' => 99,
               'min' => 1,
-              'suffix' => array('час','часа','часов')
+              'suffix' => array('С‡Р°СЃ','С‡Р°СЃР°','С‡Р°СЃРѕРІ')
           ))
         );        
     }

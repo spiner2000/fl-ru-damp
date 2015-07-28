@@ -12,7 +12,7 @@ $guest = false;
 $forFrl = false;
 $forEmp = true;
 
-$page_title = "Услуги - фриланс, удаленная работа на FL.ru";
+$page_title = "РЈСЃР»СѓРіРё - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru";
 
 $header   = '../../header.php';
 $footer   = '../../footer.php';

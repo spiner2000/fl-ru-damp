@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @todo: Áîëåå íå èñïîëüçóåòñÿ ïîãàøåíèå çàäîëæåííîñòè
- *        îñòàâèë åñëè âäðóã âíåçàïíî âåðíåìñÿ
+ * @todo: Ð‘Ð¾Ð»ÐµÐµ Ð½Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð¿Ð¾Ð³Ð°ÑˆÐµÐ½Ð¸Ðµ Ð·Ð°Ð´Ð¾Ð»Ð¶ÐµÐ½Ð½Ð¾ÑÑ‚Ð¸
+ *        Ð¾ÑÑ‚Ð°Ð²Ð¸Ð» ÐµÑÐ»Ð¸ Ð²Ð´Ñ€ÑƒÐ³ Ð²Ð½ÐµÐ·Ð°Ð¿Ð½Ð¾ Ð²ÐµÑ€Ð½ÐµÐ¼ÑÑ
  */
 
 $rpath = "../";
@@ -16,7 +16,7 @@ function quickACCGetYandexKassaLink($sum, $payment) {
     $objResponse = new xajaxResponse();
 
     /*
-     * Êîä áèëëèíãà óñòàðåë
+     * ÐšÐ¾Ð´ Ð±Ð¸Ð»Ð»Ð¸Ð½Ð³Ð° ÑƒÑÑ‚Ð°Ñ€ÐµÐ»
      * 
     $bill = new billing(get_uid(false));
     $bill->cancelAllNewAndReserved();
@@ -29,10 +29,10 @@ function quickACCGetYandexKassaLink($sum, $payment) {
 
     $bill->setPage('orders');
     
-    $payed_sum = 0; //ðåàëüíàÿ ñóììà
+    $payed_sum = 0; //Ñ€ÐµÐ°Ð»ÑŒÐ½Ð°Ñ ÑÑƒÐ¼Ð¼Ð°
     foreach($bill->list_service as $service) {
         $payed_sum += ($bill->pro_exists_in_list_service && ($service['pro_ammount'] > 0 || $service['op_code'] == 53) ? $service['pro_ammount'] : $service['ammount']);
-    }//foreach //ïîäñ÷èòàëè ðåàëüíóþ ñóììó ê îïëàòå
+    }//foreach //Ð¿Ð¾Ð´ÑÑ‡Ð¸Ñ‚Ð°Ð»Ð¸ Ñ€ÐµÐ°Ð»ÑŒÐ½ÑƒÑŽ ÑÑƒÐ¼Ð¼Ñƒ Ðº Ð¾Ð¿Ð»Ð°Ñ‚Ðµ
     $bill->calcPayedSum($payed_sum);
     $bill->preparePayments($payed_sum);
     $action = is_release() ? "https://money.yandex.ru/eshop.xml" : "/bill/test/ydpay.php";

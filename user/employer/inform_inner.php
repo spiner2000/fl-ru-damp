@@ -19,7 +19,7 @@ if(!defined('IN_STDF')) {
     $rating_total = rating::round($additinfo['rating']);
 
 	$info_for_reg = @unserialize($user->info_for_reg);
-	$reg_string = "только для <A class=\"blue\" href=\"/registration/\">зарегистрированных</A>";
+	$reg_string = "С‚РѕР»СЊРєРѕ РґР»СЏ <A class=\"blue\" href=\"/registration/\">Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹С…</A>";
 	
 	if($_SESSION['uid']) {
     	$note = notes::GetNotes($_SESSION['uid'], null, $error);
@@ -43,21 +43,21 @@ if(!defined('IN_STDF')) {
 			</colgroup>
 			<tbody>
 			<tr class="first">
-				<th>Рейтинг:</th>
+				<th>Р РµР№С‚РёРЅРі:</th>
 				<td><?=$rating_total?></td>
 				<td></td>
 			</tr>
 			<tr>
-				<th>Посещаемость:</th>
+				<th>РџРѕСЃРµС‰Р°РµРјРѕСЃС‚СЊ:</th>
 				<td><?=$additinfo['hits']?></td>
 				<td></td>
 			</tr>
 			<? if ($user->birthday && $user->birthday > "1910-01-01") { ?>
 			<tr>
-				<th>Дата рождения:</th>
+				<th>Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ:</th>
 				<td>
 	
-				<?=dateFormat("d.m.y",$user->birthday)?> (Возраст: <?=ElapsedYears(strtotimeEx($user->birthday))?>)
+				<?=dateFormat("d.m.y",$user->birthday)?> (Р’РѕР·СЂР°СЃС‚: <?=ElapsedYears(strtotimeEx($user->birthday))?>)
 	
 				</td>
 				<td></td>
@@ -65,14 +65,14 @@ if(!defined('IN_STDF')) {
 		<? } ?>
                         <?php if($val = $user->sex){?>
 			<tr>
-				<th>Пол:</th>
+				<th>РџРѕР»:</th>
 				<td><?
                 			if($user->sex == 't'){
-                			    echo 'Мужской';
+                			    echo 'РњСѓР¶СЃРєРѕР№';
                 			} else if($user->sex == 'f'){
-                                            echo 'Женский';
+                                            echo 'Р–РµРЅСЃРєРёР№';
                                         } else {
-                                            echo 'не указан';
+                                            echo 'РЅРµ СѓРєР°Р·Р°РЅ';
                                         }
                             ?>
                 </td>
@@ -80,18 +80,18 @@ if(!defined('IN_STDF')) {
 			</tr>
 			<?php }?>
 			<tr>
-				<th>На сайте:</th>
+				<th>РќР° СЃР°Р№С‚Рµ:</th>
 				<td><?=ElapsedMnths(strtotime($user->reg_date))?></td>
 				<td></td>
 			</tr>
 			<tr>
-				<th>Дата регистрации:</th>
+				<th>Р”Р°С‚Р° СЂРµРіРёСЃС‚СЂР°С†РёРё:</th>
 				<td><?=date('d.m.Y', strtotime($user->reg_date))?></td>
 				<td></td>
 			</tr>
 			<?php if($user->country){?>
 			<tr>
-				<th>Местонахождение:</th>
+				<th>РњРµСЃС‚РѕРЅР°С…РѕР¶РґРµРЅРёРµ:</th>
 				<td>			
 
 			<?=country::GetCountryName($user->country); if ($user->city) { ?>, <?=city::GetCityName($user->city); } ?>
@@ -104,13 +104,13 @@ if(!defined('IN_STDF')) {
 			<?php if($val = $user->compname){
 			?>
 			<tr>
-				<th>Компания:</th>
+				<th>РљРѕРјРїР°РЅРёСЏ:</th>
 				<td><a name="compname"></a><?
                                 $sResume = $user->isChangeOnModeration( $user->uid, 'compname' ) && $user->is_pro != 't' ? $stop_words->replace($user->compname) : $user->compname;
                                 echo $sResume;
                                 
                                 if ( hasPermissions('users') ) { ?>
-                                <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'compname', 'utable': 'employer'})">Редактировать</a>
+                                <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'compname', 'utable': 'employer'})">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
                                 <?php } 
                             ?>
                 </td>
@@ -130,7 +130,7 @@ if(!defined('IN_STDF')) {
 	<? if ($_SESSION['login'] == $user->login) { ?>
 	<tr>
 	   <td colspan="3"  style="padding-top: 14px; vertical-align:top; text-align:right">
-	       <div class="change"><a href=""><img height="9" border="0" width="6" alt="" src="/images/ico_setup.gif" /></a> <a href="/users/<?=$_SESSION['login']?>/setup/info/">Изменить</a></div>
+	       <div class="change"><a href=""><img height="9" border="0" width="6" alt="" src="/images/ico_setup.gif" /></a> <a href="/users/<?=$_SESSION['login']?>/setup/info/">РР·РјРµРЅРёС‚СЊ</a></div>
 	   </td>
     </tr>
 	<? } ?>
@@ -143,21 +143,21 @@ if(!defined('IN_STDF')) {
 
 <?php if(is_view_contacts($user->uid)||(($_SESSION["uid"] && hasPermissions('users') && ($_SESSION['uid'] != $user->uid)) && (!(hasGroupPermissions('administrator', $user->uid) || hasGroupPermissions('moderator', $user->uid))))) { ?>
 <? if (($user->resume || $user->resime_file)) { ?>
-<div class="b-layout" style="padding:2px 20px;background-color: #E5EAF5;border-top: 1px solid #C6C6C6;color: #666666;font-weight: bold;"><a name="resume_file"></a>Дополнительная информация</div>
+<div class="b-layout" style="padding:2px 20px;background-color: #E5EAF5;border-top: 1px solid #C6C6C6;color: #666666;font-weight: bold;"><a name="resume_file"></a>Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ</div>
 
 <div class="b-layout b-layout_pad_20 b-layout_box">
         <?php $sResume = $user->isChangeOnModeration( $user->uid, 'resume' ) && $user->is_pro != 't' ? $stop_words->replace($user->resume) : $user->resume; ?>
 		<?=reformat($sResume)?>
         <?php if ( hasPermissions('users') ) { ?>
         <br/><br/>
-        <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'resume', 'utable': 'employer'})">Редактировать</a>
+        <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'resume', 'utable': 'employer'})">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
         <?php } ?>
 </div>
 <? } ?>
 <?php }//if?>
 
 <?php if ( hasPermissions('users') && ($user->logo || $user->company) ) { ?>
-<div class="b-layout" style="padding:2px 20px;background-color: #E5EAF5;border-top: 1px solid #C6C6C6;color: #666666;font-weight: bold;">О компании</div>
+<div class="b-layout" style="padding:2px 20px;background-color: #E5EAF5;border-top: 1px solid #C6C6C6;color: #666666;font-weight: bold;">Рћ РєРѕРјРїР°РЅРёРё</div>
 
 
 <?php if ( $user->logo ) { ?>
@@ -165,7 +165,7 @@ if(!defined('IN_STDF')) {
     <a name="logo"></a>
         <img src="<?=WDCPREFIX?>/users/<?=$user->login?>/logo/<?=$user->logo?>" border="0"  alt="'.$emp['compname'].'">
         <br/>
-        <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'logo', 'utable': 'employer'})">Редактировать</a>
+        <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'logo', 'utable': 'employer'})">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
 </div>
 <?php } ?>
 <?php if ( $user->company ) { ?>
@@ -174,7 +174,7 @@ if(!defined('IN_STDF')) {
         <?php $sResume = $user->isChangeOnModeration( $user->uid, 'company' ) && $user->is_pro != 't' ? $stop_words->replace($user->company) : $user->company; ?>
         <?=reformat($sResume)?>
         <br/><br/>
-        <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'company', 'utable': 'employer'})">Редактировать</a>
+        <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditProfile', '<?=$user->uid?>_0', 0, '', {'change_id': 0, 'ucolumn': 'company', 'utable': 'employer'})">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
 </div>
 <?php } ?>
 <? } ?>
@@ -187,7 +187,7 @@ $limit = 10;
   $recs = $recoms->teamsInEmpFavorites($user->login, $error);
   
 	if ($user->blocks[4] && $recs) { ?>
-<div class="b-layout" style="padding:2px 20px;background-color: #E5EAF5;border-top: 1px solid #C6C6C6;color: #666666;font-weight: bold;">В избранном у работодателей</div>
+<div class="b-layout" style="padding:2px 20px;background-color: #E5EAF5;border-top: 1px solid #C6C6C6;color: #666666;font-weight: bold;">Р’ РёР·Р±СЂР°РЅРЅРѕРј Сѓ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№</div>
 <div class="b-layout b-layout_pad_20 b-layout_box">
       <div class=" izbr">
         <div class="izbr-odd">
@@ -209,7 +209,7 @@ $limit = 10;
 </div>
   <? if($realCnt > $limit) { ?>
 <div class="b-layout b-layout_pad_20">
-        <a class="blue" href='/users/<?=$user->login?>/all/?mode=1'><b>Все (<?=$realCnt?>)</b></a>
+        <a class="blue" href='/users/<?=$user->login?>/all/?mode=1'><b>Р’СЃРµ (<?=$realCnt?>)</b></a>
 </div>
   <? } ?>
 <? } ?>
@@ -217,7 +217,7 @@ $limit = 10;
 <?
   $recs = $recoms->teamsInFrlFavorites($user->login, $error);
 	if ($user->blocks[5] && $recs) { ?>
-<div class="b-layout" style="padding:2px 20px;background-color: #E5EAF5;border-top: 1px solid #C6C6C6;color: #666666;font-weight: bold;">В избранном у фрилансеров</div>
+<div class="b-layout" style="padding:2px 20px;background-color: #E5EAF5;border-top: 1px solid #C6C6C6;color: #666666;font-weight: bold;">Р’ РёР·Р±СЂР°РЅРЅРѕРј Сѓ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</div>
 
 
 <div class="b-layout b-layout_pad_20 b-layout_box">
@@ -225,7 +225,7 @@ $limit = 10;
         <div class="izbr-odd">
 		<?php
         
-        //Получаем is_profi
+        //РџРѕР»СѓС‡Р°РµРј is_profi
         $ids = array();
         $recsProfi = array();
         foreach($recs as $rec) {
@@ -257,7 +257,7 @@ $limit = 10;
 </div>
   <? if($realCnt > $limit) { ?>
 <div class="b-layout b-layout_pad_20">
-        <a class="blue" href='/users/<?=$user->login?>/all/?mode=2'><b>Все (<?=$realCnt?>)</b></a>
+        <a class="blue" href='/users/<?=$user->login?>/all/?mode=2'><b>Р’СЃРµ (<?=$realCnt?>)</b></a>
 </div>
   <? } ?>
 <? } ?>
@@ -267,13 +267,13 @@ $limit = 10;
 $recs = $recoms->teamsFavorites($user->login, $error, true);
 ?>
 <? if ($user->blocks[1]) { ?>
-<div class="b-layout" style="padding:2px 20px;background-color: #E5EAF5;border-top: 1px solid #C6C6C6;color: #666666;font-weight: bold;">Избранные</div>
+<div class="b-layout" style="padding:2px 20px;background-color: #E5EAF5;border-top: 1px solid #C6C6C6;color: #666666;font-weight: bold;">РР·Р±СЂР°РЅРЅС‹Рµ</div>
 <div class="b-layout b-layout_pad_20 b-layout_box">
       <div class=" izbr">
         <div class="izbr-odd">
 		<?php
         
-        //Получаем is_profi
+        //РџРѕР»СѓС‡Р°РµРј is_profi
         $ids = array();
         $recsProfi = array();
         foreach($recs as $rec) {
@@ -305,7 +305,7 @@ $recs = $recoms->teamsFavorites($user->login, $error, true);
 </div>
   <? if($realCnt > $limit) { ?>
 <div class="b-layout b-layout_pad_20">
-        <a class="blue" href='/users/<?=$user->login?>/all/?mode=4'><b>Все (<?=$realCnt?>)</b></a>
+        <a class="blue" href='/users/<?=$user->login?>/all/?mode=4'><b>Р’СЃРµ (<?=$realCnt?>)</b></a>
 </div>
   <? } ?>
 
@@ -320,7 +320,7 @@ $recs = $recoms->teamsFavorites($user->login, $error, true);
      $commCnt = count($communes);
      if ($commCnt) {
 ?>
-<div class="b-layout" style="padding:2px 20px;background-color: #E5EAF5;border-top: 1px solid #C6C6C6;color: #666666;font-weight: bold;">Создал сообщества (<?=$commCnt?>)</div>
+<div class="b-layout" style="padding:2px 20px;background-color: #E5EAF5;border-top: 1px solid #C6C6C6;color: #666666;font-weight: bold;">РЎРѕР·РґР°Р» СЃРѕРѕР±С‰РµСЃС‚РІР° (<?=$commCnt?>)</div>
 
 <div class="b-layout b-layout_pad_20 b-layout_box">
       <table cellspacing="0" cellpadding="0" style="width:100%; border:0">
@@ -330,12 +330,12 @@ $recs = $recoms->teamsFavorites($user->login, $error, true);
         <? foreach($communes as $comm) {
               
              $i++;
-             // Название.
+             // РќР°Р·РІР°РЅРёРµ.
              $name = "<a href='".getFriendlyURL("commune_commune", $comm['id'])."' class='blue' style='font-size:20px'>".reformat($comm['name'], 25, 1)."</a>";
              $descr = reformat($comm['descr'], 25, 1);
-             // Сколько участников.
+             // РЎРєРѕР»СЊРєРѕ СѓС‡Р°СЃС‚РЅРёРєРѕРІ.
              $mAcceptedCnt = $comm['a_count'] - $comm['w_count'] + 1;
-             $mCnt = $mAcceptedCnt.' участник'.getSymbolicName($mAcceptedCnt, 'man');
+             $mCnt = $mAcceptedCnt.' СѓС‡Р°СЃС‚РЅРёРє'.getSymbolicName($mAcceptedCnt, 'man');
         ?>
  
  
@@ -421,7 +421,7 @@ $recs = $recoms->teamsFavorites($user->login, $error, true);
      $commCnt = count($communes);
 
 ?>
-<div class="b-layout" style="padding:2px 20px;background-color: #E5EAF5;border-top: 1px solid #C6C6C6;color: #666666;font-weight: bold;">Состоит в сообществах (<?=$commCnt?>)</div>
+<div class="b-layout" style="padding:2px 20px;background-color: #E5EAF5;border-top: 1px solid #C6C6C6;color: #666666;font-weight: bold;">РЎРѕСЃС‚РѕРёС‚ РІ СЃРѕРѕР±С‰РµСЃС‚РІР°С… (<?=$commCnt?>)</div>
 <div class="b-layout b-layout_pad_20 b-layout_box">
       <table cellspacing="0" cellpadding="0" style="width:100%; border:0">
         <col/>
@@ -430,12 +430,12 @@ $recs = $recoms->teamsFavorites($user->login, $error, true);
         <? foreach($communes as $comm) {
               
              $i++;
-             // Название.
+             // РќР°Р·РІР°РЅРёРµ.
              $name = "<a href='".getFriendlyURL("commune_commune", $comm['id'])."' class='blue' style='font-size:20px'>".reformat($comm['name'], 25, 1)."</a>";
              $descr = reformat($comm['descr'], 25, 1);
-             // Сколько участников.
+             // РЎРєРѕР»СЊРєРѕ СѓС‡Р°СЃС‚РЅРёРєРѕРІ.
              $mAcceptedCnt = $comm['a_count'] - $comm['w_count'] + 1;
-             $mCnt = $mAcceptedCnt.' участник'.getSymbolicName($mAcceptedCnt, 'man');
+             $mCnt = $mAcceptedCnt.' СѓС‡Р°СЃС‚РЅРёРє'.getSymbolicName($mAcceptedCnt, 'man');
         ?>
         
         

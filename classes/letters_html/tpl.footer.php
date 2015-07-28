@@ -4,8 +4,8 @@
         <td  bgcolor="#ffffff" width="20"></td>
         <td  bgcolor="#ffffff" width="20"></td>
         <td bgcolor="#ffffff">
-            <font color="#4d4d4d" size="1" face="tahoma,sans-serif">По всем возникающим вопросам вы можете обращаться в нашу <a target="_blank" style="color:#0f71c8;" href="https://feedback.fl.ru/">службу поддержки</a>.<br>
-Вы можете отключить уведомления <a target="_blank" style="color:#0f71c8;" href="<?= $GLOBALS['host']; ?>/unsubscribe?ukey=%UNSUBSCRIBE_KEY%">на этой странице</a>.</font>
+            <font color="#4d4d4d" size="1" face="tahoma,sans-serif">РџРѕ РІСЃРµРј РІРѕР·РЅРёРєР°СЋС‰РёРј РІРѕРїСЂРѕСЃР°Рј РІС‹ РјРѕР¶РµС‚Рµ РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РІ РЅР°С€Сѓ <a target="_blank" style="color:#0f71c8;" href="https://feedback.fl.ru/">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.<br>
+Р’С‹ РјРѕР¶РµС‚Рµ РѕС‚РєР»СЋС‡РёС‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ <a target="_blank" style="color:#0f71c8;" href="<?= $GLOBALS['host']; ?>/unsubscribe?ukey=%UNSUBSCRIBE_KEY%">РЅР° СЌС‚РѕР№ СЃС‚СЂР°РЅРёС†Рµ</a>.</font>
         </td>
         <td  bgcolor="#ffffff" width="20"></td>
         <td  bgcolor="#ffffff" width="20"></td>
@@ -21,7 +21,7 @@
         <td  bgcolor="#ffffff" width="20"></td>
         <td  bgcolor="#ffffff" width="20"></td>
         <td  bgcolor="#ffffff">
-            <font color="#4d4d4d" size="1" face="tahoma,sans-serif">Приятной работы!<br>Команда <a target="_blank" style="color:#0f71c8;" href="<?= $GLOBALS['host']; ?>">Free-lance.ru</a></font>
+            <font color="#4d4d4d" size="1" face="tahoma,sans-serif">РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹!<br>РљРѕРјР°РЅРґР° <a target="_blank" style="color:#0f71c8;" href="<?= $GLOBALS['host']; ?>">Free-lance.ru</a></font>
         </td>
         <td  bgcolor="#ffffff" width="20"></td>
         <td  bgcolor="#ffffff" width="20"></td>

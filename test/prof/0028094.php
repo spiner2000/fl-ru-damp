@@ -11,7 +11,7 @@ foreach ($rows as $k=>$i) {
     if ($result[$i["gid"]] === null) {
         $result[$i["gid"]] = array(
             '0' =>  iconv("WINDOWS-1251", "UTF-8//IGNORE", $i["gname"]),
-            "undefined_value" => iconv("WINDOWS-1251", "UTF-8//IGNORE", 'Все специальности') 
+            "undefined_value" => iconv("WINDOWS-1251", "UTF-8//IGNORE", 'Р’СЃРµ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё') 
         );
         if ($i["id"] !== null) $result[$i["gid"]] [$i["id"]] = iconv("WINDOWS-1251", "UTF-8//IGNORE", $i["name"]);
         else $result[$i["gid"]] = iconv("WINDOWS-1251", "UTF-8//IGNORE", $i["gname"]);
@@ -23,4 +23,4 @@ foreach ($rows as $k=>$i) {
    $s = json_encode($result);
    $membuf->add($memkey, $s);
 }
-print('var professionsList = '.$s.'; professionsList["0"]["0"] = "Другое";professionsList["0"]["undefined_value"] = "Нет специализации";');
+print('var professionsList = '.$s.'; professionsList["0"]["0"] = "Р”СЂСѓРіРѕРµ";professionsList["0"]["undefined_value"] = "РќРµС‚ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё";');

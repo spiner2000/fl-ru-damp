@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Временный шаблон сообщения об успешной оплате ПРО
- * для нового попапа оплаты quickPaymentPopupPro
+ * Р’СЂРµРјРµРЅРЅС‹Р№ С€Р°Р±Р»РѕРЅ СЃРѕРѕР±С‰РµРЅРёСЏ РѕР± СѓСЃРїРµС€РЅРѕР№ РѕРїР»Р°С‚Рµ РџР Рћ
+ * РґР»СЏ РЅРѕРІРѕРіРѕ РїРѕРїР°РїР° РѕРїР»Р°С‚С‹ quickPaymentPopupPro
  */
 
 $quickpro_ok_default = 'quickpro_ok';
 
 if(!isset($_SESSION['quickbuypro_success_opcode'])) {
     $_GET[$quickpro_ok_default] = false;
-    //фиксируем URL проекта для последующего возврата после оплаты ПРО
+    //С„РёРєСЃРёСЂСѓРµРј URL РїСЂРѕРµРєС‚Р° РґР»СЏ РїРѕСЃР»РµРґСѓСЋС‰РµРіРѕ РІРѕР·РІСЂР°С‚Р° РїРѕСЃР»Рµ РѕРїР»Р°С‚С‹ РџР Рћ
     $_SESSION['quickbuypro_redirect'] = urldecode($_SESSION['ref_uri']);
 }
 
@@ -22,13 +22,13 @@ if(!isset($_SESSION['quickbuypro_success_opcode'])) {
                 <?php if(isset($quickpro_ok_title)): ?>
                     <?= $quickpro_ok_title ?>
                 <?php else: ?>
-                Вы успешно купили аккаунт PRO 
+                Р’С‹ СѓСЃРїРµС€РЅРѕ РєСѓРїРёР»Рё Р°РєРєР°СѓРЅС‚ PRO 
                 <?php endif; ?>
                 <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_1 b-page__desktop b-page__ipad">
                     <?php if(isset($quickpro_ok_subtitle)): ?>
                         <?= $quickpro_ok_subtitle ?>
                     <?php else: ?>
-                        <?= is_emp() ? 'с выгодными скидками до 50% на дополнительные сервисы в проектах' : 'с неограниченными ответами в проектах и +20% к рейтингу'?>
+                        <?= is_emp() ? 'СЃ РІС‹РіРѕРґРЅС‹РјРё СЃРєРёРґРєР°РјРё РґРѕ 50% РЅР° РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРµСЂРІРёСЃС‹ РІ РїСЂРѕРµРєС‚Р°С…' : 'СЃ РЅРµРѕРіСЂР°РЅРёС‡РµРЅРЅС‹РјРё РѕС‚РІРµС‚Р°РјРё РІ РїСЂРѕРµРєС‚Р°С… Рё +20% Рє СЂРµР№С‚РёРЅРіСѓ'?>
                     <?php endif; ?>
                 </div>
             </div>
@@ -42,39 +42,39 @@ if(!isset($_SESSION['quickbuypro_success_opcode'])) {
             $pro_last = $_SESSION['pro_last'];
         }
         ?>
-        <div class="b-layout__txt b-layout__txt_padbot_15">Срок действия аккаунта — <span class="b-layout__txt b-layout__txt_color_<?= is_emp() ? '6db335' : 'fd6c30'?>">до <?= date('d.m.Y H:i', strtotime($pro_last)) ?></span></div>
+        <div class="b-layout__txt b-layout__txt_padbot_15">РЎСЂРѕРє РґРµР№СЃС‚РІРёСЏ Р°РєРєР°СѓРЅС‚Р° вЂ” <span class="b-layout__txt b-layout__txt_color_<?= is_emp() ? '6db335' : 'fd6c30'?>">РґРѕ <?= date('d.m.Y H:i', strtotime($pro_last)) ?></span></div>
         <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_11">
             <? if(is_emp()) { ?>
-            Спасибо за покупку. <br>
-            Желаем вам успешной работы на сайте и хороших исполнителей!
+            РЎРїР°СЃРёР±Рѕ Р·Р° РїРѕРєСѓРїРєСѓ. <br>
+            Р–РµР»Р°РµРј РІР°Рј СѓСЃРїРµС€РЅРѕР№ СЂР°Р±РѕС‚С‹ РЅР° СЃР°Р№С‚Рµ Рё С…РѕСЂРѕС€РёС… РёСЃРїРѕР»РЅРёС‚РµР»РµР№!
             <? } else { ?>
                 <? if($quickPRO_type=='project') { ?>
                     <? if($project['is_blocked']=='t' || $project['closed']=='t') { ?>
-                    К сожалению, выбранный вами проект уже закрыт, но вы можете посмотреть и ответить на другие проекты аналогичной тематики.<br><br>
-                    Спасибо за покупку.<br>
-                    Желаем вам успешной работы на сайте и множества выгодных заказов!
+                    Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, РІС‹Р±СЂР°РЅРЅС‹Р№ РІР°РјРё РїСЂРѕРµРєС‚ СѓР¶Рµ Р·Р°РєСЂС‹С‚, РЅРѕ РІС‹ РјРѕР¶РµС‚Рµ РїРѕСЃРјРѕС‚СЂРµС‚СЊ Рё РѕС‚РІРµС‚РёС‚СЊ РЅР° РґСЂСѓРіРёРµ РїСЂРѕРµРєС‚С‹ Р°РЅР°Р»РѕРіРёС‡РЅРѕР№ С‚РµРјР°С‚РёРєРё.<br><br>
+                    РЎРїР°СЃРёР±Рѕ Р·Р° РїРѕРєСѓРїРєСѓ.<br>
+                    Р–РµР»Р°РµРј РІР°Рј СѓСЃРїРµС€РЅРѕР№ СЂР°Р±РѕС‚С‹ РЅР° СЃР°Р№С‚Рµ Рё РјРЅРѕР¶РµСЃС‚РІР° РІС‹РіРѕРґРЅС‹С… Р·Р°РєР°Р·РѕРІ!
                     <? } else { ?>
-                        Спасибо за покупку, теперь вы можете ответить на проект. <br>
-                        Желаем вам успешной работы на сайте и множества выгодных заказов!
+                        РЎРїР°СЃРёР±Рѕ Р·Р° РїРѕРєСѓРїРєСѓ, С‚РµРїРµСЂСЊ РІС‹ РјРѕР¶РµС‚Рµ РѕС‚РІРµС‚РёС‚СЊ РЅР° РїСЂРѕРµРєС‚. <br>
+                        Р–РµР»Р°РµРј РІР°Рј СѓСЃРїРµС€РЅРѕР№ СЂР°Р±РѕС‚С‹ РЅР° СЃР°Р№С‚Рµ Рё РјРЅРѕР¶РµСЃС‚РІР° РІС‹РіРѕРґРЅС‹С… Р·Р°РєР°Р·РѕРІ!
                     <? } ?>
                 <? } else { ?>
-                    Спасибо за покупку. <br>
-                    Желаем вам успешной работы на сайте и множества выгодных заказов!
+                    РЎРїР°СЃРёР±Рѕ Р·Р° РїРѕРєСѓРїРєСѓ. <br>
+                    Р–РµР»Р°РµРј РІР°Рј СѓСЃРїРµС€РЅРѕР№ СЂР°Р±РѕС‚С‹ РЅР° СЃР°Р№С‚Рµ Рё РјРЅРѕР¶РµСЃС‚РІР° РІС‹РіРѕРґРЅС‹С… Р·Р°РєР°Р·РѕРІ!
                 <? } ?>
             <? } ?>
         </div>
         <div class="b-buttons b-buttons_padbot_10"> 
             <? if(is_emp()) { ?>
-                <a class="b-button b-button_flat b-button_flat_green" href="#" onClick="$('quick_pro_win_main_ok').addClass('b-shadow_hide'); return false;">Закрыть</a> 
+                <a class="b-button b-button_flat b-button_flat_green" href="#" onClick="$('quick_pro_win_main_ok').addClass('b-shadow_hide'); return false;">Р—Р°РєСЂС‹С‚СЊ</a> 
             <? } else { ?>
                 <? if($quickPRO_type=='project') { ?>
                     <? if($project['is_blocked']=='t' || $project['closed']=='t') { ?>
-                        <a class="b-button b-button_flat b-button_flat_green" href="/">Закрыть и посмотреть проекты</a> 
+                        <a class="b-button b-button_flat b-button_flat_green" href="/">Р—Р°РєСЂС‹С‚СЊ Рё РїРѕСЃРјРѕС‚СЂРµС‚СЊ РїСЂРѕРµРєС‚С‹</a> 
                     <? } else { ?>
-                        <a class="b-button b-button_flat b-button_flat_green" href="#" onClick="$('quick_pro_win_main_ok').addClass('b-shadow_hide'); window.location.hash = '#new_offer'; return false;">Закрыть и ответить на проект</a> 
+                        <a class="b-button b-button_flat b-button_flat_green" href="#" onClick="$('quick_pro_win_main_ok').addClass('b-shadow_hide'); window.location.hash = '#new_offer'; return false;">Р—Р°РєСЂС‹С‚СЊ Рё РѕС‚РІРµС‚РёС‚СЊ РЅР° РїСЂРѕРµРєС‚</a> 
                     <? } ?>
                 <? } else { ?>
-                    <a class="b-button b-button_flat b-button_flat_green" href="#" onClick="$('quick_pro_win_main_ok').addClass('b-shadow_hide'); return false;">Закрыть</a> 
+                    <a class="b-button b-button_flat b-button_flat_green" href="#" onClick="$('quick_pro_win_main_ok').addClass('b-shadow_hide'); return false;">Р—Р°РєСЂС‹С‚СЊ</a> 
                 <? } ?>
             <? } ?>
         </div>

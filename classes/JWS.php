@@ -9,7 +9,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."/classes/Crypt/RSA.php";
 /**
  * JSON Web Signature
  *
- * Подробнее ознакамливаемся тут http://tools.ietf.org/html/draft-jones-json-web-signature-04
+ * РџРѕРґСЂРѕР±РЅРµРµ РѕР·РЅР°РєР°РјР»РёРІР°РµРјСЃСЏ С‚СѓС‚ http://tools.ietf.org/html/draft-jones-json-web-signature-04
  *
  * @example
  *
@@ -17,10 +17,10 @@ require_once $_SERVER['DOCUMENT_ROOT']."/classes/Crypt/RSA.php";
  * $jws->setPayload($data);
  * $private_key = file_get_contents("/path/to/keys/ssl/private.pem");
  * $jws->sign($private_key);
- * // Получаем подписанную строку в формате JWS кодируем приватным ключем
+ * // РџРѕР»СѓС‡Р°РµРј РїРѕРґРїРёСЃР°РЅРЅСѓСЋ СЃС‚СЂРѕРєСѓ РІ С„РѕСЂРјР°С‚Рµ JWS РєРѕРґРёСЂСѓРµРј РїСЂРёРІР°С‚РЅС‹Рј РєР»СЋС‡РµРј
  * $rs256_token = $jws->getTokenString();
  *
- * // Проверка входящей строки публичным ключем
+ * // РџСЂРѕРІРµСЂРєР° РІС…РѕРґСЏС‰РµР№ СЃС‚СЂРѕРєРё РїСѓР±Р»РёС‡РЅС‹Рј РєР»СЋС‡РµРј
  * $public_key = file_get_contents("/path/to/keys/ssl/public.pem");
  * $vjws = JWS::load($rs256_token);
  * $result = $vjws->verify($public_key);
@@ -33,7 +33,7 @@ require_once $_SERVER['DOCUMENT_ROOT']."/classes/Crypt/RSA.php";
 class JWS extends JWT
 {
     /**
-     * Поддерживаемые алгоритмы
+     * РџРѕРґРґРµСЂР¶РёРІР°РµРјС‹Рµ Р°Р»РіРѕСЂРёС‚РјС‹
      *
      * @var array
      */
@@ -43,9 +43,9 @@ class JWS extends JWT
         'ES256', 'ES384', 'ES512');
 
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      *
-     * @param $alg          Алгоритм шифрования
+     * @param $alg          РђР»РіРѕСЂРёС‚Рј С€РёС„СЂРѕРІР°РЅРёСЏ
      * @param string $typ
      */
     public function __construct($alg, $time = null) {
@@ -59,10 +59,10 @@ class JWS extends JWT
     }
 
     /**
-     * Инициализировать параметры шапки запроса
+     * РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ РїР°СЂР°РјРµС‚СЂС‹ С€Р°РїРєРё Р·Р°РїСЂРѕСЃР°
      *
-     * @param $name     Название параметра
-     * @param $value    Значение параметра
+     * @param $name     РќР°Р·РІР°РЅРёРµ РїР°СЂР°РјРµС‚СЂР°
+     * @param $value    Р—РЅР°С‡РµРЅРёРµ РїР°СЂР°РјРµС‚СЂР°
      */
     public function setHeaderItem($name, $value) {
         if($name=='alg'){
@@ -78,9 +78,9 @@ class JWS extends JWT
     }
 
     /**
-     * Получаем подписанный ключ
+     * РџРѕР»СѓС‡Р°РµРј РїРѕРґРїРёСЃР°РЅРЅС‹Р№ РєР»СЋС‡
      *
-     * @param mixed $key Ключик которым шифруем обычно это private.key
+     * @param mixed $key РљР»СЋС‡РёРє РєРѕС‚РѕСЂС‹Рј С€РёС„СЂСѓРµРј РѕР±С‹С‡РЅРѕ СЌС‚Рѕ private.key
      */
     public function sign($key) {
         $signingInput = $this->generateSigningInput();
@@ -100,20 +100,20 @@ class JWS extends JWT
     }
 
     /**
-     * Получаем RSA ключ
+     * РџРѕР»СѓС‡Р°РµРј RSA РєР»СЋС‡
      *
-     * @param string $hashAlg        Алгоритм шифрования
-     * @param string $signingInput   Данные для шифрования закодированные base64
-     * @param mixed $key             Приватный ключ которым шифруем
+     * @param string $hashAlg        РђР»РіРѕСЂРёС‚Рј С€РёС„СЂРѕРІР°РЅРёСЏ
+     * @param string $signingInput   Р”Р°РЅРЅС‹Рµ РґР»СЏ С€РёС„СЂРѕРІР°РЅРёСЏ Р·Р°РєРѕРґРёСЂРѕРІР°РЅРЅС‹Рµ base64
+     * @param mixed $key             РџСЂРёРІР°С‚РЅС‹Р№ РєР»СЋС‡ РєРѕС‚РѕСЂС‹Рј С€РёС„СЂСѓРµРј
      */
     private function RSASign($hashAlg, $signingInput, $key) {
         $this->_signature = $this->rsa($hashAlg, $key)->sign($signingInput);
     }
 
     /**
-     * Проверка на доступность выбранного алгоритма
+     * РџСЂРѕРІРµСЂРєР° РЅР° РґРѕСЃС‚СѓРїРЅРѕСЃС‚СЊ РІС‹Р±СЂР°РЅРЅРѕРіРѕ Р°Р»РіРѕСЂРёС‚РјР°
      *
-     * @param string $alg Название алгоритма
+     * @param string $alg РќР°Р·РІР°РЅРёРµ Р°Р»РіРѕСЂРёС‚РјР°
      * @return bool
      */
     static public function isAllowedAlg($alg) {
@@ -125,10 +125,10 @@ class JWS extends JWT
     }
 
     /**
-     * Загружает JSON Web Signature
+     * Р—Р°РіСЂСѓР¶Р°РµС‚ JSON Web Signature
      *
      * @param string $jwt JSON Web Signature
-     * @param bool $payload_is_array Данные запроса
+     * @param bool $payload_is_array Р”Р°РЅРЅС‹Рµ Р·Р°РїСЂРѕСЃР°
      * @return JWS object
      */
     static public function load($jwt, $payload_is_array=false){
@@ -153,9 +153,9 @@ class JWS extends JWT
     }
 
     /**
-     * Проверка данных по публичному ключу
+     * РџСЂРѕРІРµСЂРєР° РґР°РЅРЅС‹С… РїРѕ РїСѓР±Р»РёС‡РЅРѕРјСѓ РєР»СЋС‡Сѓ
      *
-     * @param mixed $key Публичный ключ
+     * @param mixed $key РџСѓР±Р»РёС‡РЅС‹Р№ РєР»СЋС‡
      */
     public function verify($key) {
         $part = explode('.', $this->_tokenstring);
@@ -181,11 +181,11 @@ class JWS extends JWT
     }
 
     /**
-     * Создаем подпись для передаваемых данных
+     * РЎРѕР·РґР°РµРј РїРѕРґРїРёСЃСЊ РґР»СЏ РїРµСЂРµРґР°РІР°РµРјС‹С… РґР°РЅРЅС‹С…
      *
-     * @param $hashAlg              Алгоритм шифрования
-     * @param $signingInput         Данные для шифрования
-     * @param $decoded_signature    Ключ для шифрования
+     * @param $hashAlg              РђР»РіРѕСЂРёС‚Рј С€РёС„СЂРѕРІР°РЅРёСЏ
+     * @param $signingInput         Р”Р°РЅРЅС‹Рµ РґР»СЏ С€РёС„СЂРѕРІР°РЅРёСЏ
+     * @param $decoded_signature    РљР»СЋС‡ РґР»СЏ С€РёС„СЂРѕРІР°РЅРёСЏ
      * @param $pubkey
      * @return bool
      */
@@ -205,21 +205,21 @@ class JWS extends JWT
 /**
  * JSON Web Token (JWT)
  *
- * Подробно можно ознакомиться тут
+ * РџРѕРґСЂРѕР±РЅРѕ РјРѕР¶РЅРѕ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ С‚СѓС‚
  * http://tools.ietf.org/html/draft-jones-json-web-signature-04#ref-JWT
  *
  */
 class JWT
 {
     /**
-     * Шапка запроса
+     * РЁР°РїРєР° Р·Р°РїСЂРѕСЃР°
      *
      * @var array
      */
     protected $_header=array();
 
     /**
-     * Данные запроса
+     * Р”Р°РЅРЅС‹Рµ Р·Р°РїСЂРѕСЃР°
      *
      * @var
      */
@@ -227,14 +227,14 @@ class JWT
 
 
     /**
-     * Подпись запроса
+     * РџРѕРґРїРёСЃСЊ Р·Р°РїСЂРѕСЃР°
      *
      * @var
      */
     protected $_signature;
 
     /**
-     * Сгенерированная строка для запроса
+     * РЎРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅР°СЏ СЃС‚СЂРѕРєР° РґР»СЏ Р·Р°РїСЂРѕСЃР°
      *
      * @var string
      */
@@ -242,10 +242,10 @@ class JWT
 
 
     /**
-     * Конструктор
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
      *
-     * @param $alg  Алгоритм шифрования
-     * @param $time Время отправки запроса
+     * @param $alg  РђР»РіРѕСЂРёС‚Рј С€РёС„СЂРѕРІР°РЅРёСЏ
+     * @param $time Р’СЂРµРјСЏ РѕС‚РїСЂР°РІРєРё Р·Р°РїСЂРѕСЃР°
      */
     public function __construct($alg, $time = null) {
         if($time !== null) {
@@ -257,7 +257,7 @@ class JWT
 
 
     /**
-     * Инициализировать параметры шапки запроса
+     * РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ РїР°СЂР°РјРµС‚СЂС‹ С€Р°РїРєРё Р·Р°РїСЂРѕСЃР°
      *
      * @param $name
      * @param $value
@@ -267,7 +267,7 @@ class JWT
     }
 
     /**
-     * Инициализировать данные запроса
+     * РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ РґР°РЅРЅС‹Рµ Р·Р°РїСЂРѕСЃР°
      *
      * @param $payload
      */
@@ -276,7 +276,7 @@ class JWT
     }
 
     /**
-     * Возвращяет JWT ключ для запроса
+     * Р’РѕР·РІСЂР°С‰СЏРµС‚ JWT РєР»СЋС‡ РґР»СЏ Р·Р°РїСЂРѕСЃР°
      *
      * @return string
      */
@@ -290,7 +290,7 @@ class JWT
     }
 
     /**
-     * Назначаем сгенерированный ключ
+     * РќР°Р·РЅР°С‡Р°РµРј СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Р№ РєР»СЋС‡
      *
      * @return string
      */
@@ -299,7 +299,7 @@ class JWT
     }
 
     /**
-     * Высылаемая строка запроса
+     * Р’С‹СЃС‹Р»Р°РµРјР°СЏ СЃС‚СЂРѕРєР° Р·Р°РїСЂРѕСЃР°
      *
      * @return string
      */
@@ -314,13 +314,13 @@ class JWT
     }
 
     /**
-     * Шапка запроса
+     * РЁР°РїРєР° Р·Р°РїСЂРѕСЃР°
      *
      * @param string $jwt JWT string
      * @return array JWT Header
      */
     static public function getHeader($jwt) {
-        // проверяем все ли части на месте
+        // РїСЂРѕРІРµСЂСЏРµРј РІСЃРµ Р»Рё С‡Р°СЃС‚Рё РЅР° РјРµСЃС‚Рµ
         $part = explode('.', $jwt);
         if(!is_array($part) || empty($part) || count($part) !== 3 ){
             return false;
@@ -341,14 +341,14 @@ class JWT
     }
 
     /**
-     * Возвращает данные запроса
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ Р·Р°РїСЂРѕСЃР°
      *
-     * @param string $jwt Запрос
-     * @param bool $return_is_array вернуть в формате массива
+     * @param string $jwt Р—Р°РїСЂРѕСЃ
+     * @param bool $return_is_array РІРµСЂРЅСѓС‚СЊ РІ С„РѕСЂРјР°С‚Рµ РјР°СЃСЃРёРІР°
      * @return mixed
      */
     static public function getPayload($jwt, $return_is_array=false) {
-        // проверяем все ли части на месте
+        // РїСЂРѕРІРµСЂСЏРµРј РІСЃРµ Р»Рё С‡Р°СЃС‚Рё РЅР° РјРµСЃС‚Рµ
         $part = explode('.', $jwt);
         if(!is_array($part) || empty($part) || count($part) !== 3 ){
             return false;
@@ -362,13 +362,13 @@ class JWT
     }
 
     /**
-     * Возвращаем шапку запроса
+     * Р’РѕР·РІСЂР°С‰Р°РµРј С€Р°РїРєСѓ Р·Р°РїСЂРѕСЃР°
      *
-     * @param string $jwt Данные запроса
+     * @param string $jwt Р”Р°РЅРЅС‹Рµ Р·Р°РїСЂРѕСЃР°
      * @return string
      */
     static public function getEncodedHeader($jwt) {
-        // проверяем все ли части на месте
+        // РїСЂРѕРІРµСЂСЏРµРј РІСЃРµ Р»Рё С‡Р°СЃС‚Рё РЅР° РјРµСЃС‚Рµ
         $part = explode('.', $jwt);
         if(!is_array($part) || empty($part) || count($part) !== 3 ){
             return false;
@@ -377,13 +377,13 @@ class JWT
     }
 
     /**
-     * Возвращает данные запроса
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ Р·Р°РїСЂРѕСЃР°
      *
-     * @param string $jwt Данные запроса
+     * @param string $jwt Р”Р°РЅРЅС‹Рµ Р·Р°РїСЂРѕСЃР°
      * @return string
      */
     static public function getEncodedPayload($jwt) {
-        // проверяем все ли части на месте
+        // РїСЂРѕРІРµСЂСЏРµРј РІСЃРµ Р»Рё С‡Р°СЃС‚Рё РЅР° РјРµСЃС‚Рµ
         $part = explode('.', $jwt);
         if(!is_array($part) || empty($part) || count($part) !== 3 ){
             return false;
@@ -392,13 +392,13 @@ class JWT
     }
 
     /**
-     * Возвращает строку запроса
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃС‚СЂРѕРєСѓ Р·Р°РїСЂРѕСЃР°
      *
-     * @param  string $jwt Строка JWT @see http://tools.ietf.org/html/draft-jones-json-web-signature-04#ref-JWT
+     * @param  string $jwt РЎС‚СЂРѕРєР° JWT @see http://tools.ietf.org/html/draft-jones-json-web-signature-04#ref-JWT
      * @return string
      */
     static public function getSigningInput($jwt) {
-        // проверяем все ли части на месте
+        // РїСЂРѕРІРµСЂСЏРµРј РІСЃРµ Р»Рё С‡Р°СЃС‚Рё РЅР° РјРµСЃС‚Рµ
         $part = explode('.', $jwt);
         if(!is_array($part) || empty($part) || count($part) !== 3 ){
             return false;
@@ -409,7 +409,7 @@ class JWT
 
 
 /**
- * Вспомогательный класс для работы с base64
+ * Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Р№ РєР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ base64
  */
 class JWS_Base64
 {
@@ -453,7 +453,7 @@ class JWS_Base64
 
 class JWS_Json
 {
-    // encode for php-5.2.xx (костыль для версии ПХП как на боевой)
+    // encode for php-5.2.xx (РєРѕСЃС‚С‹Р»СЊ РґР»СЏ РІРµСЂСЃРёРё РџРҐРџ РєР°Рє РЅР° Р±РѕРµРІРѕР№)
     static public function encode($data) {
         return str_replace("\/", "/", json_encode($data));
     }

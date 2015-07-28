@@ -36,13 +36,13 @@ window.addEvent('domready',
                 $type ="users"; 
             case "users_test":
             case "users":
-                $name_advanced_search = 'Расширенный поиск';
+                $name_advanced_search = 'Р Р°СЃС€РёСЂРµРЅРЅС‹Р№ РїРѕРёСЃРє';
                 $search_advanced_tpl = "tpl.form-users.php";
                 $search_block_tpl = "tpl.search-users.php";
                 break;
             case "projects_test":
             case "projects":
-                $name_advanced_search = 'Расширенный поиск';
+                $name_advanced_search = 'Р Р°СЃС€РёСЂРµРЅРЅС‹Р№ РїРѕРёСЃРє';
                 $search_lenta_css = "search-prj";
                 $search_advanced_tpl = "tpl.form-projects.php";
                 $search_block_tpl = "tpl.search-projects.php";
@@ -76,7 +76,7 @@ window.addEvent('domready',
                 if($_SESSION['search_string']) $search_advanced_tpl = "tpl.form-sections.php";
                 $search_block_tpl = "tpl.search-{$type}.php";
 
-                //Получаем значения is_profi и расширяем выдачу результата поиска
+                //РџРѕР»СѓС‡Р°РµРј Р·РЅР°С‡РµРЅРёСЏ is_profi Рё СЂР°СЃС€РёСЂСЏРµРј РІС‹РґР°С‡Сѓ СЂРµР·СѓР»СЊС‚Р°С‚Р° РїРѕРёСЃРєР°
                 if (in_array($type, array('messages','notes')) && 
                     count($element->results) && 
                     $uid_fields) {
@@ -141,18 +141,18 @@ window.addEvent('domready',
         <?php if(($is_matches && $is_search) || $is_not_search_string) { ?>
         <br/>
                     <? if($type=='users') { ?>
-                    <a class="b-button b-button_flat b-button_flat_green b-page__ipad b-page__iphone" href="<?= "/masssending/?from_search=2&search_count=" . $totalSearch . "&" . $_SERVER['QUERY_STRING'] ?>">Рассылка по фрилансерам</a>
+                    <a class="b-button b-button_flat b-button_flat_green b-page__ipad b-page__iphone" href="<?= "/masssending/?from_search=2&search_count=" . $totalSearch . "&" . $_SERVER['QUERY_STRING'] ?>">Р Р°СЃСЃС‹Р»РєР° РїРѕ С„СЂРёР»Р°РЅСЃРµСЂР°Рј</a>
                     <? } ?>
         <div class="search-rama">
             <div class="search-finded">
 																<p>
                     <? if($type=='users') { ?>
-                    <a id="masssend-to-users" class="b-button b-button_flat b-button_flat_green b-button_float_right b-page__desktop" href="<?= "/masssending/?from_search=2&search_count=" . $totalSearch . "&" . $_SERVER['QUERY_STRING'] ?>">Рассылка по фрилансерам</a>
+                    <a id="masssend-to-users" class="b-button b-button_flat b-button_flat_green b-button_float_right b-page__desktop" href="<?= "/masssending/?from_search=2&search_count=" . $totalSearch . "&" . $_SERVER['QUERY_STRING'] ?>">Р Р°СЃСЃС‹Р»РєР° РїРѕ С„СЂРёР»Р°РЅСЃРµСЂР°Рј</a>
                     <? } ?>
                     <?php if($totalSearch > 0 ) {?>
-                    Найдено <?=$totalSearch?> <?= ending($totalSearch, "совпадение", "совпадения", "совпадений")?> 
+                    РќР°Р№РґРµРЅРѕ <?=$totalSearch?> <?= ending($totalSearch, "СЃРѕРІРїР°РґРµРЅРёРµ", "СЃРѕРІРїР°РґРµРЅРёСЏ", "СЃРѕРІРїР°РґРµРЅРёР№")?> 
                     <?php } else {//if?>
-                    <?= $is_not_search_string?"Введите поисковый запрос":"Совпадений не найдено"?>
+                    <?= $is_not_search_string?"Р’РІРµРґРёС‚Рµ РїРѕРёСЃРєРѕРІС‹Р№ Р·Р°РїСЂРѕСЃ":"РЎРѕРІРїР°РґРµРЅРёР№ РЅРµ РЅР°Р№РґРµРЅРѕ"?>
                     <?php } //else?>
                 </p>
             </div>
@@ -167,7 +167,7 @@ window.addEvent('domready',
             foreach($element->results as $num=>$result) {$i++;
                 include($_SERVER['DOCUMENT_ROOT']."/search/tpl/{$search_block_tpl}");
                 $first_element = false;
-                // в зависимости от раздела поиска
+                // РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЂР°Р·РґРµР»Р° РїРѕРёСЃРєР°
             }
             
         $query_string_menu = str_replace('%','%%', $query_string_menu);

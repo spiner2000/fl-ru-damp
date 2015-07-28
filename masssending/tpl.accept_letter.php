@@ -23,9 +23,9 @@
                             <td class="pad_null" bgcolor="#ffffff" width="20"></td>
                             <td class="pad_null" width="20"></td>
                             <td class="pad_null">
-                                <font color="#444444" size="2" face="tahoma,sans-serif">Здравствуйте, <?= $params['name'] ?>.<br><br>
-                                    Ваша заявка на рассылку была рассмотрена и одобрена модераторами сайта Free-lance.ru.&nbsp;
-                                    Фрилансерам выбранных вами специализаций будет отправлено сообщение следующего содержания:<br><br>
+                                <font color="#444444" size="2" face="tahoma,sans-serif">Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, <?= $params['name'] ?>.<br><br>
+                                    Р’Р°С€Р° Р·Р°СЏРІРєР° РЅР° СЂР°СЃСЃС‹Р»РєСѓ Р±С‹Р»Р° СЂР°СЃСЃРјРѕС‚СЂРµРЅР° Рё РѕРґРѕР±СЂРµРЅР° РјРѕРґРµСЂР°С‚РѕСЂР°РјРё СЃР°Р№С‚Р° Free-lance.ru.&nbsp;
+                                    Р¤СЂРёР»Р°РЅСЃРµСЂР°Рј РІС‹Р±СЂР°РЅРЅС‹С… РІР°РјРё СЃРїРµС†РёР°Р»РёР·Р°С†РёР№ Р±СѓРґРµС‚ РѕС‚РїСЂР°РІР»РµРЅРѕ СЃРѕРѕР±С‰РµРЅРёРµ СЃР»РµРґСѓСЋС‰РµРіРѕ СЃРѕРґРµСЂР¶Р°РЅРёСЏ:<br><br>
                                     ----
                                     <br><br>
                                     <?= $params['message'] ?>
@@ -53,7 +53,7 @@
                             <td class="pad_null" width="100"><a target="_blank" href="<?= $host ?>/masssending/pay/<?=$params['id']?>/<?= $UTM ?>"><img src="cid:<?= $cid; ?>" width="96" height="36" border="0"></a></td>
                             <td class="pad_null" valign="middle">&nbsp;&nbsp;&nbsp;
                                 <b>
-                                    <font color="#fd6c30" size="2" face="tahoma,sans-serif"><?= to_money($params['amount'], 2) . ending(to_money($params['amount']), ' рубль', ' рубля', ' рублей')?></font>
+                                    <font color="#fd6c30" size="2" face="tahoma,sans-serif"><?= to_money($params['amount'], 2) . ending(to_money($params['amount']), ' СЂСѓР±Р»СЊ', ' СЂСѓР±Р»СЏ', ' СЂСѓР±Р»РµР№')?></font>
                                 </b>
                             </td>
                             <td class="pad_null" width="20"></td>
@@ -73,11 +73,11 @@
                         <tr>
                             <td class="pad_null" bgcolor="#ffffff" width="20"></td>
                             <td class="pad_null" width="20"></td>
-                            <td class="pad_null"><font color="#444444" size="2" face="tahoma,sans-serif">Подробная информация по услуге «Платная рассылка по каталогу» размещена в нашем&nbsp;<a target="_blank" style="color:#0f71c8;" href="https://feedback.fl.ru/topic/397509-rassyilka-po-katalogu-sistema-sozdaniya-rassyilki-oplata-rassyilki/?<?= $UTM ?>">сообществе поддержки</a>.<br><br>
+                            <td class="pad_null"><font color="#444444" size="2" face="tahoma,sans-serif">РџРѕРґСЂРѕР±РЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ СѓСЃР»СѓРіРµ В«РџР»Р°С‚РЅР°СЏ СЂР°СЃСЃС‹Р»РєР° РїРѕ РєР°С‚Р°Р»РѕРіСѓВ» СЂР°Р·РјРµС‰РµРЅР° РІ РЅР°С€РµРј&nbsp;<a target="_blank" style="color:#0f71c8;" href="https://feedback.fl.ru/topic/397509-rassyilka-po-katalogu-sistema-sozdaniya-rassyilki-oplata-rassyilki/?<?= $UTM ?>">СЃРѕРѕР±С‰РµСЃС‚РІРµ РїРѕРґРґРµСЂР¶РєРё</a>.<br><br>
 
-                                    По всем возникающим вопросам обращайтесь в нашу&nbsp;<a target="_blank" style="color:#0f71c8;" href="https://feedback.free-lance.ru?<?= $UTM ?>">службу поддержки</a>.<br><br>
+                                    РџРѕ РІСЃРµРј РІРѕР·РЅРёРєР°СЋС‰РёРј РІРѕРїСЂРѕСЃР°Рј РѕР±СЂР°С‰Р°Р№С‚РµСЃСЊ РІ РЅР°С€Сѓ&nbsp;<a target="_blank" style="color:#0f71c8;" href="https://feedback.free-lance.ru?<?= $UTM ?>">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.<br><br>
 
-                                    Вы можете отключить уведомления&nbsp;на <a target="_blank" style="color:#0f71c8;" href="<?= $host ?>/unsubscribe?ukey=%UNSUBSCRIBE_KEY%&<?= $UTM ?>">этой странице</a>.<br><br></font></td>
+                                    Р’С‹ РјРѕР¶РµС‚Рµ РѕС‚РєР»СЋС‡РёС‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ&nbsp;РЅР° <a target="_blank" style="color:#0f71c8;" href="<?= $host ?>/unsubscribe?ukey=%UNSUBSCRIBE_KEY%&<?= $UTM ?>">СЌС‚РѕР№ СЃС‚СЂР°РЅРёС†Рµ</a>.<br><br></font></td>
                             <td class="pad_null" width="20"></td>
                             <td class="pad_null" bgcolor="#ffffff" width="20"></td>
                         </tr>
@@ -94,7 +94,7 @@
                             <td class="pad_null" bgcolor="#ffffff" width="20"></td>
                             <td class="pad_null" bgcolor="#ffffff" width="20"></td>
                             <td class="pad_null" bgcolor="#ffffff">
-                                <i><font color="#4d4d4d" size="2" face="tahoma,sans-serif">Приятной работы с Free-lance.ru!</font></i>
+                                <i><font color="#4d4d4d" size="2" face="tahoma,sans-serif">РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹ СЃ Free-lance.ru!</font></i>
                             </td>
                             <td class="pad_null" bgcolor="#ffffff" width="20"></td>
                             <td class="pad_null" bgcolor="#ffffff" width="20"></td>

@@ -14,16 +14,16 @@ if (get_uid(false)) {
 <div class="b-promo b-promo_main" style="margin-top:<?= $extraMarginTop ?>px">
 <a name="b-promo_clients"></a>
 	<div id="b-promo__main-inner" class="b-promo__main-inner<?= !$state ? ' b-promo_height_80 b-promo_overflow_hidden' : '' ?>" <?= !$state ? ' style="height:80px"' : '' ?>>
-		<div id="promo-minimize" class="b-promo__slide b-promo__slide_up b-promo__slide_padbot_20<?= !$state ? ' b-promo__slide_hide' : '' ?>"><a id="main_link_promo_tgl" class="b-promo__link b-promo__link_float_right" href="javascript:void(0)" onclick="promoSaveCookie('0');">свернуть&#160;<span class="b-promo__slide-arrow b-promo__slide-arrow_top"></span></a></div>
-		<div id="promo-maximize" class="b-promo__slide b-promo__slide_down b-promo__slide_padbot_20<?= $state ? ' b-promo__slide_hide' : '' ?>"><a class="b-promo__link b-promo__link_float_right" href="javascript:void(0)" onclick="promoSaveCookie('1');">развернуть&#160;<span class="b-promo__slide-arrow b-promo__slide-arrow_bot"></span></a></div>
-        <a class="b-button b-button_big_green"  href="<?= $searchLinkFlag ? "/search/?type=users" : "/wizard/registration/employer"?>" title="поиск фрилансера">Ищу фрилансера!</a>
-        <a class="b-button b-button_big_yellow"  href="<?= get_uid(false) ? "/search/?type=projects" : "/wizard/registration/free-lancer"?>" title="поиск работы">Ищу работу</a>
+		<div id="promo-minimize" class="b-promo__slide b-promo__slide_up b-promo__slide_padbot_20<?= !$state ? ' b-promo__slide_hide' : '' ?>"><a id="main_link_promo_tgl" class="b-promo__link b-promo__link_float_right" href="javascript:void(0)" onclick="promoSaveCookie('0');">СЃРІРµСЂРЅСѓС‚СЊ&#160;<span class="b-promo__slide-arrow b-promo__slide-arrow_top"></span></a></div>
+		<div id="promo-maximize" class="b-promo__slide b-promo__slide_down b-promo__slide_padbot_20<?= $state ? ' b-promo__slide_hide' : '' ?>"><a class="b-promo__link b-promo__link_float_right" href="javascript:void(0)" onclick="promoSaveCookie('1');">СЂР°Р·РІРµСЂРЅСѓС‚СЊ&#160;<span class="b-promo__slide-arrow b-promo__slide-arrow_bot"></span></a></div>
+        <a class="b-button b-button_big_green"  href="<?= $searchLinkFlag ? "/search/?type=users" : "/wizard/registration/employer"?>" title="РїРѕРёСЃРє С„СЂРёР»Р°РЅСЃРµСЂР°">РС‰Сѓ С„СЂРёР»Р°РЅСЃРµСЂР°!</a>
+        <a class="b-button b-button_big_yellow"  href="<?= get_uid(false) ? "/search/?type=projects" : "/wizard/registration/free-lancer"?>" title="РїРѕРёСЃРє СЂР°Р±РѕС‚С‹">РС‰Сѓ СЂР°Р±РѕС‚Сѓ</a>
         <div class="b-layout b-layout_padtop_30 b-promo__main-block<?= !$state ? ' b-layout_hide' : '' ?>" id="mainPromo">
 			<table class="b-layout__table b-layout__table_width_full" border="0" cellpadding="0" cellspacing="0">
 				<tr class="b-layout__tr">
 					<td class="b-layout__gap">&#160;</td>
 					<td class="b-layout__left">
-						<h2 class="b-layout__title b-layout__title_width_350 b-layout__title_center"><a class="b-promo__link b-promo__link_inline-block" href="/clients/">Клиенты фрилансеров</a></h2>
+						<h2 class="b-layout__title b-layout__title_width_350 b-layout__title_center"><a class="b-promo__link b-promo__link_inline-block" href="/clients/">РљР»РёРµРЅС‚С‹ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</a></h2>
 						<ul class="b-promo__free b-promo__free_width_270">
                             <?php foreach ($clients as $client) { ?>
                                 <li class="b-promo__free-item b-promo__free-item_float_left">
@@ -47,6 +47,6 @@ if (get_uid(false)) {
 				</tr>
 			</table>
 		</div>
-		<? if (get_uid(false)) { ?><div id="promo-close-forever" class="b-promo__slide b-promo__slide_close b-promo__slide_bot_-15<?= $state ? ' b-promo__slide_hide' : '' ?>"><a class="b-promo__link b-promo__link_float_right" href="javascript:void(0)" onclick="mainPromoClose();">закрыть совсем&#160;<span class="b-promo__slide-arrow b-promo__slide-arrow_close"></span></a></div><? } ?>
+		<? if (get_uid(false)) { ?><div id="promo-close-forever" class="b-promo__slide b-promo__slide_close b-promo__slide_bot_-15<?= $state ? ' b-promo__slide_hide' : '' ?>"><a class="b-promo__link b-promo__link_float_right" href="javascript:void(0)" onclick="mainPromoClose();">Р·Р°РєСЂС‹С‚СЊ СЃРѕРІСЃРµРј&#160;<span class="b-promo__slide-arrow b-promo__slide-arrow_close"></span></a></div><? } ?>
 	</div>
 </div><!-- b-promo_main -->

@@ -23,17 +23,17 @@ function processForm($aFormValues) {
 	$usr=new users($uid);
 	$pname=$_SESSION['name']." ".$_SESSION['surname'];
 	$mail=$usr->GetField($uid, $error, "email");
-	if (!$msg) {$alert['msg'] = "Поле заполнено некорректно"; $error_flag = 1;}
+	if (!$msg) {$alert['msg'] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ"; $error_flag = 1;}
 	if (!$error_flag) $error .= blogs::NewThread($uid, 3, 0, $name, $msg, $f_name, getRemoteIP(),1, $tn);
 	if (!$error && !$error_flag) {
 		$sm = new smail();
 		$error .= $sm->NewFeedbackPost($pname, $msg, $mail, $_SESSION['login'], 4);
 		$msg = $name = $mail = "";
-		$info_msg = '<br><center><table class="view_info" border="0" cellpadding="2" cellspacing="0"><tbody><tr class="n_qpr"><td height="20"><img src="/images/ico_ok.gif" alt="" border="0" height="18" width="19"></td><td nowrap>Ваше сообщение отправлено</td></tr></tbody></table>';
+		$info_msg = '<br><center><table class="view_info" border="0" cellpadding="2" cellspacing="0"><tbody><tr class="n_qpr"><td height="20"><img src="/images/ico_ok.gif" alt="" border="0" height="18" width="19"></td><td nowrap>Р’Р°С€Рµ СЃРѕРѕР±С‰РµРЅРёРµ РѕС‚РїСЂР°РІР»РµРЅРѕ</td></tr></tbody></table>';
 		$objResponse->assign("calltext","value",'');
 		$objResponse->assign("cbok","innerHTML",$info_msg);
 		//$objResponse->assign("submitButton","disabled",false);
-		$objResponse->assign("submitButton","value",'Отправить');
+		$objResponse->assign("submitButton","value",'РћС‚РїСЂР°РІРёС‚СЊ');
 	}
 	return $objResponse;
 }

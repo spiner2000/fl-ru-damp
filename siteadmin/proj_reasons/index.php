@@ -43,8 +43,8 @@ switch ( $sAction ) {
     case 'add':
         $sName      = substr( trim($_POST['reason_name']), 0, 64 );
         $sReason    = trim($_POST['reason_text']);
-        $sNameError = ( !$sName )   ? 'Укажите Название причины' : '';
-        $sTextError = ( !$sReason ) ? 'Укажите Текст причины'    : '';
+        $sNameError = ( !$sName )   ? 'РЈРєР°Р¶РёС‚Рµ РќР°Р·РІР°РЅРёРµ РїСЂРёС‡РёРЅС‹' : '';
+        $sTextError = ( !$sReason ) ? 'РЈРєР°Р¶РёС‚Рµ РўРµРєСЃС‚ РїСЂРёС‡РёРЅС‹'    : '';
         
         if ( !$sNameError && !$sTextError ) {
         	admin_log::addAdminReason( $act_sel, $sName, $sReason, (!empty($_POST['is_bold']) ? 't' : 'f') );
@@ -57,8 +57,8 @@ switch ( $sAction ) {
         if ( $sCmd == 'go' ) {
             $sName      = substr( trim($_POST['reason_name']), 0, 64 );
             $sReason    = trim($_POST['reason_text']);
-            $sNameError = ( !$sName )   ? 'Укажите Название причины' : '';
-            $sTextError = ( !$sReason ) ? 'Укажите Текст причины'    : '';
+            $sNameError = ( !$sName )   ? 'РЈРєР°Р¶РёС‚Рµ РќР°Р·РІР°РЅРёРµ РїСЂРёС‡РёРЅС‹' : '';
+            $sTextError = ( !$sReason ) ? 'РЈРєР°Р¶РёС‚Рµ РўРµРєСЃС‚ РїСЂРёС‡РёРЅС‹'    : '';
             
             if ( $reasonId && !$sNameError && !$sTextError ) {
             	admin_log::updateAdminReason( $reasonId, $sName, $sReason, (!empty($_POST['is_bold']) ? 't' : 'f') );
@@ -73,7 +73,7 @@ switch ( $sAction ) {
         break;
 }
 
-$sFormTitle = ( $sAction == 'edit' ) ? 'Редактировать причину: ' . $aReason['reason_name'] : 'Новая причина'; 
+$sFormTitle = ( $sAction == 'edit' ) ? 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РїСЂРёС‡РёРЅСѓ: ' . $aReason['reason_name'] : 'РќРѕРІР°СЏ РїСЂРёС‡РёРЅР°'; 
 $aReasons   = admin_log::getAdminReasons( $act_sel, false );
 $no_banner  = 1;
 $rpath      = '../../';

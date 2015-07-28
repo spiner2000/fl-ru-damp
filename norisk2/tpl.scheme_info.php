@@ -12,7 +12,7 @@
             <col width="145" />
             <tbody>
                 <tr>
-                    <th>Общая сумма «Безопасной Сделки»</th>
+                    <th>РћР±С‰Р°СЏ СЃСѓРјРјР° В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ»</th>
                     <td>&mdash;</td>
                     <td class="last"><?=sbr_meta::view_cost($tmp_ts, $curr_sbr->cost_sys, false)?></td>
                 </tr>
@@ -26,7 +26,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <th><strong><?=($curr_sbr->isFrl() ? 'К перечислению Фрилансеру' : 'Итого исполнитель получит')?></strong></th>
+                    <th><strong><?=($curr_sbr->isFrl() ? 'Рљ РїРµСЂРµС‡РёСЃР»РµРЅРёСЋ Р¤СЂРёР»Р°РЅСЃРµСЂСѓ' : 'РС‚РѕРіРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЊ РїРѕР»СѓС‡РёС‚')?></strong></th>
                     <td>&mdash;</td>
                     <td class="last"><strong><?=sbr_meta::view_cost($total_sum, $curr_sbr->cost_sys, false)?></strong></td>
                 </tr>

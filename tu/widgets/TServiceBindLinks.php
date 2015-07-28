@@ -4,7 +4,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/quick_payment/quickPaymentPop
 
 
 /**
- * Виджет - Ссылки на продление и поднятие закрепленной услуги
+ * Р’РёРґР¶РµС‚ - РЎСЃС‹Р»РєРё РЅР° РїСЂРѕРґР»РµРЅРёРµ Рё РїРѕРґРЅСЏС‚РёРµ Р·Р°РєСЂРµРїР»РµРЅРЅРѕР№ СѓСЃР»СѓРіРё
  */
 class TServiceBindLinks {
     
@@ -23,7 +23,7 @@ class TServiceBindLinks {
     protected $data;
     
     /**
-     * Инициализация тизера
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ С‚РёР·РµСЂР°
      * @global array $js_file
      * @param array $options [kind, uid]
      */

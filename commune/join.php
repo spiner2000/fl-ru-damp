@@ -11,23 +11,23 @@ global $id, $comm, $user_mod, $uid, $result;
   //  {
 
   if($user_mod & (commune::MOD_COMM_ACCEPTED | commune::MOD_COMM_ASKED))
-    $header = 'на выход из сообщества';
+    $header = 'РЅР° РІС‹С…РѕРґ РёР· СЃРѕРѕР±С‰РµСЃС‚РІР°';
   else
-    $header = 'вступления в сообщество';
+    $header = 'РІСЃС‚СѓРїР»РµРЅРёСЏ РІ СЃРѕРѕР±С‰РµСЃС‚РІРѕ';
 
   $comm_link = "<b class=\"vv\">&laquo;<a class=\"frlname11\" href=\"/commune/?id={$id}\">{$name}</a>&raquo;</b>";
 ?>
-<h1 class="b-page__title">Вы не являетесь членом сообщества</h1>
+<h1 class="b-page__title">Р’С‹ РЅРµ СЏРІР»СЏРµС‚РµСЃСЊ С‡Р»РµРЅРѕРј СЃРѕРѕР±С‰РµСЃС‚РІР°</h1>
 <?php if($user_mod & commune::MOD_COMM_ASKED) { ?>
 
-		<div class="b-layout__txt b-layout__txt_padbot_10">Вы не являетесь членом сообщества <strong class="b-layout__bold">«<?=$comm['name']?>»</strong>. Просмотр этого сообщества вам недоступен.</div>
-		<div class="b-layout__txt b-layout__txt_padbot_10">Вступление в сообщество возможно только после одобрения администратором. Ваша заявка отправлена администратору сообщества. <a class="b-layout__link b-layout__link_dot_c10600" href="javascript:void(0)" onclick="xajax_OutCommune(<?=$comm["id"]?>, true); return false;">Отозвать</a></div>
+		<div class="b-layout__txt b-layout__txt_padbot_10">Р’С‹ РЅРµ СЏРІР»СЏРµС‚РµСЃСЊ С‡Р»РµРЅРѕРј СЃРѕРѕР±С‰РµСЃС‚РІР° <strong class="b-layout__bold">В«<?=$comm['name']?>В»</strong>. РџСЂРѕСЃРјРѕС‚СЂ СЌС‚РѕРіРѕ СЃРѕРѕР±С‰РµСЃС‚РІР° РІР°Рј РЅРµРґРѕСЃС‚СѓРїРµРЅ.</div>
+		<div class="b-layout__txt b-layout__txt_padbot_10">Р’СЃС‚СѓРїР»РµРЅРёРµ РІ СЃРѕРѕР±С‰РµСЃС‚РІРѕ РІРѕР·РјРѕР¶РЅРѕ С‚РѕР»СЊРєРѕ РїРѕСЃР»Рµ РѕРґРѕР±СЂРµРЅРёСЏ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј. Р’Р°С€Р° Р·Р°СЏРІРєР° РѕС‚РїСЂР°РІР»РµРЅР° Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂСѓ СЃРѕРѕР±С‰РµСЃС‚РІР°. <a class="b-layout__link b-layout__link_dot_c10600" href="javascript:void(0)" onclick="xajax_OutCommune(<?=$comm["id"]?>, true); return false;">РћС‚РѕР·РІР°С‚СЊ</a></div>
 
-		<div class="b-layout__txt"><a class="b-layout__link" href="/commune/">Остальные сообщества</a></div>
+		<div class="b-layout__txt"><a class="b-layout__link" href="/commune/">РћСЃС‚Р°Р»СЊРЅС‹Рµ СЃРѕРѕР±С‰РµСЃС‚РІР°</a></div>
 		
 
 <?php } else { ?>
-		<a class="b-button b-button_flat b-button_flat_green b-button_float_right b-button_margtop_-10" onclick="return false" href="#"><span onclick="xajax_JoinCommune(<?=$comm["id"]?>, true);">Вступить в сообщество</span></a>
-		<div class="b-layout__txt b-layout__txt_padbot_10">Вы не являетесь членом сообщества <strong class="b-layout__bold">«<?=$comm['name']?>»</strong>. Просмотр этого сообщества вам недоступен.</div>
+		<a class="b-button b-button_flat b-button_flat_green b-button_float_right b-button_margtop_-10" onclick="return false" href="#"><span onclick="xajax_JoinCommune(<?=$comm["id"]?>, true);">Р’СЃС‚СѓРїРёС‚СЊ РІ СЃРѕРѕР±С‰РµСЃС‚РІРѕ</span></a>
+		<div class="b-layout__txt b-layout__txt_padbot_10">Р’С‹ РЅРµ СЏРІР»СЏРµС‚РµСЃСЊ С‡Р»РµРЅРѕРј СЃРѕРѕР±С‰РµСЃС‚РІР° <strong class="b-layout__bold">В«<?=$comm['name']?>В»</strong>. РџСЂРѕСЃРјРѕС‚СЂ СЌС‚РѕРіРѕ СЃРѕРѕР±С‰РµСЃС‚РІР° РІР°Рј РЅРµРґРѕСЃС‚СѓРїРµРЅ.</div>
 		
 <?php }?>

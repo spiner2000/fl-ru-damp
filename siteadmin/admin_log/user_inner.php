@@ -12,7 +12,7 @@ banned.zero = true;
 </script>
 <?php include_once('comments.php') ?>
 
-<?php if ( $sUid ) { // просмотр истории конкретного пользователя старт
+<?php if ( $sUid ) { // РїСЂРѕСЃРјРѕС‚СЂ РёСЃС‚РѕСЂРёРё РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃС‚Р°СЂС‚
 
     $sObjName = hyphen_words( reformat($user['uname'] .' '. $user['usurname'] .' ['. $user['login'].']', 60), true );
     $sObjLink = "/users/{$user['login']}";
@@ -37,27 +37,27 @@ banned.zero = true;
         }
     }
     
-    $ago = ( $ago ) ? $ago : 'меньше минуты';
+    $ago = ( $ago ) ? $ago : 'РјРµРЅСЊС€Рµ РјРёРЅСѓС‚С‹';
     
     if ( $user['safety_bind_ip'] ) {
     	$safety_ip = users::GetSafetyIP( $user['uid'] );
     }
     
-    // права админа
+    // РїСЂР°РІР° Р°РґРјРёРЅР°
     $bHasAll      = hasPermissions( 'all' );
     $bHasPayments = hasPermissions( 'payments' );
 ?>
-    <h3>Действия / История пользователя</h3>
+    <h3>Р”РµР№СЃС‚РІРёСЏ / РСЃС‚РѕСЂРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</h3>
     
     <div class="plashka">
-        <span><a href="<?=$_SESSION['admin_log_user']?>">Назад</a></span>
+        <span><a href="<?=$_SESSION['admin_log_user']?>">РќР°Р·Р°Рґ</a></span>
     </div>
     
     <div class="transgressor_inner">
         <a target="_blank" href="<?=$sObjLink?>"><?=view_avatar( $user['login'], $user['photo'], 1 )?></a>
         <div class="transgressor-info">
             <div class="transgressor-right">
-                <p>Последний IP: <span><span id="last_ip_<?=$user['uid']?>" style="display: inline;"><?=$user['last_ip']?></span></span></p>
+                <p>РџРѕСЃР»РµРґРЅРёР№ IP: <span><span id="last_ip_<?=$user['uid']?>" style="display: inline;"><?=$user['last_ip']?></span></span></p>
                 
                 <?php $sZeroClipboard .=  "clip_last_{$user['uid']} = new ZeroClipboard.Client();
                 clip_last_{$user['uid']}.setHandCursor( true );
@@ -73,13 +73,13 @@ banned.zero = true;
                 });
                 clip_reg_{$user['uid']}.glue('reg_ip_{$user['uid']}');"; ?>
                 
-                <button onclick="banned.userBan(<?=$user['uid']?>, 'admin_log_page',0)" name="btn_ban" type="button" value="btn_ban">Блокировать/Разблок.</button>
+                <button onclick="banned.userBan(<?=$user['uid']?>, 'admin_log_page',0)" name="btn_ban" type="button" value="btn_ban">Р‘Р»РѕРєРёСЂРѕРІР°С‚СЊ/Р Р°Р·Р±Р»РѕРє.</button>
                 <?php if ( !$user['is_banned'] ) { ?>
                 <div id="div_warn">
                 <?php if ( $user['warn'] < 3 ): ?>
-                <button onclick="banned.warnUser(<?=$user['uid']?>, 0, 'admuserpage', 'admin_log_page', 0); return false;" name="btn_warn" type="button" value="btn_warn">Сделать предупреждение</button>
+                <button onclick="banned.warnUser(<?=$user['uid']?>, 0, 'admuserpage', 'admin_log_page', 0); return false;" name="btn_warn" type="button" value="btn_warn">РЎРґРµР»Р°С‚СЊ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ</button>
                 <?php else: ?>
-                <button onclick="adminLogWarnMax()" name="btn_warn" type="button" value="btn_warn">Сделать предупреждение</button>
+                <button onclick="adminLogWarnMax()" name="btn_warn" type="button" value="btn_warn">РЎРґРµР»Р°С‚СЊ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ</button>
                 <?php endif; ?>
                 </div>
                 <?php } ?>
@@ -91,58 +91,58 @@ banned.zero = true;
 									"role"        => $user['role']), '', true, '');
             ?>
             </h4>
-            <span><?=$sLoginSt?>Последняя активность: <?=$ago?> назад</span>
-            <p><b>Эл.почта:</b><?=$user['email']?>   <span>&#160; &#160;|&#160; &#160;</span>  <a onclick="xajax_getLastEmails(<?=$user['uid']?>);" href="javascript:void(0);" class="lnk-dot-999">Последние 10 e-mail</a> </p>
+            <span><?=$sLoginSt?>РџРѕСЃР»РµРґРЅСЏСЏ Р°РєС‚РёРІРЅРѕСЃС‚СЊ: <?=$ago?> РЅР°Р·Р°Рґ</span>
+            <p><b>Р­Р».РїРѕС‡С‚Р°:</b><?=$user['email']?>   <span>&#160; &#160;|&#160; &#160;</span>  <a onclick="xajax_getLastEmails(<?=$user['uid']?>);" href="javascript:void(0);" class="lnk-dot-999">РџРѕСЃР»РµРґРЅРёРµ 10 e-mail</a> </p>
             
             <?php if ( $user['safety_phone'] ): ?>
             <input type="hidden" name="safety_phone_hidden<?=$user['uid']?>" id="safety_phone_hidden<?=$user['uid']?>" value="<?=$user['safety_phone']?>">
             <div id="safety_phone_show<?=$user['uid']?>" class="safety">
-            <b>Телефон:</b> <span id="safety_phone_value<?=$user['uid']?>" class="safetyvalue"><?=$user['safety_phone']?></span><span id="safety_only_phone_show<?=$user['uid']?>" style="display: <?=( $user['safety_only_phone'] == 't' ? 'inline' : 'none' )?>">&nbsp;Только по SMS</span> <a href="javascript:void(0);" onclick="setSafetyPhoneForm(<?=$user['uid']?>)" class="lnk-dot-999">Изменить</a>
+            <b>РўРµР»РµС„РѕРЅ:</b> <span id="safety_phone_value<?=$user['uid']?>" class="safetyvalue"><?=$user['safety_phone']?></span><span id="safety_only_phone_show<?=$user['uid']?>" style="display: <?=( $user['safety_only_phone'] == 't' ? 'inline' : 'none' )?>">&nbsp;РўРѕР»СЊРєРѕ РїРѕ SMS</span> <a href="javascript:void(0);" onclick="setSafetyPhoneForm(<?=$user['uid']?>)" class="lnk-dot-999">РР·РјРµРЅРёС‚СЊ</a>
             </div>
             <div  id="safety_phone_edit<?=$user['uid']?>" class="safety" style="display: none;">
             <table>
-            <tr><td><b>Телефон:</b> <input type="text" name="safety_phone<?=$user['uid']?>" id="safety_phone<?=$user['uid']?>" value="<?=$user['safety_phone']?>"></td></tr>
+            <tr><td><b>РўРµР»РµС„РѕРЅ:</b> <input type="text" name="safety_phone<?=$user['uid']?>" id="safety_phone<?=$user['uid']?>" value="<?=$user['safety_phone']?>"></td></tr>
             <tr>
-                <td><input type="checkbox" name="safety_only_phone<?=$user['uid']?>" id="safety_only_phone<?=$user['uid']?>" value="1" <?=( $user['safety_only_phone'] == 't' ? ' checked' : '' )?>><span> Только по SMS</span></td>
+                <td><input type="checkbox" name="safety_only_phone<?=$user['uid']?>" id="safety_only_phone<?=$user['uid']?>" value="1" <?=( $user['safety_only_phone'] == 't' ? ' checked' : '' )?>><span> РўРѕР»СЊРєРѕ РїРѕ SMS</span></td>
             </tr>
             <tr>
-                <td><input type="checkbox" name="safety_mob_phone<?=$user['uid']?>" id="safety_mob_phone<?=$user['uid']?>" value="1" <?=( $user['is_safety_mob'] == 't' ? ' checked' : '' )?>> <span>Входить в финансы только по СМС</span></td>
+                <td><input type="checkbox" name="safety_mob_phone<?=$user['uid']?>" id="safety_mob_phone<?=$user['uid']?>" value="1" <?=( $user['is_safety_mob'] == 't' ? ' checked' : '' )?>> <span>Р’С…РѕРґРёС‚СЊ РІ С„РёРЅР°РЅСЃС‹ С‚РѕР»СЊРєРѕ РїРѕ РЎРњРЎ</span></td>
             </tr>
             </table>
             &nbsp;
-            <a href="javascript:void(0);" onclick="updateSafetyPhone(<?=$user['uid']?>)" class="lnk-dot-999">Да</a>&nbsp;
-            <a href="javascript:void(0);" onclick="unsetSafetyPhoneForm(<?=$user['uid']?>)" class="lnk-dot-999">Нет</a>
+            <a href="javascript:void(0);" onclick="updateSafetyPhone(<?=$user['uid']?>)" class="lnk-dot-999">Р”Р°</a>&nbsp;
+            <a href="javascript:void(0);" onclick="unsetSafetyPhoneForm(<?=$user['uid']?>)" class="lnk-dot-999">РќРµС‚</a>
             </div>
             <?php endif; ?>
             
             <?php if ( $user['safety_bind_ip'] && $safety_ip ): ?>
-            <div id="safety_ip_show<?=$user['uid']?>" class="safety"><b>IP адрес:</b> <span id="safety_ip_value<?=$user['uid']?>" class="safetyvalue"><?=implode(', ', $safety_ip)?></span> <a href="javascript:void(0);" onclick="setSafetyIpForm(<?=$user['uid']?>)" class="lnk-dot-999">Изменить</a></div>
+            <div id="safety_ip_show<?=$user['uid']?>" class="safety"><b>IP Р°РґСЂРµСЃ:</b> <span id="safety_ip_value<?=$user['uid']?>" class="safetyvalue"><?=implode(', ', $safety_ip)?></span> <a href="javascript:void(0);" onclick="setSafetyIpForm(<?=$user['uid']?>)" class="lnk-dot-999">РР·РјРµРЅРёС‚СЊ</a></div>
             <div  id="safety_ip_edit<?=$user['uid']?>" class="safety" style="display: none;">
-            <b>IP адрес:</b> <input type="text" name="safety_ip<?=$user['uid']?>" id="safety_ip<?=$user['uid']?>" value="<?=implode(', ', $safety_ip)?>">&nbsp;
-            <a href="javascript:void(0);" onclick="updateSafetyIp(<?=$user['uid']?>)" class="lnk-dot-999">Да</a>&nbsp;
-            <a href="javascript:void(0);" onclick="unsetSafetyIpForm(<?=$user['uid']?>)" class="lnk-dot-999">Нет</a>
+            <b>IP Р°РґСЂРµСЃ:</b> <input type="text" name="safety_ip<?=$user['uid']?>" id="safety_ip<?=$user['uid']?>" value="<?=implode(', ', $safety_ip)?>">&nbsp;
+            <a href="javascript:void(0);" onclick="updateSafetyIp(<?=$user['uid']?>)" class="lnk-dot-999">Р”Р°</a>&nbsp;
+            <a href="javascript:void(0);" onclick="unsetSafetyIpForm(<?=$user['uid']?>)" class="lnk-dot-999">РќРµС‚</a>
             </div>
             <?php endif; ?>
             
-            <p class="reg-ip"><b>IP при регистрации:</b>  <span id="reg_ip_<?=$user['uid']?>" style="display: inline; padding-bottom:15px;"><?=$user['reg_ip']?></span>  <span>&#160; &#160;|&#160; &#160;</span>  <a onclick="xajax_getLastIps(<?=$user['uid']?>);" href="javascript:void(0);" class="lnk-dot-999">Последние 10 IP</a></p>
+            <p class="reg-ip"><b>IP РїСЂРё СЂРµРіРёСЃС‚СЂР°С†РёРё:</b>  <span id="reg_ip_<?=$user['uid']?>" style="display: inline; padding-bottom:15px;"><?=$user['reg_ip']?></span>  <span>&#160; &#160;|&#160; &#160;</span>  <a onclick="xajax_getLastIps(<?=$user['uid']?>);" href="javascript:void(0);" class="lnk-dot-999">РџРѕСЃР»РµРґРЅРёРµ 10 IP</a></p>
             
             <ul class="c">
                 <?php /*
-                <li class="active"><a href="#">Редактировать данные</a></li>
+                <li class="active"><a href="#">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РґР°РЅРЅС‹Рµ</a></li>
                 */ ?>
                 <?php if ( $bHasAll || $bHasPayments ) { ?>
-                <li class="color-45a300"><a href="/siteadmin/bill/?login=<?=$user['login']?>" target="_blank">Счет пользователя</a></li>
+                <li class="color-45a300"><a href="/siteadmin/bill/?login=<?=$user['login']?>" target="_blank">РЎС‡РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ</a></li>
                 <?php /*
-                $sTitle  = ( $user['is_block_money'] != 't' ) ? 'Заблокировать деньги' : 'Разблокировать деньги'; 
+                $sTitle  = ( $user['is_block_money'] != 't' ) ? 'Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё' : 'Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё'; 
                 $sAction = ( $user['is_block_money'] != 't' ) ? 'block'                : 'unblock'; 
                 ?>
-                <li id="money_<?=$user['uid']?>" class="color-a30000"> | <a onclick="if (confirm('Вы уверены, что хотите <?=mb_strtolower($sTitle)?>?')) xajax_updateMoneyBlock(JSON.encode([<?=$user['uid']?>]),'<?=$sAction?>')" href="javascript:void(0);"><?=$sTitle?></a></li>
+                <li id="money_<?=$user['uid']?>" class="color-a30000"> | <a onclick="if (confirm('Р’С‹ СѓРІРµСЂРµРЅС‹, С‡С‚Рѕ С…РѕС‚РёС‚Рµ <?=mb_strtolower($sTitle)?>?')) xajax_updateMoneyBlock(JSON.encode([<?=$user['uid']?>]),'<?=$sAction?>')" href="javascript:void(0);"><?=$sTitle?></a></li>
                 <?php*/ } ?>
                 <?php /*if ( $bHasAll ) { ?>
-                <li class="color-a30000"> | <a onclick="if (confirm('Вы уверены, что хотите обнулить рейтинг?')) xajax_nullRating(<?=$user['uid']?>)" href="javascript:void(0);">Обнулить рейтинг</a></li>
+                <li class="color-a30000"> | <a onclick="if (confirm('Р’С‹ СѓРІРµСЂРµРЅС‹, С‡С‚Рѕ С…РѕС‚РёС‚Рµ РѕР±РЅСѓР»РёС‚СЊ СЂРµР№С‚РёРЅРі?')) xajax_nullRating(<?=$user['uid']?>)" href="javascript:void(0);">РћР±РЅСѓР»РёС‚СЊ СЂРµР№С‚РёРЅРі</a></li>
                 <?php }*/ ?>
                 <?php if ( $log && ($log[0]['warn_cnt'] || $log[0]['log_warn_cnt']) ) { ?>
-                <li class="color-e37101"><?php if ( $bHasAll || $bHasPayments ) { ?> | <?php } ?><a onclick="xajax_getUserWarns(<?=$user['uid']?>,'admin_log_users','admuserpage');" href="javascript:void(0);">Предупреждения</a></li>
+                <li class="color-e37101"><?php if ( $bHasAll || $bHasPayments ) { ?> | <?php } ?><a onclick="xajax_getUserWarns(<?=$user['uid']?>,'admin_log_users','admuserpage');" href="javascript:void(0);">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ</a></li>
                 <?php } ?>
             </ul>
             
@@ -153,12 +153,12 @@ banned.zero = true;
     
     <div class="admin-lenta">
         <?php /*
-        <h4 class="history">История пользователя: <a href="#" class="lnk-dot-666">Предупреждений: 1</a>  <a  href="#" class="lnk-dot-666">Блокировок: 2</a>  <a  href="#" class="lnk-dot-666">Разблокировок: 1</a></h4>
+        <h4 class="history">РСЃС‚РѕСЂРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ: <a href="#" class="lnk-dot-666">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№: 1</a>  <a  href="#" class="lnk-dot-666">Р‘Р»РѕРєРёСЂРѕРІРѕРє: 2</a>  <a  href="#" class="lnk-dot-666">Р Р°Р·Р±Р»РѕРєРёСЂРѕРІРѕРє: 1</a></h4>
         */ ?>
         <?php if ( $log ) { 
             $sTrClass = ' class="active"';
         ?>
-        <h4 class="history">История пользователя: <?php 
+        <h4 class="history">РСЃС‚РѕСЂРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ: <?php 
             $sHref = e_url( 'act', null );
             $sHistoryLinks = '';
             $nHistoryTotal = 0;
@@ -173,7 +173,7 @@ banned.zero = true;
             
             if ( $nHistoryTotal ) {
                 $sHistoryClass  = ( !$act ) ? 'lnk-dot-red' : 'lnk-dot-666';
-                echo '<a href="'.$sHref.'" class="'.$sHistoryClass.'">Все: '.$nHistoryTotal.'</a>';
+                echo '<a href="'.$sHref.'" class="'.$sHistoryClass.'">Р’СЃРµ: '.$nHistoryTotal.'</a>';
                 echo $sHistoryLinks;
             }
         ?></h4>
@@ -181,7 +181,7 @@ banned.zero = true;
         <table>
             <?php foreach ( $log as $aOne ) { 
                 $sTrClass  = (!$sTrClass) ? ' class="active"' : '';
-                $sObjName  = $aOne['object_name'] ? hyphen_words(reformat($aOne['object_name'], 60), true) : '<без названия>';
+                $sObjName  = $aOne['object_name'] ? hyphen_words(reformat($aOne['object_name'], 60), true) : '<Р±РµР· РЅР°Р·РІР°РЅРёСЏ>';
                 $sObjLink  = $aOne['object_link'] ? $aOne['object_link'] : 'javascript:void(0);';
                 $sObjClass = $aClass[$aOne['obj_code']];
                 $sActClass = '';
@@ -203,14 +203,14 @@ banned.zero = true;
                     $sComments = '<a href="'.$sHref.'"><img id="ico_comm_' . $aOne['id'] . '" src="/images/'. $sNew .'comm.gif" alt="" /></a>';
                 }
                 
-                $sContextName = ( $aOne['context_code'] > 0 ) ? admin_log::$aObj[$aOne['context_code']]['short'] : 'Админка';
+                $sContextName = ( $aOne['context_code'] > 0 ) ? admin_log::$aObj[$aOne['context_code']]['short'] : 'РђРґРјРёРЅРєР°';
             ?>
             <tr id="tr_<?=$aOne['id']?>" onclick="window.location.href='<?=$sHref?>'" <?=$sTrClass?>>
                 <td class="cell-from"><?=$sContextName?></td>
                 <td class="cell-action <?=$sActClass?>"><a name="lid_<?=$aOne['id']?>"></a><?=$aOne['act_name']?></td>
                 <td class="cell-descript"><a href="<?=$sHref?>" class="lnk-dot-666"><?=hyphen_words(reformat($aOne['admin_comment'], 45), true)?></a></td>
-                <td class="cell-who"><?php if ( $aOne['adm_login'] ) { ?><a target="_blank" href="/users/<?=$aOne['adm_login']?>">[<?=$aOne['adm_login']?>]</a><?php } else { ?>[не известно]<?php } ?></td>
-                <td class="cell-date"><?php if ( $aOne['act_time'] ) { ?><?=date('d.m.Y H:i', strtotime($aOne['act_time']))?><?php } else { ?>не известно<?php } ?></td>
+                <td class="cell-who"><?php if ( $aOne['adm_login'] ) { ?><a target="_blank" href="/users/<?=$aOne['adm_login']?>">[<?=$aOne['adm_login']?>]</a><?php } else { ?>[РЅРµ РёР·РІРµСЃС‚РЅРѕ]<?php } ?></td>
+                <td class="cell-date"><?php if ( $aOne['act_time'] ) { ?><?=date('d.m.Y H:i', strtotime($aOne['act_time']))?><?php } else { ?>РЅРµ РёР·РІРµСЃС‚РЅРѕ<?php } ?></td>
                 <td class="cell-com"><?=$sComments?></td>
             </tr>
             <tr <?=$sTrClass?>>
@@ -226,36 +226,36 @@ banned.zero = true;
         }
         else {
         ?>
-        Нет действий
+        РќРµС‚ РґРµР№СЃС‚РІРёР№
         <?php
         }
         ?>
     </div>
     
-    <!-- список последних 10 IP/email пользователя старт -->
+    <!-- СЃРїРёСЃРѕРє РїРѕСЃР»РµРґРЅРёС… 10 IP/email РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃС‚Р°СЂС‚ -->
     <?php
     include_once( $_SERVER['DOCUMENT_ROOT'] . '/siteadmin/admin_log/last10_overlay.php' );
     ?>
-    <!-- список последних 10 IP/email пользователя стоп -->
+    <!-- СЃРїРёСЃРѕРє РїРѕСЃР»РµРґРЅРёС… 10 IP/email РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃС‚РѕРї -->
     
-    <!-- редактирование бана старт -->
+    <!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±Р°РЅР° СЃС‚Р°СЂС‚ -->
     <?php
     include_once( $_SERVER['DOCUMENT_ROOT'] . '/user/ban_overlay.php' );
     ?>
-    <!-- редактирование бана стоп -->
+    <!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±Р°РЅР° СЃС‚РѕРї -->
 
 <?php
 
-} // просмотр истории конкретного пользователя стоп
-else { // список действий над пользователями старт
+} // РїСЂРѕСЃРјРѕС‚СЂ РёСЃС‚РѕСЂРёРё РєРѕРЅРєСЂРµС‚РЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃС‚РѕРї
+else { // СЃРїРёСЃРѕРє РґРµР№СЃС‚РІРёР№ РЅР°Рґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРјРё СЃС‚Р°СЂС‚
 ?>
-<h3>Действия / Нарушители (бан и предупреждения)</h3>
-<!-- Фильтр старт -->
+<h3>Р”РµР№СЃС‚РІРёСЏ / РќР°СЂСѓС€РёС‚РµР»Рё (Р±Р°РЅ Рё РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ)</h3>
+<!-- Р¤РёР»СЊС‚СЂ СЃС‚Р°СЂС‚ -->
 <div class="form form-acnew">
 	<b class="b1"></b>
 	<b class="b2"></b>
 	<div class="form-in">
-        <h4 class="toggle"><a href="javascript:void(0);" onclick="var mySlide = new Fx.Slide('slideBlock').toggle();" class="lnk-dot-666">Фильтр</a></h4>
+        <h4 class="toggle"><a href="javascript:void(0);" onclick="var mySlide = new Fx.Slide('slideBlock').toggle();" class="lnk-dot-666">Р¤РёР»СЊС‚СЂ</a></h4>
         <div id="slideBlock" class="slideBlock">
             <form name="frm_filter" id="frm_filter" method="GET" onsubmit="return checkDateFilter();">
             <input type="hidden" id="cmd" name="cmd" value="filter">
@@ -263,7 +263,7 @@ else { // список действий над пользователями старт
             <input type="hidden" id="log_pp" name="log_pp" value="<?=$log_pp?>">
             <div class="form-block first">
                 <div class="form-el form-date">
-                    <label class="form-l">Дата:</label>
+                    <label class="form-l">Р”Р°С‚Р°:</label>
                     <div class="form-value">
                         <select name="from_d" id="from_d" class="sel-year">
                             <option value=""></option>
@@ -316,10 +316,10 @@ else { // список действий над пользователями старт
                     </div>
                 </div>
                 <div class="form-el">
-                    <label class="form-l">Действие:</label>
+                    <label class="form-l">Р”РµР№СЃС‚РІРёРµ:</label>
                     <div class="form-value fvs">
                         <select name="act" id="act" style="width:250px">
-                            <option value="0" >Все</option>
+                            <option value="0" >Р’СЃРµ</option>
                             <?php foreach ( $actions as $aOne ) { 
                                 $sSel = ($aOne['id'] == $act) ? ' selected' : '';
                             ?>
@@ -329,10 +329,10 @@ else { // список действий над пользователями старт
                     </div>
                 </div>
                 <div class="form-el">
-                    <label class="form-l">Модератор:</label>
+                    <label class="form-l">РњРѕРґРµСЂР°С‚РѕСЂ:</label>
                     <div class="form-value fvs">
                         <select name="adm" id="adm" style="width:250px">
-                            <option value="0">Все</option>
+                            <option value="0">Р’СЃРµ</option>
                             <?php foreach ( $admins as $aOne ) { 
                                 $sSel = ($aOne['uid'] == $adm) ? ' selected' : '';
                             ?>
@@ -342,7 +342,7 @@ else { // список действий над пользователями старт
                     </div>
                 </div>
                 <div class="form-el">
-                    <label class="form-l">Поиск:</label>
+                    <label class="form-l">РџРѕРёСЃРє:</label>
                     <div class="form-value fvs">
                         <input value="<?=$search?>" name="search" id="search" type="text" class="i-txt fvsi" />
                     </div>
@@ -350,8 +350,8 @@ else { // список действий над пользователями старт
             </div>
             <div class="form-block last">
                 <div class="form-el form-btns">
-                    <button type="submit">Отфильтровать</button>
-                    <a href="javascript:void(0);" onclick="adminLogClearFilter('<?=date('j')?>', '<?=date('m')?>', '<?=date('Y')?>');" class="lnk-dot-grey">Очистить</a>
+                    <button type="submit">РћС‚С„РёР»СЊС‚СЂРѕРІР°С‚СЊ</button>
+                    <a href="javascript:void(0);" onclick="adminLogClearFilter('<?=date('j')?>', '<?=date('m')?>', '<?=date('Y')?>');" class="lnk-dot-grey">РћС‡РёСЃС‚РёС‚СЊ</a>
                 </div>
             </div>
             </form>
@@ -360,7 +360,7 @@ else { // список действий над пользователями старт
 	<b class="b2"></b>
 	<b class="b1"></b>
 </div>
-<!-- Фильтр стоп -->
+<!-- Р¤РёР»СЊС‚СЂ СЃС‚РѕРї -->
 
 <div class="admin-lenta">
     <?php if ( $log ) { 
@@ -373,16 +373,16 @@ else { // список действий над пользователями старт
     <table class="lenta-project">
     <tr>
         <?php $href = $sHref . '&sort=name&dir='. ($order=='name' ? ($direction == 'asc' ? 'desc' : 'asc') : 'asc'); ?>
-    	<th class="cell-user"><a href="<?=$href?>" class="lnk-dot-666">Пользователь</a><? if ($order == 'name') { ?><a href="<?=$href?>"><img src="<?=$sSrc?>" alt=""  /></a><? } ?></th>
+    	<th class="cell-user"><a href="<?=$href?>" class="lnk-dot-666">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ</a><? if ($order == 'name') { ?><a href="<?=$href?>"><img src="<?=$sSrc?>" alt=""  /></a><? } ?></th>
     	<?php $href = $sHref . '&sort=act&dir='. ($order=='act' ? ($direction == 'asc' ? 'desc' : 'asc') : 'asc'); ?>
-    	<th class="cell-act"><a href="<?=$href?>" class="lnk-dot-666">Действие</a><? if ($order == 'act') { ?><a href="<?=$href?>"><img src="<?=$sSrc?>" alt=""  /></a><? } ?></th>
+    	<th class="cell-act"><a href="<?=$href?>" class="lnk-dot-666">Р”РµР№СЃС‚РІРёРµ</a><? if ($order == 'act') { ?><a href="<?=$href?>"><img src="<?=$sSrc?>" alt=""  /></a><? } ?></th>
     	<?php $href = $sHref . '&sort=date&dir='. ($order=='date' ? ($direction == 'asc' ? 'desc' : 'asc') : 'asc'); ?>
-    	<th class="cell-blocking"><a href="<?=$href?>" class="lnk-dot-666">Дата</a><? if ($order == 'date') { ?><a href="<?=$href?>"><img src="<?=$sSrc?>" alt=""  /></a><? } ?></th>
+    	<th class="cell-blocking"><a href="<?=$href?>" class="lnk-dot-666">Р”Р°С‚Р°</a><? if ($order == 'date') { ?><a href="<?=$href?>"><img src="<?=$sSrc?>" alt=""  /></a><? } ?></th>
     </tr>
     </table>
     
     <?php foreach ( $log as $aOne ) {  
-        $sObjName  = $aOne['object_name'] ? hyphen_words(reformat($aOne['object_name'], 60), true) : '<без имени>';
+        $sObjName  = $aOne['object_name'] ? hyphen_words(reformat($aOne['object_name'], 60), true) : '<Р±РµР· РёРјРµРЅРё>';
         $sObjLink  = $aOne['object_link'] ? $aOne['object_link'] : 'javascript:void(0);';
         $sActClass = '';
         
@@ -408,26 +408,26 @@ else { // список действий над пользователями старт
 									"is_team"     => $aOne['is_team'],
 									"role"        => $aOne['role']), '', true, '');
             ?><a target="_blank" href="<?=$sObjLink?>" class="<?=(is_emp($aOne['role']) ? 'employer' : 'freelancer')?>-name"><?=$sObjName?></a></h4>
-            <span class="span-user"><?=$session->view_online_status($aOne['user_login'], false, '')?><?=($session->is_active ? 'На сайте' : 'Нет на сайте')?>
+            <span class="span-user"><?=$session->view_online_status($aOne['user_login'], false, '')?><?=($session->is_active ? 'РќР° СЃР°Р№С‚Рµ' : 'РќРµС‚ РЅР° СЃР°Р№С‚Рµ')?>
             
             </span>
-            <p>Зарегистрирован: <?=date('d.m.Y', strtotime($aOne['reg_date']))?></p>
-            <p>Последний IP: <span id="last_ip_<?=$nCnt?>" style="display: inline;"><?=$aOne['last_ip']?></span></p>
+            <p>Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ: <?=date('d.m.Y', strtotime($aOne['reg_date']))?></p>
+            <p>РџРѕСЃР»РµРґРЅРёР№ IP: <span id="last_ip_<?=$nCnt?>" style="display: inline;"><?=$aOne['last_ip']?></span></p>
             <p class="user-notice">
             <?php if ( $aOne['warn_cnt'] ): ?>
-            <a onclick="xajax_getUserWarns(<?=$aOne['user_id']?>,'admin_log_users','admalluserspage');" href="javascript:void(0);" class="notice">Предупреждения:&nbsp;<span id="warn_<?=$aOne['user_id']?>_<?=$aOne['id']?>"><?=$aOne['warn_cnt']?></span></a>
+            <a onclick="xajax_getUserWarns(<?=$aOne['user_id']?>,'admin_log_users','admalluserspage');" href="javascript:void(0);" class="notice">РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ:&nbsp;<span id="warn_<?=$aOne['user_id']?>_<?=$aOne['id']?>"><?=$aOne['warn_cnt']?></span></a>
             <?php elseif ( $aOne['log_warn_cnt'] ): ?>
-            <a onclick="xajax_getUserWarns(<?=$aOne['user_id']?>,'admin_log_users','admalluserspage');" href="javascript:void(0);" class="lnk-dot-666">Действующих предупреждений нет</a>
+            <a onclick="xajax_getUserWarns(<?=$aOne['user_id']?>,'admin_log_users','admalluserspage');" href="javascript:void(0);" class="lnk-dot-666">Р”РµР№СЃС‚РІСѓСЋС‰РёС… РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РЅРµС‚</a>
             <?php else: ?>
-            Предупреждений нет
+            РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РЅРµС‚
             <?php endif; ?>
             </p>
         </td>
     	<td class="cell-act">
             <?php 
             $sContextLink  = ($aOne['context_link'] && $aOne['object_deleted'] != 't' ) ? $aOne['context_link'] : ''; 
-            $sContextName  = ( in_array($aOne['act_id'], array_merge($aRed, $aYellow)) ) ? (($aOne['context_code'] > 0 ) ? admin_log::$aObj[$aOne['context_code']]['short'] . ': ' . ($aOne['context_name'] ? $aOne['context_name'] : '<без названия>') : 'Админка') : ' ';
-            $sAdminComment = $aOne['admin_comment'] ? hyphen_words(reformat($aOne['admin_comment'], 45), true) : '<без причины>';
+            $sContextName  = ( in_array($aOne['act_id'], array_merge($aRed, $aYellow)) ) ? (($aOne['context_code'] > 0 ) ? admin_log::$aObj[$aOne['context_code']]['short'] . ': ' . ($aOne['context_name'] ? $aOne['context_name'] : '<Р±РµР· РЅР°Р·РІР°РЅРёСЏ>') : 'РђРґРјРёРЅРєР°') : ' ';
+            $sAdminComment = $aOne['admin_comment'] ? hyphen_words(reformat($aOne['admin_comment'], 45), true) : '<Р±РµР· РїСЂРёС‡РёРЅС‹>';
             ?>
         	<h4 class="<?=$sActClass?>"><?=($sContextLink ? '<a href="'.$sContextLink.'" target="_blank">' : '')?><?=$aOne['act_name']?><?=($sContextLink ? '</a>' : '')?></h4>
         	
@@ -438,17 +438,17 @@ else { // список действий над пользователями старт
             <p>
                 <ul class="admin-links">
                     <?php if ( $aOne['src_id'] ) { 
-                        // что снимаем: бан или поредупреждение
+                        // С‡С‚Рѕ СЃРЅРёРјР°РµРј: Р±Р°РЅ РёР»Рё РїРѕСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ
                         $sOnclickPref = ( in_array($aOne['act_id'], $aRed) ) ? "adminLogOverlayClose();banned.userBan({$aOne['object_id']}, 'admin_log_page'" : "adminLogOverlayClose();banned.warnUser({$aOne['object_id']},{$aOne['src_id']},'admalluserspage','admin_log_page'";
                     ?>
-                    <li><a href="javascript:void(0);" onclick="<?=$sOnclickPref?>,1);" class="lnk-dot-red">Редактировать</a></li>
-                    <li><a href="javascript:void(0);" onclick="<?=$sOnclickPref?>,0);" class="lnk-dot-red">Снять</a></li>
+                    <li><a href="javascript:void(0);" onclick="<?=$sOnclickPref?>,1);" class="lnk-dot-red">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a></li>
+                    <li><a href="javascript:void(0);" onclick="<?=$sOnclickPref?>,0);" class="lnk-dot-red">РЎРЅСЏС‚СЊ</a></li>
                     <?php } ?>
-                    <li><a href="/siteadmin/admin_log/?site=user&uid=<?=$aOne['object_id']?>" class="lnk-dot-666">История</a></li>
+                    <li><a href="/siteadmin/admin_log/?site=user&uid=<?=$aOne['object_id']?>" class="lnk-dot-666">РСЃС‚РѕСЂРёСЏ</a></li>
                 </ul>
             </p>
         </td>
-    	<td class="cell-blocking"><span><?php if ( $aOne['act_time'] ) { ?><?=date('d.m.Y H:i', strtotime($aOne['act_time']))?><?php } else { ?>не известно<?php } ?></span>[<?php if ( $aOne['adm_login'] ) { ?><a target="_blank" href="/users/<?=$aOne['adm_login']?>"><?=$aOne['adm_login']?></a><?php } else { ?>не известно<?php } ?>]</td>
+    	<td class="cell-blocking"><span><?php if ( $aOne['act_time'] ) { ?><?=date('d.m.Y H:i', strtotime($aOne['act_time']))?><?php } else { ?>РЅРµ РёР·РІРµСЃС‚РЅРѕ<?php } ?></span>[<?php if ( $aOne['adm_login'] ) { ?><a target="_blank" href="/users/<?=$aOne['adm_login']?>"><?=$aOne['adm_login']?></a><?php } else { ?>РЅРµ РёР·РІРµСЃС‚РЅРѕ<?php } ?>]</td>
     </tr>
     </table>
     
@@ -473,7 +473,7 @@ else { // список действий над пользователями старт
     }
     else {
     ?>
-    Нет действий, удовлетворяющих условиям выборки
+    РќРµС‚ РґРµР№СЃС‚РІРёР№, СѓРґРѕРІР»РµС‚РІРѕСЂСЏСЋС‰РёС… СѓСЃР»РѕРІРёСЏРј РІС‹Р±РѕСЂРєРё
     <?php
     }
     ?>
@@ -486,26 +486,26 @@ alert('<?=$error?>');
 <?php } ?>
 
 <?php
-} // список действий над пользователями стоп
+} // СЃРїРёСЃРѕРє РґРµР№СЃС‚РІРёР№ РЅР°Рґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРјРё СЃС‚РѕРї
 ?>
 
-<!-- редактирование предупреждения старт -->
+<!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ СЃС‚Р°СЂС‚ -->
 <?php
 include_once( $_SERVER['DOCUMENT_ROOT'] . '/user/warn_overlay.php' );
 ?>
-<!-- редактирование предупреждения стоп -->
+<!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ СЃС‚РѕРї -->
  
-<!-- список предупреждений пользователя старт -->
+<!-- СЃРїРёСЃРѕРє РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃС‚Р°СЂС‚ -->
 <?php
 include_once( $_SERVER['DOCUMENT_ROOT'] . '/siteadmin/admin_log/warn_overlay.php' );
 ?>
-<!-- список предупреждений пользователя стоп -->
+<!-- СЃРїРёСЃРѕРє РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃС‚РѕРї -->
  
- <!-- редактирование бана старт -->
+ <!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±Р°РЅР° СЃС‚Р°СЂС‚ -->
  <?php
  include_once( $_SERVER['DOCUMENT_ROOT'] . '/user/ban_overlay.php' );
  ?>
- <!-- редактирование бана стоп -->
+ <!-- СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±Р°РЅР° СЃС‚РѕРї -->
  
 <script type="text/javascript">
 window.addEvent('domready', function() {

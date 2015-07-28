@@ -2,8 +2,8 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/search/search_element.php";
 
 /**
- * Класс для поиска по ТУ
- * @todo: класс не реализован полностью и был использован для тестирования Sphinx
+ * РљР»Р°СЃСЃ РґР»СЏ РїРѕРёСЃРєР° РїРѕ РўРЈ
+ * @todo: РєР»Р°СЃСЃ РЅРµ СЂРµР°Р»РёР·РѕРІР°РЅ РїРѕР»РЅРѕСЃС‚СЊСЋ Рё Р±С‹Р» РёСЃРїРѕР»СЊР·РѕРІР°РЅ РґР»СЏ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ Sphinx
  */
 class searchElementTservices extends searchElement
 {

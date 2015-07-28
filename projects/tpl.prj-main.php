@@ -19,12 +19,12 @@ $up_price = array ( 'prj'    => new_projects::getPriceByCode(( is_pro() ? new_pr
       <td class="b-layout__td b-layout__td_padtb_10 b-layout__td_ipad">
           <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold b-layout__txt_padbot_5">
                   <?php if($show_info) {?>
-                      <?= $session->view_online_status($project['login']) ?><a class="b-layout__link b-layout__link_bold b-layout__link_color_6db335" href="/users/<?=$project['login']?>" title="<?=($project['uname']." ".$project['usurname'])?>"><?=($project['uname']." ".$project['usurname'])?></a> <a class="b-layout__link b-layout__link_bold b-layout__link_color_6db335" href="/users/<?=$project['login']?>" title="<?=$project['login']?>">[<?=$project['login']?>]</a> <?=view_mark_user($project); /*!!!is_team!!!*/ ?> <?=($project['completed_cnt'] > 0 ?' <a class="b-layout__link" href="/promo/bezopasnaya-sdelka/" title="Пользователь работал через Безопасную Сделку" target="_blank"><span class="b-icon b-icon__shield"></span></a>':'') ?>
+                      <?= $session->view_online_status($project['login']) ?><a class="b-layout__link b-layout__link_bold b-layout__link_color_6db335" href="/users/<?=$project['login']?>" title="<?=($project['uname']." ".$project['usurname'])?>"><?=($project['uname']." ".$project['usurname'])?></a> <a class="b-layout__link b-layout__link_bold b-layout__link_color_6db335" href="/users/<?=$project['login']?>" title="<?=$project['login']?>">[<?=$project['login']?>]</a> <?=view_mark_user($project); /*!!!is_team!!!*/ ?> <?=($project['completed_cnt'] > 0 ?' <a class="b-layout__link" href="/promo/bezopasnaya-sdelka/" title="РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЂР°Р±РѕС‚Р°Р» С‡РµСЂРµР· Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ" target="_blank"><span class="b-icon b-icon__shield"></span></a>':'') ?>
                   <?php } else { //if?>
-                      <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_6db335">Заказчик</span> 
+                      <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_6db335">Р—Р°РєР°Р·С‡РёРє</span> 
                       <?php if ($project['is_pro'] == 't') { ?><?=(is_emp($project['role'])?view_pro_emp():view_pro()); }?> 
                       <?php if (isset($user_offer_exist) && $user_offer_exist && !is_pro()): ?>
-                            <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_weight_normal">(контакты заказчика видны только пользователям с аккаунтом <?= view_pro() ?>)</span>
+                            <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_weight_normal">(РєРѕРЅС‚Р°РєС‚С‹ Р·Р°РєР°Р·С‡РёРєР° РІРёРґРЅС‹ С‚РѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј СЃ Р°РєРєР°СѓРЅС‚РѕРј <?= view_pro() ?>)</span>
                       <?php endif; ?>
                   <?php } //else?>    
               
@@ -37,7 +37,7 @@ $up_price = array ( 'prj'    => new_projects::getPriceByCode(( is_pro() ? new_pr
           ?>
           <? /*<?=$user->getOnlineStatus4Profile()?> */ ?>
               <?php if(hasPermissions('projects') && ($project['ico_payed']=='t' || $project['is_upped'] == 't')) { ?>
-              <b class="pay-prj">Внимание! Это платный проект!</b>
+              <b class="pay-prj">Р’РЅРёРјР°РЅРёРµ! Р­С‚Рѕ РїР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚!</b>
               <?php } //if ?>
           </div>
 
@@ -47,7 +47,7 @@ $up_price = array ( 'prj'    => new_projects::getPriceByCode(( is_pro() ? new_pr
           } ?>
 
         <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_5">
-            <span class="b-layout_block_iphone">Отзывы фрилансеров:</span>
+            <span class="b-layout_block_iphone">РћС‚Р·С‹РІС‹ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ:</span>
             <?php if (get_uid(false) && $show_info): ?>
                 <a class="b-layout__link b-layout__link_color_6db335 b-layout__link_bold" href="/users/<?=$project['login']?>/opinions/?sort=1#op_head">+&nbsp;<?= (int)($op_data['frl_total']['p'])?></a>
                 <a class="b-layout__link b-layout__link_color_80 b-layout__link_bold" href="/users/<?=$project['login']?>/opinions/?sort=2#op_head"><?= (int)($op_data['frl_total']['n'])?></a>
@@ -59,7 +59,7 @@ $up_price = array ( 'prj'    => new_projects::getPriceByCode(( is_pro() ? new_pr
             <?php endif; ?>
         </div>
           
-        <div class="b-layout__txt b-layout__txt_fontsize_11">Зарегистрирован<?= $user->sex === 'f' ? 'а' : '' ?> на сайте <span class="b-layout_block_iphone"><?=$registered?></span></div>
+        <div class="b-layout__txt b-layout__txt_fontsize_11">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ<?= $user->sex === 'f' ? 'Р°' : '' ?> РЅР° СЃР°Р№С‚Рµ <span class="b-layout_block_iphone"><?=$registered?></span></div>
       </td>
       <td class="b-layout__td b-layout__td_padtb_10 b-layout__td_padleft_10 b-layout__td_ipad">
 		  <?php /* if( get_uid(false) && ( $obj_offer->IsPrjOfferExists($project['id'], get_uid(false)) || is_pro() || $project['user_id'] == get_uid(false) || $project['is_pro'] == 't' || $isPreview || $project['kind'] == 4) && trim($project['contacts']) != '' && !$is_contacts_employer_empty) {?>
@@ -86,7 +86,7 @@ $up_price = array ( 'prj'    => new_projects::getPriceByCode(( is_pro() ? new_pr
       <td class="b-layout__td b-layout__td_padtb_10 b-layout__td_right b-layout__td_ipad">
         <? if ($project['cost'] != 0) { ?>
                <div class="b-layout__txt b-layout__txt_fontsize_18 b-layout__txt_fontsize_13_iphone">
-                   <?php if($project['prefer_sbr'] == 't'): ?><a class="b-layout__link " href="/promo/bezopasnaya-sdelka/" target="_blank" title="Оплата через Безопасную сделку"><span class="b-icon b-icon__shield b-icon_top_6 b-icon_top_2_iphone"></span></a><?php endif; ?>Бюджет:
+                   <?php if($project['prefer_sbr'] == 't'): ?><a class="b-layout__link " href="/promo/bezopasnaya-sdelka/" target="_blank" title="РћРїР»Р°С‚Р° С‡РµСЂРµР· Р‘РµР·РѕРїР°СЃРЅСѓСЋ СЃРґРµР»РєСѓ"><span class="b-icon b-icon__shield b-icon_top_6 b-icon_top_2_iphone"></span></a><?php endif; ?>Р‘СЋРґР¶РµС‚:
                   <span class="b-layout__bold">
                       <? $can_change_prj = hasPermissions("projects");
                       if($can_change_prj) { ?>
@@ -113,17 +113,17 @@ $up_price = array ( 'prj'    => new_projects::getPriceByCode(( is_pro() ? new_pr
              //    $price_other_cur .= CurToChar(preg_replace('/.00$/', '', sprintf("%.2f", round($project['cost'] * $project_exRates[trim($translate_exRates[$project['currency']]) . '1'], 2))), 3) . "AA";
              //}
              $price_other_cur = preg_replace("/AA$/", "", $price_other_cur);
-             $price_other_cur = preg_replace("/AA/", "&nbsp;—&nbsp;", $price_other_cur);
+             $price_other_cur = preg_replace("/AA/", "&nbsp;вЂ”&nbsp;", $price_other_cur);
              ?>
              <div class="b-layout__txt b-layout__txt_fontsize_11"><?= $price_other_cur ?></div>
              <? } else { ?>
                  <div class="b-layout__txt b-layout__txt_fontsize_18 b-layout__txt_fontsize_13_iphone">
-                      <?php if($project['prefer_sbr'] == 't'): ?><a class="b-layout__link " href="/promo/bezopasnaya-sdelka/" target="_blank" title="Оплата через Безопасную сделку"><span class="b-icon b-icon__shield b-icon_top_6 b-icon_top_2_iphone"></span></a><?php endif; ?>Бюджет:
+                      <?php if($project['prefer_sbr'] == 't'): ?><a class="b-layout__link " href="/promo/bezopasnaya-sdelka/" target="_blank" title="РћРїР»Р°С‚Р° С‡РµСЂРµР· Р‘РµР·РѕРїР°СЃРЅСѓСЋ СЃРґРµР»РєСѓ"><span class="b-icon b-icon__shield b-icon_top_6 b-icon_top_2_iphone"></span></a><?php endif; ?>Р‘СЋРґР¶РµС‚:
                       <? $can_change_prj = hasPermissions("projects");
                       if($can_change_prj) { ?>
-                      <a class="b-layout__link b-layout__link_bordbot_dot_000 b-layout__link_bold" href="#" id="prj_budget_lnk_<?=$project['id']?>" onClick="popupShowChangeBudget(<?=$project['id']?>, '', 0, 1, true, <?=$project['id']?>, 2); return false;">по договоренности</a>
+                      <a class="b-layout__link b-layout__link_bordbot_dot_000 b-layout__link_bold" href="#" id="prj_budget_lnk_<?=$project['id']?>" onClick="popupShowChangeBudget(<?=$project['id']?>, '', 0, 1, true, <?=$project['id']?>, 2); return false;">РїРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</a>
                       <? } else { ?>
-                      <span class="b-layout__bold">по договоренности</span>
+                      <span class="b-layout__bold">РїРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</span>
                       <? } ?>
                  </div>                                                          
              <? } ?>
@@ -150,7 +150,7 @@ $up_price = array ( 'prj'    => new_projects::getPriceByCode(( is_pro() ? new_pr
                    
                     <div id="popup_budget" class="b-shadow b-shadow_inline-block b-shadow_width_335 b-shadow_center b-shadow_zindex_11 b-shadow_hide">
                         <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20">
-                            <div class="b-shadow__title b-shadow__title_padbot_15">Редактирование бюджета</div>
+                            <div class="b-shadow__title b-shadow__title_padbot_15">Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р±СЋРґР¶РµС‚Р°</div>
                             <div id="popup_budget_prj_name" class="b-layout__txt b-layout__txt_padbot_15"></div>
 
                             <div class="b-form b-form_padbot_20">
@@ -175,23 +175,23 @@ $up_price = array ( 'prj'    => new_projects::getPriceByCode(( is_pro() ? new_pr
 
                             <div class="b-check b-check_padbot_10 b-check_clear_both">
                                 <input id="popup_budget_prj_agreement" class="b-check__input" name="agreement" type="checkbox" value="1">
-                                <label class="b-check__label b-check__label_fontsize_13" for="popup_budget_prj_agreement">по договорённости</label>
+                                <label class="b-check__label b-check__label_fontsize_13" for="popup_budget_prj_agreement">РїРѕ РґРѕРіРѕРІРѕСЂС‘РЅРЅРѕСЃС‚Рё</label>
                             </div>
 
                             <div id="popup_budget_prj_price_error" class="b-fon b-fon_bg_ff6d2d b-fon_padtop_10" style="display: none; ">
                                 <b class="b-fon__b1"></b>
                                 <b class="b-fon__b2"></b>
                                 <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13 ">
-                                    <span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20">Бюджет заполнен не верно</div>
+                                    <span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20">Р‘СЋРґР¶РµС‚ Р·Р°РїРѕР»РЅРµРЅ РЅРµ РІРµСЂРЅРѕ</div>
                                 </div>
                                 <b class="b-fon__b2"></b>
                                 <b class="b-fon__b1"></b>
                             </div>
 
                             <div class="b-buttons b-buttons_padtop_15">
-                                <a id="popupBtnSaveBudget" href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green">Сохранить</a>                            
-                                <span class="b-buttons__txt">&nbsp;или&nbsp;</span>
-                                <a class="b-buttons__link b-buttons__link_dot_c10601 b-shadow__close" href="javascript:void(0)">закрыть без изменений</a>
+                                <a id="popupBtnSaveBudget" href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green">РЎРѕС…СЂР°РЅРёС‚СЊ</a>                            
+                                <span class="b-buttons__txt">&nbsp;РёР»Рё&nbsp;</span>
+                                <a class="b-buttons__link b-buttons__link_dot_c10601 b-shadow__close" href="javascript:void(0)">Р·Р°РєСЂС‹С‚СЊ Р±РµР· РёР·РјРµРЅРµРЅРёР№</a>
                             </div>
                         </div>
                     </div>
@@ -202,10 +202,10 @@ $up_price = array ( 'prj'    => new_projects::getPriceByCode(( is_pro() ? new_pr
                     
                     <div class="b-layout__txt b-layout__txt_padbot_30">
                     <?php if($project['prefer_sbr'] == 't'): ?>
-                        <b>Способ оплаты — через <a target="_blank" href="/promo/bezopasnaya-sdelka/">Безопасную сделку</a></b>
-                        <a title="Оплата через Безопасную сделку" target="_blank" href="/promo/bezopasnaya-sdelka/" class="b-layout__link "><span class="b-icon b-icon__shield b-icon_top_2 b-icon_top_2_iphone"></span></a>
+                        <b>РЎРїРѕСЃРѕР± РѕРїР»Р°С‚С‹ вЂ” С‡РµСЂРµР· <a target="_blank" href="/promo/bezopasnaya-sdelka/">Р‘РµР·РѕРїР°СЃРЅСѓСЋ СЃРґРµР»РєСѓ</a></b>
+                        <a title="РћРїР»Р°С‚Р° С‡РµСЂРµР· Р‘РµР·РѕРїР°СЃРЅСѓСЋ СЃРґРµР»РєСѓ" target="_blank" href="/promo/bezopasnaya-sdelka/" class="b-layout__link "><span class="b-icon b-icon__shield b-icon_top_2 b-icon_top_2_iphone"></span></a>
                     <?php else: ?>
-                        <b>Способ оплаты — прямая оплата Исполнителю на его кошелек или счет</b>
+                        <b>РЎРїРѕСЃРѕР± РѕРїР»Р°С‚С‹ вЂ” РїСЂСЏРјР°СЏ РѕРїР»Р°С‚Р° РСЃРїРѕР»РЅРёС‚РµР»СЋ РЅР° РµРіРѕ РєРѕС€РµР»РµРє РёР»Рё СЃС‡РµС‚</b>
                     <?php endif; ?>
                     </div>
                     
@@ -231,30 +231,30 @@ $up_price = array ( 'prj'    => new_projects::getPriceByCode(( is_pro() ? new_pr
                     </div>
                     <? if(hasPermissions('projects') && $project_history && $project['edit_date']) { ?>
                             <div class="b-fon b-fon_pad_10 b-fon_bg_f2 b-fon_margbot_20">
-                                <a href="#" class="b-layout__link b-layout__link_bordbot_dot_41 toggle-history" onClick="$('prjh_content').toggleClass('prjh_visible'); return false;">Сохраненная первоначальная версия проекта (<?=dateFormat("d.m.Y H:i", $project['create_date'])?>)</a>
+                                <a href="#" class="b-layout__link b-layout__link_bordbot_dot_41 toggle-history" onClick="$('prjh_content').toggleClass('prjh_visible'); return false;">РЎРѕС…СЂР°РЅРµРЅРЅР°СЏ РїРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅР°СЏ РІРµСЂСЃРёСЏ РїСЂРѕРµРєС‚Р° (<?=dateFormat("d.m.Y H:i", $project['create_date'])?>)</a>
                                 <div id="prjh_content" class="prjh_content ">
                                     <div class="clear"></div>
                                         <? if ($project_history['cost'] != 0) { ?>
                                             <?
                                             switch ($project_history['priceby']) {
                                                 case '1':
-                                                    $priceby_str = "/час";
+                                                    $priceby_str = "/С‡Р°СЃ";
                                                     break;
                                                 case '2':
-                                                    $priceby_str = "/день";
+                                                    $priceby_str = "/РґРµРЅСЊ";
                                                     break;
                                                 case '3':
-                                                    $priceby_str = "/месяц";
+                                                    $priceby_str = "/РјРµСЃСЏС†";
                                                     break;
                                                 case '4':
-                                                    $priceby_str = "/проект";
+                                                    $priceby_str = "/РїСЂРѕРµРєС‚";
                                                     break;
                                                 default:
                                                     $priceby_str = "";
                                                     break;
                                             }
                                             ?>
-                                            <div class="prj_cost">Бюджет: <?= CurToChar($project_history['cost'], $project_history['currency']) ?><?= $priceby_str ?></div>
+                                            <div class="prj_cost">Р‘СЋРґР¶РµС‚: <?= CurToChar($project_history['cost'], $project_history['currency']) ?><?= $priceby_str ?></div>
                                         <? } else { ?>
                                             <div class="prj_cost prj-dogovor" style="margin-top:-14px">
                                                 <table cellspacing="0" cellpadding="0">
@@ -263,7 +263,7 @@ $up_price = array ( 'prj'    => new_projects::getPriceByCode(( is_pro() ? new_pr
                                                             <div class="form">
                                                                 <b class="b1"></b>
                                                                 <b class="b2"></b>
-                                                                <div class="form-in">Бюджет по договоренности</div>
+                                                                <div class="form-in">Р‘СЋРґР¶РµС‚ РїРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</div>
                                                                 <b class="b2"></b>
                                                                 <b class="b1"></b>
                                                             </div>
@@ -292,15 +292,15 @@ $up_price = array ( 'prj'    => new_projects::getPriceByCode(( is_pro() ? new_pr
                                         <table border="0" width="100%">
                                         <tr valign="top">
                                         <td align="left">
-                                        <? if($project_history['pro_only']=='t') { ?><div class="prj-pro">Только для <img src="/images/icons/f-pro.png"></div><br clear="all"/><? } ?>
-                                        <? if($project_history['prefer_sbr']=='t') { ?>Предпочитаю сервис <a href="/<?= sbr::NEW_TEMPLATE_SBR?>/" class="sbr-ic">«Безопасная Сделка»</a><? } ?>
+                                        <? if($project_history['pro_only']=='t') { ?><div class="prj-pro">РўРѕР»СЊРєРѕ РґР»СЏ <img src="/images/icons/f-pro.png"></div><br clear="all"/><? } ?>
+                                        <? if($project_history['prefer_sbr']=='t') { ?>РџСЂРµРґРїРѕС‡РёС‚Р°СЋ СЃРµСЂРІРёСЃ <a href="/<?= sbr::NEW_TEMPLATE_SBR?>/" class="sbr-ic">В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В»</a><? } ?>
                                         </td>
                                         <td align="right">
-                                        Разделы: <?=$project_history['spec_txt']?>
+                                        Р Р°Р·РґРµР»С‹: <?=$project_history['spec_txt']?>
                                         <?
                                         if ($project_history['kind'] == 4) {
                                             $city_str = (($project_history['country'])?" (".$project_history['country_name'].(($project_history['city'])?", ".$project_history['city_name']:"").")":"");
-                                            echo "<br><span style=\"color:#5DA534\">В офис".$city_str."</span>";
+                                            echo "<br><span style=\"color:#5DA534\">Р’ РѕС„РёСЃ".$city_str."</span>";
                                         }
                                         ?>
                                         </td>
@@ -326,11 +326,11 @@ $up_price = array ( 'prj'    => new_projects::getPriceByCode(( is_pro() ? new_pr
 				</div>
 				 <div class="">
 					<div class="b-buttons">
-						<a class="b-buttons__link  b-popup__delete" href="javascript:void(0)" onclick="$(this).getParent('div.b-shadow').toggleClass('b-shadow_hide'); return false;">Отменить</a>
+						<a class="b-buttons__link  b-popup__delete" href="javascript:void(0)" onclick="$(this).getParent('div.b-shadow').toggleClass('b-shadow_hide'); return false;">РћС‚РјРµРЅРёС‚СЊ</a>
 						<a class="b-button b-button_rectangle_transparent" onclick="xajax_addNotes($('note_userid').get('value'), $('notesTxt').get('value'), $('note_rating').get('value'), $('note_action').get('value'), 101)" href="javascript:void(0)">
 							<span class="b-button__b1">
 								<span class="b-button__b2 b-button__b2_padlr_5">
-									<span class="b-button__txt">Сохранить</span>
+									<span class="b-button__txt">РЎРѕС…СЂР°РЅРёС‚СЊ</span>
 								</span>
 							</span>
 						</a>

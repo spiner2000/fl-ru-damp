@@ -1,6 +1,6 @@
 <?php
 /**
- * Шаблон поумолчанию popup-окна "быстрой" оплаты
+ * РЁР°Р±Р»РѕРЅ РїРѕСѓРјРѕР»С‡Р°РЅРёСЋ popup-РѕРєРЅР° "Р±С‹СЃС‚СЂРѕР№" РѕРїР»Р°С‚С‹
  */
 ?>
 <div id="<?=@$popup_id?>" data-quick-payment="<?=$unic_name?>" class="b-shadow b-shadow_block b-shadow_center b-shadow_width_520 <?=(!@$is_show)?'b-shadow_hide':'' ?> b-shadow__quick">
@@ -22,13 +22,13 @@
             </div>  
             
             <div class="b-layout__txt b-layout__txt_padleft_20">
-                Бюджет заказа: <?=@$price?>
+                Р‘СЋРґР¶РµС‚ Р·Р°РєР°Р·Р°: <?=@$price?>
             </div>
             <div class="b-layout__txt b-layout__txt_padleft_20">
-                Комиссия сайта (<?=@$tax?>): <?=@$tax_price?><br/>
+                РљРѕРјРёСЃСЃРёСЏ СЃР°Р№С‚Р° (<?=@$tax?>): <?=@$tax_price?><br/>
             </div>
             <div class="b-layout__txt b-layout__txt_padleft_20 b-layout__bold">
-                Итого к оплате: <span><?=@$reserve_price?></span><br/>
+                РС‚РѕРіРѕ Рє РѕРїР»Р°С‚Рµ: <span><?=@$reserve_price?></span><br/>
             </div>
 <?php 
             if(!empty($items)): 
@@ -53,11 +53,11 @@
             </div>
             
             <div class="b-layout__txt b-layout__txt_padleft_20 b-layout__txt_fontsize_11">
-                Ваш статус<?php if(@$fn_url): ?> (<a href="<?=@$fn_url?>">изменить</a>)<?php endif; ?>: <?=$form_name?>, <?=$rez_name?>
+                Р’Р°С€ СЃС‚Р°С‚СѓСЃ<?php if(@$fn_url): ?> (<a href="<?=@$fn_url?>">РёР·РјРµРЅРёС‚СЊ</a>)<?php endif; ?>: <?=$form_name?>, <?=$rez_name?>
             </div>
             
             <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_padleft_20 b-layout__txt_fontsize_11">
-                Вам доступны следующие способы резервирования:
+                Р’Р°Рј РґРѕСЃС‚СѓРїРЅС‹ СЃР»РµРґСѓСЋС‰РёРµ СЃРїРѕСЃРѕР±С‹ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ:
             </div>
 <?php
             if(!empty($payments)):
@@ -83,7 +83,7 @@
             <div data-quick-payment-success-screen="true" class="b-layout__success b-layout__txt_fontsize_15 b-layout__txt_color_323232 b-layout_hide">
                 <span data-quick-payment-success-msg="true"></span>
                 <div class="b-buttons b-buttons_center b-button_margtop_15">
-                    <a data-quick-payment-close="true" href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green">Закрыть</a>
+                    <a data-quick-payment-close="true" href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green">Р—Р°РєСЂС‹С‚СЊ</a>
                 </div>
             </div>
             
@@ -92,8 +92,8 @@
             endif;
 ?>
             <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_13 b-layout__txt_padtop_10">
-                Нажимая кнопку одного из способов оплаты, я принимаю условия <a href="http://st.fl.ru/about/documents/reserve_offer_contract.pdf">Договора</a> 
-                и соглашаюсь на сотрудничество в его рамках.
+                РќР°Р¶РёРјР°СЏ РєРЅРѕРїРєСѓ РѕРґРЅРѕРіРѕ РёР· СЃРїРѕСЃРѕР±РѕРІ РѕРїР»Р°С‚С‹, СЏ РїСЂРёРЅРёРјР°СЋ СѓСЃР»РѕРІРёСЏ <a href="http://st.fl.ru/about/documents/reserve_offer_contract.pdf">Р”РѕРіРѕРІРѕСЂР°</a> 
+                Рё СЃРѕРіР»Р°С€Р°СЋСЃСЊ РЅР° СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ РІ РµРіРѕ СЂР°РјРєР°С….
             </div>
         </div>
     </div>

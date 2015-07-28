@@ -3,9 +3,9 @@ global $id, $comm, $site, $page;
 
 $user_login = __paramInit('string', 'search', NULL);
 
-// Все админы (модераторы, упрявляторы).
+// Р’СЃРµ Р°РґРјРёРЅС‹ (РјРѕРґРµСЂР°С‚РѕСЂС‹, СѓРїСЂСЏРІР»СЏС‚РѕСЂС‹).
 if (!$page || (int) $page == 1)
-    if (!($admins = commune::GetMembers($id, commune::MEMBER_ADMIN | commune::JOIN_STATUS_ACCEPTED))) // Хотя модераторы всегда is_accepted.
+    if (!($admins = commune::GetMembers($id, commune::MEMBER_ADMIN | commune::JOIN_STATUS_ACCEPTED))) // РҐРѕС‚СЏ РјРѕРґРµСЂР°С‚РѕСЂС‹ РІСЃРµРіРґР° is_accepted.
         $admins = array();
 
 
@@ -39,7 +39,7 @@ if (!($members = commune::GetMembers($id, $user_login == NULL ? commune::MEMBER_
 //$adminCnt = commune::GetAdminCount($id);
 ?>
 
-    <h1 class="b-page__title">Участники сообщества &laquo;<a href="/commune/?id=<?= $comm['id']; ?>" class="b-layout__link"><?= $comm['name'] ?></a>&raquo;</h1>
+    <h1 class="b-page__title">РЈС‡Р°СЃС‚РЅРёРєРё СЃРѕРѕР±С‰РµСЃС‚РІР° &laquo;<a href="/commune/?id=<?= $comm['id']; ?>" class="b-layout__link"><?= $comm['name'] ?></a>&raquo;</h1>
     <div class="page-commune-users c">
         <div class="page-in">
 				<div class="b-fon b-fon_bg_d0f2a5 b-layout_pad_5 b-fon_margbot_30 b-fon__border_radius_3">
@@ -48,10 +48,10 @@ if (!($members = commune::GetMembers($id, $user_login == NULL ? commune::MEMBER_
                 <input type="hidden" name="site" value="Members">
 										<table cellspacing="0" cellpadding="0" class="b-layout__table"><tbody><tr class="b-layout__tr"><td class="b-layout__td b-layout__td_width_full">
 												<div class="b-input b-input_height_24">
-													<input type="text" autocomplete="off" name="search" value="<?= stripslashes($user_login)?>"placeholder='Поиск по участникам: логин, имя, фамилия пользователя' class="b-input__text" id="b-input">
+													<input type="text" autocomplete="off" name="search" value="<?= stripslashes($user_login)?>"placeholder='РџРѕРёСЃРє РїРѕ СѓС‡Р°СЃС‚РЅРёРєР°Рј: Р»РѕРіРёРЅ, РёРјСЏ, С„Р°РјРёР»РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ' class="b-input__text" id="b-input">
 												</div>
 										</td><td class="b-layout__td">
-										<a onclick="$('search_user_form').submit();" href="javascript:void(0)" class="b-button b-button_flat b-button_flat_grey b-button_margleft_5">Найти</a>
+										<a onclick="$('search_user_form').submit();" href="javascript:void(0)" class="b-button b-button_flat b-button_flat_grey b-button_margleft_5">РќР°Р№С‚Рё</a>
 										</td></tr></tbody></table>
             </form>
         </div>				
@@ -62,7 +62,7 @@ if (!($members = commune::GetMembers($id, $user_login == NULL ? commune::MEMBER_
 				
             <? if ((!$page || (int) $page == 1) && $user_login == "") {
  ?>
-                <h3>Создатель:</h3>
+                <h3>РЎРѕР·РґР°С‚РµР»СЊ:</h3>
                         <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" border="0" cellpadding="0" cellspacing="0">
 							<tr class="b-layout__tr">
 								<td class="b-layout__left b-layout__left_width_50"><?= __commPrntUsrAvtr($comm, "author_") ?></td>
@@ -71,7 +71,7 @@ if (!($members = commune::GetMembers($id, $user_login == NULL ? commune::MEMBER_
                         </table>
             <? } ?>
 <? if (!empty($admins) && $user_login == "") { ?>
-                        <h3>Администрация:</h3>
+                        <h3>РђРґРјРёРЅРёСЃС‚СЂР°С†РёСЏ:</h3>
                         <ul class="c">
 <? foreach ($admins as $memb) { ?>
                             <li>
@@ -88,7 +88,7 @@ if (!($members = commune::GetMembers($id, $user_login == NULL ? commune::MEMBER_
                     </ul>
             <? } ?>
 <? if (!empty($members)) { ?>
-                        <h3><?= ($user_login != ""?'Результат поиска:':'Участники:')?></h3>
+                        <h3><?= ($user_login != ""?'Р РµР·СѓР»СЊС‚Р°С‚ РїРѕРёСЃРєР°:':'РЈС‡Р°СЃС‚РЅРёРєРё:')?></h3>
                         <ul class="c">
 <? foreach ($members as $memb) { ?>
                             <li>
@@ -103,12 +103,12 @@ if (!($members = commune::GetMembers($id, $user_login == NULL ? commune::MEMBER_
                     </li>
 <? } ?>
                     </ul>
-                    <?= ($user_login != ""?'<a href="/commune/?id='.$id.'&site='.$site.'">Остальные пользователи</a>':'')?>
-<? } elseif ($user_login != "")  { ?><br/>Ничего не найдено<br/><br/><a href="/commune/?id=<?=$id?>&site=<?=$site?>">Остальные пользователи</a><?php } //elseif?>
+                    <?= ($user_login != ""?'<a href="/commune/?id='.$id.'&site='.$site.'">РћСЃС‚Р°Р»СЊРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё</a>':'')?>
+<? } elseif ($user_login != "")  { ?><br/>РќРёС‡РµРіРѕ РЅРµ РЅР°Р№РґРµРЅРѕ<br/><br/><a href="/commune/?id=<?=$id?>&site=<?=$site?>">РћСЃС‚Р°Р»СЊРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё</a><?php } //elseif?>
 
         </div>
     </div>
-<!-- пейджер с главной  -->
+<!-- РїРµР№РґР¶РµСЂ СЃ РіР»Р°РІРЅРѕР№  -->
 <?php if($user_login == "") { ?>
     <?= new_paginator($page, (int)$pages, 4, "%s?id={$id}&site={$site}&page=%d%s")?>
 <?php  } ?>

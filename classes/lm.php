@@ -1,21 +1,21 @@
 <?
 /**
- * ïîäêëþ÷àåì ôàéë ñ îñíîâíûìè ôóíêöèÿìè ðàáîòû ñ ÁÄ
+ * Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼ Ñ„Ð°Ð¹Ð» Ñ Ð¾ÑÐ½Ð¾Ð²Ð½Ñ‹Ð¼Ð¸ Ñ„ÑƒÐ½ÐºÑ†Ð¸ÑÐ¼Ð¸ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ Ð‘Ð”
  *
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/users.php");
 
 /**
- * Êëàññ îáðàáàòûâàþùèé îáðàùåíèÿ ê ëè÷íîìó ìåíåäæåðó
+ * ÐšÐ»Ð°ÑÑ Ð¾Ð±Ñ€Ð°Ð±Ð°Ñ‚Ñ‹Ð²Ð°ÑŽÑ‰Ð¸Ð¹ Ð¾Ð±Ñ€Ð°Ñ‰ÐµÐ½Ð¸Ñ Ðº Ð»Ð¸Ñ‡Ð½Ð¾Ð¼Ñƒ Ð¼ÐµÐ½ÐµÐ´Ð¶ÐµÑ€Ñƒ
  *
  */
 class lm {
 
     /**
-     * Âîçâðàùàåò èíôîðìàöèþ î òåêóùåì ñîñòîÿíèè äîêóìåíòîâ
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¾ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¼ ÑÐ¾ÑÑ‚Ð¾ÑÐ½Ð¸Ð¸ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð¾Ð²
      *
-     * @param   integer $id Èäåíòèôèêàòîð îáðàùåíèÿ ê ËÌ
-     * @return  array       Èíôîðìàöèÿ î ñîñòîÿíèè äîêóìåíòîâ
+     * @param   integer $id Ð˜Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€ Ð¾Ð±Ñ€Ð°Ñ‰ÐµÐ½Ð¸Ñ Ðº Ð›Ðœ
+     * @return  array       Ð˜Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¾ ÑÐ¾ÑÑ‚Ð¾ÑÐ½Ð¸Ð¸ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð¾Ð²
      */
     function GetDocumentsInfo($id) {
         global $DB; 
@@ -24,11 +24,11 @@ class lm {
     }
 
     /**
-    * Îáíîâëÿåò èíôîðìàöèþ î òåêóùåì ñîñòîÿíèè îòîñëàííûõ äîêóìåíòîâ
+    * ÐžÐ±Ð½Ð¾Ð²Ð»ÑÐµÑ‚ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¾ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¼ ÑÐ¾ÑÑ‚Ð¾ÑÐ½Ð¸Ð¸ Ð¾Ñ‚Ð¾ÑÐ»Ð°Ð½Ð½Ñ‹Ñ… Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð¾Ð²
     *
-    * @param    integer $id     ID îáðàùåíèÿ ê ËÌ
-    * @param    boolean $status Ñòàòóñ äîêóìåíòîâ(true - îòîñëàëè, false - íåò)
-    * @param    string  $date   Äàòà îòñûëêè äîêóìåíòîâ
+    * @param    integer $id     ID Ð¾Ð±Ñ€Ð°Ñ‰ÐµÐ½Ð¸Ñ Ðº Ð›Ðœ
+    * @param    boolean $status Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð¾Ð²(true - Ð¾Ñ‚Ð¾ÑÐ»Ð°Ð»Ð¸, false - Ð½ÐµÑ‚)
+    * @param    string  $date   Ð”Ð°Ñ‚Ð° Ð¾Ñ‚ÑÑ‹Ð»ÐºÐ¸ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð¾Ð²
     */
     function UpdateDocumentsSend($id, $status, $date) {
         global $DB;
@@ -37,11 +37,11 @@ class lm {
     }
 
     /**
-    * Îáíîâëÿåò èíôîðìàöèþ î òåêóùåì ñîñòîÿíèè âåðíóâøèõñÿ äîêóìåíòîâ
+    * ÐžÐ±Ð½Ð¾Ð²Ð»ÑÐµÑ‚ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¾ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¼ ÑÐ¾ÑÑ‚Ð¾ÑÐ½Ð¸Ð¸ Ð²ÐµÑ€Ð½ÑƒÐ²ÑˆÐ¸Ñ…ÑÑ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð¾Ð²
     *
-    * @param    integer $id     ID îáðàùåíèÿ ê ËÌ
-    * @param    boolean $status Ñòàòóñ äîêóìåíòîâ(true - âåðíóëèñü, false - íåò)
-    * @param    string  $date   Äàòà ïîëó÷åíèÿ äîêóìåíòîâ
+    * @param    integer $id     ID Ð¾Ð±Ñ€Ð°Ñ‰ÐµÐ½Ð¸Ñ Ðº Ð›Ðœ
+    * @param    boolean $status Ð¡Ñ‚Ð°Ñ‚ÑƒÑ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð¾Ð²(true - Ð²ÐµÑ€Ð½ÑƒÐ»Ð¸ÑÑŒ, false - Ð½ÐµÑ‚)
+    * @param    string  $date   Ð”Ð°Ñ‚Ð° Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ñ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð¾Ð²
     */
     function UpdateDocumentsBack($id, $status, $date) {
         global $DB;
@@ -50,11 +50,11 @@ class lm {
     }
 
     /**
-    * Äîáàâëÿåò çàïèñü â áàçó äîêóìåíòîâ ËÌ
+    * Ð”Ð¾Ð±Ð°Ð²Ð»ÑÐµÑ‚ Ð·Ð°Ð¿Ð¸ÑÑŒ Ð² Ð±Ð°Ð·Ñƒ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð¾Ð² Ð›Ðœ
     *
-    * @param    integer $user_id    ID ïîëüçîâàòåëÿ
-    * @param    integer $op_id      ID îïåðàöèè
-    * @return   integer             ID äîáâëåííîé çàïèñè
+    * @param    integer $user_id    ID Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
+    * @param    integer $op_id      ID Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¸
+    * @return   integer             ID Ð´Ð¾Ð±Ð²Ð»ÐµÐ½Ð½Ð¾Ð¹ Ð·Ð°Ð¿Ð¸ÑÐ¸
     */
     function AddDocumentRecord($user_id, $op_id) {
         global $DB;
@@ -64,11 +64,11 @@ class lm {
     }
 
     /**
-    * Äîáàâëåíèå ôàéëîâ àêòà è ñ÷åòà-ôàêòóðû
+    * Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ñ„Ð°Ð¹Ð»Ð¾Ð² Ð°ÐºÑ‚Ð° Ð¸ ÑÑ‡ÐµÑ‚Ð°-Ñ„Ð°ÐºÑ‚ÑƒÑ€Ñ‹
     *
-    * @param    integer $id         Èäåíòèôèêàòîð îáðàùåíèÿ ê ËÌ
-    * @param    string  $file_sf    Èìÿ ôàéëà ñ÷åòà-ôàêòóðû
-    * @param    string  $file_act   Èìÿ ôàéëà àêòà
+    * @param    integer $id         Ð˜Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€ Ð¾Ð±Ñ€Ð°Ñ‰ÐµÐ½Ð¸Ñ Ðº Ð›Ðœ
+    * @param    string  $file_sf    Ð˜Ð¼Ñ Ñ„Ð°Ð¹Ð»Ð° ÑÑ‡ÐµÑ‚Ð°-Ñ„Ð°ÐºÑ‚ÑƒÑ€Ñ‹
+    * @param    string  $file_act   Ð˜Ð¼Ñ Ñ„Ð°Ð¹Ð»Ð° Ð°ÐºÑ‚Ð°
     */
     function UpdateFiles($id, $file_sf, $file_act) {
         global $DB;
@@ -77,14 +77,14 @@ class lm {
     }
 
 	/**
-	 * Âîçâðàùàåò âñå îáðàùåíèÿ ê ËÌ çà äàííûé ïåðèîä
+	 * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð²ÑÐµ Ð¾Ð±Ñ€Ð°Ñ‰ÐµÐ½Ð¸Ñ Ðº Ð›Ðœ Ð·Ð° Ð´Ð°Ð½Ð½Ñ‹Ð¹ Ð¿ÐµÑ€Ð¸Ð¾Ð´
 	 *
-	 * @param string $fdate			    ñ êàêîãî ÷èñëà
-	 * @param string $tdate			    ïî êàêîå ÷èñëî
-	 * @param string $search            Ïîèñêîâîå ñëîâî
-	 * @param array  $sort              Òèï ñîðòèðîâêè [login=> DESC ...]
-     * @param string $date_search_type  ïî êàêèì äàòàì èùåì, 1-èùåì, 0-íåò (X1X2, X1 - ïî äàòå ñîçäàíèÿ, X2 - ïî äàòå îòïðàâêè äîêóìåíòîâ)
-	 * @return array				    èíôîðìàöèÿ ïî îáðàùåíèÿì
+	 * @param string $fdate			    Ñ ÐºÐ°ÐºÐ¾Ð³Ð¾ Ñ‡Ð¸ÑÐ»Ð°
+	 * @param string $tdate			    Ð¿Ð¾ ÐºÐ°ÐºÐ¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾
+	 * @param string $search            ÐŸÐ¾Ð¸ÑÐºÐ¾Ð²Ð¾Ðµ ÑÐ»Ð¾Ð²Ð¾
+	 * @param array  $sort              Ð¢Ð¸Ð¿ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸ [login=> DESC ...]
+     * @param string $date_search_type  Ð¿Ð¾ ÐºÐ°ÐºÐ¸Ð¼ Ð´Ð°Ñ‚Ð°Ð¼ Ð¸Ñ‰ÐµÐ¼, 1-Ð¸Ñ‰ÐµÐ¼, 0-Ð½ÐµÑ‚ (X1X2, X1 - Ð¿Ð¾ Ð´Ð°Ñ‚Ðµ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ, X2 - Ð¿Ð¾ Ð´Ð°Ñ‚Ðµ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð¾Ð²)
+	 * @return array				    Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ Ð¿Ð¾ Ð¾Ð±Ñ€Ð°Ñ‰ÐµÐ½Ð¸ÑÐ¼
 	 */
     function GetLMRequests($fdate, $tdate, $search=NULL, $sort = NULL, $date_search_type='11') {
         global $DB;
@@ -110,11 +110,11 @@ class lm {
 
         $where = '';
         if(substr($date_search_type,0,1)) {
-            // äàòà ñîçäàíèÿ
+            // Ð´Ð°Ñ‚Ð° ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ
             $where .= " (ao.op_date >= '$fdate' AND ao.op_date-'1 day'::interval < '$tdate') OR ";
         }
         if(substr($date_search_type,1,1)) {
-            // äàòà îòïðàâêè äîêóìåíòîâ
+            // Ð´Ð°Ñ‚Ð° Ð¾Ñ‚Ð¿Ñ€Ð°Ð²ÐºÐ¸ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð¾Ð²
             $where .= " (lmd.docsend_time >= '$fdate' AND lmd.docsend_time-'1 day'::interval < '$tdate') OR ";
         }
         if($where)
@@ -154,10 +154,10 @@ class lm {
     }
 
 	/**
-	 * Çàãëóøêà äëÿ âûçîâà â account::Del();
+	 * Ð—Ð°Ð³Ð»ÑƒÑˆÐºÐ° Ð´Ð»Ñ Ð²Ñ‹Ð·Ð¾Ð²Ð° Ð² account::Del();
 	 * 
 	 * @param integer $uid	UID	
-	 * @param integer $opid èäåíòèôèêàòîð îïåðàöèè
+	 * @param integer $opid Ð¸Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€ Ð¾Ð¿ÐµÑ€Ð°Ñ†Ð¸Ð¸
 	 * @return 0
 	 */
 	function DelByOpid($uid, $opid){

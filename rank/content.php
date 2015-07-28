@@ -1,4 +1,4 @@
-  <h1 class="b-page__title">Фрилансеры <?=$rank?>-го разряда</h1>
+  <h1 class="b-page__title">Р¤СЂРёР»Р°РЅСЃРµСЂС‹ <?=$rank?>-РіРѕ СЂР°Р·СЂСЏРґР°</h1>
         <? if($users) { ?>
           <table class="b-layout__table b-layout__table_width_full" border="0" cellspacing="0" cellpadding="0">
           <col style="width:33%"/>

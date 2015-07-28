@@ -1,6 +1,6 @@
 <?php
 
-define('USERS_ON_PAGE', 50);  // кол-во пользователей на страницу
+define('USERS_ON_PAGE', 50);  // РєРѕР»-РІРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РЅР° СЃС‚СЂР°РЅРёС†Сѓ
 
 if (!defined('IS_SITE_ADMIN')) {
     header ("Location: /404.php"); 

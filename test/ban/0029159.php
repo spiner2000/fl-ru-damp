@@ -25,7 +25,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/admin_log.php');
 
 
 
-//успешные сделки
+//СѓСЃРїРµС€РЅС‹Рµ СЃРґРµР»РєРё
 $uids = $DB->col("
     SELECT u.uid
     FROM account AS a
@@ -48,10 +48,10 @@ if ($uids) {
             continue;
         }
         
-        $sReason = "Приостановка аккаунта до погашения задолженности. Обратитесь в поддержку <a href=\"mailto:support@fl.ru\">support@fl.ru</a> когда будете готовы погасить задолженность за услуги сайта.";
+        $sReason = "РџСЂРёРѕСЃС‚Р°РЅРѕРІРєР° Р°РєРєР°СѓРЅС‚Р° РґРѕ РїРѕРіР°С€РµРЅРёСЏ Р·Р°РґРѕР»Р¶РµРЅРЅРѕСЃС‚Рё. РћР±СЂР°С‚РёС‚РµСЃСЊ РІ РїРѕРґРґРµСЂР¶РєСѓ <a href=\"mailto:support@fl.ru\">support@fl.ru</a> РєРѕРіРґР° Р±СѓРґРµС‚Рµ РіРѕС‚РѕРІС‹ РїРѕРіР°СЃРёС‚СЊ Р·Р°РґРѕР»Р¶РµРЅРЅРѕСЃС‚СЊ Р·Р° СѓСЃР»СѓРіРё СЃР°Р№С‚Р°.";
         $sBanId = $objUser->setUserBan( $uid, 0, $sReason, null);
         
-        // пишем лог админских действий
+        // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
         $sObjName = $objUser->uname. ' ' . $objUser->usurname . '[' . $objUser->login . ']';
         $sObjLink = '/users/' . $objUser->login;
         admin_log::addLog( 

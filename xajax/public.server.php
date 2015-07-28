@@ -42,7 +42,7 @@ function GetCitysByCid($country_id){
 	if ($country_id){
 		$cities = city::GetCities($country_id);
 	}
-	$out_text = "<select name=\"city\" class=\"apf-select\"><option value=\"0\">Не выбрано</option>";
+	$out_text = "<select name=\"city\" class=\"apf-select\"><option value=\"0\">РќРµ РІС‹Р±СЂР°РЅРѕ</option>";
 	if($cities) foreach ($cities as $cityid => $city)
 		$out_text .= "<option value=".$cityid.">".$city."</option>";
 	$out_text .= "</select>";
@@ -60,14 +60,14 @@ function GetProfessionsBySpec($spec_id){
 	$out_text = "<select name=\"subcategory\" class=\"apf-select\">";
 	if($specs) for ($i=0; $i<sizeof($specs); $i++)
 		$out_text .= "<option value=".$specs[$i]['id'].">".$specs[$i]['profname']."</option>";
-	$out_text .= "<option value=\"0\">Другое</option></select>";
+	$out_text .= "<option value=\"0\">Р”СЂСѓРіРѕРµ</option></select>";
 	$objResponse->assign("frm_subcategory","innerHTML",$out_text);
 
 	return $objResponse;
 }
 
 /**
- * Переключает и запоминает в сессии статус основного фильтра фрилансеров.
+ * РџРµСЂРµРєР»СЋС‡Р°РµС‚ Рё Р·Р°РїРѕРјРёРЅР°РµС‚ РІ СЃРµСЃСЃРёРё СЃС‚Р°С‚СѓСЃ РѕСЃРЅРѕРІРЅРѕРіРѕ С„РёР»СЊС‚СЂР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ.
  *
  * @return object xajaxResponse
  */
@@ -82,7 +82,7 @@ function SwitchFilter()
 }
 
 /**
- * формирует превью проекта на главной странице
+ * С„РѕСЂРјРёСЂСѓРµС‚ РїСЂРµРІСЊСЋ РїСЂРѕРµРєС‚Р° РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ
  */
 function GetPreview ($data) {
     $objResponse = new xajaxResponse();
@@ -102,7 +102,7 @@ function GetPreview ($data) {
     if (!$htmlLenta) {
         $prj = new new_projects();
         $prjs = $prj->getProjects($num_prjs, -1, 1, false, null, true);
-        foreach($prjs as &$proj) { // стираем принадлежность проекта к пользователю, чтобы не появилось кнопок РЕДАКТИРОВАТЬ и пр.
+        foreach($prjs as &$proj) { // СЃС‚РёСЂР°РµРј РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚СЊ РїСЂРѕРµРєС‚Р° Рє РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ, С‡С‚РѕР±С‹ РЅРµ РїРѕСЏРІРёР»РѕСЃСЊ РєРЅРѕРїРѕРє Р Р•Р”РђРљРўРР РћР’РђРўР¬ Рё РїСЂ.
             unset($proj['user_id']);
         }
         unset($proj);
@@ -114,16 +114,16 @@ function GetPreview ($data) {
         $prfs = new professions();
         $profs = $prfs->GetAllProfessions('', 0, 1);
 
-        // подложка с лентой проектов
+        // РїРѕРґР»РѕР¶РєР° СЃ Р»РµРЅС‚РѕР№ РїСЂРѕРµРєС‚РѕРІ
         ob_start();
         include($_SERVER['DOCUMENT_ROOT'] . '/templates/main.php');
         $htmlLenta = ob_get_clean();
         
-        // кэшируем ленту проектов
+        // РєСЌС€РёСЂСѓРµРј Р»РµРЅС‚Сѓ РїСЂРѕРµРєС‚РѕРІ
         $memBuff->set('projectsLentaHTML', $htmlLenta, 1800);
     }
     
-    // подготавливаем данные для шаблона в ленту проектов
+    // РїРѕРґРіРѕС‚Р°РІР»РёРІР°РµРј РґР°РЅРЅС‹Рµ РґР»СЏ С€Р°Р±Р»РѕРЅР° РІ Р»РµРЅС‚Сѓ РїСЂРѕРµРєС‚РѕРІ
     $row = array();
     $row['kind'] =          __paramValue('int', $data['kind']);
     $row['cost'] =          __paramValue('int', $data['cost']);
@@ -133,11 +133,11 @@ function GetPreview ($data) {
     
     $contacts = array(
         'phone' => array(
-            'name' => 'Телефон',
+            'name' => 'РўРµР»РµС„РѕРЅ',
             'value' => ''
         ),
         'site' => array(
-            'name' => 'Сайт',
+            'name' => 'РЎР°Р№С‚',
             'value' => ''
         ),
         'icq' => array(
@@ -160,7 +160,7 @@ function GetPreview ($data) {
             switch ($name) {
                 case 'site':
                     if (!url_validate(ltrim(ltrim($value, 'http://'), 'https://')) && trim($value) != '') {
-                        $error["contact_{$name}"] = 'Поле заполнено некорректно';
+                        $error["contact_{$name}"] = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                     }
                     if (strpos($value, 'htt') === false && trim($value) != '') {
                         $value = 'http://' . $value;
@@ -168,7 +168,7 @@ function GetPreview ($data) {
                     break;
                 case 'email':
                     if (!is_email($value) && trim($value) != '') {
-                        $error["contact_{$name}"] = 'Поле заполнено некорректно';
+                        $error["contact_{$name}"] = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ';
                     }
                     break;
             }
@@ -189,7 +189,7 @@ function GetPreview ($data) {
     $row['t_verify_only'] = $data['verify_only'] ? 't' : 'f';
     $row['t_urgent'] = $data['urgent'] ? 't' : 'f';
     $row['t_hide'] = $data['hide'] ? 't' : 'f';
-    $row['create_date'] =   date('Y-m-d H:i', strtotime(date('Y-m-d H:i:s')) - 120); // делаем дату публикации 2 минуты назад
+    $row['create_date'] =   date('Y-m-d H:i', strtotime(date('Y-m-d H:i:s')) - 120); // РґРµР»Р°РµРј РґР°С‚Сѓ РїСѓР±Р»РёРєР°С†РёРё 2 РјРёРЅСѓС‚С‹ РЅР°Р·Р°Рґ
     $row['end_date'] =      __paramValue('string', $data['end_date']);
     $row['win_date'] =      __paramValue('string', $data['win_date']);
     $row['country'] =       __paramValue('int', $data['project_location_columns'][0]);
@@ -202,7 +202,7 @@ function GetPreview ($data) {
         $logoAttach = new attachedfiles($data['logo_attachedfiles_session']);
         $logoFiles = $logoAttach->getFiles(array(1));
         if (count($logoFiles)) {
-            $logoFile = array_pop($logoFiles); // загружено может быть несколько файлов, берем последний
+            $logoFile = array_pop($logoFiles); // Р·Р°РіСЂСѓР¶РµРЅРѕ РјРѕР¶РµС‚ Р±С‹С‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ С„Р°Р№Р»РѕРІ, Р±РµСЂРµРј РїРѕСЃР»РµРґРЅРёР№
             $logoCFile = new CFile($logoFile['id']);
         } elseif (__paramValue('int', $data['logo_file_id'])) {
             $logoCFile = new CFile(__paramValue('int', $data['logo_file_id']));
@@ -212,7 +212,7 @@ function GetPreview ($data) {
     }
     $is_ajax = true;
     
-    // подготовка данных для подробной страницы проекта
+    // РїРѕРґРіРѕС‚РѕРІРєР° РґР°РЅРЅС‹С… РґР»СЏ РїРѕРґСЂРѕР±РЅРѕР№ СЃС‚СЂР°РЅРёС†С‹ РїСЂРѕРµРєС‚Р°
     $project = $row;
     $categories = array();
     for ($i = 0; $i < 3; $i++) {
@@ -257,7 +257,7 @@ function GetPreview ($data) {
 
 
 /**
- * Получение 3х смежных по категориям ТУ
+ * РџРѕР»СѓС‡РµРЅРёРµ 3С… СЃРјРµР¶РЅС‹С… РїРѕ РєР°С‚РµРіРѕСЂРёСЏРј РўРЈ
  * 
  * @param type $cat_group
  * @param type $cat
@@ -292,16 +292,16 @@ function getRelativeTU($cat_group, $cat)
     $tservicesCatalogModel->category_id = $category ? (int)$category : (int)$category_group;
     $tservicesCatalogModel->setPage($limit);
 
-    // поиск записей
+    // РїРѕРёСЃРє Р·Р°РїРёСЃРµР№
     $list = $tservicesCatalogModel->cache(300)->getList();
     $tservices = $list['list'];
     
-    // расширение сведений о типовых услугах
+    // СЂР°СЃС€РёСЂРµРЅРёРµ СЃРІРµРґРµРЅРёР№ Рѕ С‚РёРїРѕРІС‹С… СѓСЃР»СѓРіР°С…
     $tserviceModel = TServiceModel::model();
     $tserviceModel->extend($tservices, 'id')
-                  ->readVideos($tservices, 'videos', 'videos'); // во всех строках "распаковать" массив видео-клипов
+                  ->readVideos($tservices, 'videos', 'videos'); // РІРѕ РІСЃРµС… СЃС‚СЂРѕРєР°С… "СЂР°СЃРїР°РєРѕРІР°С‚СЊ" РјР°СЃСЃРёРІ РІРёРґРµРѕ-РєР»РёРїРѕРІ
 
-    // расширение сведений о пользователях
+    // СЂР°СЃС€РёСЂРµРЅРёРµ СЃРІРµРґРµРЅРёР№ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏС…
     $freelancerModel = FreelancerModel::model();
     $freelancerModel->extend($tservices, 'user_id', 'user');
 

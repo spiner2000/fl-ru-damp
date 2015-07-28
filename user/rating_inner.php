@@ -72,49 +72,49 @@ $is_owner = ($user->uid == $_SESSION['uid']);
     <div class="month-rate-graph">
         
         
-<!-- таблица с рейтингами -->
+<!-- С‚Р°Р±Р»РёС†Р° СЃ СЂРµР№С‚РёРЅРіР°РјРё -->
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margtop_15 b-layout__table_margbot_40">
         	<tr class="b-layout__one_bordbot_cec">
         		<td class="b-layout__td_width_240 b-layout__one_padbot_20">
-        			<p class="b-layout__txt_fontsize_20"><?= ( !$is_owner ? "Общий рейтинг" : "Ваш рейтинг")?></p></td>
+        			<p class="b-layout__txt_fontsize_20"><?= ( !$is_owner ? "РћР±С‰РёР№ СЂРµР№С‚РёРЅРі" : "Р’Р°С€ СЂРµР№С‚РёРЅРі")?></p></td>
         		<td colspan="2" class="b-layout__one_padbot_20">
-        			<p class="b-layout__txt_float_right b-layout__mail-icon_top_4"><noindex><a rel="nofollow" href="https://feedback.fl.ru/topic/397654-opisanie-sistemyi-rejtinga-frilanser/" class="b-layout__link" target="_blank">Подробнее о рейтинге</a></noindex></p>
+        			<p class="b-layout__txt_float_right b-layout__mail-icon_top_4"><noindex><a rel="nofollow" href="https://feedback.fl.ru/topic/397654-opisanie-sistemyi-rejtinga-frilanser/" class="b-layout__link" target="_blank">РџРѕРґСЂРѕР±РЅРµРµ Рѕ СЂРµР№С‚РёРЅРіРµ</a></noindex></p>
         			<p class="b-layout__txt_float_left b-layout__txt_fontsize_20 b-text__bold"><?= rating::round($r_data['total']) ?></p>
-        			<p class="b-layout_clear_both b-layout__title_color_4e"><?= rating::round($r_data['max']) ?> максимальный</p>
+        			<p class="b-layout_clear_both b-layout__title_color_4e"><?= rating::round($r_data['max']) ?> РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№</p>
         		</td>
         	</tr>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Заполненность профиля</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Р—Р°РїРѕР»РЅРµРЅРЅРѕСЃС‚СЊ РїСЂРѕС„РёР»СЏ</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <? if(get_uid(false)!=$user->uid && !hasPermissions('users')) { ?>
-                    закрытая информация
+                    Р·Р°РєСЂС‹С‚Р°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ
                     <? } else { $feature_inf_factor = 100 - rating::round($r_data['o_inf_factor']); ?>
                     <?= rating::round($r_data['o_inf_factor']) ?>
                     <? } ?>
                 </td>
         		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle">
                     <? if($is_owner) { ?>
-                    <a href="http://feedback.fl.ru/topic/397551-zakladka-informatsiya-opisanie-razdelov-instruktsiya-po-zapolneniyu-frilanser-i-rabotodatel/" class="b-layout__link">Подробнее о заполнении профиля</a>
+                    <a href="http://feedback.fl.ru/topic/397551-zakladka-informatsiya-opisanie-razdelov-instruktsiya-po-zapolneniyu-frilanser-i-rabotodatel/" class="b-layout__link">РџРѕРґСЂРѕР±РЅРµРµ Рѕ Р·Р°РїРѕР»РЅРµРЅРёРё РїСЂРѕС„РёР»СЏ</a>
                     <? } else {?>
                     &nbsp;
                     <? } ?>
                 </td>
         	</tr>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Ответы на проекты</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РћС‚РІРµС‚С‹ РЅР° РїСЂРѕРµРєС‚С‹</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?= rating::round($r_data['o_kis_factor']) ?>
                 </td>
         		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__txt_color_a7a7a6 b-layout__one_valign_middle">
                     <? if($is_owner) { ?>
-                    1 балл за добавление в кандидаты или исполнители
+                    1 Р±Р°Р»Р» Р·Р° РґРѕР±Р°РІР»РµРЅРёРµ РІ РєР°РЅРґРёРґР°С‚С‹ РёР»Рё РёСЃРїРѕР»РЅРёС‚РµР»Рё
                     <? } else {?>
                     &nbsp;
                     <? } ?>
                 </td>
         	</tr>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Безопасные сделки</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Р‘РµР·РѕРїР°СЃРЅС‹Рµ СЃРґРµР»РєРё</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?= rating::round($r_data['o_sbr_factor']) ?>
                 </td>
@@ -123,13 +123,13 @@ $is_owner = ($user->uid == $_SESSION['uid']);
         	</tr>
             <?php if($r_data['o_opi_factor'] > 0) { ?>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Мнения пользователей</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РњРЅРµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?= rating::round($r_data['o_opi_factor']) ?>
                 </td>
         		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__txt_color_a7a7a6 b-layout__one_valign_middle">
                     <? if($is_owner) { ?>
-                    +1/-1 балл за положительное/отрицательное мнение
+                    +1/-1 Р±Р°Р»Р» Р·Р° РїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕРµ/РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРµ РјРЅРµРЅРёРµ
                     <? } else {?>
                     &nbsp;
                     <? } ?>
@@ -137,47 +137,47 @@ $is_owner = ($user->uid == $_SESSION['uid']);
         	</tr>
             <?php } ?>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Конкурсы</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РљРѕРЅРєСѓСЂСЃС‹</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?= $o_contest_rating ?>
                 </td>
         		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__txt_color_a7a7a6 b-layout__one_valign_middle">
                     <? if($is_owner) { ?>
-                    30 баллов за &Iota; место, 20 баллов за &Iota;&Iota; место, 10 баллов за &Iota;&Iota;&Iota; 3 место
+                    30 Р±Р°Р»Р»РѕРІ Р·Р° &Iota; РјРµСЃС‚Рѕ, 20 Р±Р°Р»Р»РѕРІ Р·Р° &Iota;&Iota; РјРµСЃС‚Рѕ, 10 Р±Р°Р»Р»РѕРІ Р·Р° &Iota;&Iota;&Iota; 3 РјРµСЃС‚Рѕ
                     <? } else {?>
                     &nbsp;
                     <? } ?>
                 </td>
         	</tr>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Посещение сайта fl.ru</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РџРѕСЃРµС‰РµРЅРёРµ СЃР°Р№С‚Р° fl.ru</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <? if(get_uid(false)!=$user->uid && !hasPermissions('users')) { ?>
-                    закрытая информация
+                    Р·Р°РєСЂС‹С‚Р°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ
                     <? } else { ?>
                     <?= rating::round($r_data['o_act_factor']) ?>
                     <? } ?>
                 </td>
         		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__txt_color_a7a7a6 b-layout__one_valign_middle">
                     <? if($is_owner) {?>
-                    1 балл в день
+                    1 Р±Р°Р»Р» РІ РґРµРЅСЊ
                     <? } else {?>
                     &nbsp;
                     <? } ?>
                 </td>
         	</tr>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Деньги, потраченные на сервис</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Р”РµРЅСЊРіРё, РїРѕС‚СЂР°С‡РµРЅРЅС‹Рµ РЅР° СЃРµСЂРІРёСЃ</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <? if(get_uid(false)!=$user->uid && !hasPermissions('users')) { ?>
-                    закрытая информация
+                    Р·Р°РєСЂС‹С‚Р°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ
                     <? } else { ?>
                     <?= rating::round($r_data['o_mny_factor']) ?>
                     <? } ?>
                 </td>
         		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__txt_color_a7a7a6 b-layout__one_valign_middle">
                     <? if($is_owner) { ?>
-                    1 балл за 30 рублей
+                    1 Р±Р°Р»Р» Р·Р° 30 СЂСѓР±Р»РµР№
                     <? } else {?>
                     &nbsp;
                     <? } ?>
@@ -185,13 +185,13 @@ $is_owner = ($user->uid == $_SESSION['uid']);
         	</tr>
             <?php if($r_data['o_articles_factor'] > 0) { ?>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Статьи</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РЎС‚Р°С‚СЊРё</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?= rating::round($r_data['o_articles_factor'])?>
                 </td>
         		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__txt_color_a7a7a6 b-layout__one_valign_middle">
                     <? if($is_owner) { ?>
-                    30 баллов за публикацию в разделе Статьи
+                    30 Р±Р°Р»Р»РѕРІ Р·Р° РїСѓР±Р»РёРєР°С†РёСЋ РІ СЂР°Р·РґРµР»Рµ РЎС‚Р°С‚СЊРё
                     <? } else {?>
                     &nbsp;
                     <? } ?>
@@ -199,23 +199,23 @@ $is_owner = ($user->uid == $_SESSION['uid']);
         	</tr>
             <?php } ?>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Сообщества</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РЎРѕРѕР±С‰РµСЃС‚РІР°</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?= rating::round($r_data['o_commune_entered'])?>
                 </td>
         		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__txt_color_a7a7a6 b-layout__one_valign_middle">
                     <? if($is_owner) { ?>
-                    50 баллов за добавление &gt; 500 участников в ваше сообщество
+                    50 Р±Р°Р»Р»РѕРІ Р·Р° РґРѕР±Р°РІР»РµРЅРёРµ &gt; 500 СѓС‡Р°СЃС‚РЅРёРєРѕРІ РІ РІР°С€Рµ СЃРѕРѕР±С‰РµСЃС‚РІРѕ
                     <? } else {?>
                     &nbsp;
                     <? } ?>
                 </td>
         	</tr>
             <tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Работы в портфолио</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Р Р°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <? if(get_uid(false)!=$user->uid && !hasPermissions('users')) { ?>
-                    закрытая информация
+                    Р·Р°РєСЂС‹С‚Р°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ
                     <? } else { $feature_portf = 500 - rating::round($r_data['o_wrk_factor']); ?>
                     <?= rating::round($r_data['o_wrk_factor']) ?>
                     <? } ?>
@@ -223,7 +223,7 @@ $is_owner = ($user->uid == $_SESSION['uid']);
         		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__txt_color_a7a7a6 b-layout__one_valign_middle">&nbsp;</td>
         	</tr>
             <tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Другие факторы</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Р”СЂСѓРіРёРµ С„Р°РєС‚РѕСЂС‹</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?= rating::round($r_data['o_oth_factor']) + $o_contest_ban_rating; ?>
                 </td>
@@ -232,7 +232,7 @@ $is_owner = ($user->uid == $_SESSION['uid']);
             <?php if($user->isProfi()){ ?>
             <tr class="b-layout__one_bordbot_cec">
         		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">
-                    Аккаунт &nbsp;<span class="b-icon b-icon__lprofi b-icon_top_2" title="PROFI"></span> x 1.4
+                    РђРєРєР°СѓРЅС‚ &nbsp;<span class="b-icon b-icon__lprofi b-icon_top_2" title="PROFI"></span> x 1.4
                 </td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?= abs(rating::round(abs(($r_data['f_total']*rating::PROFI_FACTOR)) - abs($r_data['f_total']))) ?>
@@ -242,7 +242,7 @@ $is_owner = ($user->uid == $_SESSION['uid']);
             <?php } elseif ($user->is_pro=='t' || $user->is_pro_test=='t') { ?>
             <tr class="b-layout__one_bordbot_cec">
         		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">
-                    Аккаунт &nbsp;<span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_4" title="PRO"></span> x 1.2
+                    РђРєРєР°СѓРЅС‚ &nbsp;<span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_4" title="PRO"></span> x 1.2
                 </td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?= abs(rating::round(abs(($r_data['f_total']*rating::PRO_FACTOR)) - abs($r_data['f_total']))) ?>
@@ -253,7 +253,7 @@ $is_owner = ($user->uid == $_SESSION['uid']);
             <? if ($user->is_verify=='t') { ?>
             <tr class="b-layout__one_bordbot_cec">
         		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">
-                    Верификация &nbsp;<span class="b-icon b-icon__ver b-icon_top_2"></span> x 1.2
+                    Р’РµСЂРёС„РёРєР°С†РёСЏ &nbsp;<span class="b-icon b-icon__ver b-icon_top_2"></span> x 1.2
                 </td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold">
                     <?= abs(rating::round(abs(($r_data['f_total']*rating::VERIFY_FACTOR)) - abs($r_data['f_total']))) ?>
@@ -282,91 +282,91 @@ $is_owner = ($user->uid == $_SESSION['uid']);
         <table class="b-layout__table b-layout__table_width_full b-layout__table_margtop_15 b-layout__table_margbot_40">
         	<tr class="b-layout__one_bordbot_cec">
         		<td class="b-layout__td_width_240 b-layout__one_padbot_20">
-        			<p class="b-layout__txt_fontsize_20">А хотите &rarr;</p></td>
+        			<p class="b-layout__txt_fontsize_20">Рђ С…РѕС‚РёС‚Рµ &rarr;</p></td>
         		<td colspan="2" class="b-layout__one_padbot_20">
         			<p class="b-layout__txt_float_left b-layout__txt_fontsize_20 b-text__bold b-layout__txt_color_6db335"><?= $feature_total;?></p>
-        			<p class="b-layout_clear_both b-layout__title_color_4e">такой рейтинг как минимум</p>
+        			<p class="b-layout_clear_both b-layout__title_color_4e">С‚Р°РєРѕР№ СЂРµР№С‚РёРЅРі РєР°Рє РјРёРЅРёРјСѓРј</p>
         		</td>
         	</tr>
             <? if ($user->is_pro != 't' && $user->is_pro_test != 't') { ?>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Аккаунт &nbsp;<span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_4" title="PRO"></span> x 1.2</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РђРєРєР°СѓРЅС‚ &nbsp;<span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_4" title="PRO"></span> x 1.2</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold b-layout__txt_color_6db335">
                     <?= abs(rating::round(abs(($feature_total_after_pro_verify*rating::PRO_FACTOR)) - abs($feature_total_after_pro_verify))) ?>
                 </td>
-        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/payed/" target="_blank" class="b-layout__link">Купить</a> &nbsp;<?= view_pro(); ?></td>
+        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/payed/" target="_blank" class="b-layout__link">РљСѓРїРёС‚СЊ</a> &nbsp;<?= view_pro(); ?></td>
         	</tr>
             <? }//if?>
             <? if($user->is_verify != 't') { ?>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Верификация &nbsp;<span class="b-icon b-icon__ver b-icon_top_2"></span> x 1.2</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Р’РµСЂРёС„РёРєР°С†РёСЏ &nbsp;<span class="b-icon b-icon__ver b-icon_top_2"></span> x 1.2</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold b-layout__txt_color_6db335">
                     <?= abs(rating::round(abs(($feature_total_after_pro_verify*rating::VERIFY_FACTOR)) - abs($feature_total_after_pro_verify))) ?>
                 </td>
-        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/promo/verification/" target="_blank" class="b-layout__link">Пройти верификацию</a></td>
+        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/promo/verification/" target="_blank" class="b-layout__link">РџСЂРѕР№С‚Рё РІРµСЂРёС„РёРєР°С†РёСЋ</a></td>
         	</tr>
             <? }//if?>
             <? if($feature_portf != 0) {?> 
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Работы в портфолио</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Р Р°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold b-layout__txt_color_6db335">
                     <?= $feature_portf;?>
                 </td>
-        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/users/<?= $user->login; ?>/portfolio" target="_blank" class="b-layout__link">Добавить работы</a></td>
+        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/users/<?= $user->login; ?>/portfolio" target="_blank" class="b-layout__link">Р”РѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚С‹</a></td>
         	</tr>
             <? }//if?>
             <? if($feature_inf_factor != 0) {?>
             <tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Заполненность профиля</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Р—Р°РїРѕР»РЅРµРЅРЅРѕСЃС‚СЊ РїСЂРѕС„РёР»СЏ</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt b-text__bold b-layout__txt_color_6db335">
                     <?= $feature_inf_factor;?>
                 </td>
-        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/users/<?=$user->login; ?>/setup/info/" target="_blank" class="b-layout__link">Заполнить профиль</a></td>
+        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/users/<?=$user->login; ?>/setup/info/" target="_blank" class="b-layout__link">Р—Р°РїРѕР»РЅРёС‚СЊ РїСЂРѕС„РёР»СЊ</a></td>
         	</tr>
             <? }//if?>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Безопасные Сделки</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Р‘РµР·РѕРїР°СЃРЅС‹Рµ РЎРґРµР»РєРё</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt"><span class="b-layout__infin">&infin;</span></td>
         		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"></td>
         	</tr>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Конкурсы</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РљРѕРЅРєСѓСЂСЃС‹</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt"><span class="b-layout__infin">&infin;</span></td>
-        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/konkurs/" target="_blank" class="b-layout__link">Перейти в раздел Конкурсы</a></td>
+        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/konkurs/" target="_blank" class="b-layout__link">РџРµСЂРµР№С‚Рё РІ СЂР°Р·РґРµР» РљРѕРЅРєСѓСЂСЃС‹</a></td>
         	</tr>
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Посещение сайта fl.ru</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РџРѕСЃРµС‰РµРЅРёРµ СЃР°Р№С‚Р° fl.ru</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt"><span class="b-layout__infin">&infin;</span></td>
-        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__txt_color_a7a7a6 b-layout__one_valign_middle">1 балл в день</td>
+        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__txt_color_a7a7a6 b-layout__one_valign_middle">1 Р±Р°Р»Р» РІ РґРµРЅСЊ</td>
         	</tr>
 
         	<tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Сообщества</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РЎРѕРѕР±С‰РµСЃС‚РІР°</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt"><span class="b-layout__infin">&infin;</span></td>
-        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/commune/" target="_blank" class="b-layout__link">Перейти в раздел Сообщества</a></td>
+        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/commune/" target="_blank" class="b-layout__link">РџРµСЂРµР№С‚Рё РІ СЂР°Р·РґРµР» РЎРѕРѕР±С‰РµСЃС‚РІР°</a></td>
         	</tr>
             <tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Деньги, потраченные на сервис</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Р”РµРЅСЊРіРё, РїРѕС‚СЂР°С‡РµРЅРЅС‹Рµ РЅР° СЃРµСЂРІРёСЃ</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt"><span class="b-layout__infin">&infin;</span></td>
         		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"></td>
         	</tr>
             <tr class="b-layout__one_bordbot_cec">
-        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">Ответы на проекты</td>
+        		<td class="b-layout__one_padtb_6 b-layout__txt b-layout__one_valign_middle">РћС‚РІРµС‚С‹ РЅР° РїСЂРѕРµРєС‚С‹</td>
         		<td class="b-layout__one_padtb_6 b-layout__one_valign_middle b-layout__txt"><span class="b-layout__infin">&infin;</span></td>
-        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/" target="_blank" class="b-layout__link">Перейти в раздел Работа</a></td>
+        		<td class="b-layout__one_padtb_6 b-layout__one_right b-layout__one_valign_middle"><a href="/" target="_blank" class="b-layout__link">РџРµСЂРµР№С‚Рё РІ СЂР°Р·РґРµР» Р Р°Р±РѕС‚Р°</a></td>
         	</tr>
         </table>
-<!-- // таблица с рейтингами -->
+<!-- // С‚Р°Р±Р»РёС†Р° СЃ СЂРµР№С‚РёРЅРіР°РјРё -->
         <? }//if?>
                  
             
         <? if ($user->uid == get_uid(false)) { ?>
             <select name="ratingmode">
-                <option value="month">в этом месяце</option>
-                <option value="prev">в прошлом месяце</option>
-                <option value="year">за год</option>
+                <option value="month">РІ СЌС‚РѕРј РјРµСЃСЏС†Рµ</option>
+                <option value="prev">РІ РїСЂРѕС€Р»РѕРј РјРµСЃСЏС†Рµ</option>
+                <option value="year">Р·Р° РіРѕРґ</option>
             </select>
-            <h3>График изменений рейтинга</h3>
+            <h3>Р“СЂР°С„РёРє РёР·РјРµРЅРµРЅРёР№ СЂРµР№С‚РёРЅРіР°</h3>
                 
             <div id="raph"></div>
         <? } ?>
@@ -375,8 +375,8 @@ $is_owner = ($user->uid == $_SESSION['uid']);
         
     <div>
         <div class="page-rate-info">
-            <p>В разделе помощи подробно описано, <noindex><a rel="nofollow" href="https://feedback.fl.ru/topic/397654-opisanie-sistemyi-rejtinga-frilanser/" target="_blank">как считается рейтинг</a></noindex>.</p>
-            <p>Если у вас возникли вопросы – обратитесь в <noindex><a rel="nofollow" href="https://feedback.fl.ru/" target="_blank">Службу поддержки</a></noindex>. С удовольствием ответим.</p>
+            <p>Р’ СЂР°Р·РґРµР»Рµ РїРѕРјРѕС‰Рё РїРѕРґСЂРѕР±РЅРѕ РѕРїРёСЃР°РЅРѕ, <noindex><a rel="nofollow" href="https://feedback.fl.ru/topic/397654-opisanie-sistemyi-rejtinga-frilanser/" target="_blank">РєР°Рє СЃС‡РёС‚Р°РµС‚СЃСЏ СЂРµР№С‚РёРЅРі</a></noindex>.</p>
+            <p>Р•СЃР»Рё Сѓ РІР°СЃ РІРѕР·РЅРёРєР»Рё РІРѕРїСЂРѕСЃС‹ вЂ“ РѕР±СЂР°С‚РёС‚РµСЃСЊ РІ <noindex><a rel="nofollow" href="https://feedback.fl.ru/" target="_blank">РЎР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a></noindex>. РЎ СѓРґРѕРІРѕР»СЊСЃС‚РІРёРµРј РѕС‚РІРµС‚РёРј.</p>
         </div>
     </div>
         
@@ -388,7 +388,7 @@ $is_owner = ($user->uid == $_SESSION['uid']);
     <? if($sbr_info['success_cnt'] && $sbr_ratings) { ?>
       <tr>
         <td class="brdtop" style="padding:0px 20px 0px 20px;height:20px">
-          <b>Подробнее по «Безопасным Сделкам»</b> (<?=(int)$sbr_info['success_cnt']?>)
+          <b>РџРѕРґСЂРѕР±РЅРµРµ РїРѕ В«Р‘РµР·РѕРїР°СЃРЅС‹Рј РЎРґРµР»РєР°РјВ»</b> (<?=(int)$sbr_info['success_cnt']?>)
         </td>
       </tr>
       <tr>
@@ -396,7 +396,7 @@ $is_owner = ($user->uid == $_SESSION['uid']);
             <? $i = 0; include ($_SERVER['DOCUMENT_ROOT'] ."/user/tpl.rating-sbr.php"); ?>
             <span id="more_sbr_content"></span>
             <? if((int)$sbr_info['success_cnt']>5) { ?>
-                    <p class="last-sbr"><a href="" onClick="xajax_GetMoreSBR(<?=$user->uid?>, <?=$i?>); $(this).hide(); return false;" class="lnk-dot-666">Показать оставшиеся <?=((int)$sbr_info['success_cnt']-$i)?> «Безопасные Сделки»</a></p>
+                    <p class="last-sbr"><a href="" onClick="xajax_GetMoreSBR(<?=$user->uid?>, <?=$i?>); $(this).hide(); return false;" class="lnk-dot-666">РџРѕРєР°Р·Р°С‚СЊ РѕСЃС‚Р°РІС€РёРµСЃСЏ <?=((int)$sbr_info['success_cnt']-$i)?> В«Р‘РµР·РѕРїР°СЃРЅС‹Рµ РЎРґРµР»РєРёВ»</a></p>
             <? } ?>
         </td>
       </tr>
@@ -404,7 +404,7 @@ $is_owner = ($user->uid == $_SESSION['uid']);
     <? if($r_data['kis']['total']) { ?>
       <tr>
         <td class="brdtop" style="padding:0px 20px 0px 20px;height:20px">
-          <b>Подробнее по ответам на проекты</b> (<?=$r_data['kis']['total']?>)
+          <b>РџРѕРґСЂРѕР±РЅРµРµ РїРѕ РѕС‚РІРµС‚Р°Рј РЅР° РїСЂРѕРµРєС‚С‹</b> (<?=$r_data['kis']['total']?>)
         </td>
       </tr>
       <tr>
@@ -416,54 +416,54 @@ $is_owner = ($user->uid == $_SESSION['uid']);
 						<col />
 					</colgroup>
 					<tbody><tr>
-						<th>Не определился (<?=$kis_unknown?$kis_unknown:'нет'?>)</th>
+						<th>РќРµ РѕРїСЂРµРґРµР»РёР»СЃСЏ (<?=$kis_unknown?$kis_unknown:'РЅРµС‚'?>)</th>
 						<td><?=$kis_unknown?"({$kis_per_unknown}%)":'&nbsp;'?></td>
 					</tr>
 					<tr>
-						<th>Отказался (<?= (int)$r_data['kis']['frl_refused']?(int)$r_data['kis']['frl_refused']:'нет'?>)</th>
+						<th>РћС‚РєР°Р·Р°Р»СЃСЏ (<?= (int)$r_data['kis']['frl_refused']?(int)$r_data['kis']['frl_refused']:'РЅРµС‚'?>)</th>
 						<td><?=(int)$r_data['kis']['frl_refused']?"({$kis_per_frl_refused}%)":'&nbsp;'?></td>
 					</tr>
 					<tr class="line">
-						<th>Отказов (<?=(int)$r_data['kis']['refused']?(int)$r_data['kis']['refused']:'нет'?>)</th>
+						<th>РћС‚РєР°Р·РѕРІ (<?=(int)$r_data['kis']['refused']?(int)$r_data['kis']['refused']:'РЅРµС‚'?>)</th>
 						<td><?=(int)$r_data['kis']['refused']?"({$kis_per_refused}%)":'&nbsp;'?></td>
 					</tr>
 					<?/*<tr>
 						<td colspan="2">
 							<table class="tbl-in">
 								<tbody><tr>
-									<td>- Не подходят работы: (<?=(int)$r_data['kis']['refused_1']?(int)$r_data['kis']['refused_1']:'нет'?>) <? if((int)$r_data['kis']['refused_1']) {?><span><?=round($r_data['kis']['refused'] ? 100 * $r_data['kis']['refused_1'] / $r_data['kis']['refused'] : 0, 2)?>%</span><? } ?></td>
+									<td>- РќРµ РїРѕРґС…РѕРґСЏС‚ СЂР°Р±РѕС‚С‹: (<?=(int)$r_data['kis']['refused_1']?(int)$r_data['kis']['refused_1']:'РЅРµС‚'?>) <? if((int)$r_data['kis']['refused_1']) {?><span><?=round($r_data['kis']['refused'] ? 100 * $r_data['kis']['refused_1'] / $r_data['kis']['refused'] : 0, 2)?>%</span><? } ?></td>
 								</tr>
 								<tr>
-									<td>- Некорректен: (<?=(int)$r_data['kis']['refused_0']?(int)$r_data['kis']['refused_0']:'нет'?>) <? if((int)$r_data['kis']['refused_0']) { ?><span><?=round($r_data['kis']['refused'] ? 100 * $r_data['kis']['refused_0'] / $r_data['kis']['refused'] : 0, 2)?>%</span><? } ?></td>
+									<td>- РќРµРєРѕСЂСЂРµРєС‚РµРЅ: (<?=(int)$r_data['kis']['refused_0']?(int)$r_data['kis']['refused_0']:'РЅРµС‚'?>) <? if((int)$r_data['kis']['refused_0']) { ?><span><?=round($r_data['kis']['refused'] ? 100 * $r_data['kis']['refused_0'] / $r_data['kis']['refused'] : 0, 2)?>%</span><? } ?></td>
 								</tr>
 								<tr>
-									<td>- Не подходит цена: (<?=(int)$r_data['kis']['refused_2']?(int)$r_data['kis']['refused_2']:'нет'?>) <? if((int)$r_data['kis']['refused_2']) { ?><span><?=round($r_data['kis']['refused'] ? 100 * $r_data['kis']['refused_2'] / $r_data['kis']['refused'] : 0, 2)?>%</span><? } ?></td>
+									<td>- РќРµ РїРѕРґС…РѕРґРёС‚ С†РµРЅР°: (<?=(int)$r_data['kis']['refused_2']?(int)$r_data['kis']['refused_2']:'РЅРµС‚'?>) <? if((int)$r_data['kis']['refused_2']) { ?><span><?=round($r_data['kis']['refused'] ? 100 * $r_data['kis']['refused_2'] / $r_data['kis']['refused'] : 0, 2)?>%</span><? } ?></td>
 								</tr>
 								<tr>
-									<td>- Выбран другой исполнитель: (<?=(int)$r_data['kis']['refused_4']?(int)$r_data['kis']['refused_4']:'нет'?>) <? if((int)$r_data['kis']['refused_4']) { ?><span><?=round($r_data['kis']['refused'] ? 100 * $r_data['kis']['refused_4'] / $r_data['kis']['refused'] : 0, 2)?>%</span><? } ?></td>
+									<td>- Р’С‹Р±СЂР°РЅ РґСЂСѓРіРѕР№ РёСЃРїРѕР»РЅРёС‚РµР»СЊ: (<?=(int)$r_data['kis']['refused_4']?(int)$r_data['kis']['refused_4']:'РЅРµС‚'?>) <? if((int)$r_data['kis']['refused_4']) { ?><span><?=round($r_data['kis']['refused'] ? 100 * $r_data['kis']['refused_4'] / $r_data['kis']['refused'] : 0, 2)?>%</span><? } ?></td>
 								</tr>
 								<tr>
-									<td>- Другая причина: (<?=$r_data['kis']['refused_3']?$r_data['kis']['refused_3']:'нет'?>) <? if($r_data['kis']['refused_3']) { ?><span><?=round($r_data['kis']['refused'] ? 100 * $r_data['kis']['refused_3'] / $r_data['kis']['refused'] : 0, 2)?>%</span><? } ?></td>
+									<td>- Р”СЂСѓРіР°СЏ РїСЂРёС‡РёРЅР°: (<?=$r_data['kis']['refused_3']?$r_data['kis']['refused_3']:'РЅРµС‚'?>) <? if($r_data['kis']['refused_3']) { ?><span><?=round($r_data['kis']['refused'] ? 100 * $r_data['kis']['refused_3'] / $r_data['kis']['refused'] : 0, 2)?>%</span><? } ?></td>
 								</tr>
 							</tbody></table>
 						</td>
 					</tr>*/?>
 					<tr class="line">
-						<th>Кандидат (<?=(int)$r_data['kis']['selected']?(int)$r_data['kis']['selected']:'нет'?>)</th>
+						<th>РљР°РЅРґРёРґР°С‚ (<?=(int)$r_data['kis']['selected']?(int)$r_data['kis']['selected']:'РЅРµС‚'?>)</th>
 						<td><?=(int)$r_data['kis']['selected']?"({$kis_per_selected}%)":'&nbsp;'?></td>
 					</tr>
 					<tr class="line">
-						<th>Исполнитель (<?=(int)$r_data['kis']['executor']?(int)$r_data['kis']['executor']:'нет'?>)</th>
+						<th>РСЃРїРѕР»РЅРёС‚РµР»СЊ (<?=(int)$r_data['kis']['executor']?(int)$r_data['kis']['executor']:'РЅРµС‚'?>)</th>
 						<td><?=(int)$r_data['kis']['executor']?"({$kis_per_executor}%)":'&nbsp;'?></td>
 					</tr>
 				</tbody></table>
 			</div>
         </td>
       </tr>
-      <? if($prjs) { /*$prjs = projects_offers::GetFrlOffers($r_data['user_id'], 'marked', NULL); // второй раз вызывается функция*/ ?>
+      <? if($prjs) { /*$prjs = projects_offers::GetFrlOffers($r_data['user_id'], 'marked', NULL); // РІС‚РѕСЂРѕР№ СЂР°Р· РІС‹Р·С‹РІР°РµС‚СЃСЏ С„СѓРЅРєС†РёСЏ*/ ?>
       <tr>
         <td class="brdtop" style="padding:0px 20px 0px 20px;height:20px">
-          <b>Список проектов, повлиявших на рейтинг</b> (<?=count($prjs)?>)
+          <b>РЎРїРёСЃРѕРє РїСЂРѕРµРєС‚РѕРІ, РїРѕРІР»РёСЏРІС€РёС… РЅР° СЂРµР№С‚РёРЅРі</b> (<?=count($prjs)?>)
         </td>
       </tr>
       <tr>
@@ -476,7 +476,7 @@ $is_owner = ($user->uid == $_SESSION['uid']);
                     $prj_sum_rating += $p['rating'];
                 }
                 ?>
-				<div>Общее влияние рейтинга: <span class="ops-<?=$prj_sum_rating<0?'minus':'plus'?>"><?=$prj_sum_rating<0?'':'+'?><?=$prj_sum_rating?></span></div>
+				<div>РћР±С‰РµРµ РІР»РёСЏРЅРёРµ СЂРµР№С‚РёРЅРіР°: <span class="ops-<?=$prj_sum_rating<0?'minus':'plus'?>"><?=$prj_sum_rating<0?'':'+'?><?=$prj_sum_rating?></span></div>
 				<ol id="prj_list">
                     <?php 
                         $uid = get_uid(FALSE);
@@ -497,18 +497,18 @@ $is_owner = ($user->uid == $_SESSION['uid']);
                                                 <?php endif; ?>
                                            <?php else: ?>
                                                 <a href="<?=getFriendlyURL("project", $p['project_id'])?>"><?=$p['project_name']?></a> 
-                                           <?/*if($p['position']>0 && $p['is_executor']=='t'){?>(<?=$p['position']?>-е место)<?}*/?>
+                                           <?/*if($p['position']>0 && $p['is_executor']=='t'){?>(<?=$p['position']?>-Рµ РјРµСЃС‚Рѕ)<?}*/?>
                                            <?php endif; ?>
                           <? if($p['refused']=='t') { ?>
-                            <p>Отказ: <span class="ops-minus"><?=$p['rating']?></span></p>
+                            <p>РћС‚РєР°Р·: <span class="ops-minus"><?=$p['rating']?></span></p>
                           <? } if($p['selected']=='t') { ?>
-                            <p>Кандидат: <span class="ops-plus">+<?=$p['rating']?></span></p>
+                            <p>РљР°РЅРґРёРґР°С‚: <span class="ops-plus">+<?=$p['rating']?></span></p>
                           <? } if($p['is_executor']=='t' && $p['position'] <= 0) { ?>
-                            <p>Исполнитель: <span class="ops-plus">+<?=$p['rating']?></span></p>
+                            <p>РСЃРїРѕР»РЅРёС‚РµР»СЊ: <span class="ops-plus">+<?=$p['rating']?></span></p>
                          <? } if($p['position'] > 0) { ?>
-                            <p><?=$p['position']?>-е место: <span class="ops-plus">+<?=$p['rating']?></span></p>
+                            <p><?=$p['position']?>-Рµ РјРµСЃС‚Рѕ: <span class="ops-plus">+<?=$p['rating']?></span></p>
                           <? } if($p['blocked'] > 0) { ?>
-                            <p>Забанен работодателем: <span class="ops-plus"><?=rating::A_KIS_R_BONUS * 10?></span></p>
+                            <p>Р—Р°Р±Р°РЅРµРЅ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµРј: <span class="ops-plus"><?=rating::A_KIS_R_BONUS * 10?></span></p>
                           <? } ?>
 					</li>
                     <?
@@ -517,7 +517,7 @@ $is_owner = ($user->uid == $_SESSION['uid']);
                     ?>
 				</ol> 
                 <? if(count($prjs)>5) { ?>
-				<p id="lnk_more_prj"><a href="" class="lnk-dot-666" onClick="$('lnk_more_prj').setStyle('display', 'none'); xajax_GetMorePrj(<?=$r_data['user_id']?>); return false;">Показать оставшиеся <?=(count($prjs)-5)?> проектов</a></p>
+				<p id="lnk_more_prj"><a href="" class="lnk-dot-666" onClick="$('lnk_more_prj').setStyle('display', 'none'); xajax_GetMorePrj(<?=$r_data['user_id']?>); return false;">РџРѕРєР°Р·Р°С‚СЊ РѕСЃС‚Р°РІС€РёРµСЃСЏ <?=(count($prjs)-5)?> РїСЂРѕРµРєС‚РѕРІ</a></p>
                 <? } ?>
 			</div>
         </td>

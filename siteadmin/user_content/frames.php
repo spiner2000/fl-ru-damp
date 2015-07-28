@@ -1,6 +1,6 @@
 <?php
 /**
- * Модерирование пользовательского контента. Фреймы. Контроллер.
+ * РњРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РєРѕРЅС‚РµРЅС‚Р°. Р¤СЂРµР№РјС‹. РљРѕРЅС‚СЂРѕР»Р»РµСЂ.
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
@@ -30,7 +30,7 @@ if ( $sMode == 'choose' ) {
 
 $aStreams = $user_content->getStreamsForUser( $uid );
 
-// разделы проектов
+// СЂР°Р·РґРµР»С‹ РїСЂРѕРµРєС‚РѕРІ
 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/professions.php' );
 
 $all_specs = professions::GetAllProfessions("", 0, 1);

@@ -46,7 +46,7 @@ session_start();
 $content_type = '';
 
 $uid = get_uid();
-$subdomain = $_GET['subdomain']; //@todo автоматом в эту переменную надо передавать субдомен
+$subdomain = $_GET['subdomain']; //@todo Р°РІС‚РѕРјР°С‚РѕРј РІ СЌС‚Сѓ РїРµСЂРµРјРµРЅРЅСѓСЋ РЅР°РґРѕ РїРµСЂРµРґР°РІР°С‚СЊ СЃСѓР±РґРѕРјРµРЅ
 if($subdomain == null) $subdomain = 'all';
 
 $seo = new seo($subdomain);

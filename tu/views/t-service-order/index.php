@@ -7,10 +7,10 @@ $xajax->printJavascript('/xajax/');
 /**
  * @var TServiceCatalogController $this
  * 
- * @var $order заказ на основе ТУ
+ * @var $order Р·Р°РєР°Р· РЅР° РѕСЃРЅРѕРІРµ РўРЈ
  */
 
-//Заголовок заказа
+//Р—Р°РіРѕР»РѕРІРѕРє Р·Р°РєР°Р·Р°
 $title = reformat(htmlspecialchars($order['title']), 30, 0, 1);
 $order_price = tservices_helper::cost_format($order['order_price'], true);
 $order_days = tservices_helper::days_format($order['order_days']);
@@ -39,7 +39,7 @@ endif;
                class="b-layout__link b-layout__link_bordbot_dot_<?=$class_color?>" 
                href="javascript:void(0);" 
                onClick="yaCounter6051055.reachGoal('zakaz_change');">
-                <span class="__tservice_order_price_label"><?php if($is_reserve): ?>Бюджет:<?php else: ?>Стоимость:<?php endif; ?></span> 
+                <span class="__tservice_order_price_label"><?php if($is_reserve): ?>Р‘СЋРґР¶РµС‚:<?php else: ?>РЎС‚РѕРёРјРѕСЃС‚СЊ:<?php endif; ?></span> 
                 <span class="b-layout__bold" id="tu-container-price">
                     <?=$order_price?>
                 </span>
@@ -50,7 +50,7 @@ endif;
                class="b-layout__link b-layout__link_bordbot_dot_000" 
                href="javascript:void(0);" 
                onClick="yaCounter6051055.reachGoal('zakaz_change');">
-                Срок: 
+                РЎСЂРѕРє: 
                 <span class="b-layout__bold" id="tu-container-days">
                     <?=$order_days?>
                 </span>
@@ -59,7 +59,7 @@ endif;
         <?php $this->renderClip('order-change-cost-popup') ?>
         <?php else: ?>
         <div class="b-layout__txt b-layout__txt_fontsize_18 b-layout__txt_right b-layout__txt_left_ipad b-layout__txt_color_<?=$class_color?> i-shadow i-shadow_hover_show">
-            <?php if($is_reserve): ?>Бюджет:<?php else: ?>Стоимость:<?php endif; ?> 
+            <?php if($is_reserve): ?>Р‘СЋРґР¶РµС‚:<?php else: ?>РЎС‚РѕРёРјРѕСЃС‚СЊ:<?php endif; ?> 
             <span class="b-layout__bold" id="tu-container-price">
                 <?=$order_price?>
             </span>
@@ -67,10 +67,10 @@ endif;
                 <div class="b-shadow__body b-shadow__body_pad_15 b-shadow_width_270 b-shadow__body_bg_fff">
                     <div class="b-shadow__txt b-shadow__txt_fontsize_11 b-shadow__txt_normal">
                     <?php if($is_reserve): ?>
-                        Бюджет заказа с оплатой через Безопасную 
-                        сделку&nbsp;&mdash;&nbsp;<?php if ($is_reserved): ?>успешно<?php else: ?>еще не<?php endif; ?> зарезервирован.
+                        Р‘СЋРґР¶РµС‚ Р·Р°РєР°Р·Р° СЃ РѕРїР»Р°С‚РѕР№ С‡РµСЂРµР· Р‘РµР·РѕРїР°СЃРЅСѓСЋ 
+                        СЃРґРµР»РєСѓ&nbsp;&mdash;&nbsp;<?php if ($is_reserved): ?>СѓСЃРїРµС€РЅРѕ<?php else: ?>РµС‰Рµ РЅРµ<?php endif; ?> Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅ.
                     <?php else: ?>
-                        Бюджет заказа с прямой оплатой.
+                        Р‘СЋРґР¶РµС‚ Р·Р°РєР°Р·Р° СЃ РїСЂСЏРјРѕР№ РѕРїР»Р°С‚РѕР№.
                     <?php endif; ?>
                     </div>
                 </div>
@@ -78,16 +78,16 @@ endif;
             
         </div>
         <div class="b-layout__txt b-layout__txt_fontsize_18 b-layout__txt_right b-layout__txt_left_ipad i-shadow i-shadow_hover_show">
-            Срок: 
+            РЎСЂРѕРє: 
             <span class="b-layout__bold" id="tu-container-days">
                 <?=$order_days?>
             </span>
             <div class="b-shadow b-shadow_hide b-shadow_top_25">
                 <div class="b-shadow__body b-shadow__body_pad_15 b-shadow_width_270 b-shadow__body_bg_fff">
                     <div class="b-shadow__txt b-shadow__txt_fontsize_11 b-shadow__txt_normal">
-                        Срок выполнения работы &mdash; начинается<?php if($is_reserve): ?> 
-                        с момента резервирования бюджета.
-                        <?php else: ?>, как только Исполнитель подтвердил заказ.
+                        РЎСЂРѕРє РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹ &mdash; РЅР°С‡РёРЅР°РµС‚СЃСЏ<?php if($is_reserve): ?> 
+                        СЃ РјРѕРјРµРЅС‚Р° СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ Р±СЋРґР¶РµС‚Р°.
+                        <?php else: ?>, РєР°Рє С‚РѕР»СЊРєРѕ РСЃРїРѕР»РЅРёС‚РµР»СЊ РїРѕРґС‚РІРµСЂРґРёР» Р·Р°РєР°Р·.
                         <?php endif; ?>
                     </div>
                 </div>
@@ -99,10 +99,10 @@ endif;
     <?php if($is_owner){ ?>
         <?php $this->renderClip('user-profile') ?>
     <?php }else{ ?>
-        <div class="b-txt">Заказчик:</div>
+        <div class="b-txt">Р—Р°РєР°Р·С‡РёРє:</div>
         <?php $this->renderClip('employer-profile') ?>
         <br/>
-        <div class="b-txt">Исполнитель:</div>
+        <div class="b-txt">РСЃРїРѕР»РЅРёС‚РµР»СЊ:</div>
         <?php $this->renderClip('freelancer-profile') ?>
     <?php } ?>
 </div>
@@ -114,17 +114,17 @@ endif;
         <?php echo $this->renderClip('order-status') ?>  
     </div>
     <?php if($order['type'] == TServiceOrderModel::TYPE_TSERVICE): ?>
-    <div class="b-layout__txt b-layout__txt_bold">Что вы получите</div>
+    <div class="b-layout__txt b-layout__txt_bold">Р§С‚Рѕ РІС‹ РїРѕР»СѓС‡РёС‚Рµ</div>
     <div class="b-layout__txt b-layout__txt_padbot_20">
         <?=reformat(htmlspecialchars($order['description']), 60, 0, 0, 1)?>
     </div>
 
-    <div class="b-layout__txt b-layout__txt_bold">Что нужно, чтобы начать</div>
+    <div class="b-layout__txt b-layout__txt_bold">Р§С‚Рѕ РЅСѓР¶РЅРѕ, С‡С‚РѕР±С‹ РЅР°С‡Р°С‚СЊ</div>
     <div class="b-layout__txt b-layout__txt_padbot_20">
         <?=reformat(htmlspecialchars($order['requirement']), 60, 0, 0, 1)?>
     </div>
     <?php if($order['order_extra']){ ?> 
-    <div class="b-layout__txt b-layout__txt_bold">Дополнительные услуги</div>
+    <div class="b-layout__txt b-layout__txt_bold">Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СѓСЃР»СѓРіРё</div>
     <div class="b-layout__txt">
         <?php foreach($order['order_extra'] as $idx ){ ?>
             <?php if(!isset($order['extra'][$idx])) continue; ?>

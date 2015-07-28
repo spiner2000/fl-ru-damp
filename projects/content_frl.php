@@ -7,10 +7,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/project_exrates.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/HTML/projects_lenta.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/opinions.php");
 
-// Подгружаем данные по мнения создалю проекта
+// РџРѕРґРіСЂСѓР¶Р°РµРј РґР°РЅРЅС‹Рµ РїРѕ РјРЅРµРЅРёСЏ СЃРѕР·РґР°Р»СЋ РїСЂРѕРµРєС‚Р°
 $op_data = opinions::getCounts($project['user_id'], array('frl', 'norisk', 'all', 'total'));
 $project_exRates = project_exrates::GetAll();
-$exch = array(1=>'FM', 'USD','Euro','Руб');
+$exch = array(1=>'FM', 'USD','Euro','Р СѓР±');
 $translate_exRates = array
 (
 0 => 2,
@@ -59,7 +59,7 @@ if ( $project['verify_only'] == 't' ) {
     $verify_check = true;
 }
 
-//Если у фрилансера больше нет ответов
+//Р•СЃР»Рё Сѓ С„СЂРёР»Р°РЅСЃРµСЂР° Р±РѕР»СЊС€Рµ РЅРµС‚ РѕС‚РІРµС‚РѕРІ
 if(@$answers->offers < 1 && !$is_pro && get_uid(false) > 0)
 {
     $answer_button_href = "/payed/";
@@ -118,7 +118,7 @@ works_picts[<?=$user_offer['portf_id'.$i]?>] = '<?=trim($user_offer['pict'.$i])?
 
 function submitAddFileForm() {
 	xajax.$("ps_pict_add").disabled=true;
-	xajax.$("ps_pict_add").value="Файл загружается";
+	xajax.$("ps_pict_add").value="Р¤Р°Р№Р» Р·Р°РіСЂСѓР¶Р°РµС‚СЃСЏ";
 	xajax_submitAddFileForm(xajax.getFormValues("form_add_pict"));
 	return false;
 }
@@ -134,15 +134,15 @@ function GetForm(num, commentid){
 <input type=\"hidden\" id=\"prj_id\" name=\"prj_id\" value=\"<?=$prj_id?>\">\
 <table width=\"96%\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">\
 <tr>\
-	<td colspan=\"2\" style=\"padding-bottom:4px;\">Сообщение:</td>\
+	<td colspan=\"2\" style=\"padding-bottom:4px;\">РЎРѕРѕР±С‰РµРЅРёРµ:</td>\
 <\/tr>\
 <tr>\
-	<td colspan=\"2\" style=\"padding-bottom:4px;\"><div class=\"b-textarea\"><textarea placeholder=\"Ваш ответ и переписка по нему видна только Заказчику\" class=\"b-textarea__textarea\" tabindex=\"1\" id=\"po_text\" name=\"po_text\" rows=\"4\" onkeydown=\"document.getElementById('po_text_msg').innerHTML = '';\"></textarea></div><div id=\"po_text_msg\"></div>\
-    <?php /*if(is_pro()) { ?><div class=\"b-layout__txt b-layout__txt_color_6db335 b-layout__txt_padtop_5 b-layout__txt_padbot_5\" id=\"confirm_messages_project\"><span class=\"b-icon b-icon_sbr_allow\"></span>Вы можете оставлять свои контакты, так как являетесь владельцем аккаунта <span class=\"b-icon b-icon__pro b-icon__pro_f\"></span></div><?php } elseif ( $project['is_pro'] != 't' ) { ?><div class=\"b-layout__txt b-layout__txt_color_c10600 b-layout__txt_padtop_5 b-layout__txt_padbot_5\" id=\"confirm_messages_project\"><span class=\"b-icon b-icon_sbr_forb\"></span>Обмен контактами запрещен. Чтобы оставить свои контакты, <a class=\"b-layout__link\" href=\"/payed/\">купите</a> <span class=\"b-icon b-icon__pro b-icon__pro_f\"></span></div><?php } */ ?>\
+	<td colspan=\"2\" style=\"padding-bottom:4px;\"><div class=\"b-textarea\"><textarea placeholder=\"Р’Р°С€ РѕС‚РІРµС‚ Рё РїРµСЂРµРїРёСЃРєР° РїРѕ РЅРµРјСѓ РІРёРґРЅР° С‚РѕР»СЊРєРѕ Р—Р°РєР°Р·С‡РёРєСѓ\" class=\"b-textarea__textarea\" tabindex=\"1\" id=\"po_text\" name=\"po_text\" rows=\"4\" onkeydown=\"document.getElementById('po_text_msg').innerHTML = '';\"></textarea></div><div id=\"po_text_msg\"></div>\
+    <?php /*if(is_pro()) { ?><div class=\"b-layout__txt b-layout__txt_color_6db335 b-layout__txt_padtop_5 b-layout__txt_padbot_5\" id=\"confirm_messages_project\"><span class=\"b-icon b-icon_sbr_allow\"></span>Р’С‹ РјРѕР¶РµС‚Рµ РѕСЃС‚Р°РІР»СЏС‚СЊ СЃРІРѕРё РєРѕРЅС‚Р°РєС‚С‹, С‚Р°Рє РєР°Рє СЏРІР»СЏРµС‚РµСЃСЊ РІР»Р°РґРµР»СЊС†РµРј Р°РєРєР°СѓРЅС‚Р° <span class=\"b-icon b-icon__pro b-icon__pro_f\"></span></div><?php } elseif ( $project['is_pro'] != 't' ) { ?><div class=\"b-layout__txt b-layout__txt_color_c10600 b-layout__txt_padtop_5 b-layout__txt_padbot_5\" id=\"confirm_messages_project\"><span class=\"b-icon b-icon_sbr_forb\"></span>РћР±РјРµРЅ РєРѕРЅС‚Р°РєС‚Р°РјРё Р·Р°РїСЂРµС‰РµРЅ. Р§С‚РѕР±С‹ РѕСЃС‚Р°РІРёС‚СЊ СЃРІРѕРё РєРѕРЅС‚Р°РєС‚С‹, <a class=\"b-layout__link\" href=\"/payed/\">РєСѓРїРёС‚Рµ</a> <span class=\"b-icon b-icon__pro b-icon__pro_f\"></span></div><?php } */ ?>\
     </td>\
 <\/tr>\
 <tr>\
-	<td colspan=\"2\" ><div class=\"b-buttons\"><button class=\"b-button b-button_flat b-button_flat_green\" type=\"submit\" name=\"savebtn\" id=\"savebtn\" tabindex=\"2\">Публиковать</button>&#160;&#160;&#160;<a class=\"b-buttons__link\" id=\"resetbtn\" onclick=\"resetfld('"+num+"');\" tabindex=\"3\" name=\"resetbtn\">Отменить</a></div></td>\
+	<td colspan=\"2\" ><div class=\"b-buttons\"><button class=\"b-button b-button_flat b-button_flat_green\" type=\"submit\" name=\"savebtn\" id=\"savebtn\" tabindex=\"2\">РџСѓР±Р»РёРєРѕРІР°С‚СЊ</button>&#160;&#160;&#160;<a class=\"b-buttons__link\" id=\"resetbtn\" onclick=\"resetfld('"+num+"');\" tabindex=\"3\" name=\"resetbtn\">РћС‚РјРµРЅРёС‚СЊ</a></div></td>\
 <\/tr>\
 <tr>\
 	<td colspan=\"2\" id=\"po_id_error_" + num + "\"></td>\
@@ -181,7 +181,7 @@ function answer(num, commentid) {
 	if (commentid) {
 		$('po_text').value = $('po_comment_original_' + commentid).innerHTML.replace(/&amp;/gi, '&').replace(/<.*?br.*?>/gi, '\n')
 		                     .replace(/&nbsp;/gi, ' ').replace(/&gt;/gi, '>').replace(/&lt;/gi, '<');
-		$('savebtn').value = "Сохранить";
+		$('savebtn').value = "РЎРѕС…СЂР°РЅРёС‚СЊ";
 	}
 	$('po_text').focus();
 }
@@ -195,9 +195,9 @@ function resetfld(num){
 	td1 = $('po_dialogue_answer_'+num);
     innerHTML = '';
 	if (dialogue_count[num] > 1) {
-		innerHTML = innerHTML + '<span style="float: right;"><a href="javascript:void(null)" onclick="dialogue_toggle(' + num + ');markRead(' + num + ');" class="internal" id="toggle_dialogue_' + num + '">Развернуть всю переписку</a> ' + dialogue_count[num] + '</span>';
+		innerHTML = innerHTML + '<span style="float: right;"><a href="javascript:void(null)" onclick="dialogue_toggle(' + num + ');markRead(' + num + ');" class="internal" id="toggle_dialogue_' + num + '">Р Р°Р·РІРµСЂРЅСѓС‚СЊ РІСЃСЋ РїРµСЂРµРїРёСЃРєСѓ</a> ' + dialogue_count[num] + '</span>';
 	}
-	innerHTML = innerHTML + '<span id="add_dialog_' + num + '" class="add_dialog_user"><a href="javascript:void(0);" onclick="answer(' + num + ');markRead(' + num + ');" class="internal">Написать ответ</a></span>';
+	innerHTML = innerHTML + '<span id="add_dialog_' + num + '" class="add_dialog_user"><a href="javascript:void(0);" onclick="answer(' + num + ');markRead(' + num + ');" class="internal">РќР°РїРёСЃР°С‚СЊ РѕС‚РІРµС‚</a></span>';
 	if (edit_block[num]) innerHTML =  innerHTML + '<span class="add_dialog_user">'+ edit_block[num] + '</span>';
 
 	td1.innerHTML = innerHTML;
@@ -234,16 +234,16 @@ function toggle_link_text(num)
 {
 	el_top = $('toggle_dialogue_' + num);
 	el_div = $('po_comments_'+num);
-	if (el_top.innerHTML == 'Свернуть переписку')
+	if (el_top.innerHTML == 'РЎРІРµСЂРЅСѓС‚СЊ РїРµСЂРµРїРёСЃРєСѓ')
 	{
-		el_top.innerHTML = 'Развернуть всю переписку';
+		el_top.innerHTML = 'Р Р°Р·РІРµСЂРЅСѓС‚СЊ РІСЃСЋ РїРµСЂРµРїРёСЃРєСѓ';
 		if(el_div) {
 		  if(el_div.get('class')) el_div.className = 'po_comments_hide';
         }
 	}
 	else
 	{
-		el_top.innerHTML = 'Свернуть переписку';
+		el_top.innerHTML = 'РЎРІРµСЂРЅСѓС‚СЊ РїРµСЂРµРїРёСЃРєСѓ';
 		if(el_div) {
   		  if(el_div.get('class')) el_div.className = 'po_comments';
         }
@@ -296,34 +296,34 @@ function add_work(num, pict, prev)
 	{
 		work1.className = 'pic';
 		work1_id.value = num;
-		if (num == 0) // загружен
+		if (num == 0) // Р·Р°РіСЂСѓР¶РµРЅ
 		{
-			if (prev != '') // есть превью
+			if (prev != '') // РµСЃС‚СЊ РїСЂРµРІСЊСЋ
 			{
-				work1.innerHTML = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + pict + '" target="_blank" class="blue" title=""  style="text-decoration:none"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + prev + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, 0);"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+				work1.innerHTML = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + pict + '" target="_blank" class="blue" title=""  style="text-decoration:none"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + prev + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, 0);"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 			}
 			else
 			{
-				work1.innerHTML = '<div align="left" style="font-size:100%;"><a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + pict + '" target="_blank" class="blue" title="">' + pict + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, 0);"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+				work1.innerHTML = '<div align="left" style="font-size:100%;"><a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + pict + '" target="_blank" class="blue" title="">' + pict + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, 0);"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 			}
 			work1_pict.value = pict;
 			work1_prev.value = prev;
 			work1_link.value = '';
 			work1_name.value = '';
 		}
-		else // из портфолио
+		else // РёР· РїРѕСЂС‚С„РѕР»РёРѕ
 		{
-			if (works_prevs[num] != '') // есть превью
+			if (works_prevs[num] != '') // РµСЃС‚СЊ РїСЂРµРІСЊСЋ
 			{
 				if (works_prevs[num] == undefined) {works_prevs[num] = prev};
 
 
 
-				work1.innerHTML = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + num + '" target="_blank" class="blue" title="' + works_names[num] + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + works_prevs[num] + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + num + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+				work1.innerHTML = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + num + '" target="_blank" class="blue" title="' + works_names[num] + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + works_prevs[num] + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + num + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 			}
-			else // превью нема
+			else // РїСЂРµРІСЊСЋ РЅРµРјР°
 			{
-				work1.innerHTML = '<div align="left" style="font-size:100%;"><a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + num + '" target="_blank" class="blue" title="' + works_names[num] + '" class="blue">' + works_picts[num] + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + num + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+				work1.innerHTML = '<div align="left" style="font-size:100%;"><a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + num + '" target="_blank" class="blue" title="' + works_names[num] + '" class="blue">' + works_picts[num] + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + num + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 			}
 			work1_pict.value = works_picts[num];
 			work1_prev.value = works_prevs[num];
@@ -342,31 +342,31 @@ function add_work(num, pict, prev)
 			work2.className = 'pic';
 			work2_id.value = num;
 			work_sort_1.innerHTML = '<img id="ico_right_12" src="/images/ico_right.gif" alt="" width="9" height="9" border="0" onclick="change_work_pos(' + num + ", '12');\" /><br />" + '<img id="ico_left_12" src="/images/ico_left.gif" alt="" width="9" height="9" border="0" style="margin-top:2px;" onclick="change_work_pos(' + num + ", '12');\">";
-			if (num == 0) // загружено
+			if (num == 0) // Р·Р°РіСЂСѓР¶РµРЅРѕ
 			{
-				if (prev != '') // есть превью
+				if (prev != '') // РµСЃС‚СЊ РїСЂРµРІСЊСЋ
 				{
-					work2.innerHTML = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + pict + '" target="_blank" class="blue" title=""><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + prev + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, 0);"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+					work2.innerHTML = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + pict + '" target="_blank" class="blue" title=""><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + prev + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, 0);"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 				}
 				else
 				{
-					work2.innerHTML = '<div align="left" style="font-size:100%;"><a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + pict + '" target="_blank" class="blue" title="">' + pict + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, 0);"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+					work2.innerHTML = '<div align="left" style="font-size:100%;"><a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + pict + '" target="_blank" class="blue" title="">' + pict + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, 0);"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 				}
 				work2_pict.value = pict;
 				work2_prev.value = prev;
 				work2_link.value = '';
 				work2_name.value = '';
 			}
-			else // из портфолио
+			else // РёР· РїРѕСЂС‚С„РѕР»РёРѕ
 			{
-				if (works_prevs[num] != '') // превью есть
+				if (works_prevs[num] != '') // РїСЂРµРІСЊСЋ РµСЃС‚СЊ
 				{
 					if (works_prevs[num] == undefined) {works_prevs[num] = prev};
-					work2.innerHTML = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + num + '" target="_blank" class="blue" title="' + works_names[num] + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + works_prevs[num] + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + num + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+					work2.innerHTML = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + num + '" target="_blank" class="blue" title="' + works_names[num] + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + works_prevs[num] + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + num + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 				}
-				else // превью нема
+				else // РїСЂРµРІСЊСЋ РЅРµРјР°
 				{
-					work2.innerHTML = '<div align="left" style="font-size:100%;"><a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + num + '" target="_blank" class="blue" title="' + works_names[num] + '">' + works_picts[num] + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + num + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+					work2.innerHTML = '<div align="left" style="font-size:100%;"><a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + num + '" target="_blank" class="blue" title="' + works_names[num] + '">' + works_picts[num] + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + num + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 				}
 				work2_pict.value = works_picts[num];
 				work2_prev.value = works_prevs[num];
@@ -385,31 +385,31 @@ function add_work(num, pict, prev)
 				work3.className = 'pic';
 				work3_id.value = num;
 				work_sort_2.innerHTML = '<img id="ico_right_23" src="/images/ico_right.gif" alt="" width="9" height="9" border="0" onclick="change_work_pos(' + num + ", '23');\" /><br />" + '<img id="ico_left_23" src="/images/ico_left.gif" alt="" width="9" height="9" border="0" style="margin-top:2px;" onclick="change_work_pos(' + num + ", '23');\">";
-				if (num == 0) // загружено
+				if (num == 0) // Р·Р°РіСЂСѓР¶РµРЅРѕ
 				{
-					if (prev != '') // есть превью
+					if (prev != '') // РµСЃС‚СЊ РїСЂРµРІСЊСЋ
 					{
-						work3.innerHTML = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + pict + '" target="_blank" class="blue" title=""><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + prev + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(3, 0);"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+						work3.innerHTML = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + pict + '" target="_blank" class="blue" title=""><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + prev + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(3, 0);"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 					}
 					else
 					{
-						work3.innerHTML = '<div align="left" style="font-size:100%;"><a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + pict + '" target="_blank" class="blue" title="">' + pict + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(3, 0);"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+						work3.innerHTML = '<div align="left" style="font-size:100%;"><a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + pict + '" target="_blank" class="blue" title="">' + pict + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(3, 0);"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 					}
 					work3_pict.value = pict;
 					work3_prev.value = prev;
 					work3_link.value = '';
 					work3_name.value = '';
 				}
-				else // из портфолио
+				else // РёР· РїРѕСЂС‚С„РѕР»РёРѕ
 				{
-					if (works_prevs[num] != '') // превью есть
+					if (works_prevs[num] != '') // РїСЂРµРІСЊСЋ РµСЃС‚СЊ
 					{
 						if (works_prevs[num] == undefined) {works_prevs[num] = prev};
-						work3.innerHTML = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + num + '" target="_blank" class="blue" title="' + works_names[num] + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + works_prevs[num] + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(3, ' + num + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+						work3.innerHTML = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + num + '" target="_blank" class="blue" title="' + works_names[num] + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + works_prevs[num] + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(3, ' + num + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 					}
-					else // превью нема
+					else // РїСЂРµРІСЊСЋ РЅРµРјР°
 					{
-						work3.innerHTML = '<div align="left" style="font-size:100%;"><a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + num + '" target="_blank" class="blue" title="' + works_names[num] + '">' + works_picts[num] + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(3, ' + num + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+						work3.innerHTML = '<div align="left" style="font-size:100%;"><a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + num + '" target="_blank" class="blue" title="' + works_names[num] + '">' + works_picts[num] + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(3, ' + num + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 					}
 					work3_pict.value = works_picts[num];
 					work3_prev.value = works_prevs[num];
@@ -495,10 +495,10 @@ function clear_work(num, id)
 			{
 				if (work3_id.value == 0)
 				{
-					work2.innerHTML  = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_pict.value + '" target="_blank" class="blue" title="' + work3_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work3_id.value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+					work2.innerHTML  = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_pict.value + '" target="_blank" class="blue" title="' + work3_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work3_id.value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 				}
 				else {
-                    work2.innerHTML  = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work3_id.value + '" target="_blank" class="blue" title="' + work3_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work3_id.value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+                    work2.innerHTML  = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work3_id.value + '" target="_blank" class="blue" title="' + work3_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work3_id.value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 					if (typeof document.getElementById('ps_portfolio_work_'+work3_id.value) != 'undefined' && document.getElementById('ps_portfolio_work_'+work3_id.value) != null) document.getElementById('ps_portfolio_work_'+work3_id.value).onclick = function() { clear_work(2, work2_id.value); }
                 }
 				work2_id.value   = work3_id.value;
@@ -538,11 +538,11 @@ function clear_work(num, id)
 					{
 						if (work2_id.value == 0)
 						{
-							work1.innerHTML  = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_pict.value + '" target="_blank" class="blue" title="' + work2_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + work2_id.value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+							work1.innerHTML  = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_pict.value + '" target="_blank" class="blue" title="' + work2_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + work2_id.value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 						}
 						else
 						{
-							work1.innerHTML  = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work2_id.value + '" target="_blank" class="blue" title="' + work2_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + work2_id.value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+							work1.innerHTML  = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work2_id.value + '" target="_blank" class="blue" title="' + work2_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + work2_id.value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
                             if (typeof document.getElementById('ps_portfolio_work_'+work2_id.value) != 'undefined' && document.getElementById('ps_portfolio_work_'+work2_id.value) != null) document.getElementById('ps_portfolio_work_'+work2_id.value).onclick = function() { clear_work(1, work1_id.value); }
                         }
 						work1_id.value   = work2_id.value;
@@ -565,11 +565,11 @@ function clear_work(num, id)
 					{
 						if (work2_id.value == 0)
 						{
-							work1.innerHTML  = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_pict.value + '" target="_blank" class="blue" title="' + work2_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + work2_id.value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+							work1.innerHTML  = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_pict.value + '" target="_blank" class="blue" title="' + work2_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + work2_id.value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 						}
 						else
 						{
-							work1.innerHTML  = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work2_id.value + '" target="_blank" class="blue" title="' + work2_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + work2_id.value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+							work1.innerHTML  = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work2_id.value + '" target="_blank" class="blue" title="' + work2_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + work2_id.value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
                             //if (typeof document.getElementById('ps_portfolio_work_'+work1_id.value) != 'undefined' && document.getElementById('ps_portfolio_work_'+work1_id.value) != null) document.getElementById('ps_portfolio_work_'+work2_id.value).onclick = function() { clear_work(1, work1_id.value); }
                         }
 						work1_id.value   = work2_id.value;
@@ -580,10 +580,10 @@ function clear_work(num, id)
 
 						if (work3_id.value == 0)
 						{
-							work2.innerHTML  = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_pict.value + '" target="_blank" class="blue" title="' + work3_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work3_id.value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+							work2.innerHTML  = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_pict.value + '" target="_blank" class="blue" title="' + work3_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work3_id.value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 						}
 						else {
-							work2.innerHTML  = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work3_id.value + '" target="_blank" class="blue" title="' + work3_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work3_id.value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+							work2.innerHTML  = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work3_id.value + '" target="_blank" class="blue" title="' + work3_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work3_id.value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 						}
 						work2_id.value   = work3_id.value;
 						work2_pict.value = work3_pict.value;
@@ -668,26 +668,26 @@ function change_work_pos(id, num)
             document.getElementById('ps_portfolio_work_'+work2_id.value).onclick = function() { clear_work(1, work1_id.value); }
         }
         
-		if (work2_id.value == 0) // загружен
+		if (work2_id.value == 0) // Р·Р°РіСЂСѓР¶РµРЅ
 		{
-			if (work2_prev.value != '') // превью есть
+			if (work2_prev.value != '') // РїСЂРµРІСЊСЋ РµСЃС‚СЊ
 			{
-				work1.innerHTML  = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_pict.value + '" target="_blank" class="blue" title="' + work2_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + work2_id.value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+				work1.innerHTML  = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_pict.value + '" target="_blank" class="blue" title="' + work2_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + work2_id.value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 			}
 			else
 			{
-				work1.innerHTML  = '<div align="left" style="font-size:100%;"><a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_pict.value + '" target="_blank" class="blue" title="' + work2_name.value + '">' + work2_pict.value + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + work2_id.value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+				work1.innerHTML  = '<div align="left" style="font-size:100%;"><a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_pict.value + '" target="_blank" class="blue" title="' + work2_name.value + '">' + work2_pict.value + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + work2_id.value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 			}
 		}
 		else
 		{
-			if (work2_prev.value != '') // превью есть
+			if (work2_prev.value != '') // РїСЂРµРІСЊСЋ РµСЃС‚СЊ
 			{
-				work1.innerHTML  = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work2_id.value + '" target="_blank" class="blue" title="' + work2_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + work2_id.value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+				work1.innerHTML  = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work2_id.value + '" target="_blank" class="blue" title="' + work2_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work2_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + work2_id.value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 			}
 			else
 			{
-				work1.innerHTML  = '<div align="left" style="font-size:100%;"><a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work2_id.value + '" target="_blank" class="blue" title="' + work2_name.value + '">' + work2_pict.value + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + work2_id.value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+				work1.innerHTML  = '<div align="left" style="font-size:100%;"><a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work2_id.value + '" target="_blank" class="blue" title="' + work2_name.value + '">' + work2_pict.value + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(1, ' + work2_id.value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 			}
 		}
 		work1_id.value   = work2_id.value;
@@ -696,26 +696,26 @@ function change_work_pos(id, num)
 		work1_link.value = work2_link.value;
 		work1_name.value = work2_name.value;
 
-		if (work_id_value == 0) // загружен
+		if (work_id_value == 0) // Р·Р°РіСЂСѓР¶РµРЅ
 		{
-			if (work_prev_value != '') // превью есть
+			if (work_prev_value != '') // РїСЂРµРІСЊСЋ РµСЃС‚СЊ
 			{
-				work2.innerHTML  = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work_pict_value + '" target="_blank" class="blue" title="' + work_name_value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work_prev_value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work_id_value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+				work2.innerHTML  = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work_pict_value + '" target="_blank" class="blue" title="' + work_name_value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work_prev_value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work_id_value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 			}
 			else
 			{
-				work2.innerHTML  = '<div align="left" style="font-size:100%;"><a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work_pict_value + '" target="_blank" class="blue" title="' + work_name_value + '">' + work_pict_value + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work_id_value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+				work2.innerHTML  = '<div align="left" style="font-size:100%;"><a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work_pict_value + '" target="_blank" class="blue" title="' + work_name_value + '">' + work_pict_value + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work_id_value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 			}
 		}
 		else
 		{
-			if (work_prev_value != '') // превью есть
+			if (work_prev_value != '') // РїСЂРµРІСЊСЋ РµСЃС‚СЊ
 			{
-				work2.innerHTML  = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work_id_value + '" target="_blank" class="blue" title="' + work_name_value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work_prev_value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work_id_value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+				work2.innerHTML  = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work_id_value + '" target="_blank" class="blue" title="' + work_name_value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work_prev_value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work_id_value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 			}
 			else
 			{
-				work2.innerHTML  = '<div align="left" style="font-size:100%;"><a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work_id_value + '" target="_blank" class="blue" title="' + work_name_value + '">' + work_pict_value + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work_id_value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+				work2.innerHTML  = '<div align="left" style="font-size:100%;"><a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work_id_value + '" target="_blank" class="blue" title="' + work_name_value + '">' + work_pict_value + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work_id_value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 			}
 		}
 		work2_id.value   = work_id_value;
@@ -741,26 +741,26 @@ function change_work_pos(id, num)
                 document.getElementById('ps_portfolio_work_'+work3_id.value).onclick = function() { clear_work(2, work2_id.value); }
             }
             
-			if (work2_id.value == 0) // загружен
+			if (work2_id.value == 0) // Р·Р°РіСЂСѓР¶РµРЅ
 			{
-				if (work3_prev.value != '') // превью есть
+				if (work3_prev.value != '') // РїСЂРµРІСЊСЋ РµСЃС‚СЊ
 				{
-					work2.innerHTML  = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_pict.value + '" target="_blank" class="blue" title="' + work3_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work3_id.value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+					work2.innerHTML  = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_pict.value + '" target="_blank" class="blue" title="' + work3_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work3_id.value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 				}
 				else
 				{
-					work2.innerHTML  = '<div align="left" style="font-size:100%;"><a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_pict.value + '" target="_blank" class="blue" title="' + work3_name.value + '">' + work3_pict.value + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work3_id.value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+					work2.innerHTML  = '<div align="left" style="font-size:100%;"><a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_pict.value + '" target="_blank" class="blue" title="' + work3_name.value + '">' + work3_pict.value + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work3_id.value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 				}
 			}
 			else
 			{
-				if (work3_prev.value != '') // превью есть
+				if (work3_prev.value != '') // РїСЂРµРІСЊСЋ РµСЃС‚СЊ
 				{
-					work2.innerHTML  = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work3_id.value + '" target="_blank" class="blue" title="' + work3_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work3_id.value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+					work2.innerHTML  = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work3_id.value + '" target="_blank" class="blue" title="' + work3_name.value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work3_prev.value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work3_id.value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 				}
 				else
 				{
-					work2.innerHTML  = '<div align="left" style="font-size:100%;"><a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work3_id.value + '" target="_blank" class="blue" title="' + work3_name.value + '">' + work3_pict.value + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work3_id.value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+					work2.innerHTML  = '<div align="left" style="font-size:100%;"><a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work3_id.value + '" target="_blank" class="blue" title="' + work3_name.value + '">' + work3_pict.value + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(2, ' + work3_id.value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 				}
 			}
 			work2_id.value   = work3_id.value;
@@ -769,26 +769,26 @@ function change_work_pos(id, num)
 			work2_link.value = work3_link.value;
 			work2_name.value = work3_name.value;
 
-			if (work_id_value == 0) // загружен
+			if (work_id_value == 0) // Р·Р°РіСЂСѓР¶РµРЅ
 			{
-				if (work_prev_value != '') // превью есть
+				if (work_prev_value != '') // РїСЂРµРІСЊСЋ РµСЃС‚СЊ
 				{
-					work3.innerHTML  = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work_pict_value + '" target="_blank" class="blue" title="' + work_name_value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work_prev_value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(3, ' + work_id_value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+					work3.innerHTML  = '<a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work_pict_value + '" target="_blank" class="blue" title="' + work_name_value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work_prev_value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(3, ' + work_id_value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 				}
 				else
 				{
-					work3.innerHTML  = '<div align="left" style="font-size:100%;"><a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work_pict_value + '" target="_blank" class="blue" title="' + work_name_value + '">' + work_pict_value + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(3, ' + work_id_value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+					work3.innerHTML  = '<div align="left" style="font-size:100%;"><a href="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work_pict_value + '" target="_blank" class="blue" title="' + work_name_value + '">' + work_pict_value + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(3, ' + work_id_value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 				}
 			}
 			else
 			{
-				if (work_prev_value != '') // превью есть
+				if (work_prev_value != '') // РїСЂРµРІСЊСЋ РµСЃС‚СЊ
 				{
-					work3.innerHTML  = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work_id_value + '" target="_blank" class="blue" title="' + work_name_value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work_prev_value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(3, ' + work_id_value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+					work3.innerHTML  = '<a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work_id_value + '" target="_blank" class="blue" title="' + work_name_value + '"><div align="left"><img src="<?=WDCPREFIX?>/users/<?=get_login($uid)?>/upload/' + work_prev_value + '" alt="" border="0"></div></a><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(3, ' + work_id_value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 				}
 				else
 				{
-					work3.innerHTML  = '<div align="left" style="font-size:100%;"><a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work_id_value + '" target="_blank" class="blue" title="' + work_name_value + '">' + work_pict_value + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(3, ' + work_id_value + ');"><img src="/images/ico_close.gif" alt="удалить" width="9" height="9" border="0" style="margin-right: 6px" />Удалить</a></div>';
+					work3.innerHTML  = '<div align="left" style="font-size:100%;"><a href="/users/<?=get_login($uid)?>/viewproj.php?prjid=' + work_id_value + '" target="_blank" class="blue" title="' + work_name_value + '">' + work_pict_value + '</a></div><div style="margin-top:6px; font-size:100%;"><a href="javascript:clear_work(3, ' + work_id_value + ');"><img src="/images/ico_close.gif" alt="СѓРґР°Р»РёС‚СЊ" width="9" height="9" border="0" style="margin-right: 6px" />РЈРґР°Р»РёС‚СЊ</a></div>';
 				}
 			}
 			work3_id.value   = work_id_value;
@@ -805,7 +805,7 @@ function dialogue_toggle(num) {
 	el_div = $('po_comments_' + num);
 	el_tlk = $('po_dialogue_talk_' + num);
 	if(el_div) {
-  	if (el_top.innerHTML == 'Свернуть диалог') {
+  	if (el_top.innerHTML == 'РЎРІРµСЂРЅСѓС‚СЊ РґРёР°Р»РѕРі') {
         if(el_div.get('class')) el_div.className = 'po_comments'; 
   	} else {
   		if(el_div.get('class')) el_div.className = 'po_comments_hide';
@@ -830,11 +830,11 @@ function dialogue_toggle(num) {
 <?php 
 $answer_button_text = !get_uid()
         ? $project['kind']==7 
-            ? "Разместить аналогичный конкурс"
+            ? "Р Р°Р·РјРµСЃС‚РёС‚СЊ Р°РЅР°Р»РѕРіРёС‡РЅС‹Р№ РєРѕРЅРєСѓСЂСЃ"
             : $project['kind']==4 
-                ? "Опубликовать аналогичную вакансию" 
-                : "Опубликовать аналогичный проект"
-        : "Ответить на проект";
+                ? "РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ Р°РЅР°Р»РѕРіРёС‡РЅСѓСЋ РІР°РєР°РЅСЃРёСЋ" 
+                : "РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ Р°РЅР°Р»РѕРіРёС‡РЅС‹Р№ РїСЂРѕРµРєС‚"
+        : "РћС‚РІРµС‚РёС‚СЊ РЅР° РїСЂРѕРµРєС‚";
 ?>
 
 <?php
@@ -844,7 +844,7 @@ if(!isset($uid) || $uid <= 0):
 ?>
         <div class="b-layout b-layout_padbot_30">
             <h3 class="b-layout__title b-layout__title_fs18 b-layout__title_lh_1 b-layout__title_padbot_20 b-layout__title_center">
-                Бесплатно зарегистрируйся и получай уведомления о новых проектах по работе
+                Р‘РµСЃРїР»Р°С‚РЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂСѓР№СЃСЏ Рё РїРѕР»СѓС‡Р°Р№ СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІС‹С… РїСЂРѕРµРєС‚Р°С… РїРѕ СЂР°Р±РѕС‚Рµ
             </h3>
             <div class="b-layout__txt b-layout__txt_center">
                 <?php view_social_buttons() ?>
@@ -855,7 +855,7 @@ if(!isset($uid) || $uid <= 0):
 endif;
 
 ?>
-        <?php if ($project['ico_closed'] == "t")  $sBox1 .= "<img src=\"/images/ico_closed.gif\" alt=\"Проект закрыт\" style='vertical-align: middle;margin: 0px 8px 4px 0px;'/>"; ?>
+        <?php if ($project['ico_closed'] == "t")  $sBox1 .= "<img src=\"/images/ico_closed.gif\" alt=\"РџСЂРѕРµРєС‚ Р·Р°РєСЂС‹С‚\" style='vertical-align: middle;margin: 0px 8px 4px 0px;'/>"; ?>
         <?php if (!($project['pro_only'] == 't' || $project['verify_only'] == 't')): ?>
 		   <?php include(dirname(__FILE__).'/only_pro_verify.inc.php') ?>
         <?php endif; ?>
@@ -863,7 +863,7 @@ endif;
         <?php if ($project['pro_only'] == 't' || $project['verify_only'] == 't'): ?>
 		   <?php include(dirname(__FILE__).'/only_pro_verify.inc.php') ?>
         <?php endif; ?>
-<? // если проект платный или создатель проекта ПРО, то банер не показываем
+<? // РµСЃР»Рё РїСЂРѕРµРєС‚ РїР»Р°С‚РЅС‹Р№ РёР»Рё СЃРѕР·РґР°С‚РµР»СЊ РїСЂРѕРµРєС‚Р° РџР Рћ, С‚Рѕ Р±Р°РЅРµСЂ РЅРµ РїРѕРєР°Р·С‹РІР°РµРј
 if(!(isset($project) && isset($project['payed']) && $project['payed'] > 0) || ($project['is_pro'] === 't')) { ?>
         <div class="b-layout b-layout_float_right b-layout_width_240 b-page__desktop"><?= printBanner240(false) ?></div>
 <? } ?>
@@ -874,7 +874,7 @@ if(!(isset($project) && isset($project['payed']) && $project['payed'] > 0) || ($
 
 if(!isset($uid) || $uid <= 0): 
 
-        //Выводим список схожих проектов/ваканси/конкурсов
+        //Р’С‹РІРѕРґРёРј СЃРїРёСЃРѕРє СЃС…РѕР¶РёС… РїСЂРѕРµРєС‚РѕРІ/РІР°РєР°РЅСЃРё/РєРѕРЅРєСѓСЂСЃРѕРІ
         $prj = new new_projects();
         $prj_content = $prj->getSimilarProjects(
                 $project['id'], 
@@ -882,23 +882,23 @@ if(!isset($uid) || $uid <= 0):
                 $project_specs);
         
         if ($prj_content):
-            //Список специализаций через запятую
+            //РЎРїРёСЃРѕРє СЃРїРµС†РёР°Р»РёР·Р°С†РёР№ С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ
             $str_specs = projects::getGroupLinks($project_specs);
 ?>
         <div class="b-layout b-layout_margright_270 b-layout_marg_null_ipad">
             <h3 class="b-layout__title b-layout__title_padbot_20">
                 <?php if($str_specs): ?>
-                    Другие проекты по <?= ending(count($project_specs), 'специализации', 'специализациям', 'специализациям') ?> 
+                    Р”СЂСѓРіРёРµ РїСЂРѕРµРєС‚С‹ РїРѕ <?= ending(count($project_specs), 'СЃРїРµС†РёР°Р»РёР·Р°С†РёРё', 'СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏРј', 'СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏРј') ?> 
                     &laquo;<?= projects::getGroupLinks($project_specs); ?>&raquo;
                 <?php else: ?>
-                    Возможно вас заинтересуют другие проекты
+                    Р’РѕР·РјРѕР¶РЅРѕ РІР°СЃ Р·Р°РёРЅС‚РµСЂРµСЃСѓСЋС‚ РґСЂСѓРіРёРµ РїСЂРѕРµРєС‚С‹
                 <?php endif; ?>
             </h3>
             <?= $prj_content ?>
             <div class="b-pager">
                 <ul class="b-pager__list">
                     <li class="b-pager__item">
-                        <a class="b-pager__link" href="/projects/">Все проекты</a>
+                        <a class="b-pager__link" href="/projects/">Р’СЃРµ РїСЂРѕРµРєС‚С‹</a>
                     </li>
                 </ul>
             </div>
@@ -909,7 +909,7 @@ if(!isset($uid) || $uid <= 0):
         
         
         
-    //Выходим, далее шаблон не выводим
+    //Р’С‹С…РѕРґРёРј, РґР°Р»РµРµ С€Р°Р±Р»РѕРЅ РЅРµ РІС‹РІРѕРґРёРј
     return;
 endif;
     
@@ -929,7 +929,7 @@ $count_hidden_offers = 0;
  <a name="offers"></a>
 
     <? 
-    $notHiddenOffersCount = count($offers) + (int)$user_offer_exist; // сколько ответов будет показано 
+    $notHiddenOffersCount = count($offers) + (int)$user_offer_exist; // СЃРєРѕР»СЊРєРѕ РѕС‚РІРµС‚РѕРІ Р±СѓРґРµС‚ РїРѕРєР°Р·Р°РЅРѕ 
     $count_hidden_offers = $real_offers_count - $notHiddenOffersCount;
     ?>
 
@@ -949,7 +949,7 @@ $offers_count = count($offers) - 1; ?>
     <?php if (($uid > 0 || isset($offers) && is_array($offers) && $offers_count >= 0)) { ?>
     <?php } //if ?>
     
-    <?php if ($is_user_offer_exist  && (int)$project['exec_id'] == 0) { // Нет предложений от данного юзера. Или пользователь редактирует свое предложение + проект не закрыт ?>
+    <?php if ($is_user_offer_exist  && (int)$project['exec_id'] == 0) { // РќРµС‚ РїСЂРµРґР»РѕР¶РµРЅРёР№ РѕС‚ РґР°РЅРЅРѕРіРѕ СЋР·РµСЂР°. РР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЂРµРґР°РєС‚РёСЂСѓРµС‚ СЃРІРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ + РїСЂРѕРµРєС‚ РЅРµ Р·Р°РєСЂС‹С‚ ?>
             
             <?php if ($can_edit && !InPost('f')) {
       				$ps = $user_offer;
@@ -978,9 +978,9 @@ $offers_count = count($offers) - 1; ?>
 									
       				echo '<div class="answ-bord"></div>';
       			if ($can_edit) {
-      				echo '<a name="new_offer"></a><h1 class="b-layout__title">Редактирование ответа по проекту:</h1>';
+      				echo '<a name="new_offer"></a><h1 class="b-layout__title">Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РѕС‚РІРµС‚Р° РїРѕ РїСЂРѕРµРєС‚Сѓ:</h1>';
       			} else {
-      				echo '<a name="new_offer"></a><h1 class="b-layout__title">Ваш ответ по проекту</h1>';
+      				echo '<a name="new_offer"></a><h1 class="b-layout__title">Р’Р°С€ РѕС‚РІРµС‚ РїРѕ РїСЂРѕРµРєС‚Сѓ</h1>';
       			}
       			
                 $user_answers = $answers;
@@ -990,7 +990,7 @@ $offers_count = count($offers) - 1; ?>
                     include(TPL_ANSWERS_DIR."/tpl.answers-item.php");
                 }
       			?>
-      			<?= view_hint_access_action('Чтобы ответить на проект');?>
+      			<?= view_hint_access_action('Р§С‚РѕР±С‹ РѕС‚РІРµС‚РёС‚СЊ РЅР° РїСЂРѕРµРєС‚');?>
                  <div class="b-layout b-layout_padbot_30 b-layout_2bordbot_dfdfdf0 b-layout_margbot_30">
                     <form id="form_add_offer" name="form_add_offer" action="<?=$_SERVER['REQUEST_URI']?>" method="POST" onKeyPress="if((event.ctrlKey) && ((event.keyCode==10)||(event.keyCode==13))) {this.submit()}">
                         <input name="hash" type="hidden" value="<?=$hash?>" />
@@ -1003,24 +1003,24 @@ $offers_count = count($offers) - 1; ?>
                 <div class="b-layout <?php if( !(!(isset($project) && isset($project['payed']) && $project['payed'] > 0) || ($project['is_pro'] === 't') ) ) {?>b-layout_margright_270 b-layout_marg_null_ipad<? } ?>">
                     <table class="b-layout__table b-layout__table_width_full">
                     <tr class="b-layout__tr">
-                        <td class="b-layout__td b-layout__td_width_110 b-layout__td_padbot_20" ><div class="b-layout__txt b-layout__txt_fontsize_11  b-layout__txt_bold">Стоимость</div></td>
+                        <td class="b-layout__td b-layout__td_width_110 b-layout__td_padbot_20" ><div class="b-layout__txt b-layout__txt_fontsize_11  b-layout__txt_bold">РЎС‚РѕРёРјРѕСЃС‚СЊ</div></td>
                         <td class="b-layout__td b-layout__td_padbot_20" >
                         <input style="width:60px" name="ps_cost_from" id="ps_cost_from" value="<?=$ps['cost_from']?>" maxlength="8" />
                    <?php /* <input name="ps_cost_to" id="ps_cost_to" value="<?=$ps['cost_to']?>" maxlength="8" style="width:60px;" /> */ ?>
                       <select name="ps_cost_type" id="prj_cost_type" style="position:relative; top:-1px">
                           <option value="0" <?=($ps['cost_type'] == 0 ? "selected" : "")?>>USD</option>
-                          <option value="2" <?=($ps['cost_type'] == 2 || !$can_edit ? "selected" : "")?>>Руб</option>
+                          <option value="2" <?=($ps['cost_type'] == 2 || !$can_edit ? "selected" : "")?>>Р СѓР±</option>
                           <option value="1" <?=($ps['cost_type'] == 1 ? "selected" : "")?>>Euro</option>
                       </select>
                   &#160;&#160;&#160;&#160;&#160;
                   <span class="this-little-block-wiil-act-like-a-divider"></span>
-               <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold">Срок</span> 
+               <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold">РЎСЂРѕРє</span> 
                          <input style="width:60px;" name="ps_time_from" id="ps_time_from" value="<?=$ps['time_from']?>" maxlength="3" /> 
                   <?php /*<input name="ps_time_to" id="ps_time_to" value="<?=$ps['time_to']?>" maxlength="3" style="width:60px;" />*/ ?>
                         <select name="ps_time_type" id="prj_time_type" style="position:relative; top:-1px">
-                            <option value="0"<? if ($ps['time_type'] == 0) { ?> selected<? } ?>>в часах</option>
-                            <option value="1"<? if ($ps['time_type'] == 1) { ?> selected<? } ?>>в днях</option>
-                            <option value="2"<? if ($ps['time_type'] == 2) { ?> selected<? } ?>>в месяцах</option>
+                            <option value="0"<? if ($ps['time_type'] == 0) { ?> selected<? } ?>>РІ С‡Р°СЃР°С…</option>
+                            <option value="1"<? if ($ps['time_type'] == 1) { ?> selected<? } ?>>РІ РґРЅСЏС…</option>
+                            <option value="2"<? if ($ps['time_type'] == 2) { ?> selected<? } ?>>РІ РјРµСЃСЏС†Р°С…</option>
                         </select>
                </td>
                     </tr>
@@ -1028,23 +1028,23 @@ $offers_count = count($offers) - 1; ?>
                     $u = new freelancer();
                     ?>
                     <tr class="b-layout__tr">
-                        <td class="b-layout__td b-layout__td_width_110 b-layout__td_padbot_10"><div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold b-layout__txt_nowrap">Текст ответа</div></td>
+                        <td class="b-layout__td b-layout__td_width_110 b-layout__td_padbot_10"><div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold b-layout__txt_nowrap">РўРµРєСЃС‚ РѕС‚РІРµС‚Р°</div></td>
                         <td class="b-layout__td b-layout__td_padbot_10">
                         
                         <div class="b-textarea">
                         <textarea class="b-textarea__textarea" cols="60" rows="7" id="ps_text" name="ps_text" 
                               style="resize: none;min-height:130px" 
-                              placeholder="Кратко опишите суть вашего предложения, условия сотрудничества, вопросы и необходимые требования к заказчику перед началом работы. Ваш ответ и переписка по нему видна только Заказчику."><?=rtrim(input_ref($ps['text']))?></textarea>
+                              placeholder="РљСЂР°С‚РєРѕ РѕРїРёС€РёС‚Рµ СЃСѓС‚СЊ РІР°С€РµРіРѕ РїСЂРµРґР»РѕР¶РµРЅРёСЏ, СѓСЃР»РѕРІРёСЏ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР°, РІРѕРїСЂРѕСЃС‹ Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ С‚СЂРµР±РѕРІР°РЅРёСЏ Рє Р·Р°РєР°Р·С‡РёРєСѓ РїРµСЂРµРґ РЅР°С‡Р°Р»РѕРј СЂР°Р±РѕС‚С‹. Р’Р°С€ РѕС‚РІРµС‚ Рё РїРµСЂРµРїРёСЃРєР° РїРѕ РЅРµРјСѓ РІРёРґРЅР° С‚РѕР»СЊРєРѕ Р—Р°РєР°Р·С‡РёРєСѓ."><?=rtrim(input_ref($ps['text']))?></textarea>
                         </div>
                         
                         <?php /*
                         <?php if($project['kind'] == 4) { ?>
-                            <div class="b-layout__txt b-layout__txt_color_6db335 b-layout__txt_padtop_5 b-layout__txt_padbot_5"><span class="b-icon b-icon_sbr_allow"></span>Вы можете оставить контактные данные для связи с этим заказчиком.</div>
+                            <div class="b-layout__txt b-layout__txt_color_6db335 b-layout__txt_padtop_5 b-layout__txt_padbot_5"><span class="b-icon b-icon_sbr_allow"></span>Р’С‹ РјРѕР¶РµС‚Рµ РѕСЃС‚Р°РІРёС‚СЊ РєРѕРЅС‚Р°РєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ СЃРІСЏР·Рё СЃ СЌС‚РёРј Р·Р°РєР°Р·С‡РёРєРѕРј.</div>
                         <?php } else { ?>
                             <?php if(!is_pro(true, $project['user_id']) && !is_pro()) { ?>
-                                <div class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_padtop_5 b-layout__txt_padbot_5"><span class="b-icon b-icon_sbr_forb"></span>Обмен контактами запрещен. Чтобы оставить свои контакты, <a class="b-layout__link" href="#">купите</a> <span class="b-icon b-icon__pro b-icon__pro_f"></span></div>
+                                <div class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_padtop_5 b-layout__txt_padbot_5"><span class="b-icon b-icon_sbr_forb"></span>РћР±РјРµРЅ РєРѕРЅС‚Р°РєС‚Р°РјРё Р·Р°РїСЂРµС‰РµРЅ. Р§С‚РѕР±С‹ РѕСЃС‚Р°РІРёС‚СЊ СЃРІРѕРё РєРѕРЅС‚Р°РєС‚С‹, <a class="b-layout__link" href="#">РєСѓРїРёС‚Рµ</a> <span class="b-icon b-icon__pro b-icon__pro_f"></span></div>
                             <?php } elseif(is_pro()) { ?>
-                                <div class="b-layout__txt b-layout__txt_color_6db335 b-layout__txt_padtop_5 b-layout__txt_padbot_5"><span class="b-icon b-icon_sbr_allow"></span>Вы можете оставить контактные данные для связи с этим заказчиком.</div>
+                                <div class="b-layout__txt b-layout__txt_color_6db335 b-layout__txt_padtop_5 b-layout__txt_padbot_5"><span class="b-icon b-icon_sbr_allow"></span>Р’С‹ РјРѕР¶РµС‚Рµ РѕСЃС‚Р°РІРёС‚СЊ РєРѕРЅС‚Р°РєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ СЃРІСЏР·Рё СЃ СЌС‚РёРј Р·Р°РєР°Р·С‡РёРєРѕРј.</div>
                             <?php } ?>
                         <?php } ?>
                         <div id="ps_text_msg"></div>
@@ -1062,14 +1062,14 @@ $offers_count = count($offers) - 1; ?>
                             <?php if(false): ?>
                             <div class="b-check b-check_padbot_10">
                                 <input id="ps_for_customer_only" type="checkbox" class="b-check__input" name="ps_for_customer_only" value="1" <? if ($ps['only_4_cust'] == 't') print "checked"?>> 
-                                <label class="b-check__label" for="ps_for_customer_only">Скрыть ответ, сделав его видимым только заказчику (автору проекта)</label>
+                                <label class="b-check__label" for="ps_for_customer_only">РЎРєСЂС‹С‚СЊ РѕС‚РІРµС‚, СЃРґРµР»Р°РІ РµРіРѕ РІРёРґРёРјС‹Рј С‚РѕР»СЊРєРѕ Р·Р°РєР°Р·С‡РёРєСѓ (Р°РІС‚РѕСЂСѓ РїСЂРѕРµРєС‚Р°)</label>
                             </div>
                             <?php endif; ?>
                             
                             <?  if ($project['kind'] != 4) { ?>
                             <div class="b-check">
                                 <input id="prefer_sbr" name="prefer_sbr" class="b-check__input" type="checkbox" value="1" <?= $ps['prefer_sbr'] === 't' ? 'checked' : '' ?> />
-                                <label for="prefer_sbr" class="b-check__label">Предпочитаю оплату работы через <a href="/promo/bezopasnaya-sdelka/" target="_blank" class="b-layout__link">Безопасную Сделку</a> <?= view_sbr_shield('', 'relative top_1 margleft_5') ?></label>
+                                <label for="prefer_sbr" class="b-check__label">РџСЂРµРґРїРѕС‡РёС‚Р°СЋ РѕРїР»Р°С‚Сѓ СЂР°Р±РѕС‚С‹ С‡РµСЂРµР· <a href="/promo/bezopasnaya-sdelka/" target="_blank" class="b-layout__link">Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ</a> <?= view_sbr_shield('', 'relative top_1 margleft_5') ?></label>
                             </div>
                             <? } ?>
     
@@ -1078,7 +1078,7 @@ $offers_count = count($offers) - 1; ?>
             <? /*if($contacts_freelancer) { ?>  
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_width_110 b-project-answer-editor-contacts-title">
-                    <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padtop_5  b-layout__txt_fontsize_11">Контакты</div>
+                    <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padtop_5  b-layout__txt_fontsize_11">РљРѕРЅС‚Р°РєС‚С‹</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_20">
                    <table class="b-layout__table b-project-answer-editor-contacts-collection">
@@ -1099,7 +1099,7 @@ $offers_count = count($offers) - 1; ?>
                                 <? if(!$scroll_init) { $scroll_init = true;?><script> window.addEvent("domready", function() { JSScroll($$('.layout_error')[0]); });</script><? }//if?>
                                 <? }//if?>
                             </td>
-                            <td class="b-layout__one b-layout__one_padleft_20"><div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_fontsize_11" ><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 toggler-contacts" href="javascript:void(0)"><?= ($is_error ? "сохранить" : "изменить"); ?></a></div></td>
+                            <td class="b-layout__one b-layout__one_padleft_20"><div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_fontsize_11" ><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 toggler-contacts" href="javascript:void(0)"><?= ($is_error ? "СЃРѕС…СЂР°РЅРёС‚СЊ" : "РёР·РјРµРЅРёС‚СЊ"); ?></a></div></td>
                         </tr>
                        <?php }//foreach?>
                    </table>
@@ -1115,7 +1115,7 @@ $offers_count = count($offers) - 1; ?>
                     <?php if ($is_pro2): ?>                
                         <table class="b-layout__table b-layout__table_width_full">
                             <tr class="b-layout__tr">
-                                <td class="b-layout__td b-layout__td_width_110"><div class="b-layout__txt b-layout__txt_fontsize_11  b-layout__txt_bold">Примеры работ,<br>не более трех</div></td>
+                                <td class="b-layout__td b-layout__td_width_110"><div class="b-layout__txt b-layout__txt_fontsize_11  b-layout__txt_bold">РџСЂРёРјРµСЂС‹ СЂР°Р±РѕС‚,<br>РЅРµ Р±РѕР»РµРµ С‚СЂРµС…</div></td>
                                 <td class="b-layout__td">
         
                                     <input id="ps_work_1_id" name="ps_work_1_id" type="hidden" value="" />
@@ -1160,10 +1160,10 @@ $offers_count = count($offers) - 1; ?>
                             </tr>
                         </table>
                         <div class="b-layout b-layout_padleft_110 b-layout_padtop_15 b-layout__txt_padleft_null_ipad">
-                            <div id="works_no_select" class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold b-layout__txt_padbot_10" style="display:none;">Чтобы добавить другие работы, удалите одну из выбранных</div>
+                            <div id="works_no_select" class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold b-layout__txt_padbot_10" style="display:none;">Р§С‚РѕР±С‹ РґРѕР±Р°РІРёС‚СЊ РґСЂСѓРіРёРµ СЂР°Р±РѕС‚С‹, СѓРґР°Р»РёС‚Рµ РѕРґРЅСѓ РёР· РІС‹Р±СЂР°РЅРЅС‹С…</div>
                             <?php if ($professions){ ?>
                                 <div id="works_select" class="b-layout b-layout_padbot_10">
-                                    <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10 b-layout__txt_fontsize_11">Выбрать и показать примеры работ из своего портфолио:</div>
+                                    <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10 b-layout__txt_fontsize_11">Р’С‹Р±СЂР°С‚СЊ Рё РїРѕРєР°Р·Р°С‚СЊ РїСЂРёРјРµСЂС‹ СЂР°Р±РѕС‚ РёР· СЃРІРѕРµРіРѕ РїРѕСЂС‚С„РѕР»РёРѕ:</div>
                                     <table class="portfolio" cellspacing="0" cellpadding="0">
                                     <tr>
                                         <td class="professions" style="padding:0px 7px 0px 0px;">
@@ -1197,7 +1197,7 @@ $offers_count = count($offers) - 1; ?>
                                             {
                                             ?>
                                             </div>
-                                            <div id="show_more_works" style=" margin-top:12px; font-size:100%;"><a  href="javascript:void(null)" onclick="$('show_more_works').style.display='none';$('more_works').style.display='block';" class="blue" style="font-weight:bold;"><img src="/images/triangle_grey.gif" alt="" width="4" height="11" border="0" style="margin-right:4px;" />Остальные работы</a></div>
+                                            <div id="show_more_works" style=" margin-top:12px; font-size:100%;"><a  href="javascript:void(null)" onclick="$('show_more_works').style.display='none';$('more_works').style.display='block';" class="blue" style="font-weight:bold;"><img src="/images/triangle_grey.gif" alt="" width="4" height="11" border="0" style="margin-right:4px;" />РћСЃС‚Р°Р»СЊРЅС‹Рµ СЂР°Р±РѕС‚С‹</a></div>
                                             <?
                                             }
                                             ?>
@@ -1207,9 +1207,9 @@ $offers_count = count($offers) - 1; ?>
                                 </div>
                             <?php } ?>
                             <div id="works_add">
-                                <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10 b-layout__txt_fontsize_11"><? if ($cur_prof > 0) { ?>Или загрузить и показать другие работы<? } else { ?>Загрузить и показать примеры работ<? } ?>:</div>
+                                <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10 b-layout__txt_fontsize_11"><? if ($cur_prof > 0) { ?>РР»Рё Р·Р°РіСЂСѓР·РёС‚СЊ Рё РїРѕРєР°Р·Р°С‚СЊ РґСЂСѓРіРёРµ СЂР°Р±РѕС‚С‹<? } else { ?>Р—Р°РіСЂСѓР·РёС‚СЊ Рё РїРѕРєР°Р·Р°С‚СЊ РїСЂРёРјРµСЂС‹ СЂР°Р±РѕС‚<? } ?>:</div>
                                 <iframe style="width:100%;height:25px;" scrolling="no" id="fupload" name="fupload" src="/projects/upload.php?pid=<?=$prj_id?>" frameborder="0"></iframe>
-                                <div class="b-layout__txt b-layout__txt_fontsize_11">Максимальный размер файла 2 Мб.</div>
+                                <div class="b-layout__txt b-layout__txt_fontsize_11">РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р° 2 РњР±.</div>
                             </div>
                         </div>
                     <?php endif; // if ($is_pro2) ?>
@@ -1225,7 +1225,7 @@ $offers_count = count($offers) - 1; ?>
                         var is_color = $('select-color').checked;
                         if(val > ac_sum && is_color) {
                             var sum = Number(val - ac_sum).toPrecision(2);
-                            alert('На вашем счету не хватает ' + sum + ' ' + ending(sum, 'рубль', 'рубля', 'рублей'));
+                            alert('РќР° РІР°С€РµРј СЃС‡РµС‚Сѓ РЅРµ С…РІР°С‚Р°РµС‚ ' + sum + ' ' + ending(sum, 'СЂСѓР±Р»СЊ', 'СЂСѓР±Р»СЏ', 'СЂСѓР±Р»РµР№'));
                             return false;
                         }
                         return true;
@@ -1239,14 +1239,14 @@ $offers_count = count($offers) - 1; ?>
                             <div class="form-in c">
                                 <div class="form-item <?= ($_SESSION['ac_sum'] < $op_sum && !$payed_color ? 'form-disabled':'')?>">
                                     <input name="is_color" type="checkbox" value="1" class="form-checkbox" id="select-color" <?= ($_SESSION['ac_sum'] < $op_sum && !$payed_color? 'disabled="disabled"':'')?> <?= $ps['is_color']=='t'?'checked="checked"':''?>/>
-                                    <label for="select-color">Выделить предложение цветом <?php if(!$payed_color) {?><em><?= _bill($op_sum)?> рублей</em><?php }//if?></label>
+                                    <label for="select-color">Р’С‹РґРµР»РёС‚СЊ РїСЂРµРґР»РѕР¶РµРЅРёРµ С†РІРµС‚РѕРј <?php if(!$payed_color) {?><em><?= _bill($op_sum)?> СЂСѓР±Р»РµР№</em><?php }//if?></label>
                                 </div>
                                 <?php if(!$payed_color) {?>
                                 <div class="no-money">
                                     <?php if ($_SESSION['ac_sum'] < $op_sum) {?>
-                                    <p><img src="/images/warning.png" alt="" /><strong>Недостаточно средств на счету!</strong> В данный момент на счету <?= _bill($_SESSION['ac_sum'])?> рублей. <a href="/bill/">Пополнить счет</a></p>
+                                    <p><img src="/images/warning.png" alt="" /><strong>РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ РЅР° СЃС‡РµС‚Сѓ!</strong> Р’ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РЅР° СЃС‡РµС‚Сѓ <?= _bill($_SESSION['ac_sum'])?> СЂСѓР±Р»РµР№. <a href="/bill/">РџРѕРїРѕР»РЅРёС‚СЊ СЃС‡РµС‚</a></p>
                                     <?php } //if?>
-                                    <span><b>Обратите внимание!</b> С вашего счета будет списана сумма в момент добавления предложения без дополнительного подтверждения.<br />Более подробную информацию о платных услугах можете <a href="#">прочитать в разделе помощи</a>.</span>
+                                    <span><b>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ!</b> РЎ РІР°С€РµРіРѕ СЃС‡РµС‚Р° Р±СѓРґРµС‚ СЃРїРёСЃР°РЅР° СЃСѓРјРјР° РІ РјРѕРјРµРЅС‚ РґРѕР±Р°РІР»РµРЅРёСЏ РїСЂРµРґР»РѕР¶РµРЅРёСЏ Р±РµР· РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕРіРѕ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ.<br />Р‘РѕР»РµРµ РїРѕРґСЂРѕР±РЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РїР»Р°С‚РЅС‹С… СѓСЃР»СѓРіР°С… РјРѕР¶РµС‚Рµ <a href="#">РїСЂРѕС‡РёС‚Р°С‚СЊ РІ СЂР°Р·РґРµР»Рµ РїРѕРјРѕС‰Рё</a>.</span>
                                 </div>
                                 <?php }//if?>
                             </div>
@@ -1258,13 +1258,13 @@ $offers_count = count($offers) - 1; ?>
                     
                     <div id="works_submit" class="b-buttons b-buttons_padleft_110 b-buttons_padtop_20 b-layout__txt_padleft_null_ipad">
                        <?=$user_phone_projects?>
-						<a href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green" <?php if(!$payed_color) {?>onclick="if(check_sum()) {this.disabled=true;  _gaq.push(['_trackEvent', 'User', 'Freelance', 'button_project_create_offer']); ga('send', 'event', 'Freelance', 'button_project_create_offer'); $('form_add_offer').submit();}"<?php } else { ?>onclick="this.disabled=true;  _gaq.push(['_trackEvent', 'User', 'Freelance', 'button_project_create_offer']); ga('send', 'event', 'Freelance', 'button_project_create_offer'); $('form_add_offer').submit();"<?php }//else?>  ><? echo (is_numeric(InGet('edit')))?'Сохранить ответ':'Опубликовать ответ'; ?></a>
-                       <span class="b-buttons__txt">&#160;&#160;&#160;<a class="b-buttons__link" href="#">Отменить публикацию</a></span>
+						<a href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green" <?php if(!$payed_color) {?>onclick="if(check_sum()) {this.disabled=true;  _gaq.push(['_trackEvent', 'User', 'Freelance', 'button_project_create_offer']); ga('send', 'event', 'Freelance', 'button_project_create_offer'); $('form_add_offer').submit();}"<?php } else { ?>onclick="this.disabled=true;  _gaq.push(['_trackEvent', 'User', 'Freelance', 'button_project_create_offer']); ga('send', 'event', 'Freelance', 'button_project_create_offer'); $('form_add_offer').submit();"<?php }//else?>  ><? echo (is_numeric(InGet('edit')))?'РЎРѕС…СЂР°РЅРёС‚СЊ РѕС‚РІРµС‚':'РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ РѕС‚РІРµС‚'; ?></a>
+                       <span class="b-buttons__txt">&#160;&#160;&#160;<a class="b-buttons__link" href="#">РћС‚РјРµРЅРёС‚СЊ РїСѓР±Р»РёРєР°С†РёСЋ</a></span>
                     </div>
                     </form>
                  </div>
                  
-			<?php } else if ($user_offer_exist) { $is_user_offer = true;// Предложение от данного юзера уже есть. {?>
+			<?php } else if ($user_offer_exist) { $is_user_offer = true;// РџСЂРµРґР»РѕР¶РµРЅРёРµ РѕС‚ РґР°РЅРЅРѕРіРѕ СЋР·РµСЂР° СѓР¶Рµ РµСЃС‚СЊ. {?>
 
 			<!-- answer-item -->
 			     <a name="new_offer"></a>
@@ -1284,9 +1284,9 @@ $offers_count = count($offers) - 1; ?>
 					<?php } //if?>
                 <?php } //foreach?>
                 <? if($count_hidden_offers!=0) { ?>
-        				<h2 class="b-layout__title">Остальные ответы фрилансеров скрыты и видны только заказчику</h2>
+        				<h2 class="b-layout__title">РћСЃС‚Р°Р»СЊРЅС‹Рµ РѕС‚РІРµС‚С‹ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ СЃРєСЂС‹С‚С‹ Рё РІРёРґРЅС‹ С‚РѕР»СЊРєРѕ Р·Р°РєР°Р·С‡РёРєСѓ</h2>
                 <? } ?>
-                <?php // Страницы
+                <?php // РЎС‚СЂР°РЅРёС†С‹
                 $pagesCount = ceil($num_offers / MAX_OFFERS_AT_PAGE);
                 $href = '%s/projects/index.php?pid='. $prj_id;
                 if (isset($po_sort)) $href .= '&sort=' . $po_sort;
@@ -1329,14 +1329,14 @@ function check_text()
 	if(area.value.length > 1000)
 	{
 		area.value = area.value.substr(0, 1000);
-		msg.innerHTML = '<? print(ref_scr(view_error('Исчерпан лимит символов для поля (1000 символов)'))); ?>';
+		msg.innerHTML = '<? print(ref_scr(view_error('РСЃС‡РµСЂРїР°РЅ Р»РёРјРёС‚ СЃРёРјРІРѕР»РѕРІ РґР»СЏ РїРѕР»СЏ (1000 СЃРёРјРІРѕР»РѕРІ)'))); ?>';
 	}
 }
 
 function check_com_text() {
 	if((document.getElementById('po_text') != undefined) && document.getElementById('po_text').value.length > 1000) {
 		document.getElementById('po_text').value = document.getElementById('po_text').value.substr(0, 1000);
-		document.getElementById('po_text_msg').innerHTML = '<? print(ref_scr(view_error('Исчерпан лимит символов для поля (1000 символов)'))); ?>';
+		document.getElementById('po_text_msg').innerHTML = '<? print(ref_scr(view_error('РСЃС‡РµСЂРїР°РЅ Р»РёРјРёС‚ СЃРёРјРІРѕР»РѕРІ РґР»СЏ РїРѕР»СЏ (1000 СЃРёРјРІРѕР»РѕРІ)'))); ?>';
 	}
 }
 //-->
@@ -1345,7 +1345,7 @@ function check_com_text() {
 
 <?php
 
-//показываем попап успешной покупки ПРО после редиректа
+//РїРѕРєР°Р·С‹РІР°РµРј РїРѕРїР°Рї СѓСЃРїРµС€РЅРѕР№ РїРѕРєСѓРїРєРё РџР Рћ РїРѕСЃР»Рµ СЂРµРґРёСЂРµРєС‚Р°
 $quickPRO_type = 'project'; 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/templates/quick_buy_pro_win.php"); 
 

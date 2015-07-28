@@ -42,7 +42,7 @@ https://bo-demo02.yamoney.ru:9094/
 /*
  https://server:port/webservice/deposition/api/testDeposition
 
-Адрес операции зачисления перевода: 
+РђРґСЂРµСЃ РѕРїРµСЂР°С†РёРё Р·Р°С‡РёСЃР»РµРЅРёСЏ РїРµСЂРµРІРѕРґР°: 
 https://server:port/webservice/deposition/api/makeDeposition
 
  */
@@ -98,17 +98,17 @@ $xml_str = <<<XML
                        contract="">
          <paymentParams>
                   <skr_destinationCardSynonim>79052075556</skr_destinationCardSynonim>
-                  <pdr_firstName>Владимир</pdr_firstName>
+                  <pdr_firstName>Р’Р»Р°РґРёРјРёСЂ</pdr_firstName>
                   <pof_offerAccepted>1</pof_offerAccepted> 
-                  <pdr_secondName>Владимирович</pdr_secondName>
-                  <pdr_lastName>Владимиров</pdr_lastName>
+                  <pdr_secondName>Р’Р»Р°РґРёРјРёСЂРѕРІРёС‡</pdr_secondName>
+                  <pdr_lastName>Р’Р»Р°РґРёРјРёСЂРѕРІ</pdr_lastName>
                   <cps_phoneNumber>79052075556</cps_phoneNumber>
                   <pdr_docType>21</pdr_docType>
                   <pdr_docNum>4002109067</pdr_docNum>
                   <pdr_postcode>194044</pdr_postcode>
-                  <pdr_country>Санкт-Петербург</pdr_country>
+                  <pdr_country>РЎР°РЅРєС‚-РџРµС‚РµСЂР±СѓСЂРі</pdr_country>
                   <pdr_city></pdr_City>
-                  <pdr_address>Большой пр, ПС, д.12</pdr_address>
+                  <pdr_address>Р‘РѕР»СЊС€РѕР№ РїСЂ, РџРЎ, Рґ.12</pdr_address>
          </paymentParams>
 </testDepositionRequest>
 XML;
@@ -129,8 +129,8 @@ $data = file_get_contents("enc.txt");
 $parts = explode("\n\n", $data, 2);
 */
 
-//certnew_Vaan – клиентский сертификат, им вы авторизуетесь у нас и подписываете им свои запросы.
-//Depositdemo – сертификат для валидации наших ответов о результатах выполнения операции.
+//certnew_Vaan вЂ“ РєР»РёРµРЅС‚СЃРєРёР№ СЃРµСЂС‚РёС„РёРєР°С‚, РёРј РІС‹ Р°РІС‚РѕСЂРёР·СѓРµС‚РµСЃСЊ Сѓ РЅР°СЃ Рё РїРѕРґРїРёСЃС‹РІР°РµС‚Рµ РёРј СЃРІРѕРё Р·Р°РїСЂРѕСЃС‹.
+//Depositdemo вЂ“ СЃРµСЂС‚РёС„РёРєР°С‚ РґР»СЏ РІР°Р»РёРґР°С†РёРё РЅР°С€РёС… РѕС‚РІРµС‚РѕРІ Рѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°С… РІС‹РїРѕР»РЅРµРЅРёСЏ РѕРїРµСЂР°С†РёРё.
 
 //private.key
 //tkaevient2014
@@ -249,7 +249,7 @@ $uid = 33;
 $reqvs = sbr_meta::getUserReqvs($uid);
 $reqv = $reqvs[$reqvs['form_type']];
 
-//Проверка наличия резерва средств
+//РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ СЂРµР·РµСЂРІР° СЃСЂРµРґСЃС‚РІ
 $reserve_id = 3;
 $reserveInstance = ReservesModelFactory::getInstanceById($reserve_id);
 $reserve_data = $reserveInstance->getReserveData();

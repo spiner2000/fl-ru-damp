@@ -1,19 +1,19 @@
 <div id="quick_acc_win_main" class="b-shadow b-shadow_center b-shadow_width_520 b-shadow_zindex_11 b-shadow_hide b-shadow__quick" style="display:block;">
    <div class="b-shadow__body b-shadow__body_pad_15_20">
         <div class="b-fon b-fon_bg_pp">
-            <div class="b-layout__title b-layout__title_padbot_5"><span class="b-icon b-icon__pp b-icon_float_left b-icon_top_4 b-page__desktop b-page__ipad"></span>Погашение задолженности<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_1 b-page__desktop b-page__ipad">на личном счете</div></div>
+            <div class="b-layout__title b-layout__title_padbot_5"><span class="b-icon b-icon__pp b-icon_float_left b-icon_top_4 b-page__desktop b-page__ipad"></span>РџРѕРіР°С€РµРЅРёРµ Р·Р°РґРѕР»Р¶РµРЅРЅРѕСЃС‚Рё<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_1 b-page__desktop b-page__ipad">РЅР° Р»РёС‡РЅРѕРј СЃС‡РµС‚Рµ</div></div>
         </div>
     
         <div id="quick_acc_div_main">
     
             <input type="hidden" id="quick_acc_f_account_sum" value="<?= round($_SESSION['ac_sum'], 2)<0 ? 0 : round($_SESSION['ac_sum'], 2) ?>"/>
     
-            <div class="b-layout__txt b-layout__txt_padtb_10 b-layout__txt_fontsize_15">Сумма и способ оплаты</div>
+            <div class="b-layout__txt b-layout__txt_padtb_10 b-layout__txt_fontsize_15">РЎСѓРјРјР° Рё СЃРїРѕСЃРѕР± РѕРїР»Р°С‚С‹</div>
     
             <div id="quick_acc_div_error" class="b-fon b-fon_margbot_20 b-fon_marglr_20 b-layout_hide">
                 <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeee"> 
                     <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-20"></span>
-                    <span id="quick_acc_div_error_txt">К сожалению, в процессе оплаты произошла ошибка, и платеж не был завершен. Попробуйте провести оплату еще раз.</span>
+                    <span id="quick_acc_div_error_txt">Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, РІ РїСЂРѕС†РµСЃСЃРµ РѕРїР»Р°С‚С‹ РїСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°, Рё РїР»Р°С‚РµР¶ РЅРµ Р±С‹Р» Р·Р°РІРµСЂС€РµРЅ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РїСЂРѕРІРµСЃС‚Рё РѕРїР»Р°С‚Сѓ РµС‰Рµ СЂР°Р·.</span>
                 </div>
             </div>
     
@@ -24,26 +24,26 @@
             $quick_acc_sum  = $quick_acc_sum*-1;
             ?>
             <div class="b-layout__txt b-layout__txt_padleft_20 b-layout__txt_fontsize_11">
-                Сумма к оплате: <span id="quick_acc_sum_pay"><?=$quick_acc_sum?></span> руб.<br>
+                РЎСѓРјРјР° Рє РѕРїР»Р°С‚Рµ: <span id="quick_acc_sum_pay"><?=$quick_acc_sum?></span> СЂСѓР±.<br>
             </div>
     
     
             <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_padleft_20 b-layout__txt_fontsize_11">
-                <span id="quick_acc_sum_span_1">Ее вы можете оплатить одним из способов:</span>
+                <span id="quick_acc_sum_span_1">Р•Рµ РІС‹ РјРѕР¶РµС‚Рµ РѕРїР»Р°С‚РёС‚СЊ РѕРґРЅРёРј РёР· СЃРїРѕСЃРѕР±РѕРІ:</span>
                 <span id="quick_acc_sum_account2"></span>
             </div>
     
     
             <div id="quick_acc_block_1">
                 <div class="b-buttons b-buttons_padleft_20 b-buttons_padbot_10"> 
-                    <a class="b-button b-button__pm  b-button__pm_card b-button_margbot_5" href="#" onClick="quickACC_process('dolcard', 1); return false;"><span class="b-button__txt">Пластиковые<br>карты</span></a> 
-                    <a class="b-button b-button__pm  b-button__pm_yd b-button_margbot_5" href="#" onClick="quickACC_process('ya', 1); return false;"><span class="b-button__txt">Яндекс.Деньги</span></a> 
+                    <a class="b-button b-button__pm  b-button__pm_card b-button_margbot_5" href="#" onClick="quickACC_process('dolcard', 1); return false;"><span class="b-button__txt">РџР»Р°СЃС‚РёРєРѕРІС‹Рµ<br>РєР°СЂС‚С‹</span></a> 
+                    <a class="b-button b-button__pm  b-button__pm_yd b-button_margbot_5" href="#" onClick="quickACC_process('ya', 1); return false;"><span class="b-button__txt">РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё</span></a> 
                     <a class="b-button b-button__pm  b-button__pm_wm b-button_margbot_5" href="#" onClick="quickACC_process('webmoney', 1); return false;"><span class="b-button__txt">WebMoney</span></a> 
                     <?php if ($quick_acc_sum <= yandex_kassa::MAX_PAYMENT_SB): ?> 
-                        <a class="b-button b-button__pm  b-button__pm_sber b-button_margbot_5" href="#" onClick="quickACC_process('sberbank', 1); return false;"><span class="b-button__txt">Сбербанк<br />Онлайн</span></a> 
+                        <a class="b-button b-button__pm  b-button__pm_sber b-button_margbot_5" href="#" onClick="quickACC_process('sberbank', 1); return false;"><span class="b-button__txt">РЎР±РµСЂР±Р°РЅРє<br />РћРЅР»Р°Р№РЅ</span></a> 
                     <?php endif; ?>
                     <?php if ($quick_acc_sum <= yandex_kassa::MAX_PAYMENT_ALFA): ?> 
-                        <a class="b-button b-button__pm  b-button__pm_alfa b-button_margbot_5" href="#" onClick="quickACC_process('alfaclick', 1); return false;"><span class="b-button__txt">Альфа Клик</span></a> 
+                        <a class="b-button b-button__pm  b-button__pm_alfa b-button_margbot_5" href="#" onClick="quickACC_process('alfaclick', 1); return false;"><span class="b-button__txt">РђР»СЊС„Р° РљР»РёРє</span></a> 
                     <?php endif; ?>
                 </div>
             </div>
@@ -64,11 +64,11 @@
 <div id="quick_acc_win_main_ok" class="b-shadow b-shadow_center b-shadow_width_520 b-shadow_zindex_11 b-shadow_bg_eeffe5 b-shadow__quick <?= $_GET['quickacc_ok'] ? '' : 'b-shadow_hide' ?>" style="display:block;">
    <div class="b-shadow__body b-shadow__body_pad_15_20">
     <div class="b-fon b-fon_bg_pp">
-        <div class="b-layout__title b-layout__title_padbot_5"><span class="b-icon b-icon__pp b-icon_float_left b-icon_top_4 b-page__desktop b-page__ipad"></span>Задолженность успешно погашена<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_1 b-page__desktop b-page__ipad">на личном счете</div></div>
+        <div class="b-layout__title b-layout__title_padbot_5"><span class="b-icon b-icon__pp b-icon_float_left b-icon_top_4 b-page__desktop b-page__ipad"></span>Р—Р°РґРѕР»Р¶РµРЅРЅРѕСЃС‚СЊ СѓСЃРїРµС€РЅРѕ РїРѕРіР°С€РµРЅР°<div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_1 b-page__desktop b-page__ipad">РЅР° Р»РёС‡РЅРѕРј СЃС‡РµС‚Рµ</div></div>
     </div>
-    <div class="b-layout__txt b-layout__txt_padbot_20">Спасибо за оплату. <br>Желаем вам успешной работы на сайте и множества выгодных заказов!</div>
+    <div class="b-layout__txt b-layout__txt_padbot_20">РЎРїР°СЃРёР±Рѕ Р·Р° РѕРїР»Р°С‚Сѓ. <br>Р–РµР»Р°РµРј РІР°Рј СѓСЃРїРµС€РЅРѕР№ СЂР°Р±РѕС‚С‹ РЅР° СЃР°Р№С‚Рµ Рё РјРЅРѕР¶РµСЃС‚РІР° РІС‹РіРѕРґРЅС‹С… Р·Р°РєР°Р·РѕРІ!</div>
     <div class="b-buttons b-buttons_padbot_10">
-        <a class="b-button b-button_flat b-button_flat_green" href="" onClick="$('quick_acc_win_main_ok').addClass('b-shadow_hide'); return false;">Закрыть</a>&nbsp;&nbsp;&nbsp;
+        <a class="b-button b-button_flat b-button_flat_green" href="" onClick="$('quick_acc_win_main_ok').addClass('b-shadow_hide'); return false;">Р—Р°РєСЂС‹С‚СЊ</a>&nbsp;&nbsp;&nbsp;
    </div>
    </div>
    <span class="b-shadow__icon b-shadow__icon_close"></span>
@@ -105,7 +105,7 @@ function quickACC_select(obj) {
         $('quick_acc_sum_span_2').hide();
         $('quick_acc_sum_span_3').show();
         $('quick_acc_sum_span_5').hide();
-        // денег хватает
+        // РґРµРЅРµРі С…РІР°С‚Р°РµС‚
     } else {
         $('quick_acc_block_2').hide();
         $('quick_acc_sum_span_1').hide();
@@ -131,7 +131,7 @@ function quickACC_select(obj) {
             $('quick_acc_sum_span_7').set('html', ss);
         }
     }
-    $('quick_acc_block_2_btn').set('html', 'Купить за '+sum+' рублей');
+    $('quick_acc_block_2_btn').set('html', 'РљСѓРїРёС‚СЊ Р·Р° '+sum+' СЂСѓР±Р»РµР№');
     if(obj!=null) {
         obj.fireEvent('click');
     }
@@ -176,7 +176,7 @@ function quickACC_process(type, step) {
 <?php } ?>
 
 
-var limit = 1200; // в секундах
+var limit = 1200; // РІ СЃРµРєСѓРЅРґР°С…
 var timeout_id = null;
 
 function resetTimer() {
@@ -195,17 +195,17 @@ function processTimer(id){
     $("quick_acc_div_main").removeClass("b-layout_waiting");
   }
 
-  var limit_div = parseInt(limit/60); // минуты
-  var limit_mod = limit - limit_div*60; // секунды
+  var limit_div = parseInt(limit/60); // РјРёРЅСѓС‚С‹
+  var limit_mod = limit - limit_div*60; // СЃРµРєСѓРЅРґС‹
   
-  // строка с оставшимся временем
+  // СЃС‚СЂРѕРєР° СЃ РѕСЃС‚Р°РІС€РёРјСЃСЏ РІСЂРµРјРµРЅРµРј
   limit_str = "&nbsp;&nbsp;";
   if (limit_div < 10) limit_str = limit_str + "0";
   limit_str = limit_str + limit_div + ":";
   if (limit_mod < 10) limit_str = limit_str + "0";
   limit_str = limit_str + limit_mod + "&nbsp;&nbsp;";      
   
-  // вывод времени
+  // РІС‹РІРѕРґ РІСЂРµРјРµРЅРё
   el_timer = document.getElementById("timer");
   if (el_timer) el_timer.innerHTML = limit_str;
 }

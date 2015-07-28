@@ -1,9 +1,9 @@
-<h1>Услуги</h1>
+<h1>РЈСЃР»СѓРіРё</h1>
 <table width="100%" border="0" cellspacing="0" cellpadding="29">
 <tr valign="top">
 	<td height="400" valign="top" bgcolor="#FFFFFF" class="box2">
-	<div align="center"><h1>Аккаунт &ldquo;PRO&rdquo;</h1></div>
-	Выберите разделы, в которых необходимо размещение вашего аккаунта в зоне &ldquo;PRO&rdquo;<br>
+	<div align="center"><h1>РђРєРєР°СѓРЅС‚ &ldquo;PRO&rdquo;</h1></div>
+	Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·РґРµР»С‹, РІ РєРѕС‚РѕСЂС‹С… РЅРµРѕР±С…РѕРґРёРјРѕ СЂР°Р·РјРµС‰РµРЅРёРµ РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р° РІ Р·РѕРЅРµ &ldquo;PRO&rdquo;<br>
 		<?
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/payed.php");
 $prfs = new payed();
@@ -13,7 +13,7 @@ $profs = $prfs->GetPro(get_uid(), (__paramInit('int', 'd') . ' month'));
 <table border="0" cellspacing="0" cellpadding="1" style="margin: 10px 0 10px -5px;">
 	<tr>
 		<td valign="top"><input type="checkbox" id="gen" name="prof[]" value="0"></td>
-		<td width="100%"><LABEL for="gen">Общий каталог фрилансеров</LABEL></td>
+		<td width="100%"><LABEL for="gen">РћР±С‰РёР№ РєР°С‚Р°Р»РѕРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</LABEL></td>
 	</tr>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" style="margin-left: -5px;">
@@ -55,7 +55,7 @@ $profs = $prfs->GetPro(get_uid(), (__paramInit('int', 'd') . ' month'));
 <tr>
 	<td width="19">&nbsp;</td>
 	<td height="40" align="right" valign="top">
-		<input type="hidden" name="transaction_id" value="<?=__paramInit('int', 'trid')?>"><input type="hidden" name="time" value="<?=__paramInit('int', 'd')?>"><input type="hidden" name="tarif" value="<?=__paramInit('int', 't')?>"><input type="hidden" name="action" value="portf_choise"><input type="submit" name="btn" class="btn" value="Выбрать">
+		<input type="hidden" name="transaction_id" value="<?=__paramInit('int', 'trid')?>"><input type="hidden" name="time" value="<?=__paramInit('int', 'd')?>"><input type="hidden" name="tarif" value="<?=__paramInit('int', 't')?>"><input type="hidden" name="action" value="portf_choise"><input type="submit" name="btn" class="btn" value="Р’С‹Р±СЂР°С‚СЊ">
 	</td>
 	<td width="19">&nbsp;</td>
 </tr>

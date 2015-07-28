@@ -4,7 +4,7 @@ if (!defined('IS_SITE_ADMIN') || !(hasPermissions('sbr') || hasPermissions('tmpp
 }
 ?>
 
-<h2 class="b-layout__title">Статистика по СБР</h2>
+<h2 class="b-layout__title">РЎС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РЎР‘Р </h2>
 
 <form id="sbr_stat_form" method="get">
 
@@ -15,32 +15,32 @@ if (!defined('IS_SITE_ADMIN') || !(hasPermissions('sbr') || hasPermissions('tmpp
 
                 <div class="b-radio__item b-radio__item_padbot_10">
                     <input id="b-radio__input2" class="b-radio__input" name="period" type="radio" value="today" <?= $period_param === 'today' ? 'checked="checked"' : ''?> />
-                    <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input2">За сегодня</label>
+                    <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input2">Р—Р° СЃРµРіРѕРґРЅСЏ</label>
                 </div>
 
                 <div class="b-radio__item b-radio__item_padbot_10">
                     <input id="b-radio__input3" class="b-radio__input" name="period" type="radio" value="week" <?= $period_param === 'week' ? 'checked="checked"' : ''?> />
-                    <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input3">За прошедшую неделю</label>
+                    <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input3">Р—Р° РїСЂРѕС€РµРґС€СѓСЋ РЅРµРґРµР»СЋ</label>
                 </div>
 
                 <div class="b-radio__item b-radio__item_padbot_10">
                     <input id="b-radio__input4" class="b-radio__input" name="period" type="radio" value="month" <?= $period_param === 'month' ? 'checked="checked"' : ''?> />
-                    <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input4">За прошедший месяц</label>
+                    <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input4">Р—Р° РїСЂРѕС€РµРґС€РёР№ РјРµСЃСЏС†</label>
                 </div>
                 
                 <div class="b-radio__item b-radio__item_padbot_10">
                     <input id="b-radio__input5" class="b-radio__input" name="period" type="radio" value="year" <?= $period_param === 'year' ? 'checked="checked"' : ''?> />
-                    <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input5">За прошедший год (статистика по месяцам)</label>
+                    <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input5">Р—Р° РїСЂРѕС€РµРґС€РёР№ РіРѕРґ (СЃС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РјРµСЃСЏС†Р°Рј)</label>
                 </div>
                 
                 <div class="b-radio__item b-radio__item_padbot_10">
                     <input id="b-radio__input6" class="b-radio__input" name="period" type="radio" value="alltime" <?= $period_param === 'alltime' ? 'checked="checked"' : ''?> />
-                    <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input6">За все время (статистика по годам)</label>
+                    <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input6">Р—Р° РІСЃРµ РІСЂРµРјСЏ (СЃС‚Р°С‚РёСЃС‚РёРєР° РїРѕ РіРѕРґР°Рј)</label>
                 </div>
 
                 <div class="b-radio__item b-radio__item_inline-block b-radio__item_padtop_6">
                     <input id="b-radio__input7" class="b-radio__input" name="period" type="radio" value="custom" <?= $period_param === 'custom' ? 'checked="checked"' : ''?> />
-                    <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input7">С</label>
+                    <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input7">РЎ</label>
                 </div>&nbsp;&nbsp;
 
                 <div class="b-combo b-combo_inline-block">
@@ -51,7 +51,7 @@ if (!defined('IS_SITE_ADMIN') || !(hasPermissions('sbr') || hasPermissions('tmpp
                     </div>          
                 </div>
 
-                <label class="b-form__name b-form__name_fontsize_13 b-form__name_padtop_6 b-form__name_padlr_5" for="b-radio__input7">по</label>
+                <label class="b-form__name b-form__name_fontsize_13 b-form__name_padtop_6 b-form__name_padlr_5" for="b-radio__input7">РїРѕ</label>
 
                 <div class="b-combo b-combo_inline-block b-combo_margright_10">
                     <div class="b-combo__input b-combo__input_width_140 b-combo__input_max-width_140 b-combo__input_arrow_yes b-combo__input_calendar b-combo__input_resize date_format_use_dot use_past_date no_set_date_on_load year_min_limit_1900">
@@ -63,17 +63,17 @@ if (!defined('IS_SITE_ADMIN') || !(hasPermissions('sbr') || hasPermissions('tmpp
             </div>
             <div class="b-check b-check_padtop_10 b-check_inline-block">
                 <input type="checkbox" id="b-check__input1" class="b-check__input" value="1" name="akkr" <?= $akkr_param || $akkr_param === null ? 'checked="checked"' : '' ?> />
-                <label class="b-check__label b-check__label_fontsize_13" for="b-check__input1">аккредитив</label>
+                <label class="b-check__label b-check__label_fontsize_13" for="b-check__input1">Р°РєРєСЂРµРґРёС‚РёРІ</label>
             </div>
             &nbsp;&nbsp;
             <div class="b-check b-check_padtop_10 b-check_inline-block">
                 <input type="checkbox" id="b-check__input2" class="b-check__input" value="1" name="pdrd" <?= $pdrd_param || $pdrd_param === null ? 'checked="checked"' : '' ?> />
-                <label class="b-check__label b-check__label_fontsize_13" for="b-check__input2">подряд</label>
+                <label class="b-check__label b-check__label_fontsize_13" for="b-check__input2">РїРѕРґСЂСЏРґ</label>
             </div>
             
 
             <div class="b-buttons b-buttons_padtop_10 b-buttons_padbot_20">
-                <a href="javascript:$('sbr_stat_form').submit()" class="b-button b-button_flat b-button_flat_grey">Применить</a>
+                <a href="javascript:$('sbr_stat_form').submit()" class="b-button b-button_flat b-button_flat_grey">РџСЂРёРјРµРЅРёС‚СЊ</a>
             </div>
             <input type="hidden" name="show_results" value="1" />
             <input type="hidden" id="show_results_tab" name="tab" value="" />
@@ -89,12 +89,12 @@ if (!defined('IS_SITE_ADMIN') || !(hasPermissions('sbr') || hasPermissions('tmpp
     <ul class="b-menu__list b-menu__list_padleft_10">
         <li class="b-menu__item b-menu__item_last <?= $tab === 'graph' ? 'b-menu__item_active' : '' ?>">
             <a href="javascript:void(0)" id="tab_graph" class="b-menu__link">
-                <span class="b-menu__b1">Графики</span>
+                <span class="b-menu__b1">Р“СЂР°С„РёРєРё</span>
             </a>
         </li>
         <li class="b-menu__item <?= $tab === 'table' ? 'b-menu__item_active' : '' ?>">
             <a href="javascript:void(0)" id="tab_table" class="b-menu__link">
-                <span class="b-menu__b1">Таблица</span>
+                <span class="b-menu__b1">РўР°Р±Р»РёС†Р°</span>
             </a>
         </li>
     </ul>
@@ -110,7 +110,7 @@ include("inner_graph.php");
         $('tab_graph').addEvent('click', switchToGraph);
         $('tab_table').addEvent('click', switchToTable);
         
-        // переключает на вкладку ГРАФИКИ
+        // РїРµСЂРµРєР»СЋС‡Р°РµС‚ РЅР° РІРєР»Р°РґРєСѓ Р“Р РђР¤РРљР
         function switchToGraph () {
             $('show_results_tab').set('value', 'graph');
             $('tab_graph').getParent('li').addClass('b-menu__item_active');
@@ -119,7 +119,7 @@ include("inner_graph.php");
             $('sbr_stat_table').setStyle('display', 'none');
         }
         
-        // переключает на вкладку ТАБЛИЦА
+        // РїРµСЂРµРєР»СЋС‡Р°РµС‚ РЅР° РІРєР»Р°РґРєСѓ РўРђР‘Р›РР¦Рђ
         function switchToTable () {
             $('show_results_tab').set('value', 'table');
             $('tab_graph').getParent('li').removeClass('b-menu__item_active');
@@ -128,12 +128,12 @@ include("inner_graph.php");
             $('sbr_stat_table').setStyle('display', '');
         }
         
-        // корректируем ширину внутренней таблицы (потомучто страница резиновая)
+        // РєРѕСЂСЂРµРєС‚РёСЂСѓРµРј С€РёСЂРёРЅСѓ РІРЅСѓС‚СЂРµРЅРЅРµР№ С‚Р°Р±Р»РёС†С‹ (РїРѕС‚РѕРјСѓС‡С‚Рѕ СЃС‚СЂР°РЅРёС†Р° СЂРµР·РёРЅРѕРІР°СЏ)
         var div = $('sbr_stat_table_data');
         var width = div.getParent().getSize().x;
         div.setStyle('width', width);
         
-        // переключаем на нужную вкладку
+        // РїРµСЂРµРєР»СЋС‡Р°РµРј РЅР° РЅСѓР¶РЅСѓСЋ РІРєР»Р°РґРєСѓ
         var tab = '<?= $tab ?>';
         tab === 'table' ? switchToTable() : switchToGraph();
     });

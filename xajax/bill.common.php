@@ -31,10 +31,10 @@ $xajax->register(XAJAX_FUNCTION, "ShowReserveText");
 //$xajax->register(XAJAX_FUNCTION, "walletRevoke");
 $xajax->register(XAJAX_FUNCTION, "removeBillInvoice");
 
-//Áûñòðàÿ îïëàòà
+//Ð‘Ñ‹ÑÑ‚Ñ€Ð°Ñ Ð¾Ð¿Ð»Ð°Ñ‚Ð°
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPaymentProcess", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quick_payment.server.php"));
 
-//Àÿêñ îáðàáîò÷èêè ïîïàïà ïîêóïêè ÏÐÎ
+//ÐÑÐºÑ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚Ñ‡Ð¸ÐºÐ¸ Ð¿Ð¾Ð¿Ð°Ð¿Ð° Ð¿Ð¾ÐºÑƒÐ¿ÐºÐ¸ ÐŸÐ Ðž
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROPayAccount", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROGetYandexKassaLink", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));
 $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROGetPlatipotomLink", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));

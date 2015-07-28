@@ -13,7 +13,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/classes/sms_services.php');
 var LIMIT_EXCEED_LINK_TEXT = '<?=sms_gate::LIMIT_EXCEED_LINK_TEXT ?>';
 var LIMIT_SMS_TO_NUMBER = '<?=sms_gate::SMS_ON_NUMBER_PER_24_HOURS ?>';
 <?php
-$linkText     = ( $_SESSION['send_sms_time'] > time() && !$_SESSION["unbind_phone_action"] ? "Получить код повторно" : "Получить смс с кодом" );
+$linkText     = ( $_SESSION['send_sms_time'] > time() && !$_SESSION["unbind_phone_action"] ? "РџРѕР»СѓС‡РёС‚СЊ РєРѕРґ РїРѕРІС‚РѕСЂРЅРѕ" : "РџРѕР»СѓС‡РёС‚СЊ СЃРјСЃ СЃ РєРѕРґРѕРј" );
 $smsLinkEnable  = sms_gate_a1::$enable_link_css;
 $smsLinkDisable = sms_gate_a1::$disable_link_css;
 $smsLinkStyle = $_SESSION['send_sms_time'] > time() ? $smsLinkDisable : $smsLinkEnable;
@@ -36,7 +36,7 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
 <? if(is_emp ()) { ?>
 <form action="." method="post">
 <div class="b-layout b-layout_padtop_20">
-		  <h2 class="b-layout__title">Основные настройки</h2>
+		  <h2 class="b-layout__title">РћСЃРЅРѕРІРЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё</h2>
 <? if ($info || $error) { ?>
 	<? if ($info) { print(view_info($info)); } ?>
 	<? if ($error) { print(view_error($error)); } ?>
@@ -46,7 +46,7 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
 <table class="b-layout__table">
    <tr class="b-layout__tr">
       <td class="b-layout__td b-layout__td_width_140 b-layout__td_padbot_20">
-          <div class="b-layout__txt b-layout__txt_padtop_5">Имя:</div>
+          <div class="b-layout__txt b-layout__txt_padtop_5">РРјСЏ:</div>
       </td>
       <td class="b-layout__td b-layout__td_padbot_20">
           <div class="b-combo">
@@ -59,7 +59,7 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
    </tr>
    <tr class="b-layout__tr">
       <td class="b-layout__td b-layout__td_width_140 b-layout__td_padbot_20">
-          <div class="b-layout__txt b-layout__txt_padtop_5">Фамилия:</div>
+          <div class="b-layout__txt b-layout__txt_padtop_5">Р¤Р°РјРёР»РёСЏ:</div>
       </td>
       <td class="b-layout__td b-layout__td_padbot_20">
           <div class="b-combo">
@@ -72,7 +72,7 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
    </tr>
    <tr class="b-layout__tr">
       <td class="b-layout__td b-layout__td_width_140 b-layout__td_padbot_20">
-          <div class="b-layout__txt b-layout__txt_padtop_5">Электронная почта:</div>
+          <div class="b-layout__txt b-layout__txt_padtop_5">Р­Р»РµРєС‚СЂРѕРЅРЅР°СЏ РїРѕС‡С‚Р°:</div>
       </td>
       <td class="b-layout__td b-layout__td_padbot_20">
           <div class="b-combo">
@@ -85,7 +85,7 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
    </tr>
    <tr class="b-layout__tr">
       <td class="b-layout__td b-layout__td_width_140 b-layout__td_padbot_20">
-          <div class="b-layout__txt b-layout__txt_padtop_5">Заголовок страницы:</div>
+          <div class="b-layout__txt b-layout__txt_padtop_5">Р—Р°РіРѕР»РѕРІРѕРє СЃС‚СЂР°РЅРёС†С‹:</div>
       </td>
       <td class="b-layout__td b-layout__td_padbot_20">
           <div class="b-combo">
@@ -97,7 +97,7 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
    </tr>
    <tr class="b-layout__tr">
       <td class="b-layout__td b-layout__td_width_140">
-          <div class="b-layout__txt b-layout__txt_padtop_5">Введите пароль:</div>
+          <div class="b-layout__txt b-layout__txt_padtop_5">Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ:</div>
       </td>
       <td class="b-layout__td">
           <div class="b-combo">
@@ -111,14 +111,14 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
    <tr class="b-layout__tr">
        <td class="b-layout__td b-layout__td_width_140 b-layout__td_padbot_20">&nbsp;</td>
        <td class="b-layout__td b-layout__td_padbot_20">
-           <div class="b-layout__txt"><a href="/users/<?= $user->login ?>/setup/pwd/" class="b-layout__link">Изменить пароль</a></div>
+           <div class="b-layout__txt"><a href="/users/<?= $user->login ?>/setup/pwd/" class="b-layout__link">РР·РјРµРЅРёС‚СЊ РїР°СЂРѕР»СЊ</a></div>
        </td>
    </tr>
    <tr class="b-layout__tr">
       <td class="b-layout__td b-layout__td_width_140 b-layout__td_padbot_20">&#160;</td>
       <td class="b-layout__td b-layout__td_padbot_20">
           <div class="b-buttons">
-              <button class="b-button b-button_flat b-button_flat_green" type="submit" name="btn">Изменить</button>
+              <button class="b-button b-button_flat b-button_flat_green" type="submit" name="btn">РР·РјРµРЅРёС‚СЊ</button>
           </div>
       </td>
    </tr>
@@ -138,7 +138,7 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
 
     <form action="." method="post">
       <div class="b-layout b-layout_padtop_20">
-		  <h2 class="b-layout__title">Основные настройки</h2>
+		  <h2 class="b-layout__title">РћСЃРЅРѕРІРЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё</h2>
 <? if ($info || $error) { ?>
 	<? if ($info) { print(view_info($info)); } ?>
 	<? if ($error) { print(view_error($error)); } ?>
@@ -146,7 +146,7 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
               <table class="b-layout__table">
                  <tr class="b-layout__tr">
                     <td class="b-layout__td b-layout__td_width_140 b-layout__td_padbot_20">
-                        <div class="b-layout__txt b-layout__txt_padtop_5">Имя:</div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5">РРјСЏ:</div>
                     </td>
                     <td class="b-layout__td b-layout__td_padbot_20">
                         <div class="b-combo">
@@ -159,7 +159,7 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
                  </tr>
                  <tr class="b-layout__tr">
                     <td class="b-layout__td b-layout__td_width_140 b-layout__td_padbot_20">
-                        <div class="b-layout__txt b-layout__txt_padtop_5">Фамилия:</div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5">Р¤Р°РјРёР»РёСЏ:</div>
                     </td>
                     <td class="b-layout__td b-layout__td_padbot_20">
                         <div class="b-combo">
@@ -172,7 +172,7 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
                  </tr>
                  <tr class="b-layout__tr">
                     <td class="b-layout__td b-layout__td_width_140 b-layout__td_padbot_20">
-                        <div class="b-layout__txt b-layout__txt_padtop_5">Электронная почта:</div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5">Р­Р»РµРєС‚СЂРѕРЅРЅР°СЏ РїРѕС‡С‚Р°:</div>
                     </td>
                     <td class="b-layout__td b-layout__td_padbot_20">
                         <div class="b-combo">
@@ -185,7 +185,7 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
                  </tr>
                  <tr class="b-layout__tr">
                     <td class="b-layout__td b-layout__td_width_140 b-layout__td_padbot_20">
-                        <div class="b-layout__txt b-layout__txt_padtop_5">Заголовок страницы:</div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5">Р—Р°РіРѕР»РѕРІРѕРє СЃС‚СЂР°РЅРёС†С‹:</div>
                     </td>
                     <td class="b-layout__td b-layout__td_padbot_20">
                         <div class="b-combo">
@@ -197,7 +197,7 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
                  </tr>
                  <tr class="b-layout__tr">
                     <td class="b-layout__td b-layout__td_width_140">
-                        <div class="b-layout__txt b-layout__txt_padtop_5">Введите пароль:</div>
+                        <div class="b-layout__txt b-layout__txt_padtop_5">Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ:</div>
                     </td>
                     <td class="b-layout__td">
                         <div class="b-combo">
@@ -211,14 +211,14 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
                  <tr class="b-layout__tr">
                      <td class="b-layout__td b-layout__td_width_140 b-layout__td_padbot_20">&nbsp;</td>
                     <td class="b-layout__td b-layout__td_padbot_20">
-                        <div class="b-layout__txt"><a href="/users/<?=$user->login?>/setup/pwd/" class="b-layout__link">Изменить пароль</a></div>
+                        <div class="b-layout__txt"><a href="/users/<?=$user->login?>/setup/pwd/" class="b-layout__link">РР·РјРµРЅРёС‚СЊ РїР°СЂРѕР»СЊ</a></div>
                     </td>
                  </tr>
                  <tr class="b-layout__tr">
                     <td class="b-layout__td b-layout__td_width_140 b-layout__td_padbot_20">&#160;</td>
                     <td class="b-layout__td b-layout__td_padbot_20">
                         <div class="b-buttons">
-                            <button class="b-button b-button_flat b-button_flat_green" type="submit" name="btn">Изменить</button>
+                            <button class="b-button b-button_flat b-button_flat_green" type="submit" name="btn">РР·РјРµРЅРёС‚СЊ</button>
                         </div>
                     </td>
                  </tr>
@@ -228,9 +228,9 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
     </form>
 <?} ?>
 
-    <h3 class="b-layout__h3 b-layout__h3_padtop_17">Привязка аккаунтов в социальных сетях</h3>
+    <h3 class="b-layout__h3 b-layout__h3_padtop_17">РџСЂРёРІСЏР·РєР° Р°РєРєР°СѓРЅС‚РѕРІ РІ СЃРѕС†РёР°Р»СЊРЅС‹С… СЃРµС‚СЏС…</h3>
     <div class="b-layout__txt b-layout__txt_padbot_10">
-        Привязав ваш профиль к аккаунтам VKontakte, Facebook, Odnoklassniki, вы сможете заходить на сайт, авторизовавшись в одной из социальных сетей.
+        РџСЂРёРІСЏР·Р°РІ РІР°С€ РїСЂРѕС„РёР»СЊ Рє Р°РєРєР°СѓРЅС‚Р°Рј VKontakte, Facebook, Odnoklassniki, РІС‹ СЃРјРѕР¶РµС‚Рµ Р·Р°С…РѕРґРёС‚СЊ РЅР° СЃР°Р№С‚, Р°РІС‚РѕСЂРёР·РѕРІР°РІС€РёСЃСЊ РІ РѕРґРЅРѕР№ РёР· СЃРѕС†РёР°Р»СЊРЅС‹С… СЃРµС‚РµР№.
     </div>
     <div class="b-layout b-layout_margbot_30">
         <?php if ($social_bind_error): ?>
@@ -243,7 +243,7 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
                <?=isset($social_links[OpauthModel::TYPE_VK]) ? 'target="blank"' : ''?>
                class="b-layout__link b-layout__link_lineheight_34 b-layout__link_valign_top">
                 <span class="b-auth_btn b-auth_mini b-auth_btn_vk b-auth_margright_5 b-auth_btn_float_left">
-                </span><?=isset($social_links[OpauthModel::TYPE_VK]) ? $social_links[OpauthModel::TYPE_VK] : 'Привязать VKontakte-аккаунт к профилю'?>
+                </span><?=isset($social_links[OpauthModel::TYPE_VK]) ? $social_links[OpauthModel::TYPE_VK] : 'РџСЂРёРІСЏР·Р°С‚СЊ VKontakte-Р°РєРєР°СѓРЅС‚ Рє РїСЂРѕС„РёР»СЋ'?>
             </a>
         </div>
         <div class="b-layout__txt">
@@ -251,7 +251,7 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
                <?=isset($social_links[OpauthModel::TYPE_FACEBOOK]) ? 'target="blank"' : ''?>
                class="b-layout__link b-layout__link_lineheight_34 b-layout__link_valign_top">
                 <span class="b-auth_btn b-auth_mini b-auth_btn_facebook b-auth_margright_5 b-auth_btn_float_left">
-                </span><?=isset($social_links[OpauthModel::TYPE_FACEBOOK]) ? $social_links[OpauthModel::TYPE_FACEBOOK] : 'Привязать Facebook-аккаунт к профилю'?>
+                </span><?=isset($social_links[OpauthModel::TYPE_FACEBOOK]) ? $social_links[OpauthModel::TYPE_FACEBOOK] : 'РџСЂРёРІСЏР·Р°С‚СЊ Facebook-Р°РєРєР°СѓРЅС‚ Рє РїСЂРѕС„РёР»СЋ'?>
             </a>
         </div>
         <div class="b-layout__txt">
@@ -259,14 +259,14 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
                <?=isset($social_links[OpauthModel::TYPE_ODNOKLASSNIKI]) ? 'target="blank"' : ''?>
                class="b-layout__link b-layout__link_lineheight_34 b-layout__link_valign_top">
                 <span class="b-auth_btn b-auth_mini b-auth_btn_odnoklassniki b-auth_margright_5 b-auth_btn_float_left">
-                </span><?=isset($social_links[OpauthModel::TYPE_ODNOKLASSNIKI]) ? $social_links[OpauthModel::TYPE_ODNOKLASSNIKI] : 'Привязать Odnoklassniki-аккаунт к профилю'?>
+                </span><?=isset($social_links[OpauthModel::TYPE_ODNOKLASSNIKI]) ? $social_links[OpauthModel::TYPE_ODNOKLASSNIKI] : 'РџСЂРёРІСЏР·Р°С‚СЊ Odnoklassniki-Р°РєРєР°СѓРЅС‚ Рє РїСЂРѕС„РёР»СЋ'?>
             </a>
         </div>
     </div>
     
 
-    <h3 class="b-layout__h3">Привязка мобильного телефона <span class="b-layout__txt <?= ( $reqv['is_activate_mob'] == 't' ? 'b-layout__txt_color_6bb336' : 'b-layout__txt_color_c10600' ); ?> b-layout__txt_fontsize_15" id="safety_status"><?= ( $reqv['is_activate_mob'] == 't' ? 'включена' : 'выключена' ); ?></span></h3>
-    <div class="b-layout__txt">Телефон</div>
+    <h3 class="b-layout__h3">РџСЂРёРІСЏР·РєР° РјРѕР±РёР»СЊРЅРѕРіРѕ С‚РµР»РµС„РѕРЅР° <span class="b-layout__txt <?= ( $reqv['is_activate_mob'] == 't' ? 'b-layout__txt_color_6bb336' : 'b-layout__txt_color_c10600' ); ?> b-layout__txt_fontsize_15" id="safety_status"><?= ( $reqv['is_activate_mob'] == 't' ? 'РІРєР»СЋС‡РµРЅР°' : 'РІС‹РєР»СЋС‡РµРЅР°' ); ?></span></h3>
+    <div class="b-layout__txt">РўРµР»РµС„РѕРЅ</div>
     <form method="POST" id='main_phone_form'>
         <input type="hidden" name="type" id="type" value="<?= $reqv['is_activate_mob'] == 't' ? 'unbind' : 'bind';?>" />
         <input type="hidden" name="action" value="save_phone" />
@@ -283,28 +283,28 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
             <?php if ($reqv['is_activate_mob'] == 't') { ?>
             &#160;&#160;
             <div class="b-layout__txt <?= !($error_phone['code'] && !$post_safety_phone) ? "" : "b-layout__txt_hide"?> b-layout__txt_inline-block b-layout__txt_fontsize_11">
-                <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8 sms_unbind_link" href="javascript:void(0)">Отвязать</a>
+                <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8 sms_unbind_link" href="javascript:void(0)">РћС‚РІСЏР·Р°С‚СЊ</a>
             </div>
             <span class="<?= $reqv['is_activate_mob'] == 't' && !($error_phone['code'] && !$post_safety_phone) ? "" : "b-layout__txt_hide"?>" id="safety_phone_block">
                 <div class="b-check b-check_padbot_10 b-check_padtop_20 safety_phone_checks">
                     <input type="hidden" name="def_only_phone" value="<?= ($o_only_phone == 't' ? 1 : 0 ); ?>" />
-                    <input class="b-check__input" name="only_phone" id="only_phone" value="t" type="checkbox" <?= ( ($o_only_phone == 't' && !$post_safety_phone) || $only_phone == 't' ? 'checked="checked"' : '' ); ?> <?= ( $reqv['is_activate_mob'] == 't' ? '' : 'disabled'); ?>/> <label class="b-check__label b-check__label_fontsize_13" for="only_phone">Восстанавливать пароль <span class="b-page__iphone"><br></span> только на мобильный телефон</label>
+                    <input class="b-check__input" name="only_phone" id="only_phone" value="t" type="checkbox" <?= ( ($o_only_phone == 't' && !$post_safety_phone) || $only_phone == 't' ? 'checked="checked"' : '' ); ?> <?= ( $reqv['is_activate_mob'] == 't' ? '' : 'disabled'); ?>/> <label class="b-check__label b-check__label_fontsize_13" for="only_phone">Р’РѕСЃСЃС‚Р°РЅР°РІР»РёРІР°С‚СЊ РїР°СЂРѕР»СЊ <span class="b-page__iphone"><br></span> С‚РѕР»СЊРєРѕ РЅР° РјРѕР±РёР»СЊРЅС‹Р№ С‚РµР»РµС„РѕРЅ</label>
                 </div>
                 <div class="b-check b-check_padbot_10 safety_phone_check safety_phone_checks">
                     <input type="hidden" name="def_finance_safety_phone" value="<?= ($reqv['is_safety_mob'] == 't' ? 1 : 0 ); ?>" />
-                    <input class="b-check__input" id="finance_safety_phone" name="finance_safety_phone" value="t" type="checkbox" <?= ( ( $reqv['is_safety_mob'] == 't' && !$post_safety_phone) || $finance_safety_phone == 't' ? 'checked="checked"' : '' ); ?> <?= ( $reqv['is_activate_mob'] == 't' ? '' : 'disabled'); ?>/> <label class="b-check__label b-check__label_fontsize_13" for="finance_safety_phone" >Вход на страницу &laquo;Финансы&raquo; &mdash; <span class="b-page__iphone"><br></span> только через код из смс-сообщения</label>
+                    <input class="b-check__input" id="finance_safety_phone" name="finance_safety_phone" value="t" type="checkbox" <?= ( ( $reqv['is_safety_mob'] == 't' && !$post_safety_phone) || $finance_safety_phone == 't' ? 'checked="checked"' : '' ); ?> <?= ( $reqv['is_activate_mob'] == 't' ? '' : 'disabled'); ?>/> <label class="b-check__label b-check__label_fontsize_13" for="finance_safety_phone" >Р’С…РѕРґ РЅР° СЃС‚СЂР°РЅРёС†Сѓ &laquo;Р¤РёРЅР°РЅСЃС‹&raquo; &mdash; <span class="b-page__iphone"><br></span> С‚РѕР»СЊРєРѕ С‡РµСЂРµР· РєРѕРґ РёР· СЃРјСЃ-СЃРѕРѕР±С‰РµРЅРёСЏ</label>
                 </div>
 
                 <div class="b-buttons b-buttons_padtop_20 b-layout__txt_hide button_first_save">
-                    <a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green">Сохранить изменения</a>
-                    <span class="b-buttons__txt">&nbsp;&nbsp;&nbsp;или&nbsp;&nbsp;&nbsp;</span><a href="javascript:void(0)" class="b-buttons__link b-buttons__link_dot_0f71c8 first_cancel_btn">отменить</a>
+                    <a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green">РЎРѕС…СЂР°РЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ</a>
+                    <span class="b-buttons__txt">&nbsp;&nbsp;&nbsp;РёР»Рё&nbsp;&nbsp;&nbsp;</span><a href="javascript:void(0)" class="b-buttons__link b-buttons__link_dot_0f71c8 first_cancel_btn">РѕС‚РјРµРЅРёС‚СЊ</a>
                 </div>
             </span>
            
             <div class="sms_form b-layout__txt <?= $error_phone['code'] ? "" : "b-layout__txt_hide"?> b-layout__txt_padtop_10">
-                <h3 class="b-layout__h3 title"><?= !$post_safety_phone ? "Отвязать телефон" : "Подтверждение действий"?></h3>
-                <div id="was_send_sms_text" class="b-layout__txt b-layout__txt_padbot_5" <?php if ( $_SESSION['send_sms_time'] >= time() ) { ?> style="display:none"<? } ?>>На номер <?= $ureqv['mob_phone']?> было отправлено СМС с <?= sms_gate::LENGTH_CODE?> цифрами.</div>
-                <div id="was_send_sms_text2" class="b-layout__txt b-layout__txt_padbot_5" <?php if ( $_SESSION['send_sms_time'] >= time() ) { ?> style="display:none"<? } ?>>Введите их:</div>
+                <h3 class="b-layout__h3 title"><?= !$post_safety_phone ? "РћС‚РІСЏР·Р°С‚СЊ С‚РµР»РµС„РѕРЅ" : "РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РґРµР№СЃС‚РІРёР№"?></h3>
+                <div id="was_send_sms_text" class="b-layout__txt b-layout__txt_padbot_5" <?php if ( $_SESSION['send_sms_time'] >= time() ) { ?> style="display:none"<? } ?>>РќР° РЅРѕРјРµСЂ <?= $ureqv['mob_phone']?> Р±С‹Р»Рѕ РѕС‚РїСЂР°РІР»РµРЅРѕ РЎРњРЎ СЃ <?= sms_gate::LENGTH_CODE?> С†РёС„СЂР°РјРё.</div>
+                <div id="was_send_sms_text2" class="b-layout__txt b-layout__txt_padbot_5" <?php if ( $_SESSION['send_sms_time'] >= time() ) { ?> style="display:none"<? } ?>>Р’РІРµРґРёС‚Рµ РёС…:</div>
                 <div class="b-combo b-combo_inline-block b-combo_valign_mid">
                     <div class="b-combo__input b-combo__input_width_45 <?= $error_phone['code'] ? "b-combo__input_error" : ""?>">
                         <input class="b-combo__input-text" type="text" id="smscode" name="smscode">              
@@ -314,20 +314,20 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
                     <a class="b-layout__link b-layout__link_fontsize_11 <?=$smsLinkStyle ?>" href="javascript:void(0)" data-field="mob_phone" data-code="smscode" data-form="main_phone_form" id="getsms"><?=$linkText ?></a>
                 </div>
                 <div class="b-buttons b-buttons_padtop_20">
-                    <a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green sms_valid_send"><?= !$post_safety_phone ? "Отвязать" : "Сохранить изменения"?></a><span class="b-buttons__txt">&nbsp;&nbsp;&nbsp;или&nbsp;&nbsp;&nbsp;</span><a href="javascript:void(0)" class="b-buttons__link b-buttons__link_dot_0f71c8  sms_cancel_change">отменить</a>
+                    <a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green sms_valid_send"><?= !$post_safety_phone ? "РћС‚РІСЏР·Р°С‚СЊ" : "РЎРѕС…СЂР°РЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ"?></a><span class="b-buttons__txt">&nbsp;&nbsp;&nbsp;РёР»Рё&nbsp;&nbsp;&nbsp;</span><a href="javascript:void(0)" class="b-buttons__link b-buttons__link_dot_0f71c8  sms_cancel_change">РѕС‚РјРµРЅРёС‚СЊ</a>
                 </div>
             </div>
             
             
             
             <?php } else {//if?>
-                <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block <?= $error_phone['phone'] ? "b-layout__txt_hide" : ""?>" id="phone_bind">Введите номер телефона без пробелов и дефиса</div>
+                <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block <?= $error_phone['phone'] ? "b-layout__txt_hide" : ""?>" id="phone_bind">Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° Р±РµР· РїСЂРѕР±РµР»РѕРІ Рё РґРµС„РёСЃР°</div>
                 <? if($error_phone['phone']) { ?>
                 <div class="b-layout__txt b-layout__txt_color_c4271f b-layout__txt_fontsize_11 b-layout__txt_inline-block" id="phone_error"><?= $error_phone['phone']?></div>
                 <? } ?>
                 <div class="b-layout__txt b-layout__txt_padtop_20 sms_form <?= $reqv['is_activate_mob'] == 't' ? "b-layout__txt_hide": ""?>">
                     <div class="b-layout__txt b-layout__txt_padbot_15">
-                        <div class="b-layout__txt b-layout__txt_inline-block">Введите код</div>
+                        <div class="b-layout__txt b-layout__txt_inline-block">Р’РІРµРґРёС‚Рµ РєРѕРґ</div>
                         <div class="b-combo b-combo_inline-block b-combo_valign_mid">
                             <div class="b-combo__input b-combo__input_width_45 <?= $error_phone['code'] ? "b-combo__input_error" : ""?>">
                                 <input class="b-combo__input-text " type="text" id="smscode" name="smscode">              
@@ -335,7 +335,7 @@ if (strlen($ureqv['mob_phone']) > 10 ) {
                         </div>
                         <div class="b-layout__txt b-layout__txt_inline-block"><a class="b-layout__link b-layout__link_fontsize_11 <?=$smsLinkStyle ?>" href="javascript:void(0)" data-field="mob_phone" data-code="smscode" data-form="main_phone_form" id="getsms"><?=$linkText ?></a></div>
                     </div>
-                    <a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green sms_valid_send">Активировать</a>
+                    <a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green sms_valid_send">РђРєС‚РёРІРёСЂРѕРІР°С‚СЊ</a>
                 </div>
             <?php }//else?>
             

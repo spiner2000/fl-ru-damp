@@ -1,7 +1,7 @@
-<?php // Обработка событий на сайте и отправка результатов в Google Analytics ?>
+<?php // РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёР№ РЅР° СЃР°Р№С‚Рµ Рё РѕС‚РїСЂР°РІРєР° СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РІ Google Analytics ?>
 <script type='text/javascript'>
     window.addEvent('domready', function() {
-        <?php if (Zend_Registry::isRegistered('action.render_project_page_after_publishing')): // публикация проекта ?>
+        <?php if (Zend_Registry::isRegistered('action.render_project_page_after_publishing')): // РїСѓР±Р»РёРєР°С†РёСЏ РїСЂРѕРµРєС‚Р° ?>
             <?php $project = new_projects::initData(Zend_Registry::get('project')); ?>
             ga('send', 'event', 'Projects', '<?=$project->getKindIdent();?>_created');
         <?php endif; ?>
@@ -56,7 +56,7 @@
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
-var yaParams = {/*Здесь параметры визита электронной торговли*/};
+var yaParams = {/*Р—РґРµСЃСЊ РїР°СЂР°РјРµС‚СЂС‹ РІРёР·РёС‚Р° СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ С‚РѕСЂРіРѕРІР»Рё*/};
 </script>
 
 <script type="text/javascript">

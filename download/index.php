@@ -1,8 +1,8 @@
 <?php
 
-//Отключаем запуск основного приложения
-//и инклудим библиотеки сами ниже 
-//чтобы создать минимальное окружение
+//РћС‚РєР»СЋС‡Р°РµРј Р·Р°РїСѓСЃРє РѕСЃРЅРѕРІРЅРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ
+//Рё РёРЅРєР»СѓРґРёРј Р±РёР±Р»РёРѕС‚РµРєРё СЃР°РјРё РЅРёР¶Рµ 
+//С‡С‚РѕР±С‹ СЃРѕР·РґР°С‚СЊ РјРёРЅРёРјР°Р»СЊРЅРѕРµ РѕРєСЂСѓР¶РµРЅРёРµ
 define('IN_STDF', 1);
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/stdf.php');
@@ -18,9 +18,9 @@ require_once(__DIR__ . '/controllers/DownloadController.php');
 
 session_start();
 
-//Пока такой хак чтобы отдельно 
-//конфиг не делать для миниокружения
-//так в DAV там хост другой
+//РџРѕРєР° С‚Р°РєРѕР№ С…Р°Рє С‡С‚РѕР±С‹ РѕС‚РґРµР»СЊРЅРѕ 
+//РєРѕРЅС„РёРі РЅРµ РґРµР»Р°С‚СЊ РґР»СЏ РјРёРЅРёРѕРєСЂСѓР¶РµРЅРёСЏ
+//С‚Р°Рє РІ DAV С‚Р°Рј С…РѕСЃС‚ РґСЂСѓРіРѕР№
 if (is_release()) {
     $host = HTTP_PREFIX . 'www.fl.ru';
 } elseif (is_beta()) {
@@ -34,5 +34,5 @@ $path = __paramInit('string', 'path', 'path');
 $module = new CModule('download');
 $module->setBasePath(dirname(__FILE__));
 $controller = new DownloadController('download', $module);
-$controller->init($path); // инициализация контролера
-$controller->run('index'); // запуск обработчика
+$controller->init($path); // РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєРѕРЅС‚СЂРѕР»РµСЂР°
+$controller->run('index'); // Р·Р°РїСѓСЃРє РѕР±СЂР°Р±РѕС‚С‡РёРєР°

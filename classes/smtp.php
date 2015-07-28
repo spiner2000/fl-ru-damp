@@ -3,79 +3,79 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/classes/stdf.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/users.php';
 setlocale(LC_TIME, "ru_RU");
 /**
- * SMTP Mail API. Класс для отправки сообщение SMTP серверу.
- * Родитель для классов smail и pmail.
+ * SMTP Mail API. РљР»Р°СЃСЃ РґР»СЏ РѕС‚РїСЂР°РІРєРё СЃРѕРѕР±С‰РµРЅРёРµ SMTP СЃРµСЂРІРµСЂСѓ.
+ * Р РѕРґРёС‚РµР»СЊ РґР»СЏ РєР»Р°СЃСЃРѕРІ smail Рё pmail.
  *
  */
 class SMTP {
 
     /**
-     * Обратный адрес сервиса.
+     * РћР±СЂР°С‚РЅС‹Р№ Р°РґСЂРµСЃ СЃРµСЂРІРёСЃР°.
      *
      * @var string
      */
 	public $from = 'FL.ru <no_reply@free-lance.ru>';
 
     /**
-     * Получатель письма, например Федя <fedya@mail.ru>.
+     * РџРѕР»СѓС‡Р°С‚РµР»СЊ РїРёСЃСЊРјР°, РЅР°РїСЂРёРјРµСЂ Р¤РµРґСЏ <fedya@mail.ru>.
      *
      * @var string
      */
 	public $recipient = '';
 
     /**
-     * Тема письма.
+     * РўРµРјР° РїРёСЃСЊРјР°.
      *
      * @var string
      */
 	public $subject = '';
 
     /**
-     * Текст письма.
+     * РўРµРєСЃС‚ РїРёСЃСЊРјР°.
      *
      * @var string
      */
 	public $message = '';
 	
     /**
-     * Лог сообщений между сервером и скриптом для текущего объекта.
-	 * Сохраняются только системные сообщения без тела письма.
+     * Р›РѕРі СЃРѕРѕР±С‰РµРЅРёР№ РјРµР¶РґСѓ СЃРµСЂРІРµСЂРѕРј Рё СЃРєСЂРёРїС‚РѕРј РґР»СЏ С‚РµРєСѓС‰РµРіРѕ РѕР±СЉРµРєС‚Р°.
+	 * РЎРѕС…СЂР°РЅСЏСЋС‚СЃСЏ С‚РѕР»СЊРєРѕ СЃРёСЃС‚РµРјРЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ Р±РµР· С‚РµР»Р° РїРёСЃСЊРјР°.
      *
      * @var string
      */
 	public $log = '';
 
     /**
-     * Количество успешно отправленных сообщений.
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ СѓСЃРїРµС€РЅРѕ РѕС‚РїСЂР°РІР»РµРЅРЅС‹С… СЃРѕРѕР±С‰РµРЅРёР№.
      *
      * @var integer
      */
 	public $sended = 0;
 
     /**
-     * Хост SMTP сервера.
+     * РҐРѕСЃС‚ SMTP СЃРµСЂРІРµСЂР°.
      *
      * @var string
      */
 	protected $server = 'localhost';
 
     /**
-     * Порт SMTP сервера.
+     * РџРѕСЂС‚ SMTP СЃРµСЂРІРµСЂР°.
      *
      * @var string
      */
 	protected $port = 25;
 
     /**
-     * Кодировка отправляемых писем.
-	 * Если потребуется изменить, необходимо еще поправить self::charset_convert().
+     * РљРѕРґРёСЂРѕРІРєР° РѕС‚РїСЂР°РІР»СЏРµРјС‹С… РїРёСЃРµРј.
+	 * Р•СЃР»Рё РїРѕС‚СЂРµР±СѓРµС‚СЃСЏ РёР·РјРµРЅРёС‚СЊ, РЅРµРѕР±С…РѕРґРёРјРѕ РµС‰Рµ РїРѕРїСЂР°РІРёС‚СЊ self::charset_convert().
      *
      * @var string
      */
 	protected $charset = 'windows-1251';
 	
     /**
-     * Массив с прикрепленными файлами
+     * РњР°СЃСЃРёРІ СЃ РїСЂРёРєСЂРµРїР»РµРЅРЅС‹РјРё С„Р°Р№Р»Р°РјРё
 	 * @see self::AttachFile()
      *
      * @var array
@@ -83,30 +83,30 @@ class SMTP {
 	public $attaches = array();
 
     /**
-     * Количество прикрепленных файлов
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРёРєСЂРµРїР»РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ
      *
      * @var integer
      */
 	private $attaches_nums = 0;
 
     /**
-     * Сокет к SMTP серверу
-	 * Один для всех создаваемых объектов.
+     * РЎРѕРєРµС‚ Рє SMTP СЃРµСЂРІРµСЂСѓ
+	 * РћРґРёРЅ РґР»СЏ РІСЃРµС… СЃРѕР·РґР°РІР°РµРјС‹С… РѕР±СЉРµРєС‚РѕРІ.
      *
 	 * @var resource
      */
 	protected static $socket = NULL;
 
     /**
-     * Количество созданных объектов класса.
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕР·РґР°РЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ РєР»Р°СЃСЃР°.
      *
 	 * @var integer
      */
 	protected static $objects = 0;
 	
     /**
-     * Лог сообщений между сервером и скриптом для всех объектов этого класса.
-	 * Сохраняются только системные сообщения без тела письма.
+     * Р›РѕРі СЃРѕРѕР±С‰РµРЅРёР№ РјРµР¶РґСѓ СЃРµСЂРІРµСЂРѕРј Рё СЃРєСЂРёРїС‚РѕРј РґР»СЏ РІСЃРµС… РѕР±СЉРµРєС‚РѕРІ СЌС‚РѕРіРѕ РєР»Р°СЃСЃР°.
+	 * РЎРѕС…СЂР°РЅСЏСЋС‚СЃСЏ С‚РѕР»СЊРєРѕ СЃРёСЃС‚РµРјРЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ Р±РµР· С‚РµР»Р° РїРёСЃСЊРјР°.
      *
      * @var string
      */
@@ -137,18 +137,18 @@ class SMTP {
     }
     
     /**
-     * Обработка текста сообщения
+     * РћР±СЂР°Р±РѕС‚РєР° С‚РµРєСЃС‚Р° СЃРѕРѕР±С‰РµРЅРёСЏ
      */
     public function prepareMessage() {
         $this->message = preg_replace("~(http|https):/\{(.*?)\}?/([^<|^\s]*)~mix", '<a href="$1://$3" target="_blank">$2</a>', $this->message);
     }
     
     /**
-     * Отправка email сообщения
+     * РћС‚РїСЂР°РІРєР° email СЃРѕРѕР±С‰РµРЅРёСЏ
      * 
-     * @param  string $content_type  mime type сообщения
-     * @param  array  $files         массив с id прикрепленных файлов (file_template)
-     * @return integer               id письма (0 - ошибка)
+     * @param  string $content_type  mime type СЃРѕРѕР±С‰РµРЅРёСЏ
+     * @param  array  $files         РјР°СЃСЃРёРІ СЃ id РїСЂРёРєСЂРµРїР»РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ (file_template)
+     * @return integer               id РїРёСЃСЊРјР° (0 - РѕС€РёР±РєР°)
      */
     public function send($content_type='text/plain', $files = array()) {
         $DB   = new DB('spam');
@@ -183,11 +183,11 @@ class SMTP {
     
     
     /**
-     * Добавить адресатов к рассылке
+     * Р”РѕР±Р°РІРёС‚СЊ Р°РґСЂРµСЃР°С‚РѕРІ Рє СЂР°СЃСЃС‹Р»РєРµ
      * 
-     * @param  integer  $spamid  id письма для которой добавляем адресатов
-     * @param  boolean  $unset_recipient  можно ли уничтожать данные $this->recipient после использования?
-     * @return integer           id письма (0 - ошибка) 
+     * @param  integer  $spamid  id РїРёСЃСЊРјР° РґР»СЏ РєРѕС‚РѕСЂРѕР№ РґРѕР±Р°РІР»СЏРµРј Р°РґСЂРµСЃР°С‚РѕРІ
+     * @param  boolean  $unset_recipient  РјРѕР¶РЅРѕ Р»Рё СѓРЅРёС‡С‚РѕР¶Р°С‚СЊ РґР°РЅРЅС‹Рµ $this->recipient РїРѕСЃР»Рµ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ?
+     * @return integer           id РїРёСЃСЊРјР° (0 - РѕС€РёР±РєР°) 
      */
     public function bind($spamid, $unset_recipient = false) {
         $DB = new DB('spam');
@@ -232,14 +232,14 @@ class SMTP {
     
     
     /**
-	 * Отправляет сообщение.
-	 * При первом вызове открывает сокет к SMTP серверу (см. self::Connect()) и закрывает его в деструкторе.
+	 * РћС‚РїСЂР°РІР»СЏРµС‚ СЃРѕРѕР±С‰РµРЅРёРµ.
+	 * РџСЂРё РїРµСЂРІРѕРј РІС‹Р·РѕРІРµ РѕС‚РєСЂС‹РІР°РµС‚ СЃРѕРєРµС‚ Рє SMTP СЃРµСЂРІРµСЂСѓ (СЃРј. self::Connect()) Рё Р·Р°РєСЂС‹РІР°РµС‚ РµРіРѕ РІ РґРµСЃС‚СЂСѓРєС‚РѕСЂРµ.
 	 * 
-	 * @param   string   mime тип сообщения
-	 * @return  boolean  TRUE если сообщение отправлено; FALSE если не удалось отправить или установить соединение
+	 * @param   string   mime С‚РёРї СЃРѕРѕР±С‰РµРЅРёСЏ
+	 * @return  boolean  TRUE РµСЃР»Рё СЃРѕРѕР±С‰РµРЅРёРµ РѕС‚РїСЂР°РІР»РµРЅРѕ; FALSE РµСЃР»Рё РЅРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РїСЂР°РІРёС‚СЊ РёР»Рё СѓСЃС‚Р°РЅРѕРІРёС‚СЊ СЃРѕРµРґРёРЅРµРЅРёРµ
 	 */
 	public function SmtpMail($content_type='text/plain', &$files = array()) {
-		// если установлена константа SERVER == beta или IS_LOCAL, то почта будет отправлятся только адресатам из $TESTERS_MAIL
+		// РµСЃР»Рё СѓСЃС‚Р°РЅРѕРІР»РµРЅР° РєРѕРЅСЃС‚Р°РЅС‚Р° SERVER == beta РёР»Рё IS_LOCAL, С‚Рѕ РїРѕС‡С‚Р° Р±СѓРґРµС‚ РѕС‚РїСЂР°РІР»СЏС‚СЃСЏ С‚РѕР»СЊРєРѕ Р°РґСЂРµСЃР°С‚Р°Рј РёР· $TESTERS_MAIL
 		if ((defined('SERVER') && SERVER != 'release') || (defined('IS_LOCAL') && IS_LOCAL === TRUE)) {
 			if (preg_match("/<([^>]+)>$/", $this->recipient, $o)) {
 				$test = $o[1];
@@ -271,7 +271,7 @@ class SMTP {
 			return FALSE;
 		}
 
-		// формирование и отправка тела письма
+		// С„РѕСЂРјРёСЂРѕРІР°РЅРёРµ Рё РѕС‚РїСЂР°РІРєР° С‚РµР»Р° РїРёСЃСЊРјР°
 		$body = "Mime-Version: 1.0\r\n";
 		if (!empty($files)) {
 			$boundary = md5(uniqid(time()));
@@ -291,7 +291,7 @@ class SMTP {
 		$body .= "\r\n";
 		$body .= "{$message}\r\n\r\n";
 		fwrite(self::$socket, $body);
-		// атачи
+		// Р°С‚Р°С‡Рё
 		if (!empty($files)) {
 			for ($i=0; $i<count($files); $i++) {
 				if (!empty($files[$i])) {
@@ -311,11 +311,11 @@ class SMTP {
 
 	
     /**
-	 * Устанавливает соединение с SMTP сервером, если оно еще не было установлено.
-	 * Метод вызывается в self::Send() поэтому вызывать его явно обычно не требуется. Его может быть 
-	 * удобно вызывать перед отправкой пачки сообщений, чтобы заранее убедится что соединение установилось
+	 * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ СЃРѕРµРґРёРЅРµРЅРёРµ СЃ SMTP СЃРµСЂРІРµСЂРѕРј, РµСЃР»Рё РѕРЅРѕ РµС‰Рµ РЅРµ Р±С‹Р»Рѕ СѓСЃС‚Р°РЅРѕРІР»РµРЅРѕ.
+	 * РњРµС‚РѕРґ РІС‹Р·С‹РІР°РµС‚СЃСЏ РІ self::Send() РїРѕСЌС‚РѕРјСѓ РІС‹Р·С‹РІР°С‚СЊ РµРіРѕ СЏРІРЅРѕ РѕР±С‹С‡РЅРѕ РЅРµ С‚СЂРµР±СѓРµС‚СЃСЏ. Р•РіРѕ РјРѕР¶РµС‚ Р±С‹С‚СЊ 
+	 * СѓРґРѕР±РЅРѕ РІС‹Р·С‹РІР°С‚СЊ РїРµСЂРµРґ РѕС‚РїСЂР°РІРєРѕР№ РїР°С‡РєРё СЃРѕРѕР±С‰РµРЅРёР№, С‡С‚РѕР±С‹ Р·Р°СЂР°РЅРµРµ СѓР±РµРґРёС‚СЃСЏ С‡С‚Рѕ СЃРѕРµРґРёРЅРµРЅРёРµ СѓСЃС‚Р°РЅРѕРІРёР»РѕСЃСЊ
 	 *
-	 * @return   boolean   TRUE если соединение установлено; FALSE если установить соединение не удалось
+	 * @return   boolean   TRUE РµСЃР»Рё СЃРѕРµРґРёРЅРµРЅРёРµ СѓСЃС‚Р°РЅРѕРІР»РµРЅРѕ; FALSE РµСЃР»Рё СѓСЃС‚Р°РЅРѕРІРёС‚СЊ СЃРѕРµРґРёРЅРµРЅРёРµ РЅРµ СѓРґР°Р»РѕСЃСЊ
 	 */
 	public function Connect() {
 		if (self::$socket) return TRUE;
@@ -332,13 +332,13 @@ class SMTP {
 	
 
     /**
-	 * Закрывает соединение с SMTP сервером.
-	 * Метод вызывается в деструкторе, при уничтожении последнего созданного объекта класса,
-	 * поэтому вызывать его явно обычно не требуется.
-	 * Если его вызвать до того, как будет уничтожен последний объект и какой-либо объект в дальнейшем
-	 * еще будет отсылать письма, то соединение создастся заново (переподключится).
+	 * Р—Р°РєСЂС‹РІР°РµС‚ СЃРѕРµРґРёРЅРµРЅРёРµ СЃ SMTP СЃРµСЂРІРµСЂРѕРј.
+	 * РњРµС‚РѕРґ РІС‹Р·С‹РІР°РµС‚СЃСЏ РІ РґРµСЃС‚СЂСѓРєС‚РѕСЂРµ, РїСЂРё СѓРЅРёС‡С‚РѕР¶РµРЅРёРё РїРѕСЃР»РµРґРЅРµРіРѕ СЃРѕР·РґР°РЅРЅРѕРіРѕ РѕР±СЉРµРєС‚Р° РєР»Р°СЃСЃР°,
+	 * РїРѕСЌС‚РѕРјСѓ РІС‹Р·С‹РІР°С‚СЊ РµРіРѕ СЏРІРЅРѕ РѕР±С‹С‡РЅРѕ РЅРµ С‚СЂРµР±СѓРµС‚СЃСЏ.
+	 * Р•СЃР»Рё РµРіРѕ РІС‹Р·РІР°С‚СЊ РґРѕ С‚РѕРіРѕ, РєР°Рє Р±СѓРґРµС‚ СѓРЅРёС‡С‚РѕР¶РµРЅ РїРѕСЃР»РµРґРЅРёР№ РѕР±СЉРµРєС‚ Рё РєР°РєРѕР№-Р»РёР±Рѕ РѕР±СЉРµРєС‚ РІ РґР°Р»СЊРЅРµР№С€РµРј
+	 * РµС‰Рµ Р±СѓРґРµС‚ РѕС‚СЃС‹Р»Р°С‚СЊ РїРёСЃСЊРјР°, С‚Рѕ СЃРѕРµРґРёРЅРµРЅРёРµ СЃРѕР·РґР°СЃС‚СЃСЏ Р·Р°РЅРѕРІРѕ (РїРµСЂРµРїРѕРґРєР»СЋС‡РёС‚СЃСЏ).
 	 *
-	 * @return   boolean   TRUE если соединение закрыто; FALSE если закрыть не удалось
+	 * @return   boolean   TRUE РµСЃР»Рё СЃРѕРµРґРёРЅРµРЅРёРµ Р·Р°РєСЂС‹С‚Рѕ; FALSE РµСЃР»Рё Р·Р°РєСЂС‹С‚СЊ РЅРµ СѓРґР°Р»РѕСЃСЊ
 	 */
     public function Close(){
 		if (self::$socket) {
@@ -346,24 +346,24 @@ class SMTP {
 			fclose(self::$socket);
 			self::$socket = NULL;
 		}
-                //чистим логи
+                //С‡РёСЃС‚РёРј Р»РѕРіРё
                 $this->log = self::$flog = '';
 		return TRUE;
 	}
 
 	
     /**
-	 * Проверяет, создано ли в данный момент соединение с SMTP сервером.
+	 * РџСЂРѕРІРµСЂСЏРµС‚, СЃРѕР·РґР°РЅРѕ Р»Рё РІ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ СЃРѕРµРґРёРЅРµРЅРёРµ СЃ SMTP СЃРµСЂРІРµСЂРѕРј.
 	 *
-	 * @return   boolean   TRUE если соединение создано; FALSE если нет
+	 * @return   boolean   TRUE РµСЃР»Рё СЃРѕРµРґРёРЅРµРЅРёРµ СЃРѕР·РґР°РЅРѕ; FALSE РµСЃР»Рё РЅРµС‚
 	 */
-	public function Сonnected() {
+	public function РЎonnected() {
 		return is_resource(self::$socket);
 	}
 
 	
     /**
-	 * Конструктор. Наращивает счетчик созданных объектов класса.
+	 * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ. РќР°СЂР°С‰РёРІР°РµС‚ СЃС‡РµС‚С‡РёРє СЃРѕР·РґР°РЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ РєР»Р°СЃСЃР°.
 	 *
 	 */
 	public function __construct() {
@@ -372,24 +372,24 @@ class SMTP {
 
 	
     /**
-	 * Деструктор. Закрывает соединение с SMTP сервером, если больше нет объектов класса
+	 * Р”РµСЃС‚СЂСѓРєС‚РѕСЂ. Р—Р°РєСЂС‹РІР°РµС‚ СЃРѕРµРґРёРЅРµРЅРёРµ СЃ SMTP СЃРµСЂРІРµСЂРѕРј, РµСЃР»Рё Р±РѕР»СЊС€Рµ РЅРµС‚ РѕР±СЉРµРєС‚РѕРІ РєР»Р°СЃСЃР°
 	 *
 	 */
 	public function __destruct() {
 		if (--self::$objects <= 0) {
 			$this->Close();
-			// лог
+			// Р»РѕРі
 			//file_put_contents('/tmp/smtp.log', self::$flog);
 		}
 	}
 	
 	
     /**
-     * Обрабатывает файл(ы) для пересылки по почте
-	 * Именно отработанные через этот метод файлы нужно использовать в качестве параметра для self::SmtpMail
+     * РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ С„Р°Р№Р»(С‹) РґР»СЏ РїРµСЂРµСЃС‹Р»РєРё РїРѕ РїРѕС‡С‚Рµ
+	 * РРјРµРЅРЅРѕ РѕС‚СЂР°Р±РѕС‚Р°РЅРЅС‹Рµ С‡РµСЂРµР· СЌС‚РѕС‚ РјРµС‚РѕРґ С„Р°Р№Р»С‹ РЅСѓР¶РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РІ РєР°С‡РµСЃС‚РІРµ РїР°СЂР°РјРµС‚СЂР° РґР»СЏ self::SmtpMail
      * 
-     * @param   mixed   $files    файл в виде объекта класса CFile или массив таких объектов
-     * @return  array             обработанные файлы
+     * @param   mixed   $files    С„Р°Р№Р» РІ РІРёРґРµ РѕР±СЉРµРєС‚Р° РєР»Р°СЃСЃР° CFile РёР»Рё РјР°СЃСЃРёРІ С‚Р°РєРёС… РѕР±СЉРµРєС‚РѕРІ
+     * @return  array             РѕР±СЂР°Р±РѕС‚Р°РЅРЅС‹Рµ С„Р°Р№Р»С‹
      */
 	public function CreateAttach($files) {
 		if (!is_array($files)) $files = array($files);
@@ -409,11 +409,11 @@ class SMTP {
 	}
 	
     /**
-     * Обрабатывает локальные файл(ы) для пересылки по почте
-	 * Именно отработанные через этот метод файлы нужно использовать в качестве параметра для self::SmtpMail
+     * РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ Р»РѕРєР°Р»СЊРЅС‹Рµ С„Р°Р№Р»(С‹) РґР»СЏ РїРµСЂРµСЃС‹Р»РєРё РїРѕ РїРѕС‡С‚Рµ
+	 * РРјРµРЅРЅРѕ РѕС‚СЂР°Р±РѕС‚Р°РЅРЅС‹Рµ С‡РµСЂРµР· СЌС‚РѕС‚ РјРµС‚РѕРґ С„Р°Р№Р»С‹ РЅСѓР¶РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РІ РєР°С‡РµСЃС‚РІРµ РїР°СЂР°РјРµС‚СЂР° РґР»СЏ self::SmtpMail
      * 
-     * @param   mixed   $files    путь до файла или массив путей
-     * @return  array             обработанные файлы
+     * @param   mixed   $files    РїСѓС‚СЊ РґРѕ С„Р°Р№Р»Р° РёР»Рё РјР°СЃСЃРёРІ РїСѓС‚РµР№
+     * @return  array             РѕР±СЂР°Р±РѕС‚Р°РЅРЅС‹Рµ С„Р°Р№Р»С‹
      */
 	public function CreateLocalAttach($files) {
 		if (!is_array($files)) $files = array($files);
@@ -436,25 +436,25 @@ class SMTP {
 	
 
     /**
-     * Конвертирует plain text в HTML
+     * РљРѕРЅРІРµСЂС‚РёСЂСѓРµС‚ plain text РІ HTML
      * 
-     * @param   string   $text    исходный текст
-     * @param   boolean  $body    если 1, то ссылки обрабатываться не будут
-     * @return  string            html-сообщение.
+     * @param   string   $text    РёСЃС…РѕРґРЅС‹Р№ С‚РµРєСЃС‚
+     * @param   boolean  $body    РµСЃР»Рё 1, С‚Рѕ СЃСЃС‹Р»РєРё РѕР±СЂР°Р±Р°С‚С‹РІР°С‚СЊСЃСЏ РЅРµ Р±СѓРґСѓС‚
+     * @return  string            html-СЃРѕРѕР±С‰РµРЅРёРµ.
      */	
 	public function ToHtml($text, $nolink=0) {
 		$text = str_replace(array("<", ">", "'", "\"", ' - ', ' -- ', "\n"), array("&lt;", "&gt;", "&#039;", "&quot;", ' &#150; ', ' &mdash; ', ' <br/>'), $text);
-        $text = preg_replace('~(https?:/){[^}]+}/~', '$1/', $text); // чистим шаблоны гиперссылок.
+        $text = preg_replace('~(https?:/){[^}]+}/~', '$1/', $text); // С‡РёСЃС‚РёРј С€Р°Р±Р»РѕРЅС‹ РіРёРїРµСЂСЃСЃС‹Р»РѕРє.
 		if (!$nolink) {
-			$text = preg_replace_callback("/((https?\:\/\/|www\.)[-a-zA-Zа-яА-ЯёЁ0-9\.]+\.[a-zA-Zа-яА-ЯёЁ]{2,30}(?:\/[^\s]+)?)/", array($this, 'ToHtml_callback'), $text);
-			$text = preg_replace("/([-_a-zA-Z0-9\.]+?\@[-a-zA-Zа-яА-ЯёЁ0-9\.]+\.[a-zA-Zа-яА-ЯёЁ]{2,30})/", "<a href='mailto:\$1'>\$1</a>", $text);
+			$text = preg_replace_callback("/((https?\:\/\/|www\.)[-a-zA-ZР°-СЏРђ-РЇС‘РЃ0-9\.]+\.[a-zA-ZР°-СЏРђ-РЇС‘РЃ]{2,30}(?:\/[^\s]+)?)/", array($this, 'ToHtml_callback'), $text);
+			$text = preg_replace("/([-_a-zA-Z0-9\.]+?\@[-a-zA-ZР°-СЏРђ-РЇС‘РЃ0-9\.]+\.[a-zA-ZР°-СЏРђ-РЇС‘РЃ]{2,30})/", "<a href='mailto:\$1'>\$1</a>", $text);
 		}
 		$text = textWrap($text, 76);
 		return $text;
 	}
 	
 	/**
-	 * Вспомогательная callback функция @see smtp::ToHtml
+	 * Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ callback С„СѓРЅРєС†РёСЏ @see smtp::ToHtml
 	 *
 	 * @param  array $m
 	 * @return string
@@ -469,23 +469,23 @@ class SMTP {
 	}
 
     /**
-     * Формирует тело сообщения в формате HTML, в стиле сообщений от FL.ru.
+     * Р¤РѕСЂРјРёСЂСѓРµС‚ С‚РµР»Рѕ СЃРѕРѕР±С‰РµРЅРёСЏ РІ С„РѕСЂРјР°С‚Рµ HTML, РІ СЃС‚РёР»Рµ СЃРѕРѕР±С‰РµРЅРёР№ РѕС‚ FL.ru.
      * 
-     * @param   string  $uname    имя пользователя-получателя сообщения.
-     * @param   string  $body     исходный текст сообщения.
-     * @param   array   $format   можно расширять и использовать как угодно, например, задать так, чтобы не было приветствия.
-     * @return  string           html-сообщение.
+     * @param   string  $uname    РёРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ-РїРѕР»СѓС‡Р°С‚РµР»СЏ СЃРѕРѕР±С‰РµРЅРёСЏ.
+     * @param   string  $body     РёСЃС…РѕРґРЅС‹Р№ С‚РµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ.
+     * @param   array   $format   РјРѕР¶РЅРѕ СЂР°СЃС€РёСЂСЏС‚СЊ Рё РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РєР°Рє СѓРіРѕРґРЅРѕ, РЅР°РїСЂРёРјРµСЂ, Р·Р°РґР°С‚СЊ С‚Р°Рє, С‡С‚РѕР±С‹ РЅРµ Р±С‹Р»Рѕ РїСЂРёРІРµС‚СЃС‚РІРёСЏ.
+     * @return  string           html-СЃРѕРѕР±С‰РµРЅРёРµ.
      */
     public function GetHtml($uname, $body, $format=array('header'=>'default', 'footer'=>'default'), $params = null) {
         if (!empty($format) && !is_array($format)) $format = array('header'=>$format, 'footer'=>$format);
-        $body = preg_replace('~(https?:/){[^}]+}/~', '$1/', $body); // чистим шаблоны гиперссылок.
+        $body = preg_replace('~(https?:/){[^}]+}/~', '$1/', $body); // С‡РёСЃС‚РёРј С€Р°Р±Р»РѕРЅС‹ РіРёРїРµСЂСЃСЃС‹Р»РѕРє.
         $html_header = '';
         $html_footer = '';
         if($format['footer'] == 'frl_subscr_projects' || $format['footer'] == 'frl_simple_projects') {
             $format['footer'] = str_replace("frl_", "", $format['footer']);
-            $role = 'заказчиком';
+            $role = 'Р·Р°РєР°Р·С‡РёРєРѕРј';
         } else {
-            $role = 'фрилансерами';
+            $role = 'С„СЂРёР»Р°РЅСЃРµСЂР°РјРё';
         }
         
         if($format['footer'] == 'sub_emp_projects') {
@@ -499,55 +499,55 @@ class SMTP {
             
             $html_header = '
                 <div style="font-size:10px; color:#7e7e7e;">
-                    Чтобы не пропустить ни одного письма от команды <a style="font-size:10px; color:#006ed6" target="_blank" href="'.$GLOBALS['host'].'">FL.ru</a>, добавьте наш адрес <a style="font-size:10px; color:#006ed6" target="_blank" href="mailto:no_reply@free-lance.ru">no_reply@free-lance.ru</a> в вашу адресную книгу. 
-                    <a style="font-size:10px; color:#006ed6" target="_blank" href="https://feedback.fl.ru/topic/532678-instruktsiya-po-dobavleniyu-email-adresa-flru-v-spisok-kontaktov/">Инструкция</a>
+                    Р§С‚РѕР±С‹ РЅРµ РїСЂРѕРїСѓСЃС‚РёС‚СЊ РЅРё РѕРґРЅРѕРіРѕ РїРёСЃСЊРјР° РѕС‚ РєРѕРјР°РЅРґС‹ <a style="font-size:10px; color:#006ed6" target="_blank" href="'.$GLOBALS['host'].'">FL.ru</a>, РґРѕР±Р°РІСЊС‚Рµ РЅР°С€ Р°РґСЂРµСЃ <a style="font-size:10px; color:#006ed6" target="_blank" href="mailto:no_reply@free-lance.ru">no_reply@free-lance.ru</a> РІ РІР°С€Сѓ Р°РґСЂРµСЃРЅСѓСЋ РєРЅРёРіСѓ. 
+                    <a style="font-size:10px; color:#006ed6" target="_blank" href="https://feedback.fl.ru/topic/532678-instruktsiya-po-dobavleniyu-email-adresa-flru-v-spisok-kontaktov/">РРЅСЃС‚СЂСѓРєС†РёСЏ</a>
                 </div>
                 <br/>
                 <br/>
             ';
             
-            $html_header .= "Здравствуйте".($uname ? ", {$uname}." : "!");
+            $html_header .= "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ".($uname ? ", {$uname}." : "!");
             
         } elseif ($format['header']=='default' || $format['header']=='simple' || $format['header']=='info') {
-            $html_header .= "Здравствуйте".($uname ? ", {$uname}." : "!");
+            $html_header .= "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ".($uname ? ", {$uname}." : "!");
         
         } elseif ($format['header']=='noname') {
-            $html_header .= "Здравствуйте!";
+            $html_header .= "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!";
         } elseif ($format['header']=='default_new') {
-            $html_header .= "Здравствуйте, %USER_NAME%!";
+            $html_header .= "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ, %USER_NAME%!";
         } elseif ($format['header'] == 'subscribe') {
-            $html_header .= "Здравствуйте".($uname ? ", {$uname}." : "!")." ";
-            $html_header .= "В ".($params['type']==1 ? 'блоге' : 'топике '.($params['topic_title'] ? ' &laquo;'.$params['topic_title'].'&raquo;' : '').' сообщества').($params['title'] ? ' &laquo;'.$params['title'].'&raquo;' : '').", "; 
-            $html_header .= "на котор".($params['type']==1 ? 'ый' : 'ое')." вы подписаны, появился новый комментарий.";
+            $html_header .= "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ".($uname ? ", {$uname}." : "!")." ";
+            $html_header .= "Р’ ".($params['type']==1 ? 'Р±Р»РѕРіРµ' : 'С‚РѕРїРёРєРµ '.($params['topic_title'] ? ' &laquo;'.$params['topic_title'].'&raquo;' : '').' СЃРѕРѕР±С‰РµСЃС‚РІР°').($params['title'] ? ' &laquo;'.$params['title'].'&raquo;' : '').", "; 
+            $html_header .= "РЅР° РєРѕС‚РѕСЂ".($params['type']==1 ? 'С‹Р№' : 'РѕРµ')." РІС‹ РїРѕРґРїРёСЃР°РЅС‹, РїРѕСЏРІРёР»СЃСЏ РЅРѕРІС‹Р№ РєРѕРјРјРµРЅС‚Р°СЂРёР№.";
         } elseif ($format['header'] == 'subscribe_edit_comment') {
-            $html_header .= "Здравствуйте".($uname ? ", {$uname}." : "!")." <br/><br/>";
-            $html_header .= "В ".($params['type']==1 ? 'блоге' : 'сообществе').($params['title'] ? ' &laquo;'.$params['title'].'&raquo;' : '').", "; 
-            $html_header .= "на котор".($params['type']==1 ? 'ый' : 'ое')." вы подписаны, отредактирован комментарий.";
+            $html_header .= "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ".($uname ? ", {$uname}." : "!")." <br/><br/>";
+            $html_header .= "Р’ ".($params['type']==1 ? 'Р±Р»РѕРіРµ' : 'СЃРѕРѕР±С‰РµСЃС‚РІРµ').($params['title'] ? ' &laquo;'.$params['title'].'&raquo;' : '').", "; 
+            $html_header .= "РЅР° РєРѕС‚РѕСЂ".($params['type']==1 ? 'С‹Р№' : 'РѕРµ')." РІС‹ РїРѕРґРїРёСЃР°РЅС‹, РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅ РєРѕРјРјРµРЅС‚Р°СЂРёР№.";
         } elseif ($format['header'] == 'subscribe_edit_post') {
-            $html_header .= "Здравствуйте".($uname ? ", {$uname}." : "!")." <br/><br/>";
-            $html_header .= ($params['type']==1 ? 'В  блоге' : 'Топик '.($params['topic_name'] ? ' &laquo;'.$params['topic_name'].'&raquo;' : '').' сообщества').($params['title'] ? ' &laquo;'.$params['title'].'&raquo;' : '');
-            $html_header .= ($params["to_subscriber"] ? ", на который вы подписаны," : "")." отредактирован.";
+            $html_header .= "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ".($uname ? ", {$uname}." : "!")." <br/><br/>";
+            $html_header .= ($params['type']==1 ? 'Р’  Р±Р»РѕРіРµ' : 'РўРѕРїРёРє '.($params['topic_name'] ? ' &laquo;'.$params['topic_name'].'&raquo;' : '').' СЃРѕРѕР±С‰РµСЃС‚РІР°').($params['title'] ? ' &laquo;'.$params['title'].'&raquo;' : '');
+            $html_header .= ($params["to_subscriber"] ? ", РЅР° РєРѕС‚РѕСЂС‹Р№ РІС‹ РїРѕРґРїРёСЃР°РЅС‹," : "")." РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅ.";
         }  elseif ($format['header'] == 'subscribe_delete_comment') {
-            $html_header .= "Здравствуйте".($uname ? ", {$uname}." : "!")." <br/><br/>";
-            $html_header .= "В ".($params['type']==1 ? 'блоге' : 'сообществе').($params['title'] ? ' &laquo;'.$params['title'].'&raquo;' : '').", "; 
-            $html_header .= "на котор".($params['type']==1 ? 'ый' : 'ое')." вы подписаны, удален комментарий.";
+            $html_header .= "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ".($uname ? ", {$uname}." : "!")." <br/><br/>";
+            $html_header .= "Р’ ".($params['type']==1 ? 'Р±Р»РѕРіРµ' : 'СЃРѕРѕР±С‰РµСЃС‚РІРµ').($params['title'] ? ' &laquo;'.$params['title'].'&raquo;' : '').", "; 
+            $html_header .= "РЅР° РєРѕС‚РѕСЂ".($params['type']==1 ? 'С‹Р№' : 'РѕРµ')." РІС‹ РїРѕРґРїРёСЃР°РЅС‹, СѓРґР°Р»РµРЅ РєРѕРјРјРµРЅС‚Р°СЂРёР№.";
         } elseif ($format['header'] == 'subscribe_delete_post') {
-            $html_header .= "Здравствуйте".($uname ? ", {$uname}." : "!")." <br/><br/>";
-            $html_header .= ($params['type']==1 ? 'Блог' : ($params['is_comment']? 'Комментарий в топике  ': 'Топик ').($params['topic_name'] ? ' &laquo;'.$params['topic_name'].'&raquo;' : '').' сообщества ').($params['title'] ? ' &laquo;'.$params['title'].'&raquo;' : '').", "; 
+            $html_header .= "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ".($uname ? ", {$uname}." : "!")." <br/><br/>";
+            $html_header .= ($params['type']==1 ? 'Р‘Р»РѕРі' : ($params['is_comment']? 'РљРѕРјРјРµРЅС‚Р°СЂРёР№ РІ С‚РѕРїРёРєРµ  ': 'РўРѕРїРёРє ').($params['topic_name'] ? ' &laquo;'.$params['topic_name'].'&raquo;' : '').' СЃРѕРѕР±С‰РµСЃС‚РІР° ').($params['title'] ? ' &laquo;'.$params['title'].'&raquo;' : '').", "; 
             if ( !$params['to_topicstarter'] ) {
-                $html_header .= "на который вы подписаны, удален.";
+                $html_header .= "РЅР° РєРѕС‚РѕСЂС‹Р№ РІС‹ РїРѕРґРїРёСЃР°РЅС‹, СѓРґР°Р»РµРЅ.";
             } else {
-                $html_header .= "удален " . ($params["is_author"] ? "автором темы" : "модератором сообщества") .".";
+                $html_header .= "СѓРґР°Р»РµРЅ " . ($params["is_author"] ? "Р°РІС‚РѕСЂРѕРј С‚РµРјС‹" : "РјРѕРґРµСЂР°С‚РѕСЂРѕРј СЃРѕРѕР±С‰РµСЃС‚РІР°") .".";
             }
         }
 
         if(!empty($params['login'])) {
-            $lnk_setup_mail = "<a href='{$GLOBALS['host']}/unsubscribe?ukey=".users::GetUnsubscribeKey($params['login'])."'>на этой странице</a>";
+            $lnk_setup_mail = "<a href='{$GLOBALS['host']}/unsubscribe?ukey=".users::GetUnsubscribeKey($params['login'])."'>РЅР° СЌС‚РѕР№ СЃС‚СЂР°РЅРёС†Рµ</a>";
         } else {
             if ( empty($params['target_footer']) ) {
-                $lnk_setup_mail = "на странице &laquo;Уведомления/Рассылка&raquo;";
+                $lnk_setup_mail = "РЅР° СЃС‚СЂР°РЅРёС†Рµ &laquo;РЈРІРµРґРѕРјР»РµРЅРёСЏ/Р Р°СЃСЃС‹Р»РєР°&raquo;";
             } else {
-                $lnk_setup_mail = "<a href='{$GLOBALS['host']}/unsubscribe?ukey=%UNSUBSCRIBE_KEY%'>на этой странице</a>";
+                $lnk_setup_mail = "<a href='{$GLOBALS['host']}/unsubscribe?ukey=%UNSUBSCRIBE_KEY%'>РЅР° СЌС‚РѕР№ СЃС‚СЂР°РЅРёС†Рµ</a>";
             }
         }
         
@@ -559,101 +559,101 @@ class SMTP {
         }
 
         if ($format['footer']=='default') {
-            //$html_footer .= "Вы можете отключить уведомления {$lnk_setup_mail}.";
+            //$html_footer .= "Р’С‹ РјРѕР¶РµС‚Рµ РѕС‚РєР»СЋС‡РёС‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ {$lnk_setup_mail}.";
             //$html_footer .= "<br><br>";
-            //$html_footer .= "Команда FL.ru благодарит вас за участие в жизни нашего портала.";
+            //$html_footer .= "РљРѕРјР°РЅРґР° FL.ru Р±Р»Р°РіРѕРґР°СЂРёС‚ РІР°СЃ Р·Р° СѓС‡Р°СЃС‚РёРµ РІ Р¶РёР·РЅРё РЅР°С€РµРіРѕ РїРѕСЂС‚Р°Р»Р°.";
             $html_footer .= "<br><br>";
-            $html_footer .= "Приятной работы,";
+            $html_footer .= "РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹,";
             $html_footer .= "<br>";
-            $html_footer .= "команда {$lnk_team}";
+            $html_footer .= "РєРѕРјР°РЅРґР° {$lnk_team}";
         } else if ($format['footer']=='feedback_default') {
-            $html_footer .= "По всем возникающим вопросам вы можете обращаться в нашу <a href='https://feedback.fl.ru/' taraget='_blank'>службу поддержки</a>. ";
-            //$html_footer .= "<br/>Вы можете отключить уведомления {$lnk_setup_mail}.";
+            $html_footer .= "РџРѕ РІСЃРµРј РІРѕР·РЅРёРєР°СЋС‰РёРј РІРѕРїСЂРѕСЃР°Рј РІС‹ РјРѕР¶РµС‚Рµ РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РІ РЅР°С€Сѓ <a href='https://feedback.fl.ru/' taraget='_blank'>СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>. ";
+            //$html_footer .= "<br/>Р’С‹ РјРѕР¶РµС‚Рµ РѕС‚РєР»СЋС‡РёС‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ {$lnk_setup_mail}.";
             //$html_footer .= "<br><br>";
-            //$html_footer .= "Команда FL.ru благодарит вас за участие в жизни нашего портала.";
+            //$html_footer .= "РљРѕРјР°РЅРґР° FL.ru Р±Р»Р°РіРѕРґР°СЂРёС‚ РІР°СЃ Р·Р° СѓС‡Р°СЃС‚РёРµ РІ Р¶РёР·РЅРё РЅР°С€РµРіРѕ РїРѕСЂС‚Р°Р»Р°.";
             $html_footer .= "<br><br>";
-            $html_footer .= "Приятной работы,";
+            $html_footer .= "РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹,";
             $html_footer .= "<br>";
-            $html_footer .= "команда {$lnk_team}";
+            $html_footer .= "РєРѕРјР°РЅРґР° {$lnk_team}";
         } else if ($format['footer'] == 'simple') {
-            $html_footer .= "Приятной работы,";
+            $html_footer .= "РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹,";
             $html_footer .= "<br>";
-            $html_footer .= "команда <a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>FL.ru</a>";
+            $html_footer .= "РєРѕРјР°РЅРґР° <a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>FL.ru</a>";
         } else if ($format['footer'] == 'info_robot') {
-            $html_footer .= "Данное письмо отправлено почтовым роботом сервера FL.ru и не требует ответа.";
+            $html_footer .= "Р”Р°РЅРЅРѕРµ РїРёСЃСЊРјРѕ РѕС‚РїСЂР°РІР»РµРЅРѕ РїРѕС‡С‚РѕРІС‹Рј СЂРѕР±РѕС‚РѕРј СЃРµСЂРІРµСЂР° FL.ru Рё РЅРµ С‚СЂРµР±СѓРµС‚ РѕС‚РІРµС‚Р°.";
             $html_footer .= "<br>";
-            $html_footer .= "По всем возникающим вопросам вы можете обращаться в нашу <a href='https://feedback.fl.ru/{$this->_addUrlParams('b', '?')}'>службу поддержки</a>.";
+            $html_footer .= "РџРѕ РІСЃРµРј РІРѕР·РЅРёРєР°СЋС‰РёРј РІРѕРїСЂРѕСЃР°Рј РІС‹ РјРѕР¶РµС‚Рµ РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РІ РЅР°С€Сѓ <a href='https://feedback.fl.ru/{$this->_addUrlParams('b', '?')}'>СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.";
             $html_footer .= "<br><br>";
-            $html_footer .= "Приятной работы,";
+            $html_footer .= "РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹,";
             $html_footer .= "<br>";
-            $html_footer .= "команда <a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>FL.ru</a>";
+            $html_footer .= "РєРѕРјР°РЅРґР° <a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>FL.ru</a>";
         } else if ($format['footer'] == 'norisk_robot') {
-            $html_footer .= "Данное письмо отправлено почтовым роботом FL.ru и не требует ответа.";
+            $html_footer .= "Р”Р°РЅРЅРѕРµ РїРёСЃСЊРјРѕ РѕС‚РїСЂР°РІР»РµРЅРѕ РїРѕС‡С‚РѕРІС‹Рј СЂРѕР±РѕС‚РѕРј FL.ru Рё РЅРµ С‚СЂРµР±СѓРµС‚ РѕС‚РІРµС‚Р°.";
             $html_footer .= "<br>";
-            $html_footer .= "По всем возникающим вопросам вы можете обращаться в нашу <a href='https://feedback.fl.ru/{$this->_addUrlParams('b', '?')}'>службу поддержки</a>.";
+            $html_footer .= "РџРѕ РІСЃРµРј РІРѕР·РЅРёРєР°СЋС‰РёРј РІРѕРїСЂРѕСЃР°Рј РІС‹ РјРѕР¶РµС‚Рµ РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РІ РЅР°С€Сѓ <a href='https://feedback.fl.ru/{$this->_addUrlParams('b', '?')}'>СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.";
             $html_footer .= "<br><br>";
-            $html_footer .= "Приятной работы,";
+            $html_footer .= "РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹,";
             $html_footer .= "<br>";
-            $html_footer .= "команда <a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>FL.ru</a>";
+            $html_footer .= "РєРѕРјР°РЅРґР° <a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>FL.ru</a>";
         } else if ($format['footer'] == 'info') {
-            $html_footer .= "Команда FL.ru";
+            $html_footer .= "РљРѕРјР°РЅРґР° FL.ru";
             $html_footer .= "<br>";
             $html_footer .= "<a href='mailto:info@fl.ru'>info@fl.ru</a>";
             $html_footer .= "<br>";
             $html_footer .= "<a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>{$GLOBALS['host']}</a>";
         } else if ($format['footer'] == 'subscribe') {
-            $html_footer .= "Чтобы отключить подобные уведомления, зайдите в ".($params['type']==1 ? 'блог' : 'сообщество')." и нажмите кнопку \"Отписаться\".";
+            $html_footer .= "Р§С‚РѕР±С‹ РѕС‚РєР»СЋС‡РёС‚СЊ РїРѕРґРѕР±РЅС‹Рµ СѓРІРµРґРѕРјР»РµРЅРёСЏ, Р·Р°Р№РґРёС‚Рµ РІ ".($params['type']==1 ? 'Р±Р»РѕРі' : 'СЃРѕРѕР±С‰РµСЃС‚РІРѕ')." Рё РЅР°Р¶РјРёС‚Рµ РєРЅРѕРїРєСѓ \"РћС‚РїРёСЃР°С‚СЊСЃСЏ\".";
             //$html_footer .= "<br><br>";
-            //$html_footer .= "Команда FL.ru благодарит вас за участие в жизни нашего портала.";
+            //$html_footer .= "РљРѕРјР°РЅРґР° FL.ru Р±Р»Р°РіРѕРґР°СЂРёС‚ РІР°СЃ Р·Р° СѓС‡Р°СЃС‚РёРµ РІ Р¶РёР·РЅРё РЅР°С€РµРіРѕ РїРѕСЂС‚Р°Р»Р°.";
             $html_footer .= "<br><br>";
-            $html_footer .= "Приятной работы,";
+            $html_footer .= "РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹,";
             $html_footer .= "<br>";
-            $html_footer .= "команда <a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>FL.ru</a>";
+            $html_footer .= "РєРѕРјР°РЅРґР° <a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>FL.ru</a>";
         } else if($format['footer'] == 'simple_norisk') {
-            $html_footer .= "Если у вас есть какие-то вопросы по «Безопасной Сделке», обращайтесь к нашему менеджеру <a href='mailto:norisk@fl.ru'>norisk@fl.ru</a>";
+            $html_footer .= "Р•СЃР»Рё Сѓ РІР°СЃ РµСЃС‚СЊ РєР°РєРёРµ-С‚Рѕ РІРѕРїСЂРѕСЃС‹ РїРѕ В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРµВ», РѕР±СЂР°С‰Р°Р№С‚РµСЃСЊ Рє РЅР°С€РµРјСѓ РјРµРЅРµРґР¶РµСЂСѓ <a href='mailto:norisk@fl.ru'>norisk@fl.ru</a>";
             $html_footer .= "<br><br>";
-            $html_footer .= "Команда FL.ru благодарит вас за участие в жизни нашего портала.";
+            $html_footer .= "РљРѕРјР°РЅРґР° FL.ru Р±Р»Р°РіРѕРґР°СЂРёС‚ РІР°СЃ Р·Р° СѓС‡Р°СЃС‚РёРµ РІ Р¶РёР·РЅРё РЅР°С€РµРіРѕ РїРѕСЂС‚Р°Р»Р°.";
             $html_footer .= "<br><br>";
-            $html_footer .= "Приятной работы,";
+            $html_footer .= "РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹,";
             $html_footer .= "<br>";
-            $html_footer .= "команда <a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>FL.ru</a>";     
+            $html_footer .= "РєРѕРјР°РЅРґР° <a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>FL.ru</a>";     
         } else if($format['footer'] == 'simple_projects') {
-            $html_footer .= "В проекте вы выбрали способ оплаты - <strong>Прямая оплата исполнителю.</strong><br>";
-            $html_footer .= "В этом случае вы несете все риски, связанные с несвоевременным и/или некачественным выполнением работы. И не имеете возможности обратиться в Арбитраж.";
+            $html_footer .= "Р’ РїСЂРѕРµРєС‚Рµ РІС‹ РІС‹Р±СЂР°Р»Рё СЃРїРѕСЃРѕР± РѕРїР»Р°С‚С‹ - <strong>РџСЂСЏРјР°СЏ РѕРїР»Р°С‚Р° РёСЃРїРѕР»РЅРёС‚РµР»СЋ.</strong><br>";
+            $html_footer .= "Р’ СЌС‚РѕРј СЃР»СѓС‡Р°Рµ РІС‹ РЅРµСЃРµС‚Рµ РІСЃРµ СЂРёСЃРєРё, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ РЅРµСЃРІРѕРµРІСЂРµРјРµРЅРЅС‹Рј Рё/РёР»Рё РЅРµРєР°С‡РµСЃС‚РІРµРЅРЅС‹Рј РІС‹РїРѕР»РЅРµРЅРёРµРј СЂР°Р±РѕС‚С‹. Р РЅРµ РёРјРµРµС‚Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РѕР±СЂР°С‚РёС‚СЊСЃСЏ РІ РђСЂР±РёС‚СЂР°Р¶.";
             $html_footer .= "<br><br>";
-            $html_footer .= "Предлагаем вам <strong><a href='{$GLOBALS['host']}/public/?step=1&public={$params['project']['id']}&choose_bs=1'>изменить способ оплаты на Безопасную сделку</a>.</strong><br>";
-            $html_footer .= "<a href='{$GLOBALS['host']}/promo/bezopasnaya-sdelka/'>Промо-страница Безопасной сделки</a>.";
+            $html_footer .= "РџСЂРµРґР»Р°РіР°РµРј РІР°Рј <strong><a href='{$GLOBALS['host']}/public/?step=1&public={$params['project']['id']}&choose_bs=1'>РёР·РјРµРЅРёС‚СЊ СЃРїРѕСЃРѕР± РѕРїР»Р°С‚С‹ РЅР° Р‘РµР·РѕРїР°СЃРЅСѓСЋ СЃРґРµР»РєСѓ</a>.</strong><br>";
+            $html_footer .= "<a href='{$GLOBALS['host']}/promo/bezopasnaya-sdelka/'>РџСЂРѕРјРѕ-СЃС‚СЂР°РЅРёС†Р° Р‘РµР·РѕРїР°СЃРЅРѕР№ СЃРґРµР»РєРё</a>.";
                     
             $html_footer .= "<br><br>";
-            $html_footer .= "Приятной работы,";
+            $html_footer .= "РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹,";
             $html_footer .= "<br>";
-            $html_footer .= "команда <a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>FL.ru</a>"; 
+            $html_footer .= "РєРѕРјР°РЅРґР° <a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>FL.ru</a>"; 
         } else if($format['footer'] == 'subscr_projects') {
-            $html_footer .= "Чтобы минимизировать риски, возникающие в ходе сотрудничества с {$role}, рекомендуем воспользоваться «<a href='{$GLOBALS['host']}/promo/sbr/{$this->_addUrlParams('b')}'>Безопасной Сделкой</a>».";
+            $html_footer .= "Р§С‚РѕР±С‹ РјРёРЅРёРјРёР·РёСЂРѕРІР°С‚СЊ СЂРёСЃРєРё, РІРѕР·РЅРёРєР°СЋС‰РёРµ РІ С…РѕРґРµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР° СЃ {$role}, СЂРµРєРѕРјРµРЅРґСѓРµРј РІРѕСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ В«<a href='{$GLOBALS['host']}/promo/sbr/{$this->_addUrlParams('b')}'>Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРѕР№</a>В».";
             $html_footer .= "<br><br>";
-            //$html_footer .= "Вы можете отключить уведомления {$lnk_setup_mail}.";
+            //$html_footer .= "Р’С‹ РјРѕР¶РµС‚Рµ РѕС‚РєР»СЋС‡РёС‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ {$lnk_setup_mail}.";
             //$html_footer .= "<br><br>";
-            $html_footer .= "Приятной работы,";
+            $html_footer .= "РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹,";
             $html_footer .= "<br>";
-            $html_footer .= "команда <a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>FL.ru</a>"; 
+            $html_footer .= "РєРѕРјР°РЅРґР° <a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>FL.ru</a>"; 
         } else if($format['footer'] == 'emp_projects') {
             if($subscr) {
                 //$html_footer .= "<br><br>";
-                //$html_footer .= "Вы можете отключить уведомления {$lnk_setup_mail}.";
+                //$html_footer .= "Р’С‹ РјРѕР¶РµС‚Рµ РѕС‚РєР»СЋС‡РёС‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ {$lnk_setup_mail}.";
             }
             $html_footer .= "<br><br>";
-            $html_footer .= "Приятной работы,";
+            $html_footer .= "РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹,";
             $html_footer .= "<br>";
-            $html_footer .= "команда <a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>FL.ru</a>";
+            $html_footer .= "РєРѕРјР°РЅРґР° <a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>FL.ru</a>";
         } else if($format['footer'] == 'simple_adv') {
-            $html_footer .= "Владельцы «Аккаунта PRO» - это наиболее активная и профессиональная аудитория сайта. 
-                            Хотим напомнить, что на каждого обладателя профессионального аккаунта приходится по 2 опубликованных проекта, 
-                            а средний бюджет проекта для PRO составляет более 10 300 рублей. Продлить действие «Аккаунта PRO», 
-                            а также ознакомиться с другими возможностями продвижения своего аккаунта на FL.ru можно <a href='{$GLOBALS['host']}/payed/{$this->_addUrlParams('b')}'>здесь</a>.";
+            $html_footer .= "Р’Р»Р°РґРµР»СЊС†С‹ В«РђРєРєР°СѓРЅС‚Р° PROВ» - СЌС‚Рѕ РЅР°РёР±РѕР»РµРµ Р°РєС‚РёРІРЅР°СЏ Рё РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅР°СЏ Р°СѓРґРёС‚РѕСЂРёСЏ СЃР°Р№С‚Р°. 
+                            РҐРѕС‚РёРј РЅР°РїРѕРјРЅРёС‚СЊ, С‡С‚Рѕ РЅР° РєР°Р¶РґРѕРіРѕ РѕР±Р»Р°РґР°С‚РµР»СЏ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р° РїСЂРёС…РѕРґРёС‚СЃСЏ РїРѕ 2 РѕРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹С… РїСЂРѕРµРєС‚Р°, 
+                            Р° СЃСЂРµРґРЅРёР№ Р±СЋРґР¶РµС‚ РїСЂРѕРµРєС‚Р° РґР»СЏ PRO СЃРѕСЃС‚Р°РІР»СЏРµС‚ Р±РѕР»РµРµ 10 300 СЂСѓР±Р»РµР№. РџСЂРѕРґР»РёС‚СЊ РґРµР№СЃС‚РІРёРµ В«РђРєРєР°СѓРЅС‚Р° PROВ», 
+                            Р° С‚Р°РєР¶Рµ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РґСЂСѓРіРёРјРё РІРѕР·РјРѕР¶РЅРѕСЃС‚СЏРјРё РїСЂРѕРґРІРёР¶РµРЅРёСЏ СЃРІРѕРµРіРѕ Р°РєРєР°СѓРЅС‚Р° РЅР° FL.ru РјРѕР¶РЅРѕ <a href='{$GLOBALS['host']}/payed/{$this->_addUrlParams('b')}'>Р·РґРµСЃСЊ</a>.";
             $html_footer .= "<br/><br/>";
-            $html_footer .= "Приятной работы,";
+            $html_footer .= "РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹,";
             $html_footer .= "<br/><br/>";
-            $html_footer .= "команда <a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>FL.ru</a>";
+            $html_footer .= "РєРѕРјР°РЅРґР° <a href='{$GLOBALS['host']}/{$this->_addUrlParams('b')}'>FL.ru</a>";
         }
         ob_start(null, 0, true);
     ?>
@@ -688,10 +688,10 @@ td { font-size:10pt; font-family:Tahoma; }
 	
 	
 	/**
-	 * Отсылает команду SMTP серверу
+	 * РћС‚СЃС‹Р»Р°РµС‚ РєРѕРјР°РЅРґСѓ SMTP СЃРµСЂРІРµСЂСѓ
 	 *
-	 * @param   string   команда
-	 * @return  integer  код ответа SMTP сервера
+	 * @param   string   РєРѕРјР°РЅРґР°
+	 * @return  integer  РєРѕРґ РѕС‚РІРµС‚Р° SMTP СЃРµСЂРІРµСЂР°
 	 */
 	protected function cmd($comm) {
 		if ($comm) {
@@ -717,10 +717,10 @@ td { font-size:10pt; font-family:Tahoma; }
 
 	
     /**
-     * Кодирует текст в BASE64 для нормального прохождения через почтовые сервера не поддерживающие кириллицу
+     * РљРѕРґРёСЂСѓРµС‚ С‚РµРєСЃС‚ РІ BASE64 РґР»СЏ РЅРѕСЂРјР°Р»СЊРЅРѕРіРѕ РїСЂРѕС…РѕР¶РґРµРЅРёСЏ С‡РµСЂРµР· РїРѕС‡С‚РѕРІС‹Рµ СЃРµСЂРІРµСЂР° РЅРµ РїРѕРґРґРµСЂР¶РёРІР°СЋС‰РёРµ РєРёСЂРёР»Р»РёС†Сѓ
      * 
-     * @param  string  $text  текст, который необходимо закодировать
-     * @return string         закодированный текст
+     * @param  string  $text  С‚РµРєСЃС‚, РєРѕС‚РѕСЂС‹Р№ РЅРµРѕР±С…РѕРґРёРјРѕ Р·Р°РєРѕРґРёСЂРѕРІР°С‚СЊ
+     * @return string         Р·Р°РєРѕРґРёСЂРѕРІР°РЅРЅС‹Р№ С‚РµРєСЃС‚
      */
     private function encode($text) {
         if ($text && $this->charset) {
@@ -730,7 +730,7 @@ td { font-size:10pt; font-family:Tahoma; }
             $spacer = $end . " " . $start;
             // determine length of encoded text within chunks
             // and ensure length is even
-            // Здесь можно увеличить длину > 128, если будут проблемы с отправкой юзерам с длинющими именами.
+            // Р—РґРµСЃСЊ РјРѕР¶РЅРѕ СѓРІРµР»РёС‡РёС‚СЊ РґР»РёРЅСѓ > 128, РµСЃР»Рё Р±СѓРґСѓС‚ РїСЂРѕР±Р»РµРјС‹ СЃ РѕС‚РїСЂР°РІРєРѕР№ СЋР·РµСЂР°Рј СЃ РґР»РёРЅСЋС‰РёРјРё РёРјРµРЅР°РјРё.
             $length = 128 - strlen($start) - strlen($end);
             $length = $length - ($length % 4);
             // encode the string and split it into chunks
@@ -749,12 +749,12 @@ td { font-size:10pt; font-family:Tahoma; }
 	
 
     /**
-     * Подготавливает строку с получателями сообщений, кодирует везде имя получателя в соотвествии с требованиями.
+     * РџРѕРґРіРѕС‚Р°РІР»РёРІР°РµС‚ СЃС‚СЂРѕРєСѓ СЃ РїРѕР»СѓС‡Р°С‚РµР»СЏРјРё СЃРѕРѕР±С‰РµРЅРёР№, РєРѕРґРёСЂСѓРµС‚ РІРµР·РґРµ РёРјСЏ РїРѕР»СѓС‡Р°С‚РµР»СЏ РІ СЃРѕРѕС‚РІРµСЃС‚РІРёРё СЃ С‚СЂРµР±РѕРІР°РЅРёСЏРјРё.
      * @see smail::encode()
      * 
-     * @param   string   $in_str   имя получателя вместе с мылом, например "Федя <fedya@mail.ru>".
-     * @param   string   $charset  кодировка (та же, что используется в исходном сообщении).
-     * @return  string             готовая строка для использования в протоколе.
+     * @param   string   $in_str   РёРјСЏ РїРѕР»СѓС‡Р°С‚РµР»СЏ РІРјРµСЃС‚Рµ СЃ РјС‹Р»РѕРј, РЅР°РїСЂРёРјРµСЂ "Р¤РµРґСЏ <fedya@mail.ru>".
+     * @param   string   $charset  РєРѕРґРёСЂРѕРІРєР° (С‚Р° Р¶Рµ, С‡С‚Рѕ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ РёСЃС…РѕРґРЅРѕРј СЃРѕРѕР±С‰РµРЅРёРё).
+     * @return  string             РіРѕС‚РѕРІР°СЏ СЃС‚СЂРѕРєР° РґР»СЏ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РІ РїСЂРѕС‚РѕРєРѕР»Рµ.
      */
     private function encode_email($text) {
         $subj = preg_match_all("'([^<]*)<([^>]*)>[/s,]*'", $text, $matches);
@@ -772,25 +772,25 @@ td { font-size:10pt; font-family:Tahoma; }
     }
 	
 	/**
-     * отдает окончание для ссылки
-     * @param mixed $role 'f'(фрилансер) или 'e'(работодатель) или 'b'(оба)
-     * @param string $firstChar первый символ в результате, ? или &
+     * РѕС‚РґР°РµС‚ РѕРєРѕРЅС‡Р°РЅРёРµ РґР»СЏ СЃСЃС‹Р»РєРё
+     * @param mixed $role 'f'(С„СЂРёР»Р°РЅСЃРµСЂ) РёР»Рё 'e'(СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ) РёР»Рё 'b'(РѕР±Р°)
+     * @param string $firstChar РїРµСЂРІС‹Р№ СЃРёРјРІРѕР» РІ СЂРµР·СѓР»СЊС‚Р°С‚Рµ, ? РёР»Рё &
      * @return type string
      */
     protected function _addUrlParams($role, $firstChar = '?') {
         if ($role == 'f') { 
-            $params = 'utm_source=newsletter4&utm_medium=uvedomlenie&utm_campaign=free-lancer'; // окончание для фрилансера
+            $params = 'utm_source=newsletter4&utm_medium=uvedomlenie&utm_campaign=free-lancer'; // РѕРєРѕРЅС‡Р°РЅРёРµ РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂР°
         } elseif ($role == 'e') {
-            $params = 'utm_source=newsletter4&utm_medium=uvedomlenie&utm_campaign=rabotodatel'; // для работодателя
+            $params = 'utm_source=newsletter4&utm_medium=uvedomlenie&utm_campaign=rabotodatel'; // РґР»СЏ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏ
         } elseif ($role == 'b') {
-            $params = 'utm_source=newsletter4&utm_medium=uvedomlenie&utm_campaign=polzovatel'; // для обоих
+            $params = 'utm_source=newsletter4&utm_medium=uvedomlenie&utm_campaign=polzovatel'; // РґР»СЏ РѕР±РѕРёС…
         } else return '';
         return $firstChar.$params;
     }
     
     
     /**
-     * UTM-метки для аналитики
+     * UTM-РјРµС‚РєРё РґР»СЏ Р°РЅР°Р»РёС‚РёРєРё
      * 
      * @param type $utm_medium
      * @param type $utm_content

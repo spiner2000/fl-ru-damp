@@ -4,10 +4,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/countrys.common.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/city.php");
 
 /**
- * Возвращает select со списком городов указанной страны в блок с id="frm_city"
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ select СЃРѕ СЃРїРёСЃРєРѕРј РіРѕСЂРѕРґРѕРІ СѓРєР°Р·Р°РЅРЅРѕР№ СЃС‚СЂР°РЅС‹ РІ Р±Р»РѕРє СЃ id="frm_city"
  * 
- * @param  int $country_id ID страны
- * @param  array $attr опционально. атрибуты select например: array('name'=>'pf_city', 'class'=>'flt-p-sel',...);
+ * @param  int $country_id ID СЃС‚СЂР°РЅС‹
+ * @param  array $attr РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. Р°С‚СЂРёР±СѓС‚С‹ select РЅР°РїСЂРёРјРµСЂ: array('name'=>'pf_city', 'class'=>'flt-p-sel',...);
  * @return unknown
  */
 function GetCitysByCid( $country_id, $attr = array() ){
@@ -27,7 +27,7 @@ function GetCitysByCid( $country_id, $attr = array() ){
 		$cities = city::GetCities($country_id);
 	}
 	
-	$out_text = "<select $sAttr><option value=\"0\">Все города</option>";
+	$out_text = "<select $sAttr><option value=\"0\">Р’СЃРµ РіРѕСЂРѕРґР°</option>";
 	if($cities) foreach ($cities as $cityid => $city)
 		$out_text .= "<option value=".$cityid.">".$city."</option>";
 	$out_text .= "</select>";
@@ -37,10 +37,10 @@ function GetCitysByCid( $country_id, $attr = array() ){
 }
 
 /**
- * Возвращает select со списком городов указанной страны в для фильтра регионов в каталоге фрилансеров
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ select СЃРѕ СЃРїРёСЃРєРѕРј РіРѕСЂРѕРґРѕРІ СѓРєР°Р·Р°РЅРЅРѕР№ СЃС‚СЂР°РЅС‹ РІ РґР»СЏ С„РёР»СЊС‚СЂР° СЂРµРіРёРѕРЅРѕРІ РІ РєР°С‚Р°Р»РѕРіРµ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
  * 
- * @param  int $country название страны транслит
- * @param  array $attr опционально. атрибуты select например: array('name'=>'pf_city', 'class'=>'flt-p-sel',...);
+ * @param  int $country РЅР°Р·РІР°РЅРёРµ СЃС‚СЂР°РЅС‹ С‚СЂР°РЅСЃР»РёС‚
+ * @param  array $attr РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. Р°С‚СЂРёР±СѓС‚С‹ select РЅР°РїСЂРёРјРµСЂ: array('name'=>'pf_city', 'class'=>'flt-p-sel',...);
  * @return unknown
  */
 function RFGetCitysByCid( $country, $attr = array() ){
@@ -61,7 +61,7 @@ function RFGetCitysByCid( $country, $attr = array() ){
 	}
 
 	$objResponse->script('$("b-select__city").set("html","");');
-	$objResponse->script('new Element("option", { value: "0", text: "Все города" }).inject($("b-select__city"));');
+	$objResponse->script('new Element("option", { value: "0", text: "Р’СЃРµ РіРѕСЂРѕРґР°" }).inject($("b-select__city"));');
 	$js = '';
 	if($cities) foreach ($cities as $cityid => $city)
 		$js .= 'new Element("option", { value: "'.translit(strtolower($city)).'", text: "'.$city.'" }).inject($("b-select__city"));'."\n";

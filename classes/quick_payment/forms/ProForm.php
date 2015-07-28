@@ -10,19 +10,19 @@ class ProForm extends Form_View
         'StripSlashes'
     );
 
-    //Путь к вьюшкам элементов
+    //РџСѓС‚СЊ Рє РІСЊСЋС€РєР°Рј СЌР»РµРјРµРЅС‚РѕРІ
     protected $viewScriptPrefixPath = 'classes/Form/Templates/Horizontal';
     
     
     /**
-     * Общий текст элемента
+     * РћР±С‰РёР№ С‚РµРєСЃС‚ СЌР»РµРјРµРЅС‚Р°
      */
-    const TXT_ITEM      = "Сумма к оплате %s руб.";
-    const TXT_ITEM_TEST = "Сумма к оплате <strike>&nbsp;%s&nbsp;</strike> <span class=\"g-color_f1645b\">%s руб.</span>";
+    const TXT_ITEM      = "РЎСѓРјРјР° Рє РѕРїР»Р°С‚Рµ %s СЂСѓР±.";
+    const TXT_ITEM_TEST = "РЎСѓРјРјР° Рє РѕРїР»Р°С‚Рµ <strike>&nbsp;%s&nbsp;</strike> <span class=\"g-color_f1645b\">%s СЂСѓР±.</span>";
 
     
     /**
-     * Тип пользователя
+     * РўРёРї РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * 
      * @var type 
      */
@@ -30,7 +30,7 @@ class ProForm extends Form_View
 
 
     /**
-     * Список текущих тарифных планов
+     * РЎРїРёСЃРѕРє С‚РµРєСѓС‰РёС… С‚Р°СЂРёС„РЅС‹С… РїР»Р°РЅРѕРІ
      * 
      * @var type 
      */

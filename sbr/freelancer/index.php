@@ -81,10 +81,10 @@ switch($site) {
         $stage_id  = __paramInit('int', 'id', 'id');
         if(!($stage = $sbr->initFromStage($stage_id)))
             break;
-        if($stage->sbr->status == sbr::STATUS_CLOSED && $action != 'msg-add') $action = ""; //TODO —ÓÏÌËÚÂÎ¸Ì˚È ÏÓÏÂÌÚ
+        if($stage->sbr->status == sbr::STATUS_CLOSED && $action != 'msg-add') $action = ""; //TODO –°–æ–º–Ω–∏—Ç–µ–ª—å–Ω—ã–π –º–æ–º–µ–Ω—Ç
         $pskb = new pskb($sbr);
         $lc = $pskb->getLC();
-        // ÍÓ‰ ‰Îˇ ÒÚ‡ÌËˆ˚ ÔÓÏÓ˘Ë
+        // –∫–æ–¥ –¥–ª—è —Å—Ç—Ä–∞–Ω–∏—Ü—ã –ø–æ–º–æ—â–∏
         $g_help_id = 219;
         if ($stage->data['lc_state'] == pskb::STATE_PASSED) {
             $g_help_id = 217;
@@ -125,7 +125,7 @@ switch($site) {
             }
         }
 
-        if($stage->status != sbr_stages::STATUS_INARBITRAGE && $stage->status != sbr_stages::STATUS_ARBITRAGED) { // !!! ÏÓÊÌÓ Û·‡Ú¸ ÛÒÎÓ‚Ëˇ.
+        if($stage->status != sbr_stages::STATUS_INARBITRAGE && $stage->status != sbr_stages::STATUS_ARBITRAGED) { // !!! –º–æ–∂–Ω–æ —É–±—Ä–∞—Ç—å —É—Å–ª–æ–≤–∏—è.
             $g_help_id = 223;
             if($sbr->status == sbr::STATUS_CHANGED && ($stage_changed = ($stage->frl_version && ($stage->frl_version < $stage->version || $sbr->frl_version < $sbr->version)))) {
                 $sbr->v_data = $sbr->data;
@@ -139,9 +139,9 @@ switch($site) {
             //$stage->data['descr'] = $frl_version['descr'];
         }
         /*
-         «ÂÎÂÌ‡ˇ:
-         1) ˝Ú‡Ô Á‡‚Â¯ÂÌ ÌÓÏ‡Î¸ÌÓ Ë ÌÂ ÔÓÒÚ‡‚ÎÂÌ˚ ÓÚÁ˚‚˚ ËÎË ÌÂ ‚˚·‡Ì‡ ‚‡Î˛Ú‡ ‚˚ÔÎ‡Ú.
-         2) ˝Ú‡Ô Á‡‚Â¯ÂÌ ÔÓ ‡·ËÚ‡ÊÛ, ‚Òˇ Ò‰ÂÎÍ‡ Á‡‚Â¯ÂÌ‡, ‚‡Î˛Ú‡ ‚˚ÔÎ‡Ú ÔÓ ˝Ú‡ÔÛ ‚˚·‡Ì‡, ÓÚÁ˚‚˚ ÔÓÒÚ‡‚ÎÂÌ˚, ÌÓ ÌÂ ÔÓÒÚ‡‚ÎÂÌ˚ ÓÚÁ˚‚˚ ÒÂ‚ËÒÛ.
+         –ó–µ–ª–µ–Ω–∞—è:
+         1) —ç—Ç–∞–ø –∑–∞–≤–µ—Ä—à–µ–Ω –Ω–æ—Ä–º–∞–ª—å–Ω–æ –∏ –Ω–µ –ø—Ä–æ—Å—Ç–∞–≤–ª–µ–Ω—ã –æ—Ç–∑—ã–≤—ã –∏–ª–∏ –Ω–µ –≤—ã–±—Ä–∞–Ω–∞ –≤–∞–ª—é—Ç–∞ –≤—ã–ø–ª–∞—Ç.
+         2) —ç—Ç–∞–ø –∑–∞–≤–µ—Ä—à–µ–Ω –ø–æ –∞—Ä–±–∏—Ç—Ä–∞–∂—É, –≤—Å—è —Å–¥–µ–ª–∫–∞ –∑–∞–≤–µ—Ä—à–µ–Ω–∞, –≤–∞–ª—é—Ç–∞ –≤—ã–ø–ª–∞—Ç –ø–æ —ç—Ç–∞–ø—É –≤—ã–±—Ä–∞–Ω–∞, –æ—Ç–∑—ã–≤—ã –ø—Ä–æ—Å—Ç–∞–≤–ª–µ–Ω—ã, –Ω–æ –Ω–µ –ø—Ä–æ—Å—Ç–∞–≤–ª–µ–Ω—ã –æ—Ç–∑—ã–≤—ã —Å–µ—Ä–≤–∏—Å—É.
          */
         if( $stage->status == sbr_stages::STATUS_COMPLETED
              && (!$stage->frl_feedback_id || !$stage->getPayouts($sbr->uid))
@@ -190,7 +190,7 @@ switch($site) {
 
         $sbr->initFromId($sbrID);
         
-        // ˜ÚÓ·˚ ÌÂÎ¸Áˇ ·˚ÎÓ ÒÏÓÚÂÚ¸ ˜ÛÊËı Ò‰ÂÎÓÍ
+        // —á—Ç–æ–±—ã –Ω–µ–ª—å–∑—è –±—ã–ª–æ —Å–º–æ—Ç—Ä–µ—Ç—å —á—É–∂–∏—Ö —Å–¥–µ–ª–æ–∫
         if ($sbr->data['frl_id'] != get_uid(0)) {
             header_location_exit('/404.php');
         }
@@ -198,7 +198,7 @@ switch($site) {
         $crumbs = array(
             0 => array(
                 'href' => '/' . sbr::NEW_TEMPLATE_SBR . '/', 
-                'name' => '´ÃÓË —‰ÂÎÍËª'
+                'name' => '¬´–ú–æ–∏ –°–¥–µ–ª–∫–∏¬ª'
             ),
             1 => array(
                 'href' => '',
@@ -230,8 +230,8 @@ switch($site) {
             $now_count    = sizeof($sbr_currents);
             $count_sbr    = $sbr->getCountCompleteSbr();
             $now_count    = ($now_count - $sbr->new_count - 1 );
-            // “ÛÚ ÔÓ‚ÂÍ‡ ÂÒÎË Ò‰ÂÎÓÍ ÌÂÚ ‚ÓÓ·˘Â, ÚÓ ÂÒÚ¸ ÂÒÎË ÌÂÚ Ò‰ÂÎÓÍ Ë ÌÂÚ ÒÍ˚Ú˚ı Ò‰ÂÎÓÍ ÚÓ„‰‡ Ï˚ ÔÓÒ˚Î‡ÂÏ ‚ ÔÓÏÓ
-            if(!$sbr_currents && !$count_sbr && !$filter && !$count_old_sbr) { // ÔË ‡ÍÚË‚‡ˆËË ÙËÎ¸Ú‡ ·Û‰ÂÏ ÔÓÍ‡Á˚‚‡Ú¸ ÒÚ‡ÌËˆÛ
+            // –¢—É—Ç –ø—Ä–æ–≤–µ—Ä–∫–∞ –µ—Å–ª–∏ —Å–¥–µ–ª–æ–∫ –Ω–µ—Ç –≤–æ–æ–±—â–µ, —Ç–æ –µ—Å—Ç—å –µ—Å–ª–∏ –Ω–µ—Ç —Å–¥–µ–ª–æ–∫ –∏ –Ω–µ—Ç —Å–∫—Ä—ã—Ç—ã—Ö —Å–¥–µ–ª–æ–∫ —Ç–æ–≥–¥–∞ –º—ã –ø–æ—Å—ã–ª–∞–µ–º –≤ –ø—Ä–æ–º–æ
+            if(!$sbr_currents && !$count_sbr && !$filter && !$count_old_sbr) { // –ø—Ä–∏ –∞–∫—Ç–∏–≤–∞—Ü–∏–∏ —Ñ–∏–ª—å—Ç—Ä–∞ –±—É–¥–µ–º –ø–æ–∫–∞–∑—ã–≤–∞—Ç—å —Å—Ç—Ä–∞–Ω–∏—Ü—É
                 header_location_exit('/promo/' . sbr::NEW_TEMPLATE_SBR . '/');
                 break;
             }
@@ -247,7 +247,7 @@ switch($site) {
         }
         if($rt_disabled = $sbr->checkChangeRT()) {
             if(!($rez_type = $sbr->user_reqvs['rez_type']))
-                 $rez_type = sbr::RT_RU; // ÂÒÎË ÌÂ ÛÒÚ‡ÌÓ‚ÎÂÌ ÙÎ‡„ ‚ ·‡ÁÂ, ÌÓ checkChangeRT, ÚÓ Ò˜ËÚ‡ÂÏ, ˜ÚÓ ÓÌ ÛÒ¸ÍËÈ (Ú.Í. ‰Ó ÙÎ‡„‡ ÚÓÎ¸ÍÓ ÂÁË‰ÂÌÚ˚ ·˚ÎË).
+                 $rez_type = sbr::RT_RU; // –µ—Å–ª–∏ –Ω–µ —É—Å—Ç–∞–Ω–æ–≤–ª–µ–Ω —Ñ–ª–∞–≥ –≤ –±–∞–∑–µ, –Ω–æ checkChangeRT, —Ç–æ —Å—á–∏—Ç–∞–µ–º, —á—Ç–æ –æ–Ω —Ä—É—Å—å–∫–∏–π (—Ç.–∫. –¥–æ —Ñ–ª–∞–≥–∞ —Ç–æ–ª—å–∫–æ —Ä–µ–∑–∏–¥–µ–Ω—Ç—ã –±—ã–ª–∏).
         }
 
         $isReqvsFilled = $sbr->checkUserReqvs(null, $form_type);
@@ -261,7 +261,7 @@ switch($site) {
                     header_location_exit('/404.php');
                 
                 /**
-                 * ÒıÂÏ‡ ‡·ÓÚ˚ ˜ÂÂÁ ·‡ÌÍ
+                 * —Å—Ö–µ–º–∞ —Ä–∞–±–æ—Ç—ã —á–µ—Ä–µ–∑ –±–∞–Ω–∫
                  */
                 if ($sbr->data['scheme_type'] == sbr::SCHEME_LC) {
                     $psys = __paramInit('int', NULL, 'mode_type');
@@ -286,7 +286,7 @@ switch($site) {
                     
                     if(!$sbr->error) {
                         if($rez_type != $sbr->user_reqvs['rez_type'] || $form_type != $sbr->user_reqvs['form_type']) {
-                            //@todo: Á‡ÔÂ˘‡ÂÏ ËÁÏÂÌˇÚ¸ ÙËÌ‡ÌÒ˚ ‚ ÒÚ‡ÓÈ —¡– #29196
+                            //@todo: –∑–∞–ø—Ä–µ—â–∞–µ–º –∏–∑–º–µ–Ω—è—Ç—å —Ñ–∏–Ω–∞–Ω—Å—ã –≤ —Å—Ç–∞—Ä–æ–π –°–ë–† #29196
                             //sbr_meta::setUserReqv($sbr->uid, $rez_type, $form_type, $rrr, false);
                             $sbr->user_reqvs['rez_type'] = $rez_type;
                             $sbr->user_reqvs['form_type'] = $form_type;
@@ -314,7 +314,7 @@ switch($site) {
                             }
                             $sbr_stage = $sbr->getStages();
                             foreach($sbr_stage as $stage) {
-                                $sbr->setUserReqvHistory($sbr->uid, intval($stage->data['id']), 0); // —Óı‡ÌˇÂÏ ‰Îˇ ‚ÒÂı ˝Ú‡ÔÓ‚, ÒÓ„Î‡ÒËÂ ËÒÔÓÎÌËÚÂÎˇ
+                                $sbr->setUserReqvHistory($sbr->uid, intval($stage->data['id']), 0); // –°–æ—Ö—Ä–∞–Ω—è–µ–º –¥–ª—è –≤—Å–µ—Ö —ç—Ç–∞–ø–æ–≤, —Å–æ–≥–ª–∞—Å–∏–µ –∏—Å–ø–æ–ª–Ω–∏—Ç–µ–ª—è
                             }
                             //header_location_exit("/".sbr::NEW_TEMPLATE_SBR."/?id={$id}");
                             header_location_exit("/" . sbr::NEW_TEMPLATE_SBR . "/?site=agreed&sbr_id=$id");

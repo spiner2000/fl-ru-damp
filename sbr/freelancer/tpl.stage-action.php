@@ -3,7 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/buttons/multi_buttons.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/LocalDateTime.php");
 $multi = new multi_buttons();
 
-if($stage->version != $stage->frl_version) {// Фрилансер еще не согласился, для расчета берем старую дату
+if($stage->version != $stage->frl_version) {// Р¤СЂРёР»Р°РЅСЃРµСЂ РµС‰Рµ РЅРµ СЃРѕРіР»Р°СЃРёР»СЃСЏ, РґР»СЏ СЂР°СЃС‡РµС‚Р° Р±РµСЂРµРј СЃС‚Р°СЂСѓСЋ РґР°С‚Сѓ
     $frl_version = $stage->getVersion($stage->frl_version, $stage->data);
     $work_time = intval($frl_version['work_time']);
     $start_time = $frl_version['start_time'];
@@ -18,7 +18,7 @@ $days      = ($work_time + pskb::PERIOD_EXP) . "day";
 $overtime  = strtotime($start_time . ' + ' . $days);
 if($sbr->data['lc_id'] > 0) {
     $overtime = strtotime($sbr->data['dateEndLC'] . ' - ' . pskb::ARBITRAGE_PERIOD_DAYS . " day");
-    // Сб, Вс не рабочие дни
+    // РЎР±, Р’СЃ РЅРµ СЂР°Р±РѕС‡РёРµ РґРЅРё
     if(date('w', $overtime) == 0 || date('w', $overtime) == 6) {
         $d = date('w', $overtime) == 6 ? 1 : 2;
         $overtime = $overtime - ($d * 3600* 24);
@@ -27,23 +27,23 @@ if($sbr->data['lc_id'] > 0) {
     $overtime = null;
 }
 
-// Если в арбитраже действий, делать никаких нельзя, независимо от статуса СБР, если завершено кнопок уже никаких не будет
+// Р•СЃР»Рё РІ Р°СЂР±РёС‚СЂР°Р¶Рµ РґРµР№СЃС‚РІРёР№, РґРµР»Р°С‚СЊ РЅРёРєР°РєРёС… РЅРµР»СЊР·СЏ, РЅРµР·Р°РІРёСЃРёРјРѕ РѕС‚ СЃС‚Р°С‚СѓСЃР° РЎР‘Р , РµСЃР»Рё Р·Р°РІРµСЂС€РµРЅРѕ РєРЅРѕРїРѕРє СѓР¶Рµ РЅРёРєР°РєРёС… РЅРµ Р±СѓРґРµС‚
 if($stage->data['status'] == sbr_stages::STATUS_INARBITRAGE || $stage->data['status'] == sbr_stages::STATUS_ARBITRAGED || $stage->status == sbr_stages::STATUS_COMPLETED) return;
 
-// Инициируем все доступные кнопки один раз @todo Что-то тут надо придумать
-$arbitrage = new buttons('Обратиться в арбитраж', 'red', 'arbitrage');
+// РРЅРёС†РёРёСЂСѓРµРј РІСЃРµ РґРѕСЃС‚СѓРїРЅС‹Рµ РєРЅРѕРїРєРё РѕРґРёРЅ СЂР°Р· @todo Р§С‚Рѕ-С‚Рѕ С‚СѓС‚ РЅР°РґРѕ РїСЂРёРґСѓРјР°С‚СЊ
+$arbitrage = new buttons('РћР±СЂР°С‚РёС‚СЊСЃСЏ РІ Р°СЂР±РёС‚СЂР°Р¶', 'red', 'arbitrage');
 $arbitrage->addEvent("onclick", "toggle_arb();");
 
-$condition = new buttons('Посмотреть условия сделки', null, 'condition');
+$condition = new buttons('РџРѕСЃРјРѕС‚СЂРµС‚СЊ СѓСЃР»РѕРІРёСЏ СЃРґРµР»РєРё', null, 'condition');
 $condition->setLink("/" . sbr::NEW_TEMPLATE_SBR . "/?site=master&id={$sbr->id}");
 
-$refuse = new buttons('Отказаться от сделки', 'red', 'refuse');
+$refuse = new buttons('РћС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ СЃРґРµР»РєРё', 'red', 'refuse');
 $refuse->addEvent("onclick", "$('refuse_dialog').toggleClass('b-shadow_hide'); return false;");
 
-$agree = new buttons('Согласиться с изменениями', null, 'action_stage');
+$agree = new buttons('РЎРѕРіР»Р°СЃРёС‚СЊСЃСЏ СЃ РёР·РјРµРЅРµРЅРёСЏРјРё', null, 'action_stage');
 $agree->addEvent("onclick", "submitForm($('actionStageForm'), {action:'agree_stage', ok:1});");
 
-$refuse_stage = new buttons('Отказаться от изменений', 'red', 'refuse_stage');
+$refuse_stage = new buttons('РћС‚РєР°Р·Р°С‚СЊСЃСЏ РѕС‚ РёР·РјРµРЅРµРЅРёР№', 'red', 'refuse_stage');
 $refuse_stage->addEvent("onclick", "$('refuse_stage_dialog').toggleClass('b-shadow_hide'); return false;");
 
 switch($sbr->status) {
@@ -54,15 +54,15 @@ switch($sbr->status) {
         
         break;
     case sbr::STATUS_CHANGED:
-        if($sbr->data['reserved_id']) { // Деньги зарезервированы, тут еще зависимость от статусов будет
+        if($sbr->data['reserved_id']) { // Р”РµРЅСЊРіРё Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹, С‚СѓС‚ РµС‰Рµ Р·Р°РІРёСЃРёРјРѕСЃС‚СЊ РѕС‚ СЃС‚Р°С‚СѓСЃРѕРІ Р±СѓРґРµС‚
             if($stage_changed) { 
                 if($stage->data['status'] == sbr_stages::STATUS_PROCESS && $stage->v_data['status'] == sbr_stages::STATUS_NEW) {
-                    $agree->setName('Приступить к работе'); // Меняем название кнопки
+                    $agree->setName('РџСЂРёСЃС‚СѓРїРёС‚СЊ Рє СЂР°Р±РѕС‚Рµ'); // РњРµРЅСЏРµРј РЅР°Р·РІР°РЅРёРµ РєРЅРѕРїРєРё
                 }
 
                 $multi->addButton($agree);
 
-                // Отказатся нельзя от изменений когда сделку переводят из состояния Не начат
+                // РћС‚РєР°Р·Р°С‚СЃСЏ РЅРµР»СЊР·СЏ РѕС‚ РёР·РјРµРЅРµРЅРёР№ РєРѕРіРґР° СЃРґРµР»РєСѓ РїРµСЂРµРІРѕРґСЏС‚ РёР· СЃРѕСЃС‚РѕСЏРЅРёСЏ РќРµ РЅР°С‡Р°С‚
                 if($stage->v_data['status'] != sbr_stages::STATUS_NEW) { 
                     $multi->addButton($refuse_stage);
                 }
@@ -70,8 +70,8 @@ switch($sbr->status) {
             if($stage->status != sbr_stages::STATUS_NEW) {
                 $multi->addButton($arbitrage);
             }
-        } else { // Деньги не зарезервированы
-            // Если есть изменения в текущей сделке
+        } else { // Р”РµРЅСЊРіРё РЅРµ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹
+            // Р•СЃР»Рё РµСЃС‚СЊ РёР·РјРµРЅРµРЅРёСЏ РІ С‚РµРєСѓС‰РµР№ СЃРґРµР»РєРµ
             if($stage_changed) {
                 $multi->addButton($agree);
                 $multi->addButton($refuse_stage);
@@ -82,9 +82,9 @@ switch($sbr->status) {
         
         break;
     case sbr::STATUS_PROCESS:
-        if($sbr->data['reserved_id'] && $stage->status != sbr_stages::STATUS_NEW) { // Деньги зарезервированы
+        if($sbr->data['reserved_id'] && $stage->status != sbr_stages::STATUS_NEW) { // Р”РµРЅСЊРіРё Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹
             $multi->addButton($arbitrage);
-        } else { // Деньги еще не зарезервированы
+        } else { // Р”РµРЅСЊРіРё РµС‰Рµ РЅРµ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅС‹
             $multi->addButton($refuse);
         }
         break;
@@ -94,7 +94,7 @@ switch($sbr->status) {
         break;
 }
 
-// Если время вышло #0020166 #0023680
+// Р•СЃР»Рё РІСЂРµРјСЏ РІС‹С€Р»Рѕ #0020166 #0023680
 if(time() > $overtime && $overtime !== null) {
     $multi->removeButton($arbitrage);
 }
@@ -103,14 +103,14 @@ if($sbr->lc_id > 0) {
     $multi->removeButton($refuse);
 }
 
-// Выводим сгенерированные кнопки
+// Р’С‹РІРѕРґРёРј СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅС‹Рµ РєРЅРѕРїРєРё
 $multi->view();
-// Если есть кнопка арбитража
+// Р•СЃР»Рё РµСЃС‚СЊ РєРЅРѕРїРєР° Р°СЂР±РёС‚СЂР°Р¶Р°
 if($multi->isButton('arbitrage')) {
     include ($_SERVER['DOCUMENT_ROOT'] . "/sbr/arbitrage.php");
 }
 
-// Если есть кнопки из блока действий по этапу сделки
+// Р•СЃР»Рё РµСЃС‚СЊ РєРЅРѕРїРєРё РёР· Р±Р»РѕРєР° РґРµР№СЃС‚РІРёР№ РїРѕ СЌС‚Р°РїСѓ СЃРґРµР»РєРё
 if($multi->isButton('action_stage')) {
     ?>
     <form method="post" id="actionStageForm">
@@ -133,15 +133,15 @@ if($multi->isButton('refuse_stage')) {
                     <div class="b-shadow__top">
                         <div class="b-shadow__bottom">
                             <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20">
-                                <h1 class="b-shadow__title b-shadow__title_fontsize_34 b-shadow__title_padbot_15">Отказ от изменений</h1>
-                                <div class="b-shadow__txt b-shadow__txt_padbot_20">Пожалуйста, укажите причину, по которой вы не принимаете изменения:</div>
+                                <h1 class="b-shadow__title b-shadow__title_fontsize_34 b-shadow__title_padbot_15">РћС‚РєР°Р· РѕС‚ РёР·РјРµРЅРµРЅРёР№</h1>
+                                <div class="b-shadow__txt b-shadow__txt_padbot_20">РџРѕР¶Р°Р»СѓР№СЃС‚Р°, СѓРєР°Р¶РёС‚Рµ РїСЂРёС‡РёРЅСѓ, РїРѕ РєРѕС‚РѕСЂРѕР№ РІС‹ РЅРµ РїСЂРёРЅРёРјР°РµС‚Рµ РёР·РјРµРЅРµРЅРёСЏ:</div>
                                 <div class="b-textarea">
                                         <textarea class="b-textarea__textarea b-textarea__textarea_height_140 max-height_140 noresize" name="frl_refuse_reason" cols="" rows=""></textarea>
                                 </div>
                                 <div class="b-buttons b-buttons_padtop_15">
-                                    <a class="b-button b-button_flat b-button_flat_green"  href="javascript:void(0)" onclick="submitForm($('refuseStageForm'))">Отправить отказ</a>
-                                    <span class="b-buttons__txt b-buttons__txt_padleft_10">или</span>
-                                    <a class="b-buttons__link b-buttons__link_dot_c10601" href="javascript:void(0)" onclick="$('refuse_stage_dialog').toggleClass('b-shadow_hide'); return false;">закрыть, не отправляя</a>
+                                    <a class="b-button b-button_flat b-button_flat_green"  href="javascript:void(0)" onclick="submitForm($('refuseStageForm'))">РћС‚РїСЂР°РІРёС‚СЊ РѕС‚РєР°Р·</a>
+                                    <span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё</span>
+                                    <a class="b-buttons__link b-buttons__link_dot_c10601" href="javascript:void(0)" onclick="$('refuse_stage_dialog').toggleClass('b-shadow_hide'); return false;">Р·Р°РєСЂС‹С‚СЊ, РЅРµ РѕС‚РїСЂР°РІР»СЏСЏ</a>
                                 </div>
                             </div>
                         </div>
@@ -169,15 +169,15 @@ if($multi->isButton('refuse')) {
                     <div class="b-shadow__top">
                         <div class="b-shadow__bottom">
                             <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20">
-                                <h1 class="b-shadow__title b-shadow__title_fontsize_34 b-shadow__title_padbot_15">Отказ от сделки</h1>
-                                <div class="b-shadow__txt b-shadow__txt_padbot_20">Пожалуйста, укажите причину, по которой вы отказываетесь от сотрудничества в сделке:</div>
+                                <h1 class="b-shadow__title b-shadow__title_fontsize_34 b-shadow__title_padbot_15">РћС‚РєР°Р· РѕС‚ СЃРґРµР»РєРё</h1>
+                                <div class="b-shadow__txt b-shadow__txt_padbot_20">РџРѕР¶Р°Р»СѓР№СЃС‚Р°, СѓРєР°Р¶РёС‚Рµ РїСЂРёС‡РёРЅСѓ, РїРѕ РєРѕС‚РѕСЂРѕР№ РІС‹ РѕС‚РєР°Р·С‹РІР°РµС‚РµСЃСЊ РѕС‚ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР° РІ СЃРґРµР»РєРµ:</div>
                                 <div class="b-textarea">
                                         <textarea class="b-textarea__textarea b-textarea__textarea_height_140 max-height_140 noresize" name="frl_refuse_reason" cols="" rows=""></textarea>
                                 </div>
                                 <div class="b-buttons b-buttons_padtop_15">
-                                    <a class="b-button b-button_flat b-button_flat_green"  href="javascript:void(0)" onclick="submitForm($('refuseForm'), {'refuse' : 1})">Отправить отказ</a>
-                                    <span class="b-buttons__txt b-buttons__txt_padleft_10">или</span>
-                                    <a class="b-buttons__link b-buttons__link_dot_c10601" href="javascript:void(0)" onclick="$('refuse_dialog').toggleClass('b-shadow_hide'); return false;">закрыть, не отправляя</a>
+                                    <a class="b-button b-button_flat b-button_flat_green"  href="javascript:void(0)" onclick="submitForm($('refuseForm'), {'refuse' : 1})">РћС‚РїСЂР°РІРёС‚СЊ РѕС‚РєР°Р·</a>
+                                    <span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё</span>
+                                    <a class="b-buttons__link b-buttons__link_dot_c10601" href="javascript:void(0)" onclick="$('refuse_dialog').toggleClass('b-shadow_hide'); return false;">Р·Р°РєСЂС‹С‚СЊ, РЅРµ РѕС‚РїСЂР°РІР»СЏСЏ</a>
                                 </div>
                             </div>
                         </div>

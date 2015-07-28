@@ -15,7 +15,7 @@
                     <img onclick="xajax_FileMoveTo(<?= $attach['id'] ?>, <?= $cid ?>, 'up'); return false;" src="/images/arrow2-top<?= $is_first ? '-a' : ''; ?>.png" alt="">
                     <img onclick="xajax_FileMoveTo(<?= $attach['id'] ?>, <?= $cid ?>, 'down'); return false;" src="/images/arrow2-bottom<?= $is_last ? '-a' : ''; ?>.png" alt="">
                 </span>
-                <a href="javascript:void(0)" onclick="xajax_MsgDelFile(<?= $cid ?>,<?= $attach['id'] ?>)" title="Óäàëèòü"><img src="/images/btn-remove2.png" alt="Óäàëèòü"></a><a href="<?= WDCPREFIX ?>/users/<?= $mess['user_login'] ?>/upload/<?= $attach['fname'] ?>" target="_blank" class="mime <?= getIcoClassByExt($attach['fname']);?>"><?= $attach['ftype'];?></a>, <?= sizeFormat($attach['size']); ?>
+                <a href="javascript:void(0)" onclick="xajax_MsgDelFile(<?= $cid ?>,<?= $attach['id'] ?>)" title="Ğ£Ğ´Ğ°Ğ»Ğ¸Ñ‚ÑŒ"><img src="/images/btn-remove2.png" alt="Ğ£Ğ´Ğ°Ğ»Ğ¸Ñ‚ÑŒ"></a><a href="<?= WDCPREFIX ?>/users/<?= $mess['user_login'] ?>/upload/<?= $attach['fname'] ?>" target="_blank" class="mime <?= getIcoClassByExt($attach['fname']);?>"><?= $attach['ftype'];?></a>, <?= sizeFormat($attach['size']); ?>
             </li>
     <? } ?>
 <? } ?>

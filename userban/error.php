@@ -1,12 +1,12 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="15">
 <tr valign="top">
 	<td height="400" valign="top" bgcolor="#FFFFFF" class="box2">
-	<h1>Только для модераторов</h1>
+	<h1>РўРѕР»СЊРєРѕ РґР»СЏ РјРѕРґРµСЂР°С‚РѕСЂРѕРІ</h1>
 
 <br>
-Электронная почта: <a href="mailto:info@free-lance.ru">info@free-lance.ru</a><br>
+Р­Р»РµРєС‚СЂРѕРЅРЅР°СЏ РїРѕС‡С‚Р°: <a href="mailto:info@free-lance.ru">info@free-lance.ru</a><br>
 <br>
-Спасибо!
+РЎРїР°СЃРёР±Рѕ!
 	</td>
 </tr>
 </table>

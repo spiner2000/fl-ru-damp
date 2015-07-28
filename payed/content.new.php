@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Основной шаблон списка ПРО услуг
+ * РћСЃРЅРѕРІРЅРѕР№ С€Р°Р±Р»РѕРЅ СЃРїРёСЃРєР° РџР Рћ СѓСЃР»СѓРі
  */
 
 $current_uid = get_uid(false);
@@ -27,24 +27,24 @@ var alowLogin = function(){
 
     <h1 id="header_payed_pro" class="b-layout__title b-layout__title_bold b-layout__title_fs30 b-layout__title_color_ff8600 b-layout__title_padbot_30">
         <?php if ($pro_last): ?>
-        Профессиональный аккаунт
+        РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚
         <div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_center b-layout__txt_fontsize_20">
-            Действует до <?= date('d.m.Y', strtotime($pro_last)) ?>
+            Р”РµР№СЃС‚РІСѓРµС‚ РґРѕ <?= date('d.m.Y', strtotime($pro_last)) ?>
         </div>
         <?php else: ?>
-        Получи профеcсиональный аккаунт фрилансера<br/> и зарабатывай больше!
+        РџРѕР»СѓС‡Рё РїСЂРѕС„РµcСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚ С„СЂРёР»Р°РЅСЃРµСЂР°<br/> Рё Р·Р°СЂР°Р±Р°С‚С‹РІР°Р№ Р±РѕР»СЊС€Рµ!
         <?php endif; ?>
     </h1>
     
     <div class="b-layout__txt b-layout__txt_fontsize_25 b-layout__txt_color_333 b-layout__txt_padbot_80">
-        С PRO аккаунтом ты <span class="b-layout__txt_color_ff8600 b-layout__txt_italic">увеличишь свой доход</span><br/> 
-        за счет повышения рейтинга на 20% и доступа к премиум проектам.
+        РЎ PRO Р°РєРєР°СѓРЅС‚РѕРј С‚С‹ <span class="b-layout__txt_color_ff8600 b-layout__txt_italic">СѓРІРµР»РёС‡РёС€СЊ СЃРІРѕР№ РґРѕС…РѕРґ</span><br/> 
+        Р·Р° СЃС‡РµС‚ РїРѕРІС‹С€РµРЅРёСЏ СЂРµР№С‚РёРЅРіР° РЅР° 20% Рё РґРѕСЃС‚СѓРїР° Рє РїСЂРµРјРёСѓРј РїСЂРѕРµРєС‚Р°Рј.
     </div>
     
     <?php if (false && !$pro_last && (isWasPlatipotom() || isAllowTestPro())): ?>
     <div class="b-fon b-fon_inline-block b-fon_pad_10 b-fon_bg_d3f2c0 b-fon__nosik_bot b-fon_margbot_20">
-        Теперь можно приобрести аккаунт, оплатив его потом (через сервис <a class="b-layout__link" href="http://PlatiPotom.ru" target="_blank">PlatiPotom.ru</a>). 
-        Вы станете PRO сразу, а оплатите его с отсрочкой до 30 дней.
+        РўРµРїРµСЂСЊ РјРѕР¶РЅРѕ РїСЂРёРѕР±СЂРµСЃС‚Рё Р°РєРєР°СѓРЅС‚, РѕРїР»Р°С‚РёРІ РµРіРѕ РїРѕС‚РѕРј (С‡РµСЂРµР· СЃРµСЂРІРёСЃ <a class="b-layout__link" href="http://PlatiPotom.ru" target="_blank">PlatiPotom.ru</a>). 
+        Р’С‹ СЃС‚Р°РЅРµС‚Рµ PRO СЃСЂР°Р·Сѓ, Р° РѕРїР»Р°С‚РёС‚Рµ РµРіРѕ СЃ РѕС‚СЃСЂРѕС‡РєРѕР№ РґРѕ 30 РґРЅРµР№.
     </div>
     <?php endif; ?>
 <?php 
@@ -53,12 +53,12 @@ include_once("tpl.setting.pro.php");
 include_once('plans.php');
 
 if ($current_uid > 0):
-    //Вывод попапа оплаты
+    //Р’С‹РІРѕРґ РїРѕРїР°РїР° РѕРїР»Р°С‚С‹
     echo quickPaymentPopupPro::getInstance()->render();
     
 
-    //@todo: временное решение сообщения об успешной покупки ПРО основанное на старом шаблоне, 
-    //@todo: потом нужно перенести в quickPaymentPopupPro
+    //@todo: РІСЂРµРјРµРЅРЅРѕРµ СЂРµС€РµРЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ РѕР± СѓСЃРїРµС€РЅРѕР№ РїРѕРєСѓРїРєРё РџР Рћ РѕСЃРЅРѕРІР°РЅРЅРѕРµ РЅР° СЃС‚Р°СЂРѕРј С€Р°Р±Р»РѕРЅРµ, 
+    //@todo: РїРѕС‚РѕРј РЅСѓР¶РЅРѕ РїРµСЂРµРЅРµСЃС‚Рё РІ quickPaymentPopupPro
     if (isset($_GET['quickpro_ok'])):
         require_once($_SERVER['DOCUMENT_ROOT'] . "/templates/quick_buy_pro_win.php");
     endif;

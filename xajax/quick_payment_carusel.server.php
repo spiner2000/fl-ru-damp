@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Место в карусели. Оплата услуги.
+ * РњРµСЃС‚Рѕ РІ РєР°СЂСѓСЃРµР»Рё. РћРїР»Р°С‚Р° СѓСЃР»СѓРіРё.
  */
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/billing.php');
@@ -14,7 +14,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/quick_payment/forms/CaruselFo
 
 
 /**
- * Это методы для разных видов оплаты но сгруппированные в яндекс кассе
+ * Р­С‚Рѕ РјРµС‚РѕРґС‹ РґР»СЏ СЂР°Р·РЅС‹С… РІРёРґРѕРІ РѕРїР»Р°С‚С‹ РЅРѕ СЃРіСЂСѓРїРїРёСЂРѕРІР°РЅРЅС‹Рµ РІ СЏРЅРґРµРєСЃ РєР°СЃСЃРµ
  * 
  * @param type $type
  * @param type $data
@@ -46,7 +46,7 @@ function quickPaymentCaruselSberbank($type, $data)
 
 
 /**
- * Оплата карусели через яндекс кассу
+ * РћРїР»Р°С‚Р° РєР°СЂСѓСЃРµР»Рё С‡РµСЂРµР· СЏРЅРґРµРєСЃ РєР°СЃСЃСѓ
  * 
  * @param type $type
  * @param type $data
@@ -99,15 +99,15 @@ function quickPaymentCaruselYandexKassa($type, $data)
         $options['hours'] = $data['hours'];
     }
     
-    //Каталог
-    //@todo: неиспользуется разделение платный мест в картусели
+    //РљР°С‚Р°Р»РѕРі
+    //@todo: РЅРµРёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ СЂР°Р·РґРµР»РµРЅРёРµ РїР»Р°С‚РЅС‹Р№ РјРµСЃС‚ РІ РєР°СЂС‚СѓСЃРµР»Рё
     //$tarif = 73;
     
-    //Главная
-    //@todo: сейчас общий раздел для всех
+    //Р“Р»Р°РІРЅР°СЏ
+    //@todo: СЃРµР№С‡Р°СЃ РѕР±С‰РёР№ СЂР°Р·РґРµР» РґР»СЏ РІСЃРµС…
     $tarif = 65;
     
-    //Формируем заказ
+    //Р¤РѕСЂРјРёСЂСѓРµРј Р·Р°РєР°Р·
     $billReserveId = $bill->addServiceAndCheckout($tarif, $options);
     $payed_sum = $bill->getRealPayedSum();
     
@@ -124,7 +124,7 @@ function quickPaymentCaruselYandexKassa($type, $data)
         if (qp) qp.sendPaymentForm('{$html_form}');
     ");
     
-    //сохранаем в сессию куда перейти при успешной покупке        
+    //СЃРѕС…СЂР°РЅР°РµРј РІ СЃРµСЃСЃРёСЋ РєСѓРґР° РїРµСЂРµР№С‚Рё РїСЂРё СѓСЃРїРµС€РЅРѕР№ РїРѕРєСѓРїРєРµ        
     $_SESSION[quickPaymentPopup::QPP_REDIRECT] = urldecode($_SESSION['ref_uri']);   
         
     return $objResponse;
@@ -132,7 +132,7 @@ function quickPaymentCaruselYandexKassa($type, $data)
 
 
 /**
- * Оплата с личного счета
+ * РћРїР»Р°С‚Р° СЃ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р°
  * 
  * @param type $type
  * @param array $data
@@ -177,12 +177,12 @@ function quickPaymentCaruselAccount($type, $data)
         $options['hours'] = $data['hours'];
     }
     
-    //Каталог
-    //@todo: неиспользуется разделение платный мест в карусели
+    //РљР°С‚Р°Р»РѕРі
+    //@todo: РЅРµРёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ СЂР°Р·РґРµР»РµРЅРёРµ РїР»Р°С‚РЅС‹Р№ РјРµСЃС‚ РІ РєР°СЂСѓСЃРµР»Рё
     //$tarif = 73;
     
-    //Главная
-    //@todo: сейчас общий раздел для всех
+    //Р“Р»Р°РІРЅР°СЏ
+    //@todo: СЃРµР№С‡Р°СЃ РѕР±С‰РёР№ СЂР°Р·РґРµР» РґР»СЏ РІСЃРµС…
     $tarif = 65;
     
     $complete = $bill->addServiceAndPayFromAccount($tarif, $options);
@@ -196,7 +196,7 @@ function quickPaymentCaruselAccount($type, $data)
 
 
 /**
- * Оплата карусели через Плати потом
+ * РћРїР»Р°С‚Р° РєР°СЂСѓСЃРµР»Рё С‡РµСЂРµР· РџР»Р°С‚Рё РїРѕС‚РѕРј
  * 
  * @param type $type
  * @param type $data
@@ -237,15 +237,15 @@ function quickPaymentCaruselPlatipotom($type, $data)
         $options['hours'] = $data['hours'];
     }
     
-    //Каталог
-    //@todo: неиспользуется разделение платный мест в картусели
+    //РљР°С‚Р°Р»РѕРі
+    //@todo: РЅРµРёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ СЂР°Р·РґРµР»РµРЅРёРµ РїР»Р°С‚РЅС‹Р№ РјРµСЃС‚ РІ РєР°СЂС‚СѓСЃРµР»Рё
     //$tarif = 73;
     
-    //Главная
-    //@todo: сейчас общий раздел для всех
+    //Р“Р»Р°РІРЅР°СЏ
+    //@todo: СЃРµР№С‡Р°СЃ РѕР±С‰РёР№ СЂР°Р·РґРµР» РґР»СЏ РІСЃРµС…
     $tarif = 65;
     
-    //Формируем заказ
+    //Р¤РѕСЂРјРёСЂСѓРµРј Р·Р°РєР°Р·
     $billReserveId = $bill->addServiceAndCheckout($tarif, $options);
     $payed_sum = $bill->getRealPayedSum();
     
@@ -261,7 +261,7 @@ function quickPaymentCaruselPlatipotom($type, $data)
             if (qp) qp.sendPaymentForm('{$html_form}');
         ");
 
-        //сохранаем в сессию куда перейти при успешной покупке        
+        //СЃРѕС…СЂР°РЅР°РµРј РІ СЃРµСЃСЃРёСЋ РєСѓРґР° РїРµСЂРµР№С‚Рё РїСЂРё СѓСЃРїРµС€РЅРѕР№ РїРѕРєСѓРїРєРµ        
         $_SESSION[quickPaymentPopup::QPP_REDIRECT] = urldecode($_SESSION['ref_uri']);   
     }
         

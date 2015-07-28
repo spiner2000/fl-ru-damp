@@ -78,13 +78,13 @@ switch($action) {
                     if ($_dir) {
                         $dir = $login . $_dir;
                     } else {
-                        $file['error'] = 'Ошибка загрузки файла';
+                        $file['error'] = 'РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»Р°';
                         $file['errno'] = 1;                          
                     }
 
                     break;
                 default:
-                    $file['error'] = 'Ошибка загрузки файла';
+                    $file['error'] = 'РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»Р°';
                     $file['errno'] = 1;
                     break;
             }
@@ -101,15 +101,15 @@ switch($action) {
                     $files_size = $files_info['size'];
 
                     if(($files_count+1)>$max_files) {
-                        $file['error'] = "Максимальное количество файлов: {$max_files}";
+                        $file['error'] = "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ С„Р°Р№Р»РѕРІ: {$max_files}";
                         $file['errno'] = 2;
                     }
                     if(($files_size+$cFile->size)>$max_files_size) {
-                        $file['error'] = "Максимальный объем файлов: ".ConvertBtoMB($max_files_size);
+                        $file['error'] = "РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РѕР±СЉРµРј С„Р°Р№Р»РѕРІ: ".ConvertBtoMB($max_files_size);
                         $file['errno'] = 3;
                     }
                     if( in_array($cFile->getext(), $GLOBALS['disallowed_array']) || ($type=='wd' && (!in_array($cFile->image_size['type'], array(IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG)) || $cFile->image_size['width']>2000 || $cFile->image_size['height']>2000) ) ) {
-                        $file['error'] = "Недопустимый формат файла";
+                        $file['error'] = "РќРµРґРѕРїСѓСЃС‚РёРјС‹Р№ С„РѕСЂРјР°С‚ С„Р°Р№Р»Р°";
                         $file['errno'] = 4;
                     }                
                     if($file['error']) {
@@ -117,22 +117,22 @@ switch($action) {
                     } else {
                         $fileinfo = $attachedfiles->add($cFile);
                         $file['id'] = md5($fileinfo['id']);
-                        //@todo: автоматически сгенерированное имя файла
-                        // пока не используется в интерфейсе
+                        //@todo: Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅРѕРµ РёРјСЏ С„Р°Р№Р»Р°
+                        // РїРѕРєР° РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ РёРЅС‚РµСЂС„РµР№СЃРµ
                         $file['name'] = $fileinfo['name'];
-                        //@todo: оригинально имя файла выводим в интерфейс
+                        //@todo: РѕСЂРёРіРёРЅР°Р»СЊРЅРѕ РёРјСЏ С„Р°Р№Р»Р° РІС‹РІРѕРґРёРј РІ РёРЅС‚РµСЂС„РµР№СЃ
                         $file['orig_name'] = $fileinfo['orig_name'];
-                        //@todo: тут теперь полный путь к файлу
+                        //@todo: С‚СѓС‚ С‚РµРїРµСЂСЊ РїРѕР»РЅС‹Р№ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ
                         $file['path'] = WDCPREFIX . '/' . $fileinfo['path'] . $fileinfo['name'];
                         $file['size'] = ConvertBtoMB($fileinfo['size']);
                         $file['type'] = $fileinfo['type'];
                     }
                 } else {
                     if($_FILES['attachedfiles_file']['size']>$max_files_size) {
-                        $file['error'] = "Максимальный объем файлов: ".ConvertBtoMB($max_files_size);
+                        $file['error'] = "РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РѕР±СЉРµРј С„Р°Р№Р»РѕРІ: ".ConvertBtoMB($max_files_size);
                         $file['errno'] = 3;
                     } else {
-                        $file['error'] = 'Ошибка загрузки файла';
+                        $file['error'] = 'РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»Р°';
                         $file['errno'] = 1;
                     }
                 }

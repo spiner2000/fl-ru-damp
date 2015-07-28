@@ -8,7 +8,7 @@ if (!get_uid(0) || is_emp()) {
     exit;
 }
 
-$period = "1 νεδελώ";
+$period = "1 Π½ΠµΠ΄ΠµΠ»Ρ";
 $cost = 5;
 
 $stretch_page = true;

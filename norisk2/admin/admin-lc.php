@@ -8,16 +8,16 @@
                     <div>
                         <div class="form-block first">
                             <div class="form-el">
-                                <label class="form-label">№ «Безопасной Сделки» или аккр.</label>
+                                <label class="form-label">в„– В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ» РёР»Рё Р°РєРєСЂ.</label>
                                 <span class="form-input">
                                     <input type="text" name="search" value="<?= $f_search ?>" />
                                 </span>
                             </div>
                             <div class="form-el">
-                                <label class="form-label">Статус</label>
+                                <label class="form-label">РЎС‚Р°С‚СѓСЃ</label>
                                 <span class="form-input">
                                     <select name="state">
-                                        <option value="null">-- Не важно --</option>
+                                        <option value="null">-- РќРµ РІР°Р¶РЅРѕ --</option>
                                         <? foreach (pskb::$state_adm_messages as $k => $v) { ?>
                                             <option value="<?= $k ?>" <?= $f_state == $k ? 'selected' : '' ?>><?= $v ?></option>
                                         <? } ?>
@@ -25,10 +25,10 @@
                                 </span>
                             </div>
                             <div class="form-el">
-                                <label class="form-label">ПС Заказчика</label>
+                                <label class="form-label">РџРЎ Р—Р°РєР°Р·С‡РёРєР°</label>
                                 <span class="form-input">
                                     <select name="ps_emp">
-                                        <option value="null">-- Не важно --</option>
+                                        <option value="null">-- РќРµ РІР°Р¶РЅРѕ --</option>
                                         <? foreach (pskb::$psys[pskb::USER_EMP] as $k => $v) { ?>
                                             <option value="<?= $k ?>" <?= $f_ps_emp == $k ? 'selected' : '' ?>><?= $v ?></option>
                                         <? } ?>
@@ -36,10 +36,10 @@
                                 </span>
                             </div>
                             <div class="form-el">
-                                <label class="form-label">ПС Исполнителя</label>
+                                <label class="form-label">РџРЎ РСЃРїРѕР»РЅРёС‚РµР»СЏ</label>
                                 <span class="form-input">
                                     <select name="ps_frl">
-                                        <option value="null">-- Не важно --</option>
+                                        <option value="null">-- РќРµ РІР°Р¶РЅРѕ --</option>
                                         <? foreach (pskb::$psys[pskb::USER_FRL] as $k => $v) { ?>
                                             <option value="<?= $k ?>" <?=  $f_ps_frl == $k ? 'selected' : '' ?>><?= $v ?></option>
                                         <? } ?>
@@ -47,31 +47,31 @@
                                 </span>
                             </div>
                             <div class="form-el">
-                                <label class="form-label">Дата покрытия</label>
+                                <label class="form-label">Р”Р°С‚Р° РїРѕРєСЂС‹С‚РёСЏ</label>
                                 <span class="form-input">
                                     <? 
                                     $name_element = 'date_cover';
                                     $filter       = $f_date_cover;
                                     include($_SERVER['DOCUMENT_ROOT'] . '/norisk2/tpl.filter-period.php');
                                     ?>
-                                    <a href="javascript:void(0)" onclick="$$('select[name^=date_cover]').each(function(elm){ elm.selectedIndex = 0});">Очистить</a>
+                                    <a href="javascript:void(0)" onclick="$$('select[name^=date_cover]').each(function(elm){ elm.selectedIndex = 0});">РћС‡РёСЃС‚РёС‚СЊ</a>
                                 </span>
                             </div>
                             <div class="form-el">
-                                <label class="form-label">Дата закрытия</label>
+                                <label class="form-label">Р”Р°С‚Р° Р·Р°РєСЂС‹С‚РёСЏ</label>
                                 <span class="form-input">
                                     <? 
                                     $name_element = 'date_end';
                                     $filter       = $f_date_end;
                                     include($_SERVER['DOCUMENT_ROOT'] . '/norisk2/tpl.filter-period.php');
                                     ?>
-                                    <a href="javascript:void(0)" onclick="$$('select[name^=date_end]').each(function(elm){ elm.selectedIndex = 0});">Очистить</a>
+                                    <a href="javascript:void(0)" onclick="$$('select[name^=date_end]').each(function(elm){ elm.selectedIndex = 0});">РћС‡РёСЃС‚РёС‚СЊ</a>
                                 </span>
                             </div>
                         </div>
                         <div class="form-block last">
                             <div class="form-el form-btn">
-                                <input type="submit" class="i-btn" value="Применить" />
+                                <input type="submit" class="i-btn" value="РџСЂРёРјРµРЅРёС‚СЊ" />
                             </div>
                         </div>
                         <input type="hidden" name="site" value="<?= $site ?>" />
@@ -99,15 +99,15 @@
             <col  />
             <thead>
                 <tr>
-                    <th>№ «Безопасной Сделки»</th>
-                    <th>№ Аккр.</th>
-                    <th>Сумма</th>
-                    <th>пс-зак</th>
-                    <th>пс-исп</th>
-                    <th>Покрыт</th>
-                    <th>Раскрыт</th>
-                    <th>Статус</th>
-                    <th>Сообщение банка</th>
+                    <th>в„– В«Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРёВ»</th>
+                    <th>в„– РђРєРєСЂ.</th>
+                    <th>РЎСѓРјРјР°</th>
+                    <th>РїСЃ-Р·Р°Рє</th>
+                    <th>РїСЃ-РёСЃРї</th>
+                    <th>РџРѕРєСЂС‹С‚</th>
+                    <th>Р Р°СЃРєСЂС‹С‚</th>
+                    <th>РЎС‚Р°С‚СѓСЃ</th>
+                    <th>РЎРѕРѕР±С‰РµРЅРёРµ Р±Р°РЅРєР°</th>
                 </tr>
                 <tr>
                     <td colspan="10">&nbsp;</td>
@@ -132,7 +132,7 @@
                         <td><?= pskb::$ps_str[$row['ps_frl']] ?></td>
                         <td><?= $row['covered'] ? date('d.m.Y', strtotime($row['covered'])) : '' ?></td>
                         <td><?= $row['ended'] ? date('d.m.Y', strtotime($row['ended'])) : '' ?></td>
-                        <td><?= $row['state'] ? pskb::$state_adm_messages[$row['state']] : 'Ожидание резерва' ?></td>
+                        <td><?= $row['state'] ? pskb::$state_adm_messages[$row['state']] : 'РћР¶РёРґР°РЅРёРµ СЂРµР·РµСЂРІР°' ?></td>
                         <td><?= $row['stateReason'] ?></td>
                     </tr>
                 <? } ?>

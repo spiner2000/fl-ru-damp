@@ -7,11 +7,11 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/permissions.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/commune.php");
 
 /**
- * Возвращает список предупреждение пользователя для попап окна
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РґР»СЏ РїРѕРїР°Рї РѕРєРЅР°
  * 
- * @param  int $uid UID пользователя
- * @param  array $contextId Контекст (для лога админских действий)
- * @param  string $draw_func способ отображения
+ * @param  int $uid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param  array $contextId РљРѕРЅС‚РµРєСЃС‚ (РґР»СЏ Р»РѕРіР° Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№)
+ * @param  string $draw_func СЃРїРѕСЃРѕР± РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ
  * @return object xajaxResponse
  */
 function getUserWarns( $uid = 0, $contextId = '', $draw_func = '' ) {
@@ -42,13 +42,13 @@ function getUserWarns( $uid = 0, $contextId = '', $draw_func = '' ) {
         	    $nCount = 1;
         	    
         	    foreach ( $aWarns as $aOne ) {
-        	        $sReason = $aOne['admin_comment'] ? hyphen_words($aOne['admin_comment'], true) : '&lt;без причины&gt;';
-        	        $sAdmin  = $aOne['adm_login'] ? '<a target="_blank" href="/users/'. $aOne['adm_login'] .'">'. $aOne['adm_login'] .'</a>' : 'не известно';
-        	        $sDate   = $aOne['act_time'] ? date('d.m.Y H:i', strtotime($aOne['act_time'])) : 'не известно';
+        	        $sReason = $aOne['admin_comment'] ? hyphen_words($aOne['admin_comment'], true) : '&lt;Р±РµР· РїСЂРёС‡РёРЅС‹&gt;';
+        	        $sAdmin  = $aOne['adm_login'] ? '<a target="_blank" href="/users/'. $aOne['adm_login'] .'">'. $aOne['adm_login'] .'</a>' : 'РЅРµ РёР·РІРµСЃС‚РЅРѕ';
+        	        $sDate   = $aOne['act_time'] ? date('d.m.Y H:i', strtotime($aOne['act_time'])) : 'РЅРµ РёР·РІРµСЃС‚РЅРѕ';
         	    	$sTable .= '<tr>
                     	<td class="cell-number">'. $nCount .'.</td>
                     	<td class="cell-uwarn">'. $sReason .'</td>
-                    	<td class="cell-who">Выдан: ['. $sAdmin .']
+                    	<td class="cell-who">Р’С‹РґР°РЅ: ['. $sAdmin .']
                     	<td class="cell-date">'. $sDate .'</td>
                         <td'.( $aOne['src_id'] ? ' id="i_user_warns_'. $aOne['src_id'] .'"' : '' ).'>'. ( $aOne['src_id'] ? '<a href="javascript:void(0);" onclick="banned.warnUser('.$uid.','.$aOne['src_id'].',\''.$draw_func.'\',\''.$contextId.'\',0);"><img src="/images/btn-remove2.png" alt="" width="11" height="11" /></a>' : '' ) .'</td>
                     </tr>';
@@ -64,12 +64,12 @@ function getUserWarns( $uid = 0, $contextId = '', $draw_func = '' ) {
         	    $objResponse->assign('d_user_warns', 'innerHTML', '&nbsp;' );
         	}
         	
-        	$sBanTitle = ( $user->is_banned || $user->ban_where ) ? 'Разбанить' : 'Забанить';
+        	$sBanTitle = ( $user->is_banned || $user->ban_where ) ? 'Р Р°Р·Р±Р°РЅРёС‚СЊ' : 'Р—Р°Р±Р°РЅРёС‚СЊ';
         	
         	$objResponse->script( "adminLogOverlayClose();" );
         	$objResponse->script( "$('ov-notice4').setStyle('display', '');" );
         	$objResponse->script( "adjustUserWarnsHTML();" );
-        	$objResponse->assign( 'b_user_warns', 'innerHTML', '<button onclick="adminLogOverlayClose();banned.userBan('.$uid.', \''.$contextId.'\',0)">'.$sBanTitle.'</button><a class="lnk-dot-grey" href="javascript:void(0);" onclick="adminLogOverlayClose();">Отмена</a>' );
+        	$objResponse->assign( 'b_user_warns', 'innerHTML', '<button onclick="adminLogOverlayClose();banned.userBan('.$uid.', \''.$contextId.'\',0)">'.$sBanTitle.'</button><a class="lnk-dot-grey" href="javascript:void(0);" onclick="adminLogOverlayClose();">РћС‚РјРµРЅР°</a>' );
         }
     }
     
@@ -77,13 +77,13 @@ function getUserWarns( $uid = 0, $contextId = '', $draw_func = '' ) {
 }
 
 /**
- * Изменение блокировки проекта
+ * РР·РјРµРЅРµРЅРёРµ Р±Р»РѕРєРёСЂРѕРІРєРё РїСЂРѕРµРєС‚Р°
  * 
- * @param  int $project_id ID проекта
- * @param  int $act_id ID нового действия (admin_actions)
- * @param  int $src_id ID исходного действия (projects_blocked)
- * @param  string $reason причина
- * @param  int $reason_id ID причины, если она выбрана из списка (таблица admin_reasons, где act_id = 9)
+ * @param  int $project_id ID РїСЂРѕРµРєС‚Р°
+ * @param  int $act_id ID РЅРѕРІРѕРіРѕ РґРµР№СЃС‚РІРёСЏ (admin_actions)
+ * @param  int $src_id ID РёСЃС…РѕРґРЅРѕРіРѕ РґРµР№СЃС‚РІРёСЏ (projects_blocked)
+ * @param  string $reason РїСЂРёС‡РёРЅР°
+ * @param  int $reason_id ID РїСЂРёС‡РёРЅС‹, РµСЃР»Рё РѕРЅР° РІС‹Р±СЂР°РЅР° РёР· СЃРїРёСЃРєР° (С‚Р°Р±Р»РёС†Р° admin_reasons, РіРґРµ act_id = 9)
  * @return object xajaxResponse
  */
 function updatePrjBlock( $project_id, $act_id, $src_id, $reason = '', $reason_id = null ) {
@@ -95,23 +95,23 @@ function updatePrjBlock( $project_id, $act_id, $src_id, $reason = '', $reason_id
         
         $projects  = new projects;
         $project   = $projects->GetPrjCust( $project_id );
-        $sObjLink  = '/projects/?pid=' . $project_id; // лог админских действий
+        $sObjLink  = '/projects/?pid=' . $project_id; // Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
         $reason_id = ($reason_id) ? $reason_id : null;
         $reason    = str_replace('%USERNAME%', $project['uname'] . ' ' .$project['usurname'], $reason);
         $reason    = change_q( $reason, FALSE, 0, TRUE );
         
         if ( $act_id == 10 && $src_id ) { 
-            // разблокируем проект
+            // СЂР°Р·Р±Р»РѕРєРёСЂСѓРµРј РїСЂРѕРµРєС‚
         	$projects->UnBlocked( $project_id );
     		
-    		// пишем лог админских действий
+    		// РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
     		admin_log::addLog( admin_log::OBJ_CODE_PROJ, 10, $project['user_id'], $project_id, $project['name'], $sObjLink, 0, '', $reason_id, $reason );
     		
-    		// так как появилось новое действие в логе?
+    		// С‚Р°Рє РєР°Рє РїРѕСЏРІРёР»РѕСЃСЊ РЅРѕРІРѕРµ РґРµР№СЃС‚РІРёРµ РІ Р»РѕРіРµ?
     		$objResponse->script( 'window.location="/siteadmin/admin_log/?site=proj";' );
         }
         elseif ( $act_id == 9 && $src_id ) { 
-            // редактируем текущую блокировку в projects_blocked, admin_log обновится триггером
+            // СЂРµРґР°РєС‚РёСЂСѓРµРј С‚РµРєСѓС‰СѓСЋ Р±Р»РѕРєРёСЂРѕРІРєСѓ РІ projects_blocked, admin_log РѕР±РЅРѕРІРёС‚СЃСЏ С‚СЂРёРіРіРµСЂРѕРј
             admin_log::updateProjBlock( $src_id, $reason, $reason_id );
             
             $reason = reformat($project['blocked_reason'], 24, 0, 0, 1, 24);
@@ -119,14 +119,14 @@ function updatePrjBlock( $project_id, $act_id, $src_id, $reason = '', $reason_id
             $objResponse->script( 'window.location.reload(true)' );
         }
         elseif ( $act_id == 9 && !$src_id ) { 
-            // блокируем проект
+            // Р±Р»РѕРєРёСЂСѓРµРј РїСЂРѕРµРєС‚
     		$sBlockId = $projects->Blocked( $project_id, $reason, $reason_id, $_SESSION['uid'] );
     		$project  = $projects->GetPrjCust( $project_id );
     		
-    		// пишем лог админских действий
+    		// РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
     		admin_log::addLog( admin_log::OBJ_CODE_PROJ, 9, $project['user_id'], $project_id, $project['name'], $sObjLink, 0, '', $reason_id, $reason, $sBlockId );
     		
-    		// так как появилось новое действие в логе?
+    		// С‚Р°Рє РєР°Рє РїРѕСЏРІРёР»РѕСЃСЊ РЅРѕРІРѕРµ РґРµР№СЃС‚РІРёРµ РІ Р»РѕРіРµ?
     		$objResponse->script( 'window.location="/siteadmin/admin_log/?site=proj";' );
         }
     }
@@ -135,12 +135,12 @@ function updatePrjBlock( $project_id, $act_id, $src_id, $reason = '', $reason_id
 }
 
 /**
- * Устанавливает поля в форме редактирования блокировки проекта
+ * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РїРѕР»СЏ РІ С„РѕСЂРјРµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ Р±Р»РѕРєРёСЂРѕРІРєРё РїСЂРѕРµРєС‚Р°
  * 
- * @param  int $obj_id ID состояние объекта
- * @param  int $last_act Текущее состояние объекта (ID действия из admin_actions)
- * @param  int $src_id ID исходного действия (projects_blocked)
- * @param  int $edit флаг редактирования причины блокировки
+ * @param  int $obj_id ID СЃРѕСЃС‚РѕСЏРЅРёРµ РѕР±СЉРµРєС‚Р°
+ * @param  int $last_act РўРµРєСѓС‰РµРµ СЃРѕСЃС‚РѕСЏРЅРёРµ РѕР±СЉРµРєС‚Р° (ID РґРµР№СЃС‚РІРёСЏ РёР· admin_actions)
+ * @param  int $src_id ID РёСЃС…РѕРґРЅРѕРіРѕ РґРµР№СЃС‚РІРёСЏ (projects_blocked)
+ * @param  int $edit С„Р»Р°Рі СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РїСЂРёС‡РёРЅС‹ Р±Р»РѕРєРёСЂРѕРІРєРё
  * @return object xajaxResponse
  */
 function setPrjBlockForm( $obj_id, $last_act, $src_id = 0, $edit = 0 ) {
@@ -152,31 +152,31 @@ function setPrjBlockForm( $obj_id, $last_act, $src_id = 0, $edit = 0 ) {
         $reasonId = 0;
         
         if ( $last_act == 10 ) {
-            // инициализируем блокировкой по умолчанию
+            // РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј Р±Р»РѕРєРёСЂРѕРІРєРѕР№ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
             $nActId = 9;
-            $objResponse->assign( 'lr1', 'innerHTML', 'Заблокировать' );
+            $objResponse->assign( 'lr1', 'innerHTML', 'Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ' );
         }
         else {
             if ( $edit ) {
-                // инициализируем данными блокировки
+                // РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј РґР°РЅРЅС‹РјРё Р±Р»РѕРєРёСЂРѕРІРєРё
                 $nActId   = 9;
                 $aBlock   = admin_log::getProjBlock( $src_id );
                 $sReason  = $aBlock['reason'];
                 $reasonId = $aBlock['reason_id'];
                 
-                $objResponse->assign( 'lr1', 'innerHTML', 'Редактировать блокировку' );
+                $objResponse->assign( 'lr1', 'innerHTML', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ Р±Р»РѕРєРёСЂРѕРІРєСѓ' );
             }
             else {
-                // инициализируем разблокировкой по умолчанию
+                // РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј СЂР°Р·Р±Р»РѕРєРёСЂРѕРІРєРѕР№ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
                 $nActId = 10;
-                $objResponse->assign( 'lr1', 'innerHTML', 'Разблокировать' );
+                $objResponse->assign( 'lr1', 'innerHTML', 'Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ' );
             }
         }
         
         $customReason = $reasonId ? ''   : $sReason;
         $readonly     = $reasonId ? true : false;
         
-        $sBanDiv = '<div id="bfrm_div_sel_0"><select><option>Подождите...</option></select></div>' 
+        $sBanDiv = '<div id="bfrm_div_sel_0"><select><option>РџРѕРґРѕР¶РґРёС‚Рµ...</option></select></div>' 
             . '<textarea id="bfrm_0" name="bfrm_0" cols="" rows="">' . clearTextForJS( html_entity_decode($sReason, ENT_QUOTES, 'cp1251')) . '</textarea>';
         
         $objResponse->assign( 'prj_ban_div', 'innerHTML', $sBanDiv );
@@ -196,13 +196,13 @@ function setPrjBlockForm( $obj_id, $last_act, $src_id = 0, $edit = 0 ) {
 }
 
 /**
- * Изменение блокировки предложения фрилансера
+ * РР·РјРµРЅРµРЅРёРµ Р±Р»РѕРєРёСЂРѕРІРєРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂР°
  * 
- * @param  int $offer_id ID предложения фрилансера
- * @param  int $act_id ID нового действия (admin_actions)
- * @param  int $src_id ID исходного действия (в данном случае равен $obj_id или 0 - просто индикатор)
- * @param  string $reason причина
- * @param  int $reason_id ID причины, если она выбрана из списка (таблица admin_reasons, где act_id = 13)
+ * @param  int $offer_id ID РїСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂР°
+ * @param  int $act_id ID РЅРѕРІРѕРіРѕ РґРµР№СЃС‚РІРёСЏ (admin_actions)
+ * @param  int $src_id ID РёСЃС…РѕРґРЅРѕРіРѕ РґРµР№СЃС‚РІРёСЏ (РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ СЂР°РІРµРЅ $obj_id РёР»Рё 0 - РїСЂРѕСЃС‚Рѕ РёРЅРґРёРєР°С‚РѕСЂ)
+ * @param  string $reason РїСЂРёС‡РёРЅР°
+ * @param  int $reason_id ID РїСЂРёС‡РёРЅС‹, РµСЃР»Рё РѕРЅР° РІС‹Р±СЂР°РЅР° РёР· СЃРїРёСЃРєР° (С‚Р°Р±Р»РёС†Р° admin_reasons, РіРґРµ act_id = 13)
  * @return object xajaxResponse
  */
 function updateOfferBlock( $offer_id, $act_id, $src_id, $reason = '', $reason_id = null ) {
@@ -221,43 +221,43 @@ function updateOfferBlock( $offer_id, $act_id, $src_id, $reason = '', $reason_id
             $objUser->GetUserByUID( $offer['user_id'] );
             
             $sObjName  = $offer['title'];
-            $sObjLink  = ''; // нет ссылки на конкретное предложение
+            $sObjLink  = ''; // РЅРµС‚ СЃСЃС‹Р»РєРё РЅР° РєРѕРЅРєСЂРµС‚РЅРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ
             $reason_id = ( $reason_id ) ? $reason_id : 0;
     	    $reason    = str_replace( '%USERNAME%', $objUser->uname . ' ' . $objUser->usurname, $reason );
             $reason    = change_q( $reason, FALSE, 0, TRUE );
             
             if ( $act_id == 14 && $src_id ) { 
-                // разблокируем предложение
+                // СЂР°Р·Р±Р»РѕРєРёСЂСѓРµРј РїСЂРµРґР»РѕР¶РµРЅРёРµ
                 $update = array( 'is_blocked' => 'f', 'reason'=> '', 'reason_id' => 0, 'admin' => 0 );
                 $frl_offers->Update( $offer_id, $update );
                 
-                // пишем лог админских действий
+                // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
                 admin_log::addLog( admin_log::OBJ_CODE_OFFER, 14, $offer['user_id'], $offer_id, $sObjName, $sObjLink, 0, '', $reason_id, $reason );
                 
-                // так как появилось новое действие в логе
+                // С‚Р°Рє РєР°Рє РїРѕСЏРІРёР»РѕСЃСЊ РЅРѕРІРѕРµ РґРµР№СЃС‚РІРёРµ РІ Р»РѕРіРµ
                 $objResponse->script( 'window.location="/siteadmin/admin_log/?site=offer";' );
             }
             elseif ( $act_id == 13 && $src_id ) { 
-                // редактируем текущую блокировку предложения
+                // СЂРµРґР°РєС‚РёСЂСѓРµРј С‚РµРєСѓС‰СѓСЋ Р±Р»РѕРєРёСЂРѕРІРєСѓ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
                 admin_log::updateOfferBlock( $src_id, $reason, $reason_id );
                 
                 $objResponse->script( 'window.location.reload(true)' );
             }
             elseif ( $act_id == 13 && !$src_id ) { 
-                // блокируем предложение
+                // Р±Р»РѕРєРёСЂСѓРµРј РїСЂРµРґР»РѕР¶РµРЅРёРµ
                 $update = array( 'is_blocked' => 't', 'reason' => $reason, 'reason_id' => $reason_id, 'admin' => $_SESSION['uid'] );
                 $frl_offers->Update( $offer_id, $update );
                 
-                // пишем лог админских действий
+                // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
                 admin_log::addLog( admin_log::OBJ_CODE_OFFER, 13, $offer['user_id'], $offer_id, $sObjName, $sObjLink, 0, '', $reason_id, $reason, $offer_id );
                 
-                // так как появилось новое действие в логе
+                // С‚Р°Рє РєР°Рє РїРѕСЏРІРёР»РѕСЃСЊ РЅРѕРІРѕРµ РґРµР№СЃС‚РІРёРµ РІ Р»РѕРіРµ
                 $objResponse->script( 'window.location="/siteadmin/admin_log/?site=offer";' );
             }
         }
         else {
             $objResponse->script( 'adminLogOverlayClose();' );
-            $objResponse->alert('Несуществующее предложение');
+            $objResponse->alert('РќРµСЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ');
         }
     }
     
@@ -265,12 +265,12 @@ function updateOfferBlock( $offer_id, $act_id, $src_id, $reason = '', $reason_id
 }
 
 /**
- * Устанавливает поля в форме редактирования блокировки предложения фрилансера
+ * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РїРѕР»СЏ РІ С„РѕСЂРјРµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ Р±Р»РѕРєРёСЂРѕРІРєРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂР°
  * 
- * @param  int $obj_id ID предложения
- * @param  int $last_act Текущее состояние предложения (ID действия из admin_actions)
- * @param  int $src_id ID исходного действия (в данном случае равен $obj_id или 0 - просто индикатор)
- * @param  int $edit флаг редактирования причины блокировки
+ * @param  int $obj_id ID РїСЂРµРґР»РѕР¶РµРЅРёСЏ
+ * @param  int $last_act РўРµРєСѓС‰РµРµ СЃРѕСЃС‚РѕСЏРЅРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ (ID РґРµР№СЃС‚РІРёСЏ РёР· admin_actions)
+ * @param  int $src_id ID РёСЃС…РѕРґРЅРѕРіРѕ РґРµР№СЃС‚РІРёСЏ (РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ СЂР°РІРµРЅ $obj_id РёР»Рё 0 - РїСЂРѕСЃС‚Рѕ РёРЅРґРёРєР°С‚РѕСЂ)
+ * @param  int $edit С„Р»Р°Рі СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РїСЂРёС‡РёРЅС‹ Р±Р»РѕРєРёСЂРѕРІРєРё
  * @return object xajaxResponse
  */
 function setOfferBlockForm( $obj_id, $last_act, $src_id = 0, $edit = 0 ) {
@@ -282,31 +282,31 @@ function setOfferBlockForm( $obj_id, $last_act, $src_id = 0, $edit = 0 ) {
         $reasonId = 0;
         
         if ( $last_act == 14 ) {
-            // инициализируем блокировкой по умолчанию
+            // РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј Р±Р»РѕРєРёСЂРѕРІРєРѕР№ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
             $nActId = 13;
-            $objResponse->assign( 'lr1', 'innerHTML', 'Заблокировать' );
+            $objResponse->assign( 'lr1', 'innerHTML', 'Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ' );
         }
         else {
             if ( $edit ) {
-                // инициализируем данными блокировки
+                // РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј РґР°РЅРЅС‹РјРё Р±Р»РѕРєРёСЂРѕРІРєРё
                 $nActId   = 13;
                 $aBlock   = admin_log::getOfferBlock( $src_id );
                 $sReason  = $aBlock['reason'];
                 $reasonId = $aBlock['reason_id'];
                 
-                $objResponse->assign( 'lr1', 'innerHTML', 'Редактировать блокировку' );
+                $objResponse->assign( 'lr1', 'innerHTML', 'Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ Р±Р»РѕРєРёСЂРѕРІРєСѓ' );
             }
             else {
-                // инициализируем разблокировкой по умолчанию
+                // РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј СЂР°Р·Р±Р»РѕРєРёСЂРѕРІРєРѕР№ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
                 $nActId = 14;
-                $objResponse->assign( 'lr1', 'innerHTML', 'Разблокировать' );
+                $objResponse->assign( 'lr1', 'innerHTML', 'Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ' );
             }
         }
         
         $customReason = $reasonId ? ''   : $sReason;
         $readonly     = $reasonId ? true : false;
         
-        $sBanDiv = '<div id="bfrm_div_sel_0"><select><option>Подождите...</option></select></div>' 
+        $sBanDiv = '<div id="bfrm_div_sel_0"><select><option>РџРѕРґРѕР¶РґРёС‚Рµ...</option></select></div>' 
             . '<textarea id="bfrm_0" name="bfrm_0" cols="" rows="">' . clearTextForJS( html_entity_decode($sReason, ENT_QUOTES, 'cp1251')) . '</textarea>';
         
         $objResponse->assign( 'offer_ban_div', 'innerHTML', $sBanDiv );
@@ -326,10 +326,10 @@ function setOfferBlockForm( $obj_id, $last_act, $src_id = 0, $edit = 0 ) {
 }
 
 /**
- * Возвращает список последних IP с которых заходил пользователь
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РїРѕСЃР»РµРґРЅРёС… IP СЃ РєРѕС‚РѕСЂС‹С… Р·Р°С…РѕРґРёР» РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ
  * 
- * @param  int $sUid UID пользователя
- * @param  int $nCount опционально. количество, 0 - не ограничено
+ * @param  int $sUid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param  int $nCount РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. РєРѕР»РёС‡РµСЃС‚РІРѕ, 0 - РЅРµ РѕРіСЂР°РЅРёС‡РµРЅРѕ
  * @return object xajaxResponse
  */
 function getLastIps( $sUid = '', $nCount = 10 ) {
@@ -381,10 +381,10 @@ function getLastIps( $sUid = '', $nCount = 10 ) {
 }
 
 /**
- * Возвращает список последних email которые устанавливал пользователь
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РїРѕСЃР»РµРґРЅРёС… email РєРѕС‚РѕСЂС‹Рµ СѓСЃС‚Р°РЅР°РІР»РёРІР°Р» РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ
  * 
- * @param  int $sUid UID пользователя
- * @param  int $nCount опционально. количество, 0 - не ограничено
+ * @param  int $sUid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param  int $nCount РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. РєРѕР»РёС‡РµСЃС‚РІРѕ, 0 - РЅРµ РѕРіСЂР°РЅРёС‡РµРЅРѕ
  * @return object xajaxResponse
  */
 function getLastEmails(  $sUid = '', $nCount = 10 ) {
@@ -394,7 +394,7 @@ function getLastEmails(  $sUid = '', $nCount = 10 ) {
     if ( hasPermissions('users') ) {
         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/users.php' );
         
-        $sTable = '<table id="t_last_ten" class="notice-table"><tr><td>Пользователь не менял email</td></td></table>';
+        $sTable = '<table id="t_last_ten" class="notice-table"><tr><td>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РјРµРЅСЏР» email</td></td></table>';
         $user = new users();
         $user->GetUserByUID( $sUid );
         
@@ -435,24 +435,24 @@ function getLastEmails(  $sUid = '', $nCount = 10 ) {
 }
 
 /**
- * Обнуляет рейтинг пользователя.
+ * РћР±РЅСѓР»СЏРµС‚ СЂРµР№С‚РёРЅРі РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
  * 
- * @param  string $sUid UID пользователя
+ * @param  string $sUid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
  * @return object xajaxResponse
  */
 function nullRating( $sUid = '' ) {
     session_start();
     $objResponse = new xajaxResponse();
     
-    if ( hasPermissions('all') ) { // !!! только админы
+    if ( hasPermissions('all') ) { // !!! С‚РѕР»СЊРєРѕ Р°РґРјРёРЅС‹
         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/users.php' );
         $bRet = users::NullRating( $sUid, true );
         
         if ( $bRet ) {
-            $objResponse->alert( 'Рейтинг успешно обнулен' );
+            $objResponse->alert( 'Р РµР№С‚РёРЅРі СѓСЃРїРµС€РЅРѕ РѕР±РЅСѓР»РµРЅ' );
         }
         else {
-            $objResponse->alert( 'Ошибка обнуления рейтинга' );
+            $objResponse->alert( 'РћС€РёР±РєР° РѕР±РЅСѓР»РµРЅРёСЏ СЂРµР№С‚РёРЅРіР°' );
         }
     }
     
@@ -460,10 +460,10 @@ function nullRating( $sUid = '' ) {
 }
 
 /**
- * Устанавливает/снимает блокировку денег пользователя
+ * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚/СЃРЅРёРјР°РµС‚ Р±Р»РѕРєРёСЂРѕРІРєСѓ РґРµРЅРµРі РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
  * 
- * @param  string $sUsers JSON строка с массивом UID пользователей
- * @param  string $sAction действие: block - устанавливает, unblock - снимает
+ * @param  string $sUsers JSON СЃС‚СЂРѕРєР° СЃ РјР°СЃСЃРёРІРѕРј UID РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
+ * @param  string $sAction РґРµР№СЃС‚РІРёРµ: block - СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚, unblock - СЃРЅРёРјР°РµС‚
  * @return object xajaxResponse
  */
 function updateMoneyBlock(  $sUsers = '', $sAction = 'block' ) {
@@ -476,12 +476,12 @@ function updateMoneyBlock(  $sUsers = '', $sAction = 'block' ) {
         if ( $aUsers ) {
             require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/account.php");
             $bBlock  = ( $sAction == 'block' );
-            $sTitle  = ( $bBlock ) ? 'Разблокировать деньги' : 'Заблокировать деньги'; 
+            $sTitle  = ( $bBlock ) ? 'Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё' : 'Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё'; 
             $sAction = ( $bBlock ) ? 'unblock' : 'block';
             
         	foreach ($aUsers as $sUid) {
         		account::setBlockMoney( $sUid, $bBlock );
-        		$objResponse->assign( "money_$sUid", 'innerHTML', '<a onclick="if (confirm(\'Вы уверены, что хотите '. mb_strtolower($sTitle).'?\')) xajax_updateMoneyBlock(JSON.encode(['.$sUid.']),\''.$sAction.'\')" href="javascript:void(0);">'.$sTitle.'</a>' );
+        		$objResponse->assign( "money_$sUid", 'innerHTML', '<a onclick="if (confirm(\'Р’С‹ СѓРІРµСЂРµРЅС‹, С‡С‚Рѕ С…РѕС‚РёС‚Рµ '. mb_strtolower($sTitle).'?\')) xajax_updateMoneyBlock(JSON.encode(['.$sUid.']),\''.$sAction.'\')" href="javascript:void(0);">'.$sTitle.'</a>' );
         	}
         	
         	$objResponse->script( 'adminLogCheckUsers(false)' );
@@ -493,10 +493,10 @@ function updateMoneyBlock(  $sUsers = '', $sAction = 'block' ) {
 }
 
 /**
- * Активирует пользователей
+ * РђРєС‚РёРІРёСЂСѓРµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
  * 
- * @param  string $sUsers JSON строка с массивом UID пользователей
- * @param  int $nReload 1 - если нужно перезагрузить страницу
+ * @param  string $sUsers JSON СЃС‚СЂРѕРєР° СЃ РјР°СЃСЃРёРІРѕРј UID РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
+ * @param  int $nReload 1 - РµСЃР»Рё РЅСѓР¶РЅРѕ РїРµСЂРµР·Р°РіСЂСѓР·РёС‚СЊ СЃС‚СЂР°РЅРёС†Сѓ
  * @return object xajaxResponse
  */
 function activateUser( $sUsers = '', $nReload = 0 ) {
@@ -539,12 +539,12 @@ function activateUser( $sUsers = '', $nReload = 0 ) {
 }
 
 /**
- * Изменить данные привязки аккаунта к телефону
+ * РР·РјРµРЅРёС‚СЊ РґР°РЅРЅС‹Рµ РїСЂРёРІСЏР·РєРё Р°РєРєР°СѓРЅС‚Р° Рє С‚РµР»РµС„РѕРЅСѓ
  * 
- * @param  int $sUid UID пользователя
- * @param  string $sPhone телефон
- * @param  string $sPhoneOnly отправлять восстановление пароля только на телефон - 't' или 'f'
- * @param  string $sSafetyMob Входить в финансы только по СМС - 't' или 'f'
+ * @param  int $sUid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param  string $sPhone С‚РµР»РµС„РѕРЅ
+ * @param  string $sPhoneOnly РѕС‚РїСЂР°РІР»СЏС‚СЊ РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РїР°СЂРѕР»СЏ С‚РѕР»СЊРєРѕ РЅР° С‚РµР»РµС„РѕРЅ - 't' РёР»Рё 'f'
+ * @param  string $sSafetyMob Р’С…РѕРґРёС‚СЊ РІ С„РёРЅР°РЅСЃС‹ С‚РѕР»СЊРєРѕ РїРѕ РЎРњРЎ - 't' РёР»Рё 'f'
  * @return object xajaxResponse
  */
 function updateSafetyPhone( $sUid = 0, $sPhone = '', $sPhoneOnly = 'f', $sSafetyMob = 'f' ) {
@@ -565,7 +565,7 @@ function updateSafetyPhone( $sUid = 0, $sPhone = '', $sPhoneOnly = 'f', $sSafety
             );
             sbr_meta::searchUsersPhone($cnt, $filter);
             if($cnt > 0) {
-                $res = "Телефон {$sPhone} уже зарегистрирован в системе.";
+                $res = "РўРµР»РµС„РѕРЅ {$sPhone} СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ РІ СЃРёСЃС‚РµРјРµ.";
                 $objResponse->assign( "safety_phone$sUid", 'value', $reqv[$reqv['form_type']]['mob_phone'] );
             } else {
             	sbr_meta::$reqv_fields[$reqv['form_type']]['mob_phone']['maxlength'] = 15;
@@ -597,10 +597,10 @@ function updateSafetyPhone( $sUid = 0, $sPhone = '', $sPhoneOnly = 'f', $sSafety
 }
 
 /**
- * Изменить данные привязки аккаунта к IP
+ * РР·РјРµРЅРёС‚СЊ РґР°РЅРЅС‹Рµ РїСЂРёРІСЏР·РєРё Р°РєРєР°СѓРЅС‚Р° Рє IP
  * 
- * @param  int $sUid UID пользователя
- * @param  string $sIp IP через запятую, дефис или слеш например 10.10.10.1, 10.10.10.5 – 10.10.10.10 или 10.10.10.0/24
+ * @param  int $sUid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param  string $sIp IP С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ, РґРµС„РёСЃ РёР»Рё СЃР»РµС€ РЅР°РїСЂРёРјРµСЂ 10.10.10.1, 10.10.10.5 вЂ“ 10.10.10.10 РёР»Рё 10.10.10.0/24
  * @return object xajaxResponse
  */
 function updateSafetyIp( $sUid = 0, $sIp = '' ) {
@@ -629,10 +629,10 @@ function updateSafetyIp( $sUid = 0, $sIp = '' ) {
 }
 
 /**
- * Изменить Email пользователя
+ * РР·РјРµРЅРёС‚СЊ Email РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
  * 
- * @param  int $sUid UID пользователя
- * @param  string $sEmail новый Email пользователя
+ * @param  int $sUid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param  string $sEmail РЅРѕРІС‹Р№ Email РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
  * @return object xajaxResponse
  */
 function updateEmail( $sUid = 0, $sEmail = '' ) {
@@ -660,10 +660,10 @@ function updateEmail( $sUid = 0, $sEmail = '' ) {
 }
 
 /**
- * Изменить отношение пользователей
+ * РР·РјРµРЅРёС‚СЊ РѕС‚РЅРѕС€РµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
  * 
- * @param  int $sUid UID пользователя
- * @param  int $nValue новое значение отношения пользователей
+ * @param  int $sUid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param  int $nValue РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ РѕС‚РЅРѕС€РµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
  * @return object xajaxResponse
  */
 function updatePop( $sUid = 0, $nValue = 0 ) {
@@ -699,9 +699,9 @@ function updatePop( $sUid = 0, $nValue = 0 ) {
 }
 
 /**
- * Отключить все уведомления
+ * РћС‚РєР»СЋС‡РёС‚СЊ РІСЃРµ СѓРІРµРґРѕРјР»РµРЅРёСЏ
  * 
- * @param  int $uid UID пользователя
+ * @param  int $uid UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
  * @return object xajaxResponse
  */
 function stopNotifications( $uid = 0, $role = 'flr' ) {
@@ -724,10 +724,10 @@ function stopNotifications( $uid = 0, $role = 'flr' ) {
         commune::clearSubscription($uid);
         
         if ( empty($sError) ) {
-            $objResponse->alert( 'Уведомления отключены' );
+            $objResponse->alert( 'РЈРІРµРґРѕРјР»РµРЅРёСЏ РѕС‚РєР»СЋС‡РµРЅС‹' );
         }
         else {
-            $objResponse->alert( 'Ошибка сохранения данных' );
+            $objResponse->alert( 'РћС€РёР±РєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ РґР°РЅРЅС‹С…' );
         }
     }
     
@@ -744,7 +744,7 @@ function saveExcDate($date, $type) {
     $year = substr($date, 0, 4);
     $odate = new LocalDateTime();
     $edate = $odate->getExcDaysInit($year, false, false);
-    // Новый год
+    // РќРѕРІС‹Р№ РіРѕРґ
     if(!$edate) {
         $edate['year'] = $year;
         switch($type) {
@@ -765,15 +765,15 @@ function saveExcDate($date, $type) {
             
     switch($type) {
         case 0:
-            $edit_date['holidays'] = str_replace($hdate, '', $edate['holidays']); // Удаляем дату
-            $edit_date['workdays'] = str_replace($wdate, '', $edate['workdays']); // Удаляем дату
+            $edit_date['holidays'] = str_replace($hdate, '', $edate['holidays']); // РЈРґР°Р»СЏРµРј РґР°С‚Сѓ
+            $edit_date['workdays'] = str_replace($wdate, '', $edate['workdays']); // РЈРґР°Р»СЏРµРј РґР°С‚Сѓ
             break;
         case 1:
-            $edit_date['workdays'] = str_replace($wdate, '', $edate['workdays']); // Удаляем дату
+            $edit_date['workdays'] = str_replace($wdate, '', $edate['workdays']); // РЈРґР°Р»СЏРµРј РґР°С‚Сѓ
             $edit_date['holidays'] .= ($edate['holidays'] == '' ? '' : ',') . $date; 
             break;
         case 2:
-            $edit_date['holidays'] = str_replace($hdate, '', $edate['holidays']); // Удаляем дату
+            $edit_date['holidays'] = str_replace($hdate, '', $edate['holidays']); // РЈРґР°Р»СЏРµРј РґР°С‚Сѓ
             $edit_date['workdays'] .= ($edate['workdays'] == '' ? '' : ',') . $date; 
             break;
     }
@@ -816,10 +816,10 @@ function getLoadExcDate($year) {
 }
 
 /**
- * Изменить выделение жирным причины действя админа.
+ * РР·РјРµРЅРёС‚СЊ РІС‹РґРµР»РµРЅРёРµ Р¶РёСЂРЅС‹Рј РїСЂРёС‡РёРЅС‹ РґРµР№СЃС‚РІСЏ Р°РґРјРёРЅР°.
  * 
- * @param  int $id ID причины действя админа.
- * @param  string $is_bold выделять жирным t/f
+ * @param  int $id ID РїСЂРёС‡РёРЅС‹ РґРµР№СЃС‚РІСЏ Р°РґРјРёРЅР°.
+ * @param  string $is_bold РІС‹РґРµР»СЏС‚СЊ Р¶РёСЂРЅС‹Рј t/f
  * @return obj xajaxResponse
  */
 function setReasonBold( $sId = 0, $sBold = 'f' ) {
@@ -837,10 +837,10 @@ function setReasonBold( $sId = 0, $sBold = 'f' ) {
 
 
 /**
- * Отключаем/включаем верификацию пользователям
+ * РћС‚РєР»СЋС‡Р°РµРј/РІРєР»СЋС‡Р°РµРј РІРµСЂРёС„РёРєР°С†РёСЋ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј
  * 
- * @param integer $uid     ИД пользователя
- * @param boolean $type    вкючить/выключить
+ * @param integer $uid     РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param boolean $type    РІРєСЋС‡РёС‚СЊ/РІС‹РєР»СЋС‡РёС‚СЊ
  * @return \xajaxResponse
  */
 function setVerification( $uid = 0, $type = false ) {
@@ -860,7 +860,7 @@ function setVerification( $uid = 0, $type = false ) {
         }
         
         if ( empty($sError) ) {
-            $text = $type ? 'Снять верификацию' : 'Дать верификацию';
+            $text = $type ? 'РЎРЅСЏС‚СЊ РІРµСЂРёС„РёРєР°С†РёСЋ' : 'Р”Р°С‚СЊ РІРµСЂРёС„РёРєР°С†РёСЋ';
             $html = '<a href="javascript:void(0);" onclick="user_search.setVerification(' . $uid . ', ' . ( $type ? 'false' : 'true' ) . ');" class="lnk-dot-666" title="' . $text . '"><b>' . $text . '</b></a>';
             $objResponse->assign("verify{$uid}", 'innerHTML', $html);
             if($type) {
@@ -868,9 +868,9 @@ function setVerification( $uid = 0, $type = false ) {
             } else {
                 $objResponse->script("$$('#user{$uid} .b-icon__ver').dispose();");
             }
-            $objResponse->alert( $type ? 'Верификация дана' : 'Верификация снята' );
+            $objResponse->alert( $type ? 'Р’РµСЂРёС„РёРєР°С†РёСЏ РґР°РЅР°' : 'Р’РµСЂРёС„РёРєР°С†РёСЏ СЃРЅСЏС‚Р°' );
         } else {
-            $objResponse->alert( 'Ошибка сохранения данных' );
+            $objResponse->alert( 'РћС€РёР±РєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ РґР°РЅРЅС‹С…' );
         }
     }
     

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Шаблон оплаты ПРО
+ * РЁР°Р±Р»РѕРЅ РѕРїР»Р°С‚С‹ РџР Рћ
  */
 
 ?>
@@ -36,16 +36,16 @@
             <?php if ($acc_sum > 0): ?>
             <div class="b-layout__txt b-layout__txt_fontsize_12 b-layout__txt_padbot_20">
                 <span data-quick-payment-paynone="true" class="b-layout__txt_hide">
-                    Cумма будет списана с личного счета, на нем 
+                    CСѓРјРјР° Р±СѓРґРµС‚ СЃРїРёСЃР°РЅР° СЃ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р°, РЅР° РЅРµРј 
                     <span data-quick-payment-accsum="<?=$acc_sum?>">
                         <?=view_cost_format($acc_sum, false)?>
-                    </span> руб.
+                    </span> СЂСѓР±.
                 </span>
                 <span data-quick-payment-paypart="true" class="b-layout__txt_hide">
-                    Часть суммы будет списана с личного счета, на нем <?=view_cost_format($acc_sum, false)?> руб.<br />
-                    Остаток (<span data-quick-payment-partsum="true"></span> руб.) вам нужно оплатить одним из способов ниже.
+                    Р§Р°СЃС‚СЊ СЃСѓРјРјС‹ Р±СѓРґРµС‚ СЃРїРёСЃР°РЅР° СЃ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р°, РЅР° РЅРµРј <?=view_cost_format($acc_sum, false)?> СЂСѓР±.<br />
+                    РћСЃС‚Р°С‚РѕРє (<span data-quick-payment-partsum="true"></span> СЂСѓР±.) РІР°Рј РЅСѓР¶РЅРѕ РѕРїР»Р°С‚РёС‚СЊ РѕРґРЅРёРј РёР· СЃРїРѕСЃРѕР±РѕРІ РЅРёР¶Рµ.
                 </span>        
-                <span data-quick-payment-payfull="true" class="b-layout__txt_hide"><?php //@todo: пока не используется ?></span>                
+                <span data-quick-payment-payfull="true" class="b-layout__txt_hide"><?php //@todo: РїРѕРєР° РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ ?></span>                
             </div>            
             <?php endif; ?> 
             
@@ -56,7 +56,7 @@
                         b-layout__txt_fontsize_15 
                         b-layout__txt_padbot_10 
                         b-layout__txt_color_333">
-                Оплати одним из способов:
+                РћРїР»Р°С‚Рё РѕРґРЅРёРј РёР· СЃРїРѕСЃРѕР±РѕРІ:
             </div>
 
             <div data-quick-payment-error-screen="true" class="b-fon b-fon_margbot_20 b-fon_marglr_20 b-layout_hide">
@@ -106,7 +106,7 @@
             <div data-quick-payment-success-screen="true" class="b-layout__success b-layout__txt_fontsize_15 b-layout__txt_color_323232 b-layout_hide">
                 <span data-quick-payment-success-msg="true"></span>
                 <div class="b-buttons b-buttons_center b-button_margtop_15">
-                    <a data-quick-payment-close="true" href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green">Закрыть</a>
+                    <a data-quick-payment-close="true" href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green">Р—Р°РєСЂС‹С‚СЊ</a>
                 </div>
             </div>
 
@@ -120,7 +120,7 @@
                        href="javascript:void(0);" 
                        data-ga-event="<?php if($is_emp): ?>{ec: 'customer', ea: 'customer_propopup_paybutton_clicked'<?php else: ?>{ec: 'freelancer', ea: 'freelancer_propopup_paybutton_clicked'<?php endif; ?>,el: 'flbill'}"
                        data-quick-payment-type="<?=$payment_account?>">
-                        Оплатить <span data-quick-payment-account-price="true"></span> руб.
+                        РћРїР»Р°С‚РёС‚СЊ <span data-quick-payment-account-price="true"></span> СЂСѓР±.
                     </a> 
                 </div>
             </div>

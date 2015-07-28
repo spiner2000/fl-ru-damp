@@ -11,7 +11,7 @@ require_once('../classes/stdf.php');
 $results = array();                                                                                                                                                          
                                                                                                                                                                              
 /*                                                                                                                                                                           
-”‰‡ÎËÚ¸ Ù‡ÈÎ˚ ËÁ ·‡Á˚                                                                                                                                                        
+–£–¥–∞–ª–∏—Ç—å —Ñ–∞–π–ª—ã –∏–∑ –±–∞–∑—ã                                                                                                                                                        
 https://st.fl.ru/projects/upload/201404/f_573533a61827a616.png                                                                                                               
 http://st.free-lance.ru/users/Matrix-333/resume/f_4fe6e710ec167.pdf                                                                                                          
 */                                                                                                                                                                           

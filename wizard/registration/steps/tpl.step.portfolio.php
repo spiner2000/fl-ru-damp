@@ -8,12 +8,12 @@
     <?php if ($answersExists > 0){?>
         <div class="b-fon b-fon_width_full b-fon_padbot_20">
         	<div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-                <span class="b-fon__ok"></span>Ваш ответ на проект будет опубликован после регистрации
+                <span class="b-fon__ok"></span>Р’Р°С€ РѕС‚РІРµС‚ РЅР° РїСЂРѕРµРєС‚ Р±СѓРґРµС‚ РѕРїСѓР±Р»РёРєРѕРІР°РЅ РїРѕСЃР»Рµ СЂРµРіРёСЃС‚СЂР°С†РёРё
             </div>
         </div>
     <?php }//endif?>
-    <div class="b-layout__txt b-layout__txt_padbot_40">После того как заказчик ознакомится с вашим предложением, он захочет посмотреть на ваши портфолио и профиль с личной информацией. Укажите все как можно более подробно, уделяя особое внимание своим профессиональным знаниям, навыкам и умениям.</div>
-    <h2 class="b-layout__title ">Личная информация</h2>
+    <div class="b-layout__txt b-layout__txt_padbot_40">РџРѕСЃР»Рµ С‚РѕРіРѕ РєР°Рє Р·Р°РєР°Р·С‡РёРє РѕР·РЅР°РєРѕРјРёС‚СЃСЏ СЃ РІР°С€РёРј РїСЂРµРґР»РѕР¶РµРЅРёРµРј, РѕРЅ Р·Р°С…РѕС‡РµС‚ РїРѕСЃРјРѕС‚СЂРµС‚СЊ РЅР° РІР°С€Рё РїРѕСЂС‚С„РѕР»РёРѕ Рё РїСЂРѕС„РёР»СЊ СЃ Р»РёС‡РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРµР№. РЈРєР°Р¶РёС‚Рµ РІСЃРµ РєР°Рє РјРѕР¶РЅРѕ Р±РѕР»РµРµ РїРѕРґСЂРѕР±РЅРѕ, СѓРґРµР»СЏСЏ РѕСЃРѕР±РѕРµ РІРЅРёРјР°РЅРёРµ СЃРІРѕРёРј РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Рј Р·РЅР°РЅРёСЏРј, РЅР°РІС‹РєР°Рј Рё СѓРјРµРЅРёСЏРј.</div>
+    <h2 class="b-layout__title ">Р›РёС‡РЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ</h2>
     
     <form method="post" action="/wizard/upload.php?type=upload" id="upload_form" target="fupload" enctype="multipart/form-data" style="position:absolute; left:-9999px">
         <input type="hidden" name="action" id="ps_action" value="upload" />
@@ -26,7 +26,7 @@
     <div class="b-layout b-layout_padtop_20 b-layout_margleft_-140">
         <table class="b-layout__table b-layout__table_width_full" border="0" cellpadding="0" cellspacing="0">
             <tr class="b-layout__tr">
-                <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_140"><div class="b-layout__txt b-layout__txt_padtop_5">Ваша специализация</div></td>
+                <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_140"><div class="b-layout__txt b-layout__txt_padtop_5">Р’Р°С€Р° СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏ</div></td>
                 <td class="b-layout__right b-layout__right_padbot_20">
                     <div class="b-combo">
                         <div class="b-combo__input b-combo__input_width_210 b-combo__input_multi_dropdown b-combo__input_resize b-combo__input_arrow_yes b-combo__input_init_professionsList drop_down_default_<?= $spec ? (int)$spec : (int)$category?> multi_drop_down_default_column_<?= $spec ? "1" : "0"?>"">
@@ -48,13 +48,13 @@
             </tr>
             <? } ?>
             <tr class="b-layout__tr">
-                <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_140"><div class="b-layout__txt b-layout__txt_padtop_5">Опыт работы</div></td>
+                <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_140"><div class="b-layout__txt b-layout__txt_padtop_5">РћРїС‹С‚ СЂР°Р±РѕС‚С‹</div></td>
                 <td class="b-layout__right b-layout__right_padbot_20">
                     <div class="b-combo b-combo_inline-block b-combo_margright_5">
                         <div class="b-combo__input b-combo__input_width_60">
                             <input  class="b-combo__input-text" name="exp" type="text" size="80" value="<?= $data['exp']?>" maxlength="2"/>
                         </div>
-                    </div><div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5">лет</div>
+                    </div><div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5">Р»РµС‚</div>
                 </td>
             </tr>
             <? if ( $error['exp'] ) { ?>
@@ -68,7 +68,7 @@
             </tr>
             <? } ?>
             <tr class="b-layout__tr">
-                <td class="b-layout__left b-layout__left_padbot_10 b-layout__left_width_140"><div class="b-layout__txt b-layout__txt_padtop_5">Стоимость работы</div></td>
+                <td class="b-layout__left b-layout__left_padbot_10 b-layout__left_width_140"><div class="b-layout__txt b-layout__txt_padtop_5">РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹</div></td>
                 <td class="b-layout__right b-layout__right_padbot_10">
                     <div class="b-combo b-combo_inline-block b-combo_margright_5">
                         <div class="b-combo__input b-combo__input_width_60">
@@ -83,7 +83,7 @@
                         </div>
                         
                     </div>
-                    <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5">в час</div>
+                    <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5">РІ С‡Р°СЃ</div>
                 </td>
             </tr>
             <? if ( $error['cost_hour'] ) { ?>
@@ -112,7 +112,7 @@
                         </div>
                         
                     </div>
-                    <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5">в месяц</div>
+                    <div class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5">РІ РјРµСЃСЏС†</div>
                 </td>
             </tr>
             <? if ( $error['cost_month'] ) { ?>
@@ -130,7 +130,7 @@
                 <td class="b-layout__right b-layout__right_padbot_10">
                     <div class="b-check">
                         <input  class="b-check__input" id="in_office" name="in_office" type="checkbox" value="1" <?= ($data['in_office']?"checked":"")?>/>
-                        <label  class="b-check__label b-check__label_fontsize_13" for="in_office">Ищу долгосрочную работу в офисе</label>
+                        <label  class="b-check__label b-check__label_fontsize_13" for="in_office">РС‰Сѓ РґРѕР»РіРѕСЃСЂРѕС‡РЅСѓСЋ СЂР°Р±РѕС‚Сѓ РІ РѕС„РёСЃРµ</label>
                     </div>
                 </td>
             </tr>
@@ -154,7 +154,7 @@
                                         <a href="javascript:void(0)" class="b-button b-button_rectangle_color_transparent">
                                             <span class="b-button__b1">
                                                 <span class="b-button__b2">
-                                                    <span class="b-button__txt">Загрузить резюме</span>
+                                                    <span class="b-button__txt">Р—Р°РіСЂСѓР·РёС‚СЊ СЂРµР·СЋРјРµ</span>
                                                 </span>
                                             </span>
                                         </a>
@@ -167,7 +167,7 @@
                 </td>
             </tr>
             <tr class="b-layout__tr">
-                <td class="b-layout__left b-layout__left_padbot_10 b-layout__left_width_140"><div class="b-layout__txt">Доп. информация</div></td>
+                <td class="b-layout__left b-layout__left_padbot_10 b-layout__left_width_140"><div class="b-layout__txt">Р”РѕРї. РёРЅС„РѕСЂРјР°С†РёСЏ</div></td>
                 <td class="b-layout__right b-layout__right_padbot_10">
                     <div class="b-textarea">
                         <textarea class="b-textarea__textarea b-textarea__textarea_height_120 tawl" name="info" rel="4000" cols="80" rows="5"><?= $data['info'];?></textarea>
@@ -192,24 +192,24 @@
         <a href="javascript:void(0)" onclick="work.create();" class="b-button b-button_margtop_-5 b-button_float_right b-button_round_green">
             <span class="b-button__b1">
                 <span class="b-button__b2">
-                    <span class="b-button__txt">Добавить работу</span>
+                    <span class="b-button__txt">Р”РѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚Сѓ</span>
                 </span>
             </span>
         </a>
-        Работы в портфолио
+        Р Р°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ
     </h2>
         
     <?php if($count_portf > 0) {?>
     <div class="b-fon b-fon_width_full b-fon_padbot_20">
         <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-            <span class="b-fon__ok"></span>Вы создали <?=$count_portf?> <?=ending($count_portf, "работу", "работы", "работ")?>. После регистрации на сайте, в настройках в разделе портфолио вы сможете удалить или изменить их.
+            <span class="b-fon__ok"></span>Р’С‹ СЃРѕР·РґР°Р»Рё <?=$count_portf?> <?=ending($count_portf, "СЂР°Р±РѕС‚Сѓ", "СЂР°Р±РѕС‚С‹", "СЂР°Р±РѕС‚")?>. РџРѕСЃР»Рµ СЂРµРіРёСЃС‚СЂР°С†РёРё РЅР° СЃР°Р№С‚Рµ, РІ РЅР°СЃС‚СЂРѕР№РєР°С… РІ СЂР°Р·РґРµР»Рµ РїРѕСЂС‚С„РѕР»РёРѕ РІС‹ СЃРјРѕР¶РµС‚Рµ СѓРґР°Р»РёС‚СЊ РёР»Рё РёР·РјРµРЅРёС‚СЊ РёС….
         </div>
     </div>
     <?php }//if?>    
         
     <?php if(is_array($portf_insert) && count($portf_insert)) {?>
         <?php foreach($portf_insert as $k=>$value) {
-            if ($value['link'] === 'Ссылка') {
+            if ($value['link'] === 'РЎСЃС‹Р»РєР°') {
                 $value['link'] = '';
             }
         ?>
@@ -245,7 +245,7 @@
                                 <?
                                 $name = $pict->original_name;
                                 $maxLen = 25;
-                                // сокращаем название файла, сохраняя расширение
+                                // СЃРѕРєСЂР°С‰Р°РµРј РЅР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р°, СЃРѕС…СЂР°РЅСЏСЏ СЂР°СЃС€РёСЂРµРЅРёРµ
                                 if (strlen($name) > $maxLen) {
                                     $arr = explode('.', $name);
                                     $ext = array_pop($arr);
@@ -268,7 +268,7 @@
                                         <a href="javascript:void(0)" class="b-button b-button_rectangle_color_transparent">
                                             <span class="b-button__b1">
                                                 <span class="b-button__b2">
-                                                    <span class="b-button__txt">Прикрепить файл</span>
+                                                    <span class="b-button__txt">РџСЂРёРєСЂРµРїРёС‚СЊ С„Р°Р№Р»</span>
                                                 </span>
                                             </span>
                                         </a>
@@ -277,10 +277,10 @@
                             </span>
                             <div class="b-layout__txt b-layout__txt_inline-block  b-layout__txt_valign_top b-layout__txt_padtop_7">
                                 <?php if($value['link'] == '') {?>
-                                <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="work.create_field(1, this);">Поставить ссылку</a> &#160;&#160;&#160;
+                                <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="work.create_field(1, this);">РџРѕСЃС‚Р°РІРёС‚СЊ СЃСЃС‹Р»РєСѓ</a> &#160;&#160;&#160;
                                 <?php }//if?>
                                 <?php if($value['descr'] == '') {?>
-                                <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="work.create_field(2, this);">Добавить описание</a>
+                                <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="work.create_field(2, this);">Р”РѕР±Р°РІРёС‚СЊ РѕРїРёСЃР°РЅРёРµ</a>
                                 <?php }//if?>
                             </div>
                         </td>
@@ -291,7 +291,7 @@
                         <td class="b-layout__left b-layout__left_padbot_15">
                             <div class="b-combo">
                                 <div class="b-combo__input">
-                                    <input  class="b-combo__input-text" name="link[<?=$k?>]" type="text" size="80" value="<?= $value['link'] ?>" onfocus="clearErrorBlock(this);" graytext="Ссылка" />
+                                    <input  class="b-combo__input-text" name="link[<?=$k?>]" type="text" size="80" value="<?= $value['link'] ?>" onfocus="clearErrorBlock(this);" graytext="РЎСЃС‹Р»РєР°" />
                                 </div>
                             </div>
                         </td>
@@ -311,7 +311,7 @@
                     <tr class="b-layout__tr">
                         <td class="b-layout__left">
                             <div class="b-textarea">
-                                <textarea class="b-textarea__textarea tawl" name="descr[<?=$k?>]" cols="" rows="" rel="1500" graytext="Описание"><?= $value['descr'] ?></textarea>
+                                <textarea class="b-textarea__textarea tawl" name="descr[<?=$k?>]" cols="" rows="" rel="1500" graytext="РћРїРёСЃР°РЅРёРµ"><?= $value['descr'] ?></textarea>
                             </div>
                         </td>
                         <td class="b-layout__right b-layout__right_padbot_10 b-layout__right_width_15 b-layout__right_padleft_10">&#160;</td>
@@ -338,7 +338,7 @@
                     <td class="b-layout__left b-layout__left_padbot_15">
                         <div class="b-combo">
                             <div class="b-combo__input">
-                                <input  class="b-combo__input-text b-combo__input-text_color_a7" name="name[0]" type="text" size="80" maxlength="80" value="" graytext="Название работы"  />
+                                <input  class="b-combo__input-text b-combo__input-text_color_a7" name="name[0]" type="text" size="80" maxlength="80" value="" graytext="РќР°Р·РІР°РЅРёРµ СЂР°Р±РѕС‚С‹"  />
                             </div>
                         </div>
                     </td>
@@ -356,14 +356,14 @@
                                     <a href="javascript:void(0)" class="b-button b-button_rectangle_color_transparent">
                                         <span class="b-button__b1">
                                             <span class="b-button__b2">
-                                                <span class="b-button__txt">Прикрепить файл</span>
+                                                <span class="b-button__txt">РџСЂРёРєСЂРµРїРёС‚СЊ С„Р°Р№Р»</span>
                                             </span>
                                         </span>
                                     </a>
                                 </div>
                             </div>
                         </span>
-                        <div class="b-layout__txt b-layout__txt_inline-block  b-layout__txt_valign_top b-layout__txt_padtop_7"><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="work.create_field(1, this);">Поставить ссылку</a> &#160;&#160;&#160; <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="work.create_field(2, this);">Добавить описание</a></div>
+                        <div class="b-layout__txt b-layout__txt_inline-block  b-layout__txt_valign_top b-layout__txt_padtop_7"><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="work.create_field(1, this);">РџРѕСЃС‚Р°РІРёС‚СЊ СЃСЃС‹Р»РєСѓ</a> &#160;&#160;&#160; <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="javascript:void(0)" onclick="work.create_field(2, this);">Р”РѕР±Р°РІРёС‚СЊ РѕРїРёСЃР°РЅРёРµ</a></div>
                     </td>
                     <td class="b-layout__right b-layout__right_width_15 b-layout__right_padleft_10">&#160;</td>
                 </tr>
@@ -378,13 +378,13 @@
         <a href="javascript:void(0)" onclick="if(!$(this).hasClass('b-button_rectangle_color_disable')) {clearGrayPortfolioTitles();$('frm').submit();}" class="b-button b-button_rectangle_color_green" id="submit_button">
             <span class="b-button__b1">
                 <span class="b-button__b2 b-button__b2_padlr_15">
-                    <span class="b-button__txt">Продолжить</span>
+                    <span class="b-button__txt">РџСЂРѕРґРѕР»Р¶РёС‚СЊ</span>
                 </span>
             </span>
         </a>&#160;&#160;
-        <a href="/wizard/registration/?action=next&complited=1" class="b-buttons__link">пропустить этот шаг</a>
-        <span class="b-buttons__txt">&#160;или&#160;</span>
-        <a href="/wizard/registration/?action=exit" class="b-buttons__link b-buttons__link_color_c10601">выйти из мастера</a>
+        <a href="/wizard/registration/?action=next&complited=1" class="b-buttons__link">РїСЂРѕРїСѓСЃС‚РёС‚СЊ СЌС‚РѕС‚ С€Р°Рі</a>
+        <span class="b-buttons__txt">&#160;РёР»Рё&#160;</span>
+        <a href="/wizard/registration/?action=exit" class="b-buttons__link b-buttons__link_color_c10601">РІС‹Р№С‚Рё РёР· РјР°СЃС‚РµСЂР°</a>
     </div>
 
 

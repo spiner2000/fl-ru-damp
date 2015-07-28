@@ -1,62 +1,62 @@
 <?
 /**
- * Обработка и хранение сессий (memcached)
- * НЕ УЧИТЫВАЕТ FREETRAY
+ * РћР±СЂР°Р±РѕС‚РєР° Рё С…СЂР°РЅРµРЅРёРµ СЃРµСЃСЃРёР№ (memcached)
+ * РќР• РЈР§РРўР«Р’РђР•Рў FREETRAY
  *
  */
 class session extends Memcached
 {
 
 	/** 
-	 * Содержит строку с последней активностью (см. view_online_status())
+	 * РЎРѕРґРµСЂР¶РёС‚ СЃС‚СЂРѕРєСѓ СЃ РїРѕСЃР»РµРґРЅРµР№ Р°РєС‚РёРІРЅРѕСЃС‚СЊСЋ (СЃРј. view_online_status())
 	 * @var string
 	 */
     public $ago;
 	
 	/** 
-	 * Дата последней активности (см. view_online_status())
+	 * Р”Р°С‚Р° РїРѕСЃР»РµРґРЅРµР№ Р°РєС‚РёРІРЅРѕСЃС‚Рё (СЃРј. view_online_status())
 	 * @var string
 	 */
     public $last_ref;
     
 	/** 
-	 * Активен ли щас пользователь (см. view_online_status())
+	 * РђРєС‚РёРІРµРЅ Р»Рё С‰Р°СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ (СЃРј. view_online_status())
 	 * @var boolean
 	 */
     public $is_active;
     
 	/** 
-	 * Есть ли соединение с сервером мем-кеша
+	 * Р•СЃС‚СЊ Р»Рё СЃРѕРµРґРёРЅРµРЅРёРµ СЃ СЃРµСЂРІРµСЂРѕРј РјРµРј-РєРµС€Р°
 	 *
 	 * @var boolean
 	 */
 	private $bIsConnected = false;
     
     /**
-     * Класс для записи лога
+     * РљР»Р°СЃСЃ РґР»СЏ Р·Р°РїРёСЃРё Р»РѕРіР°
      * 
      * @var object 
      */
     private $_log = NULL;
     
     /**
-     * Была ли ошибка при работе с memcache
+     * Р‘С‹Р»Р° Р»Рё РѕС€РёР±РєР° РїСЂРё СЂР°Р±РѕС‚Рµ СЃ memcache
      * 
      * @var type 
      */
     public $err = FALSE;
 	
 	/**
-	 * Конструктор. Подключается к серваку мемкэша
+	 * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ. РџРѕРґРєР»СЋС‡Р°РµС‚СЃСЏ Рє СЃРµСЂРІР°РєСѓ РјРµРјРєСЌС€Р°
 	 * 
 	 */
 	function __construct() {
 		parent::__construct();
         if ( !($server = $GLOBALS['memcachedSessionServer']) ) {
-            // В /classes/config.php добавляем:
+            // Р’ /classes/config.php РґРѕР±Р°РІР»СЏРµРј:
             // $memcachedSessionServer = 'localhost';
             if ( !($server = $GLOBALS['memcachedServers'][0]) )
-                die('Не найдены сервера Memcached');
+                die('РќРµ РЅР°Р№РґРµРЅС‹ СЃРµСЂРІРµСЂР° Memcached');
         }
         $this->bIsConnected = $this->addServer($server, 11211);
         
@@ -66,7 +66,7 @@ class session extends Memcached
 	}
 	
 	/**
-	 * Открыть соединение
+	 * РћС‚РєСЂС‹С‚СЊ СЃРѕРµРґРёРЅРµРЅРёРµ
 	 *
 	 * @return boolean
 	 */
@@ -75,7 +75,7 @@ class session extends Memcached
    }
    
    /**
-    * Закрыть соединение
+    * Р—Р°РєСЂС‹С‚СЊ СЃРѕРµРґРёРЅРµРЅРёРµ
     *
     * @return boolean
     */
@@ -84,10 +84,10 @@ class session extends Memcached
    }
    
    /**
-    * Читает данные из кеша
+    * Р§РёС‚Р°РµС‚ РґР°РЅРЅС‹Рµ РёР· РєРµС€Р°
     *
-    * @param string $sessID		идентификатор сессии
-    * @return array				массив с данными по сессии или пустая строка (если сессия не найдена)
+    * @param string $sessID		РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃРµСЃСЃРёРё
+    * @return array				РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё РїРѕ СЃРµСЃСЃРёРё РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР° (РµСЃР»Рё СЃРµСЃСЃРёСЏ РЅРµ РЅР°Р№РґРµРЅР°)
     */
    function read($sessID) {
        // fetch session-data
@@ -104,11 +104,11 @@ class session extends Memcached
    }
    
    /**
-    * Сохраняет данные сессии в кеш
+    * РЎРѕС…СЂР°РЅСЏРµС‚ РґР°РЅРЅС‹Рµ СЃРµСЃСЃРёРё РІ РєРµС€
     *
-    * @param string $sessID		идентификатор сессии
-    * @param array $sessData	данные сессии
-    * @return boolean			true в случае удачной записи
+    * @param string $sessID		РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃРµСЃСЃРёРё
+    * @param array $sessData	РґР°РЅРЅС‹Рµ СЃРµСЃСЃРёРё
+    * @return boolean			true РІ СЃР»СѓС‡Р°Рµ СѓРґР°С‡РЅРѕР№ Р·Р°РїРёСЃРё
     */
    function write($sessID, $sessData) {
        $ret = $this->set($sessID, $sessData, 7200);
@@ -116,7 +116,7 @@ class session extends Memcached
            $this->_error('set', $sessID);
        }
        if ( !empty($_SESSION['login']) ) {
-           $last_ref['date'] = $_SESSION['last_refresh']; // см. users::regVisit()
+           $last_ref['date'] = $_SESSION['last_refresh']; // СЃРј. users::regVisit()
            $last_ref['sid'] = $sessID;
            $ret = $this->set($_SESSION['login'], $last_ref, 7200);
             if ( $ret === FALSE ) {
@@ -127,10 +127,10 @@ class session extends Memcached
    }
    
    /**
-    * Убивает сессию по ее ID
+    * РЈР±РёРІР°РµС‚ СЃРµСЃСЃРёСЋ РїРѕ РµРµ ID
     *
-    * @param string $sessID		идентификатор сессии
-    * @return boolean			true в случае удачи
+    * @param string $sessID		РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃРµСЃСЃРёРё
+    * @return boolean			true РІ СЃР»СѓС‡Р°Рµ СѓРґР°С‡Рё
     */
    function destroy($sessID) {
        // delete session-data
@@ -139,9 +139,9 @@ class session extends Memcached
    }
    
    /**
-    * Сборщик мусора - используется внутренний для memcache см. write()
+    * РЎР±РѕСЂС‰РёРє РјСѓСЃРѕСЂР° - РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІРЅСѓС‚СЂРµРЅРЅРёР№ РґР»СЏ memcache СЃРј. write()
     *
-    * @return boolean	всегда возвращает true	
+    * @return boolean	РІСЃРµРіРґР° РІРѕР·РІСЂР°С‰Р°РµС‚ true	
     */
    function gc() {
 
@@ -149,10 +149,10 @@ class session extends Memcached
    }
    
    /**
-    * Есть ли юзер на сайте
+    * Р•СЃС‚СЊ Р»Рё СЋР·РµСЂ РЅР° СЃР°Р№С‚Рµ
     *
-    * @param string $login		логин юзера
-    * @return string			дата последней активности юзера в формате ISO 8601 или 0 если сессия не найдена
+    * @param string $login		Р»РѕРіРёРЅ СЋР·РµСЂР°
+    * @return string			РґР°С‚Р° РїРѕСЃР»РµРґРЅРµР№ Р°РєС‚РёРІРЅРѕСЃС‚Рё СЋР·РµСЂР° РІ С„РѕСЂРјР°С‚Рµ ISO 8601 РёР»Рё 0 РµСЃР»Рё СЃРµСЃСЃРёСЏ РЅРµ РЅР°Р№РґРµРЅР°
     */
    function getActivityByLogin($login){
    		if (!$login) return 0;
@@ -175,10 +175,10 @@ class session extends Memcached
    }
    
     /**
-     * Сбрасывает активность юзера на сайте
+     * РЎР±СЂР°СЃС‹РІР°РµС‚ Р°РєС‚РёРІРЅРѕСЃС‚СЊ СЋР·РµСЂР° РЅР° СЃР°Р№С‚Рµ
      * 
-     * @param  string $login логин юзера
-     * @return bool true - успех, false - провал
+     * @param  string $login Р»РѕРіРёРЅ СЋР·РµСЂР°
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function nullActivityByLogin( $login ) {
         $bRet = false;
@@ -197,9 +197,9 @@ class session extends Memcached
     }
 
    /**
-   * Обновляет дату окончания PRO в сессии пользователя
+   * РћР±РЅРѕРІР»СЏРµС‚ РґР°С‚Сѓ РѕРєРѕРЅС‡Р°РЅРёСЏ PRO РІ СЃРµСЃСЃРёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
    * 
-   * @param string $login   логин пользователя
+   * @param string $login   Р»РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
    */
    function UpdateProEndingDate($login) {
         if(!$login) return;
@@ -229,9 +229,9 @@ class session extends Memcached
    }
    
    /**
-   * Обновляет статус верификации в сессии пользователя
+   * РћР±РЅРѕРІР»СЏРµС‚ СЃС‚Р°С‚СѓСЃ РІРµСЂРёС„РёРєР°С†РёРё РІ СЃРµСЃСЃРёРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
    * 
-   * @param string $login   логин пользователя
+   * @param string $login   Р»РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
    */
    function UpdateVerification($login) {
         if(!$login) return;
@@ -250,9 +250,9 @@ class session extends Memcached
    }
    
    /**
-    * Обновляем деньги у пользователя по его логину
+    * РћР±РЅРѕРІР»СЏРµРј РґРµРЅСЊРіРё Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ РµРіРѕ Р»РѕРіРёРЅСѓ
     * 
-    * @param string $login    Логин пользователя
+    * @param string $login    Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
     * @return type 
     */
    function UpdateAccountSum($login) {
@@ -274,10 +274,10 @@ class session extends Memcached
    }
    
     /**
-    * Обновляет данные об антиюзере
+    * РћР±РЅРѕРІР»СЏРµС‚ РґР°РЅРЅС‹Рµ РѕР± Р°РЅС‚РёСЋР·РµСЂРµ
     * 
-    * $login - у кого обновляем сессию
-    * $antiUser - объект класса users с нужными данными
+    * $login - Сѓ РєРѕРіРѕ РѕР±РЅРѕРІР»СЏРµРј СЃРµСЃСЃРёСЋ
+    * $antiUser - РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° users СЃ РЅСѓР¶РЅС‹РјРё РґР°РЅРЅС‹РјРё
     */
     /*public function UpdateAntiuser ($login, $antiUser) {
         if (!$login) return;
@@ -291,11 +291,11 @@ class session extends Memcached
     }*/
 
    /**
-    * Отображает значек активности юзера на сайте
+    * РћС‚РѕР±СЂР°Р¶Р°РµС‚ Р·РЅР°С‡РµРє Р°РєС‚РёРІРЅРѕСЃС‚Рё СЋР·РµСЂР° РЅР° СЃР°Р№С‚Рµ
     *
-    * @param string $login		логин юзера
-    * @param boolean $full		отображать ли строковую информацию ("Нет на сайте")
-    * @return string			HTML-код значка активности
+    * @param string $login		Р»РѕРіРёРЅ СЋР·РµСЂР°
+    * @param boolean $full		РѕС‚РѕР±СЂР°Р¶Р°С‚СЊ Р»Рё СЃС‚СЂРѕРєРѕРІСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ ("РќРµС‚ РЅР° СЃР°Р№С‚Рµ")
+    * @return string			HTML-РєРѕРґ Р·РЅР°С‡РєР° Р°РєС‚РёРІРЅРѕСЃС‚Рё
     */
    function view_online_status($login, $full=false, $nbsp='&nbsp;', &$activity = NULL){
         $this->is_active = false;
@@ -310,22 +310,22 @@ class session extends Memcached
             $this->ago = ago_pub($last_ref_unixtime);
 			$this->ago = ago_pub(strtotime($this->last_ref));
             $this->is_active = true;
-			if (intval($this->ago) == 0) $this->ago = 'менее минуты';
-		/*	return  ($full ? "<span class='u-act' title=\"Последняя активность была ".$this->ago." назад\">На сайте</span>" : "{$nbsp}<img src=\"/images/dot_active.png\" class=\"u-inact\" alt=\"Последняя активность была ".$this->ago." назад\" title=\"Последняя активность была ".$this->ago." назад\" />$nbsp");*/
-		/*	return  "<span class='b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_6db335 b-layouyt__txt_weight_normal'>На сайте.</span>"; */
-        return  ($full ? "<span class='b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_6db335 b-layouyt__txt_weight_normal'>На сайте.</span>" : "<span class=\"b-icon b-icon__lamp\" title='На сайте'></span>$nbsp");
+			if (intval($this->ago) == 0) $this->ago = 'РјРµРЅРµРµ РјРёРЅСѓС‚С‹';
+		/*	return  ($full ? "<span class='u-act' title=\"РџРѕСЃР»РµРґРЅСЏСЏ Р°РєС‚РёРІРЅРѕСЃС‚СЊ Р±С‹Р»Р° ".$this->ago." РЅР°Р·Р°Рґ\">РќР° СЃР°Р№С‚Рµ</span>" : "{$nbsp}<img src=\"/images/dot_active.png\" class=\"u-inact\" alt=\"РџРѕСЃР»РµРґРЅСЏСЏ Р°РєС‚РёРІРЅРѕСЃС‚СЊ Р±С‹Р»Р° ".$this->ago." РЅР°Р·Р°Рґ\" title=\"РџРѕСЃР»РµРґРЅСЏСЏ Р°РєС‚РёРІРЅРѕСЃС‚СЊ Р±С‹Р»Р° ".$this->ago." РЅР°Р·Р°Рґ\" />$nbsp");*/
+		/*	return  "<span class='b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_6db335 b-layouyt__txt_weight_normal'>РќР° СЃР°Р№С‚Рµ.</span>"; */
+        return  ($full ? "<span class='b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_6db335 b-layouyt__txt_weight_normal'>РќР° СЃР°Р№С‚Рµ.</span>" : "<span class=\"b-icon b-icon__lamp\" title='РќР° СЃР°Р№С‚Рµ'></span>$nbsp");
 		}
-	/*	return ($full ? "<span class='u-inact'>Нет на сайте</span>" : "{$nbsp}<img src=\"/images/dot_inactive.png\" class=\"u-inact\" alt=\"Нет на сайте\" title=\"Нет на сайте\" />$nbsp");*/
-	/*	return "<span class='b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_808080 b-layouyt__txt_weight_normal'>Нет на сайте.</span>"; */
-      return ($full ? "<span class='b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_808080 b-layouyt__txt_weight_normal'>Нет на сайте.</span>" : '');
+	/*	return ($full ? "<span class='u-inact'>РќРµС‚ РЅР° СЃР°Р№С‚Рµ</span>" : "{$nbsp}<img src=\"/images/dot_inactive.png\" class=\"u-inact\" alt=\"РќРµС‚ РЅР° СЃР°Р№С‚Рµ\" title=\"РќРµС‚ РЅР° СЃР°Р№С‚Рµ\" />$nbsp");*/
+	/*	return "<span class='b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_808080 b-layouyt__txt_weight_normal'>РќРµС‚ РЅР° СЃР°Р№С‚Рµ.</span>"; */
+      return ($full ? "<span class='b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_808080 b-layouyt__txt_weight_normal'>РќРµС‚ РЅР° СЃР°Р№С‚Рµ.</span>" : '');
 	}
 
    /**
-    * Отображает значек активности юзера на сайте (новая версия view_online_status)
+    * РћС‚РѕР±СЂР°Р¶Р°РµС‚ Р·РЅР°С‡РµРє Р°РєС‚РёРІРЅРѕСЃС‚Рё СЋР·РµСЂР° РЅР° СЃР°Р№С‚Рµ (РЅРѕРІР°СЏ РІРµСЂСЃРёСЏ view_online_status)
     *
-    * @param string $login		логин юзера
-    * @param boolean $full		отображать ли строковую информацию ("Нет на сайте")
-    * @return string			HTML-код значка активности
+    * @param string $login		Р»РѕРіРёРЅ СЋР·РµСЂР°
+    * @param boolean $full		РѕС‚РѕР±СЂР°Р¶Р°С‚СЊ Р»Рё СЃС‚СЂРѕРєРѕРІСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ ("РќРµС‚ РЅР° СЃР°Р№С‚Рµ")
+    * @return string			HTML-РєРѕРґ Р·РЅР°С‡РєР° Р°РєС‚РёРІРЅРѕСЃС‚Рё
     */
     function view_online_status_new($login, $full=false, $nbsp='&nbsp;', &$activity = NULL){
         if ($login)
@@ -334,19 +334,19 @@ class session extends Memcached
         $last_ref_unixtime = strtotime($last_ref);
         if ($last_ref && (time() - $last_ref_unixtime <= 30*60)){
             $ago = ago_pub(strtotimeEx($last_ref));
-            if (intval($ago) == 0) $ago = "менее минуты";
-          /*  return  ($full ? "<span class='u-act' title=\"Последняя активность была ".$ago." назад\">На сайте</span>" : "{$nbsp}<img src=\"/images/dot_active.png\" class=\"u-act\" alt=\"Последняя активность была ".$ago." назад\" title=\"Последняя активность была ".$ago." назад\" />$nbsp");*/
-            return  "<span class='b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_6db335 b-layouyt__txt_weight_normal'>На сайте.</span>";
+            if (intval($ago) == 0) $ago = "РјРµРЅРµРµ РјРёРЅСѓС‚С‹";
+          /*  return  ($full ? "<span class='u-act' title=\"РџРѕСЃР»РµРґРЅСЏСЏ Р°РєС‚РёРІРЅРѕСЃС‚СЊ Р±С‹Р»Р° ".$ago." РЅР°Р·Р°Рґ\">РќР° СЃР°Р№С‚Рµ</span>" : "{$nbsp}<img src=\"/images/dot_active.png\" class=\"u-act\" alt=\"РџРѕСЃР»РµРґРЅСЏСЏ Р°РєС‚РёРІРЅРѕСЃС‚СЊ Р±С‹Р»Р° ".$ago." РЅР°Р·Р°Рґ\" title=\"РџРѕСЃР»РµРґРЅСЏСЏ Р°РєС‚РёРІРЅРѕСЃС‚СЊ Р±С‹Р»Р° ".$ago." РЅР°Р·Р°Рґ\" />$nbsp");*/
+            return  "<span class='b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_6db335 b-layouyt__txt_weight_normal'>РќР° СЃР°Р№С‚Рµ.</span>";
         }
-        /*return  ($full ? "<span class='u-inact'>Нет на сайте</span>" : "{$nbsp}<img src=\"/images/dot_inactive.png\" width=\"8\" height=\"9\" alt=\"Нет сайте\" class=\"u-inact\" title=\"Нет на сайте\" />$nbsp");*/
-        return  "<span class='b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_808080 b-layouyt__txt_weight_normal'>Нет на сайте.</span>";
+        /*return  ($full ? "<span class='u-inact'>РќРµС‚ РЅР° СЃР°Р№С‚Рµ</span>" : "{$nbsp}<img src=\"/images/dot_inactive.png\" width=\"8\" height=\"9\" alt=\"РќРµС‚ СЃР°Р№С‚Рµ\" class=\"u-inact\" title=\"РќРµС‚ РЅР° СЃР°Р№С‚Рµ\" />$nbsp");*/
+        return  "<span class='b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_808080 b-layouyt__txt_weight_normal'>РќРµС‚ РЅР° СЃР°Р№С‚Рµ.</span>";
     }
 	
 	/**
-	 * Уничтожает сессию пользователя по его логину
+	 * РЈРЅРёС‡С‚РѕР¶Р°РµС‚ СЃРµСЃСЃРёСЋ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїРѕ РµРіРѕ Р»РѕРіРёРЅСѓ
 	 *
-	 * @param string $login		логин юзера
-	 * @return boolean			true если сессия была уничтожена, false - если не найдена
+	 * @param string $login		Р»РѕРіРёРЅ СЋР·РµСЂР°
+	 * @return boolean			true РµСЃР»Рё СЃРµСЃСЃРёСЏ Р±С‹Р»Р° СѓРЅРёС‡С‚РѕР¶РµРЅР°, false - РµСЃР»Рё РЅРµ РЅР°Р№РґРµРЅР°
 	 */
 	function logout($login){
 		if (!$login) return 0;
@@ -358,10 +358,10 @@ class session extends Memcached
 	}
 
     /**
-     * Запись в лог при возникновении ошибки
+     * Р—Р°РїРёСЃСЊ РІ Р»РѕРі РїСЂРё РІРѕР·РЅРёРєРЅРѕРІРµРЅРёРё РѕС€РёР±РєРё
      * 
-     * @param  string  $optype  тип операции (get, set, add)
-     * @param  string  $key     ключ в memcache
+     * @param  string  $optype  С‚РёРї РѕРїРµСЂР°С†РёРё (get, set, add)
+     * @param  string  $key     РєР»СЋС‡ РІ memcache
      * @return void
      */
     private function _error($optype = NULL, $key = NULL) {
@@ -389,11 +389,11 @@ class session extends Memcached
     
     
     /**
-     * Сохранить сообщения до следующего обращения к странице
+     * РЎРѕС…СЂР°РЅРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёСЏ РґРѕ СЃР»РµРґСѓСЋС‰РµРіРѕ РѕР±СЂР°С‰РµРЅРёСЏ Рє СЃС‚СЂР°РЅРёС†Рµ
      * 
-     * @param type $value - тест сообщения
-     * @param string $key - ключ для специфического сообщения
-     * @param type $type - тип (пока не используется)
+     * @param type $value - С‚РµСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ
+     * @param string $key - РєР»СЋС‡ РґР»СЏ СЃРїРµС†РёС„РёС‡РµСЃРєРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
+     * @param type $type - С‚РёРї (РїРѕРєР° РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ)
      * @return boolean
      */
     public static function setFlashMessage($value, $key = 'default', $type = 'success')
@@ -410,7 +410,7 @@ class session extends Memcached
     
     
     /**
-     * Показать текущее сообщение
+     * РџРѕРєР°Р·Р°С‚СЊ С‚РµРєСѓС‰РµРµ СЃРѕРѕР±С‰РµРЅРёРµ
      * 
      * @return string
      */

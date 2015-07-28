@@ -76,7 +76,7 @@ if (__paramInit('string', 'quickprobuy', 'quickprobuy', null)==1) {
 }
 
 
-//После успешной оплаты по банковской карте за верификацию закрываем окно
+//РџРѕСЃР»Рµ СѓСЃРїРµС€РЅРѕР№ РѕРїР»Р°С‚С‹ РїРѕ Р±Р°РЅРєРѕРІСЃРєРѕР№ РєР°СЂС‚Рµ Р·Р° РІРµСЂРёС„РёРєР°С†РёСЋ Р·Р°РєСЂС‹РІР°РµРј РѕРєРЅРѕ
 if ($_SESSION['quickver_is_begin'] == 1) {
     unset($_SESSION['quickver_is_begin']);
     echo "<html><body><script>window.close();</script></body></html>";  
@@ -91,14 +91,14 @@ if ($_SESSION['quickacc_is_begin']==1) {
 }
 
 
-//Если есть обработчики по новым попапам быстрой оплаты
+//Р•СЃР»Рё РµСЃС‚СЊ РѕР±СЂР°Р±РѕС‚С‡РёРєРё РїРѕ РЅРѕРІС‹Рј РїРѕРїР°РїР°Рј Р±С‹СЃС‚СЂРѕР№ РѕРїР»Р°С‚С‹
 if (quickPaymentPopupFactory::isExistProcess()) {
-    //Посылаем событие при успешной операции
+    //РџРѕСЃС‹Р»Р°РµРј СЃРѕР±С‹С‚РёРµ РїСЂРё СѓСЃРїРµС€РЅРѕР№ РѕРїРµСЂР°С†РёРё
     $processInstance = quickPaymentPopupFactory::getInstance();
     if($processInstance) $processInstance->fireEventSuccess();
 }
 
 
-//Редиректим на историю заказов
+//Р РµРґРёСЂРµРєС‚РёРј РЅР° РёСЃС‚РѕСЂРёСЋ Р·Р°РєР°Р·РѕРІ
 header('Location: /bill/history/?period=3'); 
 exit;

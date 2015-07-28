@@ -22,13 +22,13 @@
     <? if(preg_match( "'Opera.*?Version/10\.10'si", $_SERVER['HTTP_USER_AGENT'])) { ?>
     <iframe src="/promotion/graph.fix.php" width="750" height="233" frameborder="0" scrolling="no"></iframe>
     <? } else { ?>
-    <h3 class="b-page__iphone">График изменений рейтинга</h3>
+    <h3 class="b-page__iphone">Р“СЂР°С„РёРє РёР·РјРµРЅРµРЅРёР№ СЂРµР№С‚РёРЅРіР°</h3>
     <select name="ratingmode">
-        <option value="month">в этом месяце</option>
-        <option value="prev">в прошлом месяце</option>
-        <option value="year">за год</option>
+        <option value="month">РІ СЌС‚РѕРј РјРµСЃСЏС†Рµ</option>
+        <option value="prev">РІ РїСЂРѕС€Р»РѕРј РјРµСЃСЏС†Рµ</option>
+        <option value="year">Р·Р° РіРѕРґ</option>
     </select>
-    <h3 class="b-page__desktop b-page__ipad">График изменений рейтинга</h3>
+    <h3 class="b-page__desktop b-page__ipad">Р“СЂР°С„РёРє РёР·РјРµРЅРµРЅРёР№ СЂРµР№С‚РёРЅРіР°</h3>
     <div id="raph"></div>
     <? } ?>
 </div>

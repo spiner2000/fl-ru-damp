@@ -40,20 +40,20 @@ if ( $action == 'add' ) {
             if ( intval($nStamp) ) {
                 $nRate   = $exrates->GetField( 51, $err, 'val' );
                 $nSummFM = round($nSummR, 2 );
-                $sAdmin  = 'Запись добавил: ' . $_SESSION['login'];
-                $comments  = "Безналичный перевод для физ.лиц, логин {$oUser->login}, Альфа-банк";
+                $sAdmin  = 'Р—Р°РїРёСЃСЊ РґРѕР±Р°РІРёР»: ' . $_SESSION['login'];
+                $comments  = "Р‘РµР·РЅР°Р»РёС‡РЅС‹Р№ РїРµСЂРµРІРѕРґ РґР»СЏ С„РёР·.Р»РёС†, Р»РѕРіРёРЅ {$oUser->login}, РђР»СЊС„Р°-Р±Р°РЅРє";
                 $sDate   = date( 'c', $nStamp );
                 
                 if ( 
                     $account->GetInfo($oUser->uid, true) 
                     && !$err = $account->depositEx($account->id, $nSummFM, $sAdmin, $comments, 12, $nSummR, 11, $sDate) 
                 ) {
-                    // ВРЕМЕННАЯ АКЦИЯ! -------------
-                    // ВРЕМЕННАЯ ЗАКОМЕНТЕНО! :) -------------
+                    // Р’Р Р•РњР•РќРќРђРЇ РђРљР¦РРЇ! -------------
+                    // Р’Р Р•РњР•РќРќРђРЇ Р—РђРљРћРњР•РќРўР•РќРћ! :) -------------
                     // $account->alphaBankGift( $nSummR, $sDate, $oUser->uid, $oUser->login );
                     //-------------------------------
                     
-                    // обновляем сессию юзера
+                    // РѕР±РЅРѕРІР»СЏРµРј СЃРµСЃСЃРёСЋ СЋР·РµСЂР°
                     $session = new session();
                     $session->UpdateProEndingDate( $oUser->login );
                     
@@ -65,15 +65,15 @@ if ( $action == 'add' ) {
                 }
             }
             else {
-                $sError = 'Дата указана не верно';
+                $sError = 'Р”Р°С‚Р° СѓРєР°Р·Р°РЅР° РЅРµ РІРµСЂРЅРѕ';
             }
         }
         else {
-            $sError = 'Сумма должна быть числом больше 0';
+            $sError = 'РЎСѓРјРјР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ С‡РёСЃР»РѕРј Р±РѕР»СЊС€Рµ 0';
         }
     }
     else {
-        $sError = 'Пользователь не найден';
+        $sError = 'РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РЅР°Р№РґРµРЅ';
     }
 }
 elseif ( $action == 'del' ) {
@@ -92,7 +92,7 @@ elseif ( $action == 'del' ) {
     	if ( $account->GetInfo($sUid) && ($bForce || $account->sum >= $aInfo['ammount']) ) {
     	    $account->Del( $sUid, $sId );
     	    
-    	    // уведомление о том, что ошибочно зачисленное списано
+    	    // СѓРІРµРґРѕРјР»РµРЅРёРµ Рѕ С‚РѕРј, С‡С‚Рѕ РѕС€РёР±РѕС‡РЅРѕ Р·Р°С‡РёСЃР»РµРЅРЅРѕРµ СЃРїРёСЃР°РЅРѕ
             require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/smail.php' );
 			$sm = new smail();
 			$sm->alphaBankMistakeSorry( $sUid, $aInfo['op_date'] );
@@ -106,7 +106,7 @@ elseif ( $action == 'del' ) {
     	}
     }
     else {
-        $sError = 'Данные указаны не верно';
+        $sError = 'Р”Р°РЅРЅС‹Рµ СѓРєР°Р·Р°РЅС‹ РЅРµ РІРµСЂРЅРѕ';
     }
 }
 

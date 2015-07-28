@@ -17,22 +17,22 @@ $quickpro_ok_default = 'quickpro_ok';
 
 switch($quickPRO_type) {
     case 'profi':
-        $quickPRO_title = 'Покупка аккаунта PROFI';
-        $quickPRO_ok_close_btn = 'Закрыть';    
+        $quickPRO_title = 'РџРѕРєСѓРїРєР° Р°РєРєР°СѓРЅС‚Р° PROFI';
+        $quickPRO_ok_close_btn = 'Р—Р°РєСЂС‹С‚СЊ';    
         $quickpro_ok_default = 'quickprofi_ok';
-        $quickpro_ok_title = 'Вы успешно купили аккаунт PROFI';
+        $quickpro_ok_title = 'Р’С‹ СѓСЃРїРµС€РЅРѕ РєСѓРїРёР»Рё Р°РєРєР°СѓРЅС‚ PROFI';
         $quickpro_ok_subtitle = '';
         break;
     case 'project':
-        $quickPRO_title = 'Покупка аккаунта Pro для ответа на проект';
-        $quickPRO_ok_close_btn = 'Закрыть и ответить на проект';
+        $quickPRO_title = 'РџРѕРєСѓРїРєР° Р°РєРєР°СѓРЅС‚Р° Pro РґР»СЏ РѕС‚РІРµС‚Р° РЅР° РїСЂРѕРµРєС‚';
+        $quickPRO_ok_close_btn = 'Р—Р°РєСЂС‹С‚СЊ Рё РѕС‚РІРµС‚РёС‚СЊ РЅР° РїСЂРѕРµРєС‚';
         $quickPRO_redirect = getFriendlyUrl('project', $project['id']);
         break;
     case 'promotion':
         $quickPRO_redirect = '/promotion/';
     default:
-        $quickPRO_title = 'Покупка аккаунта Pro';
-        $quickPRO_ok_close_btn = 'Закрыть';
+        $quickPRO_title = 'РџРѕРєСѓРїРєР° Р°РєРєР°СѓРЅС‚Р° Pro';
+        $quickPRO_ok_close_btn = 'Р—Р°РєСЂС‹С‚СЊ';
         break;
 }
 
@@ -50,13 +50,13 @@ $platipotomMaxSum = (int)$platipotom->getMaxPrice(0);
             <div class="b-layout__title b-layout__title_padbot_5">
                 <span class="b-icon b-page__desktop b-page__ipad <?php if($quickPRO_type == 'profi') { ?>b-icon__profi<?php } else { ?>b-icon__spro b-icon__spro_<?=is_emp() ? 'e' : 'f'?> <?php } ?> b-icon_float_left b-icon_margtop_4 b-icon_margright_10"></span>
                 <?=$quickPRO_title?>
-                <div class="b-layout__txt b-layout__txt_padleft_70 b-layout__txt_fontsize_11 b-layout__txt_lineheight_1 b-page__desktop b-page__ipad"><?php if($quickPRO_type == 'profi') { ?>С увеличением рейтинга на 40% и скидкой 20% на все платные сервисы сайта.<?php } else { ?><?= is_emp() ? 'с выгодными скидками до 50% на дополнительные сервисы в проектах' : 'с неограниченными ответами в проектах и +20% к рейтингу'?><?php } ?>
+                <div class="b-layout__txt b-layout__txt_padleft_70 b-layout__txt_fontsize_11 b-layout__txt_lineheight_1 b-page__desktop b-page__ipad"><?php if($quickPRO_type == 'profi') { ?>РЎ СѓРІРµР»РёС‡РµРЅРёРµРј СЂРµР№С‚РёРЅРіР° РЅР° 40% Рё СЃРєРёРґРєРѕР№ 20% РЅР° РІСЃРµ РїР»Р°С‚РЅС‹Рµ СЃРµСЂРІРёСЃС‹ СЃР°Р№С‚Р°.<?php } else { ?><?= is_emp() ? 'СЃ РІС‹РіРѕРґРЅС‹РјРё СЃРєРёРґРєР°РјРё РґРѕ 50% РЅР° РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРµСЂРІРёСЃС‹ РІ РїСЂРѕРµРєС‚Р°С…' : 'СЃ РЅРµРѕРіСЂР°РЅРёС‡РµРЅРЅС‹РјРё РѕС‚РІРµС‚Р°РјРё РІ РїСЂРѕРµРєС‚Р°С… Рё +20% Рє СЂРµР№С‚РёРЅРіСѓ'?><?php } ?>
                 </div>
             </div>
         </div>
     
         <div id="quick_pro_div_main">
-            <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_fontsize_15">Срок действия аккаунта</div>
+            <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_fontsize_15">РЎСЂРѕРє РґРµР№СЃС‚РІРёСЏ Р°РєРєР°СѓРЅС‚Р°</div>
     
             <div class="b-radio b-radio_padleft_20">
                 <input type="hidden" id="quick_pro_f_selected_item" value=""/>
@@ -81,14 +81,14 @@ $platipotomMaxSum = (int)$platipotom->getMaxPrice(0);
                         <label for="quick_pro_f_item_<?=$proItem['opcode']?>" class="b-radio__label b-radio__label_fontsize_13 b-radio__label_margtop_-2">
                             <span class="b-layout__bold <?php if(isset($proItem['badge'])): ?>b-layout__bold_relative<?php endif; ?>" id="quick_pro_div_main_type_<?=$proItem['opcode']?>">
                                 <? if($proItem['day']) { ?>
-                                    <?= $proItem['day']?> <?= ending($proItem['day'], 'день', 'дня', 'дня')?>
+                                    <?= $proItem['day']?> <?= ending($proItem['day'], 'РґРµРЅСЊ', 'РґРЅСЏ', 'РґРЅСЏ')?>
                                 <? } elseif ($proItem['week']) { ?>
-                                    <?= $proItem['week']?> <?= ending($proItem['week'], 'неделя', 'недели', 'недель')?>
+                                    <?= $proItem['week']?> <?= ending($proItem['week'], 'РЅРµРґРµР»СЏ', 'РЅРµРґРµР»Рё', 'РЅРµРґРµР»СЊ')?>
                                 <? } else { ?>
                                     <? if($proItem['month']==12) { ?>
-                                        1 год
+                                        1 РіРѕРґ
                                     <? } else { ?>
-                                        <?= $proItem['month']?> <?= ending($proItem['month'], 'месяц', 'месяца', 'месяцев')?>
+                                        <?= $proItem['month']?> <?= ending($proItem['month'], 'РјРµСЃСЏС†', 'РјРµСЃСЏС†Р°', 'РјРµСЃСЏС†РµРІ')?>
                                     <? } ?>
                                 <? } ?>
                                 <?php if(isset($proItem['badge'])): ?>
@@ -97,34 +97,34 @@ $platipotomMaxSum = (int)$platipotom->getMaxPrice(0);
                             </span>
                             <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline_iphone">
                                 <?php if(isset($proItem['old_cost'])): ?>
-                                <strike class="b-layout__txt_color_41"><?=$proItem['old_cost']?> руб.</strike>&nbsp;
+                                <strike class="b-layout__txt_color_41"><?=$proItem['old_cost']?> СЂСѓР±.</strike>&nbsp;
                                 <?php endif; ?>
-                                <?=$proItem['cost']?> руб.
+                                <?=$proItem['cost']?> СЂСѓР±.
                             </div>
                         </label>
                     </div>
                 <? } ?>
             </div>
     
-            <div class="b-layout__txt b-layout__txt_padtb_10 b-layout__txt_fontsize_15">Сумма и способ оплаты</div>
+            <div class="b-layout__txt b-layout__txt_padtb_10 b-layout__txt_fontsize_15">РЎСѓРјРјР° Рё СЃРїРѕСЃРѕР± РѕРїР»Р°С‚С‹</div>
     
             <div id="quick_pro_div_error" class="b-fon b-fon_margbot_20 b-fon_marglr_20 b-layout_hide">
                 <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeee"> 
                     <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-20"></span>
-                    <span id="quick_pro_div_error_txt">К сожалению, в процессе оплаты произошла ошибка, и платеж не был завершен. Попробуйте провести оплату еще раз.</span>
+                    <span id="quick_pro_div_error_txt">Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, РІ РїСЂРѕС†РµСЃСЃРµ РѕРїР»Р°С‚С‹ РїСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°, Рё РїР»Р°С‚РµР¶ РЅРµ Р±С‹Р» Р·Р°РІРµСЂС€РµРЅ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РїСЂРѕРІРµСЃС‚Рё РѕРїР»Р°С‚Сѓ РµС‰Рµ СЂР°Р·.</span>
                 </div>
             </div>
     
             <?=$promoCodes->render(PromoCodes::SERVICE_PRO); ?>
     
             <div class="b-layout__txt b-layout__txt_padleft_20 b-layout__txt_fontsize_11">
-                Сумма к оплате: <span id="quick_pro_sum_pay"></span> руб.<br>
+                РЎСѓРјРјР° Рє РѕРїР»Р°С‚Рµ: <span id="quick_pro_sum_pay"></span> СЂСѓР±.<br>
             </div>
     
     
             <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_padleft_20 b-layout__txt_fontsize_11">
                 <span id="quick_pro_sum_span_4">
-                <span id="quick_pro_sum_span_2">Часть суммы (<span id="quick_pro_sum_span_7"></span> руб.)</span><span id="quick_pro_sum_span_3">Она</span> будет списана с личного счета, на нем 
+                <span id="quick_pro_sum_span_2">Р§Р°СЃС‚СЊ СЃСѓРјРјС‹ (<span id="quick_pro_sum_span_7"></span> СЂСѓР±.)</span><span id="quick_pro_sum_span_3">РћРЅР°</span> Р±СѓРґРµС‚ СЃРїРёСЃР°РЅР° СЃ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р°, РЅР° РЅРµРј 
                 <span id="quick_pro_sum_account1" class="b-layout__bold">
                     <?php setlocale(LC_NUMERIC,'en_US');?>
                     <? if (round($_SESSION['bn_sum'] + $_SESSION['ac_sum'], 2) > 0) { ?>
@@ -133,30 +133,30 @@ $platipotomMaxSum = (int)$platipotom->getMaxPrice(0);
                         0
                     <? } ?>
                 </span>
-                 руб.<br>
+                 СЂСѓР±.<br>
                  <span id="quick_pro_sum_span_5">
-                Остаток (<span id="quick_pro_sum_span_6"></span> руб.) вам нужно оплатить одним из способов:
+                РћСЃС‚Р°С‚РѕРє (<span id="quick_pro_sum_span_6"></span> СЂСѓР±.) РІР°Рј РЅСѓР¶РЅРѕ РѕРїР»Р°С‚РёС‚СЊ РѕРґРЅРёРј РёР· СЃРїРѕСЃРѕР±РѕРІ:
                 </span>
                 </span>
-                <span id="quick_pro_sum_span_1">Ее вы можете оплатить одним из способов:</span>
+                <span id="quick_pro_sum_span_1">Р•Рµ РІС‹ РјРѕР¶РµС‚Рµ РѕРїР»Р°С‚РёС‚СЊ РѕРґРЅРёРј РёР· СЃРїРѕСЃРѕР±РѕРІ:</span>
                 <span id="quick_pro_sum_account2"></span>
             </div>
     
     
             <div id="quick_pro_block_1">
                 <div class="b-buttons b-buttons_padleft_20 b-buttons_padbot_10"> 
-                    <a class="b-button b-button__pm  b-button__pm_card b-button_margbot_5" href="#" onClick="quickPRO_process('dolcard', 1); return false;"><span class="b-button__txt">Пластиковые<br>карты</span></a> 
-                    <a class="b-button b-button__pm  b-button__pm_yd b-button_margbot_5" href="#" onClick="quickPRO_process('ya', 1); return false;"><span class="b-button__txt">Яндекс.Деньги</span></a> 
+                    <a class="b-button b-button__pm  b-button__pm_card b-button_margbot_5" href="#" onClick="quickPRO_process('dolcard', 1); return false;"><span class="b-button__txt">РџР»Р°СЃС‚РёРєРѕРІС‹Рµ<br>РєР°СЂС‚С‹</span></a> 
+                    <a class="b-button b-button__pm  b-button__pm_yd b-button_margbot_5" href="#" onClick="quickPRO_process('ya', 1); return false;"><span class="b-button__txt">РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё</span></a> 
                     <a class="b-button b-button__pm  b-button__pm_wm b-button_margbot_5" href="#" onClick="quickPRO_process('webmoney', 1); return false;"><span class="b-button__txt">WebMoney</span></a> 
-                    <a class="b-button b-button__pm  b-button__pm_sber b-button_margbot_5" href="#" onClick="quickPRO_process('sberbank', 1); return false;"><span class="b-button__txt">Сбербанк<br />Онлайн</span></a> 
-                    <a class="b-button b-button__pm  b-button__pm_alfa b-button_margbot_5" href="#" onClick="quickPRO_process('alfaclick', 1); return false;"><span class="b-button__txt">Альфа Клик</span></a> 
-                    <a class="platipotom_link b-button b-button__pm b-button_margbot_5  b-button__pm_pp" data-maxprice="<?=$platipotomMaxSum?>" href="#" onClick="quickPRO_process('pp', 1); return false;"><span class="b-button__txt">Купить <br />с отсрочкой <br />оплаты</span></a> 
-                    <div class="platipotom_text b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_valign_middle">Купите PRO сейчас, а оплатите потом с отсрочкой платежа до 30 дней через сервис &quot;ПлатиПотом&quot;</div>
+                    <a class="b-button b-button__pm  b-button__pm_sber b-button_margbot_5" href="#" onClick="quickPRO_process('sberbank', 1); return false;"><span class="b-button__txt">РЎР±РµСЂР±Р°РЅРє<br />РћРЅР»Р°Р№РЅ</span></a> 
+                    <a class="b-button b-button__pm  b-button__pm_alfa b-button_margbot_5" href="#" onClick="quickPRO_process('alfaclick', 1); return false;"><span class="b-button__txt">РђР»СЊС„Р° РљР»РёРє</span></a> 
+                    <a class="platipotom_link b-button b-button__pm b-button_margbot_5  b-button__pm_pp" data-maxprice="<?=$platipotomMaxSum?>" href="#" onClick="quickPRO_process('pp', 1); return false;"><span class="b-button__txt">РљСѓРїРёС‚СЊ <br />СЃ РѕС‚СЃСЂРѕС‡РєРѕР№ <br />РѕРїР»Р°С‚С‹</span></a> 
+                    <div class="platipotom_text b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_valign_middle">РљСѓРїРёС‚Рµ PRO СЃРµР№С‡Р°СЃ, Р° РѕРїР»Р°С‚РёС‚Рµ РїРѕС‚РѕРј СЃ РѕС‚СЃСЂРѕС‡РєРѕР№ РїР»Р°С‚РµР¶Р° РґРѕ 30 РґРЅРµР№ С‡РµСЂРµР· СЃРµСЂРІРёСЃ &quot;РџР»Р°С‚РёРџРѕС‚РѕРј&quot;</div>
                 </div>
             </div>
     
             <div id="quick_pro_block_2" class="b-buttons">
-                <div class="b-buttons b-buttons_padleft_20 b-buttons_padbot_10"> <a id="quick_pro_block_2_btn" class="b-button b-button_flat b-button_flat_green" href="#" onClick="quickPRO_process('account', 1); return false;">Оплатить 3588 руб.</a> </div>
+                <div class="b-buttons b-buttons_padleft_20 b-buttons_padbot_10"> <a id="quick_pro_block_2_btn" class="b-button b-button_flat b-button_flat_green" href="#" onClick="quickPRO_process('account', 1); return false;">РћРїР»Р°С‚РёС‚СЊ 3588 СЂСѓР±.</a> </div>
             </div>
     
             <div id="quick_pro_div_wait" class="b-layout__wait b-layout__txt_fontsize_15 b-layout__txt_color_<?= is_emp() ? '6db335' : 'fd6c30'?> b-layout_hide">
@@ -179,13 +179,13 @@ $platipotomMaxSum = (int)$platipotom->getMaxPrice(0);
                 <?php if(isset($quickpro_ok_title)): ?>
                     <?= $quickpro_ok_title ?>
                 <?php else: ?>
-                Вы успешно купили аккаунт PRO 
+                Р’С‹ СѓСЃРїРµС€РЅРѕ РєСѓРїРёР»Рё Р°РєРєР°СѓРЅС‚ PRO 
                 <?php endif; ?>
                 <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_1 b-page__desktop b-page__ipad">
                     <?php if(isset($quickpro_ok_subtitle)): ?>
                         <?= $quickpro_ok_subtitle ?>
                     <?php else: ?>
-                        <?= is_emp() ? 'с выгодными скидками до 50% на дополнительные сервисы в проектах' : 'с неограниченными ответами в проектах и +20% к рейтингу'?>
+                        <?= is_emp() ? 'СЃ РІС‹РіРѕРґРЅС‹РјРё СЃРєРёРґРєР°РјРё РґРѕ 50% РЅР° РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРµСЂРІРёСЃС‹ РІ РїСЂРѕРµРєС‚Р°С…' : 'СЃ РЅРµРѕРіСЂР°РЅРёС‡РµРЅРЅС‹РјРё РѕС‚РІРµС‚Р°РјРё РІ РїСЂРѕРµРєС‚Р°С… Рё +20% Рє СЂРµР№С‚РёРЅРіСѓ'?>
                     <?php endif; ?>
                 </div>
             </div>
@@ -199,43 +199,43 @@ $platipotomMaxSum = (int)$platipotom->getMaxPrice(0);
             $pro_last = $_SESSION['pro_last'];
         }
         ?>
-        <div class="b-layout__txt b-layout__txt_padbot_15">Срок действия аккаунта — <span class="b-layout__txt b-layout__txt_color_<?= is_emp() ? '6db335' : 'fd6c30'?>">до <?= date('d.m.Y H:i', strtotime($pro_last)) ?></span></div>
+        <div class="b-layout__txt b-layout__txt_padbot_15">РЎСЂРѕРє РґРµР№СЃС‚РІРёСЏ Р°РєРєР°СѓРЅС‚Р° вЂ” <span class="b-layout__txt b-layout__txt_color_<?= is_emp() ? '6db335' : 'fd6c30'?>">РґРѕ <?= date('d.m.Y H:i', strtotime($pro_last)) ?></span></div>
         <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_11">
             <? if(is_emp()) { ?>
-            Спасибо за покупку. <br>
-            Желаем вам успешной работы на сайте и хороших исполнителей!
+            РЎРїР°СЃРёР±Рѕ Р·Р° РїРѕРєСѓРїРєСѓ. <br>
+            Р–РµР»Р°РµРј РІР°Рј СѓСЃРїРµС€РЅРѕР№ СЂР°Р±РѕС‚С‹ РЅР° СЃР°Р№С‚Рµ Рё С…РѕСЂРѕС€РёС… РёСЃРїРѕР»РЅРёС‚РµР»РµР№!
             <? } else { ?>
                 <? if($quickPRO_type=='project') { ?>
                     <? if($project['is_blocked']=='t' || $project['closed']=='t') { ?>
-                    К сожалению, выбранный вами проект уже закрыт, но вы можете посмотреть и ответить на другие проекты аналогичной тематики.<br><br>
-                    Спасибо за покупку.<br>
-                    Желаем вам успешной работы на сайте и множества выгодных заказов!
+                    Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, РІС‹Р±СЂР°РЅРЅС‹Р№ РІР°РјРё РїСЂРѕРµРєС‚ СѓР¶Рµ Р·Р°РєСЂС‹С‚, РЅРѕ РІС‹ РјРѕР¶РµС‚Рµ РїРѕСЃРјРѕС‚СЂРµС‚СЊ Рё РѕС‚РІРµС‚РёС‚СЊ РЅР° РґСЂСѓРіРёРµ РїСЂРѕРµРєС‚С‹ Р°РЅР°Р»РѕРіРёС‡РЅРѕР№ С‚РµРјР°С‚РёРєРё.<br><br>
+                    РЎРїР°СЃРёР±Рѕ Р·Р° РїРѕРєСѓРїРєСѓ.<br>
+                    Р–РµР»Р°РµРј РІР°Рј СѓСЃРїРµС€РЅРѕР№ СЂР°Р±РѕС‚С‹ РЅР° СЃР°Р№С‚Рµ Рё РјРЅРѕР¶РµСЃС‚РІР° РІС‹РіРѕРґРЅС‹С… Р·Р°РєР°Р·РѕРІ!
                     <? } else { ?>
-                        Спасибо за покупку, теперь вы можете ответить на проект. <br>
-                        Желаем вам успешной работы на сайте и множества выгодных заказов!
+                        РЎРїР°СЃРёР±Рѕ Р·Р° РїРѕРєСѓРїРєСѓ, С‚РµРїРµСЂСЊ РІС‹ РјРѕР¶РµС‚Рµ РѕС‚РІРµС‚РёС‚СЊ РЅР° РїСЂРѕРµРєС‚. <br>
+                        Р–РµР»Р°РµРј РІР°Рј СѓСЃРїРµС€РЅРѕР№ СЂР°Р±РѕС‚С‹ РЅР° СЃР°Р№С‚Рµ Рё РјРЅРѕР¶РµСЃС‚РІР° РІС‹РіРѕРґРЅС‹С… Р·Р°РєР°Р·РѕРІ!
                     <? } ?>
                 <? } else { ?>
-                    Спасибо за покупку. <br>
-                    Желаем вам успешной работы на сайте и множества выгодных заказов!
+                    РЎРїР°СЃРёР±Рѕ Р·Р° РїРѕРєСѓРїРєСѓ. <br>
+                    Р–РµР»Р°РµРј РІР°Рј СѓСЃРїРµС€РЅРѕР№ СЂР°Р±РѕС‚С‹ РЅР° СЃР°Р№С‚Рµ Рё РјРЅРѕР¶РµСЃС‚РІР° РІС‹РіРѕРґРЅС‹С… Р·Р°РєР°Р·РѕРІ!
                 <? } ?>
             <? } ?>
         </div>
         <div class="b-buttons b-buttons_padbot_10"> 
             <? if(is_emp()) { ?>
-                <a class="b-button b-button_flat b-button_flat_green" href="#" onClick="$('quick_pro_win_main_ok').addClass('b-shadow_hide'); return false;">Закрыть</a> 
+                <a class="b-button b-button_flat b-button_flat_green" href="#" onClick="$('quick_pro_win_main_ok').addClass('b-shadow_hide'); return false;">Р—Р°РєСЂС‹С‚СЊ</a> 
             <? } else { ?>
                 <? if($quickPRO_type=='project') { ?>
                     <? if($project['is_blocked']=='t' || $project['closed']=='t') { ?>
-                        <a class="b-button b-button_flat b-button_flat_green" href="/">Закрыть и посмотреть проекты</a> 
+                        <a class="b-button b-button_flat b-button_flat_green" href="/">Р—Р°РєСЂС‹С‚СЊ Рё РїРѕСЃРјРѕС‚СЂРµС‚СЊ РїСЂРѕРµРєС‚С‹</a> 
                     <? } else { ?>
-                        <a class="b-button b-button_flat b-button_flat_green" href="#" onClick="$('quick_pro_win_main_ok').addClass('b-shadow_hide'); window.location.hash = '#new_offer'; return false;">Закрыть и ответить на проект</a> 
+                        <a class="b-button b-button_flat b-button_flat_green" href="#" onClick="$('quick_pro_win_main_ok').addClass('b-shadow_hide'); window.location.hash = '#new_offer'; return false;">Р—Р°РєСЂС‹С‚СЊ Рё РѕС‚РІРµС‚РёС‚СЊ РЅР° РїСЂРѕРµРєС‚</a> 
                     <? } ?>
                 <? } else { ?>
-                    <a class="b-button b-button_flat b-button_flat_green" href="#" onClick="$('quick_pro_win_main_ok').addClass('b-shadow_hide'); return false;">Закрыть</a> 
+                    <a class="b-button b-button_flat b-button_flat_green" href="#" onClick="$('quick_pro_win_main_ok').addClass('b-shadow_hide'); return false;">Р—Р°РєСЂС‹С‚СЊ</a> 
                 <? } ?>
             <? } ?>
             <?php if($quickPRO_type != 'profi'): ?>        
-            <span class="b-layout__txt b-layout__txt_fontsize_11">или <a class="b-layout__link" href="#" onClick="$('quick_pro_win_main_ok').addClass('b-shadow_hide'); quickPRO_show(); return false;">купить PRO на больший срок</a></span> 
+            <span class="b-layout__txt b-layout__txt_fontsize_11">РёР»Рё <a class="b-layout__link" href="#" onClick="$('quick_pro_win_main_ok').addClass('b-shadow_hide'); quickPRO_show(); return false;">РєСѓРїРёС‚СЊ PRO РЅР° Р±РѕР»СЊС€РёР№ СЃСЂРѕРє</a></span> 
             <?php endif; ?>
         </div>
     </div>
@@ -350,7 +350,7 @@ function quickPRO_process(type, step) {
 }
 
 
-var limit = 1200; // в секундах
+var limit = 1200; // РІ СЃРµРєСѓРЅРґР°С…
 var timeout_id = null;
 
 function resetTimer() {
@@ -369,17 +369,17 @@ function processTimer(id){
     $("quick_pro_div_main").removeClass("b-layout_waiting");
   }
 
-  var limit_div = parseInt(limit/60); // минуты
-  var limit_mod = limit - limit_div*60; // секунды
+  var limit_div = parseInt(limit/60); // РјРёРЅСѓС‚С‹
+  var limit_mod = limit - limit_div*60; // СЃРµРєСѓРЅРґС‹
   
-  // строка с оставшимся временем
+  // СЃС‚СЂРѕРєР° СЃ РѕСЃС‚Р°РІС€РёРјСЃСЏ РІСЂРµРјРµРЅРµРј
   limit_str = "&nbsp;&nbsp;";
   if (limit_div < 10) limit_str = limit_str + "0";
   limit_str = limit_str + limit_div + ":";
   if (limit_mod < 10) limit_str = limit_str + "0";
   limit_str = limit_str + limit_mod + "&nbsp;&nbsp;";      
   
-  // вывод времени
+  // РІС‹РІРѕРґ РІСЂРµРјРµРЅРё
   el_timer = document.getElementById("timer");
   if (el_timer) el_timer.innerHTML = limit_str;
 }
@@ -449,7 +449,7 @@ function quickPRO_applyPromo()
     var discount = parseInt(promo_code_info.get('data-discount-price'));
     
     if (discount > 0) {
-        promo_code_info.set('text', "Скидка " + discount + " руб.");
+        promo_code_info.set('text', "РЎРєРёРґРєР° " + discount + " СЂСѓР±.");
         var newPrice = price - discount;
         if (newPrice < 0) newPrice = 0;
         quickPRO_changePrice(newPrice);
@@ -457,7 +457,7 @@ function quickPRO_applyPromo()
         discount = parseInt(promo_code_info.get('data-discount-percent'));
         var priceDiscount = price * discount / 100;
         if (priceDiscount > 0) {
-            promo_code_info.set('text', "Скидка " + priceDiscount + " руб.");
+            promo_code_info.set('text', "РЎРєРёРґРєР° " + priceDiscount + " СЂСѓР±.");
         }
         newPrice = price - priceDiscount;
         quickPRO_changePrice(newPrice);
@@ -489,7 +489,7 @@ quickPRO_changePrice = function(price)
         $('quick_pro_sum_span_2').hide();
         $('quick_pro_sum_span_3').show();
         $('quick_pro_sum_span_5').hide();
-        // денег хватает
+        // РґРµРЅРµРі С…РІР°С‚Р°РµС‚
     } else {
         $('quick_pro_block_2').hide();
         $('quick_pro_sum_span_1').hide();
@@ -520,7 +520,7 @@ quickPRO_changePrice = function(price)
         }
         
     }
-    $('quick_pro_block_2_btn').set('html', 'Купить за '+price+' рублей');
+    $('quick_pro_block_2_btn').set('html', 'РљСѓРїРёС‚СЊ Р·Р° '+price+' СЂСѓР±Р»РµР№');
 }
 
 quickPRO_init = function()

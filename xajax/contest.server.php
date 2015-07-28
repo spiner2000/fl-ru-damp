@@ -5,11 +5,11 @@ require_once $_SERVER['DOCUMENT_ROOT']."/xajax/contest.common.php";
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/professions.php");
 
 /**
- * Äîáàâëåíèå êîììåíòàðèÿ
- * @param   integer        id ïðåäëîæåíèÿ
- * @param   string         êîììåíòàðèé
- * @param   integer        id êîììåíòàðèÿ íà êîòîðûé äàåòñÿ îòâåò èëè 0, åñëè êîììåíòàðèé ïåðâîãî óðîâíÿ âëîæåííîñòè
- * @param   integer        óðîâåíü âëîæåííîñòè êîììåíòàðèÿ
+ * Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ñ
+ * @param   integer        id Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ
+ * @param   string         ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¹
+ * @param   integer        id ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ñ Ð½Ð° ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð´Ð°ÐµÑ‚ÑÑ Ð¾Ñ‚Ð²ÐµÑ‚ Ð¸Ð»Ð¸ 0, ÐµÑÐ»Ð¸ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¹ Ð¿ÐµÑ€Ð²Ð¾Ð³Ð¾ ÑƒÑ€Ð¾Ð²Ð½Ñ Ð²Ð»Ð¾Ð¶ÐµÐ½Ð½Ð¾ÑÑ‚Ð¸
+ * @param   integer        ÑƒÑ€Ð¾Ð²ÐµÐ½ÑŒ Ð²Ð»Ð¾Ð¶ÐµÐ½Ð½Ð¾ÑÑ‚Ð¸ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ñ
  * @return  xajaxResponse
  */
 function CreateComment($oid, $comment, $reply, $level) {
@@ -19,32 +19,32 @@ function CreateComment($oid, $comment, $reply, $level) {
 	require_once $_SERVER['DOCUMENT_ROOT']."/classes/projects.php";
 	$objResponse = new xajaxResponse();
 	if (!trim($comment)) {
-		$objResponse->alert('Êîììåíòàðèé íå ìîæåò áûòü ïóñòûì');
+		$objResponse->alert('ÐšÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¹ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¿ÑƒÑÑ‚Ñ‹Ð¼');
 		return $objResponse;
 	}
 	if (!($uid = $_SESSION['uid'])) {
 		$objResponse->call("comment.reset");
-		$objResponse->alert('Ñíà÷àëà âàì íåîáõîäèìî àâòîðèçîâàòüñÿ');
+		$objResponse->alert('Ð¡Ð½Ð°Ñ‡Ð°Ð»Ð° Ð²Ð°Ð¼ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð¾Ð²Ð°Ñ‚ÑŒÑÑ');
 		return $objResponse;
 	}
 	if (!($offer = contest::GetOfferRow($oid))) {
 		$objResponse->call("comment.reset");
-		$objResponse->alert('Íåñóùåñòâóþùåå ïðåäëîæåíèå');
+		$objResponse->alert('ÐÐµÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‰ÐµÐµ Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ');
 		return $objResponse;
 	}
 	$contest = new contest($offer['project_id'], $uid, is_emp(), FALSE, hasPermissions('projects'));
     
-    // åñëè ïîëüçîâàòåëü íå ïðî èëè íå âåðèôèöèðîâàí, òî åñòü ñìûñë ïðîâåðèòü, ìîæåò áûòü êîíêóðñ òîëüêî äëÿ ïðî èëè òîëüêî äëÿ âåðèôèöèðîâàííûõ
+    // ÐµÑÐ»Ð¸ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð½Ðµ Ð¿Ñ€Ð¾ Ð¸Ð»Ð¸ Ð½Ðµ Ð²ÐµÑ€Ð¸Ñ„Ð¸Ñ†Ð¸Ñ€Ð¾Ð²Ð°Ð½, Ñ‚Ð¾ ÐµÑÑ‚ÑŒ ÑÐ¼Ñ‹ÑÐ» Ð¿Ñ€Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÑŒ, Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ ÐºÐ¾Ð½ÐºÑƒÑ€Ñ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð´Ð»Ñ Ð¿Ñ€Ð¾ Ð¸Ð»Ð¸ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð´Ð»Ñ Ð²ÐµÑ€Ð¸Ñ„Ð¸Ñ†Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ñ…
     $prj = new projects();
     $project = $prj->GetPrjCust($offer['project_id']);
     if ((!is_pro() || !is_verify()) && $project['user_id'] != get_uid() && !hasPermissions('projects')) {
         if ($project['pro_only'] == 't' && !is_pro()) {
             $objResponse->call("comment.reset");
-            $objResponse->alert("Äàííàÿ ôóíêöèÿ äîñòóïíà òîëüêî ïîëüçîâàòåëÿì ñ àêêàóíòîì PRO.");
+            $objResponse->alert("Ð”Ð°Ð½Ð½Ð°Ñ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð° Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑÐ¼ Ñ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð¾Ð¼ PRO.");
             return $objResponse;
         } elseif ($project['verify_only'] == 't' && !is_verify()) {
             $objResponse->call("comment.reset");
-            $objResponse->alert("Äàííàÿ ôóíêöèÿ äîñòóïíà òîëüêî âåðèôèöèðîâàííûì ïîëüçîâàòåëÿì.");
+            $objResponse->alert("Ð”Ð°Ð½Ð½Ð°Ñ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð° Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð²ÐµÑ€Ð¸Ñ„Ð¸Ñ†Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¼ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑÐ¼.");
             return $objResponse;
         }
     }
@@ -80,9 +80,9 @@ function CreateComment($oid, $comment, $reply, $level) {
 
 
 /**
- * Ðåäàêòèðîâàíèå êîììåíòàðèÿ
- * @param   integer        id êîììåíòàðèÿ
- * @param   string         êîììåíòàðèé
+ * Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ñ
+ * @param   integer        id ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ñ
+ * @param   string         ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¹
  * @return  xajaxResponse
  */
 function ChangeComment($cid, $comment) {
@@ -92,22 +92,22 @@ function ChangeComment($cid, $comment) {
     require_once $_SERVER['DOCUMENT_ROOT']."/classes/projects.php";
 	$objResponse = new xajaxResponse();
 	if (!trim($comment)) {
-		$objResponse->alert('Êîììåíòàðèé íå ìîæåò áûòü ïóñòûì');
+		$objResponse->alert('ÐšÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¹ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¿ÑƒÑÑ‚Ñ‹Ð¼');
 		return $objResponse;
 	}
 	if (!($uid = $_SESSION['uid'])) return $objResponse;
 	$contest = new contest(0, $uid, is_emp(), FALSE, hasPermissions('projects'));
     
-    // åñëè ïîëüçîâàòåëü íå ïðî èëè íå âåðèôèöèðîâàí, òî åñòü ñìûñë ïðîâåðèòü, ìîæåò áûòü êîíêóðñ òîëüêî äëÿ ïðî èëè òîëüêî äëÿ âåðèôèöèðîâàííûõ
+    // ÐµÑÐ»Ð¸ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð½Ðµ Ð¿Ñ€Ð¾ Ð¸Ð»Ð¸ Ð½Ðµ Ð²ÐµÑ€Ð¸Ñ„Ð¸Ñ†Ð¸Ñ€Ð¾Ð²Ð°Ð½, Ñ‚Ð¾ ÐµÑÑ‚ÑŒ ÑÐ¼Ñ‹ÑÐ» Ð¿Ñ€Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÑŒ, Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ ÐºÐ¾Ð½ÐºÑƒÑ€Ñ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð´Ð»Ñ Ð¿Ñ€Ð¾ Ð¸Ð»Ð¸ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð´Ð»Ñ Ð²ÐµÑ€Ð¸Ñ„Ð¸Ñ†Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ñ…
     $project = contest::getProjectByCommentID($cid);
     if ((!is_pro() || !is_verify()) && $project['user_id'] != get_uid() && !hasPermissions('projects')) {
         if ($project['pro_only'] == 't' && !is_pro()) {
             $objResponse->call("comment.reset");
-            $objResponse->alert("Äàííàÿ ôóíêöèÿ äîñòóïíà òîëüêî ïîëüçîâàòåëÿì ñ àêêàóíòîì PRO.");
+            $objResponse->alert("Ð”Ð°Ð½Ð½Ð°Ñ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð° Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑÐ¼ Ñ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð¾Ð¼ PRO.");
             return $objResponse;
         } elseif ($project['verify_only'] == 't' && !is_verify()) {
             $objResponse->call("comment.reset");
-            $objResponse->alert("Äàííàÿ ôóíêöèÿ äîñòóïíà òîëüêî âåðèôèöèðîâàííûì ïîëüçîâàòåëÿì.");
+            $objResponse->alert("Ð”Ð°Ð½Ð½Ð°Ñ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð° Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð²ÐµÑ€Ð¸Ñ„Ð¸Ñ†Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¼ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑÐ¼.");
             return $objResponse;
         }
     }
@@ -124,16 +124,16 @@ function ChangeComment($cid, $comment) {
         $html     = reformat( stripslashes($stop_words->replace($comment)), 30, 0, 0, 1 );
         $original = reformat( stripslashes($comment), 30, 0, 0, 1 );
         
-		$objResponse->call("comment.changed", $html, $original, dateFormat('[èçìåíåí: d.m.Y | H:i]', $comments[$i]['modified']));
+		$objResponse->call("comment.changed", $html, $original, dateFormat('[Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½: d.m.Y | H:i]', $comments[$i]['modified']));
 	}
 	return $objResponse;
 }
 
 
 /**
- * Çàïîëíÿåò ýëåìåíò íà ñòðàíèöå êîììåíòàðèåì
- * @param   integer        id êîììåíòàðèÿ
- * @param   string         DOM ID ñ Textarea
+ * Ð—Ð°Ð¿Ð¾Ð»Ð½ÑÐµÑ‚ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÐµÐ¼
+ * @param   integer        id ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ñ
+ * @param   string         DOM ID Ñ Textarea
  * @return  xajaxResponse
  */
 /*function GetComment($cid, $domId) {
@@ -144,8 +144,8 @@ function ChangeComment($cid, $comment) {
 }*/
 
 /**
- * Óäàëåíèå êîììåíòàðèÿ
- * @param   integer        id êîììåíòàðèÿ
+ * Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ñ
+ * @param   integer        id ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ñ
  * @return  xajaxResponse
  */
 function DeleteComment($cid) {
@@ -172,8 +172,8 @@ function DeleteComment($cid) {
 
 
 /**
- * Âîññòàíîâëåíèå êîììåíòàðèÿ
- * @param   integer        id êîììåíòàðèÿ
+ * Ð’Ð¾ÑÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð¸Ðµ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ñ
+ * @param   integer        id ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ñ
  * @return  xajaxResponse
  */
 function RestoreComment($cid) {
@@ -198,8 +198,8 @@ function RestoreComment($cid) {
 
 
 /**
- * Óäàëåíèå ïðåäëîæåíèÿ
- * @param   integer        id ïðåäëîæåíèÿ
+ * Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ
+ * @param   integer        id Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ
  * @return  xajaxResponse
  */
 function DelOffer($oid) {
@@ -215,10 +215,10 @@ function DelOffer($oid) {
 
 
 /**
- * Óäàëåíèå ïðåäëîæåíèÿ(ïîìåòêà êàê óäàëåííîå)
+ * Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ(Ð¿Ð¾Ð¼ÐµÑ‚ÐºÐ° ÐºÐ°Ðº ÑƒÐ´Ð°Ð»ÐµÐ½Ð½Ð¾Ðµ)
  * 
- * @param   integer $prj_id     ID ïðîåêòà
- * @param   integer $offer_id   ID ïðåäëîæåíèÿ
+ * @param   integer $prj_id     ID Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°
+ * @param   integer $offer_id   ID Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ
  * @return  xajaxResponse
  */
 function RemoveOffer($prj_id, $offer_id) {
@@ -232,10 +232,10 @@ function RemoveOffer($prj_id, $offer_id) {
 }
 
 /**
- * Âîññòàíîâëåíèå ïðåäëîæåíèÿ
+ * Ð’Ð¾ÑÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð¸Ðµ Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ
  * 
- * @param   integer $prj_id     ID ïðîåêòà
- * @param   integer $offer_id   ID ïðåäëîæåíèÿ
+ * @param   integer $prj_id     ID Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°
+ * @param   integer $offer_id   ID Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ
  * @return  xajaxResponse
  */
 function RestoreOffer($prj_id, $offer_id) {
@@ -244,15 +244,15 @@ function RestoreOffer($prj_id, $offer_id) {
 	require_once $_SERVER['DOCUMENT_ROOT']."/classes/contest.php";
 	require_once $_SERVER['DOCUMENT_ROOT']."/classes/projects.php";
     
-    // åñëè ïîëüçîâàòåëü íå ïðî èëè íå âåðèôèöèðîâàí, òî åñòü ñìûñë ïðîâåðèòü, ìîæåò áûòü êîíêóðñ òîëüêî äëÿ ïðî èëè òîëüêî äëÿ âåðèôèöèðîâàííûõ
+    // ÐµÑÐ»Ð¸ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð½Ðµ Ð¿Ñ€Ð¾ Ð¸Ð»Ð¸ Ð½Ðµ Ð²ÐµÑ€Ð¸Ñ„Ð¸Ñ†Ð¸Ñ€Ð¾Ð²Ð°Ð½, Ñ‚Ð¾ ÐµÑÑ‚ÑŒ ÑÐ¼Ñ‹ÑÐ» Ð¿Ñ€Ð¾Ð²ÐµÑ€Ð¸Ñ‚ÑŒ, Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ ÐºÐ¾Ð½ÐºÑƒÑ€Ñ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð´Ð»Ñ Ð¿Ñ€Ð¾ Ð¸Ð»Ð¸ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð´Ð»Ñ Ð²ÐµÑ€Ð¸Ñ„Ð¸Ñ†Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ñ…
     $prj = new projects();
     $project = $prj->GetPrjCust($prj_id);
     if ((!is_pro() || !is_verify()) && $project['user_id'] != get_uid() && !hasPermissions('projects')) {
         if ($project['pro_only'] == 't' && !is_pro()) {
-            $objResponse->alert("Äàííàÿ ôóíêöèÿ äîñòóïíà òîëüêî ïîëüçîâàòåëÿì ñ àêêàóíòîì PRO.");
+            $objResponse->alert("Ð”Ð°Ð½Ð½Ð°Ñ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð° Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑÐ¼ Ñ Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð¾Ð¼ PRO.");
             return $objResponse;
         } elseif ($project['verify_only'] == 't' && !is_verify()) {
-            $objResponse->alert("Äàííàÿ ôóíêöèÿ äîñòóïíà òîëüêî âåðèôèöèðîâàííûì ïîëüçîâàòåëÿì.");
+            $objResponse->alert("Ð”Ð°Ð½Ð½Ð°Ñ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð° Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð²ÐµÑ€Ð¸Ñ„Ð¸Ñ†Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¼ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑÐ¼.");
             return $objResponse;
         }
     }
@@ -264,8 +264,8 @@ function RestoreOffer($prj_id, $offer_id) {
 }
 
 /**
- * Óñòàíîâêà/ñíÿòèå êàíäèäàòà
- * @param   integer        id ïðåäëîæåíèÿ
+ * Ð£ÑÑ‚Ð°Ð½Ð¾Ð²ÐºÐ°/ÑÐ½ÑÑ‚Ð¸Ðµ ÐºÐ°Ð½Ð´Ð¸Ð´Ð°Ñ‚Ð°
+ * @param   integer        id Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ
  * @return  xajaxResponse
  */
 function Candidate($oid) {
@@ -283,15 +283,15 @@ function Candidate($oid) {
 		WHERE offers.id = ? AND ((SELECT COUNT(*) FROM projects_contest_offers WHERE project_id = projects.id AND (position IS NOT NULL AND position > 0)) = 0)
 	", $oid);
 	if (!$row) {
-		$objResponse->alert('Íåñóùåñòâóþùåå ïðåäëîæåíèå');
+		$objResponse->alert('ÐÐµÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‰ÐµÐµ Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ');
 		return $objResponse;
 	}
 	if (!is_emp() || $uid != $row['owner_id']) {
-		$objResponse->alert('Íåñóùåñòâóþùåå ïðåäëîæåíèå!');
+		$objResponse->alert('ÐÐµÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‰ÐµÐµ Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ!');
 		return $objResponse;
 	}
 	if ($row['closed'] == 't') {
-		$objResponse->alert('Ïðîåêò çàêðûò!');
+		$objResponse->alert('ÐŸÑ€Ð¾ÐµÐºÑ‚ Ð·Ð°ÐºÑ€Ñ‹Ñ‚!');
 		return $objResponse;
 	}
 	$contest = new contest(0, $uid, is_emp(), TRUE, hasPermissions('projects'));;

@@ -1,12 +1,12 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/search/search_element.php";
 /**
- * Тестовый класс для поиска по проектам  http://beta.free-lance.ru/mantis/view.php?id=14689
+ * РўРµСЃС‚РѕРІС‹Р№ РєР»Р°СЃСЃ РґР»СЏ РїРѕРёСЃРєР° РїРѕ РїСЂРѕРµРєС‚Р°Рј  http://beta.free-lance.ru/mantis/view.php?id=14689
  *
  */
 class searchElementProjects extends searchElement
 {
-    public $name = 'Проекты';
+    public $name = 'РџСЂРѕРµРєС‚С‹';
     protected $_limit = 5;
     protected $_indexSfx = '_test';
 
@@ -16,10 +16,10 @@ class searchElementProjects extends searchElement
     }
     
     /**
-     * Инициализирует параметры поиска данного элемента и производит поиск по заданной фразе.
+     * РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ РїР°СЂР°РјРµС‚СЂС‹ РїРѕРёСЃРєР° РґР°РЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° Рё РїСЂРѕРёР·РІРѕРґРёС‚ РїРѕРёСЃРє РїРѕ Р·Р°РґР°РЅРЅРѕР№ С„СЂР°Р·Рµ.
      *
-     * @param string $string   поисковая фраза.
-     * @param integer $page   номер текущей страницы (используется при поиске по конкретному элементу).
+     * @param string $string   РїРѕРёСЃРєРѕРІР°СЏ С„СЂР°Р·Р°.
+     * @param integer $page   РЅРѕРјРµСЂ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹ (РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РїСЂРё РїРѕРёСЃРєРµ РїРѕ РєРѕРЅРєСЂРµС‚РЅРѕРјСѓ СЌР»РµРјРµРЅС‚Сѓ).
      */
     function search($string, $page = 0, $filter=false) {
         if(!$this->isActive() || !$this->isAllowed()) return;
@@ -35,7 +35,7 @@ class searchElementProjects extends searchElement
     }
      
 	/**
-     * Взять информацию по найденным результатам
+     * Р’Р·СЏС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ РїРѕ РЅР°Р№РґРµРЅРЅС‹Рј СЂРµР·СѓР»СЊС‚Р°С‚Р°Рј
      *
      * @return array
      */
@@ -58,7 +58,7 @@ class searchElementProjects extends searchElement
         
         $project_exRates = project_exrates::GetAll();
         $set_select[] = "*";
-        // Мои специализации
+        // РњРѕРё СЃРїРµС†РёР°Р»РёР·Р°С†РёРё
         if ($filter['my_specs'] == 't' && $filter['user_specs']) {
             foreach($filter['user_specs'] as $spec) {
                 $select[] = "(prj_subcategory1 = {$spec} OR prj_subcategory2 = {$spec} OR prj_subcategory3 = {$spec})"; 
@@ -67,12 +67,12 @@ class searchElementProjects extends searchElement
             unset($select);
         }   
         
-        //Если не нужны завершенные конкурсы
+        //Р•СЃР»Рё РЅРµ РЅСѓР¶РЅС‹ Р·Р°РІРµСЂС€РµРЅРЅС‹Рµ РєРѕРЅРєСѓСЂСЃС‹
         if($filter['is_closed_contest']) {
             $set_select[] = "IF(NOT end_date OR end_date > NOW(), 1, 0) as closed_contest";
         }
         
-        // Бюджет
+        // Р‘СЋРґР¶РµС‚
         if($filter['cost_from'] || $filter['cost_to']) {
             $cr = (int)$filter['currency'];
             $cex = array(2,3,4,1); 
@@ -100,7 +100,7 @@ class searchElementProjects extends searchElement
             $set_select[] = "IF(cost = 0 OR cost > 0, 1, 0) as cost_filter";
         }
         
-        // Разделы/Подразделы
+        // Р Р°Р·РґРµР»С‹/РџРѕРґСЂР°Р·РґРµР»С‹
         if($filter['categories'] && $filter['my_specs'] == 'f') {
             $categories = array();
             for ($ci=0; $ci<2; $ci++) {
@@ -112,15 +112,15 @@ class searchElementProjects extends searchElement
             }
             $sProfCat    = '';
             $sProfSubcat = '';
-            // собираем подразделы выбранных разделов
+            // СЃРѕР±РёСЂР°РµРј РїРѕРґСЂР°Р·РґРµР»С‹ РІС‹Р±СЂР°РЅРЅС‹С… СЂР°Р·РґРµР»РѕРІ
             if (sizeof($categories[0])) {
                 $sProfCat = professions::getProfIdForGroups( $categories[0] );
             }
-            // собираем выбранные подразделы
+            // СЃРѕР±РёСЂР°РµРј РІС‹Р±СЂР°РЅРЅС‹Рµ РїРѕРґСЂР°Р·РґРµР»С‹
             if (sizeof($categories[1])) {
                 $sProfSubcat = implode( ',', $categories[1] );
             }
-            // склеиваем и получаем все подразделы вместе с зеркалами
+            // СЃРєР»РµРёРІР°РµРј Рё РїРѕР»СѓС‡Р°РµРј РІСЃРµ РїРѕРґСЂР°Р·РґРµР»С‹ РІРјРµСЃС‚Рµ СЃ Р·РµСЂРєР°Р»Р°РјРё
             $sProf = $sProfCat . (($sProfCat && $sProfSubcat) ? ',' : '') . $sProfSubcat;
             $aProf = professions::GetMirroredProfs( $sProf );
             

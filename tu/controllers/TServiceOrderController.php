@@ -24,7 +24,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/projects.php');
 
 /**
  * Class TServiceOrderController
- * Контроллер заказов ТУ
+ * РљРѕРЅС‚СЂРѕР»Р»РµСЂ Р·Р°РєР°Р·РѕРІ РўРЈ
  */
 class TServiceOrderController extends CController 
 {
@@ -35,7 +35,7 @@ class TServiceOrderController extends CController
 
         
         /**
-         * Инициализация контроллера
+         * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєРѕРЅС‚СЂРѕР»Р»РµСЂР°
          */
         public function init() 
         {
@@ -49,7 +49,7 @@ class TServiceOrderController extends CController
     
         
         /**
-         * Обработка события до какого-либо экшена
+         * РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ РґРѕ РєР°РєРѕРіРѕ-Р»РёР±Рѕ СЌРєС€РµРЅР°
          * 
          * @param string $action
          * @return bool
@@ -58,39 +58,39 @@ class TServiceOrderController extends CController
         {
             $this->uid = get_uid(false);
             
-            //Если будет новый заказ от анонимуса 
-            //то эти проверки не нужны
+            //Р•СЃР»Рё Р±СѓРґРµС‚ РЅРѕРІС‹Р№ Р·Р°РєР°Р· РѕС‚ Р°РЅРѕРЅРёРјСѓСЃР° 
+            //С‚Рѕ СЌС‚Рё РїСЂРѕРІРµСЂРєРё РЅРµ РЅСѓР¶РЅС‹
             if ($action != 'neworder') {
-                //Юзер должен быть зарегистрирован
+                //Р®Р·РµСЂ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ
                 if (!$this->uid) { 
                     switch ($action) {
-                        //редирект на создание заказа для анонимуса
+                        //СЂРµРґРёСЂРµРєС‚ РЅР° СЃРѕР·РґР°РЅРёРµ Р·Р°РєР°Р·Р° РґР»СЏ Р°РЅРѕРЅРёРјСѓСЃР°
                         case 'newpersonalorder':
                             $this->redirect(tservices_helper::getGuestPersonalOrderUrl());
                             break;
                         
-                        //редирект на регистрацию/авторизацию
+                        //СЂРµРґРёСЂРµРєС‚ РЅР° СЂРµРіРёСЃС‚СЂР°С†РёСЋ/Р°РІС‚РѕСЂРёР·Р°С†РёСЋ
                         default:
                             $this->redirect('/registration/?user_action=add_order');
                     }
                 }
             
-                //Юзер в белом списке?
+                //Р®Р·РµСЂ РІ Р±РµР»РѕРј СЃРїРёСЃРєРµ?
                 if (!tservices_helper::isUserOrderWhiteList()) {
                     $this->missingAction($action);
                 }
             }
             
-            //искуственно повторяем чтобы сохранить текущий урл в сессию
+            //РёСЃРєСѓСЃС‚РІРµРЅРЅРѕ РїРѕРІС‚РѕСЂСЏРµРј С‡С‚РѕР±С‹ СЃРѕС…СЂР°РЅРёС‚СЊ С‚РµРєСѓС‰РёР№ СѓСЂР» РІ СЃРµСЃСЃРёСЋ
             $this->uid = get_uid();
             
-            //заказ инициировать может только работодатель
+            //Р·Р°РєР°Р· РёРЅРёС†РёРёСЂРѕРІР°С‚СЊ РјРѕР¶РµС‚ С‚РѕР»СЊРєРѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ
             $filter_action = in_array($action, array('order', 'newprojectorder', 'newpersonalorder'));
             if ($filter_action && !$this->is_emp) {
                 $this->redirect('/registration/?user_action=add_order');
             }
             
-            //свой список заказов видит только фрилансер
+            //СЃРІРѕР№ СЃРїРёСЃРѕРє Р·Р°РєР°Р·РѕРІ РІРёРґРёС‚ С‚РѕР»СЊРєРѕ С„СЂРёР»Р°РЅСЃРµСЂ
             if($action == 'frllist' && $this->is_emp){
                 if ($_SESSION['login']) {
                     $url = "/users/{$_SESSION['login']}/tu-orders/";
@@ -107,11 +107,11 @@ class TServiceOrderController extends CController
         
         
         /**
-         * Cоздание заказа на базе проекта
+         * CРѕР·РґР°РЅРёРµ Р·Р°РєР°Р·Р° РЅР° Р±Р°Р·Рµ РїСЂРѕРµРєС‚Р°
          */
         public function actionNewProjectOrder()
         {
-            //@todo: на период разработки резерва заказов
+            //@todo: РЅР° РїРµСЂРёРѕРґ СЂР°Р·СЂР°Р±РѕС‚РєРё СЂРµР·РµСЂРІР° Р·Р°РєР°Р·РѕРІ
             if(!tservices_helper::isAllowOrderReserve()) $this->missingAction(NULL);
             
             $offer_id = __paramInit('int', 'offer_id', 'offer_id', NULL);
@@ -128,7 +128,7 @@ class TServiceOrderController extends CController
             $form = new NewOrderForm(/*options*/);
             
             $form->setDefaults(array(
-                //@todo: в проектах при сохранении символы преобразуются в сущности
+                //@todo: РІ РїСЂРѕРµРєС‚Р°С… РїСЂРё СЃРѕС…СЂР°РЅРµРЅРёРё СЃРёРјРІРѕР»С‹ РїСЂРµРѕР±СЂР°Р·СѓСЋС‚СЃСЏ РІ СЃСѓС‰РЅРѕСЃС‚Рё
                 'title' => addslashes(htmlspecialchars_decode($projectData['name'], ENT_QUOTES)),
                 'description' => addslashes(htmlspecialchars_decode($projectData['descr'], ENT_QUOTES)),
                 'order_price' => ($projectData['currency'] == 2)?$projectData['cost']:''
@@ -152,12 +152,12 @@ class TServiceOrderController extends CController
                 }
             }
             
-            //Выводим в сайдбар виджет индикатор статуса заказа
+            //Р’С‹РІРѕРґРёРј РІ СЃР°Р№РґР±Р°СЂ РІРёРґР¶РµС‚ РёРЅРґРёРєР°С‚РѕСЂ СЃС‚Р°С‚СѓСЃР° Р·Р°РєР°Р·Р°
             $this->getClips()->add('sidebar', $this->widget('OrderStatusIndicator', array(), TRUE));
             
             $this->render('new-order-form', array(
-                'title' => 'Новый заказ по проекту',
-                'submit_title' => 'Выбрать исполнителем и предложить заказ',
+                'title' => 'РќРѕРІС‹Р№ Р·Р°РєР°Р· РїРѕ РїСЂРѕРµРєС‚Сѓ',
+                'submit_title' => 'Р’С‹Р±СЂР°С‚СЊ РёСЃРїРѕР»РЅРёС‚РµР»РµРј Рё РїСЂРµРґР»РѕР¶РёС‚СЊ Р·Р°РєР°Р·',
                 'cansel_url' => getFriendlyURL("project", $projectData),
                 'form' => $form,
                 'freelancer' => $freelancer
@@ -168,11 +168,11 @@ class TServiceOrderController extends CController
 
 
         /**
-         * Создание персонального заказа
+         * РЎРѕР·РґР°РЅРёРµ РїРµСЂСЃРѕРЅР°Р»СЊРЅРѕРіРѕ Р·Р°РєР°Р·Р°
          */
         public function actionNewPersonalOrder()
         {
-            //@todo: на период разработки резерва заказов
+            //@todo: РЅР° РїРµСЂРёРѕРґ СЂР°Р·СЂР°Р±РѕС‚РєРё СЂРµР·РµСЂРІР° Р·Р°РєР°Р·РѕРІ
             if(!tservices_helper::isAllowOrderReserve()) $this->missingAction(NULL); 
             
             $login = __paramInit('string', 'user', 'user', NULL);
@@ -197,12 +197,12 @@ class TServiceOrderController extends CController
                 }
             }
             
-            //Выводим в сайдбар виджет индикатор статуса заказа
+            //Р’С‹РІРѕРґРёРј РІ СЃР°Р№РґР±Р°СЂ РІРёРґР¶РµС‚ РёРЅРґРёРєР°С‚РѕСЂ СЃС‚Р°С‚СѓСЃР° Р·Р°РєР°Р·Р°
             $this->getClips()->add('sidebar', $this->widget('OrderStatusIndicator', array(), TRUE));
             
             $this->render('new-order-form', array(
-                'title' => 'Новый заказ',
-                'submit_title' => 'Предложить заказ',
+                'title' => 'РќРѕРІС‹Р№ Р·Р°РєР°Р·',
+                'submit_title' => 'РџСЂРµРґР»РѕР¶РёС‚СЊ Р·Р°РєР°Р·',
                 'cansel_url' => '/',
                 'form' => $form,
                 'freelancer' => $freelancer
@@ -212,7 +212,7 @@ class TServiceOrderController extends CController
 
 
         /**
-         * Список заказов ТУ фрилансера
+         * РЎРїРёСЃРѕРє Р·Р°РєР°Р·РѕРІ РўРЈ С„СЂРёР»Р°РЅСЃРµСЂР°
          */
         public function actionFrllist()
         {   
@@ -222,7 +222,7 @@ class TServiceOrderController extends CController
             if($page <= 0) $page = 1;
             $on_page = 10;
             
-            //Если параметры не проходят валидацию то редирект на основную по умолчанию
+            //Р•СЃР»Рё РїР°СЂР°РјРµС‚СЂС‹ РЅРµ РїСЂРѕС…РѕРґСЏС‚ РІР°Р»РёРґР°С†РёСЋ С‚Рѕ СЂРµРґРёСЂРµРєС‚ РЅР° РѕСЃРЅРѕРІРЅСѓСЋ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
             if(!$this->order_model->attributes(array('status' => $status))) 
             {
                 $this->redirect('/tu-orders/', TRUE, 301);
@@ -249,7 +249,7 @@ class TServiceOrderController extends CController
         
         
         /**
-         * Смена статуса заказа
+         * РЎРјРµРЅР° СЃС‚Р°С‚СѓСЃР° Р·Р°РєР°Р·Р°
          */
         public function actionStatus()
         {
@@ -273,7 +273,7 @@ class TServiceOrderController extends CController
 
 
         /**
-         * Карточка заказа
+         * РљР°СЂС‚РѕС‡РєР° Р·Р°РєР°Р·Р°
          */
         public function actionIndex() 
         {
@@ -289,7 +289,7 @@ class TServiceOrderController extends CController
             $is_owner = ($order["{$prefix}_id"] == $this->uid);
             $allowChangePriceTime = $is_owner && $this->is_emp && $order['status'] == TServiceOrderModel::STATUS_NEW && !isset($order['reserve_data']);
             
-            //Виджет окошка редактирования бюджета и сроков
+            //Р’РёРґР¶РµС‚ РѕРєРѕС€РєР° СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ Р±СЋРґР¶РµС‚Р° Рё СЃСЂРѕРєРѕРІ
             if($allowChangePriceTime)
             {
                 $this->getClips()->add('order-change-cost-popup', $this->widget('TServiceOrderChangeCostPopup', array(
@@ -358,7 +358,7 @@ class TServiceOrderController extends CController
                 ), TRUE));
                 */
                 
-                //Помечаем заказ как прочтенный
+                //РџРѕРјРµС‡Р°РµРј Р·Р°РєР°Р· РєР°Рє РїСЂРѕС‡С‚РµРЅРЅС‹Р№
                 if($order["{$prefix}_read"] == 'f')
                 {
                     $this->order_model->markAsReadOrderEvents(
@@ -368,7 +368,7 @@ class TServiceOrderController extends CController
                 }
             }
             
-            //Показать уведомление в серой плашке под меню
+            //РџРѕРєР°Р·Р°С‚СЊ СѓРІРµРґРѕРјР»РµРЅРёРµ РІ СЃРµСЂРѕР№ РїР»Р°С€РєРµ РїРѕРґ РјРµРЅСЋ
             if($this->is_emp && $allowChangePriceTime && $this->order_model->isPayTypeDefault()) {
                 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/Helpers/SubBarNotificationHelper.php");
                 SubBarNotificationHelper::getInstance()->setNowMessage(SubBarNotificationHelper::TYPE_RESERVE_PROMO, array(
@@ -385,12 +385,12 @@ class TServiceOrderController extends CController
             ));
             
             global $page_title;
-            $page_title = "Заказ №{$order_id} – FL.ru";
+            $page_title = "Р—Р°РєР°Р· в„–{$order_id} вЂ“ FL.ru";
         }
         
     
         /**
-         * Формирование заказа
+         * Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ Р·Р°РєР°Р·Р°
          */
         public function actionOrder()
         {
@@ -398,8 +398,8 @@ class TServiceOrderController extends CController
 
             $debt_info = $this->order_model->isDebt($this->uid);
             
-            //блокируем возможность заказать если у исполнителя долг 
-            //и вышли все сроки погашения
+            //Р±Р»РѕРєРёСЂСѓРµРј РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ Р·Р°РєР°Р·Р°С‚СЊ РµСЃР»Рё Сѓ РёСЃРїРѕР»РЅРёС‚РµР»СЏ РґРѕР»Рі 
+            //Рё РІС‹С€Р»Рё РІСЃРµ СЃСЂРѕРєРё РїРѕРіР°С€РµРЅРёСЏ
             if($debt_info && $debt_info['is_blocked'] == 't')
             {
                 $this->missingAction(NULL);
@@ -439,17 +439,17 @@ class TServiceOrderController extends CController
             
             $registration = new registration();
             $user_data = $registration->autoRegistationAndLogin(array(
-                    //Если есть можно просто авторизовать юзера
+                    //Р•СЃР»Рё РµСЃС‚СЊ РјРѕР¶РЅРѕ РїСЂРѕСЃС‚Рѕ Р°РІС‚РѕСЂРёР·РѕРІР°С‚СЊ СЋР·РµСЂР°
                     'uid' => $activation_data['user_id'],
                     'role' => 1,
-                    //обязательное поле это email
+                    //РѕР±СЏР·Р°С‚РµР»СЊРЅРѕРµ РїРѕР»Рµ СЌС‚Рѕ email
                     'email' => $activation_data['email'],
                     'uname' => $activation_data['uname'],
                     'usurname' => $activation_data['usurname']
                 ));
             
-            //Если почему то не можем зарегать
-            //то редиректим на регистрацию
+            //Р•СЃР»Рё РїРѕС‡РµРјСѓ С‚Рѕ РЅРµ РјРѕР¶РµРј Р·Р°СЂРµРіР°С‚СЊ
+            //С‚Рѕ СЂРµРґРёСЂРµРєС‚РёРј РЅР° СЂРµРіРёСЃС‚СЂР°С†РёСЋ
             if (!$user_data || !$user_data['ret']) {
                 $this->redirect('/registration/');
             }  
@@ -462,8 +462,8 @@ class TServiceOrderController extends CController
             
             $debt_info = $this->order_model->isDebt($this->uid);
             
-            //блокируем возможность заказать если у исполнителя долг 
-            //и вышли все сроки погашения
+            //Р±Р»РѕРєРёСЂСѓРµРј РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ Р·Р°РєР°Р·Р°С‚СЊ РµСЃР»Рё Сѓ РёСЃРїРѕР»РЅРёС‚РµР»СЏ РґРѕР»Рі 
+            //Рё РІС‹С€Р»Рё РІСЃРµ СЃСЂРѕРєРё РїРѕРіР°С€РµРЅРёСЏ
             if ($debt_info && $debt_info['is_blocked'] == 't') {
                 $this->missingAction(NULL);
             }
@@ -471,16 +471,16 @@ class TServiceOrderController extends CController
             $activation_data['options']['emp_id'] = $this->uid;
             $this->order_model->attributes($activation_data['options']);
             $order = $this->order_model->create($service_id);
-            //Не удалось создать заказ показываем 404
+            //РќРµ СѓРґР°Р»РѕСЃСЊ СЃРѕР·РґР°С‚СЊ Р·Р°РєР°Р· РїРѕРєР°Р·С‹РІР°РµРј 404
             if (!$order) {
                 $this->missingAction(NULL);
             }
                 
-            //Уведомляем все стороны
+            //РЈРІРµРґРѕРјР»СЏРµРј РІСЃРµ СЃС‚РѕСЂРѕРЅС‹
             $tservices_smail = new tservices_smail();
             $tservices_smail->newOrder($order);
             
-            //Если юзер уже бывалый пользователь то редиректим на карточку заказа
+            //Р•СЃР»Рё СЋР·РµСЂ СѓР¶Рµ Р±С‹РІР°Р»С‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ С‚Рѕ СЂРµРґРёСЂРµРєС‚РёРј РЅР° РєР°СЂС‚РѕС‡РєСѓ Р·Р°РєР°Р·Р°
             $order_url = sprintf(tservices_helper::url('order_card_url'),$order['id']);
             if (!$is_new) { 
                 if ($status == users::AUTH_STATUS_2FA) {
@@ -491,11 +491,11 @@ class TServiceOrderController extends CController
                 $this->redirect($order_url);            
             }
             
-            //Берем доп.инфу о фрилансере
+            //Р‘РµСЂРµРј РґРѕРї.РёРЅС„Сѓ Рѕ С„СЂРёР»Р°РЅСЃРµСЂРµ
             $freelancer = new freelancer();
             $freelancer->GetUserByUID($order['frl_id']);
             
-            //Если юзер новичек то показываем ему логин/пароль и статус заказа
+            //Р•СЃР»Рё СЋР·РµСЂ РЅРѕРІРёС‡РµРє С‚Рѕ РїРѕРєР°Р·С‹РІР°РµРј РµРјСѓ Р»РѕРіРёРЅ/РїР°СЂРѕР»СЊ Рё СЃС‚Р°С‚СѓСЃ Р·Р°РєР°Р·Р°
             $this->layout = '//layouts/content-full-width';
             $this->render('new-order', array(
                 'order_url' => $order_url,

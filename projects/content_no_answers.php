@@ -10,35 +10,35 @@ op[<?=$ammount?>] = <?=$sum?>;
 <? } //foreach?>
 <? 
 /** 
- * в IE меняются стили отображения при disabled = true, это костыль для данной ситуации - (решить через CSS не удалось) 
- * задача  http://beta.free-lance.ru/mantis/view.php?id=12554, вопрос 5 по ней
+ * РІ IE РјРµРЅСЏСЋС‚СЃСЏ СЃС‚РёР»Рё РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РїСЂРё disabled = true, СЌС‚Рѕ РєРѕСЃС‚С‹Р»СЊ РґР»СЏ РґР°РЅРЅРѕР№ СЃРёС‚СѓР°С†РёРё - (СЂРµС€РёС‚СЊ С‡РµСЂРµР· CSS РЅРµ СѓРґР°Р»РѕСЃСЊ) 
+ * Р·Р°РґР°С‡Р°  http://beta.free-lance.ru/mantis/view.php?id=12554, РІРѕРїСЂРѕСЃ 5 РїРѕ РЅРµР№
  */?>
 var is_disabled_button = -1;
 </script>
 
-<a name="new_offer"></a><h1>Вы не можете ответить на проект</h1>
+<a name="new_offer"></a><h1>Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ РѕС‚РІРµС‚РёС‚СЊ РЅР° РїСЂРѕРµРєС‚</h1>
 
 
 <div class="b-pay-answer b-fon b-fon_bg_f0ffdf b-fon__body_pad_5_10 b-fon_margbot_25">
         <div class="b-pay-answer__txt">
             <span class="b-layout__txt b-layout__txt_bold">
-                Осталось ответов на проекты: 0
+                РћСЃС‚Р°Р»РѕСЃСЊ РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚С‹: 0
             </span>
             &nbsp;&mdash;&nbsp;
             <?php if(isAllowTestPro()): ?>
-                <a class="b-layout__link b-layout__link_inline-block b-layout__link_lineheight_1" href="/payed/">Купите</a> 
+                <a class="b-layout__link b-layout__link_inline-block b-layout__link_lineheight_1" href="/payed/">РљСѓРїРёС‚Рµ</a> 
                 <a class="b-layout__link  b-layout__link_inline-block b-layout__link_lineheight_1" href="/payed/"><span title="PRO" class="b-icon b-icon__pro b-icon__pro_f"></span></a> 
-                <a class="b-layout__link  b-layout__link_inline-block b-layout__link_lineheight_1" href="/payed/">на 1 месяц за <span class="b-layout__txt_through b-layout__txt_color_99"><?=payed::getPriceByOpCode(48)?></span> <?=payed::getPriceByOpCode(163)?> рублей и отвечайте на проекты!</a>
+                <a class="b-layout__link  b-layout__link_inline-block b-layout__link_lineheight_1" href="/payed/">РЅР° 1 РјРµСЃСЏС† Р·Р° <span class="b-layout__txt_through b-layout__txt_color_99"><?=payed::getPriceByOpCode(48)?></span> <?=payed::getPriceByOpCode(163)?> СЂСѓР±Р»РµР№ Рё РѕС‚РІРµС‡Р°Р№С‚Рµ РЅР° РїСЂРѕРµРєС‚С‹!</a>
             <?php else: ?>
-                <a class="b-layout__link b-layout__link_inline-block b-layout__link_lineheight_1" href="/payed/">Купите</a> 
+                <a class="b-layout__link b-layout__link_inline-block b-layout__link_lineheight_1" href="/payed/">РљСѓРїРёС‚Рµ</a> 
                 <a class="b-layout__link  b-layout__link_inline-block b-layout__link_lineheight_1" href="/payed/"><span title="PRO" class="b-icon b-icon__pro b-icon__pro_f"></span></a> 
-                <a class="b-layout__link  b-layout__link_inline-block b-layout__link_lineheight_1" href="/payed/">на 1 месяц за <?=payed::getPriceByOpCode(48)?> рублей и отвечайте на проекты!</a>
+                <a class="b-layout__link  b-layout__link_inline-block b-layout__link_lineheight_1" href="/payed/">РЅР° 1 РјРµСЃСЏС† Р·Р° <?=payed::getPriceByOpCode(48)?> СЂСѓР±Р»РµР№ Рё РѕС‚РІРµС‡Р°Р№С‚Рµ РЅР° РїСЂРѕРµРєС‚С‹!</a>
             <?php endif; ?>
        </div>
 </div>
 <?php
 
-//показываем попап успешной покупки ПРО после редиректа
+//РїРѕРєР°Р·С‹РІР°РµРј РїРѕРїР°Рї СѓСЃРїРµС€РЅРѕР№ РїРѕРєСѓРїРєРё РџР Рћ РїРѕСЃР»Рµ СЂРµРґРёСЂРµРєС‚Р°
 $quickPRO_type = 'project'; 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/templates/quick_buy_pro_win.php"); 
 

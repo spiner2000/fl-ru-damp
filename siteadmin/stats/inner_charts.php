@@ -1,25 +1,25 @@
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
-	<td align="left"><strong>Статистика</strong></td>
-	<td align="right"><a href="/siteadmin/stats/">Таблица</a></td>
+	<td align="left"><strong>РЎС‚Р°С‚РёСЃС‚РёРєР°</strong></td>
+	<td align="right"><a href="/siteadmin/stats/">РўР°Р±Р»РёС†Р°</a></td>
 </tr>
 </table>
 <br>
 
 <?
-//вычисляем в каких месяцах была активность начиная с 2006 года
-$aMonthes[1] = 'январь';
-$aMonthes[2] = 'февраль';
-$aMonthes[3] = 'март';
-$aMonthes[4] = 'апрель';
-$aMonthes[5] = 'май';
-$aMonthes[6] = 'июнь';
-$aMonthes[7] = 'июль';
-$aMonthes[8] = 'август';
-$aMonthes[9] = 'сентябрь';
-$aMonthes[10] = 'октябрь';
-$aMonthes[11] = 'ноябрь';
-$aMonthes[12] = 'декабрь';
+//РІС‹С‡РёСЃР»СЏРµРј РІ РєР°РєРёС… РјРµСЃСЏС†Р°С… Р±С‹Р»Р° Р°РєС‚РёРІРЅРѕСЃС‚СЊ РЅР°С‡РёРЅР°СЏ СЃ 2006 РіРѕРґР°
+$aMonthes[1] = 'СЏРЅРІР°СЂСЊ';
+$aMonthes[2] = 'С„РµРІСЂР°Р»СЊ';
+$aMonthes[3] = 'РјР°СЂС‚';
+$aMonthes[4] = 'Р°РїСЂРµР»СЊ';
+$aMonthes[5] = 'РјР°Р№';
+$aMonthes[6] = 'РёСЋРЅСЊ';
+$aMonthes[7] = 'РёСЋР»СЊ';
+$aMonthes[8] = 'Р°РІРіСѓСЃС‚';
+$aMonthes[9] = 'СЃРµРЅС‚СЏР±СЂСЊ';
+$aMonthes[10] = 'РѕРєС‚СЏР±СЂСЊ';
+$aMonthes[11] = 'РЅРѕСЏР±СЂСЊ';
+$aMonthes[12] = 'РґРµРєР°Р±СЂСЊ';
 $aData = array();
 for ($i=2006; $i<=date('Y'); $i++) {
 	for ($j=1; $j<=12;$j++) {

@@ -1,12 +1,12 @@
 <?
 /**
- * подключаем файл с основными функциями
+ * РїРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» СЃ РѕСЃРЅРѕРІРЅС‹РјРё С„СѓРЅРєС†РёСЏРјРё
  *
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
- * Класс для работы со статьями
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃРѕ СЃС‚Р°С‚СЊСЏРјРё
  *
  */
 class articles{
@@ -18,10 +18,10 @@ class articles{
     const MAX_IMAGE_HEIGHT = 120;
 
     /**
-     * Возвращает данные необходимые для построения ЧПУ ссылки
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РґР»СЏ РїРѕСЃС‚СЂРѕРµРЅРёСЏ Р§РџРЈ СЃСЃС‹Р»РєРё
      *
-     * @param     integer    $id    ID статьи
-     * @return    array             Данные для ЧПУ
+     * @param     integer    $id    ID СЃС‚Р°С‚СЊРё
+     * @return    array             Р”Р°РЅРЅС‹Рµ РґР»СЏ Р§РџРЈ
      */
     public function getInfoForFriendlyURL($id) {
         global $DB;
@@ -30,13 +30,13 @@ class articles{
     }
 	
 	/**
-	 * Получает массив с превьюхами статей
+	 * РџРѕР»СѓС‡Р°РµС‚ РјР°СЃСЃРёРІ СЃ РїСЂРµРІСЊСЋС…Р°РјРё СЃС‚Р°С‚РµР№
 	 *
-	 * @param х3 $msg_cntr 				- ваще не ясно нафига
-	 * @param integer $page			    - номер страницы
-	 * @param integer $num_msgs			- количество статей на одной странице
-	 * @param х3 $error					- ваще не ясно нафига
-	 * @return Array					[[идентификатор статьи, превью статьи, подпись, логотип, ссылка, название, кол-во комментов]]
+	 * @param С…3 $msg_cntr 				- РІР°С‰Рµ РЅРµ СЏСЃРЅРѕ РЅР°С„РёРіР°
+	 * @param integer $page			    - РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹
+	 * @param integer $num_msgs			- РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚Р°С‚РµР№ РЅР° РѕРґРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ
+	 * @param С…3 $error					- РІР°С‰Рµ РЅРµ СЏСЃРЅРѕ РЅР°С„РёРіР°
+	 * @return Array					[[РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃС‚Р°С‚СЊРё, РїСЂРµРІСЊСЋ СЃС‚Р°С‚СЊРё, РїРѕРґРїРёСЃСЊ, Р»РѕРіРѕС‚РёРї, СЃСЃС‹Р»РєР°, РЅР°Р·РІР°РЅРёРµ, РєРѕР»-РІРѕ РєРѕРјРјРµРЅС‚РѕРІ]]
 	 */
 	function GetMsgs($msg_cntr, $page, $num_msgs, &$error){
         global $DB;
@@ -55,9 +55,9 @@ class articles{
 	}
 
 	/**
-	 * Возвращает кол-во статей
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»-РІРѕ СЃС‚Р°С‚РµР№
 	 *
-	 * @return integer				количество статей
+	 * @return integer				РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚Р°С‚РµР№
 	 */
     function MsgsCount() {
         global $DB;
@@ -66,11 +66,11 @@ class articles{
     }
   	
 	/**
-	 * Возвращает массив с данными о статье
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РјР°СЃСЃРёРІ СЃ РґР°РЅРЅС‹РјРё Рѕ СЃС‚Р°С‚СЊРµ
 	 *
-	 * @param integer $msg_id		идентификатор статьи
-	 * @param char $error			сообщение об ошибке
-	 * @return array				[название, превью, текст статьи, подпись, ссылка, лого, идентификатор]
+	 * @param integer $msg_id		РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃС‚Р°С‚СЊРё
+	 * @param char $error			СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
+	 * @return array				[РЅР°Р·РІР°РЅРёРµ, РїСЂРµРІСЊСЋ, С‚РµРєСЃС‚ СЃС‚Р°С‚СЊРё, РїРѕРґРїРёСЃСЊ, СЃСЃС‹Р»РєР°, Р»РѕРіРѕ, РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ]
 	 */
 	function GetMsgInfo($msg_id, $error){
         global $DB;
@@ -82,15 +82,15 @@ class articles{
 	}
 	
 	/**
-	 * Добавить статью
+	 * Р”РѕР±Р°РІРёС‚СЊ СЃС‚Р°С‚СЊСЋ
 	 *
-	 * @param char $title		название статьи
-	 * @param char $short		превью статьи
-	 * @param char $msg			текст статьи
-	 * @param char $sign		подпись
-	 * @param char $f_name		имя файла с логотипом
-	 * @param char $link		ссылка на ресурс
-	 * @return char				сообщение об ошибке
+	 * @param char $title		РЅР°Р·РІР°РЅРёРµ СЃС‚Р°С‚СЊРё
+	 * @param char $short		РїСЂРµРІСЊСЋ СЃС‚Р°С‚СЊРё
+	 * @param char $msg			С‚РµРєСЃС‚ СЃС‚Р°С‚СЊРё
+	 * @param char $sign		РїРѕРґРїРёСЃСЊ
+	 * @param char $f_name		РёРјСЏ С„Р°Р№Р»Р° СЃ Р»РѕРіРѕС‚РёРїРѕРј
+	 * @param char $link		СЃСЃС‹Р»РєР° РЅР° СЂРµСЃСѓСЂСЃ
+	 * @return char				СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function Add($title, $short, $msg, $sign, $file, $link){
         global $DB;
@@ -104,7 +104,7 @@ class articles{
             $file->server_root = 1;
         
             $f_name = $file->MoveUploadedFile("about/articles/");
-    	    if (!isNulArray($file->error)) { $alert[3] = "Файл не удовлетворяет условиям загрузки"; $error_flag = 1;}
+    	    if (!isNulArray($file->error)) { $alert[3] = "Р¤Р°Р№Р» РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё"; $error_flag = 1;}
 	    }
 	    if (!$error_flag){
 	    	validate_code_style($msg);
@@ -115,11 +115,11 @@ class articles{
 	}
 
 	/**
-	 * Удаляет статью
+	 * РЈРґР°Р»СЏРµС‚ СЃС‚Р°С‚СЊСЋ
 	 *
-	 * @param integer $msg		идентификатор стаьи
-	 * @param integer $admin	можно ли удалять статью
-	 * @return char				сообщение об ошибке
+	 * @param integer $msg		РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃС‚Р°СЊРё
+	 * @param integer $admin	РјРѕР¶РЅРѕ Р»Рё СѓРґР°Р»СЏС‚СЊ СЃС‚Р°С‚СЊСЋ
+	 * @return char				СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function Del($msg, $admin = 0){
         global $DB;
@@ -134,16 +134,16 @@ class articles{
 	}
 	
 	/**
-	 * Редактировать статью
+	 * Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СЃС‚Р°С‚СЊСЋ
 	 *
-	 * @param char $title		название статьи
-	 * @param char $short		превью статьи
-	 * @param char $msg			текст статьи
-	 * @param char $sign		подпись
-	 * @param char $f_name		имя файла с логотипом
-	 * @param char $link		ссылка на ресурс
-	 * @param integer $msgid	идентификатор стаьи
-	 * @return char				сообщение об ошибке
+	 * @param char $title		РЅР°Р·РІР°РЅРёРµ СЃС‚Р°С‚СЊРё
+	 * @param char $short		РїСЂРµРІСЊСЋ СЃС‚Р°С‚СЊРё
+	 * @param char $msg			С‚РµРєСЃС‚ СЃС‚Р°С‚СЊРё
+	 * @param char $sign		РїРѕРґРїРёСЃСЊ
+	 * @param char $f_name		РёРјСЏ С„Р°Р№Р»Р° СЃ Р»РѕРіРѕС‚РёРїРѕРј
+	 * @param char $link		СЃСЃС‹Р»РєР° РЅР° СЂРµСЃСѓСЂСЃ
+	 * @param integer $msgid	РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃС‚Р°СЊРё
+	 * @return char				СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
 	function Edit($title, $short, $msg, $sign, $file, $link, $msgid){
         global $DB;
@@ -158,7 +158,7 @@ class articles{
             $file->server_root = 1;
         
             $f_name = $file->MoveUploadedFile("about/articles/");
-    	    if (!isNulArray($file->error)) { $alert[3] = "Файл не удовлетворяет условиям загрузки"; $error_flag = 1;}
+    	    if (!isNulArray($file->error)) { $alert[3] = "Р¤Р°Р№Р» РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё"; $error_flag = 1;}
 		    if (!$error_flag) $sql = "UPDATE articles SET title = '$title', short= '$short', msgtext='$msg', sign='$sign', logo='$f_name', link='$link', modified=now() WHERE (id=?i)";
 		}
 		else $sql = "UPDATE articles SET title = '$title', short = '$short', msgtext='$msg', sign='$sign', link='$link', modified=now() WHERE (id=?i)";
@@ -168,11 +168,11 @@ class articles{
 
 
     /**
-     * Добавляет статью для модерации
+     * Р”РѕР±Р°РІР»СЏРµС‚ СЃС‚Р°С‚СЊСЋ РґР»СЏ РјРѕРґРµСЂР°С†РёРё
      *
-     * @param int $user ID пользователя, добавившего статью
-     * @param string $short Текст анонса
-     * @param string $msg Текст статьи
+     * @param int $user ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РґРѕР±Р°РІРёРІС€РµРіРѕ СЃС‚Р°С‚СЊСЋ
+     * @param string $short РўРµРєСЃС‚ Р°РЅРѕРЅСЃР°
+     * @param string $msg РўРµРєСЃС‚ СЃС‚Р°С‚СЊРё
      * @param CFile $file
      */
     function AddArticle($user, $title, $short, $msg, $fileid) {
@@ -187,15 +187,15 @@ class articles{
     }
     
     /**
-     * Изменяет статью
+     * РР·РјРµРЅСЏРµС‚ СЃС‚Р°С‚СЊСЋ
      * 
-     * @param  mixed $user не используется
-     * @param  int $article_id идентификатор статьи
-     * @param  string $title новый заголовок
-     * @param  string $short новое краткое содержание
-     * @param  string $msg новый текст
-     * @param  int $fileid новый id файла логотипа
-     * @return resource результат запроса
+     * @param  mixed $user РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
+     * @param  int $article_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃС‚Р°С‚СЊРё
+     * @param  string $title РЅРѕРІС‹Р№ Р·Р°РіРѕР»РѕРІРѕРє
+     * @param  string $short РЅРѕРІРѕРµ РєСЂР°С‚РєРѕРµ СЃРѕРґРµСЂР¶Р°РЅРёРµ
+     * @param  string $msg РЅРѕРІС‹Р№ С‚РµРєСЃС‚
+     * @param  int $fileid РЅРѕРІС‹Р№ id С„Р°Р№Р»Р° Р»РѕРіРѕС‚РёРїР°
+     * @return resource СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР°
      */
     function updateArticle($user, $article_id, $title, $short, $msg, $fileid) {
         global $DB;
@@ -212,11 +212,11 @@ class articles{
     }
 
     /**
-     * Удаляет статью
+     * РЈРґР°Р»СЏРµС‚ СЃС‚Р°С‚СЊСЋ
      *
-     * @param integer $msg		идентификатор стаьи
-     * @param integer $admin	можно ли удалять статью
-     * @return char				сообщение об ошибке
+     * @param integer $msg		РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃС‚Р°СЊРё
+     * @param integer $admin	РјРѕР¶РЅРѕ Р»Рё СѓРґР°Р»СЏС‚СЊ СЃС‚Р°С‚СЊСЋ
+     * @return char				СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
      */
     function delArticle($id, $send_warn = "") {
         global $DB;
@@ -235,14 +235,14 @@ class articles{
     }
 
     /**
-     * Получает список статей
+     * РџРѕР»СѓС‡Р°РµС‚ СЃРїРёСЃРѕРє СЃС‚Р°С‚РµР№
      *
-     * @param integer $page Номер текущей страницы
-     * @param integer $num_msgs Кол-во статей на странице
-     * @param integer $user ид текущего пользователя
-     * @param boolean $approved Если TRUE - выводить только подвержденные статьи,
-     *                               FALSE - только неподтвержденные
-     * @param integer $author ID пользователя-автора статьи
+     * @param integer $page РќРѕРјРµСЂ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹
+     * @param integer $num_msgs РљРѕР»-РІРѕ СЃС‚Р°С‚РµР№ РЅР° СЃС‚СЂР°РЅРёС†Рµ
+     * @param integer $user РёРґ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param boolean $approved Р•СЃР»Рё TRUE - РІС‹РІРѕРґРёС‚СЊ С‚РѕР»СЊРєРѕ РїРѕРґРІРµСЂР¶РґРµРЅРЅС‹Рµ СЃС‚Р°С‚СЊРё,
+     *                               FALSE - С‚РѕР»СЊРєРѕ РЅРµРїРѕРґС‚РІРµСЂР¶РґРµРЅРЅС‹Рµ
+     * @param integer $author ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ-Р°РІС‚РѕСЂР° СЃС‚Р°С‚СЊРё
      * @return <type>
      */
     function getArticles($page, $num_msgs, $user_id, $tag, $approved = true, $author = null, $order = null, $declined = false) {
@@ -302,11 +302,11 @@ class articles{
     }
 
     /**
-     * Возвращает кол-во статей
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»-РІРѕ СЃС‚Р°С‚РµР№
      *
-     * @param boolean $approved Если TRUE - учитывать только подвержденные статьи,
-     *                               FALSE - только неподтвержденные
-     * @return integer				количество статей
+     * @param boolean $approved Р•СЃР»Рё TRUE - СѓС‡РёС‚С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ РїРѕРґРІРµСЂР¶РґРµРЅРЅС‹Рµ СЃС‚Р°С‚СЊРё,
+     *                               FALSE - С‚РѕР»СЊРєРѕ РЅРµРїРѕРґС‚РІРµСЂР¶РґРµРЅРЅС‹Рµ
+     * @return integer				РєРѕР»РёС‡РµСЃС‚РІРѕ СЃС‚Р°С‚РµР№
      */
     function ArticlesCount($approved = true, $user = null, $tag=0, $declined = false) {
         global $DB;
@@ -325,10 +325,10 @@ class articles{
 
 
     /**
-     * Получить одну статью по ее ID
+     * РџРѕР»СѓС‡РёС‚СЊ РѕРґРЅСѓ СЃС‚Р°С‚СЊСЋ РїРѕ РµРµ ID
      *
-     * @param integer $id ид статьи
-     * @param integer $user ид текущего пользователя
+     * @param integer $id РёРґ СЃС‚Р°С‚СЊРё
+     * @param integer $user РёРґ С‚РµРєСѓС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * @return <type>
      */
     function getArticle($id, $user_id, $force = false) {
@@ -364,12 +364,12 @@ class articles{
     }
 
     /**
-     * Изменяет рейтинг статьи
+     * РР·РјРµРЅСЏРµС‚ СЂРµР№С‚РёРЅРі СЃС‚Р°С‚СЊРё
      * 
-     * @param  int $user_id UID подьзователя
-     * @param  int $article_id ID статьи
-     * @param  int $rtype 1 или -1
-     * @return mixed новый рейтинг - успех, false - провал 
+     * @param  int $user_id UID РїРѕРґСЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $article_id ID СЃС‚Р°С‚СЊРё
+     * @param  int $rtype 1 РёР»Рё -1
+     * @return mixed РЅРѕРІС‹Р№ СЂРµР№С‚РёРЅРі - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р» 
      */
     function setRating($user_id, $article_id, $rtype) {
         global $DB;
@@ -404,11 +404,11 @@ class articles{
     }
 
     /**
-     * Устанавливает/обновляет закладку
+     * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚/РѕР±РЅРѕРІР»СЏРµС‚ Р·Р°РєР»Р°РґРєСѓ
      *
-     * @param  integer $user_id ид пользователя
-     * @param  integer $article_id ид сатьи
-     * @param  integer $star тип звезды - число от 0 дл 4
+     * @param  integer $user_id РёРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  integer $article_id РёРґ СЃР°С‚СЊРё
+     * @param  integer $star С‚РёРї Р·РІРµР·РґС‹ - С‡РёСЃР»Рѕ РѕС‚ 0 РґР» 4
      * @return bool
      */
     function bookmarkArticle($user_id, $article_id, $star) {
@@ -432,10 +432,10 @@ class articles{
     }
 
     /**
-     * Получить закладки пользователя
+     * РџРѕР»СѓС‡РёС‚СЊ Р·Р°РєР»Р°РґРєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * 
-     * @param  integer $user_id ид пользователя
-     * @param  srting $order порядок сортироки
+     * @param  integer $user_id РёРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  srting $order РїРѕСЂСЏРґРѕРє СЃРѕСЂС‚РёСЂРѕРєРё
      * @return array
      */
     function getBookmarks($user_id, $order = 'time') {
@@ -468,12 +468,12 @@ class articles{
 
 
     /**
-     * Устанавливает время последнего просмотра статьи,
-     * текущее кол-во комментариев к статье,
-     * добавляет просмотр в счетчике, если статья просматривается впервые
+     * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РІСЂРµРјСЏ РїРѕСЃР»РµРґРЅРµРіРѕ РїСЂРѕСЃРјРѕС‚СЂР° СЃС‚Р°С‚СЊРё,
+     * С‚РµРєСѓС‰РµРµ РєРѕР»-РІРѕ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ Рє СЃС‚Р°С‚СЊРµ,
+     * РґРѕР±Р°РІР»СЏРµС‚ РїСЂРѕСЃРјРѕС‚СЂ РІ СЃС‡РµС‚С‡РёРєРµ, РµСЃР»Рё СЃС‚Р°С‚СЊСЏ РїСЂРѕСЃРјР°С‚СЂРёРІР°РµС‚СЃСЏ РІРїРµСЂРІС‹Рµ
      *
-     * @param integer $user_id ид пользователя
-     * @param array $article Результат articles::getArticle()
+     * @param integer $user_id РёРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param array $article Р РµР·СѓР»СЊС‚Р°С‚ articles::getArticle()
      * @return boolean
      */
     function setArticleLVT($user_id, $article, $hidden = null) {
@@ -510,7 +510,7 @@ class articles{
     }
 
     /**
-     * Популярные авторы
+     * РџРѕРїСѓР»СЏСЂРЅС‹Рµ Р°РІС‚РѕСЂС‹
      *
      * @param integer $limit 
      * @return <type>
@@ -530,11 +530,11 @@ class articles{
     }
     
     /**
-     * Удалить закладку пользователя
+     * РЈРґР°Р»РёС‚СЊ Р·Р°РєР»Р°РґРєСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * 
-     * @param  integer $user_id ид пользователя
-     * @param  integer $article_id идентификатор статьи
-     * @return bool true - успех, false - провал
+     * @param  integer $user_id РёРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  integer $article_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃС‚Р°С‚СЊРё
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function bookmarkDel($user_id, $article_id) {
         global $DB;
@@ -547,13 +547,13 @@ class articles{
     }
     
     /**
-     * Изменить закладку пользователя
+     * РР·РјРµРЅРёС‚СЊ Р·Р°РєР»Р°РґРєСѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * 
-     * @param  integer $user_id ид пользователя
-     * @param  integer $article_id идентификатор статьи
-     * @param  string $title новый заголовок
-     * @param  integer $type 0 - не в закладках. 1-3 - в закладках, важность (тип звезд)
-     * @return bool true - успех, false - провал
+     * @param  integer $user_id РёРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  integer $article_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃС‚Р°С‚СЊРё
+     * @param  string $title РЅРѕРІС‹Р№ Р·Р°РіРѕР»РѕРІРѕРє
+     * @param  integer $type 0 - РЅРµ РІ Р·Р°РєР»Р°РґРєР°С…. 1-3 - РІ Р·Р°РєР»Р°РґРєР°С…, РІР°Р¶РЅРѕСЃС‚СЊ (С‚РёРї Р·РІРµР·Рґ)
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function bookmarkEdit($user_id, $article_id, $title, $type) {
         global $DB;
@@ -570,11 +570,11 @@ class articles{
     }
     
     /**
-     * Утвердить статью
+     * РЈС‚РІРµСЂРґРёС‚СЊ СЃС‚Р°С‚СЊСЋ
      * 
-     * @param  int $article_id идентификатор статьи
-     * @param  int $uid uid пользователя
-     * @return bool true - успех, false - провал
+     * @param  int $article_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃС‚Р°С‚СЊРё
+     * @param  int $uid uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function setApproved($article_id, $uid) {
         global $DB;
@@ -589,12 +589,12 @@ class articles{
     }
     
     /**
-     * Отклонить статью
+     * РћС‚РєР»РѕРЅРёС‚СЊ СЃС‚Р°С‚СЊСЋ
      * 
      * @global type $DB
-     * @param  int $article_id идентификатор статьи
-     * @param  int $uid uid пользователя
-     * @return bool true - успех, false - провал
+     * @param  int $article_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃС‚Р°С‚СЊРё
+     * @param  int $uid uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function setDecline($article_id, $uid) {
         global $DB;
@@ -609,12 +609,12 @@ class articles{
     }
     
     /**
-     * Возвратить на модерацию
+     * Р’РѕР·РІСЂР°С‚РёС‚СЊ РЅР° РјРѕРґРµСЂР°С†РёСЋ
      * 
      * @global type $DB
-     * @param  int $article_id идентификатор статьи
-     * @param  int $uid uid пользователя
-     * @return bool true - успех, false - провал
+     * @param  int $article_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃС‚Р°С‚СЊРё
+     * @param  int $uid uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function setUnDecline($article_id, $uid) {
         global $DB;
@@ -631,10 +631,10 @@ class articles{
     }
     
     /**
-     * Навигация предыдущая - следующая
+     * РќР°РІРёРіР°С†РёСЏ РїСЂРµРґС‹РґСѓС‰Р°СЏ - СЃР»РµРґСѓСЋС‰Р°СЏ
      * 
-     * @param  string $post_time время публикации текущей статьи
-     * @param  bool $approved true - искать среди утвержденных, false - в очереди
+     * @param  string $post_time РІСЂРµРјСЏ РїСѓР±Р»РёРєР°С†РёРё С‚РµРєСѓС‰РµР№ СЃС‚Р°С‚СЊРё
+     * @param  bool $approved true - РёСЃРєР°С‚СЊ СЃСЂРµРґРё СѓС‚РІРµСЂР¶РґРµРЅРЅС‹С…, false - РІ РѕС‡РµСЂРµРґРё
      * @return array
      */
     function getNavigation($post_time, $approved = true) {
@@ -659,10 +659,10 @@ class articles{
     }
     
     /**
-     * Добавляем ключевые слова к статье
+     * Р”РѕР±Р°РІР»СЏРµРј РєР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР° Рє СЃС‚Р°С‚СЊРµ
      *
-     * @param integer $article_id  ИД Статьи
-     * @param array   $tags        Ключевые слова (теги)
+     * @param integer $article_id  РР” РЎС‚Р°С‚СЊРё
+     * @param array   $tags        РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР° (С‚РµРіРё)
      * @return boolean
      */
     function addArticleTags($article_id, $tags) {
@@ -695,9 +695,9 @@ class articles{
     }
     
     /**
-     * Чистим статью от тегов
+     * Р§РёСЃС‚РёРј СЃС‚Р°С‚СЊСЋ РѕС‚ С‚РµРіРѕРІ
      *
-     * @param integer $article_id  ИД статьи
+     * @param integer $article_id  РР” СЃС‚Р°С‚СЊРё
      * @return boolean
      */
     function clearArticleTags($article_id) {
@@ -708,7 +708,7 @@ class articles{
     }
     
     /**
-     * 10 Популярных тегов
+     * 10 РџРѕРїСѓР»СЏСЂРЅС‹С… С‚РµРіРѕРІ
      *
      * @return array
      */
@@ -722,9 +722,9 @@ class articles{
     }
     
     /**
-     * Проверяем есть ли у пользователя статьи на модерации
+     * РџСЂРѕРІРµСЂСЏРµРј РµСЃС‚СЊ Р»Рё Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃС‚Р°С‚СЊРё РЅР° РјРѕРґРµСЂР°С†РёРё
      *
-     * @param integer $uid ИД Пользователя
+     * @param integer $uid РР” РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * @return integer
      */
     function isApprovedArticles($uid) {
@@ -736,11 +736,11 @@ class articles{
     }
     
     /**
-     * Добавляет в commune_attach запись о временном файле, загруженном во время наботра текста в визивиге 
+     * Р”РѕР±Р°РІР»СЏРµС‚ РІ commune_attach Р·Р°РїРёСЃСЊ Рѕ РІСЂРµРјРµРЅРЅРѕРј С„Р°Р№Р»Рµ, Р·Р°РіСЂСѓР¶РµРЅРЅРѕРј РІРѕ РІСЂРµРјСЏ РЅР°Р±РѕС‚СЂР° С‚РµРєСЃС‚Р° РІ РІРёР·РёРІРёРіРµ 
      * */
     function addWysiwygFile($cfile) {
         global $DB;//articles_comments
-        //временно прикрепляю файл к самому старому удаленному сообщению  
+        //РІСЂРµРјРµРЅРЅРѕ РїСЂРёРєСЂРµРїР»СЏСЋ С„Р°Р№Р» Рє СЃР°РјРѕРјСѓ СЃС‚Р°СЂРѕРјСѓ СѓРґР°Р»РµРЅРЅРѕРјСѓ СЃРѕРѕР±С‰РµРЅРёСЋ  
         $messageId = $DB->val("SELECT id FROM articles_comments WHERE deleted_id IS NOT NULL ORDER BY id ASC LIMIT 1");
         //articles_comments_files
         $DB->query("INSERT INTO articles_comments_files (comment_id, file_id, small, inline, temp) 
@@ -748,9 +748,9 @@ class articles{
     }
     
     /**
-     * Удаляет файлы и записи у которых флаги commune_attach.inline и commune_attach.temp равны TRUE
-     *  и с момента создания которых прошло больше суток
-     *  вызывается из hourly.php раз в сутки
+     * РЈРґР°Р»СЏРµС‚ С„Р°Р№Р»С‹ Рё Р·Р°РїРёСЃРё Сѓ РєРѕС‚РѕСЂС‹С… С„Р»Р°РіРё commune_attach.inline Рё commune_attach.temp СЂР°РІРЅС‹ TRUE
+     *  Рё СЃ РјРѕРјРµРЅС‚Р° СЃРѕР·РґР°РЅРёСЏ РєРѕС‚РѕСЂС‹С… РїСЂРѕС€Р»Рѕ Р±РѕР»СЊС€Рµ СЃСѓС‚РѕРє
+     *  РІС‹Р·С‹РІР°РµС‚СЃСЏ РёР· hourly.php СЂР°Р· РІ СЃСѓС‚РєРё
      * */
     function removeWysiwygTrash() {
         global $DB;
@@ -776,7 +776,7 @@ class articles{
     }
     
     /**
-     * Берем статьи по их ИД
+     * Р‘РµСЂРµРј СЃС‚Р°С‚СЊРё РїРѕ РёС… РР”
      * 
      * @global type $DB
      * @param array $ids

@@ -59,7 +59,7 @@ class PGQDaemonAutoresponse extends PGQConsumer {
                 $obj_project = new projects();
                 $project = $obj_project->GetPrjCust($project_id);
                 
-                // Íå âûáðàí èñïîëüíèòåëü (åñëè èñïîëüíèòåëü âûáðàí, òî íå ïèøåì îòâåò íà ýòîò ïðîåêò)
+                // ÐÐµ Ð²Ñ‹Ð±Ñ€Ð°Ð½ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ½Ð¸Ñ‚ÐµÐ»ÑŒ (ÐµÑÐ»Ð¸ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ½Ð¸Ñ‚ÐµÐ»ÑŒ Ð²Ñ‹Ð±Ñ€Ð°Ð½, Ñ‚Ð¾ Ð½Ðµ Ð¿Ð¸ÑˆÐµÐ¼ Ð¾Ñ‚Ð²ÐµÑ‚ Ð½Ð° ÑÑ‚Ð¾Ñ‚ Ð¿Ñ€Ð¾ÐµÐºÑ‚)
                 if ($project && $project['exec_id'] == 0 && $project['kind'] == 1) {
                     $autoresponses = autoresponse::getListForProject($project);
                     
@@ -67,22 +67,22 @@ class PGQDaemonAutoresponse extends PGQConsumer {
                         $freelancer = $autoresponse->data['freelancer'];
                         $contacts_freelancer = $autoresponse->data['contacts_freelancer'];
 
-                        // Ïðîâåðÿåì åñëè ïðîåêò òîëüêî äëÿ ïðî, òî è ïîëüçîâàòåëü êîòîðûé íà íåãî îòâå÷àåò äîëæåí áûòü ÏÐÎ
+                        // ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ ÐµÑÐ»Ð¸ Ð¿Ñ€Ð¾ÐµÐºÑ‚ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð´Ð»Ñ Ð¿Ñ€Ð¾, Ñ‚Ð¾ Ð¸ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð½Ð° Ð½ÐµÐ³Ð¾ Ð¾Ñ‚Ð²ÐµÑ‡Ð°ÐµÑ‚ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ ÐŸÐ Ðž
                         if ($project['pro_only'] == 't' && !payed::CheckPro($freelancer->login)) {
                             continue;
                         }
 
-                        // Ïðîâåðÿåì åñëè ïðîåêò òîëüêî äëÿ âåðèôèöèðîâàííûõ, òî è ïîëüçîâàòåëü êîòîðûé íà íåãî îòâå÷àåò äîëæåí áûòü âåðèôèöèðîâàí
+                        // ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÐ¼ ÐµÑÐ»Ð¸ Ð¿Ñ€Ð¾ÐµÐºÑ‚ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð´Ð»Ñ Ð²ÐµÑ€Ð¸Ñ„Ð¸Ñ†Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ñ…, Ñ‚Ð¾ Ð¸ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð½Ð° Ð½ÐµÐ³Ð¾ Ð¾Ñ‚Ð²ÐµÑ‡Ð°ÐµÑ‚ Ð´Ð¾Ð»Ð¶ÐµÐ½ Ð±Ñ‹Ñ‚ÑŒ Ð²ÐµÑ€Ð¸Ñ„Ð¸Ñ†Ð¸Ñ€Ð¾Ð²Ð°Ð½
                         if ($project['verify_only'] == 't' && !$freelancer->IsVerified()) {
                             continue;
                         }
 
-                        // Ïðîâåðêà, ÷òî òåêóùèé ïîëüçîâàòåëü íå ÿâëÿåòñÿ âëàäåëüöåì ïðîåêòà
+                        // ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ°, Ñ‡Ñ‚Ð¾ Ñ‚ÐµÐºÑƒÑ‰Ð¸Ð¹ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð½Ðµ ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ð²Ð»Ð°Ð´ÐµÐ»ÑŒÑ†ÐµÐ¼ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°
                         if ($project['user_id'] == $freelancer->uid) {
                             continue;
                         }
 
-                        // Äîáàâëåíèå íîâîãî îòçûâà ê ïðîåêòó
+                        // Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð½Ð¾Ð²Ð¾Ð³Ð¾ Ð¾Ñ‚Ð·Ñ‹Ð²Ð° Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ
                         $obj_offer = new projects_offers();
                         $save_contacts = serialize($contacts_freelancer);
 
@@ -90,11 +90,11 @@ class PGQDaemonAutoresponse extends PGQConsumer {
                         $error_offer = $obj_offer->AddOffer(
                             $freelancer->uid, 
                             $project['id'], 
-                            '', '', '', // öåíà (îò, äî, òèï)
-                            '', '', '', // âðåìÿ (îò, äî, òèï)
-                            antispam(stripslashes($autoresponse->data['descr'])), // òåêñò àâòîîòâåòà
-                            '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', // ïðèêðåïëåííûå ðàáîòû 
-                            $autoresponse->toBoolean($autoresponse->data['only_4_cust']), // âèäèìîñòü òîëüêî äëÿ çàêàç÷èêà
+                            '', '', '', // Ñ†ÐµÐ½Ð° (Ð¾Ñ‚, Ð´Ð¾, Ñ‚Ð¸Ð¿)
+                            '', '', '', // Ð²Ñ€ÐµÐ¼Ñ (Ð¾Ñ‚, Ð´Ð¾, Ñ‚Ð¸Ð¿)
+                            antispam(stripslashes($autoresponse->data['descr'])), // Ñ‚ÐµÐºÑÑ‚ Ð°Ð²Ñ‚Ð¾Ð¾Ñ‚Ð²ÐµÑ‚Ð°
+                            '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', // Ð¿Ñ€Ð¸ÐºÑ€ÐµÐ¿Ð»ÐµÐ½Ð½Ñ‹Ðµ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ 
+                            $autoresponse->toBoolean($autoresponse->data['only_4_cust']), // Ð²Ð¸Ð´Ð¸Ð¼Ð¾ÑÑ‚ÑŒ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð´Ð»Ñ Ð·Ð°ÐºÐ°Ð·Ñ‡Ð¸ÐºÐ°
                             0, 
                             0, 
                             false, // sbr
@@ -104,7 +104,7 @@ class PGQDaemonAutoresponse extends PGQConsumer {
                             $autoresponse->data['id']
                         );
 
-                        // Â ñëó÷àå äîáàâëåíèå àâòîîòâåòà, óìåíüøàåì ñ÷åò÷èê àâòîîòâåòîâ äëÿ ïîëüçîâàòåëÿ (â òðàíçàêöèè)
+                        // Ð’ ÑÐ»ÑƒÑ‡Ð°Ðµ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð°Ð²Ñ‚Ð¾Ð¾Ñ‚Ð²ÐµÑ‚Ð°, ÑƒÐ¼ÐµÐ½ÑŒÑˆÐ°ÐµÐ¼ ÑÑ‡ÐµÑ‚Ñ‡Ð¸Ðº Ð°Ð²Ñ‚Ð¾Ð¾Ñ‚Ð²ÐµÑ‚Ð¾Ð² Ð´Ð»Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ (Ð² Ñ‚Ñ€Ð°Ð½Ð·Ð°ÐºÑ†Ð¸Ð¸)
                         if ($error_offer || !$autoresponse->reduce($freelancer, $obj_offer, $project_id)) {
                             $this->log->notice("Rollback autoresponse posted for project #id = " . $project_id);
                             $DB->rollback();

@@ -1,9 +1,9 @@
 <div class="b-layout b-layout_padtop_15 g-txt_center">
     
     <h1 id="header_payed_pro" class="b-layout__title b-layout__title_bold b-layout__title_fs30 b-layout__title_color_333 b-layout__title_padbot_80">
-        Профессиональный аккаунт фрилансера
+        РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚ С„СЂРёР»Р°РЅСЃРµСЂР°
         <div class="b-layout__txt b-layout__txt_padtop_5 b-layout__txt_center b-layout__txt_fontsize_20">
-            У вас активен аккаунт PROFI, поэтому покупка PRO в данный момент недоступна.
+            РЈ РІР°СЃ Р°РєС‚РёРІРµРЅ Р°РєРєР°СѓРЅС‚ PROFI, РїРѕСЌС‚РѕРјСѓ РїРѕРєСѓРїРєР° PRO РІ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РЅРµРґРѕСЃС‚СѓРїРЅР°.
         </div>
     </h1>    
     

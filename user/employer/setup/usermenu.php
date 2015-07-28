@@ -4,48 +4,48 @@ $prev_tab = 1;
 
 <div class="b-menu b-menu_line">
     <?php if (($user->login == $_SESSION['login'] || hasPermissions('users'))) { ?>
-       <div class="b-menu__right-item"><a class="b-menu__link b-menu__link_del" href="/users/<?= $user->login ?>/setup/delete/">Удалить аккаунт</a></div>
+       <div class="b-menu__right-item"><a class="b-menu__link b-menu__link_del" href="/users/<?= $user->login ?>/setup/delete/">РЈРґР°Р»РёС‚СЊ Р°РєРєР°СѓРЅС‚</a></div>
     <?php } ?>
    <ul class="b-menu__list" data-menu="true" data-menu-descriptor="profile-nav">
 	<?php if (!(!$activ_tab || $inner == "inform_inner.php"||$inner == "../../setup/finance_inner.php"||$inner == '')) { ?>
         <li class="b-menu__item b-menu__item_active b-page__ipad b-page__iphone" data-menu-opener="true" data-menu-descriptor="profile-nav" style="margin-top:-40px !important;">
-            <a class="b-menu__link" href="#" title="Не выбрано">
-                Не выбрано
+            <a class="b-menu__link" href="#" title="РќРµ РІС‹Р±СЂР°РЅРѕ">
+                РќРµ РІС‹Р±СЂР°РЅРѕ
             </a>
         </li>
     <?php } ?>
         <li class="b-menu__item <? if ($inner == "../../setup/main_inner.php") {?>b-menu__item_active <?php } ?>" <? if ($inner == "../../setup/main_inner.php") {?>data-menu-opener="true" data-menu-descriptor="profile-nav"<?php } ?>>
-            <a class="b-menu__link" href="/users/<?=$user->login?>/setup/main/" title="Основные настройки" >
-            Основные настройки
+            <a class="b-menu__link" href="/users/<?=$user->login?>/setup/main/" title="РћСЃРЅРѕРІРЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё" >
+            РћСЃРЅРѕРІРЅС‹Рµ РЅР°СЃС‚СЂРѕР№РєРё
             </a>
         </li>
         <? $activ_tab = ($activ_tab==-1 ? 2 : $activ_tab);?>
         <li class="b-menu__item <?=($activ_tab==2 ? ' b-menu__item_active' : '')?>" <?=($activ_tab==2 ? 'data-menu-opener="true" data-menu-descriptor="profile-nav"' : '')?>>
-            <a class="b-menu__link" href="/users/<?=$user->login?>/setup/info/" title="Информация">
-                Информация
+            <a class="b-menu__link" href="/users/<?=$user->login?>/setup/info/" title="РРЅС„РѕСЂРјР°С†РёСЏ">
+                РРЅС„РѕСЂРјР°С†РёСЏ
             </a>
 		</li>
         <li class="b-menu__item <?=($activ_tab==5 ? ' b-menu__item_active' : '')?>" <?=($activ_tab==5 ? 'data-menu-opener="true" data-menu-descriptor="profile-nav"' : '')?>>
-            <a class="b-menu__link" href="/users/<?=$user->login?>/setup/finance/" title="Финансы">
-                Финансы
+            <a class="b-menu__link" href="/users/<?=$user->login?>/setup/finance/" title="Р¤РёРЅР°РЅСЃС‹">
+                Р¤РёРЅР°РЅСЃС‹
             </a>
         </li>
         
         
         
         <li class="b-menu__item <? if ($inner == "../../setup/foto_inner.php") {?>b-menu__item_active<?php } ?>" <? if ($inner == "../../setup/foto_inner.php") {?>data-menu-opener="true" data-menu-descriptor="profile-nav"<?php } ?>>
-            <a class="b-menu__link" href="/users/<?=$user->login?>/setup/foto/" title="Фотография">
-            Фотография
+            <a class="b-menu__link" href="/users/<?=$user->login?>/setup/foto/" title="Р¤РѕС‚РѕРіСЂР°С„РёСЏ">
+            Р¤РѕС‚РѕРіСЂР°С„РёСЏ
             </a>
         </li>
         <li class="b-menu__item <? if ($inner == "mailer_inner.php") {?>b-menu__item_active<?php } ?>" <? if ($inner == "mailer_inner.php") {?>data-menu-opener="true" data-menu-descriptor="profile-nav"<?php } ?>>
-            <a class="b-menu__link" href="/users/<?=$user->login?>/setup/mailer/" title="Уведомления">
-            Уведомления
+            <a class="b-menu__link" href="/users/<?=$user->login?>/setup/mailer/" title="РЈРІРµРґРѕРјР»РµРЅРёСЏ">
+            РЈРІРµРґРѕРјР»РµРЅРёСЏ
             </a>
         </li>
         <li class="b-menu__item <? if ($inner == "../../setup/safety_inner.php") {?>b-menu__item_active<?php } ?>" <? if ($inner == "../../setup/safety_inner.php") {?>data-menu-opener="true" data-menu-descriptor="profile-nav"<?php } ?>>
-            <a class="b-menu__link" href="/users/<?=$user->login?>/setup/safety/" title="Безопасность">
-            Безопасность
+            <a class="b-menu__link" href="/users/<?=$user->login?>/setup/safety/" title="Р‘РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ">
+            Р‘РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ
             </a>
         </li>
     </ul>

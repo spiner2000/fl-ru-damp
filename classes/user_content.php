@@ -1,51 +1,51 @@
 <?php
 /**
- * Подключаем предка
+ * РџРѕРґРєР»СЋС‡Р°РµРј РїСЂРµРґРєР°
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/admin_parent.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/stop_words.php');
 
 /**
- * Класс для работы с модерированием пользовательского контента
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РјРѕРґРµСЂРёСЂРѕРІР°РЅРёРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РєРѕРЅС‚РµРЅС‚Р°
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
 class user_content extends admin_parent {
     /**
-     * Допустимые значения $site
+     * Р”РѕРїСѓСЃС‚РёРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ $site
      * 
      * @var array
      */
     static $site_allow = array( 15 => 'choose', 'shifts', 'streams', 'blocked', 'stream', 'frames' );
     
     /**
-     * Константы для модерируемых сущностей
+     * РљРѕРЅСЃС‚Р°РЅС‚С‹ РґР»СЏ РјРѕРґРµСЂРёСЂСѓРµРјС‹С… СЃСѓС‰РЅРѕСЃС‚РµР№
      */
-    const MODER_MSSAGES      = 1;  // Личные сообщения
-    const MODER_BLOGS        = 2;  // Блоги: посты и комментарии
-    const MODER_COMMUNITY    = 3;  // Сообщества: посты и комментарии
-    const MODER_PROJECTS     = 4;  // Проекты
-    const MODER_PRJ_OFFERS   = 5;  // Предложения в проектах
-    const MODER_ART_COM      = 8;  // Комментарии в статьях
-    const MODER_PROFILE      = 9;  // Изменения в профилях
-    const MODER_PRJ_DIALOG   = 10; // Комментарии к предложениям по проектам
-    const MODER_CONTEST_COM  = 11; // Комментарии к предложениям конкурсов
-    const MODER_PORTF_CHOISE = 12; // Уточнения к разделам в портфолио
-    const MODER_PORTFOLIO    = 13; // Работы в портфолио
-    const MODER_SDELAU       = 14; // Предложения фрилансеров "Сделаю"
-    const MODER_PRJ_COM      = 15; // Сборная: Предложения в проектах/конкурсах, комментарии к предложениям в проектах/конкурсах, Предложения фрилансеров Сделаю
-    const MODER_COMMENTS     = 16; // Сборная: Комментарии: магазин, статьи
-    const MODER_PORTF_UNITED = 17; // Сборная: Работы в портфолио, Уточнения к разделам в портфолио
-    const MODER_FIRST_PAGE   = 18; // Платные места
-    const MODER_CAROUSEL     = 19; // Карусель
-    const MODER_BLOGS_UNITED = 20; // Сборная: Блоги: посты и комментарии, Комментарии в статьях
-    const MODER_USER_UNITED  = 21; // Сборная: Изменения в профилях и Уточнения к разделам в портфолио
-    const MODER_TSERVICES    = 22; // Типовые услуги
-    const MODER_SBR_REQV     = 23; // Реквизиты в разделе финансы
+    const MODER_MSSAGES      = 1;  // Р›РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ
+    const MODER_BLOGS        = 2;  // Р‘Р»РѕРіРё: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё
+    const MODER_COMMUNITY    = 3;  // РЎРѕРѕР±С‰РµСЃС‚РІР°: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё
+    const MODER_PROJECTS     = 4;  // РџСЂРѕРµРєС‚С‹
+    const MODER_PRJ_OFFERS   = 5;  // РџСЂРµРґР»РѕР¶РµРЅРёСЏ РІ РїСЂРѕРµРєС‚Р°С…
+    const MODER_ART_COM      = 8;  // РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ СЃС‚Р°С‚СЊСЏС…
+    const MODER_PROFILE      = 9;  // РР·РјРµРЅРµРЅРёСЏ РІ РїСЂРѕС„РёР»СЏС…
+    const MODER_PRJ_DIALOG   = 10; // РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РїРѕ РїСЂРѕРµРєС‚Р°Рј
+    const MODER_CONTEST_COM  = 11; // РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РєРѕРЅРєСѓСЂСЃРѕРІ
+    const MODER_PORTF_CHOISE = 12; // РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
+    const MODER_PORTFOLIO    = 13; // Р Р°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ
+    const MODER_SDELAU       = 14; // РџСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ "РЎРґРµР»Р°СЋ"
+    const MODER_PRJ_COM      = 15; // РЎР±РѕСЂРЅР°СЏ: РџСЂРµРґР»РѕР¶РµРЅРёСЏ РІ РїСЂРѕРµРєС‚Р°С…/РєРѕРЅРєСѓСЂСЃР°С…, РєРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РІ РїСЂРѕРµРєС‚Р°С…/РєРѕРЅРєСѓСЂСЃР°С…, РџСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РЎРґРµР»Р°СЋ
+    const MODER_COMMENTS     = 16; // РЎР±РѕСЂРЅР°СЏ: РљРѕРјРјРµРЅС‚Р°СЂРёРё: РјР°РіР°Р·РёРЅ, СЃС‚Р°С‚СЊРё
+    const MODER_PORTF_UNITED = 17; // РЎР±РѕСЂРЅР°СЏ: Р Р°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ, РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
+    const MODER_FIRST_PAGE   = 18; // РџР»Р°С‚РЅС‹Рµ РјРµСЃС‚Р°
+    const MODER_CAROUSEL     = 19; // РљР°СЂСѓСЃРµР»СЊ
+    const MODER_BLOGS_UNITED = 20; // РЎР±РѕСЂРЅР°СЏ: Р‘Р»РѕРіРё: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё, РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ СЃС‚Р°С‚СЊСЏС…
+    const MODER_USER_UNITED  = 21; // РЎР±РѕСЂРЅР°СЏ: РР·РјРµРЅРµРЅРёСЏ РІ РїСЂРѕС„РёР»СЏС… Рё РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
+    const MODER_TSERVICES    = 22; // РўРёРїРѕРІС‹Рµ СѓСЃР»СѓРіРё
+    const MODER_SBR_REQV     = 23; // Р РµРєРІРёР·РёС‚С‹ РІ СЂР°Р·РґРµР»Рµ С„РёРЅР°РЅСЃС‹
     
     
     /**
-     * Сущности для которых отсутствуют вкладки Проверенные
+     * РЎСѓС‰РЅРѕСЃС‚Рё РґР»СЏ РєРѕС‚РѕСЂС‹С… РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‚ РІРєР»Р°РґРєРё РџСЂРѕРІРµСЂРµРЅРЅС‹Рµ
      * 
      * @var array 
      */
@@ -56,7 +56,7 @@ class user_content extends admin_parent {
     );
     
     /**
-     * Сущности для которых отсутствуют вкладки Заблокированные
+     * РЎСѓС‰РЅРѕСЃС‚Рё РґР»СЏ РєРѕС‚РѕСЂС‹С… РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‚ РІРєР»Р°РґРєРё Р—Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ
      * 
      * @var array 
      */
@@ -70,7 +70,7 @@ class user_content extends admin_parent {
 
 
     /**
-     * Имена таблиц
+     * РРјРµРЅР° С‚Р°Р±Р»РёС†
      * 
      * @var array 
      */
@@ -97,143 +97,143 @@ class user_content extends admin_parent {
     );
     
     /**
-     * Всплывающие счетчики в шапках потоков
+     * Р’СЃРїР»С‹РІР°СЋС‰РёРµ СЃС‡РµС‚С‡РёРєРё РІ С€Р°РїРєР°С… РїРѕС‚РѕРєРѕРІ
      * 
      * @var array 
      */
     static $counters = array(
         self::MODER_USER_UNITED    => array(
-            array('name' => 'Жалобы на спам', 'link' => '/siteadmin/messages_spam', 'class' => 'messages_spam', 'method' => 'getSpamCount')
+            array('name' => 'Р–Р°Р»РѕР±С‹ РЅР° СЃРїР°Рј', 'link' => '/siteadmin/messages_spam', 'class' => 'messages_spam', 'method' => 'getSpamCount')
         ),
         self::MODER_PRJ_COM => array(
-            array('name' => 'Жалобы на проекты', 'link' => '/siteadmin/ban-razban/?mode=complain', 'class' => 'projects', 'method' => 'GetComplainPrjsCount'),
-            array('name' => 'Подозрительные пользователи', 'link' => '/siteadmin/suspicious-users/', 'class' => 'users', 'method' => 'GetCountSuspiciousUsers')
+            array('name' => 'Р–Р°Р»РѕР±С‹ РЅР° РїСЂРѕРµРєС‚С‹', 'link' => '/siteadmin/ban-razban/?mode=complain', 'class' => 'projects', 'method' => 'GetComplainPrjsCount'),
+            array('name' => 'РџРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё', 'link' => '/siteadmin/suspicious-users/', 'class' => 'users', 'method' => 'GetCountSuspiciousUsers')
         )
     );
 
 
     /**
-     * раз во сколько секунд делается запрос на обновление страницы выбора потоков. быстро, наприер: 5 секунд.
+     * СЂР°Р· РІРѕ СЃРєРѕР»СЊРєРѕ СЃРµРєСѓРЅРґ РґРµР»Р°РµС‚СЃСЏ Р·Р°РїСЂРѕСЃ РЅР° РѕР±РЅРѕРІР»РµРЅРёРµ СЃС‚СЂР°РЅРёС†С‹ РІС‹Р±РѕСЂР° РїРѕС‚РѕРєРѕРІ. Р±С‹СЃС‚СЂРѕ, РЅР°РїСЂРёРµСЂ: 5 СЃРµРєСѓРЅРґ.
      */
     const MODER_CHOOSE_REFRESH = 5;
 
     /**
-     * раз во сколько секунд проверять не сменилась ли смена. медленно, наприер: 10 минут.
+     * СЂР°Р· РІРѕ СЃРєРѕР»СЊРєРѕ СЃРµРєСѓРЅРґ РїСЂРѕРІРµСЂСЏС‚СЊ РЅРµ СЃРјРµРЅРёР»Р°СЃСЊ Р»Рё СЃРјРµРЅР°. РјРµРґР»РµРЅРЅРѕ, РЅР°РїСЂРёРµСЂ: 10 РјРёРЅСѓС‚.
      */
     const MODER_SHIFTS_REFRESH = 600;
     
     /**
-     * через сколько секунд простоя автоматически освобождать поток. средне, наприер: 5 минут.
+     * С‡РµСЂРµР· СЃРєРѕР»СЊРєРѕ СЃРµРєСѓРЅРґ РїСЂРѕСЃС‚РѕСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РѕСЃРІРѕР±РѕР¶РґР°С‚СЊ РїРѕС‚РѕРє. СЃСЂРµРґРЅРµ, РЅР°РїСЂРёРµСЂ: 5 РјРёРЅСѓС‚.
      */
     const MODER_STREAM_RELEASE = 600;
 
     /**
-     * как часто обновлять данные о количестве неотмодерированныех сообщений
+     * РєР°Рє С‡Р°СЃС‚Рѕ РѕР±РЅРѕРІР»СЏС‚СЊ РґР°РЅРЅС‹Рµ Рѕ РєРѕР»РёС‡РµСЃС‚РІРµ РЅРµРѕС‚РјРѕРґРµСЂРёСЂРѕРІР°РЅРЅС‹РµС… СЃРѕРѕР±С‰РµРЅРёР№
      */
     const MODER_QUEUE_CNT_REFRESH = 120;
     
     /**
-     * Частота обновления счетчиков "Подозрительные пользователи", "Жалобы на проекты", "Жалобы на спам", "Платные места"
+     * Р§Р°СЃС‚РѕС‚Р° РѕР±РЅРѕРІР»РµРЅРёСЏ СЃС‡РµС‚С‡РёРєРѕРІ "РџРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё", "Р–Р°Р»РѕР±С‹ РЅР° РїСЂРѕРµРєС‚С‹", "Р–Р°Р»РѕР±С‹ РЅР° СЃРїР°Рј", "РџР»Р°С‚РЅС‹Рµ РјРµСЃС‚Р°"
      */
     const MODER_OTHER_CNT_REFRESH = 180;
     
     /**
-     * Время жизни мэмкэша в секундах. Должно быть больше MODER_CHOOSE_REFRESH, MODER_SHIFTS_REFRESH и MODER_STREAM_RELEASE
+     * Р’СЂРµРјСЏ Р¶РёР·РЅРё РјСЌРјРєСЌС€Р° РІ СЃРµРєСѓРЅРґР°С…. Р”РѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ MODER_CHOOSE_REFRESH, MODER_SHIFTS_REFRESH Рё MODER_STREAM_RELEASE
      */
     const MODER_MEMBUFF_TTL = 3600;
     
     /**
-     * По сколько записей выводить на страницу за раз
+     * РџРѕ СЃРєРѕР»СЊРєРѕ Р·Р°РїРёСЃРµР№ РІС‹РІРѕРґРёС‚СЊ РЅР° СЃС‚СЂР°РЅРёС†Сѓ Р·Р° СЂР°Р·
      */
     const CONTENTS_PER_PAGE = 50;
     
     /**
-     * По сколько записей выводить на страницу за раз в потоке лички
+     * РџРѕ СЃРєРѕР»СЊРєРѕ Р·Р°РїРёСЃРµР№ РІС‹РІРѕРґРёС‚СЊ РЅР° СЃС‚СЂР°РЅРёС†Сѓ Р·Р° СЂР°Р· РІ РїРѕС‚РѕРєРµ Р»РёС‡РєРё
      */
     const MESSAGES_PER_PAGE = 25;
     
     /**
-     * По сколько записей выводить на вкладках Проверенные и Заблокированные
+     * РџРѕ СЃРєРѕР»СЊРєРѕ Р·Р°РїРёСЃРµР№ РІС‹РІРѕРґРёС‚СЊ РЅР° РІРєР»Р°РґРєР°С… РџСЂРѕРІРµСЂРµРЅРЅС‹Рµ Рё Р—Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ
      */
     const TWITTER_PER_PAGE = 10;
 
     /**
-     * Объект класса memBuff
+     * РћР±СЉРµРєС‚ РєР»Р°СЃСЃР° memBuff
      * 
      * @var object
      */
     var $mem_buff = null;
     
     /**
-     * Список модерируемых сущностей
+     * РЎРїРёСЃРѕРє РјРѕРґРµСЂРёСЂСѓРµРјС‹С… СЃСѓС‰РЅРѕСЃС‚РµР№
      * 
      * @var array
      */
     var $contents = null;
     
     /**
-     * Список текущих потоков
+     * РЎРїРёСЃРѕРє С‚РµРєСѓС‰РёС… РїРѕС‚РѕРєРѕРІ
      * 
      * @var array 
      */
     var $content_streams = false;
     
     /**
-     * Количество занятых потоков в каждой сущности
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РЅСЏС‚С‹С… РїРѕС‚РѕРєРѕРІ РІ РєР°Р¶РґРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё
      * 
      * @var array 
      */
     var $streams_count = false;
     
     /**
-     * Время первого обновления списка текущих потоков
+     * Р’СЂРµРјСЏ РїРµСЂРІРѕРіРѕ РѕР±РЅРѕРІР»РµРЅРёСЏ СЃРїРёСЃРєР° С‚РµРєСѓС‰РёС… РїРѕС‚РѕРєРѕРІ
      * 
      * @var type 
      */
     var $first_update = false;
     
     /**
-     * Время последнего обновления списка текущих потоков
+     * Р’СЂРµРјСЏ РїРѕСЃР»РµРґРЅРµРіРѕ РѕР±РЅРѕРІР»РµРЅРёСЏ СЃРїРёСЃРєР° С‚РµРєСѓС‰РёС… РїРѕС‚РѕРєРѕРІ
      * 
      * @var type 
      */
     var $last_update = false;
 
     /**
-     * Список потоков во время создания класса (копия $content_streams в __construct)
-     * В дальнейшем нужен для отслеживания изменений в __destruct
+     * РЎРїРёСЃРѕРє РїРѕС‚РѕРєРѕРІ РІРѕ РІСЂРµРјСЏ СЃРѕР·РґР°РЅРёСЏ РєР»Р°СЃСЃР° (РєРѕРїРёСЏ $content_streams РІ __construct)
+     * Р’ РґР°Р»СЊРЅРµР№С€РµРј РЅСѓР¶РµРЅ РґР»СЏ РѕС‚СЃР»РµР¶РёРІР°РЅРёСЏ РёР·РјРµРЅРµРЅРёР№ РІ __destruct
      * 
      * @var array 
      */
     var $initial_sreams = array();
     
     /**
-     * Нужно ли сохранять потоки при вызове __desctruct
-     * 0 - нет, 1 - только при имзенениях, 2 - обновить все потоки в любом случае
+     * РќСѓР¶РЅРѕ Р»Рё СЃРѕС…СЂР°РЅСЏС‚СЊ РїРѕС‚РѕРєРё РїСЂРё РІС‹Р·РѕРІРµ __desctruct
+     * 0 - РЅРµС‚, 1 - С‚РѕР»СЊРєРѕ РїСЂРё РёРјР·РµРЅРµРЅРёСЏС…, 2 - РѕР±РЅРѕРІРёС‚СЊ РІСЃРµ РїРѕС‚РѕРєРё РІ Р»СЋР±РѕРј СЃР»СѓС‡Р°Рµ
      * 
      * @var integer
      */
     var $save_streams = 0;
     
     /**
-     * Информация о потоке.
+     * РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїРѕС‚РѕРєРµ.
      * 
      * @var array
      */
     var $aStream = null;
     
     /**
-     * Количество проверенных записей
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕРІРµСЂРµРЅРЅС‹С… Р·Р°РїРёСЃРµР№
      * 
      * @var int 
      */
     var $nResolveCnt = 0;
     
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      * 
-     * @param  array $user_permissions права пользователя
-     * @param int $items_pp Количество элементов на странице
+     * @param  array $user_permissions РїСЂР°РІР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param int $items_pp РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РЅР° СЃС‚СЂР°РЅРёС†Рµ
      */
     function __construct( $uid = 0, $user_permissions = array(), $items_pp = 20 ) {
         $this->curr_uid         = $uid;
@@ -246,7 +246,7 @@ class user_content extends admin_parent {
         $this->last_update      = $this->mem_buff->get( 'ucs_last_update' );
         $this->initial_sreams   = $this->content_streams;
 
-        // если в мемкеше потерялось, читаем с базы
+        // РµСЃР»Рё РІ РјРµРјРєРµС€Рµ РїРѕС‚РµСЂСЏР»РѕСЃСЊ, С‡РёС‚Р°РµРј СЃ Р±Р°Р·С‹
         if ( $this->content_streams === false ) {
             $this->streams_count = array();
             $this->first_update  = time();
@@ -292,20 +292,20 @@ class user_content extends admin_parent {
             }
         }
 
-        //$this->mem_buff->touchTag( 'user_content' ); // сброс мемкеша в процессе разработки
+        //$this->mem_buff->touchTag( 'user_content' ); // СЃР±СЂРѕСЃ РјРµРјРєРµС€Р° РІ РїСЂРѕС†РµСЃСЃРµ СЂР°Р·СЂР°Р±РѕС‚РєРё
 
         parent::__construct( $items_pp );
     }
     
     /**
-     * Проверяет удерживает ли юзер поток
+     * РџСЂРѕРІРµСЂСЏРµС‚ СѓРґРµСЂР¶РёРІР°РµС‚ Р»Рё СЋР·РµСЂ РїРѕС‚РѕРє
      * 
-     * @param  int $content_id идентификатор сущности из admin_contents
-     * @param  string $stream_id идентификатор потока
-     * @param  int $user_id UID пользователя
-     * @param  mixed $aStream поток или номер ошибки
-     * @param  int $nResolveCnt количество проверенных записей
-     * @return bool true - удерживает, false - нет
+     * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $user_id UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  mixed $aStream РїРѕС‚РѕРє РёР»Рё РЅРѕРјРµСЂ РѕС€РёР±РєРё
+     * @param  int $nResolveCnt РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕРІРµСЂРµРЅРЅС‹С… Р·Р°РїРёСЃРµР№
+     * @return bool true - СѓРґРµСЂР¶РёРІР°РµС‚, false - РЅРµС‚
      */
     function checkStream( $content_id = 0, $stream_id = '', $user_id = 0, &$aStream = 0, $nResolveCnt = 0 ) {
         $bRet   = false;
@@ -319,13 +319,13 @@ class user_content extends admin_parent {
                             $bFound = true;
 
                             if ( empty($aOne['admin_id']) ) {
-                                $aStream = -6; // поток освобожден
+                                $aStream = -6; // РїРѕС‚РѕРє РѕСЃРІРѕР±РѕР¶РґРµРЅ
                             }
                             elseif ( $aOne['admin_id'] != $user_id ) {
-                                $aStream = -5; // поток захвачен другим юзером
+                                $aStream = -5; // РїРѕС‚РѕРє Р·Р°С…РІР°С‡РµРЅ РґСЂСѓРіРёРј СЋР·РµСЂРѕРј
                             }
                             elseif ( $aOne['admin_id'] == $user_id ) {
-                                $bRet = true; // юзер удерживает поток
+                                $bRet = true; // СЋР·РµСЂ СѓРґРµСЂР¶РёРІР°РµС‚ РїРѕС‚РѕРє
                                 $aOne['time'] = time();
                                 $aOne['resolve_cnt'] += $nResolveCnt;
                                 $this->content_streams[$content_id][$sKey] = $aOne;
@@ -341,30 +341,30 @@ class user_content extends admin_parent {
                     }
                     
                     if ( !$bFound ) {
-                        $aStream = -4; // поток не существует
+                        $aStream = -4; // РїРѕС‚РѕРє РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
                     }
                 }
                 else {
-                    $aStream = -3; // не хватает прав
+                    $aStream = -3; // РЅРµ С…РІР°С‚Р°РµС‚ РїСЂР°РІ
                 }
             }
             else {
-                $aStream = -2; // сущность не существует
+                $aStream = -2; // СЃСѓС‰РЅРѕСЃС‚СЊ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
             }
         }
         else {
-            $aStream = -1; // не хватает данных
+            $aStream = -1; // РЅРµ С…РІР°С‚Р°РµС‚ РґР°РЅРЅС‹С…
         }
         
         return $bRet;
     }
     
     /**
-     * Автоматическое освобождение просроченных потоков
+     * РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРµ РѕСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїСЂРѕСЃСЂРѕС‡РµРЅРЅС‹С… РїРѕС‚РѕРєРѕРІ
      * 
-     * вызывается из minutly.php
-     * в идеале должна просто просто пробегаться по массиву из мэмкэша.
-     * появление просроченных потоков должно быть редкостью та как модерирование беспрерывное
+     * РІС‹Р·С‹РІР°РµС‚СЃСЏ РёР· minutly.php
+     * РІ РёРґРµР°Р»Рµ РґРѕР»Р¶РЅР° РїСЂРѕСЃС‚Рѕ РїСЂРѕСЃС‚Рѕ РїСЂРѕР±РµРіР°С‚СЊСЃСЏ РїРѕ РјР°СЃСЃРёРІСѓ РёР· РјСЌРјРєСЌС€Р°.
+     * РїРѕСЏРІР»РµРЅРёРµ РїСЂРѕСЃСЂРѕС‡РµРЅРЅС‹С… РїРѕС‚РѕРєРѕРІ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ СЂРµРґРєРѕСЃС‚СЊСЋ С‚Р° РєР°Рє РјРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ Р±РµСЃРїСЂРµСЂС‹РІРЅРѕРµ
      */
     function releaseDelayedStreams() {
         if ( $this->content_streams === false || $this->first_update === false || $this->last_update === false ) {
@@ -400,11 +400,11 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Освобождение потока пользователем
+     * РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РїРѕС‚РѕРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
      * 
-     * @param  int $content_id идентификатор сущности из admin_contents
-     * @param  string $stream_id идентификатор потока
-     * @param  int $user_id UID пользователя
+     * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $user_id UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      */
     function releaseStream( $content_id = 0, $stream_id = '', $user_id = 0 ) {
         if ( $this->content_streams === false || $this->first_update === false || $this->last_update === false ) {
@@ -431,16 +431,16 @@ class user_content extends admin_parent {
     }
 
     /**
-     * Отсылка уведомления в личку об Утверждение/удаление записи
+     * РћС‚СЃС‹Р»РєР° СѓРІРµРґРѕРјР»РµРЅРёСЏ РІ Р»РёС‡РєСѓ РѕР± РЈС‚РІРµСЂР¶РґРµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё
      * 
-     * @param  int $user_id идентификатор модератора
-     * @param  int $from_id идентификатор пользователя
-     * @param  int $content_id идентификатор сущности из admin_contents
-     * @param  int $rec_id идентификатор записи
-     * @param  int $rec_type тип записи 
-     * @param  int $action действие: 1 - утверждено, 2 - удалено
-     * @param  string $reason причина
-     * @return bool true - успех, false - провал
+     * @param  int $user_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРѕРґРµСЂР°С‚РѕСЂР°
+     * @param  int $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @param  int $rec_type С‚РёРї Р·Р°РїРёСЃРё 
+     * @param  int $action РґРµР№СЃС‚РІРёРµ: 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+     * @param  string $reason РїСЂРёС‡РёРЅР°
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function sendNotification( $user_id = 0, $from_id = 0, $content_id = 0, $rec_id = 0, $rec_type = 0, $action = 1, $reason = '' ) {
         global $DB;
@@ -456,101 +456,101 @@ class user_content extends admin_parent {
 
         switch ($content_id) {
             case self::MODER_MSSAGES:
-                // Личные сообщения
+                // Р›РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ
                 $DB9 = new DB( 'plproxy' );
                 $sQuery = 'SELECT * FROM messages_moder_send_get(?i, ?i);';
                 $aMsg   = $DB9->row( $sQuery, $from_id, $rec_id );
                 $msg = $aMsg['msg_text'];
-                $message = "Сообщение заблокировано.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."Причина: {$reason}";
+                $message = "РЎРѕРѕР±С‰РµРЅРёРµ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРѕ.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."РџСЂРёС‡РёРЅР°: {$reason}";
                 $need_send = true;
                 break;
             case self::MODER_BLOGS:
-                // Блоги: посты и комментарии
+                // Р‘Р»РѕРіРё: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/blogs.php' );
                 $aMsg = blogs::GetMsgInfo($rec_id, $ee, $tt);
                 $msg = $aMsg['msgtext'];
                 if($rec_type==1) {
-                    $message = "Сообщение в блоге заблокировано.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."Причина: {$reason}";
+                    $message = "РЎРѕРѕР±С‰РµРЅРёРµ РІ Р±Р»РѕРіРµ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРѕ.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."РџСЂРёС‡РёРЅР°: {$reason}";
                 }
                 if($rec_type==2) {
-                    $message = "Комментарий в блоге заблокирован.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."Причина: {$reason}";
+                    $message = "РљРѕРјРјРµРЅС‚Р°СЂРёР№ РІ Р±Р»РѕРіРµ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."РџСЂРёС‡РёРЅР°: {$reason}";
                 }
                 $need_send = true;
                 break;
             case self::MODER_COMMUNITY:
-                // Сообщества: посты и комментарии
+                // РЎРѕРѕР±С‰РµСЃС‚РІР°: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё
                 $sql = "SELECT * FROM commune_messages WHERE id = ?i";
                 $aMsg = $DB->row($sql, $rec_id);
                 $msg = $aMsg['msgtext'];
                 if($rec_type==1) {
-                    $message = "Сообщение в сообществе заблокировано.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."Причина: {$reason}";
+                    $message = "РЎРѕРѕР±С‰РµРЅРёРµ РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРѕ.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."РџСЂРёС‡РёРЅР°: {$reason}";
                 }
                 if($rec_type==2) {
-                    $message = "Комментарий в сообществе заблокирован.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."Причина: {$reason}";
+                    $message = "РљРѕРјРјРµРЅС‚Р°СЂРёР№ РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."РџСЂРёС‡РёРЅР°: {$reason}";
                 }
                 $need_send = true;
                 break;
             case self::MODER_PROJECTS:
-                // Проекты
+                // РџСЂРѕРµРєС‚С‹
                 $sql = "SELECT * FROM projects WHERE id= ?i";
                 $aMsg = $DB->row($sql, $rec_id);
                 $msg = $aMsg['descr'];
-                $message = "Проект заблокирован.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."Причина: {$reason}";
+                $message = "РџСЂРѕРµРєС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."РџСЂРёС‡РёРЅР°: {$reason}";
                 $need_send = true;
                 break;
             case self::MODER_PRJ_OFFERS:
-                // Предложения в проектах
+                // РџСЂРµРґР»РѕР¶РµРЅРёСЏ РІ РїСЂРѕРµРєС‚Р°С…
                 $sql = "SELECT * FROM projects_offers WHERE id = ?i";
                 $aMsg = $DB->row($sql, $rec_id);
                 $msg = $aMsg['descr'];
-                $message = "Предложение в проекте заблокировано.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."Причина: {$reason}";
+                $message = "РџСЂРµРґР»РѕР¶РµРЅРёРµ РІ РїСЂРѕРµРєС‚Рµ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРѕ.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."РџСЂРёС‡РёРЅР°: {$reason}";
                 $need_send = true;
                 break;
             case self::MODER_ART_COM:
-                // Комментарии в статьях
+                // РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ СЃС‚Р°С‚СЊСЏС…
                 $sql = "SELECT * FROM articles_comments WHERE id = ?i";
                 $aMsg = $DB->row($sql, $rec_id);
                 $msg = $aMsg['msgtext'];
-                $message = "Комментарий в статьях заблокирован.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."Причина: {$reason}";
+                $message = "РљРѕРјРјРµРЅС‚Р°СЂРёР№ РІ СЃС‚Р°С‚СЊСЏС… Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."РџСЂРёС‡РёРЅР°: {$reason}";
                 $need_send = true;
                 break;
             case self::MODER_PROFILE:
-                // Изменения в профилях
-                $message = "Изменение в профиле отредактировано.\n\nПричина: {$reason}";
+                // РР·РјРµРЅРµРЅРёСЏ РІ РїСЂРѕС„РёР»СЏС…
+                $message = "РР·РјРµРЅРµРЅРёРµ РІ РїСЂРѕС„РёР»Рµ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРѕ.\n\nРџСЂРёС‡РёРЅР°: {$reason}";
                 $need_send = true;
                 break;
             case self::MODER_PRJ_DIALOG:
-                // Комментарии к предложениям по проектам
+                // РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РїРѕ РїСЂРѕРµРєС‚Р°Рј
                 $sql = "SELECT * FROM projects_offers_dialogue WHERE id = ?i";
                 $aMsg = $DB->row($sql, $rec_id);
                 $msg = $aMsg['post_text'];
-                $message = "Комментарий к предложению проекта заблокирован.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."Причина: {$reason}";
+                $message = "РљРѕРјРјРµРЅС‚Р°СЂРёР№ Рє РїСЂРµРґР»РѕР¶РµРЅРёСЋ РїСЂРѕРµРєС‚Р° Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."РџСЂРёС‡РёРЅР°: {$reason}";
                 $need_send = true;
                 break;
             case self::MODER_CONTEST_COM:
-                // Комментарии к предложениям конкурсов
+                // РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РєРѕРЅРєСѓСЂСЃРѕРІ
                 $sql = "SELECT * FROM projects_contest_msgs WHERE id = ?i";
                 $aMsg = $DB->row($sql, $rec_id);
                 $msg = $aMsg['msg'];
-                $message = "Комментарии к предложению конкурса заблокирован.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."Причина: {$reason}";
+                $message = "РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЋ РєРѕРЅРєСѓСЂСЃР° Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."РџСЂРёС‡РёРЅР°: {$reason}";
                 $need_send = true;
                 break;
             case self::MODER_PORTF_CHOISE:
-                // Уточнения к разделам в портфолио
-                $message = "Уточнения к разделам в портфолио отредактированы.\n\nПричина: {$reason}";
+                // РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
+                $message = "РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅС‹.\n\nРџСЂРёС‡РёРЅР°: {$reason}";
                 $need_send = true;
                 break;
             case self::MODER_PORTFOLIO:
-                // Работы в портфолио
-                $message = "Работа в портфолио заблокирована.\n\nПричина: {$reason}";
+                // Р Р°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ
+                $message = "Р Р°Р±РѕС‚Р° РІ РїРѕСЂС‚С„РѕР»РёРѕ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅР°.\n\nРџСЂРёС‡РёРЅР°: {$reason}";
                 $need_send = true;
                 break;
             case self::MODER_SDELAU:
-                // Предложения фрилансеров "Сделаю"
+                // РџСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ "РЎРґРµР»Р°СЋ"
                 $sql = "SELECT * FROM freelance_offers WHERE id = ?i";
                 $aMsg = $DB->row($sql, $rec_id);
                 $msg = $aMsg['descr'];
-                $message = "Объявление в предложениях фрилансеров заблокировано.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."Причина: {$reason}";
+                $message = "РћР±СЉСЏРІР»РµРЅРёРµ РІ РїСЂРµРґР»РѕР¶РµРЅРёСЏС… С„СЂРёР»Р°РЅСЃРµСЂРѕРІ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРѕ.\n\n".($msg ? "-----\n\n{$msg}\n\n-----\n\n" : "")."РџСЂРёС‡РёРЅР°: {$reason}";
                 $need_send = true;
                 break;
         }
@@ -563,18 +563,18 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Утверждение/удаление записи
+     * РЈС‚РІРµСЂР¶РґРµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё
      * 
-     * @param  string $stream_id идентификатор потока
-     * @param  int $user_id идентификатор модератора
-     * @param  int $from_id идентификатор пользователя
-     * @param  int $content_id идентификатор сущности из admin_contents
-     * @param  int $rec_id идентификатор записи
-     * @param  int $rec_type тип записи 
-     * @param  int $action действие: 1 - утверждено, 2 - удалено
-     * @param  string $is_sent было ли отправлено уведомление
-     * @param  string $reason причина удаления
-     * @return bool true - успех, false - провал
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $user_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРѕРґРµСЂР°С‚РѕСЂР°
+     * @param  int $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @param  int $rec_type С‚РёРї Р·Р°РїРёСЃРё 
+     * @param  int $action РґРµР№СЃС‚РІРёРµ: 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+     * @param  string $is_sent Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
+     * @param  string $reason РїСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function resolveContent( $stream_id = '', $user_id = 0, $from_id = 0, $content_id = 0, $rec_id = 0, $rec_type = 0, $action = 1, $is_sent = '', $reason = '' ) {
         $reason = !$reason ? '' : $reason;
@@ -582,55 +582,55 @@ class user_content extends admin_parent {
         
         switch ($content_id) {
             case self::MODER_MSSAGES:
-                // Личные сообщения
+                // Р›РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ
                 $bRet = $this->resolveMessages( $stream_id, $user_id, $from_id, $rec_id, $rec_type, $action, $is_sent, $reason );
                 break;
             case self::MODER_BLOGS:
-                // Блоги: посты и комментарии
+                // Р‘Р»РѕРіРё: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё
                 $bRet = $this->resolveBlogs( $stream_id, $user_id, $from_id, $rec_id, $rec_type, $action, $is_sent, $reason );
                 break;
             case self::MODER_COMMUNITY:
-                // Сообщества: посты и комментарии
+                // РЎРѕРѕР±С‰РµСЃС‚РІР°: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё
                 $bRet = $this->resolveCommunity( $stream_id, $user_id, $from_id, $rec_id, $rec_type, $action, $is_sent, $reason );
                 break;
             case self::MODER_PROJECTS:
-                // Проекты
+                // РџСЂРѕРµРєС‚С‹
                 $bRet = $this->resolveProjects( $stream_id, $user_id, $from_id, $rec_id, $rec_type, $action, $is_sent, $reason );
                 break;
             case self::MODER_PRJ_OFFERS:
-                // Предложения в проектах
+                // РџСЂРµРґР»РѕР¶РµРЅРёСЏ РІ РїСЂРѕРµРєС‚Р°С…
                 $bRet = $this->resolvePrjOffers( $stream_id, $user_id, $from_id, $rec_id, $rec_type, $action, $is_sent, $reason );
                 break;
             case self::MODER_ART_COM:
-                // Комментарии в статьях
+                // РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ СЃС‚Р°С‚СЊСЏС…
                 $bRet = $this->resolveArtCom( $stream_id, $user_id, $from_id, $rec_id, $rec_type, $action, $is_sent, $reason );
                 break;
             case self::MODER_PROFILE:
-                // Изменения в профилях
+                // РР·РјРµРЅРµРЅРёСЏ РІ РїСЂРѕС„РёР»СЏС…
                 $bRet = $this->resolveProfile( $stream_id, $user_id, $from_id, $rec_id, $rec_type, $action, $is_sent, $reason );
                 break;
             case self::MODER_PRJ_DIALOG:
-                // Комментарии к предложениям по проектам
+                // РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РїРѕ РїСЂРѕРµРєС‚Р°Рј
                 $bRet = $this->resolvePrjDialog( $stream_id, $user_id, $from_id, $rec_id, $rec_type, $action, $is_sent, $reason );
                 break;
             case self::MODER_CONTEST_COM:
-                // Комментарии к предложениям конкурсов
+                // РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РєРѕРЅРєСѓСЂСЃРѕРІ
                 $bRet = $this->resolveContestCom( $stream_id, $user_id, $from_id, $rec_id, $rec_type, $action, $is_sent, $reason );
                 break;
             case self::MODER_PORTF_CHOISE:
-                // Уточнения к разделам в портфолио
+                // РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
                 $bRet = $this->resolvePortfChoice( $stream_id, $user_id, $from_id, $rec_id, $rec_type, $action, $is_sent, $reason );
                 break;
             case self::MODER_PORTFOLIO:
-                // Работы в портфолио
+                // Р Р°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ
                 $bRet = $this->resolvePortfolio( $stream_id, $user_id, $from_id, $rec_id, $rec_type, $action, $is_sent, $reason );
                 break;
             case self::MODER_SDELAU:
-                // Предложения фрилансеров "Сделаю"
+                // РџСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ "РЎРґРµР»Р°СЋ"
                 $bRet = $this->resolveSdelau( $stream_id, $user_id, $from_id, $rec_id, $rec_type, $action, $is_sent, $reason );
                 break;
             case self::MODER_TSERVICES:
-                // Типовые услуги
+                // РўРёРїРѕРІС‹Рµ СѓСЃР»СѓРіРё
                 $bRet = $this->resolveTServices( $stream_id, $user_id, $from_id, $rec_id, $rec_type, $action, $is_sent, $reason );
                 break;
             case self::MODER_SBR_REQV:
@@ -648,19 +648,19 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Разблокировака сущностей
+     * Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°РєР° СЃСѓС‰РЅРѕСЃС‚РµР№
      * 
-     * @param  int $content_id идентификатор сущности из admin_contents
-     * @param  int $from_id идентификатор пользователя
-     * @param  int $rec_id идентификатор записи
-     * @param  int $rec_type тип записи 
-     * @param  string $is_sent было ли отправлено уведомление
+     * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+     * @param  int $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @param  int $rec_type С‚РёРї Р·Р°РїРёСЃРё 
+     * @param  string $is_sent Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
      */
     function unblock( $content_id = 0, $from_id = 0, $rec_id = 0, $rec_type = 0, $is_sent = '' ) {
         switch ($content_id) {
             case self::MODER_BLOGS:
-                // Блоги: посты и комментарии
-                if ( $rec_type == 1 ) { // пост
+                // Р‘Р»РѕРіРё: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё
+                if ( $rec_type == 1 ) { // РїРѕСЃС‚
                     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/blogs.php' );
                     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/admin_log.php' );
 
@@ -671,16 +671,16 @@ class user_content extends admin_parent {
                         WHERE bm.id = ?i';
 
                     $aThread  = $GLOBALS['DB']->row( $sQuery, $rec_id );
-                    $sObjName = $aThread['title'] ? $aThread['title'] : '<без темы>';
+                    $sObjName = $aThread['title'] ? $aThread['title'] : '<Р±РµР· С‚РµРјС‹>';
                     $sObjLink = '/blogs/view.php?tr=' . $aThread['id'];
 
                     if ( $aThread['blocked_time'] ) {
                         $blogs->UnBlocked( $aThread['id'] );
-                        // пишем лог админских действий
+                        // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
                         admin_log::addLog( admin_log::OBJ_CODE_BLOG, 8, $from_id, $aThread['id'], $sObjName, $sObjLink, 0, '', 0, '' );
                     }
                 }
-                else { // комментарий
+                else { // РєРѕРјРјРµРЅС‚Р°СЂРёР№
                     $sDeluserId = $GLOBALS['DB']->val( 'SELECT deluser_id FROM blogs_msgs WHERE id = ?i', $rec_id );
 
                     if ( $sDeluserId && $sDeluserId != $from_id ) {
@@ -693,8 +693,8 @@ class user_content extends admin_parent {
                 }
                 break;
             case self::MODER_COMMUNITY:
-                // Сообщества: посты и комментарии
-                if ( $rec_type == 1 ) { // топик
+                // РЎРѕРѕР±С‰РµСЃС‚РІР°: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё
+                if ( $rec_type == 1 ) { // С‚РѕРїРёРє
                     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/commune.php' );
                     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/admin_log.php' );
 
@@ -703,14 +703,14 @@ class user_content extends admin_parent {
                     $sObjName = $topic['title'];
                     $sObjLink = getFriendlyURL( 'commune', $rec_id );
 
-                    if ( $topic['is_blocked_s'] == 't' ) { //утверждаем
+                    if ( $topic['is_blocked_s'] == 't' ) { //СѓС‚РІРµСЂР¶РґР°РµРј
                         $commune->unblockedCommuneTheme( $topic['theme_id'] );
                         admin_log::addLog( admin_log::OBJ_CODE_COMM, 16, $from_id, $topic['theme_id'], $sObjName, $sObjLink, 0, '', 0, '' );
                     }
                 }
                 else {
                     if ( $is_sent == 'f' ) {
-                        // отправка уведомления о новом сообщении
+                        // РѕС‚РїСЂР°РІРєР° СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІРѕРј СЃРѕРѕР±С‰РµРЅРёРё
                         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/pmail.php' );
 
                         $pmail = new pmail;
@@ -730,35 +730,35 @@ class user_content extends admin_parent {
                 }
                 break;
             case self::MODER_PROJECTS:
-                // Проекты
+                // РџСЂРѕРµРєС‚С‹
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/projects.php' );
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/admin_log.php' );
 
                 $projects = new projects;
                 $project  = $projects->GetPrjCust( $rec_id );
-                $sObjLink = getFriendlyURL( 'project', $rec_id ); // лог админских действий
+                $sObjLink = getFriendlyURL( 'project', $rec_id ); // Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
 
                 if ( $project['blocked_time'] ) {
-                    // разблокируем
+                    // СЂР°Р·Р±Р»РѕРєРёСЂСѓРµРј
                     $projects->UnBlocked( $rec_id );
                     admin_log::addLog( admin_log::OBJ_CODE_PROJ, 10, $from_id, $rec_id, $project['name'], $sObjLink, 0, '', 0, '' );
                 }
                 break;
             case self::MODER_PRJ_OFFERS:
-                // Предложения в проектах
+                // РџСЂРµРґР»РѕР¶РµРЅРёСЏ РІ РїСЂРѕРµРєС‚Р°С…
                 if ( $rec_type == 7 ) {
                     $aData      = array();
                     $sDeluserId = $GLOBALS['DB']->val( 'SELECT deluser_id FROM projects_contest_offers WHERE id = ?i', $rec_id );
 
                     if ( $sDeluserId && $sDeluserId != $from_id ) {
                         if ( $is_sent == 'f' ) {
-                            // отправка уведомления о новом сообщении
+                            // РѕС‚РїСЂР°РІРєР° СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІРѕРј СЃРѕРѕР±С‰РµРЅРёРё
                             require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/pmail.php' );
 
                             $pmail = new pmail;
                             $pmail->NewPrjOffer( $rec_id );
 
-                            $aData['is_sent'] = true; // устанавливаем флаг отправки
+                            $aData['is_sent'] = true; // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„Р»Р°Рі РѕС‚РїСЂР°РІРєРё
                         }
                         
                         $aData['is_deleted']    = false;
@@ -781,19 +781,19 @@ class user_content extends admin_parent {
                     $sObjLink        = getFriendlyURL( 'project', $offer['project_id'] ); 
 
                     if ( $is_sent == 'f' ) {
-                        // отправка уведомления о новом сообщении
+                        // РѕС‚РїСЂР°РІРєР° СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІРѕРј СЃРѕРѕР±С‰РµРЅРёРё
                         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/pmail.php' );
 
                         $pmail = new pmail;
                         $pmail->NewPrjOffer( $rec_id );
 
-                        $GLOBALS['DB']->update( 'projects_offers', array('is_sent' => true), 'id = ?i', $rec_id ); // устанавливаем флаг отправки
+                        $GLOBALS['DB']->update( 'projects_offers', array('is_sent' => true), 'id = ?i', $rec_id ); // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„Р»Р°Рі РѕС‚РїСЂР°РІРєРё
                     }
 
                     if ( $offer['blocked_time'] ) {
                         $projects_offers->UnBlocked( $rec_id );
 
-                        // пишем лог админских действий
+                        // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
                         admin_log::addLog( admin_log::OBJ_CODE_PROJ, admin_log::ACT_ID_PRJ_UNBLOCK_OFFER, 
                             $from_id, $rec_id, $sObjName, $sObjLink, 0, '', 0, '' 
                         );
@@ -801,18 +801,18 @@ class user_content extends admin_parent {
                 }
                 break;
             case self::MODER_ART_COM:
-                // Комментарии в статьях
+                // РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ СЃС‚Р°С‚СЊСЏС…
                 $sDeluserId = $GLOBALS['DB']->val( 'SELECT deleted_id FROM articles_comments WHERE id = ?i', $rec_id );
 
                 if ( $sDeluserId && $sDeluserId != $from_id ) {
                         if ( $is_sent == 'f' ) {
-                        // отправка уведомления о новом сообщении
+                        // РѕС‚РїСЂР°РІРєР° СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІРѕРј СЃРѕРѕР±С‰РµРЅРёРё
                         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/pmail.php' );
 
                         $pmail = new pmail;
                         $pmail->ArticleNewComment( $rec_id );
 
-                        $aData['is_sent'] = true; // устанавливаем флаг отправки
+                        $aData['is_sent'] = true; // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„Р»Р°Рі РѕС‚РїСЂР°РІРєРё
                     }
 
                     $aData['modified_time'] = null;
@@ -823,7 +823,7 @@ class user_content extends admin_parent {
                 }
                 break;
             case self::MODER_PRJ_DIALOG:
-                // Комментарии к предложениям по проектам
+                // РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РїРѕ РїСЂРѕРµРєС‚Р°Рј
                 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/projects_offers_dialogue.php");
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/admin_log.php' );
 
@@ -833,35 +833,35 @@ class user_content extends admin_parent {
                 $sObjLink = getFriendlyURL( 'project', $dialogue['project_id'] );
 
                 if ( $is_sent == 'f' ) {
-                    // отправка уведомления о новом сообщении
+                    // РѕС‚РїСЂР°РІРєР° СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІРѕРј СЃРѕРѕР±С‰РµРЅРёРё
                     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/pmail.php' );
 
                     $pmail = new pmail;
                     $pmail->NewPrjMessageOnOffer( $rec_id );
 
-                    $GLOBALS['DB']->update( 'projects_offers_dialogue', array('is_sent' => true), 'id = ?i', $rec_id ); // устанавливаем флаг отправки
+                    $GLOBALS['DB']->update( 'projects_offers_dialogue', array('is_sent' => true), 'id = ?i', $rec_id ); // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„Р»Р°Рі РѕС‚РїСЂР°РІРєРё
                 }
 
                 if ( $dialogue['is_blocked'] == 't' ) {
                     projects_offers_dialogue::UnBlocked( $rec_id );
 
-                    // пишем лог админских действий
+                    // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
                     admin_log::addLog( admin_log::OBJ_CODE_PROJ, admin_log::ACT_ID_PRJ_DIALOG_UNBLOCK, $from_id, $rec_id, $sObjName, $sObjLink, 0, '', 0, '' );
                 }
                 break;
             case self::MODER_CONTEST_COM:
-                // Комментарии к предложениям конкурсов
+                // РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РєРѕРЅРєСѓСЂСЃРѕРІ
                 $sDeluserId = $GLOBALS['DB']->val( 'SELECT deluser_id FROM projects_contest_msgs WHERE id = ?i', $rec_id );
 
                 if ( $sDeluserId && $sDeluserId != $from_id ) {
                     if ( $is_sent == 'f' ) {
-                        // отправка уведомления о новом сообщении
+                        // РѕС‚РїСЂР°РІРєР° СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІРѕРј СЃРѕРѕР±С‰РµРЅРёРё
                         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/pmail.php' );
 
                         $pmail = new pmail;
                         $pmail->ContestNewComment( $rec_id );
 
-                        $aData['is_sent'] = true; // устанавливаем флаг отправки
+                        $aData['is_sent'] = true; // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„Р»Р°Рі РѕС‚РїСЂР°РІРєРё
                     }
 
                     $aData['deleted']        = null;
@@ -872,7 +872,7 @@ class user_content extends admin_parent {
                 }
                 break;
             case self::MODER_PORTFOLIO:
-                // Работы в портфолио
+                // Р Р°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/portfolio.php' );
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/users.php' );
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/admin_log.php' );
@@ -888,22 +888,22 @@ class user_content extends admin_parent {
                 if ( $portfolio['is_blocked'] == 't' ) {
                     portfolio::UnBlocked( $rec_id );
 
-                    // пишем лог админских действий
+                    // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
                     admin_log::addLog( admin_log::OBJ_CODE_PROJ, admin_log::ACT_ID_PORTFOLIO_UNBLOCK, $from_id, $rec_id, $sObjName, $sObjLink, 0, '', 0, '' );
                 }
                 break;
             case self::MODER_SDELAU:
-                // Предложения фрилансеров "Сделаю"
+                // РџСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ "РЎРґРµР»Р°СЋ"
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/freelancer_offers.php' );
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/admin_log.php' );
 
                 $frl_offers = new freelancer_offers();
                 $offer      = $frl_offers->getOfferById( $rec_id );
                 $sObjName   = $offer['title'];
-                $sObjLink   = ''; // нет ссылки на конкретное предложение
+                $sObjLink   = ''; // РЅРµС‚ СЃСЃС‹Р»РєРё РЅР° РєРѕРЅРєСЂРµС‚РЅРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ
                 $update     = array();
 
-                if ( $offer['admin'] ) { //утверждаем
+                if ( $offer['admin'] ) { //СѓС‚РІРµСЂР¶РґР°РµРј
                     $update = array( 'is_blocked' => false, 'reason'=> '', 'reason_id' => 0, 'admin' => 0 );
                     admin_log::addLog( admin_log::OBJ_CODE_OFFER, 14, $from_id, $rec_id, $sObjName, $sObjLink, 0, '', 0, '' );
                     $GLOBALS['DB']->update( 'freelance_offers', $update, 'id = ?i', $rec_id );
@@ -916,16 +916,16 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Личные сообщения. Утверждение/удаление записи
+     * Р›РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ. РЈС‚РІРµСЂР¶РґРµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё
      * 
-     * @param  string $stream_id идентификатор потока
-     * @param  int $user_id идентификатор модератора
-     * @param  int $from_id идентификатор пользователя
-     * @param  int $rec_id идентификатор записи
-     * @param  int $rec_type тип записи 
-     * @param  int $action действие: 1 - утверждено, 2 - удалено
-     * @param  string $is_sent было ли отправлено уведомление
-     * @param  string $reason причина удаления
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $user_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРѕРґРµСЂР°С‚РѕСЂР°
+     * @param  int $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @param  int $rec_type С‚РёРї Р·Р°РїРёСЃРё 
+     * @param  int $action РґРµР№СЃС‚РІРёРµ: 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+     * @param  string $is_sent Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
+     * @param  string $reason РїСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ
      */
     function resolveMessages( $stream_id = '', $user_id = 0, $from_id = 0, $rec_id = 0, $rec_type = 0, $action = 1, $is_sent = '', $reason = '' ) {
         $bRet   = false;
@@ -937,12 +937,12 @@ class user_content extends admin_parent {
         $bRet = empty( $DB->error );
         
         /*
-        // отправка уведомлений сразу и без всяких цензур.
+        // РѕС‚РїСЂР°РІРєР° СѓРІРµРґРѕРјР»РµРЅРёР№ СЃСЂР°Р·Сѓ Рё Р±РµР· РІСЃСЏРєРёС… С†РµРЅР·СѓСЂ.
         $sQuery = 'SELECT * FROM messages_moder_send_get(?i, ?i);';
         $aMsg   = $DB->row( $sQuery, $from_id, $rec_id );
 
         if ( $action == 1 ) {
-            // отправка уведомления о новом сообщении
+            // РѕС‚РїСЂР°РІРєР° СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІРѕРј СЃРѕРѕР±С‰РµРЅРёРё
             if ( $aMsg['is_sent'] == 'f' ) {
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/pmail.php' );
 
@@ -960,17 +960,17 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Блоги. Утверждение/удаление записи
+     * Р‘Р»РѕРіРё. РЈС‚РІРµСЂР¶РґРµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё
      * 
-     * @param  string $stream_id идентификатор потока
-     * @param  int $user_id идентификатор модератора
-     * @param  int $from_id идентификатор пользователя
-     * @param  int $rec_id идентификатор записи
-     * @param  int $rec_type тип записи 
-     * @param  int $action действие: 1 - утверждено, 2 - удалено
-     * @param  string $is_sent было ли отправлено уведомление
-     * @param  string $reason причина удаления
-     * @return bool true - успех, false - провал
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $user_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРѕРґРµСЂР°С‚РѕСЂР°
+     * @param  int $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @param  int $rec_type С‚РёРї Р·Р°РїРёСЃРё 
+     * @param  int $action РґРµР№СЃС‚РІРёРµ: 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+     * @param  string $is_sent Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
+     * @param  string $reason РїСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function resolveBlogs( $stream_id = '', $user_id = 0, $from_id = 0, $rec_id = 0, $rec_type = 0, $action = 1, $is_sent = '', $reason = '' ) {
         $bRet   = false;
@@ -981,7 +981,7 @@ class user_content extends admin_parent {
             $bRet  = true;
             $aData = array( 'moderator_status' => $user_id );
             
-            if ( $rec_type == 1 ) { // топик
+            if ( $rec_type == 1 ) { // С‚РѕРїРёРє
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/blogs.php' );
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/admin_log.php' );
                 
@@ -993,23 +993,23 @@ class user_content extends admin_parent {
                     WHERE bm.id = ?i';
                 
                 $aThread  = $GLOBALS['DB']->row( $sQuery, $rec_id );
-                $sObjName = $aThread['title'] ? $aThread['title'] : '<без темы>';
+                $sObjName = $aThread['title'] ? $aThread['title'] : '<Р±РµР· С‚РµРјС‹>';
                 $sObjLink = '/blogs/view.php?tr=' . $aThread['id'];
                 
                 if ( $action == 1 && $aThread['blocked_time'] ) {
                     $blogs->UnBlocked( $aThread['id'] );
-                    // пишем лог админских действий
+                    // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
                     admin_log::addLog( admin_log::OBJ_CODE_BLOG, 8, $aThread['fromuser_id'], $aThread['id'], $sObjName, $sObjLink, 0, '', 0, '' );
                 }
                 elseif ( $action == 2 && !$aThread['blocked_time'] ) {
                     $sBlockId  = $blogs->Blocked( $aThread['id'], $reason, 0, $_SESSION['uid'] );
-                    // пишем лог админских действий
+                    // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
                     admin_log::addLog( admin_log::OBJ_CODE_BLOG, 7, $aThread['fromuser_id'], $aThread['id'], $sObjName, $sObjLink, 0, '', 0, $reason, $sBlockId );
                 }
             }
             else {
                 if ( $action == 1 && $rec_type == '2' && $is_sent == 'f' ) {
-                    $aData['is_sent'] = true; // устанавливаем флаг отправки
+                    $aData['is_sent'] = true; // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„Р»Р°Рі РѕС‚РїСЂР°РІРєРё
                 }
 
                 $sDeluserId = $GLOBALS['DB']->val( 'SELECT deluser_id FROM blogs_msgs WHERE id = ?i', $rec_id );
@@ -1033,17 +1033,17 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Сообщества. Утверждение/удаление записи
+     * РЎРѕРѕР±С‰РµСЃС‚РІР°. РЈС‚РІРµСЂР¶РґРµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё
      * 
-     * @param  string $stream_id идентификатор потока
-     * @param  int $user_id идентификатор модератора
-     * @param  int $from_id идентификатор пользователя
-     * @param  int $rec_id идентификатор записи
-     * @param  int $rec_type тип записи 
-     * @param  int $action действие: 1 - утверждено, 2 - удалено
-     * @param  string $is_sent было ли отправлено уведомление
-     * @param  string $reason причина удаления
-     * @return bool true - успех, false - провал
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $user_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРѕРґРµСЂР°С‚РѕСЂР°
+     * @param  int $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @param  int $rec_type С‚РёРї Р·Р°РїРёСЃРё 
+     * @param  int $action РґРµР№СЃС‚РІРёРµ: 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+     * @param  string $is_sent Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
+     * @param  string $reason РїСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function resolveCommunity( $stream_id = '', $user_id = 0, $from_id = 0, $rec_id = 0, $rec_type = 0, $action = 1, $is_sent = '', $reason = '' ) {
         $bRet   = false;
@@ -1053,7 +1053,7 @@ class user_content extends admin_parent {
         if ( $sRecId ) {
             $bRet  = true;
             
-            if ( $rec_type == 1 ) { // топик
+            if ( $rec_type == 1 ) { // С‚РѕРїРёРє
                 $GLOBALS['DB']->update( 'commune_messages', array('moderator_status' => $user_id, 'mod_access' => 1), 'id = ?i', $rec_id );
 
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/commune.php' );
@@ -1064,7 +1064,7 @@ class user_content extends admin_parent {
                 $sObjName = $topic['title'];
                 $sObjLink = getFriendlyURL( 'commune', $rec_id );
 
-                if ( $action == 1 && $topic['is_blocked_s'] == 't' ) { //утверждаем
+                if ( $action == 1 && $topic['is_blocked_s'] == 't' ) { //СѓС‚РІРµСЂР¶РґР°РµРј
                     $commune->unblockedCommuneTheme( $topic['theme_id'] );
                     admin_log::addLog( admin_log::OBJ_CODE_COMM, 16, $from_id, $topic['theme_id'], $sObjName, $sObjLink, 0, '', 0, '' );
                 }
@@ -1073,17 +1073,17 @@ class user_content extends admin_parent {
                     admin_log::addLog( admin_log::OBJ_CODE_COMM, 15, $from_id, $topic['theme_id'], $sObjName, $sObjLink, 0, '', 0, $reason, $topic['theme_id'] );
                 }
             }
-            else { // комментарий
+            else { // РєРѕРјРјРµРЅС‚Р°СЂРёР№
                 $aData = array( 'moderator_status' => $user_id, 'mod_access' => 1 );
 
                 if ( $action == 1 && $is_sent == 'f' ) {
-                    // отправка уведомления о новом сообщении
+                    // РѕС‚РїСЂР°РІРєР° СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІРѕРј СЃРѕРѕР±С‰РµРЅРёРё
                     /*require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/pmail.php' );
 
                     $pmail = new pmail;
                     $pmail->CommuneNewComment( $rec_id );*/
 
-                    $aData['is_sent'] = true; // устанавливаем флаг отправки
+                    $aData['is_sent'] = true; // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„Р»Р°Рі РѕС‚РїСЂР°РІРєРё
                 }
                 
                 $aRow = $GLOBALS['DB']->row( 'SELECT theme_id, deleted_id FROM commune_messages WHERE id = ?i', $rec_id );
@@ -1109,16 +1109,16 @@ class user_content extends admin_parent {
     
     
     /**
-     * Рексизиты финансов. Утверждение/удаление записи
+     * Р РµРєСЃРёР·РёС‚С‹ С„РёРЅР°РЅСЃРѕРІ. РЈС‚РІРµСЂР¶РґРµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё
      * 
-     * @param  string $stream_id идентификатор потока
-     * @param  int $user_id идентификатор модератора
-     * @param  int $from_id идентификатор пользователя
-     * @param  int $rec_id идентификатор записи
-     * @param  int $rec_type тип записи 
-     * @param  int $action действие: 1 - утверждено, 2 - удалено
-     * @param  string $is_sent было ли отправлено уведомление
-     * @param  string $reason причина удаления
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $user_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРѕРґРµСЂР°С‚РѕСЂР°
+     * @param  int $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @param  int $rec_type С‚РёРї Р·Р°РїРёСЃРё 
+     * @param  int $action РґРµР№СЃС‚РІРёРµ: 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+     * @param  string $is_sent Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
+     * @param  string $reason РїСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ
      */
     function resolveSbrReqv( $stream_id = '', $user_id = 0, $from_id = 0, $rec_id = 0, $rec_type = 0, $action = 1, $is_sent = '', $reason = '' ){
         
@@ -1148,13 +1148,13 @@ class user_content extends admin_parent {
                 
                 if($action == 1 && $data['is_blocked'] == 't')
                 {
-                    //разблокируем если было блокированно
+                    //СЂР°Р·Р±Р»РѕРєРёСЂСѓРµРј РµСЃР»Рё Р±С‹Р»Рѕ Р±Р»РѕРєРёСЂРѕРІР°РЅРЅРѕ
                     $GLOBALS['DB']->query("
                         DELETE FROM sbr_reqv_blocked 
                         WHERE src_id = ?i
                     ",$rec_id);
                     
-                    //Обновляем статус на "Проверенные данные"
+                    //РћР±РЅРѕРІР»СЏРµРј СЃС‚Р°С‚СѓСЃ РЅР° "РџСЂРѕРІРµСЂРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ"
                     if($GLOBALS['DB']->update('sbr_reqv',array(
                         'validate_status' => 2
                     ),'user_id = ?i', $rec_id))
@@ -1164,7 +1164,7 @@ class user_content extends admin_parent {
                 }
                 elseif($action == 2 && $data['is_blocked'] != 't')
                 {
-                    //блокируем
+                    //Р±Р»РѕРєРёСЂСѓРµРј
                     $sBlockId = $GLOBALS['DB']->val("
                         INSERT INTO sbr_reqv_blocked (
                             src_id, 
@@ -1175,7 +1175,7 @@ class user_content extends admin_parent {
                         VALUES(?i, ?i, ?, ?i, NOW()) RETURNING id
                      ",$rec_id, $user_id, $reason, 0);                    
                     
-                    //Обновляем статус на "Отклоненные данные"
+                    //РћР±РЅРѕРІР»СЏРµРј СЃС‚Р°С‚СѓСЃ РЅР° "РћС‚РєР»РѕРЅРµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ"
                     if($GLOBALS['DB']->update('sbr_reqv',array(
                         'validate_status' => -1
                     ),'user_id = ?i', $rec_id))
@@ -1193,16 +1193,16 @@ class user_content extends admin_parent {
     
     
     /**
-     * Типовые услуги. Утверждение/удаление записи
+     * РўРёРїРѕРІС‹Рµ СѓСЃР»СѓРіРё. РЈС‚РІРµСЂР¶РґРµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё
      * 
-     * @param  string $stream_id идентификатор потока
-     * @param  int $user_id идентификатор модератора
-     * @param  int $from_id идентификатор пользователя
-     * @param  int $rec_id идентификатор записи
-     * @param  int $rec_type тип записи 
-     * @param  int $action действие: 1 - утверждено, 2 - удалено
-     * @param  string $is_sent было ли отправлено уведомление
-     * @param  string $reason причина удаления
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $user_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРѕРґРµСЂР°С‚РѕСЂР°
+     * @param  int $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @param  int $rec_type С‚РёРї Р·Р°РїРёСЃРё 
+     * @param  int $action РґРµР№СЃС‚РІРёРµ: 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+     * @param  string $is_sent Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
+     * @param  string $reason РїСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ
      */
     function resolveTServices( $stream_id = '', $user_id = 0, $from_id = 0, $rec_id = 0, $rec_type = 0, $action = 1, $is_sent = '', $reason = '' ){
         
@@ -1239,13 +1239,13 @@ class user_content extends admin_parent {
                 
                 if($action == 1 && $tservice['is_blocked'] == 't')
                 {
-                    //разблокируем
+                    //СЂР°Р·Р±Р»РѕРєРёСЂСѓРµРј
                     $GLOBALS['DB']->query("
                         DELETE FROM tservices_blocked 
                         WHERE src_id = ?i
                     ",$rec_id);
 
-                    // пишем лог админских действий
+                    // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
                     admin_log::addLog( 
                             admin_log::OBJ_CODE_TSERVICES, 
                             65, 
@@ -1260,7 +1260,7 @@ class user_content extends admin_parent {
                 }
                 elseif($action == 2 && $tservice['is_blocked'] != 't')
                 {
-                    //блокируем
+                    //Р±Р»РѕРєРёСЂСѓРµРј
                     $sBlockId = $GLOBALS['DB']->val("
                         INSERT INTO tservices_blocked (
                             src_id, 
@@ -1271,7 +1271,7 @@ class user_content extends admin_parent {
                         VALUES(?i, ?i, ?, ?i, NOW()) RETURNING id
                      ",$rec_id, $user_id, $reason, 0);
 
-                    //пишем лог админских действий
+                    //РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
                     admin_log::addLog(
                             admin_log::OBJ_CODE_TSERVICES, 
                             64, 
@@ -1286,7 +1286,7 @@ class user_content extends admin_parent {
                             $sBlockId);
                     
                     
-                    //отправляем сообщение о блокировки
+                    //РѕС‚РїСЂР°РІР»СЏРµРј СЃРѕРѕР±С‰РµРЅРёРµ Рѕ Р±Р»РѕРєРёСЂРѕРІРєРё
                     require_once ( $_SERVER['DOCUMENT_ROOT'] . '/classes/messages.php' );
                     
                     messages::SendBlockedTServices($tservice, $reason);
@@ -1307,16 +1307,16 @@ class user_content extends admin_parent {
 
 
     /**
-     * Проекты. Утверждение/удаление записи
+     * РџСЂРѕРµРєС‚С‹. РЈС‚РІРµСЂР¶РґРµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё
      * 
-     * @param  string $stream_id идентификатор потока
-     * @param  int $user_id идентификатор модератора
-     * @param  int $from_id идентификатор пользователя
-     * @param  int $rec_id идентификатор записи
-     * @param  int $rec_type тип записи 
-     * @param  int $action действие: 1 - утверждено, 2 - удалено
-     * @param  string $is_sent было ли отправлено уведомление
-     * @param  string $reason причина удаления
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $user_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРѕРґРµСЂР°С‚РѕСЂР°
+     * @param  int $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @param  int $rec_type С‚РёРї Р·Р°РїРёСЃРё 
+     * @param  int $action РґРµР№СЃС‚РІРёРµ: 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+     * @param  string $is_sent Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
+     * @param  string $reason РїСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ
      */
     function resolveProjects( $stream_id = '', $user_id = 0, $from_id = 0, $rec_id = 0, $rec_type = 0, $action = 1, $is_sent = '', $reason = '' ) {
         $bRet   = false;
@@ -1333,23 +1333,23 @@ class user_content extends admin_parent {
 
             $projects = new projects;
             $project  = $projects->GetPrjCust( $rec_id );
-            $sObjLink = getFriendlyURL( 'project', $rec_id ); // лог админских действий
+            $sObjLink = getFriendlyURL( 'project', $rec_id ); // Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
 
             if ( $action == 1 && $project['blocked_time'] ) {
-                // разблокируем
+                // СЂР°Р·Р±Р»РѕРєРёСЂСѓРµРј
                 $projects->UnBlocked( $rec_id );
                 admin_log::addLog( admin_log::OBJ_CODE_PROJ, 10, $from_id, $rec_id, $project['name'], $sObjLink, 0, '', 0, '' );
             }
             elseif ( $action == 2 && !$project['blocked_time'] ) {
-                // блокируем
+                // Р±Р»РѕРєРёСЂСѓРµРј
                 $sBlockId = $projects->Blocked( $rec_id, $reason, 0, $user_id, true );
 
-                // Удаляем черновики жалобы
+                // РЈРґР°Р»СЏРµРј С‡РµСЂРЅРѕРІРёРєРё Р¶Р°Р»РѕР±С‹
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/drafts.php' );
                 drafts::DeleteDraftByPrjID( $rec_id );
                 $projects->DeleteComplains( $rec_id );
 
-                // пишем лог админских действий
+                // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
                 admin_log::addLog( admin_log::OBJ_CODE_PROJ, 9, $from_id, $rec_id, $project['name'], $sObjLink, 0, '', 0, $reason, $sBlockId );
             }
         }
@@ -1358,7 +1358,7 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Помечает проект заблокированным в админке, но не блокирует сам проект
+     * РџРѕРјРµС‡Р°РµС‚ РїСЂРѕРµРєС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рј РІ Р°РґРјРёРЅРєРµ, РЅРѕ РЅРµ Р±Р»РѕРєРёСЂСѓРµС‚ СЃР°Рј РїСЂРѕРµРєС‚
      * @param type $stream_id
      * @param type $user_id
      * @param type $from_id
@@ -1375,16 +1375,16 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Предложения в проектах. Утверждение/удаление записи
+     * РџСЂРµРґР»РѕР¶РµРЅРёСЏ РІ РїСЂРѕРµРєС‚Р°С…. РЈС‚РІРµСЂР¶РґРµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё
      * 
-     * @param  string $stream_id идентификатор потока
-     * @param  int $user_id идентификатор модератора
-     * @param  int $from_id идентификатор пользователя
-     * @param  int $rec_id идентификатор записи
-     * @param  int $rec_type тип записи 
-     * @param  int $action действие: 1 - утверждено, 2 - удалено
-     * @param  string $is_sent было ли отправлено уведомление
-     * @param  string $reason причина удаления
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $user_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРѕРґРµСЂР°С‚РѕСЂР°
+     * @param  int $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @param  int $rec_type С‚РёРї Р·Р°РїРёСЃРё 
+     * @param  int $action РґРµР№СЃС‚РІРёРµ: 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+     * @param  string $is_sent Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
+     * @param  string $reason РїСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ
      */
     function resolvePrjOffers( $stream_id = '', $user_id = 0, $from_id = 0, $rec_id = 0, $rec_type = 0, $action = 1, $is_sent = '', $reason = '' ) {
         $bRet   = false;
@@ -1398,13 +1398,13 @@ class user_content extends admin_parent {
                 $aData = array( 'moderator_status' => $user_id );
 
                 if ( $action == 1 && $is_sent == 'f' ) {
-                    // отправка уведомления о новом сообщении
+                    // РѕС‚РїСЂР°РІРєР° СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІРѕРј СЃРѕРѕР±С‰РµРЅРёРё
                     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/pmail.php' );
 
                     $pmail = new pmail;
                     $pmail->NewPrjOffer( $rec_id );
 
-                    $aData['is_sent'] = true; // устанавливаем флаг отправки
+                    $aData['is_sent'] = true; // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„Р»Р°Рі РѕС‚РїСЂР°РІРєРё
                 }
                 
                 $sDeluserId = $GLOBALS['DB']->val( 'SELECT deluser_id FROM projects_contest_offers WHERE id = ?i', $rec_id );
@@ -1438,29 +1438,29 @@ class user_content extends admin_parent {
                 
                 if ( $action == 1 ) {
                     if ( $is_sent == 'f' ) {
-                        // отправка уведомления о новом сообщении
+                        // РѕС‚РїСЂР°РІРєР° СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІРѕРј СЃРѕРѕР±С‰РµРЅРёРё
                         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/pmail.php' );
 
                         $pmail = new pmail;
                         $pmail->NewPrjOffer( $rec_id );
 
-                        $aData['is_sent'] = true; // устанавливаем флаг отправки
+                        $aData['is_sent'] = true; // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„Р»Р°Рі РѕС‚РїСЂР°РІРєРё
                     }
                     
                     if ( $offer['blocked_time'] ) {
                         $projects_offers->UnBlocked( $rec_id );
 
-                        // пишем лог админских действий
+                        // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
                         admin_log::addLog( admin_log::OBJ_CODE_PROJ, admin_log::ACT_ID_PRJ_UNBLOCK_OFFER, 
                             $from_id, $rec_id, $sObjName, $sObjLink, 0, '', 0, '' 
                         );
                     }
                 }
                 elseif ( $action == 2 && !$offer['blocked_time'] ) {
-                    $sReason  = 'Содержит запрещенную информацию';
+                    $sReason  = 'РЎРѕРґРµСЂР¶РёС‚ Р·Р°РїСЂРµС‰РµРЅРЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ';
                     $sBlockId = $projects_offers->Blocked( $rec_id, $from_id, $offer['project_id'], $reason, 0, $user_id, true );
 
-                    // пишем лог админских действий
+                    // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
                     admin_log::addLog( admin_log::OBJ_CODE_PROJ, admin_log::ACT_ID_PRJ_BLOCK_OFFER, 
                         $from_id, $rec_id, $sObjName, $sObjLink, 0, '', 0, $sReason, $sBlockId 
                     );
@@ -1476,16 +1476,16 @@ class user_content extends admin_parent {
     
 
     /**
-     * Утверждение/удаление записи
+     * РЈС‚РІРµСЂР¶РґРµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё
      * 
-     * @param  string $stream_id идентификатор потока
-     * @param  int $user_id идентификатор модератора
-     * @param  int $from_id идентификатор пользователя
-     * @param  int $rec_id идентификатор записи
-     * @param  int $rec_type тип записи 
-     * @param  int $action действие: 1 - утверждено, 2 - удалено
-     * @param  string $is_sent было ли отправлено уведомление
-     * @param  string $reason причина удаления
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $user_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРѕРґРµСЂР°С‚РѕСЂР°
+     * @param  int $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @param  int $rec_type С‚РёРї Р·Р°РїРёСЃРё 
+     * @param  int $action РґРµР№СЃС‚РІРёРµ: 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+     * @param  string $is_sent Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
+     * @param  string $reason РїСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ
      */
     function resolveArtCom( $stream_id = '', $user_id = 0, $from_id = 0, $rec_id = 0, $rec_type = 0, $action = 1, $is_sent = '', $reason = '' ) {
         $bRet   = false;
@@ -1497,13 +1497,13 @@ class user_content extends admin_parent {
             $aData = array( 'moderator_status' => $user_id );
 
             if ( $action == 1 && $is_sent == 'f' ) {
-                // отправка уведомления о новом сообщении
+                // РѕС‚РїСЂР°РІРєР° СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІРѕРј СЃРѕРѕР±С‰РµРЅРёРё
                 /*require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/pmail.php' );
 
                 $pmail = new pmail;
                 $pmail->ArticleNewComment( $rec_id );*/
 
-                $aData['is_sent'] = true; // устанавливаем флаг отправки
+                $aData['is_sent'] = true; // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„Р»Р°Рі РѕС‚РїСЂР°РІРєРё
             }
             
             $sDeluserId = $GLOBALS['DB']->val( 'SELECT deleted_id FROM articles_comments WHERE id = ?i', $rec_id );
@@ -1526,16 +1526,16 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Изменения в профилях. Утверждение/удаление записи
+     * РР·РјРµРЅРµРЅРёСЏ РІ РїСЂРѕС„РёР»СЏС…. РЈС‚РІРµСЂР¶РґРµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё
      * 
-     * @param  string $stream_id идентификатор потока
-     * @param  int $user_id идентификатор модератора
-     * @param  int $from_id идентификатор пользователя
-     * @param  int $rec_id идентификатор записи
-     * @param  int $rec_type тип записи 
-     * @param  int $action действие: 1 - утверждено, 2 - удалено
-     * @param  string $is_sent было ли отправлено уведомление
-     * @param  string $reason причина удаления
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $user_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРѕРґРµСЂР°С‚РѕСЂР°
+     * @param  int $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @param  int $rec_type С‚РёРї Р·Р°РїРёСЃРё 
+     * @param  int $action РґРµР№СЃС‚РІРёРµ: 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+     * @param  string $is_sent Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
+     * @param  string $reason РїСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ
      */
     function resolveProfile( $stream_id = '', $user_id = 0, $from_id = 0, $rec_id = 0, $rec_type = 0, $action = 1, $is_sent = '', $reason = '' ) {
         $bRet    = false;
@@ -1570,11 +1570,11 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Изменения в профилях. редактирование админом
+     * РР·РјРµРЅРµРЅРёСЏ РІ РїСЂРѕС„РёР»СЏС…. СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ Р°РґРјРёРЅРѕРј
      * 
-     * @param  int $rec_id идентификатор записи
-     * @param  string $new_val новое значение
-     * @return bool true - успех, false -провал
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @param  string $new_val РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ
+     * @return bool true - СѓСЃРїРµС…, false -РїСЂРѕРІР°Р»
      */
     function editProfile( $rec_id = 0, $new_val = '' ) {
         $GLOBALS['DB']->query( 'UPDATE users_change SET new_val = ? WHERE id = ?i', $new_val, $rec_id );
@@ -1583,16 +1583,16 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Комментарии к предложениям по проектам. Утверждение/удаление записи
+     * РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РїРѕ РїСЂРѕРµРєС‚Р°Рј. РЈС‚РІРµСЂР¶РґРµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё
      * 
-     * @param  string $stream_id идентификатор потока
-     * @param  int $user_id идентификатор модератора
-     * @param  int $from_id идентификатор пользователя
-     * @param  int $rec_id идентификатор записи
-     * @param  int $rec_type тип записи 
-     * @param  int $action действие: 1 - утверждено, 2 - удалено
-     * @param  string $is_sent было ли отправлено уведомление
-     * @param  string $reason причина удаления
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $user_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРѕРґРµСЂР°С‚РѕСЂР°
+     * @param  int $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @param  int $rec_type С‚РёРї Р·Р°РїРёСЃРё 
+     * @param  int $action РґРµР№СЃС‚РІРёРµ: 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+     * @param  string $is_sent Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
+     * @param  string $reason РїСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ
      */
     function resolvePrjDialog( $stream_id = '', $user_id = 0, $from_id = 0, $rec_id = 0, $rec_type = 0, $action = 1, $is_sent = '', $reason = '' ) {
         $bRet   = false;
@@ -1611,29 +1611,29 @@ class user_content extends admin_parent {
             
             if ( $action == 1 ) {
                 if ( $is_sent == 'f' ) {
-                    // отправка уведомления о новом сообщении
+                    // РѕС‚РїСЂР°РІРєР° СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІРѕРј СЃРѕРѕР±С‰РµРЅРёРё
                     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/pmail.php' );
 
                     $pmail = new pmail;
                     $pmail->NewPrjMessageOnOffer( $rec_id );
 
-                    $aData['is_sent'] = true; // устанавливаем флаг отправки
+                    $aData['is_sent'] = true; // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„Р»Р°Рі РѕС‚РїСЂР°РІРєРё
                 }
                 
                 if ( $dialogue['is_blocked'] == 't' ) {
                     projects_offers_dialogue::UnBlocked( $rec_id );
 
-                    // пишем лог админских действий
+                    // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
                     admin_log::addLog( admin_log::OBJ_CODE_PROJ, admin_log::ACT_ID_PRJ_DIALOG_UNBLOCK, 
                         $from_id, $rec_id, $sObjName, $sObjLink, 0, '', 0, '' 
                     );
                 }
             }
             elseif ( $action == 2 && $dialogue['is_blocked'] != 't' ) {
-                $sReason  = 'Содержит запрещенную информацию';
+                $sReason  = 'РЎРѕРґРµСЂР¶РёС‚ Р·Р°РїСЂРµС‰РµРЅРЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ';
                 $sBlockId = projects_offers_dialogue::Blocked( $rec_id, $reason, 0, $_SESSION['uid'], true );
                 
-                // пишем лог админских действий
+                // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
                 admin_log::addLog( admin_log::OBJ_CODE_PROJ, admin_log::ACT_ID_PRJ_DIALOG_BLOCK, 
                     $from_id, $rec_id, $sObjName, $sObjLink, 0, '', 0, $sReason, $sBlockId 
                 );
@@ -1646,16 +1646,16 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Комментарии к предложениям конкурсов. Утверждение/удаление записи
+     * РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РєРѕРЅРєСѓСЂСЃРѕРІ. РЈС‚РІРµСЂР¶РґРµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё
      * 
-     * @param  string $stream_id идентификатор потока
-     * @param  int $user_id идентификатор модератора
-     * @param  int $from_id идентификатор пользователя
-     * @param  int $rec_id идентификатор записи
-     * @param  int $rec_type тип записи 
-     * @param  int $action действие: 1 - утверждено, 2 - удалено
-     * @param  string $is_sent было ли отправлено уведомление
-     * @param  string $reason причина удаления
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $user_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРѕРґРµСЂР°С‚РѕСЂР°
+     * @param  int $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @param  int $rec_type С‚РёРї Р·Р°РїРёСЃРё 
+     * @param  int $action РґРµР№СЃС‚РІРёРµ: 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+     * @param  string $is_sent Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
+     * @param  string $reason РїСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ
      */
     function resolveContestCom( $stream_id = '', $user_id = 0, $from_id = 0, $rec_id = 0, $rec_type = 0, $action = 1, $is_sent = '', $reason = '' ) {
         $bRet   = false;
@@ -1667,13 +1667,13 @@ class user_content extends admin_parent {
             $aData = array( 'moderator_status' => $user_id );
 
             if ( $action == 1 && $is_sent == 'f' ) {
-                // отправка уведомления о новом сообщении
+                // РѕС‚РїСЂР°РІРєР° СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІРѕРј СЃРѕРѕР±С‰РµРЅРёРё
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/pmail.php' );
 
                 $pmail = new pmail;
                 $pmail->ContestNewComment( $rec_id );
 
-                $aData['is_sent'] = true; // устанавливаем флаг отправки
+                $aData['is_sent'] = true; // СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј С„Р»Р°Рі РѕС‚РїСЂР°РІРєРё
             }
             
             $sDeluserId = $GLOBALS['DB']->val( 'SELECT deluser_id FROM projects_contest_msgs WHERE id = ?i', $rec_id );
@@ -1696,16 +1696,16 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Уточнения к разделам в портфолио. Утверждение/удаление записи
+     * РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ. РЈС‚РІРµСЂР¶РґРµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё
      * 
-     * @param  string $stream_id идентификатор потока
-     * @param  int $user_id идентификатор модератора
-     * @param  int $from_id идентификатор пользователя
-     * @param  int $rec_id идентификатор записи
-     * @param  int $rec_type тип записи 
-     * @param  int $action действие: 1 - утверждено, 2 - удалено
-     * @param  string $is_sent было ли отправлено уведомление
-     * @param  string $reason причина удаления
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $user_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРѕРґРµСЂР°С‚РѕСЂР°
+     * @param  int $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @param  int $rec_type С‚РёРї Р·Р°РїРёСЃРё 
+     * @param  int $action РґРµР№СЃС‚РІРёРµ: 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+     * @param  string $is_sent Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
+     * @param  string $reason РїСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ
      */
     function resolvePortfChoice( $stream_id = '', $user_id = 0, $from_id = 0, $rec_id = 0, $rec_type = 0, $action = 1, $is_sent = '', $reason = '' ) {
         $bRet    = false;
@@ -1720,7 +1720,7 @@ class user_content extends admin_parent {
             $bRet  = true;
             
             if ( $action == 2 ) {
-                // возвращаем старые значения
+                // РІРѕР·РІСЂР°С‰Р°РµРј СЃС‚Р°СЂС‹Рµ Р·РЅР°С‡РµРЅРёСЏ
                 if ( $aChange['ucolumn'] == 'text' ) {
                     if ( !$aChange['old_val'] ) $aChange['old_val'] = null;
 
@@ -1750,16 +1750,16 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Работы в портфолио. Утверждение/удаление записи
+     * Р Р°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ. РЈС‚РІРµСЂР¶РґРµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё
      * 
-     * @param  string $stream_id идентификатор потока
-     * @param  int $user_id идентификатор модератора
-     * @param  int $from_id идентификатор пользователя
-     * @param  int $rec_id идентификатор записи
-     * @param  int $rec_type тип записи 
-     * @param  int $action действие: 1 - утверждено, 2 - удалено
-     * @param  string $is_sent было ли отправлено уведомление
-     * @param  string $reason причина удаления
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $user_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРѕРґРµСЂР°С‚РѕСЂР°
+     * @param  int $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @param  int $rec_type С‚РёРї Р·Р°РїРёСЃРё 
+     * @param  int $action РґРµР№СЃС‚РІРёРµ: 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+     * @param  string $is_sent Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
+     * @param  string $reason РїСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ
      */
     function resolvePortfolio( $stream_id = '', $user_id = 0, $from_id = 0, $rec_id = 0, $rec_type = 0, $action = 1, $is_sent = '', $reason = '' ) {
         $bRet   = false;
@@ -1782,17 +1782,17 @@ class user_content extends admin_parent {
             if ( $action == 1 && $portfolio['is_blocked'] == 't' ) {
                 portfolio::UnBlocked( $rec_id );
 
-                // пишем лог админских действий
+                // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
                 admin_log::addLog( admin_log::OBJ_CODE_PROJ, admin_log::ACT_ID_PORTFOLIO_UNBLOCK, 
                     $from_id, $rec_id, $sObjName, $sObjLink, 0, '', 0, '' 
                 );
             }
             elseif ( $action == 2 && $portfolio['is_blocked'] != 't' ) {
 
-                $sReason  = 'Содержит запрещенную информацию';
+                $sReason  = 'РЎРѕРґРµСЂР¶РёС‚ Р·Р°РїСЂРµС‰РµРЅРЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ';
                 $sBlockId = portfolio::Blocked( $rec_id, $reason, 0, $_SESSION['uid'], true );
                 
-                // пишем лог админских действий
+                // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№
                 admin_log::addLog( admin_log::OBJ_CODE_PROJ, admin_log::ACT_ID_PORTFOLIO_BLOCK, 
                     $from_id, $rec_id, $sObjName, $sObjLink, 0, '', 0, $sReason, $sBlockId 
                 );
@@ -1805,16 +1805,16 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Предложения фрилансеров "Сделаю". Утверждение/удаление записи
+     * РџСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ "РЎРґРµР»Р°СЋ". РЈС‚РІРµСЂР¶РґРµРЅРёРµ/СѓРґР°Р»РµРЅРёРµ Р·Р°РїРёСЃРё
      * 
-     * @param  string $stream_id идентификатор потока
-     * @param  int $user_id идентификатор модератора
-     * @param  int $from_id идентификатор пользователя
-     * @param  int $rec_id идентификатор записи
-     * @param  int $rec_type тип записи 
-     * @param  int $action действие: 1 - утверждено, 2 - удалено
-     * @param  string $is_sent было ли отправлено уведомление
-     * @param  string $reason причина удаления
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $user_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РјРѕРґРµСЂР°С‚РѕСЂР°
+     * @param  int $from_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @param  int $rec_type С‚РёРї Р·Р°РїРёСЃРё 
+     * @param  int $action РґРµР№СЃС‚РІРёРµ: 1 - СѓС‚РІРµСЂР¶РґРµРЅРѕ, 2 - СѓРґР°Р»РµРЅРѕ
+     * @param  string $is_sent Р±С‹Р»Рѕ Р»Рё РѕС‚РїСЂР°РІР»РµРЅРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ
+     * @param  string $reason РїСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ
      */
     function resolveSdelau( $stream_id = '', $user_id = 0, $from_id = 0, $rec_id = 0, $rec_type = 0, $action = 1, $is_sent = '', $reason = '' ) {
         $bRet   = false;
@@ -1830,15 +1830,15 @@ class user_content extends admin_parent {
             $frl_offers = new freelancer_offers();
             $offer      = $frl_offers->getOfferById( $rec_id );
             $sObjName   = $offer['title'];
-            $sObjLink   = ''; // нет ссылки на конкретное предложение
+            $sObjLink   = ''; // РЅРµС‚ СЃСЃС‹Р»РєРё РЅР° РєРѕРЅРєСЂРµС‚РЅРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ
             $update     = array();
 
-            if ( $action == 1 && $offer['admin'] ) { //утверждаем
+            if ( $action == 1 && $offer['admin'] ) { //СѓС‚РІРµСЂР¶РґР°РµРј
                 $update = array( 'is_blocked' => false, 'reason'=> '', 'reason_id' => 0, 'admin' => 0 );
                 admin_log::addLog( admin_log::OBJ_CODE_OFFER, 14, $from_id, $rec_id, $sObjName, $sObjLink, 0, '', 0, '' );
             }
             elseif ( $action == 2 && $topic['is_blocked_s'] != 't' ) {
-                $sReason  = 'Содержит запрещенную информацию';
+                $sReason  = 'РЎРѕРґРµСЂР¶РёС‚ Р·Р°РїСЂРµС‰РµРЅРЅСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ';
                 $update   = array( 'is_blocked' => true, 'reason' => $reason, 'reason_id' => 0, 'admin' => $user_id, 'deleted_reason' => $reason );
                 admin_log::addLog( admin_log::OBJ_CODE_OFFER, 13, $from_id, $rec_id, $sObjName, $sObjLink, 0, '', 0, $sReason, $rec_id );
             }
@@ -1852,10 +1852,10 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Освобождение сущностей из потока
+     * РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ СЃСѓС‰РЅРѕСЃС‚РµР№ РёР· РїРѕС‚РѕРєР°
      * 
-     * @param  int $content_id идентификатор сущности из admin_contents
-     * @param  string $stream_id опционально. идентификатор потока, иначе будут освобождены все сущности
+     * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+     * @param  string $stream_id РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°, РёРЅР°С‡Рµ Р±СѓРґСѓС‚ РѕСЃРІРѕР±РѕР¶РґРµРЅС‹ РІСЃРµ СЃСѓС‰РЅРѕСЃС‚Рё
      */
     private function _releaseContent( $content_id = 0, $stream_id = '' ) {
         $sStream = !empty($stream_id) ? $GLOBALS['DB']->parse(' AND stream_id = ?', $stream_id) : '';
@@ -1864,7 +1864,7 @@ class user_content extends admin_parent {
         
         switch ($content_id) {
             case self::MODER_MSSAGES:
-                // Личные сообщения
+                // Р›РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ
                 $bCommon = false;
                 $DB      = new DB( 'plproxy' );
                 $sQuery  = 'SELECT messages_moder_del(?);';
@@ -1895,12 +1895,12 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Захватить сущности для модерирования
+     * Р—Р°С…РІР°С‚РёС‚СЊ СЃСѓС‰РЅРѕСЃС‚Рё РґР»СЏ РјРѕРґРµСЂРёСЂРѕРІР°РЅРёСЏ
      * 
-     * @param  int $content_id идентификатор сущности из admin_contents
-     * @param  string $stream_id идентификатор потока
-     * @param  int $stream_num счетчик потока
-     * @param  int $limit количество записей для захвата
+     * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $stream_num СЃС‡РµС‚С‡РёРє РїРѕС‚РѕРєР°
+     * @param  int $limit РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№ РґР»СЏ Р·Р°С…РІР°С‚Р°
      */
     function chooseContent( $content_id = 0, $stream_id = '', $stream_num = 0, $limit = 10 ) {
         if ( !empty($content_id) && !empty($stream_id) ) {
@@ -1912,7 +1912,7 @@ class user_content extends admin_parent {
             
             switch ($content_id) {
                 case self::MODER_MSSAGES:
-                    // Личные сообщения
+                    // Р›РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ
                     $bCommon = false;
                     $DB      = new DB( 'plproxy' );
                     $sQuery  = 'SELECT messages_moder_choose(?, ?i, ?i, ?i);';
@@ -1920,13 +1920,13 @@ class user_content extends admin_parent {
                     $DB->query( $sQuery, $stream_id, $this->streams_count[$content_id], $stream_num, $limit );
                     break;
                 case self::MODER_PRJ_DIALOG:
-                    // Комментарии к предложениям по проектам
+                    // РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РїРѕ РїСЂРѕРµРєС‚Р°Рј
                     $sAnd = ' AND a.root = false ';
                     break;
                 case self::MODER_PROFILE:
                 case self::MODER_PORTF_CHOISE:
                 case self::MODER_PORTFOLIO:
-                    // то что после окончания ПРО нужно отправить на модерирование
+                    // С‚Рѕ С‡С‚Рѕ РїРѕСЃР»Рµ РѕРєРѕРЅС‡Р°РЅРёСЏ РџР Рћ РЅСѓР¶РЅРѕ РѕС‚РїСЂР°РІРёС‚СЊ РЅР° РјРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ
                     $sStatus = ' (status = 0 OR status = -1) ';
                     break;
                 case self::MODER_PRJ_COM:
@@ -1934,7 +1934,7 @@ class user_content extends admin_parent {
                 case self::MODER_PORTF_UNITED:
                 case self::MODER_BLOGS_UNITED:
                 case self::MODER_USER_UNITED:
-                    // Сборные
+                    // РЎР±РѕСЂРЅС‹Рµ
                     $bCommon = false;
                     break;
                 default:
@@ -1975,13 +1975,13 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает внутренний запрос для захвата сущностей в сборных потоках
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РІРЅСѓС‚СЂРµРЅРЅРёР№ Р·Р°РїСЂРѕСЃ РґР»СЏ Р·Р°С…РІР°С‚Р° СЃСѓС‰РЅРѕСЃС‚РµР№ РІ СЃР±РѕСЂРЅС‹С… РїРѕС‚РѕРєР°С…
      * 
-     * @param  array $aContentId массив идентификаторов сущностей из admin_contents
-     * @param  int $nStreamsCnt количество потоков 
-     * @param  int $nStreamNum номер потока
-     * @param  int $nLimit количество сущностей для захвата
-     * @param  bool $bStatus установить в true, если по окончании ПРО сущности нужно направить в потоки
+     * @param  array $aContentId РјР°СЃСЃРёРІ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРІ СЃСѓС‰РЅРѕСЃС‚РµР№ РёР· admin_contents
+     * @param  int $nStreamsCnt РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕС‚РѕРєРѕРІ 
+     * @param  int $nStreamNum РЅРѕРјРµСЂ РїРѕС‚РѕРєР°
+     * @param  int $nLimit РєРѕР»РёС‡РµСЃС‚РІРѕ СЃСѓС‰РЅРѕСЃС‚РµР№ РґР»СЏ Р·Р°С…РІР°С‚Р°
+     * @param  bool $bStatus СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РІ true, РµСЃР»Рё РїРѕ РѕРєРѕРЅС‡Р°РЅРёРё РџР Рћ СЃСѓС‰РЅРѕСЃС‚Рё РЅСѓР¶РЅРѕ РЅР°РїСЂР°РІРёС‚СЊ РІ РїРѕС‚РѕРєРё
      * @return string
      */
     function _getChooseContentUnitedSql( $aContentId = array(), $nStreamsCnt = 0, $nStreamNum = 0, $nLimit = 0, $bStatus = false ) {
@@ -2000,12 +2000,12 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Проверяет существует ли запись для модерирования и захвачена ли она
+     * РџСЂРѕРІРµСЂСЏРµС‚ СЃСѓС‰РµСЃС‚РІСѓРµС‚ Р»Рё Р·Р°РїРёСЃСЊ РґР»СЏ РјРѕРґРµСЂРёСЂРѕРІР°РЅРёСЏ Рё Р·Р°С…РІР°С‡РµРЅР° Р»Рё РѕРЅР°
      * 
-     * @param  int $content_id идентификатор сущности из admin_contents
-     * @param  string $stream_id идентификатор потока
-     * @param  int $rec_id идентификатор записи
-     * @return bool true - существует, false - нет
+     * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $rec_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё
+     * @return bool true - СЃСѓС‰РµСЃС‚РІСѓРµС‚, false - РЅРµС‚
      */
     function checkContent( $content_id = 0, $stream_id = '', $rec_id = 0 ) {
         $bRet = false;
@@ -2032,13 +2032,13 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает сущности для модерирования, утвержденные либо удаленные в потоке
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃСѓС‰РЅРѕСЃС‚Рё РґР»СЏ РјРѕРґРµСЂРёСЂРѕРІР°РЅРёСЏ, СѓС‚РІРµСЂР¶РґРµРЅРЅС‹Рµ Р»РёР±Рѕ СѓРґР°Р»РµРЅРЅС‹Рµ РІ РїРѕС‚РѕРєРµ
      * 
-     * @param  int $content_id идентификатор сущности из admin_contents
-     * @param  string $stream_id идентификатор потока
-     * @param  int $status статус сущностей: 0 - для модерирования, 1 - утвержденные, 2 - утвержденные
-     * @param  int $last_id для статус = 1, 2 - последний полученный ID
-     * @param  int $limit количество записей
+     * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $status СЃС‚Р°С‚СѓСЃ СЃСѓС‰РЅРѕСЃС‚РµР№: 0 - РґР»СЏ РјРѕРґРµСЂРёСЂРѕРІР°РЅРёСЏ, 1 - СѓС‚РІРµСЂР¶РґРµРЅРЅС‹Рµ, 2 - СѓС‚РІРµСЂР¶РґРµРЅРЅС‹Рµ
+     * @param  int $last_id РґР»СЏ СЃС‚Р°С‚СѓСЃ = 1, 2 - РїРѕСЃР»РµРґРЅРёР№ РїРѕР»СѓС‡РµРЅРЅС‹Р№ ID
+     * @param  int $limit РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№
      */
     function getContent( $content_id = 0, $stream_id = '', $status = 0, $last_id = 0, $limit = 10 ) {
         $aReturn = array();
@@ -2050,7 +2050,7 @@ class user_content extends admin_parent {
             
             switch ($content_id) {
                 case self::MODER_MSSAGES:
-                    // Личные сообщения
+                    // Р›РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ
                     $sOrder  = ( $status && $last_id ) ? 'DESC' : 'ASC';
                     $sAnd    = ( $status && $last_id ) ? $GLOBALS['DB']->parse(' AND b.rec_id < ?i ', $last_id) : '';
                     $DB      = new DB( 'plproxy' );
@@ -2064,7 +2064,7 @@ class user_content extends admin_parent {
                     }
                     break;
                 case self::MODER_BLOGS:
-                    // Блоги: посты и комментарии
+                    // Р‘Р»РѕРіРё: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё
                     $sQuery = 'SELECT b.rec_type AS content_id, b.moder_num, b.stop_words_cnt, b.sort_order, a.id, a.fromuser_id AS user_id, a.msgtext, a.thread_id AS src_id, a.is_sent, a.title AS src_name, a.yt_link AS youtube_link, a.post_time, a.modified AS mod_time, a.reply_to, t.id_gr, c.question as poll_question 
                             u.login, u.uname, u.usurname, u.role, u.is_pro, u.is_pro_test, u.is_team, u.is_chuck, u.warn, u.is_banned, u.ban_where, 
                         FROM moderation b 
@@ -2082,7 +2082,7 @@ class user_content extends admin_parent {
                     }
                     break;
                 case self::MODER_COMMUNITY:
-                    // Сообщества: посты и комментарии
+                    // РЎРѕРѕР±С‰РµСЃС‚РІР°: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё
                     $sQuery = 'SELECT a.*, a.cnt_files AS file_exists, u.login, u.uname, u.usurname, u.role, u.is_pro, u.is_pro_test, u.is_team, u.is_chuck, u.warn, u.is_banned, u.ban_where, 
                             b.rec_type AS content_id, b.moder_num, cp.question AS question, t.id AS top_id, a.created_time AS post_time, a.modified_time AS mod_time 
                         FROM moderation b 
@@ -2100,7 +2100,7 @@ class user_content extends admin_parent {
                     }
                     break;
                 case self::MODER_PROJECTS:
-                    // Проекты
+                    // РџСЂРѕРµРєС‚С‹
                     $sQuery = 'SELECT p.*, city.city_name, country.country_name, (COALESCE(p.payed,0)<>0) as ico_payed, 
                             u.login, u.uname, u.usurname, u.email, u.photo, u.photosm, u.is_pro, u.warn, u.role, 
                             u.is_banned, u.ban_where, u.is_team, u.reg_date, pb.project_id::boolean AS is_blocked, 
@@ -2124,7 +2124,7 @@ class user_content extends admin_parent {
                     }
                     break;
                 case self::MODER_PRJ_OFFERS:
-                    // Предложения в проектах
+                    // РџСЂРµРґР»РѕР¶РµРЅРёСЏ РІ РїСЂРѕРµРєС‚Р°С…
                     $sQuery = 'SELECT po.*, po.post_date AS post_time, po.project_id AS src_id, po.descr AS post_text, b.rec_type AS content_id, b.moder_num, p.kind, p.name AS src_name, d.post_text AS dialog_root, 
                             u.login, u.uname, u.usurname, u.is_chuck, u.warn, u.is_banned, u.ban_where, u.role, u.is_pro, u.is_pro_test, u.is_team, po.modified AS mod_time 
                         FROM moderation b 
@@ -2138,12 +2138,12 @@ class user_content extends admin_parent {
                     $aReturn = $GLOBALS['DB']->rows( $sQuery, $status, $stream_id, $limit );
                     
                     if ( is_array($aReturn) && count($aReturn) ) {
-                        // аттачи
+                        // Р°С‚С‚Р°С‡Рё
                         $this->_getPrjOffersAttach( $aReturn );
                     }
                     break;
                 case self::MODER_ART_COM:
-                    // Комментарии в статьях
+                    // РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ СЃС‚Р°С‚СЊСЏС…
                     $sQuery = 'SELECT c.id, c.from_id AS user_id, c.article_id AS src_id, c.msgtext, c.youtube_link, c.is_sent, c.created_time AS post_time, c.modified_time AS mod_time, 
                             b.rec_type AS content_id, b.moder_num, a.title AS src_name, u.login, u.uname, u.usurname, u.role, u.is_pro, u.is_pro_test, u.is_team, u.is_chuck, u.warn, u.is_banned, u.ban_where 
                         FROM moderation b 
@@ -2156,12 +2156,12 @@ class user_content extends admin_parent {
                     $aReturn = $GLOBALS['DB']->rows( $sQuery, $status, $stream_id, $limit );
                     
                     if ( $aReturn ) {
-                        // аттачи
+                        // Р°С‚С‚Р°С‡Рё
                         $this->_getCommentsAttach( $aReturn, self::MODER_ART_COM, 'articles_comments_files', 'file', 'comment_id', 'file_id' );
                     }
                     break;
                 case self::MODER_PROFILE:
-                    // Изменения в профилях
+                    // РР·РјРµРЅРµРЅРёСЏ РІ РїСЂРѕС„РёР»СЏС…
                     $sQuery = 'SELECT c.*, b.rec_type AS content_id, b.moder_num, u.login, u.uname, u.usurname, u.role, u.is_pro, u.is_pro_test, u.is_team, u.is_chuck, u.warn, u.is_banned, u.ban_where 
                         FROM moderation b 
                         INNER JOIN users_change c ON c.id = b.rec_id 
@@ -2172,7 +2172,7 @@ class user_content extends admin_parent {
                     $aReturn = $GLOBALS['DB']->rows( $sQuery, $status, $stream_id, $limit );
                     break;
                 case self::MODER_PRJ_DIALOG:
-                    // Комментарии к предложениям по проектам
+                    // РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РїРѕ РїСЂРѕРµРєС‚Р°Рј
                     $sQuery = 'SELECT d.id, d.po_id AS offer_id, d.user_id, d.post_text, d.is_sent, d.post_date AS post_time, d.modified AS mod_time, po.project_id AS src_id, p.name AS src_name, 
                             p.kind, b.rec_type AS content_id, b.moder_num, u.login, u.uname, u.usurname, u.role, u.is_pro, u.is_pro_test, u.is_team, u.is_chuck, u.warn, u.is_banned, u.ban_where 
                         FROM moderation b 
@@ -2186,7 +2186,7 @@ class user_content extends admin_parent {
                     $aReturn = $GLOBALS['DB']->rows( $sQuery, $status, $stream_id, $limit );
                     break;
                 case self::MODER_CONTEST_COM:
-                    // Комментарии к предложениям конкурсов
+                    // РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РєРѕРЅРєСѓСЂСЃРѕРІ
                     $sQuery = 'SELECT m.id, m.offer_id, m.user_id, m.msg AS post_text, m.is_sent, m.post_date AS post_time, m.modified AS mod_time, po.project_id AS src_id, p.name AS src_name, 
                             b.rec_type AS content_id, b.moder_num, u.login, u.uname, u.usurname, u.role, u.is_pro, u.is_pro_test, u.is_team, u.is_chuck, u.warn, u.is_banned, u.ban_where 
                         FROM moderation b 
@@ -2200,7 +2200,7 @@ class user_content extends admin_parent {
                     $aReturn = $GLOBALS['DB']->rows( $sQuery, $status, $stream_id, $limit );
                     break;
                 case self::MODER_PORTF_CHOISE:
-                    // Уточнения к разделам в портфолио
+                    // РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
                     $sQuery = 'SELECT c.*, b.rec_type AS content_id, b.moder_num, pc.portf_text AS new_val, 
                             u.login, u.uname, u.usurname, u.is_chuck, u.is_pro, u.is_pro_test, u.is_team, u.warn, u.is_banned, u.ban_where 
                         FROM moderation b 
@@ -2215,7 +2215,7 @@ class user_content extends admin_parent {
                 
                 //--------------------------------------------------------------
                 
-                //Реквизиты в разделе финансы
+                //Р РµРєРІРёР·РёС‚С‹ РІ СЂР°Р·РґРµР»Рµ С„РёРЅР°РЅСЃС‹
                 case self::MODER_SBR_REQV:
                     
                     $sQuery = "
@@ -2251,7 +2251,7 @@ class user_content extends admin_parent {
                 //--------------------------------------------------------------
                 
                 case self::MODER_TSERVICES:
-                    //типовые услуги
+                    //С‚РёРїРѕРІС‹Рµ СѓСЃР»СѓРіРё
                     $sQuery = "
                         SELECT 
                             s.*,
@@ -2288,7 +2288,7 @@ class user_content extends admin_parent {
                 
                 
                 case self::MODER_PORTFOLIO:
-                    // Работы в портфолио
+                    // Р Р°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ
                     $sQuery = 'SELECT p.*, p.post_date AS post_time, p.edit_date AS mod_time, b.rec_type AS content_id, b.moder_num, u.login, u.uname, u.usurname, u.is_pro, u.is_pro_test, u.is_team, u.is_chuck, u.warn, u.is_banned, u.ban_where 
                         FROM moderation b 
                         INNER JOIN portfolio p ON p.id = b.rec_id 
@@ -2299,7 +2299,7 @@ class user_content extends admin_parent {
                     $aReturn = $GLOBALS['DB']->rows( $sQuery, $status, $stream_id, $limit );    
                     break;
                 case self::MODER_SDELAU:
-                    // Предложения фрилансеров "Сделаю"
+                    // РџСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ "РЎРґРµР»Р°СЋ"
                     $sQuery = 'SELECT o.*, o.post_date AS post_time, o.modify_date AS mod_time, o.descr AS post_text, u.login, u.uname, u.is_pro, u.is_pro_test, u.is_team, u.usurname, u.is_chuck, u.warn, u.is_banned, u.ban_where, 
                             b.rec_type AS content_id, b.moder_num, p.name as profname, p.is_text, pg.name as src_name, p.link 
                         FROM moderation b 
@@ -2313,7 +2313,7 @@ class user_content extends admin_parent {
                     $aReturn = $GLOBALS['DB']->rows( $sQuery, $status, $stream_id, $limit );
                     break;
                 case self::MODER_PRJ_COM:
-                    // Сборная: Предложения в проектах/конкурсах, комментарии к предложениям в проектах/конкурсах, Предложения фрилансеров Сделаю
+                    // РЎР±РѕСЂРЅР°СЏ: РџСЂРµРґР»РѕР¶РµРЅРёСЏ РІ РїСЂРѕРµРєС‚Р°С…/РєРѕРЅРєСѓСЂСЃР°С…, РєРѕРјРјРµРЅС‚Р°СЂРёРё Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РІ РїСЂРѕРµРєС‚Р°С…/РєРѕРЅРєСѓСЂСЃР°С…, РџСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РЎРґРµР»Р°СЋ
                     $sQuery = 'SELECT i.content_id, i.moder_num, i.stop_words_cnt, i.sort_order, i.id, i.user_id, i.src_id, i.src_name, i.post_text, 
                             i.kind, i.pict1, i.pict2, i.pict3, i.prev_pict1, i.prev_pict2, i.prev_pict3, i.time_from, i.time_to, i.time_type, i.cost_from, i.cost_to, i.cost_type, i.dialog_root, 
                             i.title, i.profname, i.link, i.is_sent, i.offer_id, i.moduser_id, i.modified_reason, i.post_time, i.mod_time, 
@@ -2378,12 +2378,12 @@ class user_content extends admin_parent {
                     );
 
                     if ( is_array($aReturn) && count($aReturn) ) {
-                        // аттачи
+                        // Р°С‚С‚Р°С‡Рё
                         $this->_getPrjOffersAttach( $aReturn );
                     }
                     break;
                 case self::MODER_COMMENTS:
-                    // Сборная: Комментарии: магазин, статьи
+                    // РЎР±РѕСЂРЅР°СЏ: РљРѕРјРјРµРЅС‚Р°СЂРёРё: РјР°РіР°Р·РёРЅ, СЃС‚Р°С‚СЊРё
                     $sQuery = 'SELECT i.content_id, i.moder_num, i.stop_words_cnt, i.sort_order, i.id, i.user_id, i.msgtext, i.src_id, i.is_sent, i.src_name, i.youtube_link, i.post_time, i.mod_time, 
                             u.login, u.uname, u.usurname, u.role, u.is_pro, u.is_pro_test, u.is_team, u.is_chuck, u.warn, u.is_banned, u.ban_where 
                         FROM (
@@ -2405,12 +2405,12 @@ class user_content extends admin_parent {
                     );
                     
                     if ( $aReturn ) {
-                        // аттачи
+                        // Р°С‚С‚Р°С‡Рё
                         $this->_getCommentsAttach( $aReturn, self::MODER_ART_COM, 'articles_comments_files', 'file', 'comment_id', 'file_id' );
                     }
                     break;
                 case self::MODER_PORTF_UNITED:
-                    // Сборная: Работы в портфолио, Уточнения к разделам в портфолио
+                    // РЎР±РѕСЂРЅР°СЏ: Р Р°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ, РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
                     $sQuery = 'SELECT i.content_id, i.moder_num, i.stop_words_cnt, i.sort_order, i.id, i.user_id, i.ucolumn, i.new_val, 
                             i.is_video, i.video_link, i.pict, i.prev_pict, i.cost, i.cost_type, i.time_value, i.time_type, i.link, i.name, i.descr, i.prof_id, 
                             i.moduser_id, i.modified_reason, i.moderator_status, i.post_time, i.mod_time, 
@@ -2445,7 +2445,7 @@ class user_content extends admin_parent {
                     );
                     break;
                 case self::MODER_BLOGS_UNITED:
-                    // Сборная: Блоги: посты и комментарии, Комментарии в Комментарии в статьях
+                    // РЎР±РѕСЂРЅР°СЏ: Р‘Р»РѕРіРё: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё, РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ СЃС‚Р°С‚СЊСЏС…
                     $sQuery = 'SELECT i.content_id, i.moder_num, i.stop_words_cnt, i.sort_order, i.id, i.user_id, i.msgtext, i.src_id, i.is_sent, i.src_name, i.youtube_link, i.post_time, i.mod_time, i.reply_to, i.id_gr, i.poll_question, 
                             u.login, u.uname, u.usurname, u.role, u.is_pro, u.is_pro_test, u.is_team, u.is_chuck, u.warn, u.is_banned, u.ban_where 
                         FROM (
@@ -2477,7 +2477,7 @@ class user_content extends admin_parent {
                     );
                     
                     if ( $aReturn ) {
-                        // выбрать те которые блоги в отдельный массив ссылок на $aReturn и закинуть в _getBlogsAttachPoll
+                        // РІС‹Р±СЂР°С‚СЊ С‚Рµ РєРѕС‚РѕСЂС‹Рµ Р±Р»РѕРіРё РІ РѕС‚РґРµР»СЊРЅС‹Р№ РјР°СЃСЃРёРІ СЃСЃС‹Р»РѕРє РЅР° $aReturn Рё Р·Р°РєРёРЅСѓС‚СЊ РІ _getBlogsAttachPoll
                         $aBlogs = array();
                         
                         foreach ( $aReturn as $key => $aOne ) {
@@ -2494,7 +2494,7 @@ class user_content extends admin_parent {
                     }
                     break;
                 case self::MODER_USER_UNITED:
-                    // Сборная: Изменения в профилях и Уточнения к разделам в портфолио
+                    // РЎР±РѕСЂРЅР°СЏ: РР·РјРµРЅРµРЅРёСЏ РІ РїСЂРѕС„РёР»СЏС… Рё РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
                     $sQuery = 'SELECT i.content_id, i.moder_num, i.stop_words_cnt, i.sort_order, i.id, i.user_id, i.ucolumn, i.new_val, 
                             i.prof_id, 
                             i.moduser_id, i.modified_reason, i.moderator_status, i.post_time, i.mod_time, i.utable, 
@@ -2538,12 +2538,12 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Вспомогательная функция для получения аттачей к предложениям в проектах/конкурсах
+     * Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ Р°С‚С‚Р°С‡РµР№ Рє РїСЂРµРґР»РѕР¶РµРЅРёСЏРј РІ РїСЂРѕРµРєС‚Р°С…/РєРѕРЅРєСѓСЂСЃР°С…
      * 
      * @param type $aReturn 
      */
     function _getPrjOffersAttach( &$aReturn = array() ) {
-        // аттачи для конкурсных работ
+        // Р°С‚С‚Р°С‡Рё РґР»СЏ РєРѕРЅРєСѓСЂСЃРЅС‹С… СЂР°Р±РѕС‚
         $aContest = array();
         $aContestId = array();
 
@@ -2573,17 +2573,17 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Вспомогательная функция для получения аттачей и опросов для блогов
+     * Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ Р°С‚С‚Р°С‡РµР№ Рё РѕРїСЂРѕСЃРѕРІ РґР»СЏ Р±Р»РѕРіРѕРІ
      * 
      * @param type $aReturn 
      */
     function _getBlogsAttachPoll( &$aReturn = array() ) {
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/blogs.php");
 
-        // прикрепленные файлы
+        // РїСЂРёРєСЂРµРїР»РµРЅРЅС‹Рµ С„Р°Р№Р»С‹
         blogs::AddAttach( $aReturn );
 
-        // опросы
+        // РѕРїСЂРѕСЃС‹
         foreach ( $aReturn as $key => $aOne ) {
             if ( $aOne['poll_question'] && !$aOne['reply_to'] ) {
                 $aOne['poll'] = $GLOBALS['DB']->rows( 
@@ -2597,12 +2597,12 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Вспомогательная функция для получения аттачей и опросов для сообществ
+     * Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ Р°С‚С‚Р°С‡РµР№ Рё РѕРїСЂРѕСЃРѕРІ РґР»СЏ СЃРѕРѕР±С‰РµСЃС‚РІ
      * 
      * @param type $aReturn 
      */
     function _getCommunityAttachPoll( &$aReturn = array() ) {
-        // ответы на опросы -----
+        // РѕС‚РІРµС‚С‹ РЅР° РѕРїСЂРѕСЃС‹ -----
         $ids = '';
         $lnk = array();
         for ( $i=0, $c=count($aReturn); $i < $c; $i++ ) {
@@ -2622,7 +2622,7 @@ class user_content extends admin_parent {
         }
         //-----------------------
 
-        // аттачи ---------------
+        // Р°С‚С‚Р°С‡Рё ---------------
         $id_attach = $x = array();
         foreach($aReturn as $k=>$v) {
             $x[$v['id']] = $v;
@@ -2648,7 +2648,7 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Вспомогательная функция для получения аттачей и профессий для проектов/конкурсов
+     * Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ Р°С‚С‚Р°С‡РµР№ Рё РїСЂРѕС„РµСЃСЃРёР№ РґР»СЏ РїСЂРѕРµРєС‚РѕРІ/РєРѕРЅРєСѓСЂСЃРѕРІ
      * 
      * @param type $aReturn 
      */
@@ -2656,7 +2656,7 @@ class user_content extends admin_parent {
         require_once( $_SERVER['DOCUMENT_ROOT'] . "/classes/projects.php" );
         require_once( $_SERVER['DOCUMENT_ROOT'] . "/classes/professions.php" );
 
-        // аттачи
+        // Р°С‚С‚Р°С‡Рё
         foreach ($aReturn as $key => $aOne) {
             $aReturn[$key]['attach'] = projects::GetAllAttach( $aOne['id'] );
             $aReturn[$key]['specs']  = projects::getSpecsStr( $aOne['id'],' / ', ', ', true );
@@ -2665,11 +2665,11 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает заблокированые личные сообщения
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹Рµ Р»РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ
      * 
-     * @param  array $filter фильтр
-     * @param  type $last_id последний полученный ID
-     * @param  type $limit количество записей
+     * @param  array $filter С„РёР»СЊС‚СЂ
+     * @param  type $last_id РїРѕСЃР»РµРґРЅРёР№ РїРѕР»СѓС‡РµРЅРЅС‹Р№ ID
+     * @param  type $limit РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№
      * @return array     
      */
     function getBlockedMessages( $filter = array(), $last_id = 2147483647, $limit = 10 ) {
@@ -2694,11 +2694,11 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает заблокированые блоги
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹Рµ Р±Р»РѕРіРё
      * 
-     * @param  array $filter фильтр
-     * @param  type $last_id последний полученный ID
-     * @param  type $limit количество записей
+     * @param  array $filter С„РёР»СЊС‚СЂ
+     * @param  type $last_id РїРѕСЃР»РµРґРЅРёР№ РїРѕР»СѓС‡РµРЅРЅС‹Р№ ID
+     * @param  type $limit РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№
      * @return array     
      */
     function getBlockedBlogs( $filter = array(), $last_id = 2147483647, $limit = 10 ) {
@@ -2733,11 +2733,11 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает заблокированые сообщества
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹Рµ СЃРѕРѕР±С‰РµСЃС‚РІР°
      * 
-     * @param  array $filter фильтр
-     * @param  type $last_id последний полученный ID
-     * @param  type $limit количество записей
+     * @param  array $filter С„РёР»СЊС‚СЂ
+     * @param  type $last_id РїРѕСЃР»РµРґРЅРёР№ РїРѕР»СѓС‡РµРЅРЅС‹Р№ ID
+     * @param  type $limit РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№
      * @return array     
      */
     function getBlockedCommunity( $filter = array(), $last_id = 2147483647, $limit = 10 ) {
@@ -2771,11 +2771,11 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает заблокированые проекты и конкрусы
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹Рµ РїСЂРѕРµРєС‚С‹ Рё РєРѕРЅРєСЂСѓСЃС‹
      * 
-     * @param  array $filter фильтр
-     * @param  type $last_id последний полученный ID
-     * @param  type $limit количество записей
+     * @param  array $filter С„РёР»СЊС‚СЂ
+     * @param  type $last_id РїРѕСЃР»РµРґРЅРёР№ РїРѕР»СѓС‡РµРЅРЅС‹Р№ ID
+     * @param  type $limit РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№
      * @return array     
      */
     function getBlockedProjects( $filter = array(), $last_id = 2147483647, $limit = 10 ) {
@@ -2806,11 +2806,11 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает заблокированые предложения по проектам
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹Рµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РїРѕ РїСЂРѕРµРєС‚Р°Рј
      * 
-     * @param  array $filter фильтр
-     * @param  type $last_id последний полученный ID
-     * @param  type $limit количество записей
+     * @param  array $filter С„РёР»СЊС‚СЂ
+     * @param  type $last_id РїРѕСЃР»РµРґРЅРёР№ РїРѕР»СѓС‡РµРЅРЅС‹Р№ ID
+     * @param  type $limit РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№
      * @return array     
      */
     function getBlockedPrjOffers( $filter = array(), $last_id = 2147483647, $limit = 10 ) {
@@ -2838,7 +2838,7 @@ class user_content extends admin_parent {
         $aReturn = $GLOBALS['DB']->rows( $sQuery );
 
         if ( is_array($aReturn) && count($aReturn) ) {
-            // аттачи
+            // Р°С‚С‚Р°С‡Рё
             $this->_getPrjOffersAttach( $aReturn );
         }
         
@@ -2846,11 +2846,11 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает заблокированые комментарии в статьях
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹Рµ РєРѕРјРјРµРЅС‚Р°СЂРёРё РІ СЃС‚Р°С‚СЊСЏС…
      * 
-     * @param  array $filter фильтр
-     * @param  type $last_id последний полученный ID
-     * @param  type $limit количество записей
+     * @param  array $filter С„РёР»СЊС‚СЂ
+     * @param  type $last_id РїРѕСЃР»РµРґРЅРёР№ РїРѕР»СѓС‡РµРЅРЅС‹Р№ ID
+     * @param  type $limit РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№
      * @return array     
      */
     function getBlockedArtCom( $filter = array(), $last_id = 2147483647, $limit = 10 ) {
@@ -2870,7 +2870,7 @@ class user_content extends admin_parent {
         $aReturn = $GLOBALS['DB']->rows( $sQuery );
 
         if ( $aReturn ) {
-            // аттачи
+            // Р°С‚С‚Р°С‡Рё
             $this->_getCommentsAttach( $aReturn, self::MODER_ART_COM, 'articles_comments_files', 'file', 'comment_id', 'file_id' );
         }
         
@@ -2878,11 +2878,11 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает заблокированые комментарии в предложениях к проектам
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹Рµ РєРѕРјРјРµРЅС‚Р°СЂРёРё РІ РїСЂРµРґР»РѕР¶РµРЅРёСЏС… Рє РїСЂРѕРµРєС‚Р°Рј
      * 
-     * @param  array $filter фильтр
-     * @param  type $last_id последний полученный ID
-     * @param  type $limit количество записей
+     * @param  array $filter С„РёР»СЊС‚СЂ
+     * @param  type $last_id РїРѕСЃР»РµРґРЅРёР№ РїРѕР»СѓС‡РµРЅРЅС‹Р№ ID
+     * @param  type $limit РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№
      * @return array     
      */
     function getBlockedPrjDialog( $filter = array(), $last_id = 2147483647, $limit = 10 ) {
@@ -2905,11 +2905,11 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает заблокированые комментарии в конкурсных работах
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹Рµ РєРѕРјРјРµРЅС‚Р°СЂРёРё РІ РєРѕРЅРєСѓСЂСЃРЅС‹С… СЂР°Р±РѕС‚Р°С…
      * 
-     * @param  array $filter фильтр
-     * @param  type $last_id последний полученный ID
-     * @param  type $limit количество записей
+     * @param  array $filter С„РёР»СЊС‚СЂ
+     * @param  type $last_id РїРѕСЃР»РµРґРЅРёР№ РїРѕР»СѓС‡РµРЅРЅС‹Р№ ID
+     * @param  type $limit РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№
      * @return array     
      */
     function getBlockedContestCom( $filter = array(), $last_id = 2147483647, $limit = 10 ) {
@@ -2931,11 +2931,11 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает заблокированые работы в портфолио
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹Рµ СЂР°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ
      * 
-     * @param  array $filter фильтр
-     * @param  type $last_id последний полученный ID
-     * @param  type $limit количество записей
+     * @param  array $filter С„РёР»СЊС‚СЂ
+     * @param  type $last_id РїРѕСЃР»РµРґРЅРёР№ РїРѕР»СѓС‡РµРЅРЅС‹Р№ ID
+     * @param  type $limit РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№
      * @return array     
      */
     function getBlockedPortfolio( $filter = array(), $last_id = 2147483647, $limit = 10 ) {
@@ -2955,11 +2955,11 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает заблокированые предложения фрилансеров "Сделаю"
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅС‹Рµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ "РЎРґРµР»Р°СЋ"
      * 
-     * @param  array $filter фильтр
-     * @param  type $last_id последний полученный ID
-     * @param  type $limit количество записей
+     * @param  array $filter С„РёР»СЊС‚СЂ
+     * @param  type $last_id РїРѕСЃР»РµРґРЅРёР№ РїРѕР»СѓС‡РµРЅРЅС‹Р№ ID
+     * @param  type $limit РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃРµР№
      * @return array     
      */
     function getBlockedSdelau( $filter = array(), $last_id = 2147483647, $limit = 10 ) {
@@ -2981,17 +2981,17 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Сбор дополнительных данных для личных сообщений
+     * РЎР±РѕСЂ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… РґР°РЅРЅС‹С… РґР»СЏ Р»РёС‡РЅС‹С… СЃРѕРѕР±С‰РµРЅРёР№
      * 
-     * @param array $aReturn массив личных сообщений
+     * @param array $aReturn РјР°СЃСЃРёРІ Р»РёС‡РЅС‹С… СЃРѕРѕР±С‰РµРЅРёР№
      */
     private function _getContentMessagesEx( &$aReturn ) {
         require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/messages.php' );
 
-        // прикрепленные файлы 
+        // РїСЂРёРєСЂРµРїР»РµРЅРЅС‹Рµ С„Р°Р№Р»С‹ 
         messages::getMessagesAttaches( $aReturn );
 
-        // прикручиваем юзеров к сообщениям - на нодах есть не все поля
+        // РїСЂРёРєСЂСѓС‡РёРІР°РµРј СЋР·РµСЂРѕРІ Рє СЃРѕРѕР±С‰РµРЅРёСЏРј - РЅР° РЅРѕРґР°С… РµСЃС‚СЊ РЅРµ РІСЃРµ РїРѕР»СЏ
         $aUsers = array();
 
         foreach ( $aReturn as $aOne ) {
@@ -3028,9 +3028,9 @@ class user_content extends admin_parent {
 
 
     /**
-     * Возвращает количество опубликованных проектов за последние 24 часа
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕРїСѓР±Р»РёРєРѕРІР°РЅРЅС‹С… РїСЂРѕРµРєС‚РѕРІ Р·Р° РїРѕСЃР»РµРґРЅРёРµ 24 С‡Р°СЃР°
      * 
-     * @param  array $aEmpId масств UID работодателей
+     * @param  array $aEmpId РјР°СЃСЃС‚РІ UID СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№
      * @return array
      */
     function getProjectsPer24( $aEmpId = array() ) {
@@ -3053,14 +3053,14 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Вспомогательная функция для получения аттачей к комментариям
+     * Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ Р°С‚С‚Р°С‡РµР№ Рє РєРѕРјРјРµРЅС‚Р°СЂРёСЏРј
      * 
-     * @param array $aComments массив комментариев к которым нужно выбрать аттачи
-     * @param string $sContentId идентификатор сущности из admin_contents
-     * @param string $sTable имя таблицы типа shop_comments_files
-     * @param string $sFileTable имя таблицы типа file
-     * @param string $sIdFld имя поля идентификатора комментария из $sTable
-     * @param string $sFileIdFld имя поля идентификатора файла из $sTable
+     * @param array $aComments РјР°СЃСЃРёРІ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ Рє РєРѕС‚РѕСЂС‹Рј РЅСѓР¶РЅРѕ РІС‹Р±СЂР°С‚СЊ Р°С‚С‚Р°С‡Рё
+     * @param string $sContentId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+     * @param string $sTable РёРјСЏ С‚Р°Р±Р»РёС†С‹ С‚РёРїР° shop_comments_files
+     * @param string $sFileTable РёРјСЏ С‚Р°Р±Р»РёС†С‹ С‚РёРїР° file
+     * @param string $sIdFld РёРјСЏ РїРѕР»СЏ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂР° РєРѕРјРјРµРЅС‚Р°СЂРёСЏ РёР· $sTable
+     * @param string $sFileIdFld РёРјСЏ РїРѕР»СЏ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂР° С„Р°Р№Р»Р° РёР· $sTable
      */
     function _getCommentsAttach( &$aComments = array(), $sContentId = '', $sTable = '', $sFileTable = '', $sIdFld = '', $sFileIdFld = '' ) {
         foreach ( $aComments as $key => $aOne ) {
@@ -3082,11 +3082,11 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Обновляет счетчики занятых потоков
+     * РћР±РЅРѕРІР»СЏРµС‚ СЃС‡РµС‚С‡РёРєРё Р·Р°РЅСЏС‚С‹С… РїРѕС‚РѕРєРѕРІ
      * 
-     * @param  int $content_id идентификатор сущности из admin_contents
-     * @param  string $stream_id опционально. идентификатор потока, если нужно вернуть его счетчик
-     * @return int счетчик потока
+     * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+     * @param  string $stream_id РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°, РµСЃР»Рё РЅСѓР¶РЅРѕ РІРµСЂРЅСѓС‚СЊ РµРіРѕ СЃС‡РµС‚С‡РёРє
+     * @return int СЃС‡РµС‚С‡РёРє РїРѕС‚РѕРєР°
      */
     private function _countChosenStreams( $content_id = 0, $stream_id = '' ) {
         $mRet = false;
@@ -3120,12 +3120,12 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Захват/перехват потока пользователем
+     * Р—Р°С…РІР°С‚/РїРµСЂРµС…РІР°С‚ РїРѕС‚РѕРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
      * 
-     * @param  int $content_id идентификатор сущности из admin_contents
-     * @param  string $stream_id идентификатор потока
-     * @param  int $user_id UID пользователя
-     * @return string идентификатор захваченного потока - успех, пустая строка - провал
+     * @param  int $content_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+     * @param  string $stream_id РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕС‚РѕРєР°
+     * @param  int $user_id UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @return string РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°С…РІР°С‡РµРЅРЅРѕРіРѕ РїРѕС‚РѕРєР° - СѓСЃРїРµС…, РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР° - РїСЂРѕРІР°Р»
      */
     function chooseStream( $content_id = 0, $stream_id = '', $user_id = 0 ) {
         $sStreamId = '';
@@ -3140,7 +3140,7 @@ class user_content extends admin_parent {
                 foreach ( $this->content_streams[$content_id] as $sKey => $aOne ) {
                     if ( $aOne['stream_id'] == $stream_id ) {
                         if ( $aOne['admin_id'] == $user_id ) {
-                            // пользователь пытается захватить свой же поток
+                            // РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РїС‹С‚Р°РµС‚СЃСЏ Р·Р°С…РІР°С‚РёС‚СЊ СЃРІРѕР№ Р¶Рµ РїРѕС‚РѕРє
                             $sStreamId = 'user_id';
                         }
                         else {
@@ -3150,7 +3150,7 @@ class user_content extends admin_parent {
                             $login = $users->GetField( $user_id, $error, 'login' );
 
                             if ( empty($aOne['admin_id']) ) {
-                                // захват свободного потока
+                                // Р·Р°С…РІР°С‚ СЃРІРѕР±РѕРґРЅРѕРіРѕ РїРѕС‚РѕРєР°
                                 $bChoose = true;
                                 $aOne['resolve_cnt'] = 0;
                             }
@@ -3188,7 +3188,7 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает список модерируемых сущностей с учетом прав пользователя
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РјРѕРґРµСЂРёСЂСѓРµРјС‹С… СЃСѓС‰РЅРѕСЃС‚РµР№ СЃ СѓС‡РµС‚РѕРј РїСЂР°РІ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * 
      * @return array 
      */
@@ -3205,8 +3205,8 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает список модерируемых сущностей с учетом прав пользователя
-     * для раздела админки Заблокированные
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РјРѕРґРµСЂРёСЂСѓРµРјС‹С… СЃСѓС‰РЅРѕСЃС‚РµР№ СЃ СѓС‡РµС‚РѕРј РїСЂР°РІ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * РґР»СЏ СЂР°Р·РґРµР»Р° Р°РґРјРёРЅРєРё Р—Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ
      * 
      * @return array 
      */
@@ -3226,9 +3226,9 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает список захваченных пользователем
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє Р·Р°С…РІР°С‡РµРЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
      * 
-     * @param  int $user_id UID пользователя
+     * @param  int $user_id UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * @return array
      */
     function getStreamsForUser( $user_id = 0 ) {
@@ -3253,7 +3253,7 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает список обновлений потоков для всех сущностей с учетом текущей смены и прав пользователя
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РѕР±РЅРѕРІР»РµРЅРёР№ РїРѕС‚РѕРєРѕРІ РґР»СЏ РІСЃРµС… СЃСѓС‰РЅРѕСЃС‚РµР№ СЃ СѓС‡РµС‚РѕРј С‚РµРєСѓС‰РµР№ СЃРјРµРЅС‹ Рё РїСЂР°РІ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      */
     function updateStreamsForUser() {
         $aReturn  = array();
@@ -3279,7 +3279,7 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Обновляет список потоков для всех сущностей с учетом текущей смены
+     * РћР±РЅРѕРІР»СЏРµС‚ СЃРїРёСЃРѕРє РїРѕС‚РѕРєРѕРІ РґР»СЏ РІСЃРµС… СЃСѓС‰РЅРѕСЃС‚РµР№ СЃ СѓС‡РµС‚РѕРј С‚РµРєСѓС‰РµР№ СЃРјРµРЅС‹
      * 
      * @return bool true 
      */
@@ -3330,7 +3330,7 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Инициализирует список потоков для всех сущностей с учетом текущей смены
+     * РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ СЃРїРёСЃРѕРє РїРѕС‚РѕРєРѕРІ РґР»СЏ РІСЃРµС… СЃСѓС‰РЅРѕСЃС‚РµР№ СЃ СѓС‡РµС‚РѕРј С‚РµРєСѓС‰РµР№ СЃРјРµРЅС‹
      */
     private function _initStreams() {
         $aCount = $this->_getStreamsCount();
@@ -3355,9 +3355,9 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Ставит метку о том, что нужно сохранить состояние поток в деструкторе
+     * РЎС‚Р°РІРёС‚ РјРµС‚РєСѓ Рѕ С‚РѕРј, С‡С‚Рѕ РЅСѓР¶РЅРѕ СЃРѕС…СЂР°РЅРёС‚СЊ СЃРѕСЃС‚РѕСЏРЅРёРµ РїРѕС‚РѕРє РІ РґРµСЃС‚СЂСѓРєС‚РѕСЂРµ
      * 
-     * @param boolean $init   true - пересохранить данные, false - только если есть изменения
+     * @param boolean $init   true - РїРµСЂРµСЃРѕС…СЂР°РЅРёС‚СЊ РґР°РЅРЅС‹Рµ, false - С‚РѕР»СЊРєРѕ РµСЃР»Рё РµСЃС‚СЊ РёР·РјРµРЅРµРЅРёСЏ
      */
     private function _saveStreams($init=false) {
         $DB   = new DB('plproxy');
@@ -3365,7 +3365,7 @@ class user_content extends admin_parent {
             
         if ( $init ) {
             $DB->query("SELECT mod_streams_release()");
-            // для $this->first_time используется спец.ключ в mod_streams (чтобы не плодить лишние таблицы)
+            // РґР»СЏ $this->first_time РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ СЃРїРµС†.РєР»СЋС‡ РІ mod_streams (С‡С‚РѕР±С‹ РЅРµ РїР»РѕРґРёС‚СЊ Р»РёС€РЅРёРµ С‚Р°Р±Р»РёС†С‹)
             $DB->query("SELECT mod_stream(?, ?, ?, ?, ?, ?, ?, ?i)", '_first_update', 0, 0, NULL, NULL, NULL, $this->first_update, 0);
         }
             
@@ -3396,7 +3396,7 @@ class user_content extends admin_parent {
     }
 
     /**
-     * Возвращает из базы данных количесво потоков для всех сущностей с учетом текущей смены
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РёР· Р±Р°Р·С‹ РґР°РЅРЅС‹С… РєРѕР»РёС‡РµСЃРІРѕ РїРѕС‚РѕРєРѕРІ РґР»СЏ РІСЃРµС… СЃСѓС‰РЅРѕСЃС‚РµР№ СЃ СѓС‡РµС‚РѕРј С‚РµРєСѓС‰РµР№ СЃРјРµРЅС‹
      * 
      * @return array
      */
@@ -3426,16 +3426,16 @@ class user_content extends admin_parent {
     ///////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////
     //                                                   //
-    //           Работа со сменами модераторов           //
+    //           Р Р°Р±РѕС‚Р° СЃРѕ СЃРјРµРЅР°РјРё РјРѕРґРµСЂР°С‚РѕСЂРѕРІ           //
     //                                                   //
     ///////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////
     
     /**
-     * Обновляет количество потоков всех сущностей в каждую смену
+     * РћР±РЅРѕРІР»СЏРµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕС‚РѕРєРѕРІ РІСЃРµС… СЃСѓС‰РЅРѕСЃС‚РµР№ РІ РєР°Р¶РґСѓСЋ СЃРјРµРЅСѓ
      * 
      * @param type $aStreams 
-     * @return bool true - успех, false - провал
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function updateShiftsContents( $aStreams = array() ) {
         if ( is_array($aStreams) && !empty($aStreams) ) {
@@ -3461,10 +3461,10 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Проверка на корректность количества потоков в сменах
+     * РџСЂРѕРІРµСЂРєР° РЅР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РєРѕР»РёС‡РµСЃС‚РІР° РїРѕС‚РѕРєРѕРІ РІ СЃРјРµРЅР°С…
      * 
-     * @param  mixed $mParam данные доя проверки
-     * @return bool true - успех, false - провал
+     * @param  mixed $mParam РґР°РЅРЅС‹Рµ РґРѕСЏ РїСЂРѕРІРµСЂРєРё
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function validShiftsContents( $mParam = '' ) {
         $bRet = true;
@@ -3489,7 +3489,7 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает количество потоков всех сущностей в каждую смену
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕС‚РѕРєРѕРІ РІСЃРµС… СЃСѓС‰РЅРѕСЃС‚РµР№ РІ РєР°Р¶РґСѓСЋ СЃРјРµРЅСѓ
      * 
      * @return array 
      */
@@ -3498,7 +3498,7 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает список модерируемых сущностей
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РјРѕРґРµСЂРёСЂСѓРµРјС‹С… СЃСѓС‰РЅРѕСЃС‚РµР№
      * 
      * @return array 
      */
@@ -3507,11 +3507,11 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Добавляет смены
+     * Р”РѕР±Р°РІР»СЏРµС‚ СЃРјРµРЅС‹
      * 
-     * @param  array $aFrom масив вреени начала смен
-     * @param  array $aTo масив вреени конца смен
-     * @return bool true - успех, false - провал
+     * @param  array $aFrom РјР°СЃРёРІ РІСЂРµРµРЅРё РЅР°С‡Р°Р»Р° СЃРјРµРЅ
+     * @param  array $aTo РјР°СЃРёРІ РІСЂРµРµРЅРё РєРѕРЅС†Р° СЃРјРµРЅ
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function insertShifts( $aFrom = array(), $aTo = array() ) {
         $bRet = false;
@@ -3532,12 +3532,12 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Обновляет смены
+     * РћР±РЅРѕРІР»СЏРµС‚ СЃРјРµРЅС‹
      * 
-     * @param  array $aId массив идентификаторов смен которые нужнообновить
-     * @param  array $aFrom масив вреени начала смен соответствующий идентификаторам
-     * @param  array $aTo масив вреени конца смен соответствующий идентификаторам
-     * @return bool true - успех, false - провал
+     * @param  array $aId РјР°СЃСЃРёРІ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРІ СЃРјРµРЅ РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕРѕР±РЅРѕРІРёС‚СЊ
+     * @param  array $aFrom РјР°СЃРёРІ РІСЂРµРµРЅРё РЅР°С‡Р°Р»Р° СЃРјРµРЅ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂР°Рј
+     * @param  array $aTo РјР°СЃРёРІ РІСЂРµРµРЅРё РєРѕРЅС†Р° СЃРјРµРЅ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂР°Рј
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function updateShifts( $aId = array(), $aFrom = array(), $aTo = array() ) {
         $bRet = false;
@@ -3560,10 +3560,10 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Удаляет одну или несколько смен по ID
+     * РЈРґР°Р»СЏРµС‚ РѕРґРЅСѓ РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ СЃРјРµРЅ РїРѕ ID
      * 
-     * @param  mixed $mShiftId массив идентификаторов или один идентификатор
-     * @return bool true - успех, false - провал
+     * @param  mixed $mShiftId РјР°СЃСЃРёРІ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРІ РёР»Рё РѕРґРёРЅ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function deleteShifts( $mShiftId = array() ) {
         $bRet = false;
@@ -3582,7 +3582,7 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает список смен
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє СЃРјРµРЅ
      * 
      * @return array 
      */
@@ -3591,10 +3591,10 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Проверяет каждый элемент массива на формат H:i
+     * РџСЂРѕРІРµСЂСЏРµС‚ РєР°Р¶РґС‹Р№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР° РЅР° С„РѕСЂРјР°С‚ H:i
      * 
-     * @param  array $aTimes массив для проверки
-     * @return bool true - успех, false - провал
+     * @param  array $aTimes РјР°СЃСЃРёРІ РґР»СЏ РїСЂРѕРІРµСЂРєРё
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function validTimes( $aTimes = array() ) {
         $bRet = true;
@@ -3614,9 +3614,9 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Проверяет чтобы все параметры были массивами одинаковой размерности
+     * РџСЂРѕРІРµСЂСЏРµС‚ С‡С‚РѕР±С‹ РІСЃРµ РїР°СЂР°РјРµС‚СЂС‹ Р±С‹Р»Рё РјР°СЃСЃРёРІР°РјРё РѕРґРёРЅР°РєРѕРІРѕР№ СЂР°Р·РјРµСЂРЅРѕСЃС‚Рё
      * 
-     * @return bool true - успех, false - провал
+     * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
      */
     function matchCount() {
         $bRet  = true;
@@ -3653,10 +3653,10 @@ class user_content extends admin_parent {
     ////////////////////////////////////////////////////////
     
     /**
-     * Имеет ли пользователь доступ в раздел
+     * РРјРµРµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РґРѕСЃС‚СѓРї РІ СЂР°Р·РґРµР»
      * 
-     * @param  type $site раздел
-     * @return bool true - имеет, false - не имеет
+     * @param  type $site СЂР°Р·РґРµР»
+     * @return bool true - РёРјРµРµС‚, false - РЅРµ РёРјРµРµС‚
      */
     function hasPermissions( $site = '' ) {
         $nIdx = array_search( $site, self::$site_allow );
@@ -3697,10 +3697,10 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Имеет ли пользователь доступ к модерированию конкретной сущности
+     * РРјРµРµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РґРѕСЃС‚СѓРї Рє РјРѕРґРµСЂРёСЂРѕРІР°РЅРёСЋ РєРѕРЅРєСЂРµС‚РЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё
      * 
-     * @param  int $sId идентификатор сущности из admin_contents
-     * @return bool true - имеет, false - не имеет
+     * @param  int $sId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+     * @return bool true - РёРјРµРµС‚, false - РЅРµ РёРјРµРµС‚
      */
     function hasContentPermissions( $sId = 0, $aPermissions = null ) {
         $bRet = $bFound = false;
@@ -3733,11 +3733,11 @@ class user_content extends admin_parent {
     }
 
     /**
-     * Получает группу для выбора причины удаления по типу сущности
+     * РџРѕР»СѓС‡Р°РµС‚ РіСЂСѓРїРїСѓ РґР»СЏ РІС‹Р±РѕСЂР° РїСЂРёС‡РёРЅС‹ СѓРґР°Р»РµРЅРёСЏ РїРѕ С‚РёРїСѓ СЃСѓС‰РЅРѕСЃС‚Рё
      *
-     * @param  int $type     идентификатор сущности
-     * @param  int $rec_type подтип сущности
-     * @return int           id группы
+     * @param  int $type     РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё
+     * @param  int $rec_type РїРѕРґС‚РёРї СЃСѓС‰РЅРѕСЃС‚Рё
+     * @return int           id РіСЂСѓРїРїС‹
      */
     function getReasonGroup($type, $rec_type) {
         $group = 0;
@@ -3746,13 +3746,13 @@ class user_content extends admin_parent {
                 $group = 47;
                 break;
             case user_content::MODER_BLOGS:
-                if($rec_type==1) { // Блокировка сообщения
+                if($rec_type==1) { // Р‘Р»РѕРєРёСЂРѕРІРєР° СЃРѕРѕР±С‰РµРЅРёСЏ
                     $group = 7; 
                 }
-                if($rec_type==2) { // Удаление комментария
+                if($rec_type==2) { // РЈРґР°Р»РµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
                     $group = 24; 
                 }
-                if($rec_type==3) { // Удаление сообщения
+                if($rec_type==3) { // РЈРґР°Р»РµРЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ
                     $group = 49;
                 }
                 break;
@@ -3800,7 +3800,7 @@ class user_content extends admin_parent {
     
 
     /**
-     * Расчитывает количество непроверенных сообщений во всех сущностях и сохраняет результат в memcache
+     * Р Р°СЃС‡РёС‚С‹РІР°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РЅРµРїСЂРѕРІРµСЂРµРЅРЅС‹С… СЃРѕРѕР±С‰РµРЅРёР№ РІРѕ РІСЃРµС… СЃСѓС‰РЅРѕСЃС‚СЏС… Рё СЃРѕС…СЂР°РЅСЏРµС‚ СЂРµР·СѓР»СЊС‚Р°С‚ РІ memcache
      *
      * @return array
      */
@@ -3813,15 +3813,15 @@ class user_content extends admin_parent {
             return $counters;
         }
         
-        // в начале стандартный проход по всем сущностям
+        // РІ РЅР°С‡Р°Р»Рµ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РїСЂРѕС…РѕРґ РїРѕ РІСЃРµРј СЃСѓС‰РЅРѕСЃС‚СЏРј
         $aIdx = array_keys( self::$table );
         
         foreach ( $aIdx as $nIdx ) {
             $counters[ $nIdx ] = intval( $DB->val('SELECT COUNT(*) FROM moderation WHERE rec_type = ?i AND stream_id IS NULL', $nIdx) );
         }
         
-        // после этого - нестандартное
-        // личные сообщения - переписывает стандартный проход, где будет 0
+        // РїРѕСЃР»Рµ СЌС‚РѕРіРѕ - РЅРµСЃС‚Р°РЅРґР°СЂС‚РЅРѕРµ
+        // Р»РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ - РїРµСЂРµРїРёСЃС‹РІР°РµС‚ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РїСЂРѕС…РѕРґ, РіРґРµ Р±СѓРґРµС‚ 0
         $dbProxy = new DB('plproxy');
         $cnt = 0;
         $res = $dbProxy->query( 'SELECT * FROM messages_moder_queue_count()' );
@@ -3830,20 +3830,20 @@ class user_content extends admin_parent {
         }
         $counters[self::MODER_MSSAGES] = $cnt;
         
-        // сборная: предложения к проектам и конкурсам, комментарии к ним, предложения в "Сделаю"
+        // СЃР±РѕСЂРЅР°СЏ: РїСЂРµРґР»РѕР¶РµРЅРёСЏ Рє РїСЂРѕРµРєС‚Р°Рј Рё РєРѕРЅРєСѓСЂСЃР°Рј, РєРѕРјРјРµРЅС‚Р°СЂРёРё Рє РЅРёРј, РїСЂРµРґР»РѕР¶РµРЅРёСЏ РІ "РЎРґРµР»Р°СЋ"
         $counters[self::MODER_PRJ_COM] = $counters[self::MODER_PRJ_OFFERS] + $counters[self::MODER_PRJ_DIALOG] 
                 + $counters[self::MODER_CONTEST_COM];// + $counters[self::MODER_SDELAU];
 
-        // сборная: Комментарии: статьи
+        // СЃР±РѕСЂРЅР°СЏ: РљРѕРјРјРµРЅС‚Р°СЂРёРё: СЃС‚Р°С‚СЊРё
         $counters[self::MODER_COMMENTS] = $counters[self::MODER_ART_COM];
 
-        // сборная: Работы в портфолио, Уточнения к разделам в портфолио  
+        // СЃР±РѕСЂРЅР°СЏ: Р Р°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ, РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ  
         $counters[self::MODER_PORTF_UNITED] = $counters[self::MODER_PORTF_CHOISE] + $counters[self::MODER_PORTFOLIO];
         
-        // Сборная: Блоги: посты и комментарии, Комментарии в Комментарии в статьях
+        // РЎР±РѕСЂРЅР°СЏ: Р‘Р»РѕРіРё: РїРѕСЃС‚С‹ Рё РєРѕРјРјРµРЅС‚Р°СЂРёРё, РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ РљРѕРјРјРµРЅС‚Р°СЂРёРё РІ СЃС‚Р°С‚СЊСЏС…
         $counters[self::MODER_BLOGS_UNITED] = $counters[self::MODER_BLOGS] + $counters[self::MODER_ART_COM];
         
-        // Сборная: Изменения в профилях и Уточнения к разделам в портфолио
+        // РЎР±РѕСЂРЅР°СЏ: РР·РјРµРЅРµРЅРёСЏ РІ РїСЂРѕС„РёР»СЏС… Рё РЈС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
         $counters[self::MODER_USER_UNITED] = $counters[self::MODER_PORTF_CHOISE] + $counters[self::MODER_PROFILE];
         
         // 
@@ -3854,7 +3854,7 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Расчитывает количество непроверенных сообщений в каждом занятом потоке и сохраняет результат в memcache
+     * Р Р°СЃС‡РёС‚С‹РІР°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РЅРµРїСЂРѕРІРµСЂРµРЅРЅС‹С… СЃРѕРѕР±С‰РµРЅРёР№ РІ РєР°Р¶РґРѕРј Р·Р°РЅСЏС‚РѕРј РїРѕС‚РѕРєРµ Рё СЃРѕС…СЂР°РЅСЏРµС‚ СЂРµР·СѓР»СЊС‚Р°С‚ РІ memcache
      * 
      * @return array
      */
@@ -3903,9 +3903,9 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает есть ли счетчики в шапке потоков данной сущности
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РµСЃС‚СЊ Р»Рё СЃС‡РµС‚С‡РёРєРё РІ С€Р°РїРєРµ РїРѕС‚РѕРєРѕРІ РґР°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё
      * 
-     * @param  int $nContentId идентификатор сущности из admin_contents
+     * @param  int $nContentId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
      * @return bool true - , false 
      */
     public function isStreamCounters( $nContentId = 0 ) {
@@ -3913,11 +3913,11 @@ class user_content extends admin_parent {
     }
     
     /**
-     * Возвращает данные для счетчиков в шапке потоков данной сущности
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ РґР»СЏ СЃС‡РµС‚С‡РёРєРѕРІ РІ С€Р°РїРєРµ РїРѕС‚РѕРєРѕРІ РґР°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё
      * 
-     * @param  int $nContentId идентификатор сущности из admin_contents
-     * @param  bool $bNumsOnly опционально. установить true, если нужно вернуть только цифры
-     * @param  bool $bShow опционально. установить true, если хотя бы один счетчик больше нуля
+     * @param  int $nContentId РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃСѓС‰РЅРѕСЃС‚Рё РёР· admin_contents
+     * @param  bool $bNumsOnly РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. СѓСЃС‚Р°РЅРѕРІРёС‚СЊ true, РµСЃР»Рё РЅСѓР¶РЅРѕ РІРµСЂРЅСѓС‚СЊ С‚РѕР»СЊРєРѕ С†РёС„СЂС‹
+     * @param  bool $bShow РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. СѓСЃС‚Р°РЅРѕРІРёС‚СЊ true, РµСЃР»Рё С…РѕС‚СЏ Р±С‹ РѕРґРёРЅ СЃС‡РµС‚С‡РёРє Р±РѕР»СЊС€Рµ РЅСѓР»СЏ
      * @return array
      */
     function getStreamCounters( $nContentId = 0, $bNumsOnly = false, &$bShow = false ) {
@@ -3946,11 +3946,11 @@ class user_content extends admin_parent {
     
     
     /**
-     * Отправить на модерирование запись какой-либо сущности
+     * РћС‚РїСЂР°РІРёС‚СЊ РЅР° РјРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ Р·Р°РїРёСЃСЊ РєР°РєРѕР№-Р»РёР±Рѕ СЃСѓС‰РЅРѕСЃС‚Рё
      * 
-     * @param int $rec_id - ID записи
-     * @param int $rec_type - ID в admin_contents - сущность для модерирования
-     * @param array $data - тестовые данные для автоматической проверки на стоп-слова
+     * @param int $rec_id - ID Р·Р°РїРёСЃРё
+     * @param int $rec_type - ID РІ admin_contents - СЃСѓС‰РЅРѕСЃС‚СЊ РґР»СЏ РјРѕРґРµСЂРёСЂРѕРІР°РЅРёСЏ
+     * @param array $data - С‚РµСЃС‚РѕРІС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕР№ РїСЂРѕРІРµСЂРєРё РЅР° СЃС‚РѕРї-СЃР»РѕРІР°
      */
     static function sendToModeration($rec_id, $rec_type, $data = null)
     {
@@ -3959,7 +3959,7 @@ class user_content extends admin_parent {
         
         $GLOBALS['DB']->insert('moderation',array(
             'rec_id' => $rec_id,
-            'rec_type' => $rec_type,//ID в admin_contents - сущность для модерирования
+            'rec_type' => $rec_type,//ID РІ admin_contents - СЃСѓС‰РЅРѕСЃС‚СЊ РґР»СЏ РјРѕРґРµСЂРёСЂРѕРІР°РЅРёСЏ
             'stop_words_cnt' => $nStopWordsCnt
         ));
     }

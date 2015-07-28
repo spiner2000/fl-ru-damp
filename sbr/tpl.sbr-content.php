@@ -4,12 +4,12 @@
 </div>
 <?php if(!$count_sbr && $count_old_sbr > 0 && $filter == '') { ?>
 <div class="b-layout__txt_padtop_20 b-layout__txt_padleft_20 b-layout__txt_fontsize_22">
-    <a href="?site=archive" class="b-layout__link b-layout__link_bordbot_dot_0f71c8"><?= $count_old_sbr; ?> <?= ending($count_old_sbr, "сделка, завершенная", "сделки, завершенные", "сделок, завершенных")?> в старом интерфейсе (перенесено в "Архив")</a>
+    <a href="?site=archive" class="b-layout__link b-layout__link_bordbot_dot_0f71c8"><?= $count_old_sbr; ?> <?= ending($count_old_sbr, "СЃРґРµР»РєР°, Р·Р°РІРµСЂС€РµРЅРЅР°СЏ", "СЃРґРµР»РєРё, Р·Р°РІРµСЂС€РµРЅРЅС‹Рµ", "СЃРґРµР»РѕРє, Р·Р°РІРµСЂС€РµРЅРЅС‹С…")?> РІ СЃС‚Р°СЂРѕРј РёРЅС‚РµСЂС„РµР№СЃРµ (РїРµСЂРµРЅРµСЃРµРЅРѕ РІ "РђСЂС…РёРІ")</a>
 </div>
 <?php }//if?>
 <? } else {?> 
 
-    <? // проверяем есть ли хоть одна сделка в состоянии ЗАРЕЗЕРВИРОВАТЬ ДЕНЬГИ
+    <? // РїСЂРѕРІРµСЂСЏРµРј РµСЃС‚СЊ Р»Рё С…РѕС‚СЊ РѕРґРЅР° СЃРґРµР»РєР° РІ СЃРѕСЃС‚РѕСЏРЅРёРё Р—РђР Р•Р—Р•Р Р’РР РћР’РђРўР¬ Р”Р•РќР¬Р“Р
     $needReserveSbrExists = false;
     if ($filter === 'disable') {
         foreach ($sbr_currents as $curSBR) {
@@ -25,7 +25,7 @@
                 <div class="b-fon__txt b-fon__txt_linheight_18 b-fon__txt_pad_10_10 b-layout_overflow_hidden">
                     <div class="b-layout__txt_float_left">
                         <span class="b-icon b-icon_sbr_oattent b-icon_margleft_-25 b-layout__txt_absolute" style="margin:1px 0 0 -23px;"></span>
-                        Выберите сделку, для которой хотите зарезервировать деньги.
+                        Р’С‹Р±РµСЂРёС‚Рµ СЃРґРµР»РєСѓ, РґР»СЏ РєРѕС‚РѕСЂРѕР№ С…РѕС‚РёС‚Рµ Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°С‚СЊ РґРµРЅСЊРіРё.
                     </div>
                 </div>
             </div>

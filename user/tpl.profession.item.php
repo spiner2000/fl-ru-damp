@@ -1,7 +1,7 @@
 <? if($success) { ?>
 <div class="b-fon b-fon_width_full b-fon_padbot_17" onclick="$(this).dispose()">
     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_35 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf b-fon__body_bordbot_dfedcf">
-        <span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Данные успешно сохранены
+        <span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Р”Р°РЅРЅС‹Рµ СѓСЃРїРµС€РЅРѕ СЃРѕС…СЂР°РЅРµРЅС‹
     </div>
 </div>
 <? }//if?>
@@ -17,25 +17,25 @@
             <?= implode(", ", $ukeys[$prof_id]['links_keyword']); ?>
             <?php if ($ukeys[$prof_id]['count'] > kwords::MAX_KWORDS_PORTFOLIO) { ?>
                 <span class="prtfl-hellip">&hellip;</span>
-                <span class="prfl-tags"><a href="javascript:void(0)">Все <?= $ukeys[$prof_id]['count'] ?> <?= ending($ukeys[$prof_id]['count'], 'тег', 'тега', 'тегов') ?></a></span>
+                <span class="prfl-tags"><a href="javascript:void(0)">Р’СЃРµ <?= $ukeys[$prof_id]['count'] ?> <?= ending($ukeys[$prof_id]['count'], 'С‚РµРі', 'С‚РµРіР°', 'С‚РµРіРѕРІ') ?></a></span>
                 <span class="prfl-tags-more" style="display:none"><?= implode(',', $ukeys[$prof_id]['links_keyword_hide']) ?></span>
             <? } ?>
         </p>
     <?php } //if?>
     <?php if ($pinfo['proftext'] == 't') { ?>
-        <?= access_view('', '<p>Стоимость тысячи знаков: <span class="money">' . $pinfo['cost_text'] . '</span></p>', ($pinfo['cost_text'] != '')); ?>
-        <?= access_view('', '<p>Оценка часа работы: <span class="money">' . $pinfo['cost_hour_text'] . '</span></p>', ($pinfo['cost_hour_text'] != '')); ?>
+        <?= access_view('', '<p>РЎС‚РѕРёРјРѕСЃС‚СЊ С‚С‹СЃСЏС‡Рё Р·РЅР°РєРѕРІ: <span class="money">' . $pinfo['cost_text'] . '</span></p>', ($pinfo['cost_text'] != '')); ?>
+        <?= access_view('', '<p>РћС†РµРЅРєР° С‡Р°СЃР° СЂР°Р±РѕС‚С‹: <span class="money">' . $pinfo['cost_hour_text'] . '</span></p>', ($pinfo['cost_hour_text'] != '')); ?>
     <?php } else { //if?>
-        <?= access_view('', '<p>Стоимость работ: <span class="money">' . $pinfo['from_text'] . " " . $pinfo['to_text'] . '</span></p>', ($pinfo['cost_to_text'] != '' || $pinfo['cost_from_text'] != '')); ?>
-        <?= access_view('', '<p>Оценка часа работы: <span class="money">' . $pinfo['cost_hour_text'] . '</span></p>', ($pinfo['cost_hour_text'] != '')); ?>
-        <?= access_view('', '<p>Сроки: ' . $pinfo['time_text'] . '</p>', ($pinfo['time_text'] != '')); ?>
+        <?= access_view('', '<p>РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚: <span class="money">' . $pinfo['from_text'] . " " . $pinfo['to_text'] . '</span></p>', ($pinfo['cost_to_text'] != '' || $pinfo['cost_from_text'] != '')); ?>
+        <?= access_view('', '<p>РћС†РµРЅРєР° С‡Р°СЃР° СЂР°Р±РѕС‚С‹: <span class="money">' . $pinfo['cost_hour_text'] . '</span></p>', ($pinfo['cost_hour_text'] != '')); ?>
+        <?= access_view('', '<p>РЎСЂРѕРєРё: ' . $pinfo['time_text'] . '</p>', ($pinfo['time_text'] != '')); ?>
     <?php } // else?>
 
     <?php if (hasPermissions('users') && !$is_owner) { ?>
         <br/>
-        <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditPortfChoice', '<?= $user->uid ?>', 0, '', {'sProfId': <?= $prof_id ?>})">Редактировать</a>
+        <a class="admn" href="javascript:void(0);" onclick="adm_edit_content.editContent('admEditPortfChoice', '<?= $user->uid ?>', 0, '', {'sProfId': <?= $prof_id ?>})">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
     <?php } elseif ($is_owner) { //if?>
         <br/>
-        <a class="admn" href="javascript:void(0);" onclick="portfolio.editContent('openProfession', '<?= $user->uid ?>', {'sProfId': <?= $prof_id ?>})">Редактировать</a>
+        <a class="admn" href="javascript:void(0);" onclick="portfolio.editContent('openProfession', '<?= $user->uid ?>', {'sProfId': <?= $prof_id ?>})">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>
     <?php }//elseif?>
 </div>

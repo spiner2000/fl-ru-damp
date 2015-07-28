@@ -75,7 +75,7 @@ class PGQDaemonPlproxy extends PGQConsumer {
 
 		switch ($event->type) {
 		
-			// íîâîå ñîîáùåíèå
+			// Ğ½Ğ¾Ğ²Ğ¾Ğµ ÑĞ¾Ğ¾Ğ±Ñ‰ĞµĞ½Ğ¸Ğµ
 			case 'messages_add': {
 				$r = $this->_dbProxy->query("SELECT messages_add(?i, ?, ?, ?, ?, ?, ?, ?, ?b)",
 					(int) $event->data['SHARDKEY'],
@@ -90,7 +90,7 @@ class PGQDaemonPlproxy extends PGQConsumer {
 				);
                 
                 if ( $event->data['IN_NO_MOD'] == 'false' ) {
-                    // Ïîñòàâèòü ñîîáùåíèå â î÷åğåäü ìîäåğèğîâàíèÿ
+                    // ĞŸĞ¾ÑÑ‚Ğ°Ğ²Ğ¸Ñ‚ÑŒ ÑĞ¾Ğ¾Ğ±Ñ‰ĞµĞ½Ğ¸Ğµ Ğ² Ğ¾Ñ‡ĞµÑ€ĞµĞ´ÑŒ Ğ¼Ğ¾Ğ´ĞµÑ€Ğ¸Ñ€Ğ¾Ğ²Ğ°Ğ½Ğ¸Ñ
                     $this->_dbProxy->query( 'SELECT messages_moder_add(?i, ?i)', $event->data['IN_FROM'], $event->data['IN_ID'] );
                 }
                 
@@ -99,7 +99,7 @@ class PGQDaemonPlproxy extends PGQConsumer {
 			}
             
 
-			// ìàññîâàÿ ğàññûëêà (ñòàğûé âàğèàíò! áîëüøå íå èñïîëüçîâàòü, ñêîğî óäàëş!)
+			// Ğ¼Ğ°ÑÑĞ¾Ğ²Ğ°Ñ Ñ€Ğ°ÑÑÑ‹Ğ»ĞºĞ° (ÑÑ‚Ğ°Ñ€Ñ‹Ğ¹ Ğ²Ğ°Ñ€Ğ¸Ğ°Ğ½Ñ‚! Ğ±Ğ¾Ğ»ÑŒÑˆĞµ Ğ½Ğµ Ğ¸ÑĞ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ÑŒ, ÑĞºĞ¾Ñ€Ğ¾ ÑƒĞ´Ğ°Ğ»Ñ!)
 			case 'messages_masssend': {
 				$r = $this->_dbProxy->query("SELECT messages_masssend(?i, ?, ?, ?, ?, ?, ?::integer[])",
 					(int) $event->data['SHARDKEY'],
@@ -113,13 +113,13 @@ class PGQDaemonPlproxy extends PGQConsumer {
 				break;
 			}
             
-            // äëÿ ñîâìåñòèìîñòè
+            // Ğ´Ğ»Ñ ÑĞ¾Ğ²Ğ¼ĞµÑÑ‚Ğ¸Ğ¼Ğ¾ÑÑ‚Ğ¸
             case 'clear_memcache_msg_count': {
                 $r = TRUE;
                 break;
             }
             
-			// êîãî îñòàâèòü â èçáğàííûõ
+			// ĞºĞ¾Ğ³Ğ¾ Ğ¾ÑÑ‚Ğ°Ğ²Ğ¸Ñ‚ÑŒ Ğ² Ğ¸Ğ·Ğ±Ñ€Ğ°Ğ½Ğ½Ñ‹Ñ…
 			case 'teams_leave': {
 				$r = $this->_dbProxy->query("SELECT teams_leave(?i, ?i, ?)",
 					(int) $event->data['SHARDKEY'],
@@ -129,7 +129,7 @@ class PGQDaemonPlproxy extends PGQConsumer {
 				break;
 			}
 			
-			// âñå îñòàëüíûå ôóíêöèè äëÿ êîòîğûõ íå íóæíî îñîáîé îáğàáîòêè
+			// Ğ²ÑĞµ Ğ¾ÑÑ‚Ğ°Ğ»ÑŒĞ½Ñ‹Ğµ Ñ„ÑƒĞ½ĞºÑ†Ğ¸Ğ¸ Ğ´Ğ»Ñ ĞºĞ¾Ñ‚Ğ¾Ñ€Ñ‹Ñ… Ğ½Ğµ Ğ½ÑƒĞ¶Ğ½Ğ¾ Ğ¾ÑĞ¾Ğ±Ğ¾Ğ¹ Ğ¾Ğ±Ñ€Ğ°Ğ±Ğ¾Ñ‚ĞºĞ¸
 			default: {
 				$r = $this->_dbProxy->query("SELECT {$event->type}('".implode($event->data, "','")."')");
 			}

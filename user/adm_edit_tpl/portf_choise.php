@@ -1,10 +1,10 @@
 <?php
 /**
- * Шаблон попап формы быстрого редактирования уточнения к разделам в портфолио
+ * РЁР°Р±Р»РѕРЅ РїРѕРїР°Рї С„РѕСЂРјС‹ Р±С‹СЃС‚СЂРѕРіРѕ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ СѓС‚РѕС‡РЅРµРЅРёСЏ Рє СЂР°Р·РґРµР»Р°Рј РІ РїРѕСЂС‚С„РѕР»РёРѕ
  * @author Max 'BlackHawk' Yastrembovich
  */
 if ( !defined('IN_STDF') ) { 
-    header("HTTP/1.0 404 Not Found"); // ибо нефиг
+    header("HTTP/1.0 404 Not Found"); // РёР±Рѕ РЅРµС„РёРі
     exit();
 }
 
@@ -20,8 +20,8 @@ $prj['time_to']        = intval( $prj['time_to'] );
 ?>
 <div class="b-menu b-menu_rubric b-menu_padbot_10">
     <ul class="b-menu__list">
-        <li id="adm_edit_tab_i1" class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">Основное</span></span></li>
-        <li id="adm_edit_tab_i2" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(2); return false;">Причина редактирования</a></li>
+        <li id="adm_edit_tab_i1" class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">РћСЃРЅРѕРІРЅРѕРµ</span></span></li>
+        <li id="adm_edit_tab_i2" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(2); return false;">РџСЂРёС‡РёРЅР° СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ</a></li>
     </ul>
 </div>
 
@@ -46,7 +46,7 @@ $prj['time_to']        = intval( $prj['time_to'] );
 <div id="adm_edit_tab_div1">
     <?php if ( $prj['proftext'] == 't' ) { ?>
     <div class="b-form">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="cost_1000">1000 знаков</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="cost_1000">1000 Р·РЅР°РєРѕРІ</label>
         <div class="b-input b-input_inline-block b-input_width_60">
             <input type="text" id="adm_edit_cost_1000" name="prof_cost_1000" value="<?=$prj['cost_1000']?>" maxlength="6" class="b-input__text">
         </div>
@@ -55,19 +55,19 @@ $prj['time_to']        = intval( $prj['time_to'] );
             <select id="adm_edit_cost_type" name="prof_cost_type" class="b-select__select b-select__select_width_full">
                 <option value="0" <?=($prj['cost_type'] == 0 ? "selected='selected'" : "")?>>USD</option>
                 <option value="1" <?=($prj['cost_type'] == 1 ? "selected='selected'" : "")?>>Euro</option>
-                <option value="2" <?=($prj['cost_type'] == 2 ? "selected='selected'" : "")?>>Руб</option>
+                <option value="2" <?=($prj['cost_type'] == 2 ? "selected='selected'" : "")?>>Р СѓР±</option>
                 <option value="3" <?=($prj['cost_type'] == 3 ? "selected='selected'" : "")?>>FM</option>
             </select>
         </div>
     </div>
     <?php } else { ?>
     <div class="b-form">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80">Стоимость работ</label>
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_padtop_3" for="adm_edit_cost_from">от&nbsp;</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80">РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_padtop_3" for="adm_edit_cost_from">РѕС‚&nbsp;</label>
         <div class="b-input b-input_inline-block b-input_width_60">
             <input type="text" id="adm_edit_cost_from" name="prof_cost_from" value="<?=$prj['cost_from']?>" class="b-input__text" maxlength="10">
         </div>
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_padtop_3" for="adm_edit_cost_to">&nbsp;до&nbsp;</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_padtop_3" for="adm_edit_cost_to">&nbsp;РґРѕ&nbsp;</label>
         <div class="b-input b-input_inline-block b-input_width_60">
             <input type="text" id="adm_edit_cost_to" name="prof_cost_to" value="<?=$prj['cost_to']?>" class="b-input__text" maxlength="10">
         </div>
@@ -76,36 +76,36 @@ $prj['time_to']        = intval( $prj['time_to'] );
             <select id="adm_edit_cost_type" name="prof_cost_type" class="b-select__select b-select__select_width_full">
                 <option value="0" <?=($prj['cost_type'] == 0 ? "selected='selected'" : "")?>>USD</option>
                 <option value="1" <?=($prj['cost_type'] == 1 ? "selected='selected'" : "")?>>Euro</option>
-                <option value="2" <?=($prj['cost_type'] == 2 ? "selected='selected'" : "")?>>Руб</option>
+                <option value="2" <?=($prj['cost_type'] == 2 ? "selected='selected'" : "")?>>Р СѓР±</option>
                 <option value="3" <?=($prj['cost_type'] == 3 ? "selected='selected'" : "")?>>FM</option>
             </select>
         </div>
     </div>
     
     <div class="b-form">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80">Сроки</label>
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_padtop_3" for="adm_edit_time_from">от&nbsp;</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80">РЎСЂРѕРєРё</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_padtop_3" for="adm_edit_time_from">РѕС‚&nbsp;</label>
         <div class="b-input b-input_inline-block b-input_width_60">
             <input type="text" id="adm_edit_time_from" name="prof_time_from" value="<?=$prj['time_from']?>" class="b-input__text" maxlength="10">
         </div>
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_padtop_3" for="adm_edit_time_to">&nbsp;до&nbsp;</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_padtop_3" for="adm_edit_time_to">&nbsp;РґРѕ&nbsp;</label>
         <div class="b-input b-input_inline-block b-input_width_60">
             <input type="text" id="adm_edit_time_to" name="prof_time_to" value="<?=$prj['time_to']?>" class="b-input__text" maxlength="10">
         </div>
         <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_padtop_3">&nbsp;</label>
         <div class="b-input_inline-block b-input_width_100">
             <select id="adm_edit_time_type" name="prof_time_type" class="b-select__select b-select__select_width_full">
-                <option value='0'<? if ($prj['time_type']==0) { ?> selected="selected"<? } ?>>в часах</option>
-                <option value='1'<? if ($prj['time_type']==1) { ?> selected="selected"<? } ?>>в днях</option>
-                <option value='2'<? if ($prj['time_type']==2) { ?> selected="selected"<? } ?>>в месяцах</option>
-                <option value='3'<? if ($prj['time_type']==3) { ?> selected="selected"<? } ?>>в минутах</option>
+                <option value='0'<? if ($prj['time_type']==0) { ?> selected="selected"<? } ?>>РІ С‡Р°СЃР°С…</option>
+                <option value='1'<? if ($prj['time_type']==1) { ?> selected="selected"<? } ?>>РІ РґРЅСЏС…</option>
+                <option value='2'<? if ($prj['time_type']==2) { ?> selected="selected"<? } ?>>РІ РјРµСЃСЏС†Р°С…</option>
+                <option value='3'<? if ($prj['time_type']==3) { ?> selected="selected"<? } ?>>РІ РјРёРЅСѓС‚Р°С…</option>
             </select>
         </div>
     </div>
     <?php } ?>
     
     <div class="b-form">
-        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="cost_hour">Час работы</label>
+        <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="cost_hour">Р§Р°СЃ СЂР°Р±РѕС‚С‹</label>
         <div class="b-input b-input_inline-block b-input_width_60">
             <input type="text" id="adm_edit_cost_hour" name="prof_cost_hour" value="<?=$prj['cost_hour']?>" class="b-input__text" maxlength="5">
         </div>
@@ -114,25 +114,25 @@ $prj['time_to']        = intval( $prj['time_to'] );
             <select id="adm_edit_cost_type_hour" name="prof_cost_type_hour" class="b-select__select b-select__select_width_full">
                 <option value="0" <?=($prj['cost_type_hour'] == 0 ? "selected='selected'" : "")?>>USD</option>
                 <option value="1" <?=($prj['cost_type_hour'] == 1 ? "selected='selected'" : "")?>>Euro</option>
-                <option value="2" <?=($prj['cost_type_hour'] == 2 ? "selected='selected'" : "")?>>Руб</option>
+                <option value="2" <?=($prj['cost_type_hour'] == 2 ? "selected='selected'" : "")?>>Р СѓР±</option>
                 <option value="3" <?=($prj['cost_type_hour'] == 3 ? "selected='selected'" : "")?>>FM</option>
             </select>
         </div>
     </div>
     
     <div class="b-form">
-        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_msg">Уточнения</label>
+        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_msg">РЈС‚РѕС‡РЅРµРЅРёСЏ</label>
         <div class="b-textarea_inline-block b-textarea_width_550">
             <textarea id="adm_edit_msg_source" style="display:none" cols="50" rows="20"><?=input_ref($prj['portf_text'])?></textarea>
             <textarea id="adm_edit_msg" name="prof_text" onfocus="adm_edit_content.hideError('msg')" class="b-textarea__textarea_width_full b-textarea__textarea_height_70" cols="77" rows="5"></textarea>
         </div>
-        <label class="b-check__label b-fon_padleft_80">Можно использовать &lt;b&gt;&lt;i&gt;&lt;p&gt;&lt;ul&gt;&lt;li&gt;</label>
+        <label class="b-check__label b-fon_padleft_80">РњРѕР¶РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ &lt;b&gt;&lt;i&gt;&lt;p&gt;&lt;ul&gt;&lt;li&gt;</label>
 
         <div id="div_adm_edit_err_msg" class="b-fon b-fon_bg_ff6d2d b-fon_padtop_10 b-fon_padleft_80" style="display: none">
             <b class="b-fon__b1"></b>
             <b class="b-fon__b2"></b>
             <div class="b-fon__body b-fon__body_pad_5_10 b-fon__body_fontsize_13 ">
-                <span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20" id="adm_edit_err_msg">Поле заполнено некорректно</div>
+                <span class="b-fon__attent"></span><div class="b-fon__txt b-fon__txt_margleft_20" id="adm_edit_err_msg">РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ</div>
             </div>
             <b class="b-fon__b2"></b>
             <b class="b-fon__b1"></b>
@@ -141,11 +141,11 @@ $prj['time_to']        = intval( $prj['time_to'] );
     
     <?php if( $prj['prof_id'] > 0 ) { ?>
     <div class="b-form">
-        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_msg">Ключевые слова</label>
+        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_msg">РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°</label>
         <div class="b-textarea_inline-block b-textarea_width_550">
             <textarea id="adm_edit_keys" name="prof_keys" class="b-textarea__textarea_width_full b-textarea__textarea_height_70" cols="77" rows="5"><?=stripcslashes(implode(", ", $keys))?></textarea>
         </div>
-        <label class="b-check__label b-fon_padleft_80">Ключевые слова вводятся через запятую.</label>
+        <label class="b-check__label b-fon_padleft_80">РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР° РІРІРѕРґСЏС‚СЃСЏ С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ.</label>
     </div>
     <?php } ?>
     
@@ -155,7 +155,7 @@ $prj['time_to']        = intval( $prj['time_to'] );
         <div class="b-input_inline-block b-input_width_545">
             <div class="b-check b-check_padtop_3">
                 <input id="adm_edit_show_preview" class="b-check__input" type="checkbox" name="show_preview" value="1" <?=(($prj['gr_prevs'] == 't')?"checked='checked'":"")?> />
-                <label class="b-check__label" for="adm_edit_show_preview">Включить превью в разделе</label>
+                <label class="b-check__label" for="adm_edit_show_preview">Р’РєР»СЋС‡РёС‚СЊ РїСЂРµРІСЊСЋ РІ СЂР°Р·РґРµР»Рµ</label>
             </div>
         </div>
     </div>

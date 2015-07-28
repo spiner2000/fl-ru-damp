@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Шаблон превью работ/услуг для каталога фрилансеров
+ * РЁР°Р±Р»РѕРЅ РїСЂРµРІСЊСЋ СЂР°Р±РѕС‚/СѓСЃР»СѓРі РґР»СЏ РєР°С‚Р°Р»РѕРіР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
  */
 
 if ($list):
@@ -32,7 +32,7 @@ for($pos = 1; $pos <= $max; $pos ++):
             
             <?php if($is_owner): ?>
             </div>
-            <a href="javascript:void(0);" data-preview-pos="<?=$pos?>" data-popup="<?=FreelancersPreviewEditorPopup::getInstance()->getPopupId()?>">Изменить</a>
+            <a href="javascript:void(0);" data-preview-pos="<?=$pos?>" data-popup="<?=FreelancersPreviewEditorPopup::getInstance()->getPopupId()?>">РР·РјРµРЅРёС‚СЊ</a>
             <?php endif; ?>            
         </td>        
 <?php        
@@ -49,13 +49,13 @@ for($pos = 1; $pos <= $max; $pos ++):
                     </a>
                 </h4>
                 <a href="<?=$item->getUrl()?>" target="_blank" title="<?=$item->getAttrTitle()?>"><?=$item->getThumbnail()?></a>
-                <?php if(false): //@todo: непонятно зачем на каждой картинке один и тот же текст? ?>
+                <?php if(false): //@todo: РЅРµРїРѕРЅСЏС‚РЅРѕ Р·Р°С‡РµРј РЅР° РєР°Р¶РґРѕР№ РєР°СЂС‚РёРЅРєРµ РѕРґРёРЅ Рё С‚РѕС‚ Р¶Рµ С‚РµРєСЃС‚? ?>
                 <span class="b-layout_hide" itemprop="description"><?=SeoTags::getInstance()->getImageDescription() ?></span>   
                 <?php endif; ?>
                 
             <?php if($is_owner): ?>    
             </div>
-            <a href="javascript:void(0);" data-preview-pos="<?=$pos?>" data-popup="<?=FreelancersPreviewEditorPopup::getInstance()->getPopupId()?>">Изменить</a>
+            <a href="javascript:void(0);" data-preview-pos="<?=$pos?>" data-popup="<?=FreelancersPreviewEditorPopup::getInstance()->getPopupId()?>">РР·РјРµРЅРёС‚СЊ</a>
             <?php endif; ?>
         </td> 
 <?php        
@@ -80,7 +80,7 @@ for($pos = 1; $pos <= $max; $pos ++):
                         </a>
                         <a class="b-pic__price-box b-pic__price-box_pay b-pic__price-box b-pic__price-box_noline" href="javascript:void(0);" data-url="<?=$item->getUrl()?>" onclick="TServices_Catalog.orderNow(this);"><?=$item->getPrice()?>			
                         <?php if (($sold_count = $item->getSoldCount()) > 0): ?>
-                            <span title="Количество продаж услуги"><span class="b-icon b-icon__tu2 b-icon_top_2"></span> <?=$sold_count?></span>
+                            <span title="РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕРґР°Р¶ СѓСЃР»СѓРіРё"><span class="b-icon b-icon__tu2 b-icon_top_2"></span> <?=$sold_count?></span>
                         <?php endif; ?>
                         </a>
                     </div>
@@ -90,7 +90,7 @@ for($pos = 1; $pos <= $max; $pos ++):
                 </div>
             <?php if($is_owner): ?>
             </div>
-            <a href="javascript:void(0);" data-preview-pos="<?=$pos?>" data-popup="<?=FreelancersPreviewEditorPopup::getInstance()->getPopupId()?>">Изменить</a>
+            <a href="javascript:void(0);" data-preview-pos="<?=$pos?>" data-popup="<?=FreelancersPreviewEditorPopup::getInstance()->getPopupId()?>">РР·РјРµРЅРёС‚СЊ</a>
             <?php endif; ?>            
         </td>
 <?php endif; ?>
@@ -100,7 +100,7 @@ for($pos = 1; $pos <= $max; $pos ++):
     if($is_owner):
 ?>
             <div id="preview_pos_<?=$pos?>"><?=str_repeat('<br/>', 6);?></div>
-            <a href="javascript:void(0);" data-preview-pos="<?=$pos?>" data-popup="<?=FreelancersPreviewEditorPopup::getInstance()->getPopupId()?>">Изменить</a>
+            <a href="javascript:void(0);" data-preview-pos="<?=$pos?>" data-popup="<?=FreelancersPreviewEditorPopup::getInstance()->getPopupId()?>">РР·РјРµРЅРёС‚СЊ</a>
 <?php            
     else:
         echo '&nbsp;';

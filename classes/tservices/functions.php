@@ -3,7 +3,7 @@
 
 
 /*
- * @todo: ïåðåíåñ â stdf.php
+ * @todo: Ð¿ÐµÑ€ÐµÐ½ÐµÑ Ð² stdf.php
 function mb_unserialize($string) 
 {
     $string = preg_replace('/s:(\d+):"([^"]*)";/se', "'s:'. strlen('\\2') .':\"\\2\";'", $string);
@@ -14,7 +14,7 @@ function mb_unserialize($string)
 
 
 /**
-* Ïðîâåðêà äàííûõ èç ôîðìû
+* ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð´Ð°Ð½Ð½Ñ‹Ñ… Ð¸Ð· Ñ„Ð¾Ñ€Ð¼Ñ‹
 */
 
 function tu_validation(&$tservice, $is_exist_feedbacks = 0)
@@ -48,9 +48,9 @@ function tu_validation(&$tservice, $is_exist_feedbacks = 0)
     if (!$validator->is_natural_no_zero($tservice->price)) {
         $errors['price'] = validation::VALIDATION_MSG_REQUIRED_PRICE;
     }elseif (!$validator->greater_than_equal_to($tservice->price,300)){    
-        $errors['price'] = sprintf(validation::VALIDATION_MSG_PRICE_GREATER_THAN_EQUAL_TO,'300 ð.');
+        $errors['price'] = sprintf(validation::VALIDATION_MSG_PRICE_GREATER_THAN_EQUAL_TO,'300 Ñ€.');
     } elseif (!$validator->less_than_equal_to($tservice->price, 999999)) {
-        $errors['price'] = sprintf(validation::VALIDATION_MSG_PRICE_LESS_THAN_EQUAL_TO,'999 999 ð.');
+        $errors['price'] = sprintf(validation::VALIDATION_MSG_PRICE_LESS_THAN_EQUAL_TO,'999 999 Ñ€.');
     }
  
     //---
@@ -68,7 +68,7 @@ function tu_validation(&$tservice, $is_exist_feedbacks = 0)
         
     //---
 
-    //Åñëè åñòü îòçûâû òî íå äàåì èçìåíèòü êàòåãîðèþ
+    //Ð•ÑÐ»Ð¸ ÐµÑÑ‚ÑŒ Ð¾Ñ‚Ð·Ñ‹Ð²Ñ‹ Ñ‚Ð¾ Ð½Ðµ Ð´Ð°ÐµÐ¼ Ð¸Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÐºÐ°Ñ‚ÐµÐ³Ð¾Ñ€Ð¸ÑŽ
     if(!(InPost('action') == 'save' && $is_exist_feedbacks > 0))        
     {      
         $category_id = intval(trim(InPost('category_db_id')));
@@ -200,7 +200,7 @@ function tu_validation(&$tservice, $is_exist_feedbacks = 0)
                $days = trim($el['days_db_id']);
                $is_days = $validator->is_natural($days) && $validator->less_than_equal_to($days, 5);
                if (!$is_days) {
-                   $errors['extra'][$key]['days'] = sprintf(validation::VALIDATION_MSG_INTERVAL,'0','5 äíåé');
+                   $errors['extra'][$key]['days'] = sprintf(validation::VALIDATION_MSG_INTERVAL,'0','5 Ð´Ð½ÐµÐ¹');
                    $days = 1;
                }
                     
@@ -250,18 +250,18 @@ function tu_validation(&$tservice, $is_exist_feedbacks = 0)
   //---
         
         
-  //Ïðîâåðêà îáùåé ñóììû ñ ó÷åòîì ñêèäîê, îïöèé (ñðî÷íîñòü íå ó÷èòûâàþ òàê êàê îíà âûáèðàåòñÿ ïî æåëàíèþ)
+  //ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ° Ð¾Ð±Ñ‰ÐµÐ¹ ÑÑƒÐ¼Ð¼Ñ‹ Ñ ÑƒÑ‡ÐµÑ‚Ð¾Ð¼ ÑÐºÐ¸Ð´Ð¾Ðº, Ð¾Ð¿Ñ†Ð¸Ð¹ (ÑÑ€Ð¾Ñ‡Ð½Ð¾ÑÑ‚ÑŒ Ð½Ðµ ÑƒÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°ÑŽ Ñ‚Ð°Ðº ÐºÐ°Ðº Ð¾Ð½Ð° Ð²Ñ‹Ð±Ð¸Ñ€Ð°ÐµÑ‚ÑÑ Ð¿Ð¾ Ð¶ÐµÐ»Ð°Ð½Ð¸ÑŽ)
   if(!isset($errors['price']) && !$validator->greater_than_equal_to($tservice->price + $total_extra_price,300))
   {
-      $errors['price'] = sprintf(validation::VALIDATION_MSG_PRICE_MIN_TOTAL,'300 ð.');
+      $errors['price'] = sprintf(validation::VALIDATION_MSG_PRICE_MIN_TOTAL,'300 Ñ€.');
   }
         
         
   //---
 
             
-  //TODO: Åñòü ïðîáëåìà ñ êîíòðîëëîì âûïàäàþùåãî ñïèñêà
-  // îí íå îòðàáàòûâàåò íîâîå çíà÷åíèå óêçàííîå ïî óìîë÷àíèþ
+  //TODO: Ð•ÑÑ‚ÑŒ Ð¿Ñ€Ð¾Ð±Ð»ÐµÐ¼Ð° Ñ ÐºÐ¾Ð½Ñ‚Ñ€Ð¾Ð»Ð»Ð¾Ð¼ Ð²Ñ‹Ð¿Ð°Ð´Ð°ÑŽÑ‰ÐµÐ³Ð¾ ÑÐ¿Ð¸ÑÐºÐ°
+  // Ð¾Ð½ Ð½Ðµ Ð¾Ñ‚Ñ€Ð°Ð±Ð°Ñ‚Ñ‹Ð²Ð°ÐµÑ‚ Ð½Ð¾Ð²Ð¾Ðµ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ ÑƒÐºÐ·Ð°Ð½Ð½Ð¾Ðµ Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ
   if (!in_array(intval(InPost('distance')), array(1, 2))) {
       $errors['distance'] = validation::VALIDATION_MSG_FROM_RADIO;
   } else if (intval(InPost('distance')) == 2) {
@@ -299,7 +299,7 @@ function tu_validation(&$tservice, $is_exist_feedbacks = 0)
   
   //---
   
-  //Âûðåçàåì ñëåøè åñëè îøèáêà
+  //Ð’Ñ‹Ñ€ÐµÐ·Ð°ÐµÐ¼ ÑÐ»ÐµÑˆÐ¸ ÐµÑÐ»Ð¸ Ð¾ÑˆÐ¸Ð±ÐºÐ°
   if(count($errors) > 0)
   {
       $attrs = array('title','description','requirement','tags');

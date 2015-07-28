@@ -6,13 +6,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/uploader/uploader.php");
 
 //------------------------------------------------------------------------------
 
-const STR_AUTH_REQ  = "Òðåáóåòñÿ àâòîðèçàöèÿ.";
-const STR_FRL_ONLY  = "Ýòîò ñåðâèñ äîñòóïåí òîëüêî äëÿ ôðèëàíñåðîâ.";
-const STR_FDELERR   = "Îøèáêà óäàëåíèÿ ôàéëà.";
-const STR_FMAX      = "Ìàêñèìàëüíîå êîëè÷åñòâî ôàéëîâ: %d.";
-const STR_FTOSMAL   = "Èçîáðàæåíèå ñëèøêîì ìàëåíüêîå. Ìèíèìàëüíûå ðàçìåðû %d íà %d òî÷åê.";
-const STR_FERR      = "Îøèáêà çàãðóçêè ôàéëà.";
-const STR_WRNG_TYPE = "Íåäîïóñòèìûé ôîðìàò ôàéëà.";
+const STR_AUTH_REQ  = "Ð¢Ñ€ÐµÐ±ÑƒÐµÑ‚ÑÑ Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ñ.";
+const STR_FRL_ONLY  = "Ð­Ñ‚Ð¾Ñ‚ ÑÐµÑ€Ð²Ð¸Ñ Ð´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð´Ð»Ñ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð².";
+const STR_FDELERR   = "ÐžÑˆÐ¸Ð±ÐºÐ° ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð°.";
+const STR_FMAX      = "ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ„Ð°Ð¹Ð»Ð¾Ð²: %d.";
+const STR_FTOSMAL   = "Ð˜Ð·Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ ÑÐ»Ð¸ÑˆÐºÐ¾Ð¼ Ð¼Ð°Ð»ÐµÐ½ÑŒÐºÐ¾Ðµ. ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ðµ Ñ€Ð°Ð·Ð¼ÐµÑ€Ñ‹ %d Ð½Ð° %d Ñ‚Ð¾Ñ‡ÐµÐº.";
+const STR_FERR      = "ÐžÑˆÐ¸Ð±ÐºÐ° Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ¸ Ñ„Ð°Ð¹Ð»Ð°.";
+const STR_WRNG_TYPE = "ÐÐµÐ´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚ Ñ„Ð°Ð¹Ð»Ð°.";
 
 
 
@@ -21,32 +21,32 @@ const STR_WRNG_TYPE = "Íåäîïóñòèìûé ôîðìàò ôàéëà.";
 $_config = array(
     'solt' => '26bFRs2mgwuX_',
     'max_files' => 50,
-    'max_file_size' => 10 * 1024 * 1024, // 10 ìá
+    'max_file_size' => 10 * 1024 * 1024, // 10 Ð¼Ð±
     'table' => 'file_tservices',
-    'maxImageHeight' => 1000,//ïîêà íå èñïîëüçóåòñÿ ïîñêîëüêó èçîáðàæåíèå óðåçàåòñÿ max_image_size
-    'maxImageWidth' => 1000,//ïîêà íå èñïîëüçóåòñÿ ïîñêîëüêó èçîáðàæåíèå óðåçàåòñÿ max_image_size
+    'maxImageHeight' => 1000,//Ð¿Ð¾ÐºÐ° Ð½Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð¿Ð¾ÑÐºÐ¾Ð»ÑŒÐºÑƒ Ð¸Ð·Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ ÑƒÑ€ÐµÐ·Ð°ÐµÑ‚ÑÑ max_image_size
+    'maxImageWidth' => 1000,//Ð¿Ð¾ÐºÐ° Ð½Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð¿Ð¾ÑÐºÐ¾Ð»ÑŒÐºÑƒ Ð¸Ð·Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ ÑƒÑ€ÐµÐ·Ð°ÐµÑ‚ÑÑ max_image_size
     'minImageHeight' => 600,
     'minImageWidth' => 600,
     'allowed_ext' => array('jpg', 'jpeg', 'gif', 'png'),
     'image_types' => array(IMAGETYPE_GIF, IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_JPEG2000),//IMAGETYPE_BMP, IMAGETYPE_ICO
     'dir' => '%s/tservices',
     'server_root' => false,
-    //Îñíîâíîé ôàéë
+    //ÐžÑÐ½Ð¾Ð²Ð½Ð¾Ð¹ Ñ„Ð°Ð¹Ð»
     'max_image_size' => array('width' => 800, 'height' => 600, 'less' => 1, 'prevent_less' => 0),
     'resize' => true,
     'proportional' => true,
     'crop' => false,
     'topfill' => false,
-    //Íóæíû ìèíèàòþðû?
+    //ÐÑƒÐ¶Ð½Ñ‹ Ð¼Ð¸Ð½Ð¸Ð°Ñ‚ÑŽÑ€Ñ‹?
     'thumbs' => array(
         array(
-            'return' => true, //îòâåò ýòîé ìèíèàòþðîé
+            'return' => true, //Ð¾Ñ‚Ð²ÐµÑ‚ ÑÑ‚Ð¾Ð¹ Ð¼Ð¸Ð½Ð¸Ð°Ñ‚ÑŽÑ€Ð¾Ð¹
             'width' => 60,
             'height' => 60,
             'prefix' => 'tiny_',
             'option' => 'cropthumbnail',
-            'dir' => '', //??? ïîêà íå èñïîëüçóåòñÿ âñåõ â îäíó ïàïêó ôèãà÷èì
-            'params' => array('small' => 1) //Èäåíòèôèêàòîðû äëÿ áàçû
+            'dir' => '', //??? Ð¿Ð¾ÐºÐ° Ð½Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð²ÑÐµÑ… Ð² Ð¾Ð´Ð½Ñƒ Ð¿Ð°Ð¿ÐºÑƒ Ñ„Ð¸Ð³Ð°Ñ‡Ð¸Ð¼
+            'params' => array('small' => 1) //Ð˜Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ñ‹ Ð´Ð»Ñ Ð±Ð°Ð·Ñ‹
         )/* ,
           array(
           'width' => 100,
@@ -79,7 +79,7 @@ $name = __paramInit('string',NULL,'name',"files");
 
 $is_preview = $name == 'preview';
     
-// Åñëè çàãðóæàåì ïðåâüþ, à íå ôîòî, òî ìåíÿåì êîíôèãè
+// Ð•ÑÐ»Ð¸ Ð·Ð°Ð³Ñ€ÑƒÐ¶Ð°ÐµÐ¼ Ð¿Ñ€ÐµÐ²ÑŒÑŽ, Ð° Ð½Ðµ Ñ„Ð¾Ñ‚Ð¾, Ñ‚Ð¾ Ð¼ÐµÐ½ÑÐµÐ¼ ÐºÐ¾Ð½Ñ„Ð¸Ð³Ð¸
 if ($is_preview) {
     $_config['allowed_ext'] = array('jpg', 'jpeg', 'png');
     $_config['minImageWidth'] = 200;
@@ -87,13 +87,13 @@ if ($is_preview) {
     $_config['params'] = array('preview' => true);
     $_config['thumbs'] = array(
         array(
-            'return' => true, //îòâåò ýòîé ìèíèàòþðîé
+            'return' => true, //Ð¾Ñ‚Ð²ÐµÑ‚ ÑÑ‚Ð¾Ð¹ Ð¼Ð¸Ð½Ð¸Ð°Ñ‚ÑŽÑ€Ð¾Ð¹
             'width' => 60,
             'height' => 60,
             'prefix' => 'tiny_',
             'option' => 'cropthumbnail',
-            'dir' => '', //??? ïîêà íå èñïîëüçóåòñÿ âñåõ â îäíó ïàïêó ôèãà÷èì
-            'params' => array('small' => 1, 'preview' => true) //Èäåíòèôèêàòîðû äëÿ áàçû
+            'dir' => '', //??? Ð¿Ð¾ÐºÐ° Ð½Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð²ÑÐµÑ… Ð² Ð¾Ð´Ð½Ñƒ Ð¿Ð°Ð¿ÐºÑƒ Ñ„Ð¸Ð³Ð°Ñ‡Ð¸Ð¼
+            'params' => array('small' => 1, 'preview' => true) //Ð˜Ð´ÐµÐ½Ñ‚Ð¸Ñ„Ð¸ÐºÐ°Ñ‚Ð¾Ñ€Ñ‹ Ð´Ð»Ñ Ð±Ð°Ð·Ñ‹
         ),
         array(
             //'preview' => true,
@@ -124,11 +124,11 @@ $is_allow = ($is_owner || $is_adm);
 
 if(!$is_allow)
 {
-    $result['error'] = STR_AUTH_REQ;//'Òðåáóåòñÿ àâòîðèçàöèÿ.';
+    $result['error'] = STR_AUTH_REQ;//'Ð¢Ñ€ÐµÐ±ÑƒÐµÑ‚ÑÑ Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ñ.';
 }
 else if(is_emp() && !$is_adm)
 {
-    $result['error'] = STR_FRL_ONLY;//'Ýòîò ñåðâèñ äîñòóïåí òîëüêî äëÿ ôðèëàíñåðîâ.';
+    $result['error'] = STR_FRL_ONLY;//'Ð­Ñ‚Ð¾Ñ‚ ÑÐµÑ€Ð²Ð¸Ñ Ð´Ð¾ÑÑ‚ÑƒÐ¿ÐµÐ½ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ð´Ð»Ñ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð².';
 }
 else
 {
@@ -148,13 +148,13 @@ else
             
             if(!$is_hash && !$is_sess)
             {
-                $result['error'] = STR_FDELERR;//"Îøèáêà óäàëåíèÿ ôàéëà.";        
+                $result['error'] = STR_FDELERR;//"ÐžÑˆÐ¸Ð±ÐºÐ° ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð°.";        
             } 
             else
             {
                 if($is_hash)
                 {
-                    //Ïîëó÷àåì ñóùåñòâóþùèå
+                    //ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ðµ
                     $files = $db->rows("
                         SELECT id, fname, path FROM {$_config['table']} 
                         WHERE src_id = ?i",
@@ -174,7 +174,7 @@ else
                 
                 if(count($original))
                 {
-                    //Èùåì ìèíèàòþðû è óäàëÿåì óñå
+                    //Ð˜Ñ‰ÐµÐ¼ Ð¼Ð¸Ð½Ð¸Ð°Ñ‚ÑŽÑ€Ñ‹ Ð¸ ÑƒÐ´Ð°Ð»ÑÐµÐ¼ ÑƒÑÐµ
                     $original = current($original);
                 
                     $cnt = count($_config['thumbs']);
@@ -206,12 +206,12 @@ else
                     $file_ids = array();
                     foreach($all_files as $file)
                     {
-                        //Óäàëÿåì èç òàáëèöû file_tservices
+                        //Ð£Ð´Ð°Ð»ÑÐµÐ¼ Ð¸Ð· Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ‹ file_tservices
                         $cfile->Delete($file['id']);
                         $file_ids[] = $file['id'];
                     }
 
-                    //Ïîìå÷àåì êàê óäàëåííûå â òàáëèöå attachedfiles
+                    //ÐŸÐ¾Ð¼ÐµÑ‡Ð°ÐµÐ¼ ÐºÐ°Ðº ÑƒÐ´Ð°Ð»ÐµÐ½Ð½Ñ‹Ðµ Ð² Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ðµ attachedfiles
                     if($is_sess) 
                     {
                         uploader::sremoveFiles($sess, $file_ids);
@@ -232,7 +232,7 @@ else
             $sess = __paramInit('string',NULL,'sess','');
             if(!strlen($sess))
             {
-                $result['error'] = STR_FERR;//'Îøèáêà çàãðóçêè ôàéëà.';
+                $result['error'] = STR_FERR;//'ÐžÑˆÐ¸Ð±ÐºÐ° Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ¸ Ñ„Ð°Ð¹Ð»Ð°.';
             }
             else
             {
@@ -246,7 +246,7 @@ else
            
                 if(($files_count + 1) > $_config['max_files']) 
                 {          
-                    $result['error'] = sprintf(STR_FMAX,$_config['max_files']);//"Ìàêñèìàëüíîå êîëè÷åñòâî ôàéëîâ: {$_config['max_files']}.";
+                    $result['error'] = sprintf(STR_FMAX,$_config['max_files']);//"ÐœÐ°ÐºÑÐ¸Ð¼Ð°Ð»ÑŒÐ½Ð¾Ðµ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ñ„Ð°Ð¹Ð»Ð¾Ð²: {$_config['max_files']}.";
                 }
                 else
                 {
@@ -270,7 +270,7 @@ else
                             ($_config['minImageWidth'] && $cfile->image_size['width'] < $_config['minImageWidth'])) 
                         {
                             $result['error'] = sprintf(STR_FTOSMAL,$_config['minImageWidth'],$_config['minImageHeight']);
-                            //sprintf('Èçîáðàæåíèå ñëèøêîì ìàëåíüêîå. Ìèíèìàëüíûå ðàçìåðû %d íà %d òî÷åê.',$_config['minImageWidth'],$_config['minImageHeight']);
+                            //sprintf('Ð˜Ð·Ð¾Ð±Ñ€Ð°Ð¶ÐµÐ½Ð¸Ðµ ÑÐ»Ð¸ÑˆÐºÐ¾Ð¼ Ð¼Ð°Ð»ÐµÐ½ÑŒÐºÐ¾Ðµ. ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ðµ Ñ€Ð°Ð·Ð¼ÐµÑ€Ñ‹ %d Ð½Ð° %d Ñ‚Ð¾Ñ‡ÐµÐº.',$_config['minImageWidth'],$_config['minImageHeight']);
                         }
                         else
                         {
@@ -282,7 +282,7 @@ else
                             
                             if(!$filename || $cnt > 0)
                             {
-                                $result['error'] = STR_FERR . ' ' . implode(' ', $error);//'Îøèáêà çàãðóçêè ôàéëà. '
+                                $result['error'] = STR_FERR . ' ' . implode(' ', $error);//'ÐžÑˆÐ¸Ð±ÐºÐ° Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ¸ Ñ„Ð°Ð¹Ð»Ð°. '
                             }
                             else
                             {
@@ -305,7 +305,7 @@ else
                                         
                                         if(!$thumb_cfile)
                                         {
-                                            $result['error'] = STR_FERR;//"Îøèáêà çàãðóçêè ôàéëà.";
+                                            $result['error'] = STR_FERR;//"ÐžÑˆÐ¸Ð±ÐºÐ° Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ¸ Ñ„Ð°Ð¹Ð»Ð°.";
                                             break;
                                         }
                                         
@@ -345,7 +345,7 @@ else
                     }
                     else
                     {
-                        $result['error'] = STR_WRNG_TYPE;//"Íåäîïóñòèìûé ôîðìàò ôàéëà.";
+                        $result['error'] = STR_WRNG_TYPE;//"ÐÐµÐ´Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ñ‹Ð¹ Ñ„Ð¾Ñ€Ð¼Ð°Ñ‚ Ñ„Ð°Ð¹Ð»Ð°.";
                     }
                     
                     if(isset($result['error']) && $cfile->id > 0)

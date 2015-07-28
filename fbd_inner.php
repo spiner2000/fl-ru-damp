@@ -5,7 +5,7 @@ var alowLogin = function(){
     if($('login_fbd').get('value') != '' && $('pass_fbd').get('value') != ''){
         $('auth_form').submit();
     } else {
-        alert('Неправильный логин или пароль');
+        alert('РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ');
     }
 }
 </script>
@@ -14,22 +14,22 @@ var alowLogin = function(){
 								<div class="b-fon__b2"></div>
 								<div class="b-fon__body b-fon__body_pad_10">
 										<div class="b-form">
-											<label class="b-form__name b-form__name_padtop_3 b-form__name_width_70" for="login_fbd">Логин</label><div 
+											<label class="b-form__name b-form__name_padtop_3 b-form__name_width_70" for="login_fbd">Р›РѕРіРёРЅ</label><div 
 											class="b-input b-input_inline-block b-input_width_180">
 												<input id="login_fbd" class="b-input__text" name="login" tabindex="0" type="text" />
 											</div>
 										</div>
 										<div class="b-form">
-											<label class="b-form__name b-form__name_padtop_3 b-form__name_width_70" for="pass_fbd">Пароль</label><div
+											<label class="b-form__name b-form__name_padtop_3 b-form__name_width_70" for="pass_fbd">РџР°СЂРѕР»СЊ</label><div
 											 class="b-input b-input_inline-block b-input_width_180">
 												<input id="pass_fbd" class="b-input__text" type="password" name="passwd" />
 											</div><div
-											 class="b-form__txt b-form__txt_padleft_10 b-form__txt_padtop_2"><a class="b-form__link b-form__link_color_666" href="/remind/">Напомнить пароль</a></div>
+											 class="b-form__txt b-form__txt_padleft_10 b-form__txt_padtop_2"><a class="b-form__link b-form__link_color_666" href="/remind/">РќР°РїРѕРјРЅРёС‚СЊ РїР°СЂРѕР»СЊ</a></div>
 										</div>
 										<div class="b-form b-form_padleft_70">
 											<div class="b-check">
 												<input id="b-check3" class="b-check__input" type="checkbox" value="1" name="autologin" />
-												<label for="b-check3" class="b-check__label b-check__label_fontsize_13">Запомнить меня</label>
+												<label for="b-check3" class="b-check__label b-check__label_fontsize_13">Р—Р°РїРѕРјРЅРёС‚СЊ РјРµРЅСЏ</label>
 											</div>
 										</div>
 										<div class="b-form b-form_padbot_null b-form_padleft_70">
@@ -37,12 +37,12 @@ var alowLogin = function(){
 												<a class="b-button b-button_rectangle_transparent" onclick="alowLogin(); return false;" href="javascript:void()">
 													<span class="b-button__b1">
 														<span class="b-button__b2 b-button__b2_padlr_5">
-															<span class="b-button__txt">Войти</span>
+															<span class="b-button__txt">Р’РѕР№С‚Рё</span>
 														</span>
 													</span>
 												</a>
-												<span class="b-buttons__txt b-buttons__txt_fontsize_13 b-buttons__txt_padleft_5">или</span>
-												<a class="b-buttons__link b-buttons__link_fontsize_13 b-buttons__link_color_ff6d3d b-buttons__link_margleft_10" href="/registration/">Зарегистрироваться</a>
+												<span class="b-buttons__txt b-buttons__txt_fontsize_13 b-buttons__txt_padleft_5">РёР»Рё</span>
+												<a class="b-buttons__link b-buttons__link_fontsize_13 b-buttons__link_color_ff6d3d b-buttons__link_margleft_10" href="/registration/">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</a>
 											</div>
 										</div>
 										<input type="hidden" name="action" value="login"/>
@@ -60,17 +60,17 @@ var alowLogin = function(){
     if($('login_fbd').get('value') != '' && $('pass_fbd').get('value') != ''){
         $('auth_form').submit();
     } else {
-        alert('Неправильный логин или пароль');
+        alert('РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ Р»РѕРіРёРЅ РёР»Рё РїР°СЂРѕР»СЊ');
     }
 }
 
-// Добавил временно функцию сюда, она описана в wizard.js а тащить весть wizard - смысла нет
+// Р”РѕР±Р°РІРёР» РІСЂРµРјРµРЅРЅРѕ С„СѓРЅРєС†РёСЋ СЃСЋРґР°, РѕРЅР° РѕРїРёСЃР°РЅР° РІ wizard.js Р° С‚Р°С‰РёС‚СЊ РІРµСЃС‚СЊ wizard - СЃРјС‹СЃР»Р° РЅРµС‚
 /**
- * меняет type для поля пароль (text/password)
- * @param string id - id элемента input для ввода пароля
+ * РјРµРЅСЏРµС‚ type РґР»СЏ РїРѕР»СЏ РїР°СЂРѕР»СЊ (text/password)
+ * @param string id - id СЌР»РµРјРµРЅС‚Р° input РґР»СЏ РІРІРѕРґР° РїР°СЂРѕР»СЏ
  */
 function show_password(id) {
-    // добавил возможность задавать свой id (на случай если на странице несколько паролей)
+    // РґРѕР±Р°РІРёР» РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ Р·Р°РґР°РІР°С‚СЊ СЃРІРѕР№ id (РЅР° СЃР»СѓС‡Р°Р№ РµСЃР»Рё РЅР° СЃС‚СЂР°РЅРёС†Рµ РЅРµСЃРєРѕР»СЊРєРѕ РїР°СЂРѕР»РµР№)
     var v = id ? $(id) : $('reg_password');
     if (!v) return;
     
@@ -112,14 +112,14 @@ function show_password(id) {
 }
 </script>
 						  
-<h1 class="b-page__title">Запрашиваемая страница доступна только зарегистрированным пользователям</h1>
-<div class="b-layout__txt b-layout__txt_padbot_20">Авторизуйтесь, чтобы получить возможность пользоваться дополнительными услугами.</div>
+<h1 class="b-page__title">Р—Р°РїСЂР°С€РёРІР°РµРјР°СЏ СЃС‚СЂР°РЅРёС†Р° РґРѕСЃС‚СѓРїРЅР° С‚РѕР»СЊРєРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅС‹Рј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј</h1>
+<div class="b-layout__txt b-layout__txt_padbot_20">РђРІС‚РѕСЂРёР·СѓР№С‚РµСЃСЊ, С‡С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹РјРё СѓСЃР»СѓРіР°РјРё.</div>
             <form id="auth_form" method="post" action="/" >
             <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table">
                     <tr class="b-layout__tr">
-                        <td class="b-layout__td b-layout__td_width_120 b-layout__td_width_null_iphone"><label class="b-layout__txt b-layout__txt_block  b-layout__txt_lineheight_1 b-page__desktop b-page__ipad" for="login_fbd">Логин, e-mail,<br/>телефон</label></td>
+                        <td class="b-layout__td b-layout__td_width_120 b-layout__td_width_null_iphone"><label class="b-layout__txt b-layout__txt_block  b-layout__txt_lineheight_1 b-page__desktop b-page__ipad" for="login_fbd">Р›РѕРіРёРЅ, e-mail,<br/>С‚РµР»РµС„РѕРЅ</label></td>
                         <td class="b-layout__td b-layout__td_width_240 b-layout__td_padbot_20 b-layout__td_width_full_iphone">
-                            <label class="b-layout__txt b-layout__txt_block b-layout__txt_padbot_5 b-page__iphone" for="login_fbd">Логин, e-mail, телефон</label>
+                            <label class="b-layout__txt b-layout__txt_block b-layout__txt_padbot_5 b-page__iphone" for="login_fbd">Р›РѕРіРёРЅ, e-mail, С‚РµР»РµС„РѕРЅ</label>
                             <div class="b-combo">
                                 <div class="b-combo__input">
                                     <input id="login_fbd" class="b-combo__input-text" type="text" value="" size="80" name="login" tabindex="100" />
@@ -128,9 +128,9 @@ function show_password(id) {
                         </td>
                     </tr>
                     <tr class="b-layout__tr">
-                        <td class="b-layout__td b-layout__td_width_120 b-layout__td_width_null_iphone"><label class="b-layout__txt b-layout__txt_block b-layout__txt_padtop_5 b-page__desktop b-page__ipad" for="pass_fbd">Пароль</label></td>
+                        <td class="b-layout__td b-layout__td_width_120 b-layout__td_width_null_iphone"><label class="b-layout__txt b-layout__txt_block b-layout__txt_padtop_5 b-page__desktop b-page__ipad" for="pass_fbd">РџР°СЂРѕР»СЊ</label></td>
                         <td class="b-layout__td b-layout__td_width_240 b-layout__td_padbot_20 b-layout__td_width_full_iphone">
-                            <label class="b-layout__txt b-layout__txt_block b-layout__txt_padbot_5 b-page__iphone" for="pass_fbd">Пароль</label>
+                            <label class="b-layout__txt b-layout__txt_block b-layout__txt_padbot_5 b-page__iphone" for="pass_fbd">РџР°СЂРѕР»СЊ</label>
                             <div class="b-combo">
                                 <div class="b-combo__input b-eye">
                                     <a class="b-eye__link b-eye__link_right_null" href="javascript:void(0)" onclick="show_password('pass_fbd')"><span class="b-eye__icon b-eye__icon_close"></span></a>
@@ -144,24 +144,24 @@ function show_password(id) {
                         <td class="b-layout__td b-layout__td_width_240 b-layout__td_padbot_20 b-layout__td_width_full_iphone">
                             <div class="b-check">
                                 <input id="remember" class="b-check__input" type="checkbox" value="1" name="autologin" tabindex="102" />
-                                <label for="remember" class="b-check__label b-check__label_fontsize_13">Запомнить меня</label>
+                                <label for="remember" class="b-check__label b-check__label_fontsize_13">Р—Р°РїРѕРјРЅРёС‚СЊ РјРµРЅСЏ</label>
                             </div>
                         </td>
                     </tr>
             </table>
             <div class="b-buttons b-buttons_padleft_122 b-buttons_padbot_30 b-page__desktop b-page__ipad">
-                <a class="b-button b-button_flat b-button_flat_green" onclick="alowLogin(); return false;" href="javascript:void()" tabindex="103">Войти</a>
+                <a class="b-button b-button_flat b-button_flat_green" onclick="alowLogin(); return false;" href="javascript:void()" tabindex="103">Р’РѕР№С‚Рё</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a class="b-buttons__link" href="/remind/">восстановить пароль</a> <span class="b-buttons__txt">или</span> <a class="b-buttons__link b-buttons__link_color_fd6c30" href="/registration/">зарегистрироваться</a>
+                <a class="b-buttons__link" href="/remind/">РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїР°СЂРѕР»СЊ</a> <span class="b-buttons__txt">РёР»Рё</span> <a class="b-buttons__link b-buttons__link_color_fd6c30" href="/registration/">Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</a>
             </div>
             <div class="b-page__iphone">
-                <a class="b-button b-button_flat b-button_flat_green b-button_block" onclick="alowLogin(); return false;" href="javascript:void()" tabindex="103">Войти</a>
+                <a class="b-button b-button_flat b-button_flat_green b-button_block" onclick="alowLogin(); return false;" href="javascript:void()" tabindex="103">Р’РѕР№С‚Рё</a>
                 <div class=" b-layout__txt b-layout__txt_center b-layout__txt_padtop_20">
-                   <a class="b-layout__link" href="/remind/">восстановить пароль</a> <span class="b-layout__txt">или</span> <a class="b-layout__link b-layout__link_color_fd6c30" href="/registration/">зарегистрироваться</a>
+                   <a class="b-layout__link" href="/remind/">РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїР°СЂРѕР»СЊ</a> <span class="b-layout__txt">РёР»Рё</span> <a class="b-layout__link b-layout__link_color_fd6c30" href="/registration/">Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</a>
                 </div>
             </div>
             <input type="hidden" name="action" value="login" />
             <input type="hidden" name="redirect" value="<?=$_SESSION['ref_uri']?>" />										
             </form>
 
-<div class="b-layout__txt b-layout__txt_padtop_20">Номер телефона указывается вместе с кодом страны (в формате +7..., +380... и т.д.)<br/><br/>Если у вас возникли вопросы - обращайтесь в <a class="b-layout__link" href="https://feedback.fl.ru">службу поддержки</a>. С удовольствием ответим.</div>
+<div class="b-layout__txt b-layout__txt_padtop_20">РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° СѓРєР°Р·С‹РІР°РµС‚СЃСЏ РІРјРµСЃС‚Рµ СЃ РєРѕРґРѕРј СЃС‚СЂР°РЅС‹ (РІ С„РѕСЂРјР°С‚Рµ +7..., +380... Рё С‚.Рґ.)<br/><br/>Р•СЃР»Рё Сѓ РІР°СЃ РІРѕР·РЅРёРєР»Рё РІРѕРїСЂРѕСЃС‹ - РѕР±СЂР°С‰Р°Р№С‚РµСЃСЊ РІ <a class="b-layout__link" href="https://feedback.fl.ru">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>. РЎ СѓРґРѕРІРѕР»СЊСЃС‚РІРёРµРј РѕС‚РІРµС‚РёРј.</div>

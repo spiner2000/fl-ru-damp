@@ -7,7 +7,7 @@ if(!defined('IN_STDF')) {
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr valign="top">
 	<td colspan="2">
-		<h1>Настройки</h1>
+		<h1>РќР°СЃС‚СЂРѕР№РєРё</h1>
 	</td>
 </tr>
 <tr valign="top">

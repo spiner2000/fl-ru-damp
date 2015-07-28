@@ -13,7 +13,7 @@ class quickPaymentPopupCarusel extends quickExtPaymentPopup
         
         global $js_file;
         
-        //расширяем скрипт попапа для специфики
+        //СЂР°СЃС€РёСЂСЏРµРј СЃРєСЂРёРїС‚ РїРѕРїР°РїР° РґР»СЏ СЃРїРµС†РёС„РёРєРё
         $js_file['carusel_quick_ext_payment'] = 'quick_payment/carusel_quick_ext_payment.js';
     }
     
@@ -24,19 +24,19 @@ class quickPaymentPopupCarusel extends quickExtPaymentPopup
         $promoCodes = new PromoCodes();
         
         $options = array(
-            'popup_title'               => 'Размещение в Карусели',
-            'items_title'               => 'Параметры объявления',
+            'popup_title'               => 'Р Р°Р·РјРµС‰РµРЅРёРµ РІ РљР°СЂСѓСЃРµР»Рё',
+            'items_title'               => 'РџР°СЂР°РјРµС‚СЂС‹ РѕР±СЉСЏРІР»РµРЅРёСЏ',
             'payments_exclude'          => array(self::PAYMENT_TYPE_BANK),
-            //@todo: пока одна цена и одна позиция для всех
+            //@todo: РїРѕРєР° РѕРґРЅР° С†РµРЅР° Рё РѕРґРЅР° РїРѕР·РёС†РёСЏ РґР»СЏ РІСЃРµС…
             'price'                     => pay_place::getPrice(),
             'promo_code' => $promoCodes->render(PromoCodes::SERVICE_CARUSEL)
         );
         
-        $this->addWaitMessageForAll(/* только индикатор */);
+        $this->addWaitMessageForAll(/* С‚РѕР»СЊРєРѕ РёРЅРґРёРєР°С‚РѕСЂ */);
         
         $form = new CaruselForm();
         
-        //Если уже размещался то поумолчанию заполняем тексты
+        //Р•СЃР»Рё СѓР¶Рµ СЂР°Р·РјРµС‰Р°Р»СЃСЏ С‚Рѕ РїРѕСѓРјРѕР»С‡Р°РЅРёСЋ Р·Р°РїРѕР»РЅСЏРµРј С‚РµРєСЃС‚С‹
         $payPlace = new pay_place($type_place);
         $data = $payPlace->getUserRequest($uid);
         if ($data) {
@@ -52,7 +52,7 @@ class quickPaymentPopupCarusel extends quickExtPaymentPopup
         
         $this->options['payments'][self::PAYMENT_TYPE_PLATIPOTOM]['content_after'] = sprintf(
             $this->options['payments'][self::PAYMENT_TYPE_PLATIPOTOM]['content_after'],
-            'карусель'
+            'РєР°СЂСѓСЃРµР»СЊ'
         );
     }
     

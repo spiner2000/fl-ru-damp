@@ -1,13 +1,13 @@
-<div class="b-page__title b-page__title_center">В мае мы запускаем<br>партнерскую программу</div>
+<div class="b-page__title b-page__title_center">Р’ РјР°Рµ РјС‹ Р·Р°РїСѓСЃРєР°РµРј<br>РїР°СЂС‚РЅРµСЂСЃРєСѓСЋ РїСЂРѕРіСЂР°РјРјСѓ</div>
 
 <div class="b-layout b-layout_center">
-   <div class="b-layout__txt b-layout__txt_center b-layout__txt_padbot_40 b-layout__txt_fontsize_22">Если вы хотите получать<br><span class="b-layout__bold">деньги за привлечение</span><br>пользователей на наш сайт,<br>оставьте свой e-mail:</div>
+   <div class="b-layout__txt b-layout__txt_center b-layout__txt_padbot_40 b-layout__txt_fontsize_22">Р•СЃР»Рё РІС‹ С…РѕС‚РёС‚Рµ РїРѕР»СѓС‡Р°С‚СЊ<br><span class="b-layout__bold">РґРµРЅСЊРіРё Р·Р° РїСЂРёРІР»РµС‡РµРЅРёРµ</span><br>РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РЅР° РЅР°С€ СЃР°Р№С‚,<br>РѕСЃС‚Р°РІСЊС‚Рµ СЃРІРѕР№ e-mail:</div>
 </div>
 
 <?php if ($success): ?>
     <div class="b-layout b-layout_center">
         <div class="b-layout__txt b-layout__txt_center b-layout__txt_padbot_40 b-layout__txt_fontsize_22">
-            Вы подписались!
+            Р’С‹ РїРѕРґРїРёСЃР°Р»РёСЃСЊ!
         </div>
     </div>
 <?php else: ?>
@@ -16,7 +16,7 @@
          
                 <div class="b-combo">
                     <div class="b-combo__input <?php if ($form_error): ?>b-combo__input_error<?php endif;?>">
-                       <input type="text" value="<?php echo htmlspecialchars($email);?>" size="80" name="email" class="b-combo__input-text" placeholder="Введите e-mail">
+                       <input type="text" value="<?php echo htmlspecialchars($email);?>" size="80" name="email" class="b-combo__input-text" placeholder="Р’РІРµРґРёС‚Рµ e-mail">
                     </div>
                 </div>
                 <?php if ($form_error): ?>
@@ -25,7 +25,7 @@
                     <div class="b-shadow b-shadow_m b-shadow_top_-30 b-shadow_left_260">
                         <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_10">
                             <div id="error_txt_captchanum" class="b-layout__txt b-layout__txt_nowrap b-layout__txt_padright_15 b-layout__txt_color_c4271f">
-                                <span class="b-form__error"></span>Пожалуйста, укажите корректный e-mail адрес.
+                                <span class="b-form__error"></span>РџРѕР¶Р°Р»СѓР№СЃС‚Р°, СѓРєР°Р¶РёС‚Рµ РєРѕСЂСЂРµРєС‚РЅС‹Р№ e-mail Р°РґСЂРµСЃ.
                             </div>
                         </div>
                         <span class="b-shadow__icon b-shadow__icon_close b-shadow__icon_right_12 b-shadow__icon_top_12"></span> 
@@ -41,7 +41,7 @@
                     <div class="b-shadow b-shadow_m">
                         <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_10">
                             <div id="error_txt_captchanum" class="b-layout__txt b-layout__txt_nowrap b-layout__txt_padright_15 b-layout__txt_color_c4271f">
-                                <span class="b-form__error"></span>Пожалуйста, укажите<br>&#160;&#160;&#160;&#160;&#160;корректный e-mail адрес.
+                                <span class="b-form__error"></span>РџРѕР¶Р°Р»СѓР№СЃС‚Р°, СѓРєР°Р¶РёС‚Рµ<br>&#160;&#160;&#160;&#160;&#160;РєРѕСЂСЂРµРєС‚РЅС‹Р№ e-mail Р°РґСЂРµСЃ.
                             </div>
                         </div>
                         <span class="b-shadow__icon b-shadow__icon_close b-shadow__icon_right_12 b-shadow__icon_top_12"></span>
@@ -51,7 +51,7 @@
                 <?php endif; ?>
                     
             <div class="b-buttons b-buttons_padtop_20">
-              <button type="submit" class="b-button b-button_block b-button_flat b-button_flat_green">Узнать о запуске первым</button> 
+              <button type="submit" class="b-button b-button_block b-button_flat b-button_flat_green">РЈР·РЅР°С‚СЊ Рѕ Р·Р°РїСѓСЃРєРµ РїРµСЂРІС‹Рј</button> 
             </div>          
        </form>
     </div>

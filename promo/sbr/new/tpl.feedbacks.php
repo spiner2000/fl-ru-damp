@@ -3,12 +3,12 @@
         <tr class="b-layout__tr">
             <td class="b-layout__one b-layout__one_padbot_20 b-layout__one_width_50ps" colspan="2">
                 <? if ($feedbacksFromEmp) { ?>
-                <div class="b-layout__title">Работодатели о БС </div>
+                <div class="b-layout__title">Р Р°Р±РѕС‚РѕРґР°С‚РµР»Рё Рѕ Р‘РЎ </div>
                 <? } ?>
             </td>
             <td class="b-layout__one b-layout__one_padbot_20 b-layout__one_width_50ps b-layout__one_padleft_50" colspan="2">
                 <? if ($feedbacksFromFrl) { ?>
-                <div class="b-layout__title">Фрилансеры о БС</div>
+                <div class="b-layout__title">Р¤СЂРёР»Р°РЅСЃРµСЂС‹ Рѕ Р‘РЎ</div>
                 <? } ?>
             </td>
         </tr>

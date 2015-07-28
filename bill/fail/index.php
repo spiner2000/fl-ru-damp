@@ -5,20 +5,20 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/billing.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/quick_payment/quickPaymentPopupFactory.php');
 
 
-//Если есть обработчики по новым попапам быстрой оплаты
+//Р•СЃР»Рё РµСЃС‚СЊ РѕР±СЂР°Р±РѕС‚С‡РёРєРё РїРѕ РЅРѕРІС‹Рј РїРѕРїР°РїР°Рј Р±С‹СЃС‚СЂРѕР№ РѕРїР»Р°С‚С‹
 if (quickPaymentPopupFactory::isExistProcess()) {
-    //Посылаем событие при неудачной операции
+    //РџРѕСЃС‹Р»Р°РµРј СЃРѕР±С‹С‚РёРµ РїСЂРё РЅРµСѓРґР°С‡РЅРѕР№ РѕРїРµСЂР°С†РёРё
     $processInstance = quickPaymentPopupFactory::getInstance();
     if($processInstance) $processInstance->failEventSuccess();
 }
 
 
-//@todo: пережико старья пока оставляю
+//@todo: РїРµСЂРµР¶РёРєРѕ СЃС‚Р°СЂСЊСЏ РїРѕРєР° РѕСЃС‚Р°РІР»СЏСЋ
 $back_url = $_SESSION['referer'];
 unset($_SESSION['referer']);
 $back_url = ($back_url)?$back_url:'/';
 header("Location: {$back_url}");
-//Шлём туда, откуда пришли. ХЗ что тут, но в попапах все само показывалось, а теперь тут надо данные готовить.
+//РЁР»С‘Рј С‚СѓРґР°, РѕС‚РєСѓРґР° РїСЂРёС€Р»Рё. РҐР— С‡С‚Рѕ С‚СѓС‚, РЅРѕ РІ РїРѕРїР°РїР°С… РІСЃРµ СЃР°РјРѕ РїРѕРєР°Р·С‹РІР°Р»РѕСЃСЊ, Р° С‚РµРїРµСЂСЊ С‚СѓС‚ РЅР°РґРѕ РґР°РЅРЅС‹Рµ РіРѕС‚РѕРІРёС‚СЊ.
 //##0026732
 exit;
 
@@ -60,7 +60,7 @@ if(__paramInit('string', 'quickprobuy', 'quickprobuy', null)==1) {
 }
 
 
-//После неудачной оплаты по банковской карте за верификацию закрываем окно
+//РџРѕСЃР»Рµ РЅРµСѓРґР°С‡РЅРѕР№ РѕРїР»Р°С‚С‹ РїРѕ Р±Р°РЅРєРѕРІСЃРєРѕР№ РєР°СЂС‚Рµ Р·Р° РІРµСЂРёС„РёРєР°С†РёСЋ Р·Р°РєСЂС‹РІР°РµРј РѕРєРЅРѕ
 if ($_SESSION['quickver_is_begin'] == 1) {
     unset($_SESSION['quickver_is_begin']);
     echo "<html><body><script>window.close();</script></body></html>";  
@@ -71,7 +71,7 @@ if ($_SESSION['quickver_is_begin'] == 1) {
 $bill = new billing(get_uid(0));
 
 $action = __paramInit('string', null, 'action', null);
-// заново оплатить
+// Р·Р°РЅРѕРІРѕ РѕРїР»Р°С‚РёС‚СЊ
 if ($action === 'pay') {
     $reserveID = __paramInit('string', null, 'reserve_id', null);
     if ($reserveID) {

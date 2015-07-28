@@ -11,10 +11,10 @@ $uid = intval($uid);
 $admin = 103;
 if ( $uid > 0 ) {
     global $DB;
-    //Есть ли такой незабаненый не про, заходивший в проследний раз более года назад?
+    //Р•СЃС‚СЊ Р»Рё С‚Р°РєРѕР№ РЅРµР·Р°Р±Р°РЅРµРЅС‹Р№ РЅРµ РїСЂРѕ, Р·Р°С…РѕРґРёРІС€РёР№ РІ РїСЂРѕСЃР»РµРґРЅРёР№ СЂР°Р· Р±РѕР»РµРµ РіРѕРґР° РЅР°Р·Р°Рґ?
     $targetUser = users::userWasInOldYear($uid);
     if ( is_array($targetUser) ) {
-        //Даем про на неделю
+        //Р”Р°РµРј РїСЂРѕ РЅР° РЅРµРґРµР»СЋ
         $account = new account();
         $payed = new payed();
         $op_code = 115; // 52
@@ -23,14 +23,14 @@ if ( $uid > 0 ) {
         if ( $targetUser["role"][0] == 1 ) {
             $interval = "1 month";
         }
-        $success = $payed->GiftOrderedTarif($bill_id, $gift_id, $uid, $admin, $tr_id, $interval, "Аккаунт PRO в подарок", $op_code);
+        $success = $payed->GiftOrderedTarif($bill_id, $gift_id, $uid, $admin, $tr_id, $interval, "РђРєРєР°СѓРЅС‚ PRO РІ РїРѕРґР°СЂРѕРє", $op_code);
         if( !$success ) {
             $rpath = "./";
             if (!$fpath) $fpath = "";
             $header = ABS_PATH."/header.new.php";
             $footer = ABS_PATH."/footer.new.html";
             $content = ABS_PATH."/gift_pro_week_error.php";
-            $page_title = "Ошибка при активации подарка";
+            $page_title = "РћС€РёР±РєР° РїСЂРё Р°РєС‚РёРІР°С†РёРё РїРѕРґР°СЂРєР°";
             include("template3.php");
             exit;
         }

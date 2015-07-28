@@ -1,11 +1,11 @@
 <div class="b-check">
-	<input id="cover_<?=$letter['number']?>" class="b-check__input" type="checkbox" onClick="letters.checkUncheckCover(<?=$letter['number']?>, this);"><label class="b-check__label b-check__label_fontsize_13 b-check__label_bold" for="cover_<?=$letter['number']?>">Конверт <?=$letter['number']?></label>
+	<input id="cover_<?=$letter['number']?>" class="b-check__input" type="checkbox" onClick="letters.checkUncheckCover(<?=$letter['number']?>, this);"><label class="b-check__label b-check__label_fontsize_13 b-check__label_bold" for="cover_<?=$letter['number']?>">РљРѕРЅРІРµСЂС‚ <?=$letter['number']?></label>
 </div>
 <table class="b-layout__table b-layout__table_margbot_10" cellpadding="0" cellspacing="0" border="0">
 	<tbody>
 		<tr class="b-layout__tr">
 			<td class="b-layout__left b-layout__left_padright_5">
-				<div class="b-layout__txt">Тип</div>
+				<div class="b-layout__txt">РўРёРї</div>
 			</td>
 			<td class="b-layout__right">
 				<div class="b-layout__txt"><?=$letter['rdelivery_title']?></div>
@@ -13,7 +13,7 @@
 		</tr>
 		<tr class="b-layout__tr">
 			<td class="b-layout__left b-layout__left_padright_5">
-				<div class="b-layout__txt">Кому</div>
+				<div class="b-layout__txt">РљРѕРјСѓ</div>
 			</td>
 			<td class="b-layout__right">
 				<div class="b-layout__txt">
@@ -27,7 +27,7 @@
 		</tr>
 		<tr class="b-layout__tr">
 			<td class="b-layout__left b-layout__left_padright_5">
-				<div class="b-layout__txt">Куда</div>
+				<div class="b-layout__txt">РљСѓРґР°</div>
 			</td>
 			<td class="b-layout__right">
 				<div class="b-layout__txt">

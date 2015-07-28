@@ -1,11 +1,11 @@
 <?php
 /* 
  * 
- * Данный файл является частью проекта Веб Мессенджер.
+ * Р”Р°РЅРЅС‹Р№ С„Р°Р№Р» СЏРІР»СЏРµС‚СЃСЏ С‡Р°СЃС‚СЊСЋ РїСЂРѕРµРєС‚Р° Р’РµР± РњРµСЃСЃРµРЅРґР¶РµСЂ.
  * 
- * Все права защищены. (c) 2005-2009 ООО "ТОП".
- * Данное программное обеспечение и все сопутствующие материалы
- * предоставляются на условиях лицензии, доступной по адресу
+ * Р’СЃРµ РїСЂР°РІР° Р·Р°С‰РёС‰РµРЅС‹. (c) 2005-2009 РћРћРћ "РўРћРџ".
+ * Р”Р°РЅРЅРѕРµ РїСЂРѕРіСЂР°РјРјРЅРѕРµ РѕР±РµСЃРїРµС‡РµРЅРёРµ Рё РІСЃРµ СЃРѕРїСѓС‚СЃС‚РІСѓСЋС‰РёРµ РјР°С‚РµСЂРёР°Р»С‹
+ * РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‚СЃСЏ РЅР° СѓСЃР»РѕРІРёСЏС… Р»РёС†РµРЅР·РёРё, РґРѕСЃС‚СѓРїРЅРѕР№ РїРѕ Р°РґСЂРµСЃСѓ
  * http://webim.ru/license.html
  * 
  */
@@ -443,7 +443,7 @@ class Thread  {
   function BuildVisitorsXml() {
     $xml = array();
     
-    // папка online в мэмкэш --------------------
+    // РїР°РїРєР° online РІ РјСЌРјРєСЌС€ --------------------
     //VisitedPage::GetInstance()->retrieveVisitors();
     VisitedPage::GetInstance()->retrieveVisitorsFromMemBuff();
     
@@ -764,7 +764,7 @@ class Thread  {
     	$message .= '<a class="b-button b-button_rectangle_color_transparent b-button_margleft_45 webimFeedbackBtn" href="#" onclick="return showFeedback(event'.$noBackToChatLink.');" '.$iestyle.'>
                         <span class="b-button__b1">
                             <span class="b-button__b2">
-                                <span class="b-button__txt">Задать вопрос</span>
+                                <span class="b-button__txt">Р—Р°РґР°С‚СЊ РІРѕРїСЂРѕСЃ</span>
                             </span>
                         </span>
                     </a><br/>
@@ -795,7 +795,7 @@ class Thread  {
     $domain = '[\w]+(.[\w]+)';
     $subdir = '([\w\-\.,@?^=%&:;\/~\+#]*[\w\-\@?^=%&\/~\+#])?';
     //$pattern = $protocol . $domain . $subdir;
-    $pattern = '((http|ftp|https):\/\/|www\.)(([\da-z-_а-яёА-ЯЁ]+\.)*([\da-z-_]+|рф|РФ)(:\d+)?([\/?#][^"\s<]*)*)';
+    $pattern = '((http|ftp|https):\/\/|www\.)(([\da-z-_Р°-СЏС‘Рђ-РЇРЃ]+\.)*([\da-z-_]+|СЂС„|Р Р¤)(:\d+)?([\/?#][^"\s<]*)*)';
 
     switch ($format) {
       case "text":

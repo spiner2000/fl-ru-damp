@@ -1,6 +1,6 @@
 <div class="b-layout__right b-layout__right_width_72ps b-layout__right_float_right  b-layout__right_padbot_20">
-    <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_padbot_40">Перед вами подробное описание проекта. Изучите все, что хочет заказчик, и сделайте свое предложение, чтобы заинтересовать его.</div>
-    <div class="b-layout__txt b-layout__txt_padbot_10"><a href="/wizard/registration/" class="b-layout__link">Вернуться к списку проектов</a></div>
+    <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_padbot_40">РџРµСЂРµРґ РІР°РјРё РїРѕРґСЂРѕР±РЅРѕРµ РѕРїРёСЃР°РЅРёРµ РїСЂРѕРµРєС‚Р°. РР·СѓС‡РёС‚Рµ РІСЃРµ, С‡С‚Рѕ С…РѕС‡РµС‚ Р·Р°РєР°Р·С‡РёРє, Рё СЃРґРµР»Р°Р№С‚Рµ СЃРІРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ, С‡С‚РѕР±С‹ Р·Р°РёРЅС‚РµСЂРµСЃРѕРІР°С‚СЊ РµРіРѕ.</div>
+    <div class="b-layout__txt b-layout__txt_padbot_10"><a href="/wizard/registration/" class="b-layout__link">Р’РµСЂРЅСѓС‚СЊСЃСЏ Рє СЃРїРёСЃРєСѓ РїСЂРѕРµРєС‚РѕРІ</a></div>
     <div class="b-post b-post_margleft_-60">
         <div class="b-post__body">
             <div class="b-post__avatar b-post__avatar_margright_10">
@@ -9,15 +9,15 @@
             <div class="b-post__content b-post__content_margleft_60">
                 <div class="b-username b-username_padbot_40">
                     <div class="b-username__txt b-username__txt_padbot_15">
-                        <span class="b-username__login b-username__login_bold b-username__login_color_6db335">Работодатель&nbsp;&nbsp;</span>
+                        <span class="b-username__login b-username__login_bold b-username__login_color_6db335">Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ&nbsp;&nbsp;</span>
                         <?php if ($project['is_pro'] == 't') { ?><?=(is_emp($project['role'])?view_pro_emp():view_pro()); }?>
                         <span class="b-username__txt b-username__txt_fontsize_11"><?= $user->getOnlineStatus4Profile()?></span>
                     </div>
                     <div class="b-username__txt b-username__txt_padbot_5 b-username__txt_fontsize_11">
-                        Зарегистрирован<?= ($user->sex == 'f' ? 'а' : '')?> на сайте <?=$registered?>
+                        Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ<?= ($user->sex == 'f' ? 'Р°' : '')?> РЅР° СЃР°Р№С‚Рµ <?=$registered?>
                     </div>
                     <div class="b-username__txt b-username__txt_fontsize_11">
-                        <?= $op_data['total']['a']?> <?= ending($op_data['total']['a'], 'отзыв', 'отзыва', 'отзывов')?> от пользователей: <span class="b-username__txt b-username__txt_color_6db335">+<?=$op_data['total']['p']?></span>  &#160;<span class="b-username__txt"><?= (int) $op_data['total']['n']?></span> <span class="b-username__txt b-username__txt_color_c10600">&minus;<?= (int) $op_data['total']['m']?></span>
+                        <?= $op_data['total']['a']?> <?= ending($op_data['total']['a'], 'РѕС‚Р·С‹РІ', 'РѕС‚Р·С‹РІР°', 'РѕС‚Р·С‹РІРѕРІ')?> РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№: <span class="b-username__txt b-username__txt_color_6db335">+<?=$op_data['total']['p']?></span>  &#160;<span class="b-username__txt"><?= (int) $op_data['total']['n']?></span> <span class="b-username__txt b-username__txt_color_c10600">&minus;<?= (int) $op_data['total']['m']?></span>
                     </div>
                 </div>			
                 <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table b-layout__table_width_full">
@@ -32,15 +32,15 @@
                                     if($project['cost'] > 0) {
                                     switch ($project['budget_type']) {
                                         case 1:
-                                            $budget_price_str = 'низкого класса';
+                                            $budget_price_str = 'РЅРёР·РєРѕРіРѕ РєР»Р°СЃСЃР°';
                                             $budget_price_class = 'fl-form-p';
                                             break;
                                         case 2:
-                                            $budget_price_str = 'среднего класса';
+                                            $budget_price_str = 'СЃСЂРµРґРЅРµРіРѕ РєР»Р°СЃСЃР°';
                                             $budget_price_class = 'fl-form-o';
                                             break;
                                         case 3:
-                                            $budget_price_str = 'высокого класса';
+                                            $budget_price_str = 'РІС‹СЃРѕРєРѕРіРѕ РєР»Р°СЃСЃР°';
                                             $budget_price_class = 'fl-form-lg';
                                             break;
                                         default:
@@ -49,10 +49,10 @@
                                             break;
                                     }
                                     ?>
-                                    <div class="b-post__klass">Для исполнителей<br /><?= $budget_price_str?></div>
+                                    <div class="b-post__klass">Р”Р»СЏ РёСЃРїРѕР»РЅРёС‚РµР»РµР№<br /><?= $budget_price_str?></div>
                                     <?php }//if?>
                                     <?php if ($project['cost'] == 0) { ?>
-                                        <div class="b-post__price-inner">По договоренности</div>
+                                        <div class="b-post__price-inner">РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё</div>
                                     <?php } else { ?>
                                         <div class="b-post__price-inner">
                                             <?$priceby_str = getPricebyProject($project['priceby']); //if?>
@@ -67,7 +67,7 @@
                 </table>
                 <div class="i-prompt">
                     <div class="b-prompt b-prompt_left_-260 b-prompt_width_200">
-                        <div class="b-prompt__txt b-prompt__txt_color_fd6c30 b-prompt__txt_italic">Описание того, что нужно сделать</div>
+                        <div class="b-prompt__txt b-prompt__txt_color_fd6c30 b-prompt__txt_italic">РћРїРёСЃР°РЅРёРµ С‚РѕРіРѕ, С‡С‚Рѕ РЅСѓР¶РЅРѕ СЃРґРµР»Р°С‚СЊ</div>
                         <div class="b-prompt__arrow b-prompt__arrow_left_60 b-prompt__arrow_3"></div>
                     </div>
                 </div>
@@ -96,24 +96,24 @@
                 <?php } //elseif */?>
                 <div class="b-menu b-menu_crumbs b-menu_padtop_30">
                     <ul class="b-menu__list">
-                        <li class="b-menu__item b-menu__item_fontsize_11">Раздел: <?= projects::getSpecsStr($project['id'],'&#160;&rarr;&#160;', ', ', 'b-menu__link');?></li>
+                        <li class="b-menu__item b-menu__item_fontsize_11">Р Р°Р·РґРµР»: <?= projects::getSpecsStr($project['id'],'&#160;&rarr;&#160;', ', ', 'b-menu__link');?></li>
                     </ul>
                 </div>
                 
                 <?php if(!$is_offer && ($count_offer < $max_offers || $project['kind'] == 7)) {?>
                 <div class="i-prompt">
                     <div class="b-prompt b-prompt_left_-260 b-prompt_top_35 b-prompt_width_240">
-                        <div class="b-prompt__txt b-prompt__txt_color_fd6c30 b-prompt__txt_italic">Если проект вас заинтересовал, оставьте заказчику свое предложение</div>
+                        <div class="b-prompt__txt b-prompt__txt_color_fd6c30 b-prompt__txt_italic">Р•СЃР»Рё РїСЂРѕРµРєС‚ РІР°СЃ Р·Р°РёРЅС‚РµСЂРµСЃРѕРІР°Р», РѕСЃС‚Р°РІСЊС‚Рµ Р·Р°РєР°Р·С‡РёРєСѓ СЃРІРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ</div>
                         <div class="b-prompt__arrow b-prompt__arrow_left_70 b-prompt__arrow_3"></div>
                     </div>
                 </div>
                 
-                <h2 class="b-layout__title b-layout__title_padtop_30">Ваше предложение</h2>
+                <h2 class="b-layout__title b-layout__title_padtop_30">Р’Р°С€Рµ РїСЂРµРґР»РѕР¶РµРЅРёРµ</h2>
                 
                 <?php if($count_offer >= 3 && $project['pro_only'] != 't' && $project['kind'] != 7) {?>
                 <div class="b-fon b-fon_width_full b-fon_padbot_20">
                     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-                        <span class="b-fon__ok"></span>Это предложение платное, оно будет добавлено только при условии, что вы оплатите услугу «Платные ответы» или купите аккаунт PRO.
+                        <span class="b-fon__ok"></span>Р­С‚Рѕ РїСЂРµРґР»РѕР¶РµРЅРёРµ РїР»Р°С‚РЅРѕРµ, РѕРЅРѕ Р±СѓРґРµС‚ РґРѕР±Р°РІР»РµРЅРѕ С‚РѕР»СЊРєРѕ РїСЂРё СѓСЃР»РѕРІРёРё, С‡С‚Рѕ РІС‹ РѕРїР»Р°С‚РёС‚Рµ СѓСЃР»СѓРіСѓ В«РџР»Р°С‚РЅС‹Рµ РѕС‚РІРµС‚С‹В» РёР»Рё РєСѓРїРёС‚Рµ Р°РєРєР°СѓРЅС‚ PRO.
                     </div>
                 </div>	
                 <?php }//if?>
@@ -121,14 +121,14 @@
                 <?php if($project['pro_only'] == 't') {?>
                 <div class="b-fon b-fon_width_full b-fon_padbot_20">
                     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-                        <span class="b-fon__attent_pink"></span>Данный проект предназначен для пользователей с аккаунтом PRO, ваше предложение будет добавлено только при условии, что вы купите аккаунт PRO.<br/>
-                        Пользователи с начальным аккаунтом имеют возможность бесплатно ответить на 3 проекта в месяц. Пользователи с аккаунтом PRO имеют неограниченное количество ответов.
+                        <span class="b-fon__attent_pink"></span>Р”Р°РЅРЅС‹Р№ РїСЂРѕРµРєС‚ РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅ РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ Р°РєРєР°СѓРЅС‚РѕРј PRO, РІР°С€Рµ РїСЂРµРґР»РѕР¶РµРЅРёРµ Р±СѓРґРµС‚ РґРѕР±Р°РІР»РµРЅРѕ С‚РѕР»СЊРєРѕ РїСЂРё СѓСЃР»РѕРІРёРё, С‡С‚Рѕ РІС‹ РєСѓРїРёС‚Рµ Р°РєРєР°СѓРЅС‚ PRO.<br/>
+                        РџРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ РЅР°С‡Р°Р»СЊРЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј РёРјРµСЋС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ Р±РµСЃРїР»Р°С‚РЅРѕ РѕС‚РІРµС‚РёС‚СЊ РЅР° 3 РїСЂРѕРµРєС‚Р° РІ РјРµСЃСЏС†. РџРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ Р°РєРєР°СѓРЅС‚РѕРј PRO РёРјРµСЋС‚ РЅРµРѕРіСЂР°РЅРёС‡РµРЅРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РІРµС‚РѕРІ.
                     </div>
                 </div>	
                 <?php } else {//if?>
                 <div class="b-fon b-fon_width_full b-fon_padbot_20">
                      <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-                         <span class="b-fon__attent_pink"></span>Пользователи с начальным аккаунтом имеют возможность бесплатно ответить на 3 проекта в месяц. Пользователи с аккаунтом PRO имеют неограниченное количество ответов.
+                         <span class="b-fon__attent_pink"></span>РџРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ РЅР°С‡Р°Р»СЊРЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј РёРјРµСЋС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ Р±РµСЃРїР»Р°С‚РЅРѕ РѕС‚РІРµС‚РёС‚СЊ РЅР° 3 РїСЂРѕРµРєС‚Р° РІ РјРµСЃСЏС†. РџРѕР»СЊР·РѕРІР°С‚РµР»Рё СЃ Р°РєРєР°СѓРЅС‚РѕРј PRO РёРјРµСЋС‚ РЅРµРѕРіСЂР°РЅРёС‡РµРЅРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РІРµС‚РѕРІ.
                      </div>
                 </div>	
                 <?php } //else?>
@@ -147,30 +147,30 @@
                 
                 <div class="i-prompt" id="left_hint_option">
                     <div class="b-prompt b-prompt_left_-260 b-prompt_top_-40 b-prompt_width_240">
-                        <div class="b-prompt__txt b-prompt__txt_color_fd6c30 b-prompt__txt_italic">Укажите цену и сроки,<br /> а также добавьте примеры<br /> своих работ, чтобы повысить<br /> шансы на получение<br /> этой работы.</div>
+                        <div class="b-prompt__txt b-prompt__txt_color_fd6c30 b-prompt__txt_italic">РЈРєР°Р¶РёС‚Рµ С†РµРЅСѓ Рё СЃСЂРѕРєРё,<br /> Р° С‚Р°РєР¶Рµ РґРѕР±Р°РІСЊС‚Рµ РїСЂРёРјРµСЂС‹<br /> СЃРІРѕРёС… СЂР°Р±РѕС‚, С‡С‚РѕР±С‹ РїРѕРІС‹СЃРёС‚СЊ<br /> С€Р°РЅСЃС‹ РЅР° РїРѕР»СѓС‡РµРЅРёРµ<br /> СЌС‚РѕР№ СЂР°Р±РѕС‚С‹.</div>
                         <div class="b-prompt__arrow b-prompt__arrow_left_70 b-prompt__arrow_3"></div>
                     </div>
                 </div>
                 <?php if($project['kind'] != 7) {?>
                 <div class="b-layout__txt b-layout__txt_padtop_10 i-button">
-                    <a class="b-button b-button_poll_plus b-button_margright_5" href="javascript:void(0)" onclick="view_toggle_blocks('option_content', this);"></a><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle b-layout__link_lineheight_15" href="javascript:void(0)" onclick="view_toggle_blocks('option_content', this);">Указать бюджет и сроки</a>
+                    <a class="b-button b-button_poll_plus b-button_margright_5" href="javascript:void(0)" onclick="view_toggle_blocks('option_content', this);"></a><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle b-layout__link_lineheight_15" href="javascript:void(0)" onclick="view_toggle_blocks('option_content', this);">РЈРєР°Р·Р°С‚СЊ Р±СЋРґР¶РµС‚ Рё СЃСЂРѕРєРё</a>
                 </div>
                 <?php }//if?>
                 <div class="b-layout__txt b-layout__txt_padtop_10 i-button">
-                    <a class="b-button b-button_poll_plus b-button_margright_5" href="javascript:void(0)" onclick="view_toggle_blocks('portfolio_content', this);"></a><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle b-layout__link_lineheight_15 b-layout__link_margright_1" href="javascript:void(0)" onclick="view_toggle_blocks('portfolio_content', this);">Добавить примеры работ</a> <span class="b-icon b-icon_main_fpro b-icon_valign_middle" title="PRO"></span> 
+                    <a class="b-button b-button_poll_plus b-button_margright_5" href="javascript:void(0)" onclick="view_toggle_blocks('portfolio_content', this);"></a><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle b-layout__link_lineheight_15 b-layout__link_margright_1" href="javascript:void(0)" onclick="view_toggle_blocks('portfolio_content', this);">Р”РѕР±Р°РІРёС‚СЊ РїСЂРёРјРµСЂС‹ СЂР°Р±РѕС‚</a> <span class="b-icon b-icon_main_fpro b-icon_valign_middle" title="PRO"></span> 
                 </div>
                 
                 <div class="b-layout b-layout_padtop_20 b-layout_margleft_-80 b-layout_hide" id="option_content">
                     <table class="b-layout__table" border="0" cellpadding="0" cellspacing="0">
                         <tr class="b-layout__tr">
-                            <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_80"><div class="b-layout__txt b-layout__txt_padtop_5">Бюджет &#160;&#160; от</div></td>
+                            <td class="b-layout__left b-layout__left_padbot_20 b-layout__left_width_80"><div class="b-layout__txt b-layout__txt_padtop_5">Р‘СЋРґР¶РµС‚ &#160;&#160; РѕС‚</div></td>
                             <td class="b-layout__right b-layout__right_padbot_20">
                                 <div class="b-combo b-combo_inline-block">
                                     <div class="b-combo__input b-combo__input_width_70">
                                         <input  class="b-combo__input-text" name="from_budget" type="text" size="80" value="" maxlength="6" />
                                     </div>
                                 </div><div 
-                                class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5">&#160;до&#160;</div><div
+                                class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5">&#160;РґРѕ&#160;</div><div
                                  class="b-combo b-combo_margright_10 b-combo_inline-block">
                                     <div class="b-combo__input b-combo__input_width_70">
                                         <input  class="b-combo__input-text" name="to_budget" type="text" size="80" value="" maxlength="6" />
@@ -178,21 +178,21 @@
                                 </div><div
                                  class="b-combo b-combo_inline-block b-combo_margright_20">
                                     <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_60  b-combo__input_arrow_yes b-combo__input_init_currency_data drop_down_default_0 multi_drop_down_default_column_0 green_arrow_off">
-                                        <input id="currency" readonly="readonly" class="b-combo__input-text b-combo__input-text_fontsize_15" name="currency" type="text" size="80" value="Руб" />
+                                        <input id="currency" readonly="readonly" class="b-combo__input-text b-combo__input-text_fontsize_15" name="currency" type="text" size="80" value="Р СѓР±" />
                                     </div>
                                 </div>
                                 
                             </td>
                         </tr>
                         <tr class="b-layout__tr">
-                            <td class="b-layout__left b-layout__left_width_80"><div class="b-layout__txt b-layout__txt_padtop_5">Сроки &#160;&#160;&#160;&#160;&#160; от</div></td>
+                            <td class="b-layout__left b-layout__left_width_80"><div class="b-layout__txt b-layout__txt_padtop_5">РЎСЂРѕРєРё &#160;&#160;&#160;&#160;&#160; РѕС‚</div></td>
                             <td class="b-layout__right">
                                 <div class="b-combo b-combo_inline-block">
                                     <div class="b-combo__input b-combo__input_width_70">
                                         <input  class="b-combo__input-text" name="from_time" type="text" size="80" value="" maxlength="3" />
                                     </div>
                                 </div><div
-                                 class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5">&#160;до&#160;</div><div
+                                 class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5">&#160;РґРѕ&#160;</div><div
                                  class="b-combo b-combo_margright_10 b-combo_inline-block">
                                     <div class="b-combo__input b-combo__input_width_70">
                                         <input  class="b-combo__input-text" name="to_time" type="text" size="80" value="" maxlength="3" />
@@ -200,7 +200,7 @@
                                 </div><div 
                                     class="b-combo b-combo_inline-block b-combo_margright_20 b-combo_margbot_20">
                                     <div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_60  b-combo__input_arrow_yes b-combo__input_init_worktime drop_down_default_0 multi_drop_down_default_column_0 green_arrow_off">
-                                        <input id="time" class="b-combo__input-text b-combo__input-text_fontsize_15" name="time" type="text" size="80" value="Часов" />
+                                        <input id="time" class="b-combo__input-text b-combo__input-text_fontsize_15" name="time" type="text" size="80" value="Р§Р°СЃРѕРІ" />
                                     </div>
                                 </div>                        
                             </td>
@@ -217,7 +217,7 @@
                 <div class="b-layout b-layout_padtop_20 b-layout_hide" id="portfolio_content">
                     <div class="b-fon b-fon_width_full b-fon_padbot_20">
                         <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-                            <span class="b-fon__ok"></span>Примеры работ появятся только в том случае, если вы оплатите свой PRO-аккаунт.
+                            <span class="b-fon__ok"></span>РџСЂРёРјРµСЂС‹ СЂР°Р±РѕС‚ РїРѕСЏРІСЏС‚СЃСЏ С‚РѕР»СЊРєРѕ РІ С‚РѕРј СЃР»СѓС‡Р°Рµ, РµСЃР»Рё РІС‹ РѕРїР»Р°С‚РёС‚Рµ СЃРІРѕР№ PRO-Р°РєРєР°СѓРЅС‚.
                         </div>
                     </div>
                     
@@ -240,10 +240,10 @@
                     <span class="b-form__error"></span> <?= $error?>
                 </div>
                 <? } ?>
-                <h2 class="b-layout__title b-layout__title_padtop_30">У вас не осталось бесплатных ответов</h2>
-                <div class="b-layout__txt">Вы израсходовали 3 бесплатных ответа, которые даются на месяц<?= ( $count_offer>3?" и ".($count_offer-3). " платных ответа":"" )?>. Для того, чтобы ответить на этот проект, вам надо купить аккаунт PRO.</div>
+                <h2 class="b-layout__title b-layout__title_padtop_30">РЈ РІР°СЃ РЅРµ РѕСЃС‚Р°Р»РѕСЃСЊ Р±РµСЃРїР»Р°С‚РЅС‹С… РѕС‚РІРµС‚РѕРІ</h2>
+                <div class="b-layout__txt">Р’С‹ РёР·СЂР°СЃС…РѕРґРѕРІР°Р»Рё 3 Р±РµСЃРїР»Р°С‚РЅС‹С… РѕС‚РІРµС‚Р°, РєРѕС‚РѕСЂС‹Рµ РґР°СЋС‚СЃСЏ РЅР° РјРµСЃСЏС†<?= ( $count_offer>3?" Рё ".($count_offer-3). " РїР»Р°С‚РЅС‹С… РѕС‚РІРµС‚Р°":"" )?>. Р”Р»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ РѕС‚РІРµС‚РёС‚СЊ РЅР° СЌС‚РѕС‚ РїСЂРѕРµРєС‚, РІР°Рј РЅР°РґРѕ РєСѓРїРёС‚СЊ Р°РєРєР°СѓРЅС‚ PRO.</div>
                 <?php } else {//if?>
-                <h2 class="b-layout__title b-layout__title_padtop_30">Вы уже ответили на этот проект</h2>
+                <h2 class="b-layout__title b-layout__title_padtop_30">Р’С‹ СѓР¶Рµ РѕС‚РІРµС‚РёР»Рё РЅР° СЌС‚РѕС‚ РїСЂРѕРµРєС‚</h2>
                 <?php } //else?>
             </div>
 
@@ -255,14 +255,14 @@
         <a href="javascript:void(0)" onclick="$('frm').submit();" class="b-button b-button_rectangle_color_green">
             <span class="b-button__b1">
                 <span class="b-button__b2 b-button__b2_padlr_15">
-                    <span class="b-button__txt">Продолжить</span>
+                    <span class="b-button__txt">РџСЂРѕРґРѕР»Р¶РёС‚СЊ</span>
                 </span>
             </span>
         </a>&#160;&#160;
         <?php }//if?>
-        <a href="/wizard/registration/" class="b-buttons__link">вернуться к списку проектов</a><span class="b-buttons__txt">,</span> 
-        <a href="/wizard/registration/?action=next&complited=1" class="b-buttons__link">пропустить этот шаг</a>
-        <span class="b-buttons__txt">&#160;или&#160;</span>
-        <a href="/wizard/registration/?action=exit" class="b-buttons__link b-buttons__link_color_c10601">выйти из мастера</a>
+        <a href="/wizard/registration/" class="b-buttons__link">РІРµСЂРЅСѓС‚СЊСЃСЏ Рє СЃРїРёСЃРєСѓ РїСЂРѕРµРєС‚РѕРІ</a><span class="b-buttons__txt">,</span> 
+        <a href="/wizard/registration/?action=next&complited=1" class="b-buttons__link">РїСЂРѕРїСѓСЃС‚РёС‚СЊ СЌС‚РѕС‚ С€Р°Рі</a>
+        <span class="b-buttons__txt">&#160;РёР»Рё&#160;</span>
+        <a href="/wizard/registration/?action=exit" class="b-buttons__link b-buttons__link_color_c10601">РІС‹Р№С‚Рё РёР· РјР°СЃС‚РµСЂР°</a>
     </div>
 </div>

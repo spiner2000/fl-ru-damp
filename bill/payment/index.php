@@ -1,7 +1,7 @@
 <?php
 
-//@todo: Äàííûé ğàçäåë /bill/payment/ áîëåå íå èñïîëüçóåòñÿ
-//ñòîÈò âîïğîñ îá åãî óäàëåíèè
+//@todo: Ğ”Ğ°Ğ½Ğ½Ñ‹Ğ¹ Ñ€Ğ°Ğ·Ğ´ĞµĞ» /bill/payment/ Ğ±Ğ¾Ğ»ĞµĞµ Ğ½Ğµ Ğ¸ÑĞ¿Ğ¾Ğ»ÑŒĞ·ÑƒĞµÑ‚ÑÑ
+//ÑÑ‚Ğ¾Ğ˜Ñ‚ Ğ²Ğ¾Ğ¿Ñ€Ğ¾Ñ Ğ¾Ğ± ĞµĞ³Ğ¾ ÑƒĞ´Ğ°Ğ»ĞµĞ½Ğ¸Ğ¸
 
 //$g_page_id    = "0|27";
 //$new_site_css = true;
@@ -17,7 +17,7 @@ if(!get_uid(false)) {
     exit;
 }
 
-//Ğåäèğåêòèì íà èñòîğèş çàêàçîâ
+//Ğ ĞµĞ´Ğ¸Ñ€ĞµĞºÑ‚Ğ¸Ğ¼ Ğ½Ğ° Ğ¸ÑÑ‚Ğ¾Ñ€Ğ¸Ñ Ğ·Ğ°ĞºĞ°Ğ·Ğ¾Ğ²
 header('Location: /bill/history/?period=3'); 
 exit;
 
@@ -48,7 +48,7 @@ $action = __paramInit('string', NULL, 'action');
 if($action == 'payment') {
     $payment_sum = $payed_sum - $bill->acc['sum']; //ceil($payed_sum - $bill->acc['sum']) > 10 ? ceil($payed_sum - $bill->acc['sum']) : ($bill->acc['sum'] > $payed_sum ? 0 : 10);
     
-    if($payment_sum <=0) { // Åñëè õâàòàåò ñğåäñòâ ïîëíîñòüş îïëàòèòü ñ ëè÷íîãî ñ÷åòà
+    if($payment_sum <=0) { // Ğ•ÑĞ»Ğ¸ Ñ…Ğ²Ğ°Ñ‚Ğ°ĞµÑ‚ ÑÑ€ĞµĞ´ÑÑ‚Ğ² Ğ¿Ğ¾Ğ»Ğ½Ğ¾ÑÑ‚ÑŒÑ Ğ¾Ğ¿Ğ»Ğ°Ñ‚Ğ¸Ñ‚ÑŒ Ñ Ğ»Ğ¸Ñ‡Ğ½Ğ¾Ğ³Ğ¾ ÑÑ‡ĞµÑ‚Ğ°
         $bill->transaction = intval($_REQUEST['transaction']);
         $ok = $bill->preparePayments($payed_sum, true);
         if($ok) {
@@ -75,7 +75,7 @@ if ($payed_sum <= 0) {
     exit;
 }
 
-// äåëàåì óâåäîìëåíèÿ ïğî÷èòàííûìè
+// Ğ´ĞµĞ»Ğ°ĞµĞ¼ ÑƒĞ²ĞµĞ´Ğ¾Ğ¼Ğ»ĞµĞ½Ğ¸Ñ Ğ¿Ñ€Ğ¾Ñ‡Ğ¸Ñ‚Ğ°Ğ½Ğ½Ñ‹Ğ¼Ğ¸
 $barNotify = new bar_notify($_SESSION['uid']);
 $barNotify->delNotifies( array('page'=>'bill') );
 

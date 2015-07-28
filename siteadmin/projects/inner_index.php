@@ -32,14 +32,14 @@ $projects = new new_projects();
 if (!$kind) $kind = 5;
 $prjs = $projects->getProjects($num_prjs, $kind, $page);
 ?>
-<strong>Проекты</strong><br><br>
+<strong>РџСЂРѕРµРєС‚С‹</strong><br><br>
 <table width="100%" border="0" cellspacing="2" cellpadding="2">
 <tr valign="bottom" class="qpr">
-	<td align="center" class="qph">Дата</td>
+	<td align="center" class="qph">Р”Р°С‚Р°</td>
 	<td class="qph">
-	<a href=".?kind=1&page=<?=$page?>" style="margin-left:10px;<? if (!$kind||$kind==1) print " text-decoration: underline;"?>">Фри-ланс</a>
-	<a href=".?kind=2&page=<?$page?>" style="margin-left:10px;<? if ($kind == 2) print " text-decoration: underline;"?>">Конкурсы</a>
-	<a href=".?kind=4&page=<?$page?>" style="margin-left:10px;<? if ($kind == 4) print " text-decoration: underline;"?>">В офис</a>
+	<a href=".?kind=1&page=<?=$page?>" style="margin-left:10px;<? if (!$kind||$kind==1) print " text-decoration: underline;"?>">Р¤СЂРё-Р»Р°РЅСЃ</a>
+	<a href=".?kind=2&page=<?$page?>" style="margin-left:10px;<? if ($kind == 2) print " text-decoration: underline;"?>">РљРѕРЅРєСѓСЂСЃС‹</a>
+	<a href=".?kind=4&page=<?$page?>" style="margin-left:10px;<? if ($kind == 4) print " text-decoration: underline;"?>">Р’ РѕС„РёСЃ</a>
 	<td class="qph">&nbsp;</td>
 </tr>
 <?
@@ -53,15 +53,15 @@ if ($prjs) foreach ($prjs as $ikey=>$prj){
 	<br/>
 	id <?=$prj['id']?>
 	</td>
-	<td class="qpr" align="center"><a  href="/public/?step=1&public=<?=$prj['id']?>&red=<?=rawurlencode($_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING'])?>" class="blue" title="<?=$prj['name']?>">Редактировать</a><br>
-	<a href=".?action=delete&prjid=<?=$prj['id']?>&kind=<?=$kind?>" class="blue" title="<?=$prj['name']?>" onclick="return warning(2)">Удалить</a><br>
-	<? if ($prj['anon_id']) { ?><a href=".?kind=<?=$kind?>&action=allow&aid=<?=$prj['anon_id']?>&prjid=<?=$prj['id']?>" class="blue" title="<?=$prj['name']?>"><?=($prj['visible'] == 'f')?"Разрешить":"Запретить"?></a><br><? } ?>
+	<td class="qpr" align="center"><a  href="/public/?step=1&public=<?=$prj['id']?>&red=<?=rawurlencode($_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING'])?>" class="blue" title="<?=$prj['name']?>">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a><br>
+	<a href=".?action=delete&prjid=<?=$prj['id']?>&kind=<?=$kind?>" class="blue" title="<?=$prj['name']?>" onclick="return warning(2)">РЈРґР°Р»РёС‚СЊ</a><br>
+	<? if ($prj['anon_id']) { ?><a href=".?kind=<?=$kind?>&action=allow&aid=<?=$prj['anon_id']?>&prjid=<?=$prj['id']?>" class="blue" title="<?=$prj['name']?>"><?=($prj['visible'] == 'f')?"Р Р°Р·СЂРµС€РёС‚СЊ":"Р—Р°РїСЂРµС‚РёС‚СЊ"?></a><br><? } ?>
 	</td>
 </tr>
 <? } ?>
 </table>
 <div align="right" style="height: 20px;"><table border="0" cellspacing="1" cellpadding="0" class="pgs">
-<tr><? // Страницы
+<tr><? // РЎС‚СЂР°РЅРёС†С‹
 	$pages = ceil($num_prjs / $prjspp);
 	if ($pages > 1){
 		$maxpages = $pages;
@@ -88,7 +88,7 @@ if ($prjs) foreach ($prjs as $ikey=>$prj){
 	<td width="5"><a href=".??kind=<?=$kind?>&page=<?=($pages - 1)?>" class="pages"><?=($pages - 1)?></a></td>
 	<td width="5"><a href=".?kind=<?=$kind?>&page=<?=$pages?>" class="pages"><?=$pages?></a></td>
 	<? }
-	} // Страницы закончились?></tr>
+	} // РЎС‚СЂР°РЅРёС†С‹ Р·Р°РєРѕРЅС‡РёР»РёСЃСЊ?></tr>
 </table></div>
 <? if($action =="edit") { ?>
 <hr width="100%">

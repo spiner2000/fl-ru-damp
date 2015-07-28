@@ -41,13 +41,13 @@ class page_admin_static_pages extends page_base {
         echo json_encode(array("success"=>true, "id"=>$id));
     }
     
-    // сохранение из визивига
+    // СЃРѕС…СЂР°РЅРµРЅРёРµ РёР· РІРёР·РёРІРёРіР°
     function savewysiwygAction() {
         $db = front::og("db"); 
         
         $alias = front::$_req["alias"];
 
-        // проверяем права (могут быть разные для разных страниц)
+        // РїСЂРѕРІРµСЂСЏРµРј РїСЂР°РІР° (РјРѕРіСѓС‚ Р±С‹С‚СЊ СЂР°Р·РЅС‹Рµ РґР»СЏ СЂР°Р·РЅС‹С… СЃС‚СЂР°РЅРёС†)
         switch ($alias) {
             default:
                 $permission = null;

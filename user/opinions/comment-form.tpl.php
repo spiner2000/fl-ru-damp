@@ -13,7 +13,7 @@
 		</table>
 		<!--<div id="error_edit_comm_<?= $op_id; ?>"></div>-->
 		<div class="b-buttons b-buttons_padtop_10">
-			<a id="opinion-comment-form-submit-btn" class="b-button b-button_flat b-button_flat_green" href="javascript:void(0)" onclick="if (!$(this).hasClass('b-button_disable')) {opinionCommentSubmitForm('<?= $op_id; ?>', '<?= $id; ?>', '<?= $from; ?>' <?= $isFeedback ? ', true' : '' ?>)}; return false"><?= ($id ? 'Изменить' : 'Оставить'); ?> комментарий</a>								
-			<a class="b-buttons__link b-buttons__link_dot_0f71c8 b-buttons__link_margleft_10" href="javascript:void(0);" onclick="opinionCheckMaxLengthStop('edit_comm_<?= $op_id; ?>'); opinionCancelForm('<?= $op_id; ?>', '<?= $id; ?>' <?= $isFeedback ? ', true' : '' ?>);">Отменить</a>
+			<a id="opinion-comment-form-submit-btn" class="b-button b-button_flat b-button_flat_green" href="javascript:void(0)" onclick="if (!$(this).hasClass('b-button_disable')) {opinionCommentSubmitForm('<?= $op_id; ?>', '<?= $id; ?>', '<?= $from; ?>' <?= $isFeedback ? ', true' : '' ?>)}; return false"><?= ($id ? 'РР·РјРµРЅРёС‚СЊ' : 'РћСЃС‚Р°РІРёС‚СЊ'); ?> РєРѕРјРјРµРЅС‚Р°СЂРёР№</a>								
+			<a class="b-buttons__link b-buttons__link_dot_0f71c8 b-buttons__link_margleft_10" href="javascript:void(0);" onclick="opinionCheckMaxLengthStop('edit_comm_<?= $op_id; ?>'); opinionCancelForm('<?= $op_id; ?>', '<?= $id; ?>' <?= $isFeedback ? ', true' : '' ?>);">РћС‚РјРµРЅРёС‚СЊ</a>
 		</div>
 </div>

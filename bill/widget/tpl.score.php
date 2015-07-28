@@ -4,8 +4,8 @@
 <script type="text/template" id="bill_invoice_template">
     <a target="_blank" href="{link}" class="b-layout__link b-layout__link_fontsize_13">{name}</a>
     <div class="b-layout__txt b-layout__txt_padleft_10 b-layout__txt_inline-block b-layout__txt_fontsize_11">
-        для пополнения банковским переводом
-        <a class="b-layout__link" href="javascript:void(0);" onclick="xajax_removeBillInvoice({num});">Удалить</a>
+        РґР»СЏ РїРѕРїРѕР»РЅРµРЅРёСЏ Р±Р°РЅРєРѕРІСЃРєРёРј РїРµСЂРµРІРѕРґРѕРј
+        <a class="b-layout__link" href="javascript:void(0);" onclick="xajax_removeBillInvoice({num});">РЈРґР°Р»РёС‚СЊ</a>
     </div>
 </script>   
 <?php
@@ -15,8 +15,8 @@
     <tr class="b-layout__tr">
         <td class="b-layout__td">
             <div class="b-layout b-layout_pad_10 b-layout_bord_e6 b-layout_width_250 b-layout_margbot_20">
-                <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_bold">На счету: <span class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_color_fd6c30"><?= to_money($bill->acc['sum'], 2)?> руб. <?= $bill->acc['bonus_sum'] > 0 ? "(+ ".to_money($bill->acc['bonus_sum'], 2) . " руб.)" : ""?></span></div>
-                <div class="b-layout__txt b-layout__txt_fontsize_11">Номер вашего счета: <?= $bill->acc['id'];?> </div>
+                <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_bold">РќР° СЃС‡РµС‚Сѓ: <span class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_color_fd6c30"><?= to_money($bill->acc['sum'], 2)?> СЂСѓР±. <?= $bill->acc['bonus_sum'] > 0 ? "(+ ".to_money($bill->acc['bonus_sum'], 2) . " СЂСѓР±.)" : ""?></span></div>
+                <div class="b-layout__txt b-layout__txt_fontsize_11">РќРѕРјРµСЂ РІР°С€РµРіРѕ СЃС‡РµС‚Р°: <?= $bill->acc['id'];?> </div>
             </div>
         </td>
         <?php 
@@ -30,15 +30,15 @@
         ?>
             <div id="bill_invoice_create" class="b-layout<?php if($is_billInvoice): ?> b-layout_hide<?php endif; ?>">
                 <a href="javascript:void(0);" data-popup="<?=quickPaymentPopupBillInvoice::getInstance()->getPopupId()?>" class="b-button b-button_flat b-button_flat_green b-button_nowrap">
-                    Сформировать счет на оплату
+                    РЎС„РѕСЂРјРёСЂРѕРІР°С‚СЊ СЃС‡РµС‚ РЅР° РѕРїР»Р°С‚Сѓ
                 </a>
                 <div class="b-layout__txt b-layout__txt_padleft_10 b-layout__txt_inline-block b-layout__txt_fontsize_11">
-                    для пополнения банковским переводом &nbsp;&nbsp;&nbsp;<a class="b-layout__link" href="<?=$fin_url?>">Проверить и изменить реквизиты</a>
+                    РґР»СЏ РїРѕРїРѕР»РЅРµРЅРёСЏ Р±Р°РЅРєРѕРІСЃРєРёРј РїРµСЂРµРІРѕРґРѕРј &nbsp;&nbsp;&nbsp;<a class="b-layout__link" href="<?=$fin_url?>">РџСЂРѕРІРµСЂРёС‚СЊ Рё РёР·РјРµРЅРёС‚СЊ СЂРµРєРІРёР·РёС‚С‹</a>
                 </div>
                 <?php if ($showReserveNotice): ?>
                 <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padtop_10 b-layout__txt_padbot_10">
-                    <strong>Внимание!</strong> В Безопасных сделках не предусмотрено резервирование с личного счета.<br/>
-                    Средства, зачисленные на личный счет, могут быть потрачены только на платные сервисы сайта.
+                    <strong>Р’РЅРёРјР°РЅРёРµ!</strong> Р’ Р‘РµР·РѕРїР°СЃРЅС‹С… СЃРґРµР»РєР°С… РЅРµ РїСЂРµРґСѓСЃРјРѕС‚СЂРµРЅРѕ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ СЃ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р°.<br/>
+                    РЎСЂРµРґСЃС‚РІР°, Р·Р°С‡РёСЃР»РµРЅРЅС‹Рµ РЅР° Р»РёС‡РЅС‹Р№ СЃС‡РµС‚, РјРѕРіСѓС‚ Р±С‹С‚СЊ РїРѕС‚СЂР°С‡РµРЅС‹ С‚РѕР»СЊРєРѕ РЅР° РїР»Р°С‚РЅС‹Рµ СЃРµСЂРІРёСЃС‹ СЃР°Р№С‚Р°.
                 </div>
                 <?php endif; ?>
                 <?=quickPaymentPopupBillInvoice::getInstance()->render();?>
@@ -47,16 +47,16 @@
                 <?php if($is_billInvoice): ?>
                     <a target="_blank" href="<?=WDCPREFIX . '/' . $billInvoice['file']?>" class="b-layout__link b-layout__link_fontsize_13"><?=$billInvoice['name']?></a>
                     <div class="b-layout__txt b-layout__txt_padleft_10 b-layout__txt_inline-block b-layout__txt_fontsize_11">
-                        для пополнения банковским переводом &nbsp;&nbsp;&nbsp;<a  class="b-layout__link" href="javascript:void(0);" onclick="xajax_removeBillInvoice(<?=$billInvoice['invoice_id']?>);">Удалить</a>
+                        РґР»СЏ РїРѕРїРѕР»РЅРµРЅРёСЏ Р±Р°РЅРєРѕРІСЃРєРёРј РїРµСЂРµРІРѕРґРѕРј &nbsp;&nbsp;&nbsp;<a  class="b-layout__link" href="javascript:void(0);" onclick="xajax_removeBillInvoice(<?=$billInvoice['invoice_id']?>);">РЈРґР°Р»РёС‚СЊ</a>
                     </div>
                 <?php endif; ?>
             </div>
             <?php else: ?>
                 <a href="<?=$fin_url?>" class="b-button b-button_flat b-button_flat_green b-button_nowrap">
-                    Заполнить реквизиты
+                    Р—Р°РїРѕР»РЅРёС‚СЊ СЂРµРєРІРёР·РёС‚С‹
                 </a>
                 <div class="b-layout__txt b-layout__txt_padleft_10 b-layout__txt_inline-block b-layout__txt_fontsize_11">
-                    для пополнения банковским переводом
+                    РґР»СЏ РїРѕРїРѕР»РЅРµРЅРёСЏ Р±Р°РЅРєРѕРІСЃРєРёРј РїРµСЂРµРІРѕРґРѕРј
                 </div>
             <?php endif; ?>
         </td>
@@ -67,7 +67,7 @@
                 <a href="javascript:void(0);" 
                    data-popup="<?=quickPaymentPopupAccount::getInstance()->getPopupId()?>" 
                    class="b-button b-button_flat b-button_flat_green b-button_nowrap">
-                    Пополнить счет
+                    РџРѕРїРѕР»РЅРёС‚СЊ СЃС‡РµС‚
                 </a>
         </td>
         <?php endif; ?>

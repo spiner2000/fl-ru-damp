@@ -19,10 +19,10 @@ if($resource) {
                 switch ($_FILES['attachedfiles_file']['error']) {
                     case UPLOAD_ERR_FORM_SIZE:
                     case UPLOAD_ERR_INI_SIZE:
-                        $result['error'] = "Максимальный объем файлов: " . ConvertBtoMB($max_files_size);
+                        $result['error'] = "РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РѕР±СЉРµРј С„Р°Р№Р»РѕРІ: " . ConvertBtoMB($max_files_size);
                         break;
                     default:
-                        $result['error'] = "Ошибка загрузки файла.";
+                        $result['error'] = "РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»Р°.";
                         break;
                 }
             }
@@ -35,17 +35,17 @@ if($resource) {
             break;
         default:
             $result['success'] = false;
-            $result['error']   = 'Ошибка загрузки файла';
+            $result['error']   = 'РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»Р°';
             break;
     }
     
 } else {
     $result['success'] = false;
-    $result['error']   = 'Ошибка загрузки файла';
+    $result['error']   = 'РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»Р°';
 }
 
-//@todo: где встречаются русские символы мы из преобразуем 
-//в unicode последовательности чтобы json_encode не ругался
+//@todo: РіРґРµ РІСЃС‚СЂРµС‡Р°СЋС‚СЃСЏ СЂСѓСЃСЃРєРёРµ СЃРёРјРІРѕР»С‹ РјС‹ РёР· РїСЂРµРѕР±СЂР°Р·СѓРµРј 
+//РІ unicode РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё С‡С‚РѕР±С‹ json_encode РЅРµ СЂСѓРіР°Р»СЃСЏ
 foreach (array('onComplete', 'error') as $key) {
     if (isset($result[$key])) {
         $result[$key] = htmlentities($result[$key], NULL, 'CP1251');

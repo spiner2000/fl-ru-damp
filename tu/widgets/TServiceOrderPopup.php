@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/reserves/ReservesTaxes.php');
 
 /**
  * Class TServiceOrderPopup
- * Виджет показывает попап при заказе ТУ
+ * Р’РёРґР¶РµС‚ РїРѕРєР°Р·С‹РІР°РµС‚ РїРѕРїР°Рї РїСЂРё Р·Р°РєР°Р·Рµ РўРЈ
  */
 
 class TServiceOrderPopup extends CWidget 
@@ -16,7 +16,7 @@ class TServiceOrderPopup extends CWidget
 
         
         /**
-         * Инициализация попапа данными из карточки ТУ
+         * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїРѕРїР°РїР° РґР°РЅРЅС‹РјРё РёР· РєР°СЂС‚РѕС‡РєРё РўРЈ
          * 
          * @param type $data
          */
@@ -30,22 +30,22 @@ class TServiceOrderPopup extends CWidget
 
         
         /**
-         * Метод сразу печатает в поток окошко попапа
-         * см render
+         * РњРµС‚РѕРґ СЃСЂР°Р·Сѓ РїРµС‡Р°С‚Р°РµС‚ РІ РїРѕС‚РѕРє РѕРєРѕС€РєРѕ РїРѕРїР°РїР°
+         * СЃРј render
          * 
          * @return boolean
          */
         public function run() 
         {
-            //Для фрилансера ненужен попап
+            //Р”Р»СЏ С„СЂРёР»Р°РЅСЃРµСЂР° РЅРµРЅСѓР¶РµРЅ РїРѕРїР°Рї
             if($this->is_auth && !$this->is_emp) return false;
             
             $is_emp = $this->is_emp && $this->is_auth;
             $is_allowOrderReserve = tservices_helper::isAllowOrderReserve($this->data['category_id']);
             
-            //Для анонимуса и заказчика показываем соответствующий попап с учетом доступа
+            //Р”Р»СЏ Р°РЅРѕРЅРёРјСѓСЃР° Рё Р·Р°РєР°Р·С‡РёРєР° РїРѕРєР°Р·С‹РІР°РµРј СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ РїРѕРїР°Рї СЃ СѓС‡РµС‚РѕРј РґРѕСЃС‚СѓРїР°
             $sufix = ($is_emp)?'emp':'reg';
-            //Задействуем для этого юзера и категории ТУ новую БС с резервом или нет
+            //Р—Р°РґРµР№СЃС‚РІСѓРµРј РґР»СЏ СЌС‚РѕРіРѕ СЋР·РµСЂР° Рё РєР°С‚РµРіРѕСЂРёРё РўРЈ РЅРѕРІСѓСЋ Р‘РЎ СЃ СЂРµР·РµСЂРІРѕРј РёР»Рё РЅРµС‚
             $sufix .= (($is_allowOrderReserve)?'-reserve':'');
             
             if($is_emp && $is_allowOrderReserve)

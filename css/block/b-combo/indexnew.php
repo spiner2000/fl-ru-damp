@@ -15,18 +15,18 @@
  <?
  require_once $_SERVER["DOCUMENT_ROOT"]."/classes/stdf.php";
  /**
-  * На сайте скрипты professions_js.php и cities_js.php подключены в шаблоне template3.php
+  * РќР° СЃР°Р№С‚Рµ СЃРєСЂРёРїС‚С‹ professions_js.php Рё cities_js.php РїРѕРґРєР»СЋС‡РµРЅС‹ РІ С€Р°Р±Р»РѕРЅРµ template3.php
   * */
  require_once $_SERVER["DOCUMENT_ROOT"]."/professions_js.php";
  require_once $_SERVER["DOCUMENT_ROOT"]."/cities_js.php";
  ?> 
-/*Определение переменной _TOKEN_KEY при использовании инпутов на сайте не нужно, так как
- * она уже определена  
+/*РћРїСЂРµРґРµР»РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ _TOKEN_KEY РїСЂРё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё РёРЅРїСѓС‚РѕРІ РЅР° СЃР°Р№С‚Рµ РЅРµ РЅСѓР¶РЅРѕ, С‚Р°Рє РєР°Рє
+ * РѕРЅР° СѓР¶Рµ РѕРїСЂРµРґРµР»РµРЅР°  
  */
  var _TOKEN_KEY = '<?=$_SESSION['rand']?>';
  
  function getSpec() {
-    //по смене группы специальностей подгружаем специальности в другой список
+    //РїРѕ СЃРјРµРЅРµ РіСЂСѓРїРїС‹ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚РµР№ РїРѕРґРіСЂСѓР¶Р°РµРј СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё РІ РґСЂСѓРіРѕР№ СЃРїРёСЃРѕРє
     var spec = ComboboxManager.getInput("spec");
     var id = $("profgroup_db_id").get("value");    
     if (Number(id)) {
@@ -35,13 +35,13 @@
         spec.show(true);
     }
 }
-//получаем компанию
+//РїРѕР»СѓС‡Р°РµРј РєРѕРјРїР°РЅРёСЋ
 function getCompany() {
     var cb = ComboboxManager.getInput("cu5");
     var id = 164;
     cb.loadRecord(id, "get_user_or_company_info", "type=company");
 }
-//получаем пользователя (для списка пользователи и компании)
+//РїРѕР»СѓС‡Р°РµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (РґР»СЏ СЃРїРёСЃРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»Рё Рё РєРѕРјРїР°РЅРёРё)
 function getUserExample() {
     var cb = ComboboxManager.getInput("cu5");
     var id = 164;
@@ -52,17 +52,17 @@ function getUserExample() {
 </head>
 <body>	
 
-<h3>Пользователи и компании</h3>
+<h3>РџРѕР»СЊР·РѕРІР°С‚РµР»Рё Рё РєРѕРјРїР°РЅРёРё</h3>
 <div class="b-combo">
 	<div class="b-combo__input  b-combo__input_resize b-combo__input_dropdown b-combo__input_width_140 b-combo__input_max-width_350  b-combo__input_arrow-user_yes b_combo__input_request_id_getusersandcompanies">
-		<input id="cu5" class="b-combo__input-text" name="" type="text" size="80" value="" first_section_text ="Пользователи"   second_section_text ="Компании" count_measure_1="человек" count_measure_2="компаний"/>
+		<input id="cu5" class="b-combo__input-text" name="" type="text" size="80" value="" first_section_text ="РџРѕР»СЊР·РѕРІР°С‚РµР»Рё"   second_section_text ="РљРѕРјРїР°РЅРёРё" count_measure_1="С‡РµР»РѕРІРµРє" count_measure_2="РєРѕРјРїР°РЅРёР№"/>
 		<label class="b-combo__label" for="cu5"></label>
 		<span class="b-combo__arrow-user"></span>
 	</div>
 </div>
-<input type="button" value="Получить пользователя" onclick="getUserExample()" />
-<input type="button" value="Получить компанию" onclick="getCompany()" />
-<h3>Группы специальностей</h3>
+<input type="button" value="РџРѕР»СѓС‡РёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ" onclick="getUserExample()" />
+<input type="button" value="РџРѕР»СѓС‡РёС‚СЊ РєРѕРјРїР°РЅРёСЋ" onclick="getCompany()" />
+<h3>Р“СЂСѓРїРїС‹ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚РµР№</h3>
 <div class="b-combo">
 	<div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_init_professionsList b-combo__input_width_150 b-combo__input_arrow_yes b-combo__input_max-width_450">
 		<input id="profgroup" class="b-combo__input-text" name="testname" type="text"  size="80" value=""  onchange="getSpec()" />
@@ -70,7 +70,7 @@ function getUserExample() {
 	</div>
 </div>
  
-<h3>Специальности</h3>
+<h3>РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё</h3>
 <div class="b-combo b-combo_inline-block">
         <div class="b-combo__input b-combo__input_multi_dropdown cut_column_1_form_profgroup_set_parent_1000 b-combo__input_width_245 b-combo__input_resize b-combo__input_arrow_yes b-combo__input_max-width_450">
             <input type="text" id="spec" class="b-combo__input-text b-combo__input-text_fontsize_15" size="80" value="">
@@ -78,7 +78,7 @@ function getUserExample() {
         </div>
 </div>
 
-<h3>Поиск пользователей (авторизуйтесь например как testwork1/123456 на <a href="/" target="_blank">главной</a>)</h3>
+<h3>РџРѕРёСЃРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ (Р°РІС‚РѕСЂРёР·СѓР№С‚РµСЃСЊ РЅР°РїСЂРёРјРµСЂ РєР°Рє testwork1/123456 РЅР° <a href="/" target="_blank">РіР»Р°РІРЅРѕР№</a>)</h3>
 <div class="b-combo">
 <!-- drop_down_not_use_cache -->
 	<div class="b-combo__input  b-combo__input_resize b-combo__input_dropdown b-combo__input_width_140 b-combo__input_max-width_250  b-combo__input_arrow-user_yes b_combo__input_request_id_getuserlistold">
@@ -88,7 +88,7 @@ function getUserExample() {
 	</div>
 </div>
 
-<h3>Поиск пользователей (только фриленсеры)</h3>
+<h3>РџРѕРёСЃРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ (С‚РѕР»СЊРєРѕ С„СЂРёР»РµРЅСЃРµСЂС‹)</h3>
 <div class="b-combo">
 <!-- drop_down_not_use_cache -->
 	<div class="b-combo__input  b-combo__input_resize b-combo__input_dropdown b-combo__input_width_140 b-combo__input_max-width_250  b-combo__input_arrow-user_yes b_combo__input_request_id_getuserlistold get_only_freelancers">
@@ -98,7 +98,7 @@ function getUserExample() {
 	</div>
 </div>
 	
-<h3>Поиск пользователей (только работодатели)</h3>
+<h3>РџРѕРёСЃРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ (С‚РѕР»СЊРєРѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»Рё)</h3>
 <div class="b-combo">
 	<div class="b-combo__input  b-combo__input_resize b-combo__input_dropdown b-combo__input_width_140 b-combo__input_max-width_250  b-combo__input_arrow-user_yes b_combo__input_request_id_getuserlistold get_only_employer">
 		<input id="c52" class="b-combo__input-text" name="" type="text" size="80" value="" />
@@ -107,7 +107,7 @@ function getUserExample() {
 	</div>
 </div>
 
-<h3>Поиск пользователей (только в СБР/контактах)</h3>
+<h3>РџРѕРёСЃРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ (С‚РѕР»СЊРєРѕ РІ РЎР‘Р /РєРѕРЅС‚Р°РєС‚Р°С…)</h3>
 <div class="b-combo">
 	<div class="b-combo__input  b-combo__input_resize b-combo__input_dropdown b-combo__input_width_140 b-combo__input_max-width_250  b-combo__input_arrow-user_yes b_combo__input_request_id_getuserlistold search_in_sbr">
 		<input id="c53" class="b-combo__input-text" name="" type="text" size="80" value="" />
@@ -116,7 +116,7 @@ function getUserExample() {
 	</div>
 </div>	
 
-<h3>Поиск пользователей (только в общем списке)</h3>
+<h3>РџРѕРёСЃРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ (С‚РѕР»СЊРєРѕ РІ РѕР±С‰РµРј СЃРїРёСЃРєРµ)</h3>
 <div class="b-combo">
 	<div class="b-combo__input  b-combo__input_resize b-combo__input_dropdown b-combo__input_width_140 b-combo__input_max-width_250  b-combo__input_arrow-user_yes b_combo__input_request_id_getuserlistold search_in_userlist">
 		<input id="c54" class="b-combo__input-text" name="" type="text" size="80" value="" />
@@ -124,7 +124,7 @@ function getUserExample() {
 		<span class="b-combo__arrow-user"></span>
 	</div>
 </div>	
-<!--h3>Поиск пользователей (sphinx)</h3>
+<!--h3>РџРѕРёСЃРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ (sphinx)</h3>
 <div class="b-combo">
 
 	<div class="b-combo__input  b-combo__input_resize b-combo__input_dropdown b-combo__input_width_140 b-combo__input_max-width_250  b-combo__input_arrow-user_yes b_combo__input_request_id_getuserlist">
@@ -135,7 +135,7 @@ function getUserExample() {
 </div-->
 	
 	
-<h3> Простое поле ввода</h3>
+<h3> РџСЂРѕСЃС‚РѕРµ РїРѕР»Рµ РІРІРѕРґР°</h3>
 <div class="b-combo">
 	<div class="b-combo__input b-combo__input_width_100 b-combo__input_max-width_400 b-combo__input_resize">
 		<input id="c1" class="b-combo__input-text" name="" type="text" size="80" value="" />
@@ -150,9 +150,9 @@ function getUserExample() {
 					};				
 </script>
 
-<h3>Список валют - используем  глобальную переменную javaScript для инициализации</h3>
-<div style="color:#ff0000; font-weight:bold">Внимание! Идентификаторы ввалют в примере на данный момент фейковые, пример предназначен просто для демонстрации.<br>
-Как получить список валют с сервера читайте здесь: http://beta.free-lance.ru/wiki/doku.php?id=code:inputs, раздел 3.2
+<h3>РЎРїРёСЃРѕРє РІР°Р»СЋС‚ - РёСЃРїРѕР»СЊР·СѓРµРј  РіР»РѕР±Р°Р»СЊРЅСѓСЋ РїРµСЂРµРјРµРЅРЅСѓСЋ javaScript РґР»СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё</h3>
+<div style="color:#ff0000; font-weight:bold">Р’РЅРёРјР°РЅРёРµ! РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РІРІР°Р»СЋС‚ РІ РїСЂРёРјРµСЂРµ РЅР° РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ С„РµР№РєРѕРІС‹Рµ, РїСЂРёРјРµСЂ РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅ РїСЂРѕСЃС‚Рѕ РґР»СЏ РґРµРјРѕРЅСЃС‚СЂР°С†РёРё.<br>
+РљР°Рє РїРѕР»СѓС‡РёС‚СЊ СЃРїРёСЃРѕРє РІР°Р»СЋС‚ СЃ СЃРµСЂРІРµСЂР° С‡РёС‚Р°Р№С‚Рµ Р·РґРµСЃСЊ: http://beta.free-lance.ru/wiki/doku.php?id=code:inputs, СЂР°Р·РґРµР» 3.2
 </div>
 <div class="b-combo">
 	<div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_init_currencyList show_all_records b-combo__input_width_150 b-combo__input_resize   b-combo__input_max-width_450 b-combo__input_arrow_yes ">
@@ -161,44 +161,44 @@ function getUserExample() {
 	</div>
 </div>
 
-<h3>Специальности </h3>
+<h3>РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё </h3>
 <div class="b-combo">
 	<div class="b-combo__input b-combo__input_multi_dropdown show_all_records b-combo__input_width_150 b-combo__input_resize  b-combo__input_max-width_450 b-combo__input_arrow_yes  b-combo__input_init_professionsList drop_down_default_-1 multi_drop_down_default_column_1">
-		<input id="c2" class="b-combo__input-text" name="" type="text" size="80" value="QA (тестирование)" />		
+		<input id="c2" class="b-combo__input-text" name="" type="text" size="80" value="QA (С‚РµСЃС‚РёСЂРѕРІР°РЅРёРµ)" />		
 		<span class="b-combo__arrow"></span>
 	</div>
 </div>
 
-<h3>Специальности  - пример очистки поля по нажатию кнопки</h3>
+<h3>РЎРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё  - РїСЂРёРјРµСЂ РѕС‡РёСЃС‚РєРё РїРѕР»СЏ РїРѕ РЅР°Р¶Р°С‚РёСЋ РєРЅРѕРїРєРё</h3>
 <div class="b-combo">
 	<div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_150 show_all_records b-combo__input_resize  b-combo__input_max-width_450 b-combo__input_arrow_yes  b-combo__input_init_professionsList drop_down_default_538 multi_drop_down_default_column_0">
-		<input id="c2_1" class="b-combo__input-text" name="" type="text" size="80" value="Все разделы" />	
+		<input id="c2_1" class="b-combo__input-text" name="" type="text" size="80" value="Р’СЃРµ СЂР°Р·РґРµР»С‹" />	
 		<span class="b-combo__arrow"></span>
 	</div>
 </div>
 
-<input type="button" onclick="ComboboxManager.setDefaultValue('c2_1', 'Все разделы', 0)" value="Clear" />
+<input type="button" onclick="ComboboxManager.setDefaultValue('c2_1', 'Р’СЃРµ СЂР°Р·РґРµР»С‹', 0)" value="Clear" />
 
 <!-- b-combo__input_on_load_request_id_getrelevantcountries-->
-<h3>Страны - новые значения не допустимы (on change)</h3>
+<h3>РЎС‚СЂР°РЅС‹ - РЅРѕРІС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РЅРµ РґРѕРїСѓСЃС‚РёРјС‹ (on change)</h3>
 <div class="b-combo">
-	<div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_150 b-combo__input_resize b-combo__input_arrow_yes  b-combo__input_init_citiesList b-combo__input_on_click_request_id_getcities b-combo__input_max-width_450 all_value_id_0_0_Все+страны all_value_id_1_0_Все+города exclude_value_1_0">
-		<input id="country" class="b-combo__input-text" name="testname" type="text"  size="80" value=""  onchange="alert('вызов onchcnge')" />
+	<div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_150 b-combo__input_resize b-combo__input_arrow_yes  b-combo__input_init_citiesList b-combo__input_on_click_request_id_getcities b-combo__input_max-width_450 all_value_id_0_0_Р’СЃРµ+СЃС‚СЂР°РЅС‹ all_value_id_1_0_Р’СЃРµ+РіРѕСЂРѕРґР° exclude_value_1_0">
+		<input id="country" class="b-combo__input-text" name="testname" type="text"  size="80" value=""  onchange="alert('РІС‹Р·РѕРІ onchcnge')" />
 		<span class="b-combo__arrow"></span>
 	</div>
 </div>
 
 <input type="button" value="testonCh" onclick="$('country').value='777'" />
 
-<h3>Страны -  новые значения  допустимы</h3>
+<h3>РЎС‚СЂР°РЅС‹ -  РЅРѕРІС‹Рµ Р·РЅР°С‡РµРЅРёСЏ  РґРѕРїСѓСЃС‚РёРјС‹</h3>
 <div class="b-combo">
-	<div class="b-combo__input b-combo__input_multi_dropdown allow_create_value_1 b-combo__input_resize b-combo__input_width_150  b-combo__input_arrow_yes b-combo__input_init_citiesList b-combo__input_on_click_request_id_getcities all_value_id_0_0_Все+страны all_value_id_1_0_Все+города drop_down_default_1 multi_drop_down_default_column_0">
-		<input id="countryRelevant" class="b-combo__input-text"  value="Москва" type="text" />
+	<div class="b-combo__input b-combo__input_multi_dropdown allow_create_value_1 b-combo__input_resize b-combo__input_width_150  b-combo__input_arrow_yes b-combo__input_init_citiesList b-combo__input_on_click_request_id_getcities all_value_id_0_0_Р’СЃРµ+СЃС‚СЂР°РЅС‹ all_value_id_1_0_Р’СЃРµ+РіРѕСЂРѕРґР° drop_down_default_1 multi_drop_down_default_column_0">
+		<input id="countryRelevant" class="b-combo__input-text"  value="РњРѕСЃРєРІР°" type="text" />
 		<span class="b-combo__arrow"></span>
 	</div>
 </div>
 
-<h3>Страны -  пункт "Все страны" не выводится</h3>
+<h3>РЎС‚СЂР°РЅС‹ -  РїСѓРЅРєС‚ "Р’СЃРµ СЃС‚СЂР°РЅС‹" РЅРµ РІС‹РІРѕРґРёС‚СЃСЏ</h3>
 <div class="b-combo">
 	<div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_150 b-combo__input_resize b-combo__input_arrow_yes  b-combo__input_init_citiesList b-combo__input_on_click_request_id_getcities b-combo__input_max-width_450 exclude_value_0_0">
 		<input id="country" class="b-combo__input-text" name="" type="text"  size="80" value="" />		
@@ -206,7 +206,7 @@ function getUserExample() {
 	</div>
 </div>
 
-<h3>Страны - пустое значение не допустимо</h3>
+<h3>РЎС‚СЂР°РЅС‹ - РїСѓСЃС‚РѕРµ Р·РЅР°С‡РµРЅРёРµ РЅРµ РґРѕРїСѓСЃС‚РёРјРѕ</h3>
 <div class="b-combo">
 	<div class="b-combo__input allow_create_value_1 b-combo__input_multi_dropdown b-combo__input_width_150 b-combo__input_resize b-combo__input_arrow_yes b-combo__input_init_citiesList b-combo__input_on_click_request_id_getcities b-combo__input_max-width_450  exclude_value_0_0 disallow_null">
 		<input id="country" class="b-combo__input-text" name="" type="text"  size="80" value="" />		
@@ -214,7 +214,7 @@ function getUserExample() {
 	</div>
 </div>
 
-<h3>Проверка трех колонок</h3>
+<h3>РџСЂРѕРІРµСЂРєР° С‚СЂРµС… РєРѕР»РѕРЅРѕРє</h3>
 <div class="b-combo">
 	<div class="b-combo__input b-combo__input_multi_dropdown b-combo__input_width_150 b-combo__input_resize b-combo__input_max-width_450 b-combo__input_arrow_yes  b-combo__input_init_threeData use_scroll">
 		<input id="c12" class="b-combo__input-text" name="" type="text" size="80" value="" />		
@@ -225,16 +225,16 @@ function getUserExample() {
 
 
 <!-- use_past_date -->
-<h3>Календарь без возможности выбора прошедшей даты </h3>
+<h3>РљР°Р»РµРЅРґР°СЂСЊ Р±РµР· РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РІС‹Р±РѕСЂР° РїСЂРѕС€РµРґС€РµР№ РґР°С‚С‹ </h3>
 <div class="b-combo">
 	<div class="b-combo__input  b-combo__input_calendar b-combo__input_error date_min_limit_2012_05_11 b-combo__input_width_140 b-combo__input_max-width_140   date_format_use_text no_set_date_on_load">
-		<input id="c3" class="b-combo__input-text" name="frr" type="text" size="80" value="11 мая 2019" />
+		<input id="c3" class="b-combo__input-text" name="frr" type="text" size="80" value="11 РјР°СЏ 2019" />
 		<label class="b-combo__label" for="c3"></label>
 		<span class="b-combo__arrow-date"></span>
 	</div>
 </div>
 
-<h3>Календарь с возможностью выбора прошедшей даты  (class="... use_past_date ...") и недопустимостью ввода пустого значения (при пустом значениии подставляется текущая дата) </h3>
+<h3>РљР°Р»РµРЅРґР°СЂСЊ СЃ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊСЋ РІС‹Р±РѕСЂР° РїСЂРѕС€РµРґС€РµР№ РґР°С‚С‹  (class="... use_past_date ...") Рё РЅРµРґРѕРїСѓСЃС‚РёРјРѕСЃС‚СЊСЋ РІРІРѕРґР° РїСѓСЃС‚РѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ (РїСЂРё РїСѓСЃС‚РѕРј Р·РЅР°С‡РµРЅРёРёРё РїРѕРґСЃС‚Р°РІР»СЏРµС‚СЃСЏ С‚РµРєСѓС‰Р°СЏ РґР°С‚Р°) </h3>
 <div class="b-combo">
 	<div class="b-combo__input b-combo__input_calendar b-combo__input_width_140 b-combo__input_max-width_140 use_past_date date_format_use_text no_set_date_on_load disallow_null set_current_date_on_null">
 		<input id="c223" class="b-combo__input-text" name="fr2r" type="text" size="80" value="13.05.2012" />

@@ -1,6 +1,6 @@
 <?php
 /**
- * Шаблон поумолчанию popup-окна "быстрой" оплаты
+ * РЁР°Р±Р»РѕРЅ РїРѕСѓРјРѕР»С‡Р°РЅРёСЋ popup-РѕРєРЅР° "Р±С‹СЃС‚СЂРѕР№" РѕРїР»Р°С‚С‹
  */
 ?>
 <div id="<?=@$popup_id?>" data-quick-payment="<?=$unic_name?>" class="b-shadow b-shadow_block b-shadow_center b-shadow_width_520 <?=(!@$is_show)?'b-shadow_hide':'' ?> b-shadow__quick">
@@ -19,19 +19,19 @@
             </form>
 
             <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_10">
-                Параметры покупки
+                РџР°СЂР°РјРµС‚СЂС‹ РїРѕРєСѓРїРєРё
             </div>
             <div class="b-layout__txt b-layout__txt_padleft_20 b-layout__txt_bold">
-                Количество автоответов — <span class="b-layout__txt b-layout__txt_color_6db335" id="quickar_total"></span>
+                РљРѕР»РёС‡РµСЃС‚РІРѕ Р°РІС‚РѕРѕС‚РІРµС‚РѕРІ вЂ” <span class="b-layout__txt b-layout__txt_color_6db335" id="quickar_total"></span>
             </div>
             <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_10 b-layout__txt_padtop_20">
-                Критерии выбора проектов
+                РљСЂРёС‚РµСЂРёРё РІС‹Р±РѕСЂР° РїСЂРѕРµРєС‚РѕРІ
             </div>
             <div class="b-layout__txt b-layout__txt_padleft_20 b-layout__txt_bold">
-                Бюджет от — <span class="b-layout__txt b-layout__txt_color_6db335" id="quickar_budget">не указан</span>
+                Р‘СЋРґР¶РµС‚ РѕС‚ вЂ” <span class="b-layout__txt b-layout__txt_color_6db335" id="quickar_budget">РЅРµ СѓРєР°Р·Р°РЅ</span>
             </div>
             <div class="b-layout__txt b-layout__txt_padleft_20 b-layout__txt_padbot_20 b-layout__txt_bold">
-                Специализация — <span class="b-layout__txt b-layout__txt_color_6db335" id="quickar_category">Все специализации</span>
+                РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ вЂ” <span class="b-layout__txt b-layout__txt_color_6db335" id="quickar_category">Р’СЃРµ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё</span>
             </div>
 
             <div data-quick-payment-error-screen="true" class="b-fon b-fon_margbot_20 b-fon_marglr_20 b-layout_hide">
@@ -44,15 +44,15 @@
             <?=$promo_code?>
             
             <div class="b-layout__txt b-layout__txt_padleft_20 b-layout__txt_fontsize_11">
-                Сумма к оплате: <span id="quick_ar_sum_pay"></span> руб.<br/>
+                РЎСѓРјРјР° Рє РѕРїР»Р°С‚Рµ: <span id="quick_ar_sum_pay"></span> СЂСѓР±.<br/>
             </div>
             <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_padleft_20 b-layout__txt_fontsize_11">
-                <span id="pay_none">Она будет списана с личного счета, на нем <strong id="ac_sum"><?=$ac_sum?></strong> руб.</span>
+                <span id="pay_none">РћРЅР° Р±СѓРґРµС‚ СЃРїРёСЃР°РЅР° СЃ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р°, РЅР° РЅРµРј <strong id="ac_sum"><?=$ac_sum?></strong> СЂСѓР±.</span>
                 <span id="pay_part">
-                    Часть суммы (<?=$ac_sum?> руб.) есть на Вашем личном счете.<br />
-                    Остаток (<span id="quick_pro_sum_part"></span> руб.) вам нужно оплатить одним из способов:
+                    Р§Р°СЃС‚СЊ СЃСѓРјРјС‹ (<?=$ac_sum?> СЂСѓР±.) РµСЃС‚СЊ РЅР° Р’Р°С€РµРј Р»РёС‡РЅРѕРј СЃС‡РµС‚Рµ.<br />
+                    РћСЃС‚Р°С‚РѕРє (<span id="quick_pro_sum_part"></span> СЂСѓР±.) РІР°Рј РЅСѓР¶РЅРѕ РѕРїР»Р°С‚РёС‚СЊ РѕРґРЅРёРј РёР· СЃРїРѕСЃРѕР±РѕРІ:
                 </span>
-                <span id="pay_full">Ее вы можете оплатить одним из способов:</span>
+                <span id="pay_full">Р•Рµ РІС‹ РјРѕР¶РµС‚Рµ РѕРїР»Р°С‚РёС‚СЊ РѕРґРЅРёРј РёР· СЃРїРѕСЃРѕР±РѕРІ:</span>
             </div>
 <?php
             if(!empty($payments)):
@@ -92,7 +92,7 @@
                     <a id="quick_pro_block_2_btn" 
                        class="b-button b-button_flat b-button_flat_green" 
                        href="javascript:void(0);" 
-                       data-quick-payment-type="<?=$payment_account?>">Оплатить <span id="quick_ar_sum_pay_acc"></span> руб.</a> </div>
+                       data-quick-payment-type="<?=$payment_account?>">РћРїР»Р°С‚РёС‚СЊ <span id="quick_ar_sum_pay_acc"></span> СЂСѓР±.</a> </div>
             </div>
             
         </div>

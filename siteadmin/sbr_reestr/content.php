@@ -1,7 +1,7 @@
 <?php if ( !defined('IS_SITE_ADMIN') ) { header('Location: /404.php'); exit; }
 ?>
 
-<h2 class="b-layout__title b-layout__title_padbot_20">Реестры для 1С</h3>
+<h2 class="b-layout__title b-layout__title_padbot_20">Р РµРµСЃС‚СЂС‹ РґР»СЏ 1РЎ</h3>
 
 <?php require_once ('form_date.php');?>
 

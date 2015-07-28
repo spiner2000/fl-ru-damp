@@ -1,9 +1,9 @@
 <?php if(is_array($files_attache) && count($files_attache)) foreach($files_attache as $file){?>
-<li id="file_<?= (int)$file->id?>" <?if(intval($file->id) == 0) echo "style='background-color:#ffcece'"; // !!!todo Âûíåñòè â CSS (skif)?>>
+<li id="file_<?= (int)$file->id?>" <?if(intval($file->id) == 0) echo "style='background-color:#ffcece'"; // !!!todo Ð’Ñ‹Ð½ÐµÑÑ‚Ð¸ Ð² CSS (skif)?>>
 <?php if(intval($file->id) == 0) { ?>
     <strike>
 <?php } else { ?>
-    <a href="javascript:void(0)" onclick="if(confirm('Âû äåéñòâèòåëüíî õîòèòå óäàëèòü âûáðàííûé ôàéë?')) xajax_DeleteEditFile(<?= (int)$file->id;?>)" title="Óäàëèòü"><img src="/images/btn-remove2.png" alt="Óäàëèòü"></a>
+    <a href="javascript:void(0)" onclick="if(confirm('Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ñ‹Ð¹ Ñ„Ð°Ð¹Ð»?')) xajax_DeleteEditFile(<?= (int)$file->id;?>)" title="Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ"><img src="/images/btn-remove2.png" alt="Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ"></a>
 <?php } // if?>
     <a href="javascript:void(0)" title="<?= trim($file->original_name);?>" class="mime <?= $file->getext($file->original_name);?>"><?= CutFileName(trim($file->original_name), 60, " ... ");?></a>
     <?= intval($file->id) == 0?"</strike>":"";?>

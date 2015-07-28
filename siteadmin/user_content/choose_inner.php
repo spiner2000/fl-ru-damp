@@ -1,6 +1,6 @@
 <?php
 /**
- * Модерирование пользовательского контента. Потоки. Шаблон.
+ * РњРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РєРѕРЅС‚РµРЅС‚Р°. РџРѕС‚РѕРєРё. РЁР°Р±Р»РѕРЅ.
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
@@ -9,7 +9,7 @@ require_once( $_SERVER['DOCUMENT_ROOT'] . '/xajax/user_content.common.php' );
 $xajax->printJavascript( '/xajax/' );
 ?>
 
-<h2 class="b-layout__title b-layout__title_padbot_30">Потоки на текущее время</h2>
+<h2 class="b-layout__title b-layout__title_padbot_30">РџРѕС‚РѕРєРё РЅР° С‚РµРєСѓС‰РµРµ РІСЂРµРјСЏ</h2>
 
 <?php 
 
@@ -21,7 +21,7 @@ if ( $aStreams ) {
 <div class="b-buttons_padbot_20 my_contents" id="contents_<?=$sId?>">
     <div class="b-post__txt">
             <img class="b-post__pic b-post__pic_margright_10 b-post__pic_float_left" src="/images/loading-white.gif" alt="">
-            Загрузка
+            Р—Р°РіСЂСѓР·РєР°
     </div>
 </div>
     <?php
@@ -42,7 +42,7 @@ window.addEvent('domready', function() {
 else {
     
 ?>
-Нет потоков
+РќРµС‚ РїРѕС‚РѕРєРѕРІ
 <?php
 
 }

@@ -25,10 +25,10 @@ function suspResolve( action, uid ) {
     var confirmMsg = '';
     
     if ( action == 'activate' || action == 'hide' ) {
-        confirmMsg = 'Вы действительно хотите разрешить такие логин, имя и фамилию?';
+        confirmMsg = 'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СЂР°Р·СЂРµС€РёС‚СЊ С‚Р°РєРёРµ Р»РѕРіРёРЅ, РёРјСЏ Рё С„Р°РјРёР»РёСЋ?';
     }
     else {
-        confirmMsg = 'Вы действительно хотите забанить пользователя?';
+        confirmMsg = 'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ Р·Р°Р±Р°РЅРёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ?';
     }
     
     if ( confirm(confirmMsg) ) {
@@ -67,33 +67,33 @@ window.addEvent('load', function() {
 </script>
 
 <div class="ban-razban" style="position:relative">
-	<h3>Модерирование \ Подозрительные пользователи</h3>
+	<h3>РњРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ \ РџРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё</h3>
 	<?php if($error_string) print(view_error($error_string))."<br/>"; ?>
-    <strong>1. Список слов для проверки логина</strong>
-	<p>(Добавте слова через запятую или удалите)</p>
+    <strong>1. РЎРїРёСЃРѕРє СЃР»РѕРІ РґР»СЏ РїСЂРѕРІРµСЂРєРё Р»РѕРіРёРЅР°</strong>
+	<p>(Р”РѕР±Р°РІС‚Рµ СЃР»РѕРІР° С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ РёР»Рё СѓРґР°Р»РёС‚Рµ)</p>
 	<br/>
 	<form method="POST">
 	<input type="hidden" name="action" value="save_words">
 	<input type="hidden" name="type" value="1">
 	<textarea name="suspicious_words" style="width:600px" rows="10"><?= $sword?implode(", ",$sword):""?></textarea>
 	<br/><br/>
-	<input type="submit" name="save_words" value="Сохранить">
+	<input type="submit" name="save_words" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 	</form>
 	<br/><br/>
-	<strong>2. Список слов для проверки имени и фамилии</strong>
-	<p>(Добавте слова через запятую или удалите)</p>
+	<strong>2. РЎРїРёСЃРѕРє СЃР»РѕРІ РґР»СЏ РїСЂРѕРІРµСЂРєРё РёРјРµРЅРё Рё С„Р°РјРёР»РёРё</strong>
+	<p>(Р”РѕР±Р°РІС‚Рµ СЃР»РѕРІР° С‡РµСЂРµР· Р·Р°РїСЏС‚СѓСЋ РёР»Рё СѓРґР°Р»РёС‚Рµ)</p>
 	<br/>
 	<form method="POST">
 	<input type="hidden" name="action" value="save_words">
 	<input type="hidden" name="type" value="2">
 	<textarea name="suspicious_words" style="width:600px" rows="10"><?= $nword?implode(", ",$nword):""?></textarea>
 	<br/><br/>
-	<input type="submit" name="save_words" value="Сохранить">
+	<input type="submit" name="save_words" value="РЎРѕС…СЂР°РЅРёС‚СЊ">
 	</form>
 	<br/><br/>
 	
     <?php if ( $words_login ) { ?>
-    <strong>Слова в логине:</strong>
+    <strong>РЎР»РѕРІР° РІ Р»РѕРіРёРЅРµ:</strong>
     <p>
         <?
         $n=1;
@@ -107,7 +107,7 @@ window.addEvent('load', function() {
     <br/>
     <? } ?>
     <?php if ( $words_name ) { ?>
-    <strong>Слова в имени и фамилии:</strong>
+    <strong>РЎР»РѕРІР° РІ РёРјРµРЅРё Рё С„Р°РјРёР»РёРё:</strong>
     <p>
         <?
         $n=1;
@@ -122,13 +122,13 @@ window.addEvent('load', function() {
     <? } ?>
     <br/>
     
-    <? /*[<a href="?action=reset" onClick="if(confirm('Вы действительно хотите перепроверить всех подозрительных пользователей?')) { return true; } else { return false; }">Перепроверить всех подозрительных пользователей</a>]
+    <? /*[<a href="?action=reset" onClick="if(confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ РїРµСЂРµРїСЂРѕРІРµСЂРёС‚СЊ РІСЃРµС… РїРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№?')) { return true; } else { return false; }">РџРµСЂРµРїСЂРѕРІРµСЂРёС‚СЊ РІСЃРµС… РїРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№</a>]
     <br/><br/> */ ?>
 
 	<? if ( $mRid && pg_num_rows($mRid) ) { ?>
 	
 
-        [<a href="?action=clear" onClick="if(confirm('Вы действительно хотите разрешить всех пользователей из списка подозрительных?')) { return true; } else { return false; }">Разрешить всех</a>]
+        [<a href="?action=clear" onClick="if(confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СЂР°Р·СЂРµС€РёС‚СЊ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РёР· СЃРїРёСЃРєР° РїРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹С…?')) { return true; } else { return false; }">Р Р°Р·СЂРµС€РёС‚СЊ РІСЃРµС…</a>]
         <br/><br/>
         
         <?php while ( $user = pg_fetch_assoc($mRid) ) {
@@ -141,7 +141,7 @@ window.addEvent('load', function() {
             $sAppAction = ( $user['activate'] == 't' ) ? 'activate'   : 'hide'; 
             $sRejAction = ( $user['is_banned'] && !$user['ban_where'] ) ? 'ban' : 'userban';            
             ?>
-            [<a href="javascript:void(0);" onClick="return suspResolve('<?=$sAppAction?>', '<?=$user['uid']?>');">Разрешить</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onClick="return suspResolve('<?=$sRejAction?>', '<?=$user['uid']?>');">Забанить</a>]&nbsp;&nbsp;<span class="frlname11">
+            [<a href="javascript:void(0);" onClick="return suspResolve('<?=$sAppAction?>', '<?=$user['uid']?>');">Р Р°Р·СЂРµС€РёС‚СЊ</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onClick="return suspResolve('<?=$sRejAction?>', '<?=$user['uid']?>');">Р—Р°Р±Р°РЅРёС‚СЊ</a>]&nbsp;&nbsp;<span class="frlname11">
             <img class="sus_avatar" alt="<?=$user['login'] ?>" src="<?=$avatar ?>" style="width:32px; height:32px;" />
             &nbsp;<a class="frlname11" href="/users/<?=$user['login']?>/" title="<?=$user['uname']?> <?=$user['usurname']?>"><?=$user['uname']?> <?=$user['usurname']?></a> [<a class="frlname11" href="/users/<?=$user['login']?>/" title="<?=$user['login']?>"><?=$user['login']?></a>]</span><br>
             </div>
@@ -172,7 +172,7 @@ window.addEvent('load', function() {
 	<? } else { ?>
 
 	<div class="m-so c">
-		<h4>Подозрительных пользователей нет</h4>
+		<h4>РџРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РЅРµС‚</h4>
 	</div>
 
 	<? } ?>

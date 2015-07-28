@@ -13,7 +13,7 @@ class ReservesAdminController extends CController
     const DETAILS_URL = "/siteadmin/reserves/?action=details&num=%d";
     
     /**
-     * Инициализация контроллера
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РєРѕРЅС‚СЂРѕР»Р»РµСЂР°
      */
     public function init($action) 
     {
@@ -29,7 +29,7 @@ class ReservesAdminController extends CController
 
 
     /**
-     * Обработка события до какого-либо экшена
+     * РћР±СЂР°Р±РѕС‚РєР° СЃРѕР±С‹С‚РёСЏ РґРѕ РєР°РєРѕРіРѕ-Р»РёР±Рѕ СЌРєС€РµРЅР°
      * 
      * @param string $action
      * @return bool
@@ -100,7 +100,7 @@ class ReservesAdminController extends CController
    }
 
       /**
-    * Список подозрительный сделок
+    * РЎРїРёСЃРѕРє РїРѕРґРѕР·СЂРёС‚РµР»СЊРЅС‹Р№ СЃРґРµР»РѕРє
     */ 
    public function actionFrod()
    {
@@ -124,7 +124,7 @@ class ReservesAdminController extends CController
    
 
    /**
-    * Подробная инфо о БС
+    * РџРѕРґСЂРѕР±РЅР°СЏ РёРЅС„Рѕ Рѕ Р‘РЎ
     */ 
    public function actionDetails()
    {
@@ -188,7 +188,7 @@ class ReservesAdminController extends CController
                        $data = array();
                        $datereqv_complete = __paramInit('string', NULL, 'file_date', null);
 
-                       //@todo: если будет ряд данных на изменения то подумать как сделать лучше
+                       //@todo: РµСЃР»Рё Р±СѓРґРµС‚ СЂСЏРґ РґР°РЅРЅС‹С… РЅР° РёР·РјРµРЅРµРЅРёСЏ С‚Рѕ РїРѕРґСѓРјР°С‚СЊ РєР°Рє СЃРґРµР»Р°С‚СЊ Р»СѓС‡С€Рµ
                        if ($datereqv_complete) {
                            $datereqv_complete = date_text($datereqv_complete,'j');
                            $data['datereqv_complete'] = $datereqv_complete;
@@ -223,7 +223,7 @@ class ReservesAdminController extends CController
    
    
    /**
-    * Список БС
+    * РЎРїРёСЃРѕРє Р‘РЎ
     */
    public function actionIndex() 
    {
@@ -258,7 +258,7 @@ class ReservesAdminController extends CController
     
     
     /**
-     * Реестры
+     * Р РµРµСЃС‚СЂС‹
      */
     public function actionReestr()
     {
@@ -272,8 +272,8 @@ class ReservesAdminController extends CController
         if (isset($_GET) && sizeof($_GET) > 0 && $form->isValid($_GET)) {
             $data = $form->getValues();
             
-            //Пока календарь в некоторых случаях выдает дату в формате "15 апреля 2014"
-            //Заменяем на стабильное значение
+            //РџРѕРєР° РєР°Р»РµРЅРґР°СЂСЊ РІ РЅРµРєРѕС‚РѕСЂС‹С… СЃР»СѓС‡Р°СЏС… РІС‹РґР°РµС‚ РґР°С‚Сѓ РІ С„РѕСЂРјР°С‚Рµ "15 Р°РїСЂРµР»СЏ 2014"
+            //Р—Р°РјРµРЅСЏРµРј РЅР° СЃС‚Р°Р±РёР»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
             $data['date_start'] = __paramInit('string', 'date_start_eng_format');
             $data['date_end'] = __paramInit('string', 'date_end_eng_format');
             

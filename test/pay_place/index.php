@@ -14,15 +14,15 @@ if(isset($_GET['user'])) {
 	$uid = $usr->GetUid($error, pg_escape_string($_GET['user']));
 	
 	if($uid == null) {
-		echo "Äàííîãî þçåðà íå ñóùåñòâóåò"; 
+		echo "Ð”Ð°Ð½Ð½Ð¾Ð³Ð¾ ÑŽÐ·ÐµÑ€Ð° Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚"; 
 		die();
 	}
 	//$role = $usr->GetRole(pg_escape_string($_GET['user']), $error);
 	
 	$r = $pp->addUser($uid);
-	if(!$r) { echo "Îøèáêà"; die(); }
+	if(!$r) { echo "ÐžÑˆÐ¸Ð±ÐºÐ°"; die(); }
 	
-	echo "Âû áóäåòå ïîêàçàíû ÷åðåç ".$pp->getTimeShow()." ìèí";
+	echo "Ð’Ñ‹ Ð±ÑƒÐ´ÐµÑ‚Ðµ Ð¿Ð¾ÐºÐ°Ð·Ð°Ð½Ñ‹ Ñ‡ÐµÑ€ÐµÐ· ".$pp->getTimeShow()." Ð¼Ð¸Ð½";
 }
 
 

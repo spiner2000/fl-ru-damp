@@ -1,12 +1,12 @@
 <?php
 /**
- * Действия админов
- *     - Лента всех действий
- *     - Нарушители (бан и предупреждения)
- *     - Проекты и конкурсы
- *     - Предложения
- *     - Все модераторы
- *     - Уведомления
+ * Р”РµР№СЃС‚РІРёСЏ Р°РґРјРёРЅРѕРІ
+ *     - Р›РµРЅС‚Р° РІСЃРµС… РґРµР№СЃС‚РІРёР№
+ *     - РќР°СЂСѓС€РёС‚РµР»Рё (Р±Р°РЅ Рё РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёСЏ)
+ *     - РџСЂРѕРµРєС‚С‹ Рё РєРѕРЅРєСѓСЂСЃС‹
+ *     - РџСЂРµРґР»РѕР¶РµРЅРёСЏ
+ *     - Р’СЃРµ РјРѕРґРµСЂР°С‚РѕСЂС‹
+ *     - РЈРІРµРґРѕРјР»РµРЅРёСЏ
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
@@ -30,9 +30,9 @@ if ( !isset($aPermissions) ) {
 }
 
 if ( 
-    !admin_log::isAllowed( 'adm', $aPermissions ) // право "Доступ в админку"
-    || !in_array( $site, admin_log::$mode_allow ) // существующий раздел
-    || !admin_log::isAllowed( admin_log::$mode_permissions[$site], $aPermissions )  // право на конкретный раздел
+    !admin_log::isAllowed( 'adm', $aPermissions ) // РїСЂР°РІРѕ "Р”РѕСЃС‚СѓРї РІ Р°РґРјРёРЅРєСѓ"
+    || !in_array( $site, admin_log::$mode_allow ) // СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ СЂР°Р·РґРµР»
+    || !admin_log::isAllowed( admin_log::$mode_permissions[$site], $aPermissions )  // РїСЂР°РІРѕ РЅР° РєРѕРЅРєСЂРµС‚РЅС‹Р№ СЂР°Р·РґРµР»
 ) {
     header_location_exit( '/404.php' );
 }
@@ -100,18 +100,18 @@ if ( $sLogId ) {
 $aDays   = range( 1, 31 );
 $aYears  = array_reverse( range(2007, date('Y')) );
 $aMounth = array(
-    '01' => "Января", 
-    '02' => "Февраля", 
-    '03' => "Марта", 
-    '04' => "Апреля", 
-    '05' => "Мая", 
-    '06' => "Июня", 
-    '07' => "Июля", 
-    '08' => "Августа", 
-    '09' => "Сентября", 
-    '10' => "Октября", 
-    '11' => "Ноября", 
-    '12' => "Декабря"
+    '01' => "РЇРЅРІР°СЂСЏ", 
+    '02' => "Р¤РµРІСЂР°Р»СЏ", 
+    '03' => "РњР°СЂС‚Р°", 
+    '04' => "РђРїСЂРµР»СЏ", 
+    '05' => "РњР°СЏ", 
+    '06' => "РСЋРЅСЏ", 
+    '07' => "РСЋР»СЏ", 
+    '08' => "РђРІРіСѓСЃС‚Р°", 
+    '09' => "РЎРµРЅС‚СЏР±СЂСЏ", 
+    '10' => "РћРєС‚СЏР±СЂСЏ", 
+    '11' => "РќРѕСЏР±СЂСЏ", 
+    '12' => "Р”РµРєР°Р±СЂСЏ"
 );
 $shifts = user_content::getShifts();
 // admin_actions.id
@@ -119,7 +119,7 @@ $aRed    = array( 3, 5, 7, 9, 11, 13, 15, 18, 22, 24, 27, 29, 31 );
 $aYellow = array( 1 );
 $aGreen  = array( 2, 4, 6, 8, 10, 12, 14, 16, 17, 19, 23, 25, 28, 30, 32 );
 
-// Ключи - admin_actions.obj_code
+// РљР»СЋС‡Рё - admin_actions.obj_code
 $aClass = array(
     admin_log::OBJ_CODE_USER => 'color-666666',
     admin_log::OBJ_CODE_BLOG => 'color-45a300',
@@ -128,7 +128,7 @@ $aClass = array(
     admin_log::OBJ_CODE_ART  => ''
 );
 
-// причина действия содержит другие данные
+// РїСЂРёС‡РёРЅР° РґРµР№СЃС‚РІРёСЏ СЃРѕРґРµСЂР¶РёС‚ РґСЂСѓРіРёРµ РґР°РЅРЅС‹Рµ
 $aReasonData = array(
     admin_log::ACT_ID_BLOG_CH_GR, 
     admin_log::ACT_ID_PRJ_CH_SPEC, 
@@ -139,7 +139,7 @@ $aReasonData = array(
     admin_log::ACT_ID_USR_CH_RATING 
 );
 
-// в ленте показывать атора объекта для следующих действий admin_actions.id 
+// РІ Р»РµРЅС‚Рµ РїРѕРєР°Р·С‹РІР°С‚СЊ Р°С‚РѕСЂР° РѕР±СЉРµРєС‚Р° РґР»СЏ СЃР»РµРґСѓСЋС‰РёС… РґРµР№СЃС‚РІРёР№ admin_actions.id 
 $aLogShowAuthor = array(
     admin_log::ACT_ID_PRJ_BLOCK_OFFER, 
     admin_log::ACT_ID_PRJ_UNBLOCK_OFFER, 

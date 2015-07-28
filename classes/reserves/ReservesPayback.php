@@ -18,7 +18,7 @@ class ReservesPayback extends BaseModel
     
     protected static $instance;
     
-    const PAYBACK_CAUSE     = 'Возврат средств по %s решением арбитража.';
+    const PAYBACK_CAUSE     = 'Р’РѕР·РІСЂР°С‚ СЃСЂРµРґСЃС‚РІ РїРѕ %s СЂРµС€РµРЅРёРµРј Р°СЂР±РёС‚СЂР°Р¶Р°.';
     
             
     const STATUS_NEW        = -1;
@@ -39,7 +39,7 @@ class ReservesPayback extends BaseModel
     
     
     /**
-     * Приведение статуса сервиса к статусу системы
+     * РџСЂРёРІРµРґРµРЅРёРµ СЃС‚Р°С‚СѓСЃР° СЃРµСЂРІРёСЃР° Рє СЃС‚Р°С‚СѓСЃСѓ СЃРёСЃС‚РµРјС‹
      * 
      * @var array 
      */
@@ -101,7 +101,7 @@ class ReservesPayback extends BaseModel
     
     
     /**
-     * Вызвать запрос к сервису на возврат средств
+     * Р’С‹Р·РІР°С‚СЊ Р·Р°РїСЂРѕСЃ Рє СЃРµСЂРІРёСЃСѓ РЅР° РІРѕР·РІСЂР°С‚ СЃСЂРµРґСЃС‚РІ
      * 
      * @param int $reserve_id
      * @return boolean
@@ -115,24 +115,24 @@ class ReservesPayback extends BaseModel
             WHERE reserve_id = ?i
         ",$reserve_id);
         
-        //Если запроса не существует    
+        //Р•СЃР»Рё Р·Р°РїСЂРѕСЃР° РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚    
         if(!$paybackData) 
             throw new ReservesPaybackException(ReservesPaybackException::PAYBACK_NOTFOUND);
         
-        //Если запрос уже успешно обработан
-        //(урал так как если вдруг неполучится сменить статус резерва возврата а возврат пройдет то можно повторить)
+        //Р•СЃР»Рё Р·Р°РїСЂРѕСЃ СѓР¶Рµ СѓСЃРїРµС€РЅРѕ РѕР±СЂР°Р±РѕС‚Р°РЅ
+        //(СѓСЂР°Р» С‚Р°Рє РєР°Рє РµСЃР»Рё РІРґСЂСѓРі РЅРµРїРѕР»СѓС‡РёС‚СЃСЏ СЃРјРµРЅРёС‚СЊ СЃС‚Р°С‚СѓСЃ СЂРµР·РµСЂРІР° РІРѕР·РІСЂР°С‚Р° Р° РІРѕР·РІСЂР°С‚ РїСЂРѕР№РґРµС‚ С‚Рѕ РјРѕР¶РЅРѕ РїРѕРІС‚РѕСЂРёС‚СЊ)
         //if($paybackData['status'] == self::STATUS_SUCCESS)
         //    throw new ReservesPaybackException(ReservesPaybackException::ALREADY_PAYBACK_MSG);
         
         $is_timeout = $this->isTimeout($paybackData['cnt'], $paybackData['last']);
-        //Таймаут еще не вышел нужно поставить в очередь
+        //РўР°Р№РјР°СѓС‚ РµС‰Рµ РЅРµ РІС‹С€РµР» РЅСѓР¶РЅРѕ РїРѕСЃС‚Р°РІРёС‚СЊ РІ РѕС‡РµСЂРµРґСЊ
         if(!$is_timeout) return false;
         
-        //Превышен лимит прерываем цикл для этого запроса
+        //РџСЂРµРІС‹С€РµРЅ Р»РёРјРёС‚ РїСЂРµСЂС‹РІР°РµРј С†РёРєР» РґР»СЏ СЌС‚РѕРіРѕ Р·Р°РїСЂРѕСЃР°
         if($is_timeout === -1) 
             throw new ReservesPaybackException(ReservesPaybackException::REQUEST_LIMIT);
         
-        //Если не существует самого резерва
+        //Р•СЃР»Рё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚ СЃР°РјРѕРіРѕ СЂРµР·РµСЂРІР°
         $reserveInstance = ReservesModelFactory::getInstanceById($paybackData['reserve_id']);
         if(!$reserveInstance)
             throw new ReservesPaybackException(ReservesPaybackException::PAYBACK_NOTFOUND);
@@ -143,7 +143,7 @@ class ReservesPayback extends BaseModel
         
         try
         {
-            //Готовим запрос
+            //Р“РѕС‚РѕРІРёРј Р·Р°РїСЂРѕСЃ
             $returnPaymentRequest = new ReturnPaymentRequest();
             $returnPaymentRequest->setShopId(yandex_kassa::SHOPID_SBR);
             $returnPaymentRequest->setClientOrderId($paybackData['id']);
@@ -151,17 +151,17 @@ class ReservesPayback extends BaseModel
             $returnPaymentRequest->setCurrency($this->getCurrency());
             $returnPaymentRequest->setCause(sprintf(self::PAYBACK_CAUSE, $reserveInstance->getNUM()));
             $returnPaymentRequest->setAmount(number_format($paybackData['price'], 2, '.', ''));
-            //Делаем запрос к API сервиса
+            //Р”РµР»Р°РµРј Р·Р°РїСЂРѕСЃ Рє API СЃРµСЂРІРёСЃР°
             $result = $this->getApiFacade()->returnPayment($returnPaymentRequest);
             
-            //Выставляем статус и код ошибки
+            //Р’С‹СЃС‚Р°РІР»СЏРµРј СЃС‚Р°С‚СѓСЃ Рё РєРѕРґ РѕС€РёР±РєРё
             $data['status'] = $result->getStatus();
             $data['error'] = (!$result->isSuccess())?$result->getError():0;
         }
         catch(Exception $e)
         {
-            //В случае аварии при транспорте API 
-            //пишем в лог и просим поставить задачу в очередь
+            //Р’ СЃР»СѓС‡Р°Рµ Р°РІР°СЂРёРё РїСЂРё С‚СЂР°РЅСЃРїРѕСЂС‚Рµ API 
+            //РїРёС€РµРј РІ Р»РѕРі Рё РїСЂРѕСЃРёРј РїРѕСЃС‚Р°РІРёС‚СЊ Р·Р°РґР°С‡Сѓ РІ РѕС‡РµСЂРµРґСЊ
             $data['status'] = self::STATUS_FAIL;
             $data['error'] = 10000 + intval($e->getCode());
             $this->db()->update($this->TABLE, $data,'id = ?i', $paybackData['id']);
@@ -171,22 +171,22 @@ class ReservesPayback extends BaseModel
         $this->db()->update($this->TABLE, $data, 'id = ?i', $paybackData['id']);
         
         $new_status = $this->getSubStatus($result->getStatus());
-        //Нет смысла менять статус так как система уже в таком же статусе
-        //например долгий процесс ожидания
+        //РќРµС‚ СЃРјС‹СЃР»Р° РјРµРЅСЏС‚СЊ СЃС‚Р°С‚СѓСЃ С‚Р°Рє РєР°Рє СЃРёСЃС‚РµРјР° СѓР¶Рµ РІ С‚Р°РєРѕРј Р¶Рµ СЃС‚Р°С‚СѓСЃРµ
+        //РЅР°РїСЂРёРјРµСЂ РґРѕР»РіРёР№ РїСЂРѕС†РµСЃСЃ РѕР¶РёРґР°РЅРёСЏ
         if($reserveInstance->getStatusBack() != $new_status)
         {
-            //Не удалост сменить статус
+            //РќРµ СѓРґР°Р»РѕСЃС‚ СЃРјРµРЅРёС‚СЊ СЃС‚Р°С‚СѓСЃ
             if(!$reserveInstance->changeBackStatus($new_status))
                 throw new ReservesPaybackException(ReservesPaybackException::CANT_CHANGE_SUBSTATUS, true); 
         }
         
-        //Ошибки при которых ставить в очередь нет смысла
+        //РћС€РёР±РєРё РїСЂРё РєРѕС‚РѕСЂС‹С… СЃС‚Р°РІРёС‚СЊ РІ РѕС‡РµСЂРµРґСЊ РЅРµС‚ СЃРјС‹СЃР»Р°
         if(!$result->isSuccess() && in_array($result->getError(), array(403, 404, 405, 412, 413, 414, 417)))
             throw new ReservesPaybackException(ReservesPaybackException::API_CRITICAL_FAIL, $result->getError()); 
         
         
-        //Если статус еще не оплачен то нужно 
-        //повторить и поставить задачу в очередь
+        //Р•СЃР»Рё СЃС‚Р°С‚СѓСЃ РµС‰Рµ РЅРµ РѕРїР»Р°С‡РµРЅ С‚Рѕ РЅСѓР¶РЅРѕ 
+        //РїРѕРІС‚РѕСЂРёС‚СЊ Рё РїРѕСЃС‚Р°РІРёС‚СЊ Р·Р°РґР°С‡Сѓ РІ РѕС‡РµСЂРµРґСЊ
         return $reserveInstance->isStatusBackPayed();
     }
 
@@ -196,9 +196,9 @@ class ReservesPayback extends BaseModel
 
 
     /**
-     * Запрос на возврат средств
-     * или обновить по возможности существующий запрос
-     * Так же ставит в очередь
+     * Р—Р°РїСЂРѕСЃ РЅР° РІРѕР·РІСЂР°С‚ СЃСЂРµРґСЃС‚РІ
+     * РёР»Рё РѕР±РЅРѕРІРёС‚СЊ РїРѕ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ Р·Р°РїСЂРѕСЃ
+     * РўР°Рє Р¶Рµ СЃС‚Р°РІРёС‚ РІ РѕС‡РµСЂРµРґСЊ
      * 
      * @param type $reserve_id
      * @param type $invoice_id
@@ -241,7 +241,7 @@ class ReservesPayback extends BaseModel
             
         if(!$id) throw new ReservesPaybackException(ReservesPaybackException::INSERT_FAIL_MSG);
         
-        //запускаем в очередь на обработку
+        //Р·Р°РїСѓСЃРєР°РµРј РІ РѕС‡РµСЂРµРґСЊ РЅР° РѕР±СЂР°Р±РѕС‚РєСѓ
         $this->db()->query("SELECT pgq.insert_event('reserves', 'payback', ?)", 
                 http_build_query(array('reserve_id' => $reserve_id)));
     }
@@ -249,8 +249,8 @@ class ReservesPayback extends BaseModel
     
 
     /**
-     * Рекомендуется следующий режим повтора: первый повтор через 1 минуту, 
-     * следующие три с промежутком в 5 минут, далее не чаще чем раз в 30 минут.
+     * Р РµРєРѕРјРµРЅРґСѓРµС‚СЃСЏ СЃР»РµРґСѓСЋС‰РёР№ СЂРµР¶РёРј РїРѕРІС‚РѕСЂР°: РїРµСЂРІС‹Р№ РїРѕРІС‚РѕСЂ С‡РµСЂРµР· 1 РјРёРЅСѓС‚Сѓ, 
+     * СЃР»РµРґСѓСЋС‰РёРµ С‚СЂРё СЃ РїСЂРѕРјРµР¶СѓС‚РєРѕРј РІ 5 РјРёРЅСѓС‚, РґР°Р»РµРµ РЅРµ С‡Р°С‰Рµ С‡РµРј СЂР°Р· РІ 30 РјРёРЅСѓС‚.
      */
     private function isTimeout($cnt, $timeString)
     {
@@ -268,7 +268,7 @@ class ReservesPayback extends BaseModel
     
 
     /**
-     * Получить запросы на возврат для указанного резерва
+     * РџРѕР»СѓС‡РёС‚СЊ Р·Р°РїСЂРѕСЃС‹ РЅР° РІРѕР·РІСЂР°С‚ РґР»СЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ СЂРµР·РµСЂРІР°
      * 
      * @param type $reserve_id
      * @param type $status
@@ -290,7 +290,7 @@ class ReservesPayback extends BaseModel
 
 
     /**
-     * Создаем синглтон
+     * РЎРѕР·РґР°РµРј СЃРёРЅРіР»С‚РѕРЅ
      * @return object
      */
     public static function getInstance() 

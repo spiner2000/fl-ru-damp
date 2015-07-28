@@ -6,9 +6,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/smail.php");
 require_once $_SERVER["DOCUMENT_ROOT"]."/classes/memBuff2.php";
 
 /**
-* Предложение на создание нового промо сообщества
+* РџСЂРµРґР»РѕР¶РµРЅРёРµ РЅР° СЃРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ РїСЂРѕРјРѕ СЃРѕРѕР±С‰РµСЃС‚РІР°
 *
-* @param    array   $frm    Данные введенные пользователем
+* @param    array   $frm    Р”Р°РЅРЅС‹Рµ РІРІРµРґРµРЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 * @return   object          xajaxResponse
 */
 function NewPromoCommune($frm) {
@@ -51,13 +51,13 @@ function NewPromoCommune($frm) {
 }
 
 /**
- * Перемещение сообщества вверх/вниз при своей сортировке в звкладке "Я вступил"
+ * РџРµСЂРµРјРµС‰РµРЅРёРµ СЃРѕРѕР±С‰РµСЃС‚РІР° РІРІРµСЂС…/РІРЅРёР· РїСЂРё СЃРІРѕРµР№ СЃРѕСЂС‚РёСЂРѕРІРєРµ РІ Р·РІРєР»Р°РґРєРµ "РЇ РІСЃС‚СѓРїРёР»"
  *
- * @param  int $sCommId сообщество котоое перемещаем
- * @param  string $sSign в какую сторону перемещаем: > - вверх, < - вниз
- * @param  string $group_id код группы для перерисовки списка в случае успеха
- * @param  string $sub_om код дополнительного условия сортировки или вкладки для перерисовки списка в случае успеха
- * @param  int $page номер страницы для перерисовки списка в случае успеха
+ * @param  int $sCommId СЃРѕРѕР±С‰РµСЃС‚РІРѕ РєРѕС‚РѕРѕРµ РїРµСЂРµРјРµС‰Р°РµРј
+ * @param  string $sSign РІ РєР°РєСѓСЋ СЃС‚РѕСЂРѕРЅСѓ РїРµСЂРµРјРµС‰Р°РµРј: > - РІРІРµСЂС…, < - РІРЅРёР·
+ * @param  string $group_id РєРѕРґ РіСЂСѓРїРїС‹ РґР»СЏ РїРµСЂРµСЂРёСЃРѕРІРєРё СЃРїРёСЃРєР° РІ СЃР»СѓС‡Р°Рµ СѓСЃРїРµС…Р°
+ * @param  string $sub_om РєРѕРґ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕРіРѕ СѓСЃР»РѕРІРёСЏ СЃРѕСЂС‚РёСЂРѕРІРєРё РёР»Рё РІРєР»Р°РґРєРё РґР»СЏ РїРµСЂРµСЂРёСЃРѕРІРєРё СЃРїРёСЃРєР° РІ СЃР»СѓС‡Р°Рµ СѓСЃРїРµС…Р°
+ * @param  int $page РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹ РґР»СЏ РїРµСЂРµСЂРёСЃРѕРІРєРё СЃРїРёСЃРєР° РІ СЃР»СѓС‡Р°Рµ СѓСЃРїРµС…Р°
  * @return object xajaxResponse
  */
 function CommuneMove( $sCommId = '', $sSign = '>', $group_id = 0, $sub_om = '', $page = 1 ) {
@@ -79,15 +79,15 @@ function CommuneMove( $sCommId = '', $sSign = '>', $group_id = 0, $sub_om = '', 
 }
 
 /**
- * Напрямую установить номер сообщества при своей сортировке в звкладке "Я вступил"
+ * РќР°РїСЂСЏРјСѓСЋ СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РЅРѕРјРµСЂ СЃРѕРѕР±С‰РµСЃС‚РІР° РїСЂРё СЃРІРѕРµР№ СЃРѕСЂС‚РёСЂРѕРІРєРµ РІ Р·РІРєР»Р°РґРєРµ "РЇ РІСЃС‚СѓРїРёР»"
  * 
- * @param  int $sCommId сообщество котоое перемещаем
- * @param  int $nOldNum текущий номер сообщества
- * @param  int $nNum номер который желаем присвоить
- * @param  int $total общее количество сообществ
- * @param  string $group_id код группы для перерисовки списка в случае успеха
- * @param  string $sub_om код дополнительного условия сортировки или вкладки для перерисовки списка в случае успеха
- * @param  int $page номер страницы для перерисовки списка в случае успеха
+ * @param  int $sCommId СЃРѕРѕР±С‰РµСЃС‚РІРѕ РєРѕС‚РѕРѕРµ РїРµСЂРµРјРµС‰Р°РµРј
+ * @param  int $nOldNum С‚РµРєСѓС‰РёР№ РЅРѕРјРµСЂ СЃРѕРѕР±С‰РµСЃС‚РІР°
+ * @param  int $nNum РЅРѕРјРµСЂ РєРѕС‚РѕСЂС‹Р№ Р¶РµР»Р°РµРј РїСЂРёСЃРІРѕРёС‚СЊ
+ * @param  int $total РѕР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕРѕР±С‰РµСЃС‚РІ
+ * @param  string $group_id РєРѕРґ РіСЂСѓРїРїС‹ РґР»СЏ РїРµСЂРµСЂРёСЃРѕРІРєРё СЃРїРёСЃРєР° РІ СЃР»СѓС‡Р°Рµ СѓСЃРїРµС…Р°
+ * @param  string $sub_om РєРѕРґ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕРіРѕ СѓСЃР»РѕРІРёСЏ СЃРѕСЂС‚РёСЂРѕРІРєРё РёР»Рё РІРєР»Р°РґРєРё РґР»СЏ РїРµСЂРµСЂРёСЃРѕРІРєРё СЃРїРёСЃРєР° РІ СЃР»СѓС‡Р°Рµ СѓСЃРїРµС…Р°
+ * @param  int $page РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹ РґР»СЏ РїРµСЂРµСЂРёСЃРѕРІРєРё СЃРїРёСЃРєР° РІ СЃР»СѓС‡Р°Рµ СѓСЃРїРµС…Р°
  * @return object xajaxResponse
  */
 function CommuneSetPosition( $sCommId = '', $nOldNum = 0, $nNum = 0, $total = 0, $group_id = 0, $sub_om = '', $page = 1 ) {
@@ -104,24 +104,24 @@ function CommuneSetPosition( $sCommId = '', $nOldNum = 0, $nNum = 0, $total = 0,
     }
     
     if ( commune::CommuneSetPosition($sCommId, $sUserId, $nOldNum, $nNum, $total) ) {
-        // была перенумерация: обновляем список
+        // Р±С‹Р»Р° РїРµСЂРµРЅСѓРјРµСЂР°С†РёСЏ: РѕР±РЅРѕРІР»СЏРµРј СЃРїРёСЃРѕРє
         $group_id = ( $group_id ) ? $group_id : null;
         return CommuneGetList($group_id, $sub_om, $page);
     }
     
-    // перенумерации не было: просто закрываем попап
+    // РїРµСЂРµРЅСѓРјРµСЂР°С†РёРё РЅРµ Р±С‹Р»Рѕ: РїСЂРѕСЃС‚Рѕ Р·Р°РєСЂС‹РІР°РµРј РїРѕРїР°Рї
     $objResponse->script("$('commune_set_order_{$sCommId}').setStyle('display', 'none');");
     $objResponse->assign( 'position_time_'.$sCommId, 'value', '' );
     return $objResponse;
 }
 
 /**
- * Перерисовывает список сообществ.
+ * РџРµСЂРµСЂРёСЃРѕРІС‹РІР°РµС‚ СЃРїРёСЃРѕРє СЃРѕРѕР±С‰РµСЃС‚РІ.
  * 
- * @param  string $group_id код группы для перерисовки списка в случае успеха
- * @param  string $om код дополнительного условия сортировки или вкладки
- * @param  int $page номер страницы
- * @param  string $search если есть поисковоая строка для подсвечивания найденого в названияих и описаниях
+ * @param  string $group_id РєРѕРґ РіСЂСѓРїРїС‹ РґР»СЏ РїРµСЂРµСЂРёСЃРѕРІРєРё СЃРїРёСЃРєР° РІ СЃР»СѓС‡Р°Рµ СѓСЃРїРµС…Р°
+ * @param  string $om РєРѕРґ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕРіРѕ СѓСЃР»РѕРІРёСЏ СЃРѕСЂС‚РёСЂРѕРІРєРё РёР»Рё РІРєР»Р°РґРєРё
+ * @param  int $page РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹
+ * @param  string $search РµСЃР»Рё РµСЃС‚СЊ РїРѕРёСЃРєРѕРІРѕР°СЏ СЃС‚СЂРѕРєР° РґР»СЏ РїРѕРґСЃРІРµС‡РёРІР°РЅРёСЏ РЅР°Р№РґРµРЅРѕРіРѕ РІ РЅР°Р·РІР°РЅРёСЏРёС… Рё РѕРїРёСЃР°РЅРёСЏС…
  * @return object xajaxResponse
  */
 function CommuneGetList( $group_id = null, $om = '', $page = 1, $search = null ) {
@@ -133,12 +133,12 @@ function CommuneGetList( $group_id = null, $om = '', $page = 1, $search = null )
     $limit       = commune::MAX_ON_PAGE;
     $objResponse = new xajaxResponse();
     
-    // начало нумерации сообществ для своей сортировки
+    // РЅР°С‡Р°Р»Рѕ РЅСѓРјРµСЂР°С†РёРё СЃРѕРѕР±С‰РµСЃС‚РІ РґР»СЏ СЃРІРѕРµР№ СЃРѕСЂС‚РёСЂРѕРІРєРё
     $start_position = ($page - 1) * $limit;
     $groupCommCnt   = 0;
     
     if (($om == commune::OM_CM_MY || $om == commune::OM_CM_JOINED) && !$uid)  {
-        // Неавторизовался и зашел в "свои" закладки.
+        // РќРµР°РІС‚РѕСЂРёР·РѕРІР°Р»СЃСЏ Рё Р·Р°С€РµР» РІ "СЃРІРѕРё" Р·Р°РєР»Р°РґРєРё.
         return $objResponse;
     }
     else {
@@ -156,9 +156,9 @@ function CommuneGetList( $group_id = null, $om = '', $page = 1, $search = null )
 }
 
 /**
-* Создает новую категорию
+* РЎРѕР·РґР°РµС‚ РЅРѕРІСѓСЋ РєР°С‚РµРіРѕСЂРёСЋ
 *
-* @param    array   $frm    Данные для создания категории
+* @param    array   $frm    Р”Р°РЅРЅС‹Рµ РґР»СЏ СЃРѕР·РґР°РЅРёСЏ РєР°С‚РµРіРѕСЂРёРё
 */
 function AddCategory($frm) {
     global $session;
@@ -177,12 +177,12 @@ function AddCategory($frm) {
         $name = trim(strip_tags(stripslashes($name)));
         if($name=='' || strlen($name)>commune::MAX_CATEGORY_NAME_SIZE) {
             $error = 1;
-            $objResponse->script("alert('Название раздела не может быть пустым и должно содержать не более ".commune::MAX_CATEGORY_NAME_SIZE.' '.  ending(commune::MAX_CATEGORY_NAME_SIZE, ' символ', ' символа', ' символов')."');");
+            $objResponse->script("alert('РќР°Р·РІР°РЅРёРµ СЂР°Р·РґРµР»Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј Рё РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ РЅРµ Р±РѕР»РµРµ ".commune::MAX_CATEGORY_NAME_SIZE.' '.  ending(commune::MAX_CATEGORY_NAME_SIZE, ' СЃРёРјРІРѕР»', ' СЃРёРјРІРѕР»Р°', ' СЃРёРјРІРѕР»РѕРІ')."');");
             $objResponse->script("communeObj.initCategories();");
         }
         if(commune::issetCategory($name, $commune_id)) {
             $error = 1;
-            $objResponse->script("alert('Раздел с таким названием уже существует.');");
+            $objResponse->script("alert('Р Р°Р·РґРµР» СЃ С‚Р°РєРёРј РЅР°Р·РІР°РЅРёРµРј СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚.');");
             $objResponse->script("communeObj.initCategories();");
         } 
         if(!$error) {
@@ -198,9 +198,9 @@ function AddCategory($frm) {
 }
 
 /**
-* Обновление категории
+* РћР±РЅРѕРІР»РµРЅРёРµ РєР°С‚РµРіРѕСЂРёРё
 *
-* @param    array   $frm    Данные категории
+* @param    array   $frm    Р”Р°РЅРЅС‹Рµ РєР°С‚РµРіРѕСЂРёРё
 */
 function UpdateCategory($frm) {
     global $session;
@@ -223,7 +223,7 @@ function UpdateCategory($frm) {
         
         $allow = "1234567890\t\n !.\"',.!@%^#$;:-<>";
         $str   = "abcdefghijklmnopqrstuvwxyz";
-        $cir   = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+        $cir   = "Р°Р±РІРіРґРµС‘Р¶Р·РёР№РєР»РјРЅРѕРїСЂСЃС‚СѓС„С…С†С‡С€С‰СЉС‹СЊСЌСЋСЏРђР‘Р’Р“Р”Р•РЃР–Р—РР™РљР›РњРќРћРџР РЎРўРЈР¤РҐР¦Р§РЁР©РЄР«Р¬Р­Р®РЇ";
         $allow .= $str . strtoupper($str). $cir;
         $tS = "";
         for ($i = 0; $i < strlen($name); $i++) {
@@ -233,13 +233,13 @@ function UpdateCategory($frm) {
         $name = $tS;
         if($name == '' || strlen($name) > 30) {
             $error = 1;
-            $objResponse->script("alert('Название раздела не может быть пустым и должно содержать не более 30 символов ".strlen($name)."');");
+            $objResponse->script("alert('РќР°Р·РІР°РЅРёРµ СЂР°Р·РґРµР»Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј Рё РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ РЅРµ Р±РѕР»РµРµ 30 СЃРёРјРІРѕР»РѕРІ ".strlen($name)."');");
         }
         
         $edit_id = commune::issetCategory($name, $commune_id);
         if($edit_id && (int)$edit_id !== (int)$id) {
             $error = 1;
-            $objResponse->script("alert('Раздел с таким названием уже существует.');");
+            $objResponse->script("alert('Р Р°Р·РґРµР» СЃ С‚Р°РєРёРј РЅР°Р·РІР°РЅРёРµРј СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚.');");
         }
         if(!$error) {            
             commune::updateCategory($id, $name, $is_only_for_admin, $commune_id);
@@ -252,11 +252,11 @@ function UpdateCategory($frm) {
 }
 
 /**
-* Удаление категории
+* РЈРґР°Р»РµРЅРёРµ РєР°С‚РµРіРѕСЂРёРё
 *
-* @param    integer     $category_id         Идентификатор категории
-* @param    integer     $commune_id          Идентификатор сообщества
-* @param    integer     $om                  ID вкладки
+* @param    integer     $category_id         РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РєР°С‚РµРіРѕСЂРёРё
+* @param    integer     $commune_id          РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃРѕРѕР±С‰РµСЃС‚РІР°
+* @param    integer     $om                  ID РІРєР»Р°РґРєРё
 *
 */
 function DeleteCategory($category_id, $commune_id, $om) {
@@ -275,10 +275,10 @@ function DeleteCategory($category_id, $commune_id, $om) {
 }
 
 /**
-* Редактирование категории
+* Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РєР°С‚РµРіРѕСЂРёРё
 *
-* @param    integer     $category_id         Идентификатор категории
-* @param    integer     $commune_id         Идентификатор сообщества
+* @param    integer     $category_id         РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РєР°С‚РµРіРѕСЂРёРё
+* @param    integer     $commune_id         РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃРѕРѕР±С‰РµСЃС‚РІР°
 *
 */
 function EditCategory($category_id, $commune_id) {
@@ -301,13 +301,13 @@ function EditCategory($category_id, $commune_id) {
 }
 
 /**
-* Выводит список категорий
+* Р’С‹РІРѕРґРёС‚ СЃРїРёСЃРѕРє РєР°С‚РµРіРѕСЂРёР№
 *
-* @param    integer     $commune_id         Идентификатор сообщества
-* @param    boolean     $is_for_admin       Выводить категории для админа сообщества или посетителя
-* @param    integer     $om                 ID вкладки
-* @param    string      $curr_cat           опционально ID текущей категории для SEO
-* @param    integer     $page               опционально номер страницы для SEO
+* @param    integer     $commune_id         РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ СЃРѕРѕР±С‰РµСЃС‚РІР°
+* @param    boolean     $is_for_admin       Р’С‹РІРѕРґРёС‚СЊ РєР°С‚РµРіРѕСЂРёРё РґР»СЏ Р°РґРјРёРЅР° СЃРѕРѕР±С‰РµСЃС‚РІР° РёР»Рё РїРѕСЃРµС‚РёС‚РµР»СЏ
+* @param    integer     $om                 ID РІРєР»Р°РґРєРё
+* @param    string      $curr_cat           РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ ID С‚РµРєСѓС‰РµР№ РєР°С‚РµРіРѕСЂРёРё РґР»СЏ SEO
+* @param    integer     $page               РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹ РґР»СЏ SEO
 */
 function ShowCategoriesList( $commune_id, $is_for_admin, $om, $curr_cat = '', $page = 0 ) {
     global $session;
@@ -324,13 +324,13 @@ function ShowCategoriesList( $commune_id, $is_for_admin, $om, $curr_cat = '', $p
 }
 
 /**
- * Блокировка/разблокировка топика администратором сообщества
+ * Р‘Р»РѕРєРёСЂРѕРІРєР°/СЂР°Р·Р±Р»РѕРєРёСЂРѕРІРєР° С‚РѕРїРёРєР° Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј СЃРѕРѕР±С‰РµСЃС‚РІР°
  * 
- * @param  int $commune_id ID сообщества
- * @param  int $topic_id ID топика
- * @param  int $topic_id ID сообщения
- * @param  string $action действие ('block' или 'unblock')
- * @return bool true - успех, false - провал
+ * @param  int $commune_id ID СЃРѕРѕР±С‰РµСЃС‚РІР°
+ * @param  int $topic_id ID С‚РѕРїРёРєР°
+ * @param  int $topic_id ID СЃРѕРѕР±С‰РµРЅРёСЏ
+ * @param  string $action РґРµР№СЃС‚РІРёРµ ('block' РёР»Рё 'unblock')
+ * @return bool true - СѓСЃРїРµС…, false - РїСЂРѕРІР°Р»
  */
 function BlockedTopic( $commune_id = 0, $topic_id = 0, $msg_id = 0, $action = 'unblock' ) {
     global $session;
@@ -356,19 +356,19 @@ function BlockedTopic( $commune_id = 0, $topic_id = 0, $msg_id = 0, $action = 'u
             $user->GetUserByUID( $uid );
             
             $html = "<div class='br-moderation-options'>
-                <a href='/about/feedback/' class='lnk-feedback' style='color: #fff;'>Служба поддержки</a>
-                <div class='br-mo-status'><strong>Сообщение заблокировано!</strong></div>
+                <a href='/about/feedback/' class='lnk-feedback' style='color: #fff;'>РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё</a>
+                <div class='br-mo-status'><strong>РЎРѕРѕР±С‰РµРЅРёРµ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРѕ!</strong></div>
                 <p class='br-mo-info'>"
-                . ($user->login ? "Заблокировал: <a href='/users/{$user->login}' style='color: #FF6B3D'>{$user->uname} {$user->usurname} [{$user->login}]</a><br />" : '')
-                . "Дата блокировки: ".dateFormat('d.m.Y', $blocked_time).".</p>
+                . ($user->login ? "Р—Р°Р±Р»РѕРєРёСЂРѕРІР°Р»: <a href='/users/{$user->login}' style='color: #FF6B3D'>{$user->uname} {$user->usurname} [{$user->login}]</a><br />" : '')
+                . "Р”Р°С‚Р° Р±Р»РѕРєРёСЂРѕРІРєРё: ".dateFormat('d.m.Y', $blocked_time).".</p>
             </div>";
             
         	$objResponse->assign( "theme-reason-$topic_id", 'innerHTML', $html );
-        	$objResponse->assign( "theme-button-$topic_id", 'innerHTML', '<a href="javascript:void(0)" onclick="if(warning()) xajax_BlockedTopic('.$commune_id.','.$topic_id.','.$msg_id.',\'unblock\')" class="lnk-red">Разблокировать</a>' );
+        	$objResponse->assign( "theme-button-$topic_id", 'innerHTML', '<a href="javascript:void(0)" onclick="if(warning()) xajax_BlockedTopic('.$commune_id.','.$topic_id.','.$msg_id.',\'unblock\')" class="lnk-red">Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ</a>' );
         }
         else {
             $objResponse->assign( "theme-reason-$topic_id", 'innerHTML', '&nbsp;' );
-            $objResponse->assign( "theme-button-$topic_id", 'innerHTML', '<a href="javascript:void(0)" onclick="if(warning()) xajax_BlockedTopic('.$commune_id.','.$topic_id.','.$msg_id.',\'block\')" class="lnk-red">Заблокировать</a>' );
+            $objResponse->assign( "theme-button-$topic_id", 'innerHTML', '<a href="javascript:void(0)" onclick="if(warning()) xajax_BlockedTopic('.$commune_id.','.$topic_id.','.$msg_id.',\'block\')" class="lnk-red">Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ</a>' );
         }
     }
     
@@ -394,15 +394,15 @@ function DeleteTopic($backto, $message_id, $user_id, $mod, $page, $om, $site, $i
     }
   if($status['is_moderator']==1 || $status['is_admin']==1 || $status['is_author']==1 || hasPermissions('communes')) {
 
-  // !!! Нужно очищать форму редактирования, если в ней в данный момент редактируется удаляемое сообщение. А то некрасиво.
-  // !!! Можно будет еще добавлять сообщение вниз, то есть брать
-  // верхнее сообщение из следующей страницы и добавлять вниз текущей страницы.
+  // !!! РќСѓР¶РЅРѕ РѕС‡РёС‰Р°С‚СЊ С„РѕСЂРјСѓ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ, РµСЃР»Рё РІ РЅРµР№ РІ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ СЂРµРґР°РєС‚РёСЂСѓРµС‚СЃСЏ СѓРґР°Р»СЏРµРјРѕРµ СЃРѕРѕР±С‰РµРЅРёРµ. Рђ С‚Рѕ РЅРµРєСЂР°СЃРёРІРѕ.
+  // !!! РњРѕР¶РЅРѕ Р±СѓРґРµС‚ РµС‰Рµ РґРѕР±Р°РІР»СЏС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ РІРЅРёР·, С‚Рѕ РµСЃС‚СЊ Р±СЂР°С‚СЊ
+  // РІРµСЂС…РЅРµРµ СЃРѕРѕР±С‰РµРЅРёРµ РёР· СЃР»РµРґСѓСЋС‰РµР№ СЃС‚СЂР°РЅРёС†С‹ Рё РґРѕР±Р°РІР»СЏС‚СЊ РІРЅРёР· С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹.
   $message_id = __paramValue('int', $message_id);
   
   if($r = commune::DeleteMessage($message_id, intval($user_id), $mod, $deleted_time)) {
     if($site == 'Topic') {
           $objResponse->script('document.location.href = "/commune/?id='.$comm_id.'"');
-    }elseif($r<0) { // Больше не удаляется.
+    }elseif($r<0) { // Р‘РѕР»СЊС€Рµ РЅРµ СѓРґР°Р»СЏРµС‚СЃСЏ.
 			$top = commune::GetTopMessageByAnyOther($message_id, $user_id, $mod, TRUE);
       $objResponse->assign($backto, 'innerHTML',  __commPrntTopic($top, $user_id, $mod, $om, $page, $site, $is_fav));
     }
@@ -417,7 +417,7 @@ function DeleteTopic($backto, $message_id, $user_id, $mod, $page, $om, $site, $i
       	  $time = $deleted_time[1];
       	  $time = explode(":", $time);
       	  $time = $time[0].":".$time[1];
-      	  $moderatorInfo = "<span class=\"b-post__moderator_info_red\" Удалнено модератором [{$moderator->login}] {$moderator->uname} {$moderator->usurname}</span> <span class=\"b-post__moderator_info_gray\">[{$date} | {$time}]</span>";
+      	  $moderatorInfo = "<span class=\"b-post__moderator_info_red\" РЈРґР°Р»РЅРµРЅРѕ РјРѕРґРµСЂР°С‚РѕСЂРѕРј [{$moderator->login}] {$moderator->uname} {$moderator->usurname}</span> <span class=\"b-post__moderator_info_gray\">[{$date} | {$time}]</span>";
           $objResponse->script("commune_markPostAsDeleted('{$backto}', '{$moderator->login}', '{$moderator->uname}', '{$moderator->usurname}', '{$date}', '{$time}' )");
       }
       if($themesCount) {
@@ -451,7 +451,7 @@ function DeleteComment($backto, $message_id, $user_id, $mod, $om, $level, $is_la
     else {
       $objResponse->remove($backto);
 
-      // Удаляем заголовок "Комментарии", если на странице не осталось ни одного комментария.
+      // РЈРґР°Р»СЏРµРј Р·Р°РіРѕР»РѕРІРѕРє "РљРѕРјРјРµРЅС‚Р°СЂРёРё", РµСЃР»Рё РЅР° СЃС‚СЂР°РЅРёС†Рµ РЅРµ РѕСЃС‚Р°Р»РѕСЃСЊ РЅРё РѕРґРЅРѕРіРѕ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ.
       $objResponse->script("
         if(window.__commCCnt && !--__commCCnt) {
           var ___ch = document.getElementById('idCommentsHeader');
@@ -487,7 +487,7 @@ function BanMemberNewComment($member_id, $uid, $commune_id) {
             require_once $_SERVER['DOCUMENT_ROOT']."/classes/users.php";
             $u = new users();
             $u->GetUserByUID($uid);
-            $objResponse->script( "$$('.warnlink-$uid').set('html','<a class=\"id-ban-member{$member_id}\" style=\"color:red\" href=\"javascript:void(0)\" onclick=\"xajax_BanNewMember({$member_id})\">Забанить!</a>');" );
+            $objResponse->script( "$$('.warnlink-$uid').set('html','<a class=\"id-ban-member{$member_id}\" style=\"color:red\" href=\"javascript:void(0)\" onclick=\"xajax_BanNewMember({$member_id})\">Р—Р°Р±Р°РЅРёС‚СЊ!</a>');" );
         }
         $sm = new smail();
         $comm = commune::GetCommuneByMember($member_id);
@@ -585,7 +585,7 @@ function BanNewMember($member_id)
             $objResponse->script("$$('.warncount-{$comm['member_user_id']}').set('html', '0');");
         } else {
             $objResponse->script("window.location = '';");
-            $objResponse->script("$$('.id-ban-member{$member_id}').set('html', '".($r<0 ? 'Забанить' : 'Разбанить')."')");
+            $objResponse->script("$$('.id-ban-member{$member_id}').set('html', '".($r<0 ? 'Р—Р°Р±Р°РЅРёС‚СЊ' : 'Р Р°Р·Р±Р°РЅРёС‚СЊ')."')");
         }
         
         $sm = new smail();
@@ -608,7 +608,7 @@ function BanMember($backto, $member_id)
   }
   if($status['is_moderator']==1 || $status['is_admin']==1 || $status['is_author']==1 || hasPermissions('communes')) {
       if($r=commune::BanMember($member_id)) {
-        $objResponse->assign($backto, "innerHTML", ($r<0 ? 'Забанить' : 'Разбанить'));
+        $objResponse->assign($backto, "innerHTML", ($r<0 ? 'Р—Р°Р±Р°РЅРёС‚СЊ' : 'Р Р°Р·Р±Р°РЅРёС‚СЊ'));
         $objResponse->script("document.getElementById('".$backto."').className = '".($r<0 ? 'lnk-dot-red' : 'lnk-dot-green')."'");
         $objResponse->script("$('user_row_$member_id')".($r<0 ? '.removeClass(\'cau-banned\')' : '.addClass(\'cau-banned\')'));
         $comm = commune::GetCommuneByMember($member_id);
@@ -646,7 +646,7 @@ function AddFav($backto, $backto2, $message_id, $user_id, $om, $undo, $priority=
       "
         {$backto}.setAttribute('on',0);
         if(favBlock.innerHTML.match(/<LI[^>]*>/i)==null)
-          favBlock.innerHTML = 'Нет закладок';
+          favBlock.innerHTML = 'РќРµС‚ Р·Р°РєР»Р°РґРѕРє';
       "
       );
 
@@ -657,7 +657,7 @@ function AddFav($backto, $backto2, $message_id, $user_id, $om, $undo, $priority=
 }
 
 /**
- * Сортируем закладки
+ * РЎРѕСЂС‚РёСЂСѓРµРј Р·Р°РєР»Р°РґРєРё
  *
  */
 function sortFav($sort="date", $om, $commune_id = NULL) {
@@ -715,8 +715,8 @@ function EditFav($msg_id, $priority = 0, $title = "", $action = "edit") {
 			$outHTML .= "<INPUT id='currtitle' type='hidden' value='".$editfav['title']."'>";
 			$outHTML .= "<textarea rows=\"3\" cols=\"7\" id='favtext".$msg_id."'>{$editfav['title']}</textarea>";
 			$outHTML .= "<div class=\"fav-one-edit-btns\">";									
-			$outHTML .= "<INPUT type='button' value='Сохранить' onClick='if(document.getElementById(\"favtext".$msg_id."\").value.length>128){alert(\"Слишком длинное название закладки!\");return false;}else{xajax_EditFav(".$msg_id.", document.getElementById(\"favpriority".$msg_id."\").value, document.getElementById(\"favtext".$msg_id."\").value, \"update\");}'>";
-			$outHTML .= "<INPUT type='button' value='Отмена' onClick='xajax_EditFav(".$msg_id.", ".$editfav['priority'].", document.getElementById(\"currtitle\").value, \"default\");'>";									
+			$outHTML .= "<INPUT type='button' value='РЎРѕС…СЂР°РЅРёС‚СЊ' onClick='if(document.getElementById(\"favtext".$msg_id."\").value.length>128){alert(\"РЎР»РёС€РєРѕРј РґР»РёРЅРЅРѕРµ РЅР°Р·РІР°РЅРёРµ Р·Р°РєР»Р°РґРєРё!\");return false;}else{xajax_EditFav(".$msg_id.", document.getElementById(\"favpriority".$msg_id."\").value, document.getElementById(\"favtext".$msg_id."\").value, \"update\");}'>";
+			$outHTML .= "<INPUT type='button' value='РћС‚РјРµРЅР°' onClick='xajax_EditFav(".$msg_id.", ".$editfav['priority'].", document.getElementById(\"currtitle\").value, \"default\");'>";									
 			$outHTML .= "</div></td></tr></tbody></table>";											
 										
 
@@ -753,11 +753,11 @@ function UpdateNote($user_id, $commune_id, $note) {
 }
 
 /**
- * Обновление заметки о пользователе на главной странице сообществ
+ * РћР±РЅРѕРІР»РµРЅРёРµ Р·Р°РјРµС‚РєРё Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ СЃРѕРѕР±С‰РµСЃС‚РІ
  *  
- * @param integer $user_id     -  uid пользователя
- * @param integer $commune_id  -  id сообщества
- * @param string  $note        -  заметка
+ * @param integer $user_id     -  uid РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param integer $commune_id  -  id СЃРѕРѕР±С‰РµСЃС‚РІР°
+ * @param string  $note        -  Р·Р°РјРµС‚РєР°
  * @return xajaxResponse 
  */
 function UpdateNoteMP($user_id, $commune_id, $note) {
@@ -767,7 +767,7 @@ function UpdateNoteMP($user_id, $commune_id, $note) {
 
     $note = change_q_x(stripcslashes($note), FALSE, TRUE, "", false, false);
     if (strlen_real($note) > commune::MEMBER_NOTE_MAX_LENGTH) {
-        $objResponse->alert('Максимальное количество символов '.commune::MEMBER_NOTE_MAX_LENGTH);
+        $objResponse->alert('РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЃРёРјРІРѕР»РѕРІ '.commune::MEMBER_NOTE_MAX_LENGTH);
         $objResponse->script('$("ne2'.$user_id.'").getElement("textarea").disabled=false;');
         return $objResponse;
     }
@@ -790,16 +790,16 @@ function Vote($pfx, $commune_id, $user_id, $prev_rating, $vote)
   $objResponse = new xajaxResponse();
   if($commune_id==5100) return $objResponse;
   if(get_uid(false)!=$user_id) return $objResponse;
-  // !!! Вообще, везде бы, где ajax, проверку такую делать.
+  // !!! Р’РѕРѕР±С‰Рµ, РІРµР·РґРµ Р±С‹, РіРґРµ ajax, РїСЂРѕРІРµСЂРєСѓ С‚Р°РєСѓСЋ РґРµР»Р°С‚СЊ.
   $uStatus = commune::GetUserCommuneRel($commune_id, $user_id);
   if(!$uStatus || !$uStatus['is_accepted'] || $uStatus['is_deleted'] || $uStatus['is_banned'] || is_banned($user_id)) 
-    $objResponse->script("document.location.replace('/commune/?id={$commune_id}')"); // перекидываем на гл. страницу, а там его перебросит куда надо.
+    $objResponse->script("document.location.replace('/commune/?id={$commune_id}')"); // РїРµСЂРµРєРёРґС‹РІР°РµРј РЅР° РіР». СЃС‚СЂР°РЅРёС†Сѓ, Р° С‚Р°Рј РµРіРѕ РїРµСЂРµР±СЂРѕСЃРёС‚ РєСѓРґР° РЅР°РґРѕ.
   else {
     $comm = commune::GetCommune($commune_id, $user_id);
     if ($comm && !$comm['is_blocked']) {
         $v = commune::Vote($commune_id, $user_id, intval($vote));
-        // заменяем html'овский минус (&minus;) на -
-        $prev_rating = str_replace('–', '-', $prev_rating);
+        // Р·Р°РјРµРЅСЏРµРј html'РѕРІСЃРєРёР№ РјРёРЅСѓСЃ (&minus;) РЅР° -
+        $prev_rating = str_replace('вЂ“', '-', $prev_rating);
         $rating = intval($prev_rating) + $v;
         $html = __commPrntRating($comm, $user_id, $rating);
         $objResponse->assign($pfx.$commune_id,"innerHTML", $html);
@@ -820,7 +820,7 @@ function VoteTopic($topic_id, $user_id, $mod, $vote)
   if(!commune_carma::isAllowedVote()) {
       return $objResponse;
   }
-  // !!! Вообще, везде бы, где ajax, проверку такую делать.
+  // !!! Р’РѕРѕР±С‰Рµ, РІРµР·РґРµ Р±С‹, РіРґРµ ajax, РїСЂРѕРІРµСЂРєСѓ С‚Р°РєСѓСЋ РґРµР»Р°С‚СЊ.
   $topic = commune::GetTopMessageByAnyOther($topic_id, $user_id, $mod);
   $uStatus = commune::GetUserCommuneRel($topic['commune_id'], $user_id);
   if(((!$uStatus || !$uStatus['is_accepted']) && ((!$uStatus['is_author'] && $topic['user_id'] != $user_id )))
@@ -867,7 +867,7 @@ function CreateCommentForm($backto, $top_id, $message_id, $commune_id, $om, $pag
   session_start();
   commune::RestoreMarkedAttach($message_id);
   $objResponse = new xajaxResponse();
-  if($action == 'Create.post') { // Комментируем сообщение.
+  if($action == 'Create.post') { // РљРѕРјРјРµРЅС‚РёСЂСѓРµРј СЃРѕРѕР±С‰РµРЅРёРµ.
     $objResponse->assign($backto, 'style.position', 'static');
     $objResponse->assign($backto, 'innerHTML',
     __commPrntCommentForm($commune_id,
@@ -876,13 +876,13 @@ function CreateCommentForm($backto, $top_id, $message_id, $commune_id, $om, $pag
                           $action,
                           $top_id,
                           NULL,
-                          $message_id, // Родитель. Добавим ему комментарий.
+                          $message_id, // Р РѕРґРёС‚РµР»СЊ. Р”РѕР±Р°РІРёРј РµРјСѓ РєРѕРјРјРµРЅС‚Р°СЂРёР№.
                           NULL,
                           NULL,
                           (!$page?'Topic':NULL), $mod));
   }
   else {
-    // Выводим форму с атрибутами сообщения.
+    // Р’С‹РІРѕРґРёРј С„РѕСЂРјСѓ СЃ Р°С‚СЂРёР±СѓС‚Р°РјРё СЃРѕРѕР±С‰РµРЅРёСЏ.
     $objResponse->assign($backto, 'style.position', 'static');
     $objResponse->assign($backto, 'innerHTML',
       __commPrntCommentForm($commune_id,
@@ -891,19 +891,19 @@ function CreateCommentForm($backto, $top_id, $message_id, $commune_id, $om, $pag
                             $action,
                             $top_id,
                             $message_id,
-                            NULL, // Родитель будет получен фунцией.
+                            NULL, // Р РѕРґРёС‚РµР»СЊ Р±СѓРґРµС‚ РїРѕР»СѓС‡РµРЅ С„СѓРЅС†РёРµР№.
                             NULL,
                             NULL,
                             (!$page?'Topic':NULL), $mod,0, $draft_id));
   }
 
   $objResponse->script(
-	// Убиваем предыдущую открытую форму со страницы.
-  // Все бы это вовне делать, но асинхронус портит картину...
-  // Имеет смысл только на странице комментариев (?site=Topic) 
-	// __commLastOpenedForm -- это в реальности не форма, а див, содержащий форму редактирования.
-	// и __commLastOpenedForm.action просто хранит значение, определяющее какого типа форму содержит див, для
-	// всяких проверок.
+	// РЈР±РёРІР°РµРј РїСЂРµРґС‹РґСѓС‰СѓСЋ РѕС‚РєСЂС‹С‚СѓСЋ С„РѕСЂРјСѓ СЃРѕ СЃС‚СЂР°РЅРёС†С‹.
+  // Р’СЃРµ Р±С‹ СЌС‚Рѕ РІРѕРІРЅРµ РґРµР»Р°С‚СЊ, РЅРѕ Р°СЃРёРЅС…СЂРѕРЅСѓСЃ РїРѕСЂС‚РёС‚ РєР°СЂС‚РёРЅСѓ...
+  // РРјРµРµС‚ СЃРјС‹СЃР» С‚РѕР»СЊРєРѕ РЅР° СЃС‚СЂР°РЅРёС†Рµ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ (?site=Topic) 
+	// __commLastOpenedForm -- СЌС‚Рѕ РІ СЂРµР°Р»СЊРЅРѕСЃС‚Рё РЅРµ С„РѕСЂРјР°, Р° РґРёРІ, СЃРѕРґРµСЂР¶Р°С‰РёР№ С„РѕСЂРјСѓ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ.
+	// Рё __commLastOpenedForm.action РїСЂРѕСЃС‚Рѕ С…СЂР°РЅРёС‚ Р·РЅР°С‡РµРЅРёРµ, РѕРїСЂРµРґРµР»СЏСЋС‰РµРµ РєР°РєРѕРіРѕ С‚РёРїР° С„РѕСЂРјСѓ СЃРѕРґРµСЂР¶РёС‚ РґРёРІ, РґР»СЏ
+	// РІСЃСЏРєРёС… РїСЂРѕРІРµСЂРѕРє.
   " var editMsg = document.getElementById('{$backto}');
     if(__commLastOpenedForm!=editMsg) {
       try { 
@@ -969,8 +969,8 @@ function CreateCommentForm($backto, $top_id, $message_id, $commune_id, $om, $pag
   return $objResponse;
 }
 
-// !!! Надо картинку убивать со страницы тогда сразу!
-// !!! А может и не надо!
+// !!! РќР°РґРѕ РєР°СЂС‚РёРЅРєСѓ СѓР±РёРІР°С‚СЊ СЃРѕ СЃС‚СЂР°РЅРёС†С‹ С‚РѕРіРґР° СЃСЂР°Р·Сѓ!
+// !!! Рђ РјРѕР¶РµС‚ Рё РЅРµ РЅР°РґРѕ!
 function DeleteAttach($backto, $where_id, $file, $login, $callBack)
 {
   global $session, $DB;
@@ -979,7 +979,7 @@ function DeleteAttach($backto, $where_id, $file, $login, $callBack)
   
   $sql = "SELECT u.login, u.uid FROM commune c INNER JOIN users u ON u.uid = c.author_id WHERE id = ?";
   $commune = $DB->row($sql, $where_id);
-  if($commune['uid'] != get_uid(false) && !hasPermissions('communes')) { // Подразумевает изменение картинки только автором сообщества или админом
+  if($commune['uid'] != get_uid(false) && !hasPermissions('communes')) { // РџРѕРґСЂР°Р·СѓРјРµРІР°РµС‚ РёР·РјРµРЅРµРЅРёРµ РєР°СЂС‚РёРЅРєРё С‚РѕР»СЊРєРѕ Р°РІС‚РѕСЂРѕРј СЃРѕРѕР±С‰РµСЃС‚РІР° РёР»Рё Р°РґРјРёРЅРѕРј
       return $objResponse;
   }
   $login = $commune['login'];
@@ -1001,15 +1001,15 @@ function DeleteAttach($backto, $where_id, $file, $login, $callBack)
 }
 
 
-//////////// !!!!!!!!!!!!!!!!!!! опросы !!!!!!!!!!!!!!!!!!!!!!!!!! ////////////////
+//////////// !!!!!!!!!!!!!!!!!!! РѕРїСЂРѕСЃС‹ !!!!!!!!!!!!!!!!!!!!!!!!!! ////////////////
 
 /**
  * 
- * HTML для отображения результата, когда проект еще открыт
+ * HTML РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ СЂРµР·СѓР»СЊС‚Р°С‚Р°, РєРѕРіРґР° РїСЂРѕРµРєС‚ РµС‰Рµ РѕС‚РєСЂС‹С‚
  * 
  * @param $objResponse
- * @param $poll          -  массив с вариантами ответов
- * @param $voted         -  пользователь голосовал в этом опросе?
+ * @param $poll          -  РјР°СЃСЃРёРІ СЃ РІР°СЂРёР°РЅС‚Р°РјРё РѕС‚РІРµС‚РѕРІ
+ * @param $voted         -  РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РіРѕР»РѕСЃРѕРІР°Р» РІ СЌС‚РѕРј РѕРїСЂРѕСЃРµ?
  */	
 function CommunePoll_ShowResult($theme_id, &$objResponse, &$poll, $voted) {
 	$html = '';
@@ -1025,18 +1025,18 @@ function CommunePoll_ShowResult($theme_id, &$objResponse, &$poll, $voted) {
 	
 	$objResponse->assign('poll-answers-'.$theme_id, 'innerHTML', "<table class='poll-variants'>$html</table>");
 	$objResponse->assign('poll-btn-vote-'.$theme_id, 'innerHTML', '');
-    $objResponse->assign('poll-btn-close-'.$theme_id, 'innerHTML', '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.close(\'Commune\', '.$theme_id.'); return false;" >Закрыть опрос</a>&nbsp;&nbsp;&nbsp;');
-    $html = $voted ? '' : '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showPoll(\'Commune\', '.$theme_id.'); return false;" >Скрыть результаты</a>&nbsp;&nbsp;&nbsp;';
+    $objResponse->assign('poll-btn-close-'.$theme_id, 'innerHTML', '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.close(\'Commune\', '.$theme_id.'); return false;" >Р—Р°РєСЂС‹С‚СЊ РѕРїСЂРѕСЃ</a>&nbsp;&nbsp;&nbsp;');
+    $html = $voted ? '' : '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showPoll(\'Commune\', '.$theme_id.'); return false;" >РЎРєСЂС‹С‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹</a>&nbsp;&nbsp;&nbsp;';
 	$objResponse->assign('poll-btn-result-'.$theme_id, 'innerHTML', $html);
 }
 
 /**
  * 
- * HTML для отображения голосования
+ * HTML РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РіРѕР»РѕСЃРѕРІР°РЅРёСЏ
  * 
  * @param $objResponse
- * @param $poll          -  массив с вариантами ответов
- * @param $radio - 1 - один вариант ответа, 0 - несколько вариантов ответа
+ * @param $poll          -  РјР°СЃСЃРёРІ СЃ РІР°СЂРёР°РЅС‚Р°РјРё РѕС‚РІРµС‚РѕРІ
+ * @param $radio - 1 - РѕРґРёРЅ РІР°СЂРёР°РЅС‚ РѕС‚РІРµС‚Р°, 0 - РЅРµСЃРєРѕР»СЊРєРѕ РІР°СЂРёР°РЅС‚РѕРІ РѕС‚РІРµС‚Р°
  */	
 function CommunePoll_ShowPoll($theme_id, &$objResponse, &$poll, $radio = 1) {
     $sType = ( $radio ) ? 'radio' : 'checkbox';
@@ -1068,17 +1068,17 @@ function CommunePoll_ShowPoll($theme_id, &$objResponse, &$poll, $radio = 1) {
 	elseif( $sType == 'checkbox'){
 		$objResponse->assign('poll-answers-'.$theme_id, 'innerHTML', "$html");
 		}
-	$objResponse->assign('poll-btn-vote-'.$theme_id, 'innerHTML', '<a class="b-button b-button_flat b-button_flat_grey" href="javascript: return false;" onclick="poll.vote(\'Commune\', '.$theme_id.'); return false;" >Ответить</a>');
-	$objResponse->assign('poll-btn-result-'.$theme_id, 'innerHTML', '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showResult(\'Commune\', '.$theme_id.'); return false;">Посмотреть результаты</a>&nbsp;&nbsp;&nbsp;');
-	$objResponse->assign('poll-btn-close-'.$theme_id, 'innerHTML', '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.close(\'Commune\', '.$theme_id.'); return false;">Закрыть опрос</a>&nbsp;&nbsp;&nbsp;');
+	$objResponse->assign('poll-btn-vote-'.$theme_id, 'innerHTML', '<a class="b-button b-button_flat b-button_flat_grey" href="javascript: return false;" onclick="poll.vote(\'Commune\', '.$theme_id.'); return false;" >РћС‚РІРµС‚РёС‚СЊ</a>');
+	$objResponse->assign('poll-btn-result-'.$theme_id, 'innerHTML', '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false;" onclick="poll.showResult(\'Commune\', '.$theme_id.'); return false;">РџРѕСЃРјРѕС‚СЂРµС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚С‹</a>&nbsp;&nbsp;&nbsp;');
+	$objResponse->assign('poll-btn-close-'.$theme_id, 'innerHTML', '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.close(\'Commune\', '.$theme_id.'); return false;">Р—Р°РєСЂС‹С‚СЊ РѕРїСЂРѕСЃ</a>&nbsp;&nbsp;&nbsp;');
 }
 
 /**
  * 
- * HTML для отображения результата, когда проект уже закрыт
+ * HTML РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ СЂРµР·СѓР»СЊС‚Р°С‚Р°, РєРѕРіРґР° РїСЂРѕРµРєС‚ СѓР¶Рµ Р·Р°РєСЂС‹С‚
  * 
  * @param $objResponse
- * @param $poll          -  массив с вариантами ответов
+ * @param $poll          -  РјР°СЃСЃРёРІ СЃ РІР°СЂРёР°РЅС‚Р°РјРё РѕС‚РІРµС‚РѕРІ
  */	
 function CommunePoll_ShowClosed($theme_id, &$objResponse, &$poll) {
 	$max = 0;
@@ -1098,14 +1098,14 @@ function CommunePoll_ShowClosed($theme_id, &$objResponse, &$poll) {
 	$objResponse->assign('poll-answers-'.$theme_id, 'innerHTML', "<table class='quiz-results'>$html</table>");
 	$objResponse->assign('poll-btn-vote-'.$theme_id, 'innerHTML', '');
 	$objResponse->assign('poll-btn-result-'.$theme_id, 'innerHTML', '');
-	$objResponse->assign('poll-btn-close-'.$theme_id, 'innerHTML', '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.close(\'Commune\', '.$theme_id.'); return false;" >Открыть опрос</a>&nbsp;&nbsp;&nbsp;');
+	$objResponse->assign('poll-btn-close-'.$theme_id, 'innerHTML', '<a class="b-buttons__link b-buttons__link_dot_0f71c8" href="javascript: return false" onclick="poll.close(\'Commune\', '.$theme_id.'); return false;" >РћС‚РєСЂС‹С‚СЊ РѕРїСЂРѕСЃ</a>&nbsp;&nbsp;&nbsp;');
 }
 
 /**
- * Проголосовать или показать результат
+ * РџСЂРѕРіРѕР»РѕСЃРѕРІР°С‚СЊ РёР»Рё РїРѕРєР°Р·Р°С‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚
  * 
- * @param   integer        $theme_id    id темы
- * @param   integer        $answer_id   id ответа или ноль, если просто отобразить результат
+ * @param   integer        $theme_id    id С‚РµРјС‹
+ * @param   integer        $answer_id   id РѕС‚РІРµС‚Р° РёР»Рё РЅРѕР»СЊ, РµСЃР»Рё РїСЂРѕСЃС‚Рѕ РѕС‚РѕР±СЂР°Р·РёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚
  * @return  xajaxResponse
  */	
 function CommunePoll_Vote($theme_id, $answers, $sess) {
@@ -1125,16 +1125,16 @@ function CommunePoll_Vote($theme_id, $answers, $sess) {
 	$objResponse = new xajaxResponse();
 	$commune = new commune;
 	if ($commune->AccessToTheme($uid, $theme_id) < ($answers? commune::ACL_COMMENTS: commune::ACL_READ)) {
-		$objResponse->alert('У Вас нет доступа для голосования в этом сообществе');
+		$objResponse->alert('РЈ Р’Р°СЃ РЅРµС‚ РґРѕСЃС‚СѓРїР° РґР»СЏ РіРѕР»РѕСЃРѕРІР°РЅРёСЏ РІ СЌС‚РѕРј СЃРѕРѕР±С‰РµСЃС‚РІРµ');
 		return $objResponse;
 	}
 	if ($answers) {
 		if ($sess && $sess == $_SESSION['rand']) $res = $commune->Poll_Vote($uid, $answers, $error);
 		if (!$res) {
-			if (!$error) $error = 'Ошибка';
+			if (!$error) $error = 'РћС€РёР±РєР°';
 			$objResponse->alert($error);
 			
-			if($error == "Опрос закрыт") {
+			if($error == "РћРїСЂРѕСЃ Р·Р°РєСЂС‹С‚") {
 			    $poll = $commune->Poll_Answers($theme_id);
 			    CommunePoll_ShowClosed($theme_id, $objResponse, $poll);
 			    return $objResponse; 
@@ -1148,9 +1148,9 @@ function CommunePoll_Vote($theme_id, $answers, $sess) {
 }
 
 /**
- * Отобразить голосование
+ * РћС‚РѕР±СЂР°Р·РёС‚СЊ РіРѕР»РѕСЃРѕРІР°РЅРёРµ
  * 
- * @param   integer        $theme_id   id темы
+ * @param   integer        $theme_id   id С‚РµРјС‹
  * @return  xajaxResponse
  */	
 function CommunePoll_Show($theme_id, $radio = 1) {
@@ -1159,7 +1159,7 @@ function CommunePoll_Show($theme_id, $radio = 1) {
 	$uid = $_SESSION['uid'];
 	$objResponse = new xajaxResponse();
 	if (commune::AccessToTheme($uid, $theme_id) < commune::ACL_COMMENTS) {
-		$objResponse->alert('У Вас нет доступа для голосования в этом сообществе');
+		$objResponse->alert('РЈ Р’Р°СЃ РЅРµС‚ РґРѕСЃС‚СѓРїР° РґР»СЏ РіРѕР»РѕСЃРѕРІР°РЅРёСЏ РІ СЌС‚РѕРј СЃРѕРѕР±С‰РµСЃС‚РІРµ');
 		return $objResponse;
 	}
 	$poll = commune::Poll_Answers($theme_id);
@@ -1172,9 +1172,9 @@ function CommunePoll_Show($theme_id, $radio = 1) {
 }
 
 /**
- * Закрыть опрос
+ * Р—Р°РєСЂС‹С‚СЊ РѕРїСЂРѕСЃ
  *
- * @param   integer        $theme_id    id темы
+ * @param   integer        $theme_id    id С‚РµРјС‹
  * @return  xajaxResponse
  */
 function CommunePoll_Close($theme_id) {
@@ -1183,7 +1183,7 @@ function CommunePoll_Close($theme_id) {
 	$uid = $_SESSION['uid'];
 	$objResponse = new xajaxResponse();
 	if (($access = commune::AccessToTheme($uid, $theme_id)) < commune::ACL_MODER) {
-		$objResponse->alert('У Вас нет доступа для этим управления голосованием.');
+		$objResponse->alert('РЈ Р’Р°СЃ РЅРµС‚ РґРѕСЃС‚СѓРїР° РґР»СЏ СЌС‚РёРј СѓРїСЂР°РІР»РµРЅРёСЏ РіРѕР»РѕСЃРѕРІР°РЅРёРµРј.');
 		return $objResponse;
 	}
 	$poll = commune::Poll_Answers($theme_id);
@@ -1200,9 +1200,9 @@ function CommunePoll_Close($theme_id) {
 }
 
 /**
- * Удалить опрос
+ * РЈРґР°Р»РёС‚СЊ РѕРїСЂРѕСЃ
  *
- * @param   integer   $theme_id   id темы
+ * @param   integer   $theme_id   id С‚РµРјС‹
  * @return  xajaxResponse
  */
 function CommunePoll_Remove($theme_id) {
@@ -1211,7 +1211,7 @@ function CommunePoll_Remove($theme_id) {
 	$uid = $_SESSION['uid'];
 	$objResponse = new xajaxResponse();
 	if (($access = commune::AccessToTheme($uid, $theme_id)) < commune::ACL_MODER) {
-		$objResponse->alert('У Вас нет доступа для управления этим голосованием.');
+		$objResponse->alert('РЈ Р’Р°СЃ РЅРµС‚ РґРѕСЃС‚СѓРїР° РґР»СЏ СѓРїСЂР°РІР»РµРЅРёСЏ СЌС‚РёРј РіРѕР»РѕСЃРѕРІР°РЅРёРµРј.');
 		return $objResponse;
 	}
 	commune::Poll_Remove($theme_id, $msgtext);
@@ -1220,20 +1220,20 @@ function CommunePoll_Remove($theme_id) {
 }
 
 /**
- * Подписаться на топик сообщества
- * @param int $theme_id  - id сообщения из commune_messages
- * @param bool $use_new_template  - так как на альфе и боевой используется отчасти старый шаблон, который использует 
- * эту функцию,временно ввожу этот флаг, чтобы сохранить работоспособность обоих вариантов
+ * РџРѕРґРїРёСЃР°С‚СЊСЃСЏ РЅР° С‚РѕРїРёРє СЃРѕРѕР±С‰РµСЃС‚РІР°
+ * @param int $theme_id  - id СЃРѕРѕР±С‰РµРЅРёСЏ РёР· commune_messages
+ * @param bool $use_new_template  - С‚Р°Рє РєР°Рє РЅР° Р°Р»СЊС„Рµ Рё Р±РѕРµРІРѕР№ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РѕС‚С‡Р°СЃС‚Рё СЃС‚Р°СЂС‹Р№ С€Р°Р±Р»РѕРЅ, РєРѕС‚РѕСЂС‹Р№ РёСЃРїРѕР»СЊР·СѓРµС‚ 
+ * СЌС‚Сѓ С„СѓРЅРєС†РёСЋ,РІСЂРµРјРµРЅРЅРѕ РІРІРѕР¶Сѓ СЌС‚РѕС‚ С„Р»Р°Рі, С‡С‚РѕР±С‹ СЃРѕС…СЂР°РЅРёС‚СЊ СЂР°Р±РѕС‚РѕСЃРїРѕСЃРѕР±РЅРѕСЃС‚СЊ РѕР±РѕРёС… РІР°СЂРёР°РЅС‚РѕРІ
  * */
 function SubscribeTheme($theme_id, $use_new_template = false) {
   session_start();
   if(!isset($_SESSION['uid'])) return;
   
-  $subscribeText = 'Подписаться на тему';
-  $unsubscribeText = 'Отписаться от темы';
+  $subscribeText = 'РџРѕРґРїРёСЃР°С‚СЊСЃСЏ РЅР° С‚РµРјСѓ';
+  $unsubscribeText = 'РћС‚РїРёСЃР°С‚СЊСЃСЏ РѕС‚ С‚РµРјС‹';
   if ($use_new_template) {
-      $subscribeText   = 'Подписаться на комментарии';
-      $unsubscribeText = 'Отписаться от комментариев';
+      $subscribeText   = 'РџРѕРґРїРёСЃР°С‚СЊСЃСЏ РЅР° РєРѕРјРјРµРЅС‚Р°СЂРёРё';
+      $unsubscribeText = 'РћС‚РїРёСЃР°С‚СЊСЃСЏ РѕС‚ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ';
   }
   $objResponse = new xajaxResponse();
   $res = commune::SubscribeTheme($theme_id, $_SESSION['uid']);
@@ -1254,7 +1254,7 @@ function SubscribeTheme($theme_id, $use_new_template = false) {
  * @param type $commune_id
  * @param type $subscr_value
  * @param type $mode
- * @param bool $fromCommune Если вызов из сообщества
+ * @param bool $fromCommune Р•СЃР»Рё РІС‹Р·РѕРІ РёР· СЃРѕРѕР±С‰РµСЃС‚РІР°
  * @return \xajaxResponse 
  */
 function SubscribeCommune($commune_id, $subscr_value, $mode=false, $fromCommune=false){
@@ -1290,13 +1290,13 @@ function JoinDialogCommune($commune_id){
   $msg = '';
   if($comm['current_user_join_status'] == commune::JOIN_STATUS_NOT
           || $comm['current_user_join_status'] == commune::JOIN_STATUS_DELETED){
-        $msg = 'Вы действительно хотите вступить в сообщество «<a href="/commune/?id='.$comm['id'].'" id="ov_comm_name">'.$comm['name'].'</a>»?';
+        $msg = 'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ РІСЃС‚СѓРїРёС‚СЊ РІ СЃРѕРѕР±С‰РµСЃС‚РІРѕ В«<a href="/commune/?id='.$comm['id'].'" id="ov_comm_name">'.$comm['name'].'</a>В»?';
         $func = 'xajax_JoinCommune';
   } else if($comm['current_user_join_status'] == commune::JOIN_STATUS_ASKED){
-        $msg = 'Ваша заявка на вступление уже направлена администратору сообщества «<a href="/commune/?id='.$comm['id'].'" id="ov_comm_name">'.$comm['name'].'</a>».<br/>Отозвать заявку?';
+        $msg = 'Р’Р°С€Р° Р·Р°СЏРІРєР° РЅР° РІСЃС‚СѓРїР»РµРЅРёРµ СѓР¶Рµ РЅР°РїСЂР°РІР»РµРЅР° Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂСѓ СЃРѕРѕР±С‰РµСЃС‚РІР° В«<a href="/commune/?id='.$comm['id'].'" id="ov_comm_name">'.$comm['name'].'</a>В».<br/>РћС‚РѕР·РІР°С‚СЊ Р·Р°СЏРІРєСѓ?';
         $func = 'xajax_OutCommune';
   }else if($comm['current_user_join_status'] == commune::JOIN_STATUS_ACCEPTED){
-        $msg = 'Вы действительно хотите покинуть сообщество «<a href="/commune/?id='.$comm['id'].'" id="ov_comm_name">'.$comm['name'].'</a>»?';
+        $msg = 'Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ РїРѕРєРёРЅСѓС‚СЊ СЃРѕРѕР±С‰РµСЃС‚РІРѕ В«<a href="/commune/?id='.$comm['id'].'" id="ov_comm_name">'.$comm['name'].'</a>В»?';
         $func = 'xajax_OutCommune';
   }
         $objResponse->assign("ov_msg","innerHTML", $msg);
@@ -1314,9 +1314,9 @@ function JoinCommune($commune_id, $mode=false){
     $objResponse->script("$('ov-commune-confirm').setStyle('display','none');");
     $comm = $cm->getCommune($commune_id,$_SESSION['uid']);
     /*
-    !!! Посылаем уведомление 
-    todo не плохо бы придумать антиспам, пользователь может бесконечно раз выходить и входить в такое сообщество 
-    с каждым входом автору сообщества будет высылаться уведомление (skif)
+    !!! РџРѕСЃС‹Р»Р°РµРј СѓРІРµРґРѕРјР»РµРЅРёРµ 
+    todo РЅРµ РїР»РѕС…Рѕ Р±С‹ РїСЂРёРґСѓРјР°С‚СЊ Р°РЅС‚РёСЃРїР°Рј, РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РјРѕР¶РµС‚ Р±РµСЃРєРѕРЅРµС‡РЅРѕ СЂР°Р· РІС‹С…РѕРґРёС‚СЊ Рё РІС…РѕРґРёС‚СЊ РІ С‚Р°РєРѕРµ СЃРѕРѕР±С‰РµСЃС‚РІРѕ 
+    СЃ РєР°Р¶РґС‹Рј РІС…РѕРґРѕРј Р°РІС‚РѕСЂСѓ СЃРѕРѕР±С‰РµСЃС‚РІР° Р±СѓРґРµС‚ РІС‹СЃС‹Р»Р°С‚СЊСЃСЏ СѓРІРµРґРѕРјР»РµРЅРёРµ (skif)
     */
     if($result == commune::JOIN_STATUS_ASKED) { 
         $sm = new smail();
@@ -1333,7 +1333,7 @@ function JoinCommune($commune_id, $mode=false){
         $objResponse->script('document.location.href = document.location.href');
         return $objResponse;    
     }
-    $html = "<a href=\"javascript:void(0)\" onclick=\"xajax_OutCommune({$commune_id}); return false;\"><img src=\"/images/btn-cgoout.png\" alt=\"Выйти из сообщество\"/></a>";
+    $html = "<a href=\"javascript:void(0)\" onclick=\"xajax_OutCommune({$commune_id}); return false;\"><img src=\"/images/btn-cgoout.png\" alt=\"Р’С‹Р№С‚Рё РёР· СЃРѕРѕР±С‰РµСЃС‚РІРѕ\"/></a>";
     $objResponse->assign('join_'.$commune_id, 'innerHTML', $html);
     /*$href = "document.location.href";
     if($mode == true) {
@@ -1368,7 +1368,7 @@ function OutCommune($commune_id, $mode=false){
         return $objResponse;
     }
     
-    $html = '<a href="javascript:void(0)" onclick="xajax_JoinCommune('.$comm["id"].', '.$is_restricted.'); return false;"><img src="/images/btn-сgoin.png" alt="Вступить в сообщество"/></a>'; 
+    $html = '<a href="javascript:void(0)" onclick="xajax_JoinCommune('.$comm["id"].', '.$is_restricted.'); return false;"><img src="/images/btn-СЃgoin.png" alt="Р’СЃС‚СѓРїРёС‚СЊ РІ СЃРѕРѕР±С‰РµСЃС‚РІРѕ"/></a>'; 
     $objResponse->assign('join_'.$commune_id, 'innerHTML', $html);    
         
   	return $objResponse;
@@ -1418,12 +1418,12 @@ function MsgDelFile($cid, $file_id){
 }
 
 /**
- * Выставляем роли пользователям сообщества (выставлять может только автор сообщества?? это верно или нет)
+ * Р’С‹СЃС‚Р°РІР»СЏРµРј СЂРѕР»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј СЃРѕРѕР±С‰РµСЃС‚РІР° (РІС‹СЃС‚Р°РІР»СЏС‚СЊ РјРѕР¶РµС‚ С‚РѕР»СЊРєРѕ Р°РІС‚РѕСЂ СЃРѕРѕР±С‰РµСЃС‚РІР°?? СЌС‚Рѕ РІРµСЂРЅРѕ РёР»Рё РЅРµС‚)
  *
- * @param integer $commune_id  ИД Сообщества
- * @param integer $member_id   ИД Пользователя
- * @param boolean $is_moder    Флаг модератора
- * @param boolean $is_manager  Флаг менеджера
+ * @param integer $commune_id  РР” РЎРѕРѕР±С‰РµСЃС‚РІР°
+ * @param integer $member_id   РР” РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param boolean $is_moder    Р¤Р»Р°Рі РјРѕРґРµСЂР°С‚РѕСЂР°
+ * @param boolean $is_manager  Р¤Р»Р°Рі РјРµРЅРµРґР¶РµСЂР°
  * @return 
  */
 function setRoleUser($commune_id, $member_id, $is_moder, $is_manager) {    
@@ -1432,7 +1432,7 @@ function setRoleUser($commune_id, $member_id, $is_moder, $is_manager) {
   	$cm = new commune();  
   	$comm = $cm->GetCommune($commune_id);
   	
-    // Только хозяин сообщества может такое творить @todo нужно уточнить кто может назначать админов и менеджеров.
+    // РўРѕР»СЊРєРѕ С…РѕР·СЏРёРЅ СЃРѕРѕР±С‰РµСЃС‚РІР° РјРѕР¶РµС‚ С‚Р°РєРѕРµ С‚РІРѕСЂРёС‚СЊ @todo РЅСѓР¶РЅРѕ СѓС‚РѕС‡РЅРёС‚СЊ РєС‚Рѕ РјРѕР¶РµС‚ РЅР°Р·РЅР°С‡Р°С‚СЊ Р°РґРјРёРЅРѕРІ Рё РјРµРЅРµРґР¶РµСЂРѕРІ.
   	if($comm['author_id'] == $_SESSION['uid']) {
   	    $cm->UpdateAdmin($member_id, "", $is_moder, $is_manager, $comm);
   	    if($is_moder OR $is_manager) {
@@ -1452,17 +1452,17 @@ function realodCommentForm() {
     global $session;    
 }
 /**
-* Восстановить удаленный пост
-* @param string $backto             идентификатор блока
-* @param string $message_id         идентификатор записи в базе данных
-* @param uint   $user_id            идентификатор пользователя
-* @param string $mod                режим
-* @param string $page               номер страницы
-* @param string $om                 нужен для прохода по страницам, возвратам, переходам
-* @param string $site               $site==NULL|'Commune' -- топик выводится на странице сообщества (/commune/),
-*                                   $site=='Topic' -- на странице комментариев (/commune/?site=Topic),
-*                                   $site=='Lenta' -- в ленте (/lenta/).
-* @param string $isFav              находится в закладка пользователя $user_id или нет.
+* Р’РѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ СѓРґР°Р»РµРЅРЅС‹Р№ РїРѕСЃС‚
+* @param string $backto             РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р±Р»РѕРєР°
+* @param string $message_id         РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ Р·Р°РїРёСЃРё РІ Р±Р°Р·Рµ РґР°РЅРЅС‹С…
+* @param uint   $user_id            РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+* @param string $mod                СЂРµР¶РёРј
+* @param string $page               РЅРѕРјРµСЂ СЃС‚СЂР°РЅРёС†С‹
+* @param string $om                 РЅСѓР¶РµРЅ РґР»СЏ РїСЂРѕС…РѕРґР° РїРѕ СЃС‚СЂР°РЅРёС†Р°Рј, РІРѕР·РІСЂР°С‚Р°Рј, РїРµСЂРµС…РѕРґР°Рј
+* @param string $site               $site==NULL|'Commune' -- С‚РѕРїРёРє РІС‹РІРѕРґРёС‚СЃСЏ РЅР° СЃС‚СЂР°РЅРёС†Рµ СЃРѕРѕР±С‰РµСЃС‚РІР° (/commune/),
+*                                   $site=='Topic' -- РЅР° СЃС‚СЂР°РЅРёС†Рµ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ (/commune/?site=Topic),
+*                                   $site=='Lenta' -- РІ Р»РµРЅС‚Рµ (/lenta/).
+* @param string $isFav              РЅР°С…РѕРґРёС‚СЃСЏ РІ Р·Р°РєР»Р°РґРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ $user_id РёР»Рё РЅРµС‚.
 **/
 function restoreDeletedPost($backto, $message_id, $user_id, $mod, $page, $om, $site, $is_fav) {
     $objResponse = new xajaxResponse();

@@ -6,7 +6,7 @@
     <div class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_padtop_5 b-layout__txt_padbot_5 qq-upload-error" style="display: none;">
         <span class="b-icon b-icon_sbr_rattent"></span>
         <span class="qq-upload-error-text"></span>
-        <a class="b-icon-layout__link b-icon-layout__link_dot_666 qq-upload-error-close" href="javascript:void(0)">Скрыть</a>
+        <a class="b-icon-layout__link b-icon-layout__link_dot_666 qq-upload-error-close" href="javascript:void(0)">РЎРєСЂС‹С‚СЊ</a>
     </div>
     
     <table class="b-file_layout" cellpadding="0" cellspacing="0" border="0">

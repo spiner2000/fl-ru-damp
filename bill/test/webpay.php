@@ -1,5 +1,5 @@
 <?php
-// Тестовое оплата услуг через Вебкошелек
+// РўРµСЃС‚РѕРІРѕРµ РѕРїР»Р°С‚Р° СѓСЃР»СѓРі С‡РµСЂРµР· Р’РµР±РєРѕС€РµР»РµРє
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 if(is_release()) exit;
 
@@ -40,13 +40,13 @@ $_SESSION['post_payment'] = $_POST;
 $_SESSION['referer']      = $_SERVER['HTTP_REFERER'];
 ?>
 
-<h2>Тестовая оплата Веб.Кошелек</h2>
+<h2>РўРµСЃС‚РѕРІР°СЏ РѕРїР»Р°С‚Р° Р’РµР±.РљРѕС€РµР»РµРє</h2>
 <p>
-Оплата услуг аккаунт <?= __paramValue('string', $_POST['nickname'])?>, сумма оплаты <?= to_money($_POST['amount'],2)?> рублей
+РћРїР»Р°С‚Р° СѓСЃР»СѓРі Р°РєРєР°СѓРЅС‚ <?= __paramValue('string', $_POST['nickname'])?>, СЃСѓРјРјР° РѕРїР»Р°С‚С‹ <?= to_money($_POST['amount'],2)?> СЂСѓР±Р»РµР№
 </p>
 
 <form method="POST" />
-    <input type="submit" name="success" value="Оплатить" />
-    <input type="submit" name="cancel" value="Отмена" />
+    <input type="submit" name="success" value="РћРїР»Р°С‚РёС‚СЊ" />
+    <input type="submit" name="cancel" value="РћС‚РјРµРЅР°" />
     <input type="hidden" name="u_token_key" value="<?=$_SESSION['rand']?>"/>
 </form>

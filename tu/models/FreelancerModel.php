@@ -4,16 +4,16 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/tservices/atservices_model.ph
 
 /**
  * Class UserModel
- * Модель пользователя - фрилансера
+ * РњРѕРґРµР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ - С„СЂРёР»Р°РЅСЃРµСЂР°
  */
 class FreelancerModel extends atservices_model {
 
 	private $TABLE_USERS = 'users';
 
 	/**
-	 * Для каждой строки массива $rows извлекает сведения о пользователе, ID которого указан в $id_attr
-	 * Если $extend_attr указан, то сведения вписываются в строки rows отдельным ключом
-	 * Иначе ключи строк расширяются извлечёнными сведениями, при необходимости им дописываются префиксы $extend_prefix
+	 * Р”Р»СЏ РєР°Р¶РґРѕР№ СЃС‚СЂРѕРєРё РјР°СЃСЃРёРІР° $rows РёР·РІР»РµРєР°РµС‚ СЃРІРµРґРµРЅРёСЏ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ, ID РєРѕС‚РѕСЂРѕРіРѕ СѓРєР°Р·Р°РЅ РІ $id_attr
+	 * Р•СЃР»Рё $extend_attr СѓРєР°Р·Р°РЅ, С‚Рѕ СЃРІРµРґРµРЅРёСЏ РІРїРёСЃС‹РІР°СЋС‚СЃСЏ РІ СЃС‚СЂРѕРєРё rows РѕС‚РґРµР»СЊРЅС‹Рј РєР»СЋС‡РѕРј
+	 * РРЅР°С‡Рµ РєР»СЋС‡Рё СЃС‚СЂРѕРє СЂР°СЃС€РёСЂСЏСЋС‚СЃСЏ РёР·РІР»РµС‡С‘РЅРЅС‹РјРё СЃРІРµРґРµРЅРёСЏРјРё, РїСЂРё РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РёРј РґРѕРїРёСЃС‹РІР°СЋС‚СЃСЏ РїСЂРµС„РёРєСЃС‹ $extend_prefix
 	 *
 	 * @param $rows
 	 * @param $id_attr
@@ -24,7 +24,7 @@ class FreelancerModel extends atservices_model {
 	public function extend(&$rows, $id_attr, $extend_attr = null, $extend_prefix = '')
 	{
 		$ids = array();
-		foreach($rows as $row) // собрать ID
+		foreach($rows as $row) // СЃРѕР±СЂР°С‚СЊ ID
 		{
 			if (!empty($row[$id_attr]))
 			{
@@ -39,27 +39,27 @@ class FreelancerModel extends atservices_model {
 		$sql = <<<SQL
 SELECT
 	u.uid as {$extend_prefix}uid,
-	u.uname as {$extend_prefix}uname, -- имя
-	u.usurname as {$extend_prefix}usurname, -- фамилия
-	u.login as {$extend_prefix}login, -- логин пользователя
-	u.photo as {$extend_prefix}photo, -- аватара max 100x100
-	u.photosm as {$extend_prefix}photosm, -- мелкая аватара max 50x50
-	u.role as {$extend_prefix}role, -- фрилансер/работодатель ...
+	u.uname as {$extend_prefix}uname, -- РёРјСЏ
+	u.usurname as {$extend_prefix}usurname, -- С„Р°РјРёР»РёСЏ
+	u.login as {$extend_prefix}login, -- Р»РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	u.photo as {$extend_prefix}photo, -- Р°РІР°С‚Р°СЂР° max 100x100
+	u.photosm as {$extend_prefix}photosm, -- РјРµР»РєР°СЏ Р°РІР°С‚Р°СЂР° max 50x50
+	u.role as {$extend_prefix}role, -- С„СЂРёР»Р°РЅСЃРµСЂ/СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ ...
     u.is_profi as {$extend_prefix}is_profi,
-	u.is_pro as {$extend_prefix}is_pro, -- пользователь ПРО
-	u.is_verify as {$extend_prefix}is_verify, -- пользователь верифицирован
-	u.country as {$extend_prefix}country, -- cтрана
-	u.city as {$extend_prefix}city -- город
+	u.is_pro as {$extend_prefix}is_pro, -- РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РџР Рћ
+	u.is_verify as {$extend_prefix}is_verify, -- РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІРµСЂРёС„РёС†РёСЂРѕРІР°РЅ
+	u.country as {$extend_prefix}country, -- cС‚СЂР°РЅР°
+	u.city as {$extend_prefix}city -- РіРѕСЂРѕРґ
 FROM {$this->TABLE_USERS} u
 WHERE u.uid in (?lu)
 SQL;
 		$extends = $this->db()->cache(300)->rows($sql, array_keys($ids));
-		foreach($extends as $extend) // разобрать строки по ID
+		foreach($extends as $extend) // СЂР°Р·РѕР±СЂР°С‚СЊ СЃС‚СЂРѕРєРё РїРѕ ID
 		{
 			$ids[$extend['uid']] = $extend;
 		}
 
-		foreach($rows as &$row) // подставить дополнительные сведения в исходный список строк
+		foreach($rows as &$row) // РїРѕРґСЃС‚Р°РІРёС‚СЊ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРІРµРґРµРЅРёСЏ РІ РёСЃС…РѕРґРЅС‹Р№ СЃРїРёСЃРѕРє СЃС‚СЂРѕРє
 		{
 			if (empty($ids[$row[$id_attr]]))
 			{
@@ -73,10 +73,10 @@ SQL;
 
 			if ($extend_attr)
 			{
-				$row[$extend_attr] = $extend; // отдельный ключ
+				$row[$extend_attr] = $extend; // РѕС‚РґРµР»СЊРЅС‹Р№ РєР»СЋС‡
 			} else
 			{
-				$row = array_merge($row, $extend); // расширение массива
+				$row = array_merge($row, $extend); // СЂР°СЃС€РёСЂРµРЅРёРµ РјР°СЃСЃРёРІР°
 			}
 		}
 		return $this;

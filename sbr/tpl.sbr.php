@@ -11,6 +11,6 @@ foreach($curr_sbr->stages as $num=>$stage) { $stpos++;
 }//foreach
 ?>
 <? if($completed > 0 && $curr_sbr->data['status'] != sbr::STATUS_COMPLETED) {?>
-<div class="b-layout__txt b-layout__txt_padleft_35 b-layout__txt_padtop_8"><a class="b-layout__link b-layout__link_bordbot_dot_000" href="#"><?= $completed?> <?= ending($completed, "завершенный этап", "завершенных этапа", "завершенных этапов")?></a></div>
+<div class="b-layout__txt b-layout__txt_padleft_35 b-layout__txt_padtop_8"><a class="b-layout__link b-layout__link_bordbot_dot_000" href="#"><?= $completed?> <?= ending($completed, "Р·Р°РІРµСЂС€РµРЅРЅС‹Р№ СЌС‚Р°Рї", "Р·Р°РІРµСЂС€РµРЅРЅС‹С… СЌС‚Р°РїР°", "Р·Р°РІРµСЂС€РµРЅРЅС‹С… СЌС‚Р°РїРѕРІ")?></a></div>
 <? }//if?>
 <? include($_SERVER['DOCUMENT_ROOT']."/sbr/{$fpath}/tpl.alert.php");?>

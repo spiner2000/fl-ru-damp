@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Константа для classes/stdf.php 
+ * РљРѕРЅСЃС‚Р°РЅС‚Р° РґР»СЏ classes/stdf.php 
  */
 define('IS_PGQ', 1);
 

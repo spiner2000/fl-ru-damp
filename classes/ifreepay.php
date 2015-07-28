@@ -8,99 +8,99 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/sms_services.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/memBuff.php";
 /**
  *
- * Оплата с помощью SMS через сервис IFree.
+ * РћРїР»Р°С‚Р° СЃ РїРѕРјРѕС‰СЊСЋ SMS С‡РµСЂРµР· СЃРµСЂРІРёСЃ IFree.
  *
  */
 class ifreepay extends account
 {
     
 	/**
-	 * Личный секретный ключ для проверки того, что данные пришли от ifree
+	 * Р›РёС‡РЅС‹Р№ СЃРµРєСЂРµС‚РЅС‹Р№ РєР»СЋС‡ РґР»СЏ РїСЂРѕРІРµСЂРєРё С‚РѕРіРѕ, С‡С‚Рѕ РґР°РЅРЅС‹Рµ РїСЂРёС€Р»Рё РѕС‚ ifree
 	 *
 	 */
 	const SECRETKEY      = IFREE_KEY;
 	/**
-	 * Личный секретный ключ для дебага
+	 * Р›РёС‡РЅС‹Р№ СЃРµРєСЂРµС‚РЅС‹Р№ РєР»СЋС‡ РґР»СЏ РґРµР±Р°РіР°
 	 *
 	 */
     const DEBUGSECRETKEY = IFREE_DEBUG_KEY;
 	/**
-	 * ID системы оплаты через SMS
+	 * ID СЃРёСЃС‚РµРјС‹ РѕРїР»Р°С‚С‹ С‡РµСЂРµР· SMS
 	 *
 	 */
 	const PAYMENT_SYS    = 7;
 
 	
     /**
-	 * Полученные от ifree данные
+	 * РџРѕР»СѓС‡РµРЅРЅС‹Рµ РѕС‚ ifree РґР°РЅРЅС‹Рµ
 	 *
 	 * @var string
 	 */
 	private $_request;
     /**
-     * Код оплачиваемого сервиса
+     * РљРѕРґ РѕРїР»Р°С‡РёРІР°РµРјРѕРіРѕ СЃРµСЂРІРёСЃР°
      *
      * @var integer
      */
     private $_type;
     /**
-     * Пользователь который произвел платеж
+     * РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РєРѕС‚РѕСЂС‹Р№ РїСЂРѕРёР·РІРµР» РїР»Р°С‚РµР¶
      *
      * @var object
      */
     private $_user;
     /**
-     * Код платежа текущей операции из op_codes
+     * РљРѕРґ РїР»Р°С‚РµР¶Р° С‚РµРєСѓС‰РµР№ РѕРїРµСЂР°С†РёРё РёР· op_codes
      *
      * @var integer
      */
     private $_opcode;
     /**
-	 * Префикс, который указывает пользователь в SMS для оплаты наших сервисов
+	 * РџСЂРµС„РёРєСЃ, РєРѕС‚РѕСЂС‹Р№ СѓРєР°Р·С‹РІР°РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІ SMS РґР»СЏ РѕРїР»Р°С‚С‹ РЅР°С€РёС… СЃРµСЂРІРёСЃРѕРІ
 	 *
 	 * @var string
 	 */
 	private $_smsPrefix = 'free';
 	/**
-	 * Индекс массива - код оплачиваемого сервиса, который указывает пользователь в SMS
-	 * Значение - код оплаты в таблице op_codes
+	 * РРЅРґРµРєСЃ РјР°СЃСЃРёРІР° - РєРѕРґ РѕРїР»Р°С‡РёРІР°РµРјРѕРіРѕ СЃРµСЂРІРёСЃР°, РєРѕС‚РѕСЂС‹Р№ СѓРєР°Р·С‹РІР°РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІ SMS
+	 * Р—РЅР°С‡РµРЅРёРµ - РєРѕРґ РѕРїР»Р°С‚С‹ РІ С‚Р°Р±Р»РёС†Рµ op_codes
 	 *
 	 * @var array
 	 */
-	private $_opcodes = array(1=>12, 2=>71); // Отрубили покупку ответов на проекты: 3=>62
+	private $_opcodes = array(1=>12, 2=>71); // РћС‚СЂСѓР±РёР»Рё РїРѕРєСѓРїРєСѓ РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚С‹: 3=>62
 	/**
-	 * SMS текст присланный пользователем.
+	 * SMS С‚РµРєСЃС‚ РїСЂРёСЃР»Р°РЅРЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј.
 	 *
 	 * @var string
 	 */
 	private $_smsDecoded = '';
 	/**
-	 * Данные о тарифе за оплачиваемый сервис.
+	 * Р”Р°РЅРЅС‹Рµ Рѕ С‚Р°СЂРёС„Рµ Р·Р° РѕРїР»Р°С‡РёРІР°РµРјС‹Р№ СЃРµСЂРІРёСЃ.
 	 * @see sms_services::tariffs
 	 *
 	 * @var array
 	 */
 	private $_tariff = array();
 	/**
-	 * Прошли ли проверку данные от ifree
+	 * РџСЂРѕС€Р»Рё Р»Рё РїСЂРѕРІРµСЂРєСѓ РґР°РЅРЅС‹Рµ РѕС‚ ifree
 	 *
 	 * @var boolean
 	 */
 	private $_isValidated = false;
 
  /**
-  * ИД незавершенной операции. Используется для блокировки
+  * РР” РЅРµР·Р°РІРµСЂС€РµРЅРЅРѕР№ РѕРїРµСЂР°С†РёРё. РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ Р±Р»РѕРєРёСЂРѕРІРєРё
   * 
   * @var string 
   */
  private $_oplock;
 
     /**
-	 * Конструктор. Выполняет все необходимые операцации по проверке пришедших данных и оплате сервисов.
+	 * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ. Р’С‹РїРѕР»РЅСЏРµС‚ РІСЃРµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РѕРїРµСЂР°С†Р°С†РёРё РїРѕ РїСЂРѕРІРµСЂРєРµ РїСЂРёС€РµРґС€РёС… РґР°РЅРЅС‹С… Рё РѕРїР»Р°С‚Рµ СЃРµСЂРІРёСЃРѕРІ.
 	 * 
-	 * @param   string   $request          пришедший от ifree запрос
-	 * @param   boolean  $validate         проверить пришедшие данные?
-	 * @param   boolean  $processRequest   произвести оплату, если данные прошли проверку?
+	 * @param   string   $request          РїСЂРёС€РµРґС€РёР№ РѕС‚ ifree Р·Р°РїСЂРѕСЃ
+	 * @param   boolean  $validate         РїСЂРѕРІРµСЂРёС‚СЊ РїСЂРёС€РµРґС€РёРµ РґР°РЅРЅС‹Рµ?
+	 * @param   boolean  $processRequest   РїСЂРѕРёР·РІРµСЃС‚Рё РѕРїР»Р°С‚Сѓ, РµСЃР»Рё РґР°РЅРЅС‹Рµ РїСЂРѕС€Р»Рё РїСЂРѕРІРµСЂРєСѓ?
 	 */
 	function __construct($request, $validate = false, $processRequest = false)
     {
@@ -113,18 +113,18 @@ class ifreepay extends account
 
 
     /**
-	 * Проверяет на корректность запрос от ifree и заполняет свойства пришедшими от него данными.
-	 * В случае ошибки работа скрипта завершается.
+	 * РџСЂРѕРІРµСЂСЏРµС‚ РЅР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ Р·Р°РїСЂРѕСЃ РѕС‚ ifree Рё Р·Р°РїРѕР»РЅСЏРµС‚ СЃРІРѕР№СЃС‚РІР° РїСЂРёС€РµРґС€РёРјРё РѕС‚ РЅРµРіРѕ РґР°РЅРЅС‹РјРё.
+	 * Р’ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё СЂР°Р±РѕС‚Р° СЃРєСЂРёРїС‚Р° Р·Р°РІРµСЂС€Р°РµС‚СЃСЏ.
 	 */
 	public function validate()
     {
-        // отключено #0019358
-        $this->_errorif(true, false, 'Сервис недоступен.');
+        // РѕС‚РєР»СЋС‡РµРЅРѕ #0019358
+        $this->_errorif(true, false, 'РЎРµСЂРІРёСЃ РЅРµРґРѕСЃС‚СѓРїРµРЅ.');
         
         if(isset($this->_request['test']))
             $this->_response( !trim($this->_request['test']) ? 'OK' : $this->_request['test']);
             
-        $this->_errorif(!$this->_request['evtId'], 'Неверный запрос.');
+        $this->_errorif(!$this->_request['evtId'], 'РќРµРІРµСЂРЅС‹Р№ Р·Р°РїСЂРѕСЃ.');
 
         $add_value = "";
         if($this->_request['retry'])
@@ -133,40 +133,40 @@ class ifreepay extends account
             $add_value .= $this->_request['debug'].self::DEBUGSECRETKEY;
         
         $valid = md5($this->_request['serviceNumber'].$this->_request['smsText'].$this->_request['country'].$this->_request['abonentId'].self::SECRETKEY.$this->_request['now'].$add_value);
-        $this->_errorif(strcasecmp($valid, $this->_request['md5key']) != 0, "Неверный запрос.", "Несовпадение md5key.");
+        $this->_errorif(strcasecmp($valid, $this->_request['md5key']) != 0, "РќРµРІРµСЂРЅС‹Р№ Р·Р°РїСЂРѕСЃ.", "РќРµСЃРѕРІРїР°РґРµРЅРёРµ md5key.");
 
         $this->_smsDecoded = base64_decode($this->_request['smsText']);
 
         list($pfx, $this->_type, $login) = preg_split('/[\s+]+/', $this->_smsDecoded);
 
-        $this->_errorif(strtolower($pfx) != $this->_smsPrefix, "Неверный формат запроса.");
-        $this->_errorif(!$this->_type, "Не указан тип услуги.");
-        $this->_errorif(!($this->_opcode = $this->_opcodes[$this->_type]), "Тип услуги не найден.");
+        $this->_errorif(strtolower($pfx) != $this->_smsPrefix, "РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ Р·Р°РїСЂРѕСЃР°.");
+        $this->_errorif(!$this->_type, "РќРµ СѓРєР°Р·Р°РЅ С‚РёРї СѓСЃР»СѓРіРё.");
+        $this->_errorif(!($this->_opcode = $this->_opcodes[$this->_type]), "РўРёРї СѓСЃР»СѓРіРё РЅРµ РЅР°Р№РґРµРЅ.");
         $this->_tariff = sms_services::checkTariff($this->_type, $this->_request['serviceNumber'], $this->_request['country'], $err);
-        $this->_errorif($err == 1, "Тип услуги не найден.");
-        $this->_errorif($err == 2, "Неверный сервисный номер.");
-        $this->_errorif($err == 3, "Ошибочный запрос.", "Страна абонента не распознана.");
-        $this->_errorif(!$login, "Не указан логин пользователя.");
+        $this->_errorif($err == 1, "РўРёРї СѓСЃР»СѓРіРё РЅРµ РЅР°Р№РґРµРЅ.");
+        $this->_errorif($err == 2, "РќРµРІРµСЂРЅС‹Р№ СЃРµСЂРІРёСЃРЅС‹Р№ РЅРѕРјРµСЂ.");
+        $this->_errorif($err == 3, "РћС€РёР±РѕС‡РЅС‹Р№ Р·Р°РїСЂРѕСЃ.", "РЎС‚СЂР°РЅР° Р°Р±РѕРЅРµРЅС‚Р° РЅРµ СЂР°СЃРїРѕР·РЅР°РЅР°.");
+        $this->_errorif(!$login, "РќРµ СѓРєР°Р·Р°РЅ Р»РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.");
         $this->_user = new users();
         $this->_user->GetUser($login);
-        $this->_errorif(!$this->_user->uid, "Пользователь с логином {$login} не найден.");
+        $this->_errorif(!$this->_user->uid, "РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ Р»РѕРіРёРЅРѕРј {$login} РЅРµ РЅР°Р№РґРµРЅ.");
     
         $this->_isValidated = true;
     }
 
 	/**
-	 * Оплата выбранного сервиса и ответ пользователю об успехе или ошибке.
+	 * РћРїР»Р°С‚Р° РІС‹Р±СЂР°РЅРЅРѕРіРѕ СЃРµСЂРІРёСЃР° Рё РѕС‚РІРµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ РѕР± СѓСЃРїРµС…Рµ РёР»Рё РѕС€РёР±РєРµ.
 	 */
     public function processRequest()
     {
         if(!$this->_isValidated)
             $this->validate();
         
-        // Блокируем входящие запросы с данным ид., пока текущая операция не выполнится (см. self::_response()) 
+        // Р‘Р»РѕРєРёСЂСѓРµРј РІС…РѕРґСЏС‰РёРµ Р·Р°РїСЂРѕСЃС‹ СЃ РґР°РЅРЅС‹Рј РёРґ., РїРѕРєР° С‚РµРєСѓС‰Р°СЏ РѕРїРµСЂР°С†РёСЏ РЅРµ РІС‹РїРѕР»РЅРёС‚СЃСЏ (СЃРј. self::_response()) 
         $mcache = new memBuff();
         $mkey = 'ifreepay.evtId'.$this->_request['evtId'];
         if ($mcache->get($mkey)) {
-            $this->_errorif(TRUE, 'Предыдущий запрос в процессе обработки.');
+            $this->_errorif(TRUE, 'РџСЂРµРґС‹РґСѓС‰РёР№ Р·Р°РїСЂРѕСЃ РІ РїСЂРѕС†РµСЃСЃРµ РѕР±СЂР°Р±РѕС‚РєРё.');
         }
         $mcache->set($mkey, 1, 60);
         $this->_oplock = $mkey;
@@ -175,14 +175,14 @@ class ifreepay extends account
         $dup = 0;
         $profit = floatval($this->_request['profit']);
         $currency_str = trim(strtoupper($this->_request['profitCurrency']));
-        // Внимание! Прежде чем менять текст описания операции, загляните в account::getSmsInfo() и sms_service::checkEvtId().
-        $descr = "SMS #{$this->_request['evtId']} с номера {$this->_request['phone']} ({$this->_request['country']})"
-               . " на номер {$this->_request['serviceNumber']}, ID абонента {$this->_request['abonentId']},"
-               . " оператор {$this->_request['operator']}, текст: {$this->_smsDecoded}, обработан {$this->_request['now']},"
-               . " профит {$profit} {$currency_str},"
-               . " номер попытки: ".intval($this->_request['retry']);
+        // Р’РЅРёРјР°РЅРёРµ! РџСЂРµР¶РґРµ С‡РµРј РјРµРЅСЏС‚СЊ С‚РµРєСЃС‚ РѕРїРёСЃР°РЅРёСЏ РѕРїРµСЂР°С†РёРё, Р·Р°РіР»СЏРЅРёС‚Рµ РІ account::getSmsInfo() Рё sms_service::checkEvtId().
+        $descr = "SMS #{$this->_request['evtId']} СЃ РЅРѕРјРµСЂР° {$this->_request['phone']} ({$this->_request['country']})"
+               . " РЅР° РЅРѕРјРµСЂ {$this->_request['serviceNumber']}, ID Р°Р±РѕРЅРµРЅС‚Р° {$this->_request['abonentId']},"
+               . " РѕРїРµСЂР°С‚РѕСЂ {$this->_request['operator']}, С‚РµРєСЃС‚: {$this->_smsDecoded}, РѕР±СЂР°Р±РѕС‚Р°РЅ {$this->_request['now']},"
+               . " РїСЂРѕС„РёС‚ {$profit} {$currency_str},"
+               . " РЅРѕРјРµСЂ РїРѕРїС‹С‚РєРё: ".intval($this->_request['retry']);
                
-        // Для обработки повторных запросов (в случае сбоев на одной из сторон).
+        // Р”Р»СЏ РѕР±СЂР°Р±РѕС‚РєРё РїРѕРІС‚РѕСЂРЅС‹С… Р·Р°РїСЂРѕСЃРѕРІ (РІ СЃР»СѓС‡Р°Рµ СЃР±РѕРµРІ РЅР° РѕРґРЅРѕР№ РёР· СЃС‚РѕСЂРѕРЅ).
         if(intval($this->_request['retry']) > 0) {
             $dup = sms_services::checkEvtId($this->_request['evtId'], $op_id);
         }
@@ -191,29 +191,29 @@ class ifreepay extends account
             case 1:
                 if (!$dup && $operator != 'i-Free') {
                     $this->GetInfo($this->_user->uid);
-                    $this->_errorif(!$this->id, 'Счет пользователя не открыт.');
+                    $this->_errorif(!$this->id, 'РЎС‡РµС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅРµ РѕС‚РєСЂС‹С‚.');
                     $error = $this->deposit($op_id, $this->id, $this->_tariff['fm_sum'], $descr, self::PAYMENT_SYS, $this->_tariff['usd_sum'], $this->_opcode);
                     $this->_errorif(!!$error, $error);
                 }
-                $res_text = "Ваш счет пополнен на {$this->_tariff['fm_sum']} FM";
+                $res_text = "Р’Р°С€ СЃС‡РµС‚ РїРѕРїРѕР»РЅРµРЅ РЅР° {$this->_tariff['fm_sum']} FM";
             case 2:
                 $new_password = users::ResetPasswordSMS($this->_user->uid,$this->_request['phone']);
-                $this->_errorif(!$new_password, "Неверный логин или телефон не привязан к аккаунту.");
+                $this->_errorif(!$new_password, "РќРµРІРµСЂРЅС‹Р№ Р»РѕРіРёРЅ РёР»Рё С‚РµР»РµС„РѕРЅ РЅРµ РїСЂРёРІСЏР·Р°РЅ Рє Р°РєРєР°СѓРЅС‚Сѓ.");
                 if (!$dup) {
-                    $this->_errorif(!($tr_id = $this->start_transaction($this->_user->uid)), "Ошибка при проведении операции по счету.");
-                    $this->_errorif($this->BuyFromSMS($op_id, $tr_id, $this->_opcode, $this->_user->uid, $descr, '', $this->_tariff['usd_sum'], 1, self::PAYMENT_SYS), "Ошибка при проведении денежной операции.");
+                    $this->_errorif(!($tr_id = $this->start_transaction($this->_user->uid)), "РћС€РёР±РєР° РїСЂРё РїСЂРѕРІРµРґРµРЅРёРё РѕРїРµСЂР°С†РёРё РїРѕ СЃС‡РµС‚Сѓ.");
+                    $this->_errorif($this->BuyFromSMS($op_id, $tr_id, $this->_opcode, $this->_user->uid, $descr, '', $this->_tariff['usd_sum'], 1, self::PAYMENT_SYS), "РћС€РёР±РєР° РїСЂРё РїСЂРѕРІРµРґРµРЅРёРё РґРµРЅРµР¶РЅРѕР№ РѕРїРµСЂР°С†РёРё.");
                 }
-                $res_text = "Ваш новый пароль: {$new_password}";
+                $res_text = "Р’Р°С€ РЅРѕРІС‹Р№ РїР°СЂРѕР»СЊ: {$new_password}";
             case 3:
                 if (!$dup) {
                     $answers = new projects_offers_answers;
-                    $this->_errorif(!$answers->AddPayAnswers($this->_user->uid, 1), "Ошибка добавления ответа.");
-                    $this->_errorif(!($tr_id = $this->start_transaction($this->_user->uid)), "Ошибка при проведении операции по счету.");
-                    $this->_errorif($this->BuyFromSMS($op_id, $tr_id, $this->_opcode, $this->_user->uid, $descr, '', $this->_tariff['usd_sum'], 1, self::PAYMENT_SYS), "Ошибка при проведении денежной операции.");
+                    $this->_errorif(!$answers->AddPayAnswers($this->_user->uid, 1), "РћС€РёР±РєР° РґРѕР±Р°РІР»РµРЅРёСЏ РѕС‚РІРµС‚Р°.");
+                    $this->_errorif(!($tr_id = $this->start_transaction($this->_user->uid)), "РћС€РёР±РєР° РїСЂРё РїСЂРѕРІРµРґРµРЅРёРё РѕРїРµСЂР°С†РёРё РїРѕ СЃС‡РµС‚Сѓ.");
+                    $this->_errorif($this->BuyFromSMS($op_id, $tr_id, $this->_opcode, $this->_user->uid, $descr, '', $this->_tariff['usd_sum'], 1, self::PAYMENT_SYS), "РћС€РёР±РєР° РїСЂРё РїСЂРѕРІРµРґРµРЅРёРё РґРµРЅРµР¶РЅРѕР№ РѕРїРµСЂР°С†РёРё.");
                 }
-                $res_text = 'Спасибо за покупку. Теперь вы можете ответить на проект.';
+                $res_text = 'РЎРїР°СЃРёР±Рѕ Р·Р° РїРѕРєСѓРїРєСѓ. РўРµРїРµСЂСЊ РІС‹ РјРѕР¶РµС‚Рµ РѕС‚РІРµС‚РёС‚СЊ РЅР° РїСЂРѕРµРєС‚.';
             default:
-                $this->_errorif(true, "Тип услуги не найден.");
+                $this->_errorif(true, "РўРёРї СѓСЃР»СѓРіРё РЅРµ РЅР°Р№РґРµРЅ.");
         }
         
         if(!$dup || $dup == sms_services::DUP_OP_NOTSAVED) {
@@ -225,10 +225,10 @@ class ifreepay extends account
 
 
     /**
-	 * Обработка ошибок
-	 * @param   boolean   $assert    флаг ошибки. Если TRUE, то сообщение уходит сервису ifree и работа завершается. Если FALSE - ничего не делать.
-	 * @param   string    $userErr   сообщение об ошибке, которое отправляется в виде SMS пользователю. Если сообщение не указано, то ничего не отправляется.
-	 * @param   string    $ifreeErr  сообщение об ошибке, которое отправляется сервису ifree. Если сообщение не указано, то используется $userErr
+	 * РћР±СЂР°Р±РѕС‚РєР° РѕС€РёР±РѕРє
+	 * @param   boolean   $assert    С„Р»Р°Рі РѕС€РёР±РєРё. Р•СЃР»Рё TRUE, С‚Рѕ СЃРѕРѕР±С‰РµРЅРёРµ СѓС…РѕРґРёС‚ СЃРµСЂРІРёСЃСѓ ifree Рё СЂР°Р±РѕС‚Р° Р·Р°РІРµСЂС€Р°РµС‚СЃСЏ. Р•СЃР»Рё FALSE - РЅРёС‡РµРіРѕ РЅРµ РґРµР»Р°С‚СЊ.
+	 * @param   string    $userErr   СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ, РєРѕС‚РѕСЂРѕРµ РѕС‚РїСЂР°РІР»СЏРµС‚СЃСЏ РІ РІРёРґРµ SMS РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ. Р•СЃР»Рё СЃРѕРѕР±С‰РµРЅРёРµ РЅРµ СѓРєР°Р·Р°РЅРѕ, С‚Рѕ РЅРёС‡РµРіРѕ РЅРµ РѕС‚РїСЂР°РІР»СЏРµС‚СЃСЏ.
+	 * @param   string    $ifreeErr  СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ, РєРѕС‚РѕСЂРѕРµ РѕС‚РїСЂР°РІР»СЏРµС‚СЃСЏ СЃРµСЂРІРёСЃСѓ ifree. Р•СЃР»Рё СЃРѕРѕР±С‰РµРЅРёРµ РЅРµ СѓРєР°Р·Р°РЅРѕ, С‚Рѕ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ $userErr
 	 */
 	private function _errorif($assert, $userErr, $ifreeErr = NULL)
     {
@@ -253,8 +253,8 @@ class ifreepay extends account
 
 
     /**
-	 * Посылает ответ сервису ifree, который в свою очередь пересылает ее в виде SMS абоненту, и завершает работу.
-	 * @param   string   $sms   текст сообщения
+	 * РџРѕСЃС‹Р»Р°РµС‚ РѕС‚РІРµС‚ СЃРµСЂРІРёСЃСѓ ifree, РєРѕС‚РѕСЂС‹Р№ РІ СЃРІРѕСЋ РѕС‡РµСЂРµРґСЊ РїРµСЂРµСЃС‹Р»Р°РµС‚ РµРµ РІ РІРёРґРµ SMS Р°Р±РѕРЅРµРЅС‚Сѓ, Рё Р·Р°РІРµСЂС€Р°РµС‚ СЂР°Р±РѕС‚Сѓ.
+	 * @param   string   $sms   С‚РµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ
 	 */
 	private function _response($sms)
     {

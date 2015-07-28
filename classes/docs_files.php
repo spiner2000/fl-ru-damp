@@ -1,22 +1,22 @@
 <?
 
 /**
- * ïîäêëþ÷àåì ôàéë ñ îñíîâíûìè ôóíêöèÿìè
+ * Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼ Ñ„Ð°Ð¹Ð» Ñ Ð¾ÑÐ½Ð¾Ð²Ð½Ñ‹Ð¼Ð¸ Ñ„ÑƒÐ½ÐºÑ†Ð¸ÑÐ¼Ð¸
  *
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
  *
- * Êëàññ äëÿ ðàáîòû ñ ôàéëàìè
+ * ÐšÐ»Ð°ÑÑ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ Ñ„Ð°Ð¹Ð»Ð°Ð¼Ð¸
  *
  */
 class docs_files {
 
     /**
-     * Âçÿòü ôàéëû äëÿ îïðåäåëåííîãî äîêóìåíòà
-     * $param integer $docs_id - ÈÄ äîêóìåíòà
-     * @return array Äàííûå âûáîðêè
+     * Ð’Ð·ÑÑ‚ÑŒ Ñ„Ð°Ð¹Ð»Ñ‹ Ð´Ð»Ñ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð½Ð¾Ð³Ð¾ Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð°
+     * $param integer $docs_id - Ð˜Ð” Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð°
+     * @return array Ð”Ð°Ð½Ð½Ñ‹Ðµ Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐ¸
      */
     public static function getDocsFiles($docs_id) {
         global $DB;
@@ -39,9 +39,9 @@ class docs_files {
     }
 
     /**
-     * Óñòàíàâëèâàåò êàêîé èç ïðèêðåïëåííûõ ôàéëîâ ïåðâûé, à êàêîé ïîñëåäíûé ïî èíäåêñó ñîðòèðîâêè
+     * Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÑ‚ ÐºÐ°ÐºÐ¾Ð¹ Ð¸Ð· Ð¿Ñ€Ð¸ÐºÑ€ÐµÐ¿Ð»ÐµÐ½Ð½Ñ‹Ñ… Ñ„Ð°Ð¹Ð»Ð¾Ð² Ð¿ÐµÑ€Ð²Ñ‹Ð¹, Ð° ÐºÐ°ÐºÐ¾Ð¹ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ñ‹Ð¹ Ð¿Ð¾ Ð¸Ð½Ð´ÐµÐºÑÑƒ ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ¸
      * 
-     * @param array $data ôàéëû ïðèêðåïåëåííûå ê äîêóìåíòó.
+     * @param array $data Ñ„Ð°Ð¹Ð»Ñ‹ Ð¿Ñ€Ð¸ÐºÑ€ÐµÐ¿ÐµÐ»ÐµÐ½Ð½Ñ‹Ðµ Ðº Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ñƒ.
      */
     public static function SelectMinMax(&$data){
         $min = $data[0]['sort'];
@@ -65,10 +65,10 @@ class docs_files {
     }
 
     /**
-     * Âçÿòü îïðåäåëåííûé ôàéë
+     * Ð’Ð·ÑÑ‚ÑŒ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð½Ñ‹Ð¹ Ñ„Ð°Ð¹Ð»
      *
-     * @param integer $id ÈÄ ôàéëà
-     * @return array Äàííûå âûáîðêè
+     * @param integer $id Ð˜Ð” Ñ„Ð°Ð¹Ð»Ð°
+     * @return array Ð”Ð°Ð½Ð½Ñ‹Ðµ Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐ¸
      */
     public static function getFile($id) {
         global $DB;
@@ -81,12 +81,12 @@ class docs_files {
     }
 
     /**
-     * Äîáàâèòü íîâûé ôàéë â ÁÄ
+     * Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð½Ð¾Ð²Ñ‹Ð¹ Ñ„Ð°Ð¹Ð» Ð² Ð‘Ð”
      *
-     * @param integer $docs_id      ÈÄ äîêóìåíòà
-     * @param string  $file_id      ÈÄ ôàéëà èç òàáëèöû file
-     * @param string  $file_name    Èìÿ ôàéëà äëÿ âûâîäà
-     * @return string Ñîîáùåíèå îá îøèáêå
+     * @param integer $docs_id      Ð˜Ð” Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð°
+     * @param string  $file_id      Ð˜Ð” Ñ„Ð°Ð¹Ð»Ð° Ð¸Ð· Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ‹ file
+     * @param string  $file_name    Ð˜Ð¼Ñ Ñ„Ð°Ð¹Ð»Ð° Ð´Ð»Ñ Ð²Ñ‹Ð²Ð¾Ð´Ð°
+     * @return string Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
      */
     public static function Add($docs_id, $file_id, $file_name) {
         global $DB;
@@ -100,10 +100,10 @@ class docs_files {
     }
 
     /**
-     * Óäàëèòü Ôàéë
+     * Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ Ð¤Ð°Ð¹Ð»
      *
-     * @param integer $id Èä ôàéëà
-     * @return string Ñîîáùåíèå îá îøèáêå
+     * @param integer $id Ð˜Ð´ Ñ„Ð°Ð¹Ð»Ð°
+     * @return string Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
      */
     public static function Delete($id) {
         global $DB;
@@ -118,10 +118,10 @@ class docs_files {
     }
 
     /**
-     * Ôóíêöèÿ ìåíÿåò ïîçèöèþ ôàéëà â ñîðòèðîâêå íà -1
+     * Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð¼ÐµÐ½ÑÐµÑ‚ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸ÑŽ Ñ„Ð°Ð¹Ð»Ð° Ð² ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐµ Ð½Ð° -1
      *
-     * @param integer $id ÈÄ ôàéëà
-     * @return integer ÈÄ äîêóìåíòà (íóæíî äëÿ xajax)
+     * @param integer $id Ð˜Ð” Ñ„Ð°Ð¹Ð»Ð°
+     * @return integer Ð˜Ð” Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð° (Ð½ÑƒÐ¶Ð½Ð¾ Ð´Ð»Ñ xajax)
      */
     public static function MoveDown($id) {
         global $DB;
@@ -138,10 +138,10 @@ class docs_files {
     }
 
         /**
-     * Ôóíêöèÿ ìåíÿåò ïîçèöèþ ôàéëà â ñîðòèðîâêå íà +1
+     * Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð¼ÐµÐ½ÑÐµÑ‚ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸ÑŽ Ñ„Ð°Ð¹Ð»Ð° Ð² ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐµ Ð½Ð° +1
      *
-     * @param integer $id ÈÄ ôàéëà
-     * @return integer ÈÄ äîêóìåíòà (íóæíî äëÿ xajax)
+     * @param integer $id Ð˜Ð” Ñ„Ð°Ð¹Ð»Ð°
+     * @return integer Ð˜Ð” Ð´Ð¾ÐºÑƒÐ¼ÐµÐ½Ñ‚Ð° (Ð½ÑƒÐ¶Ð½Ð¾ Ð´Ð»Ñ xajax)
      */
     public static function MoveUp($id) {
         global $DB;

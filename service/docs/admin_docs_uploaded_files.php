@@ -4,6 +4,6 @@
         <img onclick="xajax_FileMoveTo(<?= $file['id'];?>,'up'); return false;" style="cursor:pointer" src="/images/arrow2-top<?= $file['is_first'] == 't' ? '-a' : '';?>.png" alt="">
         <img onclick="xajax_FileMoveTo(<?= $file['id'];?>,'down'); return false;" style="cursor:pointer" src="/images/arrow2-bottom<?= $file['is_last'] == 't' ? '-a' : '';?>.png" alt="">
     </span>
-    <a href="javascript:void(0)" onclick="if(confirm('Âû äåéñòâèòåëüíî õîòèòå óäàëèòü âûáðàííûé ôàéë?')) xajax_DeleteFile(<?= $file['id'];?>)" title="Óäàëèòü"><img src="/images/btn-remove2.png" alt="Óäàëèòü"></a><a href="" title="<?= trim($file['file_name']);?>" class="mime <?= $file['ico_class'];?>"><?= CutFileName(trim($file['file_name']), 60, " ... ");?></a>
+    <a href="javascript:void(0)" onclick="if(confirm('Ð’Ñ‹ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ Ñ…Ð¾Ñ‚Ð¸Ñ‚Ðµ ÑƒÐ´Ð°Ð»Ð¸Ñ‚ÑŒ Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð½Ñ‹Ð¹ Ñ„Ð°Ð¹Ð»?')) xajax_DeleteFile(<?= $file['id'];?>)" title="Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ"><img src="/images/btn-remove2.png" alt="Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ"></a><a href="" title="<?= trim($file['file_name']);?>" class="mime <?= $file['ico_class'];?>"><?= CutFileName(trim($file['file_name']), 60, " ... ");?></a>
 </li>
 <?php } ?>

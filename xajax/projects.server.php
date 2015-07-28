@@ -50,11 +50,11 @@ function SwitchOS()
     $_SESSION['os_banner'] = $os;
     if ($os == 1)
     {
-        $objResponse->assign("a_hisho", "innerHTML", 'Свернуть');
+        $objResponse->assign("a_hisho", "innerHTML", 'РЎРІРµСЂРЅСѓС‚СЊ');
     }
     else
     {
-        $objResponse->assign("a_hisho", "innerHTML", 'Развернуть');
+        $objResponse->assign("a_hisho", "innerHTML", 'Р Р°Р·РІРµСЂРЅСѓС‚СЊ');
     }
     return $objResponse;
 }
@@ -65,13 +65,13 @@ function HideTopProjects($cmd) {
     $objResponse = new xajaxResponse();
     if($cmd=='hide') {
         $objResponse->script('$("hide_top_project_lnk").set("cmd", "show");');
-        $objResponse->script('$("hide_top_project_lnk").set("html", "Показать все");');
+        $objResponse->script('$("hide_top_project_lnk").set("html", "РџРѕРєР°Р·Р°С‚СЊ РІСЃРµ");');
         $objResponse->script('$$(".topprjpay").each(function(el){ el.hide(); });');
         setcookie("hidetopprjlenta", '1', time()+60*60*24*30, '/');
         setcookie("hidetopprjlenta_time", time(), time()+60*60*24*30, '/');
     } elseif($cmd=='show') {
         $objResponse->script('$("hide_top_project_lnk").set("cmd", "hide");');
-        $objResponse->script('$("hide_top_project_lnk").set("html", "Скрыть все");');
+        $objResponse->script('$("hide_top_project_lnk").set("html", "РЎРєСЂС‹С‚СЊ РІСЃРµ");');
         $objResponse->script('$$(".topprjpay").each(function(el){ el.show(); });');
         setcookie("hidetopprjlenta", '0', time()+60*60*24*30, '/');
     }
@@ -79,16 +79,16 @@ function HideTopProjects($cmd) {
 }
 
 /**
- * Скрывает или отображает платные проекты.
+ * РЎРєСЂС‹РІР°РµС‚ РёР»Рё РѕС‚РѕР±СЂР°Р¶Р°РµС‚ РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹.
  *
  * @see projects_filter::ShowClosedProjects()
  * @see projects_filter::initClosedProjects()
  *
- * @param string $id     id определенного или all для всех
- * @param string $type   скрыть (hide) или показать (unhide)
- * @param int $kind  тип текущей закладки главной страницы (см. new_projects::getProjects())
- * @param int $page  номер текущей страницы.
- * @param bool $filter  включен ли фильтр у юзера.
+ * @param string $id     id РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ РёР»Рё all РґР»СЏ РІСЃРµС…
+ * @param string $type   СЃРєСЂС‹С‚СЊ (hide) РёР»Рё РїРѕРєР°Р·Р°С‚СЊ (unhide)
+ * @param int $kind  С‚РёРї С‚РµРєСѓС‰РµР№ Р·Р°РєР»Р°РґРєРё РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹ (СЃРј. new_projects::getProjects())
+ * @param int $page  РЅРѕРјРµСЂ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹.
+ * @param bool $filter  РІРєР»СЋС‡РµРЅ Р»Рё С„РёР»СЊС‚СЂ Сѓ СЋР·РµСЂР°.
  *
  * @return object xajaxResponse
  */
@@ -189,17 +189,17 @@ function _HideProject($id, $type, $kind, $page, $filter) {
     setcookie("ph[{$uid}]", $ccph ? implode(',',$ccph) : '', time()+60*60*24*30, '/');
 
     if ($kind == 2 || $kind == 7) {
-        $prjWord_1 = 'скрытый конкурс';
-        $prjWord_2 = 'скрытых конкурса';
-        $prjWord_5 = 'скрытых конкурсов';
+        $prjWord_1 = 'СЃРєСЂС‹С‚С‹Р№ РєРѕРЅРєСѓСЂСЃ';
+        $prjWord_2 = 'СЃРєСЂС‹С‚С‹С… РєРѕРЅРєСѓСЂСЃР°';
+        $prjWord_5 = 'СЃРєСЂС‹С‚С‹С… РєРѕРЅРєСѓСЂСЃРѕРІ';
     } elseif ($kind == 4) {
-        $prjWord_1 = 'скрытая вакансия';
-        $prjWord_2 = 'скрытых вакансии';
-        $prjWord_5 = 'скрытых вакансий';
+        $prjWord_1 = 'СЃРєСЂС‹С‚Р°СЏ РІР°РєР°РЅСЃРёСЏ';
+        $prjWord_2 = 'СЃРєСЂС‹С‚С‹С… РІР°РєР°РЅСЃРёРё';
+        $prjWord_5 = 'СЃРєСЂС‹С‚С‹С… РІР°РєР°РЅСЃРёР№';
     } else {
-        $prjWord_1 = 'скрытый проект';
-        $prjWord_2 = 'скрытых проекта';
-        $prjWord_5 = 'скрытых проектов';
+        $prjWord_1 = 'СЃРєСЂС‹С‚С‹Р№ РїСЂРѕРµРєС‚';
+        $prjWord_2 = 'СЃРєСЂС‹С‚С‹С… РїСЂРѕРµРєС‚Р°';
+        $prjWord_5 = 'СЃРєСЂС‹С‚С‹С… РїСЂРѕРµРєС‚РѕРІ';
     }
 
     $cnt = "";
@@ -207,23 +207,23 @@ function _HideProject($id, $type, $kind, $page, $filter) {
         $cnt =  sizeof($_SESSION['ph']) . " " . ending(sizeof($_SESSION['ph']), $prjWord_1, $prjWord_2, $prjWord_5);
     }
     $objResponse->assign("hide_project_count", "innerHTML", $cnt);
-    // если до этого проекты отображались в режиме "Только название", то сворачиваем их
+    // РµСЃР»Рё РґРѕ СЌС‚РѕРіРѕ РїСЂРѕРµРєС‚С‹ РѕС‚РѕР±СЂР°Р¶Р°Р»РёСЃСЊ РІ СЂРµР¶РёРјРµ "РўРѕР»СЊРєРѕ РЅР°Р·РІР°РЅРёРµ", С‚Рѕ СЃРІРѕСЂР°С‡РёРІР°РµРј РёС…
     $objResponse->call("rollProjects");
 
     return $objResponse;
 }
 
 /**
- * Скрывает или отображает платные проекты.
+ * РЎРєСЂС‹РІР°РµС‚ РёР»Рё РѕС‚РѕР±СЂР°Р¶Р°РµС‚ РїР»Р°С‚РЅС‹Рµ РїСЂРѕРµРєС‚С‹.
  *
  * @see projects_filter::ShowClosedProjects()
  * @see projects_filter::initClosedProjects()
  *
- * @param string $id     id определенного или all для всех
- * @param string $type   скрыть (hide) или показать (unhide)
- * @param int $kind  тип текущей закладки главной страницы (см. new_projects::getProjects())
- * @param int $page  номер текущей страницы.
- * @param bool $filter  включен ли фильтр у юзера.
+ * @param string $id     id РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ РёР»Рё all РґР»СЏ РІСЃРµС…
+ * @param string $type   СЃРєСЂС‹С‚СЊ (hide) РёР»Рё РїРѕРєР°Р·Р°С‚СЊ (unhide)
+ * @param int $kind  С‚РёРї С‚РµРєСѓС‰РµР№ Р·Р°РєР»Р°РґРєРё РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹ (СЃРј. new_projects::getProjects())
+ * @param int $page  РЅРѕРјРµСЂ С‚РµРєСѓС‰РµР№ СЃС‚СЂР°РЅРёС†С‹.
+ * @param bool $filter  РІРєР»СЋС‡РµРЅ Р»Рё С„РёР»СЊС‚СЂ Сѓ СЋР·РµСЂР°.
  *
  * @return object xajaxResponse
  */
@@ -282,7 +282,7 @@ function HideProject($id, $type, $kind, $page, $filter)
     $objResponse->assign("flt-hide-content", "innerHTML", $content);
     $objResponse->assign("flt-hide-cnt", "innerHTML", (sizeof($_SESSION['ph'])?"(".sizeof($_SESSION['ph']).")":""));
     
-    // компенсируем изменение высоты блока скрытых проектов
+    // РєРѕРјРїРµРЅСЃРёСЂСѓРµРј РёР·РјРµРЅРµРЅРёРµ РІС‹СЃРѕС‚С‹ Р±Р»РѕРєР° СЃРєСЂС‹С‚С‹С… РїСЂРѕРµРєС‚РѕРІ
     $objResponse->script("height=$('flt-hide-content').getStyle('height').toInt()+'px';$('flt-hide-content').getParent().setStyle('height', height);
     fbox=$('flt-ph');fslider=new Fx.Slide(fbox.getElement('.flt-cnt'),{duration:400});
     fbox.f_isShw=fbox.hasClass('flt-show');fbox.getElement('.flt-cnt').setStyle('display','block');
@@ -306,9 +306,9 @@ function WstProj($offer_id, $cur_folder = 1)
 		    pobx.parentNode.removeChild(pobx,true);
 		    if(curfc = document.getElementById('prjfld_cnt{$cur_folder}')) {
 		      curfc.innerHTML = parseInt(curfc.innerHTML) + {$r};
-  		    if(wstc = document.getElementById('prjfld_cnt5')) // корзина
+  		    if(wstc = document.getElementById('prjfld_cnt5')) // РєРѕСЂР·РёРЅР°
   		      wstc.innerHTML = parseInt(wstc.innerHTML) - {$r};
-  		    if(allc = document.getElementById('prjfld_cnt0')) // все вместе
+  		    if(allc = document.getElementById('prjfld_cnt0')) // РІСЃРµ РІРјРµСЃС‚Рµ
   		      allc.innerHTML = parseInt(allc.innerHTML) + {$r};
 		    }
 		    dprj();
@@ -316,7 +316,7 @@ function WstProj($offer_id, $cur_folder = 1)
 		");
 	}
 
-    // обновляем мигающий значек проекта
+    // РѕР±РЅРѕРІР»СЏРµРј РјРёРіР°СЋС‰РёР№ Р·РЅР°С‡РµРє РїСЂРѕРµРєС‚Р°
     if (!projects_offers::CheckNewFrlEvents($user_id, false) && !projects_offers_dialogue::CountMessagesForFrl($user_id, true, false)) {
         $objResponse->script("
             if($('new_offers_messages')) $('new_offers_messages').removeClass('l-projects-a');
@@ -333,7 +333,7 @@ function WstProj($offer_id, $cur_folder = 1)
 
 
 /**
- * Проверка показывать ли индикацию Проектов в шапке
+ * РџСЂРѕРІРµСЂРєР° РїРѕРєР°Р·С‹РІР°С‚СЊ Р»Рё РёРЅРґРёРєР°С†РёСЋ РџСЂРѕРµРєС‚РѕРІ РІ С€Р°РїРєРµ
  */
 function getProjectIndication() {
     define('LAST_REFRESH_DISABLE', 1);
@@ -392,7 +392,7 @@ function getPositionProject($id, $top_to, $now, $payed, $post_date, $kind) {
         $page--;
     }
     
-    $html = '<a class="public_blue" href="/projects/?kind='.$kind.'&page='.$page.'#prj'.$id.'">'.$counte_page.'-е по счету ('.$page.'-я страница)</a>';
+    $html = '<a class="public_blue" href="/projects/?kind='.$kind.'&page='.$page.'#prj'.$id.'">'.$counte_page.'-Рµ РїРѕ СЃС‡РµС‚Сѓ ('.$page.'-СЏ СЃС‚СЂР°РЅРёС†Р°)</a>';
     
     $objResponse->assign("prj_pos_{$id}", "innerHTML", $html);
     $objResponse->script("$('pos_link_{$id}').destroy();");
@@ -401,12 +401,12 @@ function getPositionProject($id, $top_to, $now, $payed, $post_date, $kind) {
 }
 
 /**
- * Добавляет жалобу на предложение фрилансера
+ * Р”РѕР±Р°РІР»СЏРµС‚ Р¶Р°Р»РѕР±Сѓ РЅР° РїСЂРµРґР»РѕР¶РµРЅРёРµ С„СЂРёР»Р°РЅСЃРµСЂР°
  * 
- * @param  int $nOfferId Идентификатор предложения на которое жалуются
- * @param  int $nUserId Идентификатор пользователя который жалуется
- * @param  int $nType Тип нарушения
- * @param  string $sMsg Суть жалобы
+ * @param  int $nOfferId РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РЅР° РєРѕС‚РѕСЂРѕРµ Р¶Р°Р»СѓСЋС‚СЃСЏ
+ * @param  int $nUserId РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕС‚РѕСЂС‹Р№ Р¶Р°Р»СѓРµС‚СЃСЏ
+ * @param  int $nType РўРёРї РЅР°СЂСѓС€РµРЅРёСЏ
+ * @param  string $sMsg РЎСѓС‚СЊ Р¶Р°Р»РѕР±С‹
  * @return object xajaxResponse
  */
 function sendOfferComplain( $nOfferId = 0, $nUserId = 0, $nType = 1, $sMsg = '' ) {
@@ -420,7 +420,7 @@ function sendOfferComplain( $nOfferId = 0, $nUserId = 0, $nType = 1, $sMsg = '' 
         
         if ( $offers->getOfferById($nOfferId, false) ) {
             if ( $offers->AddComplain($nOfferId, $nUserId, intval($nType), $sMsg) ) {
-            	$objResponse->script("$('offer_complain_$nOfferId').set('html','Ваша жалоба на рассмотрении');");
+            	$objResponse->script("$('offer_complain_$nOfferId').set('html','Р’Р°С€Р° Р¶Р°Р»РѕР±Р° РЅР° СЂР°СЃСЃРјРѕС‚СЂРµРЅРёРё');");
                 $objResponse->script("$('offer_complain_$nOfferId').set('onclick','');");
             }
         }
@@ -433,12 +433,12 @@ function sendOfferComplain( $nOfferId = 0, $nUserId = 0, $nType = 1, $sMsg = '' 
 }
 
 /**
- * Возвращает список жалоб на предложение фрилансера в админке.
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє Р¶Р°Р»РѕР± РЅР° РїСЂРµРґР»РѕР¶РµРЅРёРµ С„СЂРёР»Р°РЅСЃРµСЂР° РІ Р°РґРјРёРЅРєРµ.
  * 
- * с xajax не работает
+ * СЃ xajax РЅРµ СЂР°Р±РѕС‚Р°РµС‚
  * 
- * @param  int $nOfferId Идентификатор предложения на которое жалуются
- * @return string json_encode данные
+ * @param  int $nOfferId РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїСЂРµРґР»РѕР¶РµРЅРёСЏ РЅР° РєРѕС‚РѕСЂРѕРµ Р¶Р°Р»СѓСЋС‚СЃСЏ
+ * @return string json_encode РґР°РЅРЅС‹Рµ
  */
 function getOfferComplaints( $nOfferId = 0 ) {
     session_start();
@@ -476,13 +476,13 @@ function getOfferComplaints( $nOfferId = 0 ) {
 }
 
 /**
- * Возвращает список жалоб на проект в админке.
+ * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє Р¶Р°Р»РѕР± РЅР° РїСЂРѕРµРєС‚ РІ Р°РґРјРёРЅРєРµ.
  * 
- * с xajax не работает
+ * СЃ xajax РЅРµ СЂР°Р±РѕС‚Р°РµС‚
  * 
- * @param  int $nProjId Идентификатор проекта на который жалуются
- * @param  string $group группа, в которой находится -> (new, approved, refused)
- * @return string json_encode данные
+ * @param  int $nProjId РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїСЂРѕРµРєС‚Р° РЅР° РєРѕС‚РѕСЂС‹Р№ Р¶Р°Р»СѓСЋС‚СЃСЏ
+ * @param  string $group РіСЂСѓРїРїР°, РІ РєРѕС‚РѕСЂРѕР№ РЅР°С…РѕРґРёС‚СЃСЏ -> (new, approved, refused)
+ * @return string json_encode РґР°РЅРЅС‹Рµ
  */
 function getProjectComplaints( $nPrjId = 0 , $group = 'new' ) {
     session_start();

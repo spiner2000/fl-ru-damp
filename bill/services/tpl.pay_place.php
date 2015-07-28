@@ -3,16 +3,16 @@
     <input type="hidden" name="duration" value="0" />
     <input type="hidden" name="auto" value="0" />
     
-    <span class="b-layout__txt b-layout__txt_float_right b-layout__txt_fontsize_11 b-page__desktop b-page__ipad"><a href="/pay_place/top_payed.php" class="b-layout__link promo-link">Подробнее об услуге</a></span>
+    <span class="b-layout__txt b-layout__txt_float_right b-layout__txt_fontsize_11 b-page__desktop b-page__ipad"><a href="/pay_place/top_payed.php" class="b-layout__link promo-link">РџРѕРґСЂРѕР±РЅРµРµ РѕР± СѓСЃР»СѓРіРµ</a></span>
     <h3 class="b-layout__h3 b-layout__h3_padleft_70 b-layout__txt_padleft_null_iphone">
-        Карусель  &#160;&#160;
+        РљР°СЂСѓСЃРµР»СЊ  &#160;&#160;
         <? if($service['type'] == 'lately') { //if?>
-            <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_808080 b-layouyt__txt_weight_normal">Срок действия истек <?= date('d.m.Y', strtotime($service['d']))?></span>
+            <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_808080 b-layouyt__txt_weight_normal">РЎСЂРѕРє РґРµР№СЃС‚РІРёСЏ РёСЃС‚РµРє <?= date('d.m.Y', strtotime($service['d']))?></span>
         <? } //if?>
     </h3>
-    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_20 b-layout__txt_padleft_70 b-layout__txt_padleft_null_iphone">Что может быть заметнее рекламного объявления на главной странице или наверху каталога фрилансеров? Это очень эффективный способ продвижения вашего аккаунта на сайте. Прокатитесь на Карусели и «накатайте» выгодный проект.</div>
+    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_20 b-layout__txt_padleft_70 b-layout__txt_padleft_null_iphone">Р§С‚Рѕ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р·Р°РјРµС‚РЅРµРµ СЂРµРєР»Р°РјРЅРѕРіРѕ РѕР±СЉСЏРІР»РµРЅРёСЏ РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ РёР»Рё РЅР°РІРµСЂС…Сѓ РєР°С‚Р°Р»РѕРіР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ? Р­С‚Рѕ РѕС‡РµРЅСЊ СЌС„С„РµРєС‚РёРІРЅС‹Р№ СЃРїРѕСЃРѕР± РїСЂРѕРґРІРёР¶РµРЅРёСЏ РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р° РЅР° СЃР°Р№С‚Рµ. РџСЂРѕРєР°С‚РёС‚РµСЃСЊ РЅР° РљР°СЂСѓСЃРµР»Рё Рё В«РЅР°РєР°С‚Р°Р№С‚РµВ» РІС‹РіРѕРґРЅС‹Р№ РїСЂРѕРµРєС‚.</div>
     <div class="b-buttons b-buttons_padleft_70 b-buttons_padbot_10 b-layout__txt_padleft_null_iphone">
         <a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green btn-pay"><?= billing::$btn_name_for_type[$service['type']] ?></a>
     </div>
-    <span class="b-layout__txt b-layout__txt_padtop_10 b-layout__txt_fontsize_11 b-page__iphone"><a href="/pay_place/top_payed.php" class="b-layout__link promo-link">Подробнее об услуге</a></span>
+    <span class="b-layout__txt b-layout__txt_padtop_10 b-layout__txt_fontsize_11 b-page__iphone"><a href="/pay_place/top_payed.php" class="b-layout__link promo-link">РџРѕРґСЂРѕР±РЅРµРµ РѕР± СѓСЃР»СѓРіРµ</a></span>
 </div>

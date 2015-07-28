@@ -1,5 +1,5 @@
 <div class="b-layout">
-    <h2 class="b-layout__title b-layout__title_padbot_30">SEO теги</h2>
+    <h2 class="b-layout__title b-layout__title_padbot_30">SEO С‚РµРіРё</h2>
 		
     <?php if($list) { ?>
         <?php include ("tpl.list.php"); ?>

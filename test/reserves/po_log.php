@@ -32,9 +32,9 @@ $results = array();
 
 /*
 $reservesPayout = new ReservesPayout();
-//$reservesPayout->errorLog(111, 'Íåêîððåêòíàÿ ñóììà âûïëàòû2', 1000);
+//$reservesPayout->errorLog(111, 'ÐÐµÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ð°Ñ ÑÑƒÐ¼Ð¼Ð° Ð²Ñ‹Ð¿Ð»Ð°Ñ‚Ñ‹2', 1000);
 
-$techmessage = NULL;//'îïèñàíèå îøèáêè îò ñåðâèñà';
+$techmessage = NULL;//'Ð¾Ð¿Ð¸ÑÐ°Ð½Ð¸Ðµ Ð¾ÑˆÐ¸Ð±ÐºÐ¸ Ð¾Ñ‚ ÑÐµÑ€Ð²Ð¸ÑÐ°';
 if ($techmessage) $techmessage = " ({$techmessage})";
 
 $reservesPayout->errorLog(123, sprintf(

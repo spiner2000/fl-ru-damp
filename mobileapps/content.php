@@ -1,26 +1,26 @@
 <div class="b-layout b-layout__page b-promo">
-            <h1 class="b-page__title b-page__title_center b-page__title_ptsans">Мобильные&nbsp;приложения</h1>
-            <div class="b-txt b-txt_padbot_30 b-txt_center">Мы выпустили первую версию приложения под iPhone и готовим к запуску версию под Android.</div>
+            <h1 class="b-page__title b-page__title_center b-page__title_ptsans">РњРѕР±РёР»СЊРЅС‹Рµ&nbsp;РїСЂРёР»РѕР¶РµРЅРёСЏ</h1>
+            <div class="b-txt b-txt_padbot_30 b-txt_center">РњС‹ РІС‹РїСѓСЃС‚РёР»Рё РїРµСЂРІСѓСЋ РІРµСЂСЃРёСЋ РїСЂРёР»РѕР¶РµРЅРёСЏ РїРѕРґ iPhone Рё РіРѕС‚РѕРІРёРј Рє Р·Р°РїСѓСЃРєСѓ РІРµСЂСЃРёСЋ РїРѕРґ Android.</div>
             <div class="b-promo__wave b-promo__wave_padbot_30"></div>
             <h2 class="b-txt__title b-txt__title_center">iPhone</h2>
             <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_30">
                 <tbody><tr class="b-layout__tr">
                     <td class="b-layout__td b-layout__td_width_450"><img src="/images/apps/1.png"></td>
                     <td class="b-layout__td">
-                        <div class="b-txt b-txt_padbot_20">Для iOS 5 и старше. Оптимизировано под Ретина-дисплей и iPhone 5.</div>
-                        <div class="b-txt b-txt_padbot_10 b-txt_bold">Реализуемый в первой версии функционал:</div>
-                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">регистрация и авторизация;</div>
-                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">просмотр ленты проектов и отдельного проекта;</div>
-                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">публикация проектов;</div>
-                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">ответ на проект для фрилансеров и выбор исполнителя для заказчиков;</div>
-                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">личные сообщения;</div>
-                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">просмотр избранных пользователей;</div>
-                        <div class="b-txt b-txt_padbot_20 b-txt_padleft_20">просмотр профиля пользователя.</div>
-                        <div class="b-txt b-txt_padbot_20  b-txt_bold">Приложение доступно для скачивания в &nbsp;   <a target="_blank" href="https://itunes.apple.com/us/app/fl.ru/id731429117?mt=8" style="border:1px solid #0f71c8; border-radius:5px; padding:3px 5px;" class="b-txt__lnk b-txt__lnk_color_0f71c8 b-txt__lnk_inline-block">AppStore</a></div>
+                        <div class="b-txt b-txt_padbot_20">Р”Р»СЏ iOS 5 Рё СЃС‚Р°СЂС€Рµ. РћРїС‚РёРјРёР·РёСЂРѕРІР°РЅРѕ РїРѕРґ Р РµС‚РёРЅР°-РґРёСЃРїР»РµР№ Рё iPhone 5.</div>
+                        <div class="b-txt b-txt_padbot_10 b-txt_bold">Р РµР°Р»РёР·СѓРµРјС‹Р№ РІ РїРµСЂРІРѕР№ РІРµСЂСЃРёРё С„СѓРЅРєС†РёРѕРЅР°Р»:</div>
+                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">СЂРµРіРёСЃС‚СЂР°С†РёСЏ Рё Р°РІС‚РѕСЂРёР·Р°С†РёСЏ;</div>
+                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">РїСЂРѕСЃРјРѕС‚СЂ Р»РµРЅС‚С‹ РїСЂРѕРµРєС‚РѕРІ Рё РѕС‚РґРµР»СЊРЅРѕРіРѕ РїСЂРѕРµРєС‚Р°;</div>
+                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">РїСѓР±Р»РёРєР°С†РёСЏ РїСЂРѕРµРєС‚РѕРІ;</div>
+                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">РѕС‚РІРµС‚ РЅР° РїСЂРѕРµРєС‚ РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ Рё РІС‹Р±РѕСЂ РёСЃРїРѕР»РЅРёС‚РµР»СЏ РґР»СЏ Р·Р°РєР°Р·С‡РёРєРѕРІ;</div>
+                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">Р»РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ;</div>
+                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">РїСЂРѕСЃРјРѕС‚СЂ РёР·Р±СЂР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№;</div>
+                        <div class="b-txt b-txt_padbot_20 b-txt_padleft_20">РїСЂРѕСЃРјРѕС‚СЂ РїСЂРѕС„РёР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</div>
+                        <div class="b-txt b-txt_padbot_20  b-txt_bold">РџСЂРёР»РѕР¶РµРЅРёРµ РґРѕСЃС‚СѓРїРЅРѕ РґР»СЏ СЃРєР°С‡РёРІР°РЅРёСЏ РІ &nbsp;   <a target="_blank" href="https://itunes.apple.com/us/app/fl.ru/id731429117?mt=8" style="border:1px solid #0f71c8; border-radius:5px; padding:3px 5px;" class="b-txt__lnk b-txt__lnk_color_0f71c8 b-txt__lnk_inline-block">AppStore</a></div>
                     </td>
                 </tr>
                 </tbody></table>
-            <h2 class="b-txt__title b-txt__title_center">Дизайн основных экранов</h2>
+            <h2 class="b-txt__title b-txt__title_center">Р”РёР·Р°Р№РЅ РѕСЃРЅРѕРІРЅС‹С… СЌРєСЂР°РЅРѕРІ</h2>
             <table class="b-layout__table b-layout__table_width_full b-layout__table_margtop_10 b-layout__table_margbot_40">
                 <tbody><tr class="b-layout__tr">
                     <td class="b-layout__td b-layout__td_center"><div class="b-shadow b-shadow_inline-block"><img src="/images/apps/11.png" class="b-pic"></div></td>
@@ -37,20 +37,20 @@
                 <tbody><tr class="b-layout__tr">
                     <td class="b-layout__td b-layout__td_width_450"><img src="/images/apps/2.png"></td>
                     <td class="b-layout__td">
-                        <div class="b-txt b-txt_padbot_20">Для Android 4.1.2. Оптимизировано под xhdpi.</div>
-                        <div class="b-txt b-txt_padbot_10 b-txt_bold">Реализуемый в первой версии функционал:</div>
-                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">регистрация и авторизация;</div>
-                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">просмотр ленты проектов и отдельного проекта;</div>
-                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">публикация проектов;</div>
-                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">ответ на проект для фрилансеров и выбор исполнителя для заказчиков;</div>
-                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">личные сообщения;</div>
-                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">просмотр избранного;</div>
-                        <div class="b-txt b-txt_padbot_20 b-txt_padleft_20">просмотр профиля пользователя.</div>
-                        <div class="b-txt b-txt_padbot_20 b-txt_bold">Приложение доступно для скачивания в &nbsp;   <a target="_blank" href="https://play.google.com/store/apps/details?id=ru.freelance" style="border:1px solid #0f71c8; border-radius:5px; padding:3px 5px;" class="b-txt__lnk b-txt__lnk_color_0f71c8 b-txt__lnk_inline-block">Google Play</a></div>
+                        <div class="b-txt b-txt_padbot_20">Р”Р»СЏ Android 4.1.2. РћРїС‚РёРјРёР·РёСЂРѕРІР°РЅРѕ РїРѕРґ xhdpi.</div>
+                        <div class="b-txt b-txt_padbot_10 b-txt_bold">Р РµР°Р»РёР·СѓРµРјС‹Р№ РІ РїРµСЂРІРѕР№ РІРµСЂСЃРёРё С„СѓРЅРєС†РёРѕРЅР°Р»:</div>
+                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">СЂРµРіРёСЃС‚СЂР°С†РёСЏ Рё Р°РІС‚РѕСЂРёР·Р°С†РёСЏ;</div>
+                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">РїСЂРѕСЃРјРѕС‚СЂ Р»РµРЅС‚С‹ РїСЂРѕРµРєС‚РѕРІ Рё РѕС‚РґРµР»СЊРЅРѕРіРѕ РїСЂРѕРµРєС‚Р°;</div>
+                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">РїСѓР±Р»РёРєР°С†РёСЏ РїСЂРѕРµРєС‚РѕРІ;</div>
+                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">РѕС‚РІРµС‚ РЅР° РїСЂРѕРµРєС‚ РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ Рё РІС‹Р±РѕСЂ РёСЃРїРѕР»РЅРёС‚РµР»СЏ РґР»СЏ Р·Р°РєР°Р·С‡РёРєРѕРІ;</div>
+                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">Р»РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ;</div>
+                        <div class="b-txt b-txt_padbot_10 b-txt_padleft_20">РїСЂРѕСЃРјРѕС‚СЂ РёР·Р±СЂР°РЅРЅРѕРіРѕ;</div>
+                        <div class="b-txt b-txt_padbot_20 b-txt_padleft_20">РїСЂРѕСЃРјРѕС‚СЂ РїСЂРѕС„РёР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.</div>
+                        <div class="b-txt b-txt_padbot_20 b-txt_bold">РџСЂРёР»РѕР¶РµРЅРёРµ РґРѕСЃС‚СѓРїРЅРѕ РґР»СЏ СЃРєР°С‡РёРІР°РЅРёСЏ РІ &nbsp;   <a target="_blank" href="https://play.google.com/store/apps/details?id=ru.freelance" style="border:1px solid #0f71c8; border-radius:5px; padding:3px 5px;" class="b-txt__lnk b-txt__lnk_color_0f71c8 b-txt__lnk_inline-block">Google Play</a></div>
                     </td>
                 </tr>
                 </tbody></table>
-            <h2 class="b-txt__title b-txt__title_center">Дизайн основных экранов</h2>
+            <h2 class="b-txt__title b-txt__title_center">Р”РёР·Р°Р№РЅ РѕСЃРЅРѕРІРЅС‹С… СЌРєСЂР°РЅРѕРІ</h2>
             <table class="b-layout__table b-layout__table_width_full b-layout__table_margtop_10 b-layout__table_margbot_40">
                 <tbody><tr class="b-layout__tr">
                     <td class="b-layout__td b-layout__td_center"><div class="b-shadow b-shadow_inline-block"><img src="/images/apps/21.png" class="b-pic"></div></td>

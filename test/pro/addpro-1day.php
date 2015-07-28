@@ -8,10 +8,10 @@ ini_set('max_execution_time', 0);
 ini_set('memory_limit', '512M');
 
 /**
- * Продлить ПРО на 1 день в счет дня $lost_date числа 
+ * РџСЂРѕРґР»РёС‚СЊ РџР Рћ РЅР° 1 РґРµРЅСЊ РІ СЃС‡РµС‚ РґРЅСЏ $lost_date С‡РёСЃР»Р° 
  */
 
-exit;//заглушка от случайного выполнения
+exit;//Р·Р°РіР»СѓС€РєР° РѕС‚ СЃР»СѓС‡Р°Р№РЅРѕРіРѕ РІС‹РїРѕР»РЅРµРЅРёСЏ
 
 require_once '../../classes/stdf.php';
 require_once '../../classes/account.php';
@@ -36,7 +36,7 @@ $users = $DB->rows("
 echo "Execute recovery PRO accounts for " . count($users) . " users.\n";
 
 $payed = new payed;
-$sess  = new session;//зачем тут???
+$sess  = new session;//Р·Р°С‡РµРј С‚СѓС‚???
 
 if (count($users)) {
     foreach ($users as $user) {

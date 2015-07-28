@@ -1,6 +1,6 @@
 <?php
 /**
- * Серый список IP
+ * РЎРµСЂС‹Р№ СЃРїРёСЃРѕРє IP
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
@@ -11,12 +11,12 @@ require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/users.php' );
 require_once( $_SERVER['DOCUMENT_ROOT'] . '/xajax/gray_ip.common.php' );
 
 /**
- * Добавляет адреса пользователя в серый список IP
+ * Р”РѕР±Р°РІР»СЏРµС‚ Р°РґСЂРµСЃР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ СЃРµСЂС‹Р№ СЃРїРёСЃРѕРє IP
  * 
- * @param  int $nUserId UID пользователя
- * @param  string $sUserLogin Логин пользователя
- * @param  int $nAdminId UID админа
- * @param  string $sIp список IP адресов
+ * @param  int $nUserId UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param  string $sUserLogin Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param  int $nAdminId UID Р°РґРјРёРЅР°
+ * @param  string $sIp СЃРїРёСЃРѕРє IP Р°РґСЂРµСЃРѕРІ
  * @return object xajaxResponse
  */
 function addPrimaryIp( $nUserId = 0, $sUserLogin = '', $nAdminId = 0, $sIp = '' ) {
@@ -31,10 +31,10 @@ function addPrimaryIp( $nUserId = 0, $sUserLogin = '', $nAdminId = 0, $sIp = '' 
     	
     	if ( $bRes ) {
     	    $objResponse->script( 'gray_ip.clearAdd();' );
-    		$objResponse->alert( 'IP адреса успешно добавлены' );
+    		$objResponse->alert( 'IP Р°РґСЂРµСЃР° СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅС‹' );
     	}
     	else {
-    	    $objResponse->alert( 'Ошибка добавления IP адресов' );
+    	    $objResponse->alert( 'РћС€РёР±РєР° РґРѕР±Р°РІР»РµРЅРёСЏ IP Р°РґСЂРµСЃРѕРІ' );
     	}
     }
     else {
@@ -45,11 +45,11 @@ function addPrimaryIp( $nUserId = 0, $sUserLogin = '', $nAdminId = 0, $sIp = '' 
 }
 
 /**
- * Форма обновления адресов пользователя в сером списке IP
+ * Р¤РѕСЂРјР° РѕР±РЅРѕРІР»РµРЅРёСЏ Р°РґСЂРµСЃРѕРІ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ СЃРµСЂРѕРј СЃРїРёСЃРєРµ IP
  * 
- * @param  int $nNum номер html блока куда подставляется форма.
- * @param  int $nUserId UID пользователя
- * @param  int $nAdminId UID админа
+ * @param  int $nNum РЅРѕРјРµСЂ html Р±Р»РѕРєР° РєСѓРґР° РїРѕРґСЃС‚Р°РІР»СЏРµС‚СЃСЏ С„РѕСЂРјР°.
+ * @param  int $nUserId UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param  int $nAdminId UID Р°РґРјРёРЅР°
  * @return object xajaxResponse
  */
 function getPrimaryIpForm( $nNum = 0, $nUserId = 0, $nAdminId = 0 ) {
@@ -72,13 +72,13 @@ function getPrimaryIpForm( $nNum = 0, $nUserId = 0, $nAdminId = 0 ) {
                     <input type="hidden" name="uid_edit_'.$nNum.'" id="uid_edit_'.$nNum.'" value="'.$nUserId.'" />
                     <input type="hidden" name="adm_edit_'.$nNum.'" id="adm_edit_'.$nNum.'" value="'.$nAdminId.'" />
                     <input type="hidden" name="log_edit_'.$nNum.'" id="log_edit_'.$nNum.'" value="'.$aIp[0]['user_login'].'" />
-                    <h4>Редактировать список IP-адресов для ['. $aIp[0]['user_login'] .']</h4>
+                    <h4>Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ СЃРїРёСЃРѕРє IP-Р°РґСЂРµСЃРѕРІ РґР»СЏ ['. $aIp[0]['user_login'] .']</h4>
                     <div class="form-el">
                         <textarea name="txt_edit_'.$nNum.'" id="txt_edit_'.$nNum.'" cols="" rows="">'. implode( "\n", $aTmp ) .'</textarea>
                     </div>
                     <div class="form-el form-btns">
-                        <input name="btn_edit_'.$nNum.'" id="btn_edit_'.$nNum.'" onclick="gray_ip.submitEdit('.$nNum.')" type="button" value="Сохранить" />
-                        <a href="javascript:void(0);" onclick="gray_ip.clearEdit('.$nNum.')" class="lnk-dot-666">Отменить</a>
+                        <input name="btn_edit_'.$nNum.'" id="btn_edit_'.$nNum.'" onclick="gray_ip.submitEdit('.$nNum.')" type="button" value="РЎРѕС…СЂР°РЅРёС‚СЊ" />
+                        <a href="javascript:void(0);" onclick="gray_ip.clearEdit('.$nNum.')" class="lnk-dot-666">РћС‚РјРµРЅРёС‚СЊ</a>
                     </div>
             </div>
             <b class="b2"></b>
@@ -93,12 +93,12 @@ function getPrimaryIpForm( $nNum = 0, $nUserId = 0, $nAdminId = 0 ) {
 }
 
 /**
- * Обновляет адреса пользователя в сером списке IP
+ * РћР±РЅРѕРІР»СЏРµС‚ Р°РґСЂРµСЃР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ СЃРµСЂРѕРј СЃРїРёСЃРєРµ IP
  * 
- * @param  int $nUserId UID пользователя
- * @param  string $sUserLogin Логин пользователя
- * @param  int $nAdminId UID админа
- * @param  string $sIp список IP адресов
+ * @param  int $nUserId UID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param  string $sUserLogin Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+ * @param  int $nAdminId UID Р°РґРјРёРЅР°
+ * @param  string $sIp СЃРїРёСЃРѕРє IP Р°РґСЂРµСЃРѕРІ
  * @return object xajaxResponse
  */
 function setPrimaryIp( $nUserId = 0, $sUserLogin = '', $nAdminId = 0, $sIp = '' ) {
@@ -114,14 +114,14 @@ function setPrimaryIp( $nUserId = 0, $sUserLogin = '', $nAdminId = 0, $sIp = '' 
         $bRes = gray_ip::updatePrimaryIp( $nUserId, $sUserLogin, $nAdminId, $aIp['ip_addresses'], $bDel );
         
         if ( $bRes ) {
-        	$objResponse->alert( 'IP адреса успешно сохранены' . ($bDel ? "\nСтраница будет перезагружена" : '') );
+        	$objResponse->alert( 'IP Р°РґСЂРµСЃР° СѓСЃРїРµС€РЅРѕ СЃРѕС…СЂР°РЅРµРЅС‹' . ($bDel ? "\nРЎС‚СЂР°РЅРёС†Р° Р±СѓРґРµС‚ РїРµСЂРµР·Р°РіСЂСѓР¶РµРЅР°" : '') );
         	
         	if ( $bDel ) {
         		$objResponse->script( 'window.location.reload(true)' );
         	}
         }
         else {
-    	    $objResponse->alert( 'Ошибка сохранения IP адресов' );
+    	    $objResponse->alert( 'РћС€РёР±РєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ IP Р°РґСЂРµСЃРѕРІ' );
     	}
     }
     else {

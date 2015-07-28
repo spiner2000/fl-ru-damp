@@ -23,8 +23,8 @@
                         <a href="" class="s_tag">&lt;s&gt;</a>
                         <a href="" class="h_tag">&lt;h&gt;</a>
                     </li>-->
-                    <li><a href="javascript:void(0)" onclick="toggleFiles()">Прикрепить файл к сообщению</a></li>
-                    <li><a href="javascript:void(0)" onclick="toggleYoutube()">Добавить видео</a></li>
+                    <li><a href="javascript:void(0)" onclick="toggleFiles()">РџСЂРёРєСЂРµРїРёС‚СЊ С„Р°Р№Р» Рє СЃРѕРѕР±С‰РµРЅРёСЋ</a></li>
+                    <li><a href="javascript:void(0)" onclick="toggleYoutube()">Р”РѕР±Р°РІРёС‚СЊ РІРёРґРµРѕ</a></li>
                 </ul>
                 <div class="cl-form-files c" style="<?if (!isset($alert['attach']) && !$_POST['is_attached']) echo 'display: none;'; ?>">
                     <?php 
@@ -44,7 +44,7 @@
                             $bRm = in_array( $attach['id'], $aRmAttaches );
                             if ( !$bRm ) { 
                                 $sAttaches .= '<li><input type="hidden" name="attaches[]" value="'.$attach['id'].'"/>
-                                    <a href="javascript:void(0)" title="Удалить" onclick="deleteAttach(this)"><img src="/images/btn-remove2.png" alt="Удалить" /></a>
+                                    <a href="javascript:void(0)" title="РЈРґР°Р»РёС‚СЊ" onclick="deleteAttach(this)"><img src="/images/btn-remove2.png" alt="РЈРґР°Р»РёС‚СЊ" /></a>
                                     <a href="javascript:void(0)">'.$attach['fname'].'</a></li>';
                             }
                         } 
@@ -59,9 +59,9 @@
                         <li class="c"><input name="attach[]" type="file" size="23" class="i-file" /> <input src="/images/btn-add.png" type="image" value="+" /></li>
                     </ul>
                     <div class="form-files-inf">
-                        <strong class="form-files-max">Максимальный размер файла: 2 Мб.</strong>
-                        <p>Размеры картинки до 470x1000 пикселей, 300 Кб.<br />
-                        Файлы следующих форматов запрещены к загрузке: <?=implode(', ', $GLOBALS['disallowed_array'])?>.</p>
+                        <strong class="form-files-max">РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°: 2 РњР±.</strong>
+                        <p>Р Р°Р·РјРµСЂС‹ РєР°СЂС‚РёРЅРєРё РґРѕ 470x1000 РїРёРєСЃРµР»РµР№, 300 РљР±.<br />
+                        Р¤Р°Р№Р»С‹ СЃР»РµРґСѓСЋС‰РёС… С„РѕСЂРјР°С‚РѕРІ Р·Р°РїСЂРµС‰РµРЅС‹ Рє Р·Р°РіСЂСѓР·РєРµ: <?=implode(', ', $GLOBALS['disallowed_array'])?>.</p>
                     </div>
                     <? if(!empty($alert['attach'])){ ?>
                         <div id="error_file" onclick="this.style.display = 'none'" class="tip tip-t2" style="top: <?=(40+(count($this->_post_msg['attaches'])*27))?>px; left: 10px;"><div class="tip-in"><div class="tip-txt"><div class="tip-txt-in"><span class="middled"><strong><?= $alert['attach'];?></strong></span></div></div></div></div>
@@ -70,7 +70,7 @@
                 </div>
                 <div class="cl-form-video" style="<?if (!isset($alert['yt_link']) && !$_POST['yt_link']) echo 'display: none;'; ?>">
                     <input type="text" id="yt_link" name="yt_link" onclick="if($('yt_error') != undefined) $('yt_error').destroy();"/>&nbsp;
-                    <label>Например:&nbsp;http://www.youtube.com/watch?v=jWxnI8-5LEg</label>
+                    <label>РќР°РїСЂРёРјРµСЂ:&nbsp;http://www.youtube.com/watch?v=jWxnI8-5LEg</label>
                     <? if(!empty($alert['yt_link'])){?>
                         <div id="yt_error" class="tip tip-t2" style="top: 20px; left: 10px;"><div class="tip-in"><div class="tip-txt"><div class="tip-txt-in"><span class="middled"><strong><?= $alert['yt_link'];?></strong></span></div></div></div></div>
                     <? } ?>
@@ -81,9 +81,9 @@
 	                <div id="msgtext_error" class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_rattent"></span> <?= $alert['msgtext']?></div>
 	                <? } ?>
                    <div class="b-buttons">
-                    <a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green cl-form-submit add-comment" onclick="$(this).addClass('b-button_disabled'); if ($$('textarea[name=cmsgtext]')[0].value == '') { $$('textarea[name=cmsgtext]')[0].value = <?= $this->enableNewWysiwyg ? "CKEDITOR.instances.textarea_comments.getData();" : "$($$('.mooeditable-iframe')[0].contentWindow.document.body).innerHTML;";?> }" style="display: <?= $this->_task == 'edit' ? 'none' : ''?>;">Публиковать сообщение</a>
-                    <a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green cl-form-submit edit-comment" onclick="$(this).addClass('b-button_disabled')" style="display: <?= $this->_task == 'edit' ? '' : 'none'?>;">Изменить сообщение</a>
-                    &#160;&#160;<a href="javascript:void(0)" class="b-buttons__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_fontsize_13 cl-form-cancel" style="display: <?= $this->_task == 'edit' ? '' : 'none'?>;">Отменить</a>
+                    <a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green cl-form-submit add-comment" onclick="$(this).addClass('b-button_disabled'); if ($$('textarea[name=cmsgtext]')[0].value == '') { $$('textarea[name=cmsgtext]')[0].value = <?= $this->enableNewWysiwyg ? "CKEDITOR.instances.textarea_comments.getData();" : "$($$('.mooeditable-iframe')[0].contentWindow.document.body).innerHTML;";?> }" style="display: <?= $this->_task == 'edit' ? 'none' : ''?>;">РџСѓР±Р»РёРєРѕРІР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ</a>
+                    <a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green cl-form-submit edit-comment" onclick="$(this).addClass('b-button_disabled')" style="display: <?= $this->_task == 'edit' ? '' : 'none'?>;">РР·РјРµРЅРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ</a>
+                    &#160;&#160;<a href="javascript:void(0)" class="b-buttons__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_fontsize_13 cl-form-cancel" style="display: <?= $this->_task == 'edit' ? '' : 'none'?>;">РћС‚РјРµРЅРёС‚СЊ</a>
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@
         <ul class="form-files-added tpl" style="display:none;">
             <li>
                 <input type="hidden" name="attaches[]" value=""/>
-                <a href="javascript:void(0)" title="Удалить" onclick="deleteAttach(this)"><img src="/images/btn-remove2.png" alt="Удалить" /></a>
+                <a href="javascript:void(0)" title="РЈРґР°Р»РёС‚СЊ" onclick="deleteAttach(this)"><img src="/images/btn-remove2.png" alt="РЈРґР°Р»РёС‚СЊ" /></a>
                 <a href="javascript:void(0)">1234.rar</a>
             </li>
         </ul>

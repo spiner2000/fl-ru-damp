@@ -5,7 +5,7 @@
                 <div class="b-shadow__top">
                     <div class="b-shadow__bottom">
                         <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20 b-layout">
-                            <h2 class="b-shadow__title b-shadow__title_padbot_30 b-shadow__title_fontsize_22">Вы начинаете переписку с пользователем без аккаунта PRO</h2>
+                            <h2 class="b-shadow__title b-shadow__title_padbot_30 b-shadow__title_fontsize_22">Р’С‹ РЅР°С‡РёРЅР°РµС‚Рµ РїРµСЂРµРїРёСЃРєСѓ СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј Р±РµР· Р°РєРєР°СѓРЅС‚Р° PRO</h2>
 
                             <table class="b-layout__table b-layout__table_margbot_20 b-layout__table_width_full" border="0" cellpadding="0" cellspacing="0">
                                 <tr class="b-layout__tr">
@@ -13,8 +13,8 @@
                                         <img class="b-layout__pic b-layout__pic_margright_20" src="/images/promo-icons/big/11.png" alt=""  />
                                     </td>
                                     <td class="b-layout__left b-layout__left_padright_20">
-                                        <h3 class="b-layout__h3 b-layout__h3_padbot_5">Если вы хотите получить гарантию того, что ваш проект будет выполнен,<br />воспользуйтесь &laquo;Безопасной Сделкой&raquo;</h3>
-                                        <div class="b-layout__txt">Сервис &laquo;Безопасная Сделка&raquo; &mdash; это комфортное и безопасное сотрудничество. Работая через &laquo;Безопасную Сделку&raquo;,<br />вы полностью застрахованы от недобросовестных исполнителей.</div>
+                                        <h3 class="b-layout__h3 b-layout__h3_padbot_5">Р•СЃР»Рё РІС‹ С…РѕС‚РёС‚Рµ РїРѕР»СѓС‡РёС‚СЊ РіР°СЂР°РЅС‚РёСЋ С‚РѕРіРѕ, С‡С‚Рѕ РІР°С€ РїСЂРѕРµРєС‚ Р±СѓРґРµС‚ РІС‹РїРѕР»РЅРµРЅ,<br />РІРѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ &laquo;Р‘РµР·РѕРїР°СЃРЅРѕР№ РЎРґРµР»РєРѕР№&raquo;</h3>
+                                        <div class="b-layout__txt">РЎРµСЂРІРёСЃ &laquo;Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°&raquo; &mdash; СЌС‚Рѕ РєРѕРјС„РѕСЂС‚РЅРѕРµ Рё Р±РµР·РѕРїР°СЃРЅРѕРµ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ. Р Р°Р±РѕС‚Р°СЏ С‡РµСЂРµР· &laquo;Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ&raquo;,<br />РІС‹ РїРѕР»РЅРѕСЃС‚СЊСЋ Р·Р°СЃС‚СЂР°С…РѕРІР°РЅС‹ РѕС‚ РЅРµРґРѕР±СЂРѕСЃРѕРІРµСЃС‚РЅС‹С… РёСЃРїРѕР»РЅРёС‚РµР»РµР№.</div>
                                     </td>
                                 </tr>
                             </table>
@@ -23,13 +23,13 @@
                                     <tbody>
                                         <tr class="b-layout__tr">
                                             <td class="b-layout__one b-layout__one_padright_25 b-icon_help_tel">
-                                                <div class="b-layout__txt">Позвоните<div class="b-layout__txt b-layout__txt_color_6db335 b-layout__txt_bold">8-800-555-33-14</div></div>
+                                                <div class="b-layout__txt">РџРѕР·РІРѕРЅРёС‚Рµ<div class="b-layout__txt b-layout__txt_color_6db335 b-layout__txt_bold">8-800-555-33-14</div></div>
                                             </td>
                                             <td class="b-layout__one b-layout__one_padright_25 b-icon_help_letter">
-                                                <div class="b-layout__txt">Напишите в<br><a class="b-layout__link" href="/about/feedback/">службу поддержки</a></div>
+                                                <div class="b-layout__txt">РќР°РїРёС€РёС‚Рµ РІ<br><a class="b-layout__link" href="/about/feedback/">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a></div>
                                             </td>
                                             <td class="b-layout__right b-icon_help_article">
-                                                <div class="b-layout__txt">Прочтите статью в<br><a class="b-layout__link" href="https://feedback.fl.ru/">разделе «Помощь»</a></div>
+                                                <div class="b-layout__txt">РџСЂРѕС‡С‚РёС‚Рµ СЃС‚Р°С‚СЊСЋ РІ<br><a class="b-layout__link" href="https://feedback.fl.ru/">СЂР°Р·РґРµР»Рµ В«РџРѕРјРѕС‰СЊВ»</a></div>
                                             </td>
                                         </tr>
                                     </tbody>

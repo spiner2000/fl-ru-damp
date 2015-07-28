@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Поднятие закрепления в каталоге ТУ.
- * Оплата услуги.
+ * РџРѕРґРЅСЏС‚РёРµ Р·Р°РєСЂРµРїР»РµРЅРёСЏ РІ РєР°С‚Р°Р»РѕРіРµ РўРЈ.
+ * РћРїР»Р°С‚Р° СѓСЃР»СѓРіРё.
  */
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/billing.php');
@@ -16,7 +16,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/tservices/tservices_binds.php
 //------------------------------------------------------------------------------
 
 /**
- * Оплата из буфера
+ * РћРїР»Р°С‚Р° РёР· Р±СѓС„РµСЂР°
  * @param type $type
  * @param array $data (prof_id)
  * @return type
@@ -54,12 +54,12 @@ function quickPaymentTservicebindupBuffer($type, $data)
         }
     }
     
-    // Показываем предупреждение в случае ошибки
+    // РџРѕРєР°Р·С‹РІР°РµРј РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
     if ($is_error) {
         $idx = quickPaymentPopupTservicebindup::getPopupId($tservice_id);
         $objResponse->script("
             var qp = window.quick_payment_factory.getQuickPaymentById('tservicebindup', '".$idx."');
-            if(qp) qp.show_error('Возникла ошибка при поднятии закрепления услуги!');
+            if(qp) qp.show_error('Р’РѕР·РЅРёРєР»Р° РѕС€РёР±РєР° РїСЂРё РїРѕРґРЅСЏС‚РёРё Р·Р°РєСЂРµРїР»РµРЅРёСЏ СѓСЃР»СѓРіРё!');
         ");
     }
         
@@ -68,7 +68,7 @@ function quickPaymentTservicebindupBuffer($type, $data)
 
 
 /**
- * Оплата с личного счета
+ * РћРїР»Р°С‚Р° СЃ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р°
  * @param type $type
  * @param array $data (weeks, prof_id, is_spec)
  * @return type
@@ -92,7 +92,7 @@ function quickPaymentTservicebindupAccount($type, $data)
     if ($bind) {
         
         $bill = new billing($uid);
-        //Допустимо использование промокодов
+        //Р”РѕРїСѓСЃС‚РёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РїСЂРѕРјРѕРєРѕРґРѕРІ
         $bill->setPromoCodes('SERVICE_TSERVICEBIND', $promo_code);         
         
         $op_code = $tservices_binds->getOpCode(true);
@@ -109,12 +109,12 @@ function quickPaymentTservicebindupAccount($type, $data)
         }
     }
 
-    // Показываем предупреждение в случае ошибки
+    // РџРѕРєР°Р·С‹РІР°РµРј РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
     if ($is_error) {
         $idx = quickPaymentPopupTservicebindup::getPopupId($tservice_id);
         $objResponse->script("
             var qp = window.quick_payment_factory.getQuickPaymentById('tservicebindup', '".$idx."');
-            if(qp) qp.show_error('Возникла ошибка при поднятии закрепления услуги!');
+            if(qp) qp.show_error('Р’РѕР·РЅРёРєР»Р° РѕС€РёР±РєР° РїСЂРё РїРѕРґРЅСЏС‚РёРё Р·Р°РєСЂРµРїР»РµРЅРёСЏ СѓСЃР»СѓРіРё!');
         ");
     }
         
@@ -126,7 +126,7 @@ function quickPaymentTservicebindupAccount($type, $data)
 
 
 /**
- * Это методы для разных видов оплаты но сгруппированные в яндекс кассе
+ * Р­С‚Рѕ РјРµС‚РѕРґС‹ РґР»СЏ СЂР°Р·РЅС‹С… РІРёРґРѕРІ РѕРїР»Р°С‚С‹ РЅРѕ СЃРіСЂСѓРїРїРёСЂРѕРІР°РЅРЅС‹Рµ РІ СЏРЅРґРµРєСЃ РєР°СЃСЃРµ
  * 
  * @param type $type
  * @param type $data
@@ -161,10 +161,10 @@ function quickPaymentTservicebindupSberbank($type, $data)
 
 
 /**
- * Резервирование средств через яндекс кассу
+ * Р РµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ СЃСЂРµРґСЃС‚РІ С‡РµСЂРµР· СЏРЅРґРµРєСЃ РєР°СЃСЃСѓ
  * 
- * @param type $type - тип оплаты
- * @param type $data - данные по параметрам покупаемой услуги
+ * @param type $type - С‚РёРї РѕРїР»Р°С‚С‹
+ * @param type $data - РґР°РЅРЅС‹Рµ РїРѕ РїР°СЂР°РјРµС‚СЂР°Рј РїРѕРєСѓРїР°РµРјРѕР№ СѓСЃР»СѓРіРё
  * @return \xajaxResponse
  */
 function quickPaymentTservicebindupYandexKassa($type, $data)
@@ -178,7 +178,7 @@ function quickPaymentTservicebindupYandexKassa($type, $data)
     $kind = (int)@$data['kind'];
     $tservice_id = (int)@$data['tservice_text_db_id'];
     $prof_id = (int)@$data['prof_id'];
-    //$is_prolong = (bool)@$data['is_prolong'];//@todo: накой?
+    //$is_prolong = (bool)@$data['is_prolong'];//@todo: РЅР°РєРѕР№?
     $promo_code = (string)@$data['promo'];
     
     $pay_methods = array(
@@ -199,12 +199,12 @@ function quickPaymentTservicebindupYandexKassa($type, $data)
         $is_error = false;
         
         $bill = new billing($uid);
-        //Допустимо использование промокодов
+        //Р”РѕРїСѓСЃС‚РёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РїСЂРѕРјРѕРєРѕРґРѕРІ
         $bill->setPromoCodes('SERVICE_TSERVICEBIND', $promo_code); 
         
         $op_code = $tservices_binds->getOpCode(true);
         $option = array('bind_id' => $bind['id']);
-        //Формируем заказ
+        //Р¤РѕСЂРјРёСЂСѓРµРј Р·Р°РєР°Р·
         $billReserveId = $bill->addServiceAndCheckout($op_code, $option);
         $payed_sum = $bill->getRealPayedSum();
         
@@ -225,17 +225,17 @@ function quickPaymentTservicebindupYandexKassa($type, $data)
             }
         ");
 
-        //сохранаем в сессию куда перейти при успешной покупке        
+        //СЃРѕС…СЂР°РЅР°РµРј РІ СЃРµСЃСЃРёСЋ РєСѓРґР° РїРµСЂРµР№С‚Рё РїСЂРё СѓСЃРїРµС€РЅРѕР№ РїРѕРєСѓРїРєРµ        
         $redirect = (string)@$data['redirect'];
         $_SESSION[quickPaymentPopup::QPP_REDIRECT] = $redirect;
     }
 
-    // Показываем предупреждение в случае ошибки
+    // РџРѕРєР°Р·С‹РІР°РµРј РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
     if ($is_error) {
         $idx = quickPaymentPopupTservicebindup::getPopupId($tservice_id);
         $objResponse->script("
             var qp = window.quick_payment_factory.getQuickPaymentById('tservicebindup', '".$idx."');
-            if(qp) qp.show_error('Возникла ошибка при поднятии закрепления услуги!');
+            if(qp) qp.show_error('Р’РѕР·РЅРёРєР»Р° РѕС€РёР±РєР° РїСЂРё РїРѕРґРЅСЏС‚РёРё Р·Р°РєСЂРµРїР»РµРЅРёСЏ СѓСЃР»СѓРіРё!');
         ");
     }
         
@@ -247,10 +247,10 @@ function quickPaymentTservicebindupYandexKassa($type, $data)
 
 
 /**
- * Оплата через Плати потом
+ * РћРїР»Р°С‚Р° С‡РµСЂРµР· РџР»Р°С‚Рё РїРѕС‚РѕРј
  * 
- * @param type $type - тип оплаты
- * @param type $data - данные по параметрам покупаемой услуги
+ * @param type $type - С‚РёРї РѕРїР»Р°С‚С‹
+ * @param type $data - РґР°РЅРЅС‹Рµ РїРѕ РїР°СЂР°РјРµС‚СЂР°Рј РїРѕРєСѓРїР°РµРјРѕР№ СѓСЃР»СѓРіРё
  * @return \xajaxResponse
  */
 function quickPaymentTservicebindupPlatipotom($type, $data)
@@ -275,12 +275,12 @@ function quickPaymentTservicebindupPlatipotom($type, $data)
         $is_error = false;
 
         $bill = new billing($uid);
-        //Допустимо использование промокодов
+        //Р”РѕРїСѓСЃС‚РёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РїСЂРѕРјРѕРєРѕРґРѕРІ
         $bill->setPromoCodes('SERVICE_TSERVICEBIND', $promo_code);        
         
         $op_code = $tservices_binds->getOpCode(true);
         $option = array('bind_id' => $bind['id']);
-         //Формируем заказ
+         //Р¤РѕСЂРјРёСЂСѓРµРј Р·Р°РєР°Р·
         $billReserveId = $bill->addServiceAndCheckout($op_code, $option);
         $payed_sum = $bill->getRealPayedSum();
 
@@ -301,18 +301,18 @@ function quickPaymentTservicebindupPlatipotom($type, $data)
                 }
             ");
 
-            //сохранаем в сессию куда перейти при успешной покупке        
+            //СЃРѕС…СЂР°РЅР°РµРј РІ СЃРµСЃСЃРёСЋ РєСѓРґР° РїРµСЂРµР№С‚Рё РїСЂРё СѓСЃРїРµС€РЅРѕР№ РїРѕРєСѓРїРєРµ        
             $redirect = (string)@$data['redirect'];
             $_SESSION[quickPaymentPopup::QPP_REDIRECT] = $redirect;
         }
     }
 
-    // Показываем предупреждение в случае ошибки
+    // РџРѕРєР°Р·С‹РІР°РµРј РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
     if ($is_error) {
         $idx = quickPaymentPopupTservicebindup::getPopupId($tservice_id);
         $objResponse->script("
             var qp = window.quick_payment_factory.getQuickPaymentById('tservicebindup', '".$idx."');
-            if(qp) qp.show_error('Возникла ошибка при поднятии закрепления услуги!');
+            if(qp) qp.show_error('Р’РѕР·РЅРёРєР»Р° РѕС€РёР±РєР° РїСЂРё РїРѕРґРЅСЏС‚РёРё Р·Р°РєСЂРµРїР»РµРЅРёСЏ СѓСЃР»СѓРіРё!');
         ");
     }
         

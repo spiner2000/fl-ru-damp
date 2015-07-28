@@ -2,16 +2,16 @@
     <table class="b-layout__table b-layout__table_width_full" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_130">
-                    <div class="b-layout__txt">Аккаунт</div>
+                    <div class="b-layout__txt">РђРєРєР°СѓРЅС‚</div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-check b-check_padbot_10">
                         <input id="check_frl_pro" class="b-check__input" name="ftype_account[0]" type="checkbox" value="1" <?=($message['ftype_account'][0]==1?"checked":"")?>/>
-                        <label class="b-check__label b-check__label_fontsize_13" for="check_frl_pro">Профессиональный <img src="/images/icons/f-pro.png" alt=""  /></label>
+                        <label class="b-check__label b-check__label_fontsize_13" for="check_frl_pro">РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ <img src="/images/icons/f-pro.png" alt=""  /></label>
                     </div>
                     <div class="b-check b-check_padbot_20">
                         <input id="check_frl_norm" class="b-check__input" name="ftype_account[1]" type="checkbox" value="1" <?=($message['ftype_account'][1]==1?"checked":"")?>/>
-                        <label class="b-check__label b-check__label_fontsize_13" for="check_frl_norm">Начальный</label>
+                        <label class="b-check__label b-check__label_fontsize_13" for="check_frl_norm">РќР°С‡Р°Р»СЊРЅС‹Р№</label>
                     </div>
                 </td>
         </tr>
@@ -19,16 +19,16 @@
     <table class="b-layout__table b-layout__table_width_full" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_130">
-                    <div class="b-layout__txt">Профиль</div>
+                    <div class="b-layout__txt">РџСЂРѕС„РёР»СЊ</div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-check b-check_padbot_10">
                         <input id="check_frl_profile_full" class="b-check__input" name="ftype_profile[0]" type="checkbox" value="1" <?=($message['ftype_profile'][0]==1?"checked":"")?>/>
-                        <label class="b-check__label b-check__label_fontsize_13" for="check_frl_profile_full">Заполнен</label>
+                        <label class="b-check__label b-check__label_fontsize_13" for="check_frl_profile_full">Р—Р°РїРѕР»РЅРµРЅ</label>
                     </div>
                     <div class="b-check b-check_padbot_20">
                         <input id="check_frl_profile_empty" class="b-check__input" name="ftype_profile[1]" type="checkbox" value="1" <?=($message['ftype_profile'][1]==1?"checked":"")?>/>
-                        <label class="b-check__label b-check__label_fontsize_13" for="check_frl_profile_empty">Пустой</label>
+                        <label class="b-check__label b-check__label_fontsize_13" for="check_frl_profile_empty">РџСѓСЃС‚РѕР№</label>
                     </div>
                 </td>
         </tr>
@@ -36,16 +36,16 @@
     <table class="b-layout__table b-layout__table_width_full" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
                 <td class="b-layout__left b-layout__left_width_130">
-                    <div class="b-layout__txt">Портфолио</div>
+                    <div class="b-layout__txt">РџРѕСЂС‚С„РѕР»РёРѕ</div>
                 </td>
                 <td class="b-layout__right">
                     <div class="b-check b-check_padbot_10">
                         <input id="check_frl_porfolio1" class="b-check__input" name="ftype_portfolio[0]" type="checkbox" value="1" <?=($message['ftype_portfolio'][0]==1?"checked":"")?>/>
-                        <label class="b-check__label b-check__label_fontsize_13" for="check_frl_porfolio1">Есть хотя бы одна работа</label>
+                        <label class="b-check__label b-check__label_fontsize_13" for="check_frl_porfolio1">Р•СЃС‚СЊ С…РѕС‚СЏ Р±С‹ РѕРґРЅР° СЂР°Р±РѕС‚Р°</label>
                     </div>
                     <div class="b-check b-check_padbot_20">
                         <input id="check_frl_porfolio2" class="b-check__input" name="ftype_portfolio[1]" type="checkbox" value="1" <?=($message['ftype_portfolio'][1]==1?"checked":"")?>/>
-                        <label class="b-check__label b-check__label_fontsize_13" for="check_frl_porfolio2">Нет ни одной работы</label>
+                        <label class="b-check__label b-check__label_fontsize_13" for="check_frl_porfolio2">РќРµС‚ РЅРё РѕРґРЅРѕР№ СЂР°Р±РѕС‚С‹</label>
                     </div>
                 </td>
         </tr>
@@ -53,14 +53,14 @@
     <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_130">
-                <div class="b-layout__txt">Зарегистрирован</div>
+                <div class="b-layout__txt">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ</div>
             </td>
             <td class="b-layout__right">
                 <table class="b-layout__table">
                     <tr>
                         <td class="b-layout__td b-layout__td_padbot_10">
                             <input id="fregdate_interval" class="b-check__input" name="fregdate_interval" type="checkbox" value="1" <?=($message['fregdate_interval']?"checked":"")?>/>
-                            <label class="b-check__label b-check__label_fontsize_13" for="fregdate_interval">На сайте меньше двух месяцев</label>                            
+                            <label class="b-check__label b-check__label_fontsize_13" for="fregdate_interval">РќР° СЃР°Р№С‚Рµ РјРµРЅСЊС€Рµ РґРІСѓС… РјРµСЃСЏС†РµРІ</label>                            
                         </td>
                     </tr>
                     <tr>
@@ -79,7 +79,7 @@
                                     <span class="b-combo__arrow-date"></span>
                                 </div>
                             </div>
-                            <span id="frl_reg_date_text" class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5 b-layout__txt_fontsize_11" <?=($message['ffrom_regdate'] || $message['fto_regdate'] ? "style='display: none'" : '')?>>&#160;&#160;не важно</span>
+                            <span id="frl_reg_date_text" class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5 b-layout__txt_fontsize_11" <?=($message['ffrom_regdate'] || $message['fto_regdate'] ? "style='display: none'" : '')?>>&#160;&#160;РЅРµ РІР°Р¶РЅРѕ</span>
                         </td>
                     </tr>
                 </table>
@@ -90,7 +90,7 @@
         <tr class="b-layout__tr">
             <span id="i_flastvisit"></span>
             <td class="b-layout__left b-layout__left_width_130 b-layout__left_valign_middle">
-                <div class="b-layout__txt">Последний визит</div>
+                <div class="b-layout__txt">РџРѕСЃР»РµРґРЅРёР№ РІРёР·РёС‚</div>
             </td>
             <td class="b-layout__right">
                 <div class="b-combo b-combo_inline-block">
@@ -106,7 +106,7 @@
                         <span class="b-combo__arrow-date"></span>
                     </div>
                 </div>
-                <span id="frl_lastvisit_date_text" class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5 b-layout__txt_fontsize_11" <?=($message['ffrom_lastvisit'] || $message['fto_lastvisit'] ? "style='display: none'" : '')?>>&#160;&#160;не важно</span>
+                <span id="frl_lastvisit_date_text" class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padtop_5 b-layout__txt_fontsize_11" <?=($message['ffrom_lastvisit'] || $message['fto_lastvisit'] ? "style='display: none'" : '')?>>&#160;&#160;РЅРµ РІР°Р¶РЅРѕ</span>
             </td>
         </tr>
     </table>
@@ -114,7 +114,7 @@
     <? $finance_check  = "ffinance"; ?>
     <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_margleft_130 i-button show-settings <?= !empty($message[$finance_check])?"b-layout__txt_hide":""?>">
         <a class="b-button b-button_poll_plus" href="#" onclick="$('<?= $finance_check?>').set('value', 1);"></a>&#160;&#160;
-        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('<?= $finance_check?>').set('value', 1);">Финансы</a>
+        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('<?= $finance_check?>').set('value', 1);">Р¤РёРЅР°РЅСЃС‹</a>
     </div>
     <?php 
     $finance_name   = array("money"          => "ffinance_money",
@@ -129,7 +129,7 @@
     <? $buying_check = "fbuying"; ?>
     <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_margleft_130 i-button show-settings <?= !empty($message[$buying_check])?"b-layout__txt_hide":""?>">
         <a class="b-button b-button_poll_plus" href="#" onclick="$('<?= $buying_check?>').set('value', 1);"></a>&#160;&#160;
-        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('<?= $buying_check?>').set('value', 1);">Покупки</a>
+        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('<?= $buying_check?>').set('value', 1);">РџРѕРєСѓРїРєРё</a>
     </div>
 	<?php
     $buying_name   = array("buying"         => "fbuying_buying[%s]",
@@ -145,41 +145,41 @@
 			
     <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_margleft_130 i-button show-settings <?= !empty($message['fproject'])?"b-layout__txt_hide":""?>">
         <a class="b-button b-button_poll_plus" href="#" onclick="$('fproject').set('value', 1);"></a>&#160;&#160;
-        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('fproject').set('value', 1);">Проекты</a>
+        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('fproject').set('value', 1);">РџСЂРѕРµРєС‚С‹</a>
     </div>
 	<? include("subfilter/tpl.fproject.php"); ?>			
     
     <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_margleft_130 i-button show-settings <?= !empty($message['fspec'])?"b-layout__txt_hide":""?>">
         <a class="b-button b-button_poll_plus" href="#" onclick="$('fspec').set('value', 1);"></a>&#160;&#160;
-        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('fspec').set('value', 1);">Специализация</a>
+        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('fspec').set('value', 1);">РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ</a>
     </div>
 	<? include("subfilter/tpl.specs.php"); ?>			
 				
     <div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_margleft_130 i-button show-settings <?= !empty($message['fblog'])?"b-layout__txt_hide":""?>">
         <a class="b-button b-button_poll_plus" href="#" onclick="$('fblog').set('value', 1);"></a>&#160;&#160;
-        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('fblog').set('value', 1);">Активность в блогах</a>
+        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('fblog').set('value', 1);">РђРєС‚РёРІРЅРѕСЃС‚СЊ РІ Р±Р»РѕРіР°С…</a>
     </div>
 	<? include("subfilter/tpl.blogs.php"); ?>			
 				
     <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_margleft_130 i-button show-settings <?= !empty($message['flocation'])?"b-layout__txt_hide":""?>">
         <a class="b-button b-button_poll_plus" href="#" onclick="$('flocation').set('value', 1);"></a>&#160;&#160;
-        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('flocation').set('value', 1);">География</a>
+        <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="#" onclick="$('flocation').set('value', 1);">Р“РµРѕРіСЂР°С„РёСЏ</a>
     </div>
 	<? include("subfilter/tpl.location.php"); ?>
     
     <table class="b-layout__table b-layout__table_width_full" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_130">
-                <div class="b-layout__txt">Пол</div>
+                <div class="b-layout__txt">РџРѕР»</div>
             </td>
             <td class="b-layout__right">
                 <div class="b-check b-check_padbot_10 b-check_padtop_4">
                     <input id="check_frl_sex1" class="b-check__input" name="ftype_sex[0]" type="checkbox" value="1" <?=($message['ftype_sex'][0]==1?"checked":"")?>/>
-                    <label class="b-check__label b-check__label_fontsize_13" for="check_frl_sex1">Мужской</label>
+                    <label class="b-check__label b-check__label_fontsize_13" for="check_frl_sex1">РњСѓР¶СЃРєРѕР№</label>
                 </div>
                 <div class="b-check">
                     <input id="check_frl_sex2" class="b-check__input" name="ftype_sex[1]" type="checkbox" value="1" <?=($message['ftype_sex'][1]==1?"checked":"")?>/>
-                    <label class="b-check__label b-check__label_fontsize_13" for="check_frl_sex2">Женский</label>
+                    <label class="b-check__label b-check__label_fontsize_13" for="check_frl_sex2">Р–РµРЅСЃРєРёР№</label>
                 </div>
             </td>
         </tr>

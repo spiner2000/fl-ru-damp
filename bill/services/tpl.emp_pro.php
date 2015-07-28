@@ -2,21 +2,21 @@
     <input type="hidden" name="opcode" value="<?= $service['last_operation']['op_code'] ? $service['last_operation']['op_code'] : 0?>" />
     
     <span class="b-page__desktop b-page__ipad"><span class="b-icon b-icon__spro b-icon__spro_e b-icon_absolute b-icon_left_10" title="PRO"></span></span>
-    <span class="b-layout__txt b-layout__txt_float_right b-layout__txt_fontsize_11 b-page__desktop b-page__ipad"><a href="/payed-emp/" class="b-layout__link promo-link">Подробнее об услуге</a></span>
+    <span class="b-layout__txt b-layout__txt_float_right b-layout__txt_fontsize_11 b-page__desktop b-page__ipad"><a href="/payed-emp/" class="b-layout__link promo-link">РџРѕРґСЂРѕР±РЅРµРµ РѕР± СѓСЃР»СѓРіРµ</a></span>
     <h3 class="b-layout__h3 b-layout__h3_padleft_70 b-layout__txt_padleft_null_iphone">
-        Профессиональный аккаунт  &#160;&#160;
+        РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚  &#160;&#160;
         <? if($service['type'] == 'active') { ?>
             <span class="b-layout__txt b-layout__txt_fontsize_11 <?= $service['expired']['is_day_expired'] ? "b-layout__txt_color_c10600" : "b-layout__txt_color_808080"?> b-layouyt__txt_weight_normal">
                 <?= $service['expired']['date_str']?>
                 <? if($service['type'] == 'active' && $service['is_auto'] == 't') { ?>
-                (включено автопродление)
+                (РІРєР»СЋС‡РµРЅРѕ Р°РІС‚РѕРїСЂРѕРґР»РµРЅРёРµ)
                 <? }//if?>
             </span>    
         <? } elseif($service['type'] == 'lately') { //if?>
-            <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_808080 b-layouyt__txt_weight_normal">Срок действия истек <?= date('d.m.Y', strtotime($service['d']))?></span>
+            <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_808080 b-layouyt__txt_weight_normal">РЎСЂРѕРє РґРµР№СЃС‚РІРёСЏ РёСЃС‚РµРє <?= date('d.m.Y', strtotime($service['d']))?></span>
         <? } //if?>
     </h3>
-    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_20 b-layout__txt_padleft_70 b-layout__txt_padleft_null_iphone">Аккаунт PRO предоставляет своим обладателям бонусы на сайте: скидки на все платные услуги, бесплатную публикацию вакансий, возможность просматривать контакты всех пользователей и многое другое.</div>
+    <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_20 b-layout__txt_padleft_70 b-layout__txt_padleft_null_iphone">РђРєРєР°СѓРЅС‚ PRO РїСЂРµРґРѕСЃС‚Р°РІР»СЏРµС‚ СЃРІРѕРёРј РѕР±Р»Р°РґР°С‚РµР»СЏРј Р±РѕРЅСѓСЃС‹ РЅР° СЃР°Р№С‚Рµ: СЃРєРёРґРєРё РЅР° РІСЃРµ РїР»Р°С‚РЅС‹Рµ СѓСЃР»СѓРіРё, Р±РµСЃРїР»Р°С‚РЅСѓСЋ РїСѓР±Р»РёРєР°С†РёСЋ РІР°РєР°РЅСЃРёР№, РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїСЂРѕСЃРјР°С‚СЂРёРІР°С‚СЊ РєРѕРЅС‚Р°РєС‚С‹ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ Рё РјРЅРѕРіРѕРµ РґСЂСѓРіРѕРµ.</div>
 
 
     <div class="b-buttons b-buttons_padleft_70 b-buttons_padbot_10 b-layout__txt_padleft_null_iphone">
@@ -39,5 +39,5 @@
         include ( $_SERVER['DOCUMENT_ROOT'] . "/bill/widget/tpl.popup.php" );
     }
     ?>
-    <span class="b-layout__txt b-layout__txt_padtop_10 b-layout__txt_fontsize_11 b-page__iphone"><a href="/payed-emp/" class="b-layout__link promo-link">Подробнее об услуге</a></span>
+    <span class="b-layout__txt b-layout__txt_padtop_10 b-layout__txt_fontsize_11 b-page__iphone"><a href="/payed-emp/" class="b-layout__link promo-link">РџРѕРґСЂРѕР±РЅРµРµ РѕР± СѓСЃР»СѓРіРµ</a></span>
 </div>

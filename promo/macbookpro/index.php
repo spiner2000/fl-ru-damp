@@ -12,7 +12,7 @@ session_start();
 $uid = get_uid();
 $rpath = "../../";
 
-$page_title = "Получи MacBook PRO 13\" оплачивая услуги fl.ru в июне чаще других";
+$page_title = "РџРѕР»СѓС‡Рё MacBook PRO 13\" РѕРїР»Р°С‡РёРІР°СЏ СѓСЃР»СѓРіРё fl.ru РІ РёСЋРЅРµ С‡Р°С‰Рµ РґСЂСѓРіРёС…";
 $header = "../../header.php";
 $footer = "../../footer.html";
 $content = "content.php";
@@ -31,7 +31,7 @@ $macbook_top_10_all = $DB->rows(
     "
 );
 
-// Количество человек
+// РљРѕР»РёС‡РµСЃС‚РІРѕ С‡РµР»РѕРІРµРє
 $macbook_top_10_total = sizeof($macbook_top_10_all);
 
 $uid = get_uid();

@@ -1,6 +1,6 @@
 <?
     /**
-     * Шаблон катрочки проекта
+     * РЁР°Р±Р»РѕРЅ РєР°С‚СЂРѕС‡РєРё РїСЂРѕРµРєС‚Р°
      */
 
      $projectObject = new_projects::initData($project);
@@ -28,9 +28,9 @@
                 
           		
 				<? if ($project['prefer_sbr'] === 't' && $project['kind'] == 7) {
-                    // этот шаблон используется для предпросмотра проекта/конкурса при публикации, поэтому проверяем конкурс или проект 
+                    // СЌС‚РѕС‚ С€Р°Р±Р»РѕРЅ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РїСЂРµРґРїСЂРѕСЃРјРѕС‚СЂР° РїСЂРѕРµРєС‚Р°/РєРѕРЅРєСѓСЂСЃР° РїСЂРё РїСѓР±Р»РёРєР°С†РёРё, РїРѕСЌС‚РѕРјСѓ РїСЂРѕРІРµСЂСЏРµРј РєРѕРЅРєСѓСЂСЃ РёР»Рё РїСЂРѕРµРєС‚ 
                  ?>
-                    <div class="b-layout__txt_padbot_20 b-layout__txt"><?= ($project['kind'] == 7) ? 'Выплата вознаграждения через' : 'Предпочитаю оплату работы через' ?> <a href="/promo/bezopasnaya-sdelka/" target="_blank" class="b-layout__link">Безопасную Сделку</a> <?= view_sbr_shield('', 'b-icon_top_2') ?></div>
+                    <div class="b-layout__txt_padbot_20 b-layout__txt"><?= ($project['kind'] == 7) ? 'Р’С‹РїР»Р°С‚Р° РІРѕР·РЅР°РіСЂР°Р¶РґРµРЅРёСЏ С‡РµСЂРµР·' : 'РџСЂРµРґРїРѕС‡РёС‚Р°СЋ РѕРїР»Р°С‚Сѓ СЂР°Р±РѕС‚С‹ С‡РµСЂРµР·' ?> <a href="/promo/bezopasnaya-sdelka/" target="_blank" class="b-layout__link">Р‘РµР·РѕРїР°СЃРЅСѓСЋ РЎРґРµР»РєСѓ</a> <?= view_sbr_shield('', 'b-icon_top_2') ?></div>
                 <? } ?>
 				
 				
@@ -48,10 +48,10 @@
                                     onSuccess: function(data) {
                                         if (data == 2) {
                                             $(elm).removeClass('b-icon__star_yellow');
-                                            $(elm).set('title', 'Добавить в Избранное');
+                                            $(elm).set('title', 'Р”РѕР±Р°РІРёС‚СЊ РІ РР·Р±СЂР°РЅРЅРѕРµ');
                                         } else if (data == 1) {
                                             $(elm).addClass('b-icon__star_yellow');
-                                            $(elm).set('title', 'Убрать из Избранного');
+                                            $(elm).set('title', 'РЈР±СЂР°С‚СЊ РёР· РР·Р±СЂР°РЅРЅРѕРіРѕ');
                                         }
                                     }
                                 }).post('action=changePrjFavState&u_token_key=<?=$_SESSION['user_token'];?>');
@@ -59,8 +59,8 @@
                         </script>
             			<?php if ($project['name']) {
             				$sBox1 = '';
-            				if (intval($project['sbr_id'])) $sBox1 .= "<a href=\"/".sbr::NEW_TEMPLATE_SBR."/".($project['sbr_emp_id']==$uid||$project['sbr_frl_id']==$uid ? "?id={$project['sbr_id']}" : '')."\" title=\"Безопасная Сделка\"><img src=\"/images/shield_sm.gif\" alt=\"Безопасная Сделка\" class=\"sbr_p\" /></a>";
-            				if ($project['ico_closed'] == "t")  $sBox1 .= "<img src=\"/images/ico_closed.gif\" alt=\"Проект закрыт\" class=\"sbr_p\"/>";
+            				if (intval($project['sbr_id'])) $sBox1 .= "<a href=\"/".sbr::NEW_TEMPLATE_SBR."/".($project['sbr_emp_id']==$uid||$project['sbr_frl_id']==$uid ? "?id={$project['sbr_id']}" : '')."\" title=\"Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°\"><img src=\"/images/shield_sm.gif\" alt=\"Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°\" class=\"sbr_p\" /></a>";
+            				if ($project['ico_closed'] == "t")  $sBox1 .= "<img src=\"/images/ico_closed.gif\" alt=\"РџСЂРѕРµРєС‚ Р·Р°РєСЂС‹С‚\" class=\"sbr_p\"/>";
                             $sTitle = $project['moderator_status'] === '0' && $project['kind'] != 4 && $project['is_pro'] != 't' ? $stop_words->replace($project['name']) : $project['name'];
             				?>
 																												<?
@@ -95,23 +95,23 @@
                 <? } ?>
 
                 <?php if($project['kind'] != 9): ?>         
-                <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold">Разделы:</div>
+                <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_bold">Р Р°Р·РґРµР»С‹:</div>
                 <div class="b-layout__txt b-layout__txt_fontsize_11 <?php if (!($project['ico_payed']=='t' || $project['is_upped'] == 't'||$project['kind'] == 4)) {?>b-layout__txt_padbot_20<?php } ?>"><?=$isPreview ? $project['spec_txt'] : projects::_getSpecsStr($project_specs, ' / ', ', ', true);?></div>
                 
 		<?php if ($project['ico_payed']=='t' || $project['is_upped'] == 't'||$project['kind'] == 4){?>
                 <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_padbot_20">
-                    <?php if ($project['ico_payed']=='t' || $project['is_upped'] == 't'){?>Платный проект <?php if ($project['kind'] == 4) { ?>&mdash; в<?php } ?><?php } //if?><?php
-                     if ($project['kind'] == 4) { ?><?php if (!($project['ico_payed']=='t' || $project['is_upped'] == 't')){?>В<?php } //if?>акансия <?= (($project['country'])?" (".$project['country_name'].(($project['city'])?", ".$project['city_name']:"").")":"") ?><?php } //if?>
+                    <?php if ($project['ico_payed']=='t' || $project['is_upped'] == 't'){?>РџР»Р°С‚РЅС‹Р№ РїСЂРѕРµРєС‚ <?php if ($project['kind'] == 4) { ?>&mdash; РІ<?php } ?><?php } //if?><?php
+                     if ($project['kind'] == 4) { ?><?php if (!($project['ico_payed']=='t' || $project['is_upped'] == 't')){?>Р’<?php } //if?>Р°РєР°РЅСЃРёСЏ <?= (($project['country'])?" (".$project['country_name'].(($project['city'])?", ".$project['city_name']:"").")":"") ?><?php } //if?>
                 </div>
                 <?php } //if?>
                 <?php endif; ?>    	
                 
                 <div class="b-layout__txt b-layout__txt_padbot_30">
-                    <div class="b-layout__txt b-layout__txt_bold b-layout__txt_fontsize_11">Опубликован:</div>
+                    <div class="b-layout__txt b-layout__txt_bold b-layout__txt_fontsize_11">РћРїСѓР±Р»РёРєРѕРІР°РЅ:</div>
                     <div class="b-layout__txt b-layout__txt_fontsize_11">
                         <?= dateFormat("d.m.Y | H:i", $project['create_date']) ?>
-                        <?= (($project['post_date'] !== $project['create_date']) ? dateFormat("[поднят: d.m.Y | H:i]", $project['post_date']) : "") ?>  
-                        <?= (($project['edit_date']) ? dateFormat("[последние изменения: d.m.Y | H:i]", $project['edit_date']) : "") ?>  
+                        <?= (($project['post_date'] !== $project['create_date']) ? dateFormat("[РїРѕРґРЅСЏС‚: d.m.Y | H:i]", $project['post_date']) : "") ?>  
+                        <?= (($project['edit_date']) ? dateFormat("[РїРѕСЃР»РµРґРЅРёРµ РёР·РјРµРЅРµРЅРёСЏ: d.m.Y | H:i]", $project['edit_date']) : "") ?>  
                     </div>
                     <?php if($project['kind'] != 9): ?> 
                     <?php
@@ -119,7 +119,7 @@
                         ?>
                         <?php if ($project["closed"] == "f") { ?>
                             <div class="b-layout__txt b-layout__txt_fontsize_11">
-                                В списке проектов <? /* "<?=GetKind($project["kind"])?>" */ ?> <a id="pos_link_<?= $project['id'] ?>" class="b-layout__link" href="#" onclick="xajax_getStatProject(<?= $project['id'] ?>, '<?= $project['payed_to'] ?>', '<?= $project['now'] ?>', '<?= $project['payed'] ?>', '<?= $project['post_date'] ?>', '<?= $project['kind'] ?>', '<?= $project['comm_count'] ?>', '<?= $project['offers_count'] ?>'); return false;">Подробнее&hellip;</a>
+                                Р’ СЃРїРёСЃРєРµ РїСЂРѕРµРєС‚РѕРІ <? /* "<?=GetKind($project["kind"])?>" */ ?> <a id="pos_link_<?= $project['id'] ?>" class="b-layout__link" href="#" onclick="xajax_getStatProject(<?= $project['id'] ?>, '<?= $project['payed_to'] ?>', '<?= $project['now'] ?>', '<?= $project['payed'] ?>', '<?= $project['post_date'] ?>', '<?= $project['kind'] ?>', '<?= $project['comm_count'] ?>', '<?= $project['offers_count'] ?>'); return false;">РџРѕРґСЂРѕР±РЅРµРµ&hellip;</a>
                                 <span id="prj_pos_<?= $project['id'] ?>" class="b-layout__txt b-layout__txt_fontsize_11"></span>
                             </div>
                         <?php }//if?>
@@ -138,8 +138,8 @@
                 <div class="b-fon b-fon_clear_both b-fon_margbot_20">
                     <div class="b-fon__body b-fon__body_padtop_10 b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffebbf">
                         <span class="b-icon b-icon_sbr_oattent b-icon_margleft_-25"></span>
-                        Ваш проект перенесен в раздел Вакансии. <br/>
-                        Пожалуйста, оплатите его размещение, чтобы видеть отклики фрилансеров и иметь возможность выбрать Исполнителя.
+                        Р’Р°С€ РїСЂРѕРµРєС‚ РїРµСЂРµРЅРµСЃРµРЅ РІ СЂР°Р·РґРµР» Р’Р°РєР°РЅСЃРёРё. <br/>
+                        РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕРїР»Р°С‚РёС‚Рµ РµРіРѕ СЂР°Р·РјРµС‰РµРЅРёРµ, С‡С‚РѕР±С‹ РІРёРґРµС‚СЊ РѕС‚РєР»РёРєРё С„СЂРёР»Р°РЅСЃРµСЂРѕРІ Рё РёРјРµС‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РІС‹Р±СЂР°С‚СЊ РСЃРїРѕР»РЅРёС‚РµР»СЏ.
                     </div>
                 </div>
                 <?php
@@ -151,11 +151,11 @@
                    <?php if($project['kind'] != 9 && $project['closed'] != "t" && ($project["user_id"] == $uid)): ?>
                         <?php if($projectObject->isNotPayedVacancy()): ?>
                             <a class="b-button b-button_flat b-button_flat_green __project_close_hide" href="/public/?step=1&public=<?= $project['id'] ?>&popup=1">
-                                Оплатить размещение за <?=$projectObject->getProjectInOfficePrice($projectObject->isOwnerPro())?> руб.
+                                РћРїР»Р°С‚РёС‚СЊ СЂР°Р·РјРµС‰РµРЅРёРµ Р·Р° <?=$projectObject->getProjectInOfficePrice($projectObject->isOwnerPro())?> СЂСѓР±.
                             </a>                            
                         <?php else: ?>
                             <a class="b-button b-button_flat b-button_flat_green __project_close_hide" href="/public/?step=1&public=<?= $project['id'] ?>">
-                                Получить больше предложений
+                                РџРѕР»СѓС‡РёС‚СЊ Р±РѕР»СЊС€Рµ РїСЂРµРґР»РѕР¶РµРЅРёР№
                             </a>
                         <?php endif; ?>
                         &#160;&#160;&#160;
@@ -166,7 +166,7 @@
 <?php 
                             if($projectObject->isNotPayedVacancy()):
 ?>
-                            <span class="b-txt b-txt_bold b-txt_color_de2c2c b-txt_padright_20">Вакансия еще не оплачена</span>
+                            <span class="b-txt b-txt_bold b-txt_color_de2c2c b-txt_padright_20">Р’Р°РєР°РЅСЃРёСЏ РµС‰Рµ РЅРµ РѕРїР»Р°С‡РµРЅР°</span>
 <?php 
                             endif; 
 ?>   
@@ -176,33 +176,33 @@
                             var PROJECT_BANNED_NAME = "<?=htmlspecialchars($project['name'])?>";
                         </script>
                             <?php if ( $project['warn']<3 && !$project['is_banned'] && !$project['ban_where'] ) { ?>
-                                <span class='warnlink-<?= $project['user_id']?>'><a class='b-layout__link b-layout__link_dot_c10600' href='javascript: void(0);' onclick='banned.warnUser(<?= $project['user_id']?>, 0, "projects", "p<?= $project['id']?>", 0); return false;'>Сделать предупреждение (<span class='warncount-<?= $project['user_id']?>'><?= ($project['warn'] ? $project['warn'] : 0);?></span>)</a></span>&#160;&#160;
+                                <span class='warnlink-<?= $project['user_id']?>'><a class='b-layout__link b-layout__link_dot_c10600' href='javascript: void(0);' onclick='banned.warnUser(<?= $project['user_id']?>, 0, "projects", "p<?= $project['id']?>", 0); return false;'>РЎРґРµР»Р°С‚СЊ РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ (<span class='warncount-<?= $project['user_id']?>'><?= ($project['warn'] ? $project['warn'] : 0);?></span>)</a></span>&#160;&#160;
                             <?php } else /*if (!$project['is_banned'])*/ { 
-                                $sBanTitle = (!$project['is_banned'] && !$project['ban_where']) ? 'Забанить!' : 'Разбанить';
+                                $sBanTitle = (!$project['is_banned'] && !$project['ban_where']) ? 'Р—Р°Р±Р°РЅРёС‚СЊ!' : 'Р Р°Р·Р±Р°РЅРёС‚СЊ';
                                 ?>
                                <span class='warnlink-<?= $project['user_id']?>'><a class='b-layout__link b-layout__link_dot_c10600' href="javascript:void(0);" onclick="banned.userBan(<?=$project['user_id']?>, 'p<?= $project['id']?>',0)"><?=$sBanTitle?></a></span>&#160;&#160;
                             <?php }// elseif ?>
-                               <span id="project-button-<?=$project['id']?>"><a class='b-layout__link b-layout__link_dot_c10600' href="javascript:;" onclick="banned.<?=($project['is_blocked']? 'unblockedProject': 'blockedProject')?>(<?=$project['id']?>)"><?=($project['is_blocked']? 'Разблокировать': 'Заблокировать')?></a></span>&#160;&#160;
+                               <span id="project-button-<?=$project['id']?>"><a class='b-layout__link b-layout__link_dot_c10600' href="javascript:;" onclick="banned.<?=($project['is_blocked']? 'unblockedProject': 'blockedProject')?>(<?=$project['id']?>)"><?=($project['is_blocked']? 'Р Р°Р·Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ': 'Р—Р°Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ')?></a></span>&#160;&#160;
 <?php
                                 if ($projectObject->isAllowMovedToVacancy()): 
 ?>
-                               <a onclick="return confirm('Сделать вакансией?');" class='b-layout__link b-layout__link_dot_c10600' href="/projects/makevacancy/?id=<?=$project['id']?>">Сделать вакансией</a>&#160;&#160;
+                               <a onclick="return confirm('РЎРґРµР»Р°С‚СЊ РІР°РєР°РЅСЃРёРµР№?');" class='b-layout__link b-layout__link_dot_c10600' href="/projects/makevacancy/?id=<?=$project['id']?>">РЎРґРµР»Р°С‚СЊ РІР°РєР°РЅСЃРёРµР№</a>&#160;&#160;
 <?php
                                 endif;
 ?>
-                               <a class='b-layout__link' href="/public/?step=1&public=<?= $project['id']?>&red=<?= rawurlencode($_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);?>" onClick="popupQEditPrjShow(<?=$project['id']?>, event); return false;">Редактировать</a>&#160;&#160;
+                               <a class='b-layout__link' href="/public/?step=1&public=<?= $project['id']?>&red=<?= rawurlencode($_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING']);?>" onClick="popupQEditPrjShow(<?=$project['id']?>, event); return false;">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a>&#160;&#160;
                         <?php } else if ($uid && ($project["user_id"] == $uid) && ($project['is_blocked'] != 't')) { //if?>
                                <?php if($project['kind'] != 9): ?>
                                     <?php if($project["closed"] == 't') {?>
-                                        <a class='b-layout__link __project_close_hide' href="/projects/index.php?action=prj_close&pid=<?=$project["id"]?>">Публиковать еще раз</a>&#160;&#160;
+                                        <a class='b-layout__link __project_close_hide' href="/projects/index.php?action=prj_close&pid=<?=$project["id"]?>">РџСѓР±Р»РёРєРѕРІР°С‚СЊ РµС‰Рµ СЂР°Р·</a>&#160;&#160;
                                     <?php } else { //if ?>
-                                        <a class='b-layout__link __project_close_hide' href="/projects/index.php?action=prj_close&pid=<?=$project["id"]?>">Снять с публикации</a>&#160;&#160;
+                                        <a class='b-layout__link __project_close_hide' href="/projects/index.php?action=prj_close&pid=<?=$project["id"]?>">РЎРЅСЏС‚СЊ СЃ РїСѓР±Р»РёРєР°С†РёРё</a>&#160;&#160;
                                     <?php } //else?>
                                <?php endif; ?>
                                
                                <?php if(!$projectObject->isNotPayedVacancy()): ?>         
                                <a class='b-layout__link __project_close_hide' href="/public/?step=1&public=<?=$project["id"]?>&red=<?=rawurlencode("/users/" . $project["login"] . "/setup/projects/")?>">
-                                   Редактировать
+                                   Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ
                                </a>
                                <?php endif; ?>
                         <?php } ?>
@@ -216,7 +216,7 @@
                          <div class="b-buttons b-buttons_padbot_30">
                            <a class="b-button b-button_flat b-button_flat_green" href="<?=$answer_button_href?>"><?=$answer_button_text?></a>&#160;&#160;&#160;
                            <span class="b-layout__txt b-layout__txt_valign_middle">
-                                <a class='b-layout__link' href="<?php if ($project['kind'] == 4) { ?>/projects/?kind=4<?php } else { ?>/projects/<?php } ?>">Посмотреть другие <?php if ($project['kind'] == 4) { ?>вакансии<?php } else { ?>проекты<?php } ?></a>
+                                <a class='b-layout__link' href="<?php if ($project['kind'] == 4) { ?>/projects/?kind=4<?php } else { ?>/projects/<?php } ?>">РџРѕСЃРјРѕС‚СЂРµС‚СЊ РґСЂСѓРіРёРµ <?php if ($project['kind'] == 4) { ?>РІР°РєР°РЅСЃРёРё<?php } else { ?>РїСЂРѕРµРєС‚С‹<?php } ?></a>
                            </span>
                          </div>
             	    <?php }//if ?>
@@ -233,7 +233,7 @@
                                         'abuse_uploader' => array(
                                             'umask'  => uploader::umask('prj_abuse'),
                                             'validation' => array('allowedExtensions' => array('jpg', 'gif', 'png', 'jpeg'), 'restrictedExtensions' => array(), 'sizeLimit' => tmp_project::MAX_FILE_SIZE),
-                                            'text'   => array('uploadButton' => iconv('cp1251', 'utf8', 'Прикрепить файлы'))
+                                            'text'   => array('uploadButton' => iconv('cp1251', 'utf8', 'РџСЂРёРєСЂРµРїРёС‚СЊ С„Р°Р№Р»С‹'))
                                         )
                                     ), $templates);
                                     $complain = true;
@@ -246,14 +246,14 @@
                                     ?><? include($_SERVER['DOCUMENT_ROOT'] . "/projects/tpl.abuse.php"); 
                                     ?>
                                     
-                                    <span class="b-layout__txt_color_c10600">Пожаловаться на проект: 
-                                    &nbsp;&nbsp;&nbsp;<a class="b-layout__link b-layout__link_dot_c10600 abuse-employer-project-link" href="javascript:void(0)">Работодателю</a>
-                                    &nbsp;/&nbsp; <a class="b-layout__link b-layout__link_dot_c10600 abuse-moderator-project-link" href="javascript:void(0)">Модератору</a>
+                                    <span class="b-layout__txt_color_c10600">РџРѕР¶Р°Р»РѕРІР°С‚СЊСЃСЏ РЅР° РїСЂРѕРµРєС‚: 
+                                    &nbsp;&nbsp;&nbsp;<a class="b-layout__link b-layout__link_dot_c10600 abuse-employer-project-link" href="javascript:void(0)">Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЋ</a>
+                                    &nbsp;/&nbsp; <a class="b-layout__link b-layout__link_dot_c10600 abuse-moderator-project-link" href="javascript:void(0)">РњРѕРґРµСЂР°С‚РѕСЂСѓ</a>
                                     </span> 
                                     &#160; <img class="b-layout__pic b-layout__pic_absolute b-layout__txt_hide" id="project_abuse_success" style="top:-8px; left:400px" src="/images/thanks.png" width="80" height="36">
                                 </div>
                                 <?php endif; ?>
-                                <a class='b-layout__link' href="<?php if ($project['kind'] == 4) { ?>/projects/?kind=4<?php } else { ?>/projects/<?php } ?>">Посмотреть другие <?php if ($project['kind'] == 4) { ?>вакансии<?php } else { ?>проекты<?php } ?></a>
+                                <a class='b-layout__link' href="<?php if ($project['kind'] == 4) { ?>/projects/?kind=4<?php } else { ?>/projects/<?php } ?>">РџРѕСЃРјРѕС‚СЂРµС‚СЊ РґСЂСѓРіРёРµ <?php if ($project['kind'] == 4) { ?>РІР°РєР°РЅСЃРёРё<?php } else { ?>РїСЂРѕРµРєС‚С‹<?php } ?></a>
                          </div>
                     <?php } else { ?>
 			 <?php $sTitle = $project['moderator_status'] === '0' && $project['kind'] != 4 && $project['is_pro'] != 't' ? $stop_words->replace($project['name'], 'plain', false) : $project['name']; ?>
@@ -270,7 +270,7 @@
                                             'abuse_uploader' => array(
                                                 'umask'  => uploader::umask('prj_abuse'),
                                                 'validation' => array('allowedExtensions' => array('jpg', 'gif', 'png', 'jpeg'), 'restrictedExtensions' => array(), 'sizeLimit' => tmp_project::MAX_FILE_SIZE),
-                                                'text'   => array('uploadButton' => iconv('cp1251', 'utf8', 'Прикрепить файлы'))
+                                                'text'   => array('uploadButton' => iconv('cp1251', 'utf8', 'РџСЂРёРєСЂРµРїРёС‚СЊ С„Р°Р№Р»С‹'))
                                             )
                                         ), $templates);
                                         $complain = true;
@@ -283,9 +283,9 @@
                                         ?><? include($_SERVER['DOCUMENT_ROOT'] . "/projects/tpl.abuse.php"); 
                                         ?>
                                         
-                                        <span class="b-layout__txt_color_c10600">Пожаловаться на проект: 
-                                        &nbsp;&nbsp;&nbsp;<a class="b-layout__link b-layout__link_dot_c10600 abuse-employer-project-link" href="javascript:void(0)">Работодателю</a>
-                                        &nbsp;/&nbsp; <a class="b-layout__link b-layout__link_dot_c10600 abuse-moderator-project-link" href="javascript:void(0)">Модератору</a>
+                                        <span class="b-layout__txt_color_c10600">РџРѕР¶Р°Р»РѕРІР°С‚СЊСЃСЏ РЅР° РїСЂРѕРµРєС‚: 
+                                        &nbsp;&nbsp;&nbsp;<a class="b-layout__link b-layout__link_dot_c10600 abuse-employer-project-link" href="javascript:void(0)">Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЋ</a>
+                                        &nbsp;/&nbsp; <a class="b-layout__link b-layout__link_dot_c10600 abuse-moderator-project-link" href="javascript:void(0)">РњРѕРґРµСЂР°С‚РѕСЂСѓ</a>
                                         </span> 
                                         &#160; <img class="b-layout__pic b-layout__pic_absolute b-layout__txt_hide" id="project_abuse_success" style="top:-8px; left:400px" src="/images/thanks.png" width="80" height="36">
                                         
@@ -295,7 +295,7 @@
                                 
                                  <?php if($project['pro_only'] == 't' && !$is_pro || $project['verify_only'] == 't' && !$is_verify || (@$answers->offers < 1 && !$is_pro)) {?>
                                     <a data-popup="project_answer_popup" data-url="<?=$answer_button_href?>" class="b-button b-button_flat b-button_flat_green" href="<?=$answer_button_href?>">
-                                        Ответить на <?php if ($project['kind'] == 4) { ?>вакансию<?php } else { ?>проект<?php } ?>
+                                        РћС‚РІРµС‚РёС‚СЊ РЅР° <?php if ($project['kind'] == 4) { ?>РІР°РєР°РЅСЃРёСЋ<?php } else { ?>РїСЂРѕРµРєС‚<?php } ?>
                                     </a>&#160;&#160;&#160;
                                     <?php if(get_uid(false) > 0) echo projects_helper::renderAnswerPopup(array('project' => $project,'is_pro' => $is_pro,'is_verify' => $is_verify)); ?>
                                  <?php } ?>
@@ -303,7 +303,7 @@
                                     <?php if(!get_uid(false)) {?>
                                      <a class='b-layout__link' href="/public/?step=1&kind=<?=$project['kind']?>"><?=$answer_button_text?></a>&#160;&#160;
                                     <?php }//if ?>
-                                    <a class='b-layout__link' href="<?php if ($project['kind'] == 4) { ?>/projects/?kind=4<?php } else { ?>/projects/<?php } ?>">Посмотреть другие <?php if ($project['kind'] == 4) { ?>вакансии<?php } else { ?>проекты<?php } ?></a>
+                                    <a class='b-layout__link' href="<?php if ($project['kind'] == 4) { ?>/projects/?kind=4<?php } else { ?>/projects/<?php } ?>">РџРѕСЃРјРѕС‚СЂРµС‚СЊ РґСЂСѓРіРёРµ <?php if ($project['kind'] == 4) { ?>РІР°РєР°РЅСЃРёРё<?php } else { ?>РїСЂРѕРµРєС‚С‹<?php } ?></a>
                                  </span>
                              </div>
 						 <?php }//if?>

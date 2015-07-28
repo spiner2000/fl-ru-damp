@@ -42,17 +42,17 @@ $results = array();
                        currency="643"
                        contract="">
          <paymentParams>                         <skr_destinationCardSynonim>79052075556</skr_destinationCardSynonim>
-                  <pdr_firstName>Владимир</pdr_firstName>
+                  <pdr_firstName>Р’Р»Р°РґРёРјРёСЂ</pdr_firstName>
                   <pof_offerAccepted>1</pof_offerAccepted> 
-                  <pdr_secondName>Владимирович</pdr_secondName>
-                  <pdr_lastName>Владимиров</pdr_lastName>
+                  <pdr_secondName>Р’Р»Р°РґРёРјРёСЂРѕРІРёС‡</pdr_secondName>
+                  <pdr_lastName>Р’Р»Р°РґРёРјРёСЂРѕРІ</pdr_lastName>
                   <cps_phoneNumber>79052075556</cps_phoneNumber>
                   <pdr_docType>21</pdr_docType>
                   <pdr_docNum>4002109067</pdr_docNum>
                   <pdr_postcode>194044</pdr_postcode>
-                  <pdr_country>Санкт-Петербург</pdr_country>
+                  <pdr_country>РЎР°РЅРєС‚-РџРµС‚РµСЂР±СѓСЂРі</pdr_country>
                   <pdr_city></pdr_City>
-                  <pdr_address>Большой пр, ПС, д.12</pdr_address>
+                  <pdr_address>Р‘РѕР»СЊС€РѕР№ РїСЂ, РџРЎ, Рґ.12</pdr_address>
          </paymentParams>
 </makeDepositionRequest>
 
@@ -80,25 +80,25 @@ $params = array(
             'docType' => "21",
             'docNumber' => "4004 123987",
             'issueDate' => "1976-01-01",
-            'authorityName' => "25 о/м Приморского р-на г. Санкт-Петербурга",
+            'authorityName' => "25 Рѕ/Рј РџСЂРёРјРѕСЂСЃРєРѕРіРѕ СЂ-РЅР° Рі. РЎР°РЅРєС‚-РџРµС‚РµСЂР±СѓСЂРіР°",
             'authorityCode' => "780-025",
-            'residence' => "г.Санкт-Петербург, 3-я улица Строителей, д.25, кв.12"
+            'residence' => "Рі.РЎР°РЅРєС‚-РџРµС‚РµСЂР±СѓСЂРі, 3-СЏ СѓР»РёС†Р° РЎС‚СЂРѕРёС‚РµР»РµР№, Рґ.25, РєРІ.12"
         )
     )*/
     ,
     'paymentParams' => array(
         'skr_destinationCardSynonim' => '79052075556',
-        'pdr_firstName' => 'Владимир',
+        'pdr_firstName' => 'Р’Р»Р°РґРёРјРёСЂ',
         'pof_offerAccepted' => 1,
-        'pdr_secondName' => 'Владимирович',
-        'pdr_lastName' => 'Владимиров',
+        'pdr_secondName' => 'Р’Р»Р°РґРёРјРёСЂРѕРІРёС‡',
+        'pdr_lastName' => 'Р’Р»Р°РґРёРјРёСЂРѕРІ',
         'cps_phoneNumber' => 79052075556,
         'pdr_docType' => 21,
         'pdr_docNum' => 4002109067,
         'pdr_postcode' => 194044,
-        'pdr_country' => 'Санкт-Петербург',
+        'pdr_country' => 'РЎР°РЅРєС‚-РџРµС‚РµСЂР±СѓСЂРі',
         'pdr_city' => '',
-        'pdr_address' => 'Большой пр, ПС, д.12'
+        'pdr_address' => 'Р‘РѕР»СЊС€РѕР№ РїСЂ, РџРЎ, Рґ.12'
     )
 );
 

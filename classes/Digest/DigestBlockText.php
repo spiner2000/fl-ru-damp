@@ -3,14 +3,14 @@
 require_once 'DigestBlock.php';
 
 /**
- * Класс для работы с блоком "Гланый блок"
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Р±Р»РѕРєРѕРј "Р“Р»Р°РЅС‹Р№ Р±Р»РѕРє"
  */
 class DigestBlockText extends DigestBlock {
     
     /**
      * @see parent::$title
      */
-    public $title   = 'Главный блок';
+    public $title   = 'Р“Р»Р°РІРЅС‹Р№ Р±Р»РѕРє';
     
     /**
      * @see parent::$created
@@ -18,32 +18,32 @@ class DigestBlockText extends DigestBlock {
     const IS_CREATED = true;
     
     /**
-     * Использовать визивиг или нет
+     * РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РІРёР·РёРІРёРі РёР»Рё РЅРµС‚
      */
     const IS_WYSIWYG = true;
     
     /**
-     * Название
+     * РќР°Р·РІР°РЅРёРµ
      * @var string 
      */
     public $name;
     
     /**
-     * Ссылка
+     * РЎСЃС‹Р»РєР°
      * 
      * @var string 
      */
     public $link;
     
     /**
-     * Описание
+     * РћРїРёСЃР°РЅРёРµ
      * 
      * @var string
      */
     public $text;
     
     /**
-     * Конструктор класса
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
      * 
      * @param string $name    @see self::$name
      * @param string $link    @see self::$link
@@ -56,7 +56,7 @@ class DigestBlockText extends DigestBlock {
     }
     
     /**
-     * Инициализация блока
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ Р±Р»РѕРєР°
      * 
      * @param string $name    @see self::$name
      * @param string $link    @see self::$name
@@ -73,7 +73,7 @@ class DigestBlockText extends DigestBlock {
     }
     
     /**
-     * Проверяем введенную ссылку на валидность
+     * РџСЂРѕРІРµСЂСЏРµРј РІРІРµРґРµРЅРЅСѓСЋ СЃСЃС‹Р»РєСѓ РЅР° РІР°Р»РёРґРЅРѕСЃС‚СЊ
      * 
      * @return boolean
      */
@@ -83,15 +83,15 @@ class DigestBlockText extends DigestBlock {
     }
     
     /**
-     * Отображение блока
+     * РћС‚РѕР±СЂР°Р¶РµРЅРёРµ Р±Р»РѕРєР°
      */
     public function displayBlock() {
         include ($_SERVER['DOCUMENT_ROOT'] . self::TEMPLATE_PATH . "/tpl.digest_text.php");
     }
     
     /**
-     * Если блоком может быть несколько, имена input должны быть массивами
-     * Выдает модификатор имени input
+     * Р•СЃР»Рё Р±Р»РѕРєРѕРј РјРѕР¶РµС‚ Р±С‹С‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ, РёРјРµРЅР° input РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РјР°СЃСЃРёРІР°РјРё
+     * Р’С‹РґР°РµС‚ РјРѕРґРёС„РёРєР°С‚РѕСЂ РёРјРµРЅРё input
      * 
      * @return string
      */
@@ -100,7 +100,7 @@ class DigestBlockText extends DigestBlock {
     }
     
     /**
-     * Инициализация блока
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ Р±Р»РѕРєР°
      * 
      * @param array $data
      */
@@ -114,7 +114,7 @@ class DigestBlockText extends DigestBlock {
     }
     
     /**
-     * Выдает HTML блок
+     * Р’С‹РґР°РµС‚ HTML Р±Р»РѕРє
      * 
      * @return string
      */
@@ -126,12 +126,12 @@ class DigestBlockText extends DigestBlock {
     }
     
     /**
-     * Проверка на использователие визивиг редактора при создании блока
+     * РџСЂРѕРІРµСЂРєР° РЅР° РёСЃРїРѕР»СЊР·РѕРІР°С‚РµР»РёРµ РІРёР·РёРІРёРі СЂРµРґР°РєС‚РѕСЂР° РїСЂРё СЃРѕР·РґР°РЅРёРё Р±Р»РѕРєР°
      * 
      * @return boolean
      */
     public function isWysiwyg() {
         return constant(get_class($this) . '::IS_WYSIWYG');
-        //return $this::IS_WYSIWYG;//Начиная с версии 5.3.0
+        //return $this::IS_WYSIWYG;//РќР°С‡РёРЅР°СЏ СЃ РІРµСЂСЃРёРё 5.3.0
     }
 }

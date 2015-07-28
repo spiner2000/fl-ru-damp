@@ -1,11 +1,11 @@
 <?php
 /* 
  * 
- * Данный файл является частью проекта Веб Мессенджер.
+ * Р”Р°РЅРЅС‹Р№ С„Р°Р№Р» СЏРІР»СЏРµС‚СЃСЏ С‡Р°СЃС‚СЊСЋ РїСЂРѕРµРєС‚Р° Р’РµР± РњРµСЃСЃРµРЅРґР¶РµСЂ.
  * 
- * Все права защищены. (c) 2005-2009 ООО "ТОП".
- * Данное программное обеспечение и все сопутствующие материалы
- * предоставляются на условиях лицензии, доступной по адресу
+ * Р’СЃРµ РїСЂР°РІР° Р·Р°С‰РёС‰РµРЅС‹. (c) 2005-2009 РћРћРћ "РўРћРџ".
+ * Р”Р°РЅРЅРѕРµ РїСЂРѕРіСЂР°РјРјРЅРѕРµ РѕР±РµСЃРїРµС‡РµРЅРёРµ Рё РІСЃРµ СЃРѕРїСѓС‚СЃС‚РІСѓСЋС‰РёРµ РјР°С‚РµСЂРёР°Р»С‹
+ * РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‚СЃСЏ РЅР° СѓСЃР»РѕРІРёСЏС… Р»РёС†РµРЅР·РёРё, РґРѕСЃС‚СѓРїРЅРѕР№ РїРѕ Р°РґСЂРµСЃСѓ
  * http://webim.ru/license.html
  * 
  */
@@ -31,8 +31,8 @@ $page = array();
 
 $email = get_mandatory_param('email');
 $phone = get_mandatory_param('phone');
-// отправке диалогов
-$dept = 1; // пока не выбирается
+// РѕС‚РїСЂР°РІРєРµ РґРёР°Р»РѕРіРѕРІ
+$dept = 1; // РїРѕРєР° РЅРµ РІС‹Р±РёСЂР°РµС‚СЃСЏ
 
 $canChangeName = Visitor::getInstance()->canVisitorChangeName();
 $v = GetVisitorFromRequestAndSetCookie();
@@ -102,7 +102,7 @@ $first_message = MapperFactory::getMapper("Message")->getFirstMessage($thread['t
 
 Visitor::getInstance()->setVisitorNameCookie($visitor_name);
 
-// отправке диалогов из мессенджера
+// РѕС‚РїСЂР°РІРєРµ РґРёР°Р»РѕРіРѕРІ РёР· РјРµСЃСЃРµРЅРґР¶РµСЂР°
 $subject = ( $dept && isset($aDko[$dept]['subject']) ) ? $subject = $aDko[$dept]['subject'] : Resources::Get("leavemail.subject", array($visitor_name), WEBIM_CURRENT_LOCALE);
 
 $body = Resources::Get(
@@ -119,12 +119,12 @@ $body = Resources::Get(
   WEBIM_CURRENT_LOCALE
 );
 
-// отправке диалогов из мессенджера
+// РѕС‚РїСЂР°РІРєРµ РґРёР°Р»РѕРіРѕРІ РёР· РјРµСЃСЃРµРЅРґР¶РµСЂР°
 if ( $dept && ($feedback = feedbackAdd($dept, $visitor_name, $email, $body, get_uid(false))) ) {
     $body .= "\n" . '[[UCODE::{' . $feedback['uc'] . '},FID::{' . $feedback['id']  .'}]]';
 }
 
-// отправке диалогов из мессенджера
+// РѕС‚РїСЂР°РІРєРµ РґРёР°Р»РѕРіРѕРІ РёР· РјРµСЃСЃРµРЅРґР¶РµСЂР°
 $inbox_mail = ( $dept && isset($aDko[$dept]['email']) ) ? $aDko[$dept]['email'] : Settings::Get('offline_email');
 
 webim_mail($inbox_mail, $visitor_name.'<'.$email.'>', $subject, $body);

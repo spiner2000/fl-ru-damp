@@ -32,7 +32,7 @@ if($uid) {
 	$mod  = hasPermissions('users') ? 0 : 1;
     $user = new employer();
     
-    // Изменяем авто продление PRO, если нужно
+    // РР·РјРµРЅСЏРµРј Р°РІС‚Рѕ РїСЂРѕРґР»РµРЅРёРµ PRO, РµСЃР»Рё РЅСѓР¶РЅРѕ
     if (strtolower($_POST['pro_auto_prolong']) == 'on') {
         $user->setPROAutoProlong('on', $uid);
         $result['success'] = true;
@@ -78,7 +78,7 @@ if($uid) {
     $dateFrozenMinLimit = "date_min_limit_" . date('Y_m_d', strtotime('+ 1 day'));
     
     
-    //Инициализация попапа оплаты
+    //РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїРѕРїР°РїР° РѕРїР»Р°С‚С‹
     require_once(ABS_PATH . '/classes/quick_payment/quickPaymentPopupPro.php');
     quickPaymentPopupPro::getInstance()->init();
 }
@@ -92,7 +92,7 @@ $prices = array(
     )
 );
 
-$page_title   = 'Профессиональный аккаунт - фриланс, удаленная работа на FL.ru';
+$page_title   = 'РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚ - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru';
 
 $header       = '../header.php';
 $footer       = '../footer.html';

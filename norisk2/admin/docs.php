@@ -8,13 +8,13 @@ var checked_cnt=0;
 <?php }?>
 <div class="tabs-in nr-tabs-in2">
 	<div class="lnk-nr-back">
-        <a href=".">Вернуться в проекты по «Безопасным Сделкам»</a>
+        <a href=".">Р’РµСЂРЅСѓС‚СЊСЃСЏ РІ РїСЂРѕРµРєС‚С‹ РїРѕ В«Р‘РµР·РѕРїР°СЃРЅС‹Рј РЎРґРµР»РєР°РјВ»</a>
 	</div>
 	<div class="nr-prnt-project">
-        Документы проекта: <strong class="nr-ico">#<?=$sbr->id?></strong> <a href="?id=<?=$sbr->id?>"><?=$sbr->name?></a>
+        Р”РѕРєСѓРјРµРЅС‚С‹ РїСЂРѕРµРєС‚Р°: <strong class="nr-ico">#<?=$sbr->id?></strong> <a href="?id=<?=$sbr->id?>"><?=$sbr->name?></a>
 	</div>
     <? if($sbr->docs) { ?>
-        <?php if($sbr->isAdmin()) { ?><form action="." method="post" onsubmit="if(!checked_cnt)return false;if(this['action'].value=='delete')return window.confirm('Вы действительно хотите удалить выбранные документы?');"><?php }//if?>
+        <?php if($sbr->isAdmin()) { ?><form action="." method="post" onsubmit="if(!checked_cnt)return false;if(this['action'].value=='delete')return window.confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ РІС‹Р±СЂР°РЅРЅС‹Рµ РґРѕРєСѓРјРµРЅС‚С‹?');"><?php }//if?>
             <div class="form form-nr-docs">
                 <b class="b1"></b>
                 <b class="b2"></b>
@@ -36,21 +36,21 @@ var checked_cnt=0;
                                 <td class="nr-d-c1"><?=$i?>.</td>
                                 <td>
                                   <? if($doc['stage_id'] && ($stg=$sbr->getStageById($doc['stage_id']))) { ?>
-                                    <a href="/norisk2/?site=Stage&id=<?=$stg->id?>">Этап <?=$stg->getOuterNum()?></a>
+                                    <a href="/norisk2/?site=Stage&id=<?=$stg->id?>">Р­С‚Р°Рї <?=$stg->getOuterNum()?></a>
                                   <? } else { ?>&nbsp;<? } ?>
                                 </td>
                                 <td><a href="<?=WDCPREFIX.'/'.$doc['file_path'].$doc['file_name']?>" target="_blank"><?=$doc['name']?></a></td>
                                 <td class="nr-d-c6">
-                                  <? if(($doc['access_role'] & sbr::DOCS_ACCESS_EMP) == sbr::DOCS_ACCESS_EMP) { ?><span class="nr-d-e">Работодатель</span><? } ?>
-                                  <? if(($doc['access_role'] & sbr::DOCS_ACCESS_FRL) == sbr::DOCS_ACCESS_FRL) { ?><span class="nr-d-f">Исполнитель</span><? } ?>
+                                  <? if(($doc['access_role'] & sbr::DOCS_ACCESS_EMP) == sbr::DOCS_ACCESS_EMP) { ?><span class="nr-d-e">Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ</span><? } ?>
+                                  <? if(($doc['access_role'] & sbr::DOCS_ACCESS_FRL) == sbr::DOCS_ACCESS_FRL) { ?><span class="nr-d-f">РСЃРїРѕР»РЅРёС‚РµР»СЊ</span><? } ?>
                                 </td>
                                 <td><?=ConvertBtoMB($doc['file_size'])?></td>
                                 <td><?=strtoupper(CFile::getext($doc['file_name']))?></td>
                                 <td class="nr-d-c5"><?=sbr::$docs_ss[$doc['status']][0]?></td>
                                 <td><?=date('d.m.Y H:i', strtotime($doc[sbr::$docs_ss[$doc['status']][1]]))?></td>
                                 <?php if($sbr->isAdmin()) { ?>
-                                <td><a href="javascript:;" title="Редактировать" onclick="SBR.initDocForm(this, <?=$doc['sbr_id']?>, <?=$doc['id']?>)"><img src="/images/btn-edit2.png" alt="Редактировать" /></a>&nbsp;
-                                    <a href="javascript:;" title="Удалить" onclick="SBR.delDoc(this, <?=$doc['sbr_id']?>, <?=$doc['id']?>)"><img src="/images/btn-remove2.png" alt="Удалить" /></a>
+                                <td><a href="javascript:;" title="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" onclick="SBR.initDocForm(this, <?=$doc['sbr_id']?>, <?=$doc['id']?>)"><img src="/images/btn-edit2.png" alt="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ" /></a>&nbsp;
+                                    <a href="javascript:;" title="РЈРґР°Р»РёС‚СЊ" onclick="SBR.delDoc(this, <?=$doc['sbr_id']?>, <?=$doc['id']?>)"><img src="/images/btn-remove2.png" alt="РЈРґР°Р»РёС‚СЊ" /></a>
                                 </td>
                                 <?php }//if?>
                             </tr>
@@ -61,21 +61,21 @@ var checked_cnt=0;
                 <b class="b1"></b>
             </div>
        <?php if($sbr->isAdmin()) { ?>
-            <div class="nr-docs-options">С отмеченными:
+            <div class="nr-docs-options">РЎ РѕС‚РјРµС‡РµРЅРЅС‹РјРё:
                 <select name="action" style="width:auto">
                     <? foreach(sbr::$docs_access as $id=>$val) { ?>
-                      <option value="set_access=<?=$id?>">Доступ: <?=$val[0]?></option>
+                      <option value="set_access=<?=$id?>">Р”РѕСЃС‚СѓРї: <?=$val[0]?></option>
                     <? } ?>
                     <option>------------</option>
                     <? foreach(sbr::$docs_ss as $id=>$val) { ?>
-                      <option value="set_status=<?=$id?>">Статус: <?=$val[0]?></option>
+                      <option value="set_status=<?=$id?>">РЎС‚Р°С‚СѓСЃ: <?=$val[0]?></option>
                     <? } ?>
                     <option>------------</option>
-                    <option value="delete">Удалить</option>
+                    <option value="delete">РЈРґР°Р»РёС‚СЊ</option>
                 </select>
                 <input type="hidden" name="site" value="<?=$site?>" />
                 <input type="hidden" name="sbr_id" value="<?=$sbr->id?>" />
-                <input type="submit" value="Выполнить" class="i-btn" />
+                <input type="submit" value="Р’С‹РїРѕР»РЅРёС‚СЊ" class="i-btn" />
             </div>
         </form>
         <?php } //if?>
@@ -84,5 +84,5 @@ var checked_cnt=0;
     <div id="doc_edit_box"><? if($sbr->post_doc['id']) echo $sbr->doc_form($sbr->post_doc, $stage_id, TRUE); ?></div>
     <?=$sbr->doc_form($sbr->post_doc && !$sbr->post_doc['id'] ? $sbr->post_doc : NULL, $stage_id, FALSE)?>
      <?php } //if?>
-	<p><strong>Обратите внимание</strong><br/><br/> Исполнитель не может получить деньги до получения ресурсом всех необходимых документов.</p>
+	<p><strong>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ</strong><br/><br/> РСЃРїРѕР»РЅРёС‚РµР»СЊ РЅРµ РјРѕР¶РµС‚ РїРѕР»СѓС‡РёС‚СЊ РґРµРЅСЊРіРё РґРѕ РїРѕР»СѓС‡РµРЅРёСЏ СЂРµСЃСѓСЂСЃРѕРј РІСЃРµС… РЅРµРѕР±С…РѕРґРёРјС‹С… РґРѕРєСѓРјРµРЅС‚РѕРІ.</p>
 </div>

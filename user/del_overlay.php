@@ -5,16 +5,16 @@
                 <div class="b-shadow__bottom">
                     <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20">
                         
-                        <h4 class="b-shadow__h4 b-shadow__h4_padbot_10" id="delreason_d4">Причина удаления</h4>
+                        <h4 class="b-shadow__h4 b-shadow__h4_padbot_10" id="delreason_d4">РџСЂРёС‡РёРЅР° СѓРґР°Р»РµРЅРёСЏ</h4>
 
                         <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table b-layout__table_width_full">
                             <tr class="b-layout__tr">
                                 <td class="b-layout__left b-layout__left_padbot_15 b-layout__left_width_90">
-                                        <div class="b-layout__txt b-layout__txt_padtop_4">Причина:</div>
+                                        <div class="b-layout__txt b-layout__txt_padtop_4">РџСЂРёС‡РёРЅР°:</div>
                                 </td>
                                 <td class="b-layout__right b-layout__right_padbot_15">
                                     <div id="delreason_div_select" class="b-select">
-                                        <select class="b-select__select" disabled="disabled"><option>Подождите...</option></select>
+                                        <select class="b-select__select" disabled="disabled"><option>РџРѕРґРѕР¶РґРёС‚Рµ...</option></select>
                                     </div>
                                 </td>
                             </tr>
@@ -31,9 +31,9 @@
                                 <td class="b-layout__left b-layout__left_width_90">&nbsp;</td>
                                 <td class="b-layout__right">
                                     <div id="delreason_ban_btn" class="b-buttons">
-                                        <a id="delreason_btn" href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green" onclick="banned.commit(banned.banUid,$('bfrm_'+banned.banUid).get('value') )">Сохранить</a>
-                                        <span class="b-buttons__txt b-buttons__txt_padleft_10">или</span>
-                                        <a href="javascript:void(0);" class="b-buttons__link b-buttons__link_dot_c10601" onclick="banned.commit(banned.banUid,(banned.buffer[banned.banUid].action='close'));return false;">закрыть, не сохраняя</a>
+                                        <a id="delreason_btn" href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green" onclick="banned.commit(banned.banUid,$('bfrm_'+banned.banUid).get('value') )">РЎРѕС…СЂР°РЅРёС‚СЊ</a>
+                                        <span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё</span>
+                                        <a href="javascript:void(0);" class="b-buttons__link b-buttons__link_dot_c10601" onclick="banned.commit(banned.banUid,(banned.buffer[banned.banUid].action='close'));return false;">Р·Р°РєСЂС‹С‚СЊ, РЅРµ СЃРѕС…СЂР°РЅСЏСЏ</a>
                                     </div>
                                 </td>
                             </tr>

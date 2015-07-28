@@ -50,8 +50,8 @@ $html = Template::render(
         array(
             'utm_param' => '?utm_source=newsletter4' . rand(1,100),
             'url'   => $GLOBALS['host'],
-            'name'  => 'Íàçâàíèå',
-            'descr' => 'Îïèñàíèå',
+            'name'  => 'ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ',
+            'descr' => 'ÐžÐ¿Ð¸ÑÐ°Ð½Ð¸Ðµ',
             'host' => $GLOBALS['host'],
             'project_kind' => 1,
             'project_pro_only' => TRUE,

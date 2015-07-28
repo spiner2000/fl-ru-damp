@@ -26,7 +26,7 @@ require_once(ABS_PATH . '/classes/Backup/Factory.php');
 
 $filepath = 'users/DO/DOWNshifter/reserves/685/f_432548836a60bcd1.pdf';
 
-//создаем указанный обьект для работы с сервисом
+//СЃРѕР·РґР°РµРј СѓРєР°Р·Р°РЅРЅС‹Р№ РѕР±СЊРµРєС‚ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЃРµСЂРІРёСЃРѕРј
 $backupServiceInstance = Backup_Factory::getInstance(
         $BACKUP_SERVICE['type'], 
         $BACKUP_SERVICE['options']);

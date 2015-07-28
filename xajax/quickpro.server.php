@@ -9,7 +9,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/platipotom.php");
 session_start();
 
 /**
- * Ïîêóïêà ÏÐÎ ÷åðåç ËÑ
+ * ÐŸÐ¾ÐºÑƒÐ¿ÐºÐ° ÐŸÐ Ðž Ñ‡ÐµÑ€ÐµÐ· Ð›Ð¡
  * 
  * @param type $opcode
  * @param type $redirect
@@ -31,7 +31,7 @@ function quickPROPayAccount($opcode, $redirect, $promo_code)
         $uid = get_uid(false);
         $bill = new billing($uid);
         
-        //Äîïóñòèìî èñïîëüçîâàíèå ïðîìîêîäîâ
+        //Ð”Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ð¾ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¾Ð¼Ð¾ÐºÐ¾Ð´Ð¾Ð²
         $bill->setPromoCodes('SERVICE_PRO', $promo_code); 
         
         $billReserveId = $bill->addServiceAndCheckout($opcode);
@@ -61,7 +61,7 @@ function quickPROPayAccount($opcode, $redirect, $promo_code)
 
 
 /**
- * Ïîêóïêà ÏÐÎ ÷åðåç ßÄ Êàññó
+ * ÐŸÐ¾ÐºÑƒÐ¿ÐºÐ° ÐŸÐ Ðž Ñ‡ÐµÑ€ÐµÐ· Ð¯Ð” ÐšÐ°ÑÑÑƒ
  * 
  * @param type $opcode
  * @param type $payment
@@ -84,10 +84,10 @@ function quickPROGetYandexKassaLink($opcode, $payment, $redirect, $promo_code)
 
         $bill = new billing($uid);
 
-        //Äîïóñòèìî èñïîëüçîâàíèå ïðîìîêîäîâ
+        //Ð”Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ð¾ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¾Ð¼Ð¾ÐºÐ¾Ð´Ð¾Ð²
         $bill->setPromoCodes('SERVICE_PRO', $promo_code);    
         
-        //Ôîðìèðóåì çàêàç
+        //Ð¤Ð¾Ñ€Ð¼Ð¸Ñ€ÑƒÐµÐ¼ Ð·Ð°ÐºÐ°Ð·
         $billReserveId = $bill->addServiceAndCheckout($opcode);
         $sum = $bill->getRealPayedSum();
         $payed_sum = $bill->getOrderPayedSum();
@@ -114,7 +114,7 @@ function quickPROGetYandexKassaLink($opcode, $payment, $redirect, $promo_code)
 
 
 /**
- * Îïëàòà ÷åðåç ÏëàòèÏîòîì ñåðâèñ
+ * ÐžÐ¿Ð»Ð°Ñ‚Ð° Ñ‡ÐµÑ€ÐµÐ· ÐŸÐ»Ð°Ñ‚Ð¸ÐŸÐ¾Ñ‚Ð¾Ð¼ ÑÐµÑ€Ð²Ð¸Ñ
  * 
  * @param type $opcode
  * @param type $redirect
@@ -137,10 +137,10 @@ function quickPROGetPlatipotomLink($opcode, $redirect, $promo_code)
 
         $bill = new billing($uid);
         
-        //Äîïóñòèìî èñïîëüçîâàíèå ïðîìîêîäîâ
+        //Ð”Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ð¾ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¾Ð¼Ð¾ÐºÐ¾Ð´Ð¾Ð²
         $bill->setPromoCodes('SERVICE_PRO', $promo_code); 
         
-        //Ôîðìèðóåì çàêàç
+        //Ð¤Ð¾Ñ€Ð¼Ð¸Ñ€ÑƒÐµÐ¼ Ð·Ð°ÐºÐ°Ð·
         $billReserveId = $bill->addServiceAndCheckout($opcode);
         $sum = $bill->getRealPayedSum();
         $payed_sum = $bill->getOrderPayedSum();

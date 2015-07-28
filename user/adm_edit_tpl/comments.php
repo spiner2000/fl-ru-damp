@@ -1,17 +1,17 @@
 <?php
 /**
- * Шаблон попап формы быстрого редактирования комментариев, которыне на общем движке (пока только файлы)
+ * РЁР°Р±Р»РѕРЅ РїРѕРїР°Рї С„РѕСЂРјС‹ Р±С‹СЃС‚СЂРѕРіРѕ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РєРѕРјРјРµРЅС‚Р°СЂРёРµРІ, РєРѕС‚РѕСЂС‹РЅРµ РЅР° РѕР±С‰РµРј РґРІРёР¶РєРµ (РїРѕРєР° С‚РѕР»СЊРєРѕ С„Р°Р№Р»С‹)
  * @author Max 'BlackHawk' Yastrembovich
  */
 if ( !defined('IN_STDF') ) { 
-    header("HTTP/1.0 404 Not Found"); // ибо нефиг
+    header("HTTP/1.0 404 Not Found"); // РёР±Рѕ РЅРµС„РёРі
     exit();
 }
 ?>
 <div class="b-menu b-menu_rubric b-menu_padbot_10">
     <ul class="b-menu__list">
-        <li id="adm_edit_tab_i1" class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">Файлы</span></span></li>
-        <li id="adm_edit_tab_i2" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(2); return false;">Причина редактирования</a></li>
+        <li id="adm_edit_tab_i1" class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">Р¤Р°Р№Р»С‹</span></span></li>
+        <li id="adm_edit_tab_i2" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(2); return false;">РџСЂРёС‡РёРЅР° СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ</a></li>
     </ul>
 </div>
 

@@ -58,7 +58,7 @@ $professions[0] = array();
             document.getElementById('subscr_sub').options.length = 0;
              var option = document.createElement('option');
                     option.value = '0';
-                    option.innerHTML = 'Весь раздел';
+                    option.innerHTML = 'Р’РµСЃСЊ СЂР°Р·РґРµР»';
                     document.getElementById('subscr_sub').appendChild(option);
             if(typeof sub[cat] != 'undefined')
                 for(var i = 0; i < sub[cat].length; i++){
@@ -78,19 +78,19 @@ var exists_pars = new Array();
 
 function allowAddFilter(cat, scat){
     if(Number(cat) == 0){
-        alert('Нельзя выбрать все разделы');
+        alert('РќРµР»СЊР·СЏ РІС‹Р±СЂР°С‚СЊ РІСЃРµ СЂР°Р·РґРµР»С‹');
                 return false;
     }
     for(var i = 0; i < exists_pars.length; i++){
         if(Number(exists_pars[i][0]) == cat){
             if(Number(exists_pars[i][1]) == 0) {
-                alert('Этот раздел уже выбран полностью');
+                alert('Р­С‚РѕС‚ СЂР°Р·РґРµР» СѓР¶Рµ РІС‹Р±СЂР°РЅ РїРѕР»РЅРѕСЃС‚СЊСЋ');
                 return false;
             } else if(Number(exists_pars[i][1]) == scat) {
-                alert('Этот пункт уже выбран');
+                alert('Р­С‚РѕС‚ РїСѓРЅРєС‚ СѓР¶Рµ РІС‹Р±СЂР°РЅ');
                 return false;
             } else if (Number(scat) == 0 && Number(exists_pars[i][1]) != 0) {
-                alert('Некоторые подразделы данного раздела уже выбраны');
+                alert('РќРµРєРѕС‚РѕСЂС‹Рµ РїРѕРґСЂР°Р·РґРµР»С‹ РґР°РЅРЅРѕРіРѕ СЂР°Р·РґРµР»Р° СѓР¶Рµ РІС‹Р±СЂР°РЅС‹');
                 return false;
             }
             
@@ -142,17 +142,17 @@ function unset(cat,scat){
 <form action="." method="post" id="subscr_form">
 
         <div class="b-layout b-layout_padtop_20">
-            <h2 class="b-layout__title">Настройки уведомлений</h2>
+            <h2 class="b-layout__title">РќР°СЃС‚СЂРѕР№РєРё СѓРІРµРґРѕРјР»РµРЅРёР№</h2>
             <?=view_info2($info_msg)?>
-            <div class="b-layout__txt b-layout__txt_padbot_10">Присылать по электронной почте следующие уведомления:</div>
+            <div class="b-layout__txt b-layout__txt_padbot_10">РџСЂРёСЃС‹Р»Р°С‚СЊ РїРѕ СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ РїРѕС‡С‚Рµ СЃР»РµРґСѓСЋС‰РёРµ СѓРІРµРґРѕРјР»РµРЅРёСЏ:</div>
             <input type="hidden" name="action" value="update_subscr" />
             <ul class="settings-subscribe">
                 <li><label><input type="checkbox" id="ch1" name="newmsgs" class="i-chk" value="1" <? if ($user->subscr[0])
-            print "checked='checked'" ?> /> Уведомления о новых сообщениях</label></li>
+            print "checked='checked'" ?> /> РЈРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІС‹С… СЃРѕРѕР±С‰РµРЅРёСЏС…</label></li>
             <li><label><input type="checkbox" id="ch6" name="commune" class="i-chk" value="1" <? if ($user->subscr[5])
-                print "checked='checked'" ?> /> Уведомления о новых действиях в сообществах</label></li>
+                print "checked='checked'" ?> /> РЈРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІС‹С… РґРµР№СЃС‚РІРёСЏС… РІ СЃРѕРѕР±С‰РµСЃС‚РІР°С…</label></li>
             <li><label><input type="checkbox" class="i-chk" id="ch7" name="commune_topics" value="1" <? if ($user->subscr[6])
-                    print "checked='checked'" ?> onclick="this.getParent('li').getElements('ul input').set('checked', this.get('checked'))" /> Уведомления о новых темах в сообществах</label>
+                    print "checked='checked'" ?> onclick="this.getParent('li').getElements('ul input').set('checked', this.get('checked'))" /> РЈРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РЅРѕРІС‹С… С‚РµРјР°С… РІ СЃРѕРѕР±С‰РµСЃС‚РІР°С…</label>
 
 <?php if (is_array($communes) && count($communes)) { ?>
                     <ul>
@@ -174,33 +174,33 @@ function unset(cat,scat){
                     <li>
                         <label>
                             <input type="checkbox" onclick="togglePrj(this)" class="i-chk"  id="ch2" name="vacan"  value="1" <? if ($user->mailer) print "checked='checked'" ?> /> 
-                            Уведомление о новых проектах 
+                            РЈРІРµРґРѕРјР»РµРЅРёРµ Рѕ РЅРѕРІС‹С… РїСЂРѕРµРєС‚Р°С… 
                         </label>
-                        <a id="ch2-a" href="javascript:void(0);" onclick="User_Setup.showSpec();" style="display: <?= $user->mailer_str ? 'none' : ''; ?>">(уточнить специализации)</a>
+                        <a id="ch2-a" href="javascript:void(0);" onclick="User_Setup.showSpec();" style="display: <?= $user->mailer_str ? 'none' : ''; ?>">(СѓС‚РѕС‡РЅРёС‚СЊ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё)</a>
                         <div class="ss-projects" id="filter_body_p" style="display: <?= $user->mailer && $user->mailer_str ? 'block' : 'none'; ?>">
                             <?php include_once(dirname(__FILE__).'/subscr_filter.php');?>
                         </div>
                     </li>
                     <li><label><input type="checkbox" class="i-chk" id="ch9" name="contest"  value="1" <? if ($user->subscr[8])
-                            print "checked='checked'" ?> /> Уведомления в конкурсах</label></li>
+                            print "checked='checked'" ?> /> РЈРІРµРґРѕРјР»РµРЅРёСЏ РІ РєРѕРЅРєСѓСЂСЃР°С…</label></li>
                     <? if (BLOGS_CLOSED == false) { ?>
                     <li><label><input type="checkbox" class="i-chk" id="ch3" name="comments"  value="1" <? if ($user->subscr[2])
-                        print "checked='checked'" ?> /> Комментарии к сообщениям/комментариям в блогах</label></li>
+                        print "checked='checked'" ?> /> РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє СЃРѕРѕР±С‰РµРЅРёСЏРј/РєРѕРјРјРµРЅС‚Р°СЂРёСЏРј РІ Р±Р»РѕРіР°С…</label></li>
                     <? } ?>
                     <li><label><input type="checkbox" class="i-chk" id="ch4" name="prcomments" value="1"   <? if ($user->subscr[4])
-                        print "checked='checked'" ?> /> Комментарии к сообщениям/комментариям в проектах</label></li>
+                        print "checked='checked'" ?> /> РљРѕРјРјРµРЅС‚Р°СЂРёРё Рє СЃРѕРѕР±С‰РµРЅРёСЏРј/РєРѕРјРјРµРЅС‚Р°СЂРёСЏРј РІ РїСЂРѕРµРєС‚Р°С…</label></li>
                     <li><label><input type="checkbox" class="i-chk" id="ch8" name="adm_subscr"  value="1" <? if ($user->subscr[7])
-                        print "checked='checked'" ?> /> Новости от команды FL.ru</label></li>
+                        print "checked='checked'" ?> /> РќРѕРІРѕСЃС‚Рё РѕС‚ РєРѕРјР°РЅРґС‹ FL.ru</label></li>
                     <li><label><input type="checkbox" class="i-chk" id="ch16" name="payment" value="1" <? if ($user->subscr[15])
-                        print " checked='checked'" ?> /> Уведомления личного счета</label></li>
+                        print " checked='checked'" ?> /> РЈРІРµРґРѕРјР»РµРЅРёСЏ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р°</label></li>
                     <li><label><input type="checkbox" class="i-chk" id="ch10" name="team"  value="1" <? if ($user->subscr[9])
-                        print "checked='checked'" ?> /> Уведомления о добавлении в избранные</label></li>
+                        print "checked='checked'" ?> /> РЈРІРµРґРѕРјР»РµРЅРёСЏ Рѕ РґРѕР±Р°РІР»РµРЅРёРё РІ РёР·Р±СЂР°РЅРЅС‹Рµ</label></li>
                     <li><label><input type="checkbox" class="i-chk" id="ch13" name="massending" value="1" <? if ($user->subscr[12])
-                        print "checked='checked'" ?> /> Получать платные рассылки</label></li>
+                        print "checked='checked'" ?> /> РџРѕР»СѓС‡Р°С‚СЊ РїР»Р°С‚РЅС‹Рµ СЂР°СЃСЃС‹Р»РєРё</label></li>
                     
                     </ul>
 
-                                                    <button class="b-button b-button_flat b-button_flat_green" onclick="$('subscr_form').submit()">Изменить</button>
+                                                    <button class="b-button b-button_flat b-button_flat_green" onclick="$('subscr_form').submit()">РР·РјРµРЅРёС‚СЊ</button>
                                                 </div>
 
 </form>

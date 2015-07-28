@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Óñëóãà ìàññîâîé ðàññûëêè ïðåäëîæåíèÿ î ïðîåêòå ôðèëàíñåðàì
- * Îïëàòà óñëóãè.
+ * Ð£ÑÐ»ÑƒÐ³Ð° Ð¼Ð°ÑÑÐ¾Ð²Ð¾Ð¹ Ñ€Ð°ÑÑÑ‹Ð»ÐºÐ¸ Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ð¾ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ðµ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð°Ð¼
+ * ÐžÐ¿Ð»Ð°Ñ‚Ð° ÑƒÑÐ»ÑƒÐ³Ð¸.
  */
 
 
@@ -60,7 +60,7 @@ function quickMASSetCats($frm) {
                 }
             }
             if(count($cats_data)>=4 && $count>2) {
-                $html .= "è åùå ".($count-2)." ".ending(($count-2), 'äðóãîé', 'äðóãèõ', 'äðóãèõ');
+                $html .= "Ð¸ ÐµÑ‰Ðµ ".($count-2)." ".ending(($count-2), 'Ð´Ñ€ÑƒÐ³Ð¾Ð¹', 'Ð´Ñ€ÑƒÐ³Ð¸Ñ…', 'Ð´Ñ€ÑƒÐ³Ð¸Ñ…');
             }
             $objResponse->script("$('quickmas_f_mas_c_count').set('html', '".count($cats_data)."');");
             $objResponse->script("$('quickmas_f_mas_subcat_m').show();");
@@ -86,7 +86,7 @@ function quickMASPayAccount($frm, $promo_code)
 
         $masssending = new masssending();
         
-        //@todo: íå èñïîëüçóþòñÿ?
+        //@todo: Ð½Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÑŽÑ‚ÑÑ?
         //$countries = country::GetCountries(TRUE);
         //$prof_groups = professions::GetAllGroupsLite(TRUE);
         //$professions = professions::GetProfList();
@@ -96,7 +96,7 @@ function quickMASPayAccount($frm, $promo_code)
         
         //$params['msg'] = stripslashes($frm['msg']);
         $host = str_replace('www.n.fl.ru', 'n.fl.ru', $GLOBALS['host']);
-        $params['msg'] = "Çäðàâñòâóéòå!\n\nÏðèãëàøàþ îçíàêîìèòüñÿ ñ ïðîåêòîì '".change_q_x(stripslashes($frm['title']), FALSE, FALSE, 'b|i|p|ul|li|s|h[1-6]{1}', FALSE, FALSE)."' ".$host.$frm['link']." \n\n\n".LenghtFormatEx(change_q_x(stripslashes($frm['msg']), FALSE, FALSE, 'b|i|p|ul|li|s|h[1-6]{1}', FALSE, FALSE),300);
+        $params['msg'] = "Ð—Ð´Ñ€Ð°Ð²ÑÑ‚Ð²ÑƒÐ¹Ñ‚Ðµ!\n\nÐŸÑ€Ð¸Ð³Ð»Ð°ÑˆÐ°ÑŽ Ð¾Ð·Ð½Ð°ÐºÐ¾Ð¼Ð¸Ñ‚ÑŒÑÑ Ñ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð¾Ð¼ '".change_q_x(stripslashes($frm['title']), FALSE, FALSE, 'b|i|p|ul|li|s|h[1-6]{1}', FALSE, FALSE)."' ".$host.$frm['link']." \n\n\n".LenghtFormatEx(change_q_x(stripslashes($frm['msg']), FALSE, FALSE, 'b|i|p|ul|li|s|h[1-6]{1}', FALSE, FALSE),300);
         $params['max_users'] = intval($frm['max_users']);
         $params['max_cost'] = intval($frm['max_cost']);
 
@@ -132,7 +132,7 @@ function quickMASPayAccount($frm, $promo_code)
         if ($calc = $masssending->Add($uid, $params)) {
             $masssending->ClearTempFiles(session_id());
             
-            //Äîïóñòèìî èñïîëüçîâàíèå ïðîìîêîäîâ
+            //Ð”Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ð¾ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¾Ð¼Ð¾ÐºÐ¾Ð´Ð¾Ð²
             $masssending->billing->setPromoCodes('SERVICE_MASSSENDING', $promo_code);
             
             $billReserveId = $masssending->Accept($calc['massid'], false);
@@ -166,7 +166,7 @@ function quickMASGetYandexKassaLink($frm, $payment, $promo_code)
 
         $masssending = new masssending();
         
-        //@todo: íå èñïîëüçóþóòñÿ?
+        //@todo: Ð½Ðµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÑŽÑƒÑ‚ÑÑ?
         //$countries = country::GetCountries(TRUE);
         //$prof_groups = professions::GetAllGroupsLite(TRUE);
         //$professions = professions::GetProfList();
@@ -175,7 +175,7 @@ function quickMASGetYandexKassaLink($frm, $payment, $promo_code)
         $uid = get_uid(false);
 
         //$params['msg'] = stripslashes($frm['msg']);
-        $params['msg'] = "Çäðàâñòâóéòå!\n\nÏðèãëàøàþ îçíàêîìèòüñÿ ñ ïðîåêòîì '".change_q_x(stripslashes($frm['title']), FALSE, FALSE, 'b|i|p|ul|li|s|h[1-6]{1}', FALSE, FALSE)."' ".str_replace('www.n.fl.ru', 'n.fl.ru',$host).$frm['link']." \n\n\n".LenghtFormatEx(change_q_x(stripslashes($frm['msg']), FALSE, FALSE, 'b|i|p|ul|li|s|h[1-6]{1}', FALSE, FALSE),300);
+        $params['msg'] = "Ð—Ð´Ñ€Ð°Ð²ÑÑ‚Ð²ÑƒÐ¹Ñ‚Ðµ!\n\nÐŸÑ€Ð¸Ð³Ð»Ð°ÑˆÐ°ÑŽ Ð¾Ð·Ð½Ð°ÐºÐ¾Ð¼Ð¸Ñ‚ÑŒÑÑ Ñ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð¾Ð¼ '".change_q_x(stripslashes($frm['title']), FALSE, FALSE, 'b|i|p|ul|li|s|h[1-6]{1}', FALSE, FALSE)."' ".str_replace('www.n.fl.ru', 'n.fl.ru',$host).$frm['link']." \n\n\n".LenghtFormatEx(change_q_x(stripslashes($frm['msg']), FALSE, FALSE, 'b|i|p|ul|li|s|h[1-6]{1}', FALSE, FALSE),300);
         $params['max_users'] = intval($frm['max_users']);
         $params['max_cost'] = intval($frm['max_cost']);
 
@@ -211,7 +211,7 @@ function quickMASGetYandexKassaLink($frm, $payment, $promo_code)
         if ($calc = $masssending->Add($uid, $params)) {
             $masssending->ClearTempFiles(session_id());
             
-            //Äîïóñòèìî èñïîëüçîâàíèå ïðîìîêîäîâ
+            //Ð”Ð¾Ð¿ÑƒÑÑ‚Ð¸Ð¼Ð¾ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð¿Ñ€Ð¾Ð¼Ð¾ÐºÐ¾Ð´Ð¾Ð²
             $masssending->billing->setPromoCodes('SERVICE_MASSSENDING', $promo_code);
             
             $billReserveId = $masssending->Accept($calc['massid'], false);

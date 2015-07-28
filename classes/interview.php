@@ -1,21 +1,21 @@
 <?
 /**
- * Подключаем файл с основными функциями
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» СЃ РѕСЃРЅРѕРІРЅС‹РјРё С„СѓРЅРєС†РёСЏРјРё
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
- * Класс для работы с разделом "Интервью"
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ СЂР°Р·РґРµР»РѕРј "РРЅС‚РµСЂРІСЊСЋ"
  *
  */
 class interview 
 {
 	/**
-	 * Добавить новое интервью
+	 * Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІРѕРµ РёРЅС‚РµСЂРІСЊСЋ
 	 *
-	 * @param integer  $uid       Ид пользователя
-	 * @param array    $questions Вопросы
-	 * @return integer  ID если все ок, 0 - если не добавилось.
+	 * @param integer  $uid       РРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param array    $questions Р’РѕРїСЂРѕСЃС‹
+	 * @return integer  ID РµСЃР»Рё РІСЃРµ РѕРє, 0 - РµСЃР»Рё РЅРµ РґРѕР±Р°РІРёР»РѕСЃСЊ.
 	 */
 	function Add($uid, $questions){
 	    $data = array();
@@ -34,11 +34,11 @@ class interview
 	}
 	
 	/**
-	 * Обновить интервью
+	 * РћР±РЅРѕРІРёС‚СЊ РёРЅС‚РµСЂРІСЊСЋ
 	 *
-	 * @param integer  $uid       Ид интервью
-	 * @param array    $questions Вопросы
-	 * @return integer всегда возвращает 0
+	 * @param integer  $uid       РРґ РёРЅС‚РµСЂРІСЊСЋ
+	 * @param array    $questions Р’РѕРїСЂРѕСЃС‹
+	 * @return integer РІСЃРµРіРґР° РІРѕР·РІСЂР°С‰Р°РµС‚ 0
 	 */
 	function Update($id, $questions)
 	{
@@ -58,47 +58,47 @@ class interview
 	}
 	
 	/**
-	 * Редактирование фотографий
+	 * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ С„РѕС‚РѕРіСЂР°С„РёР№
 	 *
-	 * @param integer $id     Ид
-	 * @param object  $attach Приложеные файлы (см. класс CFile)
-	 * @param array   $photo  Фотки (см. класс CFile)
+	 * @param integer $id     РРґ
+	 * @param object  $attach РџСЂРёР»РѕР¶РµРЅС‹Рµ С„Р°Р№Р»С‹ (СЃРј. РєР»Р°СЃСЃ CFile)
+	 * @param array   $photo  Р¤РѕС‚РєРё (СЃРј. РєР»Р°СЃСЃ CFile)
 	 * @return integer
 	 */
 	function EditPhotos($id, $attach, $photo){
 	    if (!$id) return 0;
-	    // Проверяем приложены ли файлы и обрабатываем их если они есть
+	    // РџСЂРѕРІРµСЂСЏРµРј РїСЂРёР»РѕР¶РµРЅС‹ Р»Рё С„Р°Р№Р»С‹ Рё РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј РёС… РµСЃР»Рё РѕРЅРё РµСЃС‚СЊ
 		if ($attach->size > 0){
 		    $fn = 0;
 		    $attach->proportional = 1;
 			$f_name = $attach->MoveUploadedFile($_SESSION['login']."/upload");
-			if (!isNulArray($attach->error)) {$error_flag = 1; $alert[2] = "Файл не удовлетворяет условиям загрузки";}
+			if (!isNulArray($attach->error)) {$error_flag = 1; $alert[2] = "Р¤Р°Р№Р» РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё";}
 			else {
 				$ext = $attach->getext();
 				if (in_array($ext, $GLOBALS['graf_array']) && $ext != "swf") {
-					if (!$attach->image_size['width'] || !$attach->image_size['height']) {$error_flag = 1; $alert[2] = "Невозможно уменьшить картинку.";}
+					if (!$attach->image_size['width'] || !$attach->image_size['height']) {$error_flag = 1; $alert[2] = "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ.";}
 					if ($attach->image_size['width'] > 200 || $attach->image_size['height'] > 1000)
 						if (!$attach->img_to_small("sm_".$f_name, array('width'=>200,'height'=>1000, 'less' => 0)))
-						{$error_flag = 1; $alert[2] = "Невозможно уменьшить картинку.";} else $fn = 2;
+						{$error_flag = 1; $alert[2] = "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ.";} else $fn = 2;
 					else $fn = 1;
 				}
 			}
 		}
-		// Если есть фотки
+		// Р•СЃР»Рё РµСЃС‚СЊ С„РѕС‚РєРё
 	    if ($photo) {
-	    	// Обратобка фоток
+	    	// РћР±СЂР°С‚РѕР±РєР° С„РѕС‚РѕРє
 	    	foreach($photo as $ikey => $wrk) {
 			    $tn = 0;
 				$w_name = $wrk->MoveUploadedFile($_SESSION['login']."/upload");
-			    if (!isNulArray($wrk->error)) {$error_flag = 1; $alert[2] = "Файл не удовлетворяет условиям загрузки";}
+			    if (!isNulArray($wrk->error)) {$error_flag = 1; $alert[2] = "Р¤Р°Р№Р» РЅРµ СѓРґРѕРІР»РµС‚РІРѕСЂСЏРµС‚ СѓСЃР»РѕРІРёСЏРј Р·Р°РіСЂСѓР·РєРё";}
 				else {
 				    $ext = $wrk->getext();
 				    $wrk->proportional = 1;
 					if (in_array($ext, $GLOBALS['graf_array']) && $ext != "swf") {
-						if (!$wrk->image_size['width'] || !$wrk->image_size['height']) {$error_flag = 1; $alert[2] = "Невозможно уменьшить картинку.";}
+						if (!$wrk->image_size['width'] || !$wrk->image_size['height']) {$error_flag = 1; $alert[2] = "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ.";}
 						if ($wrk->image_size['width'] > 200 || $wrk->image_size['height'] > 1000)
 							if (!$wrk->img_to_small("sm_".$w_name, array('width'=>200,'height'=>1000, 'less' => 0)))
-							{$error_flag = 1; $alert[2] = "Невозможно уменьшить картинку.";} else $tn = 2;
+							{$error_flag = 1; $alert[2] = "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ.";} else $tn = 2;
 						else $tn = 1;
 					}
 				}
@@ -112,7 +112,7 @@ class interview
 			}
 	    }
 	    
-	    // Сохранение всего обработанного добра
+	    // РЎРѕС…СЂР°РЅРµРЅРёРµ РІСЃРµРіРѕ РѕР±СЂР°Р±РѕС‚Р°РЅРЅРѕРіРѕ РґРѕР±СЂР°
 		if($id && ($qstn || $f_name)) {
 		    global $DB;
 			$sql = "SELECT ft, foto".(isset($qstv) ? ",".implode(", ", $qstv).", ".implode(", ", $qsts) : "")." FROM interview WHERE id=?";
@@ -140,9 +140,9 @@ class interview
 	}
 	
 	/**
-	 * Взять информацию об интервью
+	 * Р’Р·СЏС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ РѕР± РёРЅС‚РµСЂРІСЊСЋ
 	 *
-	 * @param integer $uid ИД пользователя
+	 * @param integer $uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	 * @return array
 	 */
 	function GetInfo($uid){
@@ -153,9 +153,9 @@ class interview
 	}
 	
 	/**
-	 * Взять Ид того кто написал интервью
+	 * Р’Р·СЏС‚СЊ РРґ С‚РѕРіРѕ РєС‚Рѕ РЅР°РїРёСЃР°Р» РёРЅС‚РµСЂРІСЊСЋ
 	 *
-	 * @param integer $id ИД Интервью
+	 * @param integer $id РР” РРЅС‚РµСЂРІСЊСЋ
 	 * @return integer
 	 */
 	function GetUID($id){
@@ -165,10 +165,10 @@ class interview
 	}
 	
 	/**
-	 * Более полная инфа об интервью (еще берет данные пользователя)
+	 * Р‘РѕР»РµРµ РїРѕР»РЅР°СЏ РёРЅС„Р° РѕР± РёРЅС‚РµСЂРІСЊСЋ (РµС‰Рµ Р±РµСЂРµС‚ РґР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ)
 	 *
-	 * @param integer $id ИД интервью
-	 * @return array Данные выборки
+	 * @param integer $id РР” РёРЅС‚РµСЂРІСЊСЋ
+	 * @return array Р”Р°РЅРЅС‹Рµ РІС‹Р±РѕСЂРєРё
 	 */
 	function GetInfo2($id){
 	    global $DB;
@@ -177,10 +177,10 @@ class interview
 	}
 
     /**
-     * Возвращает данные необходимые для построения ЧПУ ссылки
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РґР»СЏ РїРѕСЃС‚СЂРѕРµРЅРёСЏ Р§РџРЈ СЃСЃС‹Р»РєРё
      *
-     * @param     integer    $id    ID интервью
-     * @return    array             Данные для ЧПУ
+     * @param     integer    $id    ID РёРЅС‚РµСЂРІСЊСЋ
+     * @return    array             Р”Р°РЅРЅС‹Рµ РґР»СЏ Р§РџРЈ
      */
     public function getInfoForFriendlyURL($id) {
         global $DB;
@@ -189,10 +189,10 @@ class interview
     }
 	
 	/**
-	 * Удаление фотографий.
+	 * РЈРґР°Р»РµРЅРёРµ С„РѕС‚РѕРіСЂР°С„РёР№.
 	 *
-	 * @param integer $id ИД Интервью
-	 * @return array $ret Данные удаленных фоток
+	 * @param integer $id РР” РРЅС‚РµСЂРІСЊСЋ
+	 * @return array $ret Р”Р°РЅРЅС‹Рµ СѓРґР°Р»РµРЅРЅС‹С… С„РѕС‚РѕРє
 	 */
 	function Deletefoto($id){
 	    global $DB;
@@ -211,11 +211,11 @@ class interview
 	}
 	
 	/**
-	 * Удаление файлов
+	 * РЈРґР°Р»РµРЅРёРµ С„Р°Р№Р»РѕРІ
 	 *
-	 * @param integer $id  ИД интервью
-	 * @param integer $fid ИД файлы
-	 * @return array $ret Данные удаленных файлов
+	 * @param integer $id  РР” РёРЅС‚РµСЂРІСЊСЋ
+	 * @param integer $fid РР” С„Р°Р№Р»С‹
+	 * @return array $ret Р”Р°РЅРЅС‹Рµ СѓРґР°Р»РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ
 	 */
 	function Del($id, $fid){
 	    global $DB;
@@ -234,7 +234,7 @@ class interview
 	}
 	
 	/**
-	 * Возвращает все интервью находящиеся в БД и отсортированные по ИД
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ РІСЃРµ РёРЅС‚РµСЂРІСЊСЋ РЅР°С…РѕРґСЏС‰РёРµСЃСЏ РІ Р‘Р” Рё РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Рµ РїРѕ РР”
 	 *
 	 * @return array
 	 */
@@ -246,9 +246,9 @@ class interview
 	}
 	
 	/**
-	 * Удаление интервью
+	 * РЈРґР°Р»РµРЅРёРµ РёРЅС‚РµСЂРІСЊСЋ
 	 *
-	 * @param integer $id ИД Интервью
+	 * @param integer $id РР” РРЅС‚РµСЂРІСЊСЋ
 	 * @return integer
 	 */
 	function DelInterv($id){
@@ -271,11 +271,11 @@ class interview
 	}
 
     /**
-     * Получить одно интервью по ID, либо список если $id == null
+     * РџРѕР»СѓС‡РёС‚СЊ РѕРґРЅРѕ РёРЅС‚РµСЂРІСЊСЋ РїРѕ ID, Р»РёР±Рѕ СЃРїРёСЃРѕРє РµСЃР»Рё $id == null
      *
-     * @param integer $uid ИД пользователя
+     * @param integer $uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * @param integer $id
-     * @param string $order Тип сортировки date|views
+     * @param string $order РўРёРї СЃРѕСЂС‚РёСЂРѕРІРєРё date|views
      * @return array
      */
     function getInterview($uid, $id = null, $order = 'date', $year = null, $filter=0) {
@@ -334,10 +334,10 @@ class interview
 
 
     /**
-     * Устанавливает время последнего просмотра интервью пользователем
+     * РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РІСЂРµРјСЏ РїРѕСЃР»РµРґРЅРµРіРѕ РїСЂРѕСЃРјРѕС‚СЂР° РёРЅС‚РµСЂРІСЊСЋ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
      *
-     * @param integer $user_id ид пользователя
-     * @param array $interview Результат interview::getInterview()
+     * @param integer $user_id РёРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param array $interview Р РµР·СѓР»СЊС‚Р°С‚ interview::getInterview()
      * @return boolean
      */
     function setInterviewLVT($user_id, $interview) {
@@ -370,11 +370,11 @@ class interview
     }
 
     /**
-     * Создание интервью
+     * РЎРѕР·РґР°РЅРёРµ РёРЅС‚РµСЂРІСЊСЋ
      * 
-     * @param int $uid ID пользователя, у которого берут интервью
-     * @param string $text Текст интервью
-     * @param array $files файлы прикрепленные к интервью
+     * @param int $uid ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, Сѓ РєРѕС‚РѕСЂРѕРіРѕ Р±РµСЂСѓС‚ РёРЅС‚РµСЂРІСЊСЋ
+     * @param string $text РўРµРєСЃС‚ РёРЅС‚РµСЂРІСЊСЋ
+     * @param array $files С„Р°Р№Р»С‹ РїСЂРёРєСЂРµРїР»РµРЅРЅС‹Рµ Рє РёРЅС‚РµСЂРІСЊСЋ
      */
     function addInterview($uid, $text, $files = array(), $is_jury = 'f') {
         $mainfile = isset($files['main']) ? intval($files['main']) : NULL;
@@ -398,12 +398,12 @@ class interview
     }
 
     /**
-     * Обновление интервью
+     * РћР±РЅРѕРІР»РµРЅРёРµ РёРЅС‚РµСЂРІСЊСЋ
      * 
-     * @param int $id ID интервью
-     * @param int $uid ID пользователя, у которого берут интервью
-     * @param string $text Текст интервью
-     * @param array $files файлы прикрепленные к интервью
+     * @param int $id ID РёРЅС‚РµСЂРІСЊСЋ
+     * @param int $uid ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, Сѓ РєРѕС‚РѕСЂРѕРіРѕ Р±РµСЂСѓС‚ РёРЅС‚РµСЂРІСЊСЋ
+     * @param string $text РўРµРєСЃС‚ РёРЅС‚РµСЂРІСЊСЋ
+     * @param array $files С„Р°Р№Р»С‹ РїСЂРёРєСЂРµРїР»РµРЅРЅС‹Рµ Рє РёРЅС‚РµСЂРІСЊСЋ
      */
     function updateInterview($id, $uid, $text, $files = array(), $is_jury) {
         $mainfile = isset($files['main']) ? ", main_foto = '{$files['main']}'" : '';
@@ -429,10 +429,10 @@ class interview
     }
 
     /**
-     * Удаление интервью
+     * РЈРґР°Р»РµРЅРёРµ РёРЅС‚РµСЂРІСЊСЋ
      *
-     * @param  integer $id ид интервью
-     * @return resource результат запроса
+     * @param  integer $id РёРґ РёРЅС‚РµСЂРІСЊСЋ
+     * @return resource СЂРµР·СѓР»СЊС‚Р°С‚ Р·Р°РїСЂРѕСЃР°
      */
     function delInterview($id) {
         global $DB;
@@ -441,7 +441,7 @@ class interview
     }
 
     /**
-     * Получение списка работ
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° СЂР°Р±РѕС‚
      *
      * @param  integer $interview_id
      * @return array
@@ -459,10 +459,10 @@ class interview
     }
     
     /**
-     * Возвращает данные для навигации предылущее-следующее
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ РґР»СЏ РЅР°РІРёРіР°С†РёРё РїСЂРµРґС‹Р»СѓС‰РµРµ-СЃР»РµРґСѓСЋС‰РµРµ
      *
-     * @param  array $interview текущее интервью
-     * @param  string $order опционально. поле для сортировки. не используется.
+     * @param  array $interview С‚РµРєСѓС‰РµРµ РёРЅС‚РµСЂРІСЊСЋ
+     * @param  string $order РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ. РїРѕР»Рµ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё. РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ.
      * @return array
      */
     function getNavigation($interview, $order = 'date') {
@@ -493,7 +493,7 @@ class interview
     }
     
     /**
-     * Возвращает список годов, в которых брались интервью
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РіРѕРґРѕРІ, РІ РєРѕС‚РѕСЂС‹С… Р±СЂР°Р»РёСЃСЊ РёРЅС‚РµСЂРІСЊСЋ
      * 
      * @return array
      */
@@ -505,7 +505,7 @@ class interview
     }
     
     /**
-     * Берем интервью по их Ид
+     * Р‘РµСЂРµРј РёРЅС‚РµСЂРІСЊСЋ РїРѕ РёС… РРґ
      * 
      * @global type $DB
      * @param array $ids

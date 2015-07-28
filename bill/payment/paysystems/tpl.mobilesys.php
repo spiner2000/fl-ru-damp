@@ -2,21 +2,21 @@
     <a href="/bill/payment/?type=megafon_mobile" class="b-button b-button_bill b-button_bill_mid b-button_margright_5 b-button_margtop_10 <?= ( $bill->type_payment == 'megafon_mobile' ? 'b-button_active b-button_disabled' : "" )?>">
         <span class="b-button__b1">
             <span class="b-button__b2">
-                <img title="Ìåãàôîí" alt="Ìåãàôîí" src="/images/tel/megafon.png" class="b-button__pic b-button__pic_marg_8_10">
+                <img title="ÐœÐµÐ³Ð°Ñ„Ð¾Ð½" alt="ÐœÐµÐ³Ð°Ñ„Ð¾Ð½" src="/images/tel/megafon.png" class="b-button__pic b-button__pic_marg_8_10">
             </span>
         </span>
     </a>
     <a href="/bill/payment/?type=beeline_mobile" class="b-button b-button_bill b-button_bill_mid b-button_margright_5 b-button_margtop_10 <?= ( $bill->type_payment == 'beeline_mobile' ? 'b-button_active b-button_disabled' : "" )?>">
         <span class="b-button__b1">
             <span class="b-button__b2">
-                <img alt="Áèëàéí" src="/images/tel/beeline.png" class="b-button__pic b-button__pic_marg_8_10">
+                <img alt="Ð‘Ð¸Ð»Ð°Ð¹Ð½" src="/images/tel/beeline.png" class="b-button__pic b-button__pic_marg_8_10">
             </span>
         </span>
     </a>
     <a href="/bill/payment/?type=mts_mobile" class="b-button b-button_bill b-button_bill_mid b-button_margright_5 b-button_margtop_10 <?= ( $bill->type_payment == 'mts_mobile' ? 'b-button_active b-button_disabled' : "" )?>">
         <span class="b-button__b1">
             <span class="b-button__b2">
-                <img alt="ÌÒÑ" src="/images/tel/mts.png" class="b-button__pic b-button__pic_marg_8_10">
+                <img alt="ÐœÐ¢Ð¡" src="/images/tel/mts.png" class="b-button__pic b-button__pic_marg_8_10">
             </span>
         </span>
     </a>

@@ -1,7 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/sbr.php';
 if ( isset($_REQUEST['site']) ) {
-    // чтобы не подключался класс со старой админкой
+    // С‡С‚РѕР±С‹ РЅРµ РїРѕРґРєР»СЋС‡Р°Р»СЃСЏ РєР»Р°СЃСЃ СЃРѕ СЃС‚Р°СЂРѕР№ Р°РґРјРёРЅРєРѕР№
     $siteTmp = $_REQUEST['site'];
     $_REQUEST['site'] = '';
     $psbr = sbr_meta::getInstance();
@@ -41,9 +41,9 @@ ob_start();
                             	<? if($count_old_sbr > 0) { ?>
                                 <td class="b-layout__left b-layout__left_padright_20">
                                 	<div class="b-layout__txt">
-                                        У Вас <?= $count_old_sbr?> <?= ending($count_old_sbr, 'сделка, открытая', 'сделки, открытые', 'сделок, открытых');?> до 2 октября. Работа с<br /><?= ( $count_old_sbr > 1 ? "ними" : "ней"); ?> &mdash; <a class="b-layout__link b-layout__link_color_0f71c8 b-layout__link_nowrap" href="/norisk2/">в старом интерфейсе Безопасных Сделок</a> 
+                                        РЈ Р’Р°СЃ <?= $count_old_sbr?> <?= ending($count_old_sbr, 'СЃРґРµР»РєР°, РѕС‚РєСЂС‹С‚Р°СЏ', 'СЃРґРµР»РєРё, РѕС‚РєСЂС‹С‚С‹Рµ', 'СЃРґРµР»РѕРє, РѕС‚РєСЂС‹С‚С‹С…');?> РґРѕ 2 РѕРєС‚СЏР±СЂСЏ. Р Р°Р±РѕС‚Р° СЃ<br /><?= ( $count_old_sbr > 1 ? "РЅРёРјРё" : "РЅРµР№"); ?> &mdash; <a class="b-layout__link b-layout__link_color_0f71c8 b-layout__link_nowrap" href="/norisk2/">РІ СЃС‚Р°СЂРѕРј РёРЅС‚РµСЂС„РµР№СЃРµ Р‘РµР·РѕРїР°СЃРЅС‹С… РЎРґРµР»РѕРє</a> 
                                         <?php if($old_tip['count'] > 0) {?>
-                                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_6db335">+ Новое событие</div>
+                                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_6db335">+ РќРѕРІРѕРµ СЃРѕР±С‹С‚РёРµ</div>
                                         <?php }//if?>
                                     </div>
                                 </td>
@@ -51,16 +51,16 @@ ob_start();
                                 <? if($count_new_sbr > 0) { ?>
                             	<td class="b-layout__right">
                                 	<div class="b-layout__txt">
-                                        <?= ($count_old_sbr > 0 ? "И" : "У вас")?> <?= $count_new_sbr?> <?= ending($count_new_sbr, 'сделка, открытая', 'сделки, открытые', 'сделок, открытых');?> после 2 октября. Работа с<br /><?= ( $count_new_sbr > 1 ? "ними" : "ней"); ?> &mdash; <a class="b-layout__link b-layout__link_color_0f71c8 b-layout__link_nowrap" href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/">в новом интерфейсе Безопасных Сделок</a> 
+                                        <?= ($count_old_sbr > 0 ? "Р" : "РЈ РІР°СЃ")?> <?= $count_new_sbr?> <?= ending($count_new_sbr, 'СЃРґРµР»РєР°, РѕС‚РєСЂС‹С‚Р°СЏ', 'СЃРґРµР»РєРё, РѕС‚РєСЂС‹С‚С‹Рµ', 'СЃРґРµР»РѕРє, РѕС‚РєСЂС‹С‚С‹С…');?> РїРѕСЃР»Рµ 2 РѕРєС‚СЏР±СЂСЏ. Р Р°Р±РѕС‚Р° СЃ<br /><?= ( $count_new_sbr > 1 ? "РЅРёРјРё" : "РЅРµР№"); ?> &mdash; <a class="b-layout__link b-layout__link_color_0f71c8 b-layout__link_nowrap" href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/">РІ РЅРѕРІРѕРј РёРЅС‚РµСЂС„РµР№СЃРµ Р‘РµР·РѕРїР°СЃРЅС‹С… РЎРґРµР»РѕРє</a> 
                                         <?php if($tip['count'] > 0) {?>
-                                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_6db335">+ Новое событие</div>
+                                        <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_color_6db335">+ РќРѕРІРѕРµ СЃРѕР±С‹С‚РёРµ</div>
                                         <?php }//if?>
                                     </div>
                                 </td>
                                 <? } else {//if?>
                                 <td class="b-layout__right">
                                 	<div class="b-layout__txt">
-                                        С 2 октября работайте в  <a class="b-layout__link b-layout__link_color_0f71c8 b-layout__link_nowrap" href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/">новом интерфейсе Безопасных Сделок</a>.
+                                        РЎ 2 РѕРєС‚СЏР±СЂСЏ СЂР°Р±РѕС‚Р°Р№С‚Рµ РІ  <a class="b-layout__link b-layout__link_color_0f71c8 b-layout__link_nowrap" href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/">РЅРѕРІРѕРј РёРЅС‚РµСЂС„РµР№СЃРµ Р‘РµР·РѕРїР°СЃРЅС‹С… РЎРґРµР»РѕРє</a>.
                                     </div>
                                 </td>
                                 <? } //else?>

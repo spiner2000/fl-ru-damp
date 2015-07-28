@@ -28,7 +28,7 @@ if ($specs_add) {
 	}
 	$specs_add_string = join(", ", $specs_add_array);
 } else {
-    $specs_add_string = "อๅ๒";
+    $specs_add_string = "ะะตั";
 }
 
 $html_keyword_js = '<a href="/freelancers/?word=$1" class="inherit">$2</a>';

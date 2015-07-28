@@ -6,7 +6,7 @@ session_start();
 $answers = __paramInit('int', 'answers', null, 0);
 $cost = __paramInit('int', 'cost', null, 0);
 
-// эта страница только для фрилансеров
+// СЌС‚Р° СЃС‚СЂР°РЅРёС†Р° С‚РѕР»СЊРєРѕ РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
 if (!get_uid(0) || is_emp() || !$answers || !$cost) {
     include $_SERVER['DOCUMENT_ROOT']."/403.php";
     exit;

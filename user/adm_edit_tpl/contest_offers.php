@@ -1,18 +1,18 @@
 <?php
 /**
- * Шаблон попап формы быстрого редактирования конкурсной работы
+ * РЁР°Р±Р»РѕРЅ РїРѕРїР°Рї С„РѕСЂРјС‹ Р±С‹СЃС‚СЂРѕРіРѕ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РєРѕРЅРєСѓСЂСЃРЅРѕР№ СЂР°Р±РѕС‚С‹
  * @author Max 'BlackHawk' Yastrembovich
  */
 if ( !defined('IN_STDF') ) { 
-    header("HTTP/1.0 404 Not Found"); // ибо нефиг
+    header("HTTP/1.0 404 Not Found"); // РёР±Рѕ РЅРµС„РёРі
     exit();
 }
 ?>
 <div class="b-menu b-menu_rubric b-menu_padbot_10">
     <ul class="b-menu__list">
-        <li id="adm_edit_tab_i1" class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">Основное</span></span></li>
-        <li id="adm_edit_tab_i2" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(2); return false;">Файлы</a></li>
-        <li id="adm_edit_tab_i3" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(3); return false;">Причина редактирования</a></li>
+        <li id="adm_edit_tab_i1" class="b-menu__item b-menu__item_active"><span class="b-menu__b1"><span class="b-menu__b2">РћСЃРЅРѕРІРЅРѕРµ</span></span></li>
+        <li id="adm_edit_tab_i2" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(2); return false;">Р¤Р°Р№Р»С‹</a></li>
+        <li id="adm_edit_tab_i3" class="b-menu__item"><a class="b-menu__link" href="#" onClick="adm_edit_content.editMenu(3); return false;">РџСЂРёС‡РёРЅР° СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ</a></li>
     </ul>
 </div>
 
@@ -26,9 +26,9 @@ if ( !defined('IN_STDF') ) {
 <?=_parseHiddenParams($aParams)?>
 
 <div id="adm_edit_tab_div1">
-    <?php // Текст ?>
+    <?php // РўРµРєСЃС‚ ?>
     <div class="b-form">
-        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_descr">Текст</label>
+        <label class="b-form__name b-form__name_bold b-form__name_width_80 b-form__name_padtop_3" for="adm_edit_descr">РўРµРєСЃС‚</label>
         <div class="b-textarea_inline-block b-textarea_width_550">
             <textarea id="adm_edit_descr_source" style="display:none" cols="50" rows="20"><?=input_ref($contest->offer['descr'])?></textarea>
             <textarea id="adm_edit_descr" name="descr" class="b-textarea__textarea_width_full b-textarea__textarea_height_70" cols="77" rows="5" onfocus="adm_edit_content.hideError('descr')"></textarea>
@@ -45,13 +45,13 @@ if ( !defined('IN_STDF') ) {
         </div>
     </div>
     
-    <?php // Запретить другим пользователям комментировать моё предложение ?>
+    <?php // Р—Р°РїСЂРµС‚РёС‚СЊ РґСЂСѓРіРёРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј РєРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ РјРѕС‘ РїСЂРµРґР»РѕР¶РµРЅРёРµ ?>
     <div class="b-form">
         <label class="b-form__name b-form__name_relative b-form__name_bold b-form__name_width_80 b-form__name_padtop_3">&nbsp;</label>
         <div class="b-input_inline-block b-input_width_545">
             <div class="b-check b-check_padtop_3">
                 <input id="adm_edit_comm_blocked" class="b-check__input" type="checkbox" name="comm_blocked" value="1" <?=($contest->offer['comm_blocked'] == 't' ? 'checked="checked"' : '')?> />
-                <label class="b-check__label" for="adm_edit_comm_blocked" id="label_close_comments">Запретить другим пользователям комментировать моё предложение (только для PRO)</label>
+                <label class="b-check__label" for="adm_edit_comm_blocked" id="label_close_comments">Р—Р°РїСЂРµС‚РёС‚СЊ РґСЂСѓРіРёРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј РєРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ РјРѕС‘ РїСЂРµРґР»РѕР¶РµРЅРёРµ (С‚РѕР»СЊРєРѕ РґР»СЏ PRO)</label>
             </div>
         </div>
     </div>
@@ -62,8 +62,8 @@ if ( !defined('IN_STDF') ) {
     <div class="ca-managment" style="width: 655px;">
         <table cellpadding="0" border="0">
         <tr>
-            <td class="ca-add-text b-post__txt_fontsize_15"><a href="#" onclick="boxes.add(); return false;">Добавить еще 3 поля</a></td>
-            <td class="ca-add-info b-post__txt_fontsize_11">Для файлов до 2Мбайт. Файлы следующих форматов запрещены к загрузке:<br/><?php $i=0; $aTmp = array();
+            <td class="ca-add-text b-post__txt_fontsize_15"><a href="#" onclick="boxes.add(); return false;">Р”РѕР±Р°РІРёС‚СЊ РµС‰Рµ 3 РїРѕР»СЏ</a></td>
+            <td class="ca-add-info b-post__txt_fontsize_11">Р”Р»СЏ С„Р°Р№Р»РѕРІ РґРѕ 2РњР±Р°Р№С‚. Р¤Р°Р№Р»С‹ СЃР»РµРґСѓСЋС‰РёС… С„РѕСЂРјР°С‚РѕРІ Р·Р°РїСЂРµС‰РµРЅС‹ Рє Р·Р°РіСЂСѓР·РєРµ:<br/><?php $i=0; $aTmp = array();
 				foreach ( $GLOBALS['disallowed_array'] as $sOne ) {
 					if ( $i > 14 ) {
 						$i = 0;

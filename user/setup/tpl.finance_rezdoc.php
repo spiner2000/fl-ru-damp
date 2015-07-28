@@ -3,34 +3,34 @@ if(!defined('IN_STDF')) {
     header("HTTP/1.0 404 Not Found");
     exit();
 }
-/* deprecated: убить, когда уйдут сделки с налогом на прибыль */ ?>
+/* deprecated: СѓР±РёС‚СЊ, РєРѕРіРґР° СѓР№РґСѓС‚ СЃРґРµР»РєРё СЃ РЅР°Р»РѕРіРѕРј РЅР° РїСЂРёР±С‹Р»СЊ */ ?>
 <div class="form form-rez">
     <b class="b1"></b>
     <b class="b2"></b>
     <div class="form-in">
         <div class="form-block first last">
             <div class="form-el">
-                <label class="form-l"><strong>Справка о резидентстве:</strong></label>
+                <label class="form-l"><strong>РЎРїСЂР°РІРєР° Рѕ СЂРµР·РёРґРµРЅС‚СЃС‚РІРµ:</strong></label>
                 <div class="form-value">
                     <? if($reqvs['rezdoc_status']==sbr::RS_WAITING) { ?>
-                      <span>ожидается</span>
+                      <span>РѕР¶РёРґР°РµС‚СЃСЏ</span>
                     <? } else if($reqvs['rezdoc_status']==sbr::RS_DENIED) { ?>
-                      <span class="form-merr">аннулирована</span>
+                      <span class="form-merr">Р°РЅРЅСѓР»РёСЂРѕРІР°РЅР°</span>
                     <? } else if($reqvs['rezdoc_status']==sbr::RS_ACCEPTED) { ?>
-                      <span class="form-mvalid">получена</span>
+                      <span class="form-mvalid">РїРѕР»СѓС‡РµРЅР°</span>
                     <? } else { ?>
-                      <span>нет данных</span>
+                      <span>РЅРµС‚ РґР°РЅРЅС‹С…</span>
                     <? } ?>
                     <span id="rezdoc_comment_out"><?=($reqvs['rezdoc_comment'] ? '('.reformat($reqvs['rezdoc_comment'], 40, 0, 1).')' : '')?></span>
                     <? if(hasPermissions('users')) { ?>
                         <? if($reqvs['rezdoc_status']) { ?>
-                          <a href="javascript:;" class="lnk-dot-blue" onclick="$('rezdoc_comment').innerHTML=$('rezdoc_comment_out').innerHTML.replace(/^\(/,'').replace(/\)$/,'');SBR.rezDocOpenWin()">изменить комментарий</a>
+                          <a href="javascript:;" class="lnk-dot-blue" onclick="$('rezdoc_comment').innerHTML=$('rezdoc_comment_out').innerHTML.replace(/^\(/,'').replace(/\)$/,'');SBR.rezDocOpenWin()">РёР·РјРµРЅРёС‚СЊ РєРѕРјРјРµРЅС‚Р°СЂРёР№</a>
                         <? } ?>
                         <br /><br />
                         <div>
-                            <input type="button" onclick="SBR.rezDocOpenWin(<?=sbr::RS_WAITING?>)" <?=$reqvs['rezdoc_status']==sbr::RS_WAITING ? ' disabled="disabled"' : ''?> value="Справка ожидается" />
-                            <input type="button" onclick="SBR.rezDocOpenWin(<?=sbr::RS_ACCEPTED?>)" <?=$reqvs['rezdoc_status']==sbr::RS_ACCEPTED ? ' disabled="disabled"' : ''?> value="Справка принята" />
-                            <input type="button" onclick="SBR.rezDocOpenWin(<?=sbr::RS_DENIED?>)" <?=$reqvs['rezdoc_status']==sbr::RS_DENIED ? ' disabled="disabled"' : ''?> value="Справка отклонена" />
+                            <input type="button" onclick="SBR.rezDocOpenWin(<?=sbr::RS_WAITING?>)" <?=$reqvs['rezdoc_status']==sbr::RS_WAITING ? ' disabled="disabled"' : ''?> value="РЎРїСЂР°РІРєР° РѕР¶РёРґР°РµС‚СЃСЏ" />
+                            <input type="button" onclick="SBR.rezDocOpenWin(<?=sbr::RS_ACCEPTED?>)" <?=$reqvs['rezdoc_status']==sbr::RS_ACCEPTED ? ' disabled="disabled"' : ''?> value="РЎРїСЂР°РІРєР° РїСЂРёРЅСЏС‚Р°" />
+                            <input type="button" onclick="SBR.rezDocOpenWin(<?=sbr::RS_DENIED?>)" <?=$reqvs['rezdoc_status']==sbr::RS_DENIED ? ' disabled="disabled"' : ''?> value="РЎРїСЂР°РІРєР° РѕС‚РєР»РѕРЅРµРЅР°" />
                         </div>
                     <? } ?>
                 </div>

@@ -11,8 +11,8 @@ window.addEvent('domready', function() {
 
 <?php
 $crumbs = array();
-$crumbs[] = array("title"=>"Статьи и интервью", "url"=>"/articles/");
-$crumbs[] = array("title"=>"Интервью", "url"=>"/interview/");
+$crumbs[] = array("title"=>"РЎС‚Р°С‚СЊРё Рё РёРЅС‚РµСЂРІСЊСЋ", "url"=>"/articles/");
+$crumbs[] = array("title"=>"РРЅС‚РµСЂРІСЊСЋ", "url"=>"/interview/");
 $crumbs[] = array("title"=>$interview['uname'].' '.$interview['usurname'].' ['.$interview['login'].']');
 ?>
 <div class="b-menu b-menu_crumbs  b-menu_padbot_20"><?=getCrumbs($crumbs)?></div>
@@ -26,23 +26,23 @@ $crumbs[] = array("title"=>$interview['uname'].' '.$interview['usurname'].' ['.$
                 ?>
                 <a href="<?=getFriendlyURL('interview', $navigation['prev']['id'])?>">&laquo; <?=$navigation['prev']['uname'] . ' ' . $navigation['prev']['usurname'] . ' [' . $navigation['prev']['login'] . ']'?></a>
             <? } else { /* ?>
-                <span>&laquo; предыдущее интервью</span>
+                <span>&laquo; РїСЂРµРґС‹РґСѓС‰РµРµ РёРЅС‚РµСЂРІСЊСЋ</span>
             <? */ } ?>
             &nbsp;&nbsp;&nbsp;
             <? if(isset($navigation['next'])) { ?>
                 <a href="<?=getFriendlyURL('interview', $navigation['next']['id'])?>"><?=$navigation['next']['uname'] . ' ' . $navigation['next']['usurname'] . ' [' . $navigation['next']['login'] . ']'?> &raquo;</a>
             <? } else { /* ?>
-                <span>следующее интервью &raquo;</span>
+                <span>СЃР»РµРґСѓСЋС‰РµРµ РёРЅС‚РµСЂРІСЊСЋ &raquo;</span>
             <? */ } ?>
         </div>
-        <a id="interview_back1" href="javascript:void(0);">Вернуться к списку интервью</a>
+        <a id="interview_back1" href="javascript:void(0);">Р’РµСЂРЅСѓС‚СЊСЃСЏ Рє СЃРїРёСЃРєСѓ РёРЅС‚РµСЂРІСЊСЋ</a>
     </div>
     <div class="p-interview-in c">
         <div class="interview-avatar">
             <a href="/users/<?=$interview['login']?>">
                 <? if ($interview['fname']) {
                     $alt = $interview['uname'] . ' ' . $interview['usurname'] . ' [' . $interview['login'] . ']';
-                    $title = 'Интервью - ' . $alt;
+                    $title = 'РРЅС‚РµСЂРІСЊСЋ - ' . $alt;
                 ?>
                 <img src="<?=WDCPREFIX . "/{$interview['path']}".(substr($interview['fname'],0,3)=='sm_' ? '' : 'sm_')."{$interview['fname']}"?>" alt="<?= $alt ?>" title="<?= $title ?>" width="100" />
                 <? } ?>
@@ -50,11 +50,11 @@ $crumbs[] = array("title"=>$interview['uname'].' '.$interview['usurname'].' ['.$
         </div>
         <div class="interview-one">
             <div class="aih">
-                <span class="interview-date"><?=date('d.m.Y в H:i', strtotime($interview['post_time']))?></span>
+                <span class="interview-date"><?=date('d.m.Y РІ H:i', strtotime($interview['post_time']))?></span>
                 <? if(hasPermissions('interviews')) { ?>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="javascript:void(0)" class="lnk-ai" onclick="editInterview(<?=$interview['id']?>)">Редактировать</a> |
-                <a href="/interview/?task=del&id=<?=$interview['id']?>&token=<?=$_SESSION['rand']?>" class="lnk-ai" onclick="return (confirm('Уверены?'))">Удалить</a>
+                <a href="javascript:void(0)" class="lnk-ai" onclick="editInterview(<?=$interview['id']?>)">Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ</a> |
+                <a href="/interview/?task=del&id=<?=$interview['id']?>&token=<?=$_SESSION['rand']?>" class="lnk-ai" onclick="return (confirm('РЈРІРµСЂРµРЅС‹?'))">РЈРґР°Р»РёС‚СЊ</a>
                 <? } ?>
             </div>
             
@@ -78,15 +78,15 @@ $crumbs[] = array("title"=>$interview['uname'].' '.$interview['usurname'].' ['.$
                 ?>
                 <a href="<?=getFriendlyURL('interview', $navigation['prev']['id'])?>">&laquo; <?=$navigation['prev']['uname'] . ' ' . $navigation['prev']['usurname'] . ' [' . $navigation['prev']['login'] . ']'?></a>
             <? } else { /* ?>
-                <span>&laquo; предыдущее интервью</span>
+                <span>&laquo; РїСЂРµРґС‹РґСѓС‰РµРµ РёРЅС‚РµСЂРІСЊСЋ</span>
             <? */ } ?>
             &nbsp;&nbsp;&nbsp;
             <? if(isset($navigation['next'])) { ?>
                 <a href="<?=getFriendlyURL('interview', $navigation['next']['id'])?>"><?=$navigation['next']['uname'] . ' ' . $navigation['next']['usurname'] . ' [' . $navigation['next']['login'] . ']'?> &raquo;</a>
             <? } else { /* ?>
-                <span>следующее интервью &raquo;</span>
+                <span>СЃР»РµРґСѓСЋС‰РµРµ РёРЅС‚РµСЂРІСЊСЋ &raquo;</span>
             <? */ } ?>
         </div>
-        <a id="interview_back2" href="javascript:void(0);">Вернуться к списку интервью</a>
+        <a id="interview_back2" href="javascript:void(0);">Р’РµСЂРЅСѓС‚СЊСЃСЏ Рє СЃРїРёСЃРєСѓ РёРЅС‚РµСЂРІСЊСЋ</a>
     </div>
 </div>

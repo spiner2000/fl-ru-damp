@@ -9,7 +9,7 @@ var deliveryList = {
 					<?php
 					$deliveries = letters::getDeliveries();
 					$html = '';
-					$html .= "0:'Не выбрано',";
+					$html .= "0:'РќРµ РІС‹Р±СЂР°РЅРѕ',";
 					foreach($deliveries as $delivery) {
 						$html .= "{$delivery['id']}:'{$delivery['title']}',";
 					}
@@ -21,12 +21,12 @@ is_templates_mode = true;
 </script>
 
 
-<div class="b-layout__txt"><a class="b-layout__link" href="/siteadmin/letters/?mode=templates">Все шаблоны</a> &rarr;</div>
+<div class="b-layout__txt"><a class="b-layout__link" href="/siteadmin/letters/?mode=templates">Р’СЃРµ С€Р°Р±Р»РѕРЅС‹</a> &rarr;</div>
 
 <?php if($_GET['mode']=='edit_template') { ?>
-<h2 class="b-layout__title">Редактирование шаблона: <?=htmlspecialchars($template['title'])?></h2>
+<h2 class="b-layout__title">Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ С€Р°Р±Р»РѕРЅР°: <?=htmlspecialchars($template['title'])?></h2>
 <?php } else { ?>
-<h2 class="b-layout__title">Новый шаблон</h2>
+<h2 class="b-layout__title">РќРѕРІС‹Р№ С€Р°Р±Р»РѕРЅ</h2>
 <?php } ?>
 
 
@@ -34,7 +34,7 @@ is_templates_mode = true;
 	<tbody>
 		<tr class="b-layout__tr">
 			<td class="b-layout__left b-layout__left_width_100">
-				<div class="b-layout__txt b-layout__txt_padtop_5">Название</div>
+				<div class="b-layout__txt b-layout__txt_padtop_5">РќР°Р·РІР°РЅРёРµ</div>
 			</td>
 			<td class="b-layout__right">
 				<div class="b-combo b-combo_inline-block">
@@ -53,7 +53,7 @@ is_templates_mode = true;
 require_once( $_SERVER['DOCUMENT_ROOT'] . '/siteadmin/letters/tpl.forms.php' );
 ?>
 
-<div id="l_form_1" class="b-shadow__title">Новый документ <div id="l_form_1_1" class="b-layout__txt b-layout__txt_inline-block"><a class="b-button b-button_poll_plus" href="" onClick="letters.TemplateInsertNewDoc(); return false;"></a> <a class="b-layout__link b-layout__link_fontsize_15 b-layout__link_bordbot_dot_0f71c8" href="" onClick="letters.TemplateInsertNewDoc(); return false;">добавить</a></div></div>
+<div id="l_form_1" class="b-shadow__title">РќРѕРІС‹Р№ РґРѕРєСѓРјРµРЅС‚ <div id="l_form_1_1" class="b-layout__txt b-layout__txt_inline-block"><a class="b-button b-button_poll_plus" href="" onClick="letters.TemplateInsertNewDoc(); return false;"></a> <a class="b-layout__link b-layout__link_fontsize_15 b-layout__link_bordbot_dot_0f71c8" href="" onClick="letters.TemplateInsertNewDoc(); return false;">РґРѕР±Р°РІРёС‚СЊ</a></div></div>
 
 <br><br>
 
@@ -74,7 +74,7 @@ require_once( $_SERVER['DOCUMENT_ROOT'] . '/siteadmin/letters/tpl.forms.php' );
 						<div class="b-shadow__bottom">
 							<div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_15">
 								<div class="b-form b-form_padbot_20">
-									<div class="b-form__name b-form__name_fontsize_13 b-form__name_padtop_5 b-form__name_width_80">Название</div>
+									<div class="b-form__name b-form__name_fontsize_13 b-form__name_padtop_5 b-form__name_width_80">РќР°Р·РІР°РЅРёРµ</div>
 									<div class="b-combo b-combo_inline-block">
 										<div class="b-combo__input b-combo__input_width_400">
 											<input id="letters_doc_frm_title" name="letters_doc_frm_title" type="text" value="" size="80" class="b-combo__input-text" maxlength="250">
@@ -82,7 +82,7 @@ require_once( $_SERVER['DOCUMENT_ROOT'] . '/siteadmin/letters/tpl.forms.php' );
 									</div>
 								</div>
 								<div class="b-form b-form_padbot_20">
-									<div class="b-form__name b-form__name_fontsize_13 b-form__name_padtop_5 b-form__name_width_80">Группа</div>
+									<div class="b-form__name b-form__name_fontsize_13 b-form__name_padtop_5 b-form__name_width_80">Р“СЂСѓРїРїР°</div>
 									<div class="b-combo b-combo_inline-block">
 										<div class="b-combo__input b-combo__input_width_135 b-combo__input_arrow_yes b-combo__input_dropdown b_combo__input_request_id_getlettergrouplist b-combo__input_overflow_hidden allow_create_value b-combo__input_quantity_symbols_1">
 											<input id="letters_doc_frm_group" name="letters_doc_frm_group" type="text" value="" size="80" class="b-combo__input-text" first_section_text="&nbsp;" second_section_text="&nbsp;" maxlength="250">
@@ -94,7 +94,7 @@ require_once( $_SERVER['DOCUMENT_ROOT'] . '/siteadmin/letters/tpl.forms.php' );
 
 
 								<div class="b-form b-form_padbot_20">
-									<div class="b-form__name b-form__name_fontsize_13 b-form__name_padtop_5 b-form__name_width_80">Сторона 1</div>
+									<div class="b-form__name b-form__name_fontsize_13 b-form__name_padtop_5 b-form__name_width_80">РЎС‚РѕСЂРѕРЅР° 1</div>
 									<div class="b-combo b-combo_inline-block">
 										<div class="b-combo__input b-combo__input_width_125 b-combo__input_arrow-user_yes b-combo__input_dropdown b_combo__input_request_id_getusersandcompanies b-combo__input_overflow_hidden allow_create_value">
 											<input id="letters_doc_frm_user_1" name="letters_doc_frm_user_1" type="text" value="" size="80" class="b-combo__input-text">
@@ -102,11 +102,11 @@ require_once( $_SERVER['DOCUMENT_ROOT'] . '/siteadmin/letters/tpl.forms.php' );
 										</div>
 									</div>
 									<div id="letters_doc_frm_user_1_status_change" class="b-form__txt b-form__txt_padleft_10 b-form__txt_padtop_5 ">
-										<a id="letters_doc_frm_user_1_status_change_lnk" href="#" class="b-layout__link b-layout__link_bordbot_dot_0f71c8" onClick="letters.statusesShow(this, 1); return false;">Добавить статус</a>
+										<a id="letters_doc_frm_user_1_status_change_lnk" href="#" class="b-layout__link b-layout__link_bordbot_dot_0f71c8" onClick="letters.statusesShow(this, 1); return false;">Р”РѕР±Р°РІРёС‚СЊ СЃС‚Р°С‚СѓСЃ</a>
 									</div>
 								</div>
 								<div class="b-form b-form_padbot_20">
-									<div class="b-form__name b-form__name_fontsize_13 b-form__name_padtop_5 b-form__name_width_80">Сторона 2</div>
+									<div class="b-form__name b-form__name_fontsize_13 b-form__name_padtop_5 b-form__name_width_80">РЎС‚РѕСЂРѕРЅР° 2</div>
 									<div class="b-combo b-combo_inline-block">
 										<div class="b-combo__input b-combo__input_width_125 b-combo__input_arrow-user_yes b-combo__input_dropdown b_combo__input_request_id_getusersandcompanies b-combo__input_overflow_hidden allow_create_value">
 											<input id="letters_doc_frm_user_2" name="letters_doc_frm_user_2" type="text" value="" size="80" class="b-combo__input-text">
@@ -114,11 +114,11 @@ require_once( $_SERVER['DOCUMENT_ROOT'] . '/siteadmin/letters/tpl.forms.php' );
 										</div>
 									</div>
 									<div id="letters_doc_frm_user_2_status_change" class="b-form__txt b-form__txt_padleft_10 b-form__txt_padtop_5 ">
-										<a id="letters_doc_frm_user_2_status_change_lnk" href="#" class="b-layout__link b-layout__link_bordbot_dot_0f71c8" onClick="letters.statusesShow(this, 2); return false;">Добавить статус</a>
+										<a id="letters_doc_frm_user_2_status_change_lnk" href="#" class="b-layout__link b-layout__link_bordbot_dot_0f71c8" onClick="letters.statusesShow(this, 2); return false;">Р”РѕР±Р°РІРёС‚СЊ СЃС‚Р°С‚СѓСЃ</a>
 									</div>
 								</div>
 								<div id="letters_doc_frm_user_3_div" class="b-form b-form_padbot_20" style="display: none">
-									<div class="b-form__name b-form__name_fontsize_13 b-form__name_padtop_5 b-form__name_width_80">Сторона 3</div>
+									<div class="b-form__name b-form__name_fontsize_13 b-form__name_padtop_5 b-form__name_width_80">РЎС‚РѕСЂРѕРЅР° 3</div>
 									<div class="b-combo b-combo_inline-block">
 										<div class="b-combo__input b-combo__input_width_125 b-combo__input_arrow-user_yes b-combo__input_dropdown b_combo__input_request_id_getusersandcompanies b-combo__input_overflow_hidden allow_create_value">
 											<input id="letters_doc_frm_user_3" name="letters_doc_frm_user_3" type="text" value="" size="80" class="b-combo__input-text">
@@ -126,15 +126,15 @@ require_once( $_SERVER['DOCUMENT_ROOT'] . '/siteadmin/letters/tpl.forms.php' );
 										</div>
 									</div>
 									<div id="letters_doc_frm_user_3_status_change" class="b-form__txt b-form__txt_padleft_10 b-form__txt_padtop_5 ">
-										<a id="letters_doc_frm_user_3_status_change_lnk" href="#" class="b-layout__link b-layout__link_bordbot_dot_0f71c8" onClick="letters.statusesShow(this, 3); return false;">Добавить статус</a>
+										<a id="letters_doc_frm_user_3_status_change_lnk" href="#" class="b-layout__link b-layout__link_bordbot_dot_0f71c8" onClick="letters.statusesShow(this, 3); return false;">Р”РѕР±Р°РІРёС‚СЊ СЃС‚Р°С‚СѓСЃ</a>
 									</div>
 								</div>
 								<div class="i-button b-layout__txt b-layout__txt_padbot_20 b-layout__txt_padleft_80">
-									<span class="b-button b-button_padright_5 b-button_poll_plus" href="#"></span>&nbsp;<a id="letters_doc_frm_user_3_addlnk" href="#" class="b-layout__link b-layout__link_bordbot_dot_0f71c8" onClick="letters.toggleUser3(this); return false;">Добавить третью сторону</a>
+									<span class="b-button b-button_padright_5 b-button_poll_plus" href="#"></span>&nbsp;<a id="letters_doc_frm_user_3_addlnk" href="#" class="b-layout__link b-layout__link_bordbot_dot_0f71c8" onClick="letters.toggleUser3(this); return false;">Р”РѕР±Р°РІРёС‚СЊ С‚СЂРµС‚СЊСЋ СЃС‚РѕСЂРѕРЅСѓ</a>
 								</div>
 
 								<div id="l_form_3" class="b-form b-form_padbot_20">
-									<div class="b-form__name b-form__name_lineheight_1 b-form__name_fontsize_13 b-form__name_width_80">Тип<br>доставки</div>
+									<div class="b-form__name b-form__name_lineheight_1 b-form__name_fontsize_13 b-form__name_width_80">РўРёРї<br>РґРѕСЃС‚Р°РІРєРё</div>
 									<div class="b-combo b-combo_inline-block">
 										<div class="b-combo__input b-combo__input_width_135 b-combo__input_arrow_yes b-combo__input_init_deliveryList b-combo__input_multi_dropdown b-combo__input_overflow_hidden allow_create_value">
 											<input id="letters_doc_frm_delivery" name="letters_doc_frm_delivery" type="text" value="" size="80" class="b-combo__input-text" readonly>
@@ -143,27 +143,27 @@ require_once( $_SERVER['DOCUMENT_ROOT'] . '/siteadmin/letters/tpl.forms.php' );
 									</div>
 								</div>
 								<div id="l_form_4" class="b-form b-form_padbot_20">
-									<div class="b-form__name b-form__name_lineheight_1 b-form__name_fontsize_13 b-form__name_width_80">Стоимость<br>доставки</div>
+									<div class="b-form__name b-form__name_lineheight_1 b-form__name_fontsize_13 b-form__name_width_80">РЎС‚РѕРёРјРѕСЃС‚СЊ<br>РґРѕСЃС‚Р°РІРєРё</div>
 									<div class="b-combo b-combo_inline-block">
 										<div class="b-combo__input b-combo__input_width_80">
 											<input id="letters_doc_frm_delivery_cost" name="letters_doc_frm_delivery_cost" type="text" value="" size="80" class="b-combo__input-text" maxlength="10">
 										</div>
 									</div>
-									<div class="b-form__txt b-form__txt_padleft_10 b-form__txt_padtop_5 ">руб.</div>
+									<div class="b-form__txt b-form__txt_padleft_10 b-form__txt_padtop_5 ">СЂСѓР±.</div>
 								</div>
 								<div class="b-form b-form_padbot_20">
-									<div class="b-form__name b-form__name_padtop_5 b-form__name_fontsize_13 b-form__name_width_80">Подчинен</div>
+									<div class="b-form__name b-form__name_padtop_5 b-form__name_fontsize_13 b-form__name_width_80">РџРѕРґС‡РёРЅРµРЅ</div>
 									<div class="b-combo b-combo_inline-block">
 										<div class="b-combo__input b-combo__input_width_135 b-combo__input_arrow_yes b-combo__input_dropdown b_combo__input_request_id_getletterdoclist b-combo__input_quantity_symbols_1 b-combo__input_overflow_hidden allow_create_value b-combo__input_max-width_500">
 											<input id="letters_doc_frm_parent" name="letters_doc_frm_parent" type="text" value="" size="80" class="b-combo__input-text" first_section_text="&nbsp;" second_section_text="&nbsp;">
 											<span class="b-combo__arrow"></span>
 										</div>
 									</div>
-									<div class="b-form__txt b-form__txt_padtop_3 b-form__txt_padleft_80 b-form__txt_fontsize_11 b-form__txt_block">Чтобы связать этот документ с другим, укажите его ID. Например, 12345</div>
+									<div class="b-form__txt b-form__txt_padtop_3 b-form__txt_padleft_80 b-form__txt_fontsize_11 b-form__txt_block">Р§С‚РѕР±С‹ СЃРІСЏР·Р°С‚СЊ СЌС‚РѕС‚ РґРѕРєСѓРјРµРЅС‚ СЃ РґСЂСѓРіРёРј, СѓРєР°Р¶РёС‚Рµ РµРіРѕ ID. РќР°РїСЂРёРјРµСЂ, 12345</div>
 								</div>
 								<!--
 								<div class="b-form b-form_padbot_20">
-									<div class="b-form__name b-form__name_padtop_5 b-form__name_fontsize_13 b-form__name_width_80">Дата<br>добавления</div>
+									<div class="b-form__name b-form__name_padtop_5 b-form__name_fontsize_13 b-form__name_width_80">Р”Р°С‚Р°<br>РґРѕР±Р°РІР»РµРЅРёСЏ</div>
 									<div class="b-combo b-combo_inline-block">
 										<div class="b-combo__input b-combo__input_calendar b-combo__input_width_125 b-combo__input_arrow-date_yes use_past_date date_format_use_text no_set_date_on_load">
 											<input id="letters_doc_frm_dateadd" name="letters_doc_frm_dateadd" class="b-combo__input-text" type="text" size="80" value="">
@@ -173,14 +173,14 @@ require_once( $_SERVER['DOCUMENT_ROOT'] . '/siteadmin/letters/tpl.forms.php' );
 								</div>
 								-->
 								<div id="l_form_5" class="b-form b-form_padbot_15">
-									<div class="b-form__name b-form__name_padtop_5 b-form__name_fontsize_13 b-form__name_width_80">Примечание</div>
+									<div class="b-form__name b-form__name_padtop_5 b-form__name_fontsize_13 b-form__name_width_80">РџСЂРёРјРµС‡Р°РЅРёРµ</div>
 									<div class="b-textarea b-textarea_inline-block b-textarea_width_402">
 										<textarea id="letters_doc_frm_comment" name="letters_doc_frm_comment" class="b-textarea__textarea" cols="" rows=""></textarea>
 									</div>
 								</div>
 
 								<div class="b-buttons b-buttons_padleft_78" id="l_form_1_2">
-									<a class="b-buttons__link b-buttons__link_dot_c10601" href="#" onClick="letters.TemplateDeleteDoc(letters.curDocTemplate); return false;">удалить документ</a>
+									<a class="b-buttons__link b-buttons__link_dot_c10601" href="#" onClick="letters.TemplateDeleteDoc(letters.curDocTemplate); return false;">СѓРґР°Р»РёС‚СЊ РґРѕРєСѓРјРµРЅС‚</a>
 								</div>
 
 
@@ -199,9 +199,9 @@ require_once( $_SERVER['DOCUMENT_ROOT'] . '/siteadmin/letters/tpl.forms.php' );
 <br><br>
 
 								<div class="b-buttons b-buttons_padleft_78">
-									<a id="f_button_actionwork" class="b-button b-button_flat b-button_flat_green" onclick="<? if($_GET['mode']=='add_template') { ?>letters.TemplateAddDoc();<? } else { ?>letters.TemplateUpdateDoc();<? } ?> return false;" href="javascript:void()"><span id="f_button_actionwork_txt">Сохранить</span></a>
-									<span class="b-buttons__txt b-buttons__txt_padleft_10">или</span>
-									<a class="b-buttons__link b-buttons__link_dot_c10601" href="/siteadmin/letters/?mode=templates">закрыть не добавляя</a>
+									<a id="f_button_actionwork" class="b-button b-button_flat b-button_flat_green" onclick="<? if($_GET['mode']=='add_template') { ?>letters.TemplateAddDoc();<? } else { ?>letters.TemplateUpdateDoc();<? } ?> return false;" href="javascript:void()"><span id="f_button_actionwork_txt">РЎРѕС…СЂР°РЅРёС‚СЊ</span></a>
+									<span class="b-buttons__txt b-buttons__txt_padleft_10">РёР»Рё</span>
+									<a class="b-buttons__link b-buttons__link_dot_c10601" href="/siteadmin/letters/?mode=templates">Р·Р°РєСЂС‹С‚СЊ РЅРµ РґРѕР±Р°РІР»СЏСЏ</a>
 								</div>
 
 

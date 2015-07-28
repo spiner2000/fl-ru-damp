@@ -22,14 +22,14 @@ if(count($argv) > 1) parse_str(implode('&', array_slice($argv, 1)), $_GET);
 $wmid = intval($_GET['wmid']);
 
 if (!$wmid) {
-    echo 'Укажите параметр wmid';
+    echo 'РЈРєР°Р¶РёС‚Рµ РїР°СЂР°РјРµС‚СЂ wmid';
     exit;
 }
 
 $done = $DB->query("DELETE FROM verify_webmoney WHERE wmid = ?", $wmid);
 
 if ($done) {
-    echo 'Привязка к WMID удалена.';
+    echo 'РџСЂРёРІСЏР·РєР° Рє WMID СѓРґР°Р»РµРЅР°.';
 }
 
 exit;

@@ -23,15 +23,15 @@ if(!is_emp() && get_uid(false) && $kind != 8 && $filter_show) {
             (is_emp() || !get_uid(false))): 
 ?>
         <?php if (in_array($kind, array(1, 5, 6))): ?>
-            <a class="b-button b-button_flat b-button_flat_orange2 b-button_block b-button_margbot_20 __ga__sidebar__add_project" href="/public/?step=1&kind=1">Бесплатно опубликовать задание</a>
+            <a class="b-button b-button_flat b-button_flat_orange2 b-button_block b-button_margbot_20 __ga__sidebar__add_project" href="/public/?step=1&kind=1">Р‘РµСЃРїР»Р°С‚РЅРѕ РѕРїСѓР±Р»РёРєРѕРІР°С‚СЊ Р·Р°РґР°РЅРёРµ</a>
         <?php endif; ?>
 	
         <?php if ($kind == 4): ?>
-            <a class="b-button b-button_flat b-button_flat_orange2 b-button_block b-button_margbot_20 __ga__sidebar__add_vacancy" href="/public/?step=1&kind=4&red=">Опубликовать вакансию</a>
+            <a class="b-button b-button_flat b-button_flat_orange2 b-button_block b-button_margbot_20 __ga__sidebar__add_vacancy" href="/public/?step=1&kind=4&red=">РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ РІР°РєР°РЅСЃРёСЋ</a>
 		<?php endif; ?>
     
         <?php if ($kind == 2): ?>
-            <a class="b-button b-button_flat b-button_flat_orange2 b-button_block b-button_margbot_20 __ga__sidebar__add_contest" href="/public//?step=1&kind=7&red=">Опубликовать конкурс</a>
+            <a class="b-button b-button_flat b-button_flat_orange2 b-button_block b-button_margbot_20 __ga__sidebar__add_contest" href="/public//?step=1&kind=7&red=">РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ РєРѕРЅРєСѓСЂСЃ</a>
 		<?php endif; ?>
     <?php endif; ?>
             
@@ -45,7 +45,7 @@ if(!is_emp() && get_uid(false) && $kind != 8 && $filter_show) {
 		
 <?php /*if(get_uid(false)) {*/ ?>
 	<?php  if($kind == 8) {	?>
-        <h1 class="b-page__title b-page__title_padnull">Сделаю</h1>
+        <h1 class="b-page__title b-page__title_padnull">РЎРґРµР»Р°СЋ</h1>
     
         <?php 
         if($kind == 8 && get_uid(false)) {
@@ -56,19 +56,19 @@ if(!is_emp() && get_uid(false) && $kind != 8 && $filter_show) {
     <?php include( $_SERVER['DOCUMENT_ROOT'] . "/projects/tpl.filter_head.php"); ?> 
     <h1 class="b-page__title">
 	<?php if($kind == 6||$kind == 1) {?>
-       Проекты
+       РџСЂРѕРµРєС‚С‹
 				<?php } ?>
     <?php if($kind == 5) {?>
-       Все проекты, конкурсы и вакансии
+       Р’СЃРµ РїСЂРѕРµРєС‚С‹, РєРѕРЅРєСѓСЂСЃС‹ Рё РІР°РєР°РЅСЃРёРё
                 <?php } ?>
     <?php if($kind == 4) {?>
-       Вакансии
+       Р’Р°РєР°РЅСЃРёРё
 				<?php } ?>
     <?php if($kind == 2) {?>
-       Конкурсы для фрилансеров
+       РљРѕРЅРєСѓСЂСЃС‹ РґР»СЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
 				<?php } ?>
 	<?php if (!($kind == 8)): ?>
-        <span class="b-layout__txt_nowrap"><a id="post-rolling" class="b-icon b-icon__pt b-icon__pt_dis" href="" title="Показывать только заголовки проектов в списке."></a>&#160;<a id="post-opening" class="b-icon b-icon__pf" href="" title="Показывать заголовки и описания проектов в списке."></a></span>
+        <span class="b-layout__txt_nowrap"><a id="post-rolling" class="b-icon b-icon__pt b-icon__pt_dis" href="" title="РџРѕРєР°Р·С‹РІР°С‚СЊ С‚РѕР»СЊРєРѕ Р·Р°РіРѕР»РѕРІРєРё РїСЂРѕРµРєС‚РѕРІ РІ СЃРїРёСЃРєРµ."></a>&#160;<a id="post-opening" class="b-icon b-icon__pf" href="" title="РџРѕРєР°Р·С‹РІР°С‚СЊ Р·Р°РіРѕР»РѕРІРєРё Рё РѕРїРёСЃР°РЅРёСЏ РїСЂРѕРµРєС‚РѕРІ РІ СЃРїРёСЃРєРµ."></a></span>
     <?php endif ?>
 </h1>
 <?php } ?>
@@ -80,34 +80,34 @@ if(!is_emp() && get_uid(false) && $kind != 8 && $filter_show) {
                 <div class="b-menu__filter">
                     <?php
                     if ($kind == 2 || $kind == 7) {
-                        $prjWord_1 = 'закрепленный конкурс';
-                        $prjWord_2 = 'закрепленных конкурса';
-                        $prjWord_5 = 'закрепленных конкурсов';
+                        $prjWord_1 = 'Р·Р°РєСЂРµРїР»РµРЅРЅС‹Р№ РєРѕРЅРєСѓСЂСЃ';
+                        $prjWord_2 = 'Р·Р°РєСЂРµРїР»РµРЅРЅС‹С… РєРѕРЅРєСѓСЂСЃР°';
+                        $prjWord_5 = 'Р·Р°РєСЂРµРїР»РµРЅРЅС‹С… РєРѕРЅРєСѓСЂСЃРѕРІ';
                     } elseif ($kind == 4) {
-                        $prjWord_1 = 'закрепленная вакансия';
-                        $prjWord_2 = 'закрепленных вакансии';
-                        $prjWord_5 = 'закрепленных вакансий';
+                        $prjWord_1 = 'Р·Р°РєСЂРµРїР»РµРЅРЅР°СЏ РІР°РєР°РЅСЃРёСЏ';
+                        $prjWord_2 = 'Р·Р°РєСЂРµРїР»РµРЅРЅС‹С… РІР°РєР°РЅСЃРёРё';
+                        $prjWord_5 = 'Р·Р°РєСЂРµРїР»РµРЅРЅС‹С… РІР°РєР°РЅСЃРёР№';
                     } else {
-                        $prjWord_1 = 'закрепленный проект';
-                        $prjWord_2 = 'закрепленных проекта';
-                        $prjWord_5 = 'закрепленных проектов';
+                        $prjWord_1 = 'Р·Р°РєСЂРµРїР»РµРЅРЅС‹Р№ РїСЂРѕРµРєС‚';
+                        $prjWord_2 = 'Р·Р°РєСЂРµРїР»РµРЅРЅС‹С… РїСЂРѕРµРєС‚Р°';
+                        $prjWord_5 = 'Р·Р°РєСЂРµРїР»РµРЅРЅС‹С… РїСЂРѕРµРєС‚РѕРІ';
                     }
                     ?>
                     <? if ($_SESSION['top_payed'] && $kind != 8) { ?>
-                    <span class="b-layout__txt b-layout__txt_color_323232 b-layout__txt_valign_top b-layout__txt_float_left"><?= $_SESSION['top_payed']?> <?= ending($_SESSION['top_payed'], $prjWord_1, $prjWord_2, $prjWord_5)?>&#160;&#160; <? if($_SESSION['hidetopprjlenta_more']==1 && $hidetopprjlenta==1) { ?><a class="b-menu__link b-menu__link_bordbot_dot_0f71c8" id="hide_top_project_lnk2" cmd="hide" onclick="this.hide(); xajax_HideTopProjects(this.get('cmd')); return false;">Скрыть все</a><? } ?>&#160;&#160; <a class="b-menu__link b-menu__link_bordbot_dot_0f71c8" id="hide_top_project_lnk" cmd="<?= $hidetopprjlenta==1 ? 'show' : 'hide' ?>" onclick="xajax_HideTopProjects(this.get('cmd')); return false;"><?= $hidetopprjlenta==1 ? 'Показать' : 'Скрыть' ?> все</a></span>
+                    <span class="b-layout__txt b-layout__txt_color_323232 b-layout__txt_valign_top b-layout__txt_float_left"><?= $_SESSION['top_payed']?> <?= ending($_SESSION['top_payed'], $prjWord_1, $prjWord_2, $prjWord_5)?>&#160;&#160; <? if($_SESSION['hidetopprjlenta_more']==1 && $hidetopprjlenta==1) { ?><a class="b-menu__link b-menu__link_bordbot_dot_0f71c8" id="hide_top_project_lnk2" cmd="hide" onclick="this.hide(); xajax_HideTopProjects(this.get('cmd')); return false;">РЎРєСЂС‹С‚СЊ РІСЃРµ</a><? } ?>&#160;&#160; <a class="b-menu__link b-menu__link_bordbot_dot_0f71c8" id="hide_top_project_lnk" cmd="<?= $hidetopprjlenta==1 ? 'show' : 'hide' ?>" onclick="xajax_HideTopProjects(this.get('cmd')); return false;"><?= $hidetopprjlenta==1 ? 'РџРѕРєР°Р·Р°С‚СЊ' : 'РЎРєСЂС‹С‚СЊ' ?> РІСЃРµ</a></span>
                     <? } ?>
                 </div>
                 <ul class="b-menu__list"  data-menu="true" data-menu-descriptor="nav">
-                        <li class="b-menu__item <?= ($kind == 5 ? 'b-menu__item_active' : '') ?>"  <?= ($kind == 5 ? 'data-menu-opener="true" data-menu-descriptor="nav"' : '') ?>><a href="/projects/?kind=5" class="b-menu__link"><span class="b-page__desktop">Вся работа</span><span class="b-page__ipad b-page__iphone">Все</span></a></li>
-                        <li class="b-menu__item <?= ($kind <= 1 ? 'b-menu__item_active' : '') ?>" <?= ($kind <= 1 ? 'data-menu-opener="true" data-menu-descriptor="nav"' : '') ?>><a class="b-menu__link" href="/projects/?kind=1">Проекты</a></li>
-                        <li class="b-menu__item <?= ($kind == 4 ? 'b-menu__item_active' : '') ?>" <?= ($kind == 4 ? 'data-menu-opener="true" data-menu-descriptor="nav"' : '') ?>><a class="b-menu__link" href="/projects/?kind=4">Вакансии</a></li>
-                        <li class="b-menu__item <?= (($kind == 2 || $kind == 7) ? 'b-menu__item_active' : '') ?>" <?= (($kind == 2 || $kind == 7)? 'data-menu-opener="true" data-menu-descriptor="nav"' : '') ?>><a class="b-menu__link" href="/konkurs/">Конкурсы</a></li>
+                        <li class="b-menu__item <?= ($kind == 5 ? 'b-menu__item_active' : '') ?>"  <?= ($kind == 5 ? 'data-menu-opener="true" data-menu-descriptor="nav"' : '') ?>><a href="/projects/?kind=5" class="b-menu__link"><span class="b-page__desktop">Р’СЃСЏ СЂР°Р±РѕС‚Р°</span><span class="b-page__ipad b-page__iphone">Р’СЃРµ</span></a></li>
+                        <li class="b-menu__item <?= ($kind <= 1 ? 'b-menu__item_active' : '') ?>" <?= ($kind <= 1 ? 'data-menu-opener="true" data-menu-descriptor="nav"' : '') ?>><a class="b-menu__link" href="/projects/?kind=1">РџСЂРѕРµРєС‚С‹</a></li>
+                        <li class="b-menu__item <?= ($kind == 4 ? 'b-menu__item_active' : '') ?>" <?= ($kind == 4 ? 'data-menu-opener="true" data-menu-descriptor="nav"' : '') ?>><a class="b-menu__link" href="/projects/?kind=4">Р’Р°РєР°РЅСЃРёРё</a></li>
+                        <li class="b-menu__item <?= (($kind == 2 || $kind == 7) ? 'b-menu__item_active' : '') ?>" <?= (($kind == 2 || $kind == 7)? 'data-menu-opener="true" data-menu-descriptor="nav"' : '') ?>><a class="b-menu__link" href="/konkurs/">РљРѕРЅРєСѓСЂСЃС‹</a></li>
                 </ul>
             </div><!-- b-menu_tabs -->
             
     </div><!--b-page__filter-->
     <?
-    // блок ответов на проекты
+    // Р±Р»РѕРє РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚С‹
     if (get_uid(0) && !is_emp() && !is_pro()) {
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/projects_offers_answers.php");
 
@@ -145,7 +145,7 @@ if(!is_emp() && get_uid(false) && $kind != 8 && $filter_show) {
                 include($_SERVER['DOCUMENT_ROOT'] . '/public/offer/tpl.offers-item.php');    
 
             } else { ?>
-            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_center b-layout__txt_padtop_30 b-layout__txt_fontsize_15">Попробуйте изменить критерии поиска</div>
+            <div class="b-layout__txt b-layout__txt_bold b-layout__txt_center b-layout__txt_padtop_30 b-layout__txt_fontsize_15">РџРѕРїСЂРѕР±СѓР№С‚Рµ РёР·РјРµРЅРёС‚СЊ РєСЂРёС‚РµСЂРёРё РїРѕРёСЃРєР°</div>
             <?php } //if?>               
         <?php } else { //if?>
         <div id="projects-list"><?= $prj_content ?></div>
@@ -156,7 +156,7 @@ if(!is_emp() && get_uid(false) && $kind != 8 && $filter_show) {
 				
 
 <?php
-if ( $kind == 8 && $_SESSION['uid'] ) { // залогиненый юзер смотри предложения фрилансеров
+if ( $kind == 8 && $_SESSION['uid'] ) { // Р·Р°Р»РѕРіРёРЅРµРЅС‹Р№ СЋР·РµСЂ СЃРјРѕС‚СЂРё РїСЂРµРґР»РѕР¶РµРЅРёСЏ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ
 ?>
 <script type="text/javascript">
 var complainBusy    = false;
@@ -167,7 +167,7 @@ function complainPopup( offer_id ) {
     complainOfferId = offer_id;
     $('b-radio__input4').set('checked',true);
     $('complain_fmsg').set('value','');
-    $('complain_s_send').set('html','Отправить');
+    $('complain_s_send').set('html','РћС‚РїСЂР°РІРёС‚СЊ');
     $$('.b-popup').setStyle('display', 'block');
 }
 
@@ -191,29 +191,29 @@ function complainSend() {
                 <table class="b-layout_table b-layout__table_width_full" cellpadding="0" cellspacing="0" border="0">
                 <tr class="b-layout__tr">
                     <td class="b-layout__left b-layout__left_width_270">
-                        <h4 class="b-layout__h4">Укажите нарушения</h4>
+                        <h4 class="b-layout__h4">РЈРєР°Р¶РёС‚Рµ РЅР°СЂСѓС€РµРЅРёСЏ</h4>
                         <div class="b-radio b-radio_layout_vertical">
                             <div class="b-radio__item b-radio__item_padbot_5">
                                 <input id="b-radio__input4" class="b-radio__input" name="complain_type" type="radio" value="4" />
-                                <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input4">Контактные данные</label>
+                                <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input4">РљРѕРЅС‚Р°РєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ</label>
                             </div>
                             <div class="b-radio__item b-radio__item_padbot_5">
                                 <input id="b-radio__input5" class="b-radio__input" name="complain_type" type="radio" value="5" />
-                                <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input5">Реклама, ссылки на сторонние ресурсы</label>
+                                <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input5">Р РµРєР»Р°РјР°, СЃСЃС‹Р»РєРё РЅР° СЃС‚РѕСЂРѕРЅРЅРёРµ СЂРµСЃСѓСЂСЃС‹</label>
                             </div>
                             <div class="b-radio__item b-radio__item_padbot_5">
                                 <input id="b-radio__input6" class="b-radio__input" name="complain_type" type="radio" value="6" />
-                                <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input6">Мат, ругань, оскорбления</label>
+                                <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input6">РњР°С‚, СЂСѓРіР°РЅСЊ, РѕСЃРєРѕСЂР±Р»РµРЅРёСЏ</label>
                             </div>
                             <div class="b-radio__item b-radio__item_padbot_5">
                                 <input id="b-radio__input3" class="b-radio__input" name="complain_type" type="radio" value="3" />
-                                <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input3">Другое</label>
+                                <label class="b-radio__label b-radio__label_fontsize_13" for="b-radio__input3">Р”СЂСѓРіРѕРµ</label>
                             </div>
                         </div>
                     </td>
                     <td class="b-layout__right ">
                         <div class="b-form">
-                            <label class="b-form__name b-form__name_fontsize_13 b-form__name_padbot_5">Опишите нарушение (необязательно)</label>
+                            <label class="b-form__name b-form__name_fontsize_13 b-form__name_padbot_5">РћРїРёС€РёС‚Рµ РЅР°СЂСѓС€РµРЅРёРµ (РЅРµРѕР±СЏР·Р°С‚РµР»СЊРЅРѕ)</label>
                             <div class="b-textarea">
                                 <textarea class="b-textarea__textarea b-textarea__textarea__height_140" name="complain_fmsg" id="complain_fmsg" cols="80" rows="5"></textarea>
                             </div>
@@ -227,11 +227,11 @@ function complainSend() {
                     <a onclick="complainSend();" id="complain_a_send" class="b-button b-button_rectangle_transparent" href="javascript:void(0);">
                         <span class="b-button__b1">
                             <span class="b-button__b2 b-button__b2_padlr_5">
-                                <span id="complain_s_send" class="b-button__txt">Отправить</span>
+                                <span id="complain_s_send" class="b-button__txt">РћС‚РїСЂР°РІРёС‚СЊ</span>
                             </span>
                         </span>
                     </a>
-                    <a class="b-buttons__link b-buttons__link_margleft_10 b-buttons__link_dot_039 b-popup__close" href="javascript:void(0);">Отменить</a>
+                    <a class="b-buttons__link b-buttons__link_margleft_10 b-buttons__link_dot_039 b-popup__close" href="javascript:void(0);">РћС‚РјРµРЅРёС‚СЊ</a>
                 </div>
             </div>
             </form>
@@ -246,7 +246,7 @@ function complainSend() {
 <div id="specialis" class="b-layout b-layout_clear_both b-layout_overflow_hidden <? if ( !$_SESSION['uid'] && $page <=1 ) { ?> b-layout_padbot_50 b-layout_top_100<? } else { ?> b-layout_padtop_30<? } ?>">
     <?php $groups_repeat = array(); ?>
     <?php if (isset($profs) && $profs): ?>    
-        <h2 class="b-layout__title">Фрилансеры по специализациям</h2>
+        <h2 class="b-layout__title">Р¤СЂРёР»Р°РЅСЃРµСЂС‹ РїРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏРј</h2>
         <div class="b-layout b-layout_col_4 b-layout_col_2_ipad b-layout_col_1_iphone">
         <?php foreach ($profs as $prof): ?>
             <?php if (!isset($groups_repeat[$prof['grouplink']]) && ($groups_repeat[$prof['grouplink']] = 1)): ?>

@@ -12,10 +12,10 @@
             <td  bgcolor="#ffffff" width="20"></td>
             <td  bgcolor="#ffffff">
                 <font color="#4d4d4d" size="1" face="tahoma,sans-serif">
-                    По всем возникающим вопросам вы можете обращаться в нашу <a target="_blank" style="color:#0f71c8;" href="https://feedback.fl.ru/">службу поддержки</a>.<br/>
+                    РџРѕ РІСЃРµРј РІРѕР·РЅРёРєР°СЋС‰РёРј РІРѕРїСЂРѕСЃР°Рј РІС‹ РјРѕР¶РµС‚Рµ РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РІ РЅР°С€Сѓ <a target="_blank" style="color:#0f71c8;" href="https://feedback.fl.ru/">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.<br/>
                     
-                    Вы получили это письмо, т.к. зарегистрированы на сайте <a style="color:#006ed6" target="_blank" href="<?=$this->host?>">FL.ru</a>.<br/>
-                    Вы можете <a target="_blank" style="color:#0f71c8;" href="<?= $this->host; ?>/unsubscribe/?type=mailer&ukey=%UNSUBSCRIBE_KEY%&utm_source=newsletter4&utm_medium=email&utm_content=&utm_campaign=unsubscribe_news">отписаться от рассылки</a> и больше не получать подобные письма.
+                    Р’С‹ РїРѕР»СѓС‡РёР»Рё СЌС‚Рѕ РїРёСЃСЊРјРѕ, С‚.Рє. Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅС‹ РЅР° СЃР°Р№С‚Рµ <a style="color:#006ed6" target="_blank" href="<?=$this->host?>">FL.ru</a>.<br/>
+                    Р’С‹ РјРѕР¶РµС‚Рµ <a target="_blank" style="color:#0f71c8;" href="<?= $this->host; ?>/unsubscribe/?type=mailer&ukey=%UNSUBSCRIBE_KEY%&utm_source=newsletter4&utm_medium=email&utm_content=&utm_campaign=unsubscribe_news">РѕС‚РїРёСЃР°С‚СЊСЃСЏ РѕС‚ СЂР°СЃСЃС‹Р»РєРё</a> Рё Р±РѕР»СЊС€Рµ РЅРµ РїРѕР»СѓС‡Р°С‚СЊ РїРѕРґРѕР±РЅС‹Рµ РїРёСЃСЊРјР°.
                 </font>
             </td>
             <td  bgcolor="#ffffff" width="20"></td>
@@ -32,7 +32,7 @@
             <td  bgcolor="#ffffff" width="20"></td>
             <td  bgcolor="#ffffff" width="20"></td>
             <td  bgcolor="#ffffff">
-                <font color="#4d4d4d" size="1" face="tahoma,sans-serif">Приятной работы!<br>Команда <a target="_blank" style="color:#0f71c8;" href="<?= $this->host; ?>">Free-lance.ru</a> </font>
+                <font color="#4d4d4d" size="1" face="tahoma,sans-serif">РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹!<br>РљРѕРјР°РЅРґР° <a target="_blank" style="color:#0f71c8;" href="<?= $this->host; ?>">Free-lance.ru</a> </font>
             </td>
             <td  bgcolor="#ffffff" width="20"></td>
             <td  bgcolor="#ffffff" width="20"></td>

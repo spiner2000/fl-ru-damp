@@ -9,45 +9,45 @@ require_once '../classes/smtp.php';
 
 
 /**
- * Логин пользователя от кого осуществляется рассылка
+ * Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РѕС‚ РєРѕРіРѕ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ СЂР°СЃСЃС‹Р»РєР°
  * 
  */
 $sender = 'admin';
 
-// Всем пользователям, активированным (active = true), незабаненным (is_banned = B'0'), с включенными рассылками (substring(subscr from 8 for 1)::integer = 1)
+// Р’СЃРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј, Р°РєС‚РёРІРёСЂРѕРІР°РЅРЅС‹Рј (active = true), РЅРµР·Р°Р±Р°РЅРµРЅРЅС‹Рј (is_banned = B'0'), СЃ РІРєР»СЋС‡РµРЅРЅС‹РјРё СЂР°СЃСЃС‹Р»РєР°РјРё (substring(subscr from 8 for 1)::integer = 1)
 $sql = "SELECT uid, email, login, uname, usurname, subscr FROM users WHERE substring(subscr from 8 for 1)::integer = 1 AND is_banned = B'0' AND active = true"; 
 
 $pHost = str_replace("http://", "", $GLOBALS['host']);
 if ( defined('HTTP_PREFIX') ) {
-    $pHttp = str_replace("://", "", HTTP_PREFIX); // Введено с учетом того планируется включение HTTPS на серверах (для писем в ЛС)
+    $pHttp = str_replace("://", "", HTTP_PREFIX); // Р’РІРµРґРµРЅРѕ СЃ СѓС‡РµС‚РѕРј С‚РѕРіРѕ РїР»Р°РЅРёСЂСѓРµС‚СЃСЏ РІРєР»СЋС‡РµРЅРёРµ HTTPS РЅР° СЃРµСЂРІРµСЂР°С… (РґР»СЏ РїРёСЃРµРј РІ Р›РЎ)
 } else {
     $pHttp = 'http';
 }
 $eHost = $GLOBALS['host'];
 
 
-$eSubject = "Обновленный дизайн и дополнительные сервисы Free-lance.ru";
+$eSubject = "РћР±РЅРѕРІР»РµРЅРЅС‹Р№ РґРёР·Р°Р№РЅ Рё РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРµСЂРІРёСЃС‹ Free-lance.ru";
 
-$eMessage = "<p>Здравствуйте!</p>
+$eMessage = "<p>Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!</p>
 
 <p>
-Спешим рассказать о том, что мы обновили дизайн главной страницы сайта и верхнего личного поля пользователя. Кроме того, у нас появился обучающий мастер, который поможет новым пользователям зарегистрироваться и проведет небольшую «экскурсию» по основным сервисам сайта. Более подробно обо всех обновлениях читайте в «<a href='{$pHttp}://www.free-lance.ru/blogs/free-lanceru/704501/obnovleniya-na-sayte.html?utm_source=newsletter4&utm_medium=rassylka&utm_campaign=new_desigh' target='_blank'>Блогах</a>».
+РЎРїРµС€РёРј СЂР°СЃСЃРєР°Р·Р°С‚СЊ Рѕ С‚РѕРј, С‡С‚Рѕ РјС‹ РѕР±РЅРѕРІРёР»Рё РґРёР·Р°Р№РЅ РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹ СЃР°Р№С‚Р° Рё РІРµСЂС…РЅРµРіРѕ Р»РёС‡РЅРѕРіРѕ РїРѕР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ. РљСЂРѕРјРµ С‚РѕРіРѕ, Сѓ РЅР°СЃ РїРѕСЏРІРёР»СЃСЏ РѕР±СѓС‡Р°СЋС‰РёР№ РјР°СЃС‚РµСЂ, РєРѕС‚РѕСЂС‹Р№ РїРѕРјРѕР¶РµС‚ РЅРѕРІС‹Рј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ Рё РїСЂРѕРІРµРґРµС‚ РЅРµР±РѕР»СЊС€СѓСЋ В«СЌРєСЃРєСѓСЂСЃРёСЋВ» РїРѕ РѕСЃРЅРѕРІРЅС‹Рј СЃРµСЂРІРёСЃР°Рј СЃР°Р№С‚Р°. Р‘РѕР»РµРµ РїРѕРґСЂРѕР±РЅРѕ РѕР±Рѕ РІСЃРµС… РѕР±РЅРѕРІР»РµРЅРёСЏС… С‡РёС‚Р°Р№С‚Рµ РІ В«<a href='{$pHttp}://www.free-lance.ru/blogs/free-lanceru/704501/obnovleniya-na-sayte.html?utm_source=newsletter4&utm_medium=rassylka&utm_campaign=new_desigh' target='_blank'>Р‘Р»РѕРіР°С…</a>В».
 </p>
 
 <p>
-<a href='{$eHost}/?utm_source=newsletter4&utm_medium=rassylka&utm_campaign=new_desig' target='_blank'>Перейти на сайт и все увидеть своими глазами!</a>
+<a href='{$eHost}/?utm_source=newsletter4&utm_medium=rassylka&utm_campaign=new_desig' target='_blank'>РџРµСЂРµР№С‚Рё РЅР° СЃР°Р№С‚ Рё РІСЃРµ СѓРІРёРґРµС‚СЊ СЃРІРѕРёРјРё РіР»Р°Р·Р°РјРё!</a>
 </p>
 
 <p>
-По всем возникающим вопросам вы можете обращаться в нашу <a href='{$eHost}/help/?all&utm_source=newsletter4&utm_medium=rassylka&utm_campaign=new_design' target='_blank'>службу поддержки</a>.<br/>
-Вы можете отключить уведомления на <a href='{$eHost}/users/%USER_LOGIN%/setup/mailer/?utm_source=newsletter4&utm_medium=rassylka&utm_campaign=new_design' target='_blank'>странице «Уведомления/Рассылка»</a> вашего аккаунта.
+РџРѕ РІСЃРµРј РІРѕР·РЅРёРєР°СЋС‰РёРј РІРѕРїСЂРѕСЃР°Рј РІС‹ РјРѕР¶РµС‚Рµ РѕР±СЂР°С‰Р°С‚СЊСЃСЏ РІ РЅР°С€Сѓ <a href='{$eHost}/help/?all&utm_source=newsletter4&utm_medium=rassylka&utm_campaign=new_design' target='_blank'>СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.<br/>
+Р’С‹ РјРѕР¶РµС‚Рµ РѕС‚РєР»СЋС‡РёС‚СЊ СѓРІРµРґРѕРјР»РµРЅРёСЏ РЅР° <a href='{$eHost}/users/%USER_LOGIN%/setup/mailer/?utm_source=newsletter4&utm_medium=rassylka&utm_campaign=new_design' target='_blank'>СЃС‚СЂР°РЅРёС†Рµ В«РЈРІРµРґРѕРјР»РµРЅРёСЏ/Р Р°СЃСЃС‹Р»РєР°В»</a> РІР°С€РµРіРѕ Р°РєРєР°СѓРЅС‚Р°.
 </p>
 
-Приятной работы!<br/>
-Команда <a href='{$eHost}/?utm_source=newsletter4&utm_medium=rassylka&utm_campaign=new_design' target='_blank'>Free-lance.ru</a>";
+РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹!<br/>
+РљРѕРјР°РЅРґР° <a href='{$eHost}/?utm_source=newsletter4&utm_medium=rassylka&utm_campaign=new_design' target='_blank'>Free-lance.ru</a>";
 
 // ----------------------------------------------------------------------------------------------------------------
-// -- Рассылка ----------------------------------------------------------------------------------------------------
+// -- Р Р°СЃСЃС‹Р»РєР° ----------------------------------------------------------------------------------------------------
 // ----------------------------------------------------------------------------------------------------------------
 $DB = new DB('plproxy');
 $master = new DB('master');

@@ -1,30 +1,30 @@
-<h1>Платные услуги</h1>
+<h1>РџР»Р°С‚РЅС‹Рµ СѓСЃР»СѓРіРё</h1>
 <table width="100%" border="0" cellspacing="0" cellpadding="25">
 <tr valign="top">
 	<td height="400" valign="top" bgcolor="#FFFFFF" class="box2">
-		<div align="center"><h1>Поднять на первое место<br>
+		<div align="center"><h1>РџРѕРґРЅСЏС‚СЊ РЅР° РїРµСЂРІРѕРµ РјРµСЃС‚Рѕ<br>
 		$3<sup>*</sup><br>
-		только для аккаунта &laquo;Профессионал&raquo;</h1></div><br>
+		С‚РѕР»СЊРєРѕ РґР»СЏ Р°РєРєР°СѓРЅС‚Р° &laquo;РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»&raquo;</h1></div><br>
 		<img src="/images/pro_prev.jpg" alt="" width="285" height="111" border="0"><br><br>
-		<a href="#" class="blue">Каталог фрилансеров</a><br>
-		<input type="checkbox" name="category" id="cat1" value="0"> <LABEL for="cat1"><strong>Поднять анкету на первое место в этом разделе</strong></LABEL><br>
-		Стоимость услуги &ndash; $3<br>
+		<a href="#" class="blue">РљР°С‚Р°Р»РѕРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</a><br>
+		<input type="checkbox" name="category" id="cat1" value="0"> <LABEL for="cat1"><strong>РџРѕРґРЅСЏС‚СЊ Р°РЅРєРµС‚Сѓ РЅР° РїРµСЂРІРѕРµ РјРµСЃС‚Рѕ РІ СЌС‚РѕРј СЂР°Р·РґРµР»Рµ</strong></LABEL><br>
+		РЎС‚РѕРёРјРѕСЃС‚СЊ СѓСЃР»СѓРіРё &ndash; $3<br>
 		<img src="/images/dot_grey2.gif" alt="" width="100%" height="1" vspace="20" border="0"><br>
-		<a href="#" class="blue">Каталог фрилансеров</a><br>
-		<input type="checkbox" name="category" id="cat2" value="0"> <LABEL for="cat2"><strong>Макеты первых страниц</strong></LABEL><br>
-		Стоимость услуги &ndash; $3<br>
+		<a href="#" class="blue">РљР°С‚Р°Р»РѕРі С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</a><br>
+		<input type="checkbox" name="category" id="cat2" value="0"> <LABEL for="cat2"><strong>РњР°РєРµС‚С‹ РїРµСЂРІС‹С… СЃС‚СЂР°РЅРёС†</strong></LABEL><br>
+		РЎС‚РѕРёРјРѕСЃС‚СЊ СѓСЃР»СѓРіРё &ndash; $3<br>
 		<br>
 		<br>
-		Для того, чтобы поднять аккаунт на первое место в других разделах, Вам необходимо <a href="/payed/" class="blue">разместить его в зоне "PRO"</a><br>
-		<div style="height: 25px; width: 297px; background-image: url(/images/grad_orange.gif); padding-top: 6px; padding-left: 15px; margin-top: 30px;"><strong>Итого:</strong></div>
+		Р”Р»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ РїРѕРґРЅСЏС‚СЊ Р°РєРєР°СѓРЅС‚ РЅР° РїРµСЂРІРѕРµ РјРµСЃС‚Рѕ РІ РґСЂСѓРіРёС… СЂР°Р·РґРµР»Р°С…, Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ <a href="/payed/" class="blue">СЂР°Р·РјРµСЃС‚РёС‚СЊ РµРіРѕ РІ Р·РѕРЅРµ "PRO"</a><br>
+		<div style="height: 25px; width: 297px; background-image: url(/images/grad_orange.gif); padding-top: 6px; padding-left: 15px; margin-top: 30px;"><strong>РС‚РѕРіРѕ:</strong></div>
 		<img src="/images/btn_up.jpg" alt="" width="229" height="86" vspace="30" border="0"><br>
 		<table cellspacing="4" cellpadding="0" border="0">
 		<tr valign="top">
 			<td>*</td>
-			<td>Каждый пользоваетель имеет возможность поднять свой аккаунт на первое место в конкретном разделе каталога. При оплате услиги
-		минимальный гарантированный срок размещения аккаунта на первом месте &ndash; 1 час с момента зачисления платежа на счет <br>
-		Free-lance.ru. По прошествию 1 часа пользоваетль может быть смещен с первого места любым другим оплатившим данную услугу<br>
-		пользователем.</td>
+			<td>РљР°Р¶РґС‹Р№ РїРѕР»СЊР·РѕРІР°РµС‚РµР»СЊ РёРјРµРµС‚ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРґРЅСЏС‚СЊ СЃРІРѕР№ Р°РєРєР°СѓРЅС‚ РЅР° РїРµСЂРІРѕРµ РјРµСЃС‚Рѕ РІ РєРѕРЅРєСЂРµС‚РЅРѕРј СЂР°Р·РґРµР»Рµ РєР°С‚Р°Р»РѕРіР°. РџСЂРё РѕРїР»Р°С‚Рµ СѓСЃР»РёРіРё
+		РјРёРЅРёРјР°Р»СЊРЅС‹Р№ РіР°СЂР°РЅС‚РёСЂРѕРІР°РЅРЅС‹Р№ СЃСЂРѕРє СЂР°Р·РјРµС‰РµРЅРёСЏ Р°РєРєР°СѓРЅС‚Р° РЅР° РїРµСЂРІРѕРј РјРµСЃС‚Рµ &ndash; 1 С‡Р°СЃ СЃ РјРѕРјРµРЅС‚Р° Р·Р°С‡РёСЃР»РµРЅРёСЏ РїР»Р°С‚РµР¶Р° РЅР° СЃС‡РµС‚ <br>
+		Free-lance.ru. РџРѕ РїСЂРѕС€РµСЃС‚РІРёСЋ 1 С‡Р°СЃР° РїРѕР»СЊР·РѕРІР°РµС‚Р»СЊ РјРѕР¶РµС‚ Р±С‹С‚СЊ СЃРјРµС‰РµРЅ СЃ РїРµСЂРІРѕРіРѕ РјРµСЃС‚Р° Р»СЋР±С‹Рј РґСЂСѓРіРёРј РѕРїР»Р°С‚РёРІС€РёРј РґР°РЅРЅСѓСЋ СѓСЃР»СѓРіСѓ<br>
+		РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј.</td>
 		</tr>
 		</table>
 	</td>

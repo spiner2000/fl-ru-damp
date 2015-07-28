@@ -46,8 +46,8 @@ if (!$xajax) {
     $xajax->register(XAJAX_FUNCTION, "NewPromoCommune");
     $xajax->register(XAJAX_FUNCTION, "BanMemberNewComment");
     $xajax->register(XAJAX_FUNCTION, "BanNewMember");
-	// Íàäî âûâåñòè âñå â îòäåëüíûé ñïåö. ìîäóëü.
-	// Ýòî ôóíêöèè, èñïîëçóåìûå â /user/
+	// ÐÐ°Ð´Ð¾ Ð²Ñ‹Ð²ÐµÑÑ‚Ð¸ Ð²ÑÐµ Ð² Ð¾Ñ‚Ð´ÐµÐ»ÑŒÐ½Ñ‹Ð¹ ÑÐ¿ÐµÑ†. Ð¼Ð¾Ð´ÑƒÐ»ÑŒ.
+	// Ð­Ñ‚Ð¾ Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸, Ð¸ÑÐ¿Ð¾Ð»Ð·ÑƒÐµÐ¼Ñ‹Ðµ Ð² /user/
 	$xajax->setCharEncoding("windows-1251");
 	$xajax->configure('scriptLoadTimeout', XAJAX_LOAD_TIMEOUT);
 	$xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("GetCitysByCid", $_SERVER['DOCUMENT_ROOT'] . "/xajax/countrys.server.php"));
@@ -83,12 +83,12 @@ if (!$xajax) {
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("GetMorePrj", $_SERVER['DOCUMENT_ROOT'] . "/xajax/rating.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("GetMoreSBR", $_SERVER['DOCUMENT_ROOT'] . "/xajax/rating.server.php"));
     
-    // ×åðíîâèêè áëîãîâ
+    // Ð§ÐµÑ€Ð½Ð¾Ð²Ð¸ÐºÐ¸ Ð±Ð»Ð¾Ð³Ð¾Ð²
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("SaveDraftBlog", $_SERVER['DOCUMENT_ROOT'] . "/xajax/drafts.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("CheckDraftsBlog", $_SERVER['DOCUMENT_ROOT'] . "/xajax/drafts.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("FillDraftForm", $_SERVER['DOCUMENT_ROOT'] . "/xajax/drafts.server.php"));
 
-    // ×åðíîâèêè ñîîáùåñòâ
+    // Ð§ÐµÑ€Ð½Ð¾Ð²Ð¸ÐºÐ¸ ÑÐ¾Ð¾Ð±Ñ‰ÐµÑÑ‚Ð²
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("SaveDraftCommune", $_SERVER['DOCUMENT_ROOT'] . "/xajax/drafts.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("CheckDraftsCommune", $_SERVER['DOCUMENT_ROOT'] . "/xajax/drafts.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("PostDraft", $_SERVER['DOCUMENT_ROOT'] . "/xajax/drafts.server.php"));
@@ -117,7 +117,7 @@ if (!$xajax) {
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("getContactsInfo", $_SERVER['DOCUMENT_ROOT'] . "/xajax/users.server.php"));
     
     
-    //Àÿêñ îáðàáîò÷èêè ïîïàïà ïîêóïêè ÏÐÎ
+    //ÐÑÐºÑ Ð¾Ð±Ñ€Ð°Ð±Ð¾Ñ‚Ñ‡Ð¸ÐºÐ¸ Ð¿Ð¾Ð¿Ð°Ð¿Ð° Ð¿Ð¾ÐºÑƒÐ¿ÐºÐ¸ ÐŸÐ Ðž
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROPayAccount", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROGetYandexKassaLink", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROGetPlatipotomLink", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php"));

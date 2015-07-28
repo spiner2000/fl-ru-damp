@@ -6,7 +6,7 @@ $xajax->printJavascript('/xajax/');
 CKEDITOR.config.customConfig = '/scripts/ckedit/config_simple.js';
 </script>
 <a name="top"></a> 
-<h1>Администрирование (<?= $seo->subdomain['name_subdomain']?>)</h1>
+<h1>РђРґРјРёРЅРёСЃС‚СЂРёСЂРѕРІР°РЅРёРµ (<?= $seo->subdomain['name_subdomain']?>)</h1>
 <table width="100%" cellspacing="0" cellpadding="0" border="0" style="margin-top: 10px;"> 
   <tbody>
     <tr> 
@@ -18,9 +18,9 @@ CKEDITOR.config.customConfig = '/scripts/ckedit/config_simple.js';
           </div><!--seo-right-->
           <div class="seo-left">
           <form id="form-filter" method="get" action="">
-            <div >Направление: 
+            <div >РќР°РїСЂР°РІР»РµРЅРёРµ: 
                 <select name="direction" onchange="$('form-filter').submit()">
-                    <option value="-1">-- не указано</option>
+                    <option value="-1">-- РЅРµ СѓРєР°Р·Р°РЅРѕ</option>
                     <?php if($directions) foreach($directions as $row) { ?>
                     <option value="<?= $row['name_section_link']?>" <?= ($direct_id == $row['id'])?'selected="selected"':''?>><?= $row['dir_name']?></option>
                     <?php } //foreach?>
@@ -28,13 +28,13 @@ CKEDITOR.config.customConfig = '/scripts/ckedit/config_simple.js';
                     <div class="seo-open" style="display:inline-block; cursor:pointer; width:15px;" onclick="xajax_loadDirectForm();">&nbsp;</div>
                     <? if ($direct_id && $direct_id != -1) { ?>
                     <div class="seo-edit" style="display:inline-block; cursor:pointer; width:15px;" onclick="xajax_loadDirectForm(<?= $direct_id ?>);">&nbsp;</div>
-                    <div class="seo-del" style="display:inline-block; cursor:pointer; width:15px;" onclick="if (confirm('Уверены?')) xajax_deleteDirection(<?= $direct_id ?>);">&nbsp;</div>
+                    <div class="seo-del" style="display:inline-block; cursor:pointer; width:15px;" onclick="if (confirm('РЈРІРµСЂРµРЅС‹?')) xajax_deleteDirection(<?= $direct_id ?>);">&nbsp;</div>
                     <? } ?>
             </div><br/>
-            <div >Перейти в регион: 
+            <div >РџРµСЂРµР№С‚Рё РІ СЂРµРіРёРѕРЅ: 
 <!--                <select name="subdomain" onchange="location.href='/catalog/admin/?subdomain=' + this.value;">-->
                 <select id="f_region" name="subdomain" onchange="if($('f_region').get('value')!='') { $('form-filter').submit(); }">
-                  <option value="all" <?=(($seo->subdomain['id'] == -1)?'selected="selected"':'')?>>Все</option>
+                  <option value="all" <?=(($seo->subdomain['id'] == -1)?'selected="selected"':'')?>>Р’СЃРµ</option>
                   <?php
                   foreach($countries as $country) {
                     $country_options = "<option value=''>{$country['country_name']}</option>";
@@ -49,7 +49,7 @@ CKEDITOR.config.customConfig = '/scripts/ckedit/config_simple.js';
                 </select>
             </div><br/>
             <? if ($direct_id != -1) { ?>
-            <span class="add-new"><a href="javascript:void(0)" onclick="xajax_loadForm(false, <?= $direct_id ?>);"><i></i>Добавить новый раздел</a></span>
+            <span class="add-new"><a href="javascript:void(0)" onclick="xajax_loadForm(false, <?= $direct_id ?>);"><i></i>Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ СЂР°Р·РґРµР»</a></span>
             <? } ?>
             <ul id="section_content">
               <?php if($sections) foreach($sections as $k=>$section) { ?>

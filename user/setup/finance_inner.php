@@ -12,7 +12,7 @@ $has_phone = $reqvs[sbr::FT_PHYS]['mob_phone'] != '';
 <div class="b-layout b-layout_pad_19">
     <div class="b-fon">
         <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_bg_ffebbf">
-            <div class="b-layout__txt b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_oattent b-icon_margleft_-20"></span>Чтобы войти в &laquo;Финансы&raquo;, необходимо ввести 4 цифры из СМС, отправленного на ваш телефон:</div>
+            <div class="b-layout__txt b-layout__txt_padbot_10"><span class="b-icon b-icon_sbr_oattent b-icon_margleft_-20"></span>Р§С‚РѕР±С‹ РІРѕР№С‚Рё РІ &laquo;Р¤РёРЅР°РЅСЃС‹&raquo;, РЅРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё 4 С†РёС„СЂС‹ РёР· РЎРњРЎ, РѕС‚РїСЂР°РІР»РµРЅРЅРѕРіРѕ РЅР° РІР°С€ С‚РµР»РµС„РѕРЅ:</div>
             <div class="b-combo b-combo_inline-block b-combo_valign_mid">
                 <div class="b-combo__input b-combo__input_width_60 b-combo__input_height_31">
                     <input class="b-combo__input-text b-combo__input-text_center b-combo__input-text_fontsize_22 b-combo__input-text_bold" 
@@ -21,11 +21,11 @@ $has_phone = $reqvs[sbr::FT_PHYS]['mob_phone'] != '';
                            onfocus="$('auth_sms_error').addClass('b-layout__txt_hide'); $(this).getParent().removeClass('b-combo__input_error')"/>
                 </div>
             </div>
-            <div class="b-layout__txt b-layout__txt_hide b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padleft_10 b-layout__txt_color_c10600" id="auth_sms_error">В СМС были другие 4 цифры.</div>
+            <div class="b-layout__txt b-layout__txt_hide b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padleft_10 b-layout__txt_color_c10600" id="auth_sms_error">Р’ РЎРњРЎ Р±С‹Р»Рё РґСЂСѓРіРёРµ 4 С†РёС„СЂС‹.</div>
             <div class="b-buttons b-buttons_padtb_10 ">
-                <a href="javascript:void(0)" onclick="xajax_authCode($('auth_sms_code').get('value'));" class="b-button b-button_flat b-button_flat_green">Войти</a>&#160;
-                <span class="b-buttons__txt">или</span>
-                <a href="javascript:void(0)" class="b-buttons__link b-buttons__link_dot_0f71c8" onclick="xajax_resendAuthCode();">выслать СМС еще раз</a>
+                <a href="javascript:void(0)" onclick="xajax_authCode($('auth_sms_code').get('value'));" class="b-button b-button_flat b-button_flat_green">Р’РѕР№С‚Рё</a>&#160;
+                <span class="b-buttons__txt">РёР»Рё</span>
+                <a href="javascript:void(0)" class="b-buttons__link b-buttons__link_dot_0f71c8" onclick="xajax_resendAuthCode();">РІС‹СЃР»Р°С‚СЊ РЎРњРЎ РµС‰Рµ СЂР°Р·</a>
             </div>
         </div>
     </div>
@@ -43,7 +43,7 @@ var FMAX=<?=account::MAX_FILE_COUNT?>;
 var FCNT=<?=(account::MAX_FILE_COUNT - $a_count)?>;
 function delFinAttach(id,login,noserver,err) {
     if(!noserver) {
-        if(window.confirm('Вы действительно хотите удалить файл?'))
+        if(window.confirm('Р’С‹ РґРµР№СЃС‚РІРёС‚РµР»СЊРЅРѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ С„Р°Р№Р»?'))
             xajax_delAttach(id,login);
         return;
     }
@@ -87,7 +87,7 @@ function checkexts() {
         <? if ($finance_success) { ?>
         <div class="b-fon b-fon_width_full b-fon_padbot_10">
             <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-                <span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Изменения внесены
+                <span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>РР·РјРµРЅРµРЅРёСЏ РІРЅРµСЃРµРЅС‹
             </div>
         </div>
         <? } ?>
@@ -96,27 +96,27 @@ function checkexts() {
         <div class="b-fon b-fon_width_full b-fon_padbot_10 b-fon_margbot_20">
             <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb">
                 <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span>
-                Финансовая информация отправлена на модерацию. 
-                Модерация осуществляется с 9:00 до 01:00 мск, 
-                среднее время обработки данных составляет 15 минут.
+                Р¤РёРЅР°РЅСЃРѕРІР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ РѕС‚РїСЂР°РІР»РµРЅР° РЅР° РјРѕРґРµСЂР°С†РёСЋ. 
+                РњРѕРґРµСЂР°С†РёСЏ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ СЃ 9:00 РґРѕ 01:00 РјСЃРє, 
+                СЃСЂРµРґРЅРµРµ РІСЂРµРјСЏ РѕР±СЂР°Р±РѕС‚РєРё РґР°РЅРЅС‹С… СЃРѕСЃС‚Р°РІР»СЏРµС‚ 15 РјРёРЅСѓС‚.
             </div>
         </div>        
         <?php elseif ($block_finance_edit): ?>
         <div class="b-fon b-fon_width_full b-fon_padbot_10 b-fon_margbot_20">
             <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb">
                 <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span>
-                Обратите внимание: вы не можете самостоятельно менять финансовые данные, 
-                уже указанные в ваших платежах по Безопасным сделкам. 
-                Для изменения данных, пожалуйста, обратитесь в <a href="https://feedback.fl.ru/">Службу поддержки</a>.
+                РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ: РІС‹ РЅРµ РјРѕР¶РµС‚Рµ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ РјРµРЅСЏС‚СЊ С„РёРЅР°РЅСЃРѕРІС‹Рµ РґР°РЅРЅС‹Рµ, 
+                СѓР¶Рµ СѓРєР°Р·Р°РЅРЅС‹Рµ РІ РІР°С€РёС… РїР»Р°С‚РµР¶Р°С… РїРѕ Р‘РµР·РѕРїР°СЃРЅС‹Рј СЃРґРµР»РєР°Рј. 
+                Р”Р»СЏ РёР·РјРµРЅРµРЅРёСЏ РґР°РЅРЅС‹С…, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕР±СЂР°С‚РёС‚РµСЃСЊ РІ <a href="https://feedback.fl.ru/">РЎР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a>.
             </div>
         </div>
         <?php elseif($reqvs['validate_status'] == -1 && !$is_adm): ?>
         <div class="b-fon b-fon_width_full b-fon_padbot_10 b-fon_margbot_20">
             <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb">
                 <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span>
-                Обратите внимание: на странице Финансы указаны некорректные данные: 
+                РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ: РЅР° СЃС‚СЂР°РЅРёС†Рµ Р¤РёРЅР°РЅСЃС‹ СѓРєР°Р·Р°РЅС‹ РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ: 
                 <?=sbr_meta::getReqvBlockedReason($reqvs['user_id'])?>. 
-                Пожалуйста, укажите корректные данные.
+                РџРѕР¶Р°Р»СѓР№СЃС‚Р°, СѓРєР°Р¶РёС‚Рµ РєРѕСЂСЂРµРєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ.
             </div>
         </div>
         <?php endif; ?>
@@ -129,12 +129,12 @@ function checkexts() {
                         <span class="b-icon b-icon_absolute b-icon_left_10 b-icon_sbr_oattent b-icon_pad_null"></span>
                         
                         <strong>
-                            На телефонный номер <?=$reqvs[$form_type]['phone']?> 
-                            отправлено смс-сообщение с кодом подтверждения.
+                            РќР° С‚РµР»РµС„РѕРЅРЅС‹Р№ РЅРѕРјРµСЂ <?=$reqvs[$form_type]['phone']?> 
+                            РѕС‚РїСЂР°РІР»РµРЅРѕ СЃРјСЃ-СЃРѕРѕР±С‰РµРЅРёРµ СЃ РєРѕРґРѕРј РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ.
                         </strong> <br/> 
 
                         <div class="b-layout__txt b-layout__txt_padtop_20">
-                            <div class="b-layout__txt b-layout__txt_inline-block">Введите код:</div>
+                            <div class="b-layout__txt b-layout__txt_inline-block">Р’РІРµРґРёС‚Рµ РєРѕРґ:</div>
                             <div class="b-combo b-combo_inline-block b-combo_valign_mid">
                                 <div class="b-combo__input b-combo__input_width_45">
                                     <input value="<?php if(isset($code_debug)): echo $code_debug; endif; ?>" 
@@ -148,11 +148,11 @@ function checkexts() {
                             <div class="b-buttons b-buttons_padtop_20">
                                 <a href="javascript:void(0)" 
                                    onclick="xajax_checkAcceptCode($('sms_accept_code').get('value'));" 
-                                   class="b-button b-button_flat b-button_flat_green">Подтвердить</a>&#160;
-                                <span class="b-buttons__txt">или</span>
+                                   class="b-button b-button_flat b-button_flat_green">РџРѕРґС‚РІРµСЂРґРёС‚СЊ</a>&#160;
+                                <span class="b-buttons__txt">РёР»Рё</span>
                                 <a href="javascript:void(0)" 
                                    class="b-buttons__link b-buttons__link_dot_0f71c8" 
-                                   onclick="xajax_resendAcceptCode();">Получить код повторно</a>
+                                   onclick="xajax_resendAcceptCode();">РџРѕР»СѓС‡РёС‚СЊ РєРѕРґ РїРѕРІС‚РѕСЂРЅРѕ</a>
                             </div>
                         </div>
                 </div>
@@ -168,7 +168,7 @@ function checkexts() {
                 'theme' => '',
                 'group' => array(1, 2),
                 'subdescr' => array(
-                    1 => 'Иванов Иван Иванович',
+                    1 => 'РРІР°РЅРѕРІ РРІР°РЅ РРІР°РЅРѕРІРёС‡',
                     2 => '01.01.1990'
                 )
             )); 
@@ -211,7 +211,7 @@ function checkexts() {
         <table class="b-layout__table b-layout__table_width_full">
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_width_200 b-layout__td_padbot_15 b-layout__td_width_full_iphone b-layout__td_pad_null_ipad">
-                    <div class="b-layout__txt ">Резидентство</div>
+                    <div class="b-layout__txt ">Р РµР·РёРґРµРЅС‚СЃС‚РІРѕ</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_15 b-layout__td_padright_10 b-layout__td_width_full_iphone b-layout__td_pad_null_ipad">
                     <div class="b-layout__txt b-layout__txt_italic">
@@ -223,14 +223,14 @@ function checkexts() {
         <table class="b-layout__table b-layout__table_width_full">
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_width_200 b-layout__td_padbot_15 b-layout__td_width_full_iphone b-layout__td_pad_null_ipad">
-                    <div class="b-layout__txt ">Юридический статус</div>
+                    <div class="b-layout__txt ">Р®СЂРёРґРёС‡РµСЃРєРёР№ СЃС‚Р°С‚СѓСЃ</div>
                 </td>
                 <td class="b-layout__td b-layout__td_padbot_15 b-layout__td_padright_10 b-layout__td_width_full_iphone b-layout__td_pad_null_ipad">
                     <div class="b-layout__txt b-layout__txt_italic">
                         <?php if($form_type == sbr::FT_PHYS): ?>
-                        физическое лицо
+                        С„РёР·РёС‡РµСЃРєРѕРµ Р»РёС†Рѕ
                         <?php else: ?>
-                        ИП или юридическое лицо
+                        РРџ РёР»Рё СЋСЂРёРґРёС‡РµСЃРєРѕРµ Р»РёС†Рѕ
                         <?php endif; ?>
                     </div>
                 </td>
@@ -240,13 +240,13 @@ function checkexts() {
         <table class="b-layout__table b-layout__table_margbot_20">
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_width_200 b-layout__td_padbot_15 b-layout__td_width_full_iphone b-layout__td_pad_null_ipad">
-                    <div class="b-layout__txt ">Резидентство</div>
+                    <div class="b-layout__txt ">Р РµР·РёРґРµРЅС‚СЃС‚РІРѕ</div>
                 </td>
                 <td class="b-layout__td b-layout__td_width_240 b-layout__td_padbot_15 b-layout__td_padright_10 b-layout__td_width_full_iphone b-layout__td_pad_null_ipad">
                     <div class="b-radio b-radio_layout_horizontal">
                         <div class="b-radio__item">
                             <input id="_rt2" class="b-radio__input" name="rez_type" type="radio" value="<?= sbr::RT_RU ?>"<?=$rez_type!=sbr::RT_UABYKZ?' checked="checked"':'' ?> onclick="finance.switchReqvRT(<?= sbr::RT_RU ?>);" />
-                            <label class="b-radio__label b-radio__label_fontsize_13" for="_rt2">резидент Российской Федерации</label>
+                            <label class="b-radio__label b-radio__label_fontsize_13" for="_rt2">СЂРµР·РёРґРµРЅС‚ Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё</label>
                         </div>
                     </div>
                 </td>
@@ -254,7 +254,7 @@ function checkexts() {
                     <div class="b-radio b-radio_layout_horizontal">
                         <div class="b-radio__item">
                             <input id="_rt3" class="b-radio__input" name="rez_type" type="radio" value="<?= sbr::RT_UABYKZ ?>"<?=$rez_type==sbr::RT_UABYKZ?' checked="checked"':'' ?> onclick="finance.switchReqvRT(<?= sbr::RT_UABYKZ ?>);" />
-                            <label class="b-radio__label b-radio__label_fontsize_13" for="_rt3">нерезидент Российской Федерации</label>
+                            <label class="b-radio__label b-radio__label_fontsize_13" for="_rt3">РЅРµСЂРµР·РёРґРµРЅС‚ Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё</label>
                         </div>
                     </div>
                 </td>
@@ -265,7 +265,7 @@ function checkexts() {
                     <div class="b-radio b-radio_layout_horizontal">
                         <div class="b-radio__item">
                             <input id="_rt4" class="b-radio__input" name="rez_type" type="radio" value="<?= sbr::RT_REFUGEE ?>"<?=$rez_type==sbr::RT_REFUGEE?' checked="checked"':'' ?> onclick="finance.switchReqvRT(<?= sbr::RT_REFUGEE ?>);" />
-                            <label class="b-radio__label b-radio__label_fontsize_13" for="_rt4">беженец</label>
+                            <label class="b-radio__label b-radio__label_fontsize_13" for="_rt4">Р±РµР¶РµРЅРµС†</label>
                         </div>
                     </div>
                 </td>                
@@ -273,7 +273,7 @@ function checkexts() {
                     <div class="b-radio b-radio_layout_horizontal">
                         <div class="b-radio__item">
                             <input id="_rt5" class="b-radio__input" name="rez_type" type="radio" value="<?= sbr::RT_RESIDENCE ?>"<?=$rez_type==sbr::RT_RESIDENCE?' checked="checked"':'' ?> onclick="finance.switchReqvRT(<?= sbr::RT_RESIDENCE ?>);" />
-                            <label class="b-radio__label b-radio__label_fontsize_13" for="_rt5">вид на жительство в РФ</label>
+                            <label class="b-radio__label b-radio__label_fontsize_13" for="_rt5">РІРёРґ РЅР° Р¶РёС‚РµР»СЊСЃС‚РІРѕ РІ Р Р¤</label>
                         </div>
                     </div>
                 </td>
@@ -282,13 +282,13 @@ function checkexts() {
         <table class="b-layout__table b-layout__table_width_full">
             <tr class="b-layout__tr">
                 <td class="b-layout__td b-layout__td_width_200 b-layout__td_padbot_15 b-layout__td_width_full_iphone b-layout__td_pad_null_ipad">
-                    <div class="b-layout__txt ">Юридический статус</div>
+                    <div class="b-layout__txt ">Р®СЂРёРґРёС‡РµСЃРєРёР№ СЃС‚Р°С‚СѓСЃ</div>
                 </td>
                 <td class="b-layout__td b-layout__td_width_240 b-layout__td_padbot_15 b-layout__td_padright_10 b-layout__td_width_full_iphone b-layout__td_pad_null_ipad">
                     <div class="b-radio b-radio_layout_horizontal">
                         <div class="b-radio__item">
                             <input id="status-fiz" class="b-radio__input" name="status" type="radio" value="1"<?=$form_type!=sbr::FT_JURI?' checked="checked"':'' ?> onclick="finance.switchReqvFT(<?= sbr::FT_JURI ?>,<?= sbr::FT_PHYS ?>);" />
-                            <label class="b-radio__label b-radio__label_fontsize_13" for="status-fiz">физическое лицо</label>
+                            <label class="b-radio__label b-radio__label_fontsize_13" for="status-fiz">С„РёР·РёС‡РµСЃРєРѕРµ Р»РёС†Рѕ</label>
                         </div>
                     </div>
                 </td>
@@ -296,7 +296,7 @@ function checkexts() {
                     <div class="b-radio b-radio_layout_horizontal">
                         <div class="b-radio__item">
                             <input id="status-ip" class="b-radio__input" name="status" type="radio" value="2"<?=$form_type==sbr::FT_JURI?' checked="checked"':'' ?> onclick="finance.switchReqvFT(<?= sbr::FT_PHYS ?>,<?= sbr::FT_JURI ?>);" />
-                            <label class="b-radio__label b-radio__label_fontsize_13" for="status-ip">ИП или юридическое лицо</label>
+                            <label class="b-radio__label b-radio__label_fontsize_13" for="status-ip">РРџ РёР»Рё СЋСЂРёРґРёС‡РµСЃРєРѕРµ Р»РёС†Рѕ</label>
                         </div>
                     </div>
                 </td>
@@ -310,7 +310,7 @@ function checkexts() {
     <div class="b-layout_pad_20">
         <span class="ft<?=sbr::FT_PHYS?>_set" <?=$form_type==sbr::FT_JURI ? ' style="display:none"' : ''?>>
         <?php
-            sbr::view_finance_tbl($reqvs, sbr::FT_PHYS, NULL, 'Паспортные данные', '', array(), array(
+            sbr::view_finance_tbl($reqvs, sbr::FT_PHYS, NULL, 'РџР°СЃРїРѕСЂС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ', '', array(), array(
                 'static' => $is_finance_allow_delete,
                 'theme' => '',
                 'group' => array(4, 8),
@@ -321,11 +321,11 @@ function checkexts() {
         
         <span class="ft<?=sbr::FT_JURI?>_set" <?=$form_type==sbr::FT_PHYS ? ' style="display:none"' : ''?>>
         <?php
-            sbr::view_finance_tbl($reqvs, sbr::FT_JURI, NULL, 'Данные об организации или ИП', '', array(), array(
+            sbr::view_finance_tbl($reqvs, sbr::FT_JURI, NULL, 'Р”Р°РЅРЅС‹Рµ РѕР± РѕСЂРіР°РЅРёР·Р°С†РёРё РёР»Рё РРџ', '', array(), array(
                 'static' => $is_finance_allow_delete,
                 'theme' => '',
                 'group' => array(4, 9),
-                'options' => array(4 => (array(0 => 'Выбрать тип организации') + sbr_meta::$types)),
+                'options' => array(4 => (array(0 => 'Р’С‹Р±СЂР°С‚СЊ С‚РёРї РѕСЂРіР°РЅРёР·Р°С†РёРё') + sbr_meta::$types)),
                 'notexample' => array(9)
             ));
          ?>
@@ -334,7 +334,7 @@ function checkexts() {
         <?php if(!is_emp($u->role)): ?>
         <span class="ft<?=sbr::FT_PHYS?>_set" <?=($form_type==sbr::FT_JURI) ? ' style="display:none"' : ''?>>
         <?php   
-            sbr::view_finance_tbl($reqvs, sbr::FT_PHYS, 'EL', 'Платежные реквизиты', '', array(), array(
+            sbr::view_finance_tbl($reqvs, sbr::FT_PHYS, 'EL', 'РџР»Р°С‚РµР¶РЅС‹Рµ СЂРµРєРІРёР·РёС‚С‹', '', array(), array(
                 'static' => $is_finance_allow_delete,
                 'theme' => '',
                 'group' => array(10,12),
@@ -352,7 +352,7 @@ function checkexts() {
         
         <span class="ft<?=sbr::FT_JURI?>_set" <?=$form_type==sbr::FT_PHYS ? ' style="display:none"' : ''?>>
         <?php   
-            sbr::view_finance_tbl($reqvs, sbr::FT_JURI, 'BANK', 'Платежные реквизиты', '', array(), array(
+            sbr::view_finance_tbl($reqvs, sbr::FT_JURI, 'BANK', 'РџР»Р°С‚РµР¶РЅС‹Рµ СЂРµРєРІРёР·РёС‚С‹', '', array(), array(
                 'static' => $is_finance_allow_delete,
                 'theme' => '',
                 'group' => array(20,29)
@@ -369,21 +369,21 @@ function checkexts() {
                 <tr class="b-layout__tr">
                     <td class="b-layout__td b-layout__td_padtop_20 b-layout__td_width_200 b-layout__td_padbot_15 b-layout__td_width_full_iphone b-layout__td_pad_null_ipad">
                         <div class="b-layout__txt b-layout__txt b-layout__txt_padtop_5 b-layout__txt_padright_20">
-                            Скан-копии страниц паспорта
+                            РЎРєР°РЅ-РєРѕРїРёРё СЃС‚СЂР°РЅРёС† РїР°СЃРїРѕСЂС‚Р°
                         </div>
                     </td>
                     <td id="attach_block" class="b-layout__td b-layout__td_padtop_20 b-layout__td_padbot_15 b-layout__td_padright_10 b-layout__td_width_full_iphone b-layout__td_pad_null_ipad">
 <?php
-            // прикрепить скан
+            // РїСЂРёРєСЂРµРїРёС‚СЊ СЃРєР°РЅ
             $params = array(
                 'file_description' => '
-                    Необходимы начальная страница с основными данными и страница с данными о адресе регистрации (если регистрация предусмотрена законодательством вашей страны).<br/> 
-                    Допустимы четко различимые сканы (или фото) страниц в файлах формата jpg, jpeg или png.',
-                'button_title'  => 'Прикрепить скан',
+                    РќРµРѕР±С…РѕРґРёРјС‹ РЅР°С‡Р°Р»СЊРЅР°СЏ СЃС‚СЂР°РЅРёС†Р° СЃ РѕСЃРЅРѕРІРЅС‹РјРё РґР°РЅРЅС‹РјРё Рё СЃС‚СЂР°РЅРёС†Р° СЃ РґР°РЅРЅС‹РјРё Рѕ Р°РґСЂРµСЃРµ СЂРµРіРёСЃС‚СЂР°С†РёРё (РµСЃР»Рё СЂРµРіРёСЃС‚СЂР°С†РёСЏ РїСЂРµРґСѓСЃРјРѕС‚СЂРµРЅР° Р·Р°РєРѕРЅРѕРґР°С‚РµР»СЊСЃС‚РІРѕРј РІР°С€РµР№ СЃС‚СЂР°РЅС‹).<br/> 
+                    Р”РѕРїСѓСЃС‚РёРјС‹ С‡РµС‚РєРѕ СЂР°Р·Р»РёС‡РёРјС‹Рµ СЃРєР°РЅС‹ (РёР»Рё С„РѕС‚Рѕ) СЃС‚СЂР°РЅРёС† РІ С„Р°Р№Р»Р°С… С„РѕСЂРјР°С‚Р° jpg, jpeg РёР»Рё png.',
+                'button_title'  => 'РџСЂРёРєСЂРµРїРёС‚СЊ СЃРєР°РЅ',
                 'new_interface' => true,
                 'css_class' => 'b-file_padbot_20',
                 'disabled' => $block_finance_edit,
-                'req_txt' => 'Разрешенные форматы: jpg, jpeg или png.',
+                'req_txt' => 'Р Р°Р·СЂРµС€РµРЅРЅС‹Рµ С„РѕСЂРјР°С‚С‹: jpg, jpeg РёР»Рё png.',
                 'error' => isset($error['sbr']['err_attach']) ? $error['sbr']['err_attach'] : null
             );
             
@@ -412,24 +412,24 @@ function checkexts() {
               <td class="b-layout__td b-layout__td_padbot_15 b-layout__td_padright_10 b-layout__td_width_full_iphone b-layout__td_pad_null_ipad">
                  <div class="b-buttons b-buttons_padtop_20">
                     <a href="javascript:void(0)" class="b-button b-button_flat b-button_flat_green <?=$block_finance_edit?'b-button_disabled':'finance-save'?>">
-                        Сохранить
+                        РЎРѕС…СЂР°РЅРёС‚СЊ
                     </a>
                     <?php if(!$is_adm): ?>
-                    <span class="b-buttons__txt"> &#160; или 
-                        <a class="b-layout__link" href="<?=($redirect_uri)?urldecode($redirect_uri):'/'?>">пока не сохранять настройки</a>
+                    <span class="b-buttons__txt"> &#160; РёР»Рё 
+                        <a class="b-layout__link" href="<?=($redirect_uri)?urldecode($redirect_uri):'/'?>">РїРѕРєР° РЅРµ СЃРѕС…СЂР°РЅСЏС‚СЊ РЅР°СЃС‚СЂРѕР№РєРё</a>
                     </span>
                     <?php else: ?>
                     <a id="__finance_unblocked" 
                        href="javascript:void(0)" 
                        onclick="banned.unBlocked('23_<?php echo $reqvs['user_id'] ?>_0');"
                        class="b-button b-button_flat b-button_flat_orange <?php if($reqvs['validate_status'] == 2): ?>b-button_hide<?php endif; ?> b-button_margleft_45">
-                        Подтвердить
+                        РџРѕРґС‚РІРµСЂРґРёС‚СЊ
                     </a>
                     <a id="__finance_blocked" 
                        href="javascript:void(0)" 
                        onclick="banned.delReason('23_<?php echo $reqvs['user_id'] ?>_0', 0, '', 0);"
                        class="b-button b-button_flat b-button_flat_red <?php if($reqvs['validate_status'] == -1): ?>b-button_hide<?php endif; ?> b-button_margleft_45">
-                        Отклонить
+                        РћС‚РєР»РѕРЅРёС‚СЊ
                     </a>            
                     <?php endif; ?>
                  </div>                      
@@ -444,7 +444,7 @@ function checkexts() {
         elseif(isset($is_finance_allow_delete) && $is_finance_allow_delete):
 ?>
         <a id="__finance_delete" href="javascript:void(0);" class="b-button b-button_flat b-button_flat_red">
-            Удалить финансовые данные
+            РЈРґР°Р»РёС‚СЊ С„РёРЅР°РЅСЃРѕРІС‹Рµ РґР°РЅРЅС‹Рµ
         </a>         
 <?php 
         endif; 

@@ -122,7 +122,7 @@ switch($site) {
             $sEndDate   = ($_GET['de']) ? date('Y-m-d', strtotime($_GET['de'])) : null;
             
             if ( $sStartDate && $sEndDate && $sStartDate > $sEndDate ) {
-            	$sError = 'Ïåðèîä óêàçàí íå âåðíî.';
+            	$sError = 'ÐŸÐµÑ€Ð¸Ð¾Ð´ ÑƒÐºÐ°Ð·Ð°Ð½ Ð½Ðµ Ð²ÐµÑ€Ð½Ð¾.';
             	break;
             }
             
@@ -139,7 +139,7 @@ switch($site) {
     case 'invoice':
         if ($action == 'parse_report') {
             if (!$_FILES['report']) {
-                $error['report'] = 'Îøèáêà çàãðóçêè ôàéëà.';
+                $error['report'] = 'ÐžÑˆÐ¸Ð±ÐºÐ° Ð·Ð°Ð³Ñ€ÑƒÐ·ÐºÐ¸ Ñ„Ð°Ð¹Ð»Ð°.';
             }
             
             $file = $_FILES['report']['tmp_name'];
@@ -173,7 +173,7 @@ switch($site) {
             header_location_exit('/404.php');
         }
         
-        // ôîðìèðóåì ñòðîêó ïàðàìåòðîâ
+        // Ñ„Ð¾Ñ€Ð¼Ð¸Ñ€ÑƒÐµÐ¼ ÑÑ‚Ñ€Ð¾ÐºÑƒ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð¾Ð²
         $filterParams = '';
         foreach ($filter as $key => $value) {
             $filterParams .= '&' . $key . '=' . $value;

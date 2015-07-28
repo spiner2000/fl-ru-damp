@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Шаблон вариантов попапов
- * @todo: для реакции на нажания кнопок в попапе (data-popup... итп) здесь используется унифицированный механизм разработанный в bar_ext.js см popuper(); 
+ * РЁР°Р±Р»РѕРЅ РІР°СЂРёР°РЅС‚РѕРІ РїРѕРїР°РїРѕРІ
+ * @todo: РґР»СЏ СЂРµР°РєС†РёРё РЅР° РЅР°Р¶Р°РЅРёСЏ РєРЅРѕРїРѕРє РІ РїРѕРїР°РїРµ (data-popup... РёС‚Рї) Р·РґРµСЃСЊ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ СѓРЅРёС„РёС†РёСЂРѕРІР°РЅРЅС‹Р№ РјРµС…Р°РЅРёР·Рј СЂР°Р·СЂР°Р±РѕС‚Р°РЅРЅС‹Р№ РІ bar_ext.js СЃРј popuper(); 
  */
 
 $link = getFriendlyURL("project", array('id' => $project['id'], 'name' => $project['name']));
@@ -10,7 +10,7 @@ $name = reformat($project['name'], 30, 0, 1);
 $kind = $project['kind'];
 $is_show_popup = (bool)strpos($_SERVER["HTTP_REFERER"], "/registration/?from_prj={$project['id']}");
 
-$project_type = $kind == 4 ? 'вакансию' : 'проект';
+$project_type = $kind == 4 ? 'РІР°РєР°РЅСЃРёСЋ' : 'РїСЂРѕРµРєС‚';
 $url = $kind == 4 ? '/projects/?kind=4' : '/projects/';
 
 $needs = array();
@@ -20,32 +20,32 @@ $needs = array();
 <?php if(($project['pro_only'] == 't' && !$is_pro) && ($project['verify_only'] == 't' && !$is_verify)): ?>
     
    <div  class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20">
-       Для ответа на <?=$project_type?> "<a class="b-layout__link" href="<?=$link?>"><?=$name?></a>" вам необходимо приобрести аккаунт PRO и пройти верификацию.
+       Р”Р»СЏ РѕС‚РІРµС‚Р° РЅР° <?=$project_type?> "<a class="b-layout__link" href="<?=$link?>"><?=$name?></a>" РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РїСЂРёРѕР±СЂРµСЃС‚Рё Р°РєРєР°СѓРЅС‚ PRO Рё РїСЂРѕР№С‚Рё РІРµСЂРёС„РёРєР°С†РёСЋ.
    </div>
    <div class="b-buttons">
-      <a data-popup-ok="true" href="/payed/" class="b-button b-button_flat b-button_flat_green">Купить аккаунт PRO</a>
-      <a data-popup-ok="true" href="javascript: quickVerShow();" class="b-button b-button_flat b-button_flat_green">Верифицироваться</a>
-      <div class="b-layout__txt b-layout__txt_padtop_10"><a href="<?=$url?>" class="b-layout__link">Посмотреть другие проекты</a></div>
+      <a data-popup-ok="true" href="/payed/" class="b-button b-button_flat b-button_flat_green">РљСѓРїРёС‚СЊ Р°РєРєР°СѓРЅС‚ PRO</a>
+      <a data-popup-ok="true" href="javascript: quickVerShow();" class="b-button b-button_flat b-button_flat_green">Р’РµСЂРёС„РёС†РёСЂРѕРІР°С‚СЊСЃСЏ</a>
+      <div class="b-layout__txt b-layout__txt_padtop_10"><a href="<?=$url?>" class="b-layout__link">РџРѕСЃРјРѕС‚СЂРµС‚СЊ РґСЂСѓРіРёРµ РїСЂРѕРµРєС‚С‹</a></div>
    </div>
     
 <?php elseif($project['verify_only'] == 't' && !$is_verify): ?>
     
    <div  class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20">
-       Для ответа на <?=$project_type?> "<a class="b-layout__link" href="<?=$link?>"><?=$name?></a>" вам необходимо пройти верификацию.
+       Р”Р»СЏ РѕС‚РІРµС‚Р° РЅР° <?=$project_type?> "<a class="b-layout__link" href="<?=$link?>"><?=$name?></a>" РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РїСЂРѕР№С‚Рё РІРµСЂРёС„РёРєР°С†РёСЋ.
    </div>
    <div class="b-buttons">
-      <a data-popup-ok="true" data-popup-copy-attr="href" href="javascript: void(0);" class="b-button b-button_flat b-button_flat_green">Верифицироваться</a>
-      <span class="b-layout__txt b-layout__txt_valign_middle"> &#160; <a href="<?=$url?>" class="b-layout__link">Посмотреть другие проекты</a></span>
+      <a data-popup-ok="true" data-popup-copy-attr="href" href="javascript: void(0);" class="b-button b-button_flat b-button_flat_green">Р’РµСЂРёС„РёС†РёСЂРѕРІР°С‚СЊСЃСЏ</a>
+      <span class="b-layout__txt b-layout__txt_valign_middle"> &#160; <a href="<?=$url?>" class="b-layout__link">РџРѕСЃРјРѕС‚СЂРµС‚СЊ РґСЂСѓРіРёРµ РїСЂРѕРµРєС‚С‹</a></span>
    </div>
     
 <?php else: ?>
     
     <div  class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20">
-        Для ответа на <?=$project_type?> "<a class="b-layout__link" href="<?=$link?>"><?=$name?></a>" вам необходимо приобрести аккаунт PRO.
+        Р”Р»СЏ РѕС‚РІРµС‚Р° РЅР° <?=$project_type?> "<a class="b-layout__link" href="<?=$link?>"><?=$name?></a>" РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РїСЂРёРѕР±СЂРµСЃС‚Рё Р°РєРєР°СѓРЅС‚ PRO.
     </div>
     <div class="b-buttons">
-        <a data-popup-ok="true" data-popup-copy-attr="href" href="javascript: void(0);" class="b-button b-button_flat b-button_flat_green">Купить аккаунт PRO</a>
-        <span class="b-layout__txt b-layout__txt_valign_middle"> &#160; <a href="<?=$url?>" class="b-layout__link">Посмотреть другие проекты</a></span>
+        <a data-popup-ok="true" data-popup-copy-attr="href" href="javascript: void(0);" class="b-button b-button_flat b-button_flat_green">РљСѓРїРёС‚СЊ Р°РєРєР°СѓРЅС‚ PRO</a>
+        <span class="b-layout__txt b-layout__txt_valign_middle"> &#160; <a href="<?=$url?>" class="b-layout__link">РџРѕСЃРјРѕС‚СЂРµС‚СЊ РґСЂСѓРіРёРµ РїСЂРѕРµРєС‚С‹</a></span>
     </div>
     
 <?php endif; ?>

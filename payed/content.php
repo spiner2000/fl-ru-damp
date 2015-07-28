@@ -1,7 +1,7 @@
 <?
     
     /**
-     * Устарелый шаблон с тарифами ПРО
+     * РЈСЃС‚Р°СЂРµР»С‹Р№ С€Р°Р±Р»РѕРЅ СЃ С‚Р°СЂРёС„Р°РјРё РџР Рћ
      */
 
 	require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/freelancer.php");
@@ -25,7 +25,7 @@
         $poa_codes = $poa->GetOpCodes();
     
 	   $user = new freelancer();
-        // Изменяем авто продление PRO, если нужно
+        // РР·РјРµРЅСЏРµРј Р°РІС‚Рѕ РїСЂРѕРґР»РµРЅРёРµ PRO, РµСЃР»Рё РЅСѓР¶РЅРѕ
         if(strtolower($_GET['pro_auto_prolong'])=='on') {
             $user->setPROAutoProlong('on',$uid);
         }
@@ -38,7 +38,7 @@
 	    $account = new account();
         $ok = $account->GetInfo($uid, true);
 
-        $u_is_pro_auto_prolong = $user->GetField($uid, $e, 'is_pro_auto_prolong', false); // Включено ли у юзера автоматическое продление PRO
+        $u_is_pro_auto_prolong = $user->GetField($uid, $e, 'is_pro_auto_prolong', false); // Р’РєР»СЋС‡РµРЅРѕ Р»Рё Сѓ СЋР·РµСЂР° Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРµ РїСЂРѕРґР»РµРЅРёРµ PRO
 
         require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/professions.common.php");
         $xajax->printJavascript('/xajax/');
@@ -67,16 +67,16 @@ var alowLogin = function(){
 }
 </script>
 
-<div class="page-title">Услуги</div>
+<div class="page-title">РЈСЃР»СѓРіРё</div>
 <div class="payed-outer">
     <div class="payed-h">
-        <h1 class="b-page__title">Профессиональный аккаунт</h1>
-        <p>Контакты фрилансеров с <span class="b-icon b-icon__pro b-icon__pro_f " title="платным аккаунтом" alt="платным аккаунтом"></span> аккаунтом видны всем пользователям сайта.</p>
+        <h1 class="b-page__title">РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚</h1>
+        <p>РљРѕРЅС‚Р°РєС‚С‹ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ СЃ <span class="b-icon b-icon__pro b-icon__pro_f " title="РїР»Р°С‚РЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј" alt="РїР»Р°С‚РЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј"></span> Р°РєРєР°СѓРЅС‚РѕРј РІРёРґРЅС‹ РІСЃРµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј СЃР°Р№С‚Р°.</p>
 
         <div class="payed-h-user">
             <?php if($uid) { ?>
-                <strong>Привет, <?=view_avatar($user->login, $user->photo, 1, 1, "")?> <?=$user->uname?><!--<span class="bgrd"></span>--></strong>
-                Мы сберегли этот <span class="b-icon b-icon__pro b-icon__pro_f " title="платный аккаунт" alt="платный аккаунт"></span> специально для тебя :)
+                <strong>РџСЂРёРІРµС‚, <?=view_avatar($user->login, $user->photo, 1, 1, "")?> <?=$user->uname?><!--<span class="bgrd"></span>--></strong>
+                РњС‹ СЃР±РµСЂРµРіР»Рё СЌС‚РѕС‚ <span class="b-icon b-icon__pro b-icon__pro_f " title="РїР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" alt="РїР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚"></span> СЃРїРµС†РёР°Р»СЊРЅРѕ РґР»СЏ С‚РµР±СЏ :)
             <?php } ?>
         </div>
     </div>
@@ -96,22 +96,22 @@ var alowLogin = function(){
                 		<input type="hidden" name="transaction_id" value="<?=$transaction_id?>" />
                 		<input type="hidden" name="action" value="buy" />
                 		<input type="hidden" name="oppro" value="<?= payed::get_opcode_action_test_pro(); ?>" />
-                        <h4>Пробный <span title="платный аккаунт" class="b-icon b-icon__pro b-icon__pro_t b-icon_top_1"></span> аккаунт:</h4>
-                        <p>Мы даём возможность опробовать профессиональный аккаунт тем, кто только начинает свою работу на сайте Free-lance.ru.</p>
-                        <p>Вам будут доступны все преимущества профессионального аккаунта. Отличаться будет только цвет значка.</p>
+                        <h4>РџСЂРѕР±РЅС‹Р№ <span title="РїР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" class="b-icon b-icon__pro b-icon__pro_t b-icon_top_1"></span> Р°РєРєР°СѓРЅС‚:</h4>
+                        <p>РњС‹ РґР°С‘Рј РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РѕРїСЂРѕР±РѕРІР°С‚СЊ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚ С‚РµРј, РєС‚Рѕ С‚РѕР»СЊРєРѕ РЅР°С‡РёРЅР°РµС‚ СЃРІРѕСЋ СЂР°Р±РѕС‚Сѓ РЅР° СЃР°Р№С‚Рµ Free-lance.ru.</p>
+                        <p>Р’Р°Рј Р±СѓРґСѓС‚ РґРѕСЃС‚СѓРїРЅС‹ РІСЃРµ РїСЂРµРёРјСѓС‰РµСЃС‚РІР° РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°. РћС‚Р»РёС‡Р°С‚СЊСЃСЏ Р±СѓРґРµС‚ С‚РѕР»СЊРєРѕ С†РІРµС‚ Р·РЅР°С‡РєР°.</p>
                         <p>
                             <span class="payed-price">
                                 <b class="b1"></b>
                                 <b class="b2"></b>
-                                <span class="payed-price-in">1 неделя <em>=</em> <strong><?= ($test_price = payed::GetProPrice(false, payed::get_opcode_action_test_pro())); ?> руб.</strong></span>
+                                <span class="payed-price-in">1 РЅРµРґРµР»СЏ <em>=</em> <strong><?= ($test_price = payed::GetProPrice(false, payed::get_opcode_action_test_pro())); ?> СЂСѓР±.</strong></span>
                                 <b class="b2"></b>
                                 <b class="b1"></b>
                             </span>
                         </p>
                         <div>
-                            <a href="javascript:void(0)" onclick="checkTestBalance(this);return checkBalance('block_test_pay', 'testfrmbuy');" class="btn btn-blue"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Купить</span></span></span></a>
+                            <a href="javascript:void(0)" onclick="checkTestBalance(this);return checkBalance('block_test_pay', 'testfrmbuy');" class="btn btn-blue"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РљСѓРїРёС‚СЊ</span></span></span></a>
                         </div>
-                        <div class="lnk-pay" style="display:none;" id="block_test_pay"><a href="/bill/?paysum=<?= round($test_price - $account->sum, 2)?>" onClick="Cookie.write('need_paysum', '<?= round($test_price-$account->sum, 2)?>');">Пополнить счет на <?=round($test_price - $account->sum,2)?> <?= ending(round($test_price - $account->sum), 'рубль', 'рубля', 'рублей');?></a></div>
+                        <div class="lnk-pay" style="display:none;" id="block_test_pay"><a href="/bill/?paysum=<?= round($test_price - $account->sum, 2)?>" onClick="Cookie.write('need_paysum', '<?= round($test_price-$account->sum, 2)?>');">РџРѕРїРѕР»РЅРёС‚СЊ СЃС‡РµС‚ РЅР° <?=round($test_price - $account->sum,2)?> <?= ending(round($test_price - $account->sum), 'СЂСѓР±Р»СЊ', 'СЂСѓР±Р»СЏ', 'СЂСѓР±Р»РµР№');?></a></div>
 						</div>
                         </form>
                     </div>
@@ -131,28 +131,28 @@ var alowLogin = function(){
             		<input type="hidden" name="week" id="week" value="1" />
             		<input type="hidden" name="transaction_id" value="<?=$transaction_id?>" />
             		<input type="hidden" name="action" value="buy" />
-                    <h4>Покупка <span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_1" title="платного аккаунта" alt="платного аккаунта"></span> аккаунта:</h4>
+                    <h4>РџРѕРєСѓРїРєР° <span class="b-icon b-icon__pro b-icon__pro_f b-icon_top_1" title="РїР»Р°С‚РЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°" alt="РїР»Р°С‚РЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°"></span> Р°РєРєР°СѓРЅС‚Р°:</h4>
                     <? if(is_pro(true)): ?>
                     <?
                     $last_time = $_SESSION['pro_last'];
                     if(floor((strtotime($last_time)-time())/(60*60*24)) > 0) {
                         $last_ending = floor((strtotime($last_time)-time())/(60*60*24));
-                        $last_string1 = 'день';
-                        $last_string2 = 'дня';
-                        $last_string3 = 'дней';
+                        $last_string1 = 'РґРµРЅСЊ';
+                        $last_string2 = 'РґРЅСЏ';
+                        $last_string3 = 'РґРЅРµР№';
                     } else if (floor((strtotime($last_time)-time())/(60*60)) > 0) {
                         $last_ending = floor((strtotime($last_time)-time())/(60*60));
-                        $last_string1 = 'час';
-                        $last_string2 = 'часа';
-                        $last_string3 = 'часов';
+                        $last_string1 = 'С‡Р°СЃ';
+                        $last_string2 = 'С‡Р°СЃР°';
+                        $last_string3 = 'С‡Р°СЃРѕРІ';
                     } else if (floor((strtotime($last_time)-time())/60) > 0) {
                         $last_ending = floor((strtotime($last_time)-time())/(60));
-                        $last_string1 = 'минута';
-                        $last_string2 = 'минуты';
-                        $last_string3 = 'минут';
+                        $last_string1 = 'РјРёРЅСѓС‚Р°';
+                        $last_string2 = 'РјРёРЅСѓС‚С‹';
+                        $last_string3 = 'РјРёРЅСѓС‚';
                     }
                     if ($last_ending > 0) {?>
-                        <p>Ваш <span class="b-icon b-icon__pro b-icon__pro_f " title="платный аккаунт" alt="платный аккаунт"></span> аккаунт истекает через <?=$last_ending?> <?=ending($last_ending, $last_string1, $last_string2, $last_string3)?></p>
+                        <p>Р’Р°С€ <span class="b-icon b-icon__pro b-icon__pro_f " title="РїР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" alt="РїР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚"></span> Р°РєРєР°СѓРЅС‚ РёСЃС‚РµРєР°РµС‚ С‡РµСЂРµР· <?=$last_ending?> <?=ending($last_ending, $last_string1, $last_string2, $last_string3)?></p>
                     <? }
                     endif; ?>
                     <table class="buy-pro-tbl">
@@ -164,42 +164,42 @@ var alowLogin = function(){
                         <col width="70" />
                         <tr>
                             <td><input type="radio" name="oppro" value="48" onClick="if(this.checked) noSumAmmount(570, 'block_pro_pay', 'pro_pay_sum');" /></td>
-                            <td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">570 руб.</span><b class="b2"></b><b class="b1"></b></span></td>
-                            <td class="sign">х</td>
-                            <td>1 месяц</td>
+                            <td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">570 СЂСѓР±.</span><b class="b2"></b><b class="b1"></b></span></td>
+                            <td class="sign">С…</td>
+                            <td>1 РјРµСЃСЏС†</td>
                             <td class="sign">=</td>
-                            <td><strong>570 руб.</strong></td>
+                            <td><strong>570 СЂСѓР±.</strong></td>
                         </tr>
                         <tr>
                             <td><input type="radio" name="oppro" value="49" onClick="if(this.checked) noSumAmmount(1620, 'block_pro_pay', 'pro_pay_sum');" /></td>
-                            <td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">540 руб.</span><b class="b2"></b><b class="b1"></b></span></td>
-                            <td class="sign">х</td>
-                            <td>3 месяца</td>
+                            <td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">540 СЂСѓР±.</span><b class="b2"></b><b class="b1"></b></span></td>
+                            <td class="sign">С…</td>
+                            <td>3 РјРµСЃСЏС†Р°</td>
                             <td class="sign">=</td>
-                            <td><strong>1620 руб.</strong></td>
+                            <td><strong>1620 СЂСѓР±.</strong></td>
                         </tr>
                         <tr>
                             <td><input type="radio" name="oppro" value="50" onClick="if(this.checked) noSumAmmount(3060, 'block_pro_pay', 'pro_pay_sum');" /></td>
-                            <td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">510 руб.</span><b class="b2"></b><b class="b1"></b></span></td>
-                            <td class="sign">х</td>
-                            <td>6 месяцев</td>
+                            <td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">510 СЂСѓР±.</span><b class="b2"></b><b class="b1"></b></span></td>
+                            <td class="sign">С…</td>
+                            <td>6 РјРµСЃСЏС†РµРІ</td>
                             <td class="sign">=</td>
-                            <td><strong>3060 руб.</strong></td>
+                            <td><strong>3060 СЂСѓР±.</strong></td>
                         </tr>
                         <tr>
                             <td><input type="radio" name="oppro" value="51" onClick="if(this.checked) noSumAmmount(5400, 'block_pro_pay', 'pro_pay_sum');" /></td>
-                            <td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">450 руб.</span><b class="b2"></b><b class="b1"></b></span></td>
-                            <td class="sign">х</td>
-                            <td>12 месяцев</td>
+                            <td><span class="payed-price"><b class="b1"></b><b class="b2"></b><span class="payed-price-in">450 СЂСѓР±.</span><b class="b2"></b><b class="b1"></b></span></td>
+                            <td class="sign">С…</td>
+                            <td>12 РјРµСЃСЏС†РµРІ</td>
                             <td class="sign">=</td>
-                            <td><strong>5400 руб.</strong></td>
+                            <td><strong>5400 СЂСѓР±.</strong></td>
                         </tr>
                     </table>
                     <div>
                         <div style="white-space:nowrap">
-                        <a href="javascript:void(0);" class="btn btn-blue" onClick="checkBalance('block_pro_pay', 'frmbuy');"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Купить</span></span></span></a>
+                        <a href="javascript:void(0);" class="btn btn-blue" onClick="checkBalance('block_pro_pay', 'frmbuy');"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РљСѓРїРёС‚СЊ</span></span></span></a>
                         </div>
-                        <div class="lnk-pay" style="display:none" id="block_pro_pay"><a href="/bill/" onClick="Cookie.write('need_paysum', $('pro_pay_sum').get('html'));">Пополнить счет на <span id="pro_pay_sum">30</span> <span id="pro_pay_sum_curr">рублей</span></a></div>
+                        <div class="lnk-pay" style="display:none" id="block_pro_pay"><a href="/bill/" onClick="Cookie.write('need_paysum', $('pro_pay_sum').get('html'));">РџРѕРїРѕР»РЅРёС‚СЊ СЃС‡РµС‚ РЅР° <span id="pro_pay_sum">30</span> <span id="pro_pay_sum_curr">СЂСѓР±Р»РµР№</span></a></div>
                     </div>
                     </div>
                     </form>
@@ -219,12 +219,12 @@ var alowLogin = function(){
                         <b class="b1"></b>
                         <b class="b2"></b>
                         <div class="payed-price-in">
-                            <a href="javascript:void(0);" onclick="$('freezing-terms').toggleClass('b-shadow_hide');" class="lnk-dot-grey">Условия</a>
+                            <a href="javascript:void(0);" onclick="$('freezing-terms').toggleClass('b-shadow_hide');" class="lnk-dot-grey">РЈСЃР»РѕРІРёСЏ</a>
                         </div>
                         <b class="b2"></b>
                         <b class="b1"></b>
                     </div>
-                    <h4>Заморозка <span class="b-icon b-icon__pro b-icon__pro_z b-icon_top_1" title="Заморожен"></span></h4>
+                    <h4>Р—Р°РјРѕСЂРѕР·РєР° <span class="b-icon b-icon__pro b-icon__pro_z b-icon_top_1" title="Р—Р°РјРѕСЂРѕР¶РµРЅ"></span></h4>
                     <? if((ceil($last_freeze['freezed_days']/7) <= 1 || ($freeze_set || $freezed_now)) && !$freezed_alert) { ?>
                     <form action="/payed/" method="post" name="frmfreeze" id="frmfreeze">
                     <div>
@@ -233,7 +233,7 @@ var alowLogin = function(){
                             <input type="hidden" name="pro_last" value="<?=$_SESSION['pro_last']?>" />
                             <div class="freezing-date first">
                                 <input class="<?= ($freeze_set || $freezed_now) ? 'freeze_set' : '' ?>" type="hidden" name="from_date" value="<?=$from_time?>" />
-                                <label>Начало:</label>
+                                <label>РќР°С‡Р°Р»Рѕ:</label>
                                 <select <?=($freeze_set || $freezed_now) ? 'disabled="disabled"' : ''?> >
                                     <? for($i = 1; $i <= 31; $i ++) { ?>
                                     <option><?= str_pad($i, 2, '0', STR_PAD_LEFT) ?></option>
@@ -251,11 +251,11 @@ var alowLogin = function(){
                                 </select>
                             </div>
                             <div class="freezing-date ">
-                                <label>Период заморозки:</label>
+                                <label>РџРµСЂРёРѕРґ Р·Р°РјРѕСЂРѕР·РєРё:</label>
                                 <select name="to_date" <?=($freeze_set || $freezed_now) ? 'disabled="disabled"' : ''?>>
-                                    <option value="1">7 дней</option>
+                                    <option value="1">7 РґРЅРµР№</option>
                                     <? if (ceil($last_freeze['freezed_days']/7) < 1 || ceil($last_freeze['freezed_days']/7) == 2) { ?>
-                                    <option value="2" <?= ($last_freeze['freezed_cnt'] == 1 && $last_freeze['freezed_days'] > 7) ? 'selected="selected"' : '' ?>>14 дней</option>
+                                    <option value="2" <?= ($last_freeze['freezed_cnt'] == 1 && $last_freeze['freezed_days'] > 7) ? 'selected="selected"' : '' ?>>14 РґРЅРµР№</option>
                                     <? } ?>
                                 </select>
                             </div>
@@ -265,31 +265,31 @@ var alowLogin = function(){
                         <br />
                         <? } ?>
                         <?
-                        $act_label = 'Заморозить';
-                        $act_descr = 'заморозить аккаунт';
+                        $act_label = 'Р—Р°РјРѕСЂРѕР·РёС‚СЊ';
+                        $act_descr = 'Р·Р°РјРѕСЂРѕР·РёС‚СЊ Р°РєРєР°СѓРЅС‚';
                         if($freeze_set) {
-                            $act_label = 'Отменить';
-                            $act_descr = 'отменить заморозку';
+                            $act_label = 'РћС‚РјРµРЅРёС‚СЊ';
+                            $act_descr = 'РѕС‚РјРµРЅРёС‚СЊ Р·Р°РјРѕСЂРѕР·РєСѓ';
                         }
                         if($freezed_now) {
-                            $act_label = 'Разморозить';
-                            $act_descr = 'разморозить аккаунт';
+                            $act_label = 'Р Р°Р·РјРѕСЂРѕР·РёС‚СЊ';
+                            $act_descr = 'СЂР°Р·РјРѕСЂРѕР·РёС‚СЊ Р°РєРєР°СѓРЅС‚';
                         }
                         ?>
-                        <div class="freez-attent" id="freez-attent" style="display:none;">В соответствии с <a href="https://feedback.fl.ru/article/details/id/129" target="_blank">правилами</a> предоставления услуги при выборе данного периода (14 дней) вы больше не сможете воспользоваться "Заморозкой PRO" в этом году</div>
+                        <div class="freez-attent" id="freez-attent" style="display:none;">Р’ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ <a href="https://feedback.fl.ru/article/details/id/129" target="_blank">РїСЂР°РІРёР»Р°РјРё</a> РїСЂРµРґРѕСЃС‚Р°РІР»РµРЅРёСЏ СѓСЃР»СѓРіРё РїСЂРё РІС‹Р±РѕСЂРµ РґР°РЅРЅРѕРіРѕ РїРµСЂРёРѕРґР° (14 РґРЅРµР№) РІС‹ Р±РѕР»СЊС€Рµ РЅРµ СЃРјРѕР¶РµС‚Рµ РІРѕСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ "Р—Р°РјРѕСЂРѕР·РєРѕР№ PRO" РІ СЌС‚РѕРј РіРѕРґСѓ</div>
                         <a href="javascript:void(0)" class="btn btn-<?= ($freeze_set || $freezed_now) ? 'pink' : 'green' ?>" onclick="return $('freezing-confirm').setStyle('display', '');"><span class="btn-lc"><span class="btn-m"><span class="btn-txt"><?=$act_label?></span></span></span></a>
                         <div class="freezing-ok" id="freezing-confirm" style="display:none;">
-                            <strong>Вы уверены, что хотите <?=$act_descr?>?</strong>
-                            <?if(!$freeze_set && !$freezed_now) { ?>Доступно до двух раз в год.<? } ?>
-                            <?if($freezed_now) { ?>Вы частично использовали срок заморозки. При разморозке неиспользованные дни от выбранного периода сгорят.<? } ?>
-                            <div class="freezing-btns"><input type="button" value="Да" class="i-btn" onclick="return $('frmfreeze').submit();" />&nbsp;
-                                <input type="button" value="Нет" class="i-btn" onclick="return $('freezing-confirm').setStyle('display', 'none');" />
+                            <strong>Р’С‹ СѓРІРµСЂРµРЅС‹, С‡С‚Рѕ С…РѕС‚РёС‚Рµ <?=$act_descr?>?</strong>
+                            <?if(!$freeze_set && !$freezed_now) { ?>Р”РѕСЃС‚СѓРїРЅРѕ РґРѕ РґРІСѓС… СЂР°Р· РІ РіРѕРґ.<? } ?>
+                            <?if($freezed_now) { ?>Р’С‹ С‡Р°СЃС‚РёС‡РЅРѕ РёСЃРїРѕР»СЊР·РѕРІР°Р»Рё СЃСЂРѕРє Р·Р°РјРѕСЂРѕР·РєРё. РџСЂРё СЂР°Р·РјРѕСЂРѕР·РєРµ РЅРµРёСЃРїРѕР»СЊР·РѕРІР°РЅРЅС‹Рµ РґРЅРё РѕС‚ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РїРµСЂРёРѕРґР° СЃРіРѕСЂСЏС‚.<? } ?>
+                            <div class="freezing-btns"><input type="button" value="Р”Р°" class="i-btn" onclick="return $('frmfreeze').submit();" />&nbsp;
+                                <input type="button" value="РќРµС‚" class="i-btn" onclick="return $('freezing-confirm').setStyle('display', 'none');" />
                             </div>
                         </div>
                      </div>
                     </form>
                     <? } else { ?>
-                    <p class="freezing-msg">Заморозка доступна 2 раза в год (2 периода по 7 дней). Вы уже использовали эту функцию.</p>
+                    <p class="freezing-msg">Р—Р°РјРѕСЂРѕР·РєР° РґРѕСЃС‚СѓРїРЅР° 2 СЂР°Р·Р° РІ РіРѕРґ (2 РїРµСЂРёРѕРґР° РїРѕ 7 РґРЅРµР№). Р’С‹ СѓР¶Рµ РёСЃРїРѕР»СЊР·РѕРІР°Р»Рё СЌС‚Сѓ С„СѓРЅРєС†РёСЋ.</p>
                     <? } ?>
                 </div>
                 <b class="b3"></b>
@@ -307,15 +307,15 @@ var alowLogin = function(){
 					<div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_15">
 
 
-                            <h4 class="b-shadow__h3">Заморозка</h4>
-                            <div class="b-shadow__txt">Два раза в год вы можете приостановить действие вашего PRO-аккаунта. Воспользуйтесь этой функцией, если собираетесь в отпуск или будете оффлайн определенный период времени. </div>
-                            <div class="b-shadow__txt">Заморозка доступна 2 раза в год (2 периода по 7 дней).</div>
-                            <div class="b-shadow__txt">При досрочной разморозке неиспользованные дни от выбранного периода сгорают.</div>
+                            <h4 class="b-shadow__h3">Р—Р°РјРѕСЂРѕР·РєР°</h4>
+                            <div class="b-shadow__txt">Р”РІР° СЂР°Р·Р° РІ РіРѕРґ РІС‹ РјРѕР¶РµС‚Рµ РїСЂРёРѕСЃС‚Р°РЅРѕРІРёС‚СЊ РґРµР№СЃС‚РІРёРµ РІР°С€РµРіРѕ PRO-Р°РєРєР°СѓРЅС‚Р°. Р’РѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ СЌС‚РѕР№ С„СѓРЅРєС†РёРµР№, РµСЃР»Рё СЃРѕР±РёСЂР°РµС‚РµСЃСЊ РІ РѕС‚РїСѓСЃРє РёР»Рё Р±СѓРґРµС‚Рµ РѕС„С„Р»Р°Р№РЅ РѕРїСЂРµРґРµР»РµРЅРЅС‹Р№ РїРµСЂРёРѕРґ РІСЂРµРјРµРЅРё. </div>
+                            <div class="b-shadow__txt">Р—Р°РјРѕСЂРѕР·РєР° РґРѕСЃС‚СѓРїРЅР° 2 СЂР°Р·Р° РІ РіРѕРґ (2 РїРµСЂРёРѕРґР° РїРѕ 7 РґРЅРµР№).</div>
+                            <div class="b-shadow__txt">РџСЂРё РґРѕСЃСЂРѕС‡РЅРѕР№ СЂР°Р·РјРѕСЂРѕР·РєРµ РЅРµРёСЃРїРѕР»СЊР·РѕРІР°РЅРЅС‹Рµ РґРЅРё РѕС‚ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РїРµСЂРёРѕРґР° СЃРіРѕСЂР°СЋС‚.</div>
                             <? if ( date("Y-m-d") < '2012-01-01' ) { ?>
-                                <div class="b-shadow__txt" style="color:red">Обратите внимание: в связи с тем, что фактически заморозка аккаунта PRO начинает действовать с 00:00 следующих суток, то заморозка, произведенная 31&nbsp;декабря&nbsp;2011 года, активируется в 00:00 1&nbsp;января&nbsp;2012 года и будет засчитана как заморозка профессионального аккаунта за 2012 год.</div>
+                                <div class="b-shadow__txt" style="color:red">РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ: РІ СЃРІСЏР·Рё СЃ С‚РµРј, С‡С‚Рѕ С„Р°РєС‚РёС‡РµСЃРєРё Р·Р°РјРѕСЂРѕР·РєР° Р°РєРєР°СѓРЅС‚Р° PRO РЅР°С‡РёРЅР°РµС‚ РґРµР№СЃС‚РІРѕРІР°С‚СЊ СЃ 00:00 СЃР»РµРґСѓСЋС‰РёС… СЃСѓС‚РѕРє, С‚Рѕ Р·Р°РјРѕСЂРѕР·РєР°, РїСЂРѕРёР·РІРµРґРµРЅРЅР°СЏ 31&nbsp;РґРµРєР°Р±СЂСЏ&nbsp;2011 РіРѕРґР°, Р°РєС‚РёРІРёСЂСѓРµС‚СЃСЏ РІ 00:00 1&nbsp;СЏРЅРІР°СЂСЏ&nbsp;2012 РіРѕРґР° Рё Р±СѓРґРµС‚ Р·Р°СЃС‡РёС‚Р°РЅР° РєР°Рє Р·Р°РјРѕСЂРѕР·РєР° РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р° Р·Р° 2012 РіРѕРґ.</div>
                             <? } ?>
                             <div class="ov-lnks">
-                                <a href="javascript:void(0);" onclick="$(this).getParent('.b-shadow').toggleClass('b-shadow_hide');" class="lnk-dot-blue">Закрыть</a>
+                                <a href="javascript:void(0);" onclick="$(this).getParent('.b-shadow').toggleClass('b-shadow_hide');" class="lnk-dot-blue">Р—Р°РєСЂС‹С‚СЊ</a>
                             </div>
 
 
@@ -345,14 +345,14 @@ var alowLogin = function(){
                 <b class="b2"><b class="b4"></b></b>
                 <b class="b3"></b>
                 <div class="payed-block-in">
-                    <h4>Автопродление <span class="b-icon b-icon__pro b-icon__pro_f8 b-icon_top_1"></span></h4>
-                    <p>Теперь вам не нужно следить за сроком действия профессионального аккаунта.</p>
-                    <p>При включении данной опции с вашего счета ежемесячно будет списываться 570 рублей (при их наличии на вашем личном счете).</p>
+                    <h4>РђРІС‚РѕРїСЂРѕРґР»РµРЅРёРµ <span class="b-icon b-icon__pro b-icon__pro_f8 b-icon_top_1"></span></h4>
+                    <p>РўРµРїРµСЂСЊ РІР°Рј РЅРµ РЅСѓР¶РЅРѕ СЃР»РµРґРёС‚СЊ Р·Р° СЃСЂРѕРєРѕРј РґРµР№СЃС‚РІРёСЏ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°.</p>
+                    <p>РџСЂРё РІРєР»СЋС‡РµРЅРёРё РґР°РЅРЅРѕР№ РѕРїС†РёРё СЃ РІР°С€РµРіРѕ СЃС‡РµС‚Р° РµР¶РµРјРµСЃСЏС‡РЅРѕ Р±СѓРґРµС‚ СЃРїРёСЃС‹РІР°С‚СЊСЃСЏ 570 СЂСѓР±Р»РµР№ (РїСЂРё РёС… РЅР°Р»РёС‡РёРё РЅР° РІР°С€РµРј Р»РёС‡РЅРѕРј СЃС‡РµС‚Рµ).</p>
 					<div class="payed-block-btns c">
     					<? if($u_is_pro_auto_prolong=='t'): ?>
-    					    <a href="/payed/?pro_auto_prolong=off#pro_autoprolong" class="btn btn-pink"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Отключить</span></span></span></a>
+    					    <a href="/payed/?pro_auto_prolong=off#pro_autoprolong" class="btn btn-pink"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РћС‚РєР»СЋС‡РёС‚СЊ</span></span></span></a>
                         <? else: ?>
-                            <a href="/payed/?pro_auto_prolong=on#pro_autoprolong" class="btn btn-green"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Включить</span></span></span></a>
+                            <a href="/payed/?pro_auto_prolong=on#pro_autoprolong" class="btn btn-green"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Р’РєР»СЋС‡РёС‚СЊ</span></span></span></a>
                         <? endif; ?>
 					   
 					</div>
@@ -368,13 +368,13 @@ var alowLogin = function(){
         <?php } else{ ?>
         <div class="payed-cnt-r">
         <div class="b-fon b-fon_padbot_20">
-            <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffebbf"> <span class="b-fon__attent_pink"></span>Чтобы купить аккаунт PRO, войдите или<br /><a href="/registration/" class="b-layout__link b-layout__link_color_fd6c30">зарегистрируйтесь</a> как фрилансер.</div>
+            <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffebbf"> <span class="b-fon__attent_pink"></span>Р§С‚РѕР±С‹ РєСѓРїРёС‚СЊ Р°РєРєР°СѓРЅС‚ PRO, РІРѕР№РґРёС‚Рµ РёР»Рё<br /><a href="/registration/" class="b-layout__link b-layout__link_color_fd6c30">Р·Р°СЂРµРіРёСЃС‚СЂРёСЂСѓР№С‚РµСЃСЊ</a> РєР°Рє С„СЂРёР»Р°РЅСЃРµСЂ.</div>
         </div>        
 		<div class="b-layout">
         <form action="/" method="post" id="auth_form">
         <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table">
                 <tr class="b-layout__tr">
-                    <td class="b-layout__one b-layout__one_width_55"><label for="login_inp" class="b-layout__txt b-layout__txt_block b-layout__txt_padtop_5">Логин</label></td>
+                    <td class="b-layout__one b-layout__one_width_55"><label for="login_inp" class="b-layout__txt b-layout__txt_block b-layout__txt_padtop_5">Р›РѕРіРёРЅ</label></td>
                     <td class="b-layout__one  b-layout__one_padbot_20">
                         <div class="b-combo">
                             <div class="b-combo__input">
@@ -384,7 +384,7 @@ var alowLogin = function(){
                     </td>
                 </tr>
                 <tr class="b-layout__tr">
-                    <td class="b-layout__one b-layout__one_width_55"><label for="pass_inp" class="b-layout__txt b-layout__txt_block b-layout__txt_padtop_5">Пароль</label></td>
+                    <td class="b-layout__one b-layout__one_width_55"><label for="pass_inp" class="b-layout__txt b-layout__txt_block b-layout__txt_padtop_5">РџР°СЂРѕР»СЊ</label></td>
                     <td class="b-layout__one b-layout__one_padbot_20">
                         <div class="b-combo">
                             <div class="b-combo__input">
@@ -398,7 +398,7 @@ var alowLogin = function(){
                     <td class="b-layout__one b-layout__one_padbot_20 b-layout__one_padright_10">
                         <div class="b-check">
                             <input type="checkbox" tabindex="102" name="autologin" value="1" class="b-check__input" id="remember" />
-                            <label class="b-check__label b-check__label_fontsize_13" for="remember">Запомнить пароль</label>
+                            <label class="b-check__label b-check__label_fontsize_13" for="remember">Р—Р°РїРѕРјРЅРёС‚СЊ РїР°СЂРѕР»СЊ</label>
                         </div>
                     </td>
                 </tr>
@@ -409,12 +409,12 @@ var alowLogin = function(){
             <a tabindex="103" href="javascript:void()" onclick="alowLogin(); return false;" class="b-button b-button_valign_top b-button_rectangle_color_green">
                 <span class="b-button__b1">
                     <span class="b-button__b2">
-                        <span class="b-button__txt">Войти</span>
+                        <span class="b-button__txt">Р’РѕР№С‚Рё</span>
                     </span>
                 </span>
             </a>
             &nbsp;&nbsp;
-            <div class="b-buttons__txt"><a href="/remind/" class="b-buttons__link">восстановить пароль</a> <span class="b-buttons__txt">или</span><br /> <a href="/registration/" class="b-buttons__link b-buttons__link_color_fd6c30">зарегистрироваться</a></div>
+            <div class="b-buttons__txt"><a href="/remind/" class="b-buttons__link">РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїР°СЂРѕР»СЊ</a> <span class="b-buttons__txt">РёР»Рё</span><br /> <a href="/registration/" class="b-buttons__link b-buttons__link_color_fd6c30">Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</a></div>
         </div>
         <input type="hidden" value="login" name="action">
         <input type="hidden" value="/payed/" name="redirect">										
@@ -435,86 +435,86 @@ var alowLogin = function(){
                         <col width="120" />
                         <thead>
                             <tr>
-                                <th>Возможности</th>
-                                <td class="td-pro"><strong>Аккаунт <span class="b-icon b-icon__pro b-icon__pro_f " title="платный аккаунт" alt="платный аккаунт"></span></strong></td>
-                                <td>Базовый аккаунт</td>
+                                <th>Р’РѕР·РјРѕР¶РЅРѕСЃС‚Рё</th>
+                                <td class="td-pro"><strong>РђРєРєР°СѓРЅС‚ <span class="b-icon b-icon__pro b-icon__pro_f " title="РїР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" alt="РїР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚"></span></strong></td>
+                                <td>Р‘Р°Р·РѕРІС‹Р№ Р°РєРєР°СѓРЅС‚</td>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th style="background-color:#eeffe2">Ваши контакты видны работодателям</th>
+                                <th style="background-color:#eeffe2">Р’Р°С€Рё РєРѕРЅС‚Р°РєС‚С‹ РІРёРґРЅС‹ СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЏРј</th>
                                 <td class="td-pro"><img src="/images/check.gif" alt="&diams;" /></td>
-                                <td style="background-color:#eeffe2">—</td>
+                                <td style="background-color:#eeffe2">вЂ”</td>
                             </tr>
                             <tr>
-                                <th>Количество ответов на проекты (в месяц)</th>
-                                <td class="td-pro">Неограниченно</td>
+                                <th>РљРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚С‹ (РІ РјРµСЃСЏС†)</th>
+                                <td class="td-pro">РќРµРѕРіСЂР°РЅРёС‡РµРЅРЅРѕ</td>
                                 <td><?= projects_offers_answers::FREE_ANSWERS_CNT; ?></td>
                             </tr>
                             <tr>
-                                <th>Возможность отвечать на проекты с пометкой «Только для <span class="b-icon b-icon__pro b-icon__pro_f " title="владельцев платного аккаунта" alt="владельцев платного аккаунта"></span>»</th>
+                                <th>Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РѕС‚РІРµС‡Р°С‚СЊ РЅР° РїСЂРѕРµРєС‚С‹ СЃ РїРѕРјРµС‚РєРѕР№ В«РўРѕР»СЊРєРѕ РґР»СЏ <span class="b-icon b-icon__pro b-icon__pro_f " title="РІР»Р°РґРµР»СЊС†РµРІ РїР»Р°С‚РЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°" alt="РІР»Р°РґРµР»СЊС†РµРІ РїР»Р°С‚РЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°"></span>В»</th>
                                 <td class="td-pro"><img src="/images/check.gif" alt="&diams;" /></td>
-                                <td>—</td>
+                                <td>вЂ”</td>
                             </tr>
                             <tr>
-                                <th>Размещение ваших ответов на проекты выше остальных — в зоне <span class="b-icon b-icon__pro b-icon__pro_f " title="платный аккаунт" alt="платный аккаунт"></span></th>
+                                <th>Р Р°Р·РјРµС‰РµРЅРёРµ РІР°С€РёС… РѕС‚РІРµС‚РѕРІ РЅР° РїСЂРѕРµРєС‚С‹ РІС‹С€Рµ РѕСЃС‚Р°Р»СЊРЅС‹С… вЂ” РІ Р·РѕРЅРµ <span class="b-icon b-icon__pro b-icon__pro_f " title="РїР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" alt="РїР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚"></span></th>
                                 <td class="td-pro"><img src="/images/check.gif" alt="&diams;" /></td>
-                                <td>—</td>
+                                <td>вЂ”</td>
                             </tr>
                             <tr>
-                                <th>Размещение в каталоге выше остальных — в зоне <span class="b-icon b-icon__pro b-icon__pro_f " title="платный аккаунт" alt="платный аккаунт"></span></th>
+                                <th>Р Р°Р·РјРµС‰РµРЅРёРµ РІ РєР°С‚Р°Р»РѕРіРµ РІС‹С€Рµ РѕСЃС‚Р°Р»СЊРЅС‹С… вЂ” РІ Р·РѕРЅРµ <span class="b-icon b-icon__pro b-icon__pro_f " title="РїР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" alt="РїР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚"></span></th>
                                 <td class="td-pro"><img src="/images/check.gif" alt="&diams;" /></td>
-                                <td>—</td>
+                                <td>вЂ”</td>
                             </tr>
                             <tr>
-                                <th>Рейтинг x 1.2</th>
+                                <th>Р РµР№С‚РёРЅРі x 1.2</th>
                                 <td class="td-pro"><img src="/images/check.gif" alt="&diams;" /></td>
-                                <td>—</td>
+                                <td>вЂ”</td>
                             </tr>
                             <tr>
-                                <th>Количество специализаций, по которым вы размещаетесь в <a href="/freelancers/">каталоге</a></th>
+                                <th>РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёР№, РїРѕ РєРѕС‚РѕСЂС‹Рј РІС‹ СЂР°Р·РјРµС‰Р°РµС‚РµСЃСЊ РІ <a href="/freelancers/">РєР°С‚Р°Р»РѕРіРµ</a></th>
                                 <td class="td-pro">5</td>
                                 <td>1</td>
                             </tr>
                             <tr>
-                                <th>Возможность загружать работы в ответах на проекты</th>
+                                <th>Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ Р·Р°РіСЂСѓР¶Р°С‚СЊ СЂР°Р±РѕС‚С‹ РІ РѕС‚РІРµС‚Р°С… РЅР° РїСЂРѕРµРєС‚С‹</th>
                                 <td class="td-pro"><img src="/images/check.gif" alt="&diams;" /></td>
-                                <td>—</td>
+                                <td>вЂ”</td>
                             </tr>
                             <tr>
-                                <th>Превью работ в портфолио</th>
+                                <th>РџСЂРµРІСЊСЋ СЂР°Р±РѕС‚ РІ РїРѕСЂС‚С„РѕР»РёРѕ</th>
                                 <td class="td-pro"><img src="/images/check.gif" alt="&diams;" /></td>
-                                <td>—</td>
+                                <td>вЂ”</td>
                             </tr>
                             <tr>
-                                <th>Размещение работ в каталоге фрилансеров в разделе «<a href="/portfolio/">Работы</a>»</th>
+                                <th>Р Р°Р·РјРµС‰РµРЅРёРµ СЂР°Р±РѕС‚ РІ РєР°С‚Р°Р»РѕРіРµ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ РІ СЂР°Р·РґРµР»Рµ В«<a href="/portfolio/">Р Р°Р±РѕС‚С‹</a>В»</th>
                                 <td class="td-pro"><img src="/images/check.gif" alt="&diams;" /></td>
-                                <td>—</td>
+                                <td>вЂ”</td>
                             </tr>
                             <tr>
-                                <th>Возможность создавать <a href="/commune/">сообщества</a></th>
+                                <th>Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЃРѕР·РґР°РІР°С‚СЊ <a href="/commune/">СЃРѕРѕР±С‰РµСЃС‚РІР°</a></th>
                                 <td class="td-pro"><img src="/images/check.gif" alt="&diams;" /></td>
-                                <td>—</td>
+                                <td>вЂ”</td>
                             </tr>
                             <tr>
-                                <th>Отсутствие рекламы на личной странице</th>
+                                <th>РћС‚СЃСѓС‚СЃС‚РІРёРµ СЂРµРєР»Р°РјС‹ РЅР° Р»РёС‡РЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ</th>
                                 <td class="td-pro"><img src="/images/check.gif" alt="&diams;" /></td>
-                                <td>—</td>
+                                <td>вЂ”</td>
                             </tr>
                             <tr>
-                                <th>Возможность изменять заголовок личной страницы</th>
+                                <th>Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РёР·РјРµРЅСЏС‚СЊ Р·Р°РіРѕР»РѕРІРѕРє Р»РёС‡РЅРѕР№ СЃС‚СЂР°РЅРёС†С‹</th>
                                 <td class="td-pro"><img src="/images/check.gif" alt="&diams;" /></td>
-                                <td>—</td>
+                                <td>вЂ”</td>
                             </tr>
                             <tr>
-                                <th>Возможность показать лучшие работы из разных специализаций</th>
+                                <th>Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРѕРєР°Р·Р°С‚СЊ Р»СѓС‡С€РёРµ СЂР°Р±РѕС‚С‹ РёР· СЂР°Р·РЅС‹С… СЃРїРµС†РёР°Р»РёР·Р°С†РёР№</th>
                                 <td class="td-pro"><img src="/images/check.gif" alt="&diams;" /></td>
-                                <td>—</td>
+                                <td>вЂ”</td>
                             </tr>
                             <tr class="last">
-                                <th>Реклама вашего профиля в проектах</th>
+                                <th>Р РµРєР»Р°РјР° РІР°С€РµРіРѕ РїСЂРѕС„РёР»СЏ РІ РїСЂРѕРµРєС‚Р°С…</th>
                                 <td class="td-pro"><img src="/images/check.gif" alt="&diams;" /></td>
-                                <td>—</td>
+                                <td>вЂ”</td>
                             </tr>
                         </tbody>
                     </table>

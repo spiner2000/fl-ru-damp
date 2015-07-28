@@ -3,6 +3,6 @@
 
 class ReservesArbitrageException extends Exception
 {
-     const NOT_ALLOWED = 'Нехватает прав для уплавление арбитражем.';
-     const CLOSE_FAIL  = 'Неудалось закрыть арбитраж.';
+     const NOT_ALLOWED = 'РќРµС…РІР°С‚Р°РµС‚ РїСЂР°РІ РґР»СЏ СѓРїР»Р°РІР»РµРЅРёРµ Р°СЂР±РёС‚СЂР°Р¶РµРј.';
+     const CLOSE_FAIL  = 'РќРµСѓРґР°Р»РѕСЃСЊ Р·Р°РєСЂС‹С‚СЊ Р°СЂР±РёС‚СЂР°Р¶.';
 }

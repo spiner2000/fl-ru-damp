@@ -26,6 +26,6 @@ $mail = new smail();
 
 
 
-// Рассылка по базе контактов в /siteadmin/contacts
+// Р Р°СЃСЃС‹Р»РєР° РїРѕ Р±Р°Р·Рµ РєРѕРЅС‚Р°РєС‚РѕРІ РІ /siteadmin/contacts
 $mail->SendMailToContacts();
 

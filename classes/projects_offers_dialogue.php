@@ -3,17 +3,17 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 
 /**
- * Êëàññ ðàáîòû ñ äèàëîãàìè ê ïðîåêòàì
+ * ÐšÐ»Ð°ÑÑ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ Ð´Ð¸Ð°Ð»Ð¾Ð³Ð°Ð¼Ð¸ Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°Ð¼
  *
  */
 class projects_offers_dialogue
 {
     /**
-     * Ïîëó÷åíèå äèàëîãà ïî êîíêðåòíîìó ïðåäëîæåíèþ ê ïðîåêòó
+     * ÐŸÐ¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ðµ Ð´Ð¸Ð°Ð»Ð¾Ð³Ð° Ð¿Ð¾ ÐºÐ¾Ð½ÐºÑ€ÐµÑ‚Ð½Ð¾Ð¼Ñƒ Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸ÑŽ Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ
      *
-     * @param integer $po_id             id ïðåäëîæåíèÿ ê ïðîåêòó
+     * @param integer $po_id             id Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ
      *
-     * @return array                     ñïèñîê ñîîáùåíèé äèàëîãà
+     * @return array                     ÑÐ¿Ð¸ÑÐ¾Ðº ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¹ Ð´Ð¸Ð°Ð»Ð¾Ð³Ð°
      */
     function GetDialogueForOffer($po_id)
     {
@@ -37,9 +37,9 @@ class projects_offers_dialogue
     }
     
     /**
-     * Âîçâðàùàåò äàííûå ñîîáùåíèÿ ïî åãî ID
+     * Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð´Ð°Ð½Ð½Ñ‹Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð¿Ð¾ ÐµÐ³Ð¾ ID
      * 
-     * @param type $dialogue_id ID ñîîáùåíèÿ â äèàëîãå
+     * @param type $dialogue_id ID ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð² Ð´Ð¸Ð°Ð»Ð¾Ð³Ðµ
      * @return array
      */
     function getDialogueMessageById( $dialogue_id = 0 ) {
@@ -59,17 +59,17 @@ class projects_offers_dialogue
     }
     
     /**
-     * Áëîêèðóåò ñîîáùåíèå
+     * Ð‘Ð»Ð¾ÐºÐ¸Ñ€ÑƒÐµÑ‚ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ
      * 
-     * @param  integer $dialogue_id ID ñîîáùåíèåÿ
-     * @param  string $reason ïðè÷èíà
-     * @param  string $reason_id id ïðè÷èíû, åñëè îíà âûáðàíà èç ñïèñêà
-     * @param  integer $uid uid àäìèíèñòðàòîðà (åñëè 0, èñïîëüçóåòñÿ $_SESSION['uid'])
-     * @param  boolean $from_stream true - áëîêèðîâêà èç ïîòîêà, false - íà ñàéòå
-     * @return integer ID áëîêèðîâêè
+     * @param  integer $dialogue_id ID ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸ÐµÑ
+     * @param  string $reason Ð¿Ñ€Ð¸Ñ‡Ð¸Ð½Ð°
+     * @param  string $reason_id id Ð¿Ñ€Ð¸Ñ‡Ð¸Ð½Ñ‹, ÐµÑÐ»Ð¸ Ð¾Ð½Ð° Ð²Ñ‹Ð±Ñ€Ð°Ð½Ð° Ð¸Ð· ÑÐ¿Ð¸ÑÐºÐ°
+     * @param  integer $uid uid Ð°Ð´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€Ð° (ÐµÑÐ»Ð¸ 0, Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ $_SESSION['uid'])
+     * @param  boolean $from_stream true - Ð±Ð»Ð¾ÐºÐ¸Ñ€Ð¾Ð²ÐºÐ° Ð¸Ð· Ð¿Ð¾Ñ‚Ð¾ÐºÐ°, false - Ð½Ð° ÑÐ°Ð¹Ñ‚Ðµ
+     * @return integer ID Ð±Ð»Ð¾ÐºÐ¸Ñ€Ð¾Ð²ÐºÐ¸
      */
     function Blocked( $dialogue_id = 0, $reason, $reason_id = null, $uid = 0, $from_stream = false ) {      
-        if (!$uid && !($uid = $_SESSION['uid'])) return 'Íåäîñòàòî÷íî ïðàâ';
+        if (!$uid && !($uid = $_SESSION['uid'])) return 'ÐÐµÐ´Ð¾ÑÑ‚Ð°Ñ‚Ð¾Ñ‡Ð½Ð¾ Ð¿Ñ€Ð°Ð²';
         $sql = "INSERT INTO projects_offers_dialogue_blocked (src_id, \"admin\", reason, reason_id, blocked_time) VALUES(?i, ?i, ?, ?, NOW()) RETURNING id";
         $sId = $GLOBALS['DB']->val( $sql, $dialogue_id, $uid, $reason, $reason_id );
         
@@ -104,10 +104,10 @@ class projects_offers_dialogue
     }
         
     /**
-     * Ðàçáëîêèðóåò ñîîáùåíèå
+     * Ð Ð°Ð·Ð±Ð»Ð¾ÐºÐ¸Ñ€ÑƒÐµÑ‚ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ
      *
-     * @param integer $dialogue_id ID ñîîáùåíèåÿ
-     * @return string Ñîîáùåíèå îá îøèáêå
+     * @param integer $dialogue_id ID ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸ÐµÑ
+     * @return string Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
      */
     function UnBlocked( $dialogue_id ) {
         $GLOBALS['DB']->query( 'DELETE FROM projects_offers_dialogue_blocked WHERE src_id = ?i', $dialogue_id );
@@ -133,11 +133,11 @@ class projects_offers_dialogue
     }
     
     /**
-     * Ïîëó÷àåò id ïðîåêòà ïî id ïðåäëîæåíèÿ ê ïðîåêòó
+     * ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÑ‚ id Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð° Ð¿Ð¾ id Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ
      *
-     * @param integer $po_id             id ïðåäëîæåíèÿ ê ïðîåêòó
+     * @param integer $po_id             id Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ
      *
-     * @return integer                   id ïðîåêòà èëè 0 â ñëó÷àå, åñëè ïðîåêò íå íàéäåí
+     * @return integer                   id Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð° Ð¸Ð»Ð¸ 0 Ð² ÑÐ»ÑƒÑ‡Ð°Ðµ, ÐµÑÐ»Ð¸ Ð¿Ñ€Ð¾ÐµÐºÑ‚ Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½
      */
     function GetProjectIDFromDialogue($po_id) {
         $pid = $GLOBALS['DB']->val("SELECT project_id FROM projects_offers WHERE id = ?", $po_id);
@@ -147,11 +147,11 @@ class projects_offers_dialogue
 
 
     /**
-     * Ïîëó÷àåò äàííûå ïðîåêòà ïî id ïðåäëîæåíèÿ ê ïðîåêòó
+     * ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÑ‚ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð° Ð¿Ð¾ id Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ
      *
-     * @param integer $po_id             id ïðåäëîæåíèÿ ê ïðîåêòó
+     * @param integer $po_id             id Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ
      *
-     * @return array                     äàííûå ïðîåêòà
+     * @return array                     Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°
      */
     function GetProjectFromDialogue($po_id) {
         return $GLOBALS['DB']->row("SELECT p.* FROM projects AS p INNER JOIN projects_offers AS po ON p.id = po.project_id WHERE po.id = ?", $po_id);
@@ -160,16 +160,16 @@ class projects_offers_dialogue
 
 
     /**
-     * Äîáàâëåíèå ñîîáùåíèÿ â äèàëîã ïðåäëîæåíèÿ ê ïðîåêòó
+     * Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð² Ð´Ð¸Ð°Ð»Ð¾Ð³ Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ
      *
-     * @param integer $po_id              id ïðåäëîæåíèÿ ê ïðîåêòó
-     * @param integer $user_id            id ïîëüçîâàòåëÿ
-     * @param string $message             òåêñò ñîîáùåíèÿ
-     * @param boolean $frl_read           ïîìåòêà î ïðî÷òåíèè ôðèëàíñåðîì
-     * @param boolean $emp_read           ïîìåòêà î ïðî÷òåíèè ðàáîòîäàòåëåì
-     * @param boolean $emp_read           ïîìåòêà î êîðíåâîì ñîîáùåíèè - ñàìî ïðåäëîæåíèå
+     * @param integer $po_id              id Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ
+     * @param integer $user_id            id Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
+     * @param string $message             Ñ‚ÐµÐºÑÑ‚ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ
+     * @param boolean $frl_read           Ð¿Ð¾Ð¼ÐµÑ‚ÐºÐ° Ð¾ Ð¿Ñ€Ð¾Ñ‡Ñ‚ÐµÐ½Ð¸Ð¸ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð¼
+     * @param boolean $emp_read           Ð¿Ð¾Ð¼ÐµÑ‚ÐºÐ° Ð¾ Ð¿Ñ€Ð¾Ñ‡Ñ‚ÐµÐ½Ð¸Ð¸ Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»ÐµÐ¼
+     * @param boolean $emp_read           Ð¿Ð¾Ð¼ÐµÑ‚ÐºÐ° Ð¾ ÐºÐ¾Ñ€Ð½ÐµÐ²Ð¾Ð¼ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¸ - ÑÐ°Ð¼Ð¾ Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ
      *
-     * @return string                     ïóñòàÿ ñòðîêà åñëè ìåòîä âûïîëíåí óñïåøíî èëè ñîîáùåíèå îá îøèáêå
+     * @return string                     Ð¿ÑƒÑÑ‚Ð°Ñ ÑÑ‚Ñ€Ð¾ÐºÐ° ÐµÑÐ»Ð¸ Ð¼ÐµÑ‚Ð¾Ð´ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð¸Ð»Ð¸ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
      */
     function AddDialogueMessage($po_id, $user_id, $message, $frl_read = false, $emp_read = false, $root = false)
     {
@@ -216,7 +216,7 @@ class projects_offers_dialogue
             $GLOBALS['DB']->insert( 'moderation', array('rec_id' => $sId, 'rec_type' => user_content::MODER_PRJ_DIALOG, 'stop_words_cnt' => $nStopWordsCnt) );
         }
         
-        // ñòèðàåì ìåìêåø
+        // ÑÑ‚Ð¸Ñ€Ð°ÐµÐ¼ Ð¼ÐµÐ¼ÐºÐµÑˆ
         $memBuff = new memBuff();
         if ((int)$users['frl'] !== (int)$user_id) {
             $memBuff->delete("prjMsgsCnt{$users['frl']}");
@@ -232,16 +232,16 @@ class projects_offers_dialogue
 
 
     /**
-	 * Ðåäàêòèðîâàíèå ñîîáùåíèÿ â äèàëîãå ïðåäëîæåíèÿ ê ïðîåêòó
+	 * Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð² Ð´Ð¸Ð°Ð»Ð¾Ð³Ðµ Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ
 	 *
-	 * @param integer $user_id            id ïîëüçîâàòåëÿ
-	 * @param string $message             òåêñò ñîîáùåíèÿ
-	 * @param integer $comment_id         id êîììåíòàðèÿ
-	 * @param integer $po_id              id âåòêè êîììåíòàðèåâ ïðîåêòà
-	 * @param boolean $is_first           ïåðâûé êîììåíòàðèé â âåòêå (ïðîäëîæåíèå) èëè êîììåíòàðèè
-	 * @param integer $moduser_id         UID ïîëüçîâàòåëÿ (àäìèíà), èçìåíÿþùåãî ïðåäëîæåíèå. åñëè null - òî áåðåòñÿ $user_id
-     * @param string $modified_reason     ïðè÷èíà ðåäàêòèðîâàíèÿ
-	 * @return string                     ïóñòàÿ ñòðîêà åñëè ìåòîä âûïîëíåí óñïåøíî èëè ñîîáùåíèå îá îøèáêå
+	 * @param integer $user_id            id Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
+	 * @param string $message             Ñ‚ÐµÐºÑÑ‚ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ
+	 * @param integer $comment_id         id ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ñ
+	 * @param integer $po_id              id Ð²ÐµÑ‚ÐºÐ¸ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÐµÐ² Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°
+	 * @param boolean $is_first           Ð¿ÐµÑ€Ð²Ñ‹Ð¹ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¹ Ð² Ð²ÐµÑ‚ÐºÐµ (Ð¿Ñ€Ð¾Ð´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ) Ð¸Ð»Ð¸ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¸
+	 * @param integer $moduser_id         UID Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ (Ð°Ð´Ð¼Ð¸Ð½Ð°), Ð¸Ð·Ð¼ÐµÐ½ÑÑŽÑ‰ÐµÐ³Ð¾ Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ. ÐµÑÐ»Ð¸ null - Ñ‚Ð¾ Ð±ÐµÑ€ÐµÑ‚ÑÑ $user_id
+     * @param string $modified_reason     Ð¿Ñ€Ð¸Ñ‡Ð¸Ð½Ð° Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ
+	 * @return string                     Ð¿ÑƒÑÑ‚Ð°Ñ ÑÑ‚Ñ€Ð¾ÐºÐ° ÐµÑÐ»Ð¸ Ð¼ÐµÑ‚Ð¾Ð´ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð¸Ð»Ð¸ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
 	 */
 	function SaveDialogueMessage( $user_id, $message, $comment_id, $po_id, $is_first = false, $moduser_id = null, $modified_reason = '' ) {
 		$user_id = intval($user_id);
@@ -264,7 +264,7 @@ class projects_offers_dialogue
             
 			if ( $ret['user_id'] == $user_id || hasPermissions('projects') ) {
                 if ( $ret['emp_is_pro'] != 't' && $ret['frl_is_pro'] != 't' && $ret['user_id'] == $moduser_id && !hasPermissions('projects') && $ret['post_text'] != $message ) {
-                    // àâòîð, íå àäìèí, íå ïðî ìåíÿåò çàãîëîâîê ëèáî òåêñò - îòïðàâèòü íà ìîäåðèðîâàíèå
+                    // Ð°Ð²Ñ‚Ð¾Ñ€, Ð½Ðµ Ð°Ð´Ð¼Ð¸Ð½, Ð½Ðµ Ð¿Ñ€Ð¾ Ð¼ÐµÐ½ÑÐµÑ‚ Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº Ð»Ð¸Ð±Ð¾ Ñ‚ÐµÐºÑÑ‚ - Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð¸Ñ‚ÑŒ Ð½Ð° Ð¼Ð¾Ð´ÐµÑ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ
                     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/stop_words.php' );
                     require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/user_content.php' );
                     
@@ -291,12 +291,12 @@ class projects_offers_dialogue
 
 
     /**
-	 * Ïîëó÷àåò id ïîñëåäíåãî ñîîáùåíèÿ âåòêè êîììåíòàðèåâ ïðîåêòà äëÿ òåêóùåãî ïîëüçîâàòåëÿ
+	 * ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÑ‚ id Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐ³Ð¾ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð²ÐµÑ‚ÐºÐ¸ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÐµÐ² Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð° Ð´Ð»Ñ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ³Ð¾ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
 	 *
-	 * @param integer $user_id           id ïîëüçîâàòåëÿ
-	 * @param integer $po_id             id âåòêè êîììåíòàðèåâ ïðîåêòà
+	 * @param integer $user_id           id Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
+	 * @param integer $po_id             id Ð²ÐµÑ‚ÐºÐ¸ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÐµÐ² Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°
 	 *
-	 * @return id                        id ïîñëåäíåãî ñîîáùåíèÿ âåòêè êîììåíòàðèåâ
+	 * @return id                        id Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐ³Ð¾ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð²ÐµÑ‚ÐºÐ¸ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÐµÐ²
 	 */
 	function GetLastDialogueMessage($user_id, $po_id) {
 		return $GLOBALS['DB']->val("SELECT id FROM projects_offers_dialogue WHERE user_id = ? AND po_id = ? ORDER BY id DESC LIMIT 1", $user_id, $po_id);
@@ -304,12 +304,12 @@ class projects_offers_dialogue
 
 	
 	/**
-	 * Ïîëó÷àåò id ïîñëåäíåãî ñîîáùåíèÿ âåòêè êîììåíòàðèåâ ïðîåêòà äëÿ òåêóùåãî ïîëüçîâàòåëÿ
+	 * ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÑ‚ id Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐ³Ð¾ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð²ÐµÑ‚ÐºÐ¸ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÐµÐ² Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð° Ð´Ð»Ñ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ³Ð¾ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
 	 *
-	 * @param integer $user_id           id ïîëüçîâàòåëÿ
-	 * @param integer $po_id             id âåòêè êîììåíòàðèåâ ïðîåêòà
+	 * @param integer $user_id           id Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
+	 * @param integer $po_id             id Ð²ÐµÑ‚ÐºÐ¸ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÐµÐ² Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°
 	 *
-	 * @return id                        id ïîñëåäíåãî ñîîáùåíèÿ âåòêè êîììåíòàðèåâ
+	 * @return id                        id Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÐµÐ³Ð¾ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð²ÐµÑ‚ÐºÐ¸ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÐµÐ²
 	 */
 	function GetLastDialogueMessageData($user_id, $po_id) {
 		return $GLOBALS['DB']->row("SELECT * FROM projects_offers_dialogue WHERE user_id = ? AND po_id = ? ORDER BY id DESC LIMIT 1", $user_id, $po_id);
@@ -318,12 +318,12 @@ class projects_offers_dialogue
 
 
     /**
-	 * Ïîìå÷àåò âñå ñîîáùåíèÿ äèàëîãà â ïðåäëîæåíèè ê ïðîåêòó êàê ïðî÷èòàííûå ôðèëàíñåðîì
+	 * ÐŸÐ¾Ð¼ÐµÑ‡Ð°ÐµÑ‚ Ð²ÑÐµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð´Ð¸Ð°Ð»Ð¾Ð³Ð° Ð² Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¸ Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ ÐºÐ°Ðº Ð¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð½Ñ‹Ðµ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð¾Ð¼
 	 *
-	 * @param integer $po_id             id ïðåäëîæåíèÿ ê ïðîåêòó
-	 * @param integer $user_id           id ôðèëàíñåðà
+	 * @param integer $po_id             id Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ñ Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ
+	 * @param integer $user_id           id Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð°
 	 *
-	 * @return string                    ïóñòàÿ ñòðîêà åñëè ìåòîä âûïîëíåí óñïåøíî èëè ñîîáùåíèå îá îøèáêå
+	 * @return string                    Ð¿ÑƒÑÑ‚Ð°Ñ ÑÑ‚Ñ€Ð¾ÐºÐ° ÐµÑÐ»Ð¸ Ð¼ÐµÑ‚Ð¾Ð´ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð¸Ð»Ð¸ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
 	 */
 	function markReadFrl($po_id, $user_id) {
 		$ret = $GLOBALS['DB']->row("SELECT user_id FROM projects_offers WHERE id = ?", $po_id);
@@ -341,12 +341,12 @@ class projects_offers_dialogue
 	}
 
     /**
-     * Ïîìå÷àåò âñå ñîîáùåíèÿ äèàëîãà â ïðåäëîæåíèè ê ïðîåêòó êàê ïðî÷èòàííûå ìîäåðàòîðîì
+     * ÐŸÐ¾Ð¼ÐµÑ‡Ð°ÐµÑ‚ Ð²ÑÐµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð´Ð¸Ð°Ð»Ð¾Ð³Ð° Ð² Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¸ Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ ÐºÐ°Ðº Ð¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð½Ñ‹Ðµ Ð¼Ð¾Ð´ÐµÑ€Ð°Ñ‚Ð¾Ñ€Ð¾Ð¼
      *
-     * @param array   $po_ids            id ïðåäëîæåíèé ê ïðîåêòó
-     * @param integer $user_id           id ìîäåðàòîðà
+     * @param array   $po_ids            id Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¹ Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ
+     * @param integer $user_id           id Ð¼Ð¾Ð´ÐµÑ€Ð°Ñ‚Ð¾Ñ€Ð°
      *
-     * @return string                    ïóñòàÿ ñòðîêà åñëè ìåòîä âûïîëíåí óñïåøíî èëè ñîîáùåíèå îá îøèáêå
+     * @return string                    Ð¿ÑƒÑÑ‚Ð°Ñ ÑÑ‚Ñ€Ð¾ÐºÐ° ÐµÑÐ»Ð¸ Ð¼ÐµÑ‚Ð¾Ð´ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð¸Ð»Ð¸ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
      */
     function markReadMod($po_ids, $user_id)
     {
@@ -357,12 +357,12 @@ class projects_offers_dialogue
 
 
     /**
-     * Ïîìå÷àåò âñå ñîîáùåíèÿ äèàëîãà â ïðåäëîæåíèè ê ïðîåêòó êàê ïðî÷èòàííûå ðàáîòîäàòåëåì
+     * ÐŸÐ¾Ð¼ÐµÑ‡Ð°ÐµÑ‚ Ð²ÑÐµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð´Ð¸Ð°Ð»Ð¾Ð³Ð° Ð² Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¸ Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ ÐºÐ°Ðº Ð¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð½Ñ‹Ðµ Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»ÐµÐ¼
      *
-     * @param array   $po_ids            id ïðåäëîæåíèé ê ïðîåêòó
-     * @param integer $user_id           id ðàáîòîäàòåëåì
+     * @param array   $po_ids            id Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¹ Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ
+     * @param integer $user_id           id Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»ÐµÐ¼
      *
-     * @return string                    ïóñòàÿ ñòðîêà åñëè ìåòîä âûïîëíåí óñïåøíî èëè ñîîáùåíèå îá îøèáêå
+     * @return string                    Ð¿ÑƒÑÑ‚Ð°Ñ ÑÑ‚Ñ€Ð¾ÐºÐ° ÐµÑÐ»Ð¸ Ð¼ÐµÑ‚Ð¾Ð´ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð¸Ð»Ð¸ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
      */
     function markReadEmp($po_ids, $user_id)
     {
@@ -380,12 +380,12 @@ class projects_offers_dialogue
 
     
 	/**
-     * Ïîìå÷àåò âñå ñîîáùåíèÿ âñåõ ïðåäëîæåíèé ê ïðîåêòó êàê ïðî÷èòàííûå ðàáîòîäàòåëåì
+     * ÐŸÐ¾Ð¼ÐµÑ‡Ð°ÐµÑ‚ Ð²ÑÐµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð²ÑÐµÑ… Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð¸Ð¹ Ðº Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñƒ ÐºÐ°Ðº Ð¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð½Ñ‹Ðµ Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»ÐµÐ¼
      *
-     * @param integer $po_id             id ïðîåêòà
-     * @param integer $user_id           id ðàáîòîäàòåëÿ
+     * @param integer $po_id             id Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°
+     * @param integer $user_id           id Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»Ñ
      *
-     * @return string                    ïóñòàÿ ñòðîêà åñëè ìåòîä âûïîëíåí óñïåøíî èëè ñîîáùåíèå îá îøèáêå
+     * @return string                    Ð¿ÑƒÑÑ‚Ð°Ñ ÑÑ‚Ñ€Ð¾ÐºÐ° ÐµÑÐ»Ð¸ Ð¼ÐµÑ‚Ð¾Ð´ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð¸Ð»Ð¸ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
      */	
 	function markAllReadEmp($prj_id, $user_id) 
 	{
@@ -411,12 +411,12 @@ class projects_offers_dialogue
 
 
     /**
-     * Ïîäñ÷èòûâàåò êîëè÷åñòâî ñîîáùåíèé äëÿ ðàáîòîäàòåëÿ ïî âñåì åãî ïðîåêòàì
+     * ÐŸÐ¾Ð´ÑÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°ÐµÑ‚ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¹ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»Ñ Ð¿Ð¾ Ð²ÑÐµÐ¼ ÐµÐ³Ð¾ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°Ð¼
      *
-     * @param integer $user_id           id ðàáîòîäàòåëÿ
-     * @param boolean $new               ïðèçíàê ïîäñ÷åòà íîâûõ (true) èëè âñåõ (false) ñîîáùåíèé (!!! ñåé÷àñ ýòîò ïàðàìåòð ðàáòàåò âñåãäà, êàê true)
+     * @param integer $user_id           id Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»Ñ
+     * @param boolean $new               Ð¿Ñ€Ð¸Ð·Ð½Ð°Ðº Ð¿Ð¾Ð´ÑÑ‡ÐµÑ‚Ð° Ð½Ð¾Ð²Ñ‹Ñ… (true) Ð¸Ð»Ð¸ Ð²ÑÐµÑ… (false) ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¹ (!!! ÑÐµÐ¹Ñ‡Ð°Ñ ÑÑ‚Ð¾Ñ‚ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€ Ñ€Ð°Ð±Ñ‚Ð°ÐµÑ‚ Ð²ÑÐµÐ³Ð´Ð°, ÐºÐ°Ðº true)
      *
-     * @return integer                   êîëè÷åñòâî ñîîáùåíèé
+     * @return integer                   ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¹
      */
     function CountMessagesForEmp($user_id, $new = false, $as_array = false)
     {
@@ -461,11 +461,11 @@ class projects_offers_dialogue
 	
 	
     /**
-     * Ïîäñ÷èòûâàåò êîëè÷åñòâî íîâûõ ñîîáùåíèé äëÿ ðàáîòîäàòåëÿ â ïðîåêòå
+     * ÐŸÐ¾Ð´ÑÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°ÐµÑ‚ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð½Ð¾Ð²Ñ‹Ñ… ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¹ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»Ñ Ð² Ð¿Ñ€Ð¾ÐµÐºÑ‚Ðµ
      *
-     * @param integer $prj_id   id ïðîåêòà
+     * @param integer $prj_id   id Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°
 	 *
-     * @return integer          êîëè÷åñòâî íîâûõ ñîîáùåíèé
+     * @return integer          ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð½Ð¾Ð²Ñ‹Ñ… ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¹
      */
 	function CountMessagesPrjForEmp($prj_id)
 	{
@@ -475,13 +475,13 @@ class projects_offers_dialogue
 
 
     /**
-     * Ïîäñ÷èòûâàåò êîëè÷åñòâî ñîîáùåíèé äëÿ ôðèëàíñåðà ïî âñåì ïðîåêòàì
+     * ÐŸÐ¾Ð´ÑÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°ÐµÑ‚ ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¹ Ð´Ð»Ñ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð° Ð¿Ð¾ Ð²ÑÐµÐ¼ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°Ð¼
      *
-     * @param integer $user_id           id ôðèëàíñåðà
-     * @param boolean $new               ïðèçíàê ïîäñ÷åòà íîâûõ (true) èëè âñåõ (false) ñîîáùåíèé (!!! ñåé÷àñ ýòîò ïàðàìåòð ðàáòàåò âñåãäà, êàê true)
-     * @param boolean $waste             ó÷èòûâàòü ïðîåêòû â êîðçèíå?
+     * @param integer $user_id           id Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð°
+     * @param boolean $new               Ð¿Ñ€Ð¸Ð·Ð½Ð°Ðº Ð¿Ð¾Ð´ÑÑ‡ÐµÑ‚Ð° Ð½Ð¾Ð²Ñ‹Ñ… (true) Ð¸Ð»Ð¸ Ð²ÑÐµÑ… (false) ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¹ (!!! ÑÐµÐ¹Ñ‡Ð°Ñ ÑÑ‚Ð¾Ñ‚ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€ Ñ€Ð°Ð±Ñ‚Ð°ÐµÑ‚ Ð²ÑÐµÐ³Ð´Ð°, ÐºÐ°Ðº true)
+     * @param boolean $waste             ÑƒÑ‡Ð¸Ñ‚Ñ‹Ð²Ð°Ñ‚ÑŒ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñ‹ Ð² ÐºÐ¾Ñ€Ð·Ð¸Ð½Ðµ?
      *
-     * @return integer                   êîëè÷åñòâî ñîîáùåíèé
+     * @return integer                   ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¹
      */
     function CountMessagesForFrl($user_id, $new = false, $waste = true)
     {
@@ -509,11 +509,11 @@ class projects_offers_dialogue
 
 
     /**
-	 * Íàõîäèò äëÿ ðàáîòîäàòåëÿ ïðîåêò ñ ïîñëåäíèì íåïðî÷èòàííûì ñîîáùåíèåì
+	 * ÐÐ°Ñ…Ð¾Ð´Ð¸Ñ‚ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»Ñ Ð¿Ñ€Ð¾ÐµÐºÑ‚ Ñ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ð¸Ð¼ Ð½ÐµÐ¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð½Ñ‹Ð¼ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸ÐµÐ¼
 	 *
-	 * @param integer $user_id           id ðàáîòîäàòåëÿ
+	 * @param integer $user_id           id Ñ€Ð°Ð±Ð¾Ñ‚Ð¾Ð´Ð°Ñ‚ÐµÐ»Ñ
 	 *
-	 * @return mixed                     id ïðîåêòà, åñëè åñòü ïðîåêòû ñ íåïðî÷èòàííûìè ñîîáùåíèÿìè â äèàëîãå è false, åñëè íåò.
+	 * @return mixed                     id Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°, ÐµÑÐ»Ð¸ ÐµÑÑ‚ÑŒ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñ‹ Ñ Ð½ÐµÐ¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð½Ñ‹Ð¼Ð¸ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸ÑÐ¼Ð¸ Ð² Ð´Ð¸Ð°Ð»Ð¾Ð³Ðµ Ð¸ false, ÐµÑÐ»Ð¸ Ð½ÐµÑ‚.
 	 */
 	function FindLastMessageProjectForEmp($user_id) {
         $mem = new memBuff;
@@ -538,12 +538,12 @@ class projects_offers_dialogue
 			WHERE
 				p.user_id = ?
 			ORDER BY
-                p.post_date DESC, --  #0024381 ñíà÷àëà áåðåì ñàìûå íîâûå ïðîåêòû c îòâåòàìè
-                COALESCE(dc.post_date, dp.post_date) DESC -- è óæå â íèõ ñìîòðèì
+                p.post_date DESC, --  #0024381 ÑÐ½Ð°Ñ‡Ð°Ð»Ð° Ð±ÐµÑ€ÐµÐ¼ ÑÐ°Ð¼Ñ‹Ðµ Ð½Ð¾Ð²Ñ‹Ðµ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñ‹ c Ð¾Ñ‚Ð²ÐµÑ‚Ð°Ð¼Ð¸
+                COALESCE(dc.post_date, dp.post_date) DESC -- Ð¸ ÑƒÐ¶Ðµ Ð² Ð½Ð¸Ñ… ÑÐ¼Ð¾Ñ‚Ñ€Ð¸Ð¼
 			LIMIT
 				1
 		", $user_id);
-		/*if ($_SESSION['uid']) { // îïòèìèçàöèÿ äëÿ /personal_emp.php
+		/*if ($_SESSION['uid']) { // Ð¾Ð¿Ñ‚Ð¸Ð¼Ð¸Ð·Ð°Ñ†Ð¸Ñ Ð´Ð»Ñ /personal_emp.php
             $_SESSION['lst_emp_new_messages']['pid'] = $pid;
 		}*/
         $mem->set('prjLastMess' . $user_id, $pid, 1800);
@@ -553,11 +553,11 @@ class projects_offers_dialogue
 
 
     /**
-     * Íàõîäèò äëÿ ôðèëàíñåðà ïðîåêò ñ ïîñëåäíèì íåïðî÷èòàííûì ñîîáùåíèåì
+     * ÐÐ°Ñ…Ð¾Ð´Ð¸Ñ‚ Ð´Ð»Ñ Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð° Ð¿Ñ€Ð¾ÐµÐºÑ‚ Ñ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½Ð¸Ð¼ Ð½ÐµÐ¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð½Ñ‹Ð¼ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸ÐµÐ¼
      *
-     * @param integer $user_id id ôðèëàíñåðà
+     * @param integer $user_id id Ñ„Ñ€Ð¸Ð»Ð°Ð½ÑÐµÑ€Ð°
      *
-     * @return mixed                     id ïðîåêòà, åñëè åñòü ïðîåêòû ñ íåïðî÷èòàííûìè ñîîáùåíèÿìè â äèàëîãå è false, åñëè íåò.
+     * @return mixed                     id Ð¿Ñ€Ð¾ÐµÐºÑ‚Ð°, ÐµÑÐ»Ð¸ ÐµÑÑ‚ÑŒ Ð¿Ñ€Ð¾ÐµÐºÑ‚Ñ‹ Ñ Ð½ÐµÐ¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð½Ñ‹Ð¼Ð¸ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸ÑÐ¼Ð¸ Ð² Ð´Ð¸Ð°Ð»Ð¾Ð³Ðµ Ð¸ false, ÐµÑÐ»Ð¸ Ð½ÐµÑ‚.
      */
     function FindLastMessageProjectForFrl($user_id)
     {
@@ -581,9 +581,9 @@ class projects_offers_dialogue
 	
     
     /**
-     * Ôóíêöèÿ äëÿ àäìèíêè, âûäàåò íåïðî÷èòàííûå "ïîòåðÿííûå" ñîîáùåíèÿ ïîëüçîâàòåëÿ
+     * Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð´Ð»Ñ Ð°Ð´Ð¼Ð¸Ð½ÐºÐ¸, Ð²Ñ‹Ð´Ð°ÐµÑ‚ Ð½ÐµÐ¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð½Ñ‹Ðµ "Ð¿Ð¾Ñ‚ÐµÑ€ÑÐ½Ð½Ñ‹Ðµ" ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
      *
-     * @param integer $uid ÈÄ Ïîëüçîâàòåëÿ
+     * @param integer $uid Ð˜Ð” ÐŸÐ¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
      * @return array
      */
     function FindAllUnreadMessageFrl($uid) {
@@ -614,9 +614,9 @@ class projects_offers_dialogue
     }
     
     /**
-     * Ôóíêöèÿ äëÿ àäìèíêè, âûäàåò íåïðî÷èòàííûå "ïîòåðÿííûå" ñîîáùåíèÿ ïîëüçîâàòåëÿ
+     * Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð´Ð»Ñ Ð°Ð´Ð¼Ð¸Ð½ÐºÐ¸, Ð²Ñ‹Ð´Ð°ÐµÑ‚ Ð½ÐµÐ¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð½Ñ‹Ðµ "Ð¿Ð¾Ñ‚ÐµÑ€ÑÐ½Ð½Ñ‹Ðµ" ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
      *
-     * @param integer $uid ÈÄ Ïîëüçîâàòåëÿ
+     * @param integer $uid Ð˜Ð” ÐŸÐ¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
      * @return array
      */
     function FindAllUnreadMessageEmp($uid) {
@@ -651,10 +651,10 @@ class projects_offers_dialogue
     }
     
     /**
-     * Ôóíêöèÿ äëÿ àäìèíêè, ñèëîé ïðî÷èòàòü íåïðî÷èòàííûå ñîîáùåíèÿ
+     * Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð´Ð»Ñ Ð°Ð´Ð¼Ð¸Ð½ÐºÐ¸, ÑÐ¸Ð»Ð¾Ð¹ Ð¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ñ‚ÑŒ Ð½ÐµÐ¿Ñ€Ð¾Ñ‡Ð¸Ñ‚Ð°Ð½Ð½Ñ‹Ðµ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ
      *
-     * @param array $msgs ÈÄ Ñîîáùåíèé êîòîðûå íåîáõîäèìî ïîìåòèòü
-     * @return string Ñîîáùåíèå îá îøèáêå
+     * @param array $msgs Ð˜Ð” Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ð¹ ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ðµ Ð½ÐµÐ¾Ð±Ñ…Ð¾Ð´Ð¸Ð¼Ð¾ Ð¿Ð¾Ð¼ÐµÑ‚Ð¸Ñ‚ÑŒ
+     * @return string Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
      */
     function getUnread2Read($msgs, $frl=true) {
         if(!hasPermissions('projects') || !is_array($msgs)) {
@@ -670,10 +670,10 @@ class projects_offers_dialogue
     }
     
     /**
-     * Îòïðàâëÿåò óâåäîìëåíèÿ îá óäàëåíèè ñîîáùåíèÿ
+     * ÐžÑ‚Ð¿Ñ€Ð°Ð²Ð»ÑÐµÑ‚ ÑƒÐ²ÐµÐ´Ð¾Ð¼Ð»ÐµÐ½Ð¸Ñ Ð¾Ð± ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ð¸ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ
      * 
-     * @param int $msg_id ID ñîîáùåíèÿ
-     * @param int $deluser_id UID óäàëÿþùåãî
+     * @param int $msg_id ID ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ñ
+     * @param int $deluser_id UID ÑƒÐ´Ð°Ð»ÑÑŽÑ‰ÐµÐ³Ð¾
      */
     function DelDialogueMessageNotification( $msg_id = 0, $deluser_id = 0 ) {
         $aDialogue = $GLOBALS['DB']->row( 'SELECT po.project_id, f.uid, f.login, f.uname, f.usurname, p.name 

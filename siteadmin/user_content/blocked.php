@@ -1,6 +1,6 @@
 <?php
 /**
- * Модерирование пользовательского контента. Заблокированные сущности. Контроллер.
+ * РњРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РєРѕРЅС‚РµРЅС‚Р°. Р—Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ СЃСѓС‰РЅРѕСЃС‚Рё. РљРѕРЅС‚СЂРѕР»Р»РµСЂ.
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
@@ -18,7 +18,7 @@ $js_file[]  = 'polls.js';
 
 if ( in_array($sMode, $aModeAllow) ) {
     switch ( $sMode ) {
-        case 'letters': // просмотр переписки из заблокированой лички
+        case 'letters': // РїСЂРѕСЃРјРѕС‚СЂ РїРµСЂРµРїРёСЃРєРё РёР· Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРѕР№ Р»РёС‡РєРё
             include_once( 'stream_header.php' );
             
             $nFromId    = __paramInit( 'integer', 'fid', null, 0 );
@@ -45,11 +45,11 @@ if ( in_array($sMode, $aModeAllow) ) {
             include_once( 'stream_footer.php' );
             break;
 
-        default: // заблокированные сущности
+        default: // Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ СЃСѓС‰РЅРѕСЃС‚Рё
             $nCid      = __paramInit( 'int',  'cid', null, 0 );
             $aContents = $user_content->getBlockedContentsForUser();
             
-            if ( !$nCid ) { // Выбор типа заблокированных сущностей
+            if ( !$nCid ) { // Р’С‹Р±РѕСЂ С‚РёРїР° Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹С… СЃСѓС‰РЅРѕСЃС‚РµР№
                 $inner_page = "blocked_choose_inner.php";
                 
                 if ( !$aContents ) {

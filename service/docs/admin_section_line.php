@@ -7,6 +7,6 @@
 </td>
 <th>
     <input type="hidden" id="section_name_<?= $section['id']; ?>" value='<?= htmlspecialchars($section['name'], ENT_QUOTES)?>'>
-    <span class="mc-g-o"><span id="count_docs_<?=$section['id']?>"><?= $section['count']; ?></span>&nbsp;&nbsp; <a href="#" onclick="showSectionEdit('edit',<?= $section['id']; ?>); return false;"><img src="/images/ico-e-u.png" alt="Ðåäàêòèðîâàòü"></a><span id="del_block_sec_<?=$section['id']?>" <?if($section['count']) print("style='display:none'");?>>&nbsp;&nbsp; <a href="#" onclick="xajax_DeleteSectionHTML(<?= $section['id']; ?>, <?= $num; ?>); return false;"><img src="/images/btn-remove2.png" alt="Óäàëèòü"></a></span>&nbsp;&nbsp;</span>
+    <span class="mc-g-o"><span id="count_docs_<?=$section['id']?>"><?= $section['count']; ?></span>&nbsp;&nbsp; <a href="#" onclick="showSectionEdit('edit',<?= $section['id']; ?>); return false;"><img src="/images/ico-e-u.png" alt="Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ"></a><span id="del_block_sec_<?=$section['id']?>" <?if($section['count']) print("style='display:none'");?>>&nbsp;&nbsp; <a href="#" onclick="xajax_DeleteSectionHTML(<?= $section['id']; ?>, <?= $num; ?>); return false;"><img src="/images/btn-remove2.png" alt="Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ"></a></span>&nbsp;&nbsp;</span>
             <span><?= htmlspecialchars(hyphen_words($section['name'])); ?></span>
 </th>

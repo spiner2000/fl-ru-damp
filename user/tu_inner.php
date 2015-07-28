@@ -11,13 +11,13 @@ if(!defined('IN_STDF')) {
     <?php if($is_owner && @$_SESSION['tu_orders']): ?>
     <a href="<?=tservices_helper::url('frl_orders')?>" 
        class="b-button b-button_flat b-button_flat_green b-button_margbot_30 b-button_margtop_30">
-        Перейти в заказы услуг
+        РџРµСЂРµР№С‚Рё РІ Р·Р°РєР°Р·С‹ СѓСЃР»СѓРі
     </a>
     <?php endif; ?>
     <a href="<?php echo sprintf(tservices_helper::url('new'),$user->login); ?>" 
        class="b-button b-button_flat b-button_flat_green b-button_margbot_30 b-button_margtop_30" 
        onClick="yaCounter6051055.reachGoal('add_new_tu');">
-        Добавить услугу
+        Р”РѕР±Р°РІРёС‚СЊ СѓСЃР»СѓРіСѓ
     </a>
     <?php } ?>
     <div class="b-layout b-layout_padtop_20 b-layout__cf">
@@ -54,11 +54,11 @@ if(!defined('IN_STDF')) {
                 <?php if($is_owner || $is_perm){ ?>
                     <br/>
                     <?php if($el['is_blocked'] == 't'){ ?>
-                        Заблокирована модератором
+                        Р—Р°Р±Р»РѕРєРёСЂРѕРІР°РЅР° РјРѕРґРµСЂР°С‚РѕСЂРѕРј
 
                         <?php if($el['reason']){ ?>
                             <a class="b-pic__lnk b-pic__lnk_dot_0F71C8 i-shadow __tooltip" href="javascript:void(0)">
-                                Почему заблокирована?
+                                РџРѕС‡РµРјСѓ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅР°?
                                 <div class="b-shadow b-shadow_hide b-shadow_m b-shadow_width_230 b-shadow_top_20">
                                     <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_10">
                                         <div class="b-txt b-txt_fs_11 b-txt_color_eb0000 b-txt_bw">
@@ -72,15 +72,15 @@ if(!defined('IN_STDF')) {
 
                         <?php if($is_owner || $is_perm) { ?>
                             <a class="b-pic__lnk" href="<?php echo $edit_url; ?>" onClick="yaCounter6051055.reachGoal('republic_tu');">
-                                Исправить и отправить снова
+                                РСЃРїСЂР°РІРёС‚СЊ Рё РѕС‚РїСЂР°РІРёС‚СЊ СЃРЅРѕРІР°
                             </a>
                         <?php } ?>
 
                     <?php }else{ ?>
 
-                        <?php if($el['active'] == 'f'){ ?>Снята с публикации<?php } ?>
+                        <?php if($el['active'] == 'f'){ ?>РЎРЅСЏС‚Р° СЃ РїСѓР±Р»РёРєР°С†РёРё<?php } ?>
 
-                        <?php if($is_owner || $is_perm){?> <!-- Ссылка на редактирование только владельцу -->
+                        <?php if($is_owner || $is_perm){?> <!-- РЎСЃС‹Р»РєР° РЅР° СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ С‚РѕР»СЊРєРѕ РІР»Р°РґРµР»СЊС†Сѓ -->
                             <a class="b-button b-button_admin_edit" href="<?php echo $edit_url; ?>"></a>
                         <?php } ?>
 
@@ -91,7 +91,7 @@ if(!defined('IN_STDF')) {
         <?php } ?>
     <?php }else{ ?>
       <div class="b-txt b-txt_center b-txt_padtop_20 b-txt_padbot_40">
-          Типовых услуг не найдено.
+          РўРёРїРѕРІС‹С… СѓСЃР»СѓРі РЅРµ РЅР°Р№РґРµРЅРѕ.
       </div>
     <?php } ?>
     </div>

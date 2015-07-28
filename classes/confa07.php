@@ -1,44 +1,44 @@
 <?
 /**
- * œÓ‰ÍÎ˛˜‡ÂÏ Ù‡ÈÎ Ò ÓÒÌÓ‚Ì˚ÏË ÙÛÌÍˆËˇÏË
+ * –ü–æ–¥–∫–ª—é—á–∞–µ–º —Ñ–∞–π–ª —Å –æ—Å–Ω–æ–≤–Ω—ã–º–∏ —Ñ—É–Ω–∫—Ü–∏—è–º–∏
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 
 /**
- *  Î‡ÒÒ ‰Îˇ ‡·ÓÚ˚ Ò ÍÓÌÙÂÂÌˆËÂÈ 07 „Ó‰‡
+ * –ö–ª–∞—Å—Å –¥–ª—è —Ä–∞–±–æ—Ç—ã —Å –∫–æ–Ω—Ñ–µ—Ä–µ–Ω—Ü–∏–µ–π 07 –≥–æ–¥–∞
  *
  */
 class confa07 
 {
 	/**
-	 * «‡Â„‡Ú¸ ÔÓÎ¸ÁÓ‚‡ÚÂÎˇ Ì‡ ÍÓÌÙÂÂÌˆË˛
+	 * –ó–∞—Ä–µ–≥–∞—Ç—å –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—è –Ω–∞ –∫–æ–Ω—Ñ–µ—Ä–µ–Ω—Ü–∏—é
 	 *
-	 * @param string   $name    »Ïˇ ÔÓÎ¸ÁÓ‚‡ÚÂÎˇ
-	 * @param string   $surname ‘‡ÏËÎËˇ ÔÓÎ¸ÁÓ‚‡ÚÂÎˇ
-	 * @param integer  $type    “ËÔ
-	 * @param string   $mess    —ÓÓ·˘ÂÌËÂ
-	 * @param integer  $uid     »ƒ œÓÎ¸ÁÓÚÂÎˇ
-	 * @return string Œ¯Ë·Í‡ ÂÒÎË ÂÒÚ¸
+	 * @param string   $name    –ò–º—è –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—è
+	 * @param string   $surname –§–∞–º–∏–ª–∏—è –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—è
+	 * @param integer  $type    –¢–∏–ø
+	 * @param string   $mess    –°–æ–æ–±—â–µ–Ω–∏–µ
+	 * @param integer  $uid     –ò–î –ü–æ–ª—å–∑–æ—Ç–µ–ª—è
+	 * @return string –û—à–∏–±–∫–∞ –µ—Å–ª–∏ –µ—Å—Ç—å
 	 */
     function AddNew($name, $surname, $type, $mess, $uid){
         if (!confa07::CheckUid($uid)) {
             $sql = "INSERT INTO confa07 (uid,name,surname,type,message) VALUES ('$uid', '$name', '$surname', ".intval($type).", '$mess')";
             pg_query(DBConnect(),$sql);
             return true;
-        } else $error[1] = "¬˚ ÛÊÂ Á‡Â„ËÒÚËÓ‚‡Ì˚";
+        } else $error[1] = "–í—ã —É–∂–µ –∑–∞—Ä–µ–≥–∏—Å—Ç—Ä–∏—Ä–æ–≤–∞–Ω—ã";
 
         return $error;
     }
     
 	/**
-	 * Œ·ÌÓ‚ËÚ¸ Á‡ÔËÒ¸ Ó ÔÓÎ¸ÁÓ‚‡ÚÂÎÂ
+	 * –û–±–Ω–æ–≤–∏—Ç—å –∑–∞–ø–∏—Å—å –æ –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª–µ
 	 *
-	 * @param string   $name    »Ïˇ ÔÓÎ¸ÁÓ‚‡ÚÂÎˇ
-	 * @param string   $surname ‘‡ÏËÎËˇ ÔÓÎ¸ÁÓ‚‡ÚÂÎˇ
-	 * @param integer  $type    “ËÔ
-	 * @param string   $mess    —ÓÓ·˘ÂÌËÂ
-	 * @param integer  $uid     »ƒ œÓÎ¸ÁÓÚÂÎˇ
-	 * @return boolean true - ÂÒÎË ‚ÒÂ ÔÓ¯ÎÓ ÛÒÔÂ¯ÌÓ, ËÌ‡˜Â false
+	 * @param string   $name    –ò–º—è –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—è
+	 * @param string   $surname –§–∞–º–∏–ª–∏—è –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—è
+	 * @param integer  $type    –¢–∏–ø
+	 * @param string   $mess    –°–æ–æ–±—â–µ–Ω–∏–µ
+	 * @param integer  $uid     –ò–î –ü–æ–ª—å–∑–æ—Ç–µ–ª—è
+	 * @return boolean true - –µ—Å–ª–∏ –≤—Å–µ –ø—Ä–æ—à–ª–æ —É—Å–ø–µ—à–Ω–æ, –∏–Ω–∞—á–µ false
 	 */
     function Update($name, $surname, $type, $mess, $uid){
         if (confa07::CheckUid($uid)) {
@@ -50,10 +50,10 @@ class confa07
     }
     
 	/**
-	 * »ÌÙÓÏ‡ˆËˇ Ó ÔÓÎ¸ÁÓ‚‡ÚÂÎÂ Á‡Â„ËÒÚËÓ‚‡ÌÌÓÏ Ì‡ ÍÓÌÙÂÂÌˆË˛
+	 * –ò–Ω—Ñ–æ—Ä–º–∞—Ü–∏—è –æ –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª–µ –∑–∞—Ä–µ–≥–∏—Å—Ç—Ä–∏—Ä–æ–≤–∞–Ω–Ω–æ–º –Ω–∞ –∫–æ–Ω—Ñ–µ—Ä–µ–Ω—Ü–∏—é
 	 *
-	 * @param integer $uid »ƒ œÓÎ¸ÁÓ‚‡ÚÂÎˇ
-	 * @return array|boolan »ÌÙÓÏ‡ˆËˇ ‚˚·ÓÍË, ÎË·Ó false ÂÒÎË ÌÂÚ ËÌÙÓÏ‡ˆËË
+	 * @param integer $uid –ò–î –ü–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—è
+	 * @return array|boolan –ò–Ω—Ñ–æ—Ä–º–∞—Ü–∏—è –≤—ã–±–æ—Ä–∫–∏, –ª–∏–±–æ false –µ—Å–ª–∏ –Ω–µ—Ç –∏–Ω—Ñ–æ—Ä–º–∞—Ü–∏–∏
 	 */
     function GetInfo($uid){
         $sql = "SELECT id,uid,name,surname,type,message FROM confa07 WHERE uid='".intval($uid)."' ";
@@ -63,10 +63,10 @@ class confa07
     }
     
 	/**
-	 * ”‰‡ÎËÚ¸ ÍÓÌÙÂÂÌˆË˛
+	 * –£–¥–∞–ª–∏—Ç—å –∫–æ–Ω—Ñ–µ—Ä–µ–Ω—Ü–∏—é
 	 *
-	 * @param integer $id »ƒ ÍÓÌÙÂÂÌˆËË
-	 * @return string —ÓÓ·˘ÂÌËÂ Ó· Ó¯Ë·ÍÂ
+	 * @param integer $id –ò–î –∫–æ–Ω—Ñ–µ—Ä–µ–Ω—Ü–∏–∏
+	 * @return string –°–æ–æ–±—â–µ–Ω–∏–µ –æ–± –æ—à–∏–±–∫–µ
 	 */
     function Delete($id) {
         $sql = "DELETE FROM confa07 WHERE id='$id'";
@@ -76,10 +76,10 @@ class confa07
     }
     
 	/**
-	 * ŒÚÍ˚‚‡ÂÚ Ë Á‡Í˚‚‡ÂÚ ÍÓÌÙÛ
+	 * –û—Ç–∫—Ä—ã–≤–∞–µ—Ç –∏ –∑–∞–∫—Ä—ã–≤–∞–µ—Ç –∫–æ–Ω—Ñ—É
 	 *
-	 * @param integer $sw   0 - Á‡Í˚Ú‡, 1 - ÓÚÍ˚Ú‡
-	 * @return string —ÓÓ·˘ÂÌËÂ Ó· Ó¯Ë·ÍÂ
+	 * @param integer $sw   0 - –∑–∞–∫—Ä—ã—Ç–∞, 1 - –æ—Ç–∫—Ä—ã—Ç–∞
+	 * @return string –°–æ–æ–±—â–µ–Ω–∏–µ –æ–± –æ—à–∏–±–∫–µ
 	 */
     function Swch($sw){
         $sql = "UPDATE confa07 SET uid='$sw' WHERE id='0'";
@@ -89,10 +89,10 @@ class confa07
     }
     
 	/**
-	 * œÓÎÌ‡ˇ ËÌÙÓÏ‡ˆËˇ Ó ÔÓÎ¸ÁÓ‚‡ÚÂÎÂ
+	 * –ü–æ–ª–Ω–∞—è –∏–Ω—Ñ–æ—Ä–º–∞—Ü–∏—è –æ –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª–µ
 	 *
-	 * @param integer $uid »ƒ œÓÎ¸ÁÓ‚‡ÚÂÎˇ
-	 * @return array|boolan »ÌÙÓÏ‡ˆËˇ ‚˚·ÓÍË, ÎË·Ó false ÂÒÎË ÌÂÚ ËÌÙÓÏ‡ˆËË
+	 * @param integer $uid –ò–î –ü–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—è
+	 * @return array|boolan –ò–Ω—Ñ–æ—Ä–º–∞—Ü–∏—è –≤—ã–±–æ—Ä–∫–∏, –ª–∏–±–æ false –µ—Å–ª–∏ –Ω–µ—Ç –∏–Ω—Ñ–æ—Ä–º–∞—Ü–∏–∏
 	 */
     function GetAllUinfo($uid){
 
@@ -104,9 +104,9 @@ class confa07
     }
     
 	/**
-	 * ¬ÁˇÚ¸ ‚ÒÂ ÍÓÌÙÂÂÌˆËË
+	 * –í–∑—è—Ç—å –≤—Å–µ –∫–æ–Ω—Ñ–µ—Ä–µ–Ω—Ü–∏–∏
 	 *
-	 * @return array|boolan »ÌÙÓÏ‡ˆËˇ ‚˚·ÓÍË, ÎË·Ó false ÂÒÎË ÌÂÚ ËÌÙÓÏ‡ˆËË
+	 * @return array|boolan –ò–Ω—Ñ–æ—Ä–º–∞—Ü–∏—è –≤—ã–±–æ—Ä–∫–∏, –ª–∏–±–æ false –µ—Å–ª–∏ –Ω–µ—Ç –∏–Ω—Ñ–æ—Ä–º–∞—Ü–∏–∏
 	 */
     function GetAll(){
 
@@ -118,11 +118,11 @@ class confa07
     }
     
 	/**
-	 * œÓ‚ÂÍ‡ Â„ËÒÚ‡ˆËË ˛ÁÂ‡ ‚ ÍÓÌÙÂÂˆË˛ (Á‡Â„‡Ì ÛÊÂ ËÎË ÌÂÚ)
-	 * ÂÒÎË uid = 0, ÚÓ ÔÓ‚ÂˇÂÚ ÓÚÍ˚Ú‡ ÍÓÌÙ‡ ËÎË ÌÂÚ.
+	 * –ü—Ä–æ–≤–µ—Ä–∫–∞ —Ä–µ–≥–∏—Å—Ç—Ä–∞—Ü–∏–∏ —é–∑–µ—Ä–∞ –≤ –∫–æ–Ω—Ñ–µ—Ä–µ—Ü–∏—é (–∑–∞—Ä–µ–≥–∞–Ω —É–∂–µ –∏–ª–∏ –Ω–µ—Ç)
+	 * –µ—Å–ª–∏ uid = 0, —Ç–æ –ø—Ä–æ–≤–µ—Ä—è–µ—Ç –æ—Ç–∫—Ä—ã—Ç–∞ –∫–æ–Ω—Ñ–∞ –∏–ª–∏ –Ω–µ—Ç.
 	 *
-	 * @param integer $uid »ƒ œÓÎ¸Ó‚‡ÚÂÎˇ
-	 * @return integer ID œÓÎ¸ÁÓ‚‡ÚÂÎˇ ÂÒÎË ÂÒÚ¸, ËÌ‡˜Â null
+	 * @param integer $uid –ò–î –ü–æ–ª—å–æ–≤–∞—Ç–µ–ª—è
+	 * @return integer ID –ü–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—è –µ—Å–ª–∏ –µ—Å—Ç—å, –∏–Ω–∞—á–µ null
 	 */
     function Check($uid=0){
         $sql = "SELECT uid FROM confa07 WHERE uid='".$uid."'";
@@ -132,10 +132,10 @@ class confa07
     }
     
 	/**
-	 * œÓ‚ÂÍ‡ Â„ËÒÚ‡ˆËË ˛ÁÂ‡ ‚ ÍÓÌÙÂÂˆË˛ (Á‡Â„‡Ì ÛÊÂ ËÎË ÌÂÚ)
+	 * –ü—Ä–æ–≤–µ—Ä–∫–∞ —Ä–µ–≥–∏—Å—Ç—Ä–∞—Ü–∏–∏ —é–∑–µ—Ä–∞ –≤ –∫–æ–Ω—Ñ–µ—Ä–µ—Ü–∏—é (–∑–∞—Ä–µ–≥–∞–Ω —É–∂–µ –∏–ª–∏ –Ω–µ—Ç)
 	 *
-	 * @param integer $uid »ƒ œÓÎ¸Ó‚‡ÚÂÎˇ
-	 * @return integer  ÓÎË˜ÂÒÚ‚Ó ÍÓÎÓÌÓÍ ‚ ‚˚·ÓÍÂ
+	 * @param integer $uid –ò–î –ü–æ–ª—å–æ–≤–∞—Ç–µ–ª—è
+	 * @return integer –ö–æ–ª–∏—á–µ—Å—Ç–≤–æ –∫–æ–ª–æ–Ω–æ–∫ –≤ –≤—ã–±–æ—Ä–∫–µ
 	 */
     function CheckUid($uid){
         $sql = "SELECT uid FROM confa07 WHERE uid='$uid'";
@@ -144,9 +144,9 @@ class confa07
     }
     
 	/**
-	 * Œ·˘ÂÂ ˜ËÒÎÓ ÍÓÌÙÂÂÌˆËÈ
+	 * –û–±—â–µ–µ —á–∏—Å–ª–æ –∫–æ–Ω—Ñ–µ—Ä–µ–Ω—Ü–∏–π
 	 *
-	 * @return integer|boolan  ÓÎË˜ÂÒÚ‚Ó ÁÌ‡˜ÂÌËÈ ‚˚·ÓÍË, ÎË·Ó false ÂÒÎË ÌÂÚ ËÌÙÓÏ‡ˆËË
+	 * @return integer|boolan –ö–æ–ª–∏—á–µ—Å—Ç–≤–æ –∑–Ω–∞—á–µ–Ω–∏–π –≤—ã–±–æ—Ä–∫–∏, –ª–∏–±–æ false –µ—Å–ª–∏ –Ω–µ—Ç –∏–Ω—Ñ–æ—Ä–º–∞—Ü–∏–∏
 	 */
     function GetCount(){
         $sql = "SELECT id from confa07";
@@ -156,11 +156,11 @@ class confa07
     }
     
 	/**
-	 * ”‰‡ÎËÚ¸ ÔÓÎ¸ÁÓ‚‡ÚÂÎˇ Ò ÍÓÌÙÂÂÌˆËË
+	 * –£–¥–∞–ª–∏—Ç—å –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—è —Å –∫–æ–Ω—Ñ–µ—Ä–µ–Ω—Ü–∏–∏
 	 *
-	 * @param integer $uid »ƒ ÔÓÎ¸ÁÓ‚‡ÚÂÎˇ
-	 * @param  $opid -> ÀË¯Ìˇˇ ÔÂÂÏÂÌÌ‡ˇ ÌÂÓ·ıÓ‰ËÏÓ Û‰‡ÎËÚ¸
- 	 * @return string —ÓÓ·˘ÂÌËÂ Ó· Ó¯Ë·ÍÂ
+	 * @param integer $uid –ò–î –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª—è
+	 * @param  $opid -> –õ–∏—à–Ω—è—è –ø–µ—Ä–µ–º–µ–Ω–Ω–∞—è –Ω–µ–æ–±—Ö–æ–¥–∏–º–æ —É–¥–∞–ª–∏—Ç—å
+ 	 * @return string –°–æ–æ–±—â–µ–Ω–∏–µ –æ–± –æ—à–∏–±–∫–µ
 	 */
 	function DelByOpid($uid, $opid){
 		$sql = "DELETE FROM confa07 WHERE uid='$uid'";

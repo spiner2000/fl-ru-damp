@@ -1,6 +1,6 @@
 <?php
 /**
- * Шаблон поумолчанию popup-окна "быстрой" оплаты
+ * РЁР°Р±Р»РѕРЅ РїРѕСѓРјРѕР»С‡Р°РЅРёСЋ popup-РѕРєРЅР° "Р±С‹СЃС‚СЂРѕР№" РѕРїР»Р°С‚С‹
  */
 ?>
 <div id="<?= @$popup_id ?>" data-quick-payment="<?= $unic_name ?>" class="b-shadow b-shadow_block b-shadow_vertical-center b-shadow_width_520 <?= (!@$is_show) ? 'b-shadow_hide' : '' ?> b-shadow__quick">
@@ -21,10 +21,10 @@
         <div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20"><?=$popup_subtitle?></div>
         <div class="b-layout__txt b-layout__txt_padbot_20">
             <div class="b-layout__txt b-layout__txt_padleft_20 b-layout__txt_bold">
-                Количество получателей — <span class="b-layout__txt b-layout__txt_color_6db335"><?=$count?></span>
+                РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР»СѓС‡Р°С‚РµР»РµР№ вЂ” <span class="b-layout__txt b-layout__txt_color_6db335"><?=$count?></span>
             </div>
             <div class="b-layout__txt b-layout__txt_padleft_20 b-layout__txt_fontsize_11 b-layout__txt_padbot_20">
-                из них с аккаунтом PRO и/или верификацией — <?=$count_pro?>
+                РёР· РЅРёС… СЃ Р°РєРєР°СѓРЅС‚РѕРј PRO Рё/РёР»Рё РІРµСЂРёС„РёРєР°С†РёРµР№ вЂ” <?=$count_pro?>
             </div>
         </div>
  
@@ -40,13 +40,13 @@
             <?=$promo_code?>
 
             <div class="b-layout__txt b-layout__txt_padleft_20 b-layout__txt_padbot_20 b-layout__txt_fontsize_11">
-                Сумма к оплате: <span class="b-layout__bold"><span class="quick_sum_pay"><?=$price?></span> руб.</span><br/>
-                <span class="pay_none">Она будет списана с личного счета, на нем <strong class="ac_sum"><?= $ac_sum ?></strong> руб.</span>
+                РЎСѓРјРјР° Рє РѕРїР»Р°С‚Рµ: <span class="b-layout__bold"><span class="quick_sum_pay"><?=$price?></span> СЂСѓР±.</span><br/>
+                <span class="pay_none">РћРЅР° Р±СѓРґРµС‚ СЃРїРёСЃР°РЅР° СЃ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р°, РЅР° РЅРµРј <strong class="ac_sum"><?= $ac_sum ?></strong> СЂСѓР±.</span>
                 <span class="pay_part">
-                    Часть суммы (<?= $ac_sum ?> руб.) есть на Вашем личном счете.<br />
-                    Остаток (<span class="quick_sum_part"></span> руб.) вам нужно оплатить одним из способов:
+                    Р§Р°СЃС‚СЊ СЃСѓРјРјС‹ (<?= $ac_sum ?> СЂСѓР±.) РµСЃС‚СЊ РЅР° Р’Р°С€РµРј Р»РёС‡РЅРѕРј СЃС‡РµС‚Рµ.<br />
+                    РћСЃС‚Р°С‚РѕРє (<span class="quick_sum_part"></span> СЂСѓР±.) РІР°Рј РЅСѓР¶РЅРѕ РѕРїР»Р°С‚РёС‚СЊ РѕРґРЅРёРј РёР· СЃРїРѕСЃРѕР±РѕРІ:
                 </span>
-                <span class="pay_full">Ее вы можете оплатить одним из способов:</span>
+                <span class="pay_full">Р•Рµ РІС‹ РјРѕР¶РµС‚Рµ РѕРїР»Р°С‚РёС‚СЊ РѕРґРЅРёРј РёР· СЃРїРѕСЃРѕР±РѕРІ:</span>
             </div>
             <?php
             if (!empty($payments)):
@@ -80,7 +80,7 @@
                 <div class="b-buttons b-buttons_padleft_20 b-buttons_padbot_10">
                     <a class="b-button b-button_flat b-button_flat_green" 
                        href="javascript:void(0);" 
-                       data-quick-payment-type="<?= $payment_account ?>">Оплатить <span class="quick_sum_pay_acc"></span> руб.</a> </div>
+                       data-quick-payment-type="<?= $payment_account ?>">РћРїР»Р°С‚РёС‚СЊ <span class="quick_sum_pay_acc"></span> СЂСѓР±.</a> </div>
             </div>
         </div>
     </div>

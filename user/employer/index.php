@@ -1,7 +1,7 @@
 <?
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/employer.php");
 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/stop_words.php' );
-require_once($_SERVER['DOCUMENT_ROOT'] . '/tu/models/TServiceOrderModel.php');//Для чего тут?
+require_once($_SERVER['DOCUMENT_ROOT'] . '/tu/models/TServiceOrderModel.php');//Р”Р»СЏ С‡РµРіРѕ С‚СѓС‚?
 
 
 session_start();
@@ -18,8 +18,8 @@ $js_file  = array( 'warning.js', 'note.js', 'status.js', 'banned.js', 'tawl.js',
     'opinions.js', 'calendar.js', 'projects-quick-edit.js', 'attachedfiles.js', 'projects.js');
 
 //rus
-$page_keyw = "работа, удаленная работа, поиск работы, предложение работы, портфолио фрилансеров, fl.ru";
-$page_descr = "Работа. Удаленная работа. Поиск работы. Предложение работы. Портфолио фрилансеров. FL.ru";
+$page_keyw = "СЂР°Р±РѕС‚Р°, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°, РїРѕРёСЃРє СЂР°Р±РѕС‚С‹, РїСЂРµРґР»РѕР¶РµРЅРёРµ СЂР°Р±РѕС‚С‹, РїРѕСЂС‚С„РѕР»РёРѕ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, fl.ru";
+$page_descr = "Р Р°Р±РѕС‚Р°. РЈРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°. РџРѕРёСЃРє СЂР°Р±РѕС‚С‹. РџСЂРµРґР»РѕР¶РµРЅРёРµ СЂР°Р±РѕС‚С‹. РџРѕСЂС‚С„РѕР»РёРѕ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ. FL.ru";
 
 $user = new employer();
 $user->GetUser($name);
@@ -41,7 +41,7 @@ switch ($page){
     case "project":
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/projects.php");
         $prj_id = intval(trim($_GET['prjid']));
-        // todo: переполнение integer в БД.
+        // todo: РїРµСЂРµРїРѕР»РЅРµРЅРёРµ integer РІ Р‘Р”.
         if (($prj_id < -2147483648) || ($prj_id > 2147483647)) {
         	include ABS_PATH."/404.php"; exit;
         }
@@ -51,10 +51,10 @@ switch ($page){
         if ($prj['pro_only'] == "t" && !$_SESSION['pro_last'] && $_SESSION['login'] !== $prj['login']  && !hasPermissions('projects')) header("Location: /proonly.php");
         $inner = "aboutprj_inner.php";
         $activ_tab = 0;
-        $page_keyw = "требуется дизайнер, программист, требуется менеджер, фотограф,
-  переводчик, автор, журналист, ищу, работа, вакансия, услуги, дизайн,
-  сайт, оптимизация, хостинг, флэш, баннер, портфолио, резюме, москва,
-  петербург";
+        $page_keyw = "С‚СЂРµР±СѓРµС‚СЃСЏ РґРёР·Р°Р№РЅРµСЂ, РїСЂРѕРіСЂР°РјРјРёСЃС‚, С‚СЂРµР±СѓРµС‚СЃСЏ РјРµРЅРµРґР¶РµСЂ, С„РѕС‚РѕРіСЂР°С„,
+  РїРµСЂРµРІРѕРґС‡РёРє, Р°РІС‚РѕСЂ, Р¶СѓСЂРЅР°Р»РёСЃС‚, РёС‰Сѓ, СЂР°Р±РѕС‚Р°, РІР°РєР°РЅСЃРёСЏ, СѓСЃР»СѓРіРё, РґРёР·Р°Р№РЅ,
+  СЃР°Р№С‚, РѕРїС‚РёРјРёР·Р°С†РёСЏ, С…РѕСЃС‚РёРЅРі, С„Р»СЌС€, Р±Р°РЅРЅРµСЂ, РїРѕСЂС‚С„РѕР»РёРѕ, СЂРµР·СЋРјРµ, РјРѕСЃРєРІР°,
+  РїРµС‚РµСЂР±СѓСЂРі";
         $page_descr = substr(preg_replace("'[\r\n\s]+'", " ", input_ref($prj['descr'])), 0, 150);
         $page_title = $prj['name'];
         break;
@@ -97,7 +97,7 @@ switch ($page){
         require_once($_SERVER['DOCUMENT_ROOT'] . '/tu/models/TServiceMsgModel.php');
         require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/reserves/ReservesArbitragePopup.php');
         
-        // Формируем JS внизу страницы
+        // Р¤РѕСЂРјРёСЂСѓРµРј JS РІРЅРёР·Сѓ СЃС‚СЂР°РЅРёС†С‹
         define('JS_BOTTOM', true);
         $js_file[] = 'mootools-form-validator.js';
         $js_file[] = 'tservices/tservices_order.js';
@@ -112,7 +112,7 @@ switch ($page){
         
         $tserviceOrderModel = new TServiceOrderModel();
         
-        //Если параметры не проходят валидацию то редирект на основную по умолчанию
+        //Р•СЃР»Рё РїР°СЂР°РјРµС‚СЂС‹ РЅРµ РїСЂРѕС…РѕРґСЏС‚ РІР°Р»РёРґР°С†РёСЋ С‚Рѕ СЂРµРґРёСЂРµРєС‚ РЅР° РѕСЃРЅРѕРІРЅСѓСЋ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
         if(!$tserviceOrderModel->attributes(array('status' => $tu_order_status))) 
         {
             header("Location: /users/{$user->login}/tu-orders/" , TRUE, 301);
@@ -122,13 +122,13 @@ switch ($page){
         $orders_list = $tserviceOrderModel->setPage($on_page,$page)->getListForEmp($user->uid);
         $tu_orders_cnts = $tserviceOrderModel->getCounts($user->uid);
         
-        //Если вообще ничего нет то 404
+        //Р•СЃР»Рё РІРѕРѕР±С‰Рµ РЅРёС‡РµРіРѕ РЅРµС‚ С‚Рѕ 404
         if(!$tu_orders_cnts['total'])
         {
             include ABS_PATH."/404.php"; exit;
         }
         
-        //Виджет для рендера статуса
+        //Р’РёРґР¶РµС‚ РґР»СЏ СЂРµРЅРґРµСЂР° СЃС‚Р°С‚СѓСЃР°
         $tserviceOrderStatusWidget = new TServiceOrderStatus();
         $tserviceOrderStatusWidget->setIsOwner($is_owner);
         $tserviceOrderStatusWidget->setIsEmp(TRUE); 
@@ -137,9 +137,9 @@ switch ($page){
         
         $modelMessage = new TServiceMsgModel();
         
-        //Виджет формы отзывов только для инициализации и поключения скрипты.
-        //Основное использование с виджете статуса но там подключать скрипт уже позно.
-        //При использование виджетов в системе MVC (/tu/) этот хак не нужен. А знаешь почему?
+        //Р’РёРґР¶РµС‚ С„РѕСЂРјС‹ РѕС‚Р·С‹РІРѕРІ С‚РѕР»СЊРєРѕ РґР»СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё Рё РїРѕРєР»СЋС‡РµРЅРёСЏ СЃРєСЂРёРїС‚С‹.
+        //РћСЃРЅРѕРІРЅРѕРµ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ СЃ РІРёРґР¶РµС‚Рµ СЃС‚Р°С‚СѓСЃР° РЅРѕ С‚Р°Рј РїРѕРґРєР»СЋС‡Р°С‚СЊ СЃРєСЂРёРїС‚ СѓР¶Рµ РїРѕР·РЅРѕ.
+        //РџСЂРё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РІРёРґР¶РµС‚РѕРІ РІ СЃРёСЃС‚РµРјРµ MVC (/tu/) СЌС‚РѕС‚ С…Р°Рє РЅРµ РЅСѓР¶РµРЅ. Рђ Р·РЅР°РµС€СЊ РїРѕС‡РµРјСѓ?
         $tserviceOrderFeedbackWidget = new TServiceOrderFeedback();
         $tserviceOrderFeedbackWidget->init();
         
@@ -150,7 +150,7 @@ switch ($page){
         $activ_tab = 12; 
         
         //SEO
-        $page_title = 'Заказы типовых услуг на FL.ru';
+        $page_title = 'Р—Р°РєР°Р·С‹ С‚РёРїРѕРІС‹С… СѓСЃР»СѓРі РЅР° FL.ru';
         //$page_descr = '';
         //$page_keyw = '';
         
@@ -181,7 +181,7 @@ $action = trim(__paramInit('string', 'action', 'action'));
 
 switch ($action){
     case 'activated':
-        $alert_message = "Аккаунт активирован";
+        $alert_message = "РђРєРєР°СѓРЅС‚ Р°РєС‚РёРІРёСЂРѕРІР°РЅ";
         break;
     case "prj_close":
         $kind = __paramInit('int', null, 'kind', 0);
@@ -191,7 +191,7 @@ switch ($action){
 		if ($prj_id) $error .= $projects->SwitchStatusPrj(get_uid(), $prj_id);
                     
 		$location  = "/users/{$name}/projects/?kind={$kind}" . ($do_close ? '&closed=1' : '');
-		header("Location: $location"); //перекидываем на текущую страницу, чтобы нельзя было повторить POST по F5
+		header("Location: $location"); //РїРµСЂРµРєРёРґС‹РІР°РµРј РЅР° С‚РµРєСѓС‰СѓСЋ СЃС‚СЂР°РЅРёС†Сѓ, С‡С‚РѕР±С‹ РЅРµР»СЊР·СЏ Р±С‹Р»Рѕ РїРѕРІС‚РѕСЂРёС‚СЊ POST РїРѕ F5
 		exit;
 		break;
     case "prj_delete":
@@ -219,7 +219,7 @@ switch ($action){
 		$projects = new projects();
 		if ($prj_id) $error .= $projects->switchTrashProject(get_uid(false), $prj_id, $do_remove);
 
-		header("Location: " . str_replace($GLOBALS['host'], '', $location)); //перекидываем на текущую страницу, чтобы нельзя было повторить POST по F5
+		header("Location: " . str_replace($GLOBALS['host'], '', $location)); //РїРµСЂРµРєРёРґС‹РІР°РµРј РЅР° С‚РµРєСѓС‰СѓСЋ СЃС‚СЂР°РЅРёС†Сѓ, С‡С‚РѕР±С‹ РЅРµР»СЊР·СЏ Р±С‹Р»Рѕ РїРѕРІС‚РѕСЂРёС‚СЊ POST РїРѕ F5
 		exit;
 		break;
     case "prj_express_public":
@@ -228,7 +228,7 @@ switch ($action){
 		$projects = new projects();
 		if ($prj_id && $user->is_pro == 't') $error .= $projects->publishedMovedToVacancy(array('uid' => $uid), $prj_id);
 
-		header("Location: " . str_replace($GLOBALS['host'], '', $location)); //перекидываем на текущую страницу, чтобы нельзя было повторить POST по F5
+		header("Location: " . str_replace($GLOBALS['host'], '', $location)); //РїРµСЂРµРєРёРґС‹РІР°РµРј РЅР° С‚РµРєСѓС‰СѓСЋ СЃС‚СЂР°РЅРёС†Сѓ, С‡С‚РѕР±С‹ РЅРµР»СЊР·СЏ Р±С‹Р»Рѕ РїРѕРІС‚РѕСЂРёС‚СЊ POST РїРѕ F5
 		exit;
 		break;
 
@@ -260,7 +260,7 @@ if($_SESSION['login']) {
 if (($user->is_banned) && !hasPermissions('users')  )  { if (!$content) $content = "ban.php"; }
 else {
     if (!$content) {
-      $content = $page == 'opinions' ? 'content_new.php' : 'content.php'; // !!! проверить
+      $content = $page == 'opinions' ? 'content_new.php' : 'content.php'; // !!! РїСЂРѕРІРµСЂРёС‚СЊ
       /*
         if ($_SESSION['login'] == $name) {
             $content = "content_setup.php";
@@ -272,7 +272,7 @@ else {
     }
 }
 
-//Мета-теги
+//РњРµС‚Р°-С‚РµРіРё
 SeoTags::getInstance()->initByUser($user);
 $page_title = SeoTags::getInstance()->getTitle();
 $page_descr = SeoTags::getInstance()->getDescription();

@@ -30,7 +30,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/reserves/ReservesModelFactory
 
     function parseFile($filename) 
     {
-        //@todo: это не красиво :(
+        //@todo: СЌС‚Рѕ РЅРµ РєСЂР°СЃРёРІРѕ :(
         ini_set('max_execution_time', 300);
         //ini_set('memory_limit', '512M');
         
@@ -46,13 +46,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/reserves/ReservesModelFactory
             
             //order_id;sf_num;sf_date;sf_summa;pp_num;pp_date;pp_type
             $res = array(
-                'id' => getOrderId($data[0]), //номер сделки,
-                'sf_num' => $data[1], //Номер счета-фактуры
-                'sf_date' => $data[2], //Дата счета фактуры
-                'sf_summa' => $data[3], //Сумма счета фактуры
-                'pp_num' => $data[4], //Номер платежного документа
-                'pp_date' => $data[5], //Дата дата платежного документа
-                'pp_type' => $data[6] //тип платежного документа (Якасса или банк)
+                'id' => getOrderId($data[0]), //РЅРѕРјРµСЂ СЃРґРµР»РєРё,
+                'sf_num' => $data[1], //РќРѕРјРµСЂ СЃС‡РµС‚Р°-С„Р°РєС‚СѓСЂС‹
+                'sf_date' => $data[2], //Р”Р°С‚Р° СЃС‡РµС‚Р° С„Р°РєС‚СѓСЂС‹
+                'sf_summa' => $data[3], //РЎСѓРјРјР° СЃС‡РµС‚Р° С„Р°РєС‚СѓСЂС‹
+                'pp_num' => $data[4], //РќРѕРјРµСЂ РїР»Р°С‚РµР¶РЅРѕРіРѕ РґРѕРєСѓРјРµРЅС‚Р°
+                'pp_date' => $data[5], //Р”Р°С‚Р° РґР°С‚Р° РїР»Р°С‚РµР¶РЅРѕРіРѕ РґРѕРєСѓРјРµРЅС‚Р°
+                'pp_type' => $data[6] //С‚РёРї РїР»Р°С‚РµР¶РЅРѕРіРѕ РґРѕРєСѓРјРµРЅС‚Р° (РЇРєР°СЃСЃР° РёР»Рё Р±Р°РЅРє)
             );
             $ids[] = $res['id'];
             $list[] = $res;

@@ -21,15 +21,15 @@ $crumbs =
 array(
     0 => array(
         'href' => '/' . sbr::NEW_TEMPLATE_SBR . '/', 
-        'name' => '«Мои Сделки»'
+        'name' => 'В«РњРѕРё РЎРґРµР»РєРёВ»'
     ),
     1 => array(
         'href' => '/' . sbr::NEW_TEMPLATE_SBR . '/?id=' . $sbr->id, 
-        'name' => ($site=='create' ? ( $prj_init ? 'Новая сделка в открытом проекте' : 'Новая сделка без публикации проекта' ) : $sbr->data['name'])
+        'name' => ($site=='create' ? ( $prj_init ? 'РќРѕРІР°СЏ СЃРґРµР»РєР° РІ РѕС‚РєСЂС‹С‚РѕРј РїСЂРѕРµРєС‚Рµ' : 'РќРѕРІР°СЏ СЃРґРµР»РєР° Р±РµР· РїСѓР±Р»РёРєР°С†РёРё РїСЂРѕРµРєС‚Р°' ) : $sbr->data['name'])
     )
 );
 $css_selector_crumbs = "b-page__title_padbot_30";
-// Хлебные крошки
+// РҐР»РµР±РЅС‹Рµ РєСЂРѕС€РєРё
 include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php"); 
 ?>
 
@@ -43,13 +43,13 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_min-width_830 b-layout__left_width_72ps">
                 <div class="b-layout__txt b-layout__txt_padbot_15 b-layout__txt_color_c7271e b-layout__txt_height_15">
-                    <span id="filled-content" class="b-layout__txt b-layout__txt_color_c7271e <?= $notFilled ? "" : "b-layout__txt_hide"?>">Пожалуйста, заполните все поля данной формы. </span>
-                    <span><?= !$sbr->data['id'] ? 'Обратите внимание, что минимальный бюджет этапа &ndash; ' . sbr_stages::MIN_COST_RUR . ' ' . ending(sbr_stages::MIN_COST_RUR, 'рубль', 'рубля', 'рублей') . '.' : '' ?></span>
+                    <span id="filled-content" class="b-layout__txt b-layout__txt_color_c7271e <?= $notFilled ? "" : "b-layout__txt_hide"?>">РџРѕР¶Р°Р»СѓР№СЃС‚Р°, Р·Р°РїРѕР»РЅРёС‚Рµ РІСЃРµ РїРѕР»СЏ РґР°РЅРЅРѕР№ С„РѕСЂРјС‹. </span>
+                    <span><?= !$sbr->data['id'] ? 'РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ, С‡С‚Рѕ РјРёРЅРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ СЌС‚Р°РїР° &ndash; ' . sbr_stages::MIN_COST_RUR . ' ' . ending(sbr_stages::MIN_COST_RUR, 'СЂСѓР±Р»СЊ', 'СЂСѓР±Р»СЏ', 'СЂСѓР±Р»РµР№') . '.' : '' ?></span>
                 </div>
                 <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20">
                     <tr class="b-layout__tr">
                         <td class="b-layout__left b-layout__left_width_150">
-                            <div class="b-layout__txt b-layout__txt_padtop_5">Название сделки</div>
+                            <div class="b-layout__txt b-layout__txt_padtop_5">РќР°Р·РІР°РЅРёРµ СЃРґРµР»РєРё</div>
                         </td>
                         <td class="b-layout__right">
                             <div class="b-combo">
@@ -64,7 +64,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                 <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20">
                     <tr class="b-layout__tr">
                         <td class="b-layout__left b-layout__left_width_150">
-                            <div class="b-layout__txt b-layout__txt_lineheight_1">Имя или логин<br />исполнителя</div>
+                            <div class="b-layout__txt b-layout__txt_lineheight_1">РРјСЏ РёР»Рё Р»РѕРіРёРЅ<br />РёСЃРїРѕР»РЅРёС‚РµР»СЏ</div>
                         </td>
                         <td class="b-layout__right">
                             <div class="b-combo">
@@ -79,26 +79,26 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                 
                 <div class="b-fon b-fon_padbot_20 <?= $sbr->error['frl_ban']? '' : ' b-fon_hide';?>" id="frl_ban">
                     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb">
-                        <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span>Данный пользователь заблокирован на сайте.
+                        <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span>Р”Р°РЅРЅС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ РЅР° СЃР°Р№С‚Рµ.
                     </div>
                 </div>
                 
                 <div class="b-fon b-fon_padbot_20 <?=($frl && !$frl_rtype ? '' : ' b-fon_hide')?>" id="unknown_frl_rez">
                     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb">
-                        <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span>Обратите внимание, исполнитель не указал свое резиденство. Для нерезидентов Российской Федерации действует особое ограничение &mdash; максимальный бюджет задачи в рублевом эквиваленте не может превышать <?= sbr::MAX_COST_USD_FIZ ?> USD (если Стороны являются физическими лицами) или <?= sbr::MAX_COST_USD ?> USD (в иных случаях).
+                        <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ, РёСЃРїРѕР»РЅРёС‚РµР»СЊ РЅРµ СѓРєР°Р·Р°Р» СЃРІРѕРµ СЂРµР·РёРґРµРЅСЃС‚РІРѕ. Р”Р»СЏ РЅРµСЂРµР·РёРґРµРЅС‚РѕРІ Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё РґРµР№СЃС‚РІСѓРµС‚ РѕСЃРѕР±РѕРµ РѕРіСЂР°РЅРёС‡РµРЅРёРµ &mdash; РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ Р·Р°РґР°С‡Рё РІ СЂСѓР±Р»РµРІРѕРј СЌРєРІРёРІР°Р»РµРЅС‚Рµ РЅРµ РјРѕР¶РµС‚ РїСЂРµРІС‹С€Р°С‚СЊ <?= sbr::MAX_COST_USD_FIZ ?> USD (РµСЃР»Рё РЎС‚РѕСЂРѕРЅС‹ СЏРІР»СЏСЋС‚СЃСЏ С„РёР·РёС‡РµСЃРєРёРјРё Р»РёС†Р°РјРё) РёР»Рё <?= sbr::MAX_COST_USD ?> USD (РІ РёРЅС‹С… СЃР»СѓС‡Р°СЏС…).
                     </div>
                 </div>
                 
                 <div class="b-fon b-fon_padbot_20 <?=($rez_type == sbr::RT_UABYKZ ? 'b-fon_nohide' : ' b-fon_hide')?>" id="nerez_frl_rez">
                     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffeeeb">
-                        <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span>Для нерезидентов Российской Федерации действуют особые ограничения — максимальный бюджет задачи в рублевом эквиваленте не может превышать <?= sbr::MAX_COST_USD_FIZ ?> USD (если Стороны являются физическими лицами) или <?= sbr::MAX_COST_USD ?> USD (в иных случаях).
+                        <span class="b-icon b-icon_sbr_rattent b-icon_margleft_-25"></span>Р”Р»СЏ РЅРµСЂРµР·РёРґРµРЅС‚РѕРІ Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё РґРµР№СЃС‚РІСѓСЋС‚ РѕСЃРѕР±С‹Рµ РѕРіСЂР°РЅРёС‡РµРЅРёСЏ вЂ” РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ Р·Р°РґР°С‡Рё РІ СЂСѓР±Р»РµРІРѕРј СЌРєРІРёРІР°Р»РµРЅС‚Рµ РЅРµ РјРѕР¶РµС‚ РїСЂРµРІС‹С€Р°С‚СЊ <?= sbr::MAX_COST_USD_FIZ ?> USD (РµСЃР»Рё РЎС‚РѕСЂРѕРЅС‹ СЏРІР»СЏСЋС‚СЃСЏ С„РёР·РёС‡РµСЃРєРёРјРё Р»РёС†Р°РјРё) РёР»Рё <?= sbr::MAX_COST_USD ?> USD (РІ РёРЅС‹С… СЃР»СѓС‡Р°СЏС…).
                     </div>
                 </div>
                 <?php if($site != 'editstage' && $site != 'edit') { ?>
                 <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20">
                     <tr class="b-layout__tr">
                         <td class="b-layout__left b-layout__left_width_150">
-                            <div class="b-layout__txt  b-layout__txt_padtop_5">Разделы</div>
+                            <div class="b-layout__txt  b-layout__txt_padtop_5">Р Р°Р·РґРµР»С‹</div>
                         </td>
                         <td class="b-layout__right">
                             <? foreach ($sbr->data['professions'] as $index => $prof) { ?>
@@ -116,7 +116,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                 </table>
                 <?php } //if ?>                                                                            
 
-                <? // Этап ?>
+                <? // Р­С‚Р°Рї ?>
                 <? $num = 0;
                 foreach($sbr->stages as $k=>$stage) { 
                     if($site=='editstage' && $stage->id != $stage_id) continue;
@@ -126,14 +126,14 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                     <input type="hidden" name="stages[<?=$num?>][attachedfiles_session]" id="attachedfiles_session_<?=$num?>" value="<?=$attachedfiles_session?>" tmpname="attachedfiles_session" />
                     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
                         <? if($site=='create' || $sbr->isDraft()) { // !!! !$sbr->reserved_id || ?>
-                        <a href="#" title="Удалить этап" class="b-button b-button_admin_del b-button_float_right close-block <?=($sbr->stages_cnt > 1 ? '' : 'b-button_hide')?>"></a>
+                        <a href="#" title="РЈРґР°Р»РёС‚СЊ СЌС‚Р°Рї" class="b-button b-button_admin_del b-button_float_right close-block <?=($sbr->stages_cnt > 1 ? '' : 'b-button_hide')?>"></a>
                         <? } ?>
-                        <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_22 norisk-stage-header">Этап <?= ($stage->num + 1)?></div>
+                        <div class="b-layout__txt b-layout__txt_padbot_20 b-layout__txt_fontsize_22 norisk-stage-header">Р­С‚Р°Рї <?= ($stage->num + 1)?></div>
 
                         <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20">
                             <tr class="b-layout__tr">
                                 <td class="b-layout__left b-layout__left_width_140">
-                                    <div class="b-layout__txt b-layout__txt_padtop_5">Название</div>
+                                    <div class="b-layout__txt b-layout__txt_padtop_5">РќР°Р·РІР°РЅРёРµ</div>
                                 </td>
                                 <td class="b-layout__right">
                                     <div class="b-combo">
@@ -147,7 +147,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                         <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table b-layout__table_width_full b-layout__table_margbot_15">
                             <tr class="b-layout__tr">
                                 <td class="b-layout__left b-layout__left_width_140">
-                                    <div class="b-layout__txt">Описание</div>
+                                    <div class="b-layout__txt">РћРїРёСЃР°РЅРёРµ</div>
                                 </td>
                                 <td class="b-layout__right">
                                     <div class="b-textarea">
@@ -158,20 +158,20 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                         </table>
 
 
-                        <? // Загрузка файлов ?>
+                        <? // Р—Р°РіСЂСѓР·РєР° С„Р°Р№Р»РѕРІ ?>
                         <? if(!$stage->isFixedState()) { ?>
                         <div class="b-file b-file_padleft_140 b-file_padbot_15" style="position:relative;">
                         	<? /* <a class="b-layout__link" href="https://www.free-lance.ru/service/docs/section/?id=2"><img style="position:absolute; right:10px; bottom:18px; z-index:1; border:0;" src="/images/stuff.png" alt="" width="179" height="26" /></a> */ ?>
                             <div class="attachedfiles1"></div>
                         </div>
                         <? }//if?>
-                        <? // Загрузка файлов ?>
+                        <? // Р—Р°РіСЂСѓР·РєР° С„Р°Р№Р»РѕРІ ?>
 
 
                         <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20">
                             <tr class="b-layout__tr">
                                 <td class="b-layout__left b-layout__left_width_140">
-                                    <div class="b-layout__txt b-layout__txt_padtop_5">Время на этап</div>
+                                    <div class="b-layout__txt b-layout__txt_padtop_5">Р’СЂРµРјСЏ РЅР° СЌС‚Р°Рї</div>
                                 </td>
                                 <td class="b-layout__right">
                                     <div class="b-combo b-combo_inline-block">
@@ -179,11 +179,11 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                                             <input class="b-combo__input-text" type="text" value="<?=($stage->data['work_days'] ? html_attr($stage->data['work_days']) : '')?>" maxlength="3" size="80" name="stages[<?=$num?>][work_time]" tmpname="work_time"/>
                                         </div>
                                     </div>
-                                    <span class="b-layout__txt b-layout__txt_valign_top b-layout__txt_width_60 b-layout__txt_inline-block b-layout__txt_padtop_5">&#160;дней</span>
+                                    <span class="b-layout__txt b-layout__txt_valign_top b-layout__txt_width_60 b-layout__txt_inline-block b-layout__txt_padtop_5">&#160;РґРЅРµР№</span>
                                     <? if ($site === 'editstage') { ?>
-                                        <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5"> &mdash; отсчет времени, добавленного на этап, ведется с даты начала работ по текущей сделке</span>
+                                        <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5"> &mdash;В РѕС‚СЃС‡РµС‚ РІСЂРµРјРµРЅРё, РґРѕР±Р°РІР»РµРЅРЅРѕРіРѕ РЅР° СЌС‚Р°Рї, РІРµРґРµС‚СЃСЏ СЃ РґР°С‚С‹ РЅР°С‡Р°Р»Р° СЂР°Р±РѕС‚ РїРѕ С‚РµРєСѓС‰РµР№ СЃРґРµР»РєРµ</span>
                                     <? } else { ?>
-                                        <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5"> &mdash; отсчет времени начнется с момента резервирования денег, максимальное время этапа <?= sbr_stages::MAX_WORK_TIME;?> дней.</span>
+                                        <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5"> &mdash;В РѕС‚СЃС‡РµС‚ РІСЂРµРјРµРЅРё РЅР°С‡РЅРµС‚СЃСЏ СЃ РјРѕРјРµРЅС‚Р° СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ РґРµРЅРµРі, РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ РІСЂРµРјСЏ СЌС‚Р°РїР° <?= sbr_stages::MAX_WORK_TIME;?> РґРЅРµР№.</span>
                                     <? } ?>
                                     
                                 </td>
@@ -197,7 +197,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                         <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20">
                             <tr class="b-layout__tr">
                                 <td class="b-layout__left b-layout__left_width_140">
-                                    <div class="b-layout__txt b-layout__txt_padtop_5">Добавить время</div>
+                                    <div class="b-layout__txt b-layout__txt_padtop_5">Р”РѕР±Р°РІРёС‚СЊ РІСЂРµРјСЏ</div>
                                 </td>
                                 <td class="b-layout__right">
                                     <div class="b-combo b-combo_inline-block">
@@ -205,12 +205,12 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                                             <?
                                             $endUnixTime = $endTime < time() ? time() : $endTime;
                                             ?>
-                                            <input class="b-combo__input-text" type="text" value="0" maxlength="3" size="80" name="stages[<?=$num?>][work_time_add]" tmpname="work_time_add" id="work_time_add" data-time="<?= $endUnixTime * 1000; //в милисекундах?>" data-year="<?= date('Y', $endTime) ?>" data-month="<?= date('m', $endTime) ?>" data-day="<?= date('d', $endTime) ?>" />
+                                            <input class="b-combo__input-text" type="text" value="0" maxlength="3" size="80" name="stages[<?=$num?>][work_time_add]" tmpname="work_time_add" id="work_time_add" data-time="<?= $endUnixTime * 1000; //РІ РјРёР»РёСЃРµРєСѓРЅРґР°С…?>" data-year="<?= date('Y', $endTime) ?>" data-month="<?= date('m', $endTime) ?>" data-day="<?= date('d', $endTime) ?>" />
                                         </div>
                                     </div>
-                                    <span class="b-layout__txt b-layout__txt_valign_top b-layout__txt_width_60 b-layout__txt_inline-block b-layout__txt_padtop_5" id="str_label_work_time_add">&#160;дней</span>
-                                    <span class="b-layout__txt b-layout__txt_hide b-layout__txt_width_525 b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" id="label_descr_work_time_add"> &mdash; Обратите внимание: срок действия аккредитива в результате установленных вами изменений сдвинется до 
-                                        <strong id="stage_end_date"><?= $endTime < time() ? date('d.m.Y') : date('d.m.Y', $endTime) ?> г.</strong> В том случае, если исполнитель не завершит сделку со своей стороны, возврат денежных средств будет произведен на следующий рабочий день по истечении указанной даты.</span>
+                                    <span class="b-layout__txt b-layout__txt_valign_top b-layout__txt_width_60 b-layout__txt_inline-block b-layout__txt_padtop_5" id="str_label_work_time_add">&#160;РґРЅРµР№</span>
+                                    <span class="b-layout__txt b-layout__txt_hide b-layout__txt_width_525 b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5" id="label_descr_work_time_add"> &mdash;В РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ: СЃСЂРѕРє РґРµР№СЃС‚РІРёСЏ Р°РєРєСЂРµРґРёС‚РёРІР° РІ СЂРµР·СѓР»СЊС‚Р°С‚Рµ СѓСЃС‚Р°РЅРѕРІР»РµРЅРЅС‹С… РІР°РјРё РёР·РјРµРЅРµРЅРёР№ СЃРґРІРёРЅРµС‚СЃСЏ РґРѕ 
+                                        <strong id="stage_end_date"><?= $endTime < time() ? date('d.m.Y') : date('d.m.Y', $endTime) ?> Рі.</strong> Р’ С‚РѕРј СЃР»СѓС‡Р°Рµ, РµСЃР»Рё РёСЃРїРѕР»РЅРёС‚РµР»СЊ РЅРµ Р·Р°РІРµСЂС€РёС‚ СЃРґРµР»РєСѓ СЃРѕ СЃРІРѕРµР№ СЃС‚РѕСЂРѕРЅС‹, РІРѕР·РІСЂР°С‚ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ Р±СѓРґРµС‚ РїСЂРѕРёР·РІРµРґРµРЅ РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЂР°Р±РѕС‡РёР№ РґРµРЅСЊ РїРѕ РёСЃС‚РµС‡РµРЅРёРё СѓРєР°Р·Р°РЅРЅРѕР№ РґР°С‚С‹.</span>
                                 </td>
                             </tr>
                         </table> 
@@ -219,7 +219,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                         <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table b-layout__table_width_full b-layout__table_margbot_10">
                             <tr class="b-layout__tr">
                                 <td class="b-layout__left b-layout__left_width_140">
-                                    <div class="b-layout__txt b-layout__txt_padtop_5">Бюджет</div>
+                                    <div class="b-layout__txt b-layout__txt_padtop_5">Р‘СЋРґР¶РµС‚</div>
                                 </td>
                                 <td class="b-layout__right">
                                     <div class="b-combo b-combo_inline-block">
@@ -227,40 +227,40 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                                             <input class="b-combo__input-text" type="text" value="<?=html_attr($stage->data['cost'])?>" maxlength="12" size="80" name="cost" <?= $sbr->reserved_id || $sbr->isReserveProcess() || $sbr->data['status'] >= sbr::STATUS_CHANGED ? 'readonly' : '' ?>/>
                                         </div>
                                     </div>
-                                    <span class="b-layout__txt b-layout__txt_width_60 b-layout__txt_inline-block b-layout__txt_padtop_5">&#160;руб.</span>
-                                    <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5"> &mdash; минимальный бюджет &mdash; <span class="mincost-val"><?=sbr_stages::MIN_COST_RUR?></span> руб.</span><br/>
-                                    <span id="alert_frl_is_fiz" class="b-layout__txt b-layout__txt_padleft_150 b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5 b-layout__txt_hide" style="padding-left:138px;"> &mdash; максимальный бюджет &mdash; <?= number_format($sbr->usd2rur(sbr::MAX_COST_USD_FIZ), 2, '.', ' ') ?> руб. (эквивалент <?= sbr::MAX_COST_USD_FIZ ?> USD), поскольку <?= $rez_type == sbr::RT_UABYKZ ? "вы не являетесь" : "выбранный исполнитель не является"?> резидентом Российской Федерации</span>
-                                    <span id="alert_frl_is_jur" class="b-layout__txt b-layout__txt_padleft_150 b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5 b-layout__txt_hide" style="padding-left:138px;"> &mdash; максимальный бюджет &mdash; <?= number_format($sbr->maxNorezCost(), 2, '.', ' ')?> руб. (эквивалент <?=sbr::MAX_COST_USD?> USD), поскольку <?= $rez_type == sbr::RT_UABYKZ ? "вы не являетесь" : "выбранный исполнитель не является"?> резидентом Российской Федерации</span>
+                                    <span class="b-layout__txt b-layout__txt_width_60 b-layout__txt_inline-block b-layout__txt_padtop_5">&#160;СЂСѓР±.</span>
+                                    <span class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5"> &mdash;В РјРёРЅРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ &mdash;В <span class="mincost-val"><?=sbr_stages::MIN_COST_RUR?></span> СЂСѓР±.</span><br/>
+                                    <span id="alert_frl_is_fiz" class="b-layout__txt b-layout__txt_padleft_150 b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5 b-layout__txt_hide" style="padding-left:138px;"> &mdash; РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ &mdash;В <?= number_format($sbr->usd2rur(sbr::MAX_COST_USD_FIZ), 2, '.', ' ') ?> СЂСѓР±. (СЌРєРІРёРІР°Р»РµРЅС‚ <?= sbr::MAX_COST_USD_FIZ ?> USD), РїРѕСЃРєРѕР»СЊРєСѓ <?= $rez_type == sbr::RT_UABYKZ ? "РІС‹ РЅРµ СЏРІР»СЏРµС‚РµСЃСЊ" : "РІС‹Р±СЂР°РЅРЅС‹Р№ РёСЃРїРѕР»РЅРёС‚РµР»СЊ РЅРµ СЏРІР»СЏРµС‚СЃСЏ"?> СЂРµР·РёРґРµРЅС‚РѕРј Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё</span>
+                                    <span id="alert_frl_is_jur" class="b-layout__txt b-layout__txt_padleft_150 b-layout__txt_fontsize_11 b-layout__txt_inline-block b-layout__txt_padtop_5 b-layout__txt_hide" style="padding-left:138px;"> &mdash; РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ Р±СЋРґР¶РµС‚ &mdash;В <?= number_format($sbr->maxNorezCost(), 2, '.', ' ')?> СЂСѓР±. (СЌРєРІРёРІР°Р»РµРЅС‚ <?=sbr::MAX_COST_USD?> USD), РїРѕСЃРєРѕР»СЊРєСѓ <?= $rez_type == sbr::RT_UABYKZ ? "РІС‹ РЅРµ СЏРІР»СЏРµС‚РµСЃСЊ" : "РІС‹Р±СЂР°РЅРЅС‹Р№ РёСЃРїРѕР»РЅРёС‚РµР»СЊ РЅРµ СЏРІР»СЏРµС‚СЃСЏ"?> СЂРµР·РёРґРµРЅС‚РѕРј Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё</span>
                                 </td>
                             </tr>
                         </table>
                     </div>
                 </div>
                 <? $num++;} ?>
-                <? // Этап ?>
+                <? // Р­С‚Р°Рї ?>
                 
                 <? if($site!='editstage' && ($site=='create' || $sbr->isDraft())) { // !!! ?>
                 <div class="b-layout__txt b-layout__txt_padbot_5 i-button norisk-stage-new">
-                    <a class="b-button b-button_margright_5 b-button_poll_plus" href="javascript:void(0)"></a><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="javascript:void(0)">Еще один этап</a>
+                    <a class="b-button b-button_margright_5 b-button_poll_plus" href="javascript:void(0)"></a><a class="b-layout__link b-layout__link_bordbot_dot_0f71c8 b-layout__link_inline-block b-layout__link_valign_middle" href="javascript:void(0)">Р•С‰Рµ РѕРґРёРЅ СЌС‚Р°Рї</a>
                 </div>
                 <? } ?>
 
                 <?php if(!$sbr->user_reqvs['rez_type']) {?>
-                <h2 class="b-layout__title b-layout__title_padtop_50">Резидентство</h2>
+                <h2 class="b-layout__title b-layout__title_padtop_50">Р РµР·РёРґРµРЅС‚СЃС‚РІРѕ</h2>
                 <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table">
                     <tbody><tr class="b-layout__tr">
 <!--                            <td class="b-layout__left b-layout__left_width_160">
-                                <div class="b-layout__txt">Резидентство</div>
+                                <div class="b-layout__txt">Р РµР·РёРґРµРЅС‚СЃС‚РІРѕ</div>
                             </td>-->
                             <td class="b-layout__middle b-layout__middle_padbot_20">
                                 <div class="b-radio b-radio_layout_vertical">
                                     <div class="b-radio__item b-radio__item_padbot_10">
                                         <input type="radio" id="rq1" class="b-radio__input" name="rez_type" value="<?=sbr::RT_RU?>" <?=($rt_disabled && $rez_type && $rez_type != sbr::RT_RU ? ' disabled="disabled"' : '' )?><?=($rt_checked && $rez_type == sbr::RT_RU ? ' checked="checked"' : '' )?> onclick="if ($('sbr_create_agree_emp').get('checked')) $('submit_form').removeClass('b-button_disabled')">
-                                        <label class="b-radio__label b-radio__label_fontsize_13" for="rq1">Я подтверждаю, что являюсь резидентом Российской Федерации</label>
+                                        <label class="b-radio__label b-radio__label_fontsize_13" for="rq1">РЇ РїРѕРґС‚РІРµСЂР¶РґР°СЋ, С‡С‚Рѕ СЏРІР»СЏСЋСЃСЊ СЂРµР·РёРґРµРЅС‚РѕРј Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё</label>
                                     </div>
                                     <div class="b-radio__item b-radio__item_padbot_10">
                                         <input type="radio" id="rq2" class="b-radio__input" name="rez_type" value="<?=sbr::RT_UABYKZ?>" <?=($rt_disabled && $rez_type && $rez_type != sbr::RT_UABYKZ ? ' disabled="disabled"' : '' )?><?=($rt_checked && $rez_type == sbr::RT_UABYKZ ? ' checked="checked"' : '' )?> onclick="if ($('sbr_create_agree_emp').get('checked')) $('submit_form').removeClass('b-button_disabled')">
-                                        <label class="b-radio__label b-radio__label_fontsize_13" for="rq2">Я подтверждаю, что являюсь резидентом любого другого государства,<br />кроме Российской Федерации</label>
+                                        <label class="b-radio__label b-radio__label_fontsize_13" for="rq2">РЇ РїРѕРґС‚РІРµСЂР¶РґР°СЋ, С‡С‚Рѕ СЏРІР»СЏСЋСЃСЊ СЂРµР·РёРґРµРЅС‚РѕРј Р»СЋР±РѕРіРѕ РґСЂСѓРіРѕРіРѕ РіРѕСЃСѓРґР°СЂСЃС‚РІР°,<br />РєСЂРѕРјРµ Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё</label>
                                     </div>
                                 </div>
                             </td>
@@ -269,14 +269,14 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                 </table>
                 <?php }//if?>
                 
-                <h2 class="b-layout__title b-layout__title_padtop_50">Расчет бюджета проекта</h2>
+                <h2 class="b-layout__title b-layout__title_padtop_50">Р Р°СЃС‡РµС‚ Р±СЋРґР¶РµС‚Р° РїСЂРѕРµРєС‚Р°</h2>
                                         <input type="hidden" id="scheme_type<?=sbr::SCHEME_LC?>" name="scheme_type" value="<?=sbr::SCHEME_LC?>" >
                 
 <?/*
                 <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table">
                     <tbody><tr class="b-layout__tr">
                             <td class="b-layout__left b-layout__left_width_160">
-                                <div class="b-layout__txt">Способ перевода денег</div>
+                                <div class="b-layout__txt">РЎРїРѕСЃРѕР± РїРµСЂРµРІРѕРґР° РґРµРЅРµРі</div>
                             </td>
                             <td class="b-layout__middle b-layout__middle_padbot_20">
                                 <div class="b-radio b-radio_layout_vertical">
@@ -303,24 +303,24 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                                     <div class="b-tax__rama-r">
                                         <div class="b-tax__content">
                                             <? foreach($sbr_schemes as $sch) { ?>
-                                            <? // схемы ?>
+                                            <? // СЃС…РµРјС‹ ?>
                                             <div style="display:none" class="sch_<?=$sch['type']?>">
                                                 <div class="b-tax__level b-tax__level_padbot_12">
-                                                    <div class="b-tax__txt b-tax__txt_width_160 b-tax__txt_inline-block">Бюджет всех этапов</div>
+                                                    <div class="b-tax__txt b-tax__txt_width_160 b-tax__txt_inline-block">Р‘СЋРґР¶РµС‚ РІСЃРµС… СЌС‚Р°РїРѕРІ</div>
                                                     <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_bold" id="sch_<?=$sch['type']?>_f"><?=(float)$sbr->data['cost']?></div>
                                                 </div>
                                                 
                                                 <div class="nalogi">
                                                     <div class="b-tax__level b-tax__level_padbot_12 b-tax__level_double">
-                                                        <div class="b-tax__txt b-tax__txt_padleft_1 b-tax__txt_width_160 b-tax__txt_inline-block b-tax__txt_fontsize_11">Налоги и вычеты</div>
-                                                        <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_fontsize_11">Сумма, руб.</div>
-                                                        <div class="b-tax__txt b-tax__txt_width_130 b-tax__txt_inline-block b-tax__txt_fontsize_11">% от бюджета проекта</div>
+                                                        <div class="b-tax__txt b-tax__txt_padleft_1 b-tax__txt_width_160 b-tax__txt_inline-block b-tax__txt_fontsize_11">РќР°Р»РѕРіРё Рё РІС‹С‡РµС‚С‹</div>
+                                                        <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_fontsize_11">РЎСѓРјРјР°, СЂСѓР±.</div>
+                                                        <div class="b-tax__txt b-tax__txt_width_130 b-tax__txt_inline-block b-tax__txt_fontsize_11">% РѕС‚ Р±СЋРґР¶РµС‚Р° РїСЂРѕРµРєС‚Р°</div>
                                                     </div>
 
                                                     <? foreach($sch['taxes'][1] as $id=>$tax) { 
                                                         if($sch['type'] == sbr::SCHEME_PDRD2) {
                                                         $s=$e=''; if($id==sbr::TAX_NDS) {$s='<strong>';$e='</strong>';}  ?>
-                                                        <? // строка налога ?>
+                                                        <? // СЃС‚СЂРѕРєР° РЅР°Р»РѕРіР° ?>
                                                         <div class="b-tax__level <?= ($id==sbr::TAX_NDS ? "b-tax__level_bordtop_9ea599" : "");?> b-tax__level_padbot_12 b-tax__level_padtop_15 taxrow-class" id="taxrow_<?=$sch['type'].'_'.$id?>">
                                                             <? if (18 <= $tax['tax_id'] && $tax['tax_id'] <= 35) { ?>
                                                                 <div class="b-tax__txt b-tax__txt_width_160 b-tax__txt_inline-block">
@@ -356,13 +356,13 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                                                             <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_bold" id="taxsum_<?= $sch['type'] ?>_<?=$id ?>">0</div>
                                                             <div class="b-tax__txt b-tax__txt_width_150 b-tax__txt_inline-block b-tax__txt_fontsize_11" id="taxper_<?= $sch['type'] ?>_<?= $id ?>">
                                                                 <?php if($id==sbr::TAX_NDS) { ?>
-                                                                    <?= $tax['percent']*100 ?>% от бюджета + налоги
+                                                                    <?= $tax['percent']*100 ?>% РѕС‚ Р±СЋРґР¶РµС‚Р° + РЅР°Р»РѕРіРё
                                                                 <?php } else {//if?>
                                                                     <?= $tax['percent']*100 ?>
                                                                 <?php }//else?>
                                                             </div>
                                                         </div>
-                                                        <? // строка налога ?>
+                                                        <? // СЃС‚СЂРѕРєР° РЅР°Р»РѕРіР° ?>
                                                         <? } else if($sch['type'] == sbr::SCHEME_LC)  {
                                                             $tax_percent += ( $tax['percent']*100 );
                                                             $tid = 100;?>
@@ -372,7 +372,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                                                     <? if($sch['type'] == sbr::SCHEME_LC) { ?>
                                                     <div class="b-tax__level b-tax__level_padbot_12 b-tax__level_padtop_15 taxrow-class" id="taxrow_<?=$sch['type'].'_'.$tid?>">
                                                         <div class="b-tax__txt b-tax__txt_width_160 b-tax__txt_inline-block">
-                                                            Вознаграждение Общества, комиссии Банка и платежных систем за открытие аккредитива
+                                                            Р’РѕР·РЅР°РіСЂР°Р¶РґРµРЅРёРµ РћР±С‰РµСЃС‚РІР°, РєРѕРјРёСЃСЃРёРё Р‘Р°РЅРєР° Рё РїР»Р°С‚РµР¶РЅС‹С… СЃРёСЃС‚РµРј Р·Р° РѕС‚РєСЂС‹С‚РёРµ Р°РєРєСЂРµРґРёС‚РёРІР°
                                                         </div>
                                                         <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_bold" id="taxsum_<?= $sch['type'] ?>_<?=$tid ?>">0</div>
                                                         <div class="b-tax__txt b-tax__txt_width_150 b-tax__txt_inline-block b-tax__txt_fontsize_11" id="taxper_<?= $sch['type'] ?>_<?= $tid ?>">
@@ -384,10 +384,10 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                                                 </div>
                                                     
                                             </div>
-                                            <? // схемы ?>
+                                            <? // СЃС…РµРјС‹ ?>
                                             <? } ?>
                                         
-                                            <? // итого ?>
+                                            <? // РёС‚РѕРіРѕ ?>
                                             <div class="b-tax__level b-tax__level_padtop_15">
 
                                                 <div class="i-shadow">
@@ -397,15 +397,15 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                                                                 <div class="b-shadow__top">
                                                                     <div class="b-shadow__bottom">
                                                                         <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20">
-                                                                            <div class="b-shadow__h4 b-shadow__h4_bold b-shadow__h4_padbot_10 b-shadow__h4_color_c10601">Бюджеты этапов пересчитаны</div>
+                                                                            <div class="b-shadow__h4 b-shadow__h4_bold b-shadow__h4_padbot_10 b-shadow__h4_color_c10601">Р‘СЋРґР¶РµС‚С‹ СЌС‚Р°РїРѕРІ РїРµСЂРµСЃС‡РёС‚Р°РЅС‹</div>
                                                                             <div class="stage-row">
-                                                                                <div class="b-shadow__txt b-shadow__txt_padbot_10 stage-title">Нарисовать дизайн сайта:</div>
+                                                                                <div class="b-shadow__txt b-shadow__txt_padbot_10 stage-title">РќР°СЂРёСЃРѕРІР°С‚СЊ РґРёР·Р°Р№РЅ СЃР°Р№С‚Р°:</div>
                                                                                 <div class="b-shadow__txt b-shadow__txt_padbot_15">
                                                                                     <div class="b-combo b-combo_margtop_-5 b-combo_inline-block">
                                                                                         <div class="b-combo__input b-combo__input_width_80">
                                                                                             <input id="c1" class="b-combo__input-text" name="" type="text" size="80" value="9231,54" />
                                                                                         </div>
-                                                                                    </div>&#160;&#160;руб.
+                                                                                    </div>&#160;&#160;СЂСѓР±.
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -422,20 +422,20 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                                                     </div>
                                                 </div>
 
-                                                <div class="b-tax__txt b-tax__txt_bold b-tax__txt_width_160 b-tax__txt_inline-block">Итого к оплате</div>
+                                                <div class="b-tax__txt b-tax__txt_bold b-tax__txt_width_160 b-tax__txt_inline-block">РС‚РѕРіРѕ Рє РѕРїР»Р°С‚Рµ</div>
                                                 <div class="b-tax__txt b-tax__txt_inline-block">
 
                                                     <div class="b-combo b-combo_inline-block b-combo_margtop_-6">
                                                         <div class="b-combo__input b-combo__input_width_90 <?= $sbr->reserved_id || $sbr->isReserveProcess() || $sbr->data['status'] >= sbr::STATUS_CHANGED ? 'b-combo__input_disabled' : '' ?>">
                                                             <input id="cost_total" class="b-combo__input-text b-combo__input-text_bold b-combo__input-text_fontsize_15" name="cost_total" type="text" size="80" value="" <?= $sbr->reserved_id || $sbr->isReserveProcess() || $sbr->data['status'] >= sbr::STATUS_CHANGED ? 'readonly' : '' ?>/>
                                                         </div>
-                                                    </div><span class="b-tax__txt b-tax__txt_bold b-tax__txt_fontsize_15">&#160;&#160;руб.</span>
+                                                    </div><span class="b-tax__txt b-tax__txt_bold b-tax__txt_fontsize_15">&#160;&#160;СЂСѓР±.</span>
                                                 </div>
                                                 
-                                                <div class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_fontsize_11" id="taxes_alert" style="display:none">Вы заключаете сделку с исполнителем не указавшим резидентство. Во время резервирования итоговая сумма может незначительно отличаться.</div>
+                                                <div class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_fontsize_11" id="taxes_alert" style="display:none">Р’С‹ Р·Р°РєР»СЋС‡Р°РµС‚Рµ СЃРґРµР»РєСѓ СЃ РёСЃРїРѕР»РЅРёС‚РµР»РµРј РЅРµ СѓРєР°Р·Р°РІС€РёРј СЂРµР·РёРґРµРЅС‚СЃС‚РІРѕ. Р’Рѕ РІСЂРµРјСЏ СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ РёС‚РѕРіРѕРІР°СЏ СЃСѓРјРјР° РјРѕР¶РµС‚ РЅРµР·РЅР°С‡РёС‚РµР»СЊРЅРѕ РѕС‚Р»РёС‡Р°С‚СЊСЃСЏ.</div>
                                                 
                                             </div>
-                                            <? // итого ?>
+                                            <? // РёС‚РѕРіРѕ ?>
                                     
                                         </div>
                                     </div>
@@ -449,18 +449,18 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
 
                 
                 <div class="b-buttons b-buttons_padtop_40 b-buttons_padleft_20">
-                    <a href="javascript:void(0)" onclick=" $('norisk-form').submit(); " class="b-button b-button_flat b-button_flat_green " id="submit_form"><span id="btn_changed_stage">Предложить сделку</span></a>
-                    <span class="b-buttons__txt b-buttons__txt_padleft_10"><?= ($site == 'editstage' ? 'повторно, сохранив изменения' : 'исполнителю');?></span><?
+                    <a href="javascript:void(0)" onclick=" $('norisk-form').submit(); " class="b-button b-button_flat b-button_flat_green " id="submit_form"><span id="btn_changed_stage">РџСЂРµРґР»РѕР¶РёС‚СЊ СЃРґРµР»РєСѓ</span></a>
+                    <span class="b-buttons__txt b-buttons__txt_padleft_10"><?= ($site == 'editstage' ? 'РїРѕРІС‚РѕСЂРЅРѕ, СЃРѕС…СЂР°РЅРёРІ РёР·РјРµРЅРµРЅРёСЏ' : 'РёСЃРїРѕР»РЅРёС‚РµР»СЋ');?></span><?
                     if($site == 'create' || $sbr->isDraft() || $sbr->status == sbr::STATUS_CANCELED || $sbr->status == sbr::STATUS_REFUSED) {
                         ?><span class="b-buttons__txt">,</span> <a class="b-buttons__link" href="javascript:void(0)" onclick="$('is_draft').set('value', '1'); $('norisk-form').submit();"></a> 
                     <? } ?>
-                    <span class="b-buttons__txt">или</span> <a class="b-buttons__link b-buttons__link_color_c10601" href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/?site=Stage&id=<?= $stage_id;?>">закрыть, не отправляя</a>    
+                    <span class="b-buttons__txt">РёР»Рё</span> <a class="b-buttons__link b-buttons__link_color_c10601" href="/<?= sbr::NEW_TEMPLATE_SBR; ?>/?site=Stage&id=<?= $stage_id;?>">Р·Р°РєСЂС‹С‚СЊ, РЅРµ РѕС‚РїСЂР°РІР»СЏСЏ</a>    
                 </div>  
-                <div class=" b-layout__txt b-layout__txt_padtop_20">Нажимая кнопку &laquo;Предложить сделку&raquo;, вы отправляете в ОАО ПСКБ заявление на открытие аккредитива по <a class="b-layout__link" href="http://www.fl.ru/offer_lc.pdf" target="_blank">Договору</a> и предлагаете исполнителю сотрудничество с заключением <a class="b-layout__link" href="http://www.fl.ru/agreement_lc.pdf" target="_blank">Соглашения</a> о выполнении работ в рамках Безопасной сделки.</div>
+                <div class=" b-layout__txt b-layout__txt_padtop_20">РќР°Р¶РёРјР°СЏ РєРЅРѕРїРєСѓ &laquo;РџСЂРµРґР»РѕР¶РёС‚СЊ СЃРґРµР»РєСѓ&raquo;, РІС‹ РѕС‚РїСЂР°РІР»СЏРµС‚Рµ РІ РћРђРћ РџРЎРљР‘ Р·Р°СЏРІР»РµРЅРёРµ РЅР° РѕС‚РєСЂС‹С‚РёРµ Р°РєРєСЂРµРґРёС‚РёРІР° РїРѕ <a class="b-layout__link" href="http://www.fl.ru/offer_lc.pdf" target="_blank">Р”РѕРіРѕРІРѕСЂСѓ</a> Рё РїСЂРµРґР»Р°РіР°РµС‚Рµ РёСЃРїРѕР»РЅРёС‚РµР»СЋ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРѕ СЃ Р·Р°РєР»СЋС‡РµРЅРёРµРј <a class="b-layout__link" href="http://www.fl.ru/agreement_lc.pdf" target="_blank">РЎРѕРіР»Р°С€РµРЅРёСЏ</a> Рѕ РІС‹РїРѕР»РЅРµРЅРёРё СЂР°Р±РѕС‚ РІ СЂР°РјРєР°С… Р‘РµР·РѕРїР°СЃРЅРѕР№ СЃРґРµР»РєРё.</div>
             </td>
             <td class="b-layout__right b-layout__right_padleft_30">
                 <?php if($sbr_drafts) {?>
-                    <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link b-layout__link_color_000 b-layout__link_bold" href="?site=drafts">Черновики</a></div>
+                    <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link b-layout__link_color_000 b-layout__link_bold" href="?site=drafts">Р§РµСЂРЅРѕРІРёРєРё</a></div>
                     <?php  foreach($sbr_drafts as $draft) { ?>
                         <div class="b-layout__txt b-layout__txt_padbot_10"><a class="b-layout__link" href="?site=edit&id=<?= $draft['id'] ?>"><?=reformat($draft['name'],38,0,1)?></a></div>
                     <? } //foreach?>
@@ -508,7 +508,7 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
                                             <div class="b-combo__input b-combo__input_width_80">
                                                 <input id="c1" class="b-combo__input-text" name="" type="text" size="80" value="" />
                                             </div>
-                                        </div>&#160;&#160;руб.
+                                        </div>&#160;&#160;СЂСѓР±.
                                     </div>
                                 </div>
                             </div>
@@ -538,14 +538,14 @@ include($_SERVER['DOCUMENT_ROOT'] . "/sbr/tpl.sbr-crumbs.php");
         'mincost':         <?= sbr_stages::MIN_COST_RUR ?>,
         'reztype':         '',
         'ereztype':        '<?= $rez_type == sbr::RT_UABYKZ ? 'UABYKZ' : ''?>',
-        'emp_form_type':   <?= (int)$sbr->user_reqvs['form_type'] ?>, // юридическая форма заказчика
+        'emp_form_type':   <?= (int)$sbr->user_reqvs['form_type'] ?>, // СЋСЂРёРґРёС‡РµСЃРєР°СЏ С„РѕСЂРјР° Р·Р°РєР°Р·С‡РёРєР°
         'maxcost':         <?= $sbr->maxNorezCost()?>,
         'maxcost_fiz':     <?= (int)$sbr->usd2rur(sbr::MAX_COST_USD_FIZ) ?>,
         'errors':          <?= json_encode($sbr->error) ?>,
         'onStageAdd': function(st) {
             //console.log(st.form.norisk.options.attaches[(st.form.stagesCnt)]);
             new attachedFiles2(st.element.getElement('.attachedfiles1'), {
-                'hiddenName':   'stages['+(stageNum)+'][attaches][]', // начинается с нуля
+                'hiddenName':   'stages['+(stageNum)+'][attaches][]', // РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ РЅСѓР»СЏ
                 'files':        st.form.norisk.options.attaches[(stageNum)],
                 'action_delete': 'delete_file_stage'
             }, st.form.norisk.options.attach_sessions[(stageNum)]);

@@ -6,13 +6,13 @@
 </div>
 <div class="b-check b-check_inline-block b-check_padleft_10">
     <input id="b-check22" class="b-check__input check_select_block" autocomplete="off" name="<?= $this->__toString();?>Check<?= $this->isMore(); ?>" type="checkbox" value="1" <?= $this->isCheck() ? "checked" : ""?>/>
-    <label for="b-check22" class="b-check__label b-check__label_fontsize_15"><?= $this->isMain() ? $this->getTitle() : "Дополнительный блок"?></label>
+    <label for="b-check22" class="b-check__label b-check__label_fontsize_15"><?= $this->isMain() ? $this->getTitle() : "Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ Р±Р»РѕРє"?></label>
 </div>
 <div class="b-fon b-fon_padbot_30">
     <div class="b-fon__body b-fon__body_pad_20">
         <table class="b-layout__table b-layout__table_width_full" border="0" cellpadding="0" cellspacing="0">
             <tr class="b-layout__tr">
-                <td class="b-layout__left b-layout__left_padbot_10 b-layout__left_width_150"><div class="b-layout__txt b-layout__txt_padtop_7 b-layout__txt_fontsize_11 b-layout__txt_lineheight_13">Название:</div></td>
+                <td class="b-layout__left b-layout__left_padbot_10 b-layout__left_width_150"><div class="b-layout__txt b-layout__txt_padtop_7 b-layout__txt_fontsize_11 b-layout__txt_lineheight_13">РќР°Р·РІР°РЅРёРµ:</div></td>
                 <td class="b-layout__right b-layout__right_padbot_10">
                     <div class="b-combo">
                         <div class="b-combo__input">
@@ -22,7 +22,7 @@
                 </td>
             </tr>
             <tr class="b-layout__tr">
-                <td class="b-layout__left b-layout__left_padbot_10 b-layout__left_width_150"><div class="b-layout__txt b-layout__txt_padtop_7 b-layout__txt_fontsize_11 b-layout__txt_lineheight_13">Ссылка:</div></td>
+                <td class="b-layout__left b-layout__left_padbot_10 b-layout__left_width_150"><div class="b-layout__txt b-layout__txt_padtop_7 b-layout__txt_fontsize_11 b-layout__txt_lineheight_13">РЎСЃС‹Р»РєР°:</div></td>
                 <td class="b-layout__right b-layout__right_padbot_10">
                     <div class="b-combo">
                         <div class="b-combo__input <?= $this->_error['link'] ? "b-combo__input_error" : ""?>">
@@ -45,6 +45,6 @@
         </table>
     </div>
     <div class="b-layout__txt b-layout__txt_float_right block_create_action">
-        <a class="b-layout__link <?= $this->isMain() ? "b-layout__link_bordbot_dot_0f71c8" : "b-layout__link_dot_c10600"?> b-layout__link_fontsize_11" href="javascript:void(0)"><?= $this->isMain() ? "Добавить блок" : "Удалить блок"?></a>
+        <a class="b-layout__link <?= $this->isMain() ? "b-layout__link_bordbot_dot_0f71c8" : "b-layout__link_dot_c10600"?> b-layout__link_fontsize_11" href="javascript:void(0)"><?= $this->isMain() ? "Р”РѕР±Р°РІРёС‚СЊ Р±Р»РѕРє" : "РЈРґР°Р»РёС‚СЊ Р±Р»РѕРє"?></a>
     </div>
 </div> 

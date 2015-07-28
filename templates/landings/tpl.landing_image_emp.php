@@ -6,11 +6,11 @@
     <div class="b-land__head b-land__head_padtop_80">
        
       <h1 class="b-page__title b-page__title_center b-page__title_color_fff b-page__title_uppercase b-page__title_padbot_10 b-page__title_padbot_10_ipad b-layout__txt_padbot_null_iphone b-page__title_size44">
-          1 000 000 исполнителей для вас
+          1 000 000 РёСЃРїРѕР»РЅРёС‚РµР»РµР№ РґР»СЏ РІР°СЃ
       </h1>
       
        <h2 class="b-page__title b-page__title_center b-page__title_color_fff">
-           Бесплатно опубликуйте задание и сразу получите предложения
+           Р‘РµСЃРїР»Р°С‚РЅРѕ РѕРїСѓР±Р»РёРєСѓР№С‚Рµ Р·Р°РґР°РЅРёРµ Рё СЃСЂР°Р·Сѓ РїРѕР»СѓС‡РёС‚Рµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ
        </h2> 
        
        <div class="b-layout b-layout_padleft_20 b-layout_padright_20 b-layout__txt_center b-layout_margbot_20">
@@ -19,13 +19,13 @@
                <a <?php if (!$uid): ?>data-ga-event="{ec: 'user', ea: 'main_customerbutton_clicked',el: 'customer'}"<?php endif; ?>
                   href="<?=$new_project_url?>" 
                   class="b-button b-button_flat b-button_flat_green b-button_flat_big b-button_flat_width_220 b-button_marglr_10_10 b-button_margbot_10_ipad">
-                   Найти исполнителя
+                   РќР°Р№С‚Рё РёСЃРїРѕР»РЅРёС‚РµР»СЏ
                </a>
                <?php if (!$uid): ?>
                <a  data-ga-event="{ec: 'user', ea: 'main_freelancerbutton_clicked',el: 'freelancer'}" 
                    href="/registration/" 
                    class="b-button b-button_flat b-button_flat_orange b-button_flat_big b-button_flat_width_220 b-button_marglr_10_10 b-button_margbot_10_ipad">
-                   Найти работу
+                   РќР°Р№С‚Рё СЂР°Р±РѕС‚Сѓ
                </a>
                <?php endif; ?>
            </div>
@@ -34,7 +34,7 @@
        
         <div class="b-layout b-layout_padleft_20 b-layout_padright_20 b-layout__txt_center">
             <div class="b-menu__banner b-menu__banner_ln1 b-menu__banner_inline">
-                <a target="_blank" href="/promo/bezopasnaya-sdelka/" class="b-menu__link-banner b-menu__link-banner_margtopnull"><span class="b-icon b-icon__shield"></span>Работайте с гарантией через Безопасную сделку</a>
+                <a target="_blank" href="/promo/bezopasnaya-sdelka/" class="b-menu__link-banner b-menu__link-banner_margtopnull"><span class="b-icon b-icon__shield"></span>Р Р°Р±РѕС‚Р°Р№С‚Рµ СЃ РіР°СЂР°РЅС‚РёРµР№ С‡РµСЂРµР· Р‘РµР·РѕРїР°СЃРЅСѓСЋ СЃРґРµР»РєСѓ</a>
             </div>
         </div>
 

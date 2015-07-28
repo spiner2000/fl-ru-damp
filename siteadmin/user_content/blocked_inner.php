@@ -1,6 +1,6 @@
 <?php
 /**
- * Модерирование пользовательского контента. Заблокированные сущности. Шаблон.
+ * РњРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РєРѕРЅС‚РµРЅС‚Р°. Р—Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ СЃСѓС‰РЅРѕСЃС‚Рё. РЁР°Р±Р»РѕРЅ.
  * 
  * @author Max 'BlackHawk' Yastrembovich
  */
@@ -21,9 +21,9 @@ foreach ( $aContents as $key => $aOne ) {
 }
 ?>
 
-<h2 class="b-layout__title b-layout__title_padbot_15">Заблокированные <?=$sTitle?></h2>
+<h2 class="b-layout__title b-layout__title_padbot_15">Р—Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ <?=$sTitle?></h2>
 	
-<!-- Фильтр старт -->
+<!-- Р¤РёР»СЊС‚СЂ СЃС‚Р°СЂС‚ -->
 <div class="b-ext-filter">
     <div class="b-ext-filter__inner">
         <div class="b-ext-filter__body">
@@ -32,7 +32,7 @@ foreach ( $aContents as $key => $aOne ) {
                 <table class="b-layout__table" border="0" cellpadding="0" cellspacing="0">
                 <tr class="b-layout__tr">
                     <td class="b-layout__left b-layout__left_width_80">
-                        <label class="b-form__name b-form__name_padtop_8">Логин</label>
+                        <label class="b-form__name b-form__name_padtop_8">Р›РѕРіРёРЅ</label>
                     </td>
                     <td class="b-layout__right b-layout__right_width_395">
                         <div class="b-input b-input_visibility_yes b-input_height_24">
@@ -52,7 +52,7 @@ foreach ( $aContents as $key => $aOne ) {
                     <td class="b-layout__right b-layout__right_width_395">
                     	<div class="b-check">
                             <input id="login_ex" class="b-check__input" type="checkbox" value="1" name="login_ex" />
-                            <label class="b-check__label b-check__label_fontsize_13" for="login_ex">точное совпадение</label>
+                            <label class="b-check__label b-check__label_fontsize_13" for="login_ex">С‚РѕС‡РЅРѕРµ СЃРѕРІРїР°РґРµРЅРёРµ</label>
                         </div>
                     </td>
                 </tr>
@@ -63,7 +63,7 @@ foreach ( $aContents as $key => $aOne ) {
                 <table class="b-layout__table" border="0" cellpadding="0" cellspacing="0">
                 <tr class="b-layout__tr">
                     <td class="b-layout__left b-layout__left_width_80">
-                		<label class="b-form__name b-form__name_padtop_8">Дата записи</label>
+                		<label class="b-form__name b-form__name_padtop_8">Р”Р°С‚Р° Р·Р°РїРёСЃРё</label>
                     </td>
                     <td class="b-layout__right">
                         <div class="b-combo b-combo_inline-block">
@@ -88,9 +88,9 @@ foreach ( $aContents as $key => $aOne ) {
             </div>
 
             <div class="b-buttons b-buttons_padleft_78 b-buttons_padbot_15">
-                <a id="my_filter" class="b-button b-button_flat b-button_flat_green"  href="javascript:void(0);">Найти документы</a>
+                <a id="my_filter" class="b-button b-button_flat b-button_flat_green"  href="javascript:void(0);">РќР°Р№С‚Рё РґРѕРєСѓРјРµРЅС‚С‹</a>
                 <span class="b-buttons__txt">&nbsp;</span>
-                <a id="my_reset" class="b-buttons__link" href="javascript:void(0);">Очистить</a>
+                <a id="my_reset" class="b-buttons__link" href="javascript:void(0);">РћС‡РёСЃС‚РёС‚СЊ</a>
             </div>
             
             
@@ -98,7 +98,7 @@ foreach ( $aContents as $key => $aOne ) {
         </div>
     </div>
 </div>
-<!-- Фильтр стоп -->
+<!-- Р¤РёР»СЊС‚СЂ СЃС‚РѕРї -->
 
 <div id="my_div_contents_wnd" style="height: 1800px; overflow: auto;">
     <div id="my_div_contents"></div>

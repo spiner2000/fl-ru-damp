@@ -13,14 +13,14 @@ $is_author = $user_mod & (commune::MOD_COMM_AUTHOR);
 								<thead>
 									<tr>
 										<th>
-											<a href="<?= $name_link?>" class="lnk-dot-grey">Пользователь</a> <a href="<?= $name_link?>"><?= $arrow_name;?></a>
+											<a href="<?= $name_link?>" class="lnk-dot-grey">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ</a> <a href="<?= $name_link?>"><?= $arrow_name;?></a>
 										</th>
 
 										<th>
-											<a href="<?= $date_link;?>" class="lnk-dot-grey">Вступил</a> <a href="<?= $date_link;?>"><?= $arrow_date;?></a>
+											<a href="<?= $date_link;?>" class="lnk-dot-grey">Р’СЃС‚СѓРїРёР»</a> <a href="<?= $date_link;?>"><?= $arrow_date;?></a>
 										</th>
-										<th><b>Модерирование</b></th>
-										<th><b>Управлением людьми</b> <span>Бан/Приглашения/Уведомления</span></th>
+										<th><b>РњРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ</b></th>
+										<th><b>РЈРїСЂР°РІР»РµРЅРёРµРј Р»СЋРґСЊРјРё</b> <span>Р‘Р°РЅ/РџСЂРёРіР»Р°С€РµРЅРёСЏ/РЈРІРµРґРѕРјР»РµРЅРёСЏ</span></th>
 										<th></th>
 									</tr>
 								</thead>
@@ -80,13 +80,13 @@ $is_author = $user_mod & (commune::MOD_COMM_AUTHOR);
 										  <input name="is_mod" <?=($is_moderator_check?"checked":"")?> type="checkbox" value="1" onClick="if(this.checked==true) { setRoleUser(<?=$memb['commune_id']?>, <?=$memb['id']?>, 1, $('is_men_value<?=$memb['id']?>').get('value')); } else { setRoleUser(<?=$memb['commune_id']?>, <?=$memb['id']?>, 0, $('is_men_value<?=$memb['id']?>').get('value'));}" class="check" <?= ($comm['author_id'] != $_SESSION['uid'])?"disabled":""?> /></td>
                                         <td><input name="is_men" <?=($is_manager_check?"checked":"")?> type="checkbox" value="1" onClick="if(this.checked==true) { setRoleUser(<?=$memb['commune_id']?>, <?=$memb['id']?>, $('is_mod_value<?=$memb['id']?>').get('value'), 1); } else { setRoleUser(<?=$memb['commune_id']?>, <?=$memb['id']?>, $('is_mod_value<?=$memb['id']?>').get('value'), 0);}" class="check" <?= ($comm['author_id'] != $_SESSION['uid'])?"disabled":""?>/></td>
 										<td class="cau-lnks">
-											<strong><a href="javascript:void(0)" onclick="if(confirm(this.innerHTML + ' пользователя?')) xajax_BanMember('idBan<?=$memb['id']?>', <?=$memb['id']?>)" id="idBan<?=$memb['id']?>" class="<?= ($memb['is_banned']=='t' ? 'lnk-dot-green' : 'lnk-dot-red');?>"><?=($memb['is_banned']=='t' ? 'Разбанить' : 'Забанить')?></a>&nbsp;&nbsp;&nbsp; <a href="?id=<?=$id?>&site=Admin.members&mode=Asked&m=<?=$memb['id']?><?php if ($page>1){ ?>&page=<?=$page?><?php } ?>&action=do.Kill.member" onclick="return confirm('Удалить пользователя?')" class="lnk-dot-red">Удалить</a></strong>
+											<strong><a href="javascript:void(0)" onclick="if(confirm(this.innerHTML + ' РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ?')) xajax_BanMember('idBan<?=$memb['id']?>', <?=$memb['id']?>)" id="idBan<?=$memb['id']?>" class="<?= ($memb['is_banned']=='t' ? 'lnk-dot-green' : 'lnk-dot-red');?>"><?=($memb['is_banned']=='t' ? 'Р Р°Р·Р±Р°РЅРёС‚СЊ' : 'Р—Р°Р±Р°РЅРёС‚СЊ')?></a>&nbsp;&nbsp;&nbsp; <a href="?id=<?=$id?>&site=Admin.members&mode=Asked&m=<?=$memb['id']?><?php if ($page>1){ ?>&page=<?=$page?><?php } ?>&action=do.Kill.member" onclick="return confirm('РЈРґР°Р»РёС‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ?')" class="lnk-dot-red">РЈРґР°Р»РёС‚СЊ</a></strong>
 										</td>
 									</tr>
 
 <? }else{ ?>
                                                                         <tr><td><? if($user_login!==NULL && empty($members)) { ?>
-                      Пользователь не найден
+                      РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РЅР°Р№РґРµРЅ
                     <? } else { ?>
                       &nbsp;
                     <? } ?></td></tr>

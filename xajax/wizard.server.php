@@ -69,7 +69,7 @@ function searchProject($string, $categories, $page=1, $type_loading = 1) {
         $html = ob_get_clean();
         $objResponse->script("$('project_search_hint').show()");
     } else {
-        $html = "Совпадений не найдено";
+        $html = "РЎРѕРІРїР°РґРµРЅРёР№ РЅРµ РЅР°Р№РґРµРЅРѕ";
         $objResponse->script("$('project_search_hint').hide()");
     }
     

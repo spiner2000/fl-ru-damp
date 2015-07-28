@@ -1,7 +1,7 @@
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
-	<td align="left"><strong>Статистика</strong></td>
-	<td align="right"><a href="/siteadmin/stats/">Назад</a></td>
+	<td align="left"><strong>РЎС‚Р°С‚РёСЃС‚РёРєР°</strong></td>
+	<td align="right"><a href="/siteadmin/stats/">РќР°Р·Р°Рґ</a></td>
 </tr>
 </table>
 <br>
@@ -21,9 +21,9 @@
 
 <table width="100%" cellspacing="2" cellpadding="2" border="0">
 <tr>
-	<td>Страны</td>
-	<td>Города</td>
-    <td>Возраст</td>
+	<td>РЎС‚СЂР°РЅС‹</td>
+	<td>Р“РѕСЂРѕРґР°</td>
+    <td>Р’РѕР·СЂР°СЃС‚</td>
 </tr>
 <tr>
 	<td valign="top">
@@ -64,7 +64,7 @@
         $ages = $DB->rows($sql);
 			foreach($ages as $ikey=>$age){
                 if($age['_year']=='') {
-                    $tage = 'Не указано';
+                    $tage = 'РќРµ СѓРєР°Р·Р°РЅРѕ';
                 } else {
                     $tage = date('Y')-$age['_year'];
                 }
@@ -79,4 +79,4 @@
 </tr>
 </table>
 
-<a href="geo.php">Все города и страны</a>
+<a href="geo.php">Р’СЃРµ РіРѕСЂРѕРґР° Рё СЃС‚СЂР°РЅС‹</a>

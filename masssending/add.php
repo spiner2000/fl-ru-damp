@@ -27,7 +27,7 @@ if (!empty($_POST)) {
     $frm = $_POST;
 
     //$params['msg'] = stripslashes($frm['msg']);
-    $params['msg'] = "Здравствуйте!\n\nПриглашаю ознакомиться с проектом '".change_q_x(stripslashes($frm['title']), FALSE, FALSE, 'b|i|p|ul|li|s|h[1-6]{1}', FALSE, FALSE)."' ".str_replace('www.n.fl.ru', 'n.fl.ru',$host).$frm['link']." \n\n\n".LenghtFormatEx(change_q_x(stripslashes($frm['msg']), FALSE, FALSE, 'b|i|p|ul|li|s|h[1-6]{1}', FALSE, FALSE),300);
+    $params['msg'] = "Р—РґСЂР°РІСЃС‚РІСѓР№С‚Рµ!\n\nРџСЂРёРіР»Р°С€Р°СЋ РѕР·РЅР°РєРѕРјРёС‚СЊСЃСЏ СЃ РїСЂРѕРµРєС‚РѕРј '".change_q_x(stripslashes($frm['title']), FALSE, FALSE, 'b|i|p|ul|li|s|h[1-6]{1}', FALSE, FALSE)."' ".str_replace('www.n.fl.ru', 'n.fl.ru',$host).$frm['link']." \n\n\n".LenghtFormatEx(change_q_x(stripslashes($frm['msg']), FALSE, FALSE, 'b|i|p|ul|li|s|h[1-6]{1}', FALSE, FALSE),300);
     $params['max_users'] = intval($_POST['max_users']);
     $params['max_cost'] = intval($_POST['max_cost']);
 

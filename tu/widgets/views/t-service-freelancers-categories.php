@@ -5,7 +5,7 @@ if(!defined('IN_STDF')) {
 }
 
 /**
- * Представление для виджета TServiceFreelancersCategories
+ * РџСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ РґР»СЏ РІРёРґР¶РµС‚Р° TServiceFreelancersCategories
  *
  *
  * @var TServiceFreelancersCategories $this
@@ -18,7 +18,7 @@ if(isset($profs) && count($profs))
 ?>
 <div id="specialis" class="b-layout b-layout_clear_both b-layout_top_40 b-layout_overflow_hidden b-page__desktop">
     <?php $groups_repeat = array(); ?> 
-        <h2 class="b-layout__title">Фрилансеры по специализациям</h2>
+        <h2 class="b-layout__title">Р¤СЂРёР»Р°РЅСЃРµСЂС‹ РїРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏРј</h2>
         <div class="b-layout b-layout_col_4 b-layout_col_2_ipad b-layout_col_1_iphone">
         <?php foreach ($profs as $prof): ?>
             <?php if (!isset($groups_repeat[$prof['grouplink']]) && ($groups_repeat[$prof['grouplink']] = 1)): ?>
@@ -28,7 +28,7 @@ if(isset($profs) && count($profs))
         </div>
     <?php /*
     <h2 class="b-layout__title">
-        Фрилансеры по специализациям
+        Р¤СЂРёР»Р°РЅСЃРµСЂС‹ РїРѕ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏРј
     </h2>
     <?php foreach($categories as $i => $parentCategory) { 
             if(!$parentCategory['link']) continue;

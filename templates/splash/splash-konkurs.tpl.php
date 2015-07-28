@@ -7,7 +7,7 @@
                         <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_20 b-layout">
 
 
-<h2 class="b-shadow__title b-shadow__title_padbot_30 b-shadow__title_fontsize_22">Как получить результат конкурса</h2>
+<h2 class="b-shadow__title b-shadow__title_padbot_30 b-shadow__title_fontsize_22">РљР°Рє РїРѕР»СѓС‡РёС‚СЊ СЂРµР·СѓР»СЊС‚Р°С‚ РєРѕРЅРєСѓСЂСЃР°</h2>
 
 <table class="b-layout__table b-layout__table_margbot_40 b-layout__table_width_full" border="0" cellpadding="0" cellspacing="0">
     <tbody>
@@ -16,22 +16,22 @@
                 <img class="b-layout__pic b-layout__pic_margright_20" src="/images/promo-icons/big/11.png" alt="">
             </td>
             <td class="b-layout__left b-layout__left_padright_20">
-                <h3 class="b-layout__h3 b-layout__h3_padbot_5">Заключите сделку с победителем</h3>
-                <div class="b-layout__txt">Сервис «Безопасная Сделка» — это гарантия того,<br> что исполнитель не исчезнет после получения<br> денег, не передав вам результат работы. Чтобы<br>получить выполненное конкурсное задание,<br>зарезервируйте призовой гонорар.</div>
+                <h3 class="b-layout__h3 b-layout__h3_padbot_5">Р—Р°РєР»СЋС‡РёС‚Рµ СЃРґРµР»РєСѓ СЃ РїРѕР±РµРґРёС‚РµР»РµРј</h3>
+                <div class="b-layout__txt">РЎРµСЂРІРёСЃ В«Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°В» вЂ” СЌС‚Рѕ РіР°СЂР°РЅС‚РёСЏ С‚РѕРіРѕ,<br> С‡С‚Рѕ РёСЃРїРѕР»РЅРёС‚РµР»СЊ РЅРµ РёСЃС‡РµР·РЅРµС‚ РїРѕСЃР»Рµ РїРѕР»СѓС‡РµРЅРёСЏ<br> РґРµРЅРµРі, РЅРµ РїРµСЂРµРґР°РІ РІР°Рј СЂРµР·СѓР»СЊС‚Р°С‚ СЂР°Р±РѕС‚С‹. Р§С‚РѕР±С‹<br>РїРѕР»СѓС‡РёС‚СЊ РІС‹РїРѕР»РЅРµРЅРЅРѕРµ РєРѕРЅРєСѓСЂСЃРЅРѕРµ Р·Р°РґР°РЅРёРµ,<br>Р·Р°СЂРµР·РµСЂРІРёСЂСѓР№С‚Рµ РїСЂРёР·РѕРІРѕР№ РіРѕРЅРѕСЂР°СЂ.</div>
             </td>
             <td class="b-layout__one b-layout__one_padright_20">
                 <img src="/images/promo-icons/big/5.png" alt="">
             </td>
             <td class="b-layout__right">
-                <h3 class="b-layout__h3 b-layout__h3_padbot_5">Аккаунт PRO — для связи<br>с фрилансерами</h3>
-                <div class="b-layout__txt">Если вы хотите обращаться к фрилансерам<br>напрямую, вам нужен профессиональный<br>аккаунт. Работодатели с аккаунтом PRO могут<br>видеть контакты всех пользователей сайта.<br><a class="b-layout__link" href="/payed/">Купить аккаунт</a> <span class="b-icon b-icon__pro b-icon__pro_e "></span></div>
+                <h3 class="b-layout__h3 b-layout__h3_padbot_5">РђРєРєР°СѓРЅС‚ PRO вЂ” РґР»СЏ СЃРІСЏР·Рё<br>СЃ С„СЂРёР»Р°РЅСЃРµСЂР°РјРё</h3>
+                <div class="b-layout__txt">Р•СЃР»Рё РІС‹ С…РѕС‚РёС‚Рµ РѕР±СЂР°С‰Р°С‚СЊСЃСЏ Рє С„СЂРёР»Р°РЅСЃРµСЂР°Рј<br>РЅР°РїСЂСЏРјСѓСЋ, РІР°Рј РЅСѓР¶РµРЅ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№<br>Р°РєРєР°СѓРЅС‚. Р Р°Р±РѕС‚РѕРґР°С‚РµР»Рё СЃ Р°РєРєР°СѓРЅС‚РѕРј PRO РјРѕРіСѓС‚<br>РІРёРґРµС‚СЊ РєРѕРЅС‚Р°РєС‚С‹ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃР°Р№С‚Р°.<br><a class="b-layout__link" href="/payed/">РљСѓРїРёС‚СЊ Р°РєРєР°СѓРЅС‚</a> <span class="b-icon b-icon__pro b-icon__pro_e "></span></div>
             </td>
         </tr>
     </tbody>
 </table>
 
 <div class="b-layout__txt b-layout__txt_marglr_auto" style="height: 325px; width:536px;">
-    <div id="vcontainer">Для просмотра флэш-ролика необходимо установить флэш плеер и разрешить запуск JavaScript.</div>
+    <div id="vcontainer">Р”Р»СЏ РїСЂРѕСЃРјРѕС‚СЂР° С„Р»СЌС€-СЂРѕР»РёРєР° РЅРµРѕР±С…РѕРґРёРјРѕ СѓСЃС‚Р°РЅРѕРІРёС‚СЊ С„Р»СЌС€ РїР»РµРµСЂ Рё СЂР°Р·СЂРµС€РёС‚СЊ Р·Р°РїСѓСЃРє JavaScript.</div>
 
     <script type="text/javascript" src="/scripts/jwplayer.js"></script>
     <script type="text/javascript">
@@ -50,13 +50,13 @@
         <tbody>
             <tr class="b-layout__tr">
                 <td class="b-layout__one b-layout__one_padright_25 b-icon_help_tel">
-                    <div class="b-layout__txt">Позвоните<div class="b-layout__txt b-layout__txt_color_6db335 b-layout__txt_bold">8-800-555-33-14</div></div>
+                    <div class="b-layout__txt">РџРѕР·РІРѕРЅРёС‚Рµ<div class="b-layout__txt b-layout__txt_color_6db335 b-layout__txt_bold">8-800-555-33-14</div></div>
                 </td>
                 <td class="b-layout__one b-layout__one_padright_25 b-icon_help_letter">
-                    <div class="b-layout__txt">Напишите в<br><a class="b-layout__link" href="/about/feedback/">службу поддержки</a></div>
+                    <div class="b-layout__txt">РќР°РїРёС€РёС‚Рµ РІ<br><a class="b-layout__link" href="/about/feedback/">СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё</a></div>
                 </td>
                 <td class="b-layout__right b-icon_help_article">
-                    <div class="b-layout__txt">Прочтите статью в<br><a class="b-layout__link" href="https://feedback.fl.ru/">разделе «Помощь»</a></div>
+                    <div class="b-layout__txt">РџСЂРѕС‡С‚РёС‚Рµ СЃС‚Р°С‚СЊСЋ РІ<br><a class="b-layout__link" href="https://feedback.fl.ru/">СЂР°Р·РґРµР»Рµ В«РџРѕРјРѕС‰СЊВ»</a></div>
                 </td>
             </tr>
         </tbody>
@@ -66,7 +66,7 @@
 <div class="b-buttons b-buttons_padtb_30 b-buttons_bg_6fb400 b-buttons_center b-buttons_marglr_-20 b-buttons_margbot_-20">
     <a href="/sbr/?site=create&pid=<?= intval($_SESSION['splash_prj_id']);?>" class="b-button b-button_round_green">
         <span class="b-button__b1">
-            <span class="b-button__b2"><span class="b-button__txt">Начать новую сделку</span></span>
+            <span class="b-button__b2"><span class="b-button__txt">РќР°С‡Р°С‚СЊ РЅРѕРІСѓСЋ СЃРґРµР»РєСѓ</span></span>
         </span>
     </a>
 </div>

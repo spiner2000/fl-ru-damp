@@ -5,8 +5,8 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/pgq/api/SimpleLogger.php");
 declare(ticks = 1);
 
 /**
- * SystemDaemon для Windows.
- * Команды stop и kill действуют одинаково, т.е. устанавливаем daemon->killed в TRUE и выходим.
+ * SystemDaemon РґР»СЏ Windows.
+ * РљРѕРјР°РЅРґС‹ stop Рё kill РґРµР№СЃС‚РІСѓСЋС‚ РѕРґРёРЅР°РєРѕРІРѕ, С‚.Рµ. СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј daemon->killed РІ TRUE Рё РІС‹С…РѕРґРёРј.
  */
 
 // WIN ////////////////////////////////////////////
@@ -142,7 +142,7 @@ abstract class SystemDaemon
 // WIN ////////////////////////////////////////////
   public function main($argc, $argv)
   {
-    $this->is_daemon = ($argv[1] == 'start' && $argv[2] == 'daemon'); // сам демон запущен, действо будет происходить в текущем процессе.
+    $this->is_daemon = ($argv[1] == 'start' && $argv[2] == 'daemon'); // СЃР°Рј РґРµРјРѕРЅ Р·Р°РїСѓС‰РµРЅ, РґРµР№СЃС‚РІРѕ Р±СѓРґРµС‚ РїСЂРѕРёСЃС…РѕРґРёС‚СЊ РІ С‚РµРєСѓС‰РµРј РїСЂРѕС†РµСЃСЃРµ.
 
     if( $argc != 2 && !$this->is_daemon ) {
       fprintf(STDERR, $this->usage($this->name));
@@ -303,7 +303,7 @@ abstract class SystemDaemon
     if( file_exists($this->pidfile) )
     {    
       if($fast_check) {
-        // может еще пару быстрых проверок...
+        // РјРѕР¶РµС‚ РµС‰Рµ РїР°СЂСѓ Р±С‹СЃС‚СЂС‹С… РїСЂРѕРІРµСЂРѕРє...
         return true;
       }
 

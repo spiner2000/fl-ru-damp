@@ -15,7 +15,7 @@ function RemindByEmail($email, $rnd, $captchanum, $role){
     $show_role = false;
 
     if(!$captcha->checkNumber(trim($rnd))) {
-        $error = "Вы ввели неверную комбинацию символов. Попробуйте еще раз";
+        $error = "Р’С‹ РІРІРµР»Рё РЅРµРІРµСЂРЅСѓСЋ РєРѕРјР±РёРЅР°С†РёСЋ СЃРёРјРІРѕР»РѕРІ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·";
         $error_type = 'captcha';
     } else {
         require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/sbr_meta.php');
@@ -29,10 +29,10 @@ function RemindByEmail($email, $rnd, $captchanum, $role){
             $u = new users();
             $u->GetUser($email, true, $email);
             if (!$u->uid) {
-                $error = "E-mail не зарегистрирован. Укажите корректный логин/телефон/e-mail.";
+                $error = "E-mail РЅРµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ. РЈРєР°Р¶РёС‚Рµ РєРѕСЂСЂРµРєС‚РЅС‹Р№ Р»РѕРіРёРЅ/С‚РµР»РµС„РѕРЅ/e-mail.";
             } else {
                 if($u->is_banned) {
-                    $error = "Аккаунт с этим адресом заблокирован. К сожалению, вы не можете восстановить к нему доступ.";
+                    $error = "РђРєРєР°СѓРЅС‚ СЃ СЌС‚РёРј Р°РґСЂРµСЃРѕРј Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ. Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, РІС‹ РЅРµ РјРѕР¶РµС‚Рµ РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ Рє РЅРµРјСѓ РґРѕСЃС‚СѓРї.";
                 } else {
                     if($u->isRemindByPhoneOnly($u->login)) {
                         $ok_type = 'phone';
@@ -44,9 +44,9 @@ function RemindByEmail($email, $rnd, $captchanum, $role){
                         $sms_gate->sendSMS( preg_replace("/-LOGIN-/",$u->login,$sms_gate->getTextMessage(sms_gate::TYPE_PASS, $passwd)) );
 
                         if($sms_gate->getHTTPCode() == 200) {
-                            // OK ТЕЛЕФОН
+                            // OK РўР•Р›Р•Р¤РћРќ
                         } else {
-                            $error = 'Ошибка отправки СМС на указанный номер';
+                            $error = 'РћС€РёР±РєР° РѕС‚РїСЂР°РІРєРё РЎРњРЎ РЅР° СѓРєР°Р·Р°РЅРЅС‹Р№ РЅРѕРјРµСЂ';
                         }
                     } else {
                         $sm = new smail();
@@ -57,7 +57,7 @@ function RemindByEmail($email, $rnd, $captchanum, $role){
         } elseif(preg_match("/^\+\d{1,}$/", $email) || preg_match("/^\d{1,}$/", $email)) {
             $error_type = 'email';
             $ok_type = 'phone';
-            // телефон
+            // С‚РµР»РµС„РѕРЅ
             if(!preg_match("/^\+\d{1,}$/", $email)) {
                 $email = "+".$email;
             }
@@ -66,41 +66,41 @@ function RemindByEmail($email, $rnd, $captchanum, $role){
             $safety_emp = ((int)$role !== 1) ? sbr_meta::findSafetyPhone($phone, 'emp') : array();
             $safety = null;
             if (!empty($safety_emp) && !empty($safety_frl)) {
-                $error = 'Номер телефона привязан к двум аккаунтам. Пожалуйста, укажите, к какому аккаунту вы хотите восстановить доступ.';
+                $error = 'РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РїСЂРёРІСЏР·Р°РЅ Рє РґРІСѓРј Р°РєРєР°СѓРЅС‚Р°Рј. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, СѓРєР°Р¶РёС‚Рµ, Рє РєР°РєРѕРјСѓ Р°РєРєР°СѓРЅС‚Сѓ РІС‹ С…РѕС‚РёС‚Рµ РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РґРѕСЃС‚СѓРї.';
                 $show_role = true;
             } elseif(empty($safety_emp) && empty($safety_frl)) {
-                $error = "Номер не связан ни с одним аккаунтом. Укажите корректный логин/телефон/e-mail.";
+                $error = "РќРѕРјРµСЂ РЅРµ СЃРІСЏР·Р°РЅ РЅРё СЃ РѕРґРЅРёРј Р°РєРєР°СѓРЅС‚РѕРј. РЈРєР°Р¶РёС‚Рµ РєРѕСЂСЂРµРєС‚РЅС‹Р№ Р»РѕРіРёРЅ/С‚РµР»РµС„РѕРЅ/e-mail.";
             } else {
                 $safety = !empty($safety_frl) ? $safety_frl : $safety_emp;
                 $u = new users();
                 $u->GetUserByUID($safety['uid']);
                 if($u->is_banned) {
-                    $error = "Аккаунт с этим номером заблокирован. К сожалению, вы не можете восстановить к нему доступ.";
+                    $error = "РђРєРєР°СѓРЅС‚ СЃ СЌС‚РёРј РЅРѕРјРµСЂРѕРј Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ. Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, РІС‹ РЅРµ РјРѕР¶РµС‚Рµ РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ Рє РЅРµРјСѓ РґРѕСЃС‚СѓРї.";
                 } else {
                     $passwd   = users::ResetPasswordSMS($safety['uid'], $phone);
                     $sms_gate = new sms_gate_a1($phone);
                     $sms_gate->sendSMS( preg_replace("/-LOGIN-/",$u->login,$sms_gate->getTextMessage(sms_gate::TYPE_PASS, $passwd)) );
 
                     if($sms_gate->getHTTPCode() == 200) {
-                        // OK ТЕЛЕФОН
+                        // OK РўР•Р›Р•Р¤РћРќ
                     } else {
-                        $error = 'Ошибка отправки СМС на указанный номер';
+                        $error = 'РћС€РёР±РєР° РѕС‚РїСЂР°РІРєРё РЎРњРЎ РЅР° СѓРєР°Р·Р°РЅРЅС‹Р№ РЅРѕРјРµСЂ';
                     }
                 }
             }
         } else {
             $error_type = 'email';
             $ok_type = 'email';
-            // логин
+            // Р»РѕРіРёРЅ
             require_once ($_SERVER['DOCUMENT_ROOT'] . '/classes/users.php');
             $login = $email;
             $u = new users();
             $u->GetUser($login);
             if (!$u->uid) {
-                $error = "Логин не зарегистрирован. Укажите корректный логин/телефон/e-mail.";
+                $error = "Р›РѕРіРёРЅ РЅРµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ. РЈРєР°Р¶РёС‚Рµ РєРѕСЂСЂРµРєС‚РЅС‹Р№ Р»РѕРіРёРЅ/С‚РµР»РµС„РѕРЅ/e-mail.";
             } else {
                 if($u->is_banned) {
-                    $error = "Аккаунт с этим логином заблокирован. К сожалению, вы не можете восстановить к нему доступ.";
+                    $error = "РђРєРєР°СѓРЅС‚ СЃ СЌС‚РёРј Р»РѕРіРёРЅРѕРј Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ. Рљ СЃРѕР¶Р°Р»РµРЅРёСЋ, РІС‹ РЅРµ РјРѕР¶РµС‚Рµ РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ Рє РЅРµРјСѓ РґРѕСЃС‚СѓРї.";
                 } else {
                     if($u->isRemindByPhoneOnly($u->login)) {
                         $ok_type = 'phone';
@@ -113,9 +113,9 @@ function RemindByEmail($email, $rnd, $captchanum, $role){
                         $sms_gate->sendSMS( preg_replace("/-LOGIN-/",$u->login,$sms_gate->getTextMessage(sms_gate::TYPE_PASS, $passwd)) );
 
                         if($sms_gate->getHTTPCode() == 200) {
-                            // OK ТЕЛЕФОН
+                            // OK РўР•Р›Р•Р¤РћРќ
                         } else {
-                            $error = 'Ошибка отправки СМС на указанный номер';
+                            $error = 'РћС€РёР±РєР° РѕС‚РїСЂР°РІРєРё РЎРњРЎ РЅР° СѓРєР°Р·Р°РЅРЅС‹Р№ РЅРѕРјРµСЂ';
                         }
                     } else {
                         $sm = new smail();
@@ -169,7 +169,7 @@ function RemindByPhone($phone, $rnd, $captchanum) {
     $captcha = new captcha($captchanum);
 
     if(!$captcha->checkNumber(trim($rnd))) {
-        $error = "Вы ввели неверную комбинацию букв";
+        $error = "Р’С‹ РІРІРµР»Рё РЅРµРІРµСЂРЅСѓСЋ РєРѕРјР±РёРЅР°С†РёСЋ Р±СѓРєРІ";
         $captcha->setNumber();
         $objResponse->assign('image_rnd2', 'src', '/image.php?num='.$captchanum.'&t='.time());
         $objResponse->assign('remind_phone_error', 'innerHTML', $error);
@@ -182,7 +182,7 @@ function RemindByPhone($phone, $rnd, $captchanum) {
         $i_phone = users::CheckSafetyPhone($phone);
         if($i_phone['error_flag'] || trim($phone)=='') {
             $captcha->setNumber();
-            $objResponse->assign('remind_phone_error', 'innerHTML', 'Вы ввели телефон в недопустимом формате');
+            $objResponse->assign('remind_phone_error', 'innerHTML', 'Р’С‹ РІРІРµР»Рё С‚РµР»РµС„РѕРЅ РІ РЅРµРґРѕРїСѓСЃС‚РёРјРѕРј С„РѕСЂРјР°С‚Рµ');
             $objResponse->assign('image_rnd2', 'src', '/image.php?num=2&t='.time());
             $objResponse->assign('remind_rnd2', 'value', '');
             $objResponse->assign('remind_phone', 'value', $phone);
@@ -196,7 +196,7 @@ function RemindByPhone($phone, $rnd, $captchanum) {
             
             $safety = sbr_meta::findSafetyPhone($phone);
             if($safety['safety_only_phone'] == 'f' || empty($safety)) {
-                $error  = 'Этот номер телефона не связан ни с одним аккаунтом. Попробуйте восстановить доступ через  <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="#">логин или email</a>';
+                $error  = 'Р­С‚РѕС‚ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РЅРµ СЃРІСЏР·Р°РЅ РЅРё СЃ РѕРґРЅРёРј Р°РєРєР°СѓРЅС‚РѕРј. РџРѕРїСЂРѕР±СѓР№С‚Рµ РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РґРѕСЃС‚СѓРї С‡РµСЂРµР·  <a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="#">Р»РѕРіРёРЅ РёР»Рё email</a>';
                 $captcha->setNumber();
                 $objResponse->assign('remind_phone_error', 'innerHTML', $error);
                 $objResponse->assign('image_rnd2', 'src', '/image.php?num='.$captchanum.'&t='.time());
@@ -211,7 +211,7 @@ function RemindByPhone($phone, $rnd, $captchanum) {
                 $sms_gate->sendSMS($sms_gate->getTextMessage(sms_gate::TYPE_PASS, $passwd));
                 
                 if($sms_gate->getHTTPCode() == 200) {
-                    $html = '<span class="b-icon b-icon_sbr_gattent"></span>На указанный вами номер выслан новый пароль для входа в систему.';
+                    $html = '<span class="b-icon b-icon_sbr_gattent"></span>РќР° СѓРєР°Р·Р°РЅРЅС‹Р№ РІР°РјРё РЅРѕРјРµСЂ РІС‹СЃР»Р°РЅ РЅРѕРІС‹Р№ РїР°СЂРѕР»СЊ РґР»СЏ РІС…РѕРґР° РІ СЃРёСЃС‚РµРјСѓ.';
                     if(SMS_GATE_DEBUG) {
                         $html .= ' <strong style="color:red">(DEBUG TEST: ' . $passwd . ')</strong>';
                     }
@@ -222,7 +222,7 @@ function RemindByPhone($phone, $rnd, $captchanum) {
                                           $('sms_remind').getElement('h3').grab(e, 'after');
                     ");
                 } else {
-                    $error = 'Ошибка отправки СМС на указанный номер';
+                    $error = 'РћС€РёР±РєР° РѕС‚РїСЂР°РІРєРё РЎРњРЎ РЅР° СѓРєР°Р·Р°РЅРЅС‹Р№ РЅРѕРјРµСЂ';
                     $captcha->setNumber();
                     $objResponse->assign('remind_phone_error', 'innerHTML', $error);
                     $objResponse->assign('image_rnd2', 'src', '/image.php?num='.$captchanum.'&t='.time());
@@ -239,7 +239,7 @@ function RemindByPhone($phone, $rnd, $captchanum) {
 }
 
 /**
- * напоминание пароля через телефон и логин
+ * РЅР°РїРѕРјРёРЅР°РЅРёРµ РїР°СЂРѕР»СЏ С‡РµСЂРµР· С‚РµР»РµС„РѕРЅ Рё Р»РѕРіРёРЅ
  * @param $phone
  * @param $login
  * @param $rnd
@@ -257,30 +257,30 @@ function RemindByPhoneAndLogin ($phone, $login, $rnd, $captchanum) {
     $phone = trim($phone);
     $login = trim($login);
 
-    // проверка капчи
+    // РїСЂРѕРІРµСЂРєР° РєР°РїС‡Рё
     $captcha = new captcha($captchanum);
     if (!$captcha->checkNumber(trim($rnd))) {
         $captcha->setNumber();
-        $error = 'Вы ввели неверную комбинацию букв';
+        $error = 'Р’С‹ РІРІРµР»Рё РЅРµРІРµСЂРЅСѓСЋ РєРѕРјР±РёРЅР°С†РёСЋ Р±СѓРєРІ';
         sendPhoneRemindError($objResponse, $error, $captchanum, 'captcha');
         return $objResponse;
     }
 
-    // проверка правильности введенного номера
+    // РїСЂРѕРІРµСЂРєР° РїСЂР°РІРёР»СЊРЅРѕСЃС‚Рё РІРІРµРґРµРЅРЅРѕРіРѕ РЅРѕРјРµСЂР°
     $i_phone = users::CheckSafetyPhone($phone);
     if($phone && $i_phone['error_flag']) {
         $captcha->setNumber();
-        $error = 'Вы ввели телефон в недопустимом формате';
+        $error = 'Р’С‹ РІРІРµР»Рё С‚РµР»РµС„РѕРЅ РІ РЅРµРґРѕРїСѓСЃС‚РёРјРѕРј С„РѕСЂРјР°С‚Рµ';
         sendPhoneRemindError($objResponse, $error, $captchanum, 'phone');
         return $objResponse;
     }
 
-    // проверка наличия номера в базе
+    // РїСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ РЅРѕРјРµСЂР° РІ Р±Р°Р·Рµ
     if ($phone) {
         $safetyPhones = sbr_meta::findSafetyPhones($phone);
 
         if (!count($safetyPhones)) {
-            $error  = 'Этот номер телефона не связан ни с одним аккаунтом. Попробуйте восстановить доступ через логин или email';
+            $error  = 'Р­С‚РѕС‚ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РЅРµ СЃРІСЏР·Р°РЅ РЅРё СЃ РѕРґРЅРёРј Р°РєРєР°СѓРЅС‚РѕРј. РџРѕРїСЂРѕР±СѓР№С‚Рµ РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РґРѕСЃС‚СѓРї С‡РµСЂРµР· Р»РѕРіРёРЅ РёР»Рё email';
             $captcha->setNumber();
             sendPhoneRemindError($objResponse, $error, $captchanum, 'phone');
             return $objResponse;
@@ -289,21 +289,21 @@ function RemindByPhoneAndLogin ($phone, $login, $rnd, $captchanum) {
             $checkUser = new users();
             $checkUser->GetUser($safetyPhone["login"]);
             if ($checkUser->is_banned) {
-                $error  = 'Аккаунт с указанным номером телефона заблокирован или удален.\nСожалеем, но восстановить пароль к нему в данный момент нельзя.';
+                $error  = 'РђРєРєР°СѓРЅС‚ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РЅРѕРјРµСЂРѕРј С‚РµР»РµС„РѕРЅР° Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ РёР»Рё СѓРґР°Р»РµРЅ.\nРЎРѕР¶Р°Р»РµРµРј, РЅРѕ РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїР°СЂРѕР»СЊ Рє РЅРµРјСѓ РІ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РЅРµР»СЊР·СЏ.';
 	            $captcha->setNumber();
 	            sendPhoneRemindError($objResponse, $error, $captchanum, 'login');
 	            return $objResponse;
             }
         }
-        // если на один номер несколько аккаунтов и логин не указан
+        // РµСЃР»Рё РЅР° РѕРґРёРЅ РЅРѕРјРµСЂ РЅРµСЃРєРѕР»СЊРєРѕ Р°РєРєР°СѓРЅС‚РѕРІ Рё Р»РѕРіРёРЅ РЅРµ СѓРєР°Р·Р°РЅ
         if (count($safetyPhones) > 1 && !$login) {
             $captcha->setNumber();
-            $error  = 'Вы не указали логин. Поле обязательно для заполнения, т.к. номер телефона привязан к нескольким аккаунтам';
+            $error  = 'Р’С‹ РЅРµ СѓРєР°Р·Р°Р»Рё Р»РѕРіРёРЅ. РџРѕР»Рµ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ, С‚.Рє. РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РїСЂРёРІСЏР·Р°РЅ Рє РЅРµСЃРєРѕР»СЊРєРёРј Р°РєРєР°СѓРЅС‚Р°Рј';
             sendPhoneRemindError($objResponse, $error, $captchanum, 'login');
             return $objResponse;
         }
 
-        // если номер не уникальный и указан логин
+        // РµСЃР»Рё РЅРѕРјРµСЂ РЅРµ СѓРЅРёРєР°Р»СЊРЅС‹Р№ Рё СѓРєР°Р·Р°РЅ Р»РѕРіРёРЅ
         if (count($safetyPhones) > 1 || $login) {
             foreach ($safetyPhones as $value) {
                 if ($value['login'] == $login) {
@@ -312,7 +312,7 @@ function RemindByPhoneAndLogin ($phone, $login, $rnd, $captchanum) {
                 }
             }
             if (!$safety) {
-                $error  = 'Этот логин и номер телефона не связаны. Попробуйте восстановить доступ через логин или email';
+                $error  = 'Р­С‚РѕС‚ Р»РѕРіРёРЅ Рё РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РЅРµ СЃРІСЏР·Р°РЅС‹. РџРѕРїСЂРѕР±СѓР№С‚Рµ РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РґРѕСЃС‚СѓРї С‡РµСЂРµР· Р»РѕРіРёРЅ РёР»Рё email';
                 $captcha->setNumber();
                 sendPhoneRemindError($objResponse, $error, $captchanum, 'phone login');
                 return $objResponse;
@@ -324,20 +324,20 @@ function RemindByPhoneAndLogin ($phone, $login, $rnd, $captchanum) {
         }
     }
 
-    // если указан логин и не указан номер
+    // РµСЃР»Рё СѓРєР°Р·Р°РЅ Р»РѕРіРёРЅ Рё РЅРµ СѓРєР°Р·Р°РЅ РЅРѕРјРµСЂ
     if ($login && !$phone) {
 
-        // проверяем существует ли пользователь с таким логином
+        // РїСЂРѕРІРµСЂСЏРµРј СЃСѓС‰РµСЃС‚РІСѓРµС‚ Р»Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ СЃ С‚Р°РєРёРј Р»РѕРіРёРЅРѕРј
         $user = new users();
         $user->GetUser($login);
         if (!$user->uid) {
-            $error  = 'Вы указали некорректный логин';
+            $error  = 'Р’С‹ СѓРєР°Р·Р°Р»Рё РЅРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ Р»РѕРіРёРЅ';
             $captcha->setNumber();
             sendPhoneRemindError($objResponse, $error, $captchanum, 'login');
             return $objResponse;
         }
        if ($user->is_banned) {
-            $error  = 'Аккаунт с указанным логином заблокирован или удален.\nСожалеем, но восстановить пароль к нему в данный момент нельзя.';
+            $error  = 'РђРєРєР°СѓРЅС‚ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј Р»РѕРіРёРЅРѕРј Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ РёР»Рё СѓРґР°Р»РµРЅ.\nРЎРѕР¶Р°Р»РµРµРј, РЅРѕ РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїР°СЂРѕР»СЊ Рє РЅРµРјСѓ РІ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РЅРµР»СЊР·СЏ.';
             $captcha->setNumber();
             sendPhoneRemindError($objResponse, $error, $captchanum, 'login');
             return $objResponse;
@@ -346,7 +346,7 @@ function RemindByPhoneAndLogin ($phone, $login, $rnd, $captchanum) {
         $safety = sbr_meta::findSafetyPhoneByLogin($login);
 
         if (!$safety) {
-            $error  = 'Этот логин не связан ни с одним номером телефона. Попробуйте восстановить доступ через логин или email';
+            $error  = 'Р­С‚РѕС‚ Р»РѕРіРёРЅ РЅРµ СЃРІСЏР·Р°РЅ РЅРё СЃ РѕРґРЅРёРј РЅРѕРјРµСЂРѕРј С‚РµР»РµС„РѕРЅР°. РџРѕРїСЂРѕР±СѓР№С‚Рµ РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РґРѕСЃС‚СѓРї С‡РµСЂРµР· Р»РѕРіРёРЅ РёР»Рё email';
             $captcha->setNumber();
             sendPhoneRemindError($objResponse, $error, $captchanum, 'login');
             return $objResponse;
@@ -360,14 +360,14 @@ function RemindByPhoneAndLogin ($phone, $login, $rnd, $captchanum) {
 
 
     if ($sms_gate->getHTTPCode() != 200) {
-        $error = 'Ошибка отправки СМС на указанный номер';
+        $error = 'РћС€РёР±РєР° РѕС‚РїСЂР°РІРєРё РЎРњРЎ РЅР° СѓРєР°Р·Р°РЅРЅС‹Р№ РЅРѕРјРµСЂ';
         $captcha->setNumber();
         sendPhoneRemindError($objResponse, $error, $captchanum);
         return $objResponse;
     }
 
 
-    $html = '<span class="b-icon b-icon_sbr_gattent"></span>На указанный вами номер выслан новый пароль для входа в систему.';
+    $html = '<span class="b-icon b-icon_sbr_gattent"></span>РќР° СѓРєР°Р·Р°РЅРЅС‹Р№ РІР°РјРё РЅРѕРјРµСЂ РІС‹СЃР»Р°РЅ РЅРѕРІС‹Р№ РїР°СЂРѕР»СЊ РґР»СЏ РІС…РѕРґР° РІ СЃРёСЃС‚РµРјСѓ.';
     if(SMS_GATE_DEBUG) {
         $html .= ' <strong style="color:red">(DEBUG TEST: ' . $passwd . ')</strong>';
     }

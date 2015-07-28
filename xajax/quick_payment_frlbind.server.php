@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Закрепление / продление закрепления в каталоге фрилансеров.
- * Оплата услуги.
+ * Р—Р°РєСЂРµРїР»РµРЅРёРµ / РїСЂРѕРґР»РµРЅРёРµ Р·Р°РєСЂРµРїР»РµРЅРёСЏ РІ РєР°С‚Р°Р»РѕРіРµ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ.
+ * РћРїР»Р°С‚Р° СѓСЃР»СѓРіРё.
  */
 
 require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/billing.php');
@@ -17,7 +17,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/freelancer_binds.php");
 
 
 /**
- * Оплата с личного счета
+ * РћРїР»Р°С‚Р° СЃ Р»РёС‡РЅРѕРіРѕ СЃС‡РµС‚Р°
  * @param type $type
  * @param array $data (weeks, prof_id, is_spec)
  * @return type
@@ -45,7 +45,7 @@ function quickPaymentFrlbindAccount($type, $data)
     if ($valid) {
         
         $bill = new billing($uid);
-        //Допустимо использование промокодов
+        //Р”РѕРїСѓСЃС‚РёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РїСЂРѕРјРѕРєРѕРґРѕРІ
         $bill->setPromoCodes('SERVICE_FRLBIND', $promo_code);         
 
         $op_code = $freelancer_binds->getOpCode($prof_id, $is_spec, $is_prolong);
@@ -72,12 +72,12 @@ function quickPaymentFrlbindAccount($type, $data)
         }
     }
 
-    // Показываем предупреждение в случае ошибки
+    // РџРѕРєР°Р·С‹РІР°РµРј РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
     if ($is_error) {
-        $action = $is_prolong ? 'продлении закрепления' : 'закреплении';
+        $action = $is_prolong ? 'РїСЂРѕРґР»РµРЅРёРё Р·Р°РєСЂРµРїР»РµРЅРёСЏ' : 'Р·Р°РєСЂРµРїР»РµРЅРёРё';
         $objResponse->script("
             var qp = window.quick_payment_factory.getQuickPayment('frlbind');
-            if(qp) qp.show_error('Возникла ошибка при {$action} в каталоге!');
+            if(qp) qp.show_error('Р’РѕР·РЅРёРєР»Р° РѕС€РёР±РєР° РїСЂРё {$action} РІ РєР°С‚Р°Р»РѕРіРµ!');
         ");
     }
         
@@ -89,7 +89,7 @@ function quickPaymentFrlbindAccount($type, $data)
 
 
 /**
- * Это методы для разных видов оплаты но сгруппированные в яндекс кассе
+ * Р­С‚Рѕ РјРµС‚РѕРґС‹ РґР»СЏ СЂР°Р·РЅС‹С… РІРёРґРѕРІ РѕРїР»Р°С‚С‹ РЅРѕ СЃРіСЂСѓРїРїРёСЂРѕРІР°РЅРЅС‹Рµ РІ СЏРЅРґРµРєСЃ РєР°СЃСЃРµ
  * 
  * @param type $type
  * @param type $data
@@ -124,10 +124,10 @@ function quickPaymentFrlbindSberbank($type, $data)
 
 
 /**
- * Оплата через яндекс кассу
+ * РћРїР»Р°С‚Р° С‡РµСЂРµР· СЏРЅРґРµРєСЃ РєР°СЃСЃСѓ
  * 
- * @param type $type - тип оплаты
- * @param type $data - данные по параметрам покупаемой услуги
+ * @param type $type - С‚РёРї РѕРїР»Р°С‚С‹
+ * @param type $data - РґР°РЅРЅС‹Рµ РїРѕ РїР°СЂР°РјРµС‚СЂР°Рј РїРѕРєСѓРїР°РµРјРѕР№ СѓСЃР»СѓРіРё
  * @return \xajaxResponse
  */
 function quickPaymentFrlbindYandexKassa($type, $data)
@@ -163,7 +163,7 @@ function quickPaymentFrlbindYandexKassa($type, $data)
         $is_error = false;
         
         $bill = new billing($uid);
-        //Допустимо использование промокодов
+        //Р”РѕРїСѓСЃС‚РёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РїСЂРѕРјРѕРєРѕРґРѕРІ
         $bill->setPromoCodes('SERVICE_FRLBIND', $promo_code);        
 
         $op_code = $freelancer_binds->getOpCode($prof_id, $is_spec, $is_prolong);
@@ -172,7 +172,7 @@ function quickPaymentFrlbindYandexKassa($type, $data)
             'prof_id' => $prof_id
         );
         
-        //Формируем заказ
+        //Р¤РѕСЂРјРёСЂСѓРµРј Р·Р°РєР°Р·
         $billReserveId = $bill->addServiceAndCheckout($op_code, $option);
         $payed_sum = $bill->getRealPayedSum();
         
@@ -201,16 +201,16 @@ function quickPaymentFrlbindYandexKassa($type, $data)
                 $link .= $group['link'] . '/';
             }
         }
-        //сохранаем в сессию куда перейти при успешной покупке        
+        //СЃРѕС…СЂР°РЅР°РµРј РІ СЃРµСЃСЃРёСЋ РєСѓРґР° РїРµСЂРµР№С‚Рё РїСЂРё СѓСЃРїРµС€РЅРѕР№ РїРѕРєСѓРїРєРµ        
         $_SESSION[quickPaymentPopup::QPP_REDIRECT] = $link;
     }
 
-    // Показываем предупреждение в случае ошибки
+    // РџРѕРєР°Р·С‹РІР°РµРј РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
     if ($is_error) {
-        $action = $is_prolong ? 'продлении закрепления' : 'закреплении';
+        $action = $is_prolong ? 'РїСЂРѕРґР»РµРЅРёРё Р·Р°РєСЂРµРїР»РµРЅРёСЏ' : 'Р·Р°РєСЂРµРїР»РµРЅРёРё';
         $objResponse->script("
             var qp = window.quick_payment_factory.getQuickPayment('frlbind');
-            if(qp) qp.show_error('Возникла ошибка при {$action} в каталоге!');
+            if(qp) qp.show_error('Р’РѕР·РЅРёРєР»Р° РѕС€РёР±РєР° РїСЂРё {$action} РІ РєР°С‚Р°Р»РѕРіРµ!');
         ");
     }
         
@@ -222,10 +222,10 @@ function quickPaymentFrlbindYandexKassa($type, $data)
 
 
 /**
- * Оплата через Плати потом
+ * РћРїР»Р°С‚Р° С‡РµСЂРµР· РџР»Р°С‚Рё РїРѕС‚РѕРј
  * 
- * @param type $type - тип оплаты
- * @param type $data - данные по параметрам покупаемой услуги
+ * @param type $type - С‚РёРї РѕРїР»Р°С‚С‹
+ * @param type $data - РґР°РЅРЅС‹Рµ РїРѕ РїР°СЂР°РјРµС‚СЂР°Рј РїРѕРєСѓРїР°РµРјРѕР№ СѓСЃР»СѓРіРё
  * @return \xajaxResponse
  */
 function quickPaymentFrlbindPlatipotom($type, $data)
@@ -251,7 +251,7 @@ function quickPaymentFrlbindPlatipotom($type, $data)
         $is_error = false;
 
         $bill = new billing($uid);
-        //Допустимо использование промокодов
+        //Р”РѕРїСѓСЃС‚РёРјРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РїСЂРѕРјРѕРєРѕРґРѕРІ
         $bill->setPromoCodes('SERVICE_FRLBIND', $promo_code); 
         
         $op_code = $freelancer_binds->getOpCode($prof_id, $is_spec, $is_prolong);
@@ -260,7 +260,7 @@ function quickPaymentFrlbindPlatipotom($type, $data)
             'prof_id' => $prof_id
         );
         
-        //Формируем заказ
+        //Р¤РѕСЂРјРёСЂСѓРµРј Р·Р°РєР°Р·
         $billReserveId = $bill->addServiceAndCheckout($op_code, $option);
         $payed_sum = $bill->getRealPayedSum();
 
@@ -289,17 +289,17 @@ function quickPaymentFrlbindPlatipotom($type, $data)
                     $link .= $group['link'] . '/';
                 }
             }
-            //сохранаем в сессию куда перейти при успешной покупке        
+            //СЃРѕС…СЂР°РЅР°РµРј РІ СЃРµСЃСЃРёСЋ РєСѓРґР° РїРµСЂРµР№С‚Рё РїСЂРё СѓСЃРїРµС€РЅРѕР№ РїРѕРєСѓРїРєРµ        
             $_SESSION[quickPaymentPopup::QPP_REDIRECT] = $link;
         }
     }
 
-    // Показываем предупреждение в случае ошибки
+    // РџРѕРєР°Р·С‹РІР°РµРј РїСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё
     if ($is_error) {
-        $action = $is_prolong ? 'продлении закрепления' : 'закреплении';
+        $action = $is_prolong ? 'РїСЂРѕРґР»РµРЅРёРё Р·Р°РєСЂРµРїР»РµРЅРёСЏ' : 'Р·Р°РєСЂРµРїР»РµРЅРёРё';
         $objResponse->script("
             var qp = window.quick_payment_factory.getQuickPayment('frlbind');
-            if(qp) qp.show_error('Возникла ошибка при {$action} в каталоге!');
+            if(qp) qp.show_error('Р’РѕР·РЅРёРєР»Р° РѕС€РёР±РєР° РїСЂРё {$action} РІ РєР°С‚Р°Р»РѕРіРµ!');
         ");
     }
         

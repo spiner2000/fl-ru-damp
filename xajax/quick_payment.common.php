@@ -19,6 +19,6 @@ if(!$xajax)
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROGetYandexKassaLink", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php")); 
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("quickPROGetPlatipotomLink", $_SERVER['DOCUMENT_ROOT'] . "/xajax/quickpro.server.php")); 
     
-    //Ðàçìîðîçêà ÏÐÎ
+    //Ð Ð°Ð·Ð¼Ð¾Ñ€Ð¾Ð·ÐºÐ° ÐŸÐ Ðž
     $xajax->register(XAJAX_FUNCTION, new xajaxUserFunction("freezePro", $_SERVER['DOCUMENT_ROOT'] . "/xajax/professions.server.php"));
 }

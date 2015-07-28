@@ -14,7 +14,7 @@
             <?php if(getOS()=='Macintosh'): ?>
                 <div class="b-social__fb-inner"><div class="fb-like-box" data-href="http://www.facebook.com/freelanceru" data-width="250" data-show-faces="true" data-stream="false" data-border-color="#ffffff" data-header="false"></div></div>
                 <div style="border-top: 1px solid #D8DEE5;margin: 10px 5px 0;padding: 5px;">
-                     <a href="https://www.facebook.com/help/?page=209089222464503" target="_blank" style="color: gray;cursor: pointer;text-decoration: none; font-size:9px;"><i style="background-image: url('https://fbstatic-a.akamaihd.net/rsrc.php/v2/yI/x/1dQf_ATK831.png');background-repeat: no-repeat;  height: 14px;width: 14px; margin-right:5px; float:left"></i>Социальный плагин Facebook</a>
+                     <a href="https://www.facebook.com/help/?page=209089222464503" target="_blank" style="color: gray;cursor: pointer;text-decoration: none; font-size:9px;"><i style="background-image: url('https://fbstatic-a.akamaihd.net/rsrc.php/v2/yI/x/1dQf_ATK831.png');background-repeat: no-repeat;  height: 14px;width: 14px; margin-right:5px; float:left"></i>РЎРѕС†РёР°Р»СЊРЅС‹Р№ РїР»Р°РіРёРЅ Facebook</a>
                 </div>
             <?php else: ?>
                 <div class="b-social__fb-inner">
@@ -22,7 +22,7 @@
                 </div>
                 <div style="background:#fff;padding: 10px 0 0 5px;">
                     <div style="border-top: 1px solid #D8DEE5;padding: 5px;">
-                         <a href="https://www.facebook.com/help/?page=209089222464503" target="_blank" style="color: gray;cursor: pointer;text-decoration: none; font-size:9px;"><i style="background-image: url('https://fbstatic-a.akamaihd.net/rsrc.php/v2/yI/x/1dQf_ATK831.png');background-repeat: no-repeat;  height: 14px;width: 14px; margin-right:5px; float:left"></i>Социальный плагин Facebook</a>
+                         <a href="https://www.facebook.com/help/?page=209089222464503" target="_blank" style="color: gray;cursor: pointer;text-decoration: none; font-size:9px;"><i style="background-image: url('https://fbstatic-a.akamaihd.net/rsrc.php/v2/yI/x/1dQf_ATK831.png');background-repeat: no-repeat;  height: 14px;width: 14px; margin-right:5px; float:left"></i>РЎРѕС†РёР°Р»СЊРЅС‹Р№ РїР»Р°РіРёРЅ Facebook</a>
                     </div>
                 </div>
             <?php endif; ?>
@@ -39,7 +39,7 @@
             <div class="b-layout__txt b-layout__txt_padbot_10 b-layout__txt_center">
                 <noindex>
                     <a rel="nofollow" class="b-layout__link b-layout__link_fontsize_11 b-layout__link_color_0f71c8" href="https://www.adeasy.ru/website/fl.ru/2064" target="_blank">
-                        Реклама на этом месте
+                        Р РµРєР»Р°РјР° РЅР° СЌС‚РѕРј РјРµСЃС‚Рµ
                     </a>
                 </noindex>
             </div>

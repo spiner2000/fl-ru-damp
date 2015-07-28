@@ -15,7 +15,7 @@ require_once $_SERVER["DOCUMENT_ROOT"]."/classes/sbr_emp.php";
 class CBComboRequestHandler {
     public function __construct() {}
 	/**
-     * Обрабатывает POST переменную action  и  возвращает null или данные
+     * РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ POST РїРµСЂРµРјРµРЅРЅСѓСЋ action  Рё  РІРѕР·РІСЂР°С‰Р°РµС‚ null РёР»Рё РґР°РЅРЅС‹Рµ
      *
      * @return string
      */ 
@@ -26,7 +26,7 @@ class CBComboRequestHandler {
             
             case "getdays":
 
-                $days = array(1 => iconv("WINDOWS-1251", "UTF-8//IGNORE",'1 день'));
+                $days = array(1 => iconv("WINDOWS-1251", "UTF-8//IGNORE",'1 РґРµРЅСЊ'));
                 $max = __paramInit("integer", "", "max", 1);
                 $all = array(1,2,3,4,5,6,7,8,9,10,14,21,30,45,60,90);
                 
@@ -36,7 +36,7 @@ class CBComboRequestHandler {
                     foreach($all as $day)
                     {
                         if($day >= $max) break;
-                        $days[$day] = iconv("WINDOWS-1251", "UTF-8//IGNORE",$day . ending($day, ' день', ' дня', ' дней'));
+                        $days[$day] = iconv("WINDOWS-1251", "UTF-8//IGNORE",$day . ending($day, ' РґРµРЅСЊ', ' РґРЅСЏ', ' РґРЅРµР№'));
                     }
                 }
 
@@ -59,8 +59,8 @@ class CBComboRequestHandler {
                 if (!$result) {
                     
                     /*
-                     * Получаем из базы иерархию категорий для
-                     * типовой услуги
+                     * РџРѕР»СѓС‡Р°РµРј РёР· Р±Р°Р·С‹ РёРµСЂР°СЂС…РёСЋ РєР°С‚РµРіРѕСЂРёР№ РґР»СЏ
+                     * С‚РёРїРѕРІРѕР№ СѓСЃР»СѓРіРё
                      */
 
                      $DB = new DB('master');
@@ -85,7 +85,7 @@ class CBComboRequestHandler {
                          {
                             $result[$i["gid"]] = array(
                                 '0' =>  array(
-                                    iconv("WINDOWS-1251", "UTF-8//IGNORE",$i["gname"]),/*,"undefined_value" => iconv("WINDOWS-1251", "UTF-8//IGNORE",'Все специальности')*/
+                                    iconv("WINDOWS-1251", "UTF-8//IGNORE",$i["gname"]),/*,"undefined_value" => iconv("WINDOWS-1251", "UTF-8//IGNORE",'Р’СЃРµ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё')*/
                                     $i['gucnt']));
                                     
                             if ($i["pid"] !== null) { 
@@ -262,7 +262,7 @@ class CBComboRequestHandler {
                     $result = $membuf->get($memkey);
                     if (!$result) {
                         $rows = professions::GetProfs($n);
-                        $result = array(0=>iconv("WINDOWS-1251", "UTF-8//IGNORE", "Все специальности"));
+                        $result = array(0=>iconv("WINDOWS-1251", "UTF-8//IGNORE", "Р’СЃРµ СЃРїРµС†РёР°Р»СЊРЅРѕСЃС‚Рё"));
                         foreach ($rows as $k=>$i) {
                             $result[$i["id"]] = iconv("WINDOWS-1251", "UTF-8//IGNORE", $i["name"]);
                         }
@@ -284,7 +284,7 @@ class CBComboRequestHandler {
                     foreach ($rows as $k=>$i) {
                         $result[$i["id"]] = iconv("WINDOWS-1251", "UTF-8//IGNORE", $i["op_name"]);
                     }
-                    $result[76] = iconv("WINDOWS-1251", "UTF-8//IGNORE", "На несколько недель");
+                    $result[76] = iconv("WINDOWS-1251", "UTF-8//IGNORE", "РќР° РЅРµСЃРєРѕР»СЊРєРѕ РЅРµРґРµР»СЊ");
                     $membuf->add($memkey, $result, $expire);    
                 }
                 return (json_encode($result));
@@ -311,7 +311,7 @@ class CBComboRequestHandler {
                     $result = $membuf->get($memkey);
                     if (!$result) {
                     	$rows = city::GetCities($n);
-                        $result = array("0"=>iconv("WINDOWS-1251", "UTF-8//IGNORE", "Все города"));
+                        $result = array("0"=>iconv("WINDOWS-1251", "UTF-8//IGNORE", "Р’СЃРµ РіРѕСЂРѕРґР°"));
                         if (is_array($rows)) foreach ($rows as $k=>$i) {
                             $result[$k] = iconv("WINDOWS-1251", "UTF-8//IGNORE", $i);
                         }
@@ -331,7 +331,7 @@ class CBComboRequestHandler {
                     $result = $membuf->get($memkey);
                     if (!$result) {
                     	$rows = city::GetCities($n);
-                        $result = array("0"=>iconv("WINDOWS-1251", "UTF-8//IGNORE", "Все города"));
+                        $result = array("0"=>iconv("WINDOWS-1251", "UTF-8//IGNORE", "Р’СЃРµ РіРѕСЂРѕРґР°"));
                         foreach ($rows as $k=>$i) {
                             $result[$k] = iconv("WINDOWS-1251", "UTF-8//IGNORE", $i);
                         }
@@ -359,26 +359,26 @@ class CBComboRequestHandler {
     
    
     /**
-     * @param $matchIds - массив в котором все ключи - идентификаторы найденных пользователей (по идее это массив выдачи сфинкса $result['matches'] но сейчас пока буду использовать вместо сфинкса работу с базой напрямую)
-     * @param $limit    - сколько записей показывать
-     * @param &$rows     - массив с результатами поиска по вхождению подстрок
+     * @param $matchIds - РјР°СЃСЃРёРІ РІ РєРѕС‚РѕСЂРѕРј РІСЃРµ РєР»СЋС‡Рё - РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂС‹ РЅР°Р№РґРµРЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ (РїРѕ РёРґРµРµ СЌС‚Рѕ РјР°СЃСЃРёРІ РІС‹РґР°С‡Рё СЃС„РёРЅРєСЃР° $result['matches'] РЅРѕ СЃРµР№С‡Р°СЃ РїРѕРєР° Р±СѓРґСѓ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ РІРјРµСЃС‚Рѕ СЃС„РёРЅРєСЃР° СЂР°Р±РѕС‚Сѓ СЃ Р±Р°Р·РѕР№ РЅР°РїСЂСЏРјСѓСЋ)
+     * @param $limit    - СЃРєРѕР»СЊРєРѕ Р·Р°РїРёСЃРµР№ РїРѕРєР°Р·С‹РІР°С‚СЊ
+     * @param &$rows     - РјР°СЃСЃРёРІ СЃ СЂРµР·СѓР»СЊС‚Р°С‚Р°РјРё РїРѕРёСЃРєР° РїРѕ РІС…РѕР¶РґРµРЅРёСЋ РїРѕРґСЃС‚СЂРѕРє
      * Array
         (
-            [uid] => Идентификатор пользователя из таблицы users 
-            [uname] => Имя пользователя
-            [usurname] => Фамилия пользователя
-            [login] => Логин пользователя
-            [photo] => короткое имя файла пользователя, например f_4f7aedf03b54e.png
-            [path]  => Путь к файлу пользователя относительно корня dav сервера без первого слеша, например users/la/land_f/foto/           
+            [uid] => РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР· С‚Р°Р±Р»РёС†С‹ users 
+            [uname] => РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+            [usurname] => Р¤Р°РјРёР»РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+            [login] => Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+            [photo] => РєРѕСЂРѕС‚РєРѕРµ РёРјСЏ С„Р°Р№Р»Р° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ, РЅР°РїСЂРёРјРµСЂ f_4f7aedf03b54e.png
+            [path]  => РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РєРѕСЂРЅСЏ dav СЃРµСЂРІРµСЂР° Р±РµР· РїРµСЂРІРѕРіРѕ СЃР»РµС€Р°, РЅР°РїСЂРёРјРµСЂ users/la/land_f/foto/           
         ) 
-     * @param &$moreContacts -hfpyjcnm количествf найденных контактов и limit  
+     * @param &$moreContacts -hfpyjcnm РєРѕР»РёС‡РµСЃС‚РІf РЅР°Р№РґРµРЅРЅС‹С… РєРѕРЅС‚Р°РєС‚РѕРІ Рё limit  
      * */
     private function getLastContacts($matchIds, $limit, &$rows, &$moreContacts) {
-        //получаем роль пользователя
+        //РїРѕР»СѓС‡Р°РµРј СЂРѕР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
         session_start();
         $role = $_SESSION["role"][0];             
-        if ($role !== null)  {//если роль пользователя известна             
-	        //получаем партнеров по СБР пользователя            
+        if ($role !== null)  {//РµСЃР»Рё СЂРѕР»СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР·РІРµСЃС‚РЅР°             
+	        //РїРѕР»СѓС‡Р°РµРј РїР°СЂС‚РЅРµСЂРѕРІ РїРѕ РЎР‘Р  РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ            
 	        $partner = 'emp_id';
 	        $entity  = 'frl_id';
 	        if ($role == 1) {
@@ -389,7 +389,7 @@ class CBComboRequestHandler {
 	        $DB = new DB("master");
 	        $rawsbr = $DB->cache(600)->rows($cmd);
 	        $partners = array();
-	        $j = 0;		//счетчик СБР пользователя
+	        $j = 0;		//СЃС‡РµС‚С‡РёРє РЎР‘Р  РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	        $complete = 0;
 	        foreach ($rawsbr as $i) {
 			    if ($matchIds[$i[$partner]] !== null) {
@@ -400,7 +400,7 @@ class CBComboRequestHandler {
 					if ($j > $limit) $complete = 1;
                 }
             }
-			//здесь надо обработать случай, когда СБР у пользователя нет (получить из контактов)
+			//Р·РґРµСЃСЊ РЅР°РґРѕ РѕР±СЂР°Р±РѕС‚Р°С‚СЊ СЃР»СѓС‡Р°Р№, РєРѕРіРґР° РЎР‘Р  Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅРµС‚ (РїРѕР»СѓС‡РёС‚СЊ РёР· РєРѕРЅС‚Р°РєС‚РѕРІ)
 			if ($j) {
 			    $ids = join(',', array_reverse($partners));				
 				$cmd = "SELECT u.uid, u.uname, u.usurname, u.login, u.photo, u.role, f.path FROM users AS u
@@ -425,18 +425,18 @@ class CBComboRequestHandler {
     
     
     /**
-     * Получение списка пользователей
-     * @todo кеш и js
+     * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
+     * @todo РєРµС€ Рё js
      * 
-     * @param string  $s     - поисковая строка
-     * @param string  $limit - сколько записей запрашивать
-     * @param integer $userType - фильтр результатов поиска:  0 - искать и фриленсеров и работодателей,   
-     *                                                         1 - искать только фриленсеров,
-     *                                                         2 - искать только работодателей,
-     * @param integer $scope - определяет, где искать:  0 - в СБР/контактах и общем списке пользователей,
-     *                                                   1 - в СБР/контактах,
-     *                                                   2 - в общем списке пользователей
-     * @return string - список пользователей в формате JSON
+     * @param string  $s     - РїРѕРёСЃРєРѕРІР°СЏ СЃС‚СЂРѕРєР°
+     * @param string  $limit - СЃРєРѕР»СЊРєРѕ Р·Р°РїРёСЃРµР№ Р·Р°РїСЂР°С€РёРІР°С‚СЊ
+     * @param integer $userType - С„РёР»СЊС‚СЂ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РїРѕРёСЃРєР°:  0 - РёСЃРєР°С‚СЊ Рё С„СЂРёР»РµРЅСЃРµСЂРѕРІ Рё СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№,   
+     *                                                         1 - РёСЃРєР°С‚СЊ С‚РѕР»СЊРєРѕ С„СЂРёР»РµРЅСЃРµСЂРѕРІ,
+     *                                                         2 - РёСЃРєР°С‚СЊ С‚РѕР»СЊРєРѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№,
+     * @param integer $scope - РѕРїСЂРµРґРµР»СЏРµС‚, РіРґРµ РёСЃРєР°С‚СЊ:  0 - РІ РЎР‘Р /РєРѕРЅС‚Р°РєС‚Р°С… Рё РѕР±С‰РµРј СЃРїРёСЃРєРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№,
+     *                                                   1 - РІ РЎР‘Р /РєРѕРЅС‚Р°РєС‚Р°С…,
+     *                                                   2 - РІ РѕР±С‰РµРј СЃРїРёСЃРєРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
+     * @return string - СЃРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РІ С„РѕСЂРјР°С‚Рµ JSON
      */
     public function getUsersList($s, $limit='ALL', $userType=0, $scope=0) {
         session_start();
@@ -444,14 +444,14 @@ class CBComboRequestHandler {
         $result   = array();
         $contacts = array();
         $more     = array();
-        // подготовка строки для поиска в shpinx
+        // РїРѕРґРіРѕС‚РѕРІРєР° СЃС‚СЂРѕРєРё РґР»СЏ РїРѕРёСЃРєР° РІ shpinx
         if ( $s != '' ) {
             $s = iconv("UTF-8", "WINDOWS-1251//IGNORE", $s);
             $s = substr(trim($s), 0, 60);
             $r = preg_split("/\s+/", $s);
             $s = '';
-            // если введено два слова, то пологаем что это имя и фамилия и обрабатываем вариант такого поиска особо
-            // если одно из слов состоит только из /^[-_a-z0-9]+$/i также полагаем что это может быть часть логина
+            // РµСЃР»Рё РІРІРµРґРµРЅРѕ РґРІР° СЃР»РѕРІР°, С‚Рѕ РїРѕР»РѕРіР°РµРј С‡С‚Рѕ СЌС‚Рѕ РёРјСЏ Рё С„Р°РјРёР»РёСЏ Рё РѕР±СЂР°Р±Р°С‚С‹РІР°РµРј РІР°СЂРёР°РЅС‚ С‚Р°РєРѕРіРѕ РїРѕРёСЃРєР° РѕСЃРѕР±Рѕ
+            // РµСЃР»Рё РѕРґРЅРѕ РёР· СЃР»РѕРІ СЃРѕСЃС‚РѕРёС‚ С‚РѕР»СЊРєРѕ РёР· /^[-_a-z0-9]+$/i С‚Р°РєР¶Рµ РїРѕР»Р°РіР°РµРј С‡С‚Рѕ СЌС‚Рѕ РјРѕР¶РµС‚ Р±С‹С‚СЊ С‡Р°СЃС‚СЊ Р»РѕРіРёРЅР°
             if ( count($r) == 2 ) {
                 $s = "(@uname {$r[0]} & (@usurname *{$r[1]}* | @usurname {$r[1]})) | (@usurname {$r[0]} & (@uname *{$r[1]}* | @uname {$r[1]}))";
                 if ( preg_match("/^[-_a-z0-9]+$/i", $r[0]) ) {
@@ -460,7 +460,7 @@ class CBComboRequestHandler {
                 if ( preg_match("/^[-_a-z0-9]+$/i", $r[1]) ) {
                     $s .= " | (@login *{$r[1]}* & (@uname {$r[0]} | @usurname {$r[0]})) | @login *{$r[1]}*";
                 }
-            // во всех остальных случаях полагаем что все слова кроме последнего введены полностью и просто ищем совпадения
+            // РІРѕ РІСЃРµС… РѕСЃС‚Р°Р»СЊРЅС‹С… СЃР»СѓС‡Р°СЏС… РїРѕР»Р°РіР°РµРј С‡С‚Рѕ РІСЃРµ СЃР»РѕРІР° РєСЂРѕРјРµ РїРѕСЃР»РµРґРЅРµРіРѕ РІРІРµРґРµРЅС‹ РїРѕР»РЅРѕСЃС‚СЊСЋ Рё РїСЂРѕСЃС‚Рѕ РёС‰РµРј СЃРѕРІРїР°РґРµРЅРёСЏ
             } else {
                 for ( $i=0; $i<count($r)-1; $i++ ) {
                     $s .= "{$r[$i]} | ";
@@ -468,9 +468,9 @@ class CBComboRequestHandler {
                 $s .= "*{$r[$i]}* | {$r[$i]}";
             }
         }
-        // если нужны контакты в сбр и личке, то получаем их id
+        // РµСЃР»Рё РЅСѓР¶РЅС‹ РєРѕРЅС‚Р°РєС‚С‹ РІ СЃР±СЂ Рё Р»РёС‡РєРµ, С‚Рѕ РїРѕР»СѓС‡Р°РµРј РёС… id
         if ( $scope == 0 || $scope == 1 ) {
-            // контакты в сбр
+            // РєРѕРЅС‚Р°РєС‚С‹ РІ СЃР±СЂ
             $memBuff = new memBuff;
             $contacts = $memBuff->get("bComboUsers{$uid}");
             if ( $contacts === false ) {
@@ -480,7 +480,7 @@ class CBComboRequestHandler {
                     $sbr = new sbr_frl($uid);
                 }
                 $contacts = $sbr->getPartersId();
-                // контакты в личке
+                // РєРѕРЅС‚Р°РєС‚С‹ РІ Р»РёС‡РєРµ
                 $mess  = new messages;
                 $rows = $mess->GetContacts($uid);
                 for ( $i=0; $i<count($rows); $i++ ) {
@@ -492,13 +492,13 @@ class CBComboRequestHandler {
             }
         }
 
-        // $i = 0-контакты, 1-остальные пользователи
+        // $i = 0-РєРѕРЅС‚Р°РєС‚С‹, 1-РѕСЃС‚Р°Р»СЊРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё
         for ( $i=0; $i<=1; $i++ ) {
             if ( !$i && !$contacts ) {
                 continue;
             }
             $rows = array();
-            // если поиск не требуется
+            // РµСЃР»Рё РїРѕРёСЃРє РЅРµ С‚СЂРµР±СѓРµС‚СЃСЏ
             if ( $s == '' ) {
                 if ( !$i ) {
                     if ( $userType ) {
@@ -508,7 +508,7 @@ class CBComboRequestHandler {
                     }
                     $rows = users::GetUsersInfoByIds($limit == 'ALL'? $contacts: array_slice($contacts, 0, $limit), $table);
                 }
-            // если требуется
+            // РµСЃР»Рё С‚СЂРµР±СѓРµС‚СЃСЏ
             } else {
                 $filter = array();
                 if ( $contacts ) {
@@ -528,7 +528,7 @@ class CBComboRequestHandler {
                 $rows = $res['users_simple']->getRecords();
                 $more[$i] = $res['users_simple']->total - count($rows);
             }
-            // готовим вывод
+            // РіРѕС‚РѕРІРёРј РІС‹РІРѕРґ
             foreach ( $rows as $k => $v ) {
                 if($v['uid'] == null) {
                     $v['uid']    = $v['id'];
@@ -546,7 +546,7 @@ class CBComboRequestHandler {
             }
         }
         //return $result;
-        // выводим
+        // РІС‹РІРѕРґРёРј
         $data = array (
             "list"     => $result,
             "counters" => array(
@@ -560,16 +560,16 @@ class CBComboRequestHandler {
     
     
     /**
-     * Поиск пользователей и компаний
-     * @param $s     - поисковая строка
-     * @param $limit - сколько записей запрашивать
-     * @param $userType - фильтр результатов поиска  0: искать и фриленсеров и работодателей,   
-     *                                               1: искать только фриленсеров,
-     *                                               2: искать только работодателей,
-     * @param $scope    - определяет, где искать     0:   в СБР/контактах и общем списке пользователей,
-     *                                               1:   в СБР/контактах,
-     *                                               2:   в общем списке пользователей
-     * @param $is_delete - искать удаленных пользователей или нет
+     * РџРѕРёСЃРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ Рё РєРѕРјРїР°РЅРёР№
+     * @param $s     - РїРѕРёСЃРєРѕРІР°СЏ СЃС‚СЂРѕРєР°
+     * @param $limit - СЃРєРѕР»СЊРєРѕ Р·Р°РїРёСЃРµР№ Р·Р°РїСЂР°С€РёРІР°С‚СЊ
+     * @param $userType - С„РёР»СЊС‚СЂ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РїРѕРёСЃРєР°  0: РёСЃРєР°С‚СЊ Рё С„СЂРёР»РµРЅСЃРµСЂРѕРІ Рё СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№,   
+     *                                               1: РёСЃРєР°С‚СЊ С‚РѕР»СЊРєРѕ С„СЂРёР»РµРЅСЃРµСЂРѕРІ,
+     *                                               2: РёСЃРєР°С‚СЊ С‚РѕР»СЊРєРѕ СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№,
+     * @param $scope    - РѕРїСЂРµРґРµР»СЏРµС‚, РіРґРµ РёСЃРєР°С‚СЊ     0:   РІ РЎР‘Р /РєРѕРЅС‚Р°РєС‚Р°С… Рё РѕР±С‰РµРј СЃРїРёСЃРєРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№,
+     *                                               1:   РІ РЎР‘Р /РєРѕРЅС‚Р°РєС‚Р°С…,
+     *                                               2:   РІ РѕР±С‰РµРј СЃРїРёСЃРєРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№
+     * @param $is_delete - РёСЃРєР°С‚СЊ СѓРґР°Р»РµРЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РёР»Рё РЅРµС‚
      * */
     private function getUsersAndCompany($s, $limit = " ALL ", $userType = 0, $scope = 0, $is_delete = true) {
         require_once $_SERVER["DOCUMENT_ROOT"]."/classes/letters.php";
@@ -630,7 +630,7 @@ class CBComboRequestHandler {
                 $rows[] = $i;
             }
         }
-        $moreCompany = intval($companies['count'])-intval(count($companies['data'])); //сюда запишем N из фразы "Показаны первые M из N компаний"
+        $moreCompany = intval($companies['count'])-intval(count($companies['data'])); //СЃСЋРґР° Р·Р°РїРёС€РµРј N РёР· С„СЂР°Р·С‹ "РџРѕРєР°Р·Р°РЅС‹ РїРµСЂРІС‹Рµ M РёР· N РєРѕРјРїР°РЅРёР№"
         $result = $rows;
         $data = Array(
                             "list"=>$result,
@@ -644,16 +644,16 @@ class CBComboRequestHandler {
     }    
     
     /**
-     * получить запись по умолчанию для списка пользователей и компаний
+     * РїРѕР»СѓС‡РёС‚СЊ Р·Р°РїРёСЃСЊ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РґР»СЏ СЃРїРёСЃРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ Рё РєРѕРјРїР°РЅРёР№
      * */    
     private function getUserOrCompanyRecord() {
         require_once $_SERVER["DOCUMENT_ROOT"]."/classes/letters.php";
 		if ($_POST["type"] == "user") {
             $user = users::GetUserShortInfoFinInfo((int)$_POST["uid"]);
-            $user["record"]["isContacts"] = 1; //т. к. компании должны идти вторыми по дизайну
+            $user["record"]["isContacts"] = 1; //С‚. Рє. РєРѕРјРїР°РЅРёРё РґРѕР»Р¶РЅС‹ РёРґС‚Рё РІС‚РѕСЂС‹РјРё РїРѕ РґРёР·Р°Р№РЅСѓ
             return (json_encode($user));
         } else {
-			//Здесь надо получить запись о компании use (int)$_POST["uid"]
+			//Р—РґРµСЃСЊ РЅР°РґРѕ РїРѕР»СѓС‡РёС‚СЊ Р·Р°РїРёСЃСЊ Рѕ РєРѕРјРїР°РЅРёРё use (int)$_POST["uid"]
             $company = letters::getCompany((int)$_POST["uid"]);
             $i["uid"]        = $company['id'];
             $i["uname"]      = iconv("WINDOWS-1251", "UTF-8//IGNORE", $company['name']);
@@ -665,7 +665,7 @@ class CBComboRequestHandler {
             $i["isCompany"]  = 1;
             $data = Array(
 		                  "record"=>$i,
-                          "found"=>1, // OR 0 если не найдено с таким id                
+                          "found"=>1, // OR 0 РµСЃР»Рё РЅРµ РЅР°Р№РґРµРЅРѕ СЃ С‚Р°РєРёРј id                
                           "dav"=>WDCPREFIX
                      );
             return (json_encode($data));

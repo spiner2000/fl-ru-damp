@@ -19,13 +19,13 @@ $cls    = $is_emp?"emp":"frl";
             <span class="<?=$cls?>name11"><a href="/users/<?=$rec['login']?>" class="<?=$cls?>name11" title="<?=($rec['uname']." ".$rec['usurname'])?>"><?=($rec['uname']." ".$rec['usurname'])?></a> [<a href="/users/<?=$rec['login']?>/" class="<?=$cls?>name11" title="<?=$rec['login']?>"><?=$rec['login']?></a>]</span> <?= view_mark_user($rec);?> 
         </span>
         <?php if(!is_emp($rec['role'])) {?>
-            Специализация: <?= professions::GetProfNameWP($rec['spec'], ' / ', "не указано", "lnk-666", true)?>
+            РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ: <?= professions::GetProfNameWP($rec['spec'], ' / ', "РЅРµ СѓРєР°Р·Р°РЅРѕ", "lnk-666", true)?>
         <?php }//if?>
         <?php if($_SESSION['uid'] && $_SESSION['uid'] != $rec['uid']) {?>
-        <?php /* userFav_* псевдо класс для корректной обработки сценария выполнения скрипта */?>
+        <?php /* userFav_* РїСЃРµРІРґРѕ РєР»Р°СЃСЃ РґР»СЏ РєРѕСЂСЂРµРєС‚РЅРѕР№ РѕР±СЂР°Р±РѕС‚РєРё СЃС†РµРЅР°СЂРёСЏ РІС‹РїРѕР»РЅРµРЅРёСЏ СЃРєСЂРёРїС‚Р° */?>
         <div class="userFav_<?=$rec['uid']?>">
             <?php if($note === false) { ?>
-            <div class="sent-mark"><a href="javascript:void(0)" onclick="xajax_getNotesForm(<?= $rec['uid']?>, false, <?=$type?>);">Оставить заметку</a>&nbsp;<span></span></div>
+            <div class="sent-mark"><a href="javascript:void(0)" onclick="xajax_getNotesForm(<?= $rec['uid']?>, false, <?=$type?>);">РћСЃС‚Р°РІРёС‚СЊ Р·Р°РјРµС‚РєСѓ</a>&nbsp;<span></span></div>
             <?php } else { //if ?>
                 <?include (TPL_DIR_NOTES."/tpl.notes-textitem.php"); ?>
             <?php }//else ?>

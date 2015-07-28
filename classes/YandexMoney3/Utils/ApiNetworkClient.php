@@ -112,7 +112,7 @@ class ApiNetworkClient
     {
         $this->options = $options;
         
-        //@todo: вынести эти настройки в options
+        //@todo: РІС‹РЅРµСЃС‚Рё СЌС‚Рё РЅР°СЃС‚СЂРѕР№РєРё РІ options
         $this->logFile = $logFile;
         $this->sslVerificationRequired = $sslVerification;
     }
@@ -273,23 +273,23 @@ class ApiNetworkClient
         switch ($responseCode) 
         {
             case 400:
-                //Запрос не принят к обработке. Тело запроса испорчено, сервер не смог прочитать или разобрать запрос.
-                //Возможные причины: запрос невозможно разобрать; неверный MIME-тип (Content-Type).
+                //Р—Р°РїСЂРѕСЃ РЅРµ РїСЂРёРЅСЏС‚ Рє РѕР±СЂР°Р±РѕС‚РєРµ. РўРµР»Рѕ Р·Р°РїСЂРѕСЃР° РёСЃРїРѕСЂС‡РµРЅРѕ, СЃРµСЂРІРµСЂ РЅРµ СЃРјРѕРі РїСЂРѕС‡РёС‚Р°С‚СЊ РёР»Рё СЂР°Р·РѕР±СЂР°С‚СЊ Р·Р°РїСЂРѕСЃ.
+                //Р’РѕР·РјРѕР¶РЅС‹Рµ РїСЂРёС‡РёРЅС‹: Р·Р°РїСЂРѕСЃ РЅРµРІРѕР·РјРѕР¶РЅРѕ СЂР°Р·РѕР±СЂР°С‚СЊ; РЅРµРІРµСЂРЅС‹Р№ MIME-С‚РёРї (Content-Type).
                 throw new Exception\ApiException('Invalid request error', $responseCode, $responseBody);
 
             case 403:
-                //Сертификат Контрагента не зарегистрирован в Системе, либо в настоящий момент шлюз отключен.
+                //РЎРµСЂС‚РёС„РёРєР°С‚ РљРѕРЅС‚СЂР°РіРµРЅС‚Р° РЅРµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ РІ РЎРёСЃС‚РµРјРµ, Р»РёР±Рѕ РІ РЅР°СЃС‚РѕСЏС‰РёР№ РјРѕРјРµРЅС‚ С€Р»СЋР· РѕС‚РєР»СЋС‡РµРЅ.
                 throw new Exception\InsufficientScopeException('The certificate does not have permissions for the requested operation.',
                     $responseCode, $responseBody);
             
             case 500:
-                //Технические проблемы Системы. Обратитесь в службу поддержки.
+                //РўРµС…РЅРёС‡РµСЃРєРёРµ РїСЂРѕР±Р»РµРјС‹ РЎРёСЃС‚РµРјС‹. РћР±СЂР°С‚РёС‚РµСЃСЊ РІ СЃР»СѓР¶Р±Сѓ РїРѕРґРґРµСЂР¶РєРё.
                 throw new Exception\InternalServerErrorException('It is a technical error occurs, the server responds with the HTTP code
                     500 Internal Server Error. The application should repeat the request with the same parameters later.',
                     $responseCode, $responseBody);
                 
             case 501:
-                //Запрос отправлен методом, отличным от POST.
+                //Р—Р°РїСЂРѕСЃ РѕС‚РїСЂР°РІР»РµРЅ РјРµС‚РѕРґРѕРј, РѕС‚Р»РёС‡РЅС‹Рј РѕС‚ POST.
                 throw new Exception\ApiException('Not Implemented', $responseCode, $responseBody);
 
             default:

@@ -4,8 +4,8 @@
     <h2><?= reformat($section_direction['dir_name']) ?></h2>
     <?= reformat($section_direction['page_content'],100,0,-1) ?>
     <?php } elseif (!$section_content) { //if?>
-    <h2>Информационный раздел</h2>
-    <?= reformat($seo->subdomain['content'],100,0,-1); // @todo вроде бы эту инфу надо выводить, пока не точно.?>
+    <h2>РРЅС„РѕСЂРјР°С†РёРѕРЅРЅС‹Р№ СЂР°Р·РґРµР»</h2>
+    <?= reformat($seo->subdomain['content'],100,0,-1); // @todo РІСЂРѕРґРµ Р±С‹ СЌС‚Сѓ РёРЅС„Сѓ РЅР°РґРѕ РІС‹РІРѕРґРёС‚СЊ, РїРѕРєР° РЅРµ С‚РѕС‡РЅРѕ.?>
     <?php } else { //if?>
         <h2><?= $section_content['name_section']?></h2>
         <?php $GLOBALS['disable_link_processing'] = true; ?>
@@ -17,7 +17,7 @@
                 <b class="b1"></b>
                 <b class="b2"></b>
                 <div class="form-in">
-                    <h3 class="seo-title">Фрилансеры по данному направлению</h3>
+                    <h3 class="seo-title">Р¤СЂРёР»Р°РЅСЃРµСЂС‹ РїРѕ РґР°РЅРЅРѕРјСѓ РЅР°РїСЂР°РІР»РµРЅРёСЋ</h3>
                     <style type="text/css">
                     	.form-in .b-icon__shield {top: 3px;}
 						@media screen and (min-width:0\0) {
@@ -29,7 +29,7 @@
                         <?= view_avatar($dContent['login'], $dContent['photo']);?>
                         <h4><a href="/users/<?= $dContent['login']?>/"><?= $dContent['uname']." ".$dContent['usurname']." [{$dContent['login']}]"?></a><?= view_mark_user(array('login'=>$dContent['login'], 'is_pro' => true, 'role'=> $dContent['role'], 'is_team'=>$dContent['is_team']))?>
                         &#160;<?= $dContent['completed_sbr_cnt'] ? view_sbr_shield() : '' ?></h4>
-                        <p>На сайте: <?= ElapsedMnths(strtotime($dContent['reg_date']))?></p>
+                        <p>РќР° СЃР°Р№С‚Рµ: <?= ElapsedMnths(strtotime($dContent['reg_date']))?></p>
                         <p>
                         <?php 
                         if(!$info_for_reg['country'] || get_uid(false)) {
@@ -101,7 +101,7 @@
           <div class="form-value">
             <script type="text/javascript">var host = '<?=preg_replace('~^'.HTTP_PREFIX.'(www\.)?~',"",$host)?>'; var allHost = '<?=(preg_match('~'.HTTP_PREFIX.'www\.~', $host)? 'www.': '')?>' + host; </script>
             <select id="f_region" name="subdomain" onchange="if($('f_region').get('value') != '') { if($('f_region').get('value') == 0) {this.set('disabled', true);}; if($('f_region').get('value') == 'all') { url = '<?=HTTP_PREFIX?>'+allHost+'/catalog/'; } else { url = '<?=HTTP_PREFIX?>'+$('f_region').get('value')+'.'+host+'/catalog/'; }; if($('f_direction')) { url = url+$('f_direction').get('value')+'/'; }; window.location = url; }">
-                  <option value="all" <?=(($seo->subdomain['id'] == -1)?'selected="selected"':'')?>>Все</option>
+                  <option value="all" <?=(($seo->subdomain['id'] == -1)?'selected="selected"':'')?>>Р’СЃРµ</option>
                   <?php
                   $subdomains = $seo->getSubdomainsByDirectID($direct_id);
                   foreach($countries as $country) {
@@ -121,7 +121,7 @@
 
             </select>
 		  </div>
-		  <label class="form-l">Регион:</label>
+		  <label class="form-l">Р РµРіРёРѕРЅ:</label>
         </div>
       </fieldset>
     </form>
@@ -145,7 +145,7 @@
           <?php if($count_section > 0) { $k=0;?>
             <?php foreach($section['subsection'] as $i=>$subsection) { if($section_content['id'] == $subsection['id'] || $section['id']==$catid) $gr_show = $grnum;?>
             <?php if($k==0) { ?><script type="text/javascript">initCI('submenu<?=$section['id']?>')</script><?php }//if?>
-            <?/*@todo необходимо сделать переход сразу на поддомен вида http://subdomain.free-lance.ru/catalog/section/123/ если мы находимся во всех регионах*/?>
+            <?/*@todo РЅРµРѕР±С…РѕРґРёРјРѕ СЃРґРµР»Р°С‚СЊ РїРµСЂРµС…РѕРґ СЃСЂР°Р·Сѓ РЅР° РїРѕРґРґРѕРјРµРЅ РІРёРґР° http://subdomain.free-lance.ru/catalog/section/123/ РµСЃР»Рё РјС‹ РЅР°С…РѕРґРёРјСЃСЏ РІРѕ РІСЃРµС… СЂРµРіРёРѕРЅР°С…*/?>
             <li <?= ($section_content['id'] == $subsection['id']?'class="active"':'');?>> <a href="<?=seo::getFriendlyURL($subdomains[$subsection['subdomain_id']]['subdomain'], $direction['name_section_link'], $subsection['name_section_link'], $section['name_section_link'])?>"><?= $subsection['name_section']?></a></li>
             <?php $k++;}// foreach?>
           <?php } //if?>
@@ -154,7 +154,7 @@
       <?php $grnum++;} //foreach?>
       <? } ?>
       <?php if($direct_id) { ?>
-      <li class="all-employers"><span class="wrap-item"><a href="<?=seo::getFriendlyURL($subdomain, '', '');?>">Все направления</a></span></li>
+      <li class="all-employers"><span class="wrap-item"><a href="<?=seo::getFriendlyURL($subdomain, '', '');?>">Р’СЃРµ РЅР°РїСЂР°РІР»РµРЅРёСЏ</a></span></li>
       <?php } ?>
       </ul>
     <b class="b2"></b>

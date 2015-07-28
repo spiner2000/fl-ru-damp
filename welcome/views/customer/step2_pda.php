@@ -2,12 +2,12 @@
 
 ?>
 <h1 class="b-layout__title b-layout__title_fs30 b-layout__title_color_333 b-layout__title_padbot_37">
-    Укажите специализацию проекта,<br/>
-    чтобы мы подобрали <strong>подходящих исполнителей</strong>
+    РЈРєР°Р¶РёС‚Рµ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ РїСЂРѕРµРєС‚Р°,<br/>
+    С‡С‚РѕР±С‹ РјС‹ РїРѕРґРѕР±СЂР°Р»Рё <strong>РїРѕРґС…РѕРґСЏС‰РёС… РёСЃРїРѕР»РЅРёС‚РµР»РµР№</strong>
 </h1>
 <div class="b-vertical-select" data-element-vertical-select="role">
     <div class="b-vertical-select__title">
-        Категория
+        РљР°С‚РµРіРѕСЂРёСЏ
     </div>
     <select class="b-select b-select__select_width_full b-select_margbot_40">
     <?php 
@@ -29,7 +29,7 @@
     <div class="b-vertical-select__option b-vertical-select__option_margleft_0">
         <div class="b-vertical-select__option_wrapper">
             <div class="b-vertical-select__title">
-                Специализация
+                РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ
             </div>            
             <form enctype="application/x-www-form-urlencoded" 
                   method="post" 
@@ -63,7 +63,7 @@
             
             <div class="b-buttons b-buttons_padbot_20 b-buttons_center b-buttons_padtop_40 b-buttons_float_left b-buttons_width_full">
                 <button type="submit" class="b-button b-button_nowrap b-button_flat b-button_flat_green b-button_flat_med">
-                    Далее <span class="b-icon b-icon__rarr b-icon_margleft_20 b-icon_top_2"></span>
+                    Р”Р°Р»РµРµ <span class="b-icon b-icon__rarr b-icon_margleft_20 b-icon_top_2"></span>
                 </button>
             </div>            
             

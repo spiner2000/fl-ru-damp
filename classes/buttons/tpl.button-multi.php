@@ -7,7 +7,7 @@
     <li class="b-button-multi__item b-button-multi__item_last <?= $this->main->getCss();?> <?= $this->getColorMain();?> i-shadow"> <!-- b-button-multi__item_green -->
         <a href="javascript:void(0)" class="b-button-multi__link" id="b-button-more">
             <span class="b-button-multi__inner ">
-                <span class="b-button-multi__txt b-button-multi__txt_bold">или</span>&#160;<span class="b-button-multi__arrow"></span>
+                <span class="b-button-multi__txt b-button-multi__txt_bold">РёР»Рё</span>&#160;<span class="b-button-multi__arrow"></span>
             </span>
         </a>
         <div class="b-shadow b-shadow_m b-shadow_width_205 b-shadow_left_-130 b-shadow_top_30 b-shadow_hide">

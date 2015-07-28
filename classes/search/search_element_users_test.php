@@ -2,13 +2,13 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/search/search_element.php";
 
 /**
- * Êëàññ äëÿ ïîèñêà ïî ïîëüçîâàòåëÿì ñ êîððåêòíûì ïîèñêîì ïî ðàñøèðåííîìó ôèëüòðó
+ * ÐšÐ»Ð°ÑÑ Ð´Ð»Ñ Ð¿Ð¾Ð¸ÑÐºÐ° Ð¿Ð¾ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑÐ¼ Ñ ÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ñ‹Ð¼ Ð¿Ð¾Ð¸ÑÐºÐ¾Ð¼ Ð¿Ð¾ Ñ€Ð°ÑÑˆÐ¸Ñ€ÐµÐ½Ð½Ð¾Ð¼Ñƒ Ñ„Ð¸Ð»ÑŒÑ‚Ñ€Ñƒ
  *
  */
 class searchElementUsers_test extends searchElement
 {
-    public $name = 'Ëþäè';
-    public $totalwords = array('÷åëîâåê', '÷åëîâåêà', 'ëþäåé');
+    public $name = 'Ð›ÑŽÐ´Ð¸';
+    public $totalwords = array('Ñ‡ÐµÐ»Ð¾Ð²ÐµÐº', 'Ñ‡ÐµÐ»Ð¾Ð²ÐµÐºÐ°', 'Ð»ÑŽÐ´ÐµÐ¹');
     protected $_indexSfx = '';
     protected $_sort   = SPH_SORT_EXTENDED;
     protected $_sortby = 'is_pro DESC, rating DESC, @id';
@@ -27,10 +27,10 @@ class searchElementUsers_test extends searchElement
     }
     
     /**
-     * Èíèöèàëèçèðóåò ïàðàìåòðû ïîèñêà äàííîãî ýëåìåíòà è ïðîèçâîäèò ïîèñê ïî çàäàííîé ôðàçå.
+     * Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð¸Ñ€ÑƒÐµÑ‚ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹ Ð¿Ð¾Ð¸ÑÐºÐ° Ð´Ð°Ð½Ð½Ð¾Ð³Ð¾ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð° Ð¸ Ð¿Ñ€Ð¾Ð¸Ð·Ð²Ð¾Ð´Ð¸Ñ‚ Ð¿Ð¾Ð¸ÑÐº Ð¿Ð¾ Ð·Ð°Ð´Ð°Ð½Ð½Ð¾Ð¹ Ñ„Ñ€Ð°Ð·Ðµ.
      *
-     * @param string $string   ïîèñêîâàÿ ôðàçà.
-     * @param integer $page   íîìåð òåêóùåé ñòðàíèöû (èñïîëüçóåòñÿ ïðè ïîèñêå ïî êîíêðåòíîìó ýëåìåíòó).
+     * @param string $string   Ð¿Ð¾Ð¸ÑÐºÐ¾Ð²Ð°Ñ Ñ„Ñ€Ð°Ð·Ð°.
+     * @param integer $page   Ð½Ð¾Ð¼ÐµÑ€ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñ‹ (Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐµÑ‚ÑÑ Ð¿Ñ€Ð¸ Ð¿Ð¾Ð¸ÑÐºÐµ Ð¿Ð¾ ÐºÐ¾Ð½ÐºÑ€ÐµÑ‚Ð½Ð¾Ð¼Ñƒ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ñƒ).
      */
     function search($string, $page = 0, $filter=false) {
         if(!$this->isActive() || !$this->isAllowed()) return;
@@ -43,14 +43,14 @@ class searchElementUsers_test extends searchElement
         }
         $this->setResult($this->_engine->Query($string, implode(';',$this->_indexes)));
         $this->setWords($string);
-        // Âîçâðàùàåì âñå íà ìåñòî
+        // Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÐ¼ Ð²ÑÐµ Ð½Ð° Ð¼ÐµÑÑ‚Ð¾
         if($this->isAdvanced() !== false) {
             $this->_limit = $this->_advanced_limit;
         }
     }
     
     /**
-     * Âçÿòü èíôîðìàöèþ ïî íàéäåííûì ðåçóëüòàòàì
+     * Ð’Ð·ÑÑ‚ÑŒ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÑŽ Ð¿Ð¾ Ð½Ð°Ð¹Ð´ÐµÐ½Ð½Ñ‹Ð¼ Ñ€ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚Ð°Ð¼
      *
      * @return array
      */
@@ -90,7 +90,7 @@ class searchElementUsers_test extends searchElement
         $project_exRates = project_exrates::GetAll();
         $set_select[] = "*";
         
-        // Ðàçäåëû/Ïîäðàçäåëû
+        // Ð Ð°Ð·Ð´ÐµÐ»Ñ‹/ÐŸÐ¾Ð´Ñ€Ð°Ð·Ð´ÐµÐ»Ñ‹
         if($filter['prof']) {
             if(count($filter['prof'][0])  > 0) $p1 = professions::getProfIdForGroups(array_keys($filter['prof'][0]), true);
             if(count($filter['prof'][1])  > 0) $p2 = professions::GetProfessionOrigin(implode(",", array_keys($filter['prof'][1])));
@@ -99,7 +99,7 @@ class searchElementUsers_test extends searchElement
             $this->_sortby = 'is_pro DESC, spec_origin IN (' . implode(',', $specs) . ') rating DESC, @id';
         }
         
-        //Ñòîèìîñòü
+        //Ð¡Ñ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ
         if($filter['cost']) {
             foreach($filter['cost'] as $val) {
                 if($val['cost_from'] || $val['cost_to']) {
@@ -140,7 +140,7 @@ class searchElementUsers_test extends searchElement
             }
         }
         
-        // Îïûò ðàáîòû
+        // ÐžÐ¿Ñ‹Ñ‚ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹
         if($filter['exp'][0] > 0 || $filter['exp'][1] > 0) {
             
             if($filter['exp'][1] == 0 && $filter['exp'][0] > 0) {
@@ -157,7 +157,7 @@ class searchElementUsers_test extends searchElement
             $this->_engine->setFilter("exp_filter", array(1));
         }
         
-        //Âîçðàñò
+        //Ð’Ð¾Ð·Ñ€Ð°ÑÑ‚
         if($filter['age'][1] > 0 || $filter['age'][0] > 0) {
             $age_from  = $filter['age'][0];
             $age_to    = $filter['age'][1];
@@ -176,16 +176,16 @@ class searchElementUsers_test extends searchElement
             $this->_engine->setFilter("age_filter", array(1));
         }
         
-        // Ìåñòîïîëîæåíèå
+        // ÐœÐµÑÑ‚Ð¾Ð¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ð¸Ðµ
         if ($filter['country']) $this->_engine->setFilter("country", array($filter['country']));
         if ($filter['city']) $this->_engine->setFilter("city", array($filter['city']));
         
-        // Èùåò ðàáîòó â îôèñå
+        // Ð˜Ñ‰ÐµÑ‚ Ñ€Ð°Ð±Ð¾Ñ‚Ñƒ Ð² Ð¾Ñ„Ð¸ÑÐµ
         if($filter['in_office']) {
             $this->_engine->setFilter("in_office", array(1));  
         }
         
-        // Ó ìåíÿ â èçáðàííûõ
+        // Ð£ Ð¼ÐµÐ½Ñ Ð² Ð¸Ð·Ð±Ñ€Ð°Ð½Ð½Ñ‹Ñ…
         if($filter['in_fav']) {
             $teams = new teams;
             if($tt = $teams->teamsFavorites($uid, $error)) {
@@ -200,12 +200,12 @@ class searchElementUsers_test extends searchElement
             }
         }
         
-        //Ñ PRO àêêàóíòîì
+        //Ð¡ PRO Ð°ÐºÐºÐ°ÑƒÐ½Ñ‚Ð¾Ð¼
         if($filter['is_pro']) {
             $this->_engine->setFilter("is_pro", array(1));   
         }
         
-        //Ñ ïîëîæèòåëüíûìè ðåêîìåíäàöèÿìè
+        //Ð¡ Ð¿Ð¾Ð»Ð¾Ð¶Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¼Ð¸ Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´Ð°Ñ†Ð¸ÑÐ¼Ð¸
         if($filter['sbr_is_positive']) {
             $select[] = '( sbr_opi_plus > 0 )';
             
@@ -215,7 +215,7 @@ class searchElementUsers_test extends searchElement
             $this->_engine->setFilter("sbr_positive_filter", array(1));
         }
         
-        //Áåç îòðèöàòåëüíûõ ðåêîìåíäàöèé
+        //Ð‘ÐµÐ· Ð¾Ñ‚Ñ€Ð¸Ñ†Ð°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ñ€ÐµÐºÐ¾Ð¼ÐµÐ½Ð´Ð°Ñ†Ð¸Ð¹
         if($filter['sbr_not_negative']) {
             $select[] = '( sbr_opi_minus = 0 )';
             
@@ -225,7 +225,7 @@ class searchElementUsers_test extends searchElement
             $this->_engine->setFilter("sbr_not_negative_filter", array(1));
         }
         
-        //Ñ ïîëîæèòåëüíûìè ìíåíèÿìè
+        //Ð¡ Ð¿Ð¾Ð»Ð¾Ð¶Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ð¼Ð¸ Ð¼Ð½ÐµÐ½Ð¸ÑÐ¼Ð¸
         /*if($filter['opi_is_positive']) {
             $select[] = '( ops_emp_plus > 0 )';
             
@@ -235,7 +235,7 @@ class searchElementUsers_test extends searchElement
             $this->_engine->setFilter("opi_positive_filter", array(1));
         }
         
-        //Áåç îòðèöàòåëüíûõ ìíåíèé
+        //Ð‘ÐµÐ· Ð¾Ñ‚Ñ€Ð¸Ñ†Ð°Ñ‚ÐµÐ»ÑŒÐ½Ñ‹Ñ… Ð¼Ð½ÐµÐ½Ð¸Ð¹
         if($filter['opi_not_negative']) {
             $select[] = '( ops_emp_minus = 0 )';
             
@@ -245,7 +245,7 @@ class searchElementUsers_test extends searchElement
             $this->_engine->setFilter("opi_not_negative_filter", array(1));
         }*/
         
-        // Òîëüêî ñ ïðèìåðàìè ðàáîò
+        // Ð¢Ð¾Ð»ÑŒÐºÐ¾ Ñ Ð¿Ñ€Ð¸Ð¼ÐµÑ€Ð°Ð¼Ð¸ Ñ€Ð°Ð±Ð¾Ñ‚
         if($filter['is_preview']) {
             $select[] = '( o_wrk_factor_a > 0 )';
             
@@ -255,7 +255,7 @@ class searchElementUsers_test extends searchElement
             $this->_engine->setFilter("preview_filter", array(1));
         }
         
-        // Òîëüêî ñâîáîäíûå
+        // Ð¢Ð¾Ð»ÑŒÐºÐ¾ ÑÐ²Ð¾Ð±Ð¾Ð´Ð½Ñ‹Ðµ
         if($filter['only_free']) {
             $select[] = '( status_type = 0)';
             
@@ -265,7 +265,7 @@ class searchElementUsers_test extends searchElement
             $this->_engine->setFilter("onlyfree_filter", array(1));
         }
         
-        //Ñ óñïåøíûì ÑÁÐ
+        //Ð¡ ÑƒÑÐ¿ÐµÑˆÐ½Ñ‹Ð¼ Ð¡Ð‘Ð 
         if($filter['success_sbr'][0]==1) {
             $select[] = "( sbr_sum > 0 )";
             for($i=1;$i<4;$i++) {

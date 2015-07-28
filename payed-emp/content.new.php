@@ -14,20 +14,20 @@ var role = 'EMP';
     
     <h1 id="header_payed_pro" class="b-layout__title b-layout__title_bold b-layout__title_fs30 b-layout__title_color_56b824 b-layout__title_padbot_30">
         <?php if ($pro_last): ?>
-        Профессиональный аккаунт
+        РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚
         <div class="b-layout__txt b-layout__txt_center b-layout__txt_fontsize_20">
-            Действует до <?= date('d.m.Y', strtotime($pro_last)) ?>
+            Р”РµР№СЃС‚РІСѓРµС‚ РґРѕ <?= date('d.m.Y', strtotime($pro_last)) ?>
         </div>
         <?php else: ?>
-        Возьми PRO аккаунт,<br/> 
-        чтобы найти лучшего исполнителя быстрее!        
+        Р’РѕР·СЊРјРё PRO Р°РєРєР°СѓРЅС‚,<br/> 
+        С‡С‚РѕР±С‹ РЅР°Р№С‚Рё Р»СѓС‡С€РµРіРѕ РёСЃРїРѕР»РЅРёС‚РµР»СЏ Р±С‹СЃС‚СЂРµРµ!        
         <?php endif; ?>
     </h1>    
     
     <div class="b-layout__txt b-layout__txt_fontsize_25 b-layout__txt_color_333 b-layout__txt_padbot_80">
-        С PRO аккаунтом твой проект станет заметней и привлечет<br/>
-        <strong>больше опытных фрилансеров. </strong>Также ты получишь доступ к их контактам<br/>
-        для прямого общения до заключения сделки.
+        РЎ PRO Р°РєРєР°СѓРЅС‚РѕРј С‚РІРѕР№ РїСЂРѕРµРєС‚ СЃС‚Р°РЅРµС‚ Р·Р°РјРµС‚РЅРµР№ Рё РїСЂРёРІР»РµС‡РµС‚<br/>
+        <strong>Р±РѕР»СЊС€Рµ РѕРїС‹С‚РЅС‹С… С„СЂРёР»Р°РЅСЃРµСЂРѕРІ. </strong>РўР°РєР¶Рµ С‚С‹ РїРѕР»СѓС‡РёС€СЊ РґРѕСЃС‚СѓРї Рє РёС… РєРѕРЅС‚Р°РєС‚Р°Рј<br/>
+        РґР»СЏ РїСЂСЏРјРѕРіРѕ РѕР±С‰РµРЅРёСЏ РґРѕ Р·Р°РєР»СЋС‡РµРЅРёСЏ СЃРґРµР»РєРё.
     </div>
     
 <?php 
@@ -38,11 +38,11 @@ include_once('plans.php');
 
 
 if ($uid > 0):
-    //Вывод попапа оплаты
+    //Р’С‹РІРѕРґ РїРѕРїР°РїР° РѕРїР»Р°С‚С‹
     echo quickPaymentPopupPro::getInstance()->render();
     
-    //@todo: временное решение сообщения об успешной покупки ПРО основанное на старом шаблоне, 
-    //@todo: потом нужно перенести в quickPaymentPopupPro
+    //@todo: РІСЂРµРјРµРЅРЅРѕРµ СЂРµС€РµРЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏ РѕР± СѓСЃРїРµС€РЅРѕР№ РїРѕРєСѓРїРєРё РџР Рћ РѕСЃРЅРѕРІР°РЅРЅРѕРµ РЅР° СЃС‚Р°СЂРѕРј С€Р°Р±Р»РѕРЅРµ, 
+    //@todo: РїРѕС‚РѕРј РЅСѓР¶РЅРѕ РїРµСЂРµРЅРµСЃС‚Рё РІ quickPaymentPopupPro
     if (isset($_GET['quickpro_ok'])):
         require_once($_SERVER['DOCUMENT_ROOT'] . "/templates/quick_buy_pro_win.php");
     endif;
@@ -55,65 +55,65 @@ endif;
 <?php
 
 /**
- * Пока отключаем этот блок
+ * РџРѕРєР° РѕС‚РєР»СЋС‡Р°РµРј СЌС‚РѕС‚ Р±Р»РѕРє
  */
 if (false):
 ?> 
 <h1 class="b-layout__title b-layout__title_center b-layout__title_padtop_30">
-    Экономия на стоимости услуг с аккаунтом 
+    Р­РєРѕРЅРѕРјРёСЏ РЅР° СЃС‚РѕРёРјРѕСЃС‚Рё СѓСЃР»СѓРі СЃ Р°РєРєР°СѓРЅС‚РѕРј 
     <span title="PRO" class="b-icon b-icon__spro b-icon__spro_e"></span>
 </h1>
 
 <div class="b-promo_overflow_hidden">
     <ul class="b-promo__specify">
-        <li class="b-promo__specify_name">Публикация проекта</li>
-        <li class="b-promo__specify_price"><em>до <b>800</b> руб.</em>экономии</li>
+        <li class="b-promo__specify_name">РџСѓР±Р»РёРєР°С†РёСЏ РїСЂРѕРµРєС‚Р°</li>
+        <li class="b-promo__specify_price"><em>РґРѕ <b>800</b> СЂСѓР±.</em>СЌРєРѕРЅРѕРјРёРё</li>
         <li class="b-promo__specify_items">
             <p class="padding_28_0_36_0">
-                <span class="b-promo__specify_items_left">1000 руб. <strike>1500 руб.</strike></span>
-                <span>Закрепление наверху<br>ленты</span>
+                <span class="b-promo__specify_items_left">1000 СЂСѓР±. <strike>1500 СЂСѓР±.</strike></span>
+                <span>Р—Р°РєСЂРµРїР»РµРЅРёРµ РЅР°РІРµСЂС…Сѓ<br>Р»РµРЅС‚С‹</span>
             </p>
             <p class="border_none padding_28_0_36_0">
-                <span class="b-promo__specify_items_left">600 руб. <strike>900 руб.</strike></span>
-                <span>Загрузка логотипа</span>
+                <span class="b-promo__specify_items_left">600 СЂСѓР±. <strike>900 СЂСѓР±.</strike></span>
+                <span>Р—Р°РіСЂСѓР·РєР° Р»РѕРіРѕС‚РёРїР°</span>
             </p>			
         </li>
     </ul>
     <ul class="b-promo__specify margin_lr_p5">
-        <li class="b-promo__specify_name">Публикация конкурса</li>
-        <li class="b-promo__specify_price"><em>до <b>1100</b> руб.</em>экономии</li>
+        <li class="b-promo__specify_name">РџСѓР±Р»РёРєР°С†РёСЏ РєРѕРЅРєСѓСЂСЃР°</li>
+        <li class="b-promo__specify_price"><em>РґРѕ <b>1100</b> СЂСѓР±.</em>СЌРєРѕРЅРѕРјРёРё</li>
         <li class="b-promo__specify_items">
             <p>
-                <span class="b-promo__specify_items_left">3000 руб. <strike>3300 руб.</strike></span>
-                <span>Публикация конкурса</span>
+                <span class="b-promo__specify_items_left">3000 СЂСѓР±. <strike>3300 СЂСѓР±.</strike></span>
+                <span>РџСѓР±Р»РёРєР°С†РёСЏ РєРѕРЅРєСѓСЂСЃР°</span>
             </p>
             <p>
-                <span class="b-promo__specify_items_left">1000 руб. <strike>1500 руб.</strike></span>
-                <span>Закрепление наверху<br>ленты</span>
+                <span class="b-promo__specify_items_left">1000 СЂСѓР±. <strike>1500 СЂСѓР±.</strike></span>
+                <span>Р—Р°РєСЂРµРїР»РµРЅРёРµ РЅР°РІРµСЂС…Сѓ<br>Р»РµРЅС‚С‹</span>
             </p>
             <p class="border_none">
-                <span class="b-promo__specify_items_left">600 руб. <strike>900 руб.</strike></span>
-                <span>Загрузка логотипа</span>
+                <span class="b-promo__specify_items_left">600 СЂСѓР±. <strike>900 СЂСѓР±.</strike></span>
+                <span>Р—Р°РіСЂСѓР·РєР° Р»РѕРіРѕС‚РёРїР°</span>
             </p>	
         </li>
     </ul>
     <ul class="b-promo__specify">
-        <li class="b-promo__specify_name">Публикация вакансии</li>
-        <li class="b-promo__specify_price"><em>до <b>1400</b> руб.</em>экономии</li>
+        <li class="b-promo__specify_name">РџСѓР±Р»РёРєР°С†РёСЏ РІР°РєР°РЅСЃРёРё</li>
+        <li class="b-promo__specify_price"><em>РґРѕ <b>1400</b> СЂСѓР±.</em>СЌРєРѕРЅРѕРјРёРё</li>
         <li class="b-promo__specify_items">
             <p>
                 <span class="b-promo__specify_items_left">
-                    <?=$prices['pro']['vacancy']?> руб. <strike><?=$prices['nopro']['vacancy']?> руб.</strike>
+                    <?=$prices['pro']['vacancy']?> СЂСѓР±. <strike><?=$prices['nopro']['vacancy']?> СЂСѓР±.</strike>
                 </span>
-                <span>Публикация вакансии</span>
+                <span>РџСѓР±Р»РёРєР°С†РёСЏ РІР°РєР°РЅСЃРёРё</span>
             </p>
             <p>
-                <span class="b-promo__specify_items_left">1000 руб. <strike>1500 руб.</strike></span>
-                <span>Закрепление наверху<br>ленты</span>
+                <span class="b-promo__specify_items_left">1000 СЂСѓР±. <strike>1500 СЂСѓР±.</strike></span>
+                <span>Р—Р°РєСЂРµРїР»РµРЅРёРµ РЅР°РІРµСЂС…Сѓ<br>Р»РµРЅС‚С‹</span>
             </p>
             <p class="border_none">
-                <span class="b-promo__specify_items_left">600 руб. <strike>900 руб.</strike></span>
-                <span>Загрузка логотипа</span>
+                <span class="b-promo__specify_items_left">600 СЂСѓР±. <strike>900 СЂСѓР±.</strike></span>
+                <span>Р—Р°РіСЂСѓР·РєР° Р»РѕРіРѕС‚РёРїР°</span>
             </p>
         </li>
     </ul>

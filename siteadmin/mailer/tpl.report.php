@@ -21,7 +21,7 @@ function() {
 		})
 	$$('.mail-pause').addEvent('click',function(){
 		this.getParent('.b-layout__txt').getElement('.b-layout__mail-icon').toggleClass('b-layout__mail-icon_black').toggleClass('b-layout__mail-icon_pause');
-		if(this.get('text')=='Поставить на паузу'){this.set('text', 'Снять с паузы')}else{this.set('text', 'Поставить на паузу')}
+		if(this.get('text')=='РџРѕСЃС‚Р°РІРёС‚СЊ РЅР° РїР°СѓР·Сѓ'){this.set('text', 'РЎРЅСЏС‚СЊ СЃ РїР°СѓР·С‹')}else{this.set('text', 'РџРѕСЃС‚Р°РІРёС‚СЊ РЅР° РїР°СѓР·Сѓ')}
 		return false;
 		});
     
@@ -44,12 +44,12 @@ function() {
 </script>
 
 <div class="b-layout">	
-    <a class="b-button b-button_flat b-button_flat_green b-button_float_right close-block "  href="/siteadmin/mailer/?action=edit&id=<?=$message['id']?>">Повторить рассылку</a>
-    <h2 class="b-layout__title b-layout__title_padbot_30">Отчёт по рассылке  &#160;&#160;&#160;<a class="b-layout__link b-layout__link_fontsize_13" href="/siteadmin/mailer/">Все рассылки</a></h2>
+    <a class="b-button b-button_flat b-button_flat_green b-button_float_right close-block "  href="/siteadmin/mailer/?action=edit&id=<?=$message['id']?>">РџРѕРІС‚РѕСЂРёС‚СЊ СЂР°СЃСЃС‹Р»РєСѓ</a>
+    <h2 class="b-layout__title b-layout__title_padbot_30">РћС‚С‡С‘С‚ РїРѕ СЂР°СЃСЃС‹Р»РєРµ  &#160;&#160;&#160;<a class="b-layout__link b-layout__link_fontsize_13" href="/siteadmin/mailer/">Р’СЃРµ СЂР°СЃСЃС‹Р»РєРё</a></h2>
     <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_5" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_130">
-                <div class="b-layout__txt">Тема письма</div>
+                <div class="b-layout__txt">РўРµРјР° РїРёСЃСЊРјР°</div>
             </td>
             <td class="b-layout__right">
                 <div class="b-layout__txt b-layout__txt_bold b-layout__txt_fontsize_15"><?= reformat($message['subject'], 30)?></div>
@@ -59,7 +59,7 @@ function() {
     <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_20" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_130">
-                <div class="b-layout__txt">Текст письма</div>
+                <div class="b-layout__txt">РўРµРєСЃС‚ РїРёСЃСЊРјР°</div>
             </td>
             <td class="b-layout__right">
                 <div class="b-layout__txt b-layout__txt_padbot_10"><?= reformat($message['message'], 30)?></div>
@@ -86,49 +86,49 @@ function() {
     <table class="b-layout__table b-layout__table_width_full b-layout__table_margbot_5" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_130">
-                <div class="b-layout__txt">Получатели</div>
+                <div class="b-layout__txt">РџРѕР»СѓС‡Р°С‚РµР»Рё</div>
             </td>
             <td class="b-layout__right">
                 <div class="b-layout__txt b-layout__txt_bold b-layout__txt_fontsize_15">
                     <?php if ($message['filter_file']) { ?>
-                        <a href="<?=WDCPREFIX.'/mailer/'.$message['filter_file']?>" target="_blank">из файла</a>
-                    <?php } else echo (int) ($sum_rec).' '.ending((int) ($sum_rec), "человек", "человека", "человек")?></div>
+                        <a href="<?=WDCPREFIX.'/mailer/'.$message['filter_file']?>" target="_blank">РёР· С„Р°Р№Р»Р°</a>
+                    <?php } else echo (int) ($sum_rec).' '.ending((int) ($sum_rec), "С‡РµР»РѕРІРµРє", "С‡РµР»РѕРІРµРєР°", "С‡РµР»РѕРІРµРє")?></div>
             </td>
         </tr>
     </table>
 <?php if (!$message['filter_file']) { ?>
     <div class="b-layout__txt b-layout__txt_margleft_130 b-layout__txt_padbot_5 b-username">
         <span class="b-username__role b-username__role_emp"></span>
-        <span class="b-username__txt b-username__txt_color_6db335">Работодатели</span> &mdash; <?= ($message['filter_emp'] > 0 ? (int) $message['count_rec_emp'] : 0); ?> &#160;&#160;
+        <span class="b-username__txt b-username__txt_color_6db335">Р Р°Р±РѕС‚РѕРґР°С‚РµР»Рё</span> &mdash;В <?= ($message['filter_emp'] > 0 ? (int) $message['count_rec_emp'] : 0); ?> &#160;&#160;
         <span class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_5 b-layout__txt_top_-1">
             <span class="b-layout__ygol  b-layout__ygol_hide"></span>
-            <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8 show-filter" href="#">Показать фильтры</a>
+            <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8 show-filter" href="#">РџРѕРєР°Р·Р°С‚СЊ С„РёР»СЊС‚СЂС‹</a>
         </span>
     </div>
-    <?$message['filter_emp'] = false; // Не показывать фильтр по умолчанию?>
+    <?$message['filter_emp'] = false; // РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ С„РёР»СЊС‚СЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ?>
     <? include ("tpl.filter.emp.php"); ?>
 
     <div class="b-layout__txt b-layout__txt_margleft_130 b-layout__txt_padbot_5 b-username">
         <span class="b-username__role b-username__role_frl"></span>
-        <span class="b-username__txt b-username__txt_color_fd6c30">Фрилансеры</span> &mdash; <?= ($message['filter_frl'] > 0 ? (int) $message['count_rec_frl'] : 0);?> &#160;&#160;
+        <span class="b-username__txt b-username__txt_color_fd6c30">Р¤СЂРёР»Р°РЅСЃРµСЂС‹</span> &mdash;В <?= ($message['filter_frl'] > 0 ? (int) $message['count_rec_frl'] : 0);?> &#160;&#160;
         <span class="b-layout__txt b-layout__txt_inline-block b-layout__txt_padleft_5 b-layout__txt_top_-1">
             <span class="b-layout__ygol  b-layout__ygol_hide"></span>
-            <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8 show-filter" href="#">Показать фильтры</a>
+            <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8 show-filter" href="#">РџРѕРєР°Р·Р°С‚СЊ С„РёР»СЊС‚СЂС‹</a>
         </span>
     </div>
-    <?$message['filter_frl'] = false; // Не показывать фильтр по умолчанию?>
+    <?$message['filter_frl'] = false; // РќРµ РїРѕРєР°Р·С‹РІР°С‚СЊ С„РёР»СЊС‚СЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ?>
     <? include ("tpl.filter.frl.php"); ?>
 <?php } ?>
 
     <table class="b-layout__table b-layout__table_width_full b-layout__table_margtop_30" cellpadding="0" cellspacing="0" border="0">
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_130">
-                <div class="b-layout__txt">Отправлено</div>
+                <div class="b-layout__txt">РћС‚РїСЂР°РІР»РµРЅРѕ</div>
             </td>
             <td class="b-layout__right">
-                <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10 b-layout__txt_fontsize_15"><?= date('d.m.Y в H:i', strtotime($message['real_date_sending']))?></div>
+                <div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10 b-layout__txt_fontsize_15"><?= date('d.m.Y РІ H:i', strtotime($message['real_date_sending']))?></div>
                 <div class="b-layout__txt b-layout__txt_padbot_5">
-                    <?= ($message['type_regular'] > 1)?"Рассылается регулярно.": ""?>
+                    <?= ($message['type_regular'] > 1)?"Р Р°СЃСЃС‹Р»Р°РµС‚СЃСЏ СЂРµРіСѓР»СЏСЂРЅРѕ.": ""?>
 
                     <?php if($message['type_regular'] > 1) {?>
                     <?=  mailer::$TYPE_REGULAR[$message['type_regular']];?>
@@ -139,8 +139,8 @@ function() {
                 <div class="b-layout__txt b-layout__txt_padbot_5">
                     <input type="hidden" id="status_sending" value="<?=$message['status_sending']?>">
                     <span class="b-layout__mail-icon <?= $message['status_sending'] == 1?"b-layout__mail-icon_black":"b-layout__mail-icon_pause"?> b-layout__mail-icon_top_4 b-layout__mail-icon_margleft_-15 b-layout__mail-icon_margright_4"></span>
-                    Следующая рассылка <?=date('d.m.Y в H:i', strtotime($message['date_sending']))?>.&#160;&#160;
-                    <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8 mail-pause" href="javascript:void(0)" onclick="xajax_setStatusSending(<?=(int)$message['id']?>, $('status_sending').get('value'));"><?= $message['status_sending'] == 1?"Поставить на паузу":"Снять с паузы"?></a>
+                    РЎР»РµРґСѓСЋС‰Р°СЏ СЂР°СЃСЃС‹Р»РєР° <?=date('d.m.Y РІ H:i', strtotime($message['date_sending']))?>.&#160;&#160;
+                    <a class="b-layout__link b-layout__link_fontsize_11 b-layout__link_bordbot_dot_0f71c8 mail-pause" href="javascript:void(0)" onclick="xajax_setStatusSending(<?=(int)$message['id']?>, $('status_sending').get('value'));"><?= $message['status_sending'] == 1?"РџРѕСЃС‚Р°РІРёС‚СЊ РЅР° РїР°СѓР·Сѓ":"РЎРЅСЏС‚СЊ СЃ РїР°СѓР·С‹"?></a>
                 </div>
                 <?php } //if?>
             </td>
@@ -153,11 +153,11 @@ function() {
 			<tr class="b-layout__tr">
 					<td class="b-layout__left b-layout__left_width_130">&#160;</td>
 					<td class="b-layout__right">
-						<div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10 b-layout__txt_fontsize_15">Отчет</div>
+						<div class="b-layout__txt b-layout__txt_bold b-layout__txt_padbot_10 b-layout__txt_fontsize_15">РћС‚С‡РµС‚</div>
 						<table class="b-layout__table b-layout__table_margbot_5" cellpadding="0" cellspacing="0" border="0">
 							<tr class="b-layout__tr">
 									<td class="b-layout__left b-layout__left_width_150">
-										<div class="b-layout__txt">Прочли письмо</div>
+										<div class="b-layout__txt">РџСЂРѕС‡Р»Рё РїРёСЃСЊРјРѕ</div>
 									</td>
 									<td class="b-layout__right b-layout__right_right b-layout__right_width_60">
 										<div class="b-layout__txt b-layout__txt_bold b-layout__txt_fontsize_15">736 188</div>
@@ -167,10 +167,10 @@ function() {
 						<table class="b-layout__table b-layout__table_margbot_15" cellpadding="0" cellspacing="0" border="0">
 							<tr class="b-layout__tr">
 									<td class="b-layout__left b-layout__left_width_150 b-layout__left_bordbot_double_ccc">
-										<div class="b-layout__txt b-layout__txt_italic b-layout__txt_fontsize_11 b-layout__txt_padbot_5">Ссылка</div>
+										<div class="b-layout__txt b-layout__txt_italic b-layout__txt_fontsize_11 b-layout__txt_padbot_5">РЎСЃС‹Р»РєР°</div>
 									</td>
 									<td class="b-layout__right b-layout__right_width_120 b-layout__right_bordbot_double_ccc b-layout__right_right">
-										<div class="b-layout__txt b-layout__txt_italic b-layout__txt_fontsize_11 b-layout__txt_padbot_5">Кол-во переходов, шт</div>
+										<div class="b-layout__txt b-layout__txt_italic b-layout__txt_fontsize_11 b-layout__txt_padbot_5">РљРѕР»-РІРѕ РїРµСЂРµС…РѕРґРѕРІ, С€С‚</div>
 									</td>
 							</tr>
 						</table>

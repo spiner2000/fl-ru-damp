@@ -3,7 +3,7 @@
 		{exit;}
 
 ?>
-<h1>Реклама</h1>
+<h1>Р РµРєР»Р°РјР°</h1>
 
 <?
 	$action = trim($_GET['action']);
@@ -32,5 +32,5 @@
 		$oFCKeditor->Create() ;
 ?>
 <input type="hidden" name="action" value="save" class="btn">
-<input type="submit" name="btn" value="Сохранить" class="btn">
+<input type="submit" name="btn" value="РЎРѕС…СЂР°РЅРёС‚СЊ" class="btn">
 </form>

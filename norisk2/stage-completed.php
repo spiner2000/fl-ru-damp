@@ -1,6 +1,6 @@
 <?
 $need_payouts = $credit_sum && ($is_arb_outsys || !$sbr->isEmp()) && !$stage->payouts[$sbr->uid];
-$norez_block = $sbr->scheme['taxes'][sbr::FRL][sbr::TAX_NP] && $need_payouts && !$sbr->isEmp() && $sbr->user_reqvs['form_type']==sbr::FT_JURI && $sbr->user_reqvs['rez_type']==sbr::RT_UABYKZ; // !!! убрать вообще, когда уйдут сделки с НП
+$norez_block = $sbr->scheme['taxes'][sbr::FRL][sbr::TAX_NP] && $need_payouts && !$sbr->isEmp() && $sbr->user_reqvs['form_type']==sbr::FT_JURI && $sbr->user_reqvs['rez_type']==sbr::RT_UABYKZ; // !!! СѓР±СЂР°С‚СЊ РІРѕРѕР±С‰Рµ, РєРѕРіРґР° СѓР№РґСѓС‚ СЃРґРµР»РєРё СЃ РќРџ
 ?>
 <script type="text/javascript">
 var SBR = new Sbr();
@@ -35,9 +35,9 @@ Sbr.prototype.ERRORS={<?=($js1=sbr_meta::jsInputErrors($sbr->error['feedback'], 
 			<b class="b2"></b>
 			<div class="form-h-in">
               <? if($is_arb_outsys) { ?>
-                <h3>Решение арбитража</h3>
+                <h3>Р РµС€РµРЅРёРµ Р°СЂР±РёС‚СЂР°Р¶Р°</h3>
               <? } else { ?>
-                <h3>Поздравляем, <?=$sbr->status == sbr::STATUS_COMPLETED ? 'проект завершен' : 'задача завершена'?>!</h3>
+                <h3>РџРѕР·РґСЂР°РІР»СЏРµРј, <?=$sbr->status == sbr::STATUS_COMPLETED ? 'РїСЂРѕРµРєС‚ Р·Р°РІРµСЂС€РµРЅ' : 'Р·Р°РґР°С‡Р° Р·Р°РІРµСЂС€РµРЅР°'?>!</h3>
               <? } ?>
 			</div>
 		</div>
@@ -46,7 +46,7 @@ Sbr.prototype.ERRORS={<?=($js1=sbr_meta::jsInputErrors($sbr->error['feedback'], 
                 <? if($is_arb_outsys) { $fbc++; ?>
                     <div class="form-block first">
                         <div class="form-el">
-                            <p>Уважаемые участники Арбитража, сообщаем вам о принятии решения</p>
+                            <p>РЈРІР°Р¶Р°РµРјС‹Рµ СѓС‡Р°СЃС‚РЅРёРєРё РђСЂР±РёС‚СЂР°Р¶Р°, СЃРѕРѕР±С‰Р°РµРј РІР°Рј Рѕ РїСЂРёРЅСЏС‚РёРё СЂРµС€РµРЅРёСЏ</p>
                             <?=$stage->view_arb_descr_full()?>
                         </div>
                     </div>
@@ -54,12 +54,12 @@ Sbr.prototype.ERRORS={<?=($js1=sbr_meta::jsInputErrors($sbr->error['feedback'], 
                 <? if(($stage->status == sbr_stages::STATUS_COMPLETED || $stage->status == sbr_stages::STATUS_ARBITRAGED) && !$stage->data[$sbr->upfx.'feedback_id']) { ?>
                     <div class="form-block<?=($fbc++?'':' first')?>">
                         <div class="form-el">
-                            <p><strong>Пожалуйста, оставьте рекомендацию для <a href="/users/<?=$sbr->data[$sbr->apfx.'login']?>/" class="<?=$sbr->anti_tbl?>-name"><?=($sbr->data[$sbr->apfx.'uname'].' '.$sbr->data[$sbr->apfx.'usurname'].' ['.$sbr->data[$sbr->apfx.'login'].']')?></a>:</strong></p>
+                            <p><strong>РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕСЃС‚Р°РІСЊС‚Рµ СЂРµРєРѕРјРµРЅРґР°С†РёСЋ РґР»СЏ <a href="/users/<?=$sbr->data[$sbr->apfx.'login']?>/" class="<?=$sbr->anti_tbl?>-name"><?=($sbr->data[$sbr->apfx.'uname'].' '.$sbr->data[$sbr->apfx.'usurname'].' ['.$sbr->data[$sbr->apfx.'login'].']')?></a>:</strong></p>
                             <div class="form-el">
                                 <ul class="ops-type" id="ops-type">
-                                    <li class = "ops-plus"><label><input type = "radio" value = "1" name = "ops_type" <?= $stage->feedback['ops_type'] == 1 ? 'checked="checked"' : '' ?> onClick="$('ops_type').set('value', 1); $('ops_type_error').set('html', '');" />Положительный</label></li>
-                                    <li class = ""><label><input type = "radio" value = "0" name = "ops_type" <?= $stage->feedback['ops_type'] == 0 && $stage->feedback['ops_type'] !== null &&  $stage->feedback['ops_type'] != ""? 'checked="checked"' : '' ?> onClick="$('ops_type').set('value', 0); $('ops_type_error').set('html', '');" />Нейтральный</label></li>
-                                    <li class = "ops-minus"><label><input type = "radio" value = "-1" name = "ops_type" <?= $stage->feedback['ops_type'] == -1 ? 'checked="checked"' : '' ?> onClick="$('ops_type').set('value', -1); $('ops_type_error').set('html', '');" />Отрицательный</label></li>
+                                    <li class = "ops-plus"><label><input type = "radio" value = "1" name = "ops_type" <?= $stage->feedback['ops_type'] == 1 ? 'checked="checked"' : '' ?> onClick="$('ops_type').set('value', 1); $('ops_type_error').set('html', '');" />РџРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Р№</label></li>
+                                    <li class = ""><label><input type = "radio" value = "0" name = "ops_type" <?= $stage->feedback['ops_type'] == 0 && $stage->feedback['ops_type'] !== null &&  $stage->feedback['ops_type'] != ""? 'checked="checked"' : '' ?> onClick="$('ops_type').set('value', 0); $('ops_type_error').set('html', '');" />РќРµР№С‚СЂР°Р»СЊРЅС‹Р№</label></li>
+                                    <li class = "ops-minus"><label><input type = "radio" value = "-1" name = "ops_type" <?= $stage->feedback['ops_type'] == -1 ? 'checked="checked"' : '' ?> onClick="$('ops_type').set('value', -1); $('ops_type_error').set('html', '');" />РћС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Р№</label></li>
                                 </ul>
                                 <span><input type="hidden"  name="feedback[ops_type]" id="ops_type" value="<?= $stage->feedback['ops_type']?>" /></span>
                                 <div class="tip" id="ops_type_error" style="left:455px;z-index:2"></div>
@@ -76,7 +76,7 @@ Sbr.prototype.ERRORS={<?=($js1=sbr_meta::jsInputErrors($sbr->error['feedback'], 
                 <? if($sbr->status == sbr::STATUS_COMPLETED && !$sbr->data[$sbr->upfx.'feedback_id']) { ?>
                     <div class="form-block<?=($fbc++?'':' first')?>">
                         <div class="form-el">
-                            <p><strong>Пожалуйста, оставьте отзыв сервису &laquo;Безопасная Сделка&raquo;:</strong></p>
+                            <p><strong>РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РѕСЃС‚Р°РІСЊС‚Рµ РѕС‚Р·С‹РІ СЃРµСЂРІРёСЃСѓ &laquo;Р‘РµР·РѕРїР°СЃРЅР°СЏ РЎРґРµР»РєР°&raquo;:</strong></p>
                             <div class="form-complite-txt">
                                 <span>
                                     <textarea rows="5" cols="10" name="sbr_feedback[descr]"><?=$sbr->feedback['descr']?></textarea>
@@ -85,10 +85,10 @@ Sbr.prototype.ERRORS={<?=($js1=sbr_meta::jsInputErrors($sbr->error['feedback'], 
                             </div>
                             <div class="form-complite-stars">
                                 <p></p>
-                                <?/*<p><strong>Мы очень серьезно относимся к отзывам об услуге и стараемся улучшить качество сервиса.</strong></p>*/?>
+                                <?/*<p><strong>РњС‹ РѕС‡РµРЅСЊ СЃРµСЂСЊРµР·РЅРѕ РѕС‚РЅРѕСЃРёРјСЃСЏ Рє РѕС‚Р·С‹РІР°Рј РѕР± СѓСЃР»СѓРіРµ Рё СЃС‚Р°СЂР°РµРјСЃСЏ СѓР»СѓС‡С€РёС‚СЊ РєР°С‡РµСЃС‚РІРѕ СЃРµСЂРІРёСЃР°.</strong></p>*/?>
                                     <ul class="vote ops-nr-vote">
                                         <li class="c">
-                                            <label>Профессионализм</label>
+                                            <label>РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»РёР·Рј</label>
                                             <span class="stars-vote stars-vote-a vote-<?= (int) $sbr->feedback['p_rate'] ?>">
                                                 <input type="hidden" name="sbr_feedback[p_rate]" value="<?= (int) $sbr->feedback['p_rate'] ?>" />
                                                 <span>
@@ -127,7 +127,7 @@ Sbr.prototype.ERRORS={<?=($js1=sbr_meta::jsInputErrors($sbr->error['feedback'], 
                                             </span>
                                         </li>
                                         <li class="c">
-                                            <label>Надежность</label>
+                                            <label>РќР°РґРµР¶РЅРѕСЃС‚СЊ</label>
                                             <span class="stars-vote stars-vote-a vote-<?= (int) $sbr->feedback['n_rate'] ?>">
                                                 <input type="hidden" name="sbr_feedback[n_rate]" value="<?= (int) $sbr->feedback['n_rate'] ?>" />
                                                 <span>
@@ -166,7 +166,7 @@ Sbr.prototype.ERRORS={<?=($js1=sbr_meta::jsInputErrors($sbr->error['feedback'], 
                                             </span>
                                         </li>
                                         <li class="c">
-                                            <label>Корректность</label>
+                                            <label>РљРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ</label>
                                             <span class="stars-vote stars-vote-a vote-<?= (int) $sbr->feedback['a_rate'] ?>">
                                                 <input type="hidden" name="sbr_feedback[a_rate]" value="<?= (int) $sbr->feedback['a_rate'] ?>" />
                                                 <span>
@@ -214,20 +214,20 @@ Sbr.prototype.ERRORS={<?=($js1=sbr_meta::jsInputErrors($sbr->error['feedback'], 
                     <? if( $norez_block ) { ?>
                         <div class="form-block<?=($fbc++?'':' first')?>">
                             <div class="form-el">
-                                <p><strong>Нерезиденты Российской Федерации имеют лишь один способ получения денежных средств:</strong><br />безналичный расчет <span class="dred">с ограничением суммы в <?=sbr_meta::view_cost($sbr->maxNorezCost(), exrates::BANK)?></span> (эквивалента <?=sbr::MAX_COST_USD?> долларов США).</p>
+                                <p><strong>РќРµСЂРµР·РёРґРµРЅС‚С‹ Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё РёРјРµСЋС‚ Р»РёС€СЊ РѕРґРёРЅ СЃРїРѕСЃРѕР± РїРѕР»СѓС‡РµРЅРёСЏ РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ:</strong><br />Р±РµР·РЅР°Р»РёС‡РЅС‹Р№ СЂР°СЃС‡РµС‚ <span class="dred">СЃ РѕРіСЂР°РЅРёС‡РµРЅРёРµРј СЃСѓРјРјС‹ РІ <?=sbr_meta::view_cost($sbr->maxNorezCost(), exrates::BANK)?></span> (СЌРєРІРёРІР°Р»РµРЅС‚Р° <?=sbr::MAX_COST_USD?> РґРѕР»Р»Р°СЂРѕРІ РЎРЁРђ).</p>
                                 <? if($sbr->user_reqvs['rezdoc_status']!=sbr::RS_ACCEPTED) { ?>
-                                  <p>Во избежание дополнительного налога (налога на прибыль), вам необходимо выслать справку в бумажном виде вместе с Актом, что вы являетсь резидентом своей страны.<br /><a href="/docs/dokumenty_na_rezidentstvo.docx" target="_blank">Документ о Резиденстве</a></p>
+                                  <p>Р’Рѕ РёР·Р±РµР¶Р°РЅРёРµ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅРѕРіРѕ РЅР°Р»РѕРіР° (РЅР°Р»РѕРіР° РЅР° РїСЂРёР±С‹Р»СЊ), РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РІС‹СЃР»Р°С‚СЊ СЃРїСЂР°РІРєСѓ РІ Р±СѓРјР°Р¶РЅРѕРј РІРёРґРµ РІРјРµСЃС‚Рµ СЃ РђРєС‚РѕРј, С‡С‚Рѕ РІС‹ СЏРІР»СЏРµС‚СЃСЊ СЂРµР·РёРґРµРЅС‚РѕРј СЃРІРѕРµР№ СЃС‚СЂР°РЅС‹.<br /><a href="/docs/dokumenty_na_rezidentstvo.docx" target="_blank">Р”РѕРєСѓРјРµРЅС‚ Рѕ Р РµР·РёРґРµРЅСЃС‚РІРµ</a></p>
                                 <? } ?>
                                 <div><label><input type="checkbox" name="notnp" value="1" class="i-chk" onclick="SBR.setNoNP(this)"<?=($notnp || !$action && in_array($sbr->user_reqvs['rezdoc_status'], array(sbr::RS_ACCEPTED,sbr::RS_WAITING)) ? ' checked="checked"' : '')?> />
-                                  Прошу убрать из Акта пункт &laquo;Налог на прибыль&raquo;
-                                  <?=($sbr->user_reqvs['rezdoc_status']==sbr::RS_ACCEPTED ? '(справка о резиденстве получена)' : 'взамен на отправку справки о резиденстве')?>.</label>
+                                  РџСЂРѕС€Сѓ СѓР±СЂР°С‚СЊ РёР· РђРєС‚Р° РїСѓРЅРєС‚ &laquo;РќР°Р»РѕРі РЅР° РїСЂРёР±С‹Р»СЊ&raquo;
+                                  <?=($sbr->user_reqvs['rezdoc_status']==sbr::RS_ACCEPTED ? '(СЃРїСЂР°РІРєР° Рѕ СЂРµР·РёРґРµРЅСЃС‚РІРµ РїРѕР»СѓС‡РµРЅР°)' : 'РІР·Р°РјРµРЅ РЅР° РѕС‚РїСЂР°РІРєСѓ СЃРїСЂР°РІРєРё Рѕ СЂРµР·РёРґРµРЅСЃС‚РІРµ')?>.</label>
                                 </div>
                             </div>
                         </div>
                     <? } ?>
                     <div class="form-block<?=($fbc++?'':' first')?>">
                         <div class="form-el">
-                            <p><strong>Выберите удобный для вас способ получения денег:</strong> <a href="/users/<?=$sbr->login?>/setup/finance/">Добавить/изменить кошелек</a></p>
+                            <p><strong>Р’С‹Р±РµСЂРёС‚Рµ СѓРґРѕР±РЅС‹Р№ РґР»СЏ РІР°СЃ СЃРїРѕСЃРѕР± РїРѕР»СѓС‡РµРЅРёСЏ РґРµРЅРµРі:</strong> <a href="/users/<?=$sbr->login?>/setup/finance/">Р”РѕР±Р°РІРёС‚СЊ/РёР·РјРµРЅРёС‚СЊ РєРѕС€РµР»РµРє</a></p>
                             <span><input type="hidden" name="act" /></span>
                             <div class="tip tip-t2" id="act_error"  style="top:auto;margin-top:-14px;margin-left:390px"></div>
 
@@ -260,7 +260,7 @@ Sbr.prototype.ERRORS={<?=($js1=sbr_meta::jsInputErrors($sbr->error['feedback'], 
                     <div class="form-el">
                         <div class="nr-prj-btns c">
                             <span class="btn-o-green">
-                                <a href="javascript:;" onclick="<?= !$dsbl || in_array(0, $dsbl) ? 'if(!$(this).hasClass(\'btnr-disabled\')) { SBR.sendForm() }' : '' ?>" class="btnr <?= ( $dsbl && !in_array(0, $dsbl) ) || $disable_submit ? 'btnr-disabled' : '' ?> btnr-green2" id="submit_btn"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Завершить</span></span></span></a>
+                                <a href="javascript:;" onclick="<?= !$dsbl || in_array(0, $dsbl) ? 'if(!$(this).hasClass(\'btnr-disabled\')) { SBR.sendForm() }' : '' ?>" class="btnr <?= ( $dsbl && !in_array(0, $dsbl) ) || $disable_submit ? 'btnr-disabled' : '' ?> btnr-green2" id="submit_btn"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Р—Р°РІРµСЂС€РёС‚СЊ</span></span></span></a>
                             </span>
                         </div>
                         <? if($dsbl && !in_array(0, $dsbl)) { ?>
@@ -268,7 +268,7 @@ Sbr.prototype.ERRORS={<?=($js1=sbr_meta::jsInputErrors($sbr->error['feedback'], 
                             <b class="b1"></b>
                             <b class="b2"></b>
                             <div class="form-in">
-                                <strong>Прежде чем продолжить, пожалуйста, заполните данные на <a href="/users/<?=$sbr->login?>/setup/finance/">странице Финансы</a></strong>
+                                <strong>РџСЂРµР¶РґРµ С‡РµРј РїСЂРѕРґРѕР»Р¶РёС‚СЊ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, Р·Р°РїРѕР»РЅРёС‚Рµ РґР°РЅРЅС‹Рµ РЅР° <a href="/users/<?=$sbr->login?>/setup/finance/">СЃС‚СЂР°РЅРёС†Рµ Р¤РёРЅР°РЅСЃС‹</a></strong>
                             </div>
                             <b class="b2"></b>
                             <b class="b1"></b>
@@ -291,7 +291,7 @@ Sbr.prototype.ERRORS={<?=($js1=sbr_meta::jsInputErrors($sbr->error['feedback'], 
         <b class="b1"></b>
         <b class="b2"></b>
         <div class="form-in">
-            Для выбора Webmoney в качестве валюты выбора требуется заполнить поля "<a href="/users/<?=$sbr->login?>/setup/finance/#WMDOC">Паспортные данные</a>" в блоке "Электронные кошельки" на странице "<a href="/users/<?=$sbr->login?>/setup/finance/">Финансы</a>"
+            Р”Р»СЏ РІС‹Р±РѕСЂР° Webmoney РІ РєР°С‡РµСЃС‚РІРµ РІР°Р»СЋС‚С‹ РІС‹Р±РѕСЂР° С‚СЂРµР±СѓРµС‚СЃСЏ Р·Р°РїРѕР»РЅРёС‚СЊ РїРѕР»СЏ "<a href="/users/<?=$sbr->login?>/setup/finance/#WMDOC">РџР°СЃРїРѕСЂС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ</a>" РІ Р±Р»РѕРєРµ "Р­Р»РµРєС‚СЂРѕРЅРЅС‹Рµ РєРѕС€РµР»СЊРєРё" РЅР° СЃС‚СЂР°РЅРёС†Рµ "<a href="/users/<?=$sbr->login?>/setup/finance/">Р¤РёРЅР°РЅСЃС‹</a>"
         </div>
         <b class="b2"></b>
         <b class="b1"></b>

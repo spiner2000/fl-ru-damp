@@ -22,7 +22,7 @@ if(isset($_GET['orderId'])) {
     $order = $walletAlpha->getOrder(null, $filter);
 
     if(!empty($order)) {
-        //@todo äåëàåì âîçâðàò çàïèñûâàåì äàííûå áèíäèíãà
+        //@todo Ð´ÐµÐ»Ð°ÐµÐ¼ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‚ Ð·Ð°Ð¿Ð¸ÑÑ‹Ð²Ð°ÐµÐ¼ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð±Ð¸Ð½Ð´Ð¸Ð½Ð³Ð°
         $status = $walletAlpha->api->getOrderStatus($order['order_id']);
         if($status['OrderStatus'] == API_AlphaBank::STATUS_SUCCESS_PAYMENT) {
             $year  = substr($status['expiration'], 0, 4);
@@ -41,7 +41,7 @@ if(isset($_GET['orderId'])) {
             $walletAlpha->setAccessToken($status['bindingId']);
 
             $walletId = $walletAlpha->saveWallet();
-            // Òîêåí ïîëó÷åí è ñîõðàíåí îòïðàâëÿåì ïîëüçîâàòåëÿ íà ñòðàíèöó
+            // Ð¢Ð¾ÐºÐµÐ½ Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½ Ð¸ ÑÐ¾Ñ…Ñ€Ð°Ð½ÐµÐ½ Ð¾Ñ‚Ð¿Ñ€Ð°Ð²Ð»ÑÐµÐ¼ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ Ð½Ð° ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ñƒ
             if($walletId > 0) {
                 $res = $walletAlpha->api->refund(API_AlphaBank::REGISTER_SUM, $order['order_id']);
                 if($res['errorCode'] == 0) {
@@ -72,7 +72,7 @@ if(isset($_GET['orderId'])) {
         }
     } else {
         if($_GET['orderId']==$_SESSION['quick_ver_card_num']) {
-            // Âåðèôèêàöèÿ
+            // Ð’ÐµÑ€Ð¸Ñ„Ð¸ÐºÐ°Ñ†Ð¸Ñ
             $walletAlpha->api->getAccessData('bind');
             $status = $walletAlpha->api->getOrderStatus($_SESSION['quick_ver_card_num']);
 
@@ -92,13 +92,13 @@ if(isset($_GET['orderId'])) {
             <?
             exit;
         } elseif($_SESSION['quickpro_card_orderid']==$_GET['orderId']) {
-            // Áûñòðàÿ ïîêóïêà pro
+            // Ð‘Ñ‹ÑÑ‚Ñ€Ð°Ñ Ð¿Ð¾ÐºÑƒÐ¿ÐºÐ° pro
             $walletAlpha->api->getAccessData('bind');
             $status = $walletAlpha->api->getOrderStatus($_SESSION['quickpro_card_orderid']);
             if($status['OrderStatus'] == API_AlphaBank::STATUS_SUCCESS_PAYMENT) {
                 require_once $_SERVER['DOCUMENT_ROOT']."/classes/account.php";
                 $account = new account();
-                $descr = "Êàðòà ".$status['Pan']." ñóììà - ".$_SESSION['quickpro_card_sum'].", íîìåð ïîêóïêè - ".$_GET['orderId'];
+                $descr = "ÐšÐ°Ñ€Ñ‚Ð° ".$status['Pan']." ÑÑƒÐ¼Ð¼Ð° - ".$_SESSION['quickpro_card_sum'].", Ð½Ð¾Ð¼ÐµÑ€ Ð¿Ð¾ÐºÑƒÐ¿ÐºÐ¸ - ".$_GET['orderId'];
                 $account->deposit($op_id, $_SESSION['quickpro_card_billing'], $_SESSION['quickpro_card_sum'], $descr, 20, $_SESSION['quickpro_card_sum']);
                 $_SESSION['quickpro_card_orderid'] = 'done';
             }

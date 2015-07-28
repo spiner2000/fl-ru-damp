@@ -27,17 +27,17 @@ foreach ($sbr->scheme['taxes'][$sbr->isEmp() ? sbr::EMP : sbr::FRL] as $tid => $
     <tbody>
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_160">
-                <div class="b-layout__txt">Резидентство</div>
+                <div class="b-layout__txt">Р РµР·РёРґРµРЅС‚СЃС‚РІРѕ</div>
             </td>
             <td class="b-layout__right b-layout__right_padbot_30">
                 <div class="b-radio b-radio_layout_vertical b-radio_padtop_2">
                     <div class="b-radio__item b-radio__item_padbot_5">
                         <input type="radio" id="rq1" class="b-radio__input b-radio__safari" name="f_rez_type" value="<?=sbr::RT_RU?>"  <?= !$sbr->user_reqvs['form_type'] ? 'filled="1"' : ''?> />
-                        <label class="b-radio__label b-radio__label_fontsize_13" for="rq1">Я подтверждаю, что являюсь резидентом Российской Федерации</label>
+                        <label class="b-radio__label b-radio__label_fontsize_13" for="rq1">РЇ РїРѕРґС‚РІРµСЂР¶РґР°СЋ, С‡С‚Рѕ СЏРІР»СЏСЋСЃСЊ СЂРµР·РёРґРµРЅС‚РѕРј Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё</label>
                     </div>
                     <div class="b-radio__item b-radio__item_padbot_5">
                         <input type="radio" id="rq2" class="b-radio__input b-radio__safari" name="f_rez_type" value="<?=sbr::RT_UABYKZ?>"  <?= !$sbr->user_reqvs['form_type'] ? 'filled="1"' : ''?> />
-                        <label class="b-radio__label b-radio__label_fontsize_13" for="rq2">Я подтверждаю, что являюсь резидентом любого другого государства,<br />кроме Российской Федерации</label>
+                        <label class="b-radio__label b-radio__label_fontsize_13" for="rq2">РЇ РїРѕРґС‚РІРµСЂР¶РґР°СЋ, С‡С‚Рѕ СЏРІР»СЏСЋСЃСЊ СЂРµР·РёРґРµРЅС‚РѕРј Р»СЋР±РѕРіРѕ РґСЂСѓРіРѕРіРѕ РіРѕСЃСѓРґР°СЂСЃС‚РІР°,<br />РєСЂРѕРјРµ Р РѕСЃСЃРёР№СЃРєРѕР№ Р¤РµРґРµСЂР°С†РёРё</label>
                     </div>
                 </div>
             </td>
@@ -49,7 +49,7 @@ foreach ($sbr->scheme['taxes'][$sbr->isEmp() ? sbr::EMP : sbr::FRL] as $tid => $
     <tbody>
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_160">
-                <div class="b-layout__txt">Форма организации
+                <div class="b-layout__txt">Р¤РѕСЂРјР° РѕСЂРіР°РЅРёР·Р°С†РёРё
                     <div class="i-shadow i-shadow_inline-block">
                         <span class="b-shadow__icon b-shadow__icon_top_-1 b-shadow__icon_valign_middle b-shadow__icon_quest"></span>
                         <div class="b-shadow b-shadow_width_270 b-shadow_left_-117 b-shadow_top_15 b-shadow_hide b-shadow_zindex_2">
@@ -58,7 +58,7 @@ foreach ($sbr->scheme['taxes'][$sbr->isEmp() ? sbr::EMP : sbr::FRL] as $tid => $
                                     <div class="b-shadow__top">
                                         <div class="b-shadow__bottom">
                                             <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_15">
-                                                <div class="b-shadow__txt">Укажите форму организации: юридическое лицо (также в случае, если вы являетесь индивидуальным предпринимателем) или физическое лицо</div>
+                                                <div class="b-shadow__txt">РЈРєР°Р¶РёС‚Рµ С„РѕСЂРјСѓ РѕСЂРіР°РЅРёР·Р°С†РёРё: СЋСЂРёРґРёС‡РµСЃРєРѕРµ Р»РёС†Рѕ (С‚Р°РєР¶Рµ РІ СЃР»СѓС‡Р°Рµ, РµСЃР»Рё РІС‹ СЏРІР»СЏРµС‚РµСЃСЊ РёРЅРґРёРІРёРґСѓР°Р»СЊРЅС‹Рј РїСЂРµРґРїСЂРёРЅРёРјР°С‚РµР»РµРј) РёР»Рё С„РёР·РёС‡РµСЃРєРѕРµ Р»РёС†Рѕ</div>
                                             </div>
                                         </div>
                                     </div>
@@ -78,11 +78,11 @@ foreach ($sbr->scheme['taxes'][$sbr->isEmp() ? sbr::EMP : sbr::FRL] as $tid => $
                 <div class="b-radio b-radio_layout_vertical b-radio_padtop_2">
                     <div class="b-radio__item b-radio__item_padbot_5">
                         <input id="form_type_phys" class="b-radio__input b-radio__safari" name="form_type" onclick=" if($('method_any_text')) $('method_any_text').show();" type="radio" value="<?= sbr::FT_PHYS ?>" <?= ($sbr->user_reqvs['form_type'] == sbr::FT_PHYS || !$sbr->user_reqvs['form_type'] ? "checked" : "") ?> <?= !$isReqvsFilled[sbr::FT_PHYS] ? 'filled="1"' : '' ?> />
-                        <label class="b-radio__label b-radio__label_fontsize_13" for="form_type_phys">Физическое лицо</label>
+                        <label class="b-radio__label b-radio__label_fontsize_13" for="form_type_phys">Р¤РёР·РёС‡РµСЃРєРѕРµ Р»РёС†Рѕ</label>
                     </div>
                     <div class="b-radio__item b-radio__item_padbot_5">
                         <input id="form_type_juri" class="b-radio__input b-radio__safari" name="form_type" onclick=" if($('method_any_text')) $('method_any_text').hide();" type="radio" value="<?= sbr::FT_JURI ?>" <?= ($sbr->user_reqvs['form_type'] == sbr::FT_JURI ? "checked" : "") ?> <?= !$isReqvsFilled[sbr::FT_JURI] ? 'filled="1"' : '' ?> />
-                        <label class="b-radio__label b-radio__label_fontsize_13" for="form_type_juri">Юридическое лицо или ИП</label>
+                        <label class="b-radio__label b-radio__label_fontsize_13" for="form_type_juri">Р®СЂРёРґРёС‡РµСЃРєРѕРµ Р»РёС†Рѕ РёР»Рё РРџ</label>
                     </div>
                 </div>
             </td>
@@ -92,28 +92,28 @@ foreach ($sbr->scheme['taxes'][$sbr->isEmp() ? sbr::EMP : sbr::FRL] as $tid => $
                     <div class="b-fon b-fon_float_left finance-min-alert1">
                         <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffebbf">
                             <span class="b-icon b-icon_sbr_oattent b-icon_margleft_-25"></span>
-                            Проведение сделок и вывод сумм возможен только при наличии идентифицированного Веб-кошелька.<br>
-                            Для идентификации кошелька:<br>
-                            1. Перейдите по <a class="b-layout__link" href="https://webpay.pscb.ru/login/auth" target="_blank">ссылке</a> для авторизации или регистрации кошелька на ваш номер телефона.<br>
-                            2. В кошельке перейдите на <a class="b-layout__link" href="https://webpay.pscb.ru/UserProfile/identeficationWays" target="_blank">страницу идентификации</a>.<br>
-                            3. Выберите способ (например, упрощенная идентификация) и пройдите идентификацию.
-                            <div id="ya_pay" style="display:none"><br/><span class="b-icon b-icon_sbr_oattent b-icon_margleft_-25"></span>Чтобы получить деньги, вам необходимо принять новое <a href="http://money.yandex.ru/offer.xml?from=llim" class="b-fon__link" target="_blank">соглашение об использовании</a> сервиса &laquo;Яндекс.Деньги&raquo;.</div>
-                            <div class="b-layout__bold">Обратите внимание, в этапах сделки с бюджетом менее 15 000 рублей выплата возможна только на Веб-кошелек ПСКБ.</div>
+                            РџСЂРѕРІРµРґРµРЅРёРµ СЃРґРµР»РѕРє Рё РІС‹РІРѕРґ СЃСѓРјРј РІРѕР·РјРѕР¶РµРЅ С‚РѕР»СЊРєРѕ РїСЂРё РЅР°Р»РёС‡РёРё РёРґРµРЅС‚РёС„РёС†РёСЂРѕРІР°РЅРЅРѕРіРѕ Р’РµР±-РєРѕС€РµР»СЊРєР°.<br>
+                            Р”Р»СЏ РёРґРµРЅС‚РёС„РёРєР°С†РёРё РєРѕС€РµР»СЊРєР°:<br>
+                            1. РџРµСЂРµР№РґРёС‚Рµ РїРѕ <a class="b-layout__link" href="https://webpay.pscb.ru/login/auth" target="_blank">СЃСЃС‹Р»РєРµ</a> РґР»СЏ Р°РІС‚РѕСЂРёР·Р°С†РёРё РёР»Рё СЂРµРіРёСЃС‚СЂР°С†РёРё РєРѕС€РµР»СЊРєР° РЅР° РІР°С€ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°.<br>
+                            2. Р’ РєРѕС€РµР»СЊРєРµ РїРµСЂРµР№РґРёС‚Рµ РЅР° <a class="b-layout__link" href="https://webpay.pscb.ru/UserProfile/identeficationWays" target="_blank">СЃС‚СЂР°РЅРёС†Сѓ РёРґРµРЅС‚РёС„РёРєР°С†РёРё</a>.<br>
+                            3. Р’С‹Р±РµСЂРёС‚Рµ СЃРїРѕСЃРѕР± (РЅР°РїСЂРёРјРµСЂ, СѓРїСЂРѕС‰РµРЅРЅР°СЏ РёРґРµРЅС‚РёС„РёРєР°С†РёСЏ) Рё РїСЂРѕР№РґРёС‚Рµ РёРґРµРЅС‚РёС„РёРєР°С†РёСЋ.
+                            <div id="ya_pay" style="display:none"><br/><span class="b-icon b-icon_sbr_oattent b-icon_margleft_-25"></span>Р§С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ РґРµРЅСЊРіРё, РІР°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РїСЂРёРЅСЏС‚СЊ РЅРѕРІРѕРµ <a href="http://money.yandex.ru/offer.xml?from=llim" class="b-fon__link" target="_blank">СЃРѕРіР»Р°С€РµРЅРёРµ РѕР± РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё</a> СЃРµСЂРІРёСЃР° &laquo;РЇРЅРґРµРєСЃ.Р”РµРЅСЊРіРё&raquo;.</div>
+                            <div class="b-layout__bold">РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ, РІ СЌС‚Р°РїР°С… СЃРґРµР»РєРё СЃ Р±СЋРґР¶РµС‚РѕРј РјРµРЅРµРµ 15 000 СЂСѓР±Р»РµР№ РІС‹РїР»Р°С‚Р° РІРѕР·РјРѕР¶РЅР° С‚РѕР»СЊРєРѕ РЅР° Р’РµР±-РєРѕС€РµР»РµРє РџРЎРљР‘.</div>
                         </div>
                     </div>
                     <?php } else { //if?>
                     <div class="b-fon b-fon_float_left finance-min-alert1">
                         <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffebbf">
                             <span class="b-icon b-icon_sbr_oattent b-icon_margleft_-25"></span>
-                            Проведение сделок и вывод сумм возможен только при наличии идентифицированного Веб-кошелька.<br>
-                            Для идентификации кошелька:<br>
-                            1. Перейдите по <a class="b-layout__link" href="https://webpay.pscb.ru/login/auth" target="_blank">ссылке</a> для авторизации или регистрации кошелька на ваш номер телефона.<br>
-                            2. В кошельке перейдите на <a class="b-layout__link" href="https://webpay.pscb.ru/UserProfile/identeficationWays" target="_blank">страницу идентификации</a>.<br>
-                            3. Выберите способ (например, упрощенная идентификация) и пройдите идентификацию.
+                            РџСЂРѕРІРµРґРµРЅРёРµ СЃРґРµР»РѕРє Рё РІС‹РІРѕРґ СЃСѓРјРј РІРѕР·РјРѕР¶РµРЅ С‚РѕР»СЊРєРѕ РїСЂРё РЅР°Р»РёС‡РёРё РёРґРµРЅС‚РёС„РёС†РёСЂРѕРІР°РЅРЅРѕРіРѕ Р’РµР±-РєРѕС€РµР»СЊРєР°.<br>
+                            Р”Р»СЏ РёРґРµРЅС‚РёС„РёРєР°С†РёРё РєРѕС€РµР»СЊРєР°:<br>
+                            1. РџРµСЂРµР№РґРёС‚Рµ РїРѕ <a class="b-layout__link" href="https://webpay.pscb.ru/login/auth" target="_blank">СЃСЃС‹Р»РєРµ</a> РґР»СЏ Р°РІС‚РѕСЂРёР·Р°С†РёРё РёР»Рё СЂРµРіРёСЃС‚СЂР°С†РёРё РєРѕС€РµР»СЊРєР° РЅР° РІР°С€ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°.<br>
+                            2. Р’ РєРѕС€РµР»СЊРєРµ РїРµСЂРµР№РґРёС‚Рµ РЅР° <a class="b-layout__link" href="https://webpay.pscb.ru/UserProfile/identeficationWays" target="_blank">СЃС‚СЂР°РЅРёС†Сѓ РёРґРµРЅС‚РёС„РёРєР°С†РёРё</a>.<br>
+                            3. Р’С‹Р±РµСЂРёС‚Рµ СЃРїРѕСЃРѕР± (РЅР°РїСЂРёРјРµСЂ, СѓРїСЂРѕС‰РµРЅРЅР°СЏ РёРґРµРЅС‚РёС„РёРєР°С†РёСЏ) Рё РїСЂРѕР№РґРёС‚Рµ РёРґРµРЅС‚РёС„РёРєР°С†РёСЋ.
                             
                             <div class="finance-min-alert1-more">
                             <br>                         
-                            Для вывода денежных средств в размере более 15 000 рублей вы должны быть идентифицированы в платежной системе, в противном случае  
+                            Р”Р»СЏ РІС‹РІРѕРґР° РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ РІ СЂР°Р·РјРµСЂРµ Р±РѕР»РµРµ 15 000 СЂСѓР±Р»РµР№ РІС‹ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РёРґРµРЅС‚РёС„РёС†РёСЂРѕРІР°РЅС‹ РІ РїР»Р°С‚РµР¶РЅРѕР№ СЃРёСЃС‚РµРјРµ, РІ РїСЂРѕС‚РёРІРЅРѕРј СЃР»СѓС‡Р°Рµ  
                                 <div class="i-shadow i-shadow_inline-block">
                                     <span class="b-shadow__icon b-shadow__icon_top_-1 b-shadow__icon_valign_middle b-shadow__icon_quest"></span>
                                     <div class="b-shadow b-shadow_width_270 b-shadow_left_-117 b-shadow_top_15 b-shadow_zindex_2 b-shadow_hide">
@@ -122,7 +122,7 @@ foreach ($sbr->scheme['taxes'][$sbr->isEmp() ? sbr::EMP : sbr::FRL] as $tid => $
                                                 <div class="b-shadow__top">
                                                     <div class="b-shadow__bottom">
                                                         <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_15">
-                                                            <div class="b-shadow__txt">По техническим или любого другого рода причинам</div>
+                                                            <div class="b-shadow__txt">РџРѕ С‚РµС…РЅРёС‡РµСЃРєРёРј РёР»Рё Р»СЋР±РѕРіРѕ РґСЂСѓРіРѕРіРѕ СЂРѕРґР° РїСЂРёС‡РёРЅР°Рј</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -135,7 +135,7 @@ foreach ($sbr->scheme['taxes'][$sbr->isEmp() ? sbr::EMP : sbr::FRL] as $tid => $
                                         <span class="b-shadow__icon b-shadow__icon_close"></span>
                                         <span class="b-shadow__icon b-shadow__icon_nosik"></span>
                                     </div>
-                                </div> оплата будет произведена по безналичному расчету или на <a href="<?= HTTP_PREFIX ?>feedback.fl.ru/topic/397421-veb-koshelek-obschaya-informatsiya/" class="b-fon__link">Веб-кошелек</a>.   
+                                </div> РѕРїР»Р°С‚Р° Р±СѓРґРµС‚ РїСЂРѕРёР·РІРµРґРµРЅР° РїРѕ Р±РµР·РЅР°Р»РёС‡РЅРѕРјСѓ СЂР°СЃС‡РµС‚Сѓ РёР»Рё РЅР° <a href="<?= HTTP_PREFIX ?>feedback.fl.ru/topic/397421-veb-koshelek-obschaya-informatsiya/" class="b-fon__link">Р’РµР±-РєРѕС€РµР»РµРє</a>.   
                             </div>
                         </div>
                     </div>
@@ -145,8 +145,8 @@ foreach ($sbr->scheme['taxes'][$sbr->isEmp() ? sbr::EMP : sbr::FRL] as $tid => $
                 <? if ($sbr->isEmp()) { ?>
                 <div id="card_pay" class="b-fon b-fon_float_left finance-min-alert1" style="display:none">
                     <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffebbf">
-                        <span class="b-icon b-icon_sbr_oattent b-icon_margleft_-25"></span>Резервирование банковской картой доступно<br/>при условии ее привязки к Веб-кошельку ПСКБ.<br>Подробнее <a class="b-fon__link" href="http://feedback.fl.ru/topic/397423-privyazka-bankovskoj-kartyi-k-veb-koshelku/" target="_blank">о привязке карты</a>.
-                        <br><br><span class="b-layout__bold">Также ознакомьтесь, пожалуйста, с <a class="b-fon__link" target="_blank" href="http://feedback.fl.ru/topic/397466-ogranicheniya-pri-rezervirovanii-v-bezopasnoj-sdelke/">лимитами</a><br>на резервирование денег банковской картой.</span>
+                        <span class="b-icon b-icon_sbr_oattent b-icon_margleft_-25"></span>Р РµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ Р±Р°РЅРєРѕРІСЃРєРѕР№ РєР°СЂС‚РѕР№ РґРѕСЃС‚СѓРїРЅРѕ<br/>РїСЂРё СѓСЃР»РѕРІРёРё РµРµ РїСЂРёРІСЏР·РєРё Рє Р’РµР±-РєРѕС€РµР»СЊРєСѓ РџРЎРљР‘.<br>РџРѕРґСЂРѕР±РЅРµРµ <a class="b-fon__link" href="http://feedback.fl.ru/topic/397423-privyazka-bankovskoj-kartyi-k-veb-koshelku/" target="_blank">Рѕ РїСЂРёРІСЏР·РєРµ РєР°СЂС‚С‹</a>.
+                        <br><br><span class="b-layout__bold">РўР°РєР¶Рµ РѕР·РЅР°РєРѕРјСЊС‚РµСЃСЊ, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, СЃ <a class="b-fon__link" target="_blank" href="http://feedback.fl.ru/topic/397466-ogranicheniya-pri-rezervirovanii-v-bezopasnoj-sdelke/">Р»РёРјРёС‚Р°РјРё</a><br>РЅР° СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёРµ РґРµРЅРµРі Р±Р°РЅРєРѕРІСЃРєРѕР№ РєР°СЂС‚РѕР№.</span>
                     </div>
                 </div>
                 <? }//if?>
@@ -154,7 +154,7 @@ foreach ($sbr->scheme['taxes'][$sbr->isEmp() ? sbr::EMP : sbr::FRL] as $tid => $
         </tr>
         <tr class="b-layout__tr">
             <td class="b-layout__left b-layout__left_width_160">
-                <div class="b-layout__txt b-layout__txt_relative b-layout__txt_zindex_1">Способ <?=($sbr->isFrl() ? 'вывода' : 'ввода') ?> денег
+                <div class="b-layout__txt b-layout__txt_relative b-layout__txt_zindex_1">РЎРїРѕСЃРѕР± <?=($sbr->isFrl() ? 'РІС‹РІРѕРґР°' : 'РІРІРѕРґР°') ?> РґРµРЅРµРі
                     <div class="i-shadow i-shadow_inline-block">
                     <span class="b-shadow__icon b-shadow__icon_top_-1 b-shadow__icon_valign_middle b-shadow__icon_quest"></span>
                     <div class="b-shadow b-shadow_width_270 b-shadow_left_-117 b-shadow_top_15 b-shadow_hide">
@@ -163,7 +163,7 @@ foreach ($sbr->scheme['taxes'][$sbr->isEmp() ? sbr::EMP : sbr::FRL] as $tid => $
                                 <div class="b-shadow__top">
                                     <div class="b-shadow__bottom">
                                         <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_15">
-                                            <div class="b-shadow__txt">Отметьте наиболее удобный для вас способ <?=($sbr->isFrl() ? 'получения' : 'резервирования') ?> денежных средств</div>
+                                            <div class="b-shadow__txt">РћС‚РјРµС‚СЊС‚Рµ РЅР°РёР±РѕР»РµРµ СѓРґРѕР±РЅС‹Р№ РґР»СЏ РІР°СЃ СЃРїРѕСЃРѕР± <?=($sbr->isFrl() ? 'РїРѕР»СѓС‡РµРЅРёСЏ' : 'СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРёСЏ') ?> РґРµРЅРµР¶РЅС‹С… СЃСЂРµРґСЃС‚РІ</div>
                                         </div>
                                     </div>
                                 </div>
@@ -203,18 +203,18 @@ foreach ($sbr->scheme['taxes'][$sbr->isEmp() ? sbr::EMP : sbr::FRL] as $tid => $
             <div class="b-fon__txt b-fon__txt_linheight_18 ">
                 <span class="b-icon b-icon_sbr_oattent b-icon_margleft_-25 b-icon_top_1"></span>
                 <div id="method_any_text" class="b-fon__txt b-fon__txt_padbot_5 b-fon__txt_linheight_18" <?= ($sbr->user_reqvs['form_type'] != sbr::FT_PHYS ? 'style="display:none"' : "");?>>
-                    <?= $one_ww ? "Бюджет этапа" : "Бюджеты этапов" ?> <?= implode(count($sbr->stage_payout_ww) == 2 ? " и " : " , ", $sbr->stage_payout_ww); ?> меньше 15 000 руб., поэтому <?= $one_ww ? "гонорар будет перечислен" : "гонорары по ним будут перечислены"?> на Веб-кошелек. Гонорар за <?= $one_other ? "этап" : "этапы"; ?> <?= implode(count($sbr->stage_payout_other) == 2 ? " и " : ", ", $sbr->stage_payout_other); ?> будет перечислен на <span class="other_payout_method">банковский счет</span>.
+                    <?= $one_ww ? "Р‘СЋРґР¶РµС‚ СЌС‚Р°РїР°" : "Р‘СЋРґР¶РµС‚С‹ СЌС‚Р°РїРѕРІ" ?> <?= implode(count($sbr->stage_payout_ww) == 2 ? " Рё " : " , ", $sbr->stage_payout_ww); ?> РјРµРЅСЊС€Рµ 15 000 СЂСѓР±., РїРѕСЌС‚РѕРјСѓ <?= $one_ww ? "РіРѕРЅРѕСЂР°СЂ Р±СѓРґРµС‚ РїРµСЂРµС‡РёСЃР»РµРЅ" : "РіРѕРЅРѕСЂР°СЂС‹ РїРѕ РЅРёРј Р±СѓРґСѓС‚ РїРµСЂРµС‡РёСЃР»РµРЅС‹"?> РЅР° Р’РµР±-РєРѕС€РµР»РµРє. Р“РѕРЅРѕСЂР°СЂ Р·Р° <?= $one_other ? "СЌС‚Р°Рї" : "СЌС‚Р°РїС‹"; ?> <?= implode(count($sbr->stage_payout_other) == 2 ? " Рё " : ", ", $sbr->stage_payout_other); ?> Р±СѓРґРµС‚ РїРµСЂРµС‡РёСЃР»РµРЅ РЅР° <span class="other_payout_method">Р±Р°РЅРєРѕРІСЃРєРёР№ СЃС‡РµС‚</span>.
                 </div>  
                 <div id="method_ww_text" class="b-fon__txt b-fon__txt_padbot_5 b-fon__txt_linheight_18" style="display:none">
-                    Бюджеты этапов <?= implode(count($pay_all) == 2 ? " и " : " , ", $pay_all); ?> меньше 15 000 руб., поэтому гонорары по ним будут перечислены на Веб-кошелек
+                    Р‘СЋРґР¶РµС‚С‹ СЌС‚Р°РїРѕРІ <?= implode(count($pay_all) == 2 ? " Рё " : " , ", $pay_all); ?> РјРµРЅСЊС€Рµ 15 000 СЂСѓР±., РїРѕСЌС‚РѕРјСѓ РіРѕРЅРѕСЂР°СЂС‹ РїРѕ РЅРёРј Р±СѓРґСѓС‚ РїРµСЂРµС‡РёСЃР»РµРЅС‹ РЅР° Р’РµР±-РєРѕС€РµР»РµРє
                 </div>
                 <div class="b-fon__txt b-fon__txt_linheight_18 ">
-                    Проведение сделок и вывод сумм возможен только при наличии идентифицированного Веб-кошелька.<br>
-                    Для идентификации кошелька:<br>
-                    1. Перейдите по <a class="b-layout__link" href="https://webpay.pscb.ru/login/auth" target="_blank">ссылке</a> для авторизации или регистрации кошелька на ваш номер телефона.<br>
-                    2. В кошельке перейдите на <a class="b-layout__link" href="https://webpay.pscb.ru/UserProfile/identeficationWays" target="_blank">страницу идентификации</a>.<br>
-                    3. Выберите способ (например, упрощенная идентификация) и пройдите идентификацию.
-                    <div class="b-layout__bold">Обратите внимание, в этапах сделки с бюджетом менее 15 000 рублей выплата возможна только на Веб-кошелек ПСКБ.</div>
+                    РџСЂРѕРІРµРґРµРЅРёРµ СЃРґРµР»РѕРє Рё РІС‹РІРѕРґ СЃСѓРјРј РІРѕР·РјРѕР¶РµРЅ С‚РѕР»СЊРєРѕ РїСЂРё РЅР°Р»РёС‡РёРё РёРґРµРЅС‚РёС„РёС†РёСЂРѕРІР°РЅРЅРѕРіРѕ Р’РµР±-РєРѕС€РµР»СЊРєР°.<br>
+                    Р”Р»СЏ РёРґРµРЅС‚РёС„РёРєР°С†РёРё РєРѕС€РµР»СЊРєР°:<br>
+                    1. РџРµСЂРµР№РґРёС‚Рµ РїРѕ <a class="b-layout__link" href="https://webpay.pscb.ru/login/auth" target="_blank">СЃСЃС‹Р»РєРµ</a> РґР»СЏ Р°РІС‚РѕСЂРёР·Р°С†РёРё РёР»Рё СЂРµРіРёСЃС‚СЂР°С†РёРё РєРѕС€РµР»СЊРєР° РЅР° РІР°С€ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°.<br>
+                    2. Р’ РєРѕС€РµР»СЊРєРµ РїРµСЂРµР№РґРёС‚Рµ РЅР° <a class="b-layout__link" href="https://webpay.pscb.ru/UserProfile/identeficationWays" target="_blank">СЃС‚СЂР°РЅРёС†Сѓ РёРґРµРЅС‚РёС„РёРєР°С†РёРё</a>.<br>
+                    3. Р’С‹Р±РµСЂРёС‚Рµ СЃРїРѕСЃРѕР± (РЅР°РїСЂРёРјРµСЂ, СѓРїСЂРѕС‰РµРЅРЅР°СЏ РёРґРµРЅС‚РёС„РёРєР°С†РёСЏ) Рё РїСЂРѕР№РґРёС‚Рµ РёРґРµРЅС‚РёС„РёРєР°С†РёСЋ.
+                    <div class="b-layout__bold">РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ, РІ СЌС‚Р°РїР°С… СЃРґРµР»РєРё СЃ Р±СЋРґР¶РµС‚РѕРј РјРµРЅРµРµ 15 000 СЂСѓР±Р»РµР№ РІС‹РїР»Р°С‚Р° РІРѕР·РјРѕР¶РЅР° С‚РѕР»СЊРєРѕ РЅР° Р’РµР±-РєРѕС€РµР»РµРє РџРЎРљР‘.</div>
                 </div>
             </div>
         </div>
@@ -225,16 +225,16 @@ foreach ($sbr->scheme['taxes'][$sbr->isEmp() ? sbr::EMP : sbr::FRL] as $tid => $
     <div class="b-layout__inner b-layout__inner_padtb_20 b-layout__inner_bordtop_ed b-layout__inner_bordbot_ed"> 
         <?
         /*<div class="b-layout__txt b-layout__txt_color_a0763b b-layout__txt_padbot_10 b-layout__txt_padleft_20 finance-alert">
-            <span class="b-icon b-icon_top_1 b-icon_margleft_-20 b-icon_sbr_oattent"></span>Для проведения сделки будут использованы ваши данные со страницы  «<a href="/users/<?= $sbr->login ?>/setup/finance/" class="b-layout__link b-layout__link_bordbot_dot_0f71c8">Финансы</a>». 
-            Пожалуйста, проверьте актуальность указанных данных.
+            <span class="b-icon b-icon_top_1 b-icon_margleft_-20 b-icon_sbr_oattent"></span>Р”Р»СЏ РїСЂРѕРІРµРґРµРЅРёСЏ СЃРґРµР»РєРё Р±СѓРґСѓС‚ РёСЃРїРѕР»СЊР·РѕРІР°РЅС‹ РІР°С€Рё РґР°РЅРЅС‹Рµ СЃРѕ СЃС‚СЂР°РЅРёС†С‹  В«<a href="/users/<?= $sbr->login ?>/setup/finance/" class="b-layout__link b-layout__link_bordbot_dot_0f71c8">Р¤РёРЅР°РЅСЃС‹</a>В». 
+            РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїСЂРѕРІРµСЂСЊС‚Рµ Р°РєС‚СѓР°Р»СЊРЅРѕСЃС‚СЊ СѓРєР°Р·Р°РЅРЅС‹С… РґР°РЅРЅС‹С….
         </div>
         <div id="form_type_alert" class="b-layout__txt b-layout__txt_color_c10600 b-layout__txt_padbot_15 b-layout__txt_padleft_20 b-layout_hide no-finance-alert">
-            <span class="b-icon b-icon_top_1 b-icon_margleft_-20 b-icon_sbr_rattent"></span>Вам не хватает данных на странице «<a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="/users/<?= $sbr->login ?>/setup/finance/">Финансы</a>». 
-            Пожалуйста, заполните всё необходимое, иначе вы не сможете воспользоваться сервисом «Сделка Без Риска».
+            <span class="b-icon b-icon_top_1 b-icon_margleft_-20 b-icon_sbr_rattent"></span>Р’Р°Рј РЅРµ С…РІР°С‚Р°РµС‚ РґР°РЅРЅС‹С… РЅР° СЃС‚СЂР°РЅРёС†Рµ В«<a class="b-layout__link b-layout__link_bordbot_dot_0f71c8" href="/users/<?= $sbr->login ?>/setup/finance/">Р¤РёРЅР°РЅСЃС‹</a>В». 
+            РџРѕР¶Р°Р»СѓР№СЃС‚Р°, Р·Р°РїРѕР»РЅРёС‚Рµ РІСЃС‘ РЅРµРѕР±С…РѕРґРёРјРѕРµ, РёРЅР°С‡Рµ РІС‹ РЅРµ СЃРјРѕР¶РµС‚Рµ РІРѕСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ СЃРµСЂРІРёСЃРѕРј В«РЎРґРµР»РєР° Р‘РµР· Р РёСЃРєР°В».
         </div>*/
         ?>
         <div id="inline_reqvs_alert" class="b-layout__txt b-layout__txt_color_a0763b b-layout__txt_padbot_30 b-layout__txt_padleft_20">
-            <span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_oattent"></span>Внимательно заполните все поля ниже. После начала сделки эти настройки нельзя будет изменить.</div>
+            <span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_oattent"></span>Р’РЅРёРјР°С‚РµР»СЊРЅРѕ Р·Р°РїРѕР»РЅРёС‚Рµ РІСЃРµ РїРѕР»СЏ РЅРёР¶Рµ. РџРѕСЃР»Рµ РЅР°С‡Р°Р»Р° СЃРґРµР»РєРё СЌС‚Рё РЅР°СЃС‚СЂРѕР№РєРё РЅРµР»СЊР·СЏ Р±СѓРґРµС‚ РёР·РјРµРЅРёС‚СЊ.</div>
         
         
         <div id="inline_reqvs">
@@ -295,16 +295,16 @@ foreach ($sbr->scheme['taxes'][$sbr->isEmp() ? sbr::EMP : sbr::FRL] as $tid => $
                                 
                             </div>
                             <? if ($f_name == 'mob_phone' && $sbr->isFrl()) { ?>
-                            <div class="b-layout__txt b-layout__txt_fontsize_11">После завершения сделки на этот номер будут высылаться СМС с кодом подтверждения.<br>Только введя этот код, вы сможете получить гонорар. С кодом в международном формате +[код страны][код оператора][телефонный номер]. Например +79031234567, +380912345678</div>
+                            <div class="b-layout__txt b-layout__txt_fontsize_11">РџРѕСЃР»Рµ Р·Р°РІРµСЂС€РµРЅРёСЏ СЃРґРµР»РєРё РЅР° СЌС‚РѕС‚ РЅРѕРјРµСЂ Р±СѓРґСѓС‚ РІС‹СЃС‹Р»Р°С‚СЊСЃСЏ РЎРњРЎ СЃ РєРѕРґРѕРј РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ.<br>РўРѕР»СЊРєРѕ РІРІРµРґСЏ СЌС‚РѕС‚ РєРѕРґ, РІС‹ СЃРјРѕР¶РµС‚Рµ РїРѕР»СѓС‡РёС‚СЊ РіРѕРЅРѕСЂР°СЂ. РЎ РєРѕРґРѕРј РІ РјРµР¶РґСѓРЅР°СЂРѕРґРЅРѕРј С„РѕСЂРјР°С‚Рµ +[РєРѕРґ СЃС‚СЂР°РЅС‹][РєРѕРґ РѕРїРµСЂР°С‚РѕСЂР°][С‚РµР»РµС„РѕРЅРЅС‹Р№ РЅРѕРјРµСЂ]. РќР°РїСЂРёРјРµСЂ +79031234567, +380912345678</div>
                             <? } else if($f_name == 'mob_phone' && $sbr->isEmp()) {?>
-                            <div class="b-layout__txt b-layout__txt_fontsize_11">С кодом в международном формате +[код страны][код оператора][телефонный номер]. Например +79031234567, +380912345678</div>
+                            <div class="b-layout__txt b-layout__txt_fontsize_11">РЎ РєРѕРґРѕРј РІ РјРµР¶РґСѓРЅР°СЂРѕРґРЅРѕРј С„РѕСЂРјР°С‚Рµ +[РєРѕРґ СЃС‚СЂР°РЅС‹][РєРѕРґ РѕРїРµСЂР°С‚РѕСЂР°][С‚РµР»РµС„РѕРЅРЅС‹Р№ РЅРѕРјРµСЂ]. РќР°РїСЂРёРјРµСЂ +79031234567, +380912345678</div>
                             <? } ?>
                             <div class="b-layout__txt b-layout_hide b-layout__txt_color_c10600 b-layout__txt_padleft_20 finance-error">
                                 <span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_rattent"></span><span class="finance-error-text"></span>
                             </div>
                             <? if($f_name == 'bank_ks') { ?>
                                 <div class="b-layout__txt b-layout__txt_fontsize_11">
-                                    Содержит <?= $maxlength; ?> символов. Обратите внимание: к/с начинается на 30111810
+                                    РЎРѕРґРµСЂР¶РёС‚ <?= $maxlength; ?> СЃРёРјРІРѕР»РѕРІ. РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ: Рє/СЃ РЅР°С‡РёРЅР°РµС‚СЃСЏ РЅР° 30111810
                                 </div>
                             <? } //if?>
                         </td>
@@ -327,7 +327,7 @@ foreach ($sbr->scheme['taxes'][$sbr->isEmp() ? sbr::EMP : sbr::FRL] as $tid => $
                 <tbody>
                     <tr class="b-layout__tr">
                         <td class="b-layout__left b-layout__left_width_160">
-                            <div class="b-layout__txt b-layout__txt_padtop_5"><?= $f_name == 'fio' ? 'ФИО представителя' : $reqvs_fields[$f_name][0] ?></div>
+                            <div class="b-layout__txt b-layout__txt_padtop_5"><?= $f_name == 'fio' ? 'Р¤РРћ РїСЂРµРґСЃС‚Р°РІРёС‚РµР»СЏ' : $reqvs_fields[$f_name][0] ?></div>
                         </td>
                         <td class="b-layout__right ">
                             <div class="b-combo b-input-hint">
@@ -343,14 +343,14 @@ foreach ($sbr->scheme['taxes'][$sbr->isEmp() ? sbr::EMP : sbr::FRL] as $tid => $
                                 
                             </div>
                             <? if ($f_name == 'mob_phone' && $sbr->isFrl()) { ?>
-                            <div class="b-layout__txt b-layout__txt_fontsize_11">После завершения сделки на этот номер будут высылаться СМС с кодом подтверждения.<br>Только введя этот код вы сможете получить гонорар.</div>
+                            <div class="b-layout__txt b-layout__txt_fontsize_11">РџРѕСЃР»Рµ Р·Р°РІРµСЂС€РµРЅРёСЏ СЃРґРµР»РєРё РЅР° СЌС‚РѕС‚ РЅРѕРјРµСЂ Р±СѓРґСѓС‚ РІС‹СЃС‹Р»Р°С‚СЊСЃСЏ РЎРњРЎ СЃ РєРѕРґРѕРј РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ.<br>РўРѕР»СЊРєРѕ РІРІРµРґСЏ СЌС‚РѕС‚ РєРѕРґ РІС‹ СЃРјРѕР¶РµС‚Рµ РїРѕР»СѓС‡РёС‚СЊ РіРѕРЅРѕСЂР°СЂ.</div>
                             <? } ?>
                             <div class="b-layout__txt b-layout_hide b-layout__txt_color_c10600 b-layout__txt_padleft_20 finance-error">
                                 <span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_rattent"></span><span class="finance-error-text"></span>
                             </div>
                             <? if($f_name == 'bank_ks') { ?>
                                 <div class="b-layout__txt b-layout__txt_fontsize_11">
-                                    Содержит <?= $maxlength; ?> символов. Обратите внимание: к/с начинается на 30111810
+                                    РЎРѕРґРµСЂР¶РёС‚ <?= $maxlength; ?> СЃРёРјРІРѕР»РѕРІ. РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ: Рє/СЃ РЅР°С‡РёРЅР°РµС‚СЃСЏ РЅР° 30111810
                                 </div>
                             <? } //if?>
                             <? if($f_name == 'bank_rf_bik') { ?>
@@ -369,7 +369,7 @@ foreach ($sbr->scheme['taxes'][$sbr->isEmp() ? sbr::EMP : sbr::FRL] as $tid => $
                onclick="setReqvs(this);">
                 <span class="b-button__b1">
                     <span class="b-button__b2">
-                        <span class="b-button__txt">Изменить реквизиты</span>
+                        <span class="b-button__txt">РР·РјРµРЅРёС‚СЊ СЂРµРєРІРёР·РёС‚С‹</span>
                     </span>
                 </span>
             </a>-->
@@ -383,12 +383,12 @@ foreach ($sbr->scheme['taxes'][$sbr->isEmp() ? sbr::EMP : sbr::FRL] as $tid => $
 
 /*
 <div id="webwallet-note" class="b-layout__txt b-layout__txt_color_a0763b b-layout__txt_padbot_30 b-layout__txt_padleft_20 b-layout_hide">
-            <span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_oattent"></span>Обратите внимание:
+            <span class="b-icon b-icon_top_2 b-icon_margleft_-20 b-icon_sbr_oattent"></span>РћР±СЂР°С‚РёС‚Рµ РІРЅРёРјР°РЅРёРµ:
 <?php if($sbr->isFrl() && $sbr->is_only_ww) {?>
-Если размер гонорара за этап составляет сумму до 15 000 рублей включительно, денежные средства будут выплачены на <a class="b-layout__link" href="<?= HTTP_PREFIX ?>feedback.fl.ru/topic/397421-veb-koshelek-obschaya-informatsiya/">Веб-кошелек</a>.
+Р•СЃР»Рё СЂР°Р·РјРµСЂ РіРѕРЅРѕСЂР°СЂР° Р·Р° СЌС‚Р°Рї СЃРѕСЃС‚Р°РІР»СЏРµС‚ СЃСѓРјРјСѓ РґРѕ 15В 000 СЂСѓР±Р»РµР№ РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ, РґРµРЅРµР¶РЅС‹Рµ СЃСЂРµРґСЃС‚РІР° Р±СѓРґСѓС‚ РІС‹РїР»Р°С‡РµРЅС‹ РЅР° <a class="b-layout__link" href="<?= HTTP_PREFIX ?>feedback.fl.ru/topic/397421-veb-koshelek-obschaya-informatsiya/">Р’РµР±-РєРѕС€РµР»РµРє</a>.
 <?php } ?>
-Для неперсонифицированных Веб-кошельков действует ограничение на переводы за календарный месяц &ndash; 40 000 рублей. 
-Если суммарный приход средств на ваш счет превысит данную сумму, вам будет необходимо <a class="b-layout__link" href="<?= HTTP_PREFIX ?>feedback.fl.ru/topic/397421-veb-koshelek-obschaya-informatsiya/">пройти идентификацию в системе Веб-кошелек</a>.
+Р”Р»СЏ РЅРµРїРµСЂСЃРѕРЅРёС„РёС†РёСЂРѕРІР°РЅРЅС‹С… Р’РµР±-РєРѕС€РµР»СЊРєРѕРІ РґРµР№СЃС‚РІСѓРµС‚ РѕРіСЂР°РЅРёС‡РµРЅРёРµ РЅР° РїРµСЂРµРІРѕРґС‹ Р·Р° РєР°Р»РµРЅРґР°СЂРЅС‹Р№ РјРµСЃСЏС† &ndash; 40В 000 СЂСѓР±Р»РµР№. 
+Р•СЃР»Рё СЃСѓРјРјР°СЂРЅС‹Р№ РїСЂРёС…РѕРґ СЃСЂРµРґСЃС‚РІ РЅР° РІР°С€ СЃС‡РµС‚ РїСЂРµРІС‹СЃРёС‚ РґР°РЅРЅСѓСЋ СЃСѓРјРјСѓ, РІР°Рј Р±СѓРґРµС‚ РЅРµРѕР±С…РѕРґРёРјРѕ <a class="b-layout__link" href="<?= HTTP_PREFIX ?>feedback.fl.ru/topic/397421-veb-koshelek-obschaya-informatsiya/">РїСЂРѕР№С‚Рё РёРґРµРЅС‚РёС„РёРєР°С†РёСЋ РІ СЃРёСЃС‚РµРјРµ Р’РµР±-РєРѕС€РµР»РµРє</a>.
 </div>
 */ 
 
@@ -412,16 +412,16 @@ if($sbr->isFrl() && $sbr->is_diff_method) {
                         <div class="b-tax__content">
                             <div>
                                 <div class="b-tax__level b-tax__level_padbot_12">
-                                    <div class="b-tax__txt b-tax__txt_width_220 b-tax__txt_inline-block">Бюджет всех этапов</div>
+                                    <div class="b-tax__txt b-tax__txt_width_220 b-tax__txt_inline-block">Р‘СЋРґР¶РµС‚ РІСЃРµС… СЌС‚Р°РїРѕРІ</div>
                                     <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_bold" id="sch_<?= $sbr->scheme["type"] ?>_f"><?= sbr_meta::view_cost($sbr->data['cost'], exrates::BANK) ?></div>
                                 </div>
                                 <div class="b-tax__level b-tax__level_padbot_12 b-tax__level_double">
-                                    <div class="b-tax__txt b-tax__txt_padleft_1 b-tax__txt_width_220 b-tax__txt_inline-block b-tax__txt_fontsize_11">Налоги и вычеты</div>
-                                    <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_fontsize_11">Сумма, руб.</div>
-                                    <div class="b-tax__txt b-tax__txt_width_130 b-tax__txt_inline-block b-tax__txt_fontsize_11">% от бюджета проекта</div>
+                                    <div class="b-tax__txt b-tax__txt_padleft_1 b-tax__txt_width_220 b-tax__txt_inline-block b-tax__txt_fontsize_11">РќР°Р»РѕРіРё Рё РІС‹С‡РµС‚С‹</div>
+                                    <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_fontsize_11">РЎСѓРјРјР°, СЂСѓР±.</div>
+                                    <div class="b-tax__txt b-tax__txt_width_130 b-tax__txt_inline-block b-tax__txt_fontsize_11">% РѕС‚ Р±СЋРґР¶РµС‚Р° РїСЂРѕРµРєС‚Р°</div>
                                 </div>
                                 <? foreach($sbr->scheme['taxes'][$sbr->isEmp() ? sbr::EMP : sbr::FRL] as $id=>$tax) { if (!in_array($id, $sbr_tax)) continue;  ?>
-                                <? // строка налога ?>
+                                <? // СЃС‚СЂРѕРєР° РЅР°Р»РѕРіР° ?>
                                 <div class="b-tax__level <?= ($id==sbr::TAX_NDS ? "b-tax__level_bordtop_9ea599" : "");?> b-tax__level_padbot_12 b-tax__level_padtop_15">
                                     <div class="b-tax__txt b-tax__txt_width_220 b-tax__txt_inline-block">
                                         <?= $tax['name'] ?>
@@ -429,27 +429,27 @@ if($sbr->isFrl() && $sbr->is_diff_method) {
                                         <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_bold" id="taxsum_<?= $sch['type'] ?>_<?=$id ?>"><?= sbr_meta::view_cost($sbr_taxes_sum[$id][$ps]) ?></div>
                                         <div class="b-tax__txt b-tax__txt_width_150 b-tax__txt_inline-block b-tax__txt_fontsize_11" id="taxper_<?= $sch['type'] ?>_<?= $id ?>">
                                         <?php if($id==sbr::TAX_NDS) { ?>
-                                            <?= $tax['percent']*100 ?>% от бюджета + налоги
+                                            <?= $tax['percent']*100 ?>% РѕС‚ Р±СЋРґР¶РµС‚Р° + РЅР°Р»РѕРіРё
                                         <?php } else {//if?>
                                             <?= $tax['percent']*100 ?>
                                         <?php }//else?>
                                     </div>
                                 </div>
-                                <? // строка налога ?>
+                                <? // СЃС‚СЂРѕРєР° РЅР°Р»РѕРіР° ?>
                                 <? } ?>
                             </div>
 
                             <? if ($sbr->isEmp()) { ?>
                             <div class="b-tax__level b-tax__level_padtop_15">
-                                <div class="b-tax__txt b-tax__txt_bold b-tax__txt_width_220 b-tax__txt_inline-block">Итого к оплате</div>
+                                <div class="b-tax__txt b-tax__txt_bold b-tax__txt_width_220 b-tax__txt_inline-block">РС‚РѕРіРѕ Рє РѕРїР»Р°С‚Рµ</div>
                                 <div class="b-tax__txt b-tax__txt_inline-block"><span class="b-tax__txt b-tax__txt_bold b-tax__txt_fontsize_15"><?= sbr_meta::view_cost($ps_total_sum[$ps], exrates::BANK) ?></span> </div>
                             </div>
                             <? } ?>
 
                             <? if ($sbr->isFrl()) { ?>
                             <div class="b-tax__level b-tax__level_padtop_15">
-                                <div class="b-tax__txt b-tax__txt_bold b-tax__txt_width_220 b-tax__txt_inline-block">Вы получите</div>
-                                <div class="b-tax__txt b-tax__txt_inline-block"><span class="b-tax__txt b-tax__txt_bold b-tax__txt_fontsize_15"><?= sbr_meta::view_cost($ps_total_sum[$ps], exrates::BANK)?></span> и <span><?= $RT ?></span> <?= ending($RT, 'балл', 'балла', 'баллов');?> рейтинга</div>
+                                <div class="b-tax__txt b-tax__txt_bold b-tax__txt_width_220 b-tax__txt_inline-block">Р’С‹ РїРѕР»СѓС‡РёС‚Рµ</div>
+                                <div class="b-tax__txt b-tax__txt_inline-block"><span class="b-tax__txt b-tax__txt_bold b-tax__txt_fontsize_15"><?= sbr_meta::view_cost($ps_total_sum[$ps], exrates::BANK)?></span> Рё <span><?= $RT ?></span> <?= ending($RT, 'Р±Р°Р»Р»', 'Р±Р°Р»Р»Р°', 'Р±Р°Р»Р»РѕРІ');?> СЂРµР№С‚РёРЅРіР°</div>
                             </div>
                             <? } ?>
 
@@ -473,13 +473,13 @@ if($sbr->isFrl() && $sbr->is_diff_method) {
                         <div class="b-tax__content">
                             <div>
                                 <div class="b-tax__level b-tax__level_padbot_12">
-                                    <div class="b-tax__txt b-tax__txt_width_220 b-tax__txt_inline-block">Бюджет всех этапов</div>
+                                    <div class="b-tax__txt b-tax__txt_width_220 b-tax__txt_inline-block">Р‘СЋРґР¶РµС‚ РІСЃРµС… СЌС‚Р°РїРѕРІ</div>
                                     <div class="b-tax__txt b-tax__txt_width_120 b-tax__txt_inline-block b-tax__txt_bold" id="sch_<?= $sbr->scheme["type"] ?>_f"><?= sbr_meta::view_cost($sbr->data['cost'], exrates::BANK) ?></div>
                                 </div>
                             </div>
                             <div class="b-tax__level b-tax__level_padtop_15">
-                                <div class="b-tax__txt b-tax__txt_bold b-tax__txt_width_220 b-tax__txt_inline-block">Вы получите</div>
-                                <div class="b-tax__txt b-tax__txt_inline-block"><span class="b-tax__txt b-tax__txt_bold b-tax__txt_fontsize_15"><?= sbr_meta::view_cost($sbr->cost, exrates::BANK)?></span> и <span><?= $RT ?></span> <?= ending($RT, 'балл', 'балла', 'баллов');?> рейтинга</div>
+                                <div class="b-tax__txt b-tax__txt_bold b-tax__txt_width_220 b-tax__txt_inline-block">Р’С‹ РїРѕР»СѓС‡РёС‚Рµ</div>
+                                <div class="b-tax__txt b-tax__txt_inline-block"><span class="b-tax__txt b-tax__txt_bold b-tax__txt_fontsize_15"><?= sbr_meta::view_cost($sbr->cost, exrates::BANK)?></span> Рё <span><?= $RT ?></span> <?= ending($RT, 'Р±Р°Р»Р»', 'Р±Р°Р»Р»Р°', 'Р±Р°Р»Р»РѕРІ');?> СЂРµР№С‚РёРЅРіР°</div>
                             </div>
                         </div>
                     </div>
@@ -496,7 +496,7 @@ if($sbr->isFrl() && $sbr->is_diff_method) {
     var taxesMap = <?= json_encode($sbr_taxes) ?>;
 //    alert(taxesMap['263']);
     var exrates_changes = function(exrate) {
-        var exrates_name = 'банковский счет';
+        var exrates_name = 'Р±Р°РЅРєРѕРІСЃРєРёР№ СЃС‡РµС‚';
         switch(exrate) {
             <? foreach(pskb::$exrates_map as $k=>$v) { ?>
             case '<?= $k;?>':
@@ -569,9 +569,9 @@ if($sbr->isFrl() && $sbr->is_diff_method) {
             var el = document.getElement('input[name=reqvs_' + ft +'_' + fname +']');
             if (!el) return;
             
-            // обводим инпут красным
+            // РѕР±РІРѕРґРёРј РёРЅРїСѓС‚ РєСЂР°СЃРЅС‹Рј
             el.getParent('.b-combo__input').addClass('b-combo__input_error');
-            // добавляем текст ошибки
+            // РґРѕР±Р°РІР»СЏРµРј С‚РµРєСЃС‚ РѕС€РёР±РєРё
             var td = el.getParent('td');
             if (!td) return;
             var error = td.getElement('.finance-error');
@@ -614,9 +614,9 @@ if($sbr->isFrl() && $sbr->is_diff_method) {
         //$$('.finance-min-alert' + ft).removeClass('b-layout_hide');
         $$('.finance-min-alert' + ft + '-more').removeClass('b-layout_hide');
         
-        // переносим номер телефона из бывшего лица (физ/юр) в новое
-        var prevFormType = ft == 1 ? 2 : 1; // предыдущий тип лица
-        var prevPhone = $$('input[name=reqvs_' + prevFormType + '_mob_phone]')[0].get('value'); // телефон предыдущего лица
+        // РїРµСЂРµРЅРѕСЃРёРј РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РёР· Р±С‹РІС€РµРіРѕ Р»РёС†Р° (С„РёР·/СЋСЂ) РІ РЅРѕРІРѕРµ
+        var prevFormType = ft == 1 ? 2 : 1; // РїСЂРµРґС‹РґСѓС‰РёР№ С‚РёРї Р»РёС†Р°
+        var prevPhone = $$('input[name=reqvs_' + prevFormType + '_mob_phone]')[0].get('value'); // С‚РµР»РµС„РѕРЅ РїСЂРµРґС‹РґСѓС‰РµРіРѕ Р»РёС†Р°
         $$('input[name=reqvs_' + ft + '_mob_phone]')[0].set('value', prevPhone);
         
         if ($$('input[name=mode_type]').length) {
@@ -649,7 +649,7 @@ if($sbr->isFrl() && $sbr->is_diff_method) {
         $$('.reqvs-' + ft + '-all').removeClass('b-layout_hide');
         $$('.reqvs-' + ft + '-' + mt).removeClass('b-layout_hide');
         
-        // скрываем все поля не относящиеся для этого типа резидентства
+        // СЃРєСЂС‹РІР°РµРј РІСЃРµ РїРѕР»СЏ РЅРµ РѕС‚РЅРѕСЃСЏС‰РёРµСЃСЏ РґР»СЏ СЌС‚РѕРіРѕ С‚РёРїР° СЂРµР·РёРґРµРЅС‚СЃС‚РІР°
         if (rez) {
             var rezStr = rez == 1 ? 'not_rezident' : 'rezident';
             $$('.reqvs-' + ft + '-' + rezStr).addClass('b-layout_hide');
@@ -675,7 +675,7 @@ if($sbr->isFrl() && $sbr->is_diff_method) {
         return errs == 0;
     };
     
-    // синхронизация телефонов между типами лиц при их редактировании
+    // СЃРёРЅС…СЂРѕРЅРёР·Р°С†РёСЏ С‚РµР»РµС„РѕРЅРѕРІ РјРµР¶РґСѓ С‚РёРїР°РјРё Р»РёС† РїСЂРё РёС… СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРё
     window.addEvent('domready', function(){
         $$('input[name$=_mob_phone]').addEvent('change', function(){
             var phone = $(this).get('value');

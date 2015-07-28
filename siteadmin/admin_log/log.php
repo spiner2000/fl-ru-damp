@@ -1,5 +1,5 @@
 <?php if ( !defined('IS_SITE_ADMIN') ) { header('Location: /404.php'); exit; }
-// Êëþ÷è - admin_actions.obj_code
+// ÐšÐ»ÑŽÑ‡Ð¸ - admin_actions.obj_code
 $aClass = array(
     admin_log::OBJ_CODE_USER => 'color-666666',
     admin_log::OBJ_CODE_BLOG => 'color-45a300',

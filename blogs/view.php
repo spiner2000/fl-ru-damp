@@ -109,7 +109,7 @@ switch ($action) {
         $filecount = 0;
         if (strlen($_POST['msg']) > blogs::MAX_DESC_CHARS) {
             $error_flag = 1;
-            $alert[1] = "Максимальный размер сообщения ".blogs::MAX_DESC_CHARS." символов!";
+            $alert[1] = "РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ СЃРѕРѕР±С‰РµРЅРёСЏ ".blogs::MAX_DESC_CHARS." СЃРёРјРІРѕР»РѕРІ!";
         }
         $msg = change_q_x(antispam($_POST['msg']), false, false, 'b|br|i|p|ul|li|cut|s|h[1-6]{1}', false, false);
         $msg = trim($msg);
@@ -119,14 +119,14 @@ switch ($action) {
         if ($yt_link != '') {
             $v_yt_link = video_validate($yt_link);
             if(!$v_yt_link) {
-                $error_flag = 1; $alert[4] = "Неверная ссылка.";
+                $error_flag = 1; $alert[4] = "РќРµРІРµСЂРЅР°СЏ СЃСЃС‹Р»РєР°.";
             } else {
                 $yt_link = $v_yt_link;
             }
         }
         $tn = 0;
         if ($_SESSION['uid'] && $reply && $thread ){
-            // загрузка файлов
+            // Р·Р°РіСЂСѓР·РєР° С„Р°Р№Р»РѕРІ
             $files = array();
             $attach = $_FILES['attach'];
                 
@@ -148,7 +148,7 @@ switch ($action) {
                     
                     if ( $nTotalSize > blogs::MAX_FILE_SIZE ) {
                     	$error_flag = 1;
-                    	$alert[3]   = 'Максимальный объем прикрепленных файлов: ' . (blogs::MAX_FILE_SIZE / (1024*1024));
+                    	$alert[3]   = 'РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РѕР±СЉРµРј РїСЂРёРєСЂРµРїР»РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ: ' . (blogs::MAX_FILE_SIZE / (1024*1024));
                     	break;
                     }
                 }
@@ -156,7 +156,7 @@ switch ($action) {
             
             if ( count($files) > blogs::MAX_FILES ) { 
     			$error_flag = 1; 
-    			$alert[3]   = "Максимальное кол-во файлов для загрузки: " . blogs::MAX_FILES;
+    			$alert[3]   = "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»-РІРѕ С„Р°Р№Р»РѕРІ РґР»СЏ Р·Р°РіСЂСѓР·РєРё: " . blogs::MAX_FILES;
     		}
 
             require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/attachedfiles.php");
@@ -174,7 +174,7 @@ switch ($action) {
 		   	$ctrl_msg = preg_replace("#&\w+;#si", "", $msg);
            if (!$ctrl_msg && !count($files) && !$yt_link && !$attachedfiles_info['count']){
                 $error_flag = 1;
-                $alert[1] = "Поле заполнено некорректно";
+                $alert[1] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
             }
 
             if(!$error_flag && is_empty_html($msg)) $msg='';
@@ -187,12 +187,12 @@ switch ($action) {
                 $attachedfiles->clear();
                 
                 //$nStopWordsCnt = $stop_words->calculate( $msg, $msg_name );
-                //$blogs->insertIntoModeration( $last_id, $nStopWordsCnt, ($reply ? 1 : 0) ); // больше не модерируем
+                //$blogs->insertIntoModeration( $last_id, $nStopWordsCnt, ($reply ? 1 : 0) ); // Р±РѕР»СЊС€Рµ РЅРµ РјРѕРґРµСЂРёСЂСѓРµРј
 
                 if($err==403) {
 		            header("Location: /403.php"); exit;
                 }
-                //$ret = $blogs->GetMsgInfo($last_id, $err, $perm); че это вообще такое?
+                //$ret = $blogs->GetMsgInfo($last_id, $err, $perm); С‡Рµ СЌС‚Рѕ РІРѕРѕР±С‰Рµ С‚Р°РєРѕРµ?
                 if (is_array($err) && !isNulArray($err)) {$error_flag = 1; $alert = $err;}
                 if ($ret['base'] == 3 || $ret['base'] == 5){
                     $kind = $ret['kind'];
@@ -203,7 +203,7 @@ switch ($action) {
                     header("Location: ".getFriendlyURL("blog", $thread)."?pagefrom=".($_POST['onpage'] ? $_POST['onpage'] : $_POST['pagefrom']).'&openlevel='.$last_id."&ord=".$_GET["ord"].($PDA ? '#o'.$last_id : ''));exit;
                 }
             }/* elseif (!$msg && !$filecount){
-                $error_flag = 1; $alert[1] = "Поле заполнено некорректно";
+                $error_flag = 1; $alert[1] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ";
             }*/
         }
         if($PDA)
@@ -230,13 +230,13 @@ switch ($action) {
                 messages::SendMsgDelWarn($id, $msg);
             }
             
-            // пишем лог админских действий: удаление комментария в блоге
+            // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№: СѓРґР°Р»РµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ РІ Р±Р»РѕРіРµ
             if ( hasPermissions('blogs') && $msg['fromuser_id'] != $uid ) {
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/admin_log.php' );
                 
             	$sLink   = getFriendlyURL( 'blog', $thread );
             	$sReason = '<a href="'. $sLink . "?openlevel={$id}#o{$id}" 
-            	   . '" target="_blank">Комментарий</a> от <a href="' . $GLOBALS['host'] . '/users/' . $msg['login'] 
+            	   . '" target="_blank">РљРѕРјРјРµРЅС‚Р°СЂРёР№</a> РѕС‚ <a href="' . $GLOBALS['host'] . '/users/' . $msg['login'] 
             	   . '" target="_blank">' . $msg['uname'] . ' ' . $msg['usurname'] . ' [' . $msg['login'] . ']</a>';
             	
             	admin_log::addLog( 
@@ -257,13 +257,13 @@ switch ($action) {
             $thread = blogs::RestoreDeleteMsg($uid, $id, getRemoteIP(), $err, $mod);
             $msg    = blogs::GetMsgInfo( $id, $error, $perm );
             
-            // пишем лог админских действий: восстановление комментария в блоге
+            // РїРёС€РµРј Р»РѕРі Р°РґРјРёРЅСЃРєРёС… РґРµР№СЃС‚РІРёР№: РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ РІ Р±Р»РѕРіРµ
             if ( hasPermissions('blogs') && $msg['fromuser_id'] != $uid ) {
                 require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/admin_log.php' );
                 
             	$sLink   = getFriendlyURL( 'blog', $thread );
             	$sReason = '<a href="'. $sLink . "?openlevel={$id}#o{$id}" 
-            	   . '" target="_blank">Комментарий</a> от <a href="' . $GLOBALS['host'] . '/users/' . $msg['login'] 
+            	   . '" target="_blank">РљРѕРјРјРµРЅС‚Р°СЂРёР№</a> РѕС‚ <a href="' . $GLOBALS['host'] . '/users/' . $msg['login'] 
             	   . '" target="_blank">' . $msg['uname'] . ' ' . $msg['usurname'] . ' [' . $msg['login'] . ']</a>';
                 
             	$blog_data = new blogs();
@@ -318,7 +318,7 @@ include($rpath."classes/buffer_prjs.php");
 
         if (strlen($_POST['msg']) > blogs::MAX_DESC_CHARS) {
             $error_flag = 1;
-            $alert[1] = "Максимальный размер сообщения ".blogs::MAX_DESC_CHARS." символов!";
+            $alert[1] = "РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ СЃРѕРѕР±С‰РµРЅРёСЏ ".blogs::MAX_DESC_CHARS." СЃРёРјРІРѕР»РѕРІ!";
         }
         $msg = change_q_x(antispam($_POST['msg']), false, false, 'b|br|i|p|ul|li|cut|s|h[1-6]{1}', false, false);
         $msg_name = substr_entity(change_q_x(antispam($_POST['msg_name']), true, false), 0, 96, true);
@@ -326,7 +326,7 @@ include($rpath."classes/buffer_prjs.php");
         if ($yt_link != '') {
             $v_yt_link = video_validate($yt_link);
             if(!$v_yt_link) {
-                $error_flag = 1; $alert[4] = "Неверная ссылка.";
+                $error_flag = 1; $alert[4] = "РќРµРІРµСЂРЅР°СЏ СЃСЃС‹Р»РєР°.";
             } else {
                 $yt_link = $v_yt_link;
             }
@@ -337,7 +337,7 @@ include($rpath."classes/buffer_prjs.php");
         if(!$error_flag && is_empty_html($msg))
           $msg='';
 
-		// опросы
+		// РѕРїСЂРѕСЃС‹
 		$question = substr_entity(change_q_x( antispam( trim((string) $_POST['question']) ), false, false, ''), 0, blogs::MAX_POLL_CHARS, true);
 		$answers = array();
 		$answers_exists = array();
@@ -361,13 +361,13 @@ include($rpath."classes/buffer_prjs.php");
 		}
 		if ($i > 0 && $question === '') {
 			$error_flag = 1;
-			$alert[5] = 'Введите текст вопроса';
+			$alert[5] = 'Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚ РІРѕРїСЂРѕСЃР°';
 		} else if ($i > blogs::MAX_POLL_ANSWERS) {
 			$error_flag = 1;
-			$alert[5] = 'Вы можете указать максимум ' . blogs::MAX_POLL_ANSWERS . ' отетов';
+			$alert[5] = 'Р’С‹ РјРѕР¶РµС‚Рµ СѓРєР°Р·Р°С‚СЊ РјР°РєСЃРёРјСѓРј ' . blogs::MAX_POLL_ANSWERS . ' РѕС‚РµС‚РѕРІ';
 		} else if ($i < 2 && $question !== '') {
 			$error_flag = 1;
-			$alert[5] = 'Нужно указать минимум 2 варианта ответа в голосовании';
+			$alert[5] = 'РќСѓР¶РЅРѕ СѓРєР°Р·Р°С‚СЊ РјРёРЅРёРјСѓРј 2 РІР°СЂРёР°РЅС‚Р° РѕС‚РІРµС‚Р° РІ РіРѕР»РѕСЃРѕРІР°РЅРёРё';
 		}
 		
         //$attach_delete=$_POST["delattach"];
@@ -381,7 +381,7 @@ include($rpath."classes/buffer_prjs.php");
         if (!$olduserlogin) { break; }
 
         if ($_SESSION['uid'] && $reply && $thread) {
-            // загрузка файлов
+            // Р·Р°РіСЂСѓР·РєР° С„Р°Р№Р»РѕРІ
             $files = array();
             $attach = $_FILES['attach'];
             
@@ -413,7 +413,7 @@ include($rpath."classes/buffer_prjs.php");
                         
                         if ( $nTotalSize > blogs::MAX_FILE_SIZE ) {
                         	$error_flag = 1;
-                        	$alert[3]   = 'Максимальный объем прикрепленных файлов: ' . (blogs::MAX_FILE_SIZE / (1024*1024));
+                        	$alert[3]   = 'РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ РѕР±СЉРµРј РїСЂРёРєСЂРµРїР»РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ: ' . (blogs::MAX_FILE_SIZE / (1024*1024));
                         	break;
                         }
                     }
@@ -424,7 +424,7 @@ include($rpath."classes/buffer_prjs.php");
             
             if ( $filecount > blogs::MAX_FILES) {
                 $error_flag = 1;
-                $alert[3] = "Максимальное кол-во файлов для загрузки: " . blogs::MAX_FILES;
+                $alert[3] = "РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»-РІРѕ С„Р°Р№Р»РѕРІ РґР»СЏ Р·Р°РіСЂСѓР·РєРё: " . blogs::MAX_FILES;
             }
 
             require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/attachedfiles.php");
@@ -444,7 +444,7 @@ include($rpath."classes/buffer_prjs.php");
 
 			
             if ($msg==='' && $question==='' && empty($alert[5]) && !($filecount || $attachedfiles_info['count']) && $yt_link==='') {
-                $error_flag = 1; $alert[1] = "Ошибка. Сообщение не должно быть пустым!";
+                $error_flag = 1; $alert[1] = "РћС€РёР±РєР°. РЎРѕРѕР±С‰РµРЅРёРµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј!";
             }
             elseif (!$error && !$error_flag && ($msg!=='' || $attach['name'] || $attach_have || $attach_delete || $question || $yt_link || $attachedfiles_info['count'])){
                 $blogs = new blogs();
@@ -465,7 +465,7 @@ include($rpath."classes/buffer_prjs.php");
                 $attachedfiles->clear();
                 
                 //$nStopWordsCnt = $stop_words->calculate( $msg, $msg_name, $question, $answers, $answers_exists );
-                //$blogs->insertIntoModeration( $reply, $nStopWordsCnt, (!$categ ? 1 : 0) ); // больше не модерируем
+                //$blogs->insertIntoModeration( $reply, $nStopWordsCnt, (!$categ ? 1 : 0) ); // Р±РѕР»СЊС€Рµ РЅРµ РјРѕРґРµСЂРёСЂСѓРµРј
 
                 if (is_array($err) && !isNulArray($err)) {
                     $error_flag = 1;
@@ -586,7 +586,7 @@ if($PDA) {
 
 $footer = $rpath."footer.html";
 
-if (!$gr_name) $gr_name = "Ошибка";
+if (!$gr_name) $gr_name = "РћС€РёР±РєР°";
 
 if($blog->poll !== null && $blog->title == "") {
     $sQuestion  = /*($blog->moderator_status === '0' && $blog->payed != 't') ? $stop_words->replace($blog->poll_question, 'plain', false) :*/ $blog->poll_question;
@@ -594,12 +594,12 @@ if($blog->poll !== null && $blog->title == "") {
 } else {
     $html_title = $blog->title == "" ? substr($sMessage, 0, 30) . (strlen($sMessage)>30?"...":"") : $sTitle;
     
-    if($html_title == "") $html_title = 'Блоги';
+    if($html_title == "") $html_title = 'Р‘Р»РѕРіРё';
 } 
 
-$page_title = strip_tags($html_title) . ' - фриланс, удаленная работа на FL.ru';
-$page_keyw = strtolower($gr_name).", удаленная работа, фри-ланс, дизайнер, программист, менеджер, иллюстратор, верстальщик, оптимизатор, копирайтер";
-$page_descr = LenghtFormatEx(htmlspecialchars(strip_tags($sMessage), ENT_QUOTES, 'cp1251'),250,'',0);//$gr_name.". Работодатель.Удаленная работа. Поиск работы. Предложение работы. Портфолио фрилансеров. Разработка сайтов, Программирование, Переводы, Тексты, Дизайн, Арт, Реклама, Маркетинг, Прочее. Free-lance.ru";
+$page_title = strip_tags($html_title) . ' - С„СЂРёР»Р°РЅСЃ, СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° РЅР° FL.ru';
+$page_keyw = strtolower($gr_name).", СѓРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°, С„СЂРё-Р»Р°РЅСЃ, РґРёР·Р°Р№РЅРµСЂ, РїСЂРѕРіСЂР°РјРјРёСЃС‚, РјРµРЅРµРґР¶РµСЂ, РёР»Р»СЋСЃС‚СЂР°С‚РѕСЂ, РІРµСЂСЃС‚Р°Р»СЊС‰РёРє, РѕРїС‚РёРјРёР·Р°С‚РѕСЂ, РєРѕРїРёСЂР°Р№С‚РµСЂ";
+$page_descr = LenghtFormatEx(htmlspecialchars(strip_tags($sMessage), ENT_QUOTES, 'cp1251'),250,'',0);//$gr_name.". Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ.РЈРґР°Р»РµРЅРЅР°СЏ СЂР°Р±РѕС‚Р°. РџРѕРёСЃРє СЂР°Р±РѕС‚С‹. РџСЂРµРґР»РѕР¶РµРЅРёРµ СЂР°Р±РѕС‚С‹. РџРѕСЂС‚С„РѕР»РёРѕ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ. Р Р°Р·СЂР°Р±РѕС‚РєР° СЃР°Р№С‚РѕРІ, РџСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ, РџРµСЂРµРІРѕРґС‹, РўРµРєСЃС‚С‹, Р”РёР·Р°Р№РЅ, РђСЂС‚, Р РµРєР»Р°РјР°, РњР°СЂРєРµС‚РёРЅРі, РџСЂРѕС‡РµРµ. Free-lance.ru";
 
 $page_title    = deleteHiddenURLFacebook($page_title);
 $page_keyw     = deleteHiddenURLFacebook($page_keyw);
@@ -607,14 +607,14 @@ $page_descr    = deleteHiddenURLFacebook($page_descr);
 $blog->title   = deleteHiddenURLFacebook($blog->title);
 $sTitle        = deleteHiddenURLFacebook($sTitle);
 stat_collector::setStamp(); // stamp
-// Добавляем Open Graph Tags для FaceBook
+// Р”РѕР±Р°РІР»СЏРµРј Open Graph Tags РґР»СЏ FaceBook
 if($blog){
     global $additional_header;
     if(empty($additional_header)) $additional_header = '';
     
     $additional_header .= '
         <meta property="og:type" content="blog"/>
-        <meta property="og:title" content="'.($blog->title ? $sTitle : 'Блоги на FL.ru').'"/>
+        <meta property="og:title" content="'.($blog->title ? $sTitle : 'Р‘Р»РѕРіРё РЅР° FL.ru').'"/>
         <meta property="og:url" content="'.urlencode(HTTP_PREFIX.'www.free-lance.ru'.getFriendlyURL("blog", $blog->id)).'"/>
         <meta property="og:site_name" content="Free-lance.ru"/>
         <meta property="og:image" content="'.HTTP_PREFIX.'www.free-lance.ru/images/free-lance_logo.jpg"/>

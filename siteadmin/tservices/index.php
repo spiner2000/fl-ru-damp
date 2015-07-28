@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Ñòàòèñòèêà ÒÓ
+ * Ð¡Ñ‚Ð°Ñ‚Ð¸ÑÑ‚Ð¸ÐºÐ° Ð¢Ð£
  * 
  */
 define('IS_SITE_ADMIN', 1);
@@ -21,7 +21,7 @@ $template = 'template3.php';
 
 $data = array();
 
-$mode = __paramInit('string', 'mode', null, ''); // ðàçäåë
+$mode = __paramInit('string', 'mode', null, ''); // Ñ€Ð°Ð·Ð´ÐµÐ»
 
 if ( !in_array($mode, array('orders')) ) {
     header ("Location: /404.php"); 

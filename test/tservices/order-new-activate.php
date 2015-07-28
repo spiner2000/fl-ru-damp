@@ -42,8 +42,8 @@ $results = array();
 
 $code = TServiceOrderModel::model()->newOrderActivation(array(
     //'user_id' => 33,
-    //'uname' => 'Вася',
-    //'usurname' => 'Пупкин',
+    //'uname' => 'Р’Р°СЃСЏ',
+    //'usurname' => 'РџСѓРїРєРёРЅ',
     //'email' => 'vasya-'.uniqid().'@test.lo',
     'email' => 'ddezinger@yandex.ru',
     'tu_id' => rand(100,1000)
@@ -70,8 +70,8 @@ $results['GetInfo'] = (int)$ok;
 if($ok)
 {
     $sum = -777;
-    $scomment = 'Это описание перевода для системы';
-    $ucomment = 'Это описание перевода для "истории" в аккаунте юзера';
+    $scomment = 'Р­С‚Рѕ РѕРїРёСЃР°РЅРёРµ РїРµСЂРµРІРѕРґР° РґР»СЏ СЃРёСЃС‚РµРјС‹';
+    $ucomment = 'Р­С‚Рѕ РѕРїРёСЃР°РЅРёРµ РїРµСЂРµРІРѕРґР° РґР»СЏ "РёСЃС‚РѕСЂРёРё" РІ Р°РєРєР°СѓРЅС‚Рµ СЋР·РµСЂР°';
     $trs_sum = $sum;
     $op_date = date('c');//, strtotime($_POST['date']));
             

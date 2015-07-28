@@ -4,10 +4,10 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/xajax/drafts.common.php");
 
 /**
-* Получить и заполнить форму данными из черновика
+* РџРѕР»СѓС‡РёС‚СЊ Рё Р·Р°РїРѕР»РЅРёС‚СЊ С„РѕСЂРјСѓ РґР°РЅРЅС‹РјРё РёР· С‡РµСЂРЅРѕРІРёРєР°
 *
-* @param    int   $draft_id    ID черновика
-* @param    int   $type        Тип черновика
+* @param    int   $draft_id    ID С‡РµСЂРЅРѕРІРёРєР°
+* @param    int   $type        РўРёРї С‡РµСЂРЅРѕРІРёРєР°
 */
 function FillDraftForm($draft_id, $type) {
     $objResponse = new xajaxResponse();
@@ -19,7 +19,7 @@ function FillDraftForm($draft_id, $type) {
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/blogs.php");
         switch($type) {
             case 1:
-                // Проекты
+                // РџСЂРѕРµРєС‚С‹
                 /*$draft = drafts::getDraft($draft_id, $uid, 1);
                 if($draft) {
                     $objResponse->assign("draft_id", "value", $draft['id']);
@@ -49,7 +49,7 @@ function FillDraftForm($draft_id, $type) {
                             $objResponse->script('$("fcountry").set("value", '.intval($draft['country']).');');
                             require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/city.php");
                             $cities = city::GetCities(intval($draft['country']));
-                            $out_text = "<select id=\"fcity\" name=\"city\" class=\"apf-select\"><option value=\"0\">Не выбрано</option>";
+                            $out_text = "<select id=\"fcity\" name=\"city\" class=\"apf-select\"><option value=\"0\">РќРµ РІС‹Р±СЂР°РЅРѕ</option>";
                         	if($cities) foreach ($cities as $cityid => $city)
                                 $out_text .= "<option value=".$cityid.">".$city."</option>";
                             $out_text .= "</select>";
@@ -77,7 +77,7 @@ function FillDraftForm($draft_id, $type) {
                             for ($i=0; $i<sizeof($categories_specs); $i++) {
                                 $out .= '<option value="'.$categories_specs[$i]['id'].'"'.($categories_specs[$i]['id']==$s_cat ? 'selected' : '').'>'.$categories_specs[$i]['profname'].'</option>';
                             }
-                            $out .= '<option value="" '.(!$s_cat ?' selected':'').'>Другое</option>';
+                            $out .= '<option value="" '.(!$s_cat ?' selected':'').'>Р”СЂСѓРіРѕРµ</option>';
                             $out .= '</select>&nbsp;&nbsp;';
                             $out .= '</div>';
                         }
@@ -90,7 +90,7 @@ function FillDraftForm($draft_id, $type) {
                 }*/
                 break;
             case 2:
-                // Личка
+                // Р›РёС‡РєР°
                 $draft = drafts::getDraft($draft_id, $uid, 2);
                 if($draft) {
                     $objResponse->assign("draft_id", "value", $draft['id']);
@@ -98,7 +98,7 @@ function FillDraftForm($draft_id, $type) {
                 }
                 break;
             case 3:
-                // Блоги
+                // Р‘Р»РѕРіРё
                 $draft = drafts::getDraft($draft_id, $uid, 3);
                 if($draft) {
                     $objResponse->assign("draft_id", "value", $draft['id']);
@@ -169,12 +169,12 @@ function FillDraftForm($draft_id, $type) {
                             $objResponse->script('$("poll-'.$i.'").set("class", "poll-line");');
                             $objResponse->script('$("poll-'.$i.'").set("valign", "top");');
                             $out = '';
-                            $out .= '<td>Ответ #<span class="poll-num">'.($i+1).'</span></td>';
+                            $out .= '<td>РћС‚РІРµС‚ #<span class="poll-num">'.($i+1).'</span></td>';
                             $out .= '<td>';
 						    $out .= '<table cellpadding="0" cellspacing="0" border="0">';
 						    $out .= '<tr>';
 							$out .= '<td><input maxlength="'.blogs::MAX_POLL_ANSWER_CHARS.'" class="poll-answer" type="text" value="'.addslashes($answer).'" name="answers[]" tabindex="20'.$i.'"></td>';
-							$out .= '<td class="poll-btn"><a class="poll-del" href="javascript: return false" onclick="poll.del(\'Blogs\', '.$i++.'); return false;"><img src="/images/delpoll.png" width="15" height="15" border="0" alt="Удалить ответ" title="Удалить ответ"></a></td>';
+							$out .= '<td class="poll-btn"><a class="poll-del" href="javascript: return false" onclick="poll.del(\'Blogs\', '.$i++.'); return false;"><img src="/images/delpoll.png" width="15" height="15" border="0" alt="РЈРґР°Р»РёС‚СЊ РѕС‚РІРµС‚" title="РЈРґР°Р»РёС‚СЊ РѕС‚РІРµС‚"></a></td>';
 							$out .= '<td class="poll-btn"><span class="poll-add">&nbsp;</span></td>';
     						$out .= '</tr>';
 						    $out .= '</table>';
@@ -194,7 +194,7 @@ function FillDraftForm($draft_id, $type) {
                 }
                 break;
             case 4:
-                // Сообщества
+                // РЎРѕРѕР±С‰РµСЃС‚РІР°
                 $draft = drafts::getDraft($draft_id, $uid, 4);
                 if($draft) {
                     $objResponse->assign("draft_id", "value", $draft['id']);
@@ -265,9 +265,9 @@ function FillDraftForm($draft_id, $type) {
 }
 
 /**
-* Сохранить черновик сообщества
+* РЎРѕС…СЂР°РЅРёС‚СЊ С‡РµСЂРЅРѕРІРёРє СЃРѕРѕР±С‰РµСЃС‚РІР°
 *
-* @param    array   $frm    Информация о посте в сообществе
+* @param    array   $frm    РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїРѕСЃС‚Рµ РІ СЃРѕРѕР±С‰РµСЃС‚РІРµ
 */
 function SaveDraftCommune($frm) {
     session_start();
@@ -278,7 +278,7 @@ function SaveDraftCommune($frm) {
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/drafts.php");
         $frm['msgtext'] = $frm['msgtext_source'];
         $draft = drafts::SaveCommune($frm);
-        $aRes['html'] = iconv('CP1251', 'UTF-8', "Сообщение сохранено в ".preg_replace("/^.* /","",preg_replace("/:\d{2}$/","",$draft['date'])));
+        $aRes['html'] = iconv('CP1251', 'UTF-8', "РЎРѕРѕР±С‰РµРЅРёРµ СЃРѕС…СЂР°РЅРµРЅРѕ РІ ".preg_replace("/^.* /","",preg_replace("/:\d{2}$/","",$draft['date'])));
         $aRes['id'] = $draft['id'];
         $aRes['success'] = true;
     }
@@ -289,7 +289,7 @@ function SaveDraftCommune($frm) {
 }
 
 /**
-* Проверяет наличие ранее сохраненных черновиков для сообществ
+* РџСЂРѕРІРµСЂСЏРµС‚ РЅР°Р»РёС‡РёРµ СЂР°РЅРµРµ СЃРѕС…СЂР°РЅРµРЅРЅС‹С… С‡РµСЂРЅРѕРІРёРєРѕРІ РґР»СЏ СЃРѕРѕР±С‰РµСЃС‚РІ
 *
 */
 function CheckDraftsCommune() {
@@ -301,16 +301,16 @@ function CheckDraftsCommune() {
         $count = drafts::CheckCommune($uid);
         if($count) {
             $objResponse->script('$("draft_div_info").setStyle("display","block")');
-            $objResponse->assign('draft_div_info_text', 'innerHTML', 'Не забывайте, у вас в черновиках <a href="/drafts/?p=communes">сохранено '.$count.' '.getSymbolicName($count, 'messages').' в сообществах</a>');
+            $objResponse->assign('draft_div_info_text', 'innerHTML', 'РќРµ Р·Р°Р±С‹РІР°Р№С‚Рµ, Сѓ РІР°СЃ РІ С‡РµСЂРЅРѕРІРёРєР°С… <a href="/drafts/?p=communes">СЃРѕС…СЂР°РЅРµРЅРѕ '.$count.' '.getSymbolicName($count, 'messages').' РІ СЃРѕРѕР±С‰РµСЃС‚РІР°С…</a>');
         }
     }
     return $objResponse;
 }
 
 /**
-* Сохранить черновик блога
+* РЎРѕС…СЂР°РЅРёС‚СЊ С‡РµСЂРЅРѕРІРёРє Р±Р»РѕРіР°
 *
-* @param    array   $frm    Информация о после в блоге
+* @param    array   $frm    РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїРѕСЃР»Рµ РІ Р±Р»РѕРіРµ
 */
 function SaveDraftBlog($frm) {
     session_start();
@@ -320,7 +320,7 @@ function SaveDraftBlog($frm) {
         $frm['uid'] = $uid;
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/drafts.php");
         $draft = drafts::SaveBlog($frm);
-        $aRes['html'] = iconv('CP1251', 'UTF-8', "Текст блога сохранен в  ".preg_replace("/^.* /","",preg_replace("/:\d{2}$/","",$draft['date'])));
+        $aRes['html'] = iconv('CP1251', 'UTF-8', "РўРµРєСЃС‚ Р±Р»РѕРіР° СЃРѕС…СЂР°РЅРµРЅ РІ  ".preg_replace("/^.* /","",preg_replace("/:\d{2}$/","",$draft['date'])));
         $aRes['id'] = $draft['id'];
         $aRes['success'] = true;
         $drafts = drafts::getCounts($uid);
@@ -333,7 +333,7 @@ function SaveDraftBlog($frm) {
 }
 
 /**
-* Проверяет наличие ранее сохраненных черновиков для блогов
+* РџСЂРѕРІРµСЂСЏРµС‚ РЅР°Р»РёС‡РёРµ СЂР°РЅРµРµ СЃРѕС…СЂР°РЅРµРЅРЅС‹С… С‡РµСЂРЅРѕРІРёРєРѕРІ РґР»СЏ Р±Р»РѕРіРѕРІ
 *
 */
 function CheckDraftsBlog() {
@@ -345,16 +345,16 @@ function CheckDraftsBlog() {
         $count = drafts::CheckBlogs($uid);
         if($count) {
             $objResponse->script('$("draft_div_info").setStyle("display","block")');
-            $objResponse->assign('draft_div_info_text', 'innerHTML', 'Не забывайте, у вас в черновиках <a href="/drafts/?p=blogs">'.ending($count, 'сохранен', 'сохранено', 'сохранено').' '.$count.' '.getSymbolicName($count, 'blogs').'</a>');
+            $objResponse->assign('draft_div_info_text', 'innerHTML', 'РќРµ Р·Р°Р±С‹РІР°Р№С‚Рµ, Сѓ РІР°СЃ РІ С‡РµСЂРЅРѕРІРёРєР°С… <a href="/drafts/?p=blogs">'.ending($count, 'СЃРѕС…СЂР°РЅРµРЅ', 'СЃРѕС…СЂР°РЅРµРЅРѕ', 'СЃРѕС…СЂР°РЅРµРЅРѕ').' '.$count.' '.getSymbolicName($count, 'blogs').'</a>');
         }
     }
     return $objResponse;
 }
 
 /**
-* Сохнить черновик проекта
+* РЎРѕС…РЅРёС‚СЊ С‡РµСЂРЅРѕРІРёРє РїСЂРѕРµРєС‚Р°
 *
-* @param    array   $prj    Информация о проекте
+* @param    array   $prj    РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїСЂРѕРµРєС‚Рµ
 */
 function SaveDraftProject($prj, $newTemplate = false) {
     session_start();
@@ -363,7 +363,7 @@ function SaveDraftProject($prj, $newTemplate = false) {
         $prj['uid'] = $uid;
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/drafts.php");
         $draft = $newTemplate ? drafts::SaveProjectNew($prj) : drafts::SaveProject($prj);
-        $aRes['html'] = iconv('CP1251', 'UTF-8', "Текст проекта сохранен в  ".preg_replace("/^.* /","",preg_replace("/:\d{2}$/","",$draft['date'])));
+        $aRes['html'] = iconv('CP1251', 'UTF-8', "РўРµРєСЃС‚ РїСЂРѕРµРєС‚Р° СЃРѕС…СЂР°РЅРµРЅ РІ  ".preg_replace("/^.* /","",preg_replace("/:\d{2}$/","",$draft['date'])));
         $aRes['id'] = $draft['id'];
         $aRes['success'] = true;
     }
@@ -374,9 +374,9 @@ function SaveDraftProject($prj, $newTemplate = false) {
 }
 
 /**
-* Сохнить черновик личного сообщения
+* РЎРѕС…РЅРёС‚СЊ С‡РµСЂРЅРѕРІРёРє Р»РёС‡РЅРѕРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ
 *
-* @param    array   $msg    Информация о сообщении
+* @param    array   $msg    РРЅС„РѕСЂРјР°С†РёСЏ Рѕ СЃРѕРѕР±С‰РµРЅРёРё
 */
 function SaveDraftContacts($msg) {
     session_start();
@@ -386,7 +386,7 @@ function SaveDraftContacts($msg) {
         $msg['uid'] = $uid;
         require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/drafts.php");
         $draft = drafts::SaveContacts($msg);
-        $aRes['html'] = iconv('CP1251', 'UTF-8', "Текст сообщения сохранен в  ".preg_replace("/^.* /","",preg_replace("/:\d{2}$/","",$draft['date'])));
+        $aRes['html'] = iconv('CP1251', 'UTF-8', "РўРµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ СЃРѕС…СЂР°РЅРµРЅ РІ  ".preg_replace("/^.* /","",preg_replace("/:\d{2}$/","",$draft['date'])));
         $aRes['id'] = $draft['id'];
         $aRes['success'] = true;
     }
@@ -397,9 +397,9 @@ function SaveDraftContacts($msg) {
 }
 
 /**
-* Проверяет наличие ранее сохраненных черновиков для личных сообщений
+* РџСЂРѕРІРµСЂСЏРµС‚ РЅР°Р»РёС‡РёРµ СЂР°РЅРµРµ СЃРѕС…СЂР°РЅРµРЅРЅС‹С… С‡РµСЂРЅРѕРІРёРєРѕРІ РґР»СЏ Р»РёС‡РЅС‹С… СЃРѕРѕР±С‰РµРЅРёР№
 *
-* @param    string  $to_login   Получатель сообщений
+* @param    string  $to_login   РџРѕР»СѓС‡Р°С‚РµР»СЊ СЃРѕРѕР±С‰РµРЅРёР№
 */
 function CheckDraftsContacts($to_login) {
    $objResponse = new xajaxResponse();
@@ -410,14 +410,14 @@ function CheckDraftsContacts($to_login) {
         $count = drafts::CheckContacts($to_login, $uid);
         if($count) {
             $objResponse->script('$("draft_div_info").setStyle("display","block")');
-            $objResponse->assign('draft_div_info_text', 'innerHTML', 'Не забывайте, у вас в черновиках <a href="/drafts/?p=contacts" class="blue"><strong>сохранено '.$count.' '.getSymbolicName($count, 'messages').'</strong></a> для ['.$to_login.']');
+            $objResponse->assign('draft_div_info_text', 'innerHTML', 'РќРµ Р·Р°Р±С‹РІР°Р№С‚Рµ, Сѓ РІР°СЃ РІ С‡РµСЂРЅРѕРІРёРєР°С… <a href="/drafts/?p=contacts" class="blue"><strong>СЃРѕС…СЂР°РЅРµРЅРѕ '.$count.' '.getSymbolicName($count, 'messages').'</strong></a> РґР»СЏ ['.$to_login.']');
         }
     }
     return $objResponse;
 }
 
 /**
-* Проверяет наличие ранее сохраненных черновиков для проектов
+* РџСЂРѕРІРµСЂСЏРµС‚ РЅР°Р»РёС‡РёРµ СЂР°РЅРµРµ СЃРѕС…СЂР°РЅРµРЅРЅС‹С… С‡РµСЂРЅРѕРІРёРєРѕРІ РґР»СЏ РїСЂРѕРµРєС‚РѕРІ
 *
 */
 function CheckDraftsProject($new = false) {
@@ -438,9 +438,9 @@ function CheckDraftsProject($new = false) {
                 //$objResponse->script('$("draft_div_info").setStyle("display","block")');
                 $objResponse->assign('draft_div_info_text', 'innerHTML', $html);
             } else {
-                // после введения нового шаблона добавления проектов, это можно удалить
+                // РїРѕСЃР»Рµ РІРІРµРґРµРЅРёСЏ РЅРѕРІРѕРіРѕ С€Р°Р±Р»РѕРЅР° РґРѕР±Р°РІР»РµРЅРёСЏ РїСЂРѕРµРєС‚РѕРІ, СЌС‚Рѕ РјРѕР¶РЅРѕ СѓРґР°Р»РёС‚СЊ
                 $objResponse->script('$("draft_div_info").setStyle("display","block")');
-                $objResponse->assign('draft_div_info_text', 'innerHTML', 'Не забывайте, у вас в черновиках <a href="/drafts/?p=projects">'.ending($count, 'сохранен', 'сохранено', 'сохранено').' '.$count.' '.getSymbolicName($count, 'projects').'</a>');
+                $objResponse->assign('draft_div_info_text', 'innerHTML', 'РќРµ Р·Р°Р±С‹РІР°Р№С‚Рµ, Сѓ РІР°СЃ РІ С‡РµСЂРЅРѕРІРёРєР°С… <a href="/drafts/?p=projects">'.ending($count, 'СЃРѕС…СЂР°РЅРµРЅ', 'СЃРѕС…СЂР°РЅРµРЅРѕ', 'СЃРѕС…СЂР°РЅРµРЅРѕ').' '.$count.' '.getSymbolicName($count, 'projects').'</a>');
             }
         }
     }
@@ -449,11 +449,11 @@ function CheckDraftsProject($new = false) {
 
 
 /**
-* Публикация черновика
+* РџСѓР±Р»РёРєР°С†РёСЏ С‡РµСЂРЅРѕРІРёРєР°
 *
-* @param    int     $draft_id   ID черновика
-* @param    int     $type       Тип черновика
-* @param    bool    $is_edit    false - публикация нового поста/прокта, true - публикация существующего поста/проекта
+* @param    int     $draft_id   ID С‡РµСЂРЅРѕРІРёРєР°
+* @param    int     $type       РўРёРї С‡РµСЂРЅРѕРІРёРєР°
+* @param    bool    $is_edit    false - РїСѓР±Р»РёРєР°С†РёСЏ РЅРѕРІРѕРіРѕ РїРѕСЃС‚Р°/РїСЂРѕРєС‚Р°, true - РїСѓР±Р»РёРєР°С†РёСЏ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРіРѕ РїРѕСЃС‚Р°/РїСЂРѕРµРєС‚Р°
 */
 function PostDraft($draft_id, $type, $is_edit=false) {
     $objResponse = new xajaxResponse();
@@ -466,7 +466,7 @@ function PostDraft($draft_id, $type, $is_edit=false) {
         if($draft) {
             switch($type) {
                 case 2:
-                    // Личка
+                    // Р›РёС‡РєР°
                     require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/attachedfiles.php");
                     $attachedfiles = new attachedfiles($attachedfiles_session);
 
@@ -490,7 +490,7 @@ function PostDraft($draft_id, $type, $is_edit=false) {
                     $objResponse->script('$("f_frm").submit();');
                     break;
                 case 3:
-                    // Блоги
+                    // Р‘Р»РѕРіРё
                     require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/blogs.php");
                     $objResponse->assign("f_draft_id", "value", $draft['id']);
                     $objResponse->assign("f_msg", "value", $draft['msgtext']);
@@ -543,7 +543,7 @@ function PostDraft($draft_id, $type, $is_edit=false) {
                     $objResponse->script('$("f_frm").submit();');
                     break;
                 case 4:
-                    // Сообщества
+                    // РЎРѕРѕР±С‰РµСЃС‚РІР°
                     $objResponse->assign("f_id", "value", $draft['commune_id']);
                     $objResponse->assign("f_draft_id", "value", $draft['id']);
                     $objResponse->assign("f_category_id", "value", intval($draft['category']));

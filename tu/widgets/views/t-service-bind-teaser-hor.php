@@ -11,7 +11,7 @@
                         </div>
                     <?php endif; ?>
                     <div class="b-layout__txt b-layout__txt_bold b-layout__txt_color_6db335 b-layout__txt_fontsize_15 b-layout__txt_padbot_10">
-                        <?=$title?> за <?=view_cost_format($price, true, false, false)?> на 7 дней до <?=$date?></div>
+                        <?=$title?> Р·Р° <?=view_cost_format($price, true, false, false)?> РЅР° 7 РґРЅРµР№ РґРѕ <?=$date?></div>
                     <a class="b-button b-button_flat b-button_flat_green"<?php if (isset($popup_id)): ?>
                    data-popup="<?=$popup_id?>"
                <?php endif; ?>href="<?=$href?>"><?=$btn_text?></a>

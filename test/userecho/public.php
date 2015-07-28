@@ -5,13 +5,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/messages.php");
 
 
 /* 
- * Публикуем запись на UserEcho
+ * РџСѓР±Р»РёРєСѓРµРј Р·Р°РїРёСЃСЊ РЅР° UserEcho
  */
 
 $userEcho = new UserEcho();
-$result = $userEcho->newTopicComplain('Из теста', 'Не важно');
+$result = $userEcho->newTopicComplain('РР· С‚РµСЃС‚Р°', 'РќРµ РІР°Р¶РЅРѕ');
 
-echo "<p>Результат <strong>newTopic</strong>:</p>";
+echo "<p>Р РµР·СѓР»СЊС‚Р°С‚ <strong>newTopic</strong>:</p>";
 echo '<pre>';
 print_r($result);
 echo '</pre>';

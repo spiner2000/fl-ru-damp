@@ -1,9 +1,9 @@
 <div class="b-video">
    <div class="b-video__head"> 
-      <h1 class="b-page__title b-page__title_center b-page__title_color_fff b-page__title_uppercase b-page__title_padbot_30 b-page__title_padbot_10_ipad b-page__title_size44">МИЛЛИОН ИСПОЛНИТЕЛЕЙ ДЛЯ ВАС</h1>
+      <h1 class="b-page__title b-page__title_center b-page__title_color_fff b-page__title_uppercase b-page__title_padbot_30 b-page__title_padbot_10_ipad b-page__title_size44">РњРР›Р›РРћРќ РРЎРџРћР›РќРРўР•Р›Р•Р™ Р”Р›РЇ Р’РђРЎ</h1>
       <div class="b-layout b-layout__txt_center b-layout_pad_10">
          <a class="choose_freelancer_button b-button b-button_land b-button_land_bg_green b-button_width_190 b-button_width_240_ipad " href="/freelancers/">
-            Каталог исполнителей
+            РљР°С‚Р°Р»РѕРі РёСЃРїРѕР»РЅРёС‚РµР»РµР№
          </a>
       </div>
    </div>
@@ -13,21 +13,21 @@
             <tr class="b-layout__tr">
                <td class="b-layout__td b-layout__td_center b-layout__td_width_null_ipad">
                   <a class="create_tu_button b-button b-button_land b-button_width_190 b-button_margbot_10_ipad b-button_land_bg_green b-button_width_full_ipad b-page__desktop" href="/tu/">
-                     Заказать услугу
+                     Р—Р°РєР°Р·Р°С‚СЊ СѓСЃР»СѓРіСѓ
                   </a>
                </td>
                <td class="b-layout__td b-layout__td_center b-layout__td_padlr_10_ipad">
                   <a class="create_tu_button b-button b-button_land b-button_width_190 b-button_margbot_10_ipad b-button_land_bg_green b-button_width_full_ipad b-page__ipad b-page__iphone" href="/tu/">
-                     Заказать услугу
+                     Р—Р°РєР°Р·Р°С‚СЊ СѓСЃР»СѓРіСѓ
                   </a>
                   <a class="create_project_button b-button b-button_land b-button_width_190 b-button_margbot_10_ipad b-button_land_bg_green b-button_width_full_ipad" href="/public/?step=1&kind=1">
-                     Опубликовать проект
+                     РћРїСѓР±Р»РёРєРѕРІР°С‚СЊ РїСЂРѕРµРєС‚
                   </a>
                   <a class="create_vacancy_button b-button b-button_land b-button_width_190 b-button_margbot_10_ipad b-button_land_bg_green b-button_width_full_ipad b-page__iphone" href="/public/?step=1&kind=4">
-                     Разместить вакансию
+                     Р Р°Р·РјРµСЃС‚РёС‚СЊ РІР°РєР°РЅСЃРёСЋ
                   </a>
                   <a class="create_contest_button b-button b-button_land b-button_width_190 b-button_land_bg_green b-button_width_full_ipad b-page__iphone" href="/public/?step=1&kind=7">
-                     Устроить конкурс
+                     РЈСЃС‚СЂРѕРёС‚СЊ РєРѕРЅРєСѓСЂСЃ
                   </a>
                </td>
                <td class="b-layout__td b-layout__td_center b-layout__td_width_null_ipad b-layout__td_padright_10 b-layout__td_padleft_10 b-layout__td_pad_null_iphone">
@@ -35,15 +35,15 @@
                </td>
                <td class="b-layout__td b-layout__td_center b-layout__td_padlr_10_ipad b-layout__td_width_null_iphone b-layout__td_pad_null_iphone">
                   <a class="create_vacancy_button b-button b-button_land b-button_width_190 b-button_margbot_10_ipad b-button_land_bg_green b-button_width_full_ipad b-page__desktop b-page__ipad" href="/public/?step=1&kind=4">
-                     Разместить вакансию
+                     Р Р°Р·РјРµСЃС‚РёС‚СЊ РІР°РєР°РЅСЃРёСЋ
                   </a>
                   <a class="create_contest_button b-button b-button_land b-button_width_190 b-button_land_bg_green b-button_width_full_ipad b-page__ipad" href="/public/?step=1&kind=7">
-                     Устроить конкурс
+                     РЈСЃС‚СЂРѕРёС‚СЊ РєРѕРЅРєСѓСЂСЃ
                   </a>
                </td>
                <td class="b-layout__td b-layout__td_center b-layout__td_width_null_ipad">
                   <a class="create_contest_button b-button b-button_land b-button_width_190 b-button_land_bg_green b-button_width_full_ipad b-page__desktop" href="/public/?step=1&kind=7">
-                     Устроить конкурс
+                     РЈСЃС‚СЂРѕРёС‚СЊ РєРѕРЅРєСѓСЂСЃ
                   </a>
                </td>
             </tr>

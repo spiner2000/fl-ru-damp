@@ -11,7 +11,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/classes/messages_tservices.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/classes/tservices/tservices_sms.php';
 
 /**
- * Директория шаблонов писем
+ * Р”РёСЂРµРєС‚РѕСЂРёСЏ С€Р°Р±Р»РѕРЅРѕРІ РїРёСЃРµРј
  */
 define('TSERVICES_TPL_MAIL_PATH', $_SERVER['DOCUMENT_ROOT'] . '/templates/mail/tu/');
 define('TSERVICES_TPL_BASE_LAYOUT', 'layout.tpl.php');
@@ -22,7 +22,7 @@ define('TSERVICES_BINDS_TPL_BASE_LAYOUT', $_SERVER['DOCUMENT_ROOT'] . '/template
 
 /**
  * Class tservices_smail
- * Класс для работы с отправкой писем для ТУ
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РѕС‚РїСЂР°РІРєРѕР№ РїРёСЃРµРј РґР»СЏ РўРЈ
  */
 class tservices_smail extends smail
 {
@@ -49,10 +49,10 @@ class tservices_smail extends smail
     
 
     /**
-     * Скрываем вызов некоторых методов чтобы при их вызове проверить 
-     * в каком окружении запускается рассылка и если на локале то игнорим ее
+     * РЎРєСЂС‹РІР°РµРј РІС‹Р·РѕРІ РЅРµРєРѕС‚РѕСЂС‹С… РјРµС‚РѕРґРѕРІ С‡С‚РѕР±С‹ РїСЂРё РёС… РІС‹Р·РѕРІРµ РїСЂРѕРІРµСЂРёС‚СЊ 
+     * РІ РєР°РєРѕРј РѕРєСЂСѓР¶РµРЅРёРё Р·Р°РїСѓСЃРєР°РµС‚СЃСЏ СЂР°СЃСЃС‹Р»РєР° Рё РµСЃР»Рё РЅР° Р»РѕРєР°Р»Рµ С‚Рѕ РёРіРЅРѕСЂРёРј РµРµ
      * 
-     * @todo: Если мешает достаточно закоментить проверку на лакальность ;)
+     * @todo: Р•СЃР»Рё РјРµС€Р°РµС‚ РґРѕСЃС‚Р°С‚РѕС‡РЅРѕ Р·Р°РєРѕРјРµРЅС‚РёС‚СЊ РїСЂРѕРІРµСЂРєСѓ РЅР° Р»Р°РєР°Р»СЊРЅРѕСЃС‚СЊ ;)
      * 
      * @param string $method
      * @param type $arguments
@@ -74,7 +74,7 @@ class tservices_smail extends smail
     
 
     /**
-     * Инициализация или получение аттрибутов класса
+     * РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РёР»Рё РїРѕР»СѓС‡РµРЅРёРµ Р°С‚С‚СЂРёР±СѓС‚РѕРІ РєР»Р°СЃСЃР°
      * 
      * @param array $attributes
      * @return type
@@ -99,9 +99,9 @@ class tservices_smail extends smail
         if(empty($this->order)) return FALSE;
         $prefix = ($is_emp)?'employer':'freelancer';
         
-        //Отправляем ЛС
+        //РћС‚РїСЂР°РІР»СЏРµРј Р›РЎ
         messages_tservices::sendOrderStatus($this->order[$prefix]['login'], $message);
-        //Отправляем СМС
+        //РћС‚РїСЂР°РІР»СЏРµРј РЎРњРЎ
         tservices_sms::model($this->order[$prefix]['uid'])->sendOrderStatus(($status)?$status:$this->order['status'],$this->order['id']);
         
         return TRUE;
@@ -111,7 +111,7 @@ class tservices_smail extends smail
 
 
     /**
-     * Отправляем письма в зависимости от статуса заказа
+     * РћС‚РїСЂР°РІР»СЏРµРј РїРёСЃСЊРјР° РІ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ СЃС‚Р°С‚СѓСЃР° Р·Р°РєР°Р·Р°
      * 
      * @param type $status
      * @return boolean
@@ -155,8 +155,8 @@ class tservices_smail extends smail
     
     
     /**
-     * Уведомление заказчика
-     * о готовности работы
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ Р·Р°РєР°Р·С‡РёРєР°
+     * Рѕ РіРѕС‚РѕРІРЅРѕСЃС‚Рё СЂР°Р±РѕС‚С‹
      * 
      * @return boolean
      */
@@ -172,8 +172,8 @@ class tservices_smail extends smail
 
 
     /**
-     * Отправить исполнителю уведомления 
-     * о необходимости доработать заказ
+     * РћС‚РїСЂР°РІРёС‚СЊ РёСЃРїРѕР»РЅРёС‚РµР»СЋ СѓРІРµРґРѕРјР»РµРЅРёСЏ 
+     * Рѕ РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РґРѕСЂР°Р±РѕС‚Р°С‚СЊ Р·Р°РєР°Р·
      * 
      */
     public function fixOrder()
@@ -189,7 +189,7 @@ class tservices_smail extends smail
 
 
     /**
-     * Отправляем работодателю письмо об отказе со стороны исполнителя
+     * РћС‚РїСЂР°РІР»СЏРµРј СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЋ РїРёСЃСЊРјРѕ РѕР± РѕС‚РєР°Р·Рµ СЃРѕ СЃС‚РѕСЂРѕРЅС‹ РёСЃРїРѕР»РЅРёС‚РµР»СЏ
      * 
      * @return boolean
      */
@@ -209,14 +209,14 @@ class tservices_smail extends smail
         $this->message = nl2br($message);
         $ret = $this->send('text/html');
         
-        //Доп.события
+        //Р”РѕРї.СЃРѕР±С‹С‚РёСЏ
         $this->sendEvent($message, TRUE);
         
         return $ret;       
     }
 
     /**
-     * Отправляем фрилансеру письмо об отмене заказа заказчиком
+     * РћС‚РїСЂР°РІР»СЏРµРј С„СЂРёР»Р°РЅСЃРµСЂСѓ РїРёСЃСЊРјРѕ РѕР± РѕС‚РјРµРЅРµ Р·Р°РєР°Р·Р° Р·Р°РєР°Р·С‡РёРєРѕРј
      * 
      * @return boolean
      */
@@ -236,7 +236,7 @@ class tservices_smail extends smail
         $this->message = nl2br($message);
         $ret = $this->send('text/html');
         
-        //Обработка доп.событий
+        //РћР±СЂР°Р±РѕС‚РєР° РґРѕРї.СЃРѕР±С‹С‚РёР№
         $this->sendEvent($message, FALSE);
         
         return $ret;
@@ -255,9 +255,9 @@ class tservices_smail extends smail
         {
             case TServiceOrderModel::STATUS_ACCEPT:
                 $result = $this->sendFromTemplate('close_order');
-                //Кто закрыл заказ?
+                //РљС‚Рѕ Р·Р°РєСЂС‹Р» Р·Р°РєР°Р·?
                 $status = $this->is_emp?TServiceOrderModel::STATUS_EMPCLOSE:TServiceOrderModel::STATUS_FRLCLOSE;
-                //Доп.события
+                //Р”РѕРї.СЃРѕР±С‹С‚РёСЏ
                 $this->sendEvent($result['message'], !$this->is_emp, $status);
                 $ret = $result['ret'];
                 break;
@@ -347,9 +347,9 @@ class tservices_smail extends smail
     {
         $is_reserve = tservices_helper::isOrderReserve($this->order['pay_type']);
         
-        //Отправляем фрилансеру
-        //@todo: пока только при резерве суммы а при обычном заказе нечего не отправляем
-        //@todo: доработать по аналогии с заказчиком ниже при использовании обеих форм!
+        //РћС‚РїСЂР°РІР»СЏРµРј С„СЂРёР»Р°РЅСЃРµСЂСѓ
+        //@todo: РїРѕРєР° С‚РѕР»СЊРєРѕ РїСЂРё СЂРµР·РµСЂРІРµ СЃСѓРјРјС‹ Р° РїСЂРё РѕР±С‹С‡РЅРѕРј Р·Р°РєР°Р·Рµ РЅРµС‡РµРіРѕ РЅРµ РѕС‚РїСЂР°РІР»СЏРµРј
+        //@todo: РґРѕСЂР°Р±РѕС‚Р°С‚СЊ РїРѕ Р°РЅР°Р»РѕРіРёРё СЃ Р·Р°РєР°Р·С‡РёРєРѕРј РЅРёР¶Рµ РїСЂРё РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРё РѕР±РµРёС… С„РѕСЂРј!
         $ret_f = true; 
         if($is_reserve) 
         {
@@ -385,7 +385,7 @@ class tservices_smail extends smail
         */
         
         
-        //Отправляем заказчику
+        //РћС‚РїСЂР°РІР»СЏРµРј Р·Р°РєР°Р·С‡РёРєСѓ
         $this->recipient = $this->_formatFullname($this->order['employer'],true);
         
         $template = ($is_reserve)?'accept_order_reserve_emp.tpl.php':'accept_order_emp.tpl.php';
@@ -403,7 +403,7 @@ class tservices_smail extends smail
         $this->message = nl2br($message);
         $ret_e = $this->send('text/html');
         
-        //Доп.события
+        //Р”РѕРї.СЃРѕР±С‹С‚РёСЏ
         $this->sendEvent($message, TRUE, $status);
         
         return ($ret_f && $ret_e);
@@ -412,8 +412,8 @@ class tservices_smail extends smail
     
 
     /**
-     * Форматтер имени юзера
-     * @todo Не лучшее место для этого?
+     * Р¤РѕСЂРјР°С‚С‚РµСЂ РёРјРµРЅРё СЋР·РµСЂР°
+     * @todo РќРµ Р»СѓС‡С€РµРµ РјРµСЃС‚Рѕ РґР»СЏ СЌС‚РѕРіРѕ?
      * 
      * @param type $user
      * @param type $with_email
@@ -439,7 +439,7 @@ class tservices_smail extends smail
 
 
     /**
-     * Отправляем письма уведомления о заказе на базе ТУ заказчику и исполнителю.
+     * РћС‚РїСЂР°РІР»СЏРµРј РїРёСЃСЊРјР° СѓРІРµРґРѕРјР»РµРЅРёСЏ Рѕ Р·Р°РєР°Р·Рµ РЅР° Р±Р°Р·Рµ РўРЈ Р·Р°РєР°Р·С‡РёРєСѓ Рё РёСЃРїРѕР»РЅРёС‚РµР»СЋ.
      * 
      * @param array $order
      * @return boolean
@@ -456,7 +456,7 @@ class tservices_smail extends smail
         $freelancer->GetUserByUID(@$order['frl_id']);
         if(!$freelancer->uid) return FALSE;
         
-        //Отправляем заказчику
+        //РћС‚РїСЂР°РІР»СЏРµРј Р·Р°РєР°Р·С‡РёРєСѓ
         $this->recipient = $this->_formatFullname(&$employer,true);
         $template = ($order['pay_type'] == 1)?'new_order_reserve_emp.tpl.php':'new_order_emp.tpl.php';
         $this->message = Template::render(
@@ -471,7 +471,7 @@ class tservices_smail extends smail
 
         $ret_e = $this->send('text/html');
         
-        //Отправляем фрилансеру
+        //РћС‚РїСЂР°РІР»СЏРµРј С„СЂРёР»Р°РЅСЃРµСЂСѓ
         $this->recipient = $this->_formatFullname(&$freelancer,true);
         $template = ($order['pay_type'] == 1)?'new_order_reserve_frl.tpl.php':'new_order_frl.tpl.php';
         $message = Template::render(
@@ -486,9 +486,9 @@ class tservices_smail extends smail
         $this->message = nl2br($message);
         $ret_f = $this->send('text/html');
         
-        //Сообщение в ЛС
+        //РЎРѕРѕР±С‰РµРЅРёРµ РІ Р›РЎ
         messages_tservices::sendOrderStatus($freelancer->login,$message);
-        //Сообщение СМС
+        //РЎРѕРѕР±С‰РµРЅРёРµ РЎРњРЎ
         $status = ($order['pay_type'] == 1)?tservices_sms::STATUS_NEW_RESERVE:TServiceOrderModel::STATUS_NEW;
         tservices_sms::model($freelancer->uid)->sendOrderStatus($status, $order['id']);
         
@@ -499,7 +499,7 @@ class tservices_smail extends smail
     
     
     /**
-     * Письбо уведомление фрилансеру и заказчику
+     * РџРёСЃСЊР±Рѕ СѓРІРµРґРѕРјР»РµРЅРёРµ С„СЂРёР»Р°РЅСЃРµСЂСѓ Рё Р·Р°РєР°Р·С‡РёРєСѓ
      * 
      * @param type $new_order
      * @param type $old_order
@@ -509,7 +509,7 @@ class tservices_smail extends smail
     {
         if(empty($new_order) || empty($old_order)) return false;
         
-        //Параметры изменения которых отслеживаем
+        //РџР°СЂР°РјРµС‚СЂС‹ РёР·РјРµРЅРµРЅРёСЏ РєРѕС‚РѕСЂС‹С… РѕС‚СЃР»РµР¶РёРІР°РµРј
         $params = array(
             'order_price',
             'order_days',
@@ -526,13 +526,13 @@ class tservices_smail extends smail
         
         $this->order = $new_order;
         $this->is_emp = true;
-        //Письмо фрилансеру
+        //РџРёСЃСЊРјРѕ С„СЂРёР»Р°РЅСЃРµСЂСѓ
         $res_frl = $this->sendFromTemplate('change2_order');
         $this->is_emp = false;
-        //Письмо заказчику
+        //РџРёСЃСЊРјРѕ Р·Р°РєР°Р·С‡РёРєСѓ
         $res_emp = $this->sendFromTemplate('change2_order');
         
-        //Отправляем СМС фрилансеру
+        //РћС‚РїСЂР°РІР»СЏРµРј РЎРњРЎ С„СЂРёР»Р°РЅСЃРµСЂСѓ
         tservices_sms::model($this->order['freelancer']['uid'])->sendOrderStatus(tservices_sms::STATUS_CHANGE_ORDER, $this->order['id']);
         
         return ($res_frl['ret'] && $res_emp['ret']);
@@ -543,8 +543,8 @@ class tservices_smail extends smail
 
 
     /**
-     * Не использовать!
-     * Отправляем письмо уведомление исполнителю об изменении заказе на базе ТУ.
+     * РќРµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ!
+     * РћС‚РїСЂР°РІР»СЏРµРј РїРёСЃСЊРјРѕ СѓРІРµРґРѕРјР»РµРЅРёРµ РёСЃРїРѕР»РЅРёС‚РµР»СЋ РѕР± РёР·РјРµРЅРµРЅРёРё Р·Р°РєР°Р·Рµ РЅР° Р±Р°Р·Рµ РўРЈ.
      * 
      * @param array $order
      * @return boolean
@@ -553,7 +553,7 @@ class tservices_smail extends smail
     {
         if(empty($order)) return FALSE;
         
-        //@todo: Нет необходимости получать пользователей в заказе все есть!
+        //@todo: РќРµС‚ РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РїРѕР»СѓС‡Р°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РІ Р·Р°РєР°Р·Рµ РІСЃРµ РµСЃС‚СЊ!
         $employer = new employer();
         $employer->GetUserByUID(@$order['emp_id']);
         if(!$employer->uid) return FALSE;
@@ -580,8 +580,8 @@ class tservices_smail extends smail
     
     
     /**
-     * Рассылка уведомлений о возможности отавить отзыв после закрытия заказа
-     * за 24 и 72 часа соответственное.
+     * Р Р°СЃСЃС‹Р»РєР° СѓРІРµРґРѕРјР»РµРЅРёР№ Рѕ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РѕС‚Р°РІРёС‚СЊ РѕС‚Р·С‹РІ РїРѕСЃР»Рµ Р·Р°РєСЂС‹С‚РёСЏ Р·Р°РєР°Р·Р°
+     * Р·Р° 24 Рё 72 С‡Р°СЃР° СЃРѕРѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕРµ.
      * 
      * @return int
      */
@@ -601,9 +601,9 @@ class tservices_smail extends smail
         
         $count = 0;
         $subjects = array(
-            24 => "Вы не оставили отзыв о сотрудничестве по заказу",
-            //72 => "Вы все еще не оставили отзыв о сотрудничестве по заказу"
-            144 => "Вы все еще не оставили отзыв о сотрудничестве по заказу"
+            24 => "Р’С‹ РЅРµ РѕСЃС‚Р°РІРёР»Рё РѕС‚Р·С‹РІ Рѕ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРµ РїРѕ Р·Р°РєР°Р·Сѓ",
+            //72 => "Р’С‹ РІСЃРµ РµС‰Рµ РЅРµ РѕСЃС‚Р°РІРёР»Рё РѕС‚Р·С‹РІ Рѕ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРµ РїРѕ Р·Р°РєР°Р·Сѓ"
+            144 => "Р’С‹ РІСЃРµ РµС‰Рµ РЅРµ РѕСЃС‚Р°РІРёР»Рё РѕС‚Р·С‹РІ Рѕ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІРµ РїРѕ Р·Р°РєР°Р·Сѓ"
         );
         
         $model = TServiceOrderModel::model();
@@ -631,7 +631,7 @@ class tservices_smail extends smail
                     );
                         
                     
-                    //нет отзыва у фрилансера или от запрещен
+                    //РЅРµС‚ РѕС‚Р·С‹РІР° Сѓ С„СЂРёР»Р°РЅСЃРµСЂР° РёР»Рё РѕС‚ Р·Р°РїСЂРµС‰РµРЅ
                     if(!$el['frl_feedback_id'] && @$el['allow_fb_frl'] == 't')
                     {
                         $freelancer = array(
@@ -652,7 +652,7 @@ class tservices_smail extends smail
                         $count++;
                     }
                
-                    //нет отзыва у заказчика или он запрещен
+                    //РЅРµС‚ РѕС‚Р·С‹РІР° Сѓ Р·Р°РєР°Р·С‡РёРєР° РёР»Рё РѕРЅ Р·Р°РїСЂРµС‰РµРЅ
                     if(!$el['emp_feedback_id'] && @$el['allow_fb_emp'] == 't')
                     {
                         $employer = array(
@@ -687,8 +687,8 @@ class tservices_smail extends smail
 
 
     /**
-     * Рассылка уведомлений фрилансерам
-     * не активных по заказу ТУ 24 и 72 часа соответственно.
+     * Р Р°СЃСЃС‹Р»РєР° СѓРІРµРґРѕРјР»РµРЅРёР№ С„СЂРёР»Р°РЅСЃРµСЂР°Рј
+     * РЅРµ Р°РєС‚РёРІРЅС‹С… РїРѕ Р·Р°РєР°Р·Сѓ РўРЈ 24 Рё 72 С‡Р°СЃР° СЃРѕРѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕ.
      * 
      * @return int
      */
@@ -708,8 +708,8 @@ class tservices_smail extends smail
         
         $count = 0; 
         $subjects = array(
-            24 => "У вас не подтвержден заказ",
-            72 => "У вас все еще не подтвержден заказ"
+            24 => "РЈ РІР°СЃ РЅРµ РїРѕРґС‚РІРµСЂР¶РґРµРЅ Р·Р°РєР°Р·",
+            72 => "РЈ РІР°СЃ РІСЃРµ РµС‰Рµ РЅРµ РїРѕРґС‚РІРµСЂР¶РґРµРЅ Р·Р°РєР°Р·"
         );
         
         $model = TServiceOrderModel::model();
@@ -774,8 +774,8 @@ class tservices_smail extends smail
     
     
     /**
-     * Уведомление фрилансеру после того, 
-     * как услуга опустилась на 4 место и ниже в списке закреплений ТУ
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ С„СЂРёР»Р°РЅСЃРµСЂСѓ РїРѕСЃР»Рµ С‚РѕРіРѕ, 
+     * РєР°Рє СѓСЃР»СѓРіР° РѕРїСѓСЃС‚РёР»Р°СЃСЊ РЅР° 4 РјРµСЃС‚Рѕ Рё РЅРёР¶Рµ РІ СЃРїРёСЃРєРµ Р·Р°РєСЂРµРїР»РµРЅРёР№ РўРЈ
      * 
      * @return type
      */
@@ -788,7 +788,7 @@ class tservices_smail extends smail
         
         $tservices_categories = new tservices_categories();
             
-        //Базовый шаблон письма
+        //Р‘Р°Р·РѕРІС‹Р№ С€Р°Р±Р»РѕРЅ РїРёСЃСЊРјР°
         $layout = Template::render(
                 TSERVICES_BINDS_TPL_BASE_LAYOUT, 
                 array(
@@ -813,23 +813,23 @@ class tservices_smail extends smail
                 
                 switch ($el['kind']) {
                     case tservices_binds::KIND_LANDING:
-                        $kind_txt = 'на главной странице сайта';
+                        $kind_txt = 'РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ СЃР°Р№С‚Р°';
                         break;
                     
                     case tservices_binds::KIND_ROOT:
-                        $kind_txt = 'в общем разделе каталога услуг';
+                        $kind_txt = 'РІ РѕР±С‰РµРј СЂР°Р·РґРµР»Рµ РєР°С‚Р°Р»РѕРіР° СѓСЃР»СѓРі';
                         $link = '/tu';
                         break;
                     
                     case tservices_binds::KIND_GROUP:
                         $category = $tservices_categories->getCategoryById($el['prof_id']);
-                        $kind_txt = sprintf("в разделе %s каталога услуг", @$category['title']);
+                        $kind_txt = sprintf("РІ СЂР°Р·РґРµР»Рµ %s РєР°С‚Р°Р»РѕРіР° СѓСЃР»СѓРі", @$category['title']);
                         $link = sprintf("/tu/%s", @$category['link']);
                         break;
                     
                     case tservices_binds::KIND_SPEC:
                         $category = $tservices_categories->getCategoryById($el['prof_id']);
-                        $kind_txt = sprintf("в подразделе %s каталога услуг", @$category['title']);
+                        $kind_txt = sprintf("РІ РїРѕРґСЂР°Р·РґРµР»Рµ %s РєР°С‚Р°Р»РѕРіР° СѓСЃР»СѓРі", @$category['title']);
                         $link = sprintf("/tu/%s", @$category['link']);
                         break;
                 }
@@ -837,7 +837,7 @@ class tservices_smail extends smail
                 $link_prolong = $link . $link_prolong;
                 $link_up = $link . $link_up;
                 
-                //Шаблон уведомления
+                //РЁР°Р±Р»РѕРЅ СѓРІРµРґРѕРјР»РµРЅРёСЏ
                 $content = Template::render(
                     TSERVICES_BINDS_TPL_MAIL_PATH . "remind_up.tpl.php", 
                     array(
@@ -876,8 +876,8 @@ class tservices_smail extends smail
     
     
     /**
-     * Уведомление фрилансеру за 1 день до окончания 
-     * размещения закрепления ТУ
+     * РЈРІРµРґРѕРјР»РµРЅРёРµ С„СЂРёР»Р°РЅСЃРµСЂСѓ Р·Р° 1 РґРµРЅСЊ РґРѕ РѕРєРѕРЅС‡Р°РЅРёСЏ 
+     * СЂР°Р·РјРµС‰РµРЅРёСЏ Р·Р°РєСЂРµРїР»РµРЅРёСЏ РўРЈ
      */
     public function remind24hEndBinds() 
     {
@@ -886,7 +886,7 @@ class tservices_smail extends smail
         
         $tservices_categories = new tservices_categories();
             
-        //Базовый шаблон письма
+        //Р‘Р°Р·РѕРІС‹Р№ С€Р°Р±Р»РѕРЅ РїРёСЃСЊРјР°
         $layout = Template::render(
                 TSERVICES_BINDS_TPL_BASE_LAYOUT, 
                 array(
@@ -910,28 +910,28 @@ class tservices_smail extends smail
                 
                 switch ($el['kind']) {
                     case tservices_binds::KIND_LANDING:
-                        $kind_txt = 'на главной странице сайта';
+                        $kind_txt = 'РЅР° РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†Рµ СЃР°Р№С‚Р°';
                         break;
                     
                     case tservices_binds::KIND_ROOT:
-                        $kind_txt = 'в общем разделе каталога услуг';
+                        $kind_txt = 'РІ РѕР±С‰РµРј СЂР°Р·РґРµР»Рµ РєР°С‚Р°Р»РѕРіР° СѓСЃР»СѓРі';
                         $link = '/tu' . $link;
                         break;
                     
                     case tservices_binds::KIND_GROUP:
                         $category = $tservices_categories->getCategoryById($el['prof_id']);
-                        $kind_txt = sprintf("в разделе %s каталога услуг", @$category['title']);
+                        $kind_txt = sprintf("РІ СЂР°Р·РґРµР»Рµ %s РєР°С‚Р°Р»РѕРіР° СѓСЃР»СѓРі", @$category['title']);
                         $link = sprintf("/tu/%s%s", @$category['link'], $link);
                         break;
                     
                     case tservices_binds::KIND_SPEC:
                         $category = $tservices_categories->getCategoryById($el['prof_id']);
-                        $kind_txt = sprintf("в подразделе %s каталога услуг", @$category['title']);
+                        $kind_txt = sprintf("РІ РїРѕРґСЂР°Р·РґРµР»Рµ %s РєР°С‚Р°Р»РѕРіР° СѓСЃР»СѓРі", @$category['title']);
                         $link = sprintf("/tu/%s%s", @$category['link'], $link);
                         break;
                 }
                 
-                //Шаблон уведомления
+                //РЁР°Р±Р»РѕРЅ СѓРІРµРґРѕРјР»РµРЅРёСЏ
                 $content = Template::render(
                     TSERVICES_BINDS_TPL_MAIL_PATH . "remind_prolong.tpl.php", 
                     array(

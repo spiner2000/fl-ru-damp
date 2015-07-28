@@ -37,8 +37,8 @@ unset($_SESSION['redirect_from_finance']);
 $reqvs = sbr_meta::getUserReqvs($uid);
 
 $is_finance_deleted = (isset($reqvs['validate_status']) && $reqvs['validate_status'] == sbr_meta::VALIDATE_STATUS_DELETED); 
-//Если финансы помечены как удаленные пользователем 
-//то выходим и игнорируем всю логику ниже
+//Р•СЃР»Рё С„РёРЅР°РЅСЃС‹ РїРѕРјРµС‡РµРЅС‹ РєР°Рє СѓРґР°Р»РµРЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј 
+//С‚Рѕ РІС‹С…РѕРґРёРј Рё РёРіРЅРѕСЂРёСЂСѓРµРј РІСЃСЋ Р»РѕРіРёРєСѓ РЅРёР¶Рµ
 if ($is_finance_deleted) {
     return;
 }
@@ -74,13 +74,13 @@ if($reqvs['is_safety_mob'] == 't' && $_SESSION['is_finance_access'] == false) {
     $access = true;
 }
 
-//@todo: $access - только визульно скрывает финансы а POST всегда могу послать! 
+//@todo: $access - С‚РѕР»СЊРєРѕ РІРёР·СѓР»СЊРЅРѕ СЃРєСЂС‹РІР°РµС‚ С„РёРЅР°РЅСЃС‹ Р° POST РІСЃРµРіРґР° РјРѕРіСѓ РїРѕСЃР»Р°С‚СЊ! 
 
 
 //------------------------------------------------------------------------------
 
 
-//Можно ли юзеру редактировать финансы?
+//РњРѕР¶РЅРѕ Р»Рё СЋР·РµСЂСѓ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ С„РёРЅР°РЅСЃС‹?
 $block_finance_edit = ($is_adm && !$is_owner)? false : !sbr_meta::isStatusAllowEditFinance($reqvs['validate_status']);
 
 
@@ -89,7 +89,7 @@ $block_finance_edit = ($is_adm && !$is_owner)? false : !sbr_meta::isStatusAllowE
 
 $is_finance_allow_delete = !$is_finance_deleted && $access && $is_owner && $block_finance_edit;
 
-//Обрабатываем событие по удалению финансов
+//РћР±СЂР°Р±Р°С‚С‹РІР°РµРј СЃРѕР±С‹С‚РёРµ РїРѕ СѓРґР°Р»РµРЅРёСЋ С„РёРЅР°РЅСЃРѕРІ
 if (__paramInit('int', NULL, 'finance_delete') == 1 && $is_finance_allow_delete) {
     
     $is_finance_deleted = sbr_meta::deleteFinance($uid);
@@ -114,7 +114,7 @@ if ($rez_type) {
 
 //------------------------------------------------------------------------------
 
-//Если в номере паспорта есть символы
+//Р•СЃР»Рё РІ РЅРѕРјРµСЂРµ РїР°СЃРїРѕСЂС‚Р° РµСЃС‚СЊ СЃРёРјРІРѕР»С‹
 //$is_symbols_idcard_ser = !empty($reqvs[$form_type]['idcard_ser']) && !is_numeric($reqvs[$form_type]['idcard_ser']);
 
 
@@ -133,7 +133,7 @@ if ($action == 'updfin')
         $mob_phone = $reqvs[$form_type]['mob_phone'];
         $reqvs[$form_type] = $_POST['ft'.$form_type];
         
-        //Если в номере паспорта есть символы
+        //Р•СЃР»Рё РІ РЅРѕРјРµСЂРµ РїР°СЃРїРѕСЂС‚Р° РµСЃС‚СЊ СЃРёРјРІРѕР»С‹
         //$is_symbols_idcard_ser = !empty($reqvs[$form_type]['idcard_ser']) && !is_numeric($reqvs[$form_type]['idcard_ser']);
         
         if ($mob_phone) {
@@ -147,10 +147,10 @@ if ($action == 'updfin')
         
         if (!$is_adm) {
             
-            //@todo: Пока убрал эту проверку согласно https://beta.free-lance.ru/mantis/view.php?id=29351
+            //@todo: РџРѕРєР° СѓР±СЂР°Р» СЌС‚Сѓ РїСЂРѕРІРµСЂРєСѓ СЃРѕРіР»Р°СЃРЅРѕ https://beta.free-lance.ru/mantis/view.php?id=29351
             //
-            //Если есть хоть один резерв то переводим статус реквизитов
-            //в "Ожидающие проверки" иначе в "Неактивные данные"
+            //Р•СЃР»Рё РµСЃС‚СЊ С…РѕС‚СЊ РѕРґРёРЅ СЂРµР·РµСЂРІ С‚Рѕ РїРµСЂРµРІРѕРґРёРј СЃС‚Р°С‚СѓСЃ СЂРµРєРІРёР·РёС‚РѕРІ
+            //РІ "РћР¶РёРґР°СЋС‰РёРµ РїСЂРѕРІРµСЂРєРё" РёРЅР°С‡Рµ РІ "РќРµР°РєС‚РёРІРЅС‹Рµ РґР°РЅРЅС‹Рµ"
             /*
             require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/reserves/ReservesModelFactory.php');
             $reserveInstance = ReservesModelFactory::getInstance(ReservesModelFactory::TYPE_TSERVICE_ORDER);
@@ -158,7 +158,7 @@ if ($action == 'updfin')
             $reqvs[$form_type]['validate_status'] = ($hasReserve)?1:0;
             */
             
-            //после успешного сохранения отправлям на модерацию
+            //РїРѕСЃР»Рµ СѓСЃРїРµС€РЅРѕРіРѕ СЃРѕС…СЂР°РЅРµРЅРёСЏ РѕС‚РїСЂР°РІР»СЏРј РЅР° РјРѕРґРµСЂР°С†РёСЋ
             $reqvs[$form_type]['validate_status'] = 1;
             
             unset($_SESSION['sms_accept_code']);
@@ -183,18 +183,18 @@ if ($action == 'updfin')
         $error_file = array();
         
         if ($form_type == sbr::FT_PHYS && !is_emp($u->role)) {
-            // сканы документов
+            // СЃРєР°РЅС‹ РґРѕРєСѓРјРµРЅС‚РѕРІ
             $attachedFiles = new attachedfiles($_POST['attachedfiles_session']);
             
             $attachedFiles_files = $attachedFiles->getFiles(array(1,4));
-            $err = $account->addAttach2($attachedFiles_files); // сохраняем файлы
+            $err = $account->addAttach2($attachedFiles_files); // СЃРѕС…СЂР°РЅСЏРµРј С„Р°Р№Р»С‹
             $filesExists = count($attachedFiles->getFiles()) > 0;
             $attachedFiles->clearBySession();
             
             if ($err) {
                 $error_file['err_attach'] = $err;
             } elseif (!$filesExists) {
-                $error_file['err_attach'] = "Необходимо загрузить скан одной или нескольких страниц паспорта.";
+                $error_file['err_attach'] = "РќРµРѕР±С…РѕРґРёРјРѕ Р·Р°РіСЂСѓР·РёС‚СЊ СЃРєР°РЅ РѕРґРЅРѕР№ РёР»Рё РЅРµСЃРєРѕР»СЊРєРёС… СЃС‚СЂР°РЅРёС† РїР°СЃРїРѕСЂС‚Р°.";
             }
         }
 
@@ -219,7 +219,7 @@ if ($action == 'updfin')
             
             if (isset($err['phone']) && $err['phone'] === true) {
                 if (count($err) == 1) {
-                    //отправляем смс
+                    //РѕС‚РїСЂР°РІР»СЏРµРј СЃРјСЃ
                     require_once ($_SERVER['DOCUMENT_ROOT'] . '/classes/sms_gate_a1.php');
                     $sms_gate = new sms_gate_a1($reqvs[$form_type]['phone']);
                     if(!$sms_gate->isNextSend()) {
@@ -240,7 +240,7 @@ if ($action == 'updfin')
         }
         elseif(!$is_adm /*&& $hasReserve*/)
         {
-            //Если есть сделки то отправляем обновленные данные на проверку модератору в потоки
+            //Р•СЃР»Рё РµСЃС‚СЊ СЃРґРµР»РєРё С‚Рѕ РѕС‚РїСЂР°РІР»СЏРµРј РѕР±РЅРѕРІР»РµРЅРЅС‹Рµ РґР°РЅРЅС‹Рµ РЅР° РїСЂРѕРІРµСЂРєСѓ РјРѕРґРµСЂР°С‚РѕСЂСѓ РІ РїРѕС‚РѕРєРё
             user_content::sendToModeration($uid, user_content::MODER_SBR_REQV);
         }
     
@@ -253,7 +253,7 @@ if ($action == 'updfin')
         
         $_SESSION['users.setup.fin_success'] = 1;
         
-        //@todo: неиспользуется отправка письма об изменений финансов админу
+        //@todo: РЅРµРёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РѕС‚РїСЂР°РІРєР° РїРёСЃСЊРјР° РѕР± РёР·РјРµРЅРµРЅРёР№ С„РёРЅР°РЅСЃРѕРІ Р°РґРјРёРЅСѓ
         /*
         if(!hasPermissions('users')) {
             $smail = new smail();
@@ -282,7 +282,7 @@ $prepared = sbr_meta::prepareFinanceFiles ($attach, $login);
 $attachDoc = $prepared['attachDoc'];
 $attachOther = $prepared['attachOther'];
 $attachedFilesDoc = $prepared['attachedFilesDoc'];
-$attachedFilesOther = $prepared['attachedFilesOther'];//@todo: не используется?
+$attachedFilesOther = $prepared['attachedFilesOther'];//@todo: РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ?
 
 if (isset($_SESSION['users.setup.fin_success'])) {
     unset($_SESSION['users.setup.fin_success']);

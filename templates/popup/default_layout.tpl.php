@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Общий шаблон popup-окна
+ * РћР±С‰РёР№ С€Р°Р±Р»РѕРЅ popup-РѕРєРЅР°
  */
 
 ?>
@@ -53,7 +53,7 @@
             <div data-popup-success-screen="true" class="b-layout__success b-layout__txt_fontsize_15 b-layout__txt_color_323232 b-layout_hide">
                 <span data-popup-success-msg="true"></span>
                 <div class="b-buttons b-buttons_center b-button_margtop_15">
-                    <a data-popup-close="true" href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green">Закрыть</a>
+                    <a data-popup-close="true" href="javascript:void(0);" class="b-button b-button_flat b-button_flat_green">Р—Р°РєСЂС‹С‚СЊ</a>
                 </div>
             </div>
 
@@ -61,12 +61,12 @@
                 <a class="b-button b-button_disabled b-button_margbot_5 b-button_flat b-button_flat_green" 
                    href="javascript:void(0);" 
                    data-popup-save="true">
-                       Сохранить
+                       РЎРѕС…СЂР°РЅРёС‚СЊ
                 </a>
                 <a class="b-button b-button_margbot_5 b-button_flat b-button_flat_green" 
                    href="javascript:void(0);" 
                    data-popup-close="true">
-                       Отмена
+                       РћС‚РјРµРЅР°
                 </a>                
             </div>
             

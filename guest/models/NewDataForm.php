@@ -5,13 +5,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/Form/Validate/NoUserExists.ph
 
 /**
  * Class NewDataForm
- * Êëàññ îñíîâíîé ôîðìû ñ èíòåðôåéñîì àâòîðèçàöèè/ðåãèñòðàöèè þçåðà
+ * ÐšÐ»Ð°ÑÑ Ð¾ÑÐ½Ð¾Ð²Ð½Ð¾Ð¹ Ñ„Ð¾Ñ€Ð¼Ñ‹ Ñ Ð¸Ð½Ñ‚ÐµÑ€Ñ„ÐµÐ¹ÑÐ¾Ð¼ Ð°Ð²Ñ‚Ð¾Ñ€Ð¸Ð·Ð°Ñ†Ð¸Ð¸/Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ ÑŽÐ·ÐµÑ€Ð°
  */
 class NewDataForm extends GuestForm
 {   
     /**
-     * Îáúåêò äî÷åðíåé ôîðìû ñî ñïåöèôè÷åñêèì 
-     * èíòåðôåéñîì ñáîðà äàííûõ
+     * ÐžÐ±ÑŠÐµÐºÑ‚ Ð´Ð¾Ñ‡ÐµÑ€Ð½ÐµÐ¹ Ñ„Ð¾Ñ€Ð¼Ñ‹ ÑÐ¾ ÑÐ¿ÐµÑ†Ð¸Ñ„Ð¸Ñ‡ÐµÑÐºÐ¸Ð¼ 
+     * Ð¸Ð½Ñ‚ÐµÑ€Ñ„ÐµÐ¹ÑÐ¾Ð¼ ÑÐ±Ð¾Ñ€Ð° Ð´Ð°Ð½Ð½Ñ‹Ñ…
      */
     protected $dataForm;
 
@@ -23,7 +23,7 @@ class NewDataForm extends GuestForm
     }
 
     /**
-     * Ñïåöèôè÷åñêàÿ âüþøêà äëÿ ýòîé ôîðìû
+     * Ð¡Ð¿ÐµÑ†Ð¸Ñ„Ð¸Ñ‡ÐµÑÐºÐ°Ñ Ð²ÑŒÑŽÑˆÐºÐ° Ð´Ð»Ñ ÑÑ‚Ð¾Ð¹ Ñ„Ð¾Ñ€Ð¼Ñ‹
      */
     public function loadDefaultDecorators()
     {
@@ -36,7 +36,7 @@ class NewDataForm extends GuestForm
     }
     
     /**
-     * Èíèöèàëèçàöèÿ ôîðìû
+     * Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ Ñ„Ð¾Ñ€Ð¼Ñ‹
      */    
     public function init()
     {
@@ -45,10 +45,10 @@ class NewDataForm extends GuestForm
         $this->addElement(
            new Zend_Form_Element_Text('uname', array(
                'hide_label' => true,
-               'label' => 'Èìÿ',
+               'label' => 'Ð˜Ð¼Ñ',
                'required' => true,
                'width' => 250,
-               'placeholder' => 'Âàøå èìÿ, íå áîëåå 21 ñèìâîëà',
+               'placeholder' => 'Ð’Ð°ÑˆÐµ Ð¸Ð¼Ñ, Ð½Ðµ Ð±Ð¾Ð»ÐµÐµ 21 ÑÐ¸Ð¼Ð²Ð¾Ð»Ð°',
                'maxlength' => 21,
                'filters' => $this->filters + array('StripTags'),
                'validators' => array(
@@ -59,9 +59,9 @@ class NewDataForm extends GuestForm
         $this->addElement(
            new Zend_Form_Element_Text('usurname', array(
                'hide_label' => true,
-               'label' => 'Ôàìèëèÿ',
+               'label' => 'Ð¤Ð°Ð¼Ð¸Ð»Ð¸Ñ',
                'width' => 250,
-               'placeholder' => 'Âàøà ôàìèëèÿ, íå áîëåå 21 ñèìâîëà',
+               'placeholder' => 'Ð’Ð°ÑˆÐ° Ñ„Ð°Ð¼Ð¸Ð»Ð¸Ñ, Ð½Ðµ Ð±Ð¾Ð»ÐµÐµ 21 ÑÐ¸Ð¼Ð²Ð¾Ð»Ð°',
                'required' => true,
                'filters' => $this->filters + array('StripTags'),               
                'validators' => array(
@@ -87,9 +87,9 @@ class NewDataForm extends GuestForm
         $this->addElement(
            new Zend_Form_Element_Text('email', array(
                'hide_label' => true,
-               'label' => 'Ýëåêòðîííûé àäðåñ',
+               'label' => 'Ð­Ð»ÐµÐºÑ‚Ñ€Ð¾Ð½Ð½Ñ‹Ð¹ Ð°Ð´Ñ€ÐµÑ',
                'width' => 250,
-               'placeholder' => 'Ââåäèòå âàø e-mail',
+               'placeholder' => 'Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð²Ð°Ñˆ e-mail',
                'required' => true,
                'filters' => $this->filters,
                'validators' => $validators

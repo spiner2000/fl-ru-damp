@@ -2,33 +2,33 @@
 //// debug /////////////////////////////////////////////////////////////////////
   if($DEBUG)
     if(!hasPermissions('users') && $_SESSION['login']!='sll' || !$login) { header('Location: /404.php'); exit; }
-  // Классы закладок.
+  // РљР»Р°СЃСЃС‹ Р·Р°РєР»Р°РґРѕРє.
 
   $bmCls = getBookmarksStyles(promotion::BM_COUNT, $bm);
 
   $fromType = strtolower(__paramInit('string', 'from','from', 'all'));
   if($fromType!='cats' && $fromType!='blogs' && $fromType!='places' && $fromType!='others' && $fromType != 'search') $fromType = 'all';
 ?>
-        <h1 class="b-page__title">Статистика</h1>
+        <h1 class="b-page__title">РЎС‚Р°С‚РёСЃС‚РёРєР°</h1>
     <div id="header">
 			<div class="b-menu b-menu_line">
 					<ul class="b-menu__list">
-							<li class="b-menu__item"><a class="b-menu__link" href="?bm=<?=promotion::BM_PROGNOSES?><?=($DEBUG?"&user={$login}":'')?>">Прогнозы</a></li>
-							<li class="b-menu__item b-menu__item_last b-menu__item_active">Посетители</li>
+							<li class="b-menu__item"><a class="b-menu__link" href="?bm=<?=promotion::BM_PROGNOSES?><?=($DEBUG?"&user={$login}":'')?>">РџСЂРѕРіРЅРѕР·С‹</a></li>
+							<li class="b-menu__item b-menu__item_last b-menu__item_active">РџРѕСЃРµС‚РёС‚РµР»Рё</li>
 					</ul>
 			</div>
 		 
 			<div class="filtr-user">
-					<span>Показать:</span>
+					<span>РџРѕРєР°Р·Р°С‚СЊ:</span>
 					<ul>
-							<li <?=($fromType=='all'?'class="active"':'')?>><a href="/promotion/?bm=1&from=all<?= $login ? "&user=$login" : '' ?>">Все</a></li>
-							<li <?=($fromType=='cats'?'class="active"':'')?>><a href="/promotion/?bm=1&from=cats<?= $login ? "&user=$login" : '' ?>">Из каталога</a></li>
+							<li <?=($fromType=='all'?'class="active"':'')?>><a href="/promotion/?bm=1&from=all<?= $login ? "&user=$login" : '' ?>">Р’СЃРµ</a></li>
+							<li <?=($fromType=='cats'?'class="active"':'')?>><a href="/promotion/?bm=1&from=cats<?= $login ? "&user=$login" : '' ?>">РР· РєР°С‚Р°Р»РѕРіР°</a></li>
                             <? if (BLOGS_CLOSED == false) { ?>
-							<li <?=($fromType=='blogs'?'class="active"':'')?>><a href="/promotion/?bm=1&from=blogs<?= $login ? "&user=$login" : '' ?>">Из блогов</a></li>
+							<li <?=($fromType=='blogs'?'class="active"':'')?>><a href="/promotion/?bm=1&from=blogs<?= $login ? "&user=$login" : '' ?>">РР· Р±Р»РѕРіРѕРІ</a></li>
                             <? } ?>
-							<li <?=($fromType=='places'?'class="active"':'')?>><a href="/promotion/?bm=1&from=places<?= $login ? "&user=$login" : '' ?>">С платных мест</a></li>
-							<li <?=($fromType=='search'?'class="active"':'')?>><a href="/promotion/?bm=1&from=search<?= $login ? "&user=$login" : '' ?>">Из поиска</a></li>
-							<li <?=($fromType=='others'?'class="active"':'')?>><a href="/promotion/?bm=1&from=others<?= $login ? "&user=$login" : '' ?>">Другое</a></li>
+							<li <?=($fromType=='places'?'class="active"':'')?>><a href="/promotion/?bm=1&from=places<?= $login ? "&user=$login" : '' ?>">РЎ РїР»Р°С‚РЅС‹С… РјРµСЃС‚</a></li>
+							<li <?=($fromType=='search'?'class="active"':'')?>><a href="/promotion/?bm=1&from=search<?= $login ? "&user=$login" : '' ?>">РР· РїРѕРёСЃРєР°</a></li>
+							<li <?=($fromType=='others'?'class="active"':'')?>><a href="/promotion/?bm=1&from=others<?= $login ? "&user=$login" : '' ?>">Р”СЂСѓРіРѕРµ</a></li>
 					</ul>
 			</div>
   </div>
@@ -41,11 +41,11 @@
         ?>      
           <div style="margin:40px 0 0 0">
             <div class="tbl-users">
-               <?=t_promotion::guests($t_guests, $HOUR-1, 'Сегодня')?>
+               <?=t_promotion::guests($t_guests, $HOUR-1, 'РЎРµРіРѕРґРЅСЏ')?>
             </div>
             <br /><br /><br /><br /><br /><br /><br /><br />
             <div class="tbl-users">
-               <?=t_promotion::guests($y_guests, 23, 'Вчера')?>
+               <?=t_promotion::guests($y_guests, 23, 'Р’С‡РµСЂР°')?>
             </div>
           </div>
         <?
@@ -53,10 +53,10 @@
           else
           {
         ?>
-          <h1 class="b-layout__title">Функция доступна только пользователям PRO</h1>
-          <div class="b-layout__txt b-layout__txt_padbot_10">Чтобы узнать, кто заходил на вашу личную страницу, нужен профессиональный аккаунт.</div>
-          <div class="b-layout__txt b-layout__txt_padbot_10">Вы сможете посмотреть, откуда пришли посетители: из Каталога фрилансеров, платных мест, поиска или других разделов сайта. Это поможет оценить эффективность рекламы и платных услуг, которыми вы пользуетесь.</div>
-          <div class="b-layout__txt b-layout__txt_padbot_10"><a href="/payed/" class="b-layout__link b-layout__link_bold">Получить аккаунт</span></a> <a href="/payed/" class="b-layout__link"><span class="b-icon b-icon__pro b-icon__pro_f " title="PRO" alt="PRO"></a></div>
+          <h1 class="b-layout__title">Р¤СѓРЅРєС†РёСЏ РґРѕСЃС‚СѓРїРЅР° С‚РѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј PRO</h1>
+          <div class="b-layout__txt b-layout__txt_padbot_10">Р§С‚РѕР±С‹ СѓР·РЅР°С‚СЊ, РєС‚Рѕ Р·Р°С…РѕРґРёР» РЅР° РІР°С€Сѓ Р»РёС‡РЅСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ, РЅСѓР¶РµРЅ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Р№ Р°РєРєР°СѓРЅС‚.</div>
+          <div class="b-layout__txt b-layout__txt_padbot_10">Р’С‹ СЃРјРѕР¶РµС‚Рµ РїРѕСЃРјРѕС‚СЂРµС‚СЊ, РѕС‚РєСѓРґР° РїСЂРёС€Р»Рё РїРѕСЃРµС‚РёС‚РµР»Рё: РёР· РљР°С‚Р°Р»РѕРіР° С„СЂРёР»Р°РЅСЃРµСЂРѕРІ, РїР»Р°С‚РЅС‹С… РјРµСЃС‚, РїРѕРёСЃРєР° РёР»Рё РґСЂСѓРіРёС… СЂР°Р·РґРµР»РѕРІ СЃР°Р№С‚Р°. Р­С‚Рѕ РїРѕРјРѕР¶РµС‚ РѕС†РµРЅРёС‚СЊ СЌС„С„РµРєС‚РёРІРЅРѕСЃС‚СЊ СЂРµРєР»Р°РјС‹ Рё РїР»Р°С‚РЅС‹С… СѓСЃР»СѓРі, РєРѕС‚РѕСЂС‹РјРё РІС‹ РїРѕР»СЊР·СѓРµС‚РµСЃСЊ.</div>
+          <div class="b-layout__txt b-layout__txt_padbot_10"><a href="/payed/" class="b-layout__link b-layout__link_bold">РџРѕР»СѓС‡РёС‚СЊ Р°РєРєР°СѓРЅС‚</span></a> <a href="/payed/" class="b-layout__link"><span class="b-icon b-icon__pro b-icon__pro_f " title="PRO" alt="PRO"></a></div>
           <div class="tbl-users"><img class="b-layout__pic" src="/images/guests_bg.jpg" alt="" /></div>
         <?
           }

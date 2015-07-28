@@ -1,13 +1,13 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . "/classes/search/search_element.php";
 /**
- * Класс для поиска по пользователям
+ * РљР»Р°СЃСЃ РґР»СЏ РїРѕРёСЃРєР° РїРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј
  *
  */
 class searchElementUsers extends searchElement
 {
-    public $name = 'Люди';
-    public $totalwords = array('человек', 'человека', 'людей');
+    public $name = 'Р›СЋРґРё';
+    public $totalwords = array('С‡РµР»РѕРІРµРє', 'С‡РµР»РѕРІРµРєР°', 'Р»СЋРґРµР№');
     protected $_indexSfx = '';
     protected $_mode   = SPH_MATCH_EXTENDED2;
     protected $_sort   = SPH_SORT_EXTENDED;
@@ -64,10 +64,10 @@ class searchElementUsers extends searchElement
             	$order_by_spec_orign = "s.spec IN (".join(", ", $prof_id).") DESC,";
             }
             
-            //@todo: спорная операция так как в запрос не пойдут категории 
-            //и вся надежда только на поиск по тексту от Сфинкса
+            //@todo: СЃРїРѕСЂРЅР°СЏ РѕРїРµСЂР°С†РёСЏ С‚Р°Рє РєР°Рє РІ Р·Р°РїСЂРѕСЃ РЅРµ РїРѕР№РґСѓС‚ РєР°С‚РµРіРѕСЂРёРё 
+            //Рё РІСЃСЏ РЅР°РґРµР¶РґР° С‚РѕР»СЊРєРѕ РЅР° РїРѕРёСЃРє РїРѕ С‚РµРєСЃС‚Сѓ РѕС‚ РЎС„РёРЅРєСЃР°
             //
-            //пока убираю
+            //РїРѕРєР° СѓР±РёСЂР°СЋ
             //
             //unset($filter['prof']);
             
@@ -195,7 +195,7 @@ class searchElementUsers extends searchElement
     }
     
     /**
-     * Взять информацию по найденным результатам
+     * Р’Р·СЏС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ РїРѕ РЅР°Р№РґРµРЅРЅС‹Рј СЂРµР·СѓР»СЊС‚Р°С‚Р°Рј
      *
      * @return array
      */
@@ -269,15 +269,15 @@ class searchElementUsers extends searchElement
                 //if ($value['is_pro'] == 't') $html[$key] .= (is_emp($value['role']) ? view_pro_emp() : view_pro2($value['is_pro_test']=='t'));
                 $cls = is_emp($value['role']) ? 'class="empname11"' : 'class="frlname11"';
                 $html[$key] .= '&nbsp;<font '.$cls.'><a href="/users/' . $value['login'] . '" title="' . $value['uname'] . " " . $value['usurname'] . '" '.$cls.' >' . $uname . " " . $usurname . '</a> [<a href="/users/' . $value['login'] . '/" title="' . $value['login'] . '" '.$cls.'>' . $login . '</a>]</font>';
-                if($value['name_prof'] != 'Нет специализации' && $value['name_prof'] != '') {
-                	 $html[$key] .= '<div style="margin-top: 4px;">Специализация: ' . $value['name_prof'] . '</div>';
+                if($value['name_prof'] != 'РќРµС‚ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё' && $value['name_prof'] != '') {
+                	 $html[$key] .= '<div style="margin-top: 4px;">РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ: ' . $value['name_prof'] . '</div>';
                 }
                 if ($spec_text != '') {
-                    $html[$key] .= '<div style="margin-top: 4px;">Условия сотрудничества:<br />' . $spec_text . '</div>';
+                    $html[$key] .= '<div style="margin-top: 4px;">РЈСЃР»РѕРІРёСЏ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР°:<br />' . $spec_text . '</div>';
                 }
 
                 if($city_name) {
-                    $html[$key] .= '<div style="margin-top: 4px;">Местоположение: '.$country_name.", ".$city_name.'</div>';
+                    $html[$key] .= '<div style="margin-top: 4px;">РњРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёРµ: '.$country_name.", ".$city_name.'</div>';
                 }
 
                 if($skype != '') {
@@ -285,11 +285,11 @@ class searchElementUsers extends searchElement
                 }
 
                 if($site != '') {
-                    $html[$key] .= '<div style="margin-top: 4px;">Сайт: ' . $site . '</div>';
+                    $html[$key] .= '<div style="margin-top: 4px;">РЎР°Р№С‚: ' . $site . '</div>';
                 }
 
                 if($compname != '') {
-                    $html[$key] .= '<div style="margin-top: 4px;">Компания: ' . $compname . '</div>';
+                    $html[$key] .= '<div style="margin-top: 4px;">РљРѕРјРїР°РЅРёСЏ: ' . $compname . '</div>';
                 }
 
                 if($email != '') {
@@ -297,11 +297,11 @@ class searchElementUsers extends searchElement
                 }
 
                 if($resume != '') {
-                	$html[$key] .= '<div style="margin-top: 4px;">Резюме:<br />' . $resume . '</div>';
+                	$html[$key] .= '<div style="margin-top: 4px;">Р РµР·СЋРјРµ:<br />' . $resume . '</div>';
                 }
 
                 if($konk != '' && isset($value['blocks'][1]) && $value['blocks'][1]) {
-                	$html[$key] .= '<div style="margin-top: 4px;">Участие в конкурсах:<br />' . $konk . '</div>';
+                	$html[$key] .= '<div style="margin-top: 4px;">РЈС‡Р°СЃС‚РёРµ РІ РєРѕРЅРєСѓСЂСЃР°С…:<br />' . $konk . '</div>';
                 }
 
 

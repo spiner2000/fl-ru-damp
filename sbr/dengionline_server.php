@@ -41,7 +41,7 @@ $m = new pskb_server();
 $lc = $m->get($order_id);
 
 if ($lc->state == 'cover') { ?>
-<h1>уже покрыт</h1>
+<h1>СѓР¶Рµ РїРѕРєСЂС‹С‚</h1>
 <? exit; } ?>
 
 <form method="post" action="" id="frm">
@@ -62,10 +62,10 @@ if ($lc->state == 'cover') { ?>
 switch ($step) {    
     case 'null':
         ?>
-        <p>Здесь пользователь производит оплату в платежном терминале той пл.системы, которую выбрал.</p>
-        <p>В результате мы либо получаем статус аккредитива cover (если покрыт - пользователь оплатил счет), либо возврат пользователя к нам (в случае ошибки платежа, отказа и тд).</p>
+        <p>Р—РґРµСЃСЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РїСЂРѕРёР·РІРѕРґРёС‚ РѕРїР»Р°С‚Сѓ РІ РїР»Р°С‚РµР¶РЅРѕРј С‚РµСЂРјРёРЅР°Р»Рµ С‚РѕР№ РїР».СЃРёСЃС‚РµРјС‹, РєРѕС‚РѕСЂСѓСЋ РІС‹Р±СЂР°Р».</p>
+        <p>Р’ СЂРµР·СѓР»СЊС‚Р°С‚Рµ РјС‹ Р»РёР±Рѕ РїРѕР»СѓС‡Р°РµРј СЃС‚Р°С‚СѓСЃ Р°РєРєСЂРµРґРёС‚РёРІР° cover (РµСЃР»Рё РїРѕРєСЂС‹С‚ - РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РѕРїР»Р°С‚РёР» СЃС‡РµС‚), Р»РёР±Рѕ РІРѕР·РІСЂР°С‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Рє РЅР°Рј (РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё РїР»Р°С‚РµР¶Р°, РѕС‚РєР°Р·Р° Рё С‚Рґ).</p>
         <input type="button" value="cover" onclick="document.getElementById('step_fld').setAttribute('value', 1); document.getElementById('frm').submit();"/>
-        <input type="button" value="отказ от платежа" onclick="document.getElementById('step_fld').setAttribute('value', 2); document.getElementById('frm').submit();"/>        
+        <input type="button" value="РѕС‚РєР°Р· РѕС‚ РїР»Р°С‚РµР¶Р°" onclick="document.getElementById('step_fld').setAttribute('value', 2); document.getElementById('frm').submit();"/>        
         <?
         break;
     case 1:

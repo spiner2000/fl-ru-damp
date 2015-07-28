@@ -1,6 +1,6 @@
 <?php
 /** 
- * Подлючение файла с основными функциями системы 
+ * РџРѕРґР»СЋС‡РµРЅРёРµ С„Р°Р№Р»Р° СЃ РѕСЃРЅРѕРІРЅС‹РјРё С„СѓРЅРєС†РёСЏРјРё СЃРёСЃС‚РµРјС‹ 
  */ 
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/stdf.php"); 
 
@@ -10,18 +10,18 @@ class verify
     const VERIFY_DATE_START = 'April 10, 2013 00:00:00';
     
     /**
-     * Подписать пользователя на рассылку
+     * РџРѕРґРїРёСЃР°С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° СЂР°СЃСЃС‹Р»РєСѓ
      */
     public function addSubscribeUser($uid = null) {
         global $DB;
         if(!$uid) $uid = $_SESSION['uid'];
         $memBuff = new memBuff();
-        $memBuff->delete("verify_count"); // Очищаем кеш
+        $memBuff->delete("verify_count"); // РћС‡РёС‰Р°РµРј РєРµС€
         return $DB->insert("verify", array("uid" => $uid));
     }
     
     /**
-     * Количество подписавшихся на рассылку
+     * РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕРґРїРёСЃР°РІС€РёС…СЃСЏ РЅР° СЂР°СЃСЃС‹Р»РєСѓ
      * @global type $DB
      * @return type
      */
@@ -37,10 +37,10 @@ class verify
     }
     
     /**
-     * Подписан пользователь или нет
+     * РџРѕРґРїРёСЃР°РЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РёР»Рё РЅРµС‚
      * 
      * @global type $DB
-     * @param type $uid ИД пользователя
+     * @param type $uid РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * @return type
      */
     public function isSubscribeUser($uid = null) {

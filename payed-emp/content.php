@@ -3,7 +3,7 @@ if($uid) {
 	require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/employer.php");
 	$user = new employer();
 
-    // Изменяем авто продление PRO, если нужно
+    // РР·РјРµРЅСЏРµРј Р°РІС‚Рѕ РїСЂРѕРґР»РµРЅРёРµ PRO, РµСЃР»Рё РЅСѓР¶РЅРѕ
     if(strtolower($_GET['pro_auto_prolong'])=='on') {
         $user->setPROAutoProlong('on',get_uid());
     }
@@ -16,7 +16,7 @@ if($uid) {
 	$account = new account();
 	$ok = $account->GetInfo($_SESSION['uid'], true);
 
-    $u_is_pro_auto_prolong = $user->GetField($uid, $e, 'is_pro_auto_prolong', false); // Включено ли у юзера автоматическое продление PRO
+    $u_is_pro_auto_prolong = $user->GetField($uid, $e, 'is_pro_auto_prolong', false); // Р’РєР»СЋС‡РµРЅРѕ Р»Рё Сѓ СЋР·РµСЂР° Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРѕРµ РїСЂРѕРґР»РµРЅРёРµ PRO
 ?>
 <script type="text/javascript">
 tr = true;
@@ -32,7 +32,7 @@ var PRICE_EMP_PRO = <?= payed::PRICE_EMP_PRO; ?>;
 			}else{
 				document.getElementById('buy').disabled = false;document.getElementById('error').className = 'error';
 			}
-		document.getElementById('it').innerHTML='Всего к оплате: <span>' + v + '</span> рублей';
+		document.getElementById('it').innerHTML='Р’СЃРµРіРѕ Рє РѕРїР»Р°С‚Рµ: <span>' + v + '</span> СЂСѓР±Р»РµР№';
 	
 		return (true);
 	}
@@ -54,12 +54,12 @@ var alowLogin = function(){
                       <div class="b-layout__right b-layout__right_width_72ps b-layout__right_float_right">        
                           <div class="b-menu b-menu_crumbs">
                               <ul class="b-menu__list">
-                                  <li class="b-menu__item"><a class="b-menu__link" href="/service/">Все услуги сайта</a>&nbsp;&rarr;&nbsp;</li>
+                                  <li class="b-menu__item"><a class="b-menu__link" href="/service/">Р’СЃРµ СѓСЃР»СѓРіРё СЃР°Р№С‚Р°</a>&nbsp;&rarr;&nbsp;</li>
                               </ul>
                           </div>
-                    	<span title="Платный аккаунт" alt="Платный аккаунт" class="b-icon b-icon__bpro b-icon__bpro_e" style="position:absolute; left:0;"></span>
+                    	<span title="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" alt="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" class="b-icon b-icon__bpro b-icon__bpro_e" style="position:absolute; left:0;"></span>
                     
-						<h1 class="b-page__title">Получите прямые контакты всех исполнителей</h1>
+						<h1 class="b-page__title">РџРѕР»СѓС‡РёС‚Рµ РїСЂСЏРјС‹Рµ РєРѕРЅС‚Р°РєС‚С‹ РІСЃРµС… РёСЃРїРѕР»РЅРёС‚РµР»РµР№</h1>
 						<div class="emp-payed-left-col">
 							<div class="emp-promo">
 								<b class="b1"></b>
@@ -67,7 +67,7 @@ var alowLogin = function(){
 								<div class="emp-promo-in c" style="padding-bottom:0px;">
 									<img class="ep-left" src="../images/emp-payed-promo3.png" style="margin-bottom:35px;" alt="" />
 									<div class="ep-txt" style="padding-top:10px; padding-bottom:10px;">
-										<strong>Возможность напрямую обратиться к любому исполнителю.</strong> Вы сможете видеть контакты всех пользователей на сайте.
+										<strong>Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ РЅР°РїСЂСЏРјСѓСЋ РѕР±СЂР°С‚РёС‚СЊСЃСЏ Рє Р»СЋР±РѕРјСѓ РёСЃРїРѕР»РЅРёС‚РµР»СЋ.</strong> Р’С‹ СЃРјРѕР¶РµС‚Рµ РІРёРґРµС‚СЊ РєРѕРЅС‚Р°РєС‚С‹ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ РЅР° СЃР°Р№С‚Рµ.
 									</div>
 								</div>
 								<b class="b2"></b>
@@ -79,7 +79,7 @@ var alowLogin = function(){
 								<div class="emp-promo-in c">
 									<img src="../images/emp-payed-promo2.png" alt="" class="ep-right" />
 									<div class="ep-txt2">
-										Получите возможность <strong>указать больше информации о себе</strong> в каталоге &ndash; разместив логотип и описание компании.
+										РџРѕР»СѓС‡РёС‚Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ <strong>СѓРєР°Р·Р°С‚СЊ Р±РѕР»СЊС€Рµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃРµР±Рµ</strong> РІ РєР°С‚Р°Р»РѕРіРµ &ndash; СЂР°Р·РјРµСЃС‚РёРІ Р»РѕРіРѕС‚РёРї Рё РѕРїРёСЃР°РЅРёРµ РєРѕРјРїР°РЅРёРё.
 									</div>
 								</div>
 								<b class="b2"></b>
@@ -90,66 +90,66 @@ var alowLogin = function(){
 									<b class="b-fon__b1"></b>
 									<b class="b-fon__b2"></b>
 									<div class="b-fon__body b-fon__body_pad_20 b-layout">
-											<h4 class="b-layout__h3 b-layout__h3_padbot_20">Стоимость услуг со скидками:</h4>
+											<h4 class="b-layout__h3 b-layout__h3_padbot_20">РЎС‚РѕРёРјРѕСЃС‚СЊ СѓСЃР»СѓРі СЃРѕ СЃРєРёРґРєР°РјРё:</h4>
 											<table class="b-layout__table b-layout__table_width_full">
 													<tr class="b-layout__tr">
-														<td class="b-layout__left"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11">При публикации проектов</div></td>
-														<td class="b-layout__middle  b-layout__middle_center"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11">без PRO, руб.</div></td>
-														<td class="b-layout__right  b-layout__right_center"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11">с PRO, руб.</div></td>
+														<td class="b-layout__left"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11">РџСЂРё РїСѓР±Р»РёРєР°С†РёРё РїСЂРѕРµРєС‚РѕРІ</div></td>
+														<td class="b-layout__middle  b-layout__middle_center"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11">Р±РµР· PRO, СЂСѓР±.</div></td>
+														<td class="b-layout__right  b-layout__right_center"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11">СЃ PRO, СЂСѓР±.</div></td>
 													</tr>
 													<tr class="b-layout__tr">
-														<td class="b-layout__left"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_list-style_disc">закрепление наверху ленты</div></td>
+														<td class="b-layout__left"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_list-style_disc">Р·Р°РєСЂРµРїР»РµРЅРёРµ РЅР°РІРµСЂС…Сѓ Р»РµРЅС‚С‹</div></td>
 														<td class="b-layout__middle b-layout__middle_center"><div class="b-layout__txt b-layout__txt_padbot_5">1500</div></td>
 														<td class="b-layout__right b-layout__right_center"><div class="b-layout__txt b-layout__txt_color_fd6c30 b-layout__txt_padbot_5">750</div></td>
 													</tr>
 													<tr class="b-layout__tr">
-														<td class="b-layout__left"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_list-style_disc">загрузка логотипа</div></td>
+														<td class="b-layout__left"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_list-style_disc">Р·Р°РіСЂСѓР·РєР° Р»РѕРіРѕС‚РёРїР°</div></td>
 														<td class="b-layout__middle b-layout__middle_center"><div class="b-layout__txt b-layout__txt_padbot_5">900</div></td>
 														<td class="b-layout__right b-layout__right_center"><div class="b-layout__txt b-layout__txt_color_fd6c30 b-layout__txt_padbot_5">600</div></td>
 													</tr>
                                                                                                         <?/*
 													<tr class="b-layout__tr">
-														<td class="b-layout__left"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_list-style_disc">поднятие проекта</div></td>
+														<td class="b-layout__left"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_list-style_disc">РїРѕРґРЅСЏС‚РёРµ РїСЂРѕРµРєС‚Р°</div></td>
 														<td class="b-layout__middle b-layout__middle_center"><div class="b-layout__txt b-layout__txt_padbot_5">20</div></td>
 														<td class="b-layout__right b-layout__right_center"><div class="b-layout__txt b-layout__txt_color_fd6c30 b-layout__txt_padbot_5">10</div></td>
 													</tr>*/?>
 											</table>
-											<div class="b-layout__txt b-layout__txt_color_fd6c30 b-layout__txt_padbot_20">Экономия при публикации проекта до <span class="b-layout__txt b-layout__txt_color_fd6c30 b-layout__txt_fontsize_20">1050</span> рублей</div>
+											<div class="b-layout__txt b-layout__txt_color_fd6c30 b-layout__txt_padbot_20">Р­РєРѕРЅРѕРјРёСЏ РїСЂРё РїСѓР±Р»РёРєР°С†РёРё РїСЂРѕРµРєС‚Р° РґРѕВ <span class="b-layout__txt b-layout__txt_color_fd6c30 b-layout__txt_fontsize_20">1050</span> СЂСѓР±Р»РµР№</div>
 											<table class="b-layout__table b-layout__table_width_full">
 													<tr class="b-layout__tr">
-														<td class="b-layout__left"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11">При публикации конкурсов</div></td>
-														<td class="b-layout__middle  b-layout__middle_center"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11">без PRO, руб.</div></td>
-														<td class="b-layout__right  b-layout__right_center"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11">с PRO, руб.</div></td>
+														<td class="b-layout__left"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11">РџСЂРё РїСѓР±Р»РёРєР°С†РёРё РєРѕРЅРєСѓСЂСЃРѕРІ</div></td>
+														<td class="b-layout__middle  b-layout__middle_center"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11">Р±РµР· PRO, СЂСѓР±.</div></td>
+														<td class="b-layout__right  b-layout__right_center"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_fontsize_11">СЃ PRO, СЂСѓР±.</div></td>
 													</tr>
 													<tr class="b-layout__tr">
-														<td class="b-layout__left"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_list-style_disc">публикация конкурса</div></td>
+														<td class="b-layout__left"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_list-style_disc">РїСѓР±Р»РёРєР°С†РёСЏ РєРѕРЅРєСѓСЂСЃР°</div></td>
 														<td class="b-layout__middle b-layout__middle_center"><div class="b-layout__txt b-layout__txt_padbot_5">3300</div></td>
 														<td class="b-layout__right b-layout__right_center"><div class="b-layout__txt b-layout__txt_color_fd6c30 b-layout__txt_padbot_5">3000</div></td>
 													</tr>
 													<tr class="b-layout__tr">
-														<td class="b-layout__left"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_list-style_disc">закрепление наверху ленты</div></td>
+														<td class="b-layout__left"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_list-style_disc">Р·Р°РєСЂРµРїР»РµРЅРёРµ РЅР°РІРµСЂС…Сѓ Р»РµРЅС‚С‹</div></td>
 														<td class="b-layout__middle b-layout__middle_center"><div class="b-layout__txt b-layout__txt_padbot_5">1500</div></td>
 														<td class="b-layout__right b-layout__right_center"><div class="b-layout__txt b-layout__txt_color_fd6c30 b-layout__txt_padbot_5">750</div></td>
 													</tr>
 													<tr class="b-layout__tr">
-														<td class="b-layout__left"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_list-style_disc">загрузка логотипа</div></td>
+														<td class="b-layout__left"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_list-style_disc">Р·Р°РіСЂСѓР·РєР° Р»РѕРіРѕС‚РёРїР°</div></td>
 														<td class="b-layout__middle b-layout__middle_center"><div class="b-layout__txt b-layout__txt_padbot_5">900</div></td>
 														<td class="b-layout__right b-layout__right_center"><div class="b-layout__txt b-layout__txt_color_fd6c30 b-layout__txt_padbot_5">600</div></td>
 													</tr>
                                                                                                         <?/*
 													<tr class="b-layout__tr">
-														<td class="b-layout__left"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_list-style_disc">поднятие конкурса</div></td>
+														<td class="b-layout__left"><div class="b-layout__txt b-layout__txt_padbot_5 b-layout__txt_list-style_disc">РїРѕРґРЅСЏС‚РёРµ РєРѕРЅРєСѓСЂСЃР°</div></td>
 														<td class="b-layout__middle b-layout__middle_center"><div class="b-layout__txt b-layout__txt_padbot_5">35</div></td>
 														<td class="b-layout__right b-layout__right_center"><div class="b-layout__txt b-layout__txt_color_fd6c30 b-layout__txt_padbot_5">25</div></td>
 													</tr>*/?>
 											</table>
-											<div class="b-layout__txt b-layout__txt_color_fd6c30">Экономия при публикации конкурса до <span class="b-layout__txt b-layout__txt_color_fd6c30 b-layout__txt_fontsize_20">1350</span> рублей</div>
+											<div class="b-layout__txt b-layout__txt_color_fd6c30">Р­РєРѕРЅРѕРјРёСЏ РїСЂРё РїСѓР±Р»РёРєР°С†РёРё РєРѕРЅРєСѓСЂСЃР° РґРѕВ <span class="b-layout__txt b-layout__txt_color_fd6c30 b-layout__txt_fontsize_20">1350</span> СЂСѓР±Р»РµР№</div>
 									</div>
 									<b class="b-fon__b2"></b>
 									<b class="b-fon__b1"></b>
 							</div>
 							
-							<div class="pricepro10">И это при цене аккаунта PRO всего <?= payed::PRICE_EMP_PRO; ?> рублей в месяц</div>
+							<div class="pricepro10">Р СЌС‚Рѕ РїСЂРё С†РµРЅРµ Р°РєРєР°СѓРЅС‚Р° PRO РІСЃРµРіРѕ <?= payed::PRICE_EMP_PRO; ?> СЂСѓР±Р»РµР№ РІ РјРµСЃСЏС†</div>
 							
 							
 							
@@ -160,12 +160,12 @@ var alowLogin = function(){
                             
 						
 
-                            <p>Получите возможность просматривать контакты всех пользователей сайта, пользуйтесь скидками на дополнительные услуги, размещайте больше информации о себе и своей компании.</p>
-							<p>Работодатель с аккаунтом PRO – это активный участник на бирже фри-ланса, который размещает большой объем заказов на сайте и внимательно относится к своему имиджу.</p>
-							<p>Вдумчивый подход заказчика к работе со своим аккаунтом является залогом уверенности исполнителя в своевременной оплате своего труда и серьезной и качественной оценке результатов сотрудничества.</p>
-							<p>Заказчик с профессиональным аккаунтом вправе рассчитывать на повышенное внимание фри-лансера к работе над проектом и другие приятные бонусы. </p>
+                            <p>РџРѕР»СѓС‡РёС‚Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїСЂРѕСЃРјР°С‚СЂРёРІР°С‚СЊ РєРѕРЅС‚Р°РєС‚С‹ РІСЃРµС… РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃР°Р№С‚Р°, РїРѕР»СЊР·СѓР№С‚РµСЃСЊ СЃРєРёРґРєР°РјРё РЅР° РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СѓСЃР»СѓРіРё, СЂР°Р·РјРµС‰Р°Р№С‚Рµ Р±РѕР»СЊС€Рµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃРµР±Рµ Рё СЃРІРѕРµР№ РєРѕРјРїР°РЅРёРё.</p>
+							<p>Р Р°Р±РѕС‚РѕРґР°С‚РµР»СЊ СЃ Р°РєРєР°СѓРЅС‚РѕРј PRO вЂ“ СЌС‚Рѕ Р°РєС‚РёРІРЅС‹Р№ СѓС‡Р°СЃС‚РЅРёРє РЅР° Р±РёСЂР¶Рµ С„СЂРё-Р»Р°РЅСЃР°, РєРѕС‚РѕСЂС‹Р№ СЂР°Р·РјРµС‰Р°РµС‚ Р±РѕР»СЊС€РѕР№ РѕР±СЉРµРј Р·Р°РєР°Р·РѕРІ РЅР° СЃР°Р№С‚Рµ Рё РІРЅРёРјР°С‚РµР»СЊРЅРѕ РѕС‚РЅРѕСЃРёС‚СЃСЏ Рє СЃРІРѕРµРјСѓ РёРјРёРґР¶Сѓ.</p>
+							<p>Р’РґСѓРјС‡РёРІС‹Р№ РїРѕРґС…РѕРґ Р·Р°РєР°Р·С‡РёРєР° Рє СЂР°Р±РѕС‚Рµ СЃРѕ СЃРІРѕРёРј Р°РєРєР°СѓРЅС‚РѕРј СЏРІР»СЏРµС‚СЃСЏ Р·Р°Р»РѕРіРѕРј СѓРІРµСЂРµРЅРЅРѕСЃС‚Рё РёСЃРїРѕР»РЅРёС‚РµР»СЏ РІ СЃРІРѕРµРІСЂРµРјРµРЅРЅРѕР№ РѕРїР»Р°С‚Рµ СЃРІРѕРµРіРѕ С‚СЂСѓРґР° Рё СЃРµСЂСЊРµР·РЅРѕР№ Рё РєР°С‡РµСЃС‚РІРµРЅРЅРѕР№ РѕС†РµРЅРєРµ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ СЃРѕС‚СЂСѓРґРЅРёС‡РµСЃС‚РІР°.</p>
+							<p>Р—Р°РєР°Р·С‡РёРє СЃ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅС‹Рј Р°РєРєР°СѓРЅС‚РѕРј РІРїСЂР°РІРµ СЂР°СЃСЃС‡РёС‚С‹РІР°С‚СЊ РЅР° РїРѕРІС‹С€РµРЅРЅРѕРµ РІРЅРёРјР°РЅРёРµ С„СЂРё-Р»Р°РЅСЃРµСЂР° Рє СЂР°Р±РѕС‚Рµ РЅР°Рґ РїСЂРѕРµРєС‚РѕРј Рё РґСЂСѓРіРёРµ РїСЂРёСЏС‚РЅС‹Рµ Р±РѕРЅСѓСЃС‹. </p>
                             
-							<p><span>*Все вышесказанное не означает, что среди тех, кто не пользуется платными услугами, нет достойных работодателей. Удачной работы и приятного дня!</span></p>
+							<p><span>*Р’СЃРµ РІС‹С€РµСЃРєР°Р·Р°РЅРЅРѕРµ РЅРµ РѕР·РЅР°С‡Р°РµС‚, С‡С‚Рѕ СЃСЂРµРґРё С‚РµС…, РєС‚Рѕ РЅРµ РїРѕР»СЊР·СѓРµС‚СЃСЏ РїР»Р°С‚РЅС‹РјРё СѓСЃР»СѓРіР°РјРё, РЅРµС‚ РґРѕСЃС‚РѕР№РЅС‹С… СЂР°Р±РѕС‚РѕРґР°С‚РµР»РµР№. РЈРґР°С‡РЅРѕР№ СЂР°Р±РѕС‚С‹ Рё РїСЂРёСЏС‚РЅРѕРіРѕ РґРЅСЏ!</span></p>
 
 							<?php if($uid) { ?>
 							<div class="pay-block">
@@ -174,8 +174,8 @@ var alowLogin = function(){
 
 								<div style="overflow:hidden;">
 									<div class="b-layout__txt_float_left">
-										<span class="pay-inpt b-layout__txt_block"><label for="mnth">Количество месяцев:</label></span>
-										<span class="pay-inpt b-layout__txt_block"><label for="promo-code">Промо-код:</label></span>
+										<span class="pay-inpt b-layout__txt_block"><label for="mnth">РљРѕР»РёС‡РµСЃС‚РІРѕ РјРµСЃСЏС†РµРІ:</label></span>
+										<span class="pay-inpt b-layout__txt_block"><label for="promo-code">РџСЂРѕРјРѕ-РєРѕРґ:</label></span>
 									</div>
 									<div class="b-layout__txt_float_left">
 										<span class="pay-inpt b-layout__txt_block">&nbsp;<input type="text" size="3"  name="mnth" id="mnth" value="1" onKeyUp="return (chang(this.value));" /></span>
@@ -184,20 +184,20 @@ var alowLogin = function(){
 								</div>
 								
 								<div class="b-layout_clear_both">		
-									<div class="pay-inpt" id="it" style="margin-top:20px;">Всего к оплате: <span><?= payed::PRICE_EMP_PRO; ?></span> рублей</div>
-                                	<div id="error" class="error <? if ($error) { ?>vis<? } ?>"><?=view_error3("Недостаточно средств. В данный момент на счету ".round($account->sum,2)."&nbsp;" . ending($account->sum, 'рубль', 'рубля', 'рублей') . "<br /> <a href=\"/bill/\" class=\"blue\">Пополнить счет</a>")?><br /></div>
+									<div class="pay-inpt" id="it" style="margin-top:20px;">Р’СЃРµРіРѕ Рє РѕРїР»Р°С‚Рµ: <span><?= payed::PRICE_EMP_PRO; ?></span> СЂСѓР±Р»РµР№</div>
+                                	<div id="error" class="error <? if ($error) { ?>vis<? } ?>"><?=view_error3("РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ. Р’ РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РЅР° СЃС‡РµС‚Сѓ ".round($account->sum,2)."&nbsp;" . ending($account->sum, 'СЂСѓР±Р»СЊ', 'СЂСѓР±Р»СЏ', 'СЂСѓР±Р»РµР№') . "<br /> <a href=\"/bill/\" class=\"blue\">РџРѕРїРѕР»РЅРёС‚СЊ СЃС‡РµС‚</a>")?><br /></div>
                                 </div>
                                 
 								<div>
                                     <a class="b-button b-button_round_green" href="javascript:void(0)" name="buy" id="buy" onclick="if (!this.hasClass('b-button_round_color_disable')) {this.addClass('b-button_round_color_disable'); $('frmbuy').submit();}">
                                         <span class="b-button__b1">
                                             <span class="b-button__b2">
-                                                <span class="b-button__txt">Оплатить</span>
+                                                <span class="b-button__txt">РћРїР»Р°С‚РёС‚СЊ</span>
                                             </span>
                                         </span>
                                     </a>
                                     <div class="b-layout__txt b-layout__txt_padtop_10">
-                                       <span class="b-buttons__txt">или</span> &#160; <a class="b-buttons__link b-buttons__link_fontsize_13" href="#">добавить в список заказов</a>
+                                       <span class="b-buttons__txt">РёР»Рё</span> &#160; <a class="b-buttons__link b-buttons__link_fontsize_13" href="#">РґРѕР±Р°РІРёС‚СЊ РІ СЃРїРёСЃРѕРє Р·Р°РєР°Р·РѕРІ</a>
                                     </div>
                                 </div>
 
@@ -210,14 +210,14 @@ var alowLogin = function(){
                             <? if($user->is_pro=='t') {?>
 							<div class="pay-block">
                                 <a name="pro_autoprolong"></a>
-								<h4>Автопродление&nbsp;&nbsp;<span class="b-icon b-icon__pro b-icon__pro_e8 b-icon_top_null"></span></h4>
-								<p>Теперь вам не нужно следить за сроком действия<br />аккаунта PRO.<br />При включении данной опции с вашего счета ежемесячно будет списываться <?= payed::PRICE_EMP_PRO?> рублей (при их наличии на вашем личном счете).</p>
+								<h4>РђРІС‚РѕРїСЂРѕРґР»РµРЅРёРµ&nbsp;&nbsp;<span class="b-icon b-icon__pro b-icon__pro_e8 b-icon_top_null"></span></h4>
+								<p>РўРµРїРµСЂСЊ РІР°Рј РЅРµ РЅСѓР¶РЅРѕ СЃР»РµРґРёС‚СЊ Р·Р° СЃСЂРѕРєРѕРј РґРµР№СЃС‚РІРёСЏ<br />Р°РєРєР°СѓРЅС‚Р° PRO.<br />РџСЂРё РІРєР»СЋС‡РµРЅРёРё РґР°РЅРЅРѕР№ РѕРїС†РёРё СЃ РІР°С€РµРіРѕ СЃС‡РµС‚Р° РµР¶РµРјРµСЃСЏС‡РЅРѕ Р±СѓРґРµС‚ СЃРїРёСЃС‹РІР°С‚СЊСЃСЏ <?= payed::PRICE_EMP_PRO?> СЂСѓР±Р»РµР№ (РїСЂРё РёС… РЅР°Р»РёС‡РёРё РЅР° РІР°С€РµРј Р»РёС‡РЅРѕРј СЃС‡РµС‚Рµ).</p>
 								<div>
                                     <? if($u_is_pro_auto_prolong=='t') { ?>
                                         <a class="b-button b-button_round_green" href="javascript:void(0)" onClick="location='/payed-emp/?pro_auto_prolong=off#pro_autoprolong';">
                                             <span class="b-button__b1">
                                                 <span class="b-button__b2">
-                                                    <span class="b-button__txt">Отключить</span>
+                                                    <span class="b-button__txt">РћС‚РєР»СЋС‡РёС‚СЊ</span>
                                                 </span>
                                             </span>
                                         </a>
@@ -225,7 +225,7 @@ var alowLogin = function(){
                                         <a class="b-button b-button_round_green" href="javascript:void(0)" onClick="location='/payed-emp/?pro_auto_prolong=on#pro_autoprolong';">
                                             <span class="b-button__b1">
                                                 <span class="b-button__b2">
-                                                    <span class="b-button__txt">Включить</span>
+                                                    <span class="b-button__txt">Р’РєР»СЋС‡РёС‚СЊ</span>
                                                 </span>
                                             </span>
                                         </a>
@@ -237,13 +237,13 @@ var alowLogin = function(){
                             <?php } else { ?>
                             
         <div class="b-fon b-fon_padbot_20">
-            <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffebbf"> <span class="b-fon__attent_pink"></span>Чтобы купить аккаунт PRO, войдите или<br /><a href="/registration/" class="b-layout__link b-layout__link_color_fd6c30">зарегистрируйтесь</a> как работодатель.</div>
+            <div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_ffebbf"> <span class="b-fon__attent_pink"></span>Р§С‚РѕР±С‹ РєСѓРїРёС‚СЊ Р°РєРєР°СѓРЅС‚ PRO, РІРѕР№РґРёС‚Рµ РёР»Рё<br /><a href="/registration/" class="b-layout__link b-layout__link_color_fd6c30">Р·Р°СЂРµРіРёСЃС‚СЂРёСЂСѓР№С‚РµСЃСЊ</a> РєР°Рє СЂР°Р±РѕС‚РѕРґР°С‚РµР»СЊ.</div>
         </div>        
 		<div class="b-layout">
         <form action="/" method="post" id="auth_form">
         <table cellspacing="0" cellpadding="0" border="0" class="b-layout__table">
                 <tr class="b-layout__tr">
-                    <td class="b-layout__one b-layout__one_width_55"><label for="login_inp" class="b-layout__txt b-layout__txt_block b-layout__txt_padtop_5">Логин</label></td>
+                    <td class="b-layout__one b-layout__one_width_55"><label for="login_inp" class="b-layout__txt b-layout__txt_block b-layout__txt_padtop_5">Р›РѕРіРёРЅ</label></td>
                     <td class="b-layout__one  b-layout__one_padbot_20">
                         <div class="b-combo">
                             <div class="b-combo__input">
@@ -253,7 +253,7 @@ var alowLogin = function(){
                     </td>
                 </tr>
                 <tr class="b-layout__tr">
-                    <td class="b-layout__one b-layout__one_width_55"><label for="pass_inp" class="b-layout__txt b-layout__txt_block b-layout__txt_padtop_5">Пароль</label></td>
+                    <td class="b-layout__one b-layout__one_width_55"><label for="pass_inp" class="b-layout__txt b-layout__txt_block b-layout__txt_padtop_5">РџР°СЂРѕР»СЊ</label></td>
                     <td class="b-layout__one b-layout__one_padbot_20">
                         <div class="b-combo">
                             <div class="b-combo__input">
@@ -267,7 +267,7 @@ var alowLogin = function(){
                     <td class="b-layout__one b-layout__one_padbot_20 b-layout__one_padright_10">
                         <div class="b-check">
                             <input type="checkbox" tabindex="102" name="autologin" value="1" class="b-check__input" id="remember" />
-                            <label class="b-check__label b-check__label_fontsize_13" for="remember">Запомнить пароль</label>
+                            <label class="b-check__label b-check__label_fontsize_13" for="remember">Р—Р°РїРѕРјРЅРёС‚СЊ РїР°СЂРѕР»СЊ</label>
                         </div>
                     </td>
                 </tr>
@@ -278,12 +278,12 @@ var alowLogin = function(){
             <a tabindex="103" href="javascript:void()" onclick="alowLogin(); return false;" class="b-button b-button_valign_top b-button_rectangle_color_green">
                 <span class="b-button__b1">
                     <span class="b-button__b2">
-                        <span class="b-button__txt">Войти</span>
+                        <span class="b-button__txt">Р’РѕР№С‚Рё</span>
                     </span>
                 </span>
             </a>
             &nbsp;&nbsp;
-            <div class="b-buttons__txt"><a href="/remind/" class="b-buttons__link">восстановить пароль</a> <span class="b-buttons__txt">или</span><br /> <a href="/registration/" class="b-buttons__link b-buttons__link_color_fd6c30">зарегистрироваться</a></div>
+            <div class="b-buttons__txt"><a href="/remind/" class="b-buttons__link">РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїР°СЂРѕР»СЊ</a> <span class="b-buttons__txt">РёР»Рё</span><br /> <a href="/registration/" class="b-buttons__link b-buttons__link_color_fd6c30">Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</a></div>
         </div>
         <input type="hidden" value="login" name="action">
         <input type="hidden" value="/payed-emp/" name="redirect">										

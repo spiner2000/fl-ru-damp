@@ -1,6 +1,6 @@
 <?
 /**
- * Подключаем файл для работы с профессиями пользователя 
+ * РџРѕРґРєР»СЋС‡Р°РµРј С„Р°Р№Р» РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РїСЂРѕС„РµСЃСЃРёСЏРјРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ 
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/professions.php");
 
@@ -12,30 +12,30 @@ $portf_cost[3] = 100000;	 //fm
 
 define ('PORTF_TIME', 100);
 /**
- * Класс для работы с портфолио
+ * РљР»Р°СЃСЃ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РїРѕСЂС‚С„РѕР»РёРѕ
  *
  */
 class portfolio 
 {
   	/**
-  	 * Максимальное количество лучших работ
+  	 * РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р»СѓС‡С€РёС… СЂР°Р±РѕС‚
   	 *
   	 */
     const MAX_BEST_WORKS = 12;
     
     /**
-     * максимальные размеры для превью
+     * РјР°РєСЃРёРјР°Р»СЊРЅС‹Рµ СЂР°Р·РјРµСЂС‹ РґР»СЏ РїСЂРµРІСЊСЋ
      */
     const PREVIEW_MAX_WIDTH = 200;
     const PREVIEW_MAX_HEIGHT = 200;
     
     /**
-     * Максимальное количество времени в поле "Потрачено времени"
+     * РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РІСЂРµРјРµРЅРё РІ РїРѕР»Рµ "РџРѕС‚СЂР°С‡РµРЅРѕ РІСЂРµРјРµРЅРё"
      */ 
     const MAX_TIME_VALUE = 100;
     
     /**
-     * Размер названия файла в режиме редактирования
+     * Р Р°Р·РјРµСЂ РЅР°Р·РІР°РЅРёСЏ С„Р°Р№Р»Р° РІ СЂРµР¶РёРјРµ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
      */
     const FILE_NAME_LENGTH_EDIT = 8;
     
@@ -47,27 +47,27 @@ class portfolio
     );
     
 	/**
-	 * Добавить работу в порфолио
+	 * Р”РѕР±Р°РІРёС‚СЊ СЂР°Р±РѕС‚Сѓ РІ РїРѕСЂС„РѕР»РёРѕ
 	 *
-	 * @param integer $fid     		 ИД пользоввателя
-	 * @param string  $name    		 Название работы
-	 * @param string  $pict    		 Основное изображение
-	 * @param string  $sm_pict 		 Уменьшенное изображение
-	 * @param string  $link    		 Ссылка на работу
-	 * @param string  $descr   		 Описание работы
-	 * @param integer $prof    		 Специализация работы
-	 * @param integer $cost    		 Стоимость работы
-	 * @param integer $cost_type 	 Тип стоимости (USD, EUR, RUB, FM) (см. self::GetSpecPortf())
-	 * @param integer $time_type 	 Тип времени работы
-	 * @param integer $time_value 	 Время работы
-	 * @param integer $prev_type  	 Тип превью (0 - Графическое превью, 1 - Текстовое превью)
-	 * @param string  $file_error    Возвращает сообщение об ошибке файла
-	 * @param string  $preview_error Возвращает Превью ошибка
-	 * @param integer $new_position  Новая позиция
-	 * @param integer $in_shop       Работа в магазине  
-	 * @param integer $is_video      Есть ли видео 
-	 * @param string  $video_link    Ссылка на видео
-	 * @return string Сообщение об ошибке
+	 * @param integer $fid     		 РР” РїРѕР»СЊР·РѕРІРІР°С‚РµР»СЏ
+	 * @param string  $name    		 РќР°Р·РІР°РЅРёРµ СЂР°Р±РѕС‚С‹
+	 * @param string  $pict    		 РћСЃРЅРѕРІРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ
+	 * @param string  $sm_pict 		 РЈРјРµРЅСЊС€РµРЅРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ
+	 * @param string  $link    		 РЎСЃС‹Р»РєР° РЅР° СЂР°Р±РѕС‚Сѓ
+	 * @param string  $descr   		 РћРїРёСЃР°РЅРёРµ СЂР°Р±РѕС‚С‹
+	 * @param integer $prof    		 РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ СЂР°Р±РѕС‚С‹
+	 * @param integer $cost    		 РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹
+	 * @param integer $cost_type 	 РўРёРї СЃС‚РѕРёРјРѕСЃС‚Рё (USD, EUR, RUB, FM) (СЃРј. self::GetSpecPortf())
+	 * @param integer $time_type 	 РўРёРї РІСЂРµРјРµРЅРё СЂР°Р±РѕС‚С‹
+	 * @param integer $time_value 	 Р’СЂРµРјСЏ СЂР°Р±РѕС‚С‹
+	 * @param integer $prev_type  	 РўРёРї РїСЂРµРІСЊСЋ (0 - Р“СЂР°С„РёС‡РµСЃРєРѕРµ РїСЂРµРІСЊСЋ, 1 - РўРµРєСЃС‚РѕРІРѕРµ РїСЂРµРІСЊСЋ)
+	 * @param string  $file_error    Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ С„Р°Р№Р»Р°
+	 * @param string  $preview_error Р’РѕР·РІСЂР°С‰Р°РµС‚ РџСЂРµРІСЊСЋ РѕС€РёР±РєР°
+	 * @param integer $new_position  РќРѕРІР°СЏ РїРѕР·РёС†РёСЏ
+	 * @param integer $in_shop       Р Р°Р±РѕС‚Р° РІ РјР°РіР°Р·РёРЅРµ  
+	 * @param integer $is_video      Р•СЃС‚СЊ Р»Рё РІРёРґРµРѕ 
+	 * @param string  $video_link    РЎСЃС‹Р»РєР° РЅР° РІРёРґРµРѕ
+	 * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
     function AddPortf($fid, $name, $pict, $sm_pict, $link, $descr, $prof, $cost, $cost_type, $time_type, $time_value, $prev_type, &$file_error, &$preview_error,$new_position,$in_shop=0,$is_video='f',$video_link='')
     {
@@ -77,7 +77,7 @@ class portfolio
         $dir = get_login($fid);
 
         /**
-         * Отдельно загруженное превью.
+         * РћС‚РґРµР»СЊРЅРѕ Р·Р°РіСЂСѓР¶РµРЅРЅРѕРµ РїСЂРµРІСЊСЋ.
          */
         if ($sm_pict->size > 0 && $sm_pict->id <= 0)
         {
@@ -95,8 +95,8 @@ class portfolio
                 $mp = true;
             }
             
-            // генерируем неанимированное gif превью для ответов в проектах (только для gif файлов)
-            // файл будет такой: st_sm_f_имя файла.gif
+            // РіРµРЅРµСЂРёСЂСѓРµРј РЅРµР°РЅРёРјРёСЂРѕРІР°РЅРЅРѕРµ gif РїСЂРµРІСЊСЋ РґР»СЏ РѕС‚РІРµС‚РѕРІ РІ РїСЂРѕРµРєС‚Р°С… (С‚РѕР»СЊРєРѕ РґР»СЏ gif С„Р°Р№Р»РѕРІ)
+            // С„Р°Р№Р» Р±СѓРґРµС‚ С‚Р°РєРѕР№: st_sm_f_РёРјСЏ С„Р°Р№Р»Р°.gif
             if ($sm_pict->image_size['type'] == 1) {
                 $static_preview = 'st_' . $sm_pict->name;
                 $sm_pict->resizeImage( $sm_pict->path . $static_preview, 200, 200, 'auto', true );
@@ -105,7 +105,7 @@ class portfolio
             }
 
             //$cfile = new CFile();
-            //$cfile->Delete(0,"users/{$l_dir}/upload/",$filename_original); // удаляем оригинал превьюшки
+            //$cfile->Delete(0,"users/{$l_dir}/upload/",$filename_original); // СѓРґР°Р»СЏРµРј РѕСЂРёРіРёРЅР°Р» РїСЂРµРІСЊСЋС€РєРё
 
             $sql = "SELECT show_preview FROM portf_choise WHERE user_id=?i AND prof_id=?i";
             $res = $DB->row($sql, $fid, $prof);
@@ -135,7 +135,7 @@ class portfolio
             {
                 //print "2";exit;
                /**
-                * Делаем превью.
+                * Р”РµР»Р°РµРј РїСЂРµРІСЊСЋ.
                 */
                 $pict->proportional = 1;
                 //$pict->imgtosmall()
@@ -159,7 +159,7 @@ class portfolio
                     $sp = 't';
                     if (!$mp)
                     {
-                        $file_error .= "Невозможно уменьшить картинку.";
+                        $file_error .= "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ.";
                         $sp = 'f';
                     }
                 }
@@ -168,7 +168,7 @@ class portfolio
             $pictname = $pict->name;
         }
         
-        // для картинок: если превью загружено отдельно - делаем отдельное привью из оригинальной большой картинки        
+        // РґР»СЏ РєР°СЂС‚РёРЅРѕРє: РµСЃР»Рё РїСЂРµРІСЊСЋ Р·Р°РіСЂСѓР¶РµРЅРѕ РѕС‚РґРµР»СЊРЅРѕ - РґРµР»Р°РµРј РѕС‚РґРµР»СЊРЅРѕРµ РїСЂРёРІСЊСЋ РёР· РѕСЂРёРіРёРЅР°Р»СЊРЅРѕР№ Р±РѕР»СЊС€РѕР№ РєР°СЂС‚РёРЅРєРё        
         if ( $pictname && $filename && $pictname != substr($filename, 3, strlen($filename)) ) {
             $sm_pict = new CFile();
             $fullDir = 'users/'. substr($dir, 0 ,2) . '/' . $dir . '/upload/';
@@ -190,7 +190,7 @@ class portfolio
         $sModVal = is_pro() ? '-2' : '0';
         $sql = "INSERT INTO portfolio (name, link, pict, prev_pict, static_preview, descr, cost, cost_type, time_type, time_value, prof_id, user_id, show_preview, prev_type, norder, in_shop, is_video, video_link, moderator_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, $sModVal) RETURNING id";
         $sId = $DB->val($sql, $name, $link, $pictname, $filename, $static_preview, $descr, $cost, $cost_type, $time_type, $time_value, $prof, $fid, $sp, $prev_type, $new_position, $in_shop, $is_video, $video_link);
-        $error = ($DB->error ? 'Ошибка сохранения' : false);
+        $error = ($DB->error ? 'РћС€РёР±РєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ' : false);
         
         if ( $sId && !$error && !is_pro() ) {
             /*require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/stop_words.php' );
@@ -238,7 +238,7 @@ class portfolio
         }
         
         if ( $uid == $_SESSION['uid'] && !hasPermissions('users')) {
-            // автор, не админ, не про меняет заголовок либо текст - отправить на модерирование
+            // Р°РІС‚РѕСЂ, РЅРµ Р°РґРјРёРЅ, РЅРµ РїСЂРѕ РјРµРЅСЏРµС‚ Р·Р°РіРѕР»РѕРІРѕРє Р»РёР±Рѕ С‚РµРєСЃС‚ - РѕС‚РїСЂР°РІРёС‚СЊ РЅР° РјРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ
             $update['moderator_status'] = ( !is_pro() ? '0' : '-2' );
         }
         
@@ -256,10 +256,10 @@ class portfolio
 
             if (isset($resources['portfolio'])) {
                 $mainFile = current( uploader::sgetFiles($resources['portfolio']) );
-                if(!empty($mainFile)) { // Если что-то загрузили и не удаляли
+                if(!empty($mainFile)) { // Р•СЃР»Рё С‡С‚Рѕ-С‚Рѕ Р·Р°РіСЂСѓР·РёР»Рё Рё РЅРµ СѓРґР°Р»СЏР»Рё
                     $MFile = uploader::remoteCopy($mainFile['id'], 'file', $dir, false);
                     uploader::sclear($resources['portfolio']);
-                    // Делаем отдельное привью из оригинальной большой картинки  -- @todo ХЗ зачем но раньше так делали 
+                    // Р”РµР»Р°РµРј РѕС‚РґРµР»СЊРЅРѕРµ РїСЂРёРІСЊСЋ РёР· РѕСЂРёРіРёРЅР°Р»СЊРЅРѕР№ Р±РѕР»СЊС€РѕР№ РєР°СЂС‚РёРЅРєРё  -- @todo РҐР— Р·Р°С‡РµРј РЅРѕ СЂР°РЅСЊС€Рµ С‚Р°Рє РґРµР»Р°Р»Рё 
                     if ( in_array($MFile->getext(), $GLOBALS['graf_array']) && $MFile->getext() != 'swf' ) {
                         $MFile->resizeImage( $dir . 'tn_' . $MFile->name, self::PREVIEW_MAX_WIDTH, self::PREVIEW_MAX_HEIGHT, 'auto', true );
                     }
@@ -270,7 +270,7 @@ class portfolio
             
             if (isset($resources['pf_preview'])) {
                 $preview = current( uploader::sgetFiles($resources['pf_preview']) );
-                if(!empty($preview)) { // Если что-то загрузили и не удаляли
+                if(!empty($preview)) { // Р•СЃР»Рё С‡С‚Рѕ-С‚Рѕ Р·Р°РіСЂСѓР·РёР»Рё Рё РЅРµ СѓРґР°Р»СЏР»Рё
                     $PFile = uploader::remoteCopy($preview['id'], 'file', $dir, false, 'sm_f_');
                     uploader::sclear($resources['pf_preview']);
                     $update['prev_pict'] = $PFile->name;
@@ -280,24 +280,24 @@ class portfolio
         }
         
         
-        if($params['main_file'] == '' && !isset($MFile)) { // Удаляем файл
+        if($params['main_file'] == '' && !isset($MFile)) { // РЈРґР°Р»СЏРµРј С„Р°Р№Р»
             $update['pict'] = '';
             $is_remove_main_file = true;
         }
         
-        if($params['preview_file'] == '' && !isset($PFile)) { // Удаляем файл
+        if($params['preview_file'] == '' && !isset($PFile)) { // РЈРґР°Р»СЏРµРј С„Р°Р№Р»
             $update['prev_pict'] = '';
             $is_remove_preview_file = true;
         }
         
         if($is_remove_main_file) {
             $cf = new CFile();
-            $cf->Delete(0, $dir, $params['old_main_file']); // удаляем ранее загруженный файл
+            $cf->Delete(0, $dir, $params['old_main_file']); // СѓРґР°Р»СЏРµРј СЂР°РЅРµРµ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Р№ С„Р°Р№Р»
         }
         
         if($is_remove_preview_file) {
             $cf = new CFile();
-            $cf->Delete(0, $dir, $params['old_preview_file']); // удаляем ранее загруженный файл
+            $cf->Delete(0, $dir, $params['old_preview_file']); // СѓРґР°Р»СЏРµРј СЂР°РЅРµРµ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Р№ С„Р°Р№Р»
         }
         
         if(empty($error)) {
@@ -345,8 +345,8 @@ class portfolio
     }
     
     /**
-     * Приводим данные к тому же что и в файле index.php
-     * @see users/setup/index.php 717 строка
+     * РџСЂРёРІРѕРґРёРј РґР°РЅРЅС‹Рµ Рє С‚РѕРјСѓ Р¶Рµ С‡С‚Рѕ Рё РІ С„Р°Р№Р»Рµ index.php
+     * @see users/setup/index.php 717 СЃС‚СЂРѕРєР°
      * @param array $params
      */
     public function prepareWork($params) {
@@ -409,33 +409,33 @@ class portfolio
                 case 'video':
                     if($value != '') {
                         if(!video_validate($value)) {
-                            $error[$name] = "Поле заполнено некорректно. Введите корректную ссылку на видео.";
+                            $error[$name] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ. Р’РІРµРґРёС‚Рµ РєРѕСЂСЂРµРєС‚РЅСѓСЋ СЃСЃС‹Р»РєСѓ РЅР° РІРёРґРµРѕ.";
                         }
                     }
                     break;
                 case 'work_name':
                     if ($value == '') {
-                        $error[$name] = "Поле заполнено некорректно. Введите название.";
+                        $error[$name] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ. Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ.";
                     }
                     
                     if( strlen(trim(stripslashes($value))) > 120 ) {
-                        $error[$name] = "Поле заполнено некорректно. Название должно содержать не более 120 символов.";
+                        $error[$name] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ. РќР°Р·РІР°РЅРёРµ РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ РЅРµ Р±РѕР»РµРµ 120 СЃРёРјРІРѕР»РѕРІ.";
                     }
                     break;
                 case 'link':
                     if ($value != '' && !url_validate($value, true)) {
-                        $error[$name] = "Поле заполнено некорректно. Введите корректную ссылку.";
+                        $error[$name] = "РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ. Р’РІРµРґРёС‚Рµ РєРѕСЂСЂРµРєС‚РЅСѓСЋ СЃСЃС‹Р»РєСѓ.";
                     }
                     break;
                 case 'work_cost':
                     $cost_type = $params['work_cost_type_db_id'];
                     if ($value < 0 || $value > self::$portf_cost[$cost_type]) {
-                        $error[$name] = 'Поле заполнено некорректно. Стоимость должна быть в пределе от 0 ' . view_range_cost2(0, self::$portf_cost[$cost_type], '', '', false, $cost_type) . ($cost_type != 2 ? '.' : '');
+                        $error[$name] = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ. РЎС‚РѕРёРјРѕСЃС‚СЊ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РІ РїСЂРµРґРµР»Рµ РѕС‚ 0 ' . view_range_cost2(0, self::$portf_cost[$cost_type], '', '', false, $cost_type) . ($cost_type != 2 ? '.' : '');
                     }
                     break;
                 case 'time_cost':
                     if ($value < 0 || $value > self::MAX_TIME_VALUE) {
-                        $error[$name] = 'Поле заполнено некорректно. Временные затраты должны быть в пределе от 0 до ' . self::MAX_TIME_VALUE . '.';
+                        $error[$name] = 'РџРѕР»Рµ Р·Р°РїРѕР»РЅРµРЅРѕ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ. Р’СЂРµРјРµРЅРЅС‹Рµ Р·Р°С‚СЂР°С‚С‹ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РІ РїСЂРµРґРµР»Рµ РѕС‚ 0 РґРѕ ' . self::MAX_TIME_VALUE . '.';
                     }
                     break;
             }
@@ -445,10 +445,10 @@ class portfolio
     }
 	
     /**
-     * генерирует статическое превью, то есть gif будет без анимации
-     * имя файла сохраняется в поле static_preview
-     * @param array $date данные о работе в портфолио (необходимы ключи id, prev_pict)
-     * @param integer $login логин пользователя которому принадлежит работа
+     * РіРµРЅРµСЂРёСЂСѓРµС‚ СЃС‚Р°С‚РёС‡РµСЃРєРѕРµ РїСЂРµРІСЊСЋ, С‚Рѕ РµСЃС‚СЊ gif Р±СѓРґРµС‚ Р±РµР· Р°РЅРёРјР°С†РёРё
+     * РёРјСЏ С„Р°Р№Р»Р° СЃРѕС…СЂР°РЅСЏРµС‚СЃСЏ РІ РїРѕР»Рµ static_preview
+     * @param array $date РґР°РЅРЅС‹Рµ Рѕ СЂР°Р±РѕС‚Рµ РІ РїРѕСЂС‚С„РѕР»РёРѕ (РЅРµРѕР±С…РѕРґРёРјС‹ РєР»СЋС‡Рё id, prev_pict)
+     * @param integer $login Р»РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РєРѕС‚РѕСЂРѕРјСѓ РїСЂРёРЅР°РґР»РµР¶РёС‚ СЂР°Р±РѕС‚Р°
      */
     function GenerateStaticPreview (&$work, $login) {
         global $DB;
@@ -491,12 +491,12 @@ class portfolio
     }
     
 	/**
-	 * Взять портфолио определенного пользователя (+ если необходимо по определенной специализации)
+	 * Р’Р·СЏС‚СЊ РїРѕСЂС‚С„РѕР»РёРѕ РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (+ РµСЃР»Рё РЅРµРѕР±С…РѕРґРёРјРѕ РїРѕ РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё)
 	 *
-	 * @param integer $uid  ИД пользователя
-	 * @param integer $prof Специализация если нужно
-	 * @param boolean $all  Всю информацию или частично
-	 * @return array Данные выборки
+	 * @param integer $uid  РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param integer $prof РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ РµСЃР»Рё РЅСѓР¶РЅРѕ
+	 * @param boolean $all  Р’СЃСЋ РёРЅС„РѕСЂРјР°С†РёСЋ РёР»Рё С‡Р°СЃС‚РёС‡РЅРѕ
+	 * @return array Р”Р°РЅРЅС‹Рµ РІС‹Р±РѕСЂРєРё
 	 */
     function GetPortf($uid, $prof = "NULL", $all = false)
     {
@@ -592,9 +592,9 @@ class portfolio
     }
     
     /**
-     * Возвращает работу из портфолио по ее ID
+     * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЂР°Р±РѕС‚Сѓ РёР· РїРѕСЂС‚С„РѕР»РёРѕ РїРѕ РµРµ ID
      * 
-     * @param  int $portf_id ID работы
+     * @param  int $portf_id ID СЂР°Р±РѕС‚С‹
      * @return array
      */
     function GetPortfById( $portf_id = 0 ) {
@@ -622,13 +622,13 @@ class portfolio
     }
     
     /**
-	 * Получение списка работ фрилансера с подгруженными файлами для конкретной профессии.
+	 * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° СЂР°Р±РѕС‚ С„СЂРёР»Р°РЅСЃРµСЂР° СЃ РїРѕРґРіСЂСѓР¶РµРЅРЅС‹РјРё С„Р°Р№Р»Р°РјРё РґР»СЏ РєРѕРЅРєСЂРµС‚РЅРѕР№ РїСЂРѕС„РµСЃСЃРёРё.
 	 *
-	 * @param integer $fid id фрилансера
-	 * @param integer $prof id  профессии
-	 * @param boolean $onlyWithPreview выбирать работы только с превью
-	 * @param boolean $skip_blocked не брать заблокированные
-	 * @return array массив работ данного юзера в данном разделе
+	 * @param integer $fid id С„СЂРёР»Р°РЅСЃРµСЂР°
+	 * @param integer $prof id  РїСЂРѕС„РµСЃСЃРёРё
+	 * @param boolean $onlyWithPreview РІС‹Р±РёСЂР°С‚СЊ СЂР°Р±РѕС‚С‹ С‚РѕР»СЊРєРѕ СЃ РїСЂРµРІСЊСЋ
+	 * @param boolean $skip_blocked РЅРµ Р±СЂР°С‚СЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ
+	 * @return array РјР°СЃСЃРёРІ СЂР°Р±РѕС‚ РґР°РЅРЅРѕРіРѕ СЋР·РµСЂР° РІ РґР°РЅРЅРѕРј СЂР°Р·РґРµР»Рµ
 	 */
     function GetPortfProf( $fid, $prof, $onlyWithPreview = false, $skip_blocked = true )
     {
@@ -646,19 +646,19 @@ class portfolio
     }
     
 	/**
-	 * Получение списка работ фрилансера с подгруженными файлами для конкретной специализации
+	 * РџРѕР»СѓС‡РµРЅРёРµ СЃРїРёСЃРєР° СЂР°Р±РѕС‚ С„СЂРёР»Р°РЅСЃРµСЂР° СЃ РїРѕРґРіСЂСѓР¶РµРЅРЅС‹РјРё С„Р°Р№Р»Р°РјРё РґР»СЏ РєРѕРЅРєСЂРµС‚РЅРѕР№ СЃРїРµС†РёР°Р»РёР·Р°С†РёРё
 	 *
-	 * @param integer $prof_id ИД професии
-	 * @param integer $count   Вовзвращает количество 
-	 * @param integer $size    Размер выборки
-	 * @param integer $frl_pp  Количество портфолио на страницу @see PRF_PP (classes/globals.php) 
-	 * @param integer $offset  Позиция выборки
-	 * @param string  $order   Сортировка выборки
-	 * @param integer $direction Тип сортировки (DESC, ASC)
-	 * @param integer $favorite  Избранное (вкл, откл) 
-	 * @param boolean $filter_apply Применить фильмтр или нет
-	 * @param array   $filter    Фильтр  
-	 * @return array Данные по выборке
+	 * @param integer $prof_id РР” РїСЂРѕС„РµСЃРёРё
+	 * @param integer $count   Р’РѕРІР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ 
+	 * @param integer $size    Р Р°Р·РјРµСЂ РІС‹Р±РѕСЂРєРё
+	 * @param integer $frl_pp  РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕСЂС‚С„РѕР»РёРѕ РЅР° СЃС‚СЂР°РЅРёС†Сѓ @see PRF_PP (classes/globals.php) 
+	 * @param integer $offset  РџРѕР·РёС†РёСЏ РІС‹Р±РѕСЂРєРё
+	 * @param string  $order   РЎРѕСЂС‚РёСЂРѕРІРєР° РІС‹Р±РѕСЂРєРё
+	 * @param integer $direction РўРёРї СЃРѕСЂС‚РёСЂРѕРІРєРё (DESC, ASC)
+	 * @param integer $favorite  РР·Р±СЂР°РЅРЅРѕРµ (РІРєР», РѕС‚РєР») 
+	 * @param boolean $filter_apply РџСЂРёРјРµРЅРёС‚СЊ С„РёР»СЊРјС‚СЂ РёР»Рё РЅРµС‚
+	 * @param array   $filter    Р¤РёР»СЊС‚СЂ  
+	 * @return array Р”Р°РЅРЅС‹Рµ РїРѕ РІС‹Р±РѕСЂРєРµ
 	 */
     function GetSpecPortf($prof_id = 0, &$count, &$size, $frl_pp = PRF_PP, $offset = 0, $order = "random", $direction = 0, $favorite = 0, $filter_apply = false, $filter = null)
     {
@@ -706,7 +706,7 @@ class portfolio
         $uid = get_uid(false);
         $dir_sql = ($direction == 0) ? 'DESC' : 'ASC';
         /**
-		 * Сортировка
+		 * РЎРѕСЂС‚РёСЂРѕРІРєР°
 		 */
         switch ($order)
         {
@@ -727,7 +727,7 @@ class portfolio
                 break;
         }
         /**
-		 * Фильтр.
+		 * Р¤РёР»СЊС‚СЂ.
 		 */
         if ($filter_apply)
         {
@@ -813,18 +813,18 @@ class portfolio
     }
     
 	/**
-	 * Выделяем главную специализацию по его портфолио
+	 * Р’С‹РґРµР»СЏРµРј РіР»Р°РІРЅСѓСЋ СЃРїРµС†РёР°Р»РёР·Р°С†РёСЋ РїРѕ РµРіРѕ РїРѕСЂС‚С„РѕР»РёРѕ
 	 *
-	 * @param integer $count        Вовзрашает Количество
-	 * @param integer $size         Вовзращает Размер выборки
-	 * @param integer $frl_pp       Количество портфолио на страницу
-	 * @param integer $offset       С какой позиции брать из БД
-	 * @param string  $order        Сортировка
-	 * @param integer $direction    Тип сортировки (DESC, ASC)
-	 * @param integer $favorite     Избранное (1, 0)
-	 * @param boolean $filter_apply Фильтр включен или нет
-	 * @param integer $filter       Фильтр
-	 * @return array Данные по выборке
+	 * @param integer $count        Р’РѕРІР·СЂР°С€Р°РµС‚ РљРѕР»РёС‡РµСЃС‚РІРѕ
+	 * @param integer $size         Р’РѕРІР·СЂР°С‰Р°РµС‚ Р Р°Р·РјРµСЂ РІС‹Р±РѕСЂРєРё
+	 * @param integer $frl_pp       РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕСЂС‚С„РѕР»РёРѕ РЅР° СЃС‚СЂР°РЅРёС†Сѓ
+	 * @param integer $offset       РЎ РєР°РєРѕР№ РїРѕР·РёС†РёРё Р±СЂР°С‚СЊ РёР· Р‘Р”
+	 * @param string  $order        РЎРѕСЂС‚РёСЂРѕРІРєР°
+	 * @param integer $direction    РўРёРї СЃРѕСЂС‚РёСЂРѕРІРєРё (DESC, ASC)
+	 * @param integer $favorite     РР·Р±СЂР°РЅРЅРѕРµ (1, 0)
+	 * @param boolean $filter_apply Р¤РёР»СЊС‚СЂ РІРєР»СЋС‡РµРЅ РёР»Рё РЅРµС‚
+	 * @param integer $filter       Р¤РёР»СЊС‚СЂ
+	 * @return array Р”Р°РЅРЅС‹Рµ РїРѕ РІС‹Р±РѕСЂРєРµ
 	 */
     function GetSpecPortfMain(&$count, &$size, $frl_pp = PRF_PP, $offset = 0, $order = "rating", $direction = 0, $favorite = 0, $filter_apply = false, $filter = null)
     {
@@ -871,7 +871,7 @@ class portfolio
         $ret = array();
         $uid = get_uid(false);
         /**
-		 * Сортировка
+		 * РЎРѕСЂС‚РёСЂРѕРІРєР°
 		 */
         $order_orig =  $order;
         switch ($order)
@@ -893,7 +893,7 @@ class portfolio
                 break;
         }
         /**
-		 * Фильтр.
+		 * Р¤РёР»СЊС‚СЂ.
 		 */
         $cost_field = 'convert_cost';
         if ($filter_apply)
@@ -977,13 +977,13 @@ class portfolio
     }
     
 	/**
-	 * Проекты рядом (выдача проектов рядом, справа от данного проекта или слева)
-	 * возвращает следующую или предыдущую работу, согласно порядку, определенному в портфолио фрилансера
+	 * РџСЂРѕРµРєС‚С‹ СЂСЏРґРѕРј (РІС‹РґР°С‡Р° РїСЂРѕРµРєС‚РѕРІ СЂСЏРґРѕРј, СЃРїСЂР°РІР° РѕС‚ РґР°РЅРЅРѕРіРѕ РїСЂРѕРµРєС‚Р° РёР»Рё СЃР»РµРІР°)
+	 * РІРѕР·РІСЂР°С‰Р°РµС‚ СЃР»РµРґСѓСЋС‰СѓСЋ РёР»Рё РїСЂРµРґС‹РґСѓС‰СѓСЋ СЂР°Р±РѕС‚Сѓ, СЃРѕРіР»Р°СЃРЅРѕ РїРѕСЂСЏРґРєСѓ, РѕРїСЂРµРґРµР»РµРЅРЅРѕРјСѓ РІ РїРѕСЂС‚С„РѕР»РёРѕ С„СЂРёР»Р°РЅСЃРµСЂР°
 	 * 
-	 * @param integer $uid ид. юзера, чьи работы смотрим.
-	 * @param integer $prjid Данный проект
-	 * @param int  $sign  В какую сторону рядом (1:вправо, -1:влево)
-     * @param boolean $skip_blocked не брать заблокированные
+	 * @param integer $uid РёРґ. СЋР·РµСЂР°, С‡СЊРё СЂР°Р±РѕС‚С‹ СЃРјРѕС‚СЂРёРј.
+	 * @param integer $prjid Р”Р°РЅРЅС‹Р№ РїСЂРѕРµРєС‚
+	 * @param int  $sign  Р’ РєР°РєСѓСЋ СЃС‚РѕСЂРѕРЅСѓ СЂСЏРґРѕРј (1:РІРїСЂР°РІРѕ, -1:РІР»РµРІРѕ)
+     * @param boolean $skip_blocked РЅРµ Р±СЂР°С‚СЊ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹Рµ
 	 * @return array
 	 */
     function GetPrjNear( $uid, $prjid, $sign = 1, $skip_blocked = true )
@@ -1007,7 +1007,7 @@ class portfolio
            ORDER BY pc.ordering, pc.prof_id, p.norder
         ";
         
-        // тут обязательно кэш.
+        // С‚СѓС‚ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РєСЌС€.
         $prjs = $DB->cache(420)->col($sql, $uid, professions::BEST_PROF_ID, professions::CLIENTS_PROF_ID);
         $prjkey = array_search($prjid, $prjs);
         if($prjkey !== false) {
@@ -1020,10 +1020,10 @@ class portfolio
     }
     
 	/**
-	 * Возвращает работу портфолио по ее ид
+	 * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЂР°Р±РѕС‚Сѓ РїРѕСЂС‚С„РѕР»РёРѕ РїРѕ РµРµ РёРґ
 	 *
-	 * @param integer $prjid ИД проекта
-         * @param boolean $uid учитывать ли связь пользователя с данным образцом
+	 * @param integer $prjid РР” РїСЂРѕРµРєС‚Р°
+         * @param boolean $uid СѓС‡РёС‚С‹РІР°С‚СЊ Р»Рё СЃРІСЏР·СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ РґР°РЅРЅС‹Рј РѕР±СЂР°Р·С†РѕРј
 	 * @return array
 	 */
     function GetPrj($prjid, $uid = false){
@@ -1037,12 +1037,12 @@ class portfolio
         "SELECT f.portf_comments, p.id, p.name, p.user_id, p.link, p.descr, p.pict, p.prev_pict, p.cost, p.time_type, p.time_value, p.prev_type, p.cost_type, p.prof_id, p.is_video, p.video_link, 
                 f.spec, f.login, f.uname, f.usurname, f.photo, f.last_time, f.spec as user_spec, 
                 (SELECT COUNT(*) FROM blogs_portf WHERE item_id = p.id) as comms,
-                to_char(p.post_date, 'DD.MM.YY в HH24:MI') as post_date, p.moderator_status, 
+                to_char(p.post_date, 'DD.MM.YY РІ HH24:MI') as post_date, p.moderator_status, 
                 CASE WHEN 
                 p.edit_date IS NULL
                 THEN ''
                 ELSE                
-                to_char(p.edit_date, 'DD.MM.YY в HH24:MI')
+                to_char(p.edit_date, 'DD.MM.YY РІ HH24:MI')
                 END as edit_date,
                 COALESCE(swf.wmode, 'window') as wmode
                 $sel_blocked
@@ -1060,17 +1060,17 @@ class portfolio
     }
     
     /**
-     * Блокирует работу портфолио
+     * Р‘Р»РѕРєРёСЂСѓРµС‚ СЂР°Р±РѕС‚Сѓ РїРѕСЂС‚С„РѕР»РёРѕ
      *
-     * @param  integer $portfolio_id ID работы в портфолио
-     * @param  string $reason причина
-     * @param  string $reason_id id причины, если она выбрана из списка
-     * @param  integer $uid uid администратора (если 0, используется $_SESSION['uid'])
-     * @param  boolean $from_stream true - блокирование из потока, false - на сайте
-     * @return integer ID блокировки
+     * @param  integer $portfolio_id ID СЂР°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ
+     * @param  string $reason РїСЂРёС‡РёРЅР°
+     * @param  string $reason_id id РїСЂРёС‡РёРЅС‹, РµСЃР»Рё РѕРЅР° РІС‹Р±СЂР°РЅР° РёР· СЃРїРёСЃРєР°
+     * @param  integer $uid uid Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР° (РµСЃР»Рё 0, РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ $_SESSION['uid'])
+     * @param  boolean $from_stream true - Р±Р»РѕРєРёСЂРѕРІР°РЅРёРµ РёР· РїРѕС‚РѕРєР°, false - РЅР° СЃР°Р№С‚Рµ
+     * @return integer ID Р±Р»РѕРєРёСЂРѕРІРєРё
      */
     function Blocked( $portfolio_id = 0, $reason, $reason_id = null, $uid = 0, $from_stream = false ) {      
-        if (!$uid && !($uid = $_SESSION['uid'])) return 'Недостаточно прав';
+        if (!$uid && !($uid = $_SESSION['uid'])) return 'РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ';
         $sql = "INSERT INTO portfolio_blocked (src_id, \"admin\", reason, reason_id, blocked_time) VALUES(?i, ?i, ?, ?, NOW()) RETURNING id";
         $sId = $GLOBALS['DB']->val( $sql, $portfolio_id, $uid, $reason, $reason_id );        
         $sql = "UPDATE portfolio SET moderator_status = ?i WHERE id = ?i";
@@ -1092,10 +1092,10 @@ class portfolio
     }
         
     /**
-     * Разблокирует работу портфолио
+     * Р Р°Р·Р±Р»РѕРєРёСЂСѓРµС‚ СЂР°Р±РѕС‚Сѓ РїРѕСЂС‚С„РѕР»РёРѕ
      *
-     * @param integer $portfolio_id ID работы в портфолио
-     * @return string Сообщение об ошибке
+     * @param integer $portfolio_id ID СЂР°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ
+     * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
      */
     function UnBlocked( $portfolio_id ) {
         $GLOBALS['DB']->query( 'DELETE FROM portfolio_blocked WHERE src_id = ?i', $portfolio_id );
@@ -1103,35 +1103,35 @@ class portfolio
     }
     
 	/**
-	 * Редактирование работы в портфолио 
+	 * Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ СЂР°Р±РѕС‚С‹ РІ РїРѕСЂС‚С„РѕР»РёРѕ 
 	 *
 	 * @see self::addPortf();
 	 * 
-	 * @param integer $fid     		 ИД 
-	 * @param string  $name    		 Название работы
-	 * @param string  $pict    		 Основное изображение
-	 * @param string  $sm_pict 		 Уменьшенное изображение
-	 * @param string  $link    		 Ссылка на работу
-	 * @param string  $descr   		 Описание работы
-	 * @param integer $prof    		 Специализация работы
-	 * @param integer $cost    		 Стоимость работы
-	 * @param integer $cost_type 	 Тип стоимости
-	 * @param integer $time_type 	 Тип времени работы
-	 * @param integer $time_value 	 Время рабты
-	 * @param integer $prev_type  	 Тип превью
-	 * @param mixed   $file_error    Ошибка файла если есть 
-	 * @param mixed   $preview_error Превью ошибка
-	 * @param integer $new_position  Новая позиция
-	 * @param integer $in_shop       Работа в магазине  
-	 * @param integer $is_video      Есть ли видео 
-	 * @param string  $video_link    Ссылка на видео
-     * @param boolean $upd_prev      Нужно ли обновить превью из основного изображения
-     * @param integer $moduser_id    UID изменяющего пользователя (админа). если null - то берется $fid
-     * @param string  $pict_filename Основное изображение для новой загрузки файлов
-     * @param string  $prev_pict_filename Уменьшенное изображение для новой загрузки файлов
-     * @param string  $login логин пользователя на случай если редактирует админ
-     * @param string  $modified_reason причина редактирования
-	 * @return string Сообщение об ошибке
+	 * @param integer $fid     		 РР” 
+	 * @param string  $name    		 РќР°Р·РІР°РЅРёРµ СЂР°Р±РѕС‚С‹
+	 * @param string  $pict    		 РћСЃРЅРѕРІРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ
+	 * @param string  $sm_pict 		 РЈРјРµРЅСЊС€РµРЅРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ
+	 * @param string  $link    		 РЎСЃС‹Р»РєР° РЅР° СЂР°Р±РѕС‚Сѓ
+	 * @param string  $descr   		 РћРїРёСЃР°РЅРёРµ СЂР°Р±РѕС‚С‹
+	 * @param integer $prof    		 РЎРїРµС†РёР°Р»РёР·Р°С†РёСЏ СЂР°Р±РѕС‚С‹
+	 * @param integer $cost    		 РЎС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹
+	 * @param integer $cost_type 	 РўРёРї СЃС‚РѕРёРјРѕСЃС‚Рё
+	 * @param integer $time_type 	 РўРёРї РІСЂРµРјРµРЅРё СЂР°Р±РѕС‚С‹
+	 * @param integer $time_value 	 Р’СЂРµРјСЏ СЂР°Р±С‚С‹
+	 * @param integer $prev_type  	 РўРёРї РїСЂРµРІСЊСЋ
+	 * @param mixed   $file_error    РћС€РёР±РєР° С„Р°Р№Р»Р° РµСЃР»Рё РµСЃС‚СЊ 
+	 * @param mixed   $preview_error РџСЂРµРІСЊСЋ РѕС€РёР±РєР°
+	 * @param integer $new_position  РќРѕРІР°СЏ РїРѕР·РёС†РёСЏ
+	 * @param integer $in_shop       Р Р°Р±РѕС‚Р° РІ РјР°РіР°Р·РёРЅРµ  
+	 * @param integer $is_video      Р•СЃС‚СЊ Р»Рё РІРёРґРµРѕ 
+	 * @param string  $video_link    РЎСЃС‹Р»РєР° РЅР° РІРёРґРµРѕ
+     * @param boolean $upd_prev      РќСѓР¶РЅРѕ Р»Рё РѕР±РЅРѕРІРёС‚СЊ РїСЂРµРІСЊСЋ РёР· РѕСЃРЅРѕРІРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
+     * @param integer $moduser_id    UID РёР·РјРµРЅСЏСЋС‰РµРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (Р°РґРјРёРЅР°). РµСЃР»Рё null - С‚Рѕ Р±РµСЂРµС‚СЃСЏ $fid
+     * @param string  $pict_filename РћСЃРЅРѕРІРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РґР»СЏ РЅРѕРІРѕР№ Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»РѕРІ
+     * @param string  $prev_pict_filename РЈРјРµРЅСЊС€РµРЅРЅРѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РґР»СЏ РЅРѕРІРѕР№ Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»РѕРІ
+     * @param string  $login Р»РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° СЃР»СѓС‡Р°Р№ РµСЃР»Рё СЂРµРґР°РєС‚РёСЂСѓРµС‚ Р°РґРјРёРЅ
+     * @param string  $modified_reason РїСЂРёС‡РёРЅР° СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ
+	 * @return string РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
     function EditPortf($fid, $name, $pict, $sm_pict, $link, $descr, $prof, $cost,
                        $cost_type, $time_type, $time_value, $prev_type,
@@ -1160,14 +1160,14 @@ class portfolio
         
         $moduser_id = $moduser_id ? $moduser_id : $fid;
         
-        // если превью не загружено и требуется обновить превью на основе основного изображения
+        // РµСЃР»Рё РїСЂРµРІСЊСЋ РЅРµ Р·Р°РіСЂСѓР¶РµРЅРѕ Рё С‚СЂРµР±СѓРµС‚СЃСЏ РѕР±РЅРѕРІРёС‚СЊ РїСЂРµРІСЊСЋ РЅР° РѕСЃРЅРѕРІРµ РѕСЃРЅРѕРІРЅРѕРіРѕ РёР·РѕР±СЂР°Р¶РµРЅРёСЏ
         if (!$sm_pict->size > 0 && $upd_prev) {
             $sm_pict = new CFile();
-            $sm_pict->GetInfo($fullDir.$old_pict); // оригинальное большое изображение
+            $sm_pict->GetInfo($fullDir.$old_pict); // РѕСЂРёРіРёРЅР°Р»СЊРЅРѕРµ Р±РѕР»СЊС€РѕРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ
             if ($sm_pict->size > 0) {
                 $sm_pict->table = "file_template";
                 $sm_pict->quality = 100;
-                if ( $sm_pict->resizeImage($fullDir."sm_".$sm_pict->name, 200, 200, 'auto', true) ) { // уменьшаем
+                if ( $sm_pict->resizeImage($fullDir."sm_".$sm_pict->name, 200, 200, 'auto', true) ) { // СѓРјРµРЅСЊС€Р°РµРј
                     $filename = "sm_".$sm_pict->name;
                     $static_preview = $filename;
                     $mp = true;
@@ -1175,7 +1175,7 @@ class portfolio
             }
         }
         /**
-         * Отдельно загруженное превью
+         * РћС‚РґРµР»СЊРЅРѕ Р·Р°РіСЂСѓР¶РµРЅРЅРѕРµ РїСЂРµРІСЊСЋ
          */
         if ( ($sm_pict->size > 0 || $prev_pict_filename) && !$upd_prev)
         {
@@ -1190,8 +1190,8 @@ class portfolio
                 $filename = $sm_pict->MoveUploadedFile($dir."/upload");
                 $preview_error = $sm_pict->StrError();
                 
-                // генерируем неанимированное gif превью для ответов в проектах (только для gif файлов)
-                // файл будет такой: st_sm_f_имя файла.gif
+                // РіРµРЅРµСЂРёСЂСѓРµРј РЅРµР°РЅРёРјРёСЂРѕРІР°РЅРЅРѕРµ gif РїСЂРµРІСЊСЋ РґР»СЏ РѕС‚РІРµС‚РѕРІ РІ РїСЂРѕРµРєС‚Р°С… (С‚РѕР»СЊРєРѕ РґР»СЏ gif С„Р°Р№Р»РѕРІ)
+                // С„Р°Р№Р» Р±СѓРґРµС‚ С‚Р°РєРѕР№: st_sm_f_РёРјСЏ С„Р°Р№Р»Р°.gif
                 if ($sm_pict->image_size['type'] == 1) {
                     $static_preview = 'st_' . $sm_pict->name;
                     $sm_pict->resizeImage( $sm_pict->path . $static_preview, 200, 200, 'auto', true );
@@ -1208,7 +1208,7 @@ class portfolio
                 return $preview_error;
             } elseif ($old_prev_pict) {
                 $cfile = new CFile();
-                $cfile->Delete(0,"users/{$l_dir}/upload/",$old_prev_pict); // удаляем ранее загруженное превью
+                $cfile->Delete(0,"users/{$l_dir}/upload/",$old_prev_pict); // СѓРґР°Р»СЏРµРј СЂР°РЅРµРµ Р·Р°РіСЂСѓР¶РµРЅРЅРѕРµ РїСЂРµРІСЊСЋ
                 $mp = true;
             } else {
                 $mp = true;
@@ -1256,7 +1256,7 @@ class portfolio
             {
                 //print "2";exit;
                /**
-                * Делаем превью.
+                * Р”РµР»Р°РµРј РїСЂРµРІСЊСЋ.
                 */
                 $pict->proportional = 1;
                 //$pict->imgtosmall()
@@ -1273,7 +1273,7 @@ class portfolio
                  */
                 $pict->table = "file_template";
                 $pict->quality = 100;
-                if ( $pict->resizeImage($fullDir."sm_".$pict->name, 200, 200, 'auto', true) ) { // уменьшаем
+                if ( $pict->resizeImage($fullDir."sm_".$pict->name, 200, 200, 'auto', true) ) { // СѓРјРµРЅСЊС€Р°РµРј
                     $filename = "sm_".$pict->name;
                     $static_preview = $filename;
                     $mp = true;
@@ -1287,7 +1287,7 @@ class portfolio
                     $sp = 't';
                     if (!$mp)
                     {
-                        $file_error .= "Невозможно уменьшить картинку.";
+                        $file_error .= "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРјРµРЅСЊС€РёС‚СЊ РєР°СЂС‚РёРЅРєСѓ.";
                         $sp = 'f';
                     }
                 }
@@ -1296,16 +1296,16 @@ class portfolio
                 if (!$cfile) { 
                     $cfile = new CFile();
                     if ($old_prev_pict && $sm_pict->name) {
-                        $cfile->Delete(0,"users/{$l_dir}/upload/",$old_prev_pict); // удаляем ранее загруженное превью
+                        $cfile->Delete(0,"users/{$l_dir}/upload/",$old_prev_pict); // СѓРґР°Р»СЏРµРј СЂР°РЅРµРµ Р·Р°РіСЂСѓР¶РµРЅРЅРѕРµ РїСЂРµРІСЊСЋ
                         $need_delete_preview = true;
                     }
                 }
-                if ($old_pict) $cfile->Delete(0,"users/{$l_dir}/upload/",$old_pict); // удаляем ранее загруженное превью
+                if ($old_pict) $cfile->Delete(0,"users/{$l_dir}/upload/",$old_pict); // СѓРґР°Р»СЏРµРј СЂР°РЅРµРµ Р·Р°РіСЂСѓР¶РµРЅРЅРѕРµ РїСЂРµРІСЊСЋ
             }
         } else
           $pictname = $old_pict;
         
-        // для картинок: если превью загружено отдельно - делаем отдельное привью из оригинальной большой картинки
+        // РґР»СЏ РєР°СЂС‚РёРЅРѕРє: РµСЃР»Рё РїСЂРµРІСЊСЋ Р·Р°РіСЂСѓР¶РµРЅРѕ РѕС‚РґРµР»СЊРЅРѕ - РґРµР»Р°РµРј РѕС‚РґРµР»СЊРЅРѕРµ РїСЂРёРІСЊСЋ РёР· РѕСЂРёРіРёРЅР°Р»СЊРЅРѕР№ Р±РѕР»СЊС€РѕР№ РєР°СЂС‚РёРЅРєРё
         $sPreview = $filename ? $filename : $old_prev_pict;
         
         if ( $pictname != substr($sPreview, 3, strlen($sPreview)) ) {
@@ -1338,7 +1338,7 @@ class portfolio
         $sql = '';
         
         if ( $fid == $_SESSION['uid'] && !hasPermissions('users') ) {
-            // автор, не админ, не про меняет заголовок либо текст - отправить на модерирование
+            // Р°РІС‚РѕСЂ, РЅРµ Р°РґРјРёРЅ, РЅРµ РїСЂРѕ РјРµРЅСЏРµС‚ Р·Р°РіРѕР»РѕРІРѕРє Р»РёР±Рѕ С‚РµРєСЃС‚ - РѕС‚РїСЂР°РІРёС‚СЊ РЅР° РјРѕРґРµСЂРёСЂРѕРІР°РЅРёРµ
             $sModer = ' , moderator_status = ' . ( !is_pro() ? '0' : '-2' ). ' ';
             if ( !is_pro() ) {
                 /*require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/stop_words.php' );
@@ -1365,12 +1365,12 @@ class portfolio
     }
 
     /**
-     * Удаляет картинку или превьюху работы.
+     * РЈРґР°Р»СЏРµС‚ РєР°СЂС‚РёРЅРєСѓ РёР»Рё РїСЂРµРІСЊСЋС…Сѓ СЂР°Р±РѕС‚С‹.
      *
-     * @param string  $login  Логин пользователя
-     * @param integer $prj_id ИД превью
-     * @param integer $pict_type Тип картинки (1-картинка, 0-портфолио) 
-     * @return integer 1 - если все ок, иначе 0
+     * @param string  $login  Р›РѕРіРёРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+     * @param integer $prj_id РР” РїСЂРµРІСЊСЋ
+     * @param integer $pict_type РўРёРї РєР°СЂС‚РёРЅРєРё (1-РєР°СЂС‚РёРЅРєР°, 0-РїРѕСЂС‚С„РѕР»РёРѕ) 
+     * @return integer 1 - РµСЃР»Рё РІСЃРµ РѕРє, РёРЅР°С‡Рµ 0
      */
     function DelPict($login, $prj_id, $pict_type = 1)
     {
@@ -1409,11 +1409,11 @@ class portfolio
     }
 
 	/**
-	 * Берем определенной поле из портфолио по его ИД
+	 * Р‘РµСЂРµРј РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ РїРѕР»Рµ РёР· РїРѕСЂС‚С„РѕР»РёРѕ РїРѕ РµРіРѕ РР”
 	 *
-	 * @param integer $id         ИД портфолио
-	 * @param string  $fieldname  Имя поля
-	 * @return string Значение поля
+	 * @param integer $id         РР” РїРѕСЂС‚С„РѕР»РёРѕ
+	 * @param string  $fieldname  РРјСЏ РїРѕР»СЏ
+	 * @return string Р—РЅР°С‡РµРЅРёРµ РїРѕР»СЏ
 	 */
     function GetField($id,$fieldname){
         global $DB; 
@@ -1428,12 +1428,12 @@ class portfolio
     }
 
     /**
-	 * Удаляет работу из портфолио
+	 * РЈРґР°Р»СЏРµС‚ СЂР°Р±РѕС‚Сѓ РёР· РїРѕСЂС‚С„РѕР»РёРѕ
 	 *
-	 * @param integer $fid			UID юзера, который удаляет работу
-	 * @param integer $prj_id		id проекта
-	 * @param integer $force		1 - удаление админом (забивает на UID), 0 - обычный юзер
-	 * @return string				сообщение об ошибке
+	 * @param integer $fid			UID СЋР·РµСЂР°, РєРѕС‚РѕСЂС‹Р№ СѓРґР°Р»СЏРµС‚ СЂР°Р±РѕС‚Сѓ
+	 * @param integer $prj_id		id РїСЂРѕРµРєС‚Р°
+	 * @param integer $force		1 - СѓРґР°Р»РµРЅРёРµ Р°РґРјРёРЅРѕРј (Р·Р°Р±РёРІР°РµС‚ РЅР° UID), 0 - РѕР±С‹С‡РЅС‹Р№ СЋР·РµСЂ
+	 * @return string				СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
     function DelPortf($fid, $prj_id, $force = 0){
         global $DB; 
@@ -1451,10 +1451,10 @@ class portfolio
         	$user->GetUserByUID($uid);
         	$l_dir = substr($user->login, 0 ,2)."/".$user->login;
             
-            // уведомление об удалении 
+            // СѓРІРµРґРѕРјР»РµРЅРёРµ РѕР± СѓРґР°Р»РµРЅРёРё 
             require_once( $_SERVER['DOCUMENT_ROOT'] . '/classes/messages.php' );
             messages::portfolioDeletedNotification( $user->uname, $user->usurname, $user->login );
-        } else if ($uid != $fid && !$force) return "Вы не можете удалять чужие работы!";
+        } else if ($uid != $fid && !$force) return "Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ СѓРґР°Р»СЏС‚СЊ С‡СѓР¶РёРµ СЂР°Р±РѕС‚С‹!";
         if ($fname) {
             $cfile = new CFile();
             $cfile->Delete(0,"users/$l_dir/upload/",$fname);
@@ -1477,12 +1477,12 @@ class portfolio
     }
     
 	/**
-	 * Изменить сортировку выдачи портфолио на странице пользователя
+	 * РР·РјРµРЅРёС‚СЊ СЃРѕСЂС‚РёСЂРѕРІРєСѓ РІС‹РґР°С‡Рё РїРѕСЂС‚С„РѕР»РёРѕ РЅР° СЃС‚СЂР°РЅРёС†Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 	 *
-	 * @param integer $uid       Ид пользователя
-	 * @param integer $prof_id   ИД професии
-	 * @param integer $direction Позиция
-	 * @return integer ИД выдачи
+	 * @param integer $uid       РРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param integer $prof_id   РР” РїСЂРѕС„РµСЃРёРё
+	 * @param integer $direction РџРѕР·РёС†РёСЏ
+	 * @return integer РР” РІС‹РґР°С‡Рё
 	 */
     function ChangeProfOrder($uid, $prof_id, $direction)
     {
@@ -1513,11 +1513,11 @@ class portfolio
     }
     
 	/**
-	 * Изменить позицию
+	 * РР·РјРµРЅРёС‚СЊ РїРѕР·РёС†РёСЋ
 	 *
-	 * @param integer $uid       Ид пользователя
-	 * @param integer $prof_id   ИД портфолио 
-	 * @param integer $direction Сортировка
+	 * @param integer $uid       РРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param integer $prof_id   РР” РїРѕСЂС‚С„РѕР»РёРѕ 
+	 * @param integer $direction РЎРѕСЂС‚РёСЂРѕРІРєР°
 	 * @return integer ID
 	 */
     function ChangePos($uid, $proj_id, $direction)
@@ -1549,13 +1549,13 @@ class portfolio
     }
 
   /**
-   * Изменение признака просмотра превью для текстовой работы.
-   * Включает функцию "Показывать превью" для данной работы
+   * РР·РјРµРЅРµРЅРёРµ РїСЂРёР·РЅР°РєР° РїСЂРѕСЃРјРѕС‚СЂР° РїСЂРµРІСЊСЋ РґР»СЏ С‚РµРєСЃС‚РѕРІРѕР№ СЂР°Р±РѕС‚С‹.
+   * Р’РєР»СЋС‡Р°РµС‚ С„СѓРЅРєС†РёСЋ "РџРѕРєР°Р·С‹РІР°С‚СЊ РїСЂРµРІСЊСЋ" РґР»СЏ РґР°РЅРЅРѕР№ СЂР°Р±РѕС‚С‹
    * 
-   * @param integer $uid код юзера
-   * @param integer $proj_id код проекта
-   * @param integer $ch включение (1) / выключение (0) просмотра
-   * @return string сообщение об ошибке или пустая строка, если ошибок нет.
+   * @param integer $uid РєРѕРґ СЋР·РµСЂР°
+   * @param integer $proj_id РєРѕРґ РїСЂРѕРµРєС‚Р°
+   * @param integer $ch РІРєР»СЋС‡РµРЅРёРµ (1) / РІС‹РєР»СЋС‡РµРЅРёРµ (0) РїСЂРѕСЃРјРѕС‚СЂР°
+   * @return string СЃРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°, РµСЃР»Рё РѕС€РёР±РѕРє РЅРµС‚.
    */
     function ChangeTextPrev($uid, $proj_id, $ch)
     {
@@ -1568,9 +1568,9 @@ class portfolio
     }
     
     /**
-	 * Включение превью везде
+	 * Р’РєР»СЋС‡РµРЅРёРµ РїСЂРµРІСЊСЋ РІРµР·РґРµ
 	 *
-	 * @param integer $uid ИД ПОльзователя
+	 * @param integer $uid РР” РџРћР»СЊР·РѕРІР°С‚РµР»СЏ
 	 */
     function OnAllPrev ($uid) {
         global $DB;
@@ -1584,14 +1584,14 @@ class portfolio
         }
     }
 	/**
-	 * Позволяет включать в определенном разделе превью (Блок - Уточнение к разделу)
-	 * Функция доступна только ПРО аккаунтам
+	 * РџРѕР·РІРѕР»СЏРµС‚ РІРєР»СЋС‡Р°С‚СЊ РІ РѕРїСЂРµРґРµР»РµРЅРЅРѕРј СЂР°Р·РґРµР»Рµ РїСЂРµРІСЊСЋ (Р‘Р»РѕРє - РЈС‚РѕС‡РЅРµРЅРёРµ Рє СЂР°Р·РґРµР»Сѓ)
+	 * Р¤СѓРЅРєС†РёСЏ РґРѕСЃС‚СѓРїРЅР° С‚РѕР»СЊРєРѕ РџР Рћ Р°РєРєР°СѓРЅС‚Р°Рј
 	 *
-	 * @param integer  $uid       Ид пользователя
-	 * @param integer  $proj_id   Проект ИД
-	 * @param array    $projs     Возвращает данные по проектам
-	 * @param string   $force_val Доп переменная, для составления запроса
-	 * @return string  Сообщение об ошибке
+	 * @param integer  $uid       РРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param integer  $proj_id   РџСЂРѕРµРєС‚ РР”
+	 * @param array    $projs     Р’РѕР·РІСЂР°С‰Р°РµС‚ РґР°РЅРЅС‹Рµ РїРѕ РїСЂРѕРµРєС‚Р°Рј
+	 * @param string   $force_val Р”РѕРї РїРµСЂРµРјРµРЅРЅР°СЏ, РґР»СЏ СЃРѕСЃС‚Р°РІР»РµРЅРёСЏ Р·Р°РїСЂРѕСЃР°
+	 * @return string  РЎРѕРѕР±С‰РµРЅРёРµ РѕР± РѕС€РёР±РєРµ
 	 */
     function ChangeGrPrev($uid, $prof_id, &$projs, $force_val = NULL)
     {
@@ -1618,14 +1618,14 @@ class portfolio
 
 
     /**
-	 * Сохраняет стоимость и срок выполнения работы.
+	 * РЎРѕС…СЂР°РЅСЏРµС‚ СЃС‚РѕРёРјРѕСЃС‚СЊ Рё СЃСЂРѕРє РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹.
 	 *
-	 * @param integer $uid id пользователя
-	 * @param integer $proj_id id работы
-	 * @param real $cost стоимость работы
-	 * @param integer $time_type тип срока (0 - часы, 1 - дни, 2 - месяцы)
-	 * @param integer $time_value срок выполнения работы (в единицах $time_type)
-     * @return string текст ошибки или пустая строка
+	 * @param integer $uid id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+	 * @param integer $proj_id id СЂР°Р±РѕС‚С‹
+	 * @param real $cost СЃС‚РѕРёРјРѕСЃС‚СЊ СЂР°Р±РѕС‚С‹
+	 * @param integer $time_type С‚РёРї СЃСЂРѕРєР° (0 - С‡Р°СЃС‹, 1 - РґРЅРё, 2 - РјРµСЃСЏС†С‹)
+	 * @param integer $time_value СЃСЂРѕРє РІС‹РїРѕР»РЅРµРЅРёСЏ СЂР°Р±РѕС‚С‹ (РІ РµРґРёРЅРёС†Р°С… $time_type)
+     * @return string С‚РµРєСЃС‚ РѕС€РёР±РєРё РёР»Рё РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°
 	 */
     function ChangePortfPrice($uid, $proj_id, $cost, $cost_type, $time_type, $time_value)
     {
@@ -1639,16 +1639,16 @@ class portfolio
         $time_value = intval($time_value);
 
         /**
-     * Проверка.
+     * РџСЂРѕРІРµСЂРєР°.
      */
         $error = '';
         if (($cost < 0) || ($cost > $portf_cost[$cost_type]))
         {
-            $error .= (($error == '') ? '' : '<br />') . 'Недопустимое значение. Стоимость должна быть в пределе от 0 ' . view_range_cost2(0, $portf_cost[$cost_type], '', '', false, $cost_type) . '.';
+            $error .= (($error == '') ? '' : '<br />') . 'РќРµРґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ. РЎС‚РѕРёРјРѕСЃС‚СЊ РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РІ РїСЂРµРґРµР»Рµ РѕС‚ 0 ' . view_range_cost2(0, $portf_cost[$cost_type], '', '', false, $cost_type) . '.';
         }
         if (($time_value < 0) || ($time_value > PORTF_TIME))
         {
-            $error .= (($error == '') ? '' : '<br />') . 'Недопустимое значение. Срок должен быть в пределе от 0 до ' . PORTF_TIME . '.';
+            $error .= (($error == '') ? '' : '<br />') . 'РќРµРґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ. РЎСЂРѕРє РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РІ РїСЂРµРґРµР»Рµ РѕС‚ 0 РґРѕ ' . PORTF_TIME . '.';
         }
 
         if ($uid && $proj_id && ($error == ''))
@@ -1658,23 +1658,23 @@ class portfolio
             $error = $DB->error;
             if ($error_db != '')
             {
-                $error .= (($error_serv == '') ? '' : '<br />') . 'Ошибка сохранения в БД.';
+                $error .= (($error_serv == '') ? '' : '<br />') . 'РћС€РёР±РєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ РІ Р‘Р”.';
             }
         }
         if ($error != '')
         {
-            $error = 'Данные не сохранены<br /><br />' . $error;
+            $error = 'Р”Р°РЅРЅС‹Рµ РЅРµ СЃРѕС…СЂР°РЅРµРЅС‹<br /><br />' . $error;
         }
         return $error;
     }
 
     /**
-	 * Изменение "избранности" работы - добалвение в избранные, если еще не выбрана и удаление, если уже выбрана.
+	 * РР·РјРµРЅРµРЅРёРµ "РёР·Р±СЂР°РЅРЅРѕСЃС‚Рё" СЂР°Р±РѕС‚С‹ - РґРѕР±Р°Р»РІРµРЅРёРµ РІ РёР·Р±СЂР°РЅРЅС‹Рµ, РµСЃР»Рё РµС‰Рµ РЅРµ РІС‹Р±СЂР°РЅР° Рё СѓРґР°Р»РµРЅРёРµ, РµСЃР»Рё СѓР¶Рµ РІС‹Р±СЂР°РЅР°.
 	 *
-	 * @param integer $prf_id код работы
-	 * @param integer $prof_id код профессии
-	 * @param integer $uid код юзера
-	 * @return array результат (0-ой элемент: количество выбранных работ) и тип выполненой операции (1-ый элемент: 0 - удалена, 1 - добавлена)
+	 * @param integer $prf_id РєРѕРґ СЂР°Р±РѕС‚С‹
+	 * @param integer $prof_id РєРѕРґ РїСЂРѕС„РµСЃСЃРёРё
+	 * @param integer $uid РєРѕРґ СЋР·РµСЂР°
+	 * @return array СЂРµР·СѓР»СЊС‚Р°С‚ (0-РѕР№ СЌР»РµРјРµРЅС‚: РєРѕР»РёС‡РµСЃС‚РІРѕ РІС‹Р±СЂР°РЅРЅС‹С… СЂР°Р±РѕС‚) Рё С‚РёРї РІС‹РїРѕР»РЅРµРЅРѕР№ РѕРїРµСЂР°С†РёРё (1-С‹Р№ СЌР»РµРјРµРЅС‚: 0 - СѓРґР°Р»РµРЅР°, 1 - РґРѕР±Р°РІР»РµРЅР°)
 	 */
     function ChangeFav($prf_id, $prof_id, $uid)
     {
@@ -1715,12 +1715,12 @@ class portfolio
     }
 
     /**
-	 * Изменение профессию работы - перемещение работы из одной профессии в другую
+	 * РР·РјРµРЅРµРЅРёРµ РїСЂРѕС„РµСЃСЃРёСЋ СЂР°Р±РѕС‚С‹ - РїРµСЂРµРјРµС‰РµРЅРёРµ СЂР°Р±РѕС‚С‹ РёР· РѕРґРЅРѕР№ РїСЂРѕС„РµСЃСЃРёРё РІ РґСЂСѓРіСѓСЋ
 	 *
-	 * @param integer 	$prf_id код работы
-	 * @param integer 	$prof_id код профессии
-	 * @param integer 	$uid код юзера
-	 * @return resource Данные выборки
+	 * @param integer 	$prf_id РєРѕРґ СЂР°Р±РѕС‚С‹
+	 * @param integer 	$prof_id РєРѕРґ РїСЂРѕС„РµСЃСЃРёРё
+	 * @param integer 	$uid РєРѕРґ СЋР·РµСЂР°
+	 * @return resource Р”Р°РЅРЅС‹Рµ РІС‹Р±РѕСЂРєРё
 	 * 
 	 */
     function ChangeProjectProf($uid, $prof_id, $prj_id)
@@ -1742,13 +1742,13 @@ class portfolio
     }
 
   /**
-   * Возвращает список избранных работ.
+   * Р’РѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РёР·Р±СЂР°РЅРЅС‹С… СЂР°Р±РѕС‚.
    *
    * @deprecated 
    * 
-   * @param integer $prof_id id профессии
-   * @param integer $uid id пользователя
-   * @return array массив избранных работ (id работ)
+   * @param integer $prof_id id РїСЂРѕС„РµСЃСЃРёРё
+   * @param integer $uid id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+   * @return array РјР°СЃСЃРёРІ РёР·Р±СЂР°РЅРЅС‹С… СЂР°Р±РѕС‚ (id СЂР°Р±РѕС‚)
    */
     function GetFavorites($prof_id, $uid)
     {
@@ -1774,11 +1774,11 @@ class portfolio
     }
 
   /**
-   * Возвращает количество всех работ или всех работ по конкретной профессии.
+   * Р’РѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ РІСЃРµС… СЂР°Р±РѕС‚ РёР»Рё РІСЃРµС… СЂР°Р±РѕС‚ РїРѕ РєРѕРЅРєСЂРµС‚РЅРѕР№ РїСЂРѕС„РµСЃСЃРёРё.
    *
-   * @param integer $prof_id id профессии
-   * @param integer $uid id пользователя
-   * @return integer количество работ
+   * @param integer $prof_id id РїСЂРѕС„РµСЃСЃРёРё
+   * @param integer $uid id РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
+   * @return integer РєРѕР»РёС‡РµСЃС‚РІРѕ СЂР°Р±РѕС‚
    */
     function CountAll($uid, $prof_id=NULL, $not_count = false)
     {
@@ -1791,11 +1791,11 @@ class portfolio
     }
     
     /**
-     * Список выбранных профейссий и информация по ним
+     * РЎРїРёСЃРѕРє РІС‹Р±СЂР°РЅРЅС‹С… РїСЂРѕС„РµР№СЃСЃРёР№ Рё РёРЅС„РѕСЂРјР°С†РёСЏ РїРѕ РЅРёРј
      * 
      * @global type $DB
-     * @param type $prof_id ИД определенной профессии, если хотим взять только ее
-     * @param type $uid     ИД пользователя
+     * @param type $prof_id РР” РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ РїСЂРѕС„РµСЃСЃРёРё, РµСЃР»Рё С…РѕС‚РёРј РІР·СЏС‚СЊ С‚РѕР»СЊРєРѕ РµРµ
+     * @param type $uid     РР” РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * @return type
      */
     public function getPortfolioCategory($prof_id = null, $uid = null) {
@@ -1829,18 +1829,18 @@ class portfolio
     }
     
     /**
-     * Рассортировываем портфолио
+     * Р Р°СЃСЃРѕСЂС‚РёСЂРѕРІС‹РІР°РµРј РїРѕСЂС‚С„РѕР»РёРѕ
      * 
-     * @param array   $prjs         Работы портфолио @see self::GetPortf();
-     * @param integer $uid          Ид пользователя
+     * @param array   $prjs         Р Р°Р±РѕС‚С‹ РїРѕСЂС‚С„РѕР»РёРѕ @see self::GetPortf();
+     * @param integer $uid          РРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * @param object  $stop_words   @see class new stop_words()
-     * @param integer $one_select   Костыль для подгрузки работ в определенную категорию профессии, создает переменную $prjs которая необходима в шаблоне 
+     * @param integer $one_select   РљРѕСЃС‚С‹Р»СЊ РґР»СЏ РїРѕРґРіСЂСѓР·РєРё СЂР°Р±РѕС‚ РІ РѕРїСЂРµРґРµР»РµРЅРЅСѓСЋ РєР°С‚РµРіРѕСЂРёСЋ РїСЂРѕС„РµСЃСЃРёРё, СЃРѕР·РґР°РµС‚ РїРµСЂРµРјРµРЅРЅСѓСЋ $prjs РєРѕС‚РѕСЂР°СЏ РЅРµРѕР±С…РѕРґРёРјР° РІ С€Р°Р±Р»РѕРЅРµ 
      */
     public function prepareDataPortfolio($works, $uid, $stop_words, $one_select = false) {
         $i = $block = 0;
         $size_block = 3;
         $is_owner   = ($uid == get_uid(false));
-        // Рассортировываем портфолио
+        // Р Р°СЃСЃРѕСЂС‚РёСЂРѕРІС‹РІР°РµРј РїРѕСЂС‚С„РѕР»РёРѕ
         foreach ($works as $prj) {
             if ($prj['is_blocked'] == 't' && $uid != get_uid(false) && !hasPermissions('users'))
                 continue;
@@ -1869,7 +1869,7 @@ class portfolio
             $i++;
             $old_prof = $prj['prof_id'];
 
-            // Ключевые слова
+            // РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°
             if (empty($ukeys[$prj['prof_id']])) {
                 $ukeys[$prj['prof_id']] = professions::loadProfessionUserKeyword($uid, $prj['prof_id']);
             }
@@ -1893,8 +1893,8 @@ class portfolio
     
     
     /**
-     * Список не заблокированных работ 
-     * портфолио для указанного пользователя
+     * РЎРїРёСЃРѕРє РЅРµ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅРЅС‹С… СЂР°Р±РѕС‚ 
+     * РїРѕСЂС‚С„РѕР»РёРѕ РґР»СЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
      * 
      * @global type $DB
      * @param type $uid
@@ -1933,7 +1933,7 @@ class portfolio
     
     
     /**
-     * Существует и не блокирована ли работа в портфолио у указанного юзера
+     * РЎСѓС‰РµСЃС‚РІСѓРµС‚ Рё РЅРµ Р±Р»РѕРєРёСЂРѕРІР°РЅР° Р»Рё СЂР°Р±РѕС‚Р° РІ РїРѕСЂС‚С„РѕР»РёРѕ Сѓ СѓРєР°Р·Р°РЅРЅРѕРіРѕ СЋР·РµСЂР°
      * 
      * @global type $DB
      * @param type $uid

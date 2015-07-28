@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/classes/tservices/tservices_helper.ph
 /**
  * Class TServiceOrderFeedback
  *
- * Âèäæåò - 
+ * Ğ’Ğ¸Ğ´Ğ¶ĞµÑ‚ - 
  */
 class TServiceOrderFeedback extends CWidget 
 {
@@ -24,7 +24,7 @@ class TServiceOrderFeedback extends CWidget
     
     public function run() 
     {
-        //ñîáèğàåì øàáëîí
+        //ÑĞ¾Ğ±Ğ¸Ñ€Ğ°ĞµĞ¼ ÑˆĞ°Ğ±Ğ»Ğ¾Ğ½
         $this->render('t-service-order-feedback', $this->data);
     }
     

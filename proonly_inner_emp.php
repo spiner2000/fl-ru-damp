@@ -39,8 +39,8 @@ $transaction_id = $account->start_transaction($uid, $tr_id);
     }
 </script>
 
-<h1 class="b-page__title">Данная функция доступна только пользователям с аккаунтом <span title="PRO" class="b-icon b-icon__spro b-icon__spro_e"></span></h1>
-<div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20">Владельцы аккаунта <a class="b-layout__link" href="/payed-emp/"><span class="b-icon b-icon__pro b-icon__pro_e b-icon_top_4" alt="Платный аккаунт" title="Платный аккаунт"></span></a> – это наиболее активная и серьёзная часть аудитории Free-lance.ru. Набор функций профессионального аккаунта предоставляет ряд серьезных преимуществ, которые позволяют стать привлекательнее для серьезных фрилансеров и сделать поиск исполнителей по проектам эффективнее.</div>
+<h1 class="b-page__title">Р”Р°РЅРЅР°СЏ С„СѓРЅРєС†РёСЏ РґРѕСЃС‚СѓРїРЅР° С‚РѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏРј СЃ Р°РєРєР°СѓРЅС‚РѕРј <span title="PRO" class="b-icon b-icon__spro b-icon__spro_e"></span></h1>
+<div class="b-layout__txt b-layout__txt_fontsize_15 b-layout__txt_padbot_20">Р’Р»Р°РґРµР»СЊС†С‹ Р°РєРєР°СѓРЅС‚Р° <a class="b-layout__link" href="/payed-emp/"><span class="b-icon b-icon__pro b-icon__pro_e b-icon_top_4" alt="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" title="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚"></span></a> вЂ“ СЌС‚Рѕ РЅР°РёР±РѕР»РµРµ Р°РєС‚РёРІРЅР°СЏ Рё СЃРµСЂСЊС‘Р·РЅР°СЏ С‡Р°СЃС‚СЊ Р°СѓРґРёС‚РѕСЂРёРё Free-lance.ru. РќР°Р±РѕСЂ С„СѓРЅРєС†РёР№ РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р° РїСЂРµРґРѕСЃС‚Р°РІР»СЏРµС‚ СЂСЏРґ СЃРµСЂСЊРµР·РЅС‹С… РїСЂРµРёРјСѓС‰РµСЃС‚РІ, РєРѕС‚РѕСЂС‹Рµ РїРѕР·РІРѕР»СЏСЋС‚ СЃС‚Р°С‚СЊ РїСЂРёРІР»РµРєР°С‚РµР»СЊРЅРµРµ РґР»СЏ СЃРµСЂСЊРµР·РЅС‹С… С„СЂРёР»Р°РЅСЃРµСЂРѕРІ Рё СЃРґРµР»Р°С‚СЊ РїРѕРёСЃРє РёСЃРїРѕР»РЅРёС‚РµР»РµР№ РїРѕ РїСЂРѕРµРєС‚Р°Рј СЌС„С„РµРєС‚РёРІРЅРµРµ.</div>
             <div class="payed-block payed-block-proonly">
                 <b class="b1"></b>
                 <b class="b2"><b class="b4"></b></b>
@@ -50,28 +50,28 @@ $transaction_id = $account->start_transaction($uid, $tr_id);
             		<input type="hidden" name="mnth" id="mnth" value="1">
             		<input type="hidden" name="transaction_id" value="<?=$transaction_id?>">
             		<input type="hidden" name="action" value="buy">
-                    <h3 class="b-layout__h3">Покупка <a class="b-layout__link" href="/payed-emp/"><span class="b-icon b-icon__pro b-icon__pro_e b-icon_top_3" alt="Платный аккаунт" title="Платный аккаунт"></span></a> аккаунта:</h3>
+                    <h3 class="b-layout__h3">РџРѕРєСѓРїРєР° <a class="b-layout__link" href="/payed-emp/"><span class="b-icon b-icon__pro b-icon__pro_e b-icon_top_3" alt="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" title="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚"></span></a> Р°РєРєР°СѓРЅС‚Р°:</h3>
                     <? if($_SESSION['pro_last']): ?>
                     <?
                     $last_time = $_SESSION['pro_last'];
                     if(floor((strtotime($last_time)-time())/(60*60*24)) > 0) {
                         $last_ending = floor((strtotime($last_time)-time())/(60*60*24));
-                        $last_string1 = 'день';
-                        $last_string2 = 'дня';
-                        $last_string3 = 'дней';
+                        $last_string1 = 'РґРµРЅСЊ';
+                        $last_string2 = 'РґРЅСЏ';
+                        $last_string3 = 'РґРЅРµР№';
                     } else if (floor((strtotime($last_time)-time())/(60*60)) > 0) {
                         $last_ending = floor((strtotime($last_time)-time())/(60*60));
-                        $last_string1 = 'час';
-                        $last_string2 = 'часа';
-                        $last_string3 = 'часов';
+                        $last_string1 = 'С‡Р°СЃ';
+                        $last_string2 = 'С‡Р°СЃР°';
+                        $last_string3 = 'С‡Р°СЃРѕРІ';
                     } else {
                         $last_ending = floor((strtotime($last_time)-time())/(60));
-                        $last_string1 = 'минута';
-                        $last_string2 = 'минуты';
-                        $last_string3 = 'минут';
+                        $last_string1 = 'РјРёРЅСѓС‚Р°';
+                        $last_string2 = 'РјРёРЅСѓС‚С‹';
+                        $last_string3 = 'РјРёРЅСѓС‚';
                     }
                     ?>
-                    <div class="b-layout__txt b-layout__txt_padbot_10">Ваш <a class="b-layout__link" href="/payed-emp/"><span class="b-icon b-icon__pro b-icon__pro_e b-icon_top_3" alt="Платный аккаунт" title="Платный аккаунт"></span></a> аккаунт истекает через <?=$last_ending?> <?=ending($last_ending, $last_string1, $last_string2, $last_string3)?></div>
+                    <div class="b-layout__txt b-layout__txt_padbot_10">Р’Р°С€ <a class="b-layout__link" href="/payed-emp/"><span class="b-icon b-icon__pro b-icon__pro_e b-icon_top_3" alt="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚" title="РџР»Р°С‚РЅС‹Р№ Р°РєРєР°СѓРЅС‚"></span></a> Р°РєРєР°СѓРЅС‚ РёСЃС‚РµРєР°РµС‚ С‡РµСЂРµР· <?=$last_ending?> <?=ending($last_ending, $last_string1, $last_string2, $last_string3)?></div>
                     <? endif; ?>
                     <table class="buy-pro-tbl">
     					<tbody>
@@ -79,21 +79,21 @@ $transaction_id = $account->start_transaction($uid, $tr_id);
     							<td>
 									<div class="spinner">
 										<span class="spin-btns">
-											<input type="image" src="/images/arrow-top.png" name="Увеличить" title="Увеличить" alt="Увеличить" value="&amp;uarr" onclick="changeMonthPro(1); return false;">
-											<input type="image" src="/images/arrow-bottom.png" name="Уменьшить" title="Уменьшить" alt="Уменьшить" value="&amp;darr" onclick="changeMonthPro(-1); return false;">
+											<input type="image" src="/images/arrow-top.png" name="РЈРІРµР»РёС‡РёС‚СЊ" title="РЈРІРµР»РёС‡РёС‚СЊ" alt="РЈРІРµР»РёС‡РёС‚СЊ" value="&amp;uarr" onclick="changeMonthPro(1); return false;">
+											<input type="image" src="/images/arrow-bottom.png" name="РЈРјРµРЅСЊС€РёС‚СЊ" title="РЈРјРµРЅСЊС€РёС‚СЊ" alt="РЈРјРµРЅСЊС€РёС‚СЊ" value="&amp;darr" onclick="changeMonthPro(-1); return false;">
 										</span>
-										<span class="spin-val" id="month_pro">1</span> мес.
+										<span class="spin-val" id="month_pro">1</span> РјРµСЃ.
 									</div>
 								</td>
 								<td class="sign">&nbsp;&nbsp;&nbsp;=&nbsp;&nbsp;&nbsp;</td>
-								<td><strong><span id="month_sum">780</span> руб.</strong></td>
+								<td><strong><span id="month_sum">780</span> СЂСѓР±.</strong></td>
 							</tr>
 						</tbody>
                     </table>
 
                     <div>
-                        <a href="javascript:void(0);" class="btn btn-blue" onClick="checkBalance('block_pro_pay', 'frmbuy');"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">Купить</span></span></span></a>
-						<div class="lnk-pay" style="display:none" id="block_pro_pay"><a href="/bill/">Пополнить счет на <span id="pro_pay_sum">30</span> руб.</a></div>
+                        <a href="javascript:void(0);" class="btn btn-blue" onClick="checkBalance('block_pro_pay', 'frmbuy');"><span class="btn-lc"><span class="btn-m"><span class="btn-txt">РљСѓРїРёС‚СЊ</span></span></span></a>
+						<div class="lnk-pay" style="display:none" id="block_pro_pay"><a href="/bill/">РџРѕРїРѕР»РЅРёС‚СЊ СЃС‡РµС‚ РЅР° <span id="pro_pay_sum">30</span> СЂСѓР±.</a></div>
 					</div>
 					</form>
                 </div>
@@ -102,17 +102,17 @@ $transaction_id = $account->start_transaction($uid, $tr_id);
                 <b class="b1"></b>
             </div>
 
-<h3 class="b-layout__h3">Возможности профессионального аккаунта:</h3>
+<h3 class="b-layout__h3">Р’РѕР·РјРѕР¶РЅРѕСЃС‚Рё РїСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅРѕРіРѕ Р°РєРєР°СѓРЅС‚Р°:</h3>
 <div class="b-promo">
 	<ul class="b-promo__list">
-			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Возможность разместить логотип компании в профиле</li>
-			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Возможность бесплатно выделить проект цветом в ленте</li>
-			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Возможность разместить подробное описание компании в профиле</li>
-			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Консультации специалиста по бесплатному федеральному номеру</li>
-			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Приоритетное рассмотрение вопросов в службе поддержки</li>
+			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЂР°Р·РјРµСЃС‚РёС‚СЊ Р»РѕРіРѕС‚РёРї РєРѕРјРїР°РЅРёРё РІ РїСЂРѕС„РёР»Рµ</li>
+			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ Р±РµСЃРїР»Р°С‚РЅРѕ РІС‹РґРµР»РёС‚СЊ РїСЂРѕРµРєС‚ С†РІРµС‚РѕРј РІ Р»РµРЅС‚Рµ</li>
+			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>Р’РѕР·РјРѕР¶РЅРѕСЃС‚СЊ СЂР°Р·РјРµСЃС‚РёС‚СЊ РїРѕРґСЂРѕР±РЅРѕРµ РѕРїРёСЃР°РЅРёРµ РєРѕРјРїР°РЅРёРё РІ РїСЂРѕС„РёР»Рµ</li>
+			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>РљРѕРЅСЃСѓР»СЊС‚Р°С†РёРё СЃРїРµС†РёР°Р»РёСЃС‚Р° РїРѕ Р±РµСЃРїР»Р°С‚РЅРѕРјСѓ С„РµРґРµСЂР°Р»СЊРЅРѕРјСѓ РЅРѕРјРµСЂСѓ</li>
+			<li class="b-promo__item b-promo__item_fontsize_15"><span class="b-promo__item-number b-promo__item-plus"></span>РџСЂРёРѕСЂРёС‚РµС‚РЅРѕРµ СЂР°СЃСЃРјРѕС‚СЂРµРЅРёРµ РІРѕРїСЂРѕСЃРѕРІ РІ СЃР»СѓР¶Р±Рµ РїРѕРґРґРµСЂР¶РєРё</li>
 </ul>
 </div>            
-<div class="b-layout__txt"><a class="b-layout__link" href="/payed-emp/">и другие полезные преимущества</a></p>
+<div class="b-layout__txt"><a class="b-layout__link" href="/payed-emp/">Рё РґСЂСѓРіРёРµ РїРѕР»РµР·РЅС‹Рµ РїСЂРµРёРјСѓС‰РµСЃС‚РІР°</a></p>
 
 <script type="text/javascript">
 changeMonthPro(0);

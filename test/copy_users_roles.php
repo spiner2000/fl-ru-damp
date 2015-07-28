@@ -1,8 +1,8 @@
 <?php
 /**
- *Ñêðèïò çàïîëíÿåò çíà÷åíèÿ ïîëåé
+ *Ð¡ÐºÑ€Ð¸Ð¿Ñ‚ Ð·Ð°Ð¿Ð¾Ð»Ð½ÑÐµÑ‚ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ Ð¿Ð¾Ð»ÐµÐ¹
  * users_visits.is_emp, users_visits_daily.is_emp
- * çíà÷åíèÿìè èç users.role
+ * Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸ÑÐ¼Ð¸ Ð¸Ð· users.role
 **/
 set_time_limit(0);
 

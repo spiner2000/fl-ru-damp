@@ -1,21 +1,21 @@
 <?
 /**
- * Ïîäêëþ÷àåì ôàéë ñ îñíîâíûìè ôóíêöèÿìè ñèñòåìû
+ * ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡Ð°ÐµÐ¼ Ñ„Ð°Ð¹Ð» Ñ Ð¾ÑÐ½Ð¾Ð²Ð½Ñ‹Ð¼Ð¸ Ñ„ÑƒÐ½ÐºÑ†Ð¸ÑÐ¼Ð¸ ÑÐ¸ÑÑ‚ÐµÐ¼Ñ‹
  */
 require_once($_SERVER['DOCUMENT_ROOT'] . "/classes/memBuff.php");
 
 /**
- * Êëàññ äëÿ ðàáîòû ñ íîâîñòÿìè
+ * ÐšÐ»Ð°ÑÑ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ Ð½Ð¾Ð²Ð¾ÑÑ‚ÑÐ¼Ð¸
  *
  */
 class news 
 {
 	/**
-	 * Âçÿòü íîâîñòè ïî îïðåäåëåííîé äàòå
+	 * Ð’Ð·ÑÑ‚ÑŒ Ð½Ð¾Ð²Ð¾ÑÑ‚Ð¸ Ð¿Ð¾ Ð¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÐµÐ½Ð½Ð¾Ð¹ Ð´Ð°Ñ‚Ðµ
 	 *
-	 * @param string $date   Äàòà
-	 * @param string $error  Âîçâðàùàåò ñîîáùåíèå îá îøèáêå
-	 * @return array Íîâîñòè
+	 * @param string $date   Ð”Ð°Ñ‚Ð°
+	 * @param string $error  Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
+	 * @return array ÐÐ¾Ð²Ð¾ÑÑ‚Ð¸
 	 */
 	function GetNews($date, &$error){
 	    global $DB;
@@ -34,11 +34,11 @@ class news
 	}
 	
 	/**
-	 * Âçÿòü íîâîñòü ïî åãî ÈÄ
+	 * Ð’Ð·ÑÑ‚ÑŒ Ð½Ð¾Ð²Ð¾ÑÑ‚ÑŒ Ð¿Ð¾ ÐµÐ³Ð¾ Ð˜Ð”
 	 *
-	 * @param integer $id    ÈÄ íîâîñòè
-	 * @param string  $error Âîçâðàùàåò ñîîáùåíèå îá îøèáêå
-	 * @return array Íîâîñòü
+	 * @param integer $id    Ð˜Ð” Ð½Ð¾Ð²Ð¾ÑÑ‚Ð¸
+	 * @param string  $error Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
+	 * @return array ÐÐ¾Ð²Ð¾ÑÑ‚ÑŒ
 	 */
 	function GetNewsById($id, &$error){
 	    global $DB;
@@ -51,9 +51,9 @@ class news
 	}
 	
 	/**
-	 * Âçÿòü ïîñëåäíþþ íîâîñòü
+	 * Ð’Ð·ÑÑ‚ÑŒ Ð¿Ð¾ÑÐ»ÐµÐ´Ð½ÑŽÑŽ Ð½Ð¾Ð²Ð¾ÑÑ‚ÑŒ
 	 *
-	 * @return array Íîâîñòü
+	 * @return array ÐÐ¾Ð²Ð¾ÑÑ‚ÑŒ
 	 */
 	function GetLastNews(){
 		$sql = "SELECT post_date, header FROM news ORDER BY post_date DESC, id DESC LIMIT 1";
@@ -65,10 +65,10 @@ class news
 	}
 	
 	/**
-	 * Âçÿòü âñå íîâîñòè
+	 * Ð’Ð·ÑÑ‚ÑŒ Ð²ÑÐµ Ð½Ð¾Ð²Ð¾ÑÑ‚Ð¸
 	 *
-	 * @param string $error Âîçâðàùàåò ñîîáùåíèå îá îøèáêå
-	 * @return array Âñå íîâîñòè
+	 * @param string $error Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ ÑÐ¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
+	 * @return array Ð’ÑÐµ Ð½Ð¾Ð²Ð¾ÑÑ‚Ð¸
 	 */
 	function GetAllNews(&$error){
 	    global $DB;
@@ -81,12 +81,12 @@ class news
 	}
 	
 	/**
-	 * Äîáàâèòü íîâîñòü
+	 * Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð½Ð¾Ð²Ð¾ÑÑ‚ÑŒ
 	 *
-	 * @param string $post_date Äàòà íîâîñòè
-	 * @param string $header Çàãîëîâîê íîâîñòè
-	 * @param string $n_text Òåêñò íîâîñòè
-	 * @return string Ñîîáùåíèå îá îøèáêå
+	 * @param string $post_date Ð”Ð°Ñ‚Ð° Ð½Ð¾Ð²Ð¾ÑÑ‚Ð¸
+	 * @param string $header Ð—Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº Ð½Ð¾Ð²Ð¾ÑÑ‚Ð¸
+	 * @param string $n_text Ð¢ÐµÐºÑÑ‚ Ð½Ð¾Ð²Ð¾ÑÑ‚Ð¸
+	 * @return string Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
 	 */
 	function Add( $post_date, $header, $n_text ) {
 	    global $DB;
@@ -100,13 +100,13 @@ class news
 	}
 	
 	/**
-	 * Ðåäàêòèðîâàíèå íîâîñòè
+	 * Ð ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ðµ Ð½Ð¾Ð²Ð¾ÑÑ‚Ð¸
 	 *
-	 * @param string $date Äàòà íîâîñòè
-	 * @param string $name çàãîëîâîê
-	 * @param string $text Òåêñò
-	 * @param integer $id  Èä íîâîñòè
-	 * @return string Ñîîáùåíèå îá îøèáêå
+	 * @param string $date Ð”Ð°Ñ‚Ð° Ð½Ð¾Ð²Ð¾ÑÑ‚Ð¸
+	 * @param string $name Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ðº
+	 * @param string $text Ð¢ÐµÐºÑÑ‚
+	 * @param integer $id  Ð˜Ð´ Ð½Ð¾Ð²Ð¾ÑÑ‚Ð¸
+	 * @return string Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
 	 */
 	function Edit( $post_date, $header, $n_text, $id ) {
 	    global $DB;
@@ -120,10 +120,10 @@ class news
 	}
 	
 	/**
-	 * Óäàëèòü íîâîñòü
+	 * Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ Ð½Ð¾Ð²Ð¾ÑÑ‚ÑŒ
 	 *
-	 * @param integer $id Èä íîâîñòè
-	 * @return string Ñîîáùåíèå îá îøèáêå
+	 * @param integer $id Ð˜Ð´ Ð½Ð¾Ð²Ð¾ÑÑ‚Ð¸
+	 * @return string Ð¡Ð¾Ð¾Ð±Ñ‰ÐµÐ½Ð¸Ðµ Ð¾Ð± Ð¾ÑˆÐ¸Ð±ÐºÐµ
 	 */
 	function Delete($id){
 	    global $DB;

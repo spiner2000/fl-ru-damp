@@ -9,7 +9,7 @@
                       <tr>
                           <td bgcolor="#ffffff" width="20"></td>
                           <td bgcolor="#ffffff" width="50"><img width="60" height="58" src="<?=WDCPREFIX ?>/images/letter/verify_big_logo.png"></td>
-                          <td align="left"><font color="#000000" size="3" face="arial,sans-serif"><a style="color:#0f71c8" target="_blank" href="<?=$pHost ?>/promo/verification/?utm_source=newsletter4&utm_medium=email&utm_campaign=notif_ed_verif">Верификация</a> – это процедура бесплатной проверки паспортных данных пользователя. Верифицированные пользователи пользуются большим доверием и дополнительными возможностями на сайте.</font></td>
+                          <td align="left"><font color="#000000" size="3" face="arial,sans-serif"><a style="color:#0f71c8" target="_blank" href="<?=$pHost ?>/promo/verification/?utm_source=newsletter4&utm_medium=email&utm_campaign=notif_ed_verif">Р’РµСЂРёС„РёРєР°С†РёСЏ</a> вЂ“ СЌС‚Рѕ РїСЂРѕС†РµРґСѓСЂР° Р±РµСЃРїР»Р°С‚РЅРѕР№ РїСЂРѕРІРµСЂРєРё РїР°СЃРїРѕСЂС‚РЅС‹С… РґР°РЅРЅС‹С… РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ. Р’РµСЂРёС„РёС†РёСЂРѕРІР°РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»Рё РїРѕР»СЊР·СѓСЋС‚СЃСЏ Р±РѕР»СЊС€РёРј РґРѕРІРµСЂРёРµРј Рё РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹РјРё РІРѕР·РјРѕР¶РЅРѕСЃС‚СЏРјРё РЅР° СЃР°Р№С‚Рµ.</font></td>
                           <td bgcolor="#ffffff" width="20"></td>
                       </tr>
                       <tr>
@@ -20,7 +20,7 @@
                       </tr>
                       <tr>
                           <td bgcolor="#ffffff" width="20"></td>
-                          <td align="left" colspan="2"><i><font color="808080" size="3" face="arial,sans-serif">Приятной работы с FL.ru!</font></i></td>
+                          <td align="left" colspan="2"><i><font color="808080" size="3" face="arial,sans-serif">РџСЂРёСЏС‚РЅРѕР№ СЂР°Р±РѕС‚С‹ СЃ FL.ru!</font></i></td>
                           <td bgcolor="#ffffff" width="20"></td>
                       </tr>
                       <tr>

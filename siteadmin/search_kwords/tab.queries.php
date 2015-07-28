@@ -8,7 +8,7 @@ if (!$parser) {
 $content = "tpl.queries.php";
 
 
-$start = __paramInit('string', 's', null, 'а', 1);
+$start = __paramInit('string', 's', null, 'Р°', 1);
 if (in_array($_GET['s'], array('others', 'num', 'all', 'users', 'more', 'projects'))) {
     $start = $_GET['s'];
 }
@@ -16,7 +16,7 @@ $action = __paramInit('string', 'action','action');
 $page = __paramInit('int', 'p', null, 1);
 $limit = 40;
 
-preg_match_all("/(\D)/si", "йцукенгшщзхъфывапролджэячсмитьбю", $rus);
+preg_match_all("/(\D)/si", "Р№С†СѓРєРµРЅРіС€С‰Р·С…СЉС„С‹РІР°РїСЂРѕР»РґР¶СЌСЏС‡СЃРјРёС‚СЊР±СЋ", $rus);
 preg_match_all("/(\D)/si", "qwertyuiopasdfghjklzxcvbnm", $eng);
 $rus = $rus[0];
 $eng = $eng[0];
@@ -31,7 +31,7 @@ sort($eng);
 //$parser->cleanup();
 
 switch ($action) {
-    //удаление запроса (новый фильр не создается)
+    //СѓРґР°Р»РµРЅРёРµ Р·Р°РїСЂРѕСЃР° (РЅРѕРІС‹Р№ С„РёР»СЊСЂ РЅРµ СЃРѕР·РґР°РµС‚СЃСЏ)
     case 'remove':
         $qid = __paramInit('int', 'id');
         

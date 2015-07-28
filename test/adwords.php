@@ -62,9 +62,9 @@ if ( count($d) == 2 ) {
         
         while ( $row = pg_fetch_assoc($res) ) {
             $data = array();
-            // ссылка
+            // СЃСЃС‹Р»РєР°
             $data['url'] = $GLOBALS['host'] . '/projects/' . $row['id'] . '/' . translit(strtolower(htmlspecialchars_decode($row['name'], ENT_QUOTES))) . '.html';
-            // цена
+            // С†РµРЅР°
             if ( !empty($row['cost']) ) {
                 switch ( $row['currency'] ) {
                     case 0: {
@@ -72,11 +72,11 @@ if ( count($d) == 2 ) {
                         break;
                     }
                     case 1: {
-                        $cost = "€{$row['cost']}";
+                        $cost = "в‚¬{$row['cost']}";
                         break;
                     }
                     case 2: {
-                        $cost = "{$row['cost']} руб.";
+                        $cost = "{$row['cost']} СЂСѓР±.";
                         break;
                     }
                     case 4: {
@@ -86,27 +86,27 @@ if ( count($d) == 2 ) {
                 }
                 switch ( $row['priceby'] ) {
                     case 1: {
-                        $priceby = 'за час';
+                        $priceby = 'Р·Р° С‡Р°СЃ';
                         break;
                     }
                     case 2: {
-                        $priceby = 'за день';
+                        $priceby = 'Р·Р° РґРµРЅСЊ';
                         break;
                     }
                     case 3: {
-                        $priceby = 'за месяц';
+                        $priceby = 'Р·Р° РјРµСЃСЏС†';
                         break;
                     }
                     case 4: {
-                        $priceby = 'за проект';
+                        $priceby = 'Р·Р° РїСЂРѕРµРєС‚';
                         break;
                     }
                 }
                 $data['Wage'] = "{$cost} {$priceby}";
             } else {
-                $data['Wage'] = 'По договоренности';
+                $data['Wage'] = 'РџРѕ РґРѕРіРѕРІРѕСЂРµРЅРЅРѕСЃС‚Рё';
             }
-            // специализация (если несколько, берем только первую)
+            // СЃРїРµС†РёР°Р»РёР·Р°С†РёСЏ (РµСЃР»Рё РЅРµСЃРєРѕР»СЊРєРѕ, Р±РµСЂРµРј С‚РѕР»СЊРєРѕ РїРµСЂРІСѓСЋ)
             $cats    = $DB->array_to_php($row['cats']);
             $subcats = $DB->array_to_php($row['subcats']);
             $data['Vacancy'] = '';
@@ -118,29 +118,29 @@ if ( count($d) == 2 ) {
                 $data['Category 1'] = $groups[(int) $cats[0]]['name'];
                 $data['Category 1'] = preg_replace("/[\.\,\_\\\\\/\*\;\:\?]+/", " ", $data['Category 1']);
                 $data['Category 1'] = preg_replace("/\\s{2,}/", " ", $data['Category 1']);
-                $data['Category 1'] = preg_replace("/[^-A-Za-zА-Яа-яЁё0-9\\s]+/", "", $data['Category 1']);
+                $data['Category 1'] = preg_replace("/[^-A-Za-zРђ-РЇР°-СЏРЃС‘0-9\\s]+/", "", $data['Category 1']);
             } else {
-                $data['Category 1'] = 'Прочее';
+                $data['Category 1'] = 'РџСЂРѕС‡РµРµ';
             }
             if ( $subcats[0] ) {
                 $data['Vacancy'] = $profs[(int) $subcats[0]]['name_case'];
                 $data['Category 2'] = $profs[(int) $subcats[0]]['name'];
                 $data['Category 2'] = preg_replace("/[\.\,\_\\\\\/\*\;\:\?]+/", " ", $data['Category 2']);
                 $data['Category 2'] = preg_replace("/\\s{2,}/", " ", $data['Category 2']);
-                $data['Category 2'] = preg_replace("/[^-A-Za-zА-Яа-яЁё0-9\\s]+/", "", $data['Category 2']);
+                $data['Category 2'] = preg_replace("/[^-A-Za-zРђ-РЇР°-СЏРЃС‘0-9\\s]+/", "", $data['Category 2']);
             } else {
                 $data['Category 2'] = $data['Category 1'];
             }
             if ( empty($data['Vacancy']) ) {
-                $data['Vacancy'] = 'Прочее';
+                $data['Vacancy'] = 'РџСЂРѕС‡РµРµ';
             } else {
                 $data['Vacancy'] = preg_replace("/[\.\,\_\\\\\/\*\;\:\?]+/", " ", $data['Vacancy']);
                 $data['Vacancy'] = preg_replace("/\\s{2,}/", " ", $data['Vacancy']);
-                $data['Vacancy'] = preg_replace("/[^-A-Za-zА-Яа-яЁё0-9\\s]+/", "", $data['Vacancy']);
+                $data['Vacancy'] = preg_replace("/[^-A-Za-zРђ-РЇР°-СЏРЃС‘0-9\\s]+/", "", $data['Vacancy']);
             }
             $data['Vacancy_title'] = LenghtFormatEx($data['Vacancy'], 30, '');
             $data['vacancy_id'] = $row['id'];
-            // сохраняем
+            // СЃРѕС…СЂР°РЅСЏРµРј
             if ( !$c ) {
                 $rowsNames = array_keys($data);
                 $dataStr = implode(',', $rowsNames)  . "\r\n";

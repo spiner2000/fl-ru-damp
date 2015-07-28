@@ -168,7 +168,7 @@ class Events {
 	 */
 	public static function log_message($type = 'debug', $message = '')
 	{
-        //@todo Логирование событий при отладке
+        //@todo Р›РѕРіРёСЂРѕРІР°РЅРёРµ СЃРѕР±С‹С‚РёР№ РїСЂРё РѕС‚Р»Р°РґРєРµ
             
         /*
 		if (function_exists('log_message'))

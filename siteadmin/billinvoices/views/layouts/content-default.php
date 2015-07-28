@@ -6,7 +6,7 @@ if(!defined('IN_STDF'))
 }
 ?>
 <div class="admin">
-    <h1>Администрирование</h1>
+    <h1>РђРґРјРёРЅРёСЃС‚СЂРёСЂРѕРІР°РЅРёРµ</h1>
     <div class="lm-col">
         <?php include(ABS_PATH . "/siteadmin/leftmenu.php") ?>
     </div>

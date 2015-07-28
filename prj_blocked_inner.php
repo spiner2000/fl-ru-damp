@@ -3,10 +3,10 @@
     <?= printBanner240(false); ?>
     <!-- end of Banner 240x400 -->   
 </div>
-<h2 class="b-page__title">Проект заблокирован администрацией</h2>
-<div class="b-layout__txt b-layout__txt_padbot_20">Данный проект нарушает правила сайта и был заблокирован администрацией.<br />
-Если вы уверены, что это ошибка, сообщите нам об этом.</div>
+<h2 class="b-page__title">РџСЂРѕРµРєС‚ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ Р°РґРјРёРЅРёСЃС‚СЂР°С†РёРµР№</h2>
+<div class="b-layout__txt b-layout__txt_padbot_20">Р”Р°РЅРЅС‹Р№ РїСЂРѕРµРєС‚ РЅР°СЂСѓС€Р°РµС‚ РїСЂР°РІРёР»Р° СЃР°Р№С‚Р° Рё Р±С‹Р» Р·Р°Р±Р»РѕРєРёСЂРѕРІР°РЅ Р°РґРјРёРЅРёСЃС‚СЂР°С†РёРµР№.<br />
+Р•СЃР»Рё РІС‹ СѓРІРµСЂРµРЅС‹, С‡С‚Рѕ СЌС‚Рѕ РѕС€РёР±РєР°, СЃРѕРѕР±С‰РёС‚Рµ РЅР°Рј РѕР± СЌС‚РѕРј.</div>
 
-<div class="b-layout__txt b-layout__txt_padbot_20">Служба поддержки - <noindex><a class="b-layout__link" rel="nofollow" href="https://feedback.fl.ru/">https://feedback.fl.ru/</a></noindex></div>
+<div class="b-layout__txt b-layout__txt_padbot_20">РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё - <noindex><a class="b-layout__link" rel="nofollow" href="https://feedback.fl.ru/">https://feedback.fl.ru/</a></noindex></div>
 
-<div class="b-layout__txt b-layout__txt_padbot_20">Спасибо! </div>
+<div class="b-layout__txt b-layout__txt_padbot_20">РЎРїР°СЃРёР±Рѕ! </div>

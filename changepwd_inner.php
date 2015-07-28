@@ -4,7 +4,7 @@
     <!-- end of Banner 240x400 -->
 </div>
 <div class="b-layout__left b-layout__left_margright_270">
-<h1 class="b-page__title">Изменение пароля</h1>
+<h1 class="b-page__title">РР·РјРµРЅРµРЅРёРµ РїР°СЂРѕР»СЏ</h1>
 <?php 
     
     if (isset($master_error)) {
@@ -17,12 +17,12 @@
 ?> 
 <div class="b-fon">
 		<div class="b-fon__body b-fon__body_pad_10 b-fon__body_padleft_30 b-fon__body_fontsize_13 b-fon__body_bg_f0ffdf">
-				<span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>Пароль успешно изменен!
+				<span class="b-icon b-icon_sbr_gok b-icon_margleft_-25"></span>РџР°СЂРѕР»СЊ СѓСЃРїРµС€РЅРѕ РёР·РјРµРЅРµРЅ!
 		</div>
 </div>    
 <? } elseif ($uuid) { ?>
 <div class="b-layout__txt b-layout__txt_padbot_20">
-			Для завершения процедуры и восстановления доступа, пожалуйста, укажите пароль к аккаунту:</div>
+			Р”Р»СЏ Р·Р°РІРµСЂС€РµРЅРёСЏ РїСЂРѕС†РµРґСѓСЂС‹ Рё РІРѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёСЏ РґРѕСЃС‚СѓРїР°, РїРѕР¶Р°Р»СѓР№СЃС‚Р°, СѓРєР°Р¶РёС‚Рµ РїР°СЂРѕР»СЊ Рє Р°РєРєР°СѓРЅС‚Сѓ:</div>
 			<form action="/changepwd.php" method="post" id="cpwd">
 			<input type="hidden" name="action" value="change">
 			<input type="hidden" name="c" value="<?=$uuid?>">
@@ -35,7 +35,7 @@
                                 <tr class="b-layout__tr">
                                     <td class="b-layout__td b-layout__td_width_100">
                                         <div class="b-layout__txt b-layout__txt_padtop_4">
-                                            <label for="pswd">Новый пароль</label>
+                                            <label for="pswd">РќРѕРІС‹Р№ РїР°СЂРѕР»СЊ</label>
                                         </div>
                                     </td>
                                     <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_width_280">
@@ -48,7 +48,7 @@
                                     </td>
                                     <td class="b-layout__td b-layout__td_padleft_10">
                                         <div class="i-shadow">
-                                            <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_1">От 6 до 24 символов. Допустимы латинские буквы, <br>цифры и следующие спецсимволы: !@#$%^&*()_+-=;,./?[]{}</div>
+                                            <div class="b-layout__txt b-layout__txt_fontsize_11 b-layout__txt_lineheight_1">РћС‚ 6 РґРѕ 24 СЃРёРјРІРѕР»РѕРІ. Р”РѕРїСѓСЃС‚РёРјС‹ Р»Р°С‚РёРЅСЃРєРёРµ Р±СѓРєРІС‹, <br>С†РёС„СЂС‹ Рё СЃР»РµРґСѓСЋС‰РёРµ СЃРїРµС†СЃРёРјРІРѕР»С‹: !@#$%^&*()_+-=;,./?[]{}</div>
 											<div id="error_email" class="b-shadow b-shadow_m b-shadow_top_0 b-shadow_zindex_3 <?=$error ? '' : 'b-shadow_hide'?>">
 	                                            <div class="b-shadow__body b-shadow__body_bg_fff b-shadow__body_pad_10">
 	                                                <div id="error_txt_email" class="b-layout__txt b-layout__txt_nowrap b-layout__txt_padright_15 b-layout__txt_color_c4271f"><span class="b-form__error"></span><?=$error?></div>
@@ -66,7 +66,7 @@
                                 <tr class="b-layout__tr">
                                     <td class="b-layout__td b-layout__td_width_100">
                                         <div class="b-layout__txt b-layout__txt_padtop_4">
-                                            <label for="pswd_yet">Еще раз</label>
+                                            <label for="pswd_yet">Р•С‰Рµ СЂР°Р·</label>
                                         </div>
                                     </td>
                                     <td class="b-layout__td b-layout__td_padbot_20 b-layout__td_width_280">
@@ -87,7 +87,7 @@
                                 <tr class="b-layout__tr">
                                     <td class="b-layout__td b-layout__td_width_100"></td>
                                     <td colspan="3" class="b-layout__td b-layout__td_padbot_20">
-                                        <div class="b-buttons"><button id="send_btn" onclick="yaCounter6051055.reachGoal('change_psw'); $('cpwd').submit();" class="b-button b-button_flat b-button_flat_green">Изменить и авторизоваться</button></div>
+                                        <div class="b-buttons"><button id="send_btn" onclick="yaCounter6051055.reachGoal('change_psw'); $('cpwd').submit();" class="b-button b-button_flat b-button_flat_green">РР·РјРµРЅРёС‚СЊ Рё Р°РІС‚РѕСЂРёР·РѕРІР°С‚СЊСЃСЏ</button></div>
                                         
                                     </td>
                                 </tr>
@@ -100,7 +100,7 @@
 
 <script type="text/javascript">
 function show_password(id) {
-    // добавил возможность задавать свой id (на случай если на странице несколько паролей)
+    // РґРѕР±Р°РІРёР» РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ Р·Р°РґР°РІР°С‚СЊ СЃРІРѕР№ id (РЅР° СЃР»СѓС‡Р°Р№ РµСЃР»Рё РЅР° СЃС‚СЂР°РЅРёС†Рµ РЅРµСЃРєРѕР»СЊРєРѕ РїР°СЂРѕР»РµР№)
     var v = id ? $(id) : $('reg_password');
     if (!v) return;
     
