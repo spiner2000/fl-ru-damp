@@ -11,43 +11,43 @@
 			    <?php } //else?>
 				<ul class="b-footer__list">
 				    <?php if($footer_contacts) { ?>
-				    <li class="b-footer__item">Мои контакты</a></li>
+				    <li class="b-footer__item">РњРѕРё РєРѕРЅС‚Р°РєС‚С‹</a></li>
 				    <?php } else { //if?>
-					<li class="b-footer__item"><a class="b-footer__link" href="/contacts/">Мои контакты</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/contacts/">РњРѕРё РєРѕРЅС‚Р°РєС‚С‹</a></li>
 					<?php }//else?>
 					<?php if($footer_bill) { ?>
-					<li class="b-footer__item">Мои услуги</li>
+					<li class="b-footer__item">РњРѕРё СѓСЃР»СѓРіРё</li>
 					<?php } else { //if?>
-					<li class="b-footer__item"><a class="b-footer__link" href="/bill/">Мои услуги</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/bill/">РњРѕРё СѓСЃР»СѓРіРё</a></li>
 					<?php } //else?>
 					<?php if($footer_project) { ?>
-					<li class="b-footer__item">Проекты</li>
+					<li class="b-footer__item">РџСЂРѕРµРєС‚С‹</li>
 					<?php } else {//if ?>
-					<li class="b-footer__item"><a class="b-footer__link" href="/projects/?p=list">Проекты</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/projects/?p=list">РџСЂРѕРµРєС‚С‹</a></li>
 					<?php }//else?>
 					<? if($cntnorisk['cnt']) { ?>
-					  <li class="b-footer__item"><a class="b-footer__link" href="/norisk/">СБР</a></li>
+					  <li class="b-footer__item"><a class="b-footer__link" href="/norisk/">РЎР‘Р </a></li>
 					<? } ?>
 					<?php if($footer_setup) { ?>
-					<li class="b-footer__item">Настройки</li>
+					<li class="b-footer__item">РќР°СЃС‚СЂРѕР№РєРё</li>
 					<?php } else { // if?>
-					<li class="b-footer__item"><a class="b-footer__link" href="/users/<?=$_SESSION['login']?>/setup/">Настройки</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/users/<?=$_SESSION['login']?>/setup/">РќР°СЃС‚СЂРѕР№РєРё</a></li>
 					<?php } //else?>
-					<li class="b-footer__item"><a class="b-footer__link logoutBtn" href="javascript:logout()">Выйти</a></li>
+					<li class="b-footer__item"><a class="b-footer__link logoutBtn" href="javascript:logout()">Р’С‹Р№С‚Рё</a></li>
 				</ul>
 			</div>
 			<? else: ?>
 			<div class="b-footer__col b-footer__col_user">
 				<?php if ( $footer_registration ): ?>
-				<script type="text/javascript">document.write('<h4 class="b-footer__h4">Зарегистрироваться</h4>');</script>
+				<script type="text/javascript">document.write('<h4 class="b-footer__h4">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</h4>');</script>
 				<?php else: ?>
-				<script type="text/javascript">document.write('<h4 class="b-footer__h4"><a class="b-footer__link" href="/registration/">Зарегистрироваться</a></h4>');</script>
+				<script type="text/javascript">document.write('<h4 class="b-footer__h4"><a class="b-footer__link" href="/registration/">Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ</a></h4>');</script>
 				<?php endif; ?>
 				<ul class="b-footer__list">
 					<?php if ( $footer_remind ): ?>
-					<script type="text/javascript">document.write('<li class="b-footer__item">Забыли пароль?</li>');</script>
+					<script type="text/javascript">document.write('<li class="b-footer__item">Р—Р°Р±С‹Р»Рё РїР°СЂРѕР»СЊ?</li>');</script>
 					<?php else: ?>
-					<script type="text/javascript">document.write('<li class="b-footer__item"><a class="b-footer__link" href="/remind/">Забыли пароль?</a></li>');</script>
+					<script type="text/javascript">document.write('<li class="b-footer__item"><a class="b-footer__link" href="/remind/">Р—Р°Р±С‹Р»Рё РїР°СЂРѕР»СЊ?</a></li>');</script>
 					<?php endif; ?>
 				</ul>
 			</div>
@@ -60,69 +60,69 @@
 			<div class="b-footer__col b-footer__col_services">
 				<script type="text/javascript">
 				<?php if ( $grey_service ): ?>
-				document.write('<h4 class="b-footer__h4">Услуги</h4>');
+				document.write('<h4 class="b-footer__h4">РЈСЃР»СѓРіРё</h4>');
 				<?php else: ?>
-				document.write('<h4 class="b-footer__h4"><a class="b-footer__link" href="/service/">Услуги</a></h4>');
+				document.write('<h4 class="b-footer__h4"><a class="b-footer__link" href="/service/">РЈСЃР»СѓРіРё</a></h4>');
 				<?endif;?>
 				</script>
 				<ul class="b-footer__list">
 				<? if(is_emp()): ?>
 				    <?php if($footer_start) { ?>
-				    <li class="b-footer__item">Начальная страница</li>
+				    <li class="b-footer__item">РќР°С‡Р°Р»СЊРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°</li>
 				    <?php } else {//?>
-					<li class="b-footer__item"><a class="b-footer__link" href="/start/">Начальная страница</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/start/">РќР°С‡Р°Р»СЊРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°</a></li>
 					<?php }//else?>
 					<?php if($footer_payed) { ?>
-					<li class="b-footer__item">Аккаунт PRO</li>
+					<li class="b-footer__item">РђРєРєР°СѓРЅС‚ PRO</li>
 					<?php } else { //if?>
-					<li class="b-footer__item"><a class="b-footer__link" href="/payed-emp/">Аккаунт PRO</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/payed-emp/">РђРєРєР°СѓРЅС‚ PRO</a></li>
 					<?php } //else?>
 					<?php if($footer_norisk) { ?>
-					<li class="b-footer__item">Сделка Без Риска</li>
+					<li class="b-footer__item">РЎРґРµР»РєР° Р‘РµР· Р РёСЃРєР°</li>
 					<?php } else { //if?>
-					<li class="b-footer__item"><a class="b-footer__link" href="/norisk2/">Сделка Без Риска</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/norisk2/">РЎРґРµР»РєР° Р‘РµР· Р РёСЃРєР°</a></li>
 					<?php }//else?>
 					<?php if($footer_shop) { ?>
-					<li class="b-footer__item">Магазин</li>
+					<li class="b-footer__item">РњР°РіР°Р·РёРЅ</li>
 					<?php } else {//if ?>
-					<li class="b-footer__item"><a class="b-footer__link" href="/service/shop/">Магазин</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/service/shop/">РњР°РіР°Р·РёРЅ</a></li>
 					<?php }//else?>
 				<? elseif(get_uid(false)): ?>
 					<?php if($footer_start) { ?>
-				    <li class="b-footer__item">Начальная страница</li>
+				    <li class="b-footer__item">РќР°С‡Р°Р»СЊРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°</li>
 				    <?php } else {//?>
-					<li class="b-footer__item"><a class="b-footer__link" href="/start/">Начальная страница</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/start/">РќР°С‡Р°Р»СЊРЅР°СЏ СЃС‚СЂР°РЅРёС†Р°</a></li>
 					<?php }//else?>
 					<?php if($footer_payed) { ?>
-					<li class="b-footer__item">Аккаунт PRO</li>
+					<li class="b-footer__item">РђРєРєР°СѓРЅС‚ PRO</li>
 					<?php } else { //if?>
-					<li class="b-footer__item"><a class="b-footer__link" href="/payed/">Аккаунт PRO</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/payed/">РђРєРєР°СѓРЅС‚ PRO</a></li>
 					<?php } //else?>
 					<?php if($footer_shop) { ?>
-					<li class="b-footer__item">Магазин</li>
+					<li class="b-footer__item">РњР°РіР°Р·РёРЅ</li>
 					<?php } else {//if ?>
-					<li class="b-footer__item"><a class="b-footer__link" href="/service/shop/">Магазин</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/service/shop/">РњР°РіР°Р·РёРЅ</a></li>
 					<?php }//else?>
 					<?php if($footer_norisk) { ?>
-					<li class="b-footer__item">Сделка Без Риска</li>
+					<li class="b-footer__item">РЎРґРµР»РєР° Р‘РµР· Р РёСЃРєР°</li>
 					<?php } else { //if?>
-					<li class="b-footer__item"><a class="b-footer__link" href="/norisk2/">Сделка Без Риска</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/norisk2/">РЎРґРµР»РєР° Р‘РµР· Р РёСЃРєР°</a></li>
 					<?php }//else?>
 				<? else: ?>
 					<?php if ( $footer_manager ): ?>
-					<li class="b-footer__item">Подбор фрилансеров</li>
+					<li class="b-footer__item">РџРѕРґР±РѕСЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</li>
 					<?php else: ?>
-					<li class="b-footer__item"><a class="b-footer__link" href="/manager/">Подбор фрилансеров</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/manager/">РџРѕРґР±РѕСЂ С„СЂРёР»Р°РЅСЃРµСЂРѕРІ</a></li>
 					<?endif;?>
 					<?php if ( $footer_promo_sbr ): ?>
-					<li class="b-footer__item">Сделка Без Риска</li>
+					<li class="b-footer__item">РЎРґРµР»РєР° Р‘РµР· Р РёСЃРєР°</li>
 					<?php else: ?>
-					<li class="b-footer__item"><a class="b-footer__link" href="/promo/sbr/">Сделка Без Риска</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/promo/sbr/">РЎРґРµР»РєР° Р‘РµР· Р РёСЃРєР°</a></li>
 					<?endif;?>
 					<?php if ( $sUri == '/service/shop/' || $sUri == '/service/shop' ): ?>
-					<li class="b-footer__item">Магазин</li>
+					<li class="b-footer__item">РњР°РіР°Р·РёРЅ</li>
 					<?php else: ?>
-					<li class="b-footer__item"><a class="b-footer__link" href="/service/shop/">Магазин</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/service/shop/">РњР°РіР°Р·РёРЅ</a></li>
 					<?endif;?>
 				<? endif; ?>
 				</ul>
@@ -133,60 +133,60 @@
 
 			<div class="b-footer__col b-footer__col_project">
 				<?php if ( $footer_press_contacts = (strpos($sUri, '/press') === 0 && strpos($sUri, '/press/adv') === false) ): ?>
-				<h4 class="b-footer__h4">О проекте</h4>
+				<h4 class="b-footer__h4">Рћ РїСЂРѕРµРєС‚Рµ</h4>
 				<?php else: ?>
-				<h4 class="b-footer__h4"><a class="b-footer__link" href="/about/">О проекте</a></h4>
+				<h4 class="b-footer__h4"><a class="b-footer__link" href="/about/">Рћ РїСЂРѕРµРєС‚Рµ</a></h4>
 				<? endif; ?>
 				<ul class="b-footer__list">
 					<?php if ( strpos( $sUri, '/press/adv' ) === 0 ): ?>
-					<li class="b-footer__item">Реклама</li>
+					<li class="b-footer__item">Р РµРєР»Р°РјР°</li>
 					<?php else: ?>
-					<li class="b-footer__item"><a class="b-footer__link" href="/press/adv/">Реклама</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/press/adv/">Р РµРєР»Р°РјР°</a></li>
 					<? endif; ?>
 					<?php if ( $footer_press_contacts ): ?>
-					<li class="b-footer__item">Контакты</li>
+					<li class="b-footer__item">РљРѕРЅС‚Р°РєС‚С‹</li>
 					<?php else: ?>
-					<li class="b-footer__item"><a class="b-footer__link" href="/press/contacts/">Контакты</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/press/contacts/">РљРѕРЅС‚Р°РєС‚С‹</a></li>
 					<? endif; ?>
 					<?php /*
-					<li class="b-footer__item"><a class="b-footer__link" href="/press/partners/">Партнеры</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/press/partners/">РџР°СЂС‚РЅРµСЂС‹</a></li>
 					*/ ?>
 				</ul>
 				<ul class="b-footer__list">
 					<?php if ( strpos( $sUri, '/about/rules' ) === 0 ): ?>
-					<li class="b-footer__item">Правила сайта</li>
+					<li class="b-footer__item">РџСЂР°РІРёР»Р° СЃР°Р№С‚Р°</li>
 					<?php else: ?>
-					<li class="b-footer__item"><a class="b-footer__link" href="<?=WDCPREFIX?>/about/documents/appendix_2_regulations.pdf" target="_blank">Правила сайта</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="<?=WDCPREFIX?>/about/documents/appendix_2_regulations.pdf" target="_blank">РџСЂР°РІРёР»Р° СЃР°Р№С‚Р°</a></li>
 					<? endif; ?>
 					<?php if ( strpos( $sUri, '/about/offer' ) === 0 ): ?>
-					<li class="b-footer__item">Пользовательское соглашение</li>
+					<li class="b-footer__item">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ СЃРѕРіР»Р°С€РµРЅРёРµ</li>
 					<?php else: ?>
-					<li class="b-footer__item"><a class="b-footer__link" href="<?=WDCPREFIX?>/about/documents/agreement_site.pdf" target="_blank">Пользовательское соглашение</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="<?=WDCPREFIX?>/about/documents/agreement_site.pdf" target="_blank">РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ СЃРѕРіР»Р°С€РµРЅРёРµ</a></li>
 					<? endif; ?>
 					<?php /*
-					<li class="b-footer__item"><a class="b-footer__link" href="/about/corporative/">Корпоративный блог</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/about/corporative/">РљРѕСЂРїРѕСЂР°С‚РёРІРЅС‹Р№ Р±Р»РѕРі</a></li>
 					*/ ?>
 				</ul>
 				
 				<ul class="b-footer__list">
-				    <li class="b-footer__item"><a class="b-footer__link" href="<?=WDCPREFIX?>/about/documents/politika_po_obrabotke_pdn.pdf" target="_blank">Политика по обработке персональных данных</a></li>
-				    <li class="b-footer__item"><a class="b-footer__link" href="<?=WDCPREFIX?>/about/documents/polozhenie_po_obespecheniu_bezopasnosti_pdn.pdf" target="_blank">Положение по обеспечению безопасности персональных данных</a></li>
+				    <li class="b-footer__item"><a class="b-footer__link" href="<?=WDCPREFIX?>/about/documents/politika_po_obrabotke_pdn.pdf" target="_blank">РџРѕР»РёС‚РёРєР° РїРѕ РѕР±СЂР°Р±РѕС‚РєРµ РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹С… РґР°РЅРЅС‹С…</a></li>
+				    <li class="b-footer__item"><a class="b-footer__link" href="<?=WDCPREFIX?>/about/documents/polozhenie_po_obespecheniu_bezopasnosti_pdn.pdf" target="_blank">РџРѕР»РѕР¶РµРЅРёРµ РїРѕ РѕР±РµСЃРїРµС‡РµРЅРёСЋ Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹С… РґР°РЅРЅС‹С…</a></li>
 				</ul>
 			</div>
 
 			<div class="b-footer__col b-footer__col_help">
 				<script type="text/javascript">
 				<?php if ( $footer_help ): ?>
-				document.write('<h4 class="b-footer__h4">Помощь</h4>');
+				document.write('<h4 class="b-footer__h4">РџРѕРјРѕС‰СЊ</h4>');
 				<?php else: ?>
-				document.write('<h4 class="b-footer__h4"><a class="b-footer__link" href="/help/?all">Помощь</a></h4>');
+				document.write('<h4 class="b-footer__h4"><a class="b-footer__link" href="/help/?all">РџРѕРјРѕС‰СЊ</a></h4>');
 				<? endif; ?>
 				</script>
 				<ul class="b-footer__list">
 					<?php if ( strpos($sUri, '/about/feedback') === 0 ): ?>
-					<li class="b-footer__item">Служба поддержки</li>
+					<li class="b-footer__item">РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё</li>
 					<?php else: ?>
-					<li class="b-footer__item"><a class="b-footer__link" href="/about/feedback/">Служба поддержки</a></li>
+					<li class="b-footer__item"><a class="b-footer__link" href="/about/feedback/">РЎР»СѓР¶Р±Р° РїРѕРґРґРµСЂР¶РєРё</a></li>
 					<? endif; ?>
 					<li class="b-footer__item"><?=webim_button(2)?></li>
 				</ul>
@@ -198,7 +198,7 @@
 		
 		</div>
 		<div class="b-footer__bot">
-			<div class="b-footer__rightcol"> <script type="text/javascript">document.write('<a class="b-footer__link" href="/press/adv/">Реклама</a>');</script>
+			<div class="b-footer__rightcol"> <script type="text/javascript">document.write('<a class="b-footer__link" href="/press/adv/">Р РµРєР»Р°РјР°</a>');</script>
 				<div class="b-footer__mailru"> 
 					<!--Rating@Mail.ru counter--> 
 					<script language="javascript" type="text/javascript"><!--
@@ -212,10 +212,10 @@ a+=';d='+(s.colorDepth?s.colorDepth:s.pixelDepth);js=12;//--></script>
 js=13;//--></script><script type="text/javascript"><!--
 d.write('<a class="b-footer__link" href="http://top.mail.ru/jump?from=2071473" target="_blank">'+
 '<img class="b-footer__counter" src="http://db.c9.bf.a1.top.mail.ru/counter?id=2071473;t=99;js='+js+
-a+';rand='+Math.random()+'" alt="Рейтинг@Mail.ru"  '+
+a+';rand='+Math.random()+'" alt="Р РµР№С‚РёРЅРі@Mail.ru"  '+
 'height="18" width="88" \/><\/a>');if(11<js)d.write('<'+'!-- ');//--></script>
 					<noscript>
-					<a class="b-footer__link" target="_blank" href="http://top.mail.ru/jump?from=2071473"> <img class="b-footer__counter" src="http://db.c9.bf.a1.top.mail.ru/counter?js=na;id=2071473;t=99" height="18" width="88"  alt="Рейтинг@Mail.ru" /></a>
+					<a class="b-footer__link" target="_blank" href="http://top.mail.ru/jump?from=2071473"> <img class="b-footer__counter" src="http://db.c9.bf.a1.top.mail.ru/counter?js=na;id=2071473;t=99" height="18" width="88"  alt="Р РµР№С‚РёРЅРі@Mail.ru" /></a>
 					</noscript>
 					<script type="text/javascript"><!--
 if(11<js)d.write('--'+'>');//--></script> 
@@ -226,7 +226,7 @@ if(11<js)d.write('--'+'>');//--></script>
 				<div class="b-footer__copyright">Copyright 2005&ndash;<?=date('Y')?> Free-lance.ru</div>
 				<div class="b-footer__rambler"> 
 					<!-- begin of Top100 logo --> 
-					<script type="text/javascript">document.write('<a class="b-footer__link" href="http://top100.rambler.ru/home?id=1367737" target="_blank">Участник Rambler\'s Top100</a>');</script> 
+					<script type="text/javascript">document.write('<a class="b-footer__link" href="http://top100.rambler.ru/home?id=1367737" target="_blank">РЈС‡Р°СЃС‚РЅРёРє Rambler\'s Top100</a>');</script> 
 					<!-- end of Top100 logo --> 
 				</div>
 			</div>
@@ -308,7 +308,7 @@ if(11<js)d.write('--'+'>');//--></script>
 				
 							<!-- Yandex.Metrika counter -->
 							<script type="text/javascript">
-							var yaParams = {/*Здесь параметры визита электронной торговли*/};
+							var yaParams = {/*Р—РґРµСЃСЊ РїР°СЂР°РјРµС‚СЂС‹ РІРёР·РёС‚Р° СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ С‚РѕСЂРіРѕРІР»Рё*/};
 							</script>
 
 							<script type="text/javascript">
